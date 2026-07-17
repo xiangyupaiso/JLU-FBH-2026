@@ -13,7 +13,7 @@ interface InspirationsProps {
 export function Inspirations({ inspirationLinkList }: InspirationsProps) {
   return (
     <>
-      <div className="col-lg-4">
+      <div className="col-lg-4 inspirations-card">
         <h2>Inspirations</h2>
         <hr />
         <ul>
