@@ -1,5 +1,8 @@
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "../../styles/circure-tokens.css"; // overrides Bootstrap base with CirCure tokens
+import "../../styles/circure-nav.css"; // global site-header / mega-menu styles
+import "../../styles/circure-footer.css"; // global brand footer / final team reveal
 import { Route, Routes } from "react-router-dom";
 import { getPathMapping, stringToSlug } from "../../utils";
 import { useEffect } from "react";
@@ -7,6 +10,7 @@ import { Navbar } from "../../components/Navbar";
 import { Header } from "../../components/Header";
 import { NotFound } from "../../components/NotFound";
 import { Footer } from "../../components/Footer";
+import { Home } from "../../contents";
 
 const App = () => {
   const pathMapping = getPathMapping();
@@ -30,8 +34,14 @@ const App = () => {
 
       {/* Header and PageContent */}
       <Routes>
-        {Object.entries(pathMapping).map(
-          ([path, { title, lead, component: Component }]) => (
+        {/* Home is full-bleed: bypass Header + container so the story-nav
+            chapters can render edge-to-edge with their own scroll-driven
+            geometry. Navbar stays on top; Footer still renders below to
+            keep the mandatory license + gitlab.igem.org block visible. */}
+        <Route path="/" element={<Home />} />
+        {Object.entries(pathMapping)
+          .filter(([path]) => path !== "/")
+          .map(([path, { title, lead, component: Component }]) => (
             <Route
               key={path}
               path={path}
@@ -44,8 +54,7 @@ const App = () => {
                 </>
               }
             />
-          ),
-        )}
+          ))}
         <Route
           path="*"
           element={
