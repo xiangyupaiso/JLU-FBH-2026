@@ -86,13 +86,32 @@ export function Footer() {
     >
       <div className="circure-footer-panel">
         <div className="circure-footer-brand-row">
-          <Link
-            className="circure-footer-logo"
-            to="/"
-            aria-label="CirCure home"
-          >
-            <img src={closingLogoUrl} alt="" loading="lazy" decoding="async" />
-          </Link>
+          <div className="circure-footer-identity">
+            <Link
+              className="circure-footer-logo"
+              to="/"
+              aria-label="CirCure home"
+            >
+              <img
+                src={closingLogoUrl}
+                alt=""
+                loading="lazy"
+                decoding="async"
+              />
+            </Link>
+            <p className="circure-footer-statement">
+              <svg
+                className="ribbon-mark"
+                viewBox="0 0 32 46"
+                aria-hidden="true"
+              >
+                <use href="#circure-ribbon-knot" />
+              </svg>
+              <span>
+                Recognition is a molecular question—and a human responsibility.
+              </span>
+            </p>
+          </div>
 
           <nav className="circure-footer-menu" aria-label="Footer navigation">
             <Link to="/description">Project</Link>

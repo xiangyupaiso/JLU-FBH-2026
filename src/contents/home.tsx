@@ -645,24 +645,8 @@ export function Home() {
           </div>
         </section>
  
-        <footer className="closing" id="team">
-          <div>
-            <p>
-              <svg
-                className="ribbon-mark footer-ribbon-mark"
-                viewBox="0 0 32 46"
-                aria-hidden="true"
-              >
-                <use href="#circure-ribbon-knot" />
-              </svg>
-              <span>
-                Recognition is a molecular question—and a human responsibility.
-              </span>
-            </p>
-            <small>iGEM 2026 · Content licensed under CC BY 4.0</small>
-          </div>
-          <a href="#top">Return to top ↑</a>
-        </footer>
+        {/* Zero-height marker retained for the story hook's final navy tone. */}
+        <div className="closing" aria-hidden="true" />
       </main>
     </div>
   );

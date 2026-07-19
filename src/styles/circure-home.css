@@ -1992,48 +1992,6 @@ body.is-thread-dragging {
       scale(calc(0.62 + clamp(0, calc((var(--translation-progress) - 0.85) * 7), 1) * 0.38));
   }
  
-  /* CLOSING footer (inner story footer, distinct from global site Footer) */
-  .closing {
-    display: flex;
-    min-height: 190px;
-    align-items: center;
-    justify-content: space-between;
-    gap: 30px;
-    padding: 40px clamp(22px, 4.7vw, 72px);
-    background: var(--brand-navy-deep);
-    color: var(--paper-bright);
-  }
- 
-  .closing p {
-    max-width: 660px;
-    margin: 0;
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    font-family: var(--font-editorial);
-    font-size: clamp(21px, 2.25vw, 32px);
-  }
- 
-  .footer-ribbon-mark {
-    width: 22px;
-    height: 32px;
-    flex: 0 0 auto;
-    stroke-width: 3.4;
-  }
- 
-  .closing small {
-    display: block;
-    margin-top: 15px;
-    color: rgba(250, 248, 241, 0.65);
-    font-size: 11px;
-    letter-spacing: 0.04em;
-  }
- 
-  .closing a {
-    font-size: 13px;
-    font-weight: 700;
-  }
- 
   /* RESPONSIVE — chapter layout breakpoints */
   @media (max-width: 900px) {
     .thread-guide {
@@ -2873,10 +2831,6 @@ body.is-thread-dragging {
       padding: 58px 0;
     }
  
-    .closing {
-      align-items: flex-start;
-      flex-direction: column;
-    }
   }
  
   /* PREFERS-REDUCED-MOTION — full fallback so all content is visible */

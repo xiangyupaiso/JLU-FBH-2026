@@ -3,6 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "../../styles/circure-tokens.css"; // overrides Bootstrap base with CirCure tokens
 import "../../styles/circure-nav.css"; // global site-header / mega-menu styles
 import "../../styles/circure-footer.css"; // global brand footer / final team reveal
+import "../../styles/circure-back-to-top.css"; // global floating return-to-top control
 import { Route, Routes } from "react-router-dom";
 import { getPathMapping, stringToSlug } from "../../utils";
 import { useEffect } from "react";
@@ -10,6 +11,7 @@ import { Navbar } from "../../components/Navbar";
 import { Header } from "../../components/Header";
 import { NotFound } from "../../components/NotFound";
 import { Footer } from "../../components/Footer";
+import { BackToTop } from "../../components/BackToTop";
 import { Home } from "../../contents";
 
 const App = () => {
@@ -72,6 +74,7 @@ const App = () => {
       {/* Footer */}
       {/* MUST mention license AND have a link to team wiki's repository on gitlab.igem.org */}
       <Footer />
+      <BackToTop />
     </>
   );
 };
