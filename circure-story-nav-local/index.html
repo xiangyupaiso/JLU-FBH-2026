@@ -1,0 +1,503 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="CirCure follows the history of receptor-guided breast cancer treatment and explores a multi-epitope circRNA concept for TNBC."
+    />
+    <title>CirCure — Multi-epitope circRNA for TNBC</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <script src="./script.js" defer></script>
+  </head>
+  <body>
+    <svg class="icon-sprite" aria-hidden="true">
+      <symbol id="circure-ribbon-knot" viewBox="0 0 32 46">
+        <path d="M8.2 41C10.8 32.6 19.8 24.7 21.4 15.9C22.6 9.2 18.4 5.1 14.3 6.6C9.7 8.2 9.6 13.3 12.4 18.3C15.7 24.2 21.8 31.3 24.2 41" />
+      </symbol>
+    </svg>
+
+    <header class="site-header" data-header>
+      <div class="circure-nav-shell" data-nav-shell>
+        <div class="circure-nav-head">
+          <a class="wordmark" href="#top" aria-label="CirCure home" data-nav-home>
+            <span class="wordmark-stage" aria-hidden="true">
+              <span class="logo-word-full">CirCure</span>
+              <svg class="logo-symbol" viewBox="0 0 40 40">
+                <circle class="logo-ring" pathLength="1" cx="20" cy="20" r="15.25" />
+                <path class="logo-ribbon" pathLength="1" d="M13.2 29.8C15.3 24.3 21.4 18.2 23 13.1C24.2 9.2 21.8 7 18.9 7.5C15.4 8.1 14.2 11.1 15.8 14.4C17.8 18.7 22.1 23.7 24.3 29.7" />
+                <circle class="logo-junction" cx="9.2" cy="8.8" r="1.7" />
+              </svg>
+            </span>
+          </a>
+
+          <nav class="desktop-nav" aria-label="Primary navigation">
+            <a href="#top" data-nav-home>Home</a>
+            <button type="button" aria-expanded="false" aria-controls="circure-nav-menu" data-nav-key="project" data-nav-target="#history">Project <span aria-hidden="true">⌄</span></button>
+            <button type="button" aria-expanded="false" aria-controls="circure-nav-menu" data-nav-key="wet-lab" data-nav-target="#evidence">Wet Lab <span aria-hidden="true">⌄</span></button>
+            <button type="button" aria-expanded="false" aria-controls="circure-nav-menu" data-nav-key="dry-lab" data-nav-target="#coverage">Dry Lab <span aria-hidden="true">⌄</span></button>
+            <button type="button" aria-expanded="false" aria-controls="circure-nav-menu" data-nav-key="engagement" data-nav-target="#listening">Engagement <span aria-hidden="true">⌄</span></button>
+            <button type="button" aria-expanded="false" aria-controls="circure-nav-menu" data-nav-key="team" data-nav-target="#person">Team <span aria-hidden="true">⌄</span></button>
+            <button type="button" aria-expanded="false" aria-controls="circure-nav-menu" data-nav-key="award" data-nav-target="#translation">Award <span aria-hidden="true">⌄</span></button>
+          </nav>
+
+          <button class="mobile-menu-toggle" type="button" aria-expanded="false" aria-controls="circure-mobile-menu" data-mobile-menu-toggle>
+            <span>Menu</span>
+            <svg class="ribbon-mark" viewBox="0 0 32 46" aria-hidden="true"><use href="#circure-ribbon-knot" /></svg>
+          </button>
+        </div>
+
+        <span class="circure-nav-surface" aria-hidden="true"></span>
+
+        <div class="circure-mega-menu" id="circure-nav-menu" data-nav-menu aria-hidden="true" inert>
+          <div class="circure-nav-panel is-active" data-nav-panel="project" aria-hidden="false">
+            <article class="nav-intro-card"><span>Project</span><strong>Why TNBC needs a traceable route from evidence to vaccine candidates.</strong><a href="#history">Project overview <b>→</b></a></article>
+            <a class="nav-image-card nav-sprite-project nav-position-a" href="#history"><small>01 / CONTEXT</small><strong>Description</strong><em>Problem · Gap · Response</em></a>
+            <a class="nav-image-card nav-sprite-project nav-position-b" href="#engineering"><small>02 / ITERATE</small><strong>Engineering</strong><em>Design · Build · Test · Learn</em></a>
+            <a class="nav-image-card nav-sprite-project nav-position-c" href="#translation"><small>03 / RESPONSIBILITY</small><strong>Safety &amp; Contribution</strong><em>Gates · Limits · Reuse</em></a>
+          </div>
+          <div class="circure-nav-panel" data-nav-panel="wet-lab" aria-hidden="true" inert>
+            <article class="nav-intro-card"><span>Wet Lab</span><strong>From construct design to measurements that can support—or reject—a claim.</strong><a href="#evidence">Enter Wet Lab <b>→</b></a></article>
+            <a class="nav-image-card nav-sprite-wet-lab nav-position-a" href="#approach"><small>01 / METHODS</small><strong>Experiments</strong><em>Protocols · Controls · Materials</em></a>
+            <a class="nav-image-card nav-sprite-wet-lab nav-position-b" href="#evidence"><small>02 / EVIDENCE</small><strong>Results</strong><em>Figures · Statistics · Failures</em></a>
+            <a class="nav-image-card nav-sprite-wet-lab nav-position-c" href="#engineering"><small>03 / TRACE</small><strong>Notebook</strong><em>Timeline · Records · Reproduce</em></a>
+          </div>
+          <div class="circure-nav-panel" data-nav-panel="dry-lab" aria-hidden="true" inert>
+            <article class="nav-intro-card"><span>Dry Lab</span><strong>Neo-TNBsee compares known and patient-derived candidates without hiding assumptions.</strong><a href="#coverage">Enter Dry Lab <b>→</b></a></article>
+            <a class="nav-image-card nav-sprite-dry-lab nav-position-a" href="#approach"><small>01 / PIPELINE</small><strong>Neo-TNBsee</strong><em>A-arm · B1-arm · 5D matrix</em></a>
+            <a class="nav-image-card nav-sprite-dry-lab nav-position-b" href="#coverage"><small>02 / REASON</small><strong>Model</strong><em>Assumptions · Validation · Limits</em></a>
+            <a class="nav-image-card nav-sprite-dry-lab nav-position-c" href="#engineering"><small>03 / REUSE</small><strong>Software</strong><em>Run · Inspect · Extend</em></a>
+          </div>
+          <div class="circure-nav-panel" data-nav-panel="engagement" aria-hidden="true" inert>
+            <article class="nav-intro-card"><span>Engagement</span><strong>Stakeholder input becomes design evidence only when its consequence stays visible.</strong><a href="#listening">Follow the decisions <b>→</b></a></article>
+            <a class="nav-image-card nav-sprite-engagement nav-position-a" href="#listening"><small>01 / LISTEN</small><strong>Integrated HP</strong><em>Input · Change · Consequence</em></a>
+            <a class="nav-image-card nav-sprite-engagement nav-position-b" href="#person"><small>02 / EXPLAIN</small><strong>Education</strong><em>Audience · Access · Reflection</em></a>
+            <a class="nav-image-card nav-sprite-engagement nav-position-c" href="#translation"><small>03 / APPLY</small><strong>Implementation</strong><em>Users · Risks · Next steps</em></a>
+          </div>
+          <div class="circure-nav-panel" data-nav-panel="team" aria-hidden="true" inert>
+            <article class="nav-intro-card"><span>Team</span><strong>The people, roles, collaborations, and acknowledgements behind CirCure.</strong><a href="#person">Meet CirCure <b>→</b></a></article>
+            <a class="nav-image-card nav-sprite-team nav-position-a" href="#person"><small>01 / PEOPLE</small><strong>Members</strong><em>Students · PIs · Advisors</em></a>
+            <a class="nav-image-card nav-sprite-team nav-position-b" href="#translation"><small>02 / CREDIT</small><strong>Attributions</strong><em>Roles · Timeline · Support</em></a>
+            <a class="nav-image-card nav-sprite-team nav-position-c" href="#listening"><small>03 / TOGETHER</small><strong>Collaborations</strong><em>Teams · Experts · Partners</em></a>
+          </div>
+          <div class="circure-nav-panel" data-nav-panel="award" aria-hidden="true" inert>
+            <article class="nav-intro-card"><span>Award</span><strong>A judge-first map from medal requirements to evidence, routes, and limitations.</strong><a href="#translation">Open judging map <b>→</b></a></article>
+            <a class="nav-image-card nav-sprite-award nav-position-a" href="#translation"><small>01 / FIND</small><strong>Judging</strong><em>Criteria · Claims · Routes</em></a>
+            <a class="nav-image-card nav-sprite-award nav-position-b" href="#evidence"><small>02 / VERIFY</small><strong>Medal Criteria</strong><em>Bronze · Silver · Gold</em></a>
+            <a class="nav-image-card nav-sprite-award nav-position-c" href="#translation"><small>03 / OUTCOME</small><strong>Achievements</strong><em>Nominations · Prizes · Deliverables</em></a>
+          </div>
+        </div>
+
+        <nav class="circure-mobile-menu" id="circure-mobile-menu" aria-label="Mobile navigation" data-mobile-menu aria-hidden="true" inert>
+          <a href="#top">Home</a>
+          <a href="#history">Project</a>
+          <a href="#evidence">Wet Lab</a>
+          <a href="#coverage">Dry Lab</a>
+          <a href="#listening">Engagement</a>
+          <a href="#person">Team</a>
+          <a href="#translation">Award</a>
+        </nav>
+      </div>
+    </header>
+
+    <aside
+      class="thread-guide"
+      aria-label="Drag the pink ribbon to navigate the page"
+      role="slider"
+      tabindex="0"
+      aria-orientation="vertical"
+      aria-valuemin="0"
+      aria-valuemax="100"
+      aria-valuenow="0"
+      aria-valuetext="Recognition, section 1 of 9"
+    >
+      <span class="thread-guide-index" aria-hidden="true">01 / 09</span>
+      <span class="thread-guide-name" aria-hidden="true">Opening</span>
+      <span class="thread-guide-track" aria-hidden="true">
+        <i></i>
+        <span class="thread-guide-knot">
+          <svg class="ribbon-mark" viewBox="0 0 32 46">
+            <use href="#circure-ribbon-knot" />
+          </svg>
+        </span>
+      </span>
+    </aside>
+
+    <main id="top">
+      <section class="prologue" id="opening" aria-labelledby="hero-title">
+        <div class="prologue-sticky">
+          <div class="prologue-word" aria-hidden="true">RECOGNITION</div>
+
+          <article class="pathology-sheet" aria-label="Example TNBC biomarker panel">
+            <header>
+              <span>Pathology / biomarker panel</span>
+              <small>Example · not patient data</small>
+            </header>
+            <p class="report-type">Breast tissue · receptor status</p>
+            <h2>Three familiar routes are tested.</h2>
+            <dl>
+              <div class="report-result result-er">
+                <dt>ER</dt><dd>Negative</dd><i aria-hidden="true"></i>
+              </div>
+              <div class="report-result result-pr">
+                <dt>PR</dt><dd>Negative</dd><i aria-hidden="true"></i>
+              </div>
+              <div class="report-result result-her2">
+                <dt>HER2</dt><dd>Negative</dd><i aria-hidden="true"></i>
+              </div>
+            </dl>
+            <p class="report-note">This pattern is used to define triple-negative breast cancer.</p>
+            <svg class="ribbon-mark report-ribbon" viewBox="0 0 32 46" aria-hidden="true">
+              <use href="#circure-ribbon-knot" />
+            </svg>
+          </article>
+
+          <div class="prologue-reveal">
+            <span>Recognition / Prologue</span>
+            <h1 id="hero-title">The report stops here.<br />A life does not.</h1>
+            <p>
+              CirCure begins where three familiar treatment routes disappear—and asks
+              what immune recognition might still be possible.
+            </p>
+            <a href="#history">Follow the missing targets <b>↓</b></a>
+          </div>
+
+          <aside class="care-route" aria-label="Research and support notice">
+            <p><strong>Student research concept</strong><span>Not clinical guidance.</span></p>
+            <a href="https://tnbcfoundation.org/" target="_blank" rel="noopener noreferrer">
+              TNBC support and helpline ↗
+            </a>
+          </aside>
+        </div>
+      </section>
+
+      <section class="history" id="history" aria-labelledby="history-title">
+        <div class="history-sticky">
+        <div class="history-heading">
+          <h2 id="history-title">A history written in receptors.</h2>
+          <p>
+            Breast cancer treatment changed when molecular features began to guide
+            therapy. Each discovery made some tumors more visible—and left others
+            outside the new route.
+          </p>
+        </div>
+
+        <div class="history-line" aria-label="Selected milestones in receptor-guided breast cancer treatment">
+          <article>
+            <time datetime="1977">1977</time>
+            <h3>Estrogen receptor</h3>
+            <p>Tamoxifen turns hormone response into a treatment route.</p>
+          </article>
+          <article>
+            <time>1987 → 1998</time>
+            <h3>HER2</h3>
+            <p>A growth signal becomes the target of trastuzumab.</p>
+          </article>
+          <article class="history-negative">
+            <time>TNBC</time>
+            <h3>ER− · PR− · HER2−</h3>
+            <p>A clinically useful name built from three targets not found.</p>
+          </article>
+        </div>
+
+        <div class="history-turn">
+          <svg class="ribbon-mark history-ribbon-mark" viewBox="0 0 32 46" aria-hidden="true">
+            <use href="#circure-ribbon-knot" />
+          </svg>
+          <p>Clinically useful.<br />Humanly incomplete.</p>
+          <span>A subtype can guide treatment without defining the person.</span>
+        </div>
+
+        <details class="history-sources">
+          <summary>Historical sources</summary>
+          <p>
+            <a href="https://www.cancer.gov/research/progress/250-years-milestones">NCI cancer milestones</a>,
+            <a href="https://www.cancer.gov/research/progress/discovery/her2">NCI HER2 research history</a>, and the
+            <a href="https://www.accessdata.fda.gov/drugsatfda_docs/appletter/1998/trasgen092598L.htm">FDA trastuzumab approval record</a>
+            dated September 25, 1998.
+          </p>
+        </details>
+        </div>
+      </section>
+
+      <section class="human-chapter" id="person" aria-labelledby="person-title">
+        <div class="human-sticky">
+          <header class="human-opening">
+            <h2 id="person-title">No invented face.<br />No borrowed voice.</h2>
+            <p>
+              Until someone chooses to speak with us, the person at the center of this
+              project will not be reduced to a stock photograph or a convenient quotation.
+            </p>
+          </header>
+
+          <div class="unfilled-portrait" aria-hidden="true">
+            <svg viewBox="0 0 520 680" role="presentation">
+              <path class="portrait-outline" pathLength="1" d="M270 28C399 35 486 145 478 320C468 529 384 648 244 652C111 656 37 543 42 348C47 143 131 20 270 28Z" />
+              <path class="portrait-thread" pathLength="1" d="M64 463C146 414 180 349 201 271C222 194 258 154 305 163C353 172 365 216 337 257C306 303 253 344 245 412C238 476 279 521 337 567" />
+            </svg>
+            <span>Reserved for a consented voice.</span>
+          </div>
+
+          <div class="human-questions" aria-hidden="true">
+            <p>What matters<br />beyond the diagnosis?</p>
+            <p>What burden<br />would be unacceptable?</p>
+            <p>What should<br />research return?</p>
+          </div>
+
+          <p class="human-coda">
+            This is not an empty portrait.<br />It is consent made visible.
+          </p>
+        </div>
+      </section>
+
+      <section class="expansion" id="approach" aria-labelledby="approach-title">
+        <div class="expansion-sticky">
+          <div class="expansion-backdrop" aria-hidden="true"></div>
+          <div class="expansion-surface">
+            <div class="ambient-grid" aria-hidden="true"></div>
+
+            <div class="brand-emblem" aria-hidden="true">
+              <div class="brand-emblem-disc">
+                <img class="brand-emblem-base" src="./assets/circure-emblem.png" alt="" />
+                <img class="brand-emblem-ribbon" src="./assets/circure-ribbon.png" alt="" />
+              </div>
+              <svg class="brand-emblem-orbit" viewBox="0 0 640 640" role="presentation">
+                <circle class="brand-orbit-track" cx="320" cy="320" r="300" />
+                <path class="brand-orbit-active" pathLength="1" d="M320 20a300 300 0 1 1-.1 0" />
+                <circle class="brand-orbit-node node-one" cx="116" cy="100" r="5" />
+                <circle class="brand-orbit-node node-two" cx="570" cy="486" r="5" />
+              </svg>
+            </div>
+
+            <div class="expansion-copy">
+              <h2 id="approach-title">Recognition becomes<br />the design question.</h2>
+              <p class="expansion-lede">
+                Can one circular transcript carry several candidate epitopes—and can
+                every step toward an immune response be demonstrated?
+              </p>
+              <a class="surface-cta" href="#evidence">
+                <span>Follow the evidence</span>
+                <svg viewBox="0 0 16 16" aria-hidden="true">
+                  <path d="M3 8h9M8.5 4.5 12 8l-3.5 3.5" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="coverage" id="coverage" aria-labelledby="coverage-title">
+        <div class="coverage-sticky">
+        <div class="coverage-copy">
+          <h2 id="coverage-title">One name can hold many landscapes.</h2>
+          <p>
+            Even within one tumor, cells may express and present different antigens.
+            One target can illuminate a region without describing the whole field.
+          </p>
+        </div>
+
+        <figure class="coverage-map">
+          <svg viewBox="0 0 760 520" role="img" aria-labelledby="coverage-map-title coverage-map-desc">
+            <title id="coverage-map-title">Heterogeneous tumor antigen map</title>
+            <desc id="coverage-map-desc">Conceptual illustration of tumor cells carrying different combinations of candidate antigen markers; not patient data.</desc>
+            <path class="map-route route-one" pathLength="1" d="M62 126C172 52 272 74 354 154S530 272 698 176" />
+            <path class="map-route route-two" pathLength="1" d="M62 394C194 458 318 416 390 332S552 224 704 338" />
+
+            <g class="map-cell cell-a" transform="translate(126 174)">
+              <circle class="cell-membrane" r="58" /><circle class="cell-nucleus" r="22" />
+              <circle class="cell-marker marker-a" cx="-38" cy="-43" r="5" /><circle class="cell-marker marker-c" cx="48" cy="18" r="5" />
+            </g>
+            <g class="map-cell cell-b" transform="translate(292 116)">
+              <circle class="cell-membrane" r="46" /><circle class="cell-nucleus" r="18" />
+              <circle class="cell-marker marker-b" cx="24" cy="-39" r="5" /><circle class="cell-marker marker-a" cx="-39" cy="14" r="5" />
+            </g>
+            <g class="map-cell cell-c" transform="translate(476 176)">
+              <circle class="cell-membrane" r="68" /><circle class="cell-nucleus" r="26" />
+              <circle class="cell-marker marker-c" cx="46" cy="-50" r="5" /><circle class="cell-marker marker-b" cx="-62" cy="-4" r="5" />
+            </g>
+            <g class="map-cell cell-a" transform="translate(644 116)">
+              <circle class="cell-membrane" r="43" /><circle class="cell-nucleus" r="16" />
+              <circle class="cell-marker marker-a" cx="31" cy="-29" r="5" />
+            </g>
+            <g class="map-cell cell-c" transform="translate(196 360)">
+              <circle class="cell-membrane" r="66" /><circle class="cell-nucleus" r="25" />
+              <circle class="cell-marker marker-c" cx="-54" cy="-28" r="5" /><circle class="cell-marker marker-b" cx="48" cy="34" r="5" />
+            </g>
+            <g class="map-cell cell-b" transform="translate(396 386)">
+              <circle class="cell-membrane" r="50" /><circle class="cell-nucleus" r="19" />
+              <circle class="cell-marker marker-b" cx="-23" cy="-45" r="5" />
+            </g>
+            <g class="map-cell cell-a" transform="translate(602 366)">
+              <circle class="cell-membrane" r="61" /><circle class="cell-nucleus" r="23" />
+              <circle class="cell-marker marker-a" cx="53" cy="-20" r="5" /><circle class="cell-marker marker-c" cx="-42" cy="41" r="5" />
+            </g>
+          </svg>
+          <div class="scan-lens" aria-hidden="true"><i></i></div>
+          <figcaption>
+            <strong>Different cells. Different combinations.</strong>
+            <span>Conceptual illustration. No single marker describes the whole field.</span>
+          </figcaption>
+        </figure>
+        </div>
+      </section>
+
+      <section class="evidence" id="evidence" aria-labelledby="evidence-title">
+        <div class="evidence-sticky">
+          <div class="evidence-heading">
+            <h2 id="evidence-title">A promising circle is not yet recognition.</h2>
+            <p>
+              Every arrow in the hypothesis is a separate claim. Each one can fail.
+            </p>
+          </div>
+
+          <div class="evidence-sequence" aria-label="Evidence required from circular RNA to immune recognition">
+            <svg class="evidence-thread" viewBox="0 0 1200 460" preserveAspectRatio="none" aria-hidden="true">
+              <path pathLength="1" d="M48 110C260 44 366 174 528 222S852 356 1150 286" />
+            </svg>
+            <article>
+              <h3>The RNA must close.</h3>
+              <p>Confirm the back-splice junction and stability.</p>
+            </article>
+            <article>
+              <h3>The cell must show it.</h3>
+              <p>Measure whether encoded epitopes reach MHC-I.</p>
+            </article>
+            <article>
+              <h3>The response must be specific.</h3>
+              <p>Recognition matters only when the intended target explains it.</p>
+            </article>
+          </div>
+          <p class="evidence-coda">Between each sentence is an experiment.</p>
+        </div>
+      </section>
+
+      <section class="engineering" id="engineering" aria-labelledby="engineering-title">
+        <div class="engineering-heading">
+          <h2 id="engineering-title">A result should send the design back changed.</h2>
+          <p>
+            Repeating a cycle is not progress by itself. The next construct must carry
+            what the last result taught us.
+          </p>
+        </div>
+
+        <div class="lab-notebook" aria-label="How evidence changes the next construct">
+          <article class="lab-build">
+            <h3>Build.</h3>
+            <p>Make one sequence decision clear enough to challenge.</p>
+          </article>
+          <article class="lab-read">
+            <h3>Read.</h3>
+            <p>Separate expression, presentation, and recognition.</p>
+          </article>
+          <article class="lab-return">
+            <h3>Return.</h3>
+            <p>Change the next construct because of what failed.</p>
+          </article>
+          <svg class="lab-loop" viewBox="0 0 620 620" aria-hidden="true">
+            <path pathLength="1" d="M164 99C60 192 68 414 221 500C356 576 528 478 529 326C530 195 420 105 309 122C205 139 183 253 244 309C299 360 383 325 393 258" />
+          </svg>
+          <svg class="ribbon-mark lab-knot" viewBox="0 0 32 46" aria-hidden="true">
+            <use href="#circure-ribbon-knot" />
+          </svg>
+        </div>
+      </section>
+
+      <section class="listening" id="listening" aria-labelledby="listening-title">
+        <div class="listening-heading">
+          <h2 id="listening-title">A story about patients cannot be written without patients.</h2>
+          <p>
+            No composite testimony appears here. The empty seats are intentional.
+          </p>
+        </div>
+
+        <div class="listening-room" aria-label="Seats reserved for future consented voices">
+          <div class="listening-table" aria-hidden="true">
+            <i></i>
+            <strong>Consent</strong>
+            <small>Ask. Listen. Return.</small>
+          </div>
+          <article class="voice voice-patient">
+            <h3>Patient</h3>
+            <p>What would make this work worth pursuing?</p>
+          </article>
+          <article class="voice voice-caregiver">
+            <h3>Caregiver</h3>
+            <p>What burden does the design overlook?</p>
+          </article>
+          <article class="voice voice-clinician">
+            <h3>Clinician</h3>
+            <p>What would make the evidence credible?</p>
+          </article>
+          <article class="voice voice-advocate">
+            <h3>Advocate</h3>
+            <p>Who could still be left outside?</p>
+          </article>
+        </div>
+
+        <div class="listening-status">
+          <p>
+            No interviews have been conducted for this prototype. Listening is the next
+            piece of work—not a decoration added afterward.
+          </p>
+        </div>
+
+        <details class="listening-sources">
+          <summary>Why the page does not use a patient quote yet</summary>
+          <p>
+            <a href="https://breastcancernow.org/about-us/tell-us-your-story">Breast Cancer Now</a>
+            asks permission each time a personal story is used.
+            <a href="https://responsibility.igem.org/guidance/informed-consent">iGEM guidance</a>
+            likewise requires respectful methodology and informed consent for interviews,
+            surveys, and focus groups.
+          </p>
+        </details>
+      </section>
+
+      <section class="translation" id="translation" aria-labelledby="translation-title">
+        <div class="translation-sticky">
+        <div class="translation-heading">
+          <h2 id="translation-title">A boundary is part of the work.</h2>
+        </div>
+        <div class="claim-boundary">
+          <article>
+            <h3>History tells us</h3>
+            <p>Targets can change care.</p>
+          </article>
+          <article>
+            <h3>CirCure asks</h3>
+            <p>Can several epitopes broaden recognition?</p>
+          </article>
+          <article>
+            <h3>People decide</h3>
+            <p>Which questions are worth asking—and what care requires.</p>
+          </article>
+        </div>
+        <div class="care-final">
+          <svg class="care-seal" viewBox="0 0 240 240" aria-hidden="true">
+            <circle pathLength="1" cx="120" cy="120" r="105" />
+          </svg>
+          <p class="care-statement">
+            A pathology report may begin with biomarkers.<br />Care cannot end there.
+          </p>
+          <div class="final-tie" aria-hidden="true">
+            <i></i>
+            <svg class="ribbon-mark" viewBox="0 0 32 46">
+              <use href="#circure-ribbon-knot" />
+            </svg>
+            <i></i>
+          </div>
+        </div>
+        </div>
+      </section>
+
+      <footer class="closing" id="team">
+        <div>
+          <p><svg class="ribbon-mark footer-ribbon-mark" viewBox="0 0 32 46" aria-hidden="true"><use href="#circure-ribbon-knot" /></svg><span>Recognition is a molecular question—and a human responsibility.</span></p>
+          <small>iGEM 2026 · Content licensed under CC BY 4.0</small>
+        </div>
+        <a href="#top">Return to top ↑</a>
+      </footer>
+    </main>
+  </body>
+</html>

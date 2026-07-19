@@ -1,0 +1,7 @@
+{
+  "name": "anthropic-circure-story-nav-local",
+  "private": true,
+  "scripts": {
+    "dev": "node server.mjs 5183"
+  }
+}

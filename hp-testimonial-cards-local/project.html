@@ -1,0 +1,2399 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta
+            name="description"
+            content="CirCure project description: a traceable multi-epitope circular RNA vaccine concept for triple-negative breast cancer."
+        />
+        <title>CirCure | Project Description</title>
+        <style>
+            :root {
+                --paper: #f6f4ef;
+                --paper-soft: #fbf8f0;
+                --ink: #11110f;
+                --ink-soft: rgba(17, 17, 15, 0.66);
+                --wine: #7a2636;
+                --teal: #2f6f68;
+                --orange: #d86f4a;
+                --line: rgba(17, 17, 15, 0.12);
+                --page-width: 1320px;
+                --serif: Georgia, "Times New Roman", serif;
+                --ring-turn: 0deg;
+                --scatter: 0;
+            }
+
+            * {
+                box-sizing: border-box;
+            }
+
+            html {
+                background: var(--paper);
+                color: var(--ink);
+                font-family:
+                    Inter, ui-sans-serif, system-ui, -apple-system,
+                    BlinkMacSystemFont, "Segoe UI", sans-serif;
+                scroll-behavior: smooth;
+            }
+
+            body {
+                margin: 0;
+                min-height: 100vh;
+                overflow-x: hidden;
+                background: var(--paper);
+            }
+
+            ::selection {
+                background: var(--wine);
+                color: var(--paper-soft);
+            }
+
+            button {
+                font: inherit;
+            }
+
+            a,
+            button,
+            summary {
+                -webkit-tap-highlight-color: transparent;
+            }
+
+            a:focus-visible,
+            button:focus-visible,
+            summary:focus-visible {
+                outline: 3px solid rgba(122, 38, 54, 0.34);
+                outline-offset: 3px;
+            }
+
+            section,
+            article {
+                scroll-margin-top: 92px;
+            }
+
+            .page {
+                min-height: 100vh;
+                background:
+                    linear-gradient(rgba(17, 17, 15, 0.022) 1px, transparent 1px),
+                    var(--paper);
+                background-size: 100% 48px;
+            }
+
+            .topbar {
+                position: fixed;
+                top: 0;
+                left: 50%;
+                z-index: 50;
+                display: flex;
+                width: 100%;
+                height: 62px;
+                align-items: center;
+                justify-content: space-between;
+                padding: 8px max(24px, calc((100vw - var(--page-width)) / 2));
+                border-bottom: 1px solid rgba(17, 17, 15, 0.2);
+                background: rgba(246, 244, 239, 0.97);
+                transform: translateX(-50%);
+                transition:
+                    height 220ms ease,
+                    background 220ms ease;
+            }
+
+            .topbar.is-compact {
+                height: 54px;
+                background: rgba(246, 244, 239, 0.99);
+            }
+
+            .brand {
+                display: inline-flex;
+                align-items: center;
+                gap: 10px;
+                color: var(--ink);
+                font-size: 14px;
+                font-weight: 800;
+                text-decoration: none;
+            }
+
+            .brand-mark {
+                position: relative;
+                width: 22px;
+                height: 22px;
+                border: 2px solid var(--ink);
+                border-radius: 50%;
+            }
+
+            .brand-mark::before,
+            .brand-mark::after {
+                content: "";
+                position: absolute;
+                inset: 5px auto auto 5px;
+                width: 8px;
+                height: 8px;
+                border-radius: 50%;
+                background: var(--wine);
+            }
+
+            .brand-mark::after {
+                inset: auto 4px 3px auto;
+                width: 5px;
+                height: 5px;
+                background: var(--teal);
+            }
+
+            .nav {
+                display: flex;
+                align-items: center;
+                gap: 6px;
+            }
+
+            .nav a {
+                display: inline-flex;
+                min-height: 34px;
+                align-items: center;
+                padding: 0 11px;
+                border-radius: 2px;
+                color: rgba(17, 17, 15, 0.62);
+                font-size: 13px;
+                font-weight: 690;
+                text-decoration: none;
+                transition:
+                    color 180ms ease,
+                    background 180ms ease;
+            }
+
+            .nav a:hover {
+                color: var(--ink);
+                background: rgba(17, 17, 15, 0.06);
+            }
+
+            .nav a[aria-current="page"] {
+                color: var(--paper-soft);
+                background: rgba(17, 17, 15, 0.93);
+            }
+
+            .page-progress {
+                position: fixed;
+                top: 0;
+                left: 0;
+                z-index: 80;
+                width: 100%;
+                height: 3px;
+                background: transparent;
+                pointer-events: none;
+            }
+
+            .page-progress span {
+                display: block;
+                width: 100%;
+                height: 100%;
+                transform: scaleX(0);
+                transform-origin: left;
+                background: var(--wine);
+            }
+
+            .kicker {
+                margin: 0 0 16px;
+                color: rgba(17, 17, 15, 0.52);
+                font: 11px/1.25 "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+                letter-spacing: 0.035em;
+                text-transform: uppercase;
+            }
+
+            .hero {
+                position: relative;
+                display: grid;
+                grid-template-columns: minmax(0, 1fr) minmax(420px, 0.72fr);
+                width: min(var(--page-width), calc(100vw - 48px));
+                min-height: 100svh;
+                align-items: center;
+                gap: clamp(24px, 4vw, 70px);
+                margin: 0 auto;
+                padding: 116px 0 52px;
+                border-bottom: 1px solid var(--ink);
+            }
+
+            .hero-copy {
+                position: relative;
+                z-index: 2;
+            }
+
+            .hero-index {
+                display: flex;
+                align-items: center;
+                gap: 12px;
+                margin-bottom: 26px;
+                color: rgba(17, 17, 15, 0.48);
+                font: 11px/1.2 "SFMono-Regular", Consolas, monospace;
+                text-transform: uppercase;
+            }
+
+            .hero-index::before {
+                content: "";
+                width: 44px;
+                height: 1px;
+                background: var(--ink);
+            }
+
+            .hero h1 {
+                max-width: 820px;
+                margin: 0;
+                font-size: clamp(68px, 8.7vw, 132px);
+                font-weight: 820;
+                line-height: 0.84;
+                letter-spacing: -0.058em;
+                text-transform: uppercase;
+            }
+
+            .hero h1 .line {
+                display: block;
+            }
+
+            .hero h1 .line--wine {
+                color: var(--wine);
+                font-family: var(--serif);
+                font-size: 0.87em;
+                font-style: italic;
+                font-weight: 500;
+                letter-spacing: -0.06em;
+                text-transform: none;
+            }
+
+            .hero-summary {
+                display: grid;
+                grid-template-columns: minmax(0, 1fr) auto;
+                gap: 26px;
+                align-items: end;
+                max-width: 760px;
+                margin-top: 34px;
+                padding-top: 20px;
+                border-top: 1px solid var(--line);
+            }
+
+            .hero-summary p {
+                margin: 0;
+                color: var(--ink-soft);
+                font-family: var(--serif);
+                font-size: clamp(16px, 1.3vw, 19px);
+                line-height: 1.62;
+            }
+
+            .hero-summary a {
+                display: grid;
+                width: 48px;
+                height: 48px;
+                place-items: center;
+                border-radius: 50%;
+                background: var(--ink);
+                color: white;
+                font-size: 18px;
+                text-decoration: none;
+                transition: transform 180ms ease;
+            }
+
+            .hero-summary a:hover {
+                transform: translateY(3px);
+            }
+
+            .ring-plate {
+                position: relative;
+                min-height: min(690px, 72vw);
+                overflow: hidden;
+                border: 1px solid rgba(17, 17, 15, 0.14);
+                border-radius: 0;
+                background: #eeeae1;
+            }
+
+            .ring-plate::before {
+                content: "FIG. 01    CONCEPT ARCHITECTURE    REV. 03    NOT TO SCALE";
+                position: absolute;
+                top: 20px;
+                left: 24px;
+                z-index: 3;
+                color: rgba(17, 17, 15, 0.48);
+                font: 9px/1.3 "SFMono-Regular", Consolas, monospace;
+                letter-spacing: 0.04em;
+            }
+
+            .ring-plate::after {
+                content: "";
+                position: absolute;
+                inset: 0;
+                opacity: 0.42;
+                background-image:
+                    linear-gradient(rgba(17, 17, 15, 0.06) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(17, 17, 15, 0.06) 1px, transparent 1px);
+                background-size: 40px 40px;
+                pointer-events: none;
+            }
+
+            .hero-ring {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                z-index: 2;
+                width: min(590px, 90%);
+                transform: translate(-50%, -48%) rotate(var(--ring-turn));
+                overflow: visible;
+                transition: transform 70ms linear;
+            }
+
+            .hero-ring .ring-outline {
+                fill: none;
+                stroke: var(--ink);
+                stroke-width: 4;
+            }
+
+            .hero-ring .ring-shadow {
+                fill: none;
+                stroke: rgba(17, 17, 15, 0.12);
+                stroke-width: 34;
+            }
+
+            .hero-ring .ring-code {
+                fill: none;
+                stroke: var(--teal);
+                stroke-width: 18;
+                stroke-linecap: round;
+                stroke-dasharray: 120 18 58 18 92 18 42 18;
+            }
+
+            .hero-ring .ring-code--wine {
+                stroke: var(--wine);
+                stroke-dasharray: 46 244 34 210;
+            }
+
+            .hero-ring .inner-orbit {
+                fill: rgba(255, 252, 246, 0.76);
+                stroke: rgba(17, 17, 15, 0.15);
+                stroke-width: 1.5;
+            }
+
+            .hero-ring .cell-core {
+                fill: rgba(122, 38, 54, 0.13);
+                stroke: var(--wine);
+                stroke-width: 2;
+            }
+
+            .hero-ring .node {
+                fill: var(--paper-soft);
+                stroke: var(--ink);
+                stroke-width: 2;
+            }
+
+            .hero-ring .node-core {
+                fill: var(--orange);
+            }
+
+            .ring-label {
+                position: absolute;
+                z-index: 4;
+                display: grid;
+                gap: 3px;
+                min-width: 98px;
+                padding: 7px 9px;
+                border-top: 1px solid var(--ink);
+                border-left: 3px solid var(--wine);
+                background: rgba(238, 234, 225, 0.9);
+            }
+
+            .ring-label strong {
+                font-size: 12px;
+            }
+
+            .ring-label span {
+                color: rgba(17, 17, 15, 0.52);
+                font: 9px/1.2 "SFMono-Regular", Consolas, monospace;
+                text-transform: uppercase;
+            }
+
+            .ring-label--a { top: 17%; right: 6%; }
+            .ring-label--b { bottom: 22%; right: 2%; }
+            .ring-label--c { bottom: 13%; left: 6%; }
+            .ring-label--d { top: 24%; left: 3%; }
+
+            .ring-caption {
+                position: absolute;
+                right: 24px;
+                bottom: 20px;
+                left: 24px;
+                z-index: 4;
+                display: flex;
+                align-items: flex-end;
+                justify-content: space-between;
+                gap: 24px;
+                padding-top: 14px;
+                border-top: 1px solid rgba(17, 17, 15, 0.16);
+            }
+
+            .ring-caption strong {
+                font-size: 15px;
+            }
+
+            .ring-caption span {
+                max-width: 280px;
+                color: rgba(17, 17, 15, 0.5);
+                font: 9px/1.4 "SFMono-Regular", Consolas, monospace;
+                text-align: right;
+                text-transform: uppercase;
+            }
+
+            .design-record {
+                display: grid;
+                grid-template-columns: 0.24fr repeat(3, minmax(0, 1fr));
+                gap: 0;
+                width: min(var(--page-width), calc(100vw - 48px));
+                margin: 0 auto;
+                padding: 22px 0 76px;
+            }
+
+            .record-heading,
+            .record-item {
+                min-height: 150px;
+                padding: 18px 22px 18px 0;
+                border-top: 1px solid var(--ink);
+            }
+
+            .record-item {
+                padding-left: 22px;
+                border-left: 1px solid var(--line);
+            }
+
+            .record-heading {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+            }
+
+            .record-heading span,
+            .record-item span {
+                color: var(--wine);
+                font: 10px/1.4 "SFMono-Regular", Consolas, monospace;
+                text-transform: uppercase;
+            }
+
+            .record-heading strong {
+                font: 500 clamp(38px, 4vw, 58px)/0.9 var(--serif);
+                font-style: italic;
+            }
+
+            .record-item strong {
+                display: block;
+                margin-top: 18px;
+                font-size: 15px;
+                line-height: 1.35;
+            }
+
+            .record-item p {
+                margin: 8px 0 0;
+                color: var(--ink-soft);
+                font-family: var(--serif);
+                font-size: 14px;
+                line-height: 1.58;
+            }
+
+            .heterogeneity {
+                position: relative;
+                height: 240vh;
+                background: #171716;
+                color: white;
+            }
+
+            .heterogeneity-sticky {
+                position: sticky;
+                top: 0;
+                height: 100vh;
+                overflow: hidden;
+            }
+
+            .cell-field {
+                position: absolute;
+                inset: 0;
+                overflow: hidden;
+            }
+
+            .cell {
+                --x: 0px;
+                --y: 0px;
+                --r: 0deg;
+                position: absolute;
+                display: grid;
+                width: var(--size, 140px);
+                height: var(--size, 140px);
+                place-items: center;
+                border: 1px solid rgba(255, 255, 255, 0.22);
+                border-radius: var(--shape, 50%);
+                background:
+                    radial-gradient(circle at 38% 34%, rgba(255, 255, 255, 0.16), transparent 12%),
+                    radial-gradient(circle, var(--cell-color, rgba(122, 38, 54, 0.46)), rgba(17, 17, 15, 0.05) 70%);
+                box-shadow:
+                    inset 0 0 30px rgba(255, 255, 255, 0.05),
+                    0 0 80px rgba(122, 38, 54, 0.08);
+                transform: translate(
+                        calc(var(--x) * var(--scatter)),
+                        calc(var(--y) * var(--scatter))
+                    )
+                    rotate(calc(var(--r) * var(--scatter)))
+                    scale(calc(1 - var(--scatter) * 0.18));
+                opacity: calc(0.96 - var(--scatter) * 0.48);
+                will-change: transform;
+            }
+
+            .cell::before,
+            .cell::after {
+                content: "";
+                position: absolute;
+                border-radius: 50%;
+                background: rgba(255, 255, 255, 0.14);
+            }
+
+            .cell::before {
+                width: 32%;
+                height: 32%;
+                transform: translate(-18%, 12%);
+            }
+
+            .cell::after {
+                width: 9%;
+                height: 9%;
+                transform: translate(185%, -220%);
+            }
+
+            .cell:nth-child(1) { top: 9%; left: 5%; --size: 210px; --x: -180px; --y: -120px; --r: -25deg; --shape: 42% 58% 45% 55%; }
+            .cell:nth-child(2) { top: 11%; left: 33%; --size: 120px; --x: -70px; --y: -180px; --r: 18deg; --cell-color: rgba(47, 111, 104, 0.58); }
+            .cell:nth-child(3) { top: 5%; right: 8%; --size: 260px; --x: 210px; --y: -130px; --r: 32deg; --shape: 58% 42% 61% 39%; }
+            .cell:nth-child(4) { top: 37%; left: -2%; --size: 150px; --x: -220px; --y: 20px; --r: 40deg; --cell-color: rgba(216, 111, 74, 0.5); }
+            .cell:nth-child(5) { top: 34%; left: 24%; --size: 230px; --x: -120px; --y: 120px; --r: -34deg; --shape: 44% 56% 37% 63%; }
+            .cell:nth-child(6) { top: 31%; right: 25%; --size: 135px; --x: 90px; --y: -80px; --r: 22deg; --cell-color: rgba(47, 111, 104, 0.64); }
+            .cell:nth-child(7) { top: 40%; right: 3%; --size: 190px; --x: 220px; --y: 20px; --r: -42deg; }
+            .cell:nth-child(8) { bottom: 6%; left: 8%; --size: 250px; --x: -150px; --y: 210px; --r: 18deg; --cell-color: rgba(47, 111, 104, 0.48); }
+            .cell:nth-child(9) { bottom: 9%; left: 41%; --size: 115px; --x: 10px; --y: 220px; --r: -18deg; --cell-color: rgba(216, 111, 74, 0.52); }
+            .cell:nth-child(10) { bottom: 4%; right: 8%; --size: 275px; --x: 170px; --y: 190px; --r: 38deg; --shape: 64% 36% 52% 48%; }
+
+            .heterogeneity-copy {
+                position: relative;
+                z-index: 3;
+                display: grid;
+                width: min(var(--page-width), calc(100vw - 48px));
+                height: 100%;
+                align-content: center;
+                margin: 0 auto;
+            }
+
+            .heterogeneity-copy .kicker {
+                color: rgba(255, 255, 255, 0.54);
+            }
+
+            .heterogeneity-copy h2 {
+                max-width: 1150px;
+                margin: 0;
+                font-size: clamp(64px, 9vw, 140px);
+                font-weight: 850;
+                line-height: 0.86;
+                letter-spacing: -0.065em;
+                text-transform: uppercase;
+            }
+
+            .heterogeneity-copy h2 em {
+                display: block;
+                color: var(--orange);
+                font-family: Georgia, "Times New Roman", serif;
+                font-weight: 400;
+                text-transform: none;
+            }
+
+            .heterogeneity-copy p {
+                max-width: 620px;
+                margin: 28px 0 0 auto;
+                color: rgba(255, 255, 255, 0.72);
+                font-family: var(--serif);
+                font-size: 18px;
+                line-height: 1.66;
+            }
+
+            .field-key {
+                position: absolute;
+                right: 24px;
+                bottom: 20px;
+                z-index: 4;
+                display: flex;
+                gap: 16px;
+                color: rgba(255, 255, 255, 0.46);
+                font: 9px/1.2 "SFMono-Regular", Consolas, monospace;
+                text-transform: uppercase;
+            }
+
+            .field-key span {
+                display: inline-flex;
+                align-items: center;
+                gap: 6px;
+            }
+
+            .field-key i {
+                width: 7px;
+                height: 7px;
+                border-radius: 50%;
+                background: var(--wine);
+            }
+
+            .field-key span:nth-child(2) i { background: var(--teal); }
+            .field-key span:nth-child(3) i { background: var(--orange); }
+
+            .question-shift {
+                width: min(var(--page-width), calc(100vw - 48px));
+                margin: 0 auto;
+                padding: clamp(90px, 12vw, 170px) 0;
+            }
+
+            .question-row {
+                display: grid;
+                grid-template-columns: 0.28fr minmax(0, 1fr);
+                gap: 36px;
+                padding: 34px 0 52px;
+                border-top: 1px solid var(--ink);
+            }
+
+            .question-row > span {
+                color: var(--wine);
+                font: 10px/1.4 "SFMono-Regular", Consolas, monospace;
+                text-transform: uppercase;
+            }
+
+            .question-old,
+            .question-new {
+                margin: 0;
+                font-size: clamp(38px, 5.3vw, 80px);
+                line-height: 1.02;
+                letter-spacing: -0.045em;
+                text-wrap: balance;
+            }
+
+            .question-old {
+                position: relative;
+                color: rgba(17, 17, 15, 0.35);
+            }
+
+            .question-old::after {
+                content: "";
+                position: absolute;
+                top: 54%;
+                left: -1%;
+                width: 102%;
+                height: 5px;
+                background: var(--wine);
+                transform: rotate(-1.6deg);
+            }
+
+            .question-new strong {
+                color: var(--teal);
+                font-family: Georgia, "Times New Roman", serif;
+                font-style: italic;
+                font-weight: 500;
+            }
+
+            .question-foot {
+                display: grid;
+                grid-template-columns: 0.28fr minmax(0, 1fr);
+                gap: 36px;
+                padding-top: 24px;
+                border-top: 1px solid var(--line);
+            }
+
+            .question-foot p {
+                max-width: 760px;
+                margin: 0;
+                color: var(--ink-soft);
+                font-family: var(--serif);
+                font-size: 17px;
+                line-height: 1.68;
+            }
+
+            .ring-story {
+                width: min(var(--page-width), calc(100vw - 48px));
+                margin: 0 auto;
+                padding: 40px 0 120px;
+            }
+
+            .story-head {
+                display: grid;
+                grid-template-columns: minmax(0, 0.9fr) minmax(280px, 0.38fr);
+                gap: 40px;
+                align-items: end;
+                margin-bottom: 70px;
+                padding-bottom: 28px;
+                border-bottom: 1px solid var(--ink);
+            }
+
+            .story-head h2 {
+                max-width: 920px;
+                margin: 0;
+                font-size: clamp(50px, 6.5vw, 94px);
+                font-weight: 760;
+                line-height: 0.92;
+                letter-spacing: -0.045em;
+            }
+
+            .story-head h2 em {
+                color: var(--wine);
+                font-family: var(--serif);
+                font-weight: 400;
+            }
+
+            .story-head p:last-child {
+                margin: 0;
+                color: var(--ink-soft);
+                font-family: var(--serif);
+                font-size: 16px;
+                line-height: 1.68;
+            }
+
+            .story-layout {
+                display: grid;
+                grid-template-columns: minmax(380px, 0.78fr) minmax(0, 1fr);
+                gap: clamp(50px, 8vw, 120px);
+                align-items: start;
+            }
+
+            .ring-sticky {
+                position: sticky;
+                top: 98px;
+                min-height: calc(100vh - 126px);
+                display: grid;
+                align-content: center;
+            }
+
+            .build-ring-wrap {
+                position: relative;
+                aspect-ratio: 1;
+                overflow: hidden;
+                border-radius: 50%;
+                background:
+                    radial-gradient(circle, rgba(255, 252, 246, 0.9) 0 35%, transparent 36%),
+                    repeating-radial-gradient(circle, transparent 0 54px, rgba(17, 17, 15, 0.055) 55px 56px),
+                    rgba(255, 252, 246, 0.42);
+            }
+
+            .build-ring {
+                width: 100%;
+                height: 100%;
+                overflow: visible;
+            }
+
+            .build-ring .base {
+                fill: none;
+                stroke: rgba(17, 17, 15, 0.12);
+                stroke-width: 28;
+            }
+
+            .build-ring .segment {
+                fill: none;
+                stroke-width: 28;
+                stroke-linecap: round;
+                opacity: 0.12;
+                transition:
+                    opacity 500ms ease,
+                    stroke-width 500ms ease,
+                    filter 500ms ease;
+            }
+
+            .build-ring .segment--1 { stroke: var(--wine); stroke-dasharray: 80 422; stroke-dashoffset: 0; }
+            .build-ring .segment--2 { stroke: var(--orange); stroke-dasharray: 80 422; stroke-dashoffset: -100; }
+            .build-ring .segment--3 { stroke: var(--teal); stroke-dasharray: 80 422; stroke-dashoffset: -200; }
+            .build-ring .segment--4 { stroke: #2e4e70; stroke-dasharray: 80 422; stroke-dashoffset: -300; }
+            .build-ring .segment--5 { stroke: var(--ink); stroke-dasharray: 80 422; stroke-dashoffset: -400; }
+
+            .ring-sticky[data-stage="1"] .segment--1,
+            .ring-sticky[data-stage="2"] .segment--1,
+            .ring-sticky[data-stage="2"] .segment--2,
+            .ring-sticky[data-stage="3"] .segment--1,
+            .ring-sticky[data-stage="3"] .segment--2,
+            .ring-sticky[data-stage="3"] .segment--3,
+            .ring-sticky[data-stage="4"] .segment--1,
+            .ring-sticky[data-stage="4"] .segment--2,
+            .ring-sticky[data-stage="4"] .segment--3,
+            .ring-sticky[data-stage="4"] .segment--4,
+            .ring-sticky[data-stage="5"] .segment {
+                opacity: 1;
+            }
+
+            .build-ring .junction {
+                fill: var(--paper-soft);
+                stroke: var(--ink);
+                stroke-width: 2;
+                opacity: 0;
+                transform-origin: center;
+                transform: scale(0.5);
+                transition:
+                    opacity 500ms ease,
+                    transform 500ms cubic-bezier(0.22, 1, 0.36, 1);
+            }
+
+            .ring-sticky[data-stage="5"] .junction {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+            .ring-core-copy {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                display: grid;
+                width: 43%;
+                transform: translate(-50%, -50%);
+                text-align: center;
+            }
+
+            .ring-core-copy strong {
+                font-size: clamp(28px, 3vw, 48px);
+                line-height: 0.95;
+                letter-spacing: -0.045em;
+            }
+
+            .ring-core-copy span {
+                margin-top: 9px;
+                color: rgba(17, 17, 15, 0.5);
+                font: 9px/1.35 "SFMono-Regular", Consolas, monospace;
+                text-transform: uppercase;
+            }
+
+            .ring-scale {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 16px;
+                margin-top: 18px;
+                padding-top: 13px;
+                border-top: 1px solid var(--line);
+                color: rgba(17, 17, 15, 0.48);
+                font: 9px/1.2 "SFMono-Regular", Consolas, monospace;
+                text-transform: uppercase;
+            }
+
+            .story-steps {
+                display: grid;
+            }
+
+            .story-step {
+                min-height: 78vh;
+                padding: clamp(54px, 9vh, 90px) 0;
+                border-top: 1px solid var(--line);
+                opacity: 0.34;
+                transition: opacity 420ms ease;
+            }
+
+            .story-step:last-child {
+                border-bottom: 1px solid var(--line);
+            }
+
+            .story-step.is-active {
+                opacity: 1;
+            }
+
+            .step-meta {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 18px;
+                margin-bottom: 22px;
+                color: rgba(17, 17, 15, 0.46);
+                font: 10px/1.2 "SFMono-Regular", Consolas, monospace;
+                text-transform: uppercase;
+            }
+
+            .step-meta b {
+                display: grid;
+                width: 34px;
+                height: 34px;
+                place-items: center;
+                border: 1px solid rgba(17, 17, 15, 0.18);
+                border-radius: 50%;
+                color: var(--ink);
+            }
+
+            .story-step h3 {
+                margin: 0;
+                font-size: clamp(38px, 4.7vw, 68px);
+                line-height: 0.98;
+                letter-spacing: -0.045em;
+                text-wrap: balance;
+            }
+
+            .story-step > p {
+                max-width: 670px;
+                margin: 22px 0 0;
+                color: var(--ink-soft);
+                font-family: var(--serif);
+                font-size: 18px;
+                line-height: 1.72;
+            }
+
+            .step-sketch {
+                display: block;
+                width: 184px;
+                height: 78px;
+                margin: 0 0 30px auto;
+                overflow: visible;
+            }
+
+            .step-sketch .sketch-line,
+            .step-sketch .sketch-accent,
+            .step-sketch .sketch-soft {
+                fill: none;
+                stroke: var(--ink);
+                stroke-width: 1.8;
+                stroke-linecap: round;
+                stroke-linejoin: round;
+            }
+
+            .step-sketch .sketch-accent {
+                stroke: var(--wine);
+                stroke-width: 2.5;
+            }
+
+            .step-sketch .sketch-soft {
+                stroke: var(--teal);
+                stroke-dasharray: 3 5;
+            }
+
+            .step-sketch text {
+                fill: rgba(17, 17, 15, 0.52);
+                font: 7px/1 "SFMono-Regular", Consolas, monospace;
+                letter-spacing: 0.08em;
+                text-transform: uppercase;
+            }
+
+            .step-gate {
+                display: grid;
+                grid-template-columns: 120px minmax(0, 1fr);
+                gap: 18px;
+                margin-top: 28px;
+                padding: 15px 0;
+                border-top: 1px solid var(--ink);
+                border-bottom: 1px solid var(--line);
+            }
+
+            .step-gate span {
+                color: var(--wine);
+                font: 10px/1.4 "SFMono-Regular", Consolas, monospace;
+                text-transform: uppercase;
+            }
+
+            .step-gate strong {
+                font-size: 14px;
+                line-height: 1.45;
+            }
+
+            .mechanism {
+                padding: 105px 0 120px;
+                background: #ebe7df;
+            }
+
+            .mechanism-inner {
+                width: min(var(--page-width), calc(100vw - 48px));
+                margin: 0 auto;
+            }
+
+            .mechanism-head {
+                display: grid;
+                grid-template-columns: minmax(0, 0.9fr) minmax(290px, 0.42fr);
+                gap: 44px;
+                align-items: end;
+                margin-bottom: 54px;
+            }
+
+            .mechanism-head h2 {
+                max-width: 930px;
+                margin: 0;
+                font-size: clamp(50px, 6.5vw, 94px);
+                line-height: 0.92;
+                letter-spacing: -0.045em;
+            }
+
+            .mechanism-head h2 em {
+                color: var(--teal);
+                font-family: var(--serif);
+                font-weight: 400;
+            }
+
+            .mechanism-head p:last-child {
+                margin: 0;
+                color: var(--ink-soft);
+                font-family: var(--serif);
+                font-size: 16px;
+                line-height: 1.68;
+            }
+
+            .mechanism-plate {
+                position: relative;
+                overflow: hidden;
+                padding: clamp(24px, 4vw, 52px);
+                border: 1px solid rgba(17, 17, 15, 0.16);
+                background:
+                    linear-gradient(rgba(17, 17, 15, 0.045) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(17, 17, 15, 0.045) 1px, transparent 1px),
+                    var(--paper-soft);
+                background-size: 36px 36px;
+            }
+
+            .mechanism-plate::before {
+                content: "PLATE 04-A / PROPOSED BIOLOGICAL ROUTE";
+                position: absolute;
+                top: 16px;
+                right: 18px;
+                color: rgba(17, 17, 15, 0.42);
+                font: 9px/1.2 "SFMono-Regular", Consolas, monospace;
+            }
+
+            .mechanism-drawing {
+                width: 100%;
+                min-height: 430px;
+                overflow: visible;
+            }
+
+            .mechanism-drawing .route {
+                fill: none;
+                stroke: var(--ink);
+                stroke-width: 2.2;
+                stroke-dasharray: 5 8;
+            }
+
+            .mechanism-drawing .route-accent {
+                fill: none;
+                stroke: var(--wine);
+                stroke-width: 4;
+            }
+
+            .mechanism-drawing .object {
+                fill: var(--paper-soft);
+                stroke: var(--ink);
+                stroke-width: 2.3;
+            }
+
+            .mechanism-drawing .object-soft {
+                fill: rgba(47, 111, 104, 0.12);
+                stroke: var(--teal);
+                stroke-width: 2.3;
+            }
+
+            .mechanism-drawing .object-wine {
+                fill: rgba(122, 38, 54, 0.1);
+                stroke: var(--wine);
+                stroke-width: 2.3;
+            }
+
+            .mechanism-drawing .label {
+                fill: var(--ink);
+                font-family: Inter, sans-serif;
+                font-size: 14px;
+                font-weight: 800;
+            }
+
+            .mechanism-drawing .micro {
+                fill: rgba(17, 17, 15, 0.55);
+                font-family: "SFMono-Regular", Consolas, monospace;
+                font-size: 10px;
+                text-transform: uppercase;
+            }
+
+            .mechanism-notes {
+                display: grid;
+                grid-template-columns: repeat(4, minmax(0, 1fr));
+                border-top: 1px solid var(--ink);
+            }
+
+            .mechanism-caption {
+                grid-column: 1 / -1;
+                padding: 14px 0 18px;
+                border-bottom: 1px solid var(--line);
+                color: rgba(17, 17, 15, 0.68);
+                font-family: var(--serif);
+                font-size: 13px;
+                line-height: 1.55;
+            }
+
+            .mechanism-caption strong {
+                color: var(--ink);
+                font-family: "SFMono-Regular", Consolas, monospace;
+                font-size: 9px;
+                letter-spacing: 0.04em;
+                text-transform: uppercase;
+            }
+
+            .mechanism-note {
+                padding: 18px 16px 0 0;
+                border-right: 1px solid var(--line);
+            }
+
+            .mechanism-note + .mechanism-note {
+                padding-left: 16px;
+            }
+
+            .mechanism-note:last-child {
+                border-right: 0;
+            }
+
+            .mechanism-note span {
+                display: block;
+                margin-bottom: 8px;
+                color: var(--wine);
+                font: 9px/1.2 "SFMono-Regular", Consolas, monospace;
+                text-transform: uppercase;
+            }
+
+            .mechanism-note strong {
+                font-size: 14px;
+                line-height: 1.42;
+            }
+
+            .ledger {
+                padding: 112px 0 126px;
+                background: #171716;
+                color: white;
+            }
+
+            .ledger-inner {
+                width: min(var(--page-width), calc(100vw - 48px));
+                margin: 0 auto;
+            }
+
+            .ledger-head {
+                display: grid;
+                grid-template-columns: minmax(0, 0.88fr) minmax(290px, 0.42fr);
+                gap: 44px;
+                align-items: end;
+                margin-bottom: 54px;
+            }
+
+            .ledger-head .kicker,
+            .ledger-head p:last-child {
+                color: rgba(255, 255, 255, 0.58);
+            }
+
+            .ledger-head h2 {
+                max-width: 950px;
+                margin: 0;
+                font-size: clamp(54px, 7vw, 102px);
+                line-height: 0.9;
+                letter-spacing: -0.048em;
+            }
+
+            .ledger-head h2 em {
+                color: var(--orange);
+                font-family: var(--serif);
+                font-weight: 400;
+            }
+
+            .ledger-head p:last-child {
+                margin: 0;
+                font-family: var(--serif);
+                font-size: 16px;
+                line-height: 1.68;
+            }
+
+            .ledger-table {
+                border-top: 1px solid rgba(255, 255, 255, 0.72);
+            }
+
+            .ledger-row {
+                display: grid;
+                grid-template-columns: 72px minmax(210px, 0.34fr) minmax(0, 0.47fr) minmax(150px, 0.19fr);
+                gap: 22px;
+                align-items: start;
+                padding: 26px 0;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.13);
+            }
+
+            .ledger-row > span:first-child {
+                color: rgba(255, 255, 255, 0.38);
+                font: 11px/1.4 "SFMono-Regular", Consolas, monospace;
+            }
+
+            .ledger-row strong {
+                font-size: 17px;
+                line-height: 1.38;
+            }
+
+            .ledger-row p {
+                margin: 0;
+                color: rgba(255, 255, 255, 0.64);
+                font-family: var(--serif);
+                font-size: 14px;
+                line-height: 1.64;
+            }
+
+            .gate-status {
+                justify-self: start;
+                display: inline-flex;
+                align-items: center;
+                gap: 8px;
+                padding: 7px 0;
+                border-top: 1px solid rgba(255, 255, 255, 0.34);
+                border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+                color: rgba(255, 255, 255, 0.74);
+                font: 9px/1.2 "SFMono-Regular", Consolas, monospace;
+                letter-spacing: 0.035em;
+                text-transform: uppercase;
+            }
+
+            .gate-status::before {
+                content: "";
+                width: 18px;
+                height: 2px;
+                background: var(--orange);
+            }
+
+            .gate-status--rationale::before { background: var(--teal); }
+            .gate-status--boundary::before { background: var(--wine); }
+
+            .reading {
+                width: min(var(--page-width), calc(100vw - 48px));
+                margin: 0 auto;
+                padding: 112px 0 126px;
+            }
+
+            .reading-layout {
+                display: grid;
+                grid-template-columns: minmax(230px, 0.25fr) minmax(0, 1fr);
+                gap: clamp(44px, 7vw, 100px);
+                align-items: start;
+            }
+
+            .reading-nav {
+                position: sticky;
+                top: 98px;
+            }
+
+            .reading-nav h2 {
+                margin: 0 0 20px;
+                font-size: 24px;
+                letter-spacing: -0.03em;
+            }
+
+            .reading-nav ol {
+                display: grid;
+                gap: 0;
+                margin: 0;
+                padding: 0;
+                border-top: 1px solid var(--ink);
+                list-style: none;
+            }
+
+            .reading-nav a {
+                display: grid;
+                grid-template-columns: 26px minmax(0, 1fr);
+                gap: 7px;
+                padding: 12px 0;
+                border-bottom: 1px solid var(--line);
+                color: rgba(17, 17, 15, 0.52);
+                font-size: 13px;
+                font-weight: 750;
+                text-decoration: none;
+            }
+
+            .reading-nav a span {
+                font: 9px/1.7 "SFMono-Regular", Consolas, monospace;
+            }
+
+            .reading-nav a:hover,
+            .reading-nav a.is-active {
+                color: var(--wine);
+            }
+
+            .reading-article {
+                display: grid;
+            }
+
+            .reading-section {
+                display: grid;
+                grid-template-columns: minmax(0, 1fr) minmax(220px, 0.34fr);
+                gap: clamp(28px, 5vw, 60px);
+                padding: 70px 0;
+                border-top: 1px solid var(--line);
+            }
+
+            .reading-section:first-child {
+                padding-top: 0;
+                border-top: 0;
+            }
+
+            .reading-section h3 {
+                max-width: 780px;
+                margin: 0;
+                font-size: clamp(38px, 4.4vw, 66px);
+                line-height: 0.98;
+                letter-spacing: -0.045em;
+            }
+
+            .reading-section p {
+                max-width: 780px;
+                margin: 20px 0 0;
+                color: rgba(17, 17, 15, 0.72);
+                font-family: var(--serif);
+                font-size: 17px;
+                line-height: 1.72;
+            }
+
+            .reading-section sup {
+                margin-left: 2px;
+                color: var(--wine);
+                font: 9px/1 "SFMono-Regular", Consolas, monospace;
+                vertical-align: super;
+            }
+
+            .margin-note {
+                align-self: start;
+                padding: 14px 0;
+                border-top: 3px solid var(--ink);
+            }
+
+            .margin-note span {
+                display: block;
+                margin-bottom: 9px;
+                color: var(--wine);
+                font: 9px/1.3 "SFMono-Regular", Consolas, monospace;
+                text-transform: uppercase;
+            }
+
+            .margin-note p {
+                margin: 0;
+                color: var(--ink-soft);
+                font-family: var(--serif);
+                font-size: 13px;
+                line-height: 1.55;
+            }
+
+            .route-next {
+                position: relative;
+                display: grid;
+                grid-template-columns: minmax(0, 1fr) auto;
+                gap: 34px;
+                width: min(var(--page-width), calc(100vw - 48px));
+                align-items: end;
+                margin: 0 auto 92px;
+                padding: clamp(34px, 5vw, 70px);
+                overflow: hidden;
+                border-radius: 0;
+                background: var(--wine);
+                color: white;
+            }
+
+            .route-next::after {
+                content: "";
+                position: absolute;
+                top: -48%;
+                right: 8%;
+                width: min(52vw, 690px);
+                aspect-ratio: 1;
+                border: 1px solid rgba(255, 255, 255, 0.2);
+                border-radius: 50%;
+                pointer-events: none;
+            }
+
+            .route-next > * {
+                position: relative;
+                z-index: 1;
+            }
+
+            .route-next .kicker {
+                color: rgba(255, 255, 255, 0.62);
+            }
+
+            .route-next h2 {
+                max-width: 960px;
+                margin: 0;
+                font-size: clamp(46px, 6.2vw, 90px);
+                line-height: 0.92;
+                letter-spacing: -0.045em;
+            }
+
+            .route-next h2 em {
+                font-family: var(--serif);
+                font-weight: 400;
+            }
+
+            .route-next p {
+                max-width: 700px;
+                margin: 22px 0 0;
+                color: rgba(255, 255, 255, 0.72);
+                font-family: var(--serif);
+                font-size: 16px;
+                line-height: 1.66;
+            }
+
+            .route-arrow {
+                display: grid;
+                width: 70px;
+                height: 70px;
+                place-items: center;
+                border-radius: 50%;
+                background: white;
+                color: var(--ink);
+                font-size: 27px;
+                text-decoration: none;
+                transition: transform 180ms ease;
+            }
+
+            .route-arrow:hover {
+                transform: translate(4px, -4px);
+            }
+
+            .references {
+                width: min(var(--page-width), calc(100vw - 48px));
+                margin: 0 auto;
+                padding: 0 0 90px;
+            }
+
+            .references details {
+                border-top: 1px solid var(--ink);
+                border-bottom: 1px solid var(--line);
+            }
+
+            .references summary {
+                cursor: pointer;
+                padding: 20px 0;
+                font-size: 15px;
+                font-weight: 800;
+                list-style: none;
+            }
+
+            .references summary::after {
+                content: "+";
+                float: right;
+                color: rgba(17, 17, 15, 0.48);
+            }
+
+            .references details[open] summary::after {
+                content: "−";
+            }
+
+            .reference-list {
+                display: grid;
+                gap: 12px;
+                margin: 0;
+                padding: 0 0 24px 20px;
+            }
+
+            .reference-list li {
+                padding-left: 8px;
+                color: var(--ink-soft);
+                font-size: 13px;
+                line-height: 1.55;
+            }
+
+            .reference-list a {
+                color: var(--wine);
+            }
+
+            .back-to-top {
+                position: fixed;
+                right: 22px;
+                bottom: 22px;
+                z-index: 60;
+                display: grid;
+                width: 44px;
+                height: 44px;
+                place-items: center;
+                border: 0;
+                border-radius: 50%;
+                background: var(--ink);
+                color: white;
+                cursor: pointer;
+                opacity: 0;
+                transform: translateY(10px);
+                transition:
+                    opacity 180ms ease,
+                    transform 180ms ease;
+                pointer-events: none;
+            }
+
+            .back-to-top.is-visible {
+                opacity: 1;
+                transform: none;
+                pointer-events: auto;
+            }
+
+            @media (max-width: 1050px) {
+                .hero {
+                    grid-template-columns: minmax(0, 1fr) minmax(360px, 0.65fr);
+                }
+
+                .hero h1 {
+                    font-size: clamp(66px, 9vw, 112px);
+                }
+
+                .story-layout {
+                    grid-template-columns: minmax(330px, 0.66fr) minmax(0, 1fr);
+                    gap: 50px;
+                }
+
+                .mechanism-notes {
+                    grid-template-columns: repeat(2, minmax(0, 1fr));
+                }
+
+                .mechanism-note:nth-child(2) {
+                    border-right: 0;
+                }
+
+                .mechanism-note:nth-child(n + 3) {
+                    margin-top: 18px;
+                    padding-top: 18px;
+                    border-top: 1px solid var(--line);
+                }
+            }
+
+            @media (max-width: 840px) {
+                .nav a[data-mobile-hide] {
+                    display: none;
+                }
+
+                .hero {
+                    grid-template-columns: 1fr;
+                    padding-top: 112px;
+                }
+
+                .hero-copy {
+                    padding-top: 34px;
+                }
+
+                .ring-plate {
+                    min-height: min(690px, 100vw);
+                }
+
+                .design-record,
+                .question-row,
+                .question-foot {
+                    grid-template-columns: 1fr;
+                    gap: 18px;
+                }
+
+                .design-record {
+                    grid-template-columns: repeat(2, minmax(0, 1fr));
+                    gap: 0;
+                }
+
+                .record-item:nth-child(3) {
+                    border-left: 0;
+                }
+
+                .record-heading,
+                .record-item {
+                    border-bottom: 1px solid var(--line);
+                }
+
+                .heterogeneity-copy p {
+                    margin-left: 0;
+                }
+
+                .story-head,
+                .mechanism-head,
+                .ledger-head {
+                    grid-template-columns: 1fr;
+                }
+
+                .story-layout {
+                    grid-template-columns: 1fr;
+                }
+
+                .ring-sticky {
+                    position: relative;
+                    top: 0;
+                    min-height: 0;
+                }
+
+                .build-ring-wrap {
+                    width: min(620px, 100%);
+                    margin: 0 auto;
+                }
+
+                .story-step {
+                    min-height: 0;
+                    opacity: 1;
+                }
+
+                .ledger-row {
+                    grid-template-columns: 54px minmax(180px, 0.42fr) minmax(0, 0.58fr);
+                }
+
+                .ledger-row > :last-child {
+                    grid-column: 2;
+                }
+
+                .reading-layout,
+                .reading-section {
+                    grid-template-columns: 1fr;
+                }
+
+                .reading-nav {
+                    position: relative;
+                    top: 0;
+                    padding-bottom: 30px;
+                }
+
+                .reading-nav ol {
+                    grid-template-columns: repeat(4, minmax(0, 1fr));
+                }
+
+                .reading-nav a {
+                    grid-template-columns: 1fr;
+                    padding-right: 8px;
+                }
+            }
+
+            @media (max-width: 560px) {
+                .topbar {
+                    top: 0;
+                    padding-inline: 16px;
+                }
+
+                .brand span:last-child {
+                    display: none;
+                }
+
+                .nav {
+                    gap: 2px;
+                }
+
+                .nav a {
+                    padding-inline: 9px;
+                    font-size: 12px;
+                }
+
+                .hero,
+                .design-record,
+                .heterogeneity-copy,
+                .question-shift,
+                .ring-story,
+                .mechanism-inner,
+                .ledger-inner,
+                .reading,
+                .route-next,
+                .references {
+                    width: min(var(--page-width), calc(100vw - 32px));
+                }
+
+                .hero h1 {
+                    font-size: clamp(58px, 18vw, 82px);
+                }
+
+                .hero-summary {
+                    grid-template-columns: 1fr;
+                }
+
+                .ring-plate {
+                    min-height: 500px;
+                    border-radius: 0;
+                }
+
+                .ring-plate::before {
+                    content: "FIG. 01    REV. 03    CONCEPT ONLY";
+                    top: 14px;
+                    left: 12px;
+                }
+
+                .ring-label {
+                    min-width: 82px;
+                    padding: 7px;
+                }
+
+                .ring-label--a { top: 16%; right: 2%; }
+                .ring-label--b { bottom: 25%; right: 0; }
+                .ring-label--c { bottom: 19%; left: 1%; }
+                .ring-label--d { top: 24%; left: 0; }
+
+                .ring-caption {
+                    right: 12px;
+                    bottom: 12px;
+                    left: 12px;
+                    display: grid;
+                    gap: 6px;
+                }
+
+                .ring-caption span {
+                    max-width: none;
+                    text-align: left;
+                }
+
+                .design-record {
+                    grid-template-columns: 1fr;
+                }
+
+                .record-item,
+                .record-item:nth-child(3) {
+                    padding-left: 0;
+                    border-left: 0;
+                }
+
+                .heterogeneity {
+                    height: 190vh;
+                }
+
+                .heterogeneity-copy h2 {
+                    font-size: clamp(54px, 16vw, 76px);
+                }
+
+                .field-key {
+                    display: none;
+                }
+
+                .question-old,
+                .question-new {
+                    font-size: clamp(34px, 10vw, 48px);
+                }
+
+                .step-sketch {
+                    width: 160px;
+                    margin-right: auto;
+                    margin-left: 0;
+                }
+
+                .mechanism-plate {
+                    padding: 18px 10px;
+                    overflow-x: auto;
+                }
+
+                .mechanism-drawing {
+                    width: 940px;
+                }
+
+                .mechanism-notes {
+                    grid-template-columns: 1fr;
+                }
+
+                .mechanism-note,
+                .mechanism-note + .mechanism-note,
+                .mechanism-note:nth-child(n + 3) {
+                    margin: 0;
+                    padding: 16px 0;
+                    border-top: 1px solid var(--line);
+                    border-right: 0;
+                }
+
+                .ledger-row {
+                    grid-template-columns: 1fr;
+                    gap: 10px;
+                }
+
+                .ledger-row > :last-child {
+                    grid-column: auto;
+                }
+
+                .reading-nav ol {
+                    display: flex;
+                    overflow-x: auto;
+                }
+
+                .reading-nav li {
+                    min-width: 116px;
+                }
+
+                .route-next {
+                    grid-template-columns: 1fr;
+                    margin-bottom: 64px;
+                }
+            }
+
+            @media (prefers-reduced-motion: reduce) {
+                *,
+                *::before,
+                *::after {
+                    scroll-behavior: auto !important;
+                    animation-duration: 0.01ms !important;
+                    transition-duration: 0.01ms !important;
+                }
+
+                :root {
+                    --ring-turn: 0deg !important;
+                    --scatter: 0 !important;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="page-progress" aria-hidden="true"><span id="page-progress"></span></div>
+
+        <main class="page">
+            <header class="topbar">
+                <a class="brand" href="project.html" aria-label="CirCure Project home">
+                    <span class="brand-mark" aria-hidden="true"></span>
+                    <span>CirCure Project</span>
+                </a>
+                <nav class="nav" aria-label="Project navigation">
+                    <a href="project.html" aria-current="page">Project</a>
+                    <a href="#build" data-mobile-hide>Design</a>
+                    <a href="#proof" data-mobile-hide>Proof</a>
+                    <a href="index.html">Human Practices</a>
+                    <a href="dry-lab.html" data-mobile-hide>Dry Lab</a>
+                    <a href="wet-lab.html" data-mobile-hide>Wet Lab</a>
+                </nav>
+            </header>
+
+            <section class="hero" id="overview" aria-labelledby="page-title">
+                <div class="hero-copy">
+                    <div class="hero-index">Project description / 2026</div>
+                    <h1 id="page-title">
+                        <span class="line">One ring.</span>
+                        <span class="line line--wine">Many targets.</span>
+                    </h1>
+                    <div class="hero-summary">
+                        <p>
+                            CirCure explores a multi-epitope circular RNA vaccine strategy for TNBC.
+                            The design question is whether antigen breadth can be increased while
+                            construct identity, expression, and presentation remain experimentally testable.
+                        </p>
+                        <a href="#problem" aria-label="Continue to the project problem">↓</a>
+                    </div>
+                </div>
+
+                <figure class="ring-plate" aria-label="Conceptual CirCure circular RNA architecture">
+                    <svg class="hero-ring" viewBox="0 0 620 620" role="img" aria-labelledby="hero-ring-title">
+                        <title id="hero-ring-title">Circular RNA carrying multiple epitope modules</title>
+                        <circle class="ring-shadow" cx="310" cy="310" r="220" />
+                        <circle class="ring-outline" cx="310" cy="310" r="220" />
+                        <circle class="ring-code" cx="310" cy="310" r="220" />
+                        <circle class="ring-code ring-code--wine" cx="310" cy="310" r="220" />
+                        <circle class="inner-orbit" cx="310" cy="310" r="142" />
+                        <path class="cell-core" d="M247 258C278 220 344 213 382 250C420 288 411 353 369 386C329 417 267 404 237 366C207 328 214 298 247 258Z" />
+                        <circle class="node" cx="189" cy="126" r="18" />
+                        <circle class="node-core" cx="189" cy="126" r="6" />
+                        <circle class="node" cx="507" cy="211" r="18" />
+                        <circle class="node-core" cx="507" cy="211" r="6" />
+                        <circle class="node" cx="432" cy="477" r="18" />
+                        <circle class="node-core" cx="432" cy="477" r="6" />
+                        <circle class="node" cx="109" cy="370" r="18" />
+                        <circle class="node-core" cx="109" cy="370" r="6" />
+                    </svg>
+                    <div class="ring-label ring-label--a"><strong>E01</strong><span>candidate epitope</span></div>
+                    <div class="ring-label ring-label--b"><strong>E02</strong><span>candidate epitope</span></div>
+                    <div class="ring-label ring-label--c"><strong>E03</strong><span>candidate epitope</span></div>
+                    <div class="ring-label ring-label--d"><strong>E04</strong><span>candidate epitope</span></div>
+                    <figcaption class="ring-caption">
+                        <strong>Figure 1 | The Living Ring</strong>
+                        <span>Concept map only. Segment order, sequence, and length are not final.</span>
+                    </figcaption>
+                </figure>
+            </section>
+
+            <div class="design-record" aria-label="Current CirCure design record">
+                <div class="record-heading">
+                    <span>Design record</span>
+                    <strong>DR–01</strong>
+                </div>
+                <div class="record-item">
+                    <span>Observation</span>
+                    <strong>TNBC is heterogeneous.</strong>
+                    <p>A single target may not represent every relevant tumor-cell population.</p>
+                </div>
+                <div class="record-item">
+                    <span>Engineering response</span>
+                    <strong>Rank a candidate set.</strong>
+                    <p>Encode multiple selected epitopes while keeping the construct modular and versioned.</p>
+                </div>
+                <div class="record-item">
+                    <span>Open question</span>
+                    <strong>Can every link be measured?</strong>
+                    <p>Circularization, translation, delivery, presentation, response, and safety require separate controls.</p>
+                </div>
+            </div>
+
+            <section class="heterogeneity" id="problem" aria-labelledby="problem-title">
+                <div class="heterogeneity-sticky">
+                    <div class="cell-field" aria-hidden="true">
+                        <span class="cell"></span><span class="cell"></span><span class="cell"></span>
+                        <span class="cell"></span><span class="cell"></span><span class="cell"></span>
+                        <span class="cell"></span><span class="cell"></span><span class="cell"></span>
+                        <span class="cell"></span>
+                    </div>
+                    <div class="heterogeneity-copy">
+                        <p class="kicker">02 / The biological problem</p>
+                        <h2 id="problem-title">TNBC is not <em>one thing.</em></h2>
+                        <p>
+                            Triple-negative breast cancer contains substantial molecular and immune
+                            diversity. A single-antigen strategy can become a fragile promise when
+                            different cells do not present the same target—or stop presenting it.
+                        </p>
+                    </div>
+                    <div class="field-key" aria-hidden="true">
+                        <span><i></i>target variance</span>
+                        <span><i></i>immune context</span>
+                        <span><i></i>escape pressure</span>
+                    </div>
+                </div>
+            </section>
+
+            <section class="question-shift" aria-labelledby="question-title">
+                <div class="question-row">
+                    <span>Question / archived</span>
+                    <p class="question-old">Which single target can carry the whole project?</p>
+                </div>
+                <div class="question-row">
+                    <span>Question / current</span>
+                    <h2 class="question-new" id="question-title">
+                        How do we build a <strong>portfolio of targets</strong> without losing molecular control?
+                    </h2>
+                </div>
+                <div class="question-foot">
+                    <span class="kicker">Design consequence</span>
+                    <p>
+                        Target ranking, construct length, circularization, delivery, antigen presentation,
+                        and safety are coupled decisions. The project must preserve that chain rather than
+                        presenting each discipline as an isolated success.
+                    </p>
+                </div>
+            </section>
+
+            <section class="ring-story" id="build" aria-labelledby="build-title">
+                <div class="story-head">
+                    <div>
+                        <p class="kicker">03 / Build the ring</p>
+                        <h2 id="build-title">Five decisions <em>close the loop.</em></h2>
+                    </div>
+                    <p>
+                        Scroll through the design. The ring is only complete when every biological
+                        claim has a corresponding engineering gate.
+                    </p>
+                </div>
+
+                <div class="story-layout">
+                    <div class="ring-sticky" id="ring-sticky" data-stage="1" aria-hidden="true">
+                        <div class="build-ring-wrap">
+                            <svg class="build-ring" viewBox="0 0 600 600">
+                                <circle class="base" cx="300" cy="300" r="210" />
+                                <circle class="segment segment--1" cx="300" cy="300" r="210" pathLength="502" transform="rotate(-94 300 300)" />
+                                <circle class="segment segment--2" cx="300" cy="300" r="210" pathLength="502" transform="rotate(-94 300 300)" />
+                                <circle class="segment segment--3" cx="300" cy="300" r="210" pathLength="502" transform="rotate(-94 300 300)" />
+                                <circle class="segment segment--4" cx="300" cy="300" r="210" pathLength="502" transform="rotate(-94 300 300)" />
+                                <circle class="segment segment--5" cx="300" cy="300" r="210" pathLength="502" transform="rotate(-94 300 300)" />
+                                <circle class="junction" cx="300" cy="90" r="14" />
+                            </svg>
+                            <div class="ring-core-copy">
+                                <strong>CirCure</strong>
+                                <span id="ring-stage-label">01 / Candidate set</span>
+                            </div>
+                        </div>
+                        <div class="ring-scale"><span>Input / candidate evidence</span><span>Output / testable construct</span></div>
+                    </div>
+
+                    <div class="story-steps">
+                        <article class="story-step is-active" data-stage="1">
+                            <div class="step-meta"><span>Input layer</span><b>01</b></div>
+                            <svg class="step-sketch" viewBox="0 0 184 78" aria-hidden="true">
+                                <path class="sketch-soft" d="M12 63C42 48 67 47 91 38C116 29 135 20 173 12" />
+                                <circle class="sketch-line" cx="28" cy="57" r="8" />
+                                <circle class="sketch-line" cx="73" cy="43" r="8" />
+                                <circle class="sketch-line" cx="118" cy="28" r="8" />
+                                <circle class="sketch-accent" cx="161" cy="15" r="9" />
+                                <text x="17" y="76">04</text><text x="62" y="60">03</text>
+                                <text x="107" y="45">02</text><text x="150" y="35">01</text>
+                            </svg>
+                            <h3>Rank candidates before falling in love with them.</h3>
+                            <p>
+                                Candidate epitopes should be compared through relevance, predicted presentation,
+                                population coverage, safety flags, and redundancy. Computation produces a shortlist;
+                                it does not prove immunogenicity.
+                            </p>
+                            <div class="step-gate"><span>Gate</span><strong>Scoring record → shortlist → candidate-level assay plan</strong></div>
+                        </article>
+
+                        <article class="story-step" data-stage="2">
+                            <div class="step-meta"><span>Sequence layer</span><b>02</b></div>
+                            <svg class="step-sketch" viewBox="0 0 184 78" aria-hidden="true">
+                                <path class="sketch-line" d="M8 37H176" />
+                                <path class="sketch-accent" d="M14 24H45V50H14Z" />
+                                <path class="sketch-line" d="M52 27H78V47H52ZM87 21H121V53H87ZM130 27H171V47H130Z" />
+                                <path class="sketch-soft" d="M45 37H52M78 37H87M121 37H130" />
+                                <text x="16" y="18">ENTRY</text><text x="91" y="16">MODULES</text>
+                            </svg>
+                            <h3>Give every module a reason to exist.</h3>
+                            <p>
+                                Epitope order, linkers, translation entry, cassette length, and replacement rules
+                                should be visible in one versioned construct map. Modularity matters only if one weak
+                                candidate can change without hiding the consequences elsewhere.
+                            </p>
+                            <div class="step-gate"><span>Gate</span><strong>Versioned sequence logic → alternative designs → build record</strong></div>
+                        </article>
+
+                        <article class="story-step" data-stage="3">
+                            <div class="step-meta"><span>RNA layer</span><b>03</b></div>
+                            <svg class="step-sketch" viewBox="0 0 184 78" aria-hidden="true">
+                                <path class="sketch-line" d="M42 39C42 18 60 7 90 7C124 7 143 20 143 40C143 60 124 71 92 71C62 71 42 59 42 39Z" />
+                                <path class="sketch-accent" d="M90 7C99 7 106 8 114 10" />
+                                <path class="sketch-soft" d="M105 1L114 10L104 16" />
+                                <path class="sketch-line" d="M23 39H42M143 40H167" />
+                                <text x="69" y="43">JUNCTION</text>
+                            </svg>
+                            <h3>Close the RNA—and prove that it closed.</h3>
+                            <p>
+                                Circularization is an experimental result, not a visual motif. Product identity,
+                                junction evidence, exonuclease resistance, purity, and linear controls are needed
+                                before stability or translation can be interpreted.
+                            </p>
+                            <div class="step-gate"><span>Gate</span><strong>Identity + RNase R + junction + purity controls</strong></div>
+                        </article>
+
+                        <article class="story-step" data-stage="4">
+                            <div class="step-meta"><span>Delivery layer</span><b>04</b></div>
+                            <svg class="step-sketch" viewBox="0 0 184 78" aria-hidden="true">
+                                <circle class="sketch-line" cx="90" cy="39" r="32" />
+                                <circle class="sketch-soft" cx="90" cy="39" r="21" />
+                                <path class="sketch-accent" d="M73 43C78 27 102 25 109 39C116 53 97 61 83 54C69 47 70 35 79 29" />
+                                <path class="sketch-line" d="M12 39H52M128 39H173" />
+                                <text x="4" y="31">DOSE</text><text x="142" y="31">UPTAKE</text>
+                            </svg>
+                            <h3>Let delivery constrain the design early.</h3>
+                            <p>
+                                Payload size, dose, expression location, innate immune activation, and manufacturing
+                                feasibility determine what the construct can responsibly promise. Delivery is part of
+                                the molecular question—not packaging added later.
+                            </p>
+                            <div class="step-gate"><span>Gate</span><strong>Payload boundary → formulation comparison → uptake readout</strong></div>
+                        </article>
+
+                        <article class="story-step" data-stage="5">
+                            <div class="step-meta"><span>Response layer</span><b>05</b></div>
+                            <svg class="step-sketch" viewBox="0 0 184 78" aria-hidden="true">
+                                <path class="sketch-line" d="M18 61V26H70V61M18 45H70" />
+                                <path class="sketch-accent" d="M30 26L44 14L58 26" />
+                                <path class="sketch-soft" d="M70 43C93 43 97 18 119 18C140 18 143 43 166 43" />
+                                <circle class="sketch-line" cx="144" cy="45" r="23" />
+                                <circle class="sketch-accent" cx="144" cy="45" r="7" />
+                                <text x="16" y="75">PRESENT</text><text x="126" y="75">READ</text>
+                            </svg>
+                            <h3>Connect expression to presentation, then response.</h3>
+                            <p>
+                                Protein expression alone does not establish vaccine function. The project must trace
+                                the route from encoded product to processed peptide, MHC presentation, and an
+                                interpretable candidate-specific immune signal.
+                            </p>
+                            <div class="step-gate"><span>Gate</span><strong>Expression → presentation → response, with safety beside activity</strong></div>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <section class="mechanism" aria-labelledby="mechanism-title">
+                <div class="mechanism-inner">
+                    <div class="mechanism-head">
+                        <div>
+                            <p class="kicker">04 / Proposed biological route</p>
+                            <h2 id="mechanism-title">From code to <em>recognition.</em></h2>
+                        </div>
+                        <p>
+                            This is the project hypothesis in one continuous drawing. Each arrow is a question
+                            that requires its own control; none should be treated as automatic.
+                        </p>
+                    </div>
+
+                    <figure class="mechanism-plate">
+                        <svg class="mechanism-drawing" viewBox="0 0 1160 430" role="img" aria-labelledby="mechanism-drawing-title">
+                            <title id="mechanism-drawing-title">Proposed path from circular RNA to T-cell recognition</title>
+                            <path class="route" d="M200 215H398M516 215H700M812 215H1010" />
+                            <path class="route-accent" d="M250 97C306 97 330 132 330 174" />
+
+                            <circle class="object-wine" cx="145" cy="215" r="84" />
+                            <circle class="object" cx="145" cy="215" r="50" />
+                            <path class="route-accent" d="M116 215A29 29 0 1 0 174 215A29 29 0 1 0 116 215" />
+                            <circle cx="116" cy="190" r="7" fill="#2f6f68" />
+                            <circle cx="169" cy="198" r="7" fill="#d86f4a" />
+                            <circle cx="154" cy="243" r="7" fill="#7a2636" />
+                            <text class="label" x="92" y="330">circRNA</text>
+                            <text class="micro" x="69" y="350">multi-epitope code</text>
+
+                            <path class="object-soft" d="M395 143C426 116 482 116 514 145C548 175 546 237 515 271C483 306 423 301 393 269C362 236 363 171 395 143Z" />
+                            <circle class="object" cx="455" cy="211" r="33" />
+                            <path d="M429 211H481M455 185V237" stroke="#2f6f68" stroke-width="5" stroke-linecap="round" />
+                            <text class="label" x="401" y="330">APC uptake</text>
+                            <text class="micro" x="387" y="350">delivery + expression</text>
+
+                            <path class="object" d="M693 150H812V272H693Z" />
+                            <path class="object-wine" d="M718 198L752 172L786 198V228L752 253L718 228Z" />
+                            <path d="M724 285V310M752 285V310M780 285V310" stroke="#11110f" stroke-width="2" />
+                            <text class="label" x="699" y="350">MHC display</text>
+                            <text class="micro" x="682" y="370">processing + presentation</text>
+
+                            <circle class="object-soft" cx="1041" cy="215" r="86" />
+                            <circle class="object" cx="1041" cy="215" r="31" />
+                            <path d="M1015 166C1028 184 1056 184 1068 166M1015 264C1028 246 1056 246 1068 264" fill="none" stroke="#7a2636" stroke-width="6" stroke-linecap="round" />
+                            <text class="label" x="993" y="330">T cell</text>
+                            <text class="micro" x="956" y="350">candidate-specific readout</text>
+
+                            <text class="micro" x="255" y="197">01 / translated product</text>
+                            <text class="micro" x="548" y="197">02 / processed peptide</text>
+                            <text class="micro" x="840" y="197">03 / recognition</text>
+                        </svg>
+                        <figcaption class="mechanism-notes">
+                            <p class="mechanism-caption">
+                                <strong>Figure 2 | Working hypothesis.</strong>
+                                Proposed route from construct delivery to a candidate-specific T-cell readout.
+                                Each arrow represents a separate claim and therefore needs a separate control.
+                            </p>
+                            <div class="mechanism-note"><span>01 / Encode</span><strong>One construct carries a ranked candidate set.</strong></div>
+                            <div class="mechanism-note"><span>02 / Express</span><strong>The circular product must produce the intended encoded material.</strong></div>
+                            <div class="mechanism-note"><span>03 / Present</span><strong>Expression must be linked to peptide processing and display.</strong></div>
+                            <div class="mechanism-note"><span>04 / Read</span><strong>Activity and safety signals must be interpreted together.</strong></div>
+                        </figcaption>
+                    </figure>
+                </div>
+            </section>
+
+            <section class="ledger" id="proof" aria-labelledby="proof-title">
+                <div class="ledger-inner">
+                    <div class="ledger-head">
+                        <div>
+                            <p class="kicker">05 / Evidence boundary</p>
+                            <h2 id="proof-title">Proof, <em>not promise.</em></h2>
+                        </div>
+                        <p>
+                            The ledger keeps design rationale, planned validation, and unsupported therapeutic
+                            claims visibly separate. Replace these routes with real team records as evidence arrives.
+                        </p>
+                    </div>
+
+                    <div class="ledger-table" role="table" aria-label="CirCure evidence gates">
+                        <div class="ledger-row" role="row">
+                            <span role="cell">G-01</span>
+                            <strong role="cell">The intended RNA product is circular.</strong>
+                            <p role="cell">Product size, RNase R resistance, junction-specific evidence, and purity assessment.</p>
+                            <span class="gate-status" role="cell">planned validation</span>
+                        </div>
+                        <div class="ledger-row" role="row">
+                            <span role="cell">G-02</span>
+                            <strong role="cell">The construct produces its encoded material.</strong>
+                            <p role="cell">Translation readout with linear RNA, negative, and process controls over a defined time course.</p>
+                            <span class="gate-status" role="cell">planned validation</span>
+                        </div>
+                        <div class="ledger-row" role="row">
+                            <span role="cell">G-03</span>
+                            <strong role="cell">Multiple candidates reduce dependence on one target.</strong>
+                            <p role="cell">Transparent ranking plus candidate-level presentation and immunogenicity evidence.</p>
+                            <span class="gate-status gate-status--rationale" role="cell">design rationale</span>
+                        </div>
+                        <div class="ledger-row" role="row">
+                            <span role="cell">G-04</span>
+                            <strong role="cell">CirCure is safe and therapeutically effective.</strong>
+                            <p role="cell">Requires extensive preclinical delivery, dose, efficacy, off-target, and safety studies.</p>
+                            <span class="gate-status gate-status--boundary" role="cell">not yet claimed</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="reading" id="reading" aria-label="Project reading">
+                <div class="reading-layout">
+                    <aside class="reading-nav" aria-label="Project reading navigation">
+                        <h2>Read the project</h2>
+                        <ol>
+                            <li><a href="#read-need"><span>01</span>Why TNBC</a></li>
+                            <li><a href="#read-platform"><span>02</span>Why circRNA</a></li>
+                            <li><a href="#read-construct"><span>03</span>Construct logic</a></li>
+                            <li><a href="#read-boundary"><span>04</span>Boundaries</a></li>
+                        </ol>
+                    </aside>
+
+                    <div class="reading-article">
+                        <article class="reading-section" id="read-need">
+                            <div>
+                                <p class="kicker">01 / Why TNBC</p>
+                                <h3>A disease label that contains many biological states.</h3>
+                                <p>
+                                    TNBC lacks expression of the three receptors used to define several other breast
+                                    cancer treatment strategies, yet that shared clinical definition does not make the
+                                    disease biologically uniform. CirCure therefore begins with diversity as a design
+                                    constraint rather than a problem to mention after choosing a target.<sup>[1]</sup>
+                                </p>
+                            </div>
+                            <aside class="margin-note">
+                                <span>Project response</span>
+                                <p>Use explicit inclusion, exclusion, and replacement rules for a ranked epitope portfolio.</p>
+                            </aside>
+                        </article>
+
+                        <article class="reading-section" id="read-platform">
+                            <div>
+                                <p class="kicker">02 / Why circRNA</p>
+                                <h3>A closed molecule creates a testable expression hypothesis.</h3>
+                                <p>
+                                    Circular RNA has been investigated as a stable antigen-expression platform in
+                                    preclinical systems. For CirCure, that literature motivates a comparison—not a
+                                    shortcut. Molecular stability, translation, immune activation, delivery, and
+                                    therapeutic benefit remain different claims with different evidence requirements.<sup>[3,4]</sup>
+                                </p>
+                            </div>
+                            <aside class="margin-note">
+                                <span>Comparison required</span>
+                                <p>Identity, purity, translation magnitude, expression duration, and innate immune response.</p>
+                            </aside>
+                        </article>
+
+                        <article class="reading-section" id="read-construct">
+                            <div>
+                                <p class="kicker">03 / Construct logic</p>
+                                <h3>The sequence should read like a decision record.</h3>
+                                <p>
+                                    The final project documentation must show the actual translation element,
+                                    epitope order, linker logic, circularization strategy, sequence versions, and
+                                    controls. The ring shown here is the information architecture for those records;
+                                    it is not a substitute for the sequence or Registry documentation.
+                                </p>
+                            </div>
+                            <aside class="margin-note">
+                                <span>Replace before publication</span>
+                                <p>Candidate names, scoring table, sequence map, construct versions, Registry links, and real assay readouts.</p>
+                            </aside>
+                        </article>
+
+                        <article class="reading-section" id="read-boundary">
+                            <div>
+                                <p class="kicker">04 / Boundaries</p>
+                                <h3>The unknowns belong inside the project story.</h3>
+                                <p>
+                                    Delivery feasibility, long-term immune safety, manufacturing, population coverage,
+                                    affordability, and clinical workflow remain open. The Human Practices page records
+                                    how clinical, technical, ethical, and access feedback turned several of these
+                                    unknowns into design constraints and explicit no-go claims.
+                                </p>
+                            </div>
+                            <aside class="margin-note">
+                                <span>Current claim</span>
+                                <p>A modular, traceable design framework for a multi-epitope circRNA vaccine concept.</p>
+                            </aside>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <section class="route-next" aria-labelledby="route-title">
+                <div>
+                    <p class="kicker">Next / Integrated Human Practices</p>
+                    <h2 id="route-title">The world changed <em>the ring.</em></h2>
+                    <p>
+                        Follow every clinical, technical, ethical, and access concern to the design
+                        decision it created—and the question that still remains open.
+                    </p>
+                </div>
+                <a class="route-arrow" href="index.html" aria-label="Open Human Practices page">↗</a>
+            </section>
+
+            <section class="references" aria-label="Selected references">
+                <details>
+                    <summary>Selected scientific and design references</summary>
+                    <ol class="reference-list">
+                        <li id="ref-1">
+                            Bianchini et al. Triple-negative breast cancer: challenges and opportunities of a heterogeneous disease.
+                            <a href="https://pubmed.ncbi.nlm.nih.gov/27184417/" target="_blank" rel="noreferrer">Nature Reviews Clinical Oncology, 2016</a>.
+                        </li>
+                        <li id="ref-2">
+                            Lee et al. Immunoprevention of triple-negative breast cancer with a novel multivalent vaccine.
+                            <a href="https://pubmed.ncbi.nlm.nih.gov/40969744/" target="_blank" rel="noreferrer">Breast Cancer Research, 2025</a>.
+                        </li>
+                        <li id="ref-3">
+                            Liu et al. Small circular RNAs as vaccines for cancer immunotherapy.
+                            <a href="https://www.nature.com/articles/s41551-025-01344-5" target="_blank" rel="noreferrer">Nature Biomedical Engineering, 2025</a>.
+                        </li>
+                        <li id="ref-4">
+                            Jia et al. Circular RNA-based neoantigen vaccine for hepatocellular carcinoma immunotherapy.
+                            <a href="https://pubmed.ncbi.nlm.nih.gov/39081513/" target="_blank" rel="noreferrer">Molecular Cancer, 2024</a>.
+                        </li>
+                        <li id="ref-5">
+                            iGEM Competition. Project awards and Best Wiki evaluation guidance.
+                            <a href="https://competition.igem.org/judging/project-prizes" target="_blank" rel="noreferrer">Official judging documentation</a>.
+                        </li>
+                    </ol>
+                </details>
+            </section>
+        </main>
+
+        <button class="back-to-top" type="button" aria-label="Back to top">↑</button>
+
+        <script>
+            const root = document.documentElement;
+            const hero = document.querySelector(".hero");
+            const heterogeneity = document.querySelector(".heterogeneity");
+            const pageProgress = document.querySelector("#page-progress");
+            const topbar = document.querySelector(".topbar");
+            const backToTop = document.querySelector(".back-to-top");
+            const ringSticky = document.querySelector("#ring-sticky");
+            const ringStageLabel = document.querySelector("#ring-stage-label");
+            const storySteps = [...document.querySelectorAll(".story-step")];
+            const readingSections = [...document.querySelectorAll(".reading-section")];
+            const readingLinks = [...document.querySelectorAll(".reading-nav a")];
+            const stageLabels = [
+                "01 / Candidate set",
+                "02 / Sequence logic",
+                "03 / Circular product",
+                "04 / Delivery boundary",
+                "05 / Response gate",
+            ];
+            let frame = 0;
+
+            function clamp(value, min, max) {
+                return Math.min(max, Math.max(min, value));
+            }
+
+            function updateScrollState() {
+                const scrollY = window.scrollY;
+                const documentHeight = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+                const pageRatio = clamp(scrollY / documentHeight, 0, 1);
+                pageProgress.style.transform = `scaleX(${pageRatio})`;
+                topbar.classList.toggle("is-compact", scrollY > 40);
+                backToTop.classList.toggle("is-visible", scrollY > window.innerHeight * 0.8);
+
+                if (hero) {
+                    const heroRatio = clamp(scrollY / Math.max(1, hero.offsetHeight), 0, 1);
+                    root.style.setProperty("--ring-turn", `${heroRatio * 38}deg`);
+                }
+
+                if (heterogeneity) {
+                    const rect = heterogeneity.getBoundingClientRect();
+                    const travel = Math.max(1, heterogeneity.offsetHeight - window.innerHeight);
+                    const ratio = clamp(-rect.top / travel, 0, 1);
+                    root.style.setProperty("--scatter", ratio.toFixed(3));
+                }
+
+                frame = 0;
+            }
+
+            function requestScrollUpdate() {
+                if (!frame) frame = requestAnimationFrame(updateScrollState);
+            }
+
+            const storyObserver = new IntersectionObserver(
+                (entries) => {
+                    const visible = entries
+                        .filter((entry) => entry.isIntersecting)
+                        .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+                    if (!visible) return;
+
+                    const stage = Number(visible.target.dataset.stage);
+                    ringSticky.dataset.stage = String(stage);
+                    ringStageLabel.textContent = stageLabels[stage - 1];
+                    storySteps.forEach((step) => step.classList.toggle("is-active", step === visible.target));
+                },
+                { threshold: [0.25, 0.5, 0.75], rootMargin: "-18% 0px -38% 0px" },
+            );
+
+            storySteps.forEach((step) => storyObserver.observe(step));
+
+            const readingObserver = new IntersectionObserver(
+                (entries) => {
+                    const visible = entries
+                        .filter((entry) => entry.isIntersecting)
+                        .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+                    if (!visible) return;
+
+                    readingLinks.forEach((link) => {
+                        link.classList.toggle(
+                            "is-active",
+                            link.getAttribute("href") === `#${visible.target.id}`,
+                        );
+                    });
+                },
+                { threshold: [0.22, 0.48], rootMargin: "-20% 0px -58% 0px" },
+            );
+
+            readingSections.forEach((section) => readingObserver.observe(section));
+
+            backToTop.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
+            window.addEventListener("scroll", requestScrollUpdate, { passive: true });
+            window.addEventListener("resize", requestScrollUpdate);
+            updateScrollState();
+        </script>
+    </body>
+</html>

@@ -1,0 +1,660 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta
+            name="description"
+            content="CirCure Dry Lab manuscript prototype: a traceable model narrative from research question to wet-lab decision."
+        />
+        <title>CirCure | Dry Lab Model</title>
+        <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='13' fill='none' stroke='%23151411' stroke-width='3'/%3E%3Ccircle cx='13' cy='13' r='5' fill='%2379283a'/%3E%3Ccircle cx='21' cy='21' r='3' fill='%232f6f68'/%3E%3C/svg%3E" />
+        <link rel="stylesheet" href="dry-lab-paper.css" />
+    </head>
+    <body>
+        <div class="reading-progress" aria-hidden="true"><span></span></div>
+
+        <div class="page-shell">
+            <header class="topbar">
+                <a class="brand" href="index.html" aria-label="CirCure Human Practices home">
+                    <span class="brand-mark" aria-hidden="true"></span>
+                    <span>CirCure</span>
+                </a>
+                <nav class="global-nav" aria-label="Primary navigation">
+                    <a href="index.html">Human Practices</a>
+                    <a href="dry-lab.html" aria-current="page">Dry Lab</a>
+                    <a href="wet-lab.html">Wet Lab</a>
+                </nav>
+            </header>
+
+            <main>
+                <section class="cover" aria-labelledby="page-title">
+                    <div class="cover-copy">
+                        <p class="eyebrow">Dry Lab · Model manuscript · Working draft</p>
+                        <h1 id="page-title">Modeling<br />CirCure</h1>
+                        <p class="cover-deck">
+                            A traceable computational framework for selecting vaccine candidates,
+                            evaluating circular RNA design, and planning experiments.
+                        </p>
+                    </div>
+
+                    <aside class="cover-meta" aria-label="Document metadata">
+                        <div class="status-stamp">
+                            <span>Evidence maturity</span>
+                            <strong>Proposed</strong>
+                            <small>Architecture only · team data not supplied</small>
+                        </div>
+                        <dl>
+                            <div><dt>Document</dt><dd>DL–01</dd></div>
+                            <div><dt>Version</dt><dd>0.4 · evidence-first prototype</dd></div>
+                            <div><dt>Models</dt><dd>3 proposed modules</dd></div>
+                            <div><dt>Updated</dt><dd>15 July 2026</dd></div>
+                        </dl>
+                    </aside>
+                </section>
+
+                <section class="abstract-band" aria-labelledby="abstract-heading">
+                    <div class="abstract-label">
+                        <p class="section-number">00</p>
+                        <h2 id="abstract-heading">Abstract</h2>
+                    </div>
+                    <div class="abstract-copy">
+                        <p class="abstract-lead">
+                            CirCure requires computational evidence at three connected decisions:
+                            which epitopes deserve experimental attention, whether a circular RNA
+                            construct is structurally plausible, and which expression conditions
+                            should be tested first.
+                        </p>
+                        <p>
+                            This page is an information-architecture prototype, not a scientific
+                            results claim. It demonstrates how the final wiki can document data,
+                            assumptions, equations, parameter provenance, validation, uncertainty,
+                            and the exact design decision produced by each model. Placeholder panels
+                            remain intentionally empty until the team provides citable inputs.
+                        </p>
+                        <div class="contribution-line" aria-label="Proposed model contributions">
+                            <a href="#model-one">01 · Candidate prioritisation</a>
+                            <a href="#model-two">02 · Structural assessment</a>
+                            <a href="#model-three">03 · Dynamic prediction</a>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="judge-brief" class="judge-brief" aria-labelledby="judge-brief-heading">
+                    <div class="judge-brief-heading">
+                        <div>
+                            <p class="eyebrow">2026 Best Model · 30-second evidence route</p>
+                            <h2 id="judge-brief-heading">Modeling evidence at a glance</h2>
+                        </div>
+                        <p>
+                            The four panels follow the official ballot questions and connect each
+                            criterion to the relevant evidence in the manuscript.
+                        </p>
+                    </div>
+
+                    <div class="evidence-strip" aria-label="Best Model rubric evidence map">
+                        <a href="#architecture">
+                            <span class="evidence-index">Q1 · Approach</span>
+                            <h3>Why these models?</h3>
+                            <p>Three question-led modules, with assumptions, equations and method provenance.</p>
+                            <small>Inspect architecture →</small>
+                        </a>
+                        <a href="#iteration">
+                            <span class="evidence-index">Q2 · Design impact</span>
+                            <h3>What did they change?</h3>
+                            <p>A decision ledger will connect each prediction to a retained, revised or rejected design.</p>
+                            <small>Inspect decisions →</small>
+                        </a>
+                        <a href="#model-three">
+                            <span class="evidence-index">Q3 · Data</span>
+                            <h3>How were they tested?</h3>
+                            <p>Observed data, fitted predictions, uncertainty and failure cases belong in one view.</p>
+                            <small>Inspect validation →</small>
+                        </a>
+                        <a href="#reproducibility">
+                            <span class="evidence-index">Q4 · Example for others</span>
+                            <h3>Can others reproduce it?</h3>
+                            <p>Data, code, environment, one-command protocol and ownership must be released.</p>
+                            <small>Inspect reuse package →</small>
+                        </a>
+                    </div>
+
+                    <div class="judge-route">
+                        <div>
+                            <strong>Fast route</strong>
+                            <p>Architecture → evidence matrix → model summaries → Wet–Dry iteration → reuse package.</p>
+                        </div>
+                        <details class="reader-glossary">
+                            <summary>Reader glossary for a generalist judge <span>Show</span></summary>
+                            <dl>
+                                <div><dt>circRNA</dt><dd>A covalently closed RNA molecule; define the project-specific reason for using it.</dd></div>
+                                <div><dt>Epitope</dt><dd>A molecular feature recognised by an immune receptor; specify the class used here.</dd></div>
+                                <div><dt>ODE</dt><dd>An ordinary differential equation used to describe change through time.</dd></div>
+                                <div><dt>Validation</dt><dd>An explicit comparison between model output and independent experimental or relevant data.</dd></div>
+                            </dl>
+                        </details>
+                    </div>
+                </section>
+
+                <div class="manuscript-layout">
+                    <aside class="contents" aria-label="Model manuscript contents">
+                        <button class="contents-toggle" type="button" aria-expanded="false">
+                            <span>Contents</span><span aria-hidden="true">＋</span>
+                        </button>
+                        <div class="contents-panel">
+                            <p class="contents-title">Contents</p>
+                            <nav>
+                                <a href="#judge-brief"><span>J0</span> Evidence brief</a>
+                                <a href="#architecture"><span>01</span> Model architecture</a>
+                                <a href="#model-one"><span>02</span> Epitope prioritisation</a>
+                                <a href="#model-two"><span>03</span> Structural assessment</a>
+                                <a href="#model-three"><span>04</span> Expression dynamics</a>
+                                <a href="#iteration"><span>05</span> Wet–Dry iteration</a>
+                                <a href="#reproducibility"><span>06</span> Reproducibility</a>
+                                <a href="#limitations"><span>07</span> Limitations</a>
+                                <a href="#references"><span>08</span> References</a>
+                            </nav>
+                            <div class="appendix-control">
+                                <button type="button" data-fold-control>Open technical appendices</button>
+                                <p>Methods stay readable even when appendices are closed.</p>
+                            </div>
+                        </div>
+                    </aside>
+
+                    <article class="manuscript">
+                        <section id="architecture" class="paper-section">
+                            <header class="section-heading">
+                                <p class="section-number">01</p>
+                                <div>
+                                    <p class="section-kicker">System overview</p>
+                                    <h2>Model architecture</h2>
+                                    <p class="section-summary">
+                                        Three models answer three different design questions. Their
+                                        outputs become experiment-ready decisions, not isolated figures.
+                                    </p>
+                                </div>
+                            </header>
+
+                            <div class="research-question">
+                                <span>Central question</span>
+                                <p>
+                                    How can computation reduce the number of uncertain CirCure designs
+                                    entering Wet Lab while preserving a transparent record of why each
+                                    candidate was kept, revised, or rejected?
+                                </p>
+                            </div>
+
+                            <figure class="paper-figure architecture-figure">
+                                <div class="architecture-flow" aria-label="Three connected model modules">
+                                    <article class="flow-node">
+                                        <span>Model I</span>
+                                        <strong>Prioritise</strong>
+                                        <p>Rank candidate epitopes from traceable evidence.</p>
+                                        <small>Output · candidate shortlist</small>
+                                    </article>
+                                    <div class="flow-arrow" aria-hidden="true">→</div>
+                                    <article class="flow-node">
+                                        <span>Model II</span>
+                                        <strong>Assess</strong>
+                                        <p>Compare structural plausibility of circRNA designs.</p>
+                                        <small>Output · construct variants</small>
+                                    </article>
+                                    <div class="flow-arrow" aria-hidden="true">→</div>
+                                    <article class="flow-node">
+                                        <span>Model III</span>
+                                        <strong>Predict</strong>
+                                        <p>Estimate expression dynamics and informative time points.</p>
+                                        <small>Output · assay plan</small>
+                                    </article>
+                                </div>
+                                <div class="wet-return">
+                                    <span>Wet Lab evidence</span>
+                                    <div aria-hidden="true"></div>
+                                    <p>measured data · failed constructs · revised priors</p>
+                                </div>
+                                <figcaption>
+                                    <b>Figure 1.</b> Proposed CirCure model architecture. The return path is
+                                    essential: experimental evidence revises model assumptions and the next
+                                    design round. Replace module labels if the final scientific workflow differs.
+                                </figcaption>
+                            </figure>
+
+                            <div class="reading-note">
+                                <strong>Evidence maturity.</strong>
+                                <div>
+                                    <p>Every claim advances only when the corresponding evidence exists. This prototype is currently at the proposed stage.</p>
+                                    <div class="status-legend" aria-label="Evidence maturity stages">
+                                        <span><b class="tag proposed">Proposed</b> method scoped</span>
+                                        <span><b class="tag modeled">Modeled</b> output generated</span>
+                                        <span><b class="tag validated">Validated</b> independently checked</span>
+                                        <span><b class="tag adopted">Design adopted</b> project decision changed</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <h3>1.1 Claim-to-evidence matrix</h3>
+                            <p>
+                                Judges score claims, not page length. Each target claim therefore needs
+                                a model output, independent evidence, and a recorded project decision.
+                            </p>
+                            <div class="table-wrap" role="region" aria-label="Claim to evidence matrix" tabindex="0">
+                                <table class="evidence-matrix">
+                                    <caption>Table 1. Target claims and the evidence required before wiki freeze.</caption>
+                                    <thead><tr><th>Target claim</th><th>Model evidence</th><th>Independent check</th><th>Project consequence</th><th>Status</th></tr></thead>
+                                    <tbody>
+                                        <tr><td>Prioritisation reduces the candidate space without hiding safety trade-offs.</td><td>Ranked candidates, score decomposition and sensitivity.</td><td>Literature benchmark or held-out labels.</td><td>Named candidates retained or excluded.</td><td><span class="tag proposed">Proposed</span></td></tr>
+                                        <tr><td>A selected circRNA design is preferable under defined structural criteria.</td><td>Like-for-like variant comparison.</td><td>Orthogonal predictor or laboratory readout.</td><td>Construct selected, revised or rejected.</td><td><span class="tag proposed">Proposed</span></td></tr>
+                                        <tr><td>Dynamic modelling identifies a more informative experiment.</td><td>Fitted trajectory, uncertainty and sensitivity.</td><td>Independent time point or replicate.</td><td>Sampling time, condition or dose changed.</td><td><span class="tag proposed">Proposed</span></td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </section>
+
+                        <section id="model-one" class="paper-section model-chapter">
+                            <header class="section-heading">
+                                <p class="section-number">02</p>
+                                <div>
+                                    <p class="section-kicker">Model I · Candidate space</p>
+                                    <h2>Epitope prioritisation</h2>
+                                    <p class="section-summary">
+                                        Convert heterogeneous immunological evidence into an auditable shortlist
+                                        rather than a single opaque “best” sequence.
+                                    </p>
+                                </div>
+                            </header>
+
+                            <div class="chapter-meta">
+                                <div><span>Input</span><strong>Candidate sequences + cited annotations</strong></div>
+                                <div><span>Output</span><strong>Ranked shortlist + exclusion reasons</strong></div>
+                                <div><span>Validation</span><strong>Literature benchmark + Wet Lab response</strong></div>
+                            </div>
+
+                            <h3>2.1 Research question</h3>
+                            <p>
+                                Which candidate epitopes best balance intended immune recognition,
+                                population relevance, manufacturability, and avoidable safety risks?
+                                The final page should name the decision threshold before showing the ranking.
+                            </p>
+
+                            <h3>2.2 Data and preprocessing</h3>
+                            <p>
+                                A winning Model page treats its dataset as part of the method. Each source
+                                should record version, retrieval date, filters, duplicates, missing values,
+                                and transformations. The table below is a required-data ledger, not a claim
+                                that these inputs already exist in the repository.
+                            </p>
+
+                            <div class="table-wrap" role="region" aria-label="Required input data ledger" tabindex="0">
+                                <table>
+                                    <caption>Table 2. Required data provenance for candidate prioritisation.</caption>
+                                    <thead>
+                                        <tr><th>Evidence field</th><th>Source / version</th><th>Transformation</th><th>Status</th></tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr><td>Sequence identity</td><td>Team dataset · version needed</td><td>Deduplicate and align</td><td><span class="tag proposed">Proposed</span></td></tr>
+                                        <tr><td>Immunogenicity evidence</td><td>Cited predictor or assay</td><td>Calibrate score direction</td><td><span class="tag proposed">Proposed</span></td></tr>
+                                        <tr><td>Population coverage</td><td>Cited HLA frequency source</td><td>Map alleles and geography</td><td><span class="tag proposed">Proposed</span></td></tr>
+                                        <tr><td>Safety / similarity screen</td><td>Cited database and date</td><td>Define exclusion threshold</td><td><span class="tag proposed">Proposed</span></td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <h3>2.3 Proposed scoring formulation</h3>
+                            <p>
+                                If the team uses a multi-criteria score, publish the normalized terms and
+                                weight rationale. A schematic formulation could take the following form;
+                                it must be replaced if the actual method is different.
+                            </p>
+
+                            <div class="equation" role="img" aria-label="Candidate score equals weighted benefits minus weighted risks">
+                                <span class="equation-label">Eq. 1</span>
+                                <div>S<sub>i</sub> = w<sub>I</sub>I<sub>i</sub> + w<sub>C</sub>C<sub>i</sub> + w<sub>P</sub>P<sub>i</sub> − w<sub>A</sub>A<sub>i</sub> − w<sub>T</sub>T<sub>i</sub></div>
+                            </div>
+                            <p class="equation-note">
+                                Here, <i>I</i>, <i>C</i>, and <i>P</i> represent proposed benefit terms;
+                                <i>A</i> and <i>T</i> represent proposed risk terms. Define every term,
+                                range, unit, normalization, and weight source in the final manuscript.
+                            </p>
+
+                            <details class="paper-fold technical-fold">
+                                <summary>
+                                    <span><b>Technical appendix 2A</b> · Assumptions and weight rationale</span>
+                                    <span class="fold-action">Show details</span>
+                                </summary>
+                                <div class="fold-body">
+                                    <ol>
+                                        <li>Scores must be comparable only after an explicit normalization rule.</li>
+                                        <li>Missing evidence must not silently become a neutral score.</li>
+                                        <li>Weight selection requires either literature support, expert elicitation, or sensitivity analysis.</li>
+                                        <li>Hard safety exclusions should occur before ranking when scientifically justified.</li>
+                                    </ol>
+                                    <p class="placeholder-callout">Insert actual assumptions and cite their sources.</p>
+                                </div>
+                            </details>
+
+                            <h3>2.4 Validation and decision output</h3>
+                            <div class="result-grid">
+                                <figure class="paper-figure result-placeholder">
+                                    <div class="plot-frame">
+                                        <div class="plot-y">Observed benchmark</div>
+                                        <div class="plot-area">
+                                            <span>Insert cross-validation or benchmark plot</span>
+                                            <i class="axis-x"></i><i class="axis-y"></i>
+                                        </div>
+                                        <div class="plot-x">Model score</div>
+                                    </div>
+                                    <figcaption><b>Figure 2.</b> Reserved for validation against a held-out or literature-supported benchmark; report sample count, data split, metric, and uncertainty.</figcaption>
+                                </figure>
+                                <aside class="decision-box">
+                                    <span>Decision record · proposed</span>
+                                    <h4>What changed in Wet Lab?</h4>
+                                    <p>State which candidates were retained or removed, the threshold used, and the experimental cost or uncertainty reduced.</p>
+                                </aside>
+                            </div>
+                            <div class="evidence-checkpoint">
+                                <span>Evidence summary · Model I</span>
+                                <div><strong>Result + validation</strong><p>Show the shortlist, score decomposition, benchmark performance, and weight sensitivity.</p></div>
+                                <div><strong>Design decision</strong><p>Name what entered Wet Lab, what was removed, and why.</p></div>
+                                <div><strong>Confidence + failure</strong><p>State robust rankings, failed assumptions, and the revision they triggered.</p></div>
+                            </div>
+                        </section>
+
+                        <section id="model-two" class="paper-section model-chapter">
+                            <header class="section-heading">
+                                <p class="section-number">03</p>
+                                <div>
+                                    <p class="section-kicker">Model II · Construct space</p>
+                                    <h2>circRNA structural assessment</h2>
+                                    <p class="section-summary">
+                                        Compare construct variants using interpretable structural features and
+                                        preserve the evidence behind each design choice.
+                                    </p>
+                                </div>
+                            </header>
+
+                            <div class="chapter-meta">
+                                <div><span>Input</span><strong>Candidate construct sequences</strong></div>
+                                <div><span>Output</span><strong>Structural comparison + flags</strong></div>
+                                <div><span>Validation</span><strong>Orthogonal tools + laboratory readout</strong></div>
+                            </div>
+
+                            <h3>3.1 Method overview</h3>
+                            <p>
+                                The page should distinguish biological questions from software outputs.
+                                Minimum free energy, ensemble diversity, local accessibility, and junction
+                                behaviour are possible measurements—not conclusions by themselves. Each metric
+                                needs a stated design implication and uncertainty boundary.
+                            </p>
+
+                            <figure class="paper-figure method-plate">
+                                <div class="method-steps">
+                                    <div><span>01</span><strong>Generate variants</strong><p>Record every sequence-level change.</p></div>
+                                    <div><span>02</span><strong>Predict structure</strong><p>Store tool, version, flags, and seed.</p></div>
+                                    <div><span>03</span><strong>Extract features</strong><p>Define interpretable comparison metrics.</p></div>
+                                    <div><span>04</span><strong>Apply rule</strong><p>Keep, revise, or reject with rationale.</p></div>
+                                </div>
+                                <figcaption><b>Figure 3.</b> Structural assessment workflow. Tool names belong in Methods; the figure focuses on evidence flow.</figcaption>
+                            </figure>
+
+                            <h3>3.2 Feature and threshold ledger</h3>
+                            <div class="table-wrap" role="region" aria-label="Structural feature ledger" tabindex="0">
+                                <table>
+                                    <caption>Table 3. Structural features requiring team-defined interpretation.</caption>
+                                    <thead><tr><th>Feature</th><th>Biological interpretation</th><th>Selection rule</th><th>Uncertainty</th></tr></thead>
+                                    <tbody>
+                                        <tr><td>Global stability metric</td><td>Define what stability means for this construct</td><td>Threshold needed</td><td>Tool/model dependent</td></tr>
+                                        <tr><td>Junction accessibility</td><td>Relate local structure to intended process</td><td>Window needed</td><td>Sequence-context dependent</td></tr>
+                                        <tr><td>Ensemble diversity</td><td>Explain whether flexibility is helpful or harmful</td><td>Comparison rule needed</td><td>Temperature/parameter dependent</td></tr>
+                                        <tr><td>Off-target motif screen</td><td>Define risk and database coverage</td><td>Exclusion rule needed</td><td>Database incompleteness</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <details class="paper-fold technical-fold">
+                                <summary>
+                                    <span><b>Technical appendix 3A</b> · Command, environment, and full outputs</span>
+                                    <span class="fold-action">Show details</span>
+                                </summary>
+                                <div class="fold-body code-ledger">
+                                    <div><span>Software</span><code>to be supplied</code></div>
+                                    <div><span>Version</span><code>to be supplied</code></div>
+                                    <div><span>Command</span><code>to be supplied</code></div>
+                                    <div><span>Environment</span><code>to be supplied</code></div>
+                                    <div><span>Output archive</span><code>to be linked</code></div>
+                                </div>
+                            </details>
+
+                            <h3>3.3 Results should compare variants, not decorate them</h3>
+                            <div class="variant-comparison">
+                                <article><span>Variant A</span><div class="structure-placeholder" aria-hidden="true"></div><p>Reserved for team prediction and interpretation.</p></article>
+                                <article><span>Variant B</span><div class="structure-placeholder structure-placeholder--b" aria-hidden="true"></div><p>Reserved for team prediction and interpretation.</p></article>
+                                <article class="comparison-decision"><span>Decision</span><strong>No selection without evidence</strong><p>Insert the actual comparison, uncertainty, and construct decision.</p></article>
+                            </div>
+                            <p class="figure-caption"><b>Figure 4.</b> Layout reserved for a like-for-like comparison; report tool versions, comparison rule, and orthogonal validation.</p>
+                            <div class="evidence-checkpoint">
+                                <span>Evidence summary · Model II</span>
+                                <div><strong>Result + validation</strong><p>Show the variant comparison beside an orthogonal tool or relevant laboratory measurement.</p></div>
+                                <div><strong>Design decision</strong><p>Name the construct retained, revised, or rejected and the rule applied.</p></div>
+                                <div><strong>Confidence + failure</strong><p>Report tool disagreement, failed criteria, and sequence-context limitations.</p></div>
+                            </div>
+                        </section>
+
+                        <section id="model-three" class="paper-section model-chapter">
+                            <header class="section-heading">
+                                <p class="section-number">04</p>
+                                <div>
+                                    <p class="section-kicker">Model III · Time and dose</p>
+                                    <h2>Expression and immune dynamics</h2>
+                                    <p class="section-summary">
+                                        Use a minimal dynamic model to identify informative measurements and testable
+                                        behaviours—not to imply clinical performance beyond available evidence.
+                                    </p>
+                                </div>
+                            </header>
+
+                            <div class="chapter-meta">
+                                <div><span>Input</span><strong>Time-course measurements</strong></div>
+                                <div><span>Output</span><strong>Parameter estimates + assay timing</strong></div>
+                                <div><span>Validation</span><strong>Observed-versus-predicted curves</strong></div>
+                            </div>
+
+                            <h3>4.1 Minimal system</h3>
+                            <p>
+                                Begin with the smallest model that can answer the experimental question. A
+                                schematic three-state system is shown only to reserve the final equation layout.
+                                The team must replace species and kinetics with its actual biological mechanism.
+                            </p>
+
+                            <div class="equation-stack" aria-label="Proposed schematic ordinary differential equations">
+                                <div><span>Eq. 2</span><p>dm/dt = k<sub>syn</sub> − k<sub>deg</sub>m</p></div>
+                                <div><span>Eq. 3</span><p>dp/dt = k<sub>tl</sub>m − k<sub>p</sub>p</p></div>
+                                <div><span>Eq. 4</span><p>dr/dt = f(p, θ) − k<sub>r</sub>r</p></div>
+                            </div>
+                            <p class="equation-note">
+                                <i>m</i>, <i>p</i>, and <i>r</i> are placeholders for construct abundance,
+                                translated product, and a measurable response. Do not publish this system unless
+                                it matches the final mechanism and data.
+                            </p>
+
+                            <details class="paper-fold technical-fold">
+                                <summary>
+                                    <span><b>Technical appendix 4A</b> · Parameters, units, bounds, and provenance</span>
+                                    <span class="fold-action">Show details</span>
+                                </summary>
+                                <div class="fold-body">
+                                    <div class="table-wrap" role="region" aria-label="Dynamic model parameter ledger" tabindex="0">
+                                        <table>
+                                            <caption>Table 4. Parameter ledger template.</caption>
+                                            <thead><tr><th>Symbol</th><th>Meaning</th><th>Unit</th><th>Value / bounds</th><th>Source</th></tr></thead>
+                                            <tbody>
+                                                <tr><td>k<sub>syn</sub></td><td>Effective synthesis term</td><td>Define</td><td>Fit / cite</td><td>Required</td></tr>
+                                                <tr><td>k<sub>deg</sub></td><td>Construct loss rate</td><td>time⁻¹</td><td>Fit / cite</td><td>Required</td></tr>
+                                                <tr><td>k<sub>tl</sub></td><td>Effective translation rate</td><td>Define</td><td>Fit / cite</td><td>Required</td></tr>
+                                                <tr><td>θ</td><td>Response parameters</td><td>Define</td><td>Fit / cite</td><td>Required</td></tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </details>
+
+                            <h3>4.2 Fit, validate, then interpret</h3>
+                            <figure class="paper-figure validation-plate">
+                                <div class="validation-chart">
+                                    <div class="chart-label chart-label--y">Measured response</div>
+                                    <div class="chart-field">
+                                        <div class="chart-grid"></div>
+                                        <div class="pending-line"><span>Reserved for time-course data</span></div>
+                                    </div>
+                                    <div class="chart-label chart-label--x">Time</div>
+                                </div>
+                                <div class="validation-legend">
+                                    <span><i class="legend-dot"></i> Observed data</span>
+                                    <span><i class="legend-line"></i> Model prediction</span>
+                                    <span><i class="legend-band"></i> Uncertainty interval</span>
+                                </div>
+                                <figcaption><b>Figure 5.</b> Reserved for observed data, fitted prediction, and uncertainty; report sample count, error definition, fit metric, fitting data, and independent validation data.</figcaption>
+                            </figure>
+
+                            <div class="two-column-text">
+                                <div>
+                                    <h3>4.3 Sensitivity</h3>
+                                    <p>Report which parameters control the decision, the sampled range, method, and whether rankings are robust.</p>
+                                </div>
+                                <div>
+                                    <h3>4.4 Experimental decision</h3>
+                                    <p>Translate the model into sampling times, conditions, replicates, or discriminating experiments.</p>
+                                </div>
+                            </div>
+                            <div class="evidence-checkpoint">
+                                <span>Evidence summary · Model III</span>
+                                <div><strong>Result + validation</strong><p>Show fitted trajectories and uncertainty beside measurements reserved for an independent check.</p></div>
+                                <div><strong>Design decision</strong><p>Name the assay timing, condition, or dose changed by the model.</p></div>
+                                <div><strong>Confidence + failure</strong><p>Report identifiable parameters, failed fits, and the next discriminating experiment.</p></div>
+                            </div>
+                        </section>
+
+                        <section id="iteration" class="paper-section">
+                            <header class="section-heading">
+                                <p class="section-number">05</p>
+                                <div>
+                                    <p class="section-kicker">Engineering evidence</p>
+                                    <h2>Wet–Dry iteration</h2>
+                                    <p class="section-summary">
+                                        A model becomes project evidence when its prediction changes an experiment
+                                        and the experiment, in turn, changes the model.
+                                    </p>
+                                </div>
+                            </header>
+
+                            <div class="iteration-list">
+                                <article>
+                                    <span class="iteration-round">Round 01</span>
+                                    <div><small>Dry input</small><p>Initial candidate set and assumptions.</p></div>
+                                    <div><small>Model decision</small><p>Shortlist or construct choice to be recorded.</p></div>
+                                    <div><small>Wet response</small><p>Measurement, failure, or feasibility constraint.</p></div>
+                                    <div><small>Revision</small><p>Changed threshold, parameter, or mechanism.</p></div>
+                                </article>
+                                <article>
+                                    <span class="iteration-round">Round 02</span>
+                                    <div><small>Dry input</small><p>Updated using Round 01 evidence.</p></div>
+                                    <div><small>Model decision</small><p>Next discriminating experiment.</p></div>
+                                    <div><small>Wet response</small><p>Team evidence not supplied.</p></div>
+                                    <div><small>Revision</small><p>Team evidence not supplied.</p></div>
+                                </article>
+                            </div>
+                            <p class="figure-caption"><b>Table 5.</b> Decision log template. Add a row only when a complete evidence loop exists.</p>
+                        </section>
+
+                        <section id="reproducibility" class="paper-section">
+                            <header class="section-heading">
+                                <p class="section-number">06</p>
+                                <div>
+                                    <p class="section-kicker">Reuse package</p>
+                                    <h2>Reproducibility</h2>
+                                    <p class="section-summary">A reusable model needs more than a source-code link.</p>
+                                </div>
+                            </header>
+
+                            <p class="repro-status"><span class="tag proposed">Proposed</span> The package is specified but no team release has been supplied.</p>
+                            <div class="repro-grid">
+                                <article><span>01</span><h3>Data</h3><p>Raw inputs, processed inputs, schemas, licences, and retrieval dates.</p></article>
+                                <article><span>02</span><h3>Code</h3><p>Tagged release, entry point, notebooks, tests, and example outputs.</p></article>
+                                <article><span>03</span><h3>Environment</h3><p>Runtime, dependencies, versions, hardware notes, and deterministic seeds.</p></article>
+                                <article><span>04</span><h3>Protocol</h3><p>One minimal command that reproduces a published figure or table.</p></article>
+                                <article><span>05</span><h3>Ownership</h3><p>Separate student work, advisor input, external tools, and prior published methods.</p></article>
+                            </div>
+
+                            <details class="paper-fold technical-fold">
+                                <summary>
+                                    <span><b>Technical appendix 6A</b> · Minimum reproducibility checklist</span>
+                                    <span class="fold-action">Show details</span>
+                                </summary>
+                                <div class="fold-body checklist">
+                                    <label><input type="checkbox" disabled /> Data version and licence documented</label>
+                                    <label><input type="checkbox" disabled /> Preprocessing script linked</label>
+                                    <label><input type="checkbox" disabled /> Environment lockfile published</label>
+                                    <label><input type="checkbox" disabled /> Figure-generation command tested</label>
+                                    <label><input type="checkbox" disabled /> Random seeds and hardware recorded</label>
+                                    <label><input type="checkbox" disabled /> Limitations included in README</label>
+                                </div>
+                            </details>
+                        </section>
+
+                        <section id="limitations" class="paper-section">
+                            <header class="section-heading">
+                                <p class="section-number">07</p>
+                                <div>
+                                    <p class="section-kicker">Interpretation boundary</p>
+                                    <h2>Limitations</h2>
+                                </div>
+                            </header>
+                            <div class="limitations-box">
+                                <p>
+                                    <strong>This prototype contains no team-supplied Dry Lab dataset,
+                                    fitted parameter, validated equation, model output, or experimental result.</strong>
+                                    It therefore cannot support claims about efficacy, stability, immunogenicity,
+                                    safety, or clinical performance.
+                                </p>
+                                <p>
+                                    The equations and model names reserve a publication structure only. The final
+                                    team should delete any module that does not correspond to real work, then replace
+                                    every proposed element with citable, reproducible evidence.
+                                </p>
+                            </div>
+                        </section>
+
+                        <section id="references" class="paper-section references-section">
+                            <header class="section-heading">
+                                <p class="section-number">08</p>
+                                <div>
+                                    <p class="section-kicker">Research basis</p>
+                                    <h2>References</h2>
+                                </div>
+                            </header>
+
+                            <ol class="references-list">
+                                <li><span>[1]</span><a href="https://competition.igem.org/judging/special-prizes">iGEM Competition. Special Prizes — Best Model criteria.</a></li>
+                                <li><span>[2]</span><a href="https://2025.igem.wiki/peking/model/">Peking 2025. Model.</a></li>
+                                <li><span>[3]</span><a href="https://2025.igem.wiki/heidelberg/model">Heidelberg 2025. Model.</a></li>
+                                <li><span>[4]</span><a href="https://2024.igem.wiki/utoronto/model.html">UToronto 2024. Model.</a></li>
+                                <li><span>[5]</span><a href="https://2024.igem.wiki/wageningenur/model">WageningenUR 2024. Circuit model.</a></li>
+                                <li><span>[6]</span><a href="https://2023.igem.wiki/zju-china/model">ZJU-China 2023. Model.</a></li>
+                                <li><span>[7]</span><a href="https://2022.igem.wiki/tu-eindhoven/model">TU-Eindhoven 2022. Model.</a></li>
+                                <li><span>[8]</span><a href="https://2022.igem.wiki/tau-israel/model">TAU-Israel 2022. Model.</a></li>
+                            </ol>
+                            <p class="research-link">Full cross-year analysis: <a href="DRY_LAB_RESEARCH.md">DRY_LAB_RESEARCH.md</a></p>
+                        </section>
+                    </article>
+                </div>
+            </main>
+
+            <footer class="footer">
+                <div><span class="brand-mark" aria-hidden="true"></span><strong>CirCure Dry Lab</strong></div>
+                <p>Local manuscript prototype · Populate with team evidence before publication.</p>
+                <a href="#page-title">Back to top ↑</a>
+            </footer>
+        </div>
+
+        <script src="dry-lab-paper.js"></script>
+    </body>
+</html>

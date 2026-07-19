@@ -1,0 +1,461 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="theme-color" content="#071a36" />
+        <title>CirCure × Neo-TNBsee — Guided by Beth · iGEM 2026</title>
+        <link rel="icon" type="image/png" href="./assets/circure-logo-color-v1.png" />
+        <link rel="stylesheet" href="./styles.css" />
+    </head>
+    <body>
+        <header class="site-header" data-header>
+            <div class="nav-shell" data-nav-shell>
+                <div class="nav-head">
+                    <a class="brand" href="#top" aria-label="Neo-TNBsee home" data-flip>
+                        <span class="brand-full" aria-hidden="true">
+                            <img src="./assets/circure-logo-white-v1.webp" alt="" decoding="async" />
+                            <span><strong>CirCure</strong><small>Neo-TNBsee · iGEM 2026</small></span>
+                        </span>
+                        <span class="brand-mark" aria-hidden="true"><img src="./assets/circure-logo-white-v1.webp" alt="" decoding="async" /></span>
+                    </a>
+
+                    <nav class="nav-links" aria-label="Primary navigation" data-flip>
+                        <a href="#top" data-nav-home>Home</a>
+                        <button class="nav-dropdown-toggle" type="button" aria-expanded="false" aria-controls="nav-dropdown" data-nav-key="project" data-nav-target="#project">Project <span aria-hidden="true">⌄</span></button>
+                        <button class="nav-dropdown-toggle" type="button" aria-expanded="false" aria-controls="nav-dropdown" data-nav-key="wet-lab" data-nav-target="#proof">Wet Lab <span aria-hidden="true">⌄</span></button>
+                        <button class="nav-dropdown-toggle" type="button" aria-expanded="false" aria-controls="nav-dropdown" data-nav-key="dry-lab" data-nav-target="#platform">Dry Lab <span aria-hidden="true">⌄</span></button>
+                        <button class="nav-dropdown-toggle" type="button" aria-expanded="false" aria-controls="nav-dropdown" data-nav-key="engagement" data-nav-target="#decisions">Engagement <span aria-hidden="true">⌄</span></button>
+                        <button class="nav-dropdown-toggle" type="button" aria-expanded="false" aria-controls="nav-dropdown" data-nav-key="team" data-nav-target="#team">Team <span aria-hidden="true">⌄</span></button>
+                        <button class="nav-dropdown-toggle" type="button" aria-expanded="false" aria-controls="nav-dropdown" data-nav-key="award" data-nav-target="#judging">Award <span aria-hidden="true">⌄</span></button>
+                    </nav>
+
+                    <button class="mobile-toggle" type="button" aria-expanded="false" data-mobile-toggle>
+                        <span>Menu</span>
+                        <span aria-hidden="true">+</span>
+                    </button>
+                </div>
+
+                <span class="nav-bg" aria-hidden="true" data-flip></span>
+
+                <div class="nav-dropdown" id="nav-dropdown" data-dropdown aria-hidden="true" inert>
+                    <div class="nav-dropdown-panel is-active" data-nav-panel="project" aria-hidden="false">
+                        <article class="dropdown-tile text-tile dropdown-intro"><p>Project</p><strong>Why TNBC needs a traceable route from evidence to vaccine candidates.</strong><a class="glass-button" href="#project">Project overview <span>→</span></a></article>
+                        <a class="dropdown-tile image-tile tile-description" href="#project"><small>01 / CONTEXT</small><span>Description</span><em>Problem · Gap · Response</em></a>
+                        <a class="dropdown-tile image-tile tile-engineering" href="#evidence"><small>02 / ITERATE</small><span>Engineering</span><em>Design · Build · Test · Learn</em></a>
+                        <a class="dropdown-tile image-tile tile-safety" href="#proof"><small>03 / RESPONSIBILITY</small><span>Safety &amp; Contribution</span><em>Gates · Limits · Reuse</em></a>
+                    </div>
+                    <div class="nav-dropdown-panel" data-nav-panel="wet-lab" aria-hidden="true" inert>
+                        <article class="dropdown-tile text-tile dropdown-intro"><p>Wet Lab</p><strong>From construct design to measurements that can support—or reject—a claim.</strong><a class="glass-button" href="#proof">Enter Wet Lab <span>→</span></a></article>
+                        <a class="dropdown-tile image-tile tile-experiments" href="#proof"><small>01 / METHODS</small><span>Experiments</span><em>Protocols · Controls · Materials</em></a>
+                        <a class="dropdown-tile image-tile tile-results" href="#evidence"><small>02 / EVIDENCE</small><span>Results</span><em>Figures · Statistics · Failures</em></a>
+                        <a class="dropdown-tile image-tile tile-notebook" href="#news"><small>03 / TRACE</small><span>Notebook</span><em>Timeline · Records · Reproduce</em></a>
+                    </div>
+                    <div class="nav-dropdown-panel" data-nav-panel="dry-lab" aria-hidden="true" inert>
+                        <article class="dropdown-tile text-tile dropdown-intro"><p>Dry Lab</p><strong>Neo-TNBsee compares known and patient-derived candidates without hiding assumptions.</strong><a class="glass-button" href="#platform">Enter Dry Lab <span>→</span></a></article>
+                        <a class="dropdown-tile image-tile tile-pipeline" href="#platform"><small>01 / PIPELINE</small><span>Neo-TNBsee</span><em>A-arm · B1-arm · 5D matrix</em></a>
+                        <a class="dropdown-tile image-tile tile-model" href="#proof"><small>02 / REASON</small><span>Model</span><em>Assumptions · Validation · Limits</em></a>
+                        <a class="dropdown-tile image-tile tile-software" href="#news"><small>03 / REUSE</small><span>Software</span><em>Run · Inspect · Extend</em></a>
+                    </div>
+                    <div class="nav-dropdown-panel" data-nav-panel="engagement" aria-hidden="true" inert>
+                        <article class="dropdown-tile text-tile dropdown-intro"><p>Engagement</p><strong>Stakeholder input becomes design evidence only when its consequence stays visible.</strong><a class="glass-button" href="#decisions">Follow the decisions <span>→</span></a></article>
+                        <a class="dropdown-tile image-tile tile-hp" href="#decisions"><small>01 / LISTEN</small><span>Integrated HP</span><em>Input · Change · Consequence</em></a>
+                        <a class="dropdown-tile image-tile tile-education" href="#team"><small>02 / EXPLAIN</small><span>Education</span><em>Audience · Access · Reflection</em></a>
+                        <a class="dropdown-tile image-tile tile-implementation" href="#snapshot"><small>03 / APPLY</small><span>Implementation</span><em>Users · Risks · Next steps</em></a>
+                    </div>
+                    <div class="nav-dropdown-panel" data-nav-panel="team" aria-hidden="true" inert>
+                        <article class="dropdown-tile text-tile dropdown-intro"><p>Team</p><strong>The people, roles, collaborations, and acknowledgements behind CirCure.</strong><a class="glass-button" href="#team">Meet CirCure <span>→</span></a></article>
+                        <a class="dropdown-tile image-tile tile-members" href="#team"><small>01 / PEOPLE</small><span>Members</span><em>Students · PIs · Advisors</em></a>
+                        <a class="dropdown-tile image-tile tile-attributions" href="#judging"><small>02 / CREDIT</small><span>Attributions</span><em>Roles · Timeline · Support</em></a>
+                        <a class="dropdown-tile image-tile tile-collaboration" href="#news"><small>03 / TOGETHER</small><span>Collaborations</span><em>Teams · Experts · Partners</em></a>
+                    </div>
+                    <div class="nav-dropdown-panel" data-nav-panel="award" aria-hidden="true" inert>
+                        <article class="dropdown-tile text-tile dropdown-intro"><p>Award</p><strong>A judge-first map from medal requirements to evidence, routes, and limitations.</strong><a class="glass-button" href="#judging">Open judging map <span>→</span></a></article>
+                        <a class="dropdown-tile image-tile tile-judging" href="#judging"><small>01 / FIND</small><span>Judging</span><em>Criteria · Claims · Routes</em></a>
+                        <a class="dropdown-tile image-tile tile-medals" href="#judging"><small>02 / VERIFY</small><span>Medal Criteria</span><em>Bronze · Silver · Gold</em></a>
+                        <a class="dropdown-tile image-tile tile-awards" href="#snapshot"><small>03 / OUTCOME</small><span>Achievements</span><em>Nominations · Prizes · Deliverables</em></a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main id="top">
+            <section class="hero" aria-labelledby="hero-title">
+                <div class="hero-media" data-hero-bg>
+                    <img class="hero-bg-image" src="./assets/igem-hero-v2.webp" alt="" aria-hidden="true" decoding="async" fetchpriority="high" />
+                    <div class="hero-video-overlay" aria-hidden="true"></div>
+                    <div class="science-grid" aria-hidden="true">
+                        <span></span><span></span><span></span><span></span>
+                    </div>
+                    <img class="hero-crest" src="./assets/circure-logo-white-v1.webp" alt="" aria-hidden="true" decoding="async" />
+                    <svg class="hero-ribbon" viewBox="0 0 1440 900" preserveAspectRatio="none" aria-hidden="true">
+                        <defs><linearGradient id="heroRibbonGradient" x1="1" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff1a8" /><stop offset="0.48" stop-color="#e36f7a" /><stop offset="1" stop-color="#d3a2cb" /></linearGradient></defs>
+                        <path class="ribbon-shadow" pathLength="1" d="M1510 96 C1240 84 1308 310 1040 362 C744 420 922 690 604 744 C360 786 205 684 -86 834" />
+                        <path class="ribbon-band" pathLength="1" d="M1510 96 C1240 84 1308 310 1040 362 C744 420 922 690 604 744 C360 786 205 684 -86 834" />
+                        <path class="ribbon-glint" pathLength="1" d="M1510 96 C1240 84 1308 310 1040 362 C744 420 922 690 604 744 C360 786 205 684 -86 834" />
+                    </svg>
+                </div>
+
+                <h1 id="hero-title" class="hero-title" data-hero-title>
+                    <span>Find.</span>
+                    <span>Weigh.</span>
+                    <span>Care.</span>
+                </h1>
+
+                <a class="hero-card" href="#proof" data-hero-card>
+                    <span class="hero-card-media" aria-hidden="true"></span>
+                    <span class="hero-card-body">
+                        <span class="label">Beth's evidence trail</span>
+                        <strong>Patient-first evidence route</strong>
+                        <span class="arrow">↗</span>
+                    </span>
+                </a>
+            </section>
+
+            <section class="story-section" id="project" aria-labelledby="story-title" data-story>
+                <header class="story-prologue reveal">
+                    <span class="eyebrow">01 / THE QUESTION</span>
+                    <h2 id="story-title">TNBC is not<br />one story.</h2>
+                    <p>One diagnosis can hide many molecular realities. The harder question is not whether we can generate candidates—it is whether we can explain why one deserves to move forward.</p>
+                </header>
+
+                <svg class="story-ribbon" viewBox="0 0 1440 420" preserveAspectRatio="none" aria-hidden="true">
+                    <path d="M-100 334 C240 114 430 422 716 236 C982 62 1114 298 1540 74" />
+                </svg>
+
+                <div class="story-sequence">
+                    <aside class="story-compass" aria-hidden="true">
+                        <div class="story-orbit">
+                            <div class="story-beth-poses">
+                                <img class="story-beth-figure is-active" data-story-figure="0" src="./assets/beth-investigate-v1.png" alt="" aria-hidden="true" decoding="async" />
+                                <img class="story-beth-figure" data-story-figure="1" src="./assets/beth-evidence-v2.webp" alt="" aria-hidden="true" decoding="async" />
+                                <img class="story-beth-figure" data-story-figure="2" src="./assets/beth-route-v2.webp" alt="" aria-hidden="true" decoding="async" />
+                                <img class="story-beth-figure" data-story-figure="3" src="./assets/beth-circure-v2.webp" alt="" aria-hidden="true" decoding="async" />
+                                <img class="story-beth-figure" data-story-figure="4" src="./assets/beth-connect-v1.png" alt="" aria-hidden="true" decoding="async" />
+                            </div>
+                            <i></i><i></i><i></i><i></i><i></i>
+                        </div>
+                        <span>BETH'S EVIDENCE TRAIL · SCROLL TO FOLLOW</span>
+                    </aside>
+
+                    <div class="story-steps">
+                        <article class="story-step" data-story-step="0">
+                            <span class="story-count">01 / ONE LABEL</span>
+                            <h3>Same diagnosis.<br /><em>Different tumours.</em></h3>
+                            <p>Triple-negative breast cancer lacks the familiar therapeutic receptors, yet every tumour carries a different combination of expression, mutation, immune context, and risk.</p>
+                            <small>HETEROGENEITY · RECURRENCE · IMMUNE ESCAPE</small>
+                        </article>
+
+                        <article class="story-step" data-story-step="1">
+                            <span class="story-count">02 / TOO MANY SIGNALS</span>
+                            <h3>A strong signal<br />can still be <em>wrong.</em></h3>
+                            <p>A candidate may be abundant in a tumour but present in healthy tissue; easy to present but unlikely to trigger a useful response; exciting in one dataset and absent in another.</p>
+                            <div class="story-signal" aria-label="Five evidence dimensions">
+                                <span>Expression</span><span>Safety</span><span>Presentation</span><span>Immunity</span><span>Buildability</span>
+                            </div>
+                        </article>
+
+                        <article class="story-step story-step--question" data-story-step="2">
+                            <span class="story-count">03 / THE TURN</span>
+                            <h3>What if the<br /><em>choice itself</em><br />stayed visible?</h3>
+                            <p>Instead of hiding every assumption inside one score, we asked whether a shortlist could preserve the route from raw evidence to decision—and show where confidence ends.</p>
+                        </article>
+
+                        <article class="story-step story-step--reveal" data-story-step="3">
+                            <span class="story-count">04 / OUR RESPONSE</span>
+                            <h3>Meet <em>CirCure.</em></h3>
+                            <p>CirCure is our evidence-led route toward TNBC vaccine design. At its centre is Neo‑TNBsee: a reproducible workflow that does not merely rank candidates, but keeps the reason for every rank inspectable.</p>
+                            <a class="button" href="#platform"><span>→</span> Enter Neo-TNBsee <span>→</span></a>
+                        </article>
+
+                        <article class="story-step story-step--merge" data-story-step="4">
+                            <span class="story-count">05 / TWO ROUTES, ONE STANDARD</span>
+                            <h3>Known targets.<br />New candidates.<br /><em>One evidence matrix.</em></h3>
+                            <p>A-arm re-examines established tumour-associated antigens. B1 searches patient-derived proteogenomic candidates. Only after both routes remain explicit do they meet under the same five evidence dimensions.</p>
+                            <div class="story-arms" aria-hidden="true"><span>A</span><b></b><span>B1</span></div>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <section class="identity-section" aria-labelledby="identity-title">
+                <svg class="identity-ribbon" viewBox="0 0 1440 1200" preserveAspectRatio="none" aria-hidden="true">
+                    <path d="M-140 252 C286 34 462 224 656 448 C848 672 1076 744 1542 420" />
+                    <path class="identity-ribbon-inner" d="M-120 898 C260 680 474 1020 790 840 C1068 680 1208 802 1536 706" />
+                </svg>
+                <header class="identity-header reveal">
+                    <span class="eyebrow">THE MARK IS THE MODEL</span>
+                    <h2 id="identity-title">A patient.<br />A pathway.<br />A living loop.</h2>
+                    <p>Our identity is not decoration. It maps how CirCure should decide: begin with the person, move through evidence, and return with a safer next question. Beth carries that rule through every chapter.</p>
+                </header>
+
+                <div class="identity-stage reveal">
+                    <div class="identity-radar" aria-hidden="true">
+                        <span class="identity-ring ring-a"></span>
+                        <span class="identity-ring ring-b"></span>
+                        <span class="identity-ring ring-c"></span>
+                        <img src="./assets/circure-logo-color-v1.webp" alt="" loading="lazy" decoding="async" />
+                    </div>
+                    <div class="identity-principles">
+                        <article><span>01 / THE PERSON</span><h3>Patient before prediction.</h3><p>The central profile keeps lived need and clinical context ahead of model performance.</p></article>
+                        <article><span>02 / THE RIBBON</span><h3>A route that stays visible.</h3><p>The pink path becomes our trace from candidate discovery to safety-aware prioritisation.</p></article>
+                        <article><span>03 / THE ORBIT</span><h3>Evidence must return.</h3><p>The outer loop represents DBTL, stakeholder feedback, and five dimensions that repeatedly challenge each claim.</p></article>
+                    </div>
+                </div>
+            </section>
+
+            <section class="portfolio-section" id="platform">
+                <div class="galaxy" aria-label="Neo-TNBsee pipeline modules">
+                    <div class="galaxy-overlay" aria-hidden="true"></div>
+                    <svg class="galaxy-ribbon" viewBox="0 0 1440 1000" preserveAspectRatio="none" aria-hidden="true">
+                        <path class="galaxy-ribbon-rail" d="M-90 760 C196 564 288 788 512 612 C754 420 824 144 1112 258 C1284 326 1336 558 1528 474" />
+                        <path class="galaxy-ribbon-live" pathLength="1" d="M-90 760 C196 564 288 788 512 612 C754 420 824 144 1112 258 C1284 326 1336 558 1528 474" />
+                    </svg>
+                    <article class="galaxy-copy">
+                        <h2>
+                            <span class="galaxy-line"><i class="galaxy-word" style="--word-x:-40px;--word-y:0;--word-delay:0s">A</i> <i class="galaxy-word" style="--word-x:0;--word-y:-40px;--word-delay:.1s">system</i></span>
+                            <span class="galaxy-line"><i class="galaxy-word" style="--word-x:0;--word-y:40px;--word-delay:.2s">built</i> <i class="galaxy-word" style="--word-x:40px;--word-y:0;--word-delay:.3s">to</i> <i class="galaxy-word" style="--word-x:0;--word-y:-40px;--word-delay:.4s">weigh</i></span>
+                            <span class="galaxy-line"><i class="galaxy-word" style="--word-x:0;--word-y:40px;--word-delay:.5s">evidence.</i></span>
+                        </h2>
+                        <a class="button ghost" href="#proof"><span>→</span> Follow the Evidence <span>→</span></a>
+                    </article>
+                    <div class="particle-field" data-particles></div>
+                </div>
+            </section>
+
+            <section class="report-section" id="proof">
+                <div class="report-visual reveal"></div>
+                <div class="report-copy reveal">
+                    <span class="label">02 / ENGINEERING</span>
+                    <h2>Two Arms. One Matrix.</h2>
+                    <p>
+                        A-arm stress-tests known TAAs. B1 searches proteogenomic candidates. Both pass through expression, normal-tissue safety, HLA presentation, immunogenicity, and constructability checks.
+                    </p>
+                    <div class="report-points">
+                        <span><b>A</b> known target audit</span>
+                        <span><b>B1</b> new candidate discovery</span>
+                        <span><b>5D</b> shared evidence matrix</span>
+                    </div>
+                    <a class="glass-button dark" href="#evidence">Open Judge Quick View</a>
+                </div>
+            </section>
+
+            <section class="evidence-section" id="evidence" aria-labelledby="evidence-title">
+                <header class="evidence-header reveal">
+                    <div>
+                        <span class="eyebrow">Judge Quick View</span>
+                        <h2 id="evidence-title">Claim. Evidence.<br />Decision. Limits.</h2>
+                    </div>
+                    <p>Every core page follows the same review pattern so judges can find the argument without reconstructing it from scattered sections.</p>
+                </header>
+                <div class="evidence-grid">
+                    <article class="evidence-card reveal">
+                        <span>CLAIM</span>
+                        <h3>One matrix can compare two discovery strategies.</h3>
+                        <p>Known TAAs and new candidates remain separate until the comparison stage, preventing one route from silently defining the rules for the other.</p>
+                    </article>
+                    <article class="evidence-card reveal">
+                        <span>EVIDENCE</span>
+                        <h3>Every score points back to a source layer.</h3>
+                        <p>Expression, normal-tissue baseline, HLA presentation, T-cell signal, and structural checks remain individually inspectable.</p>
+                    </article>
+                    <article class="evidence-card reveal">
+                        <span>DECISION</span>
+                        <h3>Safety is a gate, not a decorative score.</h3>
+                        <p>Human-practices and safety review moved off-target concerns earlier in the workflow and changed the shortlist logic.</p>
+                    </article>
+                    <article class="evidence-card reveal">
+                        <span>LIMITATION</span>
+                        <h3>Ranking is not clinical validation.</h3>
+                        <p>The output prioritizes candidates for testing. It does not claim efficacy, patient benefit, or readiness for clinical use.</p>
+                    </article>
+                </div>
+            </section>
+
+            <section class="culture-section" id="team">
+                <div class="culture-copy reveal">
+                    <span class="eyebrow">03 / HUMAN PRACTICES</span>
+                    <h2>Feedback changed the workflow.</h2>
+                    <p>
+                        We treat stakeholder input as design evidence: who raised the concern, what changed, and where the change appears in the system.
+                    </p>
+                    <a class="button" href="#decisions"><span>→</span> Read the Decision Log <span>→</span></a>
+                </div>
+                <div class="culture-mosaic reveal" aria-hidden="true">
+                    <span></span><span></span><span></span><span></span>
+                </div>
+            </section>
+
+            <section class="decision-section" id="decisions" aria-labelledby="decision-title">
+                <header class="section-heading reveal">
+                    <span class="eyebrow">Integrated Human Practices</span>
+                    <h2 id="decision-title">Listen. Change.<br />Show the consequence.</h2>
+                </header>
+                <div class="decision-list">
+                    <article class="decision-row reveal">
+                        <span class="decision-id">D-01</span>
+                        <div><small>INPUT</small><strong>Clinical relevance must remain visible beside model performance.</strong></div>
+                        <div><small>CHANGE</small><p>Separated evidence dimensions instead of collapsing everything into one opaque score.</p></div>
+                        <div><small>WHERE IT LIVES</small><a href="#evidence">Model / Evidence matrix ↗</a></div>
+                    </article>
+                    <article class="decision-row reveal">
+                        <span class="decision-id">D-02</span>
+                        <div><small>INPUT</small><strong>Normal-tissue expression cannot be checked only at the end.</strong></div>
+                        <div><small>CHANGE</small><p>Moved safety filtering before final immunogenicity ranking.</p></div>
+                        <div><small>WHERE IT LIVES</small><a href="#proof">Safety / Candidate gates ↗</a></div>
+                    </article>
+                    <article class="decision-row reveal">
+                        <span class="decision-id">D-03</span>
+                        <div><small>INPUT</small><strong>Future teams need a reproducible tool, not just our final table.</strong></div>
+                        <div><small>CHANGE</small><p>Defined containerized outputs, assumptions, failure logs, and reusable reports.</p></div>
+                        <div><small>WHERE IT LIVES</small><a href="#news">Software / Contribution ↗</a></div>
+                    </article>
+                </div>
+            </section>
+
+            <section class="market-section" id="snapshot">
+                <div class="market-header reveal">
+                    <div><span class="eyebrow">At a glance</span><h2>Project Snapshot</h2></div>
+                    <a class="button ghost" href="#top"><span>→</span> Back to Top <span>→</span></a>
+                </div>
+                <div class="snapshot-grid reveal">
+                    <article><span>DISCOVERY</span><strong>A/B1</strong><small>known vs new candidates</small></article>
+                    <article><span>EVIDENCE</span><strong>5D</strong><small>independently inspectable layers</small></article>
+                    <article><span>HP DECISIONS</span><strong>3+</strong><small>feedback-to-design records</small></article>
+                    <article><span>OUTPUTS</span><strong>4</strong><small>list, tool, report, models</small></article>
+                </div>
+            </section>
+
+            <section class="audience-section" aria-labelledby="audience-title">
+                <header class="audience-header reveal">
+                    <span class="eyebrow">Four readers. Four fast paths.</span>
+                    <h2 id="audience-title">Choose your route.</h2>
+                    <p>Start with the question you need answered; every route reconnects claim, evidence, decision, and limitation.</p>
+                </header>
+                <div class="audience-grid reveal">
+                    <a href="#evidence"><span>01 / JUDGES</span><strong>Can we verify the claim?</strong><small>Evidence map → medal routes</small></a>
+                    <a href="#proof"><span>02 / SCIENTISTS</span><strong>How was the shortlist built?</strong><small>Methods → models → limits</small></a>
+                    <a href="#decisions"><span>03 / STAKEHOLDERS</span><strong>What changed after feedback?</strong><small>Input → decision → consequence</small></a>
+                    <a href="#news"><span>04 / FUTURE TEAMS</span><strong>What can we reuse?</strong><small>Software → schema → protocols</small></a>
+                </div>
+            </section>
+
+            <section class="news-section" id="news">
+                <div class="news-header reveal">
+                    <div><span class="eyebrow">What remains usable</span><h2>Deliverables</h2></div>
+                    <p>Each output is paired with assumptions, provenance, limitations, and a clear path for future teams to reproduce or extend it.</p>
+                </div>
+                <div class="news-rail reveal">
+                    <article class="news-card">
+                        <span class="news-image n1"><small>RESULTS</small></span>
+                        <h3>Ranked TNBC epitope list</h3>
+                        <p>Candidate-level evidence with explicit gates and confidence notes.</p>
+                    </article>
+                    <article class="news-card">
+                        <span class="news-image n2"><small>SOFTWARE</small></span>
+                        <h3>Reusable Neo-TNBsee software</h3>
+                        <p>Containerized workflow, parameter documentation, and failure-aware reports.</p>
+                    </article>
+                    <article class="news-card">
+                        <span class="news-image n3"><small>MODEL</small></span>
+                        <h3>A-arm vs B1 strategy report</h3>
+                        <p>A transparent comparison of known and discovery-led routes.</p>
+                    </article>
+                    <article class="news-card">
+                        <span class="news-image n4"><small>DESIGN</small></span>
+                        <h3>Multi-epitope construct models</h3>
+                        <p>Order, linker, manufacturability, and structural sanity checks.</p>
+                    </article>
+                    <article class="news-card">
+                        <span class="news-image n5"><small>CONTRIBUTION</small></span>
+                        <h3>Reusable evidence schema</h3>
+                        <p>A common record for claim, source, score, decision, and limitation.</p>
+                    </article>
+                    <article class="news-card">
+                        <span class="news-image n6"><small>HP</small></span>
+                        <h3>Stakeholder decision log</h3>
+                        <p>A trace from conversation to implementation—not a gallery of meetings.</p>
+                    </article>
+                </div>
+            </section>
+
+            <section class="judge-section" id="judging" aria-labelledby="judge-title">
+                <header class="judge-header reveal">
+                    <span class="eyebrow">Built for the judging path</span>
+                    <h2 id="judge-title">Every required page.<br />Every claim findable.</h2>
+                    <p>The visual homepage is an entry point. Medal and prize evidence still lives on stable iGEM standard-page routes with quick summaries, internal links, references, and limitations.</p>
+                </header>
+                <div class="route-grid reveal">
+                    <a href="#evidence"><span>/engineering</span><strong>Engineering success</strong><small>Cycle, evidence, failure, iteration</small></a>
+                    <a href="#decisions"><span>/human-practices</span><strong>Integrated HP</strong><small>Input, change, consequence</small></a>
+                    <a href="#proof"><span>/model</span><strong>Model</strong><small>Assumptions, validation, limitations</small></a>
+                    <a href="#news"><span>/software</span><strong>Software tool</strong><small>Use, reproduce, extend</small></a>
+                    <a href="#proof"><span>/safety-and-security</span><strong>Safety</strong><small>Hazards, gates, mitigations</small></a>
+                    <a href="#news"><span>/contribution</span><strong>Contribution</strong><small>What future teams can reuse</small></a>
+                    <a href="#team"><span>/attributions</span><strong>Attributions</strong><small>Official form and timeline</small></a>
+                    <a href="#top"><span>/description</span><strong>Project description</strong><small>Problem, gap, response, evidence</small></a>
+                </div>
+            </section>
+
+            <section class="push-section">
+                <div class="push-bg" aria-hidden="true"></div>
+                <svg class="push-ribbon" viewBox="0 0 1440 900" preserveAspectRatio="none" aria-hidden="true">
+                    <path class="push-ribbon-rail" d="M-120 712 C258 486 388 842 702 576 C932 380 1058 160 1544 224" />
+                    <path class="push-ribbon-live" pathLength="1" d="M-120 712 C258 486 388 842 702 576 C932 380 1058 160 1544 224" />
+                </svg>
+                <img class="push-logo" src="./assets/circure-logo-white-v1.webp" alt="" aria-hidden="true" loading="lazy" decoding="async" />
+                <h2 class="reveal">Turning<br />Evidence Into<br />Care</h2>
+                <p class="reveal">
+                    Evidence to construct.<br />People at the centre.
+                </p>
+                <a class="glass-button" href="#team">Review the Workflow</a>
+            </section>
+        </main>
+
+        <footer class="brand-footer" aria-label="Closing brand footer">
+            <div class="footer-panel">
+                <div class="footer-brand-row">
+                    <a class="footer-logo" href="#top" aria-label="CirCure top"><img src="./assets/circure-logo-white-v1.webp" alt="" loading="lazy" decoding="async" /></a>
+                    <nav class="footer-menu" aria-label="Footer navigation">
+                        <a href="#project">Project</a>
+                        <a href="#platform">Dry Lab</a>
+                        <a href="#proof">Wet Lab</a>
+                        <a href="#team">Human Practices</a>
+                        <a href="#news">Judging</a>
+                    </nav>
+                </div>
+
+                <div class="footer-copy-row">
+                    <p>Evidence in.<br />Care stays visible.</p>
+                    <div class="footer-meta">
+                        <span>CirCure × Neo-TNBsee</span>
+                        <span>TNBC vaccine target discovery</span>
+                        <span>Guided by Beth</span>
+                        <span>iGEM 2026</span>
+                    </div>
+                </div>
+
+                <small class="footer-license">
+                    © 2026 — Content on this site is licensed under a Creative Commons Attribution 4.0 International license.
+                </small>
+            </div>
+
+            <div class="final-window" data-final-window>
+                <div class="final-track">
+                    <div class="final-sticky">
+                        <img src="./assets/igem-closing-v2.webp" alt="Student researchers walking through a modern research institute" loading="lazy" decoding="async" />
+                        <div class="final-shade" aria-hidden="true"></div>
+                        <div class="final-lockup" aria-label="CirCure Neo-TNBsee">
+                            <img src="./assets/circure-logo-white-v1.webp" alt="" loading="lazy" decoding="async" />
+                            <strong>CIRCURE</strong>
+                            <span>NEO-TNBSEE</span>
+                            <b class="final-beth-mark" aria-hidden="true"></b>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <script src="./script.js"></script>
+    </body>
+</html>
