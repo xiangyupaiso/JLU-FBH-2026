@@ -24,9 +24,26 @@ interface Base {
   name: string | undefined;
 }
 
+export type PageLayout = "standard" | "immersive";
+
+export interface PageNavMeta {
+  small: string;
+  em: string;
+  spriteRow: string;
+}
+
+export interface FolderNavMeta {
+  key: string;
+  intro: string;
+  enterLabel: string;
+  sprite: "project-wetlab" | "drylab-engagement";
+}
+
 class Folder implements Base {
   name: string | undefined;
   folder: Page[] | undefined;
+  layout?: PageLayout;
+  nav?: FolderNavMeta;
 }
 
 class Page implements Base {
@@ -35,6 +52,8 @@ class Page implements Base {
   path: string | undefined;
   component: React.FC | undefined;
   lead: string | undefined;
+  layout?: PageLayout;
+  nav?: PageNavMeta;
 }
 
 const Pages: (Page | Folder)[] = [
@@ -54,6 +73,14 @@ const Pages: (Page | Folder)[] = [
   },
   {
     name: "Project",
+    layout: "immersive",
+    nav: {
+      key: "project",
+      intro:
+        "Why TNBC needs a traceable route from evidence to vaccine candidates.",
+      enterLabel: "Project overview",
+      sprite: "project-wetlab",
+    },
     folder: [
       {
         name: "Description",
@@ -61,6 +88,11 @@ const Pages: (Page | Folder)[] = [
         path: "/description",
         component: Description,
         lead: "Describe how and why you chose your iGEM project.",
+        nav: {
+          small: "01 / CONTEXT",
+          em: "Problem · Gap · Response",
+          spriteRow: "0%",
+        },
       },
       {
         name: "Engineering",
@@ -68,6 +100,11 @@ const Pages: (Page | Folder)[] = [
         path: "/engineering",
         component: Engineering,
         lead: "Demonstrate engineering success in a technical aspect of your project by going through at least one iteration of the engineering design cycle.",
+        nav: {
+          small: "02 / ITERATE",
+          em: "Design · Build · Test · Learn",
+          spriteRow: "0%",
+        },
       },
       {
         name: "Results",
@@ -75,6 +112,11 @@ const Pages: (Page | Folder)[] = [
         path: "/results",
         component: Results,
         lead: "Present the results of your project, along with a detailed analysis and discussion of their significance. Also outline future plans and reflections on the impact of your project.",
+        nav: {
+          small: "03 / EVIDENCE",
+          em: "Figures · Statistics · Failures",
+          spriteRow: "0%",
+        },
       },
       {
         name: "Contribution",
@@ -82,11 +124,24 @@ const Pages: (Page | Folder)[] = [
         path: "/contribution",
         component: Contribution,
         lead: "Make a useful contribution for future iGEM teams and document it on this page.",
+        nav: {
+          small: "04 / RESPONSIBILITY",
+          em: "Gates · Limits · Reuse",
+          spriteRow: "0%",
+        },
       },
     ],
   },
   {
     name: "Wet Lab",
+    layout: "immersive",
+    nav: {
+      key: "wet-lab",
+      intro:
+        "From construct design to measurements that can support—or reject—a claim.",
+      enterLabel: "Enter Wet Lab",
+      sprite: "project-wetlab",
+    },
     folder: [
       {
         name: "Experiments",
@@ -94,6 +149,11 @@ const Pages: (Page | Folder)[] = [
         path: "/experiments",
         component: Experiments,
         lead: "Describe the research, experiments, and protocols you used in your project. It is designed to provide sufficient information for other teams to replicate our work.",
+        nav: {
+          small: "01 / METHODS",
+          em: "Protocols · Controls · Materials",
+          spriteRow: "100%",
+        },
       },
       {
         name: "Notebook",
@@ -101,6 +161,11 @@ const Pages: (Page | Folder)[] = [
         path: "/notebook",
         component: Notebook,
         lead: "This serves as a chronological record of your team's progress throughout the season. It documents your daily activities, experiments, discussions, and decisions.",
+        nav: {
+          small: "02 / TRACE",
+          em: "Timeline · Records · Reproduce",
+          spriteRow: "100%",
+        },
       },
       {
         name: "Measurement",
@@ -108,6 +173,11 @@ const Pages: (Page | Folder)[] = [
         path: "/measurement",
         component: Measurement,
         lead: "Synthetic Biology needs great measurement approaches for characterizing parts, and efficient new methods for characterizing many parts at once. Describe your measurement approaches on this page.",
+        nav: {
+          small: "03 / QUANTIFY",
+          em: "Parts · Characterization · Range",
+          spriteRow: "100%",
+        },
       },
       {
         name: "Alternative Platform",
@@ -115,6 +185,11 @@ const Pages: (Page | Folder)[] = [
         path: "/alternative-platform",
         component: AlternativePlatform,
         lead: "This award is designed to celebrate exemplary work done in alternative platforms, and covers anything that is not E. coli, S. cerevisiae, and B. subtilis.",
+        nav: {
+          small: "04 / HOST",
+          em: "Chassis · Range · Limits",
+          spriteRow: "100%",
+        },
       },
       {
         name: "Safety and Security",
@@ -122,11 +197,24 @@ const Pages: (Page | Folder)[] = [
         path: "/safety-and-security",
         component: SafetyAndSecurity,
         lead: "Detail the safety and security considerations of your project, adressing potential risks and outlining the measures taken to mitigate them.",
+        nav: {
+          small: "05 / GUARD",
+          em: "Risks · Mitigation · Stewardship",
+          spriteRow: "100%",
+        },
       },
     ],
   },
   {
     name: "Dry Lab",
+    layout: "immersive",
+    nav: {
+      key: "dry-lab",
+      intro:
+        "Models, software, and hardware that make the wet claims inspectable.",
+      enterLabel: "Enter Dry Lab",
+      sprite: "drylab-engagement",
+    },
     folder: [
       {
         name: "Model",
@@ -134,6 +222,11 @@ const Pages: (Page | Folder)[] = [
         path: "/model",
         component: Model,
         lead: "Explain your model's assumptions, data, parameters, and results in a way that anyone could understand.",
+        nav: {
+          small: "01 / REASON",
+          em: "Assumptions · Validation · Limits",
+          spriteRow: "0%",
+        },
       },
       {
         name: "Software",
@@ -141,6 +234,11 @@ const Pages: (Page | Folder)[] = [
         path: "/software",
         component: Software,
         lead: "Software in iGEM should make synthetic biology based on standard parts easier, faster, better or more accessible to our community.",
+        nav: {
+          small: "02 / REUSE",
+          em: "Run · Inspect · Extend",
+          spriteRow: "0%",
+        },
       },
       {
         name: "Hardware",
@@ -148,11 +246,24 @@ const Pages: (Page | Folder)[] = [
         path: "/hardware",
         component: Hardware,
         lead: "Hardware in iGEM should make synthetic biology based on standard parts easier, faster, better, or more accessible to our community.",
+        nav: {
+          small: "03 / INSTRUMENT",
+          em: "Build · Calibrate · Share",
+          spriteRow: "0%",
+        },
       },
     ],
   },
   {
     name: "Engagement",
+    layout: "immersive",
+    nav: {
+      key: "engagement",
+      intro:
+        "Stakeholder input becomes design evidence only when its consequence stays visible.",
+      enterLabel: "Follow the decisions",
+      sprite: "drylab-engagement",
+    },
     folder: [
       {
         name: "Entrepreneurship",
@@ -160,6 +271,11 @@ const Pages: (Page | Folder)[] = [
         path: "/entrepreneurship",
         component: Entrepreneurship,
         lead: "The entrepreneurship award recognizes exceptional effort to build a business case and commercialize an iGEM project.",
+        nav: {
+          small: "01 / TRANSLATE",
+          em: "Users · Risks · Next steps",
+          spriteRow: "100%",
+        },
       },
       {
         name: "Human Practices",
@@ -167,6 +283,11 @@ const Pages: (Page | Folder)[] = [
         path: "/human-practices",
         component: HumanPractices,
         lead: "We ask every team to think deeply and creatively about whether their project is responsible and good for the world. Consider how the world affects your work and how your work affects the world.",
+        nav: {
+          small: "02 / LISTEN",
+          em: "Input · Change · Consequence",
+          spriteRow: "100%",
+        },
       },
       {
         name: "Education",
@@ -174,6 +295,11 @@ const Pages: (Page | Folder)[] = [
         path: "/education",
         component: Education,
         lead: "Innovative educational tools and outreach activities have the ability to establish a two-way dialogue with new communities by discussing public values and the science behind synthetic biology.",
+        nav: {
+          small: "03 / EXPLAIN",
+          em: "Audience · Access · Reflection",
+          spriteRow: "100%",
+        },
       },
       {
         name: "Inclusivity",
@@ -181,6 +307,11 @@ const Pages: (Page | Folder)[] = [
         path: "/inclusivity",
         component: Inclusivity,
         lead: "Every individual, regardless of background or experience, should have an equal opportunity to engage with scientific knowledge and technological development.",
+        nav: {
+          small: "04 / INCLUDE",
+          em: "Reach · Access · Equity",
+          spriteRow: "100%",
+        },
       },
       {
         name: "Sustainability",
@@ -188,6 +319,11 @@ const Pages: (Page | Folder)[] = [
         path: "/sustainability",
         component: Sustainability,
         lead: "Describe how you have evaluated your project ideas against one or more of the SDGs.",
+        nav: {
+          small: "05 / SUSTAIN",
+          em: "SDGs · Impact · Tradeoffs",
+          spriteRow: "100%",
+        },
       },
     ],
   },

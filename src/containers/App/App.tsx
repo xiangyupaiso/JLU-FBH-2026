@@ -4,7 +4,7 @@ import "../../styles/circure-tokens.css"; // overrides Bootstrap base with CirCu
 import "../../styles/circure-nav.css"; // global site-header / mega-menu styles
 import "../../styles/circure-footer.css"; // global brand footer / final team reveal
 import "../../styles/circure-back-to-top.css"; // global floating return-to-top control
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 import { getPathMapping, stringToSlug } from "../../utils";
 import { useEffect } from "react";
 import { Navbar } from "../../components/Navbar";
@@ -16,10 +16,9 @@ import { Home } from "../../contents";
 
 const App = () => {
   const pathMapping = getPathMapping();
-  const currentPath =
-    location.pathname
-      .split(`${stringToSlug(import.meta.env.VITE_TEAM_NAME)}`)
-      .pop() || "/";
+  const { pathname } = useLocation();
+  const teamSlug = stringToSlug(import.meta.env.VITE_TEAM_NAME);
+  const currentPath = pathname.split(`/${teamSlug}`).pop() || "/";
 
   // Set Page Title
   const title =
@@ -43,17 +42,21 @@ const App = () => {
         <Route path="/" element={<Home />} />
         {Object.entries(pathMapping)
           .filter(([path]) => path !== "/")
-          .map(([path, { title, lead, component: Component }]) => (
+          .map(([path, { title, lead, layout, component: Component }]) => (
             <Route
               key={path}
               path={path}
               element={
-                <>
-                  <Header title={title || ""} lead={lead || ""} />
-                  <div className="container">
-                    <Component />
-                  </div>
-                </>
+                layout === "immersive" ? (
+                  <Component />
+                ) : (
+                  <>
+                    <Header title={title || ""} lead={lead || ""} />
+                    <div className="container">
+                      <Component />
+                    </div>
+                  </>
+                )
               }
             />
           ))}

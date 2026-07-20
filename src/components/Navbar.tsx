@@ -2,6 +2,8 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import projectWetlabSprite from "../assets/story-nav/nav-project-wetlab-v2.webp";
 import drylabEngagementSprite from "../assets/story-nav/nav-drylab-engagement-v2.webp";
+import Pages from "../pages";
+import type { FolderNavMeta } from "../pages";
  
 interface NavCard {
   name: string;
@@ -20,61 +22,38 @@ interface NavDropdown {
   cards: NavCard[];
 }
  
-const DROPDOWNS: NavDropdown[] = [
-  {
-    key: "project",
-    label: "Project",
-    sprite: projectWetlabSprite,
-    intro: "Why TNBC needs a traceable route from evidence to vaccine candidates.",
-    enterLabel: "Project overview",
-    cards: [
-      { name: "Description",  path: "/description",  small: "01 / CONTEXT",        em: "Problem · Gap · Response",          spriteRow: "0%" },
-      { name: "Engineering",  path: "/engineering",  small: "02 / ITERATE",        em: "Design · Build · Test · Learn",     spriteRow: "0%" },
-      { name: "Results",      path: "/results",      small: "03 / EVIDENCE",       em: "Figures · Statistics · Failures",   spriteRow: "0%" },
-      { name: "Contribution", path: "/contribution", small: "04 / RESPONSIBILITY", em: "Gates · Limits · Reuse",            spriteRow: "0%" },
-    ],
-  },
-  {
-    key: "wet-lab",
-    label: "Wet Lab",
-    sprite: projectWetlabSprite,
-    intro: "From construct design to measurements that can support—or reject—a claim.",
-    enterLabel: "Enter Wet Lab",
-    cards: [
-      { name: "Experiments",        path: "/experiments",         small: "01 / METHODS",  em: "Protocols · Controls · Materials",  spriteRow: "100%" },
-      { name: "Notebook",           path: "/notebook",            small: "02 / TRACE",    em: "Timeline · Records · Reproduce",    spriteRow: "100%" },
-      { name: "Measurement",        path: "/measurement",         small: "03 / QUANTIFY", em: "Parts · Characterization · Range",  spriteRow: "100%" },
-      { name: "Alternative Platform", path: "/alternative-platform", small: "04 / HOST", em: "Chassis · Range · Limits",          spriteRow: "100%" },
-      { name: "Safety & Security",  path: "/safety-and-security", small: "05 / GUARD",    em: "Risks · Mitigation · Stewardship",  spriteRow: "100%" },
-    ],
-  },
-  {
-    key: "dry-lab",
-    label: "Dry Lab",
-    sprite: drylabEngagementSprite,
-    intro: "Models, software, and hardware that make the wet claims inspectable.",
-    enterLabel: "Enter Dry Lab",
-    cards: [
-      { name: "Model",    path: "/model",    small: "01 / REASON",    em: "Assumptions · Validation · Limits", spriteRow: "0%" },
-      { name: "Software", path: "/software", small: "02 / REUSE",     em: "Run · Inspect · Extend",            spriteRow: "0%" },
-      { name: "Hardware", path: "/hardware", small: "03 / INSTRUMENT", em: "Build · Calibrate · Share",        spriteRow: "0%" },
-    ],
-  },
-  {
-    key: "engagement",
-    label: "Engagement",
-    sprite: drylabEngagementSprite,
-    intro: "Stakeholder input becomes design evidence only when its consequence stays visible.",
-    enterLabel: "Follow the decisions",
-    cards: [
-      { name: "Entrepreneurship",     path: "/entrepreneurship",  small: "01 / TRANSLATE", em: "Users · Risks · Next steps",       spriteRow: "100%" },
-      { name: "Human Practices",      path: "/human-practices",   small: "02 / LISTEN",    em: "Input · Change · Consequence",     spriteRow: "100%" },
-      { name: "Education",            path: "/education",         small: "03 / EXPLAIN",   em: "Audience · Access · Reflection",   spriteRow: "100%" },
-      { name: "Diversity & Inclusion", path: "/inclusivity",      small: "04 / INCLUDE",   em: "Reach · Access · Equity",          spriteRow: "100%" },
-      { name: "Sustainability",       path: "/sustainability",    small: "05 / SUSTAIN",   em: "SDGs · Impact · Tradeoffs",        spriteRow: "100%" },
-    ],
-  },
-];
+const SPRITES: Record<FolderNavMeta["sprite"], string> = {
+  "project-wetlab": projectWetlabSprite,
+  "drylab-engagement": drylabEngagementSprite,
+};
+
+const DROPDOWNS: NavDropdown[] = Pages.flatMap((item) => {
+  if (!("folder" in item) || !item.folder || !item.nav || !item.name) return [];
+
+  const cards = item.folder.flatMap((page): NavCard[] => {
+    if (!page.name || !page.path || !page.nav) return [];
+    return [
+      {
+        name: page.name,
+        path: page.path,
+        small: page.nav.small,
+        em: page.nav.em,
+        spriteRow: page.nav.spriteRow,
+      },
+    ];
+  });
+
+  return [
+    {
+      key: item.nav.key,
+      label: item.name,
+      sprite: SPRITES[item.nav.sprite],
+      intro: item.nav.intro,
+      enterLabel: item.nav.enterLabel,
+      cards,
+    },
+  ];
+});
  
 const NAV_BREAKPOINT = 980;
  

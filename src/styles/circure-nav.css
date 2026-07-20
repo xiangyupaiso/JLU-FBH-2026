@@ -582,14 +582,29 @@
     bottom: 2px;
     left: 4px;
     display: grid;
-    grid-auto-rows: 1fr;
+    grid-auto-rows: minmax(56px, auto);
     grid-template-rows: none;
+    align-content: start;
+    overflow-y: auto;
+    overscroll-behavior-y: contain;
+    scrollbar-width: thin;
+    scrollbar-color: var(--care) transparent;
+    -webkit-overflow-scrolling: touch;
     opacity: 0;
     pointer-events: none;
     transform: translateY(-10px);
     transition:
       opacity 220ms ease,
       transform 480ms var(--ease-out);
+  }
+
+  .circure-mobile-menu::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  .circure-mobile-menu::-webkit-scrollbar-thumb {
+    border-radius: 999px;
+    background: var(--care);
   }
 
   .circure-mobile-menu.is-open {
