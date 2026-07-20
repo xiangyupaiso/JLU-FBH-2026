@@ -184,7 +184,7 @@ body.is-thread-dragging {
  
   /* PROLOGUE */
   .prologue {
-    min-height: 280svh;
+    min-height: 360svh;
     background: var(--paper-bright);
     contain: style;
   }
@@ -477,7 +477,7 @@ body.is-thread-dragging {
   .history {
     --history-progress: 0;
     position: relative;
-    min-height: 300svh;
+    min-height: 380svh;
     padding: 0 clamp(22px, 4.7vw, 72px);
     overflow: visible;
     contain: style;
@@ -726,7 +726,7 @@ body.is-thread-dragging {
   .human-chapter {
     --human-progress: 0;
     position: relative;
-    min-height: 330svh;
+    min-height: 410svh;
     overflow: visible;
     contain: style;
     background: #211a1d;
@@ -1060,7 +1060,7 @@ body.is-thread-dragging {
   .coverage {
     --coverage-progress: 0;
     display: block;
-    min-height: 255svh;
+    min-height: 335svh;
     padding: 0;
     overflow: visible;
     background: var(--paper-bright);
@@ -1286,7 +1286,7 @@ body.is-thread-dragging {
   .evidence {
     --evidence-progress: 0;
     position: relative;
-    min-height: 300svh;
+    min-height: 380svh;
     padding: 0;
     overflow: visible;
     background: var(--paper);
@@ -1832,7 +1832,7 @@ body.is-thread-dragging {
   .translation {
     --translation-progress: 0;
     display: block;
-    min-height: 285svh;
+    min-height: 365svh;
     padding: 0 clamp(22px, 4.7vw, 72px);
     overflow: visible;
     contain: style;

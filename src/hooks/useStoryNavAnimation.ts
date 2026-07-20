@@ -77,6 +77,10 @@ const DARK_SURFACE_KEYS: Array<keyof StoryNavSectionRefs | "closing"> = [
 const PAGE_SPRING_STIFFNESS = 17;
 const SETTLE_THRESHOLD = 0.0025;
 const PAGE_SETTLE_THRESHOLD = 0.0005;
+// Finish sticky-section choreography before the section itself ends so the
+// fully composed frame remains readable for the final part of the scroll.
+// This preserves native scrolling instead of swallowing wheel/touch events.
+const STICKY_ANIMATION_END = 0.72;
  
 function clamp(value: number, min = 0, max = 1): number {
   return Math.min(max, Math.max(min, value));
@@ -84,6 +88,10 @@ function clamp(value: number, min = 0, max = 1): number {
  
 function smoothstep(value: number): number {
   return value * value * (3 - 2 * value);
+}
+
+function withCompletionHold(progress: number): number {
+  return clamp(progress / STICKY_ANIMATION_END);
 }
  
 function followProgress(
@@ -358,15 +366,27 @@ export function useStoryNavAnimation(refs: StoryNavAnimationRefs): void {
       const end = window.innerHeight * -0.11;
       const distance = Math.max(1, start - end);
  
-      targetOpeningProgress = clamp(-openingTop / openingDistance);
-      targetHistoryProgress = getStickyProgress(layoutMetrics.history);
-      targetHumanProgress = getStickyProgress(layoutMetrics.humanChapter);
+      targetOpeningProgress = withCompletionHold(
+        clamp(-openingTop / openingDistance),
+      );
+      targetHistoryProgress = withCompletionHold(
+        getStickyProgress(layoutMetrics.history),
+      );
+      targetHumanProgress = withCompletionHold(
+        getStickyProgress(layoutMetrics.humanChapter),
+      );
       targetProgress = clamp((start - expansionTop) / distance);
-      targetCoverageProgress = getStickyProgress(layoutMetrics.coverage);
-      targetEvidenceProgress = getStickyProgress(layoutMetrics.evidence);
+      targetCoverageProgress = withCompletionHold(
+        getStickyProgress(layoutMetrics.coverage),
+      );
+      targetEvidenceProgress = withCompletionHold(
+        getStickyProgress(layoutMetrics.evidence),
+      );
       targetCycleProgress = getSectionProgress(layoutMetrics.engineering, 0.88, 0.2);
       targetListeningProgress = getSectionProgress(layoutMetrics.listeningRoom, 0.9, 0.18);
-      targetTranslationProgress = getStickyProgress(layoutMetrics.translation);
+      targetTranslationProgress = withCompletionHold(
+        getStickyProgress(layoutMetrics.translation),
+      );
       targetPageProgress = clamp(
         window.scrollY /
           Math.max(1, document.documentElement.scrollHeight - window.innerHeight),
