@@ -133,6 +133,7 @@
     linear-gradient(180deg, var(--nav-surface) 0%, var(--nav-surface-end) 100%);
   box-shadow: 0 24px 64px var(--nav-surface-shadow);
   opacity: 0;
+  pointer-events: none;
   transform: translateY(-10px) scaleY(0.94);
   transform-origin: 50% 0;
   backdrop-filter: blur(18px);
