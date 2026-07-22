@@ -209,30 +209,33 @@
 
 .hp-impact-sticky {
   position: sticky;
-  top: var(--header-height);
+  top: 0;
   display: grid;
   width: 100%;
   min-width: 0;
-  height: calc(100vh - var(--header-height));
+  height: 100vh;
   grid-template-rows: auto auto minmax(0, 1fr);
   gap: clamp(8px, 1.2vh, 14px);
   align-content: stretch;
   overflow: hidden;
-  padding: clamp(12px, 1.7vh, 18px) 0;
+  padding: clamp(8px, 1.4vh, 14px) 0;
 }
 
 .hp-impact-head {
-  margin-bottom: 0;
+  width: min(1320px, calc(100vw - 48px));
+  margin: 0 auto 0;
 }
 
 .hp-impact-head h2 {
-  font-size: clamp(34px, 3.8vw, 54px);
+  font-size: clamp(30px, 3.5vw, 50px);
+  line-height: 0.98;
 }
 
 .hp-phase-timeline {
   position: relative;
-  width: 100%;
+  width: min(1320px, calc(100vw - 48px));
   min-width: 0;
+  margin: 0 auto;
   padding-top: 2px;
 }
 
@@ -366,7 +369,7 @@
   align-items: center;
   align-self: stretch;
   overflow: clip;
-  padding: 8px 0;
+  padding: 10px 0;
 }
 
 .hp-impact-track {
@@ -374,9 +377,11 @@
   width: max-content;
   align-items: center;
   gap: 20px;
-  padding: 0 12px;
+  padding: 0 max(24px, calc((100vw - 1320px) / 2));
   backface-visibility: hidden;
   transform: translate3d(var(--hp-impact-x), 0, 0);
+  will-change: transform;
+  contain: layout paint style;
 }
 
 .hp-impact-card {
@@ -386,16 +391,17 @@
   height: var(--hp-impact-card-height);
   flex: 0 0 auto;
   overflow: hidden;
-  border-radius: 8px;
-  background: #59524c;
-  box-shadow:
-    0 1px 2px rgba(17, 17, 15, 0.12),
-    0 30px 74px rgba(17, 17, 15, 0.14);
+  border: 1px solid rgba(17, 17, 15, 0.1);
+  border-radius: 7px;
+  background:
+    linear-gradient(135deg, rgba(47, 111, 104, 0.7), rgba(122, 38, 54, 0.7)),
+    #59524c;
+  box-shadow: 0 30px 74px rgba(17, 17, 15, 0.14);
 }
 
 .hp-impact-card::before {
   position: absolute;
-  z-index: -2;
+  z-index: -3;
   inset: 0;
   background-image:
     linear-gradient(140deg, rgba(24, 25, 23, 0.05), rgba(24, 25, 23, 0.24)),
@@ -456,7 +462,7 @@
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.9);
   color: var(--hp-ink);
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 820;
 }
 
@@ -469,13 +475,15 @@
 }
 
 .hp-stakeholder strong {
-  font-size: 14px;
+  font-size: 15px;
+  line-height: 1.2;
 }
 
 .hp-stakeholder div > span {
   margin-top: 3px;
   color: rgba(255, 255, 255, 0.72);
-  font-size: 11px;
+  font-size: 12px;
+  line-height: 1.2;
 }
 
 .hp-impact-badge {
@@ -486,8 +494,9 @@
   background: rgba(255, 255, 255, 0.12);
   color: rgba(255, 255, 255, 0.86);
   backdrop-filter: blur(10px);
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 800;
+  letter-spacing: 0;
   text-transform: uppercase;
 }
 
@@ -509,26 +518,28 @@
 
 .hp-impact-copy h3 {
   max-width: 95%;
-  margin: 0 0 16px;
-  color: rgba(255, 255, 255, 0.95);
+  margin: 0 0 18px;
+  color: rgba(255, 255, 255, 0.94);
   font-size: clamp(20px, 1.65vw, 26px);
   font-weight: 760;
   line-height: 1.16;
+  letter-spacing: 0;
 }
 
 .hp-impact-quote {
   max-width: 96%;
-  margin: 0 0 14px;
+  margin: 0 0 16px;
   color: rgba(255, 255, 255, 0.88);
-  font-size: clamp(16px, 1.2vw, 20px);
+  font-size: clamp(17px, 1.35vw, 22px);
   line-height: 1.36;
+  text-wrap: pretty;
 }
 
 .hp-impact-change {
   display: grid;
   gap: 5px;
-  margin-bottom: 16px;
-  padding: 11px 12px;
+  margin: 0 0 18px;
+  padding: 12px 13px;
   border: 1px solid rgba(255, 255, 255, 0.16);
   border-radius: 8px;
   background: rgba(255, 255, 255, 0.12);
@@ -537,18 +548,17 @@
 
 .hp-impact-change span {
   color: rgba(255, 255, 255, 0.62);
-  font-family: "SFMono-Regular", Consolas, monospace;
-  font-size: 9px;
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  font-size: 10px;
   font-weight: 780;
   letter-spacing: 0.04em;
-  text-transform: uppercase;
 }
 
 .hp-impact-change p {
   margin: 0;
   color: rgba(255, 255, 255, 0.86);
-  font-size: 13px;
-  line-height: 1.34;
+  font-size: 14px;
+  line-height: 1.32;
 }
 
 .hp-impact-footer {
@@ -595,61 +605,75 @@
   position: sticky;
   top: var(--header-height);
   display: grid;
-  height: calc(100vh - var(--header-height));
-  grid-template-columns: minmax(205px, 0.25fr) minmax(0, 1fr);
-  gap: 20px;
+  grid-template-columns: minmax(200px, 0.24fr) minmax(0, 1fr);
+  gap: clamp(16px, 2vw, 28px);
   align-items: center;
+  width: min(1320px, calc(100vw - 48px));
+  height: calc(100vh - var(--header-height));
+  margin: 0 auto;
+  padding: 24px 0;
   overflow: visible;
-  padding: 18px 0;
 }
 
 .hp-guide-axis {
   position: relative;
   z-index: 30;
   display: flex;
-  max-height: calc(100vh - var(--header-height) - 28px);
   flex-direction: column;
   justify-content: center;
-  gap: clamp(5px, 0.85vh, 9px);
+  align-items: flex-start;
+  gap: clamp(6px, 1vh, 10px);
+  max-height: 90vh;
   margin: 0;
-  padding: 14px 14px 14px 22px;
+  padding: 18px 24px 18px clamp(20px, 3vw, 44px);
   list-style: none;
 }
 
+.hp-guide-axis li {
+  position: relative;
+  display: grid;
+  width: 100%;
+  grid-template-columns: auto 1fr;
+  gap: 14px;
+  align-items: center;
+  text-align: left;
+  color: rgba(17, 17, 15, 0.36);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  transition:
+    color 220ms ease,
+    transform 220ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.hp-guide-axis li.is-active {
+  color: var(--hp-ink);
+  transform: translateX(6px) scale(1.02);
+}
+
 .hp-guide-axis::before {
+  content: "";
   position: absolute;
-  top: 9%;
-  bottom: 9%;
-  left: 38px;
+  top: 10%;
+  left: calc(clamp(20px, 3vw, 44px) + 16px);
+  bottom: 10%;
   width: 3px;
   border-radius: 999px;
-  background: linear-gradient(180deg, var(--hp-wine), var(--hp-coral), var(--hp-teal));
+  background: linear-gradient(180deg, var(--hp-wine), #d86f4a, var(--hp-teal));
   box-shadow: 0 0 0 4px rgba(17, 17, 15, 0.035);
-  content: "";
 }
 
 .hp-guide-axis button {
   position: relative;
-  display: grid;
+  display: contents;
   width: 100%;
-  min-height: 54px;
-  grid-template-columns: auto 1fr;
-  gap: 13px;
-  align-items: center;
   padding: 0;
   border: 0;
   background: transparent;
-  color: rgba(17, 17, 15, 0.36);
-  text-align: left;
+  color: inherit;
+  text-align: inherit;
   cursor: pointer;
-  transition-property: color, transform;
-  transition-duration: 220ms;
-  transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.hp-guide-axis li.is-active button {
-  color: var(--hp-ink);
-  transform: translateX(6px) scale(1.02);
+  font: inherit;
 }
 
 .hp-guide-node {
@@ -663,47 +687,51 @@
   border-radius: 50%;
   background: var(--hp-paper-soft);
   color: rgba(17, 17, 15, 0.36);
-  font-family: "SFMono-Regular", Consolas, monospace;
-  font-size: 10px;
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  font-size: 11px;
   font-weight: 820;
-  transition-property: background-color, border-color, color, transform;
-  transition-duration: 220ms;
-  transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  transition:
+    background 220ms ease,
+    border-color 220ms ease,
+    color 220ms ease,
+    transform 220ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .hp-guide-axis li.is-active .hp-guide-node {
-  border-color: var(--hp-paper-soft);
   background: var(--hp-wine);
+  border-color: var(--hp-paper-soft);
   color: var(--hp-paper-soft);
   transform: scale(1.05);
 }
 
 .hp-guide-text {
   display: grid;
-  gap: 1px;
+  gap: 2px;
 }
 
 .hp-guide-text > span {
-  font-size: 11px;
+  display: block;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 12px;
   font-weight: 900;
   letter-spacing: 0.02em;
   text-transform: uppercase;
 }
 
 .hp-guide-text strong {
-  font-size: 14px;
+  display: block;
+  font-size: 15px;
   font-weight: 760;
-  line-height: 1.18;
 }
 
 .hp-guide-text em {
-  color: rgba(17, 17, 15, 0.42);
-  font-size: 10px;
+  display: block;
+  font-size: 11px;
   font-style: normal;
   font-weight: 820;
   text-transform: uppercase;
-  transition-property: color;
-  transition-duration: 220ms;
+  color: rgba(17, 17, 15, 0.42);
+  transition: color 220ms ease;
 }
 
 .hp-guide-axis li.is-active .hp-guide-text em {
@@ -732,6 +760,7 @@
   width: var(--hp-dial-size);
   height: var(--hp-dial-size);
   transform: rotate(var(--hp-dial-rotation));
+  will-change: transform;
 }
 
 .hp-dial-ring {
@@ -771,6 +800,7 @@
   transition-property: opacity, filter, transform, box-shadow;
   transition-duration: 360ms, 420ms, 420ms, 260ms;
   transition-timing-function: ease, ease, cubic-bezier(0.22, 1, 0.36, 1), ease;
+  will-change: transform, opacity, filter;
 }
 
 .hp-dial-card.is-active {
@@ -1575,24 +1605,52 @@
 
   .hp-semicircle-timeline {
     position: relative;
-    top: 0;
+    top: auto;
     display: block;
     height: auto;
-    padding: 0;
+    padding: 0 0 64px;
   }
 
   .hp-guide-axis {
+    position: relative;
+    top: auto;
+    height: auto;
+    align-items: flex-start;
     max-height: none;
+    padding: 0 0 0 28px;
     margin-bottom: 28px;
-    padding-left: 0;
   }
 
   .hp-guide-axis::before {
-    left: 16px;
+    left: 7px;
+    top: 8px;
+    bottom: 8px;
   }
 
-  .hp-guide-axis button {
+  .hp-guide-axis li {
     color: var(--hp-ink);
+  }
+
+  .hp-guide-axis li.is-active {
+    transform: translateX(4px) scale(1.01);
+  }
+
+  .hp-guide-node {
+    width: 30px;
+    height: 30px;
+    color: var(--hp-ink);
+    border-color: rgba(17, 17, 15, 0.14);
+  }
+
+  .hp-guide-axis li.is-active .hp-guide-node {
+    background: var(--hp-wine);
+    border-color: var(--hp-paper-soft);
+    color: var(--hp-paper-soft);
+    transform: scale(1.05);
+  }
+
+  .hp-guide-text em {
+    color: rgba(17, 17, 15, 0.5);
   }
 
   .hp-dial-stage {

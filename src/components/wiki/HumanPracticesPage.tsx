@@ -604,20 +604,7 @@ function HumanPracticesImpactWall() {
       return;
     }
 
-    const headerHeight =
-      Number.parseFloat(
-        getComputedStyle(document.documentElement).getPropertyValue(
-          "--header-height",
-        ),
-      ) || 78;
-    const availableHeight = innerHeight - headerHeight;
-    const cardHeight = clamp(availableHeight - 285, 360, 590);
-    section.style.setProperty("--hp-impact-card-height", `${cardHeight}px`);
-    section.style.setProperty(
-      "--hp-impact-card-width",
-      `${clamp(cardHeight * 0.72, 330, 410)}px`,
-    );
-
+    const availableHeight = innerHeight;
     const horizontalDistance = Math.max(
       0,
       track.scrollWidth - viewport.clientWidth + 24,
@@ -793,17 +780,24 @@ function HumanPracticesImpactWall() {
 
 function HumanPracticesTimeline() {
   const sectionRef = useRef<HTMLElement>(null);
+  const dialRef = useRef<HTMLDivElement>(null);
   const dialogRef = useRef<HTMLDialogElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
   const [dialogIndex, setDialogIndex] = useState(0);
-  const [rotation, setRotation] = useState(180);
 
   useEffect(() => {
-    let frame = 0;
+    const CARD_COUNT = timelineRecords.length;
+    let targetRotation = 180;
+    let currentRotation = 180;
+    let lastActiveIndex = -1;
+    let frameQueued = false;
+
     const update = () => {
-      frame = 0;
+      frameQueued = false;
       const section = sectionRef.current;
-      if (!section || innerWidth <= 900) return;
+      const dial = dialRef.current;
+      if (!section || !dial || innerWidth <= 900) return;
+
       const headerHeight =
         Number.parseFloat(
           getComputedStyle(document.documentElement).getPropertyValue(
@@ -816,21 +810,53 @@ function HumanPracticesTimeline() {
         section.offsetHeight - innerHeight + headerHeight,
       );
       const progress = clamp((headerHeight - rect.top) / scrollable);
-      setRotation(180 - progress * 360);
-      setActiveIndex(
-        Math.min(timelineRecords.length - 1, Math.round(progress * 8)),
+
+      targetRotation = 180 - progress * 360;
+      const diff = targetRotation - currentRotation;
+      if (Math.abs(diff) > 0.02) {
+        currentRotation += diff * 0.08;
+      } else {
+        currentRotation = targetRotation;
+      }
+
+      dial.style.setProperty("--hp-dial-rotation", `${currentRotation.toFixed(2)}deg`);
+
+      const nextActiveIndex = Math.min(
+        CARD_COUNT - 1,
+        Math.round(progress * CARD_COUNT),
       );
+      if (nextActiveIndex !== lastActiveIndex) {
+        lastActiveIndex = nextActiveIndex;
+        setActiveIndex(nextActiveIndex);
+      }
+
+      const stillMoving = Math.abs(targetRotation - currentRotation) > 0.01;
+      if (stillMoving) {
+        frameQueued = true;
+        requestAnimationFrame(update);
+      }
     };
+
     const request = () => {
-      if (!frame) frame = requestAnimationFrame(update);
+      if (!frameQueued) {
+        frameQueued = true;
+        requestAnimationFrame(update);
+      }
     };
+
+    const onResize = () => {
+      targetRotation = 180;
+      currentRotation = 180;
+      request();
+    };
+
     addEventListener("scroll", request, { passive: true });
-    addEventListener("resize", request, { passive: true });
-    update();
+    addEventListener("resize", onResize, { passive: true });
+    request();
+
     return () => {
-      if (frame) cancelAnimationFrame(frame);
       removeEventListener("scroll", request);
-      removeEventListener("resize", request);
+      removeEventListener("resize", onResize);
     };
   }, []);
 
@@ -917,7 +943,8 @@ function HumanPracticesTimeline() {
         <div className="hp-dial-stage">
           <div
             className="hp-dial"
-            style={{ "--hp-dial-rotation": `${rotation}deg` } as CSSProperties}
+            ref={dialRef}
+            style={{ "--hp-dial-rotation": "180deg" } as CSSProperties}
           >
             <div className="hp-dial-ring" aria-hidden="true">
               <svg viewBox="0 0 100 100">
