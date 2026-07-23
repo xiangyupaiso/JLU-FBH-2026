@@ -1,0 +1,1391 @@
+/* Hardware-only opening composition: preserve the complete apparatus and keep copy centred vertically. */
+.wiki-page.wiki-page--hardware-hero .wiki-hero {
+  min-height: calc(100svh - var(--header-height));
+  grid-template-columns:
+    minmax(340px, 500px) minmax(260px, 560px)
+    minmax(260px, 340px);
+  gap: clamp(24px, 2.5vw, 42px);
+  align-items: center;
+  justify-content: center;
+  padding: clamp(52px, 7vh, 82px) clamp(28px, 5vw, 92px);
+  background-color: var(--paper-bright);
+  background-image:
+    linear-gradient(
+      90deg,
+      rgba(252, 248, 241, 0.94) 0%,
+      rgba(252, 248, 241, 0.72) 24%,
+      rgba(252, 248, 241, 0.1) 42%,
+      rgba(252, 248, 241, 0.08) 68%,
+      rgba(252, 248, 241, 0.74) 86%,
+      rgba(252, 248, 241, 0.94) 100%
+    ),
+    url("../assets/wiki/hardware-circure-apparatus.png");
+  background-position: center, center;
+  background-repeat: no-repeat;
+  background-size: cover, contain;
+}
+
+.wiki-page.wiki-page--hardware-hero .wiki-hero__copy {
+  max-width: 500px;
+  align-self: center;
+}
+
+.wiki-page.wiki-page--hardware-hero .wiki-chapter {
+  margin-bottom: clamp(20px, 3vh, 30px);
+}
+
+.wiki-page.wiki-page--hardware-hero .wiki-hero .wiki-kicker {
+  margin-bottom: 12px;
+}
+
+.wiki-page.wiki-page--hardware-hero .wiki-hero h1 {
+  max-width: 500px;
+  font-size: clamp(48px, 4.6vw, 72px);
+  line-height: 0.92;
+}
+
+.wiki-page.wiki-page--hardware-hero .wiki-hero__lede {
+  max-width: 480px;
+  margin-top: 18px;
+  font-size: clamp(16px, 1.35vw, 19px);
+  line-height: 1.42;
+}
+
+.wiki-page.wiki-page--hardware-hero .wiki-hero__boundary {
+  width: 100%;
+  max-width: 340px;
+  grid-column: 3;
+  grid-template-columns: 1fr;
+  gap: 10px;
+  align-self: center;
+  justify-self: end;
+  margin: 0;
+  padding: 18px 20px;
+  border: 1px solid rgba(255, 255, 255, 0.62);
+  border-radius: 14px;
+  background: rgba(252, 248, 241, 0.66);
+  box-shadow:
+    inset 0 0 0 1px rgba(23, 63, 120, 0.04),
+    0 18px 44px rgba(11, 41, 77, 0.1);
+  backdrop-filter: blur(14px) saturate(1.08);
+}
+
+.wiki-page.wiki-page--hardware-hero .wiki-hero__boundary p {
+  color: var(--brand-navy-deep);
+  font-size: clamp(13px, 1vw, 15px);
+  font-weight: 620;
+  line-height: 1.48;
+  text-shadow: 0 1px 4px rgba(252, 248, 241, 0.62);
+}
+
+.wiki-page.wiki-page--hardware-hero .wiki-begin {
+  margin-top: 2px;
+  color: var(--ink);
+}
+
+@media (max-width: 1000px) {
+  .wiki-page.wiki-page--hardware-hero .wiki-hero {
+    grid-template-columns: minmax(0, 500px) minmax(260px, 320px);
+    gap: 30px;
+    justify-content: space-between;
+    padding-inline: clamp(28px, 5vw, 56px);
+  }
+
+  .wiki-page.wiki-page--hardware-hero .wiki-hero__boundary {
+    grid-column: 2;
+  }
+}
+
+@media (max-width: 820px) {
+  .wiki-page.wiki-page--hardware-hero .wiki-hero {
+    min-height: max(760px, calc(100svh - var(--header-height)));
+    grid-template-rows: auto 1fr auto;
+    grid-template-columns: 1fr;
+    gap: 18px;
+    align-content: stretch;
+    align-items: start;
+    padding: clamp(34px, 7vw, 52px) 24px 28px;
+    background-image:
+      linear-gradient(
+        180deg,
+        rgba(252, 248, 241, 0.97) 0%,
+        rgba(252, 248, 241, 0.88) 28%,
+        rgba(252, 248, 241, 0.2) 45%,
+        rgba(252, 248, 241, 0.16) 64%,
+        rgba(252, 248, 241, 0.88) 82%,
+        rgba(252, 248, 241, 0.97) 100%
+      ),
+      url("../assets/wiki/hardware-circure-apparatus.png");
+    background-position: center, center;
+    background-repeat: no-repeat;
+    background-size: cover, contain;
+  }
+
+  .wiki-page.wiki-page--hardware-hero .wiki-hero__copy {
+    grid-row: 1;
+  }
+
+  .wiki-page.wiki-page--hardware-hero .wiki-hero__boundary {
+    max-width: 360px;
+    grid-row: 3;
+    grid-column: 1;
+    justify-self: end;
+    padding: 16px 18px;
+  }
+}
+
+@media (max-width: 620px) {
+  .wiki-page.wiki-page--hardware-hero .wiki-hero {
+    padding: 30px 20px 22px;
+  }
+
+  .wiki-page.wiki-page--hardware-hero .wiki-chapter {
+    margin-bottom: 18px;
+  }
+
+  .wiki-page.wiki-page--hardware-hero .wiki-hero h1 {
+    font-size: clamp(42px, 12vw, 54px);
+  }
+
+  .wiki-page.wiki-page--hardware-hero .wiki-hero__lede {
+    max-width: 340px;
+    margin-top: 14px;
+    font-size: 15px;
+  }
+}
+
+/* Hardware evidence manuscript. Hero rules above remain independent. */
+.wiki-page--hardware-hero {
+  --hardware-navy: #173f78;
+  --hardware-navy-deep: #0b294d;
+  --hardware-gold: #b98534;
+  --hardware-gold-soft: #ead9b9;
+  --hardware-line: color-mix(in srgb, var(--hardware-navy) 17%, transparent);
+  --hardware-surface: color-mix(
+    in srgb,
+    var(--paper-bright) 92%,
+    var(--hardware-gold-soft)
+  );
+}
+
+.wiki-page--hardware-hero .hardware-feature-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+  margin: 0 0 24px;
+}
+
+.wiki-page--hardware-hero .hardware-feature-heading > div {
+  display: grid;
+  gap: 8px;
+}
+
+.wiki-page--hardware-hero .hardware-feature-heading span,
+.wiki-page--hardware-hero .hardware-feature-heading > p,
+.wiki-page--hardware-hero .hardware-data-state,
+.wiki-page--hardware-hero .hardware-placeholder-note {
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  font-size: 9px;
+  font-weight: 720;
+  letter-spacing: 0.08em;
+  line-height: 1.45;
+  text-transform: uppercase;
+}
+
+.wiki-page--hardware-hero .hardware-feature-heading span {
+  color: var(--hardware-gold);
+}
+
+.wiki-page--hardware-hero .hardware-feature-heading strong {
+  max-width: 650px;
+  color: var(--hardware-navy-deep);
+  font-family: var(--font-editorial);
+  font-size: clamp(21px, 2vw, 29px);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 1.12;
+}
+
+.wiki-page--hardware-hero .hardware-feature-heading > p {
+  max-width: 240px;
+  margin: 2px 0 0;
+  color: var(--muted);
+  text-align: right;
+}
+
+.wiki-page--hardware-hero .hardware-data-state {
+  display: inline-flex;
+  width: max-content;
+  max-width: 100%;
+  padding: 4px 7px;
+  border: 1px solid color-mix(in srgb, var(--hardware-gold) 44%, transparent);
+  border-radius: 999px;
+  color: #7f591e;
+  background: color-mix(in srgb, var(--hardware-gold-soft) 48%, transparent);
+  font-size: 8px;
+  white-space: normal;
+}
+
+.wiki-page--hardware-hero .hardware-placeholder-note {
+  margin: 18px 0 0;
+  color: var(--muted);
+}
+
+.wiki-page--hardware-hero .hardware-table-scroll {
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  overflow-x: auto;
+  border-top: 1px solid var(--hardware-navy-deep);
+  scrollbar-color: var(--hardware-gold) transparent;
+  scrollbar-width: thin;
+  overscroll-behavior-inline: contain;
+}
+
+.wiki-page--hardware-hero .hardware-table-scroll:focus-visible {
+  outline: 2px solid var(--hardware-gold);
+  outline-offset: 3px;
+}
+
+.wiki-page--hardware-hero .hardware-table-scroll table {
+  width: 100%;
+  min-width: 780px;
+  border-collapse: collapse;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.wiki-page--hardware-hero .hardware-table-scroll caption {
+  padding: 10px 0;
+  color: var(--muted);
+  font-family: "SFMono-Regular", Consolas, monospace;
+  font-size: 9px;
+  letter-spacing: 0.08em;
+  text-align: left;
+  text-transform: uppercase;
+}
+
+.wiki-page--hardware-hero .hardware-table-scroll th,
+.wiki-page--hardware-hero .hardware-table-scroll td {
+  padding: 15px 14px;
+  border-bottom: 1px solid var(--hardware-line);
+  text-align: left;
+  vertical-align: top;
+}
+
+.wiki-page--hardware-hero .hardware-table-scroll th {
+  color: var(--hardware-navy-deep);
+  font-weight: 760;
+}
+
+.wiki-page--hardware-hero .hardware-table-scroll thead th {
+  color: var(--muted);
+  font-family: "SFMono-Regular", Consolas, monospace;
+  font-size: 9px;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+/* 01 — Requirement and acceptance contract. */
+.wiki-page--hardware-hero .hardware-requirement-matrix {
+  padding: clamp(24px, 4vw, 42px);
+  border: 1px solid var(--hardware-line);
+  border-radius: 18px;
+  background:
+    radial-gradient(
+      circle at 93% 3%,
+      color-mix(in srgb, var(--care) 12%, transparent),
+      transparent 27%
+    ),
+    var(--hardware-surface);
+  box-shadow: 0 18px 50px rgba(11, 41, 77, 0.06);
+}
+
+.wiki-page--hardware-hero .hardware-judge-brief {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin-bottom: 34px;
+  border-top: 1px solid var(--hardware-navy-deep);
+  border-bottom: 1px solid var(--hardware-line);
+}
+
+.wiki-page--hardware-hero .hardware-judge-brief article {
+  display: flex;
+  min-height: 210px;
+  flex-direction: column;
+  padding: 20px;
+  border-left: 1px solid var(--hardware-line);
+}
+
+.wiki-page--hardware-hero .hardware-judge-brief article:first-child {
+  border-left: 0;
+}
+
+.wiki-page--hardware-hero .hardware-judge-brief span,
+.wiki-page--hardware-hero .hardware-judge-brief small {
+  color: var(--hardware-gold);
+  font-family: "SFMono-Regular", Consolas, monospace;
+  font-size: 8px;
+  font-weight: 720;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.wiki-page--hardware-hero .hardware-judge-brief strong {
+  margin: 38px 0 22px;
+  color: var(--hardware-navy-deep);
+  font-family: var(--font-editorial);
+  font-size: clamp(19px, 1.7vw, 24px);
+  font-weight: 400;
+  line-height: 1.16;
+}
+
+.wiki-page--hardware-hero .hardware-judge-brief small {
+  margin-top: auto;
+  color: var(--muted);
+}
+
+/* 02 — Selectable sample, measurement, and control layers. */
+.wiki-page--hardware-hero .hardware-system-diagram {
+  margin: 0;
+  padding: clamp(24px, 4vw, 42px);
+  border-radius: 18px;
+  color: var(--paper-bright);
+  background: var(--hardware-navy-deep);
+  box-shadow: 0 22px 54px rgba(11, 41, 77, 0.14);
+}
+
+.wiki-page--hardware-hero
+  .hardware-system-diagram
+  .hardware-feature-heading
+  span {
+  color: var(--hardware-gold-soft);
+}
+
+.wiki-page--hardware-hero
+  .hardware-system-diagram
+  .hardware-feature-heading
+  strong {
+  color: var(--paper-bright);
+}
+
+.wiki-page--hardware-hero .hardware-system-diagram .hardware-feature-heading p {
+  color: rgba(252, 248, 241, 0.62);
+}
+
+.wiki-page--hardware-hero .hardware-system-diagram__controls {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.wiki-page--hardware-hero .hardware-system-diagram__controls button {
+  display: grid;
+  min-height: 132px;
+  gap: 8px;
+  align-content: end;
+  padding: 18px;
+  border: 1px solid rgba(252, 248, 241, 0.2);
+  border-radius: 14px;
+  color: var(--paper-bright);
+  background: rgba(252, 248, 241, 0.045);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition-property:
+    border-color, background-color, color, transform, box-shadow;
+  transition-duration: 180ms;
+  transition-timing-function: var(--ease-out);
+}
+
+.wiki-page--hardware-hero .hardware-system-diagram__controls button > span,
+.wiki-page--hardware-hero .hardware-system-diagram__controls button small {
+  color: rgba(252, 248, 241, 0.62);
+  font-family: "SFMono-Regular", Consolas, monospace;
+  font-size: 9px;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.wiki-page--hardware-hero .hardware-system-diagram__controls button strong {
+  font-family: var(--font-editorial);
+  font-size: clamp(20px, 2vw, 27px);
+  font-weight: 400;
+  line-height: 1.05;
+}
+
+.wiki-page--hardware-hero .hardware-system-diagram__controls button:hover,
+.wiki-page--hardware-hero
+  .hardware-system-diagram__controls
+  button:focus-visible {
+  border-color: rgba(234, 217, 185, 0.72);
+  background: rgba(252, 248, 241, 0.09);
+  transform: translateY(-3px);
+}
+
+.wiki-page--hardware-hero
+  .hardware-system-diagram__controls
+  button:focus-visible {
+  outline: 2px solid var(--hardware-gold-soft);
+  outline-offset: 3px;
+}
+
+.wiki-page--hardware-hero .hardware-system-diagram__controls button:active {
+  transform: scale(0.96);
+}
+
+.wiki-page--hardware-hero .hardware-system-diagram__controls button.is-active {
+  border-color: var(--hardware-gold-soft);
+  color: var(--hardware-navy-deep);
+  background: var(--hardware-gold-soft);
+  box-shadow: 0 12px 30px rgba(3, 17, 33, 0.22);
+}
+
+.wiki-page--hardware-hero
+  .hardware-system-diagram__controls
+  button.is-active
+  > span,
+.wiki-page--hardware-hero
+  .hardware-system-diagram__controls
+  button.is-active
+  small {
+  color: color-mix(in srgb, var(--hardware-navy-deep) 66%, transparent);
+}
+
+.wiki-page--hardware-hero .hardware-system-diagram__stage {
+  display: grid;
+  grid-template-columns: minmax(0, 1.24fr) minmax(300px, 0.76fr);
+  gap: 14px;
+}
+
+.wiki-page--hardware-hero .hardware-system-diagram__image {
+  position: relative;
+  display: grid;
+  min-height: 480px;
+  place-items: center;
+  overflow: hidden;
+  border: 1px solid rgba(252, 248, 241, 0.16);
+  border-radius: 14px;
+  background: rgba(252, 248, 241, 0.96);
+}
+
+.wiki-page--hardware-hero .hardware-system-diagram__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.wiki-page--hardware-hero .hardware-system-marker {
+  position: absolute;
+  display: inline-flex;
+  min-height: 30px;
+  align-items: center;
+  gap: 7px;
+  padding: 5px 9px 5px 5px;
+  border: 1px solid rgba(11, 41, 77, 0.18);
+  border-radius: 999px;
+  color: var(--hardware-navy-deep);
+  background: rgba(252, 248, 241, 0.9);
+  box-shadow: 0 8px 22px rgba(11, 41, 77, 0.12);
+  font-size: 9px;
+  font-weight: 720;
+  transform: translate(-50%, -50%);
+}
+
+.wiki-page--hardware-hero .hardware-system-marker b {
+  display: grid;
+  width: 20px;
+  height: 20px;
+  place-items: center;
+  border-radius: 50%;
+  color: var(--paper-bright);
+  background: var(--hardware-gold);
+  font-family: "SFMono-Regular", Consolas, monospace;
+  font-size: 7px;
+}
+
+.wiki-page--hardware-hero .hardware-system-diagram__stage > article {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  padding: 24px;
+  border: 1px solid rgba(252, 248, 241, 0.16);
+  border-radius: 14px;
+  background: rgba(252, 248, 241, 0.055);
+}
+
+.wiki-page--hardware-hero .hardware-system-diagram__stage > article header {
+  display: grid;
+  gap: 7px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid rgba(252, 248, 241, 0.16);
+}
+
+.wiki-page--hardware-hero .hardware-system-diagram__stage > article header span,
+.wiki-page--hardware-hero .hardware-system-diagram__stage dt {
+  color: var(--hardware-gold-soft);
+  font-family: "SFMono-Regular", Consolas, monospace;
+  font-size: 8px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.wiki-page--hardware-hero
+  .hardware-system-diagram__stage
+  > article
+  header
+  strong {
+  font-family: var(--font-editorial);
+  font-size: clamp(24px, 2.3vw, 34px);
+  font-weight: 400;
+}
+
+.wiki-page--hardware-hero .hardware-system-diagram__stage dl {
+  display: grid;
+  margin: 0 0 18px;
+}
+
+.wiki-page--hardware-hero .hardware-system-diagram__stage dl > div {
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(252, 248, 241, 0.12);
+}
+
+.wiki-page--hardware-hero .hardware-system-diagram__stage dd {
+  margin: 7px 0 0;
+  color: rgba(252, 248, 241, 0.74);
+  font-size: 11px;
+  line-height: 1.55;
+}
+
+.wiki-page--hardware-hero .hardware-system-diagram .hardware-data-state {
+  margin-top: auto;
+  color: var(--hardware-gold-soft);
+  border-color: rgba(234, 217, 185, 0.38);
+  background: rgba(234, 217, 185, 0.08);
+}
+
+/* 03 — Exploded record and BOM. */
+.wiki-page--hardware-hero .hardware-assembly-bom {
+  display: grid;
+  gap: 14px;
+}
+
+.wiki-page--hardware-hero .hardware-exploded-assembly,
+.wiki-page--hardware-hero .hardware-bom-record,
+.wiki-page--hardware-hero .hardware-calibration-plot,
+.wiki-page--hardware-hero .hardware-performance-table,
+.wiki-page--hardware-hero .hardware-safety-risk > section,
+.wiki-page--hardware-hero .hardware-release-verification,
+.wiki-page--hardware-hero .hardware-technical-appendices {
+  min-width: 0;
+  margin: 0;
+  padding: clamp(22px, 3.5vw, 36px);
+  border: 1px solid var(--hardware-line);
+  border-radius: 16px;
+  background: var(--hardware-surface);
+}
+
+.wiki-page--hardware-hero .hardware-exploded-assembly__stack {
+  display: grid;
+  max-width: 920px;
+  gap: 12px;
+  margin: 0 auto;
+  padding: 22px 0;
+}
+
+.wiki-page--hardware-hero .hardware-exploded-assembly__stack article {
+  position: relative;
+  display: grid;
+  min-height: 106px;
+  grid-template-columns: 44px minmax(180px, 0.8fr) minmax(260px, 1.2fr);
+  gap: 18px;
+  align-items: center;
+  padding: 18px 22px;
+  border: 1px solid var(--hardware-line);
+  border-radius: 14px;
+  background: color-mix(in srgb, var(--paper-bright) 90%, transparent);
+  box-shadow: 0 12px 28px rgba(11, 41, 77, 0.05);
+}
+
+.wiki-page--hardware-hero
+  .hardware-exploded-assembly__stack
+  article:nth-child(2) {
+  margin-inline: 4%;
+}
+
+.wiki-page--hardware-hero
+  .hardware-exploded-assembly__stack
+  article:nth-child(3) {
+  margin-inline: 8%;
+}
+
+.wiki-page--hardware-hero
+  .hardware-exploded-assembly__stack
+  article:nth-child(4) {
+  margin-inline: 12%;
+}
+
+.wiki-page--hardware-hero .hardware-exploded-assembly__stack article > span {
+  color: var(--hardware-gold);
+  font-family: "SFMono-Regular", Consolas, monospace;
+  font-size: 10px;
+  font-weight: 720;
+}
+
+.wiki-page--hardware-hero .hardware-exploded-assembly__stack article > div {
+  display: grid;
+  gap: 8px;
+}
+
+.wiki-page--hardware-hero .hardware-exploded-assembly__stack strong {
+  color: var(--hardware-navy-deep);
+  font-family: var(--font-editorial);
+  font-size: clamp(19px, 1.8vw, 24px);
+  font-weight: 400;
+}
+
+.wiki-page--hardware-hero .hardware-exploded-assembly__stack p,
+.wiki-page--hardware-hero .hardware-exploded-assembly__stack small {
+  margin: 0;
+  color: var(--muted);
+  font-size: 10px;
+  line-height: 1.5;
+}
+
+.wiki-page--hardware-hero .hardware-exploded-assembly__stack small {
+  padding-left: 18px;
+  border-left: 1px solid var(--hardware-line);
+}
+
+.wiki-page--hardware-hero .hardware-exploded-assembly__stack i {
+  position: absolute;
+  right: 50%;
+  bottom: -13px;
+  width: 1px;
+  height: 13px;
+  background: var(--hardware-gold);
+}
+
+.wiki-page--hardware-hero
+  .hardware-exploded-assembly__stack
+  article:last-child
+  i {
+  display: none;
+}
+
+.wiki-page--hardware-hero .hardware-bom-record .hardware-table-scroll table {
+  min-width: 1060px;
+}
+
+/* 04 — Measurement-driven iteration. */
+.wiki-page--hardware-hero .hardware-iteration-timeline {
+  margin: 0;
+  padding: clamp(24px, 4vw, 42px);
+  border-radius: 18px;
+  color: var(--paper-bright);
+  background: var(--hardware-navy-deep);
+  box-shadow: 0 22px 54px rgba(11, 41, 77, 0.14);
+}
+
+.wiki-page--hardware-hero
+  .hardware-iteration-timeline
+  .hardware-feature-heading
+  span {
+  color: var(--hardware-gold-soft);
+}
+
+.wiki-page--hardware-hero
+  .hardware-iteration-timeline
+  .hardware-feature-heading
+  strong {
+  color: var(--paper-bright);
+}
+
+.wiki-page--hardware-hero
+  .hardware-iteration-timeline
+  .hardware-feature-heading
+  p {
+  color: rgba(252, 248, 241, 0.62);
+}
+
+.wiki-page--hardware-hero .hardware-iteration-timeline__route {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  border-top: 1px solid rgba(252, 248, 241, 0.2);
+  border-bottom: 1px solid rgba(252, 248, 241, 0.16);
+}
+
+.wiki-page--hardware-hero .hardware-iteration-timeline__route article {
+  display: flex;
+  min-height: 240px;
+  flex-direction: column;
+  padding: 22px;
+  border-left: 1px solid rgba(252, 248, 241, 0.14);
+}
+
+.wiki-page--hardware-hero
+  .hardware-iteration-timeline__route
+  article:first-child {
+  border-left: 0;
+}
+
+.wiki-page--hardware-hero .hardware-iteration-timeline__route span,
+.wiki-page--hardware-hero .hardware-iteration-timeline__route small,
+.wiki-page--hardware-hero .hardware-iteration-ledger span {
+  color: var(--hardware-gold-soft);
+  font-family: "SFMono-Regular", Consolas, monospace;
+  font-size: 8px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.wiki-page--hardware-hero .hardware-iteration-timeline__route strong {
+  margin-top: 54px;
+  font-family: var(--font-editorial);
+  font-size: clamp(21px, 2vw, 28px);
+  font-weight: 400;
+}
+
+.wiki-page--hardware-hero .hardware-iteration-timeline__route p {
+  margin: 12px 0 24px;
+  color: rgba(252, 248, 241, 0.68);
+  font-size: 11px;
+  line-height: 1.55;
+}
+
+.wiki-page--hardware-hero .hardware-iteration-timeline__route small {
+  margin-top: auto;
+  color: var(--care);
+}
+
+.wiki-page--hardware-hero .hardware-iteration-ledger {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin-top: 18px;
+  border-top: 1px solid rgba(252, 248, 241, 0.14);
+}
+
+.wiki-page--hardware-hero .hardware-iteration-ledger > div {
+  display: grid;
+  min-height: 112px;
+  gap: 18px;
+  align-content: space-between;
+  padding: 18px;
+  border-left: 1px solid rgba(252, 248, 241, 0.12);
+}
+
+.wiki-page--hardware-hero .hardware-iteration-ledger > div:first-child {
+  border-left: 0;
+}
+
+.wiki-page--hardware-hero .hardware-iteration-ledger strong {
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1.45;
+}
+
+/* 05 — Empty calibration chart and performance comparison. */
+.wiki-page--hardware-hero .hardware-calibration-performance {
+  display: grid;
+  gap: 14px;
+}
+
+.wiki-page--hardware-hero .hardware-calibration-plot__frame {
+  position: relative;
+  display: grid;
+  min-height: 410px;
+  place-items: center;
+  margin: 12px 18px 26px 44px;
+  border-bottom: 1px solid var(--hardware-navy-deep);
+  border-left: 1px solid var(--hardware-navy-deep);
+  overflow: visible;
+  color: color-mix(in srgb, var(--hardware-navy) 34%, transparent);
+  text-align: center;
+}
+
+.wiki-page--hardware-hero .hardware-calibration-plot__grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      transparent 0,
+      transparent calc(25% - 1px),
+      rgba(23, 63, 120, 0.1) 25%
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent 0,
+      transparent calc(20% - 1px),
+      rgba(23, 63, 120, 0.1) 20%
+    );
+}
+
+.wiki-page--hardware-hero .hardware-calibration-plot__frame > strong {
+  z-index: 1;
+  max-width: 420px;
+  font-family: var(--font-editorial);
+  font-size: clamp(28px, 4vw, 50px);
+  font-weight: 400;
+}
+
+.wiki-page--hardware-hero .hardware-calibration-plot__frame > small {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  z-index: 1;
+  color: var(--muted);
+  font-family: "SFMono-Regular", Consolas, monospace;
+  font-size: 8px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.wiki-page--hardware-hero .hardware-calibration-plot__x,
+.wiki-page--hardware-hero .hardware-calibration-plot__y {
+  position: absolute;
+  color: var(--muted);
+  font-family: "SFMono-Regular", Consolas, monospace;
+  font-size: 8px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.wiki-page--hardware-hero .hardware-calibration-plot__x {
+  right: 0;
+  bottom: -22px;
+}
+
+.wiki-page--hardware-hero .hardware-calibration-plot__y {
+  bottom: 50%;
+  left: -102px;
+  transform: rotate(-90deg);
+}
+
+.wiki-page--hardware-hero .hardware-calibration-contract {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  border-top: 1px solid var(--hardware-line);
+}
+
+.wiki-page--hardware-hero .hardware-calibration-contract > div {
+  display: grid;
+  min-height: 96px;
+  gap: 12px;
+  align-content: space-between;
+  padding: 16px;
+  border-left: 1px solid var(--hardware-line);
+}
+
+.wiki-page--hardware-hero .hardware-calibration-contract > div:first-child {
+  border-left: 0;
+}
+
+.wiki-page--hardware-hero .hardware-calibration-contract span {
+  color: var(--hardware-gold);
+  font-family: "SFMono-Regular", Consolas, monospace;
+  font-size: 8px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.wiki-page--hardware-hero .hardware-calibration-contract strong {
+  color: var(--hardware-navy-deep);
+  font-size: 11px;
+  line-height: 1.45;
+}
+
+.wiki-page--hardware-hero
+  .hardware-performance-table
+  .hardware-table-scroll
+  table {
+  min-width: 920px;
+}
+
+/* 06 — Safety, cleaning, and maintenance. */
+.wiki-page--hardware-hero .hardware-safety-risk {
+  display: grid;
+  gap: 14px;
+}
+
+.wiki-page--hardware-hero .hardware-safety-risk .hardware-table-scroll table {
+  min-width: 940px;
+}
+
+.wiki-page--hardware-hero .hardware-maintenance-register > div {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  border-top: 1px solid var(--hardware-navy-deep);
+}
+
+.wiki-page--hardware-hero .hardware-maintenance-register article {
+  display: flex;
+  min-height: 190px;
+  flex-direction: column;
+  padding: 20px;
+  border-left: 1px solid var(--hardware-line);
+}
+
+.wiki-page--hardware-hero .hardware-maintenance-register article:first-child {
+  border-left: 0;
+}
+
+.wiki-page--hardware-hero .hardware-maintenance-register article > span,
+.wiki-page--hardware-hero .hardware-maintenance-register article small {
+  color: var(--hardware-gold);
+  font-family: "SFMono-Regular", Consolas, monospace;
+  font-size: 8px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.wiki-page--hardware-hero .hardware-maintenance-register article strong {
+  margin-top: 34px;
+  color: var(--hardware-navy-deep);
+  font-family: var(--font-editorial);
+  font-size: clamp(19px, 1.8vw, 24px);
+  font-weight: 400;
+}
+
+.wiki-page--hardware-hero .hardware-maintenance-register article p {
+  margin: 10px 0 22px;
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.wiki-page--hardware-hero .hardware-maintenance-register article small {
+  margin-top: auto;
+  color: var(--muted);
+}
+
+/* 07 — Open hardware release. */
+.wiki-page--hardware-hero .hardware-release-package {
+  display: grid;
+  gap: 14px;
+}
+
+.wiki-page--hardware-hero .hardware-release-checklist {
+  padding: clamp(24px, 4vw, 42px);
+  border-radius: 18px;
+  color: var(--paper-bright);
+  background: var(--hardware-navy-deep);
+  box-shadow: 0 22px 54px rgba(11, 41, 77, 0.14);
+}
+
+.wiki-page--hardware-hero
+  .hardware-release-checklist
+  .hardware-feature-heading
+  span {
+  color: var(--hardware-gold-soft);
+}
+
+.wiki-page--hardware-hero
+  .hardware-release-checklist
+  .hardware-feature-heading
+  strong {
+  color: var(--paper-bright);
+}
+
+.wiki-page--hardware-hero
+  .hardware-release-checklist
+  .hardware-feature-heading
+  p {
+  color: rgba(252, 248, 241, 0.62);
+}
+
+.wiki-page--hardware-hero .hardware-release-checklist > div {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  border-top: 1px solid rgba(252, 248, 241, 0.2);
+  border-bottom: 1px solid rgba(252, 248, 241, 0.16);
+}
+
+.wiki-page--hardware-hero .hardware-release-checklist article {
+  display: flex;
+  min-height: 250px;
+  flex-direction: column;
+  padding: 20px;
+  border-left: 1px solid rgba(252, 248, 241, 0.14);
+}
+
+.wiki-page--hardware-hero .hardware-release-checklist article:first-child {
+  border-left: 0;
+}
+
+.wiki-page--hardware-hero .hardware-release-checklist article > span,
+.wiki-page--hardware-hero .hardware-release-checklist article small {
+  color: var(--hardware-gold-soft);
+  font-family: "SFMono-Regular", Consolas, monospace;
+  font-size: 8px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.wiki-page--hardware-hero .hardware-release-checklist article strong {
+  margin-top: 52px;
+  font-family: var(--font-editorial);
+  font-size: clamp(20px, 1.8vw, 25px);
+  font-weight: 400;
+}
+
+.wiki-page--hardware-hero .hardware-release-checklist article p {
+  margin: 12px 0 24px;
+  color: rgba(252, 248, 241, 0.68);
+  font-size: 10px;
+  line-height: 1.55;
+}
+
+.wiki-page--hardware-hero .hardware-release-checklist article small {
+  margin-top: auto;
+  color: var(--care);
+}
+
+.wiki-page--hardware-hero .hardware-release-verification header {
+  display: grid;
+  gap: 8px;
+  margin-bottom: 22px;
+}
+
+.wiki-page--hardware-hero .hardware-release-verification header span,
+.wiki-page--hardware-hero .hardware-release-verification dt,
+.wiki-page--hardware-hero .hardware-technical-appendices header > span,
+.wiki-page--hardware-hero .hardware-technical-appendices summary > span {
+  color: var(--hardware-gold);
+  font-family: "SFMono-Regular", Consolas, monospace;
+  font-size: 8px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.wiki-page--hardware-hero .hardware-release-verification h3,
+.wiki-page--hardware-hero .hardware-technical-appendices h3 {
+  margin: 0;
+  color: var(--hardware-navy-deep);
+  font-family: var(--font-editorial);
+  font-size: clamp(24px, 3vw, 38px);
+  font-weight: 400;
+  line-height: 1.08;
+}
+
+.wiki-page--hardware-hero .hardware-release-verification dl {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin: 0;
+  border-top: 1px solid var(--hardware-navy-deep);
+}
+
+.wiki-page--hardware-hero .hardware-release-verification dl > div {
+  min-height: 126px;
+  padding: 18px;
+  border-left: 1px solid var(--hardware-line);
+}
+
+.wiki-page--hardware-hero .hardware-release-verification dl > div:first-child {
+  border-left: 0;
+}
+
+.wiki-page--hardware-hero .hardware-release-verification dd {
+  margin: 18px 0 0;
+  color: var(--hardware-navy-deep);
+  font-size: 11px;
+  line-height: 1.45;
+}
+
+.wiki-page--hardware-hero .hardware-technical-appendices header {
+  display: grid;
+  gap: 8px;
+  margin-bottom: 22px;
+}
+
+.wiki-page--hardware-hero .hardware-technical-appendices header p {
+  max-width: 680px;
+  margin: 4px 0 0;
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.55;
+}
+
+.wiki-page--hardware-hero .hardware-technical-appendices details {
+  border-top: 1px solid var(--hardware-line);
+}
+
+.wiki-page--hardware-hero .hardware-technical-appendices details:last-child {
+  border-bottom: 1px solid var(--hardware-line);
+}
+
+.wiki-page--hardware-hero .hardware-technical-appendices summary {
+  display: grid;
+  min-height: 72px;
+  grid-template-columns: 96px 1fr 28px;
+  gap: 14px;
+  align-items: center;
+  color: var(--hardware-navy-deep);
+  cursor: pointer;
+  list-style: none;
+  transition-property: color, background-color;
+  transition-duration: 180ms;
+  transition-timing-function: var(--ease-out);
+}
+
+.wiki-page--hardware-hero
+  .hardware-technical-appendices
+  summary::-webkit-details-marker {
+  display: none;
+}
+
+.wiki-page--hardware-hero .hardware-technical-appendices summary:hover,
+.wiki-page--hardware-hero .hardware-technical-appendices summary:focus-visible {
+  color: var(--hardware-gold);
+  background: color-mix(in srgb, var(--hardware-gold-soft) 22%, transparent);
+}
+
+.wiki-page--hardware-hero .hardware-technical-appendices summary:focus-visible {
+  outline: 2px solid var(--hardware-gold);
+  outline-offset: 3px;
+}
+
+.wiki-page--hardware-hero .hardware-technical-appendices summary b {
+  color: var(--hardware-gold);
+  font-size: 20px;
+  font-weight: 400;
+  transition-property: transform;
+  transition-duration: 180ms;
+  transition-timing-function: var(--ease-out);
+}
+
+.wiki-page--hardware-hero
+  .hardware-technical-appendices
+  details[open]
+  summary
+  b {
+  transform: rotate(45deg);
+}
+
+.wiki-page--hardware-hero .hardware-technical-appendices details > p {
+  max-width: 720px;
+  margin: 0;
+  padding: 0 0 24px 110px;
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.65;
+}
+
+@media (max-width: 1080px) {
+  .wiki-page--hardware-hero .hardware-judge-brief,
+  .wiki-page--hardware-hero .hardware-iteration-timeline__route,
+  .wiki-page--hardware-hero .hardware-iteration-ledger,
+  .wiki-page--hardware-hero .hardware-maintenance-register > div,
+  .wiki-page--hardware-hero .hardware-release-verification dl {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .wiki-page--hardware-hero .hardware-judge-brief article:nth-child(3),
+  .wiki-page--hardware-hero
+    .hardware-iteration-timeline__route
+    article:nth-child(3),
+  .wiki-page--hardware-hero .hardware-iteration-ledger > div:nth-child(3),
+  .wiki-page--hardware-hero .hardware-maintenance-register article:nth-child(3),
+  .wiki-page--hardware-hero
+    .hardware-release-verification
+    dl
+    > div:nth-child(3) {
+    border-left: 0;
+  }
+
+  .wiki-page--hardware-hero .hardware-system-diagram__stage {
+    grid-template-columns: 1fr;
+  }
+
+  .wiki-page--hardware-hero .hardware-system-diagram__image {
+    min-height: 430px;
+  }
+
+  .wiki-page--hardware-hero .hardware-release-checklist > div {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .wiki-page--hardware-hero .hardware-release-checklist article:nth-child(4) {
+    border-left: 0;
+  }
+}
+
+@media (max-width: 820px) {
+  .wiki-page--hardware-hero .hardware-feature-heading {
+    display: grid;
+    gap: 12px;
+  }
+
+  .wiki-page--hardware-hero .hardware-feature-heading > p {
+    max-width: none;
+    text-align: left;
+  }
+
+  .wiki-page--hardware-hero .hardware-system-diagram__controls {
+    grid-template-columns: 1fr;
+  }
+
+  .wiki-page--hardware-hero .hardware-system-diagram__controls button {
+    min-height: 84px;
+    grid-template-columns: 32px 1fr;
+    align-content: center;
+  }
+
+  .wiki-page--hardware-hero .hardware-system-diagram__controls button small {
+    grid-column: 2;
+  }
+
+  .wiki-page--hardware-hero .hardware-system-diagram__image {
+    min-height: 340px;
+  }
+
+  .wiki-page--hardware-hero .hardware-system-marker {
+    padding-right: 6px;
+    font-size: 0;
+  }
+
+  .wiki-page--hardware-hero .hardware-exploded-assembly__stack article {
+    grid-template-columns: 36px 1fr;
+  }
+
+  .wiki-page--hardware-hero .hardware-exploded-assembly__stack small {
+    grid-column: 2;
+    padding: 10px 0 0;
+    border-top: 1px solid var(--hardware-line);
+    border-left: 0;
+  }
+
+  .wiki-page--hardware-hero
+    .hardware-exploded-assembly__stack
+    article:nth-child(n) {
+    margin-inline: 0;
+  }
+
+  .wiki-page--hardware-hero .hardware-calibration-contract {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .wiki-page--hardware-hero .hardware-calibration-contract > div:nth-child(3) {
+    border-left: 0;
+  }
+
+  .wiki-page--hardware-hero .hardware-release-checklist > div {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .wiki-page--hardware-hero .hardware-release-checklist article:nth-child(3),
+  .wiki-page--hardware-hero .hardware-release-checklist article:nth-child(5) {
+    border-left: 0;
+  }
+
+  .wiki-page--hardware-hero .hardware-release-checklist article:nth-child(4) {
+    border-left: 1px solid rgba(252, 248, 241, 0.14);
+  }
+}
+
+@media (max-width: 620px) {
+  .wiki-page--hardware-hero .hardware-requirement-matrix,
+  .wiki-page--hardware-hero .hardware-system-diagram,
+  .wiki-page--hardware-hero .hardware-iteration-timeline,
+  .wiki-page--hardware-hero .hardware-release-checklist,
+  .wiki-page--hardware-hero .hardware-exploded-assembly,
+  .wiki-page--hardware-hero .hardware-bom-record,
+  .wiki-page--hardware-hero .hardware-calibration-plot,
+  .wiki-page--hardware-hero .hardware-performance-table,
+  .wiki-page--hardware-hero .hardware-safety-risk > section,
+  .wiki-page--hardware-hero .hardware-release-verification,
+  .wiki-page--hardware-hero .hardware-technical-appendices {
+    padding: 20px;
+    border-radius: 14px;
+  }
+
+  .wiki-page--hardware-hero .hardware-judge-brief,
+  .wiki-page--hardware-hero .hardware-iteration-timeline__route,
+  .wiki-page--hardware-hero .hardware-iteration-ledger,
+  .wiki-page--hardware-hero .hardware-maintenance-register > div,
+  .wiki-page--hardware-hero .hardware-release-checklist > div,
+  .wiki-page--hardware-hero .hardware-release-verification dl,
+  .wiki-page--hardware-hero .hardware-calibration-contract {
+    grid-template-columns: 1fr;
+  }
+
+  .wiki-page--hardware-hero .hardware-judge-brief article,
+  .wiki-page--hardware-hero .hardware-iteration-timeline__route article,
+  .wiki-page--hardware-hero .hardware-iteration-ledger > div,
+  .wiki-page--hardware-hero .hardware-maintenance-register article,
+  .wiki-page--hardware-hero .hardware-release-checklist article,
+  .wiki-page--hardware-hero .hardware-release-verification dl > div,
+  .wiki-page--hardware-hero .hardware-calibration-contract > div {
+    min-height: auto;
+    border-top: 1px solid var(--hardware-line);
+    border-left: 0;
+  }
+
+  .wiki-page--hardware-hero .hardware-judge-brief article:first-child,
+  .wiki-page--hardware-hero
+    .hardware-iteration-timeline__route
+    article:first-child,
+  .wiki-page--hardware-hero .hardware-iteration-ledger > div:first-child,
+  .wiki-page--hardware-hero .hardware-maintenance-register article:first-child,
+  .wiki-page--hardware-hero .hardware-release-checklist article:first-child,
+  .wiki-page--hardware-hero .hardware-release-verification dl > div:first-child,
+  .wiki-page--hardware-hero .hardware-calibration-contract > div:first-child {
+    border-top: 0;
+  }
+
+  .wiki-page--hardware-hero .hardware-judge-brief article strong,
+  .wiki-page--hardware-hero .hardware-iteration-timeline__route strong,
+  .wiki-page--hardware-hero .hardware-maintenance-register article strong,
+  .wiki-page--hardware-hero .hardware-release-checklist article strong {
+    margin-top: 24px;
+  }
+
+  .wiki-page--hardware-hero .hardware-system-diagram__image {
+    min-height: 250px;
+  }
+
+  .wiki-page--hardware-hero .hardware-system-diagram__stage > article {
+    padding: 18px;
+  }
+
+  .wiki-page--hardware-hero .hardware-calibration-plot__frame {
+    min-height: 290px;
+    margin: 8px 6px 26px 30px;
+  }
+
+  .wiki-page--hardware-hero .hardware-calibration-plot__y {
+    left: -90px;
+  }
+
+  .wiki-page--hardware-hero .hardware-technical-appendices summary {
+    min-height: 78px;
+    grid-template-columns: 1fr 24px;
+  }
+
+  .wiki-page--hardware-hero .hardware-technical-appendices summary > span {
+    grid-column: 1 / -1;
+    padding-top: 12px;
+  }
+
+  .wiki-page--hardware-hero .hardware-technical-appendices details > p {
+    padding: 0 0 22px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wiki-page--hardware-hero .hardware-system-diagram__controls button,
+  .wiki-page--hardware-hero .hardware-technical-appendices summary,
+  .wiki-page--hardware-hero .hardware-technical-appendices summary b {
+    transition: none;
+  }
+
+  .wiki-page--hardware-hero .hardware-system-diagram__controls button:hover,
+  .wiki-page--hardware-hero
+    .hardware-system-diagram__controls
+    button:focus-visible {
+    transform: none;
+  }
+}

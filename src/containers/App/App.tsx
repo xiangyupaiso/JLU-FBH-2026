@@ -6,7 +6,7 @@ import "../../styles/circure-footer.css"; // global brand footer / final team re
 import "../../styles/circure-back-to-top.css"; // global floating return-to-top control
 import { Route, Routes, useLocation } from "react-router-dom";
 import { getPathMapping, stringToSlug } from "../../utils";
-import { useEffect } from "react";
+import { useEffect, useLayoutEffect } from "react";
 import { Navbar } from "../../components/Navbar";
 import { Header } from "../../components/Header";
 import { NotFound } from "../../components/NotFound";
@@ -19,6 +19,30 @@ const App = () => {
   const { pathname } = useLocation();
   const teamSlug = stringToSlug(import.meta.env.VITE_TEAM_NAME);
   const currentPath = pathname.split(`/${teamSlug}`).pop() || "/";
+
+  // Route changes are page transitions, not in-page navigation. Reset the
+  // shared header and viewport before the new page paints so neither the
+  // previous route's tone nor global smooth scrolling can leak across pages.
+  useLayoutEffect(() => {
+    const root = document.documentElement;
+    const header = document.querySelector<HTMLElement>("[data-header]");
+    const hadDirectScrollMode = root.classList.contains("is-thread-directing");
+
+    if (header) {
+      header.dataset.tone = "bright";
+    }
+
+    root.classList.add("is-thread-directing");
+    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+
+    const frame = window.requestAnimationFrame(() => {
+      if (!hadDirectScrollMode) {
+        root.classList.remove("is-thread-directing");
+      }
+    });
+
+    return () => window.cancelAnimationFrame(frame);
+  }, [pathname]);
 
   // Set Page Title
   const title =

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import apparatusUrl from "../../../assets/wiki/wetlab-circure-apparatus.png";
+import apparatusUrl from "../../../assets/wiki/hardware-circure-apparatus.png";
 import "../../../styles/wiki-features.css";
 
 export function DryLabSignature({

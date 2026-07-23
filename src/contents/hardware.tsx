@@ -1,19 +1,30 @@
 import { WikiPage } from "../components/wiki/WikiPage";
 import {
-  BomTable,
-  ReproducibilityChecklist,
-} from "../components/wiki/features/DryLabFeatures";
-import { hardwarePage } from "../data/dryLabPages";
+  AnnotatedSystemDiagram,
+  BuildIterationTimeline,
+  HardwareAssemblyAndBom,
+  HardwareCalibrationAndPerformance,
+  HardwareRequirementMatrix,
+  HardwareSafetyRiskMatrix,
+  OpenHardwareReleaseChecklist,
+} from "../components/wiki/features/HardwareEvidenceFeatures";
+import { hardwareEvidencePage } from "../data/hardwarePage";
+import "../styles/hardware-page.css";
 
 export function Hardware() {
   return (
     <WikiPage
-      content={hardwarePage}
+      content={hardwareEvidencePage}
       heroVisual={null}
       pageClassName="wiki-page--hardware-hero"
       features={{
-        "hardware-iterations": <BomTable />,
-        "hardware-release": <ReproducibilityChecklist />,
+        "hardware-requirements": <HardwareRequirementMatrix />,
+        "hardware-system": <AnnotatedSystemDiagram />,
+        "hardware-assembly": <HardwareAssemblyAndBom />,
+        "hardware-iterations": <BuildIterationTimeline />,
+        "hardware-calibration": <HardwareCalibrationAndPerformance />,
+        "hardware-safety": <HardwareSafetyRiskMatrix />,
+        "hardware-release": <OpenHardwareReleaseChecklist />,
       }}
     />
   );

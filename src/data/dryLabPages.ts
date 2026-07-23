@@ -254,10 +254,10 @@ export const hardwarePage: WikiPageContent = {
   category: "dry-lab",
   chapter: "Dry Lab / 03 of 03",
   eyebrow: "Hardware · Build record",
-  title: "A device is evidence in physical form.",
-  lede: "A CirCure hardware page should connect a laboratory need to design requirements, versions, calibration, performance, safety, cost, and an open reproduction package.",
+  title: "Make hardware reproducible.",
+  lede: "Trace need, design, calibration, safety, cost, and reuse in one build record.",
   boundary:
-    "The current repository contains an illustrative apparatus image but no verified device record, BOM, CAD, firmware, calibration, or performance data. The page remains a responsible scaffold.",
+    "Awaiting a verified device, BOM, CAD, firmware, calibration, and performance data.",
   visual: "hardware-schematic",
   visualLabel: "Proposed apparatus and calibration points",
   visualSteps: ["sample path", "measurement", "control"],

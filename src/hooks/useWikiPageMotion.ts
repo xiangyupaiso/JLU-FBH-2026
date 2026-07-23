@@ -18,7 +18,6 @@ export function useWikiPageMotion(
     const root = rootRef.current;
     if (!root) return;
 
-    const record = root.querySelector<HTMLElement>(".wiki-record");
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
     const headerHeight =
       Number.parseFloat(
@@ -27,12 +26,30 @@ export function useWikiPageMotion(
         ),
       ) || 78;
     const outlineOffset = headerHeight + 32;
+    const outlineProgressOffset = headerHeight + 24;
     const revealElements = Array.from(
       root.querySelectorAll<HTMLElement>("[data-wiki-reveal]"),
     );
     const sections = sectionIds
       .map((id) => root.querySelector<HTMLElement>(`#${id}`))
       .filter((section): section is HTMLElement => Boolean(section));
+    const outlineTrackers = Array.from(
+      root.querySelectorAll<HTMLElement>(".wiki-outline"),
+    )
+      .map((outline) => {
+        const linkedSections = Array.from(
+          outline.querySelectorAll<HTMLAnchorElement>('nav a[href^="#"]'),
+        )
+          .map((link) => {
+            const id = link.getAttribute("href")?.slice(1);
+            const section = id ? document.getElementById(id) : null;
+            return section && root.contains(section) ? section : null;
+          })
+          .filter((section): section is HTMLElement => Boolean(section));
+
+        return { outline, sections: linkedSections };
+      })
+      .filter((tracker) => tracker.sections.length > 0);
     const routeHash = window.location.hash.slice(1);
 
     if (reducedMotion.matches || !("IntersectionObserver" in window)) {
@@ -64,19 +81,24 @@ export function useWikiPageMotion(
         clamp(-bounds.top / pageScrollable).toFixed(4),
       );
 
-      if (record) {
-        const recordBounds = record.getBoundingClientRect();
-        const recordScrollable = Math.max(
+      outlineTrackers.forEach(({ outline, sections: outlineSections }) => {
+        const firstBounds = outlineSections[0].getBoundingClientRect();
+        const lastBounds =
+          outlineSections[outlineSections.length - 1].getBoundingClientRect();
+        const outlineScrollable = Math.max(
           1,
-          recordBounds.height - window.innerHeight + outlineOffset,
+          lastBounds.bottom -
+            firstBounds.top -
+            window.innerHeight +
+            outlineProgressOffset,
         );
-        root.style.setProperty(
+        outline.style.setProperty(
           "--wiki-outline-progress",
           clamp(
-            (outlineOffset - recordBounds.top) / recordScrollable,
+            (outlineProgressOffset - firstBounds.top) / outlineScrollable,
           ).toFixed(4),
         );
-      }
+      });
 
       let currentSection = sections[0]?.id ?? "";
       const activationLine = outlineOffset + 76;
@@ -108,6 +130,9 @@ export function useWikiPageMotion(
     return () => {
       if (frame) cancelAnimationFrame(frame);
       revealObserver?.disconnect();
+      outlineTrackers.forEach(({ outline }) =>
+        outline.style.removeProperty("--wiki-outline-progress"),
+      );
       window.removeEventListener("scroll", requestProgress);
       window.removeEventListener("resize", requestProgress);
     };
