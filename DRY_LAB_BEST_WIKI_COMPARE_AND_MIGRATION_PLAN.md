@@ -1,8 +1,8 @@
 # CirCure Dry Lab 参照站深度分析、模板对照与分页面迁移规划
 
-> 调研日期：2026-07-23  
-> 输入报告：`iGEM2025_BestWiki_深度分析报告.md`  
-> 对照对象：`hp-testimonial-cards-local/dry-lab.html` 与当前 `Official-wiki` React/Vite 模板  
+> 调研日期：2026-07-23
+> 输入报告：`iGEM2025_BestWiki_深度分析报告.md`
+> 对照对象：`hp-testimonial-cards-local/dry-lab.html` 与当前 `Official-wiki` React/Vite 模板
 > 输出范围：研究与规划，不修改任何页面代码
 
 ---
@@ -37,20 +37,20 @@
 
 ### 1.2 实际核查状态
 
-| 站点 | 实际核查页面 | 状态 | 结论使用方式 |
-|---|---|---:|---|
-| GreatBay-SCIE | [Model](https://2025.igem.wiki/greatbay-scie/model) | 可访问 | Model 主参照 |
-| EPFL | [Modeling](https://2025.igem.wiki/epfl/modeling)、[Software](https://2025.igem.wiki/epfl/software)、[Hardware](https://2025.igem.wiki/epfl/hardware) | 可访问 | 三分页面主参照 |
-| TU Darmstadt | [首页](https://2025.igem.wiki/tu-darmstadt/) | 404 | 只保留报告中已有描述，不推断页面细节 |
-| Freiburg | [Plasmid Design](https://2025.igem.wiki/freiburg/plasmid-design/) | 可访问；无 Model/Software/Hardware 栏目 | 仅作为大型构建设计图集参照 |
-| XJTLU-Science-China | [Model](https://2025.igem.wiki/xjtlu-science-china/model/) | 可访问 | Model 可视化与阅读交互主参照 |
-| SUSTech-BIO | [Model](https://2025.igem.wiki/sustech-bio/model)、[Hardware](https://2025.igem.wiki/sustech-bio/hardware) | 路径存在，但直接访问落入错误/回退内容 | 不评价正文，仅提炼“深链接可靠性”教训 |
-| Uprize-I | [Model](https://2025.igem.wiki/uprize-i/model) | 可访问 | 评分表与模型验证参照 |
-| MIT-MAHE | [Model](https://2025.igem.wiki/mit-mahe/model)、[Software](https://2025.igem.wiki/mit-mahe/software) | 可访问 | 工具提示、软件管线、用户手册参照 |
-| PekingHSC | [Model](https://2025.igem.wiki/pekinghsc/model)、[Software](https://2025.igem.wiki/pekinghsc/software) | 可访问 | 超长模型页、折叠附录、软件工具族参照 |
-| Brno | [首页](https://2025.igem.wiki/brno/) | 404 | 不推断页面细节 |
-| Bologna | [Software](https://2025.igem.wiki/bologna/software)、[Hardware](https://2025.igem.wiki/bologna/hardware) | 可访问 | Software / Hardware 内容组织主参照 |
-| UOttawa | [首页](https://2025.igem.wiki/uottawa/) | 可访问；未暴露 Dry Lab 入口 | 只作为滚动叙事和导航技术参考 |
+| 站点                | 实际核查页面                                                                                                                                      |                                    状态 | 结论使用方式                           |
+| ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------: | -------------------------------------- |
+| GreatBay-SCIE       | [Model](https://2025.igem.wiki/greatbay-scie/model)                                                                                                |                                  可访问 | Model 主参照                           |
+| EPFL                | [Modeling](https://2025.igem.wiki/epfl/modeling)、[Software](https://2025.igem.wiki/epfl/software)、[Hardware](https://2025.igem.wiki/epfl/hardware) |                                  可访问 | 三分页面主参照                         |
+| TU Darmstadt        | [首页](https://2025.igem.wiki/tu-darmstadt/)                                                                                                       |                                     404 | 只保留报告中已有描述，不推断页面细节   |
+| Freiburg            | [Plasmid Design](https://2025.igem.wiki/freiburg/plasmid-design/)                                                                                  | 可访问；无 Model/Software/Hardware 栏目 | 仅作为大型构建设计图集参照             |
+| XJTLU-Science-China | [Model](https://2025.igem.wiki/xjtlu-science-china/model/)                                                                                         |                                  可访问 | Model 可视化与阅读交互主参照           |
+| SUSTech-BIO         | [Model](https://2025.igem.wiki/sustech-bio/model)、[Hardware](https://2025.igem.wiki/sustech-bio/hardware)                                          |   路径存在，但直接访问落入错误/回退内容 | 不评价正文，仅提炼“深链接可靠性”教训 |
+| Uprize-I            | [Model](https://2025.igem.wiki/uprize-i/model)                                                                                                     |                                  可访问 | 评分表与模型验证参照                   |
+| MIT-MAHE            | [Model](https://2025.igem.wiki/mit-mahe/model)、[Software](https://2025.igem.wiki/mit-mahe/software)                                                |                                  可访问 | 工具提示、软件管线、用户手册参照       |
+| PekingHSC           | [Model](https://2025.igem.wiki/pekinghsc/model)、[Software](https://2025.igem.wiki/pekinghsc/software)                                              |                                  可访问 | 超长模型页、折叠附录、软件工具族参照   |
+| Brno                | [首页](https://2025.igem.wiki/brno/)                                                                                                               |                                     404 | 不推断页面细节                         |
+| Bologna             | [Software](https://2025.igem.wiki/bologna/software)、[Hardware](https://2025.igem.wiki/bologna/hardware)                                            |                                  可访问 | Software / Hardware 内容组织主参照     |
+| UOttawa             | [首页](https://2025.igem.wiki/uottawa/)                                                                                                            |             可访问；未暴露 Dry Lab 入口 | 只作为滚动叙事和导航技术参考           |
 
 ### 1.3 输入报告的数据质量提醒
 
@@ -292,27 +292,27 @@ Freiburg 没有独立 Model、Software 或 Hardware 栏目。Plasmid Design 页�
 
 ## 4. 可迁移组件与动效总表
 
-| 模式 | 来源 | 解决的问题 | CirCure 适配方式 | 推荐页面 | 优先级 |
-|---|---|---|---|---|---:|
-| 30 秒 Judge brief | GreatBay、旧 Dry Lab 原型 | 先看到贡献与证据状态 | 四项 evidence strip，保持纸面编辑风 | Model；Software/Hardware 简版 | P0 |
-| Claim-to-evidence matrix | 旧原型、GreatBay 表格 | claim 与验证/后果脱节 | 列为 Claim / Output / Independent check / Consequence / Status | Model | P0 |
-| 模型架构 + Wet–Dry 回路 | XJTLU、旧原型、当前 ModelPipeline | 多模型接口难理解 | 金色主路径、粉色 return ribbon；静态可读，点击仅聚焦 | Model | P0 |
-| 参数/来源表 | Uprize、GreatBay、旧原型 | 数值不可追踪 | 参数、单位、值/范围、来源、拟合/测量、敏感性 | Model | P0 |
-| 预测—验证同图 | XJTLU | 预测与数据分散 | 实验点 + 模型线 + uncertainty band + residual inset | Model | P0 |
-| Software end-to-end workflow | Bologna、MIT、EPFL | 软件变成功能清单 | Input → Validate → Run → Inspect → Export → Recover | Software | P0 |
-| 系统 architecture/dataflow | EPFL、MIT | 模块与数据边界不清 | 用户层/服务层/模型层/数据层，标输入输出与 provenance | Software | P0 |
-| Annotated apparatus / exploded view | EPFL、Bologna | 硬件图片不能说明工作原理 | 静态总览 + 可点击的 sample/calibration/safety layer | Hardware | P0/P1 |
-| BOM + build release table | EPFL 的组件页启发、当前 BomTable | 无法复现设备 | Part / purpose / spec / qty / supplier / alt / cost / source | Hardware | P0 |
-| 粘性目录 active 状态 | XJTLU、GreatBay、当前 WikiLineSidebar | 长页迷失 | 直接强化当前 ribbon，不另造目录系统 | 三页 | 已有/完善 |
-| 顶部阅读进度 | GreatBay、PekingHSC、当前模板 | 不知道长页进度 | 保留当前 header 下 2px 金线 | 三页 | 已有 |
-| 补充图 slider | XJTLU、Freiburg | 同构图太多 | 手动控制、图号/标题可见、提供 View all；核心结论不入轮播 | Model / Hardware | P1 |
-| 技术附录 `details` | PekingHSC、旧原型 | 正文过长 | 只折叠完整推导、代码、参数全集、参考文献 | 三页 | P1 |
-| 行内术语 tooltip | MIT-MAHE | generalist judge 不懂术语 | click/focus/hover 均可用；另有 glossary 总表 | Model / Software | P1 |
-| Code block copy | GreatBay、PekingHSC | 命令与示例难复用 | 复制后明确反馈，代码仍可选择 | Model / Software | P1 |
-| Scroll reveal | Bologna、当前模板 | 建立阅读节奏 | 只做一次 12–20px/淡入；无 JS 默认可见 | 三页 | 已有/约束 |
-| 主题切换 | MIT、PekingHSC | 长时阅读偏好 | 只有全站统一时再做 | 全站 | P2 |
-| 全屏 Splash | MIT、Uprize 等 | 品牌登场 | 不迁移；真实加载慢时使用局部 skeleton | 无 | 禁止默认 |
-| 装饰性 3D / 持续漂浮 | UOttawa、Bologna Hardware | 氛围 | 只有能表达结构/空间数据时采用；不让正文漂浮 | 视真实数据 | P2/慎用 |
+| 模式                                | 来源                                  | 解决的问题                | CirCure 适配方式                                               | 推荐页面                      |    优先级 |
+| ----------------------------------- | ------------------------------------- | ------------------------- | -------------------------------------------------------------- | ----------------------------- | --------: |
+| 30 秒 Judge brief                   | GreatBay、旧 Dry Lab 原型             | 先看到贡献与证据状态      | 四项 evidence strip，保持纸面编辑风                            | Model；Software/Hardware 简版 |        P0 |
+| Claim-to-evidence matrix            | 旧原型、GreatBay 表格                 | claim 与验证/后果脱节     | 列为 Claim / Output / Independent check / Consequence / Status | Model                         |        P0 |
+| 模型架构 + Wet–Dry 回路            | XJTLU、旧原型、当前 ModelPipeline     | 多模型接口难理解          | 金色主路径、粉色 return ribbon；静态可读，点击仅聚焦           | Model                         |        P0 |
+| 参数/来源表                         | Uprize、GreatBay、旧原型              | 数值不可追踪              | 参数、单位、值/范围、来源、拟合/测量、敏感性                   | Model                         |        P0 |
+| 预测—验证同图                      | XJTLU                                 | 预测与数据分散            | 实验点 + 模型线 + uncertainty band + residual inset            | Model                         |        P0 |
+| Software end-to-end workflow        | Bologna、MIT、EPFL                    | 软件变成功能清单          | Input → Validate → Run → Inspect → Export → Recover       | Software                      |        P0 |
+| 系统 architecture/dataflow          | EPFL、MIT                             | 模块与数据边界不清        | 用户层/服务层/模型层/数据层，标输入输出与 provenance           | Software                      |        P0 |
+| Annotated apparatus / exploded view | EPFL、Bologna                         | 硬件图片不能说明工作原理  | 静态总览 + 可点击的 sample/calibration/safety layer            | Hardware                      |     P0/P1 |
+| BOM + build release table           | EPFL 的组件页启发、当前 BomTable      | 无法复现设备              | Part / purpose / spec / qty / supplier / alt / cost / source   | Hardware                      |        P0 |
+| 粘性目录 active 状态                | XJTLU、GreatBay、当前 WikiLineSidebar | 长页迷失                  | 直接强化当前 ribbon，不另造目录系统                            | 三页                          | 已有/完善 |
+| 顶部阅读进度                        | GreatBay、PekingHSC、当前模板         | 不知道长页进度            | 保留当前 header 下 2px 金线                                    | 三页                          |      已有 |
+| 补充图 slider                       | XJTLU、Freiburg                       | 同构图太多                | 手动控制、图号/标题可见、提供 View all；核心结论不入轮播       | Model / Hardware              |        P1 |
+| 技术附录`details`                 | PekingHSC、旧原型                     | 正文过长                  | 只折叠完整推导、代码、参数全集、参考文献                       | 三页                          |        P1 |
+| 行内术语 tooltip                    | MIT-MAHE                              | generalist judge 不懂术语 | click/focus/hover 均可用；另有 glossary 总表                   | Model / Software              |        P1 |
+| Code block copy                     | GreatBay、PekingHSC                   | 命令与示例难复用          | 复制后明确反馈，代码仍可选择                                   | Model / Software              |        P1 |
+| Scroll reveal                       | Bologna、当前模板                     | 建立阅读节奏              | 只做一次 12–20px/淡入；无 JS 默认可见                         | 三页                          | 已有/约束 |
+| 主题切换                            | MIT、PekingHSC                        | 长时阅读偏好              | 只有全站统一时再做                                             | 全站                          |        P2 |
+| 全屏 Splash                         | MIT、Uprize 等                        | 品牌登场                  | 不迁移；真实加载慢时使用局部 skeleton                          | 无                            |  禁止默认 |
+| 装饰性 3D / 持续漂浮                | UOttawa、Bologna Hardware             | 氛围                      | 只有能表达结构/空间数据时采用；不让正文漂浮                    | 视真实数据                    |   P2/慎用 |
 
 ---
 
@@ -320,19 +320,19 @@ Freiburg 没有独立 Model、Software 或 Hardware 栏目。Plasmid Design 页�
 
 ### 5.1 Model 页面
 
-| 内容问题 | 首选呈现 | 为什么 | 不推荐 |
-|---|---|---|---|
-| 评委 30 秒内理解贡献 | Judge brief + claim matrix | 直接对应 Best Model 证据责任 | 纯 Hero 大图 |
-| 三个模型如何连接 | 有向 pipeline + Wet–Dry return | 显示输入、输出、接口、反馈 | 三张彼此孤立卡片 |
-| 候选如何打分 | 排名表 + stacked score decomposition | 同时看总分和各维贡献 | 只给 radar；只给最终 top 5 |
-| 多指标取舍 | heatmap / parallel coordinates（数据足够时） | 能看候选在多维上的结构 | 3D 柱状图 |
-| 阈值是否稳健 | threshold sweep / sensitivity tornado | 显示决策对假设的敏感性 | 单一阈值数字 |
-| 结构候选比较 | 同尺度 small multiples + 指标表 | 允许同屏比较 | 自动轮播 |
-| 动力学预测 | 实验点 + 模型线 + uncertainty band | 预测、验证和不确定性相邻 | 只有平滑模拟曲线 |
-| 模型拟合质量 | parity plot + residual plot + metric table | 不只报一个 R² | 仪表盘分数 |
-| 参数来源 | 参数 provenance table | 单位、来源、拟合、范围可追踪 | 参数散落在段落 |
-| Wet–Dry 迭代 | cycle/ledger：Input → Prediction → Experiment → Revision | 明确模型改变实验、实验改变模型 | 只画无限循环箭头 |
-| 局限与适用域 | limitation matrix：Assumption / risk / affected output / mitigation | 可行动而非免责声明 | 一段泛化 future work |
+| 内容问题             | 首选呈现                                                            | 为什么                         | 不推荐                     |
+| -------------------- | ------------------------------------------------------------------- | ------------------------------ | -------------------------- |
+| 评委 30 秒内理解贡献 | Judge brief + claim matrix                                          | 直接对应 Best Model 证据责任   | 纯 Hero 大图               |
+| 三个模型如何连接     | 有向 pipeline + Wet–Dry return                                     | 显示输入、输出、接口、反馈     | 三张彼此孤立卡片           |
+| 候选如何打分         | 排名表 + stacked score decomposition                                | 同时看总分和各维贡献           | 只给 radar；只给最终 top 5 |
+| 多指标取舍           | heatmap / parallel coordinates（数据足够时）                        | 能看候选在多维上的结构         | 3D 柱状图                  |
+| 阈值是否稳健         | threshold sweep / sensitivity tornado                               | 显示决策对假设的敏感性         | 单一阈值数字               |
+| 结构候选比较         | 同尺度 small multiples + 指标表                                     | 允许同屏比较                   | 自动轮播                   |
+| 动力学预测           | 实验点 + 模型线 + uncertainty band                                  | 预测、验证和不确定性相邻       | 只有平滑模拟曲线           |
+| 模型拟合质量         | parity plot + residual plot + metric table                          | 不只报一个 R²                 | 仪表盘分数                 |
+| 参数来源             | 参数 provenance table                                               | 单位、来源、拟合、范围可追踪   | 参数散落在段落             |
+| Wet–Dry 迭代        | cycle/ledger：Input → Prediction → Experiment → Revision         | 明确模型改变实验、实验改变模型 | 只画无限循环箭头           |
+| 局限与适用域         | limitation matrix：Assumption / risk / affected output / mitigation | 可行动而非免责声明             | 一段泛化 future work       |
 
 **推荐章节**
 
@@ -348,17 +348,17 @@ Freiburg 没有独立 Model、Software 或 Hardware 栏目。Plasmid Design 页�
 
 ### 5.2 Software 页面
 
-| 内容问题 | 首选呈现 | 必须包含 |
-|---|---|---|
-| 谁在何时使用 | user-task strip / job story | User、trigger、current pain、desired decision |
-| 输入是否合规 | schema table + validation states | 字段、单位、格式、缺失、隐私、错误示例 |
-| 系统怎么工作 | architecture/dataflow | 模块、数据边界、版本、外部服务、失败点 |
-| 最短成功路径 | stepper + 真实截图 | Input → Run → Inspect → Export；不要假终端 |
-| 输出是否可信 | annotated output + provenance panel | score decomposition、uncertainty、warning、version |
-| 软件是否被验证 | test matrix + benchmark charts | 单元/集成/数据集、性能、基线、失败案例 |
-| 用户是否能复用 | Quickstart + copy + expected output | 环境、命令、example、checksum/expected result |
-| 迭代是否真实 | release timeline | 用户反馈、bug、修改、影响、版本号 |
-| 责任与边界 | limitations / responsible use panel | 适用域、误用、数据与安全、人工复核 |
+| 内容问题       | 首选呈现                            | 必须包含                                           |
+| -------------- | ----------------------------------- | -------------------------------------------------- |
+| 谁在何时使用   | user-task strip / job story         | User、trigger、current pain、desired decision      |
+| 输入是否合规   | schema table + validation states    | 字段、单位、格式、缺失、隐私、错误示例             |
+| 系统怎么工作   | architecture/dataflow               | 模块、数据边界、版本、外部服务、失败点             |
+| 最短成功路径   | stepper + 真实截图                  | Input → Run → Inspect → Export；不要假终端      |
+| 输出是否可信   | annotated output + provenance panel | score decomposition、uncertainty、warning、version |
+| 软件是否被验证 | test matrix + benchmark charts      | 单元/集成/数据集、性能、基线、失败案例             |
+| 用户是否能复用 | Quickstart + copy + expected output | 环境、命令、example、checksum/expected result      |
+| 迭代是否真实   | release timeline                    | 用户反馈、bug、修改、影响、版本号                  |
+| 责任与边界     | limitations / responsible use panel | 适用域、误用、数据与安全、人工复核                 |
 
 **推荐章节**
 
@@ -373,17 +373,17 @@ Freiburg 没有独立 Model、Software 或 Hardware 栏目。Plasmid Design 页�
 
 ### 5.3 Hardware 页面
 
-| 内容问题 | 首选呈现 | 必须包含 |
-|---|---|---|
-| 为什么需要设备 | requirements matrix | user、sample、range、accuracy、throughput、cost、safety |
-| 样品/信号如何流动 | annotated system schematic | sample path、measurement path、control path |
-| 设备由什么组成 | exploded view + BOM | part、spec、quantity、cost、alternative、source |
-| 如何装配 | numbered assembly sequence | 工具、方向、容差、QC、照片/图 |
-| 如何迭代 | DBTL version timeline | 问题、测量、改动、结果、下个版本 |
-| 是否测得准 | calibration curve + residual/error band | 标准、重复、范围、LOD/LOQ（若适用）、误差 |
-| 与现有方案相比 | benchmark table | accuracy、time、cost、access、maintenance |
-| 如何安全使用 | risk matrix + maintenance flow | hazard、severity、mitigation、containment、cleaning、disposal |
-| 能否复现 | release checklist | CAD、circuit、firmware、BOM、manual、license、test data |
+| 内容问题          | 首选呈现                                | 必须包含                                                      |
+| ----------------- | --------------------------------------- | ------------------------------------------------------------- |
+| 为什么需要设备    | requirements matrix                     | user、sample、range、accuracy、throughput、cost、safety       |
+| 样品/信号如何流动 | annotated system schematic              | sample path、measurement path、control path                   |
+| 设备由什么组成    | exploded view + BOM                     | part、spec、quantity、cost、alternative、source               |
+| 如何装配          | numbered assembly sequence              | 工具、方向、容差、QC、照片/图                                 |
+| 如何迭代          | DBTL version timeline                   | 问题、测量、改动、结果、下个版本                              |
+| 是否测得准        | calibration curve + residual/error band | 标准、重复、范围、LOD/LOQ（若适用）、误差                     |
+| 与现有方案相比    | benchmark table                         | accuracy、time、cost、access、maintenance                     |
+| 如何安全使用      | risk matrix + maintenance flow          | hazard、severity、mitigation、containment、cleaning、disposal |
+| 能否复现          | release checklist                       | CAD、circuit、firmware、BOM、manual、license、test data       |
 
 **推荐章节**
 
@@ -439,14 +439,14 @@ Freiburg 没有独立 Model、Software 或 Hardware 栏目。Plasmid Design 页�
 
 ### 6.3 合并原则
 
-| 维度 | 旧原型保留什么 | 当前模板保留什么 | 最终决策 |
-|---|---|---|---|
-| 信息架构 | judge-first、证据链、附录边界 | Model/Software/Hardware 三路由 | 旧内容语法拆入三页 |
-| 品牌 | 编辑式、克制、manuscript 气质 | 当前 token、导航、footer、ribbon | 只迁结构，不迁旧色值/顶栏 |
-| 阅读导航 | 精细目录与顶部进度 | 共享进度 + ribbon sidebar | 以当前系统为唯一实现 |
-| 动效 | 少量目录/进度反馈 | reveal、progress、active state、交互 feature | 保留状态型动效，限制 reveal 强度 |
-| 数据呈现 | 表、claim matrix、parameter ledger | 通用 item layouts | 增加科学内容 primitives，而非继续堆卡片 |
-| 真实性 | 清晰 evidence boundary | planned/open/recorded status | 继续使用状态，但最终页面逐项换成证据 |
+| 维度     | 旧原型保留什么                     | 当前模板保留什么                             | 最终决策                                |
+| -------- | ---------------------------------- | -------------------------------------------- | --------------------------------------- |
+| 信息架构 | judge-first、证据链、附录边界      | Model/Software/Hardware 三路由               | 旧内容语法拆入三页                      |
+| 品牌     | 编辑式、克制、manuscript 气质      | 当前 token、导航、footer、ribbon             | 只迁结构，不迁旧色值/顶栏               |
+| 阅读导航 | 精细目录与顶部进度                 | 共享进度 + ribbon sidebar                    | 以当前系统为唯一实现                    |
+| 动效     | 少量目录/进度反馈                  | reveal、progress、active state、交互 feature | 保留状态型动效，限制 reveal 强度        |
+| 数据呈现 | 表、claim matrix、parameter ledger | 通用 item layouts                            | 增加科学内容 primitives，而非继续堆卡片 |
+| 真实性   | 清晰 evidence boundary             | planned/open/recorded status                 | 继续使用状态，但最终页面逐项换成证据    |
 
 ---
 

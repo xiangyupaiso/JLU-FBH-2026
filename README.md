@@ -62,33 +62,105 @@ for web development.
 
 Below is the structure of important files and directories in this project:
 
-    ├── README.md            -> The file you are currently reading
-    ├── index.html           -> Single HTML file for the wiki
-    ├── package.json         -> Manages project metadata and dependencies
+    ├── README.md                  -> The file you are currently reading
+    ├── CLAUDE.md                  -> Notes for AI assistants (workspace rules)
+    ├── CODE_WIKI.md               -> Codebase walkthrough and conventions
+    ├── DRY_LAB_BEST_WIKI_COMPARE_AND_MIGRATION_PLAN.md
+    │                              -> Migration plan for Dry Lab wiki content
+    ├── LICENSE                    -> CC-BY-4.0 license (do not modify)
+    ├── index.html                 -> Single HTML file for the wiki
+    ├── package.json               -> Manages project metadata and dependencies
+    ├── eslint.config.js           -> ESLint flat config (TS + React hooks)
+    ├── tsconfig.json              -> Configures TypeScript options
+    ├── tsconfig.node.json         -> TypeScript settings for Node.js
+    ├── vite.config.ts             -> Configuration for the Vite tool
+    ├── yarn.lock                  -> Yarn lock file for dependency management
     ├── src/
-    │   ├── components/      -> Pre-built components(like Navbar, Footer, etc.)
+    │   ├── main.tsx               -> Entry point of the wiki application
+    │   ├── pages.ts               -> Page definition and path mapping
+    │   ├── vite-env.d.ts          -> TypeScript definitions for Vite
+    │   ├── assets/                -> Local media referenced by components
+    │   │   ├── footer/            -> Footer logo & closing visuals
+    │   │   ├── story-nav/         -> Story navigation emblems & ribbons
+    │   │   └── wiki/              -> Wiki page images (HP, hardware, etc.)
+    │   ├── components/
+    │   │   ├── BackToTop.tsx      -> Scroll-to-top floating button
+    │   │   ├── Footer.tsx         -> Site footer (license + repo link, do not modify)
+    │   │   ├── Header.tsx        -> Site header
+    │   │   ├── Inspirations.tsx   -> Inspiration block
+    │   │   ├── Navbar.tsx         -> Top navigation bar
+    │   │   ├── NotFound.tsx       -> 404 fallback
+    │   │   └── wiki/
+    │   │       ├── WikiPage.tsx           -> Reusable wiki page shell
+    │   │       ├── WikiLineSidebar.tsx    -> Section sidebar navigation
+    │   │       ├── HumanPracticesPage.tsx -> HP page composition
+    │   │       ├── wikiPageTypes.ts       -> Wiki page type definitions
+    │   │       └── features/             -> Per-page feature blocks
+    │   │           ├── DryLabFeatures.tsx
+    │   │           ├── EngagementFeatures.tsx
+    │   │           ├── HardwareEvidenceFeatures.tsx
+    │   │           ├── ModelEvidenceFeatures.tsx
+    │   │           ├── ProjectFeatures.tsx
+    │   │           ├── SoftwareEvidenceFeatures.tsx
+    │   │           └── WetLabFeatures.tsx
     │   ├── containers/
-    │   │   └── App/         -> Main React application container
+    │   │   └── App/
+    │   │       ├── App.tsx         -> Main React application container
+    │   │       └── App.css        -> App-level styles
     │   ├── contents/
-    │   │   └── *.tsx        -> Page components for the wiki
-    │   ├── main.tsx         -> Entry point of the wiki application
-    │   ├── pages.ts         -> Page definition and path mapping
-    │   ├── utils/           -> Utility functions
-    │   └── vite-env.d.ts    -> TypeScript definitions for Vite
-    ├── tsconfig.json        -> Configures TypeScript options
-    ├── tsconfig.node.json   -> TypeScript settings for Node.js
-    ├── vite.config.ts       -> Configuration for the Vite tool
-    └── yarn.lock            -> Yarn lock file for dependency management
+    │   │   └── *.tsx              -> Page components for the wiki (Home, Hardware,
+    │   │                            Model, Software, HumanPractices, Members, etc.)
+    │   ├── data/
+    │   │   ├── dryLabPages.ts     -> Dry Lab page data
+    │   │   ├── engagementPages.ts -> Engagement page data
+    │   │   ├── hardwarePage.ts    -> Hardware page data
+    │   │   ├── modelPage.ts       -> Model page data
+    │   │   ├── projectPages.ts    -> Project page data
+    │   │   ├── softwarePage.ts    -> Software page data
+    │   │   └── wetLabPages.ts     -> Wet Lab page data
+    │   ├── hooks/
+    │   │   ├── useStoryNavAnimation.ts -> GSAP ScrollTrigger story-nav animation
+    │   │   └── useWikiPageMotion.ts   -> Wiki page motion utilities
+    │   ├── styles/
+    │   │   ├── circure-tokens.css     -> Design tokens (CSS variables)
+    │   │   ├── circure-home.css       -> Home page styles
+    │   │   ├── circure-nav.css        -> Navigation styles
+    │   │   ├── circure-footer.css     -> Footer styles
+    │   │   ├── circure-back-to-top.css
+    │   │   ├── hardware-page.css      -> Hardware subpage styles
+    │   │   ├── model-page.css         -> Model subpage styles
+    │   │   ├── software-page.css      -> Software subpage styles
+    │   │   ├── human-practices-local.css
+    │   │   ├── wiki-features.css      -> Feature block styles
+    │   │   └── wiki-rebuild.css       -> Wiki rebuild layout styles
+    │   └── utils/
+    │       ├── getPathMapping.ts  -> Path -> page mapping helper
+    │       ├── stringToSlug.ts    -> String -> URL slug helper
+    │       └── index.ts          -> Utility barrel exports
+    ├── home-gsap-refactor/        -> GSAP refactoring research (working folder)
+    │   ├── GSAP重构映射清单.md      -> Mapping list from handwritten anim -> GSAP
+    │   ├── verify_gsap.py         -> Animation verification script
+    │   └── verify_*.png           -> Verification screenshots
+    ├── circure-igem-wiki/         -> v2 standalone single-page prototype (vanilla JS)
+    ├── circure-story-nav-local/   -> Story navigation prototype (vanilla JS)
+    └── hp-testimonial-cards-local/-> v1 multi-page prototype (vanilla HTML/CSS/JS)
+
+> The three `*/` prototype folders at the bottom are standalone vanilla-JS
+> prototypes kept for reference; the production wiki runs from `src/`. See the
+> "CirCure iGEM Project Wiki" section below for their version history.
 
 ### Technologies
 
-- [React](https://reactjs.org): A JavaScript library for building user interfaces
-- [TypeScript](https://www.typescriptlang.org): Extends JavaScript by adding types
-- [Vite](https://vitejs.dev): Frontend tooling that provides faster and leaner development builds
-- [Bootstrap](https://getbootstrap.com): Framework for building responsive, mobile-first sites
-- [React Bootstrap](https://react-bootstrap.github.io): Bootstrap components built with React
-- [React Router](https://reactrouter.com): Declarative routing for React applications
-- (Optional) [Prettier](https://prettier.io): Code formatter
+- [React](https://reactjs.org) `^19.2.0`: A JavaScript library for building user interfaces
+- [TypeScript](https://www.typescriptlang.org) `^5.9.0`: Extends JavaScript by adding types
+- [Vite](https://vitejs.dev) `^7.0.0`: Frontend tooling that provides faster and leaner development builds
+- [Bootstrap](https://getbootstrap.com) `^5.3.8`: Framework for building responsive, mobile-first sites
+- [React Bootstrap](https://react-bootstrap.github.io) `^2.10.10`: Bootstrap components built with React
+- [React Router](https://reactrouter.com) `react-router-dom ^7.9.0`: Declarative routing for React applications
+- [GSAP](https://gsap.com) `^3.15.0`: Animation engine — used by `useStoryNavAnimation` for ScrollTrigger-driven story-nav scroll/pin/hold animations
+- [@gsap/react](https://gsap.com/docs/v3/React-API/) `^2.1.2`: React integration for GSAP (`useGSAP` scoped animations with HMR-safe cleanup)
+- [ESLint](https://eslint.org) `^9.36.0` (flat config + `typescript-eslint` & `eslint-plugin-react-hooks`): Linting
+- (Optional) [Prettier](https://prettier.io) `^3.3.3`: Code formatter
 
 
 ---
