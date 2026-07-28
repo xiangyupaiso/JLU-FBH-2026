@@ -1,9 +1,8 @@
 import { WikiPage } from "../components/wiki/WikiPage";
-import { ResultGateTable } from "../components/wiki/features/ProjectFeatures";
 import {
-  ReadoutMatrix,
   SafetyBoundary,
-  WetLabSignature,
+  SafetyControlHierarchy,
+  SafetyNoGoLedger,
 } from "../components/wiki/features/WetLabFeatures";
 import { safetyPage } from "../data/wetLabPages";
 
@@ -11,11 +10,11 @@ export function SafetyAndSecurity() {
   return (
     <WikiPage
       content={safetyPage}
-      heroVisual={<WetLabSignature variant="safety" />}
+      heroVisual={null}
       features={{
         "safety-risks": <SafetyBoundary />,
-        "safety-controls": <ReadoutMatrix />,
-        "safety-boundaries": <ResultGateTable />,
+        "safety-controls": <SafetyControlHierarchy />,
+        "safety-boundaries": <SafetyNoGoLedger />,
       }}
     />
   );

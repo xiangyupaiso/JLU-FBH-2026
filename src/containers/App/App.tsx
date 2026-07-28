@@ -4,6 +4,7 @@ import "../../styles/circure-tokens.css"; // overrides Bootstrap base with CirCu
 import "../../styles/circure-nav.css"; // global site-header / mega-menu styles
 import "../../styles/circure-footer.css"; // global brand footer / final team reveal
 import "../../styles/circure-back-to-top.css"; // global floating return-to-top control
+import "../../styles/wiki-disclosures.css"; // shared theme-aware accordion language
 import { Route, Routes, useLocation } from "react-router-dom";
 import { getPathMapping, stringToSlug } from "../../utils";
 import { useEffect } from "react";

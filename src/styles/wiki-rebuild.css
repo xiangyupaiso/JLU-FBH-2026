@@ -77,9 +77,9 @@
 .wiki-mini-timeline > article > span,
 .wiki-boundary > span {
   font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 720;
-  letter-spacing: 0.09em;
+  letter-spacing: 0.055em;
   line-height: 1.35;
   text-transform: uppercase;
 }
@@ -211,7 +211,7 @@
 
 .wiki-facts article {
   display: flex;
-  min-height: 190px;
+  min-height: 150px;
   flex-direction: column;
   gap: 22px;
   padding: 22px clamp(18px, 2.2vw, 32px);
@@ -238,13 +238,13 @@
 
 .wiki-record {
   display: grid;
-  width: min(1280px, calc(100% - 48px));
-  grid-template-columns: 230px minmax(0, 860px);
-  gap: clamp(70px, 9vw, 140px);
+  width: min(1320px, calc(100% - 48px));
+  grid-template-columns: 290px minmax(0, 880px);
+  gap: clamp(58px, 6vw, 92px);
   align-items: start;
   justify-content: center;
   margin: 0 auto;
-  padding: clamp(100px, 12vw, 168px) 0;
+  padding: clamp(82px, 9vw, 124px) 0;
 }
 
 .wiki-outline {
@@ -255,15 +255,16 @@
 
 .wiki-outline > p {
   margin: 0;
-  padding-bottom: 15px;
+  padding-bottom: 16px;
   border-bottom: 1px solid var(--ink);
-  color: var(--muted);
+  color: var(--wiki-deep);
+  font-size: 12px;
 }
 
 .wiki-outline nav {
   position: relative;
   display: grid;
-  padding: 14px 0;
+  padding: 12px 0;
   border-bottom: 1px solid var(--line);
 }
 
@@ -271,22 +272,45 @@
   position: relative;
   z-index: 1;
   display: grid;
-  min-height: 46px;
-  grid-template-columns: 24px 1fr;
-  align-items: center;
-  padding: 5px 4px 5px 22px;
+  min-height: 76px;
+  grid-template-columns: 34px minmax(0, 1fr);
+  align-items: start;
+  padding: 12px 8px 12px 24px;
   color: var(--muted);
-  font-size: 12px;
-  line-height: 1.35;
+  font-size: 14px;
+  line-height: 1.3;
   text-decoration: none;
   transition-property: color, transform;
   transition-duration: 180ms;
   transition-timing-function: var(--ease-out);
 }
 
-.wiki-outline nav a > span {
+.wiki-outline__index {
+  padding-top: 2px;
   font-family: "SFMono-Regular", Consolas, monospace;
-  font-size: 9px;
+  font-size: 11px;
+  font-weight: 760;
+}
+
+.wiki-outline__copy {
+  display: grid;
+  gap: 5px;
+}
+
+.wiki-outline__copy small {
+  color: var(--wiki-accent);
+  font-size: 11px;
+  font-weight: 760;
+  letter-spacing: 0.035em;
+  line-height: 1.25;
+  text-transform: uppercase;
+}
+
+.wiki-outline__copy strong {
+  color: inherit;
+  font-size: 15px;
+  font-weight: 650;
+  line-height: 1.28;
 }
 
 .wiki-outline nav a:hover,
@@ -346,8 +370,8 @@
 
 .wiki-outline__related {
   display: grid;
-  gap: 6px;
-  padding-top: 22px;
+  gap: 8px;
+  padding-top: 24px;
 }
 
 .wiki-outline__related > span {
@@ -360,7 +384,7 @@
   min-height: 40px;
   align-items: center;
   color: var(--wiki-deep);
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 720;
   text-decoration: none;
   transition-property: color, transform;
@@ -378,7 +402,7 @@
 }
 
 .wiki-section {
-  padding-bottom: clamp(112px, 13vw, 168px);
+  padding-bottom: clamp(88px, 9vw, 124px);
 }
 
 .wiki-section__heading {
@@ -398,7 +422,7 @@
   max-width: 780px;
   margin: 0;
   font-family: var(--font-editorial);
-  font-size: clamp(40px, 5.1vw, 68px);
+  font-size: clamp(40px, 4.6vw, 62px);
   font-weight: 400;
   letter-spacing: -0.046em;
   line-height: 0.98;
@@ -424,8 +448,8 @@
 .wiki-prose p {
   margin: 0;
   font-family: var(--font-editorial);
-  font-size: 17px;
-  line-height: 1.78;
+  font-size: 18px;
+  line-height: 1.72;
 }
 
 .wiki-feature {
@@ -448,7 +472,7 @@
 }
 
 .wiki-item-grid article {
-  min-height: 238px;
+  min-height: 214px;
   padding: 24px;
   border-radius: 14px;
   background: var(--wiki-surface);
@@ -471,7 +495,7 @@
   padding-bottom: 3px;
   border-bottom: 1px solid currentColor;
   color: var(--muted);
-  font-size: 8px;
+  font-size: 10px;
 }
 
 .wiki-status[data-status="recorded"] {
@@ -500,8 +524,8 @@
 .wiki-mini-timeline p {
   margin: 0;
   color: var(--muted);
-  font-size: 13px;
-  line-height: 1.62;
+  font-size: 15px;
+  line-height: 1.58;
 }
 
 .wiki-ledger {
@@ -872,6 +896,853 @@
   }
 }
 
+/* Wet Lab narrative typography and motion — readable labels, scientific pacing. */
+.wiki-page--wet-lab .wiki-chapter,
+.wiki-page--wet-lab .wiki-kicker,
+.wiki-page--wet-lab .wiki-hero__boundary > span,
+.wiki-page--wet-lab .wiki-facts span,
+.wiki-page--wet-lab .wiki-section__heading > span,
+.wiki-page--wet-lab .wiki-status,
+.wiki-page--wet-lab .wiki-item-grid header,
+.wiki-page--wet-lab .wiki-ledger__code,
+.wiki-page--wet-lab .wiki-mini-timeline > article > span,
+.wiki-page--wet-lab .wiki-boundary > span {
+  font-family: var(--font-sans);
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.wiki-page--wet-lab .wiki-chapter {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 28px;
+  color: color-mix(in srgb, var(--wiki-deep) 72%, transparent);
+  font-size: 15px;
+  font-weight: 680;
+}
+
+.wiki-page--wet-lab .wiki-chapter::after {
+  width: 52px;
+  height: 1px;
+  background: color-mix(in srgb, var(--wiki-accent) 52%, transparent);
+  content: "";
+}
+
+.wiki-page--wet-lab .wiki-kicker {
+  margin-bottom: 20px;
+  font-size: 16px;
+  font-weight: 720;
+  line-height: 1.35;
+}
+
+.wiki-page--wet-lab .wiki-hero h1 {
+  max-width: 760px;
+  letter-spacing: -0.058em;
+  text-wrap: balance;
+}
+
+.wiki-page--wet-lab .wiki-hero__lede {
+  max-width: 700px;
+  font-size: clamp(19px, 1.55vw, 23px);
+  line-height: 1.54;
+}
+
+.wiki-page--wet-lab .wiki-hero__boundary {
+  position: relative;
+  overflow: hidden;
+  grid-template-columns: minmax(180px, 0.42fr) minmax(0, 1fr);
+  padding: 24px 26px;
+  border-radius: 22px;
+  transition:
+    border-color 300ms var(--ease-out),
+    box-shadow 300ms var(--ease-out),
+    transform 300ms var(--ease-out);
+}
+
+.wiki-page--wet-lab .wiki-hero__boundary::before {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 4px;
+  background: var(--wiki-accent);
+  content: "";
+}
+
+.wiki-page--wet-lab .wiki-hero__boundary:hover {
+  border-color: color-mix(in srgb, var(--wiki-accent) 32%, transparent);
+  box-shadow: 0 20px 44px rgba(23, 61, 60, 0.09);
+  transform: translateY(-3px);
+}
+
+.wiki-page--wet-lab .wiki-hero__boundary > span {
+  color: var(--wiki-accent);
+  font-size: 14px;
+  font-weight: 760;
+  line-height: 1.35;
+}
+
+.wiki-page--wet-lab .wiki-hero__boundary p {
+  font-size: 16px;
+  line-height: 1.58;
+}
+
+.wiki-page--wet-lab .wiki-begin {
+  min-height: 40px;
+  font-size: 14px;
+  font-weight: 720;
+}
+
+.wiki-page--wet-lab .wiki-begin > span {
+  transition: transform 220ms var(--ease-out);
+}
+
+.wiki-page--wet-lab .wiki-begin:hover > span {
+  transform: translateY(4px);
+}
+
+.wet-lab-route {
+  --wet-route-progress: 0;
+  padding: 30px 32px 28px;
+}
+
+.wet-lab-route > header {
+  padding-bottom: 24px;
+}
+
+.wet-lab-route > header span,
+.wet-lab-route > header p,
+.wet-lab-route__track > a > span,
+.wet-lab-route__track small {
+  font-family: var(--font-sans);
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.wet-lab-route > header span {
+  font-size: 14px;
+  font-weight: 760;
+}
+
+.wet-lab-route > header strong {
+  max-width: 760px;
+  font-size: clamp(20px, 2vw, 28px);
+  font-weight: 710;
+  letter-spacing: -0.025em;
+  line-height: 1.2;
+}
+
+.wet-lab-route > header p {
+  font-size: 13px;
+  font-weight: 680;
+}
+
+.wet-lab-route__track {
+  padding-top: 22px;
+}
+
+.wet-lab-route__track::before,
+.wet-lab-route__track::after {
+  top: 48px;
+  right: 9%;
+  left: 9%;
+  height: 2px;
+}
+
+.wet-lab-route__track::after {
+  position: absolute;
+  z-index: -1;
+  background: linear-gradient(90deg, var(--coral), rgba(224, 135, 111, 0.54));
+  content: "";
+  transform: scaleX(var(--wet-route-progress));
+  transform-origin: 0 50%;
+  transition: transform 720ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.wet-lab-route__track a {
+  min-height: 128px;
+  grid-template-rows: 28px 1fr;
+  padding: 14px;
+  border-radius: 18px;
+  animation: wet-route-rise 620ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.wet-lab-route__track a:nth-child(2) { animation-delay: 55ms; }
+.wet-lab-route__track a:nth-child(3) { animation-delay: 110ms; }
+.wet-lab-route__track a:nth-child(4) { animation-delay: 165ms; }
+.wet-lab-route__track a:nth-child(5) { animation-delay: 220ms; }
+
+.wet-lab-route__track a:hover,
+.wet-lab-route__track a:focus-visible {
+  border-color: rgba(252, 248, 241, 0.2);
+  background: rgba(252, 248, 241, 0.075);
+  box-shadow: 0 18px 34px rgba(5, 29, 29, 0.18);
+  transform: translateY(-5px);
+}
+
+.wet-lab-route__track > a > span {
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.wet-lab-route__track strong {
+  font-size: 16px;
+  font-weight: 730;
+  white-space: normal;
+}
+
+.wet-lab-route__track small {
+  color: rgba(252, 248, 241, 0.62);
+  font-size: 12px;
+  font-weight: 540;
+  line-height: 1.35;
+  white-space: normal;
+}
+
+.wiki-page--wet-lab .wiki-facts article {
+  transition:
+    border-color 280ms var(--ease-out),
+    box-shadow 280ms var(--ease-out),
+    transform 280ms var(--ease-out);
+}
+
+.wiki-page--wet-lab .wiki-facts article:hover {
+  border-color: color-mix(in srgb, var(--wiki-accent) 26%, transparent);
+  box-shadow: 0 18px 36px rgba(23, 61, 60, 0.08);
+  transform: translateY(-4px);
+}
+
+.wiki-page--wet-lab .wiki-facts span {
+  font-size: 13px;
+  font-weight: 720;
+}
+
+.wiki-page--wet-lab .wiki-facts strong {
+  font-size: clamp(19px, 1.6vw, 23px);
+  line-height: 1.28;
+}
+
+.wiki-page--wet-lab .wiki-outline__header > span,
+.wiki-page--wet-lab .wiki-outline__header strong,
+.wiki-page--wet-lab .wiki-outline__copy small,
+.wiki-page--wet-lab .wiki-outline__index {
+  font-family: var(--font-sans);
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.wiki-page--wet-lab .wiki-outline__header p {
+  font-size: 17px;
+}
+
+.wiki-page--wet-lab .wiki-outline__header > span,
+.wiki-page--wet-lab .wiki-outline__header strong {
+  font-size: 13px;
+}
+
+.wiki-page--wet-lab .wiki-outline nav a {
+  min-height: 78px;
+  transition:
+    background-color 240ms var(--ease-out),
+    border-color 240ms var(--ease-out),
+    box-shadow 240ms var(--ease-out),
+    transform 240ms var(--ease-out);
+}
+
+.wiki-page--wet-lab .wiki-outline__index {
+  font-size: 13px;
+  font-weight: 730;
+}
+
+.wiki-page--wet-lab .wiki-outline__copy small {
+  font-size: 13px;
+  line-height: 1.35;
+}
+
+.wiki-page--wet-lab .wiki-outline__copy strong {
+  font-size: 16px;
+  line-height: 1.28;
+}
+
+.wiki-page--wet-lab .wiki-outline__related > span,
+.wiki-page--wet-lab .wiki-outline__related a {
+  font-size: 14px;
+}
+
+.wiki-page--wet-lab .wiki-section__heading > span {
+  width: 46px;
+  height: 46px;
+  font-size: 13px;
+  font-weight: 780;
+}
+
+.wiki-page--wet-lab .wiki-section__heading h2 {
+  max-width: 820px;
+  font-size: clamp(48px, 5.3vw, 72px);
+  letter-spacing: -0.052em;
+  line-height: 0.98;
+}
+
+.wiki-page--wet-lab .wiki-section__summary {
+  max-width: 760px;
+  font-size: clamp(20px, 1.8vw, 25px);
+  line-height: 1.5;
+}
+
+.wiki-page--wet-lab .wiki-status {
+  min-height: 28px;
+  padding: 5px 9px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.wiki-page--wet-lab .wiki-item-grid header,
+.wiki-page--wet-lab .wiki-ledger__code,
+.wiki-page--wet-lab .wiki-mini-timeline > article > span {
+  font-size: 13px;
+  font-weight: 720;
+}
+
+.wiki-page--wet-lab .wiki-item-grid article,
+.wiki-page--wet-lab .wiki-ledger article,
+.wiki-page--wet-lab .wiki-mini-timeline article {
+  transition:
+    border-color 300ms var(--ease-out),
+    box-shadow 300ms var(--ease-out),
+    transform 300ms var(--ease-out);
+}
+
+.wiki-page--wet-lab .wiki-item-grid article:hover,
+.wiki-page--wet-lab .wiki-ledger article:hover,
+.wiki-page--wet-lab .wiki-mini-timeline article:hover {
+  border-color: color-mix(in srgb, var(--wiki-accent) 30%, transparent);
+  box-shadow: 0 22px 44px rgba(23, 61, 60, 0.085);
+  transform: translateY(-5px);
+}
+
+.wiki-page--wet-lab .wiki-item-grid p,
+.wiki-page--wet-lab .wiki-ledger p,
+.wiki-page--wet-lab .wiki-mini-timeline p {
+  font-size: 16px;
+  line-height: 1.62;
+}
+
+.wiki-page--wet-lab .wiki-boundary > span {
+  font-size: 14px;
+  font-weight: 760;
+}
+
+.wiki-page--wet-lab .wiki-boundary p {
+  font-size: 16px;
+  line-height: 1.58;
+}
+
+.wiki-page--wet-lab .wiki-feature[data-wiki-reveal] > * {
+  transition:
+    box-shadow 500ms var(--ease-out),
+    transform 500ms var(--ease-out);
+}
+
+.wiki-page--wet-lab .wiki-feature[data-wiki-reveal].is-visible > * {
+  transform: none;
+}
+
+.wiki-page--wet-lab .wiki-item-grid[data-wiki-reveal] article,
+.wiki-page--wet-lab .wiki-ledger[data-wiki-reveal] article,
+.wiki-page--wet-lab .wiki-mini-timeline[data-wiki-reveal] article {
+  opacity: 0;
+  transform: translateY(22px);
+  transition-duration: 520ms;
+  transition-property: opacity, transform, border-color, box-shadow;
+  transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.wiki-page--wet-lab .wiki-item-grid[data-wiki-reveal].is-visible article,
+.wiki-page--wet-lab .wiki-ledger[data-wiki-reveal].is-visible article,
+.wiki-page--wet-lab .wiki-mini-timeline[data-wiki-reveal].is-visible article {
+  opacity: 1;
+  transform: none;
+}
+
+.wiki-page--wet-lab [data-wiki-reveal].is-visible article:nth-child(2) { transition-delay: 70ms; }
+.wiki-page--wet-lab [data-wiki-reveal].is-visible article:nth-child(3) { transition-delay: 140ms; }
+.wiki-page--wet-lab [data-wiki-reveal].is-visible article:nth-child(4) { transition-delay: 210ms; }
+
+@keyframes wet-route-rise {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: none; }
+}
+
+@media (max-width: 820px) {
+  .wiki-page--wet-lab .wiki-hero__boundary {
+    grid-template-columns: 1fr;
+  }
+
+  .wet-lab-route > header {
+    align-items: start;
+    flex-direction: column;
+  }
+
+  .wet-lab-route__track a {
+    min-height: 124px;
+  }
+}
+
+@media (max-width: 620px) {
+  .wiki-page--wet-lab .wiki-chapter {
+    font-size: 14px;
+  }
+
+  .wiki-page--wet-lab .wiki-kicker {
+    font-size: 15px;
+  }
+
+  .wiki-page--wet-lab .wiki-hero__boundary {
+    padding: 22px;
+  }
+
+  .wiki-page--wet-lab .wiki-section__heading h2 {
+    font-size: clamp(42px, 12vw, 56px);
+  }
+
+  .wiki-page--wet-lab .wiki-section__summary {
+    font-size: 20px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wet-lab-route__track a,
+  .wiki-page--wet-lab .wiki-item-grid[data-wiki-reveal] article,
+  .wiki-page--wet-lab .wiki-ledger[data-wiki-reveal] article,
+  .wiki-page--wet-lab .wiki-mini-timeline[data-wiki-reveal] article {
+    animation: none;
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* Wet Lab: a linked evidence route instead of five isolated article templates. */
+.wiki-page--wet-lab .wiki-hero {
+  background:
+    radial-gradient(circle at 76% 18%, rgba(224, 135, 111, 0.075), transparent 24%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.14), transparent 72%);
+}
+
+.wiki-page--wet-lab .wiki-hero__boundary {
+  border-color: rgba(49, 95, 98, 0.18);
+  background: rgba(252, 248, 241, 0.82);
+}
+
+.wiki-page--wet-lab .wiki-hero .wet-gate-map.is-compact,
+.wiki-page--wet-lab .wiki-hero .signature-panel--wet.is-compact {
+  min-height: 540px;
+}
+
+.wet-lab-route {
+  position: relative;
+  isolation: isolate;
+  width: min(1380px, calc(100% - 64px));
+  margin: 0 auto 12px;
+  padding: 26px 28px 24px;
+  overflow: hidden;
+  border-radius: 24px;
+  background:
+    radial-gradient(circle at 92% 0%, rgba(224, 135, 111, 0.2), transparent 24%),
+    linear-gradient(135deg, #214b49, #173d3c 64%, #112f2e);
+  color: var(--paper-bright);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.08),
+    0 22px 56px rgba(23, 61, 60, 0.14);
+}
+
+.wet-lab-route > header {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 28px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(252, 248, 241, 0.16);
+}
+
+.wet-lab-route > header > div {
+  display: grid;
+  gap: 6px;
+}
+
+.wet-lab-route > header span,
+.wet-lab-route > header p,
+.wet-lab-route__track > a > span,
+.wet-lab-route__track small {
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  letter-spacing: 0.045em;
+  text-transform: uppercase;
+}
+
+.wet-lab-route > header span {
+  color: var(--coral);
+  font-size: 10px;
+  font-weight: 760;
+}
+
+.wet-lab-route > header strong {
+  font-size: clamp(17px, 1.6vw, 22px);
+  font-weight: 690;
+}
+
+.wet-lab-route > header p {
+  margin: 0;
+  color: rgba(252, 248, 241, 0.54);
+  font-size: 10px;
+  font-weight: 720;
+}
+
+.wet-lab-route__track {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 8px;
+  padding-top: 18px;
+}
+
+.wet-lab-route__track::before {
+  position: absolute;
+  z-index: -1;
+  top: 41px;
+  right: 9%;
+  left: 9%;
+  height: 1px;
+  background: rgba(252, 248, 241, 0.16);
+  content: "";
+}
+
+.wet-lab-route__track a {
+  display: grid;
+  min-width: 0;
+  min-height: 108px;
+  grid-template-columns: 28px minmax(0, 1fr);
+  grid-template-rows: 22px 1fr;
+  gap: 8px 10px;
+  padding: 12px;
+  border: 1px solid transparent;
+  border-radius: 15px;
+  color: rgba(252, 248, 241, 0.66);
+  text-decoration: none;
+  transition-property: border-color, background-color, color, transform;
+  transition-duration: 180ms;
+  transition-timing-function: var(--ease-out);
+}
+
+.wet-lab-route__track a:hover,
+.wet-lab-route__track a:focus-visible {
+  border-color: rgba(252, 248, 241, 0.14);
+  background: rgba(252, 248, 241, 0.055);
+  color: var(--paper-bright);
+  transform: translateY(-2px);
+}
+
+.wet-lab-route__track a.is-active {
+  border-color: rgba(224, 135, 111, 0.36);
+  background: rgba(224, 135, 111, 0.12);
+  color: var(--paper-bright);
+}
+
+.wet-lab-route__track > a > span {
+  align-self: center;
+  color: rgba(252, 248, 241, 0.45);
+  font-size: 9px;
+  font-weight: 720;
+}
+
+.wet-lab-route__track a.is-active > span {
+  color: var(--coral);
+}
+
+.wet-lab-route__track i {
+  display: block;
+  width: 13px;
+  height: 13px;
+  align-self: center;
+  border: 3px solid #173d3c;
+  border-radius: 50%;
+  background: rgba(252, 248, 241, 0.34);
+  box-shadow: 0 0 0 1px rgba(252, 248, 241, 0.42);
+}
+
+.wet-lab-route__track a.is-active i {
+  background: var(--coral);
+  box-shadow:
+    0 0 0 1px var(--coral),
+    0 0 0 6px rgba(224, 135, 111, 0.12);
+}
+
+.wet-lab-route__track a > div {
+  display: grid;
+  min-width: 0;
+  grid-column: 1 / -1;
+  gap: 5px;
+  align-content: end;
+}
+
+.wet-lab-route__track strong {
+  overflow: hidden;
+  font-size: 14px;
+  font-weight: 720;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.wet-lab-route__track small {
+  overflow: hidden;
+  color: rgba(252, 248, 241, 0.42);
+  font-size: 8px;
+  font-weight: 680;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.wiki-page--wet-lab .wiki-facts {
+  padding-top: 20px;
+}
+
+.wiki-page--wet-lab .wiki-facts article {
+  position: relative;
+  overflow: hidden;
+}
+
+.wiki-page--wet-lab .wiki-facts article::after {
+  position: absolute;
+  right: 22px;
+  bottom: 18px;
+  width: 30px;
+  height: 2px;
+  background: color-mix(in srgb, var(--wiki-accent) 42%, transparent);
+  content: "";
+}
+
+.wiki-page--wet-lab .wiki-section__heading {
+  grid-template-columns: 54px minmax(0, 1fr);
+  gap: 18px;
+  padding-top: 0;
+  border-top: 0;
+}
+
+.wiki-page--wet-lab .wiki-section__heading > span {
+  width: 42px;
+  height: 42px;
+  border: 0;
+  background: var(--wiki-accent);
+  color: #173d3c;
+  box-shadow: 0 0 0 8px rgba(224, 135, 111, 0.08);
+}
+
+.wiki-page--wet-lab .wiki-section__heading > div {
+  padding-top: 18px;
+  border-top: 1px solid rgba(23, 61, 60, 0.46);
+}
+
+.wiki-page--wet-lab .wiki-section__heading h2 {
+  max-width: 720px;
+}
+
+.wiki-page--wet-lab .wiki-section__summary {
+  max-width: 720px;
+}
+
+.wiki-page--wet-lab .wiki-feature {
+  margin-top: 34px;
+}
+
+.wiki-page--wet-lab .wiki-feature > .feature-panel,
+.wiki-page--wet-lab .wiki-feature > .wet-gate-map,
+.wiki-page--wet-lab .wiki-feature > .signature-panel {
+  border-radius: 24px;
+}
+
+.wiki-page--wet-lab .wiki-item-grid {
+  gap: 10px;
+  margin-top: 30px;
+}
+
+.wiki-page--wet-lab .wiki-item-grid article {
+  position: relative;
+  min-height: 188px;
+  padding: 22px;
+  overflow: hidden;
+  border-color: rgba(49, 95, 98, 0.13);
+  border-radius: 18px;
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.52), transparent 64%),
+    #f7f3eb;
+  box-shadow: 0 12px 30px rgba(23, 61, 60, 0.045);
+}
+
+.wiki-page--wet-lab .wiki-item-grid article::after {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 54px;
+  height: 54px;
+  border-top: 1px solid rgba(49, 95, 98, 0.1);
+  border-left: 1px solid rgba(49, 95, 98, 0.1);
+  border-radius: 18px 0 0;
+  content: "";
+}
+
+.wiki-page--wet-lab .wiki-item-grid h3 {
+  margin-top: 30px;
+  font-family: var(--font-sans);
+  font-size: clamp(20px, 1.8vw, 25px);
+  font-weight: 720;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+
+.wiki-page--wet-lab .wiki-item-grid p,
+.wiki-page--wet-lab .wiki-ledger p,
+.wiki-page--wet-lab .wiki-mini-timeline p {
+  font-size: 14px;
+  line-height: 1.58;
+}
+
+.wiki-page--wet-lab .wiki-ledger {
+  gap: 8px;
+  margin-top: 30px;
+  border-top: 0;
+}
+
+.wiki-page--wet-lab .wiki-ledger article {
+  grid-template-columns: 122px minmax(180px, 0.75fr) minmax(240px, 1.25fr);
+  gap: 20px;
+  padding: 20px;
+  border: 1px solid rgba(49, 95, 98, 0.12);
+  border-radius: 16px;
+  background: rgba(252, 248, 241, 0.7);
+}
+
+.wiki-page--wet-lab .wiki-ledger h3 {
+  font-family: var(--font-sans);
+  font-size: 18px;
+  font-weight: 720;
+}
+
+.wiki-page--wet-lab .wiki-mini-timeline {
+  gap: 12px;
+  margin-top: 32px;
+  padding-left: 36px;
+}
+
+.wiki-page--wet-lab .wiki-mini-timeline article {
+  grid-template-columns: 154px 1fr;
+  padding: 20px;
+  border: 1px solid rgba(49, 95, 98, 0.12);
+  border-radius: 16px;
+  background: rgba(252, 248, 241, 0.72);
+}
+
+.wiki-page--wet-lab .wiki-mini-timeline article::before {
+  top: 24px;
+  left: -37px;
+}
+
+.wiki-page--wet-lab .wiki-mini-timeline h3 {
+  font-family: var(--font-sans);
+  font-size: 20px;
+  font-weight: 720;
+}
+
+.wiki-page--wet-lab .wiki-boundary {
+  padding: 20px;
+  border: 1px solid rgba(224, 135, 111, 0.24);
+  border-radius: 16px;
+  background: rgba(224, 135, 111, 0.07);
+}
+
+.wiki-page--wet-lab .wiki-next {
+  background:
+    radial-gradient(circle at 86% 18%, rgba(224, 135, 111, 0.24), transparent 27%),
+    #173d3c;
+}
+
+@media (max-width: 1080px) {
+  .wet-lab-route__track {
+    overflow-x: auto;
+    grid-template-columns: repeat(5, minmax(190px, 1fr));
+    padding-bottom: 8px;
+    scrollbar-width: thin;
+  }
+
+  .wet-lab-route__track::before {
+    right: 95px;
+    left: 95px;
+  }
+}
+
+@media (max-width: 820px) {
+  .wet-lab-route {
+    width: calc(100% - 32px);
+    padding: 22px 18px 16px;
+    border-radius: 20px;
+  }
+
+  .wet-lab-route > header {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .wiki-page--wet-lab .wiki-section__heading {
+    grid-template-columns: 42px minmax(0, 1fr);
+    gap: 10px;
+  }
+
+  .wiki-page--wet-lab .wiki-section__heading > span {
+    width: 34px;
+    height: 34px;
+  }
+
+  .wiki-page--wet-lab .wiki-ledger article,
+  .wiki-page--wet-lab .wiki-mini-timeline article {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 620px) {
+  .wiki-page--wet-lab .wiki-hero .wet-gate-map.is-compact,
+  .wiki-page--wet-lab .wiki-hero .signature-panel--wet.is-compact {
+    min-height: 590px;
+  }
+
+  .wiki-page--wet-lab[data-wiki-route="/safety-and-security"]
+    .wiki-hero
+    .signature-panel--wet.is-compact {
+    min-height: 580px;
+  }
+
+  .wet-lab-route__track {
+    grid-template-columns: repeat(5, minmax(172px, 1fr));
+  }
+
+  .wiki-page--wet-lab .wiki-prose,
+  .wiki-page--wet-lab .wiki-feature,
+  .wiki-page--wet-lab .wiki-item-grid,
+  .wiki-page--wet-lab .wiki-ledger,
+  .wiki-page--wet-lab .wiki-mini-timeline,
+  .wiki-page--wet-lab .wiki-boundary {
+    margin-left: 0;
+  }
+
+  .wiki-page--wet-lab .wiki-section__heading {
+    grid-template-columns: 1fr;
+  }
+
+  .wiki-page--wet-lab .wiki-section__heading > div {
+    padding-top: 14px;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .wiki-page {
     --wiki-page-progress: 1 !important;
@@ -903,33 +1774,33 @@
 
 /* HP Local-derived page opening: concise copy + evidence note, never a split-screen poster. */
 .wiki-page:not(.wiki-page--human-practices) .wiki-hero {
-  min-height: min(650px, calc(100svh - var(--header-height)));
+  min-height: min(560px, calc(100svh - var(--header-height)));
   grid-template-columns: minmax(0, 1fr) minmax(300px, 390px);
-  gap: clamp(42px, 7vw, 110px);
+  gap: clamp(42px, 6vw, 88px);
   align-items: end;
-  padding-top: clamp(76px, 9vh, 112px);
-  padding-bottom: clamp(50px, 7vh, 76px);
+  padding-top: clamp(68px, 8vh, 94px);
+  padding-bottom: clamp(42px, 6vh, 60px);
   border-bottom: 1px solid var(--line);
 }
 
 .wiki-page:not(.wiki-page--human-practices) .wiki-hero h1 {
   max-width: 920px;
   font-family: inherit;
-  font-size: clamp(48px, 6.1vw, 88px);
+  font-size: clamp(48px, 5.6vw, 80px);
   font-weight: 820;
   letter-spacing: -0.045em;
   line-height: 0.95;
 }
 
 .wiki-page:not(.wiki-page--human-practices) .wiki-chapter {
-  margin-bottom: clamp(48px, 7vw, 82px);
+  margin-bottom: clamp(30px, 4vw, 48px);
 }
 
 .wiki-page:not(.wiki-page--human-practices) .wiki-hero__lede {
   max-width: 700px;
   margin-top: 20px;
   font-family: inherit;
-  font-size: clamp(16px, 1.4vw, 20px);
+  font-size: clamp(17px, 1.4vw, 21px);
   line-height: 1.48;
 }
 
@@ -1100,29 +1971,29 @@
   }
 }
 
-/* Restore the original CirCure ribbon outline while keeping anchor clicks. */
+/* Keep the CirCure ribbon while presenting a complete, readable outline. */
 .wiki-outline nav {
-  padding: 14px 0;
+  padding: 12px 0;
 }
 
 .wiki-outline nav a {
-  grid-template-columns: 24px minmax(0, 1fr);
+  grid-template-columns: 34px minmax(0, 1fr);
   gap: 0;
-  padding: 5px 4px 5px 22px;
+  padding: 12px 8px 12px 24px;
 }
 
-.wiki-outline nav a > strong {
-  font-weight: 590;
+.wiki-outline nav a .wiki-outline__copy > strong {
+  font-weight: 650;
 }
 
-.wiki-outline nav a.is-active > strong {
-  font-weight: 760;
+.wiki-outline nav a.is-active .wiki-outline__copy > strong {
+  font-weight: 780;
 }
 
 @media (max-width: 820px) {
   .wiki-outline nav a {
-    grid-template-columns: 28px minmax(0, 1fr);
-    padding-left: 4px;
+    grid-template-columns: 34px minmax(0, 1fr);
+    padding: 12px 6px;
   }
 }
 
@@ -1306,4 +2177,508 @@
     border-top: 1px solid rgba(27, 23, 25, 0.24);
     border-left: 0;
   }
+}
+
+/* Unified editorial reading system — shared structure, category colors stay local. */
+.wiki-page:not(.wiki-page--human-practices) .wiki-hero {
+  width: min(1380px, calc(100% - 64px));
+  min-height: auto;
+  grid-template-columns: minmax(0, 1fr) minmax(420px, 520px);
+  gap: clamp(44px, 5vw, 78px);
+  align-items: center;
+  padding: clamp(68px, 7vw, 96px) 0 clamp(54px, 6vw, 78px);
+  border-bottom: 0;
+}
+
+.wiki-page:not(.wiki-page--human-practices) .wiki-hero::before {
+  top: 34px;
+}
+
+.wiki-page:not(.wiki-page--human-practices) .wiki-hero::after {
+  top: 28px;
+}
+
+.wiki-page:not(.wiki-page--human-practices) .wiki-hero__copy {
+  align-self: center;
+}
+
+.wiki-page:not(.wiki-page--human-practices) .wiki-chapter {
+  margin-bottom: clamp(26px, 3vw, 40px);
+  color: color-mix(in srgb, var(--wiki-deep) 60%, transparent);
+  font-size: 12px;
+  letter-spacing: 0.035em;
+}
+
+.wiki-page:not(.wiki-page--human-practices) .wiki-hero h1 {
+  max-width: 820px;
+  font-size: clamp(50px, 5.25vw, 76px);
+  line-height: 0.98;
+}
+
+.wiki-page:not(.wiki-page--human-practices) .wiki-hero__lede {
+  max-width: 760px;
+  margin-top: 22px;
+  font-size: clamp(18px, 1.35vw, 21px);
+  line-height: 1.5;
+}
+
+.wiki-page:not(.wiki-page--human-practices) .wiki-hero__boundary {
+  max-width: 760px;
+  grid-template-columns: minmax(140px, 0.34fr) minmax(0, 1fr);
+  gap: 10px 24px;
+  margin-top: 30px;
+  padding: 20px 22px;
+  border: 1px solid color-mix(in srgb, var(--wiki-structure) 14%, transparent);
+  border-radius: 18px;
+  background: color-mix(in srgb, var(--wiki-surface) 82%, transparent);
+  box-shadow: 0 12px 30px rgba(27, 23, 25, 0.045);
+}
+
+.wiki-page:not(.wiki-page--human-practices) .wiki-hero__boundary > span {
+  padding-top: 2px;
+  font-size: 11px;
+  line-height: 1.45;
+}
+
+.wiki-page:not(.wiki-page--human-practices) .wiki-hero__boundary p {
+  font-size: 15px;
+  font-weight: 580;
+  line-height: 1.5;
+}
+
+.wiki-page:not(.wiki-page--human-practices) .wiki-begin {
+  grid-column: 2;
+  min-height: 34px;
+  margin-top: 2px;
+  font-size: 12px;
+}
+
+.wiki-page:not(.wiki-page--human-practices) .wiki-hero__visual {
+  width: 100%;
+  min-width: 0;
+  margin: 0;
+}
+
+.wiki-page:not(.wiki-page--human-practices) .wiki-hero__visual > .signature-panel,
+.wiki-page:not(.wiki-page--human-practices) .wiki-hero__visual > .dry-manuscript,
+.wiki-page:not(.wiki-page--human-practices) .wiki-hero__visual > .wet-gate-map {
+  min-height: clamp(460px, 41vw, 540px);
+  border-radius: 26px;
+}
+
+.wiki-page:not(.wiki-page--human-practices) .wiki-facts {
+  width: min(1380px, calc(100% - 64px));
+  gap: 12px;
+  padding: 14px 0;
+  border-color: color-mix(in srgb, var(--wiki-deep) 18%, transparent);
+}
+
+.wiki-page:not(.wiki-page--human-practices) .wiki-facts article,
+.wiki-page:not(.wiki-page--human-practices) .wiki-facts article:first-child {
+  min-height: 150px;
+  padding: 22px 24px;
+  border: 1px solid color-mix(in srgb, var(--wiki-structure) 12%, transparent);
+  border-radius: 18px;
+  background: color-mix(in srgb, var(--wiki-surface) 88%, transparent);
+}
+
+.wiki-page:not(.wiki-page--human-practices) .wiki-facts span {
+  font-size: 11px;
+}
+
+.wiki-page:not(.wiki-page--human-practices) .wiki-facts strong {
+  font-family: inherit;
+  font-size: clamp(17px, 1.4vw, 21px);
+  font-weight: 690;
+  line-height: 1.3;
+}
+
+.wiki-page:not(.wiki-page--human-practices) .wiki-record {
+  width: min(1320px, calc(100% - 64px));
+  grid-template-columns: 264px minmax(0, 900px);
+  gap: clamp(50px, 5vw, 76px);
+  padding: clamp(84px, 8vw, 118px) 0;
+}
+
+.wiki-outline__header {
+  display: grid;
+  gap: 11px;
+  padding: 0 0 16px;
+  border-bottom: 1px solid color-mix(in srgb, var(--wiki-deep) 38%, transparent);
+}
+
+.wiki-outline__header > div {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.wiki-outline__header p {
+  margin: 0;
+  color: var(--wiki-deep);
+  font-size: 15px;
+  font-weight: 780;
+}
+
+.wiki-outline__header strong,
+.wiki-outline__header > span {
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 650;
+}
+
+.wiki-outline__header > span {
+  color: var(--wiki-accent);
+}
+
+.wiki-outline nav {
+  gap: 7px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.wiki-outline nav a {
+  min-height: 70px;
+  grid-template-columns: 34px minmax(0, 1fr);
+  align-items: center;
+  padding: 10px 12px;
+  border: 1px solid transparent;
+  border-radius: 14px;
+}
+
+.wiki-outline nav a:hover,
+.wiki-outline nav a:focus-visible {
+  border-color: color-mix(in srgb, var(--wiki-accent) 16%, transparent);
+  background: color-mix(in srgb, var(--wiki-surface) 72%, transparent);
+  transform: translateX(2px);
+}
+
+.wiki-outline nav a.is-active {
+  border-color: color-mix(in srgb, var(--wiki-accent) 24%, transparent);
+  background: color-mix(in srgb, var(--wiki-accent) 8%, var(--wiki-surface));
+  box-shadow: 0 10px 26px rgba(27, 23, 25, 0.04);
+  transform: none;
+}
+
+.wiki-outline__index {
+  align-self: start;
+  padding-top: 4px;
+  color: var(--wiki-accent);
+  font-size: 12px;
+}
+
+.wiki-outline__copy {
+  gap: 4px;
+}
+
+.wiki-outline__copy small {
+  font-size: 11px;
+  letter-spacing: 0.02em;
+}
+
+.wiki-outline__copy strong {
+  font-size: 15px;
+  font-weight: 690;
+  line-height: 1.25;
+}
+
+.wiki-outline__ribbon {
+  display: none;
+}
+
+.wiki-outline__related {
+  gap: 4px;
+  padding-top: 20px;
+}
+
+.wiki-outline__related a {
+  min-height: 34px;
+  font-size: 13px;
+}
+
+.wiki-section {
+  padding-bottom: clamp(82px, 8vw, 112px);
+}
+
+.wiki-section__heading {
+  grid-template-columns: 48px minmax(0, 1fr);
+  gap: 20px;
+  padding-top: 22px;
+}
+
+.wiki-section__heading > span {
+  display: grid;
+  width: 38px;
+  height: 38px;
+  place-items: center;
+  padding: 0;
+  border: 1px solid color-mix(in srgb, var(--wiki-accent) 38%, transparent);
+  border-radius: 50%;
+  font-size: 11px;
+}
+
+.wiki-section__heading h2 {
+  font-size: clamp(40px, 4vw, 56px);
+  line-height: 1.02;
+}
+
+.wiki-section__summary {
+  margin-top: 18px;
+  font-size: clamp(18px, 1.5vw, 22px);
+}
+
+.wiki-prose p {
+  font-size: 18px;
+  line-height: 1.75;
+}
+
+.wiki-item-grid article {
+  min-height: 200px;
+  padding: 25px;
+  border: 1px solid color-mix(in srgb, var(--wiki-structure) 10%, transparent);
+  border-radius: 22px;
+  box-shadow: 0 14px 34px rgba(27, 23, 25, 0.045);
+}
+
+.wiki-item-grid h3 {
+  margin-top: 38px;
+  font-size: clamp(23px, 2vw, 29px);
+}
+
+.wiki-status {
+  font-size: 11px;
+}
+
+.signature-panel figcaption,
+.dry-manuscript figcaption,
+.feature-panel > header,
+.hp-impact-wall header {
+  font-size: 11px;
+  letter-spacing: 0.045em;
+}
+
+.wiki-page.wiki-page--hardware-hero .wiki-hero {
+  min-height: min(720px, calc(100svh - var(--header-height) - 32px));
+  grid-template-columns: minmax(0, 820px);
+  align-content: center;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(252, 248, 241, 0.94) 0%,
+      rgba(252, 248, 241, 0.8) 34%,
+      rgba(252, 248, 241, 0.2) 70%,
+      rgba(252, 248, 241, 0.02) 100%
+    ),
+    url("../assets/wiki/wetlab-circure-apparatus.png") center / cover no-repeat;
+}
+
+.wiki-page.wiki-page--hardware-hero .wiki-hero__boundary {
+  margin-top: 30px;
+}
+
+@media (max-width: 1080px) {
+  .wiki-page:not(.wiki-page--human-practices) .wiki-hero {
+    grid-template-columns: 1fr;
+  }
+
+  .wiki-page:not(.wiki-page--human-practices) .wiki-hero__copy,
+  .wiki-page:not(.wiki-page--human-practices) .wiki-hero__visual {
+    width: min(820px, 100%);
+  }
+
+  .wiki-page:not(.wiki-page--human-practices) .wiki-hero__visual {
+    justify-self: end;
+  }
+
+  .wiki-page.wiki-page--hardware-hero .wiki-hero {
+    grid-template-columns: minmax(0, 760px);
+  }
+}
+
+@media (max-width: 820px) {
+  .wiki-page:not(.wiki-page--human-practices) .wiki-hero,
+  .wiki-page:not(.wiki-page--human-practices) .wiki-facts,
+  .wiki-page:not(.wiki-page--human-practices) .wiki-record {
+    width: calc(100% - 32px);
+  }
+
+  .wiki-page:not(.wiki-page--human-practices) .wiki-record {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 52px;
+  }
+
+  .wiki-page:not(.wiki-page--human-practices) .wiki-article {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .wiki-page:not(.wiki-page--human-practices) .wiki-hero {
+    padding-top: 58px;
+  }
+
+  .wiki-page:not(.wiki-page--human-practices) .wiki-hero__boundary {
+    grid-template-columns: 1fr;
+  }
+
+  .wiki-page:not(.wiki-page--human-practices) .wiki-begin {
+    grid-column: 1;
+  }
+
+  .wiki-page:not(.wiki-page--human-practices) .wiki-facts {
+    gap: 8px;
+  }
+
+  .wiki-page:not(.wiki-page--human-practices) .wiki-facts article,
+  .wiki-page:not(.wiki-page--human-practices) .wiki-facts article:first-child {
+    min-height: 132px;
+  }
+
+  .wiki-outline nav {
+    grid-template-columns: 1fr;
+  }
+
+  .wiki-outline nav a {
+    min-height: 62px;
+    padding: 8px 10px;
+  }
+
+  .wiki-page.wiki-page--hardware-hero .wiki-hero {
+    background:
+      linear-gradient(
+        180deg,
+        rgba(252, 248, 241, 0.9) 0%,
+        rgba(252, 248, 241, 0.66) 58%,
+        rgba(252, 248, 241, 0.88) 100%
+      ),
+      url("../assets/wiki/wetlab-circure-apparatus.png") 58% center / cover no-repeat;
+  }
+}
+
+@media (max-width: 620px) {
+  .wiki-page:not(.wiki-page--human-practices) .wiki-hero h1 {
+    font-size: clamp(44px, 12vw, 60px);
+  }
+
+  .wiki-page:not(.wiki-page--human-practices) .wiki-hero__visual > .signature-panel,
+  .wiki-page:not(.wiki-page--human-practices) .wiki-hero__visual > .dry-manuscript,
+  .wiki-page:not(.wiki-page--human-practices) .wiki-hero__visual > .wet-gate-map {
+    min-height: 460px;
+    border-radius: 20px;
+  }
+
+  .wiki-page:not(.wiki-page--human-practices) .wiki-facts {
+    grid-template-columns: 1fr;
+  }
+
+  .wiki-section__heading {
+    grid-template-columns: 38px minmax(0, 1fr);
+    gap: 10px;
+  }
+
+  .wiki-section__heading > span {
+    width: 32px;
+    height: 32px;
+  }
+
+  .wiki-prose,
+  .wiki-feature,
+  .wiki-item-grid,
+  .wiki-ledger,
+  .wiki-mini-timeline,
+  .wiki-boundary {
+    margin-left: 48px;
+  }
+}
+
+/* Final Wet Lab type scale: intentionally follows all shared-page overrides. */
+.wiki-page--wet-lab .wiki-chapter,
+.wiki-page--wet-lab .wiki-kicker,
+.wiki-page--wet-lab .wiki-hero__boundary > span,
+.wiki-page--wet-lab .wiki-facts span,
+.wiki-page--wet-lab .wiki-section__heading > span,
+.wiki-page--wet-lab .wiki-status,
+.wiki-page--wet-lab .wiki-item-grid header,
+.wiki-page--wet-lab .wiki-ledger__code,
+.wiki-page--wet-lab .wiki-mini-timeline > article > span,
+.wiki-page--wet-lab .wiki-boundary > span,
+.wet-lab-route > header span,
+.wet-lab-route > header p,
+.wet-lab-route__track > a > span,
+.wet-lab-route__track small {
+  font-family: var(--font-sans);
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.wiki-page--wet-lab .wiki-chapter { font-size: 15px; font-weight: 680; }
+.wiki-page--wet-lab .wiki-kicker { font-size: 16px; font-weight: 720; }
+.wiki-page--wet-lab .wiki-hero__boundary > span { font-size: 14px; font-weight: 760; }
+.wiki-page--wet-lab .wiki-hero__boundary p { font-size: 16px; }
+.wiki-page--wet-lab .wiki-begin { font-size: 14px; }
+.wiki-page--wet-lab .wiki-facts span { font-size: 13px; }
+.wiki-page--wet-lab .wiki-facts strong { font-size: clamp(19px, 1.6vw, 23px); }
+.wiki-page--wet-lab .wiki-section__heading > span { width: 46px; height: 46px; font-size: 13px; }
+.wiki-page--wet-lab .wiki-section__heading h2 { font-size: clamp(48px, 5.3vw, 72px); }
+.wiki-page--wet-lab .wiki-section__summary { font-size: clamp(20px, 1.8vw, 25px); }
+.wiki-page--wet-lab .wiki-status { font-size: 12px; }
+.wiki-page--wet-lab .wiki-item-grid header,
+.wiki-page--wet-lab .wiki-ledger__code,
+.wiki-page--wet-lab .wiki-mini-timeline > article > span { font-size: 13px; }
+.wiki-page--wet-lab .wiki-item-grid p,
+.wiki-page--wet-lab .wiki-ledger p,
+.wiki-page--wet-lab .wiki-mini-timeline p,
+.wiki-page--wet-lab .wiki-boundary p { font-size: 16px; }
+.wiki-page--wet-lab .wiki-boundary > span { font-size: 14px; }
+
+.wet-lab-route > header span { font-size: 14px; }
+.wet-lab-route > header strong { font-size: clamp(20px, 2vw, 28px); }
+.wet-lab-route > header p { font-size: 13px; }
+.wet-lab-route__track a { min-height: 128px; }
+.wet-lab-route__track > a > span { font-size: 12px; }
+.wet-lab-route__track strong { font-size: 16px; white-space: normal; }
+.wet-lab-route__track small { font-size: 12px; line-height: 1.35; white-space: normal; }
+
+.wiki-page--wet-lab .wiki-outline__header p { font-size: 17px; }
+.wiki-page--wet-lab .wiki-outline__header > span,
+.wiki-page--wet-lab .wiki-outline__header strong,
+.wiki-page--wet-lab .wiki-outline__index,
+.wiki-page--wet-lab .wiki-outline__copy small { font-size: 13px; }
+.wiki-page--wet-lab .wiki-outline__copy strong { font-size: 16px; }
+.wiki-page--wet-lab .wiki-outline__related > span,
+.wiki-page--wet-lab .wiki-outline__related a { font-size: 14px; }
+
+@media (max-width: 620px) {
+  .wiki-page--wet-lab .wiki-chapter { font-size: 14px; }
+  .wiki-page--wet-lab .wiki-kicker { font-size: 15px; }
+  .wiki-page--wet-lab .wiki-section__heading > span { width: 36px; height: 36px; }
+  .wiki-page--wet-lab .wiki-section__heading h2 { font-size: clamp(42px, 12vw, 56px); }
+  .wiki-page--wet-lab .wiki-section__summary { font-size: 20px; }
+}
+
+/* Shared editorial selectors use :not(), so Wet Lab needs the same specificity. */
+.wiki-page.wiki-page--wet-lab .wiki-chapter { font-size: 15px; letter-spacing: 0; }
+.wiki-page.wiki-page--wet-lab .wiki-kicker { font-size: 16px; letter-spacing: 0; }
+.wiki-page.wiki-page--wet-lab .wiki-hero__boundary > span { font-size: 14px; }
+.wiki-page.wiki-page--wet-lab .wiki-hero__boundary p { font-size: 16px; }
+.wiki-page.wiki-page--wet-lab .wiki-begin { font-size: 14px; }
+.wiki-page.wiki-page--wet-lab .wiki-begin span {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  letter-spacing: 0;
+}
+.wiki-page.wiki-page--wet-lab .wiki-facts span { font-size: 13px; }
+.wiki-page.wiki-page--wet-lab .wiki-facts strong { font-size: clamp(19px, 1.6vw, 23px); }
+.wiki-page.wiki-page--wet-lab .wiki-section__heading > span { width: 46px; height: 46px; font-size: 13px; }
+.wiki-page.wiki-page--wet-lab .wiki-section__heading h2 { font-size: clamp(48px, 5.3vw, 72px); }
+.wiki-page.wiki-page--wet-lab .wiki-section__summary { font-size: clamp(20px, 1.8vw, 25px); }
+.wiki-page.wiki-page--wet-lab .wiki-status { font-size: 12px; }
+.wiki-page.wiki-page--wet-lab .wiki-next > a span { font-size: 14px; }
+
+@media (max-width: 620px) {
+  .wiki-page.wiki-page--wet-lab .wiki-chapter { font-size: 14px; }
+  .wiki-page.wiki-page--wet-lab .wiki-kicker { font-size: 15px; }
+  .wiki-page.wiki-page--wet-lab .wiki-section__heading > span { width: 36px; height: 36px; }
+  .wiki-page.wiki-page--wet-lab .wiki-section__heading h2 { font-size: clamp(42px, 12vw, 56px); }
+  .wiki-page.wiki-page--wet-lab .wiki-section__summary { font-size: 20px; }
 }

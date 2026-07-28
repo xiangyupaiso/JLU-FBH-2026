@@ -4,7 +4,7 @@ import projectWetlabSprite from "../assets/story-nav/nav-project-wetlab-v2.webp"
 import drylabEngagementSprite from "../assets/story-nav/nav-drylab-engagement-v2.webp";
 import Pages from "../pages";
 import type { FolderNavMeta } from "../pages";
- 
+
 interface NavCard {
   name: string;
   path: string;
@@ -12,7 +12,7 @@ interface NavCard {
   em: string;
   spriteRow: string;
 }
- 
+
 interface NavDropdown {
   key: string;
   label: string;
@@ -21,7 +21,7 @@ interface NavDropdown {
   enterLabel: string;
   cards: NavCard[];
 }
- 
+
 const SPRITES: Record<FolderNavMeta["sprite"], string> = {
   "project-wetlab": projectWetlabSprite,
   "drylab-engagement": drylabEngagementSprite,
@@ -54,18 +54,18 @@ const DROPDOWNS: NavDropdown[] = Pages.flatMap((item) => {
     },
   ];
 });
- 
+
 const NAV_BREAKPOINT = 980;
- 
+
 function isActive(pathname: string, path: string): boolean {
   if (path === "/") return pathname === "/";
   return pathname === path || pathname.startsWith(`${path}/`);
 }
- 
+
 function dropdownActive(pathname: string, dropdown: NavDropdown): boolean {
   return dropdown.cards.some((c) => isActive(pathname, c.path));
 }
- 
+
 export function Navbar() {
   const [openKey, setOpenKey] = useState<string | null>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -75,30 +75,35 @@ export function Navbar() {
   const shellRef = useRef<HTMLDivElement>(null);
   const mobileToggleRef = useRef<HTMLButtonElement>(null);
   const pathname = useLocation().pathname;
- 
+
   const clearTimers = useCallback(() => {
     window.clearTimeout(openTimerRef.current);
     window.clearTimeout(closeTimerRef.current);
   }, []);
- 
+
   const queueOpen = useCallback(
     (key: string) => {
-      if (typeof window === "undefined" || window.innerWidth <= NAV_BREAKPOINT) return;
+      if (typeof window === "undefined" || window.innerWidth <= NAV_BREAKPOINT)
+        return;
       clearTimers();
       openTimerRef.current = window.setTimeout(() => setOpenKey(key), 70);
     },
     [clearTimers],
   );
- 
+
   const queueClose = useCallback(() => {
-    if (typeof window === "undefined" || window.innerWidth <= NAV_BREAKPOINT) return;
+    if (typeof window === "undefined" || window.innerWidth <= NAV_BREAKPOINT)
+      return;
     clearTimers();
     closeTimerRef.current = window.setTimeout(() => setOpenKey(null), 170);
   }, [clearTimers]);
- 
+
   const openImmediate = useCallback(
     (key: string) => {
-      if (typeof window === "undefined" || window.innerWidth <= NAV_BREAKPOINT) {
+      if (
+        typeof window === "undefined" ||
+        window.innerWidth <= NAV_BREAKPOINT
+      ) {
         setMobileOpen(true);
         return;
       }
@@ -107,21 +112,21 @@ export function Navbar() {
     },
     [clearTimers],
   );
- 
+
   const closeAll = useCallback(() => {
     clearTimers();
     setOpenKey(null);
     setMobileOpen(false);
   }, [clearTimers]);
- 
+
   // Close on route change
   useEffect(() => {
     closeAll();
   }, [pathname, closeAll]);
- 
+
   // Clean up timers on unmount
   useEffect(() => () => clearTimers(), [clearTimers]);
- 
+
   // Click-outside to close whichever menu is open (desktop and/or mobile)
   useEffect(() => {
     if (!openKey && !mobileOpen) return;
@@ -131,9 +136,10 @@ export function Navbar() {
       closeAll();
     };
     document.addEventListener("pointerdown", onPointerDown, true);
-    return () => document.removeEventListener("pointerdown", onPointerDown, true);
+    return () =>
+      document.removeEventListener("pointerdown", onPointerDown, true);
   }, [openKey, mobileOpen, closeAll]);
- 
+
   // Escape closes whichever menu is open and restores focus to its toggle
   useEffect(() => {
     if (!openKey && !mobileOpen) return;
@@ -156,7 +162,7 @@ export function Navbar() {
     document.addEventListener("keydown", onKeyDown);
     return () => document.removeEventListener("keydown", onKeyDown);
   }, [openKey, mobileOpen, clearTimers]);
- 
+
   // Arrow Left/Right cycling among dropdown toggles
   const onToggleKeydown = useCallback(
     (event: React.KeyboardEvent<HTMLButtonElement>) => {
@@ -180,7 +186,7 @@ export function Navbar() {
     },
     [openImmediate],
   );
- 
+
   const headerClassName = [
     "site-header",
     openKey ? "is-nav-open" : "",
@@ -188,23 +194,34 @@ export function Navbar() {
   ]
     .filter(Boolean)
     .join(" ");
- 
+
   const homeActive = isActive(pathname, "/");
   const teamActive = isActive(pathname, "/team");
- 
+
   return (
     <>
       <svg
         aria-hidden="true"
-        style={{ position: "absolute", width: 0, height: 0, overflow: "hidden" }}
+        style={{
+          position: "absolute",
+          width: 0,
+          height: 0,
+          overflow: "hidden",
+        }}
         focusable="false"
       >
         <symbol id="circure-ribbon-knot" viewBox="0 0 32 46">
           <path d="M8.2 41C10.8 32.6 19.8 24.7 21.4 15.9C22.6 9.2 18.4 5.1 14.3 6.6C9.7 8.2 9.6 13.3 12.4 18.3C15.7 24.2 21.8 31.3 24.2 41" />
         </symbol>
       </svg>
- 
-      <header ref={headerRef} className={headerClassName} data-header data-tone="bright">
+
+      <header
+        ref={headerRef}
+        className={headerClassName}
+        data-header
+        data-tone="bright"
+        data-nav-theme={openKey ?? undefined}
+      >
         <div
           className="circure-nav-shell"
           ref={shellRef}
@@ -216,7 +233,13 @@ export function Navbar() {
               <span className="wordmark-stage" aria-hidden="true">
                 <span className="logo-word-full">CirCure</span>
                 <svg className="logo-symbol" viewBox="0 0 40 40">
-                  <circle className="logo-ring" pathLength={1} cx="20" cy="20" r="15.25" />
+                  <circle
+                    className="logo-ring"
+                    pathLength={1}
+                    cx="20"
+                    cy="20"
+                    r="15.25"
+                  />
                   <path
                     className="logo-ribbon"
                     pathLength={1}
@@ -226,7 +249,7 @@ export function Navbar() {
                 </svg>
               </span>
             </Link>
- 
+
             <nav className="desktop-nav" aria-label="Primary navigation">
               <Link to="/" aria-current={homeActive ? "page" : undefined}>
                 Home
@@ -241,7 +264,9 @@ export function Navbar() {
                   data-nav-key={d.key}
                   aria-expanded={openKey === d.key}
                   aria-controls="circure-nav-menu"
-                  aria-current={dropdownActive(pathname, d) ? "page" : undefined}
+                  aria-current={
+                    dropdownActive(pathname, d) ? "page" : undefined
+                  }
                   onPointerEnter={() => queueOpen(d.key)}
                   onFocus={() => openImmediate(d.key)}
                   onClick={() => openImmediate(d.key)}
@@ -251,7 +276,7 @@ export function Navbar() {
                 </button>
               ))}
             </nav>
- 
+
             <button
               className="mobile-menu-toggle"
               type="button"
@@ -261,14 +286,25 @@ export function Navbar() {
               ref={mobileToggleRef}
             >
               <span>Menu</span>
-              <svg className="ribbon-mark" viewBox="0 0 32 46" aria-hidden="true">
+              <svg
+                className="ribbon-mark"
+                viewBox="0 0 32 46"
+                aria-hidden="true"
+              >
                 <use href="#circure-ribbon-knot" />
               </svg>
             </button>
           </div>
- 
-          <span className="circure-nav-surface" aria-hidden="true" />
- 
+
+          <span className="circure-nav-surface" aria-hidden="true">
+            {DROPDOWNS.map((dropdown) => (
+              <span
+                key={`${dropdown.key}-aura`}
+                className={`circure-nav-aura circure-nav-aura--${dropdown.key}`}
+              />
+            ))}
+          </span>
+
           <div
             className={`circure-mega-menu${openKey ? " is-open" : ""}`}
             id="circure-nav-menu"
@@ -292,7 +328,9 @@ export function Navbar() {
                   aria-hidden={!isActivePanel}
                   style={
                     manyCards
-                      ? { gridTemplateColumns: `1.13fr repeat(${d.cards.length}, 1fr)` }
+                      ? {
+                          gridTemplateColumns: `1.13fr repeat(${d.cards.length}, 1fr)`,
+                        }
                       : undefined
                   }
                 >
@@ -326,7 +364,7 @@ export function Navbar() {
               );
             })}
           </div>
- 
+
           <nav
             className={`circure-mobile-menu${mobileOpen ? " is-open" : ""}`}
             id="circure-mobile-menu"
@@ -341,7 +379,11 @@ export function Navbar() {
               Team
             </Link>
             {DROPDOWNS.map((d) => (
-              <Link key={`${d.key}-head`} to={d.cards[0].path} onClick={closeAll}>
+              <Link
+                key={`${d.key}-head`}
+                to={d.cards[0].path}
+                onClick={closeAll}
+              >
                 {d.label}
               </Link>
             ))}

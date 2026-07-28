@@ -5,6 +5,7 @@ import {
   useState,
   type CSSProperties,
 } from "react";
+import { Link } from "react-router-dom";
 import clinicalImage from "../../assets/wiki/hp-clinical-review-v2.png";
 import communityImage from "../../assets/wiki/hp-community-workshop-v2.png";
 import labImage from "../../assets/wiki/hp-lab-review-v2.png";
@@ -16,19 +17,15 @@ import regulatoryPortrait from "../../assets/wiki/hp-portrait-regulatory.png";
 import regulatoryImage from "../../assets/wiki/hp-regulatory-review-v2.png";
 import whiteboardImage from "../../assets/wiki/hp-whiteboard-review-v2.png";
 import { useWikiPageMotion } from "../../hooks/useWikiPageMotion";
+import { EngagementHeroVisual } from "./EngagementHeroVisual";
+import { EngagementRouteNav } from "./EngagementRouteNav";
 import { WikiLineSidebar } from "./WikiLineSidebar";
 import "../../styles/wiki-rebuild.css";
+import "../../styles/wetlab-editorial.css";
+import "../../styles/engagement-hero.css";
 import "../../styles/human-practices-local.css";
 
-type ImageStyle = CSSProperties & {
-  "--card-image"?: string;
-  "--card-position"?: string;
-  "--avatar-image"?: string;
-  "--avatar-position"?: string;
-  "--dialog-image"?: string;
-  "--dialog-position"?: string;
-  "--section-image"?: string;
-  "--section-position"?: string;
+type TimelineCardStyle = CSSProperties & {
   "--angle"?: string;
 };
 
@@ -43,14 +40,6 @@ const sectionItems = [
 ];
 
 const sectionIds = sectionItems.map((item) => item.id);
-
-const phases = [
-  ["Question", "define responsible use", 0],
-  ["Listen", "diverse stakeholder input", 0.22],
-  ["Decide", "2 project-level pivots", 0.44],
-  ["Validate", "constraints enter assays", 0.68],
-  ["Return", "review remaining limits", 0.92],
-] as const;
 
 const impactRecords = [
   {
@@ -161,8 +150,7 @@ const impactRecords = [
     title: "Generic readouts were replaced by disease-relevant tests.",
     quote: "A positive assay is only useful if it answers the right question.",
     changeLabel: "Project change",
-    change:
-      "Mapped each experiment to a specific HP-driven design question.",
+    change: "Mapped each experiment to a specific HP-driven design question.",
     evidence: "Experiment map V06",
     target: "record-v06",
   },
@@ -191,8 +179,7 @@ const impactRecords = [
     badge: "dialogue",
     stat: "420+",
     title: "Outreach became a feedback channel, not decoration.",
-    quote:
-      "The public questions told us which risks we had not explained.",
+    quote: "The public questions told us which risks we had not explained.",
     changeLabel: "Project change",
     change:
       "Turned repeated questions into FAQ, risk framing, and next stakeholder targets.",
@@ -232,8 +219,7 @@ const timelineRecords = [
       "Clinical feedback showed that the first version had too many unbounded risk claims.",
     stakeholder:
       "Clinical specialist; focused on safety boundary, contraindication language, and what should not be claimed.",
-    why:
-      "We needed a clinical boundary before deciding which claims, safety gates, and validation priorities CirCure could responsibly carry.",
+    why: "We needed a clinical boundary before deciding which claims, safety gates, and validation priorities CirCure could responsibly carry.",
     heard:
       "The original proposal mixed early feasibility with clinical readiness. The stakeholder asked the team to state no-go conditions before presenting benefits.",
     change:
@@ -256,8 +242,7 @@ const timelineRecords = [
       "A pathway advisor pushed the team away from an elegant but hard-to-bound mechanism.",
     stakeholder:
       "Mechanism advisor; focused on causal pathway strength, off-target uncertainty, and validation burden.",
-    why:
-      "We needed an external mechanism expert to challenge whether our preferred route was controllable, testable, and proportionate to an undergraduate project.",
+    why: "We needed an external mechanism expert to challenge whether our preferred route was controllable, testable, and proportionate to an undergraduate project.",
     heard:
       "A clever mechanism is not enough if the team cannot bound the biological risk or explain why the pathway is controllable.",
     change:
@@ -280,8 +265,7 @@ const timelineRecords = [
       "Payload size, expression time, and immune response became design constraints.",
     stakeholder:
       "Delivery specialist; focused on payload limit, expression window, immune response, and realistic deployment route.",
-    why:
-      "Delivery determines construct size, dosing logic, immune risk, and real-world feasibility, so it could not remain a future-work assumption.",
+    why: "Delivery determines construct size, dosing logic, immune risk, and real-world feasibility, so it could not remain a future-work assumption.",
     heard:
       "Delivery is not a downstream packaging problem. It changes what construct size, dosage logic, and risk discussion are credible.",
     change:
@@ -304,8 +288,7 @@ const timelineRecords = [
       "Ethics review separated public-facing quotes from private evidence records.",
     stakeholder:
       "Ethics reviewer; focused on consent, identifiability, uncertainty, and how much detail can be shown publicly.",
-    why:
-      "We needed a consent and privacy framework that could show stakeholder influence without turning personal context into public evidence.",
+    why: "We needed a consent and privacy framework that could show stakeholder influence without turning personal context into public evidence.",
     heard:
       "A story can be powerful without making a person identifiable. Public HP evidence should not expose private context.",
     change:
@@ -328,8 +311,7 @@ const timelineRecords = [
       "Public questions clustered around access, uncertainty, and possible misuse.",
     stakeholder:
       "Community participants; focused on understandable benefit, uncertainty, cost, access, and possible misuse.",
-    why:
-      "We wanted to test whether non-specialists could understand both the promise and the uncertainty, and identify concerns our expert framing had missed.",
+    why: "We wanted to test whether non-specialists could understand both the promise and the uncertainty, and identify concerns our expert framing had missed.",
     heard:
       "People understood the promise faster than the uncertainty. Repeated questions revealed which risks the page had not explained.",
     change:
@@ -352,8 +334,7 @@ const timelineRecords = [
       "Generic positive readouts were replaced with question-driven validation.",
     stakeholder:
       "Wet lab mentor; focused on whether planned assays actually answer HP-driven design questions.",
-    why:
-      "We needed to verify that each planned experiment answered a stakeholder-linked design question rather than merely producing a positive readout.",
+    why: "We needed to verify that each planned experiment answered a stakeholder-linked design question rather than merely producing a positive readout.",
     heard:
       "A positive assay is only useful if it answers the right question. Feasibility, safety, and user relevance should not be collapsed.",
     change:
@@ -376,8 +357,7 @@ const timelineRecords = [
       "Healthcare workers flagged burden, storage, training, and adoption barriers.",
     stakeholder:
       "Healthcare workers; focused on labor burden, storage, training, adoption barrier, and fit inside existing workflows.",
-    why:
-      "We needed to understand whether CirCure's proposed workflow could fit inside an already constrained clinical setting.",
+    why: "We needed to understand whether CirCure's proposed workflow could fit inside an already constrained clinical setting.",
     heard:
       "If the solution adds work to an overloaded setting, it will not be used even if the biology works.",
     change:
@@ -400,8 +380,7 @@ const timelineRecords = [
       "The closeout conversation checked whether the new design answered earlier concerns.",
     stakeholder:
       "Earlier stakeholders; focused on whether the revised design genuinely answered the concerns they raised.",
-    why:
-      "A feedback loop is incomplete until the revised design is brought back to the people whose concerns prompted the change.",
+    why: "A feedback loop is incomplete until the revised design is brought back to the people whose concerns prompted the change.",
     heard:
       "Closing the loop means returning with the changed design, not just citing the first conversation.",
     change:
@@ -466,14 +445,32 @@ const dossierRecords = [
     intro:
       "TNBC heterogeneity sits inside complex clinical workflows. Clinical input helped us separate an early research platform from a therapeutic claim, define no-go conditions, and identify the evidence required before any discussion of translation.",
     blocks: [
-      ["Who we contacted", "Oncologists, TNBC researchers, and clinical workflow specialists who could challenge both biological and implementation assumptions."],
-      ["Why we contacted them", "We needed a clinical boundary before choosing what the project should promise, test, or explicitly leave outside scope."],
-      ["What we learned", "The first framing mixed early feasibility with clinical readiness, making the safety story too confident."],
-      ["How it changed CirCure", "Clinical feedback became no-go criteria and changed the model, safety page, and implementation assumptions."],
+      [
+        "Who we contacted",
+        "Oncologists, TNBC researchers, and clinical workflow specialists who could challenge both biological and implementation assumptions.",
+      ],
+      [
+        "Why we contacted them",
+        "We needed a clinical boundary before choosing what the project should promise, test, or explicitly leave outside scope.",
+      ],
+      [
+        "What we learned",
+        "The first framing mixed early feasibility with clinical readiness, making the safety story too confident.",
+      ],
+      [
+        "How it changed CirCure",
+        "Clinical feedback became no-go criteria and changed the model, safety page, and implementation assumptions.",
+      ],
     ],
     folds: [
-      ["What should be documented?", "Interview date, stakeholder role, clinical concern, design boundary created, and what the team decided not to claim."],
-      ["How this changes the project", "Clinical concerns become no-go criteria for modeling, safety discussion, and implementation language."],
+      [
+        "What should be documented?",
+        "Interview date, stakeholder role, clinical concern, design boundary created, and what the team decided not to claim.",
+      ],
+      [
+        "How this changes the project",
+        "Clinical concerns become no-go criteria for modeling, safety discussion, and implementation language.",
+      ],
     ],
     tags: ["risk criteria", "no-go boundary", "clinical workflow"],
     image: clinicalImage,
@@ -490,14 +487,32 @@ const dossierRecords = [
     intro:
       "CirCure links target ranking, circularization, delivery, and immune readouts. External technical review tested which assumptions were controllable, which experiments answered meaningful questions, and which elegant mechanisms needed to be abandoned.",
     blocks: [
-      ["Who we contacted", "Molecular immunologists, circRNA researchers, delivery specialists, and wet-lab mentors with complementary technical perspectives."],
-      ["Why we contacted them", "Mechanism and delivery experts tested whether the project was technically responsible, not merely interesting."],
-      ["What we learned", "A favored pathway was too hard to bound, and delivery constraints affected construct size, dosage logic, and validation."],
-      ["How it changed CirCure", "The old route was archived, the design was narrowed, and each assay was mapped to a stakeholder-linked question."],
+      [
+        "Who we contacted",
+        "Molecular immunologists, circRNA researchers, delivery specialists, and wet-lab mentors with complementary technical perspectives.",
+      ],
+      [
+        "Why we contacted them",
+        "Mechanism and delivery experts tested whether the project was technically responsible, not merely interesting.",
+      ],
+      [
+        "What we learned",
+        "A favored pathway was too hard to bound, and delivery constraints affected construct size, dosage logic, and validation.",
+      ],
+      [
+        "How it changed CirCure",
+        "The old route was archived, the design was narrowed, and each assay was mapped to a stakeholder-linked question.",
+      ],
     ],
     folds: [
-      ["Rejected path", "Describe the mechanism that was discarded, why the stakeholder critique mattered, and what replaced it."],
-      ["Evidence to link", "Pivot memo, model assumption change, wet lab assay map, and delivery constraint notes."],
+      [
+        "Rejected path",
+        "Describe the mechanism that was discarded, why the stakeholder critique mattered, and what replaced it.",
+      ],
+      [
+        "Evidence to link",
+        "Pivot memo, model assumption change, wet lab assay map, and delivery constraint notes.",
+      ],
     ],
     tags: ["mechanism rejected", "delivery limits", "assay map"],
     image: labImage,
@@ -514,14 +529,32 @@ const dossierRecords = [
     intro:
       "Cancer-related communication can easily overstate readiness or expose personal context. Consent, privacy, anonymization, and uncertainty therefore became explicit design requirements for our evidence records and public-facing claims.",
     blocks: [
-      ["Who we contacted", "Bioethics researchers, patient advocates, and reviewers familiar with consent, privacy, and responsible health communication."],
-      ["Why we contacted them", "We needed to show interview influence without exposing private context or overstating stakeholder endorsement."],
-      ["What we learned", "Public storytelling and evidence storage require different consent levels, especially when quotes can identify a person."],
-      ["How it changed CirCure", "The HP page separates public quotes, private notes, anonymized summaries, and uncertainty statements."],
+      [
+        "Who we contacted",
+        "Bioethics researchers, patient advocates, and reviewers familiar with consent, privacy, and responsible health communication.",
+      ],
+      [
+        "Why we contacted them",
+        "We needed to show interview influence without exposing private context or overstating stakeholder endorsement.",
+      ],
+      [
+        "What we learned",
+        "Public storytelling and evidence storage require different consent levels, especially when quotes can identify a person.",
+      ],
+      [
+        "How it changed CirCure",
+        "The HP page separates public quotes, private notes, anonymized summaries, and uncertainty statements.",
+      ],
     ],
     folds: [
-      ["Consent-safe storytelling", "Use public quotes only when permission is explicit; otherwise summarize the influence without identifying the person."],
-      ["Unknowns and uncertainty", "State what remains untested, where the design is speculative, and what would be needed before implementation."],
+      [
+        "Consent-safe storytelling",
+        "Use public quotes only when permission is explicit; otherwise summarize the influence without identifying the person.",
+      ],
+      [
+        "Unknowns and uncertainty",
+        "State what remains untested, where the design is speculative, and what would be needed before implementation.",
+      ],
     ],
     tags: ["anonymization", "consent record", "uncertainty"],
     image: ethicsPortrait,
@@ -538,14 +571,32 @@ const dossierRecords = [
     intro:
       "Two-way workshops tested whether non-specialists could understand both the benefit and uncertainty of CirCure. Repeated concerns became data: they shaped risk language, access questions, future interview targets, and how we explained the model.",
     blocks: [
-      ["Who we contacted", "Patient advocates, community workshop participants, students, and science communicators with different levels of technical knowledge."],
-      ["Why we contacted them", "Public-facing work tested whether our explanation was understandable and whether perceived risks matched our assumptions."],
-      ["What we learned", "Participants understood the promise faster than the uncertainty, exposing missing access and misuse framing."],
-      ["How it changed CirCure", "Question clusters became FAQ edits, risk-language revisions, and targets for expert follow-up interviews."],
+      [
+        "Who we contacted",
+        "Patient advocates, community workshop participants, students, and science communicators with different levels of technical knowledge.",
+      ],
+      [
+        "Why we contacted them",
+        "Public-facing work tested whether our explanation was understandable and whether perceived risks matched our assumptions.",
+      ],
+      [
+        "What we learned",
+        "Participants understood the promise faster than the uncertainty, exposing missing access and misuse framing.",
+      ],
+      [
+        "How it changed CirCure",
+        "Question clusters became FAQ edits, risk-language revisions, and targets for expert follow-up interviews.",
+      ],
     ],
     folds: [
-      ["Theme mapping", "Cluster public questions into access, safety, misuse, cost, and scientific uncertainty."],
-      ["Resulting content changes", "Show before-and-after language for one explanation block so the communication improvement is visible."],
+      [
+        "Theme mapping",
+        "Cluster public questions into access, safety, misuse, cost, and scientific uncertainty.",
+      ],
+      [
+        "Resulting content changes",
+        "Show before-and-after language for one explanation block so the communication improvement is visible.",
+      ],
     ],
     tags: ["workshop themes", "readability pass", "FAQ update"],
     image: communityImage,
@@ -562,14 +613,32 @@ const dossierRecords = [
     intro:
       "The strongest IHP close is a return visit, followed by an honest account of what remains unresolved. Clinical validation, equitable access, long-term immune safety, and delivery feasibility remain questions rather than claims.",
     blocks: [
-      ["Who we contacted", "Earlier stakeholders, healthcare workers, and translational or regulatory experts who could assess the revised project as a whole."],
-      ["Why we contacted them", "Return interviews checked whether the revised project actually answered earlier concerns instead of only citing them."],
-      ["What remains unknown", "Workflow burden, access, delivery feasibility, and long-term immune safety remain unresolved implementation barriers."],
-      ["How it changed CirCure", "The final HP text shows before-and-after decisions, remaining limits, and future work tied to stakeholder feedback."],
+      [
+        "Who we contacted",
+        "Earlier stakeholders, healthcare workers, and translational or regulatory experts who could assess the revised project as a whole.",
+      ],
+      [
+        "Why we contacted them",
+        "Return interviews checked whether the revised project actually answered earlier concerns instead of only citing them.",
+      ],
+      [
+        "What remains unknown",
+        "Workflow burden, access, delivery feasibility, and long-term immune safety remain unresolved implementation barriers.",
+      ],
+      [
+        "How it changed CirCure",
+        "The final HP text shows before-and-after decisions, remaining limits, and future work tied to stakeholder feedback.",
+      ],
     ],
     folds: [
-      ["Return-loop proof", "Include the revised design shown to stakeholders and the questions used to evaluate whether changes addressed prior concerns."],
-      ["Unresolved evidence gaps", "Clinical validation, long-term immune response, scalable delivery, cost, and equitable access are future questions, not project outcomes."],
+      [
+        "Return-loop proof",
+        "Include the revised design shown to stakeholders and the questions used to evaluate whether changes addressed prior concerns.",
+      ],
+      [
+        "Unresolved evidence gaps",
+        "Clinical validation, long-term immune response, scalable delivery, cost, and equitable access are future questions, not project outcomes.",
+      ],
     ],
     tags: ["workflow map", "stakeholder review", "future limits"],
     image: regulatoryImage,
@@ -588,7 +657,6 @@ function HumanPracticesImpactWall() {
   const stickyRef = useRef<HTMLDivElement>(null);
   const viewportRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
-  const [phaseIndex, setPhaseIndex] = useState(0);
 
   const updateGeometry = useCallback(() => {
     const section = sectionRef.current;
@@ -611,7 +679,7 @@ function HumanPracticesImpactWall() {
         ),
       ) || 78;
     const availableHeight = innerHeight - headerHeight;
-    const cardHeight = clamp(availableHeight - 285, 360, 590);
+    const cardHeight = clamp(availableHeight - 112, 460, 590);
     section.style.setProperty("--hp-impact-card-height", `${cardHeight}px`);
     section.style.setProperty(
       "--hp-impact-card-width",
@@ -656,7 +724,6 @@ function HumanPracticesImpactWall() {
       const maxX = Math.max(0, track.scrollWidth - viewport.clientWidth + 24);
       section.style.setProperty("--hp-impact-x", `${-maxX * progress}px`);
       section.style.setProperty("--hp-impact-progress", progress.toFixed(4));
-      setPhaseIndex(Math.round(progress * (phases.length - 1)));
     };
     const request = () => {
       if (!frame) frame = requestAnimationFrame(update);
@@ -680,27 +747,6 @@ function HumanPracticesImpactWall() {
     };
   }, [updateGeometry]);
 
-  const jumpToPhase = (target: number) => {
-    const section = sectionRef.current;
-    if (!section) return;
-    const headerHeight =
-      Number.parseFloat(
-        getComputedStyle(document.documentElement).getPropertyValue(
-          "--header-height",
-        ),
-      ) || 78;
-    const scrollable = Math.max(
-      1,
-      section.offsetHeight - innerHeight + headerHeight,
-    );
-    scrollTo({
-      top: section.offsetTop - headerHeight + scrollable * target,
-      behavior: matchMedia("(prefers-reduced-motion: reduce)").matches
-        ? "auto"
-        : "smooth",
-    });
-  };
-
   return (
     <section
       className="hp-impact-scroll"
@@ -710,41 +756,11 @@ function HumanPracticesImpactWall() {
       aria-label="Human Practices impact timeline"
     >
       <div className="hp-impact-sticky" ref={stickyRef}>
-        <header className="hp-section-head hp-impact-head">
-          <div>
-            <p className="hp-kicker">02 / Stakeholder impact wall</p>
-            <h2>Five perspectives changed one design.</h2>
-          </div>
-          <p>
-            Clinical need, mechanism, delivery, ethics, and access did not
-            merely endorse CirCure. Each imposed a constraint that can be
-            traced to a decision.
-          </p>
+        <header className="hp-impact-caption">
+          <p className="hp-kicker">02 / Stakeholder impact</p>
+          <h2>People changed the project.</h2>
+          <span>Scroll to follow all ten records</span>
         </header>
-
-        <nav className="hp-phase-timeline" aria-label="Integration arc">
-          <p className="hp-phase-title">
-            <strong>Integration arc</strong>
-            <span>Every step links to evidence</span>
-          </p>
-          <span className="hp-phase-line" aria-hidden="true">
-            <i />
-          </span>
-          <ol>
-            {phases.map(([label, note, target], index) => (
-              <li
-                key={label}
-                className={`${index === phaseIndex ? "is-active" : ""} ${index < phaseIndex ? "is-past" : ""}`}
-              >
-                <button type="button" onClick={() => jumpToPhase(target)}>
-                  <i aria-hidden="true" />
-                  <strong>{label}</strong>
-                  <span>{note}</span>
-                </button>
-              </li>
-            ))}
-          </ol>
-        </nav>
 
         <div className="hp-impact-viewport" ref={viewportRef}>
           <div className="hp-impact-track" ref={trackRef}>
@@ -752,13 +768,15 @@ function HumanPracticesImpactWall() {
               <article
                 className={`hp-impact-card ${index === 0 ? "hp-impact-card--feature" : ""}`}
                 key={`${record.stakeholder}-${record.title}`}
-                style={
-                  {
-                    "--card-image": `url(${record.image})`,
-                    "--card-position": record.position,
-                  } as ImageStyle
-                }
               >
+                <img
+                  className="hp-impact-card__image"
+                  src={record.image}
+                  alt={`${record.stakeholder}: ${record.lens}`}
+                  loading="eager"
+                  decoding="async"
+                  style={{ objectPosition: record.position }}
+                />
                 <div className="hp-impact-card__top">
                   <div className="hp-stakeholder">
                     <span className="hp-avatar">{record.avatar}</span>
@@ -857,9 +875,7 @@ function HumanPracticesTimeline() {
       section.offsetHeight - innerHeight + headerHeight,
     );
     const progress =
-      index === timelineRecords.length - 1
-        ? 1
-        : index / timelineRecords.length;
+      index === timelineRecords.length - 1 ? 1 : index / timelineRecords.length;
     scrollTo({
       top: section.offsetTop - headerHeight + scrollable * progress,
       behavior: matchMedia("(prefers-reduced-motion: reduce)").matches
@@ -922,7 +938,13 @@ function HumanPracticesTimeline() {
             <div className="hp-dial-ring" aria-hidden="true">
               <svg viewBox="0 0 100 100">
                 <defs>
-                  <linearGradient id="hp-ring-gradient" x1="0" y1="0" x2="1" y2="1">
+                  <linearGradient
+                    id="hp-ring-gradient"
+                    x1="0"
+                    y1="0"
+                    x2="1"
+                    y2="1"
+                  >
                     <stop offset="0%" stopColor="#7a2636" />
                     <stop offset="50%" stopColor="#d86f4a" />
                     <stop offset="100%" stopColor="#2f6f68" />
@@ -944,20 +966,18 @@ function HumanPracticesTimeline() {
                 className={`hp-dial-card ${index === activeIndex ? "is-active" : ""} ${index === previous ? "is-prev" : ""} ${index === next ? "is-next" : ""}`}
                 id={record.id}
                 key={record.id}
-                style={{ "--angle": `${index * 45}deg` } as ImageStyle}
+                style={{ "--angle": `${index * 45}deg` } as TimelineCardStyle}
               >
                 <div className="hp-timeline-card__front">
                   <div className="hp-timeline-card__top">
                     <div className="hp-timeline-person">
-                      <span
+                      <img
                         className="hp-timeline-avatar"
-                        aria-hidden="true"
-                        style={
-                          {
-                            "--avatar-image": `url(${record.portrait})`,
-                            "--avatar-position": "center 20%",
-                          } as ImageStyle
-                        }
+                        src={record.portrait}
+                        alt=""
+                        loading="lazy"
+                        decoding="async"
+                        style={{ objectPosition: "center 20%" }}
                       />
                       <span>
                         <strong>{record.date}</strong>
@@ -973,7 +993,9 @@ function HumanPracticesTimeline() {
                     type="button"
                     onClick={() => {
                       setDialogIndex(index);
-                      requestAnimationFrame(() => dialogRef.current?.showModal());
+                      requestAnimationFrame(() =>
+                        dialogRef.current?.showModal(),
+                      );
                     }}
                   >
                     View evidence <span aria-hidden="true">↗</span>
@@ -1010,16 +1032,14 @@ function HumanPracticesTimeline() {
             </button>
           </header>
           <div className="hp-timeline-dialog__body">
-            <div
-              className="hp-timeline-dialog__media"
-              aria-label="Representative stakeholder review image"
-              style={
-                {
-                  "--dialog-image": `url(${dialogRecord.image})`,
-                  "--dialog-position": dialogRecord.position,
-                } as ImageStyle
-              }
-            />
+            <figure className="hp-timeline-dialog__media">
+              <img
+                src={dialogRecord.image}
+                alt={`Representative ${dialogRecord.role} review`}
+                decoding="async"
+                style={{ objectPosition: dialogRecord.position }}
+              />
+            </figure>
             <dl>
               {[
                 ["Stakeholder", dialogRecord.stakeholder],
@@ -1043,27 +1063,6 @@ function HumanPracticesTimeline() {
 }
 
 function HumanPracticesDossier() {
-  const [activeId, setActiveId] = useState(dossierRecords[0].id);
-
-  useEffect(() => {
-    const records = dossierRecords
-      .map((record) => document.getElementById(record.id))
-      .filter((record): record is HTMLElement => Boolean(record));
-    if (!("IntersectionObserver" in window)) return;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-        if (visible) setActiveId(visible.target.id);
-      },
-      { threshold: [0.2, 0.45, 0.7], rootMargin: "-18% 0px -55% 0px" },
-    );
-    records.forEach((record) => observer.observe(record));
-    return () => observer.disconnect();
-  }, []);
-
   return (
     <section
       className="hp-dossier"
@@ -1080,21 +1079,14 @@ function HumanPracticesDossier() {
         </p>
       </header>
       <div className="hp-dossier-layout">
-        <WikiLineSidebar
-          activeId={activeId}
-          label="Evidence dossier"
-          items={dossierRecords.map((record, index) => ({
-            id: record.id,
-            index: String(index + 1).padStart(2, "0"),
-            label: record.nav,
-          }))}
-        />
         <div className="hp-dossier-content">
           {dossierRecords.map((record) => (
             <article
               className="hp-dossier-section"
               id={record.id}
               key={record.id}
+              data-wiki-outline-anchor
+              data-wiki-outline-parent="hp-dossier"
             >
               <div className="hp-dossier-section__copy">
                 <div>
@@ -1111,7 +1103,10 @@ function HumanPracticesDossier() {
                   </div>
                   <div className="hp-analysis-folds">
                     {record.folds.map(([heading, copy], index) => (
-                      <details key={heading} open={index === 0 && record.id === "dossier-technical"}>
+                      <details
+                        key={heading}
+                        open={index === 0 && record.id === "dossier-technical"}
+                      >
                         <summary>{heading}</summary>
                         <p>{copy}</p>
                       </details>
@@ -1124,15 +1119,14 @@ function HumanPracticesDossier() {
                   ))}
                 </div>
               </div>
-              <figure
-                className="hp-dossier-image"
-                style={
-                  {
-                    "--section-image": `url(${record.image})`,
-                    "--section-position": record.position,
-                  } as ImageStyle
-                }
-              >
+              <figure className="hp-dossier-image">
+                <img
+                  src={record.image}
+                  alt=""
+                  loading="lazy"
+                  decoding="async"
+                  style={{ objectPosition: record.position }}
+                />
                 <figcaption>{record.caption}</figcaption>
               </figure>
             </article>
@@ -1143,76 +1137,101 @@ function HumanPracticesDossier() {
   );
 }
 
+function HumanPracticesQuickView() {
+  return (
+    <section className="hp-judge-view" aria-labelledby="hp-judge-title">
+      <header className="hp-section-head">
+        <div>
+          <p className="hp-kicker">Judge quick view</p>
+          <h2 id="hp-judge-title">What changed, at a glance.</h2>
+        </div>
+        <p>
+          Five perspectives produced two project-level pivots, eight traceable
+          decisions, and one return loop.
+        </p>
+      </header>
+      <div className="hp-proof-grid" aria-label="HP evidence summary">
+        {[
+          ["5", "stakeholder lenses"],
+          ["2", "project-level pivots"],
+          ["8", "linked decisions"],
+          ["1", "closed return loop"],
+        ].map(([value, label]) => (
+          <div key={label}>
+            <strong>{value}</strong>
+            <span>{label}</span>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
 export function HumanPracticesPage() {
   const rootRef = useRef<HTMLElement>(null);
-  useWikiPageMotion(rootRef, sectionIds, "/human-practices");
+  const { activeSection, activeSubsection } = useWikiPageMotion(
+    rootRef,
+    sectionIds,
+    "/human-practices",
+  );
+  const outlineItems = sectionItems.map((item) =>
+    item.id === "hp-dossier"
+      ? {
+          ...item,
+          children: dossierRecords.map((record, index) => ({
+            id: record.id,
+            index: `7.${index + 1}`,
+            label: record.nav,
+          })),
+        }
+      : item,
+  );
 
   return (
     <main
-      className="wiki-page wiki-page--engagement wiki-page--human-practices hp-local-page"
+      className="wiki-page wiki-page--unified-disclosures wiki-page--engagement wiki-page--manuscript wiki-page--human-practices hp-local-page"
       ref={rootRef}
       data-wiki-route="/human-practices"
+      data-active-section={activeSection}
     >
       <div className="wiki-page-progress" aria-hidden="true">
         <span />
       </div>
 
-      <section
-        className="hp-local-hero"
+      <header
+        className="wiki-hero hp-local-hero"
         id="hp-overview"
         data-wiki-section
         aria-labelledby="hp-page-title"
       >
-        <div data-wiki-reveal>
-          <p className="hp-kicker">01 / Integrated Human Practices</p>
-          <h1 id="hp-page-title">The world changed CirCure.</h1>
-          <p className="hp-lead">
-            Clinical, technical, ethical, and access perspectives reshaped our
-            multi-epitope circRNA vaccine concept—from target strategy to
-            validation.
+        <div className="wiki-hero__copy" data-wiki-reveal>
+          <h1 id="hp-page-title">Human Practices</h1>
+          <p className="wiki-hero__lede">
+            Outside voices return as visible design decisions.
           </p>
         </div>
-        <aside data-wiki-reveal>
-          <p>Our IHP question</p>
-          <strong>
-            What would make a multi-epitope circRNA vaccine scientifically
-            responsible, clinically credible, and accessible?
-          </strong>
-          <a href="#hp-impact" aria-label="Jump to stakeholder impact">
-            ↓
-          </a>
-        </aside>
-      </section>
+        <div className="wiki-hero__visual" data-wiki-reveal>
+          <EngagementHeroVisual route="/human-practices" />
+        </div>
+      </header>
 
-      <section className="hp-judge-view" aria-labelledby="hp-judge-title">
-        <header className="hp-section-head">
-          <div>
-            <p className="hp-kicker">Judge quick view</p>
-            <h2 id="hp-judge-title">What changed, at a glance.</h2>
-          </div>
-          <p>
-            Five perspectives produced two project-level pivots, eight
-            traceable decisions, and one return loop.
-          </p>
-        </header>
-        <div className="hp-proof-grid" aria-label="HP evidence summary">
-          {[
-            ["5", "stakeholder lenses"],
-            ["2", "project-level pivots"],
-            ["8", "linked decisions"],
-            ["1", "closed return loop"],
-          ].map(([value, label]) => (
-            <div key={label}>
-              <strong>{value}</strong>
-              <span>{label}</span>
-            </div>
-          ))}
-        </div>
-      </section>
+      <EngagementRouteNav activePath="/human-practices" />
 
       <div className="wiki-record hp-local-layout">
+        <WikiLineSidebar
+          activeId={activeSection}
+          activeChildId={activeSubsection}
+          items={outlineItems}
+          links={[
+            { path: "/description", label: "Project change" },
+            { path: "/engineering", label: "Design iterations" },
+            { path: "/education", label: "Public dialogue" },
+          ]}
+          minimal
+        />
         <div className="hp-local-content">
           <HumanPracticesImpactWall />
+          <HumanPracticesQuickView />
           <HumanPracticesTimeline />
 
           <section
@@ -1234,10 +1253,26 @@ export function HumanPracticesPage() {
             </header>
             <div className="hp-loop-grid">
               {[
-                ["Before", "Original assumption", "A promising biological idea is framed before the team knows enough about safety, workflow, or social context."],
-                ["Listen", "Stakeholder signal", "Experts and affected groups reveal delivery limits, consent risk, unclear access, and explanation gaps."],
-                ["Change", "Design response", "The team changes scope, rejects weak mechanisms, rewrites communication, and adds measurable safety gates."],
-                ["Verify", "Evidence trail", "Each card links to a note, memo, assay map, or return interview so the HP claim can be checked quickly."],
+                [
+                  "Before",
+                  "Original assumption",
+                  "A promising biological idea is framed before the team knows enough about safety, workflow, or social context.",
+                ],
+                [
+                  "Listen",
+                  "Stakeholder signal",
+                  "Experts and affected groups reveal delivery limits, consent risk, unclear access, and explanation gaps.",
+                ],
+                [
+                  "Change",
+                  "Design response",
+                  "The team changes scope, rejects weak mechanisms, rewrites communication, and adds measurable safety gates.",
+                ],
+                [
+                  "Verify",
+                  "Evidence trail",
+                  "Each card links to a note, memo, assay map, or return interview so the HP claim can be checked quickly.",
+                ],
               ].map(([label, title, copy], index) => (
                 <article className={index === 0 ? "is-dark" : ""} key={label}>
                   <span>{label}</span>
@@ -1260,7 +1295,9 @@ export function HumanPracticesPage() {
             <header className="hp-section-head">
               <div>
                 <p className="hp-kicker">05 / Decision proof</p>
-                <h2 id="hp-proof-title">Judge the changes, not the meeting count.</h2>
+                <h2 id="hp-proof-title">
+                  Judge the changes, not the meeting count.
+                </h2>
               </div>
               <p>
                 The full audit trail: what we assumed, whose perspective
@@ -1271,12 +1308,17 @@ export function HumanPracticesPage() {
             <div className="hp-evidence-thesis">
               <span>Core claim</span>
               <p>
-                Stakeholder input changed CirCure&apos;s purpose, technical design,
-                validation plan, governance, and implementation boundary.
+                Stakeholder input changed CirCure&apos;s purpose, technical
+                design, validation plan, governance, and implementation
+                boundary.
               </p>
               <a href="#hp-evidence-timeline">Return to the timeline ↑</a>
             </div>
-            <div className="hp-decision-ledger" role="table" aria-label="Human Practices decision evidence map">
+            <div
+              className="hp-decision-ledger"
+              role="table"
+              aria-label="Human Practices decision evidence map"
+            >
               <div className="hp-decision-row is-head" role="row">
                 {[
                   "Project layer",
@@ -1285,23 +1327,31 @@ export function HumanPracticesPage() {
                   "Decision taken",
                   "Primary proof",
                 ].map((label) => (
-                  <div key={label} role="columnheader">{label}</div>
+                  <div key={label} role="columnheader">
+                    {label}
+                  </div>
                 ))}
               </div>
               {decisionRows.map((row) => (
                 <div className="hp-decision-row" role="row" key={row[0]}>
-                  <div role="cell"><strong>{row[0]}</strong></div>
+                  <div role="cell">
+                    <strong>{row[0]}</strong>
+                  </div>
                   <div role="cell">{row[1]}</div>
-                  <div role="cell"><em>{row[2]}</em></div>
+                  <div role="cell">
+                    <em>{row[2]}</em>
+                  </div>
                   <div role="cell">{row[3]}</div>
-                  <div role="cell"><a href={`#${row[5]}`}>{row[4]}</a></div>
+                  <div role="cell">
+                    <a href={`#${row[5]}`}>{row[4]}</a>
+                  </div>
                 </div>
               ))}
             </div>
             <p className="hp-evidence-gate">
               <strong>Publication gate</strong>
-              Every number, quotation, stakeholder title, and evidence code
-              must resolve to a consent-cleared primary record before the wiki
+              Every number, quotation, stakeholder title, and evidence code must
+              resolve to a consent-cleared primary record before the wiki
               freeze. Interest is not endorsement; expert opinion is not
               experimental proof.
             </p>
@@ -1316,7 +1366,9 @@ export function HumanPracticesPage() {
             <header className="hp-section-head">
               <div>
                 <p className="hp-kicker">06 / Method, ethics, and limits</p>
-                <h2 id="hp-method-title">A credible loop explains how input was handled.</h2>
+                <h2 id="hp-method-title">
+                  A credible loop explains how input was handled.
+                </h2>
               </div>
               <p>
                 Interviews are not evidence by default. We make selection,
@@ -1326,10 +1378,26 @@ export function HumanPracticesPage() {
             </header>
             <div className="hp-method-grid">
               {[
-                ["01 / Select", "Map power and missing voices.", "Choose stakeholders by how CirCure may affect them and how they can affect the project. Record who is absent and what that absence limits."],
-                ["02 / Engage", "Ask for challenge, not approval.", "Use a role-specific guide, informed consent, and a clear privacy tier. Separate lived experience from technical or clinical claims."],
-                ["03 / Decide", "Show the decision rule.", "Classify each signal by purpose, design, execution, governance, or implementation. Record accepted, rejected, and unresolved advice."],
-                ["04 / Return", "Close with disagreement intact.", "Bring the revised design back. Document what stakeholders accepted, still questioned, and what the team will not claim this season."],
+                [
+                  "01 / Select",
+                  "Map power and missing voices.",
+                  "Choose stakeholders by how CirCure may affect them and how they can affect the project. Record who is absent and what that absence limits.",
+                ],
+                [
+                  "02 / Engage",
+                  "Ask for challenge, not approval.",
+                  "Use a role-specific guide, informed consent, and a clear privacy tier. Separate lived experience from technical or clinical claims.",
+                ],
+                [
+                  "03 / Decide",
+                  "Show the decision rule.",
+                  "Classify each signal by purpose, design, execution, governance, or implementation. Record accepted, rejected, and unresolved advice.",
+                ],
+                [
+                  "04 / Return",
+                  "Close with disagreement intact.",
+                  "Bring the revised design back. Document what stakeholders accepted, still questioned, and what the team will not claim this season.",
+                ],
               ].map(([number, title, copy]) => (
                 <article key={number}>
                   <span>{number}</span>
@@ -1358,6 +1426,17 @@ export function HumanPracticesPage() {
           <HumanPracticesDossier />
         </div>
       </div>
+
+      <section className="wiki-next" data-wiki-reveal>
+        <div>
+          <h2>How did dialogue change what everyone learned?</h2>
+          <p>Continue along the same evidence ribbon into the next record.</p>
+        </div>
+        <Link to="/education" aria-label="Open Education">
+          <span>Open page</span>
+          <b aria-hidden="true">↗</b>
+        </Link>
+      </section>
     </main>
   );
 }

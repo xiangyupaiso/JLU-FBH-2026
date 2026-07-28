@@ -14,8 +14,10 @@
   --nav-surface-accent: rgba(215, 132, 179, 0.14);
   --nav-surface-line: rgba(16, 47, 89, 0.1);
   --nav-surface-shadow: rgba(16, 47, 89, 0.14);
+  --nav-theme-accent: var(--care);
+  --nav-card-sheen: rgba(215, 132, 179, 0.16);
   --nav-drop-offset: calc(var(--header-height) - 18px);
-  --nav-menu-height: clamp(318px, 37vh, 380px);
+  --nav-menu-height: clamp(360px, 43vh, 430px);
   --logo-fold-progress: 0;
   --logo-mark-progress: 0;
   --logo-ribbon-progress: 0;
@@ -88,6 +90,26 @@
   --nav-surface-end: rgba(246, 238, 232, 0.98);
 }
 
+.site-header[data-nav-theme="project"] {
+  --nav-theme-accent: #a83f69;
+  --nav-card-sheen: rgba(228, 132, 151, 0.2);
+}
+
+.site-header[data-nav-theme="wet-lab"] {
+  --nav-theme-accent: #5f9f87;
+  --nav-card-sheen: rgba(92, 190, 165, 0.18);
+}
+
+.site-header[data-nav-theme="dry-lab"] {
+  --nav-theme-accent: #7183c5;
+  --nav-card-sheen: rgba(112, 152, 214, 0.2);
+}
+
+.site-header[data-nav-theme="engagement"] {
+  --nav-theme-accent: #ba7894;
+  --nav-card-sheen: rgba(217, 145, 164, 0.18);
+}
+
 .circure-nav-shell {
   position: relative;
   width: min(100%, 1440px);
@@ -96,10 +118,9 @@
   color: var(--header-ink);
   pointer-events: auto;
   transition:
-    width 520ms var(--ease-out),
-    height 520ms var(--ease-out),
+    height 440ms var(--ease-out),
     color 260ms ease;
-  will-change: width, height;
+  will-change: height;
 }
 
 .circure-nav-head {
@@ -119,48 +140,178 @@
   right: 0;
   left: 0;
   width: 100%;
-  height: calc(var(--nav-menu-height) + 22px);
+  height: var(--nav-menu-height);
   overflow: hidden;
   border: 1px solid var(--nav-surface-line);
   border-top: 0;
   border-radius: 0 0 var(--radius-panel) var(--radius-panel);
-  background:
-    radial-gradient(
-      circle at 16% 0%,
-      var(--nav-surface-accent),
-      transparent 31%
-    ),
-    linear-gradient(180deg, var(--nav-surface) 0%, var(--nav-surface-end) 100%);
+  isolation: isolate;
+  background: linear-gradient(
+    180deg,
+    var(--nav-surface) 0%,
+    var(--nav-surface-end) 100%
+  );
   box-shadow: 0 24px 64px var(--nav-surface-shadow);
   opacity: 0;
   pointer-events: none;
-  transform: translateY(-10px) scaleY(0.94);
+  transform: translate3d(0, -12px, 0);
   transform-origin: 50% 0;
   backdrop-filter: blur(18px);
   transition:
-    opacity 280ms ease,
-    transform 620ms var(--ease-out),
-    width 520ms var(--ease-out),
-    height 520ms var(--ease-out);
+    opacity 360ms ease,
+    transform 440ms var(--ease-out);
+  will-change: opacity, transform;
+}
+
+.circure-nav-aura {
+  position: absolute;
+  z-index: -1;
+  inset: -12% -4% -18%;
+  opacity: 0;
+  pointer-events: none;
+  filter: saturate(1.12);
+  transform: translate3d(0, -8px, 0) scale(1.025);
+  transform-origin: 50% 12%;
+  transition:
+    opacity 520ms ease,
+    transform 760ms var(--ease-out);
+  will-change: opacity, transform;
+}
+
+.circure-nav-aura--project {
+  background:
+    radial-gradient(
+      ellipse 42% 80% at 8% 5%,
+      rgba(184, 68, 112, 0.29),
+      transparent 66%
+    ),
+    radial-gradient(
+      ellipse 38% 68% at 54% -4%,
+      rgba(224, 133, 155, 0.23),
+      transparent 66%
+    ),
+    radial-gradient(
+      ellipse 34% 72% at 96% 12%,
+      rgba(241, 174, 126, 0.21),
+      transparent 68%
+    ),
+    linear-gradient(
+      105deg,
+      rgba(184, 68, 112, 0.06),
+      rgba(224, 133, 155, 0.07) 52%,
+      rgba(241, 174, 126, 0.08)
+    );
+}
+
+.circure-nav-aura--wet-lab {
+  background:
+    radial-gradient(
+      ellipse 44% 82% at 7% 2%,
+      rgba(71, 179, 162, 0.29),
+      transparent 66%
+    ),
+    radial-gradient(
+      ellipse 40% 72% at 54% -6%,
+      rgba(174, 220, 85, 0.24),
+      transparent 68%
+    ),
+    radial-gradient(
+      ellipse 34% 74% at 96% 10%,
+      rgba(86, 180, 211, 0.21),
+      transparent 68%
+    ),
+    linear-gradient(
+      105deg,
+      rgba(71, 179, 162, 0.07),
+      rgba(174, 220, 85, 0.08) 52%,
+      rgba(86, 180, 211, 0.07)
+    );
+}
+
+.circure-nav-aura--dry-lab {
+  background:
+    radial-gradient(
+      ellipse 44% 82% at 7% 2%,
+      rgba(80, 96, 179, 0.29),
+      transparent 66%
+    ),
+    radial-gradient(
+      ellipse 40% 70% at 55% -7%,
+      rgba(93, 176, 196, 0.24),
+      transparent 68%
+    ),
+    radial-gradient(
+      ellipse 34% 72% at 97% 12%,
+      rgba(139, 157, 213, 0.21),
+      transparent 68%
+    ),
+    linear-gradient(
+      105deg,
+      rgba(80, 96, 179, 0.07),
+      rgba(93, 176, 196, 0.07) 52%,
+      rgba(139, 157, 213, 0.08)
+    );
+}
+
+.circure-nav-aura--engagement {
+  background:
+    radial-gradient(
+      ellipse 44% 82% at 8% 3%,
+      rgba(215, 145, 164, 0.27),
+      transparent 66%
+    ),
+    radial-gradient(
+      ellipse 40% 72% at 53% -6%,
+      rgba(169, 151, 205, 0.23),
+      transparent 68%
+    ),
+    radial-gradient(
+      ellipse 36% 74% at 96% 12%,
+      rgba(242, 171, 128, 0.2),
+      transparent 68%
+    ),
+    linear-gradient(
+      105deg,
+      rgba(215, 145, 164, 0.07),
+      rgba(169, 151, 205, 0.07) 52%,
+      rgba(242, 171, 128, 0.06)
+    );
+}
+
+.site-header[data-nav-theme="project"] .circure-nav-aura--project,
+.site-header[data-nav-theme="wet-lab"] .circure-nav-aura--wet-lab,
+.site-header[data-nav-theme="dry-lab"] .circure-nav-aura--dry-lab,
+.site-header[data-nav-theme="engagement"] .circure-nav-aura--engagement {
+  opacity: 1;
+  transform: translate3d(0, 0, 0) scale(1);
 }
 
 .site-header.is-nav-open .circure-nav-surface {
   opacity: 1;
-  transform: translateY(0) scaleY(1);
+  transform: translate3d(0, 0, 0);
 }
 
 .site-header.is-nav-open .circure-nav-shell {
-  height: calc(var(--nav-drop-offset) + var(--nav-menu-height) + 22px);
+  height: calc(var(--nav-drop-offset) + var(--nav-menu-height));
   color: var(--header-ink);
 }
 
 @media (min-width: 981px) {
-  .site-header.is-nav-open .circure-nav-surface,
-  .site-header.is-nav-open .circure-mega-menu {
+  .circure-nav-surface {
     right: auto;
     left: 50%;
-    width: min(calc(100vw - 72px), 1320px);
+    width: 100vw;
     translate: -50% 0;
+  }
+
+  .circure-nav-surface {
+    border-right: 0;
+    border-left: 0;
+    border-radius: 0 0 26px 26px;
+  }
+
+  .circure-nav-panel {
+    inset: 12px 14px;
   }
 }
 
@@ -296,13 +447,17 @@
   opacity: 1;
 }
 
+.desktop-nav button:focus-visible {
+  outline-color: var(--nav-theme-accent);
+}
+
 .desktop-nav button[aria-expanded="true"]::after {
   position: absolute;
   right: 3px;
   bottom: 1px;
   left: 3px;
   height: 1px;
-  background: var(--care);
+  background: var(--nav-theme-accent);
   content: "";
 }
 
@@ -323,26 +478,37 @@
   left: 0;
   height: var(--nav-menu-height);
   overflow: hidden;
+  visibility: hidden;
   opacity: 0;
-  clip-path: inset(0 0 100% 0);
   pointer-events: none;
-  transform: translateY(-9px);
+  transform: translate3d(0, -12px, 0);
   transition:
-    opacity 180ms ease,
-    clip-path 620ms var(--ease-out),
-    transform 620ms var(--ease-out);
+    visibility 0s linear 440ms,
+    opacity 360ms ease,
+    transform 440ms var(--ease-out);
+  will-change: opacity, transform;
 }
 
 .circure-mega-menu.is-open {
+  visibility: visible;
   opacity: 1;
-  clip-path: inset(0 0 0 0);
   pointer-events: auto;
-  transform: translateY(0);
+  transform: translate3d(0, 0, 0);
+  transition-delay: 0s;
+}
+
+@media (min-width: 981px) {
+  .circure-mega-menu {
+    right: auto;
+    left: 50%;
+    width: 100vw;
+    translate: -50% 0;
+  }
 }
 
 .circure-nav-panel {
   position: absolute;
-  inset: 16px 18px 22px;
+  inset: 14px 18px;
   display: grid;
   /* intro card + 3 image cards by default; Navbar overrides grid-template-columns
      inline when a dropdown has more than 3 image cards (4 or 5). */
@@ -350,16 +516,16 @@
   gap: clamp(7px, 0.7vw, 11px);
   opacity: 0;
   pointer-events: none;
-  transform: translateY(10px);
+  transform: translate3d(0, 8px, 0);
   transition:
-    opacity 220ms ease,
-    transform 420ms var(--ease-out);
+    opacity 360ms ease,
+    transform 440ms var(--ease-out);
 }
 
 .circure-nav-panel.is-active {
   opacity: 1;
   pointer-events: auto;
-  transform: translateY(0);
+  transform: translate3d(0, 0, 0);
 }
 
 .nav-intro-card,
@@ -367,7 +533,7 @@
   position: relative;
   min-width: 0;
   overflow: hidden;
-  border-radius: clamp(14px, 1.15vw, 18px);
+  border-radius: clamp(20px, 1.65vw, 26px);
 }
 
 .nav-intro-card {
@@ -421,7 +587,7 @@
   background-color: #24446a;
   background-image: var(--nav-image);
   background-position: var(--nav-col, 0%) var(--nav-row, 0%);
-  background-size: 300% auto;
+  background-size: 300% 200%;
   color: var(--paper-bright);
   transition:
     transform 420ms var(--ease-out),
@@ -444,6 +610,11 @@
   position: absolute;
   z-index: -1;
   inset: 0;
+  background: radial-gradient(
+    ellipse 86% 52% at 50% 0%,
+    var(--nav-card-sheen),
+    transparent 72%
+  );
   content: "";
   opacity: 0;
   transition: opacity 220ms ease;
@@ -455,7 +626,7 @@
 }
 
 .nav-image-card:hover::after {
-  opacity: 1;
+  opacity: 0.72;
 }
 
 .nav-image-card small {
@@ -466,10 +637,10 @@
 .nav-image-card strong {
   max-width: none;
   font-family: var(--font-sans);
-  font-size: clamp(22px, 1.85vw, 28px);
-  font-weight: 650;
-  letter-spacing: -0.055em;
-  line-height: 0.96;
+  font-size: clamp(24px, 2vw, 30px);
+  font-weight: 700;
+  letter-spacing: -0.045em;
+  line-height: 0.94;
 }
 
 .nav-image-card em {
@@ -479,11 +650,11 @@
 /* When more than 3 image cards are present, shrink title size so the panel
    does not overflow horizontally. Navbar applies .has-many-cards class. */
 .circure-nav-panel.has-many-cards .nav-image-card strong {
-  font-size: clamp(18px, 1.5vw, 24px);
+  font-size: clamp(22px, 1.72vw, 28px);
 }
 
 .circure-nav-panel.has-many-cards .nav-image-card {
-  padding: clamp(18px, 1.45vw, 24px);
+  padding: clamp(20px, 1.55vw, 26px);
 }
 
 @media (min-width: 981px) and (max-width: 1180px) {
@@ -663,6 +834,7 @@
   .circure-nav-surface,
   .circure-mega-menu,
   .circure-nav-panel,
+  .circure-nav-aura,
   .circure-mobile-menu,
   .mobile-menu-toggle svg {
     transition-duration: 1ms !important;

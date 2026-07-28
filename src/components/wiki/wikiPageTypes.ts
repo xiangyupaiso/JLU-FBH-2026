@@ -33,8 +33,11 @@ export interface WikiFact {
 
 export interface WikiItem {
   label: string;
+  navLabel?: string;
   title: string;
   body: string;
+  evidence?: string[];
+  decision?: string;
   status?: "recorded" | "planned" | "boundary" | "open";
 }
 
@@ -42,6 +45,7 @@ export interface WikiSection {
   id: string;
   index: string;
   kicker: string;
+  navLabel?: string;
   title: string;
   summary: string;
   body?: string[];

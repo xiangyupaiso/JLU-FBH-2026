@@ -1,0 +1,226 @@
+/*
+ * Liquid Glass navigation experiment.
+ *
+ * This stylesheet is loaded only by liquid-glass-nav-preview.html. It keeps the
+ * production navigation untouched and deliberately avoids real-time refraction,
+ * pointer tracking, canvas effects, and animated blur values.
+ */
+
+html.liquid-glass-preview .site-header {
+  --glass-fill: rgba(255, 255, 255, 0.04);
+  --glass-fill-open: rgba(252, 248, 241, 0.84);
+  --glass-panel-end: rgba(246, 238, 232, 0.9);
+  --glass-line: rgba(255, 255, 255, 0.76);
+  --glass-inner-line: rgba(16, 47, 89, 0.1);
+  --glass-highlight: rgba(255, 255, 255, 0.92);
+  --glass-shadow: rgba(16, 47, 89, 0.06);
+}
+
+html.liquid-glass-preview .site-header[data-tone="paper"] {
+  --glass-fill: rgba(255, 255, 255, 0.045);
+  --glass-fill-open: rgba(238, 231, 220, 0.86);
+  --glass-panel-end: rgba(232, 221, 214, 0.91);
+}
+
+html.liquid-glass-preview .site-header[data-tone="blush"] {
+  --glass-fill: rgba(255, 245, 250, 0.05);
+  --glass-fill-open: rgba(221, 203, 211, 0.86);
+  --glass-panel-end: rgba(213, 191, 202, 0.91);
+  --glass-inner-line: rgba(117, 67, 86, 0.1);
+  --glass-shadow: rgba(117, 67, 86, 0.09);
+}
+
+html.liquid-glass-preview .site-header[data-tone="ink"],
+html.liquid-glass-preview .site-header[data-tone="navy"] {
+  --glass-fill: rgba(8, 25, 50, 0.16);
+  --glass-fill-open: rgba(12, 31, 58, 0.88);
+  --glass-panel-end: rgba(8, 27, 52, 0.94);
+  --glass-line: rgba(255, 255, 255, 0.32);
+  --glass-inner-line: rgba(255, 255, 255, 0.08);
+  --glass-highlight: rgba(255, 255, 255, 0.42);
+  --glass-shadow: rgba(3, 13, 29, 0.2);
+}
+
+/* Remove the original full-width blur. The real blur is restricted to the
+   compact navigation capsule below. */
+html.liquid-glass-preview .site-header::before {
+  border-bottom: 0;
+  background: transparent;
+  opacity: 1;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+
+html.liquid-glass-preview .circure-nav-shell {
+  width: min(100%, 1180px);
+  transition: color 260ms ease;
+  will-change: auto;
+}
+
+html.liquid-glass-preview .circure-nav-head {
+  isolation: isolate;
+}
+
+/* The only live backdrop sample in this experiment. Its area is limited to
+   the 40px navigation capsule and its blur radius remains constant. */
+html.liquid-glass-preview .circure-nav-head::before {
+  position: absolute;
+  z-index: -2;
+  inset: -6px -15px;
+  border: 1px solid var(--glass-line);
+  border-radius: 999px;
+  background:
+    linear-gradient(
+      118deg,
+      rgba(255, 255, 255, 0.22) -8%,
+      rgba(255, 255, 255, 0.025) 28%,
+      rgba(179, 211, 255, 0.065) 68%,
+      rgba(255, 177, 219, 0.085) 112%
+    ),
+    var(--glass-fill);
+  box-shadow:
+    0 6px 20px var(--glass-shadow),
+    0 1px 2px rgba(16, 47, 89, 0.05),
+    inset 0 1px 0 rgba(255, 255, 255, 0.82),
+    inset 0 -1px 0 var(--glass-inner-line);
+  -webkit-backdrop-filter: blur(10px) saturate(1.28) contrast(1.02);
+  backdrop-filter: blur(10px) saturate(1.28) contrast(1.02);
+  content: "";
+  transition:
+    background-color 260ms ease,
+    border-color 260ms ease,
+    box-shadow 260ms ease;
+}
+
+/* Static optical highlight: this creates the apparent curved/refraction edge
+   without sampling or deforming page pixels. */
+html.liquid-glass-preview .circure-nav-head::after {
+  position: absolute;
+  z-index: -1;
+  inset: -5px -14px;
+  border-radius: 999px;
+  background:
+    radial-gradient(
+      ellipse 17% 72% at 10% -24%,
+      rgba(255, 255, 255, 0.78),
+      transparent 72%
+    ),
+    radial-gradient(
+      ellipse 17% 72% at 91% 124%,
+      rgba(214, 137, 193, 0.18),
+      transparent 74%
+    ),
+    linear-gradient(
+      90deg,
+      rgba(142, 198, 255, 0.08),
+      transparent 24% 72%,
+      rgba(255, 157, 208, 0.1)
+    );
+  content: "";
+  opacity: 0.72;
+  pointer-events: none;
+  transform: translate3d(0, 0, 0);
+  transition:
+    opacity 260ms ease,
+    transform 420ms var(--ease-out);
+}
+
+html.liquid-glass-preview
+  .site-header.is-nav-open
+  .circure-nav-head::after,
+html.liquid-glass-preview
+  .site-header.is-mobile-open
+  .circure-nav-head::after {
+  opacity: 0.92;
+  transform: translate3d(2.5%, 0, 0);
+}
+
+/* The large dropdown is intentionally almost opaque. Blurring a
+   100vw × 360–430px moving backdrop would be the expensive path. */
+html.liquid-glass-preview .circure-nav-surface {
+  border-color: var(--glass-line);
+  background:
+    radial-gradient(
+      ellipse 44% 24% at 14% 0%,
+      rgba(255, 255, 255, 0.35),
+      transparent 72%
+    ),
+    radial-gradient(
+      ellipse 38% 28% at 88% 100%,
+      var(--nav-card-sheen),
+      transparent 76%
+    ),
+    linear-gradient(180deg, var(--glass-fill-open), var(--glass-panel-end));
+  box-shadow:
+    0 20px 48px var(--glass-shadow),
+    inset 0 1px 0 rgba(255, 255, 255, 0.62);
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+  will-change: auto;
+}
+
+html.liquid-glass-preview .circure-nav-aura {
+  filter: none;
+  will-change: auto;
+}
+
+html.liquid-glass-preview .circure-mega-menu,
+html.liquid-glass-preview .circure-nav-panel {
+  will-change: auto;
+}
+
+/* Keep hover feedback on compositor-friendly transforms and overlays. */
+html.liquid-glass-preview .nav-image-card:hover {
+  filter: none;
+}
+
+html.liquid-glass-preview .desktop-nav a:active,
+html.liquid-glass-preview .desktop-nav button:active,
+html.liquid-glass-preview .mobile-menu-toggle:active {
+  transform: scale(0.97);
+}
+
+@media (max-width: 980px) {
+  html.liquid-glass-preview .circure-nav-shell {
+    width: 100%;
+  }
+
+  html.liquid-glass-preview .circure-nav-head::before,
+  html.liquid-glass-preview .circure-nav-head::after {
+    inset-inline: -8px;
+  }
+
+  html.liquid-glass-preview .site-header.is-mobile-open .circure-nav-head::before {
+    background: var(--glass-fill-open);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+}
+
+/* Accessibility and constrained-device fallbacks. */
+@media (prefers-reduced-transparency: reduce), (update: slow) {
+  html.liquid-glass-preview .circure-nav-head::before {
+    background: var(--header-surface);
+    box-shadow:
+      0 6px 18px var(--glass-shadow),
+      inset 0 1px 0 var(--glass-line);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.liquid-glass-preview .circure-nav-head::after {
+    transition: none;
+  }
+}
+
+@supports not (
+  (-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))
+) {
+  html.liquid-glass-preview .circure-nav-head::before {
+    background: var(--header-surface);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+}

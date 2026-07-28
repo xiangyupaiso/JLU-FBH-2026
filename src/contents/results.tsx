@@ -1,16 +1,15 @@
-import { WikiPage } from "../components/wiki/WikiPage";
 import {
   DecisionLoop,
-  ProjectSignature,
   ResultGateTable,
 } from "../components/wiki/features/ProjectFeatures";
 import { resultsPage } from "../data/projectPages";
+import { ProjectPreviewPage } from "../project-preview/ProjectPreviewPage";
 
 export function Results() {
   return (
-    <WikiPage
+    <ProjectPreviewPage
       content={resultsPage}
-      heroVisual={<ProjectSignature variant="results" />}
+      variant="results"
       features={{
         "results-standard": <ResultGateTable />,
         "results-gates": <ResultGateTable />,
