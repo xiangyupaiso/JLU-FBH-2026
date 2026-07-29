@@ -348,7 +348,7 @@ export function WikiPage({
         </article>
       </div>
 
-      {isWetLab ? (
+      {isManuscript ? (
         <WikiNextRecord {...content.next} />
       ) : (
         <section className="wiki-next" data-wiki-reveal>

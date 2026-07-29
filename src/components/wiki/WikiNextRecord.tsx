@@ -23,7 +23,11 @@ export function WikiNextRecord({ path, label, title }: WikiNextRecordProps) {
         aria-label={`Continue to ${label}`}
       >
         <span>Next page</span>
-        <strong>{label}</strong>
+        <strong
+          className={label.length > 14 ? "wiki-next__label--long" : undefined}
+        >
+          {label}
+        </strong>
         <b aria-hidden="true">↗</b>
       </Link>
     </section>

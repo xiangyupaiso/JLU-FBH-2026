@@ -1,5 +1,5 @@
 import { useEffect, useRef, type RefObject } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import closingImageUrl from "../assets/footer/igem-closing-v2.webp";
 import closingLogoUrl from "../assets/footer/circure-logo-white-v1.webp";
 import { stringToSlug } from "../utils";
@@ -7,6 +7,7 @@ import { stringToSlug } from "../utils";
 function useClosingReveal(
   footerRef: RefObject<HTMLElement | null>,
   windowRef: RefObject<HTMLElement | null>,
+  pathname: string,
 ) {
   useEffect(() => {
     const footer = footerRef.current;
@@ -15,9 +16,14 @@ function useClosingReveal(
 
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
     const header = document.querySelector<HTMLElement>("[data-header]");
+    const isHome = pathname === "/" || pathname === "";
     let frame = 0;
-    let footerOwnsHeaderTone = false;
-    let previousHeaderTone = "bright";
+
+    // Home owns its full scroll-driven header theme. Every inner route starts
+    // from the editorial white header, regardless of the route it came from.
+    if (header && !isHome) {
+      header.dataset.tone = "bright";
+    }
 
     const paint = () => {
       frame = 0;
@@ -30,22 +36,13 @@ function useClosingReveal(
         : Math.min(1, Math.max(0, rawProgress));
       finalWindow.style.setProperty("--final-progress", progress.toFixed(4));
 
-      if (!header) return;
+      if (!header || isHome) return;
       const footerRect = footer.getBoundingClientRect();
       const headerProbe = header.offsetHeight + 1;
       const footerUnderHeader =
         footerRect.top <= headerProbe && footerRect.bottom > headerProbe;
 
-      if (footerUnderHeader && !footerOwnsHeaderTone) {
-        previousHeaderTone = header.dataset.tone || "bright";
-        footerOwnsHeaderTone = true;
-      }
-      if (footerUnderHeader) {
-        header.dataset.tone = "navy";
-      } else if (footerOwnsHeaderTone) {
-        header.dataset.tone = previousHeaderTone;
-        footerOwnsHeaderTone = false;
-      }
+      header.dataset.tone = footerUnderHeader ? "navy" : "bright";
     };
 
     const requestPaint = () => {
@@ -62,21 +59,24 @@ function useClosingReveal(
       window.removeEventListener("scroll", requestPaint);
       window.removeEventListener("resize", requestPaint);
       reducedMotion.removeEventListener("change", requestPaint);
-      if (footerOwnsHeaderTone && header) {
-        header.dataset.tone = previousHeaderTone;
+      if (header && !isHome) {
+        header.dataset.tone = "bright";
       }
     };
-  }, [footerRef, windowRef]);
+  }, [footerRef, windowRef, pathname]);
 }
 
 export function Footer() {
   const teamYear = import.meta.env.VITE_TEAM_YEAR;
   const teamName = import.meta.env.VITE_TEAM_NAME;
   const teamSlug = stringToSlug(teamName);
+  const { pathname } = useLocation();
   const footerRef = useRef<HTMLElement>(null);
   const finalWindowRef = useRef<HTMLElement>(null);
 
-  useClosingReveal(footerRef, finalWindowRef);
+  // Route identity is part of the effect so a footer link can never carry a
+  // previous page's header tone into the next page.
+  useClosingReveal(footerRef, finalWindowRef, pathname);
 
   return (
     <footer

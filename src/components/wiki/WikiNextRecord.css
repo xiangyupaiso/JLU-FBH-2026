@@ -129,13 +129,26 @@
 }
 
 .wiki-page .wiki-next.wiki-next--record > .wiki-next__action strong {
+  min-width: 0;
+  max-width: 100%;
+  grid-column: 1 / -1;
   align-self: end;
   color: inherit;
   font-family: var(--font-editorial);
-  font-size: clamp(22px, 2vw, 28px);
+  font-size: clamp(20px, 2vw, 28px);
   font-weight: 400;
   letter-spacing: -0.035em;
-  line-height: 1.05;
+  line-height: 1.08;
+  overflow-wrap: anywhere;
+  text-wrap: balance;
+}
+
+.wiki-page
+  .wiki-next.wiki-next--record
+  > .wiki-next__action
+  strong.wiki-next__label--long {
+  font-size: clamp(18px, 1.55vw, 22px);
+  letter-spacing: -0.025em;
 }
 
 .wiki-page .wiki-next.wiki-next--record > .wiki-next__action b {
@@ -143,7 +156,7 @@
   width: 42px;
   height: 42px;
   grid-column: 2;
-  grid-row: 1 / span 2;
+  grid-row: 1;
   place-items: center;
   align-self: start;
   border-radius: 50%;
@@ -224,6 +237,13 @@
     grid-template-columns: minmax(0, 1fr) 42px;
     padding: 20px;
     border-radius: 20px;
+  }
+
+  .wiki-page
+    .wiki-next.wiki-next--record
+    > .wiki-next__action
+    strong.wiki-next__label--long {
+    font-size: 20px;
   }
 }
 
