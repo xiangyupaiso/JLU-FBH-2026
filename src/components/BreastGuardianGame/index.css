@@ -1,0 +1,38 @@
+/* The game itself runs in an iframe. These rules isolate only its host surface. */
+.breast-guardian-game-root {
+  all: initial !important;
+  box-sizing: border-box !important;
+  color-scheme: only light;
+  contain: layout paint style;
+  display: block !important;
+  isolation: isolate;
+  position: relative !important;
+  width: 100% !important;
+  height: 100% !important;
+  overflow: hidden !important;
+  background: #fdf2f8 !important;
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", sans-serif !important;
+  --game-bg: #fdf2f8;
+  --game-text: #1f2937;
+  --game-accent: #ec4899;
+}
+
+.breast-guardian-game-root,
+.breast-guardian-game-root *,
+.breast-guardian-game-root *::before,
+.breast-guardian-game-root *::after {
+  box-sizing: border-box !important;
+}
+
+.breast-guardian-game-frame {
+  all: initial !important;
+  border: 0 !important;
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  background: var(--game-bg) !important;
+}

@@ -4,6 +4,7 @@ const DRY_LAB_RECORDS = [
   ["/model", "Model"],
   ["/software", "Software"],
   ["/hardware", "Hardware"],
+  ["/games", "Games"],
 ] as const;
 
 export function DryLabRouteNav({ activePath }: { activePath: string }) {

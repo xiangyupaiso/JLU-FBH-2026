@@ -6,6 +6,7 @@ const wetLabRecords = [
   ["/measurement", "Measurement"],
   ["/alternative-platform", "Alternative Platform"],
   ["/safety-and-security", "Safety & Security"],
+  ["/protocol", "Protocol"],
 ] as const;
 
 export function WetLabRouteNav({ activePath }: { activePath: string }) {

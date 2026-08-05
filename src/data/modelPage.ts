@@ -11,7 +11,7 @@ import type { WikiPageContent } from "../components/wiki/wikiPageTypes";
 export const modelEvidencePage: WikiPageContent = {
   route: "/model",
   category: "dry-lab",
-  chapter: "Dry Lab / 01 of 03",
+  chapter: "Dry Lab / 01 of 04",
   eyebrow: "Model · Evidence manuscript",
   title: "Model",
   lede: "Predictions return to evidence and Wet Lab decisions.",

@@ -13,6 +13,7 @@ export type WikiVisual =
   | "model-manuscript"
   | "software-console"
   | "hardware-schematic"
+  | "games-portal"
   | "venture-path"
   | "human-thread"
   | "education-dialogue"

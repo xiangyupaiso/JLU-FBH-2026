@@ -1,0 +1,1046 @@
+{
+  "characters": [
+    {
+      "name": "主角",
+      "state": "正常",
+      "path": "/assets/characters/child-protagonist/主角-正常.png",
+      "group": "child-protagonist"
+    },
+    {
+      "name": "主角",
+      "state": "懵懂",
+      "path": "/assets/characters/child-protagonist/主角-懵懂.png",
+      "group": "child-protagonist"
+    },
+    {
+      "name": "主角",
+      "state": "任性",
+      "path": "/assets/characters/child-protagonist/主角-任性.png",
+      "group": "child-protagonist"
+    },
+    {
+      "name": "主角",
+      "state": "懂事",
+      "path": "/assets/characters/child-protagonist/主角-懂事.png",
+      "group": "child-protagonist"
+    },
+    {
+      "name": "主角",
+      "state": "愧疚",
+      "path": "/assets/characters/child-protagonist/主角-愧疚.png",
+      "group": "child-protagonist"
+    },
+    {
+      "name": "主角",
+      "state": "开心",
+      "path": "/assets/characters/child-protagonist/主角-开心.png",
+      "group": "child-protagonist"
+    },
+    {
+      "name": "主角",
+      "state": "害怕",
+      "path": "/assets/characters/child-protagonist/主角-害怕.png",
+      "group": "child-protagonist"
+    },
+    {
+      "name": "主角",
+      "state": "心疼",
+      "path": "/assets/characters/child-protagonist/主角-心疼.png",
+      "group": "child-protagonist"
+    },
+    {
+      "name": "主角",
+      "state": "焦急",
+      "path": "/assets/characters/child-protagonist/主角-焦急.png",
+      "group": "child-protagonist"
+    },
+    {
+      "name": "主角",
+      "state": "固执",
+      "path": "/assets/characters/child-protagonist/主角-固执.png",
+      "group": "child-protagonist"
+    },
+    {
+      "name": "主角",
+      "state": "正常",
+      "path": "/assets/characters/adult-protagonist/主角-正常.png",
+      "group": "adult-protagonist"
+    },
+    {
+      "name": "主角",
+      "state": "焦虑",
+      "path": "/assets/characters/adult-protagonist/主角-焦虑.png",
+      "group": "adult-protagonist"
+    },
+    {
+      "name": "主角",
+      "state": "坚定",
+      "path": "/assets/characters/adult-protagonist/主角-坚定.png",
+      "group": "adult-protagonist"
+    },
+    {
+      "name": "主角",
+      "state": "疲惫",
+      "path": "/assets/characters/adult-protagonist/主角-疲惫.png",
+      "group": "adult-protagonist"
+    },
+    {
+      "name": "主角",
+      "state": "懊悔",
+      "path": "/assets/characters/adult-protagonist/主角-懊悔.png",
+      "group": "adult-protagonist"
+    },
+    {
+      "name": "主角",
+      "state": "轻松",
+      "path": "/assets/characters/adult-protagonist/主角-轻松.png",
+      "group": "adult-protagonist"
+    },
+    {
+      "name": "主角",
+      "state": "好奇",
+      "path": "/assets/characters/adult-protagonist/主角-好奇.png",
+      "group": "adult-protagonist"
+    },
+    {
+      "name": "主角",
+      "state": "温暖",
+      "path": "/assets/characters/adult-protagonist/主角-温暖.png",
+      "group": "adult-protagonist"
+    },
+    {
+      "name": "主角",
+      "state": "心疼",
+      "path": "/assets/characters/adult-protagonist/主角-心疼.png",
+      "group": "adult-protagonist"
+    },
+    {
+      "name": "主角",
+      "state": "紧张",
+      "path": "/assets/characters/adult-protagonist/主角-紧张.png",
+      "group": "adult-protagonist"
+    },
+    {
+      "name": "主角",
+      "state": "恐惧",
+      "path": "/assets/characters/adult-protagonist/主角-恐惧.png",
+      "group": "adult-protagonist"
+    },
+    {
+      "name": "主角",
+      "state": "正常",
+      "path": "/assets/characters/elder-protagonist/主角-正常.png",
+      "group": "elder-protagonist"
+    },
+    {
+      "name": "主角",
+      "state": "焦虑",
+      "path": "/assets/characters/elder-protagonist/主角-焦虑.png",
+      "group": "elder-protagonist"
+    },
+    {
+      "name": "主角",
+      "state": "坚定",
+      "path": "/assets/characters/elder-protagonist/主角-坚定.png",
+      "group": "elder-protagonist"
+    },
+    {
+      "name": "主角",
+      "state": "懊悔",
+      "path": "/assets/characters/elder-protagonist/主角-懊悔.png",
+      "group": "elder-protagonist"
+    },
+    {
+      "name": "主角",
+      "state": "疲惫",
+      "path": "/assets/characters/elder-protagonist/主角-疲惫.png",
+      "group": "elder-protagonist"
+    },
+    {
+      "name": "主角",
+      "state": "期待",
+      "path": "/assets/characters/elder-protagonist/主角-期待.png",
+      "group": "elder-protagonist"
+    },
+    {
+      "name": "主角",
+      "state": "执迷",
+      "path": "/assets/characters/elder-protagonist/主角-执迷.png",
+      "group": "elder-protagonist"
+    },
+    {
+      "name": "主角",
+      "state": "恐惧",
+      "path": "/assets/characters/elder-protagonist/主角-恐惧.png",
+      "group": "elder-protagonist"
+    },
+    {
+      "name": "主角",
+      "state": "温暖",
+      "path": "/assets/characters/elder-protagonist/主角-温暖.png",
+      "group": "elder-protagonist"
+    },
+    {
+      "name": "主角",
+      "state": "愧疚",
+      "path": "/assets/characters/elder-protagonist/主角-愧疚.png",
+      "group": "elder-protagonist"
+    },
+    {
+      "name": "主角",
+      "state": "固执",
+      "path": "/assets/characters/elder-protagonist/主角-固执.png",
+      "group": "elder-protagonist"
+    },
+    {
+      "name": "主角",
+      "state": "安心",
+      "path": "/assets/characters/elder-protagonist/主角-安心.png",
+      "group": "elder-protagonist"
+    },
+    {
+      "name": "派蒙",
+      "state": "开心",
+      "path": "/assets/characters/paimon/派蒙-开心.png",
+      "group": "paimon"
+    },
+    {
+      "name": "派蒙",
+      "state": "心疼",
+      "path": "/assets/characters/paimon/派蒙-心疼.png",
+      "group": "paimon"
+    },
+    {
+      "name": "派蒙",
+      "state": "郑重",
+      "path": "/assets/characters/paimon/派蒙-郑重.png",
+      "group": "paimon"
+    },
+    {
+      "name": "派蒙",
+      "state": "哽咽",
+      "path": "/assets/characters/paimon/派蒙-哽咽.png",
+      "group": "paimon"
+    },
+    {
+      "name": "派蒙",
+      "state": "焦急",
+      "path": "/assets/characters/paimon/派蒙-焦急.png",
+      "group": "paimon"
+    },
+    {
+      "name": "派蒙",
+      "state": "无奈",
+      "path": "/assets/characters/paimon/派蒙-无奈.png",
+      "group": "paimon"
+    },
+    {
+      "name": "派蒙",
+      "state": "软糯",
+      "path": "/assets/characters/paimon/派蒙-软糯.png",
+      "group": "paimon"
+    },
+    {
+      "name": "派蒙",
+      "state": "雀跃",
+      "path": "/assets/characters/paimon/派蒙-雀跃.png",
+      "group": "paimon"
+    },
+    {
+      "name": "派蒙",
+      "state": "赞许",
+      "path": "/assets/characters/paimon/派蒙-赞许.png",
+      "group": "paimon"
+    },
+    {
+      "name": "派蒙",
+      "state": "严肃",
+      "path": "/assets/characters/paimon/派蒙-严肃.png",
+      "group": "paimon"
+    },
+    {
+      "name": "派蒙",
+      "state": "傲娇",
+      "path": "/assets/characters/paimon/派蒙-傲娇.png",
+      "group": "paimon"
+    },
+    {
+      "name": "派蒙",
+      "state": "期待",
+      "path": "/assets/characters/paimon/派蒙-期待.png",
+      "group": "paimon"
+    },
+    {
+      "name": "派蒙",
+      "state": "骄傲",
+      "path": "/assets/characters/paimon/派蒙-骄傲.png",
+      "group": "paimon"
+    },
+    {
+      "name": "派蒙",
+      "state": "认真",
+      "path": "/assets/characters/paimon/派蒙-认真.png",
+      "group": "paimon"
+    },
+    {
+      "name": "派蒙",
+      "state": "撇嘴",
+      "path": "/assets/characters/paimon/派蒙-撇嘴.png",
+      "group": "paimon"
+    },
+    {
+      "name": "派蒙",
+      "state": "愤怒",
+      "path": "/assets/characters/paimon/派蒙-愤怒.png",
+      "group": "paimon"
+    },
+    {
+      "name": "派蒙",
+      "state": "绝望",
+      "path": "/assets/characters/paimon/派蒙-绝望.png",
+      "group": "paimon"
+    },
+    {
+      "name": "派蒙",
+      "state": "温柔",
+      "path": "/assets/characters/paimon/派蒙-温柔.png",
+      "group": "paimon"
+    },
+    {
+      "name": "派蒙",
+      "state": "担忧",
+      "path": "/assets/characters/paimon/派蒙-担忧.png",
+      "group": "paimon"
+    },
+    {
+      "name": "派蒙",
+      "state": "欣慰",
+      "path": "/assets/characters/paimon/派蒙-欣慰.png",
+      "group": "paimon"
+    },
+    {
+      "name": "分泌细胞",
+      "state": "健康",
+      "path": "/assets/characters/cells/分泌细胞-健康.png",
+      "group": "cells"
+    },
+    {
+      "name": "分泌细胞",
+      "state": "虚弱",
+      "path": "/assets/characters/cells/分泌细胞-虚弱.png",
+      "group": "cells"
+    },
+    {
+      "name": "分泌细胞",
+      "state": "愉悦",
+      "path": "/assets/characters/cells/分泌细胞-愉悦.png",
+      "group": "cells"
+    },
+    {
+      "name": "分泌细胞",
+      "state": "委屈",
+      "path": "/assets/characters/cells/分泌细胞-委屈.png",
+      "group": "cells"
+    },
+    {
+      "name": "分泌细胞",
+      "state": "疲惫",
+      "path": "/assets/characters/cells/分泌细胞-疲惫.png",
+      "group": "cells"
+    },
+    {
+      "name": "分泌细胞",
+      "state": "胀痛",
+      "path": "/assets/characters/cells/分泌细胞-胀痛.png",
+      "group": "cells"
+    },
+    {
+      "name": "分泌细胞",
+      "state": "恐惧",
+      "path": "/assets/characters/cells/分泌细胞-恐惧.png",
+      "group": "cells"
+    },
+    {
+      "name": "分泌细胞",
+      "state": "肿胀",
+      "path": "/assets/characters/cells/分泌细胞-肿胀.png",
+      "group": "cells"
+    },
+    {
+      "name": "分泌细胞",
+      "state": "异常",
+      "path": "/assets/characters/cells/分泌细胞-异常.png",
+      "group": "cells"
+    },
+    {
+      "name": "分泌细胞",
+      "state": "干瘪",
+      "path": "/assets/characters/cells/分泌细胞-干瘪.png",
+      "group": "cells"
+    },
+    {
+      "name": "巨噬细胞",
+      "state": "爽朗",
+      "path": "/assets/characters/cells/巨噬细胞-爽朗.png",
+      "group": "cells"
+    },
+    {
+      "name": "巨噬细胞",
+      "state": "疲惫",
+      "path": "/assets/characters/cells/巨噬细胞-疲惫.png",
+      "group": "cells"
+    },
+    {
+      "name": "巨噬细胞",
+      "state": "虚弱",
+      "path": "/assets/characters/cells/巨噬细胞-虚弱.png",
+      "group": "cells"
+    },
+    {
+      "name": "巨噬细胞",
+      "state": "小巧",
+      "path": "/assets/characters/cells/巨噬细胞-小巧.png",
+      "group": "cells"
+    },
+    {
+      "name": "巨噬细胞",
+      "state": "活泼",
+      "path": "/assets/characters/cells/巨噬细胞-活泼.png",
+      "group": "cells"
+    },
+    {
+      "name": "巨噬细胞",
+      "state": "醉酒",
+      "path": "/assets/characters/cells/巨噬细胞-醉酒.png",
+      "group": "cells"
+    },
+    {
+      "name": "内分泌调节细胞",
+      "state": "正常",
+      "path": "/assets/characters/cells/内分泌调节细胞-正常.png",
+      "group": "cells"
+    },
+    {
+      "name": "内分泌调节细胞",
+      "state": "紊乱",
+      "path": "/assets/characters/cells/内分泌调节细胞-紊乱.png",
+      "group": "cells"
+    },
+    {
+      "name": "内分泌调节细胞",
+      "state": "疲惫",
+      "path": "/assets/characters/cells/内分泌调节细胞-疲惫.png",
+      "group": "cells"
+    },
+    {
+      "name": "雌激素调节细胞",
+      "state": "正常",
+      "path": "/assets/characters/cells/雌激素调节细胞-正常.png",
+      "group": "cells"
+    },
+    {
+      "name": "雌激素调节细胞",
+      "state": "紊乱",
+      "path": "/assets/characters/cells/雌激素调节细胞-紊乱.png",
+      "group": "cells"
+    },
+    {
+      "name": "淋巴细胞",
+      "state": "活泼",
+      "path": "/assets/characters/cells/淋巴细胞-活泼.png",
+      "group": "cells"
+    },
+    {
+      "name": "淋巴细胞",
+      "state": "无助",
+      "path": "/assets/characters/cells/淋巴细胞-无助.png",
+      "group": "cells"
+    },
+    {
+      "name": "淋巴细胞",
+      "state": "欢快",
+      "path": "/assets/characters/cells/淋巴细胞-欢快.png",
+      "group": "cells"
+    },
+    {
+      "name": "淋巴细胞",
+      "state": "肿大",
+      "path": "/assets/characters/cells/淋巴细胞-肿大.png",
+      "group": "cells"
+    },
+    {
+      "name": "淋巴细胞",
+      "state": "傲娇",
+      "path": "/assets/characters/cells/淋巴细胞-傲娇.png",
+      "group": "cells"
+    },
+    {
+      "name": "淋巴细胞",
+      "state": "期待",
+      "path": "/assets/characters/cells/淋巴细胞-期待.png",
+      "group": "cells"
+    },
+    {
+      "name": "淋巴细胞",
+      "state": "急促",
+      "path": "/assets/characters/cells/淋巴细胞-急促.png",
+      "group": "cells"
+    },
+    {
+      "name": "淋巴细胞",
+      "state": "警惕",
+      "path": "/assets/characters/cells/淋巴细胞-警惕.png",
+      "group": "cells"
+    },
+    {
+      "name": "妈妈",
+      "state": "温柔",
+      "path": "/assets/characters/family/妈妈-温柔.png",
+      "group": "family"
+    },
+    {
+      "name": "妈妈",
+      "state": "疲惫",
+      "path": "/assets/characters/family/妈妈-疲惫.png",
+      "group": "family"
+    },
+    {
+      "name": "妈妈",
+      "state": "苍白",
+      "path": "/assets/characters/family/妈妈-苍白.png",
+      "group": "family"
+    },
+    {
+      "name": "妈妈",
+      "state": "感动",
+      "path": "/assets/characters/family/妈妈-感动.png",
+      "group": "family"
+    },
+    {
+      "name": "妈妈",
+      "state": "难过",
+      "path": "/assets/characters/family/妈妈-难过.png",
+      "group": "family"
+    },
+    {
+      "name": "妈妈",
+      "state": "委屈",
+      "path": "/assets/characters/family/妈妈-委屈.png",
+      "group": "family"
+    },
+    {
+      "name": "妈妈",
+      "state": "开心",
+      "path": "/assets/characters/family/妈妈-开心.png",
+      "group": "family"
+    },
+    {
+      "name": "妈妈",
+      "state": "消沉",
+      "path": "/assets/characters/family/妈妈-消沉.png",
+      "group": "family"
+    },
+    {
+      "name": "妈妈",
+      "state": "麻木",
+      "path": "/assets/characters/family/妈妈-麻木.png",
+      "group": "family"
+    },
+    {
+      "name": "妈妈",
+      "state": "失落",
+      "path": "/assets/characters/family/妈妈-失落.png",
+      "group": "family"
+    },
+    {
+      "name": "妈妈",
+      "state": "欣慰",
+      "path": "/assets/characters/family/妈妈-欣慰.png",
+      "group": "family"
+    },
+    {
+      "name": "妈妈",
+      "state": "疼痛",
+      "path": "/assets/characters/family/妈妈-疼痛.png",
+      "group": "family"
+    },
+    {
+      "name": "妈妈",
+      "state": "担忧",
+      "path": "/assets/characters/family/妈妈-担忧.png",
+      "group": "family"
+    },
+    {
+      "name": "爸爸",
+      "state": "稳重",
+      "path": "/assets/characters/family/爸爸-稳重.png",
+      "group": "family"
+    },
+    {
+      "name": "爸爸",
+      "state": "严肃",
+      "path": "/assets/characters/family/爸爸-严肃.png",
+      "group": "family"
+    },
+    {
+      "name": "儿子",
+      "state": "心疼",
+      "path": "/assets/characters/family/儿子-心疼.png",
+      "group": "family"
+    },
+    {
+      "name": "儿子",
+      "state": "焦急",
+      "path": "/assets/characters/family/儿子-焦急.png",
+      "group": "family"
+    },
+    {
+      "name": "儿子",
+      "state": "担忧",
+      "path": "/assets/characters/family/儿子-担忧.png",
+      "group": "family"
+    },
+    {
+      "name": "儿子",
+      "state": "愤怒",
+      "path": "/assets/characters/family/儿子-愤怒.png",
+      "group": "family"
+    },
+    {
+      "name": "儿子",
+      "state": "疲惫",
+      "path": "/assets/characters/family/儿子-疲惫.png",
+      "group": "family"
+    },
+    {
+      "name": "儿子",
+      "state": "诚恳",
+      "path": "/assets/characters/family/儿子-诚恳.png",
+      "group": "family"
+    },
+    {
+      "name": "女儿",
+      "state": "担忧",
+      "path": "/assets/characters/family/女儿-担忧.png",
+      "group": "family"
+    },
+    {
+      "name": "女儿",
+      "state": "温柔",
+      "path": "/assets/characters/family/女儿-温柔.png",
+      "group": "family"
+    },
+    {
+      "name": "女儿",
+      "state": "无奈",
+      "path": "/assets/characters/family/女儿-无奈.png",
+      "group": "family"
+    },
+    {
+      "name": "女儿",
+      "state": "恳求",
+      "path": "/assets/characters/family/女儿-恳求.png",
+      "group": "family"
+    },
+    {
+      "name": "女儿",
+      "state": "委屈",
+      "path": "/assets/characters/family/女儿-委屈.png",
+      "group": "family"
+    },
+    {
+      "name": "女儿",
+      "state": "哭泣",
+      "path": "/assets/characters/family/女儿-哭泣.png",
+      "group": "family"
+    },
+    {
+      "name": "儿媳",
+      "state": "温柔",
+      "path": "/assets/characters/family/儿媳-温柔.png",
+      "group": "family"
+    },
+    {
+      "name": "儿媳",
+      "state": "细心",
+      "path": "/assets/characters/family/儿媳-细心.png",
+      "group": "family"
+    },
+    {
+      "name": "儿媳",
+      "state": "担忧",
+      "path": "/assets/characters/family/儿媳-担忧.png",
+      "group": "family"
+    },
+    {
+      "name": "儿媳",
+      "state": "贴心",
+      "path": "/assets/characters/family/儿媳-贴心.png",
+      "group": "family"
+    },
+    {
+      "name": "小孙女",
+      "state": "活泼",
+      "path": "/assets/characters/family/小孙女-活泼.png",
+      "group": "family"
+    },
+    {
+      "name": "小孙女",
+      "state": "软糯",
+      "path": "/assets/characters/family/小孙女-软糯.png",
+      "group": "family"
+    },
+    {
+      "name": "经理",
+      "state": "威严",
+      "path": "/assets/characters/workplace/经理-威严.png",
+      "group": "workplace"
+    },
+    {
+      "name": "经理",
+      "state": "缓和",
+      "path": "/assets/characters/workplace/经理-缓和.png",
+      "group": "workplace"
+    },
+    {
+      "name": "经理",
+      "state": "满意",
+      "path": "/assets/characters/workplace/经理-满意.png",
+      "group": "workplace"
+    },
+    {
+      "name": "经理",
+      "state": "愣住",
+      "path": "/assets/characters/workplace/经理-愣住.png",
+      "group": "workplace"
+    },
+    {
+      "name": "经理",
+      "state": "愤怒",
+      "path": "/assets/characters/workplace/经理-愤怒.png",
+      "group": "workplace"
+    },
+    {
+      "name": "小李",
+      "state": "苦相",
+      "path": "/assets/characters/workplace/小李-苦相.png",
+      "group": "workplace"
+    },
+    {
+      "name": "小李",
+      "state": "谨慎",
+      "path": "/assets/characters/workplace/小李-谨慎.png",
+      "group": "workplace"
+    },
+    {
+      "name": "小李",
+      "state": "疲惫",
+      "path": "/assets/characters/workplace/小李-疲惫.png",
+      "group": "workplace"
+    },
+    {
+      "name": "小李",
+      "state": "同情",
+      "path": "/assets/characters/workplace/小李-同情.png",
+      "group": "workplace"
+    },
+    {
+      "name": "张总",
+      "state": "随和",
+      "path": "/assets/characters/workplace/张总-随和.png",
+      "group": "workplace"
+    },
+    {
+      "name": "甲方总负责人",
+      "state": "严肃",
+      "path": "/assets/characters/workplace/甲方总负责人-严肃.png",
+      "group": "workplace"
+    },
+    {
+      "name": "甲方总负责人",
+      "state": "满意",
+      "path": "/assets/characters/workplace/甲方总负责人-满意.png",
+      "group": "workplace"
+    },
+    {
+      "name": "张总",
+      "state": "笑意",
+      "path": "/assets/characters/workplace/张总-笑意.png",
+      "group": "workplace"
+    },
+    {
+      "name": "王哥",
+      "state": "友善",
+      "path": "/assets/characters/workplace/王哥-友善.png",
+      "group": "workplace"
+    },
+    {
+      "name": "同事",
+      "state": "同情",
+      "path": "/assets/characters/workplace/同事-同情.png",
+      "group": "workplace"
+    },
+    {
+      "name": "同事",
+      "state": "起哄",
+      "path": "/assets/characters/workplace/同事-起哄.png",
+      "group": "workplace"
+    },
+    {
+      "name": "同事",
+      "state": "担忧",
+      "path": "/assets/characters/workplace/同事-担忧.png",
+      "group": "workplace"
+    },
+    {
+      "name": "乳腺科医生（专家）",
+      "state": "专业",
+      "path": "/assets/characters/medical/乳腺科医生(专家)-专业.png",
+      "group": "medical"
+    },
+    {
+      "name": "乳腺科医生（专家）",
+      "state": "严肃",
+      "path": "/assets/characters/medical/乳腺科医生(专家)-严肃.png",
+      "group": "medical"
+    },
+    {
+      "name": "乳腺科医生（专家）",
+      "state": "温和",
+      "path": "/assets/characters/medical/乳腺科医生(专家)-温和.png",
+      "group": "medical"
+    },
+    {
+      "name": "社区医生",
+      "state": "专业",
+      "path": "/assets/characters/medical/社区医生-专业.png",
+      "group": "medical"
+    },
+    {
+      "name": "营养师",
+      "state": "专业",
+      "path": "/assets/characters/medical/营养师-专业.png",
+      "group": "medical"
+    },
+    {
+      "name": "药店店员",
+      "state": "友善",
+      "path": "/assets/characters/medical/药店店员-友善.png",
+      "group": "medical"
+    },
+    {
+      "name": "药店店员",
+      "state": "随意",
+      "path": "/assets/characters/medical/药店店员-随意.png",
+      "group": "medical"
+    },
+    {
+      "name": "民间老郎中",
+      "state": "神秘",
+      "path": "/assets/characters/medical/民间老郎中-神秘.png",
+      "group": "medical"
+    },
+    {
+      "name": "张阿姨",
+      "state": "热心",
+      "path": "/assets/characters/neighbors/张阿姨-热心.png",
+      "group": "neighbors"
+    },
+    {
+      "name": "李阿姨",
+      "state": "附和",
+      "path": "/assets/characters/neighbors/李阿姨-附和.png",
+      "group": "neighbors"
+    },
+    {
+      "name": "王阿姨",
+      "state": "热心",
+      "path": "/assets/characters/neighbors/王阿姨-热心.png",
+      "group": "neighbors"
+    },
+    {
+      "name": "刘阿姨",
+      "state": "附和",
+      "path": "/assets/characters/neighbors/刘阿姨-附和.png",
+      "group": "neighbors"
+    },
+    {
+      "name": "邻居",
+      "state": "热心",
+      "path": "/assets/characters/neighbors/邻居-热心.png",
+      "group": "neighbors"
+    },
+    {
+      "name": "群友",
+      "state": "友善",
+      "path": "/assets/characters/neighbors/群友-友善.jpg",
+      "group": "neighbors"
+    },
+    {
+      "name": "乳头内陷 BOSS",
+      "state": "虚弱",
+      "path": "/assets/characters/bosses/乳头内陷-BOSS-虚弱.png",
+      "group": "bosses"
+    },
+    {
+      "name": "乳头内陷 BOSS",
+      "state": "狰狞",
+      "path": "/assets/characters/bosses/乳头内陷-BOSS-狰狞.png",
+      "group": "bosses"
+    },
+    {
+      "name": "乳头溢液 BOSS",
+      "state": "虚弱",
+      "path": "/assets/characters/bosses/乳头溢液-BOSS-虚弱.png",
+      "group": "bosses"
+    },
+    {
+      "name": "乳头溢液 BOSS",
+      "state": "狰狞",
+      "path": "/assets/characters/bosses/乳头溢液-BOSS-狰狞.png",
+      "group": "bosses"
+    },
+    {
+      "name": "腋下淋巴结肿大 BOSS",
+      "state": "虚弱",
+      "path": "/assets/characters/bosses/腋下淋巴结肿大-BOSS-虚弱.png",
+      "group": "bosses"
+    },
+    {
+      "name": "腋下淋巴结肿大 BOSS",
+      "state": "狰狞",
+      "path": "/assets/characters/bosses/腋下淋巴结肿大-BOSS-狰狞.png",
+      "group": "bosses"
+    },
+    {
+      "name": "腋下淋巴结肿大 BOSS",
+      "state": "嚣张",
+      "path": "/assets/characters/bosses/腋下淋巴结肿大-BOSS-嚣张.png",
+      "group": "bosses"
+    },
+    {
+      "name": "乳房硬块 BOSS",
+      "state": "虚弱",
+      "path": "/assets/characters/bosses/乳房硬块-BOSS-虚弱.png",
+      "group": "bosses"
+    },
+    {
+      "name": "乳房硬块 BOSS",
+      "state": "狰狞",
+      "path": "/assets/characters/bosses/乳房硬块-BOSS-狰狞.png",
+      "group": "bosses"
+    },
+    {
+      "name": "乳房硬块 BOSS",
+      "state": "嚣张",
+      "path": "/assets/characters/bosses/乳房硬块-BOSS-嚣张.png",
+      "group": "bosses"
+    },
+    {
+      "name": "酒窝征 BOSS",
+      "state": "虚弱",
+      "path": "/assets/characters/bosses/酒窝征-BOSS-虚弱.png",
+      "group": "bosses"
+    },
+    {
+      "name": "酒窝征 BOSS",
+      "state": "狰狞",
+      "path": "/assets/characters/bosses/酒窝征-BOSS-狰狞.png",
+      "group": "bosses"
+    },
+    {
+      "name": "橘皮样改变 BOSS",
+      "state": "虚弱",
+      "path": "/assets/characters/bosses/橘皮样改变-BOSS-虚弱.png",
+      "group": "bosses"
+    },
+    {
+      "name": "橘皮样改变 BOSS",
+      "state": "狰狞",
+      "path": "/assets/characters/bosses/橘皮样改变-BOSS-狰狞.png",
+      "group": "bosses"
+    }
+  ],
+  "scenes": [
+    {
+      "name": "大脑记忆中枢",
+      "path": "/assets/scenes/common/大脑记忆中枢.png",
+      "group": "common"
+    },
+    {
+      "name": "乳腺主城（正常）",
+      "path": "/assets/scenes/common/乳腺主城(正常).jpg",
+      "group": "common"
+    },
+    {
+      "name": "乳腺主城（黑雾笼罩）",
+      "path": "/assets/scenes/common/乳腺主城(黑雾笼罩).png",
+      "group": "common"
+    },
+    {
+      "name": "卧室",
+      "path": "/assets/scenes/common/卧室.jpg",
+      "group": "common"
+    },
+    {
+      "name": "客厅",
+      "path": "/assets/scenes/common/客厅.jpg",
+      "group": "common"
+    },
+    {
+      "name": "厨房",
+      "path": "/assets/scenes/common/厨房.jpg",
+      "group": "common"
+    },
+    {
+      "name": "妈妈的卧室",
+      "path": "/assets/scenes/child-adult/妈妈的卧室.jpg",
+      "group": "child-adult"
+    },
+    {
+      "name": "书房",
+      "path": "/assets/scenes/child-adult/书房.jpg",
+      "group": "child-adult"
+    },
+    {
+      "name": "公园",
+      "path": "/assets/scenes/child-adult/公园.jpg",
+      "group": "child-adult"
+    },
+    {
+      "name": "职场办公室",
+      "path": "/assets/scenes/child-adult/职场办公室.png",
+      "group": "child-adult"
+    },
+    {
+      "name": "酒店包厢",
+      "path": "/assets/scenes/child-adult/酒店包厢.png",
+      "group": "child-adult"
+    },
+    {
+      "name": "小区花园",
+      "path": "/assets/scenes/elder/小区花园.jpg",
+      "group": "elder"
+    },
+    {
+      "name": "正规医院",
+      "path": "/assets/scenes/elder/正规医院.png",
+      "group": "elder"
+    },
+    {
+      "name": "三甲医院",
+      "path": "/assets/scenes/elder/三甲医院.png",
+      "group": "elder"
+    },
+    {
+      "name": "体检中心",
+      "path": "/assets/scenes/elder/体检中心.png",
+      "group": "elder"
+    },
+    {
+      "name": "社区医院",
+      "path": "/assets/scenes/elder/社区医院.jpg",
+      "group": "elder"
+    }
+  ]
+}

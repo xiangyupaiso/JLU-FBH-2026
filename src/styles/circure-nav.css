@@ -128,7 +128,7 @@
   z-index: 3;
   display: grid;
   height: 40px;
-  grid-template-columns: 112px 1fr;
+  grid-template-columns: 148px 1fr;
   align-items: center;
   gap: 28px;
 }
@@ -316,7 +316,7 @@
 }
 
 .wordmark {
-  width: 96px;
+  width: 136px;
   height: 30px;
   display: block;
   color: inherit;
@@ -325,15 +325,31 @@
 .wordmark-stage {
   position: relative;
   display: block;
-  width: 96px;
+  width: 136px;
   height: 30px;
+}
+
+.team-crest {
+  position: absolute;
+  z-index: 4;
+  top: -4px;
+  left: 0;
+  width: 29px;
+  height: 38px;
+  object-fit: contain;
+  transition: filter 260ms ease;
+}
+
+.site-header[data-tone="ink"] .team-crest,
+.site-header[data-tone="navy"] .team-crest {
+  filter: grayscale(1) brightness(0) invert(1);
 }
 
 .logo-word-full {
   position: absolute;
   z-index: 2;
   top: 3px;
-  left: 3px;
+  left: 39px;
   width: 92px;
   color: inherit;
   font-family: var(--font-display);
@@ -353,7 +369,7 @@
   position: absolute;
   z-index: 3;
   top: -5px;
-  left: -4px;
+  left: 32px;
   width: 40px;
   height: 40px;
   overflow: visible;

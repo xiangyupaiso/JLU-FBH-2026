@@ -323,7 +323,7 @@
 
 .wiki-page.wiki-page--manuscript .wet-lab-route__track {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(6, 1fr);
   padding: 0;
   border-top: 1px solid var(--wet-line-strong);
   border-bottom: 1px solid var(--wet-line-strong);
