@@ -11,7 +11,7 @@ import type { WikiPageContent } from "../components/wiki/wikiPageTypes";
 export const hardwareEvidencePage: WikiPageContent = {
   route: "/hardware",
   category: "dry-lab",
-  chapter: "Dry Lab / 03 of 03",
+  chapter: "Dry Lab / 03 of 04",
   eyebrow: "Hardware · Build record",
   title: "Hardware",
   lede: "One Wet Lab bottleneck, translated into an open build.",
@@ -129,8 +129,8 @@ export const hardwareEvidencePage: WikiPageContent = {
     { path: "/contribution", label: "Open release" },
   ],
   next: {
-    path: "/entrepreneurship",
-    label: "Entrepreneurship",
-    title: "How would the project fit a real workflow?",
+    path: "/games",
+    label: "Games",
+    title: "How can interactive experiences make the work explorable?",
   },
 };

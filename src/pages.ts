@@ -11,6 +11,7 @@ import {
   Members,
   Education,
   Entrepreneurship,
+  Games,
   Hardware,
   Inclusivity,
   Measurement,
@@ -18,6 +19,7 @@ import {
   AlternativePlatform,
   Software,
   Sustainability,
+  Protocol,
 } from "./contents";
 
 interface Base {
@@ -203,6 +205,18 @@ const Pages: (Page | Folder)[] = [
           spriteRow: "100%",
         },
       },
+      {
+        name: "Protocol",
+        title: "Protocol Library",
+        path: "/protocol",
+        component: Protocol,
+        lead: "Browse, preview, and download the team's Wet Lab protocol manuals.",
+        nav: {
+          small: "06 / MANUAL",
+          em: "Protocols · Library · Viewer",
+          spriteRow: "100%",
+        },
+      },
     ],
   },
   {
@@ -249,6 +263,18 @@ const Pages: (Page | Folder)[] = [
         nav: {
           small: "03 / INSTRUMENT",
           em: "Build · Calibrate · Share",
+          spriteRow: "0%",
+        },
+      },
+      {
+        name: "Games",
+        title: "Games",
+        path: "/games",
+        component: Games,
+        lead: "Interactive virtual projects for learning, exploration, and experimentation.",
+        nav: {
+          small: "04 / INTERACT",
+          em: "Play · Explore · Experiment",
           spriteRow: "0%",
         },
       },

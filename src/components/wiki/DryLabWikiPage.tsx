@@ -13,6 +13,7 @@ interface WikiPageProps {
   heroVisual: ReactNode;
   features?: FeatureMap;
   pageClassName?: string;
+  routeAddon?: ReactNode;
 }
 
 function ItemCollection({
@@ -165,6 +166,7 @@ export function DryLabWikiPage({
   heroVisual,
   features = {},
   pageClassName = "",
+  routeAddon,
 }: WikiPageProps) {
   const rootRef = useRef<HTMLElement>(null);
   const sectionIds = useMemo(
@@ -203,43 +205,49 @@ export function DryLabWikiPage({
 
       <DryLabRouteNav activePath={content.route} />
 
-      <section className="wiki-facts" aria-label="Page at a glance">
-        {content.facts.map((fact, index) => (
-          <article key={fact.label} data-wiki-reveal>
-            <span>
-              {String(index + 1).padStart(2, "0")} / {fact.label}
-            </span>
-            <strong>{fact.value}</strong>
-          </article>
-        ))}
-      </section>
+      {routeAddon}
 
-      <div className="wiki-record">
-        <WikiLineSidebar
-          activeId={activeSection}
-          items={content.sections.map((section, sectionIndex) => ({
-            id: section.id,
-            index: String(sectionIndex + 1),
-            label: section.navLabel ?? section.kicker,
-            meta: section.kicker,
-          }))}
-          links={content.links}
-          minimal
-        />
-
-        <article className="wiki-article">
-          {content.sections.map((section, sectionIndex) => (
-            <WikiSectionBlock
-              key={section.id}
-              section={section}
-              feature={features[section.id]}
-              sectionNumber={
-                content.category === "dry-lab" ? sectionIndex + 1 : undefined
-              }
-            />
+      {content.facts.length ? (
+        <section className="wiki-facts" aria-label="Page at a glance">
+          {content.facts.map((fact, index) => (
+            <article key={fact.label} data-wiki-reveal>
+              <span>
+                {String(index + 1).padStart(2, "0")} / {fact.label}
+              </span>
+              <strong>{fact.value}</strong>
+            </article>
           ))}
-        </article>
-      </div>
+        </section>
+      ) : null}
+
+      {content.sections.length || content.links.length ? (
+        <div className="wiki-record">
+          <WikiLineSidebar
+            activeId={activeSection}
+            items={content.sections.map((section, sectionIndex) => ({
+              id: section.id,
+              index: String(sectionIndex + 1),
+              label: section.navLabel ?? section.kicker,
+              meta: section.kicker,
+            }))}
+            links={content.links}
+            minimal
+          />
+
+          <article className="wiki-article">
+            {content.sections.map((section, sectionIndex) => (
+              <WikiSectionBlock
+                key={section.id}
+                section={section}
+                feature={features[section.id]}
+                sectionNumber={
+                  content.category === "dry-lab" ? sectionIndex + 1 : undefined
+                }
+              />
+            ))}
+          </article>
+        </div>
+      ) : null}
 
       <WikiNextRecord {...content.next} />
     </main>

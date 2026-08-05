@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CirCure Design System — Figma UI Kit 规范</title>
+<style>
+/* ===== CirCure Design System 文档自身样式（复用被分析项目的 token） ===== */
+:root{
+  --paper:#eee7dc;
+  --paper-bright:#fcf8f1;
+  --ink:#1b1719;
+  --deep:#102f59;
+  --brand-navy:#173f78;
+  --brand-navy-deep:#102f59;
+  --care:#d784b3;
+  --care-strong:#754356;
+  --coral:#df705b;
+  --gold:#c39a55;
+  --muted-blue:#667e8c;
+  --surface-map:#e5d9d2;
+  --surface-blush:#ddcbd3;
+  --muted:rgba(27,23,25,.68);
+  --faint:rgba(27,23,25,.46);
+  --line:rgba(27,23,25,.18);
+  --hair:rgba(27,23,25,.06);
+  --line-navy:rgba(252,248,241,.12);
+  --font-sans:-apple-system,BlinkMacSystemFont,"SF Pro Text","Helvetica Neue",Arial,sans-serif;
+  --font-display:"Avenir Next",Avenir,"Helvetica Neue",Arial,sans-serif;
+  --font-editorial:"Iowan Old Style",Baskerville,Georgia,"Times New Roman",serif;
+  --font-mono:"SFMono-Regular",Consolas,"Liberation Mono",monospace;
+  --radius-control:6px;
+  --radius-panel:28px;
+  --radius-panel-mobile:20px;
+  --ease-out:cubic-bezier(.22,1,.36,1);
+  --maxw:1080px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;background:var(--paper)}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--font-sans);font-size:16px;line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 clamp(24px,4.7vw,72px)}
+
+/* ===== 顶部封面 ===== */
+.cover{position:relative;padding:clamp(96px,12vw,168px) 0 clamp(56px,7vw,88px);background:var(--paper-bright);border-bottom:1px solid var(--line);overflow:hidden}
+.cover::after{position:absolute;right:clamp(22px,4.7vw,72px);bottom:18px;width:64px;height:1px;background:var(--care);content:""}
+.eyebrow{display:inline-flex;align-items:center;gap:12px;margin-bottom:22px;color:var(--care);font-size:10px;font-weight:750;letter-spacing:.1em;text-transform:uppercase}
+.eyebrow::before{width:28px;height:1px;background:currentColor;content:""}
+.cover h1{margin:0;font-family:var(--font-editorial);font-size:clamp(40px,6vw,84px);font-weight:400;letter-spacing:-.04em;line-height:1;color:var(--ink)}
+.cover .sub{max-width:760px;margin:22px 0 0;font-family:var(--font-editorial);font-size:clamp(18px,1.6vw,24px);line-height:1.35;color:var(--brand-navy)}
+.cover .meta{display:flex;flex-wrap:wrap;gap:10px 28px;margin-top:40px;font-family:var(--font-mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--faint)}
+.cover .meta b{color:var(--ink);font-weight:800}
+
+/* ===== 章节通用 ===== */
+section{padding:clamp(56px,7vw,88px) 0}
+section+section{border-top:1px solid var(--hair)}
+.sec-head{display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:baseline;margin-bottom:48px}
+.sec-num{font-family:var(--font-mono);font-size:11px;font-weight:800;letter-spacing:.06em;color:var(--care);text-transform:uppercase}
+.sec-title{margin:0;font-family:var(--font-editorial);font-size:clamp(28px,3.4vw,44px);font-weight:400;letter-spacing:-.035em;line-height:1.05;color:var(--ink)}
+.sec-lead{max-width:760px;margin:14px 0 0;font-family:var(--font-editorial);font-size:clamp(16px,1.4vw,20px);line-height:1.5;color:var(--muted)}
+h3.sub{margin:56px 0 18px;font-family:var(--font-editorial);font-size:clamp(20px,1.8vw,26px);font-weight:500;letter-spacing:-.02em;color:var(--ink)}
+h4.sub{margin:32px 0 12px;font-family:var(--font-sans);font-size:13px;font-weight:750;letter-spacing:.06em;text-transform:uppercase;color:var(--care-strong)}
+p{margin:0 0 16px}
+p.lead{font-family:var(--font-editorial);font-size:clamp(17px,1.5vw,21px);line-height:1.5;color:var(--brand-navy)}
+
+/* ===== 表格 ===== */
+.table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper-bright);margin:8px 0 24px}
+table{width:100%;border-collapse:collapse;min-width:560px;font-size:13px}
+thead th{position:sticky;top:0;background:var(--paper);border-bottom:1px solid var(--line);padding:12px 14px;text-align:left;font-family:var(--font-sans);font-size:11px;font-weight:750;letter-spacing:.06em;text-transform:uppercase;color:var(--care-strong)}
+tbody td{padding:11px 14px;border-bottom:1px solid var(--hair);vertical-align:middle;color:var(--ink)}
+tbody tr:last-child td{border-bottom:0}
+tbody tr:hover{background:var(--surface-map)}
+td .swatch{display:inline-flex;align-items:center;gap:9px}
+td .chip{width:20px;height:20px;border-radius:5px;border:1px solid rgba(0,0,0,.08);flex:0 0 auto}
+code,.mono{font-family:var(--font-mono);font-size:12px;color:var(--brand-navy-deep)}
+.muted{color:var(--muted)}
+.faint{color:var(--faint)}
+
+/* ===== 色板卡 ===== */
+.swatch-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px;margin:8px 0 24px}
+.sw-card{border:1px solid var(--line);border-radius:var(--radius-control);overflow:hidden;background:var(--paper-bright)}
+.sw-card .face{height:64px}
+.sw-card .info{padding:9px 11px}
+.sw-card .info b{display:block;font-size:12px;font-weight:700;color:var(--ink)}
+.sw-card .info span{font-family:var(--font-mono);font-size:10px;color:var(--faint);letter-spacing:.04em}
+
+/* ===== 排版样本 ===== */
+.type-row{display:grid;grid-template-columns:1fr;gap:6px;padding:22px 0;border-bottom:1px solid var(--hair)}
+.type-row:last-child{border-bottom:0}
+.type-row .label{font-family:var(--font-mono);font-size:10px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--care)}
+.type-row .sample{color:var(--ink)}
+
+/* ===== 阴影展示 ===== */
+.shadow-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:28px;margin:8px 0 24px}
+.shadow-card{background:var(--paper-bright);border-radius:var(--radius-control);padding:28px 18px;text-align:center}
+.shadow-card b{display:block;font-size:12px;font-weight:750;color:var(--ink)}
+.shadow-card span{font-family:var(--font-mono);font-size:10px;color:var(--faint)}
+
+/* ===== 组件解构 ===== */
+.comp-block{border:1px solid var(--line);border-radius:var(--radius-panel);overflow:hidden;background:var(--paper-bright);margin-bottom:32px}
+.comp-stage{padding:clamp(32px,4vw,52px);background:var(--paper);border-bottom:1px solid var(--hair);display:flex;flex-wrap:wrap;align-items:center;gap:24px}
+.comp-spec{padding:clamp(24px,3vw,36px)}
+.comp-spec h4{margin:0 0 14px;font-family:var(--font-sans);font-size:13px;font-weight:750;letter-spacing:.06em;text-transform:uppercase;color:var(--care-strong)}
+
+/* 组件实样: Button */
+.btn{display:inline-flex;align-items:center;gap:8px;min-height:42px;padding:0 22px;border:0;border-radius:var(--radius-control);font-family:var(--font-sans);font-size:14px;font-weight:700;cursor:pointer;transition:transform .26s var(--ease-out),background-color .2s ease,color .2s ease}
+.btn-primary{background:var(--brand-navy-deep);color:var(--paper-bright)}
+.btn-primary:hover{background:#0c2649;transform:translateY(-2px)}
+.btn-ghost{background:transparent;color:var(--brand-navy-deep);box-shadow:inset 0 0 0 1.5px var(--brand-navy-deep)}
+.btn-ghost:hover{background:rgba(16,47,89,.06);transform:translateY(-2px)}
+.btn-pink{background:var(--care);color:#fff}
+.btn-pink:hover{background:#c273a4;transform:translateY(-2px)}
+.btn:disabled{background:var(--surface-map);color:var(--faint);cursor:not-allowed;transform:none}
+
+/* 组件实样: Card */
+.demo-card{width:230px;min-height:200px;display:flex;flex-direction:column;padding:24px;border-radius:var(--radius-panel);background:var(--paper-bright);border:1px solid var(--line);position:relative;overflow:hidden;transition:transform .42s var(--ease-out)}
+.demo-card::after{position:absolute;right:0;bottom:0;left:0;height:3px;background:var(--care);content:"";transform:scaleX(0);transform-origin:left;transition:transform .36s var(--ease-out)}
+.demo-card:hover{transform:translateY(-3px)}
+.demo-card:hover::after{transform:scaleX(1)}
+.demo-card .c-eyebrow{font-family:var(--font-mono);font-size:9px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--care)}
+.demo-card .c-title{margin-top:10px;font-family:var(--font-editorial);font-size:21px;font-weight:500;letter-spacing:-.025em;line-height:1.1;color:var(--ink)}
+.demo-card .c-desc{margin-top:10px;font-size:13px;line-height:1.58;color:var(--muted)}
+
+/* 组件实样: Input */
+.field{display:flex;flex-direction:column;gap:7px}
+.field label{font-family:var(--font-mono);font-size:10px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--care-strong)}
+.field input{width:260px;height:44px;padding:0 14px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper-bright);color:var(--ink);font-family:var(--font-sans);font-size:14px;transition:border-color .2s ease,box-shadow .2s ease}
+.field input::placeholder{color:var(--faint)}
+.field input:focus{outline:0;border-color:var(--care);box-shadow:0 0 0 3px rgba(215,132,179,.24)}
+
+/* 组件实样: Nav link */
+.navlink{display:inline-flex;align-items:center;gap:6px;min-height:32px;padding:0 3px;font-size:13px;font-weight:650;letter-spacing:-.01em;color:var(--brand-navy-deep);position:relative}
+.navlink::after{position:absolute;right:3px;bottom:1px;left:3px;height:1px;background:var(--care);content:"";transform:scaleX(0);transform-origin:left;transition:transform .26s var(--ease-out)}
+.navlink:hover{opacity:.62}
+.navlink.is-active::after{transform:scaleX(1)}
+
+/* ===== JSON 代码块 ===== */
+.code-block{position:relative;margin:8px 0 28px;border:1px solid var(--line);border-radius:var(--radius-control);overflow:hidden;background:#1b1719}
+.code-block .code-head{display:flex;justify-content:space-between;align-items:center;padding:10px 14px;background:#211a1d;border-bottom:1px solid rgba(252,248,241,.08)}
+.code-block .code-head b{color:var(--paper-bright);font-family:var(--font-mono);font-size:11px;font-weight:800;letter-spacing:.06em}
+.code-block .copy{background:transparent;border:1px solid rgba(252,248,241,.18);border-radius:var(--radius-control);color:var(--care);font-family:var(--font-mono);font-size:10px;font-weight:700;padding:5px 11px;cursor:pointer;letter-spacing:.06em;text-transform:uppercase}
+.code-block .copy:hover{background:rgba(215,132,179,.14)}
+.code-block pre{margin:0;padding:18px;overflow-x:auto}
+.code-block code{font-family:var(--font-mono);font-size:12.5px;line-height:1.65;color:#e8e2d6}
+.tk-key{color:#f1bad9}
+.tk-str{color:#c9d9a8}
+.tk-num{color:#e0b27a}
+.tk-punc{color:#9a9189}
+
+/* ===== 召唤/规则块 ===== */
+.callout{border-left:3px solid var(--care);background:var(--surface-blush);padding:18px 22px;margin:18px 0;border-radius:0 var(--radius-control) var(--radius-control) 0}
+.callout b{color:var(--care-strong)}
+.rule-list{list-style:none;margin:0;padding:0}
+.rule-list li{position:relative;padding:9px 0 9px 26px;border-bottom:1px solid var(--hair);font-size:14px}
+.rule-list li:last-child{border-bottom:0}
+.rule-list li::before{position:absolute;left:0;top:13px;width:12px;height:1px;background:var(--care);content:""}
+
+/* ===== Token 命名示意 ===== */
+.naming{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:14px 0 24px;font-family:var(--font-mono);font-size:12px}
+.naming span{padding:5px 10px;border-radius:var(--radius-control)}
+.naming .n0{background:var(--surface-map);color:var(--ink)}
+.naming .n1{background:var(--surface-blush);color:var(--care-strong)}
+.naming .n2{background:var(--care);color:#fff}
+.naming .sep{color:var(--faint)}
+
+/* ===== 页脚 ===== */
+footer{background:var(--brand-navy-deep);color:var(--paper-bright);padding:clamp(48px,6vw,72px) 0 36px}
+footer .wrap{display:grid;gap:28px}
+footer .fstate{font-family:var(--font-editorial);font-size:clamp(22px,2.4vw,34px);font-weight:400;letter-spacing:-.025em;line-height:1.16;color:var(--paper-bright);max-width:620px}
+footer .fstate em{color:#f1bad9;font-style:normal}
+footer .fmeta{font-family:var(--font-mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:rgba(252,248,241,.6)}
+footer .flegal{padding-top:22px;border-top:1px solid var(--line-navy);font-family:var(--font-mono);font-size:10px;line-height:1.6;color:rgba(252,248,241,.5)}
+
+@media(max-width:760px){
+  .cover .meta{gap:8px 20px}
+  .sec-head{grid-template-columns:1fr;gap:8px}
+  .demo-card{width:100%}
+  .field input{width:100%}
+}
+@media print{
+  section{padding:28px 0}
+  .cover{padding:48px 0 32px}
+  .comp-block{break-inside:avoid}
+}
+</style>
+</head>
+<body>
+
+<!-- ============ 封面 ============ -->
+<header class="cover">
+  <div class="wrap">
+    <span class="eyebrow">Figma Design System · UI Kit Spec</span>
+    <h1>CirCure<br>Design System</h1>
+    <p class="sub">一份从 CirCure iGEM 2026 Wiki 提炼的标准化设计系统规范，定义了色彩、排版、空间、圆角、阴影与核心组件的数值与逻辑规则，可直接驱动 Figma 变量与可复用组件库的构建。</p>
+    <div class="meta">
+      <span>风格定位 <b>人文科学编辑风</b></span>
+      <span>技术栈 <b>React · TS · 原生 CSS 变量</b></span>
+      <span>命名体系 <b>color/category/name</b></span>
+      <span>排版层级 <b>4 级 Display · 3 级 Body · 3 级 Label</b></span>
+    </div>
+  </div>
+</header>
+
+<!-- ============ 1. 执行摘要 ============ -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num">01 / Executive Summary</span>
+      <h2 class="sec-title">品牌视觉基因</h2>
+    </div>
+    <p class="lead">CirCure 的视觉系统是「人文科学编辑风」（Humanist Scientific Editorial）——它像一份被精心编辑的科学出版物，而非生物技术仪表盘或医院门户。三种视觉角色并存：编辑式衬线标题承载叙事、海军蓝结构表面承载科学证据、暖纸色与粉色丝线承载人文关怀。</p>
+    <p>系统的核心张力来自克制：粉色（Pink Thread）只用于连接、活跃路径与丝带结，从不填充整面；海军蓝是结构色而非全页底色；留白本身即是层级的一部分。所有运动遵循同一条 <code>cubic-bezier(.22,1,.36,1)</code> 缓动曲线，可逆且无过冲，让滚动叙事像翻阅一本可以来回翻动的书。</p>
+    <p>字体因 iGEM 禁用 CDN 的规则完全采用系统字体栈：Iowan/Baskerville 衬线负责标题与人文陈述，系统无衬线负责数据与控件，等宽字体仅用于序列、时间戳与实验状态。这份规范将上述基因转译为 Figma 可消费的变量、样式与 Auto Layout 参数。</p>
+
+    <div class="callout">
+      <b>三条不可违背的原则：</b> ① 粉色必须传达「连接」而非装饰；② 海军蓝是结构色，不做全页铺底；③ 组件在不带动画时仍须可被理解。新增组件前需通过 STYLE_GUIDE 的五项检验。
+    </div>
+  </div>
+</section>
+
+<!-- ============ 2. 色彩系统 ============ -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num">02 / Color Palette</span>
+      <h2 class="sec-title">色彩系统</h2>
+    </div>
+    <p class="sec-lead">色彩被严格分配角色：暖纸色是基底，海军蓝是结构，粉色是连接，珊瑚/金/灰蓝仅作数据分类。语义色由既有品牌色映射而来，不引入新色相。</p>
+
+    <h3 class="sub">命名规范</h3>
+    <p>所有颜色变量遵循 <code>color/category/name</code> 三段式，对应 Figma Variable 的 Group/Collection 结构：</p>
+    <div class="naming">
+      <span class="n0">color</span><span class="sep">/</span><span class="n1">brand</span><span class="sep">/</span><span class="n2">navyDeep</span>
+      <span class="sep">→</span>
+      <span class="n0">color</span><span class="sep">/</span><span class="n1">surface</span><span class="sep">/</span><span class="n2">paperBright</span>
+      <span class="sep">→</span>
+      <span class="n0">color</span><span class="sep">/</span><span class="n1">accent</span><span class="sep">/</span><span class="n2">pinkThread</span>
+    </div>
+
+    <h4 class="sub">Brand & Structural — 主色 / 结构色</h4>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Figma 变量名</th><th>Hex</th><th>角色</th><th>暗色变体</th></tr></thead>
+        <tbody>
+          <tr><td><span class="swatch"><span class="chip" style="background:#102f59"></span> color/brand/navyDeep</span></td><td><code>#102f59</code></td><td>暗色区段、页脚、Hero 遮罩</td><td>—</td></tr>
+          <tr><td><span class="swatch"><span class="chip" style="background:#173f78"></span> color/brand/navy</span></td><td><code>#173f78</code></td><td>科学结构、主操作</td><td><code>#0c2649</code> hover</td></tr>
+          <tr><td><span class="swatch"><span class="chip" style="background:#102f59"></span> color/brand/deep</span></td><td><code>#102f59</code></td><td>深度锚定（同 navyDeep）</td><td>—</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h4 class="sub">Accent — 强调色（Pink Thread 与数据分类）</h4>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Figma 变量名</th><th>Hex</th><th>角色</th></tr></thead>
+        <tbody>
+          <tr><td><span class="swatch"><span class="chip" style="background:#d784b3"></span> color/accent/pinkThread</span></td><td><code>#d784b3</code></td><td>丝线 / 活跃路径 / 连接 / 结</td></tr>
+          <tr><td><span class="swatch"><span class="chip" style="background:#754356"></span> color/accent/pinkStrong</span></td><td><code>#754356</code></td><td>链接 focus 描边</td></tr>
+          <tr><td><span class="swatch"><span class="chip" style="background:#df705b"></span> color/accent/coral</span></td><td><code>#df705b</code></td><td>数据分类色（非界面色）</td></tr>
+          <tr><td><span class="swatch"><span class="chip" style="background:#c39a55"></span> color/accent/gold</span></td><td><code>#c39a55</code></td><td>数据分类色（动物类目）</td></tr>
+          <tr><td><span class="swatch"><span class="chip" style="background:#667e8c"></span> color/accent/mutedBlue</span></td><td><code>#667e8c</code></td><td>数据分类色</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h4 class="sub">Surface & Neutral — 背景与中性色</h4>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Figma 变量名</th><th>Hex</th><th>角色</th></tr></thead>
+        <tbody>
+          <tr><td><span class="swatch"><span class="chip" style="background:#eee7dc"></span> color/surface/paper</span></td><td><code>#eee7dc</code></td><td>默认页面底色</td></tr>
+          <tr><td><span class="swatch"><span class="chip" style="background:#fcf8f1"></span> color/surface/paperBright</span></td><td><code>#fcf8f1</code></td><td>抬升纸面 / 头部表面</td></tr>
+          <tr><td><span class="swatch"><span class="chip" style="background:#e5d9d2"></span> color/surface/map</span></td><td><code>#e5d9d2</code></td><td>地图 / 中性填充</td></tr>
+          <tr><td><span class="swatch"><span class="chip" style="background:#ddcbd3"></span> color/surface/blush</span></td><td><code>#ddcbd3</code></td><td>大型腮红区段表面</td></tr>
+          <tr><td><span class="swatch"><span class="chip" style="background:#1b1719"></span> color/ink/primary</span></td><td><code>#1b1719</code></td><td>主文本色（仅文本）</td></tr>
+          <tr><td><span class="swatch"><span class="chip" style="background:rgba(27,23,25,.68)"></span> color/ink/muted</span></td><td><code>rgba(27,23,25,.68)</code></td><td>次级文本</td></tr>
+          <tr><td><span class="swatch"><span class="chip" style="background:rgba(27,23,25,.46)"></span> color/ink/faint</span></td><td><code>rgba(27,23,25,.46)</code></td><td>三级 / 元数据文本</td></tr>
+          <tr><td><span class="swatch"><span class="chip" style="background:rgba(27,23,25,.18)"></span> color/line/default</span></td><td><code>rgba(27,23,25,.18)</code></td><td>标准分割线</td></tr>
+          <tr><td><span class="swatch"><span class="chip" style="background:rgba(27,23,25,.06)"></span> color/line/hair</span></td><td><code>rgba(27,23,25,.06)</code></td><td>发丝级分割线</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h4 class="sub">Nav Theme — 导航分类强调色</h4>
+    <p>每个内容分区拥有独立强调色，仅在该分区的导航下拉面板内激活：</p>
+    <div class="swatch-grid">
+      <div class="sw-card"><div class="face" style="background:#a83f69"></div><div class="info"><b>project</b><span>#a83f69</span></div></div>
+      <div class="sw-card"><div class="face" style="background:#5f9f87"></div><div class="info"><b>wetLab</b><span>#5f9f87</span></div></div>
+      <div class="sw-card"><div class="face" style="background:#7183c5"></div><div class="info"><b>dryLab</b><span>#7183c5</span></div></div>
+      <div class="sw-card"><div class="face" style="background:#ba7894"></div><div class="info"><b>engagement</b><span>#ba7894</span></div></div>
+    </div>
+
+    <h4 class="sub">Semantic — 语义色（映射，不引入新色相）</h4>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>语义</th><th>映射来源</th><th>Hex</th></tr></thead>
+        <tbody>
+          <tr><td>Success</td><td>wet-teal</td><td><code>#2f6f68</code></td></tr>
+          <tr><td>Warning</td><td>gold</td><td><code>#c39a55</code></td></tr>
+          <tr><td>Danger</td><td>coral</td><td><code>#df705b</code></td></tr>
+          <tr><td>Info</td><td>mutedBlue</td><td><code>#667e8c</code></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 3. 排版系统 ============ -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num">03 / Typography</span>
+      <h2 class="sec-title">排版与字体</h2>
+    </div>
+    <p class="sec-lead">字体完全采用系统栈（iGEM 禁用 CDN）。衬线（Iowan/Baskerville）承载标题与人文叙事，无衬线承载数据与控件，等宽仅用于序列与实验状态。字号大量使用 <code>clamp()</code> 以实现流式响应。</p>
+
+    <h3 class="sub">Font Family</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Token</th><th>字体栈</th><th>用途</th></tr></thead>
+        <tbody>
+          <tr><td><code>type/font/editorial</code></td><td>"Iowan Old Style", Baskerville, Georgia, serif</td><td>Display 标题、叙事正文、人文陈述</td></tr>
+          <tr><td><code>type/font/sans</code></td><td>-apple-system, "SF Pro Text", "Helvetica Neue", Arial</td><td>数据、导航、控件、证据标签</td></tr>
+          <tr><td><code>type/font/display</code></td><td>"Avenir Next", Avenir, "Helvetica Neue", Arial</td><td>大型 wordmark 与展示字</td></tr>
+          <tr><td><code>type/font/mono</code></td><td>"SFMono-Regular", Consolas, monospace</td><td>序列、时间戳、实验状态</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 class="sub">Scale & Hierarchy — 字号层级样本</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Figma 样式名</th><th>Family</th><th>Size</th><th>Weight</th><th>Line-Height</th><th>Tracking</th><th>Case</th></tr></thead>
+        <tbody>
+          <tr><td><code>type/display/heroWordmark</code></td><td>display</td><td>clamp(48,6vw,92)</td><td>720</td><td>0.88</td><td>-0.065em</td><td>—</td></tr>
+          <tr><td><code>type/display/pageTitle</code></td><td>editorial</td><td>clamp(40,5vw,72)</td><td>400</td><td>1.0</td><td>-0.04em</td><td>—</td></tr>
+          <tr><td><code>type/heading/h2</code></td><td>editorial</td><td>clamp(42,4.7vw,66)</td><td>400</td><td>0.98</td><td>-0.045em</td><td>—</td></tr>
+          <tr><td><code>type/heading/h3</code></td><td>editorial</td><td>clamp(22,1.7vw,28)</td><td>500</td><td>1.08</td><td>-0.035em</td><td>—</td></tr>
+          <tr><td><code>type/body/lead</code></td><td>editorial</td><td>clamp(18,1.6vw,24)</td><td>400</td><td>1.35</td><td>—</td><td>—</td></tr>
+          <tr><td><code>type/body/base</code></td><td>sans</td><td>16</td><td>400</td><td>1.72</td><td>—</td><td>—</td></tr>
+          <tr><td><code>type/body/small</code></td><td>sans</td><td>13</td><td>400</td><td>1.58</td><td>—</td><td>—</td></tr>
+          <tr><td><code>type/label/nav</code></td><td>sans</td><td>13</td><td>650</td><td>—</td><td>-0.01em</td><td>—</td></tr>
+          <tr><td><code>type/label/eyebrow</code></td><td>sans</td><td>10</td><td>750</td><td>—</td><td>0.1em</td><td>UPPER</td></tr>
+          <tr><td><code>type/label/mono</code></td><td>mono</td><td>9</td><td>800</td><td>—</td><td>0.06em</td><td>UPPER</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 class="sub">视觉样本</h3>
+    <div class="type-row">
+      <span class="label">type/display/pageTitle — clamp(40,5vw,72) · 400 · -0.04em</span>
+      <div class="sample" style="font-family:var(--font-editorial);font-size:clamp(40px,5vw,72px);font-weight:400;letter-spacing:-.04em;line-height:1">The Living Ring</div>
+    </div>
+    <div class="type-row">
+      <span class="label">type/heading/h2 — clamp(42,4.7vw,66) · 400 · -0.045em</span>
+      <div class="sample" style="font-family:var(--font-editorial);font-size:clamp(36px,4.7vw,66px);font-weight:400;letter-spacing:-.045em;line-height:.98">Evidence Chain</div>
+    </div>
+    <div class="type-row">
+      <span class="label">type/body/lead — clamp(18,1.6vw,24) · editorial · 1.35</span>
+      <div class="sample" style="font-family:var(--font-editorial);font-size:clamp(18px,1.6vw,24px);line-height:1.35;color:var(--brand-navy)">CirCure asks whether several epitopes can create broader paths to immune recognition.</div>
+    </div>
+    <div class="type-row">
+      <span class="label">type/body/base — 16 · sans · 1.72</span>
+      <div class="sample" style="font-size:16px;line-height:1.72">正文保持至少 15px；micro 标签仅用于导航、序列与实验状态，不作装饰性 eyebrow。</div>
+    </div>
+    <div class="type-row">
+      <span class="label">type/label/mono — 9 · 800 · 0.06em · UPPER</span>
+      <div class="sample" style="font-family:var(--font-mono);font-size:9px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--care)">SEQ-04 / EXP STATE</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 4. 空间与圆角 ============ -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num">04 / Spatial & Radius</span>
+      <h2 class="sec-title">布局空间与圆角</h2>
+    </div>
+    <p class="sec-lead">采用 4px 基准网格。页面以单列居中为主，阅读栏 <code>830px</code>，页面容器 <code>min(1120px, calc(100% - 48px))</code>，导航外壳 <code>1440px</code>。圆角严格二分：控件 6px、面板 28px、身份标签用 pill。</p>
+
+    <h3 class="sub">Spacing Scale — 4px 网格</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Token</th><th>值</th><th>典型用途</th></tr></thead>
+        <tbody>
+          <tr><td><code>space/1</code></td><td>4px</td><td>图标内距、字间微调</td></tr>
+          <tr><td><code>space/2</code></td><td>8px</td><td>控件内距、紧凑间距</td></tr>
+          <tr><td><code>space/3</code></td><td>12px</td><td>导航项 gap</td></tr>
+          <tr><td><code>space/4</code></td><td>16px</td><td>基础节奏</td></tr>
+          <tr><td><code>space/5</code></td><td>22px</td><td>章节标题与正文间距</td></tr>
+          <tr><td><code>space/6</code></td><td>28px</td><td>卡片内边距</td></tr>
+          <tr><td><code>space/7</code></td><td>42px</td><td>区段纵向间距</td></tr>
+          <tr><td><code>space/8</code></td><td>64px</td><td>大区段间距</td></tr>
+          <tr><td><code>space/9</code></td><td>88px</td><td>页脚 / 终场间距</td></tr>
+          <tr><td><code>space/pageX</code></td><td>clamp(24,4.7vw,72)</td><td>页面水平边距</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 class="sub">Border Radius</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Token</th><th>值</th><th>应用场景</th></tr></thead>
+        <tbody>
+          <tr><td><code>radius/control</code></td><td>6px</td><td>按钮、输入框、小控件</td></tr>
+          <tr><td><code>radius/card</code></td><td>clamp(20,1.65vw,26)</td><td>导航图片卡</td></tr>
+          <tr><td><code>radius/panel</code></td><td>28px</td><td>内容面板、下拉、卡片</td></tr>
+          <tr><td><code>radius/panelMobile</code></td><td>20px</td><td>移动端面板</td></tr>
+          <tr><td><code>radius/pill</code></td><td>999px</td><td>身份与状态标签、圆形</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 class="sub">Grid & Layout</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Token</th><th>值</th><th>说明</th></tr></thead>
+        <tbody>
+          <tr><td><code>layout/maxWidth</code></td><td>1440px</td><td>导航外壳最大宽度</td></tr>
+          <tr><td><code>layout/wetPage</code></td><td>min(1120px, calc(100% - 48px))</td><td>内容页容器</td></tr>
+          <tr><td><code>layout/article</code></td><td>830px</td><td>阅读栏最大宽度</td></tr>
+          <tr><td><code>layout/leadWidth</code></td><td>760px</td><td>导语 / 陈述最大宽度</td></tr>
+          <tr><td><code>layout/headerHeight</code></td><td>78px (移动 62px)</td><td>固定头部高度</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 class="sub">Elevation / Shadows — 阴影层级</h3>
+    <p>阴影克制使用，Dry Lab 页面甚至显式 <code>box-shadow: none</code>。海军蓝区段用深蓝调阴影，纸色区段用暖灰调。</p>
+    <div class="shadow-grid">
+      <div class="shadow-card" style="box-shadow:0 5px 18px rgba(66,45,54,.025)"><b>Low</b><span>0 5 18 / .025</span></div>
+      <div class="shadow-card" style="box-shadow:0 12px 30px rgba(11,41,77,.12)"><b>Medium</b><span>0 12 30 / .12</span></div>
+      <div class="shadow-card" style="box-shadow:0 24px 64px rgba(16,47,89,.14)"><b>High</b><span>0 24 64 / .14</span></div>
+      <div class="shadow-card" style="box-shadow:0 30px 90px rgba(10,4,9,.42)"><b>Drama</b><span>0 30 90 / .42</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 5. 视觉风格与品牌调性 ============ -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num">05 / Visual Style</span>
+      <h2 class="sec-title">视觉风格与品牌调性</h2>
+    </div>
+    <p class="lead">风格定位为「人文科学编辑风」——介于编辑杂志与科学出版物之间。它刻意区别于生物技术仪表盘、医院门户或装饰性宣传页。</p>
+
+    <h4 class="sub">Style Classification — 风格分类</h4>
+    <ul class="rule-list">
+      <li><b>编辑式留白</b>：非对称留白承载层级，答案优先的内容结构。</li>
+      <li><b>科学结构</b>：海军蓝表面、开放圆环、节点连线、可逆滚动联动。</li>
+      <li><b>人文温度</b>：暖纸色表面、粉色丝线、经同意的声音或刻意留空的座位。</li>
+    </ul>
+
+    <h4 class="sub">Visual Texture — 视觉纹理</h4>
+    <ul class="rule-list">
+      <li><b>边框</b>：以 1px 细线为主（<code>rgba(27,23,25,.18)</code>），海军蓝区段用 <code>rgba(252,248,241,.12)</code>。</li>
+      <li><b>渐变</b>：仅用于下拉面板背景与 Hero 遮罩，不用于通用卡片。</li>
+      <li><b>毛玻璃</b>：头部 <code>backdrop-filter: blur(16px)</code>，下拉面板 <code>blur(18px)</code>。</li>
+      <li><b>图标</b>：线描（line）为主，Pink Thread 丝带结为唯一品牌符号，须引用共享 SVG <code>#circure-ribbon-knot</code>，禁止在每张卡片重复水印化。</li>
+    </ul>
+
+    <h4 class="sub">Motion — 运动规则</h4>
+    <ul class="rule-list">
+      <li>所有运动共用 <code>cubic-bezier(.22,1,.36,1)</code>，可逆且无过冲。</li>
+      <li>悬停位移限制在 4–5px，丝线引导用临界阻尼弹簧。</li>
+      <li>每屏只允许一个主导表达性动画，其余运动仅揭示状态或方向。</li>
+      <li>禁用持续浮动、脉冲、旋转等吸引注意力的循环。</li>
+      <li><code>prefers-reduced-motion</code> 必须保留全部内容与身份。</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ 6. 组件解构 ============ -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num">06 / Component Anatomy</span>
+      <h2 class="sec-title">核心组件解构</h2>
+    </div>
+    <p class="sec-lead">解构 4 个最核心组件：Button、Card、Input、Nav Link。每个组件定义变体、状态与 Auto Layout 参数。</p>
+
+    <!-- Button -->
+    <div class="comp-block">
+      <div class="comp-stage">
+        <button class="btn btn-primary">Primary Action</button>
+        <button class="btn btn-pink">Pink Thread</button>
+        <button class="btn btn-ghost">Ghost</button>
+        <button class="btn" disabled>Disabled</button>
+      </div>
+      <div class="comp-spec">
+        <h4>Button — Auto Layout 参数</h4>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>属性</th><th>值</th></tr></thead>
+            <tbody>
+              <tr><td>Padding (T/R/B/L)</td><td>0 / 22px / 0 / 22px</td></tr>
+              <tr><td>Min-Height</td><td>42px</td></tr>
+              <tr><td>Gap (icon↔label)</td><td>8px</td></tr>
+              <tr><td>Layout</td><td>Hug horizontal / Fill vertical</td></tr>
+              <tr><td>Radius</td><td>radius/control (6px)</td></tr>
+              <tr><td>Font</td><td>type/label/nav (13 / 700)</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>状态</th><th>Background</th><th>Transform</th></tr></thead>
+            <tbody>
+              <tr><td>Default</td><td>brand/navyDeep</td><td>—</td></tr>
+              <tr><td>Hover</td><td>#0c2649</td><td>translateY(-2px)</td></tr>
+              <tr><td>Focus-visible</td><td>inherit</td><td>outline 2px care</td></tr>
+              <tr><td>Disabled</td><td>surface/map</td><td>none</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card -->
+    <div class="comp-block">
+      <div class="comp-stage">
+        <article class="demo-card">
+          <span class="c-eyebrow">SEQ-04</span>
+          <span class="c-title">Back-Splice Junction</span>
+          <span class="c-desc">Evidence path turning one premise into three testable claims.</span>
+        </article>
+      </div>
+      <div class="comp-spec">
+        <h4>Card — Auto Layout 参数</h4>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>属性</th><th>值</th></tr></thead>
+            <tbody>
+              <tr><td>Padding</td><td>28px（nav 卡 clamp(22,1.8vw,30)）</td></tr>
+              <tr><td>Min-Height</td><td>430px (protocol) / 200px (compact)</td></tr>
+              <tr><td>Layout</td><td>Vertical / Fill</td></tr>
+              <tr><td>Radius</td><td>radius/panel (28px)</td></tr>
+              <tr><td>Border</td><td>1px color/line/default</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>状态</th><th>交互</th></tr></thead>
+            <tbody>
+              <tr><td>Default</td><td>底部 3px 强调条 scaleX(0)</td></tr>
+              <tr><td>Hover</td><td>translateY(-3px) + 底条 scaleX(1)</td></tr>
+              <tr><td>Focus-visible</td><td>outline 2px protocol-category, offset -3px</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Input -->
+    <div class="comp-block">
+      <div class="comp-stage">
+        <div class="field">
+          <label>Sequence ID</label>
+          <input type="text" placeholder="e.g. circ-tnb-04">
+        </div>
+      </div>
+      <div class="comp-spec">
+        <h4>Input — Auto Layout 参数</h4>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>属性</th><th>值</th></tr></thead>
+            <tbody>
+              <tr><td>Height</td><td>44px</td></tr>
+              <tr><td>Padding (H)</td><td>14px</td></tr>
+              <tr><td>Radius</td><td>radius/control (6px)</td></tr>
+              <tr><td>Border</td><td>1px color/line/default</td></tr>
+              <tr><td>Label</td><td>type/label/mono (10 / 800)</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>状态</th><th>样式</th></tr></thead>
+            <tbody>
+              <tr><td>Placeholder</td><td>color/ink/faint</td></tr>
+              <tr><td>Focus</td><td>border care + ring 0 0 0 3px rgba(215,132,179,.24)</td></tr>
+              <tr><td>Disabled</td><td>surface/map 背景</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Nav Link -->
+    <div class="comp-block">
+      <div class="comp-stage">
+        <a class="navlink is-active">Project</a>
+        <a class="navlink">Wet Lab</a>
+        <a class="navlink">Dry Lab</a>
+        <a class="navlink">Engagement</a>
+      </div>
+      <div class="comp-spec">
+        <h4>Nav Link — Auto Layout 参数</h4>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>属性</th><th>值</th></tr></thead>
+            <tbody>
+              <tr><td>Min-Height</td><td>32px</td></tr>
+              <tr><td>Padding (H)</td><td>3px</td></tr>
+              <tr><td>Gap</td><td>5px (caret)</td></tr>
+              <tr><td>Font</td><td>type/label/nav (13 / 650 / -0.01em)</td></tr>
+              <tr><td>Active 指示</td><td>底部 1px 线 nav-theme-accent</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>状态</th><th>样式</th></tr></thead>
+            <tbody>
+              <tr><td>Default</td><td>color header-ink</td></tr>
+              <tr><td>Hover</td><td>opacity 0.62</td></tr>
+              <tr><td>Active (expanded)</td><td>opacity 1 + 底线 scaleX(1)</td></tr>
+              <tr><td>Focus-visible</td><td>outline nav-theme-accent</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 7. JSON Config ============ -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num">07 / JSON Config</span>
+      <h2 class="sec-title">Figma Tokens Ready</h2>
+    </div>
+    <p class="sec-lead">下方为符合 Tokens Studio (Figma Tokens) 规范的 <code>tokens.json</code> 片段。完整文件已随附交付，可直接导入 Figma 插件生成 Variables 与 Styles。Token 采用 <code>value + type</code> 结构，支持引用（<code>{path}</code>）。</p>
+
+    <div class="code-block">
+      <div class="code-head">
+        <b>tokens.json · 节选</b>
+        <button class="copy" onclick="navigator.clipboard.writeText(document.getElementById('fulljson').textContent)">Copy</button>
+      </div>
+      <pre id="fulljson"><code><span class="tk-punc">{</span>
+  <span class="tk-key">"color"</span><span class="tk-punc">: {</span>
+    <span class="tk-key">"brand"</span><span class="tk-punc">: {</span>
+      <span class="tk-key">"navyDeep"</span><span class="tk-punc">: {</span> <span class="tk-key">"value"</span><span class="tk-punc">:</span> <span class="tk-str">"#102f59"</span><span class="tk-punc">,</span> <span class="tk-key">"type"</span><span class="tk-punc">:</span> <span class="tk-str">"color"</span> <span class="tk-punc">},</span>
+      <span class="tk-key">"navy"</span><span class="tk-punc">: {</span> <span class="tk-key">"value"</span><span class="tk-punc">:</span> <span class="tk-str">"#173f78"</span><span class="tk-punc">,</span> <span class="tk-key">"type"</span><span class="tk-punc">:</span> <span class="tk-str">"color"</span> <span class="tk-punc">}</span>
+    <span class="tk-punc">},</span>
+    <span class="tk-key">"accent"</span><span class="tk-punc">: {</span>
+      <span class="tk-key">"pinkThread"</span><span class="tk-punc">: {</span> <span class="tk-key">"value"</span><span class="tk-punc">:</span> <span class="tk-str">"#d784b3"</span><span class="tk-punc">,</span> <span class="tk-key">"type"</span><span class="tk-punc">:</span> <span class="tk-str">"color"</span> <span class="tk-punc">},</span>
+      <span class="tk-key">"pinkStrong"</span><span class="tk-punc">: {</span> <span class="tk-key">"value"</span><span class="tk-punc">:</span> <span class="tk-str">"#754356"</span><span class="tk-punc">,</span> <span class="tk-key">"type"</span><span class="tk-punc">:</span> <span class="tk-str">"color"</span> <span class="tk-punc">},</span>
+      <span class="tk-key">"coral"</span><span class="tk-punc">: {</span> <span class="tk-key">"value"</span><span class="tk-punc">:</span> <span class="tk-str">"#df705b"</span><span class="tk-punc">,</span> <span class="tk-key">"type"</span><span class="tk-punc">:</span> <span class="tk-str">"color"</span> <span class="tk-punc">},</span>
+      <span class="tk-key">"gold"</span><span class="tk-punc">: {</span> <span class="tk-key">"value"</span><span class="tk-punc">:</span> <span class="tk-str">"#c39a55"</span><span class="tk-punc">,</span> <span class="tk-key">"type"</span><span class="tk-punc">:</span> <span class="tk-str">"color"</span> <span class="tk-punc">}</span>
+    <span class="tk-punc">},</span>
+    <span class="tk-key">"surface"</span><span class="tk-punc">: {</span>
+      <span class="tk-key">"paper"</span><span class="tk-punc">: {</span> <span class="tk-key">"value"</span><span class="tk-punc">:</span> <span class="tk-str">"#eee7dc"</span><span class="tk-punc">,</span> <span class="tk-key">"type"</span><span class="tk-punc">:</span> <span class="tk-str">"color"</span> <span class="tk-punc">},</span>
+      <span class="tk-key">"paperBright"</span><span class="tk-punc">: {</span> <span class="tk-key">"value"</span><span class="tk-punc">:</span> <span class="tk-str">"#fcf8f1"</span><span class="tk-punc">,</span> <span class="tk-key">"type"</span><span class="tk-punc">:</span> <span class="tk-str">"color"</span> <span class="tk-punc">},</span>
+      <span class="tk-key">"blush"</span><span class="tk-punc">: {</span> <span class="tk-key">"value"</span><span class="tk-punc">:</span> <span class="tk-str">"#ddcbd3"</span><span class="tk-punc">,</span> <span class="tk-key">"type"</span><span class="tk-punc">:</span> <span class="tk-str">"color"</span> <span class="tk-punc">}</span>
+    <span class="tk-punc">},</span>
+    <span class="tk-key">"ink"</span><span class="tk-punc">: {</span>
+      <span class="tk-key">"primary"</span><span class="tk-punc">: {</span> <span class="tk-key">"value"</span><span class="tk-punc">:</span> <span class="tk-str">"#1b1719"</span><span class="tk-punc">,</span> <span class="tk-key">"type"</span><span class="tk-punc">:</span> <span class="tk-str">"color"</span> <span class="tk-punc">},</span>
+      <span class="tk-key">"muted"</span><span class="tk-punc">: {</span> <span class="tk-key">"value"</span><span class="tk-punc">:</span> <span class="tk-str">"rgba(27,23,25,0.68)"</span><span class="tk-punc">,</span> <span class="tk-key">"type"</span><span class="tk-punc">:</span> <span class="tk-str">"color"</span> <span class="tk-punc">}</span>
+    <span class="tk-punc">}</span>
+  <span class="tk-punc">},</span>
+  <span class="tk-key">"space"</span><span class="tk-punc">: {</span>
+    <span class="tk-key">"1"</span><span class="tk-punc">: {</span> <span class="tk-key">"value"</span><span class="tk-punc">:</span> <span class="tk-str">"4px"</span><span class="tk-punc">,</span> <span class="tk-key">"type"</span><span class="tk-punc">:</span> <span class="tk-str">"spacing"</span> <span class="tk-punc">},</span>
+    <span class="tk-key">"2"</span><span class="tk-punc">: {</span> <span class="tk-key">"value"</span><span class="tk-punc">:</span> <span class="tk-str">"8px"</span><span class="tk-punc">,</span> <span class="tk-key">"type"</span><span class="tk-punc">:</span> <span class="tk-str">"spacing"</span> <span class="tk-punc">},</span>
+    <span class="tk-key">"4"</span><span class="tk-punc">: {</span> <span class="tk-key">"value"</span><span class="tk-punc">:</span> <span class="tk-str">"16px"</span><span class="tk-punc">,</span> <span class="tk-key">"type"</span><span class="tk-punc">:</span> <span class="tk-str">"spacing"</span> <span class="tk-punc">},</span>
+    <span class="tk-key">"6"</span><span class="tk-punc">: {</span> <span class="tk-key">"value"</span><span class="tk-punc">:</span> <span class="tk-str">"28px"</span><span class="tk-punc">,</span> <span class="tk-key">"type"</span><span class="tk-punc">:</span> <span class="tk-str">"spacing"</span> <span class="tk-punc">},</span>
+    <span class="tk-key">"pageX"</span><span class="tk-punc">: {</span> <span class="tk-key">"value"</span><span class="tk-punc">:</span> <span class="tk-str">"clamp(24px,4.7vw,72px)"</span><span class="tk-punc">,</span> <span class="tk-key">"type"</span><span class="tk-punc">:</span> <span class="tk-str">"spacing"</span> <span class="tk-punc">}</span>
+  <span class="tk-punc">},</span>
+  <span class="tk-key">"radius"</span><span class="tk-punc">: {</span>
+    <span class="tk-key">"control"</span><span class="tk-punc">: {</span> <span class="tk-key">"value"</span><span class="tk-punc">:</span> <span class="tk-str">"6px"</span><span class="tk-punc">,</span> <span class="tk-key">"type"</span><span class="tk-punc">:</span> <span class="tk-str">"borderRadius"</span> <span class="tk-punc">},</span>
+    <span class="tk-key">"panel"</span><span class="tk-punc">: {</span> <span class="tk-key">"value"</span><span class="tk-punc">:</span> <span class="tk-str">"28px"</span><span class="tk-punc">,</span> <span class="tk-key">"type"</span><span class="tk-punc">:</span> <span class="tk-str">"borderRadius"</span> <span class="tk-punc">},</span>
+    <span class="tk-key">"pill"</span><span class="tk-punc">: {</span> <span class="tk-key">"value"</span><span class="tk-punc">:</span> <span class="tk-str">"999px"</span><span class="tk-punc">,</span> <span class="tk-key">"type"</span><span class="tk-punc">:</span> <span class="tk-str">"borderRadius"</span> <span class="tk-punc">}</span>
+  <span class="tk-punc">},</span>
+  <span class="tk-key">"motion"</span><span class="tk-punc">: {</span>
+    <span class="tk-key">"easeOut"</span><span class="tk-punc">: {</span> <span class="tk-key">"value"</span><span class="tk-punc">:</span> <span class="tk-str">"cubic-bezier(0.22,1,0.36,1)"</span><span class="tk-punc">,</span> <span class="tk-key">"type"</span><span class="tk-punc">:</span> <span class="tk-str">"other"</span> <span class="tk-punc">},</span>
+    <span class="tk-key">"durationFast"</span><span class="tk-punc">: {</span> <span class="tk-key">"value"</span><span class="tk-punc">:</span> <span class="tk-str">"220ms"</span><span class="tk-punc">,</span> <span class="tk-key">"type"</span><span class="tk-punc">:</span> <span class="tk-str">"other"</span> <span class="tk-punc">}</span>
+  <span class="tk-punc">}</span>
+<span class="tk-punc">}</span></code></pre>
+    </div>
+    <p class="faint">完整 tokens.json 包含全部 color、typography、typeStyles、space、radius、layout、shadow、motion 共 60+ token，已随附于同目录。</p>
+  </div>
+</section>
+
+<!-- ============ 页脚 ============ -->
+<footer>
+  <div class="wrap">
+    <p class="fstate">CirCure 的视觉系统像一本<em>可以被来回翻动的书</em>——克制、可逆、且每一页都为下一页的证据负责。</p>
+    <p class="fmeta">CirCure iGEM 2026 · Humanist Scientific Editorial · Design System Spec v1</p>
+    <p class="flegal">Content licensed under Creative Commons Attribution 4.0 International. 本规范由项目源码 token 自动提炼，所有数值与组件参数可在 circure-tokens.css / wetlab-editorial.css / circure-nav.css 中溯源。</p>
+  </div>
+</footer>
+
+</body>
+</html>

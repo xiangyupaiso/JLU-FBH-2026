@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
+import teamCrestUrl from "../assets/jlu-fbh-crest.png";
 import projectWetlabSprite from "../assets/story-nav/nav-project-wetlab-v2.webp";
 import drylabEngagementSprite from "../assets/story-nav/nav-drylab-engagement-v2.webp";
 import Pages from "../pages";
@@ -231,6 +232,7 @@ export function Navbar() {
           <div className="circure-nav-head">
             <Link to="/" className="wordmark" aria-label="CirCure home">
               <span className="wordmark-stage" aria-hidden="true">
+                <img className="team-crest" src={teamCrestUrl} alt="" />
                 <span className="logo-word-full">CirCure</span>
                 <svg className="logo-symbol" viewBox="0 0 40 40">
                   <circle

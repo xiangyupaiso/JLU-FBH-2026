@@ -900,8 +900,8 @@ export const safetyPage: WikiPageContent = {
     { path: "/inclusivity", label: "Consent and access" },
   ],
   next: {
-    path: "/model",
-    label: "Model",
-    title: "Which designs deserve the first experiment?",
+    path: "/protocol",
+    label: "Protocol Library",
+    title: "Open the bench record at the point of work.",
   },
 };

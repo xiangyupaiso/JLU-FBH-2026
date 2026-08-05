@@ -10,7 +10,7 @@ import type { WikiPageContent } from "../components/wiki/wikiPageTypes";
 export const softwareEvidencePage: WikiPageContent = {
   route: "/software",
   category: "dry-lab",
-  chapter: "Dry Lab / 02 of 03",
+  chapter: "Dry Lab / 02 of 04",
   eyebrow: "Software · User-facing evidence",
   title: "Software",
   lede: "One reproducible workflow from validation to export.",
