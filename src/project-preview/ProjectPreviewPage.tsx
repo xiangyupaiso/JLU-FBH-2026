@@ -7,7 +7,8 @@ import type {
 import { WikiNextRecord } from "../components/wiki/WikiNextRecord";
 import { useWikiPageMotion } from "../hooks/useWikiPageMotion";
 import type { ProjectPreviewVariant } from "./ProjectPreviewHero";
-import { ProjectPreviewRouteNav } from "./ProjectPreviewRouteNav";
+import { SubNav } from "../components/wiki/SubNav";
+import { SUB_NAV_CONFIG } from "../components/wiki/subNavConfig";
 import "../styles/wiki-rebuild.css";
 import "../styles/wiki-features.css";
 import "../styles/wetlab-editorial.css";
@@ -193,18 +194,7 @@ export function ProjectPreviewPage({
         </div>
       </header>
 
-      <ProjectPreviewRouteNav activePath={content.route} />
-
-      <section className="wiki-facts" aria-label="Page at a glance">
-        {content.facts.map((fact, index) => (
-          <article key={fact.label} data-wiki-reveal>
-            <span>
-              {String(index + 1).padStart(2, "0")} / {fact.label}
-            </span>
-            <strong>{fact.value}</strong>
-          </article>
-        ))}
-      </section>
+      <SubNav activePath={content.route} {...SUB_NAV_CONFIG.project} />
 
       <div className="wiki-record">
         <WikiLineSidebar

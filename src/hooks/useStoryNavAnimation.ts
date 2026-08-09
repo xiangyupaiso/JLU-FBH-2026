@@ -41,6 +41,7 @@ import { type RefObject } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
+import { clamp } from "../utils";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
@@ -157,10 +158,6 @@ const SECTION_SPAN: Record<
 
 // smoothstep(t) = 3t² − 2t³ and sine.inOut are near-identical S-curves.
 const SMOOTHSTEP = "sine.inOut";
-
-function clamp(value: number, min = 0, max = 1): number {
-  return Math.min(max, Math.max(min, value));
-}
 
 interface HeaderThemeRange {
   key: string;
@@ -364,6 +361,8 @@ export function useStoryNavAnimation(refs: StoryNavAnimationRefs): void {
       }
 
       function updateThreadGuide(scrollY: number): void {
+        if (!threadGuideEl || !threadGuideIndexEl || !threadGuideNameEl)
+          return;
         const probe = scrollY + window.innerHeight * 0.46;
         let nextLandmarkIndex = 0;
         landmarkOffsets.forEach((offset, index) => {
@@ -373,9 +372,9 @@ export function useStoryNavAnimation(refs: StoryNavAnimationRefs): void {
         });
         if (nextLandmarkIndex !== activeLandmarkIndex) {
           activeLandmarkIndex = nextLandmarkIndex;
-          threadGuideIndexEl!.textContent = `${String(nextLandmarkIndex + 1).padStart(2, "0")} / ${String(LANDMARK_NAMES.length).padStart(2, "0")}`;
-          threadGuideNameEl!.textContent = LANDMARK_NAMES[nextLandmarkIndex];
-          threadGuideEl!.setAttribute(
+          threadGuideIndexEl.textContent = `${String(nextLandmarkIndex + 1).padStart(2, "0")} / ${String(LANDMARK_NAMES.length).padStart(2, "0")}`;
+          threadGuideNameEl.textContent = LANDMARK_NAMES[nextLandmarkIndex];
+          threadGuideEl.setAttribute(
             "aria-valuetext",
             `${LANDMARK_NAMES[nextLandmarkIndex]}, section ${nextLandmarkIndex + 1} of ${LANDMARK_NAMES.length}`,
           );
@@ -383,18 +382,19 @@ export function useStoryNavAnimation(refs: StoryNavAnimationRefs): void {
         const isOverDarkSurface = darkSurfaceRanges.some(
           ({ start, end }) => start <= probe && end >= probe,
         );
-        threadGuideEl!.classList.toggle("on-dark", isOverDarkSurface);
+        threadGuideEl.classList.toggle("on-dark", isOverDarkSurface);
       }
 
       // Runs on every scroll change of the global trigger and on refresh.
       function applyPageState(self: ScrollTrigger): void {
+        if (!threadGuideEl) return;
         const scrollY = self.scroll();
         updateHeaderTheme(scrollY);
         updateThreadGuide(scrollY);
         const nextAriaPageProgress = Math.round(self.progress * 100);
         if (nextAriaPageProgress !== ariaPageProgress) {
           ariaPageProgress = nextAriaPageProgress;
-          threadGuideEl!.setAttribute(
+          threadGuideEl.setAttribute(
             "aria-valuenow",
             String(nextAriaPageProgress),
           );
@@ -837,7 +837,8 @@ export function useStoryNavAnimation(refs: StoryNavAnimationRefs): void {
       // --- Thread-guide pointer drag + keyboard (unchanged behavior) ---
 
       function getPointerGuideProgress(event: PointerEvent): number {
-        const bounds = threadGuideTrackEl!.getBoundingClientRect();
+        if (!threadGuideTrackEl) return 0;
+        const bounds = threadGuideTrackEl.getBoundingClientRect();
         if (compactThreadGuide.matches) {
           return (event.clientX - bounds.left) / Math.max(1, bounds.width);
         }
@@ -845,16 +846,17 @@ export function useStoryNavAnimation(refs: StoryNavAnimationRefs): void {
       }
 
       function setPageProgressFromGuide(progress: number): void {
+        if (!threadGuideEl) return;
         const nextProgress = clamp(progress);
         const maxScroll = Math.max(
           0,
           document.documentElement.scrollHeight - window.innerHeight,
         );
-        threadGuideEl!.style.setProperty(
+        threadGuideEl.style.setProperty(
           "--page-progress",
           nextProgress.toFixed(4),
         );
-        threadGuideEl!.setAttribute(
+        threadGuideEl.setAttribute(
           "aria-valuenow",
           String(Math.round(nextProgress * 100)),
         );
@@ -873,15 +875,16 @@ export function useStoryNavAnimation(refs: StoryNavAnimationRefs): void {
       }
 
       function beginThreadDrag(event: PointerEvent): void {
+        if (!threadGuideEl || !threadGuideTrackEl) return;
         if (event.pointerType === "mouse" && event.button !== 0) {
           return;
         }
         event.preventDefault();
         threadPointerId = event.pointerId;
-        threadGuideTrackEl!.setPointerCapture(event.pointerId);
-        threadGuideEl!.classList.add("is-dragging");
+        threadGuideTrackEl.setPointerCapture(event.pointerId);
+        threadGuideEl.classList.add("is-dragging");
         document.body.classList.add("is-thread-dragging");
-        threadGuideEl!.focus({ preventScroll: true });
+        threadGuideEl.focus({ preventScroll: true });
         setPageProgressFromGuide(getPointerGuideProgress(event));
       }
 
@@ -894,14 +897,15 @@ export function useStoryNavAnimation(refs: StoryNavAnimationRefs): void {
       }
 
       function endThreadDrag(event: PointerEvent): void {
+        if (!threadGuideEl || !threadGuideTrackEl) return;
         if (event.pointerId !== threadPointerId) {
           return;
         }
-        if (threadGuideTrackEl!.hasPointerCapture(event.pointerId)) {
-          threadGuideTrackEl!.releasePointerCapture(event.pointerId);
+        if (threadGuideTrackEl.hasPointerCapture(event.pointerId)) {
+          threadGuideTrackEl.releasePointerCapture(event.pointerId);
         }
         threadPointerId = null;
-        threadGuideEl!.classList.remove("is-dragging");
+        threadGuideEl.classList.remove("is-dragging");
         document.body.classList.remove("is-thread-dragging");
         document.documentElement.classList.remove("is-thread-directing");
       }

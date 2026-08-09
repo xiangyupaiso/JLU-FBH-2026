@@ -18,12 +18,14 @@ import regulatoryImage from "../../assets/wiki/hp-regulatory-review-v2.png";
 import whiteboardImage from "../../assets/wiki/hp-whiteboard-review-v2.png";
 import { useWikiPageMotion } from "../../hooks/useWikiPageMotion";
 import { EngagementHeroVisual } from "./EngagementHeroVisual";
-import { EngagementRouteNav } from "./EngagementRouteNav";
+import { SubNav } from "./SubNav";
+import { SUB_NAV_CONFIG } from "./subNavConfig";
 import { WikiLineSidebar } from "./WikiLineSidebar";
 import "../../styles/wiki-rebuild.css";
 import "../../styles/wetlab-editorial.css";
 import "../../styles/engagement-hero.css";
 import "../../styles/human-practices-local.css";
+import { clamp } from "../../utils";
 
 type TimelineCardStyle = CSSProperties & {
   "--angle"?: string;
@@ -648,10 +650,6 @@ const dossierRecords = [
   },
 ];
 
-function clamp(value: number, min = 0, max = 1) {
-  return Math.min(max, Math.max(min, value));
-}
-
 function HumanPracticesImpactWall() {
   const sectionRef = useRef<HTMLElement>(null);
   const stickyRef = useRef<HTMLDivElement>(null);
@@ -812,9 +810,9 @@ function HumanPracticesImpactWall() {
 function HumanPracticesTimeline() {
   const sectionRef = useRef<HTMLElement>(null);
   const dialogRef = useRef<HTMLDialogElement>(null);
+  const dialRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
   const [dialogIndex, setDialogIndex] = useState(0);
-  const [rotation, setRotation] = useState(180);
 
   useEffect(() => {
     let frame = 0;
@@ -834,7 +832,11 @@ function HumanPracticesTimeline() {
         section.offsetHeight - innerHeight + headerHeight,
       );
       const progress = clamp((headerHeight - rect.top) / scrollable);
-      setRotation(180 - progress * 360);
+      // ponytail: update CSS var directly instead of setState to avoid re-render on every scroll frame
+      dialRef.current?.style.setProperty(
+        "--hp-dial-rotation",
+        `${180 - progress * 360}deg`,
+      );
       setActiveIndex(
         Math.min(timelineRecords.length - 1, Math.round(progress * 8)),
       );
@@ -933,7 +935,8 @@ function HumanPracticesTimeline() {
         <div className="hp-dial-stage">
           <div
             className="hp-dial"
-            style={{ "--hp-dial-rotation": `${rotation}deg` } as CSSProperties}
+            ref={dialRef}
+            style={{ "--hp-dial-rotation": `180deg` } as CSSProperties}
           >
             <div className="hp-dial-ring" aria-hidden="true">
               <svg viewBox="0 0 100 100">
@@ -1215,7 +1218,10 @@ export function HumanPracticesPage() {
         </div>
       </header>
 
-      <EngagementRouteNav activePath="/human-practices" />
+      <SubNav
+        activePath="/human-practices"
+        {...SUB_NAV_CONFIG.engagement}
+      />
 
       <div className="wiki-record hp-local-layout">
         <WikiLineSidebar

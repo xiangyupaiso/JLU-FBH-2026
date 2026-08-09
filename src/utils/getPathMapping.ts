@@ -11,7 +11,7 @@ export const getPathMapping = () => {
       layout: PageLayout;
     };
   }>((map, item) => {
-    if ("path" in item && item.path && item.component) {
+    if (item.type === "page" && item.path && item.component) {
       map[item.path] = {
         name: item.name,
         title: item.title,
@@ -19,7 +19,7 @@ export const getPathMapping = () => {
         lead: item.lead,
         layout: item.layout ?? "standard",
       };
-    } else if ("folder" in item && item.folder) {
+    } else if (item.type === "folder") {
       item.folder.forEach((page) => {
         if (page.path && page.component) {
           map[page.path] = {

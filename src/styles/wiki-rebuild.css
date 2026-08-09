@@ -430,7 +430,6 @@
 }
 
 .wiki-section__summary {
-  max-width: 700px;
   margin: 23px 0 0;
   color: var(--wiki-deep);
   font-family: var(--font-editorial);
@@ -440,7 +439,6 @@
 
 .wiki-prose {
   display: grid;
-  max-width: 720px;
   gap: 20px;
   margin: 40px 0 0 70px;
 }
@@ -611,7 +609,6 @@
 
 .wiki-boundary {
   display: grid;
-  max-width: 720px;
   grid-template-columns: 150px 1fr;
   gap: 22px;
   margin: 38px 0 0 70px;
@@ -1185,7 +1182,6 @@
 }
 
 .wiki-page--wet-lab .wiki-section__summary {
-  max-width: 760px;
   font-size: clamp(20px, 1.8vw, 25px);
   line-height: 1.5;
 }
@@ -1547,9 +1543,7 @@
   max-width: 720px;
 }
 
-.wiki-page--wet-lab .wiki-section__summary {
-  max-width: 720px;
-}
+
 
 .wiki-page--wet-lab .wiki-feature {
   margin-top: 34px;
@@ -2681,5 +2675,163 @@
   .wiki-page.wiki-page--wet-lab .wiki-section__heading > span { width: 36px; height: 36px; }
   .wiki-page.wiki-page--wet-lab .wiki-section__heading h2 { font-size: clamp(42px, 12vw, 56px); }
   .wiki-page.wiki-page--wet-lab .wiki-section__summary { font-size: 20px; }
+}
+
+/* ---------------------------------------------------------------------------
+ * Ordered content blocks (WikiSection.blocks)
+ * Used by pages that interleave prose / figure / callout / feature in a
+ * faithful order through the shared renderer (e.g. Sustainability).
+ * ------------------------------------------------------------------------- */
+
+.wiki-figure {
+  margin: 44px 0 0 70px;
+}
+.wiki-figure img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  border-radius: 16px;
+  border: 1px solid var(--line);
+}
+.wiki-figure figcaption {
+  max-width: 720px;
+  margin-top: 10px;
+  font-family: var(--font-editorial);
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.wiki-callout {
+  display: grid;
+  gap: 10px;
+  max-width: 720px;
+  margin: 38px 0 0 70px;
+  padding: 22px 24px;
+  border-left: 3px solid var(--brand-navy);
+  border-radius: 12px;
+  background: rgba(23, 63, 120, 0.06);
+}
+.wiki-callout__label {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--brand-navy);
+}
+.wiki-callout p {
+  margin: 0;
+  font-family: var(--font-editorial);
+  font-size: 17px;
+  line-height: 1.55;
+  color: var(--ink);
+}
+.wiki-callout--coral {
+  border-left-color: var(--coral);
+  background: rgba(223, 112, 91, 0.08);
+}
+.wiki-callout--coral .wiki-callout__label { color: var(--coral); }
+.wiki-callout--gold {
+  border-left-color: var(--gold);
+  background: rgba(195, 154, 85, 0.12);
+}
+.wiki-callout--gold .wiki-callout__label { color: var(--gold); }
+.wiki-callout--neutral {
+  border-left-color: var(--line);
+  background: transparent;
+}
+.wiki-callout--neutral .wiki-callout__label { color: var(--muted); }
+
+.wiki-subheading {
+  display: grid;
+  gap: 6px;
+  max-width: 720px;
+  margin: 56px 0 0 70px;
+}
+.wiki-subheading__kicker {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--brand-navy);
+}
+.wiki-subheading__title {
+  font-family: var(--font-editorial);
+  font-size: 28px;
+  line-height: 1.2;
+  color: var(--ink);
+}
+
+.wiki-epigraph {
+  max-width: 720px;
+  margin: 44px 0 0 70px;
+  padding: 26px 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.wiki-epigraph blockquote {
+  margin: 0;
+  font-family: var(--font-editorial);
+  font-size: 22px;
+  line-height: 1.4;
+  color: var(--brand-navy);
+}
+.wiki-epigraph__zh {
+  margin: 12px 0 0;
+  font-family: var(--font-editorial);
+  font-size: 15px;
+  color: var(--muted);
+}
+.wiki-epigraph figcaption {
+  margin-top: 12px;
+  font-family: var(--font-editorial);
+  font-size: 14px;
+  color: var(--muted);
+}
+
+/* Blocks path (sustainability): text fills the article column like the
+   feature cards do, instead of a narrower 720px measure that left a blank
+   band on the right. Wet-lab pages keep the 720px measure. */
+.wiki-blocks .wiki-prose,
+.wiki-blocks .wiki-callout,
+.wiki-blocks .wiki-subheading,
+.wiki-blocks .wiki-epigraph,
+.wiki-blocks .wiki-boundary {
+  max-width: none;
+}
+
+/* Prose-anchored chart pairs: narrative left, compact figure aside right. */
+.wiki-blocks--split {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 400px);
+  gap: clamp(28px, 4vw, 56px);
+  align-items: center;
+  margin-top: 48px;
+}
+
+.wiki-blocks--split__prose,
+.wiki-blocks--split__aside {
+  min-width: 0;
+}
+
+.wiki-blocks--split__prose > *,
+.wiki-blocks--split__aside > * {
+  margin: 0;
+  max-width: none;
+}
+
+.wiki-blocks--split__prose > * + * {
+  margin-top: 20px;
+}
+
+@media (max-width: 880px) {
+  .wiki-blocks--split {
+    grid-template-columns: 1fr;
+  }
+
+  .wiki-blocks--split__aside {
+    order: 2;
+  }
 }
 

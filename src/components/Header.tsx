@@ -1,9 +1,11 @@
+import { memo } from "react";
+
 interface HeaderProps {
   title: string;
   lead: string;
 }
- 
-export function Header({ title, lead }: HeaderProps) {
+
+export const Header = memo(function Header({ title, lead }: HeaderProps) {
   return (
     <header className="circure-page-header">
       <div className="container">
@@ -12,4 +14,4 @@ export function Header({ title, lead }: HeaderProps) {
       </div>
     </header>
   );
-}
+});

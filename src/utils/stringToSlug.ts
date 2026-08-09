@@ -1,4 +1,6 @@
 export function stringToSlug(string: string): string {
+  // ponytail: empty/undefined input → empty slug so callers can branch cleanly
+  if (!string) return "";
   let slug = String(string).toLowerCase();
   slug = slug.replace(/[^a-z0-9-]/g, "-");
   slug = slug.replace(/-+/g, "-");

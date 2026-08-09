@@ -1,7 +1,8 @@
 import { useMemo, useRef, useState, type ReactNode } from "react";
 import { useWikiPageMotion } from "../../hooks/useWikiPageMotion";
 import type { WikiPageContent, WikiSection } from "./wikiPageTypes";
-import { DryLabRouteNav } from "./DryLabRouteNav";
+import { SubNav } from "./SubNav";
+import { SUB_NAV_CONFIG } from "./subNavConfig";
 import { WikiLineSidebar } from "./WikiLineSidebar";
 import { WikiNextRecord } from "./WikiNextRecord";
 import "../../styles/wiki-rebuild.css";
@@ -203,7 +204,7 @@ export function DryLabWikiPage({
         </div>
       ) : null}
 
-      <DryLabRouteNav activePath={content.route} />
+      <SubNav activePath={content.route} {...SUB_NAV_CONFIG["dry-lab"]} />
 
       {routeAddon}
 

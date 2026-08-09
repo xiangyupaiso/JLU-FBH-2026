@@ -1,30 +1,28 @@
-import {
-  Contribution,
-  Description,
-  Engineering,
-  Experiments,
-  Home,
-  HumanPractices,
-  Notebook,
-  Results,
-  SafetyAndSecurity,
-  Members,
-  Education,
-  Entrepreneurship,
-  Games,
-  Hardware,
-  Inclusivity,
-  Measurement,
-  Model,
-  AlternativePlatform,
-  Software,
-  Sustainability,
-  Protocol,
-} from "./contents";
+import { lazy } from "react";
 
-interface Base {
-  name: string | undefined;
-}
+// Route-level code splitting: each page loads in its own chunk so the initial
+// bundle only contains the shell (Navbar + Header + Footer + Home).
+const Home = lazy(() => import("./contents/home").then((m) => ({ default: m.Home })));
+const Members = lazy(() => import("./contents/members").then((m) => ({ default: m.Members })));
+const Description = lazy(() => import("./contents/description").then((m) => ({ default: m.Description })));
+const Engineering = lazy(() => import("./contents/engineering").then((m) => ({ default: m.Engineering })));
+const Results = lazy(() => import("./contents/results").then((m) => ({ default: m.Results })));
+const Contribution = lazy(() => import("./contents/contribution").then((m) => ({ default: m.Contribution })));
+const Experiments = lazy(() => import("./contents/experiments").then((m) => ({ default: m.Experiments })));
+const Notebook = lazy(() => import("./contents/notebook").then((m) => ({ default: m.Notebook })));
+const Measurement = lazy(() => import("./contents/measurement").then((m) => ({ default: m.Measurement })));
+const AlternativePlatform = lazy(() => import("./contents/alternative-platform").then((m) => ({ default: m.AlternativePlatform })));
+const SafetyAndSecurity = lazy(() => import("./contents/safety-and-security").then((m) => ({ default: m.SafetyAndSecurity })));
+const Protocol = lazy(() => import("./contents/protocol").then((m) => ({ default: m.Protocol })));
+const Model = lazy(() => import("./contents/model").then((m) => ({ default: m.Model })));
+const Software = lazy(() => import("./contents/software").then((m) => ({ default: m.Software })));
+const Hardware = lazy(() => import("./contents/hardware").then((m) => ({ default: m.Hardware })));
+const Games = lazy(() => import("./contents/games").then((m) => ({ default: m.Games })));
+const Entrepreneurship = lazy(() => import("./contents/entrepreneurship").then((m) => ({ default: m.Entrepreneurship })));
+const HumanPractices = lazy(() => import("./contents/human-practices").then((m) => ({ default: m.HumanPractices })));
+const Education = lazy(() => import("./contents/education").then((m) => ({ default: m.Education })));
+const Inclusivity = lazy(() => import("./contents/inclusivity").then((m) => ({ default: m.Inclusivity })));
+const Sustainability = lazy(() => import("./contents/sustainability").then((m) => ({ default: m.Sustainability })));
 
 export type PageLayout = "standard" | "immersive";
 
@@ -41,14 +39,16 @@ export interface FolderNavMeta {
   sprite: "project-wetlab" | "drylab-engagement";
 }
 
-class Folder implements Base {
+export interface Folder {
+  type: "folder";
   name: string | undefined;
-  folder: Page[] | undefined;
+  folder: Page[];
   layout?: PageLayout;
   nav?: FolderNavMeta;
 }
 
-class Page implements Base {
+export interface Page {
+  type: "page";
   name: string | undefined;
   title: string | undefined;
   path: string | undefined;
@@ -58,8 +58,11 @@ class Page implements Base {
   nav?: PageNavMeta;
 }
 
-const Pages: (Page | Folder)[] = [
+export type PageNode = Folder | Page;
+
+const Pages: PageNode[] = [
   {
+    type: "page",
     name: "Home",
     title: "Home",
     path: "/",
@@ -67,6 +70,7 @@ const Pages: (Page | Folder)[] = [
     lead: "Your iGEM Journey Begins Here! We wish you a successful and rewarding season!",
   },
   {
+    type: "page",
     name: "Team",
     title: "Meet Our Team",
     path: "/team",
@@ -74,6 +78,7 @@ const Pages: (Page | Folder)[] = [
     lead: "This page is dedicated to introducing the individuals who made our iGEM project possible. Here, you'll find information about our team members, instructors, and advisors.",
   },
   {
+    type: "folder",
     name: "Project",
     layout: "immersive",
     nav: {
@@ -85,6 +90,7 @@ const Pages: (Page | Folder)[] = [
     },
     folder: [
       {
+        type: "page",
         name: "Description",
         title: "Project Description",
         path: "/description",
@@ -97,6 +103,7 @@ const Pages: (Page | Folder)[] = [
         },
       },
       {
+        type: "page",
         name: "Engineering",
         title: "Engineering Success",
         path: "/engineering",
@@ -109,6 +116,7 @@ const Pages: (Page | Folder)[] = [
         },
       },
       {
+        type: "page",
         name: "Results",
         title: "Results",
         path: "/results",
@@ -121,6 +129,7 @@ const Pages: (Page | Folder)[] = [
         },
       },
       {
+        type: "page",
         name: "Contribution",
         title: "Contribution",
         path: "/contribution",
@@ -135,6 +144,7 @@ const Pages: (Page | Folder)[] = [
     ],
   },
   {
+    type: "folder",
     name: "Wet Lab",
     layout: "immersive",
     nav: {
@@ -146,6 +156,7 @@ const Pages: (Page | Folder)[] = [
     },
     folder: [
       {
+        type: "page",
         name: "Experiments",
         title: "Experiments",
         path: "/experiments",
@@ -158,6 +169,7 @@ const Pages: (Page | Folder)[] = [
         },
       },
       {
+        type: "page",
         name: "Notebook",
         title: "Notebook",
         path: "/notebook",
@@ -170,6 +182,7 @@ const Pages: (Page | Folder)[] = [
         },
       },
       {
+        type: "page",
         name: "Measurement",
         title: "Measurement",
         path: "/measurement",
@@ -182,6 +195,7 @@ const Pages: (Page | Folder)[] = [
         },
       },
       {
+        type: "page",
         name: "Alternative Platform",
         title: "Alternative Platform",
         path: "/alternative-platform",
@@ -194,6 +208,7 @@ const Pages: (Page | Folder)[] = [
         },
       },
       {
+        type: "page",
         name: "Safety and Security",
         title: "Safety and Security",
         path: "/safety-and-security",
@@ -206,6 +221,7 @@ const Pages: (Page | Folder)[] = [
         },
       },
       {
+        type: "page",
         name: "Protocol",
         title: "Protocol Library",
         path: "/protocol",
@@ -220,6 +236,7 @@ const Pages: (Page | Folder)[] = [
     ],
   },
   {
+    type: "folder",
     name: "Dry Lab",
     layout: "immersive",
     nav: {
@@ -231,6 +248,7 @@ const Pages: (Page | Folder)[] = [
     },
     folder: [
       {
+        type: "page",
         name: "Model",
         title: "Model",
         path: "/model",
@@ -243,6 +261,7 @@ const Pages: (Page | Folder)[] = [
         },
       },
       {
+        type: "page",
         name: "Software",
         title: "Software",
         path: "/software",
@@ -255,6 +274,7 @@ const Pages: (Page | Folder)[] = [
         },
       },
       {
+        type: "page",
         name: "Hardware",
         title: "Hardware",
         path: "/hardware",
@@ -267,6 +287,7 @@ const Pages: (Page | Folder)[] = [
         },
       },
       {
+        type: "page",
         name: "Games",
         title: "Games",
         path: "/games",
@@ -281,6 +302,7 @@ const Pages: (Page | Folder)[] = [
     ],
   },
   {
+    type: "folder",
     name: "Engagement",
     layout: "immersive",
     nav: {
@@ -292,6 +314,7 @@ const Pages: (Page | Folder)[] = [
     },
     folder: [
       {
+        type: "page",
         name: "Entrepreneurship",
         title: "Entrepreneurship",
         path: "/entrepreneurship",
@@ -304,6 +327,7 @@ const Pages: (Page | Folder)[] = [
         },
       },
       {
+        type: "page",
         name: "Human Practices",
         title: "Human Practices",
         path: "/human-practices",
@@ -316,6 +340,7 @@ const Pages: (Page | Folder)[] = [
         },
       },
       {
+        type: "page",
         name: "Education",
         title: "Education",
         path: "/education",
@@ -328,6 +353,7 @@ const Pages: (Page | Folder)[] = [
         },
       },
       {
+        type: "page",
         name: "Inclusivity",
         title: "Diversity and Inclusion",
         path: "/inclusivity",
@@ -340,6 +366,7 @@ const Pages: (Page | Folder)[] = [
         },
       },
       {
+        type: "page",
         name: "Sustainability",
         title: "Sustainability",
         path: "/sustainability",

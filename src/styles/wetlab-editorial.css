@@ -329,6 +329,13 @@
   border-bottom: 1px solid var(--wet-line-strong);
 }
 
+/* Engagement nav has 5 entries, not 6: give it its own column count so it
+   fills the track edge to edge instead of leaving an empty sixth column
+   that shifts the whole bar off-center. */
+.wiki-page.wiki-page--manuscript .engagement-route .wet-lab-route__track {
+  grid-template-columns: repeat(5, 1fr);
+}
+
 .wiki-page.wiki-page--manuscript .wet-lab-route__track::before,
 .wiki-page.wiki-page--manuscript .wet-lab-route__track::after {
   display: none;
@@ -712,7 +719,6 @@
 }
 
 .wiki-page.wiki-page--manuscript .wiki-section__summary {
-  max-width: 720px;
   margin: 24px 0 0;
   color: var(--wet-muted);
   font-family: var(--font-editorial);
@@ -733,7 +739,6 @@
 }
 
 .wiki-page.wiki-page--manuscript .wiki-prose {
-  max-width: 720px;
   margin-bottom: 40px;
 }
 
@@ -2494,6 +2499,10 @@
   }
 
   .wiki-page.wiki-page--manuscript .wet-lab-route__track {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .wiki-page.wiki-page--manuscript .engagement-route .wet-lab-route__track {
     grid-template-columns: repeat(2, 1fr);
   }
 

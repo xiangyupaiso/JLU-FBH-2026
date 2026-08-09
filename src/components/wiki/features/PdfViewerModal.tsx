@@ -8,6 +8,7 @@ import { Document, Page, pdfjs } from "react-pdf";
 import PdfWorker from "pdfjs-dist/build/pdf.worker.min.mjs?worker";
 import "react-pdf/dist/Page/AnnotationLayer.css";
 import "react-pdf/dist/Page/TextLayer.css";
+import "../../../styles/protocol-bookcase.css";
 import type { ProtocolManual } from "../../../data/protocolPages";
 
 if (!pdfjs.GlobalWorkerOptions.workerPort) {

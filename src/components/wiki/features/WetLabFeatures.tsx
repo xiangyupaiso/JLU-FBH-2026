@@ -90,23 +90,6 @@ export function FiveGateMap({ compact = false }: { compact?: boolean }) {
   );
 }
 
-export function WetLabSignature({
-  variant,
-}: {
-  variant:
-    | "experiments"
-    | "notebook"
-    | "measurement"
-    | "platform"
-    | "safety";
-}) {
-  if (variant === "experiments") return <FiveGateMap compact />;
-  if (variant === "notebook") return <NotebookTrace compact />;
-  if (variant === "measurement") return <MeasurementWindow compact />;
-  if (variant === "platform") return <PlatformOrbit compact />;
-  return <SafetyBoundary compact />;
-}
-
 export function NotebookTrace({ compact = false }: { compact?: boolean }) {
   const records = [
     ["12 Mar", "NB–01", "Construct acceptance", "design", "recorded"],

@@ -1,12 +1,9 @@
 import { useEffect, useRef, useState } from "react";
+import { clamp } from "../utils";
 
 const MAGNET_PADDING = 80;
 const MAGNET_STRENGTH = 5;
 const MAX_MAGNET_OFFSET = 12;
-
-function clamp(value: number, min: number, max: number) {
-  return Math.min(max, Math.max(min, value));
-}
 
 export function BackToTop() {
   const [isVisible, setIsVisible] = useState(false);

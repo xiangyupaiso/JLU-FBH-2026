@@ -414,7 +414,6 @@
 }
 
 .wiki-page.wiki-page--dry-lab .wiki-section__summary {
-  max-width: 660px;
   margin-top: 20px;
   color: #394550;
   font-size: clamp(17px, 1.4vw, 20px);
@@ -436,7 +435,6 @@
 }
 
 .wiki-page.wiki-page--dry-lab .wiki-prose {
-  max-width: 680px;
   gap: 18px;
   margin-top: 34px;
 }
