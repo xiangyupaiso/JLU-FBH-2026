@@ -339,10 +339,6 @@ export const sstqnSection = {
     description: "SST-QN SDG 模型构建方法论与完整评分矩阵",
     assetKey: "sstQnModelConstruction09",
   },
-  assetKeys: {
-    classification: "sstQnClassification04",
-    scoreMatrix: "sstQnScoreMatrix05",
-  } as Record<"classification" | "scoreMatrix", SustainabilityAssetKey>,
 } as const;
 
 /* ----------------------------------------------------------------------------

@@ -50,27 +50,6 @@ export const sustainabilityAssets = {
     alt: "SCALE Framework 利益相关者动态改进机制流程图",
     section: "Overview — SCALE Framework 流程图",
   },
-  sstQnClassification04: {
-    kind: "image",
-    fileName: "sustainability-sst-qn-classification-04.png",
-    localSourcePath: "文案集/Human Practice/图片和附件/image 3.png",
-    targetPath: "src/assets/wiki/sustainability-sst-qn-classification-04.png",
-    uploadUrl: null,
-    alt: "SST-QN 四类 SDG 相互作用分类示意图",
-    section:
-      "SST-QN 章节 — Core / Exploratory / Conditional / Excluded 分类图",
-    usageNote: "仅限 SST-QN 章节分类体系部分使用，不可用于 Overview",
-  },
-  sstQnScoreMatrix05: {
-    kind: "image",
-    fileName: "sustainability-sst-qn-score-matrix-05.png",
-    localSourcePath: "文案集/Human Practice/图片和附件/image 1.png",
-    targetPath: "src/assets/wiki/sustainability-sst-qn-score-matrix-05.png",
-    uploadUrl: null,
-    alt: "SDG 间有向相互作用评分矩阵热力图",
-    section:
-      "SST-QN 章节 — Evidence-calibrated Directed Interaction Score 矩阵图",
-  },
   frameworkSetDevelopGrow06: {
     kind: "image",
     fileName: "sustainability-framework-set-develop-grow-06.png",
