@@ -1,5 +1,7 @@
+import { useState } from "react";
 import type { StakeholderProfile } from "../../../data/sustainabilityData";
 import "../../../styles/sustainability-page.css";
+import { PatientChatDialog } from "./PatientChatDialog";
 
 const FIELD_DEFINITIONS = [
   { key: "relevantStakeholder", label: "Relevant Stakeholder" },
@@ -14,6 +16,8 @@ export function StakeholderProfileCard({
 }: {
   profile: StakeholderProfile;
 }) {
+  const [open, setOpen] = useState(false);
+
   return (
     <article className="sust-profile-card">
       <header className="sust-profile-card__head">
@@ -41,13 +45,18 @@ export function StakeholderProfileCard({
       <p className="sust-profile-card__sdg">{profile.sdgAddressed}</p>
 
       {profile.detailedInterview.length > 0 && (
-        <details className="sust-profile-card__more">
+        <details
+          className="sust-profile-card__more"
+          open={open}
+          onToggle={(e) => setOpen(e.currentTarget.open)}
+        >
           <summary>
             <span>Click more · 详细访谈记录</span>
             <span className="sust-profile-card__more-icon" aria-hidden="true" />
           </summary>
           <div className="sust-profile-card__more-body">
             <div className="sust-profile-card__more-inner">
+              {open && profile.id === "tnbc-patients" && <PatientChatDialog />}
               {profile.detailedInterview.map((paragraph, index) => (
                 <p key={index}>{paragraph}</p>
               ))}

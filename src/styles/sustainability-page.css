@@ -227,6 +227,127 @@
 }
 
 /* ---------------------------------------------------------------------------
+ * PatientChatDialog — message-group chat inside the tnbc-patients profile card
+ *   外层 chat-container 卡片 + 每位患者一个分组（1 头像 + 1 用户名 + 多气泡）
+ * ------------------------------------------------------------------------- */
+
+.chat-container {
+  background-color: #f2ede4;
+  border: 1px solid #e2dacd;
+  border-radius: 16px;
+  padding: 24px;
+  margin: 16px 0 24px;
+}
+
+.chat-container__list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.chat-group {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.chat-group--right {
+  flex-direction: row-reverse;
+}
+
+.chat-avatar {
+  flex: 0 0 auto;
+  width: 36px;
+  height: 36px;
+  margin-top: 24px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: #754356;
+  color: #ffffff;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  box-shadow: 0 1px 2px rgba(27, 23, 25, 0.12);
+}
+
+.chat-group__col {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+  align-items: flex-start;
+}
+
+.chat-group--right .chat-group__col {
+  align-items: flex-end;
+}
+
+.chat-group__name {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.5;
+  color: #8c7d70;
+  margin-bottom: 6px;
+  padding: 0 2px;
+}
+
+.chat-container .chat-bubble {
+  margin: 0;
+  padding: 12px 18px;
+  border-radius: 14px;
+  font-size: 13px;
+  line-height: 1.6;
+  color: #333333;
+  max-width: 80%;
+  word-break: break-word;
+}
+
+.chat-group--left .chat-bubble {
+  background: #ffffff;
+  border: 1px solid #e5e0d8;
+}
+
+.chat-group--right .chat-bubble {
+  background: #f4ecef;
+  border: 1px solid #ebd3dc;
+}
+
+.chat-container .chat-bubble + .chat-bubble {
+  margin-top: 8px;
+}
+
+/* 聊天气泡逐条递进淡入动画 */
+@keyframes chatReveal {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.chat-avatar,
+.chat-group__name,
+.chat-bubble {
+  opacity: 0;
+  animation: chatReveal 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .chat-avatar,
+  .chat-group__name,
+  .chat-bubble {
+    opacity: 1;
+    animation: none;
+  }
+}
+
+/* ---------------------------------------------------------------------------
  * ExpertFeedbackGrid
  * ------------------------------------------------------------------------- */
 

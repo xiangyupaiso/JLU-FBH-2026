@@ -1,4 +1,5 @@
 export { StakeholderProfileCard } from "./StakeholderProfileCard";
+export { PatientChatDialog } from "./PatientChatDialog";
 export { ExpertFeedbackGrid } from "./ExpertFeedbackGrid";
 export { ProblemCardGroup } from "./ProblemCardGroup";
 export { ConsequencesDimensionCard } from "./ConsequencesDimensionCard";

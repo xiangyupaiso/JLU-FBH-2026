@@ -36,6 +36,7 @@ import {
 import { sustainabilityImages } from "../data/sustainabilityImages";
 import { sustainabilityPage } from "../data/sustainabilityPage";
 import {
+  sdg3Section,
   sstqnSection,
   stakeholderProfiles,
   sustainabilityOverview,
@@ -202,7 +203,22 @@ export function Sustainability() {
                   key={profile.id}
                   profile={profile}
                 />
-              ))}
+              )).flatMap((el, index) =>
+                index === 0 && sdg3Section.stakeholderTransition.length > 0
+                  ? [
+                      el,
+                      <div
+                        key="stakeholder-transition"
+                        className="wiki-prose"
+                        data-wiki-reveal
+                      >
+                        {sdg3Section.stakeholderTransition.map((p) => (
+                          <p key={p}>{p}</p>
+                        ))}
+                      </div>,
+                    ]
+                  : [el],
+              )}
             </>
           ),
           problems: <ProblemCardGroup />,

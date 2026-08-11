@@ -70,16 +70,6 @@ export const sustainabilityAssets = {
     alt: "6 个领域 43 名利益相关者的参与总览",
     section: "SET → Addressing Core Challenges — 利益相关者总览图",
   },
-  sdg3StakeholderEngagement08: {
-    kind: "image",
-    fileName: "sustainability-sdg3-stakeholder-engagement-08.png",
-    localSourcePath: "文案集/Human Practice/图片和附件/filename.png",
-    targetPath:
-      "src/assets/wiki/sustainability-sdg3-stakeholder-engagement-08.png",
-    uploadUrl: null,
-    alt: "CirCure 团队与临床医生和患者进行利益相关者交流的场景",
-    section: "SDG 3 → S — Stakeholder Insights — 交流照片",
-  },
   sstQnModelConstruction09: {
     kind: "pdf",
     fileName: "sustainability-sst-qn-model-construction.pdf",
