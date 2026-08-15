@@ -474,7 +474,6 @@
 }
 
 .wiki-page.wiki-page--dry-lab.wiki-page--dry-reading .wiki-section__summary {
-  max-width: 720px;
   margin: 24px 0 0;
   color: var(--dry-reading-muted);
   font-family: var(--font-editorial);
@@ -491,7 +490,6 @@
 }
 
 .wiki-page.wiki-page--dry-lab.wiki-page--dry-reading .wiki-prose {
-  max-width: 720px;
   margin-bottom: 40px;
 }
 

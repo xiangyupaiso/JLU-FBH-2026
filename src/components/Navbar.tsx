@@ -29,7 +29,7 @@ const SPRITES: Record<FolderNavMeta["sprite"], string> = {
 };
 
 const DROPDOWNS: NavDropdown[] = Pages.flatMap((item) => {
-  if (!("folder" in item) || !item.folder || !item.nav || !item.name) return [];
+  if (item.type !== "folder" || !item.nav || !item.name) return [];
 
   const cards = item.folder.flatMap((page): NavCard[] => {
     if (!page.name || !page.path || !page.nav) return [];

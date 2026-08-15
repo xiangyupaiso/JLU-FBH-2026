@@ -1,22 +1,54 @@
-import { useMemo, useRef, useState, type ReactNode } from "react";
+import {
+  createContext,
+  useContext,
+  useMemo,
+  useRef,
+  useState,
+  type ReactNode,
+} from "react";
 import { Link } from "react-router-dom";
 import { useWikiPageMotion } from "../../hooks/useWikiPageMotion";
-import type { WikiItem, WikiPageContent, WikiSection } from "./wikiPageTypes";
+import type {
+  WikiContentBlock,
+  WikiItem,
+  WikiPageContent,
+  WikiSection,
+} from "./wikiPageTypes";
 import { EngagementHeroVisual } from "./EngagementHeroVisual";
-import { EngagementRouteNav } from "./EngagementRouteNav";
+import { SubNav } from "./SubNav";
+import { SUB_NAV_CONFIG } from "./subNavConfig";
 import { WikiLineSidebar } from "./WikiLineSidebar";
 import { WikiNextRecord } from "./WikiNextRecord";
 import { WetLabHeroVisual } from "./WetLabHeroVisual";
-import { WetLabRouteNav } from "./WetLabRouteNav";
 import "../../styles/wiki-rebuild.css";
 import "../../styles/wetlab-editorial.css";
 import "../../styles/engagement-hero.css";
 
 type FeatureMap = Partial<Record<string, ReactNode>>;
 
+interface WikiScrollState {
+  activeSection: string;
+  activeSubsection: string;
+}
+
+/**
+ * Scroll-spy state for feature components mounted inside `blocks`: lets a
+ * feature (e.g. the SCALE chain) react to the subsection currently in view.
+ */
+const WikiPageScrollContext = createContext<WikiScrollState>({
+  activeSection: "",
+  activeSubsection: "",
+});
+
+// eslint-disable-next-line react-refresh/only-export-components
+export function useWikiPageScroll() {
+  return useContext(WikiPageScrollContext);
+}
+
 interface WikiPageProps {
   content: WikiPageContent;
-  heroVisual: ReactNode;
+  /** Only used for the "project" category; wet-lab / engagement auto-resolve. */
+  heroVisual?: ReactNode;
   features?: FeatureMap;
   pageClassName?: string;
 }
@@ -183,15 +215,125 @@ function ItemCollection({
   );
 }
 
+function WikiBlock({
+  block,
+  features,
+  sectionId,
+  manuscript = false,
+}: {
+  block: WikiContentBlock;
+  features: FeatureMap;
+  sectionId: string;
+  manuscript?: boolean;
+}) {
+  switch (block.type) {
+    case "prose":
+      return (
+        <div className="wiki-prose" data-wiki-reveal>
+          {block.paragraphs.map((paragraph) => (
+            <p key={paragraph}>{paragraph}</p>
+          ))}
+        </div>
+      );
+    case "figure":
+      return (
+        <figure className="wiki-figure" data-wiki-reveal>
+          <img src={block.src} alt={block.alt} />
+          {block.caption ? <figcaption>{block.caption}</figcaption> : null}
+        </figure>
+      );
+    case "callout":
+      return (
+        <aside
+          className={`wiki-callout wiki-callout--${block.tone ?? "neutral"}`}
+          data-wiki-reveal
+        >
+          {block.label ? (
+            <span className="wiki-callout__label">{block.label}</span>
+          ) : null}
+          <p>{block.body}</p>
+        </aside>
+      );
+    case "subheading":
+      return (
+        <h3
+          className="wiki-subheading"
+          id={block.id}
+          data-wiki-outline-anchor
+          data-wiki-outline-parent={sectionId}
+          data-wiki-reveal
+        >
+          {block.kicker ? (
+            <span className="wiki-subheading__kicker">{block.kicker}</span>
+          ) : null}
+          <span className="wiki-subheading__title">{block.title}</span>
+        </h3>
+      );
+    case "feature":
+      return (
+        <div className="wiki-feature" data-wiki-reveal>
+          {features[block.key]}
+        </div>
+      );
+    case "note":
+      return (
+        <aside className="wiki-boundary" data-wiki-reveal>
+          {!manuscript ? <span>{block.label}</span> : null}
+          <p>{block.body}</p>
+        </aside>
+      );
+    case "epigraph":
+      return (
+        <figure className="wiki-epigraph" data-wiki-reveal>
+          <blockquote>“{block.quote}”</blockquote>
+          <p className="wiki-epigraph__zh">{block.translationZh}</p>
+          <figcaption>
+            {block.attribution} · {block.attributionRole}
+          </figcaption>
+        </figure>
+      );
+    case "split":
+      return (
+        <div className="wiki-blocks--split" id={block.id}>
+          <div className="wiki-blocks--split__prose">
+            {block.prose.map((nested, index) => (
+              <WikiBlock
+                key={`${block.id}-prose-${index}`}
+                block={nested}
+                features={features}
+                sectionId={sectionId}
+                manuscript={manuscript}
+              />
+            ))}
+          </div>
+          <div className="wiki-blocks--split__aside">
+            <WikiBlock
+              block={block.aside}
+              features={features}
+              sectionId={sectionId}
+              manuscript={manuscript}
+            />
+          </div>
+        </div>
+      );
+    default:
+      return null;
+  }
+}
+
 function WikiSectionBlock({
   section,
   feature,
+  features,
   manuscript = false,
 }: {
   section: WikiSection;
   feature?: ReactNode;
+  features: FeatureMap;
   manuscript?: boolean;
 }) {
+  const blocks = section.blocks?.length ? section.blocks : null;
+
   return (
     <section
       className="wiki-section"
@@ -210,27 +352,43 @@ function WikiSectionBlock({
         </div>
       </header>
 
-      {section.body?.length ? (
-        <div className="wiki-prose" data-wiki-reveal>
-          {section.body.map((paragraph) => (
-            <p key={paragraph}>{paragraph}</p>
+      {blocks ? (
+        <div className="wiki-blocks">
+          {blocks.map((block, index) => (
+            <WikiBlock
+              key={`${section.id}-${block.type}-${index}`}
+              block={block}
+              features={features}
+              sectionId={section.id}
+              manuscript={manuscript}
+            />
           ))}
         </div>
-      ) : null}
+      ) : (
+        <>
+          {section.body?.length ? (
+            <div className="wiki-prose" data-wiki-reveal>
+              {section.body.map((paragraph) => (
+                <p key={paragraph}>{paragraph}</p>
+              ))}
+            </div>
+          ) : null}
 
-      {feature ? (
-        <div className="wiki-feature" data-wiki-reveal>
-          {feature}
-        </div>
-      ) : null}
-      <ItemCollection section={section} manuscript={manuscript} />
+          {feature ? (
+            <div className="wiki-feature" data-wiki-reveal>
+              {feature}
+            </div>
+          ) : null}
+          <ItemCollection section={section} manuscript={manuscript} />
 
-      {section.note ? (
-        <aside className="wiki-boundary" data-wiki-reveal>
-          {!manuscript ? <span>{section.note.label}</span> : null}
-          <p>{section.note.body}</p>
-        </aside>
-      ) : null}
+          {section.note ? (
+            <aside className="wiki-boundary" data-wiki-reveal>
+              {!manuscript ? <span>{section.note.label}</span> : null}
+              <p>{section.note.body}</p>
+            </aside>
+          ) : null}
+        </>
+      )}
     </section>
   );
 }
@@ -245,15 +403,46 @@ export function WikiPage({
   const isWetLab = content.category === "wet-lab";
   const isEngagement = content.category === "engagement";
   const isManuscript = isWetLab || isEngagement;
+  // Sustainability ships as category "report" but belongs to Engagement.
+  const categoryKey =
+    (content.category as string) === "report"
+      ? "engagement"
+      : content.category;
+  const subNavConfig = SUB_NAV_CONFIG[categoryKey];
   const sectionIds = useMemo(
     () => content.sections.map((section) => section.id),
     [content.sections],
   );
-  const { activeSection } = useWikiPageMotion(
+  const { activeSection, activeSubsection } = useWikiPageMotion(
     rootRef,
     sectionIds,
     content.route,
   );
+  const scrollContextValue = useMemo(
+    () => ({ activeSection, activeSubsection }),
+    [activeSection, activeSubsection],
+  );
+  const sidebarItems = content.sections.map((section) => {
+    const subheadings = section.blocks
+      ?.filter(
+        (block): block is Extract<WikiContentBlock, { type: "subheading" }> =>
+          block.type === "subheading",
+      )
+      .map((block) => ({
+        id: block.id,
+        index: block.index,
+        label: block.title,
+      }));
+    return {
+      id: section.id,
+      index: section.index,
+      label:
+        section.navLabel ??
+        (isEngagement ? section.kicker : section.title),
+      meta: section.kicker,
+      children: subheadings?.length ? subheadings : undefined,
+    };
+  });
   const resolvedHeroVisual = isWetLab ? (
     <WetLabHeroVisual route={content.route} label={content.visualLabel} />
   ) : isEngagement ? (
@@ -302,10 +491,13 @@ export function WikiPage({
         ) : null}
       </header>
 
-      {isWetLab ? (
-        <WetLabRouteNav activePath={content.route} />
-      ) : isEngagement ? (
-        <EngagementRouteNav activePath={content.route} />
+      {subNavConfig ? (
+        <SubNav
+          activePath={content.route}
+          ariaLabel={subNavConfig.ariaLabel}
+          items={subNavConfig.items}
+          themeColor={subNavConfig.themeColor}
+        />
       ) : null}
 
       {!isManuscript ? (
@@ -324,28 +516,25 @@ export function WikiPage({
       <div className="wiki-record">
         <WikiLineSidebar
           activeId={activeSection}
-          items={content.sections.map((section) => ({
-            id: section.id,
-            index: section.index,
-            label:
-              section.navLabel ??
-              (isEngagement ? section.kicker : section.title),
-            meta: section.kicker,
-          }))}
+          activeChildId={activeSubsection}
+          items={sidebarItems}
           links={content.links}
           minimal={isManuscript}
         />
 
-        <article className="wiki-article">
-          {content.sections.map((section) => (
-            <WikiSectionBlock
-              key={section.id}
-              section={section}
-              feature={features[section.id]}
-              manuscript={isManuscript}
-            />
-          ))}
-        </article>
+        <WikiPageScrollContext.Provider value={scrollContextValue}>
+          <article className="wiki-article">
+            {content.sections.map((section) => (
+              <WikiSectionBlock
+                key={section.id}
+                section={section}
+                feature={features[section.id]}
+                features={features}
+                manuscript={isManuscript}
+              />
+            ))}
+          </article>
+        </WikiPageScrollContext.Provider>
       </div>
 
       {isManuscript ? (

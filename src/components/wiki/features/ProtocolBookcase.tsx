@@ -1,11 +1,14 @@
-import { Fragment, useMemo, useState } from "react";
+import { Fragment, Suspense, lazy, useMemo, useState } from "react";
 import {
   protocolCategoryLabels,
   protocolManuals,
   type ProtocolCategory,
   type ProtocolManual,
 } from "../../../data/protocolPages";
-import { PdfViewerModal } from "./PdfViewerModal";
+
+const PdfViewerModal = lazy(() =>
+  import("./PdfViewerModal").then((m) => ({ default: m.PdfViewerModal })),
+);
 
 type CategoryFilter = "all" | ProtocolCategory;
 
@@ -139,10 +142,12 @@ export function ProtocolBookcase() {
         ))}
       </div>
 
-      <PdfViewerModal
-        manual={activeManual}
-        onClose={() => setActiveManual(null)}
-      />
+      <Suspense fallback={null}>
+        <PdfViewerModal
+          manual={activeManual}
+          onClose={() => setActiveManual(null)}
+        />
+      </Suspense>
     </div>
   );
 }

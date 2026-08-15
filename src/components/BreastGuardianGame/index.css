@@ -36,3 +36,99 @@
   padding: 0 !important;
   background: var(--game-bg) !important;
 }
+
+/* Host div that receives the iframe from the engine. Sits behind the overlay. */
+.breast-guardian-game-host {
+  position: absolute !important;
+  inset: 0 !important;
+}
+
+/* ---- Loading overlay (scoped, isolated by the root's `isolation: isolate`) ---- */
+.bg-loading {
+  position: absolute !important;
+  inset: 0 !important;
+  z-index: 10 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 18px !important;
+  background: var(--game-bg, #fdf2f8) !important;
+  opacity: 1 !important;
+  visibility: visible;
+  transition:
+    opacity 300ms ease,
+    visibility 0s 0s;
+}
+
+.bg-loading.is-hidden {
+  opacity: 0 !important;
+  visibility: hidden;
+  pointer-events: none !important;
+  transition:
+    opacity 300ms ease,
+    visibility 0s 300ms;
+}
+
+.bg-loading__sprite {
+  width: 130px !important;
+  height: auto !important;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+  animation: bg-sprite-in 400ms ease !important;
+}
+
+@keyframes bg-sprite-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.bg-loading__text {
+  font-size: 15px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.08em !important;
+  color: #6b3d4f !important;
+}
+
+.bg-loading__dots {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 3px !important;
+  margin-left: 2px !important;
+}
+
+.bg-loading__dots i {
+  display: inline-block !important;
+  width: 5px !important;
+  height: 5px !important;
+  border-radius: 50% !important;
+  background: #c96e8b !important;
+  animation: bg-dot-bounce 1.2s ease-in-out infinite !important;
+}
+
+.bg-loading__dots i:nth-child(2) {
+  animation-delay: 0.2s !important;
+}
+
+.bg-loading__dots i:nth-child(3) {
+  animation-delay: 0.4s !important;
+}
+
+@keyframes bg-dot-bounce {
+  0%,
+  80%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.4;
+  }
+  40% {
+    transform: translateY(-6px);
+    opacity: 1;
+  }
+}

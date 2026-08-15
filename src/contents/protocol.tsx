@@ -1,7 +1,8 @@
 import { useMemo, useRef } from "react";
 import { ProtocolBookcase } from "../components/wiki/features/ProtocolBookcase";
 import { WikiNextRecord } from "../components/wiki/WikiNextRecord";
-import { WetLabRouteNav } from "../components/wiki/WetLabRouteNav";
+import { SubNav } from "../components/wiki/SubNav";
+import { SUB_NAV_CONFIG } from "../components/wiki/subNavConfig";
 import { useWikiPageMotion } from "../hooks/useWikiPageMotion";
 import protocolHeroBg from "../assets/wiki/protocol-hero-bg.png";
 import "../styles/wiki-rebuild.css";
@@ -48,7 +49,7 @@ export function Protocol() {
         </div>
       </header>
 
-      <WetLabRouteNav activePath="/protocol" />
+      <SubNav activePath="/protocol" {...SUB_NAV_CONFIG["wet-lab"]} />
 
       <section
         className="protocol-library"

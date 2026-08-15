@@ -19,19 +19,20 @@ export type ProtocolCategory = "dna" | "cell" | "animal";
 export interface ProtocolManual {
   id: string;
   title: string;
-  category: ProtocolCategory;
+  category: ProtocolCategory | "report";
   description: string;
   pdfUrl: string;
   assetName: string;
-  documentType: "SOP";
+  documentType: "SOP" | "Report";
   addedAt: string;
   pages: number;
 }
 
-export const protocolCategoryLabels: Record<ProtocolCategory, string> = {
+export const protocolCategoryLabels: Record<ProtocolCategory | "report", string> = {
   dna: "DNA",
   cell: "Cell",
   animal: "Animal & Other",
+  report: "Report",
 };
 
 export const protocolManuals: ProtocolManual[] = [

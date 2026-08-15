@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { Link } from "react-router-dom";
 import "./WikiNextRecord.css";
 
@@ -7,7 +8,11 @@ interface WikiNextRecordProps {
   title: string;
 }
 
-export function WikiNextRecord({ path, label, title }: WikiNextRecordProps) {
+export const WikiNextRecord = memo(function WikiNextRecord({
+  path,
+  label,
+  title,
+}: WikiNextRecordProps) {
   return (
     <section className="wiki-next wiki-next--record" data-wiki-reveal>
       <div className="wiki-next__copy">
@@ -32,4 +37,4 @@ export function WikiNextRecord({ path, label, title }: WikiNextRecordProps) {
       </Link>
     </section>
   );
-}
+});

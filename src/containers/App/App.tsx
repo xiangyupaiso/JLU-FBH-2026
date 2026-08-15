@@ -7,19 +7,35 @@ import "../../styles/circure-back-to-top.css"; // global floating return-to-top 
 import "../../styles/wiki-disclosures.css"; // shared theme-aware accordion language
 import { Route, Routes, useLocation } from "react-router-dom";
 import { getPathMapping, stringToSlug } from "../../utils";
-import { useEffect, useLayoutEffect } from "react";
+import { Suspense, lazy, useEffect, useLayoutEffect } from "react";
 import { Navbar } from "../../components/Navbar";
 import { Header } from "../../components/Header";
 import { NotFound } from "../../components/NotFound";
 import { Footer } from "../../components/Footer";
 import { BackToTop } from "../../components/BackToTop";
-import { Home } from "../../contents";
+
+const Home = lazy(() =>
+  import("../../contents/home").then((m) => ({ default: m.Home })),
+);
+
+// pages is a static import — compute the route map once at module load instead
+// of rebuilding it on every App render.
+const pathMapping = getPathMapping();
 
 const App = () => {
-  const pathMapping = getPathMapping();
   const { pathname } = useLocation();
-  const teamSlug = stringToSlug(import.meta.env.VITE_TEAM_NAME);
-  const currentPath = pathname.split(`/${teamSlug}`).pop() || "/";
+  const teamName = import.meta.env.VITE_TEAM_NAME;
+  // ponytail: missing .env should not silently 404 every route — fall back to
+  // raw pathname so the app stays navigable while the dev environment is fixed.
+  if (!teamName && import.meta.env.DEV) {
+    console.warn(
+      "[CirCure] VITE_TEAM_NAME is missing. Copy .env.example to .env and set it. Routing falls back to raw pathname.",
+    );
+  }
+  const teamSlug = stringToSlug(teamName);
+  const currentPath = teamSlug
+    ? pathname.split(`/${teamSlug}`).pop() || "/"
+    : pathname;
 
   // Route changes are page transitions, not in-page navigation. Reset the
   // shared header and viewport before the new page paints so neither the
@@ -81,7 +97,14 @@ const App = () => {
             chapters can render edge-to-edge with their own scroll-driven
             geometry. Navbar stays on top; Footer still renders below to
             keep the mandatory license + gitlab.igem.org block visible. */}
-        <Route path="/" element={<Home />} />
+        <Route
+          path="/"
+          element={
+            <Suspense fallback={null}>
+              <Home />
+            </Suspense>
+          }
+        />
         {Object.entries(pathMapping)
           .filter(([path]) => path !== "/")
           .map(([path, { title, lead, layout, component: Component }]) => (
@@ -90,12 +113,16 @@ const App = () => {
               path={path}
               element={
                 layout === "immersive" ? (
-                  <Component />
+                  <Suspense fallback={null}>
+                    <Component />
+                  </Suspense>
                 ) : (
                   <>
                     <Header title={title || ""} lead={lead || ""} />
                     <div className="container">
-                      <Component />
+                      <Suspense fallback={null}>
+                        <Component />
+                      </Suspense>
                     </div>
                   </>
                 )
