@@ -5,10 +5,12 @@ import {
   CountUpStat,
   ExpertFeedbackGrid,
   ImpactFrameworkDiagram,
+  PdfToolList,
   ProblemCardGroup,
   SCALEProgressChain,
   SDGInteractiveCard,
   SdgBoundaryMatrix,
+  SdgDimensionChord,
   SdgImpactRadar,
   SdgInteractionHeatmap,
   SSTQNClassificationMatrix,
@@ -36,22 +38,69 @@ import {
 import { sustainabilityImages } from "../data/sustainabilityImages";
 import { sustainabilityPage } from "../data/sustainabilityPage";
 import {
+  sdg3EvidenceStats,
+  sdg3LegacyTools,
   sdg3Section,
   sstqnSection,
   stakeholderProfiles,
   sustainabilityOverview,
   sustainabilityStats,
+  type StakeholderProfile,
+  type StakeholderVariant,
+  type SustainabilityStat,
 } from "../data/sustainabilityData";
+import { sdg9Section } from "../data/sustainabilitySdg9";
+import { sdg12Section } from "../data/sustainabilitySdg12";
+import { growSection } from "../data/sustainabilityGrow";
 import "../styles/sustainability-page.css";
+
+/** 页面内所有利益相关者卡片（按 DOM 顺序），用于生成 INT-/FIELD- 序号。 */
+const ALL_STAKEHOLDERS: ReadonlyArray<StakeholderProfile> = [
+  ...stakeholderProfiles,
+  ...(sdg9Section.stakeholders ?? []),
+  ...(sdg12Section.stakeholders ?? []),
+  ...(growSection.stakeholders ?? []),
+];
+
+const STAKEHOLDER_ORDINALS: ReadonlyMap<string, number> = (() => {
+  const counters: Record<StakeholderVariant, number> = {
+    interview: 0,
+    field: 0,
+  };
+  const map = new Map<string, number>();
+  for (const profile of ALL_STAKEHOLDERS) {
+    counters[profile.variant] += 1;
+    map.set(profile.id, counters[profile.variant]);
+  }
+  return map;
+})();
+
+const stakeholderOrdinal = (id: string) =>
+  STAKEHOLDER_ORDINALS.get(id) ?? 1;
+
+/** 工具卡（TOOL-0X）按 DOM 顺序的起始序号。 */
+const SDG3_TOOL_COUNT = sdg3LegacyTools.length;
+const SDG9_TOOL_COUNT = sdg9Section.legacyTools?.length ?? 0;
+const SDG9_TOOL_START = SDG3_TOOL_COUNT + 1;
+const SDG12_TOOL_START = SDG3_TOOL_COUNT + SDG9_TOOL_COUNT + 1;
 
 /** SDG 3 章节内的子锚点；SCALE 链随滚动高亮当前所在要素。 */
 const SCALE_ANCHOR_IDS = [
-  "sdg3-health",
   "sdg3-stakeholder",
   "sdg3-consequences",
   "sdg3-alignment",
   "sdg3-legacy",
+  "sdg3-evidence",
 ];
+
+const scaleAnchorIds = (prefix: string) =>
+  [
+    `${prefix}-stakeholder`,
+    `${prefix}-consequences`,
+    `${prefix}-alignment`,
+    `${prefix}-legacy`,
+    `${prefix}-evidence`,
+  ] as const;
 
 const FRAMEWORK_INTRO_LINKS: Record<string, string> = {
   "sst-qn": "#sst-qn",
@@ -149,13 +198,41 @@ function FrameworkIntroGrid() {
   );
 }
 
-/** SCALE 链：随侧边栏滚动间谍高亮当前所在 SDG 3 要素。 */
-function ScaleChainWithSpy() {
+/** SCALE 链：随侧边栏滚动间谍高亮当前所在 SDG 要素。 */
+function ScaleChainWithSpy({ anchorIds }: { anchorIds: ReadonlyArray<string> }) {
   const { activeSubsection } = useWikiPageScroll();
-  const activeId = SCALE_ANCHOR_IDS.includes(activeSubsection)
+  const activeId = anchorIds.includes(activeSubsection)
     ? activeSubsection
-    : "sdg3-stakeholder";
-  return <SCALEProgressChain activeId={activeId} />;
+    : anchorIds[0];
+  return <SCALEProgressChain activeId={activeId} anchorIds={anchorIds} />;
+}
+
+function StatsGrid({ stats }: { stats: ReadonlyArray<SustainabilityStat> }) {
+  return (
+    <div className="sust-stats-grid">
+      {stats.map((stat, index) => (
+        <CountUpStat key={stat.id} stat={stat} delay={index * 80} />
+      ))}
+    </div>
+  );
+}
+
+function StakeholderGrid({
+  profiles,
+}: {
+  profiles: ReadonlyArray<StakeholderProfile>;
+}) {
+  return (
+    <div className="sust-stake-grid">
+      {profiles.map((profile) => (
+        <StakeholderProfileCard
+          key={profile.id}
+          profile={profile}
+          ordinal={stakeholderOrdinal(profile.id)}
+        />
+      ))}
+    </div>
+  );
 }
 
 export function Sustainability() {
@@ -177,6 +254,7 @@ export function Sustainability() {
           "sdg-interaction-heatmap": <SdgInteractionHeatmap />,
           "sdg-boundary-matrix": <SdgBoundaryMatrix />,
           "framework-intros": <FrameworkIntroGrid />,
+          "sdg-dimension-chord": <SdgDimensionChord />,
           "sstqn-matrix": <SSTQNClassificationMatrix />,
           "sstqn-score-flow": <SSTQNScoreProcess />,
           "pdf-sst-qn": (
@@ -188,42 +266,86 @@ export function Sustainability() {
             </Suspense>
           ),
           "framework-diagram": <ImpactFrameworkDiagram />,
-          "scale-chain": <ScaleChainWithSpy />,
-          stats: (
-            <div className="sust-stats-grid">
-              {sustainabilityStats.map((stat) => (
-                <CountUpStat key={stat.id} stat={stat} />
-              ))}
-            </div>
-          ),
+          "scale-chain": <ScaleChainWithSpy anchorIds={SCALE_ANCHOR_IDS} />,
+          stats: <StatsGrid stats={sustainabilityStats} />,
           stakeholders: (
-            <>
-              {stakeholderProfiles.map((profile) => (
-                <StakeholderProfileCard
-                  key={profile.id}
-                  profile={profile}
-                />
-              )).flatMap((el, index) =>
-                index === 0 && sdg3Section.stakeholderTransition.length > 0
-                  ? [
-                      el,
-                      <div
-                        key="stakeholder-transition"
-                        className="wiki-prose"
-                        data-wiki-reveal
-                      >
-                        {sdg3Section.stakeholderTransition.map((p) => (
-                          <p key={p}>{p}</p>
-                        ))}
-                      </div>,
-                    ]
-                  : [el],
-              )}
-            </>
+            <div className="sust-stake-grid">
+              {stakeholderProfiles
+                .map((profile) => (
+                  <StakeholderProfileCard
+                    key={profile.id}
+                    profile={profile}
+                    ordinal={stakeholderOrdinal(profile.id)}
+                  />
+                ))
+                .flatMap((el, index) =>
+                  index === 0 && sdg3Section.stakeholderTransition.length > 0
+                    ? [
+                        el,
+                        <div
+                          key="stakeholder-transition"
+                          className="wiki-prose"
+                          data-wiki-reveal
+                        >
+                          {sdg3Section.stakeholderTransition.map((p) => (
+                            <p key={p}>{p}</p>
+                          ))}
+                        </div>,
+                      ]
+                    : [el],
+                )}
+            </div>
           ),
           problems: <ProblemCardGroup />,
           experts: <ExpertFeedbackGrid />,
           consequences: <ConsequencesDimensionCard />,
+          // SDG 3 — A / L / E
+          "pdf-tools-sdg3": <PdfToolList tools={sdg3LegacyTools} startIndex={1} />,
+          "stats-sdg3": <StatsGrid stats={sdg3EvidenceStats} />,
+          // SDG 9
+          "scale-chain-sdg9": (
+            <ScaleChainWithSpy anchorIds={scaleAnchorIds("sdg9")} />
+          ),
+          "stakeholders-sdg9": (
+            <StakeholderGrid profiles={sdg9Section.stakeholders ?? []} />
+          ),
+          "consequences-sdg9": (
+            <ConsequencesDimensionCard dimensions={sdg9Section.consequences ?? []} />
+          ),
+          "pdf-tools-sdg9": (
+            <PdfToolList
+              tools={sdg9Section.legacyTools ?? []}
+              startIndex={SDG9_TOOL_START}
+            />
+          ),
+          "stats-sdg9": <StatsGrid stats={sdg9Section.evidenceStats ?? []} />,
+          // SDG 12
+          "scale-chain-sdg12": (
+            <ScaleChainWithSpy anchorIds={scaleAnchorIds("sdg12")} />
+          ),
+          "stakeholders-sdg12": (
+            <StakeholderGrid profiles={sdg12Section.stakeholders ?? []} />
+          ),
+          "consequences-sdg12": (
+            <ConsequencesDimensionCard dimensions={sdg12Section.consequences ?? []} />
+          ),
+          "pdf-tools-sdg12": (
+            <PdfToolList
+              tools={sdg12Section.legacyTools ?? []}
+              startIndex={SDG12_TOOL_START}
+            />
+          ),
+          "stats-sdg12": <StatsGrid stats={sdg12Section.evidenceStats ?? []} />,
+          // GROW / SDG 4
+          "scale-chain-grow": (
+            <ScaleChainWithSpy anchorIds={scaleAnchorIds("grow")} />
+          ),
+          "stakeholders-grow": (
+            <StakeholderGrid profiles={growSection.stakeholders ?? []} />
+          ),
+          "consequences-grow": (
+            <ConsequencesDimensionCard dimensions={growSection.consequences ?? []} />
+          ),
         }}
       />
       <Suspense fallback={null}>

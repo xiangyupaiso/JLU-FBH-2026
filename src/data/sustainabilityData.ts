@@ -119,6 +119,7 @@ export const overviewFrameworkIntros: OverviewFrameworkIntro[] = [
     fullName: "SDG Synergy–Trade-off Quantification Network",
     paragraph:
       "为系统评估合成生物学项目对可持续发展的多维影响，我们提出SST-QN（SDG Synergy–Trade-off Quantification Network），用于分析不同SDGs之间的协同（Synergy）与权衡（Trade-off）关系，为未来iGEM团队开展SDG影响评估提供可复用的方法框架。",
+    assetKey: "overviewSstQnPreview01",
   },
   {
     id: "sdg-impact-framework",
@@ -464,18 +465,30 @@ export const sdg3Section = {
 
 export type StakeholderProfileId = "li-chengli" | "tnbc-patients";
 
+export type StakeholderVariant = "interview" | "field";
+
+/** 调研走访（field）卡片的一行内容：行首词 + 一个或多个逐字保留的段落。 */
+export interface StakeholderFieldRow {
+  label: "对象" | "原因" | "反馈" | "改变";
+  paragraphs: ReadonlyArray<string>;
+}
+
 export interface StakeholderProfile {
-  id: StakeholderProfileId;
+  id: string;
   name: string;
   role: string;
+  variant: StakeholderVariant;
   organization?: string;
-  relevantStakeholder: string;
-  whyEngaged: string;
-  feedback: string;
-  incorporated: string;
-  improvement: string;
+  /** 标准五字段形式（访谈卡片 + 部分调研卡片）。 */
+  relevantStakeholder?: string;
+  whyEngaged?: string;
+  feedback?: string;
+  incorporated?: string;
+  improvement?: string;
+  /** 调研卡片显式的行内容（对象 / 原因 / 反馈 / 改变）。 */
+  fieldRows?: ReadonlyArray<StakeholderFieldRow>;
   sdgAddressed: string;
-  /** Click More 展开后的详细访谈内容，按段落排列 */
+  /** 展开后的详细访谈 / 调研内容，按段落排列 */
   detailedInterview: ReadonlyArray<string>;
 }
 
@@ -484,6 +497,7 @@ export const stakeholderProfiles = [
     id: "li-chengli",
     name: "李成丽",
     role: "肿瘤科医生",
+    variant: "interview",
     organization: "湖南省长沙市第八医院肿瘤科",
     relevantStakeholder:
       "湖南省长沙市第八医院肿瘤科医生，一线参与肿瘤患者诊疗与决策。",
@@ -504,6 +518,7 @@ export const stakeholderProfiles = [
     id: "tnbc-patients",
     name: "TNBC Patients",
     role: "TNBC患者及乳腺癌患者",
+    variant: "interview",
     relevantStakeholder: "TNBC患者是CirCure未来最直接的潜在受益者。",
     whyEngaged: "直接了解患者真正关注的治疗需求与现实顾虑。",
     feedback:
@@ -697,12 +712,130 @@ export const consequencesSection = {
   dimensions: consequencesDimensions,
 } as const;
 
-/** A / L / E 三要素标题已存在，正文预留待补充 */
-export const reservedScaleSections = [
-  { anchorId: "sdg3-alignment", title: "A — Alignment" },
-  { anchorId: "sdg3-legacy", title: "L — Legacy" },
-  { anchorId: "sdg3-evidence", title: "E — Evidence" },
-] as const;
+/* ----------------------------------------------------------------------------
+ * Legacy tool (PDF 下载链接) 与 SCALE 章节通用结构
+ * -------------------------------------------------------------------------- */
+
+export interface LegacyToolPdf {
+  label: string;
+  fileName: string;
+}
+
+export interface LegacyTool {
+  title: string;
+  description: string;
+  pdfs: ReadonlyArray<LegacyToolPdf>;
+}
+
+/** 一个 SDG 章（S/C/A/L/E）的内容，供 sustainabilityPage.ts 统一组装为 WikiSection。 */
+export interface SdgScaleContent {
+  sectionId: string;
+  index: string;
+  kicker: string;
+  navLabel: string;
+  title: string;
+  summary: string;
+  intro: ReadonlyArray<string>;
+  stakeholderIntro?: ReadonlyArray<string>;
+  stakeholders?: ReadonlyArray<StakeholderProfile>;
+  /** 利益相关者卡片之后的补充段落（如 SDG9 的杨巍/张海红/胡老师、患者与公众）。 */
+  stakeholderOutro?: ReadonlyArray<string>;
+  expertIntro?: ReadonlyArray<string>;
+  experts?: ReadonlyArray<ExpertFeedback>;
+  consequencesLead?: ReadonlyArray<string>;
+  consequences?: ReadonlyArray<ConsequenceDimension>;
+  consequencesExtra?: ReadonlyArray<string>;
+  /** C 段末尾配图的 sustainabilityImages key（如 SDG9 的批次失败投影图）。 */
+  consequencesFigureKey?: string;
+  alignment?: ReadonlyArray<string>;
+  legacyIntro?: ReadonlyArray<string>;
+  legacyTools?: ReadonlyArray<LegacyTool>;
+  evidenceIntro?: ReadonlyArray<string>;
+  evidenceStats?: ReadonlyArray<SustainabilityStat>;
+  evidenceExtra?: ReadonlyArray<string>;
+  /** E 段末尾配图的 sustainabilityImages key（如 SDG9 的证据图）。 */
+  evidenceFigureKey?: string;
+}
+
+/* ----------------------------------------------------------------------------
+ * SDG 3 — A / L / E（Alignment / Legacy / Evidence）
+ * -------------------------------------------------------------------------- */
+
+export const sdg3Alignment: ReadonlyArray<string> = [
+  "对 Consequences 的分析使我们进一步认识到，CirCure 对 SDG 3 的回应会同时牵动技术创新、健康教育、医疗可及性、资源利用和多方合作等更广泛的问题。因此，我们从项目早期便基于 SST-QN 识别这些跨 SDG 联系，并随着 CirCure 的推进，持续关注其中可能出现的协同、权衡及实施条件，将这些问题逐步纳入后续的项目设计、评价与转化考虑中。",
+  "SDG 3 与 SDG 9 构成当前最明确的 Core Synergy。CirCure 的技术开发直接来源于 TNBC 治疗选择有限、复发风险和长期疾病控制等健康需求，而 circRNA 疫苗设计、技术优化及未来临床转化又决定这些需求能否真正得到回应，形成清晰的双向路径：Health need → Biomedical innovation → Therapeutic feasibility → Potential health benefit。这一作用路径明确、方向稳定，并已经体现在 CirCure 当前的项目设计中，因此构成 SST-QN 中较为稳定的核心关系。",
+  "SDG 3 与 SDG 4 同样形成了具有直接证据支持的 Core Synergy。通过融入相关利益者的反馈，Circure 将乳腺健康、筛查和早期发现等内容纳入公众教育，并通过量化评估观察到参与者在相关健康知识理解和掌握方面的实际提升，使这一关系由单纯的“健康信息传播”进一步形成了可观察的“知识获取—教育成效”路径。现有证据支持其在项目周期内产生明确教育效果，因此归为 Core。但受限于项目周期，目前尚未追踪长期知识保持或行为改变，因此结论仅限于短期教育成效。",
+  "相比之下，SDG 3 与 SDG 10、SDG 12 体现了两类典型的 Conditional relationships。对 SDG 10 而言，决定作用方向的关键是价格、支付和医疗可及性；对 SDG 12 而言，则更多取决于生产方式、资源效率和环境管理。同一项健康创新在不同实施条件下，既可能产生协同，也可能形成新的社会或环境权衡。",
+  "与碳排放管理平台相关企业的交流也使我们进一步意识到，未来规模化生产可能继续向碳排放和气候影响延伸。但目前这一作用链条仍主要通过生产与资源利用过程间接传递，因此我们暂不建立 SDG 3 与 SDG 13 的直接作用边，而将其作为经由 SDG 12 进一步传导的潜在影响。",
+  "对于 SDG 17，我们仍将其保留为 Exploratory。多方利益相关者的参与确实影响了项目的问题识别与设计优化，说明跨领域合作对项目过程具有积极作用。但目前证据仅支持“促进项目改进”，尚不足以证明其能够独立转化为稳定、可量化的长期健康结果，因此暂不纳入 Core 关系。",
+  "对于 SDG 5，我们选择将其归为 Excluded。尽管 CirCure 直接回应女性患者的健康需求，但我们认为“改善女性健康”并不等同于“促进性别平等”。在缺乏直接证据的情况下，我们不因疾病人群特征而人为建立正向关系。",
+  "SST-QN 的分析表明，SDG 3 并不是 CirCure 可持续影响的终点，而是整个影响网络的起点。其中，部分关系已经表现出较明确的协同作用，部分则受到成本、资源利用和实施方式等现实条件影响，也有一些关系目前仍缺乏直接证据支持。这样的分析帮助我们更清楚地界定了 SDG 3 与其他 SDGs 之间关系的强弱、方向与边界，也为后续整合 SDG 9 和 SDG 12 的跨目标影响提供了依据。",
+];
+
+export const sdg3LegacyIntro: ReadonlyArray<string> = [
+  "为了让后续 iGEM 团队能够在 CirCure 的 SDG 3 实践基础上继续开展自己的工作，我们不仅记录了项目的分析结果，也将实践过程中形成的利益相关者访谈、反馈转化、SDG 关联分析和影响记录方法整理为可复用的指南、记录表与模板。",
+];
+
+export const sdg3LegacyTools: ReadonlyArray<LegacyTool> = [
+  {
+    title: "Stakeholder Interview Guide",
+    description:
+      "在实际交流过程中，我们发现不同利益相关者能够提供的信息并不相同，因此访谈不应采用完全相同的问题框架。基于这些实践，我们保留了不同利益相关者的访谈问题、核心问题与追问方式，并记录了如何通过交叉询问进一步验证关键需求。",
+    pdfs: [
+      { label: "中文", fileName: "sustainability-stakeholder-interview-guide-cn.pdf" },
+      { label: "English", fileName: "sustainability-stakeholder-interview-guide-en.pdf" },
+    ],
+  },
+  {
+    title: "Stakeholder–SDG Mapping Guide",
+    description:
+      "根据利益相关者的实际反馈识别其 Primary SDG 与 Related SDGs，并记录相应的关联依据，用于更清晰地梳理不同反馈与 SDGs 之间的关系，避免重复分类，并为后续跨 SDG 协同与权衡分析提供基础。",
+    pdfs: [
+      { label: "中文", fileName: "sustainability-stakeholder-sdg-mapping-guide-cn.pdf" },
+      { label: "English", fileName: "sustainability-stakeholder-sdg-mapping-guide-en.pdf" },
+    ],
+  },
+  {
+    title: "Feedback-to-Action Record",
+    description:
+      "将项目中的经验整理为一套完整的工具体系，覆盖利益相关者访谈、反馈转化、SDG 关联分析和影响记录，记录反馈如何转化为具体的项目改进。",
+    pdfs: [
+      { label: "中文", fileName: "sustainability-feedback-to-action-record-cn.pdf" },
+      { label: "English", fileName: "sustainability-feedback-to-action-record-en.pdf" },
+    ],
+  },
+  {
+    title: "SDG Impact Documentation Template",
+    description:
+      "用于记录利益相关者参与、反馈转化及 SDG 影响分析过程，使这些工具不仅记录我们的实践过程，也为其他团队提供可直接参考和使用的方法框架。",
+    pdfs: [
+      { label: "中文", fileName: "sustainability-sdg-impact-documentation-template-cn.pdf" },
+      { label: "English", fileName: "sustainability-sdg-impact-documentation-template-en.pdf" },
+    ],
+  },
+];
+
+export const sdg3EvidenceIntro: ReadonlyArray<string> = [
+  "我们以可量化、可追踪的结果检验 CirCure 对 SDG 3 的实际回应。截至目前，SDG 3 相关工作共纳入 30 名利益相关者，覆盖 5 类利益相关者群体。来自不同视角的反馈被系统记录并持续纳入项目迭代，目前已推动 8 类关键项目改进。同时，我们将实践过程中形成的方法整理为 4 项可复用工具，进一步记录利益相关者参与、反馈转化及 SDG 影响分析过程。",
+];
+
+export const sdg3EvidenceStats: ReadonlyArray<SustainabilityStat> = [
+  { id: "sdg3-stakeholders", value: 30, labelZh: "利益相关者", labelEn: "Stakeholders in 5 groups" },
+  { id: "sdg3-priorities", value: 4, labelZh: "患者优先项", labelEn: "Patient-informed Priorities" },
+  { id: "sdg3-tools", value: 4, labelZh: "可复用工具", labelEn: "Documented & Reusable Tools" },
+  { id: "sdg3-improvements", value: 8, labelZh: "项目改进", labelEn: "Traceable Project Improvements" },
+];
+
+export const sdg3EvidenceExtra: ReadonlyArray<string> = [
+  "30 名利益相关者覆盖 5 类群体，从患者真实需求、临床实践、公共健康及更广泛的可持续发展视角参与 CirCure 的项目评估，相关反馈进一步推动了项目设计、评价体系与未来应用考虑的具体调整。除专业意见外，我们也记录了患者家属基于真实照护经历所表达的担忧、期待与现实考量。",
+  "“只要真的有效，我们肯定愿意想办法治，但现实里也必须考虑费用。如果一种治疗需要长期用，而且价格特别高，对普通家庭来说可能不是想不想治的问题，而是真的能不能承担。”",
+  "“我们最希望的当然还是治疗有效，能少复发、让她活得更久。但作为家属，我们也会考虑治疗以后她还能不能正常生活。如果副作用特别严重，需要家里长期照顾，对整个家庭来说压力都会很大。”",
+  "“治疗结束以后其实家里人也一直会担心复发。每次复查前都会很紧张。如果有新的治疗能够真正把复发和转移的风险降下来，即使治疗过程麻烦一点，我们可能也愿意接受。”",
+  "“她生病以后，影响的不只是她自己，我们整个家庭的生活也会跟着改变。我们当然最希望治疗有效、少复发，但也会担心副作用会不会影响她正常生活和工作。对家属来说，能把病控制住，也能让她尽量回到原来的生活，同样很重要。”",
+  "我们纳入 4 名患者的真实治疗体验与需求，重点了解她们对疗效、复发与转移、长期生存、副作用、生活质量、治疗费用和可及性的看法。访谈显示，不同患者对于疗效、安全性和现实负担的权衡并不完全一致，这使我们认识到，患者需求并不存在单一答案。因此，我们没有将“疗效优先”简单等同于忽视安全性，而是将明确治疗获益与可接受的副作用、生活质量和经济负担共同纳入 CirCure 的患者获益评价，推动项目从单纯关注技术性能进一步转向患者实际获益与现实可接受性。",
+  "我们形成了 4 项可供后续 iGEM 团队直接使用的工具：Stakeholder Interview Guide、Stakeholder–SDG Mapping Guide、Feedback-to-Action Record、SDG Impact Documentation Template。",
+  "目前，根据已经记录的利益相关者反馈，可以归纳出 8 类关键项目改进：将项目原则调整为“疗效优先，安全性优化”；增加复发、长期生存及阶段性临床获益的评价视角；将治疗费用和医疗可及性纳入项目评价；将乳腺健康、筛查和早期发现纳入公众教育；加入健康公平与医疗资源分配的考虑；将环境评价由实验室耗材拓展到生产、储运和废弃物等生命周期环节。",
+];
 
 /* ----------------------------------------------------------------------------
  * Patient chat dialog — TNBC patient voices (used in tnbc-patients profile)
@@ -809,7 +942,40 @@ export const sustainabilityAnchors = [
   },
   { id: "sdg3-stakeholder", label: "S — Stakeholder Insights", level: 5, status: "existing" },
   { id: "sdg3-consequences", label: "C — Consequences", level: 5, status: "existing" },
-  { id: "sdg3-alignment", label: "A — Alignment", level: 5, status: "reserved" },
-  { id: "sdg3-legacy", label: "L — Legacy", level: 5, status: "reserved" },
-  { id: "sdg3-evidence", label: "E — Evidence", level: 5, status: "reserved" },
+  { id: "sdg3-alignment", label: "A — Alignment", level: 5, status: "existing" },
+  { id: "sdg3-legacy", label: "L — Legacy", level: 5, status: "existing" },
+  { id: "sdg3-evidence", label: "E — Evidence", level: 5, status: "existing" },
+  {
+    id: "sdg9-health",
+    label: "SDG 9 — Industry, Innovation and Infrastructure",
+    level: 4,
+    status: "existing",
+  },
+  { id: "sdg9-stakeholder", label: "S — Stakeholder Insights", level: 5, status: "existing" },
+  { id: "sdg9-consequences", label: "C — Consequences", level: 5, status: "existing" },
+  { id: "sdg9-alignment", label: "A — Alignment", level: 5, status: "existing" },
+  { id: "sdg9-legacy", label: "L — Legacy", level: 5, status: "existing" },
+  { id: "sdg9-evidence", label: "E — Evidence", level: 5, status: "existing" },
+  {
+    id: "sdg12-health",
+    label: "SDG 12 — Responsible Consumption and Production",
+    level: 4,
+    status: "existing",
+  },
+  { id: "sdg12-stakeholder", label: "S — Stakeholder Insights", level: 5, status: "existing" },
+  { id: "sdg12-consequences", label: "C — Consequences", level: 5, status: "existing" },
+  { id: "sdg12-alignment", label: "A — Alignment", level: 5, status: "existing" },
+  { id: "sdg12-legacy", label: "L — Legacy", level: 5, status: "existing" },
+  { id: "sdg12-evidence", label: "E — Evidence", level: 5, status: "existing" },
+  {
+    id: "grow",
+    label: "GROW — Quality Education (SDG 4)",
+    level: 3,
+    status: "existing",
+  },
+  { id: "grow-stakeholder", label: "S — Stakeholder Insights", level: 5, status: "existing" },
+  { id: "grow-consequences", label: "C — Consequences", level: 5, status: "existing" },
+  { id: "grow-alignment", label: "A — Alignment", level: 5, status: "existing" },
+  { id: "grow-legacy", label: "L — Legacy", level: 5, status: "reserved" },
+  { id: "grow-evidence", label: "E — Evidence", level: 5, status: "reserved" },
 ] as const satisfies ReadonlyArray<SustainabilityAnchor>;

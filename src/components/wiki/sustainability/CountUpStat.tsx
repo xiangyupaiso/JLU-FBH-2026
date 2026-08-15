@@ -1,70 +1,80 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import type { SustainabilityStat } from "../../../data/sustainabilityData";
 import { prefersReducedMotion } from "./useInViewReveal";
 import "../../../styles/sustainability-page.css";
 
+/** cubic-bezier(.22,1,.36,1) 的等价近似曲线（easeOutQuart）。 */
+const easeOutQuart = (t: number) => 1 - Math.pow(1 - t, 4);
+
+/** 从 1 计数到 target（一次性），结束后逐字写回终值。 */
+function animateCount(
+  node: HTMLElement,
+  target: number,
+  duration: number,
+  delay: number,
+) {
+  const startedAt = performance.now() + delay;
+  let frame = 0;
+  const tick = (now: number) => {
+    const progress = Math.min(1, Math.max(0, (now - startedAt) / duration));
+    const eased = easeOutQuart(progress);
+    const value = Math.round(1 + (target - 1) * eased);
+    node.textContent = String(value);
+    if (progress < 1) {
+      frame = window.requestAnimationFrame(tick);
+    } else {
+      node.textContent = String(target);
+    }
+  };
+  frame = window.requestAnimationFrame(tick);
+  return () => window.cancelAnimationFrame(frame);
+}
+
 export function CountUpStat({
   stat,
-  duration = 550,
+  delay = 0,
 }: {
   stat: SustainabilityStat;
-  duration?: number;
+  delay?: number;
 }) {
-  const nodeRef = useRef<HTMLDivElement | null>(null);
-  const [inView, setInView] = useState(false);
-  const [display, setDisplay] = useState<number | null>(null);
+  const valueRef = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
-    if (display !== null) return;
-    const node = nodeRef.current;
+    const node = valueRef.current;
     if (!node) return;
-    if (prefersReducedMotion()) {
-      setDisplay(stat.value);
+    const target = Number.parseInt(node.textContent ?? "", 10);
+    if (!Number.isFinite(target)) return;
+    // 渐进增强：无动画 / 减动效时数字保持静态终值。
+    if (prefersReducedMotion() || typeof IntersectionObserver === "undefined") {
       return;
     }
-    if (typeof IntersectionObserver === "undefined") {
-      setInView(true);
-      return;
-    }
+
+    const duration = target < 100 ? 900 : 1200;
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            setInView(true);
             observer.disconnect();
+            animateCount(node, target, duration, delay);
           }
         });
       },
-      { threshold: 0.3 },
+      { threshold: 0.4 },
     );
     observer.observe(node);
     return () => observer.disconnect();
-  }, [display, stat.value]);
-
-  useEffect(() => {
-    if (!inView) return;
-    let frame = 0;
-    const startedAt = performance.now();
-    const tick = (now: number) => {
-      const progress = Math.min((now - startedAt) / duration, 1);
-      const eased = 1 - Math.pow(1 - progress, 3);
-      setDisplay(Math.round(eased * stat.value));
-      if (progress < 1) {
-        frame = window.requestAnimationFrame(tick);
-      }
-    };
-    frame = window.requestAnimationFrame(tick);
-    return () => window.cancelAnimationFrame(frame);
-  }, [inView, duration, stat.value]);
-
-  const shown = display ?? 0;
+  }, [delay, stat.value]);
 
   return (
-    <div ref={nodeRef} className="sust-count-stat" role="group">
-      <span className="sust-count-stat__value" aria-hidden="true">
-        {shown}
+    <div className="sust-count-stat">
+      <span
+        ref={valueRef}
+        className="sust-count-stat__value"
+        aria-label={String(stat.value)}
+      >
+        {stat.value}
       </span>
-      <span className="sust-visually-hidden">{stat.value}</span>
       <span className="sust-count-stat__labels">
         <strong>{stat.labelZh}</strong>
         <em>{stat.labelEn}</em>

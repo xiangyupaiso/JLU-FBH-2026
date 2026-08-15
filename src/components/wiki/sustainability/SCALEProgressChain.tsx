@@ -6,7 +6,7 @@ import {
 import { prefersReducedMotion } from "./useInViewReveal";
 import "../../../styles/sustainability-page.css";
 
-const SCALE_ANCHOR_IDS = [
+const DEFAULT_SCALE_ANCHOR_IDS = [
   "sdg3-stakeholder",
   "sdg3-consequences",
   "sdg3-alignment",
@@ -19,11 +19,13 @@ type NodeState = "done" | "current" | "upcoming" | "reserved";
 export function SCALEProgressChain({
   activeId = "sdg3-stakeholder",
   anchors = sustainabilityAnchors,
+  anchorIds = DEFAULT_SCALE_ANCHOR_IDS,
 }: {
   activeId?: string;
   anchors?: ReadonlyArray<SustainabilityAnchor>;
+  anchorIds?: ReadonlyArray<string>;
 }) {
-  const nodes = SCALE_ANCHOR_IDS.flatMap((id) => {
+  const nodes = anchorIds.flatMap((id) => {
     const anchor = anchors.find((item) => item.id === id);
     return anchor ? [anchor] : [];
   });

@@ -12,4 +12,6 @@ export { ImpactFrameworkDiagram } from "./ImpactFrameworkDiagram";
 export { SdgImpactRadar } from "./SdgImpactRadar";
 export { SdgInteractionHeatmap } from "./SdgInteractionHeatmap";
 export { SdgBoundaryMatrix } from "./SdgBoundaryMatrix";
+export { SdgDimensionChord } from "./SdgDimensionChord";
+export { PdfToolList } from "./PdfToolList";
 export { SustainabilityPdfPreview } from "./SustainabilityPdfPreview";

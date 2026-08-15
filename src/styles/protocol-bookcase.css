@@ -380,29 +380,60 @@
 }
 
 .protocol-modal {
+  /* 阅览室令牌 —— modal 经 createPortal 挂到 <body>，页级 --wet-* 不会级联进来，
+     这里直接解析品牌级 design tokens，保证 Protocol / Sustainability 两页一致。 */
+  --modal-ink: var(--ink, #1b1719); /* color/ink/primary */
+  --modal-ink-muted: var(--muted, rgba(27, 23, 25, 0.68)); /* color/ink/muted */
+  --modal-ink-faint: rgba(27, 23, 25, 0.46); /* color/ink/faint */
+  --modal-line: var(--line, rgba(27, 23, 25, 0.18)); /* color/line/default */
+  --modal-hair: rgba(27, 23, 25, 0.06); /* color/line/hair */
+  --modal-paper: var(--paper-bright, #fcf8f1); /* color/surface/paperBright */
+  --modal-navy: var(--brand-navy, #173f78);
+  --modal-navy-deep: var(--brand-navy-deep, #102f59); /* color/brand/navyDeep */
+  --modal-pink-strong: #754356; /* color/accent/pinkStrong —— 语义焦点描边 */
+  --modal-shadow-high: 0 24px 64px rgba(16, 47, 89, 0.14); /* shadow/high */
+  --modal-font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+  --modal-font-editorial: "Iowan Old Style", Baskerville, Georgia, "Times New Roman", serif;
+  --modal-font-mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+
   position: fixed;
-  z-index: 2600;
-  inset: 0;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  width: 100vw;
+  height: 100vh;
   display: grid;
   place-items: center;
-  padding: 32px;
-  background: rgba(20, 18, 18, 0.68);
-  backdrop-filter: blur(16px);
+  padding: 24px;
+  box-sizing: border-box;
+  background: rgba(16, 47, 89, 0.55); /* navyDeep @ 55% */
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   animation: protocol-overlay-in 220ms ease both;
+}
+
+.protocol-modal.protocol-modal--closing {
+  animation: protocol-overlay-out 200ms ease both;
 }
 
 .protocol-modal__panel {
   display: grid;
-  width: min(1100px, 92vw);
-  height: min(88vh, 900px);
+  width: min(1200px, 92vw);
+  max-width: 100%;
+  box-sizing: border-box;
+  height: min(90vh, 1080px);
   grid-template-rows: auto auto minmax(0, 1fr);
   overflow: hidden;
-  border: 1px solid var(--wet-line-strong);
+  border: 1px solid var(--modal-line);
   border-radius: 0;
-  color: var(--wet-ink);
-  background: var(--wet-paper-light);
+  color: var(--modal-ink);
+  background: var(--modal-paper);
   box-shadow: none;
   animation: protocol-panel-in 300ms var(--ease-out) both;
+}
+
+.protocol-modal--closing .protocol-modal__panel {
+  animation: protocol-panel-out 200ms var(--ease-out) both;
 }
 
 .protocol-modal__panel:fullscreen {
@@ -416,13 +447,12 @@
   justify-content: space-between;
   gap: 24px;
   padding: 20px 24px;
-  border-bottom: 1px solid var(--wet-line-strong);
 }
 
 .protocol-modal__header span {
-  color: var(--wet-accent);
-  font-family: var(--font-mono);
-  font-size: 9px;
+  color: var(--modal-ink-faint);
+  font-family: var(--modal-font-mono);
+  font-size: 10px;
   font-weight: 800;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -430,8 +460,8 @@
 
 .protocol-modal__header h2 {
   margin: 4px 0 0;
-  color: var(--wet-ink);
-  font-family: var(--font-editorial);
+  color: var(--modal-ink);
+  font-family: var(--modal-font-editorial);
   font-size: clamp(20px, 2vw, 28px);
   font-weight: 500;
   line-height: 1.1;
@@ -444,21 +474,31 @@
   flex: 0 0 auto;
   place-items: center;
   padding: 0;
-  border: 1px solid var(--wet-line-strong);
-  border-radius: 0;
-  color: var(--wet-ink);
+  border: 1px solid var(--modal-line);
+  border-radius: 6px;
+  color: var(--modal-ink);
   background: transparent;
+  cursor: pointer;
+  transition:
+    background-color 160ms var(--ease-out),
+    border-color 160ms var(--ease-out),
+    color 160ms var(--ease-out);
 }
 
-.protocol-modal__header > button:hover,
+.protocol-modal__header > button:hover {
+  border-color: var(--modal-navy-deep);
+  background: var(--modal-navy-deep);
+  color: var(--modal-paper);
+}
+
 .protocol-modal__header > button:focus-visible {
-  border-color: var(--wet-accent);
-  color: var(--wet-accent);
+  outline: 2px solid var(--modal-pink-strong);
+  outline-offset: 2px;
 }
 
 .protocol-modal__header > button span {
   color: inherit;
-  font-family: var(--font-sans);
+  font-family: var(--modal-font-sans);
   font-size: 24px;
   font-weight: 400;
   line-height: 1;
@@ -467,12 +507,14 @@
 .protocol-modal__toolbar {
   display: flex;
   min-height: 56px;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  gap: 16px;
+  gap: 8px 16px;
   padding: 8px 16px;
-  border-bottom: 1px solid var(--wet-line);
-  background: var(--wet-paper);
+  border-top: 1px solid var(--modal-hair);
+  border-bottom: 1px solid var(--modal-hair);
+  background: var(--modal-paper);
 }
 
 .protocol-modal__toolbar > div {
@@ -481,39 +523,111 @@
   gap: 6px;
 }
 
+/* 箭头 / Full screen / Download —— sans 13/650 ink/primary；读数保持 mono */
 .protocol-modal__toolbar button,
 .protocol-modal__toolbar a {
-  min-height: 34px;
-  padding: 8px 11px;
-  border: 1px solid transparent;
-  border-radius: 0;
-  color: var(--wet-ink);
+  border: 0;
+  color: var(--modal-ink);
   background: transparent;
-  font-family: var(--font-mono);
-  font-size: 10px;
-  font-weight: 760;
+  font-family: var(--modal-font-sans);
+  font-size: 13px;
+  font-weight: 650;
   text-decoration: none;
+  cursor: pointer;
 }
 
-.protocol-modal__toolbar button:hover:not(:disabled),
-.protocol-modal__toolbar button:focus-visible,
-.protocol-modal__toolbar a:hover,
-.protocol-modal__toolbar a:focus-visible {
-  border-bottom-color: var(--wet-accent);
-  color: var(--wet-accent);
+/* 四个图标钮（‹ › − +）—— 32px ghost 方钮 */
+.protocol-modal__toolbar button[aria-label] {
+  display: grid;
+  width: 32px;
+  height: 32px;
+  flex: 0 0 auto;
+  place-items: center;
+  padding: 0;
+  border-radius: 6px;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1;
+  transition: background-color 160ms var(--ease-out);
+}
+
+.protocol-modal__toolbar button[aria-label]:hover:not(:disabled) {
+  background: var(--modal-hair);
 }
 
 .protocol-modal__toolbar button:disabled {
-  color: var(--wet-faint);
+  color: var(--modal-ink-faint);
   cursor: not-allowed;
 }
 
+/* 缩放三件组 —— segmented 控件：line/default 外框 + hairline 内分隔 */
+.protocol-modal__toolbar > div:nth-child(2) {
+  gap: 0;
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid var(--modal-line);
+  border-radius: 6px;
+}
+
+.protocol-modal__toolbar > div:nth-child(2) button {
+  border-radius: 0;
+}
+
+.protocol-modal__toolbar > div:nth-child(2) span {
+  min-width: 56px;
+  align-self: stretch;
+  display: grid;
+  place-items: center;
+  border-left: 1px solid var(--modal-hair);
+}
+
+.protocol-modal__toolbar > div:nth-child(2) button:last-child {
+  border-left: 1px solid var(--modal-hair);
+}
+
+/* 读数（Page n / N、nn%）—— mono ink/muted */
 .protocol-modal__toolbar span {
-  min-width: 74px;
-  color: var(--wet-muted);
-  font-family: var(--font-mono);
-  font-size: 10px;
+  color: var(--modal-ink-muted);
+  font-family: var(--modal-font-mono);
+  font-size: 11px;
+  letter-spacing: 0.02em;
   text-align: center;
+}
+
+.protocol-modal__toolbar > div:first-child span {
+  min-width: 74px;
+}
+
+/* Full screen / Download —— 文字按钮，hover 出 navy 下划线 */
+.protocol-modal__toolbar > div:last-child button,
+.protocol-modal__toolbar > div:last-child a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 32px;
+  padding: 0 4px;
+  border-radius: 0;
+  transition: color 160ms var(--ease-out);
+}
+
+.protocol-modal__toolbar > div:last-child button:hover,
+.protocol-modal__toolbar > div:last-child a:hover {
+  color: var(--modal-navy);
+  text-decoration: underline;
+  text-decoration-color: var(--modal-navy);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+}
+
+/* Download —— navy 650 加重 */
+.protocol-modal__toolbar > div:last-child a {
+  color: var(--modal-navy);
+  font-weight: 650;
+}
+
+.protocol-modal__toolbar button:focus-visible,
+.protocol-modal__toolbar a:focus-visible {
+  outline: 2px solid var(--modal-pink-strong);
+  outline-offset: 2px;
 }
 
 .protocol-modal__viewport {
@@ -521,21 +635,54 @@
   overflow: auto;
   overscroll-behavior: contain;
   padding: 30px;
-  background:
-    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px) 0 0 / 32px
-      32px,
-    #2b2824;
+  background: var(--modal-navy-deep); /* color/brand/navyDeep */
+  scrollbar-width: thin; /* Firefox */
+  scrollbar-color: rgba(252, 248, 241, 0.28) transparent;
+}
+
+/* 自定义滚动条：8px、纸色 pill 拇指、透明轨道，移除系统灰条与箭头 */
+.protocol-modal__viewport::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.protocol-modal__viewport::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.protocol-modal__viewport::-webkit-scrollbar-thumb {
+  background: rgba(252, 248, 241, 0.28);
+  border-radius: 999px;
+}
+
+.protocol-modal__viewport::-webkit-scrollbar-thumb:hover {
+  background: rgba(252, 248, 241, 0.45);
+}
+
+.protocol-modal__viewport::-webkit-scrollbar-button {
+  display: none;
+}
+
+.protocol-modal__viewport::-webkit-scrollbar-corner {
+  background: transparent;
 }
 
 .protocol-modal__viewport .react-pdf__Document,
 .protocol-modal__viewport .react-pdf__Page {
   width: max-content;
+  max-width: 100%;
   margin: 0 auto;
+}
+
+.protocol-modal__viewport .react-pdf__Page {
+  animation: protocol-page-reveal 180ms ease-out both;
 }
 
 .protocol-modal__viewport .react-pdf__Page canvas {
   display: block;
+  max-width: 100%;
   border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: var(--modal-shadow-high); /* 桌面放纸抬升 */
 }
 
 .protocol-modal__viewport iframe {
@@ -549,7 +696,7 @@
   margin: 0;
   padding: 64px 24px;
   color: rgba(255, 255, 255, 0.8);
-  font-family: var(--font-mono);
+  font-family: var(--modal-font-mono);
   font-size: 11px;
   letter-spacing: 0.05em;
   text-align: center;
@@ -565,14 +712,43 @@
   }
 }
 
+@keyframes protocol-overlay-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
 @keyframes protocol-panel-in {
   from {
     opacity: 0;
-    transform: translateY(12px);
+    transform: translateY(10px) scale(0.985);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes protocol-panel-out {
+  from {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(10px) scale(0.985);
+  }
+}
+
+@keyframes protocol-page-reveal {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }
 
@@ -639,7 +815,7 @@
   .protocol-modal__toolbar > div:last-child {
     width: 100%;
     justify-content: center;
-    border-top: 1px solid var(--wet-line);
+    border-top: 1px solid var(--modal-hair);
     padding-top: 6px;
   }
 
@@ -650,7 +826,10 @@
 
 @media (prefers-reduced-motion: reduce) {
   .protocol-modal,
+  .protocol-modal--closing,
   .protocol-modal__panel,
+  .protocol-modal--closing .protocol-modal__panel,
+  .protocol-modal__viewport .react-pdf__Page,
   .wiki-page.wiki-page--protocol .protocol-card::after,
   .wiki-page.wiki-page--protocol .protocol-card__title {
     animation: none;

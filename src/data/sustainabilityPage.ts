@@ -1,15 +1,16 @@
 /**
  * Sustainability page — structured `WikiPageContent` for the shared renderer.
  *
- * Provenance: 文案集/Human Practice/Sustainability.md (Feishu revision 187),
- * via the type-safe copy in `sustainabilityData.ts`. No copy is authored here —
- * this file only composes the existing text into ordered content blocks
- * (`WikiSection.blocks`) so the page renders through `WikiPage` with the same
- * shared chrome as the other Engagement records.
+ * Provenance: 文案集/Human Practice/Sustainability.md, via the type-safe copy in
+ * `sustainabilityData.ts`, `sustainabilitySdg9.ts`, `sustainabilitySdg12.ts` and
+ * `sustainabilityGrow.ts`. No copy is authored here — this file only composes
+ * the existing text into ordered content blocks (`WikiSection.blocks`) so the
+ * page renders through `WikiPage` with the same shared chrome as the other
+ * Engagement records.
  *
- * The bespoke visual components (SVG charts, flip cards, CountUp, PDF preview)
- * mount as named `features` and are referenced by `{ type: "feature", key }`
- * blocks in the order the copy requires.
+ * The bespoke visual components (SVG charts, flip cards, CountUp, PDF preview,
+ * chord diagram) mount as named `features` and are referenced by
+ * `{ type: "feature", key }` blocks in the order the copy requires.
  */
 
 import type {
@@ -18,13 +19,15 @@ import type {
   WikiSection,
 } from "../components/wiki/wikiPageTypes";
 import {
-  sustainabilityImageAlt,
-  sustainabilityImages,
-} from "./sustainabilityImages";
+  sdg3Alignment,
+  sdg3EvidenceExtra,
+  sdg3EvidenceIntro,
+  sdg3LegacyIntro,
+  type SdgScaleContent,
+} from "./sustainabilityData";
 import {
   consequencesSection,
   impactFrameworkSection,
-  reservedScaleSections,
   sdg3Section,
   setCoreChallengesSection,
   sstqnSection,
@@ -32,6 +35,13 @@ import {
   sustainabilityEpigraph,
   sustainabilityOverview,
 } from "./sustainabilityData";
+import { sdg9Section } from "./sustainabilitySdg9";
+import { sdg12Section } from "./sustainabilitySdg12";
+import { growSection } from "./sustainabilityGrow";
+import {
+  sustainabilityImageAlt,
+  sustainabilityImages,
+} from "./sustainabilityImages";
 
 const anchorLabel = (id: string) =>
   sustainabilityAnchors.find((anchor) => anchor.id === id)?.label ?? id;
@@ -75,6 +85,7 @@ const overviewSection: WikiSection = {
       aside: { type: "feature", key: "sdg-radar" },
     },
     { type: "feature", key: "framework-intros" },
+    { type: "feature", key: "sdg-dimension-chord" },
   ],
 };
 
@@ -183,7 +194,7 @@ const setCoreChallengesBlocks: WikiSection = {
   navLabel: "SET Layer",
   title: setCoreChallengesSection.title,
   summary:
-    "以 WHO 2024 乳腺癌数据为起点，将来自 6 个领域 43 名利益相关者的反馈纳入设计全过程，识别对 SDG 3 / 9 / 12 的核心回应。",
+    "以 WHO 2024 乳腺癌数据为起点，将利益相关者的反馈纳入设计全过程，识别对 SDG 3 / 9 / 12 的核心回应。",
   blocks: [
     {
       type: "callout",
@@ -241,17 +252,135 @@ const setCoreChallengesBlocks: WikiSection = {
       ],
     },
     { type: "feature", key: "consequences" },
-    ...reservedScaleSections.flatMap<WikiContentBlock>((reserved, index) => [
-      {
-        type: "subheading",
-        id: reserved.anchorId,
-        index: `4.${index + 4}`,
-        title: anchorLabel(reserved.anchorId),
-      },
-      { type: "note", label: "预留章节 Reserved", body: RESERVED_NOTE },
-    ]),
+    {
+      type: "subheading",
+      id: "sdg3-alignment",
+      index: "4.4",
+      title: anchorLabel("sdg3-alignment"),
+    },
+    { type: "prose", paragraphs: [...sdg3Alignment] },
+    {
+      type: "subheading",
+      id: "sdg3-legacy",
+      index: "4.5",
+      title: anchorLabel("sdg3-legacy"),
+    },
+    { type: "prose", paragraphs: [...sdg3LegacyIntro] },
+    { type: "feature", key: "pdf-tools-sdg3" },
+    {
+      type: "subheading",
+      id: "sdg3-evidence",
+      index: "4.6",
+      title: anchorLabel("sdg3-evidence"),
+    },
+    { type: "prose", paragraphs: [...sdg3EvidenceIntro] },
+    { type: "feature", key: "stats-sdg3" },
+    { type: "prose", paragraphs: [...sdg3EvidenceExtra] },
   ],
 };
+
+/** 从一个 SdgScaleContent 组装出标准 S/C/A/L/E 章节。 */
+function buildScaleSection(content: SdgScaleContent): WikiSection {
+  const prefix =
+    content.sectionId === "grow"
+      ? "grow"
+      : content.sectionId.replace("-health", "");
+  const anchor = (suffix: string) => `${prefix}-${suffix}`;
+  const subheading = (suffix: string, step: number): WikiContentBlock => ({
+    type: "subheading",
+    id: anchor(suffix),
+    index: `${content.index}.${step}`,
+    title: anchorLabel(anchor(suffix)),
+  });
+
+  const blocks: WikiContentBlock[] = [
+    { type: "prose", paragraphs: [...content.intro] },
+    { type: "feature", key: `scale-chain-${prefix}` },
+  ];
+
+  // S — Stakeholder Insights
+  blocks.push(subheading("stakeholder", 1));
+  if (content.stakeholderIntro?.length) {
+    blocks.push({ type: "prose", paragraphs: [...content.stakeholderIntro] });
+  }
+  if (content.stakeholders?.length) {
+    blocks.push({ type: "feature", key: `stakeholders-${prefix}` });
+  }
+  if (content.stakeholderOutro?.length) {
+    blocks.push({ type: "prose", paragraphs: [...content.stakeholderOutro] });
+  }
+  if (content.expertIntro?.length) {
+    blocks.push({ type: "prose", paragraphs: [...content.expertIntro] });
+  }
+  if (content.experts?.length) {
+    blocks.push({ type: "feature", key: `experts-${prefix}` });
+  }
+
+  // C — Consequences
+  blocks.push(subheading("consequences", 2));
+  if (content.consequencesLead?.length) {
+    blocks.push({ type: "prose", paragraphs: [...content.consequencesLead] });
+  }
+  if (content.consequences?.length) {
+    blocks.push({ type: "feature", key: `consequences-${prefix}` });
+  }
+  if (content.consequencesExtra?.length) {
+    blocks.push({ type: "prose", paragraphs: [...content.consequencesExtra] });
+  }
+  if (content.consequencesFigureKey) {
+    blocks.push(fig(content.consequencesFigureKey as keyof typeof sustainabilityImages));
+  }
+
+  // A — Alignment
+  blocks.push(subheading("alignment", 3));
+  if (content.alignment?.length) {
+    blocks.push({ type: "prose", paragraphs: [...content.alignment] });
+  }
+
+  // L — Legacy
+  blocks.push(subheading("legacy", 4));
+  if (content.legacyIntro?.length) {
+    blocks.push({ type: "prose", paragraphs: [...content.legacyIntro] });
+  }
+  if (content.legacyTools?.length) {
+    blocks.push({ type: "feature", key: `pdf-tools-${prefix}` });
+  }
+  if (!content.legacyIntro?.length && !content.legacyTools?.length) {
+    blocks.push({ type: "note", label: "预留章节 Reserved", body: RESERVED_NOTE });
+  }
+
+  // E — Evidence
+  blocks.push(subheading("evidence", 5));
+  if (content.evidenceIntro?.length) {
+    blocks.push({ type: "prose", paragraphs: [...content.evidenceIntro] });
+  }
+  if (content.evidenceStats?.length) {
+    blocks.push({ type: "feature", key: `stats-${prefix}` });
+  }
+  if (content.evidenceExtra?.length) {
+    blocks.push({ type: "prose", paragraphs: [...content.evidenceExtra] });
+  }
+  if (content.evidenceFigureKey) {
+    blocks.push(fig(content.evidenceFigureKey as keyof typeof sustainabilityImages));
+  }
+  if (
+    !content.evidenceIntro?.length &&
+    !content.evidenceStats?.length &&
+    !content.evidenceExtra?.length
+  ) {
+    blocks.push({ type: "note", label: "预留章节 Reserved", body: RESERVED_NOTE });
+  }
+
+  return {
+    id: content.sectionId,
+    index: content.index,
+    kicker: content.kicker,
+    navLabel: content.navLabel,
+    title: content.title,
+    summary: content.summary,
+    blocks,
+  };
+}
 
 export const sustainabilityPage: WikiPageContent = {
   route: "/sustainability",
@@ -261,7 +390,7 @@ export const sustainabilityPage: WikiPageContent = {
   title: "Sustainability",
   lede: "以 SDG 3 / 9 / 12 为核心目标，从 SET 的问题响应出发，经 DEVELOP 的多维拓展，走向 GROW 的长期系统价值。",
   boundary:
-    "本页陈述的是评估与决策框架（SST-QN 方法演示示例、SET–Develop–Grow 影响框架与 SCALE 改进机制），而非已完成的影响量化结论；图中评分为方法演示用示意示例，完整评分矩阵见《SDG 模型构建》PDF。",
+    "本页陈述的是评估与决策框架（SST-QN 方法、SET–Develop–Grow 影响框架与 SCALE 改进机制），而非已完成的影响量化结论；图中评分为结构化的证据校准评分，完整评分矩阵见《SDG 模型构建》PDF。",
   visual: "sustainability-radar",
   visualLabel: "Sustainability",
   visualSteps: ["environment", "access", "economy", "governance"],
@@ -276,6 +405,9 @@ export const sustainabilityPage: WikiPageContent = {
     sstQnSection,
     impactFrameworkBlocks,
     setCoreChallengesBlocks,
+    buildScaleSection(sdg9Section),
+    buildScaleSection(sdg12Section),
+    buildScaleSection(growSection),
   ],
   links: [
     { path: "/human-practices", label: "Human Practices" },
