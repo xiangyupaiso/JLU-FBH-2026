@@ -31,6 +31,19 @@
   pointer-events: none;
 }
 
+/* Dark adaptation — surface-driven (see Navbar): navy frosted glass + light
+   text. The mega-menu panel stays paperBright (frozen zone); an open menu
+   forces the light theme so the two never meet. */
+.site-header[data-header-theme="dark"] {
+  --header-surface: rgba(16, 47, 89, 0.92);
+  --header-ink: #fcf8f1;
+  --header-line: var(--on-navy);
+}
+
+.site-header[data-header-theme="dark"]::before {
+  opacity: 1;
+}
+
 .site-header::before {
   position: absolute;
   z-index: -1;
@@ -48,47 +61,23 @@
     border-color 280ms ease;
 }
 
-.site-header[data-tone="paper"] {
-  --header-surface: var(--paper);
-  --nav-surface: rgba(238, 231, 220, 0.97);
-  --nav-surface-end: rgba(232, 221, 214, 0.98);
+/* Pink Thread reading-progress line along the header's bottom edge. */
+.site-header::after {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  top: var(--header-height);
+  width: 100%;
+  height: 2px;
+  background: var(--care);
+  transform: scaleX(var(--scroll-p, 0));
+  transform-origin: left;
+  pointer-events: none;
 }
 
-.site-header[data-tone="blush"] {
-  --header-surface: var(--surface-blush);
-  --header-line: rgba(27, 23, 25, 0.08);
-  --nav-surface: rgba(221, 203, 211, 0.97);
-  --nav-surface-end: rgba(213, 191, 202, 0.98);
-  --nav-surface-line: rgba(117, 67, 86, 0.14);
-}
-
-.site-header[data-tone="ink"] {
-  --header-surface: #211a1d;
-  --header-ink: var(--paper-bright);
-  --header-line: transparent;
-  --nav-surface: rgba(33, 26, 29, 0.97);
-  --nav-surface-end: rgba(22, 24, 32, 0.98);
-  --nav-surface-line: rgba(252, 248, 241, 0.1);
-  --nav-surface-shadow: rgba(10, 8, 12, 0.28);
-}
-
-.site-header[data-tone="navy"] {
-  --header-surface: var(--brand-navy-deep);
-  --header-ink: var(--paper-bright);
-  --header-line: transparent;
-  --nav-surface: rgba(16, 47, 89, 0.97);
-  --nav-surface-end: rgba(10, 35, 68, 0.98);
-  --nav-surface-line: rgba(252, 248, 241, 0.1);
-  --nav-surface-shadow: rgba(7, 24, 48, 0.3);
-}
-
-.site-header[data-tone="bright"] {
-  --header-surface: var(--paper-bright);
-  --header-ink: var(--brand-navy-deep);
-  --header-line: rgba(27, 23, 25, 0.06);
-  --nav-surface: rgba(252, 248, 241, 0.97);
-  --nav-surface-end: rgba(246, 238, 232, 0.98);
-}
+/* Header surface: paperBright + blur(16px) by default, navy frosted glass in
+   the dark theme (data-header-theme, set by Navbar's surface observer). */
 
 .site-header[data-nav-theme="project"] {
   --nav-theme-accent: #a83f69;
@@ -128,7 +117,7 @@
   z-index: 3;
   display: grid;
   height: 40px;
-  grid-template-columns: 148px 1fr;
+  grid-template-columns: 148px minmax(0, 1fr) auto;
   align-items: center;
   gap: 28px;
 }
@@ -329,20 +318,46 @@
   height: 30px;
 }
 
-.team-crest {
+.wordmark-crest {
   position: absolute;
   z-index: 4;
-  top: -4px;
-  left: 0;
-  width: 29px;
-  height: 38px;
-  object-fit: contain;
-  transition: filter 260ms ease;
+  top: -7px;
+  left: -7px;
+  display: grid;
+  width: 44px;
+  height: 44px;
+  place-items: center;
 }
 
-.site-header[data-tone="ink"] .team-crest,
-.site-header[data-tone="navy"] .team-crest {
-  filter: grayscale(1) brightness(0) invert(1);
+.team-crest {
+  grid-area: 1 / 1;
+  width: 44px;
+  height: 44px;
+  object-fit: contain;
+  transition: opacity var(--duration-fast) var(--ease-out);
+}
+
+/* Crossfade between the dark crest and the (optional) light crest. */
+.logo--light {
+  opacity: 0;
+}
+
+.site-header[data-header-theme="dark"] .logo--dark {
+  opacity: 0;
+}
+
+.site-header[data-header-theme="dark"] .logo--light {
+  opacity: 1;
+}
+
+/* Fallback until the light crest asset ships: keep the navy crest legible on
+   the navy surface by sitting it on a paperBright circular sticker. */
+.site-header[data-header-theme="dark"]:not(.has-light-logo) .logo--dark {
+  opacity: 1;
+  background: #fcf8f1;
+  border-radius: 999px;
+  padding: 6px;
+  box-shadow: 0 5px 18px rgba(66, 45, 54, 0.025);
 }
 
 .logo-word-full {
@@ -409,76 +424,144 @@
   transform-origin: 9.2px 8.8px;
 }
 
+.wordmark-folio {
+  position: absolute;
+  left: 39px;
+  top: 26px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: rgba(27, 23, 25, 0.6);
+  white-space: nowrap;
+  line-height: 1;
+}
+
+.site-header[data-header-theme="dark"] .wordmark-folio {
+  color: rgba(252, 248, 241, 0.6);
+}
+
 .desktop-nav {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  gap: clamp(13px, 1.6vw, 25px);
   color: inherit;
   font-size: 13px;
   font-weight: 650;
   letter-spacing: -0.01em;
 }
 
-.desktop-nav a,
-.desktop-nav button {
-  transition:
-    opacity 180ms ease,
-    background-color 180ms ease;
+.nav-list {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: clamp(13px, 1.6vw, 25px);
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
-.desktop-nav a:hover,
-.desktop-nav button:hover {
-  opacity: 0.62;
+/* Section accent — Home/Team fall back to the Pink Thread. */
+.nav-item {
+  --accent: var(--care);
 }
 
-.desktop-nav a,
-.desktop-nav button {
+.nav-item[data-section="project"]    { --accent: #a83f69; }
+.nav-item[data-section="wet-lab"]    { --accent: #5f9f87; }
+.nav-item[data-section="dry-lab"]    { --accent: #7183c5; }
+.nav-item[data-section="engagement"] { --accent: #ba7894; }
+
+/* Brightened accents keep folio + underline legible on the navy surface. */
+.site-header[data-header-theme="dark"] .nav-item[data-section="project"]    { --accent: #d6a5b4; }
+.site-header[data-header-theme="dark"] .nav-item[data-section="wet-lab"]    { --accent: #b5d0c1; }
+.site-header[data-header-theme="dark"] .nav-item[data-section="dry-lab"]    { --accent: #bdc3dd; }
+.site-header[data-header-theme="dark"] .nav-item[data-section="engagement"] { --accent: #debec7; }
+
+.nav-link {
   position: relative;
   display: inline-flex;
   min-height: 32px;
   align-items: center;
-  gap: 5px;
   padding: 0 3px;
   margin: 0;
   border: 0;
   background: transparent;
   white-space: nowrap;
   text-decoration: none;
+  transition:
+    opacity var(--duration-fast) var(--ease-out),
+    background-color var(--duration-fast) var(--ease-out);
 }
 
-.desktop-nav button {
-  background: transparent;
+button.nav-link {
   cursor: pointer;
 }
 
-.desktop-nav button span {
-  display: inline-block;
-  font-size: 13px;
-  transform: translateY(-1px);
-  transition: transform 260ms var(--ease-out);
+.nav-link:hover {
+  opacity: 0.62;
 }
 
-.desktop-nav button[aria-expanded="true"] {
+.nav-link[aria-expanded="true"] {
   opacity: 1;
 }
 
-.desktop-nav button:focus-visible {
-  outline-color: var(--nav-theme-accent);
+.nav-link:focus-visible {
+  outline-color: var(--accent);
 }
 
-.desktop-nav button[aria-expanded="true"]::after {
+.nav-link::after {
+  content: "";
   position: absolute;
   right: 3px;
-  bottom: 1px;
   left: 3px;
+  bottom: 1px;
   height: 1px;
-  background: var(--nav-theme-accent);
-  content: "";
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--duration-fast) var(--ease-out);
 }
 
-.desktop-nav button[aria-expanded="true"] span {
-  transform: translateY(1px) rotate(180deg);
+.nav-link:hover::after,
+.nav-link[aria-expanded="true"]::after,
+.nav-link[aria-current="page"]::after {
+  transform: scaleX(1);
+}
+
+/* De-emphasise the other links while a panel is open. */
+.site-header.is-nav-open .desktop-nav .nav-link:not([aria-expanded="true"]) {
+  opacity: 0.62;
+}
+
+.nav-folio {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+  margin-right: 6px;
+}
+
+.nav-caret {
+  width: 10px;
+  height: 6px;
+  margin-left: 5px;
+  transition: transform var(--duration-fast) var(--ease-out);
+}
+
+.nav-caret path {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.nav-link[aria-expanded="true"] .nav-caret {
+  transform: rotate(-180deg);
+}
+
+@media (max-width: 1180px) {
+  .nav-folio {
+    display: none;
+  }
 }
 
 .mobile-menu-toggle,
@@ -852,7 +935,9 @@
   .circure-nav-panel,
   .circure-nav-aura,
   .circure-mobile-menu,
-  .mobile-menu-toggle svg {
+  .mobile-menu-toggle svg,
+  .nav-caret,
+  .nav-link::after {
     transition-duration: 1ms !important;
   }
 }

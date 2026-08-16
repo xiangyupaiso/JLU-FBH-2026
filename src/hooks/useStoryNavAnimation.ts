@@ -33,8 +33,8 @@
  * also unwraps the pin-spacers — no stray DOM nodes are left behind.
  *
  * Nav menu open/close is intentionally NOT handled here — the Navbar
- * component owns that state. This hook only touches scroll-driven motion,
- * thread-guide, and the global header's `data-tone`.
+ * component owns that state. This hook only touches scroll-driven motion
+ * and the thread-guide.
  */
 
 import { type RefObject } from "react";
@@ -74,27 +74,6 @@ const LANDMARK_NAMES = [
   "Listening",
   "Responsibility",
 ] as const;
-
-type HeaderTone = "bright" | "paper" | "blush" | "ink" | "navy";
-
-interface HeaderThemeConfig {
-  key: string;
-  tone: HeaderTone;
-  sectionKey: keyof StoryNavSectionRefs | "closing";
-}
-
-const HEADER_THEME_CONFIG: HeaderThemeConfig[] = [
-  { key: "opening", tone: "bright", sectionKey: "opening" },
-  { key: "history", tone: "bright", sectionKey: "history" },
-  { key: "human", tone: "ink", sectionKey: "humanChapter" },
-  { key: "expansion", tone: "navy", sectionKey: "expansion" },
-  { key: "coverage", tone: "bright", sectionKey: "coverage" },
-  { key: "evidence", tone: "paper", sectionKey: "evidence" },
-  { key: "engineering", tone: "blush", sectionKey: "engineering" },
-  { key: "listening", tone: "navy", sectionKey: "listening" },
-  { key: "translation", tone: "bright", sectionKey: "translation" },
-  { key: "closing", tone: "navy", sectionKey: "closing" },
-];
 
 const DARK_SURFACE_KEYS: Array<keyof StoryNavSectionRefs | "closing"> = [
   "humanChapter",
@@ -158,13 +137,6 @@ const SECTION_SPAN: Record<
 
 // smoothstep(t) = 3t² − 2t³ and sine.inOut are near-identical S-curves.
 const SMOOTHSTEP = "sine.inOut";
-
-interface HeaderThemeRange {
-  key: string;
-  tone: HeaderTone;
-  start: number;
-  end: number;
-}
 
 interface SurfaceRange {
   start: number;
@@ -247,10 +219,8 @@ export function useStoryNavAnimation(refs: StoryNavAnimationRefs): void {
 
       // Pins engage when a section's top reaches the header's bottom edge —
       // the exact spot the old CSS `position: sticky; top: var(--header-height)`
-      // stuck at. stickyEnd is only needed by the reduced-motion coverage
-      // tracker, where the layout is static and nothing pins.
+      // stuck at.
       const stickyStart = () => `top top+=${headerHeight()}`;
-      const stickyEnd = () => `bottom bottom+=${headerHeight()}`;
 
       const sectionElByThemeKey: Record<
         keyof StoryNavSectionRefs | "closing",
@@ -280,11 +250,9 @@ export function useStoryNavAnimation(refs: StoryNavAnimationRefs): void {
         translationEl,
       ];
 
-      // --- Header theme + thread-guide bookkeeping (cached per refresh) ---
-      let headerThemeRanges: HeaderThemeRange[] = [];
+      // --- Thread-guide bookkeeping (cached per refresh) ---
       let darkSurfaceRanges: SurfaceRange[] = [];
       let landmarkOffsets: number[] = [];
-      let activeHeaderTone = "";
       let activeLandmarkIndex = -1;
       let ariaPageProgress = -1;
       let threadPointerId: number | null = null;
@@ -292,7 +260,6 @@ export function useStoryNavAnimation(refs: StoryNavAnimationRefs): void {
 
       // Assigned inside the matchMedia handler; recreated on breakpoint or
       // reduced-motion changes.
-      let coverageST: ScrollTrigger | null = null;
       let pageST: ScrollTrigger | null = null;
 
       // While a section is pinned its getBoundingClientRect is the fixed
@@ -315,49 +282,11 @@ export function useStoryNavAnimation(refs: StoryNavAnimationRefs): void {
       }
 
       function cacheRanges(): void {
-        headerThemeRanges = HEADER_THEME_CONFIG.map(
-          ({ key, tone, sectionKey }) => {
-            const element = sectionElByThemeKey[sectionKey];
-            return {
-              key,
-              tone,
-              start: docTop(element),
-              end: docBottom(element),
-            };
-          },
-        );
         darkSurfaceRanges = DARK_SURFACE_KEYS.map((key) => {
           const element = sectionElByThemeKey[key];
           return { start: docTop(element), end: docBottom(element) };
         });
         landmarkOffsets = landmarkEls.map((el) => docTop(el));
-      }
-
-      // Old code compared the *held* coverage target against 0.24; the raw
-      // trigger progress relates to it by held = clamp(raw / 0.72).
-      function coverageHeldProgress(): number {
-        return coverageST
-          ? clamp(coverageST.progress / STICKY_ANIMATION_END)
-          : 1;
-      }
-
-      function updateHeaderTheme(scrollY: number): void {
-        if (!headerEl) return;
-        const probe = scrollY + headerHeight() + 1;
-        let activeTheme: HeaderThemeRange | undefined = headerThemeRanges[0];
-        for (const theme of headerThemeRanges) {
-          if (theme.start <= probe) {
-            activeTheme = theme;
-          }
-        }
-        let nextTone: HeaderTone = activeTheme?.tone ?? "bright";
-        if (activeTheme?.key === "coverage" && coverageHeldProgress() < 0.24) {
-          nextTone = "navy";
-        }
-        if (nextTone !== activeHeaderTone) {
-          activeHeaderTone = nextTone;
-          headerEl.dataset.tone = nextTone;
-        }
       }
 
       function updateThreadGuide(scrollY: number): void {
@@ -389,7 +318,6 @@ export function useStoryNavAnimation(refs: StoryNavAnimationRefs): void {
       function applyPageState(self: ScrollTrigger): void {
         if (!threadGuideEl) return;
         const scrollY = self.scroll();
-        updateHeaderTheme(scrollY);
         updateThreadGuide(scrollY);
         const nextAriaPageProgress = Math.round(self.progress * 100);
         if (nextAriaPageProgress !== ariaPageProgress) {
@@ -531,9 +459,9 @@ export function useStoryNavAnimation(refs: StoryNavAnimationRefs): void {
 
           if (reduceMotion) {
             // Reduced motion: every section rests in its final composed state;
-            // only the page progress (knot position), header tone and
-            // thread-guide labels keep tracking the scroll — same as the old
-            // reduced-motion paint branch.
+            // only the page progress (knot position) and thread-guide labels
+            // keep tracking the scroll — same as the old reduced-motion paint
+            // branch.
             gsap.set(openingEl, {
               "--opening-progress": 1,
               "--er-progress": 1,
@@ -576,14 +504,6 @@ export function useStoryNavAnimation(refs: StoryNavAnimationRefs): void {
               });
             }
 
-            // Progress tracker for the header's coverage→navy override.
-            coverageST = ScrollTrigger.create({
-              id: "story-coverage",
-              trigger: coverageEl,
-              start: stickyStart,
-              end: stickyEnd,
-            });
-
             // Knot follows the scroll directly (no scrub smoothing).
             pageST = ScrollTrigger.create({
               id: "story-page",
@@ -608,7 +528,6 @@ export function useStoryNavAnimation(refs: StoryNavAnimationRefs): void {
 
             return () => {
               pinTriggerByElement.clear();
-              coverageST = null;
               pageST = null;
             };
           }
@@ -711,7 +630,7 @@ export function useStoryNavAnimation(refs: StoryNavAnimationRefs): void {
           });
           pinTriggerByElement.set(expansionEl, expansionPin);
 
-          // Coverage — its trigger also feeds the header coverage→navy rule.
+          // Coverage
           const coverageTl = gsap.timeline({
             scrollTrigger: {
               id: "story-coverage",
@@ -725,7 +644,6 @@ export function useStoryNavAnimation(refs: StoryNavAnimationRefs): void {
           });
           holdVar(coverageTl, coverageEl, "--coverage-progress");
           holdZone(coverageTl);
-          coverageST = coverageTl.scrollTrigger ?? null;
           pinTriggerByElement.set(coverageEl, coverageTl.scrollTrigger!);
 
           // Evidence
@@ -804,7 +722,7 @@ export function useStoryNavAnimation(refs: StoryNavAnimationRefs): void {
 
           // Global page progress — drives the thread-guide knot's position
           // (CSS maps --page-progress to the knot's top/height) plus the
-          // header tone and landmark labels.
+          // landmark labels.
           const pageTween = gsap.fromTo(
             threadGuideEl,
             { "--page-progress": 0 },
@@ -828,7 +746,6 @@ export function useStoryNavAnimation(refs: StoryNavAnimationRefs): void {
 
           return () => {
             pinTriggerByElement.clear();
-            coverageST = null;
             pageST = null;
           };
         },
@@ -987,11 +904,6 @@ export function useStoryNavAnimation(refs: StoryNavAnimationRefs): void {
           img.removeEventListener("load", onImageLoad);
           img.removeEventListener("error", onImageLoad);
         });
-        // Reset header to the inner-page default tone so leaving Home doesn't
-        // strand the global header in a dark/translucent tone.
-        if (headerEl) {
-          headerEl.dataset.tone = "bright";
-        }
         document.body.classList.remove("is-thread-dragging");
         document.documentElement.classList.remove("is-thread-directing");
       };

@@ -2,6 +2,7 @@ import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../../styles/circure-tokens.css"; // overrides Bootstrap base with CirCure tokens
 import "../../styles/circure-nav.css"; // global site-header / mega-menu styles
+import "../../styles/circure-search.css"; // gooey header search + match highlights
 import "../../styles/circure-footer.css"; // global brand footer / final team reveal
 import "../../styles/circure-back-to-top.css"; // global floating return-to-top control
 import "../../styles/wiki-disclosures.css"; // shared theme-aware accordion language
@@ -38,11 +39,10 @@ const App = () => {
     : pathname;
 
   // Route changes are page transitions, not in-page navigation. Reset the
-  // shared header and viewport before the new page paints so neither the
-  // previous route's tone nor global smooth scrolling can leak across pages.
+  // viewport before the new page paints so global smooth scrolling cannot
+  // leak across pages.
   useLayoutEffect(() => {
     const root = document.documentElement;
-    const header = document.querySelector<HTMLElement>("[data-header]");
     const previousScrollBehavior = root.style.scrollBehavior;
     let frame = 0;
     let remainingFrames = 4;
@@ -58,9 +58,6 @@ const App = () => {
         document.activeElement.blur();
       }
       window.scrollTo({ top: 0, left: 0, behavior: "auto" });
-      if (header) {
-        header.dataset.tone = "bright";
-      }
       remainingFrames -= 1;
       if (remainingFrames > 0) {
         frame = window.requestAnimationFrame(resetRouteState);

@@ -226,6 +226,7 @@ export function Home() {
  
         <section
           className="human-chapter"
+          data-surface="navy"
           ref={humanRef}
           id="person"
           aria-labelledby="person-title"
@@ -288,6 +289,7 @@ export function Home() {
  
         <section
           className="expansion"
+          data-surface="navy"
           ref={expansionRef}
           id="approach"
           aria-labelledby="approach-title"
@@ -535,6 +537,7 @@ export function Home() {
  
         <section
           className="listening"
+          data-surface="navy"
           ref={listeningRef}
           id="listening"
           aria-labelledby="listening-title"
@@ -646,7 +649,7 @@ export function Home() {
         </section>
  
         {/* Zero-height marker retained for the story hook's final navy tone. */}
-        <div className="closing" aria-hidden="true" />
+        <div className="closing" data-surface="navy" aria-hidden="true" />
       </main>
     </div>
   );
