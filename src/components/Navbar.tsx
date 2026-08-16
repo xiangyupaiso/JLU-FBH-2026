@@ -5,6 +5,13 @@ import projectWetlabSprite from "../assets/story-nav/nav-project-wetlab-v2.webp"
 import drylabEngagementSprite from "../assets/story-nav/nav-drylab-engagement-v2.webp";
 import Pages from "../pages";
 import type { FolderNavMeta } from "../pages";
+import { PageSearch } from "./PageSearch";
+
+// Reversed (light) crest for the dark header — redrawn asset with #fcf8f1
+// lines and a transparent shield, uploaded to static.igem.wiki (WebP + PNG).
+// Until it ships, the dark theme falls back to a paperBright circular sticker
+// behind the navy crest (see circure-nav.css).
+const LIGHT_LOGO_URL: string | undefined = undefined;
 
 interface NavCard {
   name: string;
@@ -128,6 +135,64 @@ export function Navbar() {
   // Clean up timers on unmount
   useEffect(() => () => clearTimers(), [clearTimers]);
 
+  // Pink Thread scroll-progress + surface-driven header theme.
+  // Writes --scroll-p (0..1) and toggles data-header-theme based on which
+  // [data-surface="navy"] element sits under the header's bottom edge.
+  useEffect(() => {
+    const header = headerRef.current;
+    if (!header) return;
+    header.style.setProperty("--scroll-p", "0");
+    header.dataset.headerTheme = "light";
+    const root = document.documentElement;
+    let frame = 0;
+
+    const headerBottom = () => {
+      const value = getComputedStyle(root)
+        .getPropertyValue("--header-height")
+        .trim();
+      return Number.parseFloat(value) || 78;
+    };
+
+    const paint = () => {
+      frame = 0;
+      const max = root.scrollHeight - window.innerHeight;
+      const progress =
+        max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)) : 0;
+      header.style.setProperty("--scroll-p", progress.toFixed(4));
+
+      // Mega-menu open → force light (the panel is a paperBright frozen zone).
+      if (openKey) {
+        header.dataset.headerTheme = "light";
+        return;
+      }
+      const line = headerBottom();
+      let theme: "dark" | "light" = "light";
+      const navy = document.querySelectorAll<HTMLElement>(
+        '[data-surface="navy"]',
+      );
+      for (const el of navy) {
+        const rect = el.getBoundingClientRect();
+        if (rect.top <= line && rect.bottom >= line) {
+          theme = "dark";
+          break;
+        }
+      }
+      header.dataset.headerTheme = theme;
+    };
+
+    const request = () => {
+      if (!frame) frame = window.requestAnimationFrame(paint);
+    };
+    paint();
+    window.addEventListener("scroll", request, { passive: true });
+    window.addEventListener("resize", request, { passive: true });
+    return () => {
+      if (frame) window.cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", request);
+      window.removeEventListener("resize", request);
+    };
+  }, [pathname, openKey]);
+
   // Click-outside to close whichever menu is open (desktop and/or mobile)
   useEffect(() => {
     if (!openKey && !mobileOpen) return;
@@ -220,7 +285,7 @@ export function Navbar() {
         ref={headerRef}
         className={headerClassName}
         data-header
-        data-tone="bright"
+        data-header-theme="light"
         data-nav-theme={openKey ?? undefined}
       >
         <div
@@ -232,7 +297,20 @@ export function Navbar() {
           <div className="circure-nav-head">
             <Link to="/" className="wordmark" aria-label="CirCure home">
               <span className="wordmark-stage" aria-hidden="true">
-                <img className="team-crest" src={teamCrestUrl} alt="" />
+                <span className="wordmark-crest">
+                  <img
+                    className="team-crest logo--dark"
+                    src={teamCrestUrl}
+                    alt=""
+                  />
+                  {LIGHT_LOGO_URL ? (
+                    <img
+                      className="team-crest logo--light"
+                      src={LIGHT_LOGO_URL}
+                      alt=""
+                    />
+                  ) : null}
+                </span>
                 <span className="logo-word-full">CirCure</span>
                 <svg className="logo-symbol" viewBox="0 0 40 40">
                   <circle
@@ -249,34 +327,64 @@ export function Navbar() {
                   />
                   <circle className="logo-junction" cx="9.2" cy="8.8" r="1.7" />
                 </svg>
+                <span className="wordmark-folio">JLU-FBH · iGEM 2026</span>
               </span>
             </Link>
 
+            <PageSearch />
+
             <nav className="desktop-nav" aria-label="Primary navigation">
-              <Link to="/" aria-current={homeActive ? "page" : undefined}>
-                Home
-              </Link>
-              <Link to="/team" aria-current={teamActive ? "page" : undefined}>
-                Team
-              </Link>
-              {DROPDOWNS.map((d) => (
-                <button
-                  key={d.key}
-                  type="button"
-                  data-nav-key={d.key}
-                  aria-expanded={openKey === d.key}
-                  aria-controls="circure-nav-menu"
-                  aria-current={
-                    dropdownActive(pathname, d) ? "page" : undefined
-                  }
-                  onPointerEnter={() => queueOpen(d.key)}
-                  onFocus={() => openImmediate(d.key)}
-                  onClick={() => openImmediate(d.key)}
-                  onKeyDown={onToggleKeydown}
-                >
-                  {d.label} <span aria-hidden="true">⌄</span>
-                </button>
-              ))}
+              <ul className="nav-list">
+                <li className="nav-item">
+                  <Link
+                    className="nav-link"
+                    to="/"
+                    aria-current={homeActive ? "page" : undefined}
+                  >
+                    Home
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link
+                    className="nav-link"
+                    to="/team"
+                    aria-current={teamActive ? "page" : undefined}
+                  >
+                    Team
+                  </Link>
+                </li>
+                {DROPDOWNS.map((d, i) => (
+                  <li key={d.key} className="nav-item" data-section={d.key}>
+                    <button
+                      className="nav-link"
+                      type="button"
+                      data-nav-key={d.key}
+                      aria-expanded={openKey === d.key}
+                      aria-controls="circure-nav-menu"
+                      aria-current={
+                        dropdownActive(pathname, d) ? "page" : undefined
+                      }
+                      onPointerEnter={() => queueOpen(d.key)}
+                      onFocus={() => openImmediate(d.key)}
+                      onClick={() => openImmediate(d.key)}
+                      onKeyDown={onToggleKeydown}
+                    >
+                      <span className="nav-folio" aria-hidden="true">
+                        {String(i + 1).padStart(2, "0")}
+                      </span>
+                      {d.label}
+                      <svg
+                        className="nav-caret"
+                        viewBox="0 0 10 6"
+                        aria-hidden="true"
+                        focusable="false"
+                      >
+                        <path d="M1 1l4 4 4-4" />
+                      </svg>
+                    </button>
+                  </li>
+                ))}
+              </ul>
             </nav>
 
             <button

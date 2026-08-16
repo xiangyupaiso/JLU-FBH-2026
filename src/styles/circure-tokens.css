@@ -19,9 +19,11 @@
   --surface-blush: #ddcbd3;
   --muted: rgba(27, 23, 25, 0.68);
   --line: rgba(27, 23, 25, 0.18);
+  --on-navy: rgba(252, 248, 241, 0.22);
   --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
   --font-display: "Avenir Next", Avenir, "Helvetica Neue", Arial, sans-serif;
   --font-editorial: "Iowan Old Style", Baskerville, Georgia, "Times New Roman", serif;
+  --font-mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
   --radius-control: 6px;
   --radius-panel: 28px;
   --radius-panel-mobile: 20px;
