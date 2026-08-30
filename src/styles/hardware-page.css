@@ -1389,3 +1389,361 @@
     transform: none;
   }
 }
+
+/* Markdown-first hardware manuscript: figures remain explicit empty slots
+   until the team's patent and process artwork is ready. */
+.wiki-page--hardware-hero .wiki-image-placeholder {
+  display: grid;
+  min-height: clamp(220px, 32vw, 460px);
+  place-items: center;
+  align-content: center;
+  gap: 10px;
+  padding: 32px;
+  border: 1px dashed color-mix(in srgb, var(--hardware-gold) 62%, var(--hardware-navy) 38%);
+  border-radius: 16px;
+  background:
+    linear-gradient(135deg, rgba(234, 217, 185, 0.22), transparent 42%),
+    repeating-linear-gradient(135deg, rgba(23, 63, 120, 0.045) 0 1px, transparent 1px 12px),
+    var(--paper-bright);
+  color: var(--hardware-navy-deep);
+  text-align: center;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.1);
+}
+
+.wiki-page--hardware-hero .wiki-image-placeholder > span {
+  color: var(--hardware-gold);
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+
+.wiki-page--hardware-hero .wiki-image-placeholder > strong {
+  font-family: var(--font-editorial);
+  font-size: clamp(24px, 3vw, 42px);
+  font-weight: 400;
+}
+
+.wiki-page--hardware-hero .wiki-image-placeholder > p {
+  max-width: 620px;
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.wiki-page--hardware-hero .wiki-table-wrap {
+  width: 100%;
+  overflow-x: auto;
+  border-top: 1px solid var(--hardware-navy-deep);
+  border-bottom: 1px solid var(--hardware-line);
+  scrollbar-color: var(--hardware-gold) transparent;
+}
+
+.wiki-page--hardware-hero .wiki-table {
+  width: 100%;
+  min-width: 760px;
+  border-collapse: collapse;
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.wiki-page--hardware-hero .wiki-table caption {
+  padding: 12px 0;
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  text-align: left;
+  text-transform: uppercase;
+}
+
+.wiki-page--hardware-hero .wiki-table th,
+.wiki-page--hardware-hero .wiki-table td {
+  padding: 14px 12px;
+  border-bottom: 1px solid var(--hardware-line);
+  text-align: left;
+  vertical-align: top;
+}
+
+.wiki-page--hardware-hero .wiki-table thead th {
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.wiki-page--hardware-hero .wiki-table tbody th {
+  min-width: 160px;
+  color: var(--hardware-navy-deep);
+  font-weight: 700;
+}
+
+.wiki-page--hardware-hero .wiki-article > .wiki-section .wiki-blocks {
+  display: grid;
+  width: 100%;
+  min-width: 0;
+  gap: 28px;
+}
+
+/* Keep the Hardware record on the same editorial reading grid as
+   Sustainability: a full-width article column with a readable measure and
+   compact supporting visuals, never a collapsed single-word column. */
+.wiki-page--hardware-hero .wiki-record {
+  width: min(1280px, calc(100% - 48px));
+  grid-template-columns: 220px minmax(0, 1fr);
+  gap: 56px;
+}
+
+.wiki-page--hardware-hero .wiki-article,
+.wiki-page--hardware-hero .wiki-section,
+.wiki-page--hardware-hero .wiki-section__heading,
+.wiki-page--hardware-hero .wiki-section__heading > div {
+  width: 100%;
+  min-width: 0;
+}
+
+/* The shared renderer's `overflow-x: hidden` computes to a vertical auto
+   scroller when the article is taller than the viewport. Sustainability keeps
+   one page-level scroll, so Hardware must do the same; tables and media own
+   their own horizontal overflow instead. */
+.wiki-page--hardware-hero .wiki-article {
+  overflow: visible;
+}
+
+.wiki-page--hardware-hero .wiki-section__summary {
+  max-width: 760px;
+}
+
+.wiki-page--hardware-hero .wiki-blocks--split {
+  display: grid;
+  width: 100%;
+  min-width: 0;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 360px);
+  gap: clamp(28px, 4vw, 56px);
+  align-items: start;
+  margin-top: 8px;
+}
+
+.wiki-page--hardware-hero .wiki-blocks--split__prose {
+  width: 100%;
+  min-width: 0;
+}
+
+.wiki-page--hardware-hero .wiki-blocks--split__prose > .wiki-prose {
+  width: 100%;
+  margin: 0;
+}
+
+.wiki-page--hardware-hero .wiki-blocks--split__prose > .wiki-prose p {
+  max-width: 100%;
+}
+
+.wiki-page--hardware-hero .wiki-blocks--split__aside {
+  position: sticky;
+  top: calc(var(--header-height) + 34px);
+}
+
+.wiki-page--hardware-hero .wiki-chapter-link {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  gap: 16px;
+  margin: 18px 0 0;
+  padding: 8px 0;
+  color: var(--hardware-navy-deep);
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  transition-property: color, transform;
+  transition-duration: 180ms;
+  transition-timing-function: var(--ease-out);
+}
+
+.wiki-page--hardware-hero .wiki-chapter-link--inline {
+  display: inline;
+  min-height: 0;
+  margin: 0;
+  padding: 0;
+  color: var(--care);
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: 600;
+  letter-spacing: normal;
+  text-decoration: underline;
+  text-decoration-color: color-mix(in srgb, var(--care) 46%, transparent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+.wiki-page--hardware-hero .wiki-chapter-link--inline:hover,
+.wiki-page--hardware-hero .wiki-chapter-link--inline:focus-visible {
+  color: var(--hardware-navy-deep);
+  transform: none;
+}
+
+.wiki-page--hardware-hero .wiki-chapter-link:hover,
+.wiki-page--hardware-hero .wiki-chapter-link:focus-visible {
+  color: var(--care);
+  transform: translateX(4px);
+}
+
+.wiki-page--hardware-hero .wiki-chapter-link b {
+  color: var(--care);
+  font-family: var(--font-editorial);
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 1;
+}
+
+.wiki-page--hardware-hero .wiki-chapter-link:focus-visible {
+  outline: 2px solid var(--care);
+  outline-offset: 3px;
+}
+
+.wiki-page--hardware-hero .wiki-mini-visual {
+  display: grid;
+  gap: 14px;
+  padding: 24px;
+  border: 1px solid color-mix(in srgb, var(--hardware-navy) 18%, transparent);
+  border-radius: 22px;
+  background: var(--paper-bright);
+  box-shadow: 0 18px 42px rgba(16, 47, 89, 0.08);
+}
+
+.wiki-page--hardware-hero .wiki-mini-visual > span {
+  color: var(--hardware-gold);
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+.wiki-page--hardware-hero .wiki-mini-visual > strong {
+  color: var(--hardware-navy-deep);
+  font-family: var(--font-editorial);
+  font-size: clamp(26px, 2.5vw, 38px);
+  font-weight: 400;
+  line-height: 1.05;
+}
+
+.wiki-page--hardware-hero .wiki-mini-visual ol {
+  display: grid;
+  gap: 0;
+  margin: 4px 0 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--hardware-line);
+}
+
+.wiki-page--hardware-hero .wiki-mini-visual li {
+  display: grid;
+  grid-template-columns: 32px 1fr;
+  gap: 10px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--hardware-line);
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.wiki-page--hardware-hero .wiki-mini-visual li b {
+  color: var(--hardware-navy);
+  font-family: var(--font-mono);
+  font-size: 10px;
+}
+
+.wiki-page--hardware-hero .wiki-mini-visual--care {
+  border-color: color-mix(in srgb, var(--care) 28%, transparent);
+}
+
+.wiki-page--hardware-hero .wiki-mini-visual--care li b {
+  color: var(--care);
+}
+
+.wiki-page--hardware-hero .wiki-mini-visual--gold {
+  border-color: color-mix(in srgb, var(--hardware-gold) 34%, transparent);
+}
+
+.wiki-page--hardware-hero .wiki-mini-visual--gold li b {
+  color: var(--hardware-gold);
+}
+
+.wiki-page--hardware-hero .wiki-subheading {
+  display: grid;
+  gap: 8px;
+  margin: 52px 0 24px;
+  color: var(--dry-reading-ink, var(--ink));
+  font-family: var(--font-editorial);
+  font-size: clamp(28px, 2.8vw, 42px);
+  font-weight: 400;
+  line-height: 1.08;
+}
+
+.wiki-page--hardware-hero .wiki-blocks--split .wiki-subheading {
+  margin-top: 0;
+}
+
+.wiki-page--hardware-hero .wiki-subheading__title {
+  display: block;
+}
+
+@media (max-width: 620px) {
+  .wiki-page--hardware-hero .wiki-image-placeholder {
+    min-height: 230px;
+    padding: 22px;
+  }
+
+  .wiki-page--hardware-hero .wiki-table {
+    min-width: 680px;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 880px) {
+  .wiki-page--hardware-hero .wiki-blocks--split__aside {
+    position: static;
+  }
+}
+
+/*正文层：只对齐 Sustainability 的章节阅读系统，不触碰 Hero。*/
+.wiki-page.wiki-page--dry-lab.wiki-page--dry-reading.wiki-page--hardware-hero
+  .wiki-record {
+  width: min(1280px, calc(100% - 48px));
+  grid-template-columns: 220px minmax(0, 1fr);
+  gap: 56px;
+}
+
+.wiki-page.wiki-page--dry-lab.wiki-page--dry-reading.wiki-page--hardware-hero
+  .wiki-article,
+.wiki-page.wiki-page--dry-lab.wiki-page--dry-reading.wiki-page--hardware-hero
+  .wiki-section,
+.wiki-page.wiki-page--dry-lab.wiki-page--dry-reading.wiki-page--hardware-hero
+  .wiki-section__heading,
+.wiki-page.wiki-page--dry-lab.wiki-page--dry-reading.wiki-page--hardware-hero
+  .wiki-section__heading > div {
+  width: 100%;
+  min-width: 0;
+}
+
+.wiki-page.wiki-page--dry-lab.wiki-page--dry-reading.wiki-page--hardware-hero
+  .wiki-section__heading {
+  grid-template-columns: 66px minmax(0, 1fr);
+  gap: 18px;
+}
+
+.wiki-page.wiki-page--dry-lab.wiki-page--dry-reading.wiki-page--hardware-hero
+  .wiki-section__heading h2 {
+  max-width: 740px;
+}
+
+.wiki-page.wiki-page--dry-lab.wiki-page--dry-reading.wiki-page--hardware-hero
+  .wiki-section__summary {
+  max-width: 760px;
+  margin-top: 24px;
+  font-size: 20px;
+  line-height: 1.64;
+}

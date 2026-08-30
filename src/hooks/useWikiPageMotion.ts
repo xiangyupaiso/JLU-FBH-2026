@@ -238,7 +238,7 @@ export function useWikiPageMotion(
     if (record) recordResizeObserver?.observe(record);
     requestProgress();
 
-    requestAnimationFrame(() => {
+    const hashFrame = requestAnimationFrame(() => {
       const routeTarget = routeHash
         ? document.getElementById(routeHash)
         : null;
@@ -257,6 +257,7 @@ export function useWikiPageMotion(
 
     return () => {
       if (frame) cancelAnimationFrame(frame);
+      cancelAnimationFrame(hashFrame);
       revealObserver?.disconnect();
       recordResizeObserver?.disconnect();
       window.removeEventListener("scroll", requestProgress);

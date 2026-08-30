@@ -5,7 +5,7 @@ const MESSAGE_SOURCE = "bomb-cat-game";
  * Removing the iframe also stops its timers, network connections and UI.
  */
 export function initializeBombCatGame(container, options) {
-  const { gameUrl, onGameComplete, onRequestClose } = options;
+  const { gameUrl, onGameComplete, onRequestClose, onLoadError } = options;
   const frame = document.createElement("iframe");
   frame.className = "bomb-cat-game-frame";
   frame.title = "circRNA 爆炸猫卡牌游戏";
@@ -13,8 +13,10 @@ export function initializeBombCatGame(container, options) {
   frame.allow = "fullscreen";
   frame.setAttribute("allowfullscreen", "");
   frame.setAttribute("sandbox", "allow-scripts allow-same-origin");
+  frame.addEventListener("error", () => onLoadError?.());
 
   const handleMessage = (event) => {
+    if (event.origin !== window.location.origin) return;
     if (event.source !== frame.contentWindow) return;
     if (!event.data || event.data.source !== MESSAGE_SOURCE) return;
 

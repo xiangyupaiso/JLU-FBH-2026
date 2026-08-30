@@ -49,6 +49,12 @@ export function WikiLineSidebar({
   const [ribbonTargetId, setRibbonTargetId] = useState(
     activeChildId || activeId,
   );
+  const activeChildParentId = activeChildId
+    ? items.find((item) =>
+        item.children?.some((child) => child.id === activeChildId),
+      )?.id
+    : undefined;
+  const expandedItemId = activeChildParentId ?? activeId;
   const targetSignature = items
     .flatMap((item) => [
       item.id,
@@ -289,6 +295,7 @@ export function WikiLineSidebar({
   };
 
   const moveRibbonWithKeyboard = (event: KeyboardEvent<HTMLSpanElement>) => {
+    if (items.length === 0) return;
     const activeIndex = Math.max(
       0,
       items.findIndex((item) => item.id === activeId),
@@ -365,54 +372,65 @@ export function WikiLineSidebar({
             <use href="#circure-ribbon-knot" />
           </svg>
         </span>
-        {items.map((item) => (
-          <div className="wiki-outline__group" key={item.id}>
-            <a
-              href={`#${item.id}`}
-              className={`wiki-outline__primary ${
-                activeId === item.id ? "is-active" : ""
-              }`}
-              data-outline-target={item.id}
-              aria-current={activeId === item.id ? "location" : undefined}
-              onClick={(event) => jumpToSection(event, item.id)}
-              title={item.label}
-            >
-              <span className="wiki-outline__index">
-                {minimal ? Number.parseInt(item.index, 10) : item.index}
-              </span>
-              <span className="wiki-outline__copy">
-                {!minimal && item.meta ? <small>{item.meta}</small> : null}
-                <strong>{item.label}</strong>
-              </span>
-            </a>
+        {items.map((item) => {
+          const hasChildren = Boolean(minimal && item.children?.length);
+          const isExpanded = hasChildren && expandedItemId === item.id;
 
-            {minimal && item.children?.length ? (
-              <div
-                className="wiki-outline__subnav"
-                aria-label={`${item.label} subsections`}
+          return (
+            <div
+              className={`wiki-outline__group ${
+                isExpanded ? "is-expanded" : ""
+              }`}
+              key={item.id}
+            >
+              <a
+                href={`#${item.id}`}
+                className={`wiki-outline__primary ${
+                  activeId === item.id ? "is-active" : ""
+                }`}
+                data-outline-target={item.id}
+                aria-current={activeId === item.id ? "location" : undefined}
+                aria-expanded={hasChildren ? isExpanded : undefined}
+                onClick={(event) => jumpToSection(event, item.id)}
+                title={item.label}
               >
-                {item.children.map((child) => (
-                  <a
-                    className={`wiki-outline__secondary ${
-                      ribbonTargetId === child.id ? "is-active" : ""
-                    }`}
-                    href={`#${child.id}`}
-                    data-outline-target={child.id}
-                    onClick={(event) => jumpToSection(event, child.id)}
-                    aria-current={
-                      ribbonTargetId === child.id ? "location" : undefined
-                    }
-                    title={child.label}
-                    key={child.id}
-                  >
-                    <span>{child.index}</span>
-                    <strong>{child.label}</strong>
-                  </a>
-                ))}
-              </div>
-            ) : null}
-          </div>
-        ))}
+                <span className="wiki-outline__index">
+                  {minimal ? Number.parseInt(item.index, 10) : item.index}
+                </span>
+                <span className="wiki-outline__copy">
+                  {!minimal && item.meta ? <small>{item.meta}</small> : null}
+                  <strong>{item.label}</strong>
+                </span>
+              </a>
+
+              {isExpanded && item.children ? (
+                <div
+                  className="wiki-outline__subnav"
+                  aria-label={`${item.label} subsections`}
+                >
+                  {item.children.map((child) => (
+                    <a
+                      className={`wiki-outline__secondary ${
+                        ribbonTargetId === child.id ? "is-active" : ""
+                      }`}
+                      href={`#${child.id}`}
+                      data-outline-target={child.id}
+                      onClick={(event) => jumpToSection(event, child.id)}
+                      aria-current={
+                        ribbonTargetId === child.id ? "location" : undefined
+                      }
+                      title={child.label}
+                      key={child.id}
+                    >
+                      <span>{child.index}</span>
+                      <strong>{child.label}</strong>
+                    </a>
+                  ))}
+                </div>
+              ) : null}
+            </div>
+          );
+        })}
       </nav>
 
       {links.length ? (

@@ -54,6 +54,25 @@ export type WikiContentBlock =
   | { type: "prose"; paragraphs: string[] }
   | { type: "figure"; src: string; alt: string; caption?: string }
   | {
+      type: "image-placeholder";
+      filename: string;
+      instruction: string;
+      caption?: string;
+    }
+  | {
+      type: "table";
+      caption?: string;
+      headers: string[];
+      rows: string[][];
+    }
+  | {
+      type: "mini-visual";
+      label: string;
+      title: string;
+      items: string[];
+      tone?: "navy" | "gold" | "care";
+    }
+  | {
       type: "callout";
       tone?: WikiCalloutTone;
       label?: string;
@@ -67,6 +86,11 @@ export type WikiContentBlock =
       title: string;
     }
   | { type: "feature"; key: string }
+  | { type: "chapter-link"; target: string; label: string }
+  | {
+      type: "prose-linked";
+      parts: Array<{ text: string; target?: string; label?: string }>;
+    }
   | { type: "note"; label: string; body: string }
   | {
       type: "epigraph";
@@ -125,4 +149,5 @@ export interface WikiPageContent {
   sections: WikiSection[];
   links: WikiLink[];
   next: WikiLink & { title: string };
+  heroMinimal?: boolean;
 }

@@ -1,4 +1,3 @@
-import { Suspense, lazy, useState } from "react";
 import { useWikiPageScroll, WikiPage } from "../components/wiki/WikiPage";
 import {
   ConsequencesDimensionCard,
@@ -16,20 +15,8 @@ import {
   SSTQNClassificationMatrix,
   SSTQNScoreProcess,
   StakeholderProfileCard,
+  SustainabilityPdfPreview,
 } from "../components/wiki/sustainability";
-
-// react-pdf is heavy — lazy-load the PDF components so they split into a
-// separate chunk and don't bloat the initial sustainability page bundle.
-const PdfViewerModal = lazy(() =>
-  import("../components/wiki/features/PdfViewerModal").then((m) => ({
-    default: m.PdfViewerModal,
-  })),
-);
-const SustainabilityPdfPreview = lazy(() =>
-  import("../components/wiki/sustainability/SustainabilityPdfPreview").then(
-    (m) => ({ default: m.SustainabilityPdfPreview }),
-  ),
-);
 import type { ProtocolManual } from "../data/protocolPages";
 import {
   sustainabilityAssets,
@@ -236,8 +223,6 @@ function StakeholderGrid({
 }
 
 export function Sustainability() {
-  const [pdfOpen, setPdfOpen] = useState(false);
-
   return (
     <>
       <WikiPage
@@ -257,14 +242,7 @@ export function Sustainability() {
           "sdg-dimension-chord": <SdgDimensionChord />,
           "sstqn-matrix": <SSTQNClassificationMatrix />,
           "sstqn-score-flow": <SSTQNScoreProcess />,
-          "pdf-sst-qn": (
-            <Suspense fallback={null}>
-              <SustainabilityPdfPreview
-                manual={sstqnPdfManual}
-                onOpen={() => setPdfOpen(true)}
-              />
-            </Suspense>
-          ),
+          "pdf-sst-qn": <SustainabilityPdfPreview manual={sstqnPdfManual} />,
           "framework-diagram": <ImpactFrameworkDiagram />,
           "scale-chain": <ScaleChainWithSpy anchorIds={SCALE_ANCHOR_IDS} />,
           stats: <StatsGrid stats={sustainabilityStats} />,
@@ -348,12 +326,6 @@ export function Sustainability() {
           ),
         }}
       />
-      <Suspense fallback={null}>
-        <PdfViewerModal
-          manual={pdfOpen ? sstqnPdfManual : null}
-          onClose={() => setPdfOpen(false)}
-        />
-      </Suspense>
     </>
   );
 }

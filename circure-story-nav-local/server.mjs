@@ -17,7 +17,12 @@ const mimeTypes = {
 };
 
 function resolveRequestPath(url) {
-  const pathname = decodeURIComponent(new URL(url, `http://127.0.0.1:${port}`).pathname);
+  let pathname;
+  try {
+    pathname = decodeURIComponent(new URL(url, `http://127.0.0.1:${port}`).pathname);
+  } catch {
+    return null;
+  }
   const cleanPath = normalize(pathname).replace(/^(\.\.[/\\])+/, "");
   const target = join(root, cleanPath === "/" ? "index.html" : cleanPath);
 

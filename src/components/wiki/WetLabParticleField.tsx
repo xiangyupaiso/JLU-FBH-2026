@@ -393,16 +393,20 @@ export function WetLabParticleField({ route }: { route: string }) {
       pointerInside = false;
     };
 
-    const resizeObserver = new ResizeObserver(resize);
-    const intersectionObserver = new IntersectionObserver(([entry]) => {
-      visible = entry.isIntersecting;
-      if (visible) start();
-      else window.cancelAnimationFrame(frame);
-    });
+    const resizeObserver =
+      "ResizeObserver" in window ? new ResizeObserver(resize) : null;
+    const intersectionObserver =
+      "IntersectionObserver" in window
+        ? new IntersectionObserver(([entry]) => {
+            visible = entry.isIntersecting;
+            if (visible) start();
+            else window.cancelAnimationFrame(frame);
+          })
+        : null;
 
     resize();
-    resizeObserver.observe(field);
-    intersectionObserver.observe(field);
+    resizeObserver?.observe(field);
+    intersectionObserver?.observe(field);
     field.addEventListener("pointermove", handlePointerMove, { passive: true });
     field.addEventListener("pointerleave", handlePointerLeave);
     if (reducedMotion.matches) render(performance.now());
@@ -410,8 +414,8 @@ export function WetLabParticleField({ route }: { route: string }) {
 
     return () => {
       window.cancelAnimationFrame(frame);
-      resizeObserver.disconnect();
-      intersectionObserver.disconnect();
+      resizeObserver?.disconnect();
+      intersectionObserver?.disconnect();
       field.removeEventListener("pointermove", handlePointerMove);
       field.removeEventListener("pointerleave", handlePointerLeave);
     };

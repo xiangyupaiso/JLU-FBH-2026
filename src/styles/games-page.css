@@ -61,8 +61,8 @@
   position: absolute;
   z-index: 0;
   top: 57px;
-  right: calc(100% / 6);
-  left: calc(100% / 6);
+  right: calc(100% / 8);
+  left: calc(100% / 8);
   height: 9px;
   border-top: 1px solid rgba(122, 40, 67, 0.24);
   border-bottom: 1px solid rgba(122, 40, 67, 0.28);
@@ -94,7 +94,7 @@
   position: relative;
   z-index: 1;
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   margin: 0;
   padding: 0;
   list-style: none;
@@ -591,6 +591,185 @@
   transform: scale(0.98);
 }
 
+.wiki-page.wiki-page--games-hero
+  .games-showcase--bio-memory
+  .games-showcase__launch {
+  border-color: rgba(38, 83, 78, 0.58);
+  background: #e8e6d8;
+  color: #153b3b;
+}
+
+.wiki-page.wiki-page--games-hero
+  .games-showcase--bio-memory
+  .games-showcase__launch::before {
+  background: linear-gradient(
+    90deg,
+    rgba(236, 233, 215, 0.98) 0%,
+    rgba(236, 233, 215, 0.9) 48%,
+    rgba(236, 233, 215, 0.24) 72%,
+    rgba(236, 233, 215, 0.08) 100%
+  );
+}
+
+.wiki-page.wiki-page--games-hero
+  .games-showcase--bio-memory
+  .games-showcase__launch::after {
+  border-color: rgba(38, 83, 78, 0.28);
+}
+
+.wiki-page.wiki-page--games-hero
+  .games-showcase--bio-memory
+  .games-showcase__art {
+  background-color: #e8e6d8;
+  background-image:
+    radial-gradient(circle at 79% 35%, rgba(43, 102, 91, 0.18) 0 2px, transparent 3px),
+    radial-gradient(circle at 85% 49%, rgba(183, 118, 98, 0.2) 0 2px, transparent 3px),
+    linear-gradient(rgba(39, 80, 73, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(39, 80, 73, 0.08) 1px, transparent 1px),
+    radial-gradient(circle at 82% 45%, rgba(252, 248, 235, 0.96) 0 22%, transparent 22.4%),
+    linear-gradient(135deg, #eeeadb 0%, #dddcca 100%);
+  background-position:
+    0 0,
+    0 0,
+    center,
+    center,
+    center,
+    center;
+  background-size:
+    auto,
+    auto,
+    34px 34px,
+    34px 34px,
+    auto,
+    auto;
+  filter: none;
+}
+
+.wiki-page.wiki-page--games-hero
+  .games-showcase--bio-memory
+  .games-showcase__launch:is(:hover, :focus-visible)
+  .games-showcase__art {
+  filter: none;
+  transform: scale(1.018);
+}
+
+.wiki-page.wiki-page--games-hero
+  .games-showcase--bio-memory
+  .games-showcase__chapters,
+.wiki-page.wiki-page--games-hero
+  .games-showcase--bio-memory
+  .games-showcase__copy small {
+  color: rgba(21, 59, 59, 0.62);
+}
+
+.wiki-page.wiki-page--games-hero
+  .games-showcase--bio-memory
+  .games-showcase__copy em {
+  color: #153b3b;
+}
+
+.wiki-page.wiki-page--games-hero
+  .games-showcase--bio-memory
+  .games-showcase__play {
+  border-color: rgba(21, 59, 59, 0.55);
+  background: rgba(244, 240, 224, 0.5);
+  box-shadow: none;
+  color: #153b3b;
+}
+
+.wiki-page.wiki-page--games-hero
+  .games-showcase--bio-memory
+  .games-showcase__launch:is(:hover, :focus-visible)
+  .games-showcase__play {
+  border-color: rgba(21, 59, 59, 0.82);
+  background: rgba(252, 248, 235, 0.82);
+  box-shadow:
+    0 14px 30px rgba(21, 59, 59, 0.12),
+    0 0 0 1px rgba(255, 255, 255, 0.36);
+  transform: translateY(-2px) scale(1.035);
+}
+
+.wiki-page.wiki-page--games-hero
+  .games-showcase--bio-memory
+  .games-showcase__launch:active
+  .games-showcase__play {
+  transform: scale(0.96);
+}
+
+.wiki-page.wiki-page--games-hero .games-showcase__bio-mark {
+  position: absolute;
+  z-index: 1;
+  top: 24%;
+  right: clamp(90px, 12vw, 150px);
+  width: clamp(220px, 28vw, 330px);
+  height: clamp(200px, 28vw, 310px);
+  pointer-events: none;
+}
+
+.wiki-page.wiki-page--games-hero .games-showcase__bio-mark::before,
+.wiki-page.wiki-page--games-hero .games-showcase__bio-mark::after {
+  position: absolute;
+  border: 1px solid rgba(39, 80, 73, 0.34);
+  border-radius: 50%;
+  content: "";
+}
+
+.wiki-page.wiki-page--games-hero .games-showcase__bio-mark::before {
+  top: 16%;
+  right: 2%;
+  width: 42%;
+  aspect-ratio: 1;
+  box-shadow:
+    -58px 48px 0 -26px rgba(183, 118, 98, 0.2),
+    -100px -14px 0 -33px rgba(43, 102, 91, 0.24);
+}
+
+.wiki-page.wiki-page--games-hero .games-showcase__bio-mark::after {
+  right: 19%;
+  bottom: 4%;
+  width: 18%;
+  aspect-ratio: 1;
+  background: rgba(252, 248, 235, 0.46);
+}
+
+.wiki-page.wiki-page--games-hero .games-showcase__bio-mark i {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: grid;
+  width: clamp(104px, 12vw, 140px);
+  height: clamp(154px, 17vw, 202px);
+  place-items: end center;
+  padding: 16px 10px;
+  border: 1px solid rgba(39, 80, 73, 0.54);
+  border-radius: 13px;
+  background:
+    radial-gradient(circle at 50% 32%, transparent 0 23px, rgba(39, 80, 73, 0.62) 24px 25px, transparent 26px),
+    linear-gradient(150deg, rgba(252, 248, 235, 0.98), rgba(232, 229, 211, 0.94));
+  box-shadow:
+    0 2px 4px rgba(21, 59, 59, 0.08),
+    0 18px 32px rgba(21, 59, 59, 0.12);
+  color: #153b3b;
+  font-family: var(--dry-calm-type-editorial);
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  transform-origin: 50% 100%;
+}
+
+.wiki-page.wiki-page--games-hero .games-showcase__bio-mark i:nth-child(1) {
+  transform: translate(-86%, -45%) rotate(-13deg);
+}
+
+.wiki-page.wiki-page--games-hero .games-showcase__bio-mark i:nth-child(2) {
+  transform: translate(-50%, -52%) rotate(-1deg);
+}
+
+.wiki-page.wiki-page--games-hero .games-showcase__bio-mark i:nth-child(3) {
+  transform: translate(-14%, -44%) rotate(12deg);
+}
+
 .wiki-page.wiki-page--games-hero .games-showcase__cards {
   position: absolute;
   z-index: 1;
@@ -846,6 +1025,11 @@
     right: 72px;
     opacity: 0.58;
   }
+
+  .wiki-page.wiki-page--games-hero .games-showcase__bio-mark {
+    right: 72px;
+    opacity: 0.58;
+  }
 }
 
 @media (max-width: 600px) {
@@ -907,6 +1091,22 @@
     width: 180px;
     height: 180px;
     opacity: 0.34;
+  }
+
+  .wiki-page.wiki-page--games-hero .games-showcase__bio-mark {
+    top: 22%;
+    right: 16px;
+    width: 180px;
+    height: 180px;
+    opacity: 0.34;
+  }
+
+  .wiki-page.wiki-page--games-hero .games-showcase__bio-mark i {
+    width: 86px;
+    height: 128px;
+    padding: 11px 8px;
+    border-radius: 10px;
+    font-size: 9px;
   }
 
   .wiki-page.wiki-page--games-hero

@@ -6,6 +6,7 @@ import "../../styles/circure-search.css"; // gooey header search + match highlig
 import "../../styles/circure-footer.css"; // global brand footer / final team reveal
 import "../../styles/circure-back-to-top.css"; // global floating return-to-top control
 import "../../styles/wiki-disclosures.css"; // shared theme-aware accordion language
+import "../../styles/circure-cursor.css"; // global two-state mascot cursor
 import { Route, Routes, useLocation } from "react-router-dom";
 import { getPathMapping, stringToSlug } from "../../utils";
 import { Suspense, lazy, useEffect, useLayoutEffect } from "react";
@@ -34,9 +35,12 @@ const App = () => {
     );
   }
   const teamSlug = stringToSlug(teamName);
-  const currentPath = teamSlug
+  const rawPath = teamSlug
     ? pathname.split(`/${teamSlug}`).pop() || "/"
     : pathname;
+  // 容忍尾部斜杠："/description/" 应与 "/description" 命中同一路由标题。
+  const currentPath =
+    rawPath.length > 1 ? rawPath.replace(/\/+$/, "") : rawPath;
 
   // Route changes are page transitions, not in-page navigation. Reset the
   // viewport before the new page paints so global smooth scrolling cannot
@@ -80,8 +84,27 @@ const App = () => {
     currentPath in pathMapping ? pathMapping[currentPath].title : "Not Found";
 
   useEffect(() => {
-    document.title = `${title || ""} | ${import.meta.env.VITE_TEAM_NAME} - iGEM ${import.meta.env.VITE_TEAM_YEAR}`;
+    document.title = `${title || ""} | ${import.meta.env.VITE_TEAM_NAME ?? ""} - iGEM ${import.meta.env.VITE_TEAM_YEAR ?? ""}`;
   }, [title]);
+
+  useEffect(() => {
+    const body = document.body;
+    const beginPress = (event: MouseEvent) => {
+      if (event.button === 0) body.classList.add("is-pressing");
+    };
+    const endPress = () => body.classList.remove("is-pressing");
+
+    window.addEventListener("mousedown", beginPress);
+    window.addEventListener("mouseup", endPress);
+    window.addEventListener("blur", endPress);
+
+    return () => {
+      window.removeEventListener("mousedown", beginPress);
+      window.removeEventListener("mouseup", endPress);
+      window.removeEventListener("blur", endPress);
+      endPress();
+    };
+  }, []);
 
   return (
     <>

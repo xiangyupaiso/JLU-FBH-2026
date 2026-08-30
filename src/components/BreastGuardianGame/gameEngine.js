@@ -28,6 +28,7 @@ export function initializeBreastGuardianGame(container, options) {
   frame.setAttribute("sandbox", "allow-scripts allow-same-origin");
 
   const handleMessage = (event) => {
+    if (event.origin !== window.location.origin) return;
     if (event.source !== frame.contentWindow) return;
     if (!event.data || event.data.source !== MESSAGE_SOURCE) return;
 

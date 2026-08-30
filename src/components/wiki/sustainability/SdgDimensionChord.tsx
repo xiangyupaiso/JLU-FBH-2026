@@ -35,6 +35,25 @@ interface ChordRecord {
  * verbatim; only the runtime source of d3 changed from a CDN to the local
  * `public/vendor/d3.min.js` (iGEM forbids external CDNs).
  */
+// 模块级单例：并发挂载的多个实例共享同一次 d3 加载，避免重复插入
+// 相同的 <script> 标签。
+let d3Loader: Promise<unknown> | null = null;
+function loadD3(): Promise<unknown> {
+  d3Loader ??= new Promise((resolve, reject) => {
+    if (window.d3) {
+      resolve(window.d3);
+      return;
+    }
+    const script = document.createElement("script");
+    script.src = `${import.meta.env.BASE_URL}vendor/d3.min.js`;
+    script.async = true;
+    script.onload = () => resolve(window.d3);
+    script.onerror = () => reject(new Error("d3 load failed"));
+    document.head.appendChild(script);
+  });
+  return d3Loader;
+}
+
 export function SdgDimensionChord() {
   const hostRef = useRef<HTMLDivElement | null>(null);
   const tipRef = useRef<HTMLDivElement | null>(null);
@@ -46,16 +65,17 @@ export function SdgDimensionChord() {
       setD3(window.d3);
       return;
     }
-    const script = document.createElement("script");
-    script.src = `${import.meta.env.BASE_URL}vendor/d3.min.js`;
-    script.async = true;
-    script.onload = () => setD3(window.d3 ?? null);
-    script.onerror = () => setMissing(true);
-    document.head.appendChild(script);
+    let cancelled = false;
+    loadD3().then(
+      (loaded) => {
+        if (!cancelled) setD3(loaded ?? null);
+      },
+      () => {
+        if (!cancelled) setMissing(true);
+      },
+    );
     return () => {
-      script.onload = null;
-      script.onerror = null;
-      if (script.parentNode) script.parentNode.removeChild(script);
+      cancelled = true;
     };
   }, []);
 

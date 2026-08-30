@@ -13,7 +13,7 @@
   --wet-teal: #2f6f68;
   --wet-page: min(1120px, calc(100% - 48px));
   --wet-article: 830px;
-  --font-mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  --font-mono: "IBM Plex Mono", "SFMono-Regular", Consolas, "Liberation Mono", monospace;
   --wiki-accent: var(--wet-accent);
   --wiki-deep: var(--wet-ink);
   --wiki-structure: var(--wet-teal);

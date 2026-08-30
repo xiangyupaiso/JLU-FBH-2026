@@ -29,6 +29,10 @@ const SKIP_SELECTOR = [
   ".page-search",
   ".circure-mega-menu",
   ".circure-mobile-menu",
+  // React state-driven text (outline counts, live regions): splitting these
+  // nodes detaches them from React's fiber refs, freezing later updates.
+  ".wiki-outline",
+  "[aria-live]",
   "[aria-hidden='true']",
   "[inert]",
   "[hidden]",
@@ -110,12 +114,17 @@ function collectMatches(root: ParentNode, query: string): HTMLElement[] {
 }
 
 function clearMarks(marks: HTMLElement[]): void {
+  const parents = new Set<Node>();
   for (const mark of marks) {
     const parent = mark.parentNode;
     if (parent) {
       parent.replaceChild(document.createTextNode(mark.textContent ?? ""), mark);
+      parents.add(parent);
     }
   }
+  // Merge the fragmented text nodes back so the DOM tree matches what React
+  // rendered before highlighting.
+  parents.forEach((parent) => parent.normalize());
 }
 
 export function PageSearch() {

@@ -26,9 +26,9 @@
   --hair:rgba(27,23,25,.06);
   --line-navy:rgba(252,248,241,.12);
   --font-sans:-apple-system,BlinkMacSystemFont,"SF Pro Text","Helvetica Neue",Arial,sans-serif;
-  --font-display:"Avenir Next",Avenir,"Helvetica Neue",Arial,sans-serif;
-  --font-editorial:"Iowan Old Style",Baskerville,Georgia,"Times New Roman",serif;
-  --font-mono:"SFMono-Regular",Consolas,"Liberation Mono",monospace;
+  --font-display:"Fraunces","Avenir Next",Avenir,"Helvetica Neue",Arial,sans-serif;
+  --font-editorial:"Newsreader","Iowan Old Style",Baskerville,Georgia,"Times New Roman",serif;
+  --font-mono:"IBM Plex Mono","SFMono-Regular",Consolas,"Liberation Mono",monospace;
   --radius-control:6px;
   --radius-panel:28px;
   --radius-panel-mobile:20px;
@@ -312,17 +312,17 @@ footer .flegal{padding-top:22px;border-top:1px solid var(--line-navy);font-famil
       <span class="sec-num">03 / Typography</span>
       <h2 class="sec-title">排版与字体</h2>
     </div>
-    <p class="sec-lead">字体完全采用系统栈（iGEM 禁用 CDN）。衬线（Iowan/Baskerville）承载标题与人文叙事，无衬线承载数据与控件，等宽仅用于序列与实验状态。字号大量使用 <code>clamp()</code> 以实现流式响应。</p>
+    <p class="sec-lead">字体以站内自托管资源交付（不使用外部 CDN）：Fraunces 承载 Hero 与展示字，Newsreader 承载标题与长文阅读，系统无衬线承载数据与控件，IBM Plex Mono 仅用于序列与实验状态。字号大量使用 <code>clamp()</code> 以实现流式响应。</p>
 
     <h3 class="sub">Font Family</h3>
     <div class="table-wrap">
       <table>
         <thead><tr><th>Token</th><th>字体栈</th><th>用途</th></tr></thead>
         <tbody>
-          <tr><td><code>type/font/editorial</code></td><td>"Iowan Old Style", Baskerville, Georgia, serif</td><td>Display 标题、叙事正文、人文陈述</td></tr>
+          <tr><td><code>type/font/editorial</code></td><td>"Newsreader", "Iowan Old Style", Baskerville, Georgia, serif</td><td>标题、叙事正文、人文陈述</td></tr>
           <tr><td><code>type/font/sans</code></td><td>-apple-system, "SF Pro Text", "Helvetica Neue", Arial</td><td>数据、导航、控件、证据标签</td></tr>
-          <tr><td><code>type/font/display</code></td><td>"Avenir Next", Avenir, "Helvetica Neue", Arial</td><td>大型 wordmark 与展示字</td></tr>
-          <tr><td><code>type/font/mono</code></td><td>"SFMono-Regular", Consolas, monospace</td><td>序列、时间戳、实验状态</td></tr>
+          <tr><td><code>type/font/display</code></td><td>"Fraunces", "Avenir Next", Avenir, "Helvetica Neue", Arial</td><td>Hero、大型 wordmark 与展示字</td></tr>
+          <tr><td><code>type/font/mono</code></td><td>"IBM Plex Mono", "SFMono-Regular", Consolas, monospace</td><td>序列、时间戳、实验状态</td></tr>
         </tbody>
       </table>
     </div>

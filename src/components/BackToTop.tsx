@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { clamp } from "../utils";
+import backToTopImage from "../assets/wiki/back-to-top.png";
 
 const MAGNET_PADDING = 80;
 const MAGNET_STRENGTH = 5;
@@ -121,9 +122,7 @@ export function BackToTop() {
       tabIndex={isVisible ? 0 : -1}
       title="Return to top"
     >
-      <svg viewBox="0 0 20 20" aria-hidden="true">
-        <path d="M10 16V4M5.5 8.5 10 4l4.5 4.5" />
-      </svg>
+      <img src={backToTopImage} alt="" draggable={false} />
     </button>
   );
 }

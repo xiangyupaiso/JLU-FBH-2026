@@ -7,7 +7,6 @@ import {
 interface PatientChatGroup {
   patientId: PatientChatId;
   side: PatientChatSide;
-  name: string;
   messages: string[];
 }
 
@@ -22,7 +21,6 @@ function groupPatientMessages(): PatientChatGroup[] {
       groups.push({
         patientId: m.patientId,
         side: m.side,
-        name: m.name,
         messages: [m.text],
       });
     }
@@ -51,12 +49,6 @@ export function PatientChatDialog() {
                 {group.patientId}
               </span>
               <div className="chat-group__col">
-                <span
-                  className="chat-group__name"
-                  style={{ animationDelay: `${baseDelay}s` }}
-                >
-                  {group.name}
-                </span>
                 {group.messages.map((text, j) => (
                   <p
                     className="chat-bubble"

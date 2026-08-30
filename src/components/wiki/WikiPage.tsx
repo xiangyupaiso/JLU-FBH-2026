@@ -235,12 +235,80 @@ function WikiBlock({
           ))}
         </div>
       );
+    case "prose-linked":
+      return (
+        <div className="wiki-prose" data-wiki-reveal>
+          <p>
+            {block.parts.map((part, index) =>
+              part.target ? (
+                <a
+                  className="wiki-chapter-link wiki-chapter-link--inline"
+                  href={`#${part.target}`}
+                  key={`${part.target}-${index}`}
+                  onClick={(event) => {
+                    event.preventDefault();
+                    document.getElementById(part.target!)?.scrollIntoView({
+                      behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches
+                        ? "auto"
+                        : "smooth",
+                      block: "start",
+                    });
+                  }}
+                >
+                  {part.label}
+                </a>
+              ) : (
+                <span key={`${part.text}-${index}`}>{part.text}</span>
+              ),
+            )}
+          </p>
+        </div>
+      );
     case "figure":
       return (
         <figure className="wiki-figure" data-wiki-reveal>
           <img src={block.src} alt={block.alt} />
           {block.caption ? <figcaption>{block.caption}</figcaption> : null}
         </figure>
+      );
+    case "image-placeholder":
+      return (
+        <figure className="wiki-figure wiki-figure--placeholder" data-wiki-reveal>
+          <div className="wiki-image-placeholder" role="img" aria-label={`Image placeholder: ${block.filename}`}>
+            <span>IMAGE PLACEHOLDER</span>
+            <strong>{block.filename}</strong>
+            <p>{block.instruction}</p>
+          </div>
+          {block.caption ? <figcaption>{block.caption}</figcaption> : null}
+        </figure>
+      );
+    case "table":
+      return (
+        <div className="wiki-table-wrap" data-wiki-reveal role="region" aria-label={block.caption ?? "Hardware table"} tabIndex={0}>
+          <table className="wiki-table">
+            {block.caption ? <caption>{block.caption}</caption> : null}
+            <thead>
+              <tr>{block.headers.map((header) => <th scope="col" key={header}>{header}</th>)}</tr>
+            </thead>
+            <tbody>
+              {block.rows.map((row, rowIndex) => (
+                <tr key={`${rowIndex}-${row[0] ?? "row"}`}>
+                  {row.map((cell, cellIndex) => cellIndex === 0 ? <th scope="row" key={`${rowIndex}-${cellIndex}`}>{cell}</th> : <td key={`${rowIndex}-${cellIndex}`}>{cell}</td>)}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      );
+    case "mini-visual":
+      return (
+        <aside className={`wiki-mini-visual wiki-mini-visual--${block.tone ?? "navy"}`} data-wiki-reveal>
+          <span>{block.label}</span>
+          <strong>{block.title}</strong>
+          <ol>
+            {block.items.map((item, index) => <li key={`${index}-${item}`}><b>{String(index + 1).padStart(2, "0")}</b><span>{item}</span></li>)}
+          </ol>
+        </aside>
       );
     case "callout":
       return (
@@ -274,6 +342,26 @@ function WikiBlock({
         <div className="wiki-feature" data-wiki-reveal>
           {features[block.key]}
         </div>
+      );
+    case "chapter-link":
+      return (
+        <a
+          className="wiki-chapter-link"
+          href={`#${block.target}`}
+          data-wiki-reveal
+          onClick={(event) => {
+            event.preventDefault();
+            document.getElementById(block.target)?.scrollIntoView({
+              behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches
+                ? "auto"
+                : "smooth",
+              block: "start",
+            });
+          }}
+        >
+          <span>{block.label}</span>
+          <b aria-hidden="true">↘</b>
+        </a>
       );
     case "note":
       return (
@@ -342,13 +430,15 @@ function WikiSectionBlock({
       data-wiki-section
     >
       <header className="wiki-section__heading" data-wiki-reveal>
-        <span className={manuscript ? "wiki-section-number" : undefined}>
+        <span className="wiki-section-number">
           {manuscript ? Number.parseInt(section.index, 10) : section.index}
         </span>
         <div>
           {!manuscript ? <p className="wiki-kicker">{section.kicker}</p> : null}
           <h2>{section.title}</h2>
-          <p className="wiki-section__summary">{section.summary}</p>
+          {section.summary ? (
+            <p className="wiki-section__summary">{section.summary}</p>
+          ) : null}
         </div>
       </header>
 
@@ -466,15 +556,15 @@ export function WikiPage({
 
       <header className="wiki-hero">
         <div className="wiki-hero__copy" data-wiki-reveal>
-          {!isManuscript ? (
+          {!isManuscript && !content.heroMinimal ? (
             <p className="wiki-chapter">{content.chapter}</p>
           ) : null}
-          {!isManuscript ? (
+          {!isManuscript && !content.heroMinimal ? (
             <p className="wiki-kicker">{content.eyebrow}</p>
           ) : null}
           <h1>{content.title}</h1>
           <p className="wiki-hero__lede">{content.lede}</p>
-          {!isManuscript ? (
+          {!isManuscript && !content.heroMinimal ? (
             <aside className="wiki-hero__boundary">
               <span>What the evidence supports today</span>
               <p>{content.boundary}</p>
@@ -500,7 +590,7 @@ export function WikiPage({
         />
       ) : null}
 
-      {!isManuscript ? (
+      {!isManuscript && !content.heroMinimal ? (
         <section className="wiki-facts" aria-label="Page at a glance">
           {content.facts.map((fact, index) => (
             <article key={fact.label} data-wiki-reveal>

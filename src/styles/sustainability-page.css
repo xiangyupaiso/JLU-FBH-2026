@@ -16,7 +16,7 @@
   --ink-faint: rgba(27, 23, 25, 0.46);
   --line-hair: rgba(27, 23, 25, 0.06);
   --care-strong: #754356;
-  --font-mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  --font-mono: "IBM Plex Mono", "SFMono-Regular", Consolas, "Liberation Mono", monospace;
   --shadow-medium: 0 18px 42px rgba(16, 47, 89, 0.14);
   --duration-base: 360ms;
   --duration-slow: 440ms;
@@ -349,7 +349,7 @@
 
 /* ---------------------------------------------------------------------------
  * PatientChatDialog — message-group chat inside the tnbc-patients profile card
- *   外层 chat-container 卡片 + 每位患者一个分组（1 头像 + 1 用户名 + 多气泡）
+ *   外层 chat-container 卡片 + 每位患者一个分组（1 头像 + 多气泡）
  * ------------------------------------------------------------------------- */
 
 .chat-container {
@@ -380,7 +380,6 @@
   flex: 0 0 auto;
   width: 36px;
   height: 36px;
-  margin-top: 24px;
   border-radius: 50%;
   display: grid;
   place-items: center;
@@ -403,16 +402,6 @@
 
 .chat-group--right .chat-group__col {
   align-items: flex-end;
-}
-
-.chat-group__name {
-  font-family: var(--font-mono);
-  font-size: 12px;
-  font-weight: 600;
-  line-height: 1.5;
-  color: #8c7d70;
-  margin-bottom: 6px;
-  padding: 0 2px;
 }
 
 .chat-container .chat-bubble {
@@ -453,7 +442,6 @@
 }
 
 .chat-avatar,
-.chat-group__name,
 .chat-bubble {
   opacity: 0;
   animation: chatReveal 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
@@ -461,7 +449,6 @@
 
 @media (prefers-reduced-motion: reduce) {
   .chat-avatar,
-  .chat-group__name,
   .chat-bubble {
     opacity: 1;
     animation: none;
@@ -1723,301 +1710,84 @@
   color: var(--ink-muted);
 }
 
-/* --- PDF attachment hero --- */
+/* --- 原生 PDF 内嵌展示（浏览器 PDF viewer） + 下方可见标题说明 --- */
 
-.sust-pdf-hero {
+.sust-pdf-native {
   margin: 0;
-  width: 100%;
-  max-width: 100%;
-  box-sizing: border-box;
+  display: grid;
+  gap: 18px;
 }
 
-.sust-pdf-hero__stage {
-  position: relative;
+.sust-pdf-native__frame {
+  display: block;
   width: 100%;
-  max-width: 100%;
-  box-sizing: border-box;
-  aspect-ratio: 1.9;
-  min-height: 420px;
-  max-height: 640px;
-  overflow: hidden;
+  height: clamp(420px, 82vh, 920px);
   border: 1px solid var(--line);
-  background:
-    linear-gradient(160deg, rgba(23, 63, 120, 0.35), rgba(16, 47, 89, 0.94) 72%),
-    var(--brand-navy-deep);
+  background: #fff;
 }
 
-.sust-pdf-hero__page {
-  position: absolute;
-  inset: 0;
-  overflow: hidden;
-  width: 100%;
-  max-width: 100%;
-  box-sizing: border-box;
-}
-
-.sust-pdf-hero__page .react-pdf__Document,
-.sust-pdf-hero__page .react-pdf__Page,
-.sust-pdf-hero__page .react-pdf__Page canvas {
-  max-width: 100%;
-}
-
-.sust-pdf-hero__page .react-pdf__Page {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  transition: transform 900ms var(--ease-out);
-}
-
-.sust-pdf-hero__stage:hover .sust-pdf-hero__page .react-pdf__Page {
-  transform: translateX(-50%) scale(1.03);
-}
-
-.sust-pdf-hero__scrim {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background: linear-gradient(
-    to top,
-    rgba(16, 47, 89, 0.92) 0%,
-    rgba(16, 47, 89, 0.4) 34%,
-    rgba(16, 47, 89, 0.06) 62%,
-    rgba(16, 47, 89, 0.3) 100%
-  );
-}
-
-.sust-pdf-hero__frame {
-  position: absolute;
-  inset: 16px;
-  border: 1px solid rgba(252, 248, 241, 0.42);
-  pointer-events: none;
-}
-
-.sust-pdf-hero__open {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: clamp(28px, 3.4vw, 48px);
-  cursor: pointer;
-  text-align: left;
-  background: transparent;
-  color: var(--paper-bright);
-}
-
-.sust-pdf-hero__open:focus-visible {
-  outline: 2px solid var(--care);
-  outline-offset: -4px;
-}
-
-.sust-pdf-hero__top {
-  display: flex;
-  justify-content: space-between;
-  gap: 16px;
-  font-family: var(--font-mono);
-  font-size: 10px;
-  font-weight: 800;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: rgba(252, 248, 241, 0.88);
-}
-
-.sust-pdf-hero__bottom {
+.sust-pdf-native__caption {
   display: grid;
-  gap: 14px;
-  padding-right: clamp(128px, 15vw, 190px);
+  gap: 10px;
+  max-width: 760px;
+  padding-top: 18px;
+  border-top: 1px solid var(--line-hair);
 }
 
-.sust-pdf-hero__title {
-  font-family: var(--font-editorial);
-  font-size: clamp(34px, 4.6vw, 64px);
-  font-weight: 400;
-  letter-spacing: -0.03em;
-  line-height: 1.02;
-}
-
-.sust-pdf-hero__caption {
-  font-family: var(--font-mono);
-  font-size: 10px;
-  font-weight: 800;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: rgba(252, 248, 241, 0.8);
-}
-
-.sust-pdf-hero__pager {
-  position: absolute;
-  z-index: 2;
-  right: clamp(24px, 3vw, 40px);
-  bottom: clamp(24px, 3vw, 40px);
-  display: flex;
-  align-items: center;
-  gap: 2px;
-  padding: 6px;
-  border: 1px solid rgba(252, 248, 241, 0.32);
-  border-radius: 10px;
-  background: linear-gradient(
-    90deg,
-    rgba(16, 47, 89, 0.22),
-    rgba(16, 47, 89, 0.68)
-  );
-  color: var(--paper-bright);
-  transition:
-    border-color var(--duration-fast) var(--ease-out),
-    background var(--duration-fast) var(--ease-out);
-}
-
-.sust-pdf-hero__pager:hover {
-  border-color: rgba(252, 248, 241, 0.6);
-}
-
-.sust-pdf-hero__pager button {
-  display: grid;
-  place-items: center;
-  width: 40px;
-  height: 40px;
-  border-radius: 7px;
-  background: transparent;
-  cursor: pointer;
-  font-size: 18px;
-  line-height: 1;
-  color: var(--paper-bright);
-  transition:
-    background var(--duration-fast) var(--ease-out),
-    color var(--duration-fast) var(--ease-out),
-    opacity var(--duration-fast) var(--ease-out);
-}
-
-.sust-pdf-hero__pager button:hover:not(:disabled) {
-  background: rgba(252, 248, 241, 0.16);
-  color: #f1bad9;
-}
-
-.sust-pdf-hero__pager button:active:not(:disabled) {
-  background: rgba(252, 248, 241, 0.26);
-}
-
-.sust-pdf-hero__pager button:disabled {
-  opacity: 0.35;
-  cursor: default;
-}
-
-.sust-pdf-hero__pager button:focus-visible {
-  outline: 2px solid var(--care);
-  outline-offset: 2px;
-}
-
-.sust-pdf-hero__pager span {
-  min-width: 56px;
-  text-align: center;
-  font-family: var(--font-mono);
-  font-size: 10px;
-  font-weight: 800;
-  letter-spacing: 0.08em;
-  font-variant-numeric: tabular-nums;
-}
-
-.sust-pdf-hero__status {
-  position: absolute;
-  inset: 0;
-  display: grid;
-  place-items: center;
-  color: rgba(252, 248, 241, 0.7);
-  font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
-.sust-pdf-hero__bar {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: baseline;
-  gap: 10px 24px;
-  margin-top: 14px;
-}
-
-.sust-pdf-hero__bar p {
+.sust-pdf-native__title {
   margin: 0;
-  font-size: 13px;
-  line-height: 1.6;
+  font-family: var(--font-editorial);
+  font-size: clamp(24px, 2.6vw, 34px);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.14;
+  color: var(--ink);
+}
+
+.sust-pdf-native__meta {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 650;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
   color: var(--ink-muted);
 }
 
-.sust-pdf-hero__bar a {
+.sust-pdf-native__desc {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 1.66;
+  color: var(--ink-muted);
+}
+
+.sust-pdf-native__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  margin-top: 2px;
+}
+
+.sust-pdf-native__link {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  padding: 8px 0;
-  font-family: var(--font-mono);
-  font-size: 10px;
-  font-weight: 800;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--care-strong);
-  transition: color var(--duration-fast) var(--ease-out);
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 650;
+  color: var(--brand-navy);
+  text-decoration: underline;
+  text-decoration-color: rgba(23, 63, 120, 0.32);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  transition:
+    color var(--duration-fast) var(--ease-out),
+    text-decoration-color var(--duration-fast) var(--ease-out);
 }
 
-.sust-pdf-hero__bar a:hover {
-  color: var(--care);
-}
-
-@media (max-width: 760px) {
-  .sust-pdf-hero__stage {
-    aspect-ratio: auto;
-    min-height: 500px;
-  }
-
-  .sust-pdf-hero__bottom {
-    padding-right: 0;
-    padding-bottom: 104px;
-  }
-
-  .sust-pdf-hero__pager {
-    right: 16px;
-    bottom: 16px;
-  }
-}
-
-/* --- PDF reader modal (shared PdfViewerModal, themed for this page) ---
-   The shared viewer reads --wet-* tokens (defined for the protocol page);
-   map them onto the sustainability palette so the overlay renders solid
-   and on-brand here. This stylesheet only loads on this page, so the
-   protocol page keeps its own look. */
-
-/* Selectors carry an extra ancestor class so they out-specify the shared
-   stylesheet, whose lazy chunk injects after this one. */
-body .protocol-modal {
-  --wet-paper: var(--paper);
-  --wet-paper-light: var(--paper-bright);
-  --wet-ink: var(--ink);
-  --wet-muted: var(--muted);
-  --wet-faint: var(--ink-faint);
-  --wet-line: var(--line);
-  --wet-line-strong: rgba(27, 23, 25, 0.3);
-  --wet-accent: var(--care);
-  background: rgba(16, 47, 89, 0.72);
-}
-
-.protocol-modal .protocol-modal__panel {
-  box-shadow: 0 32px 80px rgba(16, 47, 89, 0.35);
-}
-
-.protocol-modal .protocol-modal__viewport {
-  background:
-    linear-gradient(rgba(252, 248, 241, 0.03) 1px, transparent 1px) 0 0 / 32px
-      32px,
-    linear-gradient(160deg, rgba(23, 63, 120, 0.5), rgba(16, 47, 89, 0.96) 72%),
-    var(--brand-navy-deep);
-}
-
-.protocol-modal .protocol-modal__viewport .react-pdf__Page canvas {
-  border: 1px solid rgba(252, 248, 241, 0.28);
-  box-shadow: 0 24px 60px rgba(10, 30, 60, 0.45);
+.sust-pdf-native__link:hover {
+  color: var(--brand-navy-deep);
+  text-decoration-color: var(--brand-navy);
 }
 
 /* --- Reserved sections --- */
@@ -2048,9 +1818,7 @@ body .protocol-modal {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .sust-framework-intro,
-  .sust-pdf-hero__page .react-pdf__Page,
-  .sust-pdf-hero__pager {
+  .sust-framework-intro {
     transition: none;
   }
 
@@ -2213,6 +1981,7 @@ body .protocol-modal {
   background: transparent;
   cursor: pointer;
   appearance: none;
+  text-decoration: none;
   transition:
     background var(--duration-fast) var(--ease-out),
     color var(--duration-fast) var(--ease-out),

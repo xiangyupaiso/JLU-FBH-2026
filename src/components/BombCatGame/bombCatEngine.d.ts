@@ -4,6 +4,7 @@ export interface BombCatEngineOptions {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   onGameComplete?: (stats: any) => void;
   onRequestClose?: () => void;
+  onLoadError?: () => void;
 }
 
 export function initializeBombCatGame(

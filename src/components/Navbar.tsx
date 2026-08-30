@@ -183,13 +183,15 @@ export function Navbar() {
     const request = () => {
       if (!frame) frame = window.requestAnimationFrame(paint);
     };
+    const onScroll = () => request();
+    const onResize = () => request();
     paint();
-    window.addEventListener("scroll", request, { passive: true });
-    window.addEventListener("resize", request, { passive: true });
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onResize);
     return () => {
       if (frame) window.cancelAnimationFrame(frame);
-      window.removeEventListener("scroll", request);
-      window.removeEventListener("resize", request);
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onResize);
     };
   }, [pathname, openKey]);
 
@@ -447,7 +449,7 @@ export function Navbar() {
                   <article className="nav-intro-card">
                     <span>{d.label}</span>
                     <strong>{d.intro}</strong>
-                    <Link to={d.cards[0].path} onClick={closeAll}>
+                    <Link to={d.cards[0]?.path ?? "/"} onClick={closeAll}>
                       {d.enterLabel} <b>→</b>
                     </Link>
                   </article>
@@ -491,7 +493,7 @@ export function Navbar() {
             {DROPDOWNS.map((d) => (
               <Link
                 key={`${d.key}-head`}
-                to={d.cards[0].path}
+                to={d.cards[0]?.path ?? "/"}
                 onClick={closeAll}
               >
                 {d.label}

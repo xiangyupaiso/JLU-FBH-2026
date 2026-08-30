@@ -11,17 +11,27 @@ const contentTypes = {
   ".html": "text/html; charset=utf-8",
   ".jpg": "image/jpeg",
   ".js": "text/javascript; charset=utf-8",
+  ".json": "application/json; charset=utf-8",
   ".png": "image/png",
-  ".svg": "image/svg+xml"
+  ".svg": "image/svg+xml",
+  ".webp": "image/webp",
+  ".woff2": "font/woff2"
 };
 
 createServer((request, response) => {
-  const pathname = decodeURIComponent(new URL(request.url, `http://${request.headers.host}`).pathname);
+  let pathname;
+  try {
+    pathname = decodeURIComponent(new URL(request.url, `http://${request.headers.host}`).pathname);
+  } catch {
+    response.writeHead(400, { "Content-Type": "text/plain; charset=utf-8" });
+    response.end("Bad request");
+    return;
+  }
   const requested = pathname === "/" ? "index.html" : pathname.slice(1);
   const safePath = normalize(requested).replace(/^(\.\.[/\\])+/, "");
   let filePath = join(root, safePath);
 
-  if (!existsSync(filePath) || statSync(filePath).isDirectory()) {
+  if (!filePath.startsWith(root) || !existsSync(filePath) || statSync(filePath).isDirectory()) {
     filePath = join(root, "index.html");
   }
 

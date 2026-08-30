@@ -18,8 +18,15 @@ const BreastGuardianGame = lazy(
   () => import("../components/BreastGuardianGame"),
 );
 const BombCatGame = lazy(() => import("../components/BombCatGame"));
+const BioMemoryGame = lazy(() => import("../components/BioMemoryGame"));
 
-type GameKey = "breast-guardian" | "bomb-cat";
+type GameKey = "breast-guardian" | "bomb-cat" | "bio-memory";
+
+const GAME_META: Record<GameKey, { station: string; title: string }> = {
+  "breast-guardian": { station: "01 / Live project", title: "Breast Guardian RPG" },
+  "bomb-cat": { station: "02 / Live project", title: "Bomb Cat · 炸弹猫" },
+  "bio-memory": { station: "03 / Live project", title: "生物翻翻乐" },
+};
 
 function GameExperience({
   game,
@@ -30,6 +37,8 @@ function GameExperience({
 }) {
   const closeButtonRef = useRef<HTMLButtonElement>(null);
   const isBombCat = game === "bomb-cat";
+  const isBioMemory = game === "bio-memory";
+  const gameMeta = GAME_META[game];
 
   useEffect(() => {
     const previousBodyOverflow = document.body.style.overflow;
@@ -67,10 +76,8 @@ function GameExperience({
       <div className="games-experience__surface">
         <header className="games-experience__bar">
           <div>
-            <span>{isBombCat ? "02" : "01"} / Live project</span>
-            <h2 id="games-experience-title">
-              {isBombCat ? "Bomb Cat · 炸弹猫" : "Breast Guardian RPG"}
-            </h2>
+            <span>{gameMeta.station}</span>
+            <h2 id="games-experience-title">{gameMeta.title}</h2>
           </div>
           <button
             ref={closeButtonRef}
@@ -94,6 +101,8 @@ function GameExperience({
           >
             {isBombCat ? (
               <BombCatGame onRequestClose={onExit} />
+            ) : isBioMemory ? (
+              <BioMemoryGame onRequestClose={onExit} />
             ) : (
               <BreastGuardianGame onRequestClose={onExit} />
             )}
@@ -109,8 +118,10 @@ function GamesProjectMap() {
   const [activeGame, setActiveGame] = useState<GameKey | null>(null);
   const breastLaunchRef = useRef<HTMLButtonElement>(null);
   const bombCatLaunchRef = useRef<HTMLButtonElement>(null);
+  const bioMemoryLaunchRef = useRef<HTMLButtonElement>(null);
   const breastShowcaseRef = useRef<HTMLElement>(null);
   const bombCatShowcaseRef = useRef<HTMLElement>(null);
+  const bioMemoryShowcaseRef = useRef<HTMLElement>(null);
   const returnFocusToRef = useRef<GameKey>("breast-guardian");
 
   const closeGame = useCallback(() => {
@@ -119,7 +130,9 @@ function GamesProjectMap() {
       const launchButton =
         returnFocusToRef.current === "bomb-cat"
           ? bombCatLaunchRef.current
-          : breastLaunchRef.current;
+          : returnFocusToRef.current === "bio-memory"
+            ? bioMemoryLaunchRef.current
+            : breastLaunchRef.current;
       launchButton?.focus({ preventScroll: true });
     });
   }, []);
@@ -147,11 +160,11 @@ function GamesProjectMap() {
         data-wiki-reveal
       >
         <header className="games-project-map__heading">
-          <span>Project map / 03 stations</span>
+          <span>Project map / 04 stations</span>
           <div>
             <h2 id="games-project-map-title">Follow the interactive route</h2>
             <p>
-              Two playable experiences are ready today, with a connected
+              Three playable experiences are ready today, with a connected
               virtual laboratory being prepared for the next stage.
             </p>
           </div>
@@ -203,10 +216,30 @@ function GamesProjectMap() {
               </button>
             </li>
 
+            <li id="bio-memory-match" className="is-available">
+              <button
+                type="button"
+                onClick={() => scrollToGame(bioMemoryShowcaseRef.current)}
+                aria-controls="game-bio-memory"
+              >
+                <span className="games-project-map__node" aria-hidden="true">
+                  <svg className="ribbon-mark" viewBox="0 0 32 46">
+                    <use href="#circure-ribbon-knot" />
+                  </svg>
+                </span>
+                <small>03 / Ready to play</small>
+                <strong>生物翻翻乐</strong>
+                <p>A memory match field guide for exploring biology concepts.</p>
+                <em>
+                  View game below <span aria-hidden="true">↓</span>
+                </em>
+              </button>
+            </li>
+
             <li id="virtual-laboratory">
               <article aria-labelledby="virtual-lab-title">
                 <span className="games-project-map__node" aria-hidden="true" />
-                <small>03 / In development</small>
+                <small>04 / In development</small>
                 <strong id="virtual-lab-title">虚拟实验室</strong>
                 <p>A guided space for practising experimental workflows.</p>
                 <em>Coming later</em>
@@ -298,6 +331,54 @@ function GamesProjectMap() {
           <span className="games-showcase__copy">
             <small>Scientific card strategy</small>
             <strong>Defuse the outbreak.</strong>
+            <em>Click anywhere to expand and play full screen</em>
+          </span>
+          <span className="games-showcase__play" aria-hidden="true">
+            <b>▶</b>
+            Play
+          </span>
+        </button>
+      </section>
+
+      <section
+        ref={bioMemoryShowcaseRef}
+        className="games-showcase games-showcase--bio-memory"
+        id="game-bio-memory"
+        aria-labelledby="game-bio-memory-title"
+        data-wiki-reveal
+      >
+        <header className="games-showcase__heading">
+          <span>Playable project / 03</span>
+          <div>
+            <h2 id="game-bio-memory-title">生物翻翻乐</h2>
+            <p>
+              A specimen-card memory game for discovering biology concepts
+              through observation, recall and matching.
+            </p>
+          </div>
+        </header>
+
+        <button
+          ref={bioMemoryLaunchRef}
+          type="button"
+          className="games-showcase__launch"
+          onClick={() => openGame("bio-memory")}
+          aria-haspopup="dialog"
+        >
+          <span className="games-showcase__art" aria-hidden="true" />
+          <span className="games-showcase__chapters" aria-hidden="true">
+            <i>01 / Field guide</i>
+            <i>02 / Memory match</i>
+            <i>03 / Specimen codex</i>
+          </span>
+          <span className="games-showcase__bio-mark" aria-hidden="true">
+            <i>DNA</i>
+            <i>RNA</i>
+            <i>CELL</i>
+          </span>
+          <span className="games-showcase__copy">
+            <small>Biology memory field guide</small>
+            <strong>Find the pair.</strong>
             <em>Click anywhere to expand and play full screen</em>
           </span>
           <span className="games-showcase__play" aria-hidden="true">

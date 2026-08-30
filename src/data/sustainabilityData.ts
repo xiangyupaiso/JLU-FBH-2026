@@ -847,8 +847,6 @@ export type PatientChatId = "A" | "B" | "C" | "D";
 export interface PatientChatMessage {
   patientId: PatientChatId;
   side: PatientChatSide;
-  /** 头像上方用户名行，例如 "患者 A | 疗效与复发风险" */
-  name: string;
   text: string;
 }
 
@@ -856,49 +854,41 @@ export const patientChatMessages: ReadonlyArray<PatientChatMessage> = [
   {
     patientId: "A",
     side: "left",
-    name: "患者 A | 疗效与复发风险",
     text: "副作用我肯定会担心，但我更怕的是复发。如果一种治疗真的能降低复发风险、让我活得更久，只要副作用在能承受的范围内，我愿意接受。",
   },
   {
     patientId: "A",
     side: "left",
-    name: "患者 A | 疗效与复发风险",
     text: "如果是比较新的疫苗或者治疗方式，我会想知道它有没有经过充分验证。效果当然重要，但我也会担心有没有还没发现的长期副作用。",
   },
   {
     patientId: "B",
     side: "right",
-    name: "患者 B | 生活质量与获益权衡",
     text: "我不觉得只要能延长生存时间就什么副作用都可以接受。如果治疗让我长期非常虚弱、疼痛，或者生活完全不能自理，我也会考虑这样的治疗到底值不值得。",
   },
   {
     patientId: "B",
     side: "right",
-    name: "患者 B | 生活质量与获益权衡",
     text: "我希望效果好，但副作用也不能太严重。对我来说不是简单选‘疗效’还是‘安全’，而是想知道到底能获得多大收益、又要承担多少风险。",
   },
   {
     patientId: "C",
     side: "left",
-    name: "患者 C | 经济负担与家庭责任",
     text: "治疗结束以后最担心的就是不知道什么时候会会不会再复发。如果新的治疗能明显降低复发和转移的可能，我对短期的一些副作用可能会更能接受。",
   },
   {
     patientId: "C",
     side: "left",
-    name: "患者 C | 经济负担与家庭责任",
     text: "除了副作用，我还会考虑这个药贵不贵。如果治疗效果很好，但费用高到家里承担不起，我也会放弃这种治疗方式。",
   },
   {
     patientId: "D",
     side: "right",
-    name: "患者 D | 新技术接受与治疗选择",
     text: "如果副作用只是短期不舒服，我可能可以接受，但如果会让我长期不能工作、不能照顾孩子和家人，我就会特别在意。",
   },
   {
     patientId: "D",
     side: "right",
-    name: "患者 D | 新技术接受与治疗选择",
     text: "如果本身能选的治疗就不多，只要新的治疗确实有效，我觉得很多和我一样的人都会愿意多承担一点风险。",
   },
 ];

@@ -50,20 +50,24 @@ export function CountUpStat({
     }
 
     const duration = target < 100 ? 900 : 1200;
+    let cancelCount: (() => void) | undefined;
 
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             observer.disconnect();
-            animateCount(node, target, duration, delay);
+            cancelCount = animateCount(node, target, duration, delay);
           }
         });
       },
       { threshold: 0.4 },
     );
     observer.observe(node);
-    return () => observer.disconnect();
+    return () => {
+      cancelCount?.();
+      observer.disconnect();
+    };
   }, [delay, stat.value]);
 
   return (

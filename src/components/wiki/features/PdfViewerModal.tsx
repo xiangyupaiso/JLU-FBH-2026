@@ -4,7 +4,6 @@ import {
   useLayoutEffect,
   useRef,
   useState,
-  type WheelEvent as ReactWheelEvent,
 } from "react";
 import { createPortal } from "react-dom";
 import { Document, Page, pdfjs } from "react-pdf";
@@ -156,6 +155,32 @@ export function PdfViewerModal({ manual, onClose }: PdfViewerModalProps) {
       document.removeEventListener("fullscreenchange", handleFullscreenChange);
   }, [fitToViewport]);
 
+  // React 的 onWheel 以 passive 方式注册，preventDefault 无效；改用原生
+  // 非 passive 监听拦截 Ctrl+滚轮，避免浏览器整页缩放与 PDF 缩放同时发生。
+  useEffect(() => {
+    const viewport = viewportRef.current;
+    if (!manual || !viewport) return;
+    const handleWheel = (event: WheelEvent) => {
+      if (!event.ctrlKey) return;
+      event.preventDefault();
+      setScale((current) =>
+        Math.min(
+          MAX_SCALE,
+          Math.max(
+            MIN_SCALE,
+            Number(
+              (
+                current + (event.deltaY > 0 ? -SCALE_STEP : SCALE_STEP)
+              ).toFixed(2),
+            ),
+          ),
+        ),
+      );
+    };
+    viewport.addEventListener("wheel", handleWheel, { passive: false });
+    return () => viewport.removeEventListener("wheel", handleWheel);
+  }, [manual]);
+
   if (!manual) return null;
 
   const changeScale = (difference: number) => {
@@ -165,12 +190,6 @@ export function PdfViewerModal({ manual, onClose }: PdfViewerModalProps) {
         Math.max(MIN_SCALE, Number((current + difference).toFixed(2))),
       ),
     );
-  };
-
-  const handleWheel = (event: ReactWheelEvent<HTMLDivElement>) => {
-    if (!event.ctrlKey) return;
-    event.preventDefault();
-    changeScale(event.deltaY > 0 ? -SCALE_STEP : SCALE_STEP);
   };
 
   const toggleFullscreen = async () => {
@@ -269,7 +288,6 @@ export function PdfViewerModal({ manual, onClose }: PdfViewerModalProps) {
         <div
           className="protocol-modal__viewport"
           ref={viewportRef}
-          onWheel={handleWheel}
         >
           {useFallback ? (
             <iframe src={manual.pdfUrl} title={`${manual.title} PDF`} />

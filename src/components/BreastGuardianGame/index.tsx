@@ -65,7 +65,10 @@ export default function BreastGuardianGame({
 
     // Signal 1: iframe document finished loading — give the game a beat to
     // paint its first frame before we lift the overlay.
-    const onFrameLoad = () => window.setTimeout(dismiss, 600);
+    let dismissTimer = 0;
+    const onFrameLoad = () => {
+      dismissTimer = window.setTimeout(dismiss, 600);
+    };
     frame?.addEventListener("load", onFrameLoad);
 
     // Signal 2: the game posts an explicit "ready" message after init — more
@@ -87,6 +90,7 @@ export default function BreastGuardianGame({
     return () => {
       frame?.removeEventListener("load", onFrameLoad);
       window.removeEventListener("message", onMessage);
+      window.clearTimeout(dismissTimer);
       window.clearTimeout(fallback);
       cleanup();
     };

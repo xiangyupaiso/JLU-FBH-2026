@@ -41,7 +41,7 @@ export interface SustainabilityAssetEntry {
    * Resolve with `import.meta.env.BASE_URL + webPath`.
    */
   webPath?: string | null;
-  /** PDF page count (used by the fallback toolbar of `PdfViewerModal`) */
+  /** PDF page count (displayed in the native PDF caption) */
   pdfPages?: number;
 }
 
@@ -109,7 +109,7 @@ export const sustainabilityAssets = {
     alt: "SST-QN SDG 模型构建方法论与完整评分矩阵",
     section: "SST-QN 章节末尾 — 模型构建详细文档（“SDG 模型构建.pdf”）",
     usageNote:
-      "作为 PdfViewerModal 内嵌预览或下载链接卡片使用，需上传至 iGEM 服务器",
+      "以浏览器原生 PDF viewer 内嵌展示，需上传至 iGEM 服务器",
     webPath: "assets/docs/sustainability-sst-qn-model-construction.pdf",
     pdfPages: 53,
   },

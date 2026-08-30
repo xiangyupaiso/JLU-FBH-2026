@@ -1,33 +1,15 @@
-import { DryLabWikiPage } from "../components/wiki/DryLabWikiPage";
-import {
-  AnnotatedSystemDiagram,
-  BuildIterationTimeline,
-  HardwareAssemblyAndBom,
-  HardwareCalibrationAndPerformance,
-  HardwareSafetyRiskMatrix,
-  OpenHardwareReleaseChecklist,
-} from "../components/wiki/features/HardwareEvidenceFeatures";
-import { CirCureHardwareEvidenceExplorer } from "../components/wiki/features/DryLabProjectExplorers";
-import { hardwareEvidencePage } from "../data/hardwarePage";
+import { WikiPage } from "../components/wiki/WikiPage";
+import { hardwareMarkdownPage } from "../data/hardwareMarkdown";
 import "../styles/hardware-page.css";
 import "../styles/dry-lab-calm.css";
 import "../styles/dry-lab-reading.css";
 
 export function Hardware() {
   return (
-    <DryLabWikiPage
-      content={hardwareEvidencePage}
+    <WikiPage
+      content={hardwareMarkdownPage}
       heroVisual={null}
-      pageClassName="wiki-page--hardware-hero"
-      features={{
-        "hardware-requirements": <CirCureHardwareEvidenceExplorer />,
-        "hardware-system": <AnnotatedSystemDiagram />,
-        "hardware-assembly": <HardwareAssemblyAndBom />,
-        "hardware-iterations": <BuildIterationTimeline />,
-        "hardware-calibration": <HardwareCalibrationAndPerformance />,
-        "hardware-safety": <HardwareSafetyRiskMatrix />,
-        "hardware-release": <OpenHardwareReleaseChecklist />,
-      }}
+      pageClassName="wiki-page--hardware-hero wiki-page--dry-reading"
     />
   );
 }

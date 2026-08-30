@@ -24,12 +24,12 @@ export function Inspirations({ inspirationLinkList }: InspirationsProps) {
 
             const href =
               year < 2022
-                ? `https://${year}.igem.org/Team:${teamName}${pageName ? `/${pageName}` : ""}`
+                ? `https://${year}.igem.org/Team:${teamName}${pageName ? `/${pageName.replace(/ /g, "_")}` : ""}`
                 : `https://${year}.igem.wiki/${teamSlug}${pageSlug}`;
 
             return (
-              <li key={`${year}-${teamName}`}>
-                <a href={href} target="_blank">
+              <li key={`${year}-${teamName}-${pageName}`}>
+                <a href={href} target="_blank" rel="noopener noreferrer">
                   {year} {teamName}
                 </a>
               </li>

@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { initializeBombCatGame } from "./bombCatEngine";
 import "./index.css";
 
@@ -18,6 +18,7 @@ export default function BombCatGame({
   const hostRef = useRef<HTMLDivElement>(null);
   const onGameCompleteRef = useRef(onGameComplete);
   const onRequestCloseRef = useRef(onRequestClose);
+  const [failed, setFailed] = useState(false);
 
   useEffect(() => {
     onGameCompleteRef.current = onGameComplete;
@@ -26,20 +27,27 @@ export default function BombCatGame({
 
   useEffect(() => {
     const host = hostRef.current;
-    if (!host) return;
+    if (!host || failed) return;
 
     return initializeBombCatGame(host, {
       gameUrl: `${import.meta.env.BASE_URL}game-assets/bomb-cat/index.html`,
       onGameComplete: (stats) => onGameCompleteRef.current?.(stats),
       onRequestClose: () => onRequestCloseRef.current?.(),
+      onLoadError: () => setFailed(true),
     });
-  }, []);
+  }, [failed]);
 
   const rootClassName = ["bomb-cat-game-root", className]
     .filter(Boolean)
     .join(" ");
 
   return (
-    <div ref={hostRef} className={rootClassName} data-bomb-cat-game="" />
+    <div ref={hostRef} className={rootClassName} data-bomb-cat-game="">
+      {failed ? (
+        <p className="bomb-cat-game-error" role="alert">
+          游戏资源加载失败，请刷新页面重试。
+        </p>
+      ) : null}
+    </div>
   );
 }

@@ -1423,7 +1423,9 @@ export function HumanPracticesPage() {
                 </p>
               </div>
               <div>
-                <a href="/HP_FIELD_KIT.md">Open the HP field kit ↗</a>
+                <a href={`${import.meta.env.BASE_URL}HP_FIELD_KIT.md`}>
+                  Open the HP field kit ↗
+                </a>
                 <a href="#hp-dossier">Review limits ↓</a>
               </div>
             </div>

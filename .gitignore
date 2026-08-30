@@ -12,6 +12,12 @@ dist
 dist-ssr
 *.local
 
+# Local environment (commit .env.example instead)
+.env
+
+# Raw game artwork archive (uncompressed, kept out of the repo and dist)
+game-assets-raw
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
