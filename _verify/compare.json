@@ -1,0 +1,125 @@
+{
+  "new_dna_layout": {
+    "grid": {
+      "width": 1250,
+      "height": 863
+    },
+    "items": [
+      {
+        "kind": "card",
+        "left": 96,
+        "top": 128,
+        "width": 415,
+        "height": 430
+      },
+      {
+        "kind": "card",
+        "left": 512,
+        "top": 128,
+        "width": 415,
+        "height": 430
+      },
+      {
+        "kind": "card",
+        "left": 929,
+        "top": 128,
+        "width": 415,
+        "height": 430
+      },
+      {
+        "kind": "deco",
+        "left": 96,
+        "top": 559,
+        "width": 207,
+        "height": 430
+      },
+      {
+        "kind": "card",
+        "left": 304,
+        "top": 559,
+        "width": 415,
+        "height": 430
+      },
+      {
+        "kind": "card",
+        "left": 721,
+        "top": 559,
+        "width": 415,
+        "height": 430
+      },
+      {
+        "kind": "deco",
+        "left": 1137,
+        "top": 559,
+        "width": 207,
+        "height": 430
+      }
+    ],
+    "uncoveredArea": 8480,
+    "background": "rgba(29, 29, 31, 0.22)"
+  },
+  "closing": {
+    "nextTitle": "Which designs deserve the first experiment?",
+    "nextLabel": "Model",
+    "footerVariant": "pt-5 pb-5 footer py-5 mt-5 bg-dark text-white circure-footer footer--wet-lab"
+  },
+  "old_dna_layout": {
+    "grid": {
+      "width": 1120,
+      "height": 863
+    },
+    "items": [
+      {
+        "kind": "card",
+        "left": 161,
+        "top": 38,
+        "width": 372,
+        "height": 430
+      },
+      {
+        "kind": "card",
+        "left": 534,
+        "top": 38,
+        "width": 372,
+        "height": 430
+      },
+      {
+        "kind": "card",
+        "left": 907,
+        "top": 38,
+        "width": 372,
+        "height": 430
+      },
+      {
+        "kind": "deco",
+        "left": 161,
+        "top": 469,
+        "width": 186,
+        "height": 430
+      },
+      {
+        "kind": "card",
+        "left": 348,
+        "top": 469,
+        "width": 372,
+        "height": 430
+      },
+      {
+        "kind": "card",
+        "left": 721,
+        "top": 469,
+        "width": 372,
+        "height": 430
+      },
+      {
+        "kind": "deco",
+        "left": 1094,
+        "top": 469,
+        "width": 186,
+        "height": 430
+      }
+    ],
+    "uncoveredArea": 6800,
+    "background": "rgba(29, 29, 31, 0.22)"
+  }
+}

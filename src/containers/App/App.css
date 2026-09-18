@@ -1,9 +1,5 @@
 body {
-  padding-top: 56px;
-}
-
-.left-aligned {
-  margin-left: auto;
+  padding-top: var(--header-height);
 }
 
 .bg-dark {

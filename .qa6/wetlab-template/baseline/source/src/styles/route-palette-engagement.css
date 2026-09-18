@@ -1,0 +1,28 @@
+/* ============================================================================
+   Engagement module palette  (换色唯一入口)
+   ----------------------------------------------------------------------------
+   The Engagement reader (Entrepreneurship / Human Practices / Education /
+   Inclusivity; Sustainability follows in its own round) shares this one
+   palette. To re-skin the module — or to copy this file for the next module —
+   only the three hex values below need to change; every other colour used by
+   `wiki-route-skin.css` is derived from them with color-mix().
+
+   Role mapping (identical to Wet Lab, Project and Dry Lab):
+     主色 --route-main : fixed global header bar + optional chapter rail
+     辅色 --route-soft : left TOC/sidebar card, panels, header nav pills
+     底色 --route-base : page surface behind the mat (the reader background)
+   Plus the module's own pale flower/petal artwork for the article frame —
+   the blossom shapes drawn in the page sketch, supplied by
+   `background/engagement.png`.
+   ========================================================================== */
+
+.wiki-page--engagement,
+.site-header.is-engagement-page {
+  /* ① 三色板 —— 只有这三行需要改 */
+  --route-main: #e6a272; /* 主色 rgb(230, 162, 114) */
+  --route-soft: #f7c7a1; /* 辅色 rgb(247, 199, 161) */
+  --route-base: #fceac1; /* 底色 rgb(252, 234, 193) */
+
+  /* ② 模块专属装饰素材（正文面板边缘的淡色花朵/花瓣图案） */
+  --route-frame-image: url("../assets/wiki/engagement.png");
+}

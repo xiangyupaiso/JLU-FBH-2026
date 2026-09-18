@@ -1,0 +1,482 @@
+{
+  "copy": {
+    "title": "Games | JLU-FBH - iGEM 2026",
+    "h1": "Games",
+    "lede": "Three interactive virtual projects invite visitors to explore breast health, strategic play, and experimental practice.",
+    "sections": [
+      {
+        "number": "1",
+        "kicker": "Project map / 04 stations",
+        "title": "Follow the interactive route",
+        "summary": "Three playable experiences are ready today, with a connected virtual laboratory being prepared for the next stage."
+      },
+      {
+        "number": "2",
+        "kicker": "Playable project / 01",
+        "title": "Breast Guardian RPG",
+        "summary": "The game opens in a full-screen play space and loads only when you choose to enter."
+      },
+      {
+        "number": "3",
+        "kicker": "Playable project / 02",
+        "title": "Bomb Cat · 炸弹猫",
+        "summary": "A circRNA strategy card game with local bots, online rooms and a complete bilingual rulebook."
+      },
+      {
+        "number": "4",
+        "kicker": "Playable project / 03",
+        "title": "生物翻翻乐",
+        "summary": "A specimen-card memory game for discovering biology concepts through observation, recall and matching."
+      }
+    ],
+    "stations": [
+      {
+        "small": "01 / Ready to play",
+        "strong": "Breast Guardian RPG",
+        "p": "A story-led breast health journey spanning three stages of life.",
+        "em": "View game below ↓"
+      },
+      {
+        "small": "02 / Ready to play",
+        "strong": "炸弹猫卡牌小游戏",
+        "p": "A compact strategy card game for collaborative play.",
+        "em": "View game below ↓"
+      },
+      {
+        "small": "03 / Ready to play",
+        "strong": "生物翻翻乐",
+        "p": "A memory match field guide for exploring biology concepts.",
+        "em": "View game below ↓"
+      },
+      {
+        "small": "04 / In development",
+        "strong": "虚拟实验室",
+        "p": "A guided space for practising experimental workflows.",
+        "em": "Coming later"
+      }
+    ],
+    "showcases": [
+      {
+        "cls": "games-showcase games-showcase--breast-guardian",
+        "chapters": [
+          "01 / Childhood",
+          "02 / Youth",
+          "03 / Elderly"
+        ],
+        "small": "Interactive breast health journey",
+        "strong": "Enter the story.",
+        "em": "Click anywhere to expand and play full screen",
+        "play": "▶Play"
+      },
+      {
+        "cls": "games-showcase games-showcase--bomb-cat",
+        "chapters": [
+          "01 / Local play",
+          "02 / Online rooms",
+          "03 / Rules"
+        ],
+        "small": "Scientific card strategy",
+        "strong": "Defuse the outbreak.",
+        "em": "Click anywhere to expand and play full screen",
+        "play": "▶Play"
+      },
+      {
+        "cls": "games-showcase games-showcase--bio-memory",
+        "chapters": [
+          "01 / Field guide",
+          "02 / Memory match",
+          "03 / Specimen codex"
+        ],
+        "small": "Biology memory field guide",
+        "strong": "Find the pair.",
+        "em": "Click anywhere to expand and play full screen",
+        "play": "▶Play"
+      }
+    ],
+    "next": {
+      "label": "Entrepreneurship",
+      "href": "/jlu-fbh/entrepreneurship"
+    }
+  },
+  "metrics_games": {
+    "hasOutline": false,
+    "recordWidth": 1440,
+    "frameWidth": 1396,
+    "articleWidth": 1394,
+    "viewportWidth": 1440,
+    "hasHorizontalOverflow": false,
+    "sectionCount": 4,
+    "showcaseCount": 3,
+    "stationCount": 4,
+    "recordClass": "wiki-record wiki-record--full"
+  },
+  "station_jump": {
+    "sectionTopInFrame": 134,
+    "scrolled": 2891
+  },
+  "open_game": {
+    "open": true,
+    "dialogTitle": "生物翻翻乐",
+    "closeLabel": "Close game",
+    "frameSrc": "/jlu-fbh/game-assets/bio-memory/index.html",
+    "frameWidth": 1414,
+    "frameHeight": 800,
+    "rootInert": true
+  },
+  "close_game": {
+    "closed": true,
+    "rootInert": false,
+    "focusReturned": "games-showcase__launch"
+  },
+  "metrics/model": {
+    "hasOutline": true,
+    "recordWidth": 1440,
+    "frameWidth": 1124,
+    "articleWidth": 1122,
+    "viewportWidth": 1440,
+    "hasHorizontalOverflow": false,
+    "sectionCount": 9,
+    "showcaseCount": 0,
+    "stationCount": 0,
+    "recordClass": "wiki-record"
+  },
+  "metrics/software": {
+    "hasOutline": true,
+    "recordWidth": 1440,
+    "frameWidth": 1124,
+    "articleWidth": 1122,
+    "viewportWidth": 1440,
+    "hasHorizontalOverflow": false,
+    "sectionCount": 8,
+    "showcaseCount": 0,
+    "stationCount": 0,
+    "recordClass": "wiki-record"
+  },
+  "metrics/hardware": {
+    "hasOutline": true,
+    "recordWidth": 1440,
+    "frameWidth": 1124,
+    "articleWidth": 1122,
+    "viewportWidth": 1440,
+    "hasHorizontalOverflow": false,
+    "sectionCount": 9,
+    "showcaseCount": 0,
+    "stationCount": 0,
+    "recordClass": "wiki-record"
+  },
+  "hardware_next": {
+    "label": "Games",
+    "href": "/jlu-fbh/games"
+  },
+  "hardware_next_click": {
+    "url": "http://127.0.0.1:4200/jlu-fbh/games",
+    "h1": "Games"
+  },
+  "nav_cards": [
+    {
+      "label": "Model",
+      "small": "01 / REASON",
+      "href": "/jlu-fbh/model"
+    },
+    {
+      "label": "Software",
+      "small": "02 / REUSE",
+      "href": "/jlu-fbh/software"
+    },
+    {
+      "label": "Hardware",
+      "small": "03 / INSTRUMENT",
+      "href": "/jlu-fbh/hardware"
+    },
+    {
+      "label": "Games",
+      "small": "04 / INTERACT",
+      "href": "/jlu-fbh/games"
+    }
+  ],
+  "nav_click": {
+    "url": "http://127.0.0.1:4200/jlu-fbh/games",
+    "h1": "Games"
+  },
+  "narrow_tablet": {
+    "hasOutline": false,
+    "recordWidth": 900,
+    "frameWidth": 876,
+    "articleWidth": 874,
+    "viewportWidth": 900,
+    "hasHorizontalOverflow": false,
+    "sectionCount": 4,
+    "showcaseCount": 3,
+    "stationCount": 4,
+    "recordClass": "wiki-record wiki-record--full"
+  },
+  "narrow_phone": {
+    "hasOutline": false,
+    "recordWidth": 480,
+    "frameWidth": 460,
+    "articleWidth": 458,
+    "viewportWidth": 480,
+    "hasHorizontalOverflow": false,
+    "sectionCount": 4,
+    "showcaseCount": 3,
+    "stationCount": 4,
+    "recordClass": "wiki-record wiki-record--full"
+  },
+  "smoke": [
+    {
+      "title": "Home | JLU-FBH - iGEM 2026",
+      "h1": "Home",
+      "hasOutline": false,
+      "bodyLength": 2721,
+      "notFound": false,
+      "route": "/",
+      "consoleErrors": []
+    },
+    {
+      "title": "Meet Our Team | JLU-FBH - iGEM 2026",
+      "h1": "Meet Our Team",
+      "hasOutline": false,
+      "bodyLength": 1492,
+      "notFound": false,
+      "route": "/team",
+      "consoleErrors": []
+    },
+    {
+      "title": "Project Description | JLU-FBH - iGEM 2026",
+      "h1": "Description",
+      "hasOutline": true,
+      "bodyLength": 3916,
+      "notFound": false,
+      "route": "/description",
+      "consoleErrors": []
+    },
+    {
+      "title": "Engineering Success | JLU-FBH - iGEM 2026",
+      "h1": "Engineering",
+      "hasOutline": true,
+      "bodyLength": 4079,
+      "notFound": false,
+      "route": "/engineering",
+      "consoleErrors": []
+    },
+    {
+      "title": "Results | JLU-FBH - iGEM 2026",
+      "h1": "Results",
+      "hasOutline": true,
+      "bodyLength": 3748,
+      "notFound": false,
+      "route": "/results",
+      "consoleErrors": []
+    },
+    {
+      "title": "Contribution | JLU-FBH - iGEM 2026",
+      "h1": "Contribution",
+      "hasOutline": true,
+      "bodyLength": 3722,
+      "notFound": false,
+      "route": "/contribution",
+      "consoleErrors": []
+    },
+    {
+      "title": "Experiments | JLU-FBH - iGEM 2026",
+      "h1": "Experiments",
+      "hasOutline": true,
+      "bodyLength": 10937,
+      "notFound": false,
+      "route": "/experiments",
+      "consoleErrors": []
+    },
+    {
+      "title": "Notebook | JLU-FBH - iGEM 2026",
+      "h1": "Notebook",
+      "hasOutline": true,
+      "bodyLength": 4492,
+      "notFound": false,
+      "route": "/notebook",
+      "consoleErrors": []
+    },
+    {
+      "title": "Measurement | JLU-FBH - iGEM 2026",
+      "h1": "Measurement",
+      "hasOutline": true,
+      "bodyLength": 4658,
+      "notFound": false,
+      "route": "/measurement",
+      "consoleErrors": []
+    },
+    {
+      "title": "Alternative Platform | JLU-FBH - iGEM 2026",
+      "h1": "Alternative Platform",
+      "hasOutline": true,
+      "bodyLength": 4413,
+      "notFound": false,
+      "route": "/alternative-platform",
+      "consoleErrors": []
+    },
+    {
+      "title": "Safety and Security | JLU-FBH - iGEM 2026",
+      "h1": "Safety and Security",
+      "hasOutline": true,
+      "bodyLength": 4808,
+      "notFound": false,
+      "route": "/safety-and-security",
+      "consoleErrors": []
+    },
+    {
+      "title": "Protocol Library | JLU-FBH - iGEM 2026",
+      "h1": "Protocol Library",
+      "hasOutline": false,
+      "bodyLength": 3273,
+      "notFound": false,
+      "route": "/protocol",
+      "consoleErrors": []
+    },
+    {
+      "title": "Model | JLU-FBH - iGEM 2026",
+      "h1": "Model",
+      "hasOutline": true,
+      "bodyLength": 8659,
+      "notFound": false,
+      "route": "/model",
+      "consoleErrors": []
+    },
+    {
+      "title": "Software | JLU-FBH - iGEM 2026",
+      "h1": "Software",
+      "hasOutline": true,
+      "bodyLength": 8312,
+      "notFound": false,
+      "route": "/software",
+      "consoleErrors": []
+    },
+    {
+      "title": "Hardware | JLU-FBH - iGEM 2026",
+      "h1": "Hardware",
+      "hasOutline": true,
+      "bodyLength": 34848,
+      "notFound": false,
+      "route": "/hardware",
+      "consoleErrors": []
+    },
+    {
+      "title": "Games | JLU-FBH - iGEM 2026",
+      "h1": "Games",
+      "hasOutline": false,
+      "bodyLength": 2294,
+      "notFound": false,
+      "route": "/games",
+      "consoleErrors": []
+    },
+    {
+      "title": "Entrepreneurship | JLU-FBH - iGEM 2026",
+      "h1": "Entrepreneurship",
+      "hasOutline": false,
+      "bodyLength": 1175,
+      "notFound": false,
+      "route": "/entrepreneurship",
+      "consoleErrors": []
+    },
+    {
+      "title": "Human Practices | JLU-FBH - iGEM 2026",
+      "h1": "Human Practices",
+      "hasOutline": false,
+      "bodyLength": 2530,
+      "notFound": false,
+      "route": "/human-practices",
+      "consoleErrors": []
+    },
+    {
+      "title": "Education | JLU-FBH - iGEM 2026",
+      "h1": "Education",
+      "hasOutline": false,
+      "bodyLength": 1410,
+      "notFound": false,
+      "route": "/education",
+      "consoleErrors": []
+    },
+    {
+      "title": "Diversity and Inclusion | JLU-FBH - iGEM 2026",
+      "h1": "Diversity and Inclusion",
+      "hasOutline": false,
+      "bodyLength": 1893,
+      "notFound": false,
+      "route": "/inclusivity",
+      "consoleErrors": []
+    },
+    {
+      "title": "Sustainability | JLU-FBH - iGEM 2026",
+      "h1": "Sustainability",
+      "hasOutline": false,
+      "bodyLength": 1332,
+      "notFound": false,
+      "route": "/sustainability",
+      "consoleErrors": []
+    }
+  ],
+  "old_copy": {
+    "h1": "Games",
+    "lede": "Three interactive virtual projects invite visitors to explore breast health, strategic play, and experimental practice.",
+    "stationHeading": "PROJECT MAP / 04 STATIONS\nFollow the interactive route\n\nThree playable experiences are ready today, with a connected virtual laboratory being prepared for the next stage.",
+    "stations": [
+      {
+        "small": "01 / Ready to play",
+        "strong": "Breast Guardian RPG",
+        "p": "A story-led breast health journey spanning three stages of life.",
+        "em": "View game below ↓"
+      },
+      {
+        "small": "02 / Ready to play",
+        "strong": "炸弹猫卡牌小游戏",
+        "p": "A compact strategy card game for collaborative play.",
+        "em": "View game below ↓"
+      },
+      {
+        "small": "03 / Ready to play",
+        "strong": "生物翻翻乐",
+        "p": "A memory match field guide for exploring biology concepts.",
+        "em": "View game below ↓"
+      },
+      {
+        "small": "04 / In development",
+        "strong": "虚拟实验室",
+        "p": "A guided space for practising experimental workflows.",
+        "em": "Coming later"
+      }
+    ],
+    "showcases": [
+      {
+        "cls": "games-showcase games-showcase--breast-guardian",
+        "heading": "PLAYABLE PROJECT / 01\nBreast Guardian RPG\n\nThe game opens in a full-screen play space and loads only when you choose to enter.",
+        "chapters": [
+          "01 / Childhood",
+          "02 / Youth",
+          "03 / Elderly"
+        ],
+        "small": "Interactive breast health journey",
+        "strong": "Enter the story."
+      },
+      {
+        "cls": "games-showcase games-showcase--bomb-cat",
+        "heading": "PLAYABLE PROJECT / 02\nBomb Cat · 炸弹猫\n\nA circRNA strategy card game with local bots, online rooms and a complete bilingual rulebook.",
+        "chapters": [
+          "01 / Local play",
+          "02 / Online rooms",
+          "03 / Rules"
+        ],
+        "small": "Scientific card strategy",
+        "strong": "Defuse the outbreak."
+      },
+      {
+        "cls": "games-showcase games-showcase--bio-memory",
+        "heading": "PLAYABLE PROJECT / 03\n生物翻翻乐\n\nA specimen-card memory game for discovering biology concepts through observation, recall and matching.",
+        "chapters": [
+          "01 / Field guide",
+          "02 / Memory match",
+          "03 / Specimen codex"
+        ],
+        "small": "Biology memory field guide",
+        "strong": "Find the pair."
+      }
+    ]
+  }
+}

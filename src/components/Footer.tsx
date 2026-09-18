@@ -1,12 +1,16 @@
 import { stringToSlug } from "../utils";
 
-export function Footer() {
+export function Footer({ variant }: { variant?: "route" }) {
   const teamYear = import.meta.env.VITE_TEAM_YEAR;
   const teamName = import.meta.env.VITE_TEAM_NAME;
   const teamSlug = stringToSlug(teamName);
 
   return (
-    <footer className="pt-5 pb-5 footer py-5 mt-5 bg-dark text-white">
+    <footer
+      className={`pt-5 pb-5 footer py-5 mt-5 bg-dark text-white${
+        variant === "route" ? " circure-footer footer--route" : ""
+      }`}
+    >
       <div className="container">
         <div className="row mb-4">
           <div className="col-lg-6 col-xs-12">

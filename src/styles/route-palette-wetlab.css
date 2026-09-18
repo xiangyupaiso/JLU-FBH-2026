@@ -1,0 +1,25 @@
+/* Wet Lab module palette: the three existing Wet Lab colours, injected into
+   the shared reader-route skin. */
+.wiki-page--wet-lab,
+.site-header.is-wet-lab-page {
+  --route-main: #b4dff0;
+  --route-soft: #e0f5ee;
+  --route-base: #fdf5d1;
+  --route-frame-image: url("../assets/wiki/wet.png");
+
+}
+
+/* Existing manuscript feature components consume these semantic aliases.
+   Derive them from the shared palette so there is only one colour source. */
+.wiki-page.wiki-page--wet-lab {
+  --wet-paper: var(--route-paper);
+  --wet-paper-light: var(--route-paper);
+  --wet-paper-deep: var(--route-panel);
+  --wet-ink: var(--route-ink);
+  --wet-muted: var(--route-muted);
+  --wet-faint: var(--route-muted);
+  --wet-accent: var(--route-accent);
+  --wet-teal: var(--route-accent);
+  --wet-line: var(--route-line);
+  --wet-line-strong: var(--route-line-strong);
+}

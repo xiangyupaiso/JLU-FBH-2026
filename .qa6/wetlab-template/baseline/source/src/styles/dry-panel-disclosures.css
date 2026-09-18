@@ -1,0 +1,490 @@
+/* ============================================================================
+   shared disclosure/accordion language used by the panels' <details> folds — faithful port of the pre-revamp stylesheet `wiki-disclosures.css`.
+   ----------------------------------------------------------------------------
+   Ported verbatim (declarations untouched) with ONE mechanical change: every
+   page-scope class was renamed into the panel namespace below, so these rules
+   can only match inside the ported panels' scope container and can never leak
+   into the new reader shell or any other page. Class count and order inside
+   each selector are preserved, so specificity is unchanged.
+
+     .wiki-page                -> .dry-panel
+     .wiki-page--model-hero    -> .dry-panel--model
+     .wiki-page--software-hero -> .dry-panel--software
+     .wiki-page--dry-lab       -> .dry-panel--dry
+     .wiki-page--dry-reading   -> .dry-panel--reading
+     .wiki-page--hardware-hero -> .dry-panel--hardware
+     .wiki-feature             -> .dry-panel__feature
+
+   The scope container rendered by `DryPanelScope` carries
+   `dry-panel dry-panel--<module> dry-panel--dry` and wraps a
+   `dry-panel__feature` element that plays the role of the old `.wiki-feature`
+   wrapper (the panel root is its direct child, exactly like the old DOM).
+
+   Do not hand-edit the rules below: regenerate from the old project instead, so
+   the port stays byte-comparable with the pre-revamp implementation.
+   ========================================================================== */
+
+/*
+ * One disclosure language across Project, Wet Lab, Dry Lab, and Engagement.
+ * Page roots only provide palette tokens; structure and motion stay shared.
+ */
+
+.dry-panel.dry-panel--unified-disclosures {
+  --disclosure-accent: #5f9f87;
+  --disclosure-on-accent: #f7faf7;
+  --disclosure-ink: var(--wet-ink, #35222b);
+  --disclosure-line: var(--wet-line-strong, rgba(53, 34, 43, 0.24));
+}
+
+.dry-panel.dry-panel--unified-disclosures.dry-panel--wet-lab {
+  --disclosure-accent: #5f9f87;
+  --disclosure-on-accent: #f5f7f2;
+}
+
+.dry-panel.dry-panel--unified-disclosures.dry-panel--engagement {
+  --disclosure-accent: #ba7894;
+  --disclosure-on-accent: #fff9fb;
+}
+
+.dry-panel.dry-panel--unified-disclosures.dry-panel--dry {
+  --disclosure-accent: #7183c5;
+  --disclosure-on-accent: #f8f9ff;
+  --disclosure-ink: var(--dry-reading-ink, #17202a);
+  --disclosure-line: var(--dry-reading-line-strong, rgba(23, 32, 42, 0.28));
+}
+
+.dry-panel.dry-panel--unified-disclosures.dry-panel--project-preview {
+  --disclosure-accent: #a83f69;
+  --disclosure-on-accent: #fff8fa;
+  --disclosure-ink: var(--dry-calm-ink, #35222b);
+  --disclosure-line: var(--dry-calm-line-strong, rgba(74, 39, 54, 0.26));
+}
+
+/* Numbered manuscript folds. */
+.dry-panel.dry-panel--unified-disclosures .wiki-manuscript-list article {
+  transition:
+    background-color 360ms cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 360ms ease;
+}
+
+.dry-panel.dry-panel--unified-disclosures
+  .wiki-manuscript-list
+  article.is-open {
+  background: linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--disclosure-accent) 8%, transparent),
+    transparent 76%
+  );
+}
+
+.dry-panel.dry-panel--unified-disclosures
+  .wiki-manuscript-list
+  .wiki-manuscript-list__toggle
+  button {
+  grid-template-columns: 66px minmax(0, 1fr) 108px;
+  padding-right: 16px;
+  padding-left: 16px;
+  transition:
+    background-color 300ms ease,
+    color 300ms ease;
+}
+
+.dry-panel.dry-panel--unified-disclosures
+  .wiki-manuscript-list
+  .wiki-manuscript-list__toggle
+  button:is(:hover, :focus-visible) {
+  background: color-mix(in srgb, var(--disclosure-accent) 6%, transparent);
+}
+
+.dry-panel.dry-panel--unified-disclosures
+  .wiki-manuscript-list
+  .wiki-manuscript-list__toggle
+  button:is(:hover, :focus-visible)
+  > span:nth-child(2) {
+  color: color-mix(
+    in srgb,
+    var(--disclosure-ink) 78%,
+    var(--disclosure-accent)
+  );
+}
+
+.dry-panel.dry-panel--unified-disclosures
+  .wiki-manuscript-list
+  .wiki-manuscript-list__toggle
+  i[data-state-label] {
+  position: static;
+  display: inline-flex;
+  width: 98px;
+  height: 38px;
+  gap: 9px;
+  align-items: center;
+  justify-content: center;
+  justify-self: end;
+  border: 1px solid var(--disclosure-line);
+  border-radius: 999px;
+  color: var(--disclosure-ink);
+  font-style: normal;
+  transition:
+    color 300ms ease,
+    background-color 300ms ease,
+    border-color 300ms ease,
+    transform 360ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.dry-panel.dry-panel--unified-disclosures
+  .wiki-manuscript-list
+  .wiki-manuscript-list__toggle
+  i[data-state-label]::before,
+.dry-panel.dry-panel--unified-disclosures
+  .wiki-manuscript-list
+  .wiki-manuscript-list__toggle
+  i[data-state-label]::after {
+  position: static;
+  width: auto;
+  height: auto;
+  background: transparent;
+  opacity: 1;
+  transform: none;
+}
+
+.dry-panel.dry-panel--unified-disclosures
+  .wiki-manuscript-list
+  .wiki-manuscript-list__toggle
+  i[data-state-label]::before {
+  color: inherit;
+  content: attr(data-state-label);
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 650;
+  letter-spacing: 0;
+}
+
+.dry-panel.dry-panel--unified-disclosures
+  .wiki-manuscript-list
+  .wiki-manuscript-list__toggle
+  i[data-state-label]::after {
+  color: var(--disclosure-accent);
+  content: "+";
+  font-family: var(--font-sans);
+  font-size: 19px;
+  font-weight: 400;
+  line-height: 1;
+}
+
+.dry-panel.dry-panel--unified-disclosures
+  .wiki-manuscript-list
+  .wiki-manuscript-list__toggle
+  button:is(:hover, :focus-visible)
+  i[data-state-label] {
+  border-color: var(--disclosure-accent);
+  transform: translateX(-2px);
+}
+
+.dry-panel.dry-panel--unified-disclosures
+  .wiki-manuscript-list
+  article.is-open
+  :is(
+    .wiki-manuscript-list__index,
+    .wiki-manuscript-list__toggle i[data-state-label]
+  ) {
+  color: var(--disclosure-accent);
+}
+
+.dry-panel.dry-panel--unified-disclosures
+  .wiki-manuscript-list
+  article.is-open
+  .wiki-manuscript-list__toggle
+  i[data-state-label] {
+  border-color: var(--disclosure-accent);
+  background: var(--disclosure-accent);
+  color: var(--disclosure-on-accent) !important;
+}
+
+.dry-panel.dry-panel--unified-disclosures
+  .wiki-manuscript-list
+  article.is-open
+  .wiki-manuscript-list__toggle
+  i[data-state-label]::after {
+  color: inherit;
+  content: "−";
+}
+
+.dry-panel.dry-panel--unified-disclosures
+  .wiki-manuscript-list
+  .wiki-manuscript-list__content
+  li::before {
+  background: var(--disclosure-accent);
+}
+
+/* Native details used by protocols, appendices, and the IHP dossier. */
+.dry-panel.dry-panel--unified-disclosures.dry-panel--unified-disclosures
+  :is(
+    .wet-protocols,
+    .model-technical-appendices,
+    .software-technical-appendices,
+    .hardware-technical-appendices,
+    .hp-analysis-folds
+  )
+  details {
+  border-color: color-mix(in srgb, var(--disclosure-line) 82%, transparent);
+  transition:
+    background-color 360ms cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 300ms ease;
+}
+
+.dry-panel.dry-panel--unified-disclosures.dry-panel--unified-disclosures
+  :is(
+    .wet-protocols,
+    .model-technical-appendices,
+    .software-technical-appendices,
+    .hardware-technical-appendices,
+    .hp-analysis-folds
+  )
+  details[open] {
+  background: linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--disclosure-accent) 8%, transparent),
+    transparent 78%
+  );
+}
+
+.dry-panel.dry-panel--unified-disclosures.dry-panel--unified-disclosures
+  :is(
+    .wet-protocols,
+    .model-technical-appendices,
+    .software-technical-appendices,
+    .hardware-technical-appendices,
+    .hp-analysis-folds
+  )
+  summary {
+  position: relative;
+  display: grid;
+  min-height: 76px;
+  grid-template-columns: minmax(0, 1fr) 98px;
+  gap: 20px;
+  align-items: center;
+  padding-right: 14px;
+  padding-left: 14px;
+  cursor: pointer;
+  list-style: none;
+  transition:
+    background-color 300ms ease,
+    color 300ms ease;
+}
+
+.dry-panel.dry-panel--unified-disclosures.dry-panel--unified-disclosures
+  :is(
+    .model-technical-appendices,
+    .software-technical-appendices,
+    .hardware-technical-appendices
+  )
+  summary {
+  grid-template-columns: 84px minmax(0, 1fr) 98px;
+}
+
+.dry-panel.dry-panel--unified-disclosures.dry-panel--unified-disclosures
+  :is(
+    .wet-protocols,
+    .model-technical-appendices,
+    .software-technical-appendices,
+    .hardware-technical-appendices,
+    .hp-analysis-folds
+  )
+  summary::-webkit-details-marker {
+  display: none;
+}
+
+.dry-panel.dry-panel--unified-disclosures.dry-panel--unified-disclosures
+  :is(
+    .wet-protocols,
+    .model-technical-appendices,
+    .software-technical-appendices,
+    .hardware-technical-appendices,
+    .hp-analysis-folds
+  )
+  summary:is(:hover, :focus-visible) {
+  color: color-mix(
+    in srgb,
+    var(--disclosure-ink) 78%,
+    var(--disclosure-accent)
+  );
+  background: color-mix(in srgb, var(--disclosure-accent) 6%, transparent);
+  outline: none;
+}
+
+.dry-panel.dry-panel--unified-disclosures.dry-panel--unified-disclosures
+  :is(
+    .wet-protocols,
+    .model-technical-appendices,
+    .software-technical-appendices,
+    .hardware-technical-appendices,
+    .hp-analysis-folds
+  )
+  summary::after {
+  position: static;
+  inset: auto;
+  display: inline-flex;
+  width: 98px;
+  height: 38px;
+  align-items: center;
+  justify-content: center;
+  justify-self: end;
+  border: 1px solid var(--disclosure-line);
+  border-radius: 999px;
+  color: var(--disclosure-ink);
+  content: "Expand  +";
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 650;
+  transform: none;
+  white-space: pre;
+  transition:
+    color 300ms ease,
+    background-color 300ms ease,
+    border-color 300ms ease,
+    transform 360ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.dry-panel.dry-panel--unified-disclosures.dry-panel--unified-disclosures
+  :is(
+    .wet-protocols,
+    .model-technical-appendices,
+    .software-technical-appendices,
+    .hardware-technical-appendices,
+    .hp-analysis-folds
+  )
+  summary:is(:hover, :focus-visible)::after {
+  border-color: var(--disclosure-accent);
+  transform: translateX(-2px);
+}
+
+.dry-panel.dry-panel--unified-disclosures.dry-panel--unified-disclosures
+  :is(
+    .wet-protocols,
+    .model-technical-appendices,
+    .software-technical-appendices,
+    .hardware-technical-appendices,
+    .hp-analysis-folds
+  )
+  details[open]
+  summary::after {
+  border-color: var(--disclosure-accent);
+  background: var(--disclosure-accent);
+  color: var(--disclosure-on-accent);
+  content: "Close  −";
+}
+
+.dry-panel.dry-panel--unified-disclosures.dry-panel--unified-disclosures
+  :is(
+    .wet-protocols,
+    .model-technical-appendices,
+    .software-technical-appendices,
+    .hardware-technical-appendices,
+    .hp-analysis-folds
+  )
+  summary
+  :is(i, b) {
+  display: none;
+}
+
+.dry-panel.dry-panel--unified-disclosures.dry-panel--unified-disclosures
+  :is(
+    .wet-protocols,
+    .model-technical-appendices,
+    .software-technical-appendices,
+    .hardware-technical-appendices,
+    .hp-analysis-folds
+  )
+  details[open]
+  > :not(summary) {
+  animation: disclosure-content-enter 420ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes disclosure-content-enter {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 760px) {
+  .dry-panel.dry-panel--unified-disclosures
+    .wiki-manuscript-list
+    .wiki-manuscript-list__toggle
+    button {
+    grid-template-columns: 44px minmax(0, 1fr) 90px;
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+
+  .dry-panel.dry-panel--unified-disclosures
+    .wiki-manuscript-list
+    .wiki-manuscript-list__toggle
+    i[data-state-label],
+  .dry-panel.dry-panel--unified-disclosures.dry-panel--unified-disclosures
+    :is(
+      .wet-protocols,
+      .model-technical-appendices,
+      .software-technical-appendices,
+      .hardware-technical-appendices,
+      .hp-analysis-folds
+    )
+    summary::after {
+    width: 86px;
+    height: 34px;
+  }
+
+  .dry-panel.dry-panel--unified-disclosures.dry-panel--unified-disclosures
+    :is(
+      .wet-protocols,
+      .model-technical-appendices,
+      .software-technical-appendices,
+      .hardware-technical-appendices,
+      .hp-analysis-folds
+    )
+    summary {
+    grid-template-columns: minmax(0, 1fr) 86px;
+    gap: 14px;
+  }
+
+  .dry-panel.dry-panel--unified-disclosures.dry-panel--unified-disclosures
+    :is(
+      .model-technical-appendices,
+      .software-technical-appendices,
+      .hardware-technical-appendices
+    )
+    summary {
+    grid-template-columns: 1fr 86px;
+  }
+
+  .dry-panel.dry-panel--unified-disclosures.dry-panel--unified-disclosures
+    :is(
+      .model-technical-appendices,
+      .software-technical-appendices,
+      .hardware-technical-appendices
+    )
+    summary
+    > span {
+    grid-column: 1 / -1;
+    padding-top: 12px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dry-panel.dry-panel--unified-disclosures .wiki-manuscript-list article,
+  .dry-panel.dry-panel--unified-disclosures
+    .wiki-manuscript-list__toggle
+    button,
+  .dry-panel.dry-panel--unified-disclosures
+    .wiki-manuscript-list__toggle
+    i[data-state-label],
+  .dry-panel.dry-panel--unified-disclosures details,
+  .dry-panel.dry-panel--unified-disclosures details[open] > :not(summary) {
+    animation-duration: 1ms !important;
+    transition-duration: 1ms !important;
+  }
+}

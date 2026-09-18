@@ -1,58 +1,50 @@
-import { Inspirations, InspirationLink } from "../components/Inspirations";
+import type { ReactNode } from "react";
+import { WikiRoutePage } from "../components/wiki/WikiRoutePage";
+import { getDryLabHeroImage } from "../components/wiki/dryLabHeroAssets";
+import { DryPanelScope } from "../components/wiki/features/DryPanelScope";
+import {
+  DynamicsValidationPanel,
+  EpitopeEvidencePanel,
+  ModelArchitectureMap,
+  ModelLimitationsMatrix,
+  ModelReproducibilityRelease,
+  StructureComparisonPanel,
+  ValidationAndSensitivityPanel,
+  WetDryDecisionLedger,
+} from "../components/wiki/features/ModelEvidenceFeatures";
+import { CirCureModelDecisionExplorer } from "../components/wiki/features/DryLabProjectExplorers";
+import { modelEvidencePage } from "../data/modelPage";
+import "../styles/route-palette-drylab.css";
+import "../styles/dry-panel-model.css";
+
+/**
+ * Every visual panel is the pre-revamp component, ported verbatim and rendered
+ * inside the `DryPanelScope` namespace container (see that file). The prose
+ * sections, hero, sidebar and closing prompt stay on the shared reader-route
+ * template.
+ */
+const panel = (node: ReactNode) => (
+  <DryPanelScope module="model">{node}</DryPanelScope>
+);
 
 export function Model() {
-  const links: InspirationLink[] = [
-    { year: 2025, teamName: "Heidelberg", pageName: "model" },
-    { year: 2025, teamName: "Peking", pageName: "model" },
-    { year: 2025, teamName: "GreatBay-SCIE", pageName: "model" },
-    { year: 2025, teamName: "DTU-Denmark", pageName: "model" },
-    { year: 2025, teamName: "Munich", pageName: "model" },
-    { year: 2025, teamName: "Toronto", pageName: "model" },
-  ];
-
   return (
-    <>
-      <div className="row mt-4">
-        <div className="col">
-          <div className="bd-callout bd-callout-info">
-            <h4>Best Model</h4>
-            <p>
-              Models help us understand, predict, and design biological systems.
-              Mechanistic modeling, machine learning, and other computational
-              approaches can guide project design and deepen understanding of
-              the system being studied, especially when grounded in data from
-              the team's own experiments or from existing sources. This award is
-              for teams who build or apply a model and use it to inform design,
-              predict behavior, or interpret results, before or alongside their
-              experimental work.
-            </p>
-            <hr />
-            <p>
-              Visit the{" "}
-              <a href="https://competition.igem.org/judging/awards/special">
-                Special Awards page
-              </a>{" "}
-              for more information.
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <div className="row mt-4">
-        <div className="col-lg-8">
-          <h2>Overview</h2>
-          <hr />
-          <p>
-            Mathematical models and computer simulations provide a great way to
-            describe the function and operation of Parts and Devices. Synthetic
-            Biology is an engineering discipline, and part of engineering is
-            simulation and modeling to determine the behavior of your design
-            before you build it. Designing and simulating can be iterated many
-            times in a computer before moving to the lab.
-          </p>
-        </div>
-        <Inspirations inspirationLinkList={links} />
-      </div>
-    </>
+    <WikiRoutePage
+      content={modelEvidencePage}
+      heroImage={getDryLabHeroImage(modelEvidencePage.route)}
+      theme="dry-lab"
+      pageClassName="wiki-page--dry-lab"
+      features={{
+        "model-judge-brief": panel(<CirCureModelDecisionExplorer />),
+        "model-architecture": panel(<ModelArchitectureMap />),
+        "model-epitope": panel(<EpitopeEvidencePanel />),
+        "model-structure": panel(<StructureComparisonPanel />),
+        "model-dynamics": panel(<DynamicsValidationPanel />),
+        "model-validation": panel(<ValidationAndSensitivityPanel />),
+        "model-wet-dry": panel(<WetDryDecisionLedger />),
+        "model-limitations": panel(<ModelLimitationsMatrix />),
+        "model-reproducibility": panel(<ModelReproducibilityRelease />),
+      }}
+    />
   );
 }

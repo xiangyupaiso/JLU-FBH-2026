@@ -1,0 +1,142 @@
+{
+  "protocol_copy": {
+    "h1": "Protocol Library",
+    "lede": "Fifteen bench-side records, indexed for quick preview and local download.",
+    "sectionNumber": "6",
+    "kicker": "Bench reference / 15 indexed files",
+    "title": "Open the record at the point of work.",
+    "summary": "Filter the library by laboratory context, then preview the original six-page PDF without leaving the Wet Lab record.",
+    "tabs": [
+      "All manuals",
+      "DNA",
+      "Cell",
+      "Animal & Other"
+    ],
+    "indexed": "15 manuals indexed",
+    "cardCount": 15,
+    "firstCard": {
+      "id": "PR-01",
+      "meta": "SOP6 pages",
+      "title": "DNA Extraction & Purification",
+      "description": "Six-page standard operating procedure for DNA extraction and purification.",
+      "footer": "dna-extraction.pdfOpen \u2197"
+    },
+    "nextTitle": "Which designs deserve the first experiment?",
+    "nextLink": "/jlu-fbh/model"
+  },
+  "protocol_metrics": {
+    "hasOutline": false,
+    "recordWidth": 1440,
+    "frameWidth": 1396,
+    "articleWidth": 1394,
+    "gridWidth": 1250,
+    "gridColumns": "207.156px 207.156px 207.156px 207.156px 207.172px 207.172px",
+    "cardCount": 15,
+    "viewportWidth": 1440,
+    "hasHorizontalOverflow": false
+  },
+  "dna_filter": {
+    "cards": 5,
+    "decorations": 2,
+    "indexed": "05 manuals indexed",
+    "gridBackground": "rgba(29, 29, 31, 0.22)"
+  },
+  "modal": {
+    "open": true,
+    "header": "DNA Extraction & Purification",
+    "toolbar": [
+      "Open in new tab",
+      "Full screen",
+      "Download"
+    ],
+    "readout": "6 pages / dna-extraction.pdf",
+    "iframeSrc": "/jlu-fbh/assets/dna-extraction-C6I6JCSw.pdf",
+    "iframeWidth": 1162,
+    "iframeHeight": 617
+  },
+  "modal_closed": true,
+  "metrics/experiments": {
+    "hasOutline": true,
+    "recordWidth": 1440,
+    "frameWidth": 1124,
+    "articleWidth": 1122,
+    "gridWidth": null,
+    "gridColumns": null,
+    "cardCount": 0,
+    "viewportWidth": 1440,
+    "hasHorizontalOverflow": false
+  },
+  "metrics/safety-and-security": {
+    "hasOutline": true,
+    "recordWidth": 1440,
+    "frameWidth": 1124,
+    "articleWidth": 1122,
+    "gridWidth": null,
+    "gridColumns": null,
+    "cardCount": 0,
+    "viewportWidth": 1440,
+    "hasHorizontalOverflow": false
+  },
+  "narrow_tablet": {
+    "hasOutline": false,
+    "recordWidth": 900,
+    "frameWidth": 876,
+    "articleWidth": 874,
+    "gridWidth": 784,
+    "gridColumns": "390.5px 390.5px",
+    "cardCount": 15,
+    "viewportWidth": 900,
+    "hasHorizontalOverflow": false
+  },
+  "narrow_phone": {
+    "hasOutline": false,
+    "recordWidth": 480,
+    "frameWidth": 460,
+    "articleWidth": 458,
+    "gridWidth": 418,
+    "gridColumns": "416px",
+    "cardCount": 15,
+    "viewportWidth": 480,
+    "hasHorizontalOverflow": false
+  },
+  "old_copy": {
+    "h1": "Protocol Library",
+    "lede": "Fifteen bench-side records, indexed for quick preview and local download.",
+    "sectionNumber": "06",
+    "kicker": "Bench reference / 15 indexed files",
+    "title": "Open the record at the point of work.",
+    "summary": "Filter the library by laboratory context, then preview the original six-page PDF without leaving the Wet Lab record.",
+    "tabs": [
+      "All manuals",
+      "DNA",
+      "Cell",
+      "Animal & Other"
+    ],
+    "indexed": "15 manuals indexed",
+    "cardCount": 15,
+    "firstCard": {
+      "id": "PR-01",
+      "meta": "SOP6 pages",
+      "title": "DNA Extraction & Purification",
+      "description": "Six-page standard operating procedure for DNA extraction and purification.",
+      "footer": "dna-extraction.pdfOpen \u2197"
+    }
+  },
+  "old_dna": {
+    "cards": 5,
+    "decorations": 2,
+    "gridBackground": "rgba(29, 29, 31, 0.22)"
+  },
+  "old_modal": {
+    "open": true,
+    "toolbar": [
+      "\u2039",
+      "\u203a",
+      "\u2212",
+      "+",
+      "Full screen",
+      "Download"
+    ],
+    "readout": "Page 1 / 6"
+  }
+}

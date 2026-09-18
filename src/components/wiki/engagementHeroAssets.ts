@@ -1,0 +1,45 @@
+import educationHero from "../../assets/wiki/engagement-heroes/engagement-education-hero-v2.webp";
+import entrepreneurshipHero from "../../assets/wiki/engagement-heroes/engagement-entrepreneurship-hero-v2.webp";
+import humanPracticesHero from "../../assets/wiki/engagement-heroes/engagement-human-practices-hero-v2.webp";
+import inclusivityHero from "../../assets/wiki/engagement-heroes/engagement-inclusivity-hero-v2.webp";
+import sustainabilityHero from "../../assets/wiki/engagement-heroes/engagement-sustainability-hero-v2.webp";
+
+/**
+ * Per-page hero art for the Engagement reader.
+ *
+ * Same contract as `projectHeroAssets.ts` / `dryLabHeroAssets.ts`. The water
+ * colour images are the exact files the pre-revamp Engagement pages used: the
+ * old `EngagementHeroVisual` mapped each route onto one of the Wet Lab hero
+ * watercolours, and those (v2) files are copied here verbatim so every page
+ * keeps the opening it already had.
+ */
+export type EngagementHeroVariant =
+  | "entrepreneurship"
+  | "human-practices"
+  | "education"
+  | "inclusivity"
+  | "sustainability";
+
+const VARIANT_BY_ROUTE: Record<string, EngagementHeroVariant> = {
+  "/entrepreneurship": "entrepreneurship",
+  "/human-practices": "human-practices",
+  "/education": "education",
+  "/inclusivity": "inclusivity",
+  "/sustainability": "sustainability",
+};
+
+const HERO_BY_VARIANT: Record<EngagementHeroVariant, string> = {
+  entrepreneurship: entrepreneurshipHero,
+  "human-practices": humanPracticesHero,
+  education: educationHero,
+  inclusivity: inclusivityHero,
+  sustainability: sustainabilityHero,
+};
+
+export function getEngagementHeroVariant(route: string) {
+  return VARIANT_BY_ROUTE[route] ?? "entrepreneurship";
+}
+
+export function getEngagementHeroImage(route: string) {
+  return HERO_BY_VARIANT[getEngagementHeroVariant(route)];
+}

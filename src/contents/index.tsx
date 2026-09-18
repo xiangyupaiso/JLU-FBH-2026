@@ -12,10 +12,12 @@ export { Notebook } from "./notebook.tsx";
 export { Measurement } from "./measurement.tsx";
 export { AlternativePlatform } from "./alternative-platform.tsx";
 export { SafetyAndSecurity } from "./safety-and-security.tsx";
+export { Protocol } from "./protocol.tsx";
 // Dry Lab
 export { Model } from "./model.tsx";
 export { Software } from "./software.tsx";
 export { Hardware } from "./hardware.tsx";
+export { Games } from "./games.tsx";
 // Engagement
 export { Entrepreneurship } from "./entrepreneurship.tsx";
 export { HumanPractices } from "./human-practices.tsx";

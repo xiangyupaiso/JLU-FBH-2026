@@ -1,19 +1,62 @@
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Route, Routes } from "react-router-dom";
+import "../../styles/circure-tokens.css";
+import "../../styles/circure-nav.css";
+import "../../styles/circure-search.css";
+import "../../styles/circure-back-to-top.css";
+import "../../styles/circure-cursor.css";
+import { Route, Routes, useLocation } from "react-router-dom";
 import { getPathMapping, stringToSlug } from "../../utils";
 import { useEffect } from "react";
 import { Navbar } from "../../components/Navbar";
 import { Header } from "../../components/Header";
 import { NotFound } from "../../components/NotFound";
 import { Footer } from "../../components/Footer";
+import { BackToTop } from "../../components/BackToTop";
+
+const WET_LAB_ROUTES = new Set([
+  "/experiments",
+  "/notebook",
+  "/measurement",
+  "/alternative-platform",
+  "/safety-and-security",
+  "/protocol",
+]);
+
+const DRY_LAB_ROUTES = new Set(["/model", "/software", "/hardware", "/games"]);
+
+// The whole Engagement nav group now renders through the shared reader-route
+// template on one palette.
+const ENGAGEMENT_ROUTES = new Set([
+  "/entrepreneurship",
+  "/human-practices",
+  "/education",
+  "/inclusivity",
+  "/sustainability",
+]);
+
+// Modules that render the reusable reader-route shell (own hero, mat, sidebar
+// and closing prompt) instead of the default Header + Bootstrap container.
+// Wet Lab, Project, Dry Lab, Engagement and Team share one template with
+// per-module palettes.
+const ROUTE_READER_ROUTES = new Set([
+  ...WET_LAB_ROUTES,
+  ...DRY_LAB_ROUTES,
+  ...ENGAGEMENT_ROUTES,
+  "/description",
+  "/engineering",
+  "/results",
+  "/contribution",
+  "/team",
+]);
 
 const App = () => {
+  const { pathname, hash } = useLocation();
   const pathMapping = getPathMapping();
   const currentPath =
-    location.pathname
-      .split(`${stringToSlug(import.meta.env.VITE_TEAM_NAME)}`)
-      .pop() || "/";
+    pathname.split(`${stringToSlug(import.meta.env.VITE_TEAM_NAME)}`).pop() ||
+    "/";
+  const isRouteReader = ROUTE_READER_ROUTES.has(currentPath);
 
   // Set Page Title
   const title =
@@ -22,6 +65,34 @@ const App = () => {
   useEffect(() => {
     document.title = `${title || ""} | ${import.meta.env.VITE_TEAM_NAME} - iGEM ${import.meta.env.VITE_TEAM_YEAR}`;
   }, [title]);
+
+  // Route changes start a fresh page timeline. Keep hash navigation intact: the
+  // page motion hooks resolve the hash after the new content has mounted.
+  useEffect(() => {
+    if ("scrollRestoration" in window.history) {
+      window.history.scrollRestoration = "manual";
+    }
+    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+  }, [pathname, hash]);
+
+  useEffect(() => {
+    const body = document.body;
+    const beginPress = (event: MouseEvent) => {
+      if (event.button === 0) body.classList.add("is-pressing");
+    };
+    const endPress = () => body.classList.remove("is-pressing");
+
+    window.addEventListener("mousedown", beginPress);
+    window.addEventListener("mouseup", endPress);
+    window.addEventListener("blur", endPress);
+
+    return () => {
+      window.removeEventListener("mousedown", beginPress);
+      window.removeEventListener("mouseup", endPress);
+      window.removeEventListener("blur", endPress);
+      endPress();
+    };
+  }, []);
 
   return (
     <>
@@ -36,12 +107,16 @@ const App = () => {
               key={path}
               path={path}
               element={
-                <>
-                  <Header title={title || ""} lead={lead || ""} />
-                  <div className="container">
-                    <Component />
-                  </div>
-                </>
+                ROUTE_READER_ROUTES.has(path) ? (
+                  <Component />
+                ) : (
+                  <>
+                    <Header title={title || ""} lead={lead || ""} />
+                    <div className="container">
+                      <Component />
+                    </div>
+                  </>
+                )
               }
             />
           ),
@@ -60,9 +135,12 @@ const App = () => {
         />
       </Routes>
 
-      {/* Footer */}
+      <BackToTop />
+
       {/* MUST mention license AND have a link to team wiki's repository on gitlab.igem.org */}
-      <Footer />
+      <Footer
+        variant={isRouteReader ? "route" : undefined}
+      />
     </>
   );
 };

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>circRNA 细胞防护</title>
+    <script>
+      (() => {
+        const notifyParent = (type, detail = {}) => {
+          if (window.parent === window) return;
+          window.parent.postMessage(
+            { source: "bomb-cat-game", type, ...detail },
+            window.location.origin,
+          );
+        };
+        let hasReportedCompletion = false;
+
+        window.addEventListener("DOMContentLoaded", () => {
+          const completionObserver = new MutationObserver(() => {
+            if (hasReportedCompletion) return;
+            const heading = Array.from(document.querySelectorAll("h2")).find(
+              (element) =>
+                ["你赢了！", "游戏结束", "You win!", "Game over"].includes(
+                  element.textContent?.trim() ?? "",
+                ),
+            );
+            if (!heading) return;
+
+            hasReportedCompletion = true;
+            notifyParent("bomb-cat:complete", {
+              stats: {
+                title: heading.textContent?.trim() ?? "",
+                won: ["你赢了！", "You win!"].includes(
+                  heading.textContent?.trim() ?? "",
+                ),
+              },
+            });
+            completionObserver.disconnect();
+          });
+          completionObserver.observe(document.body, {
+            childList: true,
+            subtree: true,
+          });
+        });
+
+        window.addEventListener("load", () => {
+          notifyParent("bomb-cat:ready");
+        });
+
+        window.addEventListener("keydown", (event) => {
+          if (event.key !== "Escape") return;
+          event.preventDefault();
+          notifyParent("bomb-cat:close");
+        });
+
+        document.addEventListener("bomb-cat:complete", (event) => {
+          notifyParent("bomb-cat:complete", {
+            stats: event.detail?.stats ?? {},
+          });
+        });
+      })();
+    </script>
+    <script
+      type="module"
+      crossorigin
+      src="./assets/index-CYm08qdD.js"
+    ></script>
+    <link
+      rel="stylesheet"
+      crossorigin
+      href="./assets/index-Q0-LRwjH.css"
+    />
+    <link rel="stylesheet" href="./assets/tailwind-utilities.css" />
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>

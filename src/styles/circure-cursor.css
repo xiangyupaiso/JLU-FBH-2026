@@ -1,0 +1,40 @@
+@media (hover: hover) and (pointer: fine) {
+  html,
+  body,
+  body * {
+    cursor: url("../assets/wiki/cursor-default.png") 13 12, auto !important;
+  }
+
+  body :is(
+      a[href],
+      button:not(:disabled),
+      [role="button"]:not([aria-disabled="true"]),
+      [role="link"],
+      [role="tab"],
+      [role="menuitem"],
+      [role="slider"],
+      input:not(:disabled),
+      select:not(:disabled),
+      textarea:not(:disabled),
+      summary,
+      label[for]
+    ),
+  body :is(
+      a[href],
+      button:not(:disabled),
+      [role="button"]:not([aria-disabled="true"]),
+      [role="link"],
+      [role="tab"],
+      [role="menuitem"],
+      [role="slider"],
+      summary,
+      label[for]
+    ) * {
+    cursor: url("../assets/wiki/cursor-active.png") 13 12, pointer !important;
+  }
+
+  body.is-pressing,
+  body.is-pressing * {
+    cursor: url("../assets/wiki/cursor-active.png") 13 12, pointer !important;
+  }
+}
