@@ -1,0 +1,263 @@
+/* ============================================================================
+   Description Page Styles (Project Module)
+   ----------------------------------------------------------------------------
+   Scoped styling for visual blocks, candidate cards, mechanism chain, and
+   references list on the /description page.
+   ========================================================================== */
+
+.wiki-page--project .description-mechanism-chain {
+  margin: 1.75rem 0 2rem;
+  padding: 1.5rem;
+  background: color-mix(in srgb, var(--route-soft) 28%, var(--route-base));
+  border: 1px solid color-mix(in srgb, var(--route-main) 50%, transparent);
+  border-radius: 12px;
+  box-shadow: 0 4px 18px -4px rgba(22, 43, 76, 0.06);
+}
+
+.wiki-page--project .description-mechanism-chain__header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid color-mix(in srgb, var(--route-main) 40%, transparent);
+}
+
+.wiki-page--project .description-mechanism-chain__header span {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--brand-navy) 70%, transparent);
+}
+
+.wiki-page--project .description-mechanism-chain__header strong {
+  font-family: var(--font-editorial, serif);
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--brand-navy);
+}
+
+.wiki-page--project .description-mechanism-chain__list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.wiki-page--project .description-mechanism-chain__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #ffffff;
+  padding: 0.45rem 0.85rem;
+  border: 1px solid color-mix(in srgb, var(--route-main) 45%, transparent);
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--brand-navy);
+  box-shadow: 0 2px 6px rgba(22, 43, 76, 0.03);
+}
+
+.wiki-page--project .description-mechanism-chain__index {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: color-mix(in srgb, var(--brand-navy) 60%, transparent);
+  background: color-mix(in srgb, var(--route-soft) 60%, transparent);
+  padding: 0.15rem 0.35rem;
+  border-radius: 4px;
+}
+
+.wiki-page--project .description-mechanism-chain__arrow {
+  color: color-mix(in srgb, var(--brand-navy) 40%, transparent);
+  font-weight: 600;
+  margin-left: 0.15rem;
+}
+
+/* 4-Antigen Candidate Cards — Balanced 2x2 Quadrant */
+.wiki-page--project .description-antigen-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+  margin: 1.75rem 0 2.25rem;
+}
+
+@media (max-width: 768px) {
+  .wiki-page--project .description-antigen-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.wiki-page--project .description-antigen-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 1.35rem 1.4rem;
+  background: #ffffff;
+  border: 1px solid color-mix(in srgb, var(--route-main) 35%, transparent);
+  border-top: 3px solid var(--route-main);
+  border-radius: 10px;
+  box-shadow: 0 3px 12px -2px rgba(22, 43, 76, 0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.wiki-page--project .description-antigen-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px -4px rgba(22, 43, 76, 0.09);
+  border-color: var(--route-main);
+}
+
+.wiki-page--project .description-antigen-card__eyebrow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.wiki-page--project .description-antigen-card__index {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--brand-navy);
+  background: color-mix(in srgb, var(--route-soft) 60%, var(--route-base));
+  padding: 0.15rem 0.45rem;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+.wiki-page--project .description-antigen-card__role {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: color-mix(in srgb, var(--brand-navy) 80%, transparent);
+  background: color-mix(in srgb, var(--route-base) 80%, #ffffff);
+  border: 1px solid color-mix(in srgb, var(--route-main) 25%, transparent);
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+.wiki-page--project .description-antigen-card__header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.wiki-page--project .description-antigen-card__symbol {
+  font-family: var(--font-editorial, serif);
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: var(--brand-navy);
+  margin: 0;
+  white-space: nowrap;
+  line-height: 1.2;
+}
+
+.wiki-page--project .description-antigen-card__fullname {
+  font-family: var(--font-sans);
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: color-mix(in srgb, var(--brand-navy) 85%, transparent);
+  line-height: 1.35;
+}
+
+.wiki-page--project .description-antigen-card__evidence {
+  margin-top: auto;
+  padding: 0.75rem 0.9rem;
+  background: color-mix(in srgb, var(--route-base) 55%, #ffffff);
+  border-left: 3px solid var(--route-main);
+  border-radius: 0 6px 6px 0;
+}
+
+.wiki-page--project .description-antigen-card__evidence-label {
+  display: block;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--brand-navy) 65%, transparent);
+  margin-bottom: 0.25rem;
+}
+
+.wiki-page--project .description-antigen-card__evidence p {
+  margin: 0;
+  font-size: 0.82rem;
+  line-height: 1.45;
+  color: var(--ink);
+}
+
+/* Reference List */
+.wiki-page--project .description-reference-list {
+  list-style: none;
+  margin: 1.5rem 0 2rem;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.wiki-page--project .description-reference-item {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  background: color-mix(in srgb, var(--route-base) 60%, #ffffff);
+  border: 1px solid color-mix(in srgb, var(--route-main) 30%, transparent);
+  border-radius: 8px;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--ink);
+  transition: background 0.15s ease;
+}
+
+.wiki-page--project .description-reference-item:hover {
+  background: #ffffff;
+  border-color: var(--route-main);
+}
+
+.wiki-page--project .description-reference-item__index {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--brand-navy);
+  flex-shrink: 0;
+}
+
+.wiki-page--project .description-reference-item__content {
+  flex: 1;
+}
+
+.wiki-page--project .description-reference-item__authors {
+  font-weight: 600;
+  color: var(--brand-navy);
+}
+
+.wiki-page--project .description-reference-item__title {
+  color: var(--ink);
+}
+
+.wiki-page--project .description-reference-item__journal {
+  font-style: italic;
+  font-family: var(--font-editorial, serif);
+  color: color-mix(in srgb, var(--brand-navy) 85%, transparent);
+}
+
+.wiki-page--project .description-reference-item__vol {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.82rem;
+  color: color-mix(in srgb, var(--ink) 75%, transparent);
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .wiki-page--project .description-antigen-card,
+  .wiki-page--project .description-reference-item {
+    transition: none !important;
+  }
+}

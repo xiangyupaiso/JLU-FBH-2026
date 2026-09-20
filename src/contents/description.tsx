@@ -1,12 +1,9 @@
 import { WikiRoutePage } from "../components/wiki/WikiRoutePage";
-import {
-  HeterogeneityField,
-  MechanismRoute,
-  ResultGateTable,
-} from "../components/wiki/features/ProjectFeatures";
+import { descriptionFeatures } from "../components/wiki/features/DescriptionPanels";
 import { getProjectHeroImage } from "../components/wiki/projectHeroAssets";
 import { descriptionPage } from "../data/projectPages";
 import "../styles/route-palette-project.css";
+import "../styles/description-page.css";
 
 export function Description() {
   return (
@@ -15,11 +12,7 @@ export function Description() {
       heroImage={getProjectHeroImage(descriptionPage.route)}
       theme="project"
       pageClassName="wiki-page--project"
-      features={{
-        "description-need": <HeterogeneityField />,
-        "description-system": <MechanismRoute />,
-        "description-boundaries": <ResultGateTable />,
-      }}
+      features={descriptionFeatures()}
     />
   );
 }
