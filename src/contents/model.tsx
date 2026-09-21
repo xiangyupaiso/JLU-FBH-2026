@@ -13,6 +13,7 @@ import {
   WetDryDecisionLedger,
 } from "../components/wiki/features/ModelEvidenceFeatures";
 import { CirCureModelDecisionExplorer } from "../components/wiki/features/DryLabProjectExplorers";
+import { Trop2ComplexViewer } from "../components/wiki/features/Trop2ComplexViewer";
 import { modelEvidencePage } from "../data/modelPage";
 import "../styles/route-palette-drylab.css";
 import "../styles/dry-panel-model.css";
@@ -35,6 +36,7 @@ export function Model() {
       theme="dry-lab"
       pageClassName="wiki-page--dry-lab"
       features={{
+        "model-structural-confirmation": <Trop2ComplexViewer />,
         "model-judge-brief": panel(<CirCureModelDecisionExplorer />),
         "model-architecture": panel(<ModelArchitectureMap />),
         "model-epitope": panel(<EpitopeEvidencePanel />),

@@ -8,5 +8,8 @@ export default () => {
   return defineConfig({
     base: `/${stringToSlug(env.VITE_TEAM_NAME)}/`,
     plugins: [react()],
+    optimizeDeps: {
+      entries: ["index.html", "src/**/*.{ts,tsx,js,jsx}"],
+    },
   });
 };

@@ -1,0 +1,513 @@
+/* ============================================================================
+   Trop2-CTL1 3D Complex Viewer Component Styles
+   Academic figure layout matching iGEM wiki & scientific paper standards.
+   ========================================================================== */
+
+.trop2-viewer-card {
+  position: relative;
+  width: 100%;
+  margin: 1.5rem 0 2.5rem;
+  background: var(--paper-card, #ffffff);
+  border: 1px solid var(--model-line, rgba(23, 63, 120, 0.18));
+  border-radius: 12px;
+  box-shadow: 0 4px 20px -2px rgba(11, 41, 77, 0.06);
+  overflow: hidden;
+  transition: box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.trop2-viewer-card:hover {
+  box-shadow: 0 8px 30px -4px rgba(11, 41, 77, 0.12);
+  border-color: rgba(23, 63, 120, 0.32);
+}
+
+/* Header bar */
+.trop2-viewer-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 1.1rem 1.35rem 1rem;
+  background: linear-gradient(180deg, rgba(248, 250, 252, 0.95) 0%, rgba(241, 245, 249, 0.85) 100%);
+  border-bottom: 1px solid rgba(23, 63, 120, 0.12);
+}
+
+.trop2-viewer-header__titles {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.trop2-viewer-header__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.725rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #1e3a8a;
+  background: rgba(30, 58, 138, 0.08);
+  padding: 0.2rem 0.55rem;
+  border-radius: 4px;
+  width: fit-content;
+}
+
+.trop2-viewer-header__badge::before {
+  content: "";
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #0284c7;
+}
+
+.trop2-viewer-header__title {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #0f172a;
+  letter-spacing: -0.01em;
+}
+
+.trop2-viewer-header__meta {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  color: #475569;
+  font-family: var(--font-mono, monospace);
+}
+
+/* Segment Quick-Focus Pill Strip */
+.trop2-viewer-pills {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 0.8rem;
+  padding: 0.5rem 1.25rem;
+  background: rgba(241, 245, 249, 0.65);
+  border-bottom: 1px solid rgba(23, 63, 120, 0.08);
+  user-select: none;
+}
+
+.trop2-viewer-pills__group {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.trop2-viewer-pill,
+.dry-panel .trop2-viewer-pill {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 0.25rem 0.65rem !important;
+  font-size: 0.735rem !important;
+  font-weight: 600 !important;
+  font-family: var(--font-mono, monospace) !important;
+  border-radius: 9999px !important;
+  color: #334155 !important;
+  background-color: #ffffff !important;
+  border: 1px solid #cbd5e1 !important;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04) !important;
+  cursor: pointer !important;
+  transition: all 0.15s ease !important;
+  white-space: nowrap !important;
+}
+
+.trop2-viewer-pill:hover,
+.dry-panel .trop2-viewer-pill:hover {
+  background-color: #f8fafc !important;
+  border-color: #94a3b8 !important;
+  color: #0f172a !important;
+  transform: translateY(-1px) !important;
+}
+
+.trop2-viewer-pill.is-active,
+.dry-panel .trop2-viewer-pill.is-active {
+  background-color: #1e3a8a !important;
+  border-color: #1e3a8a !important;
+  color: #ffffff !important;
+  box-shadow: 0 2px 4px rgba(30, 58, 138, 0.2) !important;
+}
+
+.trop2-viewer-pill--cyan.is-active,
+.dry-panel .trop2-viewer-pill--cyan.is-active {
+  background-color: #0284c7 !important;
+  border-color: #0284c7 !important;
+  color: #ffffff !important;
+}
+
+.trop2-viewer-pill--blue.is-active,
+.dry-panel .trop2-viewer-pill--blue.is-active {
+  background-color: #1d4ed8 !important;
+  border-color: #1d4ed8 !important;
+  color: #ffffff !important;
+}
+
+/* Dedicated Academic Control Strip (Repositioned outside canvas) */
+.trop2-viewer-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.65rem 1rem;
+  padding: 0.6rem 1.25rem;
+  background: #ffffff;
+  border-bottom: 1px solid rgba(23, 63, 120, 0.12);
+  user-select: none;
+}
+
+.trop2-viewer-toolbar__section {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.trop2-viewer-toolbar__label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #64748b;
+  margin-right: 0.2rem;
+}
+
+.trop2-viewer-toolbar__group {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.trop2-viewer-toolbar__divider {
+  width: 1px;
+  height: 20px;
+  background: rgba(15, 23, 42, 0.12);
+  margin: 0 0.2rem;
+}
+
+/* High-Contrast Scientific Button Styles */
+.trop2-viewer-btn,
+.dry-panel .trop2-viewer-btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 0.4rem !important;
+  padding: 0.38rem 0.75rem !important;
+  font-size: 0.775rem !important;
+  font-weight: 600 !important;
+  font-family: var(--font-mono, monospace) !important;
+  letter-spacing: 0.01em !important;
+  line-height: 1.2 !important;
+  color: #1e293b !important;
+  background-color: #ffffff !important;
+  border: 1px solid #cbd5e1 !important;
+  border-radius: 5px !important;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05) !important;
+  cursor: pointer !important;
+  transition: all 0.15s ease !important;
+  white-space: nowrap !important;
+  text-transform: none !important;
+}
+
+.trop2-viewer-btn:hover,
+.dry-panel .trop2-viewer-btn:hover {
+  background-color: #f1f5f9 !important;
+  border-color: #94a3b8 !important;
+  color: #0f172a !important;
+  transform: translateY(-1px) !important;
+}
+
+.trop2-viewer-btn:active,
+.dry-panel .trop2-viewer-btn:active {
+  transform: translateY(0) !important;
+}
+
+/* Active State: Deep Academic Blue with High Contrast White Text */
+.trop2-viewer-btn.is-active,
+.dry-panel .trop2-viewer-btn.is-active {
+  background-color: #1e3a8a !important;
+  border-color: #1e3a8a !important;
+  color: #ffffff !important;
+  box-shadow: 0 2px 4px rgba(30, 58, 138, 0.25) !important;
+}
+
+.trop2-viewer-btn.is-active:hover,
+.dry-panel .trop2-viewer-btn.is-active:hover {
+  background-color: #172554 !important;
+  border-color: #172554 !important;
+  color: #ffffff !important;
+}
+
+/* Indicator dot for active states */
+.trop2-viewer-btn__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #94a3b8;
+  display: inline-block !important;
+  font-style: normal;
+  flex-shrink: 0;
+  transition: background-color 0.15s ease;
+}
+
+.trop2-viewer-btn.is-active .trop2-viewer-btn__dot,
+.dry-panel .trop2-viewer-btn.is-active .trop2-viewer-btn__dot {
+  background: #38bdf8;
+  box-shadow: 0 0 5px #38bdf8;
+}
+
+.trop2-viewer-toolbar span,
+.trop2-viewer-toolbar button,
+.trop2-viewer-btn span,
+.dry-panel .trop2-viewer-toolbar span,
+.dry-panel .trop2-viewer-toolbar button,
+.dry-panel .trop2-viewer-btn span {
+  display: inline-block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+/* 3D Canvas Stage */
+.trop2-viewer-stage {
+  position: relative;
+  width: 100%;
+  height: 540px;
+  background: #0b0f19;
+  user-select: none;
+  overflow: hidden;
+}
+
+.trop2-viewer-stage--light {
+  background: #f8fafc;
+}
+
+.trop2-viewer-canvas {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.trop2-viewer-canvas .msp-plugin {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  border-radius: 0 !important;
+}
+
+/* Completely suppress Mol* internal viewport controls and panels that cause massive UI thread lag */
+.trop2-viewer-canvas .msp-viewport-controls,
+.trop2-viewer-canvas .msp-viewport-controls-buttons,
+.trop2-viewer-canvas .msp-viewport-controls-panel,
+.trop2-viewer-canvas .msp-viewport-top-left-controls,
+.trop2-viewer-canvas .msp-selection-viewport-controls,
+.trop2-viewer-canvas .msp-highlight-toast-wrapper,
+.trop2-viewer-canvas .msp-logo,
+.trop2-viewer-canvas .msp-plugin-layout_controls,
+.msp-viewport-controls,
+.msp-viewport-controls-buttons,
+.msp-viewport-controls-panel,
+.msp-viewport-top-left-controls {
+  display: none !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  overflow: hidden !important;
+  opacity: 0 !important;
+}
+
+/* Fullscreen Mode */
+.trop2-viewer-card:fullscreen {
+  margin: 0 !important;
+  border-radius: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  max-width: none !important;
+  display: flex !important;
+  flex-direction: column !important;
+  z-index: 999999 !important;
+  background: var(--paper-card, #ffffff) !important;
+}
+
+.trop2-viewer-card:fullscreen .trop2-viewer-stage {
+  flex: 1 1 auto !important;
+  height: auto !important;
+}
+
+.trop2-viewer-svg-overlay {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 4;
+}
+
+/* Loading Overlay */
+.trop2-viewer-loading {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  background: rgba(11, 15, 25, 0.85);
+  color: #e2e8f0;
+  font-size: 0.875rem;
+  font-family: var(--font-mono, monospace);
+  z-index: 10;
+  backdrop-filter: blur(4px);
+}
+
+.trop2-viewer-spinner {
+  width: 36px;
+  height: 36px;
+  border: 3px solid rgba(56, 189, 248, 0.2);
+  border-top-color: #38bdf8;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Viewport Hint */
+.trop2-viewer-hint {
+  position: absolute;
+  bottom: 0.85rem;
+  left: 0.85rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.72rem;
+  font-family: var(--font-mono, monospace);
+  color: rgba(255, 255, 255, 0.7);
+  background: rgba(15, 23, 42, 0.75);
+  backdrop-filter: blur(6px);
+  padding: 0.25rem 0.65rem;
+  border-radius: 4px;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.trop2-viewer-stage--light .trop2-viewer-hint {
+  color: #334155;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* Caption and scientific legend */
+.trop2-viewer-footer {
+  padding: 1.1rem 1.35rem 1.35rem;
+  background: var(--paper-card, #ffffff);
+  border-top: 1px solid rgba(23, 63, 120, 0.1);
+}
+
+.trop2-viewer-caption {
+  margin: 0 0 1rem;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: #334155;
+}
+
+.trop2-viewer-caption strong {
+  color: #0f172a;
+}
+
+/* Color Legend Tags */
+.trop2-viewer-legend {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1.35rem;
+  padding-top: 0.85rem;
+  border-top: 1px dashed rgba(23, 63, 120, 0.14);
+  font-size: 0.785rem;
+  color: #475569;
+}
+
+.trop2-viewer-legend__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.trop2-viewer-legend__dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.trop2-viewer-legend__dot--cyan {
+  background: #00e5ff;
+  box-shadow: 0 0 6px rgba(0, 229, 255, 0.5);
+}
+
+.trop2-viewer-legend__dot--blue {
+  background: #1d4ed8;
+}
+
+.trop2-viewer-legend__dot--lavender {
+  background: #c7d2fe;
+}
+
+.trop2-viewer-legend__dot--yellow {
+  background: #facc15;
+}
+
+/* Stats Pill Row */
+.trop2-viewer-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 0.75rem;
+  margin-top: 0.95rem;
+}
+
+.trop2-viewer-stat {
+  display: flex;
+  flex-direction: column;
+  padding: 0.55rem 0.8rem;
+  background: rgba(241, 245, 249, 0.75);
+  border: 1px solid rgba(23, 63, 120, 0.08);
+  border-radius: 6px;
+}
+
+.trop2-viewer-stat__label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #64748b;
+  font-weight: 600;
+  font-family: var(--font-mono, monospace);
+}
+
+.trop2-viewer-stat__val {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #0f172a;
+  font-family: var(--font-mono, monospace);
+  margin-top: 0.2rem;
+}
+
+@media (max-width: 768px) {
+  .trop2-viewer-stage {
+    height: 420px;
+  }
+  .trop2-viewer-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .trop2-viewer-toolbar__section {
+    justify-content: flex-start;
+  }
+}

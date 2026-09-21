@@ -44,8 +44,21 @@ export const modelEvidencePage: WikiPageContent = {
   ],
   sections: [
     {
-      id: "model-judge-brief",
+      id: "model-structural-confirmation",
       index: "01",
+      kicker: "Model 0 · Structural Confirmation",
+      navLabel: "3D Structure",
+      title: "Structural Confirmation of Trop2-CTL1 (SVCWCVNSV) in HLA-A*02:01 / B2M",
+      summary:
+        "AlphaFold/docking-derived all-atom conformation and polar contact network of the Trop2-CTL1 epitope complexed with human MHC-I (HLA-A*02:01) and β2-microglobulin, reconstituted directly from the high-resolution PyMOL session.",
+      body: [
+        "To characterize the immunogenic presentation and binding stability of our engineered Trop2 target candidates, we performed high-resolution structural modeling of the Trop2-CTL1 core epitope (SVCWCVNSV) complexed with the human leukocyte antigen HLA-A*02:01 and β2-microglobulin (B2M). All-atom spatial coordinates, anchoring residues within the MHC peptide-binding cleft, and key polar interaction networks were resolved and validated.",
+      ],
+      layout: "editorial",
+    },
+    {
+      id: "model-judge-brief",
+      index: "02",
       kicker: "30-second evidence path",
       navLabel: "Evidence path",
       title: "Computational framework and decision scope.",

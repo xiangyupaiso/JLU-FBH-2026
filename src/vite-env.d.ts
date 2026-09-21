@@ -9,3 +9,20 @@ interface ImportMetaEnv {
 interface ImportMeta {
   readonly env: ImportMetaEnv;
 }
+
+declare module "*.pdb?raw" {
+  const content: string;
+  export default content;
+}
+
+interface Window {
+  molstar?: {
+    Viewer: {
+      create: (
+        element: string | HTMLElement,
+        options?: Record<string, unknown>
+      ) => Promise<any>;
+    };
+    [key: string]: any;
+  };
+}
