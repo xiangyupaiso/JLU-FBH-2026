@@ -215,11 +215,7 @@ function RouteBlock({
     const target = document.getElementById(targetId);
     if (!target) return;
 
-    const behavior = window.matchMedia("(prefers-reduced-motion: reduce)")
-      .matches
-      ? "auto"
-      : "smooth";
-    scrollReaderToTarget(target, scrollContainerRef?.current, behavior);
+    scrollReaderToTarget(target, scrollContainerRef?.current, "instant");
   };
 
   switch (block.type) {
@@ -598,44 +594,44 @@ export function WikiRoutePage({
       </header>
 
       <div className="wiki-reader-track">
-      <div
-        ref={interfaceRef}
-        className={`wiki-record${hideOutline ? " wiki-record--full" : ""}`}
-      >
-        {hideOutline ? null : (
-          <WikiLineSidebar
-            activeId={activeSection}
-            activeChildId={activeSubsection}
-            items={sidebarItems}
-            links={content.links}
-            minimal
-            scrollContainerRef={scrollRef}
-          />
-        )}
+        <div
+          ref={interfaceRef}
+          className={`wiki-record${hideOutline ? " wiki-record--full" : ""}`}
+        >
+          {hideOutline ? null : (
+            <WikiLineSidebar
+              activeId={activeSection}
+              activeChildId={activeSubsection}
+              items={sidebarItems}
+              links={content.links}
+              minimal
+              scrollContainerRef={scrollRef}
+            />
+          )}
 
-        <WikiPageScrollContext.Provider value={scrollContextValue}>
-          <div className="route-frame">
-            <div
-              ref={scrollRef}
-              className="route-frame__scroll"
-              tabIndex={0}
-              aria-label={`${content.title} article`}
-            >
-              <article className="wiki-article">
-                {content.sections.map((section) => (
-                  <RouteSection
-                    key={section.id}
-                    section={section}
-                    feature={features[section.id]}
-                    features={features}
-                    scrollContainerRef={scrollRef}
-                  />
-                ))}
-              </article>
+          <WikiPageScrollContext.Provider value={scrollContextValue}>
+            <div className="route-frame">
+              <div
+                ref={scrollRef}
+                className="route-frame__scroll"
+                tabIndex={0}
+                aria-label={`${content.title} article`}
+              >
+                <article className="wiki-article">
+                  {content.sections.map((section) => (
+                    <RouteSection
+                      key={section.id}
+                      section={section}
+                      feature={features[section.id]}
+                      features={features}
+                      scrollContainerRef={scrollRef}
+                    />
+                  ))}
+                </article>
+              </div>
             </div>
-          </div>
-        </WikiPageScrollContext.Provider>
-      </div>
+          </WikiPageScrollContext.Provider>
+        </div>
       </div>
 
       <WikiNextRecord {...content.next} />

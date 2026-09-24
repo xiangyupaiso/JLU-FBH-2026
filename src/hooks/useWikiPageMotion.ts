@@ -327,7 +327,7 @@ export function useWikiPageMotion(
         ? document.getElementById(routeHash)
         : null;
       if (routeTarget && root.contains(routeTarget)) {
-        scrollReaderToTarget(routeTarget, scrollContainer, "auto");
+        scrollReaderToTarget(routeTarget, scrollContainer, "instant");
         if (sectionIds.includes(routeHash)) {
           setActiveSection(routeHash);
         } else {

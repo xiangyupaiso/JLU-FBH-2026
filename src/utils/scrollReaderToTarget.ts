@@ -10,7 +10,7 @@
 export function scrollReaderToTarget(
   target: HTMLElement,
   inner: HTMLElement | null | undefined,
-  behavior: ScrollBehavior = "smooth",
+  behavior: ScrollBehavior = "instant",
 ) {
   const track = inner?.closest<HTMLElement>(".wiki-reader-track");
   if (!inner || !track) {
@@ -23,5 +23,9 @@ export function scrollReaderToTarget(
   const targetBounds = target.getBoundingClientRect();
   const innerTop =
     inner.scrollTop + targetBounds.top - innerBounds.top - 32;
-  window.scrollTo({ top: trackStart + Math.max(0, innerTop), behavior });
+  const targetScrollTop = Math.max(0, innerTop);
+  if (behavior !== "smooth") {
+    inner.scrollTop = targetScrollTop;
+  }
+  window.scrollTo({ top: trackStart + targetScrollTop, behavior });
 }

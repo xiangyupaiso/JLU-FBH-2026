@@ -222,9 +222,7 @@ export function WikiLineSidebar({
     if (delta) {
       outline.scrollTo({
         top: outline.scrollTop + delta,
-        behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches
-          ? "auto"
-          : "smooth",
+        behavior: "auto",
       });
     }
 
@@ -235,19 +233,11 @@ export function WikiLineSidebar({
     id: string,
   ) => {
     event.preventDefault();
-    const reduceMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)",
-    ).matches;
-
     window.history.replaceState(null, "", `#${id}`);
     const target = document.getElementById(id);
     if (!target) return;
 
-    scrollReaderToTarget(
-      target,
-      scrollContainerRef?.current,
-      reduceMotion ? "auto" : "smooth",
-    );
+    scrollReaderToTarget(target, scrollContainerRef?.current, "instant");
   };
 
   const setScrollFromRibbon = (clientY: number) => {
@@ -328,12 +318,8 @@ export function WikiLineSidebar({
     const target = items[Math.min(items.length - 1, Math.max(0, nextIndex))];
     const content = document.getElementById(target.id);
     if (!content) return;
-    const behavior = window.matchMedia("(prefers-reduced-motion: reduce)")
-      .matches
-      ? "auto"
-      : "smooth";
 
-    scrollReaderToTarget(content, scrollContainerRef?.current, behavior);
+    scrollReaderToTarget(content, scrollContainerRef?.current, "instant");
   };
 
   const currentIndex = items.findIndex((item) => item.id === activeId);

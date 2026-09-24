@@ -855,9 +855,7 @@ export function HumanPracticesTimeline() {
     const section = sectionRef.current;
     if (!section || innerWidth <= 900) {
       document.getElementById(timelineRecords[index].id)?.scrollIntoView({
-        behavior: matchMedia("(prefers-reduced-motion: reduce)").matches
-          ? "auto"
-          : "smooth",
+        behavior: "instant",
         block: "center",
       });
       return;
@@ -876,9 +874,7 @@ export function HumanPracticesTimeline() {
       index === timelineRecords.length - 1 ? 1 : index / timelineRecords.length;
     scrollTo({
       top: section.offsetTop - headerHeight + scrollable * progress,
-      behavior: matchMedia("(prefers-reduced-motion: reduce)").matches
-        ? "auto"
-        : "smooth",
+      behavior: "instant",
     });
   };
 

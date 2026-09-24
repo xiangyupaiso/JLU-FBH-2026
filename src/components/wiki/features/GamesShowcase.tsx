@@ -169,11 +169,8 @@ export function GamesProvider({ children }: { children: ReactNode }) {
 
   const scrollToShowcase = useCallback((game: GameKey) => {
     const target = document.getElementById(SECTION_ID[game]);
-    const reduceMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)",
-    ).matches;
     target?.scrollIntoView({
-      behavior: reduceMotion ? "auto" : "smooth",
+      behavior: "instant",
       block: "start",
     });
   }, []);

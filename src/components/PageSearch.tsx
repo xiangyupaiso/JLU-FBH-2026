@@ -160,11 +160,8 @@ export function PageSearch() {
     }
     setCurrent(wrapped + 1);
     if (shouldScroll) {
-      const reduced = window.matchMedia(
-        "(prefers-reduced-motion: reduce)",
-      ).matches;
       marks[wrapped].scrollIntoView({
-        behavior: reduced ? "auto" : "smooth",
+        behavior: "instant",
         block: "center",
       });
     }

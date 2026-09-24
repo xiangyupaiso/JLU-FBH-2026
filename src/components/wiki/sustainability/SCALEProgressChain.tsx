@@ -1,9 +1,8 @@
-﻿import { Fragment } from "react";
+import { Fragment } from "react";
 import {
   sustainabilityAnchors,
   type SustainabilityAnchor,
 } from "../../../data/sustainabilityData";
-import { prefersReducedMotion } from "./useInViewReveal";
 import "../../../styles/sustainability-panels.css";
 
 const DEFAULT_SCALE_ANCHOR_IDS = [
@@ -38,7 +37,7 @@ export function SCALEProgressChain({
     const target = document.getElementById(id);
     if (!target) return;
     target.scrollIntoView({
-      behavior: prefersReducedMotion() ? "auto" : "smooth",
+      behavior: "instant",
       block: "start",
     });
     window.history.replaceState(window.history.state, "", `#${id}`);

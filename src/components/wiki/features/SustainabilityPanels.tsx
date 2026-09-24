@@ -191,11 +191,7 @@ function FrameworkIntroGrid() {
                     document
                       .getElementById(link.slice(1))
                       ?.scrollIntoView({
-                        behavior: window.matchMedia(
-                          "(prefers-reduced-motion: reduce)",
-                        ).matches
-                          ? "auto"
-                          : "smooth",
+                        behavior: "instant",
                         block: "start",
                       });
                   }}
