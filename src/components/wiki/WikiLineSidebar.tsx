@@ -336,24 +336,129 @@ export function WikiLineSidebar({
     scrollReaderToTarget(content, scrollContainerRef?.current, behavior);
   };
 
+  const currentIndex = items.findIndex((item) => item.id === activeId);
+  const activeChapterNumber = Math.max(1, currentIndex + 1);
+  const totalChapters = items.length;
+  const progressPercent =
+    totalChapters > 0
+      ? Math.round((activeChapterNumber / totalChapters) * 100)
+      : 0;
+  const [easterEggActive, setEasterEggActive] = useState(false);
+
+  const handleMascotClick = () => {
+    setEasterEggActive(true);
+    setTimeout(() => setEasterEggActive(false), 2400);
+  };
+
   return (
     <aside ref={outlineRef} className="wiki-outline" aria-label={label}>
       <header className="wiki-outline__header">
-        <div>
-          <p>{label}</p>
-          <strong>
-            {minimal
-              ? `${String(
-                  Math.max(
-                    1,
-                    items.findIndex((item) => item.id === activeId) + 1,
-                  ),
-                ).padStart(2, "0")} / ${String(items.length).padStart(2, "0")}`
-              : `${items.length} chapters`}
-          </strong>
+        <div className="wiki-outline__header-main">
+          <button
+            type="button"
+            className={`wiki-outline__mascot-btn ${
+              easterEggActive ? "is-bouncing" : ""
+            }`}
+            onClick={handleMascotClick}
+            aria-label="CirCure mascot sheep"
+            title="点击小羊触发彩蛋~"
+          >
+            <svg
+              className="wiki-outline__sheep-icon"
+              viewBox="0 0 36 36"
+              width="26"
+              height="26"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true"
+            >
+              {/* Fluffy sheep fleece cloud */}
+              <circle cx="13" cy="13" r="5" fill="#FFF6D6" />
+              <circle cx="18" cy="11" r="5.5" fill="#FFF6D6" />
+              <circle cx="23" cy="13" r="5" fill="#FFF6D6" />
+              <circle cx="25" cy="18" r="5" fill="#FFF6D6" />
+              <circle cx="23" cy="23" r="5" fill="#FFF6D6" />
+              <circle cx="18" cy="24" r="5.5" fill="#FFF6D6" />
+              <circle cx="13" cy="23" r="5" fill="#FFF6D6" />
+              <circle cx="11" cy="18" r="5" fill="#FFF6D6" />
+              <circle cx="18" cy="18" r="7" fill="#FFF6D6" />
+              {/* Ears */}
+              <ellipse
+                cx="8.5"
+                cy="18"
+                rx="2.5"
+                ry="1.5"
+                fill="#F9CCD4"
+                transform="rotate(-15 8.5 18)"
+              />
+              <ellipse
+                cx="27.5"
+                cy="18"
+                rx="2.5"
+                ry="1.5"
+                fill="#F9CCD4"
+                transform="rotate(15 27.5 18)"
+              />
+              {/* Horns */}
+              <path
+                d="M11 11 Q9 9 12 8"
+                stroke="#8C6239"
+                strokeWidth="1.6"
+                strokeLinecap="round"
+                fill="none"
+              />
+              <path
+                d="M25 11 Q27 9 24 8"
+                stroke="#8C6239"
+                strokeWidth="1.6"
+                strokeLinecap="round"
+                fill="none"
+              />
+              {/* Flower hat */}
+              <circle cx="22" cy="8" r="3.5" fill="#E88B97" />
+              <circle cx="22" cy="8" r="1.3" fill="#FEE08B" />
+              {/* Eyes */}
+              <ellipse cx="15" cy="18" rx="1.3" ry="1.8" fill="#3D291D" />
+              <ellipse cx="21" cy="18" rx="1.3" ry="1.8" fill="#3D291D" />
+              <circle cx="15.4" cy="17.3" r="0.5" fill="#FFFFFF" />
+              <circle cx="21.4" cy="17.3" r="0.5" fill="#FFFFFF" />
+              {/* Cheeks */}
+              <ellipse cx="12.5" cy="20.5" rx="1.8" ry="1.1" fill="#F497A8" />
+              <ellipse cx="23.5" cy="20.5" rx="1.8" ry="1.1" fill="#F497A8" />
+              {/* Mouth */}
+              <path
+                d="M17 19.8 L18 20.6 L19 19.8"
+                stroke="#7A4B29"
+                strokeWidth="1.1"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                fill="none"
+              />
+            </svg>
+          </button>
+          <div className="wiki-outline__header-info">
+            <span className="wiki-outline__header-label">{label}</span>
+            <strong className="wiki-outline__header-counter">
+              {minimal
+                ? `${String(activeChapterNumber).padStart(2, "0")} / ${String(totalChapters).padStart(2, "0")}`
+                : `${items.length} chapters`}
+            </strong>
+          </div>
         </div>
-        <span>Jump to section</span>
+        {easterEggActive && (
+          <div className="wiki-outline__toast" role="status">
+            <span>咩~ 探索顺利！🌸</span>
+          </div>
+        )}
       </header>
+
+      <div className="wiki-outline__progress-pill" aria-hidden="true">
+        <div
+          className="wiki-outline__progress-pill-fill"
+          style={{ width: `${progressPercent}%` }}
+        />
+      </div>
+
       <nav aria-label={label}>
         <span
           ref={ribbonRef}
@@ -413,6 +518,12 @@ export function WikiLineSidebar({
                   {!minimal && item.meta ? <small>{item.meta}</small> : null}
                   <strong>{item.label}</strong>
                 </span>
+                {activeId === item.id && (
+                  <span
+                    className="wiki-outline__active-pill"
+                    aria-hidden="true"
+                  />
+                )}
               </a>
 
               {isExpanded && item.children ? (
@@ -434,7 +545,9 @@ export function WikiLineSidebar({
                       title={child.label}
                       key={child.id}
                     >
-                      <span>{child.index}</span>
+                      <span className="wiki-outline__sub-index">
+                        {child.index}
+                      </span>
                       <strong>{child.label}</strong>
                     </a>
                   ))}
@@ -447,10 +560,13 @@ export function WikiLineSidebar({
 
       {links.length ? (
         <div className="wiki-outline__related">
-          {!minimal ? <span>Related records</span> : null}
+          <span className="wiki-outline__related-title">✦ 延伸阅读</span>
           {links.map((link) => (
             <Link key={link.path} to={link.path}>
-              {link.label} <span aria-hidden="true">↗</span>
+              <span>{link.label}</span>
+              <span className="wiki-outline__link-arrow" aria-hidden="true">
+                ↗
+              </span>
             </Link>
           ))}
         </div>
