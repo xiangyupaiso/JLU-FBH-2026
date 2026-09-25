@@ -5,7 +5,7 @@ import {
   ResultGateTable,
 } from "../components/wiki/features/ProjectFeatures";
 import { getProjectHeroImage } from "../components/wiki/projectHeroAssets";
-import { engineeringPage } from "../data/projectPages";
+import { engineeringPage } from "../data/project/engineeringPage";
 import "../styles/route-palette-project.css";
 
 export function Engineering() {

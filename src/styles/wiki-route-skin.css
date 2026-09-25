@@ -120,7 +120,7 @@ html.has-route-reader-scroll {
      a *sticky* scroll-snap target re-anchors itself every frame — the browser
      then fights the gesture and yanks the document (and the projected article
      position) backwards mid-scroll. Measured with wheel-driven frame sampling
-     on /sustainability: `y proximity` produced repeated 30–100px rebounds, the
+     on the long-form reader: `y proximity` produced repeated 30–100px rebounds, the
      frame's scrollTop flipping back to 0, and 73ms worst frames; with snapping
      off the scroll is strictly monotonic and the worst frame is 43ms. */
   scroll-snap-type: none;
@@ -1528,11 +1528,11 @@ html.has-route-reader-scroll {
    frame itself non-scrollable prevents the scrollbar from stealing/releasing
    the article width while the browser is deciding which scroll owner wins. */
 @media (min-width: 1200px) and (min-height: 700px) {
-  .wiki-page--route.route--sustainability-flow .wiki-reader-track {
+  .wiki-page--route.route--wide-flow .wiki-reader-track {
     height: auto;
   }
 
-  .wiki-page--route.route--sustainability-flow
+  .wiki-page--route.route--wide-flow
     .wiki-reader-track
     > .wiki-record {
     position: relative;
@@ -1540,7 +1540,7 @@ html.has-route-reader-scroll {
     height: auto;
   }
 
-  .wiki-page--route.route--sustainability-flow .route-frame {
+  .wiki-page--route.route--wide-flow .route-frame {
     height: auto;
     min-height: var(--reader-h);
     overflow: visible;
@@ -1552,7 +1552,7 @@ html.has-route-reader-scroll {
   /* Keep the smooth document scroll while restoring the same framed reading
      surface used by the other Engagement records. The overlay is sticky to
      the viewport and does not create a second scroll owner. */
-  .wiki-page--route.route--sustainability-flow .route-frame::after {
+  .wiki-page--route.route--wide-flow .route-frame::after {
     position: sticky;
     z-index: 2;
     top: var(--header-height);
@@ -1566,7 +1566,7 @@ html.has-route-reader-scroll {
     pointer-events: none;
   }
 
-  .wiki-page--route.route--sustainability-flow .wiki-outline {
+  .wiki-page--route.route--wide-flow .wiki-outline {
     position: sticky;
     top: calc(var(--header-height) + var(--reader-pad));
     align-self: start;
@@ -1575,13 +1575,13 @@ html.has-route-reader-scroll {
     overflow: auto;
   }
 
-  .wiki-page--route.route--sustainability-flow .route-frame__scroll {
+  .wiki-page--route.route--wide-flow .route-frame__scroll {
     height: auto;
     overflow: visible !important;
     scrollbar-width: none;
   }
 
-  .wiki-page--route.route--sustainability-flow
+  .wiki-page--route.route--wide-flow
     .route-frame__scroll::-webkit-scrollbar {
     display: none;
   }

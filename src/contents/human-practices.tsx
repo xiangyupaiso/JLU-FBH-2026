@@ -11,7 +11,7 @@ import {
   HumanPracticesTimeline,
 } from "../components/wiki/features/HumanPracticesPanels";
 import { getEngagementHeroImage } from "../components/wiki/engagementHeroAssets";
-import { humanPracticesPage } from "../data/engagementPages";
+import { humanPracticesPage } from "../data/engagement/humanPracticesPage";
 import "../styles/route-palette-engagement.css";
 
 /**

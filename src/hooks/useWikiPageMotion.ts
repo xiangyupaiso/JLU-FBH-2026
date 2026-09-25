@@ -4,9 +4,9 @@ import { clamp, scrollReaderToTarget } from "../utils";
 export function useWikiPageMotion(
   rootRef: RefObject<HTMLElement | null>,
   sectionIds: string[],
-  route: string,
   scrollContainerRef: RefObject<HTMLElement | null>,
   enabled = true,
+  wideFlow = false,
 ) {
   const [activeSection, setActiveSection] = useState(() => {
     const hash = window.location.hash.slice(1);
@@ -79,9 +79,7 @@ export function useWikiPageMotion(
       root.querySelectorAll<HTMLElement>("[data-wiki-outline-anchor]"),
     );
     const routeHash = window.location.hash.slice(1);
-    const lightweightRoute =
-      route === "/sustainability" &&
-      window.matchMedia("(min-width: 1200px) and (min-height: 700px)").matches;
+    const lightweightRoute = wideFlow;
     const canObserve = "IntersectionObserver" in window;
 
     if (reducedMotion.matches || !canObserve) {
@@ -357,7 +355,7 @@ export function useWikiPageMotion(
         anchor.removeAttribute("data-wiki-outline-active");
       });
     };
-  }, [enabled, rootRef, route, scrollContainerRef, sectionIds]);
+  }, [enabled, rootRef, scrollContainerRef, sectionIds, wideFlow]);
 
   return { activeSection, activeSubsection };
 }

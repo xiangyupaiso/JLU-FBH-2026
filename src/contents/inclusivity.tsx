@@ -5,7 +5,7 @@ import {
   DecisionProofTable,
 } from "../components/wiki/features/EngagementFeatures";
 import { getEngagementHeroImage } from "../components/wiki/engagementHeroAssets";
-import { inclusivityPage } from "../data/engagementPages";
+import { inclusivityPage } from "../data/engagement/inclusivityPage";
 import "../styles/route-palette-engagement.css";
 
 export function Inclusivity() {

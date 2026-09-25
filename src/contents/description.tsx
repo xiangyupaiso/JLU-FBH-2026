@@ -1,7 +1,7 @@
 import { WikiRoutePage } from "../components/wiki/WikiRoutePage";
 import { descriptionFeatures } from "../components/wiki/features/DescriptionPanels";
 import { getProjectHeroImage } from "../components/wiki/projectHeroAssets";
-import { descriptionPage } from "../data/projectPages";
+import { descriptionPage } from "../data/project/descriptionPage";
 import "../styles/route-palette-project.css";
 import "../styles/description-page.css";
 

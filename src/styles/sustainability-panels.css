@@ -1,8 +1,8 @@
 /* Sustainability page (Engagement) — component styles
-   Used by: src/components/wiki/sustainability/*.tsx
+   Used by: src/components/wiki/features/engagement/sustainability/*.tsx
    Tokens resolve against circure-tokens.css; the plan book's semantic token
    names are provided below as aliases so components and
-   src/data/sustainabilityData.ts can reference one naming scheme. */
+   src/data/engagement/sustainability/sustainabilityData.ts can reference one naming scheme. */
 
 /* Port note: this block was `:root` in the pre-revamp stylesheet, i.e. it
    published the plan book's token aliases document-wide. The revamp renders
@@ -2019,6 +2019,6 @@
  * 固定导航栏避让：主内容区顶部留出足够内边距，避免 position:fixed 的导航栏遮挡正文
  * ------------------------------------------------------------------------- */
 
-.wiki-page[data-wiki-route="/sustainability"] .wiki-article {
+.wiki-page.wiki-page--sustainability .wiki-article {
   padding-top: calc(var(--header-height) + 2rem);
 }

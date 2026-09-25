@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { descriptionReferences, solutionData } from "../../../data/descriptionData";
+import { descriptionReferences, solutionData } from "../../../data/project/descriptionPage";
 import "../../../styles/wiki-features.css";
 
 /**

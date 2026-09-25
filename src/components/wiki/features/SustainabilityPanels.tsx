@@ -19,13 +19,13 @@ import {
   SSTQNScoreProcess,
   StakeholderProfileCard,
   SustainabilityPdfPreview,
-} from "../sustainability";
+} from "./engagement/sustainability";
 import type { ProtocolManual } from "../../../data/protocolPages";
 import {
   sustainabilityAssets,
   type SustainabilityImageAssetKey,
-} from "../../../data/sustainabilityAssets";
-import { sustainabilityImages } from "../../../data/sustainabilityImages";
+} from "../../../data/engagement/sustainability/sustainabilityAssets";
+import { sustainabilityImages } from "../../../data/engagement/sustainability/sustainabilityImages";
 import {
   sdg3EvidenceStats,
   sdg3LegacyTools,
@@ -37,11 +37,11 @@ import {
   type StakeholderProfile,
   type StakeholderVariant,
   type SustainabilityStat,
-} from "../../../data/sustainabilityData";
-import { sdg9Section } from "../../../data/sustainabilitySdg9";
-import { sdg12Section } from "../../../data/sustainabilitySdg12";
-import { growSection } from "../../../data/sustainabilityGrow";
-import { SustPanelScope } from "./SustPanelScope";
+} from "../../../data/engagement/sustainability/sustainabilityData";
+import { sdg9Section } from "../../../data/engagement/sustainability/sustainabilitySdg9";
+import { sdg12Section } from "../../../data/engagement/sustainability/sustainabilitySdg12";
+import { growSection } from "../../../data/engagement/sustainability/sustainabilityGrow";
+import { SustPanelScope } from "./engagement/sustainability/SustPanelScope";
 import { useRoutePageScroll } from "../WikiRoutePage";
 import "../../../styles/sustainability-panels.css";
 

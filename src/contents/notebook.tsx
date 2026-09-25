@@ -5,7 +5,7 @@ import {
   NotebookTrace,
   NotebookTraceability,
 } from "../components/wiki/features/WetLabFeatures";
-import { notebookPage } from "../data/wetLabPages";
+import { notebookPage } from "../data/wet-lab/notebookPage";
 import "../styles/route-palette-wetlab.css";
 
 export function Notebook() {

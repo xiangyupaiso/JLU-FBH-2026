@@ -5,7 +5,7 @@ import {
   SafetyControlHierarchy,
   SafetyNoGoLedger,
 } from "../components/wiki/features/WetLabFeatures";
-import { safetyPage } from "../data/wetLabPages";
+import { safetyPage } from "../data/wet-lab/safetyPage";
 import "../styles/route-palette-wetlab.css";
 
 export function SafetyAndSecurity() {

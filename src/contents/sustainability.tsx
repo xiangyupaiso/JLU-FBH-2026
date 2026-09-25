@@ -1,7 +1,7 @@
 import { WikiRoutePage } from "../components/wiki/WikiRoutePage";
 import { sustainabilityFeatures } from "../components/wiki/features/SustainabilityPanels";
 import { getEngagementHeroImage } from "../components/wiki/engagementHeroAssets";
-import { sustainabilityPage } from "../data/sustainabilityPage";
+import { sustainabilityPage } from "../data/engagement/sustainability";
 import "../styles/route-palette-engagement.css";
 
 /**
@@ -20,7 +20,8 @@ export function Sustainability() {
       content={sustainabilityPage}
       heroImage={getEngagementHeroImage(sustainabilityPage.route)}
       theme="engagement"
-      pageClassName="wiki-page--engagement"
+      pageClassName="wiki-page--engagement wiki-page--sustainability"
+      enableWideFlow
       features={sustainabilityFeatures()}
     />
   );

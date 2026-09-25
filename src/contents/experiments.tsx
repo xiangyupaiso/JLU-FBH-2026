@@ -5,7 +5,7 @@ import {
   ProtocolStack,
   ReadoutMatrix,
 } from "../components/wiki/features/WetLabFeatures";
-import { experimentsPage } from "../data/wetLabPages";
+import { experimentsPage } from "../data/wet-lab/experimentsPage";
 import "../styles/route-palette-wetlab.css";
 
 export function Experiments() {

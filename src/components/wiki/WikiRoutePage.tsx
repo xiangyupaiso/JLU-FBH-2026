@@ -75,6 +75,8 @@ interface WikiRoutePageProps {
   pageClassName?: string;
   /** `data-route-theme` value for QA and module-scoped overrides. */
   theme?: string;
+  /** Opt into the document-flow reader used by pages with long visual panels. */
+  enableWideFlow?: boolean;
   /**
    * Library layout variant: render without the TOC card and let the reader frame
    * take the released width. Used by `/games` and the `/protocol` library.
@@ -524,13 +526,14 @@ export function WikiRoutePage({
   features = {},
   pageClassName = "",
   theme,
+  enableWideFlow = false,
   hideOutline = false,
 }: WikiRoutePageProps) {
   const rootRef = useRef<HTMLElement>(null);
   const interfaceRef = useRef<HTMLDivElement>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
-  const desktopSustainabilityFlow =
-    content.route === "/sustainability" &&
+  const wideFlow =
+    enableWideFlow &&
     window.matchMedia("(min-width: 1200px) and (min-height: 700px)").matches;
   const sectionIds = useMemo(
     () => content.sections.map((section) => section.id),
@@ -539,11 +542,11 @@ export function WikiRoutePage({
   const { activeSection, activeSubsection } = useWikiPageMotion(
     rootRef,
     sectionIds,
-    content.route,
     scrollRef,
-    !desktopSustainabilityFlow,
+    !wideFlow,
+    wideFlow,
   );
-  useRouteReaderScroll(!desktopSustainabilityFlow, interfaceRef, scrollRef);
+  useRouteReaderScroll(!wideFlow, interfaceRef, scrollRef);
 
   const scrollContextValue = useMemo(
     () => ({ activeSection, activeSubsection }),
@@ -576,7 +579,7 @@ export function WikiRoutePage({
     <main
       ref={rootRef}
       className={`wiki-page wiki-page--route wiki-page--manuscript route--reader ${
-        desktopSustainabilityFlow ? "route--sustainability-flow" : ""
+        wideFlow ? "route--wide-flow" : ""
       } ${pageClassName}`}
       data-wiki-route={content.route}
       data-route-theme={theme}
