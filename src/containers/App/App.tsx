@@ -5,7 +5,7 @@ import "../../styles/circure-nav.css";
 import "../../styles/circure-search.css";
 import "../../styles/circure-back-to-top.css";
 import "../../styles/circure-cursor.css";
-import { Route, Routes, useLocation } from "react-router-dom";
+import { Navigate, Route, Routes, useLocation } from "react-router-dom";
 import { getPathMapping, stringToSlug } from "../../utils";
 import { useEffect } from "react";
 import { Navbar } from "../../components/Navbar";
@@ -13,6 +13,8 @@ import { Header } from "../../components/Header";
 import { NotFound } from "../../components/NotFound";
 import { Footer } from "../../components/Footer";
 import { BackToTop } from "../../components/BackToTop";
+
+const TEAM_ROUTES = new Set(["/roster", "/attributions", "/activities"]);
 
 const WET_LAB_ROUTES = new Set([
   "/experiments",
@@ -40,6 +42,7 @@ const ENGAGEMENT_ROUTES = new Set([
 // Wet Lab, Project, Dry Lab, Engagement and Team share one template with
 // per-module palettes.
 const ROUTE_READER_ROUTES = new Set([
+  ...TEAM_ROUTES,
   ...WET_LAB_ROUTES,
   ...DRY_LAB_ROUTES,
   ...ENGAGEMENT_ROUTES,
@@ -47,7 +50,6 @@ const ROUTE_READER_ROUTES = new Set([
   "/engineering",
   "/results",
   "/contribution",
-  "/team",
 ]);
 
 const App = () => {
@@ -121,6 +123,11 @@ const App = () => {
             />
           ),
         )}
+        <Route path="/team" element={<Navigate to="/roster" replace />} />
+        <Route
+          path="/attribution"
+          element={<Navigate to="/attributions" replace />}
+        />
         <Route
           path="*"
           element={

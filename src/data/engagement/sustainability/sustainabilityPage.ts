@@ -415,9 +415,9 @@ export const sustainabilityPage: WikiPageContent = {
     { path: "/inclusivity", label: "Inclusivity" },
   ],
   next: {
-    path: "/human-practices",
-    label: "Human Practices",
-    title: "继续沿着利益相关者的反馈路径，进入 Human Practices。",
+    path: "/roster",
+    label: "Roster",
+    title: "Unite around a shared vision to turn the impossible.",
   },
 };
 

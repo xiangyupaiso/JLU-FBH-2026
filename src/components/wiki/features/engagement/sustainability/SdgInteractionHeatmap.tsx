@@ -208,13 +208,17 @@ export function useSdgChart(
   const ref = useRef<HTMLDivElement>(null);
   useEffect(() => {
     const el = ref.current!;
-    let chart: echarts.ECharts;
+    let chart: echarts.ECharts | undefined;
+    let renderedWidth = 0;
     const render = () => {
-      const w = el.clientWidth || w0;
-      const height = `${(w * h0) / w0}px`;
-      if (el.style.height !== height) el.style.height = height;
-      if (chart) chart.resize();
-      else chart = echarts.init(el);
+      const w = el.clientWidth;
+      // Ignore the observer notification caused by our own height update.
+      if (w <= 0 || w === renderedWidth) return;
+      renderedWidth = w;
+      const height = Math.ceil((w * h0) / w0);
+      el.style.height = `${height}px`;
+      if (chart) chart.resize({ width: w, height });
+      else chart = echarts.init(el, undefined, { width: w, height });
       chart.setOption(makeOption(w / w0), true);
     };
     render();
@@ -222,7 +226,7 @@ export function useSdgChart(
     ro.observe(el);
     return () => {
       ro.disconnect();
-      chart.dispose();
+      chart?.dispose();
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

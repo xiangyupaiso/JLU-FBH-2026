@@ -1544,6 +1544,9 @@ html.has-route-reader-scroll {
     height: auto;
     min-height: var(--reader-h);
     overflow: visible;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
     background-size: 100% auto;
     background-position: top center;
     background-repeat: repeat-y;
@@ -1552,13 +1555,14 @@ html.has-route-reader-scroll {
   /* Keep the smooth document scroll while restoring the same framed reading
      surface used by the other Engagement records. The overlay is sticky to
      the viewport and does not create a second scroll owner. */
-  .wiki-page--route.route--wide-flow .route-frame::after {
+  .wiki-page--route.route--wide-flow .route-frame::before {
     position: sticky;
     z-index: 2;
     top: var(--header-height);
     display: block;
     height: var(--reader-h);
     margin-bottom: calc(-1 * var(--reader-h));
+    box-sizing: border-box;
     border: 1px solid var(--route-line-strong);
     border-radius: 6px;
     box-shadow: var(--route-shadow);

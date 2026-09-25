@@ -37,6 +37,30 @@ interface FolderDisplay {
 }
 
 const NAV_DISPLAY: Record<string, FolderDisplay> = {
+  Team: {
+    key: "team",
+    intro:
+      "Coming together with a shared purpose to turn the impossible into reality.",
+    enterLabel: "Meet the team",
+    sprite: "drylab-engagement",
+    cards: {
+      Roster: {
+        small: "01 / ROSTER",
+        em: "Students · Advisors · PIs",
+        spriteRow: "100%",
+      },
+      Attributions: {
+        small: "02 / ATTRIBUTIONS",
+        em: "Roles · Tasks · Support",
+        spriteRow: "100%",
+      },
+      Activities: {
+        small: "03 / ACTIVITIES",
+        em: "Team dynamics · Outreach · Milestones",
+        spriteRow: "100%",
+      },
+    },
+  },
   Project: {
     key: "project",
     intro:
@@ -379,7 +403,10 @@ export function Navbar() {
   const engagementActive = DROPDOWNS.find((d) => d.key === "engagement")?.cards.some(
     (card) => isActive(pathname, card.path),
   );
-  const teamActive = isActive(pathname, "/team");
+  const teamActive =
+    DROPDOWNS.find((d) => d.key === "team")?.cards.some((card) =>
+      isActive(pathname, card.path),
+    ) || isActive(pathname, "/team");
   const headerClassName = [
     "site-header",
     openKey ? "is-nav-open" : "",
@@ -466,15 +493,6 @@ export function Navbar() {
                     aria-current={homeActive ? "page" : undefined}
                   >
                     Home
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <Link
-                    className="nav-link"
-                    to="/team"
-                    aria-current={teamActive ? "page" : undefined}
-                  >
-                    Team
                   </Link>
                 </li>
                 {DROPDOWNS.map((d, i) => (
@@ -608,9 +626,6 @@ export function Navbar() {
           >
             <Link to="/" onClick={closeAll}>
               Home
-            </Link>
-            <Link to="/team" onClick={closeAll}>
-              Team
             </Link>
             {DROPDOWNS.map((d) => (
               <Link

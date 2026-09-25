@@ -5,6 +5,7 @@ export function useWikiPageMotion(
   rootRef: RefObject<HTMLElement | null>,
   sectionIds: string[],
   scrollContainerRef: RefObject<HTMLElement | null>,
+  route: string,
   enabled = true,
   wideFlow = false,
 ) {
@@ -79,10 +80,13 @@ export function useWikiPageMotion(
       root.querySelectorAll<HTMLElement>("[data-wiki-outline-anchor]"),
     );
     const routeHash = window.location.hash.slice(1);
-    const lightweightRoute = wideFlow;
+    const lightweightRoute =
+      wideFlow ||
+      (route === "/sustainability" &&
+        window.matchMedia("(min-width: 1200px) and (min-height: 700px)").matches);
     const canObserve = "IntersectionObserver" in window;
 
-    if (reducedMotion.matches || !canObserve) {
+    if (reducedMotion.matches || !canObserve || lightweightRoute) {
       revealElements.forEach((element) => element.classList.add("is-visible"));
     }
 
@@ -92,7 +96,7 @@ export function useWikiPageMotion(
     // frame must be observed against the viewport instead.
     const revealObservers: IntersectionObserver[] = [];
 
-    if (!reducedMotion.matches && canObserve) {
+    if (!reducedMotion.matches && canObserve && !lightweightRoute) {
       const onReveal = (entries: IntersectionObserverEntry[]) => {
         entries.forEach((entry) => {
           if (!entry.isIntersecting) return;
@@ -131,6 +135,14 @@ export function useWikiPageMotion(
       targetFocus: reducedMotion.matches ? 1 : 0,
       targetDrift: 0,
     }));
+    if (lightweightRoute) {
+      sections.forEach((section) => {
+        section.style.setProperty("--wiki-section-reveal", "1");
+        section.style.setProperty("--wiki-section-focus", "1");
+        section.style.setProperty("--wiki-section-shift", "0px");
+        section.style.setProperty("--wiki-section-drift", "0px");
+      });
+    }
     let frame = 0;
     let needsMeasure = true;
     let previousFrameTime = 0;
@@ -138,6 +150,9 @@ export function useWikiPageMotion(
     let outlineProgress = 0;
     let targetPageProgress = 0;
     let targetOutlineProgress = 0;
+    let lastActiveSection = "";
+    let lastActiveSubsection = "";
+    let lastSubsectionMeasure = 0;
 
     const measureProgress = () => {
       needsMeasure = false;
@@ -158,10 +173,20 @@ export function useWikiPageMotion(
       targetOutlineProgress = targetPageProgress;
 
       let currentSection = sections[0]?.id ?? "";
-      sectionMotion.forEach((motion) => {
-        const sectionBounds = motion.section.getBoundingClientRect();
+      const motions = lightweightRoute
+        ? sections.map((section) => ({ section }))
+        : sectionMotion;
+      motions.forEach((entry) => {
+        const motion = sectionMotion.find((item) => item.section === entry.section);
+        const section = entry.section;
+        const sectionBounds = section.getBoundingClientRect();
         const sectionTop = sectionBounds.top - viewportTop;
         const sectionBottom = sectionBounds.bottom - viewportTop;
+
+        if (!motion) {
+          if (sectionBounds.top <= activationLine) currentSection = section.id;
+          return;
+        }
         const revealStart = viewportHeight * 0.9;
         const revealDistance = Math.max(280, viewportHeight * 0.58);
         const sectionTravel = Math.max(
@@ -190,18 +215,25 @@ export function useWikiPageMotion(
           : 12 - sectionProgress * 24;
 
         if (sectionBounds.top <= activationLine) {
-          currentSection = motion.section.id;
+          currentSection = section.id;
         }
       });
 
       if (currentSection) {
-        setActiveSection(currentSection);
-        sections.forEach((section) => {
-          section.toggleAttribute(
-            "data-wiki-active",
-            section.id === currentSection,
-          );
-        });
+        if (currentSection !== lastActiveSection) {
+          lastActiveSection = currentSection;
+          setActiveSection(currentSection);
+          sections.forEach((section) => {
+            section.toggleAttribute(
+              "data-wiki-active",
+              section.id === currentSection,
+            );
+          });
+        }
+
+        const now = performance.now();
+        if (lightweightRoute && now - lastSubsectionMeasure < 120) return;
+        lastSubsectionMeasure = now;
 
         const currentAnchors = outlineAnchors.filter(
           (anchor) =>
@@ -220,13 +252,16 @@ export function useWikiPageMotion(
           currentSubsection =
             currentAnchors[currentAnchors.length - 1]?.id ?? currentSubsection;
         }
-        setActiveSubsection(currentSubsection);
-        outlineAnchors.forEach((anchor) => {
-          anchor.toggleAttribute(
-            "data-wiki-outline-active",
-            anchor.id === currentSubsection,
-          );
-        });
+        if (currentSubsection !== lastActiveSubsection) {
+          lastActiveSubsection = currentSubsection;
+          setActiveSubsection(currentSubsection);
+          outlineAnchors.forEach((anchor) => {
+            anchor.toggleAttribute(
+              "data-wiki-outline-active",
+              anchor.id === currentSubsection,
+            );
+          });
+        }
       }
     };
 
@@ -355,7 +390,7 @@ export function useWikiPageMotion(
         anchor.removeAttribute("data-wiki-outline-active");
       });
     };
-  }, [enabled, rootRef, scrollContainerRef, sectionIds, wideFlow]);
+  }, [enabled, rootRef, route, scrollContainerRef, sectionIds, wideFlow]);
 
   return { activeSection, activeSubsection };
 }

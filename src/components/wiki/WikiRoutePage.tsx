@@ -543,6 +543,7 @@ export function WikiRoutePage({
     rootRef,
     sectionIds,
     scrollRef,
+    content.route,
     !wideFlow,
     wideFlow,
   );
