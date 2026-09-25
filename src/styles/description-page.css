@@ -261,3 +261,26 @@
     transition: none !important;
   }
 }
+
+/* FIG 03: circular plasmid map sizing constrained to comfortably fit in one screen */
+.wiki-page--project .wiki-figure:has(img[src*="figure3"]),
+.wiki-page--project .wiki-figure:has(img[alt*="circRNA backbone"]) {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 32px 0;
+}
+
+.wiki-page--project .wiki-figure:has(img[src*="figure3"]) img,
+.wiki-page--project .wiki-figure:has(img[alt*="circRNA backbone"]) img,
+.wiki-page--project .wiki-figure img[src*="figure3"],
+.wiki-page--project .wiki-figure img[alt*="circRNA backbone"] {
+  max-height: min(640px, 72vh);
+  width: auto;
+  object-fit: contain;
+}
+
+.wiki-page--project .wiki-figure:has(img[src*="figure3"]) figcaption,
+.wiki-page--project .wiki-figure:has(img[alt*="circRNA backbone"]) figcaption {
+  text-align: center;
+}
