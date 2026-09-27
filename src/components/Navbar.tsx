@@ -239,6 +239,7 @@ export function Navbar() {
   const shellRef = useRef<HTMLDivElement>(null);
   const mobileToggleRef = useRef<HTMLButtonElement>(null);
   const pathname = useLocation().pathname;
+  const homeActive = isActive(pathname, "/");
 
   const clearTimers = useCallback(() => {
     window.clearTimeout(openTimerRef.current);
@@ -291,8 +292,8 @@ export function Navbar() {
   // Clean up timers on unmount
   useEffect(() => () => clearTimers(), [clearTimers]);
 
-  // Keep the reading-progress thread without changing the navigation color
-  // as different page surfaces pass beneath it.
+  // The dark header belongs only to Home's opening scene. Reuse the progress
+  // listener so scrolling back, resizing and route changes restore its theme.
   useEffect(() => {
     const header = headerRef.current;
     if (!header) return;
@@ -306,6 +307,29 @@ export function Navbar() {
       const progress =
         max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)) : 0;
       header.style.setProperty("--scroll-p", progress.toFixed(4));
+      // CROSS-FILE: reads Home DOM every frame. .home-scene01 lives in
+      // contents/home-scene-01.tsx, #what-we-hope in contents/home-story.tsx,
+      // #home-finale in components/home/HomeFinale.tsx. Renaming any of them
+      // silently breaks the header theme (data-home-opening/-closing, styled in
+      // circure-nav.css). HomeIntro.tsx also measures .logo-word-full below.
+      const opening = homeActive
+        ? document.querySelector<HTMLElement>(".home-scene01")
+        : null;
+      const headerHeight = Number.parseFloat(
+        getComputedStyle(header).getPropertyValue("--header-height"),
+      ) || 0;
+      header.dataset.homeOpening = String(
+        !!opening && opening.getBoundingClientRect().bottom > headerHeight,
+      );
+      const closing = homeActive
+        ? document.getElementById("what-we-hope")?.getBoundingClientRect()
+        : null;
+      const closingEnd = homeActive
+        ? document.getElementById("home-finale")?.getBoundingClientRect() ?? closing
+        : null;
+      header.dataset.homeClosing = String(
+        !!closing && !!closingEnd && closing.top <= headerHeight + 1 && closingEnd.bottom > headerHeight,
+      );
     };
 
     const request = () => {
@@ -321,7 +345,7 @@ export function Navbar() {
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", onResize);
     };
-  }, [pathname]);
+  }, [pathname, homeActive]);
 
   // Click-outside to close whichever menu is open (desktop and/or mobile)
   useEffect(() => {
@@ -404,6 +428,7 @@ export function Navbar() {
     ) || isActive(pathname, "/team");
   const headerClassName = [
     "site-header",
+    homeActive ? "is-home-page" : "",
     openKey ? "is-nav-open" : "",
     mobileOpen ? "is-mobile-open" : "",
     wetLabActive ? "is-wet-lab-page" : "",
@@ -415,8 +440,6 @@ export function Navbar() {
   ]
     .filter(Boolean)
     .join(" ");
-
-  const homeActive = isActive(pathname, "/");
 
   return (
     <>
@@ -439,6 +462,7 @@ export function Navbar() {
         ref={headerRef}
         className={headerClassName}
         data-header
+        data-home-opening={homeActive ? "true" : undefined}
         data-nav-theme={openKey ?? undefined}
       >
         <div

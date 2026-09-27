@@ -1,7 +1,7 @@
-import experimentsHero from "../../assets/wiki/wet-lab-heroes/wet-lab-experiments-hero-v3.webp";
-import measurementHero from "../../assets/wiki/wet-lab-heroes/wet-lab-measurement-hero-v3.webp";
+import experimentsHero from "../../assets/wiki/wet-lab-heroes/wet-lab-experiments-hero.jpg";
+import measurementHero from "../../assets/wiki/wet-lab-heroes/wet-lab-measurement-hero.jpg";
 import notebookHero from "../../assets/wiki/wet-lab-heroes/wet-lab-notebook-hero-v3.webp";
-import platformHero from "../../assets/wiki/wet-lab-heroes/wet-lab-platform-hero-v3.webp";
+import platformHero from "../../assets/wiki/wet-lab-heroes/wet-lab-platform-hero.jpg";
 import safetyHero from "../../assets/wiki/wet-lab-heroes/wet-lab-safety-hero-v3.webp";
 
 export type WetLabHeroVariant =

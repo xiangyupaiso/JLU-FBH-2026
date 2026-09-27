@@ -1,7 +1,7 @@
 import gamesHero from "../../assets/wiki/dry-lab-games-hero-v2.png";
-import hardwareHero from "../../assets/wiki/dry-lab-heroes/dry-lab-hardware-hero-v2.webp";
-import modelHero from "../../assets/wiki/dry-lab-heroes/dry-lab-model-hero-v2.webp";
-import softwareHero from "../../assets/wiki/dry-lab-heroes/dry-lab-software-hero-v2.webp";
+import hardwareHero from "../../assets/wiki/dry-lab-heroes/dry-lab-hardware-hero.jpg";
+import modelHero from "../../assets/wiki/dry-lab-heroes/dry-lab-model-hero.jpg";
+import softwareHero from "../../assets/wiki/dry-lab-heroes/dry-lab-software-hero.jpg";
 
 /**
  * Per-page hero art for the Dry Lab reader.

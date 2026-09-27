@@ -35,6 +35,7 @@ export function Model() {
       heroImage={getDryLabHeroImage(modelEvidencePage.route)}
       theme="dry-lab"
       pageClassName="wiki-page--dry-lab"
+      hideHeroCopy
       features={{
         "model-structural-confirmation": <Trop2ComplexViewer />,
         "model-judge-brief": panel(<CirCureModelDecisionExplorer />),

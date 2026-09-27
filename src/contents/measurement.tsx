@@ -15,6 +15,7 @@ export function Measurement() {
       heroImage={getWetLabHeroImage(measurementPage.route)}
       theme="wet-lab"
       pageClassName="wiki-page--wet-lab"
+      hideHeroCopy
       features={{
         "measurement-chain": <MeasurementWindow />,
         "measurement-readouts": <ReadoutMatrix />,

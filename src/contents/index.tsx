@@ -1,4 +1,5 @@
-export { Home } from "./home.tsx";
+// The home route is the immersive scroll story from the LJY-PART branch.
+export { Home } from "./home-scene-01.tsx";
 // Team
 export { Roster } from "./roster.tsx";
 export { Attribution } from "./attribution.tsx";

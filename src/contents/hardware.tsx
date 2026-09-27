@@ -10,6 +10,7 @@ export function Hardware() {
       heroImage={getDryLabHeroImage(hardwarePage.route)}
       theme="dry-lab"
       pageClassName="wiki-page--dry-lab"
+      hideHeroCopy
     />
   );
 }

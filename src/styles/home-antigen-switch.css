@@ -1,0 +1,211 @@
+.home-antigen-switch {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  padding: 34px 6%;
+  color: #865762;
+  background: #fff4e2;
+  font-family: var(--font-sans);
+}
+.home-antigen-switch__content {
+  width: min(100%, 950px, calc((var(--scene-height) - 150px) * 2.1));
+}
+.home-antigen-switch__diagram {
+  display: grid;
+  grid-template-columns: 1.2fr 0.4fr 1fr;
+  gap: 16px;
+  align-items: center;
+}
+.home-antigen-switch__rna {
+  position: relative;
+  width: 100%;
+  max-width: 330px;
+  margin: auto;
+}
+.home-antigen-switch__rna > svg {
+  display: block;
+  width: 100%;
+  overflow: visible;
+}
+.home-antigen-switch__center {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+  color: #965d69;
+  font: 400 clamp(22px, 4.7vw, 37px) var(--font-editorial);
+}
+.home-antigen-switch__arrow {
+  width: 100%;
+  color: #bc9198;
+}
+.home-antigen-switch__target {
+  width: 100%;
+  max-width: 290px;
+  min-width: 0;
+  margin: auto;
+  text-align: center;
+}
+.home-antigen-switch__target svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.home-antigen-switch__target-label {
+  margin-top: 12px;
+  color: var(--selected-color);
+  font: 400 clamp(15px, 3vw, 25px) var(--font-editorial);
+}
+.home-antigen-switch__options {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-top: 42px;
+}
+.home-antigen-switch__hint {
+  position: absolute;
+  bottom: calc(100% + 9px);
+  left: 50%;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  translate: -50% 0;
+  white-space: nowrap;
+  color: #8c666b;
+  font-size: 12px;
+  line-height: 1.4;
+  pointer-events: none;
+  transition: opacity 0.25s;
+}
+.home-antigen-switch__hint > span {
+  font-size: 17px;
+}
+.home-antigen-switch[data-guidance="false"] .home-antigen-switch__hint {
+  opacity: 0;
+}
+/* CROSS-FILE: .story-chapter.is-current is toggled by useHomeStoryAnimation.ts. */
+.story-chapter.is-current
+  .home-antigen-switch[data-guidance="true"]:not(.is-dragging)
+  [data-antigen-option="1"]
+  svg {
+  animation: antigen-drag-cue 2.2s 0.35s 1 both;
+}
+@keyframes antigen-drag-cue {
+  0%,
+  25%,
+  80%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+.home-antigen-switch__option {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 95px;
+  min-height: 66px;
+  padding: 5px 0;
+  border: 0;
+  background: transparent;
+  color: #866b63;
+  font: 400 13px var(--font-sans);
+  cursor: grab;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+.home-antigen-switch__option svg {
+  display: block;
+  width: 76px;
+  height: 34px;
+  pointer-events: none;
+  transition: transform 0.18s;
+}
+.home-antigen-switch__option:hover svg {
+  transform: translateY(-3px);
+}
+.home-antigen-switch__option[aria-pressed="true"] {
+  color: var(--option-color);
+}
+.home-antigen-switch__option.is-held {
+  cursor: grabbing;
+}
+.home-antigen-switch__option.is-held svg {
+  opacity: 0.18;
+  transform: none;
+}
+.home-antigen-switch__ghost {
+  position: absolute;
+  z-index: 3;
+  left: 0;
+  top: 0;
+  pointer-events: none;
+}
+.home-antigen-switch__ghost svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+.home-antigen-switch__ghost[hidden] {
+  display: none;
+}
+.home-antigen-switch__guide {
+  fill: none;
+  stroke: #aa8d85;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-dasharray: 2 7;
+  opacity: 0;
+}
+.home-antigen-switch.is-dragging .home-antigen-switch__guide {
+  opacity: 0.5;
+}
+.home-antigen-switch.is-near .home-antigen-switch__guide {
+  stroke: var(--incoming-color);
+  stroke-dasharray: none;
+  opacity: 0.65;
+}
+@media (max-width: 500px) {
+  .home-antigen-switch {
+    padding: 34px 4% 20px;
+  }
+  .home-antigen-switch__diagram {
+    grid-template-columns: 1.15fr 0.26fr 1fr;
+    gap: 10px;
+  }
+  .home-antigen-switch__options {
+    gap: 15px;
+    margin-top: 32px;
+  }
+  .home-antigen-switch__option {
+    width: 74px;
+    font-size: 12px;
+  }
+  .home-antigen-switch__option svg {
+    width: 65px;
+    height: 31px;
+  }
+  .home-antigen-switch__target-label {
+    margin-top: 8px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .home-antigen-switch__option svg,
+  .home-antigen-switch__hint {
+    transition: none;
+  }
+  .home-antigen-switch [data-antigen-option] svg {
+    animation: none !important;
+  }
+}

@@ -15,6 +15,7 @@ export function AlternativePlatform() {
       heroImage={getWetLabHeroImage(alternativePlatformPage.route)}
       theme="wet-lab"
       pageClassName="wiki-page--wet-lab"
+      hideHeroCopy
       features={{
         "platform-rationale": <PlatformOrbit />,
         "platform-workflow": <PlatformWorkflow />,

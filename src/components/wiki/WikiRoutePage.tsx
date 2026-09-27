@@ -82,6 +82,8 @@ interface WikiRoutePageProps {
    * take the released width. Used by `/games`.
    */
   hideOutline?: boolean;
+  /** When true, omits visual title/lede text inside the hero banner. */
+  hideHeroCopy?: boolean;
 }
 
 const STATUS_LABELS = {
@@ -554,6 +556,7 @@ export function WikiRoutePage({
   theme,
   enableWideFlow = false,
   hideOutline = false,
+  hideHeroCopy = false,
 }: WikiRoutePageProps) {
   const rootRef = useRef<HTMLElement>(null);
   const interfaceRef = useRef<HTMLDivElement>(null);
@@ -617,10 +620,14 @@ export function WikiRoutePage({
       </div>
 
       <header className="wiki-hero" style={heroStyle}>
-        <div className="wiki-hero__copy" data-wiki-reveal>
-          <h1>{content.title}</h1>
-          <p className="wiki-hero__lede">{content.lede}</p>
-        </div>
+        {!hideHeroCopy ? (
+          <div className="wiki-hero__copy" data-wiki-reveal>
+            <h1>{content.title}</h1>
+            <p className="wiki-hero__lede">{content.lede}</p>
+          </div>
+        ) : (
+          <h1 className="wiki-hero__sr-only">{content.title}</h1>
+        )}
       </header>
 
       <div className="wiki-reader-track">

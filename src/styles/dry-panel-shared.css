@@ -172,19 +172,19 @@
 }
 
 .dry-panel.dry-panel--model {
-  --dry-lab-art: url("../assets/wiki/dry-lab-model-hero-v2.webp");
+  --dry-lab-art: url("../assets/wiki/dry-lab-model-hero.jpg");
   --dry-outline-core: rgba(30, 54, 126, 0.78);
   --dry-outline-wash: rgba(79, 177, 188, 0.42);
 }
 
 .dry-panel.dry-panel--software {
-  --dry-lab-art: url("../assets/wiki/dry-lab-software-hero-v2.webp");
+  --dry-lab-art: url("../assets/wiki/dry-lab-software-hero.jpg");
   --dry-outline-core: rgba(39, 50, 119, 0.76);
   --dry-outline-wash: rgba(91, 177, 188, 0.4);
 }
 
 .dry-panel.dry-panel--hardware {
-  --dry-lab-art: url("../assets/wiki/dry-lab-hardware-hero-v2.webp");
+  --dry-lab-art: url("../assets/wiki/dry-lab-hardware-hero.jpg");
   --dry-outline-core: rgba(24, 45, 105, 0.8);
   --dry-outline-wash: rgba(78, 164, 181, 0.4);
 }

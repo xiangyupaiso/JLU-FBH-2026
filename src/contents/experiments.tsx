@@ -15,6 +15,7 @@ export function Experiments() {
       heroImage={getWetLabHeroImage(experimentsPage.route)}
       theme="wet-lab"
       pageClassName="wiki-page--wet-lab"
+      hideHeroCopy
       features={{
         "experiments-route": <FiveGateMap />,
         "experiments-record": <ProtocolStack />,

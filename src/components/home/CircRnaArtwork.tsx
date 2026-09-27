@@ -1,0 +1,91 @@
+import { type CSSProperties } from "react";
+import { PaintedReveal } from "./PaintedReveal";
+import manifest from "../../assets/home/story/manifest.json";
+import paper from "../../assets/home/story/scene-1-layer-1.webp";
+import heading from "../../assets/home/story/scene-1-layer-2.webp";
+import annotation from "../../assets/home/story/scene-1-layer-3.webp";
+import ring from "../../assets/home/story/scene-1-layer-4.webp";
+import benefits from "../../assets/home/story/scene-1-layer-5.webp";
+import "../../styles/home-circrna.css";
+
+const sources = [paper, heading, annotation, ring, benefits];
+
+export function CircRnaArtwork() {
+  return (
+    <>
+      <img className="story-backdrop" src={paper} alt="" aria-hidden="true" />
+      <figure
+        className="story-art circrna-illustration"
+        style={{ "--art-aspect": manifest["1"].aspect } as CSSProperties}
+        role="img"
+        aria-label="Why circRNA? Its closed circular structure offers high stability and persistent expression, a promising foundation for next-generation nucleic-acid cancer vaccines. Conceptual illustration."
+      >
+        {manifest["1"].layers.slice(1).map((layer) => {
+          const style = {
+            left: layer.left + "%",
+            top: layer.top + "%",
+            width: layer.width + "%",
+            height: layer.height + "%",
+          };
+          if (layer.number === 4) {
+            return (
+              <PaintedReveal
+                key={layer.number}
+                src={ring}
+                kind="ring"
+                number={4}
+                style={style}
+              />
+            );
+          }
+          if (layer.number === 5) {
+            // Preserve the full original sketch, including its handwritten labels.
+            return (
+              <svg
+                key={layer.number}
+                className="story-layer circrna-benefit-art"
+                style={style}
+                viewBox="0 0 296 346"
+                aria-hidden="true"
+              >
+                <svg
+                  data-circrna-sketch="stability"
+                  width="296"
+                  height="190"
+                  viewBox="0 0 296 190"
+                  overflow="hidden"
+                >
+                  <image href={benefits} width="296" height="346" />
+                </svg>
+                <svg
+                  data-circrna-sketch="expression"
+                  y="190"
+                  width="296"
+                  height="156"
+                  viewBox="0 190 296 156"
+                  overflow="hidden"
+                >
+                  <image href={benefits} width="296" height="346" />
+                </svg>
+              </svg>
+            );
+          }
+          return (
+            <img
+              key={layer.number}
+              className="story-layer"
+              data-layer={layer.number}
+              style={style}
+              src={sources[layer.number - 1]}
+              alt=""
+              aria-hidden="true"
+            />
+          );
+        })}
+        <figcaption className="circrna-caption">
+          A promising foundation for cancer vaccines.
+        </figcaption>
+      </figure>
+    </>
+  );
+}

@@ -33,6 +33,7 @@ export function Software() {
       heroImage={getDryLabHeroImage(softwareEvidencePage.route)}
       theme="dry-lab"
       pageClassName="wiki-page--dry-lab"
+      hideHeroCopy
       features={{
         "software-user-task": panel(<CirCureSoftwareWorkflowExplorer />),
         "software-scope": panel(<SoftwareScopeContract />),

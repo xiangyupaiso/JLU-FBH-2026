@@ -36,6 +36,10 @@ const ENGAGEMENT_ROUTES = new Set([
   "/sustainability",
 ]);
 
+// Home owns its own full-bleed scroll story and must bypass the standard
+// header/container wrapper used by ordinary pages.
+const HOME_ROUTE = "/";
+
 // Modules that render the reusable reader-route shell (own hero, mat, sidebar
 // and closing prompt) instead of the default Header + Bootstrap container.
 // Wet Lab, Project, Dry Lab, Engagement and Team share one template with
@@ -108,7 +112,9 @@ const App = () => {
               key={path}
               path={path}
               element={
-                ROUTE_READER_ROUTES.has(path) ? (
+                path === HOME_ROUTE ? (
+                  <Component />
+                ) : ROUTE_READER_ROUTES.has(path) ? (
                   <Component />
                 ) : (
                   <>

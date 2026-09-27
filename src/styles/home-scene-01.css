@@ -1,0 +1,211 @@
+.home-redesign {
+  background: #21141f;
+}
+.home-redesign #top {
+  scroll-margin-top: var(--header-height);
+}
+.home-scene01 {
+  --scene01-scroll: calc(86svh + var(--header-height));
+  position: relative;
+  height: calc(
+    100svh - var(--header-height) +
+    var(--scene01-scroll) * var(--home-scroll-scale, 1)
+  );
+}
+.home-scene01-canvas {
+  position: sticky;
+  top: var(--header-height);
+  display: grid;
+  width: 100%;
+  height: calc(100svh - var(--header-height));
+  place-items: center;
+  overflow: hidden;
+  isolation: isolate;
+  background:
+    radial-gradient(
+      ellipse 60% 55% at 50% 48%,
+      #5b4456 0%,
+      #332330 62%,
+      #21141f 100%
+    ),
+    #21141f;
+}
+.scene01-darkness {
+  position: absolute;
+  inset: 0;
+  z-index: 8;
+  pointer-events: none;
+  background: #21141f;
+  opacity: 1;
+}
+/* HomeIntro sets data-intro: "playing" keeps the dark, "done" lifts it. Its
+   timeline also fades this layer inline; see components/home/HomeIntro.tsx. */
+.home-scene01[data-intro="done"] .scene01-darkness {
+  opacity: 0;
+}
+.scene01-stage {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent,
+    #000 5%,
+    #000 95%,
+    transparent
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    transparent,
+    #000 5%,
+    #000 95%,
+    transparent
+  );
+}
+.scene01-labels {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  pointer-events: none;
+}
+.scene01-orbit,
+.scene01-label,
+.scene01-portrait {
+  position: absolute;
+  margin: 0;
+  pointer-events: none;
+  user-select: none;
+  backface-visibility: hidden;
+}
+.scene01-orbit {
+  z-index: 1;
+}
+.scene01-orbit img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.scene01-label {
+  z-index: 4;
+  height: auto;
+}
+.scene01-portrait {
+  z-index: 5;
+  inset: 0;
+  transform-origin: 52% 64%;
+}
+.scene01-portrait img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+/* Every layer, including painted labels, shares the same 4000 × 2250 canvas. */
+.scene01-orbit--anxiety {
+  left: 32.65%;
+  top: 0;
+  width: 34.675%;
+}
+.scene01-orbit--surgery {
+  left: 0;
+  top: 0;
+  width: 47.675%;
+}
+.scene01-orbit--hair-loss {
+  left: 52.425%;
+  top: 0;
+  width: 47.575%;
+}
+.scene01-orbit--chemotherapy {
+  left: 0;
+  top: 41.511%;
+  width: 45.925%;
+}
+.scene01-orbit--death-rate {
+  left: 50.275%;
+  top: 43.289%;
+  width: 49.725%;
+}
+.scene01-label--anxiety {
+  left: 43.225%;
+  top: 16.933%;
+  width: 13.55%;
+}
+.scene01-label--surgery {
+  left: 17.15%;
+  top: 46.8%;
+  width: 17.125%;
+}
+.scene01-label--hair-loss {
+  left: 68.675%;
+  top: 47.2%;
+  width: 15.1%;
+}
+.scene01-label--chemotherapy {
+  left: 8.375%;
+  bottom: 2.5%;
+  width: 26.75%;
+}
+.scene01-label--death-rate {
+  left: 65.575%;
+  bottom: 2.5%;
+  width: 15.45%;
+}
+.scene01-scroll-cue {
+  position: absolute;
+  z-index: 9;
+  left: 50%;
+  bottom: 3%;
+  margin: 0;
+  pointer-events: none;
+}
+.scene01-scroll-cue i {
+  display: block;
+  width: 2px;
+  height: 46px;
+  background: linear-gradient(#f9e8ef99, transparent);
+}
+.home-scene01.has-scene01-motion .scene01-stage,
+.home-scene01.has-scene01-motion .scene01-portrait,
+.home-scene01.has-scene01-motion .scene01-orbit,
+.home-scene01.has-scene01-motion .scene01-label {
+  will-change: transform, opacity;
+}
+.scene01-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+@media (max-width: 800px) {
+  .home-scene01 {
+    --scene01-scroll: 62svh;
+  }
+  .scene01-scroll-cue {
+    display: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .home-scene01 {
+    height: auto;
+  }
+  .home-scene01-canvas {
+    position: relative;
+    top: 0;
+  }
+  .scene01-scroll-cue {
+    display: none;
+  }
+  .scene01-stage,
+  .scene01-orbit,
+  .scene01-label,
+  .scene01-portrait {
+    opacity: 1 !important;
+    transform: none !important;
+    will-change: auto !important;
+  }
+}
