@@ -1,29 +1,24 @@
 import { useEffect, useRef, type RefObject } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import closingImageUrl from "../assets/footer/igem-closing-v2.webp";
 import closingLogoUrl from "../assets/footer/circure-logo-white-v1.webp";
 import { stringToSlug } from "../utils";
 
-function useClosingReveal(
-  footerRef: RefObject<HTMLElement | null>,
-  windowRef: RefObject<HTMLElement | null>,
-  pathname: string,
-) {
+const FOOTER_MENU: Array<[string, string, string]> = [
+  ["01", "/description", "Project"],
+  ["02", "/experiments", "Wet Lab"],
+  ["03", "/model", "Dry Lab"],
+  ["04", "/human-practices", "Engagement"],
+  ["05", "/team", "Team"],
+];
+
+function useClosingReveal(windowRef: RefObject<HTMLElement | null>) {
   useEffect(() => {
-    const footer = footerRef.current;
     const finalWindow = windowRef.current;
-    if (!footer || !finalWindow) return;
+    if (!finalWindow) return;
 
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const header = document.querySelector<HTMLElement>("[data-header]");
-    const isHome = pathname === "/" || pathname === "";
     let frame = 0;
-
-    // Home owns its full scroll-driven header theme. Every inner route starts
-    // from the editorial white header, regardless of the route it came from.
-    if (header && !isHome) {
-      header.dataset.tone = "bright";
-    }
 
     const paint = () => {
       frame = 0;
@@ -35,14 +30,6 @@ function useClosingReveal(
         ? 1
         : Math.min(1, Math.max(0, rawProgress));
       finalWindow.style.setProperty("--final-progress", progress.toFixed(4));
-
-      if (!header || isHome) return;
-      const footerRect = footer.getBoundingClientRect();
-      const headerProbe = header.offsetHeight + 1;
-      const footerUnderHeader =
-        footerRect.top <= headerProbe && footerRect.bottom > headerProbe;
-
-      header.dataset.tone = footerUnderHeader ? "navy" : "bright";
     };
 
     const requestPaint = () => {
@@ -59,28 +46,23 @@ function useClosingReveal(
       window.removeEventListener("scroll", requestPaint);
       window.removeEventListener("resize", requestPaint);
       reducedMotion.removeEventListener("change", requestPaint);
-      if (header && !isHome) {
-        header.dataset.tone = "bright";
-      }
     };
-  }, [footerRef, windowRef, pathname]);
+  }, [windowRef]);
 }
 
 export function Footer() {
   const teamYear = import.meta.env.VITE_TEAM_YEAR;
   const teamName = import.meta.env.VITE_TEAM_NAME;
   const teamSlug = stringToSlug(teamName);
-  const { pathname } = useLocation();
   const footerRef = useRef<HTMLElement>(null);
   const finalWindowRef = useRef<HTMLElement>(null);
 
-  // Route identity is part of the effect so a footer link can never carry a
-  // previous page's header tone into the next page.
-  useClosingReveal(footerRef, finalWindowRef, pathname);
+  useClosingReveal(finalWindowRef);
 
   return (
     <footer
       className="circure-footer"
+      data-surface="navy"
       ref={footerRef}
       aria-label="CirCure closing footer"
     >
@@ -114,11 +96,22 @@ export function Footer() {
           </div>
 
           <nav className="circure-footer-menu" aria-label="Footer navigation">
-            <Link to="/description">Project</Link>
-            <Link to="/experiments">Wet Lab</Link>
-            <Link to="/model">Dry Lab</Link>
-            <Link to="/human-practices">Engagement</Link>
-            <Link to="/team">Team</Link>
+            {FOOTER_MENU.map(([folio, to, label]) => (
+              <Link key={to} to={to}>
+                <span className="circure-footer-menu__folio" aria-hidden="true">
+                  {folio}
+                </span>
+                <span className="circure-footer-menu__label">{label}</span>
+                <span
+                  className="circure-footer-menu__arrow"
+                  aria-hidden="true"
+                >
+                  <svg viewBox="0 0 12 12">
+                    <path d="M3 9 9 3 M5 3h4v4" />
+                  </svg>
+                </span>
+              </Link>
+            ))}
           </nav>
         </div>
 
@@ -136,7 +129,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="circure-footer-legal">
+        <div className="circure-footer-colophon">
           <small>
             © {teamYear} — Content on this site is licensed under a{" "}
             <a
@@ -153,6 +146,9 @@ export function Footer() {
               gitlab.igem.org/{teamYear}/{teamSlug}
             </a>
           </small>
+          <span className="circure-footer-colophon__end" aria-hidden="true">
+            END OF DOCUMENT
+          </span>
         </div>
       </div>
 

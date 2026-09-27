@@ -1,16 +1,15 @@
-import { WikiPage } from "../components/wiki/WikiPage";
 import {
-  ProjectSignature,
   ResourceShelf,
   ResultGateTable,
 } from "../components/wiki/features/ProjectFeatures";
 import { contributionPage } from "../data/projectPages";
+import { ProjectPreviewPage } from "../project-preview/ProjectPreviewPage";
 
 export function Contribution() {
   return (
-    <WikiPage
+    <ProjectPreviewPage
       content={contributionPage}
-      heroVisual={<ProjectSignature variant="contribution" />}
+      variant="contribution"
       features={{
         "contribution-packages": <ResourceShelf />,
         "contribution-reuse": <ResourceShelf />,

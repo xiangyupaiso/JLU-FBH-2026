@@ -5,8 +5,8 @@ export const entrepreneurshipPage: WikiPageContent = {
   category: "engagement",
   chapter: "Engagement / 01 of 05",
   eyebrow: "Entrepreneurship · Validate the path",
-  title: "A useful idea must fit a real workflow.",
-  lede: "CirCure entrepreneurship begins with the people, institutions, constraints, and alternatives around a future solution. Commercial value is treated as a sequence of testable assumptions rather than a claim of readiness.",
+  title: "Entrepreneurship",
+  lede: "Test the path from need to adoption.",
   boundary:
     "No incorporated venture, priced product, regulatory decision, or validated market dataset was supplied. The page is a structured business-case working draft.",
   visual: "venture-path",
@@ -142,8 +142,8 @@ export const humanPracticesPage: WikiPageContent = {
   category: "engagement",
   chapter: "Engagement / 02 of 05",
   eyebrow: "Integrated Human Practices · Decision trace",
-  title: "The world changed CirCure.",
-  lede: "Human Practices is documented as a chain from outside input to inside change. A conversation becomes project evidence only when the team records why it occurred, what was heard, what changed, and how the revised work was returned for review.",
+  title: "Human Practices",
+  lede: "Outside voices return as visible design decisions.",
   boundary:
     "Dates, stakeholder identities, quotations, images, and evidence codes in the original prototype are placeholders. Only consent-cleared, auditable records may replace them.",
   visual: "human-thread",
@@ -286,8 +286,8 @@ export const educationPage: WikiPageContent = {
   category: "engagement",
   chapter: "Engagement / 03 of 05",
   eyebrow: "Education · Two-way learning",
-  title: "Explain, listen, revise.",
-  lede: "CirCure education activities should create an exchange about synthetic biology, evidence, uncertainty, and public values. The page measures what participants and the team learned, not how many people passed through an event.",
+  title: "Education",
+  lede: "Explain, listen, and let dialogue change the work.",
   boundary:
     "No completed activity dataset or participant evaluation was supplied. Example activity structures must be replaced with real audiences, dates, materials, consent, feedback, and outcomes.",
   visual: "education-dialogue",
@@ -428,8 +428,8 @@ export const inclusivityPage: WikiPageContent = {
   category: "engagement",
   chapter: "Engagement / 04 of 05",
   eyebrow: "Inclusivity · Access and representation",
-  title: "Participation should not depend on fitting the default.",
-  lede: "CirCure examines who can access the project’s science, who can influence its direction, whose data or stories are represented, and which barriers remain after an intervention.",
+  title: "Inclusivity",
+  lede: "Access, voice, and representation belong inside the design.",
   boundary:
     "The page defines an inclusion audit. It must not claim representation of a community from a small number of participants or describe accessibility measures that were only planned.",
   visual: "inclusion-network",
@@ -566,143 +566,3 @@ export const inclusivityPage: WikiPageContent = {
   },
 };
 
-export const sustainabilityPage: WikiPageContent = {
-  route: "/sustainability",
-  category: "engagement",
-  chapter: "Engagement / 05 of 05",
-  eyebrow: "Sustainability · Trace the tradeoffs",
-  title: "Impact is a design constraint, not an icon set.",
-  lede: "CirCure evaluates environmental, social, and economic effects across research, manufacturing, access, use, and end-of-life assumptions. SDGs provide questions and targets, not automatic evidence of benefit.",
-  boundary:
-    "No lifecycle assessment, quantified impact dataset, or formal SDG stakeholder collaboration was supplied. The page therefore states a measurement and decision framework rather than a completed impact claim.",
-  visual: "sustainability-radar",
-  visualLabel: "Environmental, social, economic, and governance tradeoffs",
-  visualSteps: ["environment", "access", "economy", "governance"],
-  facts: [
-    {
-      label: "Target",
-      value: "A specific SDG target, not only a goal number.",
-    },
-    {
-      label: "Boundary",
-      value: "Research, production, deployment, and end of life.",
-    },
-    {
-      label: "Tradeoff",
-      value: "Positive and negative effects remain visible.",
-    },
-    {
-      label: "Measure",
-      value: "Indicators change a design or implementation decision.",
-    },
-  ],
-  sections: [
-    {
-      id: "sustainability-scope",
-      index: "01",
-      kicker: "Impact boundary",
-      title: "Decide what system is being evaluated.",
-      summary:
-        "A meaningful assessment identifies stages, affected groups, resources, geography, time horizon, alternatives, and uncertainty.",
-      layout: "steps",
-      items: [
-        {
-          label: "Research",
-          title: "Materials and laboratory practice",
-          body: "Energy, water, plastics, reagents, cold chain, waste, repeat experiments, computing, and safer substitutions.",
-          status: "planned",
-        },
-        {
-          label: "Production",
-          title: "Manufacturing and quality",
-          body: "Inputs, yield, purification, quality control, scale, transport, storage, and likely failure or waste points.",
-          status: "open",
-        },
-        {
-          label: "Use",
-          title: "Access and implementation",
-          body: "Infrastructure, training, affordability, labor, distribution, privacy, unequal benefit, and exclusion.",
-          status: "open",
-        },
-        {
-          label: "After",
-          title: "Long-term governance",
-          body: "Monitoring, maintenance, data stewardship, unintended use, disposal, responsibility, and who can revise decisions.",
-          status: "open",
-        },
-      ],
-    },
-    {
-      id: "sustainability-sdgs",
-      index: "02",
-      kicker: "SDG trace",
-      title: "Connect each goal to a decision and indicator.",
-      summary:
-        "The final page should cite the exact target, engage relevant stakeholders, and show how evaluation changed the project.",
-      layout: "matrix",
-      items: [
-        {
-          label: "SDG 3",
-          title: "Health and well-being",
-          body: "Potential relevance must be balanced with evidence quality, safety, appropriate communication, access, and health-system burden.",
-          status: "planned",
-        },
-        {
-          label: "SDG 9",
-          title: "Responsible innovation infrastructure",
-          body: "Open methods, reproducibility, local capacity, interoperable records, and realistic manufacturing or deployment needs.",
-          status: "planned",
-        },
-        {
-          label: "SDG 10 / 12",
-          title: "Equity and responsible consumption",
-          body: "Affordability, representation, material use, waste, procurement, alternatives, and burden shifting across communities.",
-          status: "open",
-        },
-      ],
-    },
-    {
-      id: "sustainability-indicators",
-      index: "03",
-      kicker: "Decision indicators",
-      title: "Measure enough to change course.",
-      summary:
-        "Indicators should be proportionate to the project stage and used to compare options, not to decorate a final report.",
-      layout: "ledger",
-      items: [
-        {
-          label: "Material",
-          title: "Resource and waste intensity",
-          body: "Track high-impact materials, repetitions, disposal, substitutions, and uncertainty per relevant experimental output.",
-          status: "planned",
-        },
-        {
-          label: "Access",
-          title: "Workflow and affordability barriers",
-          body: "Track infrastructure, time, training, storage, digital access, and cost assumptions with affected stakeholders.",
-          status: "planned",
-        },
-        {
-          label: "Governance",
-          title: "Responsibility and review",
-          body: "Track consent, data access, monitoring, incident response, missing voices, and the owner of future decisions.",
-          status: "open",
-        },
-      ],
-      note: {
-        label: "Tradeoff rule",
-        body: "A positive health intention does not cancel environmental burden, unequal access, safety uncertainty, or governance risk. Competing impacts stay visible.",
-      },
-    },
-  ],
-  links: [
-    { path: "/entrepreneurship", label: "Implementation model" },
-    { path: "/inclusivity", label: "Equity and access" },
-    { path: "/safety-and-security", label: "Risk governance" },
-  ],
-  next: {
-    path: "/description",
-    label: "Project Description",
-    title: "Return to the ring with its constraints visible.",
-  },
-};

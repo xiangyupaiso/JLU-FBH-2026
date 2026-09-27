@@ -11,31 +11,35 @@ import type { WikiPageContent } from "../components/wiki/wikiPageTypes";
 export const hardwareEvidencePage: WikiPageContent = {
   route: "/hardware",
   category: "dry-lab",
-  chapter: "Dry Lab / 03 of 03",
+  chapter: "Dry Lab / 03 of 04",
   eyebrow: "Hardware · Build record",
-  title: "Make hardware reproducible.",
-  lede: "Trace need, design, calibration, safety, cost, and reuse in one build record.",
+  title: "Hardware",
+  lede: "One Wet Lab bottleneck, translated into an open build.",
   boundary:
-    "Awaiting a verified device, BOM, CAD, firmware, calibration, and performance data.",
+    "No completed CirCure device is claimed here; a verified build, BOM, CAD, firmware, calibration series, and performance record are still required.",
   visual: "hardware-schematic",
   visualLabel: "Proposed apparatus and calibration points",
   visualSteps: ["sample path", "measurement", "control"],
   facts: [
     {
       label: "Need",
-      value: "A real experimental bottleneck defines the device.",
+      value:
+        "A named CirCure experiment and measurement bottleneck define the device.",
     },
     {
       label: "Build",
-      value: "Versions, components, and assembly are traceable.",
+      value:
+        "Sample interfaces, components, versions, and assembly remain traceable.",
     },
     {
       label: "Test",
-      value: "Calibration and performance use relevant standards.",
+      value:
+        "Calibration and performance use standards relevant to the intended readout.",
     },
     {
       label: "Share",
-      value: "BOM, CAD, code, cost, safety, and license are open.",
+      value:
+        "BOM, CAD, code, cost, safety, maintenance, and license are released together.",
     },
   ],
   sections: [
@@ -43,9 +47,10 @@ export const hardwareEvidencePage: WikiPageContent = {
       id: "hardware-requirements",
       index: "01",
       kicker: "Need & acceptance contract",
-      title: "Turn the laboratory bottleneck into measurable requirements.",
+      navLabel: "Requirements",
+      title: "Experimental need and design requirements.",
       summary:
-        "Name the operator, sample, environment, critical function, unit, threshold, and verification method before selecting components.",
+        "The device begins with one CirCure operator, sample type, experimental environment, critical function, measurable threshold, and verification method—not with a preferred component.",
       note: {
         label: "Current boundary",
         body: "No representative user, sample specification, or quantitative acceptance threshold has been supplied.",
@@ -55,18 +60,19 @@ export const hardwareEvidencePage: WikiPageContent = {
       id: "hardware-system",
       index: "02",
       kicker: "Sample · measurement · control",
-      title:
-        "Let the system diagram explain what moves, what is measured, and what can stop.",
+      navLabel: "System boundary",
+      title: "System boundary and functional architecture.",
       summary:
-        "A useful device overview separates the sample path, measurement path, control path, and safety boundary while keeping their interfaces visible.",
+        "The architecture separates the CirCure sample path, measurement path, control path, and safety boundary while showing where each interface can alter the experimental evidence.",
     },
     {
       id: "hardware-assembly",
       index: "03",
       kicker: "Composition, interfaces & BOM",
-      title: "Show how parts become a buildable system.",
+      navLabel: "Assembly & BOM",
+      title: "Assembly, interfaces, and bill of materials.",
       summary:
-        "The exploded assembly and bill of materials should agree on identifiers, quantities, critical specifications, alternatives, costs, source files, and versions.",
+        "The exploded assembly and bill of materials use the same identifiers for sample-contact parts, measurement components, control modules, quantities, alternatives, costs, source files, and versions.",
       note: {
         label: "Illustrative structure",
         body: "The assembly groups and BOM rows below reserve evidence fields; they are not CAD, purchasing, or fabrication instructions.",
@@ -76,17 +82,19 @@ export const hardwareEvidencePage: WikiPageContent = {
       id: "hardware-iterations",
       index: "04",
       kicker: "Design–Build–Test–Learn",
-      title: "Connect every physical change to a measured problem.",
+      navLabel: "Build iteration",
+      title: "Design–Build–Test iteration.",
       summary:
-        "A credible iteration record preserves the failed state, measurement, diagnosis, change, retest, and consequence instead of showing only a final prototype.",
+        "Each hardware revision preserves the failed CirCure workflow state, observed measurement, diagnosis, physical change, retest, and consequence instead of presenting only a final prototype.",
     },
     {
       id: "hardware-calibration",
       index: "05",
       kicker: "Calibration & performance",
-      title: "Compare the device with a reference before claiming performance.",
+      navLabel: "Calibration",
+      title: "Calibration and analytical performance.",
       summary:
-        "Calibration needs standards, units, range, replicates, uncertainty, fitted method, residuals, acceptance criteria, environment, and retained raw records.",
+        "Reference standards, units, range, replicates, uncertainty, fitted method, residuals, acceptance criteria, environment, and raw records determine whether the device can support its intended CirCure measurement.",
       note: {
         label: "No measured series",
         body: "The chart remains intentionally empty until reference and device measurements are supplied from a named hardware version.",
@@ -96,18 +104,19 @@ export const hardwareEvidencePage: WikiPageContent = {
       id: "hardware-safety",
       index: "06",
       kicker: "Safety, cleaning & maintenance",
-      title: "Design the safe state together with the operating state.",
+      navLabel: "Safety & maintenance",
+      title: "Safety, cleaning, and maintenance.",
       summary:
-        "Hazards should connect cause, harm, detection, prevention, recovery, verification, training, cleaning, disposal, and maintenance ownership.",
+        "Biological sample handling, electrical and mechanical hazards, cleaning, disposal, recovery, verification, training, and maintenance ownership are designed alongside normal operation.",
     },
     {
       id: "hardware-release",
       index: "07",
       kicker: "Open hardware package",
-      title:
-        "Another team should be able to source, build, calibrate, operate, and maintain it.",
+      navLabel: "Open release",
+      title: "Open-hardware release and independent reuse.",
       summary:
-        "Editable sources, tagged exports, assembly instructions, calibration fixtures, expected outputs, safety records, maintenance guidance, attribution, and license form one release contract.",
+        "Another team should be able to source, build, calibrate, operate, and maintain the CirCure device from editable sources, tagged exports, expected outputs, safety records, attribution, and an open license.",
       note: {
         label: "Release status",
         body: "No repository, tagged source package, independent assembly record, or verified operating guide has been supplied.",
@@ -120,8 +129,8 @@ export const hardwareEvidencePage: WikiPageContent = {
     { path: "/contribution", label: "Open release" },
   ],
   next: {
-    path: "/entrepreneurship",
-    label: "Entrepreneurship",
-    title: "How would the project fit a real workflow?",
+    path: "/games",
+    label: "Games",
+    title: "How can interactive experiences make the work explorable?",
   },
 };

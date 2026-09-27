@@ -1,26 +1,28 @@
-import { WikiPage } from "../components/wiki/WikiPage";
+import { DryLabWikiPage } from "../components/wiki/DryLabWikiPage";
 import {
   DynamicsValidationPanel,
   EpitopeEvidencePanel,
   ModelArchitectureMap,
-  ModelJudgeBrief,
   ModelLimitationsMatrix,
   ModelReproducibilityRelease,
   StructureComparisonPanel,
   ValidationAndSensitivityPanel,
   WetDryDecisionLedger,
 } from "../components/wiki/features/ModelEvidenceFeatures";
+import { CirCureModelDecisionExplorer } from "../components/wiki/features/DryLabProjectExplorers";
 import { modelEvidencePage } from "../data/modelPage";
 import "../styles/model-page.css";
+import "../styles/dry-lab-calm.css";
+import "../styles/dry-lab-reading.css";
 
 export function Model() {
   return (
-    <WikiPage
+    <DryLabWikiPage
       content={modelEvidencePage}
       heroVisual={null}
       pageClassName="wiki-page--model-hero"
       features={{
-        "model-judge-brief": <ModelJudgeBrief />,
+        "model-judge-brief": <CirCureModelDecisionExplorer />,
         "model-architecture": <ModelArchitectureMap />,
         "model-epitope": <EpitopeEvidencePanel />,
         "model-structure": <StructureComparisonPanel />,

@@ -5,8 +5,8 @@ export const descriptionPage: WikiPageContent = {
   category: "project",
   chapter: "Project / 01 of 04",
   eyebrow: "Description · The Living Ring",
-  title: "One ring. Many targets.",
-  lede: "CirCure explores a traceable multi-epitope circular RNA strategy for triple-negative breast cancer. The project asks whether broader antigen coverage can be designed without hiding the evidence required at every biological transition.",
+  title: "Description",
+  lede: "A multi-target circular RNA strategy for TNBC.",
   boundary:
     "This page describes the project rationale and working architecture. It does not claim therapeutic efficacy, clinical readiness, or completed validation.",
   visual: "living-ring",
@@ -38,6 +38,7 @@ export const descriptionPage: WikiPageContent = {
   sections: [
     {
       id: "description-need",
+      navLabel: "Biological problem",
       index: "01",
       kicker: "The biological problem",
       title: "TNBC is not one thing.",
@@ -54,6 +55,7 @@ export const descriptionPage: WikiPageContent = {
     },
     {
       id: "description-system",
+      navLabel: "Biological route",
       index: "02",
       kicker: "Proposed biological route",
       title: "Every arrow is a separate claim.",
@@ -89,6 +91,7 @@ export const descriptionPage: WikiPageContent = {
     },
     {
       id: "description-boundaries",
+      navLabel: "Evidence boundaries",
       index: "03",
       kicker: "What this page can support",
       title: "Proof, not promise.",
@@ -140,8 +143,8 @@ export const engineeringPage: WikiPageContent = {
   category: "project",
   chapter: "Project / 02 of 04",
   eyebrow: "Engineering · Build the ring",
-  title: "A result matters when it changes the next build.",
-  lede: "CirCure uses Design–Build–Test–Learn as a decision record, not a decorative loop. Each cycle begins with a bounded question and ends with a named change, rejection, or next experiment.",
+  title: "Engineering",
+  lede: "A traceable build–test–learn cycle.",
   boundary:
     "The cycles below provide the publication structure. Dates, construct versions, raw results, and final lessons must be replaced with team records as experiments are completed.",
   visual: "engineering-cycle",
@@ -281,8 +284,8 @@ export const resultsPage: WikiPageContent = {
   category: "project",
   chapter: "Project / 03 of 04",
   eyebrow: "Results · Evidence ledger",
-  title: "Keep the evidence beside the claim.",
-  lede: "The Results page is the canonical home for measured outcomes. Each block begins with a bounded conclusion, then exposes the figure, samples, controls, replicates, analysis, limitations, and next decision.",
+  title: "Results",
+  lede: "Evidence, limits, and conclusions.",
   boundary:
     "No experimental dataset was supplied to this migration. Result panels remain explicitly marked as publication slots and must not be read as completed team findings.",
   visual: "evidence-ledger",
@@ -402,8 +405,8 @@ export const contributionPage: WikiPageContent = {
   category: "project",
   chapter: "Project / 04 of 04",
   eyebrow: "Contribution · Open records",
-  title: "Leave the next team a working starting point.",
-  lede: "A contribution is useful when another team can find it, understand the context in which it works, reproduce it, and see its limits. CirCure will package reusable records rather than presenting a list of good intentions.",
+  title: "Contribution",
+  lede: "Reusable methods, tools, and records.",
   boundary:
     "The resources below are planned contribution packages. Final claims require versioned releases, working links, licenses, examples, and evidence that the package can be reused.",
   visual: "resource-library",

@@ -1,112 +1,5 @@
 import { useState } from "react";
 
-const judgeBrief = [
-  [
-    "User",
-    "Who has the problem?",
-    "Named operator, context, and task evidence",
-  ],
-  [
-    "Utility",
-    "What decision changes?",
-    "Before/after workflow and acceptance rule",
-  ],
-  [
-    "Trust",
-    "Why should the output be believed?",
-    "Tests, provenance, warnings, and failure record",
-  ],
-  [
-    "Reuse",
-    "Can another team run it?",
-    "Release, quickstart, expected output, and ownership",
-  ],
-];
-
-export function SoftwareUserTaskBrief() {
-  return (
-    <div className="software-user-brief" data-software-placeholder>
-      <header className="software-feature-heading">
-        <div>
-          <span>Judge brief / user-task contract</span>
-          <strong>
-            Four questions define whether this is software or only a concept.
-          </strong>
-        </div>
-        <p>Evidence architecture · awaiting product records</p>
-      </header>
-
-      <div className="software-user-brief__grid">
-        {judgeBrief.map(([label, question, evidence], index) => (
-          <article key={label}>
-            <span>
-              0{index + 1} / {label}
-            </span>
-            <h3>{question}</h3>
-            <p>{evidence}</p>
-            <small>Evidence slot · planned</small>
-          </article>
-        ))}
-      </div>
-
-      <article className="software-job-story">
-        <span>Proposed job story</span>
-        <p>
-          <strong>When</strong> a defined CirCure evidence record needs review,
-          <strong> I need to</strong> validate, run, inspect, and export it,
-          <strong> so I can</strong> make one traceable project decision and
-          recover from an invalid state.
-        </p>
-        <b>Illustrative structure · user and task not yet validated</b>
-      </article>
-
-      <div
-        className="software-table-scroll"
-        role="region"
-        aria-label="User task acceptance contract"
-      >
-        <table>
-          <caption>Table S-01. User-task evidence contract</caption>
-          <thead>
-            <tr>
-              <th scope="col">Evidence</th>
-              <th scope="col">Required record</th>
-              <th scope="col">Acceptance signal</th>
-              <th scope="col">Status</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">User need</th>
-              <td>Interview / observation / workflow evidence</td>
-              <td>Named pain and desired decision</td>
-              <td>
-                <span className="software-data-state">awaiting evidence</span>
-              </td>
-            </tr>
-            <tr>
-              <th scope="row">Task completion</th>
-              <td>Representative scenario + observable outcome</td>
-              <td>Success, time, errors, recovery</td>
-              <td>
-                <span className="software-data-state">not tested</span>
-              </td>
-            </tr>
-            <tr>
-              <th scope="row">Project consequence</th>
-              <td>Exported decision record + owner review</td>
-              <td>Retain, revise, reject, or escalate</td>
-              <td>
-                <span className="software-data-state">not claimed</span>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  );
-}
-
 const scopeRows = [
   [
     "Input validation",
@@ -190,8 +83,8 @@ const architectureLayers = [
     number: "01",
     short: "User",
     title: "Task & review",
-    input: "Documented record + user intent",
-    output: "Correction, review, and export action",
+    input: "CirCure candidate or construct record + intended decision",
+    output: "Correction, shortlist review, construct review, or export action",
     trust: "Accessibility, privacy, and human approval",
     failure: "Invalid task, unclear warning, abandoned flow",
   },
@@ -199,8 +92,8 @@ const architectureLayers = [
     number: "02",
     short: "Service",
     title: "Orchestration",
-    input: "Validated request + release configuration",
-    output: "Versioned job state + audit log",
+    input: "Validated sequence record + scoring configuration",
+    output: "Versioned CirCure analysis state + audit log",
     trust: "Authentication, retries, timeout, and logging",
     failure: "Partial job, dependency outage, unsafe retry",
   },
@@ -208,8 +101,8 @@ const architectureLayers = [
     number: "03",
     short: "Model",
     title: "Scientific logic",
-    input: "Traceable features + parameters",
-    output: "Result + uncertainty + warning",
+    input: "TNBC relevance, presentation, coverage, safety, and redundancy",
+    output: "Score decomposition + sensitivity + applicability warning",
     trust: "Method, database, threshold, and applicability",
     failure: "Out-of-domain input or unsupported inference",
   },
@@ -217,8 +110,8 @@ const architectureLayers = [
     number: "04",
     short: "Data",
     title: "Evidence & provenance",
-    input: "Source record + transformation history",
-    output: "Versioned artifact + retention record",
+    input: "Epitope source, database version, construct history, and review",
+    output: "Portable candidate or construct evidence package",
     trust: "License, privacy, lineage, and checksum",
     failure: "Missing source, stale version, or policy breach",
   },
@@ -301,74 +194,94 @@ const runSteps = [
   {
     number: "01",
     label: "Input",
-    screen: "Input form or file intake",
-    record: "Source, schema, units, privacy, and user intent",
-    failure: "Unsupported type or missing required field",
+    screen: "CirCure candidate record intake",
+    record:
+      "Candidate ID, sequence, TNBC source, HLA context, provenance, and review intent",
+    failure: "Invalid sequence, missing citation, or undefined HLA context",
   },
   {
     number: "02",
     label: "Validate",
-    screen: "Field-level validation state",
-    record: "Accepted, corrected, rejected, and warning states",
-    failure: "Ambiguous error or silent coercion",
+    screen: "Epitope evidence validation",
+    record:
+      "Sequence alphabet, required sources, database versions, duplicates, and missingness",
+    failure: "Ambiguous evidence or a field silently coerced",
   },
   {
     number: "03",
     label: "Run",
-    screen: "Versioned job state",
-    record: "Release, configuration, dependency, progress, and run ID",
-    failure: "Timeout, outage, cancellation, or partial result",
+    screen: "Versioned CirCure scoring run",
+    record:
+      "Model release, weights, gates, database versions, progress, and run ID",
+    failure: "External predictor outage, cancellation, or partial candidate set",
   },
   {
     number: "04",
     label: "Inspect",
-    screen: "Evidence-linked output",
-    record: "Decomposition, uncertainty, warning, and alternatives",
-    failure: "Result shown without provenance or applicability",
+    screen: "Candidate and construct evidence review",
+    record:
+      "Score decomposition, hard exclusions, sensitivity, provenance, and alternatives",
+    failure: "Ranking shown without evidence or applicability boundary",
   },
   {
     number: "05",
     label: "Export",
-    screen: "Decision package",
-    record: "Inputs, outputs, versions, warnings, timestamp, and checksum",
-    failure: "Export loses context or machine-readable structure",
+    screen: "CirCure decision package",
+    record:
+      "Candidates, construct version, methods, warnings, reviewer, timestamp, and checksum",
+    failure: "Export loses a candidate source or construct relationship",
   },
   {
     number: "06",
     label: "Recover",
-    screen: "Editable checkpoint",
-    record: "Failure context, correction, retry, reset, and escalation",
-    failure: "User must restart or cannot identify the last valid state",
+    screen: "Editable evidence checkpoint",
+    record:
+      "Last valid record, failed dependency, correction, safe retry, and escalation",
+    failure: "Researcher must rebuild a reviewed candidate set from scratch",
   },
 ];
 
 const schemaRows = [
   [
-    "record_id",
+    "candidate_id",
     "string",
     "required",
-    "Stable user or sample identifier",
+    "Stable CirCure epitope candidate identifier",
     "proposed",
   ],
   [
-    "evidence_source",
-    "URI / citation",
+    "epitope_sequence",
+    "amino-acid string",
     "required",
-    "Source and retrieval record",
+    "Validated alphabet, length, and sequence version",
     "proposed",
   ],
   [
-    "feature_values",
+    "tnbc_evidence",
+    "citation object",
+    "required",
+    "Disease relevance, source, retrieval date, and version",
+    "proposed",
+  ],
+  [
+    "presentation_record",
     "typed object",
-    "conditional",
-    "Units, missingness, transformations",
+    "required",
+    "HLA context, method version, score, threshold, and warning",
     "proposed",
   ],
   [
-    "review_context",
-    "enum / text",
+    "construct_version",
+    "string / null",
+    "conditional",
+    "Links retained candidates to a reviewed multi-epitope design",
+    "proposed",
+  ],
+  [
+    "decision_record",
+    "enum + text",
     "required",
-    "Intended task and responsible reviewer",
+    "Retain, reject, revise, or escalate with accountable reviewer",
     "proposed",
   ],
 ];
@@ -530,21 +443,21 @@ export function SoftwareRunEvidence() {
 
 const testRows = [
   [
-    "Schema validation",
+    "Candidate schema validation",
     "Unit + property tests",
-    "Valid / invalid fixtures",
+    "Valid epitope, invalid alphabet, missing source, duplicate ID",
     "not started",
   ],
   [
-    "End-to-end task",
+    "Epitope-to-decision workflow",
     "Integration + regression",
-    "Worked example + expected artifact",
+    "CirCure example record + expected evidence package",
     "not started",
   ],
   [
-    "Scientific output",
+    "Ranking decomposition",
     "Reference / held-out comparison",
-    "Versioned model evidence",
+    "Versioned score, sensitivity, and model evidence",
     "not started",
   ],
   [
@@ -647,17 +560,17 @@ export function SoftwareValidationPanel() {
           {[
             [
               "Invalid input",
-              "Identify field and reason",
+              "Identify the CirCure field and scientific consequence",
               "Correct without losing valid work",
             ],
             [
-              "Dependency outage",
-              "Name service and retained state",
+              "Prediction dependency outage",
+              "Name the service, candidate subset, and retained state",
               "Retry safely or export diagnostic",
             ],
             [
               "Conflicting evidence",
-              "Expose disagreement and limits",
+              "Expose disagreement between TNBC relevance and model evidence",
               "Escalate to accountable review",
             ],
           ].map(([failure, response, recovery], index) => (
@@ -690,7 +603,11 @@ export function SoftwareIterationTimeline() {
 
       <div className="software-iteration-timeline__route">
         {[
-          ["01", "Task", "Representative scenario + success rule"],
+          [
+            "01",
+            "Task",
+            "Review a CirCure candidate set and justify one advance decision",
+          ],
           ["02", "Observe", "Error, hesitation, access barrier, or workaround"],
           ["03", "Change", "Versioned design or code response"],
           ["04", "Retest", "Measured consequence and new failure check"],
@@ -731,7 +648,7 @@ const releaseTemplate = `release:
   tag: awaiting-tag
   environment: awaiting-lockfile
   command: awaiting-entry-point
-  example_input: awaiting-fixture
+  example_input: circure-candidate-record.json
   expected_output: awaiting-checksum`;
 
 const releaseRecords = [
@@ -810,14 +727,14 @@ export function SoftwareReleasePackage() {
 
 const limitationRows = [
   [
-    "Unsupported schema or unit",
+    "Invalid epitope sequence or missing provenance",
     "Validation",
     "Stop before run",
-    "Add fixture + rule + user guidance",
+    "Add CirCure fixture + rule + correction guidance",
   ],
   [
-    "Out-of-domain scientific input",
-    "Result interpretation",
+    "Unsupported HLA context or TNBC evidence source",
+    "Candidate interpretation",
     "Warn and require review",
     "New validation evidence",
   ],

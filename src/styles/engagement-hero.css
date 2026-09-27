@@ -1,0 +1,138 @@
+/* Shared atmospheric cover for every Engagement record. */
+.wiki-page.wiki-page--engagement .wiki-hero {
+  display: grid;
+  width: 100%;
+  min-height: calc(100svh - var(--header-height));
+  grid-template-columns:
+    minmax(32px, 1fr)
+    minmax(0, 1200px)
+    minmax(32px, 1fr);
+  grid-template-rows: auto auto;
+  gap: 0;
+  align-content: start;
+  align-items: start;
+  margin: 0;
+  padding: 0 0 92px;
+  border-bottom: 0;
+  overflow: visible;
+}
+
+.wiki-page.wiki-page--engagement .wiki-hero::before,
+.wiki-page.wiki-page--engagement .wiki-hero::after {
+  display: none;
+}
+
+.wiki-page.wiki-page--engagement .wiki-hero__visual {
+  z-index: 1;
+  width: 100%;
+  height: clamp(418px, 32.7vw, 520px);
+  grid-row: 1;
+  grid-column: 1 / -1;
+  align-self: start;
+  margin: 0;
+}
+
+.wiki-page.wiki-page--engagement .engagement-hero-art {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+  background: #fbf8f2;
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    #000 0%,
+    #000 48%,
+    rgba(0, 0, 0, 0.94) 60%,
+    rgba(0, 0, 0, 0.52) 78%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    #000 0%,
+    #000 48%,
+    rgba(0, 0, 0, 0.94) 60%,
+    rgba(0, 0, 0, 0.52) 78%,
+    transparent 100%
+  );
+}
+
+.wiki-page.wiki-page--engagement .engagement-hero-art img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 50%;
+}
+
+.wiki-page.wiki-page--engagement .wiki-hero__copy {
+  position: relative;
+  z-index: 3;
+  display: block;
+  width: min(880px, calc(100% - 48px));
+  grid-row: 2;
+  grid-column: 2;
+  justify-self: center;
+  margin: -126px auto 0;
+  padding: 0;
+  text-align: center;
+}
+
+.wiki-page.wiki-page--engagement .wiki-hero h1 {
+  max-width: 860px;
+  margin-inline: auto;
+  font-size: clamp(52px, 5.7vw, 80px);
+  font-weight: 400;
+  letter-spacing: -0.06em;
+  line-height: 0.96;
+}
+
+.wiki-page.wiki-page--engagement .wiki-hero__lede {
+  max-width: 670px;
+  margin: 28px auto 0;
+  font-size: clamp(17px, 1.3vw, 20px);
+  line-height: 1.58;
+}
+
+@media (max-width: 980px) {
+  .wiki-page.wiki-page--engagement .wiki-hero {
+    grid-template-columns: 24px minmax(0, 1fr) 24px;
+    padding-bottom: 76px;
+  }
+
+  .wiki-page.wiki-page--engagement .wiki-hero__visual {
+    height: clamp(390px, 44vw, 448px);
+  }
+
+  .wiki-page.wiki-page--engagement .wiki-hero__copy {
+    margin-top: -112px;
+  }
+}
+
+@media (max-width: 640px) {
+  .wiki-page.wiki-page--engagement .wiki-hero {
+    grid-template-columns: 20px minmax(0, 1fr) 20px;
+    padding-bottom: 62px;
+  }
+
+  .wiki-page.wiki-page--engagement .wiki-hero__visual {
+    height: clamp(300px, 78vw, 350px);
+  }
+
+  .wiki-page.wiki-page--engagement .wiki-hero__copy {
+    width: calc(100% - 44px);
+    margin-top: -76px;
+  }
+
+  .wiki-page.wiki-page--engagement .wiki-hero h1 {
+    max-width: 350px;
+    font-size: clamp(44px, 12vw, 50px);
+  }
+
+  .wiki-page.wiki-page--engagement .wiki-hero__lede {
+    max-width: 350px;
+    margin-top: 22px;
+    font-size: 16.5px;
+    line-height: 1.6;
+  }
+}

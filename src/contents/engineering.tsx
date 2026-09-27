@@ -1,17 +1,16 @@
-import { WikiPage } from "../components/wiki/WikiPage";
 import {
   DecisionLoop,
   MechanismRoute,
-  ProjectSignature,
   ResultGateTable,
 } from "../components/wiki/features/ProjectFeatures";
 import { engineeringPage } from "../data/projectPages";
+import { ProjectPreviewPage } from "../project-preview/ProjectPreviewPage";
 
 export function Engineering() {
   return (
-    <WikiPage
+    <ProjectPreviewPage
       content={engineeringPage}
-      heroVisual={<ProjectSignature variant="engineering" />}
+      variant="engineering"
       features={{
         "engineering-framework": <MechanismRoute />,
         "engineering-cycles": <DecisionLoop />,

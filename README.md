@@ -62,105 +62,42 @@ for web development.
 
 Below is the structure of important files and directories in this project:
 
-    ├── README.md                  -> The file you are currently reading
-    ├── CLAUDE.md                  -> Notes for AI assistants (workspace rules)
-    ├── CODE_WIKI.md               -> Codebase walkthrough and conventions
-    ├── DRY_LAB_BEST_WIKI_COMPARE_AND_MIGRATION_PLAN.md
-    │                              -> Migration plan for Dry Lab wiki content
-    ├── LICENSE                    -> CC-BY-4.0 license (do not modify)
-    ├── index.html                 -> Single HTML file for the wiki
-    ├── package.json               -> Manages project metadata and dependencies
-    ├── eslint.config.js           -> ESLint flat config (TS + React hooks)
-    ├── tsconfig.json              -> Configures TypeScript options
-    ├── tsconfig.node.json         -> TypeScript settings for Node.js
-    ├── vite.config.ts             -> Configuration for the Vite tool
-    ├── yarn.lock                  -> Yarn lock file for dependency management
+    ├── README.md            -> The file you are currently reading
+    ├── index.html           -> Single HTML file for the wiki
+    ├── package.json         -> Manages project metadata and dependencies
+    ├── public/              -> Static assets (images, PDFs, game builds)
+    │   ├── assets/          -> Wiki images, protocol PDFs, documentation
+    │   └── game-assets/     -> Game builds (Breast Guardian, Bomb Cat)
     ├── src/
-    │   ├── main.tsx               -> Entry point of the wiki application
-    │   ├── pages.ts               -> Page definition and path mapping
-    │   ├── vite-env.d.ts          -> TypeScript definitions for Vite
-    │   ├── assets/                -> Local media referenced by components
-    │   │   ├── footer/            -> Footer logo & closing visuals
-    │   │   ├── story-nav/         -> Story navigation emblems & ribbons
-    │   │   └── wiki/              -> Wiki page images (HP, hardware, etc.)
-    │   ├── components/
-    │   │   ├── BackToTop.tsx      -> Scroll-to-top floating button
-    │   │   ├── Footer.tsx         -> Site footer (license + repo link, do not modify)
-    │   │   ├── Header.tsx        -> Site header
-    │   │   ├── Inspirations.tsx   -> Inspiration block
-    │   │   ├── Navbar.tsx         -> Top navigation bar
-    │   │   ├── NotFound.tsx       -> 404 fallback
-    │   │   └── wiki/
-    │   │       ├── WikiPage.tsx           -> Reusable wiki page shell
-    │   │       ├── WikiLineSidebar.tsx    -> Section sidebar navigation
-    │   │       ├── HumanPracticesPage.tsx -> HP page composition
-    │   │       ├── wikiPageTypes.ts       -> Wiki page type definitions
-    │   │       └── features/             -> Per-page feature blocks
-    │   │           ├── DryLabFeatures.tsx
-    │   │           ├── EngagementFeatures.tsx
-    │   │           ├── HardwareEvidenceFeatures.tsx
-    │   │           ├── ModelEvidenceFeatures.tsx
-    │   │           ├── ProjectFeatures.tsx
-    │   │           ├── SoftwareEvidenceFeatures.tsx
-    │   │           └── WetLabFeatures.tsx
+    │   ├── assets/          -> Application-specific assets
+    │   ├── components/      -> React components
+    │   │   ├── wiki/        -> Wiki page components (DryLab, WetLab, HP, Sustainability)
+    │   │   ├── BombCatGame/ -> Bomb Cat mini-game component
+    │   │   └── BreastGuardianGame/ -> Breast Guardian game component
     │   ├── containers/
-    │   │   └── App/
-    │   │       ├── App.tsx         -> Main React application container
-    │   │       └── App.css        -> App-level styles
-    │   ├── contents/
-    │   │   └── *.tsx              -> Page components for the wiki (Home, Hardware,
-    │   │                            Model, Software, HumanPractices, Members, etc.)
-    │   ├── data/
-    │   │   ├── dryLabPages.ts     -> Dry Lab page data
-    │   │   ├── engagementPages.ts -> Engagement page data
-    │   │   ├── hardwarePage.ts    -> Hardware page data
-    │   │   ├── modelPage.ts       -> Model page data
-    │   │   ├── projectPages.ts    -> Project page data
-    │   │   ├── softwarePage.ts    -> Software page data
-    │   │   └── wetLabPages.ts     -> Wet Lab page data
-    │   ├── hooks/
-    │   │   ├── useStoryNavAnimation.ts -> GSAP ScrollTrigger story-nav animation
-    │   │   └── useWikiPageMotion.ts   -> Wiki page motion utilities
-    │   ├── styles/
-    │   │   ├── circure-tokens.css     -> Design tokens (CSS variables)
-    │   │   ├── circure-home.css       -> Home page styles
-    │   │   ├── circure-nav.css        -> Navigation styles
-    │   │   ├── circure-footer.css     -> Footer styles
-    │   │   ├── circure-back-to-top.css
-    │   │   ├── hardware-page.css      -> Hardware subpage styles
-    │   │   ├── model-page.css         -> Model subpage styles
-    │   │   ├── software-page.css      -> Software subpage styles
-    │   │   ├── human-practices-local.css
-    │   │   ├── wiki-features.css      -> Feature block styles
-    │   │   └── wiki-rebuild.css       -> Wiki rebuild layout styles
-    │   └── utils/
-    │       ├── getPathMapping.ts  -> Path -> page mapping helper
-    │       ├── stringToSlug.ts    -> String -> URL slug helper
-    │       └── index.ts          -> Utility barrel exports
-    ├── home-gsap-refactor/        -> GSAP refactoring research (working folder)
-    │   ├── GSAP重构映射清单.md      -> Mapping list from handwritten anim -> GSAP
-    │   ├── verify_gsap.py         -> Animation verification script
-    │   └── verify_*.png           -> Verification screenshots
-    ├── circure-igem-wiki/         -> v2 standalone single-page prototype (vanilla JS)
-    ├── circure-story-nav-local/   -> Story navigation prototype (vanilla JS)
-    └── hp-testimonial-cards-local/-> v1 multi-page prototype (vanilla HTML/CSS/JS)
-
-> The three `*/` prototype folders at the bottom are standalone vanilla-JS
-> prototypes kept for reference; the production wiki runs from `src/`. See the
-> "CirCure iGEM Project Wiki" section below for their version history.
+    │   │   └── App/         -> Main React application container
+    │   ├── contents/        -> Page content components (iGEM deliverable pages)
+    │   ├── data/            -> Data configuration files (Sustainability, Protocols, etc.)
+    │   ├── hooks/           -> Custom React hooks
+    │   ├── project-preview/ -> Project preview page components
+    │   ├── styles/          -> Global CSS stylesheets
+    │   ├── main.tsx         -> Entry point of the wiki application
+    │   ├── pages.ts         -> Page definition and path mapping
+    │   └── utils/           -> Utility functions
+    ├── tsconfig.json        -> Configures TypeScript options
+    ├── tsconfig.node.json   -> TypeScript settings for Node.js
+    ├── vite.config.ts       -> Configuration for the Vite tool
+    └── yarn.lock            -> Yarn lock file for dependency management
 
 ### Technologies
 
-- [React](https://reactjs.org) `^19.2.0`: A JavaScript library for building user interfaces
-- [TypeScript](https://www.typescriptlang.org) `^5.9.0`: Extends JavaScript by adding types
-- [Vite](https://vitejs.dev) `^7.0.0`: Frontend tooling that provides faster and leaner development builds
-- [Bootstrap](https://getbootstrap.com) `^5.3.8`: Framework for building responsive, mobile-first sites
-- [React Bootstrap](https://react-bootstrap.github.io) `^2.10.10`: Bootstrap components built with React
-- [React Router](https://reactrouter.com) `react-router-dom ^7.9.0`: Declarative routing for React applications
-- [GSAP](https://gsap.com) `^3.15.0`: Animation engine — used by `useStoryNavAnimation` for ScrollTrigger-driven story-nav scroll/pin/hold animations
-- [@gsap/react](https://gsap.com/docs/v3/React-API/) `^2.1.2`: React integration for GSAP (`useGSAP` scoped animations with HMR-safe cleanup)
-- [ESLint](https://eslint.org) `^9.36.0` (flat config + `typescript-eslint` & `eslint-plugin-react-hooks`): Linting
-- (Optional) [Prettier](https://prettier.io) `^3.3.3`: Code formatter
+- [React](https://reactjs.org): A JavaScript library for building user interfaces
+- [TypeScript](https://www.typescriptlang.org): Extends JavaScript by adding types
+- [Vite](https://vitejs.dev): Frontend tooling that provides faster and leaner development builds
+- [Bootstrap](https://getbootstrap.com): Framework for building responsive, mobile-first sites
+- [React Bootstrap](https://react-bootstrap.github.io): Bootstrap components built with React
+- [React Router](https://reactrouter.com): Declarative routing for React applications
+- (Optional) [Prettier](https://prettier.io): Code formatter
 
 
 ---
@@ -176,40 +113,78 @@ Below is the structure of important files and directories in this project:
 ## 仓库结构
 
 ```
-├── circure-igem-wiki/          # v2 完整单页版（Neo-TNBsee 2026）
-│   ├── index.html              # 单页应用入口
-│   ├── styles.css              # 视觉系统、布局与动画
-│   ├── script.js               # 交互逻辑：FLIP 导航、粒子场、滚动揭示
-│   ├── server.mjs              # 零依赖本地开发服务器
-│   ├── package.json            # 项目元数据
-│   └── assets/                 # 图片与媒体资源
-│       ├── circure-logo-*      # 品牌标识（PNG/WebP 双格式）
-│       ├── igem-hero-v2.*      # 首屏主视觉
-│       ├── igem-closing-v2.*   # 底部终场图
-│       ├── igem-galaxy-*       # 粒子场星系素材
-│       ├── beth-*              # 角色 Beth 故事线插图
-│       ├── nav-*               # 导航下拉面板背景图
-│       └── igem-texture-*.jpg  # 页面纹理
-├── circure-story-nav-local/    # 叙事型官网首页原型（Story Navigation）
-│   ├── index.html              # 九章节滚动叙事主页
-│   ├── styles.css              # 视觉系统样式（CSS 变量 + clip-path 动画）
-│   ├── script.js               # 交互逻辑（弹簧物理、滚动驱动、导航状态机）
-│   ├── server.mjs              # Node.js 零依赖静态服务器
-│   ├── STYLE_GUIDE.md          # 人文科学编辑风视觉规范
-│   ├── README.md               # 技术栈分析与版本管理
-│   └── assets/                 # 徽章、丝带、导航卡片图
-├── hp-testimonial-cards-local/ # v1 多页原型版（早期迭代）
-│   ├── index.html              # Human Practices 页面原型
-│   ├── project.html            # Project 页面（The Living Ring）
-│   ├── dry-lab.html            # Dry Lab 模型手稿
-│   ├── wet-lab.html            # Wet Lab 页面
-│   ├── assets/                 # 生成图片与插图
-│   ├── DRY_LAB_RESEARCH.md     # Dry Lab 研究与审计笔记
+├── circure-design-system/        # 设计系统（tokens.json + HTML 预览）
+│   ├── circure-design-system.html
+│   └── tokens.json
+├── circure-igem-wiki/            # v2 完整单页版（Neo-TNBsee 2026）
+│   ├── index.html                # 单页应用入口
+│   ├── styles.css                # 视觉系统、布局与动画
+│   ├── script.js                 # 交互逻辑：FLIP 导航、粒子场、滚动揭示
+│   ├── server.mjs                # 零依赖本地开发服务器
+│   ├── package.json              # 项目元数据
+│   └── assets/                   # 图片与媒体资源
+│       ├── circure-logo-*        # 品牌标识（PNG/WebP 双格式）
+│       ├── igem-hero-v2.*        # 首屏主视觉
+│       ├── igem-closing-v2.*     # 底部终场图
+│       ├── igem-galaxy-*         # 粒子场星系素材
+│       ├── beth-*                # 角色 Beth 故事线插图
+│       ├── nav-*                 # 导航下拉面板背景图
+│       └── igem-texture-*.jpg    # 页面纹理
+├── circure-story-nav-local/      # 叙事型官网首页原型（Story Navigation）
+│   ├── index.html                # 九章节滚动叙事主页
+│   ├── styles.css                # 视觉系统样式（CSS 变量 + clip-path 动画）
+│   ├── script.js                 # 交互逻辑（弹簧物理、滚动驱动、导航状态机）
+│   ├── server.mjs                # Node.js 零依赖静态服务器
+│   ├── STYLE_GUIDE.md            # 人文科学编辑风视觉规范
+│   ├── README.md                 # 技术栈分析与版本管理
+│   └── assets/                   # 徽章、丝带、导航卡片图
+├── hp-testimonial-cards-local/   # v1 多页原型版（早期迭代）
+│   ├── index.html                # Human Practices 页面原型
+│   ├── project.html              # Project 页面（The Living Ring）
+│   ├── dry-lab.html              # Dry Lab 模型手稿
+│   ├── wet-lab.html              # Wet Lab 页面
+│   ├── assets/                   # 生成图片与插图
+│   ├── DRY_LAB_RESEARCH.md       # Dry Lab 研究与审计笔记
 │   ├── HP_BEST_PRACTICES_RESEARCH.md  # HP 获奖与评审模式研究
-│   ├── HP_FIELD_KIT.md         # 利益相关者参与模板
-│   ├── PROJECT_PAGE_RESEARCH.md# Project 页面设计原理
-│   └── README.md               # v1 详细项目说明
-└── README.md                   # 本文件（仓库总览）
+│   ├── HP_FIELD_KIT.md           # 利益相关者参与模板
+│   ├── PROJECT_PAGE_RESEARCH.md  # Project 页面设计原理
+│   └── README.md                 # v1 详细项目说明
+├── public/                       # 静态资源目录（React 应用使用）
+│   ├── assets/
+│   │   ├── docs/                 # PDF 文档（Sustainability 工具包）
+│   │   ├── wiki/                 # Wiki 页面插图
+│   │   ├── protocols/            # 实验协议 PDF
+│   │   ├── story-nav/            # 叙事导航素材
+│   │   ├── footer/               # 页脚标识
+│   │   └── jlu-fbh-crest.png     # 校徽
+│   └── game-assets/              # 游戏资源
+│       ├── assets/               # Breast Guardian 游戏素材
+│       │   ├── characters/       # 角色立绘（主角、家属、医疗人员、细胞等）
+│       │   ├── scenes/           # 场景背景图
+│       │   └── loading/          # 加载动画
+│       └── bomb-cat/             # Bomb Cat 小游戏构建产物
+├── src/                          # React 应用源代码
+│   ├── assets/                   # 应用内引用资源
+│   ├── components/               # React 组件
+│   │   ├── wiki/                 # Wiki 专用组件（DryLab、WetLab、HP、Sustainability 等）
+│   │   ├── BombCatGame/          # Bomb Cat 游戏组件
+│   │   └── BreastGuardianGame/   # Breast Guardian 游戏组件
+│   ├── containers/
+│   │   └── App/                  # 主应用容器
+│   ├── contents/                 # 页面内容组件（对应 iGEM 各交付页面）
+│   ├── data/                     # 数据配置文件（Sustainability、Protocol、Project 等）
+│   ├── hooks/                    # 自定义 React Hooks
+│   ├── project-preview/          # 项目预览页面组件
+│   ├── styles/                   # 全局样式文件
+│   └── utils/                    # 工具函数
+├── 文案集/                       # 文案与文档资料
+│   └── Human Practice/
+│       └── sustainability/       # Sustainability 相关文案、PDF 工具包及图片
+├── index.html                    # Vite 入口 HTML
+├── package.json                  # 项目依赖配置
+├── tsconfig.json                 # TypeScript 配置
+├── vite.config.ts                # Vite 构建配置
+└── README.md                     # 本文件（仓库总览）
 ```
 
 ---
@@ -221,6 +196,8 @@ Below is the structure of important files and directories in this project:
 | v1 | `hp-testimonial-cards-local/` | 早期多页原型，含 HP、Project、Dry Lab、Wet Lab 独立页面 |
 | Story Nav | `circure-story-nav-local/` | 叙事型官网首页原型，九章节滚动叙事 + 粉线导航器 + 弹簧物理动效 |
 | v2 | `circure-igem-wiki/` | 完整单页应用版，Neo-TNBsee 主线，Beth 叙事，粒子场星系，FLIP 导航 |
+| Design System | `circure-design-system/` | 设计令牌（tokens.json）与视觉系统预览 |
+| React App (Main) | `src/` + `public/` | 当前主分支使用的 React + TypeScript + Vite 应用，包含完整 Wiki 页面、游戏组件、Sustainability 数据可视化等 |
 
 ---
 
@@ -283,6 +260,13 @@ Below is the structure of important files and directories in this project:
 
 ## 本地运行
 
+### React 主应用（当前主分支）
+```bash
+yarn install
+yarn run dev
+```
+然后打开 `http://localhost:5173`。
+
 ### v2 完整版
 ```bash
 cd circure-igem-wiki
@@ -303,6 +287,12 @@ cd hp-testimonial-cards-local
 python3 -m http.server 5188
 ```
 然后打开 `http://localhost:5188/index.html`。
+
+### Design System 预览
+```bash
+cd circure-design-system
+# 直接在浏览器中打开 circure-design-system.html
+```
 
 全部关键图片均为本地资源，不依赖外部 CDN，可离线运行。
 

@@ -108,8 +108,10 @@ const systemLayers = [
   {
     label: "Sample path",
     short: "Material flow",
-    input: "Defined sample, volume, compatibility, and containment",
-    output: "Recovered, retained, or safely disposed sample",
+    input:
+      "Versioned circRNA, matched linear RNA, controls, volume, compatibility, and containment",
+    output:
+      "Recovered, retained, or safely disposed sample with preserved identity",
     record:
       "Direction, dead volume, contact materials, cleaning, and carryover",
     failure: "Leak, blockage, contamination, misloading, or loss",
@@ -123,7 +125,8 @@ const systemLayers = [
   {
     label: "Measurement",
     short: "Reference → signal",
-    input: "Reference standard, blank, environment, and acquisition settings",
+    input:
+      "Selected CirCure evidence gate, matched controls, reference, blank, environment, and acquisition settings",
     output: "Versioned raw signal, unit, uncertainty, and quality state",
     record:
       "Sensor identity, calibration, sampling rate, processing, and timestamp",
@@ -137,7 +140,8 @@ const systemLayers = [
   {
     label: "Control & safety",
     short: "Setpoint → safe state",
-    input: "Operator intent, permitted range, interlock, and power state",
+    input:
+      "CirCure assay protocol, operator intent, permitted range, interlock, and power state",
     output: "Controlled action, stop condition, alert, and recovery record",
     record: "Firmware, configuration, access, fault, cleaning, and maintenance",
     failure:
@@ -237,14 +241,14 @@ export function AnnotatedSystemDiagram() {
 const assemblyGroups = [
   {
     number: "01",
-    title: "Sample interface",
-    interface: "Inlet · contact path · holder · outlet",
+    title: "Matched RNA sample interface",
+    interface: "circRNA · linear control · contact path · holder · outlet",
     record: "Geometry, material, seal, tolerance, and cleaning",
   },
   {
     number: "02",
-    title: "Measurement module",
-    interface: "Reference · sensor · alignment · acquisition",
+    title: "Evidence-gate measurement",
+    interface: "reference · signal · alignment · acquisition",
     record: "Range, resolution, calibration, and raw output",
   },
   {
@@ -385,7 +389,12 @@ export function HardwareAssemblyAndBom() {
 }
 
 const iterationStages = [
-  ["01", "Need", "Observed physical bottleneck + baseline", "awaiting record"],
+  [
+    "01",
+    "Need",
+    "Observed CirCure measurement bottleneck + current baseline",
+    "awaiting record",
+  ],
   [
     "02",
     "Build v0.1",
@@ -449,10 +458,17 @@ export function BuildIterationTimeline() {
 }
 
 const performanceRows = [
-  ["Accuracy", "named reference", "—", "—", "unit + uncertainty", "awaiting"],
+  [
+    "Accuracy",
+    "assay-specific CirCure reference",
+    "—",
+    "—",
+    "unit + uncertainty",
+    "awaiting",
+  ],
   [
     "Repeatability",
-    "replicated reference",
+    "matched circRNA / linear RNA controls",
     "—",
     "—",
     "distribution + CV/SD",
@@ -588,7 +604,7 @@ export function HardwareCalibrationAndPerformance() {
 const riskRows = [
   [
     "Sample leakage / carryover",
-    "Exposure or invalid result",
+    "Exposure, control mixing, or invalid CirCure result",
     "Pressure / visual / blank check",
     "Stop, contain, clean, document",
     "challenge + cleaning record",
@@ -609,7 +625,7 @@ const riskRows = [
   ],
   [
     "Calibration drift",
-    "Incorrect scientific decision",
+    "Incorrect candidate, construct, or assay decision",
     "Control standard + trend",
     "Block result and recalibrate",
     "drift threshold + audit",

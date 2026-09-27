@@ -10,31 +10,35 @@ import type { WikiPageContent } from "../components/wiki/wikiPageTypes";
 export const softwareEvidencePage: WikiPageContent = {
   route: "/software",
   category: "dry-lab",
-  chapter: "Dry Lab / 02 of 03",
+  chapter: "Dry Lab / 02 of 04",
   eyebrow: "Software · User-facing evidence",
-  title: "Make software inspectable.",
-  lede: "Trace the path from input to review, export, and recovery.",
+  title: "Software",
+  lede: "One reproducible workflow from validation to export.",
   boundary:
-    "Awaiting executable code, interface captures, tests, benchmarks, and a tagged release.",
+    "The workflow is defined around CirCure, but executable code, interface captures, tests, benchmarks, and a tagged team release are still required.",
   visual: "software-console",
   visualLabel: "User task, data flow, run evidence, and release",
   visualSteps: ["need", "validate", "run", "inspect", "export", "recover"],
   facts: [
     {
       label: "User",
-      value: "One named user and one costly task define the product.",
+      value:
+        "A CirCure researcher reviews candidates and construct evidence in one workflow.",
     },
     {
       label: "Run",
-      value: "A worked example must reach a verifiable expected output.",
+      value:
+        "One versioned input must produce a verifiable candidate or construct record.",
     },
     {
       label: "Trust",
-      value: "Provenance, warnings, versions, and failures remain inspectable.",
+      value:
+        "Scores retain provenance, uncertainty, warnings, versions, and failures.",
     },
     {
       label: "Reuse",
-      value: "Release, tests, ownership, and limits travel with the tool.",
+      value:
+        "Release, tests, ownership, and scientific limits travel with every export.",
     },
   ],
   sections: [
@@ -42,9 +46,10 @@ export const softwareEvidencePage: WikiPageContent = {
       id: "software-user-task",
       index: "01",
       kicker: "User need & software claim",
-      title: "Begin with the decision a user cannot make efficiently today.",
+      navLabel: "User task",
+      title: "User task and scientific decision.",
       summary:
-        "A software contribution becomes credible when the user, trigger, current pain, desired decision, and acceptance evidence are visible before the feature list.",
+        "The primary task is not to generate another score table: it is to help a CirCure researcher decide which candidate, construct revision, or experiment should advance and why.",
       layout: "matrix",
       items: [
         {
@@ -71,9 +76,10 @@ export const softwareEvidencePage: WikiPageContent = {
       id: "software-scope",
       index: "02",
       kicker: "Claim and product boundary",
-      title: "Show what the tool does—and what it must never imply.",
+      navLabel: "Product scope",
+      title: "Scope, claims, and review boundary.",
       summary:
-        "The final product contract should separate implemented behavior, planned capability, model responsibility, human review, and unsupported use.",
+        "Implemented workflow, planned capability, model responsibility, human review, and unsupported biological inference are separated before any interface feature is described.",
       layout: "ledger",
       items: [
         {
@@ -100,9 +106,10 @@ export const softwareEvidencePage: WikiPageContent = {
       id: "software-architecture",
       index: "03",
       kicker: "Architecture & data flow",
-      title: "Let every module expose what enters, leaves, and can fail.",
+      navLabel: "Architecture",
+      title: "System architecture and data provenance.",
       summary:
-        "A system map should connect the user layer, orchestration, model logic, and data provenance without hiding external services or trust boundaries.",
+        "The system connects CirCure candidate data, orchestration, model logic, construct records, and exported evidence without hiding external tools, transformations, or trust boundaries.",
       layout: "steps",
       items: [
         {
@@ -135,9 +142,10 @@ export const softwareEvidencePage: WikiPageContent = {
       id: "software-workflow",
       index: "04",
       kicker: "Input → run → inspect → export",
-      title: "Document the shortest successful path and every recovery path.",
+      navLabel: "Run workflow",
+      title: "A reproducible CirCure analysis workflow.",
       summary:
-        "The final page should pair real interface captures with the exact input, validation state, run version, inspectable output, export, and correction behavior.",
+        "The shortest path runs from a documented epitope or construct record to a reviewed, versioned decision export; every invalid input, failed dependency, and correction path remains visible.",
       layout: "timeline",
       items: [
         {
@@ -182,9 +190,10 @@ export const softwareEvidencePage: WikiPageContent = {
       id: "software-validation",
       index: "05",
       kicker: "Validation, benchmark & failure",
-      title: "Reliability is a matrix of evidence, not a success badge.",
+      navLabel: "Validation",
+      title: "Validation, benchmarking, and failure handling.",
       summary:
-        "Tests, datasets, baselines, latency, accessibility, security, disagreement, and known failure cases must identify which claim they challenge.",
+        "Tests, reference datasets, relevant baselines, latency, accessibility, disagreement, and known failures are tied to the CirCure decision or software claim they challenge.",
       layout: "matrix",
       items: [
         {
@@ -211,9 +220,10 @@ export const softwareEvidencePage: WikiPageContent = {
       id: "software-iteration",
       index: "06",
       kicker: "User testing & iteration",
-      title: "Connect feedback to a versioned product decision.",
+      navLabel: "Iteration",
+      title: "User testing and versioned iteration.",
       summary:
-        "A useful iteration record names the user, task, observation, severity, change, retest, and measurable consequence instead of presenting an unverified testimonial.",
+        "Each iteration names the CirCure task, observed friction or error, severity, code or interface change, retest, and measurable consequence.",
       layout: "timeline",
       items: [
         {
@@ -240,9 +250,10 @@ export const softwareEvidencePage: WikiPageContent = {
       id: "software-release",
       index: "07",
       kicker: "Installation, release & reuse",
-      title: "A reusable tool needs an executable release contract.",
+      navLabel: "Release & reuse",
+      title: "Installation, release, and reuse.",
       summary:
-        "Repository, tagged release, environment, quickstart, example input, expected output, tests, documentation, license, ownership, and maintenance must agree.",
+        "Repository, tagged release, supported environment, CirCure example input, expected output, tests, documentation, license, ownership, and maintenance form one executable contract.",
       layout: "matrix",
       items: [
         {
@@ -269,9 +280,10 @@ export const softwareEvidencePage: WikiPageContent = {
       id: "software-limitations",
       index: "08",
       kicker: "Responsible use, ownership & references",
-      title: "Show where the software must stop and ask for review.",
+      navLabel: "Limits & ownership",
+      title: "Limitations, governance, and attribution.",
       summary:
-        "Limitations become operational when each unsupported condition has a detection signal, user-facing warning, safe state, mitigation, and evidence needed for extension.",
+        "Unsupported inputs and out-of-domain use must trigger a detectable warning, safe state, scientific review, and a record of the evidence required before the tool is extended.",
       layout: "ledger",
       items: [
         {

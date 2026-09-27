@@ -1,107 +1,5 @@
 import { useState } from "react";
 
-const evidenceBrief = [
-  {
-    rubric: "Method",
-    question: "Is the computational method impressive and appropriate?",
-    evidence: "Architecture, assumptions, equations, implementation record",
-  },
-  {
-    rubric: "Design",
-    question: "Did it change a part, device, system, or experiment?",
-    evidence: "Named retained/rejected design and decision consequence",
-  },
-  {
-    rubric: "Validation",
-    question: "Was it developed or checked with relevant evidence?",
-    evidence: "Independent data, Wet Lab measurement, mismatch, uncertainty",
-  },
-  {
-    rubric: "Reuse",
-    question: "Can another team understand and reproduce it?",
-    evidence: "Tagged data, code, environment, expected output, ownership",
-  },
-];
-
-export function ModelJudgeBrief() {
-  return (
-    <div className="model-judge-brief" data-model-placeholder>
-      <header className="model-feature-heading">
-        <div>
-          <span>Judge brief / evidence map</span>
-          <strong>
-            Four questions, four visible evidence responsibilities.
-          </strong>
-        </div>
-        <p>Architecture preview · replace status only when evidence exists</p>
-      </header>
-
-      <div className="model-judge-brief__grid">
-        {evidenceBrief.map((item, index) => (
-          <article key={item.rubric}>
-            <span>
-              0{index + 1} / {item.rubric}
-            </span>
-            <h3>{item.question}</h3>
-            <p>{item.evidence}</p>
-            <small>Evidence slot · planned</small>
-          </article>
-        ))}
-      </div>
-
-      <div
-        className="model-claim-matrix"
-        role="region"
-        aria-label="Claim to evidence matrix"
-      >
-        <div className="model-table-scroll">
-          <table>
-            <caption>Table M-01. Claim-to-evidence contract</caption>
-            <thead>
-              <tr>
-                <th scope="col">Target claim</th>
-                <th scope="col">Model output</th>
-                <th scope="col">Independent check</th>
-                <th scope="col">Project consequence</th>
-                <th scope="col">Status</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">Candidate choice</th>
-                <td>Rank + score decomposition</td>
-                <td>Held-out / literature / Wet Lab</td>
-                <td>Retain, reject, or retest</td>
-                <td>
-                  <span className="model-data-state">awaiting data</span>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">Construct choice</th>
-                <td>Matched structural comparison</td>
-                <td>Orthogonal method / assay</td>
-                <td>Advance or redesign</td>
-                <td>
-                  <span className="model-data-state">awaiting data</span>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">Experimental window</th>
-                <td>Prediction + uncertainty</td>
-                <td>Measured time course</td>
-                <td>Time, dose, and observable</td>
-                <td>
-                  <span className="model-data-state">awaiting data</span>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-  );
-}
-
 const architectureModels = [
   {
     number: "01",
@@ -254,7 +152,11 @@ export function EpitopeEvidencePanel() {
           aria-label="Empty score decomposition chart awaiting team data"
         >
           <div className="model-empty-chart__axis" aria-hidden="true" />
-          {["Candidate A", "Candidate B", "Candidate C"].map((candidate) => (
+          {[
+            "CirCure candidate 01",
+            "CirCure candidate 02",
+            "CirCure candidate 03",
+          ].map((candidate) => (
             <div className="model-empty-chart__row" key={candidate}>
               <span>{candidate}</span>
               <i />
@@ -274,9 +176,9 @@ export function EpitopeEvidencePanel() {
 }
 
 const structureVariants = [
-  "Candidate construct A",
-  "Candidate construct B",
-  "Candidate construct C",
+  "Proposed construct A",
+  "Proposed construct B",
+  "Proposed construct C",
 ];
 
 export function StructureComparisonPanel() {
@@ -356,8 +258,10 @@ export function DynamicsValidationPanel() {
           role="img"
           aria-label="Empty prediction and validation plot awaiting team measurements"
         >
-          <span className="model-dynamics-plot__y">measured observable</span>
-          <span className="model-dynamics-plot__x">time / dose</span>
+          <span className="model-dynamics-plot__y">
+            CirCure expression observable
+          </span>
+          <span className="model-dynamics-plot__x">time after delivery</span>
           <div className="model-dynamics-plot__grid" aria-hidden="true" />
           <strong>Awaiting measured and simulated values</strong>
         </div>
@@ -437,20 +341,20 @@ export function DynamicsValidationPanel() {
 
 const validationRows = [
   [
-    "Candidate ranking",
-    "Held-out / literature / Wet Lab",
+    "TNBC epitope shortlist",
+    "Held-out source / literature / presentation assay",
     "Rank stability",
     "not started",
   ],
   [
-    "Construct selection",
-    "Orthogonal tool / structure assay",
+    "Multi-epitope construct",
+    "Orthogonal structure tool / junction and RNase R evidence",
     "Selection agreement",
     "not started",
   ],
   [
-    "Dynamic window",
-    "Measured trajectory",
+    "Expression window",
+    "Measured expression time course",
     "Residual + interval coverage",
     "not started",
   ],
@@ -503,9 +407,9 @@ export function ValidationAndSensitivityPanel() {
         </figcaption>
         <div>
           {[
-            "Weight / parameter 01",
-            "Weight / parameter 02",
-            "Threshold / prior 03",
+            "TNBC relevance weight",
+            "Presentation threshold",
+            "Expression loss parameter",
           ].map((label) => (
             <article key={label}>
               <span>{label}</span>
@@ -523,7 +427,12 @@ export function ValidationAndSensitivityPanel() {
 }
 
 const wetDryStages = [
-  ["01", "Wet input", "Measured constraint", "data + protocol + quality"],
+  [
+    "01",
+    "Wet input",
+    "Junction, RNase R, expression, or recognition evidence",
+    "data + protocol + quality",
+  ],
   [
     "02",
     "Model revision",
@@ -533,7 +442,7 @@ const wetDryStages = [
   [
     "03",
     "Decision",
-    "Candidate or condition",
+    "Candidate, construct, or measurement window",
     "reason + confidence + alternative",
   ],
   [

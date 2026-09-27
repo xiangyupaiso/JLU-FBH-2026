@@ -13,6 +13,7 @@ export type WikiVisual =
   | "model-manuscript"
   | "software-console"
   | "hardware-schematic"
+  | "games-portal"
   | "venture-path"
   | "human-thread"
   | "education-dialogue"
@@ -33,20 +34,71 @@ export interface WikiFact {
 
 export interface WikiItem {
   label: string;
+  navLabel?: string;
   title: string;
   body: string;
+  evidence?: string[];
+  decision?: string;
   status?: "recorded" | "planned" | "boundary" | "open";
 }
+
+export type WikiCalloutTone = "navy" | "coral" | "gold" | "neutral";
+
+/**
+ * Ordered content block inside a section. When a section provides `blocks`,
+ * the renderer emits the section header (index / title / summary) followed by
+ * the blocks in order — this lets a page keep faithful paragraph / figure /
+ * callout interleaving while still running through the shared renderer.
+ */
+export type WikiContentBlock =
+  | { type: "prose"; paragraphs: string[] }
+  | { type: "figure"; src: string; alt: string; caption?: string }
+  | {
+      type: "callout";
+      tone?: WikiCalloutTone;
+      label?: string;
+      body: string;
+    }
+  | {
+      type: "subheading";
+      id: string;
+      index: string;
+      kicker?: string;
+      title: string;
+    }
+  | { type: "feature"; key: string }
+  | { type: "note"; label: string; body: string }
+  | {
+      type: "epigraph";
+      quote: string;
+      translationZh: string;
+      attribution: string;
+      attributionRole: string;
+    }
+  | {
+      /**
+       * Prose-anchored two-column pair: narrative text on the left, one compact
+       * figure / chart as an aside on the right. Keeps charts from becoming
+       * full-width banners that interrupt the reading column. Collapses to a
+       * single column below 880px.
+       */
+      type: "split";
+      id: string;
+      prose: WikiContentBlock[];
+      aside: WikiContentBlock;
+    };
 
 export interface WikiSection {
   id: string;
   index: string;
   kicker: string;
+  navLabel?: string;
   title: string;
   summary: string;
   body?: string[];
   layout?: WikiSectionLayout;
   items?: WikiItem[];
+  blocks?: WikiContentBlock[];
   note?: {
     label: string;
     body: string;

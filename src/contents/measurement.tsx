@@ -1,9 +1,8 @@
 import { WikiPage } from "../components/wiki/WikiPage";
 import {
   MeasurementWindow,
-  ProtocolStack,
+  MeasurementPublicationGate,
   ReadoutMatrix,
-  WetLabSignature,
 } from "../components/wiki/features/WetLabFeatures";
 import { measurementPage } from "../data/wetLabPages";
 
@@ -11,11 +10,11 @@ export function Measurement() {
   return (
     <WikiPage
       content={measurementPage}
-      heroVisual={<WetLabSignature variant="measurement" />}
+      heroVisual={null}
       features={{
         "measurement-chain": <MeasurementWindow />,
         "measurement-readouts": <ReadoutMatrix />,
-        "measurement-publication": <ProtocolStack />,
+        "measurement-publication": <MeasurementPublicationGate />,
       }}
     />
   );

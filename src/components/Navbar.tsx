@@ -1,10 +1,18 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
+import teamCrestUrl from "../assets/jlu-fbh-crest.png";
 import projectWetlabSprite from "../assets/story-nav/nav-project-wetlab-v2.webp";
 import drylabEngagementSprite from "../assets/story-nav/nav-drylab-engagement-v2.webp";
 import Pages from "../pages";
 import type { FolderNavMeta } from "../pages";
- 
+import { PageSearch } from "./PageSearch";
+
+// Reversed (light) crest for the dark header — redrawn asset with #fcf8f1
+// lines and a transparent shield, uploaded to static.igem.wiki (WebP + PNG).
+// Until it ships, the dark theme falls back to a paperBright circular sticker
+// behind the navy crest (see circure-nav.css).
+const LIGHT_LOGO_URL: string | undefined = undefined;
+
 interface NavCard {
   name: string;
   path: string;
@@ -12,7 +20,7 @@ interface NavCard {
   em: string;
   spriteRow: string;
 }
- 
+
 interface NavDropdown {
   key: string;
   label: string;
@@ -21,14 +29,14 @@ interface NavDropdown {
   enterLabel: string;
   cards: NavCard[];
 }
- 
+
 const SPRITES: Record<FolderNavMeta["sprite"], string> = {
   "project-wetlab": projectWetlabSprite,
   "drylab-engagement": drylabEngagementSprite,
 };
 
 const DROPDOWNS: NavDropdown[] = Pages.flatMap((item) => {
-  if (!("folder" in item) || !item.folder || !item.nav || !item.name) return [];
+  if (item.type !== "folder" || !item.nav || !item.name) return [];
 
   const cards = item.folder.flatMap((page): NavCard[] => {
     if (!page.name || !page.path || !page.nav) return [];
@@ -54,18 +62,18 @@ const DROPDOWNS: NavDropdown[] = Pages.flatMap((item) => {
     },
   ];
 });
- 
+
 const NAV_BREAKPOINT = 980;
- 
+
 function isActive(pathname: string, path: string): boolean {
   if (path === "/") return pathname === "/";
   return pathname === path || pathname.startsWith(`${path}/`);
 }
- 
+
 function dropdownActive(pathname: string, dropdown: NavDropdown): boolean {
   return dropdown.cards.some((c) => isActive(pathname, c.path));
 }
- 
+
 export function Navbar() {
   const [openKey, setOpenKey] = useState<string | null>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -75,30 +83,35 @@ export function Navbar() {
   const shellRef = useRef<HTMLDivElement>(null);
   const mobileToggleRef = useRef<HTMLButtonElement>(null);
   const pathname = useLocation().pathname;
- 
+
   const clearTimers = useCallback(() => {
     window.clearTimeout(openTimerRef.current);
     window.clearTimeout(closeTimerRef.current);
   }, []);
- 
+
   const queueOpen = useCallback(
     (key: string) => {
-      if (typeof window === "undefined" || window.innerWidth <= NAV_BREAKPOINT) return;
+      if (typeof window === "undefined" || window.innerWidth <= NAV_BREAKPOINT)
+        return;
       clearTimers();
       openTimerRef.current = window.setTimeout(() => setOpenKey(key), 70);
     },
     [clearTimers],
   );
- 
+
   const queueClose = useCallback(() => {
-    if (typeof window === "undefined" || window.innerWidth <= NAV_BREAKPOINT) return;
+    if (typeof window === "undefined" || window.innerWidth <= NAV_BREAKPOINT)
+      return;
     clearTimers();
     closeTimerRef.current = window.setTimeout(() => setOpenKey(null), 170);
   }, [clearTimers]);
- 
+
   const openImmediate = useCallback(
     (key: string) => {
-      if (typeof window === "undefined" || window.innerWidth <= NAV_BREAKPOINT) {
+      if (
+        typeof window === "undefined" ||
+        window.innerWidth <= NAV_BREAKPOINT
+      ) {
         setMobileOpen(true);
         return;
       }
@@ -107,21 +120,79 @@ export function Navbar() {
     },
     [clearTimers],
   );
- 
+
   const closeAll = useCallback(() => {
     clearTimers();
     setOpenKey(null);
     setMobileOpen(false);
   }, [clearTimers]);
- 
+
   // Close on route change
   useEffect(() => {
     closeAll();
   }, [pathname, closeAll]);
- 
+
   // Clean up timers on unmount
   useEffect(() => () => clearTimers(), [clearTimers]);
- 
+
+  // Pink Thread scroll-progress + surface-driven header theme.
+  // Writes --scroll-p (0..1) and toggles data-header-theme based on which
+  // [data-surface="navy"] element sits under the header's bottom edge.
+  useEffect(() => {
+    const header = headerRef.current;
+    if (!header) return;
+    header.style.setProperty("--scroll-p", "0");
+    header.dataset.headerTheme = "light";
+    const root = document.documentElement;
+    let frame = 0;
+
+    const headerBottom = () => {
+      const value = getComputedStyle(root)
+        .getPropertyValue("--header-height")
+        .trim();
+      return Number.parseFloat(value) || 78;
+    };
+
+    const paint = () => {
+      frame = 0;
+      const max = root.scrollHeight - window.innerHeight;
+      const progress =
+        max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)) : 0;
+      header.style.setProperty("--scroll-p", progress.toFixed(4));
+
+      // Mega-menu open → force light (the panel is a paperBright frozen zone).
+      if (openKey) {
+        header.dataset.headerTheme = "light";
+        return;
+      }
+      const line = headerBottom();
+      let theme: "dark" | "light" = "light";
+      const navy = document.querySelectorAll<HTMLElement>(
+        '[data-surface="navy"]',
+      );
+      for (const el of navy) {
+        const rect = el.getBoundingClientRect();
+        if (rect.top <= line && rect.bottom >= line) {
+          theme = "dark";
+          break;
+        }
+      }
+      header.dataset.headerTheme = theme;
+    };
+
+    const request = () => {
+      if (!frame) frame = window.requestAnimationFrame(paint);
+    };
+    paint();
+    window.addEventListener("scroll", request, { passive: true });
+    window.addEventListener("resize", request, { passive: true });
+    return () => {
+      if (frame) window.cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", request);
+      window.removeEventListener("resize", request);
+    };
+  }, [pathname, openKey]);
+
   // Click-outside to close whichever menu is open (desktop and/or mobile)
   useEffect(() => {
     if (!openKey && !mobileOpen) return;
@@ -131,9 +202,10 @@ export function Navbar() {
       closeAll();
     };
     document.addEventListener("pointerdown", onPointerDown, true);
-    return () => document.removeEventListener("pointerdown", onPointerDown, true);
+    return () =>
+      document.removeEventListener("pointerdown", onPointerDown, true);
   }, [openKey, mobileOpen, closeAll]);
- 
+
   // Escape closes whichever menu is open and restores focus to its toggle
   useEffect(() => {
     if (!openKey && !mobileOpen) return;
@@ -156,7 +228,7 @@ export function Navbar() {
     document.addEventListener("keydown", onKeyDown);
     return () => document.removeEventListener("keydown", onKeyDown);
   }, [openKey, mobileOpen, clearTimers]);
- 
+
   // Arrow Left/Right cycling among dropdown toggles
   const onToggleKeydown = useCallback(
     (event: React.KeyboardEvent<HTMLButtonElement>) => {
@@ -180,7 +252,7 @@ export function Navbar() {
     },
     [openImmediate],
   );
- 
+
   const headerClassName = [
     "site-header",
     openKey ? "is-nav-open" : "",
@@ -188,23 +260,34 @@ export function Navbar() {
   ]
     .filter(Boolean)
     .join(" ");
- 
+
   const homeActive = isActive(pathname, "/");
   const teamActive = isActive(pathname, "/team");
- 
+
   return (
     <>
       <svg
         aria-hidden="true"
-        style={{ position: "absolute", width: 0, height: 0, overflow: "hidden" }}
+        style={{
+          position: "absolute",
+          width: 0,
+          height: 0,
+          overflow: "hidden",
+        }}
         focusable="false"
       >
         <symbol id="circure-ribbon-knot" viewBox="0 0 32 46">
           <path d="M8.2 41C10.8 32.6 19.8 24.7 21.4 15.9C22.6 9.2 18.4 5.1 14.3 6.6C9.7 8.2 9.6 13.3 12.4 18.3C15.7 24.2 21.8 31.3 24.2 41" />
         </symbol>
       </svg>
- 
-      <header ref={headerRef} className={headerClassName} data-header data-tone="bright">
+
+      <header
+        ref={headerRef}
+        className={headerClassName}
+        data-header
+        data-header-theme="light"
+        data-nav-theme={openKey ?? undefined}
+      >
         <div
           className="circure-nav-shell"
           ref={shellRef}
@@ -214,9 +297,29 @@ export function Navbar() {
           <div className="circure-nav-head">
             <Link to="/" className="wordmark" aria-label="CirCure home">
               <span className="wordmark-stage" aria-hidden="true">
+                <span className="wordmark-crest">
+                  <img
+                    className="team-crest logo--dark"
+                    src={teamCrestUrl}
+                    alt=""
+                  />
+                  {LIGHT_LOGO_URL ? (
+                    <img
+                      className="team-crest logo--light"
+                      src={LIGHT_LOGO_URL}
+                      alt=""
+                    />
+                  ) : null}
+                </span>
                 <span className="logo-word-full">CirCure</span>
                 <svg className="logo-symbol" viewBox="0 0 40 40">
-                  <circle className="logo-ring" pathLength={1} cx="20" cy="20" r="15.25" />
+                  <circle
+                    className="logo-ring"
+                    pathLength={1}
+                    cx="20"
+                    cy="20"
+                    r="15.25"
+                  />
                   <path
                     className="logo-ribbon"
                     pathLength={1}
@@ -224,34 +327,66 @@ export function Navbar() {
                   />
                   <circle className="logo-junction" cx="9.2" cy="8.8" r="1.7" />
                 </svg>
+                <span className="wordmark-folio">JLU-FBH · iGEM 2026</span>
               </span>
             </Link>
- 
+
+            <PageSearch />
+
             <nav className="desktop-nav" aria-label="Primary navigation">
-              <Link to="/" aria-current={homeActive ? "page" : undefined}>
-                Home
-              </Link>
-              <Link to="/team" aria-current={teamActive ? "page" : undefined}>
-                Team
-              </Link>
-              {DROPDOWNS.map((d) => (
-                <button
-                  key={d.key}
-                  type="button"
-                  data-nav-key={d.key}
-                  aria-expanded={openKey === d.key}
-                  aria-controls="circure-nav-menu"
-                  aria-current={dropdownActive(pathname, d) ? "page" : undefined}
-                  onPointerEnter={() => queueOpen(d.key)}
-                  onFocus={() => openImmediate(d.key)}
-                  onClick={() => openImmediate(d.key)}
-                  onKeyDown={onToggleKeydown}
-                >
-                  {d.label} <span aria-hidden="true">⌄</span>
-                </button>
-              ))}
+              <ul className="nav-list">
+                <li className="nav-item">
+                  <Link
+                    className="nav-link"
+                    to="/"
+                    aria-current={homeActive ? "page" : undefined}
+                  >
+                    Home
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link
+                    className="nav-link"
+                    to="/team"
+                    aria-current={teamActive ? "page" : undefined}
+                  >
+                    Team
+                  </Link>
+                </li>
+                {DROPDOWNS.map((d, i) => (
+                  <li key={d.key} className="nav-item" data-section={d.key}>
+                    <button
+                      className="nav-link"
+                      type="button"
+                      data-nav-key={d.key}
+                      aria-expanded={openKey === d.key}
+                      aria-controls="circure-nav-menu"
+                      aria-current={
+                        dropdownActive(pathname, d) ? "page" : undefined
+                      }
+                      onPointerEnter={() => queueOpen(d.key)}
+                      onFocus={() => openImmediate(d.key)}
+                      onClick={() => openImmediate(d.key)}
+                      onKeyDown={onToggleKeydown}
+                    >
+                      <span className="nav-folio" aria-hidden="true">
+                        {String(i + 1).padStart(2, "0")}
+                      </span>
+                      {d.label}
+                      <svg
+                        className="nav-caret"
+                        viewBox="0 0 10 6"
+                        aria-hidden="true"
+                        focusable="false"
+                      >
+                        <path d="M1 1l4 4 4-4" />
+                      </svg>
+                    </button>
+                  </li>
+                ))}
+              </ul>
             </nav>
- 
+
             <button
               className="mobile-menu-toggle"
               type="button"
@@ -261,14 +396,25 @@ export function Navbar() {
               ref={mobileToggleRef}
             >
               <span>Menu</span>
-              <svg className="ribbon-mark" viewBox="0 0 32 46" aria-hidden="true">
+              <svg
+                className="ribbon-mark"
+                viewBox="0 0 32 46"
+                aria-hidden="true"
+              >
                 <use href="#circure-ribbon-knot" />
               </svg>
             </button>
           </div>
- 
-          <span className="circure-nav-surface" aria-hidden="true" />
- 
+
+          <span className="circure-nav-surface" aria-hidden="true">
+            {DROPDOWNS.map((dropdown) => (
+              <span
+                key={`${dropdown.key}-aura`}
+                className={`circure-nav-aura circure-nav-aura--${dropdown.key}`}
+              />
+            ))}
+          </span>
+
           <div
             className={`circure-mega-menu${openKey ? " is-open" : ""}`}
             id="circure-nav-menu"
@@ -292,7 +438,9 @@ export function Navbar() {
                   aria-hidden={!isActivePanel}
                   style={
                     manyCards
-                      ? { gridTemplateColumns: `1.13fr repeat(${d.cards.length}, 1fr)` }
+                      ? {
+                          gridTemplateColumns: `1.13fr repeat(${d.cards.length}, 1fr)`,
+                        }
                       : undefined
                   }
                 >
@@ -326,7 +474,7 @@ export function Navbar() {
               );
             })}
           </div>
- 
+
           <nav
             className={`circure-mobile-menu${mobileOpen ? " is-open" : ""}`}
             id="circure-mobile-menu"
@@ -341,7 +489,11 @@ export function Navbar() {
               Team
             </Link>
             {DROPDOWNS.map((d) => (
-              <Link key={`${d.key}-head`} to={d.cards[0].path} onClick={closeAll}>
+              <Link
+                key={`${d.key}-head`}
+                to={d.cards[0].path}
+                onClick={closeAll}
+              >
                 {d.label}
               </Link>
             ))}

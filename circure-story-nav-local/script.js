@@ -1,27 +1,47 @@
 const opening = document.querySelector(".prologue");
+if (!opening) throw new Error("Missing .prologue"); // null-guard
 const history = document.querySelector(".history");
+if (!history) throw new Error("Missing .history"); // null-guard
 const humanChapter = document.querySelector(".human-chapter");
+if (!humanChapter) throw new Error("Missing .human-chapter"); // null-guard
 const expansion = document.querySelector(".expansion");
+if (!expansion) throw new Error("Missing .expansion"); // null-guard
 const coverage = document.querySelector(".coverage");
+if (!coverage) throw new Error("Missing .coverage"); // null-guard
 const evidence = document.querySelector(".evidence");
+if (!evidence) throw new Error("Missing .evidence"); // null-guard
 const engineering = document.querySelector(".engineering");
+if (!engineering) throw new Error("Missing .engineering"); // null-guard
 const listening = document.querySelector(".listening");
+if (!listening) throw new Error("Missing .listening"); // null-guard
 const listeningRoom = document.querySelector(".listening-room");
+if (!listeningRoom) throw new Error("Missing .listening-room"); // null-guard
 const translation = document.querySelector(".translation");
+if (!translation) throw new Error("Missing .translation"); // null-guard
 const closing = document.querySelector(".closing");
+if (!closing) throw new Error("Missing .closing"); // null-guard
 const siteHeader = document.querySelector(".site-header");
+if (!siteHeader) throw new Error("Missing .site-header"); // null-guard
 const pageRoot = document.documentElement;
 const navShell = document.querySelector("[data-nav-shell]");
+if (!navShell) throw new Error("Missing [data-nav-shell]"); // null-guard
 const navMenu = document.querySelector("[data-nav-menu]");
+if (!navMenu) throw new Error("Missing [data-nav-menu]"); // null-guard
 const navToggles = [...document.querySelectorAll("[data-nav-key]")];
 const navPanels = [...document.querySelectorAll("[data-nav-panel]")];
 const navHomeLinks = [...document.querySelectorAll("[data-nav-home]")];
 const mobileMenuToggle = document.querySelector("[data-mobile-menu-toggle]");
+if (!mobileMenuToggle) throw new Error("Missing [data-mobile-menu-toggle]"); // null-guard
 const mobileMenu = document.querySelector("[data-mobile-menu]");
+if (!mobileMenu) throw new Error("Missing [data-mobile-menu]"); // null-guard
 const threadGuide = document.querySelector(".thread-guide");
+if (!threadGuide) throw new Error("Missing .thread-guide"); // null-guard
 const threadGuideTrack = document.querySelector(".thread-guide-track");
+if (!threadGuideTrack) throw new Error("Missing .thread-guide-track"); // null-guard
 const threadGuideIndex = document.querySelector(".thread-guide-index");
+if (!threadGuideIndex) throw new Error("Missing .thread-guide-index"); // null-guard
 const threadGuideName = document.querySelector(".thread-guide-name");
+if (!threadGuideName) throw new Error("Missing .thread-guide-name"); // null-guard
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 const compactThreadGuide = window.matchMedia("(max-width: 620px)");
 const landmarks = [

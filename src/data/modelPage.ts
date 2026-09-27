@@ -11,32 +11,35 @@ import type { WikiPageContent } from "../components/wiki/wikiPageTypes";
 export const modelEvidencePage: WikiPageContent = {
   route: "/model",
   category: "dry-lab",
-  chapter: "Dry Lab / 01 of 03",
+  chapter: "Dry Lab / 01 of 04",
   eyebrow: "Model · Evidence manuscript",
-  title: "Model the evidence.",
-  lede: "Trace assumptions, parameters, predictions, and Wet Lab checks in one decision record.",
+  title: "Model",
+  lede: "Predictions return to evidence and Wet Lab decisions.",
   boundary:
-    "Awaiting team data, validated equations, model outputs, and experimental comparison.",
+    "The framework is project-specific; numerical results remain provisional until team data, validated equations, and experimental comparisons are supplied.",
   visual: "model-manuscript",
   visualLabel: "Question, prediction, validation, and decision",
   visualSteps: ["question", "model", "validation", "decision"],
   facts: [
     {
       label: "Question",
-      value: "Each model must change one named project decision.",
+      value:
+        "Which epitopes, construct, and measurement window should CirCure advance?",
     },
     {
       label: "Evidence",
       value:
-        "Inputs, assumptions, parameters, and provenance stay inspectable.",
+        "TNBC relevance, presentation, coverage, structure, and kinetics remain traceable.",
     },
     {
       label: "Check",
-      value: "Prediction and independent evidence remain in the same view.",
+      value:
+        "Every prediction is paired with an independent computational or Wet Lab check.",
     },
     {
       label: "Return",
-      value: "Every conclusion names the next Wet Lab action and confidence.",
+      value:
+        "Each conclusion returns a specific construct or experiment decision.",
     },
   ],
   sections: [
@@ -44,9 +47,10 @@ export const modelEvidencePage: WikiPageContent = {
       id: "model-judge-brief",
       index: "01",
       kicker: "30-second evidence path",
-      title: "Let the contribution appear before the derivation.",
+      navLabel: "Evidence path",
+      title: "Computational framework and decision scope.",
       summary:
-        "The final page should answer the Best Model questions immediately: what the method does, what it changes, how it is checked, and what another team can reuse.",
+        "The CirCure model connects candidate selection, construct assessment, and expression dynamics to explicit design decisions rather than presenting three unrelated analyses.",
       layout: "matrix",
       items: [
         {
@@ -79,9 +83,10 @@ export const modelEvidencePage: WikiPageContent = {
       id: "model-architecture",
       index: "02",
       kicker: "Model architecture",
-      title: "Three models, one return path.",
+      navLabel: "Architecture",
+      title: "An integrated Wet–Dry architecture.",
       summary:
-        "The architecture map exposes the interface between modules and keeps the Wet–Dry feedback path visible at every scale.",
+        "Three computational modules share versioned inputs and return their uncertainty to the same experimental programme: select candidates, compare constructs, then choose informative measurements.",
       layout: "steps",
       items: [
         {
@@ -114,9 +119,10 @@ export const modelEvidencePage: WikiPageContent = {
       id: "model-epitope",
       index: "03",
       kicker: "Model I · Epitope prioritisation",
-      title: "Keep the ranking decomposable and contestable.",
+      navLabel: "Epitope ranking",
+      title: "Multi-criteria epitope prioritisation.",
       summary:
-        "A final ranking is only useful when readers can trace every feature, source, weight, exclusion, uncertainty, and sensitivity-driven change.",
+        "Candidate TNBC epitopes are assessed through disease relevance, presentation potential, population coverage, redundancy, and safety while preserving every source, weight, exclusion, and sensitivity-driven change.",
       layout: "ledger",
       items: [
         {
@@ -143,9 +149,10 @@ export const modelEvidencePage: WikiPageContent = {
       id: "model-structure",
       index: "04",
       kicker: "Model II · circRNA structure",
-      title: "Compare constructs at the same scale.",
+      navLabel: "circRNA structure",
+      title: "Comparative assessment of circRNA constructs.",
       summary:
-        "Structure figures should support a choice between variants, not operate as isolated decorative predictions.",
+        "Alternative epitope orders, linkers, translation elements, and structural predictions are compared with matched views and shared metrics so that one versioned CirCure construct can advance.",
       layout: "matrix",
       items: [
         {
@@ -172,9 +179,10 @@ export const modelEvidencePage: WikiPageContent = {
       id: "model-dynamics",
       index: "05",
       kicker: "Model III · Expression dynamics",
-      title: "Fit, validate, then interpret.",
+      navLabel: "Expression dynamics",
+      title: "Expression dynamics and experimental windows.",
       summary:
-        "Observed points, model prediction, uncertainty, residuals, and the experimental consequence should appear as one evidence unit.",
+        "The smallest useful dynamic model links dose, time, expression, and observable Wet Lab readouts; fitted trajectories, uncertainty, residuals, and the next measurement remain one evidence unit.",
       layout: "steps",
       items: [
         {
@@ -201,9 +209,10 @@ export const modelEvidencePage: WikiPageContent = {
       id: "model-validation",
       index: "06",
       kicker: "Cross-model validation",
-      title: "Confidence is a record, not a badge.",
+      navLabel: "Validation",
+      title: "Validation and sensitivity analysis.",
       summary:
-        "Validation must identify what evidence was independent, what disagreed, how uncertainty changed, and whether the project decision survived.",
+        "Independent evidence, disagreement, threshold sensitivity, and uncertainty are reported against the CirCure decision they can reverse.",
       layout: "matrix",
       items: [
         {
@@ -230,9 +239,10 @@ export const modelEvidencePage: WikiPageContent = {
       id: "model-wet-dry",
       index: "07",
       kicker: "Wet–Dry iteration",
-      title: "A prediction matters when the next experiment changes.",
+      navLabel: "Wet–Dry loop",
+      title: "Wet–Dry feedback and design revision.",
       summary:
-        "Each round should connect measured input to a model revision, a decision, a Wet Lab response, and the evidence that starts the next round.",
+        "Each iteration connects a measured CirCure input to a revised assumption, candidate or construct decision, and the experiment that tests the revision.",
       layout: "timeline",
       items: [
         {
@@ -259,9 +269,10 @@ export const modelEvidencePage: WikiPageContent = {
       id: "model-limitations",
       index: "08",
       kicker: "Applicability and limits",
-      title: "Show exactly where the model should not decide.",
+      navLabel: "Scope & limits",
+      title: "Applicability, uncertainty, and limitations.",
       summary:
-        "Limitations become useful when they connect an assumption or data gap to an affected output, warning sign, and mitigation.",
+        "The supported sequence space, TNBC context, evidence sources, dose and time ranges, and failure conditions define where the model may inform—but not replace—scientific review.",
       layout: "ledger",
       items: [
         {
@@ -288,9 +299,10 @@ export const modelEvidencePage: WikiPageContent = {
       id: "model-reproducibility",
       index: "09",
       kicker: "Reproducibility",
-      title: "Let another team reproduce one published output.",
+      navLabel: "Reproducibility",
+      title: "Reproducibility and computational release.",
       summary:
-        "A durable model release joins raw and processed data, executable code, environment, expected output, tests, ownership, and references.",
+        "A durable CirCure release joins raw and processed candidate records, executable code, environments, expected outputs, tests, ownership, and cited methods.",
       layout: "matrix",
       items: [
         {

@@ -1,4 +1,4 @@
-import { WikiPage } from "../components/wiki/WikiPage";
+import { DryLabWikiPage } from "../components/wiki/DryLabWikiPage";
 import {
   SoftwareArchitectureFlow,
   SoftwareIterationTimeline,
@@ -6,20 +6,22 @@ import {
   SoftwareReleasePackage,
   SoftwareRunEvidence,
   SoftwareScopeContract,
-  SoftwareUserTaskBrief,
   SoftwareValidationPanel,
 } from "../components/wiki/features/SoftwareEvidenceFeatures";
+import { CirCureSoftwareWorkflowExplorer } from "../components/wiki/features/DryLabProjectExplorers";
 import { softwareEvidencePage } from "../data/softwarePage";
 import "../styles/software-page.css";
+import "../styles/dry-lab-calm.css";
+import "../styles/dry-lab-reading.css";
 
 export function Software() {
   return (
-    <WikiPage
+    <DryLabWikiPage
       content={softwareEvidencePage}
       heroVisual={null}
       pageClassName="wiki-page--software-hero"
       features={{
-        "software-user-task": <SoftwareUserTaskBrief />,
+        "software-user-task": <CirCureSoftwareWorkflowExplorer />,
         "software-scope": <SoftwareScopeContract />,
         "software-architecture": <SoftwareArchitectureFlow />,
         "software-workflow": <SoftwareRunEvidence />,

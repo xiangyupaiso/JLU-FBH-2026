@@ -1,0 +1,175 @@
+/* Typography follows the open sky and sea in the original full-stage artwork. */
+@font-face {
+  font-family: "Map Kalam";
+  src: url("../assets/home/map-type/Kalam-Regular.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+#why-tnbc {
+  --scene-hold: 125svh;
+}
+#why-tnbc .story-art--3 {
+  left: 50%;
+  top: 50%;
+  width: min(98%, calc((var(--scene-height) - 24px) * var(--art-aspect)));
+  container-type: inline-size;
+}
+.tnbc-map-copy {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  pointer-events: none;
+}
+.tnbc-map-ink-defs {
+  position: absolute;
+  pointer-events: none;
+}
+.home-story .tnbc-map-title,
+.home-story .tnbc-map-intro {
+  filter: var(--map-ink-filter);
+  mix-blend-mode: multiply;
+  font-synthesis: none;
+}
+.home-story .tnbc-map-title {
+  position: absolute;
+  top: 0.3%;
+  left: 48%;
+  width: 76%;
+  translate: -50% 0;
+  rotate: -1.5deg;
+  margin: 0;
+  color: #945e6d;
+  text-align: center;
+  font:
+    400 clamp(23px, 2.65cqw, 43px)/1.3 "Map Kalam",
+    "Bradley Hand",
+    cursive;
+  letter-spacing: 0.005em;
+}
+.home-story .tnbc-map-intro {
+  position: absolute;
+  left: 55%;
+  top: 53.5%;
+  width: 31%;
+  translate: -50% 0;
+  rotate: -2deg;
+  margin: 0;
+  color: #667893;
+  text-align: center;
+  font:
+    400 clamp(15px, 1.7cqw, 28px)/1.22 "Map Kalam",
+    "Bradley Hand",
+    cursive;
+}
+.tnbc-map-source {
+  position: absolute;
+  right: 4%;
+  bottom: 1%;
+  color: #806772;
+  font-size: 10px;
+  text-decoration: none;
+  text-underline-offset: 4px;
+  pointer-events: auto;
+}
+.tnbc-map-source:hover {
+  text-decoration: underline;
+}
+.tnbc-map-marker {
+  z-index: 3;
+  overflow: hidden;
+  transform-origin: 50% 90%;
+}
+#why-tnbc .story-map-piece--wave {
+  animation-name: tnbc-sea-swell;
+  animation-duration: calc(4.8s + var(--piece-index) * 0.12s);
+}
+#why-tnbc .story-map-piece--cloud {
+  animation-name: tnbc-cloud-drift;
+  animation-duration: calc(13s + var(--piece-index) * 0.8s);
+}
+#why-tnbc [data-map-piece="boat-smoke"] {
+  animation-name: tnbc-smoke-drift;
+  animation-duration: 6s;
+}
+#why-tnbc .story-map-piece--boat {
+  animation-name: tnbc-boat-sway;
+  animation-duration: 5.8s;
+}
+@keyframes tnbc-sea-swell {
+  0%,
+  100% {
+    transform: translate(-15%, 14%) rotate(-2deg) scale(1.24, 1.1);
+  }
+  50% {
+    transform: translate(15%, -24%) rotate(2deg) scale(1.4, 1.55);
+  }
+}
+@keyframes tnbc-cloud-drift {
+  0%,
+  100% {
+    transform: translate(-30%, 9%) scale(1.35);
+  }
+  50% {
+    transform: translate(30%, -12%) scale(1.45);
+  }
+}
+@keyframes tnbc-smoke-drift {
+  0%,
+  100% {
+    transform: translate(-10%, 0) scale(1.05);
+  }
+  50% {
+    transform: translate(16%, -22%) scale(1.18);
+  }
+}
+@keyframes tnbc-boat-sway {
+  0%,
+  100% {
+    transform: translate(-6%, 5%) rotate(-3deg);
+  }
+  50% {
+    transform: translate(7%, -9%) rotate(3deg);
+  }
+}
+@media (max-width: 800px) and (orientation: portrait) {
+  #why-tnbc {
+    --scene-hold: 100svh;
+  }
+  .home-story .tnbc-map-title {
+    top: -35%;
+    width: 80%;
+    font-size: clamp(23px, 5.4vw, 34px);
+    /* Chromium clips an SVG-filtered label above the illustration's bounds. */
+    filter: none;
+  }
+  .tnbc-map-title span {
+    display: block;
+  }
+  .home-story .tnbc-map-intro {
+    top: 110%;
+    left: 50%;
+    width: 90%;
+    font-size: 18px;
+  }
+  .tnbc-map-source {
+    bottom: -47%;
+    right: 8%;
+  }
+}
+@media (max-height: 500px) and (orientation: landscape) {
+  .home-story .tnbc-map-title {
+    font-size: 20px;
+  }
+  .home-story .tnbc-map-intro {
+    font-size: 13px;
+  }
+  .tnbc-map-source {
+    font-size: 9px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  #why-tnbc .story-map-piece {
+    animation: none;
+  }
+}
