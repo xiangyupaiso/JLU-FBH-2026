@@ -14,6 +14,9 @@ export { SdgInteractionHeatmap } from "./SdgInteractionHeatmap";
 export { SdgBoundaryMatrix } from "./SdgBoundaryMatrix";
 export { SdgDimensionChord } from "./SdgDimensionChord";
 export { PdfToolList } from "./PdfToolList";
-export { SustainabilityPdfPreview } from "./SustainabilityPdfPreview";
+export {
+  SustainabilityPdfPreview,
+  type SustainabilityPdfManual,
+} from "./SustainabilityPdfPreview";
 
 

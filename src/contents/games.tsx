@@ -13,10 +13,8 @@ import "../styles/route-palette-drylab.css";
  *
  * Runs on the shared Dry Lab reader-route template with the module palette, so
  * the hero, mat, paper frame, section rhythm, closing prompt and footer are the
- * same components as Model / Software / Hardware. `hideOutline` is the Library
- * layout variant carried over from `/protocol`: this record has no table of
- * contents in either build, so it renders without the TOC card and its reader
- * frame takes the released width.
+ * same components as Model / Software / Hardware. `hideOutline` renders without
+ * the TOC card and lets its reader frame take the released width.
  */
 export function Games() {
   return (

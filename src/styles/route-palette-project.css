@@ -22,4 +22,10 @@
 
   /* ② 模块专属装饰素材（正文面板的植物藤蔓边框） */
   --route-frame-image: url("../assets/wiki/project.png");
+
+  /* ③ 标题与马克笔专属主题配色（深浅分明的双色层级设计） */
+  --route-heading-ink: #243d2c;      /* 大标题 H2：深墨冷森绿，沉稳厚重 */
+  --route-marker-bg: #c4c7be;        /* 大标题马克笔：柔和灰鼠绿底涂 */
+  --route-subheading-ink: #84382b;   /* 小标题 H3：暖陶土褐红，与墨绿形成自然界赤陶与针叶的鲜明撞色，不相近且典雅克制 */
+  --route-watermark: rgba(36, 61, 44, 0.12);
 }

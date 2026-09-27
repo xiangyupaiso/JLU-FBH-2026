@@ -79,7 +79,7 @@ interface WikiRoutePageProps {
   enableWideFlow?: boolean;
   /**
    * Library layout variant: render without the TOC card and let the reader frame
-   * take the released width. Used by `/games` and the `/protocol` library.
+   * take the released width. Used by `/games`.
    */
   hideOutline?: boolean;
 }
@@ -199,6 +199,23 @@ function ItemCollection({ section }: { section: WikiSection }) {
         );
       })}
     </div>
+  );
+}
+
+function renderSubheadingTitle(title: string) {
+  const match = title.match(/[:：]/);
+  if (!match || match.index === undefined) {
+    return title;
+  }
+  const lead = title.slice(0, match.index + 1);
+  const sub = title.slice(match.index + 1).trim();
+  return (
+    <>
+      <span className="wiki-subheading-line wiki-subheading-line--lead">{lead}</span>
+      {sub ? (
+        <span className="wiki-subheading-line wiki-subheading-line--sub">{sub}</span>
+      ) : null}
+    </>
   );
 }
 
@@ -355,10 +372,7 @@ function RouteBlock({
           data-wiki-outline-parent={sectionId}
           data-wiki-reveal
         >
-          {block.kicker ? (
-            <span className="wiki-subheading__kicker">{block.kicker}</span>
-          ) : null}
-          <span className="wiki-subheading__title">{block.title}</span>
+          <span className="wiki-subheading__title">{renderSubheadingTitle(block.title)}</span>
         </h3>
       );
     case "feature":
@@ -427,6 +441,31 @@ function RouteBlock({
   }
 }
 
+function renderSectionTitle(title: string) {
+  const match = title.match(/[:：]/);
+  if (!match || match.index === undefined) {
+    return (
+      <span className="wiki-heading-line">
+        <span className="wiki-heading-marker">{title}</span>
+      </span>
+    );
+  }
+  const lead = title.slice(0, match.index + 1);
+  const sub = title.slice(match.index + 1).trim();
+  return (
+    <>
+      <span className="wiki-heading-line wiki-heading-line--lead">
+        <span className="wiki-heading-marker wiki-heading-marker--lead">{lead}</span>
+      </span>
+      {sub ? (
+        <span className="wiki-heading-line wiki-heading-line--sub">
+          <span className="wiki-heading-marker wiki-heading-marker--sub">{sub}</span>
+        </span>
+      ) : null}
+    </>
+  );
+}
+
 function RouteSection({
   section,
   feature,
@@ -454,25 +493,12 @@ function RouteSection({
         data-wiki-reveal
       >
         {section.hideSectionNumber ? null : (
-          <span className="wiki-section-number">
-            {Number.parseInt(section.index, 10)}
+          <span className="wiki-section-number" aria-hidden="true">
+            {String(Number.parseInt(section.index, 10)).padStart(2, "0")}
           </span>
         )}
-        <div>
-          {/*
-           * The Wet Lab manuscript heading hides the section kicker because
-           * its kickers restated the title. The Project copy carries distinct
-           * section labels here, so the kicker uses its existing slot (the
-           * same `.wiki-kicker` line the non-manuscript pages render) rather
-           * than dropping the string.
-           */}
-          {section.kicker ? (
-            <p className="wiki-kicker">{section.kicker}</p>
-          ) : null}
-          <h2>{section.title}</h2>
-          {section.summary ? (
-            <p className="wiki-section__summary">{section.summary}</p>
-          ) : null}
+        <div className="wiki-section__heading-body">
+          <h2>{renderSectionTitle(section.title)}</h2>
         </div>
       </header>
 

@@ -19,7 +19,6 @@ import {
   Measurement,
   Model,
   AlternativePlatform,
-  Protocol,
   Software,
   Sustainability,
 } from "./contents";
@@ -145,13 +144,6 @@ const Pages: (Page | Folder)[] = [
         path: "/safety-and-security",
         component: SafetyAndSecurity,
         lead: "Detail the safety and security considerations of your project, adressing potential risks and outlining the measures taken to mitigate them.",
-      },
-      {
-        name: "Protocol",
-        title: "Protocol Library",
-        path: "/protocol",
-        component: Protocol,
-        lead: "Browse, preview, and download the team's Wet Lab protocol manuals.",
       },
     ],
   },

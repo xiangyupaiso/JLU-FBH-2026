@@ -13,7 +13,6 @@ export function HeterogeneityField() {
   return (
     <figure className="feature-panel project-heterogeneity">
       <header>
-        <span>Problem field</span>
         <strong>One clinical name, different antigen landscapes</strong>
       </header>
       <div aria-label="Conceptual heterogeneous tumor field">
@@ -37,7 +36,6 @@ export function MechanismRoute() {
   return (
     <figure className="feature-panel project-mechanism">
       <header>
-        <span>Proposed route</span>
         <strong>Five transitions, five separate claims</strong>
       </header>
       <div>
@@ -59,7 +57,6 @@ export function DecisionLoop() {
   return (
     <div className="feature-panel project-decision-loop">
       <header>
-        <span>Version trace</span>
         <strong>Build only after the previous decision is legible</strong>
       </header>
       <div>

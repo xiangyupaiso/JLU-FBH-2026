@@ -179,9 +179,9 @@ html.has-route-reader-scroll {
   max-width: 880px;
   margin: 0 auto;
   color: var(--ink);
-  font-family: var(--font-editorial);
+  font-family: var(--font-heading);
   font-size: clamp(58px, 7.2vw, 108px);
-  font-weight: 400;
+  font-weight: 600;
   line-height: 0.98;
 }
 
@@ -189,7 +189,7 @@ html.has-route-reader-scroll {
   max-width: 720px;
   margin: 28px auto 0;
   color: var(--muted);
-  font-family: var(--font-editorial);
+  font-family: var(--font-body);
   font-size: clamp(18px, 1.6vw, 24px);
   line-height: 1.48;
 }
@@ -788,9 +788,9 @@ html.has-route-reader-scroll {
 
 .wiki-page--route .wiki-section {
   min-height: 0;
-  margin-top: clamp(56px, 6vw, 72px);
-  padding: clamp(56px, 6vw, 72px) 0 0;
-  border-top: 1px solid var(--route-line-strong);
+  margin-top: clamp(48px, 5.5vw, 68px);
+  padding: clamp(36px, 4.5vw, 52px) 0 0;
+  border-top: 0;
   background: transparent;
 }
 
@@ -800,34 +800,180 @@ html.has-route-reader-scroll {
   border-top: 0;
 }
 
-.wiki-page--route .wiki-section__heading {
-  grid-template-columns: 52px minmax(0, 1fr);
-  gap: 18px;
+/* ==========================================================================
+   Scheme D + Highlighter Marker Effect (马克笔高亮手绘涂刷效果)
+   ========================================================================== */
+.wiki-page--route .wiki-section__heading,
+.wiki-page--route.wiki-page--manuscript .wiki-section__heading,
+.wiki-page.wiki-page--manuscript .wiki-section__heading {
+  position: relative;
+  display: block;
+  grid-template-columns: none;
+  gap: 0;
+  margin: 0 0 clamp(20px, 2.5vw, 32px);
+  padding: clamp(14px, 1.8vw, 22px) 0 0;
+  border: 0;
+  overflow: visible;
 }
 
+.wiki-page--route .wiki-section__heading--unnumbered,
+.wiki-page.wiki-page--manuscript .wiki-section__heading--unnumbered {
+  padding-top: clamp(12px, 1.5vw, 18px);
+}
+
+/* 彻底删除所有顶部引导线、移动圆点与底部生硬线条 */
+.wiki-page--route .wiki-section__heading::before,
+.wiki-page--route .wiki-section__heading::after,
+.wiki-page.wiki-page--manuscript .wiki-section__heading::before,
+.wiki-page.wiki-page--manuscript .wiki-section__heading::after,
+.wiki-page--route .wiki-section__heading > div::after,
+.wiki-page--route .wiki-section__heading-body::after,
+.wiki-page.wiki-page--manuscript .wiki-section__heading > div::after,
+.wiki-page--route .wiki-section[data-wiki-active] .wiki-section__heading > div::after {
+  display: none !important;
+  content: none !important;
+}
+
+/* 适度比例半透数字水印 (叠印在标题左后方背景层，尺寸与标题紧凑平衡) */
 .wiki-page--route .wiki-section-number,
-.wiki-page--route .wiki-section__heading > .wiki-section-number {
-  color: var(--route-accent);
-  font-family: var(--font-mono);
+.wiki-page--route .wiki-section__heading > .wiki-section-number,
+.wiki-page.wiki-page--manuscript .wiki-section__heading > .wiki-section-number {
+  position: absolute;
+  top: -8px;
+  left: -4px;
+  display: block;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+  font-family: var(--font-sans), sans-serif;
+  font-size: clamp(48px, 5.2vw, 68px);
+  font-weight: 900;
+  line-height: 0.85;
+  letter-spacing: -0.06em;
+  color: var(--route-watermark, rgba(51, 77, 59, 0.12));
+  opacity: 0.14;
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+  transition: opacity var(--duration-fast, 220ms) var(--ease-out, ease-out);
 }
 
-/* Section kicker and note label keep their existing slots (see the format
-   notes in WikiRoutePage.tsx) so no old copy string is dropped. The manuscript
-   editorial sheet paints them with its own `--wet-accent`; these selectors are
-   matched to that specificity and re-point them at the route palette. */
-.wiki-page.wiki-page--route.wiki-page--manuscript
-  .wiki-section__heading
-  .wiki-kicker {
-  margin: 0 0 12px;
-  color: var(--route-accent);
+.wiki-page--route .wiki-section:hover .wiki-section-number,
+.wiki-page--route .wiki-section[data-wiki-active] .wiki-section-number,
+.wiki-page.wiki-page--manuscript .wiki-section:hover .wiki-section-number,
+.wiki-page.wiki-page--manuscript .wiki-section[data-wiki-active] .wiki-section-number {
+  opacity: 0.20;
 }
 
-.wiki-page.wiki-page--route.wiki-page--manuscript .wiki-boundary > span {
-  color: var(--route-accent);
+/* 标题主体层，浮于水印之上 */
+.wiki-page--route .wiki-section__heading-body,
+.wiki-page--route .wiki-section__heading > div,
+.wiki-page.wiki-page--manuscript .wiki-section__heading > div {
+  position: relative;
+  z-index: 1;
+  padding-left: 2px;
 }
 
 .wiki-page--route .wiki-section__heading h2,
+.wiki-page--route.wiki-page--manuscript .wiki-section__heading h2,
+.wiki-page.wiki-page--manuscript .wiki-section__heading h2 {
+  max-width: 880px;
+  margin: 0;
+  color: var(--route-heading-ink, #2e4334);
+  font-family: var(--font-sans), -apple-system, BlinkMacSystemFont, sans-serif !important;
+  font-size: clamp(21px, 2.2vw, 25px);
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  line-height: 1.35;
+  text-wrap: balance;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+}
+
+/* 标题行级容器 (冒号自动分行时 lead 与 sub 各占一行) */
+.wiki-heading-line {
+  display: block;
+}
+
+.wiki-heading-line--sub {
+  margin-top: 0;
+}
+
+/* 子标题行级容器 (若含冒号同样另起一行) */
+.wiki-subheading-line {
+  display: block;
+}
+
+.wiki-subheading-line--sub {
+  margin-top: 4px;
+}
+
+/* 马克笔手绘涂刷高亮效果 (完全复刻参考图) */
+.wiki-heading-marker {
+  position: relative;
+  display: inline;
+  background: linear-gradient(
+    to bottom,
+    transparent 52%,
+    var(--route-marker-bg, #c4c7be) 52%,
+    var(--route-marker-bg, #c4c7be) 94%,
+    transparent 94%
+  );
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+  padding: 0.04em 0.22em;
+  border-radius: 2px;
+}
+
+.wiki-heading-marker--lead {
+  font-size: clamp(21px, 2.2vw, 25px);
+  font-weight: 750;
+}
+
+.wiki-heading-marker--sub {
+  font-size: clamp(18px, 1.9vw, 22px);
+  font-weight: 600;
+  line-height: 1.45;
+}
+
+.wiki-page--route .wiki-subheading,
+.wiki-page--route.wiki-page--manuscript .wiki-subheading,
+.wiki-page.wiki-page--manuscript .wiki-subheading {
+  position: relative;
+  padding-left: 0;
+  margin: clamp(24px, 3vw, 36px) 0 clamp(10px, 1.2vw, 16px);
+  border: 0;
+}
+
+.wiki-page--route .wiki-subheading::before,
+.wiki-page--route.wiki-page--manuscript .wiki-subheading::before,
+.wiki-page.wiki-page--manuscript .wiki-subheading::before {
+  display: none !important;
+  content: none !important;
+}
+
+.wiki-page--route .wiki-subheading__kicker,
+.wiki-page--route.wiki-page--manuscript .wiki-subheading__kicker,
+.wiki-page.wiki-page--manuscript .wiki-subheading__kicker {
+  display: none !important;
+  content: none !important;
+}
+
 .wiki-page--route .wiki-subheading__title,
+.wiki-page--route.wiki-page--manuscript .wiki-subheading__title,
+.wiki-page.wiki-page--manuscript .wiki-subheading__title {
+  font-family: var(--font-sans), -apple-system, BlinkMacSystemFont, sans-serif !important;
+  font-size: clamp(17px, 1.8vw, 20px);
+  font-weight: 700;
+  color: var(--route-subheading-ink, #84382b) !important;
+  letter-spacing: -0.01em;
+  line-height: 1.35;
+}
+
 .wiki-page--route .wiki-manuscript-list__toggle button > span:nth-child(2) {
   color: var(--route-ink);
   letter-spacing: 0;
@@ -1171,25 +1317,25 @@ html.has-route-reader-scroll {
 .wiki-page--route .wiki-next.wiki-next--record h2 {
   max-width: 760px;
   color: var(--ink);
-  font-family: var(--font-editorial);
+  font-family: var(--font-heading);
   font-size: clamp(44px, 6vw, 76px);
-  font-weight: 400;
-  letter-spacing: -0.05em;
+  font-weight: 600;
+  letter-spacing: -0.01em;
   line-height: 0.96;
 }
 
 .wiki-page--route .wiki-next.wiki-next--record p:not(.wiki-kicker) {
   margin: 24px 0 0;
   color: var(--muted);
-  font-family: var(--font-editorial);
+  font-family: var(--font-body);
   font-size: 18px;
   line-height: 1.5;
 }
 
 .wiki-page--route .wiki-next.wiki-next--record p strong {
   color: var(--ink);
-  font-family: var(--font-editorial);
-  font-weight: 500;
+  font-family: var(--font-body);
+  font-weight: 600;
 }
 
 .wiki-page--route
@@ -1240,9 +1386,9 @@ html.has-route-reader-scroll {
   > .wiki-next__action
   strong.wiki-next__label--long {
   color: var(--route-ink);
-  font-family: var(--font-editorial);
+  font-family: var(--font-heading);
   font-size: clamp(25px, 2.4vw, 34px);
-  font-weight: 400;
+  font-weight: 600;
   line-height: 1.08;
 }
 
@@ -1460,8 +1606,9 @@ html.has-route-reader-scroll {
   }
 
   .wiki-page--route .wiki-section__heading {
-    grid-template-columns: 38px minmax(0, 1fr);
-    gap: 10px;
+    display: block;
+    grid-template-columns: none;
+    gap: 0;
   }
 
   /* Empty figure slots and matrices keep their shape on a phone: the

@@ -671,14 +671,14 @@
 }
 
 .wiki-page.wiki-page--manuscript .wiki-section__heading h2 {
-  max-width: 740px;
+  max-width: 880px;
   margin: 0;
-  color: var(--wet-ink);
-  font-family: var(--font-editorial);
-  font-size: clamp(42px, 4.5vw, 62px);
-  font-weight: 400;
-  letter-spacing: -0.04em;
-  line-height: 0.98;
+  color: var(--route-heading-ink, var(--wet-ink));
+  font-family: var(--font-sans), -apple-system, BlinkMacSystemFont, sans-serif !important;
+  font-size: clamp(21px, 2.2vw, 25px);
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  line-height: 1.35;
   text-wrap: balance;
 }
 
@@ -1969,40 +1969,10 @@
   border-top-color: transparent;
 }
 
-.wiki-page.wiki-page--manuscript .wiki-section__heading::before {
-  position: absolute;
-  top: -1px;
-  right: 0;
-  left: 0;
-  display: block;
-  height: 1px;
-  background: linear-gradient(
-    90deg,
-    var(--wet-accent),
-    color-mix(in srgb, var(--wet-accent) 40%, var(--wet-line-strong)) 36%,
-    var(--wet-line-strong)
-  );
-  content: "";
-  transform: scaleX(var(--wiki-section-reveal));
-  transform-origin: left center;
-  will-change: transform;
-}
-
+.wiki-page.wiki-page--manuscript .wiki-section__heading::before,
 .wiki-page.wiki-page--manuscript .wiki-section__heading::after {
-  position: absolute;
-  top: -5px;
-  left: calc(var(--wiki-section-reveal) * 100%);
-  display: block;
-  width: 9px;
-  height: 9px;
-  border: 2px solid var(--wet-paper-light);
-  border-radius: 50%;
-  background: var(--wet-accent);
-  box-shadow: 0 0 0 1px color-mix(in srgb, var(--wet-accent) 62%, transparent);
-  content: "";
-  opacity: var(--wiki-section-reveal);
-  transform: translateX(-50%);
-  will-change: left, opacity;
+  display: none !important;
+  content: none !important;
 }
 
 .wiki-page.wiki-page--manuscript .wiki-section__heading > span,
@@ -2511,7 +2481,7 @@
   }
 
   .wiki-page.wiki-page--manuscript .wiki-section__heading h2 {
-    font-size: clamp(40px, 13vw, 58px);
+    font-size: clamp(20px, 5.5vw, 24px);
   }
 
   .wiki-page.wiki-page--manuscript .wiki-manuscript-list article {

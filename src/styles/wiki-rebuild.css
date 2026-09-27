@@ -131,11 +131,11 @@
 .wiki-hero h1 {
   max-width: 740px;
   margin: 0;
-  font-family: var(--font-editorial);
-  font-size: clamp(60px, 7vw, 108px);
-  font-weight: 400;
-  letter-spacing: -0.064em;
-  line-height: 0.88;
+  font-family: var(--font-heading);
+  font-size: clamp(56px, 6.8vw, 100px);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 0.95;
   text-wrap: balance;
 }
 
@@ -143,9 +143,9 @@
   max-width: 680px;
   margin: 32px 0 0;
   color: var(--wiki-deep);
-  font-family: var(--font-editorial);
-  font-size: clamp(19px, 1.6vw, 25px);
-  line-height: 1.42;
+  font-family: var(--font-body);
+  font-size: clamp(18px, 1.55vw, 23px);
+  line-height: 1.5;
 }
 
 .wiki-hero__boundary {
@@ -401,55 +401,52 @@
 }
 
 .wiki-section__heading {
-  display: grid;
-  grid-template-columns: 52px minmax(0, 1fr);
-  gap: 18px;
-  padding-top: 20px;
-  border-top: 1px solid var(--ink);
-}
-
-.wiki-section__heading > div::after {
+  position: relative;
   display: block;
-  width: 42px;
-  height: 2px;
-  margin-top: 14px;
-  background: var(--wiki-accent);
-  content: "";
-  opacity: 0.18;
-  transform: scaleX(0.45);
-  transform-origin: left;
-  transition-property: opacity, transform;
-  transition-duration: 220ms;
-  transition-timing-function: var(--ease-out);
+  padding-top: 32px;
+  border-top: 0;
 }
 
+.wiki-section__heading > div::after,
 .wiki-section[data-wiki-active] .wiki-section__heading > div::after {
-  opacity: 0.8;
-  transform: scaleX(1);
+  display: none !important;
+  content: none !important;
 }
 
 .wiki-section__heading > span {
-  padding-top: 3px;
-  color: var(--wiki-accent);
+  position: absolute;
+  top: -16px;
+  left: -8px;
+  display: block;
+  font-family: var(--font-heading);
+  font-size: clamp(86px, 10vw, 136px);
+  font-weight: 800;
+  line-height: 0.82;
+  letter-spacing: -0.06em;
+  color: var(--wiki-accent, #d784b3);
+  opacity: 0.14;
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
 }
 
 .wiki-section__heading h2 {
   max-width: 780px;
   margin: 0;
-  font-family: var(--font-editorial);
-  font-size: clamp(40px, 4.6vw, 62px);
-  font-weight: 400;
-  letter-spacing: -0.046em;
-  line-height: 0.98;
+  font-family: var(--font-heading);
+  font-size: clamp(38px, 4.4vw, 58px);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.05;
   text-wrap: balance;
 }
 
 .wiki-section__summary {
   margin: 23px 0 0;
   color: var(--wiki-deep);
-  font-family: var(--font-editorial);
-  font-size: clamp(18px, 1.65vw, 23px);
-  line-height: 1.48;
+  font-family: var(--font-body);
+  font-size: clamp(17px, 1.55vw, 21px);
+  line-height: 1.55;
 }
 
 .wiki-prose {
@@ -460,8 +457,8 @@
 
 .wiki-prose p {
   margin: 0;
-  font-family: var(--font-editorial);
-  font-size: 18px;
+  font-family: var(--font-body);
+  font-size: 17px;
   line-height: 1.72;
 }
 
@@ -528,11 +525,11 @@
 
 .wiki-item-grid h3 {
   margin: 44px 0 12px;
-  font-family: var(--font-editorial);
+  font-family: var(--font-heading);
   font-size: clamp(24px, 2.3vw, 32px);
-  font-weight: 400;
-  letter-spacing: -0.024em;
-  line-height: 1.08;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.12;
 }
 
 .wiki-item-grid p,
@@ -540,6 +537,7 @@
 .wiki-mini-timeline p {
   margin: 0;
   color: var(--muted);
+  font-family: var(--font-body);
   font-size: 15px;
   line-height: 1.58;
 }
@@ -567,9 +565,9 @@
 
 .wiki-ledger h3 {
   margin: 0;
-  font-family: var(--font-editorial);
+  font-family: var(--font-heading);
   font-size: 22px;
-  font-weight: 400;
+  font-weight: 600;
   line-height: 1.14;
 }
 
@@ -619,10 +617,10 @@
 
 .wiki-mini-timeline h3 {
   margin: 14px 0 10px;
-  font-family: var(--font-editorial);
+  font-family: var(--font-heading);
   font-size: 25px;
-  font-weight: 400;
-  line-height: 1.12;
+  font-weight: 600;
+  line-height: 1.15;
 }
 
 .wiki-boundary {
@@ -641,7 +639,7 @@
 
 .wiki-boundary p {
   margin: 0;
-  font-family: var(--font-editorial);
+  font-family: var(--font-body);
   font-size: 17px;
   line-height: 1.55;
 }
@@ -665,11 +663,11 @@
 .wiki-next h2 {
   max-width: 850px;
   margin: 0;
-  font-family: var(--font-editorial);
+  font-family: var(--font-heading);
   font-size: clamp(44px, 6vw, 82px);
-  font-weight: 400;
-  letter-spacing: -0.054em;
-  line-height: 0.94;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 0.95;
 }
 
 .wiki-next p:not(.wiki-kicker) {
@@ -1179,12 +1177,11 @@
 
 .wiki-page:not(.wiki-page--human-practices) .wiki-hero h1 {
   max-width: 920px;
-  font-family: var(--font-display);
-  font-variation-settings: "opsz" 72;
+  font-family: var(--font-heading);
   font-size: clamp(48px, 5.6vw, 80px);
-  font-weight: 820;
-  letter-spacing: -0.045em;
-  line-height: 0.95;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 0.98;
 }
 
 .wiki-page:not(.wiki-page--human-practices) .wiki-chapter {
@@ -1194,10 +1191,9 @@
 .wiki-page:not(.wiki-page--human-practices) .wiki-hero__lede {
   max-width: 700px;
   margin-top: 20px;
-  font-family: var(--font-editorial);
-  font-variation-settings: "opsz" 48;
+  font-family: var(--font-body);
   font-size: clamp(17px, 1.4vw, 21px);
-  line-height: 1.48;
+  line-height: 1.5;
 }
 
 .wiki-page:not(.wiki-page--human-practices) .wiki-hero__boundary {
@@ -1215,10 +1211,10 @@
 
 .wiki-page:not(.wiki-page--human-practices) .wiki-hero__boundary p {
   color: var(--wiki-deep);
-  font-family: var(--font-editorial);
+  font-family: var(--font-body);
   font-size: clamp(17px, 1.45vw, 22px);
-  font-weight: 620;
-  line-height: 1.4;
+  font-weight: 500;
+  line-height: 1.5;
 }
 
 .wiki-page:not(.wiki-page--human-practices) .wiki-begin {
@@ -2074,27 +2070,16 @@
 
 .wiki-subheading {
   position: relative;
-  padding-left: 18px;
+  padding-left: 0;
 }
 
 .wiki-subheading::before {
-  position: absolute;
-  top: 0.38em;
-  bottom: 0.38em;
-  left: 0;
-  width: 2px;
-  border-radius: 2px;
-  background: var(--wiki-accent);
-  content: "";
-  opacity: 0.72;
+  display: none !important;
+  content: none !important;
 }
 
 .wiki-subheading__kicker {
-  color: var(--wiki-accent);
-  font-family: var(--font-mono);
-  font-size: 10px;
-  font-weight: 500;
-  letter-spacing: 0.08em;
+  display: none !important;
 }
 
 .wiki-subheading__title {
@@ -2103,24 +2088,23 @@
 
 /* Fraunces is the CirCure page voice; Newsreader remains the reading voice. */
 .wiki-page.wiki-page--unified-disclosures .wiki-hero h1 {
-  font-family: var(--font-display);
-  font-variation-settings: "opsz" 72;
-  font-weight: 560;
-  letter-spacing: -0.055em;
-  line-height: 0.92;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 0.95;
 }
 
 .wiki-page.wiki-page--unified-disclosures .wiki-hero__lede,
 .wiki-page.wiki-page--unified-disclosures .wiki-section__summary {
-  font-family: var(--font-editorial);
-  font-variation-settings: "opsz" 48;
+  font-family: var(--font-body);
 }
 
 .wiki-page.wiki-page--unified-disclosures .wiki-section__heading h2,
 .wiki-page.wiki-page--unified-disclosures .wiki-item-grid h3,
 .wiki-page.wiki-page--unified-disclosures .wiki-ledger h3,
 .wiki-page.wiki-page--unified-disclosures .wiki-mini-timeline h3 {
-  font-variation-settings: "opsz" 48;
+  font-family: var(--font-heading);
+  font-weight: 600;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -2140,7 +2124,7 @@
   background: rgba(23, 63, 120, 0.06);
 }
 .wiki-callout__label {
-  font-family: var(--font-sans);
+  font-family: var(--font-heading);
   font-size: 12px;
   font-weight: 600;
   letter-spacing: var(--tracking-label);
@@ -2149,7 +2133,7 @@
 }
 .wiki-callout p {
   margin: 0;
-  font-family: var(--font-editorial);
+  font-family: var(--font-body);
   font-size: 17px;
   line-height: 1.55;
   color: var(--ink);
@@ -2177,7 +2161,7 @@
   margin: 56px 0 0 70px;
 }
 .wiki-subheading__kicker {
-  font-family: var(--font-sans);
+  font-family: var(--font-heading);
   font-size: 12px;
   font-weight: 600;
   letter-spacing: var(--tracking-label);
@@ -2185,8 +2169,9 @@
   color: var(--brand-navy);
 }
 .wiki-subheading__title {
-  font-family: var(--font-editorial);
+  font-family: var(--font-heading);
   font-size: 28px;
+  font-weight: 600;
   line-height: 1.2;
   color: var(--ink);
 }
@@ -2200,20 +2185,20 @@
 }
 .wiki-epigraph blockquote {
   margin: 0;
-  font-family: var(--font-editorial);
-  font-size: 22px;
-  line-height: 1.4;
+  font-family: var(--font-body);
+  font-size: 20px;
+  line-height: 1.5;
   color: var(--brand-navy);
 }
 .wiki-epigraph__zh {
   margin: 12px 0 0;
-  font-family: var(--font-editorial);
+  font-family: var(--font-body);
   font-size: 15px;
   color: var(--muted);
 }
 .wiki-epigraph figcaption {
   margin-top: 12px;
-  font-family: var(--font-editorial);
+  font-family: var(--font-body);
   font-size: 14px;
   color: var(--muted);
 }

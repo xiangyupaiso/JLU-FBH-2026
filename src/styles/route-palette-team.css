@@ -5,6 +5,10 @@
   --route-soft: #fee9b5;
   --route-base: #fffbd0;
   --route-frame-image: url("../assets/wiki/team.png");
+  --route-heading-ink: #3e2d14;      /* 大标题 H2：深古铜黑褐，庄重沉稳 */
+  --route-marker-bg: #f8ecbe;        /* 大标题马克笔：浅金麦香底涂 */
+  --route-subheading-ink: #762338;   /* 小标题 H3：深勃艮第酒红，古铜金与茜红相映，学术荣誉与典范感鲜明 */
+  --route-watermark: rgba(62, 45, 20, 0.12);
 }
 
 .wiki-page--team .team-inspirations { margin: 48px 0 0; padding: 24px; border: 1px solid color-mix(in srgb, var(--route-accent) 24%, transparent); border-radius: 18px; background: color-mix(in srgb, var(--route-soft) 62%, transparent); }

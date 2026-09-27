@@ -1,12 +1,12 @@
-/* CirCure design tokens — Humanist Scientific Editorial.
+/* CirCure design tokens — Friendly Scientific Editorial.
    Loaded AFTER bootstrap.min.css so it overrides Bootstrap body/typography defaults.
-   Fonts are self-hosted in public/fonts/ and remain same-origin at deploy time. */
+   Fonts are self-hosted in src/assets/fonts/ and remain same-origin at deploy time. */
 
 @font-face {
   font-family: "Fraunces";
   src: url("../assets/fonts/fraunces-variable.woff2") format("woff2");
   font-style: normal;
-  font-weight: 400 700;
+  font-weight: 100 900;
   font-display: swap;
 }
 
@@ -14,7 +14,23 @@
   font-family: "Newsreader";
   src: url("../assets/fonts/newsreader-variable.woff2") format("woff2");
   font-style: normal;
-  font-weight: 400 700;
+  font-weight: 200 800;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Fredoka";
+  src: url("../assets/fonts/fredoka-variable.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Lexend";
+  src: url("../assets/fonts/lexend-variable.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 100 900;
   font-display: swap;
 }
 
@@ -44,19 +60,24 @@
   --muted: rgba(27, 23, 25, 0.68);
   --line: rgba(27, 23, 25, 0.18);
   --on-navy: rgba(252, 248, 241, 0.22);
-  --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
-  --font-display: "Fraunces", "Avenir Next", Avenir, "Helvetica Neue", Arial, sans-serif;
-  --font-editorial: "Newsreader", "Iowan Old Style", Baskerville, Georgia, "Times New Roman", serif;
+
+  /* 主字体族配置：标题使用 Fraunces 高端学术衬线体，正文使用 Lexend */
+  --font-heading: "Fraunces", "Newsreader", "Times New Roman", Georgia, serif;
+  --font-display: "Fraunces", "Newsreader", "Times New Roman", Georgia, serif;
+  --font-editorial: "Fraunces", "Newsreader", "Times New Roman", Georgia, serif;
+  --font-sans: "Lexend", -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+  --font-body: "Lexend", -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
   --font-mono: "IBM Plex Mono", "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+
   --radius-control: 6px;
   --radius-panel: 28px;
   --radius-panel-mobile: 20px;
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
   --duration-fast: 220ms;
-  --tracking-display: -0.06em;
-  --tracking-label: 0.1em;
-  --weight-display: 720;
-  --weight-label: 750;
+  --tracking-display: -0.01em;
+  --tracking-label: 0.05em;
+  --weight-display: 600;
+  --weight-label: 600;
   --header-height: 78px;
 }
  
@@ -78,8 +99,53 @@ body {
   overflow-x: hidden;
   background: var(--paper);
   color: var(--ink);
-  font-family: var(--font-sans);
+  font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;
+}
+
+/* 全量大小标题默认全量应用 Fraunces 学术衬线体 */
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6,
+.circure-page-title,
+.wiki-hero h1,
+.wiki-section__heading h2,
+.wiki-subheading__title,
+.wiki-item-grid h3,
+.wiki-ledger h3,
+.wiki-mini-timeline h3,
+.wiki-next h2,
+.card-title {
+  font-family: var(--font-heading) !important;
+  letter-spacing: -0.015em;
+}
+
+/* 全量正文文字与段落默认全量应用 Lexend */
+body,
+p,
+ul,
+ol,
+li,
+dd,
+dt,
+td,
+th,
+input,
+textarea,
+select,
+button,
+blockquote,
+figcaption,
+.circure-page-lead,
+.wiki-hero__lede,
+.wiki-section__summary,
+.wiki-prose,
+.wiki-prose p,
+.wiki-boundary p,
+.wiki-callout p,
+.wiki-epigraph blockquote,
+.wiki-epigraph p,
+.wiki-epigraph figcaption {
+  font-family: var(--font-body) !important;
 }
  
 a {
@@ -147,20 +213,20 @@ svg {
  
 .circure-page-title {
   margin: 0;
-  font-family: var(--font-editorial);
+  font-family: var(--font-heading);
   font-size: clamp(40px, 5vw, 72px);
-  font-weight: 400;
-  letter-spacing: -0.04em;
-  line-height: 1;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.05;
   color: var(--ink);
 }
  
 .circure-page-lead {
   max-width: 760px;
   margin: 22px 0 0;
-  font-family: var(--font-editorial);
-  font-size: clamp(18px, 1.6vw, 24px);
-  line-height: 1.35;
+  font-family: var(--font-body);
+  font-size: clamp(17px, 1.5vw, 21px);
+  line-height: 1.55;
   color: var(--brand-navy);
 }
  
@@ -187,10 +253,10 @@ svg {
  
 .circure-footer h4,
 .circure-footer .circure-footer-heading {
-  font-family: var(--font-editorial);
+  font-family: var(--font-heading);
   font-size: clamp(20px, 1.6vw, 26px);
-  font-weight: 400;
-  letter-spacing: -0.02em;
+  font-weight: 600;
+  letter-spacing: -0.01em;
   color: var(--paper-bright);
 }
  

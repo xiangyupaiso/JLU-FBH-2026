@@ -62,8 +62,7 @@ CirCure Wiki
 │   ├── Notebook (/notebook)                 # 实验日常流水与全赛季科研记录
 │   ├── Measurement (/measurement)           # 标准测量手段与多批次定性定量表征
 │   ├── Alternative Platform (/alternative-platform) # 非模式底盘细胞测试验证
-│   ├── Safety and Security (/safety-and-security)   # 生物安全合规、风险防范与防护规范
-│   └── Protocol (/protocol)                 # 15 套标准实验操作手册 (SOP) PDF 检索预览
+│   └── Safety and Security (/safety-and-security)   # 生物安全合规、风险防范与防护规范
 │
 ├── 5 Dry Lab                                # 干实验数据科技
 │   ├── Model (/model)                       # 分子动力学模拟、结合常数计算与数学建模
@@ -87,8 +86,7 @@ CirCure Wiki
 Official-wiki/
 ├── public/                                  # 静态资源根目录（图标、不经构建的资源）
 ├── src/
-│   ├── assets/                              # 本地静态资产（字体、Protocol PDF、图标矢量）
-│   │   ├── protocols/                       # 15 套实验手册 PDF 原件
+│   ├── assets/                              # 本地静态资产（字体、图标矢量）
 │   │   ├── story-nav/                       # 导航下拉菜单 WebP 精灵图
 │   │   └── wiki/                            # 页面题图与配图
 │   ├── components/                          # 通用组件库
@@ -152,7 +150,7 @@ Official-wiki/
    * 纯 CSS 原生驱动，基于 `@media (hover: hover) and (pointer: fine)` 区分触控与精准指针；
    * 具有 Default（默认）、Active（可交互元素悬停）和 Pressing（点击按压）三种视觉反馈状态，且在移动端自动无损退回原生触控。
 5. **iGEM 官方无外链交付标准 (Strict Offline Deliverable Compliance)**：
-   * 所有 WebP 插图、SVG 矢量、WOFF2 字体与 15 份 Protocol PDF 均通过相对路径编译打包于本地，**零外部 CDN 请求**，确保静态归档永久有效、无网络阻断隐患。
+   * 所有 WebP 插图、SVG 矢量与 WOFF2 字体均通过相对路径编译打包于本地，**零外部 CDN 请求**，确保静态归档永久有效、无网络阻断隐患。
 
 ---
 

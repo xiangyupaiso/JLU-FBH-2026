@@ -246,6 +246,41 @@ export function AlternativePlatform() {
 - 严禁在 TSX 节点上写死硬编码尺寸（如 `style={{ height: "480px" }}`）。
 - 专属组件尺寸必须写在 `src/styles/features/[page]-panels.css` 中，并通过清晰的 CSS 类名或局部 CSS 变量暴露（如 `--orbit-panel-height: 420px;`）。
 
+### 铁律 3：章节大标题排版与字号规范（Section Heading Contract）
+- **字号严格控制**：章节标题 `h2` 基准字号设定为 `clamp(21px, 2.2vw, 25px)`（行高 `1.35`），只需清晰大于正文（~16px–17px）即可，**严禁使用 40px–60px 的膨胀巨号**，避免打断阅读节奏。
+- **冒号自动分行（Colon Break）**：凡标题包含英文冒号 `:` 或中文冒号 `：`，冒号及前置词置于上行（Lead line），冒号后详细说明独立下沉为单独一行（Sub line，`clamp(18px, 1.9vw, 22px)`，字重 600）。该逻辑在 `WikiRoutePage.tsx` 中由 `renderSectionTitle()` 自动切分，**严禁在纯数据层 `[page]Page.ts` 中硬写 `<br>`**。
+- **马克笔涂刷效果（Highlighter Marker）**：标题各行通过 `.wiki-heading-marker` 渲染手绘马克笔下半部高亮涂刷，配合 `box-decoration-break: clone` 实现优雅折行包裹。高亮色彩与标题文字颜色由各模块 `route-palette-[module].css` 统一收敛。
+- **水印数字比例收敛**：左后方半透序号水印（`.wiki-section-number`）等比收敛至 `clamp(48px, 5.2vw, 68px)`，透明度保持在 `0.14`（悬浮 `0.20`），仅作空间定位参照，严禁喧宾夺主。
+- **严禁无意义 AI 装饰与填充**：彻底剔除顶部线条、滑动圆点、下划虚线等生成式装饰；彻底禁止 AI 生成无实际学术意义的 `kicker` 标签与 `summary` 概述，版面纯粹还原团队真实学术文案。
+
+### 铁律 4：严禁 AI 眉标与机械小字（No-AI-Kickers & Eyebrows Ban）
+- **全面禁止全大写等宽眉标（Kickers / Eyebrows）**：
+  - 严禁在小节标题（`h3`）、可视化组件头部、卡片顶部放置如 `PLATFORM MECHANISM`、`TARGET SELECTION`、`CLINICAL RATIONALE` 等全大写、拉宽字距、冷冰生硬的英文伪分类小字。
+  - **信息处置原则（Information Repositioning）**：
+    1. **同义反复/虚词废话**（如 `PLATFORM MECHANISM` 之于 `Full-Chain Verification Pipeline`、`TARGET SELECTION` 之于 `Antigen Module`）：**直接彻底删除**，保留纯粹主标题。
+    2. **从属/层次关系**：若确实需要表达两层含义，融入主标题并使用冒号连接（如 `Antigen Module: Target Selection`），自动触发冒号断行，两行均受马克笔高亮保护。
+    3. **实体药理/属性分类**（如靶点的 `Epithelial glycoprotein`）：作为主标题旁的微型优雅药理 pill 标签展示，不搞黑框与大写。
+    4. **描述性段落/临床依据**（如 `High expression in >85% of TNBC tumors...`）：直接作为卡片正文或带左侧微装饰细线的自然说明呈现，严禁用 `CLINICAL RATIONALE` 字段名机械顶格。
+- **清除 AI 模板装饰符号**：
+  - 彻底去除小节标题左侧的彩色竖线（`.wiki-subheading::before`）。
+  - 彻底去除卡片多余的货号式编号（如 `TARGET 01`、`CARD 02`），还原真实科研展示的高级感与人文阅读体验。
+
+### 铁律 5：大标题与小标题双色层级设计规范（Dual-Tone Heading Hierarchy）
+- **杜绝单色沉闷、同时杜绝同色系近色混淆**：
+  - 严禁小标题（`h3`）与大标题（`h2`）复用同一种颜色或同一种色系深浅变体（如绿配绿、蓝配蓝，极易导致视觉疲劳且层级区分度不足）。
+  - 大标题与小标题必须跨色相选取**“完全不相近、但符合出版物经典配色的和谐双色组合”**，既一眼区分层级，又维持典雅克制的学术纸本气质。
+- **全站五大 Part 双色规划表**：
+  | 模块 Part | 整体视觉基调 | 大标题 H2 (`--route-heading-ink`) | 大标题马克笔涂刷 (`--route-marker-bg`) | 小标题 H3 (`--route-subheading-ink`) | 搭配意境与对比原理 |
+  | :--- | :--- | :--- | :--- | :--- | :--- |
+  | **Project** | 植物森林与生命科学 | `#243d2c`（深墨冷森绿） | `#c4c7be`（柔和灰鼠绿） | `#84382b`（暖陶土褐红） | **森绿 + 赤陶红**（自然界经典原色，绿与赤土色相差 130°，完全不同色，沉稳雅致） |
+  | **Wet Lab** | 试剂水相与实验严谨 | `#14354c`（深邃实验海蓝） | `#c6e5f2`（冰川淡海泡蓝） | `#88541e`（暖琥珀金棕） | **海蓝 + 琥珀金**（冷暖互补色相差 174°，学术经典双色组合，一眼即分，典雅庄重） |
+  | **Dry Lab** | 数据算法与科技理性 | `#153e34`（深松针墨黑青） | `#c2ebe0`（薄荷冰绿） | `#633256`（深紫晶墨色） | **松黑青 + 紫晶墨**（算法理性与数理几何，青与深冷紫相映，拓扑纵深感极强且毫不突兀） |
+  | **Engagement**| 人文走访与社会温情 | `#4a2c1d`（深沉红咖褐） | `#f7ddce`（柔杏微光） | `#174a47`（深孔雀墨黛青） | **暖咖褐 + 孔雀墨青**（暖木与冷翠互补，大地与水天相映，极具人文叙事温度与沉静感） |
+  | **Team** | 团队活力与金色荣誉 | `#3e2d14`（深古铜黑褐） | `#f8ecbe`（浅金麦香） | `#762338`（深勃艮第酒红） | **古铜金 + 勃艮第酒红**（古典勋章与高校桂冠经典双色，金铜厚重，茜红深邃，典范感十足） |
+- **工程落地契约**：
+  - 各模块的双色真理唯一收敛在 `src/styles/route-palette-[module].css` 中，严禁在页面局部写死 hex。
+  - 阅读器全局样式 `wiki-route-skin.css` 统一消费 `--route-subheading-ink`，确保全站所有页面自动继承对应 Part 的层级规划。
+
 ---
 
 ## 六、老旧代码识别与渐进式迁移 Checklist

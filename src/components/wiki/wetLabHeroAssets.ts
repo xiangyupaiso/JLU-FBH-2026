@@ -2,7 +2,6 @@ import experimentsHero from "../../assets/wiki/wet-lab-heroes/wet-lab-experiment
 import measurementHero from "../../assets/wiki/wet-lab-heroes/wet-lab-measurement-hero-v3.webp";
 import notebookHero from "../../assets/wiki/wet-lab-heroes/wet-lab-notebook-hero-v3.webp";
 import platformHero from "../../assets/wiki/wet-lab-heroes/wet-lab-platform-hero-v3.webp";
-import protocolHero from "../../assets/wiki/protocol-hero-bg.png";
 import safetyHero from "../../assets/wiki/wet-lab-heroes/wet-lab-safety-hero-v3.webp";
 
 export type WetLabHeroVariant =
@@ -10,8 +9,7 @@ export type WetLabHeroVariant =
   | "notebook"
   | "measurement"
   | "platform"
-  | "safety"
-  | "protocol";
+  | "safety";
 
 const VARIANT_BY_ROUTE: Record<string, WetLabHeroVariant> = {
   "/experiments": "experiments",
@@ -19,7 +17,6 @@ const VARIANT_BY_ROUTE: Record<string, WetLabHeroVariant> = {
   "/measurement": "measurement",
   "/alternative-platform": "platform",
   "/safety-and-security": "safety",
-  "/protocol": "protocol",
 };
 
 const HERO_BY_VARIANT: Record<WetLabHeroVariant, string> = {
@@ -28,7 +25,6 @@ const HERO_BY_VARIANT: Record<WetLabHeroVariant, string> = {
   measurement: measurementHero,
   platform: platformHero,
   safety: safetyHero,
-  protocol: protocolHero,
 };
 
 export function getWetLabHeroVariant(route: string) {

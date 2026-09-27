@@ -1,5 +1,16 @@
-import type { ProtocolManual } from "../../../../../data/protocolPages";
 import "../../../../../styles/sustainability-panels.css";
+
+export interface SustainabilityPdfManual {
+  id: string;
+  title: string;
+  description: string;
+  pdfUrl: string;
+  assetName: string;
+  documentType: string;
+  pages: number;
+  category?: string;
+  addedAt?: string;
+}
 
 /** SST-QN 关键 PDF —— 用浏览器原生 PDF viewer 直接内嵌展示。
  *  下方是用户可见的标题说明（主标题 + 类型/编号/页数 + 描述 + 打开/下载入口），
@@ -8,7 +19,7 @@ import "../../../../../styles/sustainability-panels.css";
 export function SustainabilityPdfPreview({
   manual,
 }: {
-  manual: ProtocolManual;
+  manual: SustainabilityPdfManual;
 }) {
   return (
     <figure className="sust-pdf-native">

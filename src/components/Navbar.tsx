@@ -122,11 +122,6 @@ const NAV_DISPLAY: Record<string, FolderDisplay> = {
         em: "Risks · Mitigation · Stewardship",
         spriteRow: "100%",
       },
-      Protocol: {
-        small: "06 / MANUAL",
-        em: "Protocols · Library · Viewer",
-        spriteRow: "100%",
-      },
     },
   },
   "Dry Lab": {

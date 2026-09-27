@@ -19,8 +19,8 @@ import {
   SSTQNScoreProcess,
   StakeholderProfileCard,
   SustainabilityPdfPreview,
+  type SustainabilityPdfManual,
 } from "./engagement/sustainability";
-import type { ProtocolManual } from "../../../data/protocolPages";
 import {
   sustainabilityAssets,
   type SustainabilityImageAssetKey,
@@ -124,7 +124,7 @@ const FRAMEWORK_INTRO_LINKS: Record<string, string> = {
 
 const pdfAsset = sustainabilityAssets.sstQnModelConstruction09;
 
-const sstqnPdfManual: ProtocolManual = {
+const sstqnPdfManual: SustainabilityPdfManual = {
   id: "SST-QN",
   title: sstqnSection.pdf.title,
   category: "report",

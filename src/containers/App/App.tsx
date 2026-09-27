@@ -22,7 +22,6 @@ const WET_LAB_ROUTES = new Set([
   "/measurement",
   "/alternative-platform",
   "/safety-and-security",
-  "/protocol",
 ]);
 
 const DRY_LAB_ROUTES = new Set(["/model", "/software", "/hardware", "/games"]);

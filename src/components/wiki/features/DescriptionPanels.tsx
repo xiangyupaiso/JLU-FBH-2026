@@ -10,8 +10,7 @@ export function MechanismRouteChain() {
   return (
     <div className="description-mechanism-chain" data-wiki-reveal>
       <header className="description-mechanism-chain__header">
-        <span>Platform Mechanism</span>
-        <strong>Full-Chain Verification Pipeline</strong>
+        <h4 className="description-mechanism-chain__title">Full-Chain Verification Pipeline</h4>
       </header>
       <ol className="description-mechanism-chain__list">
         {solutionData.mechanismChain.map((step, index) => (
@@ -65,28 +64,22 @@ export function AntigenCandidateCards() {
 
   return (
     <div className="description-antigen-grid" data-wiki-reveal>
-      {candidates.map((candidate, index) => (
+      {candidates.map((candidate) => (
         <article key={candidate.symbol} className="description-antigen-card">
-          <div className="description-antigen-card__eyebrow">
-            <span className="description-antigen-card__index">
-              TARGET 0{index + 1}
-            </span>
-            <span className="description-antigen-card__role">
-              {candidate.role}
-            </span>
-          </div>
           <div className="description-antigen-card__header">
-            <h4 className="description-antigen-card__symbol">
-              {candidate.symbol}
-            </h4>
+            <div className="description-antigen-card__title-row">
+              <h4 className="description-antigen-card__symbol">
+                {candidate.symbol}
+              </h4>
+              <span className="description-antigen-card__role">
+                {candidate.role}
+              </span>
+            </div>
             <span className="description-antigen-card__fullname">
               {candidate.fullName}
             </span>
           </div>
           <div className="description-antigen-card__evidence">
-            <span className="description-antigen-card__evidence-label">
-              Clinical Rationale
-            </span>
             <p>{candidate.highlight}</p>
           </div>
         </article>
