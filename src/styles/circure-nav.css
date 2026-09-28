@@ -192,9 +192,9 @@
   z-index: 3;
   display: grid;
   height: 40px;
-  grid-template-columns: 148px minmax(0, 1fr) auto;
+  grid-template-columns: minmax(190px, 1fr) auto auto;
   align-items: center;
-  gap: 28px;
+  gap: 20px;
 }
 
 .circure-nav-surface {
@@ -877,7 +877,8 @@ button.nav-link {
 
   .circure-nav-head {
     height: 44px;
-    grid-template-columns: 1fr auto;
+    grid-template-columns: minmax(0, 1fr) auto auto;
+    gap: 8px;
   }
 
   .circure-nav-surface {

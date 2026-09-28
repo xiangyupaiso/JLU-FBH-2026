@@ -1653,25 +1653,21 @@ const experimentsPageBase: WikiPageContent = {
     },
 
     // =========================================================================
-    // SECTION 09: References & Bench Protocols
+    // SECTION 09: References
     // =========================================================================
     {
       id: "sec-references",
       index: "09",
-      kicker: "09 / Protocols & Citations",
-      navLabel: "Protocols & Citations",
-      title: "Bench Protocols: Reference Archive & Standards",
-      summary: "Downloadable SOP manual (TOOL-01) and full 48-entry literature and commercial assay reference archive.",
+      kicker: "09 / References & Citations",
+      navLabel: "References & Citations",
+      title: "References and Standards",
+      summary: "Literature and commercial assay references cited throughout the experiments.",
       blocks: [
-        {
-          type: "feature",
-          key: "bench-protocol-toolkit",
-        },
         {
           type: "subheading",
           id: "exp-refs",
           index: "9.1",
-          title: "References and Standards (1 to 48)",
+          title: "References (1 to 48)",
         },
         {
           type: "prose",

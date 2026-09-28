@@ -21,21 +21,38 @@ export function readerTrackStart(track: HTMLElement) {
  * target's in-frame offset into a document position instead.
  */
 export function scrollReaderToTarget(
-  target: HTMLElement,
+  target: HTMLElement | Range,
   inner: HTMLElement | null | undefined,
   behavior: ScrollBehavior = "instant",
+  options: { block?: ScrollLogicalPosition } = {},
 ) {
   const track = inner?.closest<HTMLElement>(".wiki-reader-track");
-  if (!inner || !track) {
-    target.scrollIntoView({ behavior, block: "start" });
+  if (!inner || !track || getComputedStyle(inner).overflowY !== "hidden") {
+    if (target instanceof Range) {
+      const bounds = target.getBoundingClientRect();
+      const offset =
+        options.block === "center"
+          ? (window.innerHeight - bounds.height) / 2
+          : 32;
+      window.scrollTo({
+        top: window.scrollY + bounds.top - offset,
+        behavior,
+      });
+    } else {
+      target.scrollIntoView({ behavior, block: options.block ?? "start" });
+    }
     return;
   }
 
   const trackStart = readerTrackStart(track);
   const innerBounds = inner.getBoundingClientRect();
   const targetBounds = target.getBoundingClientRect();
+  const targetOffset =
+    options.block === "center"
+      ? (inner.clientHeight - targetBounds.height) / 2
+      : 32;
   const innerTop =
-    inner.scrollTop + targetBounds.top - innerBounds.top - 32;
+    inner.scrollTop + targetBounds.top - innerBounds.top - targetOffset;
   const targetScrollTop = Math.max(0, innerTop);
   if (behavior !== "smooth") {
     inner.scrollTop = targetScrollTop;

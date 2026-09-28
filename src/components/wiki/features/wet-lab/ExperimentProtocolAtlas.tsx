@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { scrollReaderToTarget } from "../../../../utils";
 import {
   experimentProtocolImage,
@@ -17,9 +17,35 @@ const sections = [
 
 export function ExperimentProtocolAtlas() {
   const [activeKey, setActiveKey] = useState(experimentProtocolPairs[0].key);
-  const active =
-    experimentProtocolPairs.find((pair) => pair.key === activeKey) ??
-    experimentProtocolPairs[0];
+  const [zoomPage, setZoomPage] = useState<{
+    page: number;
+    label: string;
+    size: [number, number];
+  } | null>(null);
+  const [showActualSize, setShowActualSize] = useState(false);
+  const zoomDialogRef = useRef<HTMLDialogElement>(null);
+  const activeIndex = Math.max(
+    0,
+    experimentProtocolPairs.findIndex((pair) => pair.key === activeKey),
+  );
+  const active = experimentProtocolPairs[activeIndex];
+
+  useEffect(() => {
+    const dialog = zoomDialogRef.current;
+    if (!dialog) return;
+    if (zoomPage && !dialog.open) dialog.showModal();
+    if (!zoomPage && dialog.open) dialog.close();
+  }, [zoomPage]);
+
+  const openImage = (page: number, label: string, size: [number, number]) => {
+    setShowActualSize(false);
+    setZoomPage({ page, label, size });
+  };
+
+  const closeImage = () => {
+    zoomDialogRef.current?.close();
+    setZoomPage(null);
+  };
 
   const jumpToArticle = () => {
     const target = document.getElementById(active.targetId);
@@ -32,12 +58,8 @@ export function ExperimentProtocolAtlas() {
     <section className="exp-atlas" aria-labelledby="exp-atlas-title">
       <header className="exp-atlas__header">
         <div>
-          <span className="exp-atlas__eyebrow">
-            Visual protocol index / 15 paired spreads
-          </span>
           <h3 id="exp-atlas-title">Follow the experimental route</h3>
         </div>
-        <span className="exp-atlas__count">30 illustrated pages</span>
       </header>
 
       <nav className="exp-atlas__map" aria-label="Illustrated experiment index">
@@ -68,42 +90,145 @@ export function ExperimentProtocolAtlas() {
       </nav>
 
       <p className="exp-atlas__note">
-        2.5 flow validation is covered in the written protocol; the source PDF
-        has no matching illustrated spread.
+        2.5 flow validation is covered in the written steps and has no matching
+        illustration in this set.
       </p>
 
-      <div className="exp-atlas__preview" aria-live="polite">
-        <div className="exp-atlas__preview-copy">
-          <span className="exp-atlas__eyebrow">
-            Spread {String(active.flowPage).padStart(2, "0")}–
-            {String(active.inventoryPage).padStart(2, "0")}
-          </span>
-          <h4>
+      <div className="exp-atlas__reader">
+        <div className="exp-atlas__selection">
+          <h4 aria-live="polite">
             {active.code} {active.title}
           </h4>
           {active.boundary ? <p>{active.boundary}</p> : null}
-          <button type="button" onClick={jumpToArticle}>
-            Read the protocol <span aria-hidden="true">↘</span>
-          </button>
         </div>
         <div
-          className="exp-atlas__preview-pages"
-          aria-label="Selected protocol page previews"
+          className="exp-atlas__book"
+          aria-label="Selected two-page illustrated spread"
         >
-          <img
-            src={experimentProtocolImage(active.flowPage)}
-            alt={`${active.title} workflow preview`}
-            width={active.flowSize[0]}
-            height={active.flowSize[1]}
-          />
-          <img
-            src={experimentProtocolImage(active.inventoryPage)}
-            alt={`${active.title} materials and equipment preview`}
-            width={active.inventorySize[0]}
-            height={active.inventorySize[1]}
-          />
+          <button
+            type="button"
+            className="exp-atlas__page"
+            onClick={() =>
+              openImage(active.flowPage, "Workflow", active.flowSize)
+            }
+            aria-label={`Enlarge workflow page ${active.flowPage} for ${active.title}`}
+          >
+            <span className="exp-atlas__page-heading">
+              <strong>P{active.flowPage}</strong> Workflow
+            </span>
+            <img
+              src={experimentProtocolImage(active.flowPage)}
+              alt={`${active.title} workflow diagram`}
+              width={active.flowSize[0]}
+              height={active.flowSize[1]}
+              decoding="async"
+            />
+            <span className="exp-atlas__page-zoom">Enlarge this page ↗</span>
+          </button>
+          <button
+            type="button"
+            className="exp-atlas__page"
+            onClick={() =>
+              openImage(
+                active.inventoryPage,
+                "Materials & equipment",
+                active.inventorySize,
+              )
+            }
+            aria-label={`Enlarge materials and equipment page ${active.inventoryPage} for ${active.title}`}
+          >
+            <span className="exp-atlas__page-heading">
+              <strong>P{active.inventoryPage}</strong> Materials & equipment
+            </span>
+            <img
+              src={experimentProtocolImage(active.inventoryPage)}
+              alt={`${active.title} illustrated materials and equipment`}
+              width={active.inventorySize[0]}
+              height={active.inventorySize[1]}
+              decoding="async"
+            />
+            <span className="exp-atlas__page-zoom">Enlarge this page ↗</span>
+          </button>
+        </div>
+        <div className="exp-atlas__footer">
+          <div
+            className="exp-atlas__flip"
+            aria-label="Change illustrated spread"
+          >
+            <button
+              type="button"
+              disabled={activeIndex === 0}
+              onClick={() =>
+                setActiveKey(experimentProtocolPairs[activeIndex - 1].key)
+              }
+            >
+              ← Previous
+            </button>
+            <span>
+              {activeIndex + 1} / {experimentProtocolPairs.length}
+            </span>
+            <button
+              type="button"
+              disabled={activeIndex === experimentProtocolPairs.length - 1}
+              onClick={() =>
+                setActiveKey(experimentProtocolPairs[activeIndex + 1].key)
+              }
+            >
+              Next →
+            </button>
+          </div>
+          <button
+            className="exp-atlas__jump"
+            type="button"
+            onClick={jumpToArticle}
+          >
+            Jump to detailed steps <span aria-hidden="true">↘</span>
+          </button>
         </div>
       </div>
+      <dialog
+        ref={zoomDialogRef}
+        className="exp-atlas__viewer"
+        aria-labelledby="exp-atlas-viewer-title"
+        onClose={() => setZoomPage(null)}
+      >
+        {zoomPage ? (
+          <>
+            <header className="exp-atlas__viewer-header">
+              <div>
+                <span className="exp-atlas__eyebrow">Page {zoomPage.page}</span>
+                <h4 id="exp-atlas-viewer-title">
+                  {active.title} · {zoomPage.label}
+                </h4>
+              </div>
+              <div className="exp-atlas__viewer-actions">
+                <button
+                  type="button"
+                  onClick={() => setShowActualSize(!showActualSize)}
+                >
+                  {showActualSize ? "Fit width" : "Actual size"}
+                </button>
+                <button
+                  type="button"
+                  onClick={closeImage}
+                  aria-label="Close enlarged page"
+                >
+                  Close ×
+                </button>
+              </div>
+            </header>
+            <div className="exp-atlas__viewer-scroll">
+              <img
+                className={showActualSize ? "is-actual" : ""}
+                src={experimentProtocolImage(zoomPage.page)}
+                alt={`${active.title}, ${zoomPage.label.toLowerCase()}, page ${zoomPage.page}`}
+                width={zoomPage.size[0]}
+                height={zoomPage.size[1]}
+              />
+            </div>
+          </>
+        ) : null}
+      </dialog>
     </section>
   );
 }
@@ -119,53 +244,49 @@ export function ExperimentProtocolSpread({
       aria-label={`Illustrated protocol for ${pair.code} ${pair.title}`}
     >
       <figcaption className="exp-protocol-spread__heading">
-        <div>
-          <span>
-            Illustrated protocol · P{pair.flowPage}–P{pair.inventoryPage}
-          </span>
-          <strong>{pair.title}</strong>
-        </div>
-        <a
-          href={experimentProtocolImage(pair.flowPage)}
-          target="_blank"
-          rel="noreferrer"
-        >
-          Open full image ↗
-        </a>
+        <strong>{pair.title}</strong>
       </figcaption>
       {pair.boundary ? (
         <p className="exp-protocol-spread__boundary">{pair.boundary}</p>
       ) : null}
-      <img
-        className="exp-protocol-spread__flow"
-        src={experimentProtocolImage(pair.flowPage)}
-        alt={`Workflow diagram for ${pair.title}, page ${pair.flowPage} of the illustrated protocol`}
-        width={pair.flowSize[0]}
-        height={pair.flowSize[1]}
-        loading="lazy"
-        decoding="async"
-      />
-      <details className="exp-protocol-spread__inventory">
-        <summary>
-          <span>Materials, reagents & equipment</span>
-          <span>P{pair.inventoryPage}</span>
-        </summary>
+      <div className="exp-protocol-spread__images">
         <a
-          href={experimentProtocolImage(pair.inventoryPage)}
+          className="exp-protocol-spread__workflow"
+          href={experimentProtocolImage(pair.flowPage)}
           target="_blank"
           rel="noreferrer"
         >
-          Open full image ↗
+          <span>P{pair.flowPage} · Workflow</span>
+          <img
+            src={experimentProtocolImage(pair.flowPage)}
+            alt={`Workflow diagram for ${pair.title}`}
+            width={pair.flowSize[0]}
+            height={pair.flowSize[1]}
+            loading="lazy"
+            decoding="async"
+          />
+          <small>View full image ↗</small>
         </a>
-        <img
-          src={experimentProtocolImage(pair.inventoryPage)}
-          alt={`Illustrated materials, reagents and equipment for ${pair.title}, page ${pair.inventoryPage}`}
-          width={pair.inventorySize[0]}
-          height={pair.inventorySize[1]}
-          loading="lazy"
-          decoding="async"
-        />
-      </details>
+        <details className="exp-protocol-spread__materials">
+          <summary>Materials &amp; equipment</summary>
+          <a
+            href={experimentProtocolImage(pair.inventoryPage)}
+            target="_blank"
+            rel="noreferrer"
+          >
+            <span>P{pair.inventoryPage} · Materials &amp; equipment</span>
+            <img
+              src={experimentProtocolImage(pair.inventoryPage)}
+              alt={`Illustrated materials and equipment for ${pair.title}`}
+              width={pair.inventorySize[0]}
+              height={pair.inventorySize[1]}
+              loading="lazy"
+              decoding="async"
+            />
+            <small>View full image ↗</small>
+          </a>
+        </details>
+      </div>
     </figure>
   );
 }

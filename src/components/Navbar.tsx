@@ -501,8 +501,6 @@ export function Navbar() {
               </span>
             </Link>
 
-            <PageSearch />
-
             <nav className="desktop-nav" aria-label="Primary navigation">
               <ul className="nav-list">
                 <li className="nav-item">
@@ -547,6 +545,8 @@ export function Navbar() {
                 ))}
               </ul>
             </nav>
+
+            <PageSearch onOpen={closeAll} menuOpen={!!openKey || mobileOpen} />
 
             <button
               className="mobile-menu-toggle"

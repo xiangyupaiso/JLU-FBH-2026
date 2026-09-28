@@ -9,6 +9,8 @@ import {
   type MouseEvent,
 } from "react";
 import { useLocation } from "react-router-dom";
+import { collectPageTextMatches } from "../utils/collectPageTextMatches";
+import { scrollReaderToTarget } from "../utils/scrollReaderToTarget";
 
 // Elements whose text is never part of a page search. The search runs over the
 // rendered page DOM, so we skip the chrome (header/footer/back-to-top), any
@@ -24,13 +26,13 @@ const SKIP_SELECTOR = [
   "mark",
   "button",
   ".site-header",
+  "footer",
   ".circure-footer",
   ".circure-back-to-top",
   ".page-search",
   ".circure-mega-menu",
   ".circure-mobile-menu",
-  // React state-driven text (outline counts, live regions): splitting these
-  // nodes detaches them from React's fiber refs, freezing later updates.
+  // Outline counts and live regions are interface text, not article content.
   ".wiki-outline",
   "[aria-live]",
   "[aria-hidden='true']",
@@ -56,114 +58,87 @@ function SearchIcon({ className }: { className?: string }) {
   );
 }
 
-/**
- * Walk the rendered page and wrap every case-insensitive match of `query` in a
- * <mark class="page-search-hit">. Returns the created marks so the caller can
- * navigate and later restore the original text nodes.
- */
-function collectMatches(root: ParentNode, query: string): HTMLElement[] {
-  // Case-insensitive: both the needle and the page text are folded with
-  // `.toLowerCase()` (locale-independent) before comparing.
-  const needle = query.toLowerCase();
-  const marks: HTMLElement[] = [];
-
-  const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
-    acceptNode(node: Node): number {
-      const parent = node.parentElement;
-      const value = node.nodeValue;
-      if (!parent || !value) return NodeFilter.FILTER_REJECT;
-      if (parent.closest(SKIP_SELECTOR)) return NodeFilter.FILTER_REJECT;
-      return value.toLowerCase().includes(needle)
-        ? NodeFilter.FILTER_ACCEPT
-        : NodeFilter.FILTER_REJECT;
-    },
-  });
-
-  // Snapshot text nodes before mutating the DOM.
-  const textNodes: Text[] = [];
-  while (walker.nextNode()) textNodes.push(walker.currentNode as Text);
-
-  for (const textNode of textNodes) {
-    const text = textNode.nodeValue ?? "";
-    const lower = text.toLowerCase();
-    const parent = textNode.parentNode;
-    if (!parent) continue;
-
-    const fragment = document.createDocumentFragment();
-    let cursor = 0;
-    let index = lower.indexOf(needle);
-    while (index !== -1) {
-      if (index > cursor) {
-        fragment.appendChild(
-          document.createTextNode(text.slice(cursor, index)),
-        );
-      }
-      const mark = document.createElement("mark");
-      mark.className = "page-search-hit";
-      mark.textContent = text.slice(index, index + query.length);
-      fragment.appendChild(mark);
-      marks.push(mark);
-      cursor = index + query.length;
-      index = lower.indexOf(needle, cursor);
-    }
-    if (cursor < text.length) {
-      fragment.appendChild(document.createTextNode(text.slice(cursor)));
-    }
-    parent.replaceChild(fragment, textNode);
-  }
-
-  return marks;
+// Ranges leave React-owned text nodes intact across search, updates and routing.
+function collectMatches(root: ParentNode, query: string): Range[] {
+  return collectPageTextMatches(root, query, SKIP_SELECTOR);
 }
 
-function clearMarks(marks: HTMLElement[]): void {
-  const parents = new Set<Node>();
-  for (const mark of marks) {
-    const parent = mark.parentNode;
-    if (parent) {
-      parent.replaceChild(
-        document.createTextNode(mark.textContent ?? ""),
-        mark,
-      );
-      parents.add(parent);
-    }
-  }
-  // Merge the fragmented text nodes back so the DOM tree matches what React
-  // rendered before highlighting.
-  parents.forEach((parent) => parent.normalize());
+function supportsHighlights(): boolean {
+  return typeof Highlight !== "undefined" && "highlights" in CSS;
 }
 
-export function PageSearch() {
+function clearSearchHighlights(): void {
+  if (supportsHighlights()) {
+    CSS.highlights.delete("page-search-results");
+    CSS.highlights.delete("page-search-current");
+  }
+}
+
+export function PageSearch({
+  onOpen,
+  menuOpen,
+}: {
+  onOpen: () => void;
+  menuOpen: boolean;
+}) {
   const reactId = useId().replace(/:/g, "");
-  const filterId = `page-search-goo-${reactId}`;
+  const panelId = `page-search-panel-${reactId}`;
+  const searchRef = useRef<HTMLDivElement>(null);
+  const triggerRef = useRef<HTMLButtonElement>(null);
   const { pathname } = useLocation();
 
   const inputRef = useRef<HTMLInputElement>(null);
-  const marksRef = useRef<HTMLElement[]>([]);
+  const matchesRef = useRef<Range[]>([]);
+  const selectionRef = useRef<Range | null>(null);
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState("");
   const [count, setCount] = useState(0);
   const [current, setCurrent] = useState(0);
 
   const clearHighlights = useCallback(() => {
-    clearMarks(marksRef.current);
-    marksRef.current = [];
+    clearSearchHighlights();
+    const selection = window.getSelection();
+    if (
+      selectionRef.current &&
+      selection?.rangeCount &&
+      selection.getRangeAt(0) === selectionRef.current
+    ) {
+      selection.removeAllRanges();
+    }
+    selectionRef.current = null;
+    matchesRef.current = [];
     setCount(0);
     setCurrent(0);
   }, []);
 
   const applyIndex = useCallback((index: number, shouldScroll: boolean) => {
-    const marks = marksRef.current;
-    if (marks.length === 0) return;
-    const wrapped = ((index % marks.length) + marks.length) % marks.length;
-    for (let i = 0; i < marks.length; i += 1) {
-      marks[i].classList.toggle("is-active", i === wrapped);
+    const matches = matchesRef.current;
+    if (matches.length === 0) return;
+    const wrapped =
+      ((index % matches.length) + matches.length) % matches.length;
+    const range = matches[wrapped];
+    if (supportsHighlights()) {
+      const active = new Highlight(range);
+      active.priority = 1;
+      CSS.highlights.set("page-search-current", active);
+    } else if (shouldScroll) {
+      // Older browsers can still navigate and select the current match.
+      const selection = window.getSelection();
+      selection?.removeAllRanges();
+      selection?.addRange(range);
+      selectionRef.current = range;
     }
     setCurrent(wrapped + 1);
     if (shouldScroll) {
-      marks[wrapped].scrollIntoView({
-        behavior: "instant",
-        block: "center",
-      });
+      const target = range.startContainer.parentElement;
+      if (!target) return;
+
+      // Reader routes project the article's progress onto the document. The
+      // frame itself is intentionally non-scrollable, so native
+      // `scrollIntoView` only nudges the page while the outline moves ahead.
+      // Reuse the same route-aware conversion as the TOC and inline links.
+      const reader = target.closest<HTMLElement>(".route-frame__scroll");
+      scrollReaderToTarget(range, reader, "instant", { block: "center" });
     }
   }, []);
 
@@ -173,13 +148,34 @@ export function PageSearch() {
       const trimmed = value.trim();
       setQuery(value);
       if (!trimmed) return;
-      const marks = collectMatches(document.body, trimmed);
-      marksRef.current = marks;
-      setCount(marks.length);
-      if (marks.length > 0) applyIndex(0, false);
+      const matches = collectMatches(document.body, trimmed);
+      matchesRef.current = matches;
+      if (supportsHighlights()) {
+        CSS.highlights.set("page-search-results", new Highlight(...matches));
+      }
+      setCount(matches.length);
+      if (matches.length > 0) applyIndex(0, false);
     },
     [clearHighlights, applyIndex],
   );
+
+  // Home rebuilds word wrappers after reflow; recreate ranges against the new nodes.
+  useEffect(() => {
+    if (!open || !query.trim()) return;
+    let timer = 0;
+    const refresh = () => {
+      window.clearTimeout(timer);
+      timer = window.setTimeout(() => runSearch(query), 350);
+    };
+    const motion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    window.addEventListener("resize", refresh);
+    motion.addEventListener("change", refresh);
+    return () => {
+      window.clearTimeout(timer);
+      window.removeEventListener("resize", refresh);
+      motion.removeEventListener("change", refresh);
+    };
+  }, [open, query, runSearch]);
 
   const close = useCallback(() => {
     setOpen(false);
@@ -200,12 +196,19 @@ export function PageSearch() {
     clearHighlights();
   }, [pathname, clearHighlights]);
 
-  // Never leak <mark> nodes into the page on unmount.
+  // Never leave named highlight ranges behind on unmount.
   useEffect(() => {
-    return () => clearMarks(marksRef.current);
+    return clearSearchHighlights;
   }, []);
 
-  const handleOpen = useCallback(() => setOpen(true), []);
+  const handleOpen = useCallback(() => {
+    onOpen();
+    setOpen(true);
+  }, [onOpen]);
+
+  useEffect(() => {
+    if (menuOpen) close();
+  }, [menuOpen, close]);
 
   const handleChange = useCallback(
     (event: ChangeEvent<HTMLInputElement>) => {
@@ -214,12 +217,14 @@ export function PageSearch() {
     [runSearch],
   );
 
-  const handleBlur = useCallback(() => {
-    if (!query.trim()) {
-      setOpen(false);
-      clearHighlights();
-    }
-  }, [query, clearHighlights]);
+  useEffect(() => {
+    if (!open) return;
+    const onPointerDown = (event: PointerEvent) => {
+      if (!searchRef.current?.contains(event.target as Node)) close();
+    };
+    document.addEventListener("pointerdown", onPointerDown);
+    return () => document.removeEventListener("pointerdown", onPointerDown);
+  }, [open, close]);
 
   const handleKeyDown = useCallback(
     (event: KeyboardEvent<HTMLInputElement>) => {
@@ -230,15 +235,13 @@ export function PageSearch() {
         applyIndex(event.shiftKey ? current - 2 : current, true);
       } else if (event.key === "Escape") {
         event.preventDefault();
+        event.stopPropagation();
         close();
+        triggerRef.current?.focus();
       }
     },
     [applyIndex, current, close],
   );
-
-  const preventBlur = useCallback((event: MouseEvent) => {
-    event.preventDefault();
-  }, []);
 
   const countLabel =
     count > 0 ? `${current}/${count}` : query.trim() ? "No matches" : "";
@@ -246,26 +249,32 @@ export function PageSearch() {
   return (
     <div
       className={`page-search${open ? " is-open" : ""}`}
+      ref={searchRef}
       role="search"
       aria-label="Search this page"
     >
-      <svg className="page-search__filter" aria-hidden="true" focusable="false">
-        <defs>
-          <filter id={filterId} x="-50%" y="-50%" width="200%" height="200%">
-            <feGaussianBlur in="SourceGraphic" stdDeviation="5" result="blur" />
-            <feColorMatrix
-              in="blur"
-              type="matrix"
-              values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 20 -10"
-              result="goo"
-            />
-            <feComposite in="SourceGraphic" in2="goo" operator="atop" />
-          </filter>
-        </defs>
-      </svg>
-
-      <div className="page-search__goo" style={{ filter: `url(#${filterId})` }}>
-        <div className="page-search__pill" onClick={handleOpen}>
+      <button
+        ref={triggerRef}
+        className="page-search__trigger"
+        type="button"
+        aria-label="Search this page"
+        aria-expanded={open}
+        aria-controls={panelId}
+        onClick={() => (open ? close() : handleOpen())}
+      >
+        <SearchIcon />
+        <span>Search</span>
+      </button>
+      <div
+        className="page-search__panel"
+        id={panelId}
+        aria-hidden={!open}
+        inert={!open || undefined}
+      >
+        <label className="page-search__label" htmlFor={`${panelId}-input`}>
+          Find on this page
+        </label>
+        <div className="page-search__pill">
           <SearchIcon className="page-search__pill-icon" />
           <input
             ref={inputRef}
@@ -274,44 +283,51 @@ export function PageSearch() {
             enterKeyHint="search"
             autoComplete="off"
             spellCheck={false}
-            placeholder="Search…"
+            id={`${panelId}-input`}
+            placeholder="Enter a word or phrase"
             aria-label="Search this page"
             value={query}
             readOnly={!open}
             onChange={handleChange}
             onKeyDown={handleKeyDown}
-            onBlur={handleBlur}
             onFocus={handleOpen}
           />
-          <span className="page-search__meta" aria-live="polite">
-            <span className="page-search__count">{countLabel}</span>
-            {count > 1 ? (
-              <>
-                <button
-                  type="button"
-                  className="page-search__nav"
-                  aria-label="Previous match"
-                  onMouseDown={preventBlur}
-                  onClick={() => applyIndex(current - 2, true)}
-                >
-                  ↑
-                </button>
-                <button
-                  type="button"
-                  className="page-search__nav"
-                  aria-label="Next match"
-                  onMouseDown={preventBlur}
-                  onClick={() => applyIndex(current, true)}
-                >
-                  ↓
-                </button>
-              </>
-            ) : null}
-          </span>
         </div>
-        <span className="page-search__bubble" aria-hidden="true">
-          <SearchIcon />
-        </span>
+        <div className="page-search__meta">
+          <span className="page-search__count" aria-live="polite">
+            {countLabel || "Current page only"}
+          </span>
+          {count > 1 ? (
+            <>
+              <button
+                type="button"
+                className="page-search__nav"
+                aria-label="Previous match"
+                onMouseDown={(e: MouseEvent) => e.preventDefault()}
+                onClick={() => applyIndex(current - 2, true)}
+              >
+                ↑
+              </button>
+              <button
+                type="button"
+                className="page-search__nav"
+                aria-label="Next match"
+                onMouseDown={(e: MouseEvent) => e.preventDefault()}
+                onClick={() => applyIndex(current, true)}
+              >
+                ↓
+              </button>
+            </>
+          ) : null}
+          <button
+            type="button"
+            className="page-search__close"
+            onClick={close}
+            aria-label="Close search"
+          >
+            Close
+          </button>
+        </div>
       </div>
     </div>
   );

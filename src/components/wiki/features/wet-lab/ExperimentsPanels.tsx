@@ -420,56 +420,6 @@ export function InVivoTimelinePanel() {
 }
 
 // ---------------------------------------------------------------------------
-// 6. Bench Protocol Tool Card (TOOL-01)
-// ---------------------------------------------------------------------------
-export function BenchProtocolToolkit() {
-  const pdfUrl = `${import.meta.env.BASE_URL}assets/docs/circure-wetlab-protocol.pdf`;
-
-  return (
-    <article className="exp-protocol-tool" id="bench-protocol-toolkit">
-      <h3 className="exp-protocol-tool__title">
-        CirCure Wet Lab Standard Operating Procedures (SOPs) Manual
-      </h3>
-      <p className="exp-protocol-tool__desc">
-        Complete laboratory manual containing 14 formal Standard Operating Procedures (SOPs), buffer recipes, quality criteria, and equipment specifications spanning molecular cloning, in vitro transcription, RNase R digestion, DC electroporation, ELISpot, Calcein-AM assays, lentiviral transduction, and syngeneic murine tumour models.
-      </p>
-
-      <div className="exp-protocol-tool__meta-grid">
-        <div className="exp-protocol-tool__meta-item">
-          <strong>Document Format</strong>
-          <span>PDF (Full Edition, 58.5 MB)</span>
-        </div>
-        <div className="exp-protocol-tool__meta-item">
-          <strong>Compliance Standards</strong>
-          <span>ARRIVE 2.0 &amp; NC3Rs EDA</span>
-        </div>
-        <div className="exp-protocol-tool__meta-item">
-          <strong>Biosafety Level</strong>
-          <span>BSL-2 / SPF Barrier Facility</span>
-        </div>
-        <div className="exp-protocol-tool__meta-item">
-          <strong>Ethics Approval</strong>
-          <span>JDYY20261369 / SYXK(Ji) 2023-0011</span>
-        </div>
-      </div>
-
-      <div className="exp-protocol-tool__actions">
-        <a
-          className="exp-protocol-tool__btn"
-          href={pdfUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Open CirCure Wet Lab Protocol Manual in a new tab"
-        >
-          <span>Open Full Bench Protocol (PDF)</span>
-          <span aria-hidden="true">↗</span>
-        </a>
-      </div>
-    </article>
-  );
-}
-
-// ---------------------------------------------------------------------------
 // Dictionary Export for WikiRoutePage
 // ---------------------------------------------------------------------------
 export function experimentsFeatures(): Record<string, ReactNode> {
@@ -485,6 +435,5 @@ export function experimentsFeatures(): Record<string, ReactNode> {
     "screening-funnel": <ScreeningFunnel />,
     "safety-window-interactive": <SafetyWindowInteractive />,
     "in-vivo-timeline": <InVivoTimelinePanel />,
-    "bench-protocol-toolkit": <BenchProtocolToolkit />,
   };
 }

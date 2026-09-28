@@ -8,7 +8,90 @@ const INTERACTIVE =
   'a[href], button:not(:disabled), summary, label[for], select:not(:disabled), input[type="range"], input[type="checkbox"], input[type="radio"], [role="button"], [role="link"], [role="tab"], [role="menuitem"], [role="slider"]';
 const NATIVE =
   'input:not([type="range"]):not([type="checkbox"]):not([type="radio"]), textarea, [contenteditable]:not([contenteditable="false"]), iframe, [draggable="true"], [data-native-cursor]';
-const PARTICLE_COUNT = 14;
+const PARTICLE_COUNT = 18;
+
+function detectIsDark(element: Element | null): boolean {
+  let curr: Element | null = element;
+  while (curr && curr !== document.documentElement) {
+    if (curr.getAttribute("data-theme") === "dark" || curr.classList.contains("dark")) {
+      return true;
+    }
+    const bg = window.getComputedStyle(curr).backgroundColor;
+    if (bg && bg !== "transparent" && !bg.startsWith("rgba(0, 0, 0, 0)")) {
+      const match = bg.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)/);
+      if (match) {
+        const r = parseInt(match[1], 10);
+        const g = parseInt(match[2], 10);
+        const b = parseInt(match[3], 10);
+        const lum = 0.299 * r + 0.587 * g + 0.114 * b;
+        return lum < 125;
+      }
+    }
+    curr = curr.parentElement;
+  }
+  if (document.documentElement.dataset.homeIntro === "playing") return true;
+  return false;
+}
+
+function hexToRgba(hex: string, alpha: number): string {
+  const clean = hex.replace("#", "").trim();
+  if (clean.length === 3) {
+    const r = parseInt(clean[0] + clean[0], 16);
+    const g = parseInt(clean[1] + clean[1], 16);
+    const b = parseInt(clean[2] + clean[2], 16);
+    return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+  }
+  if (clean.length === 6) {
+    const r = parseInt(clean.slice(0, 2), 16);
+    const g = parseInt(clean.slice(2, 4), 16);
+    const b = parseInt(clean.slice(4, 6), 16);
+    return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+  }
+  return `rgba(184, 82, 122, ${alpha})`;
+}
+
+interface SparkPalette {
+  fill: string;
+  glow: string;
+  altFill: string;
+}
+
+function resolveSparkPalette(target: Element | null): SparkPalette {
+  if (detectIsDark(target)) {
+    return {
+      fill: "#ffffff",
+      glow: "rgba(255, 255, 255, 0.8)",
+      altFill: "#d9f4ff",
+    };
+  }
+
+  let sub = "";
+  let head = "";
+  if (target) {
+    const cs = window.getComputedStyle(target);
+    sub = cs.getPropertyValue("--route-subheading-ink").trim();
+    head = cs.getPropertyValue("--route-heading-ink").trim();
+  }
+  if (!sub) {
+    const bodyCs = window.getComputedStyle(document.body);
+    sub = bodyCs.getPropertyValue("--route-subheading-ink").trim();
+    head = bodyCs.getPropertyValue("--route-heading-ink").trim();
+  }
+
+  if (sub && sub !== "inherit") {
+    return {
+      fill: sub,
+      glow: hexToRgba(sub, 0.45),
+      altFill: head || sub,
+    };
+  }
+
+  return {
+    fill: "#b8527a",
+    glow: "rgba(184, 82, 122, 0.45)",
+    altFill: "#8e3b5e",
+  };
+}
 
 /** Keep the hotspot exact; only the illustration's attitude has inertia. */
 export function SheepCursor() {
@@ -24,6 +107,9 @@ export function SheepCursor() {
     const halo = layer.querySelector<HTMLElement>(".sheep-cursor__halo")!;
     const sheens = [
       ...layer.querySelectorAll<HTMLElement>(".sheep-cursor__sheen"),
+    ];
+    const ripples = [
+      ...layer.querySelectorAll<HTMLElement>(".sheep-cursor__ripple"),
     ];
     const particles = [
       ...layer.querySelectorAll<HTMLElement>(".sheep-cursor__spark"),
@@ -46,6 +132,7 @@ export function SheepCursor() {
     let frame = 0;
     let frameTime = 0;
     let particleIndex = 0;
+    let rippleIndex = 0;
 
     function spark(
       px: number,
@@ -53,35 +140,55 @@ export function SheepCursor() {
       dx: number,
       dy: number,
       size: number,
+      color: string,
+      glow: string,
     ) {
       const particle = particles[particleIndex++ % PARTICLE_COUNT];
       particle.getAnimations().forEach((animation) => animation.cancel());
       particle.style.left = `${px}px`;
       particle.style.top = `${py}px`;
       particle.style.width = particle.style.height = `${size}px`;
+      particle.style.setProperty("--spark-fill", color);
+      particle.style.setProperty("--spark-glow", glow);
       particle.animate(
         [
           {
             opacity: 0,
-            transform: "translate(-50%, -50%) scale(.25) rotate(0deg)",
+            transform: "translate(-50%, -50%) scale(.2) rotate(0deg)",
             offset: 0,
           },
           {
-            opacity: 0.85,
-            transform: `translate(calc(-50% + ${dx * 0.2}px), calc(-50% + ${dy * 0.2 + 2.4}px)) scale(1) rotate(18deg)`,
-            offset: 0.2,
+            opacity: 0.95,
+            transform: `translate(calc(-50% + ${dx * 0.45}px), calc(-50% + ${dy * 0.45}px)) scale(1.1) rotate(25deg)`,
+            offset: 0.25,
           },
           {
-            opacity: 0.7,
-            transform: `translate(calc(-50% + ${dx * 0.5}px), calc(-50% + ${dy * 0.5 + 15}px)) scale(.8) rotate(35deg)`,
-            offset: 0.5,
+            opacity: 0.75,
+            transform: `translate(calc(-50% + ${dx * 0.8}px), calc(-50% + ${dy * 0.8 + 8}px)) scale(.85) rotate(50deg)`,
+            offset: 0.6,
           },
           {
             opacity: 0,
-            transform: `translate(calc(-50% + ${dx}px), calc(-50% + ${dy + 60}px)) scale(.1) rotate(70deg)`,
+            transform: `translate(calc(-50% + ${dx * 1.15}px), calc(-50% + ${dy * 1.15 + 24}px)) scale(.15) rotate(90deg)`,
           },
         ],
-        { duration: 620 + size * 18, easing: "linear" },
+        { duration: 520 + size * 16, easing: "cubic-bezier(0.25, 0.9, 0.4, 1)" },
+      );
+    }
+
+    function triggerRipple(px: number, py: number, color: string) {
+      if (!ripples.length) return;
+      const rip = ripples[rippleIndex++ % ripples.length];
+      rip.getAnimations().forEach((a) => a.cancel());
+      rip.style.left = `${px}px`;
+      rip.style.top = `${py}px`;
+      rip.style.borderColor = color;
+      rip.animate(
+        [
+          { transform: "scale(.25)", opacity: 0.8 },
+          { transform: "scale(1.5)", opacity: 0 },
+        ],
+        { duration: 360, easing: "cubic-bezier(0.22, 1, 0.36, 1)" },
       );
     }
 
@@ -208,14 +315,30 @@ export function SheepCursor() {
         ],
         { duration: 380, easing: "ease-out" },
       );
-      for (let i = 0; i < 5; i++) {
-        const theta = (i * Math.PI * 2) / 5 - Math.PI / 2;
+
+      const targetEl =
+        event.target instanceof Element
+          ? event.target
+          : document.elementFromPoint(x, y);
+      const palette = resolveSparkPalette(targetEl);
+
+      triggerRipple(x, y, palette.fill);
+
+      const count = 6;
+      for (let i = 0; i < count; i++) {
+        const theta =
+          (i * Math.PI * 2) / count - Math.PI / 2 + (Math.random() - 0.5) * 0.35;
+        const dist = 24 + Math.random() * 12;
+        const size = i % 2 === 0 ? 11 : 7;
+        const color = i % 3 === 0 ? palette.altFill : palette.fill;
         spark(
-          x + 30 + Math.cos(theta) * 32,
-          y + 31 + Math.sin(theta) * 32,
-          Math.cos(theta) * 19,
-          Math.sin(theta) * 19,
-          i % 2 ? 6 : 10,
+          x,
+          y,
+          Math.cos(theta) * dist,
+          Math.sin(theta) * dist,
+          size,
+          color,
+          palette.glow,
         );
       }
     }
@@ -315,6 +438,8 @@ export function SheepCursor() {
           </div>
         </div>
       </div>
+      <span className="sheep-cursor__ripple" />
+      <span className="sheep-cursor__ripple" />
       {Array.from({ length: PARTICLE_COUNT }, (_, index) => (
         <i key={index} className="sheep-cursor__spark" />
       ))}
