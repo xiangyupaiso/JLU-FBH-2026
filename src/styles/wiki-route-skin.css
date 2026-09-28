@@ -354,8 +354,11 @@ html.has-route-reader-scroll {
   box-shadow:
     0 10px 30px -6px color-mix(in srgb, var(--route-accent) 15%, transparent),
     0 3px 8px color-mix(in srgb, var(--route-ink) 5%, transparent);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  /* Keep the outline surface translucent without blurring the moving article
+     beneath it. Backdrop blur forces a large repaint on every scroll frame in
+     the document-to-reader projection used by all route pages. */
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
   scrollbar-width: thin;
   scrollbar-color: color-mix(in srgb, var(--route-accent) 45%, transparent)
     transparent;
@@ -796,19 +799,26 @@ html.has-route-reader-scroll {
   min-height: 0;
   padding: clamp(40px, 5vw, 64px) clamp(26px, 5vw, 72px);
   background: transparent;
+  /* The base `overflow-x: hidden` (wiki-rebuild.css) computes y to `auto`,
+     turning the article into a second scroller whenever a descendant sticks
+     out — e.g. the 620px section glow under a short last section. That inner
+     scroller showed its own scrollbar and took wheel input before the frame
+     was pinned. `clip` never creates a scroll container on either axis. */
+  overflow-x: clip;
+  overflow-y: clip;
 }
 
 .wiki-page--route .wiki-section {
   min-height: 0;
-  margin-top: clamp(48px, 5.5vw, 68px);
-  padding: clamp(36px, 4.5vw, 52px) 0 0;
+  margin-top: 36px;
+  padding: 0;
   border-top: 0;
   background: transparent;
 }
 
 .wiki-page--route .wiki-section:first-child {
   margin-top: 0;
-  padding-top: 0;
+  padding: 0;
   border-top: 0;
 }
 
@@ -822,10 +832,23 @@ html.has-route-reader-scroll {
   display: block;
   grid-template-columns: none;
   gap: 0;
-  margin: 0 0 clamp(20px, 2.5vw, 32px);
-  padding: clamp(14px, 1.8vw, 22px) 0 0;
+  margin: 0 0 clamp(18px, 1.8vw, 24px);
+  padding: 0;
   border: 0;
   overflow: visible;
+}
+
+/* 大标题与下方首段正文节奏：比段间距(20px)稍大一点(24px)，首块顶边距归零，消除空洞断层 */
+.wiki-page--route .wiki-section > .wiki-blocks > *:first-child,
+.wiki-page--route .wiki-section > .wiki-prose:first-child,
+.wiki-page--route .wiki-section > .wiki-prose,
+.wiki-page--route .wiki-blocks > *:first-child {
+  margin-top: 0 !important;
+}
+
+.wiki-page--route .wiki-prose {
+  margin-left: 0;
+  margin-right: 0;
 }
 
 .wiki-page--route .wiki-section__heading--unnumbered,
@@ -999,6 +1022,16 @@ html.has-route-reader-scroll {
   color: var(--route-muted);
 }
 
+.wiki-page--route .wiki-section__summary strong,
+.wiki-page--route .wiki-prose strong,
+.wiki-page--route .wiki-callout strong,
+.wiki-page--route .wiki-boundary strong,
+.wiki-page--route .wiki-manuscript-list__content strong,
+.wiki-page--route .wiki-epigraph strong {
+  color: var(--route-ink);
+  font-weight: 700;
+}
+
 .wiki-page--route .wiki-manuscript-list article {
   border-color: var(--route-line-strong);
 }
@@ -1133,9 +1166,9 @@ html.has-route-reader-scroll {
   display: block;
   color: var(--route-ink);
   font-family: var(--font-editorial);
-  font-size: clamp(26px, 2.5vw, 38px);
-  font-weight: 400;
-  line-height: 1.05;
+  font-size: clamp(20px, 1.8vw, 26px);
+  font-weight: 500;
+  line-height: 1.2;
 }
 
 .wiki-page--route .wiki-mini-visual ol {

@@ -5,6 +5,7 @@
 ---
 
 ## 目录
+
 1. [核心设计原则](#一核心设计原则)
 2. [页面结构分级（轻量页 vs 重度页）](#二页面结构分级)
 3. [标准目录组织规范](#三标准目录组织规范)
@@ -36,12 +37,14 @@
 根据页面内容密度分为两类，避免简单页面过度设计，也避免重度页面代码失控：
 
 ### 1. 轻量普通页（文本主导型，如 Notebook, Safety, Contribution）
+
 - **特征**：以章节、正文段落、静态插图（`<figure>`）、表格为主，无复杂动画或大量交互卡片。
 - **文件组合（2 件套）**：
   1. `src/contents/[page].tsx`（路由装配）
   2. `src/data/[module]/[page]Page.ts`（数据真理）
 
 ### 2. 重度可视化页（富图表与交互型，如 Alternative Platform, Description, Sustainability）
+
 - **特征**：包含复杂交互网格、动态流程图、雷达图/弦图/3D 查看器、弹窗模态框、大量高清插图。
 - **文件组合（4 件套）**：
   1. `src/contents/[page].tsx`（路由装配）
@@ -93,6 +96,7 @@ src/
 ## 四、标准代码开发模板（四件套）
 
 ### 4.1 数据层：纯净数据源
+
 - **文件路径**：`src/data/[module]/[page]Page.ts`
 - **规范**：导出一个符合 `WikiPageContent` 规范的对象，**禁止引入 React 或 JSX**。遇到复杂交互组件，使用 `{ type: "feature", key: "slot-key" }` 占位。
 
@@ -153,6 +157,7 @@ export const alternativePlatformPage: WikiPageContent = {
 ---
 
 ### 4.2 资产层：静态资源字典
+
 - **文件路径**：`src/data/[module]/[page]Assets.ts`
 - **规范**：集中管理该页面所需的图片、SVG 或 PDF 资源。防止在正文数据层混杂过长 import。
 
@@ -171,6 +176,7 @@ export type PlatformFigureKey = keyof typeof platformFigures;
 ---
 
 ### 4.3 组件层：可视化与交互插槽
+
 - **文件路径**：`src/components/wiki/features/[module]/[Page]Panels.tsx`
 - **规范**：封装本页专属的交互、动态展示或卡片组。**必须导出一个字典构造函数 `get[Page]Features()`**，其键值与数据层中的 `key` 严格对应。
 
@@ -202,6 +208,7 @@ export function alternativePlatformFeatures(): Record<string, ReactNode> {
 ---
 
 ### 4.4 路由入口层：极简装配
+
 - **文件路径**：`src/contents/[page].tsx`
 - **规范**：代码行数控制在 25 行以内。负责串联统一模板 `WikiRoutePage`、数据、资产与样式。
 
@@ -232,10 +239,11 @@ export function AlternativePlatform() {
 严禁再出现“到处写尺寸、到处相互覆盖、找不到改动点”的混乱状况，所有开发必须遵循以下两条铁律：
 
 ### 铁律 1：宏观外壳尺寸（禁止在页面 CSS 里擅自篡改）
+
 整站所有页面的容器大框架统一由 `src/styles/wiki-route-skin.css` 驱动。若需调整全局尺寸，认准以下对应配置：
 
 | 调整目标 | 唯一修改位置 | 对应变量 / 选择器 |
-| :--- | :--- | :--- |
+| :------------------------- | :--------------------------- | :----------------------------------------------------- |
 | **页面最大限制总宽** | `wiki-route-skin.css:L65` | `--route-page: 1120px;` |
 | **左侧目录边栏宽度** | `wiki-route-skin.css:L63` | `--toc-w: minmax(190px, 250px);` |
 | **阅读容器视口高度** | `wiki-route-skin.css:L64` | `--reader-h: calc(100dvh - var(--reader-header-h));` |
@@ -243,10 +251,12 @@ export function AlternativePlatform() {
 | **正文默认内边距** | `wiki-route-skin.css:L785` | `.wiki-article { padding: clamp(...) clamp(...); }` |
 
 ### 铁律 2：微观组件尺寸（就近收口，禁止行内写死）
+
 - 严禁在 TSX 节点上写死硬编码尺寸（如 `style={{ height: "480px" }}`）。
 - 专属组件尺寸必须写在 `src/styles/features/[page]-panels.css` 中，并通过清晰的 CSS 类名或局部 CSS 变量暴露（如 `--orbit-panel-height: 420px;`）。
 
 ### 铁律 3：章节大标题排版与字号规范（Section Heading Contract）
+
 - **字号严格控制**：章节标题 `h2` 基准字号设定为 `clamp(21px, 2.2vw, 25px)`（行高 `1.35`），只需清晰大于正文（~16px–17px）即可，**严禁使用 40px–60px 的膨胀巨号**，避免打断阅读节奏。
 - **冒号自动分行（Colon Break）**：凡标题包含英文冒号 `:` 或中文冒号 `：`，冒号及前置词置于上行（Lead line），冒号后详细说明独立下沉为单独一行（Sub line，`clamp(18px, 1.9vw, 22px)`，字重 600）。该逻辑在 `WikiRoutePage.tsx` 中由 `renderSectionTitle()` 自动切分，**严禁在纯数据层 `[page]Page.ts` 中硬写 `<br>`**。
 - **马克笔涂刷效果（Highlighter Marker）**：标题各行通过 `.wiki-heading-marker` 渲染手绘马克笔下半部高亮涂刷，配合 `box-decoration-break: clone` 实现优雅折行包裹。高亮色彩与标题文字颜色由各模块 `route-palette-[module].css` 统一收敛。
@@ -254,6 +264,7 @@ export function AlternativePlatform() {
 - **严禁无意义 AI 装饰与填充**：彻底剔除顶部线条、滑动圆点、下划虚线等生成式装饰；彻底禁止 AI 生成无实际学术意义的 `kicker` 标签与 `summary` 概述，版面纯粹还原团队真实学术文案。
 
 ### 铁律 4：严禁 AI 眉标与机械小字（No-AI-Kickers & Eyebrows Ban）
+
 - **全面禁止全大写等宽眉标（Kickers / Eyebrows）**：
   - 严禁在小节标题（`h3`）、可视化组件头部、卡片顶部放置如 `PLATFORM MECHANISM`、`TARGET SELECTION`、`CLINICAL RATIONALE` 等全大写、拉宽字距、冷冰生硬的英文伪分类小字。
   - **信息处置原则（Information Repositioning）**：
@@ -266,17 +277,17 @@ export function AlternativePlatform() {
   - 彻底去除卡片多余的货号式编号（如 `TARGET 01`、`CARD 02`），还原真实科研展示的高级感与人文阅读体验。
 
 ### 铁律 5：大标题与小标题双色层级设计规范（Dual-Tone Heading Hierarchy）
+
 - **杜绝单色沉闷、同时杜绝同色系近色混淆**：
   - 严禁小标题（`h3`）与大标题（`h2`）复用同一种颜色或同一种色系深浅变体（如绿配绿、蓝配蓝，极易导致视觉疲劳且层级区分度不足）。
   - 大标题与小标题必须跨色相选取**“完全不相近、但符合出版物经典配色的和谐双色组合”**，既一眼区分层级，又维持典雅克制的学术纸本气质。
-- **全站五大 Part 双色规划表**：
-  | 模块 Part | 整体视觉基调 | 大标题 H2 (`--route-heading-ink`) | 大标题马克笔涂刷 (`--route-marker-bg`) | 小标题 H3 (`--route-subheading-ink`) | 搭配意境与对比原理 |
-  | :--- | :--- | :--- | :--- | :--- | :--- |
-  | **Project** | 植物森林与生命科学 | `#243d2c`（深墨冷森绿） | `#c4c7be`（柔和灰鼠绿） | `#84382b`（暖陶土褐红） | **森绿 + 赤陶红**（自然界经典原色，绿与赤土色相差 130°，完全不同色，沉稳雅致） |
-  | **Wet Lab** | 试剂水相与实验严谨 | `#14354c`（深邃实验海蓝） | `#c6e5f2`（冰川淡海泡蓝） | `#88541e`（暖琥珀金棕） | **海蓝 + 琥珀金**（冷暖互补色相差 174°，学术经典双色组合，一眼即分，典雅庄重） |
-  | **Dry Lab** | 数据算法与科技理性 | `#153e34`（深松针墨黑青） | `#c2ebe0`（薄荷冰绿） | `#633256`（深紫晶墨色） | **松黑青 + 紫晶墨**（算法理性与数理几何，青与深冷紫相映，拓扑纵深感极强且毫不突兀） |
-  | **Engagement**| 人文走访与社会温情 | `#4a2c1d`（深沉红咖褐） | `#f7ddce`（柔杏微光） | `#174a47`（深孔雀墨黛青） | **暖咖褐 + 孔雀墨青**（暖木与冷翠互补，大地与水天相映，极具人文叙事温度与沉静感） |
-  | **Team** | 团队活力与金色荣誉 | `#3e2d14`（深古铜黑褐） | `#f8ecbe`（浅金麦香） | `#762338`（深勃艮第酒红） | **古铜金 + 勃艮第酒红**（古典勋章与高校桂冠经典双色，金铜厚重，茜红深邃，典范感十足） |
+- **全站五大 Part 双色规划表**：| 模块 Part            | 整体视觉基调       | 大标题 H2 (`--route-heading-ink`) | 大标题马克笔涂刷 (`--route-marker-bg`) | 小标题 H3 (`--route-subheading-ink`) | 搭配意境与对比原理                                                                          |
+  | :------------------- | :----------------- | :---------------------------------- | :--------------------------------------- | :------------------------------------- | :------------------------------------------------------------------------------------------ |
+  | **Project**    | 植物森林与生命科学 | `#243d2c`（深墨冷森绿）           | `#c4c7be`（柔和灰鼠绿）                | `#84382b`（暖陶土褐红）              | **森绿 + 赤陶红**（自然界经典原色，绿与赤土色相差 130°，完全不同色，沉稳雅致）       |
+  | **Wet Lab**    | 试剂水相与实验严谨 | `#14354c`（深邃实验海蓝）         | `#c6e5f2`（冰川淡海泡蓝）              | `#88541e`（暖琥珀金棕）              | **海蓝 + 琥珀金**（冷暖互补色相差 174°，学术经典双色组合，一眼即分，典雅庄重）       |
+  | **Dry Lab**    | 数据算法与科技理性 | `#153e34`（深松针墨黑青）         | `#c2ebe0`（薄荷冰绿）                  | `#633256`（深紫晶墨色）              | **松黑青 + 紫晶墨**（算法理性与数理几何，青与深冷紫相映，拓扑纵深感极强且毫不突兀）   |
+  | **Engagement** | 人文走访与社会温情 | `#4a2c1d`（深沉红咖褐）           | `#f7ddce`（柔杏微光）                  | `#174a47`（深孔雀墨黛青）            | **暖咖褐 + 孔雀墨青**（暖木与冷翠互补，大地与水天相映，极具人文叙事温度与沉静感）     |
+  | **Team**       | 团队活力与金色荣誉 | `#3e2d14`（深古铜黑褐）           | `#f8ecbe`（浅金麦香）                  | `#762338`（深勃艮第酒红）            | **古铜金 + 勃艮第酒红**（古典勋章与高校桂冠经典双色，金铜厚重，茜红深邃，典范感十足） |
 - **工程落地契约**：
   - 各模块的双色真理唯一收敛在 `src/styles/route-palette-[module].css` 中，严禁在页面局部写死 hex。
   - 阅读器全局样式 `wiki-route-skin.css` 统一消费 `--route-subheading-ink`，确保全站所有页面自动继承对应 Part 的层级规划。
@@ -285,13 +296,15 @@ export function AlternativePlatform() {
 
 ## 六、老旧代码识别与渐进式迁移 Checklist
 
-### 典型反模式（Bad Smells）识别：
+### 典型反模式（Bad Smells）识别
+
 1. ❌ **巨石文件反模式**：类似 `wetLabPages.ts` 将 5 个不同页面的数据塞在一个 40KB 巨大文件里。
 2. ❌ **根目录散落反模式**：类似 `sustainability` 在 `components/wiki/` 根目录独占 19 个文件、在 `data/` 散落 8 个文件。
 3. ❌ **全局打补丁反模式**：在全局 `wiki-route-skin.css` 或 `WikiRoutePage.tsx` 里写 `if (route === '/xxx')` 特判代码。
 4. ❌ **多层嵌套重导反模式**：类似 `descriptionData.ts` → `descriptionPage.ts` → `projectPages.ts` 无意义的三层包装。
 
-### 迁移新页面时的 Check List：
+### 迁移新页面时的 Check List
+
 - [ ] 数据文件放在了对应模块子目录中（例如 `src/data/project/[page]Page.ts`）
 - [ ] 数据文件中没有导入 React，没有直接书写 JSX
 - [ ] 图片超过 3 张时，建立了独立的 `[page]Assets.ts`

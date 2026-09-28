@@ -67,7 +67,7 @@ export type WikiContentBlock =
     }
   | {
       type: "mini-visual";
-      label: string;
+      label?: string;
       title: string;
       items: string[];
       tone?: "navy" | "gold" | "care";

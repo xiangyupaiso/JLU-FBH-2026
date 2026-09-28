@@ -445,10 +445,10 @@
   left: 39px;
   width: 92px;
   color: inherit;
-  font-family: var(--font-display);
+  font-family: var(--font-sans);
   font-size: 20px;
-  font-weight: 650;
-  letter-spacing: -0.065em;
+  font-weight: 600;
+  letter-spacing: -0.045em;
   line-height: 24px;
   white-space: nowrap;
   opacity: max(0, calc(1 - var(--logo-fold-progress) * 1.28));

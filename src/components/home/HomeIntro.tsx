@@ -2,6 +2,7 @@ import { type RefObject, useLayoutEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
+import { whenPageLoaderLeaves } from "../../utils/pageLoader";
 import {
   INTRO_WORDMARK_GLYPHS,
   INTRO_WORDMARK_STROKES,
@@ -16,12 +17,12 @@ const SUBTITLE =
 
 // Seconds the sparkler takes to write the whole signature (lifts included),
 // and the pause as it lifts between strokes.
-const WRITE_DURATION = 2.4;
+const WRITE_DURATION = 1.5;
 const LIFT = 0.08;
 // Seconds of pure black before the first stroke, and how long the finished
 // signature holds before the flash.
 const START = 0.6;
-const HOLD = 4;
+const HOLD = 2;
 // The mask's round cap runs slightly ahead of the dash length.
 const CAP_LEAD = 40;
 const MAX_EMBERS = 140;
@@ -68,7 +69,7 @@ interface HomeIntroProps {
 export function HomeIntro({ scene }: HomeIntroProps) {
   const [playing, setPlaying] = useState(shouldPlayIntro);
   const layerRef = useRef<HTMLDivElement>(null);
-  const skipRef = useRef<() => void>(() => {});
+  const skipRef = useRef<() => void>(() => { });
 
   // Set before paint so neither the header word nor the scroll cue flickers.
   useLayoutEffect(() => {
@@ -187,7 +188,16 @@ export function HomeIntro({ scene }: HomeIntroProps) {
         }
       };
 
-      const timeline = gsap.timeline({ defaults: { ease: "none" } });
+      // Held until the page loader starts leaving, so the signature is never
+      // written behind the loader on a slow first load.
+      const timeline = gsap.timeline({
+        defaults: { ease: "none" },
+        paused: true,
+      });
+      let disposed = false;
+      void whenPageLoaderLeaves().then(() => {
+        if (!disposed) timeline.play();
+      });
 
       // The signature is written on pure black; the woman stays hidden until
       // the flash.
@@ -225,8 +235,8 @@ export function HomeIntro({ scene }: HomeIntroProps) {
               placeTip(
                 path,
                 length -
-                  Number(gsap.getProperty(path, "strokeDashoffset")) +
-                  CAP_LEAD,
+                Number(gsap.getProperty(path, "strokeDashoffset")) +
+                CAP_LEAD,
               ),
           },
           cursor,
@@ -340,11 +350,11 @@ export function HomeIntro({ scene }: HomeIntroProps) {
         const current = Number(gsap.getProperty(flight, axis));
         return axis === "x"
           ? landing.left +
-              landing.width / 2 -
-              (box.left + box.width / 2 - current)
+          landing.width / 2 -
+          (box.left + box.width / 2 - current)
           : landing.top +
-              landing.height / 2 -
-              (box.top + box.height / 2 - current);
+          landing.height / 2 -
+          (box.top + box.height / 2 - current);
       };
       timeline.to(
         flight,
@@ -391,6 +401,7 @@ export function HomeIntro({ scene }: HomeIntroProps) {
       window.addEventListener("keydown", onKey);
 
       return () => {
+        disposed = true;
         window.removeEventListener("resize", resize);
         window.removeEventListener("wheel", skip);
         window.removeEventListener("touchmove", skip);

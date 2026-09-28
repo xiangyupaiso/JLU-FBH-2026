@@ -10,6 +10,14 @@ gsap.registerPlugin(useGSAP, ScrollTrigger, SplitText);
 
 const ART_REVEAL_DURATION = 0.28;
 const ARTWORK_START = 0.06;
+// CROSS-FILE: .story-hope-light span size in home-story.css.
+const HOPE_LIGHT_SIZE = 800;
+// The heart sits ~63% down scene-9-layer-3; the glow starts ~2.2× that
+// layer's width (about 320px on desktop).
+const HOPE_HEART_Y = 0.63;
+const HOPE_GLOW_SCALE = 2.2;
+// The "If it comes back…" title warms slightly once it is under the light.
+const HOPE_LIT_INK = "#603846";
 
 declare global {
   interface Window {
@@ -558,6 +566,91 @@ export function useHomeStoryAnimation(root: RefObject<HTMLDivElement | null>) {
               });
             }
           });
+
+        // Hope light: the warm glow at the patient's heart (scene 9) lifts
+        // out of the artwork and settles as the overhead light of its copy.
+        // Both ends move while scrolling, so rects are read live every
+        // update, as in the finale carry below.
+        const hope = root.current?.querySelector<HTMLElement>("#what-we-hope");
+        const hopeArt = timelines.get("what-we-hope")?.scrollTrigger;
+        const hopeReading = ScrollTrigger.getById("home-what-we-hope-reading");
+        const hopeFigure = hope?.querySelector<HTMLElement>(".story-art--9");
+        const heart = hopeFigure?.querySelector<HTMLElement>('[data-layer="3"]');
+        const hopeCopy = hope?.querySelector<HTMLElement>(".story-copy");
+        const hopeTitle = hopeCopy?.querySelector<HTMLElement>("h2");
+        if (hope && hopeArt && hopeReading && hopeFigure && heart && hopeCopy && hopeTitle) {
+          const frame = document.createElement("div");
+          frame.className = "story-hope-light";
+          frame.setAttribute("aria-hidden", "true");
+          const light = document.createElement("span");
+          frame.append(light);
+          hope.append(frame);
+          cleanups.push(() => {
+            frame.remove();
+            gsap.set([hopeFigure, hopeTitle], { clearProps: "opacity,color" });
+          });
+          const clamp = gsap.utils.clamp(0, 1);
+          const glide = gsap.parseEase("sine.inOut");
+          const bloom = gsap.parseEase("sine.out");
+          const ink = gsap.utils.interpolate(
+            getComputedStyle(hopeTitle).color,
+            HOPE_LIT_INK,
+          );
+          const placeLight = (self: ScrollTrigger) => {
+            // 0 → 1 from lift-off to the copy's reading pin; afterwards the
+            // light stays on the copy's top edge and scrolls away with it.
+            const t = clamp(
+              (self.scroll() - self.start) / (hopeReading.start - self.start || 1),
+            );
+            const frameTop = frame.getBoundingClientRect().top;
+            const copy = hopeCopy.getBoundingClientRect();
+            const shown =
+              self.progress > 0 && self.progress < 1 && t > 0 && copy.bottom > frameTop;
+            frame.style.visibility = shown ? "visible" : "hidden";
+            frame.classList.toggle("is-lit", shown && t >= 1);
+            gsap.set(hopeFigure, { opacity: 1 - 0.5 * clamp(t / 0.6) });
+            gsap.set(hopeTitle, { color: ink(clamp((t - 0.55) / 0.45)) });
+            if (!shown) return;
+            const p = glide(t);
+            const from = heart.getBoundingClientRect();
+            const glow = from.width * HOPE_GLOW_SCALE;
+            const width = gsap.utils.interpolate(glow, copy.width * 1.5, p);
+            const height = gsap.utils.interpolate(
+              glow,
+              Math.min(copy.height, window.innerHeight) * 1.1,
+              p,
+            );
+            const x = gsap.utils.interpolate(
+              from.left + from.width / 2,
+              copy.left + copy.width / 2,
+              p,
+            );
+            // Aim for the top of the viewport until the copy's own top edge
+            // rises past it, so the light only ever travels upwards.
+            const y = gsap.utils.interpolate(
+              from.top + from.height * HOPE_HEART_Y,
+              Math.min(frameTop, copy.top),
+              p,
+            );
+            gsap.set(light, {
+              x: x - HOPE_LIGHT_SIZE / 2,
+              y: y - frameTop - HOPE_LIGHT_SIZE / 2,
+              scaleX: width / HOPE_LIGHT_SIZE,
+              scaleY: height / HOPE_LIGHT_SIZE,
+              opacity: bloom(clamp(t / 0.3)),
+            });
+          };
+          ScrollTrigger.create({
+            id: "home-hope-light",
+            trigger: hope,
+            // Lift off while the art is still held, then follow the copy
+            // until it has scrolled out after its reading pin.
+            start: () => hopeArt.end - window.innerHeight * 0.18,
+            end: () => hopeReading.end + window.innerHeight,
+            onUpdate: placeLight,
+            onRefresh: placeLight,
+          });
+        }
 
         // CROSS-FILE: id owned by HomeFinale.tsx; Navbar.tsx reads it too.
         const finale = root.current?.querySelector<HTMLElement>("#home-finale");

@@ -99,14 +99,19 @@ const sstQnSection: WikiSection = {
     "SST-QN 从系统视角分析 17 项 SDG 之间的相互作用，区分方向、直接与间接作用、协同与权衡，并对每一条作用关系的证据质量进行校准。",
   blocks: [
     {
+      type: "prose",
+      paragraphs: [
+        sstqnParagraph("motivation"),
+        sstqnParagraph("directed-network"),
+      ],
+    },
+    {
       type: "split",
       id: "sstqn-classification",
       prose: [
         {
           type: "prose",
           paragraphs: [
-            sstqnParagraph("motivation"),
-            sstqnParagraph("directed-network"),
             sstqnParagraph("classification-intro"),
           ],
         },
@@ -115,13 +120,18 @@ const sstQnSection: WikiSection = {
     },
     { type: "feature", key: "sdg-boundary-matrix" },
     {
+      type: "prose",
+      paragraphs: [
+        sstqnParagraph("classification-definitions"),
+      ],
+    },
+    {
       type: "split",
       id: "sstqn-score",
       prose: [
         {
           type: "prose",
           paragraphs: [
-            sstqnParagraph("classification-definitions"),
             sstqnParagraph("score-model"),
           ],
         },

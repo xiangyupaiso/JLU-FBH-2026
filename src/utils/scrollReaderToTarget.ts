@@ -1,4 +1,17 @@
 /**
+ * Document scrollY at which the reader mat pins. The mat is `position: sticky`
+ * with `top: var(--header-height)`, so it pins when the track's top reaches the
+ * header's bottom edge — not the viewport top. Using the raw track top shifted
+ * the whole projection by one header height (the frame idled for the first
+ * 78px and the last 78px of the article were never reached).
+ */
+export function readerTrackStart(track: HTMLElement) {
+  const mat = track.firstElementChild as HTMLElement | null;
+  const pinTop = mat ? Number.parseFloat(getComputedStyle(mat).top) || 0 : 0;
+  return track.getBoundingClientRect().top + window.scrollY - pinTop;
+}
+
+/**
  * Scroll a reader-route section into the single DOCUMENT timeline.
  *
  * Reader frames stay pinned while the document owns the scroll and projects
@@ -18,7 +31,7 @@ export function scrollReaderToTarget(
     return;
   }
 
-  const trackStart = track.getBoundingClientRect().top + window.scrollY;
+  const trackStart = readerTrackStart(track);
   const innerBounds = inner.getBoundingClientRect();
   const targetBounds = target.getBoundingClientRect();
   const innerTop =

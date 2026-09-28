@@ -8,15 +8,279 @@
       type="image/x-icon"
     />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Lexend:wght@300;400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
     <title>%VITE_TEAM_NAME% - iGEM %VITE_TEAM_YEAR%</title>
+    <!--
+      Page loader — critical CSS is inlined so the loader paints from the HTML
+      alone, before the app bundle or the main stylesheet arrive (the build
+      makes that stylesheet non-render-blocking, see vite.config.ts). Runtime
+      control lives in src/utils/pageLoader.ts.
+
+      Stage timeline (relative to .is-playing, i.e. once the art has decoded):
+        1  0.00–0.90s  hands rise in over the watercolor, then breathe
+        2  0.45–1.95s  ribbon draws left → right; the loop closes at 1.50s
+        3  1.50s       lamb pops 0.9 → 1 with a halo
+        4  1.65s →     petals drift, stars twinkle, dots bounce
+      Only transform / opacity animate after the ribbon stroke finishes, and
+      the whole layer is display:none once hidden, so it costs nothing later.
+    -->
+    <link
+      rel="preload"
+      as="font"
+      type="font/woff2"
+      crossorigin
+      href="/src/assets/fonts/fredoka-variable.woff2"
+    />
+    <style>
+      @font-face {
+        font-family: "Fredoka";
+        src: url("/src/assets/fonts/fredoka-variable.woff2") format("woff2");
+        font-style: normal;
+        font-weight: 300 700;
+        font-display: swap;
+      }
+      html {
+        background: #fde4ca;
+      }
+      .page-loader {
+        position: fixed;
+        inset: 0;
+        z-index: 99999;
+        overflow: hidden;
+        background: #fde4ca;
+        opacity: 1;
+        transition: opacity 0.38s cubic-bezier(0.2, 0.9, 0.3, 1);
+        user-select: none;
+        -webkit-user-select: none;
+      }
+      .page-loader[hidden] {
+        display: none;
+      }
+      .page-loader.is-leaving {
+        opacity: 0;
+        pointer-events: none;
+      }
+      /* Cover: the 1264×711 canvas always fills the viewport. */
+      .page-loader__stage {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: max(100vw, 177.7778vh);
+        height: max(100vh, 56.25vw);
+        transform: translate(-50%, -50%);
+      }
+      .page-loader__stage > * {
+        position: absolute;
+      }
+      .page-loader img,
+      .page-loader svg {
+        display: block;
+        width: 100%;
+        height: 100%;
+      }
+      /* The watercolor (24 kB) paints the moment it arrives, over a matching
+         base colour, instead of waiting for the rest of the stage. */
+      .pl-bg { inset: 0; }
+      .pl-hands { left: 0; top: 27.567%; width: 100%; height: 72.433%; opacity: 0; }
+      .pl-ribbon { inset: 0; }
+      .pl-glow {
+        left: 52.1%;
+        top: 52.5%;
+        width: 34%;
+        aspect-ratio: 1;
+        margin: -17% 0 0 -17%;
+        border-radius: 50%;
+        background: radial-gradient(
+          circle,
+          rgba(255, 250, 236, 0.95) 0%,
+          rgba(255, 226, 214, 0.55) 38%,
+          rgba(255, 214, 200, 0) 70%
+        );
+        opacity: 0;
+      }
+      .pl-lamb {
+        left: 30.301%; top: 29.255%; width: 64.32%; height: 47.398%;
+        transform-origin: 33.9% 49%;
+        opacity: 0;
+      }
+      .pl-petals { left: 8.07%; top: 52.743%; width: 57.199%; height: 19.831%; opacity: 0; }
+      .pl-stars { left: 12.342%; top: 4.079%; width: 71.994%; height: 88.608%; opacity: 0; }
+      .pl-stroke { stroke-dasharray: 1000 1100; stroke-dashoffset: 1060; }
+      .pl-fill { opacity: 0; }
+
+      /* Caption sits below the lamb on the canvas, but never below the fold
+         on ultrawide screens where the cover canvas overflows vertically. */
+      .page-loader__caption {
+        position: absolute;
+        left: 50%;
+        top: min(calc(50vh + 0.34 * max(100vh, 56.25vw)), calc(100vh - 3.2rem));
+        transform: translate(-50%, -50%);
+        display: flex;
+        align-items: baseline;
+        margin: 0;
+        color: #634f46;
+        font: 500 clamp(1.6rem, 3.2vw, 2.5rem) / 1 "Fredoka", ui-rounded,
+          "Arial Rounded MT Bold", system-ui, sans-serif;
+        letter-spacing: 0.05em;
+        text-shadow: 0 1px 3px rgba(255, 255, 255, 0.9);
+        opacity: 0;
+      }
+      .page-loader__caption span {
+        display: inline-block;
+        margin-left: 2px;
+        font-weight: 700;
+        opacity: 0.3;
+      }
+
+      .page-loader.is-playing .page-loader__caption { animation: pl-fade 0.4s ease-out calc(0.1s - var(--pl-skip, 0s)) both; }
+      .page-loader.is-playing .pl-hands { animation: pl-rise 0.9s cubic-bezier(0.22, 0.8, 0.3, 1) calc(0.05s - var(--pl-skip, 0s)) both; }
+      .page-loader.is-playing .pl-hands img { animation: pl-float 3.8s ease-in-out calc(0.95s - var(--pl-skip, 0s)) infinite; }
+      .page-loader.is-playing .pl-stroke {
+        animation: pl-draw 1.5s linear calc(0.45s - var(--pl-skip, 0s)) both;
+      }
+      .page-loader.is-playing .pl-fill { animation: pl-fade 0.35s ease-out calc(1.75s - var(--pl-skip, 0s)) both; }
+      .page-loader.is-playing .pl-glow { animation: pl-halo 0.9s ease-out calc(1.5s - var(--pl-skip, 0s)) both; }
+      .page-loader.is-playing .pl-lamb {
+        animation: pl-pop 0.62s cubic-bezier(0.34, 1.56, 0.64, 1) calc(1.5s - var(--pl-skip, 0s)) both;
+      }
+      .page-loader.is-playing .pl-lamb img { animation: pl-breathe 2.8s ease-in-out calc(2.12s - var(--pl-skip, 0s)) infinite; }
+      .page-loader.is-playing .pl-petals { animation: pl-fade 0.6s ease-out calc(1.65s - var(--pl-skip, 0s)) both; }
+      .page-loader.is-playing .pl-petals img { animation: pl-drift 3.2s ease-in-out calc(1.65s - var(--pl-skip, 0s)) infinite; transform-origin: 20% 70%; }
+      .page-loader.is-playing .pl-stars { animation: pl-fade 0.5s ease-out calc(1.65s - var(--pl-skip, 0s)) both; }
+      .page-loader.is-playing .pl-stars img { animation: pl-twinkle 2.2s ease-in-out calc(1.65s - var(--pl-skip, 0s)) infinite; }
+      .page-loader.is-playing .page-loader__caption span {
+        animation: pl-dot 1.25s ease-in-out calc(1.65s - var(--pl-skip, 0s)) infinite;
+      }
+      .page-loader.is-playing .page-loader__caption span:nth-child(2) { animation-delay: calc(1.87s - var(--pl-skip, 0s)); }
+      .page-loader.is-playing .page-loader__caption span:nth-child(3) { animation-delay: calc(2.09s - var(--pl-skip, 0s)); }
+
+      @keyframes pl-fade { from { opacity: 0; } to { opacity: 1; } }
+      @keyframes pl-rise {
+        from { opacity: 0; transform: translate3d(0, 6%, 0); }
+        to { opacity: 1; transform: none; }
+      }
+      @keyframes pl-float { 50% { transform: translate3d(0, -3px, 0); } }
+      /* Stroke 1060 → 264 closes the loop around the lamb (path fraction
+         0.736); the tail then eases out to the right edge. */
+      @keyframes pl-draw {
+        0% { stroke-dashoffset: 1060; animation-timing-function: cubic-bezier(0.4, 0, 0.7, 0.9); }
+        70% { stroke-dashoffset: 264; animation-timing-function: cubic-bezier(0.2, 0.5, 0.4, 1); }
+        100% { stroke-dashoffset: 0; }
+      }
+      @keyframes pl-halo {
+        0% { opacity: 0; transform: scale(0.55); }
+        45% { opacity: 1; }
+        100% { opacity: 0.6; transform: scale(1.12); }
+      }
+      @keyframes pl-pop {
+        0% { opacity: 0; transform: scale(0.9); }
+        30% { opacity: 1; }
+        100% { opacity: 1; transform: scale(1); }
+      }
+      @keyframes pl-breathe { 50% { transform: translate3d(0, -5px, 0) scale(1.02); } }
+      @keyframes pl-drift { 50% { transform: translate3d(0, -8px, 0) rotate(2.5deg); } }
+      @keyframes pl-twinkle {
+        0%, 100% { opacity: 0.55; transform: scale(0.96); }
+        50% { opacity: 1; transform: scale(1.05); }
+      }
+      @keyframes pl-dot {
+        0%, 80%, 100% { opacity: 0.3; transform: none; }
+        40% { opacity: 1; transform: translate3d(0, -6px, 0); }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .page-loader *,
+        .page-loader.is-playing * {
+          animation: none !important;
+        }
+        .pl-hands, .pl-lamb, .pl-petals, .pl-stars, .pl-fill,
+        .page-loader__caption, .page-loader__caption span {
+          opacity: 1;
+        }
+        .pl-glow { opacity: 0.6; }
+        .pl-stroke { stroke-dashoffset: 0; }
+      }
+    </style>
   </head>
   <body>
+    <div
+      id="page-loader"
+      class="page-loader"
+      role="status"
+      aria-live="polite"
+      aria-label="Loading page content"
+    >
+      <div class="page-loader__stage" aria-hidden="true">
+        <img class="pl-bg" src="/src/assets/loading/bg.webp" alt="" fetchpriority="high" />
+        <div class="pl-hands">
+          <img src="/src/assets/loading/hands.webp" alt="" fetchpriority="high" data-critical />
+        </div>
+        <svg class="pl-ribbon" viewBox="0 0 1264 711" preserveAspectRatio="none">
+          <defs>
+            <mask id="pl-ribbon-mask" maskUnits="userSpaceOnUse" x="0" y="0" width="1264" height="711">
+              <path
+                class="pl-stroke"
+                d="M -20 585 C 200 575, 380 535, 435 430 C 430 260, 510 110, 660 105 C 790 110, 845 220, 820 340 C 780 420, 690 455, 630 460 C 700 480, 820 485, 960 470 C 1070 455, 1170 435, 1284 415"
+                fill="none"
+                stroke="#fff"
+                stroke-width="215"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                pathLength="1000"
+              />
+              <rect class="pl-fill" width="1264" height="711" fill="#fff" />
+            </mask>
+          </defs>
+          <image
+            href="/src/assets/loading/ribbon.webp"
+            x="0"
+            y="90"
+            width="1264"
+            height="566"
+            preserveAspectRatio="none"
+            mask="url(#pl-ribbon-mask)"
+          />
+        </svg>
+        <div class="pl-glow"></div>
+        <div class="pl-lamb">
+          <img src="/src/assets/loading/lamb.webp" alt="" fetchpriority="high" data-critical />
+        </div>
+        <div class="pl-petals"><img src="/src/assets/loading/petals.webp" alt="" /></div>
+        <div class="pl-stars"><img src="/src/assets/loading/stars.webp" alt="" /></div>
+      </div>
+      <p class="page-loader__caption" aria-hidden="true">loading<span>.</span><span>.</span><span>.</span></p>
+    </div>
+    <script>
+      // Start the stage timeline once the key art has decoded, so the hands
+      // and ribbon never animate while still invisible. Wheel / touch on the
+      // loader must not scroll (or skip the Home intro) underneath it.
+      (function () {
+        var loader = document.getElementById("page-loader");
+        if (!loader) return;
+        var block = function (event) {
+          event.preventDefault();
+          event.stopPropagation();
+        };
+        loader.addEventListener("wheel", block, { passive: false });
+        loader.addEventListener("touchmove", block, { passive: false });
+
+        var play = function () {
+          loader.dataset.start = String(performance.now());
+          loader.classList.add("is-playing");
+        };
+        var fallback = setTimeout(play, 1500);
+        var decode = function (img) {
+          return img.decode ? img.decode().catch(function () {}) : null;
+        };
+        var art = [].slice.call(loader.querySelectorAll("[data-critical]"));
+        var ribbon = new Image();
+        ribbon.src = loader.querySelector("image").getAttribute("href");
+        art.push(ribbon);
+        Promise.all(art.map(decode)).then(function () {
+          clearTimeout(fallback);
+          play();
+        });
+      })();
+    </script>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>

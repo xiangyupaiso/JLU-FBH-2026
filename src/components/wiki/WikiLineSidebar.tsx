@@ -8,7 +8,7 @@ import {
   type RefObject,
 } from "react";
 import { Link } from "react-router-dom";
-import { scrollReaderToTarget } from "../../utils";
+import { readerTrackStart, scrollReaderToTarget } from "../../utils";
 
 export interface WikiLineSidebarItem {
   id: string;
@@ -260,7 +260,7 @@ export function WikiLineSidebar({
 
     // Scrub through the document timeline; the pinned frame's scrollTop is
     // projected from it by the reader scroll route.
-    const start = track.getBoundingClientRect().top + window.scrollY;
+    const start = readerTrackStart(track);
     const travel = Math.max(1, inner.scrollHeight - inner.clientHeight);
     window.scrollTo(0, start + travel * progress);
   };

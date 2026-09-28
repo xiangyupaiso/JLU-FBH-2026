@@ -397,7 +397,7 @@
 }
 
 .wiki-section {
-  padding-bottom: clamp(88px, 9vw, 124px);
+  padding-bottom: 0;
 }
 
 .wiki-section__heading {
@@ -1790,7 +1790,7 @@
 }
 
 .wiki-section {
-  padding-bottom: clamp(82px, 8vw, 112px);
+  padding-bottom: 0;
 }
 
 .wiki-section__heading {
@@ -2212,15 +2212,21 @@
 .wiki-blocks .wiki-epigraph,
 .wiki-blocks .wiki-boundary {
   max-width: none;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.wiki-blocks > *:first-child {
+  margin-top: 0 !important;
 }
 
 /* Prose-anchored chart pairs: narrative left, compact figure aside right. */
 .wiki-blocks--split {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 400px);
-  gap: clamp(28px, 4vw, 56px);
-  align-items: center;
-  margin-top: 48px;
+  grid-template-columns: minmax(0, 1fr) minmax(260px, 320px);
+  gap: clamp(24px, 3vw, 44px);
+  align-items: start;
+  margin-top: 36px;
 }
 
 .wiki-blocks--split__prose,

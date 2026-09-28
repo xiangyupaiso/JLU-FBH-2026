@@ -1,5 +1,6 @@
 import {
   createContext,
+  memo,
   useContext,
   useMemo,
   useRef,
@@ -175,7 +176,7 @@ function ItemCollection({ section }: { section: WikiSection }) {
                     </p>
                   ) : null}
 
-                  <p>{item.body}</p>
+                  <p>{renderInlineFormatting(item.body)}</p>
 
                   {item.evidence?.length ? (
                     <section>
@@ -221,6 +222,19 @@ function renderSubheadingTitle(title: string) {
   );
 }
 
+function renderInlineFormatting(text: string): ReactNode {
+  if (!text || !text.includes("**")) {
+    return text;
+  }
+  const parts = text.split(/(\*\*[^*]+?\*\*)/g);
+  return parts.map((part, index) => {
+    if (part.startsWith("**") && part.endsWith("**")) {
+      return <strong key={index}>{part.slice(2, -2)}</strong>;
+    }
+    return part;
+  });
+}
+
 function RouteBlock({
   block,
   features,
@@ -244,7 +258,7 @@ function RouteBlock({
       return (
         <div className="wiki-prose" data-wiki-reveal>
           {block.paragraphs.map((paragraph) => (
-            <p key={paragraph}>{paragraph}</p>
+            <p key={paragraph}>{renderInlineFormatting(paragraph)}</p>
           ))}
         </div>
       );
@@ -266,7 +280,9 @@ function RouteBlock({
                   {part.label}
                 </a>
               ) : (
-                <span key={`${part.text}-${index}`}>{part.text}</span>
+                <span key={`${part.text}-${index}`}>
+                  {renderInlineFormatting(part.text)}
+                </span>
               ),
             )}
           </p>
@@ -275,7 +291,12 @@ function RouteBlock({
     case "figure":
       return (
         <figure className="wiki-figure" data-wiki-reveal>
-          <img src={block.src} alt={block.alt} />
+          <img
+            src={block.src}
+            alt={block.alt}
+            loading="lazy"
+            decoding="async"
+          />
           {block.caption ? <figcaption>{block.caption}</figcaption> : null}
         </figure>
       );
@@ -341,7 +362,7 @@ function RouteBlock({
           className={`wiki-mini-visual wiki-mini-visual--${block.tone ?? "navy"}`}
           data-wiki-reveal
         >
-          <span>{block.label}</span>
+          {block.label ? <span>{block.label}</span> : null}
           <strong>{block.title}</strong>
           <ol>
             {block.items.map((item, index) => (
@@ -362,7 +383,7 @@ function RouteBlock({
           {block.label ? (
             <span className="wiki-callout__label">{block.label}</span>
           ) : null}
-          <p>{block.body}</p>
+          <p>{renderInlineFormatting(block.body)}</p>
         </aside>
       );
     case "subheading":
@@ -401,14 +422,14 @@ function RouteBlock({
     case "note":
       return (
         <aside className="wiki-boundary" data-wiki-reveal>
-          <p>{block.body}</p>
+          <p>{renderInlineFormatting(block.body)}</p>
         </aside>
       );
     case "epigraph":
       return (
         <figure className="wiki-epigraph" data-wiki-reveal>
-          <blockquote>“{block.quote}”</blockquote>
-          <p className="wiki-epigraph__zh">{block.translationZh}</p>
+          <blockquote>“{renderInlineFormatting(block.quote)}”</blockquote>
+          <p className="wiki-epigraph__zh">{renderInlineFormatting(block.translationZh)}</p>
           <figcaption>
             {block.attribution} · {block.attributionRole}
           </figcaption>
@@ -521,7 +542,7 @@ function RouteSection({
           {section.body?.length ? (
             <div className="wiki-prose" data-wiki-reveal>
               {section.body.map((paragraph) => (
-                <p key={paragraph}>{paragraph}</p>
+                <p key={paragraph}>{renderInlineFormatting(paragraph)}</p>
               ))}
             </div>
           ) : null}
@@ -539,7 +560,7 @@ function RouteSection({
               {/* Note labels carry the record id (DR–01, Release gate…) and are
                   hidden by the Wet Lab manuscript skin; the slot is kept. */}
               {section.note.label ? <span>{section.note.label}</span> : null}
-              <p>{section.note.body}</p>
+              <p>{renderInlineFormatting(section.note.body)}</p>
             </aside>
           ) : null}
         </>
@@ -547,6 +568,8 @@ function RouteSection({
     </section>
   );
 }
+
+const MemoRouteSection = memo(RouteSection);
 
 export function WikiRoutePage({
   content,
@@ -656,7 +679,7 @@ export function WikiRoutePage({
               >
                 <article className="wiki-article">
                   {content.sections.map((section) => (
-                    <RouteSection
+                    <MemoRouteSection
                       key={section.id}
                       section={section}
                       feature={features[section.id]}

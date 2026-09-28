@@ -1,0 +1,179 @@
+/* ==========================================================================
+   CirCure Page Preloader & Route Transition (Full Screen / Cover)
+   ========================================================================== */
+
+.page-preloader {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 99999;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffd9c7;
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.4s cubic-bezier(0.2, 0.9, 0.3, 1), visibility 0.4s;
+  pointer-events: auto;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.page-preloader--fading {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* 铺满整个屏幕 (Cover 模式)：不管任何屏幕分辨率，永远 100% 铺满，零黑边、零留白 */
+.page-preloader__stage {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: max(100vw, calc(100vh * (1264 / 711)));
+  height: max(100vh, calc(100vw * (711 / 1264)));
+  aspect-ratio: 1264 / 711;
+  overflow: hidden;
+}
+
+/* 各图层在 1264x711 画布内 100% 绝对对齐 */
+.page-preloader__layer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  object-fit: fill;
+}
+
+/* 手部：轻微呼吸漂浮 */
+.page-preloader__layer--hands {
+  animation: preloaderHandsFloat 3.8s ease-in-out infinite;
+}
+
+@keyframes preloaderHandsFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+}
+
+/* 丝带容器 */
+.page-preloader__layer--ribbon {
+  display: block;
+}
+
+.page-preloader__ribbon-svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* 小羊：柔软呼吸 */
+.page-preloader__layer--lamb {
+  transform-origin: 50% 50%;
+  animation: preloaderLambBreathe 2.8s ease-in-out infinite;
+}
+
+@keyframes preloaderLambBreathe {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-5px) scale(1.02);
+  }
+}
+
+/* 花瓣：随风轻微摇曳漂浮 */
+.page-preloader__layer--petals {
+  animation: preloaderPetalsDrift 3.2s ease-in-out infinite;
+  transform-origin: 20% 70%;
+}
+
+@keyframes preloaderPetalsDrift {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(2.5deg);
+  }
+}
+
+/* 星星：温暖闪烁与微光 */
+.page-preloader__layer--stars {
+  animation: preloaderStarsTwinkle 2.2s ease-in-out infinite;
+  transform-origin: center;
+}
+
+@keyframes preloaderStarsTwinkle {
+  0%, 100% {
+    opacity: 0.55;
+    transform: scale(0.95);
+    filter: drop-shadow(0 0 2px rgba(255, 200, 50, 0.3));
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.08);
+    filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.75));
+  }
+}
+
+/* Loading 居中文案：严格定位于小羊下方、双手中间 */
+.page-preloader__caption {
+  position: absolute;
+  left: 50%;
+  bottom: 11.5%;
+  transform: translateX(-50%);
+  display: inline-flex;
+  align-items: baseline;
+  font-family: "Fredoka", "Newsreader", cursive, sans-serif;
+  font-size: clamp(1.6rem, 3.2vw, 2.5rem);
+  font-weight: 500;
+  color: #634f46;
+  letter-spacing: 0.05em;
+  pointer-events: none;
+  text-shadow: 0 1px 3px rgba(255, 255, 255, 0.9);
+}
+
+.page-preloader__word {
+  margin-right: 3px;
+}
+
+.page-preloader__dots {
+  display: inline-flex;
+  gap: 3px;
+}
+
+.page-preloader__dots .dot {
+  display: inline-block;
+  font-weight: 700;
+  animation: preloaderDotJump 1.25s infinite ease-in-out both;
+}
+
+.page-preloader__dots .dot--1 {
+  animation-delay: 0s;
+}
+
+.page-preloader__dots .dot--2 {
+  animation-delay: 0.22s;
+}
+
+.page-preloader__dots .dot--3 {
+  animation-delay: 0.44s;
+}
+
+@keyframes preloaderDotJump {
+  0%, 80%, 100% {
+    opacity: 0.2;
+    transform: translateY(0);
+  }
+  40% {
+    opacity: 1;
+    transform: translateY(-6px);
+  }
+}

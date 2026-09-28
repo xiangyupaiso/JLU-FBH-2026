@@ -1,4 +1,5 @@
 import { useEffect, type RefObject } from "react";
+import { readerTrackStart } from "../utils";
 
 /**
  * Makes the document the single scroll source for reader routes. The article
@@ -30,7 +31,7 @@ export function useWetLabScrollRoute(
     const refresh = () => {
       extra = Math.max(0, inner.scrollHeight - inner.clientHeight);
       track.style.setProperty("--reader-scroll-extra", `${extra}px`);
-      start = track.getBoundingClientRect().top + window.scrollY;
+      start = readerTrackStart(track);
       sync();
     };
 
@@ -59,6 +60,10 @@ export function useWetLabScrollRoute(
     resizeObserver.observe(track);
     resizeObserver.observe(frame);
     resizeObserver.observe(inner);
+    // `inner` has a fixed height, so it never reports content growth. Watch
+    // the article itself so lazy images, opened accordions and late feature
+    // renders extend the timeline instead of cutting off the page's tail.
+    Array.from(inner.children).forEach((child) => resizeObserver.observe(child));
     window.addEventListener("scroll", requestSync, { passive: true });
     window.addEventListener("resize", refresh, { passive: true });
     inner.addEventListener("keydown", onKeyDown);

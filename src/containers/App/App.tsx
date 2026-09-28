@@ -7,12 +7,16 @@ import "../../styles/circure-back-to-top.css";
 import "../../styles/circure-cursor.css";
 import { Navigate, Route, Routes, useLocation } from "react-router-dom";
 import { getPathMapping, stringToSlug } from "../../utils";
-import { useEffect } from "react";
+import { useEffect, useLayoutEffect } from "react";
 import { Navbar } from "../../components/Navbar";
 import { Header } from "../../components/Header";
 import { NotFound } from "../../components/NotFound";
 import { Footer } from "../../components/Footer";
 import { BackToTop } from "../../components/BackToTop";
+import {
+  hidePageLoaderWhenReady,
+  showPageLoader,
+} from "../../utils/pageLoader";
 
 const TEAM_ROUTES = new Set(["/roster", "/attributions", "/activities"]);
 
@@ -62,6 +66,14 @@ const App = () => {
     pathname.split(`${stringToSlug(import.meta.env.VITE_TEAM_NAME)}`).pop() ||
     "/";
   const isRouteReader = ROUTE_READER_ROUTES.has(currentPath);
+
+  // Each route loads its own art on demand, so every route change is covered
+  // by the static loader from index.html until that route is presentable.
+  // Layout effect: the loader must be up before the new page's first paint.
+  useLayoutEffect(() => {
+    showPageLoader();
+    hidePageLoaderWhenReady();
+  }, [pathname]);
 
   // Set Page Title
   const title =

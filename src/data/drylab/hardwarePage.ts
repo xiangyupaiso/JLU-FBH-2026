@@ -56,7 +56,6 @@ export const hardwarePage: WikiPageContent = {
           ],
           "aside": {
             "type": "mini-visual",
-            "label": "SYSTEM AT A GLANCE",
             "title": "One chamber, three controls",
             "items": [
               "sealed reaction space",
@@ -120,7 +119,6 @@ export const hardwarePage: WikiPageContent = {
           ],
           "aside": {
             "type": "mini-visual",
-            "label": "ENGINEERING BOTTLENECK",
             "title": "Three pressures on one workflow",
             "items": [
               "reaction conditions",
@@ -671,7 +669,6 @@ export const hardwarePage: WikiPageContent = {
           ],
           "aside": {
             "type": "mini-visual",
-            "label": "GEN 1 → GEN 2",
             "title": "Four limitations drive the revision",
             "items": [
               "throughput",
@@ -977,7 +974,6 @@ export const hardwarePage: WikiPageContent = {
           ],
           "aside": {
             "type": "mini-visual",
-            "label": "EVIDENCE BOUNDARY",
             "title": "What remains unverified",
             "items": [
               "thermal uniformity",

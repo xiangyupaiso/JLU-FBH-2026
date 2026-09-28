@@ -2018,7 +2018,6 @@
 /* The shared reader frame owns clipping and document-scroll projection.
    hidden on just the x axis computes y to auto, creating an accidental inner
    scroller when chart rounding or animated descendants overflow. */
-.wiki-page.wiki-page--sustainability .wiki-article,
 .wiki-page.wiki-page--sustainability .wiki-feature {
   overflow-x: clip;
   overflow-y: visible;

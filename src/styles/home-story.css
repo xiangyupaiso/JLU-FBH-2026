@@ -106,6 +106,56 @@ body:has(.home-story) .circure-back-to-top {
   --next-bg: #f7e7e6;
   --scene-hold: 145svh;
 }
+/* Hope light: useHomeStoryAnimation.ts appends this to #what-we-hope and
+   moves the span from the patient's heart to the top of the copy. The
+   frame starts below the header so the upper half of the halo never
+   spills onto it. Stacking: above the scene 9 art, below the copy text. */
+.story-chapter--hope .story-copy {
+  z-index: 2;
+}
+.story-hope-light {
+  position: fixed;
+  inset: var(--header-height) 0 0;
+  z-index: 1;
+  overflow: hidden;
+  visibility: hidden;
+  pointer-events: none;
+}
+.story-hope-light span {
+  position: absolute;
+  top: 0;
+  left: 0;
+  /* CROSS-FILE: HOPE_LIGHT_SIZE in useHomeStoryAnimation.ts. */
+  width: 800px;
+  height: 800px;
+  border-radius: 50%;
+  background: radial-gradient(
+    closest-side,
+    rgba(255, 245, 224, 0.85),
+    rgba(253, 216, 165, 0.45) 35%,
+    rgba(248, 203, 166, 0.16) 68%,
+    rgba(247, 231, 230, 0)
+  );
+  opacity: 0;
+  will-change: transform, opacity;
+}
+.story-hope-light.is-lit {
+  animation: story-hope-breathe 4.5s ease-in-out infinite;
+}
+@keyframes story-hope-breathe {
+  50% {
+    opacity: 0.92;
+  }
+}
+/* Without motion the halo simply rests on the copy. */
+.home-story:not(.has-story-motion) .story-chapter--hope .story-copy {
+  background: radial-gradient(
+    ellipse 75% 55% at 50% 0%,
+    rgba(255, 245, 224, 0.85),
+    rgba(253, 216, 165, 0.45) 35%,
+    rgba(247, 231, 230, 0)
+  );
+}
 .story-chapter::after {
   content: "";
   display: block;

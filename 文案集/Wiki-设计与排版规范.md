@@ -124,17 +124,21 @@ Markdown 原文
   - 该规则由 `WikiRoutePage.tsx` 中的 `renderSectionTitle()` 自动正则切割完成，严禁在纯文案数据文件 `src/data/` 中手动写入 `<br>`。
 - **马克笔高亮手绘涂刷（Highlighter Marker）**：标题各行通过 `.wiki-heading-marker` 渲染下半部主题色手绘马克笔条，配合 `box-decoration-break: clone` 实现平滑包裹。主题色与底色由各模块 palette 样式统一管理。
 - **章节背景水印**：左后方半透明数字序号（`.wiki-section-number`）等比收缩至 `clamp(48px, 5.2vw, 68px)`，透明度 `0.14`，衬托文字空间结构。
+- **大标题与下方正文间距契约（Heading-to-Body Spacing）**：大标题（`h2`）与下方首段正文之间的外边距统一收敛在 `24px`（仅比正文段间距 20px 略大一点点），首个内容块顶边距归零（`margin-top: 0`）。严禁产生 40px+ 的巨大虚空断层，确保章节标题与开篇导语视觉紧凑、自然咬合。
 - **纯粹性要求**：严禁加入顶部线条、滑动圆点、下划虚线等 AI 装饰；严禁添加 AI 生成的无意义 `kicker` 和 `summary` 占位文字，100% 忠实还原团队科研文本。
 
 ### 4.5 严禁 AI 眉标与机械小字规范（No-AI-Kickers & Eyebrows Ban）
 
-- **全面禁绝全大写等宽眉标（Eyebrows / Kickers）**：
-  - 严禁在小节标题（`h3`）、可视化组件头部、卡片顶部出现如 `PLATFORM MECHANISM`、`TARGET SELECTION`、`CLINICAL RATIONALE` 等全大写、字间距拉宽、缺乏人情味的伪分类小字。
+- **全面禁绝全大写等宽眉标（Eyebrows / Kickers）与组件角标小字**：
+  - 严禁在小节标题（`h3`）、可视化组件头部、侧边卡片顶部出现如 `PLATFORM MECHANISM`、`TARGET SELECTION`、`CLINICAL CONTEXT`、`QUALITY CONTROL`、`SYSTEM AT A GLANCE`、`ENGINEERING BOTTLENECK`、`EVIDENCE BOUNDARY` 等全大写、字间距拉宽、缺乏信息增量的通用伪分类小字。
+- **去 AI 痕迹原则（能去掉且能看懂的，全部彻底去掉）**：
+  - **核心准则**：只要组件自身的标题（如 `TNBC Challenges`、`Molecular Characterization`、`One chamber, three controls`）已经能够完全自解释其内容，**左上角小字一律彻底删除**！
+  - 严禁为了“看起来像张卡片”或“套模板”而机械地加上毫无语义价值的标签。没有信息增量的装饰就是干扰阅读的视觉噪音。
 - **信息处置与重构原则**：
-  1. **同义反复/虚词废话**：直接删除（如 `Full-Chain Verification Pipeline` 上方的 `PLATFORM MECHANISM`，如 `Antigen Module` 上方的 `TARGET SELECTION`）。
+  1. **同义反复/虚词废话**：直接删除（如 `TNBC Challenges` 上方的 `CLINICAL CONTEXT`，`Molecular Characterization` 上方的 `QUALITY CONTROL`）。
   2. **从属关系信息**：若副概念有学术价值，使用冒号合入标题（如 `Antigen Module: Target Selection`），自动触发冒号换行。
   3. **实体药理/属性分类**：作为主标题旁的微型优雅药理 pill 标签展示（如靶点旁的 `Epithelial glycoprotein`），不搞生硬黑框。
-  4. **描述性依据**：直接以卡片正文或左侧微线条的段落形式自然呈现，严禁使用类似 `CLINICAL RATIONALE` 的冷冰表单字段名顶头。
+  4. **描述性依据**：直接以卡片正文或左侧微线条的段落形式自然呈现，严禁使用冷冰表单字段名顶头。
 - **剥离伪装饰线条**：
   - 彻底去除小节标题左侧的彩色竖线（`.wiki-subheading::before`）。
   - 彻底去除卡片多余的货号式编号（如 `TARGET 01`、`CARD 02`），还原高级学术出版物的纯净质感。
@@ -202,27 +206,77 @@ Markdown 原文
 
 ## 7. 高级排版模式：Split 双栏与占位留白
 
-### 7.1 Split 伴随双栏（避免巨幅 Banner 割裂阅读）
+### 7.1 Split 伴随双栏铁律：严禁小组件挤压多段长文（伴随单段原则）
 
-当有图表需要配合左侧长段学术说明时，不要使用通栏 figure，使用 `split` 块：
+> **核心原则**：一个小组件让两大段甚至更多段文字让位、变得极窄不易阅读，那这个组件的设计无疑是彻底失败的！
+> **伴随式组件（Split aside / mini-visual / compact figure）的唯一定位是“主干正文某一段落的就近图解说明”，它绝不能凌驾于正文之上。**
+
+#### 黄金准则：
+1. **伴随单段上限（≤ 1 段）**：
+   - 伴随组件右栏放置时，左侧 `split.prose` 中**最多只允许放置 1 个直接对应的短段落**。
+   - 严禁将 2 段、3 段甚至整节 5 个段落打包扔进 `split.prose` 中，否则整列文字被挤成长条细管，右下方留出大面积丑陋空白，严重破坏阅读体验。
+2. **多余段落坚决通栏（Full-width Prose First）**：
+   - 不属于该小图表直接解释的上下文段落，必须全部从 Split 中抽离，独立放在 Split 的上方或下方，采用 100% 通栏排版。
+   - 确保绝大部分学术长文享有自然通畅的眼动行宽（每行 50~75 个英文字符或 30~45 个汉字）。
+3. **尺寸与对齐契约**：
+   - Split 右侧组件宽度收敛在 `minmax(260px, 320px)`，严禁贪大占用 400px+ 挤压左侧。
+   - 采用 `align-items: start;` 顶部对齐，确保伴随卡片与所伴随的那一段段首对齐，自然收口。
+
+#### 正确与错误示例对比：
 
 ```typescript
+// ❌ 错误示范：一个小组件逼迫多段长文让位，导致左侧极窄，阅读体验崩溃
 {
   type: "split",
-  id: "structure-mechanism-split",
+  id: "wrong-split-example",
   prose: [
     {
       type: "prose",
       paragraphs: [
-        "左侧为连续的学术论述段落，保持流畅的阅读视线...",
-        "实验结果进一步支持了上述拓扑稳定性假设..."
+        "第一大段：TNBC 的临床困境与常规治疗限制...", // 逼仄狭窄
+        "第二大段：TNBC 的高度异质性与靶点选择策略...", // 继续被挤压！
+        "第三大段：手术残留微转移灶的清除机理..." // 严重变形！
       ]
     }
   ],
   aside: {
-    type: "feature",
-    key: "trop2-structure-viewer" // 右侧并列显示交互式 3D 查看器或小图表
+    type: "mini-visual",
+    label: "CLINICAL CONTEXT", // ❌ 废话 AI 标签，加重模板感
+    title: "TNBC Challenges",
+    items: [...]
   }
+}
+
+// ✅ 正确示范：非紧密相关的段落通栏排版，Split 仅伴随 1 段直接相关的文字
+{
+  type: "prose",
+  paragraphs: [
+    "第一大段：TNBC 的临床困境与常规治疗限制...（通栏舒展阅读）"
+  ]
+},
+{
+  type: "split",
+  id: "correct-split-example",
+  prose: [
+    {
+      type: "prose",
+      paragraphs: [
+        "第二大段：TNBC 的高度异质性与靶点选择策略...（伴随右侧卡片，高度相当）"
+      ]
+    }
+  ],
+  aside: {
+    type: "mini-visual",
+    // 删除了无用的 label，直奔学术核心
+    title: "TNBC Challenges",
+    items: [...]
+  }
+},
+{
+  type: "prose",
+  paragraphs: [
+    "第三大段：手术残留微转移灶的清除机理...（通栏舒展阅读）"
+  ]
 }
 ```
 
