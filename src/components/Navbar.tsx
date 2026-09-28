@@ -1,11 +1,10 @@
-import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import teamCrestUrl from "../assets/jlu-fbh-crest.png";
 import projectWetlabSprite from "../assets/story-nav/nav-project-wetlab-v2.webp";
 import drylabEngagementSprite from "../assets/story-nav/nav-drylab-engagement-v2.webp";
 import Pages from "../pages";
 import { PageSearch } from "./PageSearch";
-import { NavGlass } from "./NavGlass";
 
 interface NavCard {
   name: string;
@@ -241,21 +240,6 @@ export function Navbar() {
   const mobileToggleRef = useRef<HTMLButtonElement>(null);
   const pathname = useLocation().pathname;
   const homeActive = isActive(pathname, "/");
-  const menuExpanded = !!openKey || mobileOpen;
-
-  // Give the optical layer a quiet window while compositor animations unfold.
-  useLayoutEffect(() => {
-    const header = headerRef.current;
-    if (!header || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    header.dataset.navAnimating = "true";
-    const timer = window.setTimeout(() => {
-      delete header.dataset.navAnimating;
-    }, 360);
-    return () => {
-      window.clearTimeout(timer);
-      delete header.dataset.navAnimating;
-    };
-  }, [menuExpanded]);
 
   const clearTimers = useCallback(() => {
     window.clearTimeout(openTimerRef.current);
@@ -481,7 +465,6 @@ export function Navbar() {
         data-home-opening={homeActive ? "true" : undefined}
         data-nav-theme={openKey ?? undefined}
       >
-        <NavGlass />
         <div
           className="circure-nav-shell"
           ref={shellRef}
@@ -518,6 +501,8 @@ export function Navbar() {
               </span>
             </Link>
 
+            <PageSearch />
+
             <nav className="desktop-nav" aria-label="Primary navigation">
               <ul className="nav-list">
                 <li className="nav-item">
@@ -541,6 +526,7 @@ export function Navbar() {
                         dropdownActive(pathname, d) ? "page" : undefined
                       }
                       onPointerEnter={() => queueOpen(d.key)}
+                      onFocus={() => openImmediate(d.key)}
                       onClick={() => openImmediate(d.key)}
                       onKeyDown={onToggleKeydown}
                     >
@@ -561,8 +547,6 @@ export function Navbar() {
                 ))}
               </ul>
             </nav>
-
-            <PageSearch onOpen={closeAll} menuOpen={!!openKey || mobileOpen} />
 
             <button
               className="mobile-menu-toggle"
@@ -613,7 +597,6 @@ export function Navbar() {
                     .join(" ")}
                   data-nav-panel={d.key}
                   aria-hidden={!isActivePanel}
-                  inert={!isActivePanel || undefined}
                   style={
                     manyCards
                       ? {
