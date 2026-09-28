@@ -1,5 +1,7 @@
 import { useState, type ReactNode } from "react";
 import { scrollReaderToTarget } from "../../../../utils";
+import { experimentProtocolPairs } from "../../../../data/wet-lab/experimentProtocolPages";
+import { ExperimentProtocolAtlas, ExperimentProtocolSpread } from "./ExperimentProtocolAtlas";
 import "../../../../styles/features/experiments-panels.css";
 
 // ---------------------------------------------------------------------------
@@ -472,7 +474,13 @@ export function BenchProtocolToolkit() {
 // ---------------------------------------------------------------------------
 export function experimentsFeatures(): Record<string, ReactNode> {
   return {
-    "exp-pipeline-navigator": <ExperimentPipelineNavigator />,
+    "exp-protocol-map": <ExperimentProtocolAtlas />,
+    ...Object.fromEntries(
+      experimentProtocolPairs.map((pair) => [
+        `exp-protocol-${pair.key}`,
+        <ExperimentProtocolSpread key={pair.key} pair={pair} />,
+      ]),
+    ),
     "circrna-biochem-diagram": <CircrnaBiochemDiagram />,
     "screening-funnel": <ScreeningFunnel />,
     "safety-window-interactive": <SafetyWindowInteractive />,

@@ -1,6 +1,7 @@
-import type { WikiPageContent } from "../../components/wiki/wikiPageTypes";
+import type { WikiContentBlock, WikiPageContent, WikiSection } from "../../components/wiki/wikiPageTypes";
+import { experimentProtocolPairs } from "./experimentProtocolPages";
 
-export const experimentsPage: WikiPageContent = {
+const experimentsPageBase: WikiPageContent = {
   route: "/experiments",
   category: "wet-lab",
   chapter: "Wet Lab / 01 of 05",
@@ -38,14 +39,14 @@ export const experimentsPage: WikiPageContent = {
       summary: "Molecular cloning of predicted CTL epitopes into T7 expression plasmids, in vitro transcription, self-splicing intron circularisation, and RT-qPCR circularity verification.",
       blocks: [
         {
+          type: "feature",
+          key: "exp-protocol-map",
+        },
+        {
           type: "prose",
           paragraphs: [
             "To test whether the CirCure multi-epitope circRNA vaccine can effectively activate cellular immunity specific to triple-negative breast cancer, we designed a series of **progressively deeper experiments** around the sequence **construct → screen → optimise → validate → in vivo**. They confirm not only that circRNA is **correctly translated inside dendritic cells** and that antigen is **presented on MHC-I**, but also, layer by layer, that the vaccine **activates CD8⁺ T cells**, drives their **differentiation towards effector memory**, and ultimately **kills tumour cells**. Through this **dual validation in vitro and in vivo**, we hope to demonstrate the feasibility of a multi-epitope circRNA vaccine platform for TNBC immunotherapy.",
           ],
-        },
-        {
-          type: "feature",
-          key: "exp-pipeline-navigator",
         },
         {
           type: "prose",
@@ -53,10 +54,6 @@ export const experimentsPage: WikiPageContent = {
             "Everything starts with **turning a candidate epitope into a usable vaccine molecule**. We first used **molecular cloning** to insert the CTL epitope coding sequences predicted by the dry lab into an expression plasmid carrying a **T7 promoter** and the **circularisation elements**; after confirmation by **double digestion and Sanger sequencing**, this plasmid served as the **in vitro transcription template**.",
             "**T7 RNA polymerase** then transcribed a linear RNA, the DNA template was removed and the RNA purified, and a **self-splicing intron** was used to drive **covalent closure into a circle**. The circular structure makes circRNA **more stable and more resistant to nuclease degradation** than a linear mRNA, allowing **sustained antigen expression inside the DC** — precisely the core advantage of this platform. Finally, **RT-qPCR with divergent and convergent primers** confirmed circularisation, delivering **qualified vaccine material** for all subsequent cell and animal experiments.",
           ],
-        },
-        {
-          type: "feature",
-          key: "exp-pipeline-navigator",
         },
         {
           type: "subheading",
@@ -1743,4 +1740,30 @@ export const experimentsPage: WikiPageContent = {
     label: "Lab Notebook",
     title: "Lab Notebook: Day-by-Day Experimental Record",
   },
+};
+
+const protocolKeysByTarget = new Map<string, string[]>();
+for (const pair of experimentProtocolPairs) {
+  const keys = protocolKeysByTarget.get(pair.targetId) ?? [];
+  keys.push(`exp-protocol-${pair.key}`);
+  protocolKeysByTarget.set(pair.targetId, keys);
+}
+
+function withProtocolFigures(section: WikiSection): WikiSection {
+  if (!section.blocks) return section;
+  let currentSubheading = "";
+  const blocks = section.blocks.flatMap((block): WikiContentBlock[] => {
+    if (block.type === "subheading") currentSubheading = block.id;
+    if (block.type === "prose" && block.paragraphs[0] === "**Step-by-Step Instructions**") {
+      const keys = protocolKeysByTarget.get(currentSubheading) ?? [];
+      return [...keys.map((key): WikiContentBlock => ({ type: "feature", key })), block];
+    }
+    return [block];
+  });
+  return { ...section, blocks };
+}
+
+export const experimentsPage: WikiPageContent = {
+  ...experimentsPageBase,
+  sections: experimentsPageBase.sections.map(withProtocolFigures),
 };
