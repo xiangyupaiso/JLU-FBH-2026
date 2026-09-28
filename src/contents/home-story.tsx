@@ -16,6 +16,7 @@ import { useHomeStoryAnimation } from "../hooks/useHomeStoryAnimation";
 import { HomeAntigenSwitch } from "../components/home/HomeAntigenSwitch";
 import { HomeFinale } from "../components/home/HomeFinale";
 import { HomeExploreLinks } from "../components/home/HomeExploreLinks";
+import mapDataNoteUrl from "../assets/home/story/map-data-note.png";
 import "../styles/home-story.css";
 import "../styles/home-tnbc-map.css";
 
@@ -268,6 +269,33 @@ const mapMotionPieces = [
   { name: "boat", kind: "boat", x: 42, y: 70, width: 13.2, height: 9 },
 ] as const;
 
+const mapStatistics = [
+  {
+    key: "incidence-countries",
+    category: "Women · incidence",
+    value: "164",
+    detail: "countries where breast cancer ranks first",
+  },
+  {
+    key: "incidence-share",
+    category: "Women · incidence",
+    value: "24.3%",
+    detail: "of new cancer cases",
+  },
+  {
+    key: "mortality-countries",
+    category: "Women · mortality",
+    value: "122",
+    detail: "countries where breast cancer ranks first",
+  },
+  {
+    key: "mortality-share",
+    category: "Women · mortality",
+    value: "16.2%",
+    detail: "of cancer deaths",
+  },
+] as const;
+
 function MapArtwork() {
   const landscapeMaskId = useId();
   const inkFilterId = useId();
@@ -455,6 +483,41 @@ function MapArtwork() {
           </a>
         </div>
       </StoryArtwork>
+      <aside
+        className="tnbc-map-notes"
+        aria-label="Global breast cancer statistics for women, GLOBOCAN 2024"
+      >
+        {mapStatistics.map((statistic) => (
+          <div
+            className={`tnbc-map-note tnbc-map-note--${statistic.key}`}
+            data-map-note
+            key={statistic.key}
+          >
+            <img
+              src={mapDataNoteUrl}
+              alt=""
+              className="tnbc-map-note-img"
+              aria-hidden="true"
+              decoding="async"
+            />
+            <div className="tnbc-map-note-body">
+              <span className="tnbc-map-note-category">
+                {statistic.category}
+              </span>
+              <strong className="tnbc-map-note-val">{statistic.value}</strong>
+              <span className="tnbc-map-note-detail">{statistic.detail}</span>
+            </div>
+          </div>
+        ))}
+        <a
+          className="tnbc-map-data-source"
+          href="https://gco.iarc.who.int/today/"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Data: GLOBOCAN 2024 ↗
+        </a>
+      </aside>
     </>
   );
 }

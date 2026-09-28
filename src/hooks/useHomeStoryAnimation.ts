@@ -182,6 +182,23 @@ function choreographArt(
           0.23 + index * 0.115,
         );
       });
+      const notes = section.querySelectorAll<HTMLElement>("[data-map-note]");
+      if (notes.length) {
+        timeline.fromTo(
+          notes,
+          { opacity: 0, scale: 0.82, y: -14 * distance, rotate: -2 },
+          {
+            opacity: 1,
+            scale: 1,
+            y: 0,
+            rotate: 0,
+            duration: 0.18,
+            stagger: 0.07,
+            ease: "back.out(1.3)",
+          },
+          0.4,
+        );
+      }
       break;
     }
     case "clinical-challenge": {

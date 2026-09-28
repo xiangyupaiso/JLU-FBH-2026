@@ -82,6 +82,7 @@ export function useWikiPageMotion(
     const routeHash = window.location.hash.slice(1);
     const lightweightRoute =
       wideFlow ||
+      route === "/experiments" ||
       (route === "/sustainability" &&
         window.matchMedia("(min-width: 1200px) and (min-height: 700px)").matches);
     const canObserve = "IntersectionObserver" in window;

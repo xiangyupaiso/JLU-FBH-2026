@@ -928,15 +928,15 @@
 }
 
 .wiki-page.wiki-page--manuscript .wiki-boundary {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  gap: 0;
-  margin-top: 38px;
-  padding: 28px 0 0;
-  border: 0;
-  border-top: 1px solid var(--wet-line-strong);
-  border-radius: 0;
-  background: transparent;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 22px 0 28px;
+  padding: 14px 18px;
+  border: 1px solid rgba(29, 29, 31, 0.12);
+  border-left: 3.5px solid var(--wet-accent, #c39a55);
+  border-radius: 0 8px 8px 0;
+  background: rgba(20, 53, 76, 0.035);
   box-shadow: none;
 }
 
@@ -944,22 +944,39 @@
   display: none;
 }
 
+.wiki-page.wiki-page--manuscript .wiki-boundary__label,
 .wiki-page.wiki-page--manuscript .wiki-boundary > span {
-  color: var(--wet-accent);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--wet-accent, #88541e);
   font-family: var(--font-mono);
-  font-size: 10px;
-  font-weight: 800;
+  font-size: 11px;
+  font-weight: 700;
   text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 2px;
 }
 
-.wiki-page.wiki-page--manuscript .wiki-boundary p {
-  margin: 0;
+.wiki-page.wiki-page--manuscript .wiki-boundary p,
+.wiki-page.wiki-page--manuscript .wiki-boundary__body p {
+  margin: 0 0 6px 0;
   color: var(--wet-ink);
-  font-family: var(--font-editorial);
-  max-width: 690px;
-  font-size: 18px;
-  font-style: italic;
-  line-height: 1.72;
+  font-family: var(--font-heading), "Fraunces", Georgia, serif !important;
+  max-width: none;
+  font-size: 14.5px !important;
+  font-style: normal !important;
+  line-height: 1.5 !important;
+}
+
+.wiki-page.wiki-page--manuscript .wiki-boundary p:last-child,
+.wiki-page.wiki-page--manuscript .wiki-boundary__body p:last-child {
+  margin-bottom: 0;
+}
+
+.wiki-page.wiki-page--manuscript .wiki-boundary strong {
+  font-weight: 700;
+  color: var(--wet-ink);
 }
 
 /* Existing interactive Wet Lab figures, restyled as paper figures. */

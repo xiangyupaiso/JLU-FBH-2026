@@ -235,6 +235,17 @@ function renderInlineFormatting(text: string): ReactNode {
   });
 }
 
+function splitNoteContent(body: string): string[] {
+  if (!body) return [];
+  if (body.includes("\n")) {
+    return body.split(/\n+/).map((s) => s.trim()).filter(Boolean);
+  }
+  if (/1\.\s+.*2\.\s+/.test(body)) {
+    return body.split(/(?=\b\d+\.\s+)/).map((s) => s.trim()).filter(Boolean);
+  }
+  return [body.trim()];
+}
+
 function RouteBlock({
   block,
   features,
@@ -419,12 +430,21 @@ function RouteBlock({
           <b aria-hidden="true">↘</b>
         </a>
       );
-    case "note":
+    case "note": {
+      const noteLines = splitNoteContent(block.body);
       return (
         <aside className="wiki-boundary" data-wiki-reveal>
-          <p>{renderInlineFormatting(block.body)}</p>
+          {block.label ? (
+            <span className="wiki-boundary__label">{block.label}</span>
+          ) : null}
+          <div className="wiki-boundary__body">
+            {noteLines.map((line, index) => (
+              <p key={index}>{renderInlineFormatting(line)}</p>
+            ))}
+          </div>
         </aside>
       );
+    }
     case "epigraph":
       return (
         <figure className="wiki-epigraph" data-wiki-reveal>
@@ -557,10 +577,14 @@ function RouteSection({
 
           {section.note ? (
             <aside className="wiki-boundary" data-wiki-reveal>
-              {/* Note labels carry the record id (DR–01, Release gate…) and are
-                  hidden by the Wet Lab manuscript skin; the slot is kept. */}
-              {section.note.label ? <span>{section.note.label}</span> : null}
-              <p>{renderInlineFormatting(section.note.body)}</p>
+              {section.note.label ? (
+                <span className="wiki-boundary__label">{section.note.label}</span>
+              ) : null}
+              <div className="wiki-boundary__body">
+                {splitNoteContent(section.note.body).map((line, index) => (
+                  <p key={index}>{renderInlineFormatting(line)}</p>
+                ))}
+              </div>
             </aside>
           ) : null}
         </>
