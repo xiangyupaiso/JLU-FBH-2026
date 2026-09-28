@@ -12,6 +12,9 @@ export function animateCircRna(
   const find = (selector: string) => section.querySelector(selector);
   const stroke = find(".story-paint-stroke");
   const complete = find(".story-paint-complete");
+  timeline.fromTo(find('[data-layer="2"]'),
+    { opacity: 0.35, y: 12 },
+    { opacity: 1, y: 0, duration: 0.26, ease: "sine.inOut" }, 0);
   gsap.set(stroke, {
     attr: { "stroke-dasharray": "1 1", "stroke-dashoffset": 1 },
   });
@@ -35,15 +38,15 @@ export function animateCircRna(
   section.querySelectorAll("[data-circrna-sketch]").forEach((sketch, index) => {
     timeline.fromTo(
       sketch,
-      { opacity: 0.15 },
-      { opacity: 1, duration: 0.34, ease: "sine.inOut" },
+      { opacity: 0.15, y: 8 },
+      { opacity: 1, y: 0, duration: 0.34, ease: "sine.inOut" },
       0.26 + index * 0.15,
     );
   });
   timeline.fromTo(
     find(".circrna-caption"),
-    { opacity: 0 },
-    { opacity: 0.75, duration: 0.24, ease: "sine.inOut" },
+    { opacity: 0, y: 10, filter: "blur(2px)" },
+    { opacity: 0.75, y: 0, filter: "blur(0px)", duration: 0.24, ease: "sine.inOut" },
     0.58,
   );
 }

@@ -17,6 +17,7 @@
   inset: 0;
   z-index: -1;
   display: grid;
+  grid-template: minmax(0, 1fr) / minmax(0, 1fr);
   place-items: center;
   pointer-events: none;
 }
@@ -38,7 +39,7 @@
 }
 .story-finale-ring {
   position: relative;
-  width: min(76vw, 74svh);
+  width: min(72vw, 62svh);
   aspect-ratio: 459 / 448;
   opacity: 0.2;
 }
@@ -191,7 +192,7 @@
     margin-top: 22px;
   }
   .story-finale-ring {
-    width: min(118vw, 72svh);
+    width: min(100vw, 58svh);
     opacity: 0.16;
   }
 }

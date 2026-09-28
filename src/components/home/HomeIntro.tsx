@@ -26,6 +26,8 @@ const HOLD = 2;
 // The mask's round cap runs slightly ahead of the dash length.
 const CAP_LEAD = 40;
 const MAX_EMBERS = 140;
+// Keep the remainder of a skip gesture from scrolling the opening away.
+const INPUT_IDLE_MS = 220;
 
 type Ember = {
   x: number;
@@ -70,24 +72,101 @@ export function HomeIntro({ scene }: HomeIntroProps) {
   const [playing, setPlaying] = useState(shouldPlayIntro);
   const layerRef = useRef<HTMLDivElement>(null);
   const skipRef = useRef<() => void>(() => { });
+  const finishRef = useRef<() => void>(() => {});
 
   // Set before paint so neither the header word nor the scroll cue flickers.
   useLayoutEffect(() => {
     const section = scene.current;
     const root = document.documentElement;
     if (!section) return;
+    // Home is one continuous page. Discard legacy chapter fragments on entry
+    // so refresh always starts a new reading from the portrait.
+    if (window.location.hash) {
+      window.history.replaceState(
+        window.history.state,
+        "",
+        window.location.pathname + window.location.search,
+      );
+    }
     if (!playing) {
       section.dataset.intro = "done";
       return;
     }
     section.dataset.intro = "playing";
     root.dataset.homeIntro = "playing";
-    // A reload must start from the black opening, not a restored position.
-    if ("scrollRestoration" in window.history) {
-      window.history.scrollRestoration = "manual";
-    }
-    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+    // Keep the opening at the portrait while fonts and scroll pins settle.
+    // Do not hide overflow: changing the viewport width would rebuild pins.
+    const stayAtStart = () => {
+      if (window.scrollX || window.scrollY) {
+        window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+      }
+    };
+    let animationFinished = false;
+    let touching = false;
+    let lastInputAt = -Infinity;
+    let releaseTimer = 0;
+    const releaseWhenIdle = () => {
+      window.clearTimeout(releaseTimer);
+      if (!animationFinished || touching) return;
+      const remaining = Math.max(
+        0,
+        INPUT_IDLE_MS - (performance.now() - lastInputAt),
+      );
+      releaseTimer = window.setTimeout(() => setPlaying(false), remaining);
+    };
+    finishRef.current = () => {
+      animationFinished = true;
+      releaseWhenIdle();
+    };
+    const skipWithoutScrolling = (event: Event) => {
+      event.preventDefault();
+      lastInputAt = performance.now();
+      skipRef.current();
+      releaseWhenIdle();
+    };
+    const onTouchStart = () => {
+      touching = true;
+      window.clearTimeout(releaseTimer);
+    };
+    const onTouchEnd = (event: TouchEvent) => {
+      touching = event.touches.length > 0;
+      lastInputAt = performance.now();
+      releaseWhenIdle();
+    };
+    const onKey = (event: KeyboardEvent) => {
+      if (
+        [
+          "ArrowDown",
+          "ArrowUp",
+          "PageDown",
+          "PageUp",
+          "Home",
+          "End",
+          " ",
+          "Escape",
+        ].includes(event.key)
+      ) {
+        skipWithoutScrolling(event);
+      }
+    };
+    stayAtStart();
+    window.addEventListener("scroll", stayAtStart, { passive: true });
+    window.addEventListener("wheel", skipWithoutScrolling, { passive: false });
+    window.addEventListener("touchstart", onTouchStart, { passive: true });
+    window.addEventListener("touchmove", skipWithoutScrolling, { passive: false });
+    window.addEventListener("touchend", onTouchEnd, { passive: true });
+    window.addEventListener("touchcancel", onTouchEnd, { passive: true });
+    window.addEventListener("keydown", onKey);
     return () => {
+      window.clearTimeout(releaseTimer);
+      finishRef.current = () => {};
+      window.removeEventListener("scroll", stayAtStart);
+      window.removeEventListener("wheel", skipWithoutScrolling);
+      window.removeEventListener("touchstart", onTouchStart);
+      window.removeEventListener("touchmove", skipWithoutScrolling);
+      window.removeEventListener("touchend", onTouchEnd);
+      window.removeEventListener("touchcancel", onTouchEnd);
+      window.removeEventListener("keydown", onKey);
       delete root.dataset.homeIntro;
       section.dataset.intro = "done";
     };
@@ -381,7 +460,7 @@ export function HomeIntro({ scene }: HomeIntroProps) {
       timeline.call(() => {
         section.dataset.intro = "done";
       });
-      timeline.call(() => setPlaying(false), undefined, "+=0.6");
+      timeline.call(() => finishRef.current(), undefined, "+=0.6");
 
       // Skip lands on the finished signature just before the flash, whether
       // the tip is still writing or the word is holding.
@@ -392,20 +471,11 @@ export function HomeIntro({ scene }: HomeIntroProps) {
         timeline.seek(skipTo);
       };
       skipRef.current = skip;
-      const onKey = (event: KeyboardEvent) => {
-        if (["ArrowDown", "PageDown", "End", " ", "Escape"].includes(event.key))
-          skip();
-      };
-      window.addEventListener("wheel", skip, { passive: true });
-      window.addEventListener("touchmove", skip, { passive: true });
-      window.addEventListener("keydown", onKey);
 
       return () => {
         disposed = true;
         window.removeEventListener("resize", resize);
-        window.removeEventListener("wheel", skip);
-        window.removeEventListener("touchmove", skip);
-        window.removeEventListener("keydown", onKey);
+        skipRef.current = () => {};
         gsap.ticker.remove(drawEmbers);
       };
     },

@@ -1,6 +1,10 @@
 .home-redesign {
   background: #21141f;
 }
+/* The floating navigation overlays the opening instead of reserving a band. */
+body:has(.home-redesign) {
+  padding-top: 0;
+}
 .home-redesign #top {
   scroll-margin-top: var(--header-height);
 }
@@ -8,16 +12,17 @@
   --scene01-scroll: calc(86svh + var(--header-height));
   position: relative;
   height: calc(
-    100svh - var(--header-height) +
+    100svh +
     var(--scene01-scroll) * var(--home-scroll-scale, 1)
   );
 }
 .home-scene01-canvas {
   position: sticky;
-  top: var(--header-height);
+  top: 0;
   display: grid;
   width: 100%;
-  height: calc(100svh - var(--header-height));
+  height: 100svh;
+  padding-top: var(--header-height);
   place-items: center;
   overflow: hidden;
   isolation: isolate;

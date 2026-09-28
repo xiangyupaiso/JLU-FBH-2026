@@ -2,10 +2,13 @@
   html,
   body,
   body * {
-    cursor: url("../assets/wiki/cursor-default.png") 13 12, auto !important;
+    cursor:
+      url("../assets/wiki/cursor-default.png") 13 12,
+      auto !important;
   }
 
-  body :is(
+  body
+    :is(
       a[href],
       button:not(:disabled),
       [role="button"]:not([aria-disabled="true"]),
@@ -19,7 +22,8 @@
       summary,
       label[for]
     ),
-  body :is(
+  body
+    :is(
       a[href],
       button:not(:disabled),
       [role="button"]:not([aria-disabled="true"]),
@@ -29,12 +33,133 @@
       [role="slider"],
       summary,
       label[for]
-    ) * {
-    cursor: url("../assets/wiki/cursor-active.png") 13 12, pointer !important;
+    )
+    * {
+    cursor:
+      url("../assets/wiki/cursor-active.png") 13 12,
+      pointer !important;
   }
 
   body.is-pressing,
   body.is-pressing * {
-    cursor: url("../assets/wiki/cursor-active.png") 13 12, pointer !important;
+    cursor:
+      url("../assets/wiki/cursor-active.png") 13 12,
+      pointer !important;
+  }
+}
+
+/* The platform sheep above remains the fallback until both poses decode. */
+.sheep-cursor {
+  position: fixed;
+  inset: 0;
+  z-index: 2147483000;
+  overflow: hidden;
+  pointer-events: none;
+  contain: strict;
+  visibility: hidden;
+}
+
+.sheep-cursor[data-visible="true"] {
+  visibility: visible;
+}
+.sheep-cursor * {
+  pointer-events: none;
+}
+
+.sheep-cursor__follower {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 80px;
+  height: 80px;
+  will-change: transform;
+}
+
+.sheep-cursor__tilt,
+.sheep-cursor__sprite {
+  width: 100%;
+  height: 100%;
+  transform-origin: 13px 12px;
+}
+
+.sheep-cursor__sprite img {
+  position: absolute;
+  inset: 0;
+  width: 80px;
+  height: 80px;
+  max-width: none;
+  user-select: none;
+  transition: opacity 100ms ease;
+}
+
+.sheep-cursor__happy {
+  opacity: 0;
+}
+.sheep-cursor[data-active="true"] .sheep-cursor__rest {
+  opacity: 0;
+}
+.sheep-cursor[data-active="true"] .sheep-cursor__happy {
+  opacity: 1;
+}
+
+.sheep-cursor__halo {
+  position: absolute;
+  top: 14px;
+  left: 15px;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: conic-gradient(from 25deg, transparent 8%, #d5f7ff30 17%, #ffffffa6 19%, transparent 23% 57%, #eedaff38 66%, #ffffff85 68%, transparent 72%);
+  mask: radial-gradient(ellipse, transparent 56%, #000 61% 63%, transparent 69%);
+  opacity: 0;
+}
+
+.sheep-cursor__spark {
+  position: absolute;
+  opacity: 0;
+  /* Translucent facets with opposing cool/warm edges, clear on both themes. */
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M8 1 12 8 8 15 4 8Z' fill='%23d9f4ff' fill-opacity='.16' stroke='%23819aa7' stroke-opacity='.5' stroke-width='.65'/%3E%3Cpath d='m8 1 0 7-4 0Z' fill='white' fill-opacity='.9'/%3E%3Cpath d='m8 8 4 0-4 7Z' fill='%23d2bde9' fill-opacity='.48'/%3E%3Cpath d='m8 1 4 7-4 7' fill='none' stroke='white' stroke-width='.7'/%3E%3Cpath d='M2 8h12M8 4v8' stroke='white' stroke-opacity='.75' stroke-width='.55'/%3E%3C/svg%3E")
+    center / contain no-repeat;
+}
+
+.sheep-cursor__sheen--happy,
+.sheep-cursor[data-active="true"] .sheep-cursor__sheen--rest {
+  visibility: hidden;
+}
+.sheep-cursor[data-active="true"] .sheep-cursor__sheen--happy {
+  visibility: visible;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  html:root.has-sheep-cursor,
+  html:root.has-sheep-cursor body,
+  html:root.has-sheep-cursor body * {
+    cursor: none !important;
+  }
+
+  /* Restore the I-beam and native manipulation affordances in both modes. */
+  html
+    body
+    :is(
+      input:not([type="range"]):not([type="checkbox"]):not([type="radio"]),
+      textarea,
+      [contenteditable]:not([contenteditable="false"])
+    ),
+  html body [contenteditable]:not([contenteditable="false"]) * {
+    cursor: text !important;
+  }
+  html body :is([draggable="true"], [data-native-cursor]),
+  html body :is([draggable="true"], [data-native-cursor]) * {
+    cursor: auto !important;
+  }
+  html body.is-thread-dragging,
+  html body.is-thread-dragging * {
+    cursor: grabbing !important;
+  }
+}
+
+@media (hover: none), (pointer: coarse), (prefers-reduced-motion: reduce) {
+  .sheep-cursor {
+    display: none;
   }
 }

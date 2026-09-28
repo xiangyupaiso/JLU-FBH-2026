@@ -1508,25 +1508,27 @@ html.has-route-reader-scroll {
 .site-header.is-route-page {
   --header-surface: var(--route-main);
   --header-ink: var(--route-ink);
+  --header-glass-base: color-mix(in srgb, var(--route-main) 24%, #fff);
+  --header-pill: color-mix(in srgb, var(--route-soft) 12%, transparent);
+  --header-pill-active: color-mix(in srgb, var(--route-soft) 42%, transparent);
 }
 
 .site-header.is-route-page::before {
   border-bottom-color: color-mix(in srgb, var(--route-ink) 8%, transparent);
-  background-color: var(--route-main);
 }
 
 .site-header.is-route-page .nav-link {
-  background: var(--route-soft);
+  background: var(--header-pill);
   color: var(--route-ink);
 }
 
 .site-header.is-route-page .nav-link:hover {
-  background: color-mix(in srgb, var(--route-soft) 78%, var(--route-main));
+  background: var(--header-pill-active);
 }
 
 .site-header.is-route-page .nav-link[aria-expanded="true"],
 .site-header.is-route-page .nav-link[aria-current="page"] {
-  background: color-mix(in srgb, var(--route-soft) 62%, var(--route-main));
+  background: var(--header-pill-active);
 }
 
 .site-header.is-route-page .wordmark-folio {
