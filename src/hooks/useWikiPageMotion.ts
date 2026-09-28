@@ -155,6 +155,15 @@ export function useWikiPageMotion(
     let lastActiveSubsection = "";
     let lastSubsectionMeasure = 0;
 
+    // Inline reads do not trigger layout. Avoid invalidating inherited custom
+    // properties throughout an article when the rounded visual value is unchanged.
+    const setMotionStyle = (element: HTMLElement, name: string, value: string) => {
+      if (element.style.getPropertyValue(name) !== value) {
+        element.style.setProperty(name, value);
+      }
+    };
+    const motionBySection = new Map(sectionMotion.map(motion => [motion.section, motion]));
+
     const measureProgress = () => {
       needsMeasure = false;
       const containerBounds = scrollContainer.getBoundingClientRect();
@@ -178,7 +187,7 @@ export function useWikiPageMotion(
         ? sections.map((section) => ({ section }))
         : sectionMotion;
       motions.forEach((entry) => {
-        const motion = sectionMotion.find((item) => item.section === entry.section);
+        const motion = motionBySection.get(entry.section);
         const section = entry.section;
         const sectionBounds = section.getBoundingClientRect();
         const sectionTop = sectionBounds.top - viewportTop;
@@ -221,46 +230,39 @@ export function useWikiPageMotion(
       });
 
       if (currentSection) {
+        const now = performance.now();
+        const measureSubsection = !lightweightRoute || now - lastSubsectionMeasure >= 120;
+        let currentSubsection = lastActiveSubsection;
+        // Finish geometry reads before active-state attributes can invalidate layout.
+        if (measureSubsection) {
+          lastSubsectionMeasure = now;
+          const currentAnchors = outlineAnchors.filter(
+            anchor => anchor.dataset.wikiOutlineParent === currentSection,
+          );
+          currentSubsection = "";
+          currentAnchors.forEach(anchor => {
+            if (anchor.getBoundingClientRect().top <= activationLine + 18) {
+              currentSubsection = anchor.id;
+            }
+          });
+          const pageBottomReached =
+            scrollContainer.scrollTop + viewportHeight >= scrollContainer.scrollHeight - 4;
+          if (pageBottomReached && currentAnchors.length) {
+            currentSubsection = currentAnchors[currentAnchors.length - 1]?.id ?? currentSubsection;
+          }
+        }
         if (currentSection !== lastActiveSection) {
           lastActiveSection = currentSection;
           setActiveSection(currentSection);
-          sections.forEach((section) => {
-            section.toggleAttribute(
-              "data-wiki-active",
-              section.id === currentSection,
-            );
+          sections.forEach(section => {
+            section.toggleAttribute("data-wiki-active", section.id === currentSection);
           });
-        }
-
-        const now = performance.now();
-        if (lightweightRoute && now - lastSubsectionMeasure < 120) return;
-        lastSubsectionMeasure = now;
-
-        const currentAnchors = outlineAnchors.filter(
-          (anchor) =>
-            anchor.dataset.wikiOutlineParent === currentSection,
-        );
-        let currentSubsection = "";
-        currentAnchors.forEach((anchor) => {
-          if (anchor.getBoundingClientRect().top <= activationLine + 18) {
-            currentSubsection = anchor.id;
-          }
-        });
-        const pageBottomReached =
-          scrollContainer.scrollTop + scrollContainer.clientHeight >=
-          scrollContainer.scrollHeight - 4;
-        if (pageBottomReached && currentAnchors.length) {
-          currentSubsection =
-            currentAnchors[currentAnchors.length - 1]?.id ?? currentSubsection;
         }
         if (currentSubsection !== lastActiveSubsection) {
           lastActiveSubsection = currentSubsection;
           setActiveSubsection(currentSubsection);
-          outlineAnchors.forEach((anchor) => {
-            anchor.toggleAttribute(
-              "data-wiki-outline-active",
-              anchor.id === currentSubsection,
-            );
+          outlineAnchors.forEach(anchor => {
+            anchor.toggleAttribute("data-wiki-outline-active", anchor.id === currentSubsection);
           });
         }
       }
@@ -277,8 +279,8 @@ export function useWikiPageMotion(
       if (lightweightRoute) {
         pageProgress = targetPageProgress;
         outlineProgress = targetOutlineProgress;
-        root.style.setProperty("--wiki-page-progress", pageProgress.toFixed(4));
-        root.style.setProperty(
+        setMotionStyle(root, "--wiki-page-progress", pageProgress.toFixed(4));
+        setMotionStyle(root,
           "--wiki-outline-progress",
           outlineProgress.toFixed(4),
         );
@@ -303,8 +305,8 @@ export function useWikiPageMotion(
 
       pageProgress = easeValue(pageProgress, targetPageProgress);
       outlineProgress = easeValue(outlineProgress, targetOutlineProgress);
-      root.style.setProperty("--wiki-page-progress", pageProgress.toFixed(4));
-      root.style.setProperty(
+      setMotionStyle(root, "--wiki-page-progress", pageProgress.toFixed(4));
+      setMotionStyle(root,
         "--wiki-outline-progress",
         outlineProgress.toFixed(4),
       );
@@ -313,19 +315,19 @@ export function useWikiPageMotion(
         motion.reveal = easeValue(motion.reveal, motion.targetReveal);
         motion.focus = easeValue(motion.focus, motion.targetFocus);
         motion.drift = easeValue(motion.drift, motion.targetDrift);
-        motion.section.style.setProperty(
+        setMotionStyle(motion.section,
           "--wiki-section-reveal",
           motion.reveal.toFixed(4),
         );
-        motion.section.style.setProperty(
+        setMotionStyle(motion.section,
           "--wiki-section-focus",
           motion.focus.toFixed(4),
         );
-        motion.section.style.setProperty(
+        setMotionStyle(motion.section,
           "--wiki-section-shift",
           `${((1 - motion.reveal) * 36).toFixed(2)}px`,
         );
-        motion.section.style.setProperty(
+        setMotionStyle(motion.section,
           "--wiki-section-drift",
           `${motion.drift.toFixed(2)}px`,
         );

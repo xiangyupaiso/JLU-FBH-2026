@@ -19,6 +19,7 @@ import { HomeExploreLinks } from "../components/home/HomeExploreLinks";
 import mapDataNoteUrl from "../assets/home/story/map-data-note.png";
 import "../styles/home-story.css";
 import "../styles/home-tnbc-map.css";
+import "../styles/home-reading.css";
 
 const imageUrls = import.meta.glob("../assets/home/story/*.webp", {
   eager: true,
@@ -621,18 +622,6 @@ function ChallengeArtwork() {
           >
             {item.label}
           </span>
-          <span
-            className="story-morph-particles"
-            data-morph-particles={item.key}
-            aria-hidden="true"
-          >
-            {Array.from(
-              { length: Math.max(16, item.label.replace(/ /g, "").length) },
-              (_, index) => (
-                <i key={index} />
-              ),
-            )}
-          </span>
         </div>
       ))}
     </StoryArtwork>
@@ -802,15 +791,6 @@ export function HomeStory() {
   const root = useRef<HTMLDivElement>(null);
   useHomeStoryAnimation(root);
   useEffect(() => {
-    // The Home route loads lazily, so a direct hash can resolve before its scene exists.
-    const hash = window.location.hash.slice(1);
-    const destination =
-      hash && document.getElementById(decodeURIComponent(hash));
-    if (destination && root.current?.contains(destination)) {
-      requestAnimationFrame(() =>
-        destination.scrollIntoView({ block: "start" }),
-      );
-    }
     // Load hidden layers before their scene arrives, without loading every scene at once.
     const observer = new IntersectionObserver(
       (entries) => {
@@ -849,13 +829,20 @@ export function HomeStory() {
     <div className="home-story" ref={root}>
       <div className="story-prologue">
         <p>
-          Behind every diagnosis,
-          <br />
-          <em>there is a person.</em>
+          <span className="story-prologue-line">Behind every diagnosis,</span>{" "}
+          <em className="story-prologue-line">there is a person.</em>
         </p>
-        <a href="#what-we-saw">
+        <button
+          type="button"
+          onClick={() =>
+            root.current?.querySelector("#what-we-saw")?.scrollIntoView({
+              block: "start",
+              behavior: "instant",
+            })
+          }
+        >
           It began with a question <span aria-hidden="true">↓</span>
-        </a>
+        </button>
       </div>
 
       <Chapter
@@ -863,24 +850,28 @@ export function HomeStory() {
         className="story-chapter--clinic story-chapter--ward"
         title={
           <>
-            She hoped the hardest part
-            <br />
-            <em>was over.</em>
+            <span className="story-ward-title-line">She hoped the hardest part</span>
+            {" "}
+            <em className="story-ward-title-ending">was over.</em>
           </>
         }
         art={<WardArtwork />}
       >
-        <p>
+        <p className="story-ward-context">
           During clinical training, we met patients living with triple-negative
           breast cancer. After surgery and chemotherapy, one hope remained.
         </p>
-        <blockquote>“I just hope it never comes back.”</blockquote>
-        <p id="the-question" className="story-ward-question">
-          “What if it comes back?”
-        </p>
-        <p>
-          Treatment had ended. The uncertainty had not. Her question stayed with
-          us.
+        <div className="story-ward-dialogue">
+          <blockquote className="story-ward-wish">“I just hope it never comes back.”</blockquote>
+          <p id="the-question" className="story-ward-question">
+            “What if it comes back?”
+          </p>
+        </div>
+        <span className="story-ward-thread" aria-hidden="true" />
+        <p className="story-ward-aftermath">
+          <span>Treatment had ended.</span>{" "}
+          <span>The uncertainty had not.</span>{" "}
+          <span>Her question stayed with us.</span>
         </p>
       </Chapter>
 
@@ -890,7 +881,7 @@ export function HomeStory() {
         title={
           <>
             <em className="story-emphasis-why">Why</em> triple-negative
-            <br />
+            {" "}
             breast cancer?
           </>
         }
@@ -920,7 +911,7 @@ export function HomeStory() {
         </p>
         <p className="story-emphasis">
           Fewer familiar targets.
-          <br />A high risk of recurrence and spread.
+          {" "}A high risk of recurrence and spread.
         </p>
         <a
           className="story-source"
@@ -938,7 +929,7 @@ export function HomeStory() {
         title={
           <>
             Treatment matters.
-            <br />
+            {" "}
             <em>So does what comes next.</em>
           </>
         }
@@ -989,7 +980,7 @@ export function HomeStory() {
         title={
           <>
             One backbone.
-            <br />
+            {" "}
             <em>Room for more targets.</em>
           </>
         }
@@ -1011,7 +1002,7 @@ export function HomeStory() {
         title={
           <>
             Like changing
-            <br />
+            {" "}
             <em>a key.</em>
           </>
         }
@@ -1034,7 +1025,7 @@ export function HomeStory() {
         title={
           <>
             Starting with TNBC.
-            <br />
+            {" "}
             <em>Looking further.</em>
           </>
         }
@@ -1057,9 +1048,9 @@ export function HomeStory() {
         title={
           <>
             “If it comes back,
-            <br />
+            {" "}
             can we give her
-            <br />
+            {" "}
             <em>more options?</em>”
           </>
         }

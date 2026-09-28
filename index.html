@@ -2,6 +2,11 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <script>
+      // Set this before ScrollTrigger initializes: it captures this value and
+      // restores it after layout refreshes, including the first font load.
+      if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+    </script>
     <link
       rel="shortcut icon"
       href="https://static.igem.wiki/common/icons/favicons/igem-2022.svg"
@@ -17,10 +22,10 @@
 
       Stage timeline (relative to .is-playing, i.e. once the art has decoded):
         1  0.00–0.90s  hands rise in over the watercolor, then breathe
-        2  0.45–1.95s  ribbon draws left → right; the loop closes at 1.50s
+        2  0.45–1.95s  the complete ribbon unfolds left → right with a soft edge
         3  1.50s       lamb pops 0.9 → 1 with a halo
         4  1.65s →     petals drift, stars twinkle, dots bounce
-      Only transform / opacity animate after the ribbon stroke finishes, and
+      Only transform / opacity animate, and
       the whole layer is display:none once hidden, so it costs nothing later.
     -->
     <link
@@ -51,13 +56,13 @@
         transition: opacity 0.38s cubic-bezier(0.2, 0.9, 0.3, 1);
         user-select: none;
         -webkit-user-select: none;
+        contain: layout paint;
       }
       .page-loader[hidden] {
         display: none;
       }
       .page-loader.is-leaving {
         opacity: 0;
-        pointer-events: none;
       }
       /* Cover: the 1264×711 canvas always fills the viewport. */
       .page-loader__stage {
@@ -104,8 +109,13 @@
       }
       .pl-petals { left: 8.07%; top: 52.743%; width: 57.199%; height: 19.831%; opacity: 0; }
       .pl-stars { left: 12.342%; top: 4.079%; width: 71.994%; height: 88.608%; opacity: 0; }
-      .pl-stroke { stroke-dasharray: 1000 1100; stroke-dashoffset: 1060; }
-      .pl-fill { opacity: 0; }
+      .pl-ribbon-reveal { transform: translateX(-1484px); }
+      .page-loader.is-playing .pl-hands,
+      .page-loader.is-playing .pl-lamb,
+      .page-loader.is-playing .pl-petals,
+      .page-loader.is-playing .pl-stars {
+        will-change: transform, opacity;
+      }
 
       /* Caption sits below the lamb on the canvas, but never below the fold
          on ultrawide screens where the cover canvas overflows vertically. */
@@ -122,7 +132,7 @@
           "Arial Rounded MT Bold", system-ui, sans-serif;
         letter-spacing: 0.05em;
         text-shadow: 0 1px 3px rgba(255, 255, 255, 0.9);
-        opacity: 0;
+        opacity: 1;
       }
       .page-loader__caption span {
         display: inline-block;
@@ -134,10 +144,9 @@
       .page-loader.is-playing .page-loader__caption { animation: pl-fade 0.4s ease-out calc(0.1s - var(--pl-skip, 0s)) both; }
       .page-loader.is-playing .pl-hands { animation: pl-rise 0.9s cubic-bezier(0.22, 0.8, 0.3, 1) calc(0.05s - var(--pl-skip, 0s)) both; }
       .page-loader.is-playing .pl-hands img { animation: pl-float 3.8s ease-in-out calc(0.95s - var(--pl-skip, 0s)) infinite; }
-      .page-loader.is-playing .pl-stroke {
-        animation: pl-draw 1.5s linear calc(0.45s - var(--pl-skip, 0s)) both;
+      .page-loader.is-playing .pl-ribbon-reveal {
+        animation: pl-unfold 1.5s cubic-bezier(0.33, 0, 0.67, 1) calc(0.45s - var(--pl-skip, 0s)) both;
       }
-      .page-loader.is-playing .pl-fill { animation: pl-fade 0.35s ease-out calc(1.75s - var(--pl-skip, 0s)) both; }
       .page-loader.is-playing .pl-glow { animation: pl-halo 0.9s ease-out calc(1.5s - var(--pl-skip, 0s)) both; }
       .page-loader.is-playing .pl-lamb {
         animation: pl-pop 0.62s cubic-bezier(0.34, 1.56, 0.64, 1) calc(1.5s - var(--pl-skip, 0s)) both;
@@ -159,12 +168,11 @@
         to { opacity: 1; transform: none; }
       }
       @keyframes pl-float { 50% { transform: translate3d(0, -3px, 0); } }
-      /* Stroke 1060 → 264 closes the loop around the lamb (path fraction
-         0.736); the tail then eases out to the right edge. */
-      @keyframes pl-draw {
-        0% { stroke-dashoffset: 1060; animation-timing-function: cubic-bezier(0.4, 0, 0.7, 0.9); }
-        70% { stroke-dashoffset: 264; animation-timing-function: cubic-bezier(0.2, 0.5, 0.4, 1); }
-        100% { stroke-dashoffset: 0; }
+      /* Reveal the original image with one feathered front. A wide stroked
+         path would expose the crossing out of order and cut holes in it. */
+      @keyframes pl-unfold {
+        from { transform: translateX(-1484px); }
+        to { transform: translateX(0); }
       }
       @keyframes pl-halo {
         0% { opacity: 0; transform: scale(0.55); }
@@ -192,12 +200,12 @@
         .page-loader.is-playing * {
           animation: none !important;
         }
-        .pl-hands, .pl-lamb, .pl-petals, .pl-stars, .pl-fill,
+        .pl-hands, .pl-lamb, .pl-petals, .pl-stars,
         .page-loader__caption, .page-loader__caption span {
           opacity: 1;
         }
         .pl-glow { opacity: 0.6; }
-        .pl-stroke { stroke-dashoffset: 0; }
+        .pl-ribbon-reveal { transform: translateX(0); }
       }
     </style>
   </head>
@@ -216,18 +224,19 @@
         </div>
         <svg class="pl-ribbon" viewBox="0 0 1264 711" preserveAspectRatio="none">
           <defs>
+            <linearGradient id="pl-ribbon-edge" gradientUnits="userSpaceOnUse" x1="1264" y1="0" x2="1484" y2="0">
+              <stop offset="0" stop-color="#fff" />
+              <stop offset="0.35" stop-color="#fff" stop-opacity="0.78" />
+              <stop offset="0.7" stop-color="#fff" stop-opacity="0.22" />
+              <stop offset="1" stop-color="#fff" stop-opacity="0" />
+            </linearGradient>
             <mask id="pl-ribbon-mask" maskUnits="userSpaceOnUse" x="0" y="0" width="1264" height="711">
-              <path
-                class="pl-stroke"
-                d="M -20 585 C 200 575, 380 535, 435 430 C 430 260, 510 110, 660 105 C 790 110, 845 220, 820 340 C 780 420, 690 455, 630 460 C 700 480, 820 485, 960 470 C 1070 455, 1170 435, 1284 415"
-                fill="none"
-                stroke="#fff"
-                stroke-width="215"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                pathLength="1000"
+              <rect
+                class="pl-ribbon-reveal"
+                width="1484"
+                height="711"
+                fill="url(#pl-ribbon-edge)"
               />
-              <rect class="pl-fill" width="1264" height="711" fill="#fff" />
             </mask>
           </defs>
           <image
@@ -263,15 +272,59 @@
         loader.addEventListener("wheel", block, { passive: false });
         loader.addEventListener("touchmove", block, { passive: false });
 
+        var frame = 0;
         var play = function () {
+          if (loader.classList.contains("is-playing") || loader.hidden) return;
+          cancelAnimationFrame(frame);
           loader.dataset.start = String(performance.now());
           loader.classList.add("is-playing");
+
+          // SVG masks paint on the main thread. Wall-clock CSS playback would
+          // skip the entrance while React/GSAP initialise behind the loader.
+          // Keep finite entrance animations on one clock, allowing at most
+          // 32 ms of progress per rendered frame. Ambient loops stay in CSS.
+          var entrances = loader.getAnimations({ subtree: true }).filter(function (animation) {
+            return animation instanceof CSSAnimation &&
+              animation.effect.getTiming().iterations !== Infinity;
+          });
+          entrances.forEach(function (animation) {
+            animation.pause();
+            animation.currentTime = 0;
+          });
+          var elapsed = 0;
+          var previous = null;
+          var advance = function (now) {
+            frame = 0;
+            if (loader.hidden || !loader.classList.contains("is-playing")) return;
+            if (document.hidden) {
+              previous = null;
+            } else {
+              if (previous !== null) elapsed += Math.min(32, now - previous);
+              previous = now;
+              entrances = entrances.filter(function (animation) {
+                // Reduced-motion can cancel the CSS animation during playback.
+                if (animation.playState === "idle") return false;
+                var end = animation.effect.getComputedTiming().endTime;
+                animation.currentTime = Math.min(elapsed, end);
+                if (elapsed < end) return true;
+                animation.finish();
+                return false;
+              });
+            }
+            if (entrances.length) frame = requestAnimationFrame(advance);
+          };
+          if (entrances.length) frame = requestAnimationFrame(advance);
+          loader.dispatchEvent(new Event("loaderplay"));
         };
-        var fallback = setTimeout(play, 1500);
+        // Route replays must use the same clock as the first page load.
+        loader.addEventListener("loaderstart", play);
+        // A slow connection must get a chance to decode the artwork before
+        // its entrance runs; failed requests settle through decode().
+        var fallback = setTimeout(play, 8000);
         var decode = function (img) {
           return img.decode ? img.decode().catch(function () {}) : null;
         };
-        var art = [].slice.call(loader.querySelectorAll("[data-critical]"));
+        var art = [].slice.call(loader.querySelectorAll("img"));
         var ribbon = new Image();
         ribbon.src = loader.querySelector("image").getAttribute("href");
         art.push(ribbon);

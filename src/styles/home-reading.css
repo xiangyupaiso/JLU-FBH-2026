@@ -1,0 +1,83 @@
+/* Reading-only overrides: artwork, particles and navigation keep their own layout. */
+.home-story .story-chapter .story-copy {
+  padding-inline: clamp(24px, 5vw, 100px);
+  gap: clamp(24px, 3.5svh, 40px);
+}
+.home-story .story-chapter .story-copy h2 {
+  width: 100%;
+  max-width: 1280px;
+  font-size: clamp(30px, 3.25vw, 54px);
+  line-height: 1.22;
+  text-wrap: wrap;
+}
+.home-story .story-chapter .story-body {
+  width: min(100%, 1080px);
+  font-size: clamp(17px, 1.35vw, 20px);
+  line-height: 1.75;
+}
+.home-story .story-chapter .story-body > p,
+.home-story .story-chapter--ward .story-ward-context {
+  max-width: none;
+  text-wrap: wrap;
+}
+.home-story .story-reading-word {
+  display: inline-block;
+  vertical-align: baseline;
+  transform-origin: center 70%;
+}
+.home-story .story-reading-ink,
+.home-story .story-reading-accents {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+}
+.home-story .story-reading-ink { visibility: hidden; z-index: 1; }
+.home-story .story-reading-accents {
+  color: var(--story-accent);
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.home-story .story-copy[data-reading-voice] .story-challenges li { border-color: transparent; }
+.home-story .story-copy.has-flow-reading { margin-bottom: 28svh; }
+.home-story .story-platform-note {
+  opacity: 1;
+}
+.home-story .story-ward-aftermath > span {
+  display: inline;
+  margin: 0;
+}
+.home-story .story-ward-title-ending {
+  display: inline;
+  padding: 0;
+}
+.home-story .story-chapter--ward .story-ward-wish,
+.home-story .story-chapter--ward .story-ward-question {
+  font-size: clamp(28px, 3vw, 46px);
+  text-wrap: wrap;
+}
+.home-story .story-prologue > p {
+  max-width: 1280px;
+  font-size: clamp(30px, 3.8vw, 56px);
+}
+.home-story .story-prologue-line { display: inline; }
+
+@media (max-width: 800px) {
+  .home-story .story-chapter .story-copy {
+    padding-block: 40px;
+  }
+  .home-story .story-chapter .story-copy h2 { font-size: clamp(28px, 5vw, 38px); }
+  .home-story .story-chapter .story-body { font-size: 17px; line-height: 1.65; }
+  .home-story .story-chapter--ward .story-ward-context { max-width: 640px; }
+  .home-story .story-ward-dialogue { margin-block: 28px; }
+  .home-story .story-platform-note--design,
+  .home-story .story-platform-note--beyond { bottom: max(96px, 12%); }
+}
+@media (max-height: 650px) {
+  .home-story .story-chapter .story-copy { padding-block: 32px; gap: 22px; }
+}

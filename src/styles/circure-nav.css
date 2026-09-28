@@ -6,6 +6,16 @@
    Logo fold/mark/ribbon progress vars default to 0 (wordmark 常显, per plan). */
 
 .site-header {
+  /* Reuse the original search pill's gentle overshoot on direct interaction. */
+  --nav-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --nav-spring-duration: 420ms;
+  --header-glass-base: #fcf8f1;
+  --header-glass-opacity: 62%;
+  --header-glass-blur: 12px;
+  --header-glass-highlight: rgba(255, 255, 255, 0.8);
+  --header-glass-edge: rgba(255, 255, 255, 0.7);
+  --header-pill: rgba(255, 255, 255, 0.08);
+  --header-pill-active: rgba(255, 255, 255, 0.4);
   --header-surface: var(--paper-bright);
   --header-ink: var(--brand-navy-deep);
   --header-line: rgba(27, 23, 25, 0.06);
@@ -34,13 +44,65 @@
 .site-header::before {
   position: absolute;
   z-index: -1;
-  top: 0;
-  right: 0;
-  left: 0;
-  height: var(--header-height);
-  border-bottom: 1px solid transparent;
-  background-color: transparent;
+  top: 6px;
+  right: 10px;
+  left: 10px;
+  height: calc(var(--header-height) - 12px);
+  border: 1px solid var(--header-glass-edge);
+  border-radius: 22px;
+  /* Opaque fallback first; enhanced only when backdrop filtering is supported.
+     One bounded sampling surface, with static highlights instead of a render loop. */
+  background: var(--header-glass-base);
+  box-shadow:
+    inset 0 1px 0 var(--header-glass-highlight),
+    inset 1px 0 0 rgba(255, 255, 255, 0.3),
+    inset 0 -1px 0 rgba(16, 32, 49, 0.08),
+    0 4px 16px rgba(16, 32, 49, 0.08);
+  pointer-events: none;
   content: "";
+}
+
+@supports ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .site-header::before {
+    background:
+      linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.12),
+        transparent 30%,
+        transparent 75%,
+        rgba(255, 255, 255, 0.04)
+      ),
+      color-mix(
+        in srgb,
+        var(--header-glass-base) var(--header-glass-opacity),
+        transparent
+      );
+    -webkit-backdrop-filter: blur(var(--header-glass-blur)) saturate(1.35);
+    backdrop-filter: blur(var(--header-glass-blur)) saturate(1.35);
+  }
+}
+
+/* The same material continues behind the expanded menu: no second blur plane. */
+.site-header.is-nav-open::before {
+  height: calc(var(--header-height) + var(--nav-menu-height) - 6px);
+}
+.site-header.is-nav-open {
+  --header-glass-opacity: 82%;
+  --header-glass-blur: 10px;
+}
+.site-header.is-mobile-open::before {
+  height: calc(var(--nav-mobile-height) + 8px);
+}
+.site-header.is-mobile-open {
+  --header-glass-opacity: 94%;
+}
+.site-header.is-home-page[data-home-opening="true"]:is(.is-nav-open, .is-mobile-open) {
+  --header-glass-opacity: 90%;
+}
+/* NavGlass spans the bar and menu. The legacy menu-only auras introduce a
+   hard colour seam at the dropdown's top edge, so omit that extra surface. */
+.site-header[data-liquid-glass] .circure-nav-surface {
+  display: none;
 }
 
 /* Pink Thread reading-progress line along the header's bottom edge. */
@@ -48,21 +110,23 @@
   content: "";
   position: absolute;
   z-index: 1;
-  left: 0;
-  top: var(--header-height);
-  width: 100%;
+  left: 28px;
+  top: calc(var(--header-height) - 7px);
+  width: calc(100% - 56px);
   height: 2px;
   background: var(--care);
   transform: scaleX(var(--scroll-p, 0));
   transform-origin: left;
   pointer-events: none;
 }
+.site-header:is(.is-nav-open, .is-mobile-open)::after {
+  opacity: 0;
+}
 
 /* Keep Home light after the opening illustration, at the existing bar height.
    CROSS-FILE: data-home-opening/-closing are set by Navbar.tsx from the Home
    page's .home-scene01, #what-we-hope and #home-finale positions. */
 .site-header.is-home-page::before {
-  background-color: rgba(252, 248, 241, 0.96);
   transition:
     background-color 240ms var(--ease-out),
     border-color 240ms var(--ease-out);
@@ -70,6 +134,12 @@
 
 /* Only the opening scene shares the illustration's dark background. */
 .site-header.is-home-page[data-home-opening="true"] {
+  --header-glass-base: #21141f;
+  --header-glass-opacity: 72%;
+  --header-glass-highlight: rgba(255, 232, 246, 0.1);
+  --header-glass-edge: rgba(255, 232, 246, 0.2);
+  --header-pill: rgba(248, 233, 232, 0.08);
+  --header-pill-active: rgba(215, 132, 179, 0.26);
   --header-surface: #f8e9e8;
   --header-ink: #f8e9e8;
   --header-line: rgba(248, 233, 232, 0.14);
@@ -81,17 +151,12 @@
   --nav-card-sheen: rgba(215, 132, 179, 0.18);
 }
 
-.site-header.is-home-page[data-home-opening="true"]::before {
-  border-bottom-color: transparent;
-  background: #21141f;
-}
-
 .site-header.is-home-page[data-home-opening="true"] .wordmark-folio {
   color: rgba(248, 233, 232, 0.62);
 }
 
 .site-header.is-home-page[data-home-opening="true"] .nav-link {
-  background: rgba(248, 233, 232, 0.1);
+  background: var(--header-pill);
   color: #f8e9e8;
 }
 
@@ -105,37 +170,13 @@
   box-shadow: inset 0 -1px 0 #d784b3;
 }
 
-.site-header.is-home-page[data-home-opening="true"] .page-search {
-  --header-ink: #4a344a;
-  --header-surface: #f8e9e8;
-}
-
-.site-header.is-home-page[data-home-opening="true"] .page-search__pill {
-  background: #4a344a;
-  color: #f8e9e8;
-  box-shadow: 0 1px 2px rgba(10, 6, 12, 0.28);
-}
-
-.site-header.is-home-page[data-home-opening="true"] .page-search.is-open .page-search__pill {
-  background: #f4e8ed;
-  color: #332438;
-  box-shadow: inset 0 0 0 1px rgba(215, 132, 179, 0.42);
-}
-
-.site-header.is-home-page[data-home-opening="true"] .page-search__bubble {
-  background: #4a344a;
-  color: #f8e9e8;
-}
-
 /* The final Home chapter has its own blush surface. */
 .site-header.is-home-page[data-home-closing="true"] {
+  --header-glass-base: #f7e7e6;
   --header-ink: #694753;
   --header-surface: #f7e7e6;
   --nav-surface: rgba(255, 246, 247, 0.98);
   --nav-surface-end: rgba(248, 232, 235, 0.98);
-}
-.site-header.is-home-page[data-home-closing="true"]::before {
-  background-color: #f7e7e6;
 }
 .site-header.is-home-page[data-home-closing="true"] .nav-link {
   color: var(--header-ink);
@@ -146,12 +187,6 @@
 .site-header.is-home-page[data-home-closing="true"] .nav-link[aria-expanded="true"] {
   background: #f0ced9;
 }
-.site-header.is-home-page[data-home-closing="true"] .page-search.is-open .page-search__pill {
-  background: #fff9f5;
-  color: #694753;
-  box-shadow: inset 0 0 0 1px #ba8e9e;
-}
-
 /* Inner-page header treatments are supplied by their existing route palettes. */
 
 .site-header[data-nav-theme="project"] {
@@ -181,10 +216,8 @@
   margin: 0 auto;
   color: var(--header-ink);
   pointer-events: auto;
-  transition:
-    height 440ms var(--ease-out),
-    color 260ms var(--ease-out);
-  will-change: height;
+  /* Layout resolves once. Only the contents animate on the compositor. */
+  transition: color 260ms var(--ease-out);
 }
 
 .circure-nav-head {
@@ -192,9 +225,9 @@
   z-index: 3;
   display: grid;
   height: 40px;
-  grid-template-columns: 148px minmax(0, 1fr) auto;
+  grid-template-columns: minmax(190px, 1fr) auto auto;
   align-items: center;
-  gap: 28px;
+  gap: 20px;
 }
 
 .circure-nav-surface {
@@ -206,21 +239,15 @@
   width: 100%;
   height: var(--nav-menu-height);
   overflow: hidden;
-  border: 1px solid var(--nav-surface-line);
-  border-top: 0;
-  border-radius: 0 0 var(--radius-panel) var(--radius-panel);
+  border: 0;
+  border-radius: 0 0 22px 22px;
   isolation: isolate;
-  background: linear-gradient(
-    180deg,
-    var(--nav-surface) 0%,
-    var(--nav-surface-end) 100%
-  );
-  box-shadow: 0 24px 64px var(--nav-surface-shadow);
+  background: transparent;
   opacity: 0;
   pointer-events: none;
   transform: translate3d(0, -12px, 0);
   transform-origin: 50% 0;
-  backdrop-filter: blur(18px);
+  /* Colour accents only; the header owns the single glass surface. */
   transition:
     opacity 360ms var(--ease-out),
     transform 440ms var(--ease-out);
@@ -390,7 +417,7 @@
   .circure-nav-surface {
     right: auto;
     left: 50%;
-    width: 100vw;
+    width: calc(100vw - 20px);
     translate: -50% 0;
   }
 
@@ -506,10 +533,10 @@
   position: absolute;
   left: 39px;
   top: 26px;
-  font-family: var(--font-mono);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 0.08em;
+  font-weight: 500;
+  letter-spacing: 0.025em;
   color: rgba(27, 23, 25, 0.6);
   white-space: nowrap;
   line-height: 1;
@@ -559,7 +586,8 @@
   margin: 0;
   border: 0;
   border-radius: 12px;
-  background: #f7edc9;
+  background: var(--header-pill);
+  box-shadow: inset 0 1px 0 var(--header-glass-highlight);
   color: var(--brand-navy-deep);
   white-space: nowrap;
   text-decoration: none;
@@ -567,7 +595,7 @@
     background-color var(--duration-fast) var(--ease-out),
     box-shadow var(--duration-fast) var(--ease-out),
     opacity var(--duration-fast) var(--ease-out),
-    transform var(--duration-fast) var(--ease-out);
+    transform var(--nav-spring-duration) var(--nav-spring);
 }
 
 button.nav-link {
@@ -575,15 +603,20 @@ button.nav-link {
 }
 
 .nav-link:hover {
-  background: #f2e2ae;
+  background: var(--header-pill-active);
   opacity: 1;
   transform: translateY(-1px);
 }
 
+.nav-link:active {
+  transform: translateY(0) scale(0.96);
+  transition-duration: 80ms;
+}
+
 .nav-link[aria-expanded="true"],
 .nav-link[aria-current="page"] {
-  background: #f0dfa5;
-  box-shadow: inset 0 -1px 0 var(--accent);
+  background: var(--header-pill-active);
+  box-shadow: inset 0 1px 0 var(--header-glass-highlight);
   opacity: 1;
 }
 
@@ -593,7 +626,7 @@ button.nav-link {
 }
 
 .nav-link::after {
-  content: "";
+  content: none;
   position: absolute;
   right: 12px;
   left: 12px;
@@ -668,9 +701,9 @@ button.nav-link {
   pointer-events: none;
   transform: translate3d(0, -12px, 0);
   transition:
-    visibility 0s linear 440ms,
-    opacity 360ms var(--ease-out),
-    transform 440ms var(--ease-out);
+    visibility 0s linear 320ms,
+    opacity 220ms ease-out,
+    transform 320ms cubic-bezier(0.2, 0.8, 0.2, 1);
   will-change: opacity, transform;
 }
 
@@ -686,7 +719,7 @@ button.nav-link {
   .circure-mega-menu {
     right: auto;
     left: 50%;
-    width: 100vw;
+    width: calc(100vw - 20px);
     translate: -50% 0;
   }
 }
@@ -701,16 +734,12 @@ button.nav-link {
   gap: clamp(7px, 0.7vw, 11px);
   opacity: 0;
   pointer-events: none;
-  transform: translate3d(0, 8px, 0);
-  transition:
-    opacity 360ms var(--ease-out),
-    transform 440ms var(--ease-out);
+  transition: opacity 180ms ease-out;
 }
 
 .circure-nav-panel.is-active {
   opacity: 1;
   pointer-events: auto;
-  transform: translate3d(0, 0, 0);
 }
 
 .nav-intro-card,
@@ -859,9 +888,18 @@ button.nav-link {
 
 @media (max-width: 980px) {
   .site-header {
+    --header-glass-blur: 8px;
+    --header-glass-opacity: 76%;
+    --nav-mobile-height: min(526px, calc(100svh - 34px));
     --nav-drop-offset: 0px;
     --nav-menu-height: 100%;
     padding: 14px 18px 0;
+  }
+
+  .site-header::before {
+    right: 6px;
+    left: 6px;
+    border-radius: 18px;
   }
 
   .circure-nav-shell,
@@ -871,13 +909,14 @@ button.nav-link {
   }
 
   .site-header.is-mobile-open .circure-nav-shell {
-    height: min(526px, calc(100svh - 34px));
+    height: var(--nav-mobile-height);
     color: var(--header-ink);
   }
 
   .circure-nav-head {
     height: 44px;
-    grid-template-columns: 1fr auto;
+    grid-template-columns: minmax(0, 1fr) auto auto;
+    gap: 8px;
   }
 
   .circure-nav-surface {
@@ -952,7 +991,7 @@ button.nav-link {
     transform: translateY(-10px);
     transition:
       opacity 220ms var(--ease-out),
-      transform 480ms var(--ease-out);
+      transform 320ms cubic-bezier(0.2, 0.8, 0.2, 1);
   }
 
   .circure-mobile-menu::-webkit-scrollbar {
@@ -1001,11 +1040,13 @@ button.nav-link {
 
 @media (max-width: 430px) {
   .site-header {
+    --nav-mobile-height: min(502px, calc(100svh - 28px));
     padding-inline: 14px;
   }
 
   .site-header.is-mobile-open .circure-nav-shell {
-    height: min(502px, calc(100svh - 28px));
+    --nav-mobile-height: min(502px, calc(100svh - 28px));
+    height: var(--nav-mobile-height);
   }
 
   .circure-mobile-menu {
@@ -1024,7 +1065,27 @@ button.nav-link {
   .circure-mobile-menu,
   .mobile-menu-toggle svg,
   .nav-caret,
+  .nav-link,
   .nav-link::after {
     transition-duration: 1ms !important;
+  }
+}
+
+/* Keep navigation readable without transparency, including older browsers. */
+@media (prefers-reduced-transparency: reduce), (prefers-contrast: more) {
+  .site-header::before {
+    background: var(--header-glass-base);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+}
+
+@media (forced-colors: active) {
+  .site-header::before {
+    background: Canvas;
+    border-color: CanvasText;
+    box-shadow: none;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
   }
 }
