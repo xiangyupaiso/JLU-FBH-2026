@@ -49,8 +49,19 @@
   transform: translate3d(var(--magnet-x), var(--magnet-y), 0) scale(1.04);
 }
 
-.circure-back-to-top.is-visible:hover img {
+.circure-back-to-top.is-visible:hover img,
+.circure-back-to-top.is-visible:hover .glass-sheen {
   transform: translateY(-2px);
+}
+
+.circure-back-to-top .glass-sheen {
+  transition: transform 220ms var(--ease-out);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .circure-back-to-top.is-visible .glass-sheen {
+    animation: glass-facet-pass 6s ease-in-out infinite;
+  }
 }
 
 .circure-back-to-top.is-visible:active {
@@ -82,7 +93,8 @@
     transform: none;
   }
 
-  .circure-back-to-top.is-visible:hover img {
+  .circure-back-to-top.is-visible:hover img,
+  .circure-back-to-top.is-visible:hover .glass-sheen {
     transform: none;
   }
 }

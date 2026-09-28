@@ -3,11 +3,17 @@
   --story-muted: #695a64;
   --story-accent: #a25172;
   color: var(--story-ink);
-  background: #fcf6ef;
+  background: #fcf6ed;
   font-family: var(--font-sans);
+  padding-bottom: clamp(40px, 7svh, 80px);
 }
 .home-story section {
   scroll-margin-top: var(--header-height);
+}
+/* Illustration chapters already reserve space for foreground artwork inside
+   .story-visual. A second anchor offset leaves a blank strip behind the lens. */
+.home-story .story-chapter {
+  scroll-margin-top: 0;
 }
 .home-story p {
   margin: 0 0 1em;
@@ -27,34 +33,51 @@
   outline: 2px solid var(--story-accent);
   outline-offset: 5px;
 }
-body:has(.home-story) .circure-back-to-top {
-  top: calc(var(--header-height) + 14px);
-  right: 16px;
-  bottom: auto;
-  width: 44px;
-  height: 44px;
+body:has(.home-story) .footer {
+  margin-top: 0 !important;
 }
 .story-prologue {
-  min-height: 42svh;
+  min-height: 76svh;
   display: grid;
   align-content: center;
   justify-items: center;
   text-align: center;
-  padding: 64px 24px 96px;
+  padding: 80px 24px 104px;
   background: linear-gradient(#21141f 55%, #51424e 80%, #f0eef3);
   color: #f8e9e8;
 }
 .story-prologue > p {
-  font: 400 clamp(36px, 4.5vw, 72px)/1.2 var(--font-editorial);
+  font: 400 56px/1.25 var(--font-editorial);
+  letter-spacing: 0;
+  margin: 0 0 36px;
 }
+.story-prologue-line { display: block; }
 .story-prologue em {
   color: #d9abc1;
   font: inherit;
 }
-.story-prologue a {
-  font-size: 18px;
+.story-prologue button {
+  padding: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  font-size: 17px;
+  color: #ead7e2;
+  text-decoration: none;
+  cursor: pointer;
 }
-.story-prologue a span {
+.story-prologue button:hover {
+  color: #fff;
+  text-decoration: none;
+}
+@media (max-width: 800px) {
+  .story-prologue { min-height: 70svh; padding: 64px 24px 88px; }
+  .story-prologue > p { font-size: 36px; }
+}
+@media (max-width: 380px) {
+  .story-prologue > p { font-size: 30px; }
+}
+.story-prologue button span {
   display: block;
   margin-top: 22px;
 }
@@ -79,6 +102,7 @@ body:has(.home-story) .circure-back-to-top {
 .story-chapter--challenge {
   --chapter-bg: #f2f4fe;
   --next-bg: #f0f3fd;
+  --scene-hold: 276svh;
 }
 .story-chapter--vaccine {
   --chapter-bg: #f0f3fd;
@@ -165,31 +189,34 @@ body:has(.home-story) .circure-back-to-top {
 }
 /* Extra track length holds the completed art without slowing its reveal. */
 .story-scene-track {
-  height: var(--scene-height);
+  height: calc(var(--scene-height) + var(--header-height));
 }
 .has-story-motion .story-scene-track {
   height: calc(
-    var(--scene-height) + var(--scene-hold) * var(--home-scroll-scale, 1)
+    var(--scene-height) + var(--header-height) + var(--scene-hold) * var(--home-scroll-scale, 1)
   );
 }
 .story-chapter-inner {
   position: sticky;
-  top: var(--header-height);
-  height: var(--scene-height);
+  top: 0;
+  height: calc(var(--scene-height) + var(--header-height));
+  background: var(--chapter-bg);
   overflow: hidden;
   isolation: isolate;
   contain: layout paint style;
 }
 .story-visual {
   position: absolute;
-  inset: 0;
+  /* Extend the backdrop behind the bar while preserving the artwork's
+     original height and reading area below it. */
+  inset: var(--header-height) 0 0;
 }
 .story-backdrop {
   position: absolute;
-  inset: 0;
+  inset: calc(-1 * var(--header-height)) 0 0;
   display: block;
   width: 100%;
-  height: 100%;
+  height: calc(100% + var(--header-height));
   object-fit: cover;
   object-position: center;
   pointer-events: none;
@@ -259,11 +286,6 @@ body:has(.home-story) .circure-back-to-top {
 .story-ward-change--question,
 .story-ward-change--ellipsis {
   z-index: 5;
-}
-.story-ward-question {
-  margin-top: 24px !important;
-  color: var(--story-accent);
-  font: italic clamp(29px, 3vw, 46px)/1.2 var(--font-editorial);
 }
 .story-map-landscape {
   z-index: 1;
@@ -339,47 +361,23 @@ body:has(.home-story) .circure-back-to-top {
   text-wrap: balance;
   pointer-events: none;
 }
-.story-morph-particles {
-  position: absolute;
-  z-index: 7;
-  display: block;
-  width: 18%;
-  height: 12%;
-  transform: translate(-50%, -50%);
-  pointer-events: none;
-}
-.story-morph-particles i {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: clamp(2px, 0.34vw, 5px);
-  aspect-ratio: 1;
-  border-radius: 50%;
-  background: var(--challenge-accent);
-  opacity: 0;
-}
-.story-morph--surgery .story-morph-word,
-.story-morph--surgery .story-morph-particles {
+.story-morph--surgery .story-morph-word {
   left: 38%;
   top: 34%;
 }
-.story-morph--chemotherapy .story-morph-word,
-.story-morph--chemotherapy .story-morph-particles {
+.story-morph--chemotherapy .story-morph-word {
   left: 38%;
   top: 70%;
 }
-.story-morph--resistance .story-morph-word,
-.story-morph--resistance .story-morph-particles {
+.story-morph--resistance .story-morph-word {
   left: 70%;
   top: 38%;
 }
-.story-morph--effects .story-morph-word,
-.story-morph--effects .story-morph-particles {
+.story-morph--effects .story-morph-word {
   left: 70%;
   top: 58%;
 }
-.story-morph--recurrence .story-morph-word,
-.story-morph--recurrence .story-morph-particles {
+.story-morph--recurrence .story-morph-word {
   left: 70%;
   top: 75%;
 }
@@ -502,6 +500,17 @@ body:has(.home-story) .circure-back-to-top {
   letter-spacing: -0.035em;
   text-wrap: balance;
 }
+/* Pinned reading panels keep their chapter colour behind the floating bar. */
+.story-copy::before {
+  content: "";
+  position: absolute;
+  top: calc(-1 * var(--header-height));
+  left: calc((100% - 100vw) / 2);
+  width: 100vw;
+  height: var(--header-height);
+  background: var(--chapter-bg);
+  pointer-events: none;
+}
 .story-body {
   font-size: clamp(18px, 1.4vw, 21px);
   line-height: 1.65;
@@ -518,6 +527,234 @@ body:has(.home-story) .circure-back-to-top {
   margin: 24px 0;
   font: italic 28px/1.4 var(--font-editorial);
   color: var(--story-accent);
+}
+/* Shared editorial rhythm for the reading panels after each illustration. */
+.story-chapter:not(.story-chapter--ward) .story-copy {
+  grid-template-columns: minmax(0, 1fr);
+  justify-items: center;
+  gap: 36px;
+  max-width: none;
+  padding: 64px 7%;
+  text-align: center;
+  background: var(--chapter-bg);
+}
+.story-chapter:not(.story-chapter--ward) .story-copy h2 {
+  max-width: 940px;
+  font-size: 52px;
+  line-height: 1.16;
+  letter-spacing: 0;
+}
+.story-chapter.story-chapter--hope .story-copy {
+  background: transparent;
+}
+.story-chapter:not(.story-chapter--ward) .story-body {
+  width: min(100%, 650px);
+  font-size: 19px;
+  line-height: 1.75;
+}
+.story-chapter:not(.story-chapter--ward) .story-body > p {
+  margin-bottom: 24px;
+  text-wrap: pretty;
+}
+.story-chapter:not(.story-chapter--ward) .story-body > :last-child {
+  margin-bottom: 0;
+}
+.story-reading-word {
+  transform-origin: 50% 100%;
+}
+.story-chapter--map .story-receptors {
+  justify-content: center;
+  gap: 48px;
+  margin: 32px 0;
+}
+.story-chapter--map .story-receptors span {
+  gap: 10px;
+  align-items: baseline;
+  font: 400 34px/1.2 var(--font-editorial);
+  letter-spacing: 0;
+}
+.story-chapter--map .story-body .story-emphasis {
+  margin-top: 28px;
+  font-size: 22px;
+  line-height: 1.6;
+}
+.story-chapter--challenge .story-challenges {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 14px 28px;
+  margin: 30px 0;
+  padding: 0;
+  list-style: none;
+  color: var(--story-accent);
+}
+.story-chapter--challenge .story-challenges li {
+  padding: 0 0 10px;
+  border-bottom: 1px solid rgba(162, 81, 114, 0.25);
+}
+.story-chapter:not(.story-chapter--ward) .story-source {
+  margin-top: 12px;
+  font-size: 15px;
+  font-weight: 400;
+  text-underline-offset: 6px;
+}
+@media (max-width: 800px) {
+  .story-chapter:not(.story-chapter--ward) .story-copy {
+    gap: 28px;
+    padding: 44px 24px;
+  }
+  .story-chapter:not(.story-chapter--ward) .story-copy h2 {
+    font-size: 34px;
+  }
+  .story-chapter:not(.story-chapter--ward) .story-body {
+    font-size: 17px;
+    line-height: 1.65;
+  }
+  .story-chapter--map .story-receptors {
+    gap: 28px;
+    margin: 28px 0;
+  }
+  .story-chapter--map .story-receptors span {
+    font-size: 28px;
+  }
+  .story-chapter--map .story-body .story-emphasis {
+    font-size: 20px;
+  }
+  .story-chapter--hope .story-carry {
+    white-space: normal;
+  }
+}
+@media (max-width: 380px), (max-height: 650px) {
+  .story-chapter:not(.story-chapter--ward) .story-copy {
+    gap: 24px;
+    padding: 36px 24px;
+  }
+  .story-chapter:not(.story-chapter--ward) .story-copy h2 {
+    font-size: 30px;
+  }
+  .story-chapter--map .story-receptors {
+    gap: 22px;
+  }
+  .story-chapter--map .story-receptors span {
+    font-size: 26px;
+  }
+}
+/* A quiet reading stage between the ward and the TNBC map. */
+.story-chapter--ward .story-copy {
+  grid-template-columns: minmax(0, 1fr);
+  justify-items: center;
+  gap: 32px;
+  max-width: none;
+  padding: 56px 24px;
+  text-align: center;
+  background: var(--chapter-bg);
+}
+.story-chapter--ward .story-copy h2 {
+  max-width: 900px;
+  font-size: 54px;
+  line-height: 1.15;
+  letter-spacing: 0;
+}
+.story-ward-title-ending {
+  display: inline-block;
+  padding: 0 0.08em 0.1em;
+}
+.story-chapter--ward .story-body {
+  width: min(100%, 820px);
+  font-size: 18px;
+  line-height: 1.7;
+}
+.story-chapter--ward .story-ward-context {
+  max-width: 610px;
+  margin: 0 auto;
+  text-wrap: pretty;
+}
+.story-ward-dialogue {
+  display: grid;
+  gap: 28px;
+  align-items: center;
+  margin: 44px 0 30px;
+  perspective: 900px;
+}
+.story-chapter--ward .story-ward-wish,
+.story-chapter--ward .story-ward-question {
+  width: 100%;
+  margin: 0;
+  padding: 8px 0;
+  font: italic 44px/1.25 var(--font-editorial);
+  letter-spacing: 0;
+  text-wrap: balance;
+  color: var(--story-accent);
+}
+.story-chapter--ward .story-ward-question {
+  color: var(--story-ink);
+}
+.story-copy.has-ward-reading .story-ward-dialogue {
+  gap: 0;
+}
+.story-copy.has-ward-reading .story-ward-dialogue > * {
+  grid-area: 1 / 1;
+}
+.story-ward-thread {
+  display: block;
+  width: 96px;
+  height: 1px;
+  margin: 0 auto 28px;
+  background: var(--story-accent);
+  transform-origin: center;
+}
+.story-ward-aftermath span {
+  display: block;
+}
+.story-ward-aftermath span:last-child {
+  margin-top: 12px;
+  color: var(--story-ink);
+}
+@media (max-width: 800px) {
+  .story-chapter--ward .story-copy {
+    gap: 20px;
+    padding: 36px 24px;
+  }
+  .story-chapter--ward .story-copy h2 {
+    max-width: 540px;
+    font-size: 36px;
+  }
+  .story-chapter--ward .story-body {
+    font-size: 16px;
+    line-height: 1.6;
+  }
+  .story-ward-dialogue {
+    margin: 32px 0 24px;
+  }
+  .story-chapter--ward .story-ward-wish,
+  .story-chapter--ward .story-ward-question {
+    font-size: 32px;
+  }
+  .story-ward-thread {
+    margin-bottom: 20px;
+  }
+}
+@media (max-width: 380px), (max-height: 650px) {
+  .story-chapter--ward .story-copy {
+    gap: 16px;
+    padding: 24px 20px;
+  }
+  .story-chapter--ward .story-copy h2 {
+    font-size: 28px;
+  }
+  .story-chapter--ward .story-body {
+    font-size: 15px;
+  }
+  .story-chapter--ward .story-ward-wish,
+  .story-chapter--ward .story-ward-question {
+    font-size: 28px;
+  }
+  .story-ward-dialogue {
+    margin: 20px 0 16px;
+  }
+  .story-ward-thread {
+    margin-bottom: 16px;
+  }
 }
 .story-body .story-small {
   font-size: inherit;
@@ -621,6 +858,7 @@ body:has(.home-story) .circure-back-to-top {
   }
   .story-chapter--vaccine .story-visual {
     position: relative;
+    inset: auto;
     padding: 32px 0;
   }
   .story-art--4 {
@@ -686,6 +924,9 @@ body:has(.home-story) .circure-back-to-top {
     --scene-height: calc(100svh - var(--header-height));
     --scene-hold: 70svh;
   }
+  .story-chapter--challenge {
+    --scene-hold: 210svh;
+  }
   .story-art--8 {
     width: 122vw;
   }
@@ -732,9 +973,6 @@ body:has(.home-story) .circure-back-to-top {
   }
   .story-challenge-heading strong {
     font-size: clamp(15px, 4.2vw, 25px);
-  }
-  .story-morph-particles i {
-    width: 2px;
   }
   .story-platform-layout .story-art--2 {
     width: min(94%, calc((var(--scene-height) - 24px) * var(--art-aspect)));
@@ -808,7 +1046,7 @@ body:has(.home-story) .circure-back-to-top {
     visibility: visible !important;
   }
   .home-story .story-scene-track {
-    height: var(--scene-height);
+    height: calc(var(--scene-height) + var(--header-height));
   }
   .story-chapter-inner {
     position: relative;
@@ -833,9 +1071,6 @@ body:has(.home-story) .circure-back-to-top {
   .story-platform-note {
     opacity: 1 !important;
     visibility: visible !important;
-  }
-  .story-morph-particles {
-    display: none;
   }
 }
 

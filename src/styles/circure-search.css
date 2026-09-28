@@ -1,214 +1,195 @@
-/* CirCure header page-search — gooey expanding search pill + match highlights.
-   Reimplements the shadcn "GooeyInput" effect without Tailwind or framer-motion:
-   an SVG goo filter merges a detached icon bubble with the growing input pill.
-   Collapsed: navy round button. Expanded: paperBright face + navy hairline. */
-
+/* Compact page search. The input opens in its own anchored panel without
+   moving the navigation or filtering its text through an SVG effect. */
 .page-search {
-  --search-collapsed: clamp(118px, 11vw, 138px);
-  --search-expanded: clamp(180px, 18vw, 250px);
-  --search-offset: clamp(40px, 4.2vw, 50px);
-  --search-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
   position: relative;
-  display: flex;
-  align-items: center;
-  justify-self: center;
-  width: calc(var(--search-expanded) + var(--search-offset));
-  height: 40px;
+  justify-self: end;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
-
-.page-search__filter {
-  position: absolute;
-  width: 0;
-  height: 0;
-  overflow: hidden;
+/* The site's broad body-font rule uses !important on all form controls. */
+.page-search input,
+.page-search button {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
 }
-
-.page-search__goo {
-  position: relative;
-  width: 100%;
-  height: 40px;
-}
-
-.page-search__pill {
-  position: absolute;
-  top: 0;
-  left: 0;
-  display: flex;
+.page-search__trigger {
+  display: inline-flex;
+  height: 36px;
   align-items: center;
   gap: 8px;
-  height: 40px;
-  width: var(--search-collapsed);
-  /* Collapsed pill sits centred in the reserved slot; on open it drifts left so
-     the detached bubble (0..40px) and the widened pill (offset..) kiss into one
-     gooey blob. */
-  margin-left: calc(
-    (var(--search-expanded) + var(--search-offset) - var(--search-collapsed)) /
-      2
-  );
-  padding: 0 14px;
+  padding: 0 12px;
+  border: 1px solid color-mix(in srgb, currentColor 12%, transparent);
   border-radius: 999px;
-  background: var(--header-ink);
-  color: var(--header-surface);
+  background: var(--header-pill);
+  color: var(--header-ink);
+  font:
+    500 13px/1 -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
   cursor: pointer;
-  box-shadow: 0 1px 2px rgba(16, 47, 89, 0.18);
   transition:
-    width 420ms var(--search-bounce),
-    margin-left 420ms var(--search-bounce),
-    background-color var(--duration-fast) var(--ease-out),
-    color var(--duration-fast) var(--ease-out);
+    background-color 180ms ease,
+    transform var(--nav-spring-duration) var(--nav-spring);
 }
-
-.page-search.is-open .page-search__pill {
-  width: var(--search-expanded);
-  margin-left: var(--search-offset);
-  cursor: text;
-  background: var(--paper-bright);
-  color: var(--brand-navy-deep);
-  box-shadow: inset 0 0 0 1px rgba(16, 47, 89, 0.32);
+.page-search__trigger:hover,
+.page-search__trigger[aria-expanded="true"] {
+  background: var(--header-pill-active);
 }
-
+.page-search__trigger:active {
+  transform: scale(0.94);
+  transition-duration: 80ms;
+}
+.page-search__trigger svg,
 .page-search__pill-icon {
-  width: 16px;
-  height: 16px;
-  flex: 0 0 auto;
+  width: 17px;
+  height: 17px;
+  flex-shrink: 0;
 }
-
-.page-search.is-open .page-search__pill-icon {
-  display: none;
+.page-search__panel {
+  position: absolute;
+  z-index: 5;
+  top: calc(100% + 20px);
+  right: 0;
+  width: min(340px, calc(100vw - 36px));
+  padding: 18px;
+  border: 1px solid var(--header-glass-edge);
+  border-radius: 20px;
+  background: var(--header-glass-base);
+  color: var(--header-ink);
+  box-shadow:
+    inset 0 1px 0 var(--header-glass-highlight),
+    0 12px 32px rgba(16, 32, 49, 0.14);
+  /* Keep the panel mounted so closing and rapid reversals remain continuous.
+     Animate only its transform/opacity, never the navigation's layout. */
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-12px) scale(0.9, 0.86);
+  transform-origin: calc(100% - 24px) -20px;
+  transition:
+    transform 180ms var(--ease-out),
+    opacity 140ms ease,
+    visibility 0s linear 180ms;
 }
-
+.page-search.is-open .page-search__panel {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0) scale(1);
+  transition:
+    transform var(--nav-spring-duration) var(--nav-spring),
+    opacity 160ms ease,
+    visibility 0s;
+}
+.page-search__label {
+  display: block;
+  margin-bottom: 12px;
+  font-size: 12px;
+  font-weight: 600;
+}
+.page-search__pill {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 42px;
+  padding: 0 12px;
+  border: 1px solid color-mix(in srgb, currentColor 20%, transparent);
+  border-radius: 12px;
+  background: var(--header-pill);
+}
+.page-search__pill:focus-within {
+  outline: 2px solid var(--header-ink);
+  outline-offset: 2px;
+}
 .page-search__input {
+  width: 100%;
   min-width: 0;
-  flex: 1;
-  height: 100%;
   padding: 0;
   border: 0;
   outline: 0;
   background: transparent;
   color: inherit;
-  font: inherit;
-  font-size: 13px;
-  pointer-events: none;
+  font:
+    400 14px/1.4 -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
 }
-
 .page-search__input::placeholder {
   color: inherit;
-  opacity: 0.66;
-  font-family: var(--font-mono);
-  letter-spacing: 0.02em;
+  opacity: 0.6;
 }
-
-.page-search.is-open .page-search__input {
-  pointer-events: auto;
-  cursor: text;
-}
-
-.page-search__input::-webkit-search-cancel-button,
-.page-search__input::-webkit-search-decoration {
-  -webkit-appearance: none;
-  appearance: none;
-}
-
-.page-search__bubble {
-  position: absolute;
-  top: 0;
-  left: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background: var(--header-ink);
-  color: var(--header-surface);
-  opacity: 0;
-  pointer-events: none;
-  transform: scale(0);
-  transition:
-    transform 420ms var(--search-bounce),
-    opacity 200ms ease;
-}
-
-.page-search__bubble svg {
-  width: 16px;
-  height: 16px;
-}
-
-.page-search.is-open .page-search__bubble {
-  opacity: 1;
-  transform: scale(1);
-}
-
 .page-search__meta {
   display: flex;
   align-items: center;
-  gap: 5px;
-  flex: 0 0 auto;
-  max-width: 0;
-  opacity: 0;
-  overflow: hidden;
-  white-space: nowrap;
-  transition:
-    max-width 300ms var(--ease-out),
-    opacity 180ms ease;
+  gap: 8px;
+  min-height: 28px;
+  margin-top: 10px;
 }
-
-.page-search.is-open .page-search__meta {
-  max-width: 140px;
-  opacity: 1;
-}
-
 .page-search__count {
-  font-size: 11px;
+  margin-right: auto;
+  font-size: 12px;
   font-variant-numeric: tabular-nums;
-  opacity: 0.8;
 }
-
-.page-search__nav {
+.page-search__nav,
+.page-search__close {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background: transparent;
+  min-width: 28px;
+  min-height: 28px;
+  border: 0;
+  border-radius: 8px;
+  background: var(--header-pill);
   color: inherit;
+  font: inherit;
+  font-size: 12px;
   cursor: pointer;
-  font-size: 11px;
-  line-height: 1;
-  transition: opacity 160ms ease;
+  transition: transform var(--nav-spring-duration) var(--nav-spring);
 }
-
-.page-search__nav:hover {
-  opacity: 0.66;
+.page-search__nav:active,
+.page-search__close:active {
+  transform: scale(0.92);
+  transition-duration: 80ms;
 }
-
-/* Match highlights rendered into the page body. */
-mark.page-search-hit {
-  background: rgba(215, 132, 179, 0.38);
-  color: inherit;
-  border-radius: 2px;
-  padding: 0 1px;
-  box-decoration-break: clone;
-  -webkit-box-decoration-break: clone;
+.page-search__trigger:focus-visible,
+.page-search__nav:focus-visible,
+.page-search__close:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
 }
-
-mark.page-search-hit.is-active {
-  background: var(--care);
-  color: #fff;
-  box-shadow: 0 0 0 3px rgba(215, 132, 179, 0.28);
-}
-
-@media (max-width: 980px) {
-  .page-search {
+@media (max-width: 1180px) {
+  .page-search__trigger {
+    width: 36px;
+    padding: 0;
+    justify-content: center;
+  }
+  .page-search__trigger > span {
     display: none;
   }
 }
-
-@media (prefers-reduced-motion: reduce) {
-  .page-search__pill,
-  .page-search__bubble,
-  .page-search__meta {
-    transition-duration: 1ms !important;
+@media (max-width: 980px) {
+  .page-search__panel {
+    position: fixed;
+    top: calc(var(--header-height) + 12px);
+    right: 18px;
   }
+}
+@media (prefers-reduced-motion: reduce) {
+  .page-search__trigger,
+  .page-search__nav,
+  .page-search__close,
+  .page-search .page-search__panel {
+    transition: none !important;
+    transform: none !important;
+  }
+}
+
+/* Browser-painted text ranges; no wrapping or replacing React DOM nodes. */
+::highlight(page-search-results) {
+  background-color: rgba(215, 132, 179, 0.38);
+  color: inherit;
+}
+::highlight(page-search-current) {
+  background-color: #754356;
+  color: #fff;
 }

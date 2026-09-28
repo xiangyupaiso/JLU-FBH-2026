@@ -13,6 +13,7 @@ import { Header } from "../../components/Header";
 import { NotFound } from "../../components/NotFound";
 import { Footer } from "../../components/Footer";
 import { BackToTop } from "../../components/BackToTop";
+import { SheepCursor } from "../../components/SheepCursor";
 import {
   hidePageLoaderWhenReady,
   showPageLoader,
@@ -60,7 +61,7 @@ const ROUTE_READER_ROUTES = new Set([
 ]);
 
 const App = () => {
-  const { pathname, hash } = useLocation();
+  const { pathname } = useLocation();
   const pathMapping = getPathMapping();
   const currentPath =
     pathname.split(`${stringToSlug(import.meta.env.VITE_TEAM_NAME)}`).pop() ||
@@ -90,7 +91,7 @@ const App = () => {
       window.history.scrollRestoration = "manual";
     }
     window.scrollTo({ top: 0, left: 0, behavior: "auto" });
-  }, [pathname, hash]);
+  }, [pathname]);
 
   useEffect(() => {
     const body = document.body;
@@ -160,6 +161,7 @@ const App = () => {
       </Routes>
 
       <BackToTop />
+      <SheepCursor />
 
       {/* MUST mention license AND have a link to team wiki's repository on gitlab.igem.org */}
       <Footer

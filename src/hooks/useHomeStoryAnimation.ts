@@ -5,6 +5,8 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SplitText } from "gsap/SplitText";
 import { HOME_EASE, HOME_REST_RATIO, HOME_SCRUB } from "./homeMotion";
 import { animateCircRna } from "./animateCircRna";
+import { animateArtworkWords, animateHomePrologue, animateHomeReading } from "./animateHomeReading";
+import { animateChallengeMorph } from "./animateChallengeMorph";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger, SplitText);
 
@@ -33,6 +35,7 @@ function choreographArt(
   timeline: gsap.core.Timeline,
   compact: boolean,
   splits: ReturnType<typeof SplitText.create>[],
+  cleanups: (() => void)[],
 ) {
   const distance = compact ? 0.64 : 1;
   const layer = (number: number) =>
@@ -159,15 +162,12 @@ function choreographArt(
     }
     case "why-tnbc": {
       camera({ scale: 1.018 }, { scale: 1.006 });
-      timeline.fromTo(
-        section.querySelectorAll("[data-map-copy]"),
-        {
-          opacity: (index: number) => (index < 3 ? 0.72 : 0),
-          y: 16 * distance,
-        },
-        { opacity: 1, y: 0, duration: 0.2, stagger: 0.04, ease: HOME_EASE },
-        0,
-      );
+      const mapCopy = section.querySelector(".tnbc-map-copy");
+      gsap.set(mapCopy, { autoAlpha: 0 });
+      timeline.to(mapCopy, { autoAlpha: 1, duration: 0.08 }, 0.08);
+      section.querySelectorAll<HTMLElement>("[data-map-copy]").forEach((element, index) => {
+        animateArtworkWords(element, timeline, index ? "explain" : "expand", compact, splits, 0.08 + index * 0.12, 0.3);
+      });
       section.querySelectorAll("[data-map-marker]").forEach((marker, index) => {
         timeline.fromTo(
           marker,
@@ -202,116 +202,7 @@ function choreographArt(
         0.22,
         HOME_EASE,
       );
-      const morphKeys = [
-        "surgery",
-        "chemotherapy",
-        "resistance",
-        "effects",
-        "recurrence",
-      ];
-      morphKeys.forEach((key, index) => {
-        const icon = section.querySelector(`[data-morph-icon="${key}"]`);
-        const word = section.querySelector<HTMLElement>(
-          `[data-morph-word="${key}"]`,
-        );
-        const particleBox = section.querySelector<HTMLElement>(
-          `[data-morph-particles="${key}"]`,
-        );
-        const particles = particleBox?.querySelectorAll<HTMLElement>("i");
-        if (!icon || !word) return;
-        const split = SplitText.create(word, {
-          type: "words,chars",
-          aria: "hidden",
-        });
-        splits.push(split);
-        const letters = split.chars;
-        const at = 0.29 + index * 0.11;
-        timeline.set(icon, { opacity: 1 }, 0);
-        timeline.to(icon, { opacity: 0, duration: 0.17, ease: HOME_EASE }, at);
-        if (particles?.length && particleBox && letters.length) {
-          const spreadX = particleBox.clientWidth * 0.4;
-          const spreadY = particleBox.clientHeight * 0.34;
-          const letterPoint = (particleIndex: number) => {
-            const letter =
-              letters[
-                Math.floor((particleIndex * letters.length) / particles.length)
-              ];
-            const letterRect = letter.getBoundingClientRect();
-            const boxRect = particleBox.getBoundingClientRect();
-            return {
-              x:
-                letterRect.left +
-                letterRect.width / 2 -
-                boxRect.left -
-                boxRect.width / 2 +
-                ((particleIndex % 3) - 1) * 2,
-              y:
-                letterRect.top +
-                letterRect.height / 2 -
-                boxRect.top -
-                boxRect.height / 2,
-            };
-          };
-          timeline.fromTo(
-            particles,
-            { opacity: 0, scale: 0.35, x: 0, y: 0 },
-            {
-              opacity: 0.9,
-              scale: 1,
-              x: (particleIndex: number) => {
-                const radius = Math.sqrt(
-                  (particleIndex + 0.5) / particles.length,
-                );
-                return Math.cos(particleIndex * 2.4) * spreadX * radius;
-              },
-              y: (particleIndex: number) => {
-                const radius = Math.sqrt(
-                  (particleIndex + 0.5) / particles.length,
-                );
-                return Math.sin(particleIndex * 2.4) * spreadY * radius;
-              },
-              duration: 0.12,
-              stagger: 0.001,
-              ease: "sine.out",
-            },
-            at,
-          );
-          timeline.to(
-            particles,
-            {
-              x: (particleIndex: number) => letterPoint(particleIndex).x,
-              y: (particleIndex: number) => letterPoint(particleIndex).y,
-              scale: 0.65,
-              duration: 0.16,
-              ease: "sine.inOut",
-            },
-            at + 0.14,
-          );
-          timeline.to(
-            particles,
-            { opacity: 0, scale: 0.35, duration: 0.1 },
-            at + 0.27,
-          );
-        }
-        timeline.fromTo(
-          word,
-          { opacity: 0 },
-          { opacity: 1, duration: 0.01 },
-          at + 0.22,
-        );
-        timeline.fromTo(
-          letters,
-          { opacity: 0, y: 4 * distance },
-          {
-            opacity: 1,
-            y: 0,
-            duration: 0.14,
-            stagger: 0.008,
-            ease: HOME_EASE,
-          },
-          at + 0.22,
-        );
-      });
+      cleanups.push(animateChallengeMorph(section, timeline, compact));
       arrive(3, 0.82, { scale: 0.9, opacity: 0 }, 0.13);
       break;
     }
@@ -334,24 +225,14 @@ function choreographArt(
         HOME_EASE,
       );
       arrive(4, 0.08, { x: -14, opacity: 0.5 }, 0.3);
-      const question = section.querySelector('[data-vaccine-copy="question"]');
-      const answer = section.querySelector('[data-vaccine-copy="answer"]');
-      timeline.fromTo(
-        question,
-        { opacity: 0, y: 10 * distance },
-        { opacity: 1, y: 0, duration: 0.2, ease: HOME_EASE },
-        0.04,
-      );
+      const question = section.querySelector<HTMLElement>('[data-vaccine-copy="question"] h3')!;
+      const answer = section.querySelector<HTMLElement>('[data-vaccine-copy="answer"] h3')!;
+      animateArtworkWords(question, timeline, "explain", compact, splits, 0.04, 0.26);
       arrive(8, 0.18, { y: 8, scale: 0.88, opacity: 0 }, 0.2);
       paint("arrow", 0.36, 0.24);
       arrive(3, 0.52, { x: 12, scale: 0.98, opacity: 0.18 }, 0.26);
       arrive(7, 0.56, { y: 8, scale: 0.86, opacity: 0 }, 0.18);
-      timeline.fromTo(
-        answer,
-        { opacity: 0, y: 12 * distance },
-        { opacity: 1, y: 0, duration: 0.22, ease: HOME_EASE },
-        0.6,
-      );
+      animateArtworkWords(answer, timeline, "assemble", compact, splits, 0.6, 0.3);
       break;
     }
     case "why-circrna":
@@ -359,6 +240,7 @@ function choreographArt(
       break;
     case "our-platform": {
       camera({ scale: 1.016 }, { scale: 1.005 });
+      gsap.set(section.querySelectorAll("[data-platform-note]"), { autoAlpha: 0 });
       move(
         2,
         { opacity: 1, scale: 0.98 },
@@ -404,13 +286,9 @@ function choreographArt(
           );
         });
         ["structure", "mechanism", "beyond", "design"].forEach((key, index) => {
-          const note = section.querySelector(`[data-platform-note="${key}"]`);
-          timeline.fromTo(
-            note,
-            { opacity: 0, y: 6 * distance },
-            { opacity: 1, y: 0, duration: 0.16, ease: HOME_EASE },
-            0.73 + index * 0.055,
-          );
+          const note = section.querySelector<HTMLElement>(`[data-platform-note="${key}"]`)!;
+          timeline.to(note, { autoAlpha: 1, duration: 0.08 }, 0.69 + index * 0.055);
+          animateArtworkWords(note, timeline, "assemble", compact, splits, 0.69 + index * 0.055, 0.2);
         });
         timeline.to(
           complete,
@@ -481,13 +359,18 @@ export function useHomeStoryAnimation(root: RefObject<HTMLDivElement | null>) {
   useGSAP(
     () => {
       gsap.set(root.current, { "--home-scroll-scale": 1 + HOME_REST_RATIO });
-      const media = gsap.matchMedia();
+      let media = gsap.matchMedia();
       const buildTimelines = (compact: boolean) => {
         const timelines = new Map<string, gsap.core.Timeline>();
         const splits: ReturnType<typeof SplitText.create>[] = [];
         const cleanups: (() => void)[] = [];
         let debugMotion: Window["__homeMotion"];
         root.current?.classList.add("has-story-motion");
+        const prologue = root.current?.querySelector<HTMLElement>(".story-prologue");
+        if (prologue) {
+          const opening = animateHomePrologue(prologue, compact, splits);
+          timelines.set("prologue", opening);
+        }
         root.current
           ?.querySelectorAll<HTMLElement>(".story-chapter")
           .forEach((section) => {
@@ -533,7 +416,7 @@ export function useHomeStoryAnimation(root: RefObject<HTMLDivElement | null>) {
             const artworkTimeline = gsap.timeline({
               defaults: { ease: "none" },
             });
-            choreographArt(section, artworkTimeline, compact, splits);
+            choreographArt(section, artworkTimeline, compact, splits, cleanups);
             timeline.add(artworkTimeline, ARTWORK_START);
 
             if (stackedVaccine) {
@@ -555,15 +438,8 @@ export function useHomeStoryAnimation(root: RefObject<HTMLDivElement | null>) {
 
             const copy = section.querySelector<HTMLElement>(".story-copy");
             if (copy) {
-              // Full-height copy gets its own reading beat. For taller copy,
-              // bottom/bottom lets every line scroll into view before pinning.
-              ScrollTrigger.create({
-                id: `home-${section.id}-reading`,
-                trigger: copy,
-                start: "bottom bottom",
-                end: () => `+=${Math.round(window.innerHeight * (compact ? 0.4 : 0.6))}`,
-                pin: true,
-              });
+              timelines.set(`${section.id}-reading`,
+                animateHomeReading(copy, section, compact, splits, cleanups));
             }
           });
 
@@ -783,6 +659,7 @@ export function useHomeStoryAnimation(root: RefObject<HTMLDivElement | null>) {
             // The fold's start width is re-measured after font or size changes.
             invalidateOnRefresh: true,
           });
+          timelines.set("home-finale", evolve);
 
           // 1. Carry: between the "What we hope" reading pin and the finale
           //    pin, a clone of the kicker follows the scroll from the scene 9
@@ -884,21 +761,64 @@ export function useHomeStoryAnimation(root: RefObject<HTMLDivElement | null>) {
         };
       };
 
-      media.add(
-        "(prefers-reduced-motion: no-preference) and (min-width: 801px)",
-        () => buildTimelines(false),
+      const registerMedia = () => media.add(
+        {
+          motion: "(prefers-reduced-motion: no-preference)",
+          compact: "(max-width: 800px)",
+          short: "(max-height: 650px)",
+        },
+        (context) => {
+          if (context.conditions?.motion) {
+            return buildTimelines(Boolean(context.conditions.compact));
+          }
+        },
       );
-      media.add(
-        "(prefers-reduced-motion: no-preference) and (max-width: 800px)",
-        () => buildTimelines(true),
-      );
-      // Reading panels depend on the final font metrics, including on reload.
+      registerMedia();
+      // Pin eligibility must be measured again after font loading or zoom/reflow.
       let active = true;
-      document.fonts.ready.then(() => {
-        if (active) ScrollTrigger.refresh();
-      });
+      let resizeTimer = 0;
+      let measuredWidth = window.innerWidth;
+      let measuredHeight = window.innerHeight;
+      const rebuild = () => {
+        if (!active) return;
+        const current = ScrollTrigger.getAll().find((trigger) =>
+          trigger.isActive && trigger.vars.id?.startsWith("home-") &&
+          trigger.vars.id.endsWith("-reading") && trigger.pin,
+        );
+        const position = current && { id: current.vars.id!, progress: current.progress };
+        media.revert();
+        media = gsap.matchMedia();
+        registerMedia();
+        ScrollTrigger.refresh();
+        const next = position && ScrollTrigger.getById(position.id);
+        if (position && next?.pin) {
+          window.scrollTo({ top: next.start + (next.end - next.start) * position.progress, behavior: "instant" });
+          ScrollTrigger.update();
+          next.getTween()?.progress(1);
+        }
+      };
+      const onResize = () => {
+        // Ignore the small height changes caused by mobile browser chrome.
+        if (window.innerWidth === measuredWidth && Math.abs(window.innerHeight - measuredHeight) < 80) return;
+        window.clearTimeout(resizeTimer);
+        resizeTimer = window.setTimeout(() => {
+          measuredWidth = window.innerWidth;
+          measuredHeight = window.innerHeight;
+          rebuild();
+        }, 220);
+      };
+      window.addEventListener("resize", onResize);
+      // Warm route entries already use the final fonts. Rebuilding all SplitText
+      // nodes and pins again in the next microtask only duplicates layout work.
+      if (document.fonts.status !== "loaded") {
+        document.fonts.ready.then(() => {
+          if (active) rebuild();
+        });
+      }
       return () => {
         active = false;
+        window.removeEventListener("resize", onResize);
+        window.clearTimeout(resizeTimer);
         media.revert();
       };
     },

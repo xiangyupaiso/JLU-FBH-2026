@@ -3,23 +3,18 @@
  *
  * The loader is plain HTML/CSS so it paints before the app bundle arrives.
  * This module only decides WHEN it leaves: as soon as the current route is
- * actually presentable — deferred stylesheet applied, fonts ready, and every
- * image (or CSS background) inside the first viewport loaded — never on a
- * fixed timer, so a ready page is not held back and a slow page is not
- * revealed half-painted.
+ * actually presentable and the loader's entrance has finished. Readiness
+ * includes deferred styles, fonts and decoded first-viewport images.
  */
 
 const LEAVE_MS = 380; // matches `.page-loader` opacity transition
-const MIN_VISIBLE_MS = 600; // avoids a one-frame flash on cached pages
+const COMPLETE_HOLD_MS = 350; // let the finished illustration register
 const MAX_WAIT_MS = 8000; // a stalled image must never trap the reader
-// In-app navigations replay the stage from here so the ribbon closes and
-// the lamb pops within ~0.4s instead of re-running the full 1.5s opening.
-const IN_APP_SKIP_S = 1.1;
 
 let token = 0;
-let shownAt = performance.now();
 let leaveTimer = 0;
 let leaving = false;
+let readiness: AbortController | undefined;
 const leaveListeners = new Set<() => void>();
 
 function loaderElement() {
@@ -46,16 +41,47 @@ export function whenPageLoaderLeaves(): Promise<void> {
 export function showPageLoader() {
   const loader = loaderElement();
   if (!loader) return;
+  ++token;
+  readiness?.abort();
   window.clearTimeout(leaveTimer);
   if (isVisible(loader)) return; // first load or an overlapping navigation
 
   leaving = false;
   loader.hidden = false;
   loader.classList.remove("is-leaving", "is-playing");
-  loader.style.setProperty("--pl-skip", `${IN_APP_SKIP_S}s`);
   void loader.offsetWidth; // restart the CSS stage timeline
-  loader.classList.add("is-playing");
-  shownAt = performance.now();
+  // index.html owns the entrance clock for initial loads and route replays.
+  loader.dispatchEvent(new Event("loaderstart"));
+}
+
+/** Wait for the real CSS entrance, excluding the infinite breathing loops. */
+async function openingComplete(loader: HTMLElement, signal: AbortSignal) {
+  if (!loader.classList.contains("is-playing")) {
+    await new Promise<void>((resolve) => {
+      const done = () => {
+        loader.removeEventListener("loaderplay", done);
+        signal.removeEventListener("abort", done);
+        resolve();
+      };
+      loader.addEventListener("loaderplay", done, { once: true });
+      signal.addEventListener("abort", done, { once: true });
+    });
+  }
+  if (signal.aborted) return;
+  const animations = loader
+    .getAnimations({ subtree: true })
+    .filter(
+      (animation) => animation.effect?.getTiming().iterations !== Infinity,
+    );
+  await Promise.allSettled(animations.map((animation) => animation.finished));
+  if (
+    signal.aborted ||
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches
+  )
+    return;
+  await new Promise<void>((resolve) =>
+    window.setTimeout(resolve, COMPLETE_HOLD_MS),
+  );
 }
 
 /** Hide the loader once the page that is mounted now is presentable. */
@@ -63,37 +89,45 @@ export function hidePageLoaderWhenReady() {
   const loader = loaderElement();
   if (!loader) return;
   const current = ++token;
+  readiness?.abort();
+  readiness = new AbortController();
+  const { signal } = readiness;
+  let timeout = 0;
 
-  const ready = Promise.race([
-    pageReady(),
-    new Promise<void>((resolve) => window.setTimeout(resolve, MAX_WAIT_MS)),
+  const ready = Promise.all([
+    openingComplete(loader, signal),
+    Promise.race([
+      pageReady(signal),
+      new Promise<void>((resolve) => {
+        timeout = window.setTimeout(resolve, MAX_WAIT_MS);
+      }),
+    ]),
   ]);
 
   void ready.then(() => {
-    if (current !== token) return; // superseded by a newer navigation
-    const wait = Math.max(0, MIN_VISIBLE_MS - (performance.now() - shownAt));
-    window.setTimeout(() => {
-      if (current !== token || !isVisible(loader)) return;
-      leaving = true;
-      loader.classList.add("is-leaving");
-      notifyLeave();
-      leaveTimer = window.setTimeout(() => {
-        if (current !== token) return;
-        loader.hidden = true;
-        loader.classList.remove("is-leaving", "is-playing");
-        leaving = false;
-      }, LEAVE_MS);
-    }, wait);
+    window.clearTimeout(timeout);
+    if (current !== token || signal.aborted || !isVisible(loader)) return;
+    leaving = true;
+    loader.classList.add("is-leaving");
+    notifyLeave();
+    leaveTimer = window.setTimeout(() => {
+      if (current !== token) return;
+      loader.hidden = true;
+      loader.classList.remove("is-leaving", "is-playing");
+      leaving = false;
+    }, LEAVE_MS);
   });
 }
 
-async function pageReady() {
+async function pageReady(signal: AbortSignal) {
   // Let the new route commit and lay out before measuring the first viewport.
   await new Promise((resolve) =>
     requestAnimationFrame(() => requestAnimationFrame(resolve)),
   );
+  if (signal.aborted) return;
   await deferredStyles();
-  await Promise.all([document.fonts?.ready, ...firstViewportImages()]);
+  if (signal.aborted) return;
+  await Promise.all([document.fonts?.ready, firstViewportImages(signal)]);
 }
 
 /** The app stylesheet is loaded non-blocking (see vite.config.ts). */
@@ -119,15 +153,25 @@ const URL_PATTERN = /url\(["']?([^"')]+)["']?\)/g;
  * portrait behind the intro darkness) keeps loading in the background but
  * must not hold the loader.
  */
-function isShown(element: Element) {
-  for (let node: Element | null = element; node; node = node.parentElement) {
-    const style = getComputedStyle(node);
-    if (style.opacity === "0" || style.visibility === "hidden") return false;
-  }
-  return true;
+function isShown(
+  element: Element,
+  visibility: WeakMap<Element, boolean>,
+): boolean {
+  const cached = visibility.get(element);
+  if (cached !== undefined) return cached;
+  const style = getComputedStyle(element);
+  const shown =
+    style.opacity !== "0" &&
+    style.visibility !== "hidden" &&
+    (!element.parentElement || isShown(element.parentElement, visibility));
+  visibility.set(element, shown);
+  return shown;
 }
 
-function inFirstViewport(element: Element) {
+function inFirstViewport(
+  element: Element,
+  visibility: WeakMap<Element, boolean>,
+) {
   const rect = element.getBoundingClientRect();
   return (
     rect.width > 0 &&
@@ -136,32 +180,37 @@ function inFirstViewport(element: Element) {
     rect.right > 0 &&
     rect.top < window.innerHeight &&
     rect.left < window.innerWidth &&
-    isShown(element)
+    isShown(element, visibility)
   );
 }
 
-function waitForImage(image: HTMLImageElement) {
-  if (image.complete) return Promise.resolve();
+async function waitForImage(image: HTMLImageElement) {
+  if (image.decode) return image.decode().catch(() => {});
+  if (image.complete) return;
   return new Promise<void>((resolve) => {
     image.addEventListener("load", () => resolve(), { once: true });
     image.addEventListener("error", () => resolve(), { once: true });
   });
 }
 
-function firstViewportImages(): Promise<void>[] {
+async function firstViewportImages(signal: AbortSignal): Promise<void> {
   const root = document.getElementById("root");
-  if (!root) return [];
+  if (!root) return;
   const pending: Promise<void>[] = [];
   const seen = new Set<string>();
-
-  root.querySelectorAll("img").forEach((image) => {
-    if (inFirstViewport(image)) pending.push(waitForImage(image));
-  });
+  const visibility = new WeakMap<Element, boolean>();
+  let count = 0;
 
   // Route heroes and home scenes paint their art as CSS backgrounds.
-  root.querySelectorAll<HTMLElement>("*").forEach((element) => {
+  for (const element of root.querySelectorAll<HTMLElement>("*")) {
+    if (signal.aborted) return;
+    // Yield during large routes instead of blocking the loader's drawing.
+    if (++count % 120 === 0) await new Promise(requestAnimationFrame);
+    if (!inFirstViewport(element, visibility)) continue;
+    if (element instanceof HTMLImageElement)
+      pending.push(waitForImage(element));
     const background = getComputedStyle(element).backgroundImage;
-    if (!background.includes("url(") || !inFirstViewport(element)) return;
+    if (!background.includes("url(")) continue;
     for (const [, url] of background.matchAll(URL_PATTERN)) {
       if (seen.has(url)) continue;
       seen.add(url);
@@ -169,7 +218,7 @@ function firstViewportImages(): Promise<void>[] {
       image.src = url;
       pending.push(waitForImage(image));
     }
-  });
+  }
 
-  return pending;
+  await Promise.all(pending);
 }

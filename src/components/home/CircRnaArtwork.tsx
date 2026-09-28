@@ -46,6 +46,7 @@ export function CircRnaArtwork() {
                 className="story-layer circrna-benefit-art"
                 style={style}
                 viewBox="0 0 296 346"
+                overflow="visible"
                 aria-hidden="true"
               >
                 <svg
@@ -59,7 +60,7 @@ export function CircRnaArtwork() {
                 </svg>
                 <svg
                   data-circrna-sketch="expression"
-                  y="190"
+                  y="228"
                   width="296"
                   height="156"
                   viewBox="0 190 296 156"

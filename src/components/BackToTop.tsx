@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { useLocation } from "react-router-dom";
 import backToTopImage from "../assets/wiki/back-to-top.png";
 import { clamp } from "../utils";
+import { GlassSheen } from "./GlassSheen";
 
 const MAGNET_PADDING = 80;
 const MAGNET_STRENGTH = 5;
@@ -129,6 +130,7 @@ export function BackToTop() {
       title="Return to top"
     >
       <img src={backToTopImage} alt="" draggable={false} />
+      <GlassSheen src={backToTopImage} />
     </button>
   );
 }
