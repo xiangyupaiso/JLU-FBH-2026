@@ -3,12 +3,18 @@
     "teamId": "6056",
     "teamName": "JLU-FBH",
     "year": 2026,
-    "lastUpdated": "2026-09-29T07:44:29.168Z",
+    "lastUpdated": "2026-09-29T07:54:00.051Z",
     "stats": {
-      "total": 142,
-      "inUse": 129,
-      "standby": 13,
-      "deprecated": 0
+      "total": 239,
+      "inUse": 190,
+      "standby": 49,
+      "deprecated": 0,
+      "byKind": {
+        "image": 209,
+        "font": 6,
+        "structure": 2,
+        "pdf": 22
+      }
     }
   },
   "assets": {
@@ -16,7 +22,7 @@
       "id": "description-figure1-png",
       "fileName": "description-figure1.png",
       "category": "project",
-      "localPath": "src/assets/wiki/description/description-figure1.png",
+      "localPath": "文案集/project/description/图片和附件/description-figure1.png",
       "md5": "20b3bc567982a79ab27fb5e859d4d695",
       "fileSize": 4587774,
       "uploadUrl": null,
@@ -33,13 +39,14 @@
           "type": "import"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "kind": "image"
     },
     "description-figure2-png": {
       "id": "description-figure2-png",
       "fileName": "description-figure2.png",
       "category": "project",
-      "localPath": "src/assets/wiki/description/description-figure2.png",
+      "localPath": "文案集/project/description/图片和附件/description-figure2.png",
       "md5": "90e7fd2e172f6c680a7cc07e2970df34",
       "fileSize": 2168457,
       "uploadUrl": null,
@@ -56,13 +63,14 @@
           "type": "import"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "kind": "image"
     },
     "description-figure3-png": {
       "id": "description-figure3-png",
       "fileName": "description-figure3.png",
       "category": "project",
-      "localPath": "src/assets/wiki/description/description-figure3.png",
+      "localPath": "文案集/project/description/图片和附件/description-figure3.png",
       "md5": "b7572e901c13d9e8876150ff2709c30c",
       "fileSize": 993830,
       "uploadUrl": null,
@@ -79,13 +87,14 @@
           "type": "import"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "kind": "image"
     },
     "description-figure4-png": {
       "id": "description-figure4-png",
       "fileName": "description-figure4.png",
       "category": "project",
-      "localPath": "src/assets/wiki/description/description-figure4.png",
+      "localPath": "文案集/project/description/图片和附件/description-figure4.png",
       "md5": "94db1f9bfe4e1b27faedc8b80d10bc99",
       "fileSize": 1505587,
       "uploadUrl": null,
@@ -102,13 +111,14 @@
           "type": "import"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "kind": "image"
     },
     "description-figure5-png": {
       "id": "description-figure5-png",
       "fileName": "description-figure5.png",
       "category": "project",
-      "localPath": "src/assets/wiki/description/description-figure5.png",
+      "localPath": "文案集/project/description/图片和附件/description-figure5.png",
       "md5": "f52bd7e3dc4492d633e9aa5de565536e",
       "fileSize": 2634590,
       "uploadUrl": null,
@@ -125,13 +135,14 @@
           "type": "import"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "kind": "image"
     },
     "description-figure6-png": {
       "id": "description-figure6-png",
       "fileName": "description-figure6.png",
       "category": "project",
-      "localPath": "src/assets/wiki/description/description-figure6.png",
+      "localPath": "文案集/project/description/图片和附件/description-figure6.png",
       "md5": "4596e29e6ac96f83854500219cbdd1ad",
       "fileSize": 2919661,
       "uploadUrl": null,
@@ -148,13 +159,14 @@
           "type": "import"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "kind": "image"
     },
     "description-figure7-png": {
       "id": "description-figure7-png",
       "fileName": "description-figure7.png",
       "category": "project",
-      "localPath": "src/assets/wiki/description/description-figure7.png",
+      "localPath": "文案集/project/description/图片和附件/description-figure7.png",
       "md5": "65d367691d8b0c9568564a5fa004aa26",
       "fileSize": 3831921,
       "uploadUrl": null,
@@ -171,7 +183,8 @@
           "type": "import"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "kind": "image"
     },
     "fraunces-variable-woff2": {
       "id": "fraunces-variable-woff2",
@@ -188,25 +201,14 @@
       ],
       "references": [
         {
-          "file": ".qa6/wetlab-template/baseline/source/src/styles/circure-tokens.css",
-          "line": 7,
-          "text": "src: url(\"../assets/fonts/fraunces-variable.woff2\") format(\"woff2\");",
-          "type": "css-url"
-        },
-        {
-          "file": ".qa6/wetlab-template/baseline/source-sha256.json",
-          "line": 2,
-          "text": "\"src/assets/fonts/fraunces-variable.woff2\": \"7234ed860a9cc83045413c4faee63c960a8f2d1917adcf728119307d56e0d783\",",
-          "type": "mention"
-        },
-        {
           "file": "src/styles/circure-tokens.css",
           "line": 7,
           "text": "src: url(\"../assets/fonts/fraunces-variable.woff2\") format(\"woff2\");",
           "type": "css-url"
         }
       ],
-      "notes": "Referenced in 3 location(s)"
+      "notes": "Referenced in 3 location(s)",
+      "kind": "font"
     },
     "fredoka-variable-woff2": {
       "id": "fredoka-variable-woff2",
@@ -241,7 +243,8 @@
           "type": "css-url"
         }
       ],
-      "notes": "Referenced in 3 location(s)"
+      "notes": "Referenced in 3 location(s)",
+      "kind": "font"
     },
     "ibm-plex-mono-woff2": {
       "id": "ibm-plex-mono-woff2",
@@ -258,25 +261,14 @@
       ],
       "references": [
         {
-          "file": ".qa6/wetlab-template/baseline/source/src/styles/circure-tokens.css",
-          "line": 23,
-          "text": "src: url(\"../assets/fonts/ibm-plex-mono.woff2\") format(\"woff2\");",
-          "type": "css-url"
-        },
-        {
-          "file": ".qa6/wetlab-template/baseline/source-sha256.json",
-          "line": 3,
-          "text": "\"src/assets/fonts/ibm-plex-mono.woff2\": \"08949f728dc52d528e69b1667d15c89a5686a4ee9a296ff90983985f99c380f7\",",
-          "type": "mention"
-        },
-        {
           "file": "src/styles/circure-tokens.css",
           "line": 39,
           "text": "src: url(\"../assets/fonts/ibm-plex-mono.woff2\") format(\"woff2\");",
           "type": "css-url"
         }
       ],
-      "notes": "Referenced in 3 location(s)"
+      "notes": "Referenced in 3 location(s)",
+      "kind": "font"
     },
     "lexend-variable-woff2": {
       "id": "lexend-variable-woff2",
@@ -299,7 +291,8 @@
           "type": "css-url"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "kind": "font"
     },
     "newsreader-variable-woff2": {
       "id": "newsreader-variable-woff2",
@@ -316,25 +309,14 @@
       ],
       "references": [
         {
-          "file": ".qa6/wetlab-template/baseline/source/src/styles/circure-tokens.css",
-          "line": 15,
-          "text": "src: url(\"../assets/fonts/newsreader-variable.woff2\") format(\"woff2\");",
-          "type": "css-url"
-        },
-        {
-          "file": ".qa6/wetlab-template/baseline/source-sha256.json",
-          "line": 4,
-          "text": "\"src/assets/fonts/newsreader-variable.woff2\": \"6e4f2958c3a7c4a80acde4e5a679abe7e01bc1e30b92be3c7a8b696ef401d101\",",
-          "type": "mention"
-        },
-        {
           "file": "src/styles/circure-tokens.css",
           "line": 15,
           "text": "src: url(\"../assets/fonts/newsreader-variable.woff2\") format(\"woff2\");",
           "type": "css-url"
         }
       ],
-      "notes": "Referenced in 3 location(s)"
+      "notes": "Referenced in 3 location(s)",
+      "kind": "font"
     },
     "anxiety-label-webp": {
       "id": "anxiety-label-webp",
@@ -357,7 +339,8 @@
           "type": "import"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "kind": "image"
     },
     "anxiety-webp": {
       "id": "anxiety-webp",
@@ -380,7 +363,8 @@
           "type": "import"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "kind": "image"
     },
     "chemotherapy-label-webp": {
       "id": "chemotherapy-label-webp",
@@ -403,7 +387,8 @@
           "type": "import"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "kind": "image"
     },
     "chemotherapy-webp": {
       "id": "chemotherapy-webp",
@@ -426,7 +411,8 @@
           "type": "import"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "kind": "image"
     },
     "death-rate-label-webp": {
       "id": "death-rate-label-webp",
@@ -449,7 +435,8 @@
           "type": "import"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "kind": "image"
     },
     "death-rate-webp": {
       "id": "death-rate-webp",
@@ -472,7 +459,8 @@
           "type": "import"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "kind": "image"
     },
     "hair-loss-label-webp": {
       "id": "hair-loss-label-webp",
@@ -495,7 +483,8 @@
           "type": "import"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "kind": "image"
     },
     "hair-loss-webp": {
       "id": "hair-loss-webp",
@@ -518,7 +507,8 @@
           "type": "import"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "kind": "image"
     },
     "surgery-label-webp": {
       "id": "surgery-label-webp",
@@ -541,7 +531,8 @@
           "type": "import"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "kind": "image"
     },
     "surgery-webp": {
       "id": "surgery-webp",
@@ -564,7 +555,8 @@
           "type": "import"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "kind": "image"
     },
     "woman-frame-webp": {
       "id": "woman-frame-webp",
@@ -587,7 +579,8 @@
           "type": "import"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "kind": "image"
     },
     "map-data-note-png": {
       "id": "map-data-note-png",
@@ -610,7 +603,8 @@
           "type": "import"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "kind": "image"
     },
     "scene-1-layer-1-webp": {
       "id": "scene-1-layer-1-webp",
@@ -639,7 +633,8 @@
           "type": "import"
         }
       ],
-      "notes": "Referenced in 2 location(s)"
+      "notes": "Referenced in 2 location(s)",
+      "kind": "image"
     },
     "scene-1-layer-2-webp": {
       "id": "scene-1-layer-2-webp",
@@ -668,7 +663,8 @@
           "type": "import"
         }
       ],
-      "notes": "Referenced in 2 location(s)"
+      "notes": "Referenced in 2 location(s)",
+      "kind": "image"
     },
     "scene-1-layer-3-webp": {
       "id": "scene-1-layer-3-webp",
@@ -697,7 +693,8 @@
           "type": "import"
         }
       ],
-      "notes": "Referenced in 2 location(s)"
+      "notes": "Referenced in 2 location(s)",
+      "kind": "image"
     },
     "scene-1-layer-4-webp": {
       "id": "scene-1-layer-4-webp",
@@ -738,7 +735,8 @@
           "type": "import"
         }
       ],
-      "notes": "Referenced in 4 location(s)"
+      "notes": "Referenced in 4 location(s)",
+      "kind": "image"
     },
     "scene-1-layer-5-webp": {
       "id": "scene-1-layer-5-webp",
@@ -767,7 +765,8 @@
           "type": "import"
         }
       ],
-      "notes": "Referenced in 2 location(s)"
+      "notes": "Referenced in 2 location(s)",
+      "kind": "image"
     },
     "scene-2-layer-1-webp": {
       "id": "scene-2-layer-1-webp",
@@ -790,7 +789,8 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "kind": "image"
     },
     "scene-2-layer-2-webp": {
       "id": "scene-2-layer-2-webp",
@@ -813,7 +813,8 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "kind": "image"
     },
     "scene-2-layer-3-webp": {
       "id": "scene-2-layer-3-webp",
@@ -836,7 +837,8 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "kind": "image"
     },
     "scene-2-layer-4-webp": {
       "id": "scene-2-layer-4-webp",
@@ -859,7 +861,8 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "kind": "image"
     },
     "scene-2-layer-5-webp": {
       "id": "scene-2-layer-5-webp",
@@ -882,7 +885,8 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "kind": "image"
     },
     "scene-2-layer-6-webp": {
       "id": "scene-2-layer-6-webp",
@@ -911,7 +915,8 @@
           "type": "import"
         }
       ],
-      "notes": "Referenced in 2 location(s)"
+      "notes": "Referenced in 2 location(s)",
+      "kind": "image"
     },
     "scene-3-layer-1-webp": {
       "id": "scene-3-layer-1-webp",
@@ -934,7 +939,8 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "kind": "image"
     },
     "scene-3-layer-2-webp": {
       "id": "scene-3-layer-2-webp",
@@ -957,7 +963,8 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "kind": "image"
     },
     "scene-3-layer-3-webp": {
       "id": "scene-3-layer-3-webp",
@@ -980,7 +987,8 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "kind": "image"
     },
     "scene-4-layer-1-webp": {
       "id": "scene-4-layer-1-webp",
@@ -1003,7 +1011,8 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "kind": "image"
     },
     "scene-4-layer-2-webp": {
       "id": "scene-4-layer-2-webp",
@@ -1032,7 +1041,8 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 2 location(s)"
+      "notes": "Referenced in 2 location(s)",
+      "kind": "image"
     },
     "scene-4-layer-3-webp": {
       "id": "scene-4-layer-3-webp",
@@ -1055,7 +1065,8 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "kind": "image"
     },
     "scene-4-layer-4-webp": {
       "id": "scene-4-layer-4-webp",
@@ -1078,7 +1089,8 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "kind": "image"
     },
     "scene-4-layer-5-webp": {
       "id": "scene-4-layer-5-webp",
@@ -1101,7 +1113,8 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "kind": "image"
     },
     "scene-4-layer-6-webp": {
       "id": "scene-4-layer-6-webp",
@@ -1124,7 +1137,8 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "kind": "image"
     },
     "scene-4-layer-7-webp": {
       "id": "scene-4-layer-7-webp",
@@ -1147,7 +1161,8 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "kind": "image"
     },
     "scene-4-layer-8-webp": {
       "id": "scene-4-layer-8-webp",
@@ -1170,7 +1185,8 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "kind": "image"
     },
     "scene-5-layer-1-webp": {
       "id": "scene-5-layer-1-webp",
@@ -1193,7 +1209,8 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "kind": "image"
     },
     "scene-5-layer-2-webp": {
       "id": "scene-5-layer-2-webp",
@@ -1216,7 +1233,8 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "kind": "image"
     },
     "scene-5-layer-3-webp": {
       "id": "scene-5-layer-3-webp",
@@ -1239,7 +1257,8 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "kind": "image"
     },
     "scene-6-layer-1-webp": {
       "id": "scene-6-layer-1-webp",
@@ -1262,7 +1281,8 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "kind": "image"
     },
     "scene-6-layer-2-webp": {
       "id": "scene-6-layer-2-webp",
@@ -1285,7 +1305,8 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "kind": "image"
     },
     "scene-6-layer-3-webp": {
       "id": "scene-6-layer-3-webp",
@@ -1308,7 +1329,8 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "kind": "image"
     },
     "scene-7-layer-1-webp": {
       "id": "scene-7-layer-1-webp",
@@ -1331,7 +1353,8 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "kind": "image"
     },
     "scene-7-layer-2-webp": {
       "id": "scene-7-layer-2-webp",
@@ -1354,7 +1377,8 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "kind": "image"
     },
     "scene-7-layer-3-webp": {
       "id": "scene-7-layer-3-webp",
@@ -1377,7 +1401,8 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "kind": "image"
     },
     "scene-7-layer-4-webp": {
       "id": "scene-7-layer-4-webp",
@@ -1400,7 +1425,8 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "kind": "image"
     },
     "scene-8-layer-1-webp": {
       "id": "scene-8-layer-1-webp",
@@ -1423,7 +1449,8 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "kind": "image"
     },
     "scene-8-layer-2-webp": {
       "id": "scene-8-layer-2-webp",
@@ -1446,7 +1473,8 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "kind": "image"
     },
     "scene-8-layer-3-webp": {
       "id": "scene-8-layer-3-webp",
@@ -1469,7 +1497,8 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "kind": "image"
     },
     "scene-8-layer-4-webp": {
       "id": "scene-8-layer-4-webp",
@@ -1492,7 +1521,8 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "kind": "image"
     },
     "scene-8-layer-5-webp": {
       "id": "scene-8-layer-5-webp",
@@ -1515,7 +1545,8 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "kind": "image"
     },
     "scene-8-layer-6-webp": {
       "id": "scene-8-layer-6-webp",
@@ -1538,7 +1569,8 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "kind": "image"
     },
     "scene-9-layer-1-webp": {
       "id": "scene-9-layer-1-webp",
@@ -1561,7 +1593,8 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "kind": "image"
     },
     "scene-9-layer-2-webp": {
       "id": "scene-9-layer-2-webp",
@@ -1584,7 +1617,8 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "kind": "image"
     },
     "scene-9-layer-3-webp": {
       "id": "scene-9-layer-3-webp",
@@ -1607,7 +1641,8 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "kind": "image"
     },
     "clinician-concerned-png": {
       "id": "clinician-concerned-png",
@@ -1636,7 +1671,8 @@
           "type": "import"
         }
       ],
-      "notes": "Referenced in 2 location(s)"
+      "notes": "Referenced in 2 location(s)",
+      "kind": "image"
     },
     "clinician-ellipsis-png": {
       "id": "clinician-ellipsis-png",
@@ -1665,7 +1701,8 @@
           "type": "import"
         }
       ],
-      "notes": "Referenced in 2 location(s)"
+      "notes": "Referenced in 2 location(s)",
+      "kind": "image"
     },
     "patient-concerned-png": {
       "id": "patient-concerned-png",
@@ -1694,7 +1731,8 @@
           "type": "import"
         }
       ],
-      "notes": "Referenced in 2 location(s)"
+      "notes": "Referenced in 2 location(s)",
+      "kind": "image"
     },
     "patient-question-png": {
       "id": "patient-question-png",
@@ -1723,7 +1761,8 @@
           "type": "import"
         }
       ],
-      "notes": "Referenced in 2 location(s)"
+      "notes": "Referenced in 2 location(s)",
+      "kind": "image"
     },
     "jlu-fbh-crest-png": {
       "id": "jlu-fbh-crest-png",
@@ -1740,25 +1779,14 @@
       ],
       "references": [
         {
-          "file": ".qa6/wetlab-template/baseline/source/src/components/Navbar.tsx",
-          "line": 3,
-          "text": "import teamCrestUrl from \"../assets/jlu-fbh-crest.png\";",
-          "type": "import"
-        },
-        {
-          "file": ".qa6/wetlab-template/baseline/source-sha256.json",
-          "line": 5,
-          "text": "\"src/assets/jlu-fbh-crest.png\": \"e5799bb94eb2960cab2ffb70b603c09d5715c08427148f6086453580937fb295\",",
-          "type": "mention"
-        },
-        {
           "file": "src/components/Navbar.tsx",
           "line": 3,
           "text": "import teamCrestUrl from \"../assets/jlu-fbh-crest.png\";",
           "type": "import"
         }
       ],
-      "notes": "Referenced in 3 location(s)"
+      "notes": "Referenced in 3 location(s)",
+      "kind": "image"
     },
     "bg-png": {
       "id": "bg-png",
@@ -1774,18 +1802,6 @@
         "bg"
       ],
       "references": [
-        {
-          "file": ".qa6/wetlab-template/baseline/source/src/components/wiki/wetLabHeroAssets.ts",
-          "line": 5,
-          "text": "import protocolHero from \"../../assets/wiki/protocol-hero-bg.png\";",
-          "type": "import"
-        },
-        {
-          "file": ".qa6/wetlab-template/baseline/source-sha256.json",
-          "line": 51,
-          "text": "\"src/assets/wiki/protocol-hero-bg.png\": \"e28ba01c45732887fa7b6fb62b2fb1d774ded2f5c9298bce187be19c58927528\",",
-          "type": "mention"
-        },
         {
           "file": "public/game-assets/assets/index-DX8LWnqD.js",
           "line": 9,
@@ -1805,7 +1821,8 @@
           "type": "import"
         }
       ],
-      "notes": "Referenced in 5 location(s)"
+      "notes": "Referenced in 5 location(s)",
+      "kind": "image"
     },
     "bg-webp": {
       "id": "bg-webp",
@@ -1828,7 +1845,8 @@
           "type": "html-img"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "kind": "image"
     },
     "hands-png": {
       "id": "hands-png",
@@ -1851,7 +1869,8 @@
           "type": "import"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "kind": "image"
     },
     "hands-webp": {
       "id": "hands-webp",
@@ -1874,7 +1893,8 @@
           "type": "html-img"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "kind": "image"
     },
     "lamb-png": {
       "id": "lamb-png",
@@ -1897,7 +1917,8 @@
           "type": "import"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "kind": "image"
     },
     "lamb-webp": {
       "id": "lamb-webp",
@@ -1920,7 +1941,8 @@
           "type": "html-img"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "kind": "image"
     },
     "petals-png": {
       "id": "petals-png",
@@ -1943,7 +1965,8 @@
           "type": "import"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "kind": "image"
     },
     "petals-webp": {
       "id": "petals-webp",
@@ -1966,7 +1989,8 @@
           "type": "html-img"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "kind": "image"
     },
     "ribbon-png": {
       "id": "ribbon-png",
@@ -1989,7 +2013,8 @@
           "type": "import"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "kind": "image"
     },
     "ribbon-webp": {
       "id": "ribbon-webp",
@@ -2012,7 +2037,8 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "kind": "image"
     },
     "stars-png": {
       "id": "stars-png",
@@ -2035,7 +2061,8 @@
           "type": "import"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "kind": "image"
     },
     "stars-webp": {
       "id": "stars-webp",
@@ -2058,7 +2085,8 @@
           "type": "html-img"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "kind": "image"
     },
     "circure-emblem-png": {
       "id": "circure-emblem-png",
@@ -2074,7 +2102,8 @@
         "circure-emblem"
       ],
       "references": [],
-      "notes": "Standby/Unreferenced asset"
+      "notes": "Standby/Unreferenced asset",
+      "kind": "image"
     },
     "circure-ribbon-png": {
       "id": "circure-ribbon-png",
@@ -2090,7 +2119,8 @@
         "circure-ribbon"
       ],
       "references": [],
-      "notes": "Standby/Unreferenced asset"
+      "notes": "Standby/Unreferenced asset",
+      "kind": "image"
     },
     "nav-drylab-engagement-v2-webp": {
       "id": "nav-drylab-engagement-v2-webp",
@@ -2107,25 +2137,14 @@
       ],
       "references": [
         {
-          "file": ".qa6/wetlab-template/baseline/source/src/components/Navbar.tsx",
-          "line": 5,
-          "text": "import drylabEngagementSprite from \"../assets/story-nav/nav-drylab-engagement-v2.webp\";",
-          "type": "import"
-        },
-        {
-          "file": ".qa6/wetlab-template/baseline/source-sha256.json",
-          "line": 21,
-          "text": "\"src/assets/story-nav/nav-drylab-engagement-v2.webp\": \"e87f144dd87bad1562e2a7af869ad47b7be1aa4cb90883445172ab02a8a86965\",",
-          "type": "mention"
-        },
-        {
           "file": "src/components/Navbar.tsx",
           "line": 5,
           "text": "import drylabEngagementSprite from \"../assets/story-nav/nav-drylab-engagement-v2.webp\";",
           "type": "import"
         }
       ],
-      "notes": "Referenced in 3 location(s)"
+      "notes": "Referenced in 3 location(s)",
+      "kind": "image"
     },
     "nav-project-wetlab-v2-webp": {
       "id": "nav-project-wetlab-v2-webp",
@@ -2142,25 +2161,14 @@
       ],
       "references": [
         {
-          "file": ".qa6/wetlab-template/baseline/source/src/components/Navbar.tsx",
-          "line": 4,
-          "text": "import projectWetlabSprite from \"../assets/story-nav/nav-project-wetlab-v2.webp\";",
-          "type": "import"
-        },
-        {
-          "file": ".qa6/wetlab-template/baseline/source-sha256.json",
-          "line": 22,
-          "text": "\"src/assets/story-nav/nav-project-wetlab-v2.webp\": \"a2a5079605c2a35059f0e871a659af83b5f0e56a217de5e8ec75bb3b2212f1ad\",",
-          "type": "mention"
-        },
-        {
           "file": "src/components/Navbar.tsx",
           "line": 4,
           "text": "import projectWetlabSprite from \"../assets/story-nav/nav-project-wetlab-v2.webp\";",
           "type": "import"
         }
       ],
-      "notes": "Referenced in 3 location(s)"
+      "notes": "Referenced in 3 location(s)",
+      "kind": "image"
     },
     "award-hero-webp": {
       "id": "award-hero-webp",
@@ -2176,7 +2184,8 @@
         "award-hero"
       ],
       "references": [],
-      "notes": "Standby/Unreferenced asset"
+      "notes": "Standby/Unreferenced asset",
+      "kind": "image"
     },
     "back-to-top-png": {
       "id": "back-to-top-png",
@@ -2193,25 +2202,14 @@
       ],
       "references": [
         {
-          "file": ".qa6/wetlab-template/baseline/source/src/components/BackToTop.tsx",
-          "line": 3,
-          "text": "import backToTopImage from \"../assets/wiki/back-to-top.png\";",
-          "type": "import"
-        },
-        {
-          "file": ".qa6/wetlab-template/baseline/source-sha256.json",
-          "line": 23,
-          "text": "\"src/assets/wiki/back-to-top.png\": \"87d72867f75bd3b114cd6738c34cbba9d0cc2ab0038095419f00d36cd32cc147\",",
-          "type": "mention"
-        },
-        {
           "file": "src/components/BackToTop.tsx",
           "line": 3,
           "text": "import backToTopImage from \"../assets/wiki/back-to-top.png\";",
           "type": "import"
         }
       ],
-      "notes": "Referenced in 3 location(s)"
+      "notes": "Referenced in 3 location(s)",
+      "kind": "image"
     },
     "breast-guardian-showcase-png": {
       "id": "breast-guardian-showcase-png",
@@ -2228,25 +2226,14 @@
       ],
       "references": [
         {
-          "file": ".qa6/wetlab-template/baseline/source/src/styles/games-page.css",
-          "line": 434,
-          "text": "background-image: url(\"../assets/wiki/breast-guardian-showcase.png\");",
-          "type": "css-url"
-        },
-        {
-          "file": ".qa6/wetlab-template/baseline/source-sha256.json",
-          "line": 24,
-          "text": "\"src/assets/wiki/breast-guardian-showcase.png\": \"299cf486fc35f5a8dd4e863d1d1a7db6763f8cb0f2b23eaa9410b009541a9889\",",
-          "type": "mention"
-        },
-        {
           "file": "src/styles/games-page.css",
           "line": 434,
           "text": "background-image: url(\"../assets/wiki/breast-guardian-showcase.png\");",
           "type": "css-url"
         }
       ],
-      "notes": "Referenced in 3 location(s)"
+      "notes": "Referenced in 3 location(s)",
+      "kind": "image"
     },
     "cursor-active-png": {
       "id": "cursor-active-png",
@@ -2281,7 +2268,8 @@
           "type": "css-url"
         }
       ],
-      "notes": "Referenced in 3 location(s)"
+      "notes": "Referenced in 3 location(s)",
+      "kind": "image"
     },
     "cursor-default-png": {
       "id": "cursor-default-png",
@@ -2310,7 +2298,8 @@
           "type": "css-url"
         }
       ],
-      "notes": "Referenced in 2 location(s)"
+      "notes": "Referenced in 2 location(s)",
+      "kind": "image"
     },
     "dry-lab-games-hero-v2-png": {
       "id": "dry-lab-games-hero-v2-png",
@@ -2327,24 +2316,6 @@
       ],
       "references": [
         {
-          "file": ".qa6/wetlab-template/baseline/source/src/components/wiki/dryLabHeroAssets.ts",
-          "line": 1,
-          "text": "import gamesHero from \"../../assets/wiki/dry-lab-games-hero-v2.png\";",
-          "type": "import"
-        },
-        {
-          "file": ".qa6/wetlab-template/baseline/source/src/styles/games-page.css",
-          "line": 27,
-          "text": "--dry-lab-art: url(\"../assets/wiki/dry-lab-games-hero-v2.png\");",
-          "type": "css-url"
-        },
-        {
-          "file": ".qa6/wetlab-template/baseline/source-sha256.json",
-          "line": 25,
-          "text": "\"src/assets/wiki/dry-lab-games-hero-v2.png\": \"b514cf967f99060d7e12ca754cd499041b68104f521d92340a7169e46bdfac45\",",
-          "type": "mention"
-        },
-        {
           "file": "src/components/wiki/dryLabHeroAssets.ts",
           "line": 1,
           "text": "import gamesHero from \"../../assets/wiki/dry-lab-games-hero-v2.png\";",
@@ -2357,7 +2328,8 @@
           "type": "css-url"
         }
       ],
-      "notes": "Referenced in 5 location(s)"
+      "notes": "Referenced in 5 location(s)",
+      "kind": "image"
     },
     "dry-lab-hardware-hero-jpg": {
       "id": "dry-lab-hardware-hero-jpg",
@@ -2373,7 +2345,8 @@
         "dry-lab-hardware-hero"
       ],
       "references": [],
-      "notes": "Standby/Unreferenced asset"
+      "notes": "Standby/Unreferenced asset",
+      "kind": "image"
     },
     "dry-lab-hardware-hero-webp": {
       "id": "dry-lab-hardware-hero-webp",
@@ -2402,7 +2375,8 @@
           "type": "css-url"
         }
       ],
-      "notes": "Referenced in 2 location(s)"
+      "notes": "Referenced in 2 location(s)",
+      "kind": "image"
     },
     "dry-lab-model-hero-jpg": {
       "id": "dry-lab-model-hero-jpg",
@@ -2418,7 +2392,8 @@
         "dry-lab-model-hero"
       ],
       "references": [],
-      "notes": "Standby/Unreferenced asset"
+      "notes": "Standby/Unreferenced asset",
+      "kind": "image"
     },
     "dry-lab-model-hero-webp": {
       "id": "dry-lab-model-hero-webp",
@@ -2447,7 +2422,8 @@
           "type": "css-url"
         }
       ],
-      "notes": "Referenced in 2 location(s)"
+      "notes": "Referenced in 2 location(s)",
+      "kind": "image"
     },
     "dry-lab-module-hero-webp": {
       "id": "dry-lab-module-hero-webp",
@@ -2463,7 +2439,8 @@
         "dry-lab-module-hero"
       ],
       "references": [],
-      "notes": "Standby/Unreferenced asset"
+      "notes": "Standby/Unreferenced asset",
+      "kind": "image"
     },
     "dry-lab-software-hero-jpg": {
       "id": "dry-lab-software-hero-jpg",
@@ -2479,7 +2456,8 @@
         "dry-lab-software-hero"
       ],
       "references": [],
-      "notes": "Standby/Unreferenced asset"
+      "notes": "Standby/Unreferenced asset",
+      "kind": "image"
     },
     "dry-lab-software-hero-webp": {
       "id": "dry-lab-software-hero-webp",
@@ -2508,7 +2486,8 @@
           "type": "css-url"
         }
       ],
-      "notes": "Referenced in 2 location(s)"
+      "notes": "Referenced in 2 location(s)",
+      "kind": "image"
     },
     "dry-png": {
       "id": "dry-png",
@@ -2525,24 +2504,6 @@
       ],
       "references": [
         {
-          "file": ".qa6/wetlab-template/baseline/source/src/styles/route-palette-drylab.css",
-          "line": 14,
-          "text": "gear shapes drawn in the page sketch, supplied by `background/dry.png`.",
-          "type": "mention"
-        },
-        {
-          "file": ".qa6/wetlab-template/baseline/source/src/styles/route-palette-drylab.css",
-          "line": 25,
-          "text": "--route-frame-image: url(\"../assets/wiki/dry.png\");",
-          "type": "css-url"
-        },
-        {
-          "file": ".qa6/wetlab-template/baseline/source-sha256.json",
-          "line": 29,
-          "text": "\"src/assets/wiki/dry.png\": \"98022294d89a9a6c4278094c9c57e7fc525b57ff151bacd1f487ce521806889f\",",
-          "type": "mention"
-        },
-        {
           "file": "src/styles/route-palette-drylab.css",
           "line": 14,
           "text": "gear shapes drawn in the page sketch, supplied by `background/dry.png`.",
@@ -2555,7 +2516,8 @@
           "type": "css-url"
         }
       ],
-      "notes": "Referenced in 5 location(s)"
+      "notes": "Referenced in 5 location(s)",
+      "kind": "image"
     },
     "engagement-education-hero-v2-webp": {
       "id": "engagement-education-hero-v2-webp",
@@ -2572,25 +2534,14 @@
       ],
       "references": [
         {
-          "file": ".qa6/wetlab-template/baseline/source/src/components/wiki/engagementHeroAssets.ts",
-          "line": 1,
-          "text": "import educationHero from \"../../assets/wiki/engagement-heroes/engagement-education-hero-v2.webp\";",
-          "type": "import"
-        },
-        {
-          "file": ".qa6/wetlab-template/baseline/source-sha256.json",
-          "line": 30,
-          "text": "\"src/assets/wiki/engagement-heroes/engagement-education-hero-v2.webp\": \"ec57b44fdcaac7c4136a3f415eb967d484895fb30c7a6f0289c522fb0ce30c1d\",",
-          "type": "mention"
-        },
-        {
           "file": "src/components/wiki/engagementHeroAssets.ts",
           "line": 1,
           "text": "import educationHero from \"../../assets/wiki/engagement-heroes/engagement-education-hero-v2.webp\";",
           "type": "import"
         }
       ],
-      "notes": "Referenced in 3 location(s)"
+      "notes": "Referenced in 3 location(s)",
+      "kind": "image"
     },
     "engagement-entrepreneurship-hero-v2-webp": {
       "id": "engagement-entrepreneurship-hero-v2-webp",
@@ -2607,25 +2558,14 @@
       ],
       "references": [
         {
-          "file": ".qa6/wetlab-template/baseline/source/src/components/wiki/engagementHeroAssets.ts",
-          "line": 2,
-          "text": "import entrepreneurshipHero from \"../../assets/wiki/engagement-heroes/engagement-entrepreneurship-hero-v2.webp\";",
-          "type": "import"
-        },
-        {
-          "file": ".qa6/wetlab-template/baseline/source-sha256.json",
-          "line": 31,
-          "text": "\"src/assets/wiki/engagement-heroes/engagement-entrepreneurship-hero-v2.webp\": \"99759d08c1838db390ab62ec4b12cd48fb51ed77c703e38a74155093cddf3",
-          "type": "mention"
-        },
-        {
           "file": "src/components/wiki/engagementHeroAssets.ts",
           "line": 2,
           "text": "import entrepreneurshipHero from \"../../assets/wiki/engagement-heroes/engagement-entrepreneurship-hero-v2.webp\";",
           "type": "import"
         }
       ],
-      "notes": "Referenced in 3 location(s)"
+      "notes": "Referenced in 3 location(s)",
+      "kind": "image"
     },
     "engagement-hero-webp": {
       "id": "engagement-hero-webp",
@@ -2641,7 +2581,8 @@
         "engagement-hero"
       ],
       "references": [],
-      "notes": "Standby/Unreferenced asset"
+      "notes": "Standby/Unreferenced asset",
+      "kind": "image"
     },
     "engagement-human-practices-hero-v2-webp": {
       "id": "engagement-human-practices-hero-v2-webp",
@@ -2658,25 +2599,14 @@
       ],
       "references": [
         {
-          "file": ".qa6/wetlab-template/baseline/source/src/components/wiki/engagementHeroAssets.ts",
-          "line": 3,
-          "text": "import humanPracticesHero from \"../../assets/wiki/engagement-heroes/engagement-human-practices-hero-v2.webp\";",
-          "type": "import"
-        },
-        {
-          "file": ".qa6/wetlab-template/baseline/source-sha256.json",
-          "line": 32,
-          "text": "\"src/assets/wiki/engagement-heroes/engagement-human-practices-hero-v2.webp\": \"4ca6ce3b440707b98465eadb7b412265e8410528610d97b7b1036b03722217",
-          "type": "mention"
-        },
-        {
           "file": "src/components/wiki/engagementHeroAssets.ts",
           "line": 3,
           "text": "import humanPracticesHero from \"../../assets/wiki/engagement-heroes/engagement-human-practices-hero-v2.webp\";",
           "type": "import"
         }
       ],
-      "notes": "Referenced in 3 location(s)"
+      "notes": "Referenced in 3 location(s)",
+      "kind": "image"
     },
     "engagement-inclusivity-hero-v2-webp": {
       "id": "engagement-inclusivity-hero-v2-webp",
@@ -2693,25 +2623,14 @@
       ],
       "references": [
         {
-          "file": ".qa6/wetlab-template/baseline/source/src/components/wiki/engagementHeroAssets.ts",
-          "line": 4,
-          "text": "import inclusivityHero from \"../../assets/wiki/engagement-heroes/engagement-inclusivity-hero-v2.webp\";",
-          "type": "import"
-        },
-        {
-          "file": ".qa6/wetlab-template/baseline/source-sha256.json",
-          "line": 33,
-          "text": "\"src/assets/wiki/engagement-heroes/engagement-inclusivity-hero-v2.webp\": \"7ba79dde2ebe4da2fba9c0fb7adf58723f4a50930759720e6fc2bbb7c3065660\",",
-          "type": "mention"
-        },
-        {
           "file": "src/components/wiki/engagementHeroAssets.ts",
           "line": 4,
           "text": "import inclusivityHero from \"../../assets/wiki/engagement-heroes/engagement-inclusivity-hero-v2.webp\";",
           "type": "import"
         }
       ],
-      "notes": "Referenced in 3 location(s)"
+      "notes": "Referenced in 3 location(s)",
+      "kind": "image"
     },
     "engagement-sustainability-hero-v2-webp": {
       "id": "engagement-sustainability-hero-v2-webp",
@@ -2728,25 +2647,14 @@
       ],
       "references": [
         {
-          "file": ".qa6/wetlab-template/baseline/source/src/components/wiki/engagementHeroAssets.ts",
-          "line": 5,
-          "text": "import sustainabilityHero from \"../../assets/wiki/engagement-heroes/engagement-sustainability-hero-v2.webp\";",
-          "type": "import"
-        },
-        {
-          "file": ".qa6/wetlab-template/baseline/source-sha256.json",
-          "line": 34,
-          "text": "\"src/assets/wiki/engagement-heroes/engagement-sustainability-hero-v2.webp\": \"c74f9c1e7bd0be25adb3ee23ef1ec1e560ed76e516d9f8baee572bb96192b07",
-          "type": "mention"
-        },
-        {
           "file": "src/components/wiki/engagementHeroAssets.ts",
           "line": 5,
           "text": "import sustainabilityHero from \"../../assets/wiki/engagement-heroes/engagement-sustainability-hero-v2.webp\";",
           "type": "import"
         }
       ],
-      "notes": "Referenced in 3 location(s)"
+      "notes": "Referenced in 3 location(s)",
+      "kind": "image"
     },
     "engagement-png": {
       "id": "engagement-png",
@@ -2762,30 +2670,6 @@
         "engagement"
       ],
       "references": [
-        {
-          "file": ".qa6/wetlab-template/baseline/source/src/contents/sustainability.tsx",
-          "line": 10,
-          "text": "* 底色 #FCEAC1 page surface, `engagement.png` for the article frame.",
-          "type": "mention"
-        },
-        {
-          "file": ".qa6/wetlab-template/baseline/source/src/styles/route-palette-engagement.css",
-          "line": 16,
-          "text": "`background/engagement.png`.",
-          "type": "mention"
-        },
-        {
-          "file": ".qa6/wetlab-template/baseline/source/src/styles/route-palette-engagement.css",
-          "line": 27,
-          "text": "--route-frame-image: url(\"../assets/wiki/engagement.png\");",
-          "type": "css-url"
-        },
-        {
-          "file": ".qa6/wetlab-template/baseline/source-sha256.json",
-          "line": 35,
-          "text": "\"src/assets/wiki/engagement.png\": \"ed411e8a40e251639efc3c3734649b1640820ecb787533d476172e52fbf592ca\",",
-          "type": "mention"
-        },
         {
           "file": "src/contents/sustainability.tsx",
           "line": 10,
@@ -2805,7 +2689,8 @@
           "type": "css-url"
         }
       ],
-      "notes": "Referenced in 7 location(s)"
+      "notes": "Referenced in 7 location(s)",
+      "kind": "image"
     },
     "hp-clinical-review-v2-png": {
       "id": "hp-clinical-review-v2-png",
@@ -2822,25 +2707,14 @@
       ],
       "references": [
         {
-          "file": ".qa6/wetlab-template/baseline/source/src/components/wiki/features/HumanPracticesPanels.tsx",
-          "line": 8,
-          "text": "import clinicalImage from \"../../../assets/wiki/hp-clinical-review-v2.png\";",
-          "type": "import"
-        },
-        {
-          "file": ".qa6/wetlab-template/baseline/source-sha256.json",
-          "line": 36,
-          "text": "\"src/assets/wiki/hp-clinical-review-v2.png\": \"ea5cc7eefb1cce3e96fbcff15b96c12da3824fd46f5f6b3b62fc9d61b6cbcb56\",",
-          "type": "mention"
-        },
-        {
           "file": "src/components/wiki/features/HumanPracticesPanels.tsx",
           "line": 8,
           "text": "import clinicalImage from \"../../../assets/wiki/hp-clinical-review-v2.png\";",
           "type": "import"
         }
       ],
-      "notes": "Referenced in 3 location(s)"
+      "notes": "Referenced in 3 location(s)",
+      "kind": "image"
     },
     "hp-community-workshop-v2-png": {
       "id": "hp-community-workshop-v2-png",
@@ -2857,24 +2731,6 @@
       ],
       "references": [
         {
-          "file": ".qa6/wetlab-template/baseline/source/src/components/wiki/features/EngagementFeatures.tsx",
-          "line": 2,
-          "text": "import communityImage from \"../../../assets/wiki/hp-community-workshop-v2.png\";",
-          "type": "import"
-        },
-        {
-          "file": ".qa6/wetlab-template/baseline/source/src/components/wiki/features/HumanPracticesPanels.tsx",
-          "line": 9,
-          "text": "import communityImage from \"../../../assets/wiki/hp-community-workshop-v2.png\";",
-          "type": "import"
-        },
-        {
-          "file": ".qa6/wetlab-template/baseline/source-sha256.json",
-          "line": 37,
-          "text": "\"src/assets/wiki/hp-community-workshop-v2.png\": \"aa4a286e7eeae63beea7fdca2df86cecd747897cc643507a6722ac2f2c2999fa\",",
-          "type": "mention"
-        },
-        {
           "file": "src/components/wiki/features/EngagementFeatures.tsx",
           "line": 2,
           "text": "import communityImage from \"../../../assets/wiki/hp-community-workshop-v2.png\";",
@@ -2887,7 +2743,8 @@
           "type": "import"
         }
       ],
-      "notes": "Referenced in 5 location(s)"
+      "notes": "Referenced in 5 location(s)",
+      "kind": "image"
     },
     "hp-lab-review-v2-png": {
       "id": "hp-lab-review-v2-png",
@@ -2904,25 +2761,14 @@
       ],
       "references": [
         {
-          "file": ".qa6/wetlab-template/baseline/source/src/components/wiki/features/HumanPracticesPanels.tsx",
-          "line": 10,
-          "text": "import labImage from \"../../../assets/wiki/hp-lab-review-v2.png\";",
-          "type": "import"
-        },
-        {
-          "file": ".qa6/wetlab-template/baseline/source-sha256.json",
-          "line": 38,
-          "text": "\"src/assets/wiki/hp-lab-review-v2.png\": \"24cb28378ca1b5c2202c3f4ad18dee27a81707201945ade299bdb6ace2fa193b\",",
-          "type": "mention"
-        },
-        {
           "file": "src/components/wiki/features/HumanPracticesPanels.tsx",
           "line": 10,
           "text": "import labImage from \"../../../assets/wiki/hp-lab-review-v2.png\";",
           "type": "import"
         }
       ],
-      "notes": "Referenced in 3 location(s)"
+      "notes": "Referenced in 3 location(s)",
+      "kind": "image"
     },
     "hp-portrait-advocate-png": {
       "id": "hp-portrait-advocate-png",
@@ -2939,25 +2785,14 @@
       ],
       "references": [
         {
-          "file": ".qa6/wetlab-template/baseline/source/src/components/wiki/features/HumanPracticesPanels.tsx",
-          "line": 11,
-          "text": "import advocatePortrait from \"../../../assets/wiki/hp-portrait-advocate.png\";",
-          "type": "import"
-        },
-        {
-          "file": ".qa6/wetlab-template/baseline/source-sha256.json",
-          "line": 39,
-          "text": "\"src/assets/wiki/hp-portrait-advocate.png\": \"61ac7c978f73bd1f9c280caf69415881889068b094634d2d90e53bc75b0767a3\",",
-          "type": "mention"
-        },
-        {
           "file": "src/components/wiki/features/HumanPracticesPanels.tsx",
           "line": 11,
           "text": "import advocatePortrait from \"../../../assets/wiki/hp-portrait-advocate.png\";",
           "type": "import"
         }
       ],
-      "notes": "Referenced in 3 location(s)"
+      "notes": "Referenced in 3 location(s)",
+      "kind": "image"
     },
     "hp-portrait-clinical-png": {
       "id": "hp-portrait-clinical-png",
@@ -2974,25 +2809,14 @@
       ],
       "references": [
         {
-          "file": ".qa6/wetlab-template/baseline/source/src/components/wiki/features/HumanPracticesPanels.tsx",
-          "line": 12,
-          "text": "import clinicalPortrait from \"../../../assets/wiki/hp-portrait-clinical.png\";",
-          "type": "import"
-        },
-        {
-          "file": ".qa6/wetlab-template/baseline/source-sha256.json",
-          "line": 40,
-          "text": "\"src/assets/wiki/hp-portrait-clinical.png\": \"ab9171692cd0443fd939227a504f37092e6eac7db56f9bb676d7303fc7ad5112\",",
-          "type": "mention"
-        },
-        {
           "file": "src/components/wiki/features/HumanPracticesPanels.tsx",
           "line": 12,
           "text": "import clinicalPortrait from \"../../../assets/wiki/hp-portrait-clinical.png\";",
           "type": "import"
         }
       ],
-      "notes": "Referenced in 3 location(s)"
+      "notes": "Referenced in 3 location(s)",
+      "kind": "image"
     },
     "hp-portrait-ethics-png": {
       "id": "hp-portrait-ethics-png",
@@ -3009,25 +2833,14 @@
       ],
       "references": [
         {
-          "file": ".qa6/wetlab-template/baseline/source/src/components/wiki/features/HumanPracticesPanels.tsx",
-          "line": 13,
-          "text": "import ethicsPortrait from \"../../../assets/wiki/hp-portrait-ethics.png\";",
-          "type": "import"
-        },
-        {
-          "file": ".qa6/wetlab-template/baseline/source-sha256.json",
-          "line": 41,
-          "text": "\"src/assets/wiki/hp-portrait-ethics.png\": \"4320ee7544f092221058748aae12f53af9b8dbc0a15d70e4db2c1bb11c56690f\",",
-          "type": "mention"
-        },
-        {
           "file": "src/components/wiki/features/HumanPracticesPanels.tsx",
           "line": 13,
           "text": "import ethicsPortrait from \"../../../assets/wiki/hp-portrait-ethics.png\";",
           "type": "import"
         }
       ],
-      "notes": "Referenced in 3 location(s)"
+      "notes": "Referenced in 3 location(s)",
+      "kind": "image"
     },
     "hp-portrait-lab-png": {
       "id": "hp-portrait-lab-png",
@@ -3044,25 +2857,14 @@
       ],
       "references": [
         {
-          "file": ".qa6/wetlab-template/baseline/source/src/components/wiki/features/HumanPracticesPanels.tsx",
-          "line": 14,
-          "text": "import labPortrait from \"../../../assets/wiki/hp-portrait-lab.png\";",
-          "type": "import"
-        },
-        {
-          "file": ".qa6/wetlab-template/baseline/source-sha256.json",
-          "line": 42,
-          "text": "\"src/assets/wiki/hp-portrait-lab.png\": \"09fcca40cc015160ac7a5741bef99eb4f85072cd8e6219c200a13870295c10fd\",",
-          "type": "mention"
-        },
-        {
           "file": "src/components/wiki/features/HumanPracticesPanels.tsx",
           "line": 14,
           "text": "import labPortrait from \"../../../assets/wiki/hp-portrait-lab.png\";",
           "type": "import"
         }
       ],
-      "notes": "Referenced in 3 location(s)"
+      "notes": "Referenced in 3 location(s)",
+      "kind": "image"
     },
     "hp-portrait-regulatory-png": {
       "id": "hp-portrait-regulatory-png",
@@ -3079,25 +2881,14 @@
       ],
       "references": [
         {
-          "file": ".qa6/wetlab-template/baseline/source/src/components/wiki/features/HumanPracticesPanels.tsx",
-          "line": 15,
-          "text": "import regulatoryPortrait from \"../../../assets/wiki/hp-portrait-regulatory.png\";",
-          "type": "import"
-        },
-        {
-          "file": ".qa6/wetlab-template/baseline/source-sha256.json",
-          "line": 43,
-          "text": "\"src/assets/wiki/hp-portrait-regulatory.png\": \"f49202a769297c37de1d9be63324db4d242996fbfa3f4b38fe38db5c6220e2e2\",",
-          "type": "mention"
-        },
-        {
           "file": "src/components/wiki/features/HumanPracticesPanels.tsx",
           "line": 15,
           "text": "import regulatoryPortrait from \"../../../assets/wiki/hp-portrait-regulatory.png\";",
           "type": "import"
         }
       ],
-      "notes": "Referenced in 3 location(s)"
+      "notes": "Referenced in 3 location(s)",
+      "kind": "image"
     },
     "hp-regulatory-review-v2-png": {
       "id": "hp-regulatory-review-v2-png",
@@ -3114,25 +2905,14 @@
       ],
       "references": [
         {
-          "file": ".qa6/wetlab-template/baseline/source/src/components/wiki/features/HumanPracticesPanels.tsx",
-          "line": 16,
-          "text": "import regulatoryImage from \"../../../assets/wiki/hp-regulatory-review-v2.png\";",
-          "type": "import"
-        },
-        {
-          "file": ".qa6/wetlab-template/baseline/source-sha256.json",
-          "line": 44,
-          "text": "\"src/assets/wiki/hp-regulatory-review-v2.png\": \"77f314a9087733f2425c89e4124332e373671f206851b1e43cda867d01207c21\",",
-          "type": "mention"
-        },
-        {
           "file": "src/components/wiki/features/HumanPracticesPanels.tsx",
           "line": 16,
           "text": "import regulatoryImage from \"../../../assets/wiki/hp-regulatory-review-v2.png\";",
           "type": "import"
         }
       ],
-      "notes": "Referenced in 3 location(s)"
+      "notes": "Referenced in 3 location(s)",
+      "kind": "image"
     },
     "hp-whiteboard-review-v2-png": {
       "id": "hp-whiteboard-review-v2-png",
@@ -3149,25 +2929,14 @@
       ],
       "references": [
         {
-          "file": ".qa6/wetlab-template/baseline/source/src/components/wiki/features/HumanPracticesPanels.tsx",
-          "line": 17,
-          "text": "import whiteboardImage from \"../../../assets/wiki/hp-whiteboard-review-v2.png\";",
-          "type": "import"
-        },
-        {
-          "file": ".qa6/wetlab-template/baseline/source-sha256.json",
-          "line": 45,
-          "text": "\"src/assets/wiki/hp-whiteboard-review-v2.png\": \"14755855700c1739309852c31a373d7beba925a8c4fa44b4a524da81cc43aa40\",",
-          "type": "mention"
-        },
-        {
           "file": "src/components/wiki/features/HumanPracticesPanels.tsx",
           "line": 17,
           "text": "import whiteboardImage from \"../../../assets/wiki/hp-whiteboard-review-v2.png\";",
           "type": "import"
         }
       ],
-      "notes": "Referenced in 3 location(s)"
+      "notes": "Referenced in 3 location(s)",
+      "kind": "image"
     },
     "project-contribution-gradient-png": {
       "id": "project-contribution-gradient-png",
@@ -3184,25 +2953,14 @@
       ],
       "references": [
         {
-          "file": ".qa6/wetlab-template/baseline/source/src/components/wiki/projectHeroAssets.ts",
-          "line": 1,
-          "text": "import contributionHero from \"../../assets/wiki/project-heroes/project-contribution-gradient.png\";",
-          "type": "import"
-        },
-        {
-          "file": ".qa6/wetlab-template/baseline/source-sha256.json",
-          "line": 46,
-          "text": "\"src/assets/wiki/project-heroes/project-contribution-gradient.png\": \"7a07c575d0ea0b69c99536eb576ff24b258f7dcec93e0edd139a70bb4b9ad11c\",",
-          "type": "mention"
-        },
-        {
           "file": "src/components/wiki/projectHeroAssets.ts",
           "line": 1,
           "text": "import contributionHero from \"../../assets/wiki/project-heroes/project-contribution-gradient.png\";",
           "type": "import"
         }
       ],
-      "notes": "Referenced in 3 location(s)"
+      "notes": "Referenced in 3 location(s)",
+      "kind": "image"
     },
     "project-description-gradient-png": {
       "id": "project-description-gradient-png",
@@ -3219,25 +2977,14 @@
       ],
       "references": [
         {
-          "file": ".qa6/wetlab-template/baseline/source/src/components/wiki/projectHeroAssets.ts",
-          "line": 2,
-          "text": "import descriptionHero from \"../../assets/wiki/project-heroes/project-description-gradient.png\";",
-          "type": "import"
-        },
-        {
-          "file": ".qa6/wetlab-template/baseline/source-sha256.json",
-          "line": 47,
-          "text": "\"src/assets/wiki/project-heroes/project-description-gradient.png\": \"36835afd6278234bd5e3eff58540119ed4d1fd0e0a3efff892b1ac1ee4dfc36f\",",
-          "type": "mention"
-        },
-        {
           "file": "src/components/wiki/projectHeroAssets.ts",
           "line": 2,
           "text": "import descriptionHero from \"../../assets/wiki/project-heroes/project-description-gradient.png\";",
           "type": "import"
         }
       ],
-      "notes": "Referenced in 3 location(s)"
+      "notes": "Referenced in 3 location(s)",
+      "kind": "image"
     },
     "project-design-hero-webp": {
       "id": "project-design-hero-webp",
@@ -3253,7 +3000,8 @@
         "project-design-hero"
       ],
       "references": [],
-      "notes": "Standby/Unreferenced asset"
+      "notes": "Standby/Unreferenced asset",
+      "kind": "image"
     },
     "project-engineering-gradient-png": {
       "id": "project-engineering-gradient-png",
@@ -3270,25 +3018,14 @@
       ],
       "references": [
         {
-          "file": ".qa6/wetlab-template/baseline/source/src/components/wiki/projectHeroAssets.ts",
-          "line": 3,
-          "text": "import engineeringHero from \"../../assets/wiki/project-heroes/project-engineering-gradient.png\";",
-          "type": "import"
-        },
-        {
-          "file": ".qa6/wetlab-template/baseline/source-sha256.json",
-          "line": 48,
-          "text": "\"src/assets/wiki/project-heroes/project-engineering-gradient.png\": \"d62ea3a208d530a7ba8a0da7c93e07c6d525777186569e12c6532035ce475ed8\",",
-          "type": "mention"
-        },
-        {
           "file": "src/components/wiki/projectHeroAssets.ts",
           "line": 3,
           "text": "import engineeringHero from \"../../assets/wiki/project-heroes/project-engineering-gradient.png\";",
           "type": "import"
         }
       ],
-      "notes": "Referenced in 3 location(s)"
+      "notes": "Referenced in 3 location(s)",
+      "kind": "image"
     },
     "project-results-gradient-png": {
       "id": "project-results-gradient-png",
@@ -3305,25 +3042,14 @@
       ],
       "references": [
         {
-          "file": ".qa6/wetlab-template/baseline/source/src/components/wiki/projectHeroAssets.ts",
-          "line": 4,
-          "text": "import resultsHero from \"../../assets/wiki/project-heroes/project-results-gradient.png\";",
-          "type": "import"
-        },
-        {
-          "file": ".qa6/wetlab-template/baseline/source-sha256.json",
-          "line": 49,
-          "text": "\"src/assets/wiki/project-heroes/project-results-gradient.png\": \"1f10e2d5a8a5444da7f7d24d4599ee3f0ebdede61e67fca23e276c91c6bf4454\",",
-          "type": "mention"
-        },
-        {
           "file": "src/components/wiki/projectHeroAssets.ts",
           "line": 4,
           "text": "import resultsHero from \"../../assets/wiki/project-heroes/project-results-gradient.png\";",
           "type": "import"
         }
       ],
-      "notes": "Referenced in 3 location(s)"
+      "notes": "Referenced in 3 location(s)",
+      "kind": "image"
     },
     "project-png": {
       "id": "project-png",
@@ -3340,25 +3066,14 @@
       ],
       "references": [
         {
-          "file": ".qa6/wetlab-template/baseline/source/src/styles/route-palette-project.css",
-          "line": 24,
-          "text": "--route-frame-image: url(\"../assets/wiki/project.png\");",
-          "type": "css-url"
-        },
-        {
-          "file": ".qa6/wetlab-template/baseline/source-sha256.json",
-          "line": 50,
-          "text": "\"src/assets/wiki/project.png\": \"09046ec241dc023a3513921233f48448235b81a4b21bb5dda2f5ec475053663d\",",
-          "type": "mention"
-        },
-        {
           "file": "src/styles/route-palette-project.css",
           "line": 24,
           "text": "--route-frame-image: url(\"../assets/wiki/project.png\");",
           "type": "css-url"
         }
       ],
-      "notes": "Referenced in 3 location(s)"
+      "notes": "Referenced in 3 location(s)",
+      "kind": "image"
     },
     "sustainability-framework-set-develop-grow-06-png": {
       "id": "sustainability-framework-set-develop-grow-06-png",
@@ -3374,30 +3089,6 @@
         "sustainability-framework-set-develop-grow-06"
       ],
       "references": [
-        {
-          "file": ".qa6/wetlab-template/baseline/source/src/data/sustainabilityAssets.ts",
-          "line": 69,
-          "text": "fileName: \"sustainability-framework-set-develop-grow-06.png\",",
-          "type": "mention"
-        },
-        {
-          "file": ".qa6/wetlab-template/baseline/source/src/data/sustainabilityAssets.ts",
-          "line": 71,
-          "text": "targetPath: \"src/assets/wiki/sustainability-framework-set-develop-grow-06.png\",",
-          "type": "mention"
-        },
-        {
-          "file": ".qa6/wetlab-template/baseline/source/src/data/sustainabilityImages.ts",
-          "line": 3,
-          "text": "import frameworkSetDevelopGrow06 from \"../assets/wiki/sustainability-framework-set-develop-grow-06.png\";",
-          "type": "import"
-        },
-        {
-          "file": ".qa6/wetlab-template/baseline/source-sha256.json",
-          "line": 52,
-          "text": "\"src/assets/wiki/sustainability-framework-set-develop-grow-06.png\": \"0cc3662d3e8127239b04e7834ebaa1a7dfc3767349dbbe65420b5b3e1bf050d1\",",
-          "type": "mention"
-        },
         {
           "file": "src/data/engagement/sustainability/sustainabilityAssets.ts",
           "line": 69,
@@ -3417,7 +3108,8 @@
           "type": "import"
         }
       ],
-      "notes": "Referenced in 7 location(s)"
+      "notes": "Referenced in 7 location(s)",
+      "kind": "image"
     },
     "sustainability-overview-scale-framework-03-png": {
       "id": "sustainability-overview-scale-framework-03-png",
@@ -3433,30 +3125,6 @@
         "sustainability-overview-scale-framework-03"
       ],
       "references": [
-        {
-          "file": ".qa6/wetlab-template/baseline/source/src/data/sustainabilityAssets.ts",
-          "line": 60,
-          "text": "fileName: \"sustainability-overview-scale-framework-03.png\",",
-          "type": "mention"
-        },
-        {
-          "file": ".qa6/wetlab-template/baseline/source/src/data/sustainabilityAssets.ts",
-          "line": 62,
-          "text": "targetPath: \"src/assets/wiki/sustainability-overview-scale-framework-03.png\",",
-          "type": "mention"
-        },
-        {
-          "file": ".qa6/wetlab-template/baseline/source/src/data/sustainabilityImages.ts",
-          "line": 2,
-          "text": "import overviewScaleFramework03 from \"../assets/wiki/sustainability-overview-scale-framework-03.png\";",
-          "type": "import"
-        },
-        {
-          "file": ".qa6/wetlab-template/baseline/source-sha256.json",
-          "line": 53,
-          "text": "\"src/assets/wiki/sustainability-overview-scale-framework-03.png\": \"b2be36421dbe94bb2cbb0af589a5e21500e879a706ae061f6103f400090df2c1\",",
-          "type": "mention"
-        },
         {
           "file": "src/data/engagement/sustainability/sustainabilityAssets.ts",
           "line": 60,
@@ -3476,7 +3144,8 @@
           "type": "import"
         }
       ],
-      "notes": "Referenced in 7 location(s)"
+      "notes": "Referenced in 7 location(s)",
+      "kind": "image"
     },
     "sustainability-overview-sst-qn-preview-01-png": {
       "id": "sustainability-overview-sst-qn-preview-01-png",
@@ -3492,30 +3161,6 @@
         "sustainability-overview-sst-qn-preview-01"
       ],
       "references": [
-        {
-          "file": ".qa6/wetlab-template/baseline/source/src/data/sustainabilityAssets.ts",
-          "line": 51,
-          "text": "fileName: \"sustainability-overview-sst-qn-preview-01.png\",",
-          "type": "mention"
-        },
-        {
-          "file": ".qa6/wetlab-template/baseline/source/src/data/sustainabilityAssets.ts",
-          "line": 53,
-          "text": "targetPath: \"src/assets/wiki/sustainability-overview-sst-qn-preview-01.png\",",
-          "type": "mention"
-        },
-        {
-          "file": ".qa6/wetlab-template/baseline/source/src/data/sustainabilityImages.ts",
-          "line": 1,
-          "text": "import overviewSstQnPreview01 from \"../assets/wiki/sustainability-overview-sst-qn-preview-01.png\";",
-          "type": "import"
-        },
-        {
-          "file": ".qa6/wetlab-template/baseline/source-sha256.json",
-          "line": 54,
-          "text": "\"src/assets/wiki/sustainability-overview-sst-qn-preview-01.png\": \"64071c43c5adb7d57694f01337d3d0d8d80655c3cd66e313964018949a9fe20b\",",
-          "type": "mention"
-        },
         {
           "file": "src/data/engagement/sustainability/sustainabilityAssets.ts",
           "line": 51,
@@ -3535,7 +3180,8 @@
           "type": "import"
         }
       ],
-      "notes": "Referenced in 7 location(s)"
+      "notes": "Referenced in 7 location(s)",
+      "kind": "image"
     },
     "sustainability-sdg9-batch-projection-png": {
       "id": "sustainability-sdg9-batch-projection-png",
@@ -3551,30 +3197,6 @@
         "sustainability-sdg9-batch-projection"
       ],
       "references": [
-        {
-          "file": ".qa6/wetlab-template/baseline/source/src/data/sustainabilityAssets.ts",
-          "line": 87,
-          "text": "fileName: \"sustainability-sdg9-batch-projection.png\",",
-          "type": "mention"
-        },
-        {
-          "file": ".qa6/wetlab-template/baseline/source/src/data/sustainabilityAssets.ts",
-          "line": 89,
-          "text": "targetPath: \"src/assets/wiki/sustainability-sdg9-batch-projection.png\",",
-          "type": "mention"
-        },
-        {
-          "file": ".qa6/wetlab-template/baseline/source/src/data/sustainabilityImages.ts",
-          "line": 5,
-          "text": "import sdg9BatchProjection from \"../assets/wiki/sustainability-sdg9-batch-projection.png\";",
-          "type": "import"
-        },
-        {
-          "file": ".qa6/wetlab-template/baseline/source-sha256.json",
-          "line": 55,
-          "text": "\"src/assets/wiki/sustainability-sdg9-batch-projection.png\": \"0c3764e5c11a4dbffedb838e7cdff09d0d54c6d512546fad65a9c8ae4c02cf64\",",
-          "type": "mention"
-        },
         {
           "file": "src/data/engagement/sustainability/sustainabilityAssets.ts",
           "line": 87,
@@ -3594,7 +3216,8 @@
           "type": "import"
         }
       ],
-      "notes": "Referenced in 7 location(s)"
+      "notes": "Referenced in 7 location(s)",
+      "kind": "image"
     },
     "sustainability-sdg9-evidence-png": {
       "id": "sustainability-sdg9-evidence-png",
@@ -3610,30 +3233,6 @@
         "sustainability-sdg9-evidence"
       ],
       "references": [
-        {
-          "file": ".qa6/wetlab-template/baseline/source/src/data/sustainabilityAssets.ts",
-          "line": 96,
-          "text": "fileName: \"sustainability-sdg9-evidence.png\",",
-          "type": "mention"
-        },
-        {
-          "file": ".qa6/wetlab-template/baseline/source/src/data/sustainabilityAssets.ts",
-          "line": 98,
-          "text": "targetPath: \"src/assets/wiki/sustainability-sdg9-evidence.png\",",
-          "type": "mention"
-        },
-        {
-          "file": ".qa6/wetlab-template/baseline/source/src/data/sustainabilityImages.ts",
-          "line": 6,
-          "text": "import sdg9Evidence from \"../assets/wiki/sustainability-sdg9-evidence.png\";",
-          "type": "import"
-        },
-        {
-          "file": ".qa6/wetlab-template/baseline/source-sha256.json",
-          "line": 56,
-          "text": "\"src/assets/wiki/sustainability-sdg9-evidence.png\": \"51e7c1ef045f4d6d755c4be3cd50fc77c7b7afa7e6572e11253fc05931a50026\",",
-          "type": "mention"
-        },
         {
           "file": "src/data/engagement/sustainability/sustainabilityAssets.ts",
           "line": 96,
@@ -3653,7 +3252,8 @@
           "type": "import"
         }
       ],
-      "notes": "Referenced in 7 location(s)"
+      "notes": "Referenced in 7 location(s)",
+      "kind": "image"
     },
     "sustainability-set-stakeholder-overview-07-png": {
       "id": "sustainability-set-stakeholder-overview-07-png",
@@ -3669,30 +3269,6 @@
         "sustainability-set-stakeholder-overview-07"
       ],
       "references": [
-        {
-          "file": ".qa6/wetlab-template/baseline/source/src/data/sustainabilityAssets.ts",
-          "line": 78,
-          "text": "fileName: \"sustainability-set-stakeholder-overview-07.png\",",
-          "type": "mention"
-        },
-        {
-          "file": ".qa6/wetlab-template/baseline/source/src/data/sustainabilityAssets.ts",
-          "line": 80,
-          "text": "targetPath: \"src/assets/wiki/sustainability-set-stakeholder-overview-07.png\",",
-          "type": "mention"
-        },
-        {
-          "file": ".qa6/wetlab-template/baseline/source/src/data/sustainabilityImages.ts",
-          "line": 4,
-          "text": "import setStakeholderOverview07 from \"../assets/wiki/sustainability-set-stakeholder-overview-07.png\";",
-          "type": "import"
-        },
-        {
-          "file": ".qa6/wetlab-template/baseline/source-sha256.json",
-          "line": 57,
-          "text": "\"src/assets/wiki/sustainability-set-stakeholder-overview-07.png\": \"f6cc3cb95a8b5dc871cabaaafc5ebe30d7c80c2b6037815187bc8e2e0bd24c49\",",
-          "type": "mention"
-        },
         {
           "file": "src/data/engagement/sustainability/sustainabilityAssets.ts",
           "line": 78,
@@ -3712,7 +3288,8 @@
           "type": "import"
         }
       ],
-      "notes": "Referenced in 7 location(s)"
+      "notes": "Referenced in 7 location(s)",
+      "kind": "image"
     },
     "team-hero-webp": {
       "id": "team-hero-webp",
@@ -3735,7 +3312,8 @@
           "type": "import"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "kind": "image"
     },
     "team-png": {
       "id": "team-png",
@@ -3752,25 +3330,14 @@
       ],
       "references": [
         {
-          "file": ".qa6/wetlab-template/baseline/source/src/styles/route-palette-team.css",
-          "line": 7,
-          "text": "--route-frame-image: url(\"../assets/wiki/team.png\");",
-          "type": "css-url"
-        },
-        {
-          "file": ".qa6/wetlab-template/baseline/source-sha256.json",
-          "line": 58,
-          "text": "\"src/assets/wiki/team.png\": \"f6d4b73103f42cf172e83703af89e332b10a06e6a2377741f7042c710ace82d4\",",
-          "type": "mention"
-        },
-        {
           "file": "src/styles/route-palette-team.css",
           "line": 7,
           "text": "--route-frame-image: url(\"../assets/wiki/team.png\");",
           "type": "css-url"
         }
       ],
-      "notes": "Referenced in 3 location(s)"
+      "notes": "Referenced in 3 location(s)",
+      "kind": "image"
     },
     "wet-lab-experiments-hero-jpg": {
       "id": "wet-lab-experiments-hero-jpg",
@@ -3786,7 +3353,8 @@
         "wet-lab-experiments-hero"
       ],
       "references": [],
-      "notes": "Standby/Unreferenced asset"
+      "notes": "Standby/Unreferenced asset",
+      "kind": "image"
     },
     "wet-lab-experiments-hero-webp": {
       "id": "wet-lab-experiments-hero-webp",
@@ -3809,7 +3377,8 @@
           "type": "import"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "kind": "image"
     },
     "wet-lab-measurement-hero-jpg": {
       "id": "wet-lab-measurement-hero-jpg",
@@ -3825,7 +3394,8 @@
         "wet-lab-measurement-hero"
       ],
       "references": [],
-      "notes": "Standby/Unreferenced asset"
+      "notes": "Standby/Unreferenced asset",
+      "kind": "image"
     },
     "wet-lab-measurement-hero-webp": {
       "id": "wet-lab-measurement-hero-webp",
@@ -3848,7 +3418,8 @@
           "type": "import"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "kind": "image"
     },
     "wet-lab-module-hero-webp": {
       "id": "wet-lab-module-hero-webp",
@@ -3864,7 +3435,8 @@
         "wet-lab-module-hero"
       ],
       "references": [],
-      "notes": "Standby/Unreferenced asset"
+      "notes": "Standby/Unreferenced asset",
+      "kind": "image"
     },
     "wet-lab-notebook-hero-v3-webp": {
       "id": "wet-lab-notebook-hero-v3-webp",
@@ -3881,25 +3453,14 @@
       ],
       "references": [
         {
-          "file": ".qa6/wetlab-template/baseline/source/src/components/wiki/wetLabHeroAssets.ts",
-          "line": 3,
-          "text": "import notebookHero from \"../../assets/wiki/wet-lab-heroes/wet-lab-notebook-hero-v3.webp\";",
-          "type": "import"
-        },
-        {
-          "file": ".qa6/wetlab-template/baseline/source-sha256.json",
-          "line": 61,
-          "text": "\"src/assets/wiki/wet-lab-heroes/wet-lab-notebook-hero-v3.webp\": \"8d971aff3ea51db64ab56ca2d63d3403640fe0d76f1c854b616275535f6d93e7\",",
-          "type": "mention"
-        },
-        {
           "file": "src/components/wiki/wetLabHeroAssets.ts",
           "line": 3,
           "text": "import notebookHero from \"../../assets/wiki/wet-lab-heroes/wet-lab-notebook-hero-v3.webp\";",
           "type": "import"
         }
       ],
-      "notes": "Referenced in 3 location(s)"
+      "notes": "Referenced in 3 location(s)",
+      "kind": "image"
     },
     "wet-lab-platform-hero-jpg": {
       "id": "wet-lab-platform-hero-jpg",
@@ -3915,7 +3476,8 @@
         "wet-lab-platform-hero"
       ],
       "references": [],
-      "notes": "Standby/Unreferenced asset"
+      "notes": "Standby/Unreferenced asset",
+      "kind": "image"
     },
     "wet-lab-platform-hero-webp": {
       "id": "wet-lab-platform-hero-webp",
@@ -3938,7 +3500,8 @@
           "type": "import"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "kind": "image"
     },
     "wet-lab-safety-hero-v3-webp": {
       "id": "wet-lab-safety-hero-v3-webp",
@@ -3955,25 +3518,14 @@
       ],
       "references": [
         {
-          "file": ".qa6/wetlab-template/baseline/source/src/components/wiki/wetLabHeroAssets.ts",
-          "line": 6,
-          "text": "import safetyHero from \"../../assets/wiki/wet-lab-heroes/wet-lab-safety-hero-v3.webp\";",
-          "type": "import"
-        },
-        {
-          "file": ".qa6/wetlab-template/baseline/source-sha256.json",
-          "line": 63,
-          "text": "\"src/assets/wiki/wet-lab-heroes/wet-lab-safety-hero-v3.webp\": \"3fa4075ce32d93e5aa4d42e1520b1eb1e230dfc40f6a5c792df43078e91d5dc9\",",
-          "type": "mention"
-        },
-        {
           "file": "src/components/wiki/wetLabHeroAssets.ts",
           "line": 5,
           "text": "import safetyHero from \"../../assets/wiki/wet-lab-heroes/wet-lab-safety-hero-v3.webp\";",
           "type": "import"
         }
       ],
-      "notes": "Referenced in 3 location(s)"
+      "notes": "Referenced in 3 location(s)",
+      "kind": "image"
     },
     "wet-png": {
       "id": "wet-png",
@@ -3990,25 +3542,14 @@
       ],
       "references": [
         {
-          "file": ".qa6/wetlab-template/baseline/source/src/styles/wetlab-pastel.css",
-          "line": 457,
-          "text": "background-image: url(\"../assets/wiki/wet.png\");",
-          "type": "css-url"
-        },
-        {
-          "file": ".qa6/wetlab-template/baseline/source-sha256.json",
-          "line": 64,
-          "text": "\"src/assets/wiki/wet.png\": \"56679708d1d724a933470e313931b935c80532a597773b7f1282a420155ee521\",",
-          "type": "mention"
-        },
-        {
           "file": "src/styles/route-palette-wetlab.css",
           "line": 8,
           "text": "--route-frame-image: url(\"../assets/wiki/wet.png\");",
           "type": "css-url"
         }
       ],
-      "notes": "Referenced in 3 location(s)"
+      "notes": "Referenced in 3 location(s)",
+      "kind": "image"
     },
     "wetlab-circure-apparatus-png": {
       "id": "wetlab-circure-apparatus-png",
@@ -4024,48 +3565,6 @@
         "wetlab-circure-apparatus"
       ],
       "references": [
-        {
-          "file": ".qa6/wetlab-template/baseline/source/src/styles/wiki-rebuild.css",
-          "line": 2040,
-          "text": "url(\"../assets/wiki/wetlab-circure-apparatus.png\") center / cover no-repeat;",
-          "type": "css-url"
-        },
-        {
-          "file": ".qa6/wetlab-template/baseline/source/src/styles/wiki-rebuild.css",
-          "line": 2103,
-          "text": "url(\"../assets/wiki/wetlab-circure-apparatus.png\") 58% center / cover no-repeat;",
-          "type": "css-url"
-        },
-        {
-          "file": ".qa6/wetlab-template/baseline/source/src/styles/wiki-rebuild.css",
-          "line": 2117,
-          "text": "url(\"../assets/wiki/wetlab-circure-apparatus.png\") center / cover no-repeat;",
-          "type": "css-url"
-        },
-        {
-          "file": ".qa6/wetlab-template/baseline/source/src/styles/wiki-rebuild.css",
-          "line": 2189,
-          "text": "url(\"../assets/wiki/wetlab-circure-apparatus.png\") 58% center / cover no-repeat;",
-          "type": "css-url"
-        },
-        {
-          "file": ".qa6/wetlab-template/baseline/source/src/styles/wiki-rebuild.css",
-          "line": 2494,
-          "text": "url(\"../assets/wiki/wetlab-circure-apparatus.png\") center / cover no-repeat;",
-          "type": "css-url"
-        },
-        {
-          "file": ".qa6/wetlab-template/baseline/source/src/styles/wiki-rebuild.css",
-          "line": 2575,
-          "text": "url(\"../assets/wiki/wetlab-circure-apparatus.png\") 58% center / cover no-repeat;",
-          "type": "css-url"
-        },
-        {
-          "file": ".qa6/wetlab-template/baseline/source-sha256.json",
-          "line": 65,
-          "text": "\"src/assets/wiki/wetlab-circure-apparatus.png\": \"fcba916ce3d61433bfc3ebf4033ed01174b28dbc5368bd5d4d4824fb173b2137\",",
-          "type": "mention"
-        },
         {
           "file": "src/styles/wiki-rebuild.css",
           "line": 1411,
@@ -4103,7 +3602,2211 @@
           "type": "css-url"
         }
       ],
-      "notes": "Referenced in 13 location(s)"
+      "notes": "Referenced in 13 location(s)",
+      "kind": "image"
+    },
+    "kalam-regular-ttf": {
+      "id": "kalam-regular-ttf",
+      "kind": "font",
+      "fileName": "Kalam-Regular.ttf",
+      "category": "home",
+      "localPath": "src/assets/home/map-type/Kalam-Regular.ttf",
+      "md5": "08c397f4e53e808a95110abf531d69b3",
+      "fileSize": 427360,
+      "uploadUrl": null,
+      "status": "standby",
+      "description": "",
+      "keywords": [
+        "Kalam-Regular",
+        "font"
+      ],
+      "references": [],
+      "notes": "Standby/Unreferenced asset"
+    },
+    "trop2-ctl1-pdb": {
+      "id": "trop2-ctl1-pdb",
+      "kind": "structure",
+      "fileName": "trop2-ctl1.pdb",
+      "category": "dry-lab",
+      "localPath": "public/assets/structures/trop2-ctl1.pdb",
+      "md5": "c61a28a3a30a21f70aca57f73b922914",
+      "fileSize": 649361,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "trop2-ctl1",
+        "structure"
+      ],
+      "references": [
+        {
+          "file": "src/components/wiki/features/Trop2ComplexViewer.tsx",
+          "line": 2,
+          "text": "import trop2Pdb from \"../../../assets/structures/trop2-ctl1.pdb?raw\";",
+          "type": "import"
+        }
+      ],
+      "notes": "Referenced in 1 location(s)"
+    },
+    "sustainability-anchor-decide-toolkit-cn-pdf": {
+      "id": "sustainability-anchor-decide-toolkit-cn-pdf",
+      "kind": "pdf",
+      "fileName": "sustainability-anchor-decide-toolkit-cn.pdf",
+      "category": "engagement",
+      "localPath": "public/assets/docs/sustainability-anchor-decide-toolkit-cn.pdf",
+      "md5": "3521f661ec0762d1328d5f6eb2564578",
+      "fileSize": 2043955,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "sustainability-anchor-decide-toolkit-cn",
+        "pdf"
+      ],
+      "references": [
+        {
+          "file": "src/data/engagement/sustainability/sustainabilitySdg9.ts",
+          "line": 231,
+          "text": "{ label: \"中文\", fileName: \"sustainability-anchor-decide-toolkit-cn.pdf\" },",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 1 location(s)"
+    },
+    "sustainability-anchor-decide-toolkit-en-pdf": {
+      "id": "sustainability-anchor-decide-toolkit-en-pdf",
+      "kind": "pdf",
+      "fileName": "sustainability-anchor-decide-toolkit-en.pdf",
+      "category": "engagement",
+      "localPath": "public/assets/docs/sustainability-anchor-decide-toolkit-en.pdf",
+      "md5": "8077f8c9608526d47e22218be2db433e",
+      "fileSize": 1859836,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "sustainability-anchor-decide-toolkit-en",
+        "pdf"
+      ],
+      "references": [
+        {
+          "file": "src/data/engagement/sustainability/sustainabilitySdg9.ts",
+          "line": 232,
+          "text": "{ label: \"English\", fileName: \"sustainability-anchor-decide-toolkit-en.pdf\" },",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 1 location(s)"
+    },
+    "sustainability-claim-boundary-protocol-cn-pdf": {
+      "id": "sustainability-claim-boundary-protocol-cn-pdf",
+      "kind": "pdf",
+      "fileName": "sustainability-claim-boundary-protocol-cn.pdf",
+      "category": "engagement",
+      "localPath": "public/assets/docs/sustainability-claim-boundary-protocol-cn.pdf",
+      "md5": "16a0ef2e021d4835979419922daae62f",
+      "fileSize": 1341505,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "sustainability-claim-boundary-protocol-cn",
+        "pdf"
+      ],
+      "references": [
+        {
+          "file": "src/data/engagement/sustainability/sustainabilitySdg12.ts",
+          "line": 231,
+          "text": "{ label: \"中文\", fileName: \"sustainability-claim-boundary-protocol-cn.pdf\" },",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 1 location(s)"
+    },
+    "sustainability-claim-boundary-protocol-en-pdf": {
+      "id": "sustainability-claim-boundary-protocol-en-pdf",
+      "kind": "pdf",
+      "fileName": "sustainability-claim-boundary-protocol-en.pdf",
+      "category": "engagement",
+      "localPath": "public/assets/docs/sustainability-claim-boundary-protocol-en.pdf",
+      "md5": "0c1bec68ce878e21cbb2cb798aaa4d4c",
+      "fileSize": 2167243,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "sustainability-claim-boundary-protocol-en",
+        "pdf"
+      ],
+      "references": [
+        {
+          "file": "src/data/engagement/sustainability/sustainabilitySdg12.ts",
+          "line": 232,
+          "text": "{ label: \"English\", fileName: \"sustainability-claim-boundary-protocol-en.pdf\" },",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 1 location(s)"
+    },
+    "sustainability-core-question-anchor-cn-pdf": {
+      "id": "sustainability-core-question-anchor-cn-pdf",
+      "kind": "pdf",
+      "fileName": "sustainability-core-question-anchor-cn.pdf",
+      "category": "engagement",
+      "localPath": "public/assets/docs/sustainability-core-question-anchor-cn.pdf",
+      "md5": "b6dee427ce3863fd00b3f9c9da405f5f",
+      "fileSize": 1500490,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "sustainability-core-question-anchor-cn",
+        "pdf"
+      ],
+      "references": [
+        {
+          "file": "src/data/engagement/sustainability/sustainabilitySdg9.ts",
+          "line": 213,
+          "text": "{ label: \"中文\", fileName: \"sustainability-core-question-anchor-cn.pdf\" },",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 1 location(s)"
+    },
+    "sustainability-core-question-anchor-en-pdf": {
+      "id": "sustainability-core-question-anchor-en-pdf",
+      "kind": "pdf",
+      "fileName": "sustainability-core-question-anchor-en.pdf",
+      "category": "engagement",
+      "localPath": "public/assets/docs/sustainability-core-question-anchor-en.pdf",
+      "md5": "a3ec930e9e3ac9cd9c34de46a5efd1ee",
+      "fileSize": 2005862,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "sustainability-core-question-anchor-en",
+        "pdf"
+      ],
+      "references": [
+        {
+          "file": "src/data/engagement/sustainability/sustainabilitySdg9.ts",
+          "line": 214,
+          "text": "{ label: \"English\", fileName: \"sustainability-core-question-anchor-en.pdf\" },",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 1 location(s)"
+    },
+    "sustainability-feedback-to-action-record-cn-pdf": {
+      "id": "sustainability-feedback-to-action-record-cn-pdf",
+      "kind": "pdf",
+      "fileName": "sustainability-feedback-to-action-record-cn.pdf",
+      "category": "engagement",
+      "localPath": "public/assets/docs/sustainability-feedback-to-action-record-cn.pdf",
+      "md5": "65d16ba8e41cb9dc78aa3359686dec8b",
+      "fileSize": 272952,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "sustainability-feedback-to-action-record-cn",
+        "pdf"
+      ],
+      "references": [
+        {
+          "file": "src/data/engagement/sustainability/sustainabilityData.ts",
+          "line": 803,
+          "text": "{ label: \"中文\", fileName: \"sustainability-feedback-to-action-record-cn.pdf\" },",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 1 location(s)"
+    },
+    "sustainability-feedback-to-action-record-en-pdf": {
+      "id": "sustainability-feedback-to-action-record-en-pdf",
+      "kind": "pdf",
+      "fileName": "sustainability-feedback-to-action-record-en.pdf",
+      "category": "engagement",
+      "localPath": "public/assets/docs/sustainability-feedback-to-action-record-en.pdf",
+      "md5": "23a56314bb0334c9a1da1789f092ada7",
+      "fileSize": 226844,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "sustainability-feedback-to-action-record-en",
+        "pdf"
+      ],
+      "references": [
+        {
+          "file": "src/data/engagement/sustainability/sustainabilityData.ts",
+          "line": 804,
+          "text": "{ label: \"English\", fileName: \"sustainability-feedback-to-action-record-en.pdf\" },",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 1 location(s)"
+    },
+    "sustainability-resource-responsibility-map-cn-pdf": {
+      "id": "sustainability-resource-responsibility-map-cn-pdf",
+      "kind": "pdf",
+      "fileName": "sustainability-resource-responsibility-map-cn.pdf",
+      "category": "engagement",
+      "localPath": "public/assets/docs/sustainability-resource-responsibility-map-cn.pdf",
+      "md5": "0723ed528e2e601d494ad18b40b1a7bb",
+      "fileSize": 1732528,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "sustainability-resource-responsibility-map-cn",
+        "pdf"
+      ],
+      "references": [
+        {
+          "file": "src/data/engagement/sustainability/sustainabilitySdg12.ts",
+          "line": 222,
+          "text": "{ label: \"中文\", fileName: \"sustainability-resource-responsibility-map-cn.pdf\" },",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 1 location(s)"
+    },
+    "sustainability-resource-responsibility-map-en-pdf": {
+      "id": "sustainability-resource-responsibility-map-en-pdf",
+      "kind": "pdf",
+      "fileName": "sustainability-resource-responsibility-map-en.pdf",
+      "category": "engagement",
+      "localPath": "public/assets/docs/sustainability-resource-responsibility-map-en.pdf",
+      "md5": "54de4c44a14e23b9e0756ad0437acec6",
+      "fileSize": 1806748,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "sustainability-resource-responsibility-map-en",
+        "pdf"
+      ],
+      "references": [
+        {
+          "file": "src/data/engagement/sustainability/sustainabilitySdg12.ts",
+          "line": 223,
+          "text": "{ label: \"English\", fileName: \"sustainability-resource-responsibility-map-en.pdf\" },",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 1 location(s)"
+    },
+    "sustainability-scenario-batch-failure-projection-report-cn-pdf": {
+      "id": "sustainability-scenario-batch-failure-projection-report-cn-pdf",
+      "kind": "pdf",
+      "fileName": "sustainability-scenario-batch-failure-projection-report-cn.pdf",
+      "category": "engagement",
+      "localPath": "public/assets/docs/sustainability-scenario-batch-failure-projection-report-cn.pdf",
+      "md5": "7d0b35983eeec44819e59c15bcdf682c",
+      "fileSize": 468878,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "sustainability-scenario-batch-failure-projection-report-cn",
+        "pdf"
+      ],
+      "references": [
+        {
+          "file": "src/data/engagement/sustainability/sustainabilitySdg9.ts",
+          "line": 240,
+          "text": "{ label: \"中文\", fileName: \"sustainability-scenario-batch-failure-projection-report-cn.pdf\" },",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 1 location(s)"
+    },
+    "sustainability-scenario-batch-failure-projection-report-en-pdf": {
+      "id": "sustainability-scenario-batch-failure-projection-report-en-pdf",
+      "kind": "pdf",
+      "fileName": "sustainability-scenario-batch-failure-projection-report-en.pdf",
+      "category": "engagement",
+      "localPath": "public/assets/docs/sustainability-scenario-batch-failure-projection-report-en.pdf",
+      "md5": "1ae2c340cf43c1a1f8e6e8825b7108d7",
+      "fileSize": 357135,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "sustainability-scenario-batch-failure-projection-report-en",
+        "pdf"
+      ],
+      "references": [
+        {
+          "file": "src/data/engagement/sustainability/sustainabilitySdg9.ts",
+          "line": 241,
+          "text": "{ label: \"English\", fileName: \"sustainability-scenario-batch-failure-projection-report-en.pdf\" },",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 1 location(s)"
+    },
+    "sustainability-sdg-impact-documentation-template-cn-pdf": {
+      "id": "sustainability-sdg-impact-documentation-template-cn-pdf",
+      "kind": "pdf",
+      "fileName": "sustainability-sdg-impact-documentation-template-cn.pdf",
+      "category": "engagement",
+      "localPath": "public/assets/docs/sustainability-sdg-impact-documentation-template-cn.pdf",
+      "md5": "4a737a06b3cfb1da5c8b004b2ffc411f",
+      "fileSize": 241942,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "sustainability-sdg-impact-documentation-template-cn",
+        "pdf"
+      ],
+      "references": [
+        {
+          "file": "src/data/engagement/sustainability/sustainabilityData.ts",
+          "line": 812,
+          "text": "{ label: \"中文\", fileName: \"sustainability-sdg-impact-documentation-template-cn.pdf\" },",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 1 location(s)"
+    },
+    "sustainability-sdg-impact-documentation-template-en-pdf": {
+      "id": "sustainability-sdg-impact-documentation-template-en-pdf",
+      "kind": "pdf",
+      "fileName": "sustainability-sdg-impact-documentation-template-en.pdf",
+      "category": "engagement",
+      "localPath": "public/assets/docs/sustainability-sdg-impact-documentation-template-en.pdf",
+      "md5": "4e69490202fe0ee99bd7335acbffd640",
+      "fileSize": 230536,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "sustainability-sdg-impact-documentation-template-en",
+        "pdf"
+      ],
+      "references": [
+        {
+          "file": "src/data/engagement/sustainability/sustainabilityData.ts",
+          "line": 813,
+          "text": "{ label: \"English\", fileName: \"sustainability-sdg-impact-documentation-template-en.pdf\" },",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 1 location(s)"
+    },
+    "sustainability-sst-qn-model-construction-pdf": {
+      "id": "sustainability-sst-qn-model-construction-pdf",
+      "kind": "pdf",
+      "fileName": "sustainability-sst-qn-model-construction.pdf",
+      "category": "engagement",
+      "localPath": "public/assets/docs/sustainability-sst-qn-model-construction.pdf",
+      "md5": "07c1325af242069a1428d94df47369ca",
+      "fileSize": 325622,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "sustainability-sst-qn-model-construction",
+        "pdf"
+      ],
+      "references": [
+        {
+          "file": "src/data/engagement/sustainability/sustainabilityAssets.ts",
+          "line": 105,
+          "text": "fileName: \"sustainability-sst-qn-model-construction.pdf\",",
+          "type": "mention"
+        },
+        {
+          "file": "src/data/engagement/sustainability/sustainabilityAssets.ts",
+          "line": 107,
+          "text": "targetPath: \"public/assets/docs/sustainability-sst-qn-model-construction.pdf\",",
+          "type": "mention"
+        },
+        {
+          "file": "src/data/engagement/sustainability/sustainabilityAssets.ts",
+          "line": 113,
+          "text": "webPath: \"assets/docs/sustainability-sst-qn-model-construction.pdf\",",
+          "type": "mention"
+        },
+        {
+          "file": "src/data/engagement/sustainability/sustainabilityData.ts",
+          "line": 339,
+          "text": "fileName: \"sustainability-sst-qn-model-construction.pdf\",",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 4 location(s)"
+    },
+    "sustainability-stakeholder-feedback-decision-protocol-cn-pdf": {
+      "id": "sustainability-stakeholder-feedback-decision-protocol-cn-pdf",
+      "kind": "pdf",
+      "fileName": "sustainability-stakeholder-feedback-decision-protocol-cn.pdf",
+      "category": "engagement",
+      "localPath": "public/assets/docs/sustainability-stakeholder-feedback-decision-protocol-cn.pdf",
+      "md5": "5f5910b6d557d725677c31b3c93dad75",
+      "fileSize": 2247595,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "sustainability-stakeholder-feedback-decision-protocol-cn",
+        "pdf"
+      ],
+      "references": [
+        {
+          "file": "src/data/engagement/sustainability/sustainabilitySdg9.ts",
+          "line": 222,
+          "text": "{ label: \"中文\", fileName: \"sustainability-stakeholder-feedback-decision-protocol-cn.pdf\" },",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 1 location(s)"
+    },
+    "sustainability-stakeholder-feedback-decision-protocol-en-pdf": {
+      "id": "sustainability-stakeholder-feedback-decision-protocol-en-pdf",
+      "kind": "pdf",
+      "fileName": "sustainability-stakeholder-feedback-decision-protocol-en.pdf",
+      "category": "engagement",
+      "localPath": "public/assets/docs/sustainability-stakeholder-feedback-decision-protocol-en.pdf",
+      "md5": "8cdf1474f251c648976bf85973d08570",
+      "fileSize": 1994410,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "sustainability-stakeholder-feedback-decision-protocol-en",
+        "pdf"
+      ],
+      "references": [
+        {
+          "file": "src/data/engagement/sustainability/sustainabilitySdg9.ts",
+          "line": 223,
+          "text": "{ label: \"English\", fileName: \"sustainability-stakeholder-feedback-decision-protocol-en.pdf\" },",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 1 location(s)"
+    },
+    "sustainability-stakeholder-interview-guide-cn-pdf": {
+      "id": "sustainability-stakeholder-interview-guide-cn-pdf",
+      "kind": "pdf",
+      "fileName": "sustainability-stakeholder-interview-guide-cn.pdf",
+      "category": "engagement",
+      "localPath": "public/assets/docs/sustainability-stakeholder-interview-guide-cn.pdf",
+      "md5": "960b2f6ed3a75a06985bc95f87fe0eeb",
+      "fileSize": 2042268,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "sustainability-stakeholder-interview-guide-cn",
+        "pdf"
+      ],
+      "references": [
+        {
+          "file": "src/data/engagement/sustainability/sustainabilityData.ts",
+          "line": 785,
+          "text": "{ label: \"中文\", fileName: \"sustainability-stakeholder-interview-guide-cn.pdf\" },",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 1 location(s)"
+    },
+    "sustainability-stakeholder-interview-guide-en-pdf": {
+      "id": "sustainability-stakeholder-interview-guide-en-pdf",
+      "kind": "pdf",
+      "fileName": "sustainability-stakeholder-interview-guide-en.pdf",
+      "category": "engagement",
+      "localPath": "public/assets/docs/sustainability-stakeholder-interview-guide-en.pdf",
+      "md5": "a562f5a8518e33a1cb19a87005b0097b",
+      "fileSize": 1743336,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "sustainability-stakeholder-interview-guide-en",
+        "pdf"
+      ],
+      "references": [
+        {
+          "file": "src/data/engagement/sustainability/sustainabilityData.ts",
+          "line": 786,
+          "text": "{ label: \"English\", fileName: \"sustainability-stakeholder-interview-guide-en.pdf\" },",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 1 location(s)"
+    },
+    "sustainability-stakeholder-sdg-mapping-guide-cn-pdf": {
+      "id": "sustainability-stakeholder-sdg-mapping-guide-cn-pdf",
+      "kind": "pdf",
+      "fileName": "sustainability-stakeholder-sdg-mapping-guide-cn.pdf",
+      "category": "engagement",
+      "localPath": "public/assets/docs/sustainability-stakeholder-sdg-mapping-guide-cn.pdf",
+      "md5": "32c3edf7f3a099187b4334ea2eade84e",
+      "fileSize": 1682646,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "sustainability-stakeholder-sdg-mapping-guide-cn",
+        "pdf"
+      ],
+      "references": [
+        {
+          "file": "src/data/engagement/sustainability/sustainabilityData.ts",
+          "line": 794,
+          "text": "{ label: \"中文\", fileName: \"sustainability-stakeholder-sdg-mapping-guide-cn.pdf\" },",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 1 location(s)"
+    },
+    "sustainability-stakeholder-sdg-mapping-guide-en-pdf": {
+      "id": "sustainability-stakeholder-sdg-mapping-guide-en-pdf",
+      "kind": "pdf",
+      "fileName": "sustainability-stakeholder-sdg-mapping-guide-en.pdf",
+      "category": "engagement",
+      "localPath": "public/assets/docs/sustainability-stakeholder-sdg-mapping-guide-en.pdf",
+      "md5": "7f62cb21c1e10275a01c0bb1ce8c91fc",
+      "fileSize": 995949,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "sustainability-stakeholder-sdg-mapping-guide-en",
+        "pdf"
+      ],
+      "references": [
+        {
+          "file": "src/data/engagement/sustainability/sustainabilityData.ts",
+          "line": 795,
+          "text": "{ label: \"English\", fileName: \"sustainability-stakeholder-sdg-mapping-guide-en.pdf\" },",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 1 location(s)"
+    },
+    "protocol-01-webp": {
+      "id": "protocol-01-webp",
+      "kind": "image",
+      "fileName": "protocol-01.webp",
+      "category": "shared",
+      "localPath": "public/assets/experiments/protocol/protocol-01.webp",
+      "md5": "59466299c5dd3e91a0683c5628836c27",
+      "fileSize": 209956,
+      "uploadUrl": null,
+      "status": "standby",
+      "description": "",
+      "keywords": [
+        "protocol-01",
+        "image"
+      ],
+      "references": [],
+      "notes": "Standby/Unreferenced asset"
+    },
+    "protocol-02-webp": {
+      "id": "protocol-02-webp",
+      "kind": "image",
+      "fileName": "protocol-02.webp",
+      "category": "shared",
+      "localPath": "public/assets/experiments/protocol/protocol-02.webp",
+      "md5": "132281d10676713d371fd9909448060b",
+      "fileSize": 126160,
+      "uploadUrl": null,
+      "status": "standby",
+      "description": "",
+      "keywords": [
+        "protocol-02",
+        "image"
+      ],
+      "references": [],
+      "notes": "Standby/Unreferenced asset"
+    },
+    "protocol-03-webp": {
+      "id": "protocol-03-webp",
+      "kind": "image",
+      "fileName": "protocol-03.webp",
+      "category": "shared",
+      "localPath": "public/assets/experiments/protocol/protocol-03.webp",
+      "md5": "84fc0b85d2554c8ca82ace1bc452f86f",
+      "fileSize": 214596,
+      "uploadUrl": null,
+      "status": "standby",
+      "description": "",
+      "keywords": [
+        "protocol-03",
+        "image"
+      ],
+      "references": [],
+      "notes": "Standby/Unreferenced asset"
+    },
+    "protocol-04-webp": {
+      "id": "protocol-04-webp",
+      "kind": "image",
+      "fileName": "protocol-04.webp",
+      "category": "shared",
+      "localPath": "public/assets/experiments/protocol/protocol-04.webp",
+      "md5": "a7b734744ab1a43265adaf573769385f",
+      "fileSize": 115402,
+      "uploadUrl": null,
+      "status": "standby",
+      "description": "",
+      "keywords": [
+        "protocol-04",
+        "image"
+      ],
+      "references": [],
+      "notes": "Standby/Unreferenced asset"
+    },
+    "protocol-05-webp": {
+      "id": "protocol-05-webp",
+      "kind": "image",
+      "fileName": "protocol-05.webp",
+      "category": "shared",
+      "localPath": "public/assets/experiments/protocol/protocol-05.webp",
+      "md5": "9d53bbadfc09504ed4fac1b0a3bae52f",
+      "fileSize": 224334,
+      "uploadUrl": null,
+      "status": "standby",
+      "description": "",
+      "keywords": [
+        "protocol-05",
+        "image"
+      ],
+      "references": [],
+      "notes": "Standby/Unreferenced asset"
+    },
+    "protocol-06-webp": {
+      "id": "protocol-06-webp",
+      "kind": "image",
+      "fileName": "protocol-06.webp",
+      "category": "shared",
+      "localPath": "public/assets/experiments/protocol/protocol-06.webp",
+      "md5": "1d3ec2ecc2f91b44e3dc96503a76026f",
+      "fileSize": 121756,
+      "uploadUrl": null,
+      "status": "standby",
+      "description": "",
+      "keywords": [
+        "protocol-06",
+        "image"
+      ],
+      "references": [],
+      "notes": "Standby/Unreferenced asset"
+    },
+    "protocol-07-webp": {
+      "id": "protocol-07-webp",
+      "kind": "image",
+      "fileName": "protocol-07.webp",
+      "category": "shared",
+      "localPath": "public/assets/experiments/protocol/protocol-07.webp",
+      "md5": "910f117ca9fad758c5f328827b3f590a",
+      "fileSize": 159868,
+      "uploadUrl": null,
+      "status": "standby",
+      "description": "",
+      "keywords": [
+        "protocol-07",
+        "image"
+      ],
+      "references": [],
+      "notes": "Standby/Unreferenced asset"
+    },
+    "protocol-08-webp": {
+      "id": "protocol-08-webp",
+      "kind": "image",
+      "fileName": "protocol-08.webp",
+      "category": "shared",
+      "localPath": "public/assets/experiments/protocol/protocol-08.webp",
+      "md5": "7103c2ed4ccc434bfd7a42c5ab5f8c73",
+      "fileSize": 82478,
+      "uploadUrl": null,
+      "status": "standby",
+      "description": "",
+      "keywords": [
+        "protocol-08",
+        "image"
+      ],
+      "references": [],
+      "notes": "Standby/Unreferenced asset"
+    },
+    "protocol-09-webp": {
+      "id": "protocol-09-webp",
+      "kind": "image",
+      "fileName": "protocol-09.webp",
+      "category": "shared",
+      "localPath": "public/assets/experiments/protocol/protocol-09.webp",
+      "md5": "b8d523c14e9142bab6139c12d5659fb3",
+      "fileSize": 240766,
+      "uploadUrl": null,
+      "status": "standby",
+      "description": "",
+      "keywords": [
+        "protocol-09",
+        "image"
+      ],
+      "references": [],
+      "notes": "Standby/Unreferenced asset"
+    },
+    "protocol-10-webp": {
+      "id": "protocol-10-webp",
+      "kind": "image",
+      "fileName": "protocol-10.webp",
+      "category": "shared",
+      "localPath": "public/assets/experiments/protocol/protocol-10.webp",
+      "md5": "0ea80e998096c90d02a8d0a8d71a149e",
+      "fileSize": 97528,
+      "uploadUrl": null,
+      "status": "standby",
+      "description": "",
+      "keywords": [
+        "protocol-10",
+        "image"
+      ],
+      "references": [],
+      "notes": "Standby/Unreferenced asset"
+    },
+    "protocol-11-webp": {
+      "id": "protocol-11-webp",
+      "kind": "image",
+      "fileName": "protocol-11.webp",
+      "category": "shared",
+      "localPath": "public/assets/experiments/protocol/protocol-11.webp",
+      "md5": "ea0cacf549988337234f4b803d362a87",
+      "fileSize": 259786,
+      "uploadUrl": null,
+      "status": "standby",
+      "description": "",
+      "keywords": [
+        "protocol-11",
+        "image"
+      ],
+      "references": [],
+      "notes": "Standby/Unreferenced asset"
+    },
+    "protocol-12-webp": {
+      "id": "protocol-12-webp",
+      "kind": "image",
+      "fileName": "protocol-12.webp",
+      "category": "shared",
+      "localPath": "public/assets/experiments/protocol/protocol-12.webp",
+      "md5": "77f11227d70760f63fa6aba607d8fbc8",
+      "fileSize": 88764,
+      "uploadUrl": null,
+      "status": "standby",
+      "description": "",
+      "keywords": [
+        "protocol-12",
+        "image"
+      ],
+      "references": [],
+      "notes": "Standby/Unreferenced asset"
+    },
+    "protocol-13-webp": {
+      "id": "protocol-13-webp",
+      "kind": "image",
+      "fileName": "protocol-13.webp",
+      "category": "shared",
+      "localPath": "public/assets/experiments/protocol/protocol-13.webp",
+      "md5": "78a107363dfa7c1958b270d29689f478",
+      "fileSize": 277048,
+      "uploadUrl": null,
+      "status": "standby",
+      "description": "",
+      "keywords": [
+        "protocol-13",
+        "image"
+      ],
+      "references": [],
+      "notes": "Standby/Unreferenced asset"
+    },
+    "protocol-14-webp": {
+      "id": "protocol-14-webp",
+      "kind": "image",
+      "fileName": "protocol-14.webp",
+      "category": "shared",
+      "localPath": "public/assets/experiments/protocol/protocol-14.webp",
+      "md5": "edd4eb40dc84055c7ae25d1b13c86291",
+      "fileSize": 124818,
+      "uploadUrl": null,
+      "status": "standby",
+      "description": "",
+      "keywords": [
+        "protocol-14",
+        "image"
+      ],
+      "references": [],
+      "notes": "Standby/Unreferenced asset"
+    },
+    "protocol-15-webp": {
+      "id": "protocol-15-webp",
+      "kind": "image",
+      "fileName": "protocol-15.webp",
+      "category": "shared",
+      "localPath": "public/assets/experiments/protocol/protocol-15.webp",
+      "md5": "522dd05560c863b2539092a051571423",
+      "fileSize": 269216,
+      "uploadUrl": null,
+      "status": "standby",
+      "description": "",
+      "keywords": [
+        "protocol-15",
+        "image"
+      ],
+      "references": [],
+      "notes": "Standby/Unreferenced asset"
+    },
+    "protocol-16-webp": {
+      "id": "protocol-16-webp",
+      "kind": "image",
+      "fileName": "protocol-16.webp",
+      "category": "shared",
+      "localPath": "public/assets/experiments/protocol/protocol-16.webp",
+      "md5": "2eaea837b9e5de906c3c0f8840db6ca7",
+      "fileSize": 131356,
+      "uploadUrl": null,
+      "status": "standby",
+      "description": "",
+      "keywords": [
+        "protocol-16",
+        "image"
+      ],
+      "references": [],
+      "notes": "Standby/Unreferenced asset"
+    },
+    "protocol-17-webp": {
+      "id": "protocol-17-webp",
+      "kind": "image",
+      "fileName": "protocol-17.webp",
+      "category": "shared",
+      "localPath": "public/assets/experiments/protocol/protocol-17.webp",
+      "md5": "d912def337645a529ec6f6e04727f564",
+      "fileSize": 234762,
+      "uploadUrl": null,
+      "status": "standby",
+      "description": "",
+      "keywords": [
+        "protocol-17",
+        "image"
+      ],
+      "references": [],
+      "notes": "Standby/Unreferenced asset"
+    },
+    "protocol-18-webp": {
+      "id": "protocol-18-webp",
+      "kind": "image",
+      "fileName": "protocol-18.webp",
+      "category": "shared",
+      "localPath": "public/assets/experiments/protocol/protocol-18.webp",
+      "md5": "517f0e9ecb81d38f9da58c7ff32b7b6c",
+      "fileSize": 112554,
+      "uploadUrl": null,
+      "status": "standby",
+      "description": "",
+      "keywords": [
+        "protocol-18",
+        "image"
+      ],
+      "references": [],
+      "notes": "Standby/Unreferenced asset"
+    },
+    "protocol-19-webp": {
+      "id": "protocol-19-webp",
+      "kind": "image",
+      "fileName": "protocol-19.webp",
+      "category": "shared",
+      "localPath": "public/assets/experiments/protocol/protocol-19.webp",
+      "md5": "851ee40b855173d7f7236582c79c7991",
+      "fileSize": 267598,
+      "uploadUrl": null,
+      "status": "standby",
+      "description": "",
+      "keywords": [
+        "protocol-19",
+        "image"
+      ],
+      "references": [],
+      "notes": "Standby/Unreferenced asset"
+    },
+    "protocol-20-webp": {
+      "id": "protocol-20-webp",
+      "kind": "image",
+      "fileName": "protocol-20.webp",
+      "category": "shared",
+      "localPath": "public/assets/experiments/protocol/protocol-20.webp",
+      "md5": "b144c8fdfd345e4e0a37b6cb0016b292",
+      "fileSize": 135126,
+      "uploadUrl": null,
+      "status": "standby",
+      "description": "",
+      "keywords": [
+        "protocol-20",
+        "image"
+      ],
+      "references": [],
+      "notes": "Standby/Unreferenced asset"
+    },
+    "protocol-21-webp": {
+      "id": "protocol-21-webp",
+      "kind": "image",
+      "fileName": "protocol-21.webp",
+      "category": "shared",
+      "localPath": "public/assets/experiments/protocol/protocol-21.webp",
+      "md5": "b7aba1c3c128eecc914241822712952b",
+      "fileSize": 181794,
+      "uploadUrl": null,
+      "status": "standby",
+      "description": "",
+      "keywords": [
+        "protocol-21",
+        "image"
+      ],
+      "references": [],
+      "notes": "Standby/Unreferenced asset"
+    },
+    "protocol-22-webp": {
+      "id": "protocol-22-webp",
+      "kind": "image",
+      "fileName": "protocol-22.webp",
+      "category": "shared",
+      "localPath": "public/assets/experiments/protocol/protocol-22.webp",
+      "md5": "d57e2687fed3be93d13ba93541b5f158",
+      "fileSize": 105586,
+      "uploadUrl": null,
+      "status": "standby",
+      "description": "",
+      "keywords": [
+        "protocol-22",
+        "image"
+      ],
+      "references": [],
+      "notes": "Standby/Unreferenced asset"
+    },
+    "protocol-23-webp": {
+      "id": "protocol-23-webp",
+      "kind": "image",
+      "fileName": "protocol-23.webp",
+      "category": "shared",
+      "localPath": "public/assets/experiments/protocol/protocol-23.webp",
+      "md5": "1b9d72108957d2c65bf3dcc453782d93",
+      "fileSize": 225568,
+      "uploadUrl": null,
+      "status": "standby",
+      "description": "",
+      "keywords": [
+        "protocol-23",
+        "image"
+      ],
+      "references": [],
+      "notes": "Standby/Unreferenced asset"
+    },
+    "protocol-24-webp": {
+      "id": "protocol-24-webp",
+      "kind": "image",
+      "fileName": "protocol-24.webp",
+      "category": "shared",
+      "localPath": "public/assets/experiments/protocol/protocol-24.webp",
+      "md5": "ea090db26f9d56387d67b07d4b998bf3",
+      "fileSize": 85718,
+      "uploadUrl": null,
+      "status": "standby",
+      "description": "",
+      "keywords": [
+        "protocol-24",
+        "image"
+      ],
+      "references": [],
+      "notes": "Standby/Unreferenced asset"
+    },
+    "protocol-25-webp": {
+      "id": "protocol-25-webp",
+      "kind": "image",
+      "fileName": "protocol-25.webp",
+      "category": "shared",
+      "localPath": "public/assets/experiments/protocol/protocol-25.webp",
+      "md5": "9490368d9d436cfe28fa0b9107371d07",
+      "fileSize": 227792,
+      "uploadUrl": null,
+      "status": "standby",
+      "description": "",
+      "keywords": [
+        "protocol-25",
+        "image"
+      ],
+      "references": [],
+      "notes": "Standby/Unreferenced asset"
+    },
+    "protocol-26-webp": {
+      "id": "protocol-26-webp",
+      "kind": "image",
+      "fileName": "protocol-26.webp",
+      "category": "shared",
+      "localPath": "public/assets/experiments/protocol/protocol-26.webp",
+      "md5": "36ba995c4c28dc2c708458ae43a0fdc6",
+      "fileSize": 85694,
+      "uploadUrl": null,
+      "status": "standby",
+      "description": "",
+      "keywords": [
+        "protocol-26",
+        "image"
+      ],
+      "references": [],
+      "notes": "Standby/Unreferenced asset"
+    },
+    "protocol-27-webp": {
+      "id": "protocol-27-webp",
+      "kind": "image",
+      "fileName": "protocol-27.webp",
+      "category": "shared",
+      "localPath": "public/assets/experiments/protocol/protocol-27.webp",
+      "md5": "e93c28ab6976d14b3d4fb8966a83c9c5",
+      "fileSize": 164130,
+      "uploadUrl": null,
+      "status": "standby",
+      "description": "",
+      "keywords": [
+        "protocol-27",
+        "image"
+      ],
+      "references": [],
+      "notes": "Standby/Unreferenced asset"
+    },
+    "protocol-28-webp": {
+      "id": "protocol-28-webp",
+      "kind": "image",
+      "fileName": "protocol-28.webp",
+      "category": "shared",
+      "localPath": "public/assets/experiments/protocol/protocol-28.webp",
+      "md5": "9ac996dceb89915fe6dbd1f07dc5d038",
+      "fileSize": 137298,
+      "uploadUrl": null,
+      "status": "standby",
+      "description": "",
+      "keywords": [
+        "protocol-28",
+        "image"
+      ],
+      "references": [],
+      "notes": "Standby/Unreferenced asset"
+    },
+    "protocol-29-webp": {
+      "id": "protocol-29-webp",
+      "kind": "image",
+      "fileName": "protocol-29.webp",
+      "category": "shared",
+      "localPath": "public/assets/experiments/protocol/protocol-29.webp",
+      "md5": "90723a14e382a82af022e414b03e21fc",
+      "fileSize": 337640,
+      "uploadUrl": null,
+      "status": "standby",
+      "description": "",
+      "keywords": [
+        "protocol-29",
+        "image"
+      ],
+      "references": [],
+      "notes": "Standby/Unreferenced asset"
+    },
+    "protocol-30-webp": {
+      "id": "protocol-30-webp",
+      "kind": "image",
+      "fileName": "protocol-30.webp",
+      "category": "shared",
+      "localPath": "public/assets/experiments/protocol/protocol-30.webp",
+      "md5": "b5d7c4777b481a81da4dfcab0eb70f1d",
+      "fileSize": 123424,
+      "uploadUrl": null,
+      "status": "standby",
+      "description": "",
+      "keywords": [
+        "protocol-30",
+        "image"
+      ],
+      "references": [],
+      "notes": "Standby/Unreferenced asset"
+    },
+    "trop2-ctl1-pse": {
+      "id": "trop2-ctl1-pse",
+      "kind": "structure",
+      "fileName": "Trop2-CTL1.pse",
+      "category": "shared",
+      "localPath": "文案集/Trop2-CTL1.pse",
+      "md5": "71b2919b88ca863f70ff2f124598e9f4",
+      "fileSize": 1791103,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "Trop2-CTL1",
+        "structure"
+      ],
+      "references": [
+        {
+          "file": "src/components/wiki/features/Trop2ComplexViewer.tsx",
+          "line": 671,
+          "text": "from PyMOL source session (<code>Trop2-CTL1.pse</code>). The HLA-A*02:01 heavy chain (Chain A)",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 1 location(s)"
+    },
+    "protocol-pdf": {
+      "id": "protocol-pdf",
+      "kind": "pdf",
+      "fileName": "protocol.pdf",
+      "category": "wet-lab",
+      "localPath": "文案集/wetlab/experiments/protocol.pdf",
+      "md5": "df89e409080020ca1f41c9c2bec32c68",
+      "fileSize": 58568940,
+      "uploadUrl": null,
+      "status": "standby",
+      "description": "",
+      "keywords": [
+        "protocol",
+        "pdf"
+      ],
+      "references": [],
+      "notes": "Standby/Unreferenced asset"
+    },
+    "-png": {
+      "id": "-png",
+      "kind": "image",
+      "fileName": "碎片化记忆中枢.png",
+      "category": "game",
+      "localPath": "public/game-assets/assets/scenes/promo/碎片化记忆中枢.png",
+      "md5": "744938822fa2f7069d267cf4e6c79a15",
+      "fileSize": 2090806,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "碎片化记忆中枢",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "public/game-assets/assets/index-DX8LWnqD.js",
+          "line": 9,
+          "text": "`).replace(Y0,\"\")}function nm(e,t){return t=tm(t),tm(e)===t}function Ae(e,t,n,l,a,i){switch(n){case\"children\":typeof l==\"string\"?t===\"body\"|",
+          "type": "html-img"
+        }
+      ],
+      "notes": "Referenced in 1 location(s)"
+    },
+    "-boss-png": {
+      "id": "-boss-png",
+      "kind": "image",
+      "fileName": "酒窝征-BOSS-虚弱.png",
+      "category": "game",
+      "localPath": "public/game-assets/assets/characters/bosses/酒窝征-BOSS-虚弱.png",
+      "md5": "5dd46451484bd6120bc9d6785d9d9951",
+      "fileSize": 1321215,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "酒窝征-BOSS-虚弱",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "public/game-assets/assets/index-DX8LWnqD.js",
+          "line": 3916,
+          "text": "${V.description}`,type:\"player\"}),d(V.id,!1)},Le=()=>{confirm(\"是否放弃战斗？\")&&o({type:\"SET_PHASE\",payload:\"bossEntry\"})},A=()=>{N===\"win\"&&(ce>=",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 1 location(s)"
+    },
+    "-jpg": {
+      "id": "-jpg",
+      "kind": "image",
+      "fileName": "生信筛选研究像素背景图.jpg",
+      "category": "game",
+      "localPath": "public/game-assets/assets/scenes/promo/生信筛选研究像素背景图.jpg",
+      "md5": "438f5b45a525a45ae9cb92dc99ced21b",
+      "fileSize": 2261973,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "生信筛选研究像素背景图",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "public/game-assets/assets/index-DX8LWnqD.js",
+          "line": 9,
+          "text": "`).replace(Y0,\"\")}function nm(e,t){return t=tm(t),tm(e)===t}function Ae(e,t,n,l,a,i){switch(n){case\"children\":typeof l==\"string\"?t===\"body\"|",
+          "type": "html-img"
+        }
+      ],
+      "notes": "Referenced in 1 location(s)"
+    },
+    "loading-1-png": {
+      "id": "loading-1-png",
+      "kind": "image",
+      "fileName": "loading-1.png",
+      "category": "game",
+      "localPath": "public/game-assets/assets/loading/loading-1.png",
+      "md5": "13293a787b1d313f8f83bfae2259cc11",
+      "fileSize": 218558,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "loading-1",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/components/BreastGuardianGame/index.tsx",
+          "line": 16,
+          "text": "`${import.meta.env.BASE_URL}game-assets/assets/loading/loading-1.png`,",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 1 location(s)"
+    },
+    "loading-2-png": {
+      "id": "loading-2-png",
+      "kind": "image",
+      "fileName": "loading-2.png",
+      "category": "game",
+      "localPath": "public/game-assets/assets/loading/loading-2.png",
+      "md5": "489ca9d89991cd6b6a6bade59b3cd9d8",
+      "fileSize": 159717,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "loading-2",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/components/BreastGuardianGame/index.tsx",
+          "line": 17,
+          "text": "`${import.meta.env.BASE_URL}game-assets/assets/loading/loading-2.png`,",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 1 location(s)"
+    },
+    "loading-3-png": {
+      "id": "loading-3-png",
+      "kind": "image",
+      "fileName": "loading-3.png",
+      "category": "game",
+      "localPath": "public/game-assets/assets/loading/loading-3.png",
+      "md5": "f373aae8178942ef220a47d1d3b04d70",
+      "fileSize": 250324,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "loading-3",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/components/BreastGuardianGame/index.tsx",
+          "line": 18,
+          "text": "`${import.meta.env.BASE_URL}game-assets/assets/loading/loading-3.png`,",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 1 location(s)"
+    },
+    "-rna-jpg": {
+      "id": "-rna-jpg",
+      "kind": "image",
+      "fileName": "环状 RNA 载体像素背景图.jpg",
+      "category": "game",
+      "localPath": "public/game-assets/assets/scenes/promo/环状 RNA 载体像素背景图.jpg",
+      "md5": "a17c8ea811105d311655d55011ae361f",
+      "fileSize": 2086744,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "环状 RNA 载体像素背景图",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "public/game-assets/assets/index-DX8LWnqD.js",
+          "line": 9,
+          "text": "`).replace(Y0,\"\")}function nm(e,t){return t=tm(t),tm(e)===t}function Ae(e,t,n,l,a,i){switch(n){case\"children\":typeof l==\"string\"?t===\"body\"|",
+          "type": "html-img"
+        }
+      ],
+      "notes": "Referenced in 1 location(s)"
+    },
+    "book-bg-png": {
+      "id": "book-bg-png",
+      "kind": "image",
+      "fileName": "book-bg.png",
+      "category": "game",
+      "localPath": "public/game-assets/assets/ui/book-bg.png",
+      "md5": "55a0ab87a18cb1260c58d0e8f5fe8bc7",
+      "fileSize": 1944458,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "book-bg",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "public/game-assets/assets/index-DX8LWnqD.js",
+          "line": 3916,
+          "text": "${V.description}`,type:\"player\"}),d(V.id,!1)},Le=()=>{confirm(\"是否放弃战斗？\")&&o({type:\"SET_PHASE\",payload:\"bossEntry\"})},A=()=>{N===\"win\"&&(ce>=",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 1 location(s)"
+    },
+    "ending-bg-jpg": {
+      "id": "ending-bg-jpg",
+      "kind": "image",
+      "fileName": "ending-bg.jpg",
+      "category": "game",
+      "localPath": "public/game-assets/assets/ui/ending-bg.jpg",
+      "md5": "e5d2b6c6b8c17945b1039f12b81bb36c",
+      "fileSize": 692163,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "ending-bg",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "public/game-assets/assets/index-DX8LWnqD.js",
+          "line": 9,
+          "text": "`).replace(Y0,\"\")}function nm(e,t){return t=tm(t),tm(e)===t}function Ae(e,t,n,l,a,i){switch(n){case\"children\":typeof l==\"string\"?t===\"body\"|",
+          "type": "html-img"
+        },
+        {
+          "file": "public/game-assets/assets/index-DX8LWnqD.js",
+          "line": 3916,
+          "text": "${V.description}`,type:\"player\"}),d(V.id,!1)},Le=()=>{confirm(\"是否放弃战斗？\")&&o({type:\"SET_PHASE\",payload:\"bossEntry\"})},A=()=>{N===\"win\"&&(ce>=",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 2 location(s)"
+    },
+    "ending-chain-png": {
+      "id": "ending-chain-png",
+      "kind": "image",
+      "fileName": "ending-chain.png",
+      "category": "game",
+      "localPath": "public/game-assets/assets/ui/ending-chain.png",
+      "md5": "fa04ad295343e0108fd8154f1b5d0df0",
+      "fileSize": 11031,
+      "uploadUrl": null,
+      "status": "standby",
+      "description": "",
+      "keywords": [
+        "ending-chain",
+        "image"
+      ],
+      "references": [],
+      "notes": "Standby/Unreferenced asset"
+    },
+    "ending-home-btn-png": {
+      "id": "ending-home-btn-png",
+      "kind": "image",
+      "fileName": "ending-home-btn.png",
+      "category": "home",
+      "localPath": "public/game-assets/assets/ui/ending-home-btn.png",
+      "md5": "31096a243d57eda4901d80c050869e1d",
+      "fileSize": 190031,
+      "uploadUrl": null,
+      "status": "standby",
+      "description": "",
+      "keywords": [
+        "ending-home-btn",
+        "image"
+      ],
+      "references": [],
+      "notes": "Standby/Unreferenced asset"
+    },
+    "ending-plate-png": {
+      "id": "ending-plate-png",
+      "kind": "image",
+      "fileName": "ending-plate.png",
+      "category": "game",
+      "localPath": "public/game-assets/assets/ui/ending-plate.png",
+      "md5": "86ca3ea049cb1cca8c967d47a1ebd71f",
+      "fileSize": 114061,
+      "uploadUrl": null,
+      "status": "standby",
+      "description": "",
+      "keywords": [
+        "ending-plate",
+        "image"
+      ],
+      "references": [],
+      "notes": "Standby/Unreferenced asset"
+    },
+    "foreground-1-png": {
+      "id": "foreground-1-png",
+      "kind": "image",
+      "fileName": "foreground-1.png",
+      "category": "game",
+      "localPath": "public/game-assets/assets/ui/foreground-1.png",
+      "md5": "fcc2142bedc3eba24422dee7716e6bfd",
+      "fileSize": 299407,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "foreground-1",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "public/game-assets/assets/index-DX8LWnqD.js",
+          "line": 9,
+          "text": "`).replace(Y0,\"\")}function nm(e,t){return t=tm(t),tm(e)===t}function Ae(e,t,n,l,a,i){switch(n){case\"children\":typeof l==\"string\"?t===\"body\"|",
+          "type": "html-img"
+        }
+      ],
+      "notes": "Referenced in 1 location(s)"
+    },
+    "foreground-2-png": {
+      "id": "foreground-2-png",
+      "kind": "image",
+      "fileName": "foreground-2.png",
+      "category": "game",
+      "localPath": "public/game-assets/assets/ui/foreground-2.png",
+      "md5": "056bacd00e5c239c6ff742f853ef3ccc",
+      "fileSize": 724048,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "foreground-2",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "public/game-assets/assets/index-DX8LWnqD.js",
+          "line": 3899,
+          "text": "transition-all hover:scale-[1.01]`,onClick:()=>D(J),children:s.jsxs(Xt,{className:\"p-4 flex items-center justify-between\",children:[s.jsxs(\"",
+          "type": "markdown-link"
+        },
+        {
+          "file": "public/game-assets/assets/index-DX8LWnqD.js",
+          "line": 3908,
+          "text": "transition-all hover:scale-[1.01]`,onClick:()=>N(g),children:s.jsxs(Xt,{className:\"p-4 flex items-center justify-between\",children:[s.jsxs(\"",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 2 location(s)"
+    },
+    "home-bg-jpg": {
+      "id": "home-bg-jpg",
+      "kind": "image",
+      "fileName": "home-bg.jpg",
+      "category": "home",
+      "localPath": "public/game-assets/assets/ui/home-bg.jpg",
+      "md5": "a565fde01602a84c788903c7cf055fe7",
+      "fileSize": 1516147,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "home-bg",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "public/game-assets/assets/index-DX8LWnqD.js",
+          "line": 9,
+          "text": "`).replace(Y0,\"\")}function nm(e,t){return t=tm(t),tm(e)===t}function Ae(e,t,n,l,a,i){switch(n){case\"children\":typeof l==\"string\"?t===\"body\"|",
+          "type": "html-img"
+        }
+      ],
+      "notes": "Referenced in 1 location(s)"
+    },
+    "home-book-png": {
+      "id": "home-book-png",
+      "kind": "image",
+      "fileName": "home-book.png",
+      "category": "home",
+      "localPath": "public/game-assets/assets/ui/home-book.png",
+      "md5": "3df6e156b46c948077fa64a601dd0bb5",
+      "fileSize": 145325,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "home-book",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "public/game-assets/assets/index-DX8LWnqD.js",
+          "line": 9,
+          "text": "`).replace(Y0,\"\")}function nm(e,t){return t=tm(t),tm(e)===t}function Ae(e,t,n,l,a,i){switch(n){case\"children\":typeof l==\"string\"?t===\"body\"|",
+          "type": "html-img"
+        }
+      ],
+      "notes": "Referenced in 1 location(s)"
+    },
+    "home-start-png": {
+      "id": "home-start-png",
+      "kind": "image",
+      "fileName": "home-start.png",
+      "category": "home",
+      "localPath": "public/game-assets/assets/ui/home-start.png",
+      "md5": "2f55eb8ee543c2228884c274e34d399d",
+      "fileSize": 150099,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "home-start",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "public/game-assets/assets/index-DX8LWnqD.js",
+          "line": 9,
+          "text": "`).replace(Y0,\"\")}function nm(e,t){return t=tm(t),tm(e)===t}function Ae(e,t,n,l,a,i){switch(n){case\"children\":typeof l==\"string\"?t===\"body\"|",
+          "type": "html-img"
+        }
+      ],
+      "notes": "Referenced in 1 location(s)"
+    },
+    "memory-bg-jpg": {
+      "id": "memory-bg-jpg",
+      "kind": "image",
+      "fileName": "memory-bg.jpg",
+      "category": "game",
+      "localPath": "public/game-assets/assets/ui/memory-bg.jpg",
+      "md5": "7fc2ac824274d9c3192d02579b4c8ec6",
+      "fileSize": 2049938,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "memory-bg",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "public/game-assets/assets/index-DX8LWnqD.js",
+          "line": 3898,
+          "text": "旁白：记忆点 3 通关完成，已成功解锁两大病症 BOSS—— 酒窝征 BOSS、橘皮样改变 BOSS！可前往病变乳腺组织进行挑战！`}],bossUnlocked:[\"orangePeel\",\"skinDimple\"],skillHE:{id:\"scientificTreatme",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 1 location(s)"
+    },
+    "necrotic-bg-jpg": {
+      "id": "necrotic-bg-jpg",
+      "kind": "image",
+      "fileName": "necrotic-bg.jpg",
+      "category": "game",
+      "localPath": "public/game-assets/assets/ui/necrotic-bg.jpg",
+      "md5": "c3549d14958dfd179a8da10dd869c81b",
+      "fileSize": 2033060,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "necrotic-bg",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "public/game-assets/assets/index-DX8LWnqD.js",
+          "line": 3906,
+          "text": "`),u=d.findIndex(h=>h.includes(\"第三幕\")||h.includes(\"插入式微观科普\"));if(u<0)return null;const p=d.findIndex((h,y)=>y>u&&!h.trim().startsWith(\"【\")&&",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 1 location(s)"
+    },
+    "perspective-bg-png": {
+      "id": "perspective-bg-png",
+      "kind": "image",
+      "fileName": "perspective-bg.png",
+      "category": "game",
+      "localPath": "public/game-assets/assets/ui/perspective-bg.png",
+      "md5": "c753b5874fee153e398395ea8fca112e",
+      "fileSize": 1829469,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "perspective-bg",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "public/game-assets/assets/index-DX8LWnqD.js",
+          "line": 9,
+          "text": "`).replace(Y0,\"\")}function nm(e,t){return t=tm(t),tm(e)===t}function Ae(e,t,n,l,a,i){switch(n){case\"children\":typeof l==\"string\"?t===\"body\"|",
+          "type": "html-img"
+        }
+      ],
+      "notes": "Referenced in 1 location(s)"
+    },
+    "qr-ending-png": {
+      "id": "qr-ending-png",
+      "kind": "image",
+      "fileName": "qr-ending.png",
+      "category": "game",
+      "localPath": "public/game-assets/assets/ui/qr-ending.png",
+      "md5": "67bbaf92c76a39af61d5a74672e03647",
+      "fileSize": 169383,
+      "uploadUrl": null,
+      "status": "standby",
+      "description": "",
+      "keywords": [
+        "qr-ending",
+        "image"
+      ],
+      "references": [],
+      "notes": "Standby/Unreferenced asset"
+    },
+    "qr-home-png": {
+      "id": "qr-home-png",
+      "kind": "image",
+      "fileName": "qr-home.png",
+      "category": "home",
+      "localPath": "public/game-assets/assets/ui/qr-home.png",
+      "md5": "3b2cff7810d915cfd61b2e9fd8b7cbb0",
+      "fileSize": 30186,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "qr-home",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "public/game-assets/assets/index-DX8LWnqD.js",
+          "line": 9,
+          "text": "`).replace(Y0,\"\")}function nm(e,t){return t=tm(t),tm(e)===t}function Ae(e,t,n,l,a,i){switch(n){case\"children\":typeof l==\"string\"?t===\"body\"|",
+          "type": "html-img"
+        }
+      ],
+      "notes": "Referenced in 1 location(s)"
+    },
+    "bio-1-png": {
+      "id": "bio-1-png",
+      "kind": "image",
+      "fileName": "bio-1.png",
+      "category": "game",
+      "localPath": "public/game-assets/bio-memory/bio-1.png",
+      "md5": "aeddc28b1cbfada19bff46a2719ed182",
+      "fileSize": 1155786,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "bio-1",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "public/game-assets/bio-memory/index.html",
+          "line": 568,
+          "text": "'bio-1.png',  'bio-2.png',  'bio-3.png',",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 1 location(s)"
+    },
+    "bio-10-png": {
+      "id": "bio-10-png",
+      "kind": "image",
+      "fileName": "bio-10.png",
+      "category": "game",
+      "localPath": "public/game-assets/bio-memory/bio-10.png",
+      "md5": "b32f16359bbcc3900bc7f88cda110169",
+      "fileSize": 1074798,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "bio-10",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "public/game-assets/bio-memory/index.html",
+          "line": 571,
+          "text": "'bio-10.png', 'bio-11.png', 'bio-12.png',",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 1 location(s)"
+    },
+    "bio-11-png": {
+      "id": "bio-11-png",
+      "kind": "image",
+      "fileName": "bio-11.png",
+      "category": "game",
+      "localPath": "public/game-assets/bio-memory/bio-11.png",
+      "md5": "a1cc3161e67ac4384ea5e08dce82fcda",
+      "fileSize": 1200356,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "bio-11",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "public/game-assets/bio-memory/index.html",
+          "line": 571,
+          "text": "'bio-10.png', 'bio-11.png', 'bio-12.png',",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 1 location(s)"
+    },
+    "bio-12-png": {
+      "id": "bio-12-png",
+      "kind": "image",
+      "fileName": "bio-12.png",
+      "category": "game",
+      "localPath": "public/game-assets/bio-memory/bio-12.png",
+      "md5": "c86467eb105d3a7826ae6594feb3d9ab",
+      "fileSize": 1182547,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "bio-12",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "public/game-assets/bio-memory/index.html",
+          "line": 571,
+          "text": "'bio-10.png', 'bio-11.png', 'bio-12.png',",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 1 location(s)"
+    },
+    "bio-13-png": {
+      "id": "bio-13-png",
+      "kind": "image",
+      "fileName": "bio-13.png",
+      "category": "game",
+      "localPath": "public/game-assets/bio-memory/bio-13.png",
+      "md5": "348d9326c73a9ccd08c979bb23d87672",
+      "fileSize": 1146147,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "bio-13",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "public/game-assets/bio-memory/index.html",
+          "line": 572,
+          "text": "'bio-13.png', 'bio-14.png', 'bio-15.png',",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 1 location(s)"
+    },
+    "bio-14-png": {
+      "id": "bio-14-png",
+      "kind": "image",
+      "fileName": "bio-14.png",
+      "category": "game",
+      "localPath": "public/game-assets/bio-memory/bio-14.png",
+      "md5": "81fd5d03ad67e5443a24dcfcaebf7ebf",
+      "fileSize": 1160138,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "bio-14",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "public/game-assets/bio-memory/index.html",
+          "line": 572,
+          "text": "'bio-13.png', 'bio-14.png', 'bio-15.png',",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 1 location(s)"
+    },
+    "bio-15-png": {
+      "id": "bio-15-png",
+      "kind": "image",
+      "fileName": "bio-15.png",
+      "category": "game",
+      "localPath": "public/game-assets/bio-memory/bio-15.png",
+      "md5": "4a6973da3595b493e6dfe66281100c6d",
+      "fileSize": 1390387,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "bio-15",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "public/game-assets/bio-memory/index.html",
+          "line": 572,
+          "text": "'bio-13.png', 'bio-14.png', 'bio-15.png',",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 1 location(s)"
+    },
+    "bio-16-png": {
+      "id": "bio-16-png",
+      "kind": "image",
+      "fileName": "bio-16.png",
+      "category": "game",
+      "localPath": "public/game-assets/bio-memory/bio-16.png",
+      "md5": "98b64f8728c8c6485a3c790d69de7eb3",
+      "fileSize": 1130906,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "bio-16",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "public/game-assets/bio-memory/index.html",
+          "line": 573,
+          "text": "'bio-16.png', 'bio-17.png', 'bio-18.png'",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 1 location(s)"
+    },
+    "bio-17-png": {
+      "id": "bio-17-png",
+      "kind": "image",
+      "fileName": "bio-17.png",
+      "category": "game",
+      "localPath": "public/game-assets/bio-memory/bio-17.png",
+      "md5": "c8737f74da1a6b144bf835cab4e39225",
+      "fileSize": 1098195,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "bio-17",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "public/game-assets/bio-memory/index.html",
+          "line": 573,
+          "text": "'bio-16.png', 'bio-17.png', 'bio-18.png'",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 1 location(s)"
+    },
+    "bio-18-png": {
+      "id": "bio-18-png",
+      "kind": "image",
+      "fileName": "bio-18.png",
+      "category": "game",
+      "localPath": "public/game-assets/bio-memory/bio-18.png",
+      "md5": "8a4bd19dbebef1e92ae96018b70b4835",
+      "fileSize": 1191398,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "bio-18",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "public/game-assets/bio-memory/index.html",
+          "line": 573,
+          "text": "'bio-16.png', 'bio-17.png', 'bio-18.png'",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 1 location(s)"
+    },
+    "bio-2-png": {
+      "id": "bio-2-png",
+      "kind": "image",
+      "fileName": "bio-2.png",
+      "category": "game",
+      "localPath": "public/game-assets/bio-memory/bio-2.png",
+      "md5": "ca53ba0c228622623557de287e884cca",
+      "fileSize": 1120607,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "bio-2",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "public/game-assets/bio-memory/index.html",
+          "line": 568,
+          "text": "'bio-1.png',  'bio-2.png',  'bio-3.png',",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 1 location(s)"
+    },
+    "bio-3-png": {
+      "id": "bio-3-png",
+      "kind": "image",
+      "fileName": "bio-3.png",
+      "category": "game",
+      "localPath": "public/game-assets/bio-memory/bio-3.png",
+      "md5": "31cc0b34be7b3a5cfb896eab154e8d24",
+      "fileSize": 1124580,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "bio-3",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "public/game-assets/bio-memory/index.html",
+          "line": 568,
+          "text": "'bio-1.png',  'bio-2.png',  'bio-3.png',",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 1 location(s)"
+    },
+    "bio-4-png": {
+      "id": "bio-4-png",
+      "kind": "image",
+      "fileName": "bio-4.png",
+      "category": "game",
+      "localPath": "public/game-assets/bio-memory/bio-4.png",
+      "md5": "dbf00a33811aa040c5c70771ce2b4cf7",
+      "fileSize": 1116189,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "bio-4",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "public/game-assets/bio-memory/index.html",
+          "line": 569,
+          "text": "'bio-4.png',  'bio-5.png',  'bio-6.png',",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 1 location(s)"
+    },
+    "bio-5-png": {
+      "id": "bio-5-png",
+      "kind": "image",
+      "fileName": "bio-5.png",
+      "category": "game",
+      "localPath": "public/game-assets/bio-memory/bio-5.png",
+      "md5": "4ab30b56d4c9a99b8d4ee74f62a59fb9",
+      "fileSize": 1134313,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "bio-5",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "public/game-assets/bio-memory/index.html",
+          "line": 569,
+          "text": "'bio-4.png',  'bio-5.png',  'bio-6.png',",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 1 location(s)"
+    },
+    "bio-6-png": {
+      "id": "bio-6-png",
+      "kind": "image",
+      "fileName": "bio-6.png",
+      "category": "game",
+      "localPath": "public/game-assets/bio-memory/bio-6.png",
+      "md5": "d9d9c7f8c8656e6e9f038782a8a876a2",
+      "fileSize": 1151967,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "bio-6",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "public/game-assets/bio-memory/index.html",
+          "line": 569,
+          "text": "'bio-4.png',  'bio-5.png',  'bio-6.png',",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 1 location(s)"
+    },
+    "bio-7-png": {
+      "id": "bio-7-png",
+      "kind": "image",
+      "fileName": "bio-7.png",
+      "category": "game",
+      "localPath": "public/game-assets/bio-memory/bio-7.png",
+      "md5": "0f3eaada1dfa383244c7c4b3a8ff8442",
+      "fileSize": 1259081,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "bio-7",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "public/game-assets/bio-memory/index.html",
+          "line": 570,
+          "text": "'bio-7.png',  'bio-8.png',  'bio-9.png',",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 1 location(s)"
+    },
+    "bio-8-png": {
+      "id": "bio-8-png",
+      "kind": "image",
+      "fileName": "bio-8.png",
+      "category": "game",
+      "localPath": "public/game-assets/bio-memory/bio-8.png",
+      "md5": "0fa73e13e386390b107b936397d92bf9",
+      "fileSize": 1103757,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "bio-8",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "public/game-assets/bio-memory/index.html",
+          "line": 570,
+          "text": "'bio-7.png',  'bio-8.png',  'bio-9.png',",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 1 location(s)"
+    },
+    "bio-9-png": {
+      "id": "bio-9-png",
+      "kind": "image",
+      "fileName": "bio-9.png",
+      "category": "game",
+      "localPath": "public/game-assets/bio-memory/bio-9.png",
+      "md5": "221086c49a5cddb0c4775200854d4a0c",
+      "fileSize": 1370721,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "bio-9",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "public/game-assets/bio-memory/index.html",
+          "line": 570,
+          "text": "'bio-7.png',  'bio-8.png',  'bio-9.png',",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 1 location(s)"
+    },
+    "card-back-jpg": {
+      "id": "card-back-jpg",
+      "kind": "image",
+      "fileName": "card-back.jpg",
+      "category": "game",
+      "localPath": "public/game-assets/bio-memory/card-back.jpg",
+      "md5": "9b93064fdcae80db23c1fdc3079a4e20",
+      "fileSize": 1387298,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "card-back",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "public/game-assets/bio-memory/index.html",
+          "line": 575,
+          "text": "const CARD_BACK = 'card-back.jpg';",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 1 location(s)"
+    },
+    "logo-png": {
+      "id": "logo-png",
+      "kind": "image",
+      "fileName": "logo.png",
+      "category": "game",
+      "localPath": "public/game-assets/bio-memory/logo.png",
+      "md5": "624902f166c75ac97474509f62c3bb01",
+      "fileSize": 2090296,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "logo",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "public/game-assets/bio-memory/index.html",
+          "line": 458,
+          "text": "<div class=\"eyebrow rise\" style=\"animation-delay:.05s\"><img class=\"logo\" src=\"logo.png\" alt=\"iGEM team logo\"></div>",
+          "type": "html-img"
+        }
+      ],
+      "notes": "Referenced in 1 location(s)"
     }
   }
 }
