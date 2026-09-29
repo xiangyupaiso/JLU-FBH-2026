@@ -101,82 +101,85 @@ export function ExperimentProtocolAtlas() {
           </h4>
           {active.boundary ? <p>{active.boundary}</p> : null}
         </div>
-        <div
-          className="exp-atlas__book"
-          aria-label="Selected two-page illustrated spread"
-        >
-          <button
-            type="button"
-            className="exp-atlas__page"
-            onClick={() =>
-              openImage(active.flowPage, "Workflow", active.flowSize)
-            }
-            aria-label={`Enlarge workflow page ${active.flowPage} for ${active.title}`}
-          >
-            <span className="exp-atlas__page-heading">
-              <strong>P{active.flowPage}</strong> Workflow
-            </span>
-            <img
-              src={experimentProtocolImage(active.flowPage)}
-              alt={`${active.title} workflow diagram`}
-              width={active.flowSize[0]}
-              height={active.flowSize[1]}
-              decoding="async"
-            />
-            <span className="exp-atlas__page-zoom">Enlarge this page ↗</span>
-          </button>
-          <button
-            type="button"
-            className="exp-atlas__page"
-            onClick={() =>
-              openImage(
-                active.inventoryPage,
-                "Materials & equipment",
-                active.inventorySize,
-              )
-            }
-            aria-label={`Enlarge materials and equipment page ${active.inventoryPage} for ${active.title}`}
-          >
-            <span className="exp-atlas__page-heading">
-              <strong>P{active.inventoryPage}</strong> Materials & equipment
-            </span>
-            <img
-              src={experimentProtocolImage(active.inventoryPage)}
-              alt={`${active.title} illustrated materials and equipment`}
-              width={active.inventorySize[0]}
-              height={active.inventorySize[1]}
-              decoding="async"
-            />
-            <span className="exp-atlas__page-zoom">Enlarge this page ↗</span>
-          </button>
-        </div>
-        <div className="exp-atlas__footer">
+        <div className="exp-atlas__book-stage">
           <div
-            className="exp-atlas__flip"
-            aria-label="Change illustrated spread"
+            className="exp-atlas__book"
+            aria-label="Selected two-page illustrated spread"
           >
             <button
               type="button"
+              className="exp-atlas__page"
+              onClick={() =>
+                openImage(active.flowPage, "Workflow", active.flowSize)
+              }
+              aria-label={`Enlarge workflow page ${active.flowPage} for ${active.title}`}
+            >
+              <span className="exp-atlas__page-heading">
+                <strong>P{active.flowPage}</strong> Workflow
+              </span>
+              <img
+                src={experimentProtocolImage(active.flowPage)}
+                alt={`${active.title} workflow diagram`}
+                width={active.flowSize[0]}
+                height={active.flowSize[1]}
+                decoding="async"
+              />
+              <span className="exp-atlas__page-zoom">Enlarge this page ↗</span>
+            </button>
+            <button
+              type="button"
+              className="exp-atlas__page"
+              onClick={() =>
+                openImage(
+                  active.inventoryPage,
+                  "Materials & equipment",
+                  active.inventorySize,
+                )
+              }
+              aria-label={`Enlarge materials and equipment page ${active.inventoryPage} for ${active.title}`}
+            >
+              <span className="exp-atlas__page-heading">
+                <strong>P{active.inventoryPage}</strong> Materials & equipment
+              </span>
+              <img
+                src={experimentProtocolImage(active.inventoryPage)}
+                alt={`${active.title} illustrated materials and equipment`}
+                width={active.inventorySize[0]}
+                height={active.inventorySize[1]}
+                decoding="async"
+              />
+              <span className="exp-atlas__page-zoom">Enlarge this page ↗</span>
+            </button>
+          </div>
+          <div className="exp-atlas__edge-nav exp-atlas__edge-nav--previous">
+            <button
+              type="button"
+              aria-label="Previous illustrated spread"
               disabled={activeIndex === 0}
               onClick={() =>
                 setActiveKey(experimentProtocolPairs[activeIndex - 1].key)
               }
             >
-              ← Previous
+              <span aria-hidden="true">←</span>
             </button>
-            <span>
-              {activeIndex + 1} / {experimentProtocolPairs.length}
-            </span>
+          </div>
+          <div className="exp-atlas__edge-nav exp-atlas__edge-nav--next">
             <button
               type="button"
+              aria-label="Next illustrated spread"
               disabled={activeIndex === experimentProtocolPairs.length - 1}
               onClick={() =>
                 setActiveKey(experimentProtocolPairs[activeIndex + 1].key)
               }
             >
-              Next →
+              <span aria-hidden="true">→</span>
             </button>
           </div>
+        </div>
+        <div className="exp-atlas__footer">
+          <span className="exp-atlas__position" aria-live="polite">
+            {activeIndex + 1} / {experimentProtocolPairs.length}
+          </span>
           <button
             className="exp-atlas__jump"
             type="button"

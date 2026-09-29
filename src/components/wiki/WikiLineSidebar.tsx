@@ -1,5 +1,6 @@
 import {
   useEffect,
+  useMemo,
   useRef,
   useState,
   type KeyboardEvent,
@@ -9,6 +10,10 @@ import {
 } from "react";
 import { Link } from "react-router-dom";
 import { readerTrackStart, scrollReaderToTarget } from "../../utils";
+import {
+  WikiProtocolHoverCard,
+} from "./WikiProtocolViewer";
+import type { ExperimentProtocolPair } from "../../data/wet-lab/experimentProtocolPages";
 
 export interface WikiLineSidebarItem {
   id: string;
@@ -35,6 +40,9 @@ interface WikiLineSidebarProps {
   label?: string;
   minimal?: boolean;
   scrollContainerRef?: RefObject<HTMLElement | null>;
+  protocolPairs?: ExperimentProtocolPair[];
+  onOpenProtocolModal?: (pair: ExperimentProtocolPair, initialTab?: "flow" | "inventory") => void;
+  onSelectSubheading?: (id: string) => void;
 }
 
 export function WikiLineSidebar({
@@ -45,6 +53,9 @@ export function WikiLineSidebar({
   label = "On this page",
   minimal = false,
   scrollContainerRef,
+  protocolPairs,
+  onOpenProtocolModal,
+  onSelectSubheading,
 }: WikiLineSidebarProps) {
   const outlineRef = useRef<HTMLElement>(null);
   const ribbonRef = useRef<HTMLSpanElement>(null);
@@ -59,6 +70,23 @@ export function WikiLineSidebar({
       )?.id
     : undefined;
   const expandedItemId = activeChildParentId ?? activeId;
+
+  const protocolMap = useMemo(() => {
+    if (!protocolPairs?.length) return new Map<string, ExperimentProtocolPair>();
+    return new Map(protocolPairs.map((pair) => [pair.targetId, pair]));
+  }, [protocolPairs]);
+
+  const [hoveredProtocol, setHoveredProtocol] = useState<{
+    pair: ExperimentProtocolPair;
+    rect: DOMRect;
+  } | null>(null);
+  const hoverTimeoutRef = useRef<number | null>(null);
+
+  useEffect(() => {
+    return () => {
+      if (hoverTimeoutRef.current) window.clearTimeout(hoverTimeoutRef.current);
+    };
+  }, []);
   const targetSignature = items
     .flatMap((item) => [
       item.id,
@@ -233,6 +261,7 @@ export function WikiLineSidebar({
     id: string,
   ) => {
     event.preventDefault();
+    onSelectSubheading?.(id);
     window.history.replaceState(null, "", `#${id}`);
     const target = document.getElementById(id);
     if (!target) return;
@@ -517,26 +546,64 @@ export function WikiLineSidebar({
                   className="wiki-outline__subnav"
                   aria-label={`${item.label} subsections`}
                 >
-                  {item.children.map((child) => (
-                    <a
-                      className={`wiki-outline__secondary ${
-                        ribbonTargetId === child.id ? "is-active" : ""
-                      }`}
-                      href={`#${child.id}`}
-                      data-outline-target={child.id}
-                      onClick={(event) => jumpToSection(event, child.id)}
-                      aria-current={
-                        ribbonTargetId === child.id ? "location" : undefined
-                      }
-                      title={child.label}
-                      key={child.id}
-                    >
-                      <span className="wiki-outline__sub-index">
-                        {child.index}
-                      </span>
-                      <strong>{child.label}</strong>
-                    </a>
-                  ))}
+                  {item.children.map((child) => {
+                    const childPair = protocolMap.get(child.id);
+                    return (
+                      <a
+                        className={`wiki-outline__secondary ${
+                          ribbonTargetId === child.id ? "is-active" : ""
+                        }`}
+                        href={`#${child.id}`}
+                        data-outline-target={child.id}
+                        onClick={(event) => jumpToSection(event, child.id)}
+                        onMouseEnter={(event) => {
+                          if (!childPair) return;
+                          if (hoverTimeoutRef.current) window.clearTimeout(hoverTimeoutRef.current);
+                          const target = event.currentTarget;
+                          hoverTimeoutRef.current = window.setTimeout(() => {
+                            setHoveredProtocol({
+                              pair: childPair,
+                              rect: target.getBoundingClientRect(),
+                            });
+                          }, 160);
+                        }}
+                        onMouseLeave={() => {
+                          if (hoverTimeoutRef.current) window.clearTimeout(hoverTimeoutRef.current);
+                          hoverTimeoutRef.current = window.setTimeout(() => {
+                            setHoveredProtocol(null);
+                          }, 220);
+                        }}
+                        aria-current={
+                          ribbonTargetId === child.id ? "location" : undefined
+                        }
+                        title={child.label}
+                        key={child.id}
+                      >
+                        <span className="wiki-outline__sub-index">
+                          {child.index}
+                        </span>
+                        <strong>{child.label}</strong>
+                        {childPair ? (
+                          <button
+                            type="button"
+                            className="wiki-outline__protocol-icon"
+                            title="实验图谱速览 (点击可直接放大查看)"
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              e.preventDefault();
+                              onOpenProtocolModal?.(childPair);
+                            }}
+                          >
+                            <svg viewBox="0 0 16 16" width="12" height="12" fill="currentColor" aria-hidden="true">
+                              <path d="M14 3H2a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1zm-1 8H3V5h10v6z" />
+                              <circle cx="5.5" cy="7.5" r="1.2" />
+                              <path d="M12 10.2 9.5 7.5 7 10.2h5z" />
+                            </svg>
+                          </button>
+                        ) : null}
+                      </a>
+                    );
+                  })}
                 </div>
               ) : null}
             </div>
@@ -557,6 +624,26 @@ export function WikiLineSidebar({
           ))}
         </div>
       ) : null}
+
+      {hoveredProtocol && (
+        <WikiProtocolHoverCard
+          pair={hoveredProtocol.pair}
+          anchorRect={hoveredProtocol.rect}
+          onOpenModal={(pair, tab) => {
+            setHoveredProtocol(null);
+            onOpenProtocolModal?.(pair, tab);
+          }}
+          onMouseEnter={() => {
+            if (hoverTimeoutRef.current) window.clearTimeout(hoverTimeoutRef.current);
+          }}
+          onMouseLeave={() => {
+            if (hoverTimeoutRef.current) window.clearTimeout(hoverTimeoutRef.current);
+            hoverTimeoutRef.current = window.setTimeout(() => {
+              setHoveredProtocol(null);
+            }, 200);
+          }}
+        />
+      )}
     </aside>
   );
 }

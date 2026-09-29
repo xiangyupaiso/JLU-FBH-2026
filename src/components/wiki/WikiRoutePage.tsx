@@ -2,6 +2,7 @@ import {
   createContext,
   memo,
   useContext,
+  useEffect,
   useMemo,
   useRef,
   useState,
@@ -20,9 +21,12 @@ import type {
 } from "./wikiPageTypes";
 import { WikiLineSidebar } from "./WikiLineSidebar";
 import { WikiNextRecord } from "./WikiNextRecord";
+import { WikiProtocolModal } from "./WikiProtocolViewer";
+import type { ExperimentProtocolPair } from "../../data/wet-lab/experimentProtocolPages";
 import "../../styles/wiki-rebuild.css";
 import "../../styles/wetlab-editorial.css";
 import "../../styles/wiki-route-skin.css";
+import "../../styles/features/experiments-panels.css";
 
 /**
  * Reusable reader-route page template (hero → mat → closing prompt).
@@ -85,6 +89,10 @@ interface WikiRoutePageProps {
   hideOutline?: boolean;
   /** When true, omits visual title/lede text inside the hero banner. */
   hideHeroCopy?: boolean;
+  /** When true, subheadings within blocks are collapsed into accordion cards */
+  collapsibleSubheadings?: boolean;
+  /** Optional protocol pairs metadata to enable TOC preview and modal */
+  protocolPairs?: ExperimentProtocolPair[];
 }
 
 const STATUS_LABELS = {
@@ -246,6 +254,75 @@ function splitNoteContent(body: string): string[] {
   return [body.trim()];
 }
 
+function renderProseParagraphs(paragraphs: string[]): ReactNode[] {
+  const elements: ReactNode[] = [];
+  let stepBuffer: Array<{ num: string; text: string }> = [];
+
+  const flushSteps = (keyPrefix: string) => {
+    if (stepBuffer.length === 0) return;
+    const stepsToRender = [...stepBuffer];
+    stepBuffer = [];
+    elements.push(
+      <ol className="wiki-protocol-step-list" key={`${keyPrefix}-step-list`}>
+        {stepsToRender.map((step) => (
+          <li key={step.num} className="wiki-protocol-step-item">
+            <span className="wiki-protocol-step-badge">{step.num}</span>
+            <div className="wiki-protocol-step-text">
+              {renderInlineFormatting(step.text)}
+            </div>
+          </li>
+        ))}
+      </ol>,
+    );
+  };
+
+  paragraphs.forEach((paragraph, idx) => {
+    const stepMatch = paragraph.match(/^\s*(\d+)[\.、]\s+(.*)$/s);
+    if (stepMatch) {
+      stepBuffer.push({ num: stepMatch[1], text: stepMatch[2] });
+      return;
+    }
+
+    flushSteps(`flush-${idx}`);
+
+    const trimmed = paragraph.trim();
+    if (
+      trimmed === "**Step-by-Step Instructions**" ||
+      trimmed === "Step-by-Step Instructions"
+    ) {
+      elements.push(
+        <div
+          className="wiki-protocol-step-section-heading"
+          key={`step-main-${idx}`}
+        >
+          <span className="wiki-protocol-step-section-heading__badge">SOP</span>
+          <h4 className="wiki-protocol-step-section-heading__title">
+            Step-by-Step Instructions
+          </h4>
+        </div>,
+      );
+      return;
+    }
+
+    const subheadMatch = paragraph.match(/^\*\*(.+?)\*\*$/);
+    if (subheadMatch) {
+      elements.push(
+        <div className="wiki-protocol-step-subheading" key={`step-sub-${idx}`}>
+          {subheadMatch[1]}
+        </div>,
+      );
+      return;
+    }
+
+    elements.push(
+      <p key={`p-${idx}`}>{renderInlineFormatting(paragraph)}</p>,
+    );
+  });
+
+  flushSteps("flush-end");
+  return elements;
+}
+
 function RouteBlock({
   block,
   features,
@@ -268,9 +345,7 @@ function RouteBlock({
     case "prose":
       return (
         <div className="wiki-prose" data-wiki-reveal>
-          {block.paragraphs.map((paragraph) => (
-            <p key={paragraph}>{renderInlineFormatting(paragraph)}</p>
-          ))}
+          {renderProseParagraphs(block.paragraphs)}
         </div>
       );
     case "prose-linked":
@@ -509,18 +584,124 @@ function renderSectionTitle(title: string) {
   );
 }
 
+function ProtocolSubheadingDrawer({
+  subheading,
+  blocks,
+  isOpen,
+  onToggle,
+  features,
+  sectionId,
+  scrollContainerRef,
+}: {
+  subheading: Extract<WikiContentBlock, { type: "subheading" }>;
+  blocks: WikiContentBlock[];
+  isOpen: boolean;
+  onToggle: () => void;
+  features: FeatureMap;
+  sectionId: string;
+  scrollContainerRef?: RefObject<HTMLElement | null>;
+}) {
+  const cleanTitle = subheading.title
+    .replace(new RegExp(`^${subheading.index}\\s*`), "")
+    .trim();
+
+  return (
+    <div
+      className={`wiki-protocol-drawer ${isOpen ? "is-open" : ""}`}
+      id={subheading.id}
+      data-wiki-outline-anchor
+      data-wiki-outline-parent={sectionId}
+    >
+      <button
+        type="button"
+        className="wiki-protocol-drawer__header"
+        aria-expanded={isOpen}
+        onClick={onToggle}
+      >
+        <div className="wiki-protocol-drawer__title-row">
+          <span className="wiki-protocol-drawer__index-pill">
+            {subheading.index}
+          </span>
+          <span className="wiki-protocol-drawer__title">{cleanTitle}</span>
+        </div>
+        <span className="wiki-protocol-drawer__chevron" aria-hidden="true">
+          ▼
+        </span>
+      </button>
+
+      {isOpen && (
+        <div className="wiki-protocol-drawer__body">
+          {blocks.map((block, idx) => (
+            <RouteBlock
+              key={`${subheading.id}-${block.type}-${idx}`}
+              block={block}
+              features={features}
+              sectionId={sectionId}
+              scrollContainerRef={scrollContainerRef}
+            />
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
 function RouteSection({
   section,
   feature,
   features,
   scrollContainerRef,
+  collapsibleSubheadings = false,
+  openSubheadingIds,
+  onToggleSubheading,
 }: {
   section: WikiSection;
   feature?: ReactNode;
   features: FeatureMap;
   scrollContainerRef?: RefObject<HTMLElement | null>;
+  collapsibleSubheadings?: boolean;
+  openSubheadingIds?: Set<string>;
+  onToggleSubheading?: (id: string) => void;
 }) {
   const blocks = section.blocks?.length ? section.blocks : null;
+
+  const firstSubIndex = useMemo(
+    () => (blocks ? blocks.findIndex((b) => b.type === "subheading") : -1),
+    [blocks],
+  );
+
+  const shouldCollapseSubheadings = Boolean(
+    collapsibleSubheadings && blocks && firstSubIndex !== -1,
+  );
+
+  const { overviewBlocks, subheadingGroups } = useMemo(() => {
+    if (!shouldCollapseSubheadings || !blocks) {
+      return { overviewBlocks: [], subheadingGroups: [] };
+    }
+    const overview = blocks.slice(0, firstSubIndex);
+    const groups: Array<{
+      subheading: Extract<WikiContentBlock, { type: "subheading" }>;
+      blocks: WikiContentBlock[];
+    }> = [];
+
+    let currentGroup: {
+      subheading: Extract<WikiContentBlock, { type: "subheading" }>;
+      blocks: WikiContentBlock[];
+    } | null = null;
+
+    for (let i = firstSubIndex; i < blocks.length; i++) {
+      const block = blocks[i];
+      if (block.type === "subheading") {
+        if (currentGroup) groups.push(currentGroup);
+        currentGroup = { subheading: block, blocks: [] };
+      } else if (currentGroup) {
+        currentGroup.blocks.push(block);
+      }
+    }
+    if (currentGroup) groups.push(currentGroup);
+
+    return { overviewBlocks: overview, subheadingGroups: groups };
+  }, [blocks, firstSubIndex, shouldCollapseSubheadings]);
 
   return (
     <section
@@ -546,17 +727,44 @@ function RouteSection({
       </header>
 
       {blocks ? (
-        <div className="wiki-blocks">
-          {blocks.map((block, index) => (
-            <RouteBlock
-              key={`${section.id}-${block.type}-${index}`}
-              block={block}
-              features={features}
-              sectionId={section.id}
-              scrollContainerRef={scrollContainerRef}
-            />
-          ))}
-        </div>
+        shouldCollapseSubheadings ? (
+          <div className="wiki-blocks">
+            {overviewBlocks.map((block, index) => (
+              <RouteBlock
+                key={`${section.id}-${block.type}-${index}`}
+                block={block}
+                features={features}
+                sectionId={section.id}
+                scrollContainerRef={scrollContainerRef}
+              />
+            ))}
+
+            {subheadingGroups.map((group) => (
+              <ProtocolSubheadingDrawer
+                key={group.subheading.id}
+                subheading={group.subheading}
+                blocks={group.blocks}
+                isOpen={openSubheadingIds?.has(group.subheading.id) ?? false}
+                onToggle={() => onToggleSubheading?.(group.subheading.id)}
+                features={features}
+                sectionId={section.id}
+                scrollContainerRef={scrollContainerRef}
+              />
+            ))}
+          </div>
+        ) : (
+          <div className="wiki-blocks">
+            {blocks.map((block, index) => (
+              <RouteBlock
+                key={`${section.id}-${block.type}-${index}`}
+                block={block}
+                features={features}
+                sectionId={section.id}
+                scrollContainerRef={scrollContainerRef}
+              />
+            ))}
+          </div>
+        )
       ) : (
         <>
           {section.body?.length ? (
@@ -604,10 +812,54 @@ export function WikiRoutePage({
   enableWideFlow = false,
   hideOutline = false,
   hideHeroCopy = false,
+  collapsibleSubheadings = false,
+  protocolPairs,
 }: WikiRoutePageProps) {
   const rootRef = useRef<HTMLElement>(null);
   const interfaceRef = useRef<HTMLDivElement>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
+
+
+  const [activeProtocolModal, setActiveProtocolModal] = useState<{
+    pair: ExperimentProtocolPair;
+    initialTab?: "flow" | "inventory";
+  } | null>(null);
+
+  const [openSubheadingIds, setOpenSubheadingIds] = useState<Set<string>>(
+    () => new Set(),
+  );
+
+  const toggleSubheading = (id: string) => {
+    setOpenSubheadingIds((prev) => {
+      const next = new Set(prev);
+      if (next.has(id)) next.delete(id);
+      else next.add(id);
+      return next;
+    });
+  };
+
+  const openSubheading = (id: string) => {
+    setOpenSubheadingIds((prev) => {
+      if (prev.has(id)) return prev;
+      const next = new Set(prev);
+      next.add(id);
+      return next;
+    });
+  };
+
+
+  useEffect(() => {
+    const handleHash = () => {
+      const hash = window.location.hash.replace(/^#/, "");
+      if (hash && hash.startsWith("exp-")) {
+        openSubheading(hash);
+      }
+    };
+    handleHash();
+    window.addEventListener("hashchange", handleHash);
+    return () => window.removeEventListener("hashchange", handleHash);
+  }, []);
+
   const wideFlow =
     enableWideFlow &&
     window.matchMedia("(min-width: 1200px) and (min-height: 700px)").matches;
@@ -690,6 +942,11 @@ export function WikiRoutePage({
               links={content.links}
               minimal
               scrollContainerRef={scrollRef}
+              protocolPairs={protocolPairs}
+              onOpenProtocolModal={(pair, tab) =>
+                setActiveProtocolModal({ pair, initialTab: tab })
+              }
+              onSelectSubheading={openSubheading}
             />
           )}
 
@@ -709,6 +966,9 @@ export function WikiRoutePage({
                       feature={features[section.id]}
                       features={features}
                       scrollContainerRef={scrollRef}
+                      collapsibleSubheadings={collapsibleSubheadings}
+                      openSubheadingIds={openSubheadingIds}
+                      onToggleSubheading={toggleSubheading}
                     />
                   ))}
                 </article>
@@ -719,6 +979,12 @@ export function WikiRoutePage({
       </div>
 
       <WikiNextRecord {...content.next} />
+
+      <WikiProtocolModal
+        pair={activeProtocolModal?.pair ?? null}
+        initialTab={activeProtocolModal?.initialTab}
+        onClose={() => setActiveProtocolModal(null)}
+      />
     </main>
   );
 }

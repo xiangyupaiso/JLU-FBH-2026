@@ -1,5 +1,5 @@
-import type { WikiContentBlock, WikiPageContent, WikiSection } from "../../components/wiki/wikiPageTypes";
-import { experimentProtocolPairs } from "./experimentProtocolPages";
+import type { WikiPageContent } from "../../components/wiki/wikiPageTypes";
+
 
 const experimentsPageBase: WikiPageContent = {
   route: "/experiments",
@@ -1738,28 +1738,5 @@ const experimentsPageBase: WikiPageContent = {
   },
 };
 
-const protocolKeysByTarget = new Map<string, string[]>();
-for (const pair of experimentProtocolPairs) {
-  const keys = protocolKeysByTarget.get(pair.targetId) ?? [];
-  keys.push(`exp-protocol-${pair.key}`);
-  protocolKeysByTarget.set(pair.targetId, keys);
-}
+export const experimentsPage: WikiPageContent = experimentsPageBase;
 
-function withProtocolFigures(section: WikiSection): WikiSection {
-  if (!section.blocks) return section;
-  let currentSubheading = "";
-  const blocks = section.blocks.flatMap((block): WikiContentBlock[] => {
-    if (block.type === "subheading") currentSubheading = block.id;
-    if (block.type === "prose" && block.paragraphs[0] === "**Step-by-Step Instructions**") {
-      const keys = protocolKeysByTarget.get(currentSubheading) ?? [];
-      return [...keys.map((key): WikiContentBlock => ({ type: "feature", key })), block];
-    }
-    return [block];
-  });
-  return { ...section, blocks };
-}
-
-export const experimentsPage: WikiPageContent = {
-  ...experimentsPageBase,
-  sections: experimentsPageBase.sections.map(withProtocolFigures),
-};

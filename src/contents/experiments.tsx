@@ -2,6 +2,7 @@ import { WikiRoutePage } from "../components/wiki/WikiRoutePage";
 import { getWetLabHeroImage } from "../components/wiki/wetLabHeroAssets";
 import { experimentsFeatures } from "../components/wiki/features/wet-lab/ExperimentsPanels";
 import { experimentsPage } from "../data/wet-lab/experimentsPage";
+import { experimentProtocolPairs } from "../data/wet-lab/experimentProtocolPages";
 import "../styles/route-palette-wetlab.css";
 
 export function Experiments() {
@@ -12,7 +13,10 @@ export function Experiments() {
       theme="wet-lab"
       pageClassName="wiki-page--wet-lab"
       hideHeroCopy
+      collapsibleSubheadings
+      protocolPairs={experimentProtocolPairs}
       features={experimentsFeatures()}
     />
   );
 }
+
