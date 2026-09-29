@@ -22,12 +22,47 @@ function nonBlockingAppCss(): Plugin {
   };
 }
 
+/**
+ * Ensures requests to root `/` or `/${slug}` without trailing slash are automatically
+ * redirected to `/${slug}/` with HTTP 302, matching official Nginx / GitLab Pages behavior.
+ */
+function autoTrailingSlashPlugin(slug: string): Plugin {
+  return {
+    name: "auto-trailing-slash",
+    configureServer(server) {
+      server.middlewares.use((req, res, next) => {
+        const pathOnly = (req.url || "").split("?")[0];
+        if (pathOnly === `/${slug}` || pathOnly === "/") {
+          const query = req.url && req.url.includes("?") ? req.url.slice(req.url.indexOf("?")) : "";
+          res.writeHead(302, { Location: `/${slug}/${query}` });
+          res.end();
+          return;
+        }
+        next();
+      });
+    },
+    configurePreviewServer(server) {
+      server.middlewares.use((req, res, next) => {
+        const pathOnly = (req.url || "").split("?")[0];
+        if (pathOnly === `/${slug}` || pathOnly === "/") {
+          const query = req.url && req.url.includes("?") ? req.url.slice(req.url.indexOf("?")) : "";
+          res.writeHead(302, { Location: `/${slug}/${query}` });
+          res.end();
+          return;
+        }
+        next();
+      });
+    },
+  };
+}
+
 // https://vitejs.dev/config/
 export default () => {
   const env = loadEnv("dev", process.cwd());
+  const slug = stringToSlug(env.VITE_TEAM_NAME || "jlu-fbh");
   return defineConfig({
-    base: `/${stringToSlug(env.VITE_TEAM_NAME)}/`,
-    plugins: [react(), nonBlockingAppCss()],
+    base: `/${slug}/`,
+    plugins: [react(), nonBlockingAppCss(), autoTrailingSlashPlugin(slug)],
     optimizeDeps: {
       entries: ["index.html", "src/**/*.{ts,tsx,js,jsx}"],
     },
