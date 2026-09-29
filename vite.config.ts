@@ -1,6 +1,9 @@
 import { defineConfig, loadEnv, type Plugin } from "vite";
 import react from "@vitejs/plugin-react";
 import { stringToSlug } from "./src/utils/stringToSlug";
+import { resolve } from "node:path";
+import tailwindcss from "tailwindcss";
+import autoprefixer from "autoprefixer";
 
 /**
  * The app stylesheet (~700 kB) would otherwise block the first paint, and with
@@ -33,7 +36,10 @@ function autoTrailingSlashPlugin(slug: string): Plugin {
       server.middlewares.use((req, res, next) => {
         const pathOnly = (req.url || "").split("?")[0];
         if (pathOnly === `/${slug}` || pathOnly === "/") {
-          const query = req.url && req.url.includes("?") ? req.url.slice(req.url.indexOf("?")) : "";
+          const query =
+            req.url && req.url.includes("?")
+              ? req.url.slice(req.url.indexOf("?"))
+              : "";
           res.writeHead(302, { Location: `/${slug}/${query}` });
           res.end();
           return;
@@ -45,7 +51,10 @@ function autoTrailingSlashPlugin(slug: string): Plugin {
       server.middlewares.use((req, res, next) => {
         const pathOnly = (req.url || "").split("?")[0];
         if (pathOnly === `/${slug}` || pathOnly === "/") {
-          const query = req.url && req.url.includes("?") ? req.url.slice(req.url.indexOf("?")) : "";
+          const query =
+            req.url && req.url.includes("?")
+              ? req.url.slice(req.url.indexOf("?"))
+              : "";
           res.writeHead(302, { Location: `/${slug}/${query}` });
           res.end();
           return;
@@ -63,8 +72,28 @@ export default () => {
   return defineConfig({
     base: `/${slug}/`,
     plugins: [react(), nonBlockingAppCss(), autoTrailingSlashPlugin(slug)],
+    css: {
+      postcss: {
+        plugins: [
+          tailwindcss({ config: resolve("virtual-lab/tailwind.config.cjs") }),
+          autoprefixer(),
+        ],
+      },
+    },
+    build: {
+      rollupOptions: {
+        input: {
+          wiki: resolve("index.html"),
+          laboratory: resolve("virtual-lab/index.html"),
+        },
+      },
+    },
     optimizeDeps: {
-      entries: ["index.html", "src/**/*.{ts,tsx,js,jsx}"],
+      entries: [
+        "index.html",
+        "virtual-lab/index.html",
+        "src/**/*.{ts,tsx,js,jsx}",
+      ],
     },
   });
 };

@@ -20,7 +20,7 @@ export const gamesPage: WikiPageContent = {
   chapter: "Dry Lab / 04 of 04",
   eyebrow: "Games · Interactive learning",
   title: "Games",
-  lede: "Three interactive virtual projects invite visitors to explore breast health, strategic play, and experimental practice.",
+  lede: "Four interactive projects invite visitors to explore breast health, strategic play, biology concepts, and experimental practice.",
   boundary: "",
   visual: "games-portal",
   visualLabel: "Interactive virtual projects",
@@ -35,7 +35,7 @@ export const gamesPage: WikiPageContent = {
       navLabel: "Project map",
       title: "Follow the interactive route",
       summary:
-        "Three playable experiences are ready today, with a connected virtual laboratory being prepared for the next stage.",
+        "Four playable experiences are ready to explore, including a virtual laboratory with nine guided molecular biology experiments.",
       blocks: [{ type: "feature", key: "games-project-map" }],
     },
     {
@@ -67,6 +67,16 @@ export const gamesPage: WikiPageContent = {
       summary:
         "A specimen-card memory game for discovering biology concepts through observation, recall and matching.",
       blocks: [{ type: "feature", key: "game-bio-memory" }],
+    },
+    {
+      id: "game-virtual-lab",
+      index: "04",
+      kicker: "Playable project / 04",
+      navLabel: "Virtual Laboratory",
+      title: "Virtual Laboratory · 虚拟实验室",
+      summary:
+        "Practise nine molecular biology workflows across beginner, intermediate and advanced levels, with interactive equipment, guided steps and restart controls.",
+      blocks: [{ type: "feature", key: "game-virtual-lab" }],
     },
   ],
   links: [],

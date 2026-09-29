@@ -15,7 +15,7 @@ import { createPortal } from "react-dom";
 import "../../../styles/games-page.css";
 
 /**
- * Games — interactive station map + three playable projects.
+ * Games — interactive station map + four playable projects.
  *
  * Migrated from the previous build's `contents/games.tsx` without copy changes.
  * The interaction model is unchanged: the station map scrolls to a showcase, a
@@ -31,8 +31,9 @@ import "../../../styles/games-page.css";
 const BreastGuardianGame = lazy(() => import("../../BreastGuardianGame"));
 const BombCatGame = lazy(() => import("../../BombCatGame"));
 const BioMemoryGame = lazy(() => import("../../BioMemoryGame"));
+const VirtualLaboratory = lazy(() => import("../../VirtualLaboratory"));
 
-type GameKey = "breast-guardian" | "bomb-cat" | "bio-memory";
+type GameKey = "breast-guardian" | "bomb-cat" | "bio-memory" | "virtual-lab";
 
 const GAME_META: Record<GameKey, { station: string; title: string }> = {
   "breast-guardian": {
@@ -41,12 +42,17 @@ const GAME_META: Record<GameKey, { station: string; title: string }> = {
   },
   "bomb-cat": { station: "02 / Live project", title: "Bomb Cat · 炸弹猫" },
   "bio-memory": { station: "03 / Live project", title: "生物翻翻乐" },
+  "virtual-lab": {
+    station: "04 / Live project",
+    title: "Virtual Laboratory · 虚拟实验室",
+  },
 };
 
 const SECTION_ID: Record<GameKey, string> = {
   "breast-guardian": "game-breast-guardian",
   "bomb-cat": "game-bomb-cat",
   "bio-memory": "game-bio-memory",
+  "virtual-lab": "game-virtual-lab",
 };
 
 interface GamesContextValue {
@@ -135,7 +141,9 @@ function GameExperience({
               </div>
             }
           >
-            {isBombCat ? (
+            {game === "virtual-lab" ? (
+              <VirtualLaboratory onRequestClose={onExit} />
+            ) : isBombCat ? (
               <BombCatGame onRequestClose={onExit} />
             ) : isBioMemory ? (
               <BioMemoryGame onRequestClose={onExit} />
@@ -190,7 +198,7 @@ export function GamesProvider({ children }: { children: ReactNode }) {
   );
 }
 
-/** Four-station route map; the three ready stations jump to their showcase. */
+/** Four-station route map; all stations jump to their showcase. */
 export function GamesStationMap() {
   const { scrollToShowcase } = useGames();
 
@@ -261,14 +269,27 @@ export function GamesStationMap() {
             </button>
           </li>
 
-          <li id="virtual-laboratory">
-            <article aria-labelledby="virtual-lab-title">
-              <span className="games-project-map__node" aria-hidden="true" />
-              <small>04 / In development</small>
+          <li id="virtual-laboratory" className="is-available">
+            <button
+              type="button"
+              onClick={() => scrollToShowcase("virtual-lab")}
+              aria-controls="game-virtual-lab"
+            >
+              <span className="games-project-map__node" aria-hidden="true">
+                <svg className="ribbon-mark" viewBox="0 0 32 46">
+                  <use href="#circure-ribbon-knot" />
+                </svg>
+              </span>
+              <small>04 / Ready to play</small>
               <strong id="virtual-lab-title">虚拟实验室</strong>
-              <p>A guided space for practising experimental workflows.</p>
-              <em>Coming later</em>
-            </article>
+              <p>
+                Nine guided molecular biology experiments, from culture revival
+                to GFP verification.
+              </p>
+              <em>
+                View laboratory below <span aria-hidden="true">↓</span>
+              </em>
+            </button>
           </li>
         </ol>
       </div>
@@ -298,6 +319,11 @@ const LAUNCH_COPY: Record<
     chapters: ["01 / Field guide", "02 / Memory match", "03 / Specimen codex"],
     small: "Biology memory field guide",
     strong: "Find the pair.",
+  },
+  "virtual-lab": {
+    chapters: ["01 / Beginner", "02 / Intermediate", "03 / Advanced"],
+    small: "Nine interactive molecular biology experiments",
+    strong: "Enter the laboratory.",
   },
 };
 

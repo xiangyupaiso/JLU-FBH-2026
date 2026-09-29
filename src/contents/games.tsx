@@ -30,6 +30,7 @@ export function Games() {
           "game-breast-guardian": <GameLaunchCard game="breast-guardian" />,
           "game-bomb-cat": <GameLaunchCard game="bomb-cat" />,
           "game-bio-memory": <GameLaunchCard game="bio-memory" />,
+          "game-virtual-lab": <GameLaunchCard game="virtual-lab" />,
         }}
       />
     </GamesProvider>
