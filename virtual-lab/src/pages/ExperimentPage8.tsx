@@ -6,7 +6,7 @@ import gsap from 'gsap';
 import { Experiment8InfoPanel } from '../components/Experiment8InfoPanel';
 import { StepIndicator } from '../components/StepIndicator';
 import type { ExperimentStep } from '../types';
-const lbBottleBenchImg = './images/experiment8/image53.png';
+const lbBottleBenchImg = 'https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment8/image53.avif';
 
 interface ExperimentPageProps {
   experimentId?: string;
@@ -14,64 +14,63 @@ interface ExperimentPageProps {
   onRestart: () => void;
 }
 
-const IMAGE_ROOT = './images/experiment8';
 
 const assets = {
-  labTable: `${IMAGE_ROOT}/image3.png`,
-  sideTable: `${IMAGE_ROOT}/image4.png`,
-  pipette: `${IMAGE_ROOT}/image5.png`,
-  pipetteWithTip: `${IMAGE_ROOT}/image72.png`,
-  vent: `${IMAGE_ROOT}/image6.png`,
-  fluorescentLamp: `${IMAGE_ROOT}/image8.png`,
-  hospitalLogo: `${IMAGE_ROOT}/image9.png`,
-  igemLogo: `${IMAGE_ROOT}/image10.png`,
-  incubator: `${IMAGE_ROOT}/image11.png`,
-  colonyPlate: `${IMAGE_ROOT}/image12.png`,
-  metalTray: `${IMAGE_ROOT}/image13.png`,
-  shaker: `${IMAGE_ROOT}/image14.png`,
-  shakerLoadedOpen: `${IMAGE_ROOT}/image36.png`,
-  shakerLoadedClosed: `${IMAGE_ROOT}/image39.png`,
-  centrifuge: `${IMAGE_ROOT}/image15.png`,
-  miniCentrifuge: `${IMAGE_ROOT}/image17.png`,
-  ultrasonicCleaner: `${IMAGE_ROOT}/image18.png`,
-  beaker: `${IMAGE_ROOT}/image19.png`,
-  lbBottle: `${IMAGE_ROOT}/image20.png`,
+  labTable: `https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment8/image3.avif`,
+  sideTable: `https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment8/image4.avif`,
+  pipette: `https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment8/image5.avif`,
+  pipetteWithTip: `https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment8/image72.avif`,
+  vent: `https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment8/image6.avif`,
+  fluorescentLamp: `https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment8/image8.avif`,
+  hospitalLogo: `https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment8/image9.avif`,
+  igemLogo: `https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment8/image10.avif`,
+  incubator: `https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment8/image11.avif`,
+  colonyPlate: `https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment8/image12.avif`,
+  metalTray: `https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment8/image13.avif`,
+  shaker: `https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment8/image14.avif`,
+  shakerLoadedOpen: `https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment8/image36.avif`,
+  shakerLoadedClosed: `https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment8/image39.avif`,
+  centrifuge: `https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment8/image15.avif`,
+  miniCentrifuge: `https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment8/image17.avif`,
+  ultrasonicCleaner: `https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment8/image18.avif`,
+  beaker: `https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment8/image19.avif`,
+  lbBottle: `https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment8/image20.avif`,
   lbBottleBench: lbBottleBenchImg,
-  inoculatingLoop: `${IMAGE_ROOT}/image21.png`,
-  spreader: `${IMAGE_ROOT}/image22.png`,
+  inoculatingLoop: `https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment8/image21.avif`,
+  spreader: `https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment8/image22.avif`,
   alcoholLampOff: 'https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/6.avif',
   alcoholLampOn: 'https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/26.avif',
-  flask: `${IMAGE_ROOT}/image24.png`,
-  iceBox: `${IMAGE_ROOT}/image25.png`,
-  centrifugeTube: `${IMAGE_ROOT}/image26.png`,
-  centrifugeTubeOpen: `${IMAGE_ROOT}/image40.png`,
-  centrifugeTubeLiquid: `${IMAGE_ROOT}/image49.png`,
-  centrifugeTubeFilled: `${IMAGE_ROOT}/image70.png`,
-  centrifugeTubePurple: `${IMAGE_ROOT}/image71.png`,
-  tubeRack: `${IMAGE_ROOT}/image27.png`,
-  microtube: `${IMAGE_ROOT}/image28.png`,
-  iceMicrotube: `${IMAGE_ROOT}/image52.png`,
-  reagentBottle: `${IMAGE_ROOT}/image29.png`,
-  tipBoxPink: `${IMAGE_ROOT}/image30.png`,
-  tipBoxGray: `${IMAGE_ROOT}/image31.png`,
-  tipBoxGrayOpen: `${IMAGE_ROOT}/image37.png`,
-  tipBoxBeige: `${IMAGE_ROOT}/image32.png`,
-  plate: `${IMAGE_ROOT}/image34.png`,
-  iceReagentOrange: `${IMAGE_ROOT}/image47.png`,
-  iceReagentBlue: `${IMAGE_ROOT}/image48.png`,
-  iceReagentOrangeCapped: `${IMAGE_ROOT}/image76.png`,
-  iceReagentBlueCapped: `${IMAGE_ROOT}/image75.png`,
-  iceTubeOrange: `${IMAGE_ROOT}/image42.png`,
-  iceTubeOpen: `${IMAGE_ROOT}/image43.png`,
-  plasmidTubeBlue: `${IMAGE_ROOT}/image73.png`,
-  plasmidTubeBench: `${IMAGE_ROOT}/image74.png`,
-  pourTube: `${IMAGE_ROOT}/image43.png`,
-  pouredTube: `${IMAGE_ROOT}/image44.png`,
-  iceBathTube: `${IMAGE_ROOT}/image41.png`,
-  centrifugedTube: `${IMAGE_ROOT}/image42.png`,
-  iceTubeEmpty: `${IMAGE_ROOT}/image44.png`,
-  resultPlate: `${IMAGE_ROOT}/image56.png`,
-  resultPlatePhoto: `${IMAGE_ROOT}/image57.png`,
+  flask: `https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment8/image24.avif`,
+  iceBox: `https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment8/image25.avif`,
+  centrifugeTube: `https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment8/image26.avif`,
+  centrifugeTubeOpen: `https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment8/image40.avif`,
+  centrifugeTubeLiquid: `https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment8/image49.avif`,
+  centrifugeTubeFilled: `https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment8/image70.avif`,
+  centrifugeTubePurple: `https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment8/image71.avif`,
+  tubeRack: `https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment8/image27.avif`,
+  microtube: `https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment8/image28.avif`,
+  iceMicrotube: `https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment8/image52.avif`,
+  reagentBottle: `https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment8/image29.avif`,
+  tipBoxPink: `https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment8/image30.avif`,
+  tipBoxGray: `https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment8/image31.avif`,
+  tipBoxGrayOpen: `https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment8/image37.avif`,
+  tipBoxBeige: `https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment8/image32.avif`,
+  plate: `https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment8/image34.avif`,
+  iceReagentOrange: `https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment8/image47.avif`,
+  iceReagentBlue: `https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment8/image48.avif`,
+  iceReagentOrangeCapped: `https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment8/image76.avif`,
+  iceReagentBlueCapped: `https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment8/image75.avif`,
+  iceTubeOrange: `https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment8/image42.avif`,
+  iceTubeOpen: `https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment8/image43.avif`,
+  plasmidTubeBlue: `https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment8/image73.avif`,
+  plasmidTubeBench: `https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment8/image74.avif`,
+  pourTube: `https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment8/image43.avif`,
+  pouredTube: `https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment8/image44.avif`,
+  iceBathTube: `https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment8/image41.avif`,
+  centrifugedTube: `https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment8/image42.avif`,
+  iceTubeEmpty: `https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment8/image44.avif`,
+  resultPlate: `https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment8/image56.avif`,
+  resultPlatePhoto: `https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment8/image57.avif`,
 } as const;
 
 const steps: ExperimentStep[] = [
@@ -385,7 +384,7 @@ function Scene({ stageIndex, activeTarget, isAnimating, isCompleted, lampLit, pi
         onClick={() => onAction('beaker')}
       />
 
-      <div className="absolute inset-x-0 bottom-0 h-[56%] bg-[length:100%_100%] bg-bottom bg-no-repeat z-10 pointer-events-none" style={{ backgroundImage: "url('./images/Cleanbench_part.png')" }} />
+      <div className="absolute inset-x-0 bottom-0 h-[56%] bg-[length:100%_100%] bg-bottom bg-no-repeat z-10 pointer-events-none" style={{ backgroundImage: "url('https://static.igem.wiki/teams/6056/wiki/virtual-lab/common/cleanbench_part.avif')" }} />
 
       <SceneImage
         id="exp8-pipette"

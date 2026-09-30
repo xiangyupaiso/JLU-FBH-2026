@@ -154,7 +154,7 @@ export function ExperimentPage({ onBack, onRestart }: ExperimentPageProps) {
         </aside>
         <main className="flex min-w-0 flex-1 flex-col overflow-y-auto bg-black p-3">
           <div ref={viewportRef} className="relative w-full shrink-0 overflow-hidden bg-[#4472c4] shadow-2xl ring-1 ring-slate-700" style={{ aspectRatio: crop.width + ' / ' + crop.height }}>
-            {!ready && <img src="./experiment9-assets/first-frame.jpg" alt="" aria-hidden="true" fetchPriority="high" className="absolute inset-0 h-full w-full object-fill" />}
+            {!ready && <img src="https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment9/preview/first-frame.avif" alt="" aria-hidden="true" fetchPriority="high" className="absolute inset-0 h-full w-full object-fill" />}
             <iframe key={revision} ref={iframeRef} src={`./experiment9-assets/ispring/index.html?v=6&resume=0&startslide=${frameStartSlide}`} onLoad={handleFrameLoad} title="Experiment 9 Interactive Procedure" allow="autoplay; fullscreen" className="absolute max-w-none border-0" style={{
               width: 1296, height: 864, transformOrigin: '0 0', transform: 'scale(' + scale + ')',
               left: -(metrics.left + crop.x * slideScale) * scale,

@@ -6,9 +6,9 @@
 ## 一、资产库统计
 
 - **队伍编号 (Team ID)**: 6056 (JLU-FBH)
-- **统计时间戳**: 2026-09-29T12:35:40.143579+00:00
-- **总资产数量**: 314
-- **🟢 在用资产 (in-use)**: 265 *(代码/文案中正被引用)*
+- **统计时间戳**: 2026-09-30T09:56:12.406609+00:00
+- **总资产数量**: 533
+- **🟢 在用资产 (in-use)**: 484 *(代码/文案中正被引用)*
 - **🟡 备用资产 (standby)**: 49 *(已就绪或已上传，保留供后续页面选用)*
 - **⚪ 弃用资产 (deprecated)**: 0
 
@@ -16,7 +16,7 @@
 
 | 类型 | 标识 | 说明 | 数量 |
 | :--- | :---: | :--- | :---: |
-| `image` | 🖼️ 图片/图表 (PNG, JPG, WebP, SVG) | 静态资源 | 284 |
+| `image` | 🖼️ 图片/图表 (PNG, JPG, WebP, SVG) | 静态资源 | 503 |
 | `font` | 🔤 Web 字体 (woff2, woff, ttf) | 静态资源 | 6 |
 | `structure` | 🧬 3D 分子/生物结构 (pdb, cif, pse) | 静态资源 | 2 |
 | `pdf` | 📄 PDF 文档/手册/报告 | 静态资源 | 22 |
@@ -368,3 +368,250 @@
 | `public/virtual-lab/images/experiment2/xianweijing.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/xianweijing.avif) | 1 |
 
 实验二本批构建与差异格式检查通过，源码无剩余实验二旧路径；远端链接和页面显示未核验。
+
+## 虚拟实验室实验3图片迁移记录
+
+链接按用户给出的目录规则填写；按用户要求跳过远端核验。
+
+| 本地文件 | 官方链接 | 源码引用记录数 |
+| --- | --- | ---: |
+| `public/virtual-lab/images/experiment3/081.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/081.avif) | 1 |
+| `public/virtual-lab/images/experiment3/08241.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/08241.avif) | 1 |
+| `public/virtual-lab/images/experiment3/08242.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/08242.avif) | 1 |
+| `public/virtual-lab/images/experiment3/08243.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/08243.avif) | 1 |
+| `public/virtual-lab/images/experiment3/08244.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/08244.avif) | 1 |
+| `public/virtual-lab/images/experiment3/08245.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/08245.avif) | 1 |
+| `public/virtual-lab/images/experiment3/08246.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/08246.avif) | 1 |
+| `public/virtual-lab/images/experiment3/08247.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/08247.avif) | 1 |
+| `public/virtual-lab/images/experiment3/08248.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/08248.avif) | 1 |
+| `public/virtual-lab/images/experiment3/08251.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/08251.avif) | 2 |
+| `public/virtual-lab/images/experiment3/08252.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/08252.avif) | 2 |
+| `public/virtual-lab/images/experiment3/1.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/1.avif) | 1 |
+| `public/virtual-lab/images/experiment3/10.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/10.avif) | 2 |
+| `public/virtual-lab/images/experiment3/13.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/13.avif) | 2 |
+| `public/virtual-lab/images/experiment3/14.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/14.avif) | 1 |
+| `public/virtual-lab/images/experiment3/16.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/16.avif) | 2 |
+| `public/virtual-lab/images/experiment3/2.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/2.avif) | 1 |
+| `public/virtual-lab/images/experiment3/3.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/3.avif) | 1 |
+| `public/virtual-lab/images/experiment3/31.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/31.avif) | 1 |
+| `public/virtual-lab/images/experiment3/33.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/33.avif) | 1 |
+| `public/virtual-lab/images/experiment3/4.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/4.avif) | 1 |
+| `public/virtual-lab/images/experiment3/41.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/41.avif) | 2 |
+| `public/virtual-lab/images/experiment3/42.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/42.avif) | 2 |
+| `public/virtual-lab/images/experiment3/43.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/43.avif) | 1 |
+| `public/virtual-lab/images/experiment3/44.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/44.avif) | 1 |
+| `public/virtual-lab/images/experiment3/45.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/45.avif) | 1 |
+| `public/virtual-lab/images/experiment3/46.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/46.avif) | 2 |
+| `public/virtual-lab/images/experiment3/47.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/47.avif) | 1 |
+| `public/virtual-lab/images/experiment3/48.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/48.avif) | 2 |
+| `public/virtual-lab/images/experiment3/49.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/49.avif) | 2 |
+| `public/virtual-lab/images/experiment3/5.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/5.avif) | 1 |
+| `public/virtual-lab/images/experiment3/50.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/50.avif) | 2 |
+| `public/virtual-lab/images/experiment3/51.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/51.avif) | 2 |
+| `public/virtual-lab/images/experiment3/53.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/53.avif) | 1 |
+| `public/virtual-lab/images/experiment3/54.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/54.avif) | 1 |
+| `public/virtual-lab/images/experiment3/55.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/55.avif) | 1 |
+| `public/virtual-lab/images/experiment3/6.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/6.avif) | 1 |
+| `public/virtual-lab/images/experiment3/60.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/60.avif) | 1 |
+| `public/virtual-lab/images/experiment3/61.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/61.avif) | 1 |
+| `public/virtual-lab/images/experiment3/8100.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/8100.avif) | 1 |
+| `public/virtual-lab/images/experiment3/8105.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/8105.avif) | 1 |
+| `public/virtual-lab/images/experiment3/8106.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/8106.avif) | 1 |
+| `public/virtual-lab/images/experiment3/811.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/811.avif) | 1 |
+| `public/virtual-lab/images/experiment3/812.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/812.avif) | 1 |
+| `public/virtual-lab/images/experiment3/813.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/813.avif) | 1 |
+| `public/virtual-lab/images/experiment3/8201.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/8201.avif) | 1 |
+| `public/virtual-lab/images/experiment3/8202.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/8202.avif) | 1 |
+| `public/virtual-lab/images/experiment3/8203.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/8203.avif) | 1 |
+| `public/virtual-lab/images/experiment3/8310.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/8310.avif) | 1 |
+| `public/virtual-lab/images/experiment3/8501.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/8501.avif) | 1 |
+| `public/virtual-lab/images/experiment3/8502.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/8502.avif) | 1 |
+| `public/virtual-lab/images/experiment3/8503.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/8503.avif) | 1 |
+| `public/virtual-lab/images/experiment3/8504.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/8504.avif) | 1 |
+| `public/virtual-lab/images/experiment3/90.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/90.avif) | 1 |
+| `public/virtual-lab/images/experiment3/91.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/91.avif) | 1 |
+| `public/virtual-lab/images/experiment3/Beaker.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/beaker.avif) | 1 |
+| `public/virtual-lab/images/experiment3/Beaker30ml.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/beaker30ml.avif) | 2 |
+| `public/virtual-lab/images/experiment3/EPTubeBlue.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/eptubeblue.avif) | 3 |
+| `public/virtual-lab/images/experiment3/EPTubeEmpty.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/eptubeempty.avif) | 2 |
+| `public/virtual-lab/images/experiment3/EPTubeGreen.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/eptubegreen.avif) | 2 |
+| `public/virtual-lab/images/experiment3/EPTubeGreenTilted.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/eptubegreentilted.avif) | 1 |
+| `public/virtual-lab/images/experiment3/EPTubeLightBlue.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/eptubelightblue.avif) | 1 |
+| `public/virtual-lab/images/experiment3/EPTubeLightBlueEmpty.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/eptubelightblueempty.avif) | 1 |
+| `public/virtual-lab/images/experiment3/EPTubeOrange.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/eptubeorange.avif) | 1 |
+| `public/virtual-lab/images/experiment3/EPTubeOrangeTilted.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/eptubeorangetilted.avif) | 1 |
+| `public/virtual-lab/images/experiment3/EPTubePurple.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/eptubepurple.avif) | 1 |
+| `public/virtual-lab/images/experiment3/EPTubeSmallBlue.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/eptubesmallblue.avif) | 1 |
+| `public/virtual-lab/images/experiment3/EPTubeSmallBlue2.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/eptubesmallblue2.avif) | 2 |
+| `public/virtual-lab/images/experiment3/EPTubeSmallClear.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/eptubesmallclear.avif) | 1 |
+| `public/virtual-lab/images/experiment3/EPTubeSmallClearWater.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/eptubesmallclearwater.avif) | 1 |
+| `public/virtual-lab/images/experiment3/EPTubeYellowTilted.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/eptubeyellowtilted.avif) | 1 |
+| `public/virtual-lab/images/experiment3/ElectrophoresisChamber.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/electrophoresischamber.avif) | 3 |
+| `public/virtual-lab/images/experiment3/ElectrophoresisChamberConnected.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/electrophoresischamberconnected.avif) | 2 |
+| `public/virtual-lab/images/experiment3/ElectrophoresisPowerSupply.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/electrophoresispowersupply.avif) | 3 |
+| `public/virtual-lab/images/experiment3/ErlenmeyerFlask.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/erlenmeyerflask.avif) | 3 |
+| `public/virtual-lab/images/experiment3/ErlenmeyerFlaskPowder.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/erlenmeyerflaskpowder.avif) | 3 |
+| `public/virtual-lab/images/experiment3/ErlenmeyerFlaskRed.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/erlenmeyerflaskred.avif) | 2 |
+| `public/virtual-lab/images/experiment3/GelCassetteBlank.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/gelcassetteblank.avif) | 1 |
+| `public/virtual-lab/images/experiment3/GelCassetteBlank2.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/gelcassetteblank2.avif) | 1 |
+| `public/virtual-lab/images/experiment3/GelCassetteBlankOpen.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/gelcassetteblankopen.avif) | 1 |
+| `public/virtual-lab/images/experiment3/GelComb.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/gelcomb.avif) | 1 |
+| `public/virtual-lab/images/experiment3/HighSpeedCentrifuge.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/highspeedcentrifuge.avif) | 2 |
+| `public/virtual-lab/images/experiment3/IceBoxYellow.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/iceboxyellow.avif) | 1 |
+| `public/virtual-lab/images/experiment3/MetalTray.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/metaltray.avif) | 2 |
+| `public/virtual-lab/images/experiment3/MicrowaveOvenClosed.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/microwaveovenclosed.avif) | 4 |
+| `public/virtual-lab/images/experiment3/MicrowaveOvenOpen.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/microwaveovenopen.avif) | 1 |
+| `public/virtual-lab/images/experiment3/PCRPlate96Well.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/pcrplate96well.avif) | 1 |
+| `public/virtual-lab/images/experiment3/PCRTubeRed.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/pcrtubered.avif) | 2 |
+| `public/virtual-lab/images/experiment3/Pipette.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/pipette.avif) | 4 |
+| `public/virtual-lab/images/experiment3/Pipette1_1.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/pipette1_1.avif) | 2 |
+| `public/virtual-lab/images/experiment3/Pipette1_2.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/pipette1_2.avif) | 2 |
+| `public/virtual-lab/images/experiment3/Pipette2_1.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/pipette2_1.avif) | 1 |
+| `public/virtual-lab/images/experiment3/Pipette2_2.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/pipette2_2.avif) | 1 |
+| `public/virtual-lab/images/experiment3/Pipette3_1.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/pipette3_1.avif) | 2 |
+| `public/virtual-lab/images/experiment3/Pipette3_2.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/pipette3_2.avif) | 2 |
+| `public/virtual-lab/images/experiment3/PipetteTipBoxClosed1.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/pipettetipboxclosed1.avif) | 2 |
+| `public/virtual-lab/images/experiment3/PipetteTipBoxClosed2.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/pipettetipboxclosed2.avif) | 1 |
+| `public/virtual-lab/images/experiment3/PipetteTipBoxClosed3.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/pipettetipboxclosed3.avif) | 2 |
+| `public/virtual-lab/images/experiment3/PipetteTipBoxOpen1.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/pipettetipboxopen1.avif) | 4 |
+| `public/virtual-lab/images/experiment3/PipetteTipBoxOpen2.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/pipettetipboxopen2.avif) | 1 |
+| `public/virtual-lab/images/experiment3/PipetteTipBoxOpen3.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/pipettetipboxopen3.avif) | 2 |
+| `public/virtual-lab/images/experiment3/ReagentBottleAmberCapped.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/reagentbottleambercapped.avif) | 3 |
+| `public/virtual-lab/images/experiment3/ReagentBottleAmberOpen.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/reagentbottleamberopen.avif) | 1 |
+| `public/virtual-lab/images/experiment3/ReagentBottleFilled.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/reagentbottlefilled.avif) | 3 |
+| `public/virtual-lab/images/experiment3/ReagentCarboyBlue.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/reagentcarboyblue.avif) | 5 |
+| `public/virtual-lab/images/experiment3/ReagentCarboyPouring.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/reagentcarboypouring.avif) | 1 |
+| `public/virtual-lab/images/experiment3/TubeIconNavy.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/tubeiconnavy.avif) | 1 |
+| `public/virtual-lab/images/experiment3/TubeIconPurple.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/tubeiconpurple.avif) | 1 |
+| `public/virtual-lab/images/experiment3/TubeIconRed.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/tubeiconred.avif) | 1 |
+| `public/virtual-lab/images/experiment3/TubeRack.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/tuberack.avif) | 1 |
+| `public/virtual-lab/images/experiment3/TubeRackBlueEmpty.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/tuberackblueempty.avif) | 2 |
+| `public/virtual-lab/images/experiment3/TubeRackWithYellowSample.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/tuberackwithyellowsample.avif) | 1 |
+| `public/virtual-lab/images/experiment3/UVGelImagingSystem.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/uvgelimagingsystem.avif) | 5 |
+| `public/virtual-lab/images/experiment3/UltrasonicCleaner.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/ultrasoniccleaner.avif) | 1 |
+| `public/virtual-lab/images/experiment3/VortexOscillator.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/vortexoscillator.avif) | 2 |
+| `public/virtual-lab/images/experiment3/show5.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/show5.avif) | 1 |
+| `public/virtual-lab/images/experiment3/shows1.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/shows1.avif) | 2 |
+| `public/virtual-lab/images/experiment3/shows2.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/shows2.avif) | 2 |
+| `public/virtual-lab/images/experiment3/shows3.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/shows3.avif) | 2 |
+
+## 虚拟实验室实验6图片迁移记录
+
+链接按用户给出的目录规则填写；按用户要求跳过远端核验。
+
+| 本地文件 | 官方链接 | 源码引用记录数 |
+| --- | --- | ---: |
+| `public/virtual-lab/images/experiment6/08241.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment6/08241.avif) | 1 |
+| `public/virtual-lab/images/experiment6/082415.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment6/082415.avif) | 1 |
+| `public/virtual-lab/images/experiment6/08242.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment6/08242.avif) | 2 |
+| `public/virtual-lab/images/experiment6/08243.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment6/08243.avif) | 2 |
+| `public/virtual-lab/images/experiment6/08251.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment6/08251.avif) | 1 |
+| `public/virtual-lab/images/experiment6/8171.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment6/8171.avif) | 3 |
+| `public/virtual-lab/images/experiment6/81720.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment6/81720.avif) | 1 |
+| `public/virtual-lab/images/experiment6/81721.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment6/81721.avif) | 1 |
+| `public/virtual-lab/images/experiment6/81756.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment6/81756.avif) | 1 |
+| `public/virtual-lab/images/experiment6/8710.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment6/8710.avif) | 1 |
+| `public/virtual-lab/images/experiment6/8711.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment6/8711.avif) | 1 |
+| `public/virtual-lab/images/experiment6/8712.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment6/8712.avif) | 1 |
+
+## 虚拟实验室实验7图片迁移记录
+
+链接按用户给出的目录规则填写；按用户要求跳过远端核验。
+
+| 本地文件 | 官方链接 | 源码引用记录数 |
+| --- | --- | ---: |
+| `public/virtual-lab/images/experiment7/centrifuge.webp` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment7/centrifuge.webp) | 1 |
+| `public/virtual-lab/images/experiment7/cleanBenchSmall.webp` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment7/cleanbenchsmall.webp) | 3 |
+| `public/virtual-lab/images/experiment7/image10.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment7/image10.avif) | 1 |
+| `public/virtual-lab/images/experiment7/image13.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment7/image13.avif) | 3 |
+| `public/virtual-lab/images/experiment7/image14.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment7/image14.avif) | 6 |
+| `public/virtual-lab/images/experiment7/image15.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment7/image15.avif) | 3 |
+| `public/virtual-lab/images/experiment7/image17.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment7/image17.avif) | 2 |
+| `public/virtual-lab/images/experiment7/image18.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment7/image18.avif) | 2 |
+| `public/virtual-lab/images/experiment7/image19.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment7/image19.avif) | 3 |
+| `public/virtual-lab/images/experiment7/image20.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment7/image20.avif) | 2 |
+| `public/virtual-lab/images/experiment7/image22.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment7/image22.avif) | 2 |
+| `public/virtual-lab/images/experiment7/image24.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment7/image24.avif) | 1 |
+| `public/virtual-lab/images/experiment7/image28.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment7/image28.avif) | 1 |
+| `public/virtual-lab/images/experiment7/image5.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment7/image5.avif) | 1 |
+| `public/virtual-lab/images/experiment7/image9.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment7/image9.avif) | 1 |
+| `public/virtual-lab/images/experiment7/labTable.webp` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment7/labtable.webp) | 2 |
+| `public/virtual-lab/images/experiment7/pipette.webp` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment7/pipette.webp) | 1 |
+| `public/virtual-lab/images/experiment7/reactionTube.webp` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment7/reactiontube.webp) | 2 |
+| `public/virtual-lab/images/experiment7/uvCabinet.webp` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment7/uvcabinet.webp) | 2 |
+
+## 虚拟实验室实验8图片迁移记录
+
+链接按用户给出的目录规则填写；按用户要求跳过远端核验。
+
+| 本地文件 | 官方链接 | 源码引用记录数 |
+| --- | --- | ---: |
+| `public/virtual-lab/images/experiment8/image10.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment8/image10.avif) | 1 |
+| `public/virtual-lab/images/experiment8/image11.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment8/image11.avif) | 1 |
+| `public/virtual-lab/images/experiment8/image12.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment8/image12.avif) | 1 |
+| `public/virtual-lab/images/experiment8/image13.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment8/image13.avif) | 1 |
+| `public/virtual-lab/images/experiment8/image14.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment8/image14.avif) | 1 |
+| `public/virtual-lab/images/experiment8/image15.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment8/image15.avif) | 1 |
+| `public/virtual-lab/images/experiment8/image17.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment8/image17.avif) | 1 |
+| `public/virtual-lab/images/experiment8/image18.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment8/image18.avif) | 1 |
+| `public/virtual-lab/images/experiment8/image19.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment8/image19.avif) | 1 |
+| `public/virtual-lab/images/experiment8/image20.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment8/image20.avif) | 1 |
+| `public/virtual-lab/images/experiment8/image21.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment8/image21.avif) | 1 |
+| `public/virtual-lab/images/experiment8/image22.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment8/image22.avif) | 1 |
+| `public/virtual-lab/images/experiment8/image24.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment8/image24.avif) | 1 |
+| `public/virtual-lab/images/experiment8/image25.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment8/image25.avif) | 1 |
+| `public/virtual-lab/images/experiment8/image26.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment8/image26.avif) | 1 |
+| `public/virtual-lab/images/experiment8/image27.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment8/image27.avif) | 1 |
+| `public/virtual-lab/images/experiment8/image28.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment8/image28.avif) | 1 |
+| `public/virtual-lab/images/experiment8/image29.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment8/image29.avif) | 1 |
+| `public/virtual-lab/images/experiment8/image3.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment8/image3.avif) | 1 |
+| `public/virtual-lab/images/experiment8/image30.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment8/image30.avif) | 1 |
+| `public/virtual-lab/images/experiment8/image31.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment8/image31.avif) | 1 |
+| `public/virtual-lab/images/experiment8/image32.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment8/image32.avif) | 1 |
+| `public/virtual-lab/images/experiment8/image34.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment8/image34.avif) | 1 |
+| `public/virtual-lab/images/experiment8/image36.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment8/image36.avif) | 1 |
+| `public/virtual-lab/images/experiment8/image37.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment8/image37.avif) | 1 |
+| `public/virtual-lab/images/experiment8/image39.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment8/image39.avif) | 1 |
+| `public/virtual-lab/images/experiment8/image4.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment8/image4.avif) | 1 |
+| `public/virtual-lab/images/experiment8/image40.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment8/image40.avif) | 1 |
+| `public/virtual-lab/images/experiment8/image41.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment8/image41.avif) | 1 |
+| `public/virtual-lab/images/experiment8/image42.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment8/image42.avif) | 2 |
+| `public/virtual-lab/images/experiment8/image43.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment8/image43.avif) | 2 |
+| `public/virtual-lab/images/experiment8/image44.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment8/image44.avif) | 2 |
+| `public/virtual-lab/images/experiment8/image47.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment8/image47.avif) | 1 |
+| `public/virtual-lab/images/experiment8/image48.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment8/image48.avif) | 1 |
+| `public/virtual-lab/images/experiment8/image49.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment8/image49.avif) | 1 |
+| `public/virtual-lab/images/experiment8/image5.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment8/image5.avif) | 1 |
+| `public/virtual-lab/images/experiment8/image52.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment8/image52.avif) | 1 |
+| `public/virtual-lab/images/experiment8/image53.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment8/image53.avif) | 1 |
+| `public/virtual-lab/images/experiment8/image56.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment8/image56.avif) | 1 |
+| `public/virtual-lab/images/experiment8/image57.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment8/image57.avif) | 1 |
+| `public/virtual-lab/images/experiment8/image6.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment8/image6.avif) | 1 |
+| `public/virtual-lab/images/experiment8/image70.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment8/image70.avif) | 1 |
+| `public/virtual-lab/images/experiment8/image71.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment8/image71.avif) | 1 |
+| `public/virtual-lab/images/experiment8/image72.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment8/image72.avif) | 1 |
+| `public/virtual-lab/images/experiment8/image73.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment8/image73.avif) | 1 |
+| `public/virtual-lab/images/experiment8/image74.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment8/image74.avif) | 1 |
+| `public/virtual-lab/images/experiment8/image75.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment8/image75.avif) | 1 |
+| `public/virtual-lab/images/experiment8/image76.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment8/image76.avif) | 1 |
+| `public/virtual-lab/images/experiment8/image8.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment8/image8.avif) | 1 |
+| `public/virtual-lab/images/experiment8/image9.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment8/image9.avif) | 1 |
+| `public/virtual-lab/images/experiment8/sidebar/cacl2.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment8/sidebar/cacl2.avif) | 1 |
+| `public/virtual-lab/images/experiment8/sidebar/chamber.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment8/sidebar/chamber.avif) | 1 |
+| `public/virtual-lab/images/experiment8/sidebar/dh5a-colony.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment8/sidebar/dh5a-colony.avif) | 1 |
+| `public/virtual-lab/images/experiment8/sidebar/ep-tube-rack.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment8/sidebar/ep-tube-rack.avif) | 1 |
+| `public/virtual-lab/images/experiment8/sidebar/ep-tube.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment8/sidebar/ep-tube.avif) | 1 |
+| `public/virtual-lab/images/experiment8/sidebar/gel-comb.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment8/sidebar/gel-comb.avif) | 1 |
+| `public/virtual-lab/images/experiment8/sidebar/gel-imager.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment8/sidebar/gel-imager.avif) | 1 |
+| `public/virtual-lab/images/experiment8/sidebar/glycerol-cacl2.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment8/sidebar/glycerol-cacl2.avif) | 1 |
+| `public/virtual-lab/images/experiment8/sidebar/kanamycin-lb-plate.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment8/sidebar/kanamycin-lb-plate.avif) | 1 |
+| `public/virtual-lab/images/experiment8/sidebar/lb-liquid-medium.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment8/sidebar/lb-liquid-medium.avif) | 1 |
+| `public/virtual-lab/images/experiment8/sidebar/microwave.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment8/sidebar/microwave.avif) | 1 |
+| `public/virtual-lab/images/experiment8/sidebar/pcr-amplifier.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment8/sidebar/pcr-amplifier.avif) | 1 |
+| `public/virtual-lab/images/experiment8/sidebar/pipette-tip.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment8/sidebar/pipette-tip.avif) | 1 |
+| `public/virtual-lab/images/experiment8/sidebar/pipette.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment8/sidebar/pipette.avif) | 1 |
+| `public/virtual-lab/images/experiment8/sidebar/power-supply.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment8/sidebar/power-supply.avif) | 1 |
+| `public/virtual-lab/images/experiment8/sidebar/recombinant-plasmid.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment8/sidebar/recombinant-plasmid.avif) | 1 |
+| `public/virtual-lab/images/experiment8/sidebar/spatula.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment8/sidebar/spatula.avif) | 1 |
+
+实验七仍有 `image21.png`、`image23.png` 两张动态图片待上传；对应源码保留本地路径。

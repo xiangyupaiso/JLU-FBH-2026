@@ -888,14 +888,14 @@ const handleStepNavigation = useCallback((stepIndex: number) => {
               <div className="absolute inset-0 z-0 pointer-events-none opacity-80">
                 <img 
                   id="pool"
-                  src={isPoolReplaced ? "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/31.avif" : "./images/pool.png"}
+                  src={isPoolReplaced ? "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/31.avif" : "https://static.igem.wiki/teams/6056/wiki/virtual-lab/common/pool.avif"}
                   className={`absolute left-[8%] top-[18%] w-[18%] pointer-events-auto transition-all cursor-pointer
                     ${poolClickable ? 'drop-shadow-[0_0_20px_rgba(255,255,0,0.8)] scale-105 z-50' : ''}
                   `}
                   onClick={() => handleItemClick('pool')}
                 />
-                <img src="./images/blue_table.png" className="absolute left-[50%] top-[24%] -translate-x-1/2 w-[35%] pointer-events-auto" />
-                <img src="./images/table_normal.png" className="absolute left-[72%] top-[20%] w-[25%] pointer-events-auto" />
+                <img src="https://static.igem.wiki/teams/6056/wiki/virtual-lab/common/blue_table.avif" className="absolute left-[50%] top-[24%] -translate-x-1/2 w-[35%] pointer-events-auto" />
+                <img src="https://static.igem.wiki/teams/6056/wiki/virtual-lab/common/table_normal.avif" className="absolute left-[72%] top-[20%] w-[25%] pointer-events-auto" />
                 <img 
                   id="incubator"
                   src="https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/13.avif"
@@ -916,7 +916,7 @@ const handleStepNavigation = useCallback((stepIndex: number) => {
                 />
               </div>
 
-            <div className="absolute inset-x-0 bottom-0 h-[56%] bg-[length:100%_100%] bg-bottom bg-no-repeat z-10 pointer-events-none" style={{ backgroundImage: "url('./images/Cleanbench_part.png')" }} />
+            <div className="absolute inset-x-0 bottom-0 h-[56%] bg-[length:100%_100%] bg-bottom bg-no-repeat z-10 pointer-events-none" style={{ backgroundImage: "url('https://static.igem.wiki/teams/6056/wiki/virtual-lab/common/cleanbench_part.avif')" }} />
 
             {/* 器材层 */}
             <div className="absolute inset-0 z-20 pointer-events-none">

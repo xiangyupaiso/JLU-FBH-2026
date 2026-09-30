@@ -737,8 +737,8 @@ const handleStepNavigation = useCallback((stepIndex: number) => {
 
             {/* 后景层 */}
             <div className="absolute inset-0 z-0 pointer-events-none opacity-80">
-              <img src="./images/blue_table.png" className="absolute left-[50%] top-[24%] -translate-x-1/2 w-[35%] pointer-events-auto" />
-              <img src="./images/table_normal.png" className="absolute left-[72%] top-[20%] w-[25%] pointer-events-auto" />
+              <img src="https://static.igem.wiki/teams/6056/wiki/virtual-lab/common/blue_table.avif" className="absolute left-[50%] top-[24%] -translate-x-1/2 w-[35%] pointer-events-auto" />
+              <img src="https://static.igem.wiki/teams/6056/wiki/virtual-lab/common/table_normal.avif" className="absolute left-[72%] top-[20%] w-[25%] pointer-events-auto" />
             </div>
 
             {/* 冰箱单独放在最底层（背景之上、超净台主体之下），
@@ -746,7 +746,7 @@ const handleStepNavigation = useCallback((stepIndex: number) => {
             <div className="absolute inset-0 z-[5] pointer-events-none">
               <img 
                 id="freezer"
-                src={freezerOpen ? "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment1/freezer-open.avif" : "./images/freezer.png"}
+                src={freezerOpen ? "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment1/freezer-open.avif" : "https://static.igem.wiki/teams/6056/wiki/virtual-lab/common/freezer.avif"}
                 className={`absolute left-[5%] top-[5%] w-[24%] pointer-events-auto cursor-pointer transition-all duration-300
                   ${freezerHighlighted ? `${ALPHA_GLOW} z-10` : 'z-0'}
                 `}
@@ -756,7 +756,7 @@ const handleStepNavigation = useCallback((stepIndex: number) => {
             </div>
 
             {/* 超净台主体 */}
-            <div className="absolute inset-x-0 bottom-0 h-[60%] bg-[length:100%_100%] bg-bottom bg-no-repeat z-10 pointer-events-none" style={{ backgroundImage: "url('./images/Cleanbench_part.png')" }} />
+            <div className="absolute inset-x-0 bottom-0 h-[60%] bg-[length:100%_100%] bg-bottom bg-no-repeat z-10 pointer-events-none" style={{ backgroundImage: "url('https://static.igem.wiki/teams/6056/wiki/virtual-lab/common/cleanbench_part.avif')" }} />
 
             {/* ========== 实验一器材层 ========== */}
             <div className="absolute inset-0 z-20 pointer-events-none">

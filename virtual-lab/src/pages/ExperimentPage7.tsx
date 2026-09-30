@@ -32,6 +32,10 @@ const steps: ExperimentStep[] = [
 
 type Marker = 'blue-dot' | 'orange-dot' | 'purple-band' | 'teal-band' | 'orange-band';
 
+function getExperiment7ImageUrl(name: string): string {
+  return 'https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment7/' + name.toLowerCase().replace(/\.png$/i, '.avif');
+}
+
 const reagents = [
   { name: "pET-28a Vector", full: 'image19.png', half: 'image19.png', marker: 'blue-dot' as Marker, box: 'ice', boxedLeft: 7.8, boxedTop: 73.2, outLeft: 45 },
   { name: "GFP Insert", full: 'image19.png', half: 'image19.png', marker: 'orange-dot' as Marker, box: 'ice', boxedLeft: 10, boxedTop: 73.2, outLeft: 49 },
@@ -267,11 +271,11 @@ const handleStepNavigation = useCallback((stepIndex: number) => {
               <div className="absolute inset-x-0 top-[35%] bottom-[28%] border-t border-slate-500 bg-[#d9dee7]" />
               <div className="absolute inset-x-0 top-[71%] bottom-0 border-t border-slate-500 bg-[#eeeeee] [clip-path:polygon(4%_0,96%_0,100%_100%,0_100%)]" />
 
-            <img src="./images/experiment7/uvCabinet.webp" className="pointer-events-none absolute z-20" style={{ left: '5.8%', top: '13.5%', width: '12.7%' }} alt="Laboratory Equipment" />
-            <img src="./images/experiment7/labTable.webp" className="pointer-events-none absolute z-10" style={{ left: '33.7%', top: '29.9%', width: '32.2%' }} alt="Laboratory Bench" />
+            <img src="https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment7/uvcabinet.webp" className="pointer-events-none absolute z-20" style={{ left: '5.8%', top: '13.5%', width: '12.7%' }} alt="Laboratory Equipment" />
+            <img src="https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment7/labtable.webp" className="pointer-events-none absolute z-10" style={{ left: '33.7%', top: '29.9%', width: '32.2%' }} alt="Laboratory Bench" />
             <img
               id="exp7-metal-bath"
-              src="./images/experiment7/image20.png"
+              src="https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment7/image20.avif"
               onClick={incubate}
               style={{
                 left: '39%',
@@ -288,7 +292,7 @@ const handleStepNavigation = useCallback((stepIndex: number) => {
             <img
               key={`centrifuge-${sceneRevision}`}
               id="exp7-centrifuge"
-              src="./images/experiment7/centrifuge.webp"
+              src="https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment7/centrifuge.webp"
               onClick={centrifuge}
               style={{
                 left: '55%',
@@ -302,16 +306,16 @@ const handleStepNavigation = useCallback((stepIndex: number) => {
               className={`absolute z-20 transition-all duration-300 ${currentStep === 7 && !isAnimating ? 'z-[70] cursor-pointer' : 'pointer-events-none'}`}
               alt="Mini Centrifuge"
             />
-            <img src="./images/experiment7/cleanBenchSmall.webp" className="pointer-events-none absolute z-20" style={{ left: '78.7%', top: '13%', width: '13.5%' }} alt="Laminar Flow Cabinet" />
+            <img src="https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment7/cleanbenchsmall.webp" className="pointer-events-none absolute z-20" style={{ left: '78.7%', top: '13%', width: '13.5%' }} alt="Laminar Flow Cabinet" />
 
             <img
-              src="./images/experiment7/image18.png"
+              src="https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment7/image18.avif"
               className="pointer-events-none absolute z-20"
               style={{ left: '4.3%', top: '72%', width: '12.4%' }}
               alt="Ice Box"
             />
             <img
-              src="./images/experiment7/image5.png"
+              src="https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment7/image5.avif"
               onClick={prepareConnectionItems}
               className={`absolute z-20 transition-all ${currentStep === 0 && !isAnimating ? 'cursor-pointer scale-105 drop-shadow-[0_0_22px_rgba(250,204,21,.95)]' : ''}`}
               style={{ left: '16.5%', top: '67%', width: '15%' }}
@@ -331,7 +335,7 @@ const handleStepNavigation = useCallback((stepIndex: number) => {
               >
                 {itemsPrepared ? (
                   <>
-                    <img src={`./images/experiment7/${reagent.full}`} className="h-full w-full object-contain" alt={`${reagent.name}(retrieved)`} />
+                    <img src={getExperiment7ImageUrl(reagent.full)} className="h-full w-full object-contain" alt={`${reagent.name}(retrieved)`} />
                     <TubeMarker marker={reagent.marker} />
                   </>
                 ) : reagent.box === 'ice' ? (
@@ -346,7 +350,7 @@ const handleStepNavigation = useCallback((stepIndex: number) => {
                   />
                 ) : (
                   <>
-                    <img src={`./images/experiment7/${reagent.half}`} className="h-full w-full object-contain" alt={`${reagent.name}(in box)`} />
+                    <img src={getExperiment7ImageUrl(reagent.half)} className="h-full w-full object-contain" alt={`${reagent.name}(in box)`} />
                     <TubeMarker marker={reagent.marker} />
                   </>
                 )}
@@ -365,7 +369,7 @@ const handleStepNavigation = useCallback((stepIndex: number) => {
                   height: '10.5%',
                 }}
               >
-                <img src={`./images/experiment7/${reagent.full}`} className="h-full w-full object-contain" alt={reagent.name} />
+                <img src={getExperiment7ImageUrl(reagent.full)} className="h-full w-full object-contain" alt={reagent.name} />
                 <TubeMarker marker={reagent.marker} />
               </div>
             ))}
@@ -373,7 +377,9 @@ const handleStepNavigation = useCallback((stepIndex: number) => {
             <img
               key={`tip-box-${sceneRevision}`}
               id="exp7-tip-box"
-              src={`./images/experiment7/${tipBoxOpen ? 'image23.png' : 'image21.png'}`}
+              src={tipBoxOpen
+                ? 'https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment7/image23.avif'
+                : 'https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment7/image21.avif'}
               onClick={openTipBox}
               style={{ left: '56.5%', top: '72.5%', width: '6.5%' }}
               className={`absolute z-20 transition-all ${currentStep === 1 && !tipBoxOpen ? 'cursor-pointer scale-105 drop-shadow-[0_0_22px_rgba(250,204,21,.95)]' : 'pointer-events-none'}`}
@@ -388,13 +394,13 @@ const handleStepNavigation = useCallback((stepIndex: number) => {
               role="button"
               aria-label="Micropipette with Tip"
             >
-              <img src="./images/experiment7/image28.png" className="pointer-events-none block w-full" alt="Micropipette with New Tip" />
+              <img src="https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment7/image28.avif" className="pointer-events-none block w-full" alt="Micropipette with New Tip" />
             </div>
 
             <img
               key={`pcr-tube-${sceneRevision}`}
               id="exp7-pcr-tube"
-              src="./images/experiment7/reactionTube.webp"
+              src="https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment7/reactiontube.webp"
               style={{
                 left: currentStep === 8 ? '56%' : itemsPrepared ? '61%' : '19.4%',
                 top: currentStep === 8 ? '23%' : itemsPrepared ? '81.25%' : '75.6%',
@@ -404,8 +410,8 @@ const handleStepNavigation = useCallback((stepIndex: number) => {
               alt="PCR Tube"
             />
 
-            <img src="./images/experiment7/image10.png" className="pointer-events-none absolute z-20" style={{ left: '79%', top: '68%', width: '7%' }} alt="Beaker" />
-            <img src="./images/experiment7/image9.png" className="pointer-events-none absolute z-20" style={{ left: '88%', top: '68.5%', width: '6%' }} alt="Erlenmeyer Flask" />
+            <img src="https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment7/image10.avif" className="pointer-events-none absolute z-20" style={{ left: '79%', top: '68%', width: '7%' }} alt="Beaker" />
+            <img src="https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment7/image9.avif" className="pointer-events-none absolute z-20" style={{ left: '88%', top: '68.5%', width: '6%' }} alt="Erlenmeyer Flask" />
 
             <div className="absolute left-1/2 top-4 z-50 -translate-x-1/2 rounded-full border border-blue-300/70 bg-blue-950/90 px-5 py-2 text-center text-xs font-semibold text-blue-100 shadow-xl">{message}</div>
 
