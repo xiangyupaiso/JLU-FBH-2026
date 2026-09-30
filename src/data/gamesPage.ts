@@ -53,17 +53,17 @@ export const gamesPage: WikiPageContent = {
       index: "02",
       kicker: "Playable project / 02",
       navLabel: "Bomb Cat",
-      title: "Bomb Cat · 炸弹猫",
+      title: "Bomb Cat",
       summary:
-        "A circRNA strategy card game with local bots, online rooms and a complete bilingual rulebook.",
+        "A circRNA strategy card game with local bots, online rooms and a complete rulebook.",
       blocks: [{ type: "feature", key: "game-bomb-cat" }],
     },
     {
       id: "game-bio-memory",
       index: "03",
       kicker: "Playable project / 03",
-      navLabel: "生物翻翻乐",
-      title: "生物翻翻乐",
+      navLabel: "Bio Memory Match",
+      title: "Bio Memory Match",
       summary:
         "A specimen-card memory game for discovering biology concepts through observation, recall and matching.",
       blocks: [{ type: "feature", key: "game-bio-memory" }],
@@ -73,7 +73,7 @@ export const gamesPage: WikiPageContent = {
       index: "04",
       kicker: "Playable project / 04",
       navLabel: "Virtual Laboratory",
-      title: "Virtual Laboratory · 虚拟实验室",
+      title: "Virtual Laboratory",
       summary:
         "Practise nine molecular biology workflows across beginner, intermediate and advanced levels, with interactive equipment, guided steps and restart controls.",
       blocks: [{ type: "feature", key: "game-virtual-lab" }],

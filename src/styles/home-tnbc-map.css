@@ -1,6 +1,12 @@
-/* Typography follows the open sky and sea in the original full-stage artwork. */
 #why-tnbc {
-  --scene-hold: 125svh;
+  --scene-hold: 165svh;
+}
+.tnbc-map-illustration {
+  position: absolute;
+  inset: 0;
+}
+.home-story:not(.has-story-motion) .tnbc-map-illustration {
+  opacity: 0.14;
 }
 #why-tnbc .story-art--3 {
   left: 50%;
@@ -10,51 +16,38 @@
 }
 .tnbc-map-copy {
   position: absolute;
-  inset: 0;
+  inset: 17% 5% auto;
   z-index: 4;
   pointer-events: none;
 }
-.tnbc-map-ink-defs {
-  position: absolute;
-  pointer-events: none;
-}
-.home-story .tnbc-map-title,
 .home-story .tnbc-map-intro {
-  filter: var(--map-ink-filter);
-  mix-blend-mode: multiply;
+  display: grid;
+  justify-items: center;
+  gap: clamp(8px, 1.4svh, 16px);
+  margin: 0;
+  color: #314969;
+  text-align: center;
+  text-wrap: balance;
   font-synthesis: none;
 }
-.home-story .tnbc-map-title {
-  position: absolute;
-  top: 0.3%;
-  left: 48%;
-  width: 76%;
-  translate: -50% 0;
-  rotate: -1.5deg;
-  margin: 0;
-  color: #945e6d;
-  text-align: center;
-  font: 400 clamp(23px, 2.65cqw, 43px)/1.3 var(--font-heading);
-  letter-spacing: 0.005em;
+.tnbc-map-intro-lead {
+  font: 400 clamp(24px, 2.5vw, 40px)/1.2 var(--font-heading);
 }
-.home-story .tnbc-map-intro {
-  position: absolute;
-  left: 55%;
-  top: 53.5%;
-  width: 31%;
-  translate: -50% 0;
-  rotate: -2deg;
-  margin: 0;
-  color: #667893;
-  text-align: center;
-  font: 400 clamp(15px, 1.7cqw, 28px)/1.22 var(--font-body);
+.tnbc-map-intro-focus {
+  color: #874052;
+  font: 600 clamp(48px, 6vw, 96px)/1.08 var(--font-heading);
+  letter-spacing: -0.025em;
+}
+.tnbc-map-intro-context {
+  font: 400 clamp(20px, 2vw, 30px)/1.3 var(--font-body);
 }
 .tnbc-map-source {
   position: absolute;
-  right: 4%;
-  bottom: 1%;
+  z-index: 6;
+  right: clamp(30px, 7vw, 150px);
+  bottom: 2%;
   color: #806772;
-  font-size: 10px;
+  font: 400 11px/1.3 var(--font-body);
   text-decoration: none;
   text-underline-offset: 4px;
   pointer-events: auto;
@@ -136,11 +129,24 @@
 .home-story.has-story-motion .tnbc-map-note {
   opacity: 0;
 }
+.home-story:not(.has-story-motion) .tnbc-map-notes {
+  grid-template-columns: repeat(4, auto);
+  grid-template-rows: auto;
+  align-content: start;
+  justify-content: center;
+  gap: 16px;
+  padding-top: calc(var(--scene-height) * 0.67 - 90px);
+}
+.home-story:not(.has-story-motion) .tnbc-map-note {
+  grid-column: auto;
+  grid-row: auto;
+  align-self: start;
+}
 .tnbc-map-note {
   position: relative;
-  width: clamp(170px, 11.5vw, 210px);
+  width: clamp(180px, 12.5vw, 225px);
   aspect-ratio: 900 / 685;
-  transform-origin: 15% 15%;
+  transform-origin: center;
 }
 .tnbc-map-note--incidence-countries {
   grid-column: 1;
@@ -180,23 +186,17 @@
   display: grid;
   align-content: center;
   justify-items: center;
-  gap: 2px;
+  gap: 10px;
   text-align: center;
 }
-.tnbc-map-note-category {
-  color: #78617a;
-  font: 600 clamp(9px, 0.7vw, 11px)/1.15 var(--font-body);
-  letter-spacing: 0;
-  text-transform: uppercase;
-}
 .tnbc-map-note-val {
-  color: #945e6d;
-  font: 600 clamp(28px, 2vw, 40px)/1 var(--font-heading);
+  color: #874052;
+  font: 600 clamp(34px, 2.6vw, 46px)/1 var(--font-heading);
   letter-spacing: 0;
 }
 .tnbc-map-note-detail {
-  color: #667893;
-  font: 400 clamp(10px, 0.75vw, 12px)/1.25 var(--font-body);
+  color: #425571;
+  font: 400 clamp(12px, 0.95vw, 15px)/1.25 var(--font-body);
   text-wrap: balance;
 }
 .tnbc-map-data-source {
@@ -204,7 +204,7 @@
   left: clamp(70px, 7vw, 150px);
   bottom: 2%;
   color: #806772;
-  font: 400 10px/1.3 var(--font-body);
+  font: 400 11px/1.3 var(--font-body);
   pointer-events: auto;
 }
 .tnbc-map-data-source:hover {
@@ -213,33 +213,43 @@
 }
 @media (max-width: 800px) and (orientation: portrait) {
   #why-tnbc {
-    --scene-height: max(900px, calc(100svh - var(--header-height)));
-    --scene-hold: 100svh;
+    --scene-height: max(620px, calc(100svh - var(--header-height)));
+    --scene-hold: 145svh;
   }
   #why-tnbc .story-art--3 {
-    top: 31%;
+    top: 28%;
     width: min(96vw, 560px);
   }
-  .home-story .tnbc-map-title {
-    top: -35%;
-    width: 80%;
-    font-size: clamp(23px, 5.4vw, 34px);
-    /* Chromium clips an SVG-filtered label above the illustration's bounds. */
-    filter: none;
+  .tnbc-map-copy {
+    inset: 8% 5% auto;
   }
-  .tnbc-map-title span {
-    display: block;
+  .tnbc-map-intro-lead {
+    font-size: clamp(21px, 5.5vw, 30px);
+  }
+  .tnbc-map-intro-focus {
+    max-width: 11em;
+    font-size: clamp(40px, 10vw, 60px);
+  }
+  .tnbc-map-intro-context {
+    font-size: clamp(16px, 4.2vw, 22px);
   }
   .tnbc-map-notes {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     grid-template-rows: repeat(2, auto);
     align-content: start;
     justify-items: center;
-    gap: 10px 4px;
-    padding: 560px 3% 40px;
+    row-gap: clamp(18px, 3svh, 32px);
+    column-gap: 4px;
+    padding: calc(var(--scene-height) * 0.49) 3% 40px;
+  }
+  .home-story:not(.has-story-motion) .tnbc-map-notes {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    justify-content: normal;
+    gap: 24px 4px;
+    padding: calc(var(--scene-height) * 0.43) 3% 40px;
   }
   .tnbc-map-note {
-    width: min(44vw, 190px);
+    width: min(43vw, 180px);
     align-self: start;
     justify-self: center;
   }
@@ -258,36 +268,45 @@
   .tnbc-map-note--mortality-countries {
     grid-column: 1;
   }
-  .tnbc-map-note-category {
-    font-size: clamp(8px, 1.8vw, 10px);
-  }
   .tnbc-map-note-val {
-    font-size: clamp(24px, 6vw, 32px);
+    font-size: clamp(30px, 8vw, 38px);
   }
   .tnbc-map-note-detail {
-    font-size: clamp(9px, 2vw, 11px);
+    font-size: clamp(11px, 2.8vw, 13px);
   }
   .tnbc-map-data-source {
     left: 5%;
     bottom: 1.5%;
   }
-  .home-story .tnbc-map-intro {
-    top: 110%;
-    left: 50%;
-    width: 90%;
-    font-size: 18px;
-  }
   .tnbc-map-source {
-    bottom: -47%;
-    right: 8%;
+    bottom: 1.5%;
+    right: 5%;
   }
 }
 @media (max-height: 500px) and (orientation: landscape) {
-  .home-story .tnbc-map-title {
-    font-size: 20px;
+  .tnbc-map-copy {
+    top: 8%;
   }
-  .home-story .tnbc-map-intro {
-    font-size: 13px;
+  .tnbc-map-intro-lead {
+    font-size: 21px;
+  }
+  .tnbc-map-intro-focus {
+    font-size: 42px;
+  }
+  .tnbc-map-intro-context {
+    font-size: 16px;
+  }
+  .tnbc-map-notes {
+    padding: 50px 3% 30px;
+  }
+  .tnbc-map-note {
+    width: clamp(145px, 19vw, 170px);
+  }
+  .tnbc-map-note-val {
+    font-size: 32px;
+  }
+  .tnbc-map-note-body {
+    gap: 6px;
   }
   .tnbc-map-source {
     font-size: 9px;
@@ -299,6 +318,14 @@
     animation: none;
   }
   .tnbc-map-note {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  .tnbc-map-copy {
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+  [data-map-copy] {
     opacity: 1 !important;
     transform: none !important;
   }

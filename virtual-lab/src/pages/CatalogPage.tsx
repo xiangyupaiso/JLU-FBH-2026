@@ -195,15 +195,6 @@ export function CatalogPage({ onSelectExperiment }: CatalogPageProps) {
                   </button>
                 );
               })}
-              <button
-                type="button"
-                onClick={() => onSelectExperiment('exp4')}
-                className="catalog-route-button"
-              >
-                <span>04</span>
-                <strong>GFP Extraction</strong>
-                <small>Open experiment</small>
-              </button>
             </nav>
           </aside>
 

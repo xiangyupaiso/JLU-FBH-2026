@@ -45,7 +45,7 @@ export default function BombCatGame({
     <div ref={hostRef} className={rootClassName} data-bomb-cat-game="">
       {failed ? (
         <p className="bomb-cat-game-error" role="alert">
-          游戏资源加载失败，请刷新页面重试。
+          Failed to load game assets. Please refresh and try again.
         </p>
       ) : null}
     </div>

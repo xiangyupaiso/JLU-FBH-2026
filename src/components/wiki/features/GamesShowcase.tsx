@@ -37,14 +37,20 @@ type GameKey = "breast-guardian" | "bomb-cat" | "bio-memory" | "virtual-lab";
 
 const GAME_META: Record<GameKey, { station: string; title: string }> = {
   "breast-guardian": {
-    station: "01 / Live project",
+    station: "Project 01 · Interactive Story",
     title: "Breast Guardian RPG",
   },
-  "bomb-cat": { station: "02 / Live project", title: "Bomb Cat · 炸弹猫" },
-  "bio-memory": { station: "03 / Live project", title: "生物翻翻乐" },
+  "bomb-cat": {
+    station: "Project 02 · Strategy Card Game",
+    title: "Bomb Cat",
+  },
+  "bio-memory": {
+    station: "Project 03 · Specimen Match",
+    title: "Bio Memory Match",
+  },
   "virtual-lab": {
-    station: "04 / Live project",
-    title: "Virtual Laboratory · 虚拟实验室",
+    station: "Project 04 · Virtual Laboratory",
+    title: "Virtual Laboratory",
   },
 };
 
@@ -126,8 +132,9 @@ function GameExperience({
             type="button"
             className="games-experience__close"
             onClick={onExit}
+            aria-label="Close experience"
           >
-            <span>Close game</span>
+            <span>Back to Wiki</span>
             <b aria-hidden="true">×</b>
           </button>
         </header>
@@ -218,14 +225,7 @@ export function GamesStationMap() {
                   <use href="#circure-ribbon-knot" />
                 </svg>
               </span>
-              <small>01 / Ready to play</small>
               <strong>Breast Guardian RPG</strong>
-              <p>
-                A story-led breast health journey spanning three stages of life.
-              </p>
-              <em>
-                View game below <span aria-hidden="true">↓</span>
-              </em>
             </button>
           </li>
 
@@ -240,12 +240,7 @@ export function GamesStationMap() {
                   <use href="#circure-ribbon-knot" />
                 </svg>
               </span>
-              <small>02 / Ready to play</small>
-              <strong id="exploding-cat-title">炸弹猫卡牌小游戏</strong>
-              <p>A compact strategy card game for collaborative play.</p>
-              <em>
-                View game below <span aria-hidden="true">↓</span>
-              </em>
+              <strong id="exploding-cat-title">Bomb Cat Card Game</strong>
             </button>
           </li>
 
@@ -260,12 +255,7 @@ export function GamesStationMap() {
                   <use href="#circure-ribbon-knot" />
                 </svg>
               </span>
-              <small>03 / Ready to play</small>
-              <strong>生物翻翻乐</strong>
-              <p>A memory match field guide for exploring biology concepts.</p>
-              <em>
-                View game below <span aria-hidden="true">↓</span>
-              </em>
+              <strong>Bio Memory Match</strong>
             </button>
           </li>
 
@@ -280,15 +270,7 @@ export function GamesStationMap() {
                   <use href="#circure-ribbon-knot" />
                 </svg>
               </span>
-              <small>04 / Ready to play</small>
-              <strong id="virtual-lab-title">虚拟实验室</strong>
-              <p>
-                Nine guided molecular biology experiments, from culture revival
-                to GFP verification.
-              </p>
-              <em>
-                View laboratory below <span aria-hidden="true">↓</span>
-              </em>
+              <strong id="virtual-lab-title">Virtual Laboratory</strong>
             </button>
           </li>
         </ol>

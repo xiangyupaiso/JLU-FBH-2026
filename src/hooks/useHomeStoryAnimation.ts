@@ -162,12 +162,10 @@ function choreographArt(
     }
     case "why-tnbc": {
       camera({ scale: 1.018 }, { scale: 1.006 });
+      const visual = section.querySelector<HTMLElement>(".story-visual")!;
+      const illustration = section.querySelector(".tnbc-map-illustration");
       const mapCopy = section.querySelector(".tnbc-map-copy");
       gsap.set(mapCopy, { autoAlpha: 0 });
-      timeline.to(mapCopy, { autoAlpha: 1, duration: 0.08 }, 0.08);
-      section.querySelectorAll<HTMLElement>("[data-map-copy]").forEach((element, index) => {
-        animateArtworkWords(element, timeline, index ? "explain" : "expand", compact, splits, 0.08 + index * 0.12, 0.3);
-      });
       section.querySelectorAll("[data-map-marker]").forEach((marker, index) => {
         timeline.fromTo(
           marker,
@@ -179,7 +177,7 @@ function choreographArt(
             duration: 0.11,
             ease: "back.out(1.35)",
           },
-          0.23 + index * 0.115,
+          0.06 + index * 0.075,
         );
       });
       const notes = section.querySelectorAll<HTMLElement>("[data-map-note]");
@@ -196,9 +194,63 @@ function choreographArt(
             stagger: 0.07,
             ease: "back.out(1.3)",
           },
-          0.4,
+          0.16,
+        );
+        const portrait = () =>
+          window.matchMedia("(max-width: 800px) and (orientation: portrait)")
+            .matches;
+        const noteScale = () =>
+          portrait()
+            ? 1.12
+            : Math.min(
+                1.18,
+                (visual.clientWidth * 0.92 - 48) / (notes[0].offsetWidth * 4),
+              );
+        notes.forEach((note, index) => {
+          timeline.to(
+            note,
+            {
+              x: () => {
+                const center = portrait()
+                  ? visual.clientWidth * (index % 2 ? 0.75 : 0.25)
+                  : visual.clientWidth / 2 +
+                    (index - 1.5) * (note.offsetWidth * noteScale() + 16);
+                return center - note.offsetLeft - note.offsetWidth / 2;
+              },
+              y: () =>
+                visual.clientHeight *
+                  (portrait() ? 0.53 + Math.floor(index / 2) * 0.23 : 0.67) -
+                note.offsetTop -
+                note.offsetHeight / 2,
+              scale: noteScale,
+              duration: 0.28,
+              ease: HOME_EASE,
+            },
+            0.62,
+          );
+        });
+        timeline.to(
+          section.querySelectorAll(".tnbc-map-note-val"),
+          { scale: 1.1, duration: 0.24, ease: HOME_EASE },
+          0.65,
         );
       }
+      timeline.to(
+        illustration,
+        { opacity: 0.14, duration: 0.26, ease: HOME_EASE },
+        0.62,
+      );
+      timeline.to(mapCopy, { autoAlpha: 1, duration: 0.12 }, 0.65);
+      section
+        .querySelectorAll<HTMLElement>("[data-map-copy]")
+        .forEach((element, index) => {
+          timeline.fromTo(
+            element,
+            { opacity: 0, y: 16 * distance },
+            { opacity: 1, y: 0, duration: 0.2, ease: HOME_EASE },
+            0.65 + index * 0.055,
+          );
+        });
       break;
     }
     case "clinical-challenge": {

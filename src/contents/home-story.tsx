@@ -273,33 +273,36 @@ const mapMotionPieces = [
 const mapStatistics = [
   {
     key: "incidence-countries",
-    category: "Women · incidence",
     value: "164",
-    detail: "countries where breast cancer ranks first",
+    detail: "countries · #1 incidence",
+    description:
+      "164 countries where breast cancer ranks first for new cases among women",
   },
   {
     key: "incidence-share",
-    category: "Women · incidence",
     value: "24.3%",
-    detail: "of new cancer cases",
+    detail: "of new cases",
+    description:
+      "Breast cancer accounts for 24.3% of new cancer cases among women",
   },
   {
     key: "mortality-countries",
-    category: "Women · mortality",
     value: "122",
-    detail: "countries where breast cancer ranks first",
+    detail: "countries · #1 mortality",
+    description:
+      "122 countries where breast cancer ranks first for cancer deaths among women",
   },
   {
     key: "mortality-share",
-    category: "Women · mortality",
     value: "16.2%",
     detail: "of cancer deaths",
+    description:
+      "Breast cancer accounts for 16.2% of cancer deaths among women",
   },
 ] as const;
 
 function MapArtwork() {
   const landscapeMaskId = useId();
-  const inkFilterId = useId();
   const mapLayer = manifest["3"].layers[1];
   const markerLayer = manifest["3"].layers[2];
   const markerSrc = imageUrls[`../assets/home/story/${markerLayer.file}`];
@@ -315,175 +318,126 @@ function MapArtwork() {
   const src = imageUrls[`../assets/home/story/${mapLayer.file}`];
   return (
     <>
-      <StoryArtwork
-        scene="3"
-        omitLayers={[2, 3]}
-        role="group"
-        description="An illustrative world map: six location marks appear one by one, showing that breast cancer affects people across the world. Locations are symbolic, not incidence data."
-      >
-        <svg
-          className="story-layer story-map-landscape"
-          data-layer="2"
-          aria-hidden="true"
-          viewBox="0 0 100 100"
-          preserveAspectRatio="none"
-          style={{
-            left: `${mapLayer.left}%`,
-            top: `${mapLayer.top}%`,
-            width: `${mapLayer.width}%`,
-            height: `${mapLayer.height}%`,
-          }}
+      <div className="tnbc-map-illustration">
+        <StoryArtwork
+          scene="3"
+          omitLayers={[2, 3]}
+          role="group"
+          description="An illustrative world map: six location marks appear one by one, showing that breast cancer affects people across the world. Locations are symbolic, not incidence data."
         >
-          <defs>
-            <mask
-              id={landscapeMaskId}
-              maskUnits="userSpaceOnUse"
-              x="0"
-              y="0"
-              width="100"
-              height="100"
-            >
-              <rect width="100" height="100" fill="white" />
-              {mapMotionPieces.map((part) => (
-                <rect
-                  key={part.name}
-                  x={part.x}
-                  y={part.y}
-                  width={part.width}
-                  height={part.height}
-                  fill="black"
-                />
-              ))}
-            </mask>
-          </defs>
-          <image
-            href={src}
-            width="100"
-            height="100"
-            preserveAspectRatio="none"
-            mask={`url(#${landscapeMaskId})`}
-          />
-        </svg>
-        {mapMotionPieces.map((part, index) => (
           <svg
-            key={part.name}
-            className={`story-layer story-map-piece story-map-piece--${part.kind}`}
-            data-map-piece={part.name}
-            style={
-              {
-                left:
-                  part.name === "wave-central"
-                    ? "34%"
-                    : `${mapLayer.left + (mapLayer.width * part.x) / 100}%`,
-                top:
-                  part.name === "wave-central"
-                    ? "92%"
-                    : `${mapLayer.top + (mapLayer.height * part.y) / 100}%`,
-                width: `${(mapLayer.width * part.width) / 100}%`,
-                height: `${(mapLayer.height * part.height) / 100}%`,
-                "--piece-index": index,
-              } as CSSProperties
-            }
-            viewBox={`${part.x} ${part.y} ${part.width} ${part.height}`}
-            preserveAspectRatio="none"
+            className="story-layer story-map-landscape"
+            data-layer="2"
             aria-hidden="true"
+            viewBox="0 0 100 100"
+            preserveAspectRatio="none"
+            style={{
+              left: `${mapLayer.left}%`,
+              top: `${mapLayer.top}%`,
+              width: `${mapLayer.width}%`,
+              height: `${mapLayer.height}%`,
+            }}
           >
+            <defs>
+              <mask
+                id={landscapeMaskId}
+                maskUnits="userSpaceOnUse"
+                x="0"
+                y="0"
+                width="100"
+                height="100"
+              >
+                <rect width="100" height="100" fill="white" />
+                {mapMotionPieces.map((part) => (
+                  <rect
+                    key={part.name}
+                    x={part.x}
+                    y={part.y}
+                    width={part.width}
+                    height={part.height}
+                    fill="black"
+                  />
+                ))}
+              </mask>
+            </defs>
             <image
               href={src}
               width="100"
               height="100"
               preserveAspectRatio="none"
+              mask={`url(#${landscapeMaskId})`}
             />
           </svg>
-        ))}
-        {markers.map((marker, index) => (
-          <svg
-            key={index}
-            className="story-layer tnbc-map-marker"
-            data-map-marker={index}
-            viewBox={`${marker.x} ${marker.y} ${marker.width} ${marker.height}`}
-            preserveAspectRatio="none"
-            aria-hidden="true"
-            style={{
-              left: `${markerLayer.left + (markerLayer.width * marker.x) / 100}%`,
-              top: `${markerLayer.top + (markerLayer.height * marker.y) / 100}%`,
-              width: `${(markerLayer.width * marker.width) / 100}%`,
-              height: `${(markerLayer.height * marker.height) / 100}%`,
-            }}
-          >
-            <image
-              href={markerSrc}
-              width="100"
-              height="100"
+          {mapMotionPieces.map((part, index) => (
+            <svg
+              key={part.name}
+              className={`story-layer story-map-piece story-map-piece--${part.kind}`}
+              data-map-piece={part.name}
+              style={
+                {
+                  left:
+                    part.name === "wave-central"
+                      ? "34%"
+                      : `${mapLayer.left + (mapLayer.width * part.x) / 100}%`,
+                  top:
+                    part.name === "wave-central"
+                      ? "92%"
+                      : `${mapLayer.top + (mapLayer.height * part.y) / 100}%`,
+                  width: `${(mapLayer.width * part.width) / 100}%`,
+                  height: `${(mapLayer.height * part.height) / 100}%`,
+                  "--piece-index": index,
+                } as CSSProperties
+              }
+              viewBox={`${part.x} ${part.y} ${part.width} ${part.height}`}
               preserveAspectRatio="none"
-            />
-          </svg>
-        ))}
-        <svg
-          className="tnbc-map-ink-defs"
-          width="0"
-          height="0"
-          aria-hidden="true"
-        >
-          <defs>
-            <filter
-              id={inkFilterId}
-              x="-5%"
-              y="-10%"
-              width="110%"
-              height="120%"
-              colorInterpolationFilters="sRGB"
+              aria-hidden="true"
             >
-              <feTurbulence
-                type="fractalNoise"
-                baseFrequency="0.68"
-                numOctaves="2"
-                seed="11"
-                result="grain"
+              <image
+                href={src}
+                width="100"
+                height="100"
+                preserveAspectRatio="none"
               />
-              <feDisplacementMap
-                in="SourceGraphic"
-                in2="grain"
-                scale="0.6"
-                xChannelSelector="R"
-                yChannelSelector="G"
-                result="ink"
+            </svg>
+          ))}
+          {markers.map((marker, index) => (
+            <svg
+              key={index}
+              className="story-layer tnbc-map-marker"
+              data-map-marker={index}
+              viewBox={`${marker.x} ${marker.y} ${marker.width} ${marker.height}`}
+              preserveAspectRatio="none"
+              aria-hidden="true"
+              style={{
+                left: `${markerLayer.left + (markerLayer.width * marker.x) / 100}%`,
+                top: `${markerLayer.top + (markerLayer.height * marker.y) / 100}%`,
+                width: `${(markerLayer.width * marker.width) / 100}%`,
+                height: `${(markerLayer.height * marker.height) / 100}%`,
+              }}
+            >
+              <image
+                href={markerSrc}
+                width="100"
+                height="100"
+                preserveAspectRatio="none"
               />
-              <feColorMatrix
-                in="grain"
-                type="matrix"
-                values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0.1 0.1 0.1 0 0.72"
-                result="paper"
-              />
-              <feComposite in="ink" in2="paper" operator="in" />
-            </filter>
-          </defs>
-        </svg>
-        <div
-          className="tnbc-map-copy"
-          style={
-            { "--map-ink-filter": `url(#${inkFilterId})` } as CSSProperties
-          }
-        >
-          <h3 className="tnbc-map-title" data-map-copy>
-            <span>Breast cancer</span> <span>knows no borders.</span>
-          </h3>
-          <p className="tnbc-map-intro" data-map-copy>
-            The most common cancer
-            <br />
+            </svg>
+          ))}
+        </StoryArtwork>
+      </div>
+      <div className="tnbc-map-copy">
+        <h3 className="tnbc-map-intro">
+          <span className="tnbc-map-intro-lead" data-map-copy>
+            Breast cancer is the
+          </span>
+          <strong className="tnbc-map-intro-focus" data-map-copy>
+            most common cancer
+          </strong>
+          <span className="tnbc-map-intro-context" data-map-copy>
             among women worldwide.
-          </p>
-          <a
-            className="tnbc-map-source"
-            href="https://www.who.int/news-room/fact-sheets/detail/breast-cancer"
-            target="_blank"
-            rel="noreferrer"
-            aria-label="World Health Organization: global breast cancer facts"
-          >
-            WHO ↗
-          </a>
-        </div>
-      </StoryArtwork>
+          </span>
+        </h3>
+      </div>
       <aside
         className="tnbc-map-notes"
         aria-label="Global breast cancer statistics for women, GLOBOCAN 2024"
@@ -493,6 +447,8 @@ function MapArtwork() {
             className={`tnbc-map-note tnbc-map-note--${statistic.key}`}
             data-map-note
             key={statistic.key}
+            role="group"
+            aria-label={statistic.description}
           >
             <img
               src={mapDataNoteUrl}
@@ -502,9 +458,6 @@ function MapArtwork() {
               decoding="async"
             />
             <div className="tnbc-map-note-body">
-              <span className="tnbc-map-note-category">
-                {statistic.category}
-              </span>
               <strong className="tnbc-map-note-val">{statistic.value}</strong>
               <span className="tnbc-map-note-detail">{statistic.detail}</span>
             </div>
@@ -519,6 +472,15 @@ function MapArtwork() {
           Data: GLOBOCAN 2024 ↗
         </a>
       </aside>
+      <a
+        className="tnbc-map-source"
+        href="https://www.who.int/news-room/fact-sheets/detail/breast-cancer"
+        target="_blank"
+        rel="noreferrer"
+        aria-label="World Health Organization: global breast cancer facts"
+      >
+        WHO ↗
+      </a>
     </>
   );
 }

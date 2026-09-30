@@ -102,7 +102,10 @@
     --lab-gold: #c39a55;
     --lab-blue: #667e8c;
     --lab-success: #2f6f68;
-    --lab-active-card-bg: linear-gradient(150deg, #102f59 0%, #173f78 100%);
+    --lab-green-deep: #153e34;
+    --lab-green-rich: #1b4d41;
+    --lab-green-mint: #9bd6c0;
+    --lab-active-card-bg: linear-gradient(145deg, #133a30 0%, #1a4d41 52%, #153e34 100%);
     --lab-active-card-ink: #fcf8f1;
     --lab-radius-panel: 28px;
     --lab-shadow-paper: inset 0 0 0 4px rgba(252, 248, 241, 0.6), 0 12px 28px -20px rgba(66, 45, 54, 0.5);
@@ -417,7 +420,6 @@
   height: 100%;
   overflow: hidden;
   background:
-    linear-gradient(90deg, var(--lab-line-subtle) 1px, transparent 1px) 0 0 / 12.5% 100%,
     radial-gradient(circle at 92% 12%, rgba(215, 132, 179, 0.18), transparent 28rem),
     var(--lab-grain) 0 0 / 160px 160px,
     var(--lab-paper);
@@ -437,7 +439,7 @@
   display: grid;
   width: min(100%, 1560px);
   height: 100%;
-  grid-template-columns: minmax(220px, 16vw) minmax(0, 1fr);
+  grid-template-columns: minmax(240px, 17.5vw) minmax(0, 1fr);
   margin: 0 auto;
   padding: clamp(36px, 5vh, 60px) clamp(48px, 5.5vw, 96px) clamp(24px, 3.5vh, 42px) clamp(24px, 4vw, 64px);
 }
@@ -451,15 +453,15 @@
   min-width: 0;
   flex-direction: column;
   justify-content: space-between;
-  padding: 4px clamp(20px, 2.2vw, 36px) 4px 0;
-  border-right: 1px solid var(--lab-line);
+  padding: 4px clamp(24px, 2.5vw, 38px) 4px 0;
+  border-right: 1px dashed rgba(27, 23, 25, 0.11);
 }
 
 .catalog-route-heading h1 {
   margin: 0;
   color: var(--lab-navy-deep);
   font-family: var(--font-heading);
-  font-size: clamp(34px, 3vw, 50px);
+  font-size: clamp(30px, 2.6vw, 44px);
   font-weight: 550;
   letter-spacing: -0.03em;
   line-height: 1;
@@ -526,19 +528,19 @@
 }
 
 .catalog-route-button.is-active {
-  background: var(--lab-care-soft);
-  color: var(--lab-ink-deep);
-  box-shadow: 0 4px 18px rgba(16, 47, 89, 0.1);
+  background: var(--lab-green-mint);
+  color: var(--lab-green-deep);
+  box-shadow: 0 6px 20px -4px rgba(21, 62, 52, 0.28);
 }
 
 .catalog-route-button.is-active > span {
-  border-color: var(--lab-care);
-  background: var(--lab-navy-deep);
+  border-color: var(--lab-green-deep);
+  background: var(--lab-green-deep);
   color: #fcf8f1;
 }
 
 .catalog-route-button.is-active small {
-  color: var(--lab-navy-deep);
+  color: rgba(21, 62, 52, 0.78);
   font-weight: 500;
 }
 
@@ -559,7 +561,7 @@
   right: clamp(8px, 2vw, 30px);
   left: clamp(24px, 3.5vw, 56px);
   padding-bottom: 14px;
-  border-bottom: 1px solid var(--lab-line);
+  border-bottom: 1px dashed rgba(27, 23, 25, 0.11);
 }
 
 .catalog-stage-copy h2 {
@@ -613,10 +615,31 @@
   z-index: 10;
   transform: translate(-50%, -50%) scale(1);
   opacity: 1;
-  border: 1px solid rgba(215, 132, 179, 0.45);
+  border: 1px solid rgba(155, 214, 192, 0.45);
   background: var(--lab-active-card-bg);
   color: var(--lab-active-card-ink);
-  box-shadow: 0 32px 84px rgba(16, 47, 89, 0.32), 0 0 0 1px rgba(215, 132, 179, 0.25);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.16),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.28),
+    0 24px 60px -15px rgba(19, 56, 47, 0.5),
+    0 0 0 1px rgba(155, 214, 192, 0.2);
+}
+
+/* 丝绸微光质感层 (Silk Sheen & fine inner luster) */
+.catalog-experiment-card--active::after {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--lab-radius-panel);
+  background: linear-gradient(
+    130deg,
+    rgba(255, 255, 255, 0.16) 0%,
+    rgba(255, 255, 255, 0.04) 28%,
+    transparent 52%,
+    rgba(215, 132, 179, 0.15) 75%,
+    rgba(255, 255, 255, 0.08) 100%
+  );
+  pointer-events: none;
+  content: "";
 }
 
 .catalog-experiment-card--previous {
@@ -696,8 +719,14 @@
 }
 
 .catalog-experiment-card--active .catalog-card-action {
-  border-bottom-color: var(--lab-care);
-  color: var(--lab-care);
+  border-bottom: 1.5px solid var(--lab-green-mint);
+  color: var(--lab-green-mint);
+  transition: all 0.2s ease;
+}
+
+.catalog-experiment-card--active .catalog-card-action:hover {
+  color: #ffffff;
+  border-bottom-color: #ffffff;
 }
 
 .catalog-card-number {
@@ -746,7 +775,7 @@
   z-index: 1;
   inset: 0 auto 0 0;
   border-radius: inherit;
-  background: var(--lab-navy-deep);
+  background: linear-gradient(90deg, var(--lab-green-deep), var(--lab-green-rich), var(--lab-green-mint));
   transition: width 480ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
@@ -756,7 +785,7 @@
   top: 50%;
   width: 24px;
   height: 34px;
-  color: var(--lab-navy-deep);
+  color: var(--lab-green-deep);
   pointer-events: none;
   transform: translate(-50%, -50%);
   transition: left 480ms cubic-bezier(0.22, 1, 0.36, 1);
@@ -822,11 +851,11 @@
   .catalog-route {
     padding: 0 0 18px;
     border-right: 0;
-    border-bottom: 1px solid var(--lab-line);
+    border-bottom: 1px dashed rgba(27, 23, 25, 0.11);
   }
 
   .catalog-route nav {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 8px;
   }
 
@@ -891,18 +920,22 @@
   }
 }
 
-/* Washi tape on the open experiment card and a soft notebook frame on the page. */
+/* Washi tape on the open experiment card with delicate edges. */
 .catalog-experiment-card--active::before {
   position: absolute;
-  top: -11px;
-  left: 42px;
-  width: 96px;
-  height: 22px;
-  border-radius: 3px;
-  background: rgba(215, 132, 179, 0.62);
-  box-shadow: 0 1px 3px rgba(16, 47, 89, 0.18);
+  top: -12px;
+  left: 48px;
+  width: 104px;
+  height: 24px;
+  border-radius: 2px;
+  background: rgba(215, 132, 179, 0.68);
+  box-shadow: 0 1px 4px rgba(19, 56, 47, 0.2), inset 0 1px 1px rgba(255, 255, 255, 0.45);
   content: "";
-  transform: rotate(-3deg);
+  transform: rotate(-2.5deg);
+  border-left: 2px dashed rgba(255, 255, 255, 0.45);
+  border-right: 2px dashed rgba(255, 255, 255, 0.45);
+  backdrop-filter: blur(2px);
+  z-index: 12;
 }
 
 .catalog-page::after {
@@ -1289,11 +1322,23 @@
 }
 
 .lab-tabs .lab-tab {
+  min-width: 0;
   gap: 2px;
+  padding-inline: 2px;
+  overflow: hidden;
   border-radius: 999px;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
   color: var(--lab-ink-muted);
   font-family: var(--font-round);
   font-weight: 500;
+}
+
+.lab-tabs .lab-tab svg {
+  width: 11px;
+  height: 11px;
+  margin-right: 0;
+  flex-shrink: 0;
 }
 
 .lab-tabs .lab-tab[data-state="active"] {
