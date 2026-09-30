@@ -88,7 +88,7 @@ const steps = [
 ];
 
 const I = {
-  room:'./images/experiment2/bg.png',
+  room:'https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/bg.avif',
   table1:'./images/blue_table.png', table2:'./images/table_normal.png', bench:'./images/Cleanbench_part.png',
   centrifuge:'./images/experiment3/HighSpeedCentrifuge.png', vortex:'./images/experiment3/VortexOscillator.png',
   microwave:'./images/experiment3/MicrowaveOvenClosed.png', microwaveOpen:'./images/experiment3/44.png',
@@ -1055,7 +1055,7 @@ const handleStepNavigation=useCallback((stepIndex:number)=>{
               {scene.greenAtWork&&<img id="green" src={I.greenEluent} onClick={()=>handleItemClick('green')} className={'absolute left-[64.3%] top-[19%] h-[11%] w-[3.2%] object-contain opacity-0 '+hl('green')} alt="Green Elution Buffer"/>}
             </div>
             {clockLabel&&<div className={'absolute top-[4.3%] z-[95] flex w-[8%] flex-col items-center pointer-events-none animate-bounce '+(clockLabel==="After 1 minute"?'left-[79%]':'left-[66%]')}>
-              <img src="./images/experiment1/hours.png" className="w-full drop-shadow-[0_0_12px_rgba(255,220,80,0.85)]" alt="Experiment Timer"/>
+              <img src="https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment1/hours.avif" className="w-full drop-shadow-[0_0_12px_rgba(255,220,80,0.85)]" alt="Experiment Timer"/>
               <span className="-mt-1 rounded-full bg-black/70 px-2 py-0.5 text-[10px] font-bold text-yellow-200 whitespace-nowrap">{clockLabel}</span>
             </div>}
             <div className="absolute inset-x-0 bottom-0 z-20 h-[60%] bg-bottom bg-no-repeat pointer-events-none" style={{backgroundImage:"url('"+I.bench+"')",backgroundSize:'100% 100%'}}/>

@@ -200,8 +200,8 @@ const isDropperHighlighted = currentStep === 2
     ease: "linear",  // 最简单的线性移动
     onComplete: () => {
       const img = document.querySelector("#item-22") as HTMLImageElement;
-      if (img && img.src && !img.src.includes("25.png")) {
-        img.src = "./images/experiment2/25.png";
+      if (img && img.src && !img.src.includes("25.avif")) {
+        img.src = "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/25.avif";
       }
     }
   }, 0)
@@ -359,7 +359,7 @@ if (experiment.id === 'exp2' && (currentStep === 3 || currentStep === 4 ||curren
     setTweezersClicked(false);
     
     const tweezers = document.querySelector("#tweezers") as HTMLImageElement;
-    if (tweezers) tweezers.src = "./images/experiment2/29.png";
+    if (tweezers) tweezers.src = "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/29.avif";
     
     setIsStained(true);
     setShowStainIcon(true);
@@ -808,12 +808,12 @@ const handleStepNavigation = useCallback((stepIndex: number) => {
         <main className="flex-1 bg-black flex flex-col items-center gap-3 p-3 relative overflow-hidden min-w-0">
           {isMicroscopeViewActive ? (
             <div className="relative aspect-video w-auto h-[72%] shrink-0 max-w-full shadow-2xl overflow-hidden ring-1 ring-slate-700">
-              <div className="absolute inset-0 bg-center bg-no-repeat" style={{ backgroundImage: "url('./images/experiment2/background_new.png')", backgroundSize: '100% 100%' }} />
+              <div className="absolute inset-0 bg-center bg-no-repeat" style={{ backgroundImage: "url('https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/background_new.avif')", backgroundSize: '100% 100%' }} />
               <div className="absolute inset-0">
                 {!isSlideInserted && (
                   <img 
                     id="slide-in-microscope"
-                    src="./images/experiment2/bopian.png" 
+                    src="https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/bopian.avif"
                     className={`absolute w-[12%] cursor-pointer transition-all hover:scale-110
                       ${isSlideMovedToMicroscope ? 'left-[35%] bottom-[10%] drop-shadow-[0_0_20px_rgba(255,255,0,0.8)]' : 'left-[20%] bottom-[15%]'}
                     `}
@@ -824,14 +824,14 @@ const handleStepNavigation = useCallback((stepIndex: number) => {
                 {isReagentClicked && !isSlideMovedToMicroscope && (
                   <img 
                     id="microscope-diguan"
-                    src="./images/experiment2/diguan.png" 
+                    src="https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/diguan.avif"
                     className="absolute left-[24%] bottom-[22%] w-[8%]"
                     alt="Dropper" 
                   />
                 )}
                 <img 
                   id="microscope-stain-bottle"
-                  src="./images/experiment2/shiji_normal.png"
+                  src="https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/shiji_normal.avif"
                   className={`absolute left-[32%] bottom-[18%] w-[4%] transition-all cursor-pointer hover:scale-110
                     ${isReagentClicked ? '' : 'drop-shadow-[0_0_15px_rgba(255,255,0,0.8)]'}
                   `}
@@ -840,7 +840,7 @@ const handleStepNavigation = useCallback((stepIndex: number) => {
                 />
                 <img 
                   id="microscope-microscope"
-                  src={`./images/experiment2/${isSlideInserted ? 'xianweijing.png' : '15.png'}`} 
+                  src={(isSlideInserted ? 'https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/xianweijing.avif' : 'https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/15.avif')}
                   className={`absolute left-[48%] bottom-[5%] w-[18%] transition-all cursor-pointer hover:scale-105
                     ${isMicroscopeHighlighted ? 'drop-shadow-[0_0_20px_rgba(255,255,0,0.8)]' : ''}
                   `}
@@ -855,7 +855,7 @@ const handleStepNavigation = useCallback((stepIndex: number) => {
                   />
                   <div className="relative flex items-center gap-5 bg-slate-900/90 p-4 rounded-2xl border border-white/20 shadow-2xl animate-in zoom-in duration-300 max-w-[88%] max-h-[88%] overflow-hidden">
                     <div className="space-y-2 text-center">
-                      <img src="./images/experiment2/info.png" className="w-auto max-w-[240px] max-h-[230px] object-contain rounded-xl border-2 border-white/30 shadow-2xl" alt="Microscopic Observation" />
+                      <img src="https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/info.avif" className="w-auto max-w-[240px] max-h-[230px] object-contain rounded-xl border-2 border-white/30 shadow-2xl" alt="Microscopic Observation" />
                       <p className="text-[10px] text-slate-500 uppercase tracking-widest">Microscope View</p>
                     </div>
                     <div className="flex flex-col gap-4 max-w-[240px]">
@@ -882,13 +882,13 @@ const handleStepNavigation = useCallback((stepIndex: number) => {
             </div>
           ) : (
             <div id="experiment-canvas" className="relative aspect-video w-auto h-[72%] shrink-0 max-w-full shadow-2xl bg-[#1e293b] overflow-hidden ring-1 ring-slate-700">
-              <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: "url('./images/experiment2/bg.png')" }} />
+              <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: "url('https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/bg.avif')" }} />
 
               {/* 后景层 */}
               <div className="absolute inset-0 z-0 pointer-events-none opacity-80">
                 <img 
                   id="pool"
-                  src={isPoolReplaced ? "./images/experiment2/31.png" : "./images/pool.png"} 
+                  src={isPoolReplaced ? "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/31.avif" : "./images/pool.png"}
                   className={`absolute left-[8%] top-[18%] w-[18%] pointer-events-auto transition-all cursor-pointer
                     ${poolClickable ? 'drop-shadow-[0_0_20px_rgba(255,255,0,0.8)] scale-105 z-50' : ''}
                   `}
@@ -898,7 +898,7 @@ const handleStepNavigation = useCallback((stepIndex: number) => {
                 <img src="./images/table_normal.png" className="absolute left-[72%] top-[20%] w-[25%] pointer-events-auto" />
                 <img 
                   id="incubator"
-                  src="./images/experiment2/13.png" 
+                  src="https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/13.avif"
                   className={`absolute left-[42%] top-[23.5%] w-[6.5%] z-10 pointer-events-auto transition-all cursor-pointer
                    
                   `}
@@ -907,7 +907,7 @@ const handleStepNavigation = useCallback((stepIndex: number) => {
                 />
                 <img 
                   id="microscope"
-                  src="./images/experiment2/15.png" 
+                  src="https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/15.avif"
                   className={`absolute left-[78%] top-[16%] w-[9.5%] z-10 pointer-events-auto transition-all cursor-pointer
                     ${(currentStep === 7) ? 'drop-shadow-[0_0_20px_rgba(255,255,0,0.8)]' : ''}
                   `}
@@ -920,14 +920,14 @@ const handleStepNavigation = useCallback((stepIndex: number) => {
 
             {/* 器材层 */}
             <div className="absolute inset-0 z-20 pointer-events-none">
-                <img id="pipette" src="./images/experiment2/24.png" className="absolute left-[6.5%] top-[52%] w-[11%] pointer-events-auto cursor-pointer" />
+                <img id="pipette" src="https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/24.avif" className="absolute left-[6.5%] top-[52%] w-[11%] pointer-events-auto cursor-pointer" />
 
                 {/* 培养皿 */}
                 <div key={`petri-${sceneRevision}`} id="petri-dish" onClick={() => handleItemClick('petri-dish')}
                   className={`absolute left-[35%] top-[68%] w-[12%] pointer-events-auto cursor-pointer
                     ${currentStep < 2 ? 'drop-shadow-[0_0_20px_rgba(255,255,0,0.8)] z-30 transition-all' : 'z-20'}
                   `}>
-                  <img src="./images/experiment2/18.png" className="w-full" />
+                  <img src="https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/18.avif" className="w-full" />
                   {showBacteria && currentStep < 2 && (
                     <div className="absolute inset-0 bg-yellow-200/20 rounded-full animate-pulse blur-md pointer-events-none" />
                   )}
@@ -935,7 +935,7 @@ const handleStepNavigation = useCallback((stepIndex: number) => {
 
                 {/* 载玻片 */}
                 <img key={`slide-${sceneRevision}`} id="item-2"
-                  src={isSlidePrepared ? "./images/experiment2/19.png" : "./images/experiment2/2.png"} 
+                  src={isSlidePrepared ? "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/19.avif" : "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/2.avif"}
                   onClick={() => handleItemClick('item-2')}
                   className={`absolute left-[20%] top-[68%] w-[8%] pointer-events-auto cursor-pointer transition-all
                     ${(currentStep === 2 && !isSlidePrepared) ? 'drop-shadow-[0_0_20px_rgba(255,255,0,0.8)] z-30 scale-110' : 'z-20'}
@@ -944,7 +944,7 @@ const handleStepNavigation = useCallback((stepIndex: number) => {
 
                 {/* 镊子 */}
                 <img key={`tweezers-${sceneRevision}`} id="tweezers"
-                  src={isSlidePrepared ? (isStainedRound4 ? "./images/experiment2/39.png" : (isStainedRound3 ? "./images/experiment2/37.png" : (isStainedRound2 ? "./images/experiment2/33.png" : (isStained ? "./images/experiment2/29.png" : (isSmearPrepared ? "./images/experiment2/27.png" : "./images/experiment2/20.png"))))) : "./images/experiment2/4.png"} 
+                  src={isSlidePrepared ? (isStainedRound4 ? "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/39.avif" : (isStainedRound3 ? "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/37.avif" : (isStainedRound2 ? "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/33.avif" : (isStained ? "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/29.avif" : (isSmearPrepared ? "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/27.avif" : "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/20.avif"))))) : "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/4.avif"}
                   className={`absolute pointer-events-auto z-[60] transition-all cursor-pointer
                     ${isSlidePrepared
                       ? (currentStep >= 3
@@ -961,7 +961,7 @@ const handleStepNavigation = useCallback((stepIndex: number) => {
                 {showStainIcon && !isTweezersAtPool && (
                   <img 
                     id="item-28"
-                    src="./images/experiment2/28.png"
+                    src="https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/28.avif"
                     className="absolute left-[32%] top-[76%] w-[10%] z-50 pointer-events-none animate-bounce"
                   />
                 )}
@@ -970,7 +970,7 @@ const handleStepNavigation = useCallback((stepIndex: number) => {
                 {showStainIconRound2 && !isTweezersAtPool && (
                   <img 
                     id="item-32"
-                    src="./images/experiment2/32.png"
+                    src="https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/32.avif"
                     className="absolute left-[32%] top-[76%] w-[10%] z-50 pointer-events-none animate-bounce"
                   />
                 )}
@@ -979,7 +979,7 @@ const handleStepNavigation = useCallback((stepIndex: number) => {
                 {showStainIconRound3 && !isTweezersAtPool && (
                   <img 
                     id="item-35"
-                    src="./images/experiment2/35.png"
+                    src="https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/35.avif"
                     className="absolute left-[32%] top-[76%] w-[10%] z-50 pointer-events-none animate-bounce"
                   />
                 )}
@@ -988,7 +988,7 @@ const handleStepNavigation = useCallback((stepIndex: number) => {
                 {showStainIconRound4 && !isTweezersAtPool && (
                   <img 
                     id="item-38"
-                    src="./images/experiment2/38.png"
+                    src="https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/38.avif"
                     className="absolute left-[32%] top-[76%] w-[10%] z-50 pointer-events-none animate-bounce"
                   />
                 )}
@@ -996,7 +996,7 @@ const handleStepNavigation = useCallback((stepIndex: number) => {
                 {/* 静态器材：找回 3, 5, 6, 8-11 */}
                <img 
   id="item-3" 
-  src="./images/experiment2/3.png" 
+  src="https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/3.avif"
   className={`absolute left-[15%] top-[79%] w-[10%] pointer-events-auto cursor-pointer transition-all
    
   `}
@@ -1006,7 +1006,7 @@ const handleStepNavigation = useCallback((stepIndex: number) => {
 {loopVisible && (
   <img 
     id="item-5" 
-    src={loopClickable ? "./images/experiment2/__1.png" : "./images/experiment2/5.png"} 
+    src={loopClickable ? "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/__1.avif" : "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/5.avif"}
     className={`absolute left-[19%] top-[82%] w-[4%] -rotate-12 pointer-events-auto cursor-pointer transition-all
       ${loopClickable ? 'drop-shadow-[0_0_20px_rgba(255,255,0,0.8)] z-90 scale-110' : 'z-90'}
     `}
@@ -1015,7 +1015,7 @@ const handleStepNavigation = useCallback((stepIndex: number) => {
 )}
 <img 
   id="item-6" 
-  src={lampLit ? "./images/experiment2/26.png" : "./images/experiment2/6.png"} 
+  src={lampLit ? "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/26.avif" : "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/6.avif"}
   className={`absolute left-[48%] top-[68%] w-[7%] pointer-events-auto cursor-pointer transition-all
     ${(experiment.id === 'exp2' && lampClickable) 
       ? 'drop-shadow-[0_0_20px_rgba(255,255,0,0.8)] z-50 scale-110' 
@@ -1028,7 +1028,7 @@ const handleStepNavigation = useCallback((stepIndex: number) => {
                    {[8, 9, 10, 11].map(n => (
                      <img 
                        key={n} 
-                       src={`./images/experiment2/${n}.png`} 
+                       src={`https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/${n}.avif`}
                        className={`w-[20%] transition-all pointer-events-auto
                          ${(n === 11 && bottleClickable) || (n === 10 && item10Clickable) || (n === 9 && item9Clickable) || (n === 8 && item8Clickable) ? 'drop-shadow-[0_0_20px_rgba(255,255,0,0.8)] z-50 scale-125 cursor-pointer' : ''}
                        `}
@@ -1039,7 +1039,7 @@ const handleStepNavigation = useCallback((stepIndex: number) => {
 
                 {/* 滴管底座 (图7) */}
                 <img id="item-7"
-                  src={isDropperUsed ? "./images/experiment2/21.png" : "./images/experiment2/7.png"} 
+                  src={isDropperUsed ? "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/21.avif" : "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/7.avif"}
                   className={`absolute left-[68%] top-[77%] w-[5%] pointer-events-auto transition-all
                     ${(isSlidePrepared && !isDropperUsed && currentStep === 2) ? 'drop-shadow-[0_0_20px_rgba(255,255,0,0.8)] z-30 scale-110 cursor-pointer' : 'z-20'}
                   `}
@@ -1050,7 +1050,7 @@ const handleStepNavigation = useCallback((stepIndex: number) => {
                 {/* 找到 id="item-12" 的 img 标签 */}
 <img 
   id="item-12" 
-  src="./images/experiment2/12.png" 
+  src="https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/12.avif"
   className="absolute left-[82%] top-[65%] w-[8%] pointer-events-auto z-20"
 />
              {/* 悬浮滴管 (图22 -> 23) */}
@@ -1059,8 +1059,8 @@ const handleStepNavigation = useCallback((stepIndex: number) => {
     key={`dropper-${sceneRevision}`}
     id="item-22"
     src={isDropperHighlighted
-      ? "./images/experiment2/highlight-diguan.png"
-      : (isDropperInserted ? "./images/experiment2/23.png" : "./images/experiment2/22.png")}
+      ? "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/highlight-diguan.avif"
+      : (isDropperInserted ? "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/23.avif" : "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/22.avif")}
     className={`absolute left-[78%] top-[52%] w-[7%] pointer-events-auto transition-all
       ${isDropperHighlighted 
         ? 'drop-shadow-[0_0_20px_rgba(255,255,0,0.8)] z-[100] cursor-pointer scale-110' 
@@ -1092,7 +1092,7 @@ const handleStepNavigation = useCallback((stepIndex: number) => {
                 />
                 <div className="relative flex items-center gap-5 bg-slate-900/90 p-4 rounded-2xl border border-white/20 shadow-2xl animate-in zoom-in duration-300 max-w-[88%] max-h-[88%] overflow-hidden">
                   <div className="space-y-2 text-center">
-                    <img src="./images/experiment2/16.png" className="w-auto max-w-[240px] max-h-[230px] object-contain rounded-xl border-2 border-white/30 shadow-2xl" alt="Colony Distribution" />
+                    <img src="https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/16.avif" className="w-auto max-w-[240px] max-h-[230px] object-contain rounded-xl border-2 border-white/30 shadow-2xl" alt="Colony Distribution" />
                     <p className="text-[10px] text-slate-500 uppercase tracking-widest">Enlarged View</p>
                   </div>
                   <div className="flex flex-col gap-4 max-w-[240px]">
@@ -1123,7 +1123,7 @@ const handleStepNavigation = useCallback((stepIndex: number) => {
                 />
                 <div className="relative flex items-center gap-5 bg-slate-900/90 p-4 rounded-2xl border border-white/20 shadow-2xl animate-in zoom-in duration-300 max-w-[88%] max-h-[88%] overflow-hidden">
                   <div className="text-center space-y-2">
-                    <img src="./images/experiment2/30.png" className="w-auto max-w-[240px] max-h-[230px] object-contain rounded-lg border-2 border-white/30 shadow-2xl" alt="Staining Results" />
+                    <img src="https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/30.avif" className="w-auto max-w-[240px] max-h-[230px] object-contain rounded-lg border-2 border-white/30 shadow-2xl" alt="Staining Results" />
                     <p className="text-[9px] text-slate-500 uppercase tracking-widest">Microscope View (After Staining)</p>
                   </div>
                   <div className="max-w-[240px] text-left">
@@ -1147,7 +1147,7 @@ const handleStepNavigation = useCallback((stepIndex: number) => {
                  />
                  <div className="relative flex items-center gap-5 bg-slate-900/90 p-4 rounded-2xl border border-white/20 shadow-2xl animate-in zoom-in duration-300 max-w-[88%] max-h-[88%] overflow-hidden">
                    <div className="text-center space-y-2">
-                     <img src="./images/experiment2/34.png" className="w-auto max-w-[240px] max-h-[230px] object-contain rounded-lg border-2 border-white/30 shadow-2xl" alt="Counterstaining Results" />
+                     <img src="https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/34.avif" className="w-auto max-w-[240px] max-h-[230px] object-contain rounded-lg border-2 border-white/30 shadow-2xl" alt="Counterstaining Results" />
                      <p className="text-[9px] text-slate-500 uppercase tracking-widest">Microscope View (After Counterstaining)</p>
                    </div>
                    <div className="max-w-[240px] text-left">
@@ -1171,7 +1171,7 @@ const handleStepNavigation = useCallback((stepIndex: number) => {
                  />
                  <div className="relative flex items-center gap-5 bg-slate-900/90 p-4 rounded-2xl border border-white/20 shadow-2xl animate-in zoom-in duration-300 max-w-[88%] max-h-[88%] overflow-hidden">
                    <div className="text-center space-y-2">
-                     <img src="./images/experiment2/36.png" className="w-auto max-w-[240px] max-h-[230px] object-contain rounded-lg border-2 border-white/30 shadow-2xl" alt="Round 3 Results" />
+                     <img src="https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/36.avif" className="w-auto max-w-[240px] max-h-[230px] object-contain rounded-lg border-2 border-white/30 shadow-2xl" alt="Round 3 Results" />
                      <p className="text-[9px] text-slate-500 uppercase tracking-widest">Microscope View (Round 3)</p>
                    </div>
                    <div className="max-w-[240px] text-left">
@@ -1195,7 +1195,7 @@ const handleStepNavigation = useCallback((stepIndex: number) => {
                  />
                  <div className="relative flex items-center gap-5 bg-slate-900/90 p-4 rounded-2xl border border-white/20 shadow-2xl animate-in zoom-in duration-300 max-w-[88%] max-h-[88%] overflow-hidden">
                    <div className="text-center space-y-2">
-                     <img src="./images/experiment2/40.png" className="w-auto max-w-[240px] max-h-[230px] object-contain rounded-lg border-2 border-white/30 shadow-2xl" alt="Round 4 Results" />
+                     <img src="https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/40.avif" className="w-auto max-w-[240px] max-h-[230px] object-contain rounded-lg border-2 border-white/30 shadow-2xl" alt="Round 4 Results" />
                      <p className="text-[9px] text-slate-500 uppercase tracking-widest">Microscope View (Round 4)</p>
                    </div>
                    <div className="max-w-[240px] text-left">

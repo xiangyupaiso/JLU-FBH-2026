@@ -1688,7 +1688,7 @@ const handleStepNavigation = useCallback((stepIndex: number) => {
 
               {incubationDisplay && (
                 <div id="incubation-timer" className={`pointer-events-none absolute z-[70] flex items-center gap-2 text-black ${incubationDisplay.temperature === "Ice Bath" ? 'left-[70%] top-[56%]' : 'left-[47.5%] top-[5%]'}`}>
-                  <img src="./images/experiment1/hours.png" className="w-14 shrink-0 drop-shadow-[0_0_10px_rgba(255,220,80,0.8)]" alt="Experiment Timer" draggable={false} />
+                  <img src="https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment1/hours.avif" className="w-14 shrink-0 drop-shadow-[0_0_10px_rgba(255,220,80,0.8)]" alt="Experiment Timer" draggable={false} />
                   <div className="font-mono text-xl font-semibold italic leading-tight">
                     <div>{incubationDisplay.temperature}</div>
                     <div>{incubationDisplay.duration}</div>

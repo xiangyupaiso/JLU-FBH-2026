@@ -49,7 +49,7 @@ interface SceneSnapshot {
 }
 
 const IMG = {
-  background: './images/experiment2/bg.png',
+  background: 'https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/bg.avif',
   bench: './images/Cleanbench_part.png',
   table: './images/blue_table.png',
   pipette: './images/experiment3/Pipette.png',

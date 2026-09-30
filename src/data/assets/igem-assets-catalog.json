@@ -3,14 +3,14 @@
     "teamId": "6056",
     "teamName": "JLU-FBH",
     "year": 2026,
-    "lastUpdated": "2026-09-29T07:54:00.051Z",
+    "lastUpdated": "2026-09-29T12:35:40.143579+00:00",
     "stats": {
-      "total": 239,
-      "inUse": 190,
+      "total": 314,
+      "inUse": 265,
       "standby": 49,
       "deprecated": 0,
       "byKind": {
-        "image": 209,
+        "image": 284,
         "font": 6,
         "structure": 2,
         "pdf": 22
@@ -5807,6 +5807,5743 @@
         }
       ],
       "notes": "Referenced in 1 location(s)"
+    },
+    "virtual-lab-experiment1-08241-png": {
+      "id": "virtual-lab-experiment1-08241-png",
+      "kind": "image",
+      "category": "virtual-lab",
+      "fileName": "08241.png",
+      "localPath": "public/virtual-lab/images/experiment1/08241.png",
+      "fileSize": 157760,
+      "md5": "add51b8040407f8a02c5ce56fd1168b0",
+      "description": "",
+      "keywords": [
+        "virtual-lab",
+        "experiment1"
+      ],
+      "status": "in-use",
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment1/08241.avif",
+      "sha256": "54e5f86c87af79e4f79531fcbe048c2c61135a088b82148b72a0da69e5c64e05",
+      "references": [
+        {
+          "file": "virtual-lab/src/data/experiment1Sidebar.ts",
+          "line": 29,
+          "old": "./images/experiment1/08241.png",
+          "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment1/08241.avif",
+          "status": "replaced"
+        }
+      ],
+      "upload": {
+        "target": {
+          "platform": "igem",
+          "year": 2026,
+          "team": "6056"
+        },
+        "status": "uploaded",
+        "source": "user-provided",
+        "verification": "skipped at explicit user request",
+        "remoteName": "08241.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "recordedAt": "2026-09-29T12:01:25.415000+00:00",
+        "references": [
+          {
+            "file": "virtual-lab/src/data/experiment1Sidebar.ts",
+            "line": 29,
+            "old": "./images/experiment1/08241.png",
+            "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment1/08241.avif",
+            "status": "replaced"
+          }
+        ],
+        "unresolved": [],
+        "checks": [
+          {
+            "check": "remote URL and image verification",
+            "status": "skipped",
+            "reason": "user requested direct replacement"
+          },
+          {
+            "check": "npm run build",
+            "status": "passed"
+          },
+          {
+            "check": "git diff --check",
+            "status": "passed"
+          },
+          {
+            "check": "browser preview",
+            "status": "not-run",
+            "reason": "remote checking skipped by user request"
+          }
+        ],
+        "error": null
+      }
+    },
+    "virtual-lab-experiment1-08242-png": {
+      "id": "virtual-lab-experiment1-08242-png",
+      "kind": "image",
+      "category": "virtual-lab",
+      "fileName": "08242.png",
+      "localPath": "public/virtual-lab/images/experiment1/08242.png",
+      "fileSize": 189635,
+      "md5": "89ddf629e10efb4dd331c85a07b46988",
+      "description": "",
+      "keywords": [
+        "virtual-lab",
+        "experiment1"
+      ],
+      "status": "in-use",
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment1/08242.avif",
+      "sha256": "75814f2acba74b4776ae5da551655621f412bf188f72e746698fd29023bc1de0",
+      "references": [
+        {
+          "file": "virtual-lab/src/data/experiment1Sidebar.ts",
+          "line": 34,
+          "old": "./images/experiment1/08242.png",
+          "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment1/08242.avif",
+          "status": "replaced"
+        }
+      ],
+      "upload": {
+        "target": {
+          "platform": "igem",
+          "year": 2026,
+          "team": "6056"
+        },
+        "status": "uploaded",
+        "source": "inferred-by-user-request",
+        "verification": "skipped at explicit user request",
+        "remoteName": "08242.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "recordedAt": "2026-09-29T12:01:25.415000+00:00",
+        "references": [
+          {
+            "file": "virtual-lab/src/data/experiment1Sidebar.ts",
+            "line": 34,
+            "old": "./images/experiment1/08242.png",
+            "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment1/08242.avif",
+            "status": "replaced"
+          }
+        ],
+        "unresolved": [],
+        "checks": [
+          {
+            "check": "remote URL and image verification",
+            "status": "skipped",
+            "reason": "user requested direct replacement"
+          },
+          {
+            "check": "npm run build",
+            "status": "passed"
+          },
+          {
+            "check": "git diff --check",
+            "status": "passed"
+          },
+          {
+            "check": "browser preview",
+            "status": "not-run",
+            "reason": "remote checking skipped by user request"
+          }
+        ],
+        "error": null
+      }
+    },
+    "virtual-lab-experiment1-08243-png": {
+      "id": "virtual-lab-experiment1-08243-png",
+      "kind": "image",
+      "category": "virtual-lab",
+      "fileName": "08243.png",
+      "localPath": "public/virtual-lab/images/experiment1/08243.png",
+      "fileSize": 1901475,
+      "md5": "560a693cc568d5d27eba0a18bfaf200c",
+      "description": "",
+      "keywords": [
+        "virtual-lab",
+        "experiment1"
+      ],
+      "status": "in-use",
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment1/08243.avif",
+      "sha256": "fe6511dae765f0297ee18e7cecfbc2f3e373b1f246f84e59f30b1b9bef96db18",
+      "references": [
+        {
+          "file": "virtual-lab/src/data/experiment1Sidebar.ts",
+          "line": 35,
+          "old": "./images/experiment1/08243.png",
+          "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment1/08243.avif",
+          "status": "replaced"
+        }
+      ],
+      "upload": {
+        "target": {
+          "platform": "igem",
+          "year": 2026,
+          "team": "6056"
+        },
+        "status": "uploaded",
+        "source": "inferred-by-user-request",
+        "verification": "skipped at explicit user request",
+        "remoteName": "08243.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "recordedAt": "2026-09-29T12:01:25.415000+00:00",
+        "references": [
+          {
+            "file": "virtual-lab/src/data/experiment1Sidebar.ts",
+            "line": 35,
+            "old": "./images/experiment1/08243.png",
+            "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment1/08243.avif",
+            "status": "replaced"
+          }
+        ],
+        "unresolved": [],
+        "checks": [
+          {
+            "check": "remote URL and image verification",
+            "status": "skipped",
+            "reason": "user requested direct replacement"
+          },
+          {
+            "check": "npm run build",
+            "status": "passed"
+          },
+          {
+            "check": "git diff --check",
+            "status": "passed"
+          },
+          {
+            "check": "browser preview",
+            "status": "not-run",
+            "reason": "remote checking skipped by user request"
+          }
+        ],
+        "error": null
+      }
+    },
+    "virtual-lab-experiment1-08251-png": {
+      "id": "virtual-lab-experiment1-08251-png",
+      "kind": "image",
+      "category": "virtual-lab",
+      "fileName": "08251.png",
+      "localPath": "public/virtual-lab/images/experiment1/08251.png",
+      "fileSize": 715616,
+      "md5": "22e3f7bccec5bb33f0e12740ff7002db",
+      "description": "",
+      "keywords": [
+        "virtual-lab",
+        "experiment1"
+      ],
+      "status": "in-use",
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment1/08251.avif",
+      "sha256": "5034785fda8408aa7dc3a657bc8cd95f245da4737288a891e901a5b2ec94a6b9",
+      "references": [
+        {
+          "file": "virtual-lab/src/data/experiment1Sidebar.ts",
+          "line": 51,
+          "old": "./images/experiment1/08251.png",
+          "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment1/08251.avif",
+          "status": "replaced"
+        }
+      ],
+      "upload": {
+        "target": {
+          "platform": "igem",
+          "year": 2026,
+          "team": "6056"
+        },
+        "status": "uploaded",
+        "source": "inferred-by-user-request",
+        "verification": "skipped at explicit user request",
+        "remoteName": "08251.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "recordedAt": "2026-09-29T12:01:25.415000+00:00",
+        "references": [
+          {
+            "file": "virtual-lab/src/data/experiment1Sidebar.ts",
+            "line": 51,
+            "old": "./images/experiment1/08251.png",
+            "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment1/08251.avif",
+            "status": "replaced"
+          }
+        ],
+        "unresolved": [],
+        "checks": [
+          {
+            "check": "remote URL and image verification",
+            "status": "skipped",
+            "reason": "user requested direct replacement"
+          },
+          {
+            "check": "npm run build",
+            "status": "passed"
+          },
+          {
+            "check": "git diff --check",
+            "status": "passed"
+          },
+          {
+            "check": "browser preview",
+            "status": "not-run",
+            "reason": "remote checking skipped by user request"
+          }
+        ],
+        "error": null
+      }
+    },
+    "virtual-lab-experiment1-08252-png": {
+      "id": "virtual-lab-experiment1-08252-png",
+      "kind": "image",
+      "category": "virtual-lab",
+      "fileName": "08252.png",
+      "localPath": "public/virtual-lab/images/experiment1/08252.png",
+      "fileSize": 1587659,
+      "md5": "70e76953fb6bba6febabfc530b1cf7f3",
+      "description": "",
+      "keywords": [
+        "virtual-lab",
+        "experiment1"
+      ],
+      "status": "in-use",
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment1/08252.avif",
+      "sha256": "7139933b780a82aa050751c87cf8625eb64447ecdf4da7f7be7facbb496e3d90",
+      "references": [
+        {
+          "file": "virtual-lab/src/data/experiment1Sidebar.ts",
+          "line": 57,
+          "old": "./images/experiment1/08252.png",
+          "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment1/08252.avif",
+          "status": "replaced"
+        }
+      ],
+      "upload": {
+        "target": {
+          "platform": "igem",
+          "year": 2026,
+          "team": "6056"
+        },
+        "status": "uploaded",
+        "source": "inferred-by-user-request",
+        "verification": "skipped at explicit user request",
+        "remoteName": "08252.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "recordedAt": "2026-09-29T12:01:25.415000+00:00",
+        "references": [
+          {
+            "file": "virtual-lab/src/data/experiment1Sidebar.ts",
+            "line": 57,
+            "old": "./images/experiment1/08252.png",
+            "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment1/08252.avif",
+            "status": "replaced"
+          }
+        ],
+        "unresolved": [],
+        "checks": [
+          {
+            "check": "remote URL and image verification",
+            "status": "skipped",
+            "reason": "user requested direct replacement"
+          },
+          {
+            "check": "npm run build",
+            "status": "passed"
+          },
+          {
+            "check": "git diff --check",
+            "status": "passed"
+          },
+          {
+            "check": "browser preview",
+            "status": "not-run",
+            "reason": "remote checking skipped by user request"
+          }
+        ],
+        "error": null
+      }
+    },
+    "virtual-lab-experiment1-08253-png": {
+      "id": "virtual-lab-experiment1-08253-png",
+      "kind": "image",
+      "category": "virtual-lab",
+      "fileName": "08253.png",
+      "localPath": "public/virtual-lab/images/experiment1/08253.png",
+      "fileSize": 740452,
+      "md5": "8a01c841973a86a573fc9318f0be6465",
+      "description": "",
+      "keywords": [
+        "virtual-lab",
+        "experiment1"
+      ],
+      "status": "in-use",
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment1/08253.avif",
+      "sha256": "69eb5f2c35c9930a3fc515fc13eb7b5dc57a7ccecfd14f684c722145270f3b26",
+      "references": [
+        {
+          "file": "virtual-lab/src/data/experiment1Sidebar.ts",
+          "line": 30,
+          "old": "./images/experiment1/08253.png",
+          "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment1/08253.avif",
+          "status": "replaced"
+        }
+      ],
+      "upload": {
+        "target": {
+          "platform": "igem",
+          "year": 2026,
+          "team": "6056"
+        },
+        "status": "uploaded",
+        "source": "inferred-by-user-request",
+        "verification": "skipped at explicit user request",
+        "remoteName": "08253.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "recordedAt": "2026-09-29T12:01:25.415000+00:00",
+        "references": [
+          {
+            "file": "virtual-lab/src/data/experiment1Sidebar.ts",
+            "line": 30,
+            "old": "./images/experiment1/08253.png",
+            "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment1/08253.avif",
+            "status": "replaced"
+          }
+        ],
+        "unresolved": [],
+        "checks": [
+          {
+            "check": "remote URL and image verification",
+            "status": "skipped",
+            "reason": "user requested direct replacement"
+          },
+          {
+            "check": "npm run build",
+            "status": "passed"
+          },
+          {
+            "check": "git diff --check",
+            "status": "passed"
+          },
+          {
+            "check": "browser preview",
+            "status": "not-run",
+            "reason": "remote checking skipped by user request"
+          }
+        ],
+        "error": null
+      }
+    },
+    "virtual-lab-experiment1-08254-png": {
+      "id": "virtual-lab-experiment1-08254-png",
+      "kind": "image",
+      "category": "virtual-lab",
+      "fileName": "08254.png",
+      "localPath": "public/virtual-lab/images/experiment1/08254.png",
+      "fileSize": 584436,
+      "md5": "5e1d2c8f0981a091d2307718b9400e16",
+      "description": "",
+      "keywords": [
+        "virtual-lab",
+        "experiment1"
+      ],
+      "status": "in-use",
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment1/08254.avif",
+      "sha256": "20fb0b53d32bccf60aeb8a78ee8590c9d6229b712a960bb215ad5b7eadc6d5c0",
+      "references": [
+        {
+          "file": "virtual-lab/src/data/experiment1Sidebar.ts",
+          "line": 32,
+          "old": "./images/experiment1/08254.png",
+          "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment1/08254.avif",
+          "status": "replaced"
+        }
+      ],
+      "upload": {
+        "target": {
+          "platform": "igem",
+          "year": 2026,
+          "team": "6056"
+        },
+        "status": "uploaded",
+        "source": "inferred-by-user-request",
+        "verification": "skipped at explicit user request",
+        "remoteName": "08254.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "recordedAt": "2026-09-29T12:01:25.415000+00:00",
+        "references": [
+          {
+            "file": "virtual-lab/src/data/experiment1Sidebar.ts",
+            "line": 32,
+            "old": "./images/experiment1/08254.png",
+            "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment1/08254.avif",
+            "status": "replaced"
+          }
+        ],
+        "unresolved": [],
+        "checks": [
+          {
+            "check": "remote URL and image verification",
+            "status": "skipped",
+            "reason": "user requested direct replacement"
+          },
+          {
+            "check": "npm run build",
+            "status": "passed"
+          },
+          {
+            "check": "git diff --check",
+            "status": "passed"
+          },
+          {
+            "check": "browser preview",
+            "status": "not-run",
+            "reason": "remote checking skipped by user request"
+          }
+        ],
+        "error": null
+      }
+    },
+    "virtual-lab-experiment1-freezer-open-png": {
+      "id": "virtual-lab-experiment1-freezer-open-png",
+      "kind": "image",
+      "category": "virtual-lab",
+      "fileName": "freezer-open.png",
+      "localPath": "public/virtual-lab/images/experiment1/freezer-open.png",
+      "fileSize": 48635,
+      "md5": "4896d1567eef599c0138ca8990f87250",
+      "description": "",
+      "keywords": [
+        "virtual-lab",
+        "experiment1"
+      ],
+      "status": "in-use",
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment1/freezer-open.avif",
+      "sha256": "838fa654748e170d771961a77fdf2943aa0cee3336b624df985a1e090cc0ba02",
+      "references": [
+        {
+          "file": "virtual-lab/src/pages/ExperimentPage1.tsx",
+          "line": 749,
+          "old": "./images/experiment1/freezer-open.png",
+          "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment1/freezer-open.avif",
+          "status": "replaced"
+        }
+      ],
+      "upload": {
+        "target": {
+          "platform": "igem",
+          "year": 2026,
+          "team": "6056"
+        },
+        "status": "uploaded",
+        "source": "inferred-by-user-request",
+        "verification": "skipped at explicit user request",
+        "remoteName": "freezer-open.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "recordedAt": "2026-09-29T12:01:25.415000+00:00",
+        "references": [
+          {
+            "file": "virtual-lab/src/pages/ExperimentPage1.tsx",
+            "line": 749,
+            "old": "./images/experiment1/freezer-open.png",
+            "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment1/freezer-open.avif",
+            "status": "replaced"
+          }
+        ],
+        "unresolved": [],
+        "checks": [
+          {
+            "check": "remote URL and image verification",
+            "status": "skipped",
+            "reason": "user requested direct replacement"
+          },
+          {
+            "check": "npm run build",
+            "status": "passed"
+          },
+          {
+            "check": "git diff --check",
+            "status": "passed"
+          },
+          {
+            "check": "browser preview",
+            "status": "not-run",
+            "reason": "remote checking skipped by user request"
+          }
+        ],
+        "error": null
+      }
+    },
+    "virtual-lab-experiment1-hours-png": {
+      "id": "virtual-lab-experiment1-hours-png",
+      "kind": "image",
+      "category": "virtual-lab",
+      "fileName": "hours.png",
+      "localPath": "public/virtual-lab/images/experiment1/hours.png",
+      "fileSize": 13207,
+      "md5": "26c10214c10fd90ce7bf585bb919c1a9",
+      "description": "",
+      "keywords": [
+        "virtual-lab",
+        "experiment1"
+      ],
+      "status": "in-use",
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment1/hours.avif",
+      "sha256": "9ed4a985aa1dfc9e330f00882825191768aba68129a65569b8c2157dc5a12ff6",
+      "references": [
+        {
+          "file": "virtual-lab/src/pages/ExperimentPage1.tsx",
+          "line": 788,
+          "old": "./images/experiment1/hours.png",
+          "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment1/hours.avif",
+          "status": "replaced"
+        },
+        {
+          "file": "virtual-lab/src/pages/ExperimentPage3.tsx",
+          "line": 1058,
+          "old": "./images/experiment1/hours.png",
+          "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment1/hours.avif",
+          "status": "replaced"
+        },
+        {
+          "file": "virtual-lab/src/pages/ExperimentPage6.tsx",
+          "line": 1691,
+          "old": "./images/experiment1/hours.png",
+          "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment1/hours.avif",
+          "status": "replaced"
+        }
+      ],
+      "upload": {
+        "target": {
+          "platform": "igem",
+          "year": 2026,
+          "team": "6056"
+        },
+        "status": "uploaded",
+        "source": "inferred-by-user-request",
+        "verification": "skipped at explicit user request",
+        "remoteName": "hours.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "recordedAt": "2026-09-29T12:01:25.415000+00:00",
+        "references": [
+          {
+            "file": "virtual-lab/src/pages/ExperimentPage1.tsx",
+            "line": 788,
+            "old": "./images/experiment1/hours.png",
+            "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment1/hours.avif",
+            "status": "replaced"
+          },
+          {
+            "file": "virtual-lab/src/pages/ExperimentPage3.tsx",
+            "line": 1058,
+            "old": "./images/experiment1/hours.png",
+            "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment1/hours.avif",
+            "status": "replaced"
+          },
+          {
+            "file": "virtual-lab/src/pages/ExperimentPage6.tsx",
+            "line": 1691,
+            "old": "./images/experiment1/hours.png",
+            "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment1/hours.avif",
+            "status": "replaced"
+          }
+        ],
+        "unresolved": [],
+        "checks": [
+          {
+            "check": "remote URL and image verification",
+            "status": "skipped",
+            "reason": "user requested direct replacement"
+          },
+          {
+            "check": "npm run build",
+            "status": "passed"
+          },
+          {
+            "check": "git diff --check",
+            "status": "passed"
+          },
+          {
+            "check": "browser preview",
+            "status": "not-run",
+            "reason": "remote checking skipped by user request"
+          }
+        ],
+        "error": null
+      }
+    },
+    "virtual-lab-experiment1-ice-box-png": {
+      "id": "virtual-lab-experiment1-ice-box-png",
+      "kind": "image",
+      "category": "virtual-lab",
+      "fileName": "ice-box.png",
+      "localPath": "public/virtual-lab/images/experiment1/ice-box.png",
+      "fileSize": 2268291,
+      "md5": "77760565b66399407e4538bceeda38af",
+      "description": "",
+      "keywords": [
+        "virtual-lab",
+        "experiment1"
+      ],
+      "status": "in-use",
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment1/ice-box.avif",
+      "sha256": "0a5156e2da9ed25e6efbd641ec0b1e272c1b22e67d5f623819a56a5923056995",
+      "references": [
+        {
+          "file": "virtual-lab/src/data/experiment1Sidebar.ts",
+          "line": 31,
+          "old": "./images/experiment1/ice-box.png",
+          "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment1/ice-box.avif",
+          "status": "replaced"
+        },
+        {
+          "file": "virtual-lab/src/pages/ExperimentPage1.tsx",
+          "line": 799,
+          "old": "./images/experiment1/ice-box.png",
+          "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment1/ice-box.avif",
+          "status": "replaced"
+        }
+      ],
+      "upload": {
+        "target": {
+          "platform": "igem",
+          "year": 2026,
+          "team": "6056"
+        },
+        "status": "uploaded",
+        "source": "inferred-by-user-request",
+        "verification": "skipped at explicit user request",
+        "remoteName": "ice-box.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "recordedAt": "2026-09-29T12:01:25.415000+00:00",
+        "references": [
+          {
+            "file": "virtual-lab/src/data/experiment1Sidebar.ts",
+            "line": 31,
+            "old": "./images/experiment1/ice-box.png",
+            "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment1/ice-box.avif",
+            "status": "replaced"
+          },
+          {
+            "file": "virtual-lab/src/pages/ExperimentPage1.tsx",
+            "line": 799,
+            "old": "./images/experiment1/ice-box.png",
+            "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment1/ice-box.avif",
+            "status": "replaced"
+          }
+        ],
+        "unresolved": [],
+        "checks": [
+          {
+            "check": "remote URL and image verification",
+            "status": "skipped",
+            "reason": "user requested direct replacement"
+          },
+          {
+            "check": "npm run build",
+            "status": "passed"
+          },
+          {
+            "check": "git diff --check",
+            "status": "passed"
+          },
+          {
+            "check": "browser preview",
+            "status": "not-run",
+            "reason": "remote checking skipped by user request"
+          }
+        ],
+        "error": null
+      }
+    },
+    "virtual-lab-experiment1-incubator-open-png": {
+      "id": "virtual-lab-experiment1-incubator-open-png",
+      "kind": "image",
+      "category": "virtual-lab",
+      "fileName": "incubator-open.png",
+      "localPath": "public/virtual-lab/images/experiment1/incubator-open.png",
+      "fileSize": 1545443,
+      "md5": "371d1163279ef3dc0298e65d680b75e8",
+      "description": "",
+      "keywords": [
+        "virtual-lab",
+        "experiment1"
+      ],
+      "status": "in-use",
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment1/incubator-open.avif",
+      "sha256": "6d02438545a0b09822125e93af45ad83865826f493d22bcc8c48fc0b0cc5528c",
+      "references": [
+        {
+          "file": "virtual-lab/src/pages/ExperimentPage1.tsx",
+          "line": 766,
+          "old": "./images/experiment1/incubator-open.png",
+          "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment1/incubator-open.avif",
+          "status": "replaced"
+        }
+      ],
+      "upload": {
+        "target": {
+          "platform": "igem",
+          "year": 2026,
+          "team": "6056"
+        },
+        "status": "uploaded",
+        "source": "inferred-by-user-request",
+        "verification": "skipped at explicit user request",
+        "remoteName": "incubator-open.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "recordedAt": "2026-09-29T12:01:25.415000+00:00",
+        "references": [
+          {
+            "file": "virtual-lab/src/pages/ExperimentPage1.tsx",
+            "line": 766,
+            "old": "./images/experiment1/incubator-open.png",
+            "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment1/incubator-open.avif",
+            "status": "replaced"
+          }
+        ],
+        "unresolved": [],
+        "checks": [
+          {
+            "check": "remote URL and image verification",
+            "status": "skipped",
+            "reason": "user requested direct replacement"
+          },
+          {
+            "check": "npm run build",
+            "status": "passed"
+          },
+          {
+            "check": "git diff --check",
+            "status": "passed"
+          },
+          {
+            "check": "browser preview",
+            "status": "not-run",
+            "reason": "remote checking skipped by user request"
+          }
+        ],
+        "error": null
+      }
+    },
+    "virtual-lab-experiment1-lb-plate-streaked-png": {
+      "id": "virtual-lab-experiment1-lb-plate-streaked-png",
+      "kind": "image",
+      "category": "virtual-lab",
+      "fileName": "lb-plate-streaked.png",
+      "localPath": "public/virtual-lab/images/experiment1/lb-plate-streaked.png",
+      "fileSize": 27712,
+      "md5": "a1c00cdbdecda1dcf26e6b2d039285e0",
+      "description": "",
+      "keywords": [
+        "virtual-lab",
+        "experiment1"
+      ],
+      "status": "in-use",
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment1/lb-plate-streaked.avif",
+      "sha256": "b09cd538bd7f3437a7470f078e485ef7a279509d66b5d7e5142c019c4d226f4c",
+      "references": [
+        {
+          "file": "virtual-lab/src/pages/ExperimentPage1.tsx",
+          "line": 872,
+          "old": "./images/experiment1/lb-plate-streaked.png",
+          "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment1/lb-plate-streaked.avif",
+          "status": "replaced"
+        },
+        {
+          "file": "virtual-lab/src/pages/ExperimentPage1.tsx",
+          "line": 927,
+          "old": "./images/experiment1/lb-plate-streaked.png",
+          "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment1/lb-plate-streaked.avif",
+          "status": "replaced"
+        }
+      ],
+      "upload": {
+        "target": {
+          "platform": "igem",
+          "year": 2026,
+          "team": "6056"
+        },
+        "status": "uploaded",
+        "source": "inferred-by-user-request",
+        "verification": "skipped at explicit user request",
+        "remoteName": "lb-plate-streaked.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "recordedAt": "2026-09-29T12:01:25.415000+00:00",
+        "references": [
+          {
+            "file": "virtual-lab/src/pages/ExperimentPage1.tsx",
+            "line": 872,
+            "old": "./images/experiment1/lb-plate-streaked.png",
+            "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment1/lb-plate-streaked.avif",
+            "status": "replaced"
+          },
+          {
+            "file": "virtual-lab/src/pages/ExperimentPage1.tsx",
+            "line": 927,
+            "old": "./images/experiment1/lb-plate-streaked.png",
+            "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment1/lb-plate-streaked.avif",
+            "status": "replaced"
+          }
+        ],
+        "unresolved": [],
+        "checks": [
+          {
+            "check": "remote URL and image verification",
+            "status": "skipped",
+            "reason": "user requested direct replacement"
+          },
+          {
+            "check": "npm run build",
+            "status": "passed"
+          },
+          {
+            "check": "git diff --check",
+            "status": "passed"
+          },
+          {
+            "check": "browser preview",
+            "status": "not-run",
+            "reason": "remote checking skipped by user request"
+          }
+        ],
+        "error": null
+      }
+    },
+    "virtual-lab-experiment1-loop2-png": {
+      "id": "virtual-lab-experiment1-loop2-png",
+      "kind": "image",
+      "category": "virtual-lab",
+      "fileName": "loop2.png",
+      "localPath": "public/virtual-lab/images/experiment1/loop2.png",
+      "fileSize": 59521,
+      "md5": "1c2f23e7b9ab691e44e050ffde2a4b8e",
+      "description": "",
+      "keywords": [
+        "virtual-lab",
+        "experiment1"
+      ],
+      "status": "in-use",
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment1/loop2.avif",
+      "sha256": "26f56d0de16547f9841b16a28318067615a0b2431b760f20db782665a9318955",
+      "references": [
+        {
+          "file": "virtual-lab/src/data/experiment1Sidebar.ts",
+          "line": 33,
+          "old": "./images/experiment1/loop2.png",
+          "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment1/loop2.avif",
+          "status": "replaced"
+        }
+      ],
+      "upload": {
+        "target": {
+          "platform": "igem",
+          "year": 2026,
+          "team": "6056"
+        },
+        "status": "uploaded",
+        "source": "inferred-by-user-request",
+        "verification": "skipped at explicit user request",
+        "remoteName": "loop2.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "recordedAt": "2026-09-29T12:01:25.415000+00:00",
+        "references": [
+          {
+            "file": "virtual-lab/src/data/experiment1Sidebar.ts",
+            "line": 33,
+            "old": "./images/experiment1/loop2.png",
+            "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment1/loop2.avif",
+            "status": "replaced"
+          }
+        ],
+        "unresolved": [],
+        "checks": [
+          {
+            "check": "remote URL and image verification",
+            "status": "skipped",
+            "reason": "user requested direct replacement"
+          },
+          {
+            "check": "npm run build",
+            "status": "passed"
+          },
+          {
+            "check": "git diff --check",
+            "status": "passed"
+          },
+          {
+            "check": "browser preview",
+            "status": "not-run",
+            "reason": "remote checking skipped by user request"
+          }
+        ],
+        "error": null
+      }
+    },
+    "virtual-lab-experiment1-step5-streaking-detail-png": {
+      "id": "virtual-lab-experiment1-step5-streaking-detail-png",
+      "kind": "image",
+      "category": "virtual-lab",
+      "fileName": "step5-streaking-detail.png",
+      "localPath": "public/virtual-lab/images/experiment1/step5-streaking-detail.png",
+      "fileSize": 33367,
+      "md5": "bc02ee1ed1d130901d32b120874f681a",
+      "description": "",
+      "keywords": [
+        "virtual-lab",
+        "experiment1"
+      ],
+      "status": "in-use",
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment1/step5-streaking-detail.avif",
+      "sha256": "ed91fee70958998012397254dd665ba90abe33cfde8f0ec706aae87abf1404b4",
+      "references": [
+        {
+          "file": "virtual-lab/src/pages/ExperimentPage1.tsx",
+          "line": 902,
+          "old": "./images/experiment1/step5-streaking-detail.png",
+          "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment1/step5-streaking-detail.avif",
+          "status": "replaced"
+        }
+      ],
+      "upload": {
+        "target": {
+          "platform": "igem",
+          "year": 2026,
+          "team": "6056"
+        },
+        "status": "uploaded",
+        "source": "inferred-by-user-request",
+        "verification": "skipped at explicit user request",
+        "remoteName": "step5-streaking-detail.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "recordedAt": "2026-09-29T12:01:25.415000+00:00",
+        "references": [
+          {
+            "file": "virtual-lab/src/pages/ExperimentPage1.tsx",
+            "line": 902,
+            "old": "./images/experiment1/step5-streaking-detail.png",
+            "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment1/step5-streaking-detail.avif",
+            "status": "replaced"
+          }
+        ],
+        "unresolved": [],
+        "checks": [
+          {
+            "check": "remote URL and image verification",
+            "status": "skipped",
+            "reason": "user requested direct replacement"
+          },
+          {
+            "check": "npm run build",
+            "status": "passed"
+          },
+          {
+            "check": "git diff --check",
+            "status": "passed"
+          },
+          {
+            "check": "browser preview",
+            "status": "not-run",
+            "reason": "remote checking skipped by user request"
+          }
+        ],
+        "error": null
+      }
+    },
+    "virtual-lab-experiment1-tube-open-png": {
+      "id": "virtual-lab-experiment1-tube-open-png",
+      "kind": "image",
+      "category": "virtual-lab",
+      "fileName": "tube-open.png",
+      "localPath": "public/virtual-lab/images/experiment1/tube-open.png",
+      "fileSize": 3708,
+      "md5": "b6686c33672e3f051e2fba520974afea",
+      "description": "",
+      "keywords": [
+        "virtual-lab",
+        "experiment1"
+      ],
+      "status": "in-use",
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment1/tube-open.avif",
+      "sha256": "cda88df538a8516c959d1bfdbac02bd641c8e84ed135ae81bf9ffa441ec845e7",
+      "references": [
+        {
+          "file": "virtual-lab/src/pages/ExperimentPage1.tsx",
+          "line": 831,
+          "old": "./images/experiment1/tube-open.png",
+          "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment1/tube-open.avif",
+          "status": "replaced"
+        }
+      ],
+      "upload": {
+        "target": {
+          "platform": "igem",
+          "year": 2026,
+          "team": "6056"
+        },
+        "status": "uploaded",
+        "source": "inferred-by-user-request",
+        "verification": "skipped at explicit user request",
+        "remoteName": "tube-open.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "recordedAt": "2026-09-29T12:01:25.415000+00:00",
+        "references": [
+          {
+            "file": "virtual-lab/src/pages/ExperimentPage1.tsx",
+            "line": 831,
+            "old": "./images/experiment1/tube-open.png",
+            "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment1/tube-open.avif",
+            "status": "replaced"
+          }
+        ],
+        "unresolved": [],
+        "checks": [
+          {
+            "check": "remote URL and image verification",
+            "status": "skipped",
+            "reason": "user requested direct replacement"
+          },
+          {
+            "check": "npm run build",
+            "status": "passed"
+          },
+          {
+            "check": "git diff --check",
+            "status": "passed"
+          },
+          {
+            "check": "browser preview",
+            "status": "not-run",
+            "reason": "remote checking skipped by user request"
+          }
+        ],
+        "error": null
+      }
+    },
+    "virtual-lab-experiment1-231-png": {
+      "id": "virtual-lab-experiment1-231-png",
+      "kind": "image",
+      "category": "virtual-lab",
+      "fileName": "231.png",
+      "localPath": "public/virtual-lab/images/experiment1/231.png",
+      "fileSize": 715616,
+      "md5": "22e3f7bccec5bb33f0e12740ff7002db",
+      "description": "",
+      "keywords": [
+        "virtual-lab",
+        "experiment1"
+      ],
+      "status": "in-use",
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment1/08251.avif",
+      "sha256": "5034785fda8408aa7dc3a657bc8cd95f245da4737288a891e901a5b2ec94a6b9",
+      "references": [
+        {
+          "file": "virtual-lab/src/pages/ExperimentPage1.tsx",
+          "line": 819,
+          "old": "./images/experiment1/231.png",
+          "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment1/08251.avif",
+          "status": "replaced"
+        },
+        {
+          "file": "virtual-lab/src/pages/ExperimentPage1.tsx",
+          "line": 831,
+          "old": "./images/experiment1/231.png",
+          "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment1/08251.avif",
+          "status": "replaced"
+        }
+      ],
+      "upload": {
+        "target": {
+          "platform": "igem",
+          "year": 2026,
+          "team": "6056"
+        },
+        "status": "uploaded",
+        "source": "inferred-by-user-request",
+        "verification": "skipped at explicit user request",
+        "remoteName": "08251.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "recordedAt": "2026-09-29T12:01:25.415000+00:00",
+        "references": [
+          {
+            "file": "virtual-lab/src/pages/ExperimentPage1.tsx",
+            "line": 819,
+            "old": "./images/experiment1/231.png",
+            "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment1/08251.avif",
+            "status": "replaced"
+          },
+          {
+            "file": "virtual-lab/src/pages/ExperimentPage1.tsx",
+            "line": 831,
+            "old": "./images/experiment1/231.png",
+            "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment1/08251.avif",
+            "status": "replaced"
+          }
+        ],
+        "unresolved": [],
+        "checks": [
+          {
+            "check": "remote URL and image verification",
+            "status": "skipped",
+            "reason": "user requested direct replacement"
+          },
+          {
+            "check": "npm run build",
+            "status": "passed"
+          },
+          {
+            "check": "git diff --check",
+            "status": "passed"
+          },
+          {
+            "check": "browser preview",
+            "status": "not-run",
+            "reason": "remote checking skipped by user request"
+          }
+        ],
+        "error": null
+      }
+    },
+    "virtual-lab-experiment1-1926-png": {
+      "id": "virtual-lab-experiment1-1926-png",
+      "kind": "image",
+      "category": "virtual-lab",
+      "fileName": "1926.png",
+      "localPath": "public/virtual-lab/images/experiment1/1926.png",
+      "fileSize": 1587659,
+      "md5": "70e76953fb6bba6febabfc530b1cf7f3",
+      "description": "",
+      "keywords": [
+        "virtual-lab",
+        "experiment1"
+      ],
+      "status": "in-use",
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment1/08252.avif",
+      "sha256": "7139933b780a82aa050751c87cf8625eb64447ecdf4da7f7be7facbb496e3d90",
+      "references": [
+        {
+          "file": "virtual-lab/src/pages/ExperimentPage1.tsx",
+          "line": 872,
+          "old": "./images/experiment1/1926.png",
+          "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment1/08252.avif",
+          "status": "replaced"
+        }
+      ],
+      "upload": {
+        "target": {
+          "platform": "igem",
+          "year": 2026,
+          "team": "6056"
+        },
+        "status": "uploaded",
+        "source": "inferred-by-user-request",
+        "verification": "skipped at explicit user request",
+        "remoteName": "08252.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "recordedAt": "2026-09-29T12:01:25.415000+00:00",
+        "references": [
+          {
+            "file": "virtual-lab/src/pages/ExperimentPage1.tsx",
+            "line": 872,
+            "old": "./images/experiment1/1926.png",
+            "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment1/08252.avif",
+            "status": "replaced"
+          }
+        ],
+        "unresolved": [],
+        "checks": [
+          {
+            "check": "remote URL and image verification",
+            "status": "skipped",
+            "reason": "user requested direct replacement"
+          },
+          {
+            "check": "npm run build",
+            "status": "passed"
+          },
+          {
+            "check": "git diff --check",
+            "status": "passed"
+          },
+          {
+            "check": "browser preview",
+            "status": "not-run",
+            "reason": "remote checking skipped by user request"
+          }
+        ],
+        "error": null
+      }
+    },
+    "virtual-lab-experiment2-10-png": {
+      "id": "virtual-lab-experiment2-10-png",
+      "kind": "image",
+      "category": "virtual-lab",
+      "fileName": "10.png",
+      "localPath": "public/virtual-lab/images/experiment2/10.png",
+      "fileSize": 1251186,
+      "md5": "30384ae3a48322426aa40a527000eadb",
+      "description": "",
+      "keywords": [
+        "virtual-lab",
+        "experiment2"
+      ],
+      "status": "in-use",
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/10.avif",
+      "sha256": "895370889ad578eb269794371f6ccb2d9b3323b536ca83cb7f524c06aa84c877",
+      "references": [
+        {
+          "file": "virtual-lab/src/pages/ExperimentPage2.tsx",
+          "old": "`./images/experiment2/${n}.png`",
+          "new": "`https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/${n}.avif`",
+          "type": "dynamic-array",
+          "status": "replaced"
+        }
+      ],
+      "upload": {
+        "target": {
+          "platform": "igem",
+          "year": 2026,
+          "team": "6056"
+        },
+        "status": "uploaded",
+        "source": "inferred-by-user-request",
+        "verification": "skipped at explicit user request",
+        "remoteName": "10.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "recordedAt": "2026-09-29T12:35:40.143579+00:00",
+        "references": [
+          {
+            "file": "virtual-lab/src/pages/ExperimentPage2.tsx",
+            "old": "`./images/experiment2/${n}.png`",
+            "new": "`https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/${n}.avif`",
+            "type": "dynamic-array",
+            "status": "replaced"
+          }
+        ],
+        "unresolved": [],
+        "checks": [
+          {
+            "check": "remote verification",
+            "status": "skipped",
+            "reason": "user requested direct replacement"
+          },
+          {
+            "check": "npm run build",
+            "status": "passed"
+          },
+          {
+            "check": "git diff --check",
+            "status": "passed"
+          },
+          {
+            "check": "old experiment2 paths in source",
+            "status": "passed"
+          },
+          {
+            "check": "browser preview",
+            "status": "not-run"
+          }
+        ],
+        "error": null
+      }
+    },
+    "virtual-lab-experiment2-11-png": {
+      "id": "virtual-lab-experiment2-11-png",
+      "kind": "image",
+      "category": "virtual-lab",
+      "fileName": "11.png",
+      "localPath": "public/virtual-lab/images/experiment2/11.png",
+      "fileSize": 23772,
+      "md5": "7bcf1e2b54383be602b27ee7df854bd3",
+      "description": "",
+      "keywords": [
+        "virtual-lab",
+        "experiment2"
+      ],
+      "status": "in-use",
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/11.avif",
+      "sha256": "8a9392fe8415ab9c7b144be810806f903e9e00158b54244c5d52d9bf9cb4b528",
+      "references": [
+        {
+          "file": "virtual-lab/src/pages/ExperimentPage2.tsx",
+          "old": "`./images/experiment2/${n}.png`",
+          "new": "`https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/${n}.avif`",
+          "type": "dynamic-array",
+          "status": "replaced"
+        }
+      ],
+      "upload": {
+        "target": {
+          "platform": "igem",
+          "year": 2026,
+          "team": "6056"
+        },
+        "status": "uploaded",
+        "source": "inferred-by-user-request",
+        "verification": "skipped at explicit user request",
+        "remoteName": "11.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "recordedAt": "2026-09-29T12:35:40.143579+00:00",
+        "references": [
+          {
+            "file": "virtual-lab/src/pages/ExperimentPage2.tsx",
+            "old": "`./images/experiment2/${n}.png`",
+            "new": "`https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/${n}.avif`",
+            "type": "dynamic-array",
+            "status": "replaced"
+          }
+        ],
+        "unresolved": [],
+        "checks": [
+          {
+            "check": "remote verification",
+            "status": "skipped",
+            "reason": "user requested direct replacement"
+          },
+          {
+            "check": "npm run build",
+            "status": "passed"
+          },
+          {
+            "check": "git diff --check",
+            "status": "passed"
+          },
+          {
+            "check": "old experiment2 paths in source",
+            "status": "passed"
+          },
+          {
+            "check": "browser preview",
+            "status": "not-run"
+          }
+        ],
+        "error": null
+      }
+    },
+    "virtual-lab-experiment2-12-png": {
+      "id": "virtual-lab-experiment2-12-png",
+      "kind": "image",
+      "category": "virtual-lab",
+      "fileName": "12.png",
+      "localPath": "public/virtual-lab/images/experiment2/12.png",
+      "fileSize": 1645761,
+      "md5": "f71e8ebfafa39c123c1619c9401f8cec",
+      "description": "",
+      "keywords": [
+        "virtual-lab",
+        "experiment2"
+      ],
+      "status": "in-use",
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/12.avif",
+      "sha256": "f087ad2649132d7fe16f3d1c987b2bcf29e7c8055c09a85e53776c7f341eaa55",
+      "references": [
+        {
+          "file": "virtual-lab/src/pages/ExperimentPage2.tsx",
+          "line": 1053,
+          "old": "./images/experiment2/12.png",
+          "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/12.avif",
+          "status": "replaced"
+        }
+      ],
+      "upload": {
+        "target": {
+          "platform": "igem",
+          "year": 2026,
+          "team": "6056"
+        },
+        "status": "uploaded",
+        "source": "inferred-by-user-request",
+        "verification": "skipped at explicit user request",
+        "remoteName": "12.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "recordedAt": "2026-09-29T12:35:40.143579+00:00",
+        "references": [
+          {
+            "file": "virtual-lab/src/pages/ExperimentPage2.tsx",
+            "line": 1053,
+            "old": "./images/experiment2/12.png",
+            "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/12.avif",
+            "status": "replaced"
+          }
+        ],
+        "unresolved": [],
+        "checks": [
+          {
+            "check": "remote verification",
+            "status": "skipped",
+            "reason": "user requested direct replacement"
+          },
+          {
+            "check": "npm run build",
+            "status": "passed"
+          },
+          {
+            "check": "git diff --check",
+            "status": "passed"
+          },
+          {
+            "check": "old experiment2 paths in source",
+            "status": "passed"
+          },
+          {
+            "check": "browser preview",
+            "status": "not-run"
+          }
+        ],
+        "error": null
+      }
+    },
+    "virtual-lab-experiment2-13-png": {
+      "id": "virtual-lab-experiment2-13-png",
+      "kind": "image",
+      "category": "virtual-lab",
+      "fileName": "13.png",
+      "localPath": "public/virtual-lab/images/experiment2/13.png",
+      "fileSize": 2014897,
+      "md5": "d3e0270e908b086822bdd344f82fdc60",
+      "description": "",
+      "keywords": [
+        "virtual-lab",
+        "experiment2"
+      ],
+      "status": "in-use",
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/13.avif",
+      "sha256": "95b44c20f78738e14ee621edae47605999f9bfc6e690919d84a59b2769495f37",
+      "references": [
+        {
+          "file": "virtual-lab/src/pages/ExperimentPage1.tsx",
+          "line": 766,
+          "old": "./images/experiment2/13.png",
+          "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/13.avif",
+          "status": "replaced"
+        },
+        {
+          "file": "virtual-lab/src/pages/ExperimentPage2.tsx",
+          "line": 901,
+          "old": "./images/experiment2/13.png",
+          "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/13.avif",
+          "status": "replaced"
+        }
+      ],
+      "upload": {
+        "target": {
+          "platform": "igem",
+          "year": 2026,
+          "team": "6056"
+        },
+        "status": "uploaded",
+        "source": "inferred-by-user-request",
+        "verification": "skipped at explicit user request",
+        "remoteName": "13.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "recordedAt": "2026-09-29T12:35:40.143579+00:00",
+        "references": [
+          {
+            "file": "virtual-lab/src/pages/ExperimentPage1.tsx",
+            "line": 766,
+            "old": "./images/experiment2/13.png",
+            "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/13.avif",
+            "status": "replaced"
+          },
+          {
+            "file": "virtual-lab/src/pages/ExperimentPage2.tsx",
+            "line": 901,
+            "old": "./images/experiment2/13.png",
+            "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/13.avif",
+            "status": "replaced"
+          }
+        ],
+        "unresolved": [],
+        "checks": [
+          {
+            "check": "remote verification",
+            "status": "skipped",
+            "reason": "user requested direct replacement"
+          },
+          {
+            "check": "npm run build",
+            "status": "passed"
+          },
+          {
+            "check": "git diff --check",
+            "status": "passed"
+          },
+          {
+            "check": "old experiment2 paths in source",
+            "status": "passed"
+          },
+          {
+            "check": "browser preview",
+            "status": "not-run"
+          }
+        ],
+        "error": null
+      }
+    },
+    "virtual-lab-experiment2-15-png": {
+      "id": "virtual-lab-experiment2-15-png",
+      "kind": "image",
+      "category": "virtual-lab",
+      "fileName": "15.png",
+      "localPath": "public/virtual-lab/images/experiment2/15.png",
+      "fileSize": 461109,
+      "md5": "89c313dc3066fac2df7b3cd7165250fc",
+      "description": "",
+      "keywords": [
+        "virtual-lab",
+        "experiment2"
+      ],
+      "status": "in-use",
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/15.avif",
+      "sha256": "fc5b3c1e0985074dba33c52f767feddef6aa25cf6f09ef6f568833a3050f649b",
+      "references": [
+        {
+          "file": "virtual-lab/src/pages/ExperimentPage2.tsx",
+          "line": 910,
+          "old": "./images/experiment2/15.png",
+          "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/15.avif",
+          "status": "replaced"
+        },
+        {
+          "file": "virtual-lab/src/pages/ExperimentPage2.tsx",
+          "old": "`./images/experiment2/${isSlideInserted ? 'xianweijing.png' : '15.png'}`",
+          "new": "(isSlideInserted ? 'https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/xianweijing.avif' : 'https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/15.avif')",
+          "type": "conditional",
+          "status": "replaced"
+        }
+      ],
+      "upload": {
+        "target": {
+          "platform": "igem",
+          "year": 2026,
+          "team": "6056"
+        },
+        "status": "uploaded",
+        "source": "inferred-by-user-request",
+        "verification": "skipped at explicit user request",
+        "remoteName": "15.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "recordedAt": "2026-09-29T12:35:40.143579+00:00",
+        "references": [
+          {
+            "file": "virtual-lab/src/pages/ExperimentPage2.tsx",
+            "line": 910,
+            "old": "./images/experiment2/15.png",
+            "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/15.avif",
+            "status": "replaced"
+          },
+          {
+            "file": "virtual-lab/src/pages/ExperimentPage2.tsx",
+            "old": "`./images/experiment2/${isSlideInserted ? 'xianweijing.png' : '15.png'}`",
+            "new": "(isSlideInserted ? 'https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/xianweijing.avif' : 'https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/15.avif')",
+            "type": "conditional",
+            "status": "replaced"
+          }
+        ],
+        "unresolved": [],
+        "checks": [
+          {
+            "check": "remote verification",
+            "status": "skipped",
+            "reason": "user requested direct replacement"
+          },
+          {
+            "check": "npm run build",
+            "status": "passed"
+          },
+          {
+            "check": "git diff --check",
+            "status": "passed"
+          },
+          {
+            "check": "old experiment2 paths in source",
+            "status": "passed"
+          },
+          {
+            "check": "browser preview",
+            "status": "not-run"
+          }
+        ],
+        "error": null
+      }
+    },
+    "virtual-lab-experiment2-16-png": {
+      "id": "virtual-lab-experiment2-16-png",
+      "kind": "image",
+      "category": "virtual-lab",
+      "fileName": "16.png",
+      "localPath": "public/virtual-lab/images/experiment2/16.png",
+      "fileSize": 678037,
+      "md5": "d79679dbaa958e26f190d4c2214382dc",
+      "description": "",
+      "keywords": [
+        "virtual-lab",
+        "experiment2"
+      ],
+      "status": "in-use",
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/16.avif",
+      "sha256": "65b3c4d1ba716890db8a1cec7820088cd41ccf32f3601a8aef715cc29b86502f",
+      "references": [
+        {
+          "file": "virtual-lab/src/pages/ExperimentPage2.tsx",
+          "line": 1095,
+          "old": "./images/experiment2/16.png",
+          "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/16.avif",
+          "status": "replaced"
+        }
+      ],
+      "upload": {
+        "target": {
+          "platform": "igem",
+          "year": 2026,
+          "team": "6056"
+        },
+        "status": "uploaded",
+        "source": "inferred-by-user-request",
+        "verification": "skipped at explicit user request",
+        "remoteName": "16.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "recordedAt": "2026-09-29T12:35:40.143579+00:00",
+        "references": [
+          {
+            "file": "virtual-lab/src/pages/ExperimentPage2.tsx",
+            "line": 1095,
+            "old": "./images/experiment2/16.png",
+            "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/16.avif",
+            "status": "replaced"
+          }
+        ],
+        "unresolved": [],
+        "checks": [
+          {
+            "check": "remote verification",
+            "status": "skipped",
+            "reason": "user requested direct replacement"
+          },
+          {
+            "check": "npm run build",
+            "status": "passed"
+          },
+          {
+            "check": "git diff --check",
+            "status": "passed"
+          },
+          {
+            "check": "old experiment2 paths in source",
+            "status": "passed"
+          },
+          {
+            "check": "browser preview",
+            "status": "not-run"
+          }
+        ],
+        "error": null
+      }
+    },
+    "virtual-lab-experiment2-18-png": {
+      "id": "virtual-lab-experiment2-18-png",
+      "kind": "image",
+      "category": "virtual-lab",
+      "fileName": "18.png",
+      "localPath": "public/virtual-lab/images/experiment2/18.png",
+      "fileSize": 1242669,
+      "md5": "f43f2a0cef79ef0e45d789f952eb7106",
+      "description": "",
+      "keywords": [
+        "virtual-lab",
+        "experiment2"
+      ],
+      "status": "in-use",
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/18.avif",
+      "sha256": "1e5a15b9eca5dc23073a9b2237db7ae58639186df6f2c8038cdbe430deaf8881",
+      "references": [
+        {
+          "file": "virtual-lab/src/pages/ExperimentPage2.tsx",
+          "line": 930,
+          "old": "./images/experiment2/18.png",
+          "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/18.avif",
+          "status": "replaced"
+        }
+      ],
+      "upload": {
+        "target": {
+          "platform": "igem",
+          "year": 2026,
+          "team": "6056"
+        },
+        "status": "uploaded",
+        "source": "inferred-by-user-request",
+        "verification": "skipped at explicit user request",
+        "remoteName": "18.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "recordedAt": "2026-09-29T12:35:40.143579+00:00",
+        "references": [
+          {
+            "file": "virtual-lab/src/pages/ExperimentPage2.tsx",
+            "line": 930,
+            "old": "./images/experiment2/18.png",
+            "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/18.avif",
+            "status": "replaced"
+          }
+        ],
+        "unresolved": [],
+        "checks": [
+          {
+            "check": "remote verification",
+            "status": "skipped",
+            "reason": "user requested direct replacement"
+          },
+          {
+            "check": "npm run build",
+            "status": "passed"
+          },
+          {
+            "check": "git diff --check",
+            "status": "passed"
+          },
+          {
+            "check": "old experiment2 paths in source",
+            "status": "passed"
+          },
+          {
+            "check": "browser preview",
+            "status": "not-run"
+          }
+        ],
+        "error": null
+      }
+    },
+    "virtual-lab-experiment2-19-png": {
+      "id": "virtual-lab-experiment2-19-png",
+      "kind": "image",
+      "category": "virtual-lab",
+      "fileName": "19.png",
+      "localPath": "public/virtual-lab/images/experiment2/19.png",
+      "fileSize": 864817,
+      "md5": "29ec15ec402f0aa00af7835878444711",
+      "description": "",
+      "keywords": [
+        "virtual-lab",
+        "experiment2"
+      ],
+      "status": "in-use",
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/19.avif",
+      "sha256": "806a29a355b6e87a7e161a46345bb6d06b225526dd9c152b9c9d62e0353b0242",
+      "references": [
+        {
+          "file": "virtual-lab/src/pages/ExperimentPage2.tsx",
+          "line": 938,
+          "old": "./images/experiment2/19.png",
+          "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/19.avif",
+          "status": "replaced"
+        }
+      ],
+      "upload": {
+        "target": {
+          "platform": "igem",
+          "year": 2026,
+          "team": "6056"
+        },
+        "status": "uploaded",
+        "source": "inferred-by-user-request",
+        "verification": "skipped at explicit user request",
+        "remoteName": "19.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "recordedAt": "2026-09-29T12:35:40.143579+00:00",
+        "references": [
+          {
+            "file": "virtual-lab/src/pages/ExperimentPage2.tsx",
+            "line": 938,
+            "old": "./images/experiment2/19.png",
+            "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/19.avif",
+            "status": "replaced"
+          }
+        ],
+        "unresolved": [],
+        "checks": [
+          {
+            "check": "remote verification",
+            "status": "skipped",
+            "reason": "user requested direct replacement"
+          },
+          {
+            "check": "npm run build",
+            "status": "passed"
+          },
+          {
+            "check": "git diff --check",
+            "status": "passed"
+          },
+          {
+            "check": "old experiment2 paths in source",
+            "status": "passed"
+          },
+          {
+            "check": "browser preview",
+            "status": "not-run"
+          }
+        ],
+        "error": null
+      }
+    },
+    "virtual-lab-experiment2-2-png": {
+      "id": "virtual-lab-experiment2-2-png",
+      "kind": "image",
+      "category": "virtual-lab",
+      "fileName": "2.png",
+      "localPath": "public/virtual-lab/images/experiment2/2.png",
+      "fileSize": 18808,
+      "md5": "6bd05b46772a0d459bb13322e4b1aec7",
+      "description": "",
+      "keywords": [
+        "virtual-lab",
+        "experiment2"
+      ],
+      "status": "in-use",
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/2.avif",
+      "sha256": "b10c9acca000ec5246678ae1310cee4a903717b037272532842074da61058f19",
+      "references": [
+        {
+          "file": "virtual-lab/src/pages/ExperimentPage2.tsx",
+          "line": 938,
+          "old": "./images/experiment2/2.png",
+          "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/2.avif",
+          "status": "replaced"
+        }
+      ],
+      "upload": {
+        "target": {
+          "platform": "igem",
+          "year": 2026,
+          "team": "6056"
+        },
+        "status": "uploaded",
+        "source": "inferred-by-user-request",
+        "verification": "skipped at explicit user request",
+        "remoteName": "2.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "recordedAt": "2026-09-29T12:35:40.143579+00:00",
+        "references": [
+          {
+            "file": "virtual-lab/src/pages/ExperimentPage2.tsx",
+            "line": 938,
+            "old": "./images/experiment2/2.png",
+            "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/2.avif",
+            "status": "replaced"
+          }
+        ],
+        "unresolved": [],
+        "checks": [
+          {
+            "check": "remote verification",
+            "status": "skipped",
+            "reason": "user requested direct replacement"
+          },
+          {
+            "check": "npm run build",
+            "status": "passed"
+          },
+          {
+            "check": "git diff --check",
+            "status": "passed"
+          },
+          {
+            "check": "old experiment2 paths in source",
+            "status": "passed"
+          },
+          {
+            "check": "browser preview",
+            "status": "not-run"
+          }
+        ],
+        "error": null
+      }
+    },
+    "virtual-lab-experiment2-20-png": {
+      "id": "virtual-lab-experiment2-20-png",
+      "kind": "image",
+      "category": "virtual-lab",
+      "fileName": "20.png",
+      "localPath": "public/virtual-lab/images/experiment2/20.png",
+      "fileSize": 20198,
+      "md5": "fdee0bcfae4300f08988e92806a85ce9",
+      "description": "",
+      "keywords": [
+        "virtual-lab",
+        "experiment2"
+      ],
+      "status": "in-use",
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/20.avif",
+      "sha256": "8d8478f97d5eb5a205c18c73ee1ed735350b1e027d8aef52149febcd267a4c40",
+      "references": [
+        {
+          "file": "virtual-lab/src/pages/ExperimentPage2.tsx",
+          "line": 947,
+          "old": "./images/experiment2/20.png",
+          "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/20.avif",
+          "status": "replaced"
+        }
+      ],
+      "upload": {
+        "target": {
+          "platform": "igem",
+          "year": 2026,
+          "team": "6056"
+        },
+        "status": "uploaded",
+        "source": "inferred-by-user-request",
+        "verification": "skipped at explicit user request",
+        "remoteName": "20.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "recordedAt": "2026-09-29T12:35:40.143579+00:00",
+        "references": [
+          {
+            "file": "virtual-lab/src/pages/ExperimentPage2.tsx",
+            "line": 947,
+            "old": "./images/experiment2/20.png",
+            "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/20.avif",
+            "status": "replaced"
+          }
+        ],
+        "unresolved": [],
+        "checks": [
+          {
+            "check": "remote verification",
+            "status": "skipped",
+            "reason": "user requested direct replacement"
+          },
+          {
+            "check": "npm run build",
+            "status": "passed"
+          },
+          {
+            "check": "git diff --check",
+            "status": "passed"
+          },
+          {
+            "check": "old experiment2 paths in source",
+            "status": "passed"
+          },
+          {
+            "check": "browser preview",
+            "status": "not-run"
+          }
+        ],
+        "error": null
+      }
+    },
+    "virtual-lab-experiment2-21-png": {
+      "id": "virtual-lab-experiment2-21-png",
+      "kind": "image",
+      "category": "virtual-lab",
+      "fileName": "21.png",
+      "localPath": "public/virtual-lab/images/experiment2/21.png",
+      "fileSize": 38369,
+      "md5": "d6f82dd9ad5e089676db49b0404c8d16",
+      "description": "",
+      "keywords": [
+        "virtual-lab",
+        "experiment2"
+      ],
+      "status": "in-use",
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/21.avif",
+      "sha256": "54ef378368e44bc1211238d19b339267daa143c393b5e4793d9de6f65aca28ce",
+      "references": [
+        {
+          "file": "virtual-lab/src/pages/ExperimentPage2.tsx",
+          "line": 1042,
+          "old": "./images/experiment2/21.png",
+          "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/21.avif",
+          "status": "replaced"
+        }
+      ],
+      "upload": {
+        "target": {
+          "platform": "igem",
+          "year": 2026,
+          "team": "6056"
+        },
+        "status": "uploaded",
+        "source": "inferred-by-user-request",
+        "verification": "skipped at explicit user request",
+        "remoteName": "21.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "recordedAt": "2026-09-29T12:35:40.143579+00:00",
+        "references": [
+          {
+            "file": "virtual-lab/src/pages/ExperimentPage2.tsx",
+            "line": 1042,
+            "old": "./images/experiment2/21.png",
+            "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/21.avif",
+            "status": "replaced"
+          }
+        ],
+        "unresolved": [],
+        "checks": [
+          {
+            "check": "remote verification",
+            "status": "skipped",
+            "reason": "user requested direct replacement"
+          },
+          {
+            "check": "npm run build",
+            "status": "passed"
+          },
+          {
+            "check": "git diff --check",
+            "status": "passed"
+          },
+          {
+            "check": "old experiment2 paths in source",
+            "status": "passed"
+          },
+          {
+            "check": "browser preview",
+            "status": "not-run"
+          }
+        ],
+        "error": null
+      }
+    },
+    "virtual-lab-experiment2-22-png": {
+      "id": "virtual-lab-experiment2-22-png",
+      "kind": "image",
+      "category": "virtual-lab",
+      "fileName": "22.png",
+      "localPath": "public/virtual-lab/images/experiment2/22.png",
+      "fileSize": 9078,
+      "md5": "b7083da1df8af6d87e9004c763b396be",
+      "description": "",
+      "keywords": [
+        "virtual-lab",
+        "experiment2"
+      ],
+      "status": "in-use",
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/22.avif",
+      "sha256": "31248411fc7cff8d3d4e4b2d8d7a3eb5ab5579b4f2d4638fd00e8b532117d70d",
+      "references": [
+        {
+          "file": "virtual-lab/src/pages/ExperimentPage2.tsx",
+          "line": 1063,
+          "old": "./images/experiment2/22.png",
+          "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/22.avif",
+          "status": "replaced"
+        }
+      ],
+      "upload": {
+        "target": {
+          "platform": "igem",
+          "year": 2026,
+          "team": "6056"
+        },
+        "status": "uploaded",
+        "source": "inferred-by-user-request",
+        "verification": "skipped at explicit user request",
+        "remoteName": "22.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "recordedAt": "2026-09-29T12:35:40.143579+00:00",
+        "references": [
+          {
+            "file": "virtual-lab/src/pages/ExperimentPage2.tsx",
+            "line": 1063,
+            "old": "./images/experiment2/22.png",
+            "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/22.avif",
+            "status": "replaced"
+          }
+        ],
+        "unresolved": [],
+        "checks": [
+          {
+            "check": "remote verification",
+            "status": "skipped",
+            "reason": "user requested direct replacement"
+          },
+          {
+            "check": "npm run build",
+            "status": "passed"
+          },
+          {
+            "check": "git diff --check",
+            "status": "passed"
+          },
+          {
+            "check": "old experiment2 paths in source",
+            "status": "passed"
+          },
+          {
+            "check": "browser preview",
+            "status": "not-run"
+          }
+        ],
+        "error": null
+      }
+    },
+    "virtual-lab-experiment2-23-png": {
+      "id": "virtual-lab-experiment2-23-png",
+      "kind": "image",
+      "category": "virtual-lab",
+      "fileName": "23.png",
+      "localPath": "public/virtual-lab/images/experiment2/23.png",
+      "fileSize": 158438,
+      "md5": "aebdb0a08a3025cf521b954b820b02b8",
+      "description": "",
+      "keywords": [
+        "virtual-lab",
+        "experiment2"
+      ],
+      "status": "in-use",
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/23.avif",
+      "sha256": "dd6ceb19f0648e2f85601b61e63b149ed53177e688b62216eabffb19eac8b0f9",
+      "references": [
+        {
+          "file": "virtual-lab/src/pages/ExperimentPage2.tsx",
+          "line": 1063,
+          "old": "./images/experiment2/23.png",
+          "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/23.avif",
+          "status": "replaced"
+        }
+      ],
+      "upload": {
+        "target": {
+          "platform": "igem",
+          "year": 2026,
+          "team": "6056"
+        },
+        "status": "uploaded",
+        "source": "inferred-by-user-request",
+        "verification": "skipped at explicit user request",
+        "remoteName": "23.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "recordedAt": "2026-09-29T12:35:40.143579+00:00",
+        "references": [
+          {
+            "file": "virtual-lab/src/pages/ExperimentPage2.tsx",
+            "line": 1063,
+            "old": "./images/experiment2/23.png",
+            "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/23.avif",
+            "status": "replaced"
+          }
+        ],
+        "unresolved": [],
+        "checks": [
+          {
+            "check": "remote verification",
+            "status": "skipped",
+            "reason": "user requested direct replacement"
+          },
+          {
+            "check": "npm run build",
+            "status": "passed"
+          },
+          {
+            "check": "git diff --check",
+            "status": "passed"
+          },
+          {
+            "check": "old experiment2 paths in source",
+            "status": "passed"
+          },
+          {
+            "check": "browser preview",
+            "status": "not-run"
+          }
+        ],
+        "error": null
+      }
+    },
+    "virtual-lab-experiment2-24-png": {
+      "id": "virtual-lab-experiment2-24-png",
+      "kind": "image",
+      "category": "virtual-lab",
+      "fileName": "24.png",
+      "localPath": "public/virtual-lab/images/experiment2/24.png",
+      "fileSize": 799818,
+      "md5": "959750374e1a0d0594ec42268d280d91",
+      "description": "",
+      "keywords": [
+        "virtual-lab",
+        "experiment2"
+      ],
+      "status": "in-use",
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/24.avif",
+      "sha256": "95797acd2a483ca2866f6c6236269031c2a055f40781d450452c88f5ef492d71",
+      "references": [
+        {
+          "file": "virtual-lab/src/pages/ExperimentPage1.tsx",
+          "line": 881,
+          "old": "./images/experiment2/24.png",
+          "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/24.avif",
+          "status": "replaced"
+        },
+        {
+          "file": "virtual-lab/src/pages/ExperimentPage2.tsx",
+          "line": 923,
+          "old": "./images/experiment2/24.png",
+          "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/24.avif",
+          "status": "replaced"
+        }
+      ],
+      "upload": {
+        "target": {
+          "platform": "igem",
+          "year": 2026,
+          "team": "6056"
+        },
+        "status": "uploaded",
+        "source": "inferred-by-user-request",
+        "verification": "skipped at explicit user request",
+        "remoteName": "24.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "recordedAt": "2026-09-29T12:35:40.143579+00:00",
+        "references": [
+          {
+            "file": "virtual-lab/src/pages/ExperimentPage1.tsx",
+            "line": 881,
+            "old": "./images/experiment2/24.png",
+            "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/24.avif",
+            "status": "replaced"
+          },
+          {
+            "file": "virtual-lab/src/pages/ExperimentPage2.tsx",
+            "line": 923,
+            "old": "./images/experiment2/24.png",
+            "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/24.avif",
+            "status": "replaced"
+          }
+        ],
+        "unresolved": [],
+        "checks": [
+          {
+            "check": "remote verification",
+            "status": "skipped",
+            "reason": "user requested direct replacement"
+          },
+          {
+            "check": "npm run build",
+            "status": "passed"
+          },
+          {
+            "check": "git diff --check",
+            "status": "passed"
+          },
+          {
+            "check": "old experiment2 paths in source",
+            "status": "passed"
+          },
+          {
+            "check": "browser preview",
+            "status": "not-run"
+          }
+        ],
+        "error": null
+      }
+    },
+    "virtual-lab-experiment2-25-png": {
+      "id": "virtual-lab-experiment2-25-png",
+      "kind": "image",
+      "category": "virtual-lab",
+      "fileName": "25.png",
+      "localPath": "public/virtual-lab/images/experiment2/25.png",
+      "fileSize": 12297,
+      "md5": "4aec74cbab7ef7b92353760b75a334a3",
+      "description": "",
+      "keywords": [
+        "virtual-lab",
+        "experiment2"
+      ],
+      "status": "in-use",
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/25.avif",
+      "sha256": "05557d1c5148a0fe3e1575a7ff2e88a17c7c8427233bb2d71a8d05da4bde8d3e",
+      "references": [
+        {
+          "file": "virtual-lab/src/pages/ExperimentPage2.tsx",
+          "line": 204,
+          "old": "./images/experiment2/25.png",
+          "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/25.avif",
+          "status": "replaced"
+        }
+      ],
+      "upload": {
+        "target": {
+          "platform": "igem",
+          "year": 2026,
+          "team": "6056"
+        },
+        "status": "uploaded",
+        "source": "inferred-by-user-request",
+        "verification": "skipped at explicit user request",
+        "remoteName": "25.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "recordedAt": "2026-09-29T12:35:40.143579+00:00",
+        "references": [
+          {
+            "file": "virtual-lab/src/pages/ExperimentPage2.tsx",
+            "line": 204,
+            "old": "./images/experiment2/25.png",
+            "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/25.avif",
+            "status": "replaced"
+          }
+        ],
+        "unresolved": [],
+        "checks": [
+          {
+            "check": "remote verification",
+            "status": "skipped",
+            "reason": "user requested direct replacement"
+          },
+          {
+            "check": "npm run build",
+            "status": "passed"
+          },
+          {
+            "check": "git diff --check",
+            "status": "passed"
+          },
+          {
+            "check": "old experiment2 paths in source",
+            "status": "passed"
+          },
+          {
+            "check": "browser preview",
+            "status": "not-run"
+          }
+        ],
+        "error": null
+      }
+    },
+    "virtual-lab-experiment2-26-png": {
+      "id": "virtual-lab-experiment2-26-png",
+      "kind": "image",
+      "category": "virtual-lab",
+      "fileName": "26.png",
+      "localPath": "public/virtual-lab/images/experiment2/26.png",
+      "fileSize": 25577,
+      "md5": "352ad867d831feb3b735bc959a980dc5",
+      "description": "",
+      "keywords": [
+        "virtual-lab",
+        "experiment2"
+      ],
+      "status": "in-use",
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/26.avif",
+      "sha256": "56835cb5e6bc9b73e3ee1da0af437f567a7392f337e14b0a2bd6ea71d35c2fb8",
+      "references": [
+        {
+          "file": "virtual-lab/src/pages/ExperimentPage1.tsx",
+          "line": 807,
+          "old": "./images/experiment2/26.png",
+          "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/26.avif",
+          "status": "replaced"
+        },
+        {
+          "file": "virtual-lab/src/pages/ExperimentPage2.tsx",
+          "line": 1018,
+          "old": "./images/experiment2/26.png",
+          "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/26.avif",
+          "status": "replaced"
+        },
+        {
+          "file": "virtual-lab/src/pages/ExperimentPage8.tsx",
+          "line": 43,
+          "old": "./images/experiment2/26.png",
+          "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/26.avif",
+          "status": "replaced"
+        }
+      ],
+      "upload": {
+        "target": {
+          "platform": "igem",
+          "year": 2026,
+          "team": "6056"
+        },
+        "status": "uploaded",
+        "source": "inferred-by-user-request",
+        "verification": "skipped at explicit user request",
+        "remoteName": "26.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "recordedAt": "2026-09-29T12:35:40.143579+00:00",
+        "references": [
+          {
+            "file": "virtual-lab/src/pages/ExperimentPage1.tsx",
+            "line": 807,
+            "old": "./images/experiment2/26.png",
+            "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/26.avif",
+            "status": "replaced"
+          },
+          {
+            "file": "virtual-lab/src/pages/ExperimentPage2.tsx",
+            "line": 1018,
+            "old": "./images/experiment2/26.png",
+            "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/26.avif",
+            "status": "replaced"
+          },
+          {
+            "file": "virtual-lab/src/pages/ExperimentPage8.tsx",
+            "line": 43,
+            "old": "./images/experiment2/26.png",
+            "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/26.avif",
+            "status": "replaced"
+          }
+        ],
+        "unresolved": [],
+        "checks": [
+          {
+            "check": "remote verification",
+            "status": "skipped",
+            "reason": "user requested direct replacement"
+          },
+          {
+            "check": "npm run build",
+            "status": "passed"
+          },
+          {
+            "check": "git diff --check",
+            "status": "passed"
+          },
+          {
+            "check": "old experiment2 paths in source",
+            "status": "passed"
+          },
+          {
+            "check": "browser preview",
+            "status": "not-run"
+          }
+        ],
+        "error": null
+      }
+    },
+    "virtual-lab-experiment2-27-png": {
+      "id": "virtual-lab-experiment2-27-png",
+      "kind": "image",
+      "category": "virtual-lab",
+      "fileName": "27.png",
+      "localPath": "public/virtual-lab/images/experiment2/27.png",
+      "fileSize": 41494,
+      "md5": "232f81e6ffeb1566d44607c9450837e4",
+      "description": "",
+      "keywords": [
+        "virtual-lab",
+        "experiment2"
+      ],
+      "status": "in-use",
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/27.avif",
+      "sha256": "6233864c7723a7e5f3df7eed6e95a59fecce69df0e76eac37bdb0029021b58e5",
+      "references": [
+        {
+          "file": "virtual-lab/src/pages/ExperimentPage2.tsx",
+          "line": 947,
+          "old": "./images/experiment2/27.png",
+          "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/27.avif",
+          "status": "replaced"
+        }
+      ],
+      "upload": {
+        "target": {
+          "platform": "igem",
+          "year": 2026,
+          "team": "6056"
+        },
+        "status": "uploaded",
+        "source": "inferred-by-user-request",
+        "verification": "skipped at explicit user request",
+        "remoteName": "27.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "recordedAt": "2026-09-29T12:35:40.143579+00:00",
+        "references": [
+          {
+            "file": "virtual-lab/src/pages/ExperimentPage2.tsx",
+            "line": 947,
+            "old": "./images/experiment2/27.png",
+            "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/27.avif",
+            "status": "replaced"
+          }
+        ],
+        "unresolved": [],
+        "checks": [
+          {
+            "check": "remote verification",
+            "status": "skipped",
+            "reason": "user requested direct replacement"
+          },
+          {
+            "check": "npm run build",
+            "status": "passed"
+          },
+          {
+            "check": "git diff --check",
+            "status": "passed"
+          },
+          {
+            "check": "old experiment2 paths in source",
+            "status": "passed"
+          },
+          {
+            "check": "browser preview",
+            "status": "not-run"
+          }
+        ],
+        "error": null
+      }
+    },
+    "virtual-lab-experiment2-28-png": {
+      "id": "virtual-lab-experiment2-28-png",
+      "kind": "image",
+      "category": "virtual-lab",
+      "fileName": "28.png",
+      "localPath": "public/virtual-lab/images/experiment2/28.png",
+      "fileSize": 323924,
+      "md5": "ff94e798741569d11888b51c5d2762e9",
+      "description": "",
+      "keywords": [
+        "virtual-lab",
+        "experiment2"
+      ],
+      "status": "in-use",
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/28.avif",
+      "sha256": "ac304c82b6f67bd3d12cc18052883dcb1a0fcadc5657c34487849525c4f49ac1",
+      "references": [
+        {
+          "file": "virtual-lab/src/pages/ExperimentPage2.tsx",
+          "line": 964,
+          "old": "./images/experiment2/28.png",
+          "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/28.avif",
+          "status": "replaced"
+        }
+      ],
+      "upload": {
+        "target": {
+          "platform": "igem",
+          "year": 2026,
+          "team": "6056"
+        },
+        "status": "uploaded",
+        "source": "inferred-by-user-request",
+        "verification": "skipped at explicit user request",
+        "remoteName": "28.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "recordedAt": "2026-09-29T12:35:40.143579+00:00",
+        "references": [
+          {
+            "file": "virtual-lab/src/pages/ExperimentPage2.tsx",
+            "line": 964,
+            "old": "./images/experiment2/28.png",
+            "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/28.avif",
+            "status": "replaced"
+          }
+        ],
+        "unresolved": [],
+        "checks": [
+          {
+            "check": "remote verification",
+            "status": "skipped",
+            "reason": "user requested direct replacement"
+          },
+          {
+            "check": "npm run build",
+            "status": "passed"
+          },
+          {
+            "check": "git diff --check",
+            "status": "passed"
+          },
+          {
+            "check": "old experiment2 paths in source",
+            "status": "passed"
+          },
+          {
+            "check": "browser preview",
+            "status": "not-run"
+          }
+        ],
+        "error": null
+      }
+    },
+    "virtual-lab-experiment2-29-png": {
+      "id": "virtual-lab-experiment2-29-png",
+      "kind": "image",
+      "category": "virtual-lab",
+      "fileName": "29.png",
+      "localPath": "public/virtual-lab/images/experiment2/29.png",
+      "fileSize": 929449,
+      "md5": "6ed0d8b2ebfecbe1bfa6351f892aa81a",
+      "description": "",
+      "keywords": [
+        "virtual-lab",
+        "experiment2"
+      ],
+      "status": "in-use",
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/29.avif",
+      "sha256": "ff89f9b17b2f940338dd2b153e5b793eb3247f9bd6367abae30bf172ee3370c9",
+      "references": [
+        {
+          "file": "virtual-lab/src/pages/ExperimentPage2.tsx",
+          "line": 362,
+          "old": "./images/experiment2/29.png",
+          "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/29.avif",
+          "status": "replaced"
+        },
+        {
+          "file": "virtual-lab/src/pages/ExperimentPage2.tsx",
+          "line": 947,
+          "old": "./images/experiment2/29.png",
+          "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/29.avif",
+          "status": "replaced"
+        }
+      ],
+      "upload": {
+        "target": {
+          "platform": "igem",
+          "year": 2026,
+          "team": "6056"
+        },
+        "status": "uploaded",
+        "source": "inferred-by-user-request",
+        "verification": "skipped at explicit user request",
+        "remoteName": "29.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "recordedAt": "2026-09-29T12:35:40.143579+00:00",
+        "references": [
+          {
+            "file": "virtual-lab/src/pages/ExperimentPage2.tsx",
+            "line": 362,
+            "old": "./images/experiment2/29.png",
+            "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/29.avif",
+            "status": "replaced"
+          },
+          {
+            "file": "virtual-lab/src/pages/ExperimentPage2.tsx",
+            "line": 947,
+            "old": "./images/experiment2/29.png",
+            "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/29.avif",
+            "status": "replaced"
+          }
+        ],
+        "unresolved": [],
+        "checks": [
+          {
+            "check": "remote verification",
+            "status": "skipped",
+            "reason": "user requested direct replacement"
+          },
+          {
+            "check": "npm run build",
+            "status": "passed"
+          },
+          {
+            "check": "git diff --check",
+            "status": "passed"
+          },
+          {
+            "check": "old experiment2 paths in source",
+            "status": "passed"
+          },
+          {
+            "check": "browser preview",
+            "status": "not-run"
+          }
+        ],
+        "error": null
+      }
+    },
+    "virtual-lab-experiment2-3-png": {
+      "id": "virtual-lab-experiment2-3-png",
+      "kind": "image",
+      "category": "virtual-lab",
+      "fileName": "3.png",
+      "localPath": "public/virtual-lab/images/experiment2/3.png",
+      "fileSize": 105658,
+      "md5": "69ac74cc3cc203ebd6ad3d52ab1cdbb1",
+      "description": "",
+      "keywords": [
+        "virtual-lab",
+        "experiment2"
+      ],
+      "status": "in-use",
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/3.avif",
+      "sha256": "4c295fd6777e8f54ba3988b1ecd7766a3e560c6258e3d9e32ce3964ac2cd8d96",
+      "references": [
+        {
+          "file": "virtual-lab/src/pages/ExperimentPage2.tsx",
+          "line": 999,
+          "old": "./images/experiment2/3.png",
+          "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/3.avif",
+          "status": "replaced"
+        }
+      ],
+      "upload": {
+        "target": {
+          "platform": "igem",
+          "year": 2026,
+          "team": "6056"
+        },
+        "status": "uploaded",
+        "source": "inferred-by-user-request",
+        "verification": "skipped at explicit user request",
+        "remoteName": "3.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "recordedAt": "2026-09-29T12:35:40.143579+00:00",
+        "references": [
+          {
+            "file": "virtual-lab/src/pages/ExperimentPage2.tsx",
+            "line": 999,
+            "old": "./images/experiment2/3.png",
+            "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/3.avif",
+            "status": "replaced"
+          }
+        ],
+        "unresolved": [],
+        "checks": [
+          {
+            "check": "remote verification",
+            "status": "skipped",
+            "reason": "user requested direct replacement"
+          },
+          {
+            "check": "npm run build",
+            "status": "passed"
+          },
+          {
+            "check": "git diff --check",
+            "status": "passed"
+          },
+          {
+            "check": "old experiment2 paths in source",
+            "status": "passed"
+          },
+          {
+            "check": "browser preview",
+            "status": "not-run"
+          }
+        ],
+        "error": null
+      }
+    },
+    "virtual-lab-experiment2-30-png": {
+      "id": "virtual-lab-experiment2-30-png",
+      "kind": "image",
+      "category": "virtual-lab",
+      "fileName": "30.png",
+      "localPath": "public/virtual-lab/images/experiment2/30.png",
+      "fileSize": 511422,
+      "md5": "b7add86d1769338867ce9cb77d2bd133",
+      "description": "",
+      "keywords": [
+        "virtual-lab",
+        "experiment2"
+      ],
+      "status": "in-use",
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/30.avif",
+      "sha256": "2ac2e147da658236b29b74fdd7219453fd98c5e980d2fa985eb5682984e51b4b",
+      "references": [
+        {
+          "file": "virtual-lab/src/pages/ExperimentPage2.tsx",
+          "line": 1126,
+          "old": "./images/experiment2/30.png",
+          "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/30.avif",
+          "status": "replaced"
+        }
+      ],
+      "upload": {
+        "target": {
+          "platform": "igem",
+          "year": 2026,
+          "team": "6056"
+        },
+        "status": "uploaded",
+        "source": "inferred-by-user-request",
+        "verification": "skipped at explicit user request",
+        "remoteName": "30.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "recordedAt": "2026-09-29T12:35:40.143579+00:00",
+        "references": [
+          {
+            "file": "virtual-lab/src/pages/ExperimentPage2.tsx",
+            "line": 1126,
+            "old": "./images/experiment2/30.png",
+            "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/30.avif",
+            "status": "replaced"
+          }
+        ],
+        "unresolved": [],
+        "checks": [
+          {
+            "check": "remote verification",
+            "status": "skipped",
+            "reason": "user requested direct replacement"
+          },
+          {
+            "check": "npm run build",
+            "status": "passed"
+          },
+          {
+            "check": "git diff --check",
+            "status": "passed"
+          },
+          {
+            "check": "old experiment2 paths in source",
+            "status": "passed"
+          },
+          {
+            "check": "browser preview",
+            "status": "not-run"
+          }
+        ],
+        "error": null
+      }
+    },
+    "virtual-lab-experiment2-31-png": {
+      "id": "virtual-lab-experiment2-31-png",
+      "kind": "image",
+      "category": "virtual-lab",
+      "fileName": "31.png",
+      "localPath": "public/virtual-lab/images/experiment2/31.png",
+      "fileSize": 599643,
+      "md5": "1bb443f842d84f1f4b062284d694fee8",
+      "description": "",
+      "keywords": [
+        "virtual-lab",
+        "experiment2"
+      ],
+      "status": "in-use",
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/31.avif",
+      "sha256": "f60b15d822627195b473520a62f7aa91de8055ec167fa3a6f65371b85b54fb26",
+      "references": [
+        {
+          "file": "virtual-lab/src/pages/ExperimentPage2.tsx",
+          "line": 891,
+          "old": "./images/experiment2/31.png",
+          "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/31.avif",
+          "status": "replaced"
+        }
+      ],
+      "upload": {
+        "target": {
+          "platform": "igem",
+          "year": 2026,
+          "team": "6056"
+        },
+        "status": "uploaded",
+        "source": "inferred-by-user-request",
+        "verification": "skipped at explicit user request",
+        "remoteName": "31.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "recordedAt": "2026-09-29T12:35:40.143579+00:00",
+        "references": [
+          {
+            "file": "virtual-lab/src/pages/ExperimentPage2.tsx",
+            "line": 891,
+            "old": "./images/experiment2/31.png",
+            "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/31.avif",
+            "status": "replaced"
+          }
+        ],
+        "unresolved": [],
+        "checks": [
+          {
+            "check": "remote verification",
+            "status": "skipped",
+            "reason": "user requested direct replacement"
+          },
+          {
+            "check": "npm run build",
+            "status": "passed"
+          },
+          {
+            "check": "git diff --check",
+            "status": "passed"
+          },
+          {
+            "check": "old experiment2 paths in source",
+            "status": "passed"
+          },
+          {
+            "check": "browser preview",
+            "status": "not-run"
+          }
+        ],
+        "error": null
+      }
+    },
+    "virtual-lab-experiment2-32-png": {
+      "id": "virtual-lab-experiment2-32-png",
+      "kind": "image",
+      "category": "virtual-lab",
+      "fileName": "32.png",
+      "localPath": "public/virtual-lab/images/experiment2/32.png",
+      "fileSize": 300109,
+      "md5": "721e1c27b5d86158040ad6365c9a906f",
+      "description": "",
+      "keywords": [
+        "virtual-lab",
+        "experiment2"
+      ],
+      "status": "in-use",
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/32.avif",
+      "sha256": "9c26914bb7b09501fcd6835ab6f9d048f7ef88ffa7ee1920bc370f2687b6772b",
+      "references": [
+        {
+          "file": "virtual-lab/src/pages/ExperimentPage2.tsx",
+          "line": 973,
+          "old": "./images/experiment2/32.png",
+          "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/32.avif",
+          "status": "replaced"
+        }
+      ],
+      "upload": {
+        "target": {
+          "platform": "igem",
+          "year": 2026,
+          "team": "6056"
+        },
+        "status": "uploaded",
+        "source": "inferred-by-user-request",
+        "verification": "skipped at explicit user request",
+        "remoteName": "32.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "recordedAt": "2026-09-29T12:35:40.143579+00:00",
+        "references": [
+          {
+            "file": "virtual-lab/src/pages/ExperimentPage2.tsx",
+            "line": 973,
+            "old": "./images/experiment2/32.png",
+            "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/32.avif",
+            "status": "replaced"
+          }
+        ],
+        "unresolved": [],
+        "checks": [
+          {
+            "check": "remote verification",
+            "status": "skipped",
+            "reason": "user requested direct replacement"
+          },
+          {
+            "check": "npm run build",
+            "status": "passed"
+          },
+          {
+            "check": "git diff --check",
+            "status": "passed"
+          },
+          {
+            "check": "old experiment2 paths in source",
+            "status": "passed"
+          },
+          {
+            "check": "browser preview",
+            "status": "not-run"
+          }
+        ],
+        "error": null
+      }
+    },
+    "virtual-lab-experiment2-33-png": {
+      "id": "virtual-lab-experiment2-33-png",
+      "kind": "image",
+      "category": "virtual-lab",
+      "fileName": "33.png",
+      "localPath": "public/virtual-lab/images/experiment2/33.png",
+      "fileSize": 929449,
+      "md5": "6ed0d8b2ebfecbe1bfa6351f892aa81a",
+      "description": "",
+      "keywords": [
+        "virtual-lab",
+        "experiment2"
+      ],
+      "status": "in-use",
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/33.avif",
+      "sha256": "ff89f9b17b2f940338dd2b153e5b793eb3247f9bd6367abae30bf172ee3370c9",
+      "references": [
+        {
+          "file": "virtual-lab/src/pages/ExperimentPage2.tsx",
+          "line": 947,
+          "old": "./images/experiment2/33.png",
+          "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/33.avif",
+          "status": "replaced"
+        }
+      ],
+      "upload": {
+        "target": {
+          "platform": "igem",
+          "year": 2026,
+          "team": "6056"
+        },
+        "status": "uploaded",
+        "source": "inferred-by-user-request",
+        "verification": "skipped at explicit user request",
+        "remoteName": "33.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "recordedAt": "2026-09-29T12:35:40.143579+00:00",
+        "references": [
+          {
+            "file": "virtual-lab/src/pages/ExperimentPage2.tsx",
+            "line": 947,
+            "old": "./images/experiment2/33.png",
+            "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/33.avif",
+            "status": "replaced"
+          }
+        ],
+        "unresolved": [],
+        "checks": [
+          {
+            "check": "remote verification",
+            "status": "skipped",
+            "reason": "user requested direct replacement"
+          },
+          {
+            "check": "npm run build",
+            "status": "passed"
+          },
+          {
+            "check": "git diff --check",
+            "status": "passed"
+          },
+          {
+            "check": "old experiment2 paths in source",
+            "status": "passed"
+          },
+          {
+            "check": "browser preview",
+            "status": "not-run"
+          }
+        ],
+        "error": null
+      }
+    },
+    "virtual-lab-experiment2-34-png": {
+      "id": "virtual-lab-experiment2-34-png",
+      "kind": "image",
+      "category": "virtual-lab",
+      "fileName": "34.png",
+      "localPath": "public/virtual-lab/images/experiment2/34.png",
+      "fileSize": 425790,
+      "md5": "398bd2cf428f351e836484f0daf1ca95",
+      "description": "",
+      "keywords": [
+        "virtual-lab",
+        "experiment2"
+      ],
+      "status": "in-use",
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/34.avif",
+      "sha256": "788057e0326943b0ecda956289485deb14394623cadd4cdefc3765f39e3724a2",
+      "references": [
+        {
+          "file": "virtual-lab/src/pages/ExperimentPage2.tsx",
+          "line": 1150,
+          "old": "./images/experiment2/34.png",
+          "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/34.avif",
+          "status": "replaced"
+        }
+      ],
+      "upload": {
+        "target": {
+          "platform": "igem",
+          "year": 2026,
+          "team": "6056"
+        },
+        "status": "uploaded",
+        "source": "inferred-by-user-request",
+        "verification": "skipped at explicit user request",
+        "remoteName": "34.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "recordedAt": "2026-09-29T12:35:40.143579+00:00",
+        "references": [
+          {
+            "file": "virtual-lab/src/pages/ExperimentPage2.tsx",
+            "line": 1150,
+            "old": "./images/experiment2/34.png",
+            "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/34.avif",
+            "status": "replaced"
+          }
+        ],
+        "unresolved": [],
+        "checks": [
+          {
+            "check": "remote verification",
+            "status": "skipped",
+            "reason": "user requested direct replacement"
+          },
+          {
+            "check": "npm run build",
+            "status": "passed"
+          },
+          {
+            "check": "git diff --check",
+            "status": "passed"
+          },
+          {
+            "check": "old experiment2 paths in source",
+            "status": "passed"
+          },
+          {
+            "check": "browser preview",
+            "status": "not-run"
+          }
+        ],
+        "error": null
+      }
+    },
+    "virtual-lab-experiment2-35-png": {
+      "id": "virtual-lab-experiment2-35-png",
+      "kind": "image",
+      "category": "virtual-lab",
+      "fileName": "35.png",
+      "localPath": "public/virtual-lab/images/experiment2/35.png",
+      "fileSize": 313420,
+      "md5": "53413a027696ec66793be36c1d6d32d9",
+      "description": "",
+      "keywords": [
+        "virtual-lab",
+        "experiment2"
+      ],
+      "status": "in-use",
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/35.avif",
+      "sha256": "482e0cf4979e4604b9698c0a3db7db83d3f6b3203da84238266de631668c7dce",
+      "references": [
+        {
+          "file": "virtual-lab/src/pages/ExperimentPage2.tsx",
+          "line": 982,
+          "old": "./images/experiment2/35.png",
+          "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/35.avif",
+          "status": "replaced"
+        }
+      ],
+      "upload": {
+        "target": {
+          "platform": "igem",
+          "year": 2026,
+          "team": "6056"
+        },
+        "status": "uploaded",
+        "source": "inferred-by-user-request",
+        "verification": "skipped at explicit user request",
+        "remoteName": "35.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "recordedAt": "2026-09-29T12:35:40.143579+00:00",
+        "references": [
+          {
+            "file": "virtual-lab/src/pages/ExperimentPage2.tsx",
+            "line": 982,
+            "old": "./images/experiment2/35.png",
+            "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/35.avif",
+            "status": "replaced"
+          }
+        ],
+        "unresolved": [],
+        "checks": [
+          {
+            "check": "remote verification",
+            "status": "skipped",
+            "reason": "user requested direct replacement"
+          },
+          {
+            "check": "npm run build",
+            "status": "passed"
+          },
+          {
+            "check": "git diff --check",
+            "status": "passed"
+          },
+          {
+            "check": "old experiment2 paths in source",
+            "status": "passed"
+          },
+          {
+            "check": "browser preview",
+            "status": "not-run"
+          }
+        ],
+        "error": null
+      }
+    },
+    "virtual-lab-experiment2-36-png": {
+      "id": "virtual-lab-experiment2-36-png",
+      "kind": "image",
+      "category": "virtual-lab",
+      "fileName": "36.png",
+      "localPath": "public/virtual-lab/images/experiment2/36.png",
+      "fileSize": 402469,
+      "md5": "9e995f82cee306fcc0cdba363ef08497",
+      "description": "",
+      "keywords": [
+        "virtual-lab",
+        "experiment2"
+      ],
+      "status": "in-use",
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/36.avif",
+      "sha256": "abfd8bb24aa8462da8769172ee95596d5e7e60394b37d07becf2d180efdcb0d9",
+      "references": [
+        {
+          "file": "virtual-lab/src/pages/ExperimentPage2.tsx",
+          "line": 1174,
+          "old": "./images/experiment2/36.png",
+          "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/36.avif",
+          "status": "replaced"
+        }
+      ],
+      "upload": {
+        "target": {
+          "platform": "igem",
+          "year": 2026,
+          "team": "6056"
+        },
+        "status": "uploaded",
+        "source": "inferred-by-user-request",
+        "verification": "skipped at explicit user request",
+        "remoteName": "36.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "recordedAt": "2026-09-29T12:35:40.143579+00:00",
+        "references": [
+          {
+            "file": "virtual-lab/src/pages/ExperimentPage2.tsx",
+            "line": 1174,
+            "old": "./images/experiment2/36.png",
+            "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/36.avif",
+            "status": "replaced"
+          }
+        ],
+        "unresolved": [],
+        "checks": [
+          {
+            "check": "remote verification",
+            "status": "skipped",
+            "reason": "user requested direct replacement"
+          },
+          {
+            "check": "npm run build",
+            "status": "passed"
+          },
+          {
+            "check": "git diff --check",
+            "status": "passed"
+          },
+          {
+            "check": "old experiment2 paths in source",
+            "status": "passed"
+          },
+          {
+            "check": "browser preview",
+            "status": "not-run"
+          }
+        ],
+        "error": null
+      }
+    },
+    "virtual-lab-experiment2-37-png": {
+      "id": "virtual-lab-experiment2-37-png",
+      "kind": "image",
+      "category": "virtual-lab",
+      "fileName": "37.png",
+      "localPath": "public/virtual-lab/images/experiment2/37.png",
+      "fileSize": 803642,
+      "md5": "f1c6c73ef052ea0a2c0b1a225fb615f6",
+      "description": "",
+      "keywords": [
+        "virtual-lab",
+        "experiment2"
+      ],
+      "status": "in-use",
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/37.avif",
+      "sha256": "92bed2bce9de703fa9f00527bfda82577bfa05ae3e446fabe1a8efb9e175ff82",
+      "references": [
+        {
+          "file": "virtual-lab/src/pages/ExperimentPage2.tsx",
+          "line": 947,
+          "old": "./images/experiment2/37.png",
+          "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/37.avif",
+          "status": "replaced"
+        }
+      ],
+      "upload": {
+        "target": {
+          "platform": "igem",
+          "year": 2026,
+          "team": "6056"
+        },
+        "status": "uploaded",
+        "source": "inferred-by-user-request",
+        "verification": "skipped at explicit user request",
+        "remoteName": "37.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "recordedAt": "2026-09-29T12:35:40.143579+00:00",
+        "references": [
+          {
+            "file": "virtual-lab/src/pages/ExperimentPage2.tsx",
+            "line": 947,
+            "old": "./images/experiment2/37.png",
+            "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/37.avif",
+            "status": "replaced"
+          }
+        ],
+        "unresolved": [],
+        "checks": [
+          {
+            "check": "remote verification",
+            "status": "skipped",
+            "reason": "user requested direct replacement"
+          },
+          {
+            "check": "npm run build",
+            "status": "passed"
+          },
+          {
+            "check": "git diff --check",
+            "status": "passed"
+          },
+          {
+            "check": "old experiment2 paths in source",
+            "status": "passed"
+          },
+          {
+            "check": "browser preview",
+            "status": "not-run"
+          }
+        ],
+        "error": null
+      }
+    },
+    "virtual-lab-experiment2-38-png": {
+      "id": "virtual-lab-experiment2-38-png",
+      "kind": "image",
+      "category": "virtual-lab",
+      "fileName": "38.png",
+      "localPath": "public/virtual-lab/images/experiment2/38.png",
+      "fileSize": 353525,
+      "md5": "258b69e5c53ddbc7d468ebda8586b141",
+      "description": "",
+      "keywords": [
+        "virtual-lab",
+        "experiment2"
+      ],
+      "status": "in-use",
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/38.avif",
+      "sha256": "8ccfc9e6f0c517320ab7bffd6af1897da0c37b796b1d9bad0dd05d18300828a9",
+      "references": [
+        {
+          "file": "virtual-lab/src/pages/ExperimentPage2.tsx",
+          "line": 991,
+          "old": "./images/experiment2/38.png",
+          "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/38.avif",
+          "status": "replaced"
+        }
+      ],
+      "upload": {
+        "target": {
+          "platform": "igem",
+          "year": 2026,
+          "team": "6056"
+        },
+        "status": "uploaded",
+        "source": "inferred-by-user-request",
+        "verification": "skipped at explicit user request",
+        "remoteName": "38.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "recordedAt": "2026-09-29T12:35:40.143579+00:00",
+        "references": [
+          {
+            "file": "virtual-lab/src/pages/ExperimentPage2.tsx",
+            "line": 991,
+            "old": "./images/experiment2/38.png",
+            "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/38.avif",
+            "status": "replaced"
+          }
+        ],
+        "unresolved": [],
+        "checks": [
+          {
+            "check": "remote verification",
+            "status": "skipped",
+            "reason": "user requested direct replacement"
+          },
+          {
+            "check": "npm run build",
+            "status": "passed"
+          },
+          {
+            "check": "git diff --check",
+            "status": "passed"
+          },
+          {
+            "check": "old experiment2 paths in source",
+            "status": "passed"
+          },
+          {
+            "check": "browser preview",
+            "status": "not-run"
+          }
+        ],
+        "error": null
+      }
+    },
+    "virtual-lab-experiment2-39-png": {
+      "id": "virtual-lab-experiment2-39-png",
+      "kind": "image",
+      "category": "virtual-lab",
+      "fileName": "39.png",
+      "localPath": "public/virtual-lab/images/experiment2/39.png",
+      "fileSize": 848263,
+      "md5": "02fb6f95720c7be10acb352ea59f4ff2",
+      "description": "",
+      "keywords": [
+        "virtual-lab",
+        "experiment2"
+      ],
+      "status": "in-use",
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/39.avif",
+      "sha256": "94c5de5c065027081ec3b5d438650f8dd40a39142ad3915fc21aeeec10d83a03",
+      "references": [
+        {
+          "file": "virtual-lab/src/pages/ExperimentPage2.tsx",
+          "line": 947,
+          "old": "./images/experiment2/39.png",
+          "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/39.avif",
+          "status": "replaced"
+        }
+      ],
+      "upload": {
+        "target": {
+          "platform": "igem",
+          "year": 2026,
+          "team": "6056"
+        },
+        "status": "uploaded",
+        "source": "inferred-by-user-request",
+        "verification": "skipped at explicit user request",
+        "remoteName": "39.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "recordedAt": "2026-09-29T12:35:40.143579+00:00",
+        "references": [
+          {
+            "file": "virtual-lab/src/pages/ExperimentPage2.tsx",
+            "line": 947,
+            "old": "./images/experiment2/39.png",
+            "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/39.avif",
+            "status": "replaced"
+          }
+        ],
+        "unresolved": [],
+        "checks": [
+          {
+            "check": "remote verification",
+            "status": "skipped",
+            "reason": "user requested direct replacement"
+          },
+          {
+            "check": "npm run build",
+            "status": "passed"
+          },
+          {
+            "check": "git diff --check",
+            "status": "passed"
+          },
+          {
+            "check": "old experiment2 paths in source",
+            "status": "passed"
+          },
+          {
+            "check": "browser preview",
+            "status": "not-run"
+          }
+        ],
+        "error": null
+      }
+    },
+    "virtual-lab-experiment2-4-png": {
+      "id": "virtual-lab-experiment2-4-png",
+      "kind": "image",
+      "category": "virtual-lab",
+      "fileName": "4.png",
+      "localPath": "public/virtual-lab/images/experiment2/4.png",
+      "fileSize": 12321,
+      "md5": "7167791be734eb9410484ebfc5d3d902",
+      "description": "",
+      "keywords": [
+        "virtual-lab",
+        "experiment2"
+      ],
+      "status": "in-use",
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/4.avif",
+      "sha256": "c904ce943cb0a4435d779aa0dc5355664f264fbf10112f42c50a27c2d11a9ece",
+      "references": [
+        {
+          "file": "virtual-lab/src/pages/ExperimentPage2.tsx",
+          "line": 947,
+          "old": "./images/experiment2/4.png",
+          "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/4.avif",
+          "status": "replaced"
+        }
+      ],
+      "upload": {
+        "target": {
+          "platform": "igem",
+          "year": 2026,
+          "team": "6056"
+        },
+        "status": "uploaded",
+        "source": "inferred-by-user-request",
+        "verification": "skipped at explicit user request",
+        "remoteName": "4.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "recordedAt": "2026-09-29T12:35:40.143579+00:00",
+        "references": [
+          {
+            "file": "virtual-lab/src/pages/ExperimentPage2.tsx",
+            "line": 947,
+            "old": "./images/experiment2/4.png",
+            "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/4.avif",
+            "status": "replaced"
+          }
+        ],
+        "unresolved": [],
+        "checks": [
+          {
+            "check": "remote verification",
+            "status": "skipped",
+            "reason": "user requested direct replacement"
+          },
+          {
+            "check": "npm run build",
+            "status": "passed"
+          },
+          {
+            "check": "git diff --check",
+            "status": "passed"
+          },
+          {
+            "check": "old experiment2 paths in source",
+            "status": "passed"
+          },
+          {
+            "check": "browser preview",
+            "status": "not-run"
+          }
+        ],
+        "error": null
+      }
+    },
+    "virtual-lab-experiment2-40-png": {
+      "id": "virtual-lab-experiment2-40-png",
+      "kind": "image",
+      "category": "virtual-lab",
+      "fileName": "40.png",
+      "localPath": "public/virtual-lab/images/experiment2/40.png",
+      "fileSize": 338230,
+      "md5": "9adf412c59302aa3b5154bed177053ba",
+      "description": "",
+      "keywords": [
+        "virtual-lab",
+        "experiment2"
+      ],
+      "status": "in-use",
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/40.avif",
+      "sha256": "47ace4291728f477df149d2f46da883b683cd615fd278e447e92cea8ae267c0e",
+      "references": [
+        {
+          "file": "virtual-lab/src/pages/ExperimentPage2.tsx",
+          "line": 1198,
+          "old": "./images/experiment2/40.png",
+          "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/40.avif",
+          "status": "replaced"
+        }
+      ],
+      "upload": {
+        "target": {
+          "platform": "igem",
+          "year": 2026,
+          "team": "6056"
+        },
+        "status": "uploaded",
+        "source": "inferred-by-user-request",
+        "verification": "skipped at explicit user request",
+        "remoteName": "40.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "recordedAt": "2026-09-29T12:35:40.143579+00:00",
+        "references": [
+          {
+            "file": "virtual-lab/src/pages/ExperimentPage2.tsx",
+            "line": 1198,
+            "old": "./images/experiment2/40.png",
+            "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/40.avif",
+            "status": "replaced"
+          }
+        ],
+        "unresolved": [],
+        "checks": [
+          {
+            "check": "remote verification",
+            "status": "skipped",
+            "reason": "user requested direct replacement"
+          },
+          {
+            "check": "npm run build",
+            "status": "passed"
+          },
+          {
+            "check": "git diff --check",
+            "status": "passed"
+          },
+          {
+            "check": "old experiment2 paths in source",
+            "status": "passed"
+          },
+          {
+            "check": "browser preview",
+            "status": "not-run"
+          }
+        ],
+        "error": null
+      }
+    },
+    "virtual-lab-experiment2-5-png": {
+      "id": "virtual-lab-experiment2-5-png",
+      "kind": "image",
+      "category": "virtual-lab",
+      "fileName": "5.png",
+      "localPath": "public/virtual-lab/images/experiment2/5.png",
+      "fileSize": 2900,
+      "md5": "6dfd84ef9f459ffd5a247b59769b439f",
+      "description": "",
+      "keywords": [
+        "virtual-lab",
+        "experiment2"
+      ],
+      "status": "in-use",
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/5.avif",
+      "sha256": "8929afda3ddaf297d35b7bcc8da549a4155a7cc88e807435e91454ce43ddbaf4",
+      "references": [
+        {
+          "file": "virtual-lab/src/pages/ExperimentPage1.tsx",
+          "line": 855,
+          "old": "./images/experiment2/5.png",
+          "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/5.avif",
+          "status": "replaced"
+        },
+        {
+          "file": "virtual-lab/src/pages/ExperimentPage2.tsx",
+          "line": 1009,
+          "old": "./images/experiment2/5.png",
+          "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/5.avif",
+          "status": "replaced"
+        }
+      ],
+      "upload": {
+        "target": {
+          "platform": "igem",
+          "year": 2026,
+          "team": "6056"
+        },
+        "status": "uploaded",
+        "source": "inferred-by-user-request",
+        "verification": "skipped at explicit user request",
+        "remoteName": "5.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "recordedAt": "2026-09-29T12:35:40.143579+00:00",
+        "references": [
+          {
+            "file": "virtual-lab/src/pages/ExperimentPage1.tsx",
+            "line": 855,
+            "old": "./images/experiment2/5.png",
+            "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/5.avif",
+            "status": "replaced"
+          },
+          {
+            "file": "virtual-lab/src/pages/ExperimentPage2.tsx",
+            "line": 1009,
+            "old": "./images/experiment2/5.png",
+            "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/5.avif",
+            "status": "replaced"
+          }
+        ],
+        "unresolved": [],
+        "checks": [
+          {
+            "check": "remote verification",
+            "status": "skipped",
+            "reason": "user requested direct replacement"
+          },
+          {
+            "check": "npm run build",
+            "status": "passed"
+          },
+          {
+            "check": "git diff --check",
+            "status": "passed"
+          },
+          {
+            "check": "old experiment2 paths in source",
+            "status": "passed"
+          },
+          {
+            "check": "browser preview",
+            "status": "not-run"
+          }
+        ],
+        "error": null
+      }
+    },
+    "virtual-lab-experiment2-6-png": {
+      "id": "virtual-lab-experiment2-6-png",
+      "kind": "image",
+      "category": "virtual-lab",
+      "fileName": "6.png",
+      "localPath": "public/virtual-lab/images/experiment2/6.png",
+      "fileSize": 24657,
+      "md5": "e7da2c74cffb9eb4ff2cf3949d5be9cf",
+      "description": "",
+      "keywords": [
+        "virtual-lab",
+        "experiment2"
+      ],
+      "status": "in-use",
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/6.avif",
+      "sha256": "c6ce880aed49605085b2cc3a4bba9523fc4113bf67750fe1dc9bae32a4a9cd91",
+      "references": [
+        {
+          "file": "virtual-lab/src/pages/ExperimentPage1.tsx",
+          "line": 807,
+          "old": "./images/experiment2/6.png",
+          "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/6.avif",
+          "status": "replaced"
+        },
+        {
+          "file": "virtual-lab/src/pages/ExperimentPage2.tsx",
+          "line": 1018,
+          "old": "./images/experiment2/6.png",
+          "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/6.avif",
+          "status": "replaced"
+        },
+        {
+          "file": "virtual-lab/src/pages/ExperimentPage8.tsx",
+          "line": 42,
+          "old": "./images/experiment2/6.png",
+          "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/6.avif",
+          "status": "replaced"
+        }
+      ],
+      "upload": {
+        "target": {
+          "platform": "igem",
+          "year": 2026,
+          "team": "6056"
+        },
+        "status": "uploaded",
+        "source": "inferred-by-user-request",
+        "verification": "skipped at explicit user request",
+        "remoteName": "6.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "recordedAt": "2026-09-29T12:35:40.143579+00:00",
+        "references": [
+          {
+            "file": "virtual-lab/src/pages/ExperimentPage1.tsx",
+            "line": 807,
+            "old": "./images/experiment2/6.png",
+            "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/6.avif",
+            "status": "replaced"
+          },
+          {
+            "file": "virtual-lab/src/pages/ExperimentPage2.tsx",
+            "line": 1018,
+            "old": "./images/experiment2/6.png",
+            "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/6.avif",
+            "status": "replaced"
+          },
+          {
+            "file": "virtual-lab/src/pages/ExperimentPage8.tsx",
+            "line": 42,
+            "old": "./images/experiment2/6.png",
+            "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/6.avif",
+            "status": "replaced"
+          }
+        ],
+        "unresolved": [],
+        "checks": [
+          {
+            "check": "remote verification",
+            "status": "skipped",
+            "reason": "user requested direct replacement"
+          },
+          {
+            "check": "npm run build",
+            "status": "passed"
+          },
+          {
+            "check": "git diff --check",
+            "status": "passed"
+          },
+          {
+            "check": "old experiment2 paths in source",
+            "status": "passed"
+          },
+          {
+            "check": "browser preview",
+            "status": "not-run"
+          }
+        ],
+        "error": null
+      }
+    },
+    "virtual-lab-experiment2-7-png": {
+      "id": "virtual-lab-experiment2-7-png",
+      "kind": "image",
+      "category": "virtual-lab",
+      "fileName": "7.png",
+      "localPath": "public/virtual-lab/images/experiment2/7.png",
+      "fileSize": 2420806,
+      "md5": "e69b203741de8dfec8fde659e0473a2e",
+      "description": "",
+      "keywords": [
+        "virtual-lab",
+        "experiment2"
+      ],
+      "status": "in-use",
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/7.avif",
+      "sha256": "c4f5fdfa34adfb398ca1bceb6ee78ae27f2d48d91799fd5a860c76b67644c274",
+      "references": [
+        {
+          "file": "virtual-lab/src/pages/ExperimentPage2.tsx",
+          "line": 1042,
+          "old": "./images/experiment2/7.png",
+          "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/7.avif",
+          "status": "replaced"
+        }
+      ],
+      "upload": {
+        "target": {
+          "platform": "igem",
+          "year": 2026,
+          "team": "6056"
+        },
+        "status": "uploaded",
+        "source": "inferred-by-user-request",
+        "verification": "skipped at explicit user request",
+        "remoteName": "7.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "recordedAt": "2026-09-29T12:35:40.143579+00:00",
+        "references": [
+          {
+            "file": "virtual-lab/src/pages/ExperimentPage2.tsx",
+            "line": 1042,
+            "old": "./images/experiment2/7.png",
+            "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/7.avif",
+            "status": "replaced"
+          }
+        ],
+        "unresolved": [],
+        "checks": [
+          {
+            "check": "remote verification",
+            "status": "skipped",
+            "reason": "user requested direct replacement"
+          },
+          {
+            "check": "npm run build",
+            "status": "passed"
+          },
+          {
+            "check": "git diff --check",
+            "status": "passed"
+          },
+          {
+            "check": "old experiment2 paths in source",
+            "status": "passed"
+          },
+          {
+            "check": "browser preview",
+            "status": "not-run"
+          }
+        ],
+        "error": null
+      }
+    },
+    "virtual-lab-experiment2-8-png": {
+      "id": "virtual-lab-experiment2-8-png",
+      "kind": "image",
+      "category": "virtual-lab",
+      "fileName": "8.png",
+      "localPath": "public/virtual-lab/images/experiment2/8.png",
+      "fileSize": 1685096,
+      "md5": "f0a7db0965a3e16e15a0dec167582668",
+      "description": "",
+      "keywords": [
+        "virtual-lab",
+        "experiment2"
+      ],
+      "status": "in-use",
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/8.avif",
+      "sha256": "6b4f167144415eff0d1badfc0cdd9ba6d2887f099fc9e119d6861735b4b666c1",
+      "references": [
+        {
+          "file": "virtual-lab/src/pages/ExperimentPage2.tsx",
+          "old": "`./images/experiment2/${n}.png`",
+          "new": "`https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/${n}.avif`",
+          "type": "dynamic-array",
+          "status": "replaced"
+        }
+      ],
+      "upload": {
+        "target": {
+          "platform": "igem",
+          "year": 2026,
+          "team": "6056"
+        },
+        "status": "uploaded",
+        "source": "inferred-by-user-request",
+        "verification": "skipped at explicit user request",
+        "remoteName": "8.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "recordedAt": "2026-09-29T12:35:40.143579+00:00",
+        "references": [
+          {
+            "file": "virtual-lab/src/pages/ExperimentPage2.tsx",
+            "old": "`./images/experiment2/${n}.png`",
+            "new": "`https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/${n}.avif`",
+            "type": "dynamic-array",
+            "status": "replaced"
+          }
+        ],
+        "unresolved": [],
+        "checks": [
+          {
+            "check": "remote verification",
+            "status": "skipped",
+            "reason": "user requested direct replacement"
+          },
+          {
+            "check": "npm run build",
+            "status": "passed"
+          },
+          {
+            "check": "git diff --check",
+            "status": "passed"
+          },
+          {
+            "check": "old experiment2 paths in source",
+            "status": "passed"
+          },
+          {
+            "check": "browser preview",
+            "status": "not-run"
+          }
+        ],
+        "error": null
+      }
+    },
+    "virtual-lab-experiment2-9-png": {
+      "id": "virtual-lab-experiment2-9-png",
+      "kind": "image",
+      "category": "virtual-lab",
+      "fileName": "9.png",
+      "localPath": "public/virtual-lab/images/experiment2/9.png",
+      "fileSize": 1329824,
+      "md5": "2ede850141197bed0988a15eb6973495",
+      "description": "",
+      "keywords": [
+        "virtual-lab",
+        "experiment2"
+      ],
+      "status": "in-use",
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/9.avif",
+      "sha256": "cbd2236894fa9d30ffb8fc23471d4060da3d7111bdb29be37ced3992b9a4b344",
+      "references": [
+        {
+          "file": "virtual-lab/src/pages/ExperimentPage2.tsx",
+          "old": "`./images/experiment2/${n}.png`",
+          "new": "`https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/${n}.avif`",
+          "type": "dynamic-array",
+          "status": "replaced"
+        }
+      ],
+      "upload": {
+        "target": {
+          "platform": "igem",
+          "year": 2026,
+          "team": "6056"
+        },
+        "status": "uploaded",
+        "source": "inferred-by-user-request",
+        "verification": "skipped at explicit user request",
+        "remoteName": "9.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "recordedAt": "2026-09-29T12:35:40.143579+00:00",
+        "references": [
+          {
+            "file": "virtual-lab/src/pages/ExperimentPage2.tsx",
+            "old": "`./images/experiment2/${n}.png`",
+            "new": "`https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/${n}.avif`",
+            "type": "dynamic-array",
+            "status": "replaced"
+          }
+        ],
+        "unresolved": [],
+        "checks": [
+          {
+            "check": "remote verification",
+            "status": "skipped",
+            "reason": "user requested direct replacement"
+          },
+          {
+            "check": "npm run build",
+            "status": "passed"
+          },
+          {
+            "check": "git diff --check",
+            "status": "passed"
+          },
+          {
+            "check": "old experiment2 paths in source",
+            "status": "passed"
+          },
+          {
+            "check": "browser preview",
+            "status": "not-run"
+          }
+        ],
+        "error": null
+      }
+    },
+    "virtual-lab-experiment2-background_new-png": {
+      "id": "virtual-lab-experiment2-background_new-png",
+      "kind": "image",
+      "category": "virtual-lab",
+      "fileName": "background_new.png",
+      "localPath": "public/virtual-lab/images/experiment2/background_new.png",
+      "fileSize": 609307,
+      "md5": "8e498b728bc98117c20b919b3c70f6a2",
+      "description": "",
+      "keywords": [
+        "virtual-lab",
+        "experiment2"
+      ],
+      "status": "in-use",
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/background_new.avif",
+      "sha256": "b9f8fa450f49a86a702fc247ab775236d112f7363448ef9d5dc46ac220865262",
+      "references": [
+        {
+          "file": "virtual-lab/src/pages/ExperimentPage2.tsx",
+          "line": 811,
+          "old": "./images/experiment2/background_new.png",
+          "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/background_new.avif",
+          "status": "replaced"
+        }
+      ],
+      "upload": {
+        "target": {
+          "platform": "igem",
+          "year": 2026,
+          "team": "6056"
+        },
+        "status": "uploaded",
+        "source": "inferred-by-user-request",
+        "verification": "skipped at explicit user request",
+        "remoteName": "background_new.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "recordedAt": "2026-09-29T12:35:40.143579+00:00",
+        "references": [
+          {
+            "file": "virtual-lab/src/pages/ExperimentPage2.tsx",
+            "line": 811,
+            "old": "./images/experiment2/background_new.png",
+            "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/background_new.avif",
+            "status": "replaced"
+          }
+        ],
+        "unresolved": [],
+        "checks": [
+          {
+            "check": "remote verification",
+            "status": "skipped",
+            "reason": "user requested direct replacement"
+          },
+          {
+            "check": "npm run build",
+            "status": "passed"
+          },
+          {
+            "check": "git diff --check",
+            "status": "passed"
+          },
+          {
+            "check": "old experiment2 paths in source",
+            "status": "passed"
+          },
+          {
+            "check": "browser preview",
+            "status": "not-run"
+          }
+        ],
+        "error": null
+      }
+    },
+    "virtual-lab-experiment2-bg-png": {
+      "id": "virtual-lab-experiment2-bg-png",
+      "kind": "image",
+      "category": "virtual-lab",
+      "fileName": "bg.png",
+      "localPath": "public/virtual-lab/images/experiment2/bg.png",
+      "fileSize": 48977,
+      "md5": "b9e4d47ac2673dd893f6f13399e4a91f",
+      "description": "",
+      "keywords": [
+        "virtual-lab",
+        "experiment2"
+      ],
+      "status": "in-use",
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/bg.avif",
+      "sha256": "7dca9b4d33d56f9dcc0bf13e3cfc773cd45e5ac5d636861b868051580bbddbb1",
+      "references": [
+        {
+          "file": "virtual-lab/src/pages/ExperimentPage1.tsx",
+          "line": 736,
+          "old": "./images/experiment2/bg.png",
+          "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/bg.avif",
+          "status": "replaced"
+        },
+        {
+          "file": "virtual-lab/src/pages/ExperimentPage2.tsx",
+          "line": 885,
+          "old": "./images/experiment2/bg.png",
+          "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/bg.avif",
+          "status": "replaced"
+        },
+        {
+          "file": "virtual-lab/src/pages/ExperimentPage3.tsx",
+          "line": 91,
+          "old": "./images/experiment2/bg.png",
+          "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/bg.avif",
+          "status": "replaced"
+        },
+        {
+          "file": "virtual-lab/src/pages/ExperimentPage5.tsx",
+          "line": 52,
+          "old": "./images/experiment2/bg.png",
+          "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/bg.avif",
+          "status": "replaced"
+        }
+      ],
+      "upload": {
+        "target": {
+          "platform": "igem",
+          "year": 2026,
+          "team": "6056"
+        },
+        "status": "uploaded",
+        "source": "inferred-by-user-request",
+        "verification": "skipped at explicit user request",
+        "remoteName": "bg.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "recordedAt": "2026-09-29T12:35:40.143579+00:00",
+        "references": [
+          {
+            "file": "virtual-lab/src/pages/ExperimentPage1.tsx",
+            "line": 736,
+            "old": "./images/experiment2/bg.png",
+            "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/bg.avif",
+            "status": "replaced"
+          },
+          {
+            "file": "virtual-lab/src/pages/ExperimentPage2.tsx",
+            "line": 885,
+            "old": "./images/experiment2/bg.png",
+            "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/bg.avif",
+            "status": "replaced"
+          },
+          {
+            "file": "virtual-lab/src/pages/ExperimentPage3.tsx",
+            "line": 91,
+            "old": "./images/experiment2/bg.png",
+            "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/bg.avif",
+            "status": "replaced"
+          },
+          {
+            "file": "virtual-lab/src/pages/ExperimentPage5.tsx",
+            "line": 52,
+            "old": "./images/experiment2/bg.png",
+            "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/bg.avif",
+            "status": "replaced"
+          }
+        ],
+        "unresolved": [],
+        "checks": [
+          {
+            "check": "remote verification",
+            "status": "skipped",
+            "reason": "user requested direct replacement"
+          },
+          {
+            "check": "npm run build",
+            "status": "passed"
+          },
+          {
+            "check": "git diff --check",
+            "status": "passed"
+          },
+          {
+            "check": "old experiment2 paths in source",
+            "status": "passed"
+          },
+          {
+            "check": "browser preview",
+            "status": "not-run"
+          }
+        ],
+        "error": null
+      }
+    },
+    "virtual-lab-experiment2-bopian-png": {
+      "id": "virtual-lab-experiment2-bopian-png",
+      "kind": "image",
+      "category": "virtual-lab",
+      "fileName": "bopian.png",
+      "localPath": "public/virtual-lab/images/experiment2/bopian.png",
+      "fileSize": 19307,
+      "md5": "cf8b2cd178f6843c46c79ecaa9d6c7e0",
+      "description": "",
+      "keywords": [
+        "virtual-lab",
+        "experiment2"
+      ],
+      "status": "in-use",
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/bopian.avif",
+      "sha256": "a0275cd4de168e7c6367ae0a7bc57886450cc6f49893a511347e9cabd8ea0872",
+      "references": [
+        {
+          "file": "virtual-lab/src/pages/ExperimentPage2.tsx",
+          "line": 816,
+          "old": "./images/experiment2/bopian.png",
+          "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/bopian.avif",
+          "status": "replaced"
+        }
+      ],
+      "upload": {
+        "target": {
+          "platform": "igem",
+          "year": 2026,
+          "team": "6056"
+        },
+        "status": "uploaded",
+        "source": "inferred-by-user-request",
+        "verification": "skipped at explicit user request",
+        "remoteName": "bopian.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "recordedAt": "2026-09-29T12:35:40.143579+00:00",
+        "references": [
+          {
+            "file": "virtual-lab/src/pages/ExperimentPage2.tsx",
+            "line": 816,
+            "old": "./images/experiment2/bopian.png",
+            "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/bopian.avif",
+            "status": "replaced"
+          }
+        ],
+        "unresolved": [],
+        "checks": [
+          {
+            "check": "remote verification",
+            "status": "skipped",
+            "reason": "user requested direct replacement"
+          },
+          {
+            "check": "npm run build",
+            "status": "passed"
+          },
+          {
+            "check": "git diff --check",
+            "status": "passed"
+          },
+          {
+            "check": "old experiment2 paths in source",
+            "status": "passed"
+          },
+          {
+            "check": "browser preview",
+            "status": "not-run"
+          }
+        ],
+        "error": null
+      }
+    },
+    "virtual-lab-experiment2-diguan-png": {
+      "id": "virtual-lab-experiment2-diguan-png",
+      "kind": "image",
+      "category": "virtual-lab",
+      "fileName": "diguan.png",
+      "localPath": "public/virtual-lab/images/experiment2/diguan.png",
+      "fileSize": 307655,
+      "md5": "e15cc6a251713d66f2ff45c2535323b3",
+      "description": "",
+      "keywords": [
+        "virtual-lab",
+        "experiment2"
+      ],
+      "status": "in-use",
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/diguan.avif",
+      "sha256": "550be1482a616c46c3107dbd8cc7cc362018b4dfa84d716be47109bcf5922067",
+      "references": [
+        {
+          "file": "virtual-lab/src/pages/ExperimentPage2.tsx",
+          "line": 827,
+          "old": "./images/experiment2/diguan.png",
+          "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/diguan.avif",
+          "status": "replaced"
+        }
+      ],
+      "upload": {
+        "target": {
+          "platform": "igem",
+          "year": 2026,
+          "team": "6056"
+        },
+        "status": "uploaded",
+        "source": "inferred-by-user-request",
+        "verification": "skipped at explicit user request",
+        "remoteName": "diguan.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "recordedAt": "2026-09-29T12:35:40.143579+00:00",
+        "references": [
+          {
+            "file": "virtual-lab/src/pages/ExperimentPage2.tsx",
+            "line": 827,
+            "old": "./images/experiment2/diguan.png",
+            "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/diguan.avif",
+            "status": "replaced"
+          }
+        ],
+        "unresolved": [],
+        "checks": [
+          {
+            "check": "remote verification",
+            "status": "skipped",
+            "reason": "user requested direct replacement"
+          },
+          {
+            "check": "npm run build",
+            "status": "passed"
+          },
+          {
+            "check": "git diff --check",
+            "status": "passed"
+          },
+          {
+            "check": "old experiment2 paths in source",
+            "status": "passed"
+          },
+          {
+            "check": "browser preview",
+            "status": "not-run"
+          }
+        ],
+        "error": null
+      }
+    },
+    "virtual-lab-experiment2-highlight-diguan-png": {
+      "id": "virtual-lab-experiment2-highlight-diguan-png",
+      "kind": "image",
+      "category": "virtual-lab",
+      "fileName": "highlight-diguan.png",
+      "localPath": "public/virtual-lab/images/experiment2/highlight-diguan.png",
+      "fileSize": 23067,
+      "md5": "92e9f79c691ad134c8b71727b36d924c",
+      "description": "",
+      "keywords": [
+        "virtual-lab",
+        "experiment2"
+      ],
+      "status": "in-use",
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/highlight-diguan.avif",
+      "sha256": "6d9636ba5de9e3fe8aaf083ee94f1138e9f017dda4beb870eab476b82d264272",
+      "references": [
+        {
+          "file": "virtual-lab/src/pages/ExperimentPage2.tsx",
+          "line": 1062,
+          "old": "./images/experiment2/highlight-diguan.png",
+          "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/highlight-diguan.avif",
+          "status": "replaced"
+        }
+      ],
+      "upload": {
+        "target": {
+          "platform": "igem",
+          "year": 2026,
+          "team": "6056"
+        },
+        "status": "uploaded",
+        "source": "inferred-by-user-request",
+        "verification": "skipped at explicit user request",
+        "remoteName": "highlight-diguan.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "recordedAt": "2026-09-29T12:35:40.143579+00:00",
+        "references": [
+          {
+            "file": "virtual-lab/src/pages/ExperimentPage2.tsx",
+            "line": 1062,
+            "old": "./images/experiment2/highlight-diguan.png",
+            "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/highlight-diguan.avif",
+            "status": "replaced"
+          }
+        ],
+        "unresolved": [],
+        "checks": [
+          {
+            "check": "remote verification",
+            "status": "skipped",
+            "reason": "user requested direct replacement"
+          },
+          {
+            "check": "npm run build",
+            "status": "passed"
+          },
+          {
+            "check": "git diff --check",
+            "status": "passed"
+          },
+          {
+            "check": "old experiment2 paths in source",
+            "status": "passed"
+          },
+          {
+            "check": "browser preview",
+            "status": "not-run"
+          }
+        ],
+        "error": null
+      }
+    },
+    "virtual-lab-experiment2-info-png": {
+      "id": "virtual-lab-experiment2-info-png",
+      "kind": "image",
+      "category": "virtual-lab",
+      "fileName": "info.png",
+      "localPath": "public/virtual-lab/images/experiment2/info.png",
+      "fileSize": 475881,
+      "md5": "984ad055b2a55774507062faaa07cf31",
+      "description": "",
+      "keywords": [
+        "virtual-lab",
+        "experiment2"
+      ],
+      "status": "in-use",
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/info.avif",
+      "sha256": "27036e98daaf3d6bffe248067718aa4af198c2eb2dbf2837dac773316f949574",
+      "references": [
+        {
+          "file": "virtual-lab/src/pages/ExperimentPage2.tsx",
+          "line": 858,
+          "old": "./images/experiment2/info.png",
+          "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/info.avif",
+          "status": "replaced"
+        }
+      ],
+      "upload": {
+        "target": {
+          "platform": "igem",
+          "year": 2026,
+          "team": "6056"
+        },
+        "status": "uploaded",
+        "source": "inferred-by-user-request",
+        "verification": "skipped at explicit user request",
+        "remoteName": "info.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "recordedAt": "2026-09-29T12:35:40.143579+00:00",
+        "references": [
+          {
+            "file": "virtual-lab/src/pages/ExperimentPage2.tsx",
+            "line": 858,
+            "old": "./images/experiment2/info.png",
+            "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/info.avif",
+            "status": "replaced"
+          }
+        ],
+        "unresolved": [],
+        "checks": [
+          {
+            "check": "remote verification",
+            "status": "skipped",
+            "reason": "user requested direct replacement"
+          },
+          {
+            "check": "npm run build",
+            "status": "passed"
+          },
+          {
+            "check": "git diff --check",
+            "status": "passed"
+          },
+          {
+            "check": "old experiment2 paths in source",
+            "status": "passed"
+          },
+          {
+            "check": "browser preview",
+            "status": "not-run"
+          }
+        ],
+        "error": null
+      }
+    },
+    "virtual-lab-experiment2-shiji_normal-png": {
+      "id": "virtual-lab-experiment2-shiji_normal-png",
+      "kind": "image",
+      "category": "virtual-lab",
+      "fileName": "shiji_normal.png",
+      "localPath": "public/virtual-lab/images/experiment2/shiji_normal.png",
+      "fileSize": 1427297,
+      "md5": "15a1a6571654c44db578e8de1cd28bae",
+      "description": "",
+      "keywords": [
+        "virtual-lab",
+        "experiment2"
+      ],
+      "status": "in-use",
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/shiji_normal.avif",
+      "sha256": "1e34e2cf250a41bdfbd27074387b0e6253b75f020a3612eb1a3d1847fd9f660b",
+      "references": [
+        {
+          "file": "virtual-lab/src/pages/ExperimentPage2.tsx",
+          "line": 834,
+          "old": "./images/experiment2/shiji_normal.png",
+          "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/shiji_normal.avif",
+          "status": "replaced"
+        }
+      ],
+      "upload": {
+        "target": {
+          "platform": "igem",
+          "year": 2026,
+          "team": "6056"
+        },
+        "status": "uploaded",
+        "source": "inferred-by-user-request",
+        "verification": "skipped at explicit user request",
+        "remoteName": "shiji_normal.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "recordedAt": "2026-09-29T12:35:40.143579+00:00",
+        "references": [
+          {
+            "file": "virtual-lab/src/pages/ExperimentPage2.tsx",
+            "line": 834,
+            "old": "./images/experiment2/shiji_normal.png",
+            "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/shiji_normal.avif",
+            "status": "replaced"
+          }
+        ],
+        "unresolved": [],
+        "checks": [
+          {
+            "check": "remote verification",
+            "status": "skipped",
+            "reason": "user requested direct replacement"
+          },
+          {
+            "check": "npm run build",
+            "status": "passed"
+          },
+          {
+            "check": "git diff --check",
+            "status": "passed"
+          },
+          {
+            "check": "old experiment2 paths in source",
+            "status": "passed"
+          },
+          {
+            "check": "browser preview",
+            "status": "not-run"
+          }
+        ],
+        "error": null
+      }
+    },
+    "virtual-lab-experiment2-xianweijing-png": {
+      "id": "virtual-lab-experiment2-xianweijing-png",
+      "kind": "image",
+      "category": "virtual-lab",
+      "fileName": "xianweijing.png",
+      "localPath": "public/virtual-lab/images/experiment2/xianweijing.png",
+      "fileSize": 237606,
+      "md5": "97a353914540c7b80b77a6c9d1763120",
+      "description": "",
+      "keywords": [
+        "virtual-lab",
+        "experiment2"
+      ],
+      "status": "in-use",
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/xianweijing.avif",
+      "sha256": "499b38f006724fbf3cfd1f056c3b9f6353e907679491c3829aa846ef80221a3d",
+      "references": [
+        {
+          "file": "virtual-lab/src/pages/ExperimentPage2.tsx",
+          "old": "`./images/experiment2/${isSlideInserted ? 'xianweijing.png' : '15.png'}`",
+          "new": "(isSlideInserted ? 'https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/xianweijing.avif' : 'https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/15.avif')",
+          "type": "conditional",
+          "status": "replaced"
+        }
+      ],
+      "upload": {
+        "target": {
+          "platform": "igem",
+          "year": 2026,
+          "team": "6056"
+        },
+        "status": "uploaded",
+        "source": "inferred-by-user-request",
+        "verification": "skipped at explicit user request",
+        "remoteName": "xianweijing.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "recordedAt": "2026-09-29T12:35:40.143579+00:00",
+        "references": [
+          {
+            "file": "virtual-lab/src/pages/ExperimentPage2.tsx",
+            "old": "`./images/experiment2/${isSlideInserted ? 'xianweijing.png' : '15.png'}`",
+            "new": "(isSlideInserted ? 'https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/xianweijing.avif' : 'https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/15.avif')",
+            "type": "conditional",
+            "status": "replaced"
+          }
+        ],
+        "unresolved": [],
+        "checks": [
+          {
+            "check": "remote verification",
+            "status": "skipped",
+            "reason": "user requested direct replacement"
+          },
+          {
+            "check": "npm run build",
+            "status": "passed"
+          },
+          {
+            "check": "git diff --check",
+            "status": "passed"
+          },
+          {
+            "check": "old experiment2 paths in source",
+            "status": "passed"
+          },
+          {
+            "check": "browser preview",
+            "status": "not-run"
+          }
+        ],
+        "error": null
+      }
+    },
+    "virtual-lab-experiment2-__1-png": {
+      "id": "virtual-lab-experiment2-__1-png",
+      "kind": "image",
+      "category": "virtual-lab",
+      "fileName": "__1.png",
+      "localPath": "public/virtual-lab/images/experiment2/__1.png",
+      "fileSize": 16234,
+      "md5": "50c85794a56e90fe16e37e69e9c41f99",
+      "description": "",
+      "keywords": [
+        "virtual-lab",
+        "experiment2"
+      ],
+      "status": "in-use",
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/__1.avif",
+      "sha256": "430941612ee2e6bfc7d33c82d108ae2870cde6bc00880bc4967adb781cb09e40",
+      "references": [
+        {
+          "file": "virtual-lab/src/pages/ExperimentPage2.tsx",
+          "line": 1009,
+          "old": "./images/experiment2/__1.png",
+          "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/__1.avif",
+          "status": "replaced"
+        }
+      ],
+      "upload": {
+        "target": {
+          "platform": "igem",
+          "year": 2026,
+          "team": "6056"
+        },
+        "status": "uploaded",
+        "source": "inferred-by-user-request",
+        "verification": "skipped at explicit user request",
+        "remoteName": "__1.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "recordedAt": "2026-09-29T12:35:40.143579+00:00",
+        "references": [
+          {
+            "file": "virtual-lab/src/pages/ExperimentPage2.tsx",
+            "line": 1009,
+            "old": "./images/experiment2/__1.png",
+            "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/__1.avif",
+            "status": "replaced"
+          }
+        ],
+        "unresolved": [],
+        "checks": [
+          {
+            "check": "remote verification",
+            "status": "skipped",
+            "reason": "user requested direct replacement"
+          },
+          {
+            "check": "npm run build",
+            "status": "passed"
+          },
+          {
+            "check": "git diff --check",
+            "status": "passed"
+          },
+          {
+            "check": "old experiment2 paths in source",
+            "status": "passed"
+          },
+          {
+            "check": "browser preview",
+            "status": "not-run"
+          }
+        ],
+        "error": null
+      }
+    },
+    "virtual-lab-experiment2-sidebar-alcohol-lamp-png": {
+      "id": "virtual-lab-experiment2-sidebar-alcohol-lamp-png",
+      "kind": "image",
+      "category": "virtual-lab",
+      "fileName": "alcohol-lamp.png",
+      "localPath": "public/virtual-lab/images/experiment2/sidebar/alcohol-lamp.png",
+      "fileSize": 654934,
+      "md5": "c851314006d3e76d1a09258fbe3ceab8",
+      "description": "",
+      "keywords": [
+        "virtual-lab",
+        "experiment2"
+      ],
+      "status": "in-use",
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/sidebar/alcohol-lamp.avif",
+      "sha256": "8be9bc6da50eabea0343fa269126f5e6275687e47a3e0364f06f5e4ec7b153cb",
+      "references": [
+        {
+          "file": "virtual-lab/src/data/experiment2Sidebar.ts",
+          "line": 31,
+          "old": "./images/experiment2/sidebar/alcohol-lamp.png",
+          "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/sidebar/alcohol-lamp.avif",
+          "status": "replaced"
+        }
+      ],
+      "upload": {
+        "target": {
+          "platform": "igem",
+          "year": 2026,
+          "team": "6056"
+        },
+        "status": "uploaded",
+        "source": "user-provided",
+        "verification": "skipped at explicit user request",
+        "remoteName": "alcohol-lamp.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "recordedAt": "2026-09-29T12:35:40.143579+00:00",
+        "references": [
+          {
+            "file": "virtual-lab/src/data/experiment2Sidebar.ts",
+            "line": 31,
+            "old": "./images/experiment2/sidebar/alcohol-lamp.png",
+            "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/sidebar/alcohol-lamp.avif",
+            "status": "replaced"
+          }
+        ],
+        "unresolved": [],
+        "checks": [
+          {
+            "check": "remote verification",
+            "status": "skipped",
+            "reason": "user requested direct replacement"
+          },
+          {
+            "check": "npm run build",
+            "status": "passed"
+          },
+          {
+            "check": "git diff --check",
+            "status": "passed"
+          },
+          {
+            "check": "old experiment2 paths in source",
+            "status": "passed"
+          },
+          {
+            "check": "browser preview",
+            "status": "not-run"
+          }
+        ],
+        "error": null
+      }
+    },
+    "virtual-lab-experiment2-sidebar-beaker-png": {
+      "id": "virtual-lab-experiment2-sidebar-beaker-png",
+      "kind": "image",
+      "category": "virtual-lab",
+      "fileName": "beaker.png",
+      "localPath": "public/virtual-lab/images/experiment2/sidebar/beaker.png",
+      "fileSize": 38369,
+      "md5": "d6f82dd9ad5e089676db49b0404c8d16",
+      "description": "",
+      "keywords": [
+        "virtual-lab",
+        "experiment2"
+      ],
+      "status": "in-use",
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/sidebar/beaker.avif",
+      "sha256": "54ef378368e44bc1211238d19b339267daa143c393b5e4793d9de6f65aca28ce",
+      "references": [
+        {
+          "file": "virtual-lab/src/data/experiment2Sidebar.ts",
+          "line": 34,
+          "old": "./images/experiment2/sidebar/beaker.png",
+          "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/sidebar/beaker.avif",
+          "status": "replaced"
+        }
+      ],
+      "upload": {
+        "target": {
+          "platform": "igem",
+          "year": 2026,
+          "team": "6056"
+        },
+        "status": "uploaded",
+        "source": "inferred-by-user-request",
+        "verification": "skipped at explicit user request",
+        "remoteName": "beaker.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "recordedAt": "2026-09-29T12:35:40.143579+00:00",
+        "references": [
+          {
+            "file": "virtual-lab/src/data/experiment2Sidebar.ts",
+            "line": 34,
+            "old": "./images/experiment2/sidebar/beaker.png",
+            "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/sidebar/beaker.avif",
+            "status": "replaced"
+          }
+        ],
+        "unresolved": [],
+        "checks": [
+          {
+            "check": "remote verification",
+            "status": "skipped",
+            "reason": "user requested direct replacement"
+          },
+          {
+            "check": "npm run build",
+            "status": "passed"
+          },
+          {
+            "check": "git diff --check",
+            "status": "passed"
+          },
+          {
+            "check": "old experiment2 paths in source",
+            "status": "passed"
+          },
+          {
+            "check": "browser preview",
+            "status": "not-run"
+          }
+        ],
+        "error": null
+      }
+    },
+    "virtual-lab-experiment2-sidebar-cedar-oil-png": {
+      "id": "virtual-lab-experiment2-sidebar-cedar-oil-png",
+      "kind": "image",
+      "category": "virtual-lab",
+      "fileName": "cedar-oil.png",
+      "localPath": "public/virtual-lab/images/experiment2/sidebar/cedar-oil.png",
+      "fileSize": 1427297,
+      "md5": "15a1a6571654c44db578e8de1cd28bae",
+      "description": "",
+      "keywords": [
+        "virtual-lab",
+        "experiment2"
+      ],
+      "status": "in-use",
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/sidebar/cedar-oil.avif",
+      "sha256": "1e34e2cf250a41bdfbd27074387b0e6253b75f020a3612eb1a3d1847fd9f660b",
+      "references": [
+        {
+          "file": "virtual-lab/src/data/experiment2Sidebar.ts",
+          "line": 44,
+          "old": "./images/experiment2/sidebar/cedar-oil.png",
+          "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/sidebar/cedar-oil.avif",
+          "status": "replaced"
+        }
+      ],
+      "upload": {
+        "target": {
+          "platform": "igem",
+          "year": 2026,
+          "team": "6056"
+        },
+        "status": "uploaded",
+        "source": "inferred-by-user-request",
+        "verification": "skipped at explicit user request",
+        "remoteName": "cedar-oil.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "recordedAt": "2026-09-29T12:35:40.143579+00:00",
+        "references": [
+          {
+            "file": "virtual-lab/src/data/experiment2Sidebar.ts",
+            "line": 44,
+            "old": "./images/experiment2/sidebar/cedar-oil.png",
+            "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/sidebar/cedar-oil.avif",
+            "status": "replaced"
+          }
+        ],
+        "unresolved": [],
+        "checks": [
+          {
+            "check": "remote verification",
+            "status": "skipped",
+            "reason": "user requested direct replacement"
+          },
+          {
+            "check": "npm run build",
+            "status": "passed"
+          },
+          {
+            "check": "git diff --check",
+            "status": "passed"
+          },
+          {
+            "check": "old experiment2 paths in source",
+            "status": "passed"
+          },
+          {
+            "check": "browser preview",
+            "status": "not-run"
+          }
+        ],
+        "error": null
+      }
+    },
+    "virtual-lab-experiment2-sidebar-crystal-violet-png": {
+      "id": "virtual-lab-experiment2-sidebar-crystal-violet-png",
+      "kind": "image",
+      "category": "virtual-lab",
+      "fileName": "crystal-violet.png",
+      "localPath": "public/virtual-lab/images/experiment2/sidebar/crystal-violet.png",
+      "fileSize": 1321602,
+      "md5": "d09025e806eb8207f505420bef6d4d43",
+      "description": "",
+      "keywords": [
+        "virtual-lab",
+        "experiment2"
+      ],
+      "status": "in-use",
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/sidebar/crystal-violet.avif",
+      "sha256": "9aaed09406e7731e3ed96292424af199c54acb6caa109429be5dd6a21c8d3baa",
+      "references": [
+        {
+          "file": "virtual-lab/src/data/experiment2Sidebar.ts",
+          "line": 39,
+          "old": "./images/experiment2/sidebar/crystal-violet.png",
+          "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/sidebar/crystal-violet.avif",
+          "status": "replaced"
+        }
+      ],
+      "upload": {
+        "target": {
+          "platform": "igem",
+          "year": 2026,
+          "team": "6056"
+        },
+        "status": "uploaded",
+        "source": "inferred-by-user-request",
+        "verification": "skipped at explicit user request",
+        "remoteName": "crystal-violet.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "recordedAt": "2026-09-29T12:35:40.143579+00:00",
+        "references": [
+          {
+            "file": "virtual-lab/src/data/experiment2Sidebar.ts",
+            "line": 39,
+            "old": "./images/experiment2/sidebar/crystal-violet.png",
+            "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/sidebar/crystal-violet.avif",
+            "status": "replaced"
+          }
+        ],
+        "unresolved": [],
+        "checks": [
+          {
+            "check": "remote verification",
+            "status": "skipped",
+            "reason": "user requested direct replacement"
+          },
+          {
+            "check": "npm run build",
+            "status": "passed"
+          },
+          {
+            "check": "git diff --check",
+            "status": "passed"
+          },
+          {
+            "check": "old experiment2 paths in source",
+            "status": "passed"
+          },
+          {
+            "check": "browser preview",
+            "status": "not-run"
+          }
+        ],
+        "error": null
+      }
+    },
+    "virtual-lab-experiment2-sidebar-ethyl-alcohol-png": {
+      "id": "virtual-lab-experiment2-sidebar-ethyl-alcohol-png",
+      "kind": "image",
+      "category": "virtual-lab",
+      "fileName": "ethyl-alcohol.png",
+      "localPath": "public/virtual-lab/images/experiment2/sidebar/ethyl-alcohol.png",
+      "fileSize": 1329824,
+      "md5": "2ede850141197bed0988a15eb6973495",
+      "description": "",
+      "keywords": [
+        "virtual-lab",
+        "experiment2"
+      ],
+      "status": "in-use",
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/sidebar/ethyl-alcohol.avif",
+      "sha256": "cbd2236894fa9d30ffb8fc23471d4060da3d7111bdb29be37ced3992b9a4b344",
+      "references": [
+        {
+          "file": "virtual-lab/src/data/experiment2Sidebar.ts",
+          "line": 40,
+          "old": "./images/experiment2/sidebar/ethyl-alcohol.png",
+          "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/sidebar/ethyl-alcohol.avif",
+          "status": "replaced"
+        }
+      ],
+      "upload": {
+        "target": {
+          "platform": "igem",
+          "year": 2026,
+          "team": "6056"
+        },
+        "status": "uploaded",
+        "source": "inferred-by-user-request",
+        "verification": "skipped at explicit user request",
+        "remoteName": "ethyl-alcohol.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "recordedAt": "2026-09-29T12:35:40.143579+00:00",
+        "references": [
+          {
+            "file": "virtual-lab/src/data/experiment2Sidebar.ts",
+            "line": 40,
+            "old": "./images/experiment2/sidebar/ethyl-alcohol.png",
+            "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/sidebar/ethyl-alcohol.avif",
+            "status": "replaced"
+          }
+        ],
+        "unresolved": [],
+        "checks": [
+          {
+            "check": "remote verification",
+            "status": "skipped",
+            "reason": "user requested direct replacement"
+          },
+          {
+            "check": "npm run build",
+            "status": "passed"
+          },
+          {
+            "check": "git diff --check",
+            "status": "passed"
+          },
+          {
+            "check": "old experiment2 paths in source",
+            "status": "passed"
+          },
+          {
+            "check": "browser preview",
+            "status": "not-run"
+          }
+        ],
+        "error": null
+      }
+    },
+    "virtual-lab-experiment2-sidebar-glass-slide-png": {
+      "id": "virtual-lab-experiment2-sidebar-glass-slide-png",
+      "kind": "image",
+      "category": "virtual-lab",
+      "fileName": "glass-slide.png",
+      "localPath": "public/virtual-lab/images/experiment2/sidebar/glass-slide.png",
+      "fileSize": 864817,
+      "md5": "29ec15ec402f0aa00af7835878444711",
+      "description": "",
+      "keywords": [
+        "virtual-lab",
+        "experiment2"
+      ],
+      "status": "in-use",
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/sidebar/glass-slide.avif",
+      "sha256": "806a29a355b6e87a7e161a46345bb6d06b225526dd9c152b9c9d62e0353b0242",
+      "references": [
+        {
+          "file": "virtual-lab/src/data/experiment2Sidebar.ts",
+          "line": 35,
+          "old": "./images/experiment2/sidebar/glass-slide.png",
+          "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/sidebar/glass-slide.avif",
+          "status": "replaced"
+        }
+      ],
+      "upload": {
+        "target": {
+          "platform": "igem",
+          "year": 2026,
+          "team": "6056"
+        },
+        "status": "uploaded",
+        "source": "inferred-by-user-request",
+        "verification": "skipped at explicit user request",
+        "remoteName": "glass-slide.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "recordedAt": "2026-09-29T12:35:40.143579+00:00",
+        "references": [
+          {
+            "file": "virtual-lab/src/data/experiment2Sidebar.ts",
+            "line": 35,
+            "old": "./images/experiment2/sidebar/glass-slide.png",
+            "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/sidebar/glass-slide.avif",
+            "status": "replaced"
+          }
+        ],
+        "unresolved": [],
+        "checks": [
+          {
+            "check": "remote verification",
+            "status": "skipped",
+            "reason": "user requested direct replacement"
+          },
+          {
+            "check": "npm run build",
+            "status": "passed"
+          },
+          {
+            "check": "git diff --check",
+            "status": "passed"
+          },
+          {
+            "check": "old experiment2 paths in source",
+            "status": "passed"
+          },
+          {
+            "check": "browser preview",
+            "status": "not-run"
+          }
+        ],
+        "error": null
+      }
+    },
+    "virtual-lab-experiment2-sidebar-inoculating-loop-png": {
+      "id": "virtual-lab-experiment2-sidebar-inoculating-loop-png",
+      "kind": "image",
+      "category": "virtual-lab",
+      "fileName": "inoculating-loop.png",
+      "localPath": "public/virtual-lab/images/experiment2/sidebar/inoculating-loop.png",
+      "fileSize": 77910,
+      "md5": "d022bf790ff23c8f9516d928afeec001",
+      "description": "",
+      "keywords": [
+        "virtual-lab",
+        "experiment2"
+      ],
+      "status": "in-use",
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/sidebar/inoculating-loop.avif",
+      "sha256": "b5a452005c7bc0882e42425df5adfde9ff24fd4a8b0f569977e7d49b159eba62",
+      "references": [
+        {
+          "file": "virtual-lab/src/data/experiment2Sidebar.ts",
+          "line": 32,
+          "old": "./images/experiment2/sidebar/inoculating-loop.png",
+          "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/sidebar/inoculating-loop.avif",
+          "status": "replaced"
+        }
+      ],
+      "upload": {
+        "target": {
+          "platform": "igem",
+          "year": 2026,
+          "team": "6056"
+        },
+        "status": "uploaded",
+        "source": "inferred-by-user-request",
+        "verification": "skipped at explicit user request",
+        "remoteName": "inoculating-loop.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "recordedAt": "2026-09-29T12:35:40.143579+00:00",
+        "references": [
+          {
+            "file": "virtual-lab/src/data/experiment2Sidebar.ts",
+            "line": 32,
+            "old": "./images/experiment2/sidebar/inoculating-loop.png",
+            "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/sidebar/inoculating-loop.avif",
+            "status": "replaced"
+          }
+        ],
+        "unresolved": [],
+        "checks": [
+          {
+            "check": "remote verification",
+            "status": "skipped",
+            "reason": "user requested direct replacement"
+          },
+          {
+            "check": "npm run build",
+            "status": "passed"
+          },
+          {
+            "check": "git diff --check",
+            "status": "passed"
+          },
+          {
+            "check": "old experiment2 paths in source",
+            "status": "passed"
+          },
+          {
+            "check": "browser preview",
+            "status": "not-run"
+          }
+        ],
+        "error": null
+      }
+    },
+    "virtual-lab-experiment2-sidebar-iodine-png": {
+      "id": "virtual-lab-experiment2-sidebar-iodine-png",
+      "kind": "image",
+      "category": "virtual-lab",
+      "fileName": "iodine.png",
+      "localPath": "public/virtual-lab/images/experiment2/sidebar/iodine.png",
+      "fileSize": 1251186,
+      "md5": "30384ae3a48322426aa40a527000eadb",
+      "description": "",
+      "keywords": [
+        "virtual-lab",
+        "experiment2"
+      ],
+      "status": "in-use",
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/sidebar/iodine.avif",
+      "sha256": "895370889ad578eb269794371f6ccb2d9b3323b536ca83cb7f524c06aa84c877",
+      "references": [
+        {
+          "file": "virtual-lab/src/data/experiment2Sidebar.ts",
+          "line": 42,
+          "old": "./images/experiment2/sidebar/iodine.png",
+          "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/sidebar/iodine.avif",
+          "status": "replaced"
+        }
+      ],
+      "upload": {
+        "target": {
+          "platform": "igem",
+          "year": 2026,
+          "team": "6056"
+        },
+        "status": "uploaded",
+        "source": "inferred-by-user-request",
+        "verification": "skipped at explicit user request",
+        "remoteName": "iodine.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "recordedAt": "2026-09-29T12:35:40.143579+00:00",
+        "references": [
+          {
+            "file": "virtual-lab/src/data/experiment2Sidebar.ts",
+            "line": 42,
+            "old": "./images/experiment2/sidebar/iodine.png",
+            "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/sidebar/iodine.avif",
+            "status": "replaced"
+          }
+        ],
+        "unresolved": [],
+        "checks": [
+          {
+            "check": "remote verification",
+            "status": "skipped",
+            "reason": "user requested direct replacement"
+          },
+          {
+            "check": "npm run build",
+            "status": "passed"
+          },
+          {
+            "check": "git diff --check",
+            "status": "passed"
+          },
+          {
+            "check": "old experiment2 paths in source",
+            "status": "passed"
+          },
+          {
+            "check": "browser preview",
+            "status": "not-run"
+          }
+        ],
+        "error": null
+      }
+    },
+    "virtual-lab-experiment2-sidebar-microscope-png": {
+      "id": "virtual-lab-experiment2-sidebar-microscope-png",
+      "kind": "image",
+      "category": "virtual-lab",
+      "fileName": "microscope.png",
+      "localPath": "public/virtual-lab/images/experiment2/sidebar/microscope.png",
+      "fileSize": 461109,
+      "md5": "89c313dc3066fac2df7b3cd7165250fc",
+      "description": "",
+      "keywords": [
+        "virtual-lab",
+        "experiment2"
+      ],
+      "status": "in-use",
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/sidebar/microscope.avif",
+      "sha256": "fc5b3c1e0985074dba33c52f767feddef6aa25cf6f09ef6f568833a3050f649b",
+      "references": [
+        {
+          "file": "virtual-lab/src/data/experiment2Sidebar.ts",
+          "line": 30,
+          "old": "./images/experiment2/sidebar/microscope.png",
+          "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/sidebar/microscope.avif",
+          "status": "replaced"
+        }
+      ],
+      "upload": {
+        "target": {
+          "platform": "igem",
+          "year": 2026,
+          "team": "6056"
+        },
+        "status": "uploaded",
+        "source": "inferred-by-user-request",
+        "verification": "skipped at explicit user request",
+        "remoteName": "microscope.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "recordedAt": "2026-09-29T12:35:40.143579+00:00",
+        "references": [
+          {
+            "file": "virtual-lab/src/data/experiment2Sidebar.ts",
+            "line": 30,
+            "old": "./images/experiment2/sidebar/microscope.png",
+            "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/sidebar/microscope.avif",
+            "status": "replaced"
+          }
+        ],
+        "unresolved": [],
+        "checks": [
+          {
+            "check": "remote verification",
+            "status": "skipped",
+            "reason": "user requested direct replacement"
+          },
+          {
+            "check": "npm run build",
+            "status": "passed"
+          },
+          {
+            "check": "git diff --check",
+            "status": "passed"
+          },
+          {
+            "check": "old experiment2 paths in source",
+            "status": "passed"
+          },
+          {
+            "check": "browser preview",
+            "status": "not-run"
+          }
+        ],
+        "error": null
+      }
+    },
+    "virtual-lab-experiment2-sidebar-normal-saline-png": {
+      "id": "virtual-lab-experiment2-sidebar-normal-saline-png",
+      "kind": "image",
+      "category": "virtual-lab",
+      "fileName": "normal-saline.png",
+      "localPath": "public/virtual-lab/images/experiment2/sidebar/normal-saline.png",
+      "fileSize": 522286,
+      "md5": "3a99c7be7b87003e3126d876edef58a8",
+      "description": "",
+      "keywords": [
+        "virtual-lab",
+        "experiment2"
+      ],
+      "status": "in-use",
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/sidebar/normal-saline.avif",
+      "sha256": "e25228f42a7d59e2dad8ec304d4473c597d45adbacea0300bba1ebb8792a2a14",
+      "references": [
+        {
+          "file": "virtual-lab/src/data/experiment2Sidebar.ts",
+          "line": 43,
+          "old": "./images/experiment2/sidebar/normal-saline.png",
+          "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/sidebar/normal-saline.avif",
+          "status": "replaced"
+        }
+      ],
+      "upload": {
+        "target": {
+          "platform": "igem",
+          "year": 2026,
+          "team": "6056"
+        },
+        "status": "uploaded",
+        "source": "inferred-by-user-request",
+        "verification": "skipped at explicit user request",
+        "remoteName": "normal-saline.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "recordedAt": "2026-09-29T12:35:40.143579+00:00",
+        "references": [
+          {
+            "file": "virtual-lab/src/data/experiment2Sidebar.ts",
+            "line": 43,
+            "old": "./images/experiment2/sidebar/normal-saline.png",
+            "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/sidebar/normal-saline.avif",
+            "status": "replaced"
+          }
+        ],
+        "unresolved": [],
+        "checks": [
+          {
+            "check": "remote verification",
+            "status": "skipped",
+            "reason": "user requested direct replacement"
+          },
+          {
+            "check": "npm run build",
+            "status": "passed"
+          },
+          {
+            "check": "git diff --check",
+            "status": "passed"
+          },
+          {
+            "check": "old experiment2 paths in source",
+            "status": "passed"
+          },
+          {
+            "check": "browser preview",
+            "status": "not-run"
+          }
+        ],
+        "error": null
+      }
+    },
+    "virtual-lab-experiment2-sidebar-safranin-png": {
+      "id": "virtual-lab-experiment2-sidebar-safranin-png",
+      "kind": "image",
+      "category": "virtual-lab",
+      "fileName": "safranin.png",
+      "localPath": "public/virtual-lab/images/experiment2/sidebar/safranin.png",
+      "fileSize": 1685096,
+      "md5": "f0a7db0965a3e16e15a0dec167582668",
+      "description": "",
+      "keywords": [
+        "virtual-lab",
+        "experiment2"
+      ],
+      "status": "in-use",
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/sidebar/safranin.avif",
+      "sha256": "6b4f167144415eff0d1badfc0cdd9ba6d2887f099fc9e119d6861735b4b666c1",
+      "references": [
+        {
+          "file": "virtual-lab/src/data/experiment2Sidebar.ts",
+          "line": 41,
+          "old": "./images/experiment2/sidebar/safranin.png",
+          "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/sidebar/safranin.avif",
+          "status": "replaced"
+        }
+      ],
+      "upload": {
+        "target": {
+          "platform": "igem",
+          "year": 2026,
+          "team": "6056"
+        },
+        "status": "uploaded",
+        "source": "inferred-by-user-request",
+        "verification": "skipped at explicit user request",
+        "remoteName": "safranin.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "recordedAt": "2026-09-29T12:35:40.143579+00:00",
+        "references": [
+          {
+            "file": "virtual-lab/src/data/experiment2Sidebar.ts",
+            "line": 41,
+            "old": "./images/experiment2/sidebar/safranin.png",
+            "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/sidebar/safranin.avif",
+            "status": "replaced"
+          }
+        ],
+        "unresolved": [],
+        "checks": [
+          {
+            "check": "remote verification",
+            "status": "skipped",
+            "reason": "user requested direct replacement"
+          },
+          {
+            "check": "npm run build",
+            "status": "passed"
+          },
+          {
+            "check": "git diff --check",
+            "status": "passed"
+          },
+          {
+            "check": "old experiment2 paths in source",
+            "status": "passed"
+          },
+          {
+            "check": "browser preview",
+            "status": "not-run"
+          }
+        ],
+        "error": null
+      }
+    },
+    "virtual-lab-experiment2-sidebar-tweezers-png": {
+      "id": "virtual-lab-experiment2-sidebar-tweezers-png",
+      "kind": "image",
+      "category": "virtual-lab",
+      "fileName": "tweezers.png",
+      "localPath": "public/virtual-lab/images/experiment2/sidebar/tweezers.png",
+      "fileSize": 12321,
+      "md5": "7167791be734eb9410484ebfc5d3d902",
+      "description": "",
+      "keywords": [
+        "virtual-lab",
+        "experiment2"
+      ],
+      "status": "in-use",
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/sidebar/tweezers.avif",
+      "sha256": "c904ce943cb0a4435d779aa0dc5355664f264fbf10112f42c50a27c2d11a9ece",
+      "references": [
+        {
+          "file": "virtual-lab/src/data/experiment2Sidebar.ts",
+          "line": 33,
+          "old": "./images/experiment2/sidebar/tweezers.png",
+          "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/sidebar/tweezers.avif",
+          "status": "replaced"
+        }
+      ],
+      "upload": {
+        "target": {
+          "platform": "igem",
+          "year": 2026,
+          "team": "6056"
+        },
+        "status": "uploaded",
+        "source": "inferred-by-user-request",
+        "verification": "skipped at explicit user request",
+        "remoteName": "tweezers.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "recordedAt": "2026-09-29T12:35:40.143579+00:00",
+        "references": [
+          {
+            "file": "virtual-lab/src/data/experiment2Sidebar.ts",
+            "line": 33,
+            "old": "./images/experiment2/sidebar/tweezers.png",
+            "new": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/sidebar/tweezers.avif",
+            "status": "replaced"
+          }
+        ],
+        "unresolved": [],
+        "checks": [
+          {
+            "check": "remote verification",
+            "status": "skipped",
+            "reason": "user requested direct replacement"
+          },
+          {
+            "check": "npm run build",
+            "status": "passed"
+          },
+          {
+            "check": "git diff --check",
+            "status": "passed"
+          },
+          {
+            "check": "old experiment2 paths in source",
+            "status": "passed"
+          },
+          {
+            "check": "browser preview",
+            "status": "not-run"
+          }
+        ],
+        "error": null
+      }
     }
   }
 }

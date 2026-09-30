@@ -6,9 +6,9 @@
 ## 一、资产库统计
 
 - **队伍编号 (Team ID)**: 6056 (JLU-FBH)
-- **统计时间戳**: 2026-09-29T07:54:00.051Z
-- **总资产数量**: 239
-- **🟢 在用资产 (in-use)**: 190 *(代码/文案中正被引用)*
+- **统计时间戳**: 2026-09-29T12:35:40.143579+00:00
+- **总资产数量**: 314
+- **🟢 在用资产 (in-use)**: 265 *(代码/文案中正被引用)*
 - **🟡 备用资产 (standby)**: 49 *(已就绪或已上传，保留供后续页面选用)*
 - **⚪ 弃用资产 (deprecated)**: 0
 
@@ -16,7 +16,7 @@
 
 | 类型 | 标识 | 说明 | 数量 |
 | :--- | :---: | :--- | :---: |
-| `image` | 🖼️ 图片/图表 (PNG, JPG, WebP, SVG) | 静态资源 | 209 |
+| `image` | 🖼️ 图片/图表 (PNG, JPG, WebP, SVG) | 静态资源 | 284 |
 | `font` | 🔤 Web 字体 (woff2, woff, ttf) | 静态资源 | 6 |
 | `structure` | 🧬 3D 分子/生物结构 (pdb, cif, pse) | 静态资源 | 2 |
 | `pdf` | 📄 PDF 文档/手册/报告 | 静态资源 | 22 |
@@ -275,3 +275,96 @@
 2. **全部非源码资产必须登记**：除图片外，所有的 PDF 协议、调查问卷、3D 结构文件（PDB）、字体等均必须通过官方途径托管并在本库登记。
 3. **大文件体积红线**：PDF > 15MB 必须极限压缩或分卷；图片 > 1.5MB 必须转为 WebP；视频必须上传 PeerTube (`video.igem.org`)。
 4. **永不物理删除**：页面改版撤下的图片/PDF 统一转为 🟡 备用，保留在表中供其它板块复用。
+
+## 虚拟实验室实验一图片迁移记录
+
+链接按用户提供的目录规则填写；用户要求跳过远端核验。源码引用已替换，远端可用性未确认。
+
+| 本地文件 | 官方链接 | 替换引用数 |
+| --- | --- | ---: |
+| `public/virtual-lab/images/experiment1/08241.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment1/08241.avif) | 1 |
+| `public/virtual-lab/images/experiment1/08242.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment1/08242.avif) | 1 |
+| `public/virtual-lab/images/experiment1/08243.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment1/08243.avif) | 1 |
+| `public/virtual-lab/images/experiment1/08251.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment1/08251.avif) | 1 |
+| `public/virtual-lab/images/experiment1/08252.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment1/08252.avif) | 1 |
+| `public/virtual-lab/images/experiment1/08253.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment1/08253.avif) | 1 |
+| `public/virtual-lab/images/experiment1/08254.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment1/08254.avif) | 1 |
+| `public/virtual-lab/images/experiment1/freezer-open.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment1/freezer-open.avif) | 1 |
+| `public/virtual-lab/images/experiment1/hours.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment1/hours.avif) | 3 |
+| `public/virtual-lab/images/experiment1/ice-box.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment1/ice-box.avif) | 2 |
+| `public/virtual-lab/images/experiment1/incubator-open.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment1/incubator-open.avif) | 1 |
+| `public/virtual-lab/images/experiment1/lb-plate-streaked.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment1/lb-plate-streaked.avif) | 2 |
+| `public/virtual-lab/images/experiment1/loop2.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment1/loop2.avif) | 1 |
+| `public/virtual-lab/images/experiment1/step5-streaking-detail.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment1/step5-streaking-detail.avif) | 1 |
+| `public/virtual-lab/images/experiment1/tube-open.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment1/tube-open.avif) | 1 |
+| `public/virtual-lab/images/experiment1/231.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment1/08251.avif) | 2 |
+| `public/virtual-lab/images/experiment1/1926.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment1/08252.avif) | 1 |
+
+本批源码构建通过；远端链接和页面显示未核验。
+
+## 虚拟实验室实验二图片迁移记录
+
+链接按用户给出的目录规则填写；按用户要求跳过远端核验。
+
+| 本地文件 | 官方链接 | 源码引用记录数 |
+| --- | --- | ---: |
+| `public/virtual-lab/images/experiment2/10.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/10.avif) | 1 |
+| `public/virtual-lab/images/experiment2/11.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/11.avif) | 1 |
+| `public/virtual-lab/images/experiment2/12.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/12.avif) | 1 |
+| `public/virtual-lab/images/experiment2/13.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/13.avif) | 2 |
+| `public/virtual-lab/images/experiment2/15.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/15.avif) | 2 |
+| `public/virtual-lab/images/experiment2/16.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/16.avif) | 1 |
+| `public/virtual-lab/images/experiment2/18.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/18.avif) | 1 |
+| `public/virtual-lab/images/experiment2/19.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/19.avif) | 1 |
+| `public/virtual-lab/images/experiment2/2.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/2.avif) | 1 |
+| `public/virtual-lab/images/experiment2/20.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/20.avif) | 1 |
+| `public/virtual-lab/images/experiment2/21.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/21.avif) | 1 |
+| `public/virtual-lab/images/experiment2/22.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/22.avif) | 1 |
+| `public/virtual-lab/images/experiment2/23.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/23.avif) | 1 |
+| `public/virtual-lab/images/experiment2/24.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/24.avif) | 2 |
+| `public/virtual-lab/images/experiment2/25.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/25.avif) | 1 |
+| `public/virtual-lab/images/experiment2/26.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/26.avif) | 3 |
+| `public/virtual-lab/images/experiment2/27.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/27.avif) | 1 |
+| `public/virtual-lab/images/experiment2/28.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/28.avif) | 1 |
+| `public/virtual-lab/images/experiment2/29.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/29.avif) | 2 |
+| `public/virtual-lab/images/experiment2/3.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/3.avif) | 1 |
+| `public/virtual-lab/images/experiment2/30.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/30.avif) | 1 |
+| `public/virtual-lab/images/experiment2/31.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/31.avif) | 1 |
+| `public/virtual-lab/images/experiment2/32.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/32.avif) | 1 |
+| `public/virtual-lab/images/experiment2/33.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/33.avif) | 1 |
+| `public/virtual-lab/images/experiment2/34.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/34.avif) | 1 |
+| `public/virtual-lab/images/experiment2/35.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/35.avif) | 1 |
+| `public/virtual-lab/images/experiment2/36.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/36.avif) | 1 |
+| `public/virtual-lab/images/experiment2/37.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/37.avif) | 1 |
+| `public/virtual-lab/images/experiment2/38.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/38.avif) | 1 |
+| `public/virtual-lab/images/experiment2/39.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/39.avif) | 1 |
+| `public/virtual-lab/images/experiment2/4.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/4.avif) | 1 |
+| `public/virtual-lab/images/experiment2/40.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/40.avif) | 1 |
+| `public/virtual-lab/images/experiment2/5.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/5.avif) | 2 |
+| `public/virtual-lab/images/experiment2/6.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/6.avif) | 3 |
+| `public/virtual-lab/images/experiment2/7.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/7.avif) | 1 |
+| `public/virtual-lab/images/experiment2/8.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/8.avif) | 1 |
+| `public/virtual-lab/images/experiment2/9.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/9.avif) | 1 |
+| `public/virtual-lab/images/experiment2/__1.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/__1.avif) | 1 |
+| `public/virtual-lab/images/experiment2/background_new.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/background_new.avif) | 1 |
+| `public/virtual-lab/images/experiment2/bg.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/bg.avif) | 4 |
+| `public/virtual-lab/images/experiment2/bopian.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/bopian.avif) | 1 |
+| `public/virtual-lab/images/experiment2/diguan.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/diguan.avif) | 1 |
+| `public/virtual-lab/images/experiment2/highlight-diguan.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/highlight-diguan.avif) | 1 |
+| `public/virtual-lab/images/experiment2/info.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/info.avif) | 1 |
+| `public/virtual-lab/images/experiment2/shiji_normal.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/shiji_normal.avif) | 1 |
+| `public/virtual-lab/images/experiment2/sidebar/alcohol-lamp.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/sidebar/alcohol-lamp.avif) | 1 |
+| `public/virtual-lab/images/experiment2/sidebar/beaker.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/sidebar/beaker.avif) | 1 |
+| `public/virtual-lab/images/experiment2/sidebar/cedar-oil.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/sidebar/cedar-oil.avif) | 1 |
+| `public/virtual-lab/images/experiment2/sidebar/crystal-violet.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/sidebar/crystal-violet.avif) | 1 |
+| `public/virtual-lab/images/experiment2/sidebar/ethyl-alcohol.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/sidebar/ethyl-alcohol.avif) | 1 |
+| `public/virtual-lab/images/experiment2/sidebar/glass-slide.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/sidebar/glass-slide.avif) | 1 |
+| `public/virtual-lab/images/experiment2/sidebar/inoculating-loop.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/sidebar/inoculating-loop.avif) | 1 |
+| `public/virtual-lab/images/experiment2/sidebar/iodine.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/sidebar/iodine.avif) | 1 |
+| `public/virtual-lab/images/experiment2/sidebar/microscope.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/sidebar/microscope.avif) | 1 |
+| `public/virtual-lab/images/experiment2/sidebar/normal-saline.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/sidebar/normal-saline.avif) | 1 |
+| `public/virtual-lab/images/experiment2/sidebar/safranin.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/sidebar/safranin.avif) | 1 |
+| `public/virtual-lab/images/experiment2/sidebar/tweezers.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/sidebar/tweezers.avif) | 1 |
+| `public/virtual-lab/images/experiment2/xianweijing.png` | [链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/xianweijing.avif) | 1 |
+
+实验二本批构建与差异格式检查通过，源码无剩余实验二旧路径；远端链接和页面显示未核验。
