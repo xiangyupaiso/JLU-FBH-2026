@@ -733,12 +733,12 @@ const handleStepNavigation = useCallback((stepIndex: number) => {
           >
             {/* 背景图 */}
             {/* 与实验二共用背景及坐标基准，保证后景桌面和左侧移液枪托保持同一相对位置。 */}
-            <div className="absolute inset-0 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: "url('./images/experiment2/bg.png')" }} />
+            <div className="absolute inset-0 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: "url('https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/bg.avif')" }} />
 
             {/* 后景层 */}
             <div className="absolute inset-0 z-0 pointer-events-none opacity-80">
-              <img src="./images/blue_table.png" className="absolute left-[50%] top-[24%] -translate-x-1/2 w-[35%] pointer-events-auto" />
-              <img src="./images/table_normal.png" className="absolute left-[72%] top-[20%] w-[25%] pointer-events-auto" />
+              <img src="https://static.igem.wiki/teams/6056/wiki/virtual-lab/common/blue_table.avif" className="absolute left-[50%] top-[24%] -translate-x-1/2 w-[35%] pointer-events-auto" />
+              <img src="https://static.igem.wiki/teams/6056/wiki/virtual-lab/common/table_normal.avif" className="absolute left-[72%] top-[20%] w-[25%] pointer-events-auto" />
             </div>
 
             {/* 冰箱单独放在最底层（背景之上、超净台主体之下），
@@ -746,7 +746,7 @@ const handleStepNavigation = useCallback((stepIndex: number) => {
             <div className="absolute inset-0 z-[5] pointer-events-none">
               <img 
                 id="freezer"
-                src={freezerOpen ? "./images/experiment1/freezer-open.png" : "./images/freezer.png"} 
+                src={freezerOpen ? "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment1/freezer-open.avif" : "https://static.igem.wiki/teams/6056/wiki/virtual-lab/common/freezer.avif"}
                 className={`absolute left-[5%] top-[5%] w-[24%] pointer-events-auto cursor-pointer transition-all duration-300
                   ${freezerHighlighted ? `${ALPHA_GLOW} z-10` : 'z-0'}
                 `}
@@ -756,14 +756,14 @@ const handleStepNavigation = useCallback((stepIndex: number) => {
             </div>
 
             {/* 超净台主体 */}
-            <div className="absolute inset-x-0 bottom-0 h-[60%] bg-[length:100%_100%] bg-bottom bg-no-repeat z-10 pointer-events-none" style={{ backgroundImage: "url('./images/Cleanbench_part.png')" }} />
+            <div className="absolute inset-x-0 bottom-0 h-[60%] bg-[length:100%_100%] bg-bottom bg-no-repeat z-10 pointer-events-none" style={{ backgroundImage: "url('https://static.igem.wiki/teams/6056/wiki/virtual-lab/common/cleanbench_part.avif')" }} />
 
             {/* ========== 实验一器材层 ========== */}
             <div className="absolute inset-0 z-20 pointer-events-none">
               {/* 恒温培养箱 */}
               <img 
                 id="incubator"
-                src={incubatorOpen ? "./images/experiment1/incubator-open.png" : "./images/experiment2/13.png"} 
+                src={incubatorOpen ? "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment1/incubator-open.avif" : "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/13.avif"}
                 className={`absolute left-[42%] ${incubatorOpen ? 'top-[24.6%]' : 'top-[23.8%]'} w-[6.5%] pointer-events-auto cursor-pointer transition-all duration-300
                   ${incubatorHighlighted ? `${ALPHA_GLOW} z-30` : 'z-20'}
                 `}
@@ -785,7 +785,7 @@ const handleStepNavigation = useCallback((stepIndex: number) => {
               {showIncubationClock && (
                 <div className="absolute left-[41%] top-[8.3%] w-[9%] pointer-events-none flex flex-col items-center animate-bounce">
                   <img 
-                    src="./images/experiment1/hours.png" 
+                    src="https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment1/hours.avif"
                     className="w-full drop-shadow-[0_0_15px_rgba(255,255,0,0.7)]"
                     alt="Incubation Timer"
                   />
@@ -796,7 +796,7 @@ const handleStepNavigation = useCallback((stepIndex: number) => {
               {/* 黄色冰盒 */}
               <img 
                 id="ice-box"
-                src="./images/experiment1/ice-box.png" 
+                src="https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment1/ice-box.avif"
                 className="absolute left-[20%] top-[65%] w-[14%] pointer-events-auto z-20"
                 alt="Ice Box"
               />
@@ -804,7 +804,7 @@ const handleStepNavigation = useCallback((stepIndex: number) => {
               {/* 酒精灯 */}
               <img 
                 id="alcohol-lamp"
-                src={lampLit ? "./images/experiment2/26.png" : "./images/experiment2/6.png"} 
+                src={lampLit ? "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/26.avif" : "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/6.avif"}
                 className={`absolute left-[48%] top-[68%] w-[7%] pointer-events-auto cursor-pointer transition-all duration-300
                   ${lampHighlighted ? `${COMPACT_GLOW} z-30` : 'z-20'}
                 `}
@@ -816,7 +816,7 @@ const handleStepNavigation = useCallback((stepIndex: number) => {
               {tubeVisible && !tubeOnIce && (
                 <img 
                   id="tube"
-                  src="./images/experiment1/231.png"
+                  src="https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment1/08251.avif"
                   className={`absolute left-[14%] top-[17%] w-[4%] pointer-events-auto cursor-pointer transition-[filter] duration-300
                     ${tubeInFreezerHighlighted ? `${COMPACT_GLOW} z-40` : 'z-30'}
                   `}
@@ -828,7 +828,7 @@ const handleStepNavigation = useCallback((stepIndex: number) => {
               {tubeOnIce && !hasBacteria && (
                 <img 
                   id="tube"
-                  src={tubeOpened ? "./images/experiment1/tube-open.png" : "./images/experiment1/231.png"}
+                  src={tubeOpened ? "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment1/tube-open.avif" : "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment1/08251.avif"}
                   className={`absolute left-[25%] ${tubeAtBench ? 'top-[78%]' : 'top-[64%]'} w-[4%] transition-[filter] duration-300
                     ${tubeClickable && !isAnimating
                       ? `pointer-events-auto cursor-pointer z-[80] ${COMPACT_GLOW}`
@@ -852,7 +852,7 @@ const handleStepNavigation = useCallback((stepIndex: number) => {
                 aria-label="Inoculation Loop"
               >
                 <img
-                  src="./images/experiment2/5.png"
+                  src="https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/5.avif"
                   className="absolute inset-0 h-full w-full -rotate-12 pointer-events-none"
                   alt="Inoculation Loop"
                 />
@@ -869,7 +869,7 @@ const handleStepNavigation = useCallback((stepIndex: number) => {
                 aria-label="LB Agar Plate"
               >
                 <img
-                  src={incubationComplete ? "./images/experiment1/lb-plate-streaked.png" : "./images/experiment1/1926.png"}
+                  src={incubationComplete ? "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment1/lb-plate-streaked.avif" : "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment1/08252.avif"}
                   className="absolute left-1/2 top-1/2 h-auto w-[58.3%] max-w-none -translate-x-1/2 -translate-y-1/2 object-contain pointer-events-none"
                   alt="LB Agar Plate"
                 />
@@ -878,7 +878,7 @@ const handleStepNavigation = useCallback((stepIndex: number) => {
               {/* 移液枪 */}
               <img 
                 id="pipette"
-                src="./images/experiment2/24.png" 
+                src="https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/24.avif"
                 className="absolute left-[6.5%] top-[52%] w-[11%] pointer-events-auto z-20"
                 alt="Pipette"
               />
@@ -899,7 +899,7 @@ const handleStepNavigation = useCallback((stepIndex: number) => {
                 />
                 <div className="relative flex flex-col md:flex-row items-center gap-8 bg-amber-50/95 p-8 rounded-3xl border border-amber-900/10 shadow-2xl animate-in zoom-in duration-300">
                   <div className="space-y-2 text-center">
-                    <img src="./images/experiment1/step5-streaking-detail.png" className="w-[320px] rounded-xl border-2 border-slate-200 shadow-2xl" alt="Quadrant Streaking" />
+                    <img src="https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment1/step5-streaking-detail.avif" className="w-[320px] rounded-xl border-2 border-slate-200 shadow-2xl" alt="Quadrant Streaking" />
                     <p className="text-[10px] text-slate-500 uppercase tracking-widest">Procedure Diagram</p>
                   </div>
                   <div className="flex flex-col gap-4 max-w-[240px]">
@@ -924,7 +924,7 @@ const handleStepNavigation = useCallback((stepIndex: number) => {
                 />
                 <div className="relative flex flex-col md:flex-row items-center gap-8 bg-amber-50/95 p-8 rounded-3xl border border-amber-900/10 shadow-2xl animate-in zoom-in duration-300">
                   <div className="space-y-2 text-center">
-                    <img src="./images/experiment1/lb-plate-streaked.png" className="w-[280px] rounded-xl border-2 border-slate-200 shadow-2xl" alt="Streaked Plate" />
+                    <img src="https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment1/lb-plate-streaked.avif" className="w-[280px] rounded-xl border-2 border-slate-200 shadow-2xl" alt="Streaked Plate" />
                     <p className="text-[10px] text-slate-500 uppercase tracking-widest">Enlarged Streaked Plate</p>
                   </div>
                   <div className="flex flex-col gap-4 max-w-[240px]">

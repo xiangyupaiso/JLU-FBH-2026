@@ -95,36 +95,36 @@ const pptActions = [
 const stageThresholds = [5, 10, 16, 22, 30];
 const totalPptActions = pptActions.length;
 const pptTargetAssets = [
-  'img26.png',
-  'img26.png',
-  'img39.png',
-  'img42.png',
-  'img45.png',
-  'img42.png',
-  'img50.png',
-  'img53.png',
-  'img58.png',
-  'img42.png',
-  'img50.png',
-  'img62.png',
-  'img63.png',
-  'img65.png',
-  'img66.png',
-  'img42.png',
-  'img50.png',
-  'img63.png',
-  'img65.png',
-  'img66.png',
-  'img63.png',
-  'img42.png',
-  'img42.png',
-  'img53.png',
-  'img77.png',
-  'img79.png',
-  'img63.png',
-  'img42.png',
-  'img77.png',
-  'img87.png',
+  'img26.avif',
+  'img26.avif',
+  'img39.avif',
+  'img42.avif',
+  'img45.avif',
+  'img42.avif',
+  'img50.avif',
+  'img53.avif',
+  'img58.avif',
+  'img42.avif',
+  'img50.avif',
+  'img62.avif',
+  'img63.avif',
+  'img65.avif',
+  'img66.avif',
+  'img42.avif',
+  'img50.avif',
+  'img63.avif',
+  'img65.avif',
+  'img66.avif',
+  'img63.avif',
+  'img42.avif',
+  'img42.avif',
+  'img53.avif',
+  'img77.avif',
+  'img79.avif',
+  'img63.avif',
+  'img42.avif',
+  'img77.avif',
+  'img87.avif',
 ] as const;
 
 // 原 PPT 播放器画布为 960 × 540；裁掉其左侧步骤栏和底部说明栏，
@@ -197,7 +197,7 @@ export function ExperimentPage({ onBack, onRestart }: ExperimentPageProps) {
         const style = frameDocument.createElement('style');
         style.id = 'experiment-four-fullscreen-overrides';
         style.textContent = `
-          #playerView .slide > *:has(img[src$="data/img5.png"]) {
+          #playerView .slide > *:has(img[src$="/img5.avif"]) {
             z-index: 2147483000 !important;
           }
 
@@ -462,7 +462,7 @@ export function ExperimentPage({ onBack, onRestart }: ExperimentPageProps) {
                   onLoad={handleFrameLoad}
                 />
                 <img
-                  src="./experiment4_html/first-frame.png"
+                  src="https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment4/preview/first-frame.avif"
                   alt=""
                   aria-hidden="true"
                   fetchPriority="high"

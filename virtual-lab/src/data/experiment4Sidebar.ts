@@ -1,6 +1,5 @@
 import type { ExperimentInfoSidebarData } from '../components/ExperimentInfoSidebar';
 
-const assetPath = './experiment4_lab/assets/ppt';
 
 export const experiment4SidebarData = {
   experimentLabel: 'Experiment 04',
@@ -28,15 +27,15 @@ export const experiment4SidebarData = {
     },
   ],
   instruments: [
-    { id: 'power-supply', name: "Electrophoresis Power Supply", englishName: 'Electrophoresis Power Supply', image: `${assetPath}/power-supply.png` },
-    { id: 'beaker', name: "Beaker", englishName: 'Beaker', image: `${assetPath}/beaker.png` },
-    { id: 'flask', name: "Erlenmeyer Flask", englishName: 'Erlenmeyer Flask', image: `${assetPath}/flask.png` },
-    { id: 'centrifuge', name: "High-speed Centrifuge", englishName: 'High Speed Centrifuge', image: `${assetPath}/centrifuge.png` },
-    { id: 'gel-imager', name: "UV Gel Imager", englishName: 'Ultraviolet Imager', image: `${assetPath}/gel-imager.png` },
-    { id: 'water-bath', name: "Water Bath", englishName: 'Thermostatic Water Bath', image: `${assetPath}/water-bath.png` },
-    { id: 'balance', name: "Electronic Balance", englishName: 'Electronic Scales', image: `${assetPath}/balance.png` },
-    { id: 'comb', name: "Gel Comb", englishName: 'Gel Comb', image: `${assetPath}/comb.png` },
-    { id: 'chamber', name: "Electrophoresis Tank", englishName: 'Electrophoresis Chamber', image: './images/experiment3/ElectrophoresisChamberConnected.png' },
+    { id: 'power-supply', name: "Electrophoresis Power Supply", englishName: 'Electrophoresis Power Supply', image: `https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment4/ppt/power-supply.avif` },
+    { id: 'beaker', name: "Beaker", englishName: 'Beaker', image: `https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment4/ppt/beaker.avif` },
+    { id: 'flask', name: "Erlenmeyer Flask", englishName: 'Erlenmeyer Flask', image: `https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment4/ppt/flask.avif` },
+    { id: 'centrifuge', name: "High-speed Centrifuge", englishName: 'High Speed Centrifuge', image: `https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment4/ppt/centrifuge.avif` },
+    { id: 'gel-imager', name: "UV Gel Imager", englishName: 'Ultraviolet Imager', image: `https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment4/ppt/gel-imager.avif` },
+    { id: 'water-bath', name: "Water Bath", englishName: 'Thermostatic Water Bath', image: `https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment4/ppt/water-bath.avif` },
+    { id: 'balance', name: "Electronic Balance", englishName: 'Electronic Scales', image: `https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment4/ppt/balance.avif` },
+    { id: 'comb', name: "Gel Comb", englishName: 'Gel Comb', image: `https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment4/ppt/comb.avif` },
+    { id: 'chamber', name: "Electrophoresis Tank", englishName: 'Electrophoresis Chamber', image: 'https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/electrophoresischamberconnected.avif' },
   ],
   instrumentTrayOrder: [
     'gel-imager',
@@ -50,8 +49,8 @@ export const experiment4SidebarData = {
     'water-bath',
   ],
   reagents: [
-    { id: 'sol-solution', name: "Gel solubilization buffer", englishName: 'Sol Solution', image: `${assetPath}/buffer-pink.svg` },
-    { id: 'wash-solution', name: "Wash buffer", englishName: 'Bleach Wash Solution', image: `${assetPath}/buffer-orange.png` },
-    { id: 'eluent', name: "Elution buffer", englishName: 'Eluent', image: `${assetPath}/buffer-green.png` },
+    { id: 'sol-solution', name: "Gel solubilization buffer", englishName: 'Sol Solution', image: `https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment4/ppt/buffer-pink.svg` },
+    { id: 'wash-solution', name: "Wash buffer", englishName: 'Bleach Wash Solution', image: `https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment4/ppt/buffer-orange.avif` },
+    { id: 'eluent', name: "Elution buffer", englishName: 'Eluent', image: `https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment4/ppt/buffer-green.avif` },
   ],
 } satisfies ExperimentInfoSidebarData;

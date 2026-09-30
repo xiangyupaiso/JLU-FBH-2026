@@ -8,7 +8,7 @@ export const experiment1Items: LabItem[] = [
     id: 'freezer',
     name: "-80°C Freezer",
     nameEn: 'Ultra-low Temperature Freezer',
-    image: './images/freezer.png',
+    image: 'https://static.igem.wiki/teams/6056/wiki/virtual-lab/common/freezer.avif',
     position: { x: 3, y: 10 },
     size: { width: 90, height: 120 },
     description: "Ultra-low temperature freezer for storing glycerol stocks"
@@ -17,7 +17,7 @@ export const experiment1Items: LabItem[] = [
     id: 'incubator',
     name: "Incubator",
     nameEn: 'Incubator',
-    image: './images/incubator.png',
+    image: 'https://static.igem.wiki/teams/6056/wiki/virtual-lab/common/incubator.avif',
     position: { x: 85, y: 10 },
     size: { width: 90, height: 110 },
     description: "37°C incubator for bacterial culture"
@@ -26,7 +26,7 @@ export const experiment1Items: LabItem[] = [
     id: 'ice-box',
     name: "Ice Box",
     nameEn: 'Ice Box',
-    image: './images/ice-box.png',
+    image: 'https://static.igem.wiki/teams/6056/wiki/virtual-lab/common/ice-box.avif',
     position: { x: 15, y: 30 },
     size: { width: 70, height: 70 },
     description: "Keeps retrieved stocks cold and avoids repeated freeze–thaw cycles"
@@ -35,7 +35,7 @@ export const experiment1Items: LabItem[] = [
     id: 'alcohol-lamp',
     name: "Alcohol Lamp",
     nameEn: 'Alcohol Lamp',
-    image: './images/alcohol-lamp.png',
+    image: 'https://static.igem.wiki/teams/6056/wiki/virtual-lab/common/alcohol-lamp.avif',
     position: { x: 38, y: 35 },
     size: { width: 60, height: 75 },
     description: "Flame sterilization during aseptic work"
@@ -44,7 +44,7 @@ export const experiment1Items: LabItem[] = [
     id: 'tube',
     name: "Glycerol Stock Tube",
     nameEn: 'Glycerol Stock',
-    image: './images/tube.png',
+    image: 'https://static.igem.wiki/teams/6056/wiki/virtual-lab/common/tube.avif',
     position: { x: 22, y: 50 },
     size: { width: 30, height: 60 },
     description: "Storage tube containing an E. coli DH5α glycerol stock"
@@ -53,7 +53,7 @@ export const experiment1Items: LabItem[] = [
     id: 'inoculation-loop',
     name: "Inoculation Loop",
     nameEn: 'Inoculation Loop',
-    image: './images/inoculation-loop.png',
+    image: 'https://static.igem.wiki/teams/6056/wiki/virtual-lab/common/inoculation-loop.avif',
     position: { x: 50, y: 45 },
     size: { width: 90, height: 30 },
     description: "Used to pick bacteria and streak agar plates"
@@ -62,7 +62,7 @@ export const experiment1Items: LabItem[] = [
     id: 'petri-dish',
     name: "LB Agar Plate",
     nameEn: 'LB Agar Plate',
-    image: './images/petri-dish.png',
+    image: 'https://static.igem.wiki/teams/6056/wiki/virtual-lab/common/petri-dish.avif',
     position: { x: 68, y: 32 },
     size: { width: 75, height: 75 },
     description: "Petri dish containing solid LB medium"
@@ -171,7 +171,7 @@ export const experiment2Items: LabItem[] = [
     id: 'incubator',
     name: "Incubator",
     nameEn: 'Incubator',
-    image: './images/incubator.png',
+    image: 'https://static.igem.wiki/teams/6056/wiki/virtual-lab/common/incubator.avif',
     position: { x: 55, y: 15 }, // 放在中间的蓝色桌子上
     size: { width: 60, height: 80 },
     description: "Temperature-controlled equipment for bacterial culture"
@@ -180,7 +180,7 @@ export const experiment2Items: LabItem[] = [
     id: 'microscope',
     name: "Light Microscope",
     nameEn: 'Optical Microscope',
-    image: './images/incubator.png', // 暂时占位
+    image: 'https://static.igem.wiki/teams/6056/wiki/virtual-lab/common/incubator.avif', // 暂时占位
     position: { x: 80, y: 15 }, // 放在右侧桌子上
     size: { width: 80, height: 80 },
     description: "Used to observe the morphology of stained bacteria"
@@ -189,7 +189,7 @@ export const experiment2Items: LabItem[] = [
     id: 'pipette',
     name: "Pipette",
     nameEn: 'Pipette',
-    image: './images/pipette.png',
+    image: 'https://static.igem.wiki/teams/6056/wiki/virtual-lab/common/pipette.avif',
     position: { x: 15, y: 55 }, // 放在 Cleanbench 左侧
     size: { width: 35, height: 110 },
     description: "Used for precise liquid transfer"
@@ -198,7 +198,7 @@ export const experiment2Items: LabItem[] = [
     id: 'alcohol-lamp',
     name: "Alcohol Lamp",
     nameEn: 'Alcohol Lamp',
-    image: './images/alcohol-lamp.png',
+    image: 'https://static.igem.wiki/teams/6056/wiki/virtual-lab/common/alcohol-lamp.avif',
     position: { x: 48, y: 68 }, // 放在 Cleanbench 中间靠后
     size: { width: 55, height: 70 },
     description: "Used for heat fixation of smears"
@@ -207,7 +207,7 @@ export const experiment2Items: LabItem[] = [
     id: 'petri-dish',
     name: "LB Agar Plate",
     nameEn: 'LB Agar Plate',
-    image: './images/petri-dish.png',
+    image: 'https://static.igem.wiki/teams/6056/wiki/virtual-lab/common/petri-dish.avif',
     position: { x: 35, y: 48 }, // 放在 Cleanbench 显眼位置
     size: { width: 90, height: 90 },
     description: "LB agar plate containing isolated colonies"
@@ -216,7 +216,7 @@ export const experiment2Items: LabItem[] = [
     id: 'stain-red',
     name: "Safranin solution",
     nameEn: 'Safranin',
-    image: './images/tube.png',
+    image: 'https://static.igem.wiki/teams/6056/wiki/virtual-lab/common/tube.avif',
     position: { x: 65, y: 65 },
     size: { width: 28, height: 55 },
     description: "Gram stain counterstain"
@@ -225,7 +225,7 @@ export const experiment2Items: LabItem[] = [
     id: 'stain-clear',
     name: "Destaining solution",
     nameEn: 'Decolorizer',
-    image: './images/tube.png',
+    image: 'https://static.igem.wiki/teams/6056/wiki/virtual-lab/common/tube.avif',
     position: { x: 70, y: 65 },
     size: { width: 28, height: 55 },
     description: "95% ethanol or an acetone–ethanol mixture"
@@ -234,7 +234,7 @@ export const experiment2Items: LabItem[] = [
     id: 'stain-brown',
     name: "Iodine solution",
     nameEn: 'Iodine',
-    image: './images/tube.png',
+    image: 'https://static.igem.wiki/teams/6056/wiki/virtual-lab/common/tube.avif',
     position: { x: 75, y: 65 },
     size: { width: 28, height: 55 },
     description: "Gram stain mordant"
@@ -243,7 +243,7 @@ export const experiment2Items: LabItem[] = [
     id: 'stain-purple',
     name: "Crystal violet",
     nameEn: 'Crystal Violet',
-    image: './images/tube.png',
+    image: 'https://static.igem.wiki/teams/6056/wiki/virtual-lab/common/tube.avif',
     position: { x: 80, y: 65 },
     size: { width: 28, height: 55 },
     description: "Gram stain primary stain"
