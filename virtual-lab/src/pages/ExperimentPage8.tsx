@@ -1045,13 +1045,13 @@ const handleStepNavigation = (stepIndex: number) => {
   }, []);
 
   return (
-    <div className="experiment-shell experiment-page-8 flex h-screen w-screen flex-col overflow-hidden bg-slate-950 text-white">
-      <header className="flex h-12 shrink-0 items-center justify-between border-b border-blue-600 bg-gradient-to-r from-blue-900 via-blue-800 to-blue-700 px-3">
+    <div className="experiment-shell experiment-page-8 flex h-screen w-screen flex-col overflow-hidden text-white">
+      <header className="flex h-12 shrink-0 items-center justify-between lab-topbar px-3">
         <div className="flex min-w-0 items-center gap-2">
           <button
             type="button"
             onClick={onBack}
-            className="grid h-8 w-8 shrink-0 place-items-center rounded border border-transparent text-blue-200 hover:border-white/20 hover:bg-white/10 hover:text-white"
+            className="grid h-8 w-8 shrink-0 place-items-center lab-icon-button"
             aria-label="Back to Experiment Catalog"
             title="Back to Experiment Catalog"
           >
@@ -1068,8 +1068,8 @@ const handleStepNavigation = (stepIndex: number) => {
       </header>
 
       <div className="flex min-h-0 flex-1 overflow-hidden">
-        <aside className="hidden w-64 shrink-0 flex-col border-r border-blue-600 bg-gradient-to-b from-blue-900 via-blue-800 to-blue-700 p-3 lg:flex">
-          <div className="mb-3 h-[118px] shrink-0 overflow-hidden rounded-xl border border-white/20 bg-white/10 p-3">
+        <aside className="hidden w-64 shrink-0 flex-col lab-steps-rail p-3 lg:flex">
+          <div className="mb-3 h-[118px] shrink-0 overflow-hidden lab-hint-card p-3">
             <div className="mb-1 flex items-center gap-2 text-blue-200">
               <Lightbulb className="h-3 w-3" />
               <span className="text-[10px] font-black uppercase tracking-widest">
@@ -1092,8 +1092,8 @@ const handleStepNavigation = (stepIndex: number) => {
           />
         </aside>
 
-        <main className="flex-1 bg-black flex flex-col items-center gap-3 p-3 relative overflow-hidden min-w-0">
-          <div className="relative aspect-video w-auto h-[72%] shrink-0 max-w-full shadow-2xl overflow-hidden ring-1 ring-slate-700">
+        <main className="flex-1 lab-bench flex flex-col items-center gap-3 p-3 relative overflow-hidden min-w-0">
+          <div className="relative aspect-video w-auto h-[72%] shrink-0 max-w-full shadow-2xl overflow-hidden lab-canvas-frame">
             <div className="absolute inset-0 overflow-hidden bg-[#4774c1]">
               <Scene key={sceneRevision}
                 stageIndex={stageIndex}
@@ -1115,14 +1115,14 @@ const handleStepNavigation = (stepIndex: number) => {
               {showColonyDetail && (
                 <div className="absolute inset-0 z-[100] flex items-center justify-center p-4">
                   <div
-                    className="absolute inset-0 cursor-pointer bg-black/80 backdrop-blur-md"
+                    className="absolute inset-0 cursor-pointer lab-scrim"
                     onClick={() => {
                       setShowColonyDetail(false);
                       setIsCompleted(true);
                       setMessage("Experiment complete: transformant colonies are visible. Continue with positive clone screening.");
                     }}
                   />
-                  <div className="relative flex max-h-[88%] max-w-[88%] animate-in zoom-in items-center gap-5 overflow-hidden rounded-2xl border border-white/20 bg-slate-900/90 p-4 shadow-2xl duration-300">
+                  <div className="relative flex max-h-[88%] max-w-[88%] animate-in zoom-in items-center gap-5 overflow-hidden lab-chalk-sheet p-4 duration-300">
                     <div className="space-y-2 text-center">
                       <img src={assets.resultPlatePhoto} alt="Transformant Colony Distribution" className="max-h-[230px] w-auto max-w-[240px] rounded-xl border-2 border-white/30 object-contain shadow-2xl" />
                       <p className="text-[10px] uppercase tracking-widest text-slate-500">Enlarged View</p>
@@ -1147,18 +1147,18 @@ const handleStepNavigation = (stepIndex: number) => {
           </div>
 
           <div className="w-full flex-1 px-1 pt-1 text-left">
-            <div className="mb-2 flex items-center gap-2 text-sm font-bold">
+            <div className="lab-step-caption mb-2 flex items-center gap-2 text-sm font-bold">
               <span className="text-blue-400">Step {Math.min(currentStep + 1, steps.length)}/{steps.length}</span>
               <span className="text-blue-500">|</span>
               <span className="text-blue-400">{isCompleted ? "Experiment Complete" : currentStepData.title}</span>
             </div>
-            <div className="flex h-[calc(100%-30px)] items-center justify-center rounded-lg bg-blue-900/80 px-4 py-3 text-center text-xs leading-relaxed text-blue-100 shadow-inner border border-blue-700/50">
+            <div className="flex h-[calc(100%-30px)] items-center justify-center lab-note-card px-4 py-3 text-center text-xs leading-relaxed">
               {isAnimating || isCompleted || observationReady ? message : currentStage.prompt}
             </div>
           </div>
         </main>
 
-        <aside className="hidden w-80 shrink-0 flex-col overflow-y-auto border-l border-slate-800 bg-slate-900/50 p-3 xl:flex">
+        <aside className="hidden w-80 shrink-0 flex-col overflow-y-auto lab-info-rail p-3 xl:flex">
           <Experiment8InfoPanel />
         </aside>
       </div>

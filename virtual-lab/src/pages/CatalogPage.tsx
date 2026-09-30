@@ -84,14 +84,6 @@ export function CatalogPage({ onSelectExperiment }: CatalogPageProps) {
   useLayoutEffect(() => {
     if (!pageRef.current) return;
     const context = gsap.context(() => {
-      gsap.from('.catalog-masthead > *', {
-        y: -16,
-        opacity: 0,
-        duration: 0.75,
-        stagger: 0.08,
-        ease: 'power3.out',
-        clearProps: 'transform,opacity',
-      });
       gsap.from('.catalog-stage-copy > *', {
         x: -34,
         opacity: 0,
@@ -175,29 +167,12 @@ export function CatalogPage({ onSelectExperiment }: CatalogPageProps) {
 
   return (
     <div ref={pageRef} className="catalog-page">
-      <header className="catalog-masthead">
-        <div className="catalog-brand">
-          <svg className="catalog-logo" viewBox="0 0 40 40" aria-hidden="true">
-            <circle cx="20" cy="20" r="15.25" />
-            <path d="M13.2 29.8C15.3 24.3 21.4 18.2 23 13.1C24.2 9.2 21.8 7 18.9 7.5C15.4 8.1 14.2 11.1 15.8 14.4C17.8 18.7 22.1 23.7 24.3 29.7" />
-          </svg>
-          <strong>CirCure</strong>
-          <span>Virtual Laboratory</span>
-        </div>
-        <div className="catalog-masthead-meta">
-          <span>Molecular Biology</span>
-          <i />
-          <span>{String(allExperiments.length).padStart(2, '0')} Experiments</span>
-        </div>
-      </header>
-
       <main className="catalog-stage">
         <div className="catalog-stage-grid">
           <aside className="catalog-route">
             <div className="catalog-route-heading">
               <div>
                 <h1>Experiments</h1>
-                <p>Choose your learning path</p>
               </div>
             </div>
 
@@ -260,7 +235,6 @@ export function CatalogPage({ onSelectExperiment }: CatalogPageProps) {
             <div className="catalog-stage-copy">
               <h2>{currentConfig.label}</h2>
               <p>{currentConfig.description}</p>
-              <span>{String(experimentIndex + 1).padStart(2, '0')} / {String(experiments.length).padStart(2, '0')}</span>
             </div>
 
             <div className="catalog-carousel-stage">

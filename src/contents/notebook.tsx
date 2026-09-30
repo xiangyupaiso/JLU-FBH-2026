@@ -15,6 +15,7 @@ export function Notebook() {
       heroImage={getWetLabHeroImage(notebookPage.route)}
       theme="wet-lab"
       pageClassName="wiki-page--wet-lab"
+      hideHeroCopy
       features={{
         "notebook-schema": <NotebookRecordSchema />,
         "notebook-timeline": <NotebookTrace />,

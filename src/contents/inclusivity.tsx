@@ -15,6 +15,7 @@ export function Inclusivity() {
       heroImage={getEngagementHeroImage(inclusivityPage.route)}
       theme="engagement"
       pageClassName="wiki-page--engagement"
+      hideHeroCopy
       features={{
         "inclusion-barriers": <BarrierMap />,
         "inclusion-actions": <DecisionProofTable />,

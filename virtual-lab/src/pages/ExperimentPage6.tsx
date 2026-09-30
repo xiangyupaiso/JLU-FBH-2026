@@ -1605,13 +1605,13 @@ const handleStepNavigation = useCallback((stepIndex: number) => {
   }, []);
 
   return (
-    <div className="experiment-shell experiment-page-6 flex h-screen w-screen flex-col overflow-hidden bg-slate-950 text-white">
-      <header className="flex h-12 shrink-0 items-center justify-between border-b border-blue-600 bg-gradient-to-r from-blue-900 via-blue-800 to-blue-700 px-3">
+    <div className="experiment-shell experiment-page-6 flex h-screen w-screen flex-col overflow-hidden text-white">
+      <header className="flex h-12 shrink-0 items-center justify-between lab-topbar px-3">
         <div className="flex min-w-0 items-center gap-2">
           <button
             type="button"
             onClick={onBack}
-            className="grid h-8 w-8 shrink-0 place-items-center rounded border border-transparent text-blue-200 hover:border-white/20 hover:bg-white/10 hover:text-white"
+            className="grid h-8 w-8 shrink-0 place-items-center lab-icon-button"
             aria-label="Back to Experiment Catalog"
             title="Back to Experiment Catalog"
           >
@@ -1628,9 +1628,9 @@ const handleStepNavigation = useCallback((stepIndex: number) => {
       </header>
 
       <div className="flex-1 flex overflow-hidden">
-        <aside className="hidden lg:flex flex-col w-64 p-3 border-r border-blue-600 bg-gradient-to-b from-blue-900 via-blue-800 to-blue-700 shrink-0 overflow-y-auto">
+        <aside className="hidden lg:flex flex-col w-64 p-3 lab-steps-rail shrink-0 overflow-y-auto">
           {sidebarStepData && !isCompleted && (
-            <div className="h-[118px] overflow-hidden bg-white/10 border border-white/20 rounded-xl p-3 mb-4 shrink-0">
+            <div className="h-[118px] overflow-hidden lab-hint-card p-3 mb-4 shrink-0">
               <div className="flex items-center gap-2 text-blue-200 mb-1">
                 <Lightbulb className="w-3 h-3" />
                 <span className="text-[10px] font-black uppercase tracking-widest">
@@ -1655,11 +1655,11 @@ const handleStepNavigation = useCallback((stepIndex: number) => {
           />
         </aside>
 
-        <main className="flex-1 bg-black flex flex-col items-center gap-3 p-3 relative overflow-hidden min-w-0">
+        <main className="flex-1 lab-bench flex flex-col items-center gap-3 p-3 relative overflow-hidden min-w-0">
           <div className="flex max-h-[72%] min-h-0 w-full shrink-0 items-center justify-center">
             <div
               id="experiment6-canvas"
-              className="relative aspect-video w-full max-w-full flex-none shadow-2xl bg-[#1e293b] overflow-clip ring-1 ring-slate-700"
+              className="relative aspect-video w-full max-w-full flex-none shadow-2xl bg-[#1e293b] overflow-clip lab-canvas-frame"
               style={{ width: 'min(100%, calc((100vh - 72px) * 0.72 * 16 / 9))' }}
             >
             <div key={`experiment6-scene-${sceneRevision}`} className="absolute inset-0 overflow-clip bg-[#4774c1]">
@@ -1908,9 +1908,9 @@ const handleStepNavigation = useCallback((stepIndex: number) => {
 
             {detail && (
               <div className="absolute inset-0 z-[200] flex items-center justify-center pointer-events-auto">
-                <button type="button" aria-label="Close enlarged image" className="absolute inset-0 cursor-pointer bg-black/75 backdrop-blur-sm" onClick={closeDetail} />
+                <button type="button" aria-label="Close enlarged image" className="absolute inset-0 cursor-pointer lab-scrim" onClick={closeDetail} />
                 {detail === 'bandGuide' ? (
-                  <div className="relative z-10 max-h-[88%] w-[min(680px,86%)] overflow-auto rounded-lg border border-blue-400/40 bg-blue-950/95 px-8 py-6 shadow-2xl">
+                  <div className="relative z-10 max-h-[88%] w-[min(680px,86%)] overflow-auto lab-chalk-sheet px-8 py-6">
                     <h3 className="mb-4 text-center text-lg font-black text-blue-200">Interpret Digested Fragment Bands</h3>
                     <div className="relative mx-auto max-w-[560px] border-l-2 border-dashed border-blue-300/70 pl-7 text-sm leading-6 text-blue-50">
                       <div className="mb-4 font-bold">[TOP] ← Loading wells (negative electrode)</div>
@@ -1932,7 +1932,7 @@ const handleStepNavigation = useCallback((stepIndex: number) => {
                     </div>
                   </div>
                 ) : (
-                  <div className="relative z-10 flex max-h-[88%] max-w-[86%] items-center gap-7 rounded-lg border border-white/20 bg-slate-900/95 p-6 shadow-2xl">
+                  <div className="relative z-10 flex max-h-[88%] max-w-[86%] items-center gap-7 lab-chalk-sheet p-6">
                     <img src={detail === 'loading90' ? experiment3Assets.shows1 : detail === 'assembly91' ? experiment3Assets.shows2 : experiment3Assets.shows3} className={`max-h-[56vh] object-contain ${detail === 'assembly91' ? 'w-[300px]' : detail === 'loading90' ? 'w-[440px]' : 'w-[360px]'}`} alt="Experiment 6 Procedure View" draggable={false} />
                     <div className="max-w-[280px] border-l-4 border-blue-500 pl-4 text-sm leading-relaxed text-slate-200">
                       <h3 className="mb-3 text-lg font-black text-blue-300">{detail === 'loading90' ? "Confirm Loading Positions" : detail === 'assembly91' ? "Electrophoresis Tank Structure" : "Electrophoresis Image"}</h3>
@@ -1950,12 +1950,12 @@ const handleStepNavigation = useCallback((stepIndex: number) => {
 
           {(currentStepData || isCompleted) && (
             <div className="w-full min-h-[112px] flex-1 px-1 pt-1 text-left">
-              <div className="mb-2 flex items-center gap-2 text-sm font-bold">
+              <div className="lab-step-caption mb-2 flex items-center gap-2 text-sm font-bold">
                 <span className="text-blue-400">Step {Math.min(currentStep + 1, steps.length)}/{steps.length}</span>
                 <span className="text-blue-500">|</span>
                 <span className="text-blue-400">{(currentStepData ?? steps[steps.length - 1]).title}</span>
               </div>
-              <div className="flex h-[calc(100%-30px)] items-center justify-center rounded-lg bg-blue-900/80 px-4 py-3 text-center text-xs leading-relaxed text-blue-100 shadow-inner border border-blue-700/50">
+              <div className="flex h-[calc(100%-30px)] items-center justify-center lab-note-card px-4 py-3 text-center text-xs leading-relaxed">
                 {(currentStepData ?? steps[steps.length - 1]).description}
               </div>
               <div className="mt-2 flex justify-end" />
@@ -1964,13 +1964,13 @@ const handleStepNavigation = useCallback((stepIndex: number) => {
         </main>
 
         {showInfo && (
-          <aside className="hidden xl:flex flex-col w-80 p-3 border-l border-slate-800 bg-slate-900/50 shrink-0 overflow-y-auto">
+          <aside className="hidden xl:flex flex-col w-80 p-3 lab-info-rail shrink-0 overflow-y-auto">
             <Experiment6InfoPanel />
           </aside>
         )}
       </div>
 
-      <div className="fixed inset-0 z-[2000] bg-slate-950 flex flex-col items-center justify-center lg:hidden portrait:flex hidden px-8 text-center text-white">
+      <div className="fixed inset-0 z-[2000] lab-rotate-overlay flex flex-col items-center justify-center lg:hidden portrait:flex hidden px-8 text-center text-white">
         <div className="w-16 h-16 mb-4 animate-bounce text-4xl">🔄</div>
         <h2 className="text-xl font-bold">Rotate Your Device to Landscape</h2>
       </div>

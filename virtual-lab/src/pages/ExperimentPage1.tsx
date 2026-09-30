@@ -684,9 +684,9 @@ const handleStepNavigation = useCallback((stepIndex: number) => {
   const petriHighlighted = currentStep === 5 && plateStreaked && !plateInIncubator;
 
   return (
-    <div className="experiment-shell experiment-page-1 h-screen w-screen flex flex-col overflow-hidden bg-slate-950 text-white font-sans">
+    <div className="experiment-shell experiment-page-1 h-screen w-screen flex flex-col overflow-hidden text-white font-sans">
       {/* 顶部导航栏 */}
-      <header className="h-12 bg-gradient-to-r from-blue-900 via-blue-800 to-blue-700 border-b border-blue-600 flex items-center justify-between px-4 z-50 shrink-0">
+      <header className="h-12 lab-topbar flex items-center justify-between px-4 z-50 shrink-0">
         <div className="flex items-center gap-3">
           <ChevronLeft className="cursor-pointer text-blue-200 hover:text-white" onClick={onBack} />
           <h1 className="font-bold text-xs text-white uppercase tracking-widest">{experiment.title}</h1>
@@ -696,9 +696,9 @@ const handleStepNavigation = useCallback((stepIndex: number) => {
 
       <div className="flex-1 flex overflow-hidden">
         {/* 左侧步骤面板：顶部信息卡片固定高度；点击步骤跳回该步开始前状态并保证目标光效 */}
-        <aside className="hidden lg:flex flex-col w-64 p-3 border-r border-blue-600 bg-gradient-to-b from-blue-900 via-blue-800 to-blue-700 shrink-0 overflow-y-auto">
+        <aside className="hidden lg:flex flex-col w-64 p-3 lab-steps-rail shrink-0 overflow-y-auto">
           {sidebarStepData && !isCompleted && (
-            <div className="bg-white/10 border border-white/20 rounded-xl p-3 mb-4 shrink-0 h-32 overflow-hidden">
+            <div className="lab-hint-card p-3 mb-4 shrink-0 h-32 overflow-hidden">
               <div className="flex items-center gap-2 text-blue-200 mb-1">
                 <Lightbulb className="w-3 h-3" />
                 <span className="text-[10px] font-black uppercase tracking-widest">
@@ -724,11 +724,11 @@ const handleStepNavigation = useCallback((stepIndex: number) => {
         </aside>
 
         {/* 主实验画布 */}
-        <main className="flex-1 bg-black flex flex-col items-center justify-center gap-2 p-3 relative overflow-hidden min-w-0">
+        <main className="flex-1 lab-bench flex flex-col items-center justify-center gap-2 p-3 relative overflow-hidden min-w-0">
           <div ref={canvasFrameRef} className="flex h-[72%] w-full shrink-0 items-center justify-center overflow-hidden">
           <div
             id="experiment-canvas"
-            className="relative flex-none shadow-2xl bg-[#1e293b] overflow-hidden ring-1 ring-slate-700"
+            className="relative flex-none shadow-2xl bg-[#1e293b] overflow-hidden lab-canvas-frame"
             style={canvasStyle}
           >
             {/* 背景图 */}
@@ -886,7 +886,7 @@ const handleStepNavigation = useCallback((stepIndex: number) => {
 
             {/* 冷却提示文字 */}
             {coolingMessage && (
-              <div className="absolute bottom-[20%] left-1/2 -translate-x-1/2 z-[200] bg-black/90 text-white px-6 py-2 rounded-full text-base font-bold pointer-events-none shadow-xl border border-white/20">
+              <div className="absolute bottom-[20%] left-1/2 -translate-x-1/2 z-[200] lab-toast px-6 py-2 text-base font-bold pointer-events-none">
                 {coolingMessage}
               </div>
             )}
@@ -894,7 +894,7 @@ const handleStepNavigation = useCallback((stepIndex: number) => {
             {/* ========== 实验一详情弹窗（浅色底，参考队长的观察结果卡片样式） ========== */}
             {showStreakingDetail && (
               <div className="absolute inset-0 z-[100] flex items-center justify-center pointer-events-auto">
-                <div className="absolute inset-0 bg-black/80 backdrop-blur-md cursor-pointer" 
+                <div className="absolute inset-0 lab-scrim cursor-pointer" 
                   onClick={handleCloseStreakingDetail}
                 />
                 <div className="relative flex flex-col md:flex-row items-center gap-8 bg-amber-50/95 p-8 rounded-3xl border border-amber-900/10 shadow-2xl animate-in zoom-in duration-300">
@@ -919,7 +919,7 @@ const handleStepNavigation = useCallback((stepIndex: number) => {
 
             {showColoniesDetail && (
               <div className="absolute inset-0 z-[100] flex items-center justify-center pointer-events-auto">
-                <div className="absolute inset-0 bg-black/80 backdrop-blur-md cursor-pointer" 
+                <div className="absolute inset-0 lab-scrim cursor-pointer" 
                   onClick={handleCloseColoniesDetail}
                 />
                 <div className="relative flex flex-col md:flex-row items-center gap-8 bg-amber-50/95 p-8 rounded-3xl border border-amber-900/10 shadow-2xl animate-in zoom-in duration-300">
@@ -950,12 +950,12 @@ const handleStepNavigation = useCallback((stepIndex: number) => {
           {/* 画框下方当前步骤说明，参考队长版本的底部步骤条 */}
           {(currentStepData || isCompleted) && (
             <div className="w-full min-h-[112px] flex-1 px-1 pt-1 text-left">
-              <div className="mb-2 flex items-center gap-2 text-sm font-bold">
+              <div className="lab-step-caption mb-2 flex items-center gap-2 text-sm font-bold">
                 <span className="text-blue-400">Step {Math.min(currentStep + 1, experiment.steps.length)}/{experiment.steps.length}</span>
                 <span className="text-blue-500">|</span>
                 <span className="text-blue-400">{(currentStepData ?? experiment.steps[experiment.steps.length - 1]).title}</span>
               </div>
-              <div className="flex h-[calc(100%-30px)] items-center justify-center rounded-lg bg-blue-900/80 px-4 py-3 text-center text-xs leading-relaxed text-blue-100 shadow-inner border border-blue-700/50">
+              <div className="flex h-[calc(100%-30px)] items-center justify-center lab-note-card px-4 py-3 text-center text-xs leading-relaxed">
                 {(currentStepData ?? experiment.steps[experiment.steps.length - 1]).description}
               </div>
             </div>
@@ -963,13 +963,13 @@ const handleStepNavigation = useCallback((stepIndex: number) => {
         </main>
 
         {/* 右侧信息面板固定存在，仅由 xl 响应式断点控制显示。 */}
-        <aside className="hidden xl:flex flex-col w-80 p-3 border-l border-slate-800 bg-slate-900/50 shrink-0 overflow-y-auto">
+        <aside className="hidden xl:flex flex-col w-80 p-3 lab-info-rail shrink-0 overflow-y-auto">
           <Experiment1InfoPanel />
         </aside>
       </div>
 
       {/* 横屏提示 */}
-      <div className="fixed inset-0 z-[2000] bg-slate-950 flex flex-col items-center justify-center lg:hidden portrait:flex hidden px-8 text-center text-white">
+      <div className="fixed inset-0 z-[2000] lab-rotate-overlay flex flex-col items-center justify-center lg:hidden portrait:flex hidden px-8 text-center text-white">
         <div className="w-16 h-16 mb-4 animate-bounce text-4xl">🔄</div>
         <h2 className="text-xl font-bold">Rotate Your Device to Landscape</h2>
       </div>

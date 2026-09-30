@@ -14,6 +14,7 @@ export function Contribution() {
       heroImage={getProjectHeroImage(contributionPage.route)}
       theme="project"
       pageClassName="wiki-page--project"
+      hideHeroCopy
       features={{
         "contribution-packages": <ResourceShelf />,
         "contribution-reuse": <ResourceShelf />,

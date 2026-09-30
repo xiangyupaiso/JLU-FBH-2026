@@ -33,6 +33,7 @@ export function HumanPractices() {
       heroImage={getEngagementHeroImage(humanPracticesPage.route)}
       theme="engagement"
       pageClassName="wiki-page--engagement"
+      hideHeroCopy
       features={{
         "hp-changes": panel(
           <>

@@ -5,8 +5,18 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        // CirCure palette names (mirror src/styles/circure-tokens.css).
         paper: "#eee7dc",
         "paper-bright": "#fcf8f1",
+        ink: "#1b1719",
+        deep: "#102f59",
+        navy: "#173f78",
+        care: "#d784b3",
+        coral: "#df705b",
+        gold: "#c39a55",
+        mist: "#667e8c",
+        map: "#e5d9d2",
+        blush: "#ddcbd3",
         slate: {
           50: "#fcf8f1",
           100: "#eee7dc",
@@ -39,7 +49,11 @@ module.exports = {
           300: "#d79cbe",
           400: "#667e8c",
         },
+        // Chalk accents used inside the navy result sheets.
         cyan: {
+          100: "#fcf8f1",
+          200: "#ecc6dc",
+          300: "#d79cbe",
           400: "#d784b3",
         },
         green: {
@@ -49,6 +63,7 @@ module.exports = {
         },
         emerald: {
           100: "#fcf8f1",
+          200: "#d9bd8b",
           300: "#ddcbd3",
           400: "#d79cbe",
           500: "#754356",
@@ -114,7 +129,13 @@ module.exports = {
           ring: "hsl(var(--sidebar-ring))",
         },
       },
+      fontFamily: {
+        heading: ["var(--font-heading)"],
+        round: ["var(--font-round)"],
+        mono: ["var(--font-mono)"],
+      },
       borderRadius: {
+        panel: "28px",
         xl: "calc(var(--radius) + 4px)",
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",

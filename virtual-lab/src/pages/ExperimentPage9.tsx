@@ -128,8 +128,8 @@ export function ExperimentPage({ onBack, onRestart }: ExperimentPageProps) {
   
 
   return (
-    <div className="experiment-shell flex h-screen w-screen flex-col overflow-hidden bg-slate-950 font-sans text-white">
-      <header className="z-50 flex h-12 shrink-0 items-center justify-between border-b border-blue-600 bg-gradient-to-r from-blue-900 via-blue-800 to-blue-700 px-4">
+    <div className="experiment-shell flex h-screen w-screen flex-col overflow-hidden font-sans text-white">
+      <header className="z-50 flex h-12 shrink-0 items-center justify-between lab-topbar px-4">
         <div className="flex min-w-0 items-center gap-3">
           <button type="button" aria-label="Back" onClick={onBack}><ChevronLeft className="h-5 w-5 text-blue-200" /></button>
           <h1 className="truncate text-xs font-bold text-white">Experiment 9: Colony PCR, GFP Fluorescence and Protein Expression</h1>
@@ -137,9 +137,9 @@ export function ExperimentPage({ onBack, onRestart }: ExperimentPageProps) {
         <RestartExperimentButton onRestart={onRestart} />
       </header>
       <div className="flex min-h-0 flex-1 overflow-hidden">
-        <aside className="hidden w-64 shrink-0 flex-col overflow-y-auto border-r border-blue-600 bg-gradient-to-b from-blue-900 via-blue-800 to-blue-700 p-3 lg:flex">
+        <aside className="hidden w-64 shrink-0 flex-col overflow-y-auto lab-steps-rail p-3 lg:flex">
           {!experimentComplete && (
-            <div className="mb-4 shrink-0 rounded-xl border border-white/20 bg-white/10 p-3">
+            <div className="mb-4 shrink-0 lab-hint-card p-3">
               <div className="mb-1 flex items-center gap-2 text-blue-200">
                 <Lightbulb className="h-3 w-3" />
                 <span className="text-[10px] font-black uppercase tracking-widest">
@@ -152,8 +152,8 @@ export function ExperimentPage({ onBack, onRestart }: ExperimentPageProps) {
           )}
           <StepIndicator steps={steps} currentStep={currentStep} completedSteps={completedSteps} onStepClick={goToStep} onStepHover={setHoveredStep} />
         </aside>
-        <main className="flex min-w-0 flex-1 flex-col overflow-y-auto bg-black p-3">
-          <div ref={viewportRef} className="relative w-full shrink-0 overflow-hidden bg-[#4472c4] shadow-2xl ring-1 ring-slate-700" style={{ aspectRatio: crop.width + ' / ' + crop.height }}>
+        <main className="flex min-w-0 flex-1 flex-col overflow-y-auto lab-bench p-3">
+          <div ref={viewportRef} className="relative w-full shrink-0 overflow-hidden bg-[#4472c4] lab-canvas-frame" style={{ aspectRatio: crop.width + ' / ' + crop.height }}>
             {!ready && <img src="./experiment9-assets/first-frame.jpg" alt="" aria-hidden="true" fetchPriority="high" className="absolute inset-0 h-full w-full object-fill" />}
             <iframe key={revision} ref={iframeRef} src={`./experiment9-assets/ispring/index.html?v=6&resume=0&startslide=${frameStartSlide}`} onLoad={handleFrameLoad} title="Experiment 9 Interactive Procedure" allow="autoplay; fullscreen" className="absolute max-w-none border-0" style={{
               width: 1296, height: 864, transformOrigin: '0 0', transform: 'scale(' + scale + ')',
@@ -162,25 +162,25 @@ export function ExperimentPage({ onBack, onRestart }: ExperimentPageProps) {
               opacity: ready ? 1 : 0,
               pointerEvents: ready ? 'auto' : 'none',
             }} />
-            {!ready && <div role="status" className="absolute bottom-3 left-1/2 -translate-x-1/2 rounded-md bg-blue-950/90 px-4 py-2 text-xs text-blue-100">{loadFailed ? "Experiment failed to load. Click Restart in the top-right corner." : 'Loading experiment…'}</div>}
+            {!ready && <div role="status" className="absolute bottom-3 left-1/2 -translate-x-1/2 lab-toast px-4 py-2 text-xs">{loadFailed ? "Experiment failed to load. Click Restart in the top-right corner." : 'Loading experiment…'}</div>}
             {ready && slideIndex === publishedPages.length - 1 && !experimentComplete && (
               <button type="button" aria-label="Finish experiment" onClick={() => setExperimentComplete(true)} className="absolute inset-0 z-20 flex items-end justify-center pb-3">
-                <span className="rounded-md bg-blue-950/90 px-4 py-2 text-xs text-blue-100">Click the result to finish the experiment</span>
+                <span className="lab-toast px-4 py-2 text-xs">Click the result to finish the experiment</span>
               </button>
             )}
             {experimentComplete && <ExperimentCompletion onRestart={onRestart} onBack={onBack} />}
           </div>
           {!experimentComplete && <div className="mt-3 flex min-h-[120px] flex-1 flex-col gap-2">
-            <div className="flex items-center justify-between text-sm font-bold text-blue-400">
+            <div className="lab-step-caption flex items-center justify-between text-sm font-bold">
               <span>Step {currentStep + 1}/{steps.length} · {steps[currentStep].title}</span>
               <span className="text-xs font-normal text-blue-200">{slideIndex + 1}/{publishedPages.length}</span>
             </div>
-            <div className="flex flex-1 items-center justify-center rounded-lg border border-blue-700/50 bg-blue-900/80 px-6 py-4 text-center text-sm leading-relaxed text-blue-100">{currentStep === 2 ? steps[2].description : currentPage.prompt}</div>
+            <div className="flex flex-1 items-center justify-center lab-note-card px-6 py-4 text-center text-sm leading-relaxed">{currentStep === 2 ? steps[2].description : currentPage.prompt}</div>
           </div>}
         </main>
-        <aside className="hidden w-80 shrink-0 flex-col overflow-y-auto border-l border-slate-800 bg-slate-900/50 p-3 xl:flex"><Experiment9InfoPanel /></aside>
+        <aside className="hidden w-80 shrink-0 flex-col overflow-y-auto lab-info-rail p-3 xl:flex"><Experiment9InfoPanel /></aside>
       </div>
-      <div className="fixed inset-0 z-[2000] hidden flex-col items-center justify-center bg-slate-950 px-8 text-center text-white portrait:flex lg:hidden"><div className="mb-4 text-4xl">🔄</div><h2 className="text-xl font-bold">Rotate Your Device to Landscape</h2></div>
+      <div className="fixed inset-0 z-[2000] hidden flex-col items-center justify-center lab-rotate-overlay px-8 text-center text-white portrait:flex lg:hidden"><div className="mb-4 text-4xl">🔄</div><h2 className="text-xl font-bold">Rotate Your Device to Landscape</h2></div>
     </div>
   );
 }

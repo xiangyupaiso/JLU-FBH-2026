@@ -110,14 +110,14 @@ function MaterialPreviewDialog({
 }) {
   return (
     <Dialog open={material !== null} onOpenChange={(open) => { if (!open) onClose(); }}>
-      <DialogContent className="border-blue-400/40 bg-slate-950 text-white sm:max-w-2xl [&_[data-slot=dialog-close]]:text-white">
+      <DialogContent className="lab-dialog sm:max-w-2xl">
         {material && (
           <>
             <DialogHeader>
-              <DialogTitle>{material.name}</DialogTitle>
-              <DialogDescription className="text-blue-200">{material.englishName}</DialogDescription>
+              <DialogTitle className="lab-serif">{material.name}</DialogTitle>
+              <DialogDescription className="lab-muted">{material.englishName}</DialogDescription>
             </DialogHeader>
-            <div className="flex max-h-[65vh] min-h-64 items-center justify-center overflow-hidden rounded-xl bg-white p-6">
+            <div className="lab-specimen-plate flex max-h-[65vh] min-h-64 items-center justify-center overflow-hidden p-6">
               <MaterialArtwork
                 material={material}
                 className="h-[58vh] max-h-[58vh] w-full"
@@ -142,12 +142,12 @@ function MaterialThumbnail({
     <button
       type="button"
       onClick={() => onPreview(material)}
-      className="group relative flex h-14 w-12 shrink-0 items-center justify-center rounded-md bg-white p-1.5 ring-1 ring-white/20 transition-all hover:scale-105 hover:ring-2 hover:ring-cyan-300"
+      className="group relative flex h-14 w-12 shrink-0 items-center justify-center lab-thumb p-1.5 transition-all hover:scale-105"
       aria-label={`Enlarge${material.name}`}
       title={`Enlarge${material.name}`}
     >
       <MaterialArtwork material={material} className="h-full w-full" artworkClassName="h-full" />
-      <span className="absolute bottom-0.5 right-0.5 flex h-4 w-4 items-center justify-center rounded-full bg-slate-900/80 text-white opacity-80 transition-opacity group-hover:opacity-100">
+      <span className="absolute bottom-0.5 right-0.5 flex h-4 w-4 items-center justify-center rounded-full lab-thumb__zoom opacity-80 transition-opacity group-hover:opacity-100">
         <ZoomIn className="h-2.5 w-2.5" />
       </span>
     </button>
@@ -156,15 +156,15 @@ function MaterialThumbnail({
 
 function SafetySection({ safety }: Pick<ExperimentInfoSidebarData, 'safety'>) {
   return (
-    <div className="space-y-3 pr-3 pb-3 text-[11px] leading-[1.7] text-blue-100">
+    <div className="space-y-3 pr-3 pb-3 text-[11px] leading-[1.7]">
       <div className="flex items-center gap-2">
-        <ShieldCheck className="h-4 w-4 text-emerald-300" />
-        <h4 className="text-xs font-semibold text-white">Laboratory Safety</h4>
+        <ShieldCheck className="h-4 w-4 lab-accent-coral" />
+        <h4 className="lab-section-title">Laboratory Safety</h4>
       </div>
       <div className="space-y-2">
         {safety.map((item, index) => (
-          <div key={item} className="flex gap-2.5 rounded-lg border border-white/15 bg-white/[0.06] p-3">
-            <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-emerald-400/15 text-[9px] font-semibold text-emerald-200">
+          <div key={item} className="lab-entry flex gap-2.5 p-3">
+            <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full lab-entry__num text-[9px]">
               {index + 1}
             </span>
             <p>{item}</p>
@@ -182,19 +182,19 @@ function PrincipleSection({
   const [answers, setAnswers] = useState<Record<string, number>>({});
 
   return (
-    <div className="space-y-4 pr-3 pb-3 text-[11px] leading-[1.75] text-blue-100">
+    <div className="space-y-4 pr-3 pb-3 text-[11px] leading-[1.75]">
       <section>
-        <h4 className="mb-1.5 text-xs font-semibold text-white">Experimental Principle</h4>
+        <h4 className="lab-section-title mb-1.5">Experimental Principle</h4>
         {principle.split('\n').map((paragraph, index) => (
           paragraph.trim() ? <p key={index} className="mb-2 last:mb-0">{paragraph}</p> : null
         ))}
       </section>
 
       {questions.length > 0 && (
-        <section className="border-t border-white/15 pt-4">
+        <section className="lab-divider pt-4">
           <div className="mb-3 flex items-center gap-2">
-            <CircleHelp className="h-4 w-4 text-amber-300" />
-            <h4 className="text-xs font-semibold text-white">Review Questions</h4>
+            <CircleHelp className="h-4 w-4 lab-accent-gold" />
+            <h4 className="lab-section-title">Review Questions</h4>
           </div>
 
           <div className="space-y-3">
@@ -205,8 +205,8 @@ function PrincipleSection({
               const correct = selected === question.correctIndex;
 
               return (
-                <div key={question.id} className="rounded-lg border border-white/15 bg-white/[0.07] p-3">
-                  <p className="mb-2 font-medium text-white">
+                <div key={question.id} className="lab-entry p-3">
+                  <p className="lab-ink mb-2 font-medium">
                     {questionIndex + 1}. {question.question}
                   </p>
                   <div className="space-y-1.5">
@@ -219,12 +219,12 @@ function PrincipleSection({
                           type="button"
                           onClick={() => setAnswers((previous) => ({ ...previous, [answerKey]: optionIndex }))}
                           className={cn(
-                            'flex w-full items-center gap-2 rounded-md border px-2.5 py-2 text-left transition-colors',
+                            'lab-option flex w-full items-center gap-2 px-2.5 py-2 text-left transition-colors',
                             isCorrectOption
-                              ? 'border-emerald-400/70 bg-emerald-400/15 text-emerald-100'
+                              ? 'lab-option--correct'
                               : isSelected
-                                ? 'border-rose-400/70 bg-rose-400/15 text-rose-100'
-                                : 'border-white/10 bg-slate-950/20 text-blue-100 hover:border-blue-300/50 hover:bg-white/10',
+                                ? 'lab-option--wrong'
+                                : '',
                           )}
                         >
                           <span className="flex h-4 w-4 shrink-0 items-center justify-center rounded-full border border-current">
@@ -236,7 +236,7 @@ function PrincipleSection({
                     })}
                   </div>
                   {answered && (
-                    <p className={cn('mt-2 flex items-center gap-1.5', correct ? 'text-emerald-300' : 'text-amber-200')}>
+                    <p className={cn('mt-2 flex items-center gap-1.5', correct ? 'lab-feedback--ok' : 'lab-feedback--warn')}>
                       {correct ? <CheckCircle2 className="h-3.5 w-3.5" /> : <CircleHelp className="h-3.5 w-3.5" />}
                       {correct ? "Correct answer" : `Try again. The correct answer is “${question.options[question.correctIndex]}”`}
                     </p>
@@ -302,27 +302,27 @@ function InstrumentMatchingGame({
   };
 
   return (
-    <div className="space-y-3 pr-3 pb-3 text-[10px] text-blue-100">
+    <div className="space-y-3 pr-3 pb-3 text-[10px]">
       <div className="flex items-center justify-between gap-2">
         <div className="flex min-w-0 items-center gap-2">
           <button
             type="button"
             onClick={onExit}
-            className="shrink-0 rounded-md border border-white/15 bg-white/[0.07] p-1.5 text-blue-100 transition-colors hover:bg-white/15"
+            className="lab-mini-button shrink-0 p-1.5"
             aria-label="Back to equipment list"
             title="Back to equipment list"
           >
             <ArrowLeft className="h-3.5 w-3.5" />
           </button>
           <div className="min-w-0">
-          <h4 className="text-xs font-semibold text-white">Equipment Matching Challenge</h4>
-          <p className="mt-0.5 text-blue-200">Drag each icon to its name, or click the icon and then the name.</p>
+          <h4 className="lab-section-title">Equipment Matching Challenge</h4>
+          <p className="lab-muted mt-0.5">Drag each icon to its name, or click the icon and then the name.</p>
           </div>
         </div>
         <button
           type="button"
           onClick={resetGame}
-          className="shrink-0 rounded-md border border-white/15 bg-white/[0.07] p-1.5 text-blue-100 transition-colors hover:bg-white/15"
+          className="lab-mini-button shrink-0 p-1.5"
           aria-label="Restart equipment matching"
           title="Restart"
         >
@@ -331,13 +331,13 @@ function InstrumentMatchingGame({
       </div>
 
       <div>
-        <div className="mb-1.5 flex items-center justify-between text-blue-200">
+        <div className="lab-muted mb-1.5 flex items-center justify-between">
           <span>Matching progress</span>
           <span>{matchedIds.length} / {instruments.length}</span>
         </div>
-        <div className="h-1.5 overflow-hidden rounded-full bg-slate-950/40">
+        <div className="lab-progress">
           <div
-            className="h-full rounded-full bg-gradient-to-r from-cyan-400 to-emerald-400 transition-all duration-300"
+            className="lab-progress__fill"
             style={{ width: `${instruments.length ? (matchedIds.length / instruments.length) * 100 : 0}%` }}
           />
         </div>
@@ -360,31 +360,31 @@ function InstrumentMatchingGame({
                 tryMatch(instrument.id, event.dataTransfer.getData('text/plain'));
               }}
               className={cn(
-                'flex min-h-12 w-full items-center gap-2 rounded-lg border border-dashed px-3 py-2 text-left transition-all',
+                'lab-drop-slot flex min-h-12 w-full items-center gap-2 px-3 py-2 text-left transition-all',
                 isMatched
-                  ? 'border-emerald-400/70 bg-emerald-400/15'
+                  ? 'lab-drop-slot--matched'
                   : selectedId
-                    ? 'border-amber-300/60 bg-amber-300/[0.08] hover:bg-amber-300/15'
-                    : 'border-white/25 bg-white/[0.05] hover:border-blue-300/60 hover:bg-white/10',
+                    ? 'lab-drop-slot--armed'
+                    : '',
               )}
             >
               <span className={cn(
                 'flex h-6 w-6 shrink-0 items-center justify-center rounded-full',
-                isMatched ? 'bg-emerald-400 text-emerald-950' : 'bg-white/10 text-blue-200',
+                isMatched ? 'lab-drop-slot__num--done' : 'lab-drop-slot__num',
               )}>
                 {isMatched ? <Check className="h-4 w-4" /> : <span className="text-[9px]">{instrumentIndex + 1}</span>}
               </span>
               <span className="min-w-0">
-                <span className={cn('block font-medium', isMatched ? 'text-emerald-100' : 'text-white')}>{instrument.name}</span>
-                <span className={isMatched ? 'text-emerald-300/80' : 'text-blue-300'}>{instrument.englishName}</span>
+                <span className="lab-ink block font-medium">{instrument.name}</span>
+                <span className="lab-muted">{instrument.englishName}</span>
               </span>
             </button>
           );
         })}
       </div>
 
-      <div className="border-t border-white/15 pt-3">
-        <p className="mb-2 text-center text-blue-200">Drag the icons below to the matching names above</p>
+      <div className="lab-divider pt-3">
+        <p className="lab-muted mb-2 text-center">Drag the icons below to the matching names above</p>
         <div className="grid grid-cols-3 gap-2">
           {trayItems.map((instrument) => {
             const isMatched = matched.has(instrument.id);
@@ -403,16 +403,16 @@ function InstrumentMatchingGame({
                     setFeedback(null);
                   }}
                   className={cn(
-                    'relative flex h-[72px] w-full items-center justify-center overflow-hidden rounded-lg border bg-white p-2 transition-all',
+                    'lab-tray-item relative flex h-[72px] w-full items-center justify-center overflow-hidden p-2 transition-all',
                     isMatched
-                      ? 'cursor-not-allowed border-emerald-400/70 opacity-40'
+                      ? 'lab-tray-item--matched cursor-not-allowed opacity-40'
                       : isSelected
-                        ? 'cursor-grab border-amber-300 ring-2 ring-amber-300/60'
-                        : 'cursor-grab border-slate-200 hover:-translate-y-0.5 hover:border-cyan-300 hover:bg-blue-50 active:cursor-grabbing',
+                        ? 'lab-tray-item--selected cursor-grab'
+                        : 'cursor-grab hover:-translate-y-0.5 active:cursor-grabbing',
                   )}
                   aria-label="Draggable equipment icons"
                 >
-                  <GripVertical className="absolute left-0.5 top-1 h-3 w-3 text-slate-400" />
+                  <GripVertical className="lab-muted absolute left-0.5 top-1 h-3 w-3" />
                   <MaterialArtwork
                     material={instrument}
                     className="h-full w-full"
@@ -428,16 +428,16 @@ function InstrumentMatchingGame({
 
       {feedback && !completed && (
         <p className={cn(
-          'rounded-md px-2.5 py-2 text-center',
-          feedback.kind === 'success' ? 'bg-emerald-400/15 text-emerald-200' : 'bg-rose-400/15 text-rose-200',
+          'lab-feedback-chip px-2.5 py-2 text-center',
+          feedback.kind === 'success' ? 'lab-feedback-chip--ok' : 'lab-feedback-chip--bad',
         )}>
           {feedback.text}
         </p>
       )}
 
       {completed && (
-        <div className="rounded-lg border border-emerald-400/50 bg-emerald-400/15 p-3 text-center text-emerald-100">
-          <CheckCircle2 className="mx-auto mb-1 h-6 w-6 text-emerald-300" />
+        <div className="lab-feedback-chip lab-feedback-chip--ok p-3 text-center">
+          <CheckCircle2 className="mx-auto mb-1 h-6 w-6" />
           <p className="font-semibold">All matches complete!</p>
         </div>
       )}
@@ -454,23 +454,23 @@ function InstrumentOverview({
   return (
     <div className="space-y-2 pr-3 pb-3">
       <div>
-        <h4 className="text-xs font-semibold text-white">Laboratory Equipment</h4>
-        <p className="mt-0.5 text-[10px] text-blue-200">Review the equipment for this experiment, then start the matching challenge.</p>
+        <h4 className="lab-section-title">Laboratory Equipment</h4>
+        <p className="lab-muted mt-0.5 text-[10px]">Review the equipment for this experiment, then start the matching challenge.</p>
       </div>
       <button
         type="button"
         onClick={onStartGame}
-        className="flex w-full items-center justify-center gap-2 rounded-lg border border-cyan-300/50 bg-gradient-to-r from-cyan-500/20 to-blue-500/20 px-3 py-2.5 text-[11px] font-semibold text-cyan-100 transition-all hover:border-cyan-200 hover:from-cyan-500/30 hover:to-blue-500/30"
+        className="lab-pill-button lab-pill-button--care flex w-full items-center justify-center gap-2 px-3 py-2.5 text-[11px]"
       >
         <Gamepad2 className="h-4 w-4" />
         Start Matching Challenge
       </button>
       {instruments.map((instrument) => (
-        <div key={instrument.id} className="flex items-center gap-3 rounded-lg border border-white/15 bg-white/[0.06] p-2.5">
+        <div key={instrument.id} className="lab-entry flex items-center gap-3 p-2.5">
           <MaterialThumbnail material={instrument} onPreview={setPreviewMaterial} />
           <div className="min-w-0">
-            <p className="text-[11px] font-medium text-white">{instrument.name}</p>
-            <p className="mt-0.5 break-words text-[10px] leading-snug text-blue-200">{instrument.englishName}</p>
+            <p className="lab-ink text-[11px] font-medium">{instrument.name}</p>
+            <p className="lab-muted mt-0.5 break-words text-[10px] leading-snug">{instrument.englishName}</p>
           </div>
         </div>
       ))}
@@ -504,15 +504,15 @@ function ReagentList({ reagents }: Pick<ExperimentInfoSidebarData, 'reagents'>) 
   return (
     <div className="space-y-2 pr-3 pb-3">
       <div>
-        <h4 className="text-xs font-semibold text-white">Laboratory Reagents</h4>
-        <p className="mt-0.5 text-[10px] text-blue-200">Reagents are for reference; no matching is required.</p>
+        <h4 className="lab-section-title">Laboratory Reagents</h4>
+        <p className="lab-muted mt-0.5 text-[10px]">Reagents are for reference; no matching is required.</p>
       </div>
       {reagents.map((reagent) => (
-        <div key={reagent.id} className="flex items-center gap-3 rounded-lg border border-white/15 bg-white/[0.06] p-2.5">
+        <div key={reagent.id} className="lab-entry flex items-center gap-3 p-2.5">
           <MaterialThumbnail material={reagent} onPreview={setPreviewMaterial} />
           <div className="min-w-0">
-            <p className="text-[11px] font-medium text-white">{reagent.name}</p>
-            <p className="mt-0.5 break-words text-[10px] leading-snug text-blue-200">{reagent.englishName}</p>
+            <p className="lab-ink text-[11px] font-medium">{reagent.name}</p>
+            <p className="lab-muted mt-0.5 break-words text-[10px] leading-snug">{reagent.englishName}</p>
           </div>
         </div>
       ))}
@@ -526,26 +526,26 @@ export function ExperimentInfoSidebar({ data, className }: ExperimentInfoSidebar
 
   return (
     <div className={cn(
-      'flex h-full min-h-0 flex-col rounded-xl border border-blue-300 bg-gradient-to-b from-blue-900 via-blue-800 to-blue-700 p-3 text-white shadow-xl',
+      'lab-info-card flex h-full min-h-0 flex-col p-3.5',
       className,
     )}>
       <div className="mb-3 shrink-0">
-        <p className="text-[9px] font-semibold uppercase tracking-[0.18em] text-blue-300">{data.experimentLabel}</p>
-        <h3 className="text-sm font-semibold text-white">{data.title ?? "Experiment Information"}</h3>
+        <p className="lab-tape-label">{data.experimentLabel}</p>
+        <h3 className="lab-info-card__title mt-2">{data.title ?? "Experiment Information"}</h3>
       </div>
 
       <Tabs defaultValue="safety" className="flex min-h-0 flex-1 flex-col">
-        <TabsList className="mb-3 grid h-8 w-full shrink-0 grid-cols-4 rounded-sm bg-white/10">
-          <TabsTrigger value="safety" className="px-1 text-[10px] text-blue-200 data-[state=active]:bg-white/20 data-[state=active]:text-white">
+        <TabsList className="lab-tabs mb-3 grid h-9 w-full shrink-0 grid-cols-4">
+          <TabsTrigger value="safety" className="lab-tab px-1 text-[10px]">
             <ShieldCheck className="mr-0.5 h-3 w-3" />Safety
           </TabsTrigger>
-          <TabsTrigger value="principle" className="px-1 text-[10px] text-blue-200 data-[state=active]:bg-white/20 data-[state=active]:text-white">
+          <TabsTrigger value="principle" className="lab-tab px-1 text-[10px]">
             <BookOpen className="mr-0.5 h-3 w-3" />Principle
           </TabsTrigger>
-          <TabsTrigger value="instruments" className="px-1 text-[10px] text-blue-200 data-[state=active]:bg-white/20 data-[state=active]:text-white">
+          <TabsTrigger value="instruments" className="lab-tab px-1 text-[10px]">
             <FlaskConical className="mr-0.5 h-3 w-3" />Equipment
           </TabsTrigger>
-          <TabsTrigger value="reagents" className="px-1 text-[10px] text-blue-200 data-[state=active]:bg-white/20 data-[state=active]:text-white">
+          <TabsTrigger value="reagents" className="lab-tab px-1 text-[10px]">
             <Beaker className="mr-0.5 h-3 w-3" />Reagents
           </TabsTrigger>
         </TabsList>

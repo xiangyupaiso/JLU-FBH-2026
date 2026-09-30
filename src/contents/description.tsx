@@ -12,6 +12,7 @@ export function Description() {
       heroImage={getProjectHeroImage(descriptionPage.route)}
       theme="project"
       pageClassName="wiki-page--project"
+      hideHeroCopy
       features={descriptionFeatures()}
     />
   );

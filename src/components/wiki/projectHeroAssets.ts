@@ -1,5 +1,5 @@
-import contributionHero from "../../assets/wiki/project-heroes/project-contribution-gradient.png";
-import descriptionHero from "../../assets/wiki/project-heroes/project-description-gradient.png";
+import contributionHero from "../../assets/wiki/project-heroes/project-contribution-hero.webp";
+import descriptionHero from "../../assets/wiki/project-heroes/project-description-hero.webp";
 import engineeringHero from "../../assets/wiki/project-heroes/project-engineering-gradient.png";
 import resultsHero from "../../assets/wiki/project-heroes/project-results-gradient.png";
 

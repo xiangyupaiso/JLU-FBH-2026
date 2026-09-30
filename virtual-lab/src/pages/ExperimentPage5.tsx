@@ -1103,19 +1103,19 @@ const handleStepNavigation = useCallback((stepIndex: number) => {
   }, [action?.requiresClick, action?.target, activeDeskTubeIdx, currentStep, deskTubes, flaskSource, handleDeskTubeClick, handleEquipment, needsRackClick, openedTubeIdx, phase, sceneRevision, showPipetteTip, snapshot.benchBoxOpen, snapshot.chamberCovered, snapshot.gel, snapshot.tipBoxOpen, snapshot.tubeLevel]);
 
   return (
-    <div className="experiment-shell experiment-page-5 flex h-screen w-screen flex-col overflow-hidden bg-slate-950 text-white">
-      <header className="flex h-12 shrink-0 items-center justify-between border-b border-blue-600 bg-gradient-to-r from-blue-900 via-blue-800 to-blue-700 px-3">
+    <div className="experiment-shell experiment-page-5 flex h-screen w-screen flex-col overflow-hidden text-white">
+      <header className="flex h-12 shrink-0 items-center justify-between lab-topbar px-3">
         <div className="flex min-w-0 items-center gap-2">
-          <button type="button" onClick={onBack} className="grid h-8 w-8 shrink-0 place-items-center rounded border border-transparent text-blue-200 hover:border-white/20 hover:bg-white/10 hover:text-white" aria-label="Back to Experiment Catalog"><ChevronLeft className="h-4 w-4" /></button>
+          <button type="button" onClick={onBack} className="grid h-8 w-8 shrink-0 place-items-center lab-icon-button" aria-label="Back to Experiment Catalog"><ChevronLeft className="h-4 w-4" /></button>
           <div className="min-w-0"><h1 className="truncate text-sm font-semibold text-white">Experiment 5: GFP PCR and Agarose Gel Electrophoresis</h1><p className="truncate text-[10px] text-blue-200">PCR amplification and electrophoresis verification</p></div>
         </div>
         <RestartExperimentButton onRestart={onRestart} />
       </header>
 
       <div className="flex min-h-0 flex-1">
-        <aside className="hidden lg:flex flex-col w-64 p-3 border-r border-blue-600 bg-gradient-to-b from-blue-900 via-blue-800 to-blue-700 shrink-0 overflow-y-auto">
+        <aside className="hidden lg:flex flex-col w-64 p-3 lab-steps-rail shrink-0 overflow-y-auto">
           {sidebarStepData && !finished && (
-            <div className="h-[118px] overflow-hidden bg-white/10 border border-white/20 rounded-xl p-3 mb-4 shrink-0">
+            <div className="h-[118px] overflow-hidden lab-hint-card p-3 mb-4 shrink-0">
               <div className="flex items-center gap-2 text-blue-200 mb-1">
                 <Lightbulb className="w-3 h-3" />
                 <span className="text-[10px] font-black uppercase tracking-widest">
@@ -1133,9 +1133,9 @@ const handleStepNavigation = useCallback((stepIndex: number) => {
           <StepIndicator steps={indicatorSteps} currentStep={Math.min(currentStep, STEPS.length - 1)} completedSteps={completedSteps} onStepClick={handleStepNavigation} onStepHover={setHoveredStep} />
         </aside>
 
-        <main className="relative flex min-w-0 flex-1 flex-col items-center justify-center gap-2 overflow-hidden bg-black p-3">
+        <main className="relative flex min-w-0 flex-1 flex-col items-center justify-center gap-2 overflow-hidden lab-bench p-3">
           <div className="flex w-full flex-none items-center justify-center">
-          <div ref={sceneRef} id="experiment5-canvas" className="relative aspect-video h-auto w-full max-h-full max-w-full flex-none overflow-clip bg-[#4774c1] shadow-2xl ring-1 ring-slate-700">
+          <div ref={sceneRef} id="experiment5-canvas" className="relative aspect-video h-auto w-full max-h-full max-w-full flex-none overflow-clip bg-[#4774c1] lab-canvas-frame">
             <div className="absolute inset-x-0 top-[35%] bottom-[28%] border-t border-slate-500 bg-[#d9dee7]" />
             <div className="absolute inset-x-0 top-[71%] bottom-0 border-t border-slate-500 bg-[#eeeeee] [clip-path:polygon(4%_0,96%_0,100%_100%,0_100%)]" />
             {step.scene !== 'uv' && <img src={IMG.uvCabinet} className="pointer-events-none absolute left-[5.8%] top-[10.5%] z-20 w-[12.7%] object-contain" alt="UV Gel Imaging Cabinet" />}
@@ -1216,12 +1216,12 @@ const handleStepNavigation = useCallback((stepIndex: number) => {
 
           {!finished && (
             <div className="w-full min-h-[112px] flex-1 px-1 pt-1 text-left">
-              <div className="mb-2 flex items-center gap-2 text-sm font-bold">
+              <div className="lab-step-caption mb-2 flex items-center gap-2 text-sm font-bold">
                 <span className="text-blue-400">Step {currentStep + 1}/{STEPS.length}</span>
                 <span className="text-blue-500">|</span>
                 <span className="text-blue-400">{step.title}</span>
               </div>
-              <div className="flex h-[calc(100%-30px)] items-center justify-center rounded-lg bg-blue-900/80 px-4 py-3 text-center text-xs leading-relaxed text-blue-100 shadow-inner border border-blue-700/50">
+              <div className="flex h-[calc(100%-30px)] items-center justify-center lab-note-card px-4 py-3 text-center text-xs leading-relaxed">
                 {needsRackClick ? "Click the tube rack at the far left to retrieve the reagents for the next step" : (action?.instruction ?? step.description)}
               </div>
               <div className="mt-2 flex justify-end" />
@@ -1229,7 +1229,7 @@ const handleStepNavigation = useCallback((stepIndex: number) => {
           )}
         </main>
         {showInfo && (
-          <aside className="hidden xl:flex flex-col w-80 p-3 border-l border-slate-800 bg-slate-900/50 shrink-0 overflow-y-auto">
+          <aside className="hidden xl:flex flex-col w-80 p-3 lab-info-rail shrink-0 overflow-y-auto">
             <Experiment5InfoPanel />
           </aside>
         )}

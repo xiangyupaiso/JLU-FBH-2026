@@ -21,6 +21,7 @@ export function Sustainability() {
       heroImage={getEngagementHeroImage(sustainabilityPage.route)}
       theme="engagement"
       pageClassName="wiki-page--engagement wiki-page--sustainability"
+      hideHeroCopy
       features={sustainabilityFeatures()}
     />
   );

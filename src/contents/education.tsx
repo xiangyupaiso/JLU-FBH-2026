@@ -15,6 +15,7 @@ export function Education() {
       heroImage={getEngagementHeroImage(educationPage.route)}
       theme="engagement"
       pageClassName="wiki-page--engagement"
+      hideHeroCopy
       features={{
         "education-design": <DialogueLoop />,
         "education-activities": <DecisionProofTable />,

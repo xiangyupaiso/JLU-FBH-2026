@@ -388,8 +388,8 @@ export function ExperimentPage({ onBack, onRestart }: ExperimentPageProps) {
   );
 
   return (
-    <div className="experiment-shell flex h-screen w-screen flex-col overflow-hidden bg-slate-950 font-sans text-white">
-      <header className="z-50 flex h-12 shrink-0 items-center justify-between border-b border-blue-600 bg-gradient-to-r from-blue-900 via-blue-800 to-blue-700 px-4">
+    <div className="experiment-shell flex h-screen w-screen flex-col overflow-hidden font-sans text-white">
+      <header className="z-50 flex h-12 shrink-0 items-center justify-between lab-topbar px-4">
         <div className="flex min-w-0 items-center gap-3">
           <ChevronLeft className="shrink-0 cursor-pointer text-blue-200 hover:text-white" onClick={onBack} />
           <h1 className="truncate text-xs font-bold uppercase tracking-widest text-white">
@@ -400,9 +400,9 @@ export function ExperimentPage({ onBack, onRestart }: ExperimentPageProps) {
       </header>
 
       <div className="flex flex-1 overflow-hidden">
-        <aside className="hidden w-64 shrink-0 flex-col overflow-y-auto border-r border-blue-600 bg-gradient-to-b from-blue-900 via-blue-800 to-blue-700 p-3 lg:flex">
+        <aside className="hidden w-64 shrink-0 flex-col overflow-y-auto lab-steps-rail p-3 lg:flex">
           {!experimentComplete && sidebarStepData && (
-            <div className="mb-4 shrink-0 rounded-xl border border-white/20 bg-white/10 p-3">
+            <div className="mb-4 shrink-0 lab-hint-card p-3">
               <div className="mb-1 flex items-center gap-2 text-blue-200">
                 <Lightbulb className="h-3 w-3" />
                 <span className="text-[10px] font-black uppercase tracking-widest">
@@ -422,11 +422,11 @@ export function ExperimentPage({ onBack, onRestart }: ExperimentPageProps) {
           />
         </aside>
 
-        <main className="relative flex min-w-0 flex-1 flex-col items-center justify-start gap-2 overflow-hidden bg-black p-3">
+        <main className="relative flex min-w-0 flex-1 flex-col items-center justify-start gap-2 overflow-hidden lab-bench p-3">
           <div
             ref={sceneViewportRef}
             data-testid="experiment-ppt-viewport"
-            className="relative w-full max-w-full shrink-0 overflow-hidden bg-[#4f83d1] shadow-2xl ring-1 ring-slate-700"
+            className="relative w-full max-w-full shrink-0 overflow-hidden bg-[#4f83d1] lab-canvas-frame"
             style={{ aspectRatio: `${pptCrop.width} / ${pptCrop.height}` }}
           >
             <div
@@ -477,24 +477,24 @@ export function ExperimentPage({ onBack, onRestart }: ExperimentPageProps) {
 
           {currentStepData && !experimentComplete && (
             <div className="flex min-h-[145px] w-full flex-1 flex-col px-1 pt-1 text-left">
-              <div className="mb-2 flex items-center gap-2 text-sm font-bold">
+              <div className="lab-step-caption mb-2 flex items-center gap-2 text-sm font-bold">
                 <span className="text-blue-400">Step {currentStep + 1}/{steps.length}</span>
                 <span className="text-blue-500">|</span>
                 <span className="text-blue-400">{currentStepData.title}</span>
               </div>
-              <div className="flex min-h-0 flex-1 items-center justify-center rounded-lg border border-blue-700/50 bg-blue-900/80 px-6 py-5 text-center text-base leading-relaxed text-blue-100 shadow-inner">
+              <div className="flex min-h-0 flex-1 items-center justify-center lab-note-card px-6 py-5 text-center text-base leading-relaxed">
                 {currentActionTitle}
               </div>
             </div>
           )}
         </main>
 
-        <aside className="hidden w-80 shrink-0 flex-col overflow-y-auto border-l border-slate-800 bg-slate-900/50 p-3 xl:flex">
+        <aside className="hidden w-80 shrink-0 flex-col overflow-y-auto lab-info-rail p-3 xl:flex">
           <Experiment4InfoPanel />
         </aside>
       </div>
 
-      <div className="fixed inset-0 z-[2000] hidden flex-col items-center justify-center bg-slate-950 px-8 text-center text-white portrait:flex lg:hidden">
+      <div className="fixed inset-0 z-[2000] hidden flex-col items-center justify-center lab-rotate-overlay px-8 text-center text-white portrait:flex lg:hidden">
         <div className="mb-4 text-4xl">🔄</div>
         <h2 className="text-xl font-bold">Rotate Your Device to Landscape</h2>
       </div>

@@ -769,8 +769,8 @@ const handleStepNavigation = useCallback((stepIndex: number) => {
 
 
   return (
-    <div className="experiment-shell h-screen w-screen flex flex-col overflow-hidden bg-slate-950 text-white font-sans">
-      <header className="h-12 bg-gradient-to-r from-blue-900 via-blue-800 to-blue-700 border-b border-blue-600 flex items-center justify-between px-4 z-50 shrink-0">
+    <div className="experiment-shell h-screen w-screen flex flex-col overflow-hidden text-white font-sans">
+      <header className="h-12 lab-topbar flex items-center justify-between px-4 z-50 shrink-0">
         <div className="flex items-center gap-3">
           <ChevronLeft className="cursor-pointer hover:text-white text-blue-200" onClick={onBack} />
           <h1 className="font-bold text-xs text-white uppercase tracking-widest">{experiment.title}</h1>
@@ -779,9 +779,9 @@ const handleStepNavigation = useCallback((stepIndex: number) => {
       </header>
 
       <div className="flex-1 flex overflow-hidden">
-        <aside className="hidden lg:flex flex-col w-64 p-3 border-r border-blue-600 bg-gradient-to-b from-blue-900 via-blue-800 to-blue-700 shrink-0 overflow-y-auto">
+        <aside className="hidden lg:flex flex-col w-64 p-3 lab-steps-rail shrink-0 overflow-y-auto">
           {sidebarStepData && !isCompleted && (
-            <div className="bg-white/10 border border-white/20 rounded-xl p-3 mb-4 shrink-0">
+            <div className="lab-hint-card p-3 mb-4 shrink-0">
             <div className="flex items-center gap-2 text-blue-200 mb-1">
               <Lightbulb className="w-3 h-3" />
               <span className="text-[10px] font-black uppercase tracking-widest">
@@ -805,9 +805,9 @@ const handleStepNavigation = useCallback((stepIndex: number) => {
           />
         </aside>
 
-        <main className="flex-1 bg-black flex flex-col items-center gap-3 p-3 relative overflow-hidden min-w-0">
+        <main className="flex-1 lab-bench flex flex-col items-center gap-3 p-3 relative overflow-hidden min-w-0">
           {isMicroscopeViewActive ? (
-            <div className="relative aspect-video w-auto h-[72%] shrink-0 max-w-full shadow-2xl overflow-hidden ring-1 ring-slate-700">
+            <div className="relative aspect-video w-auto h-[72%] shrink-0 max-w-full shadow-2xl overflow-hidden lab-canvas-frame">
               <div className="absolute inset-0 bg-center bg-no-repeat" style={{ backgroundImage: "url('./images/experiment2/background_new.png')", backgroundSize: '100% 100%' }} />
               <div className="absolute inset-0">
                 {!isSlideInserted && (
@@ -850,10 +850,10 @@ const handleStepNavigation = useCallback((stepIndex: number) => {
               </div>
               {showMicroscopeInfo && (
                 <div className="absolute inset-0 z-[100] flex items-center justify-center p-4 pointer-events-auto">
-                  <div className="absolute inset-0 bg-black/80 backdrop-blur-md cursor-pointer" 
+                  <div className="absolute inset-0 lab-scrim cursor-pointer" 
                     onClick={() => handleItemClick('close-microscope-info')}
                   />
-                  <div className="relative flex items-center gap-5 bg-slate-900/90 p-4 rounded-2xl border border-white/20 shadow-2xl animate-in zoom-in duration-300 max-w-[88%] max-h-[88%] overflow-hidden">
+                  <div className="relative flex items-center gap-5 lab-chalk-sheet p-4 animate-in zoom-in duration-300 max-w-[88%] max-h-[88%] overflow-hidden">
                     <div className="space-y-2 text-center">
                       <img src="./images/experiment2/info.png" className="w-auto max-w-[240px] max-h-[230px] object-contain rounded-xl border-2 border-white/30 shadow-2xl" alt="Microscopic Observation" />
                       <p className="text-[10px] text-slate-500 uppercase tracking-widest">Microscope View</p>
@@ -881,7 +881,7 @@ const handleStepNavigation = useCallback((stepIndex: number) => {
               </Button>
             </div>
           ) : (
-            <div id="experiment-canvas" className="relative aspect-video w-auto h-[72%] shrink-0 max-w-full shadow-2xl bg-[#1e293b] overflow-hidden ring-1 ring-slate-700">
+            <div id="experiment-canvas" className="relative aspect-video w-auto h-[72%] shrink-0 max-w-full shadow-2xl bg-[#1e293b] overflow-hidden lab-canvas-frame">
               <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: "url('./images/experiment2/bg.png')" }} />
 
               {/* 后景层 */}
@@ -1072,14 +1072,14 @@ const handleStepNavigation = useCallback((stepIndex: number) => {
 )}
             </div>
 {coolingMessage && (
-  <div className="absolute bottom-[20%] left-1/2 -translate-x-1/2 z-[200] bg-black/90 text-white px-6 py-2 rounded-full text-base font-bold pointer-events-none shadow-xl border border-white/20">
+  <div className="absolute bottom-[20%] left-1/2 -translate-x-1/2 z-[200] lab-toast px-6 py-2 text-base font-bold pointer-events-none">
     {coolingMessage}
   </div>
 )}
             {/* 观察菌落详情 */}
             {showColonyDetail && (
               <div className="absolute inset-0 z-[100] flex items-center justify-center p-4 pointer-events-auto">
-                <div className="absolute inset-0 bg-black/80 backdrop-blur-md cursor-pointer" 
+                <div className="absolute inset-0 lab-scrim cursor-pointer" 
                   onClick={() => {
                     setShowColonyDetail(false);
                     setCompletedSteps(prev => [...prev, 1]); 
@@ -1090,7 +1090,7 @@ const handleStepNavigation = useCallback((stepIndex: number) => {
                     });
                   }}
                 />
-                <div className="relative flex items-center gap-5 bg-slate-900/90 p-4 rounded-2xl border border-white/20 shadow-2xl animate-in zoom-in duration-300 max-w-[88%] max-h-[88%] overflow-hidden">
+                <div className="relative flex items-center gap-5 lab-chalk-sheet p-4 animate-in zoom-in duration-300 max-w-[88%] max-h-[88%] overflow-hidden">
                   <div className="space-y-2 text-center">
                     <img src="./images/experiment2/16.png" className="w-auto max-w-[240px] max-h-[230px] object-contain rounded-xl border-2 border-white/30 shadow-2xl" alt="Colony Distribution" />
                     <p className="text-[10px] text-slate-500 uppercase tracking-widest">Enlarged View</p>
@@ -1114,14 +1114,14 @@ const handleStepNavigation = useCallback((stepIndex: number) => {
             {/* 染色结果详情 (图30) */}
             {showStainDetail && (
               <div className="absolute inset-0 z-[110] flex items-center justify-center p-4 pointer-events-auto">
-                <div className="absolute inset-0 bg-black/80 backdrop-blur-md cursor-pointer" 
+                <div className="absolute inset-0 lab-scrim cursor-pointer" 
                   onClick={() => {
                     setShowStainDetail(false);
                     setPoolClickable(true); // 退出图30后水池高亮
                     setIsPoolReplaced(true); // 水池替换为31.png
                   }}
                 />
-                <div className="relative flex items-center gap-5 bg-slate-900/90 p-4 rounded-2xl border border-white/20 shadow-2xl animate-in zoom-in duration-300 max-w-[88%] max-h-[88%] overflow-hidden">
+                <div className="relative flex items-center gap-5 lab-chalk-sheet p-4 animate-in zoom-in duration-300 max-w-[88%] max-h-[88%] overflow-hidden">
                   <div className="text-center space-y-2">
                     <img src="./images/experiment2/30.png" className="w-auto max-w-[240px] max-h-[230px] object-contain rounded-lg border-2 border-white/30 shadow-2xl" alt="Staining Results" />
                     <p className="text-[9px] text-slate-500 uppercase tracking-widest">Microscope View (After Staining)</p>
@@ -1138,14 +1138,14 @@ const handleStepNavigation = useCallback((stepIndex: number) => {
             {/* 复染结果详情 (图34) */}
              {showStainDetailRound2 && (
                <div className="absolute inset-0 z-[110] flex items-center justify-center p-4 pointer-events-auto">
-                 <div className="absolute inset-0 bg-black/80 backdrop-blur-md cursor-pointer" 
+                 <div className="absolute inset-0 lab-scrim cursor-pointer" 
                    onClick={() => {
                      setShowStainDetailRound2(false);
                      setPoolClickable(true); // 退出后水池再次高亮
                      setIsPoolReplaced(true);
                    }}
                  />
-                 <div className="relative flex items-center gap-5 bg-slate-900/90 p-4 rounded-2xl border border-white/20 shadow-2xl animate-in zoom-in duration-300 max-w-[88%] max-h-[88%] overflow-hidden">
+                 <div className="relative flex items-center gap-5 lab-chalk-sheet p-4 animate-in zoom-in duration-300 max-w-[88%] max-h-[88%] overflow-hidden">
                    <div className="text-center space-y-2">
                      <img src="./images/experiment2/34.png" className="w-auto max-w-[240px] max-h-[230px] object-contain rounded-lg border-2 border-white/30 shadow-2xl" alt="Counterstaining Results" />
                      <p className="text-[9px] text-slate-500 uppercase tracking-widest">Microscope View (After Counterstaining)</p>
@@ -1162,14 +1162,14 @@ const handleStepNavigation = useCallback((stepIndex: number) => {
              {/* 第三轮结果详情 (图36) */}
              {showStainDetailRound3 && (
                <div className="absolute inset-0 z-[110] flex items-center justify-center p-4 pointer-events-auto">
-                 <div className="absolute inset-0 bg-black/80 backdrop-blur-md cursor-pointer" 
+                 <div className="absolute inset-0 lab-scrim cursor-pointer" 
                    onClick={() => {
                      setShowStainDetailRound3(false);
                      setPoolClickable(true);
                      setIsPoolReplaced(true);
                    }}
                  />
-                 <div className="relative flex items-center gap-5 bg-slate-900/90 p-4 rounded-2xl border border-white/20 shadow-2xl animate-in zoom-in duration-300 max-w-[88%] max-h-[88%] overflow-hidden">
+                 <div className="relative flex items-center gap-5 lab-chalk-sheet p-4 animate-in zoom-in duration-300 max-w-[88%] max-h-[88%] overflow-hidden">
                    <div className="text-center space-y-2">
                      <img src="./images/experiment2/36.png" className="w-auto max-w-[240px] max-h-[230px] object-contain rounded-lg border-2 border-white/30 shadow-2xl" alt="Round 3 Results" />
                      <p className="text-[9px] text-slate-500 uppercase tracking-widest">Microscope View (Round 3)</p>
@@ -1186,14 +1186,14 @@ const handleStepNavigation = useCallback((stepIndex: number) => {
              {/* 第四轮结果详情 (图40) */}
              {showStainDetailRound4 && (
                <div className="absolute inset-0 z-[110] flex items-center justify-center p-4 pointer-events-auto">
-                 <div className="absolute inset-0 bg-black/80 backdrop-blur-md cursor-pointer" 
+                 <div className="absolute inset-0 lab-scrim cursor-pointer" 
                    onClick={() => {
                      setShowStainDetailRound4(false);
                      setPoolClickable(true);
                      setIsPoolReplaced(true);
                    }}
                  />
-                 <div className="relative flex items-center gap-5 bg-slate-900/90 p-4 rounded-2xl border border-white/20 shadow-2xl animate-in zoom-in duration-300 max-w-[88%] max-h-[88%] overflow-hidden">
+                 <div className="relative flex items-center gap-5 lab-chalk-sheet p-4 animate-in zoom-in duration-300 max-w-[88%] max-h-[88%] overflow-hidden">
                    <div className="text-center space-y-2">
                      <img src="./images/experiment2/40.png" className="w-auto max-w-[240px] max-h-[230px] object-contain rounded-lg border-2 border-white/30 shadow-2xl" alt="Round 4 Results" />
                      <p className="text-[9px] text-slate-500 uppercase tracking-widest">Microscope View (Round 4)</p>
@@ -1215,12 +1215,12 @@ const handleStepNavigation = useCallback((stepIndex: number) => {
           {/* 画框下方当前步骤说明，内容对应实验二 PPT */}
           {currentStepData && !isCompleted && (
             <div className="w-full min-h-[112px] flex-1 px-1 pt-1 text-left">
-              <div className="mb-2 flex items-center gap-2 text-sm font-bold">
+              <div className="lab-step-caption mb-2 flex items-center gap-2 text-sm font-bold">
                 <span className="text-blue-400">Step {currentStep + 1}/{experiment.steps.length}</span>
                 <span className="text-blue-500">|</span>
                 <span className="text-blue-400">{currentStepData.title}</span>
               </div>
-              <div className="flex h-[calc(100%-30px)] items-center justify-center rounded-lg bg-blue-900/80 px-4 py-3 text-center text-xs leading-relaxed text-blue-100 shadow-inner border border-blue-700/50">
+              <div className="flex h-[calc(100%-30px)] items-center justify-center lab-note-card px-4 py-3 text-center text-xs leading-relaxed">
                 {currentStepData.description}
               </div>
               <div className="mt-2 flex justify-end">
@@ -1230,13 +1230,13 @@ const handleStepNavigation = useCallback((stepIndex: number) => {
           )}
         </main>
 
-        <aside className="hidden xl:flex flex-col w-80 p-3 border-l border-slate-800 bg-slate-900/50 shrink-0 overflow-y-auto">
+        <aside className="hidden xl:flex flex-col w-80 p-3 lab-info-rail shrink-0 overflow-y-auto">
           <Experiment2InfoPanel />
         </aside>
       </div>
 
       {/* 横屏提示 */}
-      <div className="fixed inset-0 z-[2000] bg-slate-950 flex flex-col items-center justify-center lg:hidden portrait:flex hidden px-8 text-center text-white">
+      <div className="fixed inset-0 z-[2000] lab-rotate-overlay flex flex-col items-center justify-center lg:hidden portrait:flex hidden px-8 text-center text-white">
         <div className="w-16 h-16 mb-4 animate-bounce text-4xl">🔄</div>
         <h2 className="text-xl font-bold">Rotate Your Device to Landscape</h2>
       </div>

@@ -28,6 +28,7 @@ export default function VirtualLaboratory({
       title="Virtual Laboratory — nine interactive molecular biology experiments"
       src={`${import.meta.env.BASE_URL}virtual-lab/index.html`}
       allow="autoplay; fullscreen"
+      loading="lazy"
     />
   );
 }

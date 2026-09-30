@@ -15,6 +15,7 @@ export function SafetyAndSecurity() {
       heroImage={getWetLabHeroImage(safetyPage.route)}
       theme="wet-lab"
       pageClassName="wiki-page--wet-lab"
+      hideHeroCopy
       features={{
         "safety-risks": <SafetyBoundary />,
         "safety-controls": <SafetyControlHierarchy />,

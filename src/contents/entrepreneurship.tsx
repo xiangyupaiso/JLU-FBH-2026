@@ -15,6 +15,7 @@ export function Entrepreneurship() {
       heroImage={getEngagementHeroImage(entrepreneurshipPage.route)}
       theme="engagement"
       pageClassName="wiki-page--engagement"
+      hideHeroCopy
       features={{
         "venture-discovery": <AssumptionFunnel />,
         "venture-hypotheses": <DecisionProofTable />,

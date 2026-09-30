@@ -1,6 +1,16 @@
 // src/App.tsx
-import { useState } from 'react';
-import { CatalogPage, ExperimentPage1, ExperimentPage2, ExperimentPage3, ExperimentPage4, ExperimentPage5, ExperimentPage6, ExperimentPage7, ExperimentPage8, ExperimentPage9 } from './pages';
+import { useState, lazy, Suspense } from 'react';
+import { CatalogPage } from './pages';
+
+const ExperimentPage1 = lazy(() => import('./pages/ExperimentPage1').then((m) => ({ default: m.ExperimentPage })));
+const ExperimentPage2 = lazy(() => import('./pages/ExperimentPage2').then((m) => ({ default: m.ExperimentPage })));
+const ExperimentPage3 = lazy(() => import('./pages/ExperimentPage3').then((m) => ({ default: m.ExperimentPage })));
+const ExperimentPage4 = lazy(() => import('./pages/ExperimentPage4').then((m) => ({ default: m.ExperimentPage })));
+const ExperimentPage5 = lazy(() => import('./pages/ExperimentPage5').then((m) => ({ default: m.ExperimentPage })));
+const ExperimentPage6 = lazy(() => import('./pages/ExperimentPage6').then((m) => ({ default: m.ExperimentPage })));
+const ExperimentPage7 = lazy(() => import('./pages/ExperimentPage7').then((m) => ({ default: m.ExperimentPage })));
+const ExperimentPage8 = lazy(() => import('./pages/ExperimentPage8').then((m) => ({ default: m.ExperimentPage })));
+const ExperimentPage9 = lazy(() => import('./pages/ExperimentPage9').then((m) => ({ default: m.ExperimentPage })));
 
 const experimentComponents: Record<string, React.ComponentType<any>> = {
   '1': ExperimentPage1,
@@ -9,7 +19,6 @@ const experimentComponents: Record<string, React.ComponentType<any>> = {
   'exp2': ExperimentPage2,
   '3': ExperimentPage3,
   'exp3': ExperimentPage3,
-
   '4': ExperimentPage4,
   'exp4': ExperimentPage4,
   '5': ExperimentPage5,
@@ -50,12 +59,20 @@ function App() {
       )}
 
       {currentPage === 'experiment' && ExperimentComponent && (
-        <ExperimentComponent 
-          key={`${selectedExperiment}-${experimentRevision}`}
-          experimentId={selectedExperiment}
-          onBack={handleBackToCatalog} 
-          onRestart={() => setExperimentRevision((revision) => revision + 1)} 
-        />
+        <Suspense
+          fallback={
+            <div className="flex h-screen items-center justify-center bg-background text-foreground text-sm font-medium">
+              Loading experiment…
+            </div>
+          }
+        >
+          <ExperimentComponent 
+            key={`${selectedExperiment}-${experimentRevision}`}
+            experimentId={selectedExperiment}
+            onBack={handleBackToCatalog} 
+            onRestart={() => setExperimentRevision((revision) => revision + 1)} 
+          />
+        </Suspense>
       )}
     </div>
   );

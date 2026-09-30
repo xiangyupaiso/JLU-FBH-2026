@@ -249,20 +249,20 @@ const handleStepNavigation = useCallback((stepIndex: number) => {
   
 
   return (
-    <div className="experiment-shell flex h-screen w-screen flex-col overflow-hidden bg-slate-950 font-sans text-white">
-      <header className="z-50 flex h-12 shrink-0 items-center justify-between border-b border-blue-600 bg-gradient-to-r from-blue-900 via-blue-800 to-blue-700 px-4">
+    <div className="experiment-shell flex h-screen w-screen flex-col overflow-hidden font-sans text-white">
+      <header className="z-50 flex h-12 shrink-0 items-center justify-between lab-topbar px-4">
         <div className="flex items-center gap-3"><ChevronLeft className="cursor-pointer text-blue-200 hover:text-white" onClick={onBack} /><h1 className="text-xs font-bold uppercase tracking-widest">Experiment 7: Ligation of the Digested Vector and GFP Fragment</h1></div>
         <RestartExperimentButton onRestart={onRestart} />
       </header>
 
       <div className="flex min-h-0 flex-1 overflow-hidden">
-        <aside className="hidden w-64 shrink-0 flex-col overflow-y-auto border-r border-blue-600 bg-gradient-to-b from-blue-900 via-blue-800 to-blue-700 p-3 lg:flex">
-          {!isCompleted && <div className="mb-4 shrink-0 rounded-xl border border-white/20 bg-white/10 p-3"><div className="mb-1 flex items-center gap-2 text-blue-200"><Lightbulb className="h-3 w-3" /><span className="text-[10px] font-black uppercase tracking-widest">{hoveredStep !== null ? `STEP ${hoveredStep + 1}` : currentStep === 0 ? 'STEP 1' : `Previous · STEP${currentStep}`}</span></div><h3 className="mb-1 text-xs font-bold">{steps[sidebarIndex].title}</h3><p className="text-[11px] leading-relaxed text-blue-200">{steps[sidebarIndex].description}</p></div>}
+        <aside className="hidden w-64 shrink-0 flex-col overflow-y-auto lab-steps-rail p-3 lg:flex">
+          {!isCompleted && <div className="mb-4 shrink-0 lab-hint-card p-3"><div className="mb-1 flex items-center gap-2 text-blue-200"><Lightbulb className="h-3 w-3" /><span className="text-[10px] font-black uppercase tracking-widest">{hoveredStep !== null ? `STEP ${hoveredStep + 1}` : currentStep === 0 ? 'STEP 1' : `Previous · STEP${currentStep}`}</span></div><h3 className="mb-1 text-xs font-bold">{steps[sidebarIndex].title}</h3><p className="text-[11px] leading-relaxed text-blue-200">{steps[sidebarIndex].description}</p></div>}
           <StepIndicator steps={steps} currentStep={currentStep} completedSteps={completedSteps} onStepClick={handleStepNavigation} onStepHover={setHoveredStep} />
         </aside>
 
-        <main className="relative flex min-w-0 flex-1 flex-col items-center gap-3 overflow-hidden bg-black p-3">
-          <div className="relative aspect-video h-[72%] w-auto max-w-full shrink-0 overflow-hidden bg-slate-800 shadow-2xl ring-1 ring-slate-700">
+        <main className="relative flex min-w-0 flex-1 flex-col items-center gap-3 overflow-hidden lab-bench p-3">
+          <div className="relative aspect-video h-[72%] w-auto max-w-full shrink-0 overflow-hidden bg-slate-800 lab-canvas-frame">
             <div className="absolute inset-0 overflow-clip bg-[#4774c1]">
               <div className="absolute inset-x-0 top-[35%] bottom-[28%] border-t border-slate-500 bg-[#d9dee7]" />
               <div className="absolute inset-x-0 top-[71%] bottom-0 border-t border-slate-500 bg-[#eeeeee] [clip-path:polygon(4%_0,96%_0,100%_100%,0_100%)]" />
@@ -407,18 +407,18 @@ const handleStepNavigation = useCallback((stepIndex: number) => {
             <img src="./images/experiment7/image10.png" className="pointer-events-none absolute z-20" style={{ left: '79%', top: '68%', width: '7%' }} alt="Beaker" />
             <img src="./images/experiment7/image9.png" className="pointer-events-none absolute z-20" style={{ left: '88%', top: '68.5%', width: '6%' }} alt="Erlenmeyer Flask" />
 
-            <div className="absolute left-1/2 top-4 z-50 -translate-x-1/2 rounded-full border border-blue-300/70 bg-blue-950/90 px-5 py-2 text-center text-xs font-semibold text-blue-100 shadow-xl">{message}</div>
+            <div className="absolute left-1/2 top-4 z-50 -translate-x-1/2 lab-toast px-5 py-2 text-center text-xs font-semibold">{message}</div>
 
             {isCompleted && <ExperimentCompletion onRestart={onRestart} onBack={onBack} />}
             </div>
           </div>
 
-          {!isCompleted && <div className="w-full min-h-[112px] flex-1 px-1 pt-1 text-left"><div className="mb-2 flex items-center gap-2 text-sm font-bold"><span className="text-blue-400">Step {currentStep + 1}/{steps.length}</span><span className="text-blue-500">|</span><span className="text-blue-400">{currentStepData.title}</span></div><div className="flex h-[calc(100%-30px)] items-center justify-center rounded-lg border border-blue-700/50 bg-blue-900/80 px-4 py-3 text-center text-xs leading-relaxed text-blue-100 shadow-inner">{currentStepData.description}</div></div>}
+          {!isCompleted && <div className="w-full min-h-[112px] flex-1 px-1 pt-1 text-left"><div className="lab-step-caption mb-2 flex items-center gap-2 text-sm font-bold"><span className="text-blue-400">Step {currentStep + 1}/{steps.length}</span><span className="text-blue-500">|</span><span className="text-blue-400">{currentStepData.title}</span></div><div className="flex h-[calc(100%-30px)] items-center justify-center lab-note-card px-4 py-3 text-center text-xs leading-relaxed">{currentStepData.description}</div></div>}
         </main>
 
-        <aside className="hidden w-80 shrink-0 flex-col overflow-y-auto border-l border-slate-800 bg-slate-900/50 p-3 xl:flex"><Experiment7InfoPanel /></aside>
+        <aside className="hidden w-80 shrink-0 flex-col overflow-y-auto lab-info-rail p-3 xl:flex"><Experiment7InfoPanel /></aside>
       </div>
-      <div className="fixed inset-0 z-[2000] hidden flex-col items-center justify-center bg-slate-950 px-8 text-center text-white portrait:flex lg:hidden"><div className="mb-4 text-4xl">🔄</div><h2 className="text-xl font-bold">Rotate Your Device to Landscape</h2></div>
+      <div className="fixed inset-0 z-[2000] hidden flex-col items-center justify-center lab-rotate-overlay px-8 text-center text-white portrait:flex lg:hidden"><div className="mb-4 text-4xl">🔄</div><h2 className="text-xl font-bold">Rotate Your Device to Landscape</h2></div>
     </div>
   );
 }
