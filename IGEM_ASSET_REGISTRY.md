@@ -6,20 +6,21 @@
 ## 一、资产库统计
 
 - **队伍编号 (Team ID)**: 6056 (JLU-FBH)
-- **统计时间戳**: 2026-09-29T07:54:00.051Z
-- **总资产数量**: 239
-- **🟢 在用资产 (in-use)**: 190 *(代码/文案中正被引用)*
-- **🟡 备用资产 (standby)**: 49 *(已就绪或已上传，保留供后续页面选用)*
-- **⚪ 弃用资产 (deprecated)**: 0
+- **统计时间戳**: 2026-09-30T08:59:55.439Z
+- **总资产数量**: 1768
+- **🟢 在用资产 (in-use)**: 1306 *(代码/文案中正被引用)*
+- **🟡 备用资产 (standby)**: 433 *(已就绪或已上传，保留供后续页面选用)*
+- **⚪ 弃用资产 (deprecated)**: 29 *(已从本地删除或已弃用)*
 
 ### 类型细分统计
 
 | 类型 | 标识 | 说明 | 数量 |
 | :--- | :---: | :--- | :---: |
-| `image` | 🖼️ 图片/图表 (PNG, JPG, WebP, SVG) | 静态资源 | 209 |
-| `font` | 🔤 Web 字体 (woff2, woff, ttf) | 静态资源 | 6 |
-| `structure` | 🧬 3D 分子/生物结构 (pdb, cif, pse) | 静态资源 | 2 |
+| `image` | 🖼️ 图片/图表 (PNG, JPG, WebP, SVG) | 静态资源 | 1715 |
+| `font` | 🔤 Web 字体 (woff2, woff, ttf) | 静态资源 | 27 |
+| `structure` | 🧬 3D 分子/生物结构 (pdb, cif, pse) | 静态资源 | 3 |
 | `pdf` | 📄 PDF 文档/手册/报告 | 静态资源 | 22 |
+| `archive` | 📦 压缩包/附件 (zip) | 静态资源 | 1 |
 
 ---
 
@@ -27,245 +28,1774 @@
 
 | 状态 | 类别 | 分类 | 文件名 / ID | 本地路径 | 体积 (KB) | 官方静态 CDN 链接 | 引用位置 | 描述与标签 |
 | :--- | :---: | :--- | :--- | :--- | :---: | :--- | :---: | :--- |
-| 🟢 在用 | `font` | `shared` | **fraunces-variable.woff2**<br><sub>`fraunces-variable-woff2`</sub> | `src/assets/fonts/fraunces-variable.woff2` | 65.7 | *待上传* | 1 | fraunces-variable |
-| 🟢 在用 | `font` | `shared` | **fredoka-variable.woff2**<br><sub>`fredoka-variable-woff2`</sub> | `src/assets/fonts/fredoka-variable.woff2` | 29.0 | *待上传* | 3 | fredoka-variable |
-| 🟢 在用 | `font` | `shared` | **ibm-plex-mono.woff2**<br><sub>`ibm-plex-mono-woff2`</sub> | `src/assets/fonts/ibm-plex-mono.woff2` | 14.4 | *待上传* | 1 | ibm-plex-mono |
-| 🟡 备用 | `font` | `home` | **Kalam-Regular.ttf**<br><sub>`kalam-regular-ttf`</sub> | `src/assets/home/map-type/Kalam-Regular.ttf` | 417.3 | *待上传* | 0 | Kalam-Regular, font |
-| 🟢 在用 | `font` | `shared` | **lexend-variable.woff2**<br><sub>`lexend-variable-woff2`</sub> | `src/assets/fonts/lexend-variable.woff2` | 38.8 | *待上传* | 1 | lexend-variable |
-| 🟢 在用 | `font` | `shared` | **newsreader-variable.woff2**<br><sub>`newsreader-variable-woff2`</sub> | `src/assets/fonts/newsreader-variable.woff2` | 128.9 | *待上传* | 1 | newsreader-variable |
-| 🟢 在用 | `image` | `game` | **环状 RNA 载体像素背景图.jpg**<br><sub>`-rna-jpg`</sub> | `public/game-assets/assets/scenes/promo/环状 RNA 载体像素背景图.jpg` | 2037.8 | *待上传* | 1 | 环状 RNA 载体像素背景图, image |
-| 🟢 在用 | `image` | `game` | **酒窝征-BOSS-虚弱.png**<br><sub>`-boss-png`</sub> | `public/game-assets/assets/characters/bosses/酒窝征-BOSS-虚弱.png` | 1290.2 | *待上传* | 1 | 酒窝征-BOSS-虚弱, image |
-| 🟢 在用 | `image` | `game` | **生信筛选研究像素背景图.jpg**<br><sub>`-jpg`</sub> | `public/game-assets/assets/scenes/promo/生信筛选研究像素背景图.jpg` | 2209.0 | *待上传* | 1 | 生信筛选研究像素背景图, image |
-| 🟢 在用 | `image` | `game` | **碎片化记忆中枢.png**<br><sub>`-png`</sub> | `public/game-assets/assets/scenes/promo/碎片化记忆中枢.png` | 2041.8 | *待上传* | 1 | 碎片化记忆中枢, image |
-| 🟢 在用 | `image` | `home` | **anxiety-label.webp**<br><sub>`anxiety-label-webp`</sub> | `src/assets/home/scene-01-new/anxiety-label.webp` | 13.3 | *待上传* | 1 | anxiety-label |
-| 🟢 在用 | `image` | `home` | **anxiety.webp**<br><sub>`anxiety-webp`</sub> | `src/assets/home/scene-01-new/anxiety.webp` | 66.0 | *待上传* | 1 | anxiety |
-| 🟡 备用 | `image` | `shared` | **award-hero.webp**<br><sub>`award-hero-webp`</sub> | `src/assets/wiki/award-heroes/award-hero.webp` | 81.4 | *待上传* | 0 | award-hero |
-| 🟢 在用 | `image` | `shared` | **back-to-top.png**<br><sub>`back-to-top-png`</sub> | `src/assets/wiki/back-to-top.png` | 61.7 | *待上传* | 1 | back-to-top |
-| 🟢 在用 | `image` | `shared` | **bg.png**<br><sub>`bg-png`</sub> | `src/assets/loading/bg.png` | 798.5 | *待上传* | 3 | bg |
-| 🟢 在用 | `image` | `shared` | **bg.webp**<br><sub>`bg-webp`</sub> | `src/assets/loading/bg.webp` | 23.5 | *待上传* | 1 | bg |
-| 🟢 在用 | `image` | `game` | **bio-1.png**<br><sub>`bio-1-png`</sub> | `public/game-assets/bio-memory/bio-1.png` | 1128.7 | *待上传* | 1 | bio-1, image |
-| 🟢 在用 | `image` | `game` | **bio-10.png**<br><sub>`bio-10-png`</sub> | `public/game-assets/bio-memory/bio-10.png` | 1049.6 | *待上传* | 1 | bio-10, image |
-| 🟢 在用 | `image` | `game` | **bio-11.png**<br><sub>`bio-11-png`</sub> | `public/game-assets/bio-memory/bio-11.png` | 1172.2 | *待上传* | 1 | bio-11, image |
-| 🟢 在用 | `image` | `game` | **bio-12.png**<br><sub>`bio-12-png`</sub> | `public/game-assets/bio-memory/bio-12.png` | 1154.8 | *待上传* | 1 | bio-12, image |
-| 🟢 在用 | `image` | `game` | **bio-13.png**<br><sub>`bio-13-png`</sub> | `public/game-assets/bio-memory/bio-13.png` | 1119.3 | *待上传* | 1 | bio-13, image |
-| 🟢 在用 | `image` | `game` | **bio-14.png**<br><sub>`bio-14-png`</sub> | `public/game-assets/bio-memory/bio-14.png` | 1132.9 | *待上传* | 1 | bio-14, image |
-| 🟢 在用 | `image` | `game` | **bio-15.png**<br><sub>`bio-15-png`</sub> | `public/game-assets/bio-memory/bio-15.png` | 1357.8 | *待上传* | 1 | bio-15, image |
-| 🟢 在用 | `image` | `game` | **bio-16.png**<br><sub>`bio-16-png`</sub> | `public/game-assets/bio-memory/bio-16.png` | 1104.4 | *待上传* | 1 | bio-16, image |
-| 🟢 在用 | `image` | `game` | **bio-17.png**<br><sub>`bio-17-png`</sub> | `public/game-assets/bio-memory/bio-17.png` | 1072.5 | *待上传* | 1 | bio-17, image |
-| 🟢 在用 | `image` | `game` | **bio-18.png**<br><sub>`bio-18-png`</sub> | `public/game-assets/bio-memory/bio-18.png` | 1163.5 | *待上传* | 1 | bio-18, image |
-| 🟢 在用 | `image` | `game` | **bio-2.png**<br><sub>`bio-2-png`</sub> | `public/game-assets/bio-memory/bio-2.png` | 1094.3 | *待上传* | 1 | bio-2, image |
-| 🟢 在用 | `image` | `game` | **bio-3.png**<br><sub>`bio-3-png`</sub> | `public/game-assets/bio-memory/bio-3.png` | 1098.2 | *待上传* | 1 | bio-3, image |
-| 🟢 在用 | `image` | `game` | **bio-4.png**<br><sub>`bio-4-png`</sub> | `public/game-assets/bio-memory/bio-4.png` | 1090.0 | *待上传* | 1 | bio-4, image |
-| 🟢 在用 | `image` | `game` | **bio-5.png**<br><sub>`bio-5-png`</sub> | `public/game-assets/bio-memory/bio-5.png` | 1107.7 | *待上传* | 1 | bio-5, image |
-| 🟢 在用 | `image` | `game` | **bio-6.png**<br><sub>`bio-6-png`</sub> | `public/game-assets/bio-memory/bio-6.png` | 1125.0 | *待上传* | 1 | bio-6, image |
-| 🟢 在用 | `image` | `game` | **bio-7.png**<br><sub>`bio-7-png`</sub> | `public/game-assets/bio-memory/bio-7.png` | 1229.6 | *待上传* | 1 | bio-7, image |
-| 🟢 在用 | `image` | `game` | **bio-8.png**<br><sub>`bio-8-png`</sub> | `public/game-assets/bio-memory/bio-8.png` | 1077.9 | *待上传* | 1 | bio-8, image |
-| 🟢 在用 | `image` | `game` | **bio-9.png**<br><sub>`bio-9-png`</sub> | `public/game-assets/bio-memory/bio-9.png` | 1338.6 | *待上传* | 1 | bio-9, image |
-| 🟢 在用 | `image` | `game` | **book-bg.png**<br><sub>`book-bg-png`</sub> | `public/game-assets/assets/ui/book-bg.png` | 1898.9 | *待上传* | 1 | book-bg, image |
-| 🟢 在用 | `image` | `shared` | **breast-guardian-showcase.png**<br><sub>`breast-guardian-showcase-png`</sub> | `src/assets/wiki/breast-guardian-showcase.png` | 5585.6 | *待上传* | 1 | breast-guardian-showcase |
-| 🟢 在用 | `image` | `game` | **card-back.jpg**<br><sub>`card-back-jpg`</sub> | `public/game-assets/bio-memory/card-back.jpg` | 1354.8 | *待上传* | 1 | card-back, image |
-| 🟢 在用 | `image` | `home` | **chemotherapy-label.webp**<br><sub>`chemotherapy-label-webp`</sub> | `src/assets/home/scene-01-new/chemotherapy-label.webp` | 20.0 | *待上传* | 1 | chemotherapy-label |
-| 🟢 在用 | `image` | `home` | **chemotherapy.webp**<br><sub>`chemotherapy-webp`</sub> | `src/assets/home/scene-01-new/chemotherapy.webp` | 115.9 | *待上传* | 1 | chemotherapy |
-| 🟡 备用 | `image` | `home` | **circure-emblem.png**<br><sub>`circure-emblem-png`</sub> | `src/assets/story-nav/circure-emblem.png` | 170.7 | *待上传* | 0 | circure-emblem |
-| 🟡 备用 | `image` | `home` | **circure-ribbon.png**<br><sub>`circure-ribbon-png`</sub> | `src/assets/story-nav/circure-ribbon.png` | 149.4 | *待上传* | 0 | circure-ribbon |
-| 🟢 在用 | `image` | `home` | **clinician-concerned.png**<br><sub>`clinician-concerned-png`</sub> | `src/assets/home/ward-transition/clinician-concerned.png` | 1038.1 | *待上传* | 2 | clinician-concerned |
-| 🟢 在用 | `image` | `home` | **clinician-ellipsis.png**<br><sub>`clinician-ellipsis-png`</sub> | `src/assets/home/ward-transition/clinician-ellipsis.png` | 157.6 | *待上传* | 2 | clinician-ellipsis |
-| 🟢 在用 | `image` | `shared` | **cursor-active.png**<br><sub>`cursor-active-png`</sub> | `src/assets/wiki/cursor-active.png` | 8.7 | *待上传* | 3 | cursor-active |
-| 🟢 在用 | `image` | `shared` | **cursor-default.png**<br><sub>`cursor-default-png`</sub> | `src/assets/wiki/cursor-default.png` | 8.8 | *待上传* | 2 | cursor-default |
-| 🟢 在用 | `image` | `home` | **death-rate-label.webp**<br><sub>`death-rate-label-webp`</sub> | `src/assets/home/scene-01-new/death-rate-label.webp` | 8.7 | *待上传* | 1 | death-rate-label |
-| 🟢 在用 | `image` | `home` | **death-rate.webp**<br><sub>`death-rate-webp`</sub> | `src/assets/home/scene-01-new/death-rate.webp` | 95.9 | *待上传* | 1 | death-rate |
-| 🟢 在用 | `image` | `project` | **description-figure1.png**<br><sub>`description-figure1-png`</sub> | `文案集/project/description/图片和附件/description-figure1.png` | 4480.2 | *待上传* | 1 | description-figure1 |
-| 🟢 在用 | `image` | `project` | **description-figure2.png**<br><sub>`description-figure2-png`</sub> | `文案集/project/description/图片和附件/description-figure2.png` | 2117.6 | *待上传* | 1 | description-figure2 |
-| 🟢 在用 | `image` | `project` | **description-figure3.png**<br><sub>`description-figure3-png`</sub> | `文案集/project/description/图片和附件/description-figure3.png` | 970.5 | *待上传* | 1 | description-figure3 |
-| 🟢 在用 | `image` | `project` | **description-figure4.png**<br><sub>`description-figure4-png`</sub> | `文案集/project/description/图片和附件/description-figure4.png` | 1470.3 | *待上传* | 1 | description-figure4 |
-| 🟢 在用 | `image` | `project` | **description-figure5.png**<br><sub>`description-figure5-png`</sub> | `文案集/project/description/图片和附件/description-figure5.png` | 2572.8 | *待上传* | 1 | description-figure5 |
-| 🟢 在用 | `image` | `project` | **description-figure6.png**<br><sub>`description-figure6-png`</sub> | `文案集/project/description/图片和附件/description-figure6.png` | 2851.2 | *待上传* | 1 | description-figure6 |
-| 🟢 在用 | `image` | `project` | **description-figure7.png**<br><sub>`description-figure7-png`</sub> | `文案集/project/description/图片和附件/description-figure7.png` | 3742.1 | *待上传* | 1 | description-figure7 |
-| 🟢 在用 | `image` | `dry-lab` | **dry-lab-games-hero-v2.png**<br><sub>`dry-lab-games-hero-v2-png`</sub> | `src/assets/wiki/dry-lab-games-hero-v2.png` | 2275.3 | *待上传* | 2 | dry-lab-games-hero-v2 |
-| 🟡 备用 | `image` | `dry-lab` | **dry-lab-hardware-hero.jpg**<br><sub>`dry-lab-hardware-hero-jpg`</sub> | `src/assets/wiki/dry-lab-heroes/dry-lab-hardware-hero.jpg` | 113.5 | *待上传* | 0 | dry-lab-hardware-hero |
-| 🟢 在用 | `image` | `dry-lab` | **dry-lab-hardware-hero.webp**<br><sub>`dry-lab-hardware-hero-webp`</sub> | `src/assets/wiki/dry-lab-heroes/dry-lab-hardware-hero.webp` | 73.0 | *待上传* | 2 | dry-lab-hardware-hero |
-| 🟡 备用 | `image` | `dry-lab` | **dry-lab-model-hero.jpg**<br><sub>`dry-lab-model-hero-jpg`</sub> | `src/assets/wiki/dry-lab-heroes/dry-lab-model-hero.jpg` | 104.9 | *待上传* | 0 | dry-lab-model-hero |
-| 🟢 在用 | `image` | `dry-lab` | **dry-lab-model-hero.webp**<br><sub>`dry-lab-model-hero-webp`</sub> | `src/assets/wiki/dry-lab-heroes/dry-lab-model-hero.webp` | 70.0 | *待上传* | 2 | dry-lab-model-hero |
-| 🟡 备用 | `image` | `dry-lab` | **dry-lab-module-hero.webp**<br><sub>`dry-lab-module-hero-webp`</sub> | `src/assets/wiki/dry-lab-heroes/dry-lab-module-hero.webp` | 79.7 | *待上传* | 0 | dry-lab-module-hero |
-| 🟡 备用 | `image` | `dry-lab` | **dry-lab-software-hero.jpg**<br><sub>`dry-lab-software-hero-jpg`</sub> | `src/assets/wiki/dry-lab-heroes/dry-lab-software-hero.jpg` | 104.3 | *待上传* | 0 | dry-lab-software-hero |
-| 🟢 在用 | `image` | `dry-lab` | **dry-lab-software-hero.webp**<br><sub>`dry-lab-software-hero-webp`</sub> | `src/assets/wiki/dry-lab-heroes/dry-lab-software-hero.webp` | 58.2 | *待上传* | 2 | dry-lab-software-hero |
-| 🟢 在用 | `image` | `shared` | **dry.png**<br><sub>`dry-png`</sub> | `src/assets/wiki/dry.png` | 225.9 | *待上传* | 2 | dry |
-| 🟢 在用 | `image` | `game` | **ending-bg.jpg**<br><sub>`ending-bg-jpg`</sub> | `public/game-assets/assets/ui/ending-bg.jpg` | 675.9 | *待上传* | 2 | ending-bg, image |
-| 🟡 备用 | `image` | `game` | **ending-chain.png**<br><sub>`ending-chain-png`</sub> | `public/game-assets/assets/ui/ending-chain.png` | 10.8 | *待上传* | 0 | ending-chain, image |
-| 🟡 备用 | `image` | `home` | **ending-home-btn.png**<br><sub>`ending-home-btn-png`</sub> | `public/game-assets/assets/ui/ending-home-btn.png` | 185.6 | *待上传* | 0 | ending-home-btn, image |
-| 🟡 备用 | `image` | `game` | **ending-plate.png**<br><sub>`ending-plate-png`</sub> | `public/game-assets/assets/ui/ending-plate.png` | 111.4 | *待上传* | 0 | ending-plate, image |
-| 🟢 在用 | `image` | `engagement` | **engagement-education-hero-v2.webp**<br><sub>`engagement-education-hero-v2-webp`</sub> | `src/assets/wiki/engagement-heroes/engagement-education-hero-v2.webp` | 81.3 | *待上传* | 1 | engagement-education-hero-v2 |
-| 🟢 在用 | `image` | `engagement` | **engagement-entrepreneurship-hero-v2.webp**<br><sub>`engagement-entrepreneurship-hero-v2-webp`</sub> | `src/assets/wiki/engagement-heroes/engagement-entrepreneurship-hero-v2.webp` | 125.1 | *待上传* | 1 | engagement-entrepreneurship-hero-v2 |
-| 🟡 备用 | `image` | `engagement` | **engagement-hero.webp**<br><sub>`engagement-hero-webp`</sub> | `src/assets/wiki/engagement-heroes/engagement-hero.webp` | 90.9 | *待上传* | 0 | engagement-hero |
-| 🟢 在用 | `image` | `engagement` | **engagement-human-practices-hero-v2.webp**<br><sub>`engagement-human-practices-hero-v2-webp`</sub> | `src/assets/wiki/engagement-heroes/engagement-human-practices-hero-v2.webp` | 70.3 | *待上传* | 1 | engagement-human-practices-hero-v2 |
-| 🟢 在用 | `image` | `engagement` | **engagement-inclusivity-hero-v2.webp**<br><sub>`engagement-inclusivity-hero-v2-webp`</sub> | `src/assets/wiki/engagement-heroes/engagement-inclusivity-hero-v2.webp` | 57.5 | *待上传* | 1 | engagement-inclusivity-hero-v2 |
-| 🟢 在用 | `image` | `engagement` | **engagement-sustainability-hero-v2.webp**<br><sub>`engagement-sustainability-hero-v2-webp`</sub> | `src/assets/wiki/engagement-heroes/engagement-sustainability-hero-v2.webp` | 89.5 | *待上传* | 1 | engagement-sustainability-hero-v2 |
-| 🟢 在用 | `image` | `engagement` | **engagement.png**<br><sub>`engagement-png`</sub> | `src/assets/wiki/engagement.png` | 263.1 | *待上传* | 3 | engagement |
-| 🟢 在用 | `image` | `game` | **foreground-1.png**<br><sub>`foreground-1-png`</sub> | `public/game-assets/assets/ui/foreground-1.png` | 292.4 | *待上传* | 1 | foreground-1, image |
-| 🟢 在用 | `image` | `game` | **foreground-2.png**<br><sub>`foreground-2-png`</sub> | `public/game-assets/assets/ui/foreground-2.png` | 707.1 | *待上传* | 2 | foreground-2, image |
-| 🟢 在用 | `image` | `home` | **hair-loss-label.webp**<br><sub>`hair-loss-label-webp`</sub> | `src/assets/home/scene-01-new/hair-loss-label.webp` | 11.3 | *待上传* | 1 | hair-loss-label |
-| 🟢 在用 | `image` | `home` | **hair-loss.webp**<br><sub>`hair-loss-webp`</sub> | `src/assets/home/scene-01-new/hair-loss.webp` | 143.7 | *待上传* | 1 | hair-loss |
-| 🟢 在用 | `image` | `shared` | **hands.png**<br><sub>`hands-png`</sub> | `src/assets/loading/hands.png` | 540.6 | *待上传* | 1 | hands |
-| 🟢 在用 | `image` | `shared` | **hands.webp**<br><sub>`hands-webp`</sub> | `src/assets/loading/hands.webp` | 39.2 | *待上传* | 1 | hands |
-| 🟢 在用 | `image` | `home` | **home-bg.jpg**<br><sub>`home-bg-jpg`</sub> | `public/game-assets/assets/ui/home-bg.jpg` | 1480.6 | *待上传* | 1 | home-bg, image |
-| 🟢 在用 | `image` | `home` | **home-book.png**<br><sub>`home-book-png`</sub> | `public/game-assets/assets/ui/home-book.png` | 141.9 | *待上传* | 1 | home-book, image |
-| 🟢 在用 | `image` | `home` | **home-start.png**<br><sub>`home-start-png`</sub> | `public/game-assets/assets/ui/home-start.png` | 146.6 | *待上传* | 1 | home-start, image |
-| 🟢 在用 | `image` | `shared` | **hp-clinical-review-v2.png**<br><sub>`hp-clinical-review-v2-png`</sub> | `src/assets/wiki/hp-clinical-review-v2.png` | 1945.7 | *待上传* | 1 | hp-clinical-review-v2 |
-| 🟢 在用 | `image` | `shared` | **hp-community-workshop-v2.png**<br><sub>`hp-community-workshop-v2-png`</sub> | `src/assets/wiki/hp-community-workshop-v2.png` | 2204.2 | *待上传* | 2 | hp-community-workshop-v2 |
-| 🟢 在用 | `image` | `shared` | **hp-lab-review-v2.png**<br><sub>`hp-lab-review-v2-png`</sub> | `src/assets/wiki/hp-lab-review-v2.png` | 1981.2 | *待上传* | 1 | hp-lab-review-v2 |
-| 🟢 在用 | `image` | `shared` | **hp-portrait-advocate.png**<br><sub>`hp-portrait-advocate-png`</sub> | `src/assets/wiki/hp-portrait-advocate.png` | 472.0 | *待上传* | 1 | hp-portrait-advocate |
-| 🟢 在用 | `image` | `shared` | **hp-portrait-clinical.png**<br><sub>`hp-portrait-clinical-png`</sub> | `src/assets/wiki/hp-portrait-clinical.png` | 400.9 | *待上传* | 1 | hp-portrait-clinical |
-| 🟢 在用 | `image` | `shared` | **hp-portrait-ethics.png**<br><sub>`hp-portrait-ethics-png`</sub> | `src/assets/wiki/hp-portrait-ethics.png` | 390.5 | *待上传* | 1 | hp-portrait-ethics |
-| 🟢 在用 | `image` | `shared` | **hp-portrait-lab.png**<br><sub>`hp-portrait-lab-png`</sub> | `src/assets/wiki/hp-portrait-lab.png` | 392.8 | *待上传* | 1 | hp-portrait-lab |
-| 🟢 在用 | `image` | `shared` | **hp-portrait-regulatory.png**<br><sub>`hp-portrait-regulatory-png`</sub> | `src/assets/wiki/hp-portrait-regulatory.png` | 430.0 | *待上传* | 1 | hp-portrait-regulatory |
-| 🟢 在用 | `image` | `shared` | **hp-regulatory-review-v2.png**<br><sub>`hp-regulatory-review-v2-png`</sub> | `src/assets/wiki/hp-regulatory-review-v2.png` | 1872.3 | *待上传* | 1 | hp-regulatory-review-v2 |
-| 🟢 在用 | `image` | `shared` | **hp-whiteboard-review-v2.png**<br><sub>`hp-whiteboard-review-v2-png`</sub> | `src/assets/wiki/hp-whiteboard-review-v2.png` | 1980.8 | *待上传* | 1 | hp-whiteboard-review-v2 |
-| 🟢 在用 | `image` | `shared` | **jlu-fbh-crest.png**<br><sub>`jlu-fbh-crest-png`</sub> | `src/assets/jlu-fbh-crest.png` | 110.0 | *待上传* | 1 | jlu-fbh-crest |
-| 🟢 在用 | `image` | `shared` | **lamb.png**<br><sub>`lamb-png`</sub> | `src/assets/loading/lamb.png` | 165.5 | *待上传* | 1 | lamb |
-| 🟢 在用 | `image` | `shared` | **lamb.webp**<br><sub>`lamb-webp`</sub> | `src/assets/loading/lamb.webp` | 44.2 | *待上传* | 1 | lamb |
-| 🟢 在用 | `image` | `game` | **loading-1.png**<br><sub>`loading-1-png`</sub> | `public/game-assets/assets/loading/loading-1.png` | 213.4 | *待上传* | 1 | loading-1, image |
-| 🟢 在用 | `image` | `game` | **loading-2.png**<br><sub>`loading-2-png`</sub> | `public/game-assets/assets/loading/loading-2.png` | 156.0 | *待上传* | 1 | loading-2, image |
-| 🟢 在用 | `image` | `game` | **loading-3.png**<br><sub>`loading-3-png`</sub> | `public/game-assets/assets/loading/loading-3.png` | 244.5 | *待上传* | 1 | loading-3, image |
-| 🟢 在用 | `image` | `game` | **logo.png**<br><sub>`logo-png`</sub> | `public/game-assets/bio-memory/logo.png` | 2041.3 | *待上传* | 1 | logo, image |
-| 🟢 在用 | `image` | `home` | **map-data-note.png**<br><sub>`map-data-note-png`</sub> | `src/assets/home/story/map-data-note.png` | 198.1 | *待上传* | 1 | map-data-note |
-| 🟢 在用 | `image` | `game` | **memory-bg.jpg**<br><sub>`memory-bg-jpg`</sub> | `public/game-assets/assets/ui/memory-bg.jpg` | 2001.9 | *待上传* | 1 | memory-bg, image |
-| 🟢 在用 | `image` | `dry-lab` | **nav-drylab-engagement-v2.webp**<br><sub>`nav-drylab-engagement-v2-webp`</sub> | `src/assets/story-nav/nav-drylab-engagement-v2.webp` | 160.4 | *待上传* | 1 | nav-drylab-engagement-v2 |
-| 🟢 在用 | `image` | `wet-lab` | **nav-project-wetlab-v2.webp**<br><sub>`nav-project-wetlab-v2-webp`</sub> | `src/assets/story-nav/nav-project-wetlab-v2.webp` | 155.4 | *待上传* | 1 | nav-project-wetlab-v2 |
-| 🟢 在用 | `image` | `game` | **necrotic-bg.jpg**<br><sub>`necrotic-bg-jpg`</sub> | `public/game-assets/assets/ui/necrotic-bg.jpg` | 1985.4 | *待上传* | 1 | necrotic-bg, image |
-| 🟢 在用 | `image` | `home` | **patient-concerned.png**<br><sub>`patient-concerned-png`</sub> | `src/assets/home/ward-transition/patient-concerned.png` | 2338.1 | *待上传* | 2 | patient-concerned |
-| 🟢 在用 | `image` | `home` | **patient-question.png**<br><sub>`patient-question-png`</sub> | `src/assets/home/ward-transition/patient-question.png` | 419.2 | *待上传* | 2 | patient-question |
-| 🟢 在用 | `image` | `game` | **perspective-bg.png**<br><sub>`perspective-bg-png`</sub> | `public/game-assets/assets/ui/perspective-bg.png` | 1786.6 | *待上传* | 1 | perspective-bg, image |
-| 🟢 在用 | `image` | `shared` | **petals.png**<br><sub>`petals-png`</sub> | `src/assets/loading/petals.png` | 39.2 | *待上传* | 1 | petals |
-| 🟢 在用 | `image` | `shared` | **petals.webp**<br><sub>`petals-webp`</sub> | `src/assets/loading/petals.webp` | 14.4 | *待上传* | 1 | petals |
-| 🟢 在用 | `image` | `project` | **project-contribution-gradient.png**<br><sub>`project-contribution-gradient-png`</sub> | `src/assets/wiki/project-heroes/project-contribution-gradient.png` | 2116.4 | *待上传* | 1 | project-contribution-gradient |
-| 🟢 在用 | `image` | `project` | **project-description-gradient.png**<br><sub>`project-description-gradient-png`</sub> | `src/assets/wiki/project-heroes/project-description-gradient.png` | 2412.2 | *待上传* | 1 | project-description-gradient |
-| 🟡 备用 | `image` | `project` | **project-design-hero.webp**<br><sub>`project-design-hero-webp`</sub> | `src/assets/wiki/project-heroes/project-design-hero.webp` | 177.5 | *待上传* | 0 | project-design-hero |
-| 🟢 在用 | `image` | `project` | **project-engineering-gradient.png**<br><sub>`project-engineering-gradient-png`</sub> | `src/assets/wiki/project-heroes/project-engineering-gradient.png` | 2552.4 | *待上传* | 1 | project-engineering-gradient |
-| 🟢 在用 | `image` | `project` | **project-results-gradient.png**<br><sub>`project-results-gradient-png`</sub> | `src/assets/wiki/project-heroes/project-results-gradient.png` | 2478.0 | *待上传* | 1 | project-results-gradient |
-| 🟢 在用 | `image` | `project` | **project.png**<br><sub>`project-png`</sub> | `src/assets/wiki/project.png` | 356.7 | *待上传* | 1 | project |
-| 🟡 备用 | `image` | `shared` | **protocol-01.webp**<br><sub>`protocol-01-webp`</sub> | `public/assets/experiments/protocol/protocol-01.webp` | 205.0 | *待上传* | 0 | protocol-01, image |
-| 🟡 备用 | `image` | `shared` | **protocol-02.webp**<br><sub>`protocol-02-webp`</sub> | `public/assets/experiments/protocol/protocol-02.webp` | 123.2 | *待上传* | 0 | protocol-02, image |
-| 🟡 备用 | `image` | `shared` | **protocol-03.webp**<br><sub>`protocol-03-webp`</sub> | `public/assets/experiments/protocol/protocol-03.webp` | 209.6 | *待上传* | 0 | protocol-03, image |
-| 🟡 备用 | `image` | `shared` | **protocol-04.webp**<br><sub>`protocol-04-webp`</sub> | `public/assets/experiments/protocol/protocol-04.webp` | 112.7 | *待上传* | 0 | protocol-04, image |
-| 🟡 备用 | `image` | `shared` | **protocol-05.webp**<br><sub>`protocol-05-webp`</sub> | `public/assets/experiments/protocol/protocol-05.webp` | 219.1 | *待上传* | 0 | protocol-05, image |
-| 🟡 备用 | `image` | `shared` | **protocol-06.webp**<br><sub>`protocol-06-webp`</sub> | `public/assets/experiments/protocol/protocol-06.webp` | 118.9 | *待上传* | 0 | protocol-06, image |
-| 🟡 备用 | `image` | `shared` | **protocol-07.webp**<br><sub>`protocol-07-webp`</sub> | `public/assets/experiments/protocol/protocol-07.webp` | 156.1 | *待上传* | 0 | protocol-07, image |
-| 🟡 备用 | `image` | `shared` | **protocol-08.webp**<br><sub>`protocol-08-webp`</sub> | `public/assets/experiments/protocol/protocol-08.webp` | 80.5 | *待上传* | 0 | protocol-08, image |
-| 🟡 备用 | `image` | `shared` | **protocol-09.webp**<br><sub>`protocol-09-webp`</sub> | `public/assets/experiments/protocol/protocol-09.webp` | 235.1 | *待上传* | 0 | protocol-09, image |
-| 🟡 备用 | `image` | `shared` | **protocol-10.webp**<br><sub>`protocol-10-webp`</sub> | `public/assets/experiments/protocol/protocol-10.webp` | 95.2 | *待上传* | 0 | protocol-10, image |
-| 🟡 备用 | `image` | `shared` | **protocol-11.webp**<br><sub>`protocol-11-webp`</sub> | `public/assets/experiments/protocol/protocol-11.webp` | 253.7 | *待上传* | 0 | protocol-11, image |
-| 🟡 备用 | `image` | `shared` | **protocol-12.webp**<br><sub>`protocol-12-webp`</sub> | `public/assets/experiments/protocol/protocol-12.webp` | 86.7 | *待上传* | 0 | protocol-12, image |
-| 🟡 备用 | `image` | `shared` | **protocol-13.webp**<br><sub>`protocol-13-webp`</sub> | `public/assets/experiments/protocol/protocol-13.webp` | 270.6 | *待上传* | 0 | protocol-13, image |
-| 🟡 备用 | `image` | `shared` | **protocol-14.webp**<br><sub>`protocol-14-webp`</sub> | `public/assets/experiments/protocol/protocol-14.webp` | 121.9 | *待上传* | 0 | protocol-14, image |
-| 🟡 备用 | `image` | `shared` | **protocol-15.webp**<br><sub>`protocol-15-webp`</sub> | `public/assets/experiments/protocol/protocol-15.webp` | 262.9 | *待上传* | 0 | protocol-15, image |
-| 🟡 备用 | `image` | `shared` | **protocol-16.webp**<br><sub>`protocol-16-webp`</sub> | `public/assets/experiments/protocol/protocol-16.webp` | 128.3 | *待上传* | 0 | protocol-16, image |
-| 🟡 备用 | `image` | `shared` | **protocol-17.webp**<br><sub>`protocol-17-webp`</sub> | `public/assets/experiments/protocol/protocol-17.webp` | 229.3 | *待上传* | 0 | protocol-17, image |
-| 🟡 备用 | `image` | `shared` | **protocol-18.webp**<br><sub>`protocol-18-webp`</sub> | `public/assets/experiments/protocol/protocol-18.webp` | 109.9 | *待上传* | 0 | protocol-18, image |
-| 🟡 备用 | `image` | `shared` | **protocol-19.webp**<br><sub>`protocol-19-webp`</sub> | `public/assets/experiments/protocol/protocol-19.webp` | 261.3 | *待上传* | 0 | protocol-19, image |
-| 🟡 备用 | `image` | `shared` | **protocol-20.webp**<br><sub>`protocol-20-webp`</sub> | `public/assets/experiments/protocol/protocol-20.webp` | 132.0 | *待上传* | 0 | protocol-20, image |
-| 🟡 备用 | `image` | `shared` | **protocol-21.webp**<br><sub>`protocol-21-webp`</sub> | `public/assets/experiments/protocol/protocol-21.webp` | 177.5 | *待上传* | 0 | protocol-21, image |
-| 🟡 备用 | `image` | `shared` | **protocol-22.webp**<br><sub>`protocol-22-webp`</sub> | `public/assets/experiments/protocol/protocol-22.webp` | 103.1 | *待上传* | 0 | protocol-22, image |
-| 🟡 备用 | `image` | `shared` | **protocol-23.webp**<br><sub>`protocol-23-webp`</sub> | `public/assets/experiments/protocol/protocol-23.webp` | 220.3 | *待上传* | 0 | protocol-23, image |
-| 🟡 备用 | `image` | `shared` | **protocol-24.webp**<br><sub>`protocol-24-webp`</sub> | `public/assets/experiments/protocol/protocol-24.webp` | 83.7 | *待上传* | 0 | protocol-24, image |
-| 🟡 备用 | `image` | `shared` | **protocol-25.webp**<br><sub>`protocol-25-webp`</sub> | `public/assets/experiments/protocol/protocol-25.webp` | 222.5 | *待上传* | 0 | protocol-25, image |
-| 🟡 备用 | `image` | `shared` | **protocol-26.webp**<br><sub>`protocol-26-webp`</sub> | `public/assets/experiments/protocol/protocol-26.webp` | 83.7 | *待上传* | 0 | protocol-26, image |
-| 🟡 备用 | `image` | `shared` | **protocol-27.webp**<br><sub>`protocol-27-webp`</sub> | `public/assets/experiments/protocol/protocol-27.webp` | 160.3 | *待上传* | 0 | protocol-27, image |
-| 🟡 备用 | `image` | `shared` | **protocol-28.webp**<br><sub>`protocol-28-webp`</sub> | `public/assets/experiments/protocol/protocol-28.webp` | 134.1 | *待上传* | 0 | protocol-28, image |
-| 🟡 备用 | `image` | `shared` | **protocol-29.webp**<br><sub>`protocol-29-webp`</sub> | `public/assets/experiments/protocol/protocol-29.webp` | 329.7 | *待上传* | 0 | protocol-29, image |
-| 🟡 备用 | `image` | `shared` | **protocol-30.webp**<br><sub>`protocol-30-webp`</sub> | `public/assets/experiments/protocol/protocol-30.webp` | 120.5 | *待上传* | 0 | protocol-30, image |
-| 🟡 备用 | `image` | `game` | **qr-ending.png**<br><sub>`qr-ending-png`</sub> | `public/game-assets/assets/ui/qr-ending.png` | 165.4 | *待上传* | 0 | qr-ending, image |
-| 🟢 在用 | `image` | `home` | **qr-home.png**<br><sub>`qr-home-png`</sub> | `public/game-assets/assets/ui/qr-home.png` | 29.5 | *待上传* | 1 | qr-home, image |
-| 🟢 在用 | `image` | `shared` | **ribbon.png**<br><sub>`ribbon-png`</sub> | `src/assets/loading/ribbon.png` | 504.5 | *待上传* | 1 | ribbon |
-| 🟢 在用 | `image` | `shared` | **ribbon.webp**<br><sub>`ribbon-webp`</sub> | `src/assets/loading/ribbon.webp` | 53.7 | *待上传* | 1 | ribbon |
-| 🟢 在用 | `image` | `home` | **scene-1-layer-1.webp**<br><sub>`scene-1-layer-1-webp`</sub> | `src/assets/home/story/scene-1-layer-1.webp` | 26.1 | *待上传* | 2 | scene-1-layer-1 |
-| 🟢 在用 | `image` | `home` | **scene-1-layer-2.webp**<br><sub>`scene-1-layer-2-webp`</sub> | `src/assets/home/story/scene-1-layer-2.webp` | 45.0 | *待上传* | 2 | scene-1-layer-2 |
-| 🟢 在用 | `image` | `home` | **scene-1-layer-3.webp**<br><sub>`scene-1-layer-3-webp`</sub> | `src/assets/home/story/scene-1-layer-3.webp` | 12.1 | *待上传* | 2 | scene-1-layer-3 |
-| 🟢 在用 | `image` | `home` | **scene-1-layer-4.webp**<br><sub>`scene-1-layer-4-webp`</sub> | `src/assets/home/story/scene-1-layer-4.webp` | 26.3 | *待上传* | 4 | scene-1-layer-4 |
-| 🟢 在用 | `image` | `home` | **scene-1-layer-5.webp**<br><sub>`scene-1-layer-5-webp`</sub> | `src/assets/home/story/scene-1-layer-5.webp` | 35.7 | *待上传* | 2 | scene-1-layer-5 |
-| 🟢 在用 | `image` | `home` | **scene-2-layer-1.webp**<br><sub>`scene-2-layer-1-webp`</sub> | `src/assets/home/story/scene-2-layer-1.webp` | 2.6 | *待上传* | 1 | scene-2-layer-1 |
-| 🟢 在用 | `image` | `home` | **scene-2-layer-2.webp**<br><sub>`scene-2-layer-2-webp`</sub> | `src/assets/home/story/scene-2-layer-2.webp` | 65.0 | *待上传* | 1 | scene-2-layer-2 |
-| 🟢 在用 | `image` | `home` | **scene-2-layer-3.webp**<br><sub>`scene-2-layer-3-webp`</sub> | `src/assets/home/story/scene-2-layer-3.webp` | 23.1 | *待上传* | 1 | scene-2-layer-3 |
-| 🟢 在用 | `image` | `home` | **scene-2-layer-4.webp**<br><sub>`scene-2-layer-4-webp`</sub> | `src/assets/home/story/scene-2-layer-4.webp` | 43.4 | *待上传* | 1 | scene-2-layer-4 |
-| 🟢 在用 | `image` | `home` | **scene-2-layer-5.webp**<br><sub>`scene-2-layer-5-webp`</sub> | `src/assets/home/story/scene-2-layer-5.webp` | 52.9 | *待上传* | 1 | scene-2-layer-5 |
-| 🟢 在用 | `image` | `home` | **scene-2-layer-6.webp**<br><sub>`scene-2-layer-6-webp`</sub> | `src/assets/home/story/scene-2-layer-6.webp` | 59.8 | *待上传* | 2 | scene-2-layer-6 |
-| 🟢 在用 | `image` | `home` | **scene-3-layer-1.webp**<br><sub>`scene-3-layer-1-webp`</sub> | `src/assets/home/story/scene-3-layer-1.webp` | 2.6 | *待上传* | 1 | scene-3-layer-1 |
-| 🟢 在用 | `image` | `home` | **scene-3-layer-2.webp**<br><sub>`scene-3-layer-2-webp`</sub> | `src/assets/home/story/scene-3-layer-2.webp` | 177.7 | *待上传* | 1 | scene-3-layer-2 |
-| 🟢 在用 | `image` | `home` | **scene-3-layer-3.webp**<br><sub>`scene-3-layer-3-webp`</sub> | `src/assets/home/story/scene-3-layer-3.webp` | 20.2 | *待上传* | 1 | scene-3-layer-3 |
-| 🟢 在用 | `image` | `home` | **scene-4-layer-1.webp**<br><sub>`scene-4-layer-1-webp`</sub> | `src/assets/home/story/scene-4-layer-1.webp` | 2.6 | *待上传* | 1 | scene-4-layer-1 |
-| 🟢 在用 | `image` | `home` | **scene-4-layer-2.webp**<br><sub>`scene-4-layer-2-webp`</sub> | `src/assets/home/story/scene-4-layer-2.webp` | 75.8 | *待上传* | 2 | scene-4-layer-2 |
-| 🟢 在用 | `image` | `home` | **scene-4-layer-3.webp**<br><sub>`scene-4-layer-3-webp`</sub> | `src/assets/home/story/scene-4-layer-3.webp` | 37.8 | *待上传* | 1 | scene-4-layer-3 |
-| 🟢 在用 | `image` | `home` | **scene-4-layer-4.webp**<br><sub>`scene-4-layer-4-webp`</sub> | `src/assets/home/story/scene-4-layer-4.webp` | 23.0 | *待上传* | 1 | scene-4-layer-4 |
-| 🟢 在用 | `image` | `home` | **scene-4-layer-5.webp**<br><sub>`scene-4-layer-5-webp`</sub> | `src/assets/home/story/scene-4-layer-5.webp` | 37.1 | *待上传* | 1 | scene-4-layer-5 |
-| 🟢 在用 | `image` | `home` | **scene-4-layer-6.webp**<br><sub>`scene-4-layer-6-webp`</sub> | `src/assets/home/story/scene-4-layer-6.webp` | 8.6 | *待上传* | 1 | scene-4-layer-6 |
-| 🟢 在用 | `image` | `home` | **scene-4-layer-7.webp**<br><sub>`scene-4-layer-7-webp`</sub> | `src/assets/home/story/scene-4-layer-7.webp` | 6.6 | *待上传* | 1 | scene-4-layer-7 |
-| 🟢 在用 | `image` | `home` | **scene-4-layer-8.webp**<br><sub>`scene-4-layer-8-webp`</sub> | `src/assets/home/story/scene-4-layer-8.webp` | 6.1 | *待上传* | 1 | scene-4-layer-8 |
-| 🟢 在用 | `image` | `home` | **scene-5-layer-1.webp**<br><sub>`scene-5-layer-1-webp`</sub> | `src/assets/home/story/scene-5-layer-1.webp` | 132.2 | *待上传* | 1 | scene-5-layer-1 |
-| 🟢 在用 | `image` | `home` | **scene-5-layer-2.webp**<br><sub>`scene-5-layer-2-webp`</sub> | `src/assets/home/story/scene-5-layer-2.webp` | 46.6 | *待上传* | 1 | scene-5-layer-2 |
-| 🟢 在用 | `image` | `home` | **scene-5-layer-3.webp**<br><sub>`scene-5-layer-3-webp`</sub> | `src/assets/home/story/scene-5-layer-3.webp` | 19.9 | *待上传* | 1 | scene-5-layer-3 |
-| 🟢 在用 | `image` | `home` | **scene-6-layer-1.webp**<br><sub>`scene-6-layer-1-webp`</sub> | `src/assets/home/story/scene-6-layer-1.webp` | 55.5 | *待上传* | 1 | scene-6-layer-1 |
-| 🟢 在用 | `image` | `home` | **scene-6-layer-2.webp**<br><sub>`scene-6-layer-2-webp`</sub> | `src/assets/home/story/scene-6-layer-2.webp` | 19.9 | *待上传* | 1 | scene-6-layer-2 |
-| 🟢 在用 | `image` | `home` | **scene-6-layer-3.webp**<br><sub>`scene-6-layer-3-webp`</sub> | `src/assets/home/story/scene-6-layer-3.webp` | 44.2 | *待上传* | 1 | scene-6-layer-3 |
-| 🟢 在用 | `image` | `home` | **scene-7-layer-1.webp**<br><sub>`scene-7-layer-1-webp`</sub> | `src/assets/home/story/scene-7-layer-1.webp` | 166.8 | *待上传* | 1 | scene-7-layer-1 |
-| 🟢 在用 | `image` | `home` | **scene-7-layer-2.webp**<br><sub>`scene-7-layer-2-webp`</sub> | `src/assets/home/story/scene-7-layer-2.webp` | 4.4 | *待上传* | 1 | scene-7-layer-2 |
-| 🟢 在用 | `image` | `home` | **scene-7-layer-3.webp**<br><sub>`scene-7-layer-3-webp`</sub> | `src/assets/home/story/scene-7-layer-3.webp` | 13.1 | *待上传* | 1 | scene-7-layer-3 |
-| 🟢 在用 | `image` | `home` | **scene-7-layer-4.webp**<br><sub>`scene-7-layer-4-webp`</sub> | `src/assets/home/story/scene-7-layer-4.webp` | 98.0 | *待上传* | 1 | scene-7-layer-4 |
-| 🟢 在用 | `image` | `home` | **scene-8-layer-1.webp**<br><sub>`scene-8-layer-1-webp`</sub> | `src/assets/home/story/scene-8-layer-1.webp` | 21.1 | *待上传* | 1 | scene-8-layer-1 |
-| 🟢 在用 | `image` | `home` | **scene-8-layer-2.webp**<br><sub>`scene-8-layer-2-webp`</sub> | `src/assets/home/story/scene-8-layer-2.webp` | 22.2 | *待上传* | 1 | scene-8-layer-2 |
-| 🟢 在用 | `image` | `home` | **scene-8-layer-3.webp**<br><sub>`scene-8-layer-3-webp`</sub> | `src/assets/home/story/scene-8-layer-3.webp` | 9.2 | *待上传* | 1 | scene-8-layer-3 |
-| 🟢 在用 | `image` | `home` | **scene-8-layer-4.webp**<br><sub>`scene-8-layer-4-webp`</sub> | `src/assets/home/story/scene-8-layer-4.webp` | 34.0 | *待上传* | 1 | scene-8-layer-4 |
-| 🟢 在用 | `image` | `home` | **scene-8-layer-5.webp**<br><sub>`scene-8-layer-5-webp`</sub> | `src/assets/home/story/scene-8-layer-5.webp` | 23.5 | *待上传* | 1 | scene-8-layer-5 |
-| 🟢 在用 | `image` | `home` | **scene-8-layer-6.webp**<br><sub>`scene-8-layer-6-webp`</sub> | `src/assets/home/story/scene-8-layer-6.webp` | 71.7 | *待上传* | 1 | scene-8-layer-6 |
-| 🟢 在用 | `image` | `home` | **scene-9-layer-1.webp**<br><sub>`scene-9-layer-1-webp`</sub> | `src/assets/home/story/scene-9-layer-1.webp` | 8.1 | *待上传* | 1 | scene-9-layer-1 |
-| 🟢 在用 | `image` | `home` | **scene-9-layer-2.webp**<br><sub>`scene-9-layer-2-webp`</sub> | `src/assets/home/story/scene-9-layer-2.webp` | 18.0 | *待上传* | 1 | scene-9-layer-2 |
-| 🟢 在用 | `image` | `home` | **scene-9-layer-3.webp**<br><sub>`scene-9-layer-3-webp`</sub> | `src/assets/home/story/scene-9-layer-3.webp` | 14.7 | *待上传* | 1 | scene-9-layer-3 |
-| 🟢 在用 | `image` | `shared` | **stars.png**<br><sub>`stars-png`</sub> | `src/assets/loading/stars.png` | 57.3 | *待上传* | 1 | stars |
-| 🟢 在用 | `image` | `shared` | **stars.webp**<br><sub>`stars-webp`</sub> | `src/assets/loading/stars.webp` | 20.8 | *待上传* | 1 | stars |
-| 🟢 在用 | `image` | `home` | **surgery-label.webp**<br><sub>`surgery-label-webp`</sub> | `src/assets/home/scene-01-new/surgery-label.webp` | 16.3 | *待上传* | 1 | surgery-label |
-| 🟢 在用 | `image` | `home` | **surgery.webp**<br><sub>`surgery-webp`</sub> | `src/assets/home/scene-01-new/surgery.webp` | 121.7 | *待上传* | 1 | surgery |
-| 🟢 在用 | `image` | `engagement` | **sustainability-framework-set-develop-grow-06.png**<br><sub>`sustainability-framework-set-develop-grow-06-png`</sub> | `src/assets/wiki/sustainability-framework-set-develop-grow-06.png` | 1369.9 | *待上传* | 3 | sustainability-framework-set-develop-grow-06 |
-| 🟢 在用 | `image` | `engagement` | **sustainability-overview-scale-framework-03.png**<br><sub>`sustainability-overview-scale-framework-03-png`</sub> | `src/assets/wiki/sustainability-overview-scale-framework-03.png` | 211.8 | *待上传* | 3 | sustainability-overview-scale-framework-03 |
-| 🟢 在用 | `image` | `engagement` | **sustainability-overview-sst-qn-preview-01.png**<br><sub>`sustainability-overview-sst-qn-preview-01-png`</sub> | `src/assets/wiki/sustainability-overview-sst-qn-preview-01.png` | 329.9 | *待上传* | 3 | sustainability-overview-sst-qn-preview-01 |
-| 🟢 在用 | `image` | `engagement` | **sustainability-sdg9-batch-projection.png**<br><sub>`sustainability-sdg9-batch-projection-png`</sub> | `src/assets/wiki/sustainability-sdg9-batch-projection.png` | 2100.8 | *待上传* | 3 | sustainability-sdg9-batch-projection |
-| 🟢 在用 | `image` | `engagement` | **sustainability-sdg9-evidence.png**<br><sub>`sustainability-sdg9-evidence-png`</sub> | `src/assets/wiki/sustainability-sdg9-evidence.png` | 1644.2 | *待上传* | 3 | sustainability-sdg9-evidence |
-| 🟢 在用 | `image` | `engagement` | **sustainability-set-stakeholder-overview-07.png**<br><sub>`sustainability-set-stakeholder-overview-07-png`</sub> | `src/assets/wiki/sustainability-set-stakeholder-overview-07.png` | 570.2 | *待上传* | 3 | sustainability-set-stakeholder-overview-07 |
-| 🟢 在用 | `image` | `team` | **team-hero.webp**<br><sub>`team-hero-webp`</sub> | `src/assets/wiki/team-heroes/team-hero.webp` | 77.9 | *待上传* | 1 | team-hero |
-| 🟢 在用 | `image` | `team` | **team.png**<br><sub>`team-png`</sub> | `src/assets/wiki/team.png` | 197.4 | *待上传* | 1 | team |
-| 🟡 备用 | `image` | `wet-lab` | **wet-lab-experiments-hero.jpg**<br><sub>`wet-lab-experiments-hero-jpg`</sub> | `src/assets/wiki/wet-lab-heroes/wet-lab-experiments-hero.jpg` | 202.6 | *待上传* | 0 | wet-lab-experiments-hero |
-| 🟢 在用 | `image` | `wet-lab` | **wet-lab-experiments-hero.webp**<br><sub>`wet-lab-experiments-hero-webp`</sub> | `src/assets/wiki/wet-lab-heroes/wet-lab-experiments-hero.webp` | 185.1 | *待上传* | 1 | wet-lab-experiments-hero |
-| 🟡 备用 | `image` | `wet-lab` | **wet-lab-measurement-hero.jpg**<br><sub>`wet-lab-measurement-hero-jpg`</sub> | `src/assets/wiki/wet-lab-heroes/wet-lab-measurement-hero.jpg` | 214.3 | *待上传* | 0 | wet-lab-measurement-hero |
-| 🟢 在用 | `image` | `wet-lab` | **wet-lab-measurement-hero.webp**<br><sub>`wet-lab-measurement-hero-webp`</sub> | `src/assets/wiki/wet-lab-heroes/wet-lab-measurement-hero.webp` | 187.6 | *待上传* | 1 | wet-lab-measurement-hero |
-| 🟡 备用 | `image` | `wet-lab` | **wet-lab-module-hero.webp**<br><sub>`wet-lab-module-hero-webp`</sub> | `src/assets/wiki/wet-lab-heroes/wet-lab-module-hero.webp` | 43.8 | *待上传* | 0 | wet-lab-module-hero |
-| 🟢 在用 | `image` | `wet-lab` | **wet-lab-notebook-hero-v3.webp**<br><sub>`wet-lab-notebook-hero-v3-webp`</sub> | `src/assets/wiki/wet-lab-heroes/wet-lab-notebook-hero-v3.webp` | 60.5 | *待上传* | 1 | wet-lab-notebook-hero-v3 |
-| 🟡 备用 | `image` | `wet-lab` | **wet-lab-platform-hero.jpg**<br><sub>`wet-lab-platform-hero-jpg`</sub> | `src/assets/wiki/wet-lab-heroes/wet-lab-platform-hero.jpg` | 228.0 | *待上传* | 0 | wet-lab-platform-hero |
-| 🟢 在用 | `image` | `wet-lab` | **wet-lab-platform-hero.webp**<br><sub>`wet-lab-platform-hero-webp`</sub> | `src/assets/wiki/wet-lab-heroes/wet-lab-platform-hero.webp` | 202.7 | *待上传* | 1 | wet-lab-platform-hero |
-| 🟢 在用 | `image` | `wet-lab` | **wet-lab-safety-hero-v3.webp**<br><sub>`wet-lab-safety-hero-v3-webp`</sub> | `src/assets/wiki/wet-lab-heroes/wet-lab-safety-hero-v3.webp` | 55.0 | *待上传* | 1 | wet-lab-safety-hero-v3 |
-| 🟢 在用 | `image` | `shared` | **wet.png**<br><sub>`wet-png`</sub> | `src/assets/wiki/wet.png` | 338.9 | *待上传* | 1 | wet |
-| 🟢 在用 | `image` | `wet-lab` | **wetlab-circure-apparatus.png**<br><sub>`wetlab-circure-apparatus-png`</sub> | `src/assets/wiki/wetlab-circure-apparatus.png` | 1887.2 | *待上传* | 6 | wetlab-circure-apparatus |
-| 🟢 在用 | `image` | `home` | **woman-frame.webp**<br><sub>`woman-frame-webp`</sub> | `src/assets/home/scene-01-new/woman-frame.webp` | 110.4 | *待上传* | 1 | woman-frame |
-| 🟡 备用 | `pdf` | `wet-lab` | **protocol.pdf**<br><sub>`protocol-pdf`</sub> | `文案集/wetlab/experiments/protocol.pdf` | 57196.2 | *待上传* | 0 | protocol, pdf |
-| 🟢 在用 | `pdf` | `engagement` | **sustainability-anchor-decide-toolkit-cn.pdf**<br><sub>`sustainability-anchor-decide-toolkit-cn-pdf`</sub> | `public/assets/docs/sustainability-anchor-decide-toolkit-cn.pdf` | 1996.0 | *待上传* | 1 | sustainability-anchor-decide-toolkit-cn, pdf |
-| 🟢 在用 | `pdf` | `engagement` | **sustainability-anchor-decide-toolkit-en.pdf**<br><sub>`sustainability-anchor-decide-toolkit-en-pdf`</sub> | `public/assets/docs/sustainability-anchor-decide-toolkit-en.pdf` | 1816.2 | *待上传* | 1 | sustainability-anchor-decide-toolkit-en, pdf |
-| 🟢 在用 | `pdf` | `engagement` | **sustainability-claim-boundary-protocol-cn.pdf**<br><sub>`sustainability-claim-boundary-protocol-cn-pdf`</sub> | `public/assets/docs/sustainability-claim-boundary-protocol-cn.pdf` | 1310.1 | *待上传* | 1 | sustainability-claim-boundary-protocol-cn, pdf |
-| 🟢 在用 | `pdf` | `engagement` | **sustainability-claim-boundary-protocol-en.pdf**<br><sub>`sustainability-claim-boundary-protocol-en-pdf`</sub> | `public/assets/docs/sustainability-claim-boundary-protocol-en.pdf` | 2116.4 | *待上传* | 1 | sustainability-claim-boundary-protocol-en, pdf |
-| 🟢 在用 | `pdf` | `engagement` | **sustainability-core-question-anchor-cn.pdf**<br><sub>`sustainability-core-question-anchor-cn-pdf`</sub> | `public/assets/docs/sustainability-core-question-anchor-cn.pdf` | 1465.3 | *待上传* | 1 | sustainability-core-question-anchor-cn, pdf |
-| 🟢 在用 | `pdf` | `engagement` | **sustainability-core-question-anchor-en.pdf**<br><sub>`sustainability-core-question-anchor-en-pdf`</sub> | `public/assets/docs/sustainability-core-question-anchor-en.pdf` | 1958.8 | *待上传* | 1 | sustainability-core-question-anchor-en, pdf |
-| 🟢 在用 | `pdf` | `engagement` | **sustainability-feedback-to-action-record-cn.pdf**<br><sub>`sustainability-feedback-to-action-record-cn-pdf`</sub> | `public/assets/docs/sustainability-feedback-to-action-record-cn.pdf` | 266.6 | *待上传* | 1 | sustainability-feedback-to-action-record-cn, pdf |
-| 🟢 在用 | `pdf` | `engagement` | **sustainability-feedback-to-action-record-en.pdf**<br><sub>`sustainability-feedback-to-action-record-en-pdf`</sub> | `public/assets/docs/sustainability-feedback-to-action-record-en.pdf` | 221.5 | *待上传* | 1 | sustainability-feedback-to-action-record-en, pdf |
-| 🟢 在用 | `pdf` | `engagement` | **sustainability-resource-responsibility-map-cn.pdf**<br><sub>`sustainability-resource-responsibility-map-cn-pdf`</sub> | `public/assets/docs/sustainability-resource-responsibility-map-cn.pdf` | 1691.9 | *待上传* | 1 | sustainability-resource-responsibility-map-cn, pdf |
-| 🟢 在用 | `pdf` | `engagement` | **sustainability-resource-responsibility-map-en.pdf**<br><sub>`sustainability-resource-responsibility-map-en-pdf`</sub> | `public/assets/docs/sustainability-resource-responsibility-map-en.pdf` | 1764.4 | *待上传* | 1 | sustainability-resource-responsibility-map-en, pdf |
-| 🟢 在用 | `pdf` | `engagement` | **sustainability-scenario-batch-failure-projection-report-cn.pdf**<br><sub>`sustainability-scenario-batch-failure-projection-report-cn-pdf`</sub> | `public/assets/docs/sustainability-scenario-batch-failure-projection-report-cn.pdf` | 457.9 | *待上传* | 1 | sustainability-scenario-batch-failure-projection-report-cn, pdf |
-| 🟢 在用 | `pdf` | `engagement` | **sustainability-scenario-batch-failure-projection-report-en.pdf**<br><sub>`sustainability-scenario-batch-failure-projection-report-en-pdf`</sub> | `public/assets/docs/sustainability-scenario-batch-failure-projection-report-en.pdf` | 348.8 | *待上传* | 1 | sustainability-scenario-batch-failure-projection-report-en, pdf |
-| 🟢 在用 | `pdf` | `engagement` | **sustainability-sdg-impact-documentation-template-cn.pdf**<br><sub>`sustainability-sdg-impact-documentation-template-cn-pdf`</sub> | `public/assets/docs/sustainability-sdg-impact-documentation-template-cn.pdf` | 236.3 | *待上传* | 1 | sustainability-sdg-impact-documentation-template-cn, pdf |
-| 🟢 在用 | `pdf` | `engagement` | **sustainability-sdg-impact-documentation-template-en.pdf**<br><sub>`sustainability-sdg-impact-documentation-template-en-pdf`</sub> | `public/assets/docs/sustainability-sdg-impact-documentation-template-en.pdf` | 225.1 | *待上传* | 1 | sustainability-sdg-impact-documentation-template-en, pdf |
-| 🟢 在用 | `pdf` | `engagement` | **sustainability-sst-qn-model-construction.pdf**<br><sub>`sustainability-sst-qn-model-construction-pdf`</sub> | `public/assets/docs/sustainability-sst-qn-model-construction.pdf` | 318.0 | *待上传* | 4 | sustainability-sst-qn-model-construction, pdf |
-| 🟢 在用 | `pdf` | `engagement` | **sustainability-stakeholder-feedback-decision-protocol-cn.pdf**<br><sub>`sustainability-stakeholder-feedback-decision-protocol-cn-pdf`</sub> | `public/assets/docs/sustainability-stakeholder-feedback-decision-protocol-cn.pdf` | 2194.9 | *待上传* | 1 | sustainability-stakeholder-feedback-decision-protocol-cn, pdf |
-| 🟢 在用 | `pdf` | `engagement` | **sustainability-stakeholder-feedback-decision-protocol-en.pdf**<br><sub>`sustainability-stakeholder-feedback-decision-protocol-en-pdf`</sub> | `public/assets/docs/sustainability-stakeholder-feedback-decision-protocol-en.pdf` | 1947.7 | *待上传* | 1 | sustainability-stakeholder-feedback-decision-protocol-en, pdf |
-| 🟢 在用 | `pdf` | `engagement` | **sustainability-stakeholder-interview-guide-cn.pdf**<br><sub>`sustainability-stakeholder-interview-guide-cn-pdf`</sub> | `public/assets/docs/sustainability-stakeholder-interview-guide-cn.pdf` | 1994.4 | *待上传* | 1 | sustainability-stakeholder-interview-guide-cn, pdf |
-| 🟢 在用 | `pdf` | `engagement` | **sustainability-stakeholder-interview-guide-en.pdf**<br><sub>`sustainability-stakeholder-interview-guide-en-pdf`</sub> | `public/assets/docs/sustainability-stakeholder-interview-guide-en.pdf` | 1702.5 | *待上传* | 1 | sustainability-stakeholder-interview-guide-en, pdf |
-| 🟢 在用 | `pdf` | `engagement` | **sustainability-stakeholder-sdg-mapping-guide-cn.pdf**<br><sub>`sustainability-stakeholder-sdg-mapping-guide-cn-pdf`</sub> | `public/assets/docs/sustainability-stakeholder-sdg-mapping-guide-cn.pdf` | 1643.2 | *待上传* | 1 | sustainability-stakeholder-sdg-mapping-guide-cn, pdf |
-| 🟢 在用 | `pdf` | `engagement` | **sustainability-stakeholder-sdg-mapping-guide-en.pdf**<br><sub>`sustainability-stakeholder-sdg-mapping-guide-en-pdf`</sub> | `public/assets/docs/sustainability-stakeholder-sdg-mapping-guide-en.pdf` | 972.6 | *待上传* | 1 | sustainability-stakeholder-sdg-mapping-guide-en, pdf |
-| 🟢 在用 | `structure` | `dry-lab` | **trop2-ctl1.pdb**<br><sub>`trop2-ctl1-pdb`</sub> | `public/assets/structures/trop2-ctl1.pdb` | 634.1 | *待上传* | 1 | trop2-ctl1, structure |
-| 🟢 在用 | `structure` | `shared` | **Trop2-CTL1.pse**<br><sub>`trop2-ctl1-pse`</sub> | `文案集/Trop2-CTL1.pse` | 1749.1 | *待上传* | 1 | Trop2-CTL1, structure |
+| 🟢 在用 | `font` | `typography` | **fraunces-variable.woff2**<br><sub>`fraunces-variable-woff2`</sub> | `src/assets/fonts/fraunces-variable.woff2` | 65.7 | *待上传* | 4 | Referenced in 4 location(s) |
+| 🟢 在用 | `font` | `game` | **fraunces-variable.woff2**<br><sub>`fraunces-variable-fc58-woff2`</sub> | `public/game-assets/fonts/fraunces-variable.woff2` | 65.7 | *待上传* | 4 | Referenced in 4 location(s) |
+| 🟢 在用 | `font` | `typography` | **fredoka-variable.woff2**<br><sub>`fredoka-variable-woff2`</sub> | `src/assets/fonts/fredoka-variable.woff2` | 29.0 | *待上传* | 6 | Referenced in 6 location(s) |
+| 🟢 在用 | `font` | `game` | **fredoka-variable.woff2**<br><sub>`fredoka-variable-cf42-woff2`</sub> | `public/game-assets/fonts/fredoka-variable.woff2` | 29.0 | *待上传* | 6 | Referenced in 6 location(s) |
+| 🟢 在用 | `font` | `typography` | **ibm-plex-mono.woff2**<br><sub>`ibm-plex-mono-woff2`</sub> | `src/assets/fonts/ibm-plex-mono.woff2` | 14.4 | *待上传* | 4 | Referenced in 4 location(s) |
+| 🟢 在用 | `font` | `game` | **ibm-plex-mono.woff2**<br><sub>`ibm-plex-mono-c631-woff2`</sub> | `public/game-assets/fonts/ibm-plex-mono.woff2` | 14.4 | *待上传* | 4 | Referenced in 4 location(s) |
+| 🟢 在用 | `font` | `typography` | **lexend-variable.woff2**<br><sub>`lexend-variable-woff2`</sub> | `src/assets/fonts/lexend-variable.woff2` | 38.8 | *待上传* | 4 | Referenced in 4 location(s) |
+| 🟢 在用 | `font` | `game` | **lexend-variable.woff2**<br><sub>`lexend-variable-d9b0-woff2`</sub> | `public/game-assets/fonts/lexend-variable.woff2` | 38.8 | *待上传* | 4 | Referenced in 4 location(s) |
+| 🟢 在用 | `font` | `typography` | **newsreader-variable.woff2**<br><sub>`newsreader-variable-woff2`</sub> | `src/assets/fonts/newsreader-variable.woff2` | 128.9 | *待上传* | 2 | Referenced in 2 location(s) |
+| 🟢 在用 | `image` | `game` | **__1.png**<br><sub>`experiment1-183576-png`</sub> | `public/virtual-lab/images/experiment1/__1.png` | 15.9 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **__1.png**<br><sub>`experiment2-d8d60a-png`</sub> | `public/virtual-lab/images/experiment2/__1.png` | 15.9 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **081.png**<br><sub>`081-png`</sub> | `public/virtual-lab/images/experiment3/081.png` | 792.7 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **08241.png**<br><sub>`08241-png`</sub> | `public/virtual-lab/images/experiment1/08241.png` | 154.1 | *待上传* | 3 | Referenced in 3 location(s) |
+| 🟢 在用 | `image` | `game` | **08241.png**<br><sub>`08241-ff63-png`</sub> | `public/virtual-lab/images/experiment3/08241.png` | 983.0 | *待上传* | 3 | Referenced in 3 location(s) |
+| 🟢 在用 | `image` | `game` | **08241.png**<br><sub>`08241-a752-png`</sub> | `public/virtual-lab/images/experiment6/08241.png` | 342.5 | *待上传* | 3 | Referenced in 3 location(s) |
+| 🟢 在用 | `image` | `game` | **082415.png**<br><sub>`082415-png`</sub> | `public/virtual-lab/images/experiment6/082415.png` | 753.5 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **08242.png**<br><sub>`08242-png`</sub> | `public/virtual-lab/images/experiment1/08242.png` | 185.2 | *待上传* | 4 | Referenced in 4 location(s) |
+| 🟢 在用 | `image` | `game` | **08242.png**<br><sub>`08242-f4c1-png`</sub> | `public/virtual-lab/images/experiment3/08242.png` | 946.9 | *待上传* | 4 | Referenced in 4 location(s) |
+| 🟢 在用 | `image` | `game` | **08242.png**<br><sub>`08242-1e7a-png`</sub> | `public/virtual-lab/images/experiment6/08242.png` | 183.4 | *待上传* | 4 | Referenced in 4 location(s) |
+| 🟢 在用 | `image` | `game` | **08243.png**<br><sub>`08243-png`</sub> | `public/virtual-lab/images/experiment1/08243.png` | 1856.9 | *待上传* | 4 | Referenced in 4 location(s) |
+| 🟢 在用 | `image` | `game` | **08243.png**<br><sub>`08243-ef95-png`</sub> | `public/virtual-lab/images/experiment3/08243.png` | 877.7 | *待上传* | 4 | Referenced in 4 location(s) |
+| 🟢 在用 | `image` | `game` | **08243.png**<br><sub>`08243-9d9e-png`</sub> | `public/virtual-lab/images/experiment6/08243.png` | 14.6 | *待上传* | 4 | Referenced in 4 location(s) |
+| 🟢 在用 | `image` | `game` | **08244.png**<br><sub>`08244-png`</sub> | `public/virtual-lab/images/experiment3/08244.png` | 792.7 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **08245.png**<br><sub>`08245-png`</sub> | `public/virtual-lab/images/experiment3/08245.png` | 2113.0 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **08246.png**<br><sub>`08246-png`</sub> | `public/virtual-lab/images/experiment3/08246.png` | 2377.8 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **08247.png**<br><sub>`08247-png`</sub> | `public/virtual-lab/images/experiment3/08247.png` | 944.6 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **08248.png**<br><sub>`08248-png`</sub> | `public/virtual-lab/images/experiment3/08248.png` | 1002.5 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **08251.png**<br><sub>`08251-png`</sub> | `public/virtual-lab/images/experiment1/08251.png` | 698.8 | *待上传* | 4 | Referenced in 4 location(s) |
+| 🟢 在用 | `image` | `game` | **08251.png**<br><sub>`08251-ba88-png`</sub> | `public/virtual-lab/images/experiment3/08251.png` | 18.5 | *待上传* | 4 | Referenced in 4 location(s) |
+| 🟢 在用 | `image` | `game` | **08251.png**<br><sub>`08251-84b3-png`</sub> | `public/virtual-lab/images/experiment6/08251.png` | 944.6 | *待上传* | 4 | Referenced in 4 location(s) |
+| 🟢 在用 | `image` | `game` | **08252.png**<br><sub>`08252-png`</sub> | `public/virtual-lab/images/experiment1/08252.png` | 1550.4 | *待上传* | 3 | Referenced in 3 location(s) |
+| 🟢 在用 | `image` | `game` | **08252.png**<br><sub>`08252-530d-png`</sub> | `public/virtual-lab/images/experiment3/08252.png` | 5.1 | *待上传* | 3 | Referenced in 3 location(s) |
+| 🟢 在用 | `image` | `game` | **08253.png**<br><sub>`08253-png`</sub> | `public/virtual-lab/images/experiment1/08253.png` | 723.1 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **08254.png**<br><sub>`08254-png`</sub> | `public/virtual-lab/images/experiment1/08254.png` | 570.7 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **1__TAE Electrophoresis Buffer.png**<br><sub>`1-tae-electrophoresis-buffer-png`</sub> | `public/virtual-lab/experiment9-assets/processed/Reagents/1__TAE Electrophoresis Buffer.png` | 16.7 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **1.png**<br><sub>`experiment2-fce230-png`</sub> | `public/virtual-lab/images/experiment2/1.png` | 124.0 | *待上传* | 237 | Referenced in 237 location(s) |
+| 🟢 在用 | `image` | `game` | **1.png**<br><sub>`experiment3-ec6c23-png`</sub> | `public/virtual-lab/images/experiment3/1.png` | 164.0 | *待上传* | 237 | Referenced in 237 location(s) |
+| 🟢 在用 | `image` | `game` | **1×SDS Loading Buffer.png**<br><sub>`1-sds-loading-buffer-39d2-png`</sub> | `public/virtual-lab/experiment9-assets/processed/Reagents/1×SDS Loading Buffer.png` | 8.1 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **10.png**<br><sub>`10-png`</sub> | `public/virtual-lab/images/experiment2/10.png` | 1221.9 | *待上传* | 105 | Referenced in 105 location(s) |
+| 🟢 在用 | `image` | `game` | **10.png**<br><sub>`10-20d4-png`</sub> | `public/virtual-lab/images/experiment3/10.png` | 960.1 | *待上传* | 105 | Referenced in 105 location(s) |
+| 🟢 在用 | `image` | `game` | **11.png**<br><sub>`11-png`</sub> | `public/virtual-lab/images/experiment2/11.png` | 23.2 | *待上传* | 107 | Referenced in 107 location(s) |
+| 🟢 在用 | `image` | `game` | **11.png**<br><sub>`11-0669-png`</sub> | `public/virtual-lab/images/experiment3/11.png` | 212.6 | *待上传* | 107 | Referenced in 107 location(s) |
+| 🟢 在用 | `image` | `game` | **12.png**<br><sub>`12-png`</sub> | `public/virtual-lab/images/experiment2/12.png` | 1607.2 | *待上传* | 108 | Referenced in 108 location(s) |
+| 🟢 在用 | `image` | `game` | **13.png**<br><sub>`13-png`</sub> | `public/virtual-lab/images/experiment2/13.png` | 1967.7 | *待上传* | 113 | Referenced in 113 location(s) |
+| 🟢 在用 | `image` | `game` | **13.png**<br><sub>`13-b87a-png`</sub> | `public/virtual-lab/images/experiment3/13.png` | 8.1 | *待上传* | 113 | Referenced in 113 location(s) |
+| 🟢 在用 | `image` | `game` | **14.png**<br><sub>`14-png`</sub> | `public/virtual-lab/images/experiment2/14.png` | 1393.8 | *待上传* | 108 | Referenced in 108 location(s) |
+| 🟢 在用 | `image` | `game` | **14.png**<br><sub>`14-65c1-png`</sub> | `public/virtual-lab/images/experiment3/14.png` | 353.2 | *待上传* | 108 | Referenced in 108 location(s) |
+| 🟢 在用 | `image` | `game` | **15.png**<br><sub>`15-png`</sub> | `public/virtual-lab/images/experiment2/15.png` | 450.3 | *待上传* | 111 | Referenced in 111 location(s) |
+| 🟢 在用 | `image` | `game` | **16.png**<br><sub>`16-png`</sub> | `public/virtual-lab/images/experiment2/16.png` | 662.1 | *待上传* | 107 | Referenced in 107 location(s) |
+| 🟢 在用 | `image` | `game` | **16.png**<br><sub>`16-6b14-png`</sub> | `public/virtual-lab/images/experiment3/16.png` | 183.4 | *待上传* | 107 | Referenced in 107 location(s) |
+| 🟢 在用 | `image` | `game` | **17.png**<br><sub>`17-png`</sub> | `public/virtual-lab/images/experiment2/17.png` | 1.2 | *待上传* | 61 | Referenced in 61 location(s) |
+| 🟢 在用 | `image` | `game` | **18.png**<br><sub>`18-png`</sub> | `public/virtual-lab/images/experiment2/18.png` | 1213.5 | *待上传* | 61 | Referenced in 61 location(s) |
+| 🟢 在用 | `image` | `game` | **19.png**<br><sub>`19-png`</sub> | `public/virtual-lab/images/experiment2/19.png` | 844.5 | *待上传* | 106 | Referenced in 106 location(s) |
+| 🟢 在用 | `image` | `game` | **1926.png**<br><sub>`1926-png`</sub> | `public/virtual-lab/images/experiment1/1926.png` | 1550.4 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **2.png**<br><sub>`experiment2-2c7cb0-png`</sub> | `public/virtual-lab/images/experiment2/2.png` | 18.4 | *待上传* | 247 | Referenced in 247 location(s) |
+| 🟢 在用 | `image` | `game` | **2.png**<br><sub>`experiment3-bfdfe9-png`</sub> | `public/virtual-lab/images/experiment3/2.png` | 212.6 | *待上传* | 247 | Referenced in 247 location(s) |
+| 🟢 在用 | `image` | `game` | **2×Taq PCR Master Mix.png**<br><sub>`2-taq-pcr-master-mix-9522-png`</sub> | `public/virtual-lab/experiment9-assets/processed/Reagents/2×Taq PCR Master Mix.png` | 5.4 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **20.png**<br><sub>`20-png`</sub> | `public/virtual-lab/images/experiment2/20.png` | 19.7 | *待上传* | 48 | Referenced in 48 location(s) |
+| 🟢 在用 | `image` | `game` | **21.png**<br><sub>`21-png`</sub> | `public/virtual-lab/images/experiment2/21.png` | 37.5 | *待上传* | 106 | Referenced in 106 location(s) |
+| 🟢 在用 | `image` | `game` | **22.png**<br><sub>`22-png`</sub> | `public/virtual-lab/images/experiment2/22.png` | 8.9 | *待上传* | 107 | Referenced in 107 location(s) |
+| 🟢 在用 | `image` | `game` | **23.png**<br><sub>`23-png`</sub> | `public/virtual-lab/images/experiment2/23.png` | 154.7 | *待上传* | 103 | Referenced in 103 location(s) |
+| 🟢 在用 | `image` | `game` | **231.png**<br><sub>`231-png`</sub> | `public/virtual-lab/images/experiment1/231.png` | 698.8 | *待上传* | 3 | Referenced in 3 location(s) |
+| 🟢 在用 | `image` | `game` | **24.png**<br><sub>`24-png`</sub> | `public/virtual-lab/images/experiment2/24.png` | 781.1 | *待上传* | 16 | Referenced in 16 location(s) |
+| 🟢 在用 | `image` | `game` | **25.png**<br><sub>`25-png`</sub> | `public/virtual-lab/images/experiment2/25.png` | 12.0 | *待上传* | 103 | Referenced in 103 location(s) |
+| 🟢 在用 | `image` | `game` | **26.png**<br><sub>`26-png`</sub> | `public/virtual-lab/images/experiment2/26.png` | 25.0 | *待上传* | 78 | Referenced in 78 location(s) |
+| 🟢 在用 | `image` | `game` | **27.png**<br><sub>`27-png`</sub> | `public/virtual-lab/images/experiment2/27.png` | 40.5 | *待上传* | 98 | Referenced in 98 location(s) |
+| 🟢 在用 | `image` | `game` | **28.png**<br><sub>`28-png`</sub> | `public/virtual-lab/images/experiment2/28.png` | 316.3 | *待上传* | 40 | Referenced in 40 location(s) |
+| 🟢 在用 | `image` | `game` | **29.png**<br><sub>`29-png`</sub> | `public/virtual-lab/images/experiment2/29.png` | 907.7 | *待上传* | 66 | Referenced in 66 location(s) |
+| 🟢 在用 | `image` | `game` | **3.png**<br><sub>`experiment2-fce637-png`</sub> | `public/virtual-lab/images/experiment2/3.png` | 103.2 | *待上传* | 229 | Referenced in 229 location(s) |
+| 🟢 在用 | `image` | `game` | **3.png**<br><sub>`experiment3-8825e6-png`</sub> | `public/virtual-lab/images/experiment3/3.png` | 158.2 | *待上传* | 229 | Referenced in 229 location(s) |
+| 🟢 在用 | `image` | `game` | **30.png**<br><sub>`30-png`</sub> | `public/virtual-lab/images/experiment2/30.png` | 499.4 | *待上传* | 61 | Referenced in 61 location(s) |
+| 🟢 在用 | `image` | `game` | **31.png**<br><sub>`31-png`</sub> | `public/virtual-lab/images/experiment2/31.png` | 585.6 | *待上传* | 93 | Referenced in 93 location(s) |
+| 🟢 在用 | `image` | `game` | **31.png**<br><sub>`31-ce52-png`</sub> | `public/virtual-lab/images/experiment3/31.png` | 75.0 | *待上传* | 93 | Referenced in 93 location(s) |
+| 🟢 在用 | `image` | `game` | **32.png**<br><sub>`32-png`</sub> | `public/virtual-lab/images/experiment2/32.png` | 293.1 | *待上传* | 13 | Referenced in 13 location(s) |
+| 🟢 在用 | `image` | `game` | **33.png**<br><sub>`33-png`</sub> | `public/virtual-lab/images/experiment2/33.png` | 907.7 | *待上传* | 24 | Referenced in 24 location(s) |
+| 🟢 在用 | `image` | `game` | **33.png**<br><sub>`33-4ae3-png`</sub> | `public/virtual-lab/images/experiment3/33.png` | 737.6 | *待上传* | 24 | Referenced in 24 location(s) |
+| 🟢 在用 | `image` | `game` | **34.png**<br><sub>`34-png`</sub> | `public/virtual-lab/images/experiment2/34.png` | 415.8 | *待上传* | 39 | Referenced in 39 location(s) |
+| 🟢 在用 | `image` | `game` | **35.png**<br><sub>`35-png`</sub> | `public/virtual-lab/images/experiment2/35.png` | 306.1 | *待上传* | 98 | Referenced in 98 location(s) |
+| 🟢 在用 | `image` | `game` | **36.png**<br><sub>`36-png`</sub> | `public/virtual-lab/images/experiment2/36.png` | 393.0 | *待上传* | 46 | Referenced in 46 location(s) |
+| 🟢 在用 | `image` | `game` | **37.png**<br><sub>`37-png`</sub> | `public/virtual-lab/images/experiment2/37.png` | 784.8 | *待上传* | 12 | Referenced in 12 location(s) |
+| 🟢 在用 | `image` | `game` | **38.png**<br><sub>`38-png`</sub> | `public/virtual-lab/images/experiment2/38.png` | 345.2 | *待上传* | 14 | Referenced in 14 location(s) |
+| 🟢 在用 | `image` | `game` | **39.png**<br><sub>`39-png`</sub> | `public/virtual-lab/images/experiment2/39.png` | 828.4 | *待上传* | 15 | Referenced in 15 location(s) |
+| 🟢 在用 | `image` | `game` | **4.png**<br><sub>`experiment2-a27d3c-png`</sub> | `public/virtual-lab/images/experiment2/4.png` | 12.0 | *待上传* | 169 | Referenced in 169 location(s) |
+| 🟢 在用 | `image` | `game` | **4.png**<br><sub>`experiment3-1ea8f9-png`</sub> | `public/virtual-lab/images/experiment3/4.png` | 195.5 | *待上传* | 169 | Referenced in 169 location(s) |
+| 🟢 在用 | `image` | `game` | **40.png**<br><sub>`40-png`</sub> | `public/virtual-lab/images/experiment2/40.png` | 330.3 | *待上传* | 16 | Referenced in 16 location(s) |
+| 🟢 在用 | `image` | `game` | **41.png**<br><sub>`41-png`</sub> | `public/virtual-lab/images/experiment2/41.png` | 136.3 | *待上传* | 48 | Referenced in 48 location(s) |
+| 🟢 在用 | `image` | `game` | **41.png**<br><sub>`41-64cb-png`</sub> | `public/virtual-lab/images/experiment3/41.png` | 4.7 | *待上传* | 48 | Referenced in 48 location(s) |
+| 🟢 在用 | `image` | `game` | **42.png**<br><sub>`42-png`</sub> | `public/virtual-lab/images/experiment2/42.png` | 22.5 | *待上传* | 61 | Referenced in 61 location(s) |
+| 🟢 在用 | `image` | `game` | **42.png**<br><sub>`42-5958-png`</sub> | `public/virtual-lab/images/experiment3/42.png` | 2322.8 | *待上传* | 61 | Referenced in 61 location(s) |
+| 🟢 在用 | `image` | `game` | **43.png**<br><sub>`43-png`</sub> | `public/virtual-lab/images/experiment2/43.png` | 34.0 | *待上传* | 18 | Referenced in 18 location(s) |
+| 🟢 在用 | `image` | `game` | **43.png**<br><sub>`43-8f13-png`</sub> | `public/virtual-lab/images/experiment3/43.png` | 334.3 | *待上传* | 18 | Referenced in 18 location(s) |
+| 🟢 在用 | `image` | `game` | **44.png**<br><sub>`44-png`</sub> | `public/virtual-lab/images/experiment2/44.png` | 300.4 | *待上传* | 15 | Referenced in 15 location(s) |
+| 🟢 在用 | `image` | `game` | **44.png**<br><sub>`44-c499-png`</sub> | `public/virtual-lab/images/experiment3/44.png` | 1861.6 | *待上传* | 15 | Referenced in 15 location(s) |
+| 🟢 在用 | `image` | `game` | **45.png**<br><sub>`45-png`</sub> | `public/virtual-lab/images/experiment3/45.png` | 20.2 | *待上传* | 69 | Referenced in 69 location(s) |
+| 🟢 在用 | `image` | `game` | **46.png**<br><sub>`46-png`</sub> | `public/virtual-lab/images/experiment3/46.png` | 2407.1 | *待上传* | 14 | Referenced in 14 location(s) |
+| 🟢 在用 | `image` | `game` | **47.png**<br><sub>`47-png`</sub> | `public/virtual-lab/images/experiment3/47.png` | 478.7 | *待上传* | 15 | Referenced in 15 location(s) |
+| 🟢 在用 | `image` | `game` | **48.png**<br><sub>`48-png`</sub> | `public/virtual-lab/images/experiment3/48.png` | 14.6 | *待上传* | 39 | Referenced in 39 location(s) |
+| 🟢 在用 | `image` | `game` | **49.png**<br><sub>`49-png`</sub> | `public/virtual-lab/images/experiment3/49.png` | 5.1 | *待上传* | 15 | Referenced in 15 location(s) |
+| 🟢 在用 | `image` | `game` | **5.png**<br><sub>`experiment2-4e6549-png`</sub> | `public/virtual-lab/images/experiment2/5.png` | 2.8 | *待上传* | 174 | Referenced in 174 location(s) |
+| 🟢 在用 | `image` | `game` | **5.png**<br><sub>`experiment3-3038f4-png`</sub> | `public/virtual-lab/images/experiment3/5.png` | 212.6 | *待上传* | 174 | Referenced in 174 location(s) |
+| 🟢 在用 | `image` | `game` | **50.png**<br><sub>`50-png`</sub> | `public/virtual-lab/images/experiment3/50.png` | 600.1 | *待上传* | 77 | Referenced in 77 location(s) |
+| 🟢 在用 | `image` | `game` | **51.png**<br><sub>`51-png`</sub> | `public/virtual-lab/images/experiment3/51.png` | 318.8 | *待上传* | 77 | Referenced in 77 location(s) |
+| 🟢 在用 | `image` | `game` | **53.png**<br><sub>`53-png`</sub> | `public/virtual-lab/images/experiment3/53.png` | 127.3 | *待上传* | 17 | Referenced in 17 location(s) |
+| 🟢 在用 | `image` | `game` | **54.png**<br><sub>`54-png`</sub> | `public/virtual-lab/images/experiment3/54.png` | 429.6 | *待上传* | 73 | Referenced in 73 location(s) |
+| 🟢 在用 | `image` | `game` | **55.png**<br><sub>`55-png`</sub> | `public/virtual-lab/images/experiment3/55.png` | 2.1 | *待上传* | 22 | Referenced in 22 location(s) |
+| 🟢 在用 | `image` | `game` | **6__DNA Loading Buffer.png**<br><sub>`6-dna-loading-buffer-png`</sub> | `public/virtual-lab/experiment9-assets/processed/Reagents/6__DNA Loading Buffer.png` | 7.6 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **6.png**<br><sub>`experiment2-02168c-png`</sub> | `public/virtual-lab/images/experiment2/6.png` | 24.1 | *待上传* | 182 | Referenced in 182 location(s) |
+| 🟢 在用 | `image` | `game` | **6.png**<br><sub>`experiment3-a438a3-png`</sub> | `public/virtual-lab/images/experiment3/6.png` | 153.6 | *待上传* | 182 | Referenced in 182 location(s) |
+| 🟢 在用 | `image` | `game` | **60.png**<br><sub>`60-png`</sub> | `public/virtual-lab/images/experiment3/60.png` | 387.1 | *待上传* | 8 | Referenced in 8 location(s) |
+| 🟢 在用 | `image` | `game` | **61.png**<br><sub>`61-png`</sub> | `public/virtual-lab/images/experiment3/61.png` | 944.6 | *待上传* | 9 | Referenced in 9 location(s) |
+| 🟢 在用 | `image` | `game` | **7.png**<br><sub>`experiment2-35527b-png`</sub> | `public/virtual-lab/images/experiment2/7.png` | 2364.1 | *待上传* | 155 | Referenced in 155 location(s) |
+| 🟢 在用 | `image` | `game` | **8.png**<br><sub>`experiment2-af7b40-png`</sub> | `public/virtual-lab/images/experiment2/8.png` | 1645.6 | *待上传* | 154 | Referenced in 154 location(s) |
+| 🟢 在用 | `image` | `game` | **8100.png**<br><sub>`8100-png`</sub> | `public/virtual-lab/images/experiment3/8100.png` | 946.9 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **8105.png**<br><sub>`8105-png`</sub> | `public/virtual-lab/images/experiment3/8105.png` | 450.2 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **8106.png**<br><sub>`8106-png`</sub> | `public/virtual-lab/images/experiment3/8106.png` | 375.7 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **811.png**<br><sub>`811-png`</sub> | `public/virtual-lab/images/experiment3/811.png` | 1073.0 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **812.png**<br><sub>`812-png`</sub> | `public/virtual-lab/images/experiment3/812.png` | 482.1 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **813.png**<br><sub>`813-png`</sub> | `public/virtual-lab/images/experiment3/813.png` | 983.0 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **8171.png**<br><sub>`8171-png`</sub> | `public/virtual-lab/images/experiment6/8171.png` | 195.5 | *待上传* | 3 | Referenced in 3 location(s) |
+| 🟢 在用 | `image` | `game` | **81720.png**<br><sub>`81720-png`</sub> | `public/virtual-lab/images/experiment6/81720.png` | 336.4 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **81721.png**<br><sub>`81721-png`</sub> | `public/virtual-lab/images/experiment6/81721.png` | 195.5 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **81756.png**<br><sub>`81756-png`</sub> | `public/virtual-lab/images/experiment6/81756.png` | 387.1 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **8201.png**<br><sub>`8201-png`</sub> | `public/virtual-lab/images/experiment3/8201.png` | 170.8 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **8202.png**<br><sub>`8202-png`</sub> | `public/virtual-lab/images/experiment3/8202.png` | 225.9 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **8203.png**<br><sub>`8203-png`</sub> | `public/virtual-lab/images/experiment3/8203.png` | 11.8 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **8310.png**<br><sub>`8310-png`</sub> | `public/virtual-lab/images/experiment3/8310.png` | 212.6 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **8501.png**<br><sub>`8501-png`</sub> | `public/virtual-lab/images/experiment3/8501.png` | 127.3 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **8502.png**<br><sub>`8502-png`</sub> | `public/virtual-lab/images/experiment3/8502.png` | 185.9 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **8503.png**<br><sub>`8503-png`</sub> | `public/virtual-lab/images/experiment3/8503.png` | 429.6 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **8504.png**<br><sub>`8504-png`</sub> | `public/virtual-lab/images/experiment3/8504.png` | 431.1 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **8710.png**<br><sub>`8710-png`</sub> | `public/virtual-lab/images/experiment6/8710.png` | 195.5 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **8711.png**<br><sub>`8711-png`</sub> | `public/virtual-lab/images/experiment6/8711.png` | 195.5 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **8712.png**<br><sub>`8712-png`</sub> | `public/virtual-lab/images/experiment6/8712.png` | 11.8 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **9.png**<br><sub>`experiment2-475301-png`</sub> | `public/virtual-lab/images/experiment2/9.png` | 1298.7 | *待上传* | 148 | Referenced in 148 location(s) |
+| 🟢 在用 | `image` | `game` | **90.png**<br><sub>`90-png`</sub> | `public/virtual-lab/images/experiment3/90.png` | 40.5 | *待上传* | 60 | Referenced in 60 location(s) |
+| 🟢 在用 | `image` | `game` | **91.png**<br><sub>`91-png`</sub> | `public/virtual-lab/images/experiment3/91.png` | 98.3 | *待上传* | 61 | Referenced in 61 location(s) |
+| 🟢 在用 | `image` | `game` | **爸爸-稳重.png**<br><sub>`family-bfe925-png`</sub> | `public/game-assets/assets/characters/family/爸爸-稳重.png` | 1746.0 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **爸爸-严肃.png**<br><sub>`family-3fd027-png`</sub> | `public/game-assets/assets/characters/family/爸爸-严肃.png` | 1542.6 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **厨房.jpg**<br><sub>`common-ff16b0-jpg`</sub> | `public/game-assets/assets/scenes/common/厨房.jpg` | 73.4 | *待上传* | 2 | Referenced in 2 location(s) |
+| 🟢 在用 | `image` | `game` | **雌激素调节细胞-紊乱.png**<br><sub>`cells-fa77d9-png`</sub> | `public/game-assets/assets/characters/cells/雌激素调节细胞-紊乱.png` | 116.9 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **雌激素调节细胞-正常.png**<br><sub>`cells-259411-png`</sub> | `public/game-assets/assets/characters/cells/雌激素调节细胞-正常.png` | 109.3 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **大脑记忆中枢.png**<br><sub>`common-f76202-png`</sub> | `public/game-assets/assets/scenes/common/大脑记忆中枢.png` | 1006.0 | *待上传* | 2 | Referenced in 2 location(s) |
+| 🟢 在用 | `image` | `game` | **多癌种拓展平台像素背景图.jpg**<br><sub>`promo-7cb650-jpg`</sub> | `public/game-assets/assets/scenes/promo/多癌种拓展平台像素背景图.jpg` | 1985.9 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **儿媳-担忧.png**<br><sub>`family-00bc87-png`</sub> | `public/game-assets/assets/characters/family/儿媳-担忧.png` | 1361.0 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **儿媳-贴心.png**<br><sub>`family-33cb7b-png`</sub> | `public/game-assets/assets/characters/family/儿媳-贴心.png` | 1114.1 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **儿媳-温柔.png**<br><sub>`family-e6294c-png`</sub> | `public/game-assets/assets/characters/family/儿媳-温柔.png` | 1389.4 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **儿媳-细心.png**<br><sub>`family-d0fe3c-png`</sub> | `public/game-assets/assets/characters/family/儿媳-细心.png` | 1407.6 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **儿子-诚恳.png**<br><sub>`family-946de2-png`</sub> | `public/game-assets/assets/characters/family/儿子-诚恳.png` | 1499.6 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **儿子-担忧.png**<br><sub>`family-e006fb-png`</sub> | `public/game-assets/assets/characters/family/儿子-担忧.png` | 2390.3 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **儿子-愤怒.png**<br><sub>`family-7976f6-png`</sub> | `public/game-assets/assets/characters/family/儿子-愤怒.png` | 2078.8 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **儿子-焦急.png**<br><sub>`family-cb80f8-png`</sub> | `public/game-assets/assets/characters/family/儿子-焦急.png` | 2684.4 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **儿子-疲惫.png**<br><sub>`family-02fe94-png`</sub> | `public/game-assets/assets/characters/family/儿子-疲惫.png` | 1742.8 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **儿子-心疼.png**<br><sub>`family-00878c-png`</sub> | `public/game-assets/assets/characters/family/儿子-心疼.png` | 1588.9 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **分泌细胞-干瘪.png**<br><sub>`cells-17e547-png`</sub> | `public/game-assets/assets/characters/cells/分泌细胞-干瘪.png` | 77.4 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **分泌细胞-健康.png**<br><sub>`cells-bf4770-png`</sub> | `public/game-assets/assets/characters/cells/分泌细胞-健康.png` | 124.9 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **分泌细胞-恐惧.png**<br><sub>`cells-75c143-png`</sub> | `public/game-assets/assets/characters/cells/分泌细胞-恐惧.png` | 108.3 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **分泌细胞-疲惫.png**<br><sub>`cells-9b2a8e-png`</sub> | `public/game-assets/assets/characters/cells/分泌细胞-疲惫.png` | 106.1 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **分泌细胞-委屈.png**<br><sub>`cells-4363c5-png`</sub> | `public/game-assets/assets/characters/cells/分泌细胞-委屈.png` | 109.9 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **分泌细胞-虚弱.png**<br><sub>`cells-b102fd-png`</sub> | `public/game-assets/assets/characters/cells/分泌细胞-虚弱.png` | 82.5 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **分泌细胞-异常.png**<br><sub>`cells-33eea8-png`</sub> | `public/game-assets/assets/characters/cells/分泌细胞-异常.png` | 128.4 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **分泌细胞-愉悦.png**<br><sub>`cells-cb657e-png`</sub> | `public/game-assets/assets/characters/cells/分泌细胞-愉悦.png` | 110.5 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **分泌细胞-胀痛.png**<br><sub>`cells-03c329-png`</sub> | `public/game-assets/assets/characters/cells/分泌细胞-胀痛.png` | 146.2 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **分泌细胞-肿胀.png**<br><sub>`cells-10ad93-png`</sub> | `public/game-assets/assets/characters/cells/分泌细胞-肿胀.png` | 136.6 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **公园.jpg**<br><sub>`child-adult-c963b5-jpg`</sub> | `public/game-assets/assets/scenes/child-adult/公园.jpg` | 93.6 | *待上传* | 2 | Referenced in 2 location(s) |
+| 🟢 在用 | `image` | `game` | **环状 RNA 载体像素背景图.jpg**<br><sub>`-rna-jpg`</sub> | `public/game-assets/assets/scenes/promo/环状 RNA 载体像素背景图.jpg` | 2037.8 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **激活的碎片化记忆中枢.png**<br><sub>`promo-b0f87b-png`</sub> | `public/game-assets/assets/scenes/promo/激活的碎片化记忆中枢.png` | 2357.6 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **甲方总负责人-满意.png**<br><sub>`workplace-4037bd-png`</sub> | `public/game-assets/assets/characters/workplace/甲方总负责人-满意.png` | 737.7 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **甲方总负责人-严肃.png**<br><sub>`workplace-c5ed71-png`</sub> | `public/game-assets/assets/characters/workplace/甲方总负责人-严肃.png` | 1165.7 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **经理-愤怒.png**<br><sub>`workplace-bbd325-png`</sub> | `public/game-assets/assets/characters/workplace/经理-愤怒.png` | 1148.0 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **经理-缓和.png**<br><sub>`workplace-22f3f6-png`</sub> | `public/game-assets/assets/characters/workplace/经理-缓和.png` | 1190.9 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **经理-愣住.png**<br><sub>`workplace-a5d218-png`</sub> | `public/game-assets/assets/characters/workplace/经理-愣住.png` | 1222.5 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **经理-满意.png**<br><sub>`workplace-36d590-png`</sub> | `public/game-assets/assets/characters/workplace/经理-满意.png` | 1130.6 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **经理-威严.png**<br><sub>`workplace-3f602e-png`</sub> | `public/game-assets/assets/characters/workplace/经理-威严.png` | 1246.8 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **酒店包厢.png**<br><sub>`child-adult-8af81c-png`</sub> | `public/game-assets/assets/scenes/child-adult/酒店包厢.png` | 1081.6 | *待上传* | 2 | Referenced in 2 location(s) |
+| 🟢 在用 | `image` | `game` | **酒窝征-BOSS-虚弱.png**<br><sub>`-boss-png`</sub> | `public/game-assets/assets/characters/bosses/酒窝征-BOSS-虚弱.png` | 1290.2 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **酒窝征-BOSS-狰狞.png**<br><sub>`boss-0ca5-png`</sub> | `public/game-assets/assets/characters/bosses/酒窝征-BOSS-狰狞.png` | 941.1 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **橘皮样改变-BOSS-虚弱.png**<br><sub>`boss-1d6d-png`</sub> | `public/game-assets/assets/characters/bosses/橘皮样改变-BOSS-虚弱.png` | 1689.5 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **橘皮样改变-BOSS-狰狞.png**<br><sub>`boss-fa0e-png`</sub> | `public/game-assets/assets/characters/bosses/橘皮样改变-BOSS-狰狞.png` | 1547.7 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **巨噬细胞-活泼.png**<br><sub>`cells-b6e4a3-png`</sub> | `public/game-assets/assets/characters/cells/巨噬细胞-活泼.png` | 119.6 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **巨噬细胞-疲惫.png**<br><sub>`cells-1a5dd8-png`</sub> | `public/game-assets/assets/characters/cells/巨噬细胞-疲惫.png` | 121.1 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **巨噬细胞-爽朗.png**<br><sub>`cells-d6eb37-png`</sub> | `public/game-assets/assets/characters/cells/巨噬细胞-爽朗.png` | 123.3 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **巨噬细胞-小巧.png**<br><sub>`cells-d357b8-png`</sub> | `public/game-assets/assets/characters/cells/巨噬细胞-小巧.png` | 80.2 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **巨噬细胞-虚弱.png**<br><sub>`cells-4c70fb-png`</sub> | `public/game-assets/assets/characters/cells/巨噬细胞-虚弱.png` | 104.5 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **巨噬细胞-醉酒.png**<br><sub>`cells-d8146a-png`</sub> | `public/game-assets/assets/characters/cells/巨噬细胞-醉酒.png` | 149.4 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **客厅.jpg**<br><sub>`common-b3aa9e-jpg`</sub> | `public/game-assets/assets/scenes/common/客厅.jpg` | 90.9 | *待上传* | 2 | Referenced in 2 location(s) |
+| 🟢 在用 | `image` | `game` | **李阿姨-附和.png**<br><sub>`neighbors-0678d7-png`</sub> | `public/game-assets/assets/characters/neighbors/李阿姨-附和.png` | 970.2 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **邻居-热心.png**<br><sub>`neighbors-ae66eb-png`</sub> | `public/game-assets/assets/characters/neighbors/邻居-热心.png` | 564.5 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **淋巴细胞-傲娇.png**<br><sub>`cells-dab933-png`</sub> | `public/game-assets/assets/characters/cells/淋巴细胞-傲娇.png` | 109.9 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **淋巴细胞-欢快.png**<br><sub>`cells-e4c6c4-png`</sub> | `public/game-assets/assets/characters/cells/淋巴细胞-欢快.png` | 112.8 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **淋巴细胞-活泼.png**<br><sub>`cells-6a4441-png`</sub> | `public/game-assets/assets/characters/cells/淋巴细胞-活泼.png` | 106.6 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **淋巴细胞-急促.png**<br><sub>`cells-df5830-png`</sub> | `public/game-assets/assets/characters/cells/淋巴细胞-急促.png` | 121.0 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **淋巴细胞-警惕.png**<br><sub>`cells-29286f-png`</sub> | `public/game-assets/assets/characters/cells/淋巴细胞-警惕.png` | 101.7 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **淋巴细胞-期待.png**<br><sub>`cells-f14432-png`</sub> | `public/game-assets/assets/characters/cells/淋巴细胞-期待.png` | 120.3 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **淋巴细胞-无助.png**<br><sub>`cells-265e6b-png`</sub> | `public/game-assets/assets/characters/cells/淋巴细胞-无助.png` | 95.2 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **淋巴细胞-肿大.png**<br><sub>`cells-983adb-png`</sub> | `public/game-assets/assets/characters/cells/淋巴细胞-肿大.png` | 111.3 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **刘阿姨-附和.png**<br><sub>`neighbors-32590b-png`</sub> | `public/game-assets/assets/characters/neighbors/刘阿姨-附和.png` | 1012.3 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **妈妈-苍白.png**<br><sub>`family-26b778-png`</sub> | `public/game-assets/assets/characters/family/妈妈-苍白.png` | 485.8 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **妈妈-担忧.png**<br><sub>`family-1c3d31-png`</sub> | `public/game-assets/assets/characters/family/妈妈-担忧.png` | 1735.3 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **妈妈-感动.png**<br><sub>`family-5a5771-png`</sub> | `public/game-assets/assets/characters/family/妈妈-感动.png` | 1725.9 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **妈妈-开心.png**<br><sub>`family-43eb9a-png`</sub> | `public/game-assets/assets/characters/family/妈妈-开心.png` | 2617.5 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **妈妈-麻木.png**<br><sub>`family-93c60e-png`</sub> | `public/game-assets/assets/characters/family/妈妈-麻木.png` | 2014.5 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **妈妈-难过.png**<br><sub>`family-570038-png`</sub> | `public/game-assets/assets/characters/family/妈妈-难过.png` | 2732.2 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **妈妈-疲惫.png**<br><sub>`family-ef9f3f-png`</sub> | `public/game-assets/assets/characters/family/妈妈-疲惫.png` | 1770.2 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **妈妈-失落.png**<br><sub>`family-d8ca6f-png`</sub> | `public/game-assets/assets/characters/family/妈妈-失落.png` | 2699.9 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **妈妈-疼痛.png**<br><sub>`family-e8d602-png`</sub> | `public/game-assets/assets/characters/family/妈妈-疼痛.png` | 2048.7 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **妈妈-委屈.png**<br><sub>`family-9d0e77-png`</sub> | `public/game-assets/assets/characters/family/妈妈-委屈.png` | 2139.8 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **妈妈-温柔.png**<br><sub>`family-91a9f4-png`</sub> | `public/game-assets/assets/characters/family/妈妈-温柔.png` | 1850.9 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **妈妈-消沉.png**<br><sub>`family-cf6fde-png`</sub> | `public/game-assets/assets/characters/family/妈妈-消沉.png` | 1680.4 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **妈妈-欣慰.png**<br><sub>`family-775320-png`</sub> | `public/game-assets/assets/characters/family/妈妈-欣慰.png` | 1798.7 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **妈妈的卧室.jpg**<br><sub>`child-adult-475018-jpg`</sub> | `public/game-assets/assets/scenes/child-adult/妈妈的卧室.jpg` | 448.8 | *待上传* | 2 | Referenced in 2 location(s) |
+| 🟢 在用 | `image` | `game` | **免疫通路像素背景图.jpg**<br><sub>`promo-f9ce42-jpg`</sub> | `public/game-assets/assets/scenes/promo/免疫通路像素背景图.jpg` | 2208.7 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **民间老郎中-神秘.png**<br><sub>`medical-2eb9b1-png`</sub> | `public/game-assets/assets/characters/medical/民间老郎中-神秘.png` | 995.0 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **内分泌调节细胞-疲惫.png**<br><sub>`cells-a1ef2c-png`</sub> | `public/game-assets/assets/characters/cells/内分泌调节细胞-疲惫.png` | 113.2 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **内分泌调节细胞-紊乱.png**<br><sub>`cells-1ab5e6-png`</sub> | `public/game-assets/assets/characters/cells/内分泌调节细胞-紊乱.png` | 118.3 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **内分泌调节细胞-正常.png**<br><sub>`cells-bc5ee0-png`</sub> | `public/game-assets/assets/characters/cells/内分泌调节细胞-正常.png` | 112.3 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **女儿-担忧.png**<br><sub>`family-30b912-png`</sub> | `public/game-assets/assets/characters/family/女儿-担忧.png` | 526.0 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **女儿-恳求.png**<br><sub>`family-c41567-png`</sub> | `public/game-assets/assets/characters/family/女儿-恳求.png` | 556.4 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **女儿-哭泣.png**<br><sub>`family-426578-png`</sub> | `public/game-assets/assets/characters/family/女儿-哭泣.png` | 539.1 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **女儿-委屈.png**<br><sub>`family-c34e5e-png`</sub> | `public/game-assets/assets/characters/family/女儿-委屈.png` | 491.0 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **女儿-温柔.png**<br><sub>`family-6eb0fa-png`</sub> | `public/game-assets/assets/characters/family/女儿-温柔.png` | 588.4 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **女儿-无奈.png**<br><sub>`family-cc5fae-png`</sub> | `public/game-assets/assets/characters/family/女儿-无奈.png` | 411.7 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **派蒙-傲娇.png**<br><sub>`paimon-20344c-png`</sub> | `public/game-assets/assets/characters/paimon/派蒙-傲娇.png` | 102.5 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **派蒙-担忧.png**<br><sub>`paimon-ead8c9-png`</sub> | `public/game-assets/assets/characters/paimon/派蒙-担忧.png` | 82.5 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **派蒙-愤怒.png**<br><sub>`paimon-1dc15a-png`</sub> | `public/game-assets/assets/characters/paimon/派蒙-愤怒.png` | 87.4 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **派蒙-哽咽.png**<br><sub>`paimon-49db58-png`</sub> | `public/game-assets/assets/characters/paimon/派蒙-哽咽.png` | 757.0 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **派蒙-骄傲.png**<br><sub>`paimon-f6e119-png`</sub> | `public/game-assets/assets/characters/paimon/派蒙-骄傲.png` | 79.1 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **派蒙-焦急.png**<br><sub>`paimon-9acca8-png`</sub> | `public/game-assets/assets/characters/paimon/派蒙-焦急.png` | 668.6 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **派蒙-绝望.png**<br><sub>`paimon-33a60c-png`</sub> | `public/game-assets/assets/characters/paimon/派蒙-绝望.png` | 83.4 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **派蒙-开心.png**<br><sub>`paimon-33c782-png`</sub> | `public/game-assets/assets/characters/paimon/派蒙-开心.png` | 77.6 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **派蒙-撇嘴.png**<br><sub>`paimon-2584f4-png`</sub> | `public/game-assets/assets/characters/paimon/派蒙-撇嘴.png` | 81.5 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **派蒙-期待.png**<br><sub>`paimon-61b8ad-png`</sub> | `public/game-assets/assets/characters/paimon/派蒙-期待.png` | 105.0 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **派蒙-雀跃.png**<br><sub>`paimon-3b498e-png`</sub> | `public/game-assets/assets/characters/paimon/派蒙-雀跃.png` | 920.1 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **派蒙-认真.png**<br><sub>`paimon-243ce7-png`</sub> | `public/game-assets/assets/characters/paimon/派蒙-认真.png` | 79.0 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **派蒙-软糯.png**<br><sub>`paimon-dedec1-png`</sub> | `public/game-assets/assets/characters/paimon/派蒙-软糯.png` | 78.6 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **派蒙-温柔.png**<br><sub>`paimon-d559ef-png`</sub> | `public/game-assets/assets/characters/paimon/派蒙-温柔.png` | 78.7 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **派蒙-无奈.png**<br><sub>`paimon-a74b44-png`</sub> | `public/game-assets/assets/characters/paimon/派蒙-无奈.png` | 80.9 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **派蒙-心疼.png**<br><sub>`paimon-a30c0f-png`</sub> | `public/game-assets/assets/characters/paimon/派蒙-心疼.png` | 79.2 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **派蒙-欣慰.png**<br><sub>`paimon-a56e4a-png`</sub> | `public/game-assets/assets/characters/paimon/派蒙-欣慰.png` | 78.6 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **派蒙-严肃.png**<br><sub>`paimon-e0a693-png`</sub> | `public/game-assets/assets/characters/paimon/派蒙-严肃.png` | 77.4 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **派蒙-赞许.png**<br><sub>`paimon-30bb65-png`</sub> | `public/game-assets/assets/characters/paimon/派蒙-赞许.png` | 227.8 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **派蒙-郑重.png**<br><sub>`paimon-4556e7-png`</sub> | `public/game-assets/assets/characters/paimon/派蒙-郑重.png` | 77.4 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **群友-友善.jpg**<br><sub>`neighbors-5b70af-jpg`</sub> | `public/game-assets/assets/characters/neighbors/群友-友善.jpg` | 30.6 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **群友-友善.png**<br><sub>`neighbors-02452f-png`</sub> | `public/game-assets/assets/characters/neighbors/群友-友善.png` | 49.5 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **乳房硬块-BOSS-嚣张.png**<br><sub>`boss-ff4d-png`</sub> | `public/game-assets/assets/characters/bosses/乳房硬块-BOSS-嚣张.png` | 439.6 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **乳房硬块-BOSS-虚弱.png**<br><sub>`boss-03e6-png`</sub> | `public/game-assets/assets/characters/bosses/乳房硬块-BOSS-虚弱.png` | 1739.9 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **乳房硬块-BOSS-狰狞.png**<br><sub>`boss-49e6-png`</sub> | `public/game-assets/assets/characters/bosses/乳房硬块-BOSS-狰狞.png` | 1243.0 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **乳头内陷-BOSS-虚弱.png**<br><sub>`boss-527b-png`</sub> | `public/game-assets/assets/characters/bosses/乳头内陷-BOSS-虚弱.png` | 765.5 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **乳头内陷-BOSS-狰狞.png**<br><sub>`boss-png`</sub> | `public/game-assets/assets/characters/bosses/乳头内陷-BOSS-狰狞.png` | 149.8 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **乳头溢液-BOSS-虚弱.png**<br><sub>`boss-f955-png`</sub> | `public/game-assets/assets/characters/bosses/乳头溢液-BOSS-虚弱.png` | 521.6 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **乳头溢液-BOSS-狰狞.png**<br><sub>`boss-f9f2-png`</sub> | `public/game-assets/assets/characters/bosses/乳头溢液-BOSS-狰狞.png` | 176.3 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **乳腺科医生(专家)-温和.png**<br><sub>`medical-109618-png`</sub> | `public/game-assets/assets/characters/medical/乳腺科医生(专家)-温和.png` | 781.2 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **乳腺科医生(专家)-严肃.png**<br><sub>`medical-206824-png`</sub> | `public/game-assets/assets/characters/medical/乳腺科医生(专家)-严肃.png` | 759.9 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **乳腺科医生(专家)-专业.png**<br><sub>`medical-a4e158-png`</sub> | `public/game-assets/assets/characters/medical/乳腺科医生(专家)-专业.png` | 734.3 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **乳腺主城(黑雾笼罩).png**<br><sub>`common-d306aa-png`</sub> | `public/game-assets/assets/scenes/common/乳腺主城(黑雾笼罩).png` | 4521.0 | *待上传* | 2 | Referenced in 2 location(s) |
+| 🟢 在用 | `image` | `game` | **乳腺主城(正常).jpg**<br><sub>`common-506ca4-jpg`</sub> | `public/game-assets/assets/scenes/common/乳腺主城(正常).jpg` | 1219.8 | *待上传* | 2 | Referenced in 2 location(s) |
+| 🟢 在用 | `image` | `game` | **三甲医院.png**<br><sub>`elder-49a00d-png`</sub> | `public/game-assets/assets/scenes/elder/三甲医院.png` | 3381.7 | *待上传* | 2 | Referenced in 2 location(s) |
+| 🟢 在用 | `image` | `game` | **社区医生-专业.png**<br><sub>`medical-0c838b-png`</sub> | `public/game-assets/assets/characters/medical/社区医生-专业.png` | 560.9 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **社区医院.jpg**<br><sub>`elder-40acc0-jpg`</sub> | `public/game-assets/assets/scenes/elder/社区医院.jpg` | 899.5 | *待上传* | 2 | Referenced in 2 location(s) |
+| 🟢 在用 | `image` | `game` | **生信筛选研究像素背景图.jpg**<br><sub>`-jpg`</sub> | `public/game-assets/assets/scenes/promo/生信筛选研究像素背景图.jpg` | 2209.0 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **书房.jpg**<br><sub>`child-adult-e26b10-jpg`</sub> | `public/game-assets/assets/scenes/child-adult/书房.jpg` | 80.4 | *待上传* | 2 | Referenced in 2 location(s) |
+| 🟢 在用 | `image` | `game` | **碎片化记忆中枢.png**<br><sub>`-png`</sub> | `public/game-assets/assets/scenes/promo/碎片化记忆中枢.png` | 2041.8 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **体检中心.png**<br><sub>`elder-473ea4-png`</sub> | `public/game-assets/assets/scenes/elder/体检中心.png` | 763.5 | *待上传* | 2 | Referenced in 2 location(s) |
+| 🟢 在用 | `image` | `game` | **同事-担忧.png**<br><sub>`workplace-c30364-png`</sub> | `public/game-assets/assets/characters/workplace/同事-担忧.png` | 1498.0 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **同事-起哄.png**<br><sub>`workplace-9e535a-png`</sub> | `public/game-assets/assets/characters/workplace/同事-起哄.png` | 1626.2 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **同事-同情.png**<br><sub>`workplace-79977c-png`</sub> | `public/game-assets/assets/characters/workplace/同事-同情.png` | 1457.2 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **王阿姨-热心.png**<br><sub>`neighbors-59d924-png`</sub> | `public/game-assets/assets/characters/neighbors/王阿姨-热心.png` | 916.4 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **王哥-友善.png**<br><sub>`workplace-a674e6-png`</sub> | `public/game-assets/assets/characters/workplace/王哥-友善.png` | 942.5 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **卧室.jpg**<br><sub>`common-ffe91a-jpg`</sub> | `public/game-assets/assets/scenes/common/卧室.jpg` | 67.8 | *待上传* | 2 | Referenced in 2 location(s) |
+| 🟢 在用 | `image` | `game` | **小李-谨慎.png**<br><sub>`workplace-00c1df-png`</sub> | `public/game-assets/assets/characters/workplace/小李-谨慎.png` | 500.5 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **小李-苦相.png**<br><sub>`workplace-61269e-png`</sub> | `public/game-assets/assets/characters/workplace/小李-苦相.png` | 477.0 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **小李-疲惫.png**<br><sub>`workplace-d3e368-png`</sub> | `public/game-assets/assets/characters/workplace/小李-疲惫.png` | 577.8 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **小李-同情.png**<br><sub>`workplace-461425-png`</sub> | `public/game-assets/assets/characters/workplace/小李-同情.png` | 470.2 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **小区花园.jpg**<br><sub>`elder-77af7e-jpg`</sub> | `public/game-assets/assets/scenes/elder/小区花园.jpg` | 1002.9 | *待上传* | 2 | Referenced in 2 location(s) |
+| 🟢 在用 | `image` | `game` | **小孙女-活泼.png**<br><sub>`family-7fa80a-png`</sub> | `public/game-assets/assets/characters/family/小孙女-活泼.png` | 1581.6 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **小孙女-软糯.png**<br><sub>`family-7820dc-png`</sub> | `public/game-assets/assets/characters/family/小孙女-软糯.png` | 1546.1 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **药店店员-随意.png**<br><sub>`medical-c024fc-png`</sub> | `public/game-assets/assets/characters/medical/药店店员-随意.png` | 192.4 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **药店店员-友善.png**<br><sub>`medical-477bce-png`</sub> | `public/game-assets/assets/characters/medical/药店店员-友善.png` | 475.3 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **腋下淋巴结肿大-BOSS-嚣张.png**<br><sub>`boss-2593-png`</sub> | `public/game-assets/assets/characters/bosses/腋下淋巴结肿大-BOSS-嚣张.png` | 591.7 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **腋下淋巴结肿大-BOSS-虚弱.png**<br><sub>`boss-74ca-png`</sub> | `public/game-assets/assets/characters/bosses/腋下淋巴结肿大-BOSS-虚弱.png` | 558.0 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **腋下淋巴结肿大-BOSS-狰狞.png**<br><sub>`boss-2ff9-png`</sub> | `public/game-assets/assets/characters/bosses/腋下淋巴结肿大-BOSS-狰狞.png` | 1483.6 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **营养师-专业.png**<br><sub>`medical-2ea362-png`</sub> | `public/game-assets/assets/characters/medical/营养师-专业.png` | 163.0 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **张阿姨-热心.png**<br><sub>`neighbors-e14847-png`</sub> | `public/game-assets/assets/characters/neighbors/张阿姨-热心.png` | 858.5 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **张总-随和.png**<br><sub>`workplace-201700-png`</sub> | `public/game-assets/assets/characters/workplace/张总-随和.png` | 1349.7 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **张总-笑意.png**<br><sub>`workplace-f171b6-png`</sub> | `public/game-assets/assets/characters/workplace/张总-笑意.png` | 1164.2 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **正规医院.png**<br><sub>`elder-015117-png`</sub> | `public/game-assets/assets/scenes/elder/正规医院.png` | 458.8 | *待上传* | 2 | Referenced in 2 location(s) |
+| 🟢 在用 | `image` | `game` | **职场办公室.png**<br><sub>`child-adult-5c1488-png`</sub> | `public/game-assets/assets/scenes/child-adult/职场办公室.png` | 2923.6 | *待上传* | 2 | Referenced in 2 location(s) |
+| 🟢 在用 | `image` | `game` | **主角-安心.png**<br><sub>`elder-protagonist-6a9764-png`</sub> | `public/game-assets/assets/characters/elder-protagonist/主角-安心.png` | 203.0 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **主角-懊悔.png**<br><sub>`adult-protagonist-0a209e-png`</sub> | `public/game-assets/assets/characters/adult-protagonist/主角-懊悔.png` | 176.2 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **主角-懊悔.png**<br><sub>`elder-protagonist-4170c8-png`</sub> | `public/game-assets/assets/characters/elder-protagonist/主角-懊悔.png` | 197.8 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **主角-懂事.png**<br><sub>`child-protagonist-d0ba0c-png`</sub> | `public/game-assets/assets/characters/child-protagonist/主角-懂事.png` | 131.4 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **主角-固执.png**<br><sub>`child-protagonist-ec8411-png`</sub> | `public/game-assets/assets/characters/child-protagonist/主角-固执.png` | 132.5 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **主角-固执.png**<br><sub>`elder-protagonist-cc0e4f-png`</sub> | `public/game-assets/assets/characters/elder-protagonist/主角-固执.png` | 210.8 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **主角-害怕.png**<br><sub>`child-protagonist-012846-png`</sub> | `public/game-assets/assets/characters/child-protagonist/主角-害怕.png` | 136.1 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **主角-好奇.png**<br><sub>`adult-protagonist-751110-png`</sub> | `public/game-assets/assets/characters/adult-protagonist/主角-好奇.png` | 177.8 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **主角-坚定.png**<br><sub>`adult-protagonist-3898d6-png`</sub> | `public/game-assets/assets/characters/adult-protagonist/主角-坚定.png` | 168.3 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **主角-坚定.png**<br><sub>`elder-protagonist-816141-png`</sub> | `public/game-assets/assets/characters/elder-protagonist/主角-坚定.png` | 191.7 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **主角-焦急.png**<br><sub>`child-protagonist-226e6d-png`</sub> | `public/game-assets/assets/characters/child-protagonist/主角-焦急.png` | 141.1 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **主角-焦虑.png**<br><sub>`adult-protagonist-3d841d-png`</sub> | `public/game-assets/assets/characters/adult-protagonist/主角-焦虑.png` | 202.4 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **主角-焦虑.png**<br><sub>`elder-protagonist-d891c7-png`</sub> | `public/game-assets/assets/characters/elder-protagonist/主角-焦虑.png` | 154.5 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **主角-紧张.png**<br><sub>`adult-protagonist-1f9ed4-png`</sub> | `public/game-assets/assets/characters/adult-protagonist/主角-紧张.png` | 186.2 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **主角-开心.png**<br><sub>`child-protagonist-fb1c4d-png`</sub> | `public/game-assets/assets/characters/child-protagonist/主角-开心.png` | 141.9 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **主角-恐惧.png**<br><sub>`adult-protagonist-1382b4-png`</sub> | `public/game-assets/assets/characters/adult-protagonist/主角-恐惧.png` | 160.2 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **主角-恐惧.png**<br><sub>`elder-protagonist-8aa485-png`</sub> | `public/game-assets/assets/characters/elder-protagonist/主角-恐惧.png` | 212.2 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **主角-愧疚.png**<br><sub>`child-protagonist-44e0c6-png`</sub> | `public/game-assets/assets/characters/child-protagonist/主角-愧疚.png` | 137.1 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **主角-愧疚.png**<br><sub>`elder-protagonist-4be0d1-png`</sub> | `public/game-assets/assets/characters/elder-protagonist/主角-愧疚.png` | 210.6 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **主角-懵懂.png**<br><sub>`child-protagonist-516002-png`</sub> | `public/game-assets/assets/characters/child-protagonist/主角-懵懂.png` | 139.0 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **主角-疲惫.png**<br><sub>`adult-protagonist-6cef1a-png`</sub> | `public/game-assets/assets/characters/adult-protagonist/主角-疲惫.png` | 164.3 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **主角-疲惫.png**<br><sub>`elder-protagonist-3d08d9-png`</sub> | `public/game-assets/assets/characters/elder-protagonist/主角-疲惫.png` | 197.5 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **主角-期待.png**<br><sub>`elder-protagonist-49a107-png`</sub> | `public/game-assets/assets/characters/elder-protagonist/主角-期待.png` | 199.9 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **主角-轻松.png**<br><sub>`adult-protagonist-55a391-png`</sub> | `public/game-assets/assets/characters/adult-protagonist/主角-轻松.png` | 152.9 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **主角-任性.png**<br><sub>`child-protagonist-a1bad8-png`</sub> | `public/game-assets/assets/characters/child-protagonist/主角-任性.png` | 131.0 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **主角-温暖.png**<br><sub>`adult-protagonist-7577e7-png`</sub> | `public/game-assets/assets/characters/adult-protagonist/主角-温暖.png` | 165.0 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **主角-温暖.png**<br><sub>`elder-protagonist-ecde48-png`</sub> | `public/game-assets/assets/characters/elder-protagonist/主角-温暖.png` | 210.0 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **主角-心疼.png**<br><sub>`adult-protagonist-c69c0c-png`</sub> | `public/game-assets/assets/characters/adult-protagonist/主角-心疼.png` | 190.1 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **主角-心疼.png**<br><sub>`child-protagonist-368285-png`</sub> | `public/game-assets/assets/characters/child-protagonist/主角-心疼.png` | 148.5 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **主角-正常.png**<br><sub>`adult-protagonist-990c34-png`</sub> | `public/game-assets/assets/characters/adult-protagonist/主角-正常.png` | 166.9 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **主角-正常.png**<br><sub>`child-protagonist-8cf699-png`</sub> | `public/game-assets/assets/characters/child-protagonist/主角-正常.png` | 127.8 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **主角-正常.png**<br><sub>`elder-protagonist-3a398a-png`</sub> | `public/game-assets/assets/characters/elder-protagonist/主角-正常.png` | 148.3 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **主角-执迷.png**<br><sub>`elder-protagonist-38820c-png`</sub> | `public/game-assets/assets/characters/elder-protagonist/主角-执迷.png` | 224.0 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **Agarose Powder.png**<br><sub>`agarose-powder-png`</sub> | `public/virtual-lab/experiment9-assets/processed/Reagents/Agarose Powder.png` | 11.1 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **alcohol-lamp.png**<br><sub>`alcohol-lamp-1003-png`</sub> | `public/virtual-lab/images/alcohol-lamp.png` | 1.4 | *待上传* | 3 | Referenced in 3 location(s) |
+| 🟢 在用 | `image` | `game` | **alcohol-lamp.png**<br><sub>`alcohol-lamp-9a22-png`</sub> | `public/virtual-lab/images/experiment2/sidebar/alcohol-lamp.png` | 639.6 | *待上传* | 3 | Referenced in 3 location(s) |
+| 🟢 在用 | `image` | `home` | **anxiety-label.webp**<br><sub>`anxiety-label-webp`</sub> | `src/assets/home/scene-01-new/anxiety-label.webp` | 13.3 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `home` | **anxiety.webp**<br><sub>`anxiety-webp`</sub> | `src/assets/home/scene-01-new/anxiety.webp` | 66.0 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **apple-touch-icon.png**<br><sub>`apple-touch-icon-png`</sub> | `public/virtual-lab/experiment4_html/data/apple-touch-icon.png` | 9.1 | *待上传* | 2 | Referenced in 2 location(s) |
+| 🟢 在用 | `image` | `game` | **apple-touch-icon.png**<br><sub>`apple-touch-icon-32ec-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/apple-touch-icon.png` | 9.1 | *待上传* | 2 | Referenced in 2 location(s) |
+| 🟢 在用 | `image` | `shared` | **back-to-top.png**<br><sub>`back-to-top-png`</sub> | `src/assets/wiki/back-to-top.png` | 61.7 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **background_new.png**<br><sub>`background-new-png`</sub> | `public/virtual-lab/images/experiment2/background_new.png` | 595.0 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **balance.png**<br><sub>`balance-png`</sub> | `public/virtual-lab/experiment4_lab/assets/ppt/balance.png` | 29.8 | *待上传* | 4 | Referenced in 4 location(s) |
+| 🟢 在用 | `image` | `game` | **beaker.png**<br><sub>`beaker-png`</sub> | `public/virtual-lab/experiment4_lab/assets/ppt/beaker.png` | 37.5 | *待上传* | 3 | Referenced in 3 location(s) |
+| 🟢 在用 | `image` | `game` | **beaker.png**<br><sub>`beaker-7c40-png`</sub> | `public/virtual-lab/experiment9-assets/processed/Shared Resources/beaker.png` | 13.3 | *待上传* | 3 | Referenced in 3 location(s) |
+| 🟢 在用 | `image` | `game` | **beaker.png**<br><sub>`beaker-490b-png`</sub> | `public/virtual-lab/images/experiment2/sidebar/beaker.png` | 37.5 | *待上传* | 3 | Referenced in 3 location(s) |
+| 🟢 在用 | `image` | `game` | **Beaker.png**<br><sub>`beaker-7633-png`</sub> | `public/virtual-lab/images/experiment3/Beaker.png` | 35.6 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **Beaker30ml.png**<br><sub>`beaker30ml-png`</sub> | `public/virtual-lab/images/experiment3/Beaker30ml.png` | 553.0 | *待上传* | 2 | Referenced in 2 location(s) |
+| 🟢 在用 | `image` | `game` | **bench-blue-rack.png**<br><sub>`bench-blue-rack-png`</sub> | `public/virtual-lab/images/experiment5/bench-blue-rack.png` | 1127.8 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **bench-box-left.png**<br><sub>`bench-box-left-png`</sub> | `public/virtual-lab/images/experiment5/bench-box-left.png` | 475.1 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **bench-box-right.png**<br><sub>`bench-box-right-png`</sub> | `public/virtual-lab/images/experiment5/bench-box-right.png` | 397.2 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **bench-full.png**<br><sub>`bench-full-png`</sub> | `public/virtual-lab/images/experiment5/bench-full.png` | 123.0 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **bench-gel-comb.png**<br><sub>`bench-gel-comb-png`</sub> | `public/virtual-lab/images/experiment5/bench-gel-comb.png` | 127.1 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **bench-gel-wells.png**<br><sub>`bench-gel-wells-png`</sub> | `public/virtual-lab/images/experiment5/bench-gel-wells.png` | 117.8 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **bench-tae-front.png**<br><sub>`bench-tae-front-png`</sub> | `public/virtual-lab/images/experiment5/bench-tae-front.png` | 133.9 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **bench-tubes.png**<br><sub>`bench-tubes-png`</sub> | `public/virtual-lab/images/experiment5/bench-tubes.png` | 348.8 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **bench.png**<br><sub>`bench-png`</sub> | `public/virtual-lab/experiment4_lab/assets/ppt/bench.png` | 631.5 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `shared` | **bg.png**<br><sub>`bg-png`</sub> | `src/assets/loading/bg.png` | 798.5 | *待上传* | 7 | Referenced in 7 location(s) |
+| 🟢 在用 | `image` | `game` | **bg.png**<br><sub>`bg-7946-png`</sub> | `public/virtual-lab/images/experiment2/bg.png` | 47.8 | *待上传* | 7 | Referenced in 7 location(s) |
+| 🟢 在用 | `image` | `shared` | **bg.webp**<br><sub>`bg-webp`</sub> | `src/assets/loading/bg.webp` | 23.5 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **bio-1.png**<br><sub>`bio-1-png`</sub> | `public/game-assets/bio-memory/bio-1.png` | 1128.7 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **bio-10.png**<br><sub>`bio-10-png`</sub> | `public/game-assets/bio-memory/bio-10.png` | 1049.6 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **bio-11.png**<br><sub>`bio-11-png`</sub> | `public/game-assets/bio-memory/bio-11.png` | 1172.2 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **bio-12.png**<br><sub>`bio-12-png`</sub> | `public/game-assets/bio-memory/bio-12.png` | 1154.8 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **bio-13.png**<br><sub>`bio-13-png`</sub> | `public/game-assets/bio-memory/bio-13.png` | 1119.3 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **bio-14.png**<br><sub>`bio-14-png`</sub> | `public/game-assets/bio-memory/bio-14.png` | 1132.9 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **bio-15.png**<br><sub>`bio-15-png`</sub> | `public/game-assets/bio-memory/bio-15.png` | 1357.8 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **bio-16.png**<br><sub>`bio-16-png`</sub> | `public/game-assets/bio-memory/bio-16.png` | 1104.4 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **bio-17.png**<br><sub>`bio-17-png`</sub> | `public/game-assets/bio-memory/bio-17.png` | 1072.5 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **bio-18.png**<br><sub>`bio-18-png`</sub> | `public/game-assets/bio-memory/bio-18.png` | 1163.5 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **bio-2.png**<br><sub>`bio-2-png`</sub> | `public/game-assets/bio-memory/bio-2.png` | 1094.3 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **bio-3.png**<br><sub>`bio-3-png`</sub> | `public/game-assets/bio-memory/bio-3.png` | 1098.2 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **bio-4.png**<br><sub>`bio-4-png`</sub> | `public/game-assets/bio-memory/bio-4.png` | 1090.0 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **bio-5.png**<br><sub>`bio-5-png`</sub> | `public/game-assets/bio-memory/bio-5.png` | 1107.7 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **bio-6.png**<br><sub>`bio-6-png`</sub> | `public/game-assets/bio-memory/bio-6.png` | 1125.0 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **bio-7.png**<br><sub>`bio-7-png`</sub> | `public/game-assets/bio-memory/bio-7.png` | 1229.6 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **bio-8.png**<br><sub>`bio-8-png`</sub> | `public/game-assets/bio-memory/bio-8.png` | 1077.9 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **bio-9.png**<br><sub>`bio-9-png`</sub> | `public/game-assets/bio-memory/bio-9.png` | 1338.6 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **blue_table.png**<br><sub>`blue-table-png`</sub> | `public/virtual-lab/images/blue_table.png` | 631.5 | *待上传* | 4 | Referenced in 4 location(s) |
+| 🟢 在用 | `image` | `game` | **book-bg.png**<br><sub>`book-bg-png`</sub> | `public/game-assets/assets/ui/book-bg.png` | 1898.9 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **bopian.png**<br><sub>`bopian-png`</sub> | `public/virtual-lab/images/experiment2/bopian.png` | 18.9 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `shared` | **breast-guardian-showcase.png**<br><sub>`breast-guardian-showcase-png`</sub> | `src/assets/wiki/breast-guardian-showcase.png` | 5585.6 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **brown-bottle.png**<br><sub>`brown-bottle-png`</sub> | `public/virtual-lab/images/experiment5/brown-bottle.png` | 2476.5 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **buffer-blue.png**<br><sub>`buffer-blue-png`</sub> | `public/virtual-lab/experiment4_lab/assets/ppt/buffer-blue.png` | 1055.5 | *待上传* | 6 | Referenced in 6 location(s) |
+| 🟢 在用 | `image` | `game` | **buffer-green.png**<br><sub>`buffer-green-png`</sub> | `public/virtual-lab/experiment4_lab/assets/ppt/buffer-green.png` | 737.0 | *待上传* | 6 | Referenced in 6 location(s) |
+| 🟢 在用 | `image` | `game` | **buffer-orange.png**<br><sub>`buffer-orange-png`</sub> | `public/virtual-lab/experiment4_lab/assets/ppt/buffer-orange.png` | 756.6 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **buffer-pink.svg**<br><sub>`buffer-pink-svg`</sub> | `public/virtual-lab/experiment4_lab/assets/ppt/buffer-pink.svg` | 1.0 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **buffer-purple.png**<br><sub>`buffer-purple-png`</sub> | `public/virtual-lab/experiment4_lab/assets/ppt/buffer-purple.png` | 1014.5 | *待上传* | 3 | Referenced in 3 location(s) |
+| 🟢 在用 | `image` | `game` | **cacl2.png**<br><sub>`cacl2-png`</sub> | `public/virtual-lab/images/experiment8/sidebar/cacl2.png` | 3.5 | *待上传* | 2 | Referenced in 2 location(s) |
+| 🟢 在用 | `image` | `game` | **card-back.jpg**<br><sub>`card-back-jpg`</sub> | `public/game-assets/bio-memory/card-back.jpg` | 1354.8 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **cedar-oil.png**<br><sub>`cedar-oil-png`</sub> | `public/virtual-lab/images/experiment2/sidebar/cedar-oil.png` | 1393.8 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **centrifuge.png**<br><sub>`centrifuge-png`</sub> | `public/virtual-lab/experiment4_lab/assets/ppt/centrifuge.png` | 44.2 | *待上传* | 10 | Referenced in 10 location(s) |
+| 🟢 在用 | `image` | `game` | **centrifuge.png**<br><sub>`centrifuge-cea2-png`</sub> | `public/virtual-lab/images/experiment9/sidebar/centrifuge.png` | 44.2 | *待上传* | 10 | Referenced in 10 location(s) |
+| 🟢 在用 | `image` | `game` | **centrifuge.webp**<br><sub>`centrifuge-webp`</sub> | `public/virtual-lab/images/experiment7/centrifuge.webp` | 4.4 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **chamber.png**<br><sub>`chamber-png`</sub> | `public/virtual-lab/images/experiment8/sidebar/chamber.png` | 17.0 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **chamber.png**<br><sub>`chamber-aad1-png`</sub> | `public/virtual-lab/images/experiment9/sidebar/chamber.png` | 17.0 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `home` | **chemotherapy-label.webp**<br><sub>`chemotherapy-label-webp`</sub> | `src/assets/home/scene-01-new/chemotherapy-label.webp` | 20.0 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `home` | **chemotherapy.webp**<br><sub>`chemotherapy-webp`</sub> | `src/assets/home/scene-01-new/chemotherapy.webp` | 115.9 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **Cleanbench_part.png**<br><sub>`cleanbench-part-png`</sub> | `public/virtual-lab/images/Cleanbench_part.png` | 517.7 | *待上传* | 5 | Referenced in 5 location(s) |
+| 🟢 在用 | `image` | `game` | **cleanBenchSmall.webp**<br><sub>`cleanbenchsmall-webp`</sub> | `public/virtual-lab/images/experiment7/cleanBenchSmall.webp` | 4.5 | *待上传* | 3 | Referenced in 3 location(s) |
+| 🟢 在用 | `image` | `home` | **clinician-concerned.png**<br><sub>`clinician-concerned-png`</sub> | `src/assets/home/ward-transition/clinician-concerned.png` | 1038.1 | *待上传* | 2 | Referenced in 2 location(s) |
+| 🟢 在用 | `image` | `home` | **clinician-ellipsis.png**<br><sub>`clinician-ellipsis-png`</sub> | `src/assets/home/ward-transition/clinician-ellipsis.png` | 157.6 | *待上传* | 2 | Referenced in 2 location(s) |
+| 🟢 在用 | `image` | `game` | **column-collection.png**<br><sub>`column-collection-png`</sub> | `public/virtual-lab/experiment4_lab/assets/ppt/column-collection.png` | 182.4 | *待上传* | 5 | Referenced in 5 location(s) |
+| 🟢 在用 | `image` | `game` | **column-green-alt.png**<br><sub>`column-green-alt-png`</sub> | `public/virtual-lab/experiment4_lab/assets/ppt/column-green-alt.png` | 4.0 | *待上传* | 7 | Referenced in 7 location(s) |
+| 🟢 在用 | `image` | `game` | **column-green.png**<br><sub>`column-green-png`</sub> | `public/virtual-lab/experiment4_lab/assets/ppt/column-green.png` | 13.1 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **column-mini.png**<br><sub>`column-mini-png`</sub> | `public/virtual-lab/experiment4_lab/assets/ppt/column-mini.png` | 195.3 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **comb.png**<br><sub>`comb-png`</sub> | `public/virtual-lab/experiment4_lab/assets/ppt/comb.png` | 5.4 | *待上传* | 7 | Referenced in 7 location(s) |
+| 🟢 在用 | `image` | `game` | **Constant Temperature Incubator.png**<br><sub>`constant-temperature-incubator-png`</sub> | `public/virtual-lab/experiment9-assets/processed/Instruments/Constant Temperature Incubator.png` | 1967.7 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **Coomassie Brilliant Blue R-250 Staining Solution.png**<br><sub>`coomassie-brilliant-blue-r-250-staining-solution-png`</sub> | `public/virtual-lab/experiment9-assets/processed/Reagents/Coomassie Brilliant Blue R-250 Staining Solution.png` | 16.2 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **Cover Slip.png**<br><sub>`cover-slip-png`</sub> | `public/virtual-lab/experiment9-assets/processed/Instruments/Cover Slip.png` | 14.1 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **crystal-violet.png**<br><sub>`crystal-violet-png`</sub> | `public/virtual-lab/images/experiment2/sidebar/crystal-violet.png` | 1290.6 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `shared` | **cursor-active.png**<br><sub>`cursor-active-png`</sub> | `src/assets/wiki/cursor-active.png` | 8.7 | *待上传* | 3 | Referenced in 3 location(s) |
+| 🟢 在用 | `image` | `shared` | **cursor-default.png**<br><sub>`cursor-default-png`</sub> | `src/assets/wiki/cursor-default.png` | 8.8 | *待上传* | 2 | Referenced in 2 location(s) |
+| 🟢 在用 | `image` | `home` | **death-rate-label.webp**<br><sub>`death-rate-label-webp`</sub> | `src/assets/home/scene-01-new/death-rate-label.webp` | 8.7 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `home` | **death-rate.webp**<br><sub>`death-rate-webp`</sub> | `src/assets/home/scene-01-new/death-rate.webp` | 95.9 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `project` | **description-figure1.png**<br><sub>`description-figure1-png`</sub> | `src/assets/wiki/description/description-figure1.png` | 4480.2 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `project` | **description-figure1.png**<br><sub>`description-figure1-6e12-png`</sub> | `文案集/project/description/图片和附件/description-figure1.png` | 4480.2 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `project` | **description-figure2.png**<br><sub>`description-figure2-png`</sub> | `src/assets/wiki/description/description-figure2.png` | 2117.6 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `project` | **description-figure2.png**<br><sub>`description-figure2-630b-png`</sub> | `文案集/project/description/图片和附件/description-figure2.png` | 2117.6 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `project` | **description-figure3.png**<br><sub>`description-figure3-png`</sub> | `src/assets/wiki/description/description-figure3.png` | 970.5 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `project` | **description-figure3.png**<br><sub>`description-figure3-28af-png`</sub> | `文案集/project/description/图片和附件/description-figure3.png` | 970.5 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `project` | **description-figure4.png**<br><sub>`description-figure4-png`</sub> | `src/assets/wiki/description/description-figure4.png` | 1470.3 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `project` | **description-figure4.png**<br><sub>`description-figure4-2ecd-png`</sub> | `文案集/project/description/图片和附件/description-figure4.png` | 1470.3 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `project` | **description-figure5.png**<br><sub>`description-figure5-png`</sub> | `src/assets/wiki/description/description-figure5.png` | 2572.8 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `project` | **description-figure5.png**<br><sub>`description-figure5-02e0-png`</sub> | `文案集/project/description/图片和附件/description-figure5.png` | 2572.8 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `project` | **description-figure6.png**<br><sub>`description-figure6-png`</sub> | `src/assets/wiki/description/description-figure6.png` | 2851.2 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `project` | **description-figure6.png**<br><sub>`description-figure6-422a-png`</sub> | `文案集/project/description/图片和附件/description-figure6.png` | 2851.2 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `project` | **description-figure7.png**<br><sub>`description-figure7-png`</sub> | `src/assets/wiki/description/description-figure7.png` | 3742.1 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `project` | **description-figure7.png**<br><sub>`description-figure7-4ce2-png`</sub> | `文案集/project/description/图片和附件/description-figure7.png` | 3742.1 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **Destaining Solution.png**<br><sub>`destaining-solution-png`</sub> | `public/virtual-lab/experiment9-assets/processed/Reagents/Destaining Solution.png` | 12.2 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **dh5a-colony.png**<br><sub>`dh5a-colony-png`</sub> | `public/virtual-lab/images/experiment8/sidebar/dh5a-colony.png` | 1213.5 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **diguan.png**<br><sub>`diguan-png`</sub> | `public/virtual-lab/images/experiment2/diguan.png` | 300.4 | *待上传* | 2 | Referenced in 2 location(s) |
+| 🟢 在用 | `image` | `game` | **DL2000 DNA Marker.png**<br><sub>`dl2000-dna-marker-png`</sub> | `public/virtual-lab/experiment9-assets/processed/Reagents/DL2000 DNA Marker.png` | 7.5 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **dna-band.png**<br><sub>`dna-band-png`</sub> | `public/virtual-lab/experiment4_lab/assets/ppt/dna-band.png` | 4.8 | *待上传* | 2 | Referenced in 2 location(s) |
+| 🟢 在用 | `image` | `dry-lab` | **dry-lab-games-hero-v2.png**<br><sub>`dry-lab-games-hero-v2-png`</sub> | `src/assets/wiki/dry-lab-games-hero-v2.png` | 2275.3 | *待上传* | 2 | Referenced in 2 location(s) |
+| 🟢 在用 | `image` | `dry-lab` | **dry-lab-hardware-hero.webp**<br><sub>`dry-lab-hardware-hero-webp`</sub> | `src/assets/wiki/dry-lab-heroes/dry-lab-hardware-hero.webp` | 95.7 | *待上传* | 2 | Referenced in 2 location(s) |
+| 🟢 在用 | `image` | `dry-lab` | **dry-lab-model-hero.webp**<br><sub>`dry-lab-model-hero-webp`</sub> | `src/assets/wiki/dry-lab-heroes/dry-lab-model-hero.webp` | 96.3 | *待上传* | 2 | Referenced in 2 location(s) |
+| 🟢 在用 | `image` | `dry-lab` | **dry-lab-software-hero.webp**<br><sub>`dry-lab-software-hero-webp`</sub> | `src/assets/wiki/dry-lab-heroes/dry-lab-software-hero.webp` | 79.1 | *待上传* | 2 | Referenced in 2 location(s) |
+| 🟢 在用 | `image` | `shared` | **dry.png**<br><sub>`dry-png`</sub> | `src/assets/wiki/dry.png` | 225.9 | *待上传* | 2 | Referenced in 2 location(s) |
+| 🟢 在用 | `image` | `game` | **Electrophoresis Chamber.png**<br><sub>`electrophoresis-chamber-png`</sub> | `public/virtual-lab/experiment9-assets/processed/Instruments/Electrophoresis Chamber.png` | 11.8 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **Electrophoresis Power Supply.png**<br><sub>`electrophoresis-power-supply-png`</sub> | `public/virtual-lab/experiment9-assets/processed/Instruments/Electrophoresis Power Supply.png` | 20.2 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **electrophoresis-connected-new.png**<br><sub>`electrophoresis-connected-new-png`</sub> | `public/virtual-lab/images/experiment5/electrophoresis-connected-new.png` | 65.8 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **electrophoresis-connected.png**<br><sub>`electrophoresis-connected-png`</sub> | `public/virtual-lab/images/experiment5/electrophoresis-connected.png` | 1678.3 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **electrophoresis-setup.png**<br><sub>`electrophoresis-setup-png`</sub> | `public/virtual-lab/images/experiment5/electrophoresis-setup.png` | 65.8 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **electrophoresis-text.png**<br><sub>`electrophoresis-text-png`</sub> | `public/virtual-lab/images/experiment5/electrophoresis-text.png` | 3.7 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **ElectrophoresisChamber.png**<br><sub>`electrophoresischamber-png`</sub> | `public/virtual-lab/images/experiment3/ElectrophoresisChamber.png` | 98.3 | *待上传* | 3 | Referenced in 3 location(s) |
+| 🟢 在用 | `image` | `game` | **ElectrophoresisChamberConnected.png**<br><sub>`electrophoresischamberconnected-png`</sub> | `public/virtual-lab/images/experiment3/ElectrophoresisChamberConnected.png` | 600.1 | *待上传* | 3 | Referenced in 3 location(s) |
+| 🟢 在用 | `image` | `game` | **ElectrophoresisPowerSupply.png**<br><sub>`electrophoresispowersupply-png`</sub> | `public/virtual-lab/images/experiment3/ElectrophoresisPowerSupply.png` | 18.5 | *待上传* | 3 | Referenced in 3 location(s) |
+| 🟢 在用 | `image` | `game` | **ending-bg.jpg**<br><sub>`ending-bg-jpg`</sub> | `public/game-assets/assets/ui/ending-bg.jpg` | 675.9 | *待上传* | 2 | Referenced in 2 location(s) |
+| 🟢 在用 | `image` | `engagement` | **engagement-education-hero-v2.webp**<br><sub>`engagement-education-hero-v2-webp`</sub> | `src/assets/wiki/engagement-heroes/engagement-education-hero-v2.webp` | 142.0 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `engagement` | **engagement-entrepreneurship-hero-v2.webp**<br><sub>`engagement-entrepreneurship-hero-v2-webp`</sub> | `src/assets/wiki/engagement-heroes/engagement-entrepreneurship-hero-v2.webp` | 150.7 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `engagement` | **engagement-human-practices-hero-v2.webp**<br><sub>`engagement-human-practices-hero-v2-webp`</sub> | `src/assets/wiki/engagement-heroes/engagement-human-practices-hero-v2.webp` | 116.8 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `engagement` | **engagement-inclusivity-hero-v2.webp**<br><sub>`engagement-inclusivity-hero-v2-webp`</sub> | `src/assets/wiki/engagement-heroes/engagement-inclusivity-hero-v2.webp` | 143.3 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `engagement` | **engagement-sustainability-hero-v2.webp**<br><sub>`engagement-sustainability-hero-v2-webp`</sub> | `src/assets/wiki/engagement-heroes/engagement-sustainability-hero-v2.webp` | 145.6 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `engagement` | **engagement.png**<br><sub>`engagement-png`</sub> | `src/assets/wiki/engagement.png` | 263.1 | *待上传* | 3 | Referenced in 3 location(s) |
+| 🟢 在用 | `image` | `game` | **ep-tube-rack.png**<br><sub>`ep-tube-rack-8ee6-png`</sub> | `public/virtual-lab/images/experiment8/sidebar/ep-tube-rack.png` | 1127.8 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **ep-tube.png**<br><sub>`ep-tube-2cc0-png`</sub> | `public/virtual-lab/images/experiment8/sidebar/ep-tube.png` | 346.5 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **EPTubeBlue.png**<br><sub>`eptubeblue-png`</sub> | `public/virtual-lab/images/experiment3/EPTubeBlue.png` | 983.0 | *待上传* | 3 | Referenced in 3 location(s) |
+| 🟢 在用 | `image` | `game` | **EPTubeEmpty.png**<br><sub>`eptubeempty-png`</sub> | `public/virtual-lab/images/experiment3/EPTubeEmpty.png` | 336.4 | *待上传* | 2 | Referenced in 2 location(s) |
+| 🟢 在用 | `image` | `game` | **EPTubeGreen.png**<br><sub>`eptubegreen-png`</sub> | `public/virtual-lab/images/experiment3/EPTubeGreen.png` | 792.7 | *待上传* | 2 | Referenced in 2 location(s) |
+| 🟢 在用 | `image` | `game` | **EPTubeGreenTilted.png**<br><sub>`eptubegreentilted-png`</sub> | `public/virtual-lab/images/experiment3/EPTubeGreenTilted.png` | 723.0 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **EPTubeLightBlue.png**<br><sub>`eptubelightblue-png`</sub> | `public/virtual-lab/images/experiment3/EPTubeLightBlue.png` | 353.2 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **EPTubeLightBlueEmpty.png**<br><sub>`eptubelightblueempty-png`</sub> | `public/virtual-lab/images/experiment3/EPTubeLightBlueEmpty.png` | 8.1 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **EPTubeOrange.png**<br><sub>`eptubeorange-png`</sub> | `public/virtual-lab/images/experiment3/EPTubeOrange.png` | 877.7 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **EPTubeOrangeTilted.png**<br><sub>`eptubeorangetilted-png`</sub> | `public/virtual-lab/images/experiment3/EPTubeOrangeTilted.png` | 737.6 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **EPTubePurple.png**<br><sub>`eptubepurple-png`</sub> | `public/virtual-lab/images/experiment3/EPTubePurple.png` | 993.8 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **EPTubeSmallBlue.png**<br><sub>`eptubesmallblue-png`</sub> | `public/virtual-lab/images/experiment3/EPTubeSmallBlue.png` | 387.1 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **EPTubeSmallBlue2.png**<br><sub>`eptubesmallblue2-png`</sub> | `public/virtual-lab/images/experiment3/EPTubeSmallBlue2.png` | 387.1 | *待上传* | 2 | Referenced in 2 location(s) |
+| 🟢 在用 | `image` | `game` | **EPTubeSmallClear.png**<br><sub>`eptubesmallclear-png`</sub> | `public/virtual-lab/images/experiment3/EPTubeSmallClear.png` | 158.2 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **EPTubeSmallClearWater.png**<br><sub>`eptubesmallclearwater-png`</sub> | `public/virtual-lab/images/experiment3/EPTubeSmallClearWater.png` | 212.6 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **EPTubeYellowTilted.png**<br><sub>`eptubeyellowtilted-png`</sub> | `public/virtual-lab/images/experiment3/EPTubeYellowTilted.png` | 772.8 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **ErlenmeyerFlask.png**<br><sub>`erlenmeyerflask-png`</sub> | `public/virtual-lab/images/experiment3/ErlenmeyerFlask.png` | 404.2 | *待上传* | 3 | Referenced in 3 location(s) |
+| 🟢 在用 | `image` | `game` | **ErlenmeyerFlaskPowder.png**<br><sub>`erlenmeyerflaskpowder-png`</sub> | `public/virtual-lab/images/experiment3/ErlenmeyerFlaskPowder.png` | 334.3 | *待上传* | 3 | Referenced in 3 location(s) |
+| 🟢 在用 | `image` | `game` | **ErlenmeyerFlaskRed.png**<br><sub>`erlenmeyerflaskred-png`</sub> | `public/virtual-lab/images/experiment3/ErlenmeyerFlaskRed.png` | 478.7 | *待上传* | 2 | Referenced in 2 location(s) |
+| 🟢 在用 | `image` | `game` | **ethyl-alcohol.png**<br><sub>`ethyl-alcohol-png`</sub> | `public/virtual-lab/images/experiment2/sidebar/ethyl-alcohol.png` | 1298.7 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **favicon.png**<br><sub>`favicon-png`</sub> | `public/virtual-lab/favicon.png` | 128.7 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **first-frame.jpg**<br><sub>`first-frame-jpg`</sub> | `public/virtual-lab/experiment9-assets/first-frame.jpg` | 78.4 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **first-frame.png**<br><sub>`first-frame-png`</sub> | `public/virtual-lab/experiment4_html/first-frame.png` | 667.8 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **flask-blue-realistic.png**<br><sub>`flask-blue-realistic-png`</sub> | `public/virtual-lab/images/experiment5/flask-blue-realistic.png` | 1204.9 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **flask.png**<br><sub>`flask-png`</sub> | `public/virtual-lab/experiment4_lab/assets/ppt/flask.png` | 414.6 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **Fluorescence Microscope.png**<br><sub>`fluorescence-microscope-png`</sub> | `public/virtual-lab/experiment9-assets/processed/Instruments/Fluorescence Microscope.png` | 450.3 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **foreground-1.png**<br><sub>`foreground-1-png`</sub> | `public/game-assets/assets/ui/foreground-1.png` | 292.4 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **foreground-2.png**<br><sub>`foreground-2-png`</sub> | `public/game-assets/assets/ui/foreground-2.png` | 707.1 | *待上传* | 2 | Referenced in 2 location(s) |
+| 🟢 在用 | `image` | `game` | **freezer-open.png**<br><sub>`freezer-open-png`</sub> | `public/virtual-lab/images/experiment1/freezer-open.png` | 47.5 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **freezer.png**<br><sub>`freezer-png`</sub> | `public/virtual-lab/images/freezer.png` | 17.0 | *待上传* | 2 | Referenced in 2 location(s) |
+| 🟢 在用 | `image` | `game` | **Gel Comb.png**<br><sub>`gel-comb-png`</sub> | `public/virtual-lab/experiment9-assets/processed/Instruments/Gel Comb.png` | 6.0 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **gel-cast-frame-new.png**<br><sub>`gel-cast-frame-new-png`</sub> | `public/virtual-lab/images/experiment5/gel-cast-frame-new.png` | 2069.2 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **gel-cast-frame-transparent.png**<br><sub>`gel-cast-frame-transparent-png`</sub> | `public/virtual-lab/images/experiment5/gel-cast-frame-transparent.png` | 29.9 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **gel-cast-frame-v2.png**<br><sub>`gel-cast-frame-v2-png`</sub> | `public/virtual-lab/images/experiment5/gel-cast-frame-v2.png` | 462.2 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **gel-cast-frame-v3.png**<br><sub>`gel-cast-frame-v3-png`</sub> | `public/virtual-lab/images/experiment5/gel-cast-frame-v3.png` | 1766.1 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **gel-comb-flat.png**<br><sub>`gel-comb-flat-png`</sub> | `public/virtual-lab/images/experiment5/gel-comb-flat.png` | 3.8 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **gel-comb-green-new.png**<br><sub>`gel-comb-green-new-png`</sub> | `public/virtual-lab/images/experiment5/gel-comb-green-new.png` | 1567.5 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **gel-comb-green-transparent.png**<br><sub>`gel-comb-green-transparent-png`</sub> | `public/virtual-lab/images/experiment5/gel-comb-green-transparent.png` | 6.4 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **gel-comb-v2.png**<br><sub>`gel-comb-v2-png`</sub> | `public/virtual-lab/images/experiment5/gel-comb-v2.png` | 220.1 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **gel-comb.png**<br><sub>`gel-comb-42d3-png`</sub> | `public/virtual-lab/images/experiment8/sidebar/gel-comb.png` | 5.4 | *待上传* | 2 | Referenced in 2 location(s) |
+| 🟢 在用 | `image` | `game` | **gel-comb.png**<br><sub>`gel-comb-6eed-png`</sub> | `public/virtual-lab/images/experiment9/sidebar/gel-comb.png` | 5.4 | *待上传* | 2 | Referenced in 2 location(s) |
+| 🟢 在用 | `image` | `game` | **gel-dna-ladder.png**<br><sub>`gel-dna-ladder-png`</sub> | `public/virtual-lab/experiment4_lab/assets/ppt/gel-dna-ladder.png` | 103.2 | *待上传* | 2 | Referenced in 2 location(s) |
+| 🟢 在用 | `image` | `game` | **gel-electrophoresis-progress.png**<br><sub>`gel-electrophoresis-progress-png`</sub> | `public/virtual-lab/images/experiment5/gel-electrophoresis-progress.png` | 36.4 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **gel-frame-empty.png**<br><sub>`gel-frame-empty-png`</sub> | `public/virtual-lab/images/experiment5/gel-frame-empty.png` | 17.4 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **gel-imager-on.png**<br><sub>`gel-imager-on-png`</sub> | `public/virtual-lab/experiment4_lab/assets/ppt/gel-imager-on.png` | 55.1 | *待上传* | 3 | Referenced in 3 location(s) |
+| 🟢 在用 | `image` | `game` | **gel-imager.png**<br><sub>`gel-imager-png`</sub> | `public/virtual-lab/experiment4_lab/assets/ppt/gel-imager.png` | 47.5 | *待上传* | 4 | Referenced in 4 location(s) |
+| 🟢 在用 | `image` | `game` | **gel-imager.png**<br><sub>`gel-imager-bb36-png`</sub> | `public/virtual-lab/images/experiment8/sidebar/gel-imager.png` | 42.9 | *待上传* | 4 | Referenced in 4 location(s) |
+| 🟢 在用 | `image` | `game` | **gel-imager.png**<br><sub>`gel-imager-4a21-png`</sub> | `public/virtual-lab/images/experiment9/sidebar/gel-imager.png` | 42.9 | *待上传* | 4 | Referenced in 4 location(s) |
+| 🟢 在用 | `image` | `game` | **gel-lanes.png**<br><sub>`gel-lanes-png`</sub> | `public/virtual-lab/experiment4_lab/assets/ppt/gel-lanes.png` | 57.6 | *待上传* | 7 | Referenced in 7 location(s) |
+| 🟢 在用 | `image` | `game` | **gel-progress-23.png**<br><sub>`gel-progress-23-png`</sub> | `public/virtual-lab/images/experiment5/gel-progress-23.png` | 36.4 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **gel-red-solid.png**<br><sub>`gel-red-solid-png`</sub> | `public/virtual-lab/images/experiment5/gel-red-solid.png` | 57.8 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **gel-red-wells.png**<br><sub>`gel-red-wells-png`</sub> | `public/virtual-lab/images/experiment5/gel-red-wells.png` | 22.6 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **gel-tray-with-comb.png**<br><sub>`gel-tray-with-comb-png`</sub> | `public/virtual-lab/images/experiment5/gel-tray-with-comb.png` | 2272.5 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **gel-tray-with-gel.png**<br><sub>`gel-tray-with-gel-png`</sub> | `public/virtual-lab/images/experiment5/gel-tray-with-gel.png` | 1642.8 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **gel-tray.png**<br><sub>`gel-tray-png`</sub> | `public/virtual-lab/experiment4_lab/assets/ppt/gel-tray.png` | 2572.0 | *待上传* | 2 | Referenced in 2 location(s) |
+| 🟢 在用 | `image` | `game` | **gel-wells-frame.png**<br><sub>`gel-wells-frame-png`</sub> | `public/virtual-lab/images/experiment5/gel-wells-frame.png` | 2329.8 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **GelCassetteBlank.png**<br><sub>`gelcassetteblank-png`</sub> | `public/virtual-lab/images/experiment3/GelCassetteBlank.png` | 183.4 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **GelCassetteBlank2.png**<br><sub>`gelcassetteblank2-png`</sub> | `public/virtual-lab/images/experiment3/GelCassetteBlank2.png` | 318.8 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **GelCassetteBlankOpen.png**<br><sub>`gelcassetteblankopen-png`</sub> | `public/virtual-lab/images/experiment3/GelCassetteBlankOpen.png` | 170.8 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **GelComb.png**<br><sub>`gelcomb-png`</sub> | `public/virtual-lab/images/experiment3/GelComb.png` | 5.1 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **GelRed.png**<br><sub>`gelred-png`</sub> | `public/virtual-lab/experiment9-assets/processed/Reagents/GelRed.png` | 16.0 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **GFP Gene-Specific Forward Primer.png**<br><sub>`gfp-gene-specific-forward-primer-png`</sub> | `public/virtual-lab/experiment9-assets/processed/Reagents/GFP Gene-Specific Forward Primer.png` | 4.9 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **GFP Gene-Specific Reverse Primer.png**<br><sub>`gfp-gene-specific-reverse-primer-png`</sub> | `public/virtual-lab/experiment9-assets/processed/Reagents/GFP Gene-Specific Reverse Primer.png` | 5.6 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **Glass Slide.png**<br><sub>`glass-slide-png`</sub> | `public/virtual-lab/experiment9-assets/processed/Instruments/Glass Slide.png` | 12.6 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **glass-slide.png**<br><sub>`glass-slide-5a03-png`</sub> | `public/virtual-lab/images/experiment2/sidebar/glass-slide.png` | 844.5 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **glass-slide.png**<br><sub>`glass-slide-d8ec-png`</sub> | `public/virtual-lab/images/experiment9/sidebar/glass-slide.png` | 934.5 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **glycerol-cacl2.png**<br><sub>`glycerol-cacl2-png`</sub> | `public/virtual-lab/images/experiment8/sidebar/glycerol-cacl2.png` | 2.1 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `home` | **hair-loss-label.webp**<br><sub>`hair-loss-label-webp`</sub> | `src/assets/home/scene-01-new/hair-loss-label.webp` | 11.3 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `home` | **hair-loss.webp**<br><sub>`hair-loss-webp`</sub> | `src/assets/home/scene-01-new/hair-loss.webp` | 143.7 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `shared` | **hands.png**<br><sub>`hands-png`</sub> | `src/assets/loading/hands.png` | 540.6 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `shared` | **hands.webp**<br><sub>`hands-webp`</sub> | `src/assets/loading/hands.webp` | 39.2 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **High Speed Centrifuge.png**<br><sub>`high-speed-centrifuge-png`</sub> | `public/virtual-lab/experiment9-assets/processed/Instruments/High Speed Centrifuge.png` | 44.2 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **highlight-diguan.png**<br><sub>`highlight-diguan-png`</sub> | `public/virtual-lab/images/experiment2/highlight-diguan.png` | 22.5 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **HighSpeedCentrifuge.png**<br><sub>`highspeedcentrifuge-png`</sub> | `public/virtual-lab/images/experiment3/HighSpeedCentrifuge.png` | 42.8 | *待上传* | 2 | Referenced in 2 location(s) |
+| 🟢 在用 | `image` | `home` | **home-bg.jpg**<br><sub>`home-bg-jpg`</sub> | `public/game-assets/assets/ui/home-bg.jpg` | 1480.6 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `home` | **home-book.png**<br><sub>`home-book-png`</sub> | `public/game-assets/assets/ui/home-book.png` | 141.9 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `home` | **home-start.png**<br><sub>`home-start-png`</sub> | `public/game-assets/assets/ui/home-start.png` | 146.6 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **hood.png**<br><sub>`hood-png`</sub> | `public/virtual-lab/experiment4_lab/assets/ppt/hood.png` | 168.6 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **hospital-logo.png**<br><sub>`hospital-logo-png`</sub> | `public/virtual-lab/experiment4_lab/assets/ppt/hospital-logo.png` | 128.7 | *待上传* | 3 | Referenced in 3 location(s) |
+| 🟢 在用 | `image` | `game` | **hours.png**<br><sub>`hours-png`</sub> | `public/virtual-lab/images/experiment1/hours.png` | 12.9 | *待上传* | 3 | Referenced in 3 location(s) |
+| 🟢 在用 | `image` | `shared` | **hp-clinical-review-v2.png**<br><sub>`hp-clinical-review-v2-png`</sub> | `src/assets/wiki/hp-clinical-review-v2.png` | 1945.7 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `shared` | **hp-community-workshop-v2.png**<br><sub>`hp-community-workshop-v2-png`</sub> | `src/assets/wiki/hp-community-workshop-v2.png` | 2204.2 | *待上传* | 2 | Referenced in 2 location(s) |
+| 🟢 在用 | `image` | `shared` | **hp-lab-review-v2.png**<br><sub>`hp-lab-review-v2-png`</sub> | `src/assets/wiki/hp-lab-review-v2.png` | 1981.2 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `shared` | **hp-portrait-advocate.png**<br><sub>`hp-portrait-advocate-png`</sub> | `src/assets/wiki/hp-portrait-advocate.png` | 472.0 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `shared` | **hp-portrait-clinical.png**<br><sub>`hp-portrait-clinical-png`</sub> | `src/assets/wiki/hp-portrait-clinical.png` | 400.9 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `shared` | **hp-portrait-ethics.png**<br><sub>`hp-portrait-ethics-png`</sub> | `src/assets/wiki/hp-portrait-ethics.png` | 390.5 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `shared` | **hp-portrait-lab.png**<br><sub>`hp-portrait-lab-png`</sub> | `src/assets/wiki/hp-portrait-lab.png` | 392.8 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `shared` | **hp-portrait-regulatory.png**<br><sub>`hp-portrait-regulatory-png`</sub> | `src/assets/wiki/hp-portrait-regulatory.png` | 430.0 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `shared` | **hp-regulatory-review-v2.png**<br><sub>`hp-regulatory-review-v2-png`</sub> | `src/assets/wiki/hp-regulatory-review-v2.png` | 1872.3 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `shared` | **hp-whiteboard-review-v2.png**<br><sub>`hp-whiteboard-review-v2-png`</sub> | `src/assets/wiki/hp-whiteboard-review-v2.png` | 1980.8 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **html5.png**<br><sub>`html5-png`</sub> | `public/virtual-lab/experiment4_html/data/html5.png` | 4.0 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **ice-box.png**<br><sub>`ice-box-688f-png`</sub> | `public/virtual-lab/images/experiment1/ice-box.png` | 2215.1 | *待上传* | 3 | Referenced in 3 location(s) |
+| 🟢 在用 | `image` | `game` | **ice-box.png**<br><sub>`ice-box-e52a-png`</sub> | `public/virtual-lab/images/ice-box.png` | 4.0 | *待上传* | 3 | Referenced in 3 location(s) |
+| 🟢 在用 | `image` | `game` | **IceBoxYellow.png**<br><sub>`iceboxyellow-png`</sub> | `public/virtual-lab/images/experiment3/IceBoxYellow.png` | 2215.1 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **igem-logo.png**<br><sub>`igem-logo-png`</sub> | `public/virtual-lab/experiment4_lab/assets/ppt/igem-logo.png` | 73.3 | *待上传* | 3 | Referenced in 3 location(s) |
+| 🟢 在用 | `image` | `game` | **image0.png**<br><sub>`image0-png`</sub> | `public/virtual-lab/images/experiment5/image0.png` | 31.7 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **image1.png**<br><sub>`image1-png`</sub> | `public/virtual-lab/experiment9-assets/processed/Reagents/image1.png` | 13.6 | *待上传* | 2 | Referenced in 2 location(s) |
+| 🟢 在用 | `image` | `game` | **image1.png**<br><sub>`image1-30c2-png`</sub> | `public/virtual-lab/images/experiment5/image1.png` | 4.3 | *待上传* | 2 | Referenced in 2 location(s) |
+| 🟢 在用 | `image` | `game` | **image1.png**<br><sub>`image1-775b-png`</sub> | `public/virtual-lab/images/experiment7/image1.png` | 631.5 | *待上传* | 2 | Referenced in 2 location(s) |
+| 🟢 在用 | `image` | `game` | **image1.png**<br><sub>`image1-7272-png`</sub> | `public/virtual-lab/images/experiment8/image1.png` | 972.0 | *待上传* | 2 | Referenced in 2 location(s) |
+| 🟢 在用 | `image` | `game` | **image10.png**<br><sub>`image10-png`</sub> | `public/virtual-lab/images/experiment5/image10.png` | 6.8 | *待上传* | 3 | Referenced in 3 location(s) |
+| 🟢 在用 | `image` | `game` | **image10.png**<br><sub>`image10-557f-png`</sub> | `public/virtual-lab/images/experiment7/image10.png` | 37.5 | *待上传* | 3 | Referenced in 3 location(s) |
+| 🟢 在用 | `image` | `game` | **image10.png**<br><sub>`image10-29c3-png`</sub> | `public/virtual-lab/images/experiment8/image10.png` | 73.3 | *待上传* | 3 | Referenced in 3 location(s) |
+| 🟢 在用 | `image` | `game` | **image11.png**<br><sub>`image11-png`</sub> | `public/virtual-lab/images/experiment5/image11.png` | 2394.4 | *待上传* | 2 | Referenced in 2 location(s) |
+| 🟢 在用 | `image` | `game` | **image11.png**<br><sub>`image11-6ae2-png`</sub> | `public/virtual-lab/images/experiment7/image11.png` | 346.5 | *待上传* | 2 | Referenced in 2 location(s) |
+| 🟢 在用 | `image` | `game` | **image11.png**<br><sub>`image11-e76f-png`</sub> | `public/virtual-lab/images/experiment8/image11.png` | 1967.7 | *待上传* | 2 | Referenced in 2 location(s) |
+| 🟢 在用 | `image` | `game` | **image12.png**<br><sub>`image12-png`</sub> | `public/virtual-lab/images/experiment5/image12.png` | 76.5 | *待上传* | 2 | Referenced in 2 location(s) |
+| 🟢 在用 | `image` | `game` | **image12.png**<br><sub>`image12-a067-png`</sub> | `public/virtual-lab/images/experiment7/image12.png` | 42.9 | *待上传* | 2 | Referenced in 2 location(s) |
+| 🟢 在用 | `image` | `game` | **image12.png**<br><sub>`image12-ffc4-png`</sub> | `public/virtual-lab/images/experiment8/image12.png` | 1213.5 | *待上传* | 2 | Referenced in 2 location(s) |
+| 🟢 在用 | `image` | `game` | **image13.png**<br><sub>`image13-png`</sub> | `public/virtual-lab/images/experiment5/image13.png` | 233.8 | *待上传* | 5 | Referenced in 5 location(s) |
+| 🟢 在用 | `image` | `game` | **image13.png**<br><sub>`image13-4a74-png`</sub> | `public/virtual-lab/images/experiment7/image13.png` | 2.2 | *待上传* | 5 | Referenced in 5 location(s) |
+| 🟢 在用 | `image` | `game` | **image13.png**<br><sub>`image13-f34c-png`</sub> | `public/virtual-lab/images/experiment8/image13.png` | 2572.0 | *待上传* | 5 | Referenced in 5 location(s) |
+| 🟢 在用 | `image` | `game` | **image14.png**<br><sub>`image14-png`</sub> | `public/virtual-lab/images/experiment5/image14.png` | 314.5 | *待上传* | 8 | Referenced in 8 location(s) |
+| 🟢 在用 | `image` | `game` | **image14.png**<br><sub>`image14-ccaa-png`</sub> | `public/virtual-lab/images/experiment7/image14.png` | 1.9 | *待上传* | 8 | Referenced in 8 location(s) |
+| 🟢 在用 | `image` | `game` | **image14.png**<br><sub>`image14-2a0d-png`</sub> | `public/virtual-lab/images/experiment8/image14.png` | 17.8 | *待上传* | 8 | Referenced in 8 location(s) |
+| 🟢 在用 | `image` | `game` | **image15.png**<br><sub>`image15-png`</sub> | `public/virtual-lab/images/experiment5/image15.png` | 2.9 | *待上传* | 5 | Referenced in 5 location(s) |
+| 🟢 在用 | `image` | `game` | **image15.png**<br><sub>`image15-0ba8-png`</sub> | `public/virtual-lab/images/experiment7/image15.png` | 1.9 | *待上传* | 5 | Referenced in 5 location(s) |
+| 🟢 在用 | `image` | `game` | **image15.png**<br><sub>`image15-59d6-png`</sub> | `public/virtual-lab/images/experiment8/image15.png` | 47.3 | *待上传* | 5 | Referenced in 5 location(s) |
+| 🟢 在用 | `image` | `game` | **image16.png**<br><sub>`image16-png`</sub> | `public/virtual-lab/images/experiment5/image16.png` | 398.1 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **image16.png**<br><sub>`image16-58ee-png`</sub> | `public/virtual-lab/images/experiment7/image16.png` | 128.7 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **image17.png**<br><sub>`image17-png`</sub> | `public/virtual-lab/images/experiment5/image17.png` | 140.4 | *待上传* | 4 | Referenced in 4 location(s) |
+| 🟢 在用 | `image` | `game` | **image17.png**<br><sub>`image17-9f28-png`</sub> | `public/virtual-lab/images/experiment7/image17.png` | 44.2 | *待上传* | 4 | Referenced in 4 location(s) |
+| 🟢 在用 | `image` | `game` | **image17.png**<br><sub>`image17-9c3c-png`</sub> | `public/virtual-lab/images/experiment8/image17.png` | 44.2 | *待上传* | 4 | Referenced in 4 location(s) |
+| 🟢 在用 | `image` | `game` | **image18.png**<br><sub>`image18-png`</sub> | `public/virtual-lab/images/experiment7/image18.png` | 2387.9 | *待上传* | 3 | Referenced in 3 location(s) |
+| 🟢 在用 | `image` | `game` | **image18.png**<br><sub>`image18-a449-png`</sub> | `public/virtual-lab/images/experiment8/image18.png` | 405.2 | *待上传* | 3 | Referenced in 3 location(s) |
+| 🟢 在用 | `image` | `game` | **image19.png**<br><sub>`image19-png`</sub> | `public/virtual-lab/images/experiment7/image19.png` | 204.2 | *待上传* | 5 | Referenced in 5 location(s) |
+| 🟢 在用 | `image` | `game` | **image19.png**<br><sub>`image19-bfc7-png`</sub> | `public/virtual-lab/images/experiment8/image19.png` | 37.5 | *待上传* | 5 | Referenced in 5 location(s) |
+| 🟢 在用 | `image` | `game` | **image2.png**<br><sub>`image2-png`</sub> | `public/virtual-lab/images/experiment5/image2.png` | 4.2 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **image2.png**<br><sub>`image2-3d1a-png`</sub> | `public/virtual-lab/images/experiment7/image2.png` | 73.3 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **image2.png**<br><sub>`image2-e77c-png`</sub> | `public/virtual-lab/images/experiment8/image2.png` | 12.0 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **image20.png**<br><sub>`image20-png`</sub> | `public/virtual-lab/experiment6-assets/ppt-media/image20.png` | 8.3 | *待上传* | 4 | Referenced in 4 location(s) |
+| 🟢 在用 | `image` | `game` | **image20.png**<br><sub>`image20-2c32-png`</sub> | `public/virtual-lab/images/experiment7/image20.png` | 1766.6 | *待上传* | 4 | Referenced in 4 location(s) |
+| 🟢 在用 | `image` | `game` | **image20.png**<br><sub>`image20-d62f-png`</sub> | `public/virtual-lab/images/experiment8/image20.png` | 1669.0 | *待上传* | 4 | Referenced in 4 location(s) |
+| 🟢 在用 | `image` | `game` | **image21.png**<br><sub>`image21-png`</sub> | `public/virtual-lab/images/experiment7/image21.png` | 383.9 | *待上传* | 2 | Referenced in 2 location(s) |
+| 🟢 在用 | `image` | `game` | **image21.png**<br><sub>`image21-d29c-png`</sub> | `public/virtual-lab/images/experiment8/image21.png` | 76.1 | *待上传* | 2 | Referenced in 2 location(s) |
+| 🟢 在用 | `image` | `game` | **image22.png**<br><sub>`image22-png`</sub> | `public/virtual-lab/images/experiment7/image22.png` | 8.3 | *待上传* | 5 | Referenced in 5 location(s) |
+| 🟢 在用 | `image` | `game` | **image22.png**<br><sub>`image22-577c-png`</sub> | `public/virtual-lab/images/experiment8/image22.png` | 4.8 | *待上传* | 5 | Referenced in 5 location(s) |
+| 🟢 在用 | `image` | `game` | **image23.png**<br><sub>`image23-png`</sub> | `public/virtual-lab/images/experiment7/image23.png` | 107.6 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **image23.png**<br><sub>`image23-4c72-png`</sub> | `public/virtual-lab/images/experiment8/image23.png` | 639.6 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **image24.png**<br><sub>`image24-png`</sub> | `public/virtual-lab/images/experiment7/image24.png` | 781.1 | *待上传* | 2 | Referenced in 2 location(s) |
+| 🟢 在用 | `image` | `game` | **image24.png**<br><sub>`image24-7be1-png`</sub> | `public/virtual-lab/images/experiment8/image24.png` | 10.5 | *待上传* | 2 | Referenced in 2 location(s) |
+| 🟢 在用 | `image` | `game` | **image25.png**<br><sub>`image25-png`</sub> | `public/virtual-lab/images/experiment7/image25.png` | 3.9 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **image25.png**<br><sub>`image25-ada5-png`</sub> | `public/virtual-lab/images/experiment8/image25.png` | 2387.9 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **image26.png**<br><sub>`image26-png`</sub> | `public/virtual-lab/images/experiment7/image26.png` | 1200.8 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **image26.png**<br><sub>`image26-5069-png`</sub> | `public/virtual-lab/images/experiment8/image26.png` | 2018.0 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **image27.png**<br><sub>`image27-png`</sub> | `public/virtual-lab/images/experiment7/image27.png` | 1244.3 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **image27.png**<br><sub>`image27-ccb9-png`</sub> | `public/virtual-lab/images/experiment8/image27.png` | 1127.8 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **image28.png**<br><sub>`image28-png`</sub> | `public/virtual-lab/experiment6-assets/ppt-media/image28.png` | 346.5 | *待上传* | 2 | Referenced in 2 location(s) |
+| 🟢 在用 | `image` | `game` | **image28.png**<br><sub>`image28-0e5b-png`</sub> | `public/virtual-lab/images/experiment7/image28.png` | 31.5 | *待上传* | 2 | Referenced in 2 location(s) |
+| 🟢 在用 | `image` | `game` | **image28.png**<br><sub>`image28-7459-png`</sub> | `public/virtual-lab/images/experiment8/image28.png` | 346.5 | *待上传* | 2 | Referenced in 2 location(s) |
+| 🟢 在用 | `image` | `game` | **image29.png**<br><sub>`image29-png`</sub> | `public/virtual-lab/images/experiment8/image29.png` | 12.0 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **image3.png**<br><sub>`image3-png`</sub> | `public/virtual-lab/images/experiment5/image3.png` | 6.7 | *待上传* | 2 | Referenced in 2 location(s) |
+| 🟢 在用 | `image` | `game` | **image3.png**<br><sub>`image3-40c4-png`</sub> | `public/virtual-lab/images/experiment7/image3.png` | 168.6 | *待上传* | 2 | Referenced in 2 location(s) |
+| 🟢 在用 | `image` | `game` | **image3.png**<br><sub>`image3-1f5b-png`</sub> | `public/virtual-lab/images/experiment8/image3.png` | 631.5 | *待上传* | 2 | Referenced in 2 location(s) |
+| 🟢 在用 | `image` | `game` | **image30.png**<br><sub>`image30-png`</sub> | `public/virtual-lab/experiment6-assets/ppt-media/image30.png` | 8.5 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **image30.png**<br><sub>`image30-4966-png`</sub> | `public/virtual-lab/images/experiment8/image30.png` | 383.9 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **image31.png**<br><sub>`image31-png`</sub> | `public/virtual-lab/images/experiment8/image31.png` | 397.2 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **image32.png**<br><sub>`image32-png`</sub> | `public/virtual-lab/images/experiment8/image32.png` | 475.1 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **image34.png**<br><sub>`image34-png`</sub> | `public/virtual-lab/images/experiment8/image34.png` | 1646.5 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **image36.png**<br><sub>`image36-png`</sub> | `public/virtual-lab/images/experiment8/image36.png` | 21.7 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **image37.png**<br><sub>`image37-png`</sub> | `public/virtual-lab/images/experiment8/image37.png` | 105.5 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **image39.png**<br><sub>`image39-png`</sub> | `public/virtual-lab/images/experiment8/image39.png` | 24.2 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **image4.png**<br><sub>`image4-png`</sub> | `public/virtual-lab/images/experiment5/image4.png` | 7.4 | *待上传* | 2 | Referenced in 2 location(s) |
+| 🟢 在用 | `image` | `game` | **image4.png**<br><sub>`image4-480c-png`</sub> | `public/virtual-lab/images/experiment7/image4.png` | 348.8 | *待上传* | 2 | Referenced in 2 location(s) |
+| 🟢 在用 | `image` | `game` | **image4.png**<br><sub>`image4-0553-png`</sub> | `public/virtual-lab/images/experiment8/image4.png` | 33.0 | *待上传* | 2 | Referenced in 2 location(s) |
+| 🟢 在用 | `image` | `game` | **image40.png**<br><sub>`image40-png`</sub> | `public/virtual-lab/experiment6-assets/ppt-media/image40.png` | 195.3 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **image40.png**<br><sub>`image40-22cc-png`</sub> | `public/virtual-lab/images/experiment8/image40.png` | 14.4 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **image41.png**<br><sub>`image41-png`</sub> | `public/virtual-lab/experiment6-assets/ppt-media/image41.png` | 13.1 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **image41.png**<br><sub>`image41-0e0d-png`</sub> | `public/virtual-lab/images/experiment8/image41.png` | 17.7 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **image42.png**<br><sub>`image42-png`</sub> | `public/virtual-lab/experiment6-assets/ppt-media/image42.png` | 362.0 | *待上传* | 2 | Referenced in 2 location(s) |
+| 🟢 在用 | `image` | `game` | **image42.png**<br><sub>`image42-d2ec-png`</sub> | `public/virtual-lab/images/experiment8/image42.png` | 1129.5 | *待上传* | 2 | Referenced in 2 location(s) |
+| 🟢 在用 | `image` | `game` | **image43.png**<br><sub>`image43-png`</sub> | `public/virtual-lab/experiment6-assets/ppt-media/image43.png` | 1200.8 | *待上传* | 2 | Referenced in 2 location(s) |
+| 🟢 在用 | `image` | `game` | **image43.png**<br><sub>`image43-106c-png`</sub> | `public/virtual-lab/images/experiment8/image43.png` | 1032.5 | *待上传* | 2 | Referenced in 2 location(s) |
+| 🟢 在用 | `image` | `game` | **image44.png**<br><sub>`image44-png`</sub> | `public/virtual-lab/images/experiment8/image44.png` | 747.6 | *待上传* | 2 | Referenced in 2 location(s) |
+| 🟢 在用 | `image` | `game` | **image47.png**<br><sub>`image47-png`</sub> | `public/virtual-lab/images/experiment8/image47.png` | 2306.1 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **image48.png**<br><sub>`image48-png`</sub> | `public/virtual-lab/images/experiment8/image48.png` | 2276.6 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **image49.png**<br><sub>`image49-png`</sub> | `public/virtual-lab/images/experiment8/image49.png` | 1370.6 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **image5.png**<br><sub>`image5-png`</sub> | `public/virtual-lab/images/experiment5/image5.png` | 7.0 | *待上传* | 3 | Referenced in 3 location(s) |
+| 🟢 在用 | `image` | `game` | **image5.png**<br><sub>`image5-67f5-png`</sub> | `public/virtual-lab/images/experiment7/image5.png` | 1127.8 | *待上传* | 3 | Referenced in 3 location(s) |
+| 🟢 在用 | `image` | `game` | **image5.png**<br><sub>`image5-27f8-png`</sub> | `public/virtual-lab/images/experiment8/image5.png` | 781.1 | *待上传* | 3 | Referenced in 3 location(s) |
+| 🟢 在用 | `image` | `game` | **image52.png**<br><sub>`image52-png`</sub> | `public/virtual-lab/images/experiment8/image52.png` | 1088.3 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **image53.png**<br><sub>`image53-png`</sub> | `public/virtual-lab/images/experiment8/image53.png` | 1544.6 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **image56.png**<br><sub>`image56-png`</sub> | `public/virtual-lab/images/experiment8/image56.png` | 715.6 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **image57.png**<br><sub>`image57-png`</sub> | `public/virtual-lab/images/experiment8/image57.png` | 511.8 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **image6.png**<br><sub>`image6-png`</sub> | `public/virtual-lab/images/experiment5/image6.png` | 6.5 | *待上传* | 2 | Referenced in 2 location(s) |
+| 🟢 在用 | `image` | `game` | **image6.png**<br><sub>`image6-3df9-png`</sub> | `public/virtual-lab/images/experiment7/image6.png` | 1055.5 | *待上传* | 2 | Referenced in 2 location(s) |
+| 🟢 在用 | `image` | `game` | **image6.png**<br><sub>`image6-c6ba-png`</sub> | `public/virtual-lab/images/experiment8/image6.png` | 46.8 | *待上传* | 2 | Referenced in 2 location(s) |
+| 🟢 在用 | `image` | `game` | **image7.png**<br><sub>`image7-png`</sub> | `public/virtual-lab/images/experiment5/image7.png` | 7.7 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **image7.png**<br><sub>`image7-37d0-png`</sub> | `public/virtual-lab/images/experiment7/image7.png` | 475.1 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **image7.png**<br><sub>`image7-b6d2-png`</sub> | `public/virtual-lab/images/experiment8/image7.png` | 83.8 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **image70.png**<br><sub>`image70-png`</sub> | `public/virtual-lab/images/experiment8/image70.png` | 16.0 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **image71.png**<br><sub>`image71-png`</sub> | `public/virtual-lab/images/experiment8/image71.png` | 1.8 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **image72.png**<br><sub>`image72-png`</sub> | `public/virtual-lab/images/experiment8/image72.png` | 17.9 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **image73.png**<br><sub>`image73-png`</sub> | `public/virtual-lab/images/experiment8/image73.png` | 3.6 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **image74.png**<br><sub>`image74-png`</sub> | `public/virtual-lab/images/experiment8/image74.png` | 14.8 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **image75.png**<br><sub>`image75-png`</sub> | `public/virtual-lab/images/experiment8/image75.png` | 4.2 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **image76.png**<br><sub>`image76-png`</sub> | `public/virtual-lab/images/experiment8/image76.png` | 7.3 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **image8.png**<br><sub>`image8-png`</sub> | `public/virtual-lab/images/experiment5/image8.png` | 7.1 | *待上传* | 2 | Referenced in 2 location(s) |
+| 🟢 在用 | `image` | `game` | **image8.png**<br><sub>`image8-c864-png`</sub> | `public/virtual-lab/images/experiment7/image8.png` | 397.2 | *待上传* | 2 | Referenced in 2 location(s) |
+| 🟢 在用 | `image` | `game` | **image8.png**<br><sub>`image8-138a-png`</sub> | `public/virtual-lab/images/experiment8/image8.png` | 176.2 | *待上传* | 2 | Referenced in 2 location(s) |
+| 🟢 在用 | `image` | `game` | **image9.png**<br><sub>`image9-png`</sub> | `public/virtual-lab/images/experiment5/image9.png` | 4.1 | *待上传* | 3 | Referenced in 3 location(s) |
+| 🟢 在用 | `image` | `game` | **image9.png**<br><sub>`image9-5309-png`</sub> | `public/virtual-lab/images/experiment7/image9.png` | 253.3 | *待上传* | 3 | Referenced in 3 location(s) |
+| 🟢 在用 | `image` | `game` | **image9.png**<br><sub>`image9-92da-png`</sub> | `public/virtual-lab/images/experiment8/image9.png` | 128.7 | *待上传* | 3 | Referenced in 3 location(s) |
+| 🟢 在用 | `image` | `game` | **img0.png**<br><sub>`img0-png`</sub> | `public/virtual-lab/experiment4_html/data/img0.png` | 3.1 | *待上传* | 102 | Referenced in 102 location(s) |
+| 🟢 在用 | `image` | `game` | **img0.png**<br><sub>`img0-9851-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img0.png` | 3.7 | *待上传* | 102 | Referenced in 102 location(s) |
+| 🟢 在用 | `image` | `game` | **img0.png**<br><sub>`img0-bd6e-png`</sub> | `public/virtual-lab/images/img0.png` | 3.1 | *待上传* | 102 | Referenced in 102 location(s) |
+| 🟢 在用 | `image` | `game` | **img1.png**<br><sub>`img1-png`</sub> | `public/virtual-lab/experiment4_html/data/img1.png` | 23.7 | *待上传* | 102 | Referenced in 102 location(s) |
+| 🟢 在用 | `image` | `game` | **img1.png**<br><sub>`img1-fb7b-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img1.png` | 2.0 | *待上传* | 102 | Referenced in 102 location(s) |
+| 🟢 在用 | `image` | `game` | **img1.png**<br><sub>`img1-0ad9-png`</sub> | `public/virtual-lab/images/img1.png` | 23.7 | *待上传* | 102 | Referenced in 102 location(s) |
+| 🟢 在用 | `image` | `game` | **img10.png**<br><sub>`img10-png`</sub> | `public/virtual-lab/experiment4_html/data/img10.png` | 6.9 | *待上传* | 34 | Referenced in 34 location(s) |
+| 🟢 在用 | `image` | `game` | **img10.png**<br><sub>`img10-4828-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img10.png` | 7.4 | *待上传* | 34 | Referenced in 34 location(s) |
+| 🟢 在用 | `image` | `game` | **img10.png**<br><sub>`img10-52a1-png`</sub> | `public/virtual-lab/images/img10.png` | 6.9 | *待上传* | 34 | Referenced in 34 location(s) |
+| 🟢 在用 | `image` | `game` | **img100.png**<br><sub>`img100-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img100.png` | 5.5 | *待上传* | 61 | Referenced in 61 location(s) |
+| 🟢 在用 | `image` | `game` | **img101.png**<br><sub>`img101-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img101.png` | 5.6 | *待上传* | 59 | Referenced in 59 location(s) |
+| 🟢 在用 | `image` | `game` | **img102.png**<br><sub>`img102-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img102.png` | 5.2 | *待上传* | 34 | Referenced in 34 location(s) |
+| 🟢 在用 | `image` | `game` | **img103.png**<br><sub>`img103-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img103.png` | 5.8 | *待上传* | 61 | Referenced in 61 location(s) |
+| 🟢 在用 | `image` | `game` | **img104.png**<br><sub>`img104-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img104.png` | 2.2 | *待上传* | 5 | Referenced in 5 location(s) |
+| 🟢 在用 | `image` | `game` | **img105.png**<br><sub>`img105-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img105.png` | 18.3 | *待上传* | 31 | Referenced in 31 location(s) |
+| 🟢 在用 | `image` | `game` | **img106.png**<br><sub>`img106-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img106.png` | 1.5 | *待上传* | 31 | Referenced in 31 location(s) |
+| 🟢 在用 | `image` | `game` | **img107.png**<br><sub>`img107-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img107.png` | 48.9 | *待上传* | 62 | Referenced in 62 location(s) |
+| 🟢 在用 | `image` | `game` | **img108.png**<br><sub>`img108-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img108.png` | 1.0 | *待上传* | 62 | Referenced in 62 location(s) |
+| 🟢 在用 | `image` | `game` | **img109.png**<br><sub>`img109-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img109.png` | 1.8 | *待上传* | 62 | Referenced in 62 location(s) |
+| 🟢 在用 | `image` | `game` | **img11.png**<br><sub>`img11-png`</sub> | `public/virtual-lab/experiment4_html/data/img11.png` | 0.4 | *待上传* | 40 | Referenced in 40 location(s) |
+| 🟢 在用 | `image` | `game` | **img11.png**<br><sub>`img11-f6b7-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img11.png` | 6.3 | *待上传* | 40 | Referenced in 40 location(s) |
+| 🟢 在用 | `image` | `game` | **img11.png**<br><sub>`img11-a4fc-png`</sub> | `public/virtual-lab/images/img11.png` | 0.4 | *待上传* | 40 | Referenced in 40 location(s) |
+| 🟢 在用 | `image` | `game` | **img110.png**<br><sub>`img110-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img110.png` | 0.2 | *待上传* | 62 | Referenced in 62 location(s) |
+| 🟢 在用 | `image` | `game` | **img111.png**<br><sub>`img111-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img111.png` | 0.2 | *待上传* | 62 | Referenced in 62 location(s) |
+| 🟢 在用 | `image` | `game` | **img112.png**<br><sub>`img112-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img112.png` | 0.2 | *待上传* | 62 | Referenced in 62 location(s) |
+| 🟢 在用 | `image` | `game` | **img113.png**<br><sub>`img113-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img113.png` | 0.2 | *待上传* | 62 | Referenced in 62 location(s) |
+| 🟢 在用 | `image` | `game` | **img114.png**<br><sub>`img114-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img114.png` | 0.2 | *待上传* | 62 | Referenced in 62 location(s) |
+| 🟢 在用 | `image` | `game` | **img115.png**<br><sub>`img115-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img115.png` | 0.2 | *待上传* | 62 | Referenced in 62 location(s) |
+| 🟢 在用 | `image` | `game` | **img116.png**<br><sub>`img116-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img116.png` | 0.2 | *待上传* | 62 | Referenced in 62 location(s) |
+| 🟢 在用 | `image` | `game` | **img117.png**<br><sub>`img117-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img117.png` | 0.9 | *待上传* | 14 | Referenced in 14 location(s) |
+| 🟢 在用 | `image` | `game` | **img118.png**<br><sub>`img118-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img118.png` | 1.0 | *待上传* | 17 | Referenced in 17 location(s) |
+| 🟢 在用 | `image` | `game` | **img119.png**<br><sub>`img119-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img119.png` | 26.9 | *待上传* | 60 | Referenced in 60 location(s) |
+| 🟢 在用 | `image` | `game` | **img12.png**<br><sub>`img12-png`</sub> | `public/virtual-lab/experiment4_html/data/img12.png` | 0.4 | *待上传* | 40 | Referenced in 40 location(s) |
+| 🟢 在用 | `image` | `game` | **img12.png**<br><sub>`img12-f349-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img12.png` | 2.0 | *待上传* | 40 | Referenced in 40 location(s) |
+| 🟢 在用 | `image` | `game` | **img12.png**<br><sub>`img12-eb30-png`</sub> | `public/virtual-lab/images/img12.png` | 0.4 | *待上传* | 40 | Referenced in 40 location(s) |
+| 🟢 在用 | `image` | `game` | **img120.png**<br><sub>`img120-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img120.png` | 2.0 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **img121.png**<br><sub>`img121-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img121.png` | 17.3 | *待上传* | 58 | Referenced in 58 location(s) |
+| 🟢 在用 | `image` | `game` | **img122.png**<br><sub>`img122-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img122.png` | 5.4 | *待上传* | 13 | Referenced in 13 location(s) |
+| 🟢 在用 | `image` | `game` | **img123.png**<br><sub>`img123-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img123.png` | 1.6 | *待上传* | 4 | Referenced in 4 location(s) |
+| 🟢 在用 | `image` | `game` | **img124.png**<br><sub>`img124-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img124.png` | 3.8 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **img125.png**<br><sub>`img125-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img125.png` | 1.0 | *待上传* | 45 | Referenced in 45 location(s) |
+| 🟢 在用 | `image` | `game` | **img126.png**<br><sub>`img126-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img126.png` | 1.7 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **img127.png**<br><sub>`img127-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img127.png` | 3.0 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **img128.png**<br><sub>`img128-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img128.png` | 4.9 | *待上传* | 2 | Referenced in 2 location(s) |
+| 🟢 在用 | `image` | `game` | **img129.png**<br><sub>`img129-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img129.png` | 5.0 | *待上传* | 2 | Referenced in 2 location(s) |
+| 🟢 在用 | `image` | `game` | **img13.png**<br><sub>`img13-png`</sub> | `public/virtual-lab/experiment4_html/data/img13.png` | 0.2 | *待上传* | 40 | Referenced in 40 location(s) |
+| 🟢 在用 | `image` | `game` | **img13.png**<br><sub>`img13-3095-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img13.png` | 1.3 | *待上传* | 40 | Referenced in 40 location(s) |
+| 🟢 在用 | `image` | `game` | **img13.png**<br><sub>`img13-211b-png`</sub> | `public/virtual-lab/images/img13.png` | 0.2 | *待上传* | 40 | Referenced in 40 location(s) |
+| 🟢 在用 | `image` | `game` | **img130.png**<br><sub>`img130-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img130.png` | 2.8 | *待上传* | 15 | Referenced in 15 location(s) |
+| 🟢 在用 | `image` | `game` | **img131.png**<br><sub>`img131-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img131.png` | 0.9 | *待上传* | 48 | Referenced in 48 location(s) |
+| 🟢 在用 | `image` | `game` | **img132.png**<br><sub>`img132-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img132.png` | 9.1 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **img133.png**<br><sub>`img133-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img133.png` | 3.3 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **img134.png**<br><sub>`img134-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img134.png` | 12.7 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **img135.png**<br><sub>`img135-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img135.png` | 0.7 | *待上传* | 57 | Referenced in 57 location(s) |
+| 🟢 在用 | `image` | `game` | **img136.png**<br><sub>`img136-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img136.png` | 11.0 | *待上传* | 3 | Referenced in 3 location(s) |
+| 🟢 在用 | `image` | `game` | **img137.png**<br><sub>`img137-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img137.png` | 8.5 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **img138.png**<br><sub>`img138-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img138.png` | 9.2 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **img139.png**<br><sub>`img139-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img139.png` | 0.5 | *待上传* | 2 | Referenced in 2 location(s) |
+| 🟢 在用 | `image` | `game` | **img14.png**<br><sub>`img14-png`</sub> | `public/virtual-lab/experiment4_html/data/img14.png` | 0.5 | *待上传* | 36 | Referenced in 36 location(s) |
+| 🟢 在用 | `image` | `game` | **img14.png**<br><sub>`img14-2729-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img14.png` | 10.8 | *待上传* | 36 | Referenced in 36 location(s) |
+| 🟢 在用 | `image` | `game` | **img14.png**<br><sub>`img14-2400-png`</sub> | `public/virtual-lab/images/img14.png` | 0.5 | *待上传* | 36 | Referenced in 36 location(s) |
+| 🟢 在用 | `image` | `game` | **img140.png**<br><sub>`img140-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img140.png` | 18.4 | *待上传* | 3 | Referenced in 3 location(s) |
+| 🟢 在用 | `image` | `game` | **img141.png**<br><sub>`img141-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img141.png` | 25.0 | *待上传* | 2 | Referenced in 2 location(s) |
+| 🟢 在用 | `image` | `game` | **img142.png**<br><sub>`img142-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img142.png` | 6.4 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **img143.png**<br><sub>`img143-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img143.png` | 16.6 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **img144.png**<br><sub>`img144-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img144.png` | 3.1 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **img145.png**<br><sub>`img145-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img145.png` | 13.1 | *待上传* | 2 | Referenced in 2 location(s) |
+| 🟢 在用 | `image` | `game` | **img146.png**<br><sub>`img146-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img146.png` | 4.8 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **img147.png**<br><sub>`img147-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img147.png` | 7.9 | *待上传* | 4 | Referenced in 4 location(s) |
+| 🟢 在用 | `image` | `game` | **img148.png**<br><sub>`img148-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img148.png` | 8.2 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **img149.png**<br><sub>`img149-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img149.png` | 4.1 | *待上传* | 2 | Referenced in 2 location(s) |
+| 🟢 在用 | `image` | `game` | **img15.png**<br><sub>`img15-png`</sub> | `public/virtual-lab/experiment4_html/data/img15.png` | 0.5 | *待上传* | 40 | Referenced in 40 location(s) |
+| 🟢 在用 | `image` | `game` | **img15.png**<br><sub>`img15-f9e6-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img15.png` | 2.1 | *待上传* | 40 | Referenced in 40 location(s) |
+| 🟢 在用 | `image` | `game` | **img15.png**<br><sub>`img15-04ec-png`</sub> | `public/virtual-lab/images/img15.png` | 0.5 | *待上传* | 40 | Referenced in 40 location(s) |
+| 🟢 在用 | `image` | `game` | **img150.png**<br><sub>`img150-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img150.png` | 9.2 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **img151.png**<br><sub>`img151-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img151.png` | 2.6 | *待上传* | 41 | Referenced in 41 location(s) |
+| 🟢 在用 | `image` | `game` | **img152.png**<br><sub>`img152-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img152.png` | 16.1 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **img153.png**<br><sub>`img153-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img153.png` | 39.6 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **img154.png**<br><sub>`img154-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img154.png` | 4.8 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **img155.png**<br><sub>`img155-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img155.png` | 10.4 | *待上传* | 14 | Referenced in 14 location(s) |
+| 🟢 在用 | `image` | `game` | **img156.png**<br><sub>`img156-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img156.png` | 13.2 | *待上传* | 4 | Referenced in 4 location(s) |
+| 🟢 在用 | `image` | `game` | **img157.png**<br><sub>`img157-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img157.png` | 2.1 | *待上传* | 2 | Referenced in 2 location(s) |
+| 🟢 在用 | `image` | `game` | **img158.png**<br><sub>`img158-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img158.png` | 10.3 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **img159.png**<br><sub>`img159-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img159.png` | 3.6 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **img16.png**<br><sub>`img16-png`</sub> | `public/virtual-lab/experiment4_html/data/img16.png` | 0.3 | *待上传* | 40 | Referenced in 40 location(s) |
+| 🟢 在用 | `image` | `game` | **img16.png**<br><sub>`img16-7faf-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img16.png` | 2.2 | *待上传* | 40 | Referenced in 40 location(s) |
+| 🟢 在用 | `image` | `game` | **img16.png**<br><sub>`img16-1fad-png`</sub> | `public/virtual-lab/images/img16.png` | 0.3 | *待上传* | 40 | Referenced in 40 location(s) |
+| 🟢 在用 | `image` | `game` | **img160.png**<br><sub>`img160-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img160.png` | 3.9 | *待上传* | 2 | Referenced in 2 location(s) |
+| 🟢 在用 | `image` | `game` | **img161.png**<br><sub>`img161-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img161.png` | 3.6 | *待上传* | 2 | Referenced in 2 location(s) |
+| 🟢 在用 | `image` | `game` | **img162.png**<br><sub>`img162-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img162.png` | 14.3 | *待上传* | 2 | Referenced in 2 location(s) |
+| 🟢 在用 | `image` | `game` | **img163.png**<br><sub>`img163-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img163.png` | 21.3 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **img164.png**<br><sub>`img164-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img164.png` | 0.7 | *待上传* | 41 | Referenced in 41 location(s) |
+| 🟢 在用 | `image` | `game` | **img165.png**<br><sub>`img165-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img165.png` | 25.0 | *待上传* | 2 | Referenced in 2 location(s) |
+| 🟢 在用 | `image` | `game` | **img166.png**<br><sub>`img166-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img166.png` | 1.6 | *待上传* | 2 | Referenced in 2 location(s) |
+| 🟢 在用 | `image` | `game` | **img167.png**<br><sub>`img167-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img167.png` | 10.1 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **img168.png**<br><sub>`img168-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img168.png` | 4.8 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **img169.png**<br><sub>`img169-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img169.png` | 7.5 | *待上传* | 2 | Referenced in 2 location(s) |
+| 🟢 在用 | `image` | `game` | **img17.png**<br><sub>`img17-png`</sub> | `public/virtual-lab/experiment4_html/data/img17.png` | 3.5 | *待上传* | 41 | Referenced in 41 location(s) |
+| 🟢 在用 | `image` | `game` | **img17.png**<br><sub>`img17-9c25-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img17.png` | 25.3 | *待上传* | 41 | Referenced in 41 location(s) |
+| 🟢 在用 | `image` | `game` | **img17.png**<br><sub>`img17-c2dc-png`</sub> | `public/virtual-lab/images/img17.png` | 3.5 | *待上传* | 41 | Referenced in 41 location(s) |
+| 🟢 在用 | `image` | `game` | **img170.png**<br><sub>`img170-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img170.png` | 5.6 | *待上传* | 2 | Referenced in 2 location(s) |
+| 🟢 在用 | `image` | `game` | **img171.png**<br><sub>`img171-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img171.png` | 37.9 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **img172.png**<br><sub>`img172-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img172.png` | 0.9 | *待上传* | 3 | Referenced in 3 location(s) |
+| 🟢 在用 | `image` | `game` | **img173.png**<br><sub>`img173-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img173.png` | 7.9 | *待上传* | 2 | Referenced in 2 location(s) |
+| 🟢 在用 | `image` | `game` | **img174.png**<br><sub>`img174-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img174.png` | 5.7 | *待上传* | 6 | Referenced in 6 location(s) |
+| 🟢 在用 | `image` | `game` | **img175.png**<br><sub>`img175-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img175.png` | 8.6 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **img176.png**<br><sub>`img176-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img176.png` | 4.6 | *待上传* | 3 | Referenced in 3 location(s) |
+| 🟢 在用 | `image` | `game` | **img177.png**<br><sub>`img177-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img177.png` | 0.7 | *待上传* | 3 | Referenced in 3 location(s) |
+| 🟢 在用 | `image` | `game` | **img178.png**<br><sub>`img178-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img178.png` | 10.1 | *待上传* | 3 | Referenced in 3 location(s) |
+| 🟢 在用 | `image` | `game` | **img179.png**<br><sub>`img179-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img179.png` | 6.3 | *待上传* | 5 | Referenced in 5 location(s) |
+| 🟢 在用 | `image` | `game` | **img18.png**<br><sub>`img18-png`</sub> | `public/virtual-lab/experiment4_html/data/img18.png` | 2.4 | *待上传* | 38 | Referenced in 38 location(s) |
+| 🟢 在用 | `image` | `game` | **img18.png**<br><sub>`img18-8b8a-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img18.png` | 2.4 | *待上传* | 38 | Referenced in 38 location(s) |
+| 🟢 在用 | `image` | `game` | **img18.png**<br><sub>`img18-0981-png`</sub> | `public/virtual-lab/images/img18.png` | 2.4 | *待上传* | 38 | Referenced in 38 location(s) |
+| 🟢 在用 | `image` | `game` | **img180.png**<br><sub>`img180-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img180.png` | 3.3 | *待上传* | 2 | Referenced in 2 location(s) |
+| 🟢 在用 | `image` | `game` | **img181.png**<br><sub>`img181-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img181.png` | 1.9 | *待上传* | 4 | Referenced in 4 location(s) |
+| 🟢 在用 | `image` | `game` | **img182.png**<br><sub>`img182-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img182.png` | 43.4 | *待上传* | 33 | Referenced in 33 location(s) |
+| 🟢 在用 | `image` | `game` | **img183.png**<br><sub>`img183-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img183.png` | 5.8 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **img184.png**<br><sub>`img184-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img184.png` | 5.9 | *待上传* | 3 | Referenced in 3 location(s) |
+| 🟢 在用 | `image` | `game` | **img185.png**<br><sub>`img185-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img185.png` | 3.1 | *待上传* | 2 | Referenced in 2 location(s) |
+| 🟢 在用 | `image` | `game` | **img186.png**<br><sub>`img186-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img186.png` | 42.1 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **img187.png**<br><sub>`img187-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img187.png` | 42.7 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **img188.png**<br><sub>`img188-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img188.png` | 10.3 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **img189.png**<br><sub>`img189-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img189.png` | 17.8 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **img19.png**<br><sub>`img19-png`</sub> | `public/virtual-lab/experiment4_html/data/img19.png` | 0.3 | *待上传* | 40 | Referenced in 40 location(s) |
+| 🟢 在用 | `image` | `game` | **img19.png**<br><sub>`img19-6814-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img19.png` | 3.8 | *待上传* | 40 | Referenced in 40 location(s) |
+| 🟢 在用 | `image` | `game` | **img19.png**<br><sub>`img19-66b4-png`</sub> | `public/virtual-lab/images/img19.png` | 0.3 | *待上传* | 40 | Referenced in 40 location(s) |
+| 🟢 在用 | `image` | `game` | **img190.png**<br><sub>`img190-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img190.png` | 8.3 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **img191.png**<br><sub>`img191-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img191.png` | 2.0 | *待上传* | 3 | Referenced in 3 location(s) |
+| 🟢 在用 | `image` | `game` | **img192.png**<br><sub>`img192-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img192.png` | 8.5 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **img193.png**<br><sub>`img193-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img193.png` | 5.7 | *待上传* | 2 | Referenced in 2 location(s) |
+| 🟢 在用 | `image` | `game` | **img194.png**<br><sub>`img194-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img194.png` | 9.3 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **img195.png**<br><sub>`img195-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img195.png` | 10.8 | *待上传* | 3 | Referenced in 3 location(s) |
+| 🟢 在用 | `image` | `game` | **img196.png**<br><sub>`img196-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img196.png` | 5.0 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **img197.png**<br><sub>`img197-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img197.png` | 1.1 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **img198.png**<br><sub>`img198-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img198.png` | 1.9 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **img199.png**<br><sub>`img199-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img199.png` | 5.7 | *待上传* | 26 | Referenced in 26 location(s) |
+| 🟢 在用 | `image` | `game` | **img2.png**<br><sub>`img2-png`</sub> | `public/virtual-lab/experiment4_html/data/img2.png` | 9.1 | *待上传* | 100 | Referenced in 100 location(s) |
+| 🟢 在用 | `image` | `game` | **img2.png**<br><sub>`img2-03de-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img2.png` | 4.1 | *待上传* | 100 | Referenced in 100 location(s) |
+| 🟢 在用 | `image` | `game` | **img2.png**<br><sub>`img2-36a0-png`</sub> | `public/virtual-lab/images/img2.png` | 9.1 | *待上传* | 100 | Referenced in 100 location(s) |
+| 🟢 在用 | `image` | `game` | **img20.png**<br><sub>`img20-png`</sub> | `public/virtual-lab/experiment4_html/data/img20.png` | 0.7 | *待上传* | 40 | Referenced in 40 location(s) |
+| 🟢 在用 | `image` | `game` | **img20.png**<br><sub>`img20-50a5-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img20.png` | 4.3 | *待上传* | 40 | Referenced in 40 location(s) |
+| 🟢 在用 | `image` | `game` | **img20.png**<br><sub>`img20-ee97-png`</sub> | `public/virtual-lab/images/img20.png` | 0.7 | *待上传* | 40 | Referenced in 40 location(s) |
+| 🟢 在用 | `image` | `game` | **img200.png**<br><sub>`img200-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img200.png` | 2.3 | *待上传* | 3 | Referenced in 3 location(s) |
+| 🟢 在用 | `image` | `game` | **img201.png**<br><sub>`img201-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img201.png` | 8.6 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **img202.png**<br><sub>`img202-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img202.png` | 37.9 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **img203.png**<br><sub>`img203-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img203.png` | 8.2 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **img204.png**<br><sub>`img204-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img204.png` | 8.5 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **img205.png**<br><sub>`img205-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img205.png` | 2.3 | *待上传* | 2 | Referenced in 2 location(s) |
+| 🟢 在用 | `image` | `game` | **img206.png**<br><sub>`img206-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img206.png` | 4.4 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **img207.png**<br><sub>`img207-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img207.png` | 2.0 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **img208.png**<br><sub>`img208-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img208.png` | 1.3 | *待上传* | 2 | Referenced in 2 location(s) |
+| 🟢 在用 | `image` | `game` | **img209.png**<br><sub>`img209-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img209.png` | 2.8 | *待上传* | 3 | Referenced in 3 location(s) |
+| 🟢 在用 | `image` | `game` | **img21.png**<br><sub>`img21-png`</sub> | `public/virtual-lab/experiment4_html/data/img21.png` | 4.8 | *待上传* | 102 | Referenced in 102 location(s) |
+| 🟢 在用 | `image` | `game` | **img21.png**<br><sub>`img21-f340-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img21.png` | 17.3 | *待上传* | 102 | Referenced in 102 location(s) |
+| 🟢 在用 | `image` | `game` | **img21.png**<br><sub>`img21-d0a7-png`</sub> | `public/virtual-lab/images/img21.png` | 4.8 | *待上传* | 102 | Referenced in 102 location(s) |
+| 🟢 在用 | `image` | `game` | **img210.png**<br><sub>`img210-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img210.png` | 2.6 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **img211.png**<br><sub>`img211-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img211.png` | 4.9 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **img212.png**<br><sub>`img212-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img212.png` | 8.6 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **img213.png**<br><sub>`img213-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img213.png` | 3.1 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **img214.png**<br><sub>`img214-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img214.png` | 0.6 | *待上传* | 11 | Referenced in 11 location(s) |
+| 🟢 在用 | `image` | `game` | **img215.png**<br><sub>`img215-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img215.png` | 16.0 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **img216.png**<br><sub>`img216-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img216.png` | 0.7 | *待上传* | 4 | Referenced in 4 location(s) |
+| 🟢 在用 | `image` | `game` | **img217.png**<br><sub>`img217-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img217.png` | 34.3 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **img218.png**<br><sub>`img218-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img218.png` | 4.5 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **img219.png**<br><sub>`img219-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img219.png` | 8.0 | *待上传* | 5 | Referenced in 5 location(s) |
+| 🟢 在用 | `image` | `game` | **img22.png**<br><sub>`img22-png`</sub> | `public/virtual-lab/experiment4_html/data/img22.png` | 5.3 | *待上传* | 101 | Referenced in 101 location(s) |
+| 🟢 在用 | `image` | `game` | **img22.png**<br><sub>`img22-1dc1-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img22.png` | 10.4 | *待上传* | 101 | Referenced in 101 location(s) |
+| 🟢 在用 | `image` | `game` | **img22.png**<br><sub>`img22-177b-png`</sub> | `public/virtual-lab/images/img22.png` | 5.3 | *待上传* | 101 | Referenced in 101 location(s) |
+| 🟢 在用 | `image` | `game` | **img220.png**<br><sub>`img220-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img220.png` | 4.0 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **img221.png**<br><sub>`img221-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img221.png` | 1.5 | *待上传* | 3 | Referenced in 3 location(s) |
+| 🟢 在用 | `image` | `game` | **img222.png**<br><sub>`img222-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img222.png` | 1.5 | *待上传* | 3 | Referenced in 3 location(s) |
+| 🟢 在用 | `image` | `game` | **img223.png**<br><sub>`img223-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img223.png` | 2.5 | *待上传* | 3 | Referenced in 3 location(s) |
+| 🟢 在用 | `image` | `game` | **img224.png**<br><sub>`img224-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img224.png` | 13.8 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **img225.png**<br><sub>`img225-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img225.png` | 13.8 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **img226.png**<br><sub>`img226-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img226.png` | 3.8 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **img227.png**<br><sub>`img227-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img227.png` | 12.0 | *待上传* | 3 | Referenced in 3 location(s) |
+| 🟢 在用 | `image` | `game` | **img228.png**<br><sub>`img228-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img228.png` | 16.0 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **img229.png**<br><sub>`img229-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img229.png` | 5.6 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **img23.png**<br><sub>`img23-png`</sub> | `public/virtual-lab/experiment4_html/data/img23.png` | 0.8 | *待上传* | 100 | Referenced in 100 location(s) |
+| 🟢 在用 | `image` | `game` | **img23.png**<br><sub>`img23-b56b-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img23.png` | 14.8 | *待上传* | 100 | Referenced in 100 location(s) |
+| 🟢 在用 | `image` | `game` | **img23.png**<br><sub>`img23-f433-png`</sub> | `public/virtual-lab/images/img23.png` | 0.8 | *待上传* | 100 | Referenced in 100 location(s) |
+| 🟢 在用 | `image` | `game` | **img230.png**<br><sub>`img230-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img230.png` | 33.3 | *待上传* | 2 | Referenced in 2 location(s) |
+| 🟢 在用 | `image` | `game` | **img231.png**<br><sub>`img231-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img231.png` | 39.4 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **img232.png**<br><sub>`img232-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img232.png` | 8.4 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **img233.png**<br><sub>`img233-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img233.png` | 20.8 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **img234.png**<br><sub>`img234-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img234.png` | 48.0 | *待上传* | 2 | Referenced in 2 location(s) |
+| 🟢 在用 | `image` | `game` | **img235.png**<br><sub>`img235-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img235.png` | 8.7 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **img236.png**<br><sub>`img236-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img236.png` | 15.2 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **img24.png**<br><sub>`img24-png`</sub> | `public/virtual-lab/experiment4_html/data/img24.png` | 0.8 | *待上传* | 10 | Referenced in 10 location(s) |
+| 🟢 在用 | `image` | `game` | **img24.png**<br><sub>`img24-1841-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img24.png` | 21.6 | *待上传* | 10 | Referenced in 10 location(s) |
+| 🟢 在用 | `image` | `game` | **img24.png**<br><sub>`img24-e16c-png`</sub> | `public/virtual-lab/images/img24.png` | 0.8 | *待上传* | 10 | Referenced in 10 location(s) |
+| 🟢 在用 | `image` | `game` | **img25.png**<br><sub>`img25-png`</sub> | `public/virtual-lab/experiment4_html/data/img25.png` | 4.4 | *待上传* | 98 | Referenced in 98 location(s) |
+| 🟢 在用 | `image` | `game` | **img25.png**<br><sub>`img25-f371-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img25.png` | 5.0 | *待上传* | 98 | Referenced in 98 location(s) |
+| 🟢 在用 | `image` | `game` | **img25.png**<br><sub>`img25-f2e2-png`</sub> | `public/virtual-lab/images/img25.png` | 4.4 | *待上传* | 98 | Referenced in 98 location(s) |
+| 🟢 在用 | `image` | `game` | **img26.png**<br><sub>`img26-png`</sub> | `public/virtual-lab/experiment4_html/data/img26.png` | 8.6 | *待上传* | 72 | Referenced in 72 location(s) |
+| 🟢 在用 | `image` | `game` | **img26.png**<br><sub>`img26-8dc4-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img26.png` | 8.3 | *待上传* | 72 | Referenced in 72 location(s) |
+| 🟢 在用 | `image` | `game` | **img26.png**<br><sub>`img26-be82-png`</sub> | `public/virtual-lab/images/img26.png` | 8.6 | *待上传* | 72 | Referenced in 72 location(s) |
+| 🟢 在用 | `image` | `game` | **img27.png**<br><sub>`img27-png`</sub> | `public/virtual-lab/experiment4_html/data/img27.png` | 4.1 | *待上传* | 96 | Referenced in 96 location(s) |
+| 🟢 在用 | `image` | `game` | **img27.png**<br><sub>`img27-3b0c-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img27.png` | 21.8 | *待上传* | 96 | Referenced in 96 location(s) |
+| 🟢 在用 | `image` | `game` | **img27.png**<br><sub>`img27-13eb-png`</sub> | `public/virtual-lab/images/img27.png` | 4.1 | *待上传* | 96 | Referenced in 96 location(s) |
+| 🟢 在用 | `image` | `game` | **img28.png**<br><sub>`img28-png`</sub> | `public/virtual-lab/experiment4_html/data/img28.png` | 2.9 | *待上传* | 34 | Referenced in 34 location(s) |
+| 🟢 在用 | `image` | `game` | **img28.png**<br><sub>`img28-627c-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img28.png` | 4.5 | *待上传* | 34 | Referenced in 34 location(s) |
+| 🟢 在用 | `image` | `game` | **img28.png**<br><sub>`img28-58d6-png`</sub> | `public/virtual-lab/images/img28.png` | 2.9 | *待上传* | 34 | Referenced in 34 location(s) |
+| 🟢 在用 | `image` | `game` | **img29.png**<br><sub>`img29-png`</sub> | `public/virtual-lab/experiment4_html/data/img29.png` | 3.0 | *待上传* | 62 | Referenced in 62 location(s) |
+| 🟢 在用 | `image` | `game` | **img29.png**<br><sub>`img29-5048-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img29.png` | 0.4 | *待上传* | 62 | Referenced in 62 location(s) |
+| 🟢 在用 | `image` | `game` | **img29.png**<br><sub>`img29-13ea-png`</sub> | `public/virtual-lab/images/img29.png` | 3.0 | *待上传* | 62 | Referenced in 62 location(s) |
+| 🟢 在用 | `image` | `game` | **img3.png**<br><sub>`img3-png`</sub> | `public/virtual-lab/experiment4_html/data/img3.png` | 21.0 | *待上传* | 102 | Referenced in 102 location(s) |
+| 🟢 在用 | `image` | `game` | **img3.png**<br><sub>`img3-725e-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img3.png` | 16.8 | *待上传* | 102 | Referenced in 102 location(s) |
+| 🟢 在用 | `image` | `game` | **img3.png**<br><sub>`img3-5082-png`</sub> | `public/virtual-lab/images/img3.png` | 21.0 | *待上传* | 102 | Referenced in 102 location(s) |
+| 🟢 在用 | `image` | `game` | **img30.png**<br><sub>`img30-png`</sub> | `public/virtual-lab/experiment4_html/data/img30.png` | 0.4 | *待上传* | 57 | Referenced in 57 location(s) |
+| 🟢 在用 | `image` | `game` | **img30.png**<br><sub>`img30-15c6-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img30.png` | 4.0 | *待上传* | 57 | Referenced in 57 location(s) |
+| 🟢 在用 | `image` | `game` | **img30.png**<br><sub>`img30-a6b0-png`</sub> | `public/virtual-lab/images/img30.png` | 0.4 | *待上传* | 57 | Referenced in 57 location(s) |
+| 🟢 在用 | `image` | `game` | **img31.png**<br><sub>`img31-png`</sub> | `public/virtual-lab/experiment4_html/data/img31.png` | 0.3 | *待上传* | 38 | Referenced in 38 location(s) |
+| 🟢 在用 | `image` | `game` | **img31.png**<br><sub>`img31-3d04-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img31.png` | 7.2 | *待上传* | 38 | Referenced in 38 location(s) |
+| 🟢 在用 | `image` | `game` | **img31.png**<br><sub>`img31-a3a6-png`</sub> | `public/virtual-lab/images/img31.png` | 0.3 | *待上传* | 38 | Referenced in 38 location(s) |
+| 🟢 在用 | `image` | `game` | **img32.png**<br><sub>`img32-png`</sub> | `public/virtual-lab/experiment4_html/data/img32.png` | 0.3 | *待上传* | 9 | Referenced in 9 location(s) |
+| 🟢 在用 | `image` | `game` | **img32.png**<br><sub>`img32-2827-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img32.png` | 24.6 | *待上传* | 9 | Referenced in 9 location(s) |
+| 🟢 在用 | `image` | `game` | **img32.png**<br><sub>`img32-bc60-png`</sub> | `public/virtual-lab/images/img32.png` | 0.3 | *待上传* | 9 | Referenced in 9 location(s) |
+| 🟢 在用 | `image` | `game` | **img33.png**<br><sub>`img33-png`</sub> | `public/virtual-lab/experiment4_html/data/img33.png` | 0.4 | *待上传* | 20 | Referenced in 20 location(s) |
+| 🟢 在用 | `image` | `game` | **img33.png**<br><sub>`img33-8480-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img33.png` | 0.6 | *待上传* | 20 | Referenced in 20 location(s) |
+| 🟢 在用 | `image` | `game` | **img33.png**<br><sub>`img33-2d76-png`</sub> | `public/virtual-lab/images/img33.png` | 0.4 | *待上传* | 20 | Referenced in 20 location(s) |
+| 🟢 在用 | `image` | `game` | **img34.png**<br><sub>`img34-png`</sub> | `public/virtual-lab/experiment4_html/data/img34.png` | 0.3 | *待上传* | 34 | Referenced in 34 location(s) |
+| 🟢 在用 | `image` | `game` | **img34.png**<br><sub>`img34-59f4-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img34.png` | 6.4 | *待上传* | 34 | Referenced in 34 location(s) |
+| 🟢 在用 | `image` | `game` | **img34.png**<br><sub>`img34-9278-png`</sub> | `public/virtual-lab/images/img34.png` | 0.3 | *待上传* | 34 | Referenced in 34 location(s) |
+| 🟢 在用 | `image` | `game` | **img35.png**<br><sub>`img35-png`</sub> | `public/virtual-lab/experiment4_html/data/img35.png` | 2.1 | *待上传* | 40 | Referenced in 40 location(s) |
+| 🟢 在用 | `image` | `game` | **img35.png**<br><sub>`img35-8449-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img35.png` | 5.2 | *待上传* | 40 | Referenced in 40 location(s) |
+| 🟢 在用 | `image` | `game` | **img35.png**<br><sub>`img35-8052-png`</sub> | `public/virtual-lab/images/img35.png` | 2.1 | *待上传* | 40 | Referenced in 40 location(s) |
+| 🟢 在用 | `image` | `game` | **img36.png**<br><sub>`img36-png`</sub> | `public/virtual-lab/experiment4_html/data/img36.png` | 0.4 | *待上传* | 40 | Referenced in 40 location(s) |
+| 🟢 在用 | `image` | `game` | **img36.png**<br><sub>`img36-860b-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img36.png` | 7.6 | *待上传* | 40 | Referenced in 40 location(s) |
+| 🟢 在用 | `image` | `game` | **img36.png**<br><sub>`img36-2e13-png`</sub> | `public/virtual-lab/images/img36.png` | 0.4 | *待上传* | 40 | Referenced in 40 location(s) |
+| 🟢 在用 | `image` | `game` | **img37.png**<br><sub>`img37-png`</sub> | `public/virtual-lab/experiment4_html/data/img37.png` | 3.8 | *待上传* | 9 | Referenced in 9 location(s) |
+| 🟢 在用 | `image` | `game` | **img37.png**<br><sub>`img37-e90b-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img37.png` | 10.8 | *待上传* | 9 | Referenced in 9 location(s) |
+| 🟢 在用 | `image` | `game` | **img37.png**<br><sub>`img37-08bf-png`</sub> | `public/virtual-lab/images/img37.png` | 3.8 | *待上传* | 9 | Referenced in 9 location(s) |
+| 🟢 在用 | `image` | `game` | **img38.png**<br><sub>`img38-png`</sub> | `public/virtual-lab/experiment4_html/data/img38.png` | 8.2 | *待上传* | 11 | Referenced in 11 location(s) |
+| 🟢 在用 | `image` | `game` | **img38.png**<br><sub>`img38-78ee-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img38.png` | 2.6 | *待上传* | 11 | Referenced in 11 location(s) |
+| 🟢 在用 | `image` | `game` | **img38.png**<br><sub>`img38-749c-png`</sub> | `public/virtual-lab/images/img38.png` | 8.2 | *待上传* | 11 | Referenced in 11 location(s) |
+| 🟢 在用 | `image` | `game` | **img39.png**<br><sub>`img39-png`</sub> | `public/virtual-lab/experiment4_html/data/img39.png` | 7.2 | *待上传* | 11 | Referenced in 11 location(s) |
+| 🟢 在用 | `image` | `game` | **img39.png**<br><sub>`img39-b414-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img39.png` | 12.7 | *待上传* | 11 | Referenced in 11 location(s) |
+| 🟢 在用 | `image` | `game` | **img39.png**<br><sub>`img39-2c6a-png`</sub> | `public/virtual-lab/images/img39.png` | 7.2 | *待上传* | 11 | Referenced in 11 location(s) |
+| 🟢 在用 | `image` | `game` | **img4.png**<br><sub>`img4-png`</sub> | `public/virtual-lab/experiment4_html/data/img4.png` | 4.5 | *待上传* | 102 | Referenced in 102 location(s) |
+| 🟢 在用 | `image` | `game` | **img4.png**<br><sub>`img4-319c-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img4.png` | 68.3 | *待上传* | 102 | Referenced in 102 location(s) |
+| 🟢 在用 | `image` | `game` | **img4.png**<br><sub>`img4-9ccd-png`</sub> | `public/virtual-lab/images/img4.png` | 4.5 | *待上传* | 102 | Referenced in 102 location(s) |
+| 🟢 在用 | `image` | `game` | **img40.png**<br><sub>`img40-png`</sub> | `public/virtual-lab/experiment4_html/data/img40.png` | 9.8 | *待上传* | 11 | Referenced in 11 location(s) |
+| 🟢 在用 | `image` | `game` | **img40.png**<br><sub>`img40-aaf8-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img40.png` | 1.5 | *待上传* | 11 | Referenced in 11 location(s) |
+| 🟢 在用 | `image` | `game` | **img40.png**<br><sub>`img40-c767-png`</sub> | `public/virtual-lab/images/img40.png` | 9.8 | *待上传* | 11 | Referenced in 11 location(s) |
+| 🟢 在用 | `image` | `game` | **img41.png**<br><sub>`img41-png`</sub> | `public/virtual-lab/experiment4_html/data/img41.png` | 0.3 | *待上传* | 41 | Referenced in 41 location(s) |
+| 🟢 在用 | `image` | `game` | **img41.png**<br><sub>`img41-6b57-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img41.png` | 3.6 | *待上传* | 41 | Referenced in 41 location(s) |
+| 🟢 在用 | `image` | `game` | **img41.png**<br><sub>`img41-90f0-png`</sub> | `public/virtual-lab/images/img41.png` | 0.3 | *待上传* | 41 | Referenced in 41 location(s) |
+| 🟢 在用 | `image` | `game` | **img42.png**<br><sub>`img42-png`</sub> | `public/virtual-lab/experiment4_html/data/img42.png` | 7.8 | *待上传* | 52 | Referenced in 52 location(s) |
+| 🟢 在用 | `image` | `game` | **img42.png**<br><sub>`img42-3138-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img42.png` | 6.1 | *待上传* | 52 | Referenced in 52 location(s) |
+| 🟢 在用 | `image` | `game` | **img42.png**<br><sub>`img42-bdc8-png`</sub> | `public/virtual-lab/images/img42.png` | 7.8 | *待上传* | 52 | Referenced in 52 location(s) |
+| 🟢 在用 | `image` | `game` | **img43.png**<br><sub>`img43-png`</sub> | `public/virtual-lab/experiment4_html/data/img43.png` | 1.5 | *待上传* | 10 | Referenced in 10 location(s) |
+| 🟢 在用 | `image` | `game` | **img43.png**<br><sub>`img43-80e8-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img43.png` | 1.3 | *待上传* | 10 | Referenced in 10 location(s) |
+| 🟢 在用 | `image` | `game` | **img43.png**<br><sub>`img43-ed27-png`</sub> | `public/virtual-lab/images/img43.png` | 1.5 | *待上传* | 10 | Referenced in 10 location(s) |
+| 🟢 在用 | `image` | `game` | **img44.png**<br><sub>`img44-png`</sub> | `public/virtual-lab/experiment4_html/data/img44.png` | 1.6 | *待上传* | 10 | Referenced in 10 location(s) |
+| 🟢 在用 | `image` | `game` | **img44.png**<br><sub>`img44-b84e-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img44.png` | 1.5 | *待上传* | 10 | Referenced in 10 location(s) |
+| 🟢 在用 | `image` | `game` | **img44.png**<br><sub>`img44-4af2-png`</sub> | `public/virtual-lab/images/img44.png` | 1.6 | *待上传* | 10 | Referenced in 10 location(s) |
+| 🟢 在用 | `image` | `game` | **img45.png**<br><sub>`img45-png`</sub> | `public/virtual-lab/experiment4_html/data/img45.png` | 1.5 | *待上传* | 67 | Referenced in 67 location(s) |
+| 🟢 在用 | `image` | `game` | **img45.png**<br><sub>`img45-2e9c-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img45.png` | 8.2 | *待上传* | 67 | Referenced in 67 location(s) |
+| 🟢 在用 | `image` | `game` | **img45.png**<br><sub>`img45-fc02-png`</sub> | `public/virtual-lab/images/img45.png` | 1.5 | *待上传* | 67 | Referenced in 67 location(s) |
+| 🟢 在用 | `image` | `game` | **img46.png**<br><sub>`img46-png`</sub> | `public/virtual-lab/experiment4_html/data/img46.png` | 0.5 | *待上传* | 10 | Referenced in 10 location(s) |
+| 🟢 在用 | `image` | `game` | **img46.png**<br><sub>`img46-6896-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img46.png` | 4.4 | *待上传* | 10 | Referenced in 10 location(s) |
+| 🟢 在用 | `image` | `game` | **img46.png**<br><sub>`img46-5b6c-png`</sub> | `public/virtual-lab/images/img46.png` | 0.5 | *待上传* | 10 | Referenced in 10 location(s) |
+| 🟢 在用 | `image` | `game` | **img47.png**<br><sub>`img47-png`</sub> | `public/virtual-lab/experiment4_html/data/img47.png` | 1.0 | *待上传* | 8 | Referenced in 8 location(s) |
+| 🟢 在用 | `image` | `game` | **img47.png**<br><sub>`img47-5678-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img47.png` | 0.5 | *待上传* | 8 | Referenced in 8 location(s) |
+| 🟢 在用 | `image` | `game` | **img47.png**<br><sub>`img47-4189-png`</sub> | `public/virtual-lab/images/img47.png` | 1.0 | *待上传* | 8 | Referenced in 8 location(s) |
+| 🟢 在用 | `image` | `game` | **img48.png**<br><sub>`img48-png`</sub> | `public/virtual-lab/experiment4_html/data/img48.png` | 7.7 | *待上传* | 34 | Referenced in 34 location(s) |
+| 🟢 在用 | `image` | `game` | **img48.png**<br><sub>`img48-c22e-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img48.png` | 0.5 | *待上传* | 34 | Referenced in 34 location(s) |
+| 🟢 在用 | `image` | `game` | **img48.png**<br><sub>`img48-c302-png`</sub> | `public/virtual-lab/images/img48.png` | 7.7 | *待上传* | 34 | Referenced in 34 location(s) |
+| 🟢 在用 | `image` | `game` | **img49.png**<br><sub>`img49-png`</sub> | `public/virtual-lab/experiment4_html/data/img49.png` | 1.4 | *待上传* | 10 | Referenced in 10 location(s) |
+| 🟢 在用 | `image` | `game` | **img49.png**<br><sub>`img49-533d-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img49.png` | 0.6 | *待上传* | 10 | Referenced in 10 location(s) |
+| 🟢 在用 | `image` | `game` | **img49.png**<br><sub>`img49-b38c-png`</sub> | `public/virtual-lab/images/img49.png` | 1.4 | *待上传* | 10 | Referenced in 10 location(s) |
+| 🟢 在用 | `image` | `game` | **img5.png**<br><sub>`img5-png`</sub> | `public/virtual-lab/experiment4_html/data/img5.png` | 6.0 | *待上传* | 42 | Referenced in 42 location(s) |
+| 🟢 在用 | `image` | `game` | **img5.png**<br><sub>`img5-8d97-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img5.png` | 65.5 | *待上传* | 42 | Referenced in 42 location(s) |
+| 🟢 在用 | `image` | `game` | **img5.png**<br><sub>`img5-c8f8-png`</sub> | `public/virtual-lab/images/img5.png` | 6.0 | *待上传* | 42 | Referenced in 42 location(s) |
+| 🟢 在用 | `image` | `game` | **img50.png**<br><sub>`img50-png`</sub> | `public/virtual-lab/experiment4_html/data/img50.png` | 3.5 | *待上传* | 75 | Referenced in 75 location(s) |
+| 🟢 在用 | `image` | `game` | **img50.png**<br><sub>`img50-7a35-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img50.png` | 0.5 | *待上传* | 75 | Referenced in 75 location(s) |
+| 🟢 在用 | `image` | `game` | **img50.png**<br><sub>`img50-a298-png`</sub> | `public/virtual-lab/images/img50.png` | 3.5 | *待上传* | 75 | Referenced in 75 location(s) |
+| 🟢 在用 | `image` | `game` | **img51.png**<br><sub>`img51-png`</sub> | `public/virtual-lab/experiment4_html/data/img51.png` | 1.0 | *待上传* | 70 | Referenced in 70 location(s) |
+| 🟢 在用 | `image` | `game` | **img51.png**<br><sub>`img51-571d-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img51.png` | 8.6 | *待上传* | 70 | Referenced in 70 location(s) |
+| 🟢 在用 | `image` | `game` | **img51.png**<br><sub>`img51-12af-png`</sub> | `public/virtual-lab/images/img51.png` | 1.0 | *待上传* | 70 | Referenced in 70 location(s) |
+| 🟢 在用 | `image` | `game` | **img52.png**<br><sub>`img52-png`</sub> | `public/virtual-lab/experiment4_html/data/img52.png` | 2.4 | *待上传* | 9 | Referenced in 9 location(s) |
+| 🟢 在用 | `image` | `game` | **img52.png**<br><sub>`img52-d764-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img52.png` | 0.6 | *待上传* | 9 | Referenced in 9 location(s) |
+| 🟢 在用 | `image` | `game` | **img52.png**<br><sub>`img52-99a2-png`</sub> | `public/virtual-lab/images/img52.png` | 2.4 | *待上传* | 9 | Referenced in 9 location(s) |
+| 🟢 在用 | `image` | `game` | **img53.png**<br><sub>`img53-png`</sub> | `public/virtual-lab/experiment4_html/data/img53.png` | 9.1 | *待上传* | 13 | Referenced in 13 location(s) |
+| 🟢 在用 | `image` | `game` | **img53.png**<br><sub>`img53-bd12-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img53.png` | 0.6 | *待上传* | 13 | Referenced in 13 location(s) |
+| 🟢 在用 | `image` | `game` | **img53.png**<br><sub>`img53-2d50-png`</sub> | `public/virtual-lab/images/img53.png` | 9.1 | *待上传* | 13 | Referenced in 13 location(s) |
+| 🟢 在用 | `image` | `game` | **img54.png**<br><sub>`img54-png`</sub> | `public/virtual-lab/experiment4_html/data/img54.png` | 1.3 | *待上传* | 71 | Referenced in 71 location(s) |
+| 🟢 在用 | `image` | `game` | **img54.png**<br><sub>`img54-9f94-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img54.png` | 16.2 | *待上传* | 71 | Referenced in 71 location(s) |
+| 🟢 在用 | `image` | `game` | **img54.png**<br><sub>`img54-01d6-png`</sub> | `public/virtual-lab/images/img54.png` | 1.3 | *待上传* | 71 | Referenced in 71 location(s) |
+| 🟢 在用 | `image` | `game` | **img55.png**<br><sub>`img55-png`</sub> | `public/virtual-lab/experiment4_html/data/img55.png` | 2.3 | *待上传* | 7 | Referenced in 7 location(s) |
+| 🟢 在用 | `image` | `game` | **img55.png**<br><sub>`img55-0540-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img55.png` | 0.8 | *待上传* | 7 | Referenced in 7 location(s) |
+| 🟢 在用 | `image` | `game` | **img55.png**<br><sub>`img55-b778-png`</sub> | `public/virtual-lab/images/img55.png` | 2.3 | *待上传* | 7 | Referenced in 7 location(s) |
+| 🟢 在用 | `image` | `game` | **img56.png**<br><sub>`img56-png`</sub> | `public/virtual-lab/experiment4_html/data/img56.png` | 0.6 | *待上传* | 10 | Referenced in 10 location(s) |
+| 🟢 在用 | `image` | `game` | **img56.png**<br><sub>`img56-9231-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img56.png` | 0.9 | *待上传* | 10 | Referenced in 10 location(s) |
+| 🟢 在用 | `image` | `game` | **img56.png**<br><sub>`img56-6910-png`</sub> | `public/virtual-lab/images/img56.png` | 0.6 | *待上传* | 10 | Referenced in 10 location(s) |
+| 🟢 在用 | `image` | `game` | **img57.png**<br><sub>`img57-png`</sub> | `public/virtual-lab/experiment4_html/data/img57.png` | 3.0 | *待上传* | 74 | Referenced in 74 location(s) |
+| 🟢 在用 | `image` | `game` | **img57.png**<br><sub>`img57-1334-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img57.png` | 0.3 | *待上传* | 74 | Referenced in 74 location(s) |
+| 🟢 在用 | `image` | `game` | **img57.png**<br><sub>`img57-af1f-png`</sub> | `public/virtual-lab/images/img57.png` | 3.0 | *待上传* | 74 | Referenced in 74 location(s) |
+| 🟢 在用 | `image` | `game` | **img58.png**<br><sub>`img58-png`</sub> | `public/virtual-lab/experiment4_html/data/img58.png` | 1.6 | *待上传* | 3 | Referenced in 3 location(s) |
+| 🟢 在用 | `image` | `game` | **img58.png**<br><sub>`img58-7d01-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img58.png` | 25.5 | *待上传* | 3 | Referenced in 3 location(s) |
+| 🟢 在用 | `image` | `game` | **img58.png**<br><sub>`img58-008d-png`</sub> | `public/virtual-lab/images/img58.png` | 1.6 | *待上传* | 3 | Referenced in 3 location(s) |
+| 🟢 在用 | `image` | `game` | **img59.png**<br><sub>`img59-png`</sub> | `public/virtual-lab/experiment4_html/data/img59.png` | 0.6 | *待上传* | 7 | Referenced in 7 location(s) |
+| 🟢 在用 | `image` | `game` | **img59.png**<br><sub>`img59-0739-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img59.png` | 19.4 | *待上传* | 7 | Referenced in 7 location(s) |
+| 🟢 在用 | `image` | `game` | **img59.png**<br><sub>`img59-bced-png`</sub> | `public/virtual-lab/images/img59.png` | 0.6 | *待上传* | 7 | Referenced in 7 location(s) |
+| 🟢 在用 | `image` | `game` | **img6.png**<br><sub>`img6-png`</sub> | `public/virtual-lab/experiment4_html/data/img6.png` | 4.6 | *待上传* | 41 | Referenced in 41 location(s) |
+| 🟢 在用 | `image` | `game` | **img6.png**<br><sub>`img6-1f41-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img6.png` | 41.0 | *待上传* | 41 | Referenced in 41 location(s) |
+| 🟢 在用 | `image` | `game` | **img6.png**<br><sub>`img6-5673-png`</sub> | `public/virtual-lab/images/img6.png` | 4.6 | *待上传* | 41 | Referenced in 41 location(s) |
+| 🟢 在用 | `image` | `game` | **img60.png**<br><sub>`img60-png`</sub> | `public/virtual-lab/experiment4_html/data/img60.png` | 1.6 | *待上传* | 5 | Referenced in 5 location(s) |
+| 🟢 在用 | `image` | `game` | **img60.png**<br><sub>`img60-245a-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img60.png` | 2.4 | *待上传* | 5 | Referenced in 5 location(s) |
+| 🟢 在用 | `image` | `game` | **img60.png**<br><sub>`img60-5868-png`</sub> | `public/virtual-lab/images/img60.png` | 1.6 | *待上传* | 5 | Referenced in 5 location(s) |
+| 🟢 在用 | `image` | `game` | **img61.png**<br><sub>`img61-png`</sub> | `public/virtual-lab/experiment4_html/data/img61.png` | 1.4 | *待上传* | 6 | Referenced in 6 location(s) |
+| 🟢 在用 | `image` | `game` | **img61.png**<br><sub>`img61-8282-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img61.png` | 1.6 | *待上传* | 6 | Referenced in 6 location(s) |
+| 🟢 在用 | `image` | `game` | **img61.png**<br><sub>`img61-7678-png`</sub> | `public/virtual-lab/images/img61.png` | 1.4 | *待上传* | 6 | Referenced in 6 location(s) |
+| 🟢 在用 | `image` | `game` | **img62.png**<br><sub>`img62-png`</sub> | `public/virtual-lab/experiment4_html/data/img62.png` | 1.9 | *待上传* | 6 | Referenced in 6 location(s) |
+| 🟢 在用 | `image` | `game` | **img62.png**<br><sub>`img62-4661-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img62.png` | 1.5 | *待上传* | 6 | Referenced in 6 location(s) |
+| 🟢 在用 | `image` | `game` | **img62.png**<br><sub>`img62-ad88-png`</sub> | `public/virtual-lab/images/img62.png` | 1.9 | *待上传* | 6 | Referenced in 6 location(s) |
+| 🟢 在用 | `image` | `game` | **img63.png**<br><sub>`img63-png`</sub> | `public/virtual-lab/experiment4_html/data/img63.png` | 4.5 | *待上传* | 12 | Referenced in 12 location(s) |
+| 🟢 在用 | `image` | `game` | **img63.png**<br><sub>`img63-bdd7-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img63.png` | 1.5 | *待上传* | 12 | Referenced in 12 location(s) |
+| 🟢 在用 | `image` | `game` | **img63.png**<br><sub>`img63-5cf3-png`</sub> | `public/virtual-lab/images/img63.png` | 4.5 | *待上传* | 12 | Referenced in 12 location(s) |
+| 🟢 在用 | `image` | `game` | **img64.png**<br><sub>`img64-png`</sub> | `public/virtual-lab/experiment4_html/data/img64.png` | 1.5 | *待上传* | 5 | Referenced in 5 location(s) |
+| 🟢 在用 | `image` | `game` | **img64.png**<br><sub>`img64-67e1-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img64.png` | 1.6 | *待上传* | 5 | Referenced in 5 location(s) |
+| 🟢 在用 | `image` | `game` | **img64.png**<br><sub>`img64-81e6-png`</sub> | `public/virtual-lab/images/img64.png` | 1.5 | *待上传* | 5 | Referenced in 5 location(s) |
+| 🟢 在用 | `image` | `game` | **img65.png**<br><sub>`img65-png`</sub> | `public/virtual-lab/experiment4_html/data/img65.png` | 1.5 | *待上传* | 7 | Referenced in 7 location(s) |
+| 🟢 在用 | `image` | `game` | **img65.png**<br><sub>`img65-381c-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img65.png` | 5.8 | *待上传* | 7 | Referenced in 7 location(s) |
+| 🟢 在用 | `image` | `game` | **img65.png**<br><sub>`img65-86bf-png`</sub> | `public/virtual-lab/images/img65.png` | 1.5 | *待上传* | 7 | Referenced in 7 location(s) |
+| 🟢 在用 | `image` | `game` | **img66.png**<br><sub>`img66-png`</sub> | `public/virtual-lab/experiment4_html/data/img66.png` | 2.9 | *待上传* | 13 | Referenced in 13 location(s) |
+| 🟢 在用 | `image` | `game` | **img66.png**<br><sub>`img66-b45a-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img66.png` | 6.0 | *待上传* | 13 | Referenced in 13 location(s) |
+| 🟢 在用 | `image` | `game` | **img66.png**<br><sub>`img66-ad68-png`</sub> | `public/virtual-lab/images/img66.png` | 2.9 | *待上传* | 13 | Referenced in 13 location(s) |
+| 🟢 在用 | `image` | `game` | **img67.png**<br><sub>`img67-png`</sub> | `public/virtual-lab/experiment4_html/data/img67.png` | 1.5 | *待上传* | 11 | Referenced in 11 location(s) |
+| 🟢 在用 | `image` | `game` | **img67.png**<br><sub>`img67-4658-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img67.png` | 0.6 | *待上传* | 11 | Referenced in 11 location(s) |
+| 🟢 在用 | `image` | `game` | **img67.png**<br><sub>`img67-d176-png`</sub> | `public/virtual-lab/images/img67.png` | 1.5 | *待上传* | 11 | Referenced in 11 location(s) |
+| 🟢 在用 | `image` | `game` | **img68.png**<br><sub>`img68-png`</sub> | `public/virtual-lab/experiment4_html/data/img68.png` | 1.5 | *待上传* | 6 | Referenced in 6 location(s) |
+| 🟢 在用 | `image` | `game` | **img68.png**<br><sub>`img68-42f9-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img68.png` | 4.5 | *待上传* | 6 | Referenced in 6 location(s) |
+| 🟢 在用 | `image` | `game` | **img68.png**<br><sub>`img68-5516-png`</sub> | `public/virtual-lab/images/img68.png` | 1.5 | *待上传* | 6 | Referenced in 6 location(s) |
+| 🟢 在用 | `image` | `game` | **img69.png**<br><sub>`img69-png`</sub> | `public/virtual-lab/experiment4_html/data/img69.png` | 1.2 | *待上传* | 2 | Referenced in 2 location(s) |
+| 🟢 在用 | `image` | `game` | **img69.png**<br><sub>`img69-b234-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img69.png` | 14.1 | *待上传* | 2 | Referenced in 2 location(s) |
+| 🟢 在用 | `image` | `game` | **img69.png**<br><sub>`img69-ef4c-png`</sub> | `public/virtual-lab/images/img69.png` | 1.2 | *待上传* | 2 | Referenced in 2 location(s) |
+| 🟢 在用 | `image` | `game` | **img7.png**<br><sub>`img7-png`</sub> | `public/virtual-lab/experiment4_html/data/img7.png` | 20.0 | *待上传* | 40 | Referenced in 40 location(s) |
+| 🟢 在用 | `image` | `game` | **img7.png**<br><sub>`img7-0d5f-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img7.png` | 1.2 | *待上传* | 40 | Referenced in 40 location(s) |
+| 🟢 在用 | `image` | `game` | **img7.png**<br><sub>`img7-28a4-png`</sub> | `public/virtual-lab/images/img7.png` | 20.0 | *待上传* | 40 | Referenced in 40 location(s) |
+| 🟢 在用 | `image` | `game` | **img70.png**<br><sub>`img70-png`</sub> | `public/virtual-lab/experiment4_html/data/img70.png` | 0.5 | *待上传* | 4 | Referenced in 4 location(s) |
+| 🟢 在用 | `image` | `game` | **img70.png**<br><sub>`img70-b98e-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img70.png` | 3.1 | *待上传* | 4 | Referenced in 4 location(s) |
+| 🟢 在用 | `image` | `game` | **img70.png**<br><sub>`img70-fa72-png`</sub> | `public/virtual-lab/images/img70.png` | 0.5 | *待上传* | 4 | Referenced in 4 location(s) |
+| 🟢 在用 | `image` | `game` | **img71.png**<br><sub>`img71-png`</sub> | `public/virtual-lab/experiment4_html/data/img71.png` | 0.4 | *待上传* | 6 | Referenced in 6 location(s) |
+| 🟢 在用 | `image` | `game` | **img71.png**<br><sub>`img71-1155-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img71.png` | 1.0 | *待上传* | 6 | Referenced in 6 location(s) |
+| 🟢 在用 | `image` | `game` | **img71.png**<br><sub>`img71-449b-png`</sub> | `public/virtual-lab/images/img71.png` | 0.4 | *待上传* | 6 | Referenced in 6 location(s) |
+| 🟢 在用 | `image` | `game` | **img72.png**<br><sub>`img72-png`</sub> | `public/virtual-lab/experiment4_html/data/img72.png` | 1.1 | *待上传* | 3 | Referenced in 3 location(s) |
+| 🟢 在用 | `image` | `game` | **img72.png**<br><sub>`img72-030c-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img72.png` | 2.9 | *待上传* | 3 | Referenced in 3 location(s) |
+| 🟢 在用 | `image` | `game` | **img72.png**<br><sub>`img72-6177-png`</sub> | `public/virtual-lab/images/img72.png` | 1.1 | *待上传* | 3 | Referenced in 3 location(s) |
+| 🟢 在用 | `image` | `game` | **img73.png**<br><sub>`img73-png`</sub> | `public/virtual-lab/experiment4_html/data/img73.png` | 0.9 | *待上传* | 2 | Referenced in 2 location(s) |
+| 🟢 在用 | `image` | `game` | **img73.png**<br><sub>`img73-0c13-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img73.png` | 2.3 | *待上传* | 2 | Referenced in 2 location(s) |
+| 🟢 在用 | `image` | `game` | **img73.png**<br><sub>`img73-ae50-png`</sub> | `public/virtual-lab/images/img73.png` | 0.9 | *待上传* | 2 | Referenced in 2 location(s) |
+| 🟢 在用 | `image` | `game` | **img74.png**<br><sub>`img74-png`</sub> | `public/virtual-lab/experiment4_html/data/img74.png` | 0.8 | *待上传* | 4 | Referenced in 4 location(s) |
+| 🟢 在用 | `image` | `game` | **img74.png**<br><sub>`img74-d8ef-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img74.png` | 15.3 | *待上传* | 4 | Referenced in 4 location(s) |
+| 🟢 在用 | `image` | `game` | **img74.png**<br><sub>`img74-b049-png`</sub> | `public/virtual-lab/images/img74.png` | 0.8 | *待上传* | 4 | Referenced in 4 location(s) |
+| 🟢 在用 | `image` | `game` | **img75.png**<br><sub>`img75-png`</sub> | `public/virtual-lab/experiment4_html/data/img75.png` | 1.2 | *待上传* | 5 | Referenced in 5 location(s) |
+| 🟢 在用 | `image` | `game` | **img75.png**<br><sub>`img75-92b1-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img75.png` | 0.9 | *待上传* | 5 | Referenced in 5 location(s) |
+| 🟢 在用 | `image` | `game` | **img75.png**<br><sub>`img75-8106-png`</sub> | `public/virtual-lab/images/img75.png` | 1.2 | *待上传* | 5 | Referenced in 5 location(s) |
+| 🟢 在用 | `image` | `game` | **img76.png**<br><sub>`img76-png`</sub> | `public/virtual-lab/experiment4_html/data/img76.png` | 1.2 | *待上传* | 4 | Referenced in 4 location(s) |
+| 🟢 在用 | `image` | `game` | **img76.png**<br><sub>`img76-824e-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img76.png` | 4.7 | *待上传* | 4 | Referenced in 4 location(s) |
+| 🟢 在用 | `image` | `game` | **img76.png**<br><sub>`img76-275f-png`</sub> | `public/virtual-lab/images/img76.png` | 1.2 | *待上传* | 4 | Referenced in 4 location(s) |
+| 🟢 在用 | `image` | `game` | **img77.png**<br><sub>`img77-png`</sub> | `public/virtual-lab/experiment4_html/data/img77.png` | 3.3 | *待上传* | 5 | Referenced in 5 location(s) |
+| 🟢 在用 | `image` | `game` | **img77.png**<br><sub>`img77-2b76-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img77.png` | 3.3 | *待上传* | 5 | Referenced in 5 location(s) |
+| 🟢 在用 | `image` | `game` | **img77.png**<br><sub>`img77-30a9-png`</sub> | `public/virtual-lab/images/img77.png` | 3.3 | *待上传* | 5 | Referenced in 5 location(s) |
+| 🟢 在用 | `image` | `game` | **img78.png**<br><sub>`img78-png`</sub> | `public/virtual-lab/experiment4_html/data/img78.png` | 0.7 | *待上传* | 3 | Referenced in 3 location(s) |
+| 🟢 在用 | `image` | `game` | **img78.png**<br><sub>`img78-d1cd-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img78.png` | 0.8 | *待上传* | 3 | Referenced in 3 location(s) |
+| 🟢 在用 | `image` | `game` | **img78.png**<br><sub>`img78-d9df-png`</sub> | `public/virtual-lab/images/img78.png` | 0.7 | *待上传* | 3 | Referenced in 3 location(s) |
+| 🟢 在用 | `image` | `game` | **img79.png**<br><sub>`img79-png`</sub> | `public/virtual-lab/experiment4_html/data/img79.png` | 1.8 | *待上传* | 3 | Referenced in 3 location(s) |
+| 🟢 在用 | `image` | `game` | **img79.png**<br><sub>`img79-ddfc-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img79.png` | 2.0 | *待上传* | 3 | Referenced in 3 location(s) |
+| 🟢 在用 | `image` | `game` | **img79.png**<br><sub>`img79-6532-png`</sub> | `public/virtual-lab/images/img79.png` | 1.8 | *待上传* | 3 | Referenced in 3 location(s) |
+| 🟢 在用 | `image` | `game` | **img8.png**<br><sub>`img8-png`</sub> | `public/virtual-lab/experiment4_html/data/img8.png` | 8.6 | *待上传* | 38 | Referenced in 38 location(s) |
+| 🟢 在用 | `image` | `game` | **img8.png**<br><sub>`img8-3673-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img8.png` | 5.8 | *待上传* | 38 | Referenced in 38 location(s) |
+| 🟢 在用 | `image` | `game` | **img8.png**<br><sub>`img8-4b56-png`</sub> | `public/virtual-lab/images/img8.png` | 8.6 | *待上传* | 38 | Referenced in 38 location(s) |
+| 🟢 在用 | `image` | `game` | **img80.png**<br><sub>`img80-png`</sub> | `public/virtual-lab/experiment4_html/data/img80.png` | 3.0 | *待上传* | 4 | Referenced in 4 location(s) |
+| 🟢 在用 | `image` | `game` | **img80.png**<br><sub>`img80-6ab9-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img80.png` | 12.9 | *待上传* | 4 | Referenced in 4 location(s) |
+| 🟢 在用 | `image` | `game` | **img80.png**<br><sub>`img80-0449-png`</sub> | `public/virtual-lab/images/img80.png` | 3.0 | *待上传* | 4 | Referenced in 4 location(s) |
+| 🟢 在用 | `image` | `game` | **img81.png**<br><sub>`img81-png`</sub> | `public/virtual-lab/experiment4_html/data/img81.png` | 2.3 | *待上传* | 3 | Referenced in 3 location(s) |
+| 🟢 在用 | `image` | `game` | **img81.png**<br><sub>`img81-0334-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img81.png` | 2.2 | *待上传* | 3 | Referenced in 3 location(s) |
+| 🟢 在用 | `image` | `game` | **img81.png**<br><sub>`img81-15d9-png`</sub> | `public/virtual-lab/images/img81.png` | 2.3 | *待上传* | 3 | Referenced in 3 location(s) |
+| 🟢 在用 | `image` | `game` | **img82.png**<br><sub>`img82-png`</sub> | `public/virtual-lab/experiment4_html/data/img82.png` | 0.5 | *待上传* | 31 | Referenced in 31 location(s) |
+| 🟢 在用 | `image` | `game` | **img82.png**<br><sub>`img82-c32b-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img82.png` | 43.4 | *待上传* | 31 | Referenced in 31 location(s) |
+| 🟢 在用 | `image` | `game` | **img82.png**<br><sub>`img82-1211-png`</sub> | `public/virtual-lab/images/img82.png` | 0.5 | *待上传* | 31 | Referenced in 31 location(s) |
+| 🟢 在用 | `image` | `game` | **img83.png**<br><sub>`img83-png`</sub> | `public/virtual-lab/experiment4_html/data/img83.png` | 1.6 | *待上传* | 63 | Referenced in 63 location(s) |
+| 🟢 在用 | `image` | `game` | **img83.png**<br><sub>`img83-e2d9-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img83.png` | 8.3 | *待上传* | 63 | Referenced in 63 location(s) |
+| 🟢 在用 | `image` | `game` | **img83.png**<br><sub>`img83-9106-png`</sub> | `public/virtual-lab/images/img83.png` | 1.6 | *待上传* | 63 | Referenced in 63 location(s) |
+| 🟢 在用 | `image` | `game` | **img84.png**<br><sub>`img84-png`</sub> | `public/virtual-lab/experiment4_html/data/img84.png` | 1.4 | *待上传* | 62 | Referenced in 62 location(s) |
+| 🟢 在用 | `image` | `game` | **img84.png**<br><sub>`img84-c579-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img84.png` | 26.5 | *待上传* | 62 | Referenced in 62 location(s) |
+| 🟢 在用 | `image` | `game` | **img84.png**<br><sub>`img84-3015-png`</sub> | `public/virtual-lab/images/img84.png` | 1.4 | *待上传* | 62 | Referenced in 62 location(s) |
+| 🟢 在用 | `image` | `game` | **img85.png**<br><sub>`img85-png`</sub> | `public/virtual-lab/experiment4_html/data/img85.png` | 1.0 | *待上传* | 5 | Referenced in 5 location(s) |
+| 🟢 在用 | `image` | `game` | **img85.png**<br><sub>`img85-7d8c-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img85.png` | 22.4 | *待上传* | 5 | Referenced in 5 location(s) |
+| 🟢 在用 | `image` | `game` | **img85.png**<br><sub>`img85-8162-png`</sub> | `public/virtual-lab/images/img85.png` | 1.0 | *待上传* | 5 | Referenced in 5 location(s) |
+| 🟢 在用 | `image` | `game` | **img86.png**<br><sub>`img86-png`</sub> | `public/virtual-lab/experiment4_html/data/img86.png` | 1.0 | *待上传* | 60 | Referenced in 60 location(s) |
+| 🟢 在用 | `image` | `game` | **img86.png**<br><sub>`img86-0789-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img86.png` | 9.4 | *待上传* | 60 | Referenced in 60 location(s) |
+| 🟢 在用 | `image` | `game` | **img86.png**<br><sub>`img86-8bbf-png`</sub> | `public/virtual-lab/images/img86.png` | 1.0 | *待上传* | 60 | Referenced in 60 location(s) |
+| 🟢 在用 | `image` | `game` | **img87.png**<br><sub>`img87-png`</sub> | `public/virtual-lab/experiment4_html/data/img87.png` | 1.3 | *待上传* | 64 | Referenced in 64 location(s) |
+| 🟢 在用 | `image` | `game` | **img87.png**<br><sub>`img87-6d49-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img87.png` | 0.9 | *待上传* | 64 | Referenced in 64 location(s) |
+| 🟢 在用 | `image` | `game` | **img87.png**<br><sub>`img87-df73-png`</sub> | `public/virtual-lab/images/img87.png` | 1.3 | *待上传* | 64 | Referenced in 64 location(s) |
+| 🟢 在用 | `image` | `game` | **img88.png**<br><sub>`img88-png`</sub> | `public/virtual-lab/experiment4_html/data/img88.png` | 1.9 | *待上传* | 63 | Referenced in 63 location(s) |
+| 🟢 在用 | `image` | `game` | **img88.png**<br><sub>`img88-4b11-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img88.png` | 0.9 | *待上传* | 63 | Referenced in 63 location(s) |
+| 🟢 在用 | `image` | `game` | **img88.png**<br><sub>`img88-5dfb-png`</sub> | `public/virtual-lab/images/img88.png` | 1.9 | *待上传* | 63 | Referenced in 63 location(s) |
+| 🟢 在用 | `image` | `game` | **img89.png**<br><sub>`img89-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img89.png` | 1.0 | *待上传* | 58 | Referenced in 58 location(s) |
+| 🟢 在用 | `image` | `game` | **img9.png**<br><sub>`img9-png`</sub> | `public/virtual-lab/experiment4_html/data/img9.png` | 0.7 | *待上传* | 40 | Referenced in 40 location(s) |
+| 🟢 在用 | `image` | `game` | **img9.png**<br><sub>`img9-60d1-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img9.png` | 7.6 | *待上传* | 40 | Referenced in 40 location(s) |
+| 🟢 在用 | `image` | `game` | **img9.png**<br><sub>`img9-2720-png`</sub> | `public/virtual-lab/images/img9.png` | 0.7 | *待上传* | 40 | Referenced in 40 location(s) |
+| 🟢 在用 | `image` | `game` | **img90.png**<br><sub>`img90-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img90.png` | 10.4 | *待上传* | 59 | Referenced in 59 location(s) |
+| 🟢 在用 | `image` | `game` | **img91.png**<br><sub>`img91-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img91.png` | 0.8 | *待上传* | 60 | Referenced in 60 location(s) |
+| 🟢 在用 | `image` | `game` | **img92.png**<br><sub>`img92-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img92.png` | 0.9 | *待上传* | 60 | Referenced in 60 location(s) |
+| 🟢 在用 | `image` | `game` | **img93.png**<br><sub>`img93-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img93.png` | 0.6 | *待上传* | 59 | Referenced in 59 location(s) |
+| 🟢 在用 | `image` | `game` | **img94.png**<br><sub>`img94-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img94.png` | 0.5 | *待上传* | 59 | Referenced in 59 location(s) |
+| 🟢 在用 | `image` | `game` | **img95.png**<br><sub>`img95-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img95.png` | 13.0 | *待上传* | 59 | Referenced in 59 location(s) |
+| 🟢 在用 | `image` | `game` | **img96.png**<br><sub>`img96-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img96.png` | 6.4 | *待上传* | 6 | Referenced in 6 location(s) |
+| 🟢 在用 | `image` | `game` | **img97.png**<br><sub>`img97-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img97.png` | 9.3 | *待上传* | 60 | Referenced in 60 location(s) |
+| 🟢 在用 | `image` | `game` | **img98.png**<br><sub>`img98-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img98.png` | 5.2 | *待上传* | 45 | Referenced in 45 location(s) |
+| 🟢 在用 | `image` | `game` | **img99.png**<br><sub>`img99-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img99.png` | 5.3 | *待上传* | 54 | Referenced in 54 location(s) |
+| 🟢 在用 | `image` | `game` | **incubator-open.png**<br><sub>`incubator-open-png`</sub> | `public/virtual-lab/images/experiment1/incubator-open.png` | 1509.2 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **incubator.png**<br><sub>`incubator-png`</sub> | `public/virtual-lab/experiment9-assets/processed/Shared Resources/incubator.png` | 31.6 | *待上传* | 3 | Referenced in 3 location(s) |
+| 🟢 在用 | `image` | `game` | **incubator.png**<br><sub>`incubator-52ea-png`</sub> | `public/virtual-lab/images/experiment9/sidebar/incubator.png` | 1967.7 | *待上传* | 3 | Referenced in 3 location(s) |
+| 🟢 在用 | `image` | `game` | **incubator.png**<br><sub>`incubator-9cd2-png`</sub> | `public/virtual-lab/images/incubator.png` | 9.2 | *待上传* | 3 | Referenced in 3 location(s) |
+| 🟢 在用 | `image` | `game` | **info.png**<br><sub>`info-png`</sub> | `public/virtual-lab/images/experiment2/info.png` | 464.7 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **inoculating-loop.png**<br><sub>`inoculating-loop-png`</sub> | `public/virtual-lab/images/experiment2/sidebar/inoculating-loop.png` | 76.1 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **inoculation-loop.png**<br><sub>`inoculation-loop-png`</sub> | `public/virtual-lab/images/inoculation-loop.png` | 1.9 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **iodine.png**<br><sub>`iodine-png`</sub> | `public/virtual-lab/images/experiment2/sidebar/iodine.png` | 1221.9 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **IPTG Inducer.png**<br><sub>`iptg-inducer-png`</sub> | `public/virtual-lab/experiment9-assets/processed/Reagents/IPTG Inducer.png` | 4.8 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `shared` | **jlu-fbh-crest.png**<br><sub>`jlu-fbh-crest-png`</sub> | `src/assets/jlu-fbh-crest.png` | 110.0 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **kanamycin-lb-plate.png**<br><sub>`kanamycin-lb-plate-png`</sub> | `public/virtual-lab/images/experiment8/sidebar/kanamycin-lb-plate.png` | 1646.5 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **labTable.webp**<br><sub>`labtable-webp`</sub> | `public/virtual-lab/images/experiment7/labTable.webp` | 4.2 | *待上传* | 2 | Referenced in 2 location(s) |
+| 🟢 在用 | `image` | `shared` | **lamb.png**<br><sub>`lamb-png`</sub> | `src/assets/loading/lamb.png` | 165.5 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `shared` | **lamb.webp**<br><sub>`lamb-webp`</sub> | `src/assets/loading/lamb.webp` | 44.2 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **LB Liquid Medium (containing Kanamycin).png**<br><sub>`lb-liquid-medium-containing-kanamycin-png`</sub> | `public/virtual-lab/experiment9-assets/processed/Reagents/LB Liquid Medium (containing Kanamycin).png` | 13.0 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **lb-liquid-medium.png**<br><sub>`lb-liquid-medium-png`</sub> | `public/virtual-lab/images/experiment8/sidebar/lb-liquid-medium.png` | 10.5 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **lb-liquid-medium.png**<br><sub>`lb-liquid-medium-1a19-png`</sub> | `public/virtual-lab/images/experiment9/sidebar/lb-liquid-medium.png` | 10.5 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **lb-plate-streaked.png**<br><sub>`lb-plate-streaked-png`</sub> | `public/virtual-lab/images/experiment1/lb-plate-streaked.png` | 27.1 | *待上传* | 2 | Referenced in 2 location(s) |
+| 🟢 在用 | `image` | `game` | **loading-1.png**<br><sub>`loading-1-png`</sub> | `public/game-assets/assets/loading/loading-1.png` | 213.4 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **loading-2.png**<br><sub>`loading-2-png`</sub> | `public/game-assets/assets/loading/loading-2.png` | 156.0 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **loading-3.png**<br><sub>`loading-3-png`</sub> | `public/game-assets/assets/loading/loading-3.png` | 244.5 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **logo.png**<br><sub>`logo-png`</sub> | `public/game-assets/bio-memory/logo.png` | 2041.3 | *待上传* | 7 | Referenced in 7 location(s) |
+| 🟢 在用 | `image` | `game` | **loop.png**<br><sub>`loop-png`</sub> | `public/virtual-lab/images/experiment1/loop.png` | 3.1 | *待上传* | 2 | Referenced in 2 location(s) |
+| 🟢 在用 | `image` | `game` | **loop2.png**<br><sub>`loop2-png`</sub> | `public/virtual-lab/images/experiment1/loop2.png` | 58.1 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `home` | **map-data-note.png**<br><sub>`map-data-note-png`</sub> | `src/assets/home/story/map-data-note.png` | 198.1 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **memory-bg.jpg**<br><sub>`memory-bg-jpg`</sub> | `public/game-assets/assets/ui/memory-bg.jpg` | 2001.9 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **MetalTray.png**<br><sub>`metaltray-png`</sub> | `public/virtual-lab/images/experiment3/MetalTray.png` | 2176.9 | *待上传* | 2 | Referenced in 2 location(s) |
+| 🟢 在用 | `image` | `game` | **microscope.png**<br><sub>`microscope-png`</sub> | `public/virtual-lab/images/experiment2/sidebar/microscope.png` | 450.3 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **microtube-clear.png**<br><sub>`microtube-clear-png`</sub> | `public/virtual-lab/experiment4_lab/assets/ppt/microtube-clear.png` | 204.2 | *待上传* | 2 | Referenced in 2 location(s) |
+| 🟢 在用 | `image` | `game` | **microtube-empty.png**<br><sub>`microtube-empty-png`</sub> | `public/virtual-lab/experiment4_lab/assets/ppt/microtube-empty.png` | 71.3 | *待上传* | 5 | Referenced in 5 location(s) |
+| 🟢 在用 | `image` | `game` | **microwave.png**<br><sub>`microwave-png`</sub> | `public/virtual-lab/images/experiment8/sidebar/microwave.png` | 722.8 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **MicrowaveOvenClosed.png**<br><sub>`microwaveovenclosed-png`</sub> | `public/virtual-lab/images/experiment3/MicrowaveOvenClosed.png` | 673.1 | *待上传* | 4 | Referenced in 4 location(s) |
+| 🟢 在用 | `image` | `game` | **MicrowaveOvenOpen.png**<br><sub>`microwaveovenopen-png`</sub> | `public/virtual-lab/images/experiment3/MicrowaveOvenOpen.png` | 1861.6 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **mini-centrifuge.png**<br><sub>`mini-centrifuge-png`</sub> | `public/virtual-lab/images/experiment5/mini-centrifuge.png` | 44.2 | *待上传* | 2 | Referenced in 2 location(s) |
+| 🟢 在用 | `image` | `dry-lab` | **nav-drylab-engagement-v2.webp**<br><sub>`nav-drylab-engagement-v2-webp`</sub> | `src/assets/story-nav/nav-drylab-engagement-v2.webp` | 160.4 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `wet-lab` | **nav-project-wetlab-v2.webp**<br><sub>`nav-project-wetlab-v2-webp`</sub> | `src/assets/story-nav/nav-project-wetlab-v2.webp` | 155.4 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **necrotic-bg.jpg**<br><sub>`necrotic-bg-jpg`</sub> | `public/game-assets/assets/ui/necrotic-bg.jpg` | 1985.4 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **normal-saline.png**<br><sub>`normal-saline-png`</sub> | `public/virtual-lab/images/experiment2/sidebar/normal-saline.png` | 510.0 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `home` | **patient-concerned.png**<br><sub>`patient-concerned-png`</sub> | `src/assets/home/ward-transition/patient-concerned.png` | 2338.1 | *待上传* | 2 | Referenced in 2 location(s) |
+| 🟢 在用 | `image` | `home` | **patient-question.png**<br><sub>`patient-question-png`</sub> | `src/assets/home/ward-transition/patient-question.png` | 419.2 | *待上传* | 2 | Referenced in 2 location(s) |
+| 🟢 在用 | `image` | `game` | **PCR Amplifier.png**<br><sub>`pcr-amplifier-png`</sub> | `public/virtual-lab/experiment9-assets/processed/Instruments/PCR Amplifier.png` | 9.7 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **pcr-amplifier.png**<br><sub>`pcr-amplifier-8593-png`</sub> | `public/virtual-lab/images/experiment8/sidebar/pcr-amplifier.png` | 9.7 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **pcr-amplifier.png**<br><sub>`pcr-amplifier-d4c4-png`</sub> | `public/virtual-lab/images/experiment9/sidebar/pcr-amplifier.png` | 9.7 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **pcr-machine.png**<br><sub>`pcr-machine-png`</sub> | `public/virtual-lab/images/experiment5/pcr-machine.png` | 9.7 | *待上传* | 2 | Referenced in 2 location(s) |
+| 🟢 在用 | `image` | `game` | **pcr-tube-ppt.png**<br><sub>`pcr-tube-ppt-png`</sub> | `public/virtual-lab/images/experiment5/pcr-tube-ppt.png` | 220.7 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **PCRPlate96Well.png**<br><sub>`pcrplate96well-png`</sub> | `public/virtual-lab/images/experiment3/PCRPlate96Well.png` | 1073.0 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **PCRTubeRed.png**<br><sub>`pcrtubered-png`</sub> | `public/virtual-lab/images/experiment3/PCRTubeRed.png` | 946.9 | *待上传* | 2 | Referenced in 2 location(s) |
+| 🟢 在用 | `image` | `game` | **perspective-bg.png**<br><sub>`perspective-bg-png`</sub> | `public/game-assets/assets/ui/perspective-bg.png` | 1786.6 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `shared` | **petals.png**<br><sub>`petals-png`</sub> | `src/assets/loading/petals.png` | 39.2 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `shared` | **petals.webp**<br><sub>`petals-webp`</sub> | `src/assets/loading/petals.webp` | 14.4 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **petri-dish.png**<br><sub>`petri-dish-2831-png`</sub> | `public/virtual-lab/images/petri-dish.png` | 1.1 | *待上传* | 2 | Referenced in 2 location(s) |
+| 🟢 在用 | `image` | `game` | **pipette-tip.png**<br><sub>`pipette-tip-png`</sub> | `public/virtual-lab/experiment4_lab/assets/ppt/pipette-tip.png` | 7.4 | *待上传* | 3 | Referenced in 3 location(s) |
+| 🟢 在用 | `image` | `game` | **pipette-tip.png**<br><sub>`pipette-tip-7718-png`</sub> | `public/virtual-lab/images/experiment8/sidebar/pipette-tip.png` | 383.9 | *待上传* | 3 | Referenced in 3 location(s) |
+| 🟢 在用 | `image` | `game` | **pipette.png**<br><sub>`pipette-png`</sub> | `public/virtual-lab/experiment4_lab/assets/ppt/pipette.png` | 781.1 | *待上传* | 4 | Referenced in 4 location(s) |
+| 🟢 在用 | `image` | `game` | **pipette.png**<br><sub>`pipette-bbf4-png`</sub> | `public/virtual-lab/experiment9-assets/processed/Shared Resources/pipette.png` | 19.8 | *待上传* | 4 | Referenced in 4 location(s) |
+| 🟢 在用 | `image` | `game` | **pipette.png**<br><sub>`pipette-d28e-png`</sub> | `public/virtual-lab/images/experiment1/pipette.png` | 8.6 | *待上传* | 4 | Referenced in 4 location(s) |
+| 🟢 在用 | `image` | `game` | **pipette.png**<br><sub>`pipette-170a-png`</sub> | `public/virtual-lab/images/experiment8/sidebar/pipette.png` | 781.1 | *待上传* | 4 | Referenced in 4 location(s) |
+| 🟢 在用 | `image` | `game` | **pipette.png**<br><sub>`pipette-fe96-png`</sub> | `public/virtual-lab/images/pipette.png` | 7.2 | *待上传* | 4 | Referenced in 4 location(s) |
+| 🟢 在用 | `image` | `game` | **Pipette.png**<br><sub>`pipette-01a1-png`</sub> | `public/virtual-lab/images/experiment3/Pipette.png` | 723.1 | *待上传* | 4 | Referenced in 4 location(s) |
+| 🟢 在用 | `image` | `game` | **pipette.webp**<br><sub>`pipette-webp`</sub> | `public/virtual-lab/images/experiment7/pipette.webp` | 3.2 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **Pipette1_1.png**<br><sub>`pipette1-1-png`</sub> | `public/virtual-lab/images/experiment3/Pipette1_1.png` | 723.1 | *待上传* | 2 | Referenced in 2 location(s) |
+| 🟢 在用 | `image` | `game` | **Pipette1_2.png**<br><sub>`pipette1-2-png`</sub> | `public/virtual-lab/images/experiment3/Pipette1_2.png` | 6.8 | *待上传* | 2 | Referenced in 2 location(s) |
+| 🟢 在用 | `image` | `game` | **Pipette2_1.png**<br><sub>`pipette2-1-png`</sub> | `public/virtual-lab/images/experiment3/Pipette2_1.png` | 723.1 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **Pipette2_2.png**<br><sub>`pipette2-2-png`</sub> | `public/virtual-lab/images/experiment3/Pipette2_2.png` | 5.1 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **Pipette3_1.png**<br><sub>`pipette3-1-png`</sub> | `public/virtual-lab/images/experiment3/Pipette3_1.png` | 723.1 | *待上传* | 2 | Referenced in 2 location(s) |
+| 🟢 在用 | `image` | `game` | **Pipette3_2.png**<br><sub>`pipette3-2-png`</sub> | `public/virtual-lab/images/experiment3/Pipette3_2.png` | 3.8 | *待上传* | 2 | Referenced in 2 location(s) |
+| 🟢 在用 | `image` | `game` | **PipetteTipBoxClosed1.png**<br><sub>`pipettetipboxclosed1-png`</sub> | `public/virtual-lab/images/experiment3/PipetteTipBoxClosed1.png` | 465.1 | *待上传* | 2 | Referenced in 2 location(s) |
+| 🟢 在用 | `image` | `game` | **PipetteTipBoxClosed2.png**<br><sub>`pipettetipboxclosed2-png`</sub> | `public/virtual-lab/images/experiment3/PipetteTipBoxClosed2.png` | 379.4 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **PipetteTipBoxClosed3.png**<br><sub>`pipettetipboxclosed3-png`</sub> | `public/virtual-lab/images/experiment3/PipetteTipBoxClosed3.png` | 342.5 | *待上传* | 2 | Referenced in 2 location(s) |
+| 🟢 在用 | `image` | `game` | **PipetteTipBoxOpen1.png**<br><sub>`pipettetipboxopen1-png`</sub> | `public/virtual-lab/images/experiment3/PipetteTipBoxOpen1.png` | 97.1 | *待上传* | 4 | Referenced in 4 location(s) |
+| 🟢 在用 | `image` | `game` | **PipetteTipBoxOpen2.png**<br><sub>`pipettetipboxopen2-png`</sub> | `public/virtual-lab/images/experiment3/PipetteTipBoxOpen2.png` | 91.2 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **PipetteTipBoxOpen3.png**<br><sub>`pipettetipboxopen3-png`</sub> | `public/virtual-lab/images/experiment3/PipetteTipBoxOpen3.png` | 96.3 | *待上传* | 2 | Referenced in 2 location(s) |
+| 🟢 在用 | `image` | `game` | **pool.png**<br><sub>`pool-png`</sub> | `public/virtual-lab/experiment9-assets/processed/Shared Resources/pool.png` | 21.7 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **pool.png**<br><sub>`pool-e616-png`</sub> | `public/virtual-lab/images/pool.png` | 254.7 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **power-supply.png**<br><sub>`power-supply-png`</sub> | `public/virtual-lab/experiment4_lab/assets/ppt/power-supply.png` | 20.2 | *待上传* | 3 | Referenced in 3 location(s) |
+| 🟢 在用 | `image` | `game` | **power-supply.png**<br><sub>`power-supply-73bb-png`</sub> | `public/virtual-lab/images/experiment8/sidebar/power-supply.png` | 20.2 | *待上传* | 3 | Referenced in 3 location(s) |
+| 🟢 在用 | `image` | `game` | **power-supply.png**<br><sub>`power-supply-9255-png`</sub> | `public/virtual-lab/images/experiment9/sidebar/power-supply.png` | 20.2 | *待上传* | 3 | Referenced in 3 location(s) |
+| 🟢 在用 | `image` | `project` | **project-contribution-hero.webp**<br><sub>`project-contribution-hero-webp`</sub> | `src/assets/wiki/project-heroes/project-contribution-hero.webp` | 100.4 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `project` | **project-description-hero.webp**<br><sub>`project-description-hero-webp`</sub> | `src/assets/wiki/project-heroes/project-description-hero.webp` | 107.2 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `project` | **project-engineering-gradient.png**<br><sub>`project-engineering-gradient-png`</sub> | `src/assets/wiki/project-heroes/project-engineering-gradient.png` | 2552.4 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `project` | **project-results-gradient.png**<br><sub>`project-results-gradient-png`</sub> | `src/assets/wiki/project-heroes/project-results-gradient.png` | 2478.0 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `project` | **project.png**<br><sub>`project-png`</sub> | `src/assets/wiki/project.png` | 356.7 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **Protein Marker.png**<br><sub>`protein-marker-png`</sub> | `public/virtual-lab/experiment9-assets/processed/Reagents/Protein Marker.png` | 4.7 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `home` | **qr-home.png**<br><sub>`qr-home-png`</sub> | `public/game-assets/assets/ui/qr-home.png` | 29.5 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **rack-full-glow.png**<br><sub>`rack-full-glow-png`</sub> | `public/virtual-lab/images/experiment5/rack-full-glow.png` | 247.6 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **rack-partial.png**<br><sub>`rack-partial-png`</sub> | `public/virtual-lab/images/experiment5/rack-partial.png` | 221.9 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **rack-tube-highlight.png**<br><sub>`rack-tube-highlight-png`</sub> | `public/virtual-lab/images/experiment5/rack-tube-highlight.png` | 354.8 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **reactionTube.webp**<br><sub>`reactiontube-webp`</sub> | `public/virtual-lab/images/experiment7/reactionTube.webp` | 1.6 | *待上传* | 2 | Referenced in 2 location(s) |
+| 🟢 在用 | `image` | `game` | **reagent-bottle.png**<br><sub>`reagent-bottle-png`</sub> | `public/virtual-lab/experiment4_lab/assets/ppt/reagent-bottle.png` | 1839.8 | *待上传* | 5 | Referenced in 5 location(s) |
+| 🟢 在用 | `image` | `game` | **ReagentBottleAmberCapped.png**<br><sub>`reagentbottleambercapped-png`</sub> | `public/virtual-lab/images/experiment3/ReagentBottleAmberCapped.png` | 2377.8 | *待上传* | 3 | Referenced in 3 location(s) |
+| 🟢 在用 | `image` | `game` | **ReagentBottleAmberOpen.png**<br><sub>`reagentbottleamberopen-png`</sub> | `public/virtual-lab/images/experiment3/ReagentBottleAmberOpen.png` | 2407.1 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **ReagentBottleFilled.png**<br><sub>`reagentbottlefilled-png`</sub> | `public/virtual-lab/images/experiment3/ReagentBottleFilled.png` | 2113.0 | *待上传* | 3 | Referenced in 3 location(s) |
+| 🟢 在用 | `image` | `game` | **ReagentCarboyBlue.png**<br><sub>`reagentcarboyblue-png`</sub> | `public/virtual-lab/images/experiment3/ReagentCarboyBlue.png` | 1828.9 | *待上传* | 5 | Referenced in 5 location(s) |
+| 🟢 在用 | `image` | `game` | **ReagentCarboyPouring.png**<br><sub>`reagentcarboypouring-png`</sub> | `public/virtual-lab/images/experiment3/ReagentCarboyPouring.png` | 589.4 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **recombinant-plasmid.png**<br><sub>`recombinant-plasmid-png`</sub> | `public/virtual-lab/images/experiment8/sidebar/recombinant-plasmid.png` | 4.0 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **red-gel.png**<br><sub>`red-gel-png`</sub> | `public/virtual-lab/experiment4_lab/assets/ppt/red-gel.png` | 330.0 | *待上传* | 2 | Referenced in 2 location(s) |
+| 🟢 在用 | `image` | `shared` | **ribbon.png**<br><sub>`ribbon-png`</sub> | `src/assets/loading/ribbon.png` | 504.5 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `shared` | **ribbon.webp**<br><sub>`ribbon-webp`</sub> | `src/assets/loading/ribbon.webp` | 53.7 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **safranin.png**<br><sub>`safranin-png`</sub> | `public/virtual-lab/images/experiment2/sidebar/safranin.png` | 1645.6 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **sample-clear.png**<br><sub>`sample-clear-png`</sub> | `public/virtual-lab/experiment4_lab/assets/ppt/sample-clear.png` | 8.3 | *待上传* | 6 | Referenced in 6 location(s) |
+| 🟢 在用 | `image` | `game` | **sample-green.png**<br><sub>`sample-green-png`</sub> | `public/virtual-lab/experiment4_lab/assets/ppt/sample-green.png` | 822.4 | *待上传* | 4 | Referenced in 4 location(s) |
+| 🟢 在用 | `image` | `game` | **sample-orange.png**<br><sub>`sample-orange-png`</sub> | `public/virtual-lab/experiment4_lab/assets/ppt/sample-orange.png` | 906.0 | *待上传* | 3 | Referenced in 3 location(s) |
+| 🟢 在用 | `image` | `game` | **scalpel.png**<br><sub>`scalpel-png`</sub> | `public/virtual-lab/experiment4_lab/assets/ppt/scalpel.png` | 14.3 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `home` | **scene-1-layer-1.webp**<br><sub>`scene-1-layer-1-webp`</sub> | `src/assets/home/story/scene-1-layer-1.webp` | 26.1 | *待上传* | 2 | Referenced in 2 location(s) |
+| 🟢 在用 | `image` | `home` | **scene-1-layer-2.webp**<br><sub>`scene-1-layer-2-webp`</sub> | `src/assets/home/story/scene-1-layer-2.webp` | 45.0 | *待上传* | 2 | Referenced in 2 location(s) |
+| 🟢 在用 | `image` | `home` | **scene-1-layer-3.webp**<br><sub>`scene-1-layer-3-webp`</sub> | `src/assets/home/story/scene-1-layer-3.webp` | 12.1 | *待上传* | 2 | Referenced in 2 location(s) |
+| 🟢 在用 | `image` | `home` | **scene-1-layer-4.webp**<br><sub>`scene-1-layer-4-webp`</sub> | `src/assets/home/story/scene-1-layer-4.webp` | 26.3 | *待上传* | 4 | Referenced in 4 location(s) |
+| 🟢 在用 | `image` | `home` | **scene-1-layer-5.webp**<br><sub>`scene-1-layer-5-webp`</sub> | `src/assets/home/story/scene-1-layer-5.webp` | 35.7 | *待上传* | 2 | Referenced in 2 location(s) |
+| 🟢 在用 | `image` | `home` | **scene-2-layer-1.webp**<br><sub>`scene-2-layer-1-webp`</sub> | `src/assets/home/story/scene-2-layer-1.webp` | 2.6 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `home` | **scene-2-layer-2.webp**<br><sub>`scene-2-layer-2-webp`</sub> | `src/assets/home/story/scene-2-layer-2.webp` | 65.0 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `home` | **scene-2-layer-3.webp**<br><sub>`scene-2-layer-3-webp`</sub> | `src/assets/home/story/scene-2-layer-3.webp` | 23.1 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `home` | **scene-2-layer-4.webp**<br><sub>`scene-2-layer-4-webp`</sub> | `src/assets/home/story/scene-2-layer-4.webp` | 43.4 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `home` | **scene-2-layer-5.webp**<br><sub>`scene-2-layer-5-webp`</sub> | `src/assets/home/story/scene-2-layer-5.webp` | 52.9 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `home` | **scene-2-layer-6.webp**<br><sub>`scene-2-layer-6-webp`</sub> | `src/assets/home/story/scene-2-layer-6.webp` | 59.8 | *待上传* | 2 | Referenced in 2 location(s) |
+| 🟢 在用 | `image` | `home` | **scene-3-layer-1.webp**<br><sub>`scene-3-layer-1-webp`</sub> | `src/assets/home/story/scene-3-layer-1.webp` | 2.6 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `home` | **scene-3-layer-2.webp**<br><sub>`scene-3-layer-2-webp`</sub> | `src/assets/home/story/scene-3-layer-2.webp` | 177.7 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `home` | **scene-3-layer-3.webp**<br><sub>`scene-3-layer-3-webp`</sub> | `src/assets/home/story/scene-3-layer-3.webp` | 20.2 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `home` | **scene-4-layer-1.webp**<br><sub>`scene-4-layer-1-webp`</sub> | `src/assets/home/story/scene-4-layer-1.webp` | 2.6 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `home` | **scene-4-layer-2.webp**<br><sub>`scene-4-layer-2-webp`</sub> | `src/assets/home/story/scene-4-layer-2.webp` | 75.8 | *待上传* | 2 | Referenced in 2 location(s) |
+| 🟢 在用 | `image` | `home` | **scene-4-layer-3.webp**<br><sub>`scene-4-layer-3-webp`</sub> | `src/assets/home/story/scene-4-layer-3.webp` | 37.8 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `home` | **scene-4-layer-4.webp**<br><sub>`scene-4-layer-4-webp`</sub> | `src/assets/home/story/scene-4-layer-4.webp` | 23.0 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `home` | **scene-4-layer-5.webp**<br><sub>`scene-4-layer-5-webp`</sub> | `src/assets/home/story/scene-4-layer-5.webp` | 37.1 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `home` | **scene-4-layer-6.webp**<br><sub>`scene-4-layer-6-webp`</sub> | `src/assets/home/story/scene-4-layer-6.webp` | 8.6 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `home` | **scene-4-layer-7.webp**<br><sub>`scene-4-layer-7-webp`</sub> | `src/assets/home/story/scene-4-layer-7.webp` | 6.6 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `home` | **scene-4-layer-8.webp**<br><sub>`scene-4-layer-8-webp`</sub> | `src/assets/home/story/scene-4-layer-8.webp` | 6.1 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `home` | **scene-5-layer-1.webp**<br><sub>`scene-5-layer-1-webp`</sub> | `src/assets/home/story/scene-5-layer-1.webp` | 132.2 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `home` | **scene-5-layer-2.webp**<br><sub>`scene-5-layer-2-webp`</sub> | `src/assets/home/story/scene-5-layer-2.webp` | 46.6 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `home` | **scene-5-layer-3.webp**<br><sub>`scene-5-layer-3-webp`</sub> | `src/assets/home/story/scene-5-layer-3.webp` | 19.9 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `home` | **scene-6-layer-1.webp**<br><sub>`scene-6-layer-1-webp`</sub> | `src/assets/home/story/scene-6-layer-1.webp` | 55.5 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `home` | **scene-6-layer-2.webp**<br><sub>`scene-6-layer-2-webp`</sub> | `src/assets/home/story/scene-6-layer-2.webp` | 19.9 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `home` | **scene-6-layer-3.webp**<br><sub>`scene-6-layer-3-webp`</sub> | `src/assets/home/story/scene-6-layer-3.webp` | 44.2 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `home` | **scene-7-layer-1.webp**<br><sub>`scene-7-layer-1-webp`</sub> | `src/assets/home/story/scene-7-layer-1.webp` | 166.8 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `home` | **scene-7-layer-2.webp**<br><sub>`scene-7-layer-2-webp`</sub> | `src/assets/home/story/scene-7-layer-2.webp` | 4.4 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `home` | **scene-7-layer-3.webp**<br><sub>`scene-7-layer-3-webp`</sub> | `src/assets/home/story/scene-7-layer-3.webp` | 13.1 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `home` | **scene-7-layer-4.webp**<br><sub>`scene-7-layer-4-webp`</sub> | `src/assets/home/story/scene-7-layer-4.webp` | 98.0 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `home` | **scene-8-layer-1.webp**<br><sub>`scene-8-layer-1-webp`</sub> | `src/assets/home/story/scene-8-layer-1.webp` | 21.1 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `home` | **scene-8-layer-2.webp**<br><sub>`scene-8-layer-2-webp`</sub> | `src/assets/home/story/scene-8-layer-2.webp` | 22.2 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `home` | **scene-8-layer-3.webp**<br><sub>`scene-8-layer-3-webp`</sub> | `src/assets/home/story/scene-8-layer-3.webp` | 9.2 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `home` | **scene-8-layer-4.webp**<br><sub>`scene-8-layer-4-webp`</sub> | `src/assets/home/story/scene-8-layer-4.webp` | 34.0 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `home` | **scene-8-layer-5.webp**<br><sub>`scene-8-layer-5-webp`</sub> | `src/assets/home/story/scene-8-layer-5.webp` | 23.5 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `home` | **scene-8-layer-6.webp**<br><sub>`scene-8-layer-6-webp`</sub> | `src/assets/home/story/scene-8-layer-6.webp` | 71.7 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `home` | **scene-9-layer-1.webp**<br><sub>`scene-9-layer-1-webp`</sub> | `src/assets/home/story/scene-9-layer-1.webp` | 8.1 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `home` | **scene-9-layer-2.webp**<br><sub>`scene-9-layer-2-webp`</sub> | `src/assets/home/story/scene-9-layer-2.webp` | 18.0 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `home` | **scene-9-layer-3.webp**<br><sub>`scene-9-layer-3-webp`</sub> | `src/assets/home/story/scene-9-layer-3.webp` | 14.7 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **SDS-PAGE Gel Preparation Reagents.png**<br><sub>`sds-page-gel-preparation-reagents-png`</sub> | `public/virtual-lab/experiment9-assets/processed/Reagents/SDS-PAGE Gel Preparation Reagents.png` | 12.7 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **sdspage-principle.png**<br><sub>`sdspage-principle-png`</sub> | `public/virtual-lab/images/experiment5/sdspage-principle.png` | 44.4 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **shiji_normal.png**<br><sub>`shiji-normal-png`</sub> | `public/virtual-lab/images/experiment2/shiji_normal.png` | 1393.8 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **show5.png**<br><sub>`show5-png`</sub> | `public/virtual-lab/images/experiment3/show5.png` | 148.7 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **shows1.png**<br><sub>`shows1-png`</sub> | `public/virtual-lab/images/experiment3/shows1.png` | 40.5 | *待上传* | 2 | Referenced in 2 location(s) |
+| 🟢 在用 | `image` | `game` | **shows2.png**<br><sub>`shows2-png`</sub> | `public/virtual-lab/images/experiment3/shows2.png` | 98.3 | *待上传* | 2 | Referenced in 2 location(s) |
+| 🟢 在用 | `image` | `game` | **shows3.png**<br><sub>`shows3-png`</sub> | `public/virtual-lab/images/experiment3/shows3.png` | 304.3 | *待上传* | 2 | Referenced in 2 location(s) |
+| 🟢 在用 | `image` | `game` | **Single Colony of Escherichia coli on Kanamycin Resistant Plate__Product of Experiment 8__.png**<br><sub>`single-colony-of-escherichia-coli-on-kanamycin-resistant-plate-product-of-experiment-8-png`</sub> | `public/virtual-lab/experiment9-assets/processed/Reagents/Single Colony of Escherichia coli on Kanamycin Resistant Plate__Product of Experiment 8__.png` | 23.7 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **spatula.png**<br><sub>`spatula-png`</sub> | `public/virtual-lab/experiment9-assets/processed/Shared Resources/spatula.png` | 1.9 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **spatula.png**<br><sub>`spatula-4309-png`</sub> | `public/virtual-lab/images/experiment8/sidebar/spatula.png` | 4.9 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **spin-column.png**<br><sub>`spin-column-png`</sub> | `public/virtual-lab/experiment4_lab/assets/ppt/spin-column.png` | 362.0 | *待上传* | 2 | Referenced in 2 location(s) |
+| 🟢 在用 | `image` | `game` | **Staining tray.png**<br><sub>`staining-tray-png`</sub> | `public/virtual-lab/experiment9-assets/processed/Instruments/Staining tray.png` | 7.5 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `shared` | **stars.png**<br><sub>`stars-png`</sub> | `src/assets/loading/stars.png` | 57.3 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `shared` | **stars.webp**<br><sub>`stars-webp`</sub> | `src/assets/loading/stars.webp` | 20.8 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **step5-streaking-detail.png**<br><sub>`step5-streaking-detail-png`</sub> | `public/virtual-lab/images/experiment1/step5-streaking-detail.png` | 32.6 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **Sterile Deionized Water (ddH₂O).png**<br><sub>`sterile-deionized-water-ddh-o-d448-png`</sub> | `public/virtual-lab/experiment9-assets/processed/Reagents/Sterile Deionized Water (ddH₂O).png` | 5.4 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **Sterile Normal Saline.png**<br><sub>`sterile-normal-saline-png`</sub> | `public/virtual-lab/experiment9-assets/processed/Reagents/Sterile Normal Saline.png` | 12.6 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `home` | **surgery-label.webp**<br><sub>`surgery-label-webp`</sub> | `src/assets/home/scene-01-new/surgery-label.webp` | 16.3 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `home` | **surgery.webp**<br><sub>`surgery-webp`</sub> | `src/assets/home/scene-01-new/surgery.webp` | 121.7 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `engagement` | **sustainability-framework-set-develop-grow-06.png**<br><sub>`sustainability-framework-set-develop-grow-06-png`</sub> | `src/assets/wiki/sustainability-framework-set-develop-grow-06.png` | 1369.9 | *待上传* | 3 | Referenced in 3 location(s) |
+| 🟢 在用 | `image` | `engagement` | **sustainability-overview-scale-framework-03.png**<br><sub>`sustainability-overview-scale-framework-03-png`</sub> | `src/assets/wiki/sustainability-overview-scale-framework-03.png` | 211.8 | *待上传* | 3 | Referenced in 3 location(s) |
+| 🟢 在用 | `image` | `engagement` | **sustainability-overview-sst-qn-preview-01.png**<br><sub>`sustainability-overview-sst-qn-preview-01-png`</sub> | `src/assets/wiki/sustainability-overview-sst-qn-preview-01.png` | 329.9 | *待上传* | 3 | Referenced in 3 location(s) |
+| 🟢 在用 | `image` | `engagement` | **sustainability-sdg9-batch-projection.png**<br><sub>`sustainability-sdg9-batch-projection-png`</sub> | `src/assets/wiki/sustainability-sdg9-batch-projection.png` | 2100.8 | *待上传* | 3 | Referenced in 3 location(s) |
+| 🟢 在用 | `image` | `engagement` | **sustainability-sdg9-evidence.png**<br><sub>`sustainability-sdg9-evidence-png`</sub> | `src/assets/wiki/sustainability-sdg9-evidence.png` | 1644.2 | *待上传* | 3 | Referenced in 3 location(s) |
+| 🟢 在用 | `image` | `engagement` | **sustainability-set-stakeholder-overview-07.png**<br><sub>`sustainability-set-stakeholder-overview-07-png`</sub> | `src/assets/wiki/sustainability-set-stakeholder-overview-07.png` | 570.2 | *待上传* | 3 | Referenced in 3 location(s) |
+| 🟢 在用 | `image` | `game` | **swab.png**<br><sub>`swab-cbe6-png`</sub> | `public/virtual-lab/images/experiment5/swab.png` | 5.2 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **table_normal.png**<br><sub>`table-normal-png`</sub> | `public/virtual-lab/images/table_normal.png` | 21.6 | *待上传* | 3 | Referenced in 3 location(s) |
+| 🟢 在用 | `image` | `team` | **team-collaboration-hero.webp**<br><sub>`team-collaboration-hero-webp`</sub> | `src/assets/wiki/team-heroes/team-collaboration-hero.webp` | 115.4 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `team` | **team-hero.webp**<br><sub>`team-hero-webp`</sub> | `src/assets/wiki/team-heroes/team-hero.webp` | 77.9 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `team` | **team.png**<br><sub>`team-png`</sub> | `src/assets/wiki/team.png` | 197.4 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **Thermostatic Shaker.png**<br><sub>`thermostatic-shaker-png`</sub> | `public/virtual-lab/experiment9-assets/processed/Instruments/Thermostatic Shaker.png` | 17.8 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **Thermostatic Water Bath.png**<br><sub>`thermostatic-water-bath-png`</sub> | `public/virtual-lab/experiment9-assets/processed/Instruments/Thermostatic Water Bath.png` | 24.2 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **tip-box.png**<br><sub>`tip-box-png`</sub> | `public/virtual-lab/experiment4_lab/assets/ppt/tip-box.png` | 383.9 | *待上传* | 2 | Referenced in 2 location(s) |
+| 🟢 在用 | `image` | `game` | **tip-box.png**<br><sub>`tip-box-89c8-png`</sub> | `public/virtual-lab/images/experiment5/tip-box.png` | 383.9 | *待上传* | 2 | Referenced in 2 location(s) |
+| 🟢 在用 | `image` | `game` | **tips-box-closed.png**<br><sub>`tips-box-closed-png`</sub> | `public/virtual-lab/experiment4_lab/assets/ppt/tips-box-closed.png` | 475.1 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **tips-box-open.png**<br><sub>`tips-box-open-png`</sub> | `public/virtual-lab/experiment4_lab/assets/ppt/tips-box-open.png` | 105.5 | *待上传* | 2 | Referenced in 2 location(s) |
+| 🟢 在用 | `image` | `game` | **tips-open.png**<br><sub>`tips-open-png`</sub> | `public/virtual-lab/experiment4_lab/assets/ppt/tips-open.png` | 109.2 | *待上传* | 2 | Referenced in 2 location(s) |
+| 🟢 在用 | `image` | `game` | **transfer-apparatus-final.png**<br><sub>`transfer-apparatus-final-png`</sub> | `public/virtual-lab/images/experiment5/transfer-apparatus-final.png` | 178.1 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **transfer-apparatus.png**<br><sub>`transfer-apparatus-png`</sub> | `public/virtual-lab/images/experiment5/transfer-apparatus.png` | 51.1 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **tube-blue-bottom.png**<br><sub>`tube-blue-bottom-png`</sub> | `public/virtual-lab/images/experiment5/tube-blue-bottom.png` | 5.0 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **tube-blue-full.png**<br><sub>`tube-blue-full-png`</sub> | `public/virtual-lab/images/experiment5/tube-blue-full.png` | 5.6 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **tube-left-new.png**<br><sub>`tube-left-new-png`</sub> | `public/virtual-lab/images/experiment5/tube-left-new.png` | 414.9 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **tube-light-small.png**<br><sub>`tube-light-small-png`</sub> | `public/virtual-lab/images/experiment5/tube-light-small.png` | 4.3 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **tube-open.png**<br><sub>`tube-open-png`</sub> | `public/virtual-lab/experiment4_lab/assets/ppt/tube-open.png` | 9.2 | *待上传* | 3 | Referenced in 3 location(s) |
+| 🟢 在用 | `image` | `game` | **tube-open.png**<br><sub>`tube-open-4df7-png`</sub> | `public/virtual-lab/images/experiment1/tube-open.png` | 3.6 | *待上传* | 3 | Referenced in 3 location(s) |
+| 🟢 在用 | `image` | `game` | **tube-purple-block.png**<br><sub>`tube-purple-block-png`</sub> | `public/virtual-lab/images/experiment5/tube-purple-block.png` | 3.8 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **tube-rack-blue.png**<br><sub>`tube-rack-blue-png`</sub> | `public/virtual-lab/images/experiment5/tube-rack-blue.png` | 40.9 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **tube-rack-filled.png**<br><sub>`tube-rack-filled-png`</sub> | `public/virtual-lab/experiment4_lab/assets/ppt/tube-rack-filled.png` | 348.8 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **tube-rack.png**<br><sub>`tube-rack-png`</sub> | `public/virtual-lab/experiment4_lab/assets/ppt/tube-rack.png` | 1127.8 | *待上传* | 2 | Referenced in 2 location(s) |
+| 🟢 在用 | `image` | `game` | **tube-right-new.png**<br><sub>`tube-right-new-png`</sub> | `public/virtual-lab/images/experiment5/tube-right-new.png` | 1117.2 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **tube-sample-1.png**<br><sub>`tube-sample-1-png`</sub> | `public/virtual-lab/images/experiment5/tube-sample-1.png` | 5.0 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **tube-sample-2.png**<br><sub>`tube-sample-2-png`</sub> | `public/virtual-lab/images/experiment5/tube-sample-2.png` | 3.8 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **tube.png**<br><sub>`tube-png`</sub> | `public/virtual-lab/images/tube.png` | 2.9 | *待上传* | 6 | Referenced in 6 location(s) |
+| 🟢 在用 | `image` | `game` | **TubeIconNavy.png**<br><sub>`tubeiconnavy-png`</sub> | `public/virtual-lab/images/experiment3/TubeIconNavy.png` | 429.6 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **TubeIconPurple.png**<br><sub>`tubeiconpurple-png`</sub> | `public/virtual-lab/images/experiment3/TubeIconPurple.png` | 431.1 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **TubeIconRed.png**<br><sub>`tubeiconred-png`</sub> | `public/virtual-lab/images/experiment3/TubeIconRed.png` | 381.8 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **TubeRack.png**<br><sub>`tuberack-png`</sub> | `public/virtual-lab/images/experiment3/TubeRack.png` | 17.3 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **TubeRackBlueEmpty.png**<br><sub>`tuberackblueempty-png`</sub> | `public/virtual-lab/images/experiment3/TubeRackBlueEmpty.png` | 983.0 | *待上传* | 2 | Referenced in 2 location(s) |
+| 🟢 在用 | `image` | `game` | **TubeRackWithYellowSample.png**<br><sub>`tuberackwithyellowsample-png`</sub> | `public/virtual-lab/images/experiment3/TubeRackWithYellowSample.png` | 337.2 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **tweezers.png**<br><sub>`tweezers-png`</sub> | `public/virtual-lab/experiment4_lab/assets/ppt/tweezers.png` | 26.4 | *待上传* | 4 | Referenced in 4 location(s) |
+| 🟢 在用 | `image` | `game` | **tweezers.png**<br><sub>`tweezers-5ca8-png`</sub> | `public/virtual-lab/images/experiment2/sidebar/tweezers.png` | 12.0 | *待上传* | 4 | Referenced in 4 location(s) |
+| 🟢 在用 | `image` | `game` | **UltrasonicCleaner.png**<br><sub>`ultrasoniccleaner-png`</sub> | `public/virtual-lab/images/experiment3/UltrasonicCleaner.png` | 390.6 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **UV Gel Imaging System.png**<br><sub>`uv-gel-imaging-system-png`</sub> | `public/virtual-lab/experiment9-assets/processed/Instruments/UV Gel Imaging System.png` | 13.4 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **uv-gel-reference.png**<br><sub>`uv-gel-reference-png`</sub> | `public/virtual-lab/images/experiment5/uv-gel-reference.png` | 16.3 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **uvCabinet.webp**<br><sub>`uvcabinet-webp`</sub> | `public/virtual-lab/images/experiment7/uvCabinet.webp` | 5.8 | *待上传* | 2 | Referenced in 2 location(s) |
+| 🟢 在用 | `image` | `game` | **UVGelImagingSystem.png**<br><sub>`uvgelimagingsystem-png`</sub> | `public/virtual-lab/images/experiment3/UVGelImagingSystem.png` | 39.7 | *待上传* | 5 | Referenced in 5 location(s) |
+| 🟢 在用 | `image` | `game` | **VortexOscillator.png**<br><sub>`vortexoscillator-png`</sub> | `public/virtual-lab/images/experiment3/VortexOscillator.png` | 41.2 | *待上传* | 2 | Referenced in 2 location(s) |
+| 🟢 在用 | `image` | `game` | **water-bath.png**<br><sub>`water-bath-png`</sub> | `public/virtual-lab/experiment4_lab/assets/ppt/water-bath.png` | 405.2 | *待上传* | 6 | Referenced in 6 location(s) |
+| 🟢 在用 | `image` | `game` | **water-bath.png**<br><sub>`water-bath-068b-png`</sub> | `public/virtual-lab/images/experiment9/sidebar/water-bath.png` | 405.2 | *待上传* | 6 | Referenced in 6 location(s) |
+| 🟢 在用 | `image` | `wet-lab` | **wet-lab-experiments-hero.webp**<br><sub>`wet-lab-experiments-hero-webp`</sub> | `src/assets/wiki/wet-lab-heroes/wet-lab-experiments-hero.webp` | 185.1 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `wet-lab` | **wet-lab-measurement-hero.webp**<br><sub>`wet-lab-measurement-hero-webp`</sub> | `src/assets/wiki/wet-lab-heroes/wet-lab-measurement-hero.webp` | 187.6 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `wet-lab` | **wet-lab-notebook-hero-v3.webp**<br><sub>`wet-lab-notebook-hero-v3-webp`</sub> | `src/assets/wiki/wet-lab-heroes/wet-lab-notebook-hero-v3.webp` | 101.2 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `wet-lab` | **wet-lab-platform-hero.webp**<br><sub>`wet-lab-platform-hero-webp`</sub> | `src/assets/wiki/wet-lab-heroes/wet-lab-platform-hero.webp` | 202.7 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `wet-lab` | **wet-lab-safety-hero-v3.webp**<br><sub>`wet-lab-safety-hero-v3-webp`</sub> | `src/assets/wiki/wet-lab-heroes/wet-lab-safety-hero-v3.webp` | 144.2 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `shared` | **wet.png**<br><sub>`wet-png`</sub> | `src/assets/wiki/wet.png` | 338.9 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `wet-lab` | **wetlab-circure-apparatus.png**<br><sub>`wetlab-circure-apparatus-png`</sub> | `src/assets/wiki/wetlab-circure-apparatus.png` | 1887.2 | *待上传* | 6 | Referenced in 6 location(s) |
+| 🟢 在用 | `image` | `game` | **white-bottle.png**<br><sub>`white-bottle-png`</sub> | `public/virtual-lab/images/experiment5/white-bottle.png` | 2139.5 | *待上传* | 2 | Referenced in 2 location(s) |
+| 🟢 在用 | `image` | `home` | **woman-frame.webp**<br><sub>`woman-frame-webp`</sub> | `src/assets/home/scene-01-new/woman-frame.webp` | 110.4 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `game` | **xianweijing.png**<br><sub>`xianweijing-png`</sub> | `public/virtual-lab/images/experiment2/xianweijing.png` | 232.0 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `pdf` | `engagement` | **sustainability-anchor-decide-toolkit-cn.pdf**<br><sub>`sustainability-anchor-decide-toolkit-cn-pdf`</sub> | `public/assets/docs/sustainability-anchor-decide-toolkit-cn.pdf` | 1996.0 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `pdf` | `engagement` | **sustainability-anchor-decide-toolkit-en.pdf**<br><sub>`sustainability-anchor-decide-toolkit-en-pdf`</sub> | `public/assets/docs/sustainability-anchor-decide-toolkit-en.pdf` | 1816.2 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `pdf` | `engagement` | **sustainability-claim-boundary-protocol-cn.pdf**<br><sub>`sustainability-claim-boundary-protocol-cn-pdf`</sub> | `public/assets/docs/sustainability-claim-boundary-protocol-cn.pdf` | 1310.1 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `pdf` | `engagement` | **sustainability-claim-boundary-protocol-en.pdf**<br><sub>`sustainability-claim-boundary-protocol-en-pdf`</sub> | `public/assets/docs/sustainability-claim-boundary-protocol-en.pdf` | 2116.4 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `pdf` | `engagement` | **sustainability-core-question-anchor-cn.pdf**<br><sub>`sustainability-core-question-anchor-cn-pdf`</sub> | `public/assets/docs/sustainability-core-question-anchor-cn.pdf` | 1465.3 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `pdf` | `engagement` | **sustainability-core-question-anchor-en.pdf**<br><sub>`sustainability-core-question-anchor-en-pdf`</sub> | `public/assets/docs/sustainability-core-question-anchor-en.pdf` | 1958.8 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `pdf` | `engagement` | **sustainability-feedback-to-action-record-cn.pdf**<br><sub>`sustainability-feedback-to-action-record-cn-pdf`</sub> | `public/assets/docs/sustainability-feedback-to-action-record-cn.pdf` | 266.6 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `pdf` | `engagement` | **sustainability-feedback-to-action-record-en.pdf**<br><sub>`sustainability-feedback-to-action-record-en-pdf`</sub> | `public/assets/docs/sustainability-feedback-to-action-record-en.pdf` | 221.5 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `pdf` | `engagement` | **sustainability-resource-responsibility-map-cn.pdf**<br><sub>`sustainability-resource-responsibility-map-cn-pdf`</sub> | `public/assets/docs/sustainability-resource-responsibility-map-cn.pdf` | 1691.9 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `pdf` | `engagement` | **sustainability-resource-responsibility-map-en.pdf**<br><sub>`sustainability-resource-responsibility-map-en-pdf`</sub> | `public/assets/docs/sustainability-resource-responsibility-map-en.pdf` | 1764.4 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `pdf` | `engagement` | **sustainability-scenario-batch-failure-projection-report-cn.pdf**<br><sub>`sustainability-scenario-batch-failure-projection-report-cn-pdf`</sub> | `public/assets/docs/sustainability-scenario-batch-failure-projection-report-cn.pdf` | 457.9 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `pdf` | `engagement` | **sustainability-scenario-batch-failure-projection-report-en.pdf**<br><sub>`sustainability-scenario-batch-failure-projection-report-en-pdf`</sub> | `public/assets/docs/sustainability-scenario-batch-failure-projection-report-en.pdf` | 348.8 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `pdf` | `engagement` | **sustainability-sdg-impact-documentation-template-cn.pdf**<br><sub>`sustainability-sdg-impact-documentation-template-cn-pdf`</sub> | `public/assets/docs/sustainability-sdg-impact-documentation-template-cn.pdf` | 236.3 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `pdf` | `engagement` | **sustainability-sdg-impact-documentation-template-en.pdf**<br><sub>`sustainability-sdg-impact-documentation-template-en-pdf`</sub> | `public/assets/docs/sustainability-sdg-impact-documentation-template-en.pdf` | 225.1 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `pdf` | `engagement` | **sustainability-sst-qn-model-construction.pdf**<br><sub>`sustainability-sst-qn-model-construction-pdf`</sub> | `public/assets/docs/sustainability-sst-qn-model-construction.pdf` | 318.0 | *待上传* | 4 | Referenced in 4 location(s) |
+| 🟢 在用 | `pdf` | `engagement` | **sustainability-stakeholder-feedback-decision-protocol-cn.pdf**<br><sub>`sustainability-stakeholder-feedback-decision-protocol-cn-pdf`</sub> | `public/assets/docs/sustainability-stakeholder-feedback-decision-protocol-cn.pdf` | 2194.9 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `pdf` | `engagement` | **sustainability-stakeholder-feedback-decision-protocol-en.pdf**<br><sub>`sustainability-stakeholder-feedback-decision-protocol-en-pdf`</sub> | `public/assets/docs/sustainability-stakeholder-feedback-decision-protocol-en.pdf` | 1947.7 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `pdf` | `engagement` | **sustainability-stakeholder-interview-guide-cn.pdf**<br><sub>`sustainability-stakeholder-interview-guide-cn-pdf`</sub> | `public/assets/docs/sustainability-stakeholder-interview-guide-cn.pdf` | 1994.4 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `pdf` | `engagement` | **sustainability-stakeholder-interview-guide-en.pdf**<br><sub>`sustainability-stakeholder-interview-guide-en-pdf`</sub> | `public/assets/docs/sustainability-stakeholder-interview-guide-en.pdf` | 1702.5 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `pdf` | `engagement` | **sustainability-stakeholder-sdg-mapping-guide-cn.pdf**<br><sub>`sustainability-stakeholder-sdg-mapping-guide-cn-pdf`</sub> | `public/assets/docs/sustainability-stakeholder-sdg-mapping-guide-cn.pdf` | 1643.2 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `pdf` | `engagement` | **sustainability-stakeholder-sdg-mapping-guide-en.pdf**<br><sub>`sustainability-stakeholder-sdg-mapping-guide-en-pdf`</sub> | `public/assets/docs/sustainability-stakeholder-sdg-mapping-guide-en.pdf` | 972.6 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `structure` | `dry-lab` | **trop2-ctl1.pdb**<br><sub>`trop2-ctl1-pdb`</sub> | `src/assets/structures/trop2-ctl1.pdb` | 634.1 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `structure` | `dry-lab` | **trop2-ctl1.pdb**<br><sub>`trop2-ctl1-4a9d-pdb`</sub> | `public/assets/structures/trop2-ctl1.pdb` | 634.1 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `structure` | `shared` | **Trop2-CTL1.pse**<br><sub>`trop2-ctl1-pse`</sub> | `文案集/Trop2-CTL1.pse` | 1749.1 | *待上传* | 1 | Referenced in 1 location(s) |
+| 🟡 备用 | `font` | `game` | **fnt0.woff**<br><sub>`fnt0-woff`</sub> | `public/virtual-lab/experiment4_html/data/fnt0.woff` | 13.2 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `font` | `game` | **fnt0.woff**<br><sub>`fnt0-cd0d-woff`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/fnt0.woff` | 297.6 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `font` | `game` | **fnt1.woff**<br><sub>`fnt1-woff`</sub> | `public/virtual-lab/experiment4_html/data/fnt1.woff` | 12.0 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `font` | `game` | **fnt10.woff**<br><sub>`fnt10-woff`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/fnt10.woff` | 32.1 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `font` | `game` | **fnt11.woff**<br><sub>`fnt11-woff`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/fnt11.woff` | 45.9 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `font` | `game` | **fnt2.woff**<br><sub>`fnt2-woff`</sub> | `public/virtual-lab/experiment4_html/data/fnt2.woff` | 9.3 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `font` | `game` | **fnt3.woff**<br><sub>`fnt3-woff`</sub> | `public/virtual-lab/experiment4_html/data/fnt3.woff` | 9.3 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `font` | `game` | **fnt4.woff**<br><sub>`fnt4-woff`</sub> | `public/virtual-lab/experiment4_html/data/fnt4.woff` | 9.6 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `font` | `game` | **fnt4.woff**<br><sub>`fnt4-ad6c-woff`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/fnt4.woff` | 329.2 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `font` | `game` | **fnt5.woff**<br><sub>`fnt5-woff`</sub> | `public/virtual-lab/experiment4_html/data/fnt5.woff` | 9.3 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `font` | `game` | **fnt6.woff**<br><sub>`fnt6-woff`</sub> | `public/virtual-lab/experiment4_html/data/fnt6.woff` | 42.7 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `font` | `game` | **fnt6.woff**<br><sub>`fnt6-33f9-woff`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/fnt6.woff` | 57.7 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `font` | `game` | **fnt7.woff**<br><sub>`fnt7-woff`</sub> | `public/virtual-lab/experiment4_html/data/fnt7.woff` | 72.2 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `font` | `game` | **fnt7.woff**<br><sub>`fnt7-cd6c-woff`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/fnt7.woff` | 76.4 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `font` | `game` | **fnt8.woff**<br><sub>`fnt8-woff`</sub> | `public/virtual-lab/experiment4_html/data/fnt8.woff` | 74.4 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `font` | `game` | **fnt8.woff**<br><sub>`fnt8-61e6-woff`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/fnt8.woff` | 107.1 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `font` | `game` | **fnt9.woff**<br><sub>`fnt9-woff`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/fnt9.woff` | 41.9 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `font` | `home` | **Kalam-Regular.ttf**<br><sub>`kalam-regular-ttf`</sub> | `src/assets/home/map-type/Kalam-Regular.ttf` | 417.3 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **1__SDS Loading Buffer.png**<br><sub>`1-sds-loading-buffer-png`</sub> | `public/virtual-lab/experiment9-assets/processed/Reagents/1__SDS Loading Buffer.png` | 8.1 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **2__Taq PCR Master Mix.png**<br><sub>`2-taq-pcr-master-mix-png`</sub> | `public/virtual-lab/experiment9-assets/processed/Reagents/2__Taq PCR Master Mix.png` | 5.4 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **8101.png**<br><sub>`8101-png`</sub> | `public/virtual-lab/images/experiment3/8101.png` | 213.6 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **814.png**<br><sub>`814-png`</sub> | `public/virtual-lab/images/experiment3/814.png` | 173.8 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **815.png**<br><sub>`815-png`</sub> | `public/virtual-lab/images/experiment3/815.png` | 8.9 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **816.png**<br><sub>`816-png`</sub> | `public/virtual-lab/images/experiment3/816.png` | 946.9 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **8204.png**<br><sub>`8204-png`</sub> | `public/virtual-lab/images/experiment3/8204.png` | 11.8 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **8700.png**<br><sub>`8700-png`</sub> | `public/virtual-lab/images/experiment6/8700.png` | 2.9 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **8701.png**<br><sub>`8701-png`</sub> | `public/virtual-lab/images/experiment6/8701.png` | 431.1 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **8702.png**<br><sub>`8702-png`</sub> | `public/virtual-lab/images/experiment6/8702.png` | 5.5 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **8703.png**<br><sub>`8703-png`</sub> | `public/virtual-lab/images/experiment6/8703.png` | 185.9 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **8704.png**<br><sub>`8704-png`</sub> | `public/virtual-lab/images/experiment6/8704.png` | 390.0 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **9996.png**<br><sub>`9996-png`</sub> | `public/virtual-lab/images/experiment1/9996.png` | 1550.4 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **图片1.png**<br><sub>`experiment1-5175a3-png`</sub> | `public/virtual-lab/images/experiment1/图片1.png` | 15.9 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **agarose.png**<br><sub>`agarose-png`</sub> | `public/virtual-lab/images/experiment9/sidebar/agarose.png` | 2139.5 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **alcohol lamp icon.png**<br><sub>`alcohol-lamp-icon-png`</sub> | `public/virtual-lab/experiment9-assets/processed/Shared Resources/alcohol lamp icon.png` | 25.1 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **alcohol lamp.png**<br><sub>`alcohol-lamp-png`</sub> | `public/virtual-lab/experiment9-assets/processed/Shared Resources/alcohol lamp.png` | 16.5 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **alcohol-lamp-off.png**<br><sub>`alcohol-lamp-off-png`</sub> | `public/virtual-lab/images/experiment1/alcohol-lamp-off.png` | 8.6 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **alcohol-lamp-on.png**<br><sub>`alcohol-lamp-on-png`</sub> | `public/virtual-lab/images/experiment1/alcohol-lamp-on.png` | 8.5 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `shared` | **award-hero.webp**<br><sub>`award-hero-webp`</sub> | `src/assets/wiki/award-heroes/award-hero.webp` | 81.4 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **background_blue.jpg**<br><sub>`background-blue-jpg`</sub> | `public/virtual-lab/images/background_blue.jpg` | 23.8 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **background.png**<br><sub>`background-png`</sub> | `public/virtual-lab/images/experiment2/background.png` | 34.0 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **background2.png**<br><sub>`background2-png`</sub> | `public/virtual-lab/images/experiment2/background2.png` | 11.8 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **beaker small.png**<br><sub>`beaker-small-png`</sub> | `public/virtual-lab/experiment9-assets/processed/Shared Resources/beaker small.png` | 9.7 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **biosafety cabinet interior.png**<br><sub>`biosafety-cabinet-interior-png`</sub> | `public/virtual-lab/experiment9-assets/processed/Shared Resources/biosafety cabinet interior.png` | 99.3 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **brown reagent bottle.png**<br><sub>`brown-reagent-bottle-png`</sub> | `public/virtual-lab/experiment9-assets/processed/Shared Resources/brown reagent bottle.png` | 20.6 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **centrifuge tube .png**<br><sub>`centrifuge-tube-png`</sub> | `public/virtual-lab/experiment9-assets/processed/Shared Resources/centrifuge tube .png` | 5.0 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **centrifuge tube (2).png**<br><sub>`centrifuge-tube-2-png`</sub> | `public/virtual-lab/experiment9-assets/processed/Shared Resources/centrifuge tube (2).png` | 23.1 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **centrifuge tube box.png**<br><sub>`centrifuge-tube-box-png`</sub> | `public/virtual-lab/experiment9-assets/processed/Shared Resources/centrifuge tube box.png` | 12.2 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **centrifuge tube empty.png**<br><sub>`centrifuge-tube-empty-png`</sub> | `public/virtual-lab/experiment9-assets/processed/Shared Resources/centrifuge tube empty.png` | 9.9 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **centrifuge tube set.png**<br><sub>`centrifuge-tube-set-png`</sub> | `public/virtual-lab/experiment9-assets/processed/Shared Resources/centrifuge tube set.png` | 29.9 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **centrifuge tube.png**<br><sub>`centrifuge-tube-986e-png`</sub> | `public/virtual-lab/experiment9-assets/processed/Shared Resources/centrifuge tube.png` | 6.5 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `home` | **circure-emblem.png**<br><sub>`circure-emblem-png`</sub> | `src/assets/story-nav/circure-emblem.png` | 170.7 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `home` | **circure-ribbon.png**<br><sub>`circure-ribbon-png`</sub> | `src/assets/story-nav/circure-ribbon.png` | 149.4 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **clear-bottle.png**<br><sub>`clear-bottle-png`</sub> | `public/virtual-lab/images/experiment9/sidebar/clear-bottle.png` | 12.0 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **clear-tip.png**<br><sub>`clear-tip-png`</sub> | `public/virtual-lab/experiment4_lab/assets/ppt/clear-tip.png` | 5.5 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **column-pink.png**<br><sub>`column-pink-png`</sub> | `public/virtual-lab/experiment4_lab/assets/ppt/column-pink.png` | 99.3 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **coomassie.png**<br><sub>`coomassie-png`</sub> | `public/virtual-lab/images/experiment9/sidebar/coomassie.png` | 2049.4 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **cover-slip.png**<br><sub>`cover-slip-41d9-png`</sub> | `public/virtual-lab/images/experiment9/sidebar/cover-slip.png` | 844.5 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **desk.png**<br><sub>`desk-png`</sub> | `public/virtual-lab/experiment9-assets/processed/Shared Resources/desk.png` | 46.7 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **dna-loading-buffer.png**<br><sub>`dna-loading-buffer-png`</sub> | `public/virtual-lab/images/experiment9/sidebar/dna-loading-buffer.png` | 1135.6 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **dna-marker.png**<br><sub>`dna-marker-png`</sub> | `public/virtual-lab/images/experiment9/sidebar/dna-marker.png` | 1014.5 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **dna-marker.webp**<br><sub>`dna-marker-webp`</sub> | `public/virtual-lab/images/experiment6/dna-marker.webp` | 1.4 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **dropper  (2).png**<br><sub>`dropper-2-png`</sub> | `public/virtual-lab/experiment9-assets/processed/Shared Resources/dropper  (2).png` | 2.9 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **dropper  (3).png**<br><sub>`dropper-3-png`</sub> | `public/virtual-lab/experiment9-assets/processed/Shared Resources/dropper  (3).png` | 2.6 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **dropper  (4).png**<br><sub>`dropper-4-png`</sub> | `public/virtual-lab/experiment9-assets/processed/Shared Resources/dropper  (4).png` | 2.4 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **dropper  (5).png**<br><sub>`dropper-5-png`</sub> | `public/virtual-lab/experiment9-assets/processed/Shared Resources/dropper  (5).png` | 2.5 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **dropper .png**<br><sub>`dropper-png`</sub> | `public/virtual-lab/experiment9-assets/processed/Shared Resources/dropper .png` | 2.1 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **dropper.png**<br><sub>`dropper-573a-png`</sub> | `public/virtual-lab/experiment9-assets/processed/Shared Resources/dropper.png` | 2.9 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `dry-lab` | **dry-lab-hardware-hero.jpg**<br><sub>`dry-lab-hardware-hero-jpg`</sub> | `src/assets/wiki/dry-lab-heroes/dry-lab-hardware-hero.jpg` | 113.5 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `dry-lab` | **dry-lab-model-hero.jpg**<br><sub>`dry-lab-model-hero-jpg`</sub> | `src/assets/wiki/dry-lab-heroes/dry-lab-model-hero.jpg` | 104.9 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `dry-lab` | **dry-lab-module-hero.webp**<br><sub>`dry-lab-module-hero-webp`</sub> | `src/assets/wiki/dry-lab-heroes/dry-lab-module-hero.webp` | 79.7 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `dry-lab` | **dry-lab-software-hero.jpg**<br><sub>`dry-lab-software-hero-jpg`</sub> | `src/assets/wiki/dry-lab-heroes/dry-lab-software-hero.jpg` | 104.3 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **electrophoresis system.png**<br><sub>`electrophoresis-system-png`</sub> | `public/virtual-lab/experiment9-assets/processed/Shared Resources/electrophoresis system.png` | 24.8 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **electrophoresis tank exploded.png**<br><sub>`electrophoresis-tank-exploded-png`</sub> | `public/virtual-lab/experiment9-assets/processed/Shared Resources/electrophoresis tank exploded.png` | 54.2 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **electrophoresis tank.png**<br><sub>`electrophoresis-tank-png`</sub> | `public/virtual-lab/experiment9-assets/processed/Shared Resources/electrophoresis tank.png` | 28.1 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **ending-chain.png**<br><sub>`ending-chain-png`</sub> | `public/game-assets/assets/ui/ending-chain.png` | 10.8 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `home` | **ending-home-btn.png**<br><sub>`ending-home-btn-png`</sub> | `public/game-assets/assets/ui/ending-home-btn.png` | 185.6 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **ending-plate.png**<br><sub>`ending-plate-png`</sub> | `public/game-assets/assets/ui/ending-plate.png` | 111.4 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `engagement` | **engagement-education-hero.webp**<br><sub>`engagement-education-hero-webp`</sub> | `src/assets/wiki/engagement-heroes/engagement-education-hero.webp` | 142.0 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `engagement` | **engagement-entrepreneurship-hero.webp**<br><sub>`engagement-entrepreneurship-hero-webp`</sub> | `src/assets/wiki/engagement-heroes/engagement-entrepreneurship-hero.webp` | 150.7 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `engagement` | **engagement-hero.webp**<br><sub>`engagement-hero-webp`</sub> | `src/assets/wiki/engagement-heroes/engagement-hero.webp` | 90.9 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `engagement` | **engagement-human-practices-hero.webp**<br><sub>`engagement-human-practices-hero-webp`</sub> | `src/assets/wiki/engagement-heroes/engagement-human-practices-hero.webp` | 116.8 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `engagement` | **engagement-inclusivity-hero.webp**<br><sub>`engagement-inclusivity-hero-webp`</sub> | `src/assets/wiki/engagement-heroes/engagement-inclusivity-hero.webp` | 143.3 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `engagement` | **engagement-sustainability-hero.webp**<br><sub>`engagement-sustainability-hero-webp`</sub> | `src/assets/wiki/engagement-heroes/engagement-sustainability-hero.webp` | 145.6 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **ep tube  (2).png**<br><sub>`ep-tube-2-png`</sub> | `public/virtual-lab/experiment9-assets/processed/Shared Resources/ep tube  (2).png` | 5.2 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **ep tube  (3).png**<br><sub>`ep-tube-3-png`</sub> | `public/virtual-lab/experiment9-assets/processed/Shared Resources/ep tube  (3).png` | 3.5 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **ep tube  (4).png**<br><sub>`ep-tube-4-png`</sub> | `public/virtual-lab/experiment9-assets/processed/Shared Resources/ep tube  (4).png` | 4.3 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **ep tube .png**<br><sub>`ep-tube-png`</sub> | `public/virtual-lab/experiment9-assets/processed/Shared Resources/ep tube .png` | 16.9 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **ep tube (2).png**<br><sub>`ep-tube-2-df8c-png`</sub> | `public/virtual-lab/experiment9-assets/processed/Shared Resources/ep tube (2).png` | 4.8 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **ep tube (3).png**<br><sub>`ep-tube-3-4b1e-png`</sub> | `public/virtual-lab/experiment9-assets/processed/Shared Resources/ep tube (3).png` | 4.3 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **ep tube (4).png**<br><sub>`ep-tube-4-3c1c-png`</sub> | `public/virtual-lab/experiment9-assets/processed/Shared Resources/ep tube (4).png` | 5.6 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **ep tube empty.png**<br><sub>`ep-tube-empty-png`</sub> | `public/virtual-lab/experiment9-assets/processed/Shared Resources/ep tube empty.png` | 8.3 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **ep tube rack.png**<br><sub>`ep-tube-rack-png`</sub> | `public/virtual-lab/experiment9-assets/processed/Shared Resources/ep tube rack.png` | 25.9 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **ep tube set.png**<br><sub>`ep-tube-set-png`</sub> | `public/virtual-lab/experiment9-assets/processed/Shared Resources/ep tube set.png` | 47.4 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **ep tube.png**<br><sub>`ep-tube-02ba-png`</sub> | `public/virtual-lab/experiment9-assets/processed/Shared Resources/ep tube.png` | 2.8 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **ep tube(5).png**<br><sub>`ep-tube-5-png`</sub> | `public/virtual-lab/experiment9-assets/processed/Shared Resources/ep tube(5).png` | 796.8 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **EPTubeEmptyCapped.png**<br><sub>`eptubeemptycapped-png`</sub> | `public/virtual-lab/images/experiment3/EPTubeEmptyCapped.png` | 8.1 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **EPTubeEmptyOpen.png**<br><sub>`eptubeemptyopen-png`</sub> | `public/virtual-lab/images/experiment3/EPTubeEmptyOpen.png` | 8.9 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **EPTubeNavy.png**<br><sub>`eptubenavy-png`</sub> | `public/virtual-lab/images/experiment3/EPTubeNavy.png` | 1002.5 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **EPTubePurpleTilted.png**<br><sub>`eptubepurpletilted-png`</sub> | `public/virtual-lab/images/experiment3/EPTubePurpleTilted.png` | 944.6 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **EPTubeRedTilted.png**<br><sub>`eptuberedtilted-png`</sub> | `public/virtual-lab/images/experiment3/EPTubeRedTilted.png` | 946.9 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **EPTubeYellow.png**<br><sub>`eptubeyellow-png`</sub> | `public/virtual-lab/images/experiment3/EPTubeYellow.png` | 960.1 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **erlenmeyer flask red.png**<br><sub>`erlenmeyer-flask-red-png`</sub> | `public/virtual-lab/experiment9-assets/processed/Shared Resources/erlenmeyer flask red.png` | 20.6 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **erlenmeyer flask white.png**<br><sub>`erlenmeyer-flask-white-png`</sub> | `public/virtual-lab/experiment9-assets/processed/Shared Resources/erlenmeyer flask white.png` | 15.6 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **erlenmeyer flask.png**<br><sub>`erlenmeyer-flask-png`</sub> | `public/virtual-lab/experiment9-assets/processed/Shared Resources/erlenmeyer flask.png` | 10.8 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **ErlenmeyerFlaskBlue.png**<br><sub>`erlenmeyerflaskblue-png`</sub> | `public/virtual-lab/images/experiment3/ErlenmeyerFlaskBlue.png` | 298.0 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **flask-clear-new.png**<br><sub>`flask-clear-new-png`</sub> | `public/virtual-lab/images/experiment5/flask-clear-new.png` | 242.9 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **fluorescence-microscope.png**<br><sub>`fluorescence-microscope-e690-png`</sub> | `public/virtual-lab/images/experiment9/sidebar/fluorescence-microscope.png` | 65.7 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **freezer-closed.png**<br><sub>`freezer-closed-png`</sub> | `public/virtual-lab/images/experiment1/freezer-closed.png` | 18.5 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **gel casting plate.png**<br><sub>`gel-casting-plate-png`</sub> | `public/virtual-lab/experiment9-assets/processed/Shared Resources/gel casting plate.png` | 11.2 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **gel casting tray.png**<br><sub>`gel-casting-tray-png`</sub> | `public/virtual-lab/experiment9-assets/processed/Shared Resources/gel casting tray.png` | 39.4 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **gel comb .png**<br><sub>`gel-comb-e011-png`</sub> | `public/virtual-lab/experiment9-assets/processed/Shared Resources/gel comb .png` | 8.0 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **gel comb (2).png**<br><sub>`gel-comb-2-png`</sub> | `public/virtual-lab/experiment9-assets/processed/Shared Resources/gel comb (2).png` | 12.9 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **gel comb.png**<br><sub>`gel-comb-b2b8-png`</sub> | `public/virtual-lab/experiment9-assets/processed/Shared Resources/gel comb.png` | 17.4 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **gel-cast-frame-step9.png**<br><sub>`gel-cast-frame-step9-png`</sub> | `public/virtual-lab/images/experiment5/gel-cast-frame-step9.png` | 400.3 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **gel-cast-frame.png**<br><sub>`gel-cast-frame-png`</sub> | `public/virtual-lab/images/experiment5/gel-cast-frame.png` | 29.8 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **gel-comb-green.png**<br><sub>`gel-comb-green-png`</sub> | `public/virtual-lab/images/experiment5/gel-comb-green.png` | 6.4 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **gel-comb-step9.png**<br><sub>`gel-comb-step9-png`</sub> | `public/virtual-lab/images/experiment5/gel-comb-step9.png` | 130.9 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **gel-diagram-to-delete.png**<br><sub>`gel-diagram-to-delete-png`</sub> | `public/virtual-lab/images/experiment5/gel-diagram-to-delete.png` | 47.1 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **GelCassetteBlank1.png**<br><sub>`gelcassetteblank1-png`</sub> | `public/virtual-lab/images/experiment3/GelCassetteBlank1.png` | 11.9 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **gelred.png**<br><sub>`gelred-ceab-png`</sub> | `public/virtual-lab/images/experiment9/sidebar/gelred.png` | 2476.5 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **glass slide and coverslip (2).png**<br><sub>`glass-slide-and-coverslip-2-png`</sub> | `public/virtual-lab/experiment9-assets/processed/Shared Resources/glass slide and coverslip (2).png` | 6.3 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **glass slide and coverslip (3).png**<br><sub>`glass-slide-and-coverslip-3-png`</sub> | `public/virtual-lab/experiment9-assets/processed/Shared Resources/glass slide and coverslip (3).png` | 5.9 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **glass slide and coverslip (4).png**<br><sub>`glass-slide-and-coverslip-4-png`</sub> | `public/virtual-lab/experiment9-assets/processed/Shared Resources/glass slide and coverslip (4).png` | 2.9 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **glass slide and coverslip (5).png**<br><sub>`glass-slide-and-coverslip-5-png`</sub> | `public/virtual-lab/experiment9-assets/processed/Shared Resources/glass slide and coverslip (5).png` | 5.2 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **glass slide and coverslip.png**<br><sub>`glass-slide-and-coverslip-png`</sub> | `public/virtual-lab/experiment9-assets/processed/Shared Resources/glass slide and coverslip.png` | 30.9 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **glycerol-tube.png**<br><sub>`glycerol-tube-png`</sub> | `public/virtual-lab/images/experiment1/glycerol-tube.png` | 3.7 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **gram negative bacteria.png**<br><sub>`gram-negative-bacteria-png`</sub> | `public/virtual-lab/experiment9-assets/processed/Shared Resources/gram negative bacteria.png` | 275.1 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **gram staining counterstain.png**<br><sub>`gram-staining-counterstain-png`</sub> | `public/virtual-lab/experiment9-assets/processed/Shared Resources/gram staining counterstain.png` | 21.2 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **gram staining decolorization.png**<br><sub>`gram-staining-decolorization-png`</sub> | `public/virtual-lab/experiment9-assets/processed/Shared Resources/gram staining decolorization.png` | 17.1 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **gram staining iodine.png**<br><sub>`gram-staining-iodine-png`</sub> | `public/virtual-lab/experiment9-assets/processed/Shared Resources/gram staining iodine.png` | 18.5 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **gram staining.png**<br><sub>`gram-staining-png`</sub> | `public/virtual-lab/experiment9-assets/processed/Shared Resources/gram staining.png` | 17.5 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **hdphoto1.png**<br><sub>`hdphoto1-png`</sub> | `public/virtual-lab/images/experiment7/hdphoto1.png` | 650.4 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **hdphoto10.png**<br><sub>`hdphoto10-png`</sub> | `public/virtual-lab/images/experiment7/hdphoto10.png` | 76.3 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **hdphoto11.png**<br><sub>`hdphoto11-png`</sub> | `public/virtual-lab/images/experiment7/hdphoto11.png` | 182.9 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **hdphoto12.png**<br><sub>`hdphoto12-png`</sub> | `public/virtual-lab/images/experiment7/hdphoto12.png` | 60.1 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **hdphoto13.png**<br><sub>`hdphoto13-png`</sub> | `public/virtual-lab/images/experiment7/hdphoto13.png` | 116.3 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **hdphoto14.png**<br><sub>`hdphoto14-png`</sub> | `public/virtual-lab/images/experiment7/hdphoto14.png` | 63.7 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **hdphoto15.png**<br><sub>`hdphoto15-png`</sub> | `public/virtual-lab/images/experiment7/hdphoto15.png` | 1469.7 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **hdphoto16.png**<br><sub>`hdphoto16-png`</sub> | `public/virtual-lab/images/experiment7/hdphoto16.png` | 206.5 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **hdphoto17.png**<br><sub>`hdphoto17-png`</sub> | `public/virtual-lab/images/experiment7/hdphoto17.png` | 1008.1 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **hdphoto18.png**<br><sub>`hdphoto18-png`</sub> | `public/virtual-lab/images/experiment7/hdphoto18.png` | 247.3 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **hdphoto19.png**<br><sub>`hdphoto19-png`</sub> | `public/virtual-lab/images/experiment7/hdphoto19.png` | 11.6 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **hdphoto2.png**<br><sub>`hdphoto2-png`</sub> | `public/virtual-lab/images/experiment7/hdphoto2.png` | 89.5 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **hdphoto20.png**<br><sub>`hdphoto20-png`</sub> | `public/virtual-lab/images/experiment7/hdphoto20.png` | 147.2 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **hdphoto21.png**<br><sub>`hdphoto21-png`</sub> | `public/virtual-lab/images/experiment7/hdphoto21.png` | 1088.5 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **hdphoto22.png**<br><sub>`hdphoto22-png`</sub> | `public/virtual-lab/images/experiment7/hdphoto22.png` | 5.6 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **hdphoto23.png**<br><sub>`hdphoto23-png`</sub> | `public/virtual-lab/images/experiment7/hdphoto23.png` | 1132.8 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **hdphoto24.png**<br><sub>`hdphoto24-png`</sub> | `public/virtual-lab/images/experiment7/hdphoto24.png` | 904.3 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **hdphoto3.png**<br><sub>`hdphoto3-png`</sub> | `public/virtual-lab/images/experiment7/hdphoto3.png` | 138.6 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **hdphoto4.png**<br><sub>`hdphoto4-png`</sub> | `public/virtual-lab/images/experiment7/hdphoto4.png` | 264.8 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **hdphoto5.png**<br><sub>`hdphoto5-png`</sub> | `public/virtual-lab/images/experiment7/hdphoto5.png` | 1267.6 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **hdphoto6.png**<br><sub>`hdphoto6-png`</sub> | `public/virtual-lab/images/experiment7/hdphoto6.png` | 990.1 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **hdphoto7.png**<br><sub>`hdphoto7-png`</sub> | `public/virtual-lab/images/experiment7/hdphoto7.png` | 427.4 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **hdphoto8.png**<br><sub>`hdphoto8-png`</sub> | `public/virtual-lab/images/experiment7/hdphoto8.png` | 196.1 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **hdphoto9.png**<br><sub>`hdphoto9-png`</sub> | `public/virtual-lab/images/experiment7/hdphoto9.png` | 342.9 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **iamge73.png**<br><sub>`iamge73-png`</sub> | `public/virtual-lab/images/experiment8/iamge73.png` | 3.6 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **ice box.png**<br><sub>`ice-box-png`</sub> | `public/virtual-lab/experiment9-assets/processed/Shared Resources/ice box.png` | 34.2 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **iceBox.webp**<br><sub>`icebox-webp`</sub> | `public/virtual-lab/images/experiment7/iceBox.webp` | 6.0 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **image33.png**<br><sub>`image33-png`</sub> | `public/virtual-lab/images/experiment8/image33.png` | 204.2 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **image35.png**<br><sub>`image35-png`</sub> | `public/virtual-lab/images/experiment8/image35.png` | 677.3 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **image38.png**<br><sub>`image38-png`</sub> | `public/virtual-lab/images/experiment8/image38.png` | 5.5 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **image45.png**<br><sub>`image45-png`</sub> | `public/virtual-lab/images/experiment8/image45.png` | 109.2 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **image46.png**<br><sub>`image46-png`</sub> | `public/virtual-lab/images/experiment8/image46.png` | 7.4 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **image50.png**<br><sub>`image50-png`</sub> | `public/virtual-lab/images/experiment8/image50.png` | 107.6 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **image51.png**<br><sub>`image51-png`</sub> | `public/virtual-lab/images/experiment8/image51.png` | 3.9 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **image54.png**<br><sub>`image54-png`</sub> | `public/virtual-lab/images/experiment8/image54.png` | 1139.2 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **image55.png**<br><sub>`image55-png`</sub> | `public/virtual-lab/images/experiment8/image55.png` | 5.2 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **image58.png**<br><sub>`image58-png`</sub> | `public/virtual-lab/images/experiment8/image58.png` | 8.3 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **image59.png**<br><sub>`image59-png`</sub> | `public/virtual-lab/images/experiment8/image59.png` | 9.2 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **image60.png**<br><sub>`image60-png`</sub> | `public/virtual-lab/images/experiment8/image60.png` | 1014.5 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **image61.png**<br><sub>`image61-png`</sub> | `public/virtual-lab/images/experiment8/image61.png` | 220.7 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **image62.png**<br><sub>`image62-png`</sub> | `public/virtual-lab/images/experiment8/image62.png` | 2.2 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **image63.png**<br><sub>`image63-png`</sub> | `public/virtual-lab/images/experiment8/image63.png` | 1.9 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **image64.png**<br><sub>`image64-png`</sub> | `public/virtual-lab/images/experiment8/image64.png` | 2.0 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **image65.png**<br><sub>`image65-png`</sub> | `public/virtual-lab/images/experiment8/image65.png` | 1.9 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **image66.png**<br><sub>`image66-png`</sub> | `public/virtual-lab/images/experiment8/image66.png` | 1.9 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **image67.png**<br><sub>`image67-png`</sub> | `public/virtual-lab/images/experiment8/image67.png` | 1135.6 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **image68.png**<br><sub>`image68-png`</sub> | `public/virtual-lab/images/experiment8/image68.png` | 314.5 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **image69.png**<br><sub>`image69-png`</sub> | `public/virtual-lab/images/experiment8/image69.png` | 12.3 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **incubator with bottle.png**<br><sub>`incubator-with-bottle-png`</sub> | `public/virtual-lab/experiment9-assets/processed/Shared Resources/incubator with bottle.png` | 13.1 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **incubator-closed.png**<br><sub>`incubator-closed-png`</sub> | `public/virtual-lab/images/experiment1/incubator-closed.png` | 10.9 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **kanamycin-colony.png**<br><sub>`kanamycin-colony-png`</sub> | `public/virtual-lab/images/experiment9/sidebar/kanamycin-colony.png` | 715.6 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **Knife.png**<br><sub>`knife-png`</sub> | `public/virtual-lab/experiment9-assets/processed/Shared Resources/Knife.png` | 4.7 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **lab background wall.png**<br><sub>`lab-background-wall-png`</sub> | `public/virtual-lab/experiment9-assets/processed/Shared Resources/lab background wall.png` | 7.7 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **lab bench surface.png**<br><sub>`lab-bench-surface-png`</sub> | `public/virtual-lab/experiment9-assets/processed/Shared Resources/lab bench surface.png` | 17.8 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **lab-room.jpg**<br><sub>`lab-room-jpg`</sub> | `public/virtual-lab/images/lab-room.jpg` | 216.9 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **labeled-tube.png**<br><sub>`labeled-tube-png`</sub> | `public/virtual-lab/images/experiment9/sidebar/labeled-tube.png` | 8.3 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **laboratory bench.png**<br><sub>`laboratory-bench-png`</sub> | `public/virtual-lab/experiment9-assets/processed/Shared Resources/laboratory bench.png` | 33.2 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **laboratory layout.png**<br><sub>`laboratory-layout-png`</sub> | `public/virtual-lab/experiment9-assets/processed/Shared Resources/laboratory layout.png` | 283.7 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **laboratory refrigerator.png**<br><sub>`laboratory-refrigerator-png`</sub> | `public/virtual-lab/experiment9-assets/processed/Shared Resources/laboratory refrigerator.png` | 87.1 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **laminar flow cabinet.png**<br><sub>`laminar-flow-cabinet-png`</sub> | `public/virtual-lab/experiment9-assets/processed/Shared Resources/laminar flow cabinet.png` | 25.4 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **laminar-hood.jpg**<br><sub>`laminar-hood-jpg`</sub> | `public/virtual-lab/images/laminar-hood.jpg` | 201.3 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **laminar-hood.png**<br><sub>`laminar-hood-png`</sub> | `public/virtual-lab/images/laminar-hood.png` | 231.3 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **large-bottle.png**<br><sub>`large-bottle-png`</sub> | `public/virtual-lab/experiment4_lab/assets/ppt/large-bottle.png` | 609.9 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **lb-plate-colonies.png**<br><sub>`lb-plate-colonies-png`</sub> | `public/virtual-lab/images/experiment1/lb-plate-colonies.png` | 15.0 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **lb-plate-empty.png**<br><sub>`lb-plate-empty-png`</sub> | `public/virtual-lab/images/experiment1/lb-plate-empty.png` | 10.0 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **micropipette set.png**<br><sub>`micropipette-set-png`</sub> | `public/virtual-lab/experiment9-assets/processed/Shared Resources/micropipette set.png` | 43.7 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **microtube.png**<br><sub>`microtube-png`</sub> | `public/virtual-lab/experiment4_lab/assets/ppt/microtube.png` | 346.5 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **petri dish .png**<br><sub>`petri-dish-png`</sub> | `public/virtual-lab/experiment9-assets/processed/Shared Resources/petri dish .png` | 108.6 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **petri dish colonies 2.png**<br><sub>`petri-dish-colonies-2-png`</sub> | `public/virtual-lab/experiment9-assets/processed/Shared Resources/petri dish colonies 2.png` | 12.4 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **petri dish colonies.png**<br><sub>`petri-dish-colonies-png`</sub> | `public/virtual-lab/experiment9-assets/processed/Shared Resources/petri dish colonies.png` | 116.9 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **pipette tip (2).png**<br><sub>`pipette-tip-2-png`</sub> | `public/virtual-lab/experiment9-assets/processed/Shared Resources/pipette tip (2).png` | 14.3 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **pipette tip box .png**<br><sub>`pipette-tip-box-png`</sub> | `public/virtual-lab/experiment9-assets/processed/Shared Resources/pipette tip box .png` | 57.5 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **pipette tip box set closed.png**<br><sub>`pipette-tip-box-set-closed-png`</sub> | `public/virtual-lab/experiment9-assets/processed/Shared Resources/pipette tip box set closed.png` | 24.5 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **pipette tip box set open.png**<br><sub>`pipette-tip-box-set-open-png`</sub> | `public/virtual-lab/experiment9-assets/processed/Shared Resources/pipette tip box set open.png` | 22.4 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **pipette tip box.png**<br><sub>`pipette-tip-box-85d2-png`</sub> | `public/virtual-lab/experiment9-assets/processed/Shared Resources/pipette tip box.png` | 53.9 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **pipette tip.png**<br><sub>`pipette-tip-0b23-png`</sub> | `public/virtual-lab/experiment9-assets/processed/Shared Resources/pipette tip.png` | 2.8 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **PipetteTip1.png**<br><sub>`pipettetip1-png`</sub> | `public/virtual-lab/images/experiment3/PipetteTip1.png` | 153.6 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **PipetteTip2.png**<br><sub>`pipettetip2-png`</sub> | `public/virtual-lab/images/experiment3/PipetteTip2.png` | 148.7 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **PipetteTip3.png**<br><sub>`pipettetip3-png`</sub> | `public/virtual-lab/images/experiment3/PipetteTip3.png` | 164.0 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **PipetteTipBoxOpen.png**<br><sub>`pipettetipboxopen-png`</sub> | `public/virtual-lab/images/experiment3/PipetteTipBoxOpen.png` | 15.5 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `project` | **project-contribution-gradient.png**<br><sub>`project-contribution-gradient-png`</sub> | `src/assets/wiki/project-heroes/project-contribution-gradient.png` | 2116.4 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `project` | **project-description-gradient.png**<br><sub>`project-description-gradient-png`</sub> | `src/assets/wiki/project-heroes/project-description-gradient.png` | 2412.2 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `project` | **project-design-hero.webp**<br><sub>`project-design-hero-webp`</sub> | `src/assets/wiki/project-heroes/project-design-hero.webp` | 177.5 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **protein gel result.png**<br><sub>`protein-gel-result-png`</sub> | `public/virtual-lab/experiment9-assets/processed/Shared Resources/protein gel result.png` | 18.1 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **protein marker gel.png**<br><sub>`protein-marker-gel-png`</sub> | `public/virtual-lab/experiment9-assets/processed/Shared Resources/protein marker gel.png` | 17.0 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `shared` | **protocol-01.webp**<br><sub>`protocol-01-webp`</sub> | `public/assets/experiments/protocol/protocol-01.webp` | 205.0 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `shared` | **protocol-02.webp**<br><sub>`protocol-02-webp`</sub> | `public/assets/experiments/protocol/protocol-02.webp` | 123.2 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `shared` | **protocol-03.webp**<br><sub>`protocol-03-webp`</sub> | `public/assets/experiments/protocol/protocol-03.webp` | 209.6 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `shared` | **protocol-04.webp**<br><sub>`protocol-04-webp`</sub> | `public/assets/experiments/protocol/protocol-04.webp` | 112.7 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `shared` | **protocol-05.webp**<br><sub>`protocol-05-webp`</sub> | `public/assets/experiments/protocol/protocol-05.webp` | 219.1 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `shared` | **protocol-06.webp**<br><sub>`protocol-06-webp`</sub> | `public/assets/experiments/protocol/protocol-06.webp` | 118.9 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `shared` | **protocol-07.webp**<br><sub>`protocol-07-webp`</sub> | `public/assets/experiments/protocol/protocol-07.webp` | 156.1 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `shared` | **protocol-08.webp**<br><sub>`protocol-08-webp`</sub> | `public/assets/experiments/protocol/protocol-08.webp` | 80.5 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `shared` | **protocol-09.webp**<br><sub>`protocol-09-webp`</sub> | `public/assets/experiments/protocol/protocol-09.webp` | 235.1 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `shared` | **protocol-10.webp**<br><sub>`protocol-10-webp`</sub> | `public/assets/experiments/protocol/protocol-10.webp` | 95.2 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `shared` | **protocol-11.webp**<br><sub>`protocol-11-webp`</sub> | `public/assets/experiments/protocol/protocol-11.webp` | 253.7 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `shared` | **protocol-12.webp**<br><sub>`protocol-12-webp`</sub> | `public/assets/experiments/protocol/protocol-12.webp` | 86.7 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `shared` | **protocol-13.webp**<br><sub>`protocol-13-webp`</sub> | `public/assets/experiments/protocol/protocol-13.webp` | 270.6 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `shared` | **protocol-14.webp**<br><sub>`protocol-14-webp`</sub> | `public/assets/experiments/protocol/protocol-14.webp` | 121.9 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `shared` | **protocol-15.webp**<br><sub>`protocol-15-webp`</sub> | `public/assets/experiments/protocol/protocol-15.webp` | 262.9 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `shared` | **protocol-16.webp**<br><sub>`protocol-16-webp`</sub> | `public/assets/experiments/protocol/protocol-16.webp` | 128.3 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `shared` | **protocol-17.webp**<br><sub>`protocol-17-webp`</sub> | `public/assets/experiments/protocol/protocol-17.webp` | 229.3 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `shared` | **protocol-18.webp**<br><sub>`protocol-18-webp`</sub> | `public/assets/experiments/protocol/protocol-18.webp` | 109.9 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `shared` | **protocol-19.webp**<br><sub>`protocol-19-webp`</sub> | `public/assets/experiments/protocol/protocol-19.webp` | 261.3 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `shared` | **protocol-20.webp**<br><sub>`protocol-20-webp`</sub> | `public/assets/experiments/protocol/protocol-20.webp` | 132.0 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `shared` | **protocol-21.webp**<br><sub>`protocol-21-webp`</sub> | `public/assets/experiments/protocol/protocol-21.webp` | 177.5 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `shared` | **protocol-22.webp**<br><sub>`protocol-22-webp`</sub> | `public/assets/experiments/protocol/protocol-22.webp` | 103.1 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `shared` | **protocol-23.webp**<br><sub>`protocol-23-webp`</sub> | `public/assets/experiments/protocol/protocol-23.webp` | 220.3 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `shared` | **protocol-24.webp**<br><sub>`protocol-24-webp`</sub> | `public/assets/experiments/protocol/protocol-24.webp` | 83.7 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `shared` | **protocol-25.webp**<br><sub>`protocol-25-webp`</sub> | `public/assets/experiments/protocol/protocol-25.webp` | 222.5 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `shared` | **protocol-26.webp**<br><sub>`protocol-26-webp`</sub> | `public/assets/experiments/protocol/protocol-26.webp` | 83.7 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `shared` | **protocol-27.webp**<br><sub>`protocol-27-webp`</sub> | `public/assets/experiments/protocol/protocol-27.webp` | 160.3 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `shared` | **protocol-28.webp**<br><sub>`protocol-28-webp`</sub> | `public/assets/experiments/protocol/protocol-28.webp` | 134.1 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `shared` | **protocol-29.webp**<br><sub>`protocol-29-webp`</sub> | `public/assets/experiments/protocol/protocol-29.webp` | 329.7 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `shared` | **protocol-30.webp**<br><sub>`protocol-30-webp`</sub> | `public/assets/experiments/protocol/protocol-30.webp` | 120.5 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **purification column capped.png**<br><sub>`purification-column-capped-png`</sub> | `public/virtual-lab/experiment9-assets/processed/Shared Resources/purification column capped.png` | 5.3 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **purification column with tube.png**<br><sub>`purification-column-with-tube-png`</sub> | `public/virtual-lab/experiment9-assets/processed/Shared Resources/purification column with tube.png` | 5.5 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **purification column.png**<br><sub>`purification-column-png`</sub> | `public/virtual-lab/experiment9-assets/processed/Shared Resources/purification column.png` | 4.2 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **qr-ending.png**<br><sub>`qr-ending-png`</sub> | `public/game-assets/assets/ui/qr-ending.png` | 165.4 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **reagent bottle  (2).png**<br><sub>`reagent-bottle-2-png`</sub> | `public/virtual-lab/experiment9-assets/processed/Shared Resources/reagent bottle  (2).png` | 15.3 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **reagent bottle .png**<br><sub>`reagent-bottle-4773-png`</sub> | `public/virtual-lab/experiment9-assets/processed/Shared Resources/reagent bottle .png` | 1669.0 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **reagent bottle powder.png**<br><sub>`reagent-bottle-powder-png`</sub> | `public/virtual-lab/experiment9-assets/processed/Shared Resources/reagent bottle powder.png` | 20.9 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **reagent bottle small.png**<br><sub>`reagent-bottle-small-png`</sub> | `public/virtual-lab/experiment9-assets/processed/Shared Resources/reagent bottle small.png` | 10.5 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **reagent reservoir.png**<br><sub>`reagent-reservoir-png`</sub> | `public/virtual-lab/experiment9-assets/processed/Shared Resources/reagent reservoir.png` | 21.9 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **ReagentBottleEmpty.png**<br><sub>`reagentbottleempty-png`</sub> | `public/virtual-lab/images/experiment3/ReagentBottleEmpty.png` | 2322.8 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **rotor.png**<br><sub>`rotor-png`</sub> | `public/virtual-lab/experiment4_lab/assets/ppt/rotor.png` | 17.0 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **sds-loading-buffer.png**<br><sub>`sds-loading-buffer-png`</sub> | `public/virtual-lab/images/experiment9/sidebar/sds-loading-buffer.png` | 434.2 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **sds-page workflow.png**<br><sub>`sds-page-workflow-png`</sub> | `public/virtual-lab/experiment9-assets/processed/Shared Resources/sds-page workflow.png` | 27.4 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **shaker.png**<br><sub>`shaker-png`</sub> | `public/virtual-lab/images/experiment9/sidebar/shaker.png` | 17.8 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **shiji.png**<br><sub>`shiji-png`</sub> | `public/virtual-lab/images/experiment2/shiji.png` | 22.9 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **slide-1.png**<br><sub>`slide-1-png`</sub> | `public/virtual-lab/images/experiment6/slide-1.png` | 31.8 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **slide-10.png**<br><sub>`slide-10-png`</sub> | `public/virtual-lab/images/experiment6/slide-10.png` | 325.9 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **slide-11.png**<br><sub>`slide-11-png`</sub> | `public/virtual-lab/images/experiment6/slide-11.png` | 329.4 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **slide-12.png**<br><sub>`slide-12-png`</sub> | `public/virtual-lab/images/experiment6/slide-12.png` | 332.1 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **slide-13.png**<br><sub>`slide-13-png`</sub> | `public/virtual-lab/images/experiment6/slide-13.png` | 327.6 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **slide-14.png**<br><sub>`slide-14-png`</sub> | `public/virtual-lab/images/experiment6/slide-14.png` | 330.7 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **slide-15.png**<br><sub>`slide-15-png`</sub> | `public/virtual-lab/images/experiment6/slide-15.png` | 326.9 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **slide-16.png**<br><sub>`slide-16-png`</sub> | `public/virtual-lab/images/experiment6/slide-16.png` | 327.7 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **slide-17.png**<br><sub>`slide-17-png`</sub> | `public/virtual-lab/images/experiment6/slide-17.png` | 326.1 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **slide-18.png**<br><sub>`slide-18-png`</sub> | `public/virtual-lab/images/experiment6/slide-18.png` | 326.2 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **slide-19.png**<br><sub>`slide-19-png`</sub> | `public/virtual-lab/images/experiment6/slide-19.png` | 327.0 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **slide-2.png**<br><sub>`slide-2-png`</sub> | `public/virtual-lab/images/experiment6/slide-2.png` | 117.6 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **slide-20.png**<br><sub>`slide-20-png`</sub> | `public/virtual-lab/images/experiment6/slide-20.png` | 330.4 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **slide-21.png**<br><sub>`slide-21-png`</sub> | `public/virtual-lab/images/experiment6/slide-21.png` | 329.9 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **slide-22.png**<br><sub>`slide-22-png`</sub> | `public/virtual-lab/images/experiment6/slide-22.png` | 328.5 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **slide-23.png**<br><sub>`slide-23-png`</sub> | `public/virtual-lab/images/experiment6/slide-23.png` | 327.0 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **slide-24.png**<br><sub>`slide-24-png`</sub> | `public/virtual-lab/images/experiment6/slide-24.png` | 330.4 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **slide-25.png**<br><sub>`slide-25-png`</sub> | `public/virtual-lab/images/experiment6/slide-25.png` | 329.0 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **slide-26.png**<br><sub>`slide-26-png`</sub> | `public/virtual-lab/images/experiment6/slide-26.png` | 327.3 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **slide-27.png**<br><sub>`slide-27-png`</sub> | `public/virtual-lab/images/experiment6/slide-27.png` | 328.2 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **slide-28.png**<br><sub>`slide-28-png`</sub> | `public/virtual-lab/images/experiment6/slide-28.png` | 324.9 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **slide-29.png**<br><sub>`slide-29-png`</sub> | `public/virtual-lab/images/experiment6/slide-29.png` | 324.3 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **slide-3.png**<br><sub>`slide-3-png`</sub> | `public/virtual-lab/images/experiment6/slide-3.png` | 319.4 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **slide-30.png**<br><sub>`slide-30-png`</sub> | `public/virtual-lab/images/experiment6/slide-30.png` | 327.6 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **slide-31.png**<br><sub>`slide-31-png`</sub> | `public/virtual-lab/images/experiment6/slide-31.png` | 325.0 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **slide-32.png**<br><sub>`slide-32-png`</sub> | `public/virtual-lab/images/experiment6/slide-32.png` | 326.0 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **slide-33.png**<br><sub>`slide-33-png`</sub> | `public/virtual-lab/images/experiment6/slide-33.png` | 327.0 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **slide-34.png**<br><sub>`slide-34-png`</sub> | `public/virtual-lab/images/experiment6/slide-34.png` | 327.5 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **slide-35.png**<br><sub>`slide-35-png`</sub> | `public/virtual-lab/images/experiment6/slide-35.png` | 333.2 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **slide-36.png**<br><sub>`slide-36-png`</sub> | `public/virtual-lab/images/experiment6/slide-36.png` | 324.4 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **slide-37.png**<br><sub>`slide-37-png`</sub> | `public/virtual-lab/images/experiment6/slide-37.png` | 325.7 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **slide-38.png**<br><sub>`slide-38-png`</sub> | `public/virtual-lab/images/experiment6/slide-38.png` | 324.8 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **slide-39.png**<br><sub>`slide-39-png`</sub> | `public/virtual-lab/images/experiment6/slide-39.png` | 327.1 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **slide-4.png**<br><sub>`slide-4-png`</sub> | `public/virtual-lab/images/experiment6/slide-4.png` | 324.6 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **slide-40.png**<br><sub>`slide-40-png`</sub> | `public/virtual-lab/images/experiment6/slide-40.png` | 327.3 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **slide-41.png**<br><sub>`slide-41-png`</sub> | `public/virtual-lab/images/experiment6/slide-41.png` | 332.2 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **slide-42.png**<br><sub>`slide-42-png`</sub> | `public/virtual-lab/images/experiment6/slide-42.png` | 339.8 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **slide-43.png**<br><sub>`slide-43-png`</sub> | `public/virtual-lab/images/experiment6/slide-43.png` | 331.3 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **slide-44.png**<br><sub>`slide-44-png`</sub> | `public/virtual-lab/images/experiment6/slide-44.png` | 333.9 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **slide-45.png**<br><sub>`slide-45-png`</sub> | `public/virtual-lab/images/experiment6/slide-45.png` | 335.7 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **slide-46.png**<br><sub>`slide-46-png`</sub> | `public/virtual-lab/images/experiment6/slide-46.png` | 336.8 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **slide-47.png**<br><sub>`slide-47-png`</sub> | `public/virtual-lab/images/experiment6/slide-47.png` | 335.7 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **slide-48.png**<br><sub>`slide-48-png`</sub> | `public/virtual-lab/images/experiment6/slide-48.png` | 288.9 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **slide-49.png**<br><sub>`slide-49-png`</sub> | `public/virtual-lab/images/experiment6/slide-49.png` | 344.7 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **slide-5.png**<br><sub>`slide-5-png`</sub> | `public/virtual-lab/images/experiment6/slide-5.png` | 333.0 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **slide-50.png**<br><sub>`slide-50-png`</sub> | `public/virtual-lab/images/experiment6/slide-50.png` | 326.0 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **slide-51.png**<br><sub>`slide-51-png`</sub> | `public/virtual-lab/images/experiment6/slide-51.png` | 351.4 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **slide-52.png**<br><sub>`slide-52-png`</sub> | `public/virtual-lab/images/experiment6/slide-52.png` | 324.6 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **slide-53.png**<br><sub>`slide-53-png`</sub> | `public/virtual-lab/images/experiment6/slide-53.png` | 279.5 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **slide-54.png**<br><sub>`slide-54-png`</sub> | `public/virtual-lab/images/experiment6/slide-54.png` | 321.0 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **slide-55.png**<br><sub>`slide-55-png`</sub> | `public/virtual-lab/images/experiment6/slide-55.png` | 142.9 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **slide-6.png**<br><sub>`slide-6-png`</sub> | `public/virtual-lab/images/experiment6/slide-6.png` | 338.1 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **slide-7.png**<br><sub>`slide-7-png`</sub> | `public/virtual-lab/images/experiment6/slide-7.png` | 326.2 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **slide-8.png**<br><sub>`slide-8-png`</sub> | `public/virtual-lab/images/experiment6/slide-8.png` | 330.4 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **slide-9.png**<br><sub>`slide-9-png`</sub> | `public/virtual-lab/images/experiment6/slide-9.png` | 319.1 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **small reagent bottle blue.png**<br><sub>`small-reagent-bottle-blue-png`</sub> | `public/virtual-lab/experiment9-assets/processed/Shared Resources/small reagent bottle blue.png` | 8.9 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **spin-column-blue.png**<br><sub>`spin-column-blue-png`</sub> | `public/virtual-lab/experiment4_lab/assets/ppt/spin-column-blue.png` | 8.5 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **square petri dish.png**<br><sub>`square-petri-dish-png`</sub> | `public/virtual-lab/experiment9-assets/processed/Shared Resources/square petri dish.png` | 269.7 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **staining tray.png**<br><sub>`staining-tray-6ac4-png`</sub> | `public/virtual-lab/experiment9-assets/processed/Shared Resources/staining tray.png` | 28.2 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **staining-tray.png**<br><sub>`staining-tray-f440-png`</sub> | `public/virtual-lab/images/experiment9/sidebar/staining-tray.png` | 5.6 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **stainless steel tray.png**<br><sub>`stainless-steel-tray-png`</sub> | `public/virtual-lab/experiment9-assets/processed/Shared Resources/stainless steel tray.png` | 20.7 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **step1-detail.png**<br><sub>`step1-detail-png`</sub> | `public/virtual-lab/images/experiment1/step1-detail.png` | 25.8 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **step7-colonies-detail.png**<br><sub>`step7-colonies-detail-png`</sub> | `public/virtual-lab/images/experiment1/step7-colonies-detail.png` | 27.1 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **Sterile Deionized Water (ddH_O).png**<br><sub>`sterile-deionized-water-ddh-o-png`</sub> | `public/virtual-lab/experiment9-assets/processed/Reagents/Sterile Deionized Water (ddH_O).png` | 5.4 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **Swab.png**<br><sub>`swab-png`</sub> | `public/virtual-lab/images/experiment3/Swab.png` | 213.6 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **Swab1.png**<br><sub>`swab1-png`</sub> | `public/virtual-lab/images/experiment3/Swab1.png` | 4.7 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **Swab2.png**<br><sub>`swab2-png`</sub> | `public/virtual-lab/images/experiment3/Swab2.png` | 5.1 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **table_2.png**<br><sub>`table-2-png`</sub> | `public/virtual-lab/images/experiment2/table_2.png` | 22.5 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **table1.png**<br><sub>`table1-png`</sub> | `public/virtual-lab/images/experiment3/table1.png` | 26.9 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **table2.png**<br><sub>`table2-png`</sub> | `public/virtual-lab/images/experiment3/table2.png` | 289.4 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **tae-buffer.png**<br><sub>`tae-buffer-png`</sub> | `public/virtual-lab/images/experiment9/sidebar/tae-buffer.png` | 1839.8 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **test tube .png**<br><sub>`test-tube-png`</sub> | `public/virtual-lab/experiment9-assets/processed/Shared Resources/test tube .png` | 8.0 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **test tube rack with tube.png**<br><sub>`test-tube-rack-with-tube-png`</sub> | `public/virtual-lab/experiment9-assets/processed/Shared Resources/test tube rack with tube.png` | 24.2 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **test tube rack.png**<br><sub>`test-tube-rack-png`</sub> | `public/virtual-lab/experiment9-assets/processed/Shared Resources/test tube rack.png` | 11.2 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **TestTubeYellow.png**<br><sub>`testtubeyellow-png`</sub> | `public/virtual-lab/images/experiment3/TestTubeYellow.png` | 57.5 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **texture-1.png**<br><sub>`texture-1-png`</sub> | `public/virtual-lab/images/experiment5/texture-1.png` | 1918.5 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **texture-2-microwave.png**<br><sub>`texture-2-microwave-png`</sub> | `public/virtual-lab/images/experiment5/texture-2-microwave.png` | 2069.9 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **texture-3.png**<br><sub>`texture-3-png`</sub> | `public/virtual-lab/images/experiment5/texture-3.png` | 1566.0 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **texture-4.png**<br><sub>`texture-4-png`</sub> | `public/virtual-lab/images/experiment5/texture-4.png` | 1642.0 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **thmb1.jpg**<br><sub>`thmb1-jpg`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/thmb1.jpg` | 2.9 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **thmb10.jpg**<br><sub>`thmb10-jpg`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/thmb10.jpg` | 2.8 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **thmb11.jpg**<br><sub>`thmb11-jpg`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/thmb11.jpg` | 2.8 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **thmb12.jpg**<br><sub>`thmb12-jpg`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/thmb12.jpg` | 2.8 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **thmb13.jpg**<br><sub>`thmb13-jpg`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/thmb13.jpg` | 2.8 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **thmb14.jpg**<br><sub>`thmb14-jpg`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/thmb14.jpg` | 2.8 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **thmb15.jpg**<br><sub>`thmb15-jpg`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/thmb15.jpg` | 2.8 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **thmb16.jpg**<br><sub>`thmb16-jpg`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/thmb16.jpg` | 2.8 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **thmb17.jpg**<br><sub>`thmb17-jpg`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/thmb17.jpg` | 2.8 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **thmb18.jpg**<br><sub>`thmb18-jpg`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/thmb18.jpg` | 2.8 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **thmb19.jpg**<br><sub>`thmb19-jpg`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/thmb19.jpg` | 2.8 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **thmb2.jpg**<br><sub>`thmb2-jpg`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/thmb2.jpg` | 2.9 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **thmb20.jpg**<br><sub>`thmb20-jpg`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/thmb20.jpg` | 2.8 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **thmb21.jpg**<br><sub>`thmb21-jpg`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/thmb21.jpg` | 2.8 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **thmb22.jpg**<br><sub>`thmb22-jpg`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/thmb22.jpg` | 2.9 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **thmb23.jpg**<br><sub>`thmb23-jpg`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/thmb23.jpg` | 2.8 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **thmb24.jpg**<br><sub>`thmb24-jpg`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/thmb24.jpg` | 2.8 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **thmb25.jpg**<br><sub>`thmb25-jpg`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/thmb25.jpg` | 2.8 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **thmb26.jpg**<br><sub>`thmb26-jpg`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/thmb26.jpg` | 2.8 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **thmb27.jpg**<br><sub>`thmb27-jpg`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/thmb27.jpg` | 2.8 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **thmb28.jpg**<br><sub>`thmb28-jpg`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/thmb28.jpg` | 2.8 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **thmb29.jpg**<br><sub>`thmb29-jpg`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/thmb29.jpg` | 2.8 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **thmb3.jpg**<br><sub>`thmb3-jpg`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/thmb3.jpg` | 3.0 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **thmb30.jpg**<br><sub>`thmb30-jpg`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/thmb30.jpg` | 2.8 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **thmb31.jpg**<br><sub>`thmb31-jpg`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/thmb31.jpg` | 2.8 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **thmb32.jpg**<br><sub>`thmb32-jpg`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/thmb32.jpg` | 2.8 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **thmb33.jpg**<br><sub>`thmb33-jpg`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/thmb33.jpg` | 2.8 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **thmb34.jpg**<br><sub>`thmb34-jpg`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/thmb34.jpg` | 2.8 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **thmb35.jpg**<br><sub>`thmb35-jpg`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/thmb35.jpg` | 2.8 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **thmb36.jpg**<br><sub>`thmb36-jpg`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/thmb36.jpg` | 2.8 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **thmb37.jpg**<br><sub>`thmb37-jpg`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/thmb37.jpg` | 2.8 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **thmb38.jpg**<br><sub>`thmb38-jpg`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/thmb38.jpg` | 2.8 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **thmb39.jpg**<br><sub>`thmb39-jpg`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/thmb39.jpg` | 2.8 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **thmb4.jpg**<br><sub>`thmb4-jpg`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/thmb4.jpg` | 2.9 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **thmb40.jpg**<br><sub>`thmb40-jpg`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/thmb40.jpg` | 2.8 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **thmb41.jpg**<br><sub>`thmb41-jpg`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/thmb41.jpg` | 2.8 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **thmb42.jpg**<br><sub>`thmb42-jpg`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/thmb42.jpg` | 2.8 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **thmb43.jpg**<br><sub>`thmb43-jpg`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/thmb43.jpg` | 2.8 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **thmb44.jpg**<br><sub>`thmb44-jpg`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/thmb44.jpg` | 2.8 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **thmb45.jpg**<br><sub>`thmb45-jpg`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/thmb45.jpg` | 2.8 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **thmb46.jpg**<br><sub>`thmb46-jpg`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/thmb46.jpg` | 2.8 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **thmb47.jpg**<br><sub>`thmb47-jpg`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/thmb47.jpg` | 2.8 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **thmb48.jpg**<br><sub>`thmb48-jpg`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/thmb48.jpg` | 2.8 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **thmb49.jpg**<br><sub>`thmb49-jpg`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/thmb49.jpg` | 2.8 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **thmb5.jpg**<br><sub>`thmb5-jpg`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/thmb5.jpg` | 3.0 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **thmb50.jpg**<br><sub>`thmb50-jpg`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/thmb50.jpg` | 2.8 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **thmb51.jpg**<br><sub>`thmb51-jpg`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/thmb51.jpg` | 2.8 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **thmb52.jpg**<br><sub>`thmb52-jpg`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/thmb52.jpg` | 2.8 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **thmb53.jpg**<br><sub>`thmb53-jpg`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/thmb53.jpg` | 2.8 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **thmb54.jpg**<br><sub>`thmb54-jpg`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/thmb54.jpg` | 2.8 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **thmb55.jpg**<br><sub>`thmb55-jpg`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/thmb55.jpg` | 2.8 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **thmb56.jpg**<br><sub>`thmb56-jpg`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/thmb56.jpg` | 2.8 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **thmb57.jpg**<br><sub>`thmb57-jpg`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/thmb57.jpg` | 2.8 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **thmb58.jpg**<br><sub>`thmb58-jpg`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/thmb58.jpg` | 2.8 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **thmb59.jpg**<br><sub>`thmb59-jpg`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/thmb59.jpg` | 2.8 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **thmb6.jpg**<br><sub>`thmb6-jpg`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/thmb6.jpg` | 3.0 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **thmb60.jpg**<br><sub>`thmb60-jpg`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/thmb60.jpg` | 2.8 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **thmb61.jpg**<br><sub>`thmb61-jpg`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/thmb61.jpg` | 2.8 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **thmb62.jpg**<br><sub>`thmb62-jpg`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/thmb62.jpg` | 2.8 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **thmb63.jpg**<br><sub>`thmb63-jpg`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/thmb63.jpg` | 2.8 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **thmb64.jpg**<br><sub>`thmb64-jpg`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/thmb64.jpg` | 2.8 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **thmb65.jpg**<br><sub>`thmb65-jpg`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/thmb65.jpg` | 2.8 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **thmb66.jpg**<br><sub>`thmb66-jpg`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/thmb66.jpg` | 2.8 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **thmb67.jpg**<br><sub>`thmb67-jpg`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/thmb67.jpg` | 2.8 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **thmb68.jpg**<br><sub>`thmb68-jpg`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/thmb68.jpg` | 2.9 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **thmb69.jpg**<br><sub>`thmb69-jpg`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/thmb69.jpg` | 2.9 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **thmb7.jpg**<br><sub>`thmb7-jpg`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/thmb7.jpg` | 2.9 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **thmb70.jpg**<br><sub>`thmb70-jpg`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/thmb70.jpg` | 2.8 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **thmb71.jpg**<br><sub>`thmb71-jpg`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/thmb71.jpg` | 2.9 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **thmb8.jpg**<br><sub>`thmb8-jpg`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/thmb8.jpg` | 3.0 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **thmb9.jpg**<br><sub>`thmb9-jpg`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/thmb9.jpg` | 2.9 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **timer.png**<br><sub>`timer-png`</sub> | `public/virtual-lab/experiment9-assets/processed/Shared Resources/timer.png` | 19.5 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **tipBoxWhiteOpen.webp**<br><sub>`tipboxwhiteopen-webp`</sub> | `public/virtual-lab/images/experiment7/tipBoxWhiteOpen.webp` | 11.4 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **tipsClosedSmall.webp**<br><sub>`tipsclosedsmall-webp`</sub> | `public/virtual-lab/images/experiment7/tipsClosedSmall.webp` | 1.3 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **tube-blue.png**<br><sub>`tube-blue-png`</sub> | `public/virtual-lab/experiment4_lab/assets/ppt/tube-blue.png` | 1024.5 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **TubeIconGreen.png**<br><sub>`tubeicongreen-png`</sub> | `public/virtual-lab/images/experiment3/TubeIconGreen.png` | 375.7 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **TubeIconOrange.png**<br><sub>`tubeiconorange-png`</sub> | `public/virtual-lab/images/experiment3/TubeIconOrange.png` | 434.6 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **TubeIconYellow.png**<br><sub>`tubeiconyellow-png`</sub> | `public/virtual-lab/images/experiment3/TubeIconYellow.png` | 487.5 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **tubeRack.webp**<br><sub>`tuberack-webp`</sub> | `public/virtual-lab/images/experiment7/tubeRack.webp` | 4.9 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **uv transilluminator.png**<br><sub>`uv-transilluminator-png`</sub> | `public/virtual-lab/experiment9-assets/processed/Shared Resources/uv transilluminator.png` | 37.0 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **vacuum drying oven.png**<br><sub>`vacuum-drying-oven-png`</sub> | `public/virtual-lab/experiment9-assets/processed/Shared Resources/vacuum drying oven.png` | 49.8 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **waterBath.webp**<br><sub>`waterbath-webp`</sub> | `public/virtual-lab/images/experiment7/waterBath.webp` | 6.0 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `wet-lab` | **wet-lab-experiments-hero.jpg**<br><sub>`wet-lab-experiments-hero-jpg`</sub> | `src/assets/wiki/wet-lab-heroes/wet-lab-experiments-hero.jpg` | 202.6 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `wet-lab` | **wet-lab-measurement-hero.jpg**<br><sub>`wet-lab-measurement-hero-jpg`</sub> | `src/assets/wiki/wet-lab-heroes/wet-lab-measurement-hero.jpg` | 214.3 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `wet-lab` | **wet-lab-module-hero.webp**<br><sub>`wet-lab-module-hero-webp`</sub> | `src/assets/wiki/wet-lab-heroes/wet-lab-module-hero.webp` | 43.8 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `wet-lab` | **wet-lab-notebook-hero.webp**<br><sub>`wet-lab-notebook-hero-webp`</sub> | `src/assets/wiki/wet-lab-heroes/wet-lab-notebook-hero.webp` | 101.2 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `wet-lab` | **wet-lab-platform-hero.jpg**<br><sub>`wet-lab-platform-hero-jpg`</sub> | `src/assets/wiki/wet-lab-heroes/wet-lab-platform-hero.jpg` | 228.0 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `wet-lab` | **wet-lab-safety-hero.webp**<br><sub>`wet-lab-safety-hero-webp`</sub> | `src/assets/wiki/wet-lab-heroes/wet-lab-safety-hero.webp` | 144.2 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **WPS__.png**<br><sub>`wps-png`</sub> | `public/virtual-lab/images/experiment3/WPS__.png` | 195.5 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **WPS__(1).png**<br><sub>`wps-1-png`</sub> | `public/virtual-lab/images/experiment3/WPS__(1).png` | 153.6 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **WPS图片.png**<br><sub>`wps-6230-png`</sub> | `public/virtual-lab/images/experiment3/WPS图片.png` | 195.5 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `image` | `game` | **WPS图片(1).png**<br><sub>`wps-1-5749-png`</sub> | `public/virtual-lab/images/experiment3/WPS图片(1).png` | 153.6 | *待上传* | 0 | Standby/Unreferenced asset |
+| 🟡 备用 | `pdf` | `wet-lab` | **protocol.pdf**<br><sub>`protocol-pdf`</sub> | `文案集/wetlab/experiments/protocol.pdf` | 57196.2 | *待上传* | 0 | Standby/Unreferenced asset |
+| ⚪ 弃用 | `archive` | `shared` | **子界面psd.zip**<br><sub>`psd-zip`</sub> | `background/子界面psd.zip` | - | *已弃用* | 0 | 已从本地工作区删除 (Deleted from local workspace) |
+| ⚪ 弃用 | `image` | `shared` | **alternative_hero.jpg**<br><sub>`alternative-hero-jpg`</sub> | `background/alternative_hero.jpg` | - | *已弃用* | 0 | 已从本地工作区删除 (Deleted from local workspace) |
+| ⚪ 弃用 | `image` | `shared` | **award_hero.webp**<br><sub>`award-hero-c6e6-webp`</sub> | `background/award_hero.webp` | - | *已弃用* | 0 | 已从本地工作区删除 (Deleted from local workspace) |
+| ⚪ 弃用 | `image` | `shared` | **awards.png**<br><sub>`awards-png`</sub> | `background/awards.png` | - | *已弃用* | 0 | 已从本地工作区删除 (Deleted from local workspace) |
+| ⚪ 弃用 | `image` | `shared` | **Collaboration.png**<br><sub>`collaboration-png`</sub> | `background/子界面2_已解压/Collaboration.png` | - | *已弃用* | 0 | 已从本地工作区删除 (Deleted from local workspace) |
+| ⚪ 弃用 | `image` | `shared` | **contributions.png**<br><sub>`contributions-png`</sub> | `background/子界面2_已解压/contributions.png` | - | *已弃用* | 0 | 已从本地工作区删除 (Deleted from local workspace) |
+| ⚪ 弃用 | `image` | `project` | **description.png**<br><sub>`description-png`</sub> | `background/子界面2_已解压/description.png` | - | *已弃用* | 0 | 已从本地工作区删除 (Deleted from local workspace) |
+| ⚪ 弃用 | `image` | `project` | **design_hero.jpg**<br><sub>`design-hero-jpg`</sub> | `background/design_hero.jpg` | - | *已弃用* | 0 | 已从本地工作区删除 (Deleted from local workspace) |
+| ⚪ 弃用 | `image` | `shared` | **dry_lab_module_hero.webp**<br><sub>`dry-lab-module-hero-3289-webp`</sub> | `background/dry_lab_module_hero.webp` | - | *已弃用* | 0 | 已从本地工作区删除 (Deleted from local workspace) |
+| ⚪ 弃用 | `image` | `shared` | **dry.png**<br><sub>`dry-1bbc-png`</sub> | `background/dry.png` | - | *已弃用* | 0 | 已从本地工作区删除 (Deleted from local workspace) |
+| ⚪ 弃用 | `image` | `shared` | **education.png**<br><sub>`education-png`</sub> | `background/子界面2_已解压/education.png` | - | *已弃用* | 0 | 已从本地工作区删除 (Deleted from local workspace) |
+| ⚪ 弃用 | `image` | `engagement` | **engagement_hero.webp**<br><sub>`engagement-hero-5562-webp`</sub> | `background/engagement_hero.webp` | - | *已弃用* | 0 | 已从本地工作区删除 (Deleted from local workspace) |
+| ⚪ 弃用 | `image` | `engagement` | **engagement.png**<br><sub>`engagement-965b-png`</sub> | `background/engagement.png` | - | *已弃用* | 0 | 已从本地工作区删除 (Deleted from local workspace) |
+| ⚪ 弃用 | `image` | `shared` | **entrepreneurship.png**<br><sub>`entrepreneurship-png`</sub> | `background/子界面2_已解压/entrepreneurship.png` | - | *已弃用* | 0 | 已从本地工作区删除 (Deleted from local workspace) |
+| ⚪ 弃用 | `image` | `shared` | **experiments_hero.jpg**<br><sub>`experiments-hero-jpg`</sub> | `background/experiments_hero.jpg` | - | *已弃用* | 0 | 已从本地工作区删除 (Deleted from local workspace) |
+| ⚪ 弃用 | `image` | `shared` | **hardware_hero.jpg**<br><sub>`hardware-hero-jpg`</sub> | `background/hardware_hero.jpg` | - | *已弃用* | 0 | 已从本地工作区删除 (Deleted from local workspace) |
+| ⚪ 弃用 | `image` | `shared` | **ihp.png**<br><sub>`ihp-png`</sub> | `background/子界面2_已解压/ihp.png` | - | *已弃用* | 0 | 已从本地工作区删除 (Deleted from local workspace) |
+| ⚪ 弃用 | `image` | `shared` | **inclusisirity.png**<br><sub>`inclusisirity-png`</sub> | `background/子界面2_已解压/inclusisirity.png` | - | *已弃用* | 0 | 已从本地工作区删除 (Deleted from local workspace) |
+| ⚪ 弃用 | `image` | `shared` | **measuerment_hero.jpg**<br><sub>`measuerment-hero-jpg`</sub> | `background/measuerment_hero.jpg` | - | *已弃用* | 0 | 已从本地工作区删除 (Deleted from local workspace) |
+| ⚪ 弃用 | `image` | `shared` | **model_hero.jpg**<br><sub>`model-hero-jpg`</sub> | `background/model_hero.jpg` | - | *已弃用* | 0 | 已从本地工作区删除 (Deleted from local workspace) |
+| ⚪ 弃用 | `image` | `shared` | **notebook.png**<br><sub>`notebook-png`</sub> | `background/子界面2_已解压/notebook.png` | - | *已弃用* | 0 | 已从本地工作区删除 (Deleted from local workspace) |
+| ⚪ 弃用 | `image` | `project` | **project.png**<br><sub>`project-87d0-png`</sub> | `background/project.png` | - | *已弃用* | 0 | 已从本地工作区删除 (Deleted from local workspace) |
+| ⚪ 弃用 | `image` | `shared` | **safety.png**<br><sub>`safety-png`</sub> | `background/子界面2_已解压/safety.png` | - | *已弃用* | 0 | 已从本地工作区删除 (Deleted from local workspace) |
+| ⚪ 弃用 | `image` | `shared` | **software_hero.jpg**<br><sub>`software-hero-jpg`</sub> | `background/software_hero.jpg` | - | *已弃用* | 0 | 已从本地工作区删除 (Deleted from local workspace) |
+| ⚪ 弃用 | `image` | `shared` | **sustainbility.png**<br><sub>`sustainbility-png`</sub> | `background/子界面2_已解压/sustainbility.png` | - | *已弃用* | 0 | 已从本地工作区删除 (Deleted from local workspace) |
+| ⚪ 弃用 | `image` | `team` | **team_hero.webp**<br><sub>`team-hero-d4fe-webp`</sub> | `background/team_hero.webp` | - | *已弃用* | 0 | 已从本地工作区删除 (Deleted from local workspace) |
+| ⚪ 弃用 | `image` | `team` | **team.png**<br><sub>`team-a908-png`</sub> | `background/team.png` | - | *已弃用* | 0 | 已从本地工作区删除 (Deleted from local workspace) |
+| ⚪ 弃用 | `image` | `shared` | **wet_lab_cloud_hero.webp**<br><sub>`wet-lab-cloud-hero-webp`</sub> | `background/wet_lab_cloud_hero.webp` | - | *已弃用* | 0 | 已从本地工作区删除 (Deleted from local workspace) |
+| ⚪ 弃用 | `image` | `shared` | **wet.png**<br><sub>`wet-c99a-png`</sub> | `background/wet.png` | - | *已弃用* | 0 | 已从本地工作区删除 (Deleted from local workspace) |
 
 ---
 
@@ -274,4 +1804,4 @@
 1. **上传前先检索**：在制作或上传新素材前，先在本文档中按关键词（如 `sdg`, `trop2`, `protocol`, `apparatus`）检索，若已有 🟡 备用资源，直接使用其 CDN 链接，严禁重复上传。
 2. **全部非源码资产必须登记**：除图片外，所有的 PDF 协议、调查问卷、3D 结构文件（PDB）、字体等均必须通过官方途径托管并在本库登记。
 3. **大文件体积红线**：PDF > 15MB 必须极限压缩或分卷；图片 > 1.5MB 必须转为 WebP；视频必须上传 PeerTube (`video.igem.org`)。
-4. **永不物理删除**：页面改版撤下的图片/PDF 统一转为 🟡 备用，保留在表中供其它板块复用。
+4. **永不物理删除**：页面改版撤下的图片/PDF 统一转为 🟡 备用，已从本地删除的文件标记为 ⚪ 弃用，保留在表中供溯源与复用。
