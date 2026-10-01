@@ -390,8 +390,8 @@
   font-size: 0.72rem;
   font-family: var(--font-mono, monospace);
   color: rgba(255, 255, 255, 0.7);
-  background: rgba(15, 23, 42, 0.75);
-  backdrop-filter: blur(6px);
+  /* Opaque-ish fill instead of backdrop-filter: a blur over WebGL re-runs every frame */
+  background: rgba(15, 23, 42, 0.88);
   padding: 0.25rem 0.65rem;
   border-radius: 4px;
   pointer-events: none;
