@@ -3,7 +3,7 @@
     "teamId": "6056",
     "teamName": "JLU-FBH",
     "year": 2026,
-    "lastUpdated": "2026-09-30T14:22:20.660514+00:00",
+    "lastUpdated": "2026-10-01T08:33:26.554908+00:00",
     "stats": {
       "total": 1768,
       "inUse": 1306,
@@ -11097,7 +11097,7 @@
       "localPath": "public/virtual-lab/experiment4_html/data/apple-touch-icon.png",
       "md5": "e56f25831315af606a4beab1e74b64eb",
       "fileSize": 9356,
-      "uploadUrl": null,
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment4/ispring/apple-touch-icon.avif",
       "status": "in-use",
       "description": "",
       "keywords": [
@@ -11118,7 +11118,29 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 2 location(s)"
+      "notes": "Referenced in 2 location(s)",
+      "sha256": "0e267018c65e40a7f4d926ffb1d90ddfaaf17bf856d283f26e9589f086533ed8",
+      "upload": {
+        "target": {
+          "platform": "iGEM Team Wiki Uploads",
+          "year": 2026,
+          "teamId": "6056"
+        },
+        "status": "uploaded",
+        "remoteName": "apple-touch-icon.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "source": "user-confirmed CDN reference in wiki source",
+        "checks": [
+          {
+            "type": "source-reference",
+            "result": "matched by file name or SHA-256 and experiment folder"
+          }
+        ],
+        "references": [],
+        "unresolved": [],
+        "error": null
+      }
     },
     "fnt0-woff": {
       "id": "fnt0-woff",
@@ -11290,7 +11312,7 @@
       "localPath": "public/virtual-lab/experiment4_html/data/html5.png",
       "md5": "fd55494d616882b055f19d0af9bbd599",
       "fileSize": 4109,
-      "uploadUrl": null,
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment4/ispring/html5.avif",
       "status": "in-use",
       "description": "",
       "keywords": [
@@ -11305,7 +11327,29 @@
           "type": "css-url"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "sha256": "8c1cfbb94d2c2bb6c3153f0e94ced90109a0fe104b2e9d4330d376f343a36340",
+      "upload": {
+        "target": {
+          "platform": "iGEM Team Wiki Uploads",
+          "year": 2026,
+          "teamId": "6056"
+        },
+        "status": "uploaded",
+        "remoteName": "html5.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "source": "user-confirmed CDN reference in wiki source",
+        "checks": [
+          {
+            "type": "source-reference",
+            "result": "matched by file name or SHA-256 and experiment folder"
+          }
+        ],
+        "references": [],
+        "unresolved": [],
+        "error": null
+      }
     },
     "img0-png": {
       "id": "img0-png",
@@ -31852,7 +31896,7 @@
       "localPath": "public/virtual-lab/experiment4_html/first-frame.png",
       "md5": "59babc1cbfca6eaebc6e3792bed6b0be",
       "fileSize": 683824,
-      "uploadUrl": null,
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment4/preview/first-frame.avif",
       "status": "in-use",
       "description": "",
       "keywords": [
@@ -31867,7 +31911,29 @@
           "type": "html-img"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "sha256": "9f9991b1c416b2042575ed7e94534ed08c03299f069cc90dd03b8bf985fb866a",
+      "upload": {
+        "target": {
+          "platform": "iGEM Team Wiki Uploads",
+          "year": 2026,
+          "teamId": "6056"
+        },
+        "status": "uploaded",
+        "remoteName": "first-frame.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "source": "user-confirmed CDN reference in wiki source",
+        "checks": [
+          {
+            "type": "source-reference",
+            "result": "matched by file name or SHA-256 and experiment folder"
+          }
+        ],
+        "references": [],
+        "unresolved": [],
+        "error": null
+      }
     },
     "balance-png": {
       "id": "balance-png",
@@ -33740,7 +33806,7 @@
       "localPath": "public/virtual-lab/experiment6-assets/ppt-media/image20.png",
       "md5": "0f01a196846117e5ba5977e82a7dd8d6",
       "fileSize": 8541,
-      "uploadUrl": null,
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment6/image20.avif",
       "status": "in-use",
       "description": "",
       "keywords": [
@@ -33773,7 +33839,29 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 4 location(s)"
+      "notes": "Referenced in 4 location(s)",
+      "sha256": "44d0e523686209bf09a0e859339ee5c4b72ab942974ba176eb25bff529a77924",
+      "upload": {
+        "target": {
+          "platform": "iGEM Team Wiki Uploads",
+          "year": 2026,
+          "teamId": "6056"
+        },
+        "status": "uploaded",
+        "remoteName": "image20.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "source": "user-confirmed CDN reference in wiki source",
+        "checks": [
+          {
+            "type": "source-reference",
+            "result": "matched by file name or SHA-256 and experiment folder"
+          }
+        ],
+        "references": [],
+        "unresolved": [],
+        "error": null
+      }
     },
     "image28-png": {
       "id": "image28-png",
@@ -33951,7 +34039,7 @@
       "localPath": "public/virtual-lab/experiment9-assets/first-frame.jpg",
       "md5": "53c7624fe888a66010d79c2d57a9ccec",
       "fileSize": 80317,
-      "uploadUrl": null,
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment9/preview/first-frame.avif",
       "status": "in-use",
       "description": "",
       "keywords": [
@@ -33966,7 +34054,29 @@
           "type": "html-img"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "sha256": "94c8fd6c8f38121451e9c681dcaf35bc11e46691c55ac66319f480fab948b746",
+      "upload": {
+        "target": {
+          "platform": "iGEM Team Wiki Uploads",
+          "year": 2026,
+          "teamId": "6056"
+        },
+        "status": "uploaded",
+        "remoteName": "first-frame.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "source": "user-confirmed CDN reference in wiki source",
+        "checks": [
+          {
+            "type": "source-reference",
+            "result": "matched by file name or SHA-256 and experiment folder"
+          }
+        ],
+        "references": [],
+        "unresolved": [],
+        "error": null
+      }
     },
     "apple-touch-icon-32ec-png": {
       "id": "apple-touch-icon-32ec-png",
@@ -33976,7 +34086,7 @@
       "localPath": "public/virtual-lab/experiment9-assets/ispring/data/apple-touch-icon.png",
       "md5": "e56f25831315af606a4beab1e74b64eb",
       "fileSize": 9356,
-      "uploadUrl": null,
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment9/ispring/apple-touch-icon.avif",
       "status": "in-use",
       "description": "",
       "keywords": [
@@ -33997,7 +34107,29 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 2 location(s)"
+      "notes": "Referenced in 2 location(s)",
+      "sha256": "0e267018c65e40a7f4d926ffb1d90ddfaaf17bf856d283f26e9589f086533ed8",
+      "upload": {
+        "target": {
+          "platform": "iGEM Team Wiki Uploads",
+          "year": 2026,
+          "teamId": "6056"
+        },
+        "status": "uploaded",
+        "remoteName": "apple-touch-icon.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "source": "user-confirmed CDN reference in wiki source",
+        "checks": [
+          {
+            "type": "source-reference",
+            "result": "matched by file name or SHA-256 and experiment folder"
+          }
+        ],
+        "references": [],
+        "unresolved": [],
+        "error": null
+      }
     },
     "fnt0-cd0d-woff": {
       "id": "fnt0-cd0d-woff",
@@ -71732,7 +71864,7 @@
       "localPath": "public/virtual-lab/experiment9-assets/processed/Instruments/Constant Temperature Incubator.png",
       "md5": "d3e0270e908b086822bdd344f82fdc60",
       "fileSize": 2014897,
-      "uploadUrl": null,
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment9/processed/instruments/constant-temperature-incubator-95b44c20f7.avif",
       "status": "in-use",
       "description": "",
       "keywords": [
@@ -71747,7 +71879,29 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "sha256": "95b44c20f78738e14ee621edae47605999f9bfc6e690919d84a59b2769495f37",
+      "upload": {
+        "target": {
+          "platform": "iGEM Team Wiki Uploads",
+          "year": 2026,
+          "teamId": "6056"
+        },
+        "status": "uploaded",
+        "remoteName": "constant-temperature-incubator-95b44c20f7.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "source": "user-confirmed CDN reference in wiki source",
+        "checks": [
+          {
+            "type": "source-reference",
+            "result": "matched by file name or SHA-256 and experiment folder"
+          }
+        ],
+        "references": [],
+        "unresolved": [],
+        "error": null
+      }
     },
     "cover-slip-png": {
       "id": "cover-slip-png",
@@ -71757,7 +71911,7 @@
       "localPath": "public/virtual-lab/experiment9-assets/processed/Instruments/Cover Slip.png",
       "md5": "6140053b689752a0b667d51a5e91d9fe",
       "fileSize": 14446,
-      "uploadUrl": null,
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment9/processed/instruments/cover-slip-95d8637585.avif",
       "status": "in-use",
       "description": "",
       "keywords": [
@@ -71772,7 +71926,29 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "sha256": "95d86375855c578773effbe6a1179690a8186bfa6b9a7b5a203802f5de741db6",
+      "upload": {
+        "target": {
+          "platform": "iGEM Team Wiki Uploads",
+          "year": 2026,
+          "teamId": "6056"
+        },
+        "status": "uploaded",
+        "remoteName": "cover-slip-95d8637585.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "source": "user-confirmed CDN reference in wiki source",
+        "checks": [
+          {
+            "type": "source-reference",
+            "result": "matched by file name or SHA-256 and experiment folder"
+          }
+        ],
+        "references": [],
+        "unresolved": [],
+        "error": null
+      }
     },
     "electrophoresis-chamber-png": {
       "id": "electrophoresis-chamber-png",
@@ -71782,7 +71958,7 @@
       "localPath": "public/virtual-lab/experiment9-assets/processed/Instruments/Electrophoresis Chamber.png",
       "md5": "adadf7cc2e42ce0161429adebda0562b",
       "fileSize": 12105,
-      "uploadUrl": null,
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment9/processed/instruments/electrophoresis-chamber-3f6ae085d0.avif",
       "status": "in-use",
       "description": "",
       "keywords": [
@@ -71797,7 +71973,29 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "sha256": "3f6ae085d030807aa5fd0a2cd740bca28e6b187a099ba7b486bbabbd0e24d826",
+      "upload": {
+        "target": {
+          "platform": "iGEM Team Wiki Uploads",
+          "year": 2026,
+          "teamId": "6056"
+        },
+        "status": "uploaded",
+        "remoteName": "electrophoresis-chamber-3f6ae085d0.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "source": "user-confirmed CDN reference in wiki source",
+        "checks": [
+          {
+            "type": "source-reference",
+            "result": "matched by file name or SHA-256 and experiment folder"
+          }
+        ],
+        "references": [],
+        "unresolved": [],
+        "error": null
+      }
     },
     "electrophoresis-power-supply-png": {
       "id": "electrophoresis-power-supply-png",
@@ -71807,7 +72005,7 @@
       "localPath": "public/virtual-lab/experiment9-assets/processed/Instruments/Electrophoresis Power Supply.png",
       "md5": "acab7380f8d9af14a5c720c53c8b73ca",
       "fileSize": 20710,
-      "uploadUrl": null,
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment9/processed/instruments/electrophoresis-power-supply-dc515cfc23.avif",
       "status": "in-use",
       "description": "",
       "keywords": [
@@ -71822,7 +72020,29 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "sha256": "dc515cfc2345082a049345e607bad88a2ba1e164337a4705dae6f0fe30ec0d4e",
+      "upload": {
+        "target": {
+          "platform": "iGEM Team Wiki Uploads",
+          "year": 2026,
+          "teamId": "6056"
+        },
+        "status": "uploaded",
+        "remoteName": "electrophoresis-power-supply-dc515cfc23.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "source": "user-confirmed CDN reference in wiki source",
+        "checks": [
+          {
+            "type": "source-reference",
+            "result": "matched by file name or SHA-256 and experiment folder"
+          }
+        ],
+        "references": [],
+        "unresolved": [],
+        "error": null
+      }
     },
     "fluorescence-microscope-png": {
       "id": "fluorescence-microscope-png",
@@ -71832,7 +72052,7 @@
       "localPath": "public/virtual-lab/experiment9-assets/processed/Instruments/Fluorescence Microscope.png",
       "md5": "89c313dc3066fac2df7b3cd7165250fc",
       "fileSize": 461109,
-      "uploadUrl": null,
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment9/processed/instruments/fluorescence-microscope-fc5b3c1e09.avif",
       "status": "in-use",
       "description": "",
       "keywords": [
@@ -71847,7 +72067,29 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "sha256": "fc5b3c1e0985074dba33c52f767feddef6aa25cf6f09ef6f568833a3050f649b",
+      "upload": {
+        "target": {
+          "platform": "iGEM Team Wiki Uploads",
+          "year": 2026,
+          "teamId": "6056"
+        },
+        "status": "uploaded",
+        "remoteName": "fluorescence-microscope-fc5b3c1e09.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "source": "user-confirmed CDN reference in wiki source",
+        "checks": [
+          {
+            "type": "source-reference",
+            "result": "matched by file name or SHA-256 and experiment folder"
+          }
+        ],
+        "references": [],
+        "unresolved": [],
+        "error": null
+      }
     },
     "gel-comb-png": {
       "id": "gel-comb-png",
@@ -71857,7 +72099,7 @@
       "localPath": "public/virtual-lab/experiment9-assets/processed/Instruments/Gel Comb.png",
       "md5": "91dcac0df655c1ab1c761b5686beddff",
       "fileSize": 6151,
-      "uploadUrl": null,
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment9/processed/instruments/gel-comb-73fad7dca3.avif",
       "status": "in-use",
       "description": "",
       "keywords": [
@@ -71872,7 +72114,29 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "sha256": "73fad7dca3290c6e266f5ea514b8323be6ae3b351c06700f8c39a4a156b3ce7a",
+      "upload": {
+        "target": {
+          "platform": "iGEM Team Wiki Uploads",
+          "year": 2026,
+          "teamId": "6056"
+        },
+        "status": "uploaded",
+        "remoteName": "gel-comb-73fad7dca3.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "source": "user-confirmed CDN reference in wiki source",
+        "checks": [
+          {
+            "type": "source-reference",
+            "result": "matched by file name or SHA-256 and experiment folder"
+          }
+        ],
+        "references": [],
+        "unresolved": [],
+        "error": null
+      }
     },
     "glass-slide-png": {
       "id": "glass-slide-png",
@@ -71882,7 +72146,7 @@
       "localPath": "public/virtual-lab/experiment9-assets/processed/Instruments/Glass Slide.png",
       "md5": "a7365562f96a006493be01f0f8786737",
       "fileSize": 12935,
-      "uploadUrl": null,
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment9/processed/instruments/glass-slide-680fc50a44.avif",
       "status": "in-use",
       "description": "",
       "keywords": [
@@ -71897,7 +72161,29 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "sha256": "680fc50a448cc0436a0aabaa2a2e44ef82fcd730c564ae724da6eadaefb27b42",
+      "upload": {
+        "target": {
+          "platform": "iGEM Team Wiki Uploads",
+          "year": 2026,
+          "teamId": "6056"
+        },
+        "status": "uploaded",
+        "remoteName": "glass-slide-680fc50a44.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "source": "user-confirmed CDN reference in wiki source",
+        "checks": [
+          {
+            "type": "source-reference",
+            "result": "matched by file name or SHA-256 and experiment folder"
+          }
+        ],
+        "references": [],
+        "unresolved": [],
+        "error": null
+      }
     },
     "high-speed-centrifuge-png": {
       "id": "high-speed-centrifuge-png",
@@ -71907,7 +72193,7 @@
       "localPath": "public/virtual-lab/experiment9-assets/processed/Instruments/High Speed Centrifuge.png",
       "md5": "5c940d83dcfad8aef29172918a52a990",
       "fileSize": 45251,
-      "uploadUrl": null,
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment9/processed/instruments/high-speed-centrifuge-baa4ad07a5.avif",
       "status": "in-use",
       "description": "",
       "keywords": [
@@ -71922,7 +72208,29 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "sha256": "baa4ad07a55ca1fcf1d0779cfb1b05353433be12c7307e927fb92bb2a4c45757",
+      "upload": {
+        "target": {
+          "platform": "iGEM Team Wiki Uploads",
+          "year": 2026,
+          "teamId": "6056"
+        },
+        "status": "uploaded",
+        "remoteName": "high-speed-centrifuge-baa4ad07a5.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "source": "user-confirmed CDN reference in wiki source",
+        "checks": [
+          {
+            "type": "source-reference",
+            "result": "matched by file name or SHA-256 and experiment folder"
+          }
+        ],
+        "references": [],
+        "unresolved": [],
+        "error": null
+      }
     },
     "pcr-amplifier-png": {
       "id": "pcr-amplifier-png",
@@ -71932,7 +72240,7 @@
       "localPath": "public/virtual-lab/experiment9-assets/processed/Instruments/PCR Amplifier.png",
       "md5": "1fc8e63bbdde1efe8edc982a73f275ae",
       "fileSize": 9897,
-      "uploadUrl": null,
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment9/processed/instruments/pcr-amplifier-705427c674.avif",
       "status": "in-use",
       "description": "",
       "keywords": [
@@ -71947,7 +72255,29 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "sha256": "705427c674f8cb23bd6a4a086d52dee9f7d535f77fb1d22e5055b80a588c04a3",
+      "upload": {
+        "target": {
+          "platform": "iGEM Team Wiki Uploads",
+          "year": 2026,
+          "teamId": "6056"
+        },
+        "status": "uploaded",
+        "remoteName": "pcr-amplifier-705427c674.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "source": "user-confirmed CDN reference in wiki source",
+        "checks": [
+          {
+            "type": "source-reference",
+            "result": "matched by file name or SHA-256 and experiment folder"
+          }
+        ],
+        "references": [],
+        "unresolved": [],
+        "error": null
+      }
     },
     "staining-tray-png": {
       "id": "staining-tray-png",
@@ -71957,7 +72287,7 @@
       "localPath": "public/virtual-lab/experiment9-assets/processed/Instruments/Staining tray.png",
       "md5": "581eabe678e64448d6d9f67d2500e80f",
       "fileSize": 7715,
-      "uploadUrl": null,
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment9/processed/instruments/staining-tray-93ca915715.avif",
       "status": "in-use",
       "description": "",
       "keywords": [
@@ -71972,7 +72302,29 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "sha256": "93ca9157157bb87875d30e0e083bd88956e4cadc44e9d2e57fa5ceaba85db1fe",
+      "upload": {
+        "target": {
+          "platform": "iGEM Team Wiki Uploads",
+          "year": 2026,
+          "teamId": "6056"
+        },
+        "status": "uploaded",
+        "remoteName": "staining-tray-93ca915715.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "source": "user-confirmed CDN reference in wiki source",
+        "checks": [
+          {
+            "type": "source-reference",
+            "result": "matched by file name or SHA-256 and experiment folder"
+          }
+        ],
+        "references": [],
+        "unresolved": [],
+        "error": null
+      }
     },
     "thermostatic-shaker-png": {
       "id": "thermostatic-shaker-png",
@@ -71982,7 +72334,7 @@
       "localPath": "public/virtual-lab/experiment9-assets/processed/Instruments/Thermostatic Shaker.png",
       "md5": "21f31684ecde97f271b138bc7c30039e",
       "fileSize": 18254,
-      "uploadUrl": null,
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment9/processed/instruments/thermostatic-shaker-7f6d6a77bc.avif",
       "status": "in-use",
       "description": "",
       "keywords": [
@@ -71997,7 +72349,29 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "sha256": "7f6d6a77bcc32b0ed546bbaae70f0fd521d03bd73e88f6b0db2a959232a1c14f",
+      "upload": {
+        "target": {
+          "platform": "iGEM Team Wiki Uploads",
+          "year": 2026,
+          "teamId": "6056"
+        },
+        "status": "uploaded",
+        "remoteName": "thermostatic-shaker-7f6d6a77bc.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "source": "user-confirmed CDN reference in wiki source",
+        "checks": [
+          {
+            "type": "source-reference",
+            "result": "matched by file name or SHA-256 and experiment folder"
+          }
+        ],
+        "references": [],
+        "unresolved": [],
+        "error": null
+      }
     },
     "thermostatic-water-bath-png": {
       "id": "thermostatic-water-bath-png",
@@ -72007,7 +72381,7 @@
       "localPath": "public/virtual-lab/experiment9-assets/processed/Instruments/Thermostatic Water Bath.png",
       "md5": "336a5603430f4f5f449d3bffd7383129",
       "fileSize": 24755,
-      "uploadUrl": null,
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment9/processed/instruments/thermostatic-water-bath-03098d88af.avif",
       "status": "in-use",
       "description": "",
       "keywords": [
@@ -72022,7 +72396,29 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "sha256": "03098d88af311474b94aa73833d4774472ebb0b39ef3d026d59cfc218c8178d2",
+      "upload": {
+        "target": {
+          "platform": "iGEM Team Wiki Uploads",
+          "year": 2026,
+          "teamId": "6056"
+        },
+        "status": "uploaded",
+        "remoteName": "thermostatic-water-bath-03098d88af.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "source": "user-confirmed CDN reference in wiki source",
+        "checks": [
+          {
+            "type": "source-reference",
+            "result": "matched by file name or SHA-256 and experiment folder"
+          }
+        ],
+        "references": [],
+        "unresolved": [],
+        "error": null
+      }
     },
     "uv-gel-imaging-system-png": {
       "id": "uv-gel-imaging-system-png",
@@ -72032,7 +72428,7 @@
       "localPath": "public/virtual-lab/experiment9-assets/processed/Instruments/UV Gel Imaging System.png",
       "md5": "752efc1fbb41f26179a7b9bdefcb52d1",
       "fileSize": 13673,
-      "uploadUrl": null,
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment9/processed/instruments/uv-gel-imaging-system-8924ffb1bb.avif",
       "status": "in-use",
       "description": "",
       "keywords": [
@@ -72047,7 +72443,29 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "sha256": "8924ffb1bbec594be0e84e4cb4049757553d9cc09668284cf9c6089b65d4777e",
+      "upload": {
+        "target": {
+          "platform": "iGEM Team Wiki Uploads",
+          "year": 2026,
+          "teamId": "6056"
+        },
+        "status": "uploaded",
+        "remoteName": "uv-gel-imaging-system-8924ffb1bb.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "source": "user-confirmed CDN reference in wiki source",
+        "checks": [
+          {
+            "type": "source-reference",
+            "result": "matched by file name or SHA-256 and experiment folder"
+          }
+        ],
+        "references": [],
+        "unresolved": [],
+        "error": null
+      }
     },
     "1-sds-loading-buffer-png": {
       "id": "1-sds-loading-buffer-png",
@@ -72075,7 +72493,7 @@
       "localPath": "public/virtual-lab/experiment9-assets/processed/Reagents/1__TAE Electrophoresis Buffer.png",
       "md5": "3f9bf6d3573c4ed80daabc0d35cecf8a",
       "fileSize": 17105,
-      "uploadUrl": null,
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment9/processed/reagents/1-tae-electrophoresis-buffer-fa93799799.avif",
       "status": "in-use",
       "description": "",
       "keywords": [
@@ -72090,7 +72508,29 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "sha256": "fa93799799fd5beaa5889491eed6899651a2272e90b4929656cad5e3cbb8c2f8",
+      "upload": {
+        "target": {
+          "platform": "iGEM Team Wiki Uploads",
+          "year": 2026,
+          "teamId": "6056"
+        },
+        "status": "uploaded",
+        "remoteName": "1-tae-electrophoresis-buffer-fa93799799.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "source": "user-confirmed CDN reference in wiki source",
+        "checks": [
+          {
+            "type": "source-reference",
+            "result": "matched by file name or SHA-256 and experiment folder"
+          }
+        ],
+        "references": [],
+        "unresolved": [],
+        "error": null
+      }
     },
     "1-sds-loading-buffer-39d2-png": {
       "id": "1-sds-loading-buffer-39d2-png",
@@ -72100,7 +72540,7 @@
       "localPath": "public/virtual-lab/experiment9-assets/processed/Reagents/1×SDS Loading Buffer.png",
       "md5": "a06e37f64307648dd27cd3e0e6c0a117",
       "fileSize": 8265,
-      "uploadUrl": null,
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment9/processed/reagents/1xsds-loading-buffer-df16f065b0.avif",
       "status": "in-use",
       "description": "",
       "keywords": [
@@ -72115,7 +72555,29 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "sha256": "df16f065b0911704d5cadae39bdccba05e1448ec266f7d50c05ae90e11a087fe",
+      "upload": {
+        "target": {
+          "platform": "iGEM Team Wiki Uploads",
+          "year": 2026,
+          "teamId": "6056"
+        },
+        "status": "uploaded",
+        "remoteName": "1xsds-loading-buffer-df16f065b0.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "source": "user-confirmed CDN reference in wiki source",
+        "checks": [
+          {
+            "type": "source-reference",
+            "result": "matched by file name or SHA-256 and experiment folder"
+          }
+        ],
+        "references": [],
+        "unresolved": [],
+        "error": null
+      }
     },
     "2-taq-pcr-master-mix-png": {
       "id": "2-taq-pcr-master-mix-png",
@@ -72143,7 +72605,7 @@
       "localPath": "public/virtual-lab/experiment9-assets/processed/Reagents/2×Taq PCR Master Mix.png",
       "md5": "2fa5eec28e5200614271cdd8edb4b3cc",
       "fileSize": 5537,
-      "uploadUrl": null,
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment9/processed/reagents/2xtaq-pcr-master-mix-f89ddaa366.avif",
       "status": "in-use",
       "description": "",
       "keywords": [
@@ -72158,7 +72620,29 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "sha256": "f89ddaa366edf8a47a961a2bcddb8071cd710b46c15c54cbe9f589fa4e0f7de3",
+      "upload": {
+        "target": {
+          "platform": "iGEM Team Wiki Uploads",
+          "year": 2026,
+          "teamId": "6056"
+        },
+        "status": "uploaded",
+        "remoteName": "2xtaq-pcr-master-mix-f89ddaa366.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "source": "user-confirmed CDN reference in wiki source",
+        "checks": [
+          {
+            "type": "source-reference",
+            "result": "matched by file name or SHA-256 and experiment folder"
+          }
+        ],
+        "references": [],
+        "unresolved": [],
+        "error": null
+      }
     },
     "6-dna-loading-buffer-png": {
       "id": "6-dna-loading-buffer-png",
@@ -72168,7 +72652,7 @@
       "localPath": "public/virtual-lab/experiment9-assets/processed/Reagents/6__DNA Loading Buffer.png",
       "md5": "65d8d98588f8b6d62d8e1baaf18aa221",
       "fileSize": 7823,
-      "uploadUrl": null,
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment9/processed/reagents/6-dna-loading-buffer-a3db0140c4.avif",
       "status": "in-use",
       "description": "",
       "keywords": [
@@ -72183,7 +72667,29 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "sha256": "a3db0140c4ec963fed958a1487325db324f913fbe30c63a623adfbdc9b1774e7",
+      "upload": {
+        "target": {
+          "platform": "iGEM Team Wiki Uploads",
+          "year": 2026,
+          "teamId": "6056"
+        },
+        "status": "uploaded",
+        "remoteName": "6-dna-loading-buffer-a3db0140c4.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "source": "user-confirmed CDN reference in wiki source",
+        "checks": [
+          {
+            "type": "source-reference",
+            "result": "matched by file name or SHA-256 and experiment folder"
+          }
+        ],
+        "references": [],
+        "unresolved": [],
+        "error": null
+      }
     },
     "agarose-powder-png": {
       "id": "agarose-powder-png",
@@ -72193,7 +72699,7 @@
       "localPath": "public/virtual-lab/experiment9-assets/processed/Reagents/Agarose Powder.png",
       "md5": "63147d4012d05d20751c65dd6bc36093",
       "fileSize": 11334,
-      "uploadUrl": null,
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment9/processed/reagents/agarose-powder-52843f8ada.avif",
       "status": "in-use",
       "description": "",
       "keywords": [
@@ -72208,7 +72714,29 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "sha256": "52843f8adac5ec2dbce98567d6c93812c243c502902127eb2422b80285378d6a",
+      "upload": {
+        "target": {
+          "platform": "iGEM Team Wiki Uploads",
+          "year": 2026,
+          "teamId": "6056"
+        },
+        "status": "uploaded",
+        "remoteName": "agarose-powder-52843f8ada.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "source": "user-confirmed CDN reference in wiki source",
+        "checks": [
+          {
+            "type": "source-reference",
+            "result": "matched by file name or SHA-256 and experiment folder"
+          }
+        ],
+        "references": [],
+        "unresolved": [],
+        "error": null
+      }
     },
     "coomassie-brilliant-blue-r-250-staining-solution-png": {
       "id": "coomassie-brilliant-blue-r-250-staining-solution-png",
@@ -72218,7 +72746,7 @@
       "localPath": "public/virtual-lab/experiment9-assets/processed/Reagents/Coomassie Brilliant Blue R-250 Staining Solution.png",
       "md5": "1ec2360dc95c18b4195c942895e174c2",
       "fileSize": 16577,
-      "uploadUrl": null,
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment9/processed/reagents/coomassie-brilliant-blue-r-250-staining-solution-5e59bba3e5.avif",
       "status": "in-use",
       "description": "",
       "keywords": [
@@ -72233,7 +72761,29 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "sha256": "5e59bba3e5b707659ce5398a273222b72ba126e3da351833ff7bd568bca6b254",
+      "upload": {
+        "target": {
+          "platform": "iGEM Team Wiki Uploads",
+          "year": 2026,
+          "teamId": "6056"
+        },
+        "status": "uploaded",
+        "remoteName": "coomassie-brilliant-blue-r-250-staining-solution-5e59bba3e5.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "source": "user-confirmed CDN reference in wiki source",
+        "checks": [
+          {
+            "type": "source-reference",
+            "result": "matched by file name or SHA-256 and experiment folder"
+          }
+        ],
+        "references": [],
+        "unresolved": [],
+        "error": null
+      }
     },
     "destaining-solution-png": {
       "id": "destaining-solution-png",
@@ -72243,7 +72793,7 @@
       "localPath": "public/virtual-lab/experiment9-assets/processed/Reagents/Destaining Solution.png",
       "md5": "4edcfab6cc9a211bc6d9f013cb546ea3",
       "fileSize": 12510,
-      "uploadUrl": null,
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment9/processed/reagents/destaining-solution-472e4f4fd6.avif",
       "status": "in-use",
       "description": "",
       "keywords": [
@@ -72258,7 +72808,29 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "sha256": "472e4f4fd6f97b899c09dbc6ef72b6f4d692b5c28711f1f7ce407eec1a74ac72",
+      "upload": {
+        "target": {
+          "platform": "iGEM Team Wiki Uploads",
+          "year": 2026,
+          "teamId": "6056"
+        },
+        "status": "uploaded",
+        "remoteName": "destaining-solution-472e4f4fd6.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "source": "user-confirmed CDN reference in wiki source",
+        "checks": [
+          {
+            "type": "source-reference",
+            "result": "matched by file name or SHA-256 and experiment folder"
+          }
+        ],
+        "references": [],
+        "unresolved": [],
+        "error": null
+      }
     },
     "dl2000-dna-marker-png": {
       "id": "dl2000-dna-marker-png",
@@ -72268,7 +72840,7 @@
       "localPath": "public/virtual-lab/experiment9-assets/processed/Reagents/DL2000 DNA Marker.png",
       "md5": "6e3077f9fe0dab070b97862e0e1ef41a",
       "fileSize": 7721,
-      "uploadUrl": null,
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment9/processed/reagents/dl2000-dna-marker-baa1c84d19.avif",
       "status": "in-use",
       "description": "",
       "keywords": [
@@ -72283,7 +72855,29 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "sha256": "baa1c84d19f86952eb1f98a8087a990cdcf4764c724c325722f190926c67373a",
+      "upload": {
+        "target": {
+          "platform": "iGEM Team Wiki Uploads",
+          "year": 2026,
+          "teamId": "6056"
+        },
+        "status": "uploaded",
+        "remoteName": "dl2000-dna-marker-baa1c84d19.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "source": "user-confirmed CDN reference in wiki source",
+        "checks": [
+          {
+            "type": "source-reference",
+            "result": "matched by file name or SHA-256 and experiment folder"
+          }
+        ],
+        "references": [],
+        "unresolved": [],
+        "error": null
+      }
     },
     "gelred-png": {
       "id": "gelred-png",
@@ -72293,7 +72887,7 @@
       "localPath": "public/virtual-lab/experiment9-assets/processed/Reagents/GelRed.png",
       "md5": "a0a618e3f3541c0a413bcdc31083c1d3",
       "fileSize": 16351,
-      "uploadUrl": null,
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment9/processed/reagents/gelred-60532e4655.avif",
       "status": "in-use",
       "description": "",
       "keywords": [
@@ -72308,7 +72902,29 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "sha256": "60532e4655cbfca903620879b01e18d104da45d987cc2bdb2f2df7aed7ba4783",
+      "upload": {
+        "target": {
+          "platform": "iGEM Team Wiki Uploads",
+          "year": 2026,
+          "teamId": "6056"
+        },
+        "status": "uploaded",
+        "remoteName": "gelred-60532e4655.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "source": "user-confirmed CDN reference in wiki source",
+        "checks": [
+          {
+            "type": "source-reference",
+            "result": "matched by file name or SHA-256 and experiment folder"
+          }
+        ],
+        "references": [],
+        "unresolved": [],
+        "error": null
+      }
     },
     "gfp-gene-specific-forward-primer-png": {
       "id": "gfp-gene-specific-forward-primer-png",
@@ -72318,7 +72934,7 @@
       "localPath": "public/virtual-lab/experiment9-assets/processed/Reagents/GFP Gene-Specific Forward Primer.png",
       "md5": "a16fdf271c891f13dd41a14bc48e8100",
       "fileSize": 5037,
-      "uploadUrl": null,
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment9/processed/reagents/gfp-gene-specific-forward-primer-231a6aeace.avif",
       "status": "in-use",
       "description": "",
       "keywords": [
@@ -72333,7 +72949,29 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "sha256": "231a6aeaced3105eed2acad4197f314a1a6ea5e59e052b5c457475b9519708d8",
+      "upload": {
+        "target": {
+          "platform": "iGEM Team Wiki Uploads",
+          "year": 2026,
+          "teamId": "6056"
+        },
+        "status": "uploaded",
+        "remoteName": "gfp-gene-specific-forward-primer-231a6aeace.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "source": "user-confirmed CDN reference in wiki source",
+        "checks": [
+          {
+            "type": "source-reference",
+            "result": "matched by file name or SHA-256 and experiment folder"
+          }
+        ],
+        "references": [],
+        "unresolved": [],
+        "error": null
+      }
     },
     "gfp-gene-specific-reverse-primer-png": {
       "id": "gfp-gene-specific-reverse-primer-png",
@@ -72343,7 +72981,7 @@
       "localPath": "public/virtual-lab/experiment9-assets/processed/Reagents/GFP Gene-Specific Reverse Primer.png",
       "md5": "c392df3b50e3503f8dcdb02347c07779",
       "fileSize": 5752,
-      "uploadUrl": null,
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment9/processed/reagents/gfp-gene-specific-reverse-primer-fc32298eb0.avif",
       "status": "in-use",
       "description": "",
       "keywords": [
@@ -72358,7 +72996,29 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "sha256": "fc32298eb0d5f5bfc1cdc171e603ef12d7d2c7629d0a0773629f447eedf5ea84",
+      "upload": {
+        "target": {
+          "platform": "iGEM Team Wiki Uploads",
+          "year": 2026,
+          "teamId": "6056"
+        },
+        "status": "uploaded",
+        "remoteName": "gfp-gene-specific-reverse-primer-fc32298eb0.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "source": "user-confirmed CDN reference in wiki source",
+        "checks": [
+          {
+            "type": "source-reference",
+            "result": "matched by file name or SHA-256 and experiment folder"
+          }
+        ],
+        "references": [],
+        "unresolved": [],
+        "error": null
+      }
     },
     "image1-png": {
       "id": "image1-png",
@@ -72368,7 +73028,7 @@
       "localPath": "public/virtual-lab/experiment9-assets/processed/Reagents/image1.png",
       "md5": "2523b16106000ee1a609bd4a3c171ff0",
       "fileSize": 13957,
-      "uploadUrl": null,
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment9/processed/reagents/image1-231bdafe29.avif",
       "status": "in-use",
       "description": "",
       "keywords": [
@@ -72389,7 +73049,29 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 2 location(s)"
+      "notes": "Referenced in 2 location(s)",
+      "sha256": "231bdafe29820717da1db76a62ed87a8b3f21a3ec5e8fc0898c2ffd868f0830f",
+      "upload": {
+        "target": {
+          "platform": "iGEM Team Wiki Uploads",
+          "year": 2026,
+          "teamId": "6056"
+        },
+        "status": "uploaded",
+        "remoteName": "image1-231bdafe29.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "source": "user-confirmed CDN reference in wiki source",
+        "checks": [
+          {
+            "type": "source-reference",
+            "result": "matched by file name or SHA-256 and experiment folder"
+          }
+        ],
+        "references": [],
+        "unresolved": [],
+        "error": null
+      }
     },
     "iptg-inducer-png": {
       "id": "iptg-inducer-png",
@@ -72399,7 +73081,7 @@
       "localPath": "public/virtual-lab/experiment9-assets/processed/Reagents/IPTG Inducer.png",
       "md5": "c4e1240642c3ee81c1a4a556c228bdad",
       "fileSize": 4911,
-      "uploadUrl": null,
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment9/processed/reagents/iptg-inducer-dd2783f85f.avif",
       "status": "in-use",
       "description": "",
       "keywords": [
@@ -72414,7 +73096,29 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "sha256": "dd2783f85fca95a8a724d643f52fee958dd81a96800cbdc511b0126529aa1b6b",
+      "upload": {
+        "target": {
+          "platform": "iGEM Team Wiki Uploads",
+          "year": 2026,
+          "teamId": "6056"
+        },
+        "status": "uploaded",
+        "remoteName": "iptg-inducer-dd2783f85f.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "source": "user-confirmed CDN reference in wiki source",
+        "checks": [
+          {
+            "type": "source-reference",
+            "result": "matched by file name or SHA-256 and experiment folder"
+          }
+        ],
+        "references": [],
+        "unresolved": [],
+        "error": null
+      }
     },
     "lb-liquid-medium-containing-kanamycin-png": {
       "id": "lb-liquid-medium-containing-kanamycin-png",
@@ -72424,7 +73128,7 @@
       "localPath": "public/virtual-lab/experiment9-assets/processed/Reagents/LB Liquid Medium (containing Kanamycin).png",
       "md5": "1e9fa72f9a7dd7d0455b09bedd07e72e",
       "fileSize": 13274,
-      "uploadUrl": null,
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment9/processed/reagents/lb-liquid-medium-containing-kanamycin-2368809c91.avif",
       "status": "in-use",
       "description": "",
       "keywords": [
@@ -72439,7 +73143,29 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "sha256": "2368809c9106d2fb1d7079444e5a72a4d61972e1a07c0ac4d4933099f99a13e5",
+      "upload": {
+        "target": {
+          "platform": "iGEM Team Wiki Uploads",
+          "year": 2026,
+          "teamId": "6056"
+        },
+        "status": "uploaded",
+        "remoteName": "lb-liquid-medium-containing-kanamycin-2368809c91.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "source": "user-confirmed CDN reference in wiki source",
+        "checks": [
+          {
+            "type": "source-reference",
+            "result": "matched by file name or SHA-256 and experiment folder"
+          }
+        ],
+        "references": [],
+        "unresolved": [],
+        "error": null
+      }
     },
     "protein-marker-png": {
       "id": "protein-marker-png",
@@ -72449,7 +73175,7 @@
       "localPath": "public/virtual-lab/experiment9-assets/processed/Reagents/Protein Marker.png",
       "md5": "5d6dc5ef4be28021600810727abc45ac",
       "fileSize": 4763,
-      "uploadUrl": null,
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment9/processed/reagents/protein-marker-52cd3ed14b.avif",
       "status": "in-use",
       "description": "",
       "keywords": [
@@ -72464,7 +73190,29 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "sha256": "52cd3ed14b0834a610401508a8701c093962711ecef36b2916da6fd7a1bb690a",
+      "upload": {
+        "target": {
+          "platform": "iGEM Team Wiki Uploads",
+          "year": 2026,
+          "teamId": "6056"
+        },
+        "status": "uploaded",
+        "remoteName": "protein-marker-52cd3ed14b.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "source": "user-confirmed CDN reference in wiki source",
+        "checks": [
+          {
+            "type": "source-reference",
+            "result": "matched by file name or SHA-256 and experiment folder"
+          }
+        ],
+        "references": [],
+        "unresolved": [],
+        "error": null
+      }
     },
     "sds-page-gel-preparation-reagents-png": {
       "id": "sds-page-gel-preparation-reagents-png",
@@ -72474,7 +73222,7 @@
       "localPath": "public/virtual-lab/experiment9-assets/processed/Reagents/SDS-PAGE Gel Preparation Reagents.png",
       "md5": "0d3dde1642b1755f9a29bdb2a3a0bad4",
       "fileSize": 13006,
-      "uploadUrl": null,
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment9/processed/reagents/sds-page-gel-preparation-reagents-2c7bd72dbd.avif",
       "status": "in-use",
       "description": "",
       "keywords": [
@@ -72489,7 +73237,29 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "sha256": "2c7bd72dbd3925ab74f3a71a746468beb958fa1506fadab49c521ed357e055e1",
+      "upload": {
+        "target": {
+          "platform": "iGEM Team Wiki Uploads",
+          "year": 2026,
+          "teamId": "6056"
+        },
+        "status": "uploaded",
+        "remoteName": "sds-page-gel-preparation-reagents-2c7bd72dbd.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "source": "user-confirmed CDN reference in wiki source",
+        "checks": [
+          {
+            "type": "source-reference",
+            "result": "matched by file name or SHA-256 and experiment folder"
+          }
+        ],
+        "references": [],
+        "unresolved": [],
+        "error": null
+      }
     },
     "single-colony-of-escherichia-coli-on-kanamycin-resistant-plate-product-of-experiment-8-png": {
       "id": "single-colony-of-escherichia-coli-on-kanamycin-resistant-plate-product-of-experiment-8-png",
@@ -72499,7 +73269,7 @@
       "localPath": "public/virtual-lab/experiment9-assets/processed/Reagents/Single Colony of Escherichia coli on Kanamycin Resistant Plate__Product of Experiment 8__.png",
       "md5": "aeb02c69547ebd83700adbb11342183a",
       "fileSize": 24306,
-      "uploadUrl": null,
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment9/processed/reagents/single-colony-of-escherichia-coli-on-kanamycin-res-cf9f014db3.avif",
       "status": "in-use",
       "description": "",
       "keywords": [
@@ -72514,7 +73284,29 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "sha256": "cf9f014db36bfca92686e00868abbface658eaa86c2649f895c7178f05936b82",
+      "upload": {
+        "target": {
+          "platform": "iGEM Team Wiki Uploads",
+          "year": 2026,
+          "teamId": "6056"
+        },
+        "status": "uploaded",
+        "remoteName": "single-colony-of-escherichia-coli-on-kanamycin-res-cf9f014db3.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "source": "user-confirmed CDN reference in wiki source",
+        "checks": [
+          {
+            "type": "source-reference",
+            "result": "matched by file name or SHA-256 and experiment folder"
+          }
+        ],
+        "references": [],
+        "unresolved": [],
+        "error": null
+      }
     },
     "sterile-deionized-water-ddh-o-png": {
       "id": "sterile-deionized-water-ddh-o-png",
@@ -72542,7 +73334,7 @@
       "localPath": "public/virtual-lab/experiment9-assets/processed/Reagents/Sterile Deionized Water (ddH₂O).png",
       "md5": "130f9720965e8045a48e69d8a9e284ac",
       "fileSize": 5496,
-      "uploadUrl": null,
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment9/processed/reagents/sterile-deionized-water-ddh2o-5987981cbf.avif",
       "status": "in-use",
       "description": "",
       "keywords": [
@@ -72557,7 +73349,29 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "sha256": "5987981cbf9618bad8b8422945828a05d2c7e590a839410de1b9f67f236fe4d2",
+      "upload": {
+        "target": {
+          "platform": "iGEM Team Wiki Uploads",
+          "year": 2026,
+          "teamId": "6056"
+        },
+        "status": "uploaded",
+        "remoteName": "sterile-deionized-water-ddh2o-5987981cbf.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "source": "user-confirmed CDN reference in wiki source",
+        "checks": [
+          {
+            "type": "source-reference",
+            "result": "matched by file name or SHA-256 and experiment folder"
+          }
+        ],
+        "references": [],
+        "unresolved": [],
+        "error": null
+      }
     },
     "sterile-normal-saline-png": {
       "id": "sterile-normal-saline-png",
@@ -72567,7 +73381,7 @@
       "localPath": "public/virtual-lab/experiment9-assets/processed/Reagents/Sterile Normal Saline.png",
       "md5": "ae3ea80e10ec79c11d4eb82f8733005c",
       "fileSize": 12860,
-      "uploadUrl": null,
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment9/processed/reagents/sterile-normal-saline-7f3e2b68e1.avif",
       "status": "in-use",
       "description": "",
       "keywords": [
@@ -72582,7 +73396,29 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "sha256": "7f3e2b68e159da7e27785a7a3c209256daf3fa9fa721c75484d5b9e12f39ae71",
+      "upload": {
+        "target": {
+          "platform": "iGEM Team Wiki Uploads",
+          "year": 2026,
+          "teamId": "6056"
+        },
+        "status": "uploaded",
+        "remoteName": "sterile-normal-saline-7f3e2b68e1.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "source": "user-confirmed CDN reference in wiki source",
+        "checks": [
+          {
+            "type": "source-reference",
+            "result": "matched by file name or SHA-256 and experiment folder"
+          }
+        ],
+        "references": [],
+        "unresolved": [],
+        "error": null
+      }
     },
     "alcohol-lamp-icon-png": {
       "id": "alcohol-lamp-icon-png",
@@ -74477,7 +75313,7 @@
       "localPath": "public/virtual-lab/images/blue_table.png",
       "md5": "b3e4b9495ee84ae02062415ff2bf77a2",
       "fileSize": 646667,
-      "uploadUrl": null,
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/common/blue-table.avif",
       "status": "in-use",
       "description": "",
       "keywords": [
@@ -74510,7 +75346,29 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 4 location(s)"
+      "notes": "Referenced in 4 location(s)",
+      "sha256": "70a226eaaaf5a4898f26a5ee1fe33cc6bc648e8d16a6a11c5830be4dd461b955",
+      "upload": {
+        "target": {
+          "platform": "iGEM Team Wiki Uploads",
+          "year": 2026,
+          "teamId": "6056"
+        },
+        "status": "uploaded",
+        "remoteName": "blue-table.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "source": "user-confirmed CDN reference in wiki source",
+        "checks": [
+          {
+            "type": "source-reference",
+            "result": "matched by file name or SHA-256 and experiment folder"
+          }
+        ],
+        "references": [],
+        "unresolved": [],
+        "error": null
+      }
     },
     "cleanbench-part-png": {
       "id": "cleanbench-part-png",
@@ -74520,7 +75378,7 @@
       "localPath": "public/virtual-lab/images/Cleanbench_part.png",
       "md5": "dc31e5bde41465c49de260aee356ce34",
       "fileSize": 530145,
-      "uploadUrl": null,
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/common/cleanbench-part.avif",
       "status": "in-use",
       "description": "",
       "keywords": [
@@ -74559,7 +75417,29 @@
           "type": "css-url"
         }
       ],
-      "notes": "Referenced in 5 location(s)"
+      "notes": "Referenced in 5 location(s)",
+      "sha256": "c61ed06cb6f7315cc04708cf5ab65cd2676c5de6b067843346468d00797c601e",
+      "upload": {
+        "target": {
+          "platform": "iGEM Team Wiki Uploads",
+          "year": 2026,
+          "teamId": "6056"
+        },
+        "status": "uploaded",
+        "remoteName": "cleanbench-part.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "source": "user-confirmed CDN reference in wiki source",
+        "checks": [
+          {
+            "type": "source-reference",
+            "result": "matched by file name or SHA-256 and experiment folder"
+          }
+        ],
+        "references": [],
+        "unresolved": [],
+        "error": null
+      }
     },
     "08241-png": {
       "id": "08241-png",
@@ -75423,7 +76303,7 @@
       "localPath": "public/virtual-lab/images/experiment2/1.png",
       "md5": "308f28b121488f9ccdceec8a78b2ab97",
       "fileSize": 126944,
-      "uploadUrl": null,
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/1.avif",
       "status": "in-use",
       "description": "",
       "keywords": [
@@ -76854,7 +77734,29 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 237 location(s)"
+      "notes": "Referenced in 237 location(s)",
+      "sha256": "9087a0a29bab934c6fd144d1a9b8c947d02bc56eea08adaa707be47c8fae838a",
+      "upload": {
+        "target": {
+          "platform": "iGEM Team Wiki Uploads",
+          "year": 2026,
+          "teamId": "6056"
+        },
+        "status": "uploaded",
+        "remoteName": "1.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "source": "user-confirmed CDN reference in wiki source",
+        "checks": [
+          {
+            "type": "source-reference",
+            "result": "matched by file name or SHA-256 and experiment folder"
+          }
+        ],
+        "references": [],
+        "unresolved": [],
+        "error": null
+      }
     },
     "10-png": {
       "id": "10-png",
@@ -120401,7 +121303,33 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "sha256": "6dcf54f06c2d67bf997f37890c0718bcc47fb10129f144ca57c798112f7bcb66",
+      "upload": {
+        "target": {
+          "platform": "iGEM Team Wiki Uploads",
+          "year": 2026,
+          "teamId": "6056"
+        },
+        "status": "uploaded",
+        "remoteName": "bench-blue-rack.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "source": "user-provided upload directory screenshots and wiki source CDN reference",
+        "checks": [
+          {
+            "type": "upload-list-screenshot",
+            "result": "file name visible"
+          },
+          {
+            "type": "source-reference",
+            "result": "matching CDN URL present"
+          }
+        ],
+        "references": [],
+        "unresolved": [],
+        "error": null
+      }
     },
     "bench-box-left-png": {
       "id": "bench-box-left-png",
@@ -120426,7 +121354,33 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "sha256": "38852e5a54bfc1e23a72c1752c4fdb25faf74b6f469842a352aa799f0fa419ac",
+      "upload": {
+        "target": {
+          "platform": "iGEM Team Wiki Uploads",
+          "year": 2026,
+          "teamId": "6056"
+        },
+        "status": "uploaded",
+        "remoteName": "bench-box-left.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "source": "user-provided upload directory screenshots and wiki source CDN reference",
+        "checks": [
+          {
+            "type": "upload-list-screenshot",
+            "result": "file name visible"
+          },
+          {
+            "type": "source-reference",
+            "result": "matching CDN URL present"
+          }
+        ],
+        "references": [],
+        "unresolved": [],
+        "error": null
+      }
     },
     "bench-box-right-png": {
       "id": "bench-box-right-png",
@@ -120451,7 +121405,33 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "sha256": "1fe57dc04ae63a18d4410f246944af6d009fe1da9da604976d19b9d56eebe58d",
+      "upload": {
+        "target": {
+          "platform": "iGEM Team Wiki Uploads",
+          "year": 2026,
+          "teamId": "6056"
+        },
+        "status": "uploaded",
+        "remoteName": "bench-box-right.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "source": "user-provided upload directory screenshots and wiki source CDN reference",
+        "checks": [
+          {
+            "type": "upload-list-screenshot",
+            "result": "file name visible"
+          },
+          {
+            "type": "source-reference",
+            "result": "matching CDN URL present"
+          }
+        ],
+        "references": [],
+        "unresolved": [],
+        "error": null
+      }
     },
     "bench-full-png": {
       "id": "bench-full-png",
@@ -120476,7 +121456,33 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "sha256": "254a6787cec7f9fd1341329b5f5d718aac64ebf2aa6bb729a13ba8ee25959b2f",
+      "upload": {
+        "target": {
+          "platform": "iGEM Team Wiki Uploads",
+          "year": 2026,
+          "teamId": "6056"
+        },
+        "status": "uploaded",
+        "remoteName": "bench-full.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "source": "user-provided upload directory screenshots and wiki source CDN reference",
+        "checks": [
+          {
+            "type": "upload-list-screenshot",
+            "result": "file name visible"
+          },
+          {
+            "type": "source-reference",
+            "result": "matching CDN URL present"
+          }
+        ],
+        "references": [],
+        "unresolved": [],
+        "error": null
+      }
     },
     "bench-gel-comb-png": {
       "id": "bench-gel-comb-png",
@@ -120501,7 +121507,33 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "sha256": "5374745365104c7b3798fa36a17da4a4857142ce2970340c5852af90f720af37",
+      "upload": {
+        "target": {
+          "platform": "iGEM Team Wiki Uploads",
+          "year": 2026,
+          "teamId": "6056"
+        },
+        "status": "uploaded",
+        "remoteName": "bench-gel-comb.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "source": "user-provided upload directory screenshots and wiki source CDN reference",
+        "checks": [
+          {
+            "type": "upload-list-screenshot",
+            "result": "file name visible"
+          },
+          {
+            "type": "source-reference",
+            "result": "matching CDN URL present"
+          }
+        ],
+        "references": [],
+        "unresolved": [],
+        "error": null
+      }
     },
     "bench-gel-wells-png": {
       "id": "bench-gel-wells-png",
@@ -120526,7 +121558,33 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "sha256": "6358b2c2205c44c51a3fe4d2c79b4cb8295550b4d86f3b204fbe5b934cf15691",
+      "upload": {
+        "target": {
+          "platform": "iGEM Team Wiki Uploads",
+          "year": 2026,
+          "teamId": "6056"
+        },
+        "status": "uploaded",
+        "remoteName": "bench-gel-wells.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "source": "user-provided upload directory screenshots and wiki source CDN reference",
+        "checks": [
+          {
+            "type": "upload-list-screenshot",
+            "result": "file name visible"
+          },
+          {
+            "type": "source-reference",
+            "result": "matching CDN URL present"
+          }
+        ],
+        "references": [],
+        "unresolved": [],
+        "error": null
+      }
     },
     "bench-tae-front-png": {
       "id": "bench-tae-front-png",
@@ -120551,7 +121609,33 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "sha256": "09d2816c05de371cdd81e1f7a5e7c6c755ab63c5b21dc7e4134fd7ae98a74ea3",
+      "upload": {
+        "target": {
+          "platform": "iGEM Team Wiki Uploads",
+          "year": 2026,
+          "teamId": "6056"
+        },
+        "status": "uploaded",
+        "remoteName": "bench-tae-front.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "source": "user-provided upload directory screenshots and wiki source CDN reference",
+        "checks": [
+          {
+            "type": "upload-list-screenshot",
+            "result": "file name visible"
+          },
+          {
+            "type": "source-reference",
+            "result": "matching CDN URL present"
+          }
+        ],
+        "references": [],
+        "unresolved": [],
+        "error": null
+      }
     },
     "bench-tubes-png": {
       "id": "bench-tubes-png",
@@ -120576,7 +121660,33 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "sha256": "9ba8d204b508fe206d229d35183996adcded6aabc3677696235e0fc64cd3bc54",
+      "upload": {
+        "target": {
+          "platform": "iGEM Team Wiki Uploads",
+          "year": 2026,
+          "teamId": "6056"
+        },
+        "status": "uploaded",
+        "remoteName": "bench-tubes.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "source": "user-provided upload directory screenshots and wiki source CDN reference",
+        "checks": [
+          {
+            "type": "upload-list-screenshot",
+            "result": "file name visible"
+          },
+          {
+            "type": "source-reference",
+            "result": "matching CDN URL present"
+          }
+        ],
+        "references": [],
+        "unresolved": [],
+        "error": null
+      }
     },
     "brown-bottle-png": {
       "id": "brown-bottle-png",
@@ -120601,7 +121711,33 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "sha256": "d99f3ca824df68439f20f0ee9198f98c7b3a9a337b8d95d6813083730bc92841",
+      "upload": {
+        "target": {
+          "platform": "iGEM Team Wiki Uploads",
+          "year": 2026,
+          "teamId": "6056"
+        },
+        "status": "uploaded",
+        "remoteName": "brown-bottle.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "source": "user-provided upload directory screenshots and wiki source CDN reference",
+        "checks": [
+          {
+            "type": "upload-list-screenshot",
+            "result": "file name visible"
+          },
+          {
+            "type": "source-reference",
+            "result": "matching CDN URL present"
+          }
+        ],
+        "references": [],
+        "unresolved": [],
+        "error": null
+      }
     },
     "electrophoresis-connected-new-png": {
       "id": "electrophoresis-connected-new-png",
@@ -120626,7 +121762,33 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "sha256": "87f462b754e8975c26a16175b9c83d66d5776fd3ae4386d3787252581c7c1b91",
+      "upload": {
+        "target": {
+          "platform": "iGEM Team Wiki Uploads",
+          "year": 2026,
+          "teamId": "6056"
+        },
+        "status": "uploaded",
+        "remoteName": "electrophoresis-connected-new.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "source": "user-provided upload directory screenshots and wiki source CDN reference",
+        "checks": [
+          {
+            "type": "upload-list-screenshot",
+            "result": "file name visible"
+          },
+          {
+            "type": "source-reference",
+            "result": "matching CDN URL present"
+          }
+        ],
+        "references": [],
+        "unresolved": [],
+        "error": null
+      }
     },
     "electrophoresis-connected-png": {
       "id": "electrophoresis-connected-png",
@@ -120651,7 +121813,33 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "sha256": "48ec808fd8dff9011ea080d07b6f7618ada4793cf1ccb788ba9f06ec6c5264e1",
+      "upload": {
+        "target": {
+          "platform": "iGEM Team Wiki Uploads",
+          "year": 2026,
+          "teamId": "6056"
+        },
+        "status": "uploaded",
+        "remoteName": "electrophoresis-connected.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "source": "user-provided upload directory screenshots and wiki source CDN reference",
+        "checks": [
+          {
+            "type": "upload-list-screenshot",
+            "result": "file name visible"
+          },
+          {
+            "type": "source-reference",
+            "result": "matching CDN URL present"
+          }
+        ],
+        "references": [],
+        "unresolved": [],
+        "error": null
+      }
     },
     "electrophoresis-setup-png": {
       "id": "electrophoresis-setup-png",
@@ -120676,7 +121864,33 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "sha256": "87f462b754e8975c26a16175b9c83d66d5776fd3ae4386d3787252581c7c1b91",
+      "upload": {
+        "target": {
+          "platform": "iGEM Team Wiki Uploads",
+          "year": 2026,
+          "teamId": "6056"
+        },
+        "status": "uploaded",
+        "remoteName": "electrophoresis-setup.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "source": "user-provided upload directory screenshots and wiki source CDN reference",
+        "checks": [
+          {
+            "type": "upload-list-screenshot",
+            "result": "file name visible"
+          },
+          {
+            "type": "source-reference",
+            "result": "matching CDN URL present"
+          }
+        ],
+        "references": [],
+        "unresolved": [],
+        "error": null
+      }
     },
     "electrophoresis-text-png": {
       "id": "electrophoresis-text-png",
@@ -120701,7 +121915,33 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "sha256": "8916f58b68ca7b38e1499d6cbf5781a9019cd9f961fa57b510a44bf46cf898ea",
+      "upload": {
+        "target": {
+          "platform": "iGEM Team Wiki Uploads",
+          "year": 2026,
+          "teamId": "6056"
+        },
+        "status": "uploaded",
+        "remoteName": "electrophoresis-text.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "source": "user-provided upload directory screenshots and wiki source CDN reference",
+        "checks": [
+          {
+            "type": "upload-list-screenshot",
+            "result": "file name visible"
+          },
+          {
+            "type": "source-reference",
+            "result": "matching CDN URL present"
+          }
+        ],
+        "references": [],
+        "unresolved": [],
+        "error": null
+      }
     },
     "flask-blue-realistic-png": {
       "id": "flask-blue-realistic-png",
@@ -120726,7 +121966,33 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "sha256": "f65eacf825416b53e0f0d11ed02e9caaf7f96a3c6cb964702cf7bf46ed66c9a5",
+      "upload": {
+        "target": {
+          "platform": "iGEM Team Wiki Uploads",
+          "year": 2026,
+          "teamId": "6056"
+        },
+        "status": "uploaded",
+        "remoteName": "flask-blue-realistic.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "source": "user-provided upload directory screenshots and wiki source CDN reference",
+        "checks": [
+          {
+            "type": "upload-list-screenshot",
+            "result": "file name visible"
+          },
+          {
+            "type": "source-reference",
+            "result": "matching CDN URL present"
+          }
+        ],
+        "references": [],
+        "unresolved": [],
+        "error": null
+      }
     },
     "flask-clear-new-png": {
       "id": "flask-clear-new-png",
@@ -120769,7 +122035,33 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "sha256": "8b759a9c124c45f5259c816ef8015a2c4e42c896398520ecbc84f2b2aa597a96",
+      "upload": {
+        "target": {
+          "platform": "iGEM Team Wiki Uploads",
+          "year": 2026,
+          "teamId": "6056"
+        },
+        "status": "uploaded",
+        "remoteName": "gel-cast-frame-new.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "source": "user-provided upload directory screenshots and wiki source CDN reference",
+        "checks": [
+          {
+            "type": "upload-list-screenshot",
+            "result": "file name visible"
+          },
+          {
+            "type": "source-reference",
+            "result": "matching CDN URL present"
+          }
+        ],
+        "references": [],
+        "unresolved": [],
+        "error": null
+      }
     },
     "gel-cast-frame-step9-png": {
       "id": "gel-cast-frame-step9-png",
@@ -120812,7 +122104,33 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "sha256": "2cc6e9042d07158dc15f9e63e5c4baecb275a473440527d22a43e6b2b9f506b4",
+      "upload": {
+        "target": {
+          "platform": "iGEM Team Wiki Uploads",
+          "year": 2026,
+          "teamId": "6056"
+        },
+        "status": "uploaded",
+        "remoteName": "gel-cast-frame-transparent.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "source": "user-provided upload directory screenshots and wiki source CDN reference",
+        "checks": [
+          {
+            "type": "upload-list-screenshot",
+            "result": "file name visible"
+          },
+          {
+            "type": "source-reference",
+            "result": "matching CDN URL present"
+          }
+        ],
+        "references": [],
+        "unresolved": [],
+        "error": null
+      }
     },
     "gel-cast-frame-v2-png": {
       "id": "gel-cast-frame-v2-png",
@@ -120837,7 +122155,33 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "sha256": "9ec3edf809df53817ddf9d03966e40dae2ad347497b05a553dd573cf747d8c98",
+      "upload": {
+        "target": {
+          "platform": "iGEM Team Wiki Uploads",
+          "year": 2026,
+          "teamId": "6056"
+        },
+        "status": "uploaded",
+        "remoteName": "gel-cast-frame-v2.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "source": "user-provided upload directory screenshots and wiki source CDN reference",
+        "checks": [
+          {
+            "type": "upload-list-screenshot",
+            "result": "file name visible"
+          },
+          {
+            "type": "source-reference",
+            "result": "matching CDN URL present"
+          }
+        ],
+        "references": [],
+        "unresolved": [],
+        "error": null
+      }
     },
     "gel-cast-frame-v3-png": {
       "id": "gel-cast-frame-v3-png",
@@ -120862,7 +122206,33 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "sha256": "8fd2cf5d8fbb21b0063fad7e44d611bd7693bda653baa0bb9df1281f7c89d681",
+      "upload": {
+        "target": {
+          "platform": "iGEM Team Wiki Uploads",
+          "year": 2026,
+          "teamId": "6056"
+        },
+        "status": "uploaded",
+        "remoteName": "gel-cast-frame-v3.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "source": "user-provided upload directory screenshots and wiki source CDN reference",
+        "checks": [
+          {
+            "type": "upload-list-screenshot",
+            "result": "file name visible"
+          },
+          {
+            "type": "source-reference",
+            "result": "matching CDN URL present"
+          }
+        ],
+        "references": [],
+        "unresolved": [],
+        "error": null
+      }
     },
     "gel-cast-frame-png": {
       "id": "gel-cast-frame-png",
@@ -120905,7 +122275,33 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "sha256": "808f09539856336636e84b74e0e12654b1f2a690d8c2709ddc4474cad1c15ab1",
+      "upload": {
+        "target": {
+          "platform": "iGEM Team Wiki Uploads",
+          "year": 2026,
+          "teamId": "6056"
+        },
+        "status": "uploaded",
+        "remoteName": "gel-comb-flat.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "source": "user-provided upload directory screenshots and wiki source CDN reference",
+        "checks": [
+          {
+            "type": "upload-list-screenshot",
+            "result": "file name visible"
+          },
+          {
+            "type": "source-reference",
+            "result": "matching CDN URL present"
+          }
+        ],
+        "references": [],
+        "unresolved": [],
+        "error": null
+      }
     },
     "gel-comb-green-new-png": {
       "id": "gel-comb-green-new-png",
@@ -120930,7 +122326,33 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "sha256": "2f672f43c1de45d187f4c2b9cdd5107a4a4d1c65aab3d703771f9ba3b900a963",
+      "upload": {
+        "target": {
+          "platform": "iGEM Team Wiki Uploads",
+          "year": 2026,
+          "teamId": "6056"
+        },
+        "status": "uploaded",
+        "remoteName": "gel-comb-green-new.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "source": "user-provided upload directory screenshots and wiki source CDN reference",
+        "checks": [
+          {
+            "type": "upload-list-screenshot",
+            "result": "file name visible"
+          },
+          {
+            "type": "source-reference",
+            "result": "matching CDN URL present"
+          }
+        ],
+        "references": [],
+        "unresolved": [],
+        "error": null
+      }
     },
     "gel-comb-green-transparent-png": {
       "id": "gel-comb-green-transparent-png",
@@ -120955,7 +122377,33 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "sha256": "2306d04d4dedc18f93214760ce8bec979f3088ebc560e564b879579af557d435",
+      "upload": {
+        "target": {
+          "platform": "iGEM Team Wiki Uploads",
+          "year": 2026,
+          "teamId": "6056"
+        },
+        "status": "uploaded",
+        "remoteName": "gel-comb-green-transparent.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "source": "user-provided upload directory screenshots and wiki source CDN reference",
+        "checks": [
+          {
+            "type": "upload-list-screenshot",
+            "result": "file name visible"
+          },
+          {
+            "type": "source-reference",
+            "result": "matching CDN URL present"
+          }
+        ],
+        "references": [],
+        "unresolved": [],
+        "error": null
+      }
     },
     "gel-comb-green-png": {
       "id": "gel-comb-green-png",
@@ -121016,7 +122464,33 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "sha256": "6f51eda05de1930eb35b78c9bc2ab8f7fcd712d840a390a251908bc07d8deb99",
+      "upload": {
+        "target": {
+          "platform": "iGEM Team Wiki Uploads",
+          "year": 2026,
+          "teamId": "6056"
+        },
+        "status": "uploaded",
+        "remoteName": "gel-comb-v2.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "source": "user-provided upload directory screenshots and wiki source CDN reference",
+        "checks": [
+          {
+            "type": "upload-list-screenshot",
+            "result": "file name visible"
+          },
+          {
+            "type": "source-reference",
+            "result": "matching CDN URL present"
+          }
+        ],
+        "references": [],
+        "unresolved": [],
+        "error": null
+      }
     },
     "gel-diagram-to-delete-png": {
       "id": "gel-diagram-to-delete-png",
@@ -121059,7 +122533,33 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "sha256": "69759ac15fdf846464269b97d93dec6c062a21c103b36a480d57f10372e7c241",
+      "upload": {
+        "target": {
+          "platform": "iGEM Team Wiki Uploads",
+          "year": 2026,
+          "teamId": "6056"
+        },
+        "status": "uploaded",
+        "remoteName": "gel-electrophoresis-progress.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "source": "user-provided upload directory screenshots and wiki source CDN reference",
+        "checks": [
+          {
+            "type": "upload-list-screenshot",
+            "result": "file name visible"
+          },
+          {
+            "type": "source-reference",
+            "result": "matching CDN URL present"
+          }
+        ],
+        "references": [],
+        "unresolved": [],
+        "error": null
+      }
     },
     "gel-frame-empty-png": {
       "id": "gel-frame-empty-png",
@@ -121084,7 +122584,33 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "sha256": "e09bbe1205c3b70ec80ae3ba17d57776163dc5115316637cfefe2a49cd7e830e",
+      "upload": {
+        "target": {
+          "platform": "iGEM Team Wiki Uploads",
+          "year": 2026,
+          "teamId": "6056"
+        },
+        "status": "uploaded",
+        "remoteName": "gel-frame-empty.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "source": "user-provided upload directory screenshots and wiki source CDN reference",
+        "checks": [
+          {
+            "type": "upload-list-screenshot",
+            "result": "file name visible"
+          },
+          {
+            "type": "source-reference",
+            "result": "matching CDN URL present"
+          }
+        ],
+        "references": [],
+        "unresolved": [],
+        "error": null
+      }
     },
     "gel-progress-23-png": {
       "id": "gel-progress-23-png",
@@ -121109,7 +122635,33 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "sha256": "69759ac15fdf846464269b97d93dec6c062a21c103b36a480d57f10372e7c241",
+      "upload": {
+        "target": {
+          "platform": "iGEM Team Wiki Uploads",
+          "year": 2026,
+          "teamId": "6056"
+        },
+        "status": "uploaded",
+        "remoteName": "gel-progress-23.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "source": "user-provided upload directory screenshots and wiki source CDN reference",
+        "checks": [
+          {
+            "type": "upload-list-screenshot",
+            "result": "file name visible"
+          },
+          {
+            "type": "source-reference",
+            "result": "matching CDN URL present"
+          }
+        ],
+        "references": [],
+        "unresolved": [],
+        "error": null
+      }
     },
     "gel-red-solid-png": {
       "id": "gel-red-solid-png",
@@ -121134,7 +122686,33 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "sha256": "a2a7da75e5fc07985cc662b466b3c4cf351fe29ee2dd0083e1b0a786085c791a",
+      "upload": {
+        "target": {
+          "platform": "iGEM Team Wiki Uploads",
+          "year": 2026,
+          "teamId": "6056"
+        },
+        "status": "uploaded",
+        "remoteName": "gel-red-solid.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "source": "user-provided upload directory screenshots and wiki source CDN reference",
+        "checks": [
+          {
+            "type": "upload-list-screenshot",
+            "result": "file name visible"
+          },
+          {
+            "type": "source-reference",
+            "result": "matching CDN URL present"
+          }
+        ],
+        "references": [],
+        "unresolved": [],
+        "error": null
+      }
     },
     "gel-red-wells-png": {
       "id": "gel-red-wells-png",
@@ -121159,7 +122737,33 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "sha256": "a30708ffcdc350f14706022d8b8422046680e171e558361bcd4e2efbfd2ea2f9",
+      "upload": {
+        "target": {
+          "platform": "iGEM Team Wiki Uploads",
+          "year": 2026,
+          "teamId": "6056"
+        },
+        "status": "uploaded",
+        "remoteName": "gel-red-wells.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "source": "user-provided upload directory screenshots and wiki source CDN reference",
+        "checks": [
+          {
+            "type": "upload-list-screenshot",
+            "result": "file name visible"
+          },
+          {
+            "type": "source-reference",
+            "result": "matching CDN URL present"
+          }
+        ],
+        "references": [],
+        "unresolved": [],
+        "error": null
+      }
     },
     "gel-tray-with-comb-png": {
       "id": "gel-tray-with-comb-png",
@@ -121184,7 +122788,33 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "sha256": "aa4d5c3af6da8b25c4e4085626357fca1bc712a922b13ff3610eaf78f12347b4",
+      "upload": {
+        "target": {
+          "platform": "iGEM Team Wiki Uploads",
+          "year": 2026,
+          "teamId": "6056"
+        },
+        "status": "uploaded",
+        "remoteName": "gel-tray-with-comb.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "source": "user-provided upload directory screenshots and wiki source CDN reference",
+        "checks": [
+          {
+            "type": "upload-list-screenshot",
+            "result": "file name visible"
+          },
+          {
+            "type": "source-reference",
+            "result": "matching CDN URL present"
+          }
+        ],
+        "references": [],
+        "unresolved": [],
+        "error": null
+      }
     },
     "gel-tray-with-gel-png": {
       "id": "gel-tray-with-gel-png",
@@ -121209,7 +122839,33 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "sha256": "b5319667152bf35b1e7990f0c2e8f1c5b77d46b9f7e50c0b00121fc310dc24f5",
+      "upload": {
+        "target": {
+          "platform": "iGEM Team Wiki Uploads",
+          "year": 2026,
+          "teamId": "6056"
+        },
+        "status": "uploaded",
+        "remoteName": "gel-tray-with-gel.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "source": "user-provided upload directory screenshots and wiki source CDN reference",
+        "checks": [
+          {
+            "type": "upload-list-screenshot",
+            "result": "file name visible"
+          },
+          {
+            "type": "source-reference",
+            "result": "matching CDN URL present"
+          }
+        ],
+        "references": [],
+        "unresolved": [],
+        "error": null
+      }
     },
     "gel-wells-frame-png": {
       "id": "gel-wells-frame-png",
@@ -121234,7 +122890,33 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "sha256": "fb8a6bfcba9c062be4a16c74e0d68e56c73d66a337ec637a14e73df738ee8afe",
+      "upload": {
+        "target": {
+          "platform": "iGEM Team Wiki Uploads",
+          "year": 2026,
+          "teamId": "6056"
+        },
+        "status": "uploaded",
+        "remoteName": "gel-wells-frame.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "source": "user-provided upload directory screenshots and wiki source CDN reference",
+        "checks": [
+          {
+            "type": "upload-list-screenshot",
+            "result": "file name visible"
+          },
+          {
+            "type": "source-reference",
+            "result": "matching CDN URL present"
+          }
+        ],
+        "references": [],
+        "unresolved": [],
+        "error": null
+      }
     },
     "image0-png": {
       "id": "image0-png",
@@ -121259,7 +122941,33 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "sha256": "adfef604be902593aac3a39d66ef4b9ade845e6a8cb6ae926367ee5da63bcbe0",
+      "upload": {
+        "target": {
+          "platform": "iGEM Team Wiki Uploads",
+          "year": 2026,
+          "teamId": "6056"
+        },
+        "status": "uploaded",
+        "remoteName": "image0.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "source": "user-provided upload directory screenshots and wiki source CDN reference",
+        "checks": [
+          {
+            "type": "upload-list-screenshot",
+            "result": "file name visible"
+          },
+          {
+            "type": "source-reference",
+            "result": "matching CDN URL present"
+          }
+        ],
+        "references": [],
+        "unresolved": [],
+        "error": null
+      }
     },
     "image1-30c2-png": {
       "id": "image1-30c2-png",
@@ -121290,7 +122998,33 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 2 location(s)"
+      "notes": "Referenced in 2 location(s)",
+      "sha256": "ed09689e05eb719f9a6dfdc0598ae7c572a1e333ba7ccb858bfce4733eb5ea19",
+      "upload": {
+        "target": {
+          "platform": "iGEM Team Wiki Uploads",
+          "year": 2026,
+          "teamId": "6056"
+        },
+        "status": "uploaded",
+        "remoteName": "image1.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "source": "user-provided upload directory screenshots and wiki source CDN reference",
+        "checks": [
+          {
+            "type": "upload-list-screenshot",
+            "result": "file name visible"
+          },
+          {
+            "type": "source-reference",
+            "result": "matching CDN URL present"
+          }
+        ],
+        "references": [],
+        "unresolved": [],
+        "error": null
+      }
     },
     "image10-png": {
       "id": "image10-png",
@@ -121327,7 +123061,33 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 3 location(s)"
+      "notes": "Referenced in 3 location(s)",
+      "sha256": "98bda2db0f6b7aa43cec10daf0a81b744ecb3082639a91fbf69d439c6ba943b9",
+      "upload": {
+        "target": {
+          "platform": "iGEM Team Wiki Uploads",
+          "year": 2026,
+          "teamId": "6056"
+        },
+        "status": "uploaded",
+        "remoteName": "image10.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "source": "user-provided upload directory screenshots and wiki source CDN reference",
+        "checks": [
+          {
+            "type": "upload-list-screenshot",
+            "result": "file name visible"
+          },
+          {
+            "type": "source-reference",
+            "result": "matching CDN URL present"
+          }
+        ],
+        "references": [],
+        "unresolved": [],
+        "error": null
+      }
     },
     "image11-png": {
       "id": "image11-png",
@@ -121358,7 +123118,33 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 2 location(s)"
+      "notes": "Referenced in 2 location(s)",
+      "sha256": "ee8cce8a8bb4b5b4ae7d2aa8f0635121af3334d941219aa36706720eebe043e6",
+      "upload": {
+        "target": {
+          "platform": "iGEM Team Wiki Uploads",
+          "year": 2026,
+          "teamId": "6056"
+        },
+        "status": "uploaded",
+        "remoteName": "image11.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "source": "user-provided upload directory screenshots and wiki source CDN reference",
+        "checks": [
+          {
+            "type": "upload-list-screenshot",
+            "result": "file name visible"
+          },
+          {
+            "type": "source-reference",
+            "result": "matching CDN URL present"
+          }
+        ],
+        "references": [],
+        "unresolved": [],
+        "error": null
+      }
     },
     "image12-png": {
       "id": "image12-png",
@@ -121389,7 +123175,33 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 2 location(s)"
+      "notes": "Referenced in 2 location(s)",
+      "sha256": "113fbc3013074a24e9241eac8865cae5188178c781c9d3c1666be45c3a0a406e",
+      "upload": {
+        "target": {
+          "platform": "iGEM Team Wiki Uploads",
+          "year": 2026,
+          "teamId": "6056"
+        },
+        "status": "uploaded",
+        "remoteName": "image12.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "source": "user-provided upload directory screenshots and wiki source CDN reference",
+        "checks": [
+          {
+            "type": "upload-list-screenshot",
+            "result": "file name visible"
+          },
+          {
+            "type": "source-reference",
+            "result": "matching CDN URL present"
+          }
+        ],
+        "references": [],
+        "unresolved": [],
+        "error": null
+      }
     },
     "image13-png": {
       "id": "image13-png",
@@ -121438,7 +123250,33 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 5 location(s)"
+      "notes": "Referenced in 5 location(s)",
+      "sha256": "70c551f74ade7306870fe45818c3f199f8f3354c1ddbff0b99778b54f11ff99f",
+      "upload": {
+        "target": {
+          "platform": "iGEM Team Wiki Uploads",
+          "year": 2026,
+          "teamId": "6056"
+        },
+        "status": "uploaded",
+        "remoteName": "image13.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "source": "user-provided upload directory screenshots and wiki source CDN reference",
+        "checks": [
+          {
+            "type": "upload-list-screenshot",
+            "result": "file name visible"
+          },
+          {
+            "type": "source-reference",
+            "result": "matching CDN URL present"
+          }
+        ],
+        "references": [],
+        "unresolved": [],
+        "error": null
+      }
     },
     "image14-png": {
       "id": "image14-png",
@@ -121505,7 +123343,33 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 8 location(s)"
+      "notes": "Referenced in 8 location(s)",
+      "sha256": "4cc5ccf5f30370f0e100c07a71756bee0452a5d6270a8ed240c93b55efff8ff7",
+      "upload": {
+        "target": {
+          "platform": "iGEM Team Wiki Uploads",
+          "year": 2026,
+          "teamId": "6056"
+        },
+        "status": "uploaded",
+        "remoteName": "image14.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "source": "user-provided upload directory screenshots and wiki source CDN reference",
+        "checks": [
+          {
+            "type": "upload-list-screenshot",
+            "result": "file name visible"
+          },
+          {
+            "type": "source-reference",
+            "result": "matching CDN URL present"
+          }
+        ],
+        "references": [],
+        "unresolved": [],
+        "error": null
+      }
     },
     "image15-png": {
       "id": "image15-png",
@@ -121554,7 +123418,33 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 5 location(s)"
+      "notes": "Referenced in 5 location(s)",
+      "sha256": "aa513b57db2dbc5197c0430a190e9516b13fc2eec9175f52dab1cb3b17e92fef",
+      "upload": {
+        "target": {
+          "platform": "iGEM Team Wiki Uploads",
+          "year": 2026,
+          "teamId": "6056"
+        },
+        "status": "uploaded",
+        "remoteName": "image15.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "source": "user-provided upload directory screenshots and wiki source CDN reference",
+        "checks": [
+          {
+            "type": "upload-list-screenshot",
+            "result": "file name visible"
+          },
+          {
+            "type": "source-reference",
+            "result": "matching CDN URL present"
+          }
+        ],
+        "references": [],
+        "unresolved": [],
+        "error": null
+      }
     },
     "image16-png": {
       "id": "image16-png",
@@ -121579,7 +123469,33 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "sha256": "e257b7ef101845ba4ccacb9669a58801771a3e4b22cdc7e9d60c37a6ba883192",
+      "upload": {
+        "target": {
+          "platform": "iGEM Team Wiki Uploads",
+          "year": 2026,
+          "teamId": "6056"
+        },
+        "status": "uploaded",
+        "remoteName": "image16.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "source": "user-provided upload directory screenshots and wiki source CDN reference",
+        "checks": [
+          {
+            "type": "upload-list-screenshot",
+            "result": "file name visible"
+          },
+          {
+            "type": "source-reference",
+            "result": "matching CDN URL present"
+          }
+        ],
+        "references": [],
+        "unresolved": [],
+        "error": null
+      }
     },
     "image17-png": {
       "id": "image17-png",
@@ -121622,7 +123538,33 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 4 location(s)"
+      "notes": "Referenced in 4 location(s)",
+      "sha256": "9e6a138037c298993315651a51912e5080d8d02b6e5dd527bb7505d7c254ee29",
+      "upload": {
+        "target": {
+          "platform": "iGEM Team Wiki Uploads",
+          "year": 2026,
+          "teamId": "6056"
+        },
+        "status": "uploaded",
+        "remoteName": "image17.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "source": "user-provided upload directory screenshots and wiki source CDN reference",
+        "checks": [
+          {
+            "type": "upload-list-screenshot",
+            "result": "file name visible"
+          },
+          {
+            "type": "source-reference",
+            "result": "matching CDN URL present"
+          }
+        ],
+        "references": [],
+        "unresolved": [],
+        "error": null
+      }
     },
     "image2-png": {
       "id": "image2-png",
@@ -121647,7 +123589,33 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "sha256": "c05bc57ee8d61faff0b9cff883e233edbaa73fd6e96dd80ce4b0c09db4701ec4",
+      "upload": {
+        "target": {
+          "platform": "iGEM Team Wiki Uploads",
+          "year": 2026,
+          "teamId": "6056"
+        },
+        "status": "uploaded",
+        "remoteName": "image2.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "source": "user-provided upload directory screenshots and wiki source CDN reference",
+        "checks": [
+          {
+            "type": "upload-list-screenshot",
+            "result": "file name visible"
+          },
+          {
+            "type": "source-reference",
+            "result": "matching CDN URL present"
+          }
+        ],
+        "references": [],
+        "unresolved": [],
+        "error": null
+      }
     },
     "image3-png": {
       "id": "image3-png",
@@ -121678,7 +123646,33 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 2 location(s)"
+      "notes": "Referenced in 2 location(s)",
+      "sha256": "a40db7cf5b31ea8fe87c82158734d93666c853bc48e8aa6bcb8a31ac68170749",
+      "upload": {
+        "target": {
+          "platform": "iGEM Team Wiki Uploads",
+          "year": 2026,
+          "teamId": "6056"
+        },
+        "status": "uploaded",
+        "remoteName": "image3.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "source": "user-provided upload directory screenshots and wiki source CDN reference",
+        "checks": [
+          {
+            "type": "upload-list-screenshot",
+            "result": "file name visible"
+          },
+          {
+            "type": "source-reference",
+            "result": "matching CDN URL present"
+          }
+        ],
+        "references": [],
+        "unresolved": [],
+        "error": null
+      }
     },
     "image4-png": {
       "id": "image4-png",
@@ -121709,7 +123703,33 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 2 location(s)"
+      "notes": "Referenced in 2 location(s)",
+      "sha256": "1a8232535daa62f8320a160c0feede82e7ca490905ff4bb08514b4a43b0c1b7f",
+      "upload": {
+        "target": {
+          "platform": "iGEM Team Wiki Uploads",
+          "year": 2026,
+          "teamId": "6056"
+        },
+        "status": "uploaded",
+        "remoteName": "image4.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "source": "user-provided upload directory screenshots and wiki source CDN reference",
+        "checks": [
+          {
+            "type": "upload-list-screenshot",
+            "result": "file name visible"
+          },
+          {
+            "type": "source-reference",
+            "result": "matching CDN URL present"
+          }
+        ],
+        "references": [],
+        "unresolved": [],
+        "error": null
+      }
     },
     "image5-png": {
       "id": "image5-png",
@@ -121746,7 +123766,33 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 3 location(s)"
+      "notes": "Referenced in 3 location(s)",
+      "sha256": "d7ee552baf898be52e2eb9f907fc027c4c16d7f00556a709418f53ec048fdf51",
+      "upload": {
+        "target": {
+          "platform": "iGEM Team Wiki Uploads",
+          "year": 2026,
+          "teamId": "6056"
+        },
+        "status": "uploaded",
+        "remoteName": "image5.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "source": "user-provided upload directory screenshots and wiki source CDN reference",
+        "checks": [
+          {
+            "type": "upload-list-screenshot",
+            "result": "file name visible"
+          },
+          {
+            "type": "source-reference",
+            "result": "matching CDN URL present"
+          }
+        ],
+        "references": [],
+        "unresolved": [],
+        "error": null
+      }
     },
     "image6-png": {
       "id": "image6-png",
@@ -121777,7 +123823,33 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 2 location(s)"
+      "notes": "Referenced in 2 location(s)",
+      "sha256": "152e74433c7f2165132336b14d9f74df2be1e654857c4d71f087512375e86551",
+      "upload": {
+        "target": {
+          "platform": "iGEM Team Wiki Uploads",
+          "year": 2026,
+          "teamId": "6056"
+        },
+        "status": "uploaded",
+        "remoteName": "image6.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "source": "user-provided upload directory screenshots and wiki source CDN reference",
+        "checks": [
+          {
+            "type": "upload-list-screenshot",
+            "result": "file name visible"
+          },
+          {
+            "type": "source-reference",
+            "result": "matching CDN URL present"
+          }
+        ],
+        "references": [],
+        "unresolved": [],
+        "error": null
+      }
     },
     "image7-png": {
       "id": "image7-png",
@@ -121802,7 +123874,33 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "sha256": "9f44a3e4ef5ca7b56be03d47a7df9767647ea535081aa052d82a46289df0d4da",
+      "upload": {
+        "target": {
+          "platform": "iGEM Team Wiki Uploads",
+          "year": 2026,
+          "teamId": "6056"
+        },
+        "status": "uploaded",
+        "remoteName": "image7.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "source": "user-provided upload directory screenshots and wiki source CDN reference",
+        "checks": [
+          {
+            "type": "upload-list-screenshot",
+            "result": "file name visible"
+          },
+          {
+            "type": "source-reference",
+            "result": "matching CDN URL present"
+          }
+        ],
+        "references": [],
+        "unresolved": [],
+        "error": null
+      }
     },
     "image8-png": {
       "id": "image8-png",
@@ -121833,7 +123931,33 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 2 location(s)"
+      "notes": "Referenced in 2 location(s)",
+      "sha256": "3171c155ce6e46674817169068991bb9bc01fc33cfc94e89d0d813915f28278f",
+      "upload": {
+        "target": {
+          "platform": "iGEM Team Wiki Uploads",
+          "year": 2026,
+          "teamId": "6056"
+        },
+        "status": "uploaded",
+        "remoteName": "image8.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "source": "user-provided upload directory screenshots and wiki source CDN reference",
+        "checks": [
+          {
+            "type": "upload-list-screenshot",
+            "result": "file name visible"
+          },
+          {
+            "type": "source-reference",
+            "result": "matching CDN URL present"
+          }
+        ],
+        "references": [],
+        "unresolved": [],
+        "error": null
+      }
     },
     "image9-png": {
       "id": "image9-png",
@@ -121870,7 +123994,33 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 3 location(s)"
+      "notes": "Referenced in 3 location(s)",
+      "sha256": "f0578c120907d6f86c45f97f6644392ddc8f9b910d2f776b1b101973708f81e7",
+      "upload": {
+        "target": {
+          "platform": "iGEM Team Wiki Uploads",
+          "year": 2026,
+          "teamId": "6056"
+        },
+        "status": "uploaded",
+        "remoteName": "image9.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "source": "user-provided upload directory screenshots and wiki source CDN reference",
+        "checks": [
+          {
+            "type": "upload-list-screenshot",
+            "result": "file name visible"
+          },
+          {
+            "type": "source-reference",
+            "result": "matching CDN URL present"
+          }
+        ],
+        "references": [],
+        "unresolved": [],
+        "error": null
+      }
     },
     "mini-centrifuge-png": {
       "id": "mini-centrifuge-png",
@@ -121901,7 +124051,33 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 2 location(s)"
+      "notes": "Referenced in 2 location(s)",
+      "sha256": "baa4ad07a55ca1fcf1d0779cfb1b05353433be12c7307e927fb92bb2a4c45757",
+      "upload": {
+        "target": {
+          "platform": "iGEM Team Wiki Uploads",
+          "year": 2026,
+          "teamId": "6056"
+        },
+        "status": "uploaded",
+        "remoteName": "mini-centrifuge.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "source": "user-provided upload directory screenshots and wiki source CDN reference",
+        "checks": [
+          {
+            "type": "upload-list-screenshot",
+            "result": "file name visible"
+          },
+          {
+            "type": "source-reference",
+            "result": "matching CDN URL present"
+          }
+        ],
+        "references": [],
+        "unresolved": [],
+        "error": null
+      }
     },
     "pcr-machine-png": {
       "id": "pcr-machine-png",
@@ -121932,7 +124108,33 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 2 location(s)"
+      "notes": "Referenced in 2 location(s)",
+      "sha256": "705427c674f8cb23bd6a4a086d52dee9f7d535f77fb1d22e5055b80a588c04a3",
+      "upload": {
+        "target": {
+          "platform": "iGEM Team Wiki Uploads",
+          "year": 2026,
+          "teamId": "6056"
+        },
+        "status": "uploaded",
+        "remoteName": "pcr-machine.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "source": "user-provided upload directory screenshots and wiki source CDN reference",
+        "checks": [
+          {
+            "type": "upload-list-screenshot",
+            "result": "file name visible"
+          },
+          {
+            "type": "source-reference",
+            "result": "matching CDN URL present"
+          }
+        ],
+        "references": [],
+        "unresolved": [],
+        "error": null
+      }
     },
     "pcr-tube-ppt-png": {
       "id": "pcr-tube-ppt-png",
@@ -121957,7 +124159,33 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "sha256": "83e3ba991f04ce22c00bd0798691398af5a86c5346aea4817f57fef9a697eef9",
+      "upload": {
+        "target": {
+          "platform": "iGEM Team Wiki Uploads",
+          "year": 2026,
+          "teamId": "6056"
+        },
+        "status": "uploaded",
+        "remoteName": "pcr-tube-ppt.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "source": "user-provided upload directory screenshots and wiki source CDN reference",
+        "checks": [
+          {
+            "type": "upload-list-screenshot",
+            "result": "file name visible"
+          },
+          {
+            "type": "source-reference",
+            "result": "matching CDN URL present"
+          }
+        ],
+        "references": [],
+        "unresolved": [],
+        "error": null
+      }
     },
     "rack-full-glow-png": {
       "id": "rack-full-glow-png",
@@ -121982,7 +124210,33 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "sha256": "a90ed71286512938e654cb28608642ce510baee8b7f9371e389cf8983040d994",
+      "upload": {
+        "target": {
+          "platform": "iGEM Team Wiki Uploads",
+          "year": 2026,
+          "teamId": "6056"
+        },
+        "status": "uploaded",
+        "remoteName": "rack-full-glow.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "source": "user-provided upload directory screenshots and wiki source CDN reference",
+        "checks": [
+          {
+            "type": "upload-list-screenshot",
+            "result": "file name visible"
+          },
+          {
+            "type": "source-reference",
+            "result": "matching CDN URL present"
+          }
+        ],
+        "references": [],
+        "unresolved": [],
+        "error": null
+      }
     },
     "rack-partial-png": {
       "id": "rack-partial-png",
@@ -122007,7 +124261,33 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "sha256": "c18a59bd46b6fa52bf865f714a6fd500cecf1e34a9841c59f97fca09de876f82",
+      "upload": {
+        "target": {
+          "platform": "iGEM Team Wiki Uploads",
+          "year": 2026,
+          "teamId": "6056"
+        },
+        "status": "uploaded",
+        "remoteName": "rack-partial.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "source": "user-provided upload directory screenshots and wiki source CDN reference",
+        "checks": [
+          {
+            "type": "upload-list-screenshot",
+            "result": "file name visible"
+          },
+          {
+            "type": "source-reference",
+            "result": "matching CDN URL present"
+          }
+        ],
+        "references": [],
+        "unresolved": [],
+        "error": null
+      }
     },
     "rack-tube-highlight-png": {
       "id": "rack-tube-highlight-png",
@@ -122032,7 +124312,33 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "sha256": "22af9a292f76ce70613307c26a2dc2345a6d595e516f30a79ad609203be94e4c",
+      "upload": {
+        "target": {
+          "platform": "iGEM Team Wiki Uploads",
+          "year": 2026,
+          "teamId": "6056"
+        },
+        "status": "uploaded",
+        "remoteName": "rack-tube-highlight.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "source": "user-provided upload directory screenshots and wiki source CDN reference",
+        "checks": [
+          {
+            "type": "upload-list-screenshot",
+            "result": "file name visible"
+          },
+          {
+            "type": "source-reference",
+            "result": "matching CDN URL present"
+          }
+        ],
+        "references": [],
+        "unresolved": [],
+        "error": null
+      }
     },
     "sdspage-principle-png": {
       "id": "sdspage-principle-png",
@@ -122057,7 +124363,33 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "sha256": "230e2713141ff3ad6a416e1301e6d0445cb72a20ffe38e27cff2bda943c2dbac",
+      "upload": {
+        "target": {
+          "platform": "iGEM Team Wiki Uploads",
+          "year": 2026,
+          "teamId": "6056"
+        },
+        "status": "uploaded",
+        "remoteName": "sdspage-principle.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "source": "user-provided upload directory screenshots and wiki source CDN reference",
+        "checks": [
+          {
+            "type": "upload-list-screenshot",
+            "result": "file name visible"
+          },
+          {
+            "type": "source-reference",
+            "result": "matching CDN URL present"
+          }
+        ],
+        "references": [],
+        "unresolved": [],
+        "error": null
+      }
     },
     "swab-cbe6-png": {
       "id": "swab-cbe6-png",
@@ -122082,7 +124414,33 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "sha256": "22722c2e6eb73aad8bba367e84c578206097174df380323b8c5bc611f9a3cacd",
+      "upload": {
+        "target": {
+          "platform": "iGEM Team Wiki Uploads",
+          "year": 2026,
+          "teamId": "6056"
+        },
+        "status": "uploaded",
+        "remoteName": "swab.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "source": "user-provided upload directory screenshots and wiki source CDN reference",
+        "checks": [
+          {
+            "type": "upload-list-screenshot",
+            "result": "file name visible"
+          },
+          {
+            "type": "source-reference",
+            "result": "matching CDN URL present"
+          }
+        ],
+        "references": [],
+        "unresolved": [],
+        "error": null
+      }
     },
     "texture-1-png": {
       "id": "texture-1-png",
@@ -122185,7 +124543,33 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 2 location(s)"
+      "notes": "Referenced in 2 location(s)",
+      "sha256": "bee3aad081698d2d1875fc98f6ed31bb7043860ae534aff662d5ec409d32387c",
+      "upload": {
+        "target": {
+          "platform": "iGEM Team Wiki Uploads",
+          "year": 2026,
+          "teamId": "6056"
+        },
+        "status": "uploaded",
+        "remoteName": "tip-box.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "source": "user-provided upload directory screenshots and wiki source CDN reference",
+        "checks": [
+          {
+            "type": "upload-list-screenshot",
+            "result": "file name visible"
+          },
+          {
+            "type": "source-reference",
+            "result": "matching CDN URL present"
+          }
+        ],
+        "references": [],
+        "unresolved": [],
+        "error": null
+      }
     },
     "transfer-apparatus-final-png": {
       "id": "transfer-apparatus-final-png",
@@ -122210,7 +124594,33 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "sha256": "c89e5029e024e79ab4b105fe33ad4c463079e2f8911dbf838f891f774837ed2c",
+      "upload": {
+        "target": {
+          "platform": "iGEM Team Wiki Uploads",
+          "year": 2026,
+          "teamId": "6056"
+        },
+        "status": "uploaded",
+        "remoteName": "transfer-apparatus-final.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "source": "user-provided upload directory screenshots and wiki source CDN reference",
+        "checks": [
+          {
+            "type": "upload-list-screenshot",
+            "result": "file name visible"
+          },
+          {
+            "type": "source-reference",
+            "result": "matching CDN URL present"
+          }
+        ],
+        "references": [],
+        "unresolved": [],
+        "error": null
+      }
     },
     "transfer-apparatus-png": {
       "id": "transfer-apparatus-png",
@@ -122235,7 +124645,33 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "sha256": "db00520c1b1c7f7d21995abb996e5896d6f983c785669b9dc7dc0a8d1a7e8bc4",
+      "upload": {
+        "target": {
+          "platform": "iGEM Team Wiki Uploads",
+          "year": 2026,
+          "teamId": "6056"
+        },
+        "status": "uploaded",
+        "remoteName": "transfer-apparatus.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "source": "user-provided upload directory screenshots and wiki source CDN reference",
+        "checks": [
+          {
+            "type": "upload-list-screenshot",
+            "result": "file name visible"
+          },
+          {
+            "type": "source-reference",
+            "result": "matching CDN URL present"
+          }
+        ],
+        "references": [],
+        "unresolved": [],
+        "error": null
+      }
     },
     "tube-blue-bottom-png": {
       "id": "tube-blue-bottom-png",
@@ -122260,7 +124696,33 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "sha256": "73ffcd58e805931ec9563f86f953742c8a3d97f8b331a6497f456841684ea89e",
+      "upload": {
+        "target": {
+          "platform": "iGEM Team Wiki Uploads",
+          "year": 2026,
+          "teamId": "6056"
+        },
+        "status": "uploaded",
+        "remoteName": "tube-blue-bottom.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "source": "user-provided upload directory screenshots and wiki source CDN reference",
+        "checks": [
+          {
+            "type": "upload-list-screenshot",
+            "result": "file name visible"
+          },
+          {
+            "type": "source-reference",
+            "result": "matching CDN URL present"
+          }
+        ],
+        "references": [],
+        "unresolved": [],
+        "error": null
+      }
     },
     "tube-blue-full-png": {
       "id": "tube-blue-full-png",
@@ -122285,7 +124747,33 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "sha256": "e84747e899cc32f81b4b43e3d3a4d7caf444a05cdd1e338e7e4da909adb837bb",
+      "upload": {
+        "target": {
+          "platform": "iGEM Team Wiki Uploads",
+          "year": 2026,
+          "teamId": "6056"
+        },
+        "status": "uploaded",
+        "remoteName": "tube-blue-full.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "source": "user-provided upload directory screenshots and wiki source CDN reference",
+        "checks": [
+          {
+            "type": "upload-list-screenshot",
+            "result": "file name visible"
+          },
+          {
+            "type": "source-reference",
+            "result": "matching CDN URL present"
+          }
+        ],
+        "references": [],
+        "unresolved": [],
+        "error": null
+      }
     },
     "tube-left-new-png": {
       "id": "tube-left-new-png",
@@ -122310,7 +124798,33 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "sha256": "77128b462c505744c60b884eb455ec9bde9f1ced2be79eb03ab6e097404cc5f3",
+      "upload": {
+        "target": {
+          "platform": "iGEM Team Wiki Uploads",
+          "year": 2026,
+          "teamId": "6056"
+        },
+        "status": "uploaded",
+        "remoteName": "tube-left-new.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "source": "user-provided upload directory screenshots and wiki source CDN reference",
+        "checks": [
+          {
+            "type": "upload-list-screenshot",
+            "result": "file name visible"
+          },
+          {
+            "type": "source-reference",
+            "result": "matching CDN URL present"
+          }
+        ],
+        "references": [],
+        "unresolved": [],
+        "error": null
+      }
     },
     "tube-light-small-png": {
       "id": "tube-light-small-png",
@@ -122335,7 +124849,33 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "sha256": "05b51154c595b94b0a648a20d63220e1319153921f8d76f7babab86b706fd411",
+      "upload": {
+        "target": {
+          "platform": "iGEM Team Wiki Uploads",
+          "year": 2026,
+          "teamId": "6056"
+        },
+        "status": "uploaded",
+        "remoteName": "tube-light-small.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "source": "user-provided upload directory screenshots and wiki source CDN reference",
+        "checks": [
+          {
+            "type": "upload-list-screenshot",
+            "result": "file name visible"
+          },
+          {
+            "type": "source-reference",
+            "result": "matching CDN URL present"
+          }
+        ],
+        "references": [],
+        "unresolved": [],
+        "error": null
+      }
     },
     "tube-purple-block-png": {
       "id": "tube-purple-block-png",
@@ -122360,7 +124900,33 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "sha256": "b50118ed00a78b7a148f9d7d025b064f600c69fcee747997830bdb206ef22577",
+      "upload": {
+        "target": {
+          "platform": "iGEM Team Wiki Uploads",
+          "year": 2026,
+          "teamId": "6056"
+        },
+        "status": "uploaded",
+        "remoteName": "tube-purple-block.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "source": "user-provided upload directory screenshots and wiki source CDN reference",
+        "checks": [
+          {
+            "type": "upload-list-screenshot",
+            "result": "file name visible"
+          },
+          {
+            "type": "source-reference",
+            "result": "matching CDN URL present"
+          }
+        ],
+        "references": [],
+        "unresolved": [],
+        "error": null
+      }
     },
     "tube-rack-blue-png": {
       "id": "tube-rack-blue-png",
@@ -122385,7 +124951,33 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "sha256": "9c556daae569200672ca0e501478fdd4a7f7d3b691138e33236dfe1762611d1d",
+      "upload": {
+        "target": {
+          "platform": "iGEM Team Wiki Uploads",
+          "year": 2026,
+          "teamId": "6056"
+        },
+        "status": "uploaded",
+        "remoteName": "tube-rack-blue.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "source": "user-provided upload directory screenshots and wiki source CDN reference",
+        "checks": [
+          {
+            "type": "upload-list-screenshot",
+            "result": "file name visible"
+          },
+          {
+            "type": "source-reference",
+            "result": "matching CDN URL present"
+          }
+        ],
+        "references": [],
+        "unresolved": [],
+        "error": null
+      }
     },
     "tube-right-new-png": {
       "id": "tube-right-new-png",
@@ -122410,7 +125002,33 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "sha256": "09309ee479afbd98dfd0cbb98f56c055eb723fc6fbd61d9c9353d044e080fe1e",
+      "upload": {
+        "target": {
+          "platform": "iGEM Team Wiki Uploads",
+          "year": 2026,
+          "teamId": "6056"
+        },
+        "status": "uploaded",
+        "remoteName": "tube-right-new.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "source": "user-provided upload directory screenshots and wiki source CDN reference",
+        "checks": [
+          {
+            "type": "upload-list-screenshot",
+            "result": "file name visible"
+          },
+          {
+            "type": "source-reference",
+            "result": "matching CDN URL present"
+          }
+        ],
+        "references": [],
+        "unresolved": [],
+        "error": null
+      }
     },
     "tube-sample-1-png": {
       "id": "tube-sample-1-png",
@@ -122435,7 +125053,33 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "sha256": "73ffcd58e805931ec9563f86f953742c8a3d97f8b331a6497f456841684ea89e",
+      "upload": {
+        "target": {
+          "platform": "iGEM Team Wiki Uploads",
+          "year": 2026,
+          "teamId": "6056"
+        },
+        "status": "uploaded",
+        "remoteName": "tube-sample-1.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "source": "user-provided upload directory screenshots and wiki source CDN reference",
+        "checks": [
+          {
+            "type": "upload-list-screenshot",
+            "result": "file name visible"
+          },
+          {
+            "type": "source-reference",
+            "result": "matching CDN URL present"
+          }
+        ],
+        "references": [],
+        "unresolved": [],
+        "error": null
+      }
     },
     "tube-sample-2-png": {
       "id": "tube-sample-2-png",
@@ -122460,7 +125104,33 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "sha256": "b50118ed00a78b7a148f9d7d025b064f600c69fcee747997830bdb206ef22577",
+      "upload": {
+        "target": {
+          "platform": "iGEM Team Wiki Uploads",
+          "year": 2026,
+          "teamId": "6056"
+        },
+        "status": "uploaded",
+        "remoteName": "tube-sample-2.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "source": "user-provided upload directory screenshots and wiki source CDN reference",
+        "checks": [
+          {
+            "type": "upload-list-screenshot",
+            "result": "file name visible"
+          },
+          {
+            "type": "source-reference",
+            "result": "matching CDN URL present"
+          }
+        ],
+        "references": [],
+        "unresolved": [],
+        "error": null
+      }
     },
     "uv-gel-reference-png": {
       "id": "uv-gel-reference-png",
@@ -122485,7 +125155,33 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "sha256": "00bee8446d84a5bdfbf388064baaa991dc733205d7bf22ead47af6d0837f3eb5",
+      "upload": {
+        "target": {
+          "platform": "iGEM Team Wiki Uploads",
+          "year": 2026,
+          "teamId": "6056"
+        },
+        "status": "uploaded",
+        "remoteName": "uv-gel-reference.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "source": "user-provided upload directory screenshots and wiki source CDN reference",
+        "checks": [
+          {
+            "type": "upload-list-screenshot",
+            "result": "file name visible"
+          },
+          {
+            "type": "source-reference",
+            "result": "matching CDN URL present"
+          }
+        ],
+        "references": [],
+        "unresolved": [],
+        "error": null
+      }
     },
     "white-bottle-png": {
       "id": "white-bottle-png",
@@ -122516,7 +125212,33 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 2 location(s)"
+      "notes": "Referenced in 2 location(s)",
+      "sha256": "49472a4167d851a8e84130227e06f9b13d88a426e0dfa50732926bdf11b8b32a",
+      "upload": {
+        "target": {
+          "platform": "iGEM Team Wiki Uploads",
+          "year": 2026,
+          "teamId": "6056"
+        },
+        "status": "uploaded",
+        "remoteName": "white-bottle.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "source": "user-provided upload directory screenshots and wiki source CDN reference",
+        "checks": [
+          {
+            "type": "upload-list-screenshot",
+            "result": "file name visible"
+          },
+          {
+            "type": "source-reference",
+            "result": "matching CDN URL present"
+          }
+        ],
+        "references": [],
+        "unresolved": [],
+        "error": null
+      }
     },
     "08241-a752-png": {
       "id": "08241-a752-png",
@@ -125031,7 +127753,7 @@
       "localPath": "public/virtual-lab/images/experiment7/image21.png",
       "md5": "5f5f2890b8c58a2bdffeb23e60caef4b",
       "fileSize": 393072,
-      "uploadUrl": null,
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment7/image21.avif",
       "status": "in-use",
       "description": "",
       "keywords": [
@@ -125052,7 +127774,29 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 2 location(s)"
+      "notes": "Referenced in 2 location(s)",
+      "sha256": "bee3aad081698d2d1875fc98f6ed31bb7043860ae534aff662d5ec409d32387c",
+      "upload": {
+        "target": {
+          "platform": "iGEM Team Wiki Uploads",
+          "year": 2026,
+          "teamId": "6056"
+        },
+        "status": "uploaded",
+        "remoteName": "image21.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "source": "user-confirmed CDN reference in wiki source",
+        "checks": [
+          {
+            "type": "source-reference",
+            "result": "matched by file name or SHA-256 and experiment folder"
+          }
+        ],
+        "references": [],
+        "unresolved": [],
+        "error": null
+      }
     },
     "image22-png": {
       "id": "image22-png",
@@ -125111,7 +127855,7 @@
       "localPath": "public/virtual-lab/images/experiment7/image23.png",
       "md5": "1b8dc2d1da2aa7e64b0c39670b8e98f8",
       "fileSize": 110181,
-      "uploadUrl": null,
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment7/image23.avif",
       "status": "in-use",
       "description": "",
       "keywords": [
@@ -125126,7 +127870,29 @@
           "type": "html-img"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "sha256": "fc08f9590e353cd59166c3921b366e9366a1810c24b0fc86e580b7628fb3eba4",
+      "upload": {
+        "target": {
+          "platform": "iGEM Team Wiki Uploads",
+          "year": 2026,
+          "teamId": "6056"
+        },
+        "status": "uploaded",
+        "remoteName": "image23.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "source": "user-confirmed CDN reference in wiki source",
+        "checks": [
+          {
+            "type": "source-reference",
+            "result": "matched by file name or SHA-256 and experiment folder"
+          }
+        ],
+        "references": [],
+        "unresolved": [],
+        "error": null
+      }
     },
     "image24-png": {
       "id": "image24-png",
@@ -128247,7 +131013,7 @@
       "localPath": "public/virtual-lab/images/experiment9/sidebar/centrifuge.png",
       "md5": "5c940d83dcfad8aef29172918a52a990",
       "fileSize": 45251,
-      "uploadUrl": null,
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment9/processed/instruments/high-speed-centrifuge-baa4ad07a5.avif",
       "status": "in-use",
       "description": "",
       "keywords": [
@@ -128316,7 +131082,29 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 10 location(s)"
+      "notes": "Referenced in 10 location(s)",
+      "sha256": "baa4ad07a55ca1fcf1d0779cfb1b05353433be12c7307e927fb92bb2a4c45757",
+      "upload": {
+        "target": {
+          "platform": "iGEM Team Wiki Uploads",
+          "year": 2026,
+          "teamId": "6056"
+        },
+        "status": "uploaded",
+        "remoteName": "high-speed-centrifuge-baa4ad07a5.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "source": "user-confirmed CDN reference in wiki source",
+        "checks": [
+          {
+            "type": "source-reference",
+            "result": "matched by file name or SHA-256 and experiment folder"
+          }
+        ],
+        "references": [],
+        "unresolved": [],
+        "error": null
+      }
     },
     "chamber-aad1-png": {
       "id": "chamber-aad1-png",
@@ -128576,7 +131364,7 @@
       "localPath": "public/virtual-lab/images/experiment9/sidebar/incubator.png",
       "md5": "d3e0270e908b086822bdd344f82fdc60",
       "fileSize": 2014897,
-      "uploadUrl": null,
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment9/processed/instruments/constant-temperature-incubator-95b44c20f7.avif",
       "status": "in-use",
       "description": "",
       "keywords": [
@@ -128603,7 +131391,29 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 3 location(s)"
+      "notes": "Referenced in 3 location(s)",
+      "sha256": "95b44c20f78738e14ee621edae47605999f9bfc6e690919d84a59b2769495f37",
+      "upload": {
+        "target": {
+          "platform": "iGEM Team Wiki Uploads",
+          "year": 2026,
+          "teamId": "6056"
+        },
+        "status": "uploaded",
+        "remoteName": "constant-temperature-incubator-95b44c20f7.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "source": "user-confirmed CDN reference in wiki source",
+        "checks": [
+          {
+            "type": "source-reference",
+            "result": "matched by file name or SHA-256 and experiment folder"
+          }
+        ],
+        "references": [],
+        "unresolved": [],
+        "error": null
+      }
     },
     "kanamycin-colony-png": {
       "id": "kanamycin-colony-png",
@@ -128674,7 +131484,7 @@
       "localPath": "public/virtual-lab/images/experiment9/sidebar/pcr-amplifier.png",
       "md5": "1fc8e63bbdde1efe8edc982a73f275ae",
       "fileSize": 9897,
-      "uploadUrl": null,
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment9/processed/instruments/pcr-amplifier-705427c674.avif",
       "status": "in-use",
       "description": "",
       "keywords": [
@@ -128689,7 +131499,29 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "sha256": "705427c674f8cb23bd6a4a086d52dee9f7d535f77fb1d22e5055b80a588c04a3",
+      "upload": {
+        "target": {
+          "platform": "iGEM Team Wiki Uploads",
+          "year": 2026,
+          "teamId": "6056"
+        },
+        "status": "uploaded",
+        "remoteName": "pcr-amplifier-705427c674.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "source": "user-confirmed CDN reference in wiki source",
+        "checks": [
+          {
+            "type": "source-reference",
+            "result": "matched by file name or SHA-256 and experiment folder"
+          }
+        ],
+        "references": [],
+        "unresolved": [],
+        "error": null
+      }
     },
     "power-supply-9255-png": {
       "id": "power-supply-9255-png",
@@ -128699,7 +131531,7 @@
       "localPath": "public/virtual-lab/images/experiment9/sidebar/power-supply.png",
       "md5": "acab7380f8d9af14a5c720c53c8b73ca",
       "fileSize": 20710,
-      "uploadUrl": null,
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment9/processed/instruments/electrophoresis-power-supply-dc515cfc23.avif",
       "status": "in-use",
       "description": "",
       "keywords": [
@@ -128726,7 +131558,29 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 3 location(s)"
+      "notes": "Referenced in 3 location(s)",
+      "sha256": "dc515cfc2345082a049345e607bad88a2ba1e164337a4705dae6f0fe30ec0d4e",
+      "upload": {
+        "target": {
+          "platform": "iGEM Team Wiki Uploads",
+          "year": 2026,
+          "teamId": "6056"
+        },
+        "status": "uploaded",
+        "remoteName": "electrophoresis-power-supply-dc515cfc23.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "source": "user-confirmed CDN reference in wiki source",
+        "checks": [
+          {
+            "type": "source-reference",
+            "result": "matched by file name or SHA-256 and experiment folder"
+          }
+        ],
+        "references": [],
+        "unresolved": [],
+        "error": null
+      }
     },
     "sds-loading-buffer-png": {
       "id": "sds-loading-buffer-png",
@@ -128863,7 +131717,7 @@
       "localPath": "public/virtual-lab/images/freezer.png",
       "md5": "a2c20e9e0c446755ddb5fc6cba3d436c",
       "fileSize": 17376,
-      "uploadUrl": null,
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/common/freezer.avif",
       "status": "in-use",
       "description": "",
       "keywords": [
@@ -128884,7 +131738,29 @@
           "type": "html-img"
         }
       ],
-      "notes": "Referenced in 2 location(s)"
+      "notes": "Referenced in 2 location(s)",
+      "sha256": "f70eceaa13e6ee70129a0ac3b693a057eb4b4b498635a760b2d6e80cb752ca99",
+      "upload": {
+        "target": {
+          "platform": "iGEM Team Wiki Uploads",
+          "year": 2026,
+          "teamId": "6056"
+        },
+        "status": "uploaded",
+        "remoteName": "freezer.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "source": "user-confirmed CDN reference in wiki source",
+        "checks": [
+          {
+            "type": "source-reference",
+            "result": "matched by file name or SHA-256 and experiment folder"
+          }
+        ],
+        "references": [],
+        "unresolved": [],
+        "error": null
+      }
     },
     "ice-box-e52a-png": {
       "id": "ice-box-e52a-png",
@@ -149468,7 +152344,7 @@
       "localPath": "public/virtual-lab/images/incubator.png",
       "md5": "397c7514184e5f363330716cc6e8282a",
       "fileSize": 9408,
-      "uploadUrl": null,
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/common/incubator.avif",
       "status": "in-use",
       "description": "",
       "keywords": [
@@ -149495,7 +152371,29 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 3 location(s)"
+      "notes": "Referenced in 3 location(s)",
+      "sha256": "f68b01b7775dd59c7e7f4fa2916f0636bf3074a049c2fefc586b80705aea8281",
+      "upload": {
+        "target": {
+          "platform": "iGEM Team Wiki Uploads",
+          "year": 2026,
+          "teamId": "6056"
+        },
+        "status": "uploaded",
+        "remoteName": "incubator.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "source": "user-confirmed CDN reference in wiki source",
+        "checks": [
+          {
+            "type": "source-reference",
+            "result": "matched by file name or SHA-256 and experiment folder"
+          }
+        ],
+        "references": [],
+        "unresolved": [],
+        "error": null
+      }
     },
     "inoculation-loop-png": {
       "id": "inoculation-loop-png",
@@ -149505,7 +152403,7 @@
       "localPath": "public/virtual-lab/images/inoculation-loop.png",
       "md5": "a8539b9fb410257759fa36cc999c1f7f",
       "fileSize": 1927,
-      "uploadUrl": null,
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/common/inoculation-loop.avif",
       "status": "in-use",
       "description": "",
       "keywords": [
@@ -149520,7 +152418,29 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "sha256": "a1452aafe88211c0fc1eb632ee8e432e55469c88bc155d6b1f3bd567b0910eba",
+      "upload": {
+        "target": {
+          "platform": "iGEM Team Wiki Uploads",
+          "year": 2026,
+          "teamId": "6056"
+        },
+        "status": "uploaded",
+        "remoteName": "inoculation-loop.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "source": "user-confirmed CDN reference in wiki source",
+        "checks": [
+          {
+            "type": "source-reference",
+            "result": "matched by file name or SHA-256 and experiment folder"
+          }
+        ],
+        "references": [],
+        "unresolved": [],
+        "error": null
+      }
     },
     "lab-room-jpg": {
       "id": "lab-room-jpg",
@@ -149584,7 +152504,7 @@
       "localPath": "public/virtual-lab/images/petri-dish.png",
       "md5": "43dab18e1713e04911670b30e2760cd1",
       "fileSize": 1099,
-      "uploadUrl": null,
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/common/petri-dish.avif",
       "status": "in-use",
       "description": "",
       "keywords": [
@@ -149605,7 +152525,29 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 2 location(s)"
+      "notes": "Referenced in 2 location(s)",
+      "sha256": "2d00e4548d92e813e26124455a1e060b132e05c8eb48ce0dc7e5764348211b7b",
+      "upload": {
+        "target": {
+          "platform": "iGEM Team Wiki Uploads",
+          "year": 2026,
+          "teamId": "6056"
+        },
+        "status": "uploaded",
+        "remoteName": "petri-dish.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "source": "user-confirmed CDN reference in wiki source",
+        "checks": [
+          {
+            "type": "source-reference",
+            "result": "matched by file name or SHA-256 and experiment folder"
+          }
+        ],
+        "references": [],
+        "unresolved": [],
+        "error": null
+      }
     },
     "pipette-fe96-png": {
       "id": "pipette-fe96-png",
@@ -149658,7 +152600,7 @@
       "localPath": "public/virtual-lab/images/pool.png",
       "md5": "7309570b8351108b54c87916e66ef852",
       "fileSize": 260791,
-      "uploadUrl": null,
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/common/pool.avif",
       "status": "in-use",
       "description": "",
       "keywords": [
@@ -149673,7 +152615,29 @@
           "type": "html-img"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 1 location(s)",
+      "sha256": "2b6bfc492291f978fd6463fdf7ddf4d9ae829e8243c2c94a0180582ada402801",
+      "upload": {
+        "target": {
+          "platform": "iGEM Team Wiki Uploads",
+          "year": 2026,
+          "teamId": "6056"
+        },
+        "status": "uploaded",
+        "remoteName": "pool.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "source": "user-confirmed CDN reference in wiki source",
+        "checks": [
+          {
+            "type": "source-reference",
+            "result": "matched by file name or SHA-256 and experiment folder"
+          }
+        ],
+        "references": [],
+        "unresolved": [],
+        "error": null
+      }
     },
     "table-normal-png": {
       "id": "table-normal-png",
@@ -149683,7 +152647,7 @@
       "localPath": "public/virtual-lab/images/table_normal.png",
       "md5": "926064af12fe2edb57347276799b35e0",
       "fileSize": 22103,
-      "uploadUrl": null,
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/common/table-normal.avif",
       "status": "in-use",
       "description": "",
       "keywords": [
@@ -149710,7 +152674,29 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 3 location(s)"
+      "notes": "Referenced in 3 location(s)",
+      "sha256": "e0df34300624751c86b645a9e705967630b0302d27df460437954922bb29875f",
+      "upload": {
+        "target": {
+          "platform": "iGEM Team Wiki Uploads",
+          "year": 2026,
+          "teamId": "6056"
+        },
+        "status": "uploaded",
+        "remoteName": "table-normal.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "source": "user-confirmed CDN reference in wiki source",
+        "checks": [
+          {
+            "type": "source-reference",
+            "result": "matched by file name or SHA-256 and experiment folder"
+          }
+        ],
+        "references": [],
+        "unresolved": [],
+        "error": null
+      }
     },
     "tube-png": {
       "id": "tube-png",
@@ -149720,7 +152706,7 @@
       "localPath": "public/virtual-lab/images/tube.png",
       "md5": "18c6ce6943cf9dacc9aad2552a8e3aee",
       "fileSize": 2976,
-      "uploadUrl": null,
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/common/tube.avif",
       "status": "in-use",
       "description": "",
       "keywords": [
@@ -149765,7 +152751,29 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 6 location(s)"
+      "notes": "Referenced in 6 location(s)",
+      "sha256": "28eaf88bcec002abda39841044d24c10dc163ce0b649ad09b31895dba9bab4c7",
+      "upload": {
+        "target": {
+          "platform": "iGEM Team Wiki Uploads",
+          "year": 2026,
+          "teamId": "6056"
+        },
+        "status": "uploaded",
+        "remoteName": "tube.avif",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "source": "user-confirmed CDN reference in wiki source",
+        "checks": [
+          {
+            "type": "source-reference",
+            "result": "matched by file name or SHA-256 and experiment folder"
+          }
+        ],
+        "references": [],
+        "unresolved": [],
+        "error": null
+      }
     },
     "alternative-hero-jpg": {
       "id": "alternative-hero-jpg",
