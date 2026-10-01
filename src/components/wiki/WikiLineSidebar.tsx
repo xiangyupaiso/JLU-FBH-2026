@@ -66,8 +66,8 @@ export function WikiLineSidebar({
   );
   const activeChildParentId = activeChildId
     ? items.find((item) =>
-        item.children?.some((child) => child.id === activeChildId),
-      )?.id
+      item.children?.some((child) => child.id === activeChildId),
+    )?.id
     : undefined;
   const expandedItemId = activeChildParentId ?? activeId;
 
@@ -137,7 +137,7 @@ export function WikiLineSidebar({
       const scrollContainer = scrollContainerRef?.current;
       const readingLine = scrollContainer
         ? scrollContainer.getBoundingClientRect().top +
-          Math.min(112, scrollContainer.clientHeight * 0.22)
+        Math.min(112, scrollContainer.clientHeight * 0.22)
         : headerHeight + 108;
       let currentIndex = -1;
       let nextIndex = 0;
@@ -164,7 +164,7 @@ export function WikiLineSidebar({
       const contentDistance = Math.max(
         1,
         next.content.getBoundingClientRect().top -
-          current.content.getBoundingClientRect().top,
+        current.content.getBoundingClientRect().top,
       );
       const travelWindow = Math.min(
         220,
@@ -175,12 +175,12 @@ export function WikiLineSidebar({
         currentIndex === nextIndex
           ? 0
           : Math.min(
-              1,
-              Math.max(
-                0,
-                (readingLine + travelWindow - nextTop) / travelWindow,
-              ),
-            );
+            1,
+            Math.max(
+              0,
+              (readingLine + travelWindow - nextTop) / travelWindow,
+            ),
+          );
       const travel = rawTravel * rawTravel * (3 - 2 * rawTravel);
       const knotCenter =
         currentCenter + (nextCenter - currentCenter) * travel;
@@ -189,7 +189,7 @@ export function WikiLineSidebar({
         Math.max(
           0,
           (knotCenter - ribbonBounds.top) /
-            Math.max(1, ribbonBounds.height),
+          Math.max(1, ribbonBounds.height),
         ),
       );
       const nearest = travel < 0.5 ? current : next;
@@ -231,8 +231,8 @@ export function WikiLineSidebar({
     const targetId = ribbonTargetId || activeChildId || activeId;
     const target = targetId
       ? outline?.querySelector<HTMLElement>(
-          `[data-outline-target="${targetId}"]`,
-        )
+        `[data-outline-target="${targetId}"]`,
+      )
       : null;
     if (!outline || !target || !target.offsetParent) return;
 
@@ -381,7 +381,7 @@ export function WikiLineSidebar({
           aria-valuenow={Math.round(
             (Math.max(0, items.findIndex((item) => item.id === activeId)) /
               Math.max(1, items.length - 1)) *
-              100,
+            100,
           )}
           onPointerDown={beginRibbonDrag}
           onPointerMove={moveRibbonDrag}
@@ -404,16 +404,14 @@ export function WikiLineSidebar({
 
           return (
             <div
-              className={`wiki-outline__group ${
-                isExpanded ? "is-expanded" : ""
-              }`}
+              className={`wiki-outline__group ${isExpanded ? "is-expanded" : ""
+                }`}
               key={item.id}
             >
               <a
                 href={`#${item.id}`}
-                className={`wiki-outline__primary ${
-                  activeId === item.id ? "is-active" : ""
-                }`}
+                className={`wiki-outline__primary ${activeId === item.id ? "is-active" : ""
+                  }`}
                 data-outline-target={item.id}
                 aria-current={activeId === item.id ? "location" : undefined}
                 aria-expanded={hasChildren ? isExpanded : undefined}
@@ -444,9 +442,8 @@ export function WikiLineSidebar({
                     const childPair = protocolMap.get(child.id);
                     return (
                       <a
-                        className={`wiki-outline__secondary ${
-                          ribbonTargetId === child.id ? "is-active" : ""
-                        }`}
+                        className={`wiki-outline__secondary ${ribbonTargetId === child.id ? "is-active" : ""
+                          }`}
                         href={`#${child.id}`}
                         data-outline-target={child.id}
                         onClick={(event) => jumpToSection(event, child.id)}
@@ -507,7 +504,7 @@ export function WikiLineSidebar({
 
       {links.length ? (
         <div className="wiki-outline__related">
-          <span className="wiki-outline__related-title">✦ 延伸阅读</span>
+          <span className="wiki-outline__related-title">✦ related links</span>
           {links.map((link) => (
             <Link key={link.path} to={link.path}>
               <span>{link.label}</span>
