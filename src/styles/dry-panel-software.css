@@ -62,7 +62,7 @@
       rgba(252, 248, 241, 0.2) 59%,
       rgba(252, 248, 241, 0.04) 100%
     ),
-    url("../assets/wiki/software-circure-apparatus.webp") center / cover
+    url("https://static.igem.wiki/teams/6056/wiki/files/pages/dry-lab/dry-lab-software-hero.webp") center / cover
       no-repeat;
 }
 
@@ -1491,7 +1491,7 @@
         rgba(252, 248, 241, 0.7) 48%,
         rgba(252, 248, 241, 0.88) 100%
       ),
-      url("../assets/wiki/software-circure-apparatus.webp") 57% center / cover
+      url("https://static.igem.wiki/teams/6056/wiki/files/pages/dry-lab/dry-lab-software-hero.webp") 57% center / cover
         no-repeat;
   }
 
@@ -1557,7 +1557,7 @@
         rgba(252, 248, 241, 0.73) 50%,
         rgba(252, 248, 241, 0.92) 100%
       ),
-      url("../assets/wiki/software-circure-apparatus.webp") 60% center / cover
+      url("https://static.igem.wiki/teams/6056/wiki/files/pages/dry-lab/dry-lab-software-hero.webp") 60% center / cover
         no-repeat;
   }
 
@@ -1764,7 +1764,7 @@
       rgba(252, 248, 241, 0.74) 86%,
       rgba(252, 248, 241, 0.94) 100%
     ),
-    url("../assets/wiki/software-circure-apparatus.webp");
+    url("https://static.igem.wiki/teams/6056/wiki/files/pages/dry-lab/dry-lab-software-hero.webp");
   background-position: center, center;
   background-repeat: no-repeat;
   background-size: cover, contain;
@@ -1852,7 +1852,7 @@
         rgba(252, 248, 241, 0.88) 82%,
         rgba(252, 248, 241, 0.97) 100%
       ),
-      url("../assets/wiki/software-circure-apparatus.webp");
+    url("https://static.igem.wiki/teams/6056/wiki/files/pages/dry-lab/dry-lab-software-hero.webp");
     background-position: center, center;
     background-repeat: no-repeat;
     background-size: cover, contain;
