@@ -8,24 +8,62 @@ import {
 import { PaintedReveal } from "../components/home/PaintedReveal";
 import { CircRnaArtwork } from "../components/home/CircRnaArtwork";
 import manifest from "../assets/home/story/manifest.json";
-import clinicianConcerned from "../assets/home/ward-transition/clinician-concerned.png";
-import clinicianEllipsis from "../assets/home/ward-transition/clinician-ellipsis.png";
-import patientQuestion from "../assets/home/ward-transition/patient-question.png";
-import patientConcerned from "../assets/home/ward-transition/patient-concerned.png";
+const clinicianConcerned = "https://static.igem.wiki/teams/6056/wiki/files/pages/home/clinician-concerned.avif";
+const clinicianEllipsis = "https://static.igem.wiki/teams/6056/wiki/files/pages/home/clinician-ellipsis.avif";
+const patientQuestion = "https://static.igem.wiki/teams/6056/wiki/files/pages/home/patient-question.avif";
+const patientConcerned = "https://static.igem.wiki/teams/6056/wiki/files/pages/home/patient-concerned.avif";
 import { useHomeStoryAnimation } from "../hooks/useHomeStoryAnimation";
 import { HomeAntigenSwitch } from "../components/home/HomeAntigenSwitch";
 import { HomeFinale } from "../components/home/HomeFinale";
 import { HomeExploreLinks } from "../components/home/HomeExploreLinks";
-import mapDataNoteUrl from "../assets/home/story/map-data-note.png";
+const mapDataNoteUrl = "https://static.igem.wiki/teams/6056/wiki/files/pages/home/map-data-note.avif";
 import "../styles/home-story.css";
 import "../styles/home-tnbc-map.css";
 import "../styles/home-reading.css";
 
-const imageUrls = import.meta.glob("../assets/home/story/*.webp", {
-  eager: true,
-  query: "?url",
-  import: "default",
-}) as Record<string, string>;
+const imageUrls: Record<string, string> = {
+  "../assets/home/story/scene-1-layer-1.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-1-layer-1.webp",
+  "../assets/home/story/scene-1-layer-2.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-1-layer-2.webp",
+  "../assets/home/story/scene-1-layer-3.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-1-layer-3.webp",
+  "../assets/home/story/scene-1-layer-4.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-1-layer-4.webp",
+  "../assets/home/story/scene-1-layer-5.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-1-layer-5.webp",
+  "../assets/home/story/scene-2-layer-1.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-2-layer-1.webp",
+  "../assets/home/story/scene-2-layer-2.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-2-layer-2.webp",
+  "../assets/home/story/scene-2-layer-3.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-2-layer-3.webp",
+  "../assets/home/story/scene-2-layer-4.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-2-layer-4.webp",
+  "../assets/home/story/scene-2-layer-5.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-2-layer-5.webp",
+  "../assets/home/story/scene-2-layer-6.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-2-layer-6.webp",
+  "../assets/home/story/scene-3-layer-1.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-3-layer-1.webp",
+  "../assets/home/story/scene-3-layer-2.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-3-layer-2.webp",
+  "../assets/home/story/scene-3-layer-3.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-3-layer-3.webp",
+  "../assets/home/story/scene-4-layer-1.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-4-layer-1.webp",
+  "../assets/home/story/scene-4-layer-2.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-4-layer-2.webp",
+  "../assets/home/story/scene-4-layer-3.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-4-layer-3.webp",
+  "../assets/home/story/scene-4-layer-4.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-4-layer-4.webp",
+  "../assets/home/story/scene-4-layer-5.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-4-layer-5.webp",
+  "../assets/home/story/scene-4-layer-6.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-4-layer-6.webp",
+  "../assets/home/story/scene-4-layer-7.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-4-layer-7.webp",
+  "../assets/home/story/scene-4-layer-8.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-4-layer-8.webp",
+  "../assets/home/story/scene-5-layer-1.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-5-layer-1.webp",
+  "../assets/home/story/scene-5-layer-2.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-5-layer-2.webp",
+  "../assets/home/story/scene-5-layer-3.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-5-layer-3.webp",
+  "../assets/home/story/scene-6-layer-1.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-6-layer-1.webp",
+  "../assets/home/story/scene-6-layer-2.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-6-layer-2.webp",
+  "../assets/home/story/scene-6-layer-3.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-6-layer-3.webp",
+  "../assets/home/story/scene-7-layer-1.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-7-layer-1.webp",
+  "../assets/home/story/scene-7-layer-2.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-7-layer-2.webp",
+  "../assets/home/story/scene-7-layer-3.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-7-layer-3.webp",
+  "../assets/home/story/scene-7-layer-4.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-7-layer-4.webp",
+  "../assets/home/story/scene-8-layer-1.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-8-layer-1.webp",
+  "../assets/home/story/scene-8-layer-2.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-8-layer-2.webp",
+  "../assets/home/story/scene-8-layer-3.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-8-layer-3.webp",
+  "../assets/home/story/scene-8-layer-4.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-8-layer-4.webp",
+  "../assets/home/story/scene-8-layer-5.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-8-layer-5.webp",
+  "../assets/home/story/scene-8-layer-6.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-8-layer-6.webp",
+  "../assets/home/story/scene-9-layer-1.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-9-layer-1.webp",
+  "../assets/home/story/scene-9-layer-2.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-9-layer-2.webp",
+  "../assets/home/story/scene-9-layer-3.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-9-layer-3.webp",
+};
 
 type ArtworkId = keyof typeof manifest;
 

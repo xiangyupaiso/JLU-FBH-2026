@@ -6,7 +6,7 @@
 
 @font-face {
   font-family: "Fraunces";
-  src: url("../../fonts/fraunces-variable.woff2") format("woff2");
+  src: url("https://static.igem.wiki/teams/6056/wiki/files/fonts/site/fraunces-variable.woff2") format("woff2");
   font-style: normal;
   font-weight: 100 900;
   font-display: swap;
@@ -14,7 +14,7 @@
 
 @font-face {
   font-family: "Fredoka";
-  src: url("../../fonts/fredoka-variable.woff2") format("woff2");
+  src: url("https://static.igem.wiki/teams/6056/wiki/files/fonts/site/fredoka-variable.woff2") format("woff2");
   font-style: normal;
   font-weight: 300 700;
   font-display: swap;
@@ -22,7 +22,7 @@
 
 @font-face {
   font-family: "Lexend";
-  src: url("../../fonts/lexend-variable.woff2") format("woff2");
+  src: url("https://static.igem.wiki/teams/6056/wiki/files/fonts/site/lexend-variable.woff2") format("woff2");
   font-style: normal;
   font-weight: 100 900;
   font-display: swap;
@@ -30,7 +30,7 @@
 
 @font-face {
   font-family: "IBM Plex Mono";
-  src: url("../../fonts/ibm-plex-mono.woff2") format("woff2");
+  src: url("https://static.igem.wiki/teams/6056/wiki/files/fonts/site/ibm-plex-mono.woff2") format("woff2");
   font-style: normal;
   font-weight: 400;
   font-display: swap;

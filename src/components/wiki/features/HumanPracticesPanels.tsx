@@ -5,16 +5,16 @@ import {
   useState,
   type CSSProperties,
 } from "react";
-import clinicalImage from "../../../assets/wiki/hp-clinical-review-v2.png";
-import communityImage from "../../../assets/wiki/hp-community-workshop-v2.png";
-import labImage from "../../../assets/wiki/hp-lab-review-v2.png";
-import advocatePortrait from "../../../assets/wiki/hp-portrait-advocate.png";
-import clinicalPortrait from "../../../assets/wiki/hp-portrait-clinical.png";
-import ethicsPortrait from "../../../assets/wiki/hp-portrait-ethics.png";
-import labPortrait from "../../../assets/wiki/hp-portrait-lab.png";
-import regulatoryPortrait from "../../../assets/wiki/hp-portrait-regulatory.png";
-import regulatoryImage from "../../../assets/wiki/hp-regulatory-review-v2.png";
-import whiteboardImage from "../../../assets/wiki/hp-whiteboard-review-v2.png";
+const clinicalImage = "https://static.igem.wiki/teams/6056/wiki/files/pages/shared/hp-clinical-review-v2.avif";
+const communityImage = "https://static.igem.wiki/teams/6056/wiki/files/pages/shared/hp-community-workshop-v2.avif";
+const labImage = "https://static.igem.wiki/teams/6056/wiki/files/pages/shared/hp-lab-review-v2.avif";
+const advocatePortrait = "https://static.igem.wiki/teams/6056/wiki/files/pages/shared/hp-portrait-advocate.avif";
+const clinicalPortrait = "https://static.igem.wiki/teams/6056/wiki/files/pages/shared/hp-portrait-clinical.avif";
+const ethicsPortrait = "https://static.igem.wiki/teams/6056/wiki/files/pages/shared/hp-portrait-ethics.avif";
+const labPortrait = "https://static.igem.wiki/teams/6056/wiki/files/pages/shared/hp-portrait-lab.avif";
+const regulatoryPortrait = "https://static.igem.wiki/teams/6056/wiki/files/pages/shared/hp-portrait-regulatory.avif";
+const regulatoryImage = "https://static.igem.wiki/teams/6056/wiki/files/pages/shared/hp-regulatory-review-v2.avif";
+const whiteboardImage = "https://static.igem.wiki/teams/6056/wiki/files/pages/shared/hp-whiteboard-review-v2.avif";
 import "../../../styles/hp-panels.css";
 
 /**

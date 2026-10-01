@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
-import restingSheep from "../assets/wiki/cursor-default.png";
-import happySheep from "../assets/wiki/cursor-active.png";
+const restingSheep = "https://static.igem.wiki/teams/6056/wiki/files/pages/shared/cursor-default.avif";
+const happySheep = "https://static.igem.wiki/teams/6056/wiki/files/pages/shared/cursor-active.avif";
 import { GlassSheen } from "./GlassSheen";
 
 const INTERACTIVE =

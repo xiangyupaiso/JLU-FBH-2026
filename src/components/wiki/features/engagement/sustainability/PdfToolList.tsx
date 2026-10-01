@@ -2,7 +2,7 @@ import type { LegacyTool } from "../../../../../data/engagement/sustainability/s
 import "../../../../../styles/sustainability-panels.css";
 
 const pdfUrl = (fileName: string) =>
-  `${import.meta.env.BASE_URL}assets/docs/${fileName}`;
+  `https://static.igem.wiki/teams/6056/wiki/files/docs/${fileName}`;
 
 const pad = (n: number) => String(Math.max(1, n)).padStart(2, "0");
 

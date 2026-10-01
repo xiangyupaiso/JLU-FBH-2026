@@ -129,7 +129,7 @@ const sstqnPdfManual: SustainabilityPdfManual = {
   title: sstqnSection.pdf.title,
   category: "report",
   description: sstqnSection.pdf.description,
-  pdfUrl: `${import.meta.env.BASE_URL}${pdfAsset.webPath ?? ""}`,
+  pdfUrl: pdfAsset.uploadUrl ?? `${import.meta.env.BASE_URL}${pdfAsset.webPath ?? ""}`,
   assetName: pdfAsset.fileName,
   documentType: "Report",
   addedAt: "2026-08-08",

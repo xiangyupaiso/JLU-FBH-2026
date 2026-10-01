@@ -5,8 +5,8 @@ import {
   useState,
   type CSSProperties,
 } from "react";
-import ringImage from "../../assets/home/story/scene-1-layer-4.webp";
-import targetImage from "../../assets/home/story/scene-2-layer-6.webp";
+const ringImage = "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-1-layer-4.webp";
+const targetImage = "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-2-layer-6.webp";
 import { useAntigenDrag } from "../../hooks/useAntigenDrag";
 import "../../styles/home-antigen-switch.css";
 

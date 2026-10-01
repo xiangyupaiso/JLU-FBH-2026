@@ -22,7 +22,7 @@
   --route-base: #fef6e6; /* 底色 rgb(254, 246, 230) */
 
   /* ② 模块专属装饰素材（正文面板边缘的淡色齿轮状模型图案） */
-  --route-frame-image: url("../assets/wiki/dry.png");
+  --route-frame-image: url("https://static.igem.wiki/teams/6056/wiki/files/pages/shared/dry.avif");
 
   /* ③ 标题与马克笔专属主题配色（深浅分明的双色层级设计） */
   --route-heading-ink: #153e34;      /* 大标题 H2：深松针墨黑青，科技厚重 */

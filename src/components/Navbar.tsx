@@ -1,8 +1,8 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import teamCrestUrl from "../assets/jlu-fbh-crest.png";
-import projectWetlabSprite from "../assets/story-nav/nav-project-wetlab-v2.webp";
-import drylabEngagementSprite from "../assets/story-nav/nav-drylab-engagement-v2.webp";
+const teamCrestUrl = "https://static.igem.wiki/teams/6056/wiki/files/pages/shared/jlu-fbh-crest.avif";
+const projectWetlabSprite = "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/nav-project-wetlab-v2.webp";
+const drylabEngagementSprite = "https://static.igem.wiki/teams/6056/wiki/files/pages/dry-lab/nav-drylab-engagement-v2.webp";
 import Pages from "../pages";
 import { PageSearch } from "./PageSearch";
 

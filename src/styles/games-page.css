@@ -24,7 +24,7 @@
    ========================================================================== */
 
 .wiki-page--games {
-  --dry-lab-art: url("../assets/wiki/dry-lab-games-hero-v2.png");
+  --dry-lab-art: url("https://static.igem.wiki/teams/6056/wiki/files/pages/dry-lab/dry-lab-games-hero-v2.avif");
   --games-ribbon: var(--route-accent);
   --games-ribbon-soft: color-mix(in srgb, var(--route-main) 62%, #ffffff);
 }
@@ -434,7 +434,7 @@
 .wiki-page--games
   .games-showcase--breast-guardian
   .games-showcase__art {
-  background-image: url("../assets/wiki/breast-guardian-showcase.png");
+  background-image: url("https://static.igem.wiki/teams/6056/wiki/files/pages/shared/breast-guardian-showcase.avif");
   background-position: center 56%;
   background-size: cover;
   filter: saturate(0.98) contrast(1.01) brightness(0.99);

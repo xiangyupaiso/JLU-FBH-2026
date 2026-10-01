@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { useLocation } from "react-router-dom";
-import backToTopImage from "../assets/wiki/back-to-top.png";
+const backToTopImage = "https://static.igem.wiki/teams/6056/wiki/files/pages/shared/back-to-top.avif";
 import { clamp } from "../utils";
 import { GlassSheen } from "./GlassSheen";
 

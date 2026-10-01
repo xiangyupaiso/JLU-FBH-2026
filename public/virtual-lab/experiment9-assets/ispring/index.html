@@ -52,7 +52,14 @@
 <body>
 	<div id="preloader"></div>
 	<script src="data/browsersupport.js?2BDA2A57"></script>
-	<script src="data/player.js?2BDA2A57"></script>
+	<script>
+window.__igemFontUrl = function (source) {
+  var match = String(source).match(/(?:^|\/)(fnt\d+\.woff)(?:[?#]|$)/i);
+  if (!match || !['fnt0.woff','fnt4.woff','fnt6.woff','fnt7.woff','fnt8.woff','fnt9.woff','fnt10.woff','fnt11.woff'].includes(match[1])) return source;
+  return "https://static.igem.wiki/teams/6056/wiki/files/fonts/ex9/" + match[1];
+};
+</script>
+<script src="data/player.js?2BDA2A57"></script>
     <div id="content"></div>
     <div id="spr0_16c141"></div>
     <script>

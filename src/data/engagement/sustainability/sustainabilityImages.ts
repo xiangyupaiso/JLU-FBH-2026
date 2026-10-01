@@ -1,9 +1,9 @@
-import overviewSstQnPreview01 from "../../../assets/wiki/sustainability-overview-sst-qn-preview-01.png";
-import overviewScaleFramework03 from "../../../assets/wiki/sustainability-overview-scale-framework-03.png";
-import frameworkSetDevelopGrow06 from "../../../assets/wiki/sustainability-framework-set-develop-grow-06.png";
-import setStakeholderOverview07 from "../../../assets/wiki/sustainability-set-stakeholder-overview-07.png";
-import sdg9BatchProjection from "../../../assets/wiki/sustainability-sdg9-batch-projection.png";
-import sdg9Evidence from "../../../assets/wiki/sustainability-sdg9-evidence.png";
+const overviewSstQnPreview01 = "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/sustainability-overview-sst-qn-preview-01.avif";
+const overviewScaleFramework03 = "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/sustainability-overview-scale-framework-03.avif";
+const frameworkSetDevelopGrow06 = "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/sustainability-framework-set-develop-grow-06.avif";
+const setStakeholderOverview07 = "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/sustainability-set-stakeholder-overview-07.avif";
+const sdg9BatchProjection = "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/sustainability-sdg9-batch-projection.avif";
+const sdg9Evidence = "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/sustainability-sdg9-evidence.avif";
 import {
   sustainabilityAssets,
   type SustainabilityImageAssetKey,

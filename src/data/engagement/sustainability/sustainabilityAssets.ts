@@ -14,9 +14,7 @@
  *   - `image 6.png`       → Scenario-based batch failure projection (SDG 9 C)
  *   - `ChatGPT Image …`   → SDG 9 evidence figure
  *
- * `uploadUrl` stays `null` until the iGEM Wiki uploads step is completed; the
- * bundled copies under `src/assets/wiki` are what the page renders in the
- * meantime.
+ * Uploaded assets use their iGEM static URLs; local paths remain as provenance.
  */
 
 export type SustainabilityAssetKind = "image" | "pdf";
@@ -51,7 +49,7 @@ export const sustainabilityAssets = {
     fileName: "sustainability-overview-sst-qn-preview-01.png",
     localSourcePath: "文案集/Human Practice/sustainability/图片和附件/image 3.png",
     targetPath: "src/assets/wiki/sustainability-overview-sst-qn-preview-01.png",
-    uploadUrl: null,
+    uploadUrl: "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/sustainability-overview-sst-qn-preview-01.avif",
     alt: "SST-QN SDG 协同与权衡量化网络概念示意图",
     section: "Overview — SST-QN 简述配图",
   },
@@ -60,7 +58,7 @@ export const sustainabilityAssets = {
     fileName: "sustainability-overview-scale-framework-03.png",
     localSourcePath: "文案集/Human Practice/sustainability/图片和附件/filename 2.png",
     targetPath: "src/assets/wiki/sustainability-overview-scale-framework-03.png",
-    uploadUrl: null,
+    uploadUrl: "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/sustainability-overview-scale-framework-03.avif",
     alt: "SCALE Framework 利益相关者动态改进机制流程图",
     section: "Overview — SCALE Framework 流程图",
   },
@@ -69,7 +67,7 @@ export const sustainabilityAssets = {
     fileName: "sustainability-framework-set-develop-grow-06.png",
     localSourcePath: "文案集/Human Practice/sustainability/图片和附件/image 4.png",
     targetPath: "src/assets/wiki/sustainability-framework-set-develop-grow-06.png",
-    uploadUrl: null,
+    uploadUrl: "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/sustainability-framework-set-develop-grow-06.avif",
     alt: "SET-DEVELOP-GROW 三层递进影响框架图",
     section: "SET–DEVELOP–GROW Impact Framework — 三层框架图",
   },
@@ -78,7 +76,7 @@ export const sustainabilityAssets = {
     fileName: "sustainability-set-stakeholder-overview-07.png",
     localSourcePath: "文案集/Human Practice/sustainability/图片和附件/image 5.png",
     targetPath: "src/assets/wiki/sustainability-set-stakeholder-overview-07.png",
-    uploadUrl: null,
+    uploadUrl: "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/sustainability-set-stakeholder-overview-07.avif",
     alt: "利益相关者的参与总览",
     section: "SET → Addressing Core Challenges — 利益相关者总览图",
   },
@@ -87,7 +85,7 @@ export const sustainabilityAssets = {
     fileName: "sustainability-sdg9-batch-projection.png",
     localSourcePath: "文案集/Human Practice/sustainability/图片和附件/image 6.png",
     targetPath: "src/assets/wiki/sustainability-sdg9-batch-projection.png",
-    uploadUrl: null,
+    uploadUrl: "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/sustainability-sdg9-batch-projection.avif",
     alt: "Scenario-based Batch Failure Projection 批次失败情景预测图",
     section: "SDG 9 → C — Consequences（环境影响）",
   },
@@ -96,7 +94,7 @@ export const sustainabilityAssets = {
     fileName: "sustainability-sdg9-evidence.png",
     localSourcePath: "文案集/Human Practice/sustainability/图片和附件/ChatGPT Image 2026年8月11日 20_33_38.png",
     targetPath: "src/assets/wiki/sustainability-sdg9-evidence.png",
-    uploadUrl: null,
+    uploadUrl: "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/sustainability-sdg9-evidence.avif",
     alt: "SDG 9 证据链统计图",
     section: "SDG 9 → E — Evidence",
   },
@@ -105,7 +103,7 @@ export const sustainabilityAssets = {
     fileName: "sustainability-sst-qn-model-construction.pdf",
     localSourcePath: "文案集/Human Practice/sustainability/图片和附件/SDG 模型构建.pdf",
     targetPath: "public/assets/docs/sustainability-sst-qn-model-construction.pdf",
-    uploadUrl: null,
+    uploadUrl: "https://static.igem.wiki/teams/6056/wiki/files/docs/sustainability-sst-qn-model-construction.pdf",
     alt: "SST-QN SDG 模型构建方法论与完整评分矩阵",
     section: "SST-QN 章节末尾 — 模型构建详细文档（“SDG 模型构建.pdf”）",
     usageNote:
