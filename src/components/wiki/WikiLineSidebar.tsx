@@ -43,6 +43,14 @@ interface WikiLineSidebarProps {
   protocolPairs?: ExperimentProtocolPair[];
   onOpenProtocolModal?: (pair: ExperimentProtocolPair, initialTab?: "flow" | "inventory") => void;
   onSelectSubheading?: (id: string) => void;
+  id?: string;
+  /** Jump animation for outline links (the mobile drawer uses "smooth"). */
+  scrollBehavior?: ScrollBehavior;
+  /**
+   * Drawer mode: renders a close button and is called after any outline or
+   * related link is chosen so the host can slide the drawer away.
+   */
+  onRequestClose?: () => void;
 }
 
 export function WikiLineSidebar({
@@ -56,6 +64,9 @@ export function WikiLineSidebar({
   protocolPairs,
   onOpenProtocolModal,
   onSelectSubheading,
+  id,
+  scrollBehavior = "instant",
+  onRequestClose,
 }: WikiLineSidebarProps) {
   const outlineRef = useRef<HTMLElement>(null);
   const ribbonRef = useRef<HTMLSpanElement>(null);
@@ -70,6 +81,7 @@ export function WikiLineSidebar({
     )?.id
     : undefined;
   const expandedItemId = activeChildParentId ?? activeId;
+  const drawerMode = Boolean(onRequestClose);
 
   const protocolMap = useMemo(() => {
     if (!protocolPairs?.length) return new Map<string, ExperimentProtocolPair>();
@@ -135,7 +147,9 @@ export function WikiLineSidebar({
           ),
         ) || 78;
       const scrollContainer = scrollContainerRef?.current;
-      const readingLine = scrollContainer
+      // Mobile drawer: the article is in document flow, so read against the
+      // header instead of the (non-scrolling) frame.
+      const readingLine = scrollContainer && !drawerMode
         ? scrollContainer.getBoundingClientRect().top +
         Math.min(112, scrollContainer.clientHeight * 0.22)
         : headerHeight + 108;
@@ -211,6 +225,9 @@ export function WikiLineSidebar({
 
     requestRibbonMeasureRef.current = requestMeasure;
     scrollTarget.addEventListener("scroll", requestMeasure, { passive: true });
+    if (drawerMode) {
+      window.addEventListener("scroll", requestMeasure, { passive: true });
+    }
     window.addEventListener("resize", requestMeasure, { passive: true });
     outline.addEventListener("scroll", requestMeasure, { passive: true });
     if (record) resizeObserver?.observe(record);
@@ -219,12 +236,13 @@ export function WikiLineSidebar({
     return () => {
       if (frame) cancelAnimationFrame(frame);
       scrollTarget.removeEventListener("scroll", requestMeasure);
+      window.removeEventListener("scroll", requestMeasure);
       window.removeEventListener("resize", requestMeasure);
       outline.removeEventListener("scroll", requestMeasure);
       resizeObserver?.disconnect();
       requestRibbonMeasureRef.current = () => undefined;
     };
-  }, [minimal, scrollContainerRef, targetSignature]);
+  }, [minimal, scrollContainerRef, targetSignature, drawerMode]);
 
   useEffect(() => {
     const outline = outlineRef.current;
@@ -266,7 +284,8 @@ export function WikiLineSidebar({
     const target = document.getElementById(id);
     if (!target) return;
 
-    scrollReaderToTarget(target, scrollContainerRef?.current, "instant");
+    scrollReaderToTarget(target, scrollContainerRef?.current, scrollBehavior);
+    onRequestClose?.();
   };
 
   const setScrollFromRibbon = (clientY: number) => {
@@ -360,7 +379,20 @@ export function WikiLineSidebar({
       : 0;
 
   return (
-    <aside ref={outlineRef} className="wiki-outline" aria-label={label}>
+    <aside ref={outlineRef} id={id} className="wiki-outline" aria-label={label}>
+      {onRequestClose ? (
+        <div className="wiki-outline__drawer-head">
+          <strong>{label}</strong>
+          <button
+            type="button"
+            className="wiki-outline__close"
+            aria-label="Close table of contents"
+            onClick={onRequestClose}
+          >
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+      ) : null}
       <div className="wiki-outline__progress-pill" aria-hidden="true">
         <div
           className="wiki-outline__progress-pill-fill"
@@ -506,7 +538,7 @@ export function WikiLineSidebar({
         <div className="wiki-outline__related">
           <span className="wiki-outline__related-title">✦ related links</span>
           {links.map((link) => (
-            <Link key={link.path} to={link.path}>
+            <Link key={link.path} to={link.path} onClick={onRequestClose}>
               <span>{link.label}</span>
               <span className="wiki-outline__link-arrow" aria-hidden="true">
                 ↗
