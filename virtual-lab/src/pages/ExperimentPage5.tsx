@@ -50,8 +50,8 @@ interface SceneSnapshot {
 
 const IMG = {
   background: 'https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/bg.avif',
-  bench: 'https://static.igem.wiki/teams/6056/wiki/virtual-lab/common/cleanbench_part.avif',
-  table: 'https://static.igem.wiki/teams/6056/wiki/virtual-lab/common/blue_table.avif',
+  bench: 'https://static.igem.wiki/teams/6056/wiki/virtual-lab/common/cleanbench-part.avif',
+  table: 'https://static.igem.wiki/teams/6056/wiki/virtual-lab/common/blue-table.avif',
   pipette: 'https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/pipette.avif',
   pipetteWithTip: 'https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment5/image0.avif',
   tipBox: 'https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment5/tip-box.avif',
@@ -98,9 +98,9 @@ const IMG = {
   imagerOn: 'https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment4/ppt/gel-imager-on.avif',
   dnaBand: 'https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment4/ppt/dna-band.avif',
   ladder: 'https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment4/ppt/gel-dna-ladder.avif',
-  uvCabinet: 'https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment7/uvCabinet.webp',
-  labTable: 'https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment7/labTable.webp',
-  cleanBench: 'https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment7/cleanBenchSmall.webp',
+  uvCabinet: 'https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment7/uvcabinet.webp',
+  labTable: 'https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment7/labtable.webp',
+  cleanBench: 'https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment7/cleanbenchsmall.webp',
   beaker: 'https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment4/ppt/beaker.avif',
   metalTray: 'https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/metaltray.avif',
   hospitalLogo: 'https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment4/ppt/hospital-logo.avif',

@@ -808,7 +808,7 @@ const handleStepNavigation = useCallback((stepIndex: number) => {
         <main className="flex-1 lab-bench flex flex-col items-center gap-3 p-3 relative overflow-hidden min-w-0">
           {isMicroscopeViewActive ? (
             <div className="relative aspect-video w-auto h-[72%] shrink-0 max-w-full shadow-2xl overflow-hidden lab-canvas-frame">
-              <div className="absolute inset-0 bg-center bg-no-repeat" style={{ backgroundImage: "url('https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/background_new.avif')", backgroundSize: '100% 100%' }} />
+              <div className="absolute inset-0 bg-center bg-no-repeat" style={{ backgroundImage: "url('https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/background-new.avif')", backgroundSize: '100% 100%' }} />
               <div className="absolute inset-0">
                 {!isSlideInserted && (
                   <img 
@@ -831,7 +831,7 @@ const handleStepNavigation = useCallback((stepIndex: number) => {
                 )}
                 <img 
                   id="microscope-stain-bottle"
-                  src="https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/shiji_normal.avif"
+                  src="https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/shiji-normal.avif"
                   className={`absolute left-[32%] bottom-[18%] w-[4%] transition-all cursor-pointer hover:scale-110
                     ${isReagentClicked ? '' : 'drop-shadow-[0_0_15px_rgba(255,255,0,0.8)]'}
                   `}
@@ -894,8 +894,8 @@ const handleStepNavigation = useCallback((stepIndex: number) => {
                   `}
                   onClick={() => handleItemClick('pool')}
                 />
-                <img src="https://static.igem.wiki/teams/6056/wiki/virtual-lab/common/blue_table.avif" className="absolute left-[50%] top-[24%] -translate-x-1/2 w-[35%] pointer-events-auto" />
-                <img src="https://static.igem.wiki/teams/6056/wiki/virtual-lab/common/table_normal.avif" className="absolute left-[72%] top-[20%] w-[25%] pointer-events-auto" />
+                <img src="https://static.igem.wiki/teams/6056/wiki/virtual-lab/common/blue-table.avif" className="absolute left-[50%] top-[24%] -translate-x-1/2 w-[35%] pointer-events-auto" />
+                <img src="https://static.igem.wiki/teams/6056/wiki/virtual-lab/common/table-normal.avif" className="absolute left-[72%] top-[20%] w-[25%] pointer-events-auto" />
                 <img 
                   id="incubator"
                   src="https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/13.avif"
@@ -916,7 +916,7 @@ const handleStepNavigation = useCallback((stepIndex: number) => {
                 />
               </div>
 
-            <div className="absolute inset-x-0 bottom-0 h-[56%] bg-[length:100%_100%] bg-bottom bg-no-repeat z-10 pointer-events-none" style={{ backgroundImage: "url('https://static.igem.wiki/teams/6056/wiki/virtual-lab/common/cleanbench_part.avif')" }} />
+            <div className="absolute inset-x-0 bottom-0 h-[56%] bg-[length:100%_100%] bg-bottom bg-no-repeat z-10 pointer-events-none" style={{ backgroundImage: "url('https://static.igem.wiki/teams/6056/wiki/virtual-lab/common/cleanbench-part.avif')" }} />
 
             {/* 器材层 */}
             <div className="absolute inset-0 z-20 pointer-events-none">
@@ -1006,7 +1006,7 @@ const handleStepNavigation = useCallback((stepIndex: number) => {
 {loopVisible && (
   <img 
     id="item-5" 
-    src={loopClickable ? "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/__1.avif" : "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/5.avif"}
+    src={loopClickable ? "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/1.avif" : "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/5.avif"}
     className={`absolute left-[19%] top-[82%] w-[4%] -rotate-12 pointer-events-auto cursor-pointer transition-all
       ${loopClickable ? 'drop-shadow-[0_0_20px_rgba(255,255,0,0.8)] z-90 scale-110' : 'z-90'}
     `}

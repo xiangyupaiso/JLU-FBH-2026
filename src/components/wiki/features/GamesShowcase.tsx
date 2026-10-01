@@ -94,6 +94,7 @@ function GameExperience({
     const previousRootInert = appRoot?.inert ?? false;
 
     document.body.style.overflow = "hidden";
+    window.dispatchEvent(new Event("sheep-cursor-hide"));
     if (appRoot) appRoot.inert = true;
     closeButtonRef.current?.focus();
 

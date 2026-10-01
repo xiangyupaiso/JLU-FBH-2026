@@ -89,7 +89,7 @@ const steps = [
 
 const I = {
   room:'https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/bg.avif',
-  table1:'https://static.igem.wiki/teams/6056/wiki/virtual-lab/common/blue_table.avif', table2:'https://static.igem.wiki/teams/6056/wiki/virtual-lab/common/table_normal.avif', bench:'https://static.igem.wiki/teams/6056/wiki/virtual-lab/common/cleanbench_part.avif',
+  table1:'https://static.igem.wiki/teams/6056/wiki/virtual-lab/common/blue-table.avif', table2:'https://static.igem.wiki/teams/6056/wiki/virtual-lab/common/table-normal.avif', bench:'https://static.igem.wiki/teams/6056/wiki/virtual-lab/common/cleanbench-part.avif',
   centrifuge:'https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/highspeedcentrifuge.avif', vortex:'https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/vortexoscillator.avif',
   microwave:'https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/microwaveovenclosed.avif', microwaveOpen:'https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/44.avif',
   ultrasonic:'https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/ultrasoniccleaner.avif', uv:'https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/uvgelimagingsystem.avif',
@@ -102,8 +102,8 @@ const I = {
   rackOrange:'https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/8105.avif', rackGreen:'https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/8106.avif',
   beaker:'https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/beaker.avif', tray:'https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/metaltray.avif',
   pipette:'https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/pipette.avif',
-  bodies:['','https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/pipette1_1.avif','https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/pipette2_1.avif','https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/pipette3_1.avif'],
-  tips:['','https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/pipette1_2.avif','https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/pipette2_2.avif','https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/pipette3_2.avif'],
+  bodies:['','https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/pipette1-1.avif','https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/pipette2-1.avif','https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/pipette3-1.avif'],
+  tips:['','https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/pipette1-2.avif','https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/pipette2-2.avif','https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/pipette3-2.avif'],
   boxes:['','https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/pipettetipboxclosed1.avif','https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/pipettetipboxclosed2.avif','https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/pipettetipboxclosed3.avif'],
   boxesOpen:['','https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/pipettetipboxopen1.avif','https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/pipettetipboxopen2.avif','https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/pipettetipboxopen3.avif'],
   empty:'https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/eptubeempty.avif', blue:'https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/eptubeblue.avif',

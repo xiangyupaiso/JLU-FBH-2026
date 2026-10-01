@@ -100415,7 +100415,7 @@
       "localPath": "public/virtual-lab/images/experiment2/background_new.png",
       "md5": "8e498b728bc98117c20b919b3c70f6a2",
       "fileSize": 609307,
-      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/background_new.avif",
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/background-new.avif",
       "status": "in-use",
       "description": "",
       "keywords": [
@@ -100625,7 +100625,7 @@
       "localPath": "public/virtual-lab/images/experiment2/shiji_normal.png",
       "md5": "15a1a6571654c44db578e8de1cd28bae",
       "fileSize": 1427297,
-      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/shiji_normal.avif",
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/shiji-normal.avif",
       "status": "in-use",
       "description": "",
       "keywords": [
@@ -101035,7 +101035,7 @@
       "localPath": "public/virtual-lab/images/experiment2/__1.png",
       "md5": "50c85794a56e90fe16e37e69e9c41f99",
       "fileSize": 16234,
-      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/__1.avif",
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/--1.avif",
       "status": "in-use",
       "description": "",
       "keywords": [
@@ -119150,7 +119150,7 @@
       "localPath": "public/virtual-lab/images/experiment3/Pipette1_1.png",
       "md5": "8a01c841973a86a573fc9318f0be6465",
       "fileSize": 740452,
-      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/pipette1_1.avif",
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/pipette1-1.avif",
       "status": "in-use",
       "description": "",
       "keywords": [
@@ -119181,7 +119181,7 @@
       "localPath": "public/virtual-lab/images/experiment3/Pipette1_2.png",
       "md5": "6dcd62e9edc9d6d8b6d0a71af09ad8ca",
       "fileSize": 6964,
-      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/pipette1_2.avif",
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/pipette1-2.avif",
       "status": "in-use",
       "description": "",
       "keywords": [
@@ -119212,7 +119212,7 @@
       "localPath": "public/virtual-lab/images/experiment3/Pipette2_1.png",
       "md5": "8a01c841973a86a573fc9318f0be6465",
       "fileSize": 740452,
-      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/pipette2_1.avif",
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/pipette2-1.avif",
       "status": "in-use",
       "description": "",
       "keywords": [
@@ -119237,7 +119237,7 @@
       "localPath": "public/virtual-lab/images/experiment3/Pipette2_2.png",
       "md5": "9ac810927f6ec8dab13d8f9a1e9153c8",
       "fileSize": 5235,
-      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/pipette2_2.avif",
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/pipette2-2.avif",
       "status": "in-use",
       "description": "",
       "keywords": [
@@ -119262,7 +119262,7 @@
       "localPath": "public/virtual-lab/images/experiment3/Pipette3_1.png",
       "md5": "8a01c841973a86a573fc9318f0be6465",
       "fileSize": 740452,
-      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/pipette3_1.avif",
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/pipette3-1.avif",
       "status": "in-use",
       "description": "",
       "keywords": [
@@ -119293,7 +119293,7 @@
       "localPath": "public/virtual-lab/images/experiment3/Pipette3_2.png",
       "md5": "274fc4d4a2103ff4fda512da6b42e010",
       "fileSize": 3847,
-      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/pipette3_2.avif",
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/pipette3-2.avif",
       "status": "in-use",
       "description": "",
       "keywords": [
@@ -120386,7 +120386,7 @@
       "localPath": "public/virtual-lab/images/experiment5/bench-blue-rack.png",
       "md5": "225db68aed48a29e064a1de18bb68429",
       "fileSize": 1154892,
-      "uploadUrl": null,
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment5/bench-blue-rack.avif",
       "status": "in-use",
       "description": "",
       "keywords": [
@@ -120411,7 +120411,7 @@
       "localPath": "public/virtual-lab/images/experiment5/bench-box-left.png",
       "md5": "e48a4444604c9dbdaf0e76a3c0bd2f43",
       "fileSize": 486542,
-      "uploadUrl": null,
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment5/bench-box-left.avif",
       "status": "in-use",
       "description": "",
       "keywords": [
@@ -120436,7 +120436,7 @@
       "localPath": "public/virtual-lab/images/experiment5/bench-box-right.png",
       "md5": "b34b42be6b713f7cb6d3fdad754129ec",
       "fileSize": 406718,
-      "uploadUrl": null,
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment5/bench-box-right.avif",
       "status": "in-use",
       "description": "",
       "keywords": [
@@ -120461,7 +120461,7 @@
       "localPath": "public/virtual-lab/images/experiment5/bench-full.png",
       "md5": "9887147747f2b9626b028e8420df1c3c",
       "fileSize": 125938,
-      "uploadUrl": null,
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment5/bench-full.avif",
       "status": "in-use",
       "description": "",
       "keywords": [
@@ -120486,7 +120486,7 @@
       "localPath": "public/virtual-lab/images/experiment5/bench-gel-comb.png",
       "md5": "d9b42b2a06d86f8e52ed70014080f222",
       "fileSize": 130110,
-      "uploadUrl": null,
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment5/bench-gel-comb.avif",
       "status": "in-use",
       "description": "",
       "keywords": [
@@ -120511,7 +120511,7 @@
       "localPath": "public/virtual-lab/images/experiment5/bench-gel-wells.png",
       "md5": "4a4ad60db5826f3b69fa488215f8153e",
       "fileSize": 120671,
-      "uploadUrl": null,
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment5/bench-gel-wells.avif",
       "status": "in-use",
       "description": "",
       "keywords": [
@@ -120536,7 +120536,7 @@
       "localPath": "public/virtual-lab/images/experiment5/bench-tae-front.png",
       "md5": "886b8fb05b8c049b4894485b0b365592",
       "fileSize": 137160,
-      "uploadUrl": null,
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment5/bench-tae-front.avif",
       "status": "in-use",
       "description": "",
       "keywords": [
@@ -120561,7 +120561,7 @@
       "localPath": "public/virtual-lab/images/experiment5/bench-tubes.png",
       "md5": "1d6ac9dc71e88a51ddb2c69f8fbc7023",
       "fileSize": 357188,
-      "uploadUrl": null,
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment5/bench-tubes.avif",
       "status": "in-use",
       "description": "",
       "keywords": [
@@ -120586,7 +120586,7 @@
       "localPath": "public/virtual-lab/images/experiment5/brown-bottle.png",
       "md5": "fad7a4376a09f2fdeda166d66b8a3136",
       "fileSize": 2535952,
-      "uploadUrl": null,
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment5/brown-bottle.avif",
       "status": "in-use",
       "description": "",
       "keywords": [
@@ -120611,7 +120611,7 @@
       "localPath": "public/virtual-lab/images/experiment5/electrophoresis-connected-new.png",
       "md5": "bb1675d34c77da2b8c721f9b7c0bede0",
       "fileSize": 67425,
-      "uploadUrl": null,
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment5/electrophoresis-connected-new.avif",
       "status": "in-use",
       "description": "",
       "keywords": [
@@ -120636,7 +120636,7 @@
       "localPath": "public/virtual-lab/images/experiment5/electrophoresis-connected.png",
       "md5": "bea49f3c343efbfb23c2891f9508285e",
       "fileSize": 1718586,
-      "uploadUrl": null,
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment5/electrophoresis-connected.avif",
       "status": "in-use",
       "description": "",
       "keywords": [
@@ -120661,7 +120661,7 @@
       "localPath": "public/virtual-lab/images/experiment5/electrophoresis-setup.png",
       "md5": "bb1675d34c77da2b8c721f9b7c0bede0",
       "fileSize": 67425,
-      "uploadUrl": null,
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment5/electrophoresis-setup.avif",
       "status": "in-use",
       "description": "",
       "keywords": [
@@ -120686,7 +120686,7 @@
       "localPath": "public/virtual-lab/images/experiment5/electrophoresis-text.png",
       "md5": "c20fb425cbaa7aa7acbfaf691d7bb803",
       "fileSize": 3743,
-      "uploadUrl": null,
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment5/electrophoresis-text.avif",
       "status": "in-use",
       "description": "",
       "keywords": [
@@ -120711,7 +120711,7 @@
       "localPath": "public/virtual-lab/images/experiment5/flask-blue-realistic.png",
       "md5": "87dc4f6a119bf0824b4e7c3269e183ad",
       "fileSize": 1233863,
-      "uploadUrl": null,
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment5/flask-blue-realistic.avif",
       "status": "in-use",
       "description": "",
       "keywords": [
@@ -120754,7 +120754,7 @@
       "localPath": "public/virtual-lab/images/experiment5/gel-cast-frame-new.png",
       "md5": "3579c1f22370055ff875eec89a458403",
       "fileSize": 2118905,
-      "uploadUrl": null,
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment5/gel-cast-frame-new.avif",
       "status": "in-use",
       "description": "",
       "keywords": [
@@ -120797,7 +120797,7 @@
       "localPath": "public/virtual-lab/images/experiment5/gel-cast-frame-transparent.png",
       "md5": "f7d9e1b4c2510537884e167f44345dae",
       "fileSize": 30574,
-      "uploadUrl": null,
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment5/gel-cast-frame-transparent.avif",
       "status": "in-use",
       "description": "",
       "keywords": [
@@ -120822,7 +120822,7 @@
       "localPath": "public/virtual-lab/images/experiment5/gel-cast-frame-v2.png",
       "md5": "7228efd14f3ed2e38ce3d58216af2f8f",
       "fileSize": 473282,
-      "uploadUrl": null,
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment5/gel-cast-frame-v2.avif",
       "status": "in-use",
       "description": "",
       "keywords": [
@@ -120847,7 +120847,7 @@
       "localPath": "public/virtual-lab/images/experiment5/gel-cast-frame-v3.png",
       "md5": "0502e158b29270ed715d319a0646fde6",
       "fileSize": 1808442,
-      "uploadUrl": null,
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment5/gel-cast-frame-v3.avif",
       "status": "in-use",
       "description": "",
       "keywords": [
@@ -120890,7 +120890,7 @@
       "localPath": "public/virtual-lab/images/experiment5/gel-comb-flat.png",
       "md5": "d6f5b2a74b673f43ab5a73cb76dd5a0f",
       "fileSize": 3919,
-      "uploadUrl": null,
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment5/gel-comb-flat.avif",
       "status": "in-use",
       "description": "",
       "keywords": [
@@ -120915,7 +120915,7 @@
       "localPath": "public/virtual-lab/images/experiment5/gel-comb-green-new.png",
       "md5": "978c0111b6619fa208b7420dc6a02ecf",
       "fileSize": 1605083,
-      "uploadUrl": null,
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment5/gel-comb-green-new.avif",
       "status": "in-use",
       "description": "",
       "keywords": [
@@ -120940,7 +120940,7 @@
       "localPath": "public/virtual-lab/images/experiment5/gel-comb-green-transparent.png",
       "md5": "82ebc31204b9cdcdc56b7218a00019eb",
       "fileSize": 6529,
-      "uploadUrl": null,
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment5/gel-comb-green-transparent.avif",
       "status": "in-use",
       "description": "",
       "keywords": [
@@ -121001,7 +121001,7 @@
       "localPath": "public/virtual-lab/images/experiment5/gel-comb-v2.png",
       "md5": "ddfa3eb276d8654c26485c03fa452ff0",
       "fileSize": 225405,
-      "uploadUrl": null,
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment5/gel-comb-v2.avif",
       "status": "in-use",
       "description": "",
       "keywords": [
@@ -121044,7 +121044,7 @@
       "localPath": "public/virtual-lab/images/experiment5/gel-electrophoresis-progress.png",
       "md5": "efbac83f0f94fbbe7697ff6e446ddde7",
       "fileSize": 37269,
-      "uploadUrl": null,
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment5/gel-electrophoresis-progress.avif",
       "status": "in-use",
       "description": "",
       "keywords": [
@@ -121069,7 +121069,7 @@
       "localPath": "public/virtual-lab/images/experiment5/gel-frame-empty.png",
       "md5": "749d6ae281529633200e6e2f5dabcd32",
       "fileSize": 17770,
-      "uploadUrl": null,
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment5/gel-frame-empty.avif",
       "status": "in-use",
       "description": "",
       "keywords": [
@@ -121094,7 +121094,7 @@
       "localPath": "public/virtual-lab/images/experiment5/gel-progress-23.png",
       "md5": "efbac83f0f94fbbe7697ff6e446ddde7",
       "fileSize": 37269,
-      "uploadUrl": null,
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment5/gel-progress-23.avif",
       "status": "in-use",
       "description": "",
       "keywords": [
@@ -121119,7 +121119,7 @@
       "localPath": "public/virtual-lab/images/experiment5/gel-red-solid.png",
       "md5": "91ec580f2e94af55f2723297a3f1ad0c",
       "fileSize": 59157,
-      "uploadUrl": null,
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment5/gel-red-solid.avif",
       "status": "in-use",
       "description": "",
       "keywords": [
@@ -121144,7 +121144,7 @@
       "localPath": "public/virtual-lab/images/experiment5/gel-red-wells.png",
       "md5": "d0522df03752e2d1348e1c51386eb6e3",
       "fileSize": 23164,
-      "uploadUrl": null,
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment5/gel-red-wells.avif",
       "status": "in-use",
       "description": "",
       "keywords": [
@@ -121169,7 +121169,7 @@
       "localPath": "public/virtual-lab/images/experiment5/gel-tray-with-comb.png",
       "md5": "ead08eff870aecc232f98d6d6c999af9",
       "fileSize": 2326994,
-      "uploadUrl": null,
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment5/gel-tray-with-comb.avif",
       "status": "in-use",
       "description": "",
       "keywords": [
@@ -121194,7 +121194,7 @@
       "localPath": "public/virtual-lab/images/experiment5/gel-tray-with-gel.png",
       "md5": "b7160535085fe1abb103075800d22f62",
       "fileSize": 1682259,
-      "uploadUrl": null,
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment5/gel-tray-with-gel.avif",
       "status": "in-use",
       "description": "",
       "keywords": [
@@ -121219,7 +121219,7 @@
       "localPath": "public/virtual-lab/images/experiment5/gel-wells-frame.png",
       "md5": "368ad3c519e8715bf4b6b859b45dcf69",
       "fileSize": 2385723,
-      "uploadUrl": null,
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment5/gel-wells-frame.avif",
       "status": "in-use",
       "description": "",
       "keywords": [
@@ -121244,7 +121244,7 @@
       "localPath": "public/virtual-lab/images/experiment5/image0.png",
       "md5": "279b4614a8132acf71a8bddab0129a98",
       "fileSize": 32471,
-      "uploadUrl": null,
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment5/image0.avif",
       "status": "in-use",
       "description": "",
       "keywords": [
@@ -121269,7 +121269,7 @@
       "localPath": "public/virtual-lab/images/experiment5/image1.png",
       "md5": "fb5f5e6bc1fe9661f211333bbde09075",
       "fileSize": 4356,
-      "uploadUrl": null,
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment5/image1.avif",
       "status": "in-use",
       "description": "",
       "keywords": [
@@ -121300,7 +121300,7 @@
       "localPath": "public/virtual-lab/images/experiment5/image10.png",
       "md5": "8e8b069297f73db7cd7e02469cd0ebbb",
       "fileSize": 6958,
-      "uploadUrl": null,
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment5/image10.avif",
       "status": "in-use",
       "description": "",
       "keywords": [
@@ -121337,7 +121337,7 @@
       "localPath": "public/virtual-lab/images/experiment5/image11.png",
       "md5": "84d9b3065badec3f73171be9ec41a71f",
       "fileSize": 2451831,
-      "uploadUrl": null,
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment5/image11.avif",
       "status": "in-use",
       "description": "",
       "keywords": [
@@ -121368,7 +121368,7 @@
       "localPath": "public/virtual-lab/images/experiment5/image12.png",
       "md5": "fc12c21607806d546355cb06f8966274",
       "fileSize": 78326,
-      "uploadUrl": null,
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment5/image12.avif",
       "status": "in-use",
       "description": "",
       "keywords": [
@@ -121399,7 +121399,7 @@
       "localPath": "public/virtual-lab/images/experiment5/image13.png",
       "md5": "193439e453a8b5adc570ed95c38ab3a8",
       "fileSize": 239383,
-      "uploadUrl": null,
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment5/image13.avif",
       "status": "in-use",
       "description": "",
       "keywords": [
@@ -121448,7 +121448,7 @@
       "localPath": "public/virtual-lab/images/experiment5/image14.png",
       "md5": "6b41bab29aaf3e9cf5076c6be3c5eba1",
       "fileSize": 322037,
-      "uploadUrl": null,
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment5/image14.avif",
       "status": "in-use",
       "description": "",
       "keywords": [
@@ -121515,7 +121515,7 @@
       "localPath": "public/virtual-lab/images/experiment5/image15.png",
       "md5": "b5ff6cf4306d0c72044e4e9708cdd022",
       "fileSize": 2985,
-      "uploadUrl": null,
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment5/image15.avif",
       "status": "in-use",
       "description": "",
       "keywords": [
@@ -121564,7 +121564,7 @@
       "localPath": "public/virtual-lab/images/experiment5/image16.png",
       "md5": "c6cbdfb09e1b877925dd43afc4c15b62",
       "fileSize": 407634,
-      "uploadUrl": null,
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment5/image16.avif",
       "status": "in-use",
       "description": "",
       "keywords": [
@@ -121589,7 +121589,7 @@
       "localPath": "public/virtual-lab/images/experiment5/image17.png",
       "md5": "6f259ded005d90819d944ad423e2f898",
       "fileSize": 143815,
-      "uploadUrl": null,
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment5/image17.avif",
       "status": "in-use",
       "description": "",
       "keywords": [
@@ -121632,7 +121632,7 @@
       "localPath": "public/virtual-lab/images/experiment5/image2.png",
       "md5": "0457349b2c88e4a19484cd37157975c5",
       "fileSize": 4349,
-      "uploadUrl": null,
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment5/image2.avif",
       "status": "in-use",
       "description": "",
       "keywords": [
@@ -121657,7 +121657,7 @@
       "localPath": "public/virtual-lab/images/experiment5/image3.png",
       "md5": "50297f8658938be3151ecf5d4964906e",
       "fileSize": 6839,
-      "uploadUrl": null,
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment5/image3.avif",
       "status": "in-use",
       "description": "",
       "keywords": [
@@ -121688,7 +121688,7 @@
       "localPath": "public/virtual-lab/images/experiment5/image4.png",
       "md5": "b36757706a4ff978015f6da1ac906de9",
       "fileSize": 7573,
-      "uploadUrl": null,
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment5/image4.avif",
       "status": "in-use",
       "description": "",
       "keywords": [
@@ -121719,7 +121719,7 @@
       "localPath": "public/virtual-lab/images/experiment5/image5.png",
       "md5": "aa79d6d06665e7bd275d87fc13d4fe37",
       "fileSize": 7141,
-      "uploadUrl": null,
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment5/image5.avif",
       "status": "in-use",
       "description": "",
       "keywords": [
@@ -121756,7 +121756,7 @@
       "localPath": "public/virtual-lab/images/experiment5/image6.png",
       "md5": "85ceaf54531b54a4b0f5c2680a7f2ba7",
       "fileSize": 6637,
-      "uploadUrl": null,
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment5/image6.avif",
       "status": "in-use",
       "description": "",
       "keywords": [
@@ -121787,7 +121787,7 @@
       "localPath": "public/virtual-lab/images/experiment5/image7.png",
       "md5": "d7b30bb86d548bf502f6727e8455bc22",
       "fileSize": 7845,
-      "uploadUrl": null,
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment5/image7.avif",
       "status": "in-use",
       "description": "",
       "keywords": [
@@ -121812,7 +121812,7 @@
       "localPath": "public/virtual-lab/images/experiment5/image8.png",
       "md5": "47167cc701d9d49b89aa2ebbd8c7ce36",
       "fileSize": 7229,
-      "uploadUrl": null,
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment5/image8.avif",
       "status": "in-use",
       "description": "",
       "keywords": [
@@ -121843,7 +121843,7 @@
       "localPath": "public/virtual-lab/images/experiment5/image9.png",
       "md5": "adcd72f6b15a2fc48826ed56875725bc",
       "fileSize": 4231,
-      "uploadUrl": null,
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment5/image9.avif",
       "status": "in-use",
       "description": "",
       "keywords": [
@@ -121880,7 +121880,7 @@
       "localPath": "public/virtual-lab/images/experiment5/mini-centrifuge.png",
       "md5": "5c940d83dcfad8aef29172918a52a990",
       "fileSize": 45251,
-      "uploadUrl": null,
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment5/mini-centrifuge.avif",
       "status": "in-use",
       "description": "",
       "keywords": [
@@ -121911,7 +121911,7 @@
       "localPath": "public/virtual-lab/images/experiment5/pcr-machine.png",
       "md5": "1fc8e63bbdde1efe8edc982a73f275ae",
       "fileSize": 9897,
-      "uploadUrl": null,
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment5/pcr-machine.avif",
       "status": "in-use",
       "description": "",
       "keywords": [
@@ -121942,7 +121942,7 @@
       "localPath": "public/virtual-lab/images/experiment5/pcr-tube-ppt.png",
       "md5": "b3fd58f8bda68c55861d328f4afe3f51",
       "fileSize": 226039,
-      "uploadUrl": null,
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment5/pcr-tube-ppt.avif",
       "status": "in-use",
       "description": "",
       "keywords": [
@@ -121967,7 +121967,7 @@
       "localPath": "public/virtual-lab/images/experiment5/rack-full-glow.png",
       "md5": "2c3d9f1fa402f5bbdf0026e823b05ea5",
       "fileSize": 253577,
-      "uploadUrl": null,
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment5/rack-full-glow.avif",
       "status": "in-use",
       "description": "",
       "keywords": [
@@ -121992,7 +121992,7 @@
       "localPath": "public/virtual-lab/images/experiment5/rack-partial.png",
       "md5": "d67bff9a4bbe9381bb23d5dc56596d5c",
       "fileSize": 227259,
-      "uploadUrl": null,
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment5/rack-partial.avif",
       "status": "in-use",
       "description": "",
       "keywords": [
@@ -122017,7 +122017,7 @@
       "localPath": "public/virtual-lab/images/experiment5/rack-tube-highlight.png",
       "md5": "84c5bc17e1a719cf2f46c9fcf986bd43",
       "fileSize": 363323,
-      "uploadUrl": null,
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment5/rack-tube-highlight.avif",
       "status": "in-use",
       "description": "",
       "keywords": [
@@ -122042,7 +122042,7 @@
       "localPath": "public/virtual-lab/images/experiment5/sdspage-principle.png",
       "md5": "368ce4dae6c42a461dbdcee92723c64d",
       "fileSize": 45444,
-      "uploadUrl": null,
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment5/sdspage-principle.avif",
       "status": "in-use",
       "description": "",
       "keywords": [
@@ -122067,7 +122067,7 @@
       "localPath": "public/virtual-lab/images/experiment5/swab.png",
       "md5": "912a72e2f05b1bb6f83e9939e7ecafba",
       "fileSize": 5310,
-      "uploadUrl": null,
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment5/swab.avif",
       "status": "in-use",
       "description": "",
       "keywords": [
@@ -122164,7 +122164,7 @@
       "localPath": "public/virtual-lab/images/experiment5/tip-box.png",
       "md5": "5f5f2890b8c58a2bdffeb23e60caef4b",
       "fileSize": 393072,
-      "uploadUrl": null,
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment5/tip-box.avif",
       "status": "in-use",
       "description": "",
       "keywords": [
@@ -122195,7 +122195,7 @@
       "localPath": "public/virtual-lab/images/experiment5/transfer-apparatus-final.png",
       "md5": "e4f770ef9d97ba741bc0d42cad800330",
       "fileSize": 182362,
-      "uploadUrl": null,
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment5/transfer-apparatus-final.avif",
       "status": "in-use",
       "description": "",
       "keywords": [
@@ -122220,7 +122220,7 @@
       "localPath": "public/virtual-lab/images/experiment5/transfer-apparatus.png",
       "md5": "62d2449a26b52ef46d103def16ccb441",
       "fileSize": 52348,
-      "uploadUrl": null,
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment5/transfer-apparatus.avif",
       "status": "in-use",
       "description": "",
       "keywords": [
@@ -122245,7 +122245,7 @@
       "localPath": "public/virtual-lab/images/experiment5/tube-blue-bottom.png",
       "md5": "bb44f2e85cc2b5e5cc0cb245a2df9306",
       "fileSize": 5146,
-      "uploadUrl": null,
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment5/tube-blue-bottom.avif",
       "status": "in-use",
       "description": "",
       "keywords": [
@@ -122270,7 +122270,7 @@
       "localPath": "public/virtual-lab/images/experiment5/tube-blue-full.png",
       "md5": "bec8fc0c2b2b59b0c5cb1c1afffe038e",
       "fileSize": 5772,
-      "uploadUrl": null,
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment5/tube-blue-full.avif",
       "status": "in-use",
       "description": "",
       "keywords": [
@@ -122295,7 +122295,7 @@
       "localPath": "public/virtual-lab/images/experiment5/tube-left-new.png",
       "md5": "5134ef373eba8012b4ad10e21148bae9",
       "fileSize": 424831,
-      "uploadUrl": null,
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment5/tube-left-new.avif",
       "status": "in-use",
       "description": "",
       "keywords": [
@@ -122320,7 +122320,7 @@
       "localPath": "public/virtual-lab/images/experiment5/tube-light-small.png",
       "md5": "c70d3ffe2e6a8d41e22e4525642df775",
       "fileSize": 4363,
-      "uploadUrl": null,
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment5/tube-light-small.avif",
       "status": "in-use",
       "description": "",
       "keywords": [
@@ -122345,7 +122345,7 @@
       "localPath": "public/virtual-lab/images/experiment5/tube-purple-block.png",
       "md5": "8b0ea503ee21ce5e1575fb8adb0d18df",
       "fileSize": 3888,
-      "uploadUrl": null,
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment5/tube-purple-block.avif",
       "status": "in-use",
       "description": "",
       "keywords": [
@@ -122370,7 +122370,7 @@
       "localPath": "public/virtual-lab/images/experiment5/tube-rack-blue.png",
       "md5": "31fe2cf632101ef89c4cb783ea3e6826",
       "fileSize": 41881,
-      "uploadUrl": null,
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment5/tube-rack-blue.avif",
       "status": "in-use",
       "description": "",
       "keywords": [
@@ -122395,7 +122395,7 @@
       "localPath": "public/virtual-lab/images/experiment5/tube-right-new.png",
       "md5": "60588e0725c2d80e68749327c78688fd",
       "fileSize": 1144017,
-      "uploadUrl": null,
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment5/tube-right-new.avif",
       "status": "in-use",
       "description": "",
       "keywords": [
@@ -122420,7 +122420,7 @@
       "localPath": "public/virtual-lab/images/experiment5/tube-sample-1.png",
       "md5": "bb44f2e85cc2b5e5cc0cb245a2df9306",
       "fileSize": 5146,
-      "uploadUrl": null,
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment5/tube-sample-1.avif",
       "status": "in-use",
       "description": "",
       "keywords": [
@@ -122445,7 +122445,7 @@
       "localPath": "public/virtual-lab/images/experiment5/tube-sample-2.png",
       "md5": "8b0ea503ee21ce5e1575fb8adb0d18df",
       "fileSize": 3888,
-      "uploadUrl": null,
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment5/tube-sample-2.avif",
       "status": "in-use",
       "description": "",
       "keywords": [
@@ -122470,7 +122470,7 @@
       "localPath": "public/virtual-lab/images/experiment5/uv-gel-reference.png",
       "md5": "1b315c8f3e5ccb37a61455e463604c48",
       "fileSize": 16736,
-      "uploadUrl": null,
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment5/uv-gel-reference.avif",
       "status": "in-use",
       "description": "",
       "keywords": [
@@ -122495,7 +122495,7 @@
       "localPath": "public/virtual-lab/images/experiment5/white-bottle.png",
       "md5": "6630b64a5014fb0dc16246daece80405",
       "fileSize": 2190805,
-      "uploadUrl": null,
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment5/white-bottle.avif",
       "status": "in-use",
       "description": "",
       "keywords": [

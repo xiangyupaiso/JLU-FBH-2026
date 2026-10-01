@@ -72,10 +72,10 @@ void stepReagentAssets;
 
 const experiment3Assets = {
   pipette: 'https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/pipette.avif',
-  pipetteBodyBlue: 'https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/pipette1_1.avif',
-  pipetteTipBlue: 'https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/pipette1_2.avif',
-  pipetteBodyWhite: 'https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/pipette3_1.avif',
-  pipetteTipWhite: 'https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/pipette3_2.avif',
+  pipetteBodyBlue: 'https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/pipette1-1.avif',
+  pipetteTipBlue: 'https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/pipette1-2.avif',
+  pipetteBodyWhite: 'https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/pipette3-1.avif',
+  pipetteTipWhite: 'https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/pipette3-2.avif',
   tipBoxBlueClosed: 'https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/pipettetipboxclosed1.avif',
   tipBoxBlueOpen: 'https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/pipettetipboxopen1.avif',
   tipBoxWhiteClosed: 'https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/pipettetipboxclosed3.avif',

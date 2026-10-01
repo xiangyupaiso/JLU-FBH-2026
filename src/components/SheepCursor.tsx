@@ -255,6 +255,7 @@ export function SheepCursor() {
       if (
         !element ||
         element.closest(NATIVE) ||
+        element.closest('.games-experience') ||
         element.closest(":modal") ||
         document.body.classList.contains("is-thread-dragging")
       ) {
@@ -374,6 +375,7 @@ export function SheepCursor() {
       .catch(() => {});
 
     window.addEventListener("pointermove", move, { passive: true });
+    window.addEventListener("sheep-cursor-hide", hide);
     window.addEventListener("pointerdown", down, {
       passive: true,
       capture: true,
@@ -391,6 +393,7 @@ export function SheepCursor() {
       disposed = true;
       hide();
       window.removeEventListener("pointermove", move);
+      window.removeEventListener("sheep-cursor-hide", hide);
       window.removeEventListener("pointerdown", down, true);
       window.removeEventListener("pointerup", up);
       window.removeEventListener("pointerout", out);

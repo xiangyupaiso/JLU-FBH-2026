@@ -384,7 +384,7 @@ function Scene({ stageIndex, activeTarget, isAnimating, isCompleted, lampLit, pi
         onClick={() => onAction('beaker')}
       />
 
-      <div className="absolute inset-x-0 bottom-0 h-[56%] bg-[length:100%_100%] bg-bottom bg-no-repeat z-10 pointer-events-none" style={{ backgroundImage: "url('https://static.igem.wiki/teams/6056/wiki/virtual-lab/common/cleanbench_part.avif')" }} />
+      <div className="absolute inset-x-0 bottom-0 h-[56%] bg-[length:100%_100%] bg-bottom bg-no-repeat z-10 pointer-events-none" style={{ backgroundImage: "url('https://static.igem.wiki/teams/6056/wiki/virtual-lab/common/cleanbench-part.avif')" }} />
 
       <SceneImage
         id="exp8-pipette"
@@ -1082,13 +1082,15 @@ const handleStepNavigation = (stepIndex: number) => {
             <h3 className="mb-1 text-xs font-bold text-white">{sidebarStep.title}</h3>
             <p className="max-h-[64px] overflow-hidden text-[11px] leading-relaxed text-blue-200">{sidebarStep.description}</p>
           </div>
-          <StepIndicator
-            steps={steps}
-            currentStep={currentStep}
-            completedSteps={completedSteps}
-            onStepClick={handleStepNavigation}
-            onStepHover={setHoveredStep}
-          />
+          <div className="min-h-0 flex-1">
+            <StepIndicator
+              steps={steps}
+              currentStep={currentStep}
+              completedSteps={completedSteps}
+              onStepClick={handleStepNavigation}
+              onStepHover={setHoveredStep}
+            />
+          </div>
         </aside>
 
         <main className="flex-1 lab-bench flex flex-col items-center gap-3 p-3 relative overflow-hidden min-w-0">
