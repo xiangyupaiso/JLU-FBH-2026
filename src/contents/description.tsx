@@ -1,5 +1,6 @@
 import { WikiRoutePage } from "../components/wiki/WikiRoutePage";
-import { descriptionFeatures } from "../components/wiki/features/DescriptionPanels";
+import { descriptionFeatures } from "../components/wiki/features/project/DescriptionPanels";
+import { renderCitedText } from "../components/wiki/features/project/CitationLink";
 import { getProjectHeroImage } from "../components/wiki/projectHeroAssets";
 import { descriptionPage } from "../data/project/descriptionPage";
 import "../styles/route-palette-project.css";
@@ -11,9 +12,10 @@ export function Description() {
       content={descriptionPage}
       heroImage={getProjectHeroImage(descriptionPage.route)}
       theme="project"
-      pageClassName="wiki-page--project"
+      pageClassName="wiki-page--project wiki-page--description"
       hideHeroCopy
       features={descriptionFeatures()}
+      inlineRenderer={renderCitedText}
     />
   );
 }

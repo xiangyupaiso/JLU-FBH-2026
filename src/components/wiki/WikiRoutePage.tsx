@@ -71,6 +71,19 @@ export function useRoutePageScroll() {
   return useContext(WikiPageScrollContext);
 }
 
+/**
+ * Optional per-page inline formatter for prose paragraphs (e.g. turning
+ * "(Sung et al. 2026)" into citation links). Receives the raw paragraph and
+ * the default `**bold**` formatter; when omitted every route page keeps its
+ * current rendering unchanged.
+ */
+export type InlineRenderer = (
+  text: string,
+  fallback: (t: string) => ReactNode,
+) => ReactNode;
+
+const InlineRendererContext = createContext<InlineRenderer | null>(null);
+
 interface WikiRoutePageProps {
   content: WikiPageContent;
   /** Per-page full-bleed hero art; resolved by the module's asset map. */
@@ -93,6 +106,11 @@ interface WikiRoutePageProps {
   collapsibleSubheadings?: boolean;
   /** Optional protocol pairs metadata to enable TOC preview and modal */
   protocolPairs?: ExperimentProtocolPair[];
+  /**
+   * Optional inline formatter for prose paragraphs (citation links on the
+   * Description page). Defaults to plain `**bold**` rendering.
+   */
+  inlineRenderer?: InlineRenderer;
 }
 
 const STATUS_LABELS = {
@@ -254,7 +272,10 @@ function splitNoteContent(body: string): string[] {
   return [body.trim()];
 }
 
-function renderProseParagraphs(paragraphs: string[]): ReactNode[] {
+function renderProseParagraphs(
+  paragraphs: string[],
+  inline: InlineRenderer | null = null,
+): ReactNode[] {
   const elements: ReactNode[] = [];
   let stepBuffer: Array<{ num: string; text: string }> = [];
 
@@ -277,7 +298,7 @@ function renderProseParagraphs(paragraphs: string[]): ReactNode[] {
   };
 
   paragraphs.forEach((paragraph, idx) => {
-    const stepMatch = paragraph.match(/^\s*(\d+)[\.、]\s+(.*)$/s);
+    const stepMatch = paragraph.match(/^\s*(\d+)[.、]\s+(.*)$/s);
     if (stepMatch) {
       stepBuffer.push({ num: stepMatch[1], text: stepMatch[2] });
       return;
@@ -315,7 +336,9 @@ function renderProseParagraphs(paragraphs: string[]): ReactNode[] {
     }
 
     elements.push(
-      <p key={`p-${idx}`}>{renderInlineFormatting(paragraph)}</p>,
+      <p key={`p-${idx}`}>
+        {inline ? inline(paragraph, renderInlineFormatting) : renderInlineFormatting(paragraph)}
+      </p>,
     );
   });
 
@@ -334,6 +357,8 @@ function RouteBlock({
   sectionId: string;
   scrollContainerRef?: RefObject<HTMLElement | null>;
 }) {
+  const inline = useContext(InlineRendererContext);
+
   const scrollToTarget = (targetId: string) => {
     const target = document.getElementById(targetId);
     if (!target) return;
@@ -345,7 +370,7 @@ function RouteBlock({
     case "prose":
       return (
         <div className="wiki-prose" data-wiki-reveal>
-          {renderProseParagraphs(block.paragraphs)}
+          {renderProseParagraphs(block.paragraphs, inline)}
         </div>
       );
     case "prose-linked":
@@ -814,6 +839,7 @@ export function WikiRoutePage({
   hideHeroCopy = false,
   collapsibleSubheadings = false,
   protocolPairs,
+  inlineRenderer,
 }: WikiRoutePageProps) {
   const rootRef = useRef<HTMLElement>(null);
   const interfaceRef = useRef<HTMLDivElement>(null);
@@ -959,18 +985,20 @@ export function WikiRoutePage({
                 aria-label={`${content.title} article`}
               >
                 <article className="wiki-article">
-                  {content.sections.map((section) => (
-                    <MemoRouteSection
-                      key={section.id}
-                      section={section}
-                      feature={features[section.id]}
-                      features={features}
-                      scrollContainerRef={scrollRef}
-                      collapsibleSubheadings={collapsibleSubheadings}
-                      openSubheadingIds={openSubheadingIds}
-                      onToggleSubheading={toggleSubheading}
-                    />
-                  ))}
+                  <InlineRendererContext.Provider value={inlineRenderer ?? null}>
+                    {content.sections.map((section) => (
+                      <MemoRouteSection
+                        key={section.id}
+                        section={section}
+                        feature={features[section.id]}
+                        features={features}
+                        scrollContainerRef={scrollRef}
+                        collapsibleSubheadings={collapsibleSubheadings}
+                        openSubheadingIds={openSubheadingIds}
+                        onToggleSubheading={toggleSubheading}
+                      />
+                    ))}
+                  </InlineRendererContext.Provider>
                 </article>
               </div>
             </div>

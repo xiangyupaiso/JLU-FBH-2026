@@ -424,13 +424,12 @@ export const descriptionPage: WikiPageContent = {
           ],
           aside: {
             type: "mini-visual",
-            title: "TNBC Challenges",
-            tone: "navy",
+            title: "Why TNBC",
             items: [
-              "15–20% of all breast cancer cases",
-              "Lacks ER, PR, and HER2 overexpression",
-              "High risk of recurrence and distant metastasis",
-              "Residual micrometastasis after surgery",
+              "Aggressive clinical course",
+              "Relatively poor median survival",
+              "High risk of recurrence and metastasis",
+              "Limited conventional molecular targets",
             ],
           },
         },
@@ -447,6 +446,10 @@ export const descriptionPage: WikiPageContent = {
           paragraphs: [introductionData.vaccineRationaleIntro],
         },
         {
+          type: "prose",
+          paragraphs: [introductionData.vaccineFormatComparison],
+        },
+        {
           type: "table",
           caption: "Table 1 | Comparison of therapeutic vaccine modalities",
           headers: [
@@ -460,34 +463,31 @@ export const descriptionPage: WikiPageContent = {
               "circRNA (CirCure)",
               "Covalently closed loop; exonuclease-resistant",
               "Cytoplasmic translation; no nuclear entry required",
-              "Sustained expression (days); intrinsic adjuvant effect",
+              "More sustained expression; potential adjuvant-like immunostimulation",
             ],
             [
               "Linear mRNA",
-              "5′ cap + 3′ poly(A) linear chain",
-              "Exonuclease-sensitive; requires strict cold chain",
-              "Transient expression; rapid in vivo degradation",
+              "Linear; exonuclease-sensitive",
+              "Cytoplasmic translation",
+              "Less sustained expression",
             ],
             [
               "DNA Vaccine",
               "Plasmid double-stranded DNA",
-              "Requires nuclear delivery & transcription",
-              "Risk of genomic integration; delayed kinetics",
+              "Requires nuclear entry",
+              "—",
             ],
             [
               "Protein / Peptide",
               "Synthesized antigen polypeptide",
-              "Requires complex ex vivo protein purification",
-              "Exogenous protein delivery; short half-life",
+              "Requires production and delivery of the antigen itself",
+              "—",
             ],
           ],
         },
         {
           type: "prose",
-          paragraphs: [
-            introductionData.vaccineFormatComparison,
-            introductionData.projectInception,
-          ],
+          paragraphs: [introductionData.projectInception],
         },
       ],
     },
@@ -502,6 +502,13 @@ export const descriptionPage: WikiPageContent = {
         {
           type: "prose",
           paragraphs: solutionData.leadParagraphs,
+        },
+        {
+          type: "prose",
+          paragraphs: [
+            "The central mechanism of CirCure can be summarized as:",
+            "**Antigen selection → circRNA engineering → RNA production → purification & quality control → cellular delivery → antigen expression & presentation → CD8⁺ T-cell activation → TNBC cell killing**",
+          ],
         },
         {
           type: "feature",
@@ -564,12 +571,11 @@ export const descriptionPage: WikiPageContent = {
           aside: {
             type: "mini-visual",
             title: "Molecular Characterization",
-            tone: "care",
             items: [
-              ">90% circularization rate & purity",
-              "RNase R exonuclease digestion verification",
+              "Circularization rate and purity >90%",
+              "RNase R treatment to remove linear RNA",
+              "RT-qPCR verification",
               "Back-splice junction (BSJ) sequencing",
-              "Dual-primer RT-qPCR junction confirmation",
             ],
           },
         },
@@ -588,7 +594,7 @@ export const descriptionPage: WikiPageContent = {
           type: "callout",
           tone: "navy",
           label: "Functional Readout",
-          body: "CirCure maintained sustained in vitro antigen expression lasting ~3 days, verified dendritic cell activation (CD80/CD86 upregulation) without cytotoxicity, and mediated up to approximately 80% TNBC cell killing via calcein-release cytotoxicity assays.",
+          body: "More sustained antigen expression than the mRNA control (~3 days); DC uptake and activation (CD80/CD86) without pronounced cytotoxicity; up to ~80% TNBC cell killing under our experimental conditions (calcein release).",
         },
         {
           type: "subheading",
@@ -639,13 +645,6 @@ export const descriptionPage: WikiPageContent = {
             computationalToolsData.beyondStructurePrediction.paragraphs,
         },
         {
-          type: "callout",
-          tone: "neutral",
-          label: "In Silico Workflow",
-          body:
-            "**circRNA sequence → circular structure → structural stability → immune sensing (RIG-I, TLR7/8, PKR)**",
-        },
-        {
           type: "subheading",
           id: "modeling-before-animals",
           index: "3.2",
@@ -677,9 +676,9 @@ export const descriptionPage: WikiPageContent = {
         {
           type: "callout",
           tone: "coral",
-          label: "Evidence Boundary: Proof, Not Premature Promise",
+          label: "Evidence boundary",
           body:
-            "**Boosting survival rate cannot be claimed directly from an in vitro vaccine study.** CirCure establishes a measurable sequence of endpoints: **circRNA quality → antigen expression and persistence → immune activation → TNBC cell killing → tumor control → recurrence and metastasis → survival**.",
+            "Current data cover the first four links of the chain; tumor control, recurrence, and survival remain untested.",
         },
         {
           type: "figure",
@@ -692,37 +691,37 @@ export const descriptionPage: WikiPageContent = {
         {
           type: "table",
           caption:
-            "Table 2 | 5-Dimension evaluation for equitable oncology care",
+            "Table 2 | Access dimensions to be evaluated alongside biological efficacy",
           headers: [
             "Dimension",
             "Key Evaluation Focus",
-            "CirCure Strategy & Implementation",
+            "Planned Evaluation",
           ],
           rows: [
             [
               "Manufacturability",
               "Can circRNA production be performed reproducibly at scale?",
-              "Self-splicing intron-mediated synthesis with standard enzymatic purification workflow",
+              "Reproducibility of self-splicing intron-mediated production and purification beyond laboratory scale",
             ],
             [
               "Storage Stability",
               "Can product quality be maintained under practical storage conditions?",
-              "Lyophilization protocols and thermal stability optimization to minimize ultra-cold dependence",
+              "Product quality over time under practical storage conditions",
             ],
             [
               "Delivery Requirements",
               "Is the delivery method clinically feasible with low procedural burden?",
-              "Lipid nanoparticles (LNPs) tailored for subcutaneous lymphatic drainage and uptake",
+              "Administration complexity and feasibility of the proposed delivery system",
             ],
             [
               "Companion Biomarkers",
-              "How are patients stratified for multi-epitope match?",
-              "Antigen profiling for Trop-2, LIV-1, Nectin-4, and B7-H4 expression prior to regimen",
+              "How are patients stratified for multi-antigen match?",
+              "Patient selection by tumor antigen profile (Trop-2, LIV-1, Nectin-4, B7-H4)",
             ],
             [
               "Cost & Scalability",
               "Are manufacturing costs compatible with broader patient access?",
-              "Cell-free enzymatic circularization avoiding expensive ex vivo cell-culture cycles",
+              "Cost and manufacturing complexity weighed against biological performance",
             ],
           ],
         },

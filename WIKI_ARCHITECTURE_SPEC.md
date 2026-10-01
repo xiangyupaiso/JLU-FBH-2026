@@ -292,6 +292,37 @@ export function AlternativePlatform() {
   - 各模块的双色真理唯一收敛在 `src/styles/route-palette-[module].css` 中，严禁在页面局部写死 hex。
   - 阅读器全局样式 `wiki-route-skin.css` 统一消费 `--route-subheading-ink`，确保全站所有页面自动继承对应 Part 的层级规划。
 
+### 铁律 6：全站正文排版与统一间距层级规范 (Editorial Spacing Rhythm Contract)
+
+为确保全站所有正文页面（Project、Wet Lab、Dry Lab、Engagement 等）视觉 UI 的绝对统一性与一致性，杜绝“忽大忽小、有组件空洞大无组件紧促”的乱象，整站必须严格遵循以下垂直律动阶梯（Vertical Rhythm Scale）：
+
+$$\text{段落间距 (16px，最小)} < \text{小标题到底正文 (14px，贴合)} < \text{大标题到内容 (24px) = 组件间距 (24px)} < \text{正文到小标题顶 (28px，稍大)} < \text{章节切换 (44px，宏观)}$$
+
+| 间距层级 | 标准数值 / CSS Token | 适用场景与视觉行为 |
+| :--- | :--- | :--- |
+| **1. 段落间距 (最小)** | `16px` (`--wiki-space-p`) | 正文段落与段落之间 (`p ↔ p`)；单向垂直流，禁止子元素 `<p>` 泄漏 `margin-bottom`。连续两个 `prose` 块相邻时自适应保持 16px，严禁产生 80px 断层。 |
+| **2. 小标题顶部 (稍大)** | `28px` (`--wiki-space-subhead-top`) | 正文或内容块到下一个小标题 (`h3`) 顶部的距离，产生清晰的子话题划分呼吸感。 |
+| **2b. 小标题底部 (贴合)** | `14px` (`--wiki-space-subhead-bottom`) | 小标题 (`h3`) 到其紧随的正文或内容块底部的距离，符合格式塔邻近原则，紧密吸附下文。 |
+| **3. 标准内容块间距** | `24px` (`--wiki-space-block`) | 正文与组件（`.wiki-feature`）、图表（`.wiki-figure`）、表格（`.wiki-table-wrap`）、Callout 之间的上下标准流间距。 |
+| **4. 大标题底部间距** | `24px` (`--wiki-space-head-bottom`) | 章节大标题 (`h2`) 到底部正文或首个内容块的距离。 |
+| **4b. 首块等距铁律** | **严格等于 24px** | **当大标题下方直接跟小标题时（无引言正文），其间距严格等于大标题接正文（24px）**。首块强制 `margin-top: 0 !important`，严禁叠加小标题的 28px 顶边距。 |
+| **5. 章节间距 (宏观)** | `44px` (`--wiki-space-section`) | 大章节与大章节之间 (`section + section`) 的切换距离。全站彻底废弃 128px 巨大尾白，统一保持 44px 典雅宏观分界。 |
+
+### 铁律 7：全局基准与页面独有资产分工原则 (Global Baseline vs. Scoped Features Principle)
+
+为防止“牵一发而动全身”并杜绝底座代码臃肿，团队必须清晰划分**“必须写进总体的”**与**“绝不写进总体的”**：
+
+1. **必须写在总体的规范（全局基础设施，收敛在 `wiki-route-skin.css`）**：
+   - 宏观阅读器外壳尺寸（`--route-page`, `--toc-w`, `--reader-h`）。
+   - 全局垂直节奏阶梯（铁律 6 规定的 16px / 24px / 28px / 44px 及容器重置）。
+   - 标题马克笔折行与双色系统契约。
+   - 凡是约束**“全站正文基本面貌一致性”**的基础规则，必须统一收敛在全局。
+2. **严禁写在总体的特例（页面独有资产，收敛在 `[page]-panels.css`）**：
+   - 某个页面特有的自定义可视化（如 Description 的 8 步机制链 CSS、四抗原卡片网格；Sustainability 的 3D 旋转立体卡片；Experiments 的专属 Protocol 步骤抽屉）。
+   - 这些页面的独有组件与微观样式，必须存放在 `src/components/wiki/features/[module]/` 与 `src/styles/features/` 中。
+   - 组件内部容器的外部外边距一律 `margin: 0`，由全局 `.wiki-feature` 统一提供 24px 外间距。
+   - **复用原则**：后续其他页面若需要使用相同的交互模式（如其他页面也要用机制链或四卡片），直接复制或抽取通用组件，**绝不允许为了适配某个页面的特殊形状，在全局基础样式里打 `if` 特判或写死例外类名**。
+
 ---
 
 ## 六、老旧代码识别与渐进式迁移 Checklist

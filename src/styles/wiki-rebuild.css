@@ -1692,38 +1692,6 @@
   padding: clamp(84px, 8vw, 118px) 0;
 }
 
-.wiki-outline__header {
-  display: grid;
-  gap: 11px;
-  padding: 0 0 16px;
-  border-bottom: 1px solid color-mix(in srgb, var(--wiki-deep) 38%, transparent);
-}
-
-.wiki-outline__header > div {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 16px;
-}
-
-.wiki-outline__header p {
-  margin: 0;
-  color: var(--wiki-deep);
-  font-size: 15px;
-  font-weight: 780;
-}
-
-.wiki-outline__header strong,
-.wiki-outline__header > span {
-  color: var(--muted);
-  font-size: 11px;
-  font-weight: 650;
-}
-
-.wiki-outline__header > span {
-  color: var(--wiki-accent);
-}
-
 .wiki-outline nav {
   gap: 7px;
   padding: 14px 0;
