@@ -64,6 +64,14 @@
   --reader-h: calc(100dvh - var(--reader-header-h));
   --route-page: 1120px;
   --route-page-bg: var(--route-base);
+
+  /* Editorial vertical rhythm scale (全站正文排版与统一间距层级规范) */
+  --wiki-space-p: 16px;              /* 1. 最小：段落与段落间距 (p ↔ p) */
+  --wiki-space-subhead-top: 28px;    /* 2. 稍大：正文到小标题顶部 (Body → H3) */
+  --wiki-space-subhead-bottom: 14px; /* 2b. 贴合：小标题到底部紧随正文 (H3 → Body) */
+  --wiki-space-block: 24px;          /* 3. 规范：块级元素间距 (正文↔组件/图表/表格/Callout) */
+  --wiki-space-head-bottom: 24px;    /* 4. 再稍大：大标题到底下内容 (H2 → Content/H3) */
+  --wiki-space-section: 44px;        /* 5. 宏观：章节与章节间距 (Section ↔ Section) */
 }
 
 /* 2. Page surface ---------------------------------------------------------- */
@@ -367,154 +375,12 @@ html.has-route-reader-scroll {
     transform 260ms var(--ease-out);
 }
 
-.wiki-page.wiki-page--route .wiki-outline__header {
-  position: relative;
-  min-height: 0;
-  padding: 0 0 10px;
-  border-bottom: 1.5px dashed
-    color-mix(in srgb, var(--route-accent) 28%, transparent);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.wiki-page.wiki-page--route .wiki-outline__header-main {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.wiki-page.wiki-page--route .wiki-outline__mascot-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 38px;
-  height: 38px;
-  padding: 0;
-  border-radius: 50%;
-  background: #ffffff;
-  border: 1.5px solid color-mix(in srgb, var(--route-accent) 24%, transparent);
-  box-shadow: 0 2px 8px
-    color-mix(in srgb, var(--route-accent) 20%, transparent);
-  cursor: pointer;
-  transition:
-    transform 220ms cubic-bezier(0.34, 1.56, 0.64, 1),
-    box-shadow 220ms ease;
-  user-select: none;
-}
-
-.wiki-page.wiki-page--route .wiki-outline__mascot-btn:hover {
-  transform: scale(1.12) rotate(6deg);
-  box-shadow: 0 4px 14px
-    color-mix(in srgb, var(--route-accent) 32%, transparent);
-}
-
-.wiki-page.wiki-page--route .wiki-outline__mascot-btn:active,
-.wiki-page.wiki-page--route .wiki-outline__mascot-btn.is-bouncing {
-  animation: wiki-sheep-bounce 560ms cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-@keyframes wiki-sheep-bounce {
-  0% {
-    transform: scale(1);
-  }
-  30% {
-    transform: scale(1.22) rotate(-8deg);
-  }
-  60% {
-    transform: scale(0.95) rotate(5deg);
-  }
-  85% {
-    transform: scale(1.08) rotate(-2deg);
-  }
-  100% {
-    transform: scale(1) rotate(0deg);
-  }
-}
-
-.wiki-page.wiki-page--route .wiki-outline__header-info {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-
-.wiki-page.wiki-page--route .wiki-outline__header-label {
-  margin: 0;
-  color: var(--route-muted);
-  font-family: var(--font-sans);
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.02em;
-}
-
-.wiki-page.wiki-page--route .wiki-outline__header-counter {
-  margin: 0;
-  color: var(--route-ink);
-  font-family: var(--font-sans);
-  font-size: 14px;
-  font-weight: 760;
-  line-height: 1.2;
-}
-
-.wiki-page.wiki-page--route .wiki-outline__toast {
-  position: absolute;
-  top: -34px;
-  left: 6px;
-  z-index: 10;
-  padding: 4px 11px;
-  border-radius: 99px;
-  background: #ffffff;
-  color: var(--route-accent);
-  font-family: var(--font-sans);
-  font-size: 11px;
-  font-weight: 750;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
-  border: 1px solid color-mix(in srgb, var(--route-accent) 26%, transparent);
-  pointer-events: none;
-  animation: wiki-toast-in 2400ms cubic-bezier(0.2, 0.9, 0.3, 1) forwards;
-  white-space: nowrap;
-}
-
-.wiki-page.wiki-page--route .wiki-outline__toast::after {
-  content: "";
-  position: absolute;
-  bottom: -4px;
-  left: 16px;
-  width: 7px;
-  height: 7px;
-  background: #ffffff;
-  transform: rotate(45deg);
-  border-right: 1px solid
-    color-mix(in srgb, var(--route-accent) 26%, transparent);
-  border-bottom: 1px solid
-    color-mix(in srgb, var(--route-accent) 26%, transparent);
-}
-
-@keyframes wiki-toast-in {
-  0% {
-    opacity: 0;
-    transform: translateY(6px) scale(0.85);
-  }
-  12% {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-  80% {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-  100% {
-    opacity: 0;
-    transform: translateY(-4px) scale(0.9);
-  }
-}
-
 /* Slim progress pill */
 .wiki-page.wiki-page--route .wiki-outline__progress-pill {
   position: relative;
   width: 100%;
   height: 5px;
-  margin: 10px 0 6px;
+  margin: 2px 0 6px;
   border-radius: 99px;
   background: color-mix(
     in srgb,
@@ -531,7 +397,6 @@ html.has-route-reader-scroll {
   transition: width 280ms cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-.wiki-page.wiki-page--route .wiki-outline__header > span,
 .wiki-page.wiki-page--route .wiki-outline__ribbon {
   display: none;
 }
@@ -808,16 +673,19 @@ html.has-route-reader-scroll {
   overflow-y: clip;
 }
 
+.wiki-page--route.wiki-page--manuscript .wiki-section,
+.wiki-page.wiki-page--manuscript .wiki-section,
 .wiki-page--route .wiki-section {
   min-height: 0;
-  margin-top: 36px;
-  padding: 0;
+  margin-top: var(--wiki-space-section, 44px);
+  padding: 0 0 0 0 !important;
   border-top: 0;
   background: transparent;
 }
 
-.wiki-page--route .wiki-section:first-child {
-  margin-top: 0;
+.wiki-page--route .wiki-section:first-child,
+.wiki-page.wiki-page--manuscript .wiki-section:first-child {
+  margin-top: 0 !important;
   padding: 0;
   border-top: 0;
 }
@@ -832,23 +700,84 @@ html.has-route-reader-scroll {
   display: block;
   grid-template-columns: none;
   gap: 0;
-  margin: 0 0 clamp(18px, 1.8vw, 24px);
+  margin: 0 0 var(--wiki-space-head-bottom, 24px) !important;
   padding: 0;
   border: 0;
   overflow: visible;
 }
 
-/* 大标题与下方首段正文节奏：比段间距(20px)稍大一点(24px)，首块顶边距归零，消除空洞断层 */
+/* 铁律：首块顶边距强制归零。当首块是小标题时，大标题与小标题的间距与正文严格相等 (24px) */
 .wiki-page--route .wiki-section > .wiki-blocks > *:first-child,
 .wiki-page--route .wiki-section > .wiki-prose:first-child,
 .wiki-page--route .wiki-section > .wiki-prose,
-.wiki-page--route .wiki-blocks > *:first-child {
+.wiki-page--route .wiki-blocks > *:first-child,
+.wiki-page.wiki-page--manuscript .wiki-blocks > *:first-child {
   margin-top: 0 !important;
 }
 
+/* 正文排版系统：段内段间距最小 (16px)，单向 flex 流彻底消除 margin 泄漏与多重叠加 */
+.wiki-page--route.wiki-page--manuscript .wiki-prose,
+.wiki-page.wiki-page--manuscript .wiki-prose,
 .wiki-page--route .wiki-prose {
-  margin-left: 0;
-  margin-right: 0;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: var(--wiki-space-p, 16px) !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  max-width: none !important;
+}
+
+.wiki-page--route.wiki-page--manuscript .wiki-prose p,
+.wiki-page.wiki-page--manuscript .wiki-prose p,
+.wiki-page--route .wiki-prose p {
+  margin: 0 !important;
+  line-height: 1.75;
+}
+
+/* 连续两个 prose 块相邻时，保持标准正文段落间距，消除 80px 异常大断层 */
+.wiki-page--route .wiki-prose + .wiki-prose {
+  margin-top: var(--wiki-space-p, 16px) !important;
+}
+
+/* 组件/插槽容器归一化：消除 42px 冗余，与正文保持统一 24px 呼吸感 */
+.wiki-page--route.wiki-page--manuscript .wiki-feature,
+.wiki-page.wiki-page--manuscript .wiki-feature,
+.wiki-page--route .wiki-feature {
+  margin-top: var(--wiki-space-block, 24px) !important;
+  margin-bottom: var(--wiki-space-block, 24px) !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  padding: 0 !important;
+  min-width: 0;
+  max-width: 100%;
+  overflow-x: clip;
+  overflow-y: visible;
+}
+
+/* 图片/表格/Callout/Split 标准块级间距统一收敛为 24px */
+.wiki-page--route .wiki-figure {
+  margin: var(--wiki-space-block, 24px) 0 !important;
+}
+
+.wiki-page--route .wiki-table-wrap {
+  margin: var(--wiki-space-block, 24px) 0 !important;
+}
+
+.wiki-page--route .wiki-callout {
+  margin: var(--wiki-space-block, 24px) 0 !important;
+}
+
+.wiki-page--route .wiki-boundary {
+  margin: var(--wiki-space-block, 24px) 0 !important;
+}
+
+.wiki-page--route .wiki-epigraph {
+  margin: var(--wiki-space-block, 24px) 0 !important;
+}
+
+.wiki-page--route .wiki-blocks--split {
+  margin-top: var(--wiki-space-block, 24px) !important;
+  margin-bottom: var(--wiki-space-block, 24px) !important;
 }
 
 .wiki-page--route .wiki-section__heading--unnumbered,
@@ -980,7 +909,10 @@ html.has-route-reader-scroll {
 .wiki-page.wiki-page--manuscript .wiki-subheading {
   position: relative;
   padding-left: 0;
-  margin: clamp(24px, 3vw, 36px) 0 clamp(10px, 1.2vw, 16px);
+  margin-top: var(--wiki-space-subhead-top, 28px) !important;
+  margin-bottom: var(--wiki-space-subhead-bottom, 14px) !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
   border: 0;
 }
 
@@ -1557,36 +1489,223 @@ html.has-route-reader-scroll {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
-  /* Locked layout holds on mobile: the TOC row is capped in the mat's own row
-     definition (contract side, not card side); the frame fills the rest. */
-  .wiki-page.wiki-page--route .wiki-record {
-    grid-template-columns: minmax(0, 1fr);
-    grid-template-rows: minmax(0, 36dvh) minmax(0, 1fr);
-    gap: 12px;
-    padding: 12px;
+  /* Mobile = plain document flow (WikiRoutePage disables the pinned reader at
+     this same breakpoint). The hero sits under the header instead of behind
+     it, keeps its 16:9 art whole, and the article follows directly. */
+  .wiki-page.wiki-page--route {
+    margin-top: 0;
   }
 
-  .wiki-page.wiki-page--route .wiki-record--full {
-    grid-template-rows: minmax(0, 1fr);
+  .wiki-page--route .wiki-page-progress {
+    display: none;
   }
 
-  .wiki-page.wiki-page--route .wiki-outline {
-    position: relative;
-    inset: auto;
-    top: auto;
+  .wiki-page.wiki-page--route.wiki-page--manuscript .wiki-hero {
+    width: 100%;
     height: auto;
-    max-height: none;
-    transform: none;
+    min-height: 0;
+    max-height: 45vh;
+    aspect-ratio: 16 / 9;
+    background-position: center top;
+    background-size: contain;
   }
 
-  .wiki-page--route .route-frame {
-    height: 100%;
+  /* Heroes that still print a title/lede grow with their copy (16:9 stays the
+     minimum) instead of clipping it. */
+  .wiki-page.wiki-page--route.wiki-page--manuscript
+    .wiki-hero:has(.wiki-hero__copy) {
+    max-height: none;
+    overflow: visible;
+  }
+
+  .wiki-page.wiki-page--route.wiki-page--manuscript .wiki-hero__copy {
+    padding: 24px 0;
+  }
+
+  .wiki-page.wiki-page--route .wiki-reader-track {
+    height: auto;
+  }
+
+  .wiki-page.wiki-page--route .wiki-reader-track > .wiki-record {
+    position: relative;
+    top: auto;
+    display: block;
+    height: auto;
+    padding: 16px;
+  }
+
+  .wiki-page.wiki-page--route .wiki-record .route-frame {
+    height: auto;
     min-height: 0;
+    background-position: top center;
+    background-repeat: repeat-y;
+    background-size: 100% auto;
+  }
+
+  .wiki-page.wiki-page--route .wiki-record .route-frame__scroll {
+    height: auto;
+    overflow-x: clip;
+    overflow-y: visible;
+  }
+
+  /* TOC → off-canvas drawer. Out of flow; slides in from the right. */
+  .wiki-page.wiki-page--route .wiki-record .wiki-outline {
+    position: fixed;
+    z-index: 160;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: auto;
+    width: min(80vw, 420px);
+    height: 100dvh;
+    max-height: none;
+    margin: 0;
+    padding: calc(16px + env(safe-area-inset-top)) 16px
+      calc(20px + env(safe-area-inset-bottom));
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    border: 0;
+    border-left: 2px solid color-mix(in srgb, var(--route-accent) 20%, #ffffff);
+    border-radius: 22px 0 0 22px;
+    background: color-mix(
+      in srgb,
+      var(--route-soft) 62%,
+      rgba(255, 255, 255, 0.82)
+    );
+    -webkit-backdrop-filter: blur(14px);
+    backdrop-filter: blur(14px);
+    visibility: hidden;
+    transform: translateX(100%);
+    transition:
+      transform 320ms var(--ease-out),
+      visibility 0s linear 320ms;
+  }
+
+  .wiki-page--route.is-toc-open .wiki-record .wiki-outline {
+    visibility: visible;
+    transform: translateX(0);
+    transition:
+      transform 320ms var(--ease-out),
+      visibility 0s;
+  }
+
+  .wiki-page--route .wiki-outline__drawer-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 0 2px 10px;
+    color: var(--route-ink);
+    font-family: var(--font-sans);
+    font-size: 15px;
+    font-weight: 750;
+  }
+
+  .wiki-page--route .wiki-outline__close {
+    display: inline-flex;
+    width: 40px;
+    height: 40px;
+    flex: none;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    border: 1px solid color-mix(in srgb, var(--route-accent) 22%, transparent);
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.72);
+    color: var(--route-accent);
+    font-size: 24px;
+    line-height: 1;
+    cursor: pointer;
+  }
+
+  .wiki-page--route .wiki-outline__close:focus-visible,
+  .wiki-page--route .wiki-toc-trigger:focus-visible {
+    outline: 2px solid var(--route-accent);
+    outline-offset: 2px;
+  }
+
+  /* Comfortable one-thumb targets inside the drawer. */
+  .wiki-page.wiki-page--route .wiki-record .wiki-outline nav {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .wiki-page.wiki-page--route .wiki-record .wiki-outline nav .wiki-outline__primary {
+    min-height: 46px;
+  }
+
+  .wiki-page.wiki-page--route .wiki-record .wiki-outline nav .wiki-outline__secondary {
+    min-height: 40px;
+  }
+
+  .wiki-page.wiki-page--route .wiki-record .wiki-outline__related a {
+    min-height: 42px;
+  }
+
+  .wiki-page--route .wiki-toc-backdrop {
+    position: fixed;
+    z-index: 150;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.35);
+    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
+    opacity: 0;
+    visibility: hidden;
+    touch-action: none;
+    transition:
+      opacity 280ms var(--ease-out),
+      visibility 0s linear 280ms;
+  }
+
+  .wiki-page--route.is-toc-open .wiki-toc-backdrop {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 280ms var(--ease-out), visibility 0s;
+  }
+
+  /* Floating trigger: right edge, above the back-to-top sheep (88–96px). */
+  .wiki-page--route .wiki-toc-trigger {
+    position: fixed;
+    z-index: 90;
+    right: 12px;
+    bottom: calc(136px + env(safe-area-inset-bottom));
+    display: inline-flex;
+    min-width: 44px;
+    min-height: 44px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1px;
+    padding: 6px 8px;
+    border: 1px solid color-mix(in srgb, var(--route-accent) 26%, #ffffff);
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--route-soft) 55%, rgba(255, 255, 255, 0.7));
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 6px 18px color-mix(in srgb, var(--route-ink) 16%, transparent);
+    color: var(--route-accent);
+    font-family: var(--font-sans);
+    font-size: 10px;
+    font-weight: 750;
+    line-height: 1;
+    cursor: pointer;
+    transition: transform 180ms var(--ease-out);
+  }
+
+  .wiki-page--route .wiki-toc-trigger:active {
+    transform: scale(0.94);
+  }
+}
+
+/* The TOC trigger and backdrop only exist on mobile. */
+@media (min-width: 981px) {
+  .wiki-page--route .wiki-toc-trigger,
+  .wiki-page--route .wiki-toc-backdrop {
+    display: none;
   }
 }
 
 @media (max-width: 640px) {
-  html.has-route-reader-scroll {
+  html.has-route-reader-scroll,
+  html:has(.wiki-page--route) {
     --header-height: 62px;
   }
 

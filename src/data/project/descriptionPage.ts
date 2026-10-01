@@ -229,7 +229,7 @@ export const solutionData = {
   ],
   antigenModule: {
     kicker: "Target selection",
-    title: "Antigen Module",
+    title: "Antigen Selection Module",
     paragraphs: [
       "The first challenge is deciding **what the vaccine should target**.",
       "TNBC is molecularly heterogeneous and lacks the classical ER- or HER2-based therapeutic targets found in other breast cancer subtypes (Yin et al. 2020). We therefore focused on tumor-associated antigens with relevance to TNBC and evaluated their expression and tumor specificity through literature analysis and bioinformatic screening.",
@@ -258,43 +258,49 @@ export const solutionData = {
       "Our experimental characterization showed that the resulting circRNA achieved a **circularization rate and purity above 90%**, providing a quality-control foundation for subsequent functional experiments. RT-qPCR and **back-splice junction (BSJ) sequencing** were used to verify successful circularization and distinguish circular products from linear RNA.",
     ],
   },
-  deliveryInVitroModule: {
-    kicker: "Cellular uptake & activation",
-    title: "Delivery & Immune Activation",
+  deliveryModule: {
+    kicker: "Preclinical delivery route",
+    title: "Delivery",
     paragraphs: [
-      "The final module of CirCure connects our engineered circRNA with the immune system.",
-      "For future therapeutic application, we envision **lipid nanoparticles (LNPs)** as the delivery system for protecting circRNA and facilitating its uptake by target cells. In our current **in vitro functional validation**, however, we use **electroporation** to efficiently introduce circRNA into cells. This provides a direct experimental route for evaluating the biological activity of our constructs without making delivery efficiency a major variable (Wan et al. 2024).",
-      "Following delivery, our experimental evaluation focuses on a sequence of biological questions: **whether the circRNA can support antigen expression, whether the encoded antigens can engage the intended immune pathway, and whether this immune activation can ultimately contribute to TNBC cell killing**.",
-      "These measurements are intended to connect molecular RNA quality with functional anti-tumor activity rather than treating vaccine production and biological efficacy as independent endpoints.",
-      "Our overall design can therefore be summarized as:",
-      "**circRNA design → intracellular delivery → antigen expression → antigen presentation → CD8⁺ T-cell activation → tumor-cell killing**",
-      "Together, these modules connect the **molecular design of circRNA** with its intended **anti-tumor immune function**, allowing CirCure to be evaluated as an integrated vaccine platform rather than as an isolated RNA construct.",
-      "Our results showed that CirCure maintained **more sustained antigen expression than the corresponding mRNA control**, with detectable expression lasting for approximately **three days**, whereas the mRNA signal declined more rapidly. This result supports our original rationale for selecting circRNA as the RNA architecture for the vaccine.",
-      "We further evaluated interactions with dendritic cells. **Cellular uptake and dendritic-cell activation were assessed using flow cytometry, including CD80/CD86 expression, together with Western blot analysis.** These experiments provided evidence that CirCure can interact with dendritic cells and induce immune activation.",
-      "We also observed **innate immune activation without pronounced cytotoxicity**, supporting the feasibility of using circRNA as both an antigen-expression platform and an immunostimulatory component. Importantly, the absence of substantial cytotoxicity provides an initial indication that the observed immune effects are not simply attributable to nonspecific cellular damage.",
-      "Finally, we evaluated the functional consequence of this immune activation using a **calcein-release-based cytotoxicity assay**. Under our experimental conditions, CirCure-mediated immune responses achieved **up to approximately 80% killing of TNBC cells**, providing an initial functional link between circRNA vaccination and tumor-cell cytotoxicity.",
-      "Together, these results establish an experimental chain from **RNA production and quality → sustained antigen expression → dendritic-cell activation → immune-mediated TNBC cell killing**.",
+      "For future therapeutic applications, we envision **lipid nanoparticles (LNPs)** as the primary delivery system for CirCure. LNPs may protect circRNA from degradation, improve cellular uptake, and facilitate delivery to relevant target cells. This strategy is also compatible with the broader development of RNA-based therapeutic platforms.",
+      "In the current in vitro validation, however, we use **electroporation** to introduce circRNA into cells efficiently. This approach provides a direct and reproducible method for evaluating the biological activity of our constructs while minimizing the influence of delivery efficiency as an independent experimental variable (Wan et al. 2024).",
+      "Using electroporation allows us to focus on the intrinsic properties of CirCure, including its ability to support antigen expression and induce downstream biological responses. Delivery and therapeutic formulation remain separate areas for future optimization, particularly with respect to LNP composition, tissue targeting, administration route, and in vivo biodistribution.",
+      "Therefore, the current delivery strategy serves as an experimental validation method rather than a finalized clinical formulation. It enables us to evaluate the function of circRNA under controlled conditions while maintaining a clear path toward future LNP-based delivery.",
+    ],
+  },
+  immuneActivationModule: {
+    kicker: "In vitro immunological evaluation",
+    title: "Immune Activation",
+    paragraphs: [
+      "Following intracellular delivery, we evaluated whether CirCure could support sustained antigen expression and activate immune cells involved in antigen processing and presentation.",
+      "**CirCure produces more sustained antigen expression than the corresponding mRNA control.** Detectable expression persisted for approximately three days, whereas the mRNA signal declined more rapidly. This finding supports the rationale for selecting circRNA as the RNA architecture of CirCure and suggests that its prolonged expression may provide a broader time window for downstream antigen processing and presentation.",
+      "We next investigated the interaction between CirCure and dendritic cells. Cellular uptake and dendritic-cell activation were assessed by flow cytometry, **including analysis of the co-stimulatory molecules CD80 and CD86, together with Western blot analysis.** These experiments provided evidence that CirCure can be taken up by dendritic cells and induce activation-associated responses.",
+      "CirCure also induced innate immune activation without causing pronounced cytotoxicity under the tested conditions. This finding supports the potential of circRNA to function not only as an antigen-expression platform, but also as an immunostimulatory component of the vaccine. The limited cytotoxicity observed in these experiments is important because it suggests that the detected immune responses were not primarily caused by nonspecific cellular damage.",
+      "Together, these results demonstrate that CirCure can maintain antigen expression, interact with dendritic cells, and induce immune activation under in vitro conditions. These findings provide the basis for subsequent evaluation of the anti-tumor consequences of CirCure-induced immune responses in vitro and in vivo.",
+    ],
+  },
+  inVivoValidationModule: {
+    kicker: "Preclinical evidence & translational boundaries",
+    title: "In Vivo Validation Module",
+    paragraphs: [
+      "We evaluated the anti-tumor activity of CirCure at both **cellular and animal levels.**",
+      "In vitro, the functional consequence of CirCure-induced immune activation was assessed using a calcein-release-based cytotoxicity assay. Under the tested conditions, **CirCure-mediated immune responses resulted in up to approximately 80% killing of TNBC cells.** This result provides initial evidence that the immune responses induced by CirCure can translate into measurable tumor-cell cytotoxicity.",
+      "To further evaluate anti-tumor activity in vivo, we established an antigen-matched murine tumor model. Because the endogenous expression of key TNBC-associated antigens, including TROP2, is relatively low in wild-type 4T1 cells, we first generated a stable TROP2-overexpressing 4T1 cell line. The modified cells were validated at both the mRNA and membrane-protein levels, providing a standardized model in which tumor cells could present the selected target antigen for vaccine-induced immune recognition.",
+      "We then established a syngeneic subcutaneous tumor model in immunocompetent **BALB/c mice.** CirCure LNP vaccine was administered subcutaneously on days 0, 7, 14, 21, and 28. PBS and empty circRNA vector groups were included as parallel controls to distinguish antigen-specific anti-tumor effects from nonspecific responses associated with the circRNA backbone or the LNP delivery system.",
+      "Tumor growth was monitored throughout the immunization period, followed by tumor resection and endpoint measurement. These readouts enabled us to evaluate whether CirCure vaccination could suppress tumor progression and reduce tumor burden in vivo.",
+      "To examine the immune basis of the observed tumor effects, we analyzed both the tumor microenvironment and systemic immune responses. **Tumor-infiltrating CD8⁺ cytotoxic T cells and Granzyme B expression** were evaluated by immunofluorescence staining to determine whether CirCure increased the recruitment and activation of cytotoxic effector cells within the tumor. In parallel, splenic immune profiling was used to assess dendritic-cell maturation, CD8⁺ T-cell activation, and the production of cytotoxic mediators, including IFN-γ and Granzyme B.",
+      "Taken together, the in vitro cytotoxicity assay and the in vivo tumor model provide complementary evidence for the anti-tumor activity of CirCure. The in vitro results demonstrate that CirCure-induced immune responses can lead to TNBC cell killing, while the in vivo experiments evaluate whether this activity is associated with tumor growth control and cytotoxic immune-cell responses in an immunocompetent setting.",
+      "The current model has several limitations. It uses an engineered TROP2-overexpressing murine tumor line, and species-specific differences in antigen processing and MHC presentation limit direct extrapolation to human TNBC. Therefore, these results should be interpreted as preclinical evidence supporting the feasibility and anti-tumor potential of the CirCure platform, rather than as a complete prediction of clinical efficacy. Further studies using additional tumor models and human-relevant antigen-presentation systems will be needed to define the contribution of antigen-specific CD8⁺ T cells and to support future translational development.",
     ],
   },
   designOutlook: {
     kicker: "Platform integration",
-    title: "An Integrated Vaccine Platform (Design Outlook)",
+    title: "An Integrated Vaccine Platform",
     paragraphs: [
-      "The strength of CirCure lies in the connection between these modules:",
-      "**Antigen Selection → circRNA Design → Circularization → Purification & Validation → Delivery → Antigen Presentation → T-cell Activation → Tumor Killing**",
       "Each module addresses a specific limitation identified in our design process, while the overall architecture remains modular enough to be adapted to different antigen profiles.",
-      "Rather than asking **“Can we make a circRNA?”**, we ask a broader question: **“Can circRNA engineering provide a flexible platform for designing multi-antigen cancer vaccines?”**",
-      "CirCure therefore represents a starting point for exploring this approach in TNBC. The immediate goal is not to claim clinical efficacy, but to determine whether the engineered circRNA can successfully pass through each stage of the proposed workflow—from molecular construction and quality control to antigen expression, immune activation, and tumor-cell killing.",
-    ],
-  },
-  inVivoValidationModule: {
-    kicker: "Preclinical evidence",
-    title: "In Vivo Validation Module",
-    paragraphs: [
-      "Building upon the validated in vitro antigen expression and immune activation outcomes, we further established a series of in vivo experiments to verify the antitumor efficacy and systematic immune-regulatory mechanism of the multi-antigen circRNA vaccine CirCure. Given the low endogenous expression of key TNBC-targeted antigens (represented by TROP2) in wild-type 4T1 cells, we first constructed and validated a stable TROP2-overexpressing 4T1 cell line via lentiviral transduction, GFP sorting, puromycin screening, and dual-level validation at both mRNA and membrane protein levels. This antigen-matched tumor cell model provides a standardized and reliable platform for subsequent in vivo vaccine evaluation, ensuring that tumor lesions can present targeted antigens for vaccine-induced T-cell recognition.",
-      "We further established subcutaneous TNBC xenograft models in immunocompetent BALB/c mice and implemented a standardized immunization regimen with CirCure LNP vaccine administered subcutaneously at days 0, 7, 14, 21, and 28. PBS and empty circRNA vector groups were set as parallel controls to distinguish antigen-specific antitumor immunity from non-specific innate immune stimulation induced by circRNA backbone or LNP delivery systems. Tumor growth kinetics were monitored throughout the immunization cycle, and endpoint tumor resection and measurement were performed to quantitatively evaluate the in vivo therapeutic efficacy of CirCure.",
-      "To dissect the underlying immune mechanism, we systematically investigated both local tumor microenvironment and systemic immune responses. Tumor-infiltrating CD8⁺ cytotoxic T lymphocytes and Granzyme B activation were detected via immunofluorescence staining, verifying that CirCure vaccination effectively enhances intratumor immune cell infiltration and effector T-cell activation. At the systemic level, splenic immune profiling was performed to assess dendritic cell maturation, CD8⁺ T cell activation, and cytotoxic cytokine secretion (IFN-γ and Granzyme B), demonstrating that CirCure triggers robust and systemic antitumor immune responses rather than localized inflammatory reactions.",
-      "Collectively, the in vivo module completes the full functional verification chain of CirCure from molecular quality verification and in vitro immune activation to tangible in vivo antitumor efficacy. Despite the HLA-MHC mismatch limitation of the current mouse model, these in vivo results fully validate the feasibility, immune-activating capacity, and therapeutic potential of our multi-antigen circRNA vaccine platform for TNBC treatment, providing solid preclinical evidence for its further translational optimization and postoperative recurrence prevention application.",
+      "Rather than asking **“Can we make a circRNA?”**, we ask a broader question:",
+      "**“Can circRNA engineering provide a flexible platform for designing multi-antigen cancer vaccines?”**",
+      "CirCure therefore represents a starting point for exploring this approach in TNBC. The immediate goal is not to claim clinical efficacy, but to determine whether the engineered circRNA can successfully pass through each stage of the proposed workflow from molecular construction and quality control to antigen expression, immune activation, and tumor-cell killing.",
     ],
   },
 };
@@ -330,10 +336,10 @@ export const computationalToolsData = {
 export const oncologyImpactData = {
   title: "Oncology Impact and Access",
   summary:
-    "Positioning CirCure as an adjuvant platform while adhering to rigorous evidence boundaries and addressing real-world access dimensions.",
+    "Positioning CirCure as an advanced-stage adjuvant platform while adhering to rigorous evidence boundaries and addressing real-world access dimensions.",
   paragraphs: [
     "CirCure is currently positioned as an **advanced-stage adjuvant therapeutic platform for TNBC**, particularly for patients whose tumors express one or more of the selected target antigens. Our project focuses on the **treatment dimension** of the Oncology Track: we aim to explore whether a multi-antigen circRNA vaccine can broaden immune recognition of heterogeneous TNBC tumors and contribute to better tumor control. At this stage, we do not define a specific postoperative or recurrent/metastatic treatment indication, as determining the appropriate clinical setting will require further preclinical and clinical evidence.",
-    "For CirCure, **boosting survival rate cannot be claimed directly from an in vitro vaccine study**. We therefore define a measurable sequence of endpoints connecting our current experiments with eventual clinical outcomes: **circRNA quality → antigen expression and persistence → immune activation → TNBC cell killing → tumor control → recurrence and metastasis → survival**. Our current experiments focus on the early stages of this chain, including circRNA circularization and purity, antigen expression and its duration, cellular uptake and immune activation, and cytotoxicity against TNBC cells. These results will help determine whether CirCure has sufficient biological activity to justify subsequent in vivo evaluation. Future animal studies will then assess tumor growth, regression, recurrence, and metastasis, while longer-term clinical studies would be required to determine whether these effects ultimately translate into improved progression-free and overall survival. In this way, **survival is treated as the ultimate clinical endpoint rather than an unsupported claim at the current stage**.",
+    "For CirCure, **boosting survival rate cannot be claimed directly from an in vitro vaccine study**. We therefore define a measurable sequence of endpoints connecting our current experiments with eventual clinical outcomes. Our current experiments focus on the early stages of this chain, including circRNA circularization and purity, antigen expression and its duration, cellular uptake and immune activation, and cytotoxicity against TNBC cells. These results will help determine whether CirCure has sufficient biological activity to justify subsequent in vivo evaluation. Future animal studies will then assess tumor growth, regression, recurrence, and metastasis, while longer-term clinical studies would be required to determine whether these effects ultimately translate into improved progression-free and overall survival. In this way, **survival is treated as the ultimate clinical endpoint rather than an unsupported claim at the current stage**.",
     "However, biological efficacy alone does not determine whether a cancer therapy can contribute to **quality and equitable cancer care**. To address the access dimension of the Oncology Track, we will evaluate **manufacturability, storage stability, delivery requirements, companion biomarker requirements, and cost alongside biological efficacy**. Manufacturing evaluation will consider whether circRNA production and purification can be performed reproducibly and whether the workflow can move beyond laboratory-scale production. Storage studies will examine whether the product can maintain sufficient quality over time and under practical storage conditions. Delivery requirements will be considered together with the complexity of administration and the feasibility of the proposed delivery system. Because CirCure uses multiple tumor-associated antigens, companion biomarker requirements are also important: patient selection should be based on tumor antigen profiles rather than assuming that every TNBC patient will respond to the same antigen combination. Finally, cost and manufacturing complexity will be considered together with biological performance to identify potential barriers to broader access.",
     "We also recognize that **cancer care extends beyond the development of a therapeutic product**. Our Education activities therefore do not claim to provide clinical cancer prevention or professional patient care. Instead, they contribute to the broader care ecosystem by improving public understanding of cancer biology, synthetic biology, and biotechnology, while our project-level work focuses on developing a potential therapeutic approach. Together, these efforts allow us to address different dimensions of the Oncology Track without overstating the scope of CirCure.",
     "Ultimately, CirCure aims to move beyond the question of whether a circRNA vaccine can be engineered. We ask whether it can be developed into a **biologically effective, manufacturable, deliverable, and potentially accessible therapeutic strategy** for TNBC. Our current work establishes the experimental foundation for answering these questions, while tumor control, recurrence, metastasis, survival, and real-world accessibility remain the key challenges for subsequent stages of development.",
@@ -347,7 +353,7 @@ export const educationData = {
   paragraphs: [
     "Synthetic biology connects biology, engineering, medicine, and society, yet this interdisciplinary field can be difficult to approach without suitable educational opportunities. We therefore asked how we could make synthetic biology and oncology understandable and engaging for people at different stages of learning.",
     "We built an educational journey that spans **from children to the general public**. For younger students, we use **biology card games and interactive activities** to turn scientific knowledge into play. For middle school students, we introduce synthetic biology and cancer biology through accessible and engaging courses. High school students are given the opportunity to **step into the laboratory and experience hands-on experiments**, while university students explore the broader responsibilities of biotechnology through **ethics and biosafety debates**.",
-    "To extend learning beyond the classroom, we developed a **Virtual Laboratory** for students with limited access to experimental facilities and brought our science communication to the public through activities such as the **Xinghua Festival**.",
+    "To extend learning beyond the classroom, we developed a **Virtual Laboratory** for students with limited access to experimental facilities and brought our science communication to the public through activities such as the **Apricot Blossom Festival**.",
     "Through these different forms of engagement, we hope to make synthetic biology not only something to **learn**, but something to **experience, question, and discuss**—encouraging more people to understand biotechnology and inspiring the next generation to participate in the field.",
   ],
 };
@@ -424,13 +430,12 @@ export const descriptionPage: WikiPageContent = {
           ],
           aside: {
             type: "mini-visual",
-            title: "TNBC Challenges",
-            tone: "navy",
+            title: "Why TNBC",
             items: [
-              "15–20% of all breast cancer cases",
-              "Lacks ER, PR, and HER2 overexpression",
-              "High risk of recurrence and distant metastasis",
-              "Residual micrometastasis after surgery",
+              "Aggressive clinical course",
+              "Relatively poor median survival",
+              "High risk of recurrence and metastasis",
+              "Limited conventional molecular targets",
             ],
           },
         },
@@ -447,6 +452,10 @@ export const descriptionPage: WikiPageContent = {
           paragraphs: [introductionData.vaccineRationaleIntro],
         },
         {
+          type: "prose",
+          paragraphs: [introductionData.vaccineFormatComparison],
+        },
+        {
           type: "table",
           caption: "Table 1 | Comparison of therapeutic vaccine modalities",
           headers: [
@@ -460,34 +469,31 @@ export const descriptionPage: WikiPageContent = {
               "circRNA (CirCure)",
               "Covalently closed loop; exonuclease-resistant",
               "Cytoplasmic translation; no nuclear entry required",
-              "Sustained expression (days); intrinsic adjuvant effect",
+              "More sustained expression; potential adjuvant-like immunostimulation",
             ],
             [
               "Linear mRNA",
-              "5′ cap + 3′ poly(A) linear chain",
-              "Exonuclease-sensitive; requires strict cold chain",
-              "Transient expression; rapid in vivo degradation",
+              "Linear; exonuclease-sensitive",
+              "Cytoplasmic translation",
+              "Less sustained expression",
             ],
             [
               "DNA Vaccine",
               "Plasmid double-stranded DNA",
-              "Requires nuclear delivery & transcription",
-              "Risk of genomic integration; delayed kinetics",
+              "Requires nuclear entry",
+              "—",
             ],
             [
               "Protein / Peptide",
               "Synthesized antigen polypeptide",
-              "Requires complex ex vivo protein purification",
-              "Exogenous protein delivery; short half-life",
+              "Requires production and delivery of the antigen itself",
+              "—",
             ],
           ],
         },
         {
           type: "prose",
-          paragraphs: [
-            introductionData.vaccineFormatComparison,
-            introductionData.projectInception,
-          ],
+          paragraphs: [introductionData.projectInception],
         },
       ],
     },
@@ -502,6 +508,13 @@ export const descriptionPage: WikiPageContent = {
         {
           type: "prose",
           paragraphs: solutionData.leadParagraphs,
+        },
+        {
+          type: "prose",
+          paragraphs: [
+            "The central mechanism of CirCure can be summarized as:",
+            "**Antigen selection → circRNA engineering → RNA production → purification & quality control → cellular delivery → antigen expression & presentation → CD8⁺ T-cell activation → TNBC cell killing**",
+          ],
         },
         {
           type: "feature",
@@ -564,42 +577,41 @@ export const descriptionPage: WikiPageContent = {
           aside: {
             type: "mini-visual",
             title: "Molecular Characterization",
-            tone: "care",
             items: [
-              ">90% circularization rate & purity",
-              "RNase R exonuclease digestion verification",
+              "Circularization rate and purity >90%",
+              "RNase R treatment to remove linear RNA",
+              "RT-qPCR verification",
               "Back-splice junction (BSJ) sequencing",
-              "Dual-primer RT-qPCR junction confirmation",
             ],
           },
         },
         {
           type: "subheading",
-          id: "delivery-immune-module",
+          id: "delivery-module",
           index: "2.4",
-          kicker: solutionData.deliveryInVitroModule.kicker,
-          title: solutionData.deliveryInVitroModule.title,
+          kicker: solutionData.deliveryModule.kicker,
+          title: solutionData.deliveryModule.title,
         },
         {
           type: "prose",
-          paragraphs: solutionData.deliveryInVitroModule.paragraphs,
+          paragraphs: solutionData.deliveryModule.paragraphs,
+        },
+        {
+          type: "subheading",
+          id: "immune-activation-module",
+          index: "2.5",
+          kicker: solutionData.immuneActivationModule.kicker,
+          title: solutionData.immuneActivationModule.title,
+        },
+        {
+          type: "prose",
+          paragraphs: solutionData.immuneActivationModule.paragraphs,
         },
         {
           type: "callout",
           tone: "navy",
           label: "Functional Readout",
-          body: "CirCure maintained sustained in vitro antigen expression lasting ~3 days, verified dendritic cell activation (CD80/CD86 upregulation) without cytotoxicity, and mediated up to approximately 80% TNBC cell killing via calcein-release cytotoxicity assays.",
-        },
-        {
-          type: "subheading",
-          id: "integrated-platform-outlook",
-          index: "2.5",
-          kicker: solutionData.designOutlook.kicker,
-          title: solutionData.designOutlook.title,
-        },
-        {
-          type: "prose",
-          paragraphs: solutionData.designOutlook.paragraphs,
+          body: "More sustained antigen expression than the mRNA control (~3 days); DC uptake and activation (CD80/CD86) without pronounced cytotoxicity; up to ~80% TNBC cell killing under our experimental conditions (calcein release).",
         },
         {
           type: "subheading",
@@ -615,6 +627,10 @@ export const descriptionPage: WikiPageContent = {
         {
           type: "figure",
           ...descriptionFigures.fig4,
+        },
+        {
+          type: "prose",
+          paragraphs: solutionData.designOutlook.paragraphs,
         },
       ],
     },
@@ -637,13 +653,6 @@ export const descriptionPage: WikiPageContent = {
           type: "prose",
           paragraphs:
             computationalToolsData.beyondStructurePrediction.paragraphs,
-        },
-        {
-          type: "callout",
-          tone: "neutral",
-          label: "In Silico Workflow",
-          body:
-            "**circRNA sequence → circular structure → structural stability → immune sensing (RIG-I, TLR7/8, PKR)**",
         },
         {
           type: "subheading",
@@ -677,9 +686,9 @@ export const descriptionPage: WikiPageContent = {
         {
           type: "callout",
           tone: "coral",
-          label: "Evidence Boundary: Proof, Not Premature Promise",
+          label: "Evidence boundary",
           body:
-            "**Boosting survival rate cannot be claimed directly from an in vitro vaccine study.** CirCure establishes a measurable sequence of endpoints: **circRNA quality → antigen expression and persistence → immune activation → TNBC cell killing → tumor control → recurrence and metastasis → survival**.",
+            "Current data cover the first four links of the chain; tumor control, recurrence, and survival remain untested.",
         },
         {
           type: "figure",
@@ -692,37 +701,37 @@ export const descriptionPage: WikiPageContent = {
         {
           type: "table",
           caption:
-            "Table 2 | 5-Dimension evaluation for equitable oncology care",
+            "Table 2 | Access dimensions to be evaluated alongside biological efficacy",
           headers: [
             "Dimension",
             "Key Evaluation Focus",
-            "CirCure Strategy & Implementation",
+            "Planned Evaluation",
           ],
           rows: [
             [
               "Manufacturability",
               "Can circRNA production be performed reproducibly at scale?",
-              "Self-splicing intron-mediated synthesis with standard enzymatic purification workflow",
+              "Reproducibility of self-splicing intron-mediated production and purification beyond laboratory scale",
             ],
             [
               "Storage Stability",
               "Can product quality be maintained under practical storage conditions?",
-              "Lyophilization protocols and thermal stability optimization to minimize ultra-cold dependence",
+              "Product quality over time under practical storage conditions",
             ],
             [
               "Delivery Requirements",
               "Is the delivery method clinically feasible with low procedural burden?",
-              "Lipid nanoparticles (LNPs) tailored for subcutaneous lymphatic drainage and uptake",
+              "Administration complexity and feasibility of the proposed delivery system",
             ],
             [
               "Companion Biomarkers",
-              "How are patients stratified for multi-epitope match?",
-              "Antigen profiling for Trop-2, LIV-1, Nectin-4, and B7-H4 expression prior to regimen",
+              "How are patients stratified for multi-antigen match?",
+              "Patient selection by tumor antigen profile (Trop-2, LIV-1, Nectin-4, B7-H4)",
             ],
             [
               "Cost & Scalability",
               "Are manufacturing costs compatible with broader patient access?",
-              "Cell-free enzymatic circularization avoiding expensive ex vivo cell-culture cycles",
+              "Cost and manufacturing complexity weighed against biological performance",
             ],
           ],
         },

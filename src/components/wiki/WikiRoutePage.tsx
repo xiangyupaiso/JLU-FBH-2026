@@ -3,6 +3,7 @@ import {
   memo,
   useContext,
   useEffect,
+  useId,
   useMemo,
   useRef,
   useState,
@@ -52,6 +53,9 @@ import "../../styles/features/experiments-panels.css";
 
 type FeatureMap = Partial<Record<string, ReactNode>>;
 
+/** Mobile breakpoint; must match the `@media (max-width: 980px)` skin block. */
+const COMPACT_QUERY = "(max-width: 980px)";
+
 interface WikiScrollState {
   activeSection: string;
   activeSubsection: string;
@@ -70,6 +74,19 @@ const WikiPageScrollContext = createContext<WikiScrollState>({
 export function useRoutePageScroll() {
   return useContext(WikiPageScrollContext);
 }
+
+/**
+ * Optional per-page inline formatter for prose paragraphs (e.g. turning
+ * "(Sung et al. 2026)" into citation links). Receives the raw paragraph and
+ * the default `**bold**` formatter; when omitted every route page keeps its
+ * current rendering unchanged.
+ */
+export type InlineRenderer = (
+  text: string,
+  fallback: (t: string) => ReactNode,
+) => ReactNode;
+
+const InlineRendererContext = createContext<InlineRenderer | null>(null);
 
 interface WikiRoutePageProps {
   content: WikiPageContent;
@@ -93,6 +110,11 @@ interface WikiRoutePageProps {
   collapsibleSubheadings?: boolean;
   /** Optional protocol pairs metadata to enable TOC preview and modal */
   protocolPairs?: ExperimentProtocolPair[];
+  /**
+   * Optional inline formatter for prose paragraphs (citation links on the
+   * Description page). Defaults to plain `**bold**` rendering.
+   */
+  inlineRenderer?: InlineRenderer;
 }
 
 const STATUS_LABELS = {
@@ -254,7 +276,10 @@ function splitNoteContent(body: string): string[] {
   return [body.trim()];
 }
 
-function renderProseParagraphs(paragraphs: string[]): ReactNode[] {
+function renderProseParagraphs(
+  paragraphs: string[],
+  inline: InlineRenderer | null = null,
+): ReactNode[] {
   const elements: ReactNode[] = [];
   let stepBuffer: Array<{ num: string; text: string }> = [];
 
@@ -277,7 +302,7 @@ function renderProseParagraphs(paragraphs: string[]): ReactNode[] {
   };
 
   paragraphs.forEach((paragraph, idx) => {
-    const stepMatch = paragraph.match(/^\s*(\d+)[\.、]\s+(.*)$/s);
+    const stepMatch = paragraph.match(/^\s*(\d+)[.、]\s+(.*)$/s);
     if (stepMatch) {
       stepBuffer.push({ num: stepMatch[1], text: stepMatch[2] });
       return;
@@ -315,7 +340,9 @@ function renderProseParagraphs(paragraphs: string[]): ReactNode[] {
     }
 
     elements.push(
-      <p key={`p-${idx}`}>{renderInlineFormatting(paragraph)}</p>,
+      <p key={`p-${idx}`}>
+        {inline ? inline(paragraph, renderInlineFormatting) : renderInlineFormatting(paragraph)}
+      </p>,
     );
   });
 
@@ -334,6 +361,8 @@ function RouteBlock({
   sectionId: string;
   scrollContainerRef?: RefObject<HTMLElement | null>;
 }) {
+  const inline = useContext(InlineRendererContext);
+
   const scrollToTarget = (targetId: string) => {
     const target = document.getElementById(targetId);
     if (!target) return;
@@ -345,7 +374,7 @@ function RouteBlock({
     case "prose":
       return (
         <div className="wiki-prose" data-wiki-reveal>
-          {renderProseParagraphs(block.paragraphs)}
+          {renderProseParagraphs(block.paragraphs, inline)}
         </div>
       );
     case "prose-linked":
@@ -814,6 +843,7 @@ export function WikiRoutePage({
   hideHeroCopy = false,
   collapsibleSubheadings = false,
   protocolPairs,
+  inlineRenderer,
 }: WikiRoutePageProps) {
   const rootRef = useRef<HTMLElement>(null);
   const interfaceRef = useRef<HTMLDivElement>(null);
@@ -863,6 +893,48 @@ export function WikiRoutePage({
   const wideFlow =
     enableWideFlow &&
     window.matchMedia("(min-width: 1200px) and (min-height: 700px)").matches;
+
+  // Mobile (≤980px, same breakpoint as the skin): plain document flow instead
+  // of the pinned reader, and the TOC becomes an off-canvas drawer.
+  const [compact, setCompact] = useState(
+    () => window.matchMedia(COMPACT_QUERY).matches,
+  );
+  const [tocOpen, setTocOpen] = useState(false);
+  const outlineId = useId();
+  const tocTriggerRef = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    const media = window.matchMedia(COMPACT_QUERY);
+    const onChange = () => setCompact(media.matches);
+    media.addEventListener("change", onChange);
+    return () => media.removeEventListener("change", onChange);
+  }, []);
+
+  const drawerOpen = compact && tocOpen;
+
+  useEffect(() => {
+    if (!drawerOpen) return;
+    const trigger = tocTriggerRef.current;
+    const outline = document.getElementById(outlineId);
+    outline?.querySelector<HTMLElement>(".wiki-outline__close")?.focus({
+      preventScroll: true,
+    });
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setTocOpen(false);
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => {
+      window.removeEventListener("keydown", onKeyDown);
+      trigger?.focus({ preventScroll: true });
+    };
+  }, [drawerOpen, outlineId]);
+
+  const documentFlow = wideFlow || compact;
+  const drawerScrollBehavior: ScrollBehavior = window.matchMedia(
+    "(prefers-reduced-motion: reduce)",
+  ).matches
+    ? "instant"
+    : "smooth";
   const sectionIds = useMemo(
     () => content.sections.map((section) => section.id),
     [content.sections],
@@ -872,10 +944,10 @@ export function WikiRoutePage({
     sectionIds,
     scrollRef,
     content.route,
-    !wideFlow,
+    !documentFlow,
     wideFlow,
   );
-  useRouteReaderScroll(!wideFlow, interfaceRef, scrollRef);
+  useRouteReaderScroll(!documentFlow, interfaceRef, scrollRef);
 
   const scrollContextValue = useMemo(
     () => ({ activeSection, activeSubsection }),
@@ -909,7 +981,7 @@ export function WikiRoutePage({
       ref={rootRef}
       className={`wiki-page wiki-page--route wiki-page--manuscript route--reader ${
         wideFlow ? "route--wide-flow" : ""
-      } ${pageClassName}`}
+      } ${drawerOpen ? "is-toc-open" : ""} ${pageClassName}`}
       data-wiki-route={content.route}
       data-route-theme={theme}
       data-active-section={activeSection}
@@ -947,8 +1019,45 @@ export function WikiRoutePage({
                 setActiveProtocolModal({ pair, initialTab: tab })
               }
               onSelectSubheading={openSubheading}
+              {...(compact
+                ? {
+                    id: outlineId,
+                    scrollBehavior: drawerScrollBehavior,
+                    onRequestClose: () => setTocOpen(false),
+                  }
+                : {})}
             />
           )}
+
+          {compact && !hideOutline ? (
+            <>
+              <button
+                ref={tocTriggerRef}
+                type="button"
+                className="wiki-toc-trigger"
+                aria-controls={outlineId}
+                aria-expanded={tocOpen}
+                aria-label="Open table of contents"
+                onClick={() => setTocOpen(true)}
+              >
+                <svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true">
+                  <path
+                    d="M3 5h14M3 10h14M3 15h9"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    fill="none"
+                  />
+                </svg>
+                <span>TOC</span>
+              </button>
+              <div
+                className="wiki-toc-backdrop"
+                aria-hidden="true"
+                onClick={() => setTocOpen(false)}
+              />
+            </>
+          ) : null}
 
           <WikiPageScrollContext.Provider value={scrollContextValue}>
             <div className="route-frame">
@@ -959,18 +1068,20 @@ export function WikiRoutePage({
                 aria-label={`${content.title} article`}
               >
                 <article className="wiki-article">
-                  {content.sections.map((section) => (
-                    <MemoRouteSection
-                      key={section.id}
-                      section={section}
-                      feature={features[section.id]}
-                      features={features}
-                      scrollContainerRef={scrollRef}
-                      collapsibleSubheadings={collapsibleSubheadings}
-                      openSubheadingIds={openSubheadingIds}
-                      onToggleSubheading={toggleSubheading}
-                    />
-                  ))}
+                  <InlineRendererContext.Provider value={inlineRenderer ?? null}>
+                    {content.sections.map((section) => (
+                      <MemoRouteSection
+                        key={section.id}
+                        section={section}
+                        feature={features[section.id]}
+                        features={features}
+                        scrollContainerRef={scrollRef}
+                        collapsibleSubheadings={collapsibleSubheadings}
+                        openSubheadingIds={openSubheadingIds}
+                        onToggleSubheading={toggleSubheading}
+                      />
+                    ))}
+                  </InlineRendererContext.Provider>
                 </article>
               </div>
             </div>
