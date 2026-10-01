@@ -1,0 +1,4401 @@
+# 6\.3 Sustainability wiki定稿
+
+> “Sustainable development is the pathway to the future we want for all\. It offers a framework to generate economic growth, achieve social justice, exercise environmental stewardship and strengthen governance\.”
+> 
+> 
+
+— **Ban Ki\-moon, UN Secretary\-General**
+
+
+
+# Overview
+
+In response to global **social**, **economic**, and **environmental** challenges to sustainable development, JLU\-FBH identified three core sustainable development goals based on the characteristics of CirCure\. （下面的地方加SDG图标）
+
+![image\.png](图片和附件/image%2011.png)
+
+Building on these core goals and extending our work to additional SDGs, we developed the **Set–Develop–Grow Impact Framework \(SDG Impact Framework\)**\. （下面还是换图标，然后每个SDG要加跳转到该部分的内容）
+
+//这两个要分开呈现，不是在一起翻页的 按照现在页面的方式去做上面这个就好了 但是不需要再有那个翻页的逻辑（给ai的提示词 不是正文内容）
+
+![image\.png](图片和附件/image%204.png)
+
+We have continuously **incorporated** feedback from **94 stakeholders across seven fields** into project design and evaluation, allowing real\-world needs to inform project positioning, technical optimization, and sustainability decisions\.
+
+![image\.png](图片和附件/image%2012.png)
+
+Figure 1: Map of stakeholders
+
+In order to ground this impact framework in CirCure itself, we established the **SCALE Model** to identify **relevant SDG stakeholders, incorporate their feedback into our work, **and  further evaluate the project systematically in terms of **project impacts**, **cross\-SDG relationships**, **reusable outcomes**, and **supporting evidence\.**
+
+![filename\.png](图片和附件/filename.png)
+
+Figure 2: SCALE Model
+
+To further support the assessment of **cross\-SDG** relationships within the **Alignment component of the SCALE Model**, we proposed the **SDG Synergy–Trade\-off Quantification Network \(SST\-QN\)** to systematically analyze potential **positive and negative interactions** among SDGs\. We structured this process as a reusable analytical workflow and assessment framework to **help future iGEM teams reduce duplicated effort** when designing evaluation criteria, assessing interactions, and organizing results\.
+
+![image\.png](图片和附件/image%207.png)
+
+Figure 3: SDG Synergy–Trade\-off Quantification Network
+
+Beyond project evaluation, we also **documented** our actions, data, and impact, ultimately forming **26 reusable methods and tools** that make our SDG contributions more **measurable, verifiable, and reusable** for future iGEM teams\.
+
+![image\.png](图片和附件/image%202.png)
+
+Figure 4: Reusable Sustainability Toolkit
+
+
+
+# SDG Synergy–Trade\-off Quantification Network（**SST\-QN**）
+
+The Sustainable Development Goals are interconnected\. Progress toward one goal can advance others, but it can also introduce new constraints depending on how and where it is pursued\. Therefore, examining a project’s links to individual SDGs in isolation cannot fully capture the synergies and trade\-offs within the broader sustainable development system\.
+
+These connections became clearer during our participation in the **Acceleration Week for Global Youth Development Programs in 2026 \(click to learn\)**\. JLU\-FBH was invited to this **UNICEF\-organized** exchange event, where we joined the **“Health and Well\-being”** thematic group\. When conversations with young people working in health, technology, education, and green development, we realised that even projects sharing the goal of improving health can have different impacts depending on technological conditions, access to resources, social equity, and the implementation context\. This shifted our focus beyond **“Which SDGs is CirCure related to?”** to a deeper set of questions: **How are these goals connected? Do these connections always hold? Under what conditions might they change?**
+
+To examine these relationships systematically, we established **SST\-QN** as an initial screening framework covering all 17 SDGs\. It starts with potential **directed interactions** among SDGs in a general context\. Drawing on existing mechanisms and evidence, the model assigns each potential direct relationship an **Interaction Status**: **Core \(C\)** for direct relationships with relatively clear support; **Exploratory \(E\)** for those with plausible mechanisms but limited evidence; **Conditional \(±\)** for those whose effects depend on specific implementation conditions; and **Excluded \(0\)** for those that currently lack sufficient support\.
+
+![image\.png](图片和附件/image%203.png)
+
+Figure 4: SST\-QN Interaction Status Classification
+
+Before assigning quantitative scores, we specified **which direct interactions among the 17 SDGs were eligible for analysis and the status assigned to each**\. This prevented relationships from being arbitrarily added or reinterpreted after the results were obtained\.
+
+![image\.png](图片和附件/image%208.png)
+
+Figure 5: Pre\-specified Direct\-edge Boundary Matrix
+
+We then used the **Evidence\-calibrated Directed Interaction Score**, ranging from **−1 to 1**, to characterize the **direction and relative strength** of interactions among SDGs\. Positive values indicate a **Positive Interaction \(Synergy\)**, negative values indicate a **Negative Interaction \(Trade\-off\)**, and 0 indicates that **no direct interaction is currently supported**\. **Interaction Status and Interaction Direction are distinct**: status describes the evidence and conditions underpinning a relationship, whereas direction indicates whether the interaction is positive or negative\. The score additionally expresses its relative strength\.
+
+![image\.png](图片和附件/image%201.png)
+
+Figure 6: Direct Interaction Scores Among the 17 SDGs
+
+Beyond direct interactions, SST\-QN allows for the analysis of **indirect propagation, feedback, time lags, and implementation conditions**\. Many **Negative Interactions / Trade\-offs** arise from how an SDG is pursued—for\. For example, through resource consumption, increased costs, or unequal distribution—rather than from the goal itself\. The direction of **Conditional relationships** must therefore be assessed within the specific project context\.
+
+SST\-QN provides **an initial screening in a general context**, identifying potential relationships that warrant closer attention\. For CirCure, we then use **Alignment** within the SCALE Model to calibrate this assessment against our technical design, stakeholder feedback, and actual implementation conditions\. SST\-QN establishes the initial boundaries of relationship analysis; Alignment assesses whether and how these relationships occur in CirCure and under what conditions\.
+
+To support further testing and reuse, we fully documented our relationship assessments, scoring rationales, and the evidence and conditions underpinning them\. This allows the analysis to be updated as new evidence and data become available and as project contexts evolve\. Beyond explaining current SDG interactions, SST\-QN offers future iGEM teams a **traceable, reproducible analytical framework that can be continually refined**\. It provides a directly reusable methodological foundation to help teams reduce duplicated effort in identifying relationships, setting analytical boundaries, and developing evaluation methods\. Teams can use this foundation to identify potential synergies and trade\-offs and to assess and optimize the sustainability impacts of their projects\.
+
+[SDG 模型构建\.pdf](图片和附件/SDG%20模型构建.pdf)
+
+With this SDG interaction network established, we returned to CirCure itself\. We mapped our project activities, **stakeholder feedback**, and potential **long\-term impacts **onto the SDGs\. This mapping formed the basis of our SDG Impact Framework\.
+
+# SET\-DEVELOP\-GROW Impact Framework（SDG Impact Framework）
+
+The SDG Impact Framework describes how CirCure’s sustainable development impacts evolve as the project develops—from **directly addressing core challenges** to **broader sustainable development impacts**, and ultimately to the systemic value it may generate over the long term\. **SET** represents the core SDGs that CirCure directly addresses in response to its project objectives and stakeholder needs\. **DEVELOP** captures the broader impacts and connections with additional SDGs that emerge as research and development, translation, and societal engagement progress\. **GROW** represents the SDGs that CirCure could further advance through long\-term research and development, clinical translation, and implementation at scale\.
+
+![image\.png](图片和附件/image%209.png)
+
+Figure 7: SET\-DEVELOP\-GROW Impact Framework \(SDG Impact Framework\)
+
+The framework traces CirCure’s sustainability pathway from **addressing core challenges \(SET\)** through **extending impacts across multiple dimensions \(DEVELOP\)** to **long\-term sustainability value \(GROW\)**\. It considers what the project can directly address today while distinguishing impacts already generated from potential contributions that depend on long\-term development\. This distinction helps avoid overstating CirCure’s sustainability outcomes at its current stage\.
+
+## SET：Addressing Core Challenges
+
+WHO reports the following figures: In 2024, there were an estimated 2\.4 million women diagnosed with breast cancer and 694,000 deaths globally\. With effective targeted treatment options still limited, triple\-negative breast cancer \(TNBC\) remains challenging to treat, with restricted therapeutic options, a high risk of recurrence, and poor long\-term prognosis\. In response to this unmet clinical need, CirCure focuses on developing novel immunotherapeutic strategies while also considering their long\-term value for technological innovation, clinical translation, and responsible development\.
+
+These real\-world needs informed our selection of **SDG 3 \(Good Health and Well\-being\)**, **SDG 9 \(Industry, Innovation and Infrastructure\)**, and **SDG 12 \(Responsible Consumption and Production\)** as CirCure’s three core sustainable development goals within **SET**\. They correspond, respectively, to **patient health benefits, technological innovation and translation, and responsible resource use in research and development and future production**\. Guided by these goals, we sought input from patients, clinicians, researchers, industry professionals, and other relevant groups\. Their perspectives on real\-world needs, technical feasibility, clinical application, and resource use helped us continually assess and refine the project\. SET thus provided a practical foundation for CirCure’s subsequent design, evaluation, and sustainability analysis\.
+
+As a single stakeholder’s feedback may relate to multiple SDGs, we categorized the feedback by its **primary area of impact**\. We then use Alignment to examine the cross\-SDG synergies, conditional relationships, and potential trade\-offs reflected in that feedback\.
+
+### SDG3: Good Health and Well\-being
+
+For patients with TNBC, uncertainty about recurrence can persist long after surgery, while additional treatment may bring physical, practical, and financial burdens\. We chose SDG 3 to guide our exploration of a **postoperative therapeutic vaccine strategy**, keeping **long\-term benefit, quality of life, and access** central to how we evaluate its potential—so that our research responds to patients’ hopes of planning their lives with greater confidence\.
+
+#### S — Stakeholder Insights
+
+To understand what meaningful health value would look like for CirCure, we engaged stakeholders across the patient journey\. Clinicians helped us define the clinical need and target population; patients and families helped us understand treatment value and burden; Professionals in payment and healthcare access helped us consider affordability and accessibility; and other health\-related stakeholders further informed communication, prevention, and long\-term implementation\. Together, these perspectives progressively shaped whom CirCure aims to serve, how we evaluate its potential value, and what conditions would be necessary for that value to reach patients\.
+
+##### **01\-李成丽医生\-Clinical Oncology**
+
+**Relevant Stakeholder**
+
+长期参与肿瘤患者诊疗与治疗决策，能够从临床实践判断不同阶段 TNBC 患者真正需要解决的治疗问题。
+
+**Challenge**
+Is minimizing side effects really the primary goal of cancer treatment?
+
+**Key Insight**
+对于已经完成手术的 TNBC 患者，最需要面对的是之后仍可能发生的复发和转移。因此，一种新的术后辅助治疗首先要看能否带来明确的治疗获益；安全性很重要，但应当建立在疗效基础上进一步优化。
+
+**What Changed**
+我们将 CirCure 进一步聚焦于 **TNBC 术后辅助治疗场景**，把降低复发和转移风险、获得更长期生存获益作为未来需要回应的核心需求，并形成“**疗效优先，安全性优化**”的项目原则。
+
+**Current Status**
+`Incorporated`
+
+**SDGs Addressed**
+ SDG 3 · SDG 9 
+
+Click more
+
+##### **02\-TNBC Patients\-Target Patients**
+
+**Relevant Stakeholder**
+
+作为 CirCure 未来最直接的潜在使用者和受益者，患者能够直接判断一种额外术后治疗是否真正值得接受。
+
+**Challenge**
+What makes an additional postoperative treatment worth accepting?
+
+**Key Insight**
+降低复发和转移风险、获得长期生存获益仍是患者最核心的期待，但是否愿意接受额外治疗，还受到**副作用、生活质量、治疗费用、家庭负担以及对新技术的信任程度**共同影响。
+
+**What Changed**
+我们明确，疗效是患者考虑额外术后治疗的前提，但“有效”并不等于“值得接受”，患者还会判断这份获益是否值得承担相应的**身体、生活和经济负担**。
+
+**Current Status**
+`Incorporated`
+
+**SDGs Addressed**
+ SDG 3 · SDG 9 · SDG 10 
+
+
+
+Click more
+
+
+
+（李成丽详细）点击click more 后显示
+
+**After Surgery, What Matters Most Is Reducing Recurrence and Living Longer\.**
+
+Early in the project, we described CirCure in broad terms: a potential new therapeutic approach for TNBC, with an emphasis on the possible safety advantages of circRNA vaccines\. Our conversation with Dr\. Chengli Li revealed a fundamental gap in this framing: **patients at different stages of TNBC have different needs\.**
+
+**01 First, Define Whom We Aim to Help**
+
+Dr\. Li began by emphasizing that **the clinical needs of patients with TNBC vary with the stage of their disease\.**
+
+For patients who have undergone surgery, removal of the primary tumor does not eliminate the risk of recurrence and metastasis\. The key question at this stage is whether a new adjuvant therapy can build on existing treatment to **further reduce recurrence and metastasis and deliver more sustained disease control and long\-term benefits**, rather than whether it can shrink the tumor\. Once cancer has recurred or metastasized, the focus shifts toward controlling disease progression and finding additional effective treatment options\.
+
+This distinction led us to reconsider CirCure’s intended clinical setting\. We narrowed our focus from patients with TNBC in general to **those who have undergone surgery but remain at risk of recurrence and metastasis**, positioning CirCure as a potential adjuvant therapeutic strategy following surgery\.
+
+**02 “Fewer Side Effects” Is Not Enough**
+
+When we first introduced CirCure, we emphasized the possibility that circRNA vaccines might cause “fewer side effects\.” Dr\. Li’s response was direct: **for patients with cancer, the first question is whether a treatment works\.** A new adjuvant therapy that offers clear improvements in disease control and reduces the risk of recurrence and metastasis may be worth considering despite some side effects, provided the risks are acceptable\. Safety remains important, but **the possibility of fewer side effects alone does not establish a treatment’s value when its efficacy is still uncertain\.**
+
+**03 Reordering Our Evaluation Priorities**
+
+After this discussion, we shifted our emphasis from “fewer side effects” to **prioritizing efficacy and optimizing safety**\. Demonstrating antigen expression from circRNA and the induction of an immune response are experimental validation tasks for CirCure at its current stage\. From a patient perspective, the more important question is whether these findings could ultimately support **a therapeutic approach that reduces recurrence and metastasis after surgery and improves long\-term outcomes**\. We cannot demonstrate these outcomes at this stage\. They are **directions for future evaluation** that Dr\. Li helped us define\.
+
+The interview therefore prompted us to clarify two fundamental questions:
+
+**Whom do we ultimately want CirCure to serve?** — Patients with TNBC who remain at risk of recurrence and metastasis after surgery\.
+
+**What should we assess first when judging its value?** — Whether it can deliver sufficient therapeutic benefit, while pursuing further improvements in safety and patient acceptability\.
+
+
+
+These questions defined what we needed to learn next from patients\. Before approaching patients and their families, however, we also considered how these sensitive conversations should be conducted responsibly\. This led us to consult Runhui Tian on patient communication and humanistic care\.
+
+
+
+##### 1\.5\-Runhui Tian · Patient Communication \& Humanistic Care
+
+**Relevant Stakeholder**
+Experienced in patient communication, helping us understand how to approach sensitive conversations with patients and their families\.
+
+**Challenge**
+How can we engage patients without causing additional emotional distress?
+
+**Key Insight**
+Sensitive topics should be discussed with respect for patients’ emotional boundaries, avoiding intrusive questions and allowing them to decline topics they do not wish to discuss\.
+
+**What Changed**
+Before interviewing patients and their families, we adjusted our communication approach by using open, non\-judgmental questions and incorporating humanistic care into our engagement principles\.
+
+**Current Status**
+Incorporated
+
+**SDGs Addressed**
+SDG 3
+
+click more
+
+Before Asking Patients, We First Learned How to Listen
+
+As CirCure gradually became more focused on patients with TNBC after surgery, we wanted to hear directly from patients and their families about recurrence, treatment burden, quality of life, and their expectations for a new adjuvant therapy\. However, these topics are closely connected to personal experiences of illness, treatment, uncertainty, and family pressure\. Before beginning these conversations, we first asked an important question: **how should we approach patients and their families without turning stakeholder engagement into another source of emotional burden?**
+
+**01 Not Every Question Needs to Be Asked**
+
+In our discussion with Runhui Tian, we were reminded that communication with patients should not be treated in the same way as an ordinary project interview\. Questions about recurrence, prognosis, treatment side effects, financial pressure, and family responsibilities may bring patients back to difficult experiences\. Even when such questions are relevant to our project, relevance alone does not justify repeatedly probing sensitive experiences\.
+
+This prompted us to distinguish between information that would genuinely help us understand patient needs and questions that were merely interesting to us\. We avoided unnecessarily detailed questions about painful experiences and did not pursue topics when interviewees showed hesitation or discomfort\.
+
+**02 Give Patients Control Over the Conversation**
+
+Another important principle was to allow patients and family members to decide how much they wished to share\. During later interviews, we used more open\-ended and non\-judgmental questions, avoided suggesting what the “right” answer should be, and made it clear that sensitive questions could be skipped\.
+
+The goal was not to obtain the maximum amount of information, but to create a conversation in which participants could express what they considered important at their own pace\.
+
+**03 What Changed \| From “Collecting Feedback” to Respectful Engagement**
+
+This conversation changed the way we understood patient engagement\. We initially focused mainly on **what we wanted to learn from patients**\. Afterward, we also began asking **how the process of asking might affect them**\.
+
+We therefore incorporated respect, emotional sensitivity, voluntary participation, and the right not to answer into our patient and family interviews\. These principles subsequently guided our discussions about recurrence, quality of life, treatment burden, affordability, and family impact\.
+
+For us, this became an important part of SDG 3: improving health and well\-being is not only about designing better treatments, but also about ensuring that the people whose experiences inform our work are approached with dignity and care\.
+
+
+
+
+
+（患者详细）点击click more 后显示
+
+**What Makes a Treatment Worthwhile for Patients?**
+
+Dr\. Chengli Li helped us clarify the clinical priorities for patients with TNBC after surgery, while Runhui Tian helped us approach these conversations with greater sensitivity and respect\. We then spoke directly with four patients with TNBC or breast cancer to understand how they themselves evaluate treatment value\. Beyond whether a treatment works, we asked a more patient\-centered question: are its expected benefits worth the physical, psychological, and practical burdens it may bring?
+
+**01 Efficacy Remains the Central Expectation**
+
+Recurrence and metastasis were among the concerns raised most often in our conversations\. For patients who had already undergone surgery and treatment, the possibility of the cancer returning was not an abstract clinical outcome\. It remained a daily\-life concern after treatment had ended\.
+
+**Patient A** 💬
+
+“Of course I would worry about side effects, but I am more afraid of the cancer coming back\. If a treatment could really lower that risk and help me live longer, I would accept it as long as I could manage the side effects\.”
+
+**Patient C** 💬
+
+“After treatment ends, what worries me most is not knowing whether or when the cancer might come back\. If a new treatment could substantially reduce the chance of it returning or spreading, I might be more willing to accept some short\-term side effects\.”
+
+These conversations reinforced our earlier understanding: for patients after surgery, **a sufficiently clear therapeutic benefit is the starting point for deciding whether an additional treatment is worth considering\.** Their answers, however, also revealed further considerations\.
+
+**02 “Prioritizing Efficacy” Does Not Mean Ignoring Other Burdens**
+
+When we asked what side effects they would be willing to accept in exchange for treatment benefits, their answers became more nuanced\.
+
+**Patient B** 💬
+
+“I do not think living longer makes every side effect acceptable\. If a treatment left me very weak, in pain for a long time, or completely unable to look after myself, I would question whether it was worth it\.”
+
+**Patient D** 💬
+
+“I might be able to accept short\-term discomfort\. But if the side effects meant I could not work or care for my children and family for a long time, that would really concern me\.”
+
+The patients distinguished between temporary discomfort they could recover from and lasting effects on their work, family responsibilities, and everyday lives\. Their decision was not simply a choice between efficacy and safety\. It was a question of **how much they stood to gain and what they would have to bear in return**\.
+
+This deepened our understanding of “prioritizing efficacy and optimizing safety”: **efficacy is essential, but willingness to undergo treatment also depends on whether the benefits justify the risks and the impact on daily life\.**
+
+**03 The Burden Extends Beyond Physical Risks**
+
+Treatment decisions also reflect patients’ financial and family circumstances\. Costs, family burdens, and uncertainty about whether a new technology has been adequately tested can all influence their choices\.
+
+**Patient C** 
+
+“Besides the side effects, I would think about the price\. Even if the medicine worked very well, I would have to turn it down if my family could not afford it\.”
+
+**Patient A** 
+
+“If it were a new vaccine or treatment, I would want to know whether it had been thoroughly tested\. Of course it needs to work, but I would also worry about long\-term side effects that have not been discovered yet\.”
+
+These responses showed us that **an effective treatment is not automatically one that patients are willing or able to access**\.
+
+An additional treatment after surgery can place new demands on patients’ bodies, time, and finances\. With a newer technology, patients also need sufficient trust before they can consider it a viable treatment option\.
+
+**04 What Changed \| From “Does It Work?” to “Is It Worthwhile, and Can Patients Access It?”**
+
+The patient interviews clarified a central lesson: **a treatment must be effective, but patients must also feel that its benefits justify the burdens they would bear\.** We therefore understood Dr\. Chengli Li’s emphasis on “prioritizing efficacy” as a starting point, not as placing efficacy above all other considerations\. The benefit must be meaningful, side effects must not unduly compromise quality of life, and financial burdens must not put treatment beyond the reach of patients who would otherwise accept it\. Repeated concerns about costs also sharpened our understanding of affordability: what mattered to these patients was not simply the treatment’s price, but **how much they would ultimately have to pay out of pocket**\.
+
+
+
+##### 03\-**Family Caregivers · Family Burden \& Long\-term Care**
+
+**Relevant Stakeholder**
+
+作为患者治疗和康复过程中最直接的支持者，家属不仅了解患者治疗后的生活变化，也往往共同承担**治疗费用、照护责任、工作调整以及疾病复发带来的长期心理压力**。
+
+**Challenge**
+When treatment affects the whole family, what makes it truly worth accepting?
+
+**Key Insight**
+ 家属同样将**治疗有效、减少复发和转移**放在首位，但他们对治疗价值的判断还会进一步考虑：患者能否恢复正常工作和生活、是否需要长期家庭照护、新增治疗费用能否承担，以及疾病复发的不确定性会给家庭带来怎样的持续压力。
+
+**What Changed**
+ 家属的反馈让我们进一步看到，患者获益并不只发生在患者个人层面。我们因此在 CirCure 的长期影响评价中进一步关注**家庭经济负担、照护压力、工作与生活恢复以及复发带来的家庭心理压力**，使“治疗是否值得接受”的判断从患者个人体验进一步延伸到家庭层面。
+
+**Current Status** `Incorporated`
+
+**SDGs Addressed**
+ SDG 3 · SDG 10
+
+**Click More**
+
+---
+
+**Interviews with Patients’ Family Members \| Treatment Affects More Than the Patient**
+
+Our patient interviews showed how patients weigh efficacy, side effects, quality of life, and financial burdens\. Illness and treatment, however, also affect the people around them\. Surgery, subsequent treatment, follow\-up examinations, and ongoing worries about recurrence become part of the whole family’s life\.
+
+We therefore gathered perspectives from patients’ family members, drawing on their caregiving experiences to ask: **what matters most to families when a new adjuvant therapy following surgery is added to existing treatment?**
+
+**01 Efficacy Remains the Family’s First Consideration**
+
+Like patients, family members first want to know whether a treatment can deliver meaningful benefits, particularly by reducing recurrence and metastasis\.
+
+💬 “Of course, what we want most is for the treatment to work, lower the chance of the cancer coming back, and help her live longer\. But we also think about whether she will be able to live normally afterward\. If the side effects are severe and she needs us to care for her for a long time, that would put a lot of pressure on the whole family\.”
+
+For family members, **treatment efficacy remains a prerequisite**\. Their concerns also extend beyond clinical outcomes to the patient’s life after treatment\.
+
+
+
+**02 Treatment Burdens Become Family Burdens**
+
+Patients do not bear treatment costs and side effects alone\. When treatment prevents someone from working for an extended period or creates a need for ongoing care, the consequences extend to the whole family\.
+
+💬 “If it really works, we would certainly try to find a way to get her treated\. But we have to think about the cost too\. If she needs an expensive treatment for a long time, for an ordinary family it may not be about whether we want it, but whether we can actually afford it\.”
+
+💬 “Her illness has changed life for all of us, not just her\. Of course we want the treatment to work and stop the cancer from coming back, but we also worry about whether the side effects will affect her everyday life and work\. Controlling the disease matters to us, and so does helping her get back to her previous life as much as possible\.”
+
+These perspectives highlighted three further considerations in treatment value: **what the family can afford, how much care the patient will need, and whether the patient can return to everyday life**\.
+
+
+
+**03 Uncertainty About Recurrence Affects the Whole Family**
+
+Worries about recurrence do not end when treatment does\. Patients continue to face follow\-up examinations and uncertainty about their disease, with family members sharing these experiences over time\.
+
+💬“Even after treatment ends, we still worry about the cancer coming back\. We get very anxious before every follow\-up appointment\. If a new treatment could really lower the chance of the cancer returning or spreading, we might accept it even if the treatment process were a little more complicated\.”
+
+This helped us understand why patients after surgery and their families place such importance on **the risk of recurrence and metastasis**\. Reducing that risk matters both for future disease control and for rebuilding a more stable life\.
+
+
+
+**04 What Changed｜From Patient Benefits to Family Impacts**
+
+Family members’ feedback reinforced CirCure’s principle of **prioritizing efficacy and optimizing safety**, while broadening the scope of our evaluation of long\-term health value\.
+
+If an additional treatment after surgery becomes part of patients’ lives, its effects may extend beyond therapeutic benefits to **household spending, caregiving needs, work arrangements, and long\-term psychological stress**\. Our analysis of CirCure’s potential social and economic impacts therefore expanded from the burdens on individual patients to their wider effects on families\. **Treatment costs** again emerged as a recurring concern shared by patients and family members\. This led us to ask: **how much of the treatment’s price would patients and families ultimately have to pay themselves?**
+
+
+
+Together, these conversations showed that **the value of an adjuvant therapy following surgery extends beyond efficacy into the everyday lives of patients and families\.** Patients weigh side effects, quality of life, and costs\. Family members may also face additional expenses, caregiving responsibilities, changes to work arrangements, and the psychological strain of prolonged uncertainty about recurrence\. Affordability therefore involves more than a price tag\. It depends on whether patients and families can bear the additional treatment burden and whether treatment is a realistic option for them\. Drawing on the perspectives of clinicians, patients, and family members, we identified three real\-world issues that CirCure aims to address:
+
+- **Recurrence and metastasis after surgery remain persistent concerns for patients and families\.** Surgery does not end the need for treatment\. For patients with TNBC, the risk of recurrence and metastasis continues to affect future health and creates lasting uncertainty for families\. Further reducing these risks remains a primary goal of adjuvant therapy\.
+
+- **Long\-term patient benefits matter more than any single experimental result\.** Antigen expression, immune activation, and other experimental indicators are not the ultimate goal\. Their value lies in whether they could eventually support **more sustained disease control, a lower risk of recurrence and metastasis, and long\-term survival benefits**, while helping patients return as fully as possible to work, family life, and daily activities\.
+
+- **Treatment must be effective, acceptable, affordable, and accessible to patients and families\.** Additional treatment can bring side effects, disruption to daily life, new expenses, and caregiving demands\. Whether a technology delivers real\-world health value depends on patients’ willingness to undergo treatment, families’ ability to bear its burdens, and the support available through health insurance, supplementary coverage, and healthcare resources\. We therefore incorporated **safety, quality of life, patient acceptability, family burden, and treatment accessibility** into CirCure’s long\-term evaluation\.
+
+
+
+Patients and families helped us understand whether an additional postoperative treatment would be worth accepting\. We next asked a different question: even if patients considered it worthwhile, could they realistically afford and access it? This shifted our attention from treatment value itself to the conditions that determine whether that value can actually reach patients\. We therefore consulted stakeholders involved in healthcare payment, insurance, and resource access\.
+
+
+
+##### **04\-王建国\-Healthcare Payment \& Reimbursement**
+
+**Relevant Stakeholder**
+ 熟悉医保政策、医疗费用结算和报销机制，能够帮助我们理解治疗价格如何进一步转化为患者真实承担的费用。
+
+**Key Insight**
+一种新的治疗即使已经能够被使用，也不意味着能够同步获得充分医保支付。患者真正承担的费用还取决于**医保覆盖范围、报销政策、支付条件以及个人自付比例**。
+
+**What Changed**
+我们不再直接用“治疗价格”判断患者是否能够负担，而将重点转向**医保支付后的实际自付费用**。在 CirCure 的真实价格和医保覆盖情况尚不清楚之前，不能提前判断其具有良好的经济可及性。
+
+**Current Status**
+`Incorporated`
+
+**SDGs Addressed**
+ SDG 3 · SDG 10
+
+###### What Treatment Costs Is Not What Patients Pay
+
+Treatment costs came up repeatedly in our patient interviews\. Further discussion revealed that patients were often less concerned with a medicine’s listed price than with **how much they would ultimately have to pay out of pocket after insurance reimbursement**\. For patients with TNBC who have already undergone surgery and standard treatment, adding another adjuvant therapy could create expenses that directly influence whether they can take it up\.
+
+We therefore consulted hospital staff involved in health insurance administration to understand how far insurance could help cover patients’ costs once a new treatment enters clinical use\.
+
+**01 Treatment Availability Does Not Guarantee Insurance Coverage**
+
+The discussions clarified that a treatment can enter clinical use before it is covered by basic medical insurance\. Coverage depends on further evaluation and policy processes\. In the meantime, patients may have to pay a substantial share of the costs themselves, even when the treatment is available\. Nor does coverage result in the same financial burden for everyone: the amount patients pay depends on **specific reimbursement policies, coverage conditions, and individual circumstances**\. We therefore separated what we had broadly called “treatment costs” into two questions: **How much does the treatment cost?** And **how much will the patient actually pay?** The second is more directly relevant to whether patients can access it\.
+
+**02 Additional Costs Matter in Adjuvant Therapy Following Surgery**
+
+CirCure is intended for patients with TNBC who have undergone surgery but remain at risk of recurrence and metastasis\. If it eventually becomes an additional adjuvant therapy within their treatment pathway, its cost would come on top of the expenses they already face\. Even if it offers promising therapeutic benefits, high additional out\-of\-pocket costs could prevent some patients from receiving it\. This sharpened our understanding of accessibility: **the question is not only whether a treatment is available, but who can actually access it**\.
+
+**03 What Changed**
+
+The discussion prompted us to revise a key assumption: **a treatment’s price alone does not establish whether patients can afford it**\.
+
+What more directly shapes patients’ financial burden is the amount they must pay out of pocket after insurance reimbursement\. Without actual pricing and coverage information, we therefore do not claim that CirCure is affordable based solely on potential production costs, anticipated prices, or the possibility of future insurance coverage\.
+
+The conversation also raised a further question: **what other forms of support could help patients meet treatment costs beyond basic medical insurance?**
+
+If basic medical insurance does not fully cover the additional costs and patients still face substantial out\-of\-pocket expenses, could supplementary coverage help? To explore this possibility, we spoke with Jing Wen, a commercial health insurance professional\.
+
+
+
+##### **05\-Jing Wen\-Commercial Health Insurance**
+
+**Relevant Stakeholder**
+熟悉商业健康保险中的特药保障和医疗费用赔付机制，能够帮助我们了解基本医保之外，患者是否还存在其他分担治疗费用的可能。
+
+**Challenge**
+Who can actually benefit from commercial health insurance when coverage differs from patient to patient?
+
+**Key Insight**
+商业健康保险可能通过特药保障等方式补充部分治疗费用，但这种保障具有明显的条件限制，取决于**患者是否投保、产品责任范围、药物是否符合保障条件以及具体赔付规则**，并不能覆盖所有患者。
+
+**What Changed**
+我们修正了此前对商业保险作用过于笼统的判断：**商业健康保险可以改善部分符合条件患者的支付能力，但不能被视为解决所有患者治疗负担的普遍方案。**
+
+**Current Status**
+`Incorporated`
+
+**SDGs Addressed**
+ SDG 3 · SDG 10
+
+**Click more**
+
+###### 保险行业访谈｜医保之外，还有哪些支付可能？
+
+与医院医保管理人员交流后，我们已经认识到，患者真正承担的治疗费用并不等于治疗本身的价格。基本医保是否覆盖、能够报销多少，都会影响最终落到患者身上的自付负担。在此基础上，我们进一步与商业健康保险从业者**文静**进行了交流，希望了解基本医保之外，商业保险能够在多大程度上为患者提供补充保障。
+
+**01 商业保险可以补充，但并不是人人都有**
+
+文静提到，一些商业健康保险产品会设置**特药保障**等责任。在符合保险条款的情况下，部分创新药物的费用可以获得一定程度的支持。对于基本医保暂时无法充分覆盖的治疗，这类保障确实可能减轻部分患者的经济压力。**但这种支持有很强的条件性。**
+
+患者是否已经购买相应保险、所购买的产品是否包含相关责任、具体药物是否属于保障范围，以及最终是否符合赔付条件，都会影响实际能够获得多少支持。因此，商业保险可以作为基本医保之外的一种补充，但它并不是所有患者都能够自然获得的保障。
+
+**02 同一种治疗，不同患者面对的负担可能并不一样**
+
+这次交流也让我们注意到，即使面对同一种治疗，不同患者拥有的支付条件也可能存在明显差异。有些患者可能同时拥有基本医保和商业健康保险，有些患者只有基本医保；即使已经投保，不同产品提供的保障范围和赔付条件也并不相同。**这意味着，治疗价格相同，并不代表每位患者最终承担的费用相同。**对于未来可能增加的术后辅助治疗而言，这种差异也可能进一步影响患者是否愿意、以及是否有能力接受治疗。
+
+**03 What Changed**
+
+文静的反馈让我们修正了此前一个过于简单的认识。
+
+商业健康保险确实能够为部分患者提供补充保障，但这种作用建立在具体投保和保障条件之上，因此**不能把“市场上存在商业保险”直接等同于“患者能够获得费用支持”**。对 CirCure 来说，**它可能改善部分患者的支付条件，但无法解决不同患者之间普遍存在的治疗负担和可及性差异。**
+
+
+
+
+
+**但“付得起”并不意味着“用得上”。** 在支付问题之外，医疗资源、实际应用条件以及不同地区和人群获得治疗机会的差异，同样会影响一种新的术后辅助治疗能否真正惠及患者。因此，我们进一步听取医学、肿瘤学和公共健康领域专家的意见，从更广的角度理解 CirCure 未来可能面对的**患者获益、治疗可及性和健康公平问题**。
+
+
+
+##### **06 · Lei Wang — Healthcare Resources \& Health Equity**
+
+**Relevant Stakeholder**
+Experienced in healthcare services and resource allocation, helping us consider whether new treatment options can realistically reach different patients\.
+
+**Challenge**
+Can a treatment truly benefit patients if access depends on available healthcare resources?
+
+**Key Insight**
+Treatment access depends not only on efficacy and affordability, but also on healthcare capacity, service availability, and patients’ opportunities to receive care\.
+
+**What Changed**
+We expanded our understanding of accessibility from whether patients can afford treatment to whether they can realistically obtain it, incorporating healthcare resources and health equity into CirCure’s long\-term evaluation\.
+
+**Current Status**
+Incorporated
+
+**SDGs Addressed**
+SDG 3 · SDG 10
+
+
+
+##### **07\-Yawen Liu — Women’s Health \& Disease Prevention**
+
+**Relevant Stakeholder**
+Experienced in women’s health and disease prevention, offering a broader perspective beyond treatment alone\.
+
+**Challenge**
+Can improving breast cancer outcomes rely on treatment alone?
+
+**Key Insight**
+Long\-term health outcomes are influenced not only by treatment, but also by appropriate screening and earlier disease detection\.
+
+**What Changed**
+While CirCure remains focused on postoperative TNBC treatment, we expanded our public engagement to include breast health, screening, and early detection\.
+
+**Current Status**
+Incorporated
+
+**SDGs Addressed**
+SDG 3 · SDG 4
+
+
+
+##### **08\-Lin Jia\-Breast Cancer \& Clinical Needs**
+
+**Relevant Stakeholder**
+Experienced in breast cancer pathology and tumor biology, helping us examine whether our technical design addresses a clearly defined clinical need\.
+
+**Challenge**
+What patient need should CirCure ultimately address?
+
+**Key Insight**
+The value of a new technology should be judged by the specific clinical problem it aims to solve, rather than by novelty alone\.
+
+**What Changed**
+We further anchored CirCure to the unmet need of postoperative recurrence and metastasis in TNBC, keeping subsequent design and evaluation centered on this clinical problem\.
+
+**Current Status**
+Incorporated
+
+**SDGs Addressed**
+SDG 3 · SDG 9
+
+
+
+##### **09\-Jiuwei Cui\-Tumor Immunology**
+
+**Relevant Stakeholder**
+Experienced in tumor immunology, helping us distinguish immune activation from meaningful antitumor function\.
+
+**Challenge**
+Does immune activation alone demonstrate therapeutic value?
+
+**Key Insight**
+An immune response is only one step; meaningful evaluation should further examine whether it produces functional antitumor effects while maintaining acceptable safety\.
+
+**What Changed**
+We separated immune activation, functional antitumor effects, and ultimate patient benefit as different levels of evidence, avoiding overinterpretation of individual immunological results\.
+
+**Current Status**
+Incorporated
+
+**SDGs Addressed**
+SDG 3 · SDG 9
+
+
+
+##### **10\-Gang Zhao\-TNBC Clinical Management**
+
+**Relevant Stakeholder**
+Experienced in breast cancer clinical management, providing a real\-world perspective on how a new treatment would need to fit into existing care pathways\.
+
+**Challenge**
+How could a new postoperative strategy fit into real TNBC clinical management?
+
+**Key Insight**
+A new therapy cannot be considered in isolation; its target patients, timing, clinical purpose, and relationship with existing treatments and follow\-up all need to be defined\.
+
+**What Changed**
+We extended CirCure’s clinical positioning from simply asking “when would it be used?” to considering who should receive it, what problem it should address, and how it could eventually integrate into existing TNBC care\.
+
+**Current Status**
+Incorporated
+
+**SDGs Addressed**
+SDG 3 · SDG 9
+
+Our earlier discussions explored the health challenges relevant to CirCure through patient needs, treatment value, insurance coverage, and healthcare resources\. As these conversations developed, we began to see how health connects with technology, education, equity, and the wider social environment\. In June 2026, JLU\-FBH was invited to the UNICEF\-organized **2026 Acceleration Week for Global Youth Development Programps**\. We saw this as an opportunity to explore the relationship between health and sustainable development through the perspectives of young people from around the world\.
+
+##### **11\-Global Youth in Health \& Sustainable Development**
+
+**Relevant Stakeholder**
+Young practitioners from different countries, professional backgrounds, and fields of practice\. Their experiences across social contexts and sustainability issues helped us recognize broader connections between health, technology, education, equity, and social development\.
+
+**Key Insight**
+Health extends beyond disease treatment\. Disease prevention, the application of technology, access to health services, and social equity all shape who ultimately benefits from improvements in health\.
+
+**What Changed**
+The exchange broadened our view of CirCure beyond SDG 3 to include connections between health goals and **technological innovation, disease prevention, access to health services, and social equity**\. This cross\-SDG perspective helped lay the foundation for our subsequent use of **SST\-QN** to systematically analyze synergies, trade\-offs, and conditional relationships among SDGs\.
+
+**Current Status**
+`Incorporated`
+
+**SDGs Addressed**
+ SDG 3 · SDG 5 · SDG 9 · SDG 10 · SDG 17 
+
+**Click More**
+
+Connecting Health with Broader Sustainable Development Issues
+
+In June 2026, JLU\-FBH **was invited to participate in the 2026 Acceleration Week for Global Youth Development Programps, organized by UNICEF**\. Team member Zecun Li joined the **“Health and Well\-being”** thematic group\. The event brought together young people from different countries, professional backgrounds, and fields of practice to explore health, technology, education, and sustainable development through mentor\-led lectures, project pitches, case discussions, company visits, and project exchanges\. It gave us an opportunity to look beyond CirCure and reconsider the contexts in which health projects operate: **a shared goal of improving health can involve very different challenges across countries, resource settings, and social environments\.**
+
+**01 A Shared Health Goal, Different Challenges**
+
+The “Health and Well\-being” thematic group focused on **disease prevention, digital health technologies, and access to healthcare resources**\. We shared our team’s iGEM work from 2025 and 2026 and learned from young practitioners running health projects in other regions\. Their experiences highlighted substantial differences in local needs and conditions\. Some regions placed greater emphasis on disease prevention and health education, while others faced shortages of healthcare resources\. Some projects had already developed new technologies but still needed to determine who could realistically access them\. These discussions reinforced that **improving health depends not only on new treatments or technologies, but also on their social context and the conditions under which they are used\.**
+
+**02 Health Connects with Other SDGs**
+
+The project week also explored technological innovation, green development, artificial intelligence, education, and skills development\.
+
+Conversations across these fields showed us how a health\-focused project can extend beyond SDG 3\. Developing new treatments and technologies involves **innovation**\. Enabling public understanding and participation involves **education**\. Ensuring that different populations can benefit equitably from technology involves **health equity and accessibility**\. Moving technologies into production and use can also have implications for resource inputs and environmental impacts\. Rather than simply adding SDG labels to CirCure, these connections prompted a broader question: **what other issues does a project engage with as it works to address a health need?**
+
+**03 From Individual Goals to Relationships Between Goals**
+
+The exchange did not directly change CirCure’s experimental design\. It broadened the scope of our impact analysis\.
+
+Previously, we had focused primarily on how CirCure could contribute to **SDG 3 — Good Health and Well\-being**\. Engaging with young people from different countries and fields encouraged us to consider how progress toward a health goal can also depend on **technological innovation, disease prevention, access to resources, and social equity**\. We moved beyond asking which SDGs were relevant to CirCure and began examining **why these goals are connected, whether those connections always hold, and how they might change with implementation conditions**\. We later organized these reflections into a more structured approach, helping lay the foundation for our use of **SST\-QN** to systematically analyze potential synergies, trade\-offs, and conditional relationships among SDGs\.
+
+
+
+#### C — Consequences
+
+CirCure remains a research\-stage project\. We therefore distinguish laboratory exploration from demonstrated clinical health benefits\. Our analysis separates **short\-term changes** already informed by stakeholder feedback from the **long\-term social, economic, and environmental impacts** that CirCure could have as an adjuvant therapy following surgery for TNBC, subject to further clinical validation and technological translation\.
+
+##### Short\-Term Impacts
+
+At this stage, the clearest impact of Circure has been shaping how we define the patients we aim to serve, the outcomes that matter, and the way we engage with people affected by the disease—not demonstrating improved patient health outcomes\.
+
+**Clinicians** helped us focus on **patients with TNBC who have undergone surgery but remain at risk of recurrence or metastasis**, and adopt the principle of **prioritizing efficacy while optimizing safety**\. **Patients and their families** broadened our understanding of treatment value to include quality of life, treatment burden, and real\-world access\. Before speaking with patients, we also adapted our interview approach in response to communication guidance, with an emphasis on **respecting personal boundaries** and **showing compassion**\.
+
+This input has shaped both our therapeutic priorities and our approach to stakeholder engagement\.
+
+##### Long\-Term Impacts
+
+If CirCure progresses through further efficacy and safety testing and clinical validation toward use as an adjuvant therapy following surgery for TNBC, its impacts could extend beyond patient health\. We examine these potential long\-term impacts across social, economic, and environmental dimensions, distinguishing changes supported by current project evidence from outcomes that remain to be validated\.
+
+###### Social Impacts
+
+**Potential Benefit**
+If CirCure effectively reduces recurrence and metastasis after surgery for TNBC, it could provide an additional adjuvant treatment option and improve long\-term disease control and quality of life\. Greater disease stability could help patients return to work and everyday activities, while reducing the disruption that uncertainty about recurrence brings to their own and their families’ long\-term plans\.
+
+**Potential Risk**
+Additional adjuvant therapy may also involve ongoing treatment, side effects, and caregiving needs\. If patients require prolonged family care or experience substantial disruption to work and daily life, these burdens could extend to family members\. Regional differences in healthcare resources, ability to pay, and treatment opportunities could also lead to unequal access to potential benefits\.
+
+**Evidence Boundary**
+Currently, no clinical evidence shows that CirCure reduces recurrence rates or improves disease\-free survival, long\-term survival, or patient quality of life\. We also have no data demonstrating reduced family caregiving burdens or recurrence\-related psychological stress\. These remain potential long\-term outcomes identified through patient and family needs; they cannot be inferred directly from our current in vitro experiments\.
+
+###### Economic Impacts
+
+For a potential adjuvant therapy added to standard treatment following surgery, a central economic consideration is **the balance between additional treatment burdens and potential long\-term health benefits**\. Family members’ feedback highlighted that these burdens extend beyond medical expenses to caregiving, time away from work, and the time families devote to care\.
+
+**Potential Benefit**
+If CirCure reduces recurrence and the need for further treatment, it could lower some patients’ medical expenses associated with repeat hospitalizations, subsequent treatment, and long\-term disease management\. It could also ease indirect family burdens arising from ongoing care and interruptions to work\.
+
+**Potential Risk**
+Adding CirCure to postoperative treatment would incur additional costs\. Patients’ eventual out\-of\-pocket costs would depend on **pricing, basic medical insurance coverage, supplementary coverage, and their ability to pay out of pocket**\. Prolonged treatment, inability to work, or a need for ongoing family care could also increase indirect burdens through **lost income, caregiving, and time commitments**\.
+
+**Evidence Boundary**
+There is currently no clinical or pharmacoeconomic evidence that any reduction in recurrence achieved with CirCure would offset the additional treatment and family burdens\. Its long\-term economic impacts require validation of future real\-world data\.
+
+###### Environmental Impacts
+
+At current research stage of CirCure, direct environmental impacts arise primarily from laboratory reagents, single\-use consumables, biomedical waste, and the resources and energy required to operate laboratory equipment\.
+
+**Potential Benefit**
+More stable production processes and fewer unnecessary repeat production runs could reduce some resource waste in the future\.
+
+**Potential Risk**
+Large\-scale RNA preparation, production consumables, storage, transport, and subsequent use could create additional resource and energy demands\.
+
+**Evidence Boundary**
+CirCure has not entered large\-scale production, and we do not yet have actual production or life cycle data to assess its overall environmental impact\. To explore this question, we consulted companies working in carbon emissions management and accounting\. These discussions highlighted the need to look beyond direct laboratory consumption to raw materials, large\-scale production, packaging, storage, transport, and waste management\. This broader life cycle perspective helps identify potential sources of resource consumption and carbon emissions\. We examine resource responsibility and the environmental impacts of production in detail under **SDG 12**, rather than duplicating that analysis under SDG 3\.
+
+#### A — Alignment
+
+Using the potential relationships identified through SST\-QN as a starting point, we examined CirCure’s **project design, stakeholder feedback, experimental results, and actions undertaken** to assess whether these relationships occur within the project and the extent to which they are supported by current evidence\.
+
+这个地方的表格还没翻译
+
+##### Key Findings
+
+key findings
+**SDG 3 ↔ SDG 9 and SDG 3 → SDG 4 currently have the clearest evidence supporting their classification as Positive Core Interactions\.** The former is reflected in our project positioning, technical design, and functional experimental validation to date\. The latter is supported by educational activities on breast health, screening, and early detection developed directly in response to women’s health needs\.
+
+**The directions of SDG 3 ↔ SDG 10 and SDG 3 ↔ SDG 12 depend on future implementation conditions\.** For SDG 10, the relationship hinges on whether pricing, insurance coverage, and healthcare resources allow different patients to access treatment\. For SDG 12, the analysis must consider both expanded access to healthcare and the additional resources required for production\. Both relationships therefore remain **Conditional \(±\)**; we do not assume in advance that either will result in synergy or a trade\-off\.
+
+For **SDG 17 → SDG 3**, current evidence supports the role of participation by multiple stakeholders in improving problem identification and project decisions\. These process improvements, however, do not yet establish benefits for patient health outcomes\. We therefore retain the **Exploratory \(E\)** classification\.
+
+For **SDG 3 → SDG 5**, we retain **Excluded\(0\)**\. CirCure addresses women’s health, but we currently lack direct evidence of an impact on gender equality at a structural level\. Our focus on women’s health alone does not establish such an impact\.
+
+#### L — Legacy
+
+Through our work on SDG 3, we developed both a record of stakeholder interviews and a practical process for **identifying real\-world health needs, engaging stakeholders in discussions, translating their feedback into project decisions, and incorporating those decisions into SDG analysis**\. To help future iGEM teams build on this experience, we distilled the broadly applicable practices into reusable guides, recording forms, and analysis templates\.
+
+##### Stakeholder Interview Guide
+
+**Why**
+ 不同利益相关者能够回答的问题并不相同，访谈需要根据其角色进行调整。
+
+**What it helps with**
+ 帮助团队确定**问谁、问什么、如何追问，以及哪些判断需要进一步交叉验证**。
+
+**Best for**
+Interviews involving patients, clinicians, public\-health professionals, payment\-related stakeholders, and other groups where role\-specific or sensitive communication is important\.
+
+[Stakeholder Interview Guide\-Chinese\.pdf](图片和附件/Stakeholder%20Interview%20Guide-Chinese.pdf)
+
+
+
+[Stakeholder Interview Guide\-English\.pdf](图片和附件/Stakeholder%20Interview%20Guide-English.pdf)
+
+
+
+##### Stakeholder–SDG Mapping Guide
+
+**Why**
+ 同一条反馈往往可能同时涉及多个 SDGs，单纯按照 stakeholder 身份分类容易造成重复或错配。
+
+**What it helps with**
+ 识别每条反馈的 **Primary SDG、Related SDGs 和关联依据**。
+
+**Best for**
+ 整理大量 stakeholder feedback，并为后续 Alignment 和跨 SDG 分析建立清晰基础。
+
+[Stakeholder–SDG Mapping Guide\-Chinese\.pdf](图片和附件/Stakeholder–SDG%20Mapping%20Guide-Chinese.pdf)
+
+
+
+[Stakeholder–SDG Mapping Guide\-English\.pdf](图片和附件/Stakeholder–SDG%20Mapping%20Guide-English.pdf)
+
+
+
+##### Feedback\-to\-Action Record
+
+**Why**
+ “采访了谁”并不能证明 stakeholder engagement 真正影响了项目。
+
+**What it helps with**
+ 记录每条重要反馈的**处理结果、What Changed 和最终决策依据**。
+
+**Best for**
+ 展示 stakeholder feedback 如何真正转化为项目设计、评价或传播中的改变。
+
+[Feedback\-to\-Action Record\-Chinese\.pdf](图片和附件/Feedback-to-Action%20Record-Chinese.pdf)
+
+
+
+[Feedback\-to\-Action Record\-English\.pdf](图片和附件/Feedback-to-Action%20Record-English.pdf)
+
+
+
+##### SDG Impact Documentation Template
+
+**Why**
+ 研发阶段的项目容易把“未来可能发生的影响”写成“已经实现的成果”。
+
+**What it helps with**
+ 区分**当前已有证据支持的改变、条件性影响和仍需未来验证的结果**。
+
+**Best for**
+ 整理 Consequences、Evidence 和 Sustainability 总结，并控制表述边界。
+
+[SDG Impact Documentation Template\-Chinese\.pdf](图片和附件/SDG%20Impact%20Documentation%20Template-Chinese.pdf)
+
+
+
+[SDG Impact Documentation Template\-English\.pdf](图片和附件/SDG%20Impact%20Documentation%20Template-English.pdf)
+
+#### E — Evidence
+
+CirCure 对 SDG 3 的回应主要体现在患者需求、项目改进、实验验证和经验留存四个方面。
+
+**Measurable**
+
+1. Engaged **49 stakeholders across five groups**: patients, family caregivers, clinical and medical professionals, healthcare payer representatives, and sustainability practitioners\.
+
+![image\.png](图片和附件/image%206.png)
+
+2. Translated stakeholder feedback into **eight traceable project improvements**, linking stakeholder input to documented changes\.
+
+![image\.png](图片和附件/image.png)
+
+3. In vitro flow cytometry showed that CirCure increased the proportion of mature dendritic cells \(CD80⁺CD86⁺\) from **10\.33 ± 0\.55%** in the empty circRNA\-electroporated DC control to **22\.37 ± 0\.31%**, alongside increases in the proportions of activated and effector memory CD8⁺ T cells\.
+
+
+
+4. In vivo flow cytometry showed higher proportions of IFN\-γ⁺CD8⁺ and GzmB⁺CD8⁺ cells in splenocytes from the vaccine group than in the PBS and empty\-vector control groups\. Because the epitopes are **HLA\-A\*02:01\-restricted**, whereas the experiments used wild\-type BALB/c mice, these findings serve as **platform proof of concept**\.
+
+
+
+5. In the tumor growth study, endpoint tumor volume in the CirCure group was **89\.6% lower than in the PBS group** and **73\.2% lower than in the empty circRNA\-LNP group** \(n = 5 per group; Holm correction for multiple comparisons\)\.
+
+
+
+6. Developed **four reusable tools, each available in Chinese and English, totaling eight files**, covering stakeholder interviews, SDG mapping, feedback\-to\-action tracking, and impact documentation to support reuse by other teams\. **Click here to learn more and download\.**
+
+**Significant**
+
+CirCure’s contribution to SDG 3 is meaningful because **the needs of patients and families have shaped both our research direction and how we assess therapeutic value**\. Stakeholder feedback led to eight traceable project improvements, bringing those needs into concrete research decisions\.
+
+Clinical input focused the project on postoperative adjuvant therapy for TNBC, with reducing recurrence and metastasis and achieving lasting benefit as goals for future investigation\. Patients and caregivers also highlighted how additional treatment could affect work, caregiving, and household finances\. We therefore incorporated quality of life and access into our assessment, asking whether a potential treatment could help patients plan their lives again—and whether its benefits would justify the burdens they and their families would bear\.
+
+**Our experimental findings provide an initial basis for pursuing this strategy\.** Dendritic\-cell maturation, CD8⁺ T\-cell responses, and reduced tumor growth in the tested model support further investigation at different levels\. However, the mismatch between HLA\-restricted epitopes and wild\-type mice limits interpretation\. These findings do not yet demonstrate reduced postoperative recurrence or improved survival in patients\.
+
+Finally, four bilingual tools make our approach to patient interviews, needs mapping, feedback integration, and impact documentation available for reuse, **helping other teams keep patients’ voices central to their research**\. CirCure’s current contribution is a patient\-informed research foundation, supported by preliminary experiments and methods others can build upon\. Whether this foundation can lead to affordable, accessible health benefits remains to be established\.
+
+
+
+### **Stakeholder Sustainability Tracker**
+
+As CirCure progressed, we accumulated stakeholder feedback, team responses, implementation outcomes, and supporting evidence\. We developed the **Stakeholder Sustainability Tracker** to organize this information in one place and make stakeholder engagement easier to update and review over time\. The tool records stakeholder information, key feedback, project responses, implementation status, relevant SDGs, and supporting evidence\. To help other iGEM teams use it directly, we provide a **blank version containing no CirCure project data**\. Click here to view and download the template, then build and maintain stakeholder records tailored to your project\.
+
+We also share **the actual records compiled throughout CirCure’s development** to demonstrate the tool’s use in practice\. These records show how we documented stakeholder feedback, our responses, and implementation outcomes over time\. The Tracker’s Chinese–English language switch changes the interface only; it does not automatically translate user\-entered content\. We therefore provide corresponding **Chinese and English versions of the records** so readers can review the full content in either language\. An accompanying **User Manual**, also available in Chinese and English, explains the basic functions, field completion, and use of the tool to help other teams get started\.
+
+To assess the Tracker’s usability and analytical value in real projects, we invited an iGEM team and a teacher experienced in project sustainability analysis to try the tool and provide feedback\.
+
+
+
+### SDG9：Industry, Innovation and Infrastructure
+
+Meeting patients’ needs requires a credible path from a promising idea to a reliable technology\. We chose SDG 9 to address **key uncertainties in CirCure’s antigen selection, functional validation, and future manufacturing**, with the aim of building a research foundation that can be **rigorously tested, continually improved, and developed further**\.
+
+#### S — Stakeholder Insights
+
+Our work on SDG 3 clarified whom CirCure aims to serve: **patients with TNBC who remain at risk of recurrence and metastasis after surgery**\. Reducing those risks and achieving long\-term therapeutic benefits are our primary criteria for evaluating its future value\. SDG 9 builds on these needs by asking: **what key technical challenges must we address to make this therapeutic concept viable?** Through the design, expression, delivery, and functional evaluation of our circRNA\-based multi\-epitope vaccine, we examine what is needed to move **from innovative design to reliable validation and, ultimately, translational potential**\.
+
+At the outset, we identified three core technical questions:
+
+1\. **How can the vaccine better address TNBC heterogeneity?** 
+
+TNBC exhibits substantial tumor heterogeneity, so a single antigen or epitope may offer insufficient coverage\. Our multi\-epitope antigen design aims to accommodate a broader range of tumor characteristics and patients’ immune backgrounds\.
+
+2\. **How can we achieve more stable and sustained antigen expression?** 
+
+Effective antigen expression is fundamental to nucleic acid vaccine activity\. We selected circRNA as our expression platform, aiming to use its circular structure to improve RNA stability and sustain antigen expression as a basis for subsequent immune responses\.
+
+3\. **How can we demonstrate functionally meaningful antitumor immunity?** 
+
+Multi\-epitope design and circRNA expression do not, by themselves, establish vaccine efficacy\. We also need to determine whether the expressed antigens are recognized by the immune system, induce the intended response, and ultimately generate functionally meaningful antitumor effects\.
+
+As the project developed, we recognized that these three areas alone were insufficient to assess CirCure’s development potential\. We invited stakeholders from different fields to help us review the design rationale, delivery limitations, scope of experimental validation, and priorities for further research and development\. We adopted, partially adopted, or reserved their suggestions for future consideration according to the project’s circumstances\. These exchanges broadened our technical assessment beyond the initial three questions to encompass more comprehensive validation and future development\.
+
+##### 01\-王医术教授\-Pathology \& Molecular Pathology
+
+**Relevant Stakeholder**
+能够从**组织病理、蛋白表达和患者异质性**角度判断候选抗原是否真正与目标患者相关，并帮助我们将已经明确的临床定位进一步落实到抗原筛选标准中。
+
+**Challenge**
+我们现有的抗原筛选依据是否足以证明这些候选抗原真正适合术后 TNBC 患者？
+
+**Key Insight**
+RNA 高表达只是候选抗原筛选的起点。一个抗原是否真正值得进入疫苗设计，还需要进一步考虑其**蛋白表达、组织定位、肿瘤特异性以及不同患者之间的异质性**。
+
+**What Changed**
+我们以 SDG3 已经明确的**术后 TNBC 患者**为临床基础，将抗原评价由 RNA 表达进一步拓展至**蛋白表达、组织定位、肿瘤特异性和患者异质性**，使候选抗原的选择能够更好地对应实际目标人群。
+
+**Current Status**
+`Incorporated`
+
+**SDGs Addressed**
+ SDG 9 · SDG 3 
+
+**Click More**
+
+**王医术教授访谈｜目标患者明确之后，我们是否选对了抗原？**
+
+当目标患者逐渐明确后，抗原筛选本身也需要更加具体：**哪些候选抗原真正与术后 TNBC 患者相关，又需要什么证据来支持这种判断？**
+
+围绕这一问题，我们向王医术教授请教了 TNBC 候选抗原在蛋白表达、组织定位和患者异质性等方面的评价依据。
+
+**01 RNA 表达只是筛选的起点**
+
+项目早期，我们主要依据 TNBC 相关转录组数据寻找高表达候选抗原。王医术教授指出，**RNA 高表达并不能直接代表对应蛋白同样高表达**。对于治疗性肿瘤疫苗而言，仅依赖转录水平的信息还不足以证明某个候选抗原真正适合作为后续靶点。因此，RNA 表达可以帮助我们缩小候选范围，但不能成为最终判断依据。
+
+**02 候选抗原还需要在组织和蛋白水平得到支持**
+
+除了表达量本身，她进一步提醒我们关注候选抗原在实际肿瘤组织中的表现。
+
+一个抗原即使在总体 TNBC 数据中呈现较高表达，也仍需要进一步判断：
+
+- 对应蛋白是否具有一致的表达； 
+
+- 是否真正存在于目标患者的肿瘤组织中； 
+
+- 正常组织中是否也存在相应表达； 
+
+- 不同肿瘤区域中的表达是否存在差异。 
+
+这些信息决定了一个候选分子能否从“数据中的高表达基因”进一步成为具有实际意义的疫苗抗原。
+
+---
+
+**03 TNBC 异质性也需要进入抗原评价**
+
+TNBC 本身具有较强的异质性。即使一个抗原在总体样本中表现良好，也不意味着它能够覆盖所有患者。因此，我们还需要关注候选抗原在**不同患者和不同肿瘤样本中的表达差异**，避免仅依据总体平均表达得出过于宽泛的判断。这也使“覆盖 TNBC 异质性”不再只是增加抗原数量的问题，而首先需要确认**每一个候选抗原本身是否具有足够可靠的患者和组织依据**。
+
+---
+
+**04 What Changed｜让临床定位真正进入抗原筛选**
+
+王医术教授的建议没有改变 CirCure 已经确定的目标患者，而是进一步帮助我们将这一临床定位落实到技术设计中。在原有 RNA 表达分析基础上，我们进一步将**蛋白表达、组织定位、肿瘤特异性和患者异质性**纳入候选抗原评价，使抗原筛选不仅回答“哪些分子在 TNBC 中表达较高”，还进一步回答：**这些抗原是否真正与我们希望服务的术后 TNBC 患者相关，并值得进入后续疫苗设计？**
+
+
+
+##### **02\-管青天老师\-Computational Immunology \& Antigen Design**
+
+**Relevant Stakeholder**
+ 能够从免疫原性、HLA 结合和人群覆盖角度评价多表位设计是否真正合理，并帮助我们判断候选表位能否形成具有互补性的组合。
+
+**Challenge**
+Does adding more epitopes necessarily improve coverage?
+
+**Key Insight**
+多表位设计的价值并不取决于表位数量本身。真正重要的是每个表位是否具有合适的**免疫原性和 HLA 结合能力**，不同表位之间能否形成互补，并由此扩大潜在人群覆盖。
+
+**What Changed**
+我们保留多抗原、多表位的设计思路，但不再用“表位越多”解释覆盖优势，而是进一步结合**免疫原性、HLA 结合和潜在人群覆盖**评价候选表位及其组合合理性。
+
+**Current Status**
+`Partially Incorporated`
+
+**SDGs Addressed**
+ SDG 9 · SDG 3 
+
+###### （click more）管青天老师访谈｜多表位并不是越多越好
+
+在进一步完善候选抗原的评价依据后，我们还需要回答一个更具体的问题：**从这些抗原中应该选择哪些表位，它们又应该如何组合？**
+
+TNBC 具有较强的异质性，因此我们希望通过多表位设计扩大疫苗的潜在覆盖范围。项目早期，我们曾很自然地认为，如果加入更多候选表位，是否就能够覆盖更多肿瘤特征和患者免疫背景？
+
+围绕这一问题，我们向管青天老师请教了表位筛选、多表位组合以及 HLA 预测等方面的问题。
+
+---
+
+**01 表位数量并不等于覆盖能力**
+
+管青天老师指出，多表位设计并不是简单地将更多候选表位组合在一起。不同表位在**免疫原性、HLA 结合能力和潜在人群覆盖**方面存在差异，因此增加一个表位，并不意味着覆盖范围一定同步扩大。真正需要关注的是：**每个表位能够提供怎样的免疫学价值，以及它与其他表位之间是否能够形成互补。**
+
+**02 HLA 结合让“覆盖”变得更加具体**
+
+对于 T 细胞表位而言，能否与不同 HLA 分子有效结合，会影响其潜在适用人群。
+
+因此，我们进一步结合 **HLA binding prediction** 评价候选表位，关注不同表位可能覆盖的 HLA 类型，并比较它们之间是否能够形成互补。这使我们对“扩大覆盖”的理解不再停留在表位数量，而是进一步对应到**不同表位可能覆盖哪些免疫背景的人群**。
+
+**03 多表位组合需要有明确的选择依据**
+
+管青天老师的建议并没有否定多表位策略，而是进一步明确了组合设计需要回答的问题。相比单纯增加候选表位，我们更加关注每个表位的**免疫原性、HLA 结合能力和潜在人群覆盖**，以及不同表位组合后是否仍具有合理的互补性和后续验证价值。
+
+因此，多表位设计的重点逐渐从“还能加入多少表位”，转向了“**哪些表位真正值得进入最终组合**”。
+
+**04 What Changed｜从“更多表位”转向“更合适的组合”**
+
+我们部分采纳了管青天老师的建议，并进一步调整了评价多表位设计的方式。
+
+我们不再简单认为“更多表位意味着更广覆盖”，而是结合**免疫原性、HLA 结合和潜在人群覆盖**判断候选表位是否值得保留，以及最终组合是否具有合理的互补性。
+
+因此，对 CirCure 而言，多表位设计真正需要回答的不再是“表位够不够多”，而是：**为什么选择这些表位，以及它们组合后能否形成合理而互补的免疫覆盖。**
+
+
+
+##### **03\-胡继繁教授\-RNA \& Nucleic Acid Vaccines**
+
+**Relevant Stakeholder**
+
+能够从 **RNA 疫苗机制、抗原表达与免疫功能**角度评价 circRNA 的技术特点是否真正转化为预期的疫苗作用。
+
+**Challenge**
+表达得更久，就一定意味着疫苗效果更好吗？
+
+**Key Insight**  
+
+circRNA 的稳定性和持续表达只是技术基础。对于治疗性肿瘤疫苗而言，更重要的是表达产生的抗原能否被免疫系统有效识别，并进一步诱导具有功能意义的抗肿瘤免疫。
+
+**What Changed** 
+
+我们不再仅以 circRNA 的稳定性和持续表达评价技术优势，而是进一步关注**抗原表达之后是否能够引起预期的免疫反应，并最终表现出功能性抗肿瘤作用**。
+
+**Current Status** `Incorporated`
+
+**SDGs Addressed**  SDG 9 · SDG 3
+
+**Click More**
+
+###### 胡继繁教授访谈｜**表达得更久，就一定更有效吗？**
+
+在完成多表位设计后，我们还需要回答另一个核心问题：**circRNA 所带来的稳定表达优势，是否真的能够转化为疫苗功能？**
+
+**01 持续表达只是基础，不是最终结果**
+
+闫东梅教授首先指出，**“表达得更久”不能直接等同于“疫苗效果更好”**。circRNA 的稳定性的确能够为抗原表达提供基础，但疫苗真正需要发挥作用，还取决于产生的抗原能否被有效识别，以及随后是否能够启动预期的免疫反应。因此，持续表达可以说明载体具有一定技术优势，但不能单独作为判断疫苗效果的依据。
+
+**02 抗原表达还需要进一步转化为免疫功能**
+
+对于 CirCure 而言，真正重要的并不是表达了多少抗原、持续了多长时间，而是这些抗原表达之后**发生了什么**。如果表达产生的抗原无法被有效呈递和识别，那么更长时间的表达本身并不能产生预期的治疗价值。所以，我们进一步将关注点放到抗原表达之后的免疫作用，包括 **DC 成熟、T 细胞应答以及后续功能性验证**，判断 circRNA 的表达优势是否真正延伸到了免疫功能层面。
+
+**03 技术优势需要由功能结果来支持**
+
+这一建议也改变了我们评价 circRNA 技术优势的方式。我们仍然关注 circRNA 的稳定性和表达能力，但不再因为“表达更加稳定或持续”就直接推断疫苗具有更好的抗肿瘤效果。相反，这些技术特点需要结合后续免疫实验共同判断。
+
+circRNA 对 CirCure 的意义，不只是提供一种稳定的 RNA 表达形式，更在于它是否能够支持后续产生预期的免疫功能。
+
+**04 What Changed｜从表达优势进一步关注功能价值**
+
+我们采纳了闫东梅教授的建议，在保留 circRNA 稳定性和表达验证的同时，进一步加强了对**免疫激活和功能性抗肿瘤作用**的评价。
+
+我们不再仅回答“circRNA 能否稳定表达”，还进一步关注：**这种表达能否真正产生具有功能意义的免疫反应？**这样，CirCure 对 circRNA 的评价不再停留于载体本身的技术特点，而是进一步对应到疫苗最终希望实现的功能。
+
+
+
+
+
+闫东梅教授的建议使我们进一步关注 circRNA 表达能否真正转化为免疫功能。在**东北地区交流会的交流**中，一个新的问题被提出：**如果观察到明显的免疫激活，这种作用是否完全来自抗原表达，还是 circRNA 本身也参与其中？**这一讨论将我们的注意力进一步引向 **RNA immune recognition**，也促使我们向杨巍教授继续追问 circRNA 可能存在的自佐剂效应。
+
+
+
+##### 04\-**赵铁锁教授 · RNA Immune Recognition \& Self\-adjuvant Effect**
+
+**Relevant Stakeholder**
+
+能够从 **RNA 先天免疫识别和自佐剂效应**角度解释 circRNA 本身如何参与免疫调控，以及这种作用与抗原表达之间可能存在的相互影响。
+
+**Challenge**
+除了所表达的抗原，circRNA 本身是否也可能参与我们观察到的免疫激活？
+
+**Key Insight**
+
+RNA 并不是完全中性的表达载体。其自身可能被先天免疫系统识别，并产生一定的**自佐剂效应**；但这种作用并非单向有利，过强的先天免疫刺激也可能影响 RNA 翻译和抗原表达。
+
+**What Changed**
+
+我们不再将观察到的免疫激活全部归因于编码抗原，而是在结果解释中保留 RNA 平台自身先天免疫效应这一可能性，并将其作为后续机制验证的重要问题。
+
+**Current Status** `Incorporated`
+
+**SDGs Addressed**  SDG 9 · SDG 3
+
+**Click More**
+
+**赵铁锁教授访谈｜circRNA 本身是否也在参与免疫反应？**
+
+当我们进一步关注 circRNA 表达之后的免疫功能时，还有一个此前没有充分考虑的问题：**除了表达抗原，RNA 分子本身会不会也参与免疫反应？**
+
+---
+
+**01 RNA 并不是完全被动的表达载体**
+
+杨巍教授指出，RNA 除了承担遗传信息和抗原表达功能，本身也可能被先天免疫系统识别。
+
+这种识别意味着 RNA 平台并非只是单纯“把抗原表达出来”，RNA 分子本身也可能参与疫苗诱导免疫反应的过程。
+
+这让我们开始把 **RNA 自身的免疫原性**作为评价 circRNA 疫苗时需要单独考虑的因素。
+
+---
+
+**02 自佐剂效应提供了另一种机制解释**
+
+这种 RNA 自身触发的免疫识别可能产生一定的 **self\-adjuvant effect**。
+
+也就是说，circRNA 除了承担抗原表达，还可能通过自身的免疫识别参与免疫启动。因此，我们不能只从“表达是否更稳定、抗原是否更多”解释后续免疫现象，还需要考虑 **RNA 分子本身是否也在改变免疫环境**。
+
+这使我们对 circRNA 平台的理解从单纯的“表达载体”进一步拓展到了其潜在的免疫学作用。
+
+---
+
+**03 平台效应也可能带来新的限制**
+
+杨巍教授同时提醒我们，这种免疫识别并不能简单理解为额外优势。
+
+如果先天免疫刺激过强，也可能影响 RNA 的翻译和抗原表达，并增加不必要的炎症反应。因此，自佐剂效应是否真正有利，需要结合表达和免疫结果共同判断，而不能仅凭更明显的免疫激活得出结论。
+
+这意味着，circRNA 平台自身的免疫学作用既可能帮助疫苗启动免疫，也可能成为影响其表现的一个变量。
+
+---
+
+**04 What Changed｜将 RNA 自身的免疫识别纳入评价**
+
+杨巍教授的建议直接影响了我们后续的**对照设置和结果判读**。在比较 circRNA 疫苗免疫效果时，我们不再只观察最终免疫反应的强弱，而是通过设置不同 RNA 条件的对照，进一步区分**抗原表达带来的特异性免疫作用**与 **RNA 平台自身可能引起的先天免疫效应**。同时，对于 RNA 自身可能产生的自佐剂作用，我们不再直接作为技术优势进行解释，而是保留进一步通过先天免疫相关指标和机制实验验证的空间。
+
+
+
+在完成抗原选择、多表位设计、circRNA 表达及 RNA 免疫识别等核心讨论后，我们进一步围绕实验验证、结果判断及后续研发路径展开讨论。此时，项目关注的重点不再只是能否完成疫苗设计和获得预期实验结果，而是如何通过合理的实验体系、清晰的对照设置和具有重复性的验证，判断这些结果是否稳定、可信，并能够支持对 CirCure 技术价值的进一步认识。围绕这一目标，相关利益者从研发重点、实验设计、结果复现、功能评价和转化判断等方面提出了意见。
+
+
+
+##### 06\-牛俊奇教授\-Evidence Integration \& Safety Validation
+
+**Relevant Stakeholder**
+
+能够从肿瘤免疫实验设计和结果解释的角度，帮助我们检查 CTL 杀伤实验中的对照是否合理，以及现有结果能否真正支持安全性结论。
+
+**Challenge**
+
+If normal cells are not killed, does that necessarily mean the CTLs are safe?
+
+**Key Insight**
+
+正常细胞没有被杀，并不一定说明 CTL 是安全的。对于 HLA\-A\*02:01 限制性 CTL，如果正常细胞本身不是 HLA\-A\*02:01 阳性，CTL 可能根本无法识别它。只有先确认 HLA 匹配，“未杀伤”这一结果才有意义。
+
+**What Changed**
+
+我们将正常细胞对照从一株增加到四株，覆盖血管内皮、肝、肺和乳腺，并确认它们均为 HLA\-A\*02:01 阳性。其中，MCF12A 与 MDA\-MB\-231 同为乳腺来源，是最关键的一株正常细胞对照。实验还设置了 80:1 和 100:1 两个 E 比例，并用 specificity ratio 表示 CTL 对肿瘤细胞和正常细胞的差异性杀伤。
+
+**Current Status**
+
+Incorporated
+
+**SDGs Addressed**
+
+SDG 9 · SDG 3
+
+（click more）
+
+**正常细胞没被杀，就能说明安全吗？**
+
+在评估 CTL 的肿瘤杀伤效果时，我们还需要确认一个问题：这些 CTL 会不会同时攻击正常组织？
+
+最初，我们打算选择一株正常细胞，与 MDA\-MB\-231 一起进行杀伤实验。如果 CTL 能够杀伤肿瘤细胞，却不杀伤正常细胞，我们就可以初步说明它具有一定的肿瘤特异性。
+
+但在和牛俊奇教授讨论后，我们发现这个设计存在一个关键漏洞。
+
+---
+
+**01 “未被杀伤”可能只是因为 CTL 看不见它**
+
+我们的 CTL 是 HLA\-A\*02:01 限制性的。也就是说，靶细胞需要通过 HLA\-A\*02:01 呈递相应抗原肽，才能被 CTL 识别。
+
+如果所选的正常细胞不表达 HLA\-A\*02:01，那么即使实验中没有观察到杀伤，也不能说明它是安全的。另一种可能是：CTL 根本看不见这株细胞。
+
+因此，在解释正常细胞的阴性杀伤结果前，必须先确认它的 HLA 型别。只有正常细胞为 HLA\-A\*02:01 阳性，这个对照才真正成立。
+
+根据这一建议，我们对所用正常细胞的 HLA 背景进行了核对，并确认四株细胞均为 HLA\-A\*02:01 阳性。这样，“没有被杀”才可以被解释为：在具备被 CTL 识别的条件下，这些正常细胞仍未出现明显杀伤。
+
+**02 一株正常细胞代表不了所有正常组织**
+
+不同组织的抗原表达情况并不相同。只检测一株正常细胞，即使结果为阴性，也很难据此判断其他组织是否存在风险。
+
+牛俊奇教授建议我们扩大正常细胞的范围，尽量覆盖不同组织。最终，我们选用了四株正常细胞：
+
+- HCAEC：人冠状动脉内皮细胞；
+
+- LX\-2：肝星状细胞；
+
+- BEAS\-2B：支气管上皮细胞；
+
+- MCF12A：正常乳腺上皮细胞。
+
+这四株细胞分别代表血管、肝、肺和乳腺，使实验不再依赖单一正常细胞的结果。
+
+**03 MCF12A 是最关键的对照**
+
+在四株正常细胞中，MCF12A 对我们尤其重要。
+
+MDA\-MB\-231 是乳腺癌细胞，MCF12A 则是正常乳腺上皮细胞。由于两者来自相同组织，MCF12A 更有可能保留与肿瘤细胞相近的组织表达背景，也更可能低水平表达相关抗原。
+
+如果 CTL 会攻击正常乳腺细胞，MCF12A 应当比其他组织来源的正常细胞更容易暴露这一问题。因此，它是四株正常细胞中最严格、也最有信息量的一株对照。
+
+**04 提高 E 比例后，正常细胞还能保持安全吗？**
+
+提高 E 比例通常会增强 CTL 的杀伤作用，但更高的效应细胞剂量也可能增加对正常细胞的影响。
+
+为观察这一点，我们设置了 80:1 和 100:1 两个 E 比例。除了比较肿瘤杀伤是否增强，我们也关注正常细胞的杀伤率是否随之升高。
+
+这样可以检验：提高 CTL 剂量带来的抗肿瘤效果，是否伴随着安全性的下降。
+
+**05 如何表达 CTL 的选择性？**
+
+除了分别比较肿瘤细胞和正常细胞的杀伤率，我们还使用了 specificity ratio，直接表示 CTL 对两类细胞的杀伤差异。
+
+实验中得到的 specificity ratio 为 21–76×。相比单独报告几组杀伤率，这个指标更直观地反映了 CTL 对肿瘤细胞的选择性。
+
+**06 What Changed｜让阴性结果真正能够被解释**
+
+这次交流改变的并不只是正常细胞的数量，更重要的是我们重新检查了对照成立的前提。
+
+我们将正常细胞从一株增加到四株，覆盖多个组织；确认所有细胞均为 HLA\-A\*02:01 阳性；加入与肿瘤细胞同为乳腺来源的 MCF12A；并在两个 E 比例下比较肿瘤细胞与正常细胞的杀伤情况。
+
+这些调整帮助我们排除了一个重要的替代解释：正常细胞没被杀，并不是因为 CTL 看不见它们。
+
+这也让我们重新理解了“证据整合”的含义。不同实验不只是依次完成几个验证步骤，更重要的是明确每个结果成立的前提。只有对照选得合理、识别条件得到确认，实验结果才能真正支持 CirCure 的有效性和安全性。
+
+
+
+
+
+##### 05\-张宇宁教授\-Nanomedicine Delivery \& Formulation
+
+**Key Insight**  实验室阶段出现的 LNP 批次波动可能与操作经验和工艺尚未标准化有关，不能直接说明同样的问题会延续至成熟生产体系。对现阶段的 CirCure 而言，更重要的是首先证明疫苗本身能否产生预期的生物学作用。
+
+**What Changed**  我们不再将当前观察到的 LNP 波动直接外推为未来产业化障碍，也没有进一步扩展新的递送载体研发，而是继续采用成熟商业 LNP，将实验资源集中于**抗原表达、免疫应答和功能性抗肿瘤验证**。
+
+**SDGs Addressed**  SDG 9 · SDG 3
+
+
+
+
+
+##### 08\-崔久嵬老师\-Tumor Immunology
+
+**Key Insight**  冷肿瘤向热肿瘤的转变，关键不在于某一个免疫指标的升高，而在于能否建立一条从抗原呈递、T 细胞募集与激活到有效肿瘤杀伤的完整免疫反应链。
+
+**What Changed**  我们重新梳理了 CirCure 推动 TNBC 由“冷”向“热”转变的证据逻辑：首先通过促进抗原呈递和 DC 成熟启动免疫应答，再观察 T 细胞的激活，最后通过细胞共培养实验验证其功能性杀伤。我们不再用某一项免疫指标直接证明肿瘤已经“变热”，而是将这些结果作为相互衔接的证据，说明当前体系具有改善肿瘤免疫状态的潜力。
+
+**SDGs Addressed**  SDG 3 · SDG 9
+
+
+
+
+
+经过这一阶段的调整，我们明确了CirCure在实验室阶段需要重点考察的内容：候选抗原能否被表达和呈递，能否诱导预期的免疫应答，以及这种应答能否进一步产生具有选择性的肿瘤杀伤。
+
+但实验结果只能说明CirCure是否具有继续研究的价值，并不意味着它已经具备成为产品的条件。随着项目开始考虑未来应用，我们进一步将问题分为两个层面：一是技术能否被稳定生产并适应真实使用环境；二是它能否形成具有开发和商业价值的产品。围绕这两个问题，我们分别前往上海临港新片区医疗器械创新公司开展实地调研，并与华兰生物进行交流。
+
+##### 11\-上海临港新片区医疗器械创新公司\-Medical Technology Industry
+
+**Relevant Stakeholder**
+
+通过已经完成研发并进入实际应用的医疗产品，为我们提供观察医疗技术如何从实验室成果逐步走向产品开发和真实使用的产业视角。
+
+**Challenge**
+
+实验室中得到的技术结果，距离真正可用的医疗产品还有多远？
+
+**Key Insight**
+
+实验室验证主要回答技术能否发挥预期作用，而产品开发还需要回答这种作用能否稳定复现，产品能否被可靠生产、控制质量并适应真实使用环境。技术可行只是起点，从实验结果到实际应用之间还需要持续的工程、质量和安全验证。
+
+**What Changed**
+
+这次调研没有直接改变 CirCure 当前的实验方案，也不能替代治疗性疫苗所需的工艺和临床验证。它促使我们开始区分“实验室中有效”与“产品层面可用”，并将稳定性、批次一致性、质量控制、规模化、成本和实际使用条件纳入后续开发与 Entrepreneurship 分析。
+
+**Current Status**
+
+Incorporated
+
+**SDGs Addressed**
+
+SDG 9 · SDG 3 · SDG 17
+
+（click more）
+
+**从实验结果到真实应用**
+
+6月，我们前往上海临港新片区医疗器械创新公司，参观企业的研发和生产环境，并了解医疗产品从技术开发走向实际使用所经历的过程。
+
+此前，我们主要从实验角度评价 CirCure：疫苗能否成功构建，能否表达抗原、激活免疫细胞，并产生具有选择性的肿瘤杀伤。这些结果能够帮助我们判断技术是否值得继续研究，但并不能直接回答它是否能够成为一个真正可用的产品。
+
+在临港，我们接触到的是已经走出实验室、进入生产和使用环节的医疗产品。这让我们开始关注实验结果之外的问题：一项技术能否被稳定制造，能否保持一致的质量，能否适应实际使用环境，以及它最终是否能够回应最初提出的临床需求。
+
+需要说明的是，医疗器械与治疗性疫苗在技术、生产和监管路径上并不相同。因此，这次调研不能直接证明 CirCure 已经具备产业化条件，也不能替代疫苗领域的专业工艺评价。它带给我们的主要改变，是让我们开始用产品开发的视角重新审视项目。
+
+**01 实验室中有效，不等于产品已经成立**
+
+在实验室中，我们可以通过控制条件，观察 CirCure 是否产生预期的抗原表达、免疫激活和肿瘤杀伤。
+
+但真正的医疗产品不能只在一次实验或一组理想条件下发挥作用。它需要能够被稳定制备，并在不同批次、不同时间和实际使用条件下保持可靠。
+
+这次调研让我们认识到，实验室结果证明的是技术的初步可行性，而产品开发需要面对的是这种结果能否被持续、稳定地实现。两者之间并不能直接画等号。
+
+**02 产品开发需要另一套评价标准**
+
+调研中，我们注意到企业不仅关注产品能否实现预期功能，也关注生产过程是否稳定、质量是否可控，以及产品能否适应储存、运输和实际使用条件。
+
+这些问题也促使我们重新思考 CirCure 后续需要面对的评价内容：
+
+- circRNA 疫苗能否被稳定制备；
+
+- 不同生产批次能否保持一致；
+
+- 哪些指标可以用于质量控制；
+
+- 安全性证据是否足以支持后续开发；
+
+- 生产和使用成本是否具有可接受性；
+
+- 产品未来能否适应真实医疗环境。
+
+这些问题尚不能由当前实验直接回答，但它们帮助我们看清了项目从科研验证走向产品开发时需要补充的内容。
+
+**03 临床价值需要通过真实使用实现**
+
+一项技术的价值不能只停留在实验结果中。即使它在实验室中表现良好，也需要经过后续开发和验证，才能真正进入医疗场景并回应患者需求。
+
+对于 CirCure 而言，我们已经将术后具有较高复发和转移风险的 TNBC 患者作为主要关注人群。临港调研没有重新定义这一定位，而是让我们进一步思考：未来的产品是否能够稳定、安全地进入实际使用，并真正服务于这一患者群体。
+
+因此，我们开始把临床需求看作贯穿研发全过程的判断标准，而不是只在项目开始时提出、在实验结束后再重新讨论的问题。
+
+**04 从产品开发进一步思考商业可行性**
+
+当我们开始关注稳定生产、质量控制和实际使用时，成本、资源和合作方式也自然进入了项目讨论。
+
+对于仍处于早期阶段的 CirCure，我们目前无法给出成熟的商业化方案，但可以提前识别未来可能影响开发的因素，包括生产成本、技术放大、质量管理、知识产权、产业合作和市场进入条件。
+
+这并不意味着 CirCure 已经完成了从科研项目到商业产品的转变，而是说明我们的 Entrepreneurship 分析开始建立在实际开发问题之上，不再只围绕技术新颖性描述项目价值。
+
+**05 What Changed｜从实验验证走向产品视角**
+
+上海临港的调研没有直接改变CirCure的疫苗设计，也不能替代治疗性疫苗所需的专业工艺和临床评价。它带来的主要变化，是让我们开始区分实验室验证与产品开发。
+
+在实验室阶段，我们需要判断CirCure能否表达抗原、激活免疫并产生具有选择性的肿瘤杀伤；在产品开发阶段，还需要进一步验证制备稳定性、批次一致性、质量控制、规模化能力和实际使用条件。
+
+因此，这次调研帮助我们明确了从技术可行到产品可用之间仍需补充的证据，但并不说明CirCure已经具备产业化条件。
+
+
+
+上海临港的调研让我们认识到，一项技术要走出实验室，必须解决稳定生产、质量控制和实际应用等产品化问题；而对于CirCure这样的早期疫苗项目，即使能够形成产品，也仍需验证其商业可行性。因此，我们还需要进一步明确目标人群、产品与现有方案的差异、应优先获取的关键证据，以及成本、市场、合作与风险对后续开发的影响，并围绕这些问题与华兰生物展开了进一步交流。
+
+
+
+##### 12\-华兰生物\-Biopharmaceutical Commercialization
+
+**Relevant Stakeholder**
+
+能够从疫苗企业视角评价CirCure的产品定位、开发价值和商业化条件。
+
+**Challenge**
+
+早期疫苗项目如何从科研成果走向可开发的产品？
+
+**Key Insight**
+
+技术新颖和实验成功并不足以支持商业化，项目还需要综合考虑临床需求、产品差异、证据质量、成本、市场和开发风险。
+
+**What Changed**
+
+我们将产品定位、研发优先级、市场、成本、产业合作、知识产权和风险管理纳入Entrepreneurship分析。
+
+**Current Status**
+
+Incorporated
+
+**SDGs Addressed**
+
+SDG 9 · SDG 8 · SDG 12 · SDG 17
+
+（click more）
+
+**华兰生物交流｜让科研成果逐步形成产品机会**
+
+上海临港的调研让我们了解了医疗技术从实验室走向真实应用时需要经历的产品化过程。在此基础上，我们希望进一步思考CirCure作为早期疫苗项目的发展路径：现有技术如何对应明确的产品定位，研发证据如何支持后续决策，市场、成本与合作条件又将如何影响项目推进。
+
+围绕这些问题，我们向华兰生物介绍了CirCure面向术后高复发风险TNBC患者的临床定位、circRNA多表位疫苗方案及当前研究进展，并从疫苗企业的视角讨论了项目未来的开发重点。
+
+**01 从科研结果中识别产品价值**
+
+CirCure目前已经围绕候选抗原、多表位组合、circRNA构建和免疫功能形成了一定的研究基础。华兰生物的企业视角帮助我们进一步思考，这些技术成果可以形成怎样的产品价值。
+
+一项早期成果进入产品开发，需要使临床需求、技术特点和研发证据相互对应。对于CirCure而言，这意味着围绕目标患者，进一步说明多抗原、多表位和circRNA设计能够解决什么问题，以及哪些实验结果可以支持这些技术特点。
+
+由此，我们开始从“获得更多结果”转向“形成能够支持开发决策的关键证据”，使后续研究更贴近产品发展的需要。
+
+**02 用产品定位帮助确定研发重点**
+
+产品定位将临床需求、技术方案与市场环境连接起来。目标患者、现有治疗路径、潜在使用场景和同类技术的发展情况，都会影响项目应当优先解决的问题。
+
+结合CirCure的临床定位，我们进一步关注其在术后TNBC治疗路径中可能承担的作用，并比较其与现有治疗方案及其他肿瘤疫苗策略之间的差异。
+
+这一思路也进入了研发规划：团队开始判断哪些证据最能体现CirCure的产品特点，并据此安排后续验证重点。市场分析由此成为帮助研发聚焦的一种工具，而不只是项目完成后的推广准备。
+
+**03 通过合作与风险管理规划开发路径**
+
+治疗性疫苗的开发涉及研发、工艺、生产、质量、注册和市场等多个环节，需要不同专业能力共同参与。
+
+结合华兰生物的建议，我们开始梳理团队需要持续保留的核心技术和数据，以及未来可以通过CDMO、联合开发或其他产业合作推进的环节。同时，知识产权和信息保护也被纳入合作规划，以支持技术积累和后续交流。
+
+我们还从技术验证、研发周期、资金需求、生产成本和合作条件等方面识别项目风险。对这些风险的梳理，使团队能够为不同发展阶段预留调整空间，并更合理地安排有限的研发资源。
+
+**04 What Changed｜将企业视角纳入Entrepreneurship**
+
+华兰生物的交流使我们在现有技术和临床定位基础上，进一步加入了产品与商业判断。
+
+在Entrepreneurship部分，我们从产品定位、研发优先级、市场与竞争、成本结构、产业合作、知识产权和风险管理等方面分析CirCure的发展路径，并将这些因素与后续研发任务联系起来。
+
+这使CirCure的商业化思考从较为宽泛的未来设想，逐步形成了可以继续完善的分析框架。现阶段，这些内容主要用于指导早期研发和产品规划；规模化成本、产品定价、市场采用和实际收益仍需要在后续开发中通过真实数据验证。
+
+
+
+#### C — Consequences
+
+CirCure remains at the research stage, so we do not present laboratory improvements as established clinical products or demonstrated achievements in industrial innovation\. We distinguish between two types of consequences: **short\-term changes in research and development and project decisions** already driven by stakeholder feedback, and **potential long\-term social, economic, and environmental impacts** that may arise if CirCure completes further preclinical validation, product development, and translation into practice\.
+
+##### Short\-Term Impacts
+
+At this stage, CirCure’s clearest contribution to SDG 9 is how stakeholder feedback has improved its **technical design, experimental evaluation, and development priorities**\.
+
+We broadened antigen selection beyond RNA expression to consider protein expression, tissue localization, tumor specificity, and patient heterogeneity\. Multi\-epitope design also incorporated immunogenicity, HLA binding, and potential population coverage\. For the circRNA platform, we evaluated functional effects alongside stability and expression, recognizing that immune activation may reflect both antigen\-specific responses and RNA\-triggered innate immunity\.
+
+We retained commercial LNPs to focus resources on validating the vaccine strategy\. Controls, replication, and complementary assays supported an evidence chain linking **antigen expression, immune responses, and functional antitumor activity**, while keeping these findings distinct from clinical benefit\. Detailed results appear in the Evidence section\.
+
+Academic and industry feedback also brought manufacturing, batch consistency, quality control, costs, market needs, partnerships, intellectual property, and risk into our development planning and Entrepreneurship analysis\. These changes support SDG 9 through **stronger research capabilities and more informed development decisions**, with cross\-disciplinary collaboration also supporting SDG 17\. Scalable manufacturing, clinical benefits, and wider economic or social outcomes remain to be demonstrated\.
+
+##### Long\-Term Impacts
+
+If CirCure completes more comprehensive functional validation, preclinical studies, clinical trials, and product development, its technological impact could extend to social, economic, and environmental outcomes\. The following analysis is conditional on meeting these requirements and distinguishes changes already made within the project from potential outcomes that still require future data\.
+
+###### Social Impacts
+
+**Potential Benefit**
+If CirCure demonstrates long\-term efficacy and safety and becomes a consistent, usable product, its multi\-antigen, multi\-epitope design could offer an additional adjuvant therapy option for patients with TNBC who remain at risk of recurrence and metastasis after surgery\. It could also provide a further approach to addressing tumor heterogeneity\. This would extend CirCure’s contribution to **SDG 3** from early research toward tangible health benefits, subject to successful clinical validation and translation into a product\.
+
+**Potential Risk**
+Technical complexity does not automatically lead to equitable health benefits\. Treatment prices, administration requirements, storage and transport conditions, regional healthcare resources, healthcare professionals’ capabilities, and public acceptance of novel RNA vaccines could all affect who can access the technology\. If the product can be used only in well\-resourced regions or healthcare institutions, its potential health benefits may not be equitably distributed\. It could therefore fail to advance **SDG 10** and potentially widen disparities in treatment opportunities\.
+
+**Evidence Boundary**
+There is currently no clinical evidence that CirCure reduces the risk of recurrence and metastasis, nor are there real\-world data demonstrating consistent manufacturing, clinical deployment, or patient acceptance\. These social impacts therefore remain potential long\-term outcomes, dependent on evidence supporting efficacy, safety, product development, and equitable implementation\. They cannot be inferred directly from the current in vitro experiments\.
+
+###### Economic Impacts
+
+For an early\-stage nucleic acid vaccine project, long\-term economic impacts involve **balancing potential technological and product value against high research and development costs and uncertainty**\. Feedback from industry stakeholders, including Hualan Biological, also showed us that market and commercial considerations should inform research priorities and resource allocation throughout development\.
+
+**Potential Benefit**
+CircRNA, multi\-epitope design, and the associated functional evaluation methods could contribute to a pipeline of technologies and product candidates in nucleic acid therapeutics and cancer immunotherapy, while generating demand for process development, quality control, and industry collaboration\. Addressing evidence quality, product positioning, costs, the scope of partnerships, and key risks early in development could also reduce repeated investment caused by misdirected development or insufficient evidence at later stages\. These potential effects could support industrial innovation under **SDG 9** and provide a foundation for innovation\-driven economic activity under **SDG 8**\.
+
+**Potential Risk**
+CircRNA and LNP manufacturing, complex quality control, prolonged clinical development, cold\-chain storage and transport, and regulatory registration requirements could entail substantial costs\. Market competition, insufficient product differentiation, intellectual property boundaries, and uncertainty in partnerships could also affect whether further investment is justified\. If development costs translate into a high product price, industrial innovation may struggle to deliver broad social benefits\. It could also limit patient affordability, creating a conflict with the equity objectives of **SDG 10**\.
+
+**Evidence Boundary**
+Our current Entrepreneurship work consists of **early commercialization analysis informed by stakeholder feedback**\. We **do not yet have data** on manufacturing costs at scale, clinical development expenditure, product pricing, market adoption, or revenue\. Detailed analyses of product positioning, the market, the business model, and risks are presented in the Entrepreneurship section\.
+
+###### Environmental Impacts
+
+CirCure’s current direct environmental impacts mainly arise from laboratory reagents, single\-use consumables, biomedical waste, and equipment operation\. If the project progresses to product development and manufacturing at scale, these impacts will extend to raw materials, manufacturing, packaging, storage and transport, quality control, and waste treatment\.
+
+**Potential Benefit** 
+
+Clearer experimental design, appropriate controls and replication, and more consistent manufacturing processes could reduce the need to repeat experiments or production because of design errors, operational variability, or batch failures\. This could reduce unnecessary consumption of raw materials and single\-use consumables, equipment operating time, and energy use, helping the project address **SDG 12’s emphasis on resource efficiency and responsible production** in the future\.
+
+**Potential Risk** 
+
+Manufacturing circRNA and LNPs at scale, single\-use production consumables, quality testing, low\-temperature storage, and cold\-chain transport could also create additional material and energy demands\. **Improving batch consistency at one stage does not necessarily reduce the overall environmental impact\.** If additional resource consumption and carbon emissions outweigh local efficiency gains, the project may fail to advance SDG 12 and could create **new trade\-offs with SDG 13**\.
+
+**Evidence Boundary** 
+
+CirCure **has not yet entered standardized manufacturing or production at scale**\. We currently lack actual data on batch failure rates, raw material inputs, energy consumption, transport, or lifecycle impacts\. We therefore **do not present potential reductions in repeated work as resource savings already achieved**, or interpret efficiency gains at individual stages as overall environmental benefits\. A more comprehensive analysis of resource responsibility and the environmental impacts of production is presented under SDG 12\.
+
+#### A — Alignment
+
+Building on the potential relationships identified through SST\-QN, we examined CirCure’s **technical design, stakeholder engagement, experimental validation, and commercialization analysis** to assess whether these relationships have emerged within the project and how far the current evidence supports them\.
+
+##### Key Findings
+
+**SDG 3 ↔ SDG 9, SDG 17 → SDG 9, and SDG 9 → SDG 4 are supported as Positive Core Interactions\.** Clinical needs have shaped antigen selection, multi\-epitope design, and functional validation\. Cross\-disciplinary feedback has refined experimental interpretation, delivery priorities, and development planning, while technical knowledge has informed educational resources used with different audiences\. These links are supported by project decisions and activities, rather than demonstrated patient health benefits\.
+
+**SDG 9 → SDG 8 remains Exploratory\.** Feedback from Hualan Biological informed our analysis of product positioning, markets, costs, partnerships, and risks\. This supports future development planning, but CirCure has not yet demonstrated production at scale, job creation, or economic returns\.
+
+**SDG 9 ↔ SDG 10 and SDG 9 ↔ SDG 12 remain Conditional\.** Multi\-epitope design and HLA coverage may broaden potential patient coverage, while manufacturing complexity, pricing, cold\-chain requirements, and unequal healthcare resources could restrict access\. Fewer failed experiments and improved batch consistency could reduce waste, but RNA/LNP production and storage may increase material and energy demands\. Whether these relationships yield benefits or trade\-offs depends on future design and implementation, and requires access and lifecycle data\.
+
+**SDG 9 → SDG 5 remains Excluded\.** Potential benefits to women’s health are primarily mediated through SDG 3\. Targeting a disease that mainly affects women does not itself establish a direct contribution to structural gender equality\.
+
+#### L — Legacy
+
+To help other teams build on our SDG 9 work, we distilled CirCure’s decision\-making process into **three reusable toolkits** for synthetic biology and research\-driven projects\. They help teams define core questions, assess stakeholder feedback, document decisions, and update project actions while maintaining research priorities\. Each decision record captures **the rationale, relevance to the project’s current stage, action taken, and need for reassessment**\. Together, these tools offer a practical, traceable way to turn stakeholder input into project decisions that others can review and adapt\.
+
+##### **Core Question Anchor**
+
+**Why** 
+
+研发项目在持续加入新想法、实验内容和利益相关者建议后，容易逐渐偏离最初希望解决的核心问题。
+
+**What it helps with** 
+
+明确当前阶段的**核心问题、判断标准、优先任务和项目边界**，并检验新增内容是否真正服务于项目主线。
+
+**Best for** 
+
+项目启动、研究方向调整、阶段复盘，以及团队需要重新确定研发优先级时使用。
+
+[Core Question Anchor\-Chinese\.pdf](图片和附件/Core%20Question%20Anchor-Chinese.pdf)
+
+
+
+[Core Question Anchor\-English\.pdf](图片和附件/Core%20Question%20Anchor-English.pdf)
+
+
+
+##### **Stakeholder Feedback Decision Protocol**
+
+**Why** 
+
+不同利益相关者的建议可能存在优先级差异、实施限制甚至相互冲突，团队既不能全部接受，也不应只记录意见而不说明如何处理。
+
+**What it helps with** 
+
+从**问题相关性、证据支持、实施可行性和项目阶段**评估反馈，并将其归入 Incorporated、Partially Incorporated、Future Consideration 或 Not Incorporated，同时记录判断依据和后续行动。
+
+**Best for** 
+
+专家访谈、患者与公众参与、企业交流结束后的反馈整理，以及团队集中讨论项目调整时使用。
+
+[Stakeholder Feedback Decision Protocol\-Chinese\.pdf](图片和附件/Stakeholder%20Feedback%20Decision%20Protocol-Chinese.pdf)
+
+
+
+[Stakeholder Feedback Decision Protocol\-English\.pdf](图片和附件/Stakeholder%20Feedback%20Decision%20Protocol-English.pdf)
+
+
+
+##### **Anchor \& Decide Toolkit**
+
+**Why** 
+
+如果核心问题、利益相关者反馈、团队决策和项目行动分别记录，项目迭代过程容易变得分散，外部读者也难以理解一项反馈如何真正影响研发。
+
+**What it helps with** 
+
+把核心问题、反馈、团队讨论和后续行动放在一起，帮助团队看清每条建议如何影响项目，并及时调整下一步工作。
+
+**Best for** 
+
+贯穿完整研发周期的项目管理、Integrated Human Practices 与 SDG9 实践记录，也适用于团队交接、阶段总结和对外展示。
+
+[Anchor \& Decide Toolkit\-Chinese\.pdf](图片和附件/Anchor%20&%20Decide%20Toolkit-Chinese.pdf)
+
+[Anchor \& Decide Toolkit\-English\.pdf](图片和附件/Anchor%20&%20Decide%20Toolkit-English.pdf)
+
+
+
+#### E — Evidence
+
+CirCure 对 SDG9 的回应目前主要发生在项目研发层面。我们没有以访谈次数或活动数量代替影响，而是记录外部反馈是否真正改变了技术设计、实验评价和研发决策。
+
+**Measurable**
+
+当前可以量化的项目改变包括：
+
+- **Documented 7 traceable expert feedback records**, each linking the feedback to its adoption status, decision rationale, and follow\-up actions\.
+
+![image\.png](图片和附件/image%2010.png)
+
+- **Constructed vaccine plasmids and compared immune responses**: an empty\-vector control containing the adjuvant module, 13 single\-epitope plasmids, a TROP2 dual\-epitope plasmid, and pCirCure\-circMEV\. Round\-2 ELISpot readings were 32 for the empty\-vector control, 198/227 for the two corresponding single\-epitope constructs, 298 for the dual\-epitope construct, and 367 for the combined vaccine, in SFC/10⁵ cells\.
+
+
+
+- **Obtained evidence of circularization and antigen translation**: the combined vaccine batch achieved a circularization rate of 99\.30 ± 0\.17% at a calibrated 4 µL input, with Sanger sequencing confirming the back\-splice junction\. An approximately 50 kDa FLAG\-tagged antigen band was detected in DCs electroporated with circRNA\.
+
+
+
+- **Strengthened CTL selectivity assessment**: expanded normal\-cell controls from 1 to 4 cell lines across 4 tissue sources and confirmed their HLA\-A\*02:01 status\. Specificity ratios ranged from 21–76× at effector\-to\-target ratios of 80:1 and 100:1\.
+
+
+
+- **Developed a three\-module vaccine design system** covering Data Import \& QC, Target Selection, and Epitope Prediction\.
+
+
+
+- **Created 3 reusable decision\-making resources**—2 standalone tools and 1 integrated toolkit—for other teams to use and adapt\.
+
+
+
+**Significant**
+
+CirCure’s contribution to SDG 9 is meaningful because stakeholder feedback has changed **how we draw technical conclusions, interpret experimental results, and allocate research resources**\.
+
+First, **honoring patients’ hopes requires evidence that can withstand scrutiny**\. In CTL safety assessment, normal cells may escape killing simply because they lack the matching HLA required for recognition\. Including four HLA\-A\*02:01\-positive normal cell lines provided a necessary basis for interpreting these results\. Antigen assessment using multiple sources of evidence, HLA coverage analysis, and functional validation also reduced uncertainty in key decisions, giving further research a more reliable foundation\.
+
+Second, **helping promising research progress requires capabilities that can grow over time**\. We integrated target selection, epitope prediction, and population coverage assessment into CircRNA Vaccine Design System V1\.0, completed the relevant constructs, and established an evidence framework linking antigen expression, immune responses, and functional effects\. Retaining commercial LNPs allowed us to focus limited resources on validating the vaccine’s core biological activity\.
+
+Finally, **we want our experience to become a starting point for others**\. Seven expert feedback records link recommendations to adoption decisions and project actions\. Two standalone tools and one integrated toolkit preserve this process, enabling other teams to understand our reasoning, adapt our methods, and improve upon them\.
+
+Together, these contributions address SDG 9 through research reliability, technical capability, and reusable methods\. Our current impact lies in strengthening early\-stage R\&D, providing a foundation others can test and build upon as CirCure moves toward process development, further preclinical validation, and potential industrial application\.
+
+
+
+### SDG12：Responsible Consumption and Production
+
+A technology designed to improve health also consumes materials and energy and generates waste throughout research and potential future production\. We chose SDG 12 to bring **resource efficiency and environmental responsibility into decisions while our approach is still taking shape**, ensuring that the pursuit of patient benefit includes careful consideration of the **burdens it may place on people and the environment**\.
+
+#### S — Stakeholder Insights
+
+CirCure remains at the research and development stage and has not yet entered standardized manufacturing or production at scale\. We therefore began with a practical question about the present: **what responsibilities for resource use do we already have at this stage of the project?** This provided a starting point before considering potential resource savings from future industrial production\.
+
+Starting with actual resource use in our laboratory, we extended our analysis to future manufacturing, environmental assessment, lifecycle management, and data validation\. Feedback from stakeholders across different fields helped us clarify **which responsibilities already exist, which may emerge as the project develops, and how these changes should be assessed and verified in the future**\.
+
+##### **01\-Yang Liu \| EHS\-Laboratory Management**
+
+**Relevant Stakeholder**
+Laboratory management and EHS personnel who can assess CirCure’s current resource inputs from the perspectives of **laboratory resource use, experimental workflows, and waste management**, and help identify issues we can directly address at this stage\.
+
+**Challenge**
+**What sustainability responsibilities already exist before scale\-up?**
+
+**Key Insight**
+Responsibilities for resource use begin during research and development\. Reagents, single\-use consumables, equipment operation, unnecessary repetition of experiments, and laboratory waste already contribute to CirCure’s resource use\. Reducing avoidable repetition through better experimental design is one of the most direct and actionable opportunities for improvement at this stage\.
+
+**What Changed**
+We expanded our understanding of SDG 12 to include **resource use in our current experiments**\. We used pilot experiments to select conditions, refined experimental design, planned appropriate replication, and followed laboratory waste management procedures to reduce avoidable resource use\.
+
+**Current Status** `Incorporated`
+
+**SDGs Addressed** SDG 12 · SDG 9
+
+**Click More**
+
+###### **Responsible Production Begins Before Scale\-Up**
+
+CirCure remains at the research and development stage and has not yet entered standardized manufacturing or production at scale\. Before discussing how much resource use future industrial production might save, we wanted to answer a more immediate question: **are there responsibilities for resource use that we can already identify and act on during our current research and development work?**
+
+We discussed this question with laboratory management and EHS personnel and reviewed the resource inputs involved in circRNA preparation, cell culture, and functional validation\.
+
+**01 Research and Development Already Consume Resources**
+
+Even before manufacturing begins, CirCure’s experiments require RNA preparation reagents, culture media, and single\-use consumables such as centrifuge tubes, pipette tips, and culture dishes\. They also involve cell culture, equipment operation, and laboratory waste treatment\. Although these activities take place at laboratory scale, they represent resource use that is already occurring\. Our current responsibilities should therefore begin with **experimental activities we are already carrying out**\.
+
+**02 An Unnecessary Repeat Uses More Than Another Batch of Reagents**
+
+Laboratory management personnel drew our attention to **avoidable repetition of experiments**\. Starting larger experiments before clarifying their objectives, key variables, or conditions can mean repeating an entire set if the conditions prove unsuitable\. The additional inputs extend beyond individual reagents to single\-use consumables, culture materials, cell culture time, and equipment operation\. Reducing experiments that provide little useful information, or repeats caused by design problems, is therefore a practical way to address resource use during research and development\.
+
+**03 Better Resource Use Starts with Better Experimental Design**
+
+We incorporated this advice into our experimental workflows\. Before full experiments, we placed greater emphasis on **small\-scale pilot experiments** to select key conditions and clarify the objectives and main variables\. We planned experimental groups and replication appropriately to reduce the likelihood of repeating entire sets because of design problems\. We also segregated biological waste, contaminated consumables, and other laboratory waste for treatment in accordance with laboratory procedures\. These measures address resource use that is already occurring and represent practical actions CirCure can take at its current stage\.
+
+**04 What Changed \| Responsibilities for Resource Use Begin Before Manufacturing**
+
+This discussion established our first guiding principle for CirCure’s work under SDG 12: **Responsible production begins before scale\-up\.**
+
+Even during research and development, reagents, consumables, equipment operation, repeated experiments, and waste create responsibilities for resource use\. We therefore began putting responsible production into practice through **laboratory resource use that we can currently control and improve**\.
+
+---
+
+##### 02｜乔君华\-Chief Technology Officer \(CTO\), GeneScience Pharmaceuticals
+
+**Relevant Stakeholder**
+
+作为金赛药业首席技术官，乔君华在生物药 CMC、工艺开发、技术转移和产业化方面经验丰富，能够判断 CirCure 完成早期科研验证后所需满足的可制造性、工艺控制、批次一致性和质量管理要求。
+
+**Challenge**
+
+实验室疫苗进入产品开发阶段后，评价标准会从“能否实现”转向“能否稳定生产、有效控制并规模化应用”。早期应聚焦科研验证，同时记录工艺开发、质量控制和规模化生产等后续要求，避免过早偏离当前重点。
+
+**Key Insight**
+
+生产工艺、关键原材料、批次一致性、质量标准和成本边界并非后期附加条件，而是决定技术能否走向临床转化和实际应用的重要因素。
+
+**What Changed**
+
+我们将 CirCure 分为两个阶段：现阶段验证疫苗策略的科研可行性；获得进一步支持后，再系统评估工艺放大、原材料供应、批次一致性、质量控制和成本边界。相关要求已被记录为进入产品开发阶段后的判断标准。
+
+**Current Status**
+
+Future Consideration
+
+**SDGs Addressed**
+
+SDG 12
+
+Click More
+
+**从一次实验成功到可重复、可控制的产品**
+
+经过前期实验设计与专家交流，我们已经能够较为清楚地说明 CirCure 希望如何完成抗原表达、诱导免疫应答并进一步验证功能性作用。但如果这些早期结果得到支持，下一阶段应当依据什么标准评价这项技术，我们此前并没有形成清晰的判断框架。
+
+因此，在与金赛药业首席技术官乔君华交流时，我们没有笼统地询问“CirCure 能否产业化”，而是向他介绍了项目目前的技术方案、所处阶段和现有验证思路，并说明我们现阶段主要采用成熟的商业化 LNP，重点开展抗原表达、免疫激活和细胞层面的功能评价。在此基础上，我们提出了三个具体问题：
+
+- 在早期科研阶段，哪些产品开发要求需要提前认识，哪些应当在初步效果得到验证后再系统评价？
+
+- 如果实验室中的疫苗设计进入进一步开发，生产工艺、原材料和质量控制会对技术方案提出哪些新要求？
+
+- 除了实验效果，哪些因素可能决定这项技术是否值得继续放大并进入产品开发？
+
+**01｜评价标准会随着研发阶段改变**
+
+乔君华指出，科研验证和产品开发回答的并不是同一个问题。
+
+在实验室阶段，首先需要判断技术能否实现，以及是否能够产生预期的生物学作用；进入产品开发阶段后，评价重点则会从“某一次实验能否成功”转向“同一结果能否被稳定重复和有效控制”。
+
+这意味着生产工艺是否稳定、关键原材料能否持续获得、不同批次能否保持一致，以及产品的关键质量属性能否被识别和检测，都会成为新的判断条件。实验效果可以构成后续开发的起点，却不能单独代表产品开发价值，更不能直接证明一项技术已经具备规模化生产条件。
+
+**02｜可制造性需要被验证，而不能被默认**
+
+这次交流让我们认识到，一项设计能够在实验室中完成，并不代表它天然具备可制造性。
+
+当制备规模扩大时，原材料来源、工艺参数、设备条件和操作过程的变化都可能影响产品质量。如果不同批次难以保持一致，或者缺少能够反映产品关键质量属性的检测指标，即使早期实验效果较好，也难以形成稳定、可控制的产品。
+
+因此，可制造性不仅意味着产品“能够被制备”，还意味着生产过程可以被定义、监测和控制，并能够在规模扩大后持续获得符合质量要求的产品。
+
+**03｜工艺、质量与成本共同影响开发价值**
+
+乔君华的意见帮助我们认识到，成本并不是与技术评价完全分离的商业问题。
+
+关键原材料的价格与供应稳定性、工艺复杂程度、产品得率、批次成功率以及质量控制要求，都会影响一项技术能否被持续开发。如果工艺过于复杂、产品得率较低，或者不同批次之间存在较大差异，即使技术在小规模实验中有效，也可能难以形成具有实际开发价值的生产路径。
+
+因此，当 CirCure 进入后续开发阶段时，除了继续评价生物学效果，还需要关注原材料供应、工艺稳定性、产品得率、批次一致性、质量风险和成本边界。这些因素共同决定技术是否具备进一步放大和转化的基础。
+
+**04｜认识未来要求，不等于提前开展产业化**
+
+乔君华的建议并没有促使我们立即增加生产放大、工艺开发或成本核算等内容。
+
+CirCure 目前仍处于早期科研阶段，现阶段最核心的任务依然是验证疫苗能否完成预期表达，并产生具有功能意义的免疫作用。在这一基础尚未充分建立之前，直接进入规模化工艺和产品开发既不符合项目阶段，也可能分散当前的研发重点并造成不必要的资源投入。
+
+因此，我们没有因为未来可能存在产业需求而改变当前构建方案，也没有将尚未开展的生产评价描述为已经解决的问题。相反，我们将这些要求作为阶段性的判断边界：只有在早期科研证据足以支持项目继续推进时，才有必要投入更多资源开展工艺开发、可制造性和质量评价。
+
+**05｜What Changed：为下一阶段建立产品开发标准**
+
+这次交流带来的改变，不是立即新增一组产业化实验，而是明确了 CirCure 从科研验证进入产品开发时需要重新回答的问题。
+
+现阶段，我们以抗原表达、免疫应答和功能性作用判断疫苗策略是否值得继续研究；如果这些早期证据得到进一步支持，后续则需要围绕生产工艺、关键原材料、工艺放大、批次一致性、质量控制和成本边界，重新评价其开发可行性。
+
+这一调整使我们对 CirCure 所处的阶段有了更准确的认识：当前需要证明的是这项技术是否成立，而不是提前宣称它能够成为产品。与此同时，只有在后续开发中逐步建立稳定、可控制且具有合理投入产出关系的生产方式，实验室中的创新才可能真正走向应用。
+
+从 SDG 12“负责任消费和生产”的角度看，这次访谈也促使我们进一步思考研发决策中的资源责任。对 CirCure 而言，负责任生产并不意味着在科研早期提前开展完整的产业化工作，而是根据证据决定是否进入下一阶段，避免在技术基础尚不充分时投入不必要的生产资源；在项目具备继续开发的条件后，再将产品得率、批次成功率、原材料利用、工艺损耗和长期供应能力纳入技术决策。
+
+
+
+在识别这些资源责任后，我们进一步希望了解：**实际产业环境管理如何评价资源投入的变化？现有数据又能够支持多大范围的环境结论？**
+
+
+
+##### 03｜国网苏州供电公司 — Carbon Accounting \& Environmental Impact Assessment
+
+**Relevant Stakeholder**
+
+国网苏州供电公司具有实际产业碳核算与环境管理经验，能够帮助我们理解环境评价中数据范围、核算边界与结论尺度之间的关系，并判断局部资源变化能够支持何种程度的环境表述。
+
+**Challenge**
+
+某一环节的资源消耗下降，是否意味着整个产品的环境影响已经降低？在数据覆盖范围有限的情况下，可持续性结论应当停在哪里？
+
+**Key Insight**
+
+局部资源消耗下降只能说明特定环节发生了变化，不能直接代表产品整体碳排放或环境影响下降。环境评价必须明确评价对象、数据范围、核算边界和比较基准，结论的范围不能超过证据实际覆盖的范围。
+
+**What Changed**
+
+我们开始严格区分**已经验证的局部改善、基于明确假设的情景预测和整体环境影响评价**，并进一步形成 **Sustainability Claim Boundary Protocol**，避免将当前证据能够支持的局部变化扩大为尚未得到验证的整体环境成果。
+
+**Current Status**
+
+Incorporated
+
+**SDGs Addressed**
+
+SDG 12 · SDG 13
+
+Click More
+
+###### 国网苏州供电公司｜资源投入减少，并不自动意味着整体环境影响降低
+
+在识别 CirCure 不同研发阶段可能涉及的资源责任后，我们进一步面对了一个新的判断问题：**如果某一环节的资源投入减少，现有证据究竟能够支持多大范围的可持续性结论？**
+
+围绕这一问题，我们参考了实际产业碳核算与环境管理中的判断方法，重点了解环境影响评价如何确定核算对象、数据范围和分析边界。
+
+**01｜一个环节发生变化，并不能代表整个系统**
+
+相关交流让我们认识到，产品的环境影响通常并不来自单一环节。原材料获取、能源使用、生产过程、储存运输以及废弃物处置，都可能带来不同形式的资源消耗和环境负担。
+
+因此，即使某一环节的资源使用下降，也只能说明这一特定环节发生了变化，不能自动推导出整个产品的碳排放或整体环境影响已经降低。要形成范围更广的结论，还需要检查其他环节是否发生了负担转移，并使用覆盖相应系统边界的数据进行评价。
+
+**02｜环境结论必须与数据覆盖范围一致**
+
+这一认识促使我们重新检查 CirCure 现阶段能够作出的可持续性表述。
+
+如果通过更合理的实验设计减少了一次重复实验，我们可以说明相应的试剂、耗材和设备运行投入得以避免；如果情景分析显示，降低批次失败率可能减少重复生产，我们可以在明确假设的前提下讨论其潜在资源影响。
+
+但是，在缺少真实生产、能源使用、储存运输和生命周期数据的情况下，这些结果不能被直接表述为“CirCure 已经降低了整体碳排放”或“CirCure 已经实现了更低的整体环境影响”。
+
+**结论能够延伸多远，取决于现有证据实际覆盖到哪里。**
+
+**03｜区分不同层次的 sustainability claims**
+
+基于这一判断，我们将 CirCure 的资源与环境结论分为三个层次：
+
+- **Verified Local Improvement**：由现有行动和数据直接支持的局部资源改善；
+
+- **Scenario\-Based Projection**：在明确说明假设、范围和不确定性的前提下，对未来资源变化作出的情景预测；
+
+- **Overall Environmental Impact**：需要真实生产数据及更完整生命周期信息才能评价的整体环境结果。
+
+这样的区分使我们能够讨论已经观察到或未来可能出现的资源改善，同时避免将“可能发生”提前描述为“已经实现”。
+
+**04｜What Changed：让可持续性结论停在证据能够支持的位置**
+
+这次交流最终使我们明确：
+
+**Local resource efficiency does not necessarily demonstrate a reduction in overall environmental impact\.**
+
+因此，我们进一步形成了 **Sustainability Claim Boundary Protocol**，用于检查每一项 sustainability claim 所依据的数据、覆盖的环节、采用的假设以及能够支持的结论范围。
+
+对于 CirCure，目前可以确认的是研发阶段已经发生的资源投入，以及部分可以被识别和改善的局部问题；未来生产中的资源变化可以在明确假设和分析边界的前提下进行情景预测；而产品整体碳排放和生命周期环境影响，则需要获得覆盖原材料、生产、能源、运输及处置等环节的真实数据后才能进一步评价。
+
+---
+
+##### 04｜上汽集团 — Green Manufacturing \& Life\-Cycle Thinking
+
+**Relevant Stakeholder**
+
+作为具有复杂制造体系和完整产业链的汽车企业，上汽集团的绿色制造实践能够帮助我们从能源使用、制造过程、供应链、物流和末端回收等多个环节，理解负责任生产所需要覆盖的评价范围。虽然汽车与生物医药属于不同产业，但这种跨环节的生命周期思维可以为 CirCure 建立资源责任框架提供参考。
+
+**Challenge**
+
+Is optimizing a single process enough for responsible production?
+
+**Key Insight**
+
+单一环节的资源优化不足以代表完整的负责任生产。原材料获取、生产制造、能源使用、储存运输、产品使用和末端处置等环节，都可能带来新的资源投入或环境负担。因此，对一个环节的改善进行评价时，还需要关注环境负担是否被转移至其他环节。
+
+**What Changed**
+
+我们将 CirCure 的资源分析从实验消耗和未来生产损耗，进一步扩展至原材料、生产、储运、使用和末端处置等生命周期环节。这个框架并不意味着我们已经完成了生命周期评价，而是明确了未来随着项目发展需要逐步收集数据和开展评价的范围。
+
+**Current Status**
+
+Incorporated
+
+**SDGs Addressed**
+
+SDG 12 · SDG 13
+
+Click More
+
+###### 上汽集团｜负责任生产不能只看一道工序
+
+前面的交流让我们认识到，某一环节的资源消耗下降，并不能代表整个产品的环境影响已经降低。由此，我们进一步关注：**如果单一环节不足以代表整体，负责任生产究竟需要考虑多大的范围？**
+
+在了解上汽集团的绿色制造实践时，我们观察到，成熟制造体系的环境管理并不局限于工厂中的某一道工序，而是延伸至生产能源、原材料、供应链、物流、产品使用和末端回收等多个环节。
+
+汽车与生物医药在产品特征、生产方式和环境影响方面存在明显差异。因此，我们并不直接将汽车产业的具体措施应用于 CirCure，而是借鉴其跨环节的生命周期思维，重新检查 CirCure 未来可能涉及的资源责任。
+
+**01｜生产责任并不只发生在生产线上**
+
+上汽集团公开披露的绿色发展实践覆盖生产能源、制造过程、低碳材料、产业链协同和材料回收等环节。这说明，对于具有复杂供应链和制造体系的产品，环境责任不能只通过某一道工序的资源变化进行判断。
+
+即使一道生产工序减少了能源或材料投入，其他环节仍可能产生新的资源需求或环境负担。例如，一项工艺优化可能降低生产阶段的能耗，却增加对特殊原材料、运输条件或末端处理的要求。
+
+因此，局部优化是否能够形成更广泛的环境改善，需要放在更完整的生产和应用体系中评价。
+
+**02｜CirCure的资源责任同样不止来自生产批次**
+
+这一视角促使我们进一步扩展 CirCure 的资源分析范围。
+
+除了当前研发过程中使用的试剂、一次性耗材和设备能源，以及未来生产阶段可能因批次失败造成的资源损失，circRNA 疫苗如果进一步走向实际应用，还可能涉及：
+
+- RNA、脂质及其他关键原材料的生产和供应；
+
+- 制备、纯化和质量检测过程中的材料与能源投入；
+
+- 储存条件及温控运输产生的资源需求；
+
+- 给药过程中使用的一次性医疗用品；
+
+- 生产废弃物、包装和使用后相关材料的处置。
+
+这些环节目前尚未全部产生真实数据，但都属于未来可能需要识别和评价的资源责任。
+
+**03｜从单点优化转向生命周期思维**
+
+基于这一认识，我们不再将某一实验或生产环节的资源优化视为 CirCure 负责任生产的完整体现，而是建立覆盖**原材料、生产、储运、使用和末端处置**的分析框架。
+
+这一框架目前属于生命周期思维，而不是完整的生命周期评价。它的作用是帮助我们识别潜在影响环节、避免遗漏环境负担，并为项目进入后续开发阶段后收集数据提供方向。
+
+只有在获得更完整的原材料、生产、能源、运输和处置数据后，才可能进一步开展定量的生命周期环境评价。
+
+**04｜What Changed：把资源责任放回完整生命周期中理解**
+
+上汽集团的绿色制造实践帮助我们形成了一个更完整的判断：
+
+**Responsible production requires life\-cycle thinking\.**
+
+因此，我们不再只关注实验耗材或单个生产批次，而是将 CirCure 未来可能涉及的原材料、生产、储运、使用和末端处置共同纳入资源责任框架。
+
+这一改变没有使我们提前宣称 CirCure 已经实现了全生命周期的环境改善，而是明确了未来评价需要覆盖哪些环节、收集哪些数据，以及如何检查局部优化是否将环境负担转移至其他阶段。
+
+---
+
+##### **05\-上海临港新片区跨境数据科技有限公司\-Data Governance \& Supply\-chain Digitalization**
+
+**Relevant Stakeholder**
+ 能够从**生产数据管理、供应链信息追踪和过程记录**角度，帮助我们理解未来的资源改善应如何被持续监测和验证。
+
+**Challenge**
+**Without continuous data, how can sustainability improvement be verified?**
+ 如果缺少连续、可比较的数据，我们未来如何证明资源效率真的发生了改善？
+
+**Key Insight**
+ 资源效率是否真正改善，不能仅依赖单次或零散的数据判断。只有持续记录关键生产与供应链数据，相关变化才可能被比较、追踪并进一步验证。
+
+**What Changed**
+ 我们进一步明确了未来需要持续记录的关键数据，包括**原材料投入、批次成功与失败情况、储存运输条件和废弃物产生情况**，为后续资源效率评价及生命周期分析建立数据基础。
+
+**Current Status** `Future Consideration`
+
+**SDGs Addressed** SDG 12 · SDG 9
+
+**Click More**
+
+###### **上海临港新片区跨境数据科技有限公司｜资源改善需要留下可以验证的数据**
+
+前面的分析使我们逐渐明确，CirCure 未来的资源责任不仅涉及生产本身，还可能延伸至原材料、储运、使用和末端处置等不同环节。但随之而来的问题是：**即使已经知道应该关注哪些环节，如果没有连续且可追踪的数据，我们又如何判断未来是否真的发生了改善？**
+
+在参访上海临港新片区跨境数据科技有限公司时，我们进一步了解了数据治理、安全流通和可信追踪在实际产业中的作用。这家公司并不直接替 CirCure 评价环境影响，但其数据治理经验帮助我们认识到：任何可验证的资源改善，都需要建立在结构清晰、来源明确且能够持续追踪的数据基础上。
+
+**01｜知道“要关注什么”，不等于能够证明“发生了改善”**
+
+企业比较不同时间、不同批次和不同环节的表现，需要持续保留相互关联的数据。如果记录标准发生变化、数据来源无法确认，或者不同批次采用不同的统计口径，即使积累了大量数据，也未必能够形成可靠的比较。
+
+这让我们认识到，对于 CirCure 而言，仅仅提出“减少资源浪费”或“提高资源效率”的目标并不足够。未来如果缺少改善前后的连续数据，以及能够解释数据如何产生的背景信息，就很难判断资源使用发生了什么变化，也无法验证这种变化是否持续存在。
+
+**02｜不仅要明确记录什么，还要明确如何记录**
+
+结合前面识别出的资源责任，我们进一步明确了未来可能需要持续保留的信息：
+
+- 原材料的种类、来源、数量和计量单位；
+
+- 不同生产批次的标识、规模、成功或失败情况；
+
+- 关键工艺参数及相关质量结果；
+
+- 能源和其他资源的投入情况；
+
+- 储存时间、温度及运输条件；
+
+- 废弃物的种类、数量和处理方式。
+
+但是，仅列出这些指标仍然不够。每项数据还需要尽可能明确记录时间、来源、采集方法、适用环节和评价边界，并通过统一定义和单位保证不同批次之间具有可比性。
+
+**03｜数据治理使信息能够形成证据链**
+
+资源效率评价不仅需要数据存在，还需要能够说明数据来自哪里、对应哪个批次、由何种方法产生，以及是否经过修改或补充。
+
+因此，未来的数据记录需要与相应的原材料、生产批次、质量结果、储运条件和废弃物处理过程建立关联。这样，当某项资源指标发生变化时，才有可能进一步追踪变化来自工艺调整、生产规模、原材料差异，还是记录方式本身的改变。
+
+如果未来 CirCure 涉及多机构合作或跨地区数据传输，还需要进一步考虑数据访问权限、安全共享和合规流通。但这些属于后续开发需求，并非项目当前已经建立的能力。
+
+**04｜当前缺少数据，也意味着需要先明确未来的数据需求**
+
+CirCure 目前尚未进入规模化生产，因此上述许多数据现在并不存在。
+
+对于当前无法评价的问题，我们不提前给出资源改善或环境收益结论，而是首先明确未来需要记录哪些数据、采用怎样的定义和单位、在哪些环节持续记录，以及这些数据能够支持何种范围的判断。
+
+这种做法不能替代未来的环境评价，却可以降低因记录缺失、统计口径不一致或数据无法追溯而导致的评价困难。
+
+**05｜What Changed：让资源改善从目标变成可验证的变化**
+
+这次参访使我们形成了一个明确判断：**Sustainability improvements must be supported by consistent and traceable data\.**因此，我们将原材料、生产批次、质量结果、资源投入、储运条件和废弃物等数据的规范记录，纳入 CirCure 未来开发阶段需要建立的评价基础。
+
+当前我们能够明确的是未来需要怎样的数据基础和记录规则；生产资源效率是否真正提高、生命周期环境影响是否改善，则需要在获得连续、可比较且可追踪的真实数据后进一步评价。
+
+---
+
+前面的分析主要回答了 **CirCure 自身如何更加负责任地使用资源**，而 SDG 12 同样关注个人层面的负责任消费。因此，我们进一步与吉林大学大学生环境保护协会合作，将废旧容器再利用与植物种植结合，让资源责任从项目分析延伸到学生能够亲自参与的日常实践。
+
+##### **06\-Dorm Planting Education｜寝室植物种植教育活动**
+
+**Activity Type** 可持续生活与资源再利用实践教育。
+
+**Partner** 吉林大学大学生环境保护协会。
+
+**Challenge**
+ 如何让“负责任消费和资源利用”不只停留在概念宣传，而成为学生能够直接参与的日常行动？
+
+**Key Insight**
+ 相比单纯讲解“减少浪费”，将废旧物品再利用嵌入具体生活实践，可以让参与者直接经历资源再次利用的过程。
+
+**What We Did**
+ 我们鼓励参与者自带塑料瓶等闲置容器，并现场讲解和指导番茄、草莓等植物的种植与养护，共发放 **194 份种植材料**。
+
+**What Changed / Impact**
+ 我们将 SDG 12 从 CirCure 自身的资源责任进一步拓展到**个人层面的负责任消费实践**，通过闲置容器再利用与植物种植，让参与者亲自完成一次具体的资源再利用行动。
+
+**SDGs Addressed** SDG 12 · SDG 4 · SDG 17
+
+**Click More**
+
+###### **Dorm Planting Education｜让负责任消费成为可以亲自完成的行动**
+
+前面的分析主要关注 CirCure 在研发和未来生产过程中如何更加负责任地使用资源。但 SDG 12 所强调的 Responsible Consumption and Production 并不只发生在实验室和生产体系中，个人日常使用和处理物品的方式同样与资源责任有关。
+
+因此，我们与**吉林大学大学生环境保护协会**合作开展寝室植物种植教育活动，希望回答一个更加贴近日常生活的问题：**如何让“减少浪费”和“资源再利用”从一个抽象理念，变成学生能够亲自完成的行动？**
+
+**01 不只是告诉参与者“减少浪费”**
+
+活动设计中，我们没有统一购买新的花盆，而是鼓励参与者**自带塑料瓶等闲置容器**作为种植容器。
+
+这样，资源再利用不再只是活动中的一句环保倡议，而直接成为参与过程的一部分。原本可能被丢弃的容器通过简单再利用获得新的用途，参与者也能够亲自完成一次具体的资源再利用行为。
+
+**02 把资源再利用带入日常生活场景**
+
+在现场，我们向参与者介绍番茄、草莓等植物的基本种植与养护方法，并指导大家使用自己携带的容器完成种植。
+
+活动共发放 **194 份种植材料**。参与者完成种植后可以将植物带回寝室继续养护，使这项实践具备从活动现场进一步延伸至日常生活的可能。
+
+**03 从项目资源责任拓展到个人消费实践**
+
+这项活动让我们对 SDG 12 的回应不再只有“项目应该如何更加负责任地使用资源”，也进一步包含“个人现在能够如何实践负责任消费”。
+
+在日常生活中，这可以体现为**重新利用已有物品、减少不必要的新资源投入，并延长物品的使用周期**。与 CirCure 所关注的研发和生产资源责任相比，两者发生的尺度不同，但都强调主动审视资源如何被使用，以及是否存在更加合理的使用方式。
+
+**04 What Changed｜让 SDG 12 从资源分析进入日常实践**
+
+这次活动使我们进一步形成了一个明确认识：
+
+**Responsible consumption becomes meaningful when people can practice it themselves\.**
+
+通过废旧容器再利用和植物种植，我们将 SDG 12 从项目内部的资源责任分析进一步延伸到参与者能够亲自完成的生活实践。
+
+
+
+#### C — Consequences
+
+CirCure remains at the research stage, so we do not present changes to experimental workflows, resource responsibility analysis, or public education activities as demonstrated resource savings or overall environmental improvements\. 
+
+We distinguish between **two types of consequences**: **short\-term changes** in research and development, decision\-making, and engagement practices already driven by stakeholder feedback and practical activities; and **potential long\-term social, economic, and environmental impacts** that may arise if we establish ongoing data collection, complete process development, and sustain these activities\.
+
+##### Short\-Term Impacts
+
+At this stage, CirCure’s clearest contribution to SDG 12 is **the integration of resource responsibility into R\&D decisions following stakeholder feedback**\.
+
+We began reviewing reagent use, single\-use consumables, equipment operation, experimental repetition, and waste disposal\. Small\-scale pilot studies, improved experimental design, appropriate replication, and proper waste management were introduced to avoid unnecessary resource use while preserving research reliability\. Without a complete baseline and continuous records, however, we cannot quantify resource savings\.
+
+Feedback from biopharmaceutical, environmental management, green manufacturing, and data governance stakeholders expanded our assessment to include process variability, batch failures, raw materials, energy, storage, transport, and disposal\. We developed the **Resource Responsibility Map** and **Sustainability Claim Boundary Protocol** to define what should be assessed and which conclusions the available evidence can support\. Their current contribution is to project assessment and decision\-making; product\-level environmental benefits remain unverified\.
+
+We also worked with the Jilin University Student Environmental Protection Association to run a dormitory planting activity that encouraged participants to reuse unused containers\. This created an opportunity to put resource reuse into practice, linking SDG 12 with education under SDG 4 and collaboration under SDG 17\. Whether participants continue these practices requires follow\-up\.
+
+##### Long\-Term Impacts
+
+CirCure’s potential long\-term impacts depend on further process development, consistent resource and production records, and continued support and evaluation of public activities\. The following assessment distinguishes **potential benefits, possible trade\-offs, and the evidence needed to evaluate them**\.
+
+###### Social Impacts
+
+**Potential Benefit **
+
+Continued use of our tools could help teams make better\-informed resource decisions and communicate sustainability claims more accurately\. Public activities could help participants apply reuse principles in everyday life, supporting SDG 12 through education and partnerships linked to SDG 4 and SDG 17\.
+
+**Potential Risk** 
+
+Tools and one\-time activities may have little lasting influence without continued use and support\. Dormitory space, growing conditions, time constraints, and limited guidance may also prevent participants from maintaining the planting and reuse practices\.
+
+**Evidence Boundary** 
+
+Resource considerations now inform project analysis, and the public activity has taken place\. **Lasting changes in decision\-making or everyday behavior have not yet been established** and require follow\-up with tool users and participants\.
+
+###### Economic Impacts
+
+**Potential Benefit** 
+
+Greater batch consistency could reduce repeated production and wasted inputs\. Comparable production and supply\-chain records could help identify sources of material loss and inform process improvements, supporting technical capability under SDG 9\.
+
+**Potential Risk** 
+
+Process development, quality control, and data management require investment\. Reducing necessary experiments or replication to save resources could weaken research reliability and product quality, creating greater costs later\.
+
+**Evidence Boundary** 
+
+CirCure has no manufacturing\-scale data on costs, yields, or batch failure rates\. **Neither cost savings nor economic returns have been demonstrated\.** Future assessment would need to consider both avoided losses and the additional costs of achieving them\.
+
+###### Environmental Impacts
+
+**Potential Benefit** 
+
+Better experimental design and more consistent manufacturing could reduce avoidable repetition and failed batches, lowering some material and energy inputs\. Reusing existing containers could also extend their useful life\. These potential benefits align with SDG 12’s focus on resource efficiency, waste reduction, and responsible consumption\.
+
+**Potential Risk** 
+
+Raw material supply, circRNA\-LNP production, purification, quality testing, temperature\-controlled transport, and waste treatment may introduce additional environmental burdens\. **An efficiency gain at one stage may shift burdens to another**, potentially creating trade\-offs with SDG 13\.
+
+**Evidence Boundary** 
+
+CirCure lacks continuous data across raw materials, production, storage, transport, and disposal, and has not completed a carbon footprint or life\-cycle assessment\. Current evidence supports discussion of resource\-use decisions and conditional scenarios, **not a claim of lower overall environmental impact**\.
+
+
+
+
+
+#### **A — Alignment**
+
+##### SDG Interaction Analysis
+
+Using SST\-QN as an initial screening framework, we assessed potential interactions against stakeholder feedback, current experimental practices, and future production scenarios\. For each relationship, we considered the mechanism, supporting evidence, and conditions that could produce a synergy or trade\-off\. **Evidence of a change in project decisions was distinguished from evidence of an environmental or societal outcome\.**
+
+##### Key Findings
+
+**SDG 17 → SDG 12 is the positive interaction most clearly supported by current evidence\.** Cross\-disciplinary feedback changed how we identify resource concerns, define assessment boundaries, and plan future data collection\. This relationship is supported at the level of project decisions and assessment practices\.
+
+**The relationships between SDG 12 and SDGs 9, 3, and 13 remain conditional\.** Technical improvements under SDG 9 may reduce wasted inputs, but manufacturing and quality control also require resources\. Resource\-saving measures must preserve the research reliability and safety needed to pursue health benefits under SDG 3\. Likewise, lower material or energy use at one stage supports SDG 13 only if emissions are not increased elsewhere\. These relationships therefore require evaluation across the full life cycle\.
+
+**The relationship with SDG 8 remains Exploratory, while a direct relationship with SDG 10 is currently Excluded from our analysis\.** More efficient production could support future economic performance, but CirCure has no cost or return data to demonstrate this\. Even verified manufacturing savings would not, by themselves, establish improved patient access; pricing, payment arrangements, and healthcare availability would also matter\.
+
+Our strongest current evidence shows that collaboration has brought resource responsibility into project decisions\. **Whether these decisions ultimately deliver health, economic, or environmental benefits remains a question for further measurement**, rather than an outcome we assume\.
+
+#### L — Legacy
+
+We developed **three reusable tools and guides** to help other teams identify resource inputs and potential waste, assess the evidence behind sustainability claims, and run public activities on resource reuse\. Drawing on CirCure’s resource analysis and dormitory planting activity, they distinguish **documented actions, projected impacts, and outcomes requiring validation**\. Together, these resources provide practical methods that other teams can adopt, adapt, and build upon\.
+
+
+
+**Resource Responsibility Map**
+
+**Why**
+研发项目涉及不同阶段的资源投入与潜在浪费。如果只关注当前实验或某一环节的改善，团队容易忽略生产、储运及后续处置中可能出现的资源问题，也难以区分已知问题与尚待评价的影响。
+
+**What it helps with**
+从研发、生产、储运到后续处置等阶段梳理资源投入与潜在浪费，区分已经发生的问题、未来可能出现的风险和目前无法评价的事项，帮助团队明确需要优先关注或进一步收集信息的环节。
+
+**Best for**
+项目启动、研发方案比较、阶段复盘，以及团队需要讨论未来生产、储运和处置中的资源责任时使用。
+
+[Resource Responsibility Map\-Chinese\.pdf](图片和附件/Resource%20Responsibility%20Map-Chinese.pdf)
+
+
+
+[Resource Responsibility Map\-English\.pdf](图片和附件/Resource%20Responsibility%20Map-English.pdf)
+
+
+
+**Sustainability Claim Boundary Protocol**
+
+**Why**
+项目中的局部改善并不必然意味着整体环境影响得到改善。如果未明确证据与适用范围，团队容易将情景预测或尚待验证的潜在优势表述为已经实现的可持续性成果。
+
+**What it helps with**
+检查可持续性结论的证据基础与适用边界，区分已有数据支持的结果、基于特定假设的情景预测，以及仍需未来验证的影响，使每项表述与现有证据相匹配，避免过度推断。
+
+**Best for**
+阶段总结、SDG12 实践记录、项目展示，以及团队需要撰写或审核资源节约、废弃物减少等可持续性表述时使用。
+
+[Sustainability Claim Boundary Protocol\-Chinese\.pdf](图片和附件/Sustainability%20Claim%20Boundary%20Protocol-Chinese.pdf)
+
+
+
+[Sustainability Claim Boundary Protocol\-English\.pdf](图片和附件/Sustainability%20Claim%20Boundary%20Protocol-English.pdf)
+
+
+
+**Sustainable Planting Education Guide**
+
+**Why**
+资源再利用与负责任消费需要通过具体实践帮助公众理解，而一次活动的记录往往不足以支持其他团队开展类似活动，还需要保留材料准备、教学安排和组织实施中的可操作做法。
+
+**What it helps with**
+整合寝室植物种植活动中的植物选择、废旧容器再利用、材料准备、现场种植教学和活动组织方法，帮助团队设计并开展参与式活动，使参与者在实际种植过程中理解资源再利用与负责任消费。
+
+**Best for**
+校园或寝室植物种植活动、资源再利用主题的公众教育，以及其他 iGEM 团队筹备类似的 SDG12 参与式活动时使用。
+
+
+
+#### E — Evidence
+
+CirCure 对 SDG 12 的回应主要发生在资源责任识别、项目评价和公众实践层面。我们没有用利益相关者数量或材料发放量直接代表环境改善，而是记录这些活动是否改变了项目决策，并明确现有证据能够支持的结论范围。
+
+**Measurable**
+
+当前可以量化和追踪的项目改变包括：
+
+- 吸收来自 **5 类利益相关者与产业实践主体**的反馈，并形成对应的项目改变：
+
+1. **实验室管理 / EHS｜Incorporated** 将资源责任从未来生产提前至当前研发，关注试剂、一次性耗材、设备运行、重复实验和废弃物管理。
+
+2. **乔君华，金赛药业 CTO｜Future Consideration** 明确科研验证与产品开发的阶段边界，将工艺放大、原材料供应、批次一致性、质量控制和成本纳入后续评价。
+
+3. **国网苏州供电公司｜Incorporated** 区分局部资源改善、情景预测和整体环境影响，避免结论超出数据覆盖范围。
+
+4. **上汽集团｜Incorporated** 将资源责任从单一生产环节扩展至原材料、生产、储运、使用和末端处置。
+
+5. **上海临港新片区跨境数据科技有限公司｜Future Consideration** 明确未来需要持续记录原材料、批次、储运和废弃物数据，并保证其可比较和可追踪。
+
+- 形成 **Resource Responsibility Map**，覆盖研发、未来生产、储运和处置等阶段；
+
+- 形成 **Sustainability Claim Boundary Protocol**，区分已验证的局部变化、情景预测和整体环境影响；
+
+- 与吉林大学大学生环境保护协会合作开展寝室植物种植活动，共发放 **194 份种植材料**，并鼓励参与者利用闲置容器完成种植；
+
+- 将项目评价方法和公众实践经验整理为 **3 项可复用资源**，供后续团队下载和使用。
+
+**Significant**
+
+CirCure 对 SDG 12 的回应具有实质意义，因为利益相关者反馈改变的不只是项目表述，而是**团队如何识别资源责任、评价可持续性主张并规划未来数据记录**。
+
+首先，资源责任进入了当前研发决策。团队不再只讨论未来规模化生产，而是开始关注实验中的试剂、耗材、设备运行、重复实验和废弃物，并通过预实验、实验设计优化和规范化废弃物管理，减少不必要投入的可能性。
+
+其次，项目建立了更完整的评价范围。资源分析从实验室延伸至工艺放大、批次失败、原材料、能源、储运和末端处置。同时，Sustainability Claim Boundary Protocol 限制了结论范围：局部资源改善不能被直接表述为整体碳排放或生命周期环境影响下降。
+
+最后，SDG 12 从项目内部分析延伸至公众实践。194 份种植材料使参与者有机会通过闲置容器完成资源再利用，而3项可复用资源则保留了项目形成的评价方法和实践经验。
+
+因此，CirCure 已经在**研发决策、评价边界和公众参与**三个层面对 SDG 12 作出可追踪的回应。当前证据能够证明项目决策和参与方式发生了改变，但尚不能证明资源消耗、废弃物或整体环境影响已经下降；这些结果仍需连续资源记录、生产数据、生命周期评价和后续行为追踪验证。
+
+## DEVELOP：Expanding Broader Impact
+
+在 **SET** 层，我们围绕健康需求、技术创新与负责任发展建立了 CirCure 的核心可持续发展路径，并通过利益相关者参与、项目迭代和影响评估不断检验这些目标如何真正进入项目实践。随着这一过程持续推进，我们看到，项目所产生的改变并不会停留在最初设定的边界之内，而会通过知识传播、技术转化、资源责任、社会参与等不同路径继续向外传递。**因此，DEVELOP 关注的不只是“项目还影响了什么”，而是这些已经发生的改变如何继续被连接、放大并沉淀为更长期的可持续影响，使 CirCure 从回应几个核心问题，进一步成长为一个能够持续产生更广泛价值的可持续发展实践。**
+
+### SDG4：Quality Education
+
+Differences in scientific knowledge and access to laboratory resources can limit people’s ability to understand technologies that may affect their health, while leaving children’s curiosity without opportunities to grow\. We chose SDG 4 to address these **barriers to understanding and participation**, helping learners from different backgrounds **engage with science, ask questions, and make informed judgments**\.
+
+#### S — Stakeholder Insights
+
+Throughout our educational activities, we wanted to understand how much participants learned and whether our content, explanations, and activity formats supported the learning process\. We therefore sought feedback from different education stakeholders to examine activity design and outcomes from multiple perspectives\. As the people most directly responsible for designing and delivering teaching, teachers bring extensive practical experience\. We began by talking with them about learners’ needs, appropriate content depth, and opportunities for participation, establishing an overall approach for designing and delivering subsequent activities\.
+
+##### 01\-Teachers and Educators\-Teaching \& Learning Design
+
+**Relevant Stakeholder**
+
+As the direct designers and facilitators of learning activities, teachers and educators can draw on learners’ ages, prior knowledge, and classroom participation to help us assess whether content suits different learning stages and whether activities support meaningful understanding and engagement\.
+
+**Challenge**
+
+How can we help learners with different levels of prior knowledge actively participate in synthetic biology education, beyond receiving information?
+
+**Key Insight**
+
+Providing the same educational content does not mean that everyone receives an appropriate learning opportunity\. Explanatory depth, terminology, and activity formats need to match learners’ existing knowledge\. Questions, discussion, and practical activities should also be part of learning, allowing learners to express their understanding and helping the team adjust its teaching\.
+
+**What Changed**
+
+We incorporated SDG 4 into the design of educational content and participation opportunities\. We reorganized materials along a progressive learning pathway, added experimental experiences, interactive tasks, virtual laboratories, and game\-based learning, and systematically documented activity structures and teaching resources to support future adoption and adaptation\.
+
+**Current Status**
+Incorporated
+
+**SDGs Addressed**
+SDG 4
+
+**Click More**
+
+**Helping Learners with Different Starting Points Participate**
+
+Through synthetic biology education, we wanted to give more learners opportunities to engage with science\. Whether students of different ages and knowledge backgrounds could understand the content and begin exploring it actively depended on how the learning experience was designed\.
+
+We discussed this with teachers and educators, reviewing the progression of our materials, classroom communication, and practical activities\. These exchanges helped us consider how to put SDG 4’s emphasis on quality education into practice\.
+
+**01 Appropriate Learning Opportunities Start with What Learners Already Know**
+
+Teachers explained that the same scientific content needs to be presented differently according to learners’ ages, prior knowledge, and levels of understanding\. Too many unexplained terms, or complex mechanisms introduced before basic concepts are established, can make it difficult for students to stay engaged\.
+
+Based on this feedback, we reorganized our materials along a progressive learning pathway, moving from intuitive explanations to scientific concepts and then to discussions of synthetic biology and its applications\. By adjusting content depth, terminology, and pacing, we aimed to provide suitable starting points for students at different learning stages\.
+
+**02 Questions and Responses Help Us Adjust Teaching**
+
+Teachers encouraged us to incorporate students’ questions and responses into the learning process\. Repeated questions, points of confusion during discussion, and interest in particular topics can reveal gaps in our explanations\.
+
+We therefore placed greater emphasis on discussion, feedback, and interaction, using students’ responses to guide adjustments\. These exchanges gave learners space to express ideas and think through concepts while helping us identify where more background or clearer explanations were needed\. Teaching could then respond to students’ actual understanding\.
+
+**03 Practical Activities and Documented Resources Support Participation and Reuse**
+
+These suggestions also shaped our activities\. We incorporated experimental experiences, interactive tasks, virtual laboratories, and game\-based learning so students could connect scientific concepts with practical actions by making choices, observing results, and discussing what happened\. Learners without laboratory experience could begin exploring synthetic biology through investigation, discussion, and decision\-making\.
+
+Teachers also encouraged us to consider how others could reuse the activities\. We began systematically documenting activity structures, teaching materials, interaction formats, and learning resources to support adoption and adaptation by other educators, students, and iGEM teams\.
+
+**04 What Changed \| Placing Understanding and Participation at the Center of Educational Design**
+
+These discussions established a guiding principle for CirCure’s work under SDG 4: Meaningful learning begins with opportunities to participate\.
+
+We began using learners’ prior knowledge, responses, and practical experiences as key inputs to educational design\. Content at different levels, two\-way communication, and interactive activities supported participation, while documentation supported future reuse\. Our educational goals consequently expanded to include developing resources that could remain useful and adapt to different learning needs\.
+
+Building on these insights, we identified two areas for further development: making specialized scientific content easier for the public to understand, and ensuring that interactive educational tools work in real settings\. We explored these questions with science communicators and professionals in game development and interactive design\.
+
+
+
+
+
+在此基础上，我们进一步明确了两个需要深化的方向：如何让专业科学内容更容易被公众理解，以及如何让互动教育工具在真实场景中顺利使用。围绕这两个问题，我们继续与科学传播工作者及游戏开发和互动设计相关人员交流。
+
+
+
+##### 02\-Professor Shuangcheng Yu\-Science Communication
+
+**Relevant Stakeholder**
+
+Science communicators familiar with online public communication through platforms such as WeChat Official Accounts and Rednote\. They can help us assess how readily audiences understand specialized content by considering reading habits, information organization, and scientific expression, and identify the scientific qualifications that must be retained when simplifying explanations\.
+
+**Challenge**
+
+How can we make scientific content easier for people without specialist backgrounds to understand while preserving accuracy and evidence boundaries?
+
+**Key Insight**
+
+After encountering scientific information, audiences need to be able to understand its central message\. Online science communication should establish a clear focus, introduce knowledge in a suitable sequence, and limit terminology and information density\. It should also explain the technology’s research stage and the scope of available evidence so that simplified language does not imply more progress than has been achieved\.
+
+**What Changed**
+
+We extended SDG 4’s emphasis on learning opportunities to online public communication\. We revised the information hierarchy, language, and visual presentation of content on WeChat Official Accounts and Xiaohongshu, making it easier to understand while retaining research\-stage qualifications and evidence boundaries\. We also used public comments and questions to inform subsequent revisions\.
+
+**Current Status**
+Incorporated
+
+**SDGs Addressed**
+SDG 4
+
+**Click More**
+
+**Helping the Public Understand and Continue Participating in Scientific Discussions**
+
+Platforms such as WeChat Official Accounts and Xiaohongshu offer opportunities to encounter synthetic biology beyond the classroom\. Content needs to accommodate limited reading time and different knowledge backgrounds to create opportunities for further learning\.
+
+We discussed these needs with science communicators, reviewing how we organized online content, explained concepts, and collected feedback\. Our aim was to make scientific information easier to understand while maintaining accuracy\.
+
+**01 Understanding Begins with How Information Is Organized**
+
+Science communicators explained that lengthy background sections, successive technical terms, and an unclear focus can cause readers to disengage before understanding the topic\. Audiences without relevant background knowledge first need to know what an article is about before moving into more detailed explanations\.
+
+We therefore began by identifying the central message we wanted readers to understand, then organizing the title, opening, images, and body around it\. For more complex synthetic biology topics, we restructured the content to establish a basic understanding through intuitive language before introducing mechanisms and applications\.
+
+**02 Accessible Explanations Must Preserve Scientific Qualifications**
+
+Science communicators emphasized that simplified explanations still need to retain information that affects interpretation\. This includes the technology’s research stage, the conclusions supported by existing evidence, and applications that require further validation\.
+
+As we revised language and visuals, we also considered whether readers might misunderstand the project’s progress\. For technologies still under investigation, we retained research\-stage qualifications and evidence boundaries, avoiding presenting research potential as a mature achievement\. Clear explanations therefore remained grounded in accurate information\.
+
+**03 Public Feedback Guides Subsequent Content**
+
+Comments and questions can reveal difficulties encountered during reading\. Repeated questions, expressions that lead to misunderstanding, and topics that prompt further discussion provide concrete guidance for future content\.
+
+We used this feedback to continually refine the structure and wording of our online communication, incorporating audience questions into subsequent posts\. Each publication became part of an ongoing exchange, allowing the public to participate through questions and helping us identify what needed further explanation or clarification\.
+
+**04 What Changed \| Treating Understandable Content as Part of Public Learning Opportunities**
+
+These discussions established another principle for CirCure’s work under SDG 4: Accessible science communication supports opportunities to learn\. We treated online science communication as a way for the public to encounter and learn about synthetic biology\. Clearer organization, accessible language, and explanations of research stages and evidence boundaries supported participation by people without specialist backgrounds\. Public feedback also informed ongoing improvements, helping our communication respond to actual learning needs\.
+
+
+
+##### 03\-游戏开发与互动设计相关人员\-Game Development \& Interactive Learning
+
+**Relevant Stakeholder**
+
+Professionals who can assess whether virtual laboratories and educational games are accessible and usable in real settings by considering intended users, equipment, operating steps, and activity organization\. They can also help determine whether other teachers, learners, and teams can use these resources independently\.
+
+**Challenge**
+
+Does “we built it” mean “others can actually use it”?
+
+**Key Insight**
+
+The usability of interactive educational tools depends on the full set of conditions required to use them\. Intended audiences, settings, equipment and materials, rules, and facilitation can all affect participation\. Incorporating these conditions into the design and providing complete instructions makes independent use and reuse more feasible for learners and educators\.
+
+**What Changed**
+
+We incorporated SDG 4’s emphasis on inclusive learning opportunities into the conditions for using interactive resources\. We refined equipment requirements, resource access, rules, operating steps, and facilitation for our virtual laboratory and games to lower barriers to access, participation, and running the activities again\.
+
+**Current Status**
+Incorporated
+
+**SDGs Addressed**
+SDG 4
+
+**Click More**
+
+**Making Educational Tools Usable in Real Settings**
+
+Virtual laboratories and game\-based activities provide additional ways to engage with synthetic biology\. Their use in different classrooms and learning settings depends on whether users can obtain the required equipment, understand the rules, and complete activities without the development team’s on\-site guidance\.
+
+We discussed these conditions with game development and interactive design professionals, reviewing how our resources could address SDG 4 through access, operation, and reuse\.
+
+**01 Intended Users and Settings Should Guide Design**
+
+The professionals explained that a student exploring independently and a teacher facilitating a class have different requirements\. Individual online use and group participation in person also need different rules and guidance\. The setting directly affects controls, rule complexity, the amount of guidance, and activity duration\.
+
+We therefore reviewed our virtual laboratory and game\-based activities by asking who would use them, where they would be used, and who would organize them\. This helped align content and interaction design with specific needs\.
+
+**02 Equipment and Materials Directly Affect Participation**
+
+The professionals drew our attention to resource constraints\. A virtual laboratory with demanding hardware, network, or software installation requirements can be difficult to use\. An in\-person game requiring specialized materials, extensive preparation, or continuous explanation by team members can also make adoption harder for other schools and teams\.
+
+We therefore reviewed equipment requirements, material availability, preparation, and the ease of reproducing and distributing resources\. Considering these conditions helped us identify barriers from users’ perspectives and prioritize reducing them in subsequent improvements\.
+
+**03 Complete Instructions Support Independent Use and Reuse**
+
+For first\-time participants, task objectives, game rules, operating instructions, and feedback need to provide coherent guidance\. Users should understand what to do, why they are doing it, and what feedback to expect\. Teachers and organizers also need clear activity plans and instructions to reduce preparation and facilitation demands\.
+
+Based on these suggestions, we refined rules, operating steps, and facilitation guidance, and reviewed the required equipment and materials\. By making the start, progression, and completion of each activity clearer, we aimed to support independent exploration and help other educators run the activities again\.
+
+**04 What Changed \| Including Practical Usability in Educational Resource Design**
+
+These discussions established a third principle for CirCure’s work under SDG 4: Educational tools support participation when people can access and use them\.
+
+We made practical usability a design priority, continually considering barriers related to equipment, materials, operation, and facilitation\. Subsequent improvements to the virtual laboratory and games therefore focused on access, participation, and reuse under different conditions, supporting more learners in encountering synthetic biology\.
+
+Advice from teachers, science communicators, and interactive design professionals helped us focus on learners’ actual experiences: whether content suited their prior knowledge, whether explanations were understandable, and whether activities could run successfully under different conditions\. We adjusted content progression, presentation, and instructions, and offered different starting points through the virtual laboratory, picture book, and Bio Memory Match\. We also systematically documented materials and activity procedures to support use, adaptation, and further development by other iGEM teams\.
+
+
+
+##### **01\-Virtual Laboratory**
+
+The virtual laboratory allows learners to explore laboratory equipment, try procedures, and observe results in a digital environment\. Following teachers’ advice on learning progression, we organized the **9 experiments into three difficulty levels**\. Feedback from interactive design professionals also helped us refine instructions and operational guidance\.
+
+The content begins with **microbial culture, colony observation, and staining**, progresses to **plasmid extraction, electrophoresis, DNA recovery, PCR amplification, restriction digestion, and ligation**, and concludes with **plasmid transformation, clone identification, and expression validation**\. This progression helps learners become familiar with the basic processes of biological experimentation\.
+
+The resource has been used in volunteer teaching classes in Luzhou, Sichuan, providing experimental learning opportunities for students with limited access to real laboratories\. Simulated experiences can reduce reliance on physical reagents and consumables, but they still require suitable digital devices and cannot replace hands\-on laboratory practice\. Clear instructions and reusable resources are intended to support continued use in teaching\.
+
+You can try **“E\. coli Revival and Culture Activation”** below, beginning with aseptic technique and virtual streaking\.
+
+**\(Embed this experiment here\)**
+
+Want to explore more? Visit the **Games page** for the complete virtual laboratory and all experiments\.
+
+
+
+##### **02\-Bio Memory Match**
+
+Bio Memory Match turns **18 life science and synthetic biology concepts**, including DNA, RNA, plasmids, and genetic circuits, into matching cards\. Players turn over cards, remember their positions, and find identical images, then use a bilingual Chinese–English illustrated guide to explore the science behind them\. The physical game supports 1–4 players, and its difficulty can be adjusted by reducing the number of card types\.
+
+We brought the physical cards to the **APiC meeting** and invited attendees to play\. Participants responded positively to the game’s enjoyment value and suggested an online version so that people without physical cards could also participate\. We subsequently developed an online game, which learners can access by **scanning the QR code included with the physical cards** or **clicking below to play directly**\. This feedback expanded the resource from on\-site use to online access and informed further interactive design and development\.
+
+For the physical version, we produced **3 cards of each type, making 54 cards in total**: two for matching and one spare\. If one card of a type is lost, the game can still be used\. This design increased the initial material input but was intended to reduce the likelihood of remaking or discarding an entire set because of a missing card\. It connects SDG 4’s emphasis on continued use of educational resources with resource responsibility under SDG 12\.
+
+The physical cards support activities where digital devices are inconvenient to use, while the online version expands access\. Bilingual rules and an illustrated concept guide help other teams organize, reuse, and adapt the activity\.
+
+
+
+
+
+##### **03\-Breast Guardian, an interactive story game**
+
+We designed interactive stories for different age groups around everyday situations, including family companionship, workplace stress, body image concerns, and hesitation about seeking medical care\. The stories introduce breast health and related biological knowledge\.
+
+Players advance through character dialogue and branching choices, entering a microscopic world where cells and tissues appear as personified characters\. Through exploration, they consider health information, personal needs, and family support\. By connecting scientific content with experiences at different life stages, we aim to provide accessible and engaging learning opportunities for people from different backgrounds, supporting quality education under SDG 4\.
+
+**Click here to visit the Games page, choose a story, and begin your interactive experience\.**
+
+
+
+##### **04\-Seeds in Our Hearts, a Picture Book**
+
+*Seeds in Our Hearts* follows a girl and a lamb on a dream journey, comparing breast development to sprouting seeds and blooming flowers to introduce bodily changes during puberty\. The story includes the girl’s questions about differences in development, physical discomfort, and changes in appearance\. Gentle dialogue and intuitive illustrations encourage her to understand growth, accept her body, and seek help when she has questions\.
+
+We combined storytelling with scientific illustrations to make the book approachable for readers with limited prior knowledge, offering a starting point for puberty education and parent–child conversations\. This is another way we address SDG 4: using language and formats suited to learners to make knowledge about bodies and health easier to understand and discuss\.
+
+
+
+Through dialogue and ongoing improvements, we brought stakeholder recommendations and educational resources into classrooms and public activities\. Our synthetic biology and iGEM education reached **8 regions, 12 schools, and more than XXX students and members of the public**\. The following sections describe these activities\. You can click here to read the evidence of our impact on SDG 4\.
+
+
+
+
+
+##### Young Learners
+
+Young learners often have not yet developed a systematic understanding of life science, while topics such as immunity and microorganisms are abstract and invisible to the naked eye\. We therefore focus on building an initial understanding through **stories, characters, analogies, and interactive tasks**, rather than introducing complex terminology prematurely\. We also acknowledge the limits of engaging explanations: simplification offers a starting point for learning science but does not replace the actual mechanisms\.
+
+###### **05\-Body Guardians**
+
+2026\.5\.15 
+
+Jilin University Affiliated Primary School 
+
+44 Students
+
+**For**
+
+Fourth\-grade primary school students
+
+**Challenge**
+
+How can stories and games help children understand immune recognition and memory without leading them to believe that vaccines provide universal protection?
+
+**Our Response**
+
+Following teachers’ advice on age\-appropriate explanations and interactive learning, we introduced the body as a “body city,” used character cards to present immune cells, and designed two rounds of a “Wanted Poster: Catch the Intruder” game\. Children compared searching with and without advance clues, then connected the experience with immune memory and the basic role of vaccines\.
+
+**Impact**
+
+Children participated in character identification, search tasks, and classroom discussions, gaining opportunities to encounter immunology through observation, comparison, and explanation\. We also explained the analogy’s limitations and reminded them that vaccines do not provide universal protection\.
+
+**Teaching Resources**
+
+Teaching slides · Character cards · Game rules · Teacher instructions
+
+For teachers and other teams to use and adapt according to learners’ ages and prior knowledge\.
+
+**Click here to view and download teaching resources**
+
+**SDGs**
+
+SDG 4 · SDG 3
+
+**Click More →**
+
+**Starting with a “Body City” to Explore Invisible Immune Processes**
+
+If the body were a city, who would protect it? How would these “guardians” detect danger?
+
+We opened our fourth\-grade science lesson with these questions\. A familiar story setting, character identification, card games, and discussion helped children begin exploring immunity and vaccines\.
+
+**01 Bringing Stakeholder Advice into Classroom Design**
+
+In earlier discussions, teachers encouraged us to build on learners’ prior knowledge and make questions, responses, and practical activities part of learning\. Science communicators emphasized retaining essential scientific qualifications when simplifying explanations\.
+
+This advice shaped the lesson\. We began with the “body city”: skin as the city wall, blood as roads, cells as residents, and the immune system as its protection\. Character cards and interactive tasks then introduced scientific concepts, giving children opportunities to make judgments and allowing us to adjust explanations in response\.
+
+**02 Two Game Rounds Created a Shared Experience for Discussion**
+
+After meeting different immune\-cell characters, children played two rounds of “Wanted Poster: Catch the Intruder\.” In the first round, they received no advance clues about the target\. In the second, they saw a “wanted poster” before searching for the same target\.
+
+The two tasks provided a shared basis for discussion\. We asked children to compare their searches: how did having clues beforehand change their decisions? Why was a familiar target easier to recognize again?
+
+We used this experience to introduce immune memory and the idea that vaccines help prepare the immune system in advance\. We also explained that the “wanted poster” was a learning analogy: actual immune recognition and responses are more complex\.
+
+**03 Recording Participation Separately from Conceptual Understanding**
+
+Children observed, searched, and compared during the lesson, while character images gave them concrete objects for discussing abstract concepts\. However, playing the game, finding a target, or enjoying the activity does not alone demonstrate understanding of immune memory\.
+
+Assessing learning therefore requires attention to what children actually say—for example, how they explain the value of prior recognition and whether they understand that vaccines do not provide universal protection\. Classroom answers, task performance, and participant feedback from this activity: \[Add actual records\]\.
+
+For future sessions, we plan to introduce brief questions before and after the lesson to document changes in understanding and inform revisions to the story, prompts, and explanations\.
+
+**04 Supporting Continued Learning While Addressing Misconceptions from Analogies**
+
+This activity addresses SDG 4 through age\-appropriate explanations and active participation, offering children without an immunology background a starting point for scientific learning\. We hope the lesson can support their future ability to understand health information, express questions, and seek help\. These long\-term effects still require follow\-up feedback\.
+
+The activity also connects with SDG 3\. Health topics bring science closer to everyday life, but oversimplification could lead children to believe that the immune system always recognizes danger correctly or that vaccination prevents all illness\. We therefore explained the analogy’s limits to help distinguish the story from actual science\.
+
+Teaching slides, character cards, game rules, and teacher instructions support future delivery\. Other teachers and teams can adapt the content to classroom time and students’ prior knowledge, reducing repeated preparation and allowing the resources to remain useful beyond this activity\.
+
+
+
+##### Secondary School Students
+
+Secondary school students already have some knowledge of DNA, genetics, and basic life science, but there remains a substantial gap between **textbook knowledge and frontier science, engineering thinking, and participation in real research**\. We therefore tailored conceptual analogies, real\-world problems, research participation, multidisciplinary collaboration, cross\-cultural exchange, and hands\-on experimental experiences to different learning settings\. We aimed to help students understand what synthetic biology is and **why research is conducted, how it is carried out, and how they can participate in scientific innovation**\. 
+
+During the winter holiday period from January to March 2026, we brought our educational activities to five schools in China and abroad\. We tailored the educational focus at each school to the needs and interests of its students\.
+
+###### **06\-**Imagining the Future through Biology
+
+Jan\. 24, 2026
+
+Heilongjiang Hailun No\.1 High School 
+
+130 Students
+
+**For**
+
+High School Students
+
+**Challenge**
+
+How can we help students move from familiarity with DNA and RNA to understanding that biological systems can be designed and proposing ideas of their own?
+
+**Our Response**
+
+Following advice on progressive explanations and active participation, we introduced biological parts and their combination through the analogy of “LEGO bricks in biology\.” We then offered an open\-ended “Design Your Dream circRNA” task, inviting students to start with real\-world needs and consider what function they would want an RNA to perform\.
+
+**Impact**
+
+The activity gave students an opportunity to connect basic biological knowledge with engineering design\. The open\-ended task encouraged them to articulate problems and propose ideas\.
+
+**Teaching Resources \| Teaching Resources**
+
+Science teaching slides · “Dream circRNA” task instructions · Activity facilitation guide
+
+For teachers and other teams to use and adapt according to students’ prior knowledge\.
+
+**View and download teaching resources → \[Add resource link\]**
+
+**SDGs**
+
+SDG 4
+
+**Click More →**
+
+**From Recognizing Biological Molecules to Proposing a Design**
+
+On January 24, 2026, we visited Heilongjiang Hailun No\.1 High School for the first activity in our winter holiday science education series\. For students encountering synthetic biology for the first time, we began with familiar concepts such as DNA and RNA, explored what synthetic biology seeks to design, and invited them to contribute ideas through an open\-ended task\.
+
+**01 Using Teaching Advice to Connect Existing and New Knowledge**
+
+Teachers had advised us to organize content around learners’ prior knowledge and leave room for questions, discussion, and practice\. This helped us establish the lesson’s focus: building a basic framework for understanding synthetic biology before introducing the project and its applications\.
+
+We compared biological parts to LEGO bricks to introduce their different functions and the idea of combining them in a design\. We then introduced iGEM and circRNA research, connecting familiar biological knowledge with new research questions\.
+
+**02 Inviting Students to Design through an Open\-Ended Task**
+
+After the introduction, we offered a “Design Your Dream circRNA” task: if you could design an RNA, what real\-world problem would you want it to help solve?
+
+The task focused on identifying needs and expressing ideas, encouraging students to connect the technology with issues such as disease and health\. Starting from questions they cared about, students could describe desired functions and find a starting point for exploring the relevant principles and research methods\.
+
+**03 Preserving Scientific Qualifications during Creative Exploration**
+
+The open\-ended task offered room for imagination while requiring a distinction between design aspirations and validated technology\. LEGO bricks provide an intuitive analogy for combining components, but biological parts depend on their context\. Whether a combination performs its intended function requires experimental testing and refinement\. Students’ health\-related ideas also provided an opportunity to discuss SDG 3: what need might a design address, and what else would we need to know to realize it? These questions encouraged students to connect creativity with scientific evidence and the conditions required for practical application\.
+
+**04 Providing a Starting Point for Continued Exploration**
+
+This activity addresses SDG 4 by connecting existing knowledge with new concepts and encouraging active participation\. Familiar analogies and an open\-ended task gave students opportunities to encounter frontier science and express research interests\. We hope students will continue asking how technologies work and how ideas can be tested step by step\.
+
+Teaching slides, task instructions, and an activity facilitation guide support students in reviewing the content and help other teachers and teams run the activity again\. By adapting explanatory depth and task requirements to learners’ starting points, these resources can support further exploration in different classrooms and remain useful beyond a single introductory activity\.
+
+
+
+---
+
+###### **07\-Exploring Student Research Projects**
+
+Feb\. 8, 2026 
+
+Yanbian No\.1 High School, Jilin 
+
+96 Students
+
+**For**
+
+High School Students
+
+**Challenge**
+
+How can we make pathways into student research easier to understand?
+
+**Our Response**
+
+Using iGEM as an example, we introduced its mission, participation divisions, preparation timeline, judging requirements, topic selection principles, and team responsibilities\. We broke a student research project down into an understandable workflow to help students recognize different roles and ways to prepare\.
+
+**Impact**
+
+The activity presented the full process from asking questions and organizing a team to conducting research and communicating results\. It provided a reference for students to understand research collaboration, explore their interests, and plan further learning\.
+
+**Teaching Resources \| Teaching Resources**
+
+Presentation slides · Project workflow overview · Team responsibilities and topic selection guidance
+
+For teachers and other teams to use as a reference\. Competition rules for the relevant year should be checked before use\.
+
+**View and download teaching resources → \[Add resource link\]**
+
+**SDGs**
+
+SDG 4
+
+**Click More →**
+
+**Giving Research Interests a Clearer Next Step**
+
+On February 8, 2026, we visited Yanbian No\.1 High School in Jilin to explain how a student research project can develop from an initial idea into a team achievement, using iGEM as an example\. The session addressed information students may need when considering research: what work a project involves, how team members collaborate, and how they can begin preparing\.
+
+**01 Starting with Learners’ Participation Needs**
+
+Discussions with teachers helped us recognize that educational content should respond to learners’ prior knowledge and practical needs\. For high school students interested in research, project organization and pathways to participation are also valuable learning topics\.
+
+We therefore focused on how to participate, presenting iGEM as a concrete project process\. This helped students understand the stages of research and how they connect\.
+
+**02 Breaking the Project Process into Concrete Tasks**
+
+The presentation covered iGEM’s origins and mission, participation divisions, preparation timeline, judging requirements, team responsibilities, and topic selection principles\. We explained how an idea becomes a research question, how teams allocate tasks, and how research processes and results are documented and presented\.
+
+Together, these topics illustrated the sustained and collaborative nature of student research\. Understanding the work involved in different roles also helped students consider which subjects they wanted to explore and which tasks they might like to try\.
+
+**03 Lowering Information Barriers While Recognizing Practical Constraints**
+
+This activity addressed SDG 4 through access to research information and learning opportunities\. Clear explanations of project workflows and preparation helped students identify concrete questions to explore after developing an interest in research\.
+
+Access to information is only a starting point\. Time, funding, laboratory conditions, and supervision still influence actual opportunities\. We aimed to provide guidance that supported realistic expectations and avoided presenting any single competition as the only route into research\.
+
+**04 Supporting Exploration Beyond a Single Presentation**
+
+We hoped the introduction would provide a starting point for continued exploration of research\. Presentation slides, project workflows, and descriptions of team responsibilities support students in reviewing the content and help teachers and other teams deliver similar sessions\.
+
+By retaining reusable materials and updating competition rules and preparation information before subsequent use, these resources can continue helping learners understand research, recognize the importance of collaboration, and explore suitable ways to participate\.
+
+---
+
+###### 08\-Engineering Biology for Real Problems
+
+**Feb\. 9, 2026 · Dazu Chengnan Middle School, Chongqing · \[63 Students\]**
+
+**For**
+ Secondary School Students
+
+**Challenge**
+How can we help students see the relationship between technology and real\-world problems, beyond remembering examples of synthetic biology technologies?
+
+**Our Response**
+We organized the lesson around **Design–Build–Test–Learn**, bringing real\-world issues such as disease prevention and control, environmental management, and green energy into the classroom\. Starting with why these problems exist, we helped students explore why scientists select, test, and continually revise a technology\.
+
+**Impact**
+The lesson presented synthetic biology as **an engineering approach that starts with real\-world problems and develops through evidence\-based iteration**, making an unfamiliar discipline more concrete\.
+
+**SDGs**
+ SDG 4 · SDG 9
+
+**Click More →**
+
+---
+
+###### Understanding a Technology Also Means Understanding Why It Was Created
+
+On February 9, 2026, we visited **Dazu Chengnan Middle School in Chongqing**\.
+
+At this stop, we wanted students to explore a practical question alongside examples of synthetic biology technologies: **why do people develop these technologies?**
+
+**01 Why We Designed It**
+
+When frontier science is introduced only through technical terms, students may recognize that a technology is new without understanding its relevance to the world\. We therefore introduced synthetic biology through **real problems people face**\.
+
+**02 How We Designed It**
+
+We introduced the **Design–Build–Test–Learn** approach to help students understand research as a process of improvement through design, testing, and adjustment\. Examples involving **disease prevention and control, environmental management, and green energy** illustrated how synthetic biology can address different societal challenges\.
+
+**03 What Learners Experienced**
+
+Students explored connections between problems and technologies:
+
+Why might scientists choose a particular approach to a real problem? How can they assess whether a design works? If results fall short, what should they change next? These questions presented synthetic biology as **an engineering approach to problem\-solving**\.
+
+**04 What We Learned**
+
+This activity reinforced that understanding why scientific research is pursued is as important for secondary school students as understanding what it involves\. Real\-world examples can reveal connections between research and society, while the engineering cycle illustrates how research progresses through continued improvement based on evidence\.
+
+**05 Contribution to SDG 4**
+
+The activity addressed SDG 4 through **scientific literacy, awareness of problem\-solving, and understanding of sustainable development**\. We hoped students would recognize life science as a tool for responding to health, environmental, and energy challenges beyond the textbook\.
+
+---
+
+###### 09\-More Than Biology
+
+Mar\. 4, 2026 · Jining Confucius Senior High School, Shandong · \[48 Students\]
+
+**For**
+
+High School Students
+
+**Challenge**
+
+How can we help students move beyond the assumption that only those who excel in biology or laboratory work can participate in research?
+
+**Our Response**
+
+We introduced Wet Lab, Dry Lab, Human Practices, Art \& Design, and Wiki work in iGEM, showing how experimentation, computation, design, communication, and writing support a project together\. This helped students consider research participation through their own interests\.
+
+**Impact**
+
+The activity presented a range of roles in research collaboration, helping students connect personal interests with concrete tasks and encouraging them to explore skills beyond their existing strengths\.
+
+**Teaching Resources**
+
+Presentation slides · Team roles and responsibilities overview
+
+For teachers and other teams to use and adapt according to students’ interests and prior knowledge\.
+
+**Click here to view and download teaching resources**
+
+**SDGs**
+
+SDG 4 · SDG 10
+
+**Click More →**
+
+**Finding a Place in Science through Personal Interests**
+
+On March 4, 2026, we visited Jining Confucius Senior High School in Shandong to introduce teamwork in iGEM\. The activity addressed an easily overlooked barrier: students who associate life science research primarily with laboratory work may struggle to see how their other interests relate to research\.
+
+**01 Providing Starting Points for Different Interests**
+
+Earlier discussions with teachers reminded us that learners’ prior knowledge and interests influence how they approach a new field\. Alongside explaining synthetic biology research, we needed to help students understand how they could participate\.
+
+We therefore focused on the actual work of different team roles, helping students interested in programming, mathematics, design, communication, or writing identify connections with scientific projects\.
+
+**02 Understanding Research Collaboration through Concrete Work**
+
+Starting with an introduction to iGEM, we explained how different areas of work support a project:
+
+- Wet Lab: Conducting biological experiments to test designs and hypotheses\.
+
+- Dry Lab: Using mathematics, programming, and computational tools to analyze problems and support research\.
+
+- Human Practices: Understanding societal needs, engaging stakeholders, and considering technological impacts\.
+
+- Art \& Design: Using visual communication to help different audiences understand science\.
+
+- Wiki: Systematically documenting research processes and results for public presentation and future reference\.
+
+These areas are connected by shared questions\. Experiments need analysis, designs need to consider real\-world needs, and results need clear documentation and communication\. By showing these connections, we aimed to help students understand how different abilities contribute through collaboration\.
+
+**03 Using Team Roles as Directions for Exploration**
+
+The roles gave students reference points for considering participation\. Those interested in programming could explore modeling and data analysis; those interested in design could investigate scientific visualization; and those who enjoy communication and writing could learn about needs assessment, public engagement, and research communication\.
+
+Roles should remain open to exploration\. Students can start from existing interests and learn to undertake unfamiliar tasks\. We hoped this introduction would broaden their sense of possibility and prevent a current lack of a particular skill from discouraging them from research\.
+
+**04 Supporting Inclusive Participation and Further Learning**
+
+This activity addressed SDG 4 through the development of diverse abilities and inclusive learning opportunities, while connecting with SDG 10’s concern for reducing inequalities\. We sought to broaden perceptions of research participation so that more students could see their interests contributing to collective problem\-solving\.
+
+This broader understanding still requires guidance, time, and resources to become participation; it does not mean that practical barriers have been removed\. Presentation slides and role descriptions support student review, follow\-up classroom discussions, and adaptation by other teams, allowing one presentation to become a starting point for further exploration\.
+
+---
+
+###### 10\-SynBio Across Borders
+
+Mar\. 4, 2026 · Technical Institute Avogadro, Turin, Italy · \[50 Students\]
+
+**For**
+
+High school students participating in cross\-cultural exchange
+
+**Challenge**
+
+How can students with different languages and curricular backgrounds participate in discussions about synthetic biology?
+
+**Our Response**
+
+We held a face\-to\-face exchange in English, beginning with the progression from understanding living systems to designing biological functions\. We introduced synthetic biology and iGEM’s emphasis on collaboration and knowledge sharing, then discussed examples from health research\.
+
+**Impact**
+
+The activity created an opportunity for students from different cultural backgrounds to discuss synthetic biology together\. It also prompted us to consider how language choices, background explanations, and communication formats affect participation in learning\.
+
+**Teaching Resources**
+
+English presentation slides · Research case summaries · Discussion topic outline
+
+For teachers and other teams to use and adapt according to participants’ language proficiency and curricular backgrounds\.
+
+**查看与下载教学资源 → \[补充资源入口\]**
+
+**SDGs**
+
+SDG 4 · SDG 17
+
+**Click More →**
+
+**Opening Cross\-Cultural Dialogue through Shared Scientific Questions**
+
+On March 4, 2026, we met high school students at Technical Institute Avogadro in Turin, Italy, for a face\-to\-face exchange\. We introduced synthetic biology and iGEM in English and discussed health research\. This brought our educational activities into a different linguistic and curricular setting, making the accessibility of our explanations an important part of the exchange\.
+
+**01 Establishing a Shared Starting Point**
+
+Teachers and science communicators had advised us to organize information around audiences’ prior knowledge and communicate central messages clearly\. In a cross\-cultural setting, this also meant avoiding assumptions that participants shared the same curriculum, terminology, or project background\.
+
+We began with the progression from understanding living systems to designing biological functions, establishing a shared starting point before introducing iGEM and related research\. This allowed students to approach the technology through the questions it addresses\.
+
+**02 Connecting Science with Real Needs through Research Examples**
+
+We used health research examples to explain how synthetic biology designs can develop from real\-world problems and discussed these ideas directly with students\.
+
+Health provided a familiar context for considering what research aims to address, which approaches it uses, and what further validation is needed\. The discussion also created space to explore differences in learning experiences and interests\.
+
+**03 Treating Language Adaptation as a Condition for Participation**
+
+English provided a shared language for the exchange, but a shared language does not make specialized content equally easy for everyone to understand\. Terminology density, explanations, and opportunities to speak all affect continued participation\.
+
+This experience clarified priorities for future cross\-cultural education: explain essential background, avoid unexplained terminology, and leave space for clarification and questions\. We aimed to support contributions from learners with different levels of language proficiency and avoid creating additional language barriers\.
+
+**04 Supporting Continued Learning through Exchange and Sharing**
+
+The activity addressed SDG 4 through learning across languages and scientific exchange, while connecting with SDG 17’s emphasis on collaboration and knowledge sharing\. The face\-to\-face discussion provided a starting point for further educational cooperation, whose sustained value depends on continued use of the materials and further exchanges\.
+
+English slides, research examples, and discussion outlines provide a reference for other teachers and teams\. Adapting them to local curricula and language settings can help scientific content remain understandable, open to discussion, and reusable across educational contexts\.
+
+
+
+Following our winter holiday series, we continued our educational outreach with activities marking World Book Day\. This occasion offered another opportunity to engage students and encourage their curiosity through learning\.
+
+###### 11\-Air to Bread
+
+World Book Day, 2026\.4\.23 
+
+Jilin University Affiliated Middle School 
+
+203 Students
+
+**For**
+
+Middle School Students
+
+**Challenge**
+
+How can unfamiliar science become understandable through everyday experience?
+
+**Our Response**
+
+Following earlier advice on connecting prior knowledge, intuitive explanations, and interactive learning, we began with the question, “Could we make bread without growing wheat?” Analogies such as “cell—micro factory,” “DNA—instruction manual,” and “metabolic pathway—production line” connected everyday food, basic biology, and synthetic biology\.
+
+**Impact**
+
+The activity offered students a way to explore frontier science through an everyday question\. Discussion connected food sources, material transformations, and the functions of biological systems, while World Book Day provided an opportunity to introduce scientific reading and attention to evidence\.
+
+**Teaching Resources**
+
+Science teaching slides · Classroom discussion questions · Scientific reading and activity facilitation guide
+
+For teachers and other teams to use, with explanatory depth adapted to students’ prior knowledge\.
+
+**查看与下载教学资源 → \[补充资源入口\]**
+
+**SDGs**
+
+SDG 4 · SDG 9 · SDG 12
+
+**Click More →**
+
+**Starting with Bread to Explore the Possibilities of Living Systems**
+
+On World Book Day 2026, we visited Jilin University Affiliated Middle School and opened a synthetic biology lesson with an everyday question: could people make bread without growing wheat?
+
+Bread connected familiar experience with scientific exploration\. We used it to encourage students to consider where the materials in food come from and why scientists investigate new ways to produce useful substances through microorganisms\.
+
+**01 Building on Existing Knowledge**
+
+Earlier discussions with teachers and science communicators emphasized finding a familiar starting point before introducing unfamiliar concepts and gradually increasing depth\. We therefore began with bread and wheat, discussed what plants need to grow and how organic matter forms, and connected these ideas with students’ knowledge of photosynthesis\. This introduced carbon fixation and research into microbial transformations of matter, allowing new concepts to develop around a concrete question\.
+
+**02 Connecting Abstract Processes with Everyday Analogies**
+
+We used three analogies to introduce activities within cells:
+
+- Cell—Micro Factory: Helping students imagine the many biochemical reactions occurring inside a cell\.
+
+- DNA—Instruction Manual: Introducing the relationship between genetic information and cellular functions\.
+
+- Metabolic Pathway—Production Line: Explaining how substances are transformed through successive reactions\.
+
+These analogies provided starting points for further understanding\. We then introduced how synthetic biology investigates and regulates biological processes, while explaining that interactions in real cells are more complex than factories and production lines\.
+
+**03 Extending Curiosity into Reading and Reflection**
+
+Questions such as “How might air be connected with food?” and “What work can microorganisms perform?” invited students to draw on prior knowledge, propose explanations, and discuss ideas\.
+
+World Book Day also allowed us to connect these questions with scientific reading\. When encountering an intriguing research headline, students can ask how the research was conducted, what evidence supports its conclusions, and which conditions still need to be met before practical application\. We hoped to encourage attention to evidence alongside curiosity about frontier science\.
+
+**04 Connecting Future Food with Sustainable Development**
+
+The activity introduced carbon fixation, biomanufacturing, and future food through explanations suited to middle school students, addressing SDG 4 through quality learning about sustainability\-related science\. It also provided starting points for discussing technological innovation under SDG 9 and resource use under SDG 12\. However, “air to bread” was a question intended to prompt exploration; it should not be interpreted as direct conversion without other materials or energy\. Whether new biomanufacturing approaches offer resource advantages also depends on production conditions and actual inputs\. Retaining these qualifications helped students examine the conditions required to realize technological potential\.
+
+Teaching slides, discussion questions, and scientific reading guidance support future use by teachers and other teams\. Adjusting question difficulty and background explanations can help these resources continue supporting exploration of science through everyday experience\.
+
+
+
+###### 12\-Synbio classroom
+
+Aug\. 9, 2026 
+
+Institute of Translational Medicine, Jilin University
+
+16 Learners
+
+**For**
+
+Incoming Grade 11 Students
+
+**Challenge**
+
+How can we help high school students apply textbook biology to experimental procedures, result interpretation, and biological design?
+
+**Our Response**
+
+Following advice on progressive learning and practical participation, we designed a **Know → Experiment → Analyze → Decide → Design** pathway\. Safety training, PCR, crude DNA extraction, gel interpretation, a research decision\-making game, and plasmid component design formed a one\-day research experience\.
+
+![image\.png](图片和附件/image%205.png)
+
+**Impact**
+
+The 16 learners participated in five progressive modules, moving from understanding concepts to open\-ended design\. They applied high school biology through experiments, result interpretation, and task\-related choices, gaining concrete opportunities to explore laboratory skills and research thinking\.
+
+**Teaching Resources**
+
+Course slides · Experimental and safety instructions · Result analysis tasks · Research game rules · Plasmid design materials
+
+For teachers and other teams to use as a reference\. Experimental modules require suitable facilities, safety arrangements, and professional supervision\.
+
+**查看与下载教学资源 → \[补充资源入口\]**
+
+**SDGs**
+
+SDG 4 · SDG 9
+
+**Click More →**
+
+**Turning Textbook Knowledge into a Tool for Exploration**
+
+On August 9, 2026, we organized the “SynBio Classroom—Decoding Life, Designing the Future” summer camp for 16 incoming Grade 11 students\. The course connected high school biology with experiments, evidence analysis, and design tasks, introducing different aspects of research within a one\-day program\.
+
+**01 Translating Teaching Advice into a Progressive Learning Pathway**
+
+Teachers had reminded us that practical activities should build on existing knowledge and provide space for understanding, experimentation, and reflection\. For students already familiar with DNA, complementary base pairing, and genetic information, we could focus on how this knowledge is applied\.
+
+We organized the day around **Know → Experiment → Analyze → Decide → Design**\. Safety procedures and basic principles led into experiments, followed by result analysis, game\-based decisions, and component design\. Connected knowledge linked the stages and helped students understand the purpose of each step\.
+
+![image\.png](图片和附件/image%2013.png)
+
+**02 Moving from Hands\-On Procedures to Result Interpretation**
+
+Students began the morning with laboratory safety training before undertaking experiments\. During PCR, they connected complementary base pairing with amplification, practiced pipetting, and prepared reaction mixtures\. During crude DNA extraction from onions, they used grinding, filtration, and alcohol precipitation to observe a crude DNA\-containing extract, connecting an abstract concept with a visible phenomenon\.
+
+In the afternoon, students examined PCR results using agarose gel electrophoresis and considered how observations support judgments\. The course thus extended from experimental procedures to evidence analysis, connecting performing an experiment with interpreting its results\.
+
+**03 Exploring Design through a Research Game and Component Combinations**
+
+In “Life Science Monopoly,” students encountered research choices and collaboration through questions and event cards, applying their knowledge to specific tasks\.
+
+The course then introduced plasmids and biological component design\. Students learned about promoters, RBSs, CDSs, and terminators and attempted to combine them under task constraints\. This encouraged them to consider component functions, relationships between components, and intended outcomes, introducing engineering design in synthetic biology\.
+
+These classroom combinations were design exercises whose actual functions would require experimental validation\. Maintaining this distinction helped connect design, testing, and refinement, while linking the course with scientific research and innovation skills under SDG 9\.
+
+**04 Supporting Skills Development and Continued Use**
+
+SynBio Classroom addressed SDG 4 through practical learning and skills development, giving students opportunities to apply biology beyond the classroom\. We hoped they would carry forward habits of following procedures, interpreting observations, and using evidence to examine their ideas\.
+
+Such activities also depend on facilities, equipment, consumables, and professional supervision\. The accompanying experimental instructions, analysis tasks, game rules, and design materials support adaptation under different conditions\. Teachers and teams can select suitable modules—for example, beginning with result discussions, research games, and component design when laboratory facilities are unavailable, then arranging practical experiments in an appropriate setting\.
+
+Documenting the course structure and organizational requirements can reduce preparation demands and help the summer camp become an educational resource that others can continue adapting and using\.
+
+
+
+##### University Students
+
+University students have greater capacity for independent learning and judgment\. Education at this stage can therefore provide further opportunities for **action, discussion, and value\-based judgments**\. Through everyday sustainability practices and bioethical discussion, we invited learners to consider how knowledge informs action and how to navigate the complex relationships between technological benefits, risks, and responsibilities\.
+
+
+
+###### **14\-The Pen of Creation**
+
+2026\.4\.12
+
+Jilin University
+
+13 participants
+
+**For**
+
+University Students
+
+**Challenge**
+
+When biotechnology enables change, how should we decide which changes are responsible?
+
+**Our Response**
+
+We organized a debate around “Reshaping Nature or Working with Nature?” Participants examined technological applications, ecological risks, uncertainty, and social responsibility, drawing on evidence from different positions, responding to challenges, and weighing values\.
+
+**Impact**
+
+The activity provided space to discuss controversies in science and technology\. Through argument and exchange, participants practiced understanding different positions, assessing evidence, recognizing uncertainty, and developing reasoned views\.
+
+**Teaching Resources**
+
+Debate topic and background materials · Debate rules · Discussion questions and facilitation guide
+
+For teachers, student associations, and other teams to use, with discussion depth adapted to participants’ prior knowledge\.
+
+**查看与下载教学资源 → \[补充资源入口\]**
+
+**SDGs**
+
+SDG 4 · SDG 12
+
+**Click More →**
+
+**Examining the Reasons for Choices Beyond Technological Possibility**
+
+Synthetic biology offers new research directions for health, environmental, and production challenges, while raising questions about responsibility and the limits of technological intervention\. We organized a university student debate around “The Pen of Creation: Reshaping Nature or Working with Nature?” to connect science with ethical reflection, environmental responsibility, and societal choices\.
+
+**01 Extending Two\-Way Communication to Technological Controversies**
+
+Discussions with educators encouraged us to prioritize questions, responses, and active participation\. For university students, we wanted to create further opportunities to examine complex issues, question technologies, and explain the basis of their judgments\.
+
+The debate focused on benefits, risks, and responsibilities in technological application\. Different views could be expressed, questioned, and compared around a shared topic, providing a concrete setting for critical thinking\.
+
+**02 Weighing Values through Different Positions**
+
+The debate offered two perspectives\. “Reshaping nature” emphasized biotechnology’s potential to address disease, food needs, and environmental problems, asking whether active intervention could be a responsibility in improving living conditions\. “Working with nature” emphasized ecological complexity, gene dispersal, ecological effects, and long\-term uncertainty, drawing attention to conditions for use and limits on intervention\.
+
+We did not assume either side represented the final answer\. Participants were asked to support arguments, respond to opposing questions, and explain the conditions under which their judgments held\. Differences between positions became a means of examining the issues\.
+
+**03 Turning Debate into Practice in Judgment**
+
+Discussion addressed several connected questions:
+
+- Who might benefit from a technology, and who might bear its risks?
+
+- What are the implications of acting or delaying action on health and environmental problems?
+
+- What evidence and safeguards are needed when long\-term effects remain unclear?
+
+- Are there alternatives that should be compared with the proposed technology?
+
+These questions required participants to consider technological, environmental, and social factors while distinguishing existing evidence, reasonable inference, and value judgments\. We hoped this practice would support clearer explanations of their positions and greater understanding of others’ concerns in future scientific reading and public discussion\.
+
+**04 Supporting Responsible Participation through Open Discussion**
+
+The activity addressed SDG 4 through sustainability education and critical thinking, connecting with SDG 12 through discussion of resource use, environmental costs, and the allocation of responsibilities\. Its educational aim was to offer methods for examining complex scientific and technological issues, while allowing participants to reach different conclusions\.
+
+Debate also has limitations\. The contrast between “reshaping” and “working with” nature can generate discussion but may oversimplify real choices\. Decisions usually require attention to specific applications, degrees of intervention, monitoring, and alternatives\. Understanding the conditions behind arguments and the uncertainties involved therefore matters more than defending a fixed position\.
+
+Background materials, debate rules, and discussion guidance support similar activities by other teachers and teams\. Updated cases, additional perspectives, and adjusted question depth can help these resources continue supporting university students’ engagement with science, technology, and sustainable development\.
+
+
+
+##### General Public
+
+Public audiences vary widely in age, knowledge, and motivation\. Public education therefore requires **starting points at different levels and in different formats**\. Through health consultations, digital experiences, games, music, and creative activities, we brought science into open public settings beyond classrooms and laboratories\. Engaging formats can encourage interest, but they must remain grounded in accurate and reliable content\.
+
+###### **15\-Apricot Blossoms and Pink Care**
+
+2026\.4\.19
+
+Jilin University Apricot Blossom Festival · Nanling Campus
+
+3000 Participants
+
+**For**
+
+Campus Community \& General Public
+
+**Challenge**
+
+How can reliable health knowledge become accessible to people with different needs?
+
+**Our Response**
+
+Following advice on audience needs, intuitive explanations, and interactive participation, we combined physician consultations, AR/MR medical experiences, knowledge quizzes, science leaflets, games, and creative activities\. Participants could choose learning formats suited to their needs\.
+
+**Impact**
+
+The activity distributed **more than 300 science leaflets**, and participants created **more than 200 handmade bookmarks**\. Free physician consultations, digital medical experiences, and interactive questions brought breast health education into an open campus setting\.
+
+**Teaching Resources**
+
+Science leaflets · Knowledge question cards · Interactive activity rules and organization instructions
+
+For teachers, student associations, and other teams to use as a reference\. Professional consultations and medical experiences require appropriate personnel and equipment\.
+
+
+
+**查看与下载教学资源 → \[补充资源入口\]**
+
+**SDGs**
+
+SDG 4 · SDG 3
+
+**Click More →**
+
+**Offering Different Ways to Approach Health Knowledge**
+
+During the Jilin University Apricot Blossom Festival, we organized “Apricot Blossoms and Pink Care,” a public breast health education activity, in the “Spring Warmth in Medicine, Innovating the Future” exhibition area at Nanling Campus\. Students, staff, and members of the public could participate through reading, games, medical experiences, and professional consultations, bringing health learning into an everyday public space\.
+
+**01 Designing Different Starting Points around Public Needs**
+
+Discussions with teachers, science communicators, and interactive design professionals had encouraged us to pay closer attention to differences among learners\. At an open event, some participants may want basic explanations, others may be interested in medical technology, and others may bring specific health questions\.
+
+We therefore offered several areas that participants could choose between\. They could begin with their interests and decide whether to read further, try an experience, or seek a consultation, adjusting the pace and depth of participation to their needs\.
+
+**02 Supporting Understanding through Professional Exchange and Direct Experience**
+
+Dr\. Xin Guan from breast surgery and Dr\. Lin Jia from the oncology center provided free health consultations, preventive health guidance, and advice on seeking medical care\. This gave the public opportunities to ask professionals questions directly\.
+
+We also demonstrated a “Three\-Stage Progressive Virtual Simulation Training System,” using AR/MR to present clinical scenarios such as history\-taking, examinations, and simulated surgery\. Breast health question cards and trifold science leaflets offered another route to learning: participants could engage on site or take materials away to read at their own pace\.
+
+**03 Incorporating Interaction and Expression into Public Education**
+
+A “Knock Down Cancer Cells” beanbag game and bookmark\-making activity provided approachable ways to participate\. More than 300 science leaflets were distributed, and participants completed more than 200 bookmarks, allowing materials from the event to accompany them afterward\.
+
+Two pink ribbon walls offered space for expression\. Participants shared wishes for their families’ health, encouragement for people with breast cancer, and support for medicine and public service\. This connected health topics with personal concerns and social support, creating further opportunities for exchange\.
+
+**04 Connecting Accessible Participation with Professional Explanations**
+
+The activity addressed SDG 4 through public health literacy and informal learning opportunities, while connecting with SDG 3 through reliable information and professional exchange\. Different formats allowed people from varied backgrounds to choose suitable starting points, while free consultations and take\-home materials reduced some barriers to information\.
+
+Clear distinctions remained necessary\. The beanbag game could not explain actual mechanisms of cancer treatment, and simulated clinical scenarios could not replace individual diagnosis\. Activities needed to connect these experiences with professional explanations so participants would not mistake game rules or simulations for medical facts\.
+
+Science leaflets, question cards, and organization instructions support future public education by other teams\. Modules can be selected according to available personnel, equipment, and facilities, allowing health knowledge to remain available for reading, discussion, and sharing after the event\.
+
+
+
+
+
+###### **16\-Love, Music \& Us｜爱·音乐·我们**
+
+2026\.5\.16
+
+Jilin University Lawn Music Festival 
+
+278 participants
+
+**For**
+
+University students and members of the campus community
+
+**Challenge**
+
+How can music make a first encounter with synthetic biology more approachable while connecting interactive experiences with specific scientific content?
+
+**Our Response**
+
+Following advice on intuitive explanations and interactive participation, we created three stations: a rhythm challenge, emotion\-coloring bookmarks, and collaborative melody creation\. Movement, visuals, and sound encouraged participation and provided starting points for introducing experimental procedures, biological information expression, and synthetic biology\.
+
+**Impact**
+
+The activity offered different ways for people with varied interests and knowledge backgrounds to encounter life science\. Participants joined simulated procedures, creative tasks, and questions and answers, contributing their own ideas and expressions\.
+
+**Teaching Resources**
+
+Interactive station instructions · Rhythm challenge rules · Bookmark templates · Scientific explanations and question materials
+
+For teachers, student associations, and other teams to use, with facilitation adapted to the activity setting\.
+
+**查看与下载教学资源 → \[补充资源入口\]**
+
+**SDGs**
+
+SDG 4
+
+**Click More →**
+
+**Opening a Scientific Conversation with a Melody**
+
+At the Jilin University Lawn Music Festival, we brought synthetic biology into a public campus event through music and creativity\. Participants could begin with familiar songs, rhythms, or colors, then explore related scientific concepts through explanations and questions\.
+
+**01 Starting with Familiar Forms of Expression**
+
+Discussions with science communicators and interactive design professionals reminded us that communication formats and participation requirements influence whether people engage with science\. At an open event such as a music festival, brief, intuitive activities that people can choose to join provide suitable starting points\.
+
+We therefore organized several music\-themed stations that participants could select according to their interests\. Each included a connection to scientific content so that rhythm and creativity could lead to questions and discussion\.
+
+**02 Connecting Experience with Science through Three Stations**
+
+**Molecular Laboratory Rhythm Challenge**
+
+We adapted movements associated with laboratory tasks involving alcohol lamps, pipettes, and centrifuges into a rhythm challenge\. Participants followed a beat through a simulated sequence, exploring order and coordination before discussing the importance of experimental procedures\. The challenge was a simulation game; actual laboratory work still requires appropriate safety measures and specific protocols\.
+
+**The Transcript Project: Emotion\-Coloring Bookmarks**
+
+Participants chose a song that moved them and recorded their feelings through colors on a bookmark\. The experience of presenting information in different forms provided a starting point for discussing transcription, translation, and gene expression\.
+
+This connection opened a conversation; emotions and coloring do not correspond to molecular mechanisms\. Explanations distinguished artistic expression from biological processes, clarifying the analogy’s purpose and limits\.
+
+**Gene Jukebox: Creating Melodies Together**
+
+Song guessing, guitar performances, and interactive questions brought synthetic biology into informal exchanges\. Participants could also share favorite lyrics and personal responses to inspire the team’s future music\-making, giving the public a role in shaping the creative process\.
+
+**03 Using Interest as a Starting Point for Further Learning**
+
+The three stations used movement, visuals, and sound, allowing people to begin with a familiar form of participation without prior specialist knowledge\.
+
+Music and creativity encouraged people to stay and talk, while scientific explanations connected the experience with concepts\. We hoped participants would progress from asking what the activity was to questions such as why experiments follow a sequence and what transcription and translation mean\.
+
+Different formats should also allow flexible participation\. Future organizers can offer a choice of stations and written explanations, reducing reliance on hearing music, distinguishing colors, or following movements\.
+
+**04 Providing Diverse Learning Opportunities for the Campus Public**
+
+The activity addressed SDG 4 through informal learning and public engagement, bringing life science education into campus settings beyond the classroom\. Music, games, and creative tasks offered different starting points, allowing participants to engage at their own pace and according to their interests\.
+
+We treated interest as the beginning of an exchange, without equating participation in entertainment with scientific understanding\. Clear conceptual explanations and explicit limits to analogies helped keep these formats connected to learning\.
+
+Interactive rules, bookmark templates, and explanatory materials support reuse by other teams\. Stations can be selected according to the venue, sound conditions, and participants’ needs so that the educational format suits the audience\.
+
+
+
+
+
+##### Rural Learners
+
+Geography and educational resources should not determine whether a child can encounter life science\. In rural and relatively resource\-limited settings, we focused on **accessible, participatory learning opportunities directly connected with everyday life**\. Stories and tasks encouraged curiosity, while health education and digital experiments connected knowledge with observation, judgment, and practical action\.
+
+###### **17\-Life Science Adventure**
+
+2026\.7\.15
+
+Luzhou, Sichuan 
+
+28 learners
+
+**For**
+
+Young learners in rural communities
+
+**Challenge**
+
+How can we provide rural children with understandable, participatory introductions to life science that turn curiosity into scientific exploration?
+
+**Our Response**
+
+Following advice on age\-appropriate explanations and active participation, we introduced a cartoon “little bacterium” as an adventure companion\. Everyday examples, a DNA “instruction manual” analogy, interactive questions, and a “Design a Bacterium’s Superpower” task brought life science into rural classrooms\.
+
+**Impact**
+
+The activity increased opportunities for rural children to encounter life science and synthetic biology\. Observation, discussion, and imaginative tasks encouraged them to ask questions and express ideas based on everyday experiences\.
+
+**Teaching Resources**
+
+Story\-based slides · Interactive questions · “Bacterial Superpowers” creative task instructions
+
+For rural teachers, volunteer teaching teams, and other educators to use and adapt according to learners’ ages and prior knowledge\.
+
+**查看与下载教学资源 → \[补充资源入口\]**
+
+**SDGs**
+
+SDG 4 · SDG 10
+
+**Click More →**
+
+**Bringing Life Science Exploration into Rural Classrooms**
+
+In Luzhou, Sichuan, we introduced life science to rural children through the question, “Are all bacteria bad?” A cartoon bacterium accompanied them throughout the lesson, connecting familiar experiences with microorganisms, DNA, and synthetic biology\.
+
+**01 Building on Children’s Everyday Experiences**
+
+Teachers had emphasized connecting early science education with learners’ experiences and leaving space for questions and expression\. We began with children’s everyday impressions of bacteria, invited them to share their ideas, and introduced different microbial roles through examples such as food fermentation\.
+
+These examples helped children recognize that microorganisms cannot simply be labeled “bad” and connected classroom questions with familiar life\.
+
+**02 Introducing Unfamiliar Concepts through Stories and Images**
+
+Images of different living organisms encouraged observation and comparison\. We then used the “instruction manual” analogy to introduce the relationship between DNA and biological characteristics\.
+
+Building on this, we explained how scientists investigate living systems and attempt to design or modify them for particular functions\. The lesson progressed from nearby microorganisms to biological information and then to designing biological functions, allowing participation without requiring technical vocabulary first\.
+
+**03 Encouraging Expression through Imaginative Tasks**
+
+At the end of the lesson, we asked:
+
+**If you could give a little bacterium a new “superpower,” what would you want it to help people do?**
+
+Protecting forests, cleaning water, helping doctors, or protecting animals could all inspire ideas\. The task encouraged children to begin with concerns that mattered to them and describe a desired function\.
+
+“Superpowers” invited imagination, but whether an idea could work would still require research and experimental testing\. Cartoon characters also cannot indicate whether real microorganisms are safe\. Retaining these distinctions helped the story support scientific understanding\.
+
+**04 Leaving Reusable Resources for Rural Science Education**
+
+The activity addressed SDG 4 through age\-appropriate explanations and active participation, bringing frontier life science into rural classrooms\. It also connected with SDG 10 through geographically inclusive learning opportunities, giving local children more chances to encounter science, ask questions, and express ideas\.
+
+No laboratory experience was required\. Stories, images, and discussion organized the learning process\. Slides and creative task instructions provide a reference for rural teachers and future volunteer teams and can be adapted into oral discussion or drawing activities\.
+
+We hoped these resources would remain useful after the visit, sustaining curiosity about life and opportunities to keep asking why\.
+
+
+
+###### 18\-**Little Scientist**
+
+2026\.7\.20
+
+Luzhou, Sichuan 
+
+36 learners
+
+**For**
+
+Young learners in rural communities
+
+**Challenge**
+
+How can rural children encounter scientific observation and experimental reasoning and begin understanding the relationship between conclusions and evidence?
+
+**Our Response**
+
+We organized microbial observation around a “Create an ID Card for a Bacterium” task\. Finding colonies, learning about equipment, simulating Gram staining, and examining microscopic observations guided children through gathering information and describing microbial characteristics\.
+
+**Impact**
+
+The activity offered opportunities to encounter experimental tools, simulated procedures, and observational results\. It connected microbial knowledge with observation, comparison, and judgment to introduce basic scientific thinking\.
+
+**Teaching Resources \| Teaching Resources**
+
+Task slides · Equipment introduction materials · Staining simulation and observation task instructions
+
+For rural teachers, volunteer teaching teams, and other educators to use\. Work with real samples and reagents requires appropriate safety conditions and professional supervision\.
+
+**查看与下载教学资源 → \[补充资源入口\]**
+
+**SDGs**
+
+SDG 4 · SDG 10
+
+**Click More →**
+
+**Exploring How Scientific Answers Are Developed in a Rural Classroom**
+
+In Luzhou, Sichuan, our “Little Scientist” activity asked how scientists learn about a bacterium’s characteristics\. The “Create an ID Card for a Bacterium” task progressed from colony observation and equipment recognition to simulated staining and microscopic observations, introducing how scientific information is obtained\.
+
+**01 Turning Scientific Observation into a Participatory Task**
+
+Teachers had encouraged practical activities that allow children to observe, respond, and think\. We therefore connected the lesson through a concrete task, asking learners to gather the information needed to describe a microorganism\.
+
+The “ID card” was a metaphor for organizing observations\. It did not imply that one staining procedure could identify a bacterium\. The central idea was that describing an object requires observations that support a judgment\.
+
+**02 Moving from Visible Phenomena to Experimental Processes**
+
+Children first located colonies in culture dishes and learned the distinction between a visible colony and an individual microscopic bacterium\. We then introduced tools such as inoculating loops, slides, and microscopes\.
+
+In the Gram\-staining simulation, four bottles of “magic solutions” introduced crystal violet, iodine solution, decolorizer, and safranin\. Children followed the steps and observed changes before connecting the process with microscopic results\.
+
+The playful names supported participation, while explanations retained the reagents’ actual names and functions so that children understood that color changes arose from a specific experimental process\.
+
+**03 Connecting Procedures and Observations with Judgment**
+
+The task followed three questions: why do we perform this step, what do we observe, and what can these observations tell us?
+
+By learning about equipment, considering the sequence of steps, and examining results, children developed descriptions of microbial characteristics\. They also encountered the idea that a color or shape provides only part of the information and that further judgments may require other evidence\.
+
+We hoped this questioning approach would extend to everyday learning, encouraging children to ask how an answer was reached\.
+
+**04 Supporting Science Learning under Different Conditions**
+
+The activity addressed SDG 4 through practical learning and attention to evidence, bringing scientific observation and experimental reasoning into a rural classroom\. It also connected with SDG 10 by providing additional opportunities to encounter scientific tools and research processes\.
+
+Actual experiments require equipment, samples, and professional supervision\. The accompanying resources include equipment introductions, staining simulations, and result discussion tasks\. Classrooms without experimental facilities can use images, simulations, and discussion to practice observation\.
+
+These adaptable materials support rural teachers and future volunteer teaching teams\. We hoped the activity would leave resources that continue helping children learn about microorganisms and form judgments from observations\.
+
+
+
+###### **19\-Health Guardians**
+
+2026\.7\.22
+
+Duji Town Central Primary School, Shangqiu, Henan
+
+42 students
+
+**For**
+
+Primary school students in rural communities
+
+**Challenge**
+
+How can volunteer teaching provide rural children with understandable health education connected to everyday life?
+
+**Our Response**
+
+We adapted the lesson to rural primary school students’ ages and experiences, introducing communicable and noncommunicable diseases as “diseases that travel” and “diseases that do not travel\.” School scenarios, classroom judgment tasks, and practice of the seven\-step handwashing technique connected health knowledge with basic protection and seeking help\.
+
+**Impact**
+
+The activity brought age\-appropriate health education into a rural classroom\. Children had opportunities to assess everyday situations, practice hygiene skills, and learn where to seek help, connecting learning with school and family life\.
+
+**Teaching Resources**
+
+Health education slides · Scenario discussion cards · Handwashing demonstration materials · Teaching organization instructions
+
+For rural teachers, volunteer teaching teams, and other educators to use\. Health information should be updated according to current public health guidance\.
+
+**查看与下载教学资源 → \[补充资源入口\]**
+
+**SDGs**
+
+SDG 4 · SDG 3 · SDG 10
+
+**Click More →**
+
+**Bringing Practical Health Knowledge into Rural Classrooms**
+
+During volunteer teaching from July 15 to 31, we delivered health education at Duji Town Central Primary School in Shangqiu, Henan\. Stories, scenario discussions, and movement\-based practice introduced disease prevention and help\-seeking through familiar school and family situations\.
+
+**01 Starting with Rural Children’s Daily Lives**
+
+Teachers had emphasized matching content to learners’ ages, knowledge, and experiences\. We therefore situated questions in peer interactions, everyday hygiene, and feeling unwell so children could draw on their own experiences\.
+
+“Diseases that travel” and “diseases that do not travel” opened the discussion before we introduced the terms communicable and noncommunicable diseases\. The analogy established an initial understanding, followed by explanations that transmission and prevention differ between diseases\.
+
+**02 Applying Health Knowledge to Everyday Situations**
+
+Topics such as chickenpox, hand, foot and mouth disease, and mumps prompted questions: whom should children tell if they feel unwell? How can they help a classmate who appears unwell? Which situations require further assessment by teachers, parents, or healthcare professionals?
+
+In the noncommunicable disease section, cancer\-related topics helped address misconceptions about everyday contact and ways to understand and support people with illness\. The lesson combined self\-protection with care for others, avoiding the use of disease knowledge to ridicule, blame, or exclude\.
+
+**03 Connecting Classroom and Home through Practice**
+
+Demonstration and practice of the seven\-step handwashing technique allowed children to learn through observation, imitation, and action\. Everyday scenarios prompted discussion of hygiene, diet, exercise, daily routines, and appropriate protection\.
+
+We hoped children would leave with knowledge they could continue using: actions they could take to care for themselves, how to express discomfort or questions, and whom to ask for help\. Sustaining these actions requires supportive conditions at home and school and cannot depend on children alone\.
+
+**04 Addressing Equitable Learning Opportunities through Rural Education**
+
+The activity addressed SDG 4 through age\-appropriate health education and practical skills\. Volunteer teaching brought opportunities to encounter, discuss, and practice health knowledge into a rural classroom, connecting with SDG 3 through its health focus\.
+
+It also addressed SDG 10 through geographic access to learning: health education resources should respond to children’s needs across locations\. One teaching visit cannot eliminate inequalities in educational or healthcare resources, but it can leave materials for future use\.
+
+Slides, scenario cards, and handwashing materials support rural teachers and subsequent volunteer teams\. Adapting activities to local conditions, updating content, and incorporating it into routine teaching could make the session a starting point for continued health learning\.
+
+
+
+##### **Making Science Explorable and Resources Shareable**
+
+Alongside in\-person activities, we continued communicating about **SDGs, synthetic biology, and health** through Xiaohongshu and WeChat Official Accounts\. Following science communicators’ advice on information hierarchy, intuitive explanations, and scientific qualifications, we developed illustrated content that the public could read and share\. We published **XX posts, receiving XX views**\. We also produced **3 types of brochures and 1 bilingual Chinese–English practical handbook**, distributed **XX brochures** and **XX physical Bio Memory Match sets**\. These materials support reading, interaction, and reuse beyond the activities\. We also plan to bring physical Bio Memory Match cards to the **iGEM Grand Jamboree** to exchange ideas about gameplay and educational design with other teams and explore further reuse\. Online content and physical resources connect public learning, on\-site participation, and sharing between teams\. These distribution and usage records provide evidence for our response to **SDG 4** through accessible learning opportunities and reusable educational resources\.
+
+
+
+#### C — Consequences
+
+##### Short\-Term Impacts
+
+At this stage, CirCure’s most direct impact under SDG 4 is the creation of additional opportunities for people from different backgrounds to engage with science\. During the project, our educational activities reached **\[\*\] countries and regions, \[\*\] schools, and \[\_\_\_\] students and members of the public**\. Stakeholder feedback prompted us to adapt educational approaches to age, prior knowledge, and learning conditions\. Stories, experiments, virtual tools, and public interaction brought scientific learning into schools, rural classrooms, and public events\.
+
+We evaluated immediate learning experiences through activity feedback questionnaires across four dimensions: **self\-reported gains in understanding, clarity of content, adequacy of participation opportunities, and willingness to continue learning**\. Among \[**\*\] valid questionnaires, the mean scores were **\[**\*\], \[**\*\], \[**\*\], and \[\_\_\_\], respectively, out of 10**\. These responses helped us understand perceived learning gains, views on activity design, and willingness to continue exploring synthetic biology\.
+
+Reported participation difficulties and requests for further support informed educational improvements\. The main difficulties reported were **\[\_\_\_\]**, and the most requested support was **\[\_\_\_\]**, guiding revisions to content depth, pacing, instructions, and learning resources\. On\-site feedback also led to concrete changes: suggestions from APiC participants prompted an online version of Bio Memory Match, expanding access\. These activities translated CirCure’s response to SDG 4 into learning opportunities, participation experiences, and educational improvements\. Detailed survey results and scoring methods are presented in the Evidence section\.
+
+##### Long\-Term Impacts
+
+###### Social Impacts
+
+**Potential Benefit** If resources remain in use and connect with subsequent teaching, courses at different levels, experimental experiences, and public discussions could support scientific understanding, evidence\-based judgment, and independent exploration\. Adapting resources to local languages, curricula, and equipment could also expand learning opportunities for groups with limited resources, further supporting SDG 4 and SDG 10\.
+
+**Potential Risk** Equipment, language, teacher support, and experimental facilities may still restrict participation and distribute new opportunities unevenly\. Stories, analogies, and games without accurate explanations could also create misconceptions and undermine learning quality\.
+
+**Evidence Boundary** Activity records and questionnaires document participation and immediate self\-reported experiences\. They do not establish long\-term knowledge retention, improved abilities, or reduced educational disparities\. These outcomes require continued follow\-up\.
+
+###### Economic Impacts
+
+**Potential Benefit** Continued sharing and reuse of virtual experiments, educational games, picture books, slides, and activity guides could reduce repeated development and lesson preparation by educators and other teams\. Printable materials, digital tools, and modular lessons also offer additional options for affordable learning under different resource conditions\.
+
+**Potential Risk** Resource development, printing, equipment, maintenance, and teaching still require investment\. Use across regions also requires language and curriculum adaptation\. Overlooking these conditions could overstate the cost advantages of sharing and leave less\-resourced schools unable to use the materials\.
+
+**Evidence Boundary** We currently lack systematic comparisons of development and maintenance costs, preparation time, and actual reuse\. We therefore do not present tool development and resource sharing as demonstrated cost savings\.
+
+###### Environmental Impacts
+
+**Potential Benefit** 
+
+Repeated use of educational tools and materials could reduce repeated printing and production\. Appropriate virtual experiments could also reduce some reliance on physical reagents and single\-use consumables in introductory teaching\. Sustainability education may help learners incorporate resource responsibility into everyday choices, allowing SDG 4 to support SDG 12\.
+
+**Potential Risk** 
+
+Physical materials, printing, digital devices, and tool operation still require materials and energy\. Environmental performance depends on useful life, reuse frequency, and updating requirements\. Digitalization or reduced use of one type of consumable does not necessarily lower the overall environmental burden\.
+
+**Evidence Boundary** 
+
+We currently lack comparative data on resource lifespans, material use, and energy consumption, as well as long\-term behavioral follow\-up\. We therefore discuss the potential value of reuse and environmental responsibility education without claiming environmental benefits already achieved\.
+
+#### **A — Alignment**
+
+Building on potential relationships identified through SST\-QN, we examined CirCure’s **educational design, stakeholder engagement, teaching activities, and resource development** to determine whether these relationships have emerged within the project and how far current evidence supports them\. We distinguish learning and participation opportunities already created from knowledge, behavioral, and social impacts that require further evaluation\.
+
+##### Key Findings
+
+**SDG 17 → SDG 4 and SDG 9 → SDG 4 are two Positive Core Interactions clearly supported in educational design and resource development\.** Feedback from teachers, science communicators, and interactive design professionals informed content progression, explanations, and instructions\. Student association collaboration and APiC exchanges also supported activities and resource improvements\. Meanwhile, CirCure’s technical content became courses, experiments, design tasks, and interactive tools that provided concrete opportunities for scientific participation\. Both relationships therefore show direct positive effects supported by project actions\.
+
+**SDG 4 → SDG 3 and SDG 4 → SDG 10 are also classified as Positive Core Interactions, with evidence limited to access to health information and learning opportunities\.** Health lessons, hygiene practice, and physician consultations provided children and the public with access to reliable knowledge\. Rural education and actual use of the virtual laboratory addressed some learners’ limited access to science education and laboratory facilities\. These records confirm that activities took place and responded to specific needs\. They do not establish improved health outcomes or the elimination of structural educational disparities\. Digital equipment, language, professional guidance, and continued teaching support still affect sustained value\.
+
+**SDG 4 → SDG 8 and SDG 4 → SDG 5 remain Exploratory\.** For SDG 8, experimental, design, and collaborative tasks provided exposure to skills, but evidence of sustained capability gains, employment, or economic benefits is not yet available\. For SDG 5, the picture book and interactive stories address body acceptance, expressing needs, and family support, providing a basis for further discussion of women’s autonomy\. However, a focus on breast health or girls’ development does not establish progress toward gender equality\. Both relationships require subsequent usage records and outcome evaluation to support stronger conclusions\.
+
+We retain **Excluded** for **SDG 4 → SDG 13**\. Carbon fixation, green energy, and environmental responsibility appear in some lessons, but current evidence does not show that learning translated into climate action or emissions reductions\. We therefore do not interpret an environmental topic, one planting activity, or digital resource development as a demonstrated climate contribution\.
+
+Overall, CirCure’s currently supported impacts under SDG 4 center on **educational design improvements, access to science and health information, responses to specific learning barriers, and practical resource responsibility**\. Long\-term understanding, sustained behavior change, innovation and employment capabilities, gender equality, and climate impacts require further learning assessments, resource\-use records, and continued follow\-up\.
+
+#### L — Legacy
+
+Through our SDG 4 work, we aimed to create educational resources that could continue to be used, shared, and adapted\. Across 13 major educational activities, we produced 10 teaching slide decks and developed content from the Apricot Blossom Festival, and the Lawn Music Festival into 3 science handbooks\. These allow some educational content to be used independently of its original activity\. We also developed 1 science picture book, 1 virtual laboratory containing 10 experiments, and 2 interactive educational games, offering varied starting points for different learners and settings\. Alongside activity records, we documented content organization, the use of stories and tasks to support participation, and applications in subsequent teaching\. These resources provide teachers, learners, and other iGEM teams with material they can continue using and adapting\.
+
+We also maintained public science communication through a WeChat Official Account series on synthetic biology, SDGs, and health, and a “21\-Day Synthetic Biology Learning Challenge” on Xiaohongshu\. To date, we have published XX posts or installments, receiving XXXX views, offering opportunities to read, learn, and share beyond in\-person activities\.
+
+#### E — Evidence
+
+For SDG 4, we organized available evidence across four areas: educational design improvements, activity reach, learning experience evaluation, and resource documentation\. Together, these show the science learning and participation opportunities CirCure has created and the extent to which they support its response to quality education\.
+
+**Measurable**
+
+The educational outputs and outcomes we can currently quantify and track include:
+
+- **Feedback from three stakeholder groups**, translated into specific improvements to our educational design:
+
+    1. **Teachers and educators:** We adjusted the depth and complexity of content to learners’ ages and prior knowledge, organising stories, discussions, experiments, and design tasks into a progressive learning sequence\.
+
+    2. **Science communicators:** We refined the structure, language, and visual presentation of our materials while retaining essential scientific explanations and making the limits of the evidence clear\.
+
+    3. **Game developers and interaction designers:** We improved rules, instructions, and activity organisation, and accounted for the equipment, materials, and access conditions needed to use our resources\.
+
+- **An online version of *****Bio Memory Match***, developed from the physical card game in response to APiC participants’ requests for an online experience\.
+
+- **15 major educational activities across 12 schools**, reaching children, middle and high school students, university students, learners in rural and resource\-limited communities, and the wider public, with **\_\_\_ participants** in total\.
+
+- **\_\_\_ valid questionnaire responses**, assessing immediate learning experiences across **four dimensions**:
+
+    1. Self\-reported gains in understanding: \_\_\_;
+
+    2. Clarity of the content: \_\_\_;
+
+    3. Adequacy of opportunities to participate: \_\_\_;
+
+    4. Willingness to continue learning: \_\_\_\.
+
+- Participants identified **\_\_\_** as the main barriers to participation and **\_\_\_** as the follow\-up support they most wanted\.
+
+- **17 reusable teaching and learning resources**:
+
+    - 10 sets of teaching slides;
+
+    - 3 science communication booklets;
+
+    - 1 illustrated science storybook;
+
+    - 1 virtual laboratory;
+
+    - 2 interactive educational games\.
+
+- **\_\_\_ science communication posts** published through our WeChat Official Account and Xiaohongshu, receiving **\_\_\_ total views**\.
+
+**Activity, school, material, and resource counts indicate the scale of delivery\. They do not directly measure the number of unique participants or demonstrate learning outcomes\.**
+
+
+
+**Significant**
+
+CirCure’s contribution to SDG 4: Quality Education is grounded in how stakeholder feedback shaped our educational work\. That feedback informed what we taught, **how we designed learning activities, how different learners could participate, and how our resources could remain available for future use**\.
+
+We moved from one\-way knowledge delivery towards **interactive learning tailored to different needs**\. We adapted content to learners’ ages, prior knowledge, and learning contexts, using stories, discussions, experiments, and design tasks to offer different ways to engage with science\. Participants’ requests for online access also directly prompted us to develop an online version of our biology card\-flipping game, *Bio Memory Match*\.
+
+Our educational work reached learners at different stages of their education and in a range of settings\. Across **15 activities at 12 schools**, we combined explanations, discussions, practical tasks, and interactive activities to create opportunities for learners from different backgrounds to engage with science\. **Feedback collected across four dimensions** helped us assess whether the content was understandable and whether participants had sufficient opportunities to take part\. We used these findings to refine the depth of the content, the pace of activities, and the instructions for practical tasks\.
+
+We also made our educational materials available for continued use\. Our **17 teaching and learning resources** allow teachers, learners, and other iGEM teams to reuse and adapt lesson content, interactive tasks, and guidance for delivery\. Our online science communication provides further opportunities to continue learning beyond the in\-person activities\.
+
+Together, these efforts provide a documented contribution to SDG 4 in four areas: **improving educational design, providing learning opportunities, evaluating participants’ immediate experiences, and making resources available for reuse**\. Our questionnaires capture participants’ immediate experiences and self\-reported learning gains\. They **do not yet establish lasting knowledge retention, improved skills, or sustained changes in behaviour**\. Assessing those outcomes will require pre\- and post\-activity assessments, delayed assessments, and follow\-up with participants\.
+
+### SDG17：Partnerships for the Goals
+
+No single team has all the knowledge and resources needed to address interconnected challenges in health, education, and sustainable development\. We chose SDG 17 to **connect complementary expertise across teams and sectors through shared learning and joint work**\. Our aim is to turn individual contributions into **resources others can use and build upon**, so that one team’s experience becomes another’s starting point and the value of collaboration extends beyond the competition\.
+
+#### S — **Stakeholder \& Partnership Mapping**
+
+在围绕SDG3、SDG4、SDG9和SDG12开展工作的过程中，我们围绕四个核心领域与来自**健康需求、技术创新、负责任发展以及教育与传播**领域的利益相关者建立了联系。患者和临床医生帮助我们理解现实中的医疗需求；科研人员参与技术设计和评价；产业从业者补充生产、技术转化和资源管理方面的视角；教师、科学传播工作者和公众则帮助我们将科学知识带入更广泛的社会环境。
+
+在SDG17中，我们不再重复各类群体提出的具体建议，而是进一步关注这些关系如何彼此连接。**不同利益相关者能够贡献哪些知识、资源和实践经验？这些在不同可持续发展目标中形成的优势，又如何被整合起来，共同支持循环疗愈项目的发展？**
+
+根据利益相关者的参与方式和合作关系的形成过程，我们将CirCure项目的外部网络划分为四个群体：**Other iGEM Teams、Research \& Medical Partners、Industry \& Professional Partners，以及Public \& Community Partners**。这些群体分别代表同行合作、科研与医疗、产业实践和公众参与，共同构成了CirCure更广泛的合作伙伴网络。
+
+##### **01\-Other iGEM Teams**
+
+iGEM 团队是 CirCure 最直接的同行合作伙伴网络。我们并不希望其他团队只是项目交流中的“听众”，而是希望通过持续交流，将彼此的联系进一步转化为**共同讨论、联合行动和可持续使用的成果**。
+
+从主办东北地区 iGEM 交流会，到参与本年度中国各地区 iGEM 交流活动，再到进一步发起 **5 项跨队 Collaboration**，我们与其他团队的关系逐渐从“认识彼此、交流项目”，发展为“**共同完成一件事、共同留下可继续使用的成果**”。不同团队在研究方向、实践经验、受众资源和专业能力上的差异，也让这些合作能够形成真正的互补，并成为 CirCure 持续扩展影响的重要伙伴网络。
+
+###### 01\-01\-Northeast China iGEM Meetup
+
+**Partners / Reach**
+ Regional iGEM Teams · \[XX Teams\]
+
+**What Connected Us**
+ 区域内团队需要一个能够展示项目、交流经验并发现合作机会的面对面平台。
+
+**What We Did Together**
+ JLU\-FBH 主办东北地区 iGEM 交流会，并设计“**DDL危局：清河菌泄露事件**”沉浸式安全推理圆桌，通过风险判断、责任分析和团队讨论共同探讨工程菌释放与 iGEM Safety 边界。
+
+**Shared Outcome**
+ 建立了区域同行网络，也让 Safety 从规则学习转化为跨团队共同讨论和判断的问题，并为后续合作建立联系基础。
+
+**SDGs**
+ SDG 17 · SDG 4
+
+Click more
+
+###### 从“见面”开始建立真正的同行连接
+
+跨队合作首先需要让不同团队真正有机会坐在一起，了解彼此正在解决什么问题、遇到了什么困难，以及各自能够提供什么经验。
+
+因此，JLU\-FBH 主办了**东北地区 iGEM 交流会**，邀请区域内团队进行项目展示、经验分享和面对面讨论。相比单纯展示已经完成的成果，我们更希望不同团队能够在交流中发现彼此的优势、困难和潜在合作方向，让一次区域会议成为后续合作网络的起点。
+
+###### 01 为什么我们这样设计
+
+iGEM 团队虽然处于同一个竞赛体系中，但不同学校、不同专业背景和不同项目方向之间仍然存在信息差。很多团队拥有值得分享的实验经验、Human Practices 方法或教育资源，却缺少充分了解彼此的机会。
+
+因此，我们希望创造一个更开放的交流环境，让团队不只是“介绍自己的项目”，也能够真正讨论：
+
+**我们正在遇到什么问题？其他团队是否经历过类似问题？我们之间又有哪些可以共同完成的事情？**
+
+###### 02 不只交流项目，也共同讨论 Safety
+
+交流会期间，我们自主策划并主持了 **“DDL危局：清河菌泄露事件”** 沉浸式推理圆桌。
+
+我们将工程菌意外泄露设置为模拟情境，让不同团队根据线索判断事件风险、分析责任主体，并讨论工程菌释放、实验规范以及 iGEM Safety 红线。
+
+Safety 因此不再只是规则手册中的条款，而成为需要参与者共同分析和判断的问题：
+
+**如果真正发生风险事件，我们应该如何识别问题、承担责任并作出决定？**
+
+###### 03 我们留下了什么
+
+这场交流会首先建立了区域内团队之间的直接联系，也为随后更深入的跨队合作提供了基础。
+
+它留下的不只是一组会议照片，而是一个能够继续向后发展的起点：
+
+**Meet → Understand → Connect → Collaborate**
+
+###### 04 我们学到了什么
+
+真正的伙伴关系往往不是从“我们一起做一个大项目”开始，而是从一次充分的交流开始。
+
+只有当团队真正了解彼此的研究方向、优势和需求之后，合作才可能从形式上的“联名”发展为具有实际内容的共同实践。
+
+###### 01\-02\-China\-wide iGEM Exchange
+
+**Partners / Reach**
+ iGEM Teams across China · \[XX Events / XX Teams\]
+
+**What Connected Us**
+ 不同地区团队在 Wet Lab、Dry Lab、HP、Education、Wiki 和团队管理方面拥有不同经验和资源。
+
+**What We Did Together**
+ 我们参加本年度中国地区 iGEM 交流活动，与不同团队持续进行项目展示、经验交流和合作讨论。
+
+**Shared Outcome**
+ 将区域联系扩展为更广泛的全国同行网络，并识别出后续知识共享和共同创作的合作方向。
+
+**SDGs**
+ SDG 17
+
+Click more
+
+###### 从区域连接走向更广泛的同行网络
+
+东北地区交流会建立了最初的区域联系，但我们并不希望合作网络停留在某一个地区。
+
+因此，本年度我们继续参加中国各地区举办的 iGEM 交流活动，与来自不同高校、不同研究方向的团队持续交换项目经验，并进一步了解彼此在 Wet Lab、Dry Lab、Human Practices、Education、Wiki 和团队建设中的实践。
+
+###### 01 为什么继续走出去
+
+不同地区的团队面对的项目环境并不完全相同。
+
+有人在实验设计上积累了更多经验，有人拥有成熟的建模体系，也有团队在教育、HP、视觉设计或团队管理方面形成了非常独特的方法。
+
+如果这些经验只停留在各自团队内部，很多问题就需要被不断重复解决。
+
+因此，我们希望通过持续参加不同地区的交流活动，主动寻找：
+
+**哪些经验可以共享？哪些资源可以互补？哪些问题值得共同解决？**
+
+###### 02 从项目展示到合作讨论
+
+在这些交流活动中，我们不只介绍 CirCure，也主动了解其他团队的项目方向和实践特点。
+
+这些持续交流帮助我们逐渐识别出一些适合跨队共同完成的议题，例如：
+
+公共健康科普、疫苗技术整合、科学误区澄清、健康实践传播以及新队伍经验传承。
+
+也正是在这些联系基础上，后续 **5 项跨队 Collaboration** 才逐渐形成。
+
+###### 03 我们得到的不是“更多联系人”
+
+更广泛的交流网络并不是为了增加合作队伍数量。
+
+真正有价值的是，不同团队的专业方向、地区背景和实践资源开始被连接起来，并逐渐转化为能够共同完成的任务。
+
+因此，中国地区交流对我们而言更像一个持续扩大的“连接层”：
+
+**Regional Network → National Network → Shared Actions**
+
+###### 04 我们学到了什么
+
+伙伴关系并不一定需要在第一次见面时就明确合作成果。
+
+持续沟通本身能够帮助团队逐渐了解彼此，找到真正适合共同完成的事情。
+
+这种从“认识”到“理解”，再到“合作”的过程，也让我们对 SDG 17 的理解更加具体。
+
+
+
+###### 01\-03\-Misconceptions \& Immunity
+
+**Partners / Reach**
+ \[XX iGEM Teams\]
+
+**What Connected Us**
+ 公共健康中仍存在抗生素、免疫、传染病、医学检查和用药等高频认知误区，而不同团队能够提供不同专业视角。
+
+**What We Did Together**
+ 各队围绕传染病认知、医学检查与诊断、科学治疗与用药误区共同检索资料并完成内容创作，JLU\-FBH 负责整体统筹、校对与整合。
+
+**Shared Outcome**
+ 形成《**破误区・懂免疫：青年科研者公共健康科普白皮书**》，将跨队专业知识转化为可持续传播的公众健康资源。
+
+**SDGs**
+ SDG 17 · SDG 3 · SDG 4
+
+Click more
+
+###### 当不同团队的专业知识共同回答公众健康问题
+
+医学和公共健康领域存在大量看似简单、却长期反复出现的认知误区。
+
+抗生素是不是“消炎药”？免疫力是不是越强越好？检查结果正常是不是就代表绝对健康？
+
+这些问题往往横跨感染、免疫、诊断和治疗等多个方向，很难由单一团队完整覆盖。
+
+###### 01 为什么我们发起这项合作
+
+不同 iGEM 团队拥有不同项目背景，也意味着每支队伍能够从不同专业角度理解健康问题。
+
+因此，我们发起 **《破误区・懂免疫：青年科研者公共健康科普白皮书》**，希望将分散在不同团队中的专业知识汇集起来，共同回应公众生活中高频出现的健康误区。
+
+###### 02 我们如何共同完成
+
+合作围绕三个主要方向展开：
+
+**传染病基础认知**
+ 帮助公众区分病原体、传播方式和基础防护知识。
+
+**医学检查与诊断**
+ 解释常见检查、诊断和结果理解中的错误认知。
+
+**科学治疗与用药误区**
+ 回应抗生素、免疫、治疗选择等方面的常见误解。
+
+参与团队根据自身研究方向进行选题、资料检索和内容撰写，JLU\-FBH 负责整体统筹、内容校对、结构统一和版式整合。
+
+###### 03 Shared Outcome
+
+最终，我们共同形成了一套面向公众的**公共健康科普白皮书**。
+
+与单一团队独立完成科普相比，这种方式使不同专业领域的知识能够在同一资源中彼此补充，也让内容拥有更广泛的专业覆盖。
+
+**XX Teams → Multiple Health Topics → 1 Shared Public Health Resource**
+
+###### 04 我们学到了什么
+
+跨队合作的价值并不只是“多人一起写一本白皮书”。
+
+更重要的是，每支团队都能够贡献自己最了解的一部分知识，再通过共同核查和整合，把分散的专业能力转化为公众可以直接使用的资源。
+
+**SDGs：SDG 17 · SDG 3 · SDG 4**
+
+
+
+###### 01\-04\-Vaccine Technology White Paper
+
+**Partners / Reach**
+ \[XX iGEM Teams\]
+
+**What Connected Us**
+ 不同团队研究不同疫苗平台，单一团队难以同时覆盖灭活、减毒、蛋白、病毒载体、DNA、mRNA 等多种技术路线。
+
+**What We Did Together**
+ 各团队结合自身项目方向，分别梳理不同疫苗平台的原理、优势、局限、应用场景与合成生物学改造思路。
+
+**Shared Outcome**
+ 形成一份**可比较、可查阅的多元疫苗技术联合白皮书**，把分散的团队知识整合为共享研究资源。
+
+**SDGs**
+ SDG 17 · SDG 9 · SDG 3
+
+Click more
+
+###### 一支队伍研究一种疫苗，多支队伍可以看到整个技术图景
+
+疫苗并不存在唯一的技术路线。
+
+灭活疫苗、减毒活疫苗、重组蛋白疫苗、病毒载体、DNA 疫苗、mRNA 疫苗等技术在设计原理、免疫特点、生产条件和应用场景上都存在明显差异。
+
+而单一 iGEM 项目通常只能深入其中一个方向。
+
+###### 01 为什么我们希望共同整理
+
+CirCure 聚焦 circRNA 疫苗，但理解自己的技术，也需要知道它与其他疫苗平台之间有什么区别。
+
+与此同时，许多 iGEM 团队恰好分别研究不同的疫苗或免疫技术。
+
+因此，与其让每支团队分别重复整理所有疫苗知识，我们更希望利用各队已经形成的专业积累，共同完成一份更加完整的技术资源。
+
+###### 02 我们如何合作
+
+参与团队根据自身项目和研究背景，分别负责不同疫苗平台，并围绕统一维度进行整理：
+
+**基本原理**
+ 技术如何产生免疫作用？
+
+**优势与局限**
+ 它解决了什么问题，又存在哪些限制？
+
+**应用场景**
+ 不同技术更适合怎样的疾病或使用条件？
+
+**Synthetic Biology Opportunities**
+ 合成生物学能够如何进一步设计和优化这些平台？
+
+JLU\-FBH 负责统一内容结构、协调不同技术板块并完成整合。
+
+###### 03 Shared Outcome
+
+不同团队各自深入的一条技术路线，最终被汇集成一份**可比较、可查阅的疫苗技术联合白皮书**。
+
+这使资源不再只是多个团队材料的简单拼接，而形成了一套能够横向理解不同疫苗平台的共同知识框架。
+
+###### 04 我们学到了什么
+
+专业合作最大的优势之一，就是没有必要要求每个人都成为所有领域的专家。
+
+当不同团队把自己真正熟悉的部分贡献出来，再通过统一标准进行整合，分散知识就可以形成比任何单支队伍更完整的资源。
+
+
+
+###### 01\-05\-Together With iGEM
+
+**Partners / Reach**
+ \[XX Teams\] · \[XX Villages\]
+
+**What Connected Us**
+ 不同 iGEM Village 面临不同类型的科学误区，而每支团队都拥有最接近自身研究方向的专业知识。
+
+**What We Did Together**
+ 各团队识别所在或关注 Village 中具有代表性的错误说法，通过资料溯源和科学解释完成澄清。
+
+**Shared Outcome**
+ 共同纠正 **XX 项科学误区**，并形成覆盖多个合成生物学应用领域的**科学误区澄清合集**。
+
+**SDGs**
+ SDG 17 · SDG 4
+
+Click more
+
+###### 让每支队伍用自己的专业，纠正一个真正存在的误区
+
+科学误区并不只存在于医学领域。
+
+农业、环境、食品、能源、生物制造、诊断与治疗等不同 iGEM Village，都存在一些被反复传播、但缺少科学依据的说法。
+
+而不同团队恰好拥有最接近这些问题的专业背景。
+
+###### 01 为什么采用 Village 共建
+
+我们并不希望由 JLU\-FBH 单独选择和解释所有领域的问题。
+
+相比让一个团队跨越大量陌生学科，不如让每支队伍回到自己真正熟悉的研究领域，回答：
+
+**在我们的 Village 中，公众最容易误解什么？**
+
+因此，我们邀请不同 iGEM 团队结合自身所在或关注的 Village，寻找具有代表性的科学误区。
+
+###### 02 从“听说”到证据溯源
+
+参与团队需要进一步查找可靠资料，判断相关说法究竟：
+
+是完全错误、部分正确，还是只在特定条件下成立？
+
+随后，各团队通过证据溯源和科学解释完成误区澄清。
+
+JLU\-FBH 则负责内容校对、编辑和整体整合，使来自不同领域的内容能够以相对统一的形式呈现。
+
+###### 03 Shared Outcome
+
+最终，**XX 支队伍**围绕 **XX 个 iGEM Village**，共同完成 **XX 项科学误区澄清**。
+
+这些内容进一步被整理为一套覆盖多个合成生物学应用方向的**科学误区澄清合集**，可以继续用于公众科普和教育活动。
+
+###### 04 我们学到了什么
+
+这项合作让我们看到，iGEM 社群本身就是一个非常特别的科学传播资源。
+
+不同团队研究不同问题，也意味着整个社群共同拥有远超单一队伍的知识覆盖范围。
+
+
+
+###### 01\-06\-Youth Health in Action
+
+**Partners / Reach**
+ \[XX iGEM Teams\]
+
+**What Connected Us**
+ 我们希望跨队合作不只停留在知识共创，也能够进入公众可直接参与的健康实践。
+
+**What We Did Together**
+ 不同团队共同完成八段锦指定动作的规范录制，并结合各自特色传播科学健身和健康生活理念。
+
+**Shared Outcome**
+ 形成一支完整的 **iGEM 多队伍联合八段锦健康推广视频**，连接青年合作、健康传播与传统文化。
+
+**SDGs**
+ SDG 17 · SDG 3 · SDG 4
+
+Click more
+
+###### 合作不只能共同写东西，也可以共同完成一次健康行动
+
+前几项 Collaboration 更多围绕知识整理和科学传播展开。
+
+但我们也希望尝试另一种可能：
+
+**跨队合作能不能从“共同提供知识”，进一步走向公众能够直接参与的健康实践？**
+
+###### 01 为什么选择八段锦
+
+八段锦具有动作相对清晰、参与门槛较低和传统文化属性强等特点，适合作为不同地区团队共同完成的健康传播载体。
+
+与此同时，健康传播也不应该只是告诉公众“应该运动”，而可以通过实际展示让科学健康理念更加具体。
+
+###### 02 我们如何共同创作
+
+参与团队分别承担指定动作的录制任务。
+
+每支团队既需要按照规范完成动作，也可以结合自己的团队特点和传播方式进行呈现。
+
+JLU\-FBH 负责：
+
+**任务分配 → 素材收集 → 内容协调 → 视频整合**
+
+最终把来自不同团队、不同地区的片段连接为一个完整作品。
+
+###### 03 Shared Outcome
+
+合作最终形成一支 **iGEM 多队伍联合八段锦健康推广视频**。
+
+每个团队只完成其中一部分，但所有片段组合在一起后，共同构成了一套完整的健康实践内容。
+
+这也使“合作”本身成为作品的一部分。
+
+###### 04 我们学到了什么
+
+共同创作并不一定要求所有参与者做完全相同的事情。
+
+有时，更有效的合作方式是：
+
+**每个人完成自己的一部分，而最终成果只有通过所有人的参与才能完整出现。**
+
+这也让 SDG 17 从知识共享进一步延伸到了共同健康实践。
+
+
+
+###### 01\-07\-From Teams, For Teams
+
+**Partners / Reach**
+ \[XX iGEM Teams\]
+
+**What Connected Us**
+ 新队伍常常需要从零摸索项目设计、实验推进、HP、Wiki 和团队管理，而这些经验事实上已经分散存在于不同团队中。
+
+**What We Did Together**
+ 各团队围绕自己最熟悉的参赛环节分享真实经验、实践方法和常见问题。
+
+**Shared Outcome**
+ 共同形成 **Handbook \+ Micro\-videos \+ FAQ Resources**，为未来 iGEM 团队留下可以继续补充和使用的新队伍成长指南。
+
+**SDGs**
+ SDG 17 · SDG 4
+
+Click more
+
+###### 把这一届 iGEMer 的试错，变成下一届 iGEMer 的起点
+
+第一次参加 iGEM 时，很多问题并没有标准答案。
+
+怎样组建团队？
+
+怎样确定项目？
+
+Wet Lab 如何推进？
+
+Human Practices 到底从哪里开始？
+
+Wiki 如何组织？
+
+团队内部又应该怎样协调？
+
+很多团队都会经历相似的摸索过程，但这些经验往往随着比赛结束而分散在不同成员和不同队伍中。
+
+###### 01 为什么我们发起这项计划
+
+我们开始思考：
+
+**如果这些经验能够被记录下来，未来的新队伍是不是可以少重复一些已经发生过的试错？**
+
+因此，我们发起 **From Teams, For Teams**，邀请不同 iGEM 团队围绕自己最熟悉的参赛环节，分享真实经验。
+
+我们希望留下的不是一套“标准答案”，而是一组来自真正参赛者的实践参考。
+
+###### 02 我们如何共建
+
+不同团队可以根据自己的优势分别贡献：
+
+**Project Design**
+ 如何从问题走向项目方向。
+
+**Wet Lab / Dry Lab**
+ 实验与建模推进中的真实经验。
+
+**Human Practices \& Education**
+ 怎样与社会需求建立联系。
+
+**Wiki \& Communication**
+ 如何整理和呈现一个完整项目。
+
+**Team Management**
+ 怎样协调分工、时间和团队合作。
+
+这些经验进一步被整理成 **Handbook、微视频和 FAQ** 等不同形式。
+
+###### 03 Shared Outcome
+
+最终形成一套面向未来 iGEM 团队的**新队伍成长资源**。
+
+它既记录不同团队已经经历过的问题，也提供可直接参考的方法和经验，并能够在未来继续增加新的团队贡献。
+
+因此，这不是一本“完成后就结束”的手册，而是一套可以继续扩展的资源。
+
+###### 04 我们学到了什么
+
+真正可持续的合作，不一定要求伙伴关系永远保持相同形式。
+
+有时候，更重要的是把已经获得的经验留给下一批人。
+
+> **What one team learned this year can become another team’s starting point next year\.**
+> 
+> 
+
+从这个意义上说，经验共享本身也是一种可持续的伙伴关系。
+
+
+
+##### **02\-Research \& Medical Partners**
+
+**Relevant Stakeholder**
+ CirCure 同时涉及真实患者需求、抗原设计、RNA 技术、递送、肿瘤免疫和临床前评价，无法由单一专业独立回答。
+
+**Key Insight**
+ 真实医疗需求需要持续进入技术设计，而科研结果也需要同时接受临床需求、科学证据和未来转化条件的检验。
+
+**What Changed**
+ 我们将患者、临床人员、公共健康专家和不同研究方向的科研人员连接起来，使 **健康需求—技术设计—功能验证—未来应用**之间形成更连续的反馈关系。
+
+**Current Status**
+`Incorporated`
+
+**SDGs Addressed**
+ SDG 17 · SDG 3 · SDG 9 
+
+Click more
+
+CirCure 所面对的问题并不能由单一学科独立回答。TNBC 的治疗需求首先来自患者和临床实践，而要将这些需求进一步转化为一种可验证的治疗策略，又涉及抗原设计、RNA 技术、递送体系、肿瘤免疫和临床前评价等多个研究环节。
+
+在 SDG 3 中，患者、临床医生以及医学和公共健康专家帮助我们从真实医疗场景重新理解疗效、复发、长期生存、生活质量、费用与可及性等问题，使项目评价逐渐从技术性能延伸至患者实际获益。在 SDG 9 中，我们又进一步连接计算免疫学、RNA、纳米递送、临床前评价和技术转化等不同领域的研究人员，使健康需求能够进入技术设计、功能验证和未来转化讨论。
+
+因此，在 SDG 17 中，我们将这些原本分布在 SDG 3 与 SDG 9 中的专业参与者重新放在一起，关注他们如何从不同角度参与 CirCure 的发展。患者和临床医生帮助我们确认项目需要回应的真实问题，医学和公共健康专家补充疾病管理与可及性的视角，科研人员则围绕抗原设计、RNA 技术、递送体系和临床前评价等问题提供专业意见。不同领域的交流，使我们能够在讨论技术方案时同时考虑临床需求、科学依据和未来应用条件。
+
+显然，并不是所有接受访谈的专家都被我们定义为长期合作伙伴，但是这的确是 CirCure 已经建立起来的 research–medicine connection：这让真实医疗需求能够进入科研设计，也让技术开发持续接受临床需求、科学证据和未来转化条件的共同检验。
+
+---
+
+##### **03\-Industry \& Professional Partners**
+
+**Relevant Stakeholder**
+ 科研人员能够回答技术是否可行，但真实生产和应用还需要制造、CMC、生命周期、供应链和数据治理等专业能力。
+
+**Key Insight**
+ 技术走出实验室后，可制造性、批次一致性、质量控制、资源投入、生产成本、储运和数据追踪会共同影响其长期可持续性。
+
+**What Changed**
+ 这些伙伴使 CirCure 的评价从实验室技术进一步延伸到 **未来生产、资源责任、生命周期和持续数据管理**，并推动 Resource Responsibility Map 等工具形成。
+
+**Current Status**
+`Incorporated`
+
+**SDGs Addressed**
+ SDG 17 · SDG 9 · SDG 12 · SDG 13
+
+Click more
+
+随着 CirCure 从技术验证进一步思考未来发展，我们逐渐认识到，科研人员能够帮助回答“技术是否可行”，却不能独立回答“技术真正进入生产和应用后会发生什么”。因此，我们进一步将视角从实验室延伸至产业和专业实践，与来自 **CMC与生产、可持续发展、生命周期管理、供应链与数据治理等领域**的从业者和企业建立联系。
+
+这些参与者此前主要进入 SDG 9 和 SDG 12 的分析。在技术转化层面，他们帮助我们关注可制造性、批次一致性、质量控制、生产成本等实验室之外的问题；在资源责任层面，又进一步将我们的视角从当前试剂、耗材和重复实验扩展至原材料、生产、储运、废弃物和持续数据记录等环节。例如，CMC 与生产端的交流促使我们将批次失败和重复生产纳入资源责任，并形成 Resource Responsibility Map。企业实践又进一步帮助我们认识到，长期评价需要依赖可追踪的生产、储运和废弃物数据，而不能只依据局部变化判断整体可持续性。
+
+因此，在 SDG 17 中，我们更加关注这些不同专业能力之间的互补关系。制造经验、可持续管理、生命周期视角和数据治理共同帮助 CirCure 更全面地理解技术从实验室走向实际应用时可能面临的生产、管理和资源问题。它们并不意味着所有企业都已经与我们形成正式长期合作，而是构成了 CirCure 未来进一步开展技术转化和负责任发展时可以继续连接的 **industry and professional network**。
+
+---
+
+##### **04\-Public \& Community Partners**
+
+**Relevant Stakeholder**
+ 技术只有真正被社会理解和参与，才可能从实验室研究进一步形成更广泛的社会价值。
+
+**Key Insight**
+ 不同受众需要不同的科学表达和参与方式；教师、传播工作者、学生和公众能够帮助专业知识进入真实教育和社区场景。
+
+**What Changed**
+ 我们将 SDG 3 的健康知识、SDG 9 的合成生物学创新和 SDG 12 的资源责任进一步转化为 **课堂、虚拟实验、游戏、线上传播和社区实践**。
+
+**Current Status**
+`Incorporated`
+
+**SDGs Addressed**
+ SDG 17 · SDG 3 · SDG 4 · SDG 9 · SDG 12 
+
+Click more
+
+CirCure 的伙伴网络并不局限于科研、医疗和产业领域。要让一项技术真正进入社会，还需要通过教育与传播建立与公众的联系。因此，我们将 SDG 4 中形成的教育与传播网络，以及参与相关活动的学生和社区成员纳入伙伴关系梳理。
+
+教师、传播工作者、学生和公众共同帮助我们将专业内容转化为课程、实验体验、虚拟实验室、游戏和社区活动，使不同受众能够以更易理解和参与的方式接触 CirCure。
+
+这一网络也帮助我们将其他 SDGs 与更广泛的社会联系起来：SDG 3 中的健康知识被转化为公众健康教育内容，SDG 9 中的合成生物学和技术创新被融入教育活动，SDG 12 中的资源责任则通过植物种植等实践进入社区。
+
+因此，教育、传播与社区参与体现了 CirCure 如何将科学知识与社会场景连接起来，使相关理念和资源走出实验室，进入课堂、线上平台和社区活动。
+
+**这些利益相关者的详细信息已在前述 SDGs 中介绍，你可以点击对应头像，回顾他们的背景、反馈及其对 CirCure 的影响。**
+
+
+
+#### C — Consequences
+
+##### 短期影响
+
+通过 SDG 17 的伙伴关系建设，CirCure 将医疗、科研、产业、教育和 iGEM 社群中的知识与资源进一步连接起来，并将合作转化为具体成果。我们与 **XX 支 iGEM 团队**建立联系，形成 **5 份合作提案**，参与其他团队发起的白皮书与联合项目，并通过东北地区交流会及中国地区 iGEM 交流活动扩大同行网络。
+
+不同领域伙伴的参与，也使临床需求、技术可行性、生产转化、资源责任和公众传播等视角进入项目实践，并进一步支持 SDG 3、SDG 4、SDG 9 和 SDG 12 的推进。
+
+##### 长期影响
+
+###### 社会影响
+
+跨领域伙伴关系能够使患者、临床医生、科研人员、教育工作者和公众持续参与项目讨论，使技术发展更充分考虑患者需求、公众理解和社会可及性。同时，团队间形成的合作网络也有利于教育资源、实践方法和项目经验在更广泛群体中传播。但不同主体在专业知识、资源和话语权上的差异，也可能影响参与的公平性，因此未来合作仍需关注不同群体是否能够真正参与并表达需求。
+
+###### 经济影响
+
+科研、临床与产业之间的合作，有助于更早识别制造、质量控制、生产成本、供应链和技术转化中的问题；团队间的资源共享也能够减少部分重复开发，提高已有成果的利用效率。但 CirCure 尚未进入规模化生产阶段，未来 RNA 制造、递送、质量控制和储运仍可能产生较高成本。
+
+###### 环境影响
+
+产业与专业伙伴的参与，使原材料、批次失败、能源使用、储运和废弃物等问题更早进入项目讨论，也有助于将 SDG 12 中形成的资源责任理念扩展到更广泛的合作网络。与此同时，未来规模化生产可能增加耗材、能源和废弃物负担。因此，其长期环境影响仍取决于未来生产方式、供应链设计和生命周期数据。
+
+#### **A — Alignment**
+
+在 CirCure 中，SDG 17 的意义并不只是建立了多少联系，更重要的是这些合作是否真正影响了项目的设计与实践。SST\-QN 的基础筛查提示，伙伴关系可能进一步作用于健康、技术创新、教育和负责任发展。因此，在 Alignment 中，我们结合已经发生的合作、反馈转化和项目调整，进一步判断这些关系在 CirCure 中是否得到实际证据支持，以及这种影响目前能够延伸到什么程度。
+
+**SDG 17 与 SDG 9 被判定为 Core Synergy。** 科研、临床和产业相关利益相关者参与了抗原筛选、RNA 技术、递送体系、临床前评价及未来转化讨论，并实际影响了部分技术设计、评价标准和发展方向。因此，合作已经成为 CirCure 技术创新的重要支撑，而不仅是项目外围的信息交流。
+
+**SDG 17 与 SDG 12 被判定为 Core Synergy。** CMC、EHS、碳排放、绿色制造和数据治理等领域的参与，使批次失败、资源利用、储运和废弃物等问题进入项目评价，并推动形成 Resource Responsibility Map 和 Sustainability Claim Boundary Protocol。合作因此直接改变了 CirCure 识别和评价资源责任问题的方式。
+
+**SDG 17 与 SDG 4 被判定为 Core Synergy。** 教师、科学传播工作者和互动设计人员分别从学习规律、信息表达和使用体验等方面参与教育设计，并实际推动课程内容、传播方式和活动形式的调整。与此同时，跨队合作也进一步促进了教育资源与实践经验的共享。
+
+**SDG 17 与 SDG 3 被判定为 Exploratory Synergy。** 患者、临床医生及其他专业参与者已经改善了 CirCure 对疗效、安全性、可及性和健康需求的理解，并推动项目评价方式调整。但现有证据主要支持合作对项目决策的改善，尚不足以证明其能够直接形成独立、稳定的健康结果。
+
+总体来看，**SDG 17 当前最明确的作用体现在技术创新、资源责任和教育实践中，而其向长期健康结果的进一步传导仍需要更多证据支持。**
+
+#### L — Legacy
+
+我们希望合作留下的不只是一次次交流，而是**能够持续连接团队、共同创造并被继续使用的成果**。本年度，JLU\-FBH 首先主办了**东北地区 iGEM 交流会**，为区域内团队搭建项目展示、经验分享与深入讨论的平台，并由此建立起最初的跨队联系。随后，我们继续参加**本年度中国各地区 iGEM 交流会**，与更多团队交换项目经验、了解彼此的研究方向与实践优势，逐步拓展合作网络。在这些交流与联系的基础上，我们进一步发起并主办了 **5 项跨队 Collaboration 项目**，围绕公共健康科普、疫苗技术、科学误区澄清、健康实践和 iGEM 经验传承开展共同创作，将不同团队的知识、经验与创意转化为白皮书、科普合集、联合视频和成长指南等可共享成果，使一次次交流最终沉淀为**能够继续传播、使用和扩展的 Collaboration Legacy**。
+
+##### 1\. 东北地区 iGEM 交流会
+
+合作的起点，是让不同团队真正有机会坐在一起交流。JLU\-FBH 主办了**东北地区 iGEM 交流会**，为区域内参赛团队搭建面对面的项目展示、经验分享与讨论平台，使不同团队能够了解彼此的研究方向、项目实践和合作需求，也为后续跨队联系奠定基础。
+
+在交流会期间，我们还自主策划并主持了 **“DDL危局：清河菌泄露事件”** 沉浸式推理圆桌，将工程菌意外泄露设置为模拟情境，通过线索分析、风险判断、责任判定和团队讨论，引导参与者思考 **iGEM Safety 红线、工程菌释放的合规边界以及研究团队在风险事件中的责任**。我们希望通过参与式讨论，让实验安全不再只是需要记住的规则，而成为不同团队能够共同分析、判断和承担的责任。
+
+（此处有图片）
+
+##### 2\. 破误区・懂免疫｜青年科研者公共健康科普白皮书
+
+公共健康领域仍存在抗生素使用、免疫力、传染病以及医学检查等方面的常见认知误区。针对这些问题，我们发起并主办了 **《破误区・懂免疫：青年科研者公共健康科普白皮书》** 共创计划，联合 **XX 支 iGEM 队伍**，围绕**传染病基础认知、医学检查与诊断、科学治疗与用药误区**三个方向进行分工，共同查阅可靠资料、澄清高频误区并完成科普内容创作。JLU\-FBH 负责整体统筹、校对和版式整合，最终形成一套面向公众、可共享和持续传播的公共健康科普资源。
+
+（此处有文件）
+
+##### 3\. 多元疫苗技术体系与 iGEM 联合研究白皮书
+
+不同疫苗技术具有不同的设计原理、优势与局限，而单一团队往往只能覆盖有限的技术方向。为了整合不同队伍在疫苗研究中的专业视角，我们发起并主办了 **《多元疫苗技术体系与 iGEM 联合研究白皮书》**，联合 **XX 支 iGEM 队伍**，依据各队自身项目与实验方向，分别聚焦灭活疫苗、减毒活疫苗、重组蛋白疫苗、病毒载体疫苗、DNA 疫苗、mRNA 疫苗等技术路线，共同梳理其**基本原理、优势与局限、应用场景以及合成生物学改造思路**。通过跨队分工和统一整理，我们将分散在不同项目中的知识汇集为一份可比较、可查阅的疫苗技术资源。
+
+（此处有文件）
+
+##### 4\. Together With iGEM
+
+科学误区并不局限于某一个领域。为发挥不同 iGEM 团队在各自研究方向上的专业优势，我们发起并主办了 **《为 i 同行・全域科学共建计划》**，联合 **XX 支 iGEM 队伍**，围绕 **XX 个 iGEM Village** 开展科学误区共建。各团队结合自身所在或关注的 Village，识别并查证具有代表性的错误说法，通过权威资料溯源和科学解释完成澄清，最终共同纠正了 **XX 项常见错误认知**。JLU\-FBH 负责内容校对、编辑与统一整理，将不同团队的专业知识汇集为一套覆盖多个合成生物学应用领域的**科学误区澄清合集**，供后续公众科普和教育传播继续使用。
+
+（此处有文件）
+
+##### 6\. 青健联行・八段锦共创计划
+
+我们也希望跨队合作能够从知识共创延伸到公众可以直接参与的健康实践。因此，JLU\-FBH 发起并主办了 **《青健联行・八段锦共创计划》**，联合 **XX 支 iGEM 队伍**，以传统健身功法八段锦为共同载体，由不同团队分别完成指定动作的规范录制，并结合各自团队特色传播科学健身与健康生活理念。JLU\-FBH 负责素材统筹与整合制作，最终将不同团队的参与汇集为一支完整的 **iGEM 多队伍联合八段锦健康推广视频**，以共同创作的方式连接青年合作、健康传播与传统文化。
+
+（此处有文件）
+
+##### 7\. From Teams, For Teams｜iGEM 新队伍成长指南共建计划
+
+对于第一次参加 iGEM 的队伍而言，团队组建、项目设计、实验推进、Human Practices、Wiki 与团队管理等工作往往需要从零摸索。为减少经验分散与重复试错，我们发起并主办了 **“From Teams, For Teams” iGEM 新队伍成长指南共建计划**，联合 **XX 支 iGEM 队伍**，围绕各自最熟悉的参赛环节分享真实经验与实践方法，并整理为 **Handbook、微视频和常见问题资源**，形成一套可持续补充、供未来 iGEM 团队继续查阅和借鉴的共享成长指南。
+
+（此处有文件）
+
+从主办区域交流、走向不同地区建立联系，再到共同完成具体项目，我们逐步将一次次团队交流转化为**更稳定的伙伴关系和可以留下来的共同成果**。这些白皮书、科普资源、联合视频和经验指南不仅记录了本年度的 Collaboration，也为公众传播、团队交流和未来 iGEMers 的继续使用留下了可延续的资源。
+
+#### E — Evidence
+
+通过持续的伙伴关系建设，CirCure 已形成覆盖 **4 类合作主体**的外部网络，并与 **XX 支 iGEM 团队**建立直接合作。我们主办 **1 场东北地区 iGEM 交流会**，参加本年度中国全部地区 iGEM 交流活动（共 **XX 场**），并进一步发起 **5 项跨队 Collaboration**。这些合作已形成 **2 份联合白皮书、1 套科学误区澄清合集、1 支多队伍健康推广视频和 1 套 iGEM 新队伍成长资源**；其中误区共建覆盖 **XX 个 iGEM Village**，完成 **XX 项常见错误认知纠正**。与此同时，科研、医疗、产业、教育与公众伙伴持续参与 CirCure 的需求判断、技术评价、责任讨论和科学传播，使合作不仅扩大了项目的参与网络，也沉淀为能够继续共享和使用的实际成果。
+
+## GROW:Shaping Sustainable Futures
+
+对 CirCure 而言，可持续发展不仅意味着回应当前的健康、技术与责任问题，也意味着审视今天的项目选择可能在未来产生的更长远影响。在 SET 与 DEVELOP 阶段，我们已经识别了项目当前关注的可持续发展问题，并将利益相关者的反馈逐步转化为项目设计与实践。GROW 则进一步追问：**What evidence leads us here? What long\-term impacts and positive or negative interactions may emerge? What still needs to be proven?**
+
+基于利益相关者访谈、项目行动与现有影响证据，并结合 SST\-QN 对跨 SDG 关系的分析，我们识别出 **SDG 1、SDG 5、SDG 8、SDG 10 和 SDG 13** 五个具有长期关联潜力的目标。这些目标并不代表 CirCure 已经实现的成果，而是由现有证据指向的潜在发展方向。下表概括了每项关联的证据起点、可能形成的协同与权衡，以及未来仍需验证的关键问题。
+
+该表呈现的是基于现有证据形成的初步长期判断，而非最终结论。以下部分将进一步说明每项关联从何而来、可能产生哪些正负作用，以及当前证据能够支持到什么程度。
+
+### SDG 1 — **No Poverty**
+
+**SDG 1，消除贫困，旨在消除一切形式的贫困。** 对于生物医药创新而言，疾病不仅影响患者健康，也可能通过治疗费用、长期照护和工作损失增加家庭经济压力，因此技术的长期价值还需要关注其能否在改善健康的同时避免加重患者及家庭的经济负担。
+
+#### What Evidence Leads Us Here?
+
+TNBC 患者与家属的反馈使我们认识到，癌症带来的负担不仅包括治疗费用，还可能通过停工、收入损失和家庭照护影响整个家庭。医保与商业保险相关访谈进一步表明，患者的实际负担还受到报销政策、保障范围和个人自付比例的影响。
+
+这些证据促使我们关注：CirCure 未来的健康价值，能否进一步延伸至减轻癌症相关的长期家庭经济压力？
+
+#### Potential Impact \& Interactions
+
+如果 CirCure 未来能够降低复发风险或延长疾病控制时间，患者可能减少重复治疗、停工和长期照护带来的经济负担，使 SDG 3 的健康价值与 SDG 1 形成潜在协同。
+
+但 circRNA 疫苗的研发、生产、质量控制和储运也可能带来较高成本。如果缺少合理的定价与支付保障，新技术反而可能增加家庭负担，并与 SDG 10 所关注的公平可及性形成权衡。
+
+#### What Still Needs to Be Proven?
+
+CirCure 目前没有临床或药物经济学证据证明其能够减少患者的长期医疗支出和家庭经济负担。
+
+未来需要结合复发与疾病控制、治疗支出、停工损失、家庭照护成本和患者实际支付负担进行验证。在获得这些数据之前，SDG 1 仅代表一种潜在的长期影响路径，而非已经实现的项目成果。
+
+### SDG 5 — **Gender Equality**
+
+**SDG 5，性别平等，旨在实现性别平等并增强所有妇女和女童的权能。** 对于聚焦乳腺癌与女性健康的 CirCure 而言，改善女性健康本身并不等同于实现性别平等，更需要关注女性能否公平获得健康信息与医疗资源，并拥有参与自身健康决策和表达需求的机会。
+
+#### What Evidence Leads Us Here?
+
+刘雅文副院长关于女性健康与疾病预防的反馈，使我们将乳腺健康、筛查和早期发现纳入公众教育。我们随后开展“Pink Care｜杏花有约·粉色守护”公益科普活动，并开发 Breast Guardian 剧情游戏，尝试帮助女性获得可靠的健康信息并提高主动健康意识。
+
+这些实践使我们进一步关注：女性健康教育能否在未来促进女性表达健康需求和参与健康决策。
+
+#### Potential Impact \& Interactions
+
+如果相关教育能够覆盖不同背景的女性，并提高其获得健康信息和参与健康决策的能力，SDG 3 和 SDG 4 的实践可能进一步与 SDG 5 形成协同。
+
+但如果活动主要覆盖本就容易获得信息和医疗资源的人群，其作用可能十分有限，并与 SDG 10 形成潜在权衡。更重要的是，改善女性健康并不等于改变结构性性别不平等。
+
+#### What Still Needs to Be Proven?
+
+目前，CirCure 已有的证据主要能够说明我们开展了女性健康教育与公众科普实践，但尚不能证明这些行动已经改善了女性在健康资源获取或健康决策参与方面的不平等。未来需要通过不同女性群体的活动覆盖、知识变化、筛查意愿以及健康决策参与情况，判断这些实践能否真正改善女性获得信息、资源和参与机会的公平性。
+
+### SDG 8 — **Decent Work and Economic Growth**
+
+**SDG 8，体面工作和经济增长，旨在促进持续、包容和可持续的经济增长以及充分和生产性就业。** 对于生物医药创新而言，技术从实验室走向实际应用可能进一步形成产业与经济价值，但这种价值不仅取决于能否实现规模化转化，也需要关注生产效率、成本、就业机会以及产业发展的长期可持续性。
+
+#### What Evidence Leads Us Here?
+
+上海临港新片区医疗器械创新公司的调研，使我们开始区分“技术可行”与“产品可用”，并将稳定生产、质量控制、规模化和实际使用条件纳入后续开发。
+
+与华兰生物的交流则进一步推动我们在 Entrepreneurship 分析中考虑产品定位、研发优先级、市场、成本、知识产权、产业合作和开发风险。这些行动形成了 CirCure 早期的产品与商业规划，但尚未产生实际经济收益。
+
+#### Potential Impact \& Interactions
+
+如果 CirCure 未来能够完成产品开发并实现稳定生产，相关技术可能形成新的产品储备，并带动工艺开发、质量控制和产业合作，使 SDG 9 的技术创新进一步为 SDG 8 的经济活动提供基础。
+
+但临床开发、规模化生产、质量控制和冷链储运都需要持续投入。过高的成本可能影响市场采用和患者可及性，并与 SDG 10、SDG 12 和 SDG 13 形成潜在权衡。
+
+#### What Still Needs to Be Proven?
+
+CirCure 尚未进入规模化生产，也没有市场采用、经济收益或就业数据，不能声称项目已经推动经济增长或创造体面工作。即使项目未来带动了研发、生产、质量管理或产业合作需求，也不能仅凭岗位数量判断其已经促进体面就业，还需要考察就业机会、工作条件、职业安全和发展空间。
+
+未来需要通过生产成本、市场采用、产业合作、实际收益和就业质量等数据，判断技术创新能否真正转化为可持续的产业与经济价值。
+
+### SDG 10 — **Reduced Inequalities**
+
+**SDG 10，减少不平等，旨在减少国家内部和国家之间的不平等。** 对于创新医疗技术而言，治疗方案的出现并不意味着所有患者都能够平等受益，技术价值还取决于治疗成本、支付保障、医疗资源和实际可及性是否使不同背景的患者都有机会获得健康收益。
+
+### What Evidence Leads Us Here?
+
+患者与家属的反馈使我们认识到，一项治疗即使有效，也不代表所有患者都能平等受益。王建国关于医保支付与报销机制的反馈进一步说明，患者的实际负担不仅取决于治疗价格，还受到医保覆盖、报销条件和自付比例的影响。
+
+商业健康保险从业者文静指出，商业保险可以为部分符合条件的患者提供补充保障，但无法覆盖所有人。Lei Wang 则将我们的关注从“患者能否负担”扩展到“患者能否真正获得”：地区医疗资源、服务能力和就医机会同样会影响治疗可及性。
+
+### Potential Impact \& Interactions
+
+如果 CirCure 未来能够在证明疗效与安全性的同时控制成本，并与可行的支付和医疗服务机制衔接，SDG 3 的健康价值和 SDG 9 的技术创新可能进一步转化为更加公平的治疗机会。
+
+但复杂的 circRNA 与 LNP 制备、质量控制和冷链储运也可能提高治疗成本和实施门槛，使技术首先覆盖支付能力较强或医疗资源更充足的患者。因此，我们将 SDG 3 ↔ SDG 10 和 SDG 9 ↔ SDG 10 均视为条件性关系：其最终形成协同还是权衡，取决于价格、支付保障、地区资源与真实实施条件。
+
+### What Still Needs to Be Proven?
+
+CirCure 目前尚无产品价格、医保覆盖、患者自付负担或实际治疗覆盖数据，因此不能声称项目已经改善了健康公平。
+
+未来需要通过治疗成本与定价、医保和商业保险覆盖、不同群体的实际支付负担、地区医疗资源以及患者真实获得治疗的情况，判断 CirCure 最终是缩小还是扩大健康差异。
+
+### SDG 13 — **Climate Action**
+
+**SDG 13，气候行动，旨在采取紧急行动应对气候变化及其影响。** 对于生物医药创新而言，未来规模化生产可能同时带来新的材料、能源和运输需求，因此环境责任不仅需要关注资源是否被有效利用，也需要进一步评价生产、储运和废弃物处理等全生命周期环节可能产生的碳排放与气候影响。
+
+### What Evidence Leads Us Here?
+
+与碳排放管理相关企业的交流使我们认识到，医疗技术的环境影响不能只根据实验室中的试剂和耗材判断，还需要考虑原材料、规模化生产、包装、储运和废弃物处理等环节。
+
+上汽集团的绿色制造实践进一步启发我们以生命周期视角审视 CirCure；上海临港新片区跨境数据科技有限公司则使我们认识到，未来的环境改善需要通过连续、可比较的生产与供应链数据加以验证。因此，我们将环境评价范围从当前实验消耗，扩展至未来可能涉及的完整产品生命周期。
+
+### Potential Impact \& Interactions
+
+如果 CirCure 未来能够通过提高工艺稳定性减少失败批次和重复生产，SDG 12 所关注的资源效率可能进一步与 SDG 13 形成协同，降低单位有效产品所需的材料与能源投入。
+
+但规模化 circRNA 与 LNP 制备、设备运行、低温储存和冷链运输也可能增加能源需求与碳排放。局部生产效率的提高并不代表整体环境负担一定下降。因此，SDG 12与SDG 13的关系方向取决于工艺效率、能源来源、储运方式和完整生命周期中的新增资源需求。
+
+### What Still Needs to Be Proven?
+
+CirCure 尚未进入规模化生产，目前缺少真实的生产能耗、运输能耗、碳排放和生命周期数据，因此不能声称项目已经减少了碳排放。
+
+未来需要记录单位产品能耗、原材料投入、批次失败率、储存与冷链需求、运输方式和废弃物处理情况，并在数据充分后开展碳足迹或生命周期评价，以判断局部效率改善能否真正转化为整体气候收益。
+
+
+
+通过 SDG Impact Framework，CirCure 将来自 **7 个领域、94 名利益相关者**的反馈持续转化为项目设计与评价调整，并从社会、经济和环境三个维度审视技术的长期影响；同时借助 SST\-QN 系统分析 **17 项 SDGs** 的协同、权衡与条件关系，最终形成覆盖 **10 项 SDGs** 的 Set–Develop–Grow 影响体系。我们进一步将实践过程沉淀为xxx个可复用的方法、工具与教育资源，并以反馈转化、项目改进和 **13 项教育活动**等可追踪结果记录已经发生的影响，在展示实际贡献的同时，也明确区分当前证据与仍需未来验证的长期价值。
+
+## Conclusion
+
+对 CirCure 而言，可持续发展从来不是项目完成后贴上的标签，而是一种贯穿项目始终的选择：**让真实世界的声音改变技术，让今天的每一步都对未来负责。**
+
+### From Stakeholder Voices to Project Decisions
+
+来自 **7 个领域的 94 名利益相关者**真正参与了 CirCure 的形成。患者、临床与科研人员，以及产业和教育实践者的意见，通过 SCALE Framework 被持续追踪，并转化为治疗价值、多表位设计、递送策略、评价体系、可及性与资源责任等方面的具体调整。**CirCure 与真实世界的联系不是项目完成后的补充，而是贯穿项目形成、调整与完善全过程的力量。**
+
+### From Immediate Actions to Long\-term Responsibility
+
+我们从社会、经济和环境三个维度，将疗效、长期生存、健康公平、支付能力、规模化成本及生命周期环境影响纳入长期评估，并明确区分当前成果与未来潜在影响。我们不把尚未验证的希望写成已经实现的结果，因为**CirCure 只有经得起证据与责任的共同检验，才能真正从实验室走进患者的生活。**
+
+### From Individual SDGs to a System of Synergies and Trade\-offs
+
+借助 **SST\-QN**，我们分析了全部 **17 项 SDGs** 的协同、权衡、条件与边界，并形成覆盖 **10 项 SDGs** 的 **Set–Develop–Grow Impact Framework**。我们既记录健康、创新、教育与合作之间的协同，也正视成本、资源消耗和治疗可及性带来的权衡。**我们并不试图讲述一个与所有目标都有关的完美故事，而是呈现一个清楚自身影响从哪里开始、在什么条件下成立、结论又应止于何处的真实项目。**
+
+### From One Team’s Practice to a Shared Starting Point
+
+如果这些经验只属于 CirCure，它们的影响或许也会随着赛季结束而停止。因此，我们将实践沉淀为 **13项可复用的方法与工具**，并留下23个教育资源，包括**10 套教学 PPT、1 本科普绘本、9 个虚拟实验、2 款互动教育游戏和1份实践指南**。这些成果让未来团队不必再次从零开始，也让更多人能够理解、参与并继续完善我们的工作。**CirCure 留下的不只是一份项目记录，更是一个能够被后来者接过并继续前行的起点。**
+
+### From Measurable Results to Enduring Impact
+
+影响不在于我们写下了多少宏大的目标，而在于真实的改变是否发生。**71\.4% 的 SDG 9 专家反馈**进入项目设计或评价，利益相关者推动 **8 类项目改进**，**13 项教育实践**走进不同群体，**194 份种植材料**将资源责任变成真实行动。这些数字记录了改变，却无法完全衡量患者被认真倾听的意义，或一个孩子第一次理解科学时眼中的好奇。CirCure 尚未抵达临床，我们也无法替未来提前宣告成功；但**我们希望它最终守护的不只是一种治疗的可能，更是每一个生命不被疾病定义、依然拥有选择、尊严与希望的可能。**
+

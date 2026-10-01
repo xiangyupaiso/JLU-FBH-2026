@@ -2022,3 +2022,424 @@
   overflow-x: clip;
   overflow-y: visible;
 }
+
+/* ---------------------------------------------------------------------------
+ * Static SDG Card (Overview) matching image 11.png
+ * ------------------------------------------------------------------------- */
+.sust-sdg-card--static {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 180px;
+  background: var(--paper-bright, #ffffff);
+  border: 1px solid var(--line, rgba(27, 23, 25, 0.08));
+  border-radius: var(--radius-panel, 14px);
+  padding: 0;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
+  transition: transform var(--duration-fast, 200ms) ease, box-shadow var(--duration-fast, 200ms) ease;
+  perspective: none;
+  cursor: default;
+}
+
+.sust-sdg-card--static:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+}
+
+.sust-sdg-card__accent-bar {
+  height: 4px;
+  width: 100%;
+}
+
+.sust-sdg-card--static .sust-sdg-card__content {
+  display: flex;
+  flex-direction: column;
+  padding: 24px 24px 28px;
+  gap: 12px;
+}
+
+.sust-sdg-card--static .sust-sdg-card__number {
+  font-family: var(--font-display, var(--font-editorial, serif));
+  font-size: clamp(36px, 3.5vw, 48px);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.sust-sdg-card--static .sust-sdg-card__title {
+  margin: 0;
+  font-family: var(--font-editorial, serif);
+  font-size: clamp(17px, 1.25vw, 20px);
+  font-weight: 600;
+  line-height: 1.25;
+  color: var(--ink, #1b1719);
+}
+
+.sust-sdg-card--static .sust-sdg-card__summary {
+  margin: 0;
+  font-family: var(--font-sans, sans-serif);
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: var(--ink-muted, #555555);
+}
+
+/* ---------------------------------------------------------------------------
+ * Set-Develop-Grow Overview Grid matching image 4.png
+ * ------------------------------------------------------------------------- */
+.sust-set-develop-grow-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin: 20px 0 28px;
+}
+
+@media (max-width: 860px) {
+  .sust-set-develop-grow-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.sust-sdg-tier-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 24px 22px;
+  background: var(--paper-bright, #ffffff);
+  border: 1px solid var(--line, rgba(27, 23, 25, 0.08));
+  border-radius: var(--radius-panel, 14px);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
+  transition: transform var(--duration-fast, 200ms) ease, box-shadow var(--duration-fast, 200ms) ease;
+}
+
+.sust-sdg-tier-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+}
+
+.sust-sdg-tier-card__header {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.sust-sdg-tier-card__kicker {
+  font-family: var(--font-mono, monospace);
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: #2f6f68;
+  text-transform: uppercase;
+}
+
+.sust-sdg-tier-card__title {
+  margin: 0;
+  font-family: var(--font-editorial, serif);
+  font-size: 19px;
+  font-weight: 600;
+  line-height: 1.25;
+  color: var(--ink, #1b1719);
+}
+
+.sust-sdg-tier-card__desc {
+  margin: 0;
+  font-family: var(--font-sans, sans-serif);
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: var(--ink-muted, #555555);
+}
+
+.sust-sdg-tier-card__pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 18px;
+}
+
+.sust-sdg-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: rgba(47, 111, 104, 0.06);
+  border: 1px solid rgba(47, 111, 104, 0.22);
+  color: #2f6f68;
+  font-family: var(--font-sans, sans-serif);
+  font-size: 12px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all var(--duration-fast, 200ms) ease;
+}
+
+.sust-sdg-pill:hover {
+  background: #2f6f68;
+  color: #ffffff;
+  border-color: #2f6f68;
+  transform: translateY(-1px);
+}
+
+/* ---------------------------------------------------------------------------
+ * Stakeholder Profile Card Extensions
+ * ------------------------------------------------------------------------- */
+.sust-stake-card__badge-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.sust-stake-card__code-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 10px;
+  border-radius: 999px;
+  background: #2f6f68;
+  color: #ffffff;
+  font-family: var(--font-mono, monospace);
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.sust-stake-card__role-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 10px;
+  border-radius: 999px;
+  background: rgba(27, 23, 25, 0.05);
+  color: var(--ink-muted, #555555);
+  font-size: 11.5px;
+  font-weight: 600;
+}
+
+.sust-stake-card__status-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 10px;
+  border-radius: 999px;
+  background: rgba(47, 111, 104, 0.12);
+  color: #2f6f68;
+  font-family: var(--font-mono, monospace);
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.sust-stake-card__org {
+  margin: 4px 0 0;
+  font-size: 12.5px;
+  color: var(--ink-muted, #666666);
+}
+
+.sust-stake-card__relevant {
+  margin: 14px 0 16px;
+  padding: 12px 16px;
+  background: rgba(47, 111, 104, 0.04);
+  border-left: 3px solid #2f6f68;
+  border-radius: 0 8px 8px 0;
+}
+
+.sust-stake-card__relevant-label {
+  margin: 0 0 4px;
+  font-family: var(--font-mono, monospace);
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #2f6f68;
+}
+
+.sust-stake-card__relevant-text {
+  margin: 0;
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: var(--ink, #333333);
+}
+
+.sust-stake-card__field {
+  margin-bottom: 12px;
+  padding-bottom: 10px;
+  border-bottom: 1px dashed var(--line, rgba(27, 23, 25, 0.08));
+}
+
+.sust-stake-card__field:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.sust-stake-card__field-label {
+  display: block;
+  font-family: var(--font-mono, monospace);
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 4px;
+}
+
+.sust-stake-card__field--challenge .sust-stake-card__field-label {
+  color: #d95f38;
+}
+
+.sust-stake-card__field--insight .sust-stake-card__field-label {
+  color: #2f6f68;
+}
+
+.sust-stake-card__field--changed .sust-stake-card__field-label {
+  color: #c39a55;
+}
+
+.sust-stake-card__field--improvement .sust-stake-card__field-label {
+  color: var(--care, #754356);
+}
+
+.sust-stake-card__field-content {
+  margin: 0;
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: var(--ink, #222222);
+}
+
+.sust-stake-card__sdg-pills {
+  display: inline-flex;
+  font-family: var(--font-mono, monospace);
+  font-size: 11px;
+  font-weight: 650;
+  color: #2f6f68;
+}
+
+.sust-stake-card__more {
+  margin-top: 14px;
+  border-top: 1px solid var(--line, rgba(27, 23, 25, 0.08));
+  padding-top: 12px;
+}
+
+.sust-stake-card__summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+  font-family: var(--font-sans, sans-serif);
+  font-size: 13px;
+  font-weight: 600;
+  color: #2f6f68;
+  padding: 6px 0;
+  transition: color 150ms ease;
+}
+
+.sust-stake-card__summary:hover {
+  color: #1b3636;
+}
+
+.sust-stake-card__more-body {
+  padding-top: 16px;
+  animation: sustFadeIn 250ms ease;
+}
+
+@keyframes sustFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.sust-stake-article {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 18px 22px;
+  background: #fdfcfa;
+  border: 1px solid rgba(47, 111, 104, 0.12);
+  border-radius: 12px;
+}
+
+.sust-stake-article__title {
+  margin: 0;
+  font-family: var(--font-editorial, serif);
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--ink, #1b1719);
+  line-height: 1.3;
+}
+
+.sust-stake-article__subtitle {
+  margin: 0;
+  font-style: italic;
+  font-size: 13px;
+  color: var(--ink-muted, #666666);
+}
+
+.sust-stake-article__intro p {
+  margin: 0 0 10px;
+  font-size: 13.5px;
+  line-height: 1.62;
+  color: var(--ink, #333333);
+}
+
+.sust-stake-article__section {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px dashed rgba(27, 23, 25, 0.08);
+}
+
+.sust-stake-article__heading {
+  margin: 0 0 8px;
+  font-family: var(--font-sans, sans-serif);
+  font-size: 14px;
+  font-weight: 700;
+  color: #2f6f68;
+}
+
+.sust-stake-article__section p {
+  margin: 0 0 10px;
+  font-size: 13.5px;
+  line-height: 1.62;
+  color: var(--ink, #333333);
+}
+
+/* ---------------------------------------------------------------------------
+ * Legacy Tools & Tracker Panel
+ * ------------------------------------------------------------------------- */
+.sust-tool-card__header {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.sust-tool-card__row {
+  margin-top: 8px;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.sust-tool-card__label {
+  display: inline-block;
+  font-family: var(--font-mono, monospace);
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #2f6f68;
+  margin-right: 6px;
+}
+
+.sust-tool-card__text {
+  display: inline;
+  margin: 0;
+  color: var(--ink, #333333);
+}
+
+.sust-tracker-panel {
+  margin: 20px 0 28px;
+}
+
+.sust-tracker-panel__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 18px;
+}

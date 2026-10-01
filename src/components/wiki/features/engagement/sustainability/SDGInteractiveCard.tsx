@@ -1,44 +1,32 @@
-import { useState } from "react";
 import type { CoreSdg } from "../../../../../data/engagement/sustainability/sustainabilityData";
 import "../../../../../styles/sustainability-panels.css";
 
+/**
+ * SDG Card for Overview matching image 11.png.
+ * Static presentation without 3D flip per editorial directive:
+ * colored top bar, prominent SDG number, title, and concise summary.
+ */
 export function SDGInteractiveCard({ sdg }: { sdg: CoreSdg }) {
-  const [flipped, setFlipped] = useState(false);
-
   return (
-    <button
-      type="button"
-      className={`sust-sdg-card${flipped ? " is-flipped" : ""}`}
-      aria-pressed={flipped}
-      aria-label={`SDG ${sdg.number} ${sdg.title} — 点击翻转查看 CirCure 的回应`}
-      onClick={() => setFlipped((value) => !value)}
+    <article
+      className="sust-sdg-card sust-sdg-card--static"
+      style={{ "--sdg-accent": sdg.color.hex } as React.CSSProperties}
     >
-      <span className="sust-sdg-card__inner">
+      <div
+        className="sust-sdg-card__accent-bar"
+        style={{ backgroundColor: sdg.color.hex }}
+        aria-hidden="true"
+      />
+      <div className="sust-sdg-card__content">
         <span
-          className="sust-sdg-card__face sust-sdg-card__face--front"
-          style={{ background: sdg.color.hex }}
+          className="sust-sdg-card__number"
+          style={{ color: sdg.color.hex }}
         >
-          <span className="sust-sdg-card__eyebrow">
-            Sustainable Development Goal
-          </span>
-          <span className="sust-sdg-card__number">
-            {String(sdg.number).padStart(2, "0")}
-          </span>
-          <span className="sust-sdg-card__title">{sdg.title}</span>
-          <span className="sust-sdg-card__hint">Hover / Click to flip</span>
+          {String(sdg.number).padStart(2, "0")}
         </span>
-        <span className="sust-sdg-card__face sust-sdg-card__face--back">
-          <span className="sust-sdg-card__eyebrow">CirCure · 回应的核心挑战</span>
-          <span className="sust-sdg-card__title">SDG {sdg.number}</span>
-          <span className="sust-sdg-card__back-body">{sdg.challenge}</span>
-          <span className="sust-sdg-card__pill">{sdg.frameworkLayer}</span>
-          <span className="sust-sdg-card__hint">
-            SET–Develop–Grow · {sdg.title}
-          </span>
-        </span>
-      </span>
-    </button>
+        <h3 className="sust-sdg-card__title">{sdg.title}</h3>
+        <p className="sust-sdg-card__summary">{sdg.summary}</p>
+      </div>
+    </article>
   );
 }
-
-

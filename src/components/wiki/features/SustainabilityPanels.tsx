@@ -19,13 +19,11 @@ import {
   SSTQNScoreProcess,
   StakeholderProfileCard,
   SustainabilityPdfPreview,
+  OverviewSetDevelopGrowCards,
+  StakeholderTrackerPanel,
   type SustainabilityPdfManual,
 } from "./engagement/sustainability";
-import {
-  sustainabilityAssets,
-  type SustainabilityImageAssetKey,
-} from "../../../data/engagement/sustainability/sustainabilityAssets";
-import { sustainabilityImages } from "../../../data/engagement/sustainability/sustainabilityImages";
+import { sustainabilityAssets } from "../../../data/engagement/sustainability/sustainabilityAssets";
 import {
   sdg3EvidenceStats,
   sdg3LegacyTools,
@@ -115,12 +113,6 @@ const scaleAnchorIds = (prefix: string) =>
     `${prefix}-evidence`,
   ] as const;
 
-const FRAMEWORK_INTRO_LINKS: Record<string, string> = {
-  "sst-qn": "#sst-qn",
-  "sdg-impact-framework": "#sdg-impact-framework",
-  // SCALE Framework 落地于 SET 章节内的 SDG 3 → S/C/A/L/E 五要素
-  "scale-framework": "#set-core-challenges",
-};
 
 const pdfAsset = sustainabilityAssets.sstQnModelConstruction09;
 
@@ -136,74 +128,10 @@ const sstqnPdfManual: SustainabilityPdfManual = {
   pages: pdfAsset.pdfPages ?? 1,
 };
 
-/** Overview 内三篇框架导读（SST-QN / SDG Impact Framework / SCALE）。 */
+/** Overview 内三篇框架导读（SET · DEVELOP · GROW）。 */
 function FrameworkIntroGrid() {
   return (
-    <div className="sust-framework-intros">
-      {sustainabilityOverview.frameworks.map((framework, index) => {
-        const link = FRAMEWORK_INTRO_LINKS[framework.id];
-        return (
-          <article
-            className="sust-framework-intro"
-            key={framework.id}
-            data-wiki-reveal
-          >
-            <span
-              className="sust-framework-intro__index"
-              aria-hidden="true"
-            >
-              {String(index + 1).padStart(2, "0")}
-            </span>
-            <div className="sust-framework-intro__body">
-              <p className="sust-framework-intro__kicker">
-                {framework.shortName}
-              </p>
-              <h3 className="sust-framework-intro__name">
-                {framework.fullName}
-              </h3>
-              <p className="sust-framework-intro__copy">
-                {framework.paragraph}
-              </p>
-              {framework.assetKey && (
-                <figure className="sust-framework-intro__figure">
-                  <img
-                    src={
-                      sustainabilityImages[
-                        framework.assetKey as SustainabilityImageAssetKey
-                      ]
-                    }
-                    alt={
-                      sustainabilityAssets[
-                        framework.assetKey as SustainabilityImageAssetKey
-                      ].alt
-                    }
-                    loading="lazy"
-                    decoding="async"
-                  />
-                </figure>
-              )}
-              {link ? (
-                <a
-                  className="sust-framework-intro__link"
-                  href={link}
-                  onClick={(event) => {
-                    event.preventDefault();
-                    document
-                      .getElementById(link.slice(1))
-                      ?.scrollIntoView({
-                        behavior: "instant",
-                        block: "start",
-                      });
-                  }}
-                >
-                  进入章节 <span aria-hidden="true">↘</span>
-                </a>
-              ) : null}
-            </div>
-          </article>
-        );
-      })}
-    </div>
+    <OverviewSetDevelopGrowCards cards={sustainabilityOverview.frameworks} />
   );
 }
 
@@ -256,6 +184,12 @@ export function sustainabilityFeatures(): FeatureMap {
           "sdg-radar": <SdgImpactRadar />,
           "sdg-interaction-heatmap": <SdgInteractionHeatmap />,
           "sdg-boundary-matrix": <SdgBoundaryMatrix />,
+          "overview-set-develop-grow": (
+            <OverviewSetDevelopGrowCards
+              cards={sustainabilityOverview.frameworks}
+            />
+          ),
+          "stakeholder-tracker-tools": <StakeholderTrackerPanel />,
           "framework-intros": <FrameworkIntroGrid />,
           "sdg-dimension-chord": <SdgDimensionChord />,
           "sstqn-matrix": <SSTQNClassificationMatrix />,

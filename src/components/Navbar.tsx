@@ -233,6 +233,7 @@ function dropdownActive(pathname: string, dropdown: NavDropdown): boolean {
 export function Navbar() {
   const [openKey, setOpenKey] = useState<string | null>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [mobileGroup, setMobileGroup] = useState<string | null>(null);
   const openTimerRef = useRef<number>(0);
   const closeTimerRef = useRef<number>(0);
   const headerRef = useRef<HTMLElement>(null);
@@ -240,6 +241,8 @@ export function Navbar() {
   const mobileToggleRef = useRef<HTMLButtonElement>(null);
   const pathname = useLocation().pathname;
   const homeActive = isActive(pathname, "/");
+  const currentDropdownKey =
+    DROPDOWNS.find((d) => dropdownActive(pathname, d))?.key ?? null;
 
   const clearTimers = useCallback(() => {
     window.clearTimeout(openTimerRef.current);
@@ -553,7 +556,11 @@ export function Navbar() {
               type="button"
               aria-expanded={mobileOpen}
               aria-controls="circure-mobile-menu"
-              onClick={() => setMobileOpen((v) => !v)}
+              onClick={() => {
+                // Re-open on the module the reader is currently in.
+                setMobileGroup(currentDropdownKey);
+                setMobileOpen((v) => !v);
+              }}
               ref={mobileToggleRef}
             >
               <span>Menu</span>
@@ -643,25 +650,70 @@ export function Navbar() {
             aria-hidden={!mobileOpen}
             inert={!mobileOpen || undefined}
           >
-            <Link to="/" onClick={closeAll}>
+            <Link
+              to="/"
+              onClick={closeAll}
+              aria-current={homeActive ? "page" : undefined}
+            >
               Home
             </Link>
-            {DROPDOWNS.map((d) => (
-              <Link
-                key={`${d.key}-head`}
-                to={d.cards[0]?.path ?? "/"}
-                onClick={closeAll}
-              >
-                {d.label}
-              </Link>
-            ))}
-            {DROPDOWNS.flatMap((d) =>
-              d.cards.map((c) => (
-                <Link key={c.path} to={c.path} onClick={closeAll}>
-                  {c.name}
-                </Link>
-              )),
-            )}
+            {/* Two-level accordion: each module is a toggle, its pages nest
+                underneath. One group open at a time keeps the sheet short. */}
+            {DROPDOWNS.map((d) => {
+              const groupOpen = mobileGroup === d.key;
+              const panelId = `circure-mobile-group-${d.key}`;
+              return (
+                <div
+                  key={d.key}
+                  className={`circure-mobile-group${groupOpen ? " is-open" : ""}`}
+                >
+                  <button
+                    type="button"
+                    className="circure-mobile-group__toggle"
+                    aria-expanded={groupOpen}
+                    aria-controls={panelId}
+                    aria-current={
+                      dropdownActive(pathname, d) ? "true" : undefined
+                    }
+                    onClick={() => setMobileGroup(groupOpen ? null : d.key)}
+                  >
+                    <span>{d.label}</span>
+                    <svg
+                      className="circure-mobile-group__caret"
+                      viewBox="0 0 10 6"
+                      aria-hidden="true"
+                      focusable="false"
+                    >
+                      <path d="M1 1l4 4 4-4" />
+                    </svg>
+                  </button>
+                  <div
+                    className="circure-mobile-group__panel"
+                    id={panelId}
+                    inert={!groupOpen || undefined}
+                  >
+                    <div className="circure-mobile-group__list">
+                      {d.cards.map((c) => (
+                        <Link
+                          key={c.path}
+                          to={c.path}
+                          className="circure-mobile-group__link"
+                          aria-current={
+                            isActive(pathname, c.path) ? "page" : undefined
+                          }
+                          onClick={closeAll}
+                        >
+                          <small aria-hidden="true">
+                            {c.small.split(" / ")[0]}
+                          </small>
+                          <span>{c.name}</span>
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
           </nav>
         </div>
       </header>

@@ -1,15 +1,27 @@
 import { useEffect, useRef, useState, useCallback } from "react";
+// Type-only imports: erased at build time, Mol* itself comes from window.molstar
+import type { Viewer } from "molstar/lib/apps/viewer/app";
+import type { Vec3, Vec4 } from "molstar/lib/mol-math/linear-algebra";
+import type { PluginStateObject } from "molstar/lib/mol-plugin-state/objects";
+import type { StateObjectSelector } from "molstar/lib/mol-state";
+import type { Color } from "molstar/lib/mol-util/color";
 import trop2Pdb from "../../../assets/structures/trop2-ctl1.pdb?raw";
 import { TROP2_COMPLEX_DATA } from "../../../data/trop2ComplexData";
 import "../../../styles/trop2-complex-viewer.css";
 
 type ActiveSegment = "all" | "epitope" | "alpha1" | "alpha2" | "pocket";
+type MolstarGlobal = NonNullable<Window["molstar"]>;
+type ComponentSelector = StateObjectSelector<PluginStateObject.Molecule.Structure>;
+type ReprSelector = StateObjectSelector<PluginStateObject.Molecule.Structure.Representation3D>;
+
+// Mol* colors are branded numbers; Color(hex) is an identity function at runtime.
+const color = (hex: number) => hex as Color;
 
 /**
  * 100% Local & iGEM-Compliant Loader for Mol* Viewer
  * Guarantees zero external network requests and offline closed loop.
  */
-function loadLocalMolstar(): Promise<any> {
+function loadLocalMolstar(): Promise<MolstarGlobal> {
   if (typeof window !== "undefined" && window.molstar) {
     return Promise.resolve(window.molstar);
   }
@@ -57,13 +69,13 @@ function loadLocalMolstar(): Promise<any> {
 export function Trop2ComplexViewer() {
   const figureRef = useRef<HTMLElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
-  const viewerRef = useRef<any>(null);
-  const structureRef = useRef<any>(null);
-  const epitopeCompRef = useRef<any>(null);
-  const pocketCompRef = useRef<any>(null);
-  const alpha1CompRef = useRef<any>(null);
-  const alpha2CompRef = useRef<any>(null);
-  const surfaceReprRef = useRef<any>(null);
+  const viewerRef = useRef<Viewer | null>(null);
+  const structureRef = useRef<StateObjectSelector<PluginStateObject.Molecule.Structure> | null>(null);
+  const epitopeCompRef = useRef<ComponentSelector | undefined>(undefined);
+  const pocketCompRef = useRef<ComponentSelector | undefined>(undefined);
+  const alpha1CompRef = useRef<ComponentSelector | undefined>(undefined);
+  const alpha2CompRef = useRef<ComponentSelector | undefined>(undefined);
+  const surfaceReprRef = useRef<ReprSelector | null>(null);
   const isSurfaceUpdatingRef = useRef(false);
   const rafIdRef = useRef<number | null>(null);
   const overlayRef = useRef<SVGSVGElement>(null);
@@ -108,12 +120,9 @@ export function Trop2ComplexViewer() {
     // (origin bottom-left), so the viewBox maps them onto CSS pixels at any DPR.
     svg.setAttribute("viewBox", `0 0 ${width} ${height}`);
 
-    const v = [0, 0, 0, 0];
+    const v = [0, 0, 0, 0] as unknown as Vec4;
     const project = (pos: [number, number, number]) => {
-      v[0] = pos[0];
-      v[1] = pos[1];
-      v[2] = pos[2];
-      camera.project(v, v);
+      camera.project(v, pos as unknown as Vec3);
       const x = v[0] - vx;
       const y = height - (v[1] - vy);
       const visible = v[2] > 0 && v[2] < 1 && x >= 0 && x <= width && y >= 0 && y <= height;
@@ -202,9 +211,10 @@ export function Trop2ComplexViewer() {
         viewerRef.current = viewer;
         const plugin = viewer.plugin;
 
-        // Ensure internal config turns off all default buttons that cause heavy panel mounts
-        if (plugin?.config && window.molstar?.PluginConfig?.Viewport) {
-          const V = window.molstar.PluginConfig.Viewport;
+        // Ensure internal config turns off all default buttons that cause heavy panel mounts.
+        // The viewer bundle exposes PluginConfig under lib.plugin, not at the top level.
+        const V = molstar.lib?.plugin?.PluginConfig?.Viewport;
+        if (plugin?.config && V) {
           plugin.config.set(V.ShowReset, false);
           plugin.config.set(V.ShowControls, false);
           plugin.config.set(V.ShowSettings, false);
@@ -227,7 +237,7 @@ export function Trop2ComplexViewer() {
                 name: "on",
                 params: {
                   scale: 1,
-                  color: 0x000000,
+                  color: color(0x000000),
                   threshold: 0.33,
                   includeTransparent: false,
                 },
@@ -242,13 +252,13 @@ export function Trop2ComplexViewer() {
                   blurDepthBias: 0.5,
                   samples: 32,
                   resolutionScale: 0.75,
-                  color: 0x000000,
+                  color: color(0x000000),
                   transparentThreshold: 0.4,
                 },
               },
             },
             renderer: {
-              backgroundColor: isDarkMode ? 0x0b0f19 : 0xf8fafc,
+              backgroundColor: color(isDarkMode ? 0x0b0f19 : 0xf8fafc),
             },
           });
         }
@@ -281,7 +291,7 @@ export function Trop2ComplexViewer() {
           await plugin.builders.structure.representation.addRepresentation(mhcComp, {
             type: "cartoon",
             color: "uniform",
-            colorParams: { value: 0xc7d2fe },
+            colorParams: { value: color(0xc7d2fe) },
           });
         }
 
@@ -302,7 +312,7 @@ export function Trop2ComplexViewer() {
           await plugin.builders.structure.representation.addRepresentation(epitopeComp, {
             type: "ball-and-stick",
             color: "uniform",
-            colorParams: { value: 0x00e5ff },
+            colorParams: { value: color(0x00e5ff) },
             typeParams: { sizeFactor: 0.28 },
           });
         }
@@ -325,7 +335,7 @@ export function Trop2ComplexViewer() {
           await plugin.builders.structure.representation.addRepresentation(pocketComp, {
             type: "ball-and-stick",
             color: "uniform",
-            colorParams: { value: 0x1d4ed8 },
+            colorParams: { value: color(0x1d4ed8) },
             typeParams: { sizeFactor: 0.22 },
           });
         }
@@ -361,9 +371,12 @@ export function Trop2ComplexViewer() {
         // Reset camera to focus on epitope cleft
         if (plugin.canvas3d) {
           plugin.managers.camera.reset(void 0, 0);
-          // Camera moves and canvas resizes (e.g. fullscreen) both re-project the overlay
+          // camera.changed fires inside Mol*'s render loop whenever the view/projection
+          // matrices move (mouse rotate/zoom/pan and animated resets alike), at most once
+          // per frame, so the overlay is updated in the same frame as the 3D scene.
+          // camera.stateChanged only fires on programmatic setState, not on mouse input.
           cameraSubsRef.current = [
-            plugin.canvas3d.camera.stateChanged.subscribe(scheduleUpdateProjections),
+            plugin.canvas3d.camera.changed.subscribe(updateProjections),
             plugin.canvas3d.resized.subscribe(scheduleUpdateProjections),
           ];
         }
@@ -427,7 +440,7 @@ export function Trop2ComplexViewer() {
             await plugin.builders.structure.representation.addRepresentation(epitopeComp, {
               type: "molecular-surface",
               color: "uniform",
-              colorParams: { value: 0x38bdf8 },
+              colorParams: { value: color(0x38bdf8) },
               typeParams: { alpha: 0.45, ignoreHydrogens: true },
             });
         }
@@ -452,7 +465,7 @@ export function Trop2ComplexViewer() {
     if (viewer?.plugin?.canvas3d) {
       viewer.plugin.canvas3d.setProps({
         renderer: {
-          backgroundColor: nextDark ? 0x0b0f19 : 0xf8fafc,
+          backgroundColor: color(nextDark ? 0x0b0f19 : 0xf8fafc),
         },
       });
       scheduleUpdateProjections();
@@ -482,7 +495,7 @@ export function Trop2ComplexViewer() {
         return;
       }
 
-      let compCell: any = null;
+      let compCell: ComponentSelector | undefined;
       if (target === "epitope") compCell = epitopeCompRef.current;
       else if (target === "pocket") compCell = pocketCompRef.current;
       else if (target === "alpha1") compCell = alpha1CompRef.current;

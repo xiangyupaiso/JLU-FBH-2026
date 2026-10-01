@@ -3,14 +3,14 @@
     "teamId": "6056",
     "teamName": "JLU-FBH",
     "year": 2026,
-    "lastUpdated": "2026-10-01T11:43:29.488304+00:00",
+    "lastUpdated": "2026-10-01T13:59:18.481Z",
     "stats": {
-      "total": 1768,
-      "inUse": 1280,
+      "total": 1780,
+      "inUse": 1292,
       "standby": 459,
       "deprecated": 29,
       "byKind": {
-        "image": 1715,
+        "image": 1727,
         "font": 27,
         "structure": 3,
         "pdf": 22,
@@ -3720,7 +3720,7 @@
       "localPath": "src/assets/structures/trop2-ctl1.pdb",
       "md5": "c61a28a3a30a21f70aca57f73b922914",
       "fileSize": 649361,
-      "uploadUrl": null,
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/files/structures/trop2-ctl1.pdb",
       "status": "in-use",
       "description": "",
       "keywords": [
@@ -3913,13 +3913,19 @@
       ],
       "references": [
         {
+          "file": "src/components/wiki/features/engagement/sustainability/StakeholderTrackerPanel.tsx",
+          "line": 25,
+          "text": "cnFile: \"sustainability-feedback-to-action-record-cn.pdf\",",
+          "type": "mention"
+        },
+        {
           "file": "src/data/engagement/sustainability/sustainabilityData.ts",
-          "line": 803,
+          "line": 888,
           "text": "{ label: \"中文\", fileName: \"sustainability-feedback-to-action-record-cn.pdf\" },",
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 2 location(s)"
     },
     "sustainability-feedback-to-action-record-en-pdf": {
       "id": "sustainability-feedback-to-action-record-en-pdf",
@@ -3938,13 +3944,19 @@
       ],
       "references": [
         {
+          "file": "src/components/wiki/features/engagement/sustainability/StakeholderTrackerPanel.tsx",
+          "line": 26,
+          "text": "enFile: \"sustainability-feedback-to-action-record-en.pdf\",",
+          "type": "mention"
+        },
+        {
           "file": "src/data/engagement/sustainability/sustainabilityData.ts",
-          "line": 804,
+          "line": 889,
           "text": "{ label: \"English\", fileName: \"sustainability-feedback-to-action-record-en.pdf\" },",
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 2 location(s)"
     },
     "sustainability-resource-responsibility-map-cn-pdf": {
       "id": "sustainability-resource-responsibility-map-cn-pdf",
@@ -4064,7 +4076,7 @@
       "references": [
         {
           "file": "src/data/engagement/sustainability/sustainabilityData.ts",
-          "line": 812,
+          "line": 899,
           "text": "{ label: \"中文\", fileName: \"sustainability-sdg-impact-documentation-template-cn.pdf\" },",
           "type": "mention"
         }
@@ -4089,7 +4101,7 @@
       "references": [
         {
           "file": "src/data/engagement/sustainability/sustainabilityData.ts",
-          "line": 813,
+          "line": 900,
           "text": "{ label: \"English\", fileName: \"sustainability-sdg-impact-documentation-template-en.pdf\" },",
           "type": "mention"
         }
@@ -4102,8 +4114,8 @@
       "fileName": "sustainability-sst-qn-model-construction.pdf",
       "category": "engagement",
       "localPath": "public/assets/docs/sustainability-sst-qn-model-construction.pdf",
-      "md5": "07c1325af242069a1428d94df47369ca",
-      "fileSize": 325622,
+      "md5": "8ddf13d5c93d7c7a950bc6657bc7b03e",
+      "fileSize": 1908873,
       "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/files/docs/sustainability-sst-qn-model-construction.pdf",
       "status": "in-use",
       "description": "",
@@ -4114,30 +4126,36 @@
       "references": [
         {
           "file": "src/data/engagement/sustainability/sustainabilityAssets.ts",
-          "line": 105,
+          "line": 120,
           "text": "fileName: \"sustainability-sst-qn-model-construction.pdf\",",
           "type": "mention"
         },
         {
           "file": "src/data/engagement/sustainability/sustainabilityAssets.ts",
-          "line": 107,
+          "line": 121,
+          "text": "localSourcePath: \"public/assets/docs/sustainability-sst-qn-model-construction.pdf\",",
+          "type": "mention"
+        },
+        {
+          "file": "src/data/engagement/sustainability/sustainabilityAssets.ts",
+          "line": 122,
           "text": "targetPath: \"public/assets/docs/sustainability-sst-qn-model-construction.pdf\",",
           "type": "mention"
         },
         {
           "file": "src/data/engagement/sustainability/sustainabilityAssets.ts",
-          "line": 113,
-          "text": "webPath: \"assets/docs/sustainability-sst-qn-model-construction.pdf\",",
+          "line": 123,
+          "text": "uploadUrl: \"https://static.igem.wiki/teams/6056/wiki/files/docs/sustainability-sst-qn-model-construction.pdf\",",
           "type": "mention"
         },
         {
-          "file": "src/data/engagement/sustainability/sustainabilityData.ts",
-          "line": 339,
-          "text": "fileName: \"sustainability-sst-qn-model-construction.pdf\",",
+          "file": "src/data/engagement/sustainability/sustainabilityAssets.ts",
+          "line": 126,
+          "text": "webPath: \"assets/docs/sustainability-sst-qn-model-construction.pdf\",",
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 4 location(s)"
+      "notes": "Referenced in 5 location(s)"
     },
     "sustainability-stakeholder-feedback-decision-protocol-cn-pdf": {
       "id": "sustainability-stakeholder-feedback-decision-protocol-cn-pdf",
@@ -4156,13 +4174,19 @@
       ],
       "references": [
         {
+          "file": "src/components/wiki/features/engagement/sustainability/StakeholderTrackerPanel.tsx",
+          "line": 18,
+          "text": "cnFile: \"sustainability-stakeholder-feedback-decision-protocol-cn.pdf\",",
+          "type": "mention"
+        },
+        {
           "file": "src/data/engagement/sustainability/sustainabilitySdg9.ts",
           "line": 222,
           "text": "{ label: \"中文\", fileName: \"sustainability-stakeholder-feedback-decision-protocol-cn.pdf\" },",
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 2 location(s)"
     },
     "sustainability-stakeholder-feedback-decision-protocol-en-pdf": {
       "id": "sustainability-stakeholder-feedback-decision-protocol-en-pdf",
@@ -4181,13 +4205,19 @@
       ],
       "references": [
         {
+          "file": "src/components/wiki/features/engagement/sustainability/StakeholderTrackerPanel.tsx",
+          "line": 19,
+          "text": "enFile: \"sustainability-stakeholder-feedback-decision-protocol-en.pdf\",",
+          "type": "mention"
+        },
+        {
           "file": "src/data/engagement/sustainability/sustainabilitySdg9.ts",
           "line": 223,
           "text": "{ label: \"English\", fileName: \"sustainability-stakeholder-feedback-decision-protocol-en.pdf\" },",
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 1 location(s)"
+      "notes": "Referenced in 2 location(s)"
     },
     "sustainability-stakeholder-interview-guide-cn-pdf": {
       "id": "sustainability-stakeholder-interview-guide-cn-pdf",
@@ -4207,7 +4237,7 @@
       "references": [
         {
           "file": "src/data/engagement/sustainability/sustainabilityData.ts",
-          "line": 785,
+          "line": 866,
           "text": "{ label: \"中文\", fileName: \"sustainability-stakeholder-interview-guide-cn.pdf\" },",
           "type": "mention"
         }
@@ -4232,7 +4262,7 @@
       "references": [
         {
           "file": "src/data/engagement/sustainability/sustainabilityData.ts",
-          "line": 786,
+          "line": 867,
           "text": "{ label: \"English\", fileName: \"sustainability-stakeholder-interview-guide-en.pdf\" },",
           "type": "mention"
         }
@@ -4257,7 +4287,7 @@
       "references": [
         {
           "file": "src/data/engagement/sustainability/sustainabilityData.ts",
-          "line": 794,
+          "line": 877,
           "text": "{ label: \"中文\", fileName: \"sustainability-stakeholder-sdg-mapping-guide-cn.pdf\" },",
           "type": "mention"
         }
@@ -4282,7 +4312,7 @@
       "references": [
         {
           "file": "src/data/engagement/sustainability/sustainabilityData.ts",
-          "line": 795,
+          "line": 878,
           "text": "{ label: \"English\", fileName: \"sustainability-stakeholder-sdg-mapping-guide-en.pdf\" },",
           "type": "mention"
         }
@@ -154448,7 +154478,7 @@
         "image"
       ],
       "references": [],
-      "notes": "已从本地工作区删除 (Deleted from local workspace)"
+      "notes": "文件已在本地删除 (File deleted from local disk)"
     },
     "award-hero-c6e6-webp": {
       "id": "award-hero-c6e6-webp",
@@ -154466,7 +154496,7 @@
         "image"
       ],
       "references": [],
-      "notes": "已从本地工作区删除 (Deleted from local workspace)"
+      "notes": "文件已在本地删除 (File deleted from local disk)"
     },
     "awards-png": {
       "id": "awards-png",
@@ -154484,7 +154514,7 @@
         "image"
       ],
       "references": [],
-      "notes": "已从本地工作区删除 (Deleted from local workspace)"
+      "notes": "文件已在本地删除 (File deleted from local disk)"
     },
     "design-hero-jpg": {
       "id": "design-hero-jpg",
@@ -154502,7 +154532,7 @@
         "image"
       ],
       "references": [],
-      "notes": "已从本地工作区删除 (Deleted from local workspace)"
+      "notes": "文件已在本地删除 (File deleted from local disk)"
     },
     "dry-1bbc-png": {
       "id": "dry-1bbc-png",
@@ -154520,7 +154550,7 @@
         "image"
       ],
       "references": [],
-      "notes": "已从本地工作区删除 (Deleted from local workspace)"
+      "notes": "文件已在本地删除 (File deleted from local disk)"
     },
     "dry-lab-module-hero-3289-webp": {
       "id": "dry-lab-module-hero-3289-webp",
@@ -154538,7 +154568,7 @@
         "image"
       ],
       "references": [],
-      "notes": "已从本地工作区删除 (Deleted from local workspace)"
+      "notes": "文件已在本地删除 (File deleted from local disk)"
     },
     "engagement-965b-png": {
       "id": "engagement-965b-png",
@@ -154556,7 +154586,7 @@
         "image"
       ],
       "references": [],
-      "notes": "已从本地工作区删除 (Deleted from local workspace)"
+      "notes": "文件已在本地删除 (File deleted from local disk)"
     },
     "engagement-hero-5562-webp": {
       "id": "engagement-hero-5562-webp",
@@ -154574,7 +154604,7 @@
         "image"
       ],
       "references": [],
-      "notes": "已从本地工作区删除 (Deleted from local workspace)"
+      "notes": "文件已在本地删除 (File deleted from local disk)"
     },
     "experiments-hero-jpg": {
       "id": "experiments-hero-jpg",
@@ -154592,7 +154622,7 @@
         "image"
       ],
       "references": [],
-      "notes": "已从本地工作区删除 (Deleted from local workspace)"
+      "notes": "文件已在本地删除 (File deleted from local disk)"
     },
     "hardware-hero-jpg": {
       "id": "hardware-hero-jpg",
@@ -154610,7 +154640,7 @@
         "image"
       ],
       "references": [],
-      "notes": "已从本地工作区删除 (Deleted from local workspace)"
+      "notes": "文件已在本地删除 (File deleted from local disk)"
     },
     "measuerment-hero-jpg": {
       "id": "measuerment-hero-jpg",
@@ -154628,7 +154658,7 @@
         "image"
       ],
       "references": [],
-      "notes": "已从本地工作区删除 (Deleted from local workspace)"
+      "notes": "文件已在本地删除 (File deleted from local disk)"
     },
     "model-hero-jpg": {
       "id": "model-hero-jpg",
@@ -154646,7 +154676,7 @@
         "image"
       ],
       "references": [],
-      "notes": "已从本地工作区删除 (Deleted from local workspace)"
+      "notes": "文件已在本地删除 (File deleted from local disk)"
     },
     "project-87d0-png": {
       "id": "project-87d0-png",
@@ -154664,7 +154694,7 @@
         "image"
       ],
       "references": [],
-      "notes": "已从本地工作区删除 (Deleted from local workspace)"
+      "notes": "文件已在本地删除 (File deleted from local disk)"
     },
     "software-hero-jpg": {
       "id": "software-hero-jpg",
@@ -154682,7 +154712,7 @@
         "image"
       ],
       "references": [],
-      "notes": "已从本地工作区删除 (Deleted from local workspace)"
+      "notes": "文件已在本地删除 (File deleted from local disk)"
     },
     "team-a908-png": {
       "id": "team-a908-png",
@@ -154700,7 +154730,7 @@
         "image"
       ],
       "references": [],
-      "notes": "已从本地工作区删除 (Deleted from local workspace)"
+      "notes": "文件已在本地删除 (File deleted from local disk)"
     },
     "team-hero-d4fe-webp": {
       "id": "team-hero-d4fe-webp",
@@ -154718,7 +154748,7 @@
         "image"
       ],
       "references": [],
-      "notes": "已从本地工作区删除 (Deleted from local workspace)"
+      "notes": "文件已在本地删除 (File deleted from local disk)"
     },
     "wet-c99a-png": {
       "id": "wet-c99a-png",
@@ -154736,7 +154766,7 @@
         "image"
       ],
       "references": [],
-      "notes": "已从本地工作区删除 (Deleted from local workspace)"
+      "notes": "文件已在本地删除 (File deleted from local disk)"
     },
     "wet-lab-cloud-hero-webp": {
       "id": "wet-lab-cloud-hero-webp",
@@ -154754,7 +154784,7 @@
         "image"
       ],
       "references": [],
-      "notes": "已从本地工作区删除 (Deleted from local workspace)"
+      "notes": "文件已在本地删除 (File deleted from local disk)"
     },
     "collaboration-png": {
       "id": "collaboration-png",
@@ -154772,7 +154802,7 @@
         "image"
       ],
       "references": [],
-      "notes": "已从本地工作区删除 (Deleted from local workspace)"
+      "notes": "文件已在本地删除 (File deleted from local disk)"
     },
     "contributions-png": {
       "id": "contributions-png",
@@ -154790,7 +154820,7 @@
         "image"
       ],
       "references": [],
-      "notes": "已从本地工作区删除 (Deleted from local workspace)"
+      "notes": "文件已在本地删除 (File deleted from local disk)"
     },
     "description-png": {
       "id": "description-png",
@@ -154808,7 +154838,7 @@
         "image"
       ],
       "references": [],
-      "notes": "已从本地工作区删除 (Deleted from local workspace)"
+      "notes": "文件已在本地删除 (File deleted from local disk)"
     },
     "education-png": {
       "id": "education-png",
@@ -154826,7 +154856,7 @@
         "image"
       ],
       "references": [],
-      "notes": "已从本地工作区删除 (Deleted from local workspace)"
+      "notes": "文件已在本地删除 (File deleted from local disk)"
     },
     "entrepreneurship-png": {
       "id": "entrepreneurship-png",
@@ -154844,7 +154874,7 @@
         "image"
       ],
       "references": [],
-      "notes": "已从本地工作区删除 (Deleted from local workspace)"
+      "notes": "文件已在本地删除 (File deleted from local disk)"
     },
     "ihp-png": {
       "id": "ihp-png",
@@ -154862,7 +154892,7 @@
         "image"
       ],
       "references": [],
-      "notes": "已从本地工作区删除 (Deleted from local workspace)"
+      "notes": "文件已在本地删除 (File deleted from local disk)"
     },
     "inclusisirity-png": {
       "id": "inclusisirity-png",
@@ -154880,7 +154910,7 @@
         "image"
       ],
       "references": [],
-      "notes": "已从本地工作区删除 (Deleted from local workspace)"
+      "notes": "文件已在本地删除 (File deleted from local disk)"
     },
     "notebook-png": {
       "id": "notebook-png",
@@ -154898,7 +154928,7 @@
         "image"
       ],
       "references": [],
-      "notes": "已从本地工作区删除 (Deleted from local workspace)"
+      "notes": "文件已在本地删除 (File deleted from local disk)"
     },
     "safety-png": {
       "id": "safety-png",
@@ -154916,7 +154946,7 @@
         "image"
       ],
       "references": [],
-      "notes": "已从本地工作区删除 (Deleted from local workspace)"
+      "notes": "文件已在本地删除 (File deleted from local disk)"
     },
     "sustainbility-png": {
       "id": "sustainbility-png",
@@ -154934,7 +154964,7 @@
         "image"
       ],
       "references": [],
-      "notes": "已从本地工作区删除 (Deleted from local workspace)"
+      "notes": "文件已在本地删除 (File deleted from local disk)"
     },
     "psd-zip": {
       "id": "psd-zip",
@@ -154952,7 +154982,451 @@
         "archive"
       ],
       "references": [],
-      "notes": "已从本地工作区删除 (Deleted from local workspace)"
+      "notes": "文件已在本地删除 (File deleted from local disk)"
+    },
+    "sustainability-framework-set-develop-grow-png": {
+      "id": "sustainability-framework-set-develop-grow-png",
+      "kind": "image",
+      "fileName": "sustainability-framework-set-develop-grow.png",
+      "category": "engagement",
+      "localPath": "src/assets/wiki/sustainability/sustainability-framework-set-develop-grow.png",
+      "md5": "8739332074f853f57a17347855026f19",
+      "fileSize": 1374019,
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/sustainability-framework-set-develop-grow.avif",
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "sustainability-framework-set-develop-grow",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/data/engagement/sustainability/sustainabilityAssets.ts",
+          "line": 91,
+          "text": "fileName: \"sustainability-framework-set-develop-grow.png\",",
+          "type": "mention"
+        },
+        {
+          "file": "src/data/engagement/sustainability/sustainabilityAssets.ts",
+          "line": 92,
+          "text": "localSourcePath: \"src/assets/wiki/sustainability/sustainability-framework-set-develop-grow.png\",",
+          "type": "mention"
+        },
+        {
+          "file": "src/data/engagement/sustainability/sustainabilityAssets.ts",
+          "line": 93,
+          "text": "targetPath: \"src/assets/wiki/sustainability/sustainability-framework-set-develop-grow.png\",",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 3 location(s)"
+    },
+    "sustainability-overview-map-of-stakeholders-png": {
+      "id": "sustainability-overview-map-of-stakeholders-png",
+      "kind": "image",
+      "fileName": "sustainability-overview-map-of-stakeholders.png",
+      "category": "engagement",
+      "localPath": "src/assets/wiki/sustainability/sustainability-overview-map-of-stakeholders.png",
+      "md5": "40c05c2f78864e4efcb5fb1e291d4001",
+      "fileSize": 1032956,
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/sustainability-overview-map-of-stakeholders.avif",
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "sustainability-overview-map-of-stakeholders",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/data/engagement/sustainability/sustainabilityAssets.ts",
+          "line": 28,
+          "text": "fileName: \"sustainability-overview-map-of-stakeholders.png\",",
+          "type": "mention"
+        },
+        {
+          "file": "src/data/engagement/sustainability/sustainabilityAssets.ts",
+          "line": 29,
+          "text": "localSourcePath: \"src/assets/wiki/sustainability/sustainability-overview-map-of-stakeholders.png\",",
+          "type": "mention"
+        },
+        {
+          "file": "src/data/engagement/sustainability/sustainabilityAssets.ts",
+          "line": 30,
+          "text": "targetPath: \"src/assets/wiki/sustainability/sustainability-overview-map-of-stakeholders.png\",",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 3 location(s)"
+    },
+    "sustainability-overview-reusable-toolkit-png": {
+      "id": "sustainability-overview-reusable-toolkit-png",
+      "kind": "image",
+      "fileName": "sustainability-overview-reusable-toolkit.png",
+      "category": "engagement",
+      "localPath": "src/assets/wiki/sustainability/sustainability-overview-reusable-toolkit.png",
+      "md5": "6451c46ae26dee5f130a74fa304082ba",
+      "fileSize": 296610,
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/sustainability-overview-reusable-toolkit.avif",
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "sustainability-overview-reusable-toolkit",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/data/engagement/sustainability/sustainabilityAssets.ts",
+          "line": 55,
+          "text": "fileName: \"sustainability-overview-reusable-toolkit.png\",",
+          "type": "mention"
+        },
+        {
+          "file": "src/data/engagement/sustainability/sustainabilityAssets.ts",
+          "line": 56,
+          "text": "localSourcePath: \"src/assets/wiki/sustainability/sustainability-overview-reusable-toolkit.png\",",
+          "type": "mention"
+        },
+        {
+          "file": "src/data/engagement/sustainability/sustainabilityAssets.ts",
+          "line": 57,
+          "text": "targetPath: \"src/assets/wiki/sustainability/sustainability-overview-reusable-toolkit.png\",",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 3 location(s)"
+    },
+    "sustainability-overview-scale-model-png": {
+      "id": "sustainability-overview-scale-model-png",
+      "kind": "image",
+      "fileName": "sustainability-overview-scale-model.png",
+      "category": "engagement",
+      "localPath": "src/assets/wiki/sustainability/sustainability-overview-scale-model.png",
+      "md5": "e15d43b8886a0e4c3b41f5978a38ecb6",
+      "fileSize": 216836,
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/sustainability-overview-scale-model.avif",
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "sustainability-overview-scale-model",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/data/engagement/sustainability/sustainabilityAssets.ts",
+          "line": 37,
+          "text": "fileName: \"sustainability-overview-scale-model.png\",",
+          "type": "mention"
+        },
+        {
+          "file": "src/data/engagement/sustainability/sustainabilityAssets.ts",
+          "line": 38,
+          "text": "localSourcePath: \"src/assets/wiki/sustainability/sustainability-overview-scale-model.png\",",
+          "type": "mention"
+        },
+        {
+          "file": "src/data/engagement/sustainability/sustainabilityAssets.ts",
+          "line": 39,
+          "text": "targetPath: \"src/assets/wiki/sustainability/sustainability-overview-scale-model.png\",",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 3 location(s)"
+    },
+    "sustainability-overview-sst-qn-network-png": {
+      "id": "sustainability-overview-sst-qn-network-png",
+      "kind": "image",
+      "fileName": "sustainability-overview-sst-qn-network.png",
+      "category": "engagement",
+      "localPath": "src/assets/wiki/sustainability/sustainability-overview-sst-qn-network.png",
+      "md5": "6d7a08e003a88e33e2dd9a213b9cd922",
+      "fileSize": 352841,
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/sustainability-overview-sst-qn-network.avif",
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "sustainability-overview-sst-qn-network",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/data/engagement/sustainability/sustainabilityAssets.ts",
+          "line": 46,
+          "text": "fileName: \"sustainability-overview-sst-qn-network.png\",",
+          "type": "mention"
+        },
+        {
+          "file": "src/data/engagement/sustainability/sustainabilityAssets.ts",
+          "line": 47,
+          "text": "localSourcePath: \"src/assets/wiki/sustainability/sustainability-overview-sst-qn-network.png\",",
+          "type": "mention"
+        },
+        {
+          "file": "src/data/engagement/sustainability/sustainabilityAssets.ts",
+          "line": 48,
+          "text": "targetPath: \"src/assets/wiki/sustainability/sustainability-overview-sst-qn-network.png\",",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 3 location(s)"
+    },
+    "sustainability-sdg3-stakeholders-distribution-png": {
+      "id": "sustainability-sdg3-stakeholders-distribution-png",
+      "kind": "image",
+      "fileName": "sustainability-sdg3-stakeholders-distribution.png",
+      "category": "engagement",
+      "localPath": "src/assets/wiki/sustainability/sustainability-sdg3-stakeholders-distribution.png",
+      "md5": "bf27ec554385972abf28ed6be653e62b",
+      "fileSize": 167592,
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/sustainability-sdg3-stakeholders-distribution.avif",
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "sustainability-sdg3-stakeholders-distribution",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/data/engagement/sustainability/sustainabilityAssets.ts",
+          "line": 100,
+          "text": "fileName: \"sustainability-sdg3-stakeholders-distribution.png\",",
+          "type": "mention"
+        },
+        {
+          "file": "src/data/engagement/sustainability/sustainabilityAssets.ts",
+          "line": 101,
+          "text": "localSourcePath: \"src/assets/wiki/sustainability/sustainability-sdg3-stakeholders-distribution.png\",",
+          "type": "mention"
+        },
+        {
+          "file": "src/data/engagement/sustainability/sustainabilityAssets.ts",
+          "line": 102,
+          "text": "targetPath: \"src/assets/wiki/sustainability/sustainability-sdg3-stakeholders-distribution.png\",",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 3 location(s)"
+    },
+    "sustainability-sdg3-traceable-improvements-png": {
+      "id": "sustainability-sdg3-traceable-improvements-png",
+      "kind": "image",
+      "fileName": "sustainability-sdg3-traceable-improvements.png",
+      "category": "engagement",
+      "localPath": "src/assets/wiki/sustainability/sustainability-sdg3-traceable-improvements.png",
+      "md5": "97f6efcc03faea7605eb78a5aab1ab07",
+      "fileSize": 410973,
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/sustainability-sdg3-traceable-improvements.avif",
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "sustainability-sdg3-traceable-improvements",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/data/engagement/sustainability/sustainabilityAssets.ts",
+          "line": 109,
+          "text": "fileName: \"sustainability-sdg3-traceable-improvements.png\",",
+          "type": "mention"
+        },
+        {
+          "file": "src/data/engagement/sustainability/sustainabilityAssets.ts",
+          "line": 110,
+          "text": "localSourcePath: \"src/assets/wiki/sustainability/sustainability-sdg3-traceable-improvements.png\",",
+          "type": "mention"
+        },
+        {
+          "file": "src/data/engagement/sustainability/sustainabilityAssets.ts",
+          "line": 111,
+          "text": "targetPath: \"src/assets/wiki/sustainability/sustainability-sdg3-traceable-improvements.png\",",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 3 location(s)"
+    },
+    "sustainability-sst-qn-boundary-matrix-png": {
+      "id": "sustainability-sst-qn-boundary-matrix-png",
+      "kind": "image",
+      "fileName": "sustainability-sst-qn-boundary-matrix.png",
+      "category": "engagement",
+      "localPath": "src/assets/wiki/sustainability/sustainability-sst-qn-boundary-matrix.png",
+      "md5": "0a1ba27f408524be5c0ce47ffc85a0da",
+      "fileSize": 147104,
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/sustainability-sst-qn-boundary-matrix.avif",
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "sustainability-sst-qn-boundary-matrix",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/data/engagement/sustainability/sustainabilityAssets.ts",
+          "line": 73,
+          "text": "fileName: \"sustainability-sst-qn-boundary-matrix.png\",",
+          "type": "mention"
+        },
+        {
+          "file": "src/data/engagement/sustainability/sustainabilityAssets.ts",
+          "line": 74,
+          "text": "localSourcePath: \"src/assets/wiki/sustainability/sustainability-sst-qn-boundary-matrix.png\",",
+          "type": "mention"
+        },
+        {
+          "file": "src/data/engagement/sustainability/sustainabilityAssets.ts",
+          "line": 75,
+          "text": "targetPath: \"src/assets/wiki/sustainability/sustainability-sst-qn-boundary-matrix.png\",",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 3 location(s)"
+    },
+    "sustainability-sst-qn-interaction-scores-png": {
+      "id": "sustainability-sst-qn-interaction-scores-png",
+      "kind": "image",
+      "fileName": "sustainability-sst-qn-interaction-scores.png",
+      "category": "engagement",
+      "localPath": "src/assets/wiki/sustainability/sustainability-sst-qn-interaction-scores.png",
+      "md5": "f3e0e545756617a4d1a90c54a852c58b",
+      "fileSize": 205959,
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/sustainability-sst-qn-interaction-scores.avif",
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "sustainability-sst-qn-interaction-scores",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/data/engagement/sustainability/sustainabilityAssets.ts",
+          "line": 82,
+          "text": "fileName: \"sustainability-sst-qn-interaction-scores.png\",",
+          "type": "mention"
+        },
+        {
+          "file": "src/data/engagement/sustainability/sustainabilityAssets.ts",
+          "line": 83,
+          "text": "localSourcePath: \"src/assets/wiki/sustainability/sustainability-sst-qn-interaction-scores.png\",",
+          "type": "mention"
+        },
+        {
+          "file": "src/data/engagement/sustainability/sustainabilityAssets.ts",
+          "line": 84,
+          "text": "targetPath: \"src/assets/wiki/sustainability/sustainability-sst-qn-interaction-scores.png\",",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 3 location(s)"
+    },
+    "sustainability-sst-qn-status-classification-png": {
+      "id": "sustainability-sst-qn-status-classification-png",
+      "kind": "image",
+      "fileName": "sustainability-sst-qn-status-classification.png",
+      "category": "engagement",
+      "localPath": "src/assets/wiki/sustainability/sustainability-sst-qn-status-classification.png",
+      "md5": "5b2a6d6d568fe738f07ea153f80026fc",
+      "fileSize": 154238,
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/sustainability-sst-qn-status-classification.avif",
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "sustainability-sst-qn-status-classification",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/data/engagement/sustainability/sustainabilityAssets.ts",
+          "line": 64,
+          "text": "fileName: \"sustainability-sst-qn-status-classification.png\",",
+          "type": "mention"
+        },
+        {
+          "file": "src/data/engagement/sustainability/sustainabilityAssets.ts",
+          "line": 65,
+          "text": "localSourcePath: \"src/assets/wiki/sustainability/sustainability-sst-qn-status-classification.png\",",
+          "type": "mention"
+        },
+        {
+          "file": "src/data/engagement/sustainability/sustainabilityAssets.ts",
+          "line": 66,
+          "text": "targetPath: \"src/assets/wiki/sustainability/sustainability-sst-qn-status-classification.png\",",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 3 location(s)"
+    },
+    "sustainability-sdg9-traceable-expert-feedback-png": {
+      "id": "sustainability-sdg9-traceable-expert-feedback-png",
+      "kind": "image",
+      "fileName": "sustainability-sdg9-traceable-expert-feedback.png",
+      "category": "engagement",
+      "localPath": "src/assets/wiki/sustainability/sustainability-sdg9-traceable-expert-feedback.png",
+      "md5": "651c80b20a804a212eea458a7c28a4ad",
+      "fileSize": 329883,
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/sustainability-sdg9-traceable-expert-feedback.avif",
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "sustainability-sdg9-traceable-expert-feedback",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/data/engagement/sustainability/sustainabilityAssets.ts",
+          "line": 118,
+          "text": "fileName: \"sustainability-sdg9-traceable-expert-feedback.png\",",
+          "type": "mention"
+        },
+        {
+          "file": "src/data/engagement/sustainability/sustainabilityAssets.ts",
+          "line": 119,
+          "text": "localSourcePath: \"src/assets/wiki/sustainability/sustainability-sdg9-traceable-expert-feedback.png\",",
+          "type": "mention"
+        },
+        {
+          "file": "src/data/engagement/sustainability/sustainabilityAssets.ts",
+          "line": 120,
+          "text": "targetPath: \"src/assets/wiki/sustainability/sustainability-sdg9-traceable-expert-feedback.png\",",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 3 location(s)"
+    },
+    "sustainability-synbio-classroom-pathway-png": {
+      "id": "sustainability-synbio-classroom-pathway-png",
+      "kind": "image",
+      "fileName": "sustainability-synbio-classroom-pathway.png",
+      "category": "engagement",
+      "localPath": "src/assets/wiki/sustainability/sustainability-synbio-classroom-pathway.png",
+      "md5": "93e81f4fa20dc2d7253a01e7e007835f",
+      "fileSize": 995516,
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/sustainability-synbio-classroom-pathway.avif",
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "sustainability-synbio-classroom-pathway",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/data/engagement/sustainability/sustainabilityAssets.ts",
+          "line": 127,
+          "text": "fileName: \"sustainability-synbio-classroom-pathway.png\",",
+          "type": "mention"
+        },
+        {
+          "file": "src/data/engagement/sustainability/sustainabilityAssets.ts",
+          "line": 128,
+          "text": "localSourcePath: \"src/assets/wiki/sustainability/sustainability-synbio-classroom-pathway.png\",",
+          "type": "mention"
+        },
+        {
+          "file": "src/data/engagement/sustainability/sustainabilityAssets.ts",
+          "line": 129,
+          "text": "targetPath: \"src/assets/wiki/sustainability/sustainability-synbio-classroom-pathway.png\",",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 3 location(s)"
     }
   }
 }
