@@ -43,7 +43,7 @@
   1. `src/contents/[page].tsx`（路由装配）
   2. `src/data/[module]/[page]Page.ts`（数据真理）
 
-### 2. 重度可视化页（富图表与交互型，如 Alternative Platform, Description, Sustainability）
+### 2. 重度可视化页（富图表与交互型，如 Description, Alternative Platform）
 
 - **特征**：包含复杂交互网格、动态流程图、雷达图/弦图/3D 查看器、弹窗模态框、大量高清插图。
 - **文件组合（4 件套）**：
