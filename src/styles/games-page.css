@@ -60,6 +60,47 @@
   border-bottom: 1px solid var(--route-line-strong);
 }
 
+.wiki-page--games .games-project-map__source-note {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 18px 0 0;
+  color: var(--route-ink);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.wiki-page--games .games-project-map__source-mascot {
+  position: relative;
+  width: 76px;
+  height: 76px;
+  flex: 0 0 auto;
+  overflow: hidden;
+}
+
+.wiki-page--games .games-project-map__source-mascot img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 240px;
+  max-width: none;
+  height: auto;
+  transform: translate(-50%, -50%);
+}
+
+.wiki-page--games .games-project-map__source-copy {
+  display: grid;
+  gap: 2px;
+}
+
+.wiki-page--games .games-project-map__source-copy > span {
+  color: var(--route-main);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
 .wiki-page--games .games-project-map__ribbon {
   position: absolute;
   z-index: 0;
