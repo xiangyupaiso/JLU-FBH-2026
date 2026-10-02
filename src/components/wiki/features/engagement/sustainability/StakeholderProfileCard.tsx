@@ -1,167 +1,114 @@
-import { useState } from "react";
+import { useId, useState } from "react";
 import type {
-  DetailedArticle,
+  ArticleBlock,
+  StakeholderArticle,
   StakeholderProfile,
-} from "../../../../../data/engagement/sustainability/sustainabilityData";
-import "../../../../../styles/sustainability-panels.css";
+} from "../../../../../data/engagement/sustainability/sdgChapterContract";
 import { PatientChatDialog } from "./PatientChatDialog";
+import { RichText } from "./RichText";
 
-const pad = (n: number) => String(Math.max(1, n)).padStart(2, "0");
+function ArticleBlockView({ block }: { block: ArticleBlock }) {
+  if (typeof block === "string") {
+    return (
+      <p>
+        <RichText text={block} />
+      </p>
+    );
+  }
+  if ("quotes" in block) return <PatientChatDialog quotes={block.quotes} />;
+  return (
+    <ul className="sust-stake-article__bullets">
+      {block.bullets.map((item) => (
+        <li key={item}>
+          <RichText text={item} />
+        </li>
+      ))}
+    </ul>
+  );
+}
 
-
-function DetailedArticleView({ article }: { article: DetailedArticle }) {
+function ArticleView({ article }: { article: StakeholderArticle }) {
   return (
     <article className="sust-stake-article">
       <h4 className="sust-stake-article__title">{article.title}</h4>
-      {article.subtitle && (
-        <p className="sust-stake-article__subtitle">{article.subtitle}</p>
-      )}
-      {article.intro && article.intro.length > 0 && (
-        <div className="sust-stake-article__intro">
-          {article.intro.map((p, idx) => (
-            <p key={idx}>{p}</p>
+      {article.sections.map((section, index) => (
+        <section className="sust-stake-article__section" key={index}>
+          {section.heading ? (
+            <h5 className="sust-stake-article__heading">{section.heading}</h5>
+          ) : null}
+          {section.blocks.map((block, blockIndex) => (
+            <ArticleBlockView block={block} key={blockIndex} />
           ))}
-        </div>
-      )}
-      <div className="sust-stake-article__sections">
-        {article.sections.map((sec, idx) => (
-          <div className="sust-stake-article__section" key={idx}>
-            {sec.heading && (
-              <h5 className="sust-stake-article__heading">{sec.heading}</h5>
-            )}
-            {sec.paragraphs.map((p, pIdx) => (
-              <p key={pIdx}>{p}</p>
-            ))}
-          </div>
-        ))}
-      </div>
+        </section>
+      ))}
     </article>
   );
 }
 
-function ExpandedArticle({
-  profile,
-  open,
-}: {
-  profile: StakeholderProfile;
-  open: boolean;
-}) {
-  return (
-    <div className="sust-stake-card__expanded">
-      {open && (profile.id === "tnbc-patients" || profile.id === "02-tnbc-patients") && (
-        <PatientChatDialog />
-      )}
-      {profile.detailedArticle ? (
-        <DetailedArticleView article={profile.detailedArticle} />
-      ) : (
-        profile.detailedInterview.map((paragraph, index) => (
-          <p key={index}>{paragraph}</p>
-        ))
-      )}
-    </div>
-  );
-}
+const FIELDS = [
+  ["relevantStakeholder", "Relevant Stakeholder"],
+  ["challenge", "Challenge"],
+  ["keyInsight", "Key Insight"],
+  ["whatChanged", "What Changed"],
+] as const;
 
-export function StakeholderProfileCard({
-  profile,
-  ordinal = 1,
-}: {
-  profile: StakeholderProfile;
-  ordinal?: number;
-}) {
+/**
+ * Stakeholder card: Relevant Stakeholder / Challenge / Key Insight / What
+ * Changed, status + SDG pills, and the optional "Click more" interview
+ * article (with any patient / family quotes inline).
+ */
+export function StakeholderProfileCard({ profile }: { profile: StakeholderProfile }) {
   const [open, setOpen] = useState(false);
-  const codeDisplay = profile.code ?? pad(ordinal);
-
-  const challenge = profile.challenge ?? profile.feedback;
-  const keyInsight = profile.keyInsight ?? profile.whyEngaged;
-  const whatChanged = profile.whatChanged ?? profile.incorporated;
+  const articleId = useId();
 
   return (
-    <article className="sust-stake-card" data-wiki-reveal>
+    <article className="sust-stake-card" id={profile.id}>
       <header className="sust-stake-card__header">
-        <div className="sust-stake-card__badge-row">
-          <span className="sust-stake-card__code-badge">
-            {codeDisplay}
-          </span>
-          <span className="sust-stake-card__role-tag">{profile.role}</span>
-          {profile.currentStatus && (
-            <span className="sust-stake-card__status-tag">
-              {profile.currentStatus}
-            </span>
-          )}
-        </div>
-        <h3 className="sust-stake-card__name">{profile.name}</h3>
-        {profile.organization && (
-          <p className="sust-stake-card__org">{profile.organization}</p>
-        )}
+        <span className="sust-stake-card__index">{profile.index}</span>
+        <h4 className="sust-stake-card__name">{profile.name}</h4>
+        {profile.role ? <span className="sust-stake-card__role">{profile.role}</span> : null}
       </header>
 
-      {profile.relevantStakeholder && (
-        <div className="sust-stake-card__relevant">
-          <p className="sust-stake-card__relevant-label">Relevant Stakeholder</p>
-          <p className="sust-stake-card__relevant-text">
-            {profile.relevantStakeholder}
-          </p>
-        </div>
-      )}
-
-      <div className="sust-stake-card__body">
-        {challenge && (
-          <div className="sust-stake-card__field sust-stake-card__field--challenge">
-            <span className="sust-stake-card__field-label">Challenge</span>
-            <p className="sust-stake-card__field-content">{challenge}</p>
-          </div>
+      <dl className="sust-stake-card__fields">
+        {FIELDS.map(([key, label]) =>
+          profile[key] ? (
+            <div className="sust-stake-card__field" key={key}>
+              <dt>{label}</dt>
+              <dd>
+                <RichText text={profile[key]} />
+              </dd>
+            </div>
+          ) : null,
         )}
-
-        {keyInsight && (
-          <div className="sust-stake-card__field sust-stake-card__field--insight">
-            <span className="sust-stake-card__field-label">Key Insight</span>
-            <p className="sust-stake-card__field-content">{keyInsight}</p>
-          </div>
-        )}
-
-        {whatChanged && (
-          <div className="sust-stake-card__field sust-stake-card__field--changed">
-            <span className="sust-stake-card__field-label">What Changed</span>
-            <p className="sust-stake-card__field-content">{whatChanged}</p>
-          </div>
-        )}
-
-        {profile.improvement && !whatChanged && (
-          <div className="sust-stake-card__field sust-stake-card__field--improvement">
-            <span className="sust-stake-card__field-label">Improvement</span>
-            <p className="sust-stake-card__field-content">{profile.improvement}</p>
-          </div>
-        )}
-      </div>
+      </dl>
 
       <footer className="sust-stake-card__footer">
-        <div className="sust-stake-card__meta">
-          <span className="sust-stake-card__sdg-pills">
-            {profile.sdgAddressed}
-          </span>
-        </div>
-
-        {(profile.detailedArticle || profile.detailedInterview.length > 0) && (
-          <details
-            className="sust-stake-card__more"
-            open={open}
-            onToggle={(e) => setOpen(e.currentTarget.open)}
+        <span className="sust-stake-card__status">{profile.currentStatus}</span>
+        <ul className="sust-stake-card__sdgs" aria-label="SDGs addressed">
+          {profile.sdgs.map((sdg) => (
+            <li key={sdg} data-sdg={sdg}>
+              SDG {sdg}
+            </li>
+          ))}
+        </ul>
+        {profile.article ? (
+          <button
+            type="button"
+            className="sust-stake-card__toggle"
+            aria-expanded={open}
+            aria-controls={articleId}
+            onClick={() => setOpen((value) => !value)}
           >
-            <summary className="sust-stake-card__summary">
-              <span className="sust-stake-card__toggle-label">
-                {open ? "收起详细内容 / Close" : "Click more / 详细访谈与记录"}
-              </span>
-              <span className="sust-stake-card__toggle-arrow" aria-hidden="true">
-                {open ? "▲" : "▼"}
-              </span>
-            </summary>
-            <div className="sust-stake-card__more-body">
-              <ExpandedArticle profile={profile} open={open} />
-            </div>
-          </details>
-        )}
+            {open ? "Show less" : "Click more"}
+          </button>
+        ) : null}
       </footer>
+
+      {profile.article ? (
+        <div className="sust-stake-card__more" id={articleId} hidden={!open}>
+          {open ? <ArticleView article={profile.article} /> : null}
+        </div>
+      ) : null}
     </article>
   );
 }

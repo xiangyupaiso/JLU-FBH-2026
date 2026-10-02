@@ -2,38 +2,25 @@ import {
   sstqnScoringSteps,
   type SstqnScoringStep,
 } from "../../../../../data/engagement/sustainability/sustainabilityData";
-import "../../../../../styles/sustainability-panels.css";
-
-const DEFAULT_CAPTION =
-  "Evidence-calibrated Directed Interaction Score 评分流程：机制清晰度、跨情境重复性、因果证据与数据兼容性四项输入，经证据校准后，输出范围为 [−1, 1] 的有向相互作用评分（正值 Synergy，负值 Trade-off）。";
 
 /**
- * Compact prose-anchored stepper replacing the full-width flowchart. The
- * pipeline is the same four inputs → calibration → output, but rendered as a
- * small vertical stack with two semantic colours (navy calibration, neutral
- * output) instead of a wide SVG with arrowheads.
+ * Evidence-calibrated Directed Interaction Score as a small vertical stepper:
+ * four evidence inputs → calibration → score on [−1, 1].
  */
 export function SSTQNScoreProcess({
   steps = sstqnScoringSteps,
-  caption = DEFAULT_CAPTION,
 }: {
   steps?: ReadonlyArray<SstqnScoringStep>;
-  caption?: string;
 }) {
   const inputs = steps.filter((step) => step.role === "input");
   const calibration = steps.find((step) => step.role === "calibration");
   const output = steps.find((step) => step.role === "output");
 
   return (
-    <figure className="sust-score-stepper">
+    <figure className="sust-score-stepper" aria-label="Evidence-calibrated Directed Interaction Score">
       <div className="sust-score-stepper__inputs">
         {inputs.map((step) => (
-          <span
-            key={step.id}
-            className="sust-score-stepper__input"
-            title={step.description}
-            aria-label={`${step.label}：${step.description}`}
-          >
+          <span key={step.id} className="sust-score-stepper__input">
             {step.label}
           </span>
         ))}
@@ -41,31 +28,16 @@ export function SSTQNScoreProcess({
       <span className="sust-score-stepper__arrow" aria-hidden="true">
         ↓
       </span>
-      {calibration ? (
-        <div
-          className="sust-score-stepper__cal"
-          aria-label={`${calibration.label}：${calibration.description}`}
-        >
-          {calibration.label}
-        </div>
-      ) : null}
+      {calibration ? <div className="sust-score-stepper__cal">{calibration.label}</div> : null}
       <span className="sust-score-stepper__arrow" aria-hidden="true">
         ↓
       </span>
       {output ? (
-        <div
-          className="sust-score-stepper__out"
-          aria-label={`${output.label}：${output.description}`}
-        >
-          <span className="sust-score-stepper__out-label">
-            Directed Interaction Score
-          </span>
+        <div className="sust-score-stepper__out">
+          <span className="sust-score-stepper__out-label">{output.label}</span>
           <span className="sust-score-stepper__out-range">[−1, 1]</span>
         </div>
       ) : null}
-      <figcaption className="sust-chart-caption">{caption}</figcaption>
     </figure>
   );
 }
-
-

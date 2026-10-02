@@ -1,72 +1,60 @@
-import {
-  patientChatMessages,
-  type PatientChatId,
-  type PatientChatSide,
-} from "../../../../../data/engagement/sustainability/sustainabilityData";
+import { useEffect, useRef, useState, type CSSProperties } from "react";
+import type { ChatQuote } from "../../../../../data/engagement/sustainability/sdgChapterContract";
+import { RichText } from "./RichText";
 
-interface PatientChatGroup {
-  patientId: PatientChatId;
-  side: PatientChatSide;
-  messages: string[];
-}
+/** Gap between two messages "arriving", in seconds. */
+const STEP = 0.6;
 
-/** 把扁平消息按 patientId 连续段聚合成 4 个分组（A/B/C/D 各 2 条）。 */
-function groupPatientMessages(): PatientChatGroup[] {
-  const groups: PatientChatGroup[] = [];
-  for (const m of patientChatMessages) {
-    const last = groups[groups.length - 1];
-    if (last && last.patientId === m.patientId) {
-      last.messages.push(m.text);
-    } else {
-      groups.push({
-        patientId: m.patientId,
-        side: m.side,
-        messages: [m.text],
-      });
+/**
+ * Direct quotes from patients and caregivers, shown as a chat run inside a
+ * stakeholder article. Bubbles alternate sides; named speakers get their
+ * letter as avatar ("Patient A" → A), anonymous family voices a quote mark.
+ * Messages pop in one after another, like a conversation being sent, once
+ * the run scrolls into view.
+ */
+export function PatientChatDialog({ quotes }: { quotes: ReadonlyArray<ChatQuote> }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const [playing, setPlaying] = useState(false);
+
+  useEffect(() => {
+    const node = ref.current;
+    if (!node || !("IntersectionObserver" in window)) {
+      setPlaying(true);
+      return;
     }
-  }
-  return groups;
-}
-
-export function PatientChatDialog() {
-  const groups = groupPatientMessages();
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) return;
+        setPlaying(true);
+        observer.disconnect();
+      },
+      { threshold: 0.2 },
+    );
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, []);
 
   return (
-    <div className="chat-container">
-      <div className="chat-container__list">
-        {groups.map((group, i) => {
-          const baseDelay = i * 0.6;
-          return (
-            <div
-              className={`chat-group chat-group--${group.side}`}
-              key={group.patientId}
-            >
-              <span
-                className="chat-avatar"
-                aria-hidden="true"
-                style={{ animationDelay: `${baseDelay}s` }}
-              >
-                {group.patientId}
-              </span>
-              <div className="chat-group__col">
-                {group.messages.map((text, j) => (
-                  <p
-                    className="chat-bubble"
-                    key={j}
-                    style={{
-                      animationDelay: `${baseDelay + j * 0.25}s`,
-                    }}
-                  >
-                    {text}
-                  </p>
-                ))}
-              </div>
-            </div>
-          );
-        })}
-      </div>
+    <div ref={ref} className={`chat-container${playing ? " is-playing" : ""}`}>
+      {quotes.map((quote, index) => (
+        <figure
+          key={index}
+          className={`chat-group chat-group--${index % 2 === 0 ? "left" : "right"}`}
+          style={{ "--chat-delay": `${index * STEP}s` } as CSSProperties}
+        >
+          <span className="chat-avatar" aria-hidden="true">
+            {quote.speaker ? quote.speaker.slice(-1) : "“"}
+          </span>
+          <div className="chat-group__col">
+            {quote.speaker ? (
+              <span className="chat-speaker">{quote.speaker}</span>
+            ) : null}
+            <blockquote className="chat-bubble">
+              <RichText text={quote.text} />
+            </blockquote>
+          </div>
+        </figure>
+      ))}
     </div>
   );
 }
-
-

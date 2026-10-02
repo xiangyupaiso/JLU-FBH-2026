@@ -1,48 +1,47 @@
-import type { OverviewFrameworkCard } from "../../../../../data/engagement/sustainability/sustainabilityData";
-import "../../../../../styles/sustainability-panels.css";
+import type { ImpactTier } from "../../../../../data/engagement/sustainability/sustainabilityData";
+
+const jump = (target: string) =>
+  document.getElementById(target)?.scrollIntoView({ behavior: "smooth", block: "start" });
 
 /**
- * 3-column Set-Develop-Grow cards matching image 4.png with clickable SDG jump pills.
+ * SET / DEVELOP / GROW tiers. Each tier lists its SDGs in the data; only the
+ * ones whose chapter is on the page (those with a `target`) render as jump
+ * pills, so a pill appears automatically once its chapter goes live.
  */
-export function OverviewSetDevelopGrowCards({
-  cards,
-}: {
-  cards: ReadonlyArray<OverviewFrameworkCard>;
-}) {
-  const handleJump = (targetAnchor: string) => {
-    const id = targetAnchor.replace(/^#/, "");
-    const targetElement = document.getElementById(id);
-    if (targetElement) {
-      targetElement.scrollIntoView({ behavior: "smooth", block: "start" });
-    }
-  };
-
+export function OverviewSetDevelopGrowCards({ tiers }: { tiers: ReadonlyArray<ImpactTier> }) {
   return (
-    <div className="sust-set-develop-grow-grid" data-wiki-reveal>
-      {cards.map((card) => (
-        <article className="sust-sdg-tier-card" key={card.layer}>
-          <header className="sust-sdg-tier-card__header">
-            <span className="sust-sdg-tier-card__kicker">{card.kicker}</span>
-            <h3 className="sust-sdg-tier-card__title">{card.title}</h3>
-            <p className="sust-sdg-tier-card__desc">{card.description}</p>
-          </header>
-          <div className="sust-sdg-tier-card__pills">
-            {card.sdgs.map((sdg) => (
-              <a
-                key={sdg.number}
-                href={sdg.targetAnchor}
-                className="sust-sdg-pill"
-                onClick={(e) => {
-                  e.preventDefault();
-                  handleJump(sdg.targetAnchor);
-                }}
-              >
-                {sdg.label}
-              </a>
-            ))}
-          </div>
-        </article>
-      ))}
+    <div className="sust-tier-grid">
+      {tiers.map((tier) => {
+        const linked = tier.sdgs.filter((sdg) => sdg.target);
+        return (
+          <article className="sust-tier-card" data-layer={tier.layer} key={tier.layer}>
+            <h4 className="sust-tier-card__title">
+              <span className="sust-tier-card__layer">{tier.layer}</span>
+              {tier.title}
+            </h4>
+            <p className="sust-tier-card__desc">{tier.description}</p>
+            {linked.length ? (
+              <ul className="sust-tier-card__sdgs">
+                {linked.map((sdg) => (
+                  <li key={sdg.number}>
+                    <a
+                      className="sust-sdg-pill"
+                      data-sdg={sdg.number}
+                      href={`#${sdg.target}`}
+                      onClick={(event) => {
+                        event.preventDefault();
+                        jump(sdg.target!);
+                      }}
+                    >
+                      SDG {sdg.number}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            ) : null}
+          </article>
+        );
+      })}
     </div>
   );
 }

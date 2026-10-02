@@ -1,32 +1,35 @@
+import type { MouseEvent } from "react";
 import type { CoreSdg } from "../../../../../data/engagement/sustainability/sustainabilityData";
-import "../../../../../styles/sustainability-panels.css";
+
+const jump = (event: MouseEvent<HTMLAnchorElement>, target: string) => {
+  event.preventDefault();
+  document.getElementById(target)?.scrollIntoView({ behavior: "smooth", block: "start" });
+};
 
 /**
- * SDG Card for Overview matching image 11.png.
- * Static presentation without 3D flip per editorial directive:
- * colored top bar, prominent SDG number, title, and concise summary.
+ * Overview core-SDG card: SDG colour top bar, goal number and title, one-line
+ * focus. Links to the goal's chapter when that chapter is on the page.
  */
 export function SDGInteractiveCard({ sdg }: { sdg: CoreSdg }) {
-  return (
-    <article
-      className="sust-sdg-card sust-sdg-card--static"
-      style={{ "--sdg-accent": sdg.color.hex } as React.CSSProperties}
+  const body = (
+    <>
+      <span className="sust-sdg-card__number">SDG {sdg.number}</span>
+      <h4 className="sust-sdg-card__title">{sdg.title}</h4>
+      <p className="sust-sdg-card__summary">{sdg.summary}</p>
+    </>
+  );
+  return sdg.target ? (
+    <a
+      className="sust-sdg-card"
+      data-sdg={sdg.number}
+      href={`#${sdg.target}`}
+      onClick={(event) => jump(event, sdg.target!)}
     >
-      <div
-        className="sust-sdg-card__accent-bar"
-        style={{ backgroundColor: sdg.color.hex }}
-        aria-hidden="true"
-      />
-      <div className="sust-sdg-card__content">
-        <span
-          className="sust-sdg-card__number"
-          style={{ color: sdg.color.hex }}
-        >
-          {String(sdg.number).padStart(2, "0")}
-        </span>
-        <h3 className="sust-sdg-card__title">{sdg.title}</h3>
-        <p className="sust-sdg-card__summary">{sdg.summary}</p>
-      </div>
+      {body}
+    </a>
+  ) : (
+    <article className="sust-sdg-card" data-sdg={sdg.number}>
+      {body}
     </article>
   );
 }

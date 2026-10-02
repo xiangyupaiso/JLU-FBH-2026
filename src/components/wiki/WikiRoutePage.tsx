@@ -115,6 +115,12 @@ interface WikiRoutePageProps {
    * Description page). Defaults to plain `**bold**` rendering.
    */
   inlineRenderer?: InlineRenderer;
+  /**
+   * Deepest subheading level listed in the TOC, counted by index segments
+   * ("4.1" = 2, "4.1.1" = 3). Deeper subheadings stay on the page and in the
+   * scroll spy; the page can surface them elsewhere (e.g. a section rail).
+   */
+  outlineDepth?: number;
 }
 
 const STATUS_LABELS = {
@@ -553,7 +559,9 @@ function RouteBlock({
       return (
         <figure className="wiki-epigraph" data-wiki-reveal>
           <blockquote>“{renderInlineFormatting(block.quote)}”</blockquote>
-          <p className="wiki-epigraph__zh">{renderInlineFormatting(block.translationZh)}</p>
+          {block.translationZh ? (
+            <p className="wiki-epigraph__zh">{renderInlineFormatting(block.translationZh)}</p>
+          ) : null}
           <figcaption>
             {block.attribution} · {block.attributionRole}
           </figcaption>
@@ -844,6 +852,7 @@ export function WikiRoutePage({
   collapsibleSubheadings = false,
   protocolPairs,
   inlineRenderer,
+  outlineDepth,
 }: WikiRoutePageProps) {
   const rootRef = useRef<HTMLElement>(null);
   const interfaceRef = useRef<HTMLDivElement>(null);
@@ -957,7 +966,8 @@ export function WikiRoutePage({
     const subheadings = section.blocks
       ?.filter(
         (block): block is Extract<WikiContentBlock, { type: "subheading" }> =>
-          block.type === "subheading",
+          block.type === "subheading" &&
+          (!outlineDepth || block.index.split(".").length <= outlineDepth),
       )
       .map((block) => ({
         id: block.id,

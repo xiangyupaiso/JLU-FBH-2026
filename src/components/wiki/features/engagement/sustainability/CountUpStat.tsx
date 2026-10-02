@@ -1,65 +1,46 @@
 import { useEffect, useRef } from "react";
-import type { SustainabilityStat } from "../../../../../data/engagement/sustainability/sustainabilityData";
-import { prefersReducedMotion } from "./useInViewReveal";
-import "../../../../../styles/sustainability-panels.css";
+import type { SustainabilityStat } from "../../../../../data/engagement/sustainability/sdgChapterContract";
 
 /** cubic-bezier(.22,1,.36,1) 的等价近似曲线（easeOutQuart）。 */
 const easeOutQuart = (t: number) => 1 - Math.pow(1 - t, 4);
 
-/** 从 1 计数到 target（一次性），结束后逐字写回终值。 */
-function animateCount(
-  node: HTMLElement,
-  target: number,
-  duration: number,
-  delay: number,
-) {
+const format = (value: number, decimals = 0) => value.toFixed(decimals);
+
+/** Counts from 0 to the target once; the final frame writes the exact value. */
+function animateCount(node: HTMLElement, stat: SustainabilityStat, delay: number) {
+  const duration = stat.value < 100 ? 900 : 1200;
   const startedAt = performance.now() + delay;
   let frame = 0;
   const tick = (now: number) => {
     const progress = Math.min(1, Math.max(0, (now - startedAt) / duration));
-    const eased = easeOutQuart(progress);
-    const value = Math.round(1 + (target - 1) * eased);
-    node.textContent = String(value);
-    if (progress < 1) {
-      frame = window.requestAnimationFrame(tick);
-    } else {
-      node.textContent = String(target);
-    }
+    node.textContent = format(stat.value * easeOutQuart(progress), stat.decimals);
+    if (progress < 1) frame = window.requestAnimationFrame(tick);
   };
   frame = window.requestAnimationFrame(tick);
   return () => window.cancelAnimationFrame(frame);
 }
 
-export function CountUpStat({
-  stat,
-  delay = 0,
-}: {
-  stat: SustainabilityStat;
-  delay?: number;
-}) {
+export function CountUpStat({ stat, delay = 0 }: { stat: SustainabilityStat; delay?: number }) {
   const valueRef = useRef<HTMLSpanElement>(null);
+  const finalValue = format(stat.value, stat.decimals);
 
   useEffect(() => {
     const node = valueRef.current;
-    if (!node) return;
-    const target = Number.parseInt(node.textContent ?? "", 10);
-    if (!Number.isFinite(target)) return;
-    // 渐进增强：无动画 / 减动效时数字保持静态终值。
-    if (prefersReducedMotion() || typeof IntersectionObserver === "undefined") {
+    // Progressive enhancement: without motion the number stays at its value.
+    if (
+      !node ||
+      typeof IntersectionObserver === "undefined" ||
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    ) {
       return;
     }
-
-    const duration = target < 100 ? 900 : 1200;
     let cancelCount: (() => void) | undefined;
-
     const observer = new IntersectionObserver(
       (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            observer.disconnect();
-            cancelCount = animateCount(node, target, duration, delay);
-          }
-        });
+        if (entries.some((entry) => entry.isIntersecting)) {
+          observer.disconnect();
+          cancelCount = animateCount(node, stat, delay);
+        }
       },
       { threshold: 0.4 },
     );
@@ -68,23 +49,27 @@ export function CountUpStat({
       cancelCount?.();
       observer.disconnect();
     };
-  }, [delay, stat.value]);
+  }, [delay, stat]);
 
   return (
-    <div className="sust-count-stat">
-      <span
-        ref={valueRef}
-        className="sust-count-stat__value"
-        aria-label={String(stat.value)}
-      >
-        {stat.value}
+    <div className="sust-count-stat" role="group" aria-label={`${finalValue}${stat.unit ?? ""} ${stat.label}`}>
+      <span className="sust-count-stat__value" aria-hidden="true">
+        <span ref={valueRef}>{finalValue}</span>
+        {stat.unit}
       </span>
-      <span className="sust-count-stat__labels">
-        <strong>{stat.labelZh}</strong>
-        <em>{stat.labelEn}</em>
+      <span className="sust-count-stat__label" aria-hidden="true">
+        {stat.label}
       </span>
     </div>
   );
 }
 
-
+export function StatsGrid({ stats }: { stats: ReadonlyArray<SustainabilityStat> }) {
+  return (
+    <div className="sust-stats-grid">
+      {stats.map((stat, index) => (
+        <CountUpStat key={stat.id} stat={stat} delay={index * 80} />
+      ))}
+    </div>
+  );
+}
