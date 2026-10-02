@@ -1,0 +1,42 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* CirCure 基础色板 */
+  --paper: #eee7dc;
+  --paper-bright: #fcf8f1;
+  --wet-paper: #f4f2ed;
+  --wet-paper-light: #fbfaf7;
+  --wet-paper-deep: #ebe7df;
+  --navy: #173f78;
+  --navy-deep: #102f59;
+  --pink: #d784b3;
+  --pink-strong: #754356;
+  --ink-primary: #1b1719;
+  --ink-faint: rgba(27, 23, 25, 0.46);
+  --success: #2f6f68;
+  --danger: #df705b;
+
+  /* Button/Card 组件使用 --color-* 前缀别名 */
+  --color-navy-deep: #102f59;
+  --color-paper-bright: #fcf8f1;
+  --color-pink: #d784b3;
+  --color-pink-strong: #754356;
+  --color-map: #e5d9d2;
+  --color-ink-faint: rgba(27, 23, 25, 0.46);
+
+  /* 字体 */
+  --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-editorial: 'Iowan Old Style', 'Palatino Linotype', Baskerville, Georgia, serif;
+  --font-mono: 'SF Mono', 'Cascadia Code', 'Consolas', monospace;
+
+  /* 圆角 */
+  --radius-panel: 28px;
+  --radius-control: 6px;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+}

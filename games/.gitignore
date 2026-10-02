@@ -1,0 +1,14 @@
+# Each game is a self-contained npm project; the wiki root .gitignore already
+# covers node_modules and dist, but keep the guarantee local to this folder too.
+node_modules/
+dist/
+dist-ssr/
+*.tsbuildinfo
+
+# scratch dir used by scripts/check-runtime-assets.mjs
+breast-guardian/scripts/.tmp/
+
+# never commit local overrides or credentials
+.env
+.env.*
+!.env.example
