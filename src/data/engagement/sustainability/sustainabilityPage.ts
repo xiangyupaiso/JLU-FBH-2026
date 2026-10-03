@@ -123,7 +123,6 @@ const overviewSection: WikiSection = {
     prose(sustainabilityOverview.framework),
     feature("overview-set-develop-grow"),
     prose(sustainabilityOverview.stakeholders),
-    feature("stats"),
     fig("overviewMapOfStakeholders"),
     prose(sustainabilityOverview.scaleModel),
     fig("overviewScaleModel"),
@@ -146,6 +145,7 @@ const sstQnSection: WikiSection = {
   summary: "",
   blocks: [
     prose(sstqnSection.motivation),
+    feature("sdg-dimension-chord"),
     {
       type: "prose-linked",
       parts: [
@@ -154,25 +154,14 @@ const sstQnSection: WikiSection = {
         { text: sstqnSection.accelerationWeek },
       ],
     },
-    {
-      type: "split",
-      id: "sstqn-classification",
-      prose: [prose(sstqnSection.statusIntro)],
-      aside: feature("sstqn-matrix"),
-    },
+    prose(sstqnSection.statusIntro),
+    fig("sstQnStatusClassification"),
     prose(sstqnSection.boundaryIntro),
     feature("sdg-boundary-matrix"),
-    {
-      type: "split",
-      id: "sstqn-score",
-      prose: [prose(sstqnSection.scoreIntro)],
-      aside: feature("sstqn-score-flow"),
-    },
+    prose(sstqnSection.scoreIntro),
     feature("sdg-interaction-heatmap"),
     prose(sstqnSection.indirectPropagation),
-    feature("sdg-dimension-chord"),
     prose(sstqnSection.alignmentScreening, sstqnSection.reproducibility),
-    feature("pdf-sst-qn"),
     prose(sstqnSection.transition),
   ],
 };

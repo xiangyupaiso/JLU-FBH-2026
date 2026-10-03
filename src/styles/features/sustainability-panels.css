@@ -133,7 +133,7 @@ a.sust-sdg-card:focus-visible {
 .sust-tier-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 14px;
+  gap: 16px;
 }
 
 .sust-tier-card {
@@ -141,15 +141,57 @@ a.sust-sdg-card:focus-visible {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  padding: 18px;
-  border: 1px solid var(--route-line);
-  border-radius: 10px;
+  padding: 20px;
+  border: 1.5px solid var(--route-line);
+  border-radius: 12px;
   background: color-mix(in srgb, var(--route-main) calc(100% - var(--tier)), #fff);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.sust-tier-card[data-layer="SET"] { --tier: 70%; }
-.sust-tier-card[data-layer="DEVELOP"] { --tier: 82%; }
-.sust-tier-card[data-layer="GROW"] { --tier: 92%; }
+.sust-tier-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.05);
+}
+
+.sust-tier-card[data-layer="SET"] {
+  background: #f6fef2;
+  border-color: #c8dbc8;
+}
+
+.sust-tier-card[data-layer="SET"] .sust-tier-card__layer {
+  color: #3d7a48;
+}
+
+.sust-tier-card[data-layer="SET"] .sust-tier-card__title {
+  color: #244b2a;
+}
+
+.sust-tier-card[data-layer="DEVELOP"] {
+  background: #fdf4ff;
+  border-color: #d8aec8;
+}
+
+.sust-tier-card[data-layer="DEVELOP"] .sust-tier-card__layer {
+  color: #8d3e6f;
+}
+
+.sust-tier-card[data-layer="DEVELOP"] .sust-tier-card__title {
+  color: #4a1f39;
+}
+
+.sust-tier-card[data-layer="GROW"] {
+  background: #fff7ed;
+  border-color: #f6bf93;
+}
+
+.sust-tier-card[data-layer="GROW"] .sust-tier-card__layer {
+  color: #c9651a;
+}
+
+.sust-tier-card[data-layer="GROW"] .sust-tier-card__title {
+  color: #5a2c09;
+}
 
 .sust-tier-card__title {
   display: flex;
@@ -164,10 +206,11 @@ a.sust-sdg-card:focus-visible {
 }
 
 .sust-tier-card__layer {
-  color: var(--route-accent);
   font-family: var(--font-sans);
   font-size: 13px;
   font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
 }
 
 .sust-tier-card__desc {
@@ -850,10 +893,189 @@ a.sust-sdg-pill:focus-visible {
 
 /* L · reusable tools ------------------------------------------------------- */
 
-.sust-tool-grid {
+/* The archive: a cabinet of folders on the left, the open folder's card on the
+   right. Folders are laid out 2×2 so the set reads as four physical folders. */
+.sust-archive {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+  gap: 20px;
+  align-items: start;
+}
+
+.sust-archive__cabinet {
+  display: grid;
   gap: 14px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+/* One tool needs no cabinet; three fall back to a single row. */
+.sust-archive--single .sust-archive__cabinet {
+  grid-template-columns: minmax(0, 1fr);
+  max-inline-size: 260px;
+}
+
+.sust-archive--3up .sust-archive__cabinet {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+/* A folder: a coloured cover with a cream paper edge sliding out of the top,
+   the whole folder lifting slightly when hovered or opened. */
+.sust-folder {
+  position: relative;
+  display: block;
+  inline-size: 100%;
+  padding: 0 0 12px;
+  border: 0;
+  background: none;
+  font: inherit;
+  text-align: start;
+  cursor: pointer;
+  isolation: isolate;
+}
+
+.sust-folder__paper {
+  position: absolute;
+  inset-inline: 6% 6%;
+  inset-block-start: 0;
+  block-size: 52%;
+  border-radius: 4px 4px 0 0;
+  background: #fffdf4;
+  border: 1px solid rgb(27 36 18 / 0.07);
+  border-block-end: 0;
+  box-shadow: 0 -2px 6px rgb(27 36 18 / 0.05);
+  transform: rotate(-1.6deg);
+  transform-origin: bottom center;
+  transition: transform 340ms var(--ease-out);
+}
+
+.sust-folder__paper-label {
+  position: absolute;
+  inset-inline: 0;
+  inset-block-end: 8px;
+  padding-inline: 9px;
+  overflow: hidden;
+  color: color-mix(in srgb, var(--route-muted) 78%, #8a7a68);
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.08em;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 240ms var(--ease-out);
+}
+
+.sust-folder__cover {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-block-size: 104px;
+  padding: 14px 15px 13px;
+  border-radius: 4px 9px 9px 9px;
+  background: var(--folder-tint, var(--route-soft));
+  box-shadow: 0 1px 2px rgb(27 36 18 / 0.07);
+  transition:
+    transform 340ms var(--ease-out),
+    box-shadow 340ms var(--ease-out);
+}
+
+/* The folder tab: a short raised lip on the top-left of the cover. */
+.sust-folder__cover::before {
+  content: "";
+  position: absolute;
+  inset-block-start: -9px;
+  inset-inline-start: 0;
+  inline-size: 38%;
+  block-size: 11px;
+  border-radius: 7px 7px 0 0;
+  background: var(--folder-tint, var(--route-soft));
+}
+
+.sust-folder__no {
+  color: color-mix(in srgb, var(--route-ink) 62%, transparent);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+}
+
+.sust-folder__title {
+  color: var(--route-heading-ink, var(--route-ink));
+  font-family: var(--font-editorial);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.sust-folder__meta {
+  margin-block-start: auto;
+  color: color-mix(in srgb, var(--route-ink) 58%, transparent);
+  font-size: 11px;
+}
+
+/* Paper slides further out and the folder lifts on hover / keyboard focus. */
+.sust-folder:hover .sust-folder__paper,
+.sust-folder:focus-visible .sust-folder__paper {
+  transform: rotate(-4deg) translateY(-7px);
+}
+
+.sust-folder:hover .sust-folder__paper-label,
+.sust-folder:focus-visible .sust-folder__paper-label {
+  opacity: 1;
+}
+
+.sust-folder:hover .sust-folder__cover,
+.sust-folder:focus-visible .sust-folder__cover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 18px rgb(27 36 18 / 0.12);
+}
+
+/* The open folder keeps the paper out and sits proud of its neighbours. */
+.sust-folder[aria-selected="true"] .sust-folder__paper {
+  transform: rotate(-3deg) translateY(-14px);
+}
+
+.sust-folder[aria-selected="true"] .sust-folder__paper-label {
+  opacity: 1;
+}
+
+.sust-folder[aria-selected="true"] .sust-folder__cover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 26px rgb(27 36 18 / 0.16);
+}
+
+/* A ring on the cover keeps the open folder identifiable even when a decorative
+   sticker overlaps it. */
+.sust-folder[aria-selected="true"] .sust-folder__cover::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 2px solid var(--route-main);
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.sust-folder:focus-visible {
+  outline: 2px solid var(--route-accent);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+/* Four tints drawn from the existing cream / olive / orange palette. */
+.sust-folder[data-tint="peach"] {
+  --folder-tint: color-mix(in srgb, var(--route-soft) 74%, #ffffff);
+}
+
+.sust-folder[data-tint="wheat"] {
+  --folder-tint: color-mix(in srgb, var(--route-base) 62%, #f3e3c2);
+}
+
+.sust-folder[data-tint="sage"] {
+  --folder-tint: color-mix(in srgb, #dfe8d2 74%, #ffffff);
+}
+
+.sust-folder[data-tint="sand"] {
+  --folder-tint: color-mix(in srgb, var(--route-main) 26%, #f6ead6);
 }
 
 .sust-tool-card {
@@ -862,8 +1084,14 @@ a.sust-sdg-pill:focus-visible {
   gap: 12px;
   padding: 18px;
   border: 1px solid var(--route-line);
+  border-top: 3px solid var(--route-main);
   border-radius: 10px;
   background: #fff;
+}
+
+.sust-tool-card:focus-visible {
+  outline: 2px solid var(--route-accent);
+  outline-offset: 2px;
 }
 
 .sust-tool-card__title {
@@ -943,7 +1171,11 @@ a.sust-sdg-pill:focus-visible {
 }
 
 .sust-evidence__item .wiki-figure {
-  margin: 12px 0 0 !important;
+  margin: 12px auto 0 !important;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 
 /* Chapter subsection rail ---------------------------------------------------
@@ -989,8 +1221,9 @@ a.sust-sdg-pill:focus-visible {
   width: 100%;
   height: var(--scale-step);
   border-radius: 999px;
-  background: linear-gradient(180deg, var(--route-soft), var(--route-main));
-  box-shadow: 0 2px 6px color-mix(in srgb, var(--route-main) 40%, transparent);
+  background: #ffffff;
+  border: 1.5px solid var(--route-line, rgba(27, 23, 25, 0.15));
+  box-shadow: 0 2px 8px rgba(27, 23, 25, 0.14);
   opacity: 0;
   transform: translateY(calc(var(--scale-index, 0) * var(--scale-step)));
   transition:
@@ -1025,18 +1258,37 @@ a.sust-sdg-pill:focus-visible {
 }
 
 .sust-scale-rail .sust-scale__letter {
-  font-size: 11px;
-  font-weight: 700;
+  font-size: 12px;
+  font-weight: 800;
   line-height: 1;
-  transition: color var(--duration-fast) var(--ease-out);
+  transition: transform var(--duration-fast) var(--ease-out), color var(--duration-fast) var(--ease-out);
 }
 
-.sust-scale-rail .is-done .sust-scale__letter {
-  color: var(--route-accent);
+/* FIG02 exact colors for SCALE rail letters */
+.sust-scale-rail [data-scale-step="S"] .sust-scale__letter,
+.sust-scale-rail .sust-scale__letter[data-scale-step="S"] {
+  color: #96c85b !important;
+}
+.sust-scale-rail [data-scale-step="C"] .sust-scale__letter,
+.sust-scale-rail .sust-scale__letter[data-scale-step="C"] {
+  color: #8cdafe !important;
+}
+.sust-scale-rail [data-scale-step="A"] .sust-scale__letter,
+.sust-scale-rail .sust-scale__letter[data-scale-step="A"] {
+  color: #fead58 !important;
+}
+.sust-scale-rail [data-scale-step="L"] .sust-scale__letter,
+.sust-scale-rail .sust-scale__letter[data-scale-step="L"] {
+  color: #fed240 !important;
+}
+.sust-scale-rail [data-scale-step="E"] .sust-scale__letter,
+.sust-scale-rail .sust-scale__letter[data-scale-step="E"] {
+  color: #7030a0 !important;
 }
 
 .sust-scale-rail.has-current .is-current .sust-scale__letter {
-  color: #fff;
+  transform: scale(1.18);
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.15));
 }
 
 .sust-scale-rail .sust-scale__button:focus-visible {
@@ -1130,13 +1382,275 @@ a.sust-sdg-pill:focus-visible {
   }
 }
 
-@media (max-width: 640px) {
-  .sust-tool-grid {
+@media (max-width: 900px) {
+  .sust-archive {
     grid-template-columns: minmax(0, 1fr);
   }
+}
 
+@media (max-width: 640px) {
   .chat-bubble {
     max-width: 100%;
+  }
+}
+
+/* ============================================================================
+   S · Stakeholder photo reel
+   ----------------------------------------------------------------------------
+   The engagement photographs are part of the printed card, not a widget slid
+   on top of it. The layer bleeds off the card's right edge and past its top
+   rule, its left margin dissolves into the card paper with a wide `mask-image`
+   ramp (no dark scrim — legibility comes from the narrowed measure instead),
+   and the frames cross-fade with an alternating breath so no two neighbours
+   drift alike. Only `opacity` / `transform` animate.
+   ========================================================================== */
+
+.sust-stake-reel {
+  position: absolute;
+  z-index: 0;
+  top: 3px; /* bleeds to the inner edge of the 3px orange top rule */
+  right: 0;
+  width: 44%;
+  bottom: 62px; /* stops at the footer's divider line */
+  pointer-events: none;
+  overflow: hidden;
+  /* Left ramp ≈48% of the layer, plus a light top/bottom dissolve so the photo
+     never hard-cuts against the card edge. */
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    rgb(0 0 0 / 0.34) 22%,
+    rgb(0 0 0 / 0.82) 40%,
+    #000 50%,
+    #000 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    rgb(0 0 0 / 0.34) 22%,
+    rgb(0 0 0 / 0.82) 40%,
+    #000 50%,
+    #000 100%
+  );
+}
+
+.sust-stake-reel__frame {
+  position: absolute;
+  inset: 0;
+}
+
+.sust-stake-reel__img {
+  position: absolute;
+  inset: 0;
+  inline-size: 100%;
+  block-size: 100%;
+  object-fit: cover;
+  /* One grade for the whole set so the sequence reads as a single roll of
+     film: slightly desaturated, warmed, gently flattened. */
+  filter: saturate(0.85) sepia(0.12) contrast(0.96);
+  opacity: 0;
+  transform: scale(1);
+  transition: opacity var(--reel-fade, 1.3s) cubic-bezier(0.4, 0, 0.2, 1);
+  animation: sust-reel-breathe 12s ease-in-out infinite alternate;
+}
+
+/* Neighbouring frames drift in opposite directions; the others rest. */
+.sust-stake-reel__img:nth-child(odd) {
+  animation-name: sust-reel-breathe-in;
+}
+
+.sust-stake-reel__img:nth-child(even) {
+  animation-name: sust-reel-breathe-out;
+}
+
+.sust-stake-reel__img[data-active] {
+  opacity: 1;
+}
+
+@keyframes sust-reel-breathe-in {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.06);
+  }
+}
+
+@keyframes sust-reel-breathe-out {
+  from {
+    transform: scale(1.06);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+/* Caption sits on the photo: serif italic, cream, whisper-weight shadow. */
+.sust-stake-reel__caption {
+  position: absolute;
+  inset-inline: 22% 14px;
+  bottom: 10px;
+  margin: 0;
+  color: color-mix(in srgb, var(--route-paper) 82%, #fff);
+  font-family: var(--font-editorial);
+  font-size: 12px;
+  font-style: italic;
+  line-height: 1.4;
+  text-shadow: 0 1px 3px rgb(27 36 18 / 0.5);
+  animation: sust-reel-caption 1.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* The single piece of chrome: a plate number over a hairline that fills across
+   the dwell. No dots, no arrows. The fill only runs while the reel is on screen
+   and not held, so a held or unseen reel never shows a half-filled rule. */
+.sust-stake-reel__count {
+  position: absolute;
+  inset-inline: 22% 14px;
+  top: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  color: color-mix(in srgb, var(--route-paper) 88%, #fff);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-shadow: 0 1px 4px rgb(27 36 18 / 0.7);
+}
+
+.sust-stake-reel__rule {
+  position: relative;
+  flex: 1;
+  block-size: 2px;
+  background: color-mix(in srgb, var(--route-paper) 40%, transparent);
+}
+
+.sust-stake-reel__rule-fill {
+  display: block;
+  inline-size: 0;
+  block-size: 100%;
+  background: var(--route-main);
+}
+
+.sust-stake-reel__rule[data-holding] .sust-stake-reel__rule-fill {
+  animation: sust-reel-fill var(--reel-dwell, 3.8s) linear forwards;
+}
+
+@keyframes sust-reel-fill {
+  from {
+    inline-size: 0;
+  }
+  to {
+    inline-size: 100%;
+  }
+}
+
+@keyframes sust-reel-caption {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* With a photo present the copy is constrained to the left of the plate. */
+.sust-stake-card--with-photos {
+  position: relative;
+  overflow: hidden;
+}
+
+.sust-stake-card--with-photos .sust-stake-card__body {
+  position: relative;
+  z-index: 1;
+  padding-inline-end: 6%;
+}
+
+.sust-stake-card--with-photos .sust-stake-card__fields {
+  max-inline-size: 62ch;
+}
+
+.sust-stake-card--with-photos .sust-stake-card__footer {
+  position: relative;
+  z-index: 1;
+}
+
+/* Engagement photos inside the "Click more" article sit at body width. */
+.sust-stake-article__figure {
+  margin: 18px 0 4px;
+}
+
+.sust-stake-article__figure img {
+  display: block;
+  inline-size: 100%;
+  block-size: auto;
+  border-radius: 8px;
+}
+
+.sust-stake-article__figure figcaption {
+  margin-top: 7px;
+  color: var(--route-muted);
+  font-family: var(--font-editorial);
+  font-size: 13px;
+  font-style: italic;
+  line-height: 1.5;
+}
+
+/* <900px: the plate becomes a band across the top of the card and dissolves
+   downward into the copy. It stays first in the DOM, so on wide screens it is
+   only taken out of flow and anchored to the right. */
+@media (max-width: 900px) {
+  .sust-stake-reel {
+    position: relative;
+    top: auto;
+    right: auto;
+    bottom: auto;
+    inline-size: 100%;
+    block-size: clamp(180px, 38vw, 280px);
+    margin: -20px calc(-1 * clamp(16px, 2.4vw, 26px)) 18px;
+    -webkit-mask-image: linear-gradient(
+      to bottom,
+      #000 0%,
+      #000 58%,
+      rgb(0 0 0 / 0.5) 80%,
+      transparent 100%
+    );
+    mask-image: linear-gradient(
+      to bottom,
+      #000 0%,
+      #000 58%,
+      rgb(0 0 0 / 0.5) 80%,
+      transparent 100%
+    );
+  }
+
+  .sust-stake-reel__caption,
+  .sust-stake-reel__count {
+    inset-inline: clamp(16px, 2.4vw, 26px) 14px;
+  }
+
+  .sust-stake-card--with-photos .sust-stake-card__body {
+    padding-inline-end: 0;
+  }
+
+  .sust-stake-card--with-photos .sust-stake-card__fields {
+    max-inline-size: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sust-stake-reel__img {
+    animation: none;
+    transition: opacity 600ms linear;
+  }
+
+  .sust-stake-reel__caption {
+    animation: none;
+  }
+
+  /* The hairline is progress, not decoration — keep it filling. */
+  .sust-stake-reel__rule-fill {
+    animation-duration: 1ms;
   }
 }
 
@@ -1157,5 +1671,203 @@ a.sust-sdg-pill:focus-visible {
   .chat-bubble {
     opacity: 1;
     animation: none !important;
+  }
+}
+
+/* ============================================================================
+   Sustainability Page Exception: Section Headings with Colon Stay on One Line
+   ----------------------------------------------------------------------------
+   In general wiki routes, a colon in a section title causes a break with a
+   smaller sub-title. On the Sustainability page (e.g. "SET: Addressing Core
+   Challenges"), keep lead and sub on the exact same line as requested.
+   ========================================================================== */
+
+.wiki-section__heading h2 .wiki-heading-line {
+  display: inline !important;
+}
+
+.wiki-section__heading h2 .wiki-heading-line--lead {
+  margin-right: 0.35em !important;
+}
+
+.wiki-section__heading h2 .wiki-heading-marker--sub {
+  font-size: clamp(21px, 2.2vw, 25px) !important;
+  font-weight: 750 !important;
+  line-height: inherit !important;
+}
+
+/* ============================================================================
+   SDG Chapter & SCALE Subsection Headings: Official SDG & FIG02 Colors
+   ============================================================================ */
+
+/* SDG3: Good Health and Well-being (Official UN SDG Green #4c9f38) */
+.wiki-page--sustainability #sdg3-health .wiki-subheading__title,
+.wiki-page--sustainability [id$="-health"] .wiki-subheading__title {
+  color: #4c9f38 !important;
+}
+
+/* S — Stakeholder Insights (FIG02 Leaf Green #96c85b) */
+.wiki-page--sustainability #sdg3-stakeholders .wiki-subheading__title,
+.wiki-page--sustainability [id$="-stakeholders"] .wiki-subheading__title {
+  color: #96c85b !important;
+}
+
+/* C — Consequences & Interactions (FIG02 Sky Blue #8cdafe) */
+.wiki-page--sustainability #sdg3-consequences .wiki-subheading__title,
+.wiki-page--sustainability [id$="-consequences"] .wiki-subheading__title {
+  color: #8cdafe !important;
+}
+
+/* A — Alignment with CirCure (FIG02 Peach Orange #fead58) */
+.wiki-page--sustainability #sdg3-alignment .wiki-subheading__title,
+.wiki-page--sustainability [id$="-alignment"] .wiki-subheading__title {
+  color: #fead58 !important;
+}
+
+/* L — Legacy Tools (FIG02 Yellow/Gold #fed240) */
+.wiki-page--sustainability #sdg3-legacy .wiki-subheading__title,
+.wiki-page--sustainability [id$="-legacy"] .wiki-subheading__title {
+  color: #fed240 !important;
+}
+
+/* E — Evidence & Continual Review (FIG02 Purple #7030a0) */
+.wiki-page--sustainability #sdg3-evidence .wiki-subheading__title,
+.wiki-page--sustainability [id$="-evidence"] .wiki-subheading__title {
+  color: #7030a0 !important;
+}
+
+/* ============================================================================
+   Stakeholder Profile Popup Modal (Click More)
+   ============================================================================ */
+
+.sust-stake-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 16px;
+  background: rgba(20, 15, 12, 0.48);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  animation: sustFadeIn 200ms ease-out;
+}
+
+.sust-stake-modal {
+  position: relative;
+  width: 100%;
+  max-width: 780px;
+  max-height: 88vh;
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+  border-radius: 18px;
+  border: 1px solid rgba(27, 23, 25, 0.08);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.24);
+  overflow: hidden;
+  animation: sustModalScaleIn 240ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.sust-stake-modal__close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid var(--route-line, rgba(27, 23, 25, 0.12));
+  background: #ffffff;
+  color: var(--route-ink, #2c2523);
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+  transition: all 180ms ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+}
+
+.sust-stake-modal__close:hover {
+  background: #f5f2ed;
+  transform: rotate(90deg);
+}
+
+.sust-stake-modal__header {
+  padding: 24px 28px 20px;
+  border-bottom: 1px solid var(--route-line, rgba(27, 23, 25, 0.08));
+  background: linear-gradient(180deg, #faf7f2 0%, #ffffff 100%);
+}
+
+.sust-stake-modal__meta {
+  flex: 1;
+  min-width: 0;
+}
+
+.sust-stake-modal__tags {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.sust-stake-modal__name {
+  margin: 0;
+  font-family: var(--font-display, var(--font-sans));
+  font-size: clamp(20px, 2.2vw, 24px);
+  font-weight: 750;
+  color: var(--route-heading-ink, #2c2523);
+  line-height: 1.25;
+}
+
+.sust-stake-modal__body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 24px 28px 32px;
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--route-ink, #2c2523);
+}
+
+.sust-stake-modal__body .sust-stake-article {
+  margin: 0;
+}
+
+.sust-stake-modal__body .sust-stake-article__title {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  color: var(--route-heading-ink, #2c2523);
+}
+
+.sust-stake-modal__body .sust-stake-article__heading {
+  font-size: 15px;
+  font-weight: 700;
+  margin: 20px 0 8px;
+  color: var(--route-subheading-ink, #84382b);
+}
+
+@keyframes sustFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes sustModalScaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@media (max-width: 640px) {
+  .sust-stake-modal__body {
+    padding: 18px 18px 24px;
   }
 }

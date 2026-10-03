@@ -410,10 +410,7 @@ export function SdgDimensionChord() {
       </div>
       <div className="sust-chord__tooltip" ref={tipRef} />
       <figcaption className="sust-chart-caption">
-        SDG interactions grouped by dimension: the 17 SDGs (left arcs) and the
-        social, economic and ecological dimensions (right arcs), with synergies
-        solid and trade-offs hatched. Data: 99 directed edges, SST-QN Appendix B
-        Table B.1.
+        Weighted mapping of the 17 SDGs across social, economic, and environmental dimensions.
       </figcaption>
     </figure>
   );

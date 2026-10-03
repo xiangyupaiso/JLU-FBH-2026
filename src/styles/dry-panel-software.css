@@ -198,6 +198,8 @@
 .dry-panel--software .software-table-scroll table {
   width: 100%;
   min-width: 690px;
+  margin-left: auto;
+  margin-right: auto;
   border-collapse: collapse;
   font-size: 12px;
   line-height: 1.5;
@@ -209,7 +211,7 @@
   font-family: "SFMono-Regular", Consolas, monospace;
   font-size: 9px;
   letter-spacing: 0.08em;
-  text-align: left;
+  text-align: center;
   text-transform: uppercase;
 }
 

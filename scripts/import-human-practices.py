@@ -17,6 +17,11 @@ UNESCAPE = re.compile(r"\\([\\`*_{}\[\]()#+\-.!&])")
 IMAGE = re.compile(r"^!\[.*?\]\(.*?\)$")
 HEADING = re.compile(r"^(#{1,6})\s+(.+?)\s*$")
 SKIP = {"树状图", "表格Stakeholder Communication Strategy Matrix for iGEM"}
+# Heading text after the draft's Roman-numeral prefixes are stripped in flush_heading.
+SKIP_SUBHEADINGS = {
+    "Flow Diagram",
+    "Stakeholder Interview Contents under the CIRC Framework",
+}
 
 
 def clean(value: str) -> str:
@@ -38,10 +43,11 @@ current: dict | None = None
 paragraphs: list[str] = []
 pending_heading: tuple[str, int] | None = None
 heading_count = 0
+section_heading_count = 0
 
 
 def flush_heading() -> None:
-    global pending_heading, heading_count
+    global pending_heading, heading_count, section_heading_count
     if pending_heading is None or current is None:
         return
     title, level = pending_heading
@@ -51,11 +57,14 @@ def flush_heading() -> None:
         return
     flush_paragraphs(current["blocks"], paragraphs)
     heading_count += 1
+    section_heading_count += 1
+    # The sidebar numbers subheadings per chapter ("3.1", "3.2"), matching the
+    # Description page, so the draft's "I./II./III." prefixes leave the title.
     current["blocks"].append({
         "type": "subheading",
         "id": f"hp-{current['id']}-{heading_count}",
-        "index": f"{heading_count:02d}",
-        "title": title,
+        "index": f"{int(current['index'])}.{section_heading_count}",
+        "title": re.sub(r"^(?:[IVX]+)\.\s*", "", title),
     })
 
 
@@ -78,6 +87,7 @@ for raw in lines:
                 "summary": "",
                 "blocks": [],
             }
+            section_heading_count = 0
             pending_heading = None
             continue
         if current is None:
@@ -101,6 +111,7 @@ for raw in lines:
                 "summary": "",
                 "blocks": [],
             }
+            section_heading_count = 0
             pending_heading = None
             continue
         if level == 1 and title == "Summary":
@@ -173,7 +184,9 @@ origin_interviews: list[dict] = []
 active_interview: dict | None = None
 for block in dialogue_blocks:
     if block["type"] == "subheading":
-        if block["title"].startswith("IV."):
+        # "IV. Stakeholder Interview Contents..." is the flow's own heading, not
+        # an interview; the tree renders it as its screen-reader title.
+        if block["title"] in SKIP_SUBHEADINGS:
             continue
         if active_interview is not None:
             origin_interviews.append(active_interview)

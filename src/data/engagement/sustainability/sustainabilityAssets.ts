@@ -9,17 +9,20 @@
  *
  * SST-QN Figures 5–7 are rendered as interactive charts (ECharts), and the
  * Overview SDG / SET-DEVELOP-GROW graphics as components, so they have no
- * image entry here. The three SDG 3 Evidence experiment figures (#3–#5) have
- * no source file yet; add their keys here once the images are supplied.
+ * image entry here. Engagement photographs live in `sustainabilityPhotos.ts`.
  */
 
 import overviewMapOfStakeholdersImg from "../../../assets/wiki/sustainability/sustainability-overview-map-of-stakeholders.png";
 import overviewScaleModelImg from "../../../assets/wiki/sustainability/sustainability-overview-scale-model.png";
 import overviewSstQnNetworkImg from "../../../assets/wiki/sustainability/sustainability-overview-sst-qn-network.png";
 import overviewReusableToolkitImg from "../../../assets/wiki/sustainability/sustainability-overview-reusable-toolkit.png";
-import frameworkSetDevelopGrowImg from "../../../assets/wiki/sustainability/sustainability-framework-set-develop-grow.png";
+import overviewSetDevelopGrowImg from "../../../assets/wiki/sustainability/sustainability-overview-set-develop-grow.png";
+import sstQnStatusClassificationImg from "../../../assets/wiki/sustainability/sustainability-sst-qn-status-classification.png";
 import sdg3StakeholdersDistributionImg from "../../../assets/wiki/sustainability/sustainability-sdg3-stakeholders-distribution.png";
 import sdg3TraceableImprovementsImg from "../../../assets/wiki/sustainability/sustainability-sdg3-traceable-improvements.png";
+import sdg3DcMaturationFlowImg from "../../../assets/wiki/sustainability/sustainability-sdg3-dc-maturation-flow.png";
+import sdg3SplenocyteFlowImg from "../../../assets/wiki/sustainability/sustainability-sdg3-splenocyte-flow.png";
+import sdg3TumorGrowthImg from "../../../assets/wiki/sustainability/sustainability-sdg3-tumor-growth.png";
 
 export type SustainabilityAssetKind = "image" | "pdf";
 
@@ -44,7 +47,7 @@ export const sustainabilityAssets = {
     localSourcePath: "src/assets/wiki/sustainability/sustainability-overview-map-of-stakeholders.png",
     localSrc: overviewMapOfStakeholdersImg,
     uploadUrl: `${IMG}/sustainability-overview-map-of-stakeholders.avif`,
-    alt: "Figure 1: Map of stakeholders",
+    alt: "Map of stakeholders",
     section: "Overview",
   },
   overviewScaleModel: {
@@ -53,7 +56,7 @@ export const sustainabilityAssets = {
     localSourcePath: "src/assets/wiki/sustainability/sustainability-overview-scale-model.png",
     localSrc: overviewScaleModelImg,
     uploadUrl: `${IMG}/sustainability-overview-scale-model.avif`,
-    alt: "Figure 2: SCALE Model",
+    alt: "SCALE Model",
     section: "Overview",
   },
   overviewSstQnNetwork: {
@@ -62,7 +65,7 @@ export const sustainabilityAssets = {
     localSourcePath: "src/assets/wiki/sustainability/sustainability-overview-sst-qn-network.png",
     localSrc: overviewSstQnNetworkImg,
     uploadUrl: `${IMG}/sustainability-overview-sst-qn-network.avif`,
-    alt: "Figure 3: SDG Synergy–Trade-off Quantification Network (SST-QN)",
+    alt: "SDG Synergy–Trade-off Quantification Network (SST-QN)",
     section: "Overview",
   },
   overviewReusableToolkit: {
@@ -71,16 +74,25 @@ export const sustainabilityAssets = {
     localSourcePath: "src/assets/wiki/sustainability/sustainability-overview-reusable-toolkit.png",
     localSrc: overviewReusableToolkitImg,
     uploadUrl: `${IMG}/sustainability-overview-reusable-toolkit.avif`,
-    alt: "Figure 4: Reusable Sustainability Toolkit",
+    alt: "Reusable Sustainability Toolkit",
     section: "Overview",
+  },
+  sstQnStatusClassification: {
+    kind: "image",
+    fileName: "sustainability-sst-qn-status-classification.png",
+    localSourcePath: "src/assets/wiki/sustainability/sustainability-sst-qn-status-classification.png",
+    localSrc: sstQnStatusClassificationImg,
+    uploadUrl: `${IMG}/sustainability-sst-qn-status-classification.avif`,
+    alt: "SST-QN Interaction Status Classification",
+    section: "SST-QN",
   },
   frameworkSetDevelopGrow: {
     kind: "image",
-    fileName: "sustainability-framework-set-develop-grow.png",
-    localSourcePath: "src/assets/wiki/sustainability/sustainability-framework-set-develop-grow.png",
-    localSrc: frameworkSetDevelopGrowImg,
+    fileName: "sustainability-overview-set-develop-grow.png",
+    localSourcePath: "src/assets/wiki/sustainability/sustainability-overview-set-develop-grow.png",
+    localSrc: overviewSetDevelopGrowImg,
     uploadUrl: `${IMG}/sustainability-framework-set-develop-grow.avif`,
-    alt: "Figure 8: SET-DEVELOP-GROW Impact Framework (SDG Impact Framework)",
+    alt: "SET-DEVELOP-GROW Impact Framework (SDG Impact Framework)",
     section: "SDG Impact Framework",
   },
   sdg3StakeholdersDistribution: {
@@ -99,6 +111,33 @@ export const sustainabilityAssets = {
     localSrc: sdg3TraceableImprovementsImg,
     uploadUrl: `${IMG}/sustainability-sdg3-traceable-improvements.avif`,
     alt: "Eight traceable project improvements",
+    section: "SDG 3 — Evidence",
+  },
+  sdg3DcMaturationFlow: {
+    kind: "image",
+    fileName: "sustainability-sdg3-dc-maturation-flow.png",
+    localSourcePath: "src/assets/wiki/sustainability/sustainability-sdg3-dc-maturation-flow.png",
+    localSrc: sdg3DcMaturationFlowImg,
+    uploadUrl: `${IMG}/sustainability-sdg3-dc-maturation-flow.avif`,
+    alt: "In vitro flow cytometry of dendritic-cell maturation and CD8⁺ T-cell subsets",
+    section: "SDG 3 — Evidence",
+  },
+  sdg3SplenocyteFlow: {
+    kind: "image",
+    fileName: "sustainability-sdg3-splenocyte-flow.png",
+    localSourcePath: "src/assets/wiki/sustainability/sustainability-sdg3-splenocyte-flow.png",
+    localSrc: sdg3SplenocyteFlowImg,
+    uploadUrl: `${IMG}/sustainability-sdg3-splenocyte-flow.avif`,
+    alt: "In vivo splenocyte flow cytometry of IFN-γ⁺CD8⁺ and GzmB⁺CD8⁺ subsets",
+    section: "SDG 3 — Evidence",
+  },
+  sdg3TumorGrowth: {
+    kind: "image",
+    fileName: "sustainability-sdg3-tumor-growth.png",
+    localSourcePath: "src/assets/wiki/sustainability/sustainability-sdg3-tumor-growth.png",
+    localSrc: sdg3TumorGrowthImg,
+    uploadUrl: `${IMG}/sustainability-sdg3-tumor-growth.avif`,
+    alt: "Excised tumors and endpoint tumor volume across PBS, control and circRNA vaccine groups",
     section: "SDG 3 — Evidence",
   },
   sstQnModelConstruction: {
@@ -124,5 +163,6 @@ export type SustainabilityImageAssetKey = {
 export const sustainabilityImage = (key: SustainabilityImageAssetKey): string =>
   sustainabilityAssets[key].localSrc || sustainabilityAssets[key].uploadUrl;
 
-/** iGEM docs URL of a hosted PDF file name. */
-export const sustainabilityDocUrl = (fileName: string) => `${DOCS}/${fileName}`;
+/** iGEM docs URL of a hosted PDF/HTML file name, with local dev fallback. */
+export const sustainabilityDocUrl = (fileName: string) =>
+  import.meta.env.DEV ? `/assets/docs/${fileName}` : `${DOCS}/${fileName}`;

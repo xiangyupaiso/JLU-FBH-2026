@@ -1,4 +1,5 @@
 export { StakeholderProfileCard } from "./StakeholderProfileCard";
+export { StakeholderPhotoReel } from "./StakeholderPhotoReel";
 export { PatientChatDialog } from "./PatientChatDialog";
 export { ConsequencesDimensionCard } from "./ConsequencesDimensionCard";
 export { SDGInteractiveCard } from "./SDGInteractiveCard";

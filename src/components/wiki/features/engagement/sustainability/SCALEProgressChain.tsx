@@ -95,7 +95,11 @@ export function SCALEProgressChain({
               <span className="sust-scale-rail__slider" aria-hidden="true" />
               <ol className="sust-scale-rail__track">
                 {steps.map((step, index) => (
-                  <li key={step.id} className={`sust-scale__item is-${stateOf(index)}`}>
+                  <li
+                    key={step.id}
+                    className={`sust-scale__item is-${stateOf(index)}`}
+                    data-scale-step={step.mark}
+                  >
                     <a
                       className="sust-scale__button"
                       href={`#${step.id}`}
@@ -105,7 +109,11 @@ export function SCALEProgressChain({
                       }}
                       aria-current={index === activeIndex ? "location" : undefined}
                     >
-                      <span className="sust-scale__letter" aria-hidden="true">
+                      <span
+                        className="sust-scale__letter"
+                        aria-hidden="true"
+                        data-scale-step={step.mark}
+                      >
                         {step.mark}
                       </span>
                       <span className="sust-scale__name">

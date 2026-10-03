@@ -10,6 +10,12 @@ import {
   type SdgChapter,
   type StakeholderProfile,
 } from "./sdgChapterContract";
+import { sdg3PhotoSets } from "./sustainabilityPhotos";
+
+/** Engagement photos, for dropping a specific frame between two sections. */
+const photo = (id: keyof typeof sdg3PhotoSets, index: number) => ({
+  photo: sdg3PhotoSets[id][index],
+});
 
 /* ----------------------------------------------------------------------------
  * SDG 3 — S: stakeholder profiles
@@ -44,6 +50,7 @@ const sdg3Profiles: ReadonlyArray<StakeholderProfile> = [
             "Dr. Li began by emphasizing that **the clinical needs of patients with TNBC vary with the stage of their disease.**",
             "For patients who have undergone surgery, removal of the primary tumor does not eliminate the risk of recurrence and metastasis. The key question at this stage is whether a new adjuvant therapy can build on existing treatment to **further reduce recurrence and metastasis and deliver more sustained disease control and long-term benefits**, rather than whether it can shrink the tumor. Once cancer has recurred or metastasized, the focus shifts toward controlling disease progression and finding additional effective treatment options.",
             "This distinction led us to reconsider CirCure’s intended clinical setting. We narrowed our focus from patients with TNBC in general to **those who have undergone surgery but remain at risk of recurrence and metastasis**, positioning CirCure as a potential adjuvant therapeutic strategy following surgery.",
+            photo("sdg3-li-chengli", 0),
           ],
         },
         {
@@ -60,6 +67,7 @@ const sdg3Profiles: ReadonlyArray<StakeholderProfile> = [
             "**Whom do we ultimately want CirCure to serve?** — Patients with TNBC who remain at risk of recurrence and metastasis after surgery.",
             "**What should we assess first when judging its value?** — Whether it can deliver sufficient therapeutic benefit, while pursuing further improvements in safety and patient acceptability.",
             "These questions defined what we needed to learn next from patients. Before approaching patients and their families, however, we also considered how these sensitive conversations should be conducted responsibly. This led us to consult Runhui Tian on patient communication and humanistic care.",
+            photo("sdg3-li-chengli", 2),
           ],
         },
       ],
@@ -99,6 +107,7 @@ const sdg3Profiles: ReadonlyArray<StakeholderProfile> = [
           blocks: [
             "Another important principle was to allow patients and family members to decide how much they wished to share. During later interviews, we used more open-ended and non-judgmental questions, avoided suggesting what the “right” answer should be, and made it clear that sensitive questions could be skipped.",
             "The goal was not to obtain the maximum amount of information, but to create a conversation in which participants could express what they considered important at their own pace.",
+            photo("sdg3-tian-runhui", 0),
           ],
         },
         {
@@ -151,6 +160,7 @@ const sdg3Profiles: ReadonlyArray<StakeholderProfile> = [
               ],
             },
             "These conversations reinforced our earlier understanding: for patients after surgery, **a sufficiently clear therapeutic benefit is the starting point for deciding whether an additional treatment is worth considering.** Their answers, however, also revealed further considerations.",
+            photo("sdg3-tnbc-patients", 1),
           ],
         },
         {
@@ -191,6 +201,7 @@ const sdg3Profiles: ReadonlyArray<StakeholderProfile> = [
             },
             "These responses showed us that **an effective treatment is not automatically one that patients are willing or able to access**.",
             "An additional treatment after surgery can place new demands on patients’ bodies, time, and finances. With a newer technology, patients also need sufficient trust before they can consider it a viable treatment option.",
+            photo("sdg3-tnbc-patients", 2),
           ],
         },
         {
@@ -369,6 +380,7 @@ const sdg3Profiles: ReadonlyArray<StakeholderProfile> = [
           blocks: [
             "The discussion also highlighted how patients’ insurance arrangements can differ. Some have both basic medical insurance and private coverage; others rely on basic medical insurance alone. Even among privately insured patients, benefits and claims requirements vary.",
             "**The same treatment price does not mean the same out-of-pocket cost for every patient.** For an additional treatment after surgery, these differences may affect both patients’ willingness and their ability to proceed.",
+            photo("sdg3-wen-jing", 0),
           ],
         },
         {
@@ -376,7 +388,7 @@ const sdg3Profiles: ReadonlyArray<StakeholderProfile> = [
           blocks: [
             "Jing Wen’s feedback challenged an assumption we had made too broadly: **the existence of private insurance does not mean that patients can access financial support.**",
             "Private health insurance can offer additional protection, but only when patients meet the relevant policy and coverage requirements. For CirCure, **it may improve affordability for some patients, but it cannot resolve wider disparities in treatment costs and access.**",
-            "**Yet being able to afford treatment does not necessarily mean being able to access it.** Healthcare resources, the practical requirements for delivering treatment, and differences in access across regions and populations also shape who can benefit from a new adjuvant therapy. We therefore sought perspectives from experts in medicine, oncology, and public health to better understand CirCure’s potential implications for **patient benefit, treatment access, and health equity**.",
+            photo("sdg3-wen-jing", 1),
           ],
         },
       ],
@@ -396,6 +408,12 @@ const sdg3Profiles: ReadonlyArray<StakeholderProfile> = [
       "We expanded our understanding of accessibility from whether patients can afford treatment to whether they can realistically obtain it, incorporating healthcare resources and health equity into CirCure’s long-term evaluation.",
     currentStatus: "Incorporated",
     sdgs: [3, 10],
+    // Sits in the main flow between card 06 and this card: affordability turned
+    // out to be only half the question, so the next round of interviews moved
+    // from who pays to who can actually reach care.
+    leadIn: [
+      "**Yet being able to afford treatment does not necessarily mean being able to access it.** Healthcare resources, the practical requirements for delivering treatment, and differences in access across regions and populations also shape who can benefit from a new adjuvant therapy. We therefore sought perspectives from experts in medicine, oncology, and public health to better understand CirCure’s potential implications for **patient benefit, treatment access, and health equity**.",
+    ],
   },
   {
     id: "sdg3-yang-shujuan",
@@ -478,12 +496,14 @@ const sdg3Profiles: ReadonlyArray<StakeholderProfile> = [
         {
           blocks: [
             "In June 2026, JLU-FBH **was invited to participate in the 2026 Acceleration Week for Global Youth Development Programps, organized by UNICEF**. Team member Zecun Li joined the **“Health and Well-being”** thematic group. The event brought together young people from different countries, professional backgrounds, and fields of practice to explore health, technology, education, and sustainable development through mentor-led lectures, project pitches, case discussions, company visits, and project exchanges. It gave us an opportunity to look beyond CirCure and reconsider the contexts in which health projects operate: **a shared goal of improving health can involve very different challenges across countries, resource settings, and social environments.**",
+            photo("sdg3-global-youth", 0),
           ],
         },
         {
           heading: "01 A Shared Health Goal, Different Challenges",
           blocks: [
             "The “Health and Well-being” thematic group focused on **disease prevention, digital health technologies, and access to healthcare resources**. We shared our team’s iGEM work from 2025 and 2026 and learned from young practitioners running health projects in other regions. Their experiences highlighted substantial differences in local needs and conditions. Some regions placed greater emphasis on disease prevention and health education, while others faced shortages of healthcare resources. Some projects had already developed new technologies but still needed to determine who could realistically access them. These discussions reinforced that **improving health depends not only on new treatments or technologies, but also on their social context and the conditions under which they are used.**",
+            photo("sdg3-global-youth", 3),
           ],
         },
         {
@@ -491,6 +511,7 @@ const sdg3Profiles: ReadonlyArray<StakeholderProfile> = [
           blocks: [
             "The project week also explored technological innovation, green development, artificial intelligence, education, and skills development.",
             "Conversations across these fields showed us how a health-focused project can extend beyond SDG 3. Developing new treatments and technologies involves **innovation**. Enabling public understanding and participation involves **education**. Ensuring that different populations can benefit equitably from technology involves **health equity and accessibility**. Moving technologies into production and use can also have implications for resource inputs and environmental impacts. Rather than simply adding SDG labels to CirCure, these connections prompted a broader question: **what other issues does a project engage with as it works to address a health need?**",
+            photo("sdg3-global-youth", 4),
           ],
         },
         {
@@ -695,14 +716,17 @@ export const sdg3Chapter: SdgChapter = {
       },
       {
         text: "In vitro flow cytometry showed that CirCure increased the proportion of mature dendritic cells (CD80⁺CD86⁺) from **10.33 ± 0.55%** in the empty circRNA-electroporated DC control to **22.37 ± 0.31%**, alongside increases in the proportions of activated and effector memory CD8⁺ T cells.",
+        figure: "sdg3DcMaturationFlow",
       },
       {
         // "HLA-A*02:01" carries a literal asterisk, so it is not wrapped in
         // `**` (the inline formatter would pair the asterisks wrongly).
         text: "In vivo flow cytometry showed higher proportions of IFN-γ⁺CD8⁺ and GzmB⁺CD8⁺ cells in splenocytes from the vaccine group than in the PBS and empty-vector control groups. Because the epitopes are HLA-A*02:01-restricted, whereas the experiments used wild-type BALB/c mice, these findings serve as **platform proof of concept**.",
+        figure: "sdg3SplenocyteFlow",
       },
       {
         text: "In the tumor growth study, endpoint tumor volume in the CirCure group was **89.6% lower than in the PBS group** and **73.2% lower than in the empty circRNA-LNP group** (n = 5 per group; Holm correction for multiple comparisons).",
+        figure: "sdg3TumorGrowth",
       },
       {
         text: "Developed **four reusable tools, each available in Chinese and English, totaling eight files**, covering stakeholder interviews, SDG mapping, feedback-to-action tracking, and impact documentation to support reuse by other teams.",

@@ -12,6 +12,7 @@ export function Results() {
     <WikiRoutePage
       content={resultsPage}
       heroImage={getProjectHeroImage(resultsPage.route)}
+      hideHeroCopy
       theme="project"
       pageClassName="wiki-page--project"
       features={{

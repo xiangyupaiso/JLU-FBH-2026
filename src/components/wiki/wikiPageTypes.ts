@@ -44,6 +44,23 @@ export interface WikiItem {
 
 export type WikiCalloutTone = "navy" | "coral" | "gold" | "neutral";
 
+/** The four engineering-cycle stages, in loop order. */
+export type WikiDbTLStageKey = "design" | "build" | "test" | "learn";
+
+export interface WikiDbTLStage {
+  key: WikiDbTLStageKey;
+  /** Stage heading copy, e.g. "Design". */
+  title: string;
+  blocks: WikiContentBlock[];
+}
+
+export interface WikiReferenceEntry {
+  label: string;
+  text: string;
+  href?: string;
+  hrefLabel?: string;
+}
+
 /**
  * Ordered content block inside a section. When a section provides `blocks`,
  * the renderer emits the section header (index / title / summary) followed by
@@ -87,6 +104,15 @@ export type WikiContentBlock =
     }
   | { type: "feature"; key: string }
   | { type: "chapter-link"; target: string; label: string }
+  /**
+   * A Design–Build–Test–Learn quartet. `id` is the anchor the concentric TIME
+   * dial uses to resolve the active stage, and each stage carries
+   * `data-dbtl-stage` so the dial's inner ring can track the reader's position
+   * without observing every anchor on the page.
+   */
+  | { type: "dbtl"; id: string; stages: WikiDbTLStage[] }
+  /** Numbered bibliography, reusing the Description page's hanging-indent skin. */
+  | { type: "references"; items: WikiReferenceEntry[] }
   | {
       type: "prose-linked";
       parts: Array<{ text: string; target?: string; label?: string }>;

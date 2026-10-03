@@ -11,7 +11,7 @@
 3. [标准目录组织规范](#三标准目录组织规范)
 4. [标准代码开发模板（四件套）](#四标准代码开发模板四件套)
    - [4.1 数据层（Pure Data）](#41-数据层纯净数据源)
-   - [4.2 资产层（Assets 字典）](#42-资产层静态资源字典)
+   - [4.2 资产层（Assets 字典与图片双轨管理规范）](#42-资产层静态资源字典与图片双轨管理规范)
    - [4.3 组件层（Features 插槽）](#43-组件层可视化与交互插槽)
    - [4.4 路由入口层（Route Assembler）](#44-路由入口层极简装配)
 5. [尺寸与样式收口铁律](#五尺寸与样式收口铁律)
@@ -102,7 +102,7 @@ src/
 
 ```typescript
 import type { WikiPageContent } from "../../components/wiki/wikiPageTypes";
-import { platformFigures } from "./alternativePlatformAssets";
+import { platformFigures, getPlatformImage } from "./alternativePlatformAssets";
 
 export const alternativePlatformPage: WikiPageContent = {
   route: "/alternative-platform",
@@ -134,12 +134,12 @@ export const alternativePlatformPage: WikiPageContent = {
             "正文第二段，支持直接排查与校对。"
           ]
         },
-        // 普通静态图片使用 figure block
+        // 普通静态图片使用 figure block，通过解析函数获取 URL
         {
           type: "figure",
-          src: platformFigures.gelVerification,
-          alt: "Gel verification",
-          caption: "Figure 1: Agarose gel analysis."
+          src: getPlatformImage("gelVerification"),
+          alt: platformFigures.gelVerification.alt,
+          caption: platformFigures.gelVerification.caption
         },
         // 复杂自定义交互，使用 feature 插槽 key 占位
         {
@@ -156,22 +156,121 @@ export const alternativePlatformPage: WikiPageContent = {
 
 ---
 
-### 4.2 资产层：静态资源字典
+### 4.2 资产层：静态资源字典与图片双轨管理规范
 
 - **文件路径**：`src/data/[module]/[page]Assets.ts`
-- **规范**：集中管理该页面所需的图片、SVG 或 PDF 资源。防止在正文数据层混杂过长 import。
+- **规范目标**：全站后续需挂载大量科研插图、实验胶图、机制流程图与 PDF 附件。为**彻底杜绝图片漏传、线上死链、出处无从考证以及上线前修改正文代码的风险**，所有页面的图片资产必须建立专用的静态资源字典，并严格遵循“**本地相对路径 + 官方 CDN 上传路径（未传先留空）**”的双轨管理规范。
+
+#### 4.2.1 核心字段契约（Asset Entry Contract）
+
+资产字典中的每一个条目必须定义为结构严谨的强类型对象，包含以下核心字段：
+
+| 字段名称 | 类型 | 是否必填 | 规范说明与铁律要求 |
+| :------------------ | :--------- | :------------: | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `fileName` | `string` | **必填** | 规范化文件名。必须采用全小写英文字母、数字和短横线（`kebab-case`），如 `platform-gel-verification.webp`，严禁中文、空格和括号。 |
+| `localSourcePath` | `string` | **必填** | **本地源文件相对路径**（相对于项目根目录，如 `src/assets/wiki/platform/gel-verification.png` 或 `文案集/wetlab/platform/图片和附件/gel-fig1.png`）。作为源资产的第一真理来源，确保任何人都能秒查原图与设计源稿。 |
+| `localSrc` | `string` | 可选 | 本地构建阶段`import` 的静态资源变量。用于在官方 CDN 尚未就绪期间，本地启动开发服务器（`yarn dev`）时能够直接正常预览和调试。 |
+| `uploadUrl` | `string` | **必填** | **iGEM 官方静态 CDN 线上 URL**（即 `https://static.igem.wiki/teams/6056/wiki/files/...`）。**【核心铁律】未传先留空**：若该图片尚未正式上传至 iGEM 官方服务器，**此字段必须严格赋值为空字符串 `""`**！严禁擅自伪造不存在的假链接，也不得随意引用外部不稳定图床。 |
+| `alt` | `string` | **必填** | 严格的学术无障碍描述（Accessibility）。清晰概括图片核心内容，便于屏幕朗读器与评委检视。 |
+| `caption` | `string` | 可选 | 正式学术图注说明（如`Figure 1: Agarose gel analysis showing >90% purity of circularized products.`）。 |
+| `section` | `string` | 可选 | 所属章节或模块名称（如`Workflow`、`Gel Analysis`），便于全局资产索引与检索。 |
+
+#### 4.2.2 资产解析与优雅降级（Resolution Helper）
+
+每个 `[page]Assets.ts` 必须导出一个轻量解析器函数 `get[Page]Image(key)`（或统一使用 helper）：
+
+1. **优先使用官方 CDN**：若 `uploadUrl` 非空，优先返回官方静态 CDN 地址（生产环境构建最佳实践）。
+2. **本地预览回退**：若 `uploadUrl` 为空（尚未上传），自动降级使用 `localSrc` 本地预览图片。
+3. **优雅留白**：若二者均未就绪，返回空字符串 `""`，结合正文数据层的 `image-placeholder` 保持严谨证据留白，杜绝前端白屏崩溃。
+
+#### 4.2.3 标准资产字典代码模板
 
 ```typescript
-import gelVerification from "../../assets/wiki/platform/gel-verification.png";
-import orbitDiagram from "../../assets/wiki/platform/orbit-diagram.svg";
+import gelVerificationImg from "../../../assets/wiki/platform/gel-verification.png";
+import orbitDiagramImg from "../../../assets/wiki/platform/orbit-diagram.svg";
+
+export interface PageAssetEntry {
+  fileName: string;
+  localSourcePath: string;
+  localSrc?: string;
+  uploadUrl: string;
+  alt: string;
+  caption?: string;
+  section?: string;
+}
+
+const CDN_BASE = "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab";
 
 export const platformFigures = {
-  gelVerification,
-  orbitDiagram,
-} as const;
+  gelVerification: {
+    fileName: "platform-gel-verification.png",
+    localSourcePath: "src/assets/wiki/platform/gel-verification.png",
+    localSrc: gelVerificationImg,
+    // 已经上传到 iGEM 官方 CDN 的填入真实 URL
+    uploadUrl: `${CDN_BASE}/platform-gel-verification.webp`,
+    alt: "Gel electrophoresis verification of circRNA circularization efficiency",
+    caption: "Figure 1: Agarose gel analysis showing >90% purity of circularized products.",
+    section: "Workflow",
+  },
+  orbitDiagram: {
+    fileName: "platform-orbit-diagram.svg",
+    localSourcePath: "src/assets/wiki/platform/orbit-diagram.svg",
+    localSrc: orbitDiagramImg,
+    // 尚未上传到 iGEM 官方 CDN，严格留空字符串 ""
+    uploadUrl: "",
+    alt: "Schematic representation of the circular RNA platform workflow",
+    caption: "Figure 2: Three-stage execution pipeline of modular circular RNA.",
+    section: "Workflow",
+  },
+} as const satisfies Record<string, PageAssetEntry>;
 
 export type PlatformFigureKey = keyof typeof platformFigures;
+
+/**
+ * 资产解析器：自动双轨回退
+ * 1. 优先使用已上传的 iGEM 官方 CDN uploadUrl；
+ * 2. 尚未上传（uploadUrl 为空）时，降级使用本地 localSrc 进行开发态预览；
+ * 3. 均无时返回空串。
+ */
+export const getPlatformImage = (key: PlatformFigureKey): string =>
+  platformFigures[key].uploadUrl || platformFigures[key].localSrc || "";
 ```
+
+#### 4.2.4 数据层消费规范 (`[page]Page.ts`)
+
+在正文数据层中消费资产字典时，推荐以下两种标准方式：
+
+1. **已就绪/已规划图表**：
+
+```typescript
+{
+  type: "figure",
+  src: getPlatformImage("gelVerification"),
+  alt: platformFigures.gelVerification.alt,
+  caption: platformFigures.gelVerification.caption,
+}
+```
+
+1. **实验待补充/绘图中图表（诚实留白）**：
+
+```typescript
+{
+  type: "image-placeholder",
+  filename: platformFigures.orbitDiagram.fileName,
+  instruction: "Insert modular circular RNA workflow diagram once graphic design completes.",
+  caption: platformFigures.orbitDiagram.caption,
+}
+```
+
+#### 4.2.5 增量上传与一键回填流程（Zero Code Disruption）
+
+通过本套双轨规范，整个资产上云流程具有**极高的鲁棒性与零破坏性**：
+
+1. **前期撰写与排查**：前端同学和文案同学在页面中登记好条目，尚未上传的图片在 `[page]Assets.ts` 中写明 `localSourcePath`，并将 `uploadUrl` 填为 `""`。
+2. **全站未传资产秒级筛查**：全队在上传前，只需在 VS Code / 编辑器中全局检索 `uploadUrl: ""`，便能立即统计出全站所有尚未上传的图片和缺失文件，**完全杜绝遗忘和缺漏**。
+3. **官方批量上传**：美工或负责资产的队员通过 iGEM 官方上传工具批量上传素材，获取官方 CDN 地址。
+4. **一键回填**：队员打开对应的 `[page]Assets.ts`，仅将上传后的 CDN 地址替换到对应的 `uploadUrl: "..."` 即可。
+5. **零代码改动保障**：正文数据层 `[page]Page.ts`、路由入口 `[page].tsx` 以及组件层 `[Page]Panels.tsx` **100% 零修改、零回归**，一次配置，终身受益。
 
 ---
 
@@ -296,17 +395,19 @@ export function AlternativePlatform() {
 
 为确保全站所有正文页面（Project、Wet Lab、Dry Lab、Engagement 等）视觉 UI 的绝对统一性与一致性，杜绝“忽大忽小、有组件空洞大无组件紧促”的乱象，整站必须严格遵循以下垂直律动阶梯（Vertical Rhythm Scale）：
 
-$$\text{段落间距 (16px，最小)} < \text{小标题到底正文 (14px，贴合)} < \text{大标题到内容 (24px) = 组件间距 (24px)} < \text{正文到小标题顶 (28px，稍大)} < \text{章节切换 (44px，宏观)}$$
+$$
+\text{段落间距 (16px，最小)} < \text{小标题到底正文 (14px，贴合)} < \text{大标题到内容 (24px) = 组件间距 (24px)} < \text{正文到小标题顶 (28px，稍大)} < \text{章节切换 (44px，宏观)}
+$$
 
-| 间距层级 | 标准数值 / CSS Token | 适用场景与视觉行为 |
-| :--- | :--- | :--- |
-| **1. 段落间距 (最小)** | `16px` (`--wiki-space-p`) | 正文段落与段落之间 (`p ↔ p`)；单向垂直流，禁止子元素 `<p>` 泄漏 `margin-bottom`。连续两个 `prose` 块相邻时自适应保持 16px，严禁产生 80px 断层。 |
-| **2. 小标题顶部 (稍大)** | `28px` (`--wiki-space-subhead-top`) | 正文或内容块到下一个小标题 (`h3`) 顶部的距离，产生清晰的子话题划分呼吸感。 |
-| **2b. 小标题底部 (贴合)** | `14px` (`--wiki-space-subhead-bottom`) | 小标题 (`h3`) 到其紧随的正文或内容块底部的距离，符合格式塔邻近原则，紧密吸附下文。 |
-| **3. 标准内容块间距** | `24px` (`--wiki-space-block`) | 正文与组件（`.wiki-feature`）、图表（`.wiki-figure`）、表格（`.wiki-table-wrap`）、Callout 之间的上下标准流间距。 |
-| **4. 大标题底部间距** | `24px` (`--wiki-space-head-bottom`) | 章节大标题 (`h2`) 到底部正文或首个内容块的距离。 |
-| **4b. 首块等距铁律** | **严格等于 24px** | **当大标题下方直接跟小标题时（无引言正文），其间距严格等于大标题接正文（24px）**。首块强制 `margin-top: 0 !important`，严禁叠加小标题的 28px 顶边距。 |
-| **5. 章节间距 (宏观)** | `44px` (`--wiki-space-section`) | 大章节与大章节之间 (`section + section`) 的切换距离。全站彻底废弃 128px 巨大尾白，统一保持 44px 典雅宏观分界。 |
+| 间距层级                        | 标准数值 / CSS Token                       | 适用场景与视觉行为                                                                                                                                            |
+| :------------------------------ | :----------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **1. 段落间距 (最小)**    | `16px` (`--wiki-space-p`)              | 正文段落与段落之间 (`p ↔ p`)；单向垂直流，禁止子元素 `<p>` 泄漏 `margin-bottom`。连续两个 `prose` 块相邻时自适应保持 16px，严禁产生 80px 断层。      |
+| **2. 小标题顶部 (稍大)**  | `28px` (`--wiki-space-subhead-top`)    | 正文或内容块到下一个小标题 (`h3`) 顶部的距离，产生清晰的子话题划分呼吸感。                                                                                  |
+| **2b. 小标题底部 (贴合)** | `14px` (`--wiki-space-subhead-bottom`) | 小标题 (`h3`) 到其紧随的正文或内容块底部的距离，符合格式塔邻近原则，紧密吸附下文。                                                                          |
+| **3. 标准内容块间距**     | `24px` (`--wiki-space-block`)          | 正文与组件（`.wiki-feature`）、图表（`.wiki-figure`）、表格（`.wiki-table-wrap`）、Callout 之间的上下标准流间距。                                       |
+| **4. 大标题底部间距**     | `24px` (`--wiki-space-head-bottom`)    | 章节大标题 (`h2`) 到底部正文或首个内容块的距离。                                                                                                            |
+| **4b. 首块等距铁律**      | **严格等于 24px**                    | **当大标题下方直接跟小标题时（无引言正文），其间距严格等于大标题接正文（24px）**。首块强制 `margin-top: 0 !important`，严禁叠加小标题的 28px 顶边距。 |
+| **5. 章节间距 (宏观)**    | `44px` (`--wiki-space-section`)        | 大章节与大章节之间 (`section + section`) 的切换距离。全站彻底废弃 128px 巨大尾白，统一保持 44px 典雅宏观分界。                                              |
 
 ### 铁律 7：全局基准与页面独有资产分工原则 (Global Baseline vs. Scoped Features Principle)
 
@@ -338,7 +439,10 @@ $$\text{段落间距 (16px，最小)} < \text{小标题到底正文 (14px，贴�
 
 - [ ] 数据文件放在了对应模块子目录中（例如 `src/data/project/[page]Page.ts`）
 - [ ] 数据文件中没有导入 React，没有直接书写 JSX
-- [ ] 图片超过 3 张时，建立了独立的 `[page]Assets.ts`
+- [ ] 图片建立了独立的 `[page]Assets.ts` 资产字典（遵循双轨规范）
+- [ ] 资产字典严格包含 `localSourcePath`（本地相对路径）与 `uploadUrl`（官方 CDN URL）
+- [ ] 尚未上传官方 CDN 的图片，`uploadUrl` 明确保持为空字符串 `""`，杜绝死链与假图
+- [ ] 正文数据层通过资产解析函数或解构字典安全消费，图片回填上线时数据层零修改
 - [ ] 自定义图表通过 `features` 插槽挂载，并在对应 `[Page]Panels.tsx` 集中导出
 - [ ] 组件样式就近收口在 `src/styles/features/`，没有污染全局样式
 - [ ] 路由入口 `src/contents/[page].tsx` 代码简洁纯粹（< 25 行）

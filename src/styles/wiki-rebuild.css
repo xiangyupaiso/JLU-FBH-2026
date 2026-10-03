@@ -1972,22 +1972,84 @@
  * ------------------------------------------------------------------------- */
 
 .wiki-figure {
-  margin: 44px 0 0 70px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin: 44px auto 0;
+  text-align: center;
 }
 .wiki-figure img {
   display: block;
   max-width: 100%;
   height: auto;
+  margin-left: auto;
+  margin-right: auto;
   border-radius: 16px;
-  border: 1px solid var(--line);
+  border: none !important;
+  box-shadow: none !important;
+  outline: none !important;
 }
 .wiki-figure figcaption {
+  width: 100%;
   max-width: 760px;
   margin-top: 14px;
+  margin-left: auto;
+  margin-right: auto;
   font-family: var(--font-sans);
   font-size: 13.5px;
   line-height: 1.6;
   color: color-mix(in srgb, var(--ink) 85%, transparent);
+  text-align: center;
+}
+
+/* 全局正文规范：所有图片与表格居中放置、图片无框线、图注居中放置于下方 */
+.wiki-article img {
+  border: none !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+.wiki-article .wiki-figure,
+.wiki-prose figure {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  text-align: center;
+}
+
+.wiki-article .wiki-figure img,
+.wiki-prose img {
+  display: block;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  border: none !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+.wiki-article .wiki-figure figcaption,
+.wiki-prose figcaption {
+  margin-left: auto !important;
+  margin-right: auto !important;
+  text-align: center !important;
+}
+
+.wiki-article .wiki-table-wrap,
+.wiki-article table,
+.wiki-prose table {
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+.wiki-article table caption,
+.wiki-prose table caption {
+  text-align: center !important;
 }
 
 /* Editorial reading pass: make long pages feel authored without changing copy. */
@@ -2182,6 +2244,14 @@
   max-width: none;
   margin-left: 0;
   margin-right: 0;
+}
+
+.wiki-blocks .wiki-figure,
+.wiki-blocks .wiki-table-wrap {
+  width: 100%;
+  max-width: none;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .wiki-blocks > *:first-child {

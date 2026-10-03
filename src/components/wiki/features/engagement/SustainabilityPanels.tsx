@@ -58,9 +58,9 @@ const sstqnPdf = sustainabilityAssets.sstQnModelConstruction;
 
 function ChartFigure({ caption, children }: { caption: string; children: ReactNode }) {
   return (
-    <figure className="sust-chart">
+    <figure className="wiki-figure sust-chart">
       {children}
-      <figcaption className="sust-chart-caption">{caption}</figcaption>
+      <figcaption>{caption}</figcaption>
     </figure>
   );
 }
@@ -119,13 +119,12 @@ function StakeholderGrid({ chapter }: { chapter: SdgChapter }) {
   );
 }
 
-/** E — Evidence: headline numbers, numbered Measurable items with figures, Significant prose. */
+/** E — Evidence: numbered Measurable items with figures, Significant prose. */
 function EvidencePanel({ chapter }: { chapter: SdgChapter }) {
-  const { stats, measurable, significant } = chapter.evidence;
+  const { measurable, significant } = chapter.evidence;
   const legacyId = scaleAnchorId(chapter, "legacy");
   return (
     <div className="sust-evidence">
-      <StatsGrid stats={stats} />
       <h4 className="sust-minor-heading">Measurable</h4>
       <ol className="sust-evidence__list">
         {measurable.map((item) => (
@@ -179,7 +178,7 @@ function chapterFeatures(chapter: SdgChapter): FeatureMap {
     [keys.rail]: <ScaleRail chapter={chapter} />,
     [keys.stakeholders]: <StakeholderGrid chapter={chapter} />,
     [keys.consequences]: <ConsequencesDimensionCard consequences={chapter.consequences} />,
-    [keys.legacy]: <PdfToolList tools={chapter.legacy.tools} />,
+    [keys.legacy]: <PdfToolList tools={chapter.legacy.tools} instance={`${chapter.id}-legacy`} />,
     [keys.evidence]: <EvidencePanel chapter={chapter} />,
   };
 }
@@ -219,6 +218,8 @@ export function sustainabilityFeatures(): FeatureMap {
       />
     ),
     ...Object.assign({}, ...sustainabilityChapters.map(chapterFeatures)),
-    "stakeholder-tracker-tools": <PdfToolList tools={stakeholderTracker.files} />,
+    "stakeholder-tracker-tools": (
+      <PdfToolList tools={stakeholderTracker.files} instance="tracker" />
+    ),
   };
 }

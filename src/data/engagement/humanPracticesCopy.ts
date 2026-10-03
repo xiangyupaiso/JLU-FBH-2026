@@ -102,8 +102,8 @@ const sectionContents: SectionContent[] = [
       {
         "type": "subheading",
         "id": "hp-hp-origin-1",
-        "index": "01",
-        "title": "I. Overview"
+        "index": "3.1",
+        "title": "Overview"
       },
       {
         "type": "prose",
@@ -114,8 +114,8 @@ const sectionContents: SectionContent[] = [
       {
         "type": "subheading",
         "id": "hp-hp-origin-2",
-        "index": "02",
-        "title": "II. Application of the 3i Framework and Table of Six Stakeholder Categories"
+        "index": "3.2",
+        "title": "Application of the 3i Framework and Table of Six Stakeholder Categories"
       },
       {
         "type": "prose",
@@ -212,8 +212,8 @@ const sectionContents: SectionContent[] = [
       {
         "type": "subheading",
         "id": "hp-hp-origin-3",
-        "index": "03",
-        "title": "III. Flow Diagram"
+        "index": "3.3",
+        "title": "Flow Diagram"
       },
       {
         "type": "feature",
@@ -222,13 +222,13 @@ const sectionContents: SectionContent[] = [
       {
         "type": "subheading",
         "id": "hp-hp-origin-4",
-        "index": "04",
-        "title": "IV. Stakeholder Interview Contents under the CIRC Framework"
+        "index": "3.4",
+        "title": "Stakeholder Interview Contents under the CIRC Framework"
       },
       {
         "type": "subheading",
         "id": "hp-hp-origin-5",
-        "index": "05",
+        "index": "3.5",
         "title": "Industry Partners: 2025 Changchun Pharmaceutical and Healthcare Industry Expo"
       },
       {
@@ -275,7 +275,7 @@ const sectionContents: SectionContent[] = [
       {
         "type": "subheading",
         "id": "hp-hp-origin-6",
-        "index": "06",
+        "index": "3.6",
         "title": "Academic Mentors and Researchers: Liu Yawen, Vice Dean of the School of Public Health, Jilin University"
       },
       {
@@ -351,7 +351,7 @@ const sectionContents: SectionContent[] = [
       {
         "type": "subheading",
         "id": "hp-hp-origin-7",
-        "index": "07",
+        "index": "3.7",
         "title": "General Public and Community: Breast‑Cancer‑Awareness Survey"
       },
       {
@@ -427,7 +427,7 @@ const sectionContents: SectionContent[] = [
       {
         "type": "subheading",
         "id": "hp-hp-origin-8",
-        "index": "08",
+        "index": "3.8",
         "title": "End‑Users and Beneficiaries: Jia Lin, Oncologist at the First Hospital of Jilin University"
       },
       {
@@ -502,7 +502,7 @@ const sectionContents: SectionContent[] = [
       {
         "type": "subheading",
         "id": "hp-hp-origin-9",
-        "index": "09",
+        "index": "3.9",
         "title": "End‑Users and Beneficiaries: Wang Lei, Oncologist at the First Hospital of Jilin University"
       },
       {
@@ -571,7 +571,7 @@ const sectionContents: SectionContent[] = [
       {
         "type": "subheading",
         "id": "hp-hp-origin-10",
-        "index": "10",
+        "index": "3.10",
         "title": "End‑Users and Beneficiaries:  Lili Cheng, Oncologist practising in Southern China"
       },
       {
@@ -605,7 +605,7 @@ const sectionContents: SectionContent[] = [
       {
         "type": "subheading",
         "id": "hp-hp-origin-11",
-        "index": "11",
+        "index": "3.11",
         "title": "End‑Users and Beneficiaries: Tian Runhui, Chief Psychologist at the First Hospital of Jilin University"
       },
       {
@@ -646,7 +646,7 @@ const sectionContents: SectionContent[] = [
       {
         "type": "subheading",
         "id": "hp-hp-origin-12",
-        "index": "12",
+        "index": "3.12",
         "title": "Summary"
       },
       {
@@ -673,7 +673,7 @@ const sectionContents: SectionContent[] = [
       {
         "type": "subheading",
         "id": "hp-hp-project-13",
-        "index": "13",
+        "index": "4.1",
         "title": "Application of the 3i Framework and Table of Six Stakeholder Categories"
       },
       {
@@ -699,7 +699,7 @@ const sectionContents: SectionContent[] = [
       {
         "type": "subheading",
         "id": "hp-hp-plasmid-design-14",
-        "index": "14",
+        "index": "5.1",
         "title": "（一）学术导师与研究人员：胡继繁——吉林大学第一医院肿瘤中心教授（第一次访谈）"
       },
       {
@@ -733,13 +733,13 @@ const sectionContents: SectionContent[] = [
       {
         "type": "subheading",
         "id": "hp-hp-plasmid-design-15",
-        "index": "15",
+        "index": "5.2",
         "title": "A 线：公众认知与伦理边界"
       },
       {
         "type": "subheading",
         "id": "hp-hp-plasmid-design-16",
-        "index": "16",
+        "index": "5.3",
         "title": "（二）公众与社区：技术认知问卷调查"
       },
       {
@@ -773,7 +773,7 @@ const sectionContents: SectionContent[] = [
       {
         "type": "subheading",
         "id": "hp-hp-plasmid-design-17",
-        "index": "17",
+        "index": "5.4",
         "title": "（三）学术导师与研究人员：牛俊奇——吉林大学第一医院伦理委员会主任委员"
       },
       {
@@ -807,7 +807,7 @@ const sectionContents: SectionContent[] = [
       {
         "type": "subheading",
         "id": "hp-hp-plasmid-design-18",
-        "index": "18",
+        "index": "5.5",
         "title": "（四）A 线回访：公众——验证 Education 三层次框架"
       },
       {
@@ -841,13 +841,13 @@ const sectionContents: SectionContent[] = [
       {
         "type": "subheading",
         "id": "hp-hp-plasmid-design-19",
-        "index": "19",
+        "index": "5.6",
         "title": "B 线：抗原设计与 Dry Lab 构建"
       },
       {
         "type": "subheading",
         "id": "hp-hp-plasmid-design-20",
-        "index": "20",
+        "index": "5.7",
         "title": "（五）学术导师与研究人员：王医术——吉林大学病理学教授"
       },
       {
@@ -881,7 +881,7 @@ const sectionContents: SectionContent[] = [
       {
         "type": "subheading",
         "id": "hp-hp-plasmid-design-21",
-        "index": "21",
+        "index": "5.8",
         "title": "（六）学术导师与研究人员：管青天——吉林大学第一医院生物信息平台副教授（第一次访谈）"
       },
       {
@@ -915,7 +915,7 @@ const sectionContents: SectionContent[] = [
       {
         "type": "subheading",
         "id": "hp-hp-plasmid-design-22",
-        "index": "22",
+        "index": "5.9",
         "title": "（七）学术导师与研究人员：吴迪——吉林大学第一医院生化与分子生物学方向教授"
       },
       {
@@ -949,7 +949,7 @@ const sectionContents: SectionContent[] = [
       {
         "type": "subheading",
         "id": "hp-hp-plasmid-design-23",
-        "index": "23",
+        "index": "5.10",
         "title": "（八）学术导师与研究人员：管青天——吉林大学第一医院生物信息平台副教授（第二次访谈）"
       },
       {
@@ -983,7 +983,7 @@ const sectionContents: SectionContent[] = [
       {
         "type": "subheading",
         "id": "hp-hp-plasmid-design-24",
-        "index": "24",
+        "index": "5.11",
         "title": "（九）学术导师与研究人员：孟祥宇——吉林大学计算机科学与技术学院教授"
       },
       {
@@ -1017,7 +1017,7 @@ const sectionContents: SectionContent[] = [
       {
         "type": "subheading",
         "id": "hp-hp-plasmid-design-25",
-        "index": "25",
+        "index": "5.12",
         "title": "（十）学术导师与研究人员：胡继繁——吉林大学第一医院肿瘤中心教授（第二次访谈/回访）"
       },
       {
@@ -1064,7 +1064,7 @@ const sectionContents: SectionContent[] = [
       {
         "type": "subheading",
         "id": "hp-hp-in-vivo-26",
-        "index": "26",
+        "index": "6.1",
         "title": "（一）杨若晗——吉林大学第一医院肿瘤中心博士生（第一次采访）"
       },
       {
@@ -1118,7 +1118,7 @@ const sectionContents: SectionContent[] = [
       {
         "type": "subheading",
         "id": "hp-hp-in-vivo-27",
-        "index": "27",
+        "index": "6.2",
         "title": "（二）杨若晗——吉林大学第一医院肿瘤中心博士生（回访）"
       },
       {
@@ -1179,7 +1179,7 @@ const sectionContents: SectionContent[] = [
       {
         "type": "subheading",
         "id": "hp-hp-in-vivo-28",
-        "index": "28",
+        "index": "6.3",
         "title": "（三）牛俊奇——吉林大学第一医院伦理委员会主任委员"
       },
       {
@@ -1233,7 +1233,7 @@ const sectionContents: SectionContent[] = [
       {
         "type": "subheading",
         "id": "hp-hp-in-vivo-29",
-        "index": "29",
+        "index": "6.4",
         "title": "（四）贾琳——吉林大学第一医院肿瘤中心副教授（第一次采访）"
       },
       {
@@ -1287,7 +1287,7 @@ const sectionContents: SectionContent[] = [
       {
         "type": "subheading",
         "id": "hp-hp-in-vivo-30",
-        "index": "30",
+        "index": "6.5",
         "title": "（五）贾琳——吉林大学第一医院肿瘤中心副教授（回访）"
       },
       {
@@ -1342,7 +1342,7 @@ const sectionContents: SectionContent[] = [
       {
         "type": "subheading",
         "id": "hp-hp-in-vivo-31",
-        "index": "31",
+        "index": "6.6",
         "title": "（六）苗蕾——北京大学药学院教授"
       },
       {
@@ -1417,7 +1417,7 @@ const sectionContents: SectionContent[] = [
       {
         "type": "subheading",
         "id": "hp-hp-in-vitro-32",
-        "index": "32",
+        "index": "7.1",
         "title": "（七）胡正——吉林大学第一医院免疫学教授"
       },
       {
@@ -1472,7 +1472,7 @@ const sectionContents: SectionContent[] = [
       {
         "type": "subheading",
         "id": "hp-hp-in-vitro-33",
-        "index": "33",
+        "index": "7.2",
         "title": "（九）胡正——吉林大学第一医院免疫学教授（回访）"
       },
       {
@@ -1582,7 +1582,7 @@ const sectionContents: SectionContent[] = [
       {
         "type": "subheading",
         "id": "hp-hp-in-vitro-34",
-        "index": "34",
+        "index": "7.3",
         "title": "（八）宋海明——吉林大学数学学院教授"
       },
       {
@@ -1666,7 +1666,7 @@ const sectionContents: SectionContent[] = [
       {
         "type": "subheading",
         "id": "hp-hp-return-35",
-        "index": "35",
+        "index": "8.1",
         "title": "Summary"
       },
       {

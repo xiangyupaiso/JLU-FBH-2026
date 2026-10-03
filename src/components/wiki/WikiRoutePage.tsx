@@ -121,6 +121,22 @@ interface WikiRoutePageProps {
    * scroll spy; the page can surface them elsewhere (e.g. a section rail).
    */
   outlineDepth?: number;
+  /**
+   * Replaces the default line sidebar with a page-specific navigation object.
+   *
+   * Generic extension point: the slot receives the live scroll-spy state and
+   * the reader frame ref, so an alternative outline (e.g. the Engineering
+   * page's concentric TIME dial) can drive the same article without the
+   * template naming any module. Ignored below 980px, where the compact drawer
+   * keeps the standard sidebar so the outline stays reachable on a phone.
+   */
+  outlineSlot?: (context: {
+    activeSection: string;
+    activeSubsection: string;
+    scrollContainerRef: RefObject<HTMLDivElement | null>;
+  }) => ReactNode;
+  /** Optional interactive feature or section mounted right between hero and reader track. */
+  leadSection?: ReactNode;
 }
 
 const STATUS_LABELS = {
@@ -258,6 +274,58 @@ function renderSubheadingTitle(title: string) {
   );
 }
 
+/**
+ * Turn an inline Markdown link into an anchor.
+ *
+ * Several pages are migrated from Markdown drafts whose "Further details are
+ * provided in [label](url)" cross-references would otherwise print as literal
+ * bracket-and-paren text. Deliberately recognises ONLY `[text](https://…)`, so
+ * an existing citation form such as `(Garrido-Castro et al., 2019)` — which
+ * `renderInlineFormatting` also leaves alone — cannot be affected.
+ */
+const MD_LINK_RE = /\[([^\]\n]{1,120})\]\((https?:\/\/[^\s)]+)\)/g;
+
+function linkify(text: string): ReactNode {
+  if (!text || !text.includes("](")) return renderInlineFormatting(text);
+
+  const nodes: ReactNode[] = [];
+  let lastIndex = 0;
+  let match: RegExpExecArray | null;
+
+  MD_LINK_RE.lastIndex = 0;
+  while ((match = MD_LINK_RE.exec(text)) !== null) {
+    if (match.index > lastIndex) {
+      nodes.push(
+        <span key={`t-${lastIndex}`}>
+          {renderInlineFormatting(text.slice(lastIndex, match.index))}
+        </span>,
+      );
+    }
+    nodes.push(
+      <a
+        className="wiki-prose-link"
+        href={match[2]}
+        key={`l-${match.index}`}
+        rel="noreferrer"
+        target="_blank"
+      >
+        {match[1]}
+      </a>,
+    );
+    lastIndex = match.index + match[0].length;
+  }
+
+  if (!nodes.length) return renderInlineFormatting(text);
+  if (lastIndex < text.length) {
+    nodes.push(
+      <span key={`t-${lastIndex}`}>
+        {renderInlineFormatting(text.slice(lastIndex))}
+      </span>,
+    );
+  }
+  return nodes;
+}
+
 function renderInlineFormatting(text: string): ReactNode {
   if (!text || !text.includes("**")) {
     return text;
@@ -307,6 +375,10 @@ function renderProseParagraphs(
     );
   };
 
+  /** Linkify after `**bold**` so the emphasis split cannot break a URL apart. */
+  const prose = (text: string): ReactNode =>
+    inline ? inline(text, renderInlineFormatting) : linkify(text);
+
   paragraphs.forEach((paragraph, idx) => {
     const stepMatch = paragraph.match(/^\s*(\d+)[.、]\s+(.*)$/s);
     if (stepMatch) {
@@ -346,9 +418,7 @@ function renderProseParagraphs(
     }
 
     elements.push(
-      <p key={`p-${idx}`}>
-        {inline ? inline(paragraph, renderInlineFormatting) : renderInlineFormatting(paragraph)}
-      </p>,
+      <p key={`p-${idx}`}>{prose(paragraph)}</p>,
     );
   });
 
@@ -523,6 +593,66 @@ function RouteBlock({
       return (
         <div className="wiki-feature" data-wiki-reveal>
           {features[block.key]}
+        </div>
+      );
+    case "dbtl":
+      return (
+        <div className="wiki-dbtl" id={block.id} data-wiki-dbtl data-wiki-reveal>
+          <ol className="wiki-dbtl__track">
+            {block.stages.map((stage, stageIndex) => (
+              <li
+                className="wiki-dbtl__stage"
+                data-dbtl-stage={stage.key}
+                data-dbtl-index={stageIndex}
+                key={stage.key}
+              >
+                <h4 className="wiki-dbtl__stage-title">
+                  <span className="wiki-dbtl__stage-key" aria-hidden="true">
+                    {stage.title}
+                  </span>
+                  <span className="wiki-dbtl__stage-rule" aria-hidden="true" />
+                </h4>
+                <div className="wiki-dbtl__stage-body">
+                  {stage.blocks.map((nested, index) => (
+                    <RouteBlock
+                      key={`${block.id}-${stage.key}-${nested.type}-${index}`}
+                      block={nested}
+                      features={features}
+                      sectionId={sectionId}
+                      scrollContainerRef={scrollContainerRef}
+                    />
+                  ))}
+                </div>
+              </li>
+            ))}
+          </ol>
+        </div>
+      );
+    case "references":
+      return (
+        <div className="wiki-references" data-wiki-reveal>
+          <ol className="wiki-references__list">
+            {block.items.map((entry, index) => (
+              <li className="wiki-references__item" key={`${entry.label}-${index}`}>
+                <span className="wiki-references__index" aria-hidden="true">
+                  [{index + 1}]
+                </span>
+                <span className="wiki-references__body">
+                  <span>{entry.text}</span>
+                  {entry.href ? (
+                    <a
+                      className="wiki-references__link"
+                      href={entry.href}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      {entry.hrefLabel ?? "Source"}
+                    </a>
+                  ) : null}
+                </span>
+              </li>
+            ))}
+          </ol>
         </div>
       );
     case "chapter-link":
@@ -853,6 +983,8 @@ export function WikiRoutePage({
   protocolPairs,
   inlineRenderer,
   outlineDepth,
+  outlineSlot,
+  leadSection,
 }: WikiRoutePageProps) {
   const rootRef = useRef<HTMLElement>(null);
   const interfaceRef = useRef<HTMLDivElement>(null);
@@ -1011,12 +1143,26 @@ export function WikiRoutePage({
         )}
       </header>
 
+      {leadSection ? (
+        <section className="wiki-lead-section-slot" data-wiki-reveal>
+          {leadSection}
+        </section>
+      ) : null}
+
       <div className="wiki-reader-track">
         <div
           ref={interfaceRef}
           className={`wiki-record${hideOutline ? " wiki-record--full" : ""}`}
         >
-          {hideOutline ? null : (
+          {hideOutline ? null : outlineSlot && !compact ? (
+            <div className="wiki-outline-slot">
+              {outlineSlot({
+                activeSection,
+                activeSubsection,
+                scrollContainerRef: scrollRef,
+              })}
+            </div>
+          ) : (
             <WikiLineSidebar
               activeId={activeSection}
               activeChildId={activeSubsection}

@@ -8,6 +8,7 @@
  */
 
 import type { SustainabilityImageAssetKey } from "./sustainabilityAssets";
+import type { StakeholderPhoto } from "./sustainabilityPhotos";
 
 export interface SustainabilityStat {
   id: string;
@@ -28,7 +29,9 @@ export interface ChatQuote {
 export type ArticleBlock =
   | string
   | { quotes: ReadonlyArray<ChatQuote> }
-  | { bullets: ReadonlyArray<string> };
+  | { bullets: ReadonlyArray<string> }
+  /** One engagement photo, placed at body width between sections. */
+  | { photo: StakeholderPhoto };
 
 export interface ArticleSection {
   heading?: string;
@@ -46,6 +49,11 @@ export interface StakeholderProfile {
   index: string;
   name: string;
   role?: string;
+  /**
+   * Engagement photographs. Resolved from `sustainabilityPhotos.ts` by `id`;
+   * profiles with nothing documented render without a photo layer.
+   */
+  photos?: ReadonlyArray<StakeholderPhoto>;
   relevantStakeholder: string;
   challenge?: string;
   keyInsight: string;

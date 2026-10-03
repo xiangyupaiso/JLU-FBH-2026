@@ -313,6 +313,7 @@ html.has-route-reader-scroll {
   width: 100%;
   max-width: none;
   height: var(--reader-h);
+  max-height: var(--reader-h);
   min-height: 0;
   grid-template-columns: var(--toc-w) minmax(0, 1fr);
   gap: 22px; /* space/5 */
@@ -322,10 +323,19 @@ html.has-route-reader-scroll {
   box-sizing: border-box;
   background: var(--route-page-bg);
   background-image: none;
+  overflow: hidden;
   /* No `scroll-snap-align` here: the mat is pinned inside
      `.wiki-reader-track`, so a snap target on it would re-anchor every frame
      and fight the reader's gesture (see the note on
      `html.has-route-reader-scroll`). */
+}
+
+/* Slot wrapper for custom page-specific sidebar outlines */
+.wiki-page--route .wiki-outline-slot {
+  height: 100%;
+  max-height: calc(var(--reader-h) - var(--reader-pad) * 2);
+  min-height: 0;
+  overflow: hidden;
 }
 
 /* Optional full-width reader variant. The sidebar is omitted by the renderer,
@@ -517,7 +527,7 @@ html.has-route-reader-scroll {
 .wiki-page.wiki-page--route .wiki-outline nav .wiki-outline__secondary {
   display: grid;
   min-height: 32px;
-  grid-template-columns: 24px minmax(0, 1fr);
+  grid-template-columns: 30px minmax(0, 1fr);
   gap: 6px;
   align-items: center;
   padding: 4px 8px;
@@ -556,7 +566,9 @@ html.has-route-reader-scroll {
   color: var(--route-accent);
   font-family: var(--font-sans);
   font-size: 10px;
+  font-variant-numeric: tabular-nums;
   font-weight: 750;
+  white-space: nowrap;
 }
 
 /* Related links (✦ 延伸阅读) */
@@ -662,7 +674,7 @@ html.has-route-reader-scroll {
 .wiki-page--route .wiki-article {
   min-width: 0;
   min-height: 0;
-  padding: clamp(40px, 5vw, 64px) clamp(26px, 5vw, 72px);
+  padding: clamp(40px, 5vw, 64px) clamp(26px, 5vw, 72px) clamp(100px, 14vh, 180px);
   background: transparent;
   /* The base `overflow-x: hidden` (wiki-rebuild.css) computes y to `auto`,
      turning the article into a second scroller whenever a descendant sticks
@@ -754,13 +766,20 @@ html.has-route-reader-scroll {
   overflow-y: visible;
 }
 
-/* 图片/表格/Callout/Split 标准块级间距统一收敛为 24px */
+/* 图片/表格/Callout/Split 标准块级间距统一收敛为 24px，图表与表格居中放置 */
 .wiki-page--route .wiki-figure {
-  margin: var(--wiki-space-block, 24px) 0 !important;
+  margin: var(--wiki-space-block, 24px) auto !important;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  text-align: center;
 }
 
 .wiki-page--route .wiki-table-wrap {
-  margin: var(--wiki-space-block, 24px) 0 !important;
+  margin: var(--wiki-space-block, 24px) auto !important;
+  width: 100%;
 }
 
 .wiki-page--route .wiki-callout {
@@ -1069,8 +1088,24 @@ html.has-route-reader-scroll {
 }
 
 .wiki-page--route .wiki-figure img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
   border-radius: 4px;
-  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.1);
+  border: none !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+.wiki-page--route .wiki-figure figcaption {
+  width: 100%;
+  max-width: 760px;
+  margin-top: 14px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
 }
 
 /* 9a. Pull-out card (`mini-visual`) --------------------------------------- */
@@ -1146,6 +1181,8 @@ html.has-route-reader-scroll {
 .wiki-page--route .wiki-table {
   width: 100%;
   min-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
   border-collapse: collapse;
   color: var(--route-ink);
   font-size: 13px;
@@ -1158,7 +1195,7 @@ html.has-route-reader-scroll {
   font-family: var(--font-mono);
   font-size: 10px;
   letter-spacing: 0.06em;
-  text-align: left;
+  text-align: center;
   text-transform: uppercase;
 }
 
@@ -1272,6 +1309,8 @@ html.has-route-reader-scroll {
    above, separated only by the hairline); section height = content + padding,
    no min-height/viewport placeholder; hairline→question gap is space/7 (42px). */
 .wiki-page--route .wiki-next.wiki-next--record {
+  position: relative;
+  z-index: 1;
   display: block;
   width: 100%;
   margin: 0;
@@ -1825,8 +1864,8 @@ html.has-route-reader-scroll {
 
 /* Unified document timeline: the reader frame remains visually fixed while its
    internal progress is represented by the track's document height. */
-.wiki-page--route .wiki-reader-track { position: relative; height: calc(var(--reader-h) + var(--reader-scroll-extra, 0px)); }
-.wiki-page--route .wiki-reader-track > .wiki-record { position: sticky; top: var(--header-height); height: var(--reader-h); }
+.wiki-page--route .wiki-reader-track { position: relative; z-index: 2; height: calc(var(--reader-h) + var(--reader-scroll-extra, 0px)); }
+.wiki-page--route .wiki-reader-track > .wiki-record { position: sticky; top: var(--header-height); height: var(--reader-h); max-height: var(--reader-h); z-index: 2; background: var(--route-page-bg); overflow: hidden; }
 
 
 /* The document is the only scroll owner during the reader timeline. */

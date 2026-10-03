@@ -127,24 +127,25 @@ export const sustainabilityStats: ReadonlyArray<SustainabilityStat> = [
 export const sstqnSection = {
   title: "SDG Synergy–Trade-off Quantification Network (SST-QN)",
   motivation:
-    "The Sustainable Development Goals are interconnected. Progress toward one goal can advance others, but it can also introduce new constraints depending on how and where it is pursued. Therefore, examining a project’s links to individual SDGs in isolation cannot fully capture the synergies and trade-offs within the broader sustainable development system.",
+    "The Sustainable Development Goals (SDGs) are interconnected, and individual goals may span more than one dimension of sustainable development. Within our analytical framework, we mapped all **17 SDGs** across the **social, economic, and environmental dimensions** according to the **relative weights** identified for their associations with each dimension. SDGs whose associations extended across multiple dimensions were therefore allowed to appear in **more than one category**. This mapping provides the basis for the subsequent **SST-QN analysis**; it **does not imply that CirCure contributes equally to all 17 SDGs**.",
   /** The "(click to learn)" phrase links to the Global Youth stakeholder card. */
-  accelerationWeekLead: "These connections became clearer during our participation in the ",
+  accelerationWeekLead:
+    "These connections became clearer during our participation in the **Acceleration Week for Global Youth Development Programs in 2026** ",
   accelerationWeekLink: {
-    label: "Acceleration Week for Global Youth Development Programs in 2026 (click to learn)",
+    label: "(click to learn)",
     target: "sdg3-global-youth",
   },
   accelerationWeek:
     ". JLU-FBH was invited to this **UNICEF-organized** exchange event, where we joined the **“Health and Well-being”** thematic group. When conversations with young people working in health, technology, education, and green development, we realised that even projects sharing the goal of improving health can have different impacts depending on technological conditions, access to resources, social equity, and the implementation context. This shifted our focus beyond **“Which SDGs is CirCure related to?”** to a deeper set of questions: **How are these goals connected? Do these connections always hold? Under what conditions might they change?**",
   statusIntro:
     "To examine these relationships systematically, we established **SST-QN** as an initial screening framework covering all 17 SDGs. It starts with potential **directed interactions** among SDGs in a general context. Drawing on existing mechanisms and evidence, the model assigns each potential direct relationship an **Interaction Status**: **Core (C)** for direct relationships with relatively clear support; **Exploratory (E)** for those with plausible mechanisms but limited evidence; **Conditional (±)** for those whose effects depend on specific implementation conditions; and **Excluded (0)** for those that currently lack sufficient support.",
-  statusCaption: "Figure 5: SST-QN Interaction Status Classification",
+  statusCaption: "SST-QN Interaction Status Classification",
   boundaryIntro:
     "Before assigning quantitative scores, we specified **which direct interactions among the 17 SDGs were eligible for analysis and the status assigned to each**. This prevented relationships from being arbitrarily added or reinterpreted after the results were obtained.",
-  boundaryCaption: "Figure 6: Pre-specified Direct-edge Boundary Matrix",
+  boundaryCaption: "Pre-specified Direct-edge Boundary Matrix",
   scoreIntro:
     "We then used the **Evidence-calibrated Directed Interaction Score**, ranging from **−1 to 1**, to characterize the **direction and relative strength** of interactions among SDGs. Positive values indicate a **Positive Interaction (Synergy)**, negative values indicate a **Negative Interaction (Trade-off)**, and 0 indicates that **no direct interaction is currently supported**. **Interaction Status and Interaction Direction are distinct**: status describes the evidence and conditions underpinning a relationship, whereas direction indicates whether the interaction is positive or negative. The score additionally expresses its relative strength.",
-  scoreCaption: "Figure 7: Direct Interaction Scores Among the 17 SDGs",
+  scoreCaption: "Direct Interaction Scores Among the 17 SDGs",
   indirectPropagation:
     "Beyond direct interactions, SST-QN allows for the analysis of **indirect propagation, feedback, time lags, and implementation conditions**. Many **Negative Interactions / Trade-offs** arise from how an SDG is pursued—for. For example, through resource consumption, increased costs, or unequal distribution—rather than from the goal itself. The direction of **Conditional relationships** must therefore be assessed within the specific project context.",
   alignmentScreening:
@@ -221,7 +222,7 @@ export const sustainabilityChapters: ReadonlyArray<SdgChapter> = [sdg3Chapter];
 
 export const stakeholderTracker = {
   id: "stakeholder-tracker",
-  index: "4.1.6",
+  index: "4.2",
   title: "Stakeholder Sustainability Tracker",
   paragraphs: [
     "As CirCure progressed, we accumulated stakeholder feedback, team responses, implementation outcomes, and supporting evidence. We developed the **Stakeholder Sustainability Tracker** to organize this information in one place and make stakeholder engagement easier to update and review over time. The tool records stakeholder information, key feedback, project responses, implementation status, relevant SDGs, and supporting evidence. To help other iGEM teams use it directly, we provide a **blank version containing no CirCure project data**. Click here to view and download the template, then build and maintain stakeholder records tailored to your project.",

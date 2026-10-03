@@ -374,7 +374,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: var(--wiki-space-block, 24px) 0;
+  margin: var(--wiki-space-block, 24px) auto;
 }
 
 .wiki-page--project .wiki-figure:has(img[src*="figure3"]) img,
@@ -449,7 +449,7 @@
 
 /* Tables: booktabs three-line register */
 .wiki-page--route.wiki-page--description .wiki-table-wrap {
-  margin: var(--wiki-space-block, 24px) 0;
+  margin: var(--wiki-space-block, 24px) auto;
   background:
     linear-gradient(
       to right,
@@ -486,6 +486,8 @@
 
 .wiki-page--route.wiki-page--description .wiki-table {
   min-width: 0;
+  margin-left: auto;
+  margin-right: auto;
   border-top: 1.5px solid var(--route-ink);
   border-bottom: 1.5px solid var(--route-ink);
   font-family: var(--font-sans);
@@ -506,7 +508,7 @@
   line-height: 1.55;
   letter-spacing: 0;
   text-transform: none;
-  text-align: left;
+  text-align: center;
   color: var(--route-ink);
 }
 
