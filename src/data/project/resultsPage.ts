@@ -3,7 +3,7 @@ import type { WikiPageContent } from "../../components/wiki/wikiPageTypes";
 export const resultsPage: WikiPageContent = {
   route: "/results",
   category: "project",
-  chapter: "Project / 03 of 04",
+  chapter: "Project / 03 of 07",
   eyebrow: "Results · Evidence ledger",
   title: "Results",
   lede: "Evidence, limits, and conclusions.",

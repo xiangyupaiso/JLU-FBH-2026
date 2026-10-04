@@ -1,219 +1,51 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 const teamCrestUrl = "https://static.igem.wiki/teams/6056/wiki/files/pages/shared/jlu-fbh-crest.avif";
-const projectWetlabSprite = "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/nav-project-wetlab-v2.webp";
-const drylabEngagementSprite = "https://static.igem.wiki/teams/6056/wiki/files/pages/dry-lab/nav-drylab-engagement-v2.webp";
 import Pages from "../pages";
 import { PageSearch } from "./PageSearch";
+import { useRouteModule } from "../hooks/useRouteModule";
+import { NAV_ICONS } from "./navIcons";
 
 interface NavCard {
   name: string;
   path: string;
-  small: string;
-  em: string;
-  spriteRow: string;
+  icon: string;
 }
 
 interface NavDropdown {
   key: string;
   label: string;
-  sprite: string;
-  intro: string;
-  enterLabel: string;
   cards: NavCard[];
 }
 
-const SPRITES = {
-  "project-wetlab": projectWetlabSprite,
-  "drylab-engagement": drylabEngagementSprite,
-} as const;
-
-interface FolderDisplay {
-  key: string;
-  intro: string;
-  enterLabel: string;
-  sprite: keyof typeof SPRITES;
-  cards: Record<string, Pick<NavCard, "small" | "em" | "spriteRow">>;
-}
-
-const NAV_DISPLAY: Record<string, FolderDisplay> = {
-  Team: {
-    key: "team",
-    intro:
-      "Coming together with a shared purpose to turn the impossible into reality.",
-    enterLabel: "Meet the team",
-    sprite: "drylab-engagement",
-    cards: {
-      Roster: {
-        small: "01 / ROSTER",
-        em: "Students · Advisors · PIs",
-        spriteRow: "100%",
-      },
-      Attributions: {
-        small: "02 / ATTRIBUTIONS",
-        em: "Roles · Tasks · Support",
-        spriteRow: "100%",
-      },
-      Activities: {
-        small: "03 / ACTIVITIES",
-        em: "Team dynamics · Outreach · Milestones",
-        spriteRow: "100%",
-      },
-    },
-  },
-  Project: {
-    key: "project",
-    intro:
-      "Why TNBC needs a traceable route from evidence to vaccine candidates.",
-    enterLabel: "Project overview",
-    sprite: "project-wetlab",
-    cards: {
-      Description: {
-        small: "01 / CONTEXT",
-        em: "Problem · Gap · Response",
-        spriteRow: "0%",
-      },
-      Engineering: {
-        small: "02 / ITERATE",
-        em: "Design · Build · Test · Learn",
-        spriteRow: "0%",
-      },
-      Results: {
-        small: "03 / EVIDENCE",
-        em: "Figures · Statistics · Failures",
-        spriteRow: "0%",
-      },
-      Contribution: {
-        small: "04 / RESPONSIBILITY",
-        em: "Gates · Limits · Reuse",
-        spriteRow: "0%",
-      },
-    },
-  },
-  "Wet Lab": {
-    key: "wet-lab",
-    intro:
-      "From construct design to measurements that can support—or reject—a claim.",
-    enterLabel: "Enter Wet Lab",
-    sprite: "project-wetlab",
-    cards: {
-      Experiments: {
-        small: "01 / METHODS",
-        em: "Protocols · Controls · Materials",
-        spriteRow: "100%",
-      },
-      Notebook: {
-        small: "02 / TRACE",
-        em: "Timeline · Records · Reproduce",
-        spriteRow: "100%",
-      },
-      Measurement: {
-        small: "03 / QUANTIFY",
-        em: "Parts · Characterization · Range",
-        spriteRow: "100%",
-      },
-      "Alternative Platform": {
-        small: "04 / HOST",
-        em: "Chassis · Range · Limits",
-        spriteRow: "100%",
-      },
-      "Safety and Security": {
-        small: "05 / GUARD",
-        em: "Risks · Mitigation · Stewardship",
-        spriteRow: "100%",
-      },
-    },
-  },
-  "Dry Lab": {
-    key: "dry-lab",
-    intro:
-      "Models, software, and hardware that make the wet claims inspectable.",
-    enterLabel: "Enter Dry Lab",
-    sprite: "drylab-engagement",
-    cards: {
-      Model: {
-        small: "01 / REASON",
-        em: "Assumptions · Validation · Limits",
-        spriteRow: "0%",
-      },
-      Software: {
-        small: "02 / REUSE",
-        em: "Run · Inspect · Extend",
-        spriteRow: "0%",
-      },
-      Hardware: {
-        small: "03 / INSTRUMENT",
-        em: "Build · Calibrate · Share",
-        spriteRow: "0%",
-      },
-      Games: {
-        small: "04 / INTERACT",
-        em: "Play · Explore · Experiment",
-        spriteRow: "0%",
-      },
-    },
-  },
-  Engagement: {
-    key: "engagement",
-    intro:
-      "Stakeholder input becomes design evidence only when its consequence stays visible.",
-    enterLabel: "Follow the decisions",
-    sprite: "drylab-engagement",
-    cards: {
-      Entrepreneurship: {
-        small: "01 / TRANSLATE",
-        em: "Users · Risks · Next steps",
-        spriteRow: "100%",
-      },
-      "Human Practices": {
-        small: "02 / LISTEN",
-        em: "Input · Change · Consequence",
-        spriteRow: "100%",
-      },
-      Education: {
-        small: "03 / EXPLAIN",
-        em: "Audience · Access · Reflection",
-        spriteRow: "100%",
-      },
-      Inclusivity: {
-        small: "04 / INCLUDE",
-        em: "Reach · Access · Equity",
-        spriteRow: "100%",
-      },
-      Sustainability: {
-        small: "05 / SUSTAIN",
-        em: "SDGs · Impact · Tradeoffs",
-        spriteRow: "100%",
-      },
-    },
-  },
+const NAV_KEYS: Record<string, string> = {
+  Team: "team",
+  Project: "project",
+  "Wet Lab": "wet-lab",
+  "Dry Lab": "dry-lab",
+  Engagement: "engagement",
 };
 
 const DROPDOWNS: NavDropdown[] = Pages.flatMap((item) => {
   if (!("folder" in item) || !item.folder || !item.name) return [];
-  const display = NAV_DISPLAY[item.name];
-  if (!display) return [];
+  const key = NAV_KEYS[item.name];
+  if (!key) return [];
 
   const cards = item.folder.flatMap((page): NavCard[] => {
     if (!page.name || !page.path) return [];
-    const card = display.cards[page.name];
-    if (!card) return [];
     return [
       {
         name: page.name,
         path: page.path,
-        ...card,
+        icon: NAV_ICONS[page.name] ?? "",
       },
     ];
   });
 
   return [
     {
-      key: display.key,
+      key,
       label: item.name,
-      sprite: SPRITES[display.sprite],
-      intro: display.intro,
-      enterLabel: display.enterLabel,
       cards,
     },
   ];
@@ -234,13 +66,15 @@ export function Navbar() {
   const [openKey, setOpenKey] = useState<string | null>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mobileGroup, setMobileGroup] = useState<string | null>(null);
+  const [menuAnchor, setMenuAnchor] = useState(0);
   const openTimerRef = useRef<number>(0);
   const closeTimerRef = useRef<number>(0);
   const headerRef = useRef<HTMLElement>(null);
   const shellRef = useRef<HTMLDivElement>(null);
   const mobileToggleRef = useRef<HTMLButtonElement>(null);
   const pathname = useLocation().pathname;
-  const homeActive = isActive(pathname, "/");
+  const module = useRouteModule();
+  const homeActive = module.home;
   const currentDropdownKey =
     DROPDOWNS.find((d) => dropdownActive(pathname, d))?.key ?? null;
 
@@ -249,14 +83,33 @@ export function Navbar() {
     window.clearTimeout(closeTimerRef.current);
   }, []);
 
+  const updateMenuAnchor = useCallback((key: string) => {
+    const shell = shellRef.current;
+    const toggle = shell?.querySelector<HTMLButtonElement>(
+      `button[data-nav-key="${key}"]`,
+    );
+    if (!shell || !toggle) return;
+    const shellRect = shell.getBoundingClientRect();
+    const toggleRect = toggle.getBoundingClientRect();
+    const trayWidth = Math.min(
+      Number.parseFloat(getComputedStyle(shell).getPropertyValue("--nav-menu-width")) || 304,
+      shellRect.width - 20,
+    );
+    const centeredLeft = toggleRect.left - shellRect.left + toggleRect.width / 2 - trayWidth / 2;
+    setMenuAnchor(Math.max(10, Math.min(shellRect.width - trayWidth - 10, centeredLeft)));
+  }, []);
+
   const queueOpen = useCallback(
     (key: string) => {
       if (typeof window === "undefined" || window.innerWidth <= NAV_BREAKPOINT)
         return;
       clearTimers();
-      openTimerRef.current = window.setTimeout(() => setOpenKey(key), 70);
+      openTimerRef.current = window.setTimeout(() => {
+        updateMenuAnchor(key);
+        setOpenKey(key);
+      }, 70);
     },
-    [clearTimers],
+    [clearTimers, updateMenuAnchor],
   );
 
   const queueClose = useCallback(() => {
@@ -276,9 +129,10 @@ export function Navbar() {
         return;
       }
       clearTimers();
+      updateMenuAnchor(key);
       setOpenKey(key);
     },
-    [clearTimers],
+    [clearTimers, updateMenuAnchor],
   );
 
   const closeAll = useCallback(() => {
@@ -294,6 +148,13 @@ export function Navbar() {
 
   // Clean up timers on unmount
   useEffect(() => () => clearTimers(), [clearTimers]);
+
+  useEffect(() => {
+    if (!openKey) return;
+    const onResize = () => updateMenuAnchor(openKey);
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
+  }, [openKey, updateMenuAnchor]);
 
   // The dark header belongs only to Home's opening scene. Reuse the progress
   // listener so scrolling back, resizing and route changes restore its theme.
@@ -389,6 +250,18 @@ export function Navbar() {
   // Arrow Left/Right cycling among dropdown toggles
   const onToggleKeydown = useCallback(
     (event: React.KeyboardEvent<HTMLButtonElement>) => {
+      if (event.key === "ArrowDown") {
+        event.preventDefault();
+        const key = event.currentTarget.dataset.navKey;
+        if (!key) return;
+        openImmediate(key);
+        window.requestAnimationFrame(() => {
+          shellRef.current?.querySelector<HTMLAnchorElement>(
+            ".circure-nav-panel.is-active .nav-image-card",
+          )?.focus();
+        });
+        return;
+      }
       if (event.key !== "ArrowLeft" && event.key !== "ArrowRight") return;
       event.preventDefault();
       const toggles = Array.from(
@@ -410,36 +283,15 @@ export function Navbar() {
     [openImmediate],
   );
 
-  const wetLabActive = DROPDOWNS.find((d) => d.key === "wet-lab")?.cards.some(
-    (card) => isActive(pathname, card.path),
-  );
   // Reader-route modules recolour the fixed bar and its pills from their own
-  // palette (`route-palette-<module>.css`). Adding a module here is the only
-  // global change a new skinned module needs.
-  const projectActive = DROPDOWNS.find((d) => d.key === "project")?.cards.some(
-    (card) => isActive(pathname, card.path),
-  );
-  const dryLabActive = DROPDOWNS.find((d) => d.key === "dry-lab")?.cards.some(
-    (card) => isActive(pathname, card.path),
-  );
-  const engagementActive = DROPDOWNS.find((d) => d.key === "engagement")?.cards.some(
-    (card) => isActive(pathname, card.path),
-  );
-  const teamActive =
-    DROPDOWNS.find((d) => d.key === "team")?.cards.some((card) =>
-      isActive(pathname, card.path),
-    ) || isActive(pathname, "/team");
+  // palette (`route-palette-<module>.css`). The footer needs the same answer and
+  // lives outside the reader tree, so both read it from `useRouteModule`.
   const headerClassName = [
     "site-header",
-    homeActive ? "is-home-page" : "",
+    module.home ? "is-home-page" : "",
     openKey ? "is-nav-open" : "",
     mobileOpen ? "is-mobile-open" : "",
-    wetLabActive ? "is-wet-lab-page" : "",
-    projectActive ? "is-project-page" : "",
-    dryLabActive ? "is-dry-lab-page" : "",
-    engagementActive ? "is-engagement-page" : "",
-    teamActive ? "is-team-page" : "",
-    wetLabActive || projectActive || dryLabActive || engagementActive || teamActive ? "is-route-page" : "",
+    module.className,
   ]
     .filter(Boolean)
     .join(" ");
@@ -527,8 +379,11 @@ export function Navbar() {
                         dropdownActive(pathname, d) ? "page" : undefined
                       }
                       onPointerEnter={() => queueOpen(d.key)}
-                      onFocus={() => openImmediate(d.key)}
-                      onClick={() => openImmediate(d.key)}
+                      onClick={() => {
+                        clearTimers();
+                        if (openKey === d.key) setOpenKey(null);
+                        else openImmediate(d.key);
+                      }}
                       onKeyDown={onToggleKeydown}
                     >
                       <span className="nav-folio" aria-hidden="true">
@@ -588,54 +443,39 @@ export function Navbar() {
             id="circure-nav-menu"
             aria-hidden={!openKey}
             inert={!openKey || undefined}
+            style={{ "--nav-panel-left": `${menuAnchor}px` } as React.CSSProperties}
           >
             {DROPDOWNS.map((d) => {
               const isActivePanel = openKey === d.key;
-              const manyCards = d.cards.length > 3;
               return (
                 <div
                   key={d.key}
                   className={[
                     "circure-nav-panel",
                     isActivePanel ? "is-active" : "",
-                    manyCards ? "has-many-cards" : "",
                   ]
                     .filter(Boolean)
                     .join(" ")}
                   data-nav-panel={d.key}
                   aria-hidden={!isActivePanel}
-                  style={
-                    manyCards
-                      ? {
-                          gridTemplateColumns: `1.13fr repeat(${d.cards.length}, 1fr)`,
-                        }
-                      : undefined
-                  }
+                  inert={!isActivePanel || undefined}
+                  role="navigation"
+                  aria-label={`${d.label} pages`}
                 >
-                  <article className="nav-intro-card">
-                    <span>{d.label}</span>
-                    <strong>{d.intro}</strong>
-                    <Link to={d.cards[0]?.path ?? "/"} onClick={closeAll}>
-                      {d.enterLabel} <b>→</b>
-                    </Link>
-                  </article>
-                  {d.cards.map((c, i) => (
+                  {d.cards.map((c) => (
                     <Link
                       key={c.path}
                       to={c.path}
                       className="nav-image-card"
-                      style={
-                        {
-                          "--nav-image": `url(${d.sprite})`,
-                          "--nav-col": `${(i / Math.max(1, d.cards.length - 1)) * 100}%`,
-                          "--nav-row": c.spriteRow,
-                        } as React.CSSProperties
-                      }
+                      aria-current={isActive(pathname, c.path) ? "page" : undefined}
                       onClick={closeAll}
                     >
-                      <small>{c.small}</small>
-                      <strong>{c.name}</strong>
-                      <em>{c.em}</em>
+                      <span className="nav-card-thumb" aria-hidden="true">
+                        <img src={c.icon} alt="" loading="lazy" />
+                      </span>
+                      <span className="nav-card-info">
+                        <strong>{c.name}</strong>
+                      </span>
                     </Link>
                   ))}
                 </div>
@@ -703,9 +543,14 @@ export function Navbar() {
                           }
                           onClick={closeAll}
                         >
-                          <small aria-hidden="true">
-                            {c.small.split(" / ")[0]}
-                          </small>
+                          {c.icon ? (
+                            <img
+                              src={c.icon}
+                              alt=""
+                              className="circure-mobile-group__icon"
+                              loading="lazy"
+                            />
+                          ) : null}
                           <span>{c.name}</span>
                         </Link>
                       ))}

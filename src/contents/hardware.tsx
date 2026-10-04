@@ -1,7 +1,6 @@
 import { WikiRoutePage } from "../components/wiki/WikiRoutePage";
 import { getDryLabHeroImage } from "../components/wiki/dryLabHeroAssets";
 import { hardwarePage } from "../data/drylab/hardwarePage";
-import "../styles/route-palette-drylab.css";
 
 export function Hardware() {
   return (

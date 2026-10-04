@@ -1,23 +1,18 @@
-/* CirCure navigation shell — extracted from story-nav prototype.
-   `html.nav-menu-open .X` → `.site-header.is-nav-open .X`
-   `html.mobile-menu-open .X` → `.site-header.is-mobile-open .X`
-   Sprite images are injected by <Navbar/> via inline `--nav-image`/`--nav-row`
-   (each dropdown picks a row of one of the three sprite webp files).
-   Logo fold/mark/ribbon progress vars default to 0 (wordmark 常显, per plan). */
+/* CirCure navigation: anchored desktop dropdowns and a mobile accordion. */
 
 .site-header {
   --header-surface: var(--paper-bright);
   --header-ink: var(--brand-navy-deep);
   --header-line: rgba(27, 23, 25, 0.06);
-  --nav-surface: rgba(252, 248, 241, 0.97);
-  --nav-surface-end: rgba(246, 238, 232, 0.98);
+  --nav-surface: rgba(250, 245, 238, 0.985);
+  --nav-surface-end: rgba(245, 237, 230, 0.985);
   --nav-surface-accent: rgba(215, 132, 179, 0.14);
   --nav-surface-line: rgba(16, 47, 89, 0.1);
-  --nav-surface-shadow: rgba(16, 47, 89, 0.14);
+  --nav-surface-shadow: rgba(16, 47, 89, 0.1);
   --nav-theme-accent: var(--care);
   --nav-card-sheen: rgba(215, 132, 179, 0.16);
   --nav-drop-offset: calc(var(--header-height) - 18px);
-  --nav-menu-height: clamp(360px, 43vh, 430px);
+  --nav-menu-height: clamp(170px, 19vh, 204px);
   --logo-fold-progress: 0;
   --logo-mark-progress: 0;
   --logo-ribbon-progress: 0;
@@ -175,6 +170,7 @@
 }
 
 .circure-nav-shell {
+  --nav-menu-width: 304px;
   position: relative;
   width: min(100%, 1440px);
   height: 40px;
@@ -184,7 +180,6 @@
   transition:
     height 440ms var(--ease-out),
     color 260ms var(--ease-out);
-  will-change: height;
 }
 
 .circure-nav-head {
@@ -655,206 +650,130 @@ button.nav-link {
   display: none;
 }
 
+/* A small dropdown under the active category; original hand-drawn icons. */
 .circure-mega-menu {
   position: absolute;
   z-index: 2;
-  top: var(--nav-drop-offset);
-  right: 0;
-  left: 0;
-  height: var(--nav-menu-height);
-  overflow: hidden;
+  top: calc(var(--nav-drop-offset) - 10px);
+  left: var(--nav-panel-left, 10px);
+  width: min(var(--nav-menu-width), calc(100% - 20px));
+  padding-top: 10px;
   visibility: hidden;
   opacity: 0;
   pointer-events: none;
-  transform: translate3d(0, -12px, 0);
+  transform: translateY(-6px);
   transition:
-    visibility 0s linear 440ms,
-    opacity 360ms var(--ease-out),
-    transform 440ms var(--ease-out);
-  will-change: opacity, transform;
+    visibility 0s linear 160ms,
+    opacity 160ms var(--ease-out),
+    transform 200ms var(--ease-out);
 }
 
 .circure-mega-menu.is-open {
   visibility: visible;
   opacity: 1;
   pointer-events: auto;
-  transform: translate3d(0, 0, 0);
+  transform: translateY(0);
   transition-delay: 0s;
 }
 
-@media (min-width: 981px) {
-  .circure-mega-menu {
-    right: auto;
-    left: 50%;
-    width: 100vw;
-    translate: -50% 0;
-  }
-}
-
 .circure-nav-panel {
-  position: absolute;
-  inset: 14px 18px;
-  display: grid;
-  /* intro card + 3 image cards by default; Navbar overrides grid-template-columns
-     inline when a dropdown has more than 3 image cards (4 or 5). */
-  grid-template-columns: 1.13fr repeat(3, 1fr);
-  gap: clamp(7px, 0.7vw, 11px);
-  opacity: 0;
-  pointer-events: none;
-  transform: translate3d(0, 8px, 0);
-  transition:
-    opacity 360ms var(--ease-out),
-    transform 440ms var(--ease-out);
+  display: none;
+  max-height: calc(100svh - var(--header-height) - 12px);
+  grid-template-columns: minmax(0, 1fr);
+  gap: 4px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 8px;
+  border: 1px solid var(--nav-surface-line);
+  border-radius: 18px;
+  background: var(--nav-surface);
+  box-shadow:
+    0 2px 6px var(--nav-surface-shadow),
+    0 18px 40px var(--nav-surface-shadow);
+  scrollbar-width: thin;
+  scrollbar-color: var(--nav-theme-accent) transparent;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
 }
 
 .circure-nav-panel.is-active {
-  opacity: 1;
-  pointer-events: auto;
-  transform: translate3d(0, 0, 0);
+  display: grid;
 }
 
-.nav-intro-card,
 .nav-image-card {
-  position: relative;
+  display: flex;
   min-width: 0;
-  overflow: hidden;
-  border-radius: clamp(20px, 1.65vw, 26px);
-}
-
-.nav-intro-card {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: clamp(28px, 2.6vw, 42px);
-  border: 0;
-  border-radius: 0;
-  background: transparent;
-}
-
-.nav-intro-card > span,
-.nav-image-card small {
-  font-size: 9px;
-  font-weight: 780;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-}
-
-.nav-intro-card > span {
-  display: none;
-}
-
-.nav-intro-card > strong {
-  max-width: 320px;
-  font-family: var(--font-editorial);
-  font-size: clamp(22px, 1.7vw, 28px);
-  font-weight: 500;
-  letter-spacing: -0.035em;
-  line-height: 1.08;
-}
-
-.nav-intro-card > a {
-  display: none;
-}
-
-.nav-intro-card b {
-  color: var(--care);
-  font-size: 17px;
-  font-weight: 500;
-}
-
-.nav-image-card {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  gap: 10px;
-  padding: clamp(22px, 1.8vw, 30px);
-  isolation: isolate;
-  background-color: #24446a;
-  background-image: var(--nav-image);
-  background-position: var(--nav-col, 0%) var(--nav-row, 0%);
-  background-size: 300% 200%;
-  color: var(--paper-bright);
+  min-height: 68px;
+  align-items: center;
+  gap: 16px;
+  padding: 10px 14px;
+  border-radius: 12px;
+  color: var(--header-ink);
+  text-decoration: none;
   transition:
-    transform 420ms var(--ease-out),
-    filter 260ms var(--ease-out);
+    background-color 160ms var(--ease-out),
+    color 160ms var(--ease-out),
+    transform 160ms var(--ease-out);
 }
 
-.nav-image-card::before {
-  position: absolute;
-  z-index: -1;
-  inset: 0;
-  background: linear-gradient(
-    180deg,
-    rgba(7, 24, 48, 0.02) 28%,
-    rgba(6, 20, 42, 0.86) 100%
-  );
-  content: "";
+.nav-image-card:hover,
+.nav-image-card[aria-current="page"] {
+  background: color-mix(in srgb, var(--nav-theme-accent) 12%, transparent);
 }
 
-.nav-image-card::after {
-  position: absolute;
-  z-index: -1;
-  inset: 0;
-  background: radial-gradient(
-    ellipse 86% 52% at 50% 0%,
-    var(--nav-card-sheen),
-    transparent 72%
-  );
-  content: "";
-  opacity: 0;
-  transition: opacity 220ms var(--ease-out);
+.nav-image-card:focus-visible {
+  outline: 2px solid var(--nav-theme-accent);
+  outline-offset: -2px;
+  background: color-mix(in srgb, var(--nav-theme-accent) 12%, transparent);
 }
 
-.nav-image-card:hover {
-  filter: saturate(0.92) brightness(1.07);
-  transform: translateY(-3px);
+.nav-image-card:active {
+  transform: scale(0.96);
 }
 
-.nav-image-card:hover::after {
-  opacity: 0.72;
+.nav-card-thumb {
+  display: grid;
+  width: 48px;
+  height: 48px;
+  flex: none;
+  place-items: center;
 }
 
-.nav-image-card small {
-  color: #f1bad9;
-  display: none;
+.nav-card-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
-.nav-image-card strong {
-  max-width: none;
-  font-family: var(--font-sans);
-  font-size: clamp(24px, 2vw, 30px);
-  font-weight: 700;
-  letter-spacing: -0.045em;
-  line-height: 0.94;
+.nav-card-info {
+  min-width: 0;
 }
 
-.nav-image-card em {
-  display: none;
+.nav-card-info strong {
+  display: block;
+  white-space: nowrap;
+  font-family: "Fredoka", var(--font-sans);
+  font-size: 20px;
+  font-weight: 650;
+  letter-spacing: -0.018em;
+  line-height: 1.15;
 }
 
-/* When more than 3 image cards are present, shrink title size so the panel
-   does not overflow horizontally. Navbar applies .has-many-cards class. */
-.circure-nav-panel.has-many-cards .nav-image-card strong {
-  font-size: clamp(22px, 1.72vw, 28px);
-}
-
-.circure-nav-panel.has-many-cards .nav-image-card {
-  padding: clamp(20px, 1.55vw, 26px);
-}
-
-@media (min-width: 981px) and (max-width: 1180px) {
-  .circure-nav-panel {
-    inset-inline: 13px;
-    gap: 6px;
+@media (min-width: 981px) {
+  .circure-nav-surface {
+    display: none;
   }
 
-  .nav-intro-card {
-    padding-inline: 24px;
+  .site-header.is-nav-open .circure-nav-shell {
+    height: 40px;
   }
+}
 
-  .circure-nav-panel.has-many-cards .nav-image-card {
-    padding-inline: 16px;
-  }
+.circure-mobile-group__icon {
+  width: 26px;
+  height: 26px;
+  object-fit: contain;
+  flex-shrink: 0;
 }
 
 @media (max-width: 980px) {
@@ -939,10 +858,7 @@ button.nav-link {
     right: 4px;
     bottom: 2px;
     left: 4px;
-    display: grid;
-    grid-auto-rows: minmax(56px, auto);
-    grid-template-rows: none;
-    align-content: start;
+    display: block;
     overflow-y: auto;
     overscroll-behavior-y: contain;
     scrollbar-width: thin;
@@ -1067,10 +983,10 @@ button.nav-link {
     gap: 12px;
     padding: 0 12px 0 14px;
     border-top: 0;
-    font-family: var(--font-sans);
-    font-size: 16px;
-    font-weight: 650;
-    letter-spacing: 0;
+    font-family: "Fredoka", var(--font-sans);
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: -0.012em;
   }
 
   .circure-mobile-menu .circure-mobile-group__link::after {
@@ -1125,7 +1041,12 @@ button.nav-link {
   .circure-mobile-group__caret,
   .mobile-menu-toggle svg,
   .nav-caret,
+  .nav-image-card,
   .nav-link::after {
     transition-duration: 1ms !important;
+  }
+
+  .nav-image-card:active {
+    transform: none;
   }
 }

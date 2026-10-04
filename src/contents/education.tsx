@@ -6,7 +6,6 @@ import {
 } from "../components/wiki/features/EngagementFeatures";
 import { getEngagementHeroImage } from "../components/wiki/engagementHeroAssets";
 import { educationPage } from "../data/engagement/educationPage";
-import "../styles/route-palette-engagement.css";
 
 export function Education() {
   return (

@@ -6,7 +6,6 @@ import {
   PlatformWorkflow,
 } from "../components/wiki/features/wet-lab/AlternativePlatformPanels";
 import { alternativePlatformPage } from "../data/wet-lab/alternativePlatformPage";
-import "../styles/route-palette-wetlab.css";
 
 export function AlternativePlatform() {
   return (

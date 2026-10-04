@@ -1,7 +1,9 @@
 /* Wet Lab module palette: the three existing Wet Lab colours, injected into
-   the shared reader-route skin. */
+   the shared reader-route skin. The footer is a sibling of <Routes> and needs
+   the palette named directly — see route-palette-team.css. */
 .wiki-page--wet-lab,
-.site-header.is-wet-lab-page {
+.site-header.is-wet-lab-page,
+.circure-footer.is-wet-lab-page {
   --route-main: #b4dff0;
   --route-soft: #e0f5ee;
   --route-base: #fdf5d1;

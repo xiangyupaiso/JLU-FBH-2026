@@ -3,7 +3,6 @@ import { descriptionFeatures } from "../components/wiki/features/project/Descrip
 import { renderCitedText } from "../components/wiki/features/project/CitationLink";
 import { getProjectHeroImage } from "../components/wiki/projectHeroAssets";
 import { descriptionPage } from "../data/project/descriptionPage";
-import "../styles/route-palette-project.css";
 import "../styles/description-page.css";
 
 export function Description() {

@@ -5,7 +5,6 @@ import {
 } from "../components/wiki/features/ProjectFeatures";
 import { getProjectHeroImage } from "../components/wiki/projectHeroAssets";
 import { contributionPage } from "../data/project/contributionPage";
-import "../styles/route-palette-project.css";
 
 export function Contribution() {
   return (

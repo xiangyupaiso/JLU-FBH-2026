@@ -1,31 +1,39 @@
-import { WikiRoutePage } from "../components/wiki/WikiRoutePage";
+import { useRef, type CSSProperties } from "react";
 import {
-  EngineeringOutline,
-  engineeringFeatures,
-} from "../components/wiki/features/project/EngineeringPanels";
+  EngineeringIntroduction,
+  EngineeringJourney,
+} from "../components/wiki/features/project/EngineeringExperience";
+import { WikiNextRecord } from "../components/wiki/WikiNextRecord";
 import { getProjectHeroImage } from "../components/wiki/projectHeroAssets";
 import { engineeringPage } from "../data/project/engineeringPage";
-import "../styles/route-palette-project.css";
+import "../styles/wiki-rebuild.css";
+import "../styles/wetlab-editorial.css";
+import "../styles/wiki-route-skin.css";
+import "../styles/features/engineering-experience.css";
 
-/**
- * Project 02 — Engineering.
- *
- * The reader template is used unchanged; two generic slots carry the page's
- * own structure. `leadSection` mounts the large TIME dial figure under the
- * hero, and `outlineSlot` replaces the line sidebar with the compact dial plus
- * the team gear strip. Below 980px the template falls back to the standard
- * drawer, so the outline stays reachable on a phone.
- */
+/** The TIME scroll narrative is confined to Engineering; shared readers stay generic. */
 export function Engineering() {
+  const heroRef = useRef<HTMLElement>(null);
   return (
-    <WikiRoutePage
-      content={engineeringPage}
-      heroImage={getProjectHeroImage(engineeringPage.route)}
-      hideHeroCopy
-      theme="project"
-      pageClassName="wiki-page--project wiki-page--engineering"
-      outlineSlot={(context) => <EngineeringOutline {...context} />}
-      features={engineeringFeatures()}
-    />
+    <main
+      className="wiki-page wiki-page--route wiki-page--manuscript wiki-page--project wiki-page--engineering"
+      data-wiki-route="/engineering"
+      data-route-theme="project"
+    >
+      <header
+        ref={heroRef}
+        className="wiki-hero"
+        style={
+          {
+            "--route-hero-image": `url(${getProjectHeroImage(engineeringPage.route)})`,
+          } as CSSProperties
+        }
+      >
+        <h1 className="wiki-hero__sr-only">{engineeringPage.title}</h1>
+      </header>
+      <EngineeringIntroduction section={engineeringPage.sections[0]} />
+      <EngineeringJourney heroRef={heroRef} />
+      <WikiNextRecord {...engineeringPage.next} />
+    </main>
   );
 }

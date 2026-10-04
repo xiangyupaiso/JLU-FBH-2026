@@ -38,7 +38,14 @@ const ASSET_EXT_MAP = {
   // Audio & Video
   ".mp3": "audio",
   ".wav": "audio",
+  ".ogg": "audio",
+  ".m4a": "audio",
+  ".flac": "audio",
   ".mp4": "video",
+  ".webm": "video",
+  ".mov": "video",
+  ".m4v": "video",
+  ".ogv": "video",
 };
 
 const ALL_ASSET_EXTS = new Set(Object.keys(ASSET_EXT_MAP));
@@ -91,7 +98,7 @@ function inferCategory(filePath) {
   const normalized = filePath.replace(/\\/g, "/").toLowerCase();
   if (normalized.includes("wetlab") || normalized.includes("wet-lab")) return "wet-lab";
   if (normalized.includes("drylab") || normalized.includes("dry-lab")) return "dry-lab";
-  if (normalized.includes("engagement") || normalized.includes("human-practices") || normalized.includes("sustainability")) return "engagement";
+  if (normalized.includes("engagement") || normalized.includes("human-practices") || normalized.includes("sustainability") || normalized.includes("/hp/")) return "engagement";
   if (normalized.includes("project") || normalized.includes("description") || normalized.includes("design") || normalized.includes("engineering")) return "project";
   if (normalized.includes("team") || normalized.includes("members") || normalized.includes("roster")) return "team";
   if (normalized.includes("home") || normalized.includes("story")) return "home";
@@ -101,10 +108,20 @@ function inferCategory(filePath) {
   return "shared";
 }
 
+const CHINESE_NAME_MAP = {
+  "丝带": "ribbon-source",
+  "小羊": "lamb-source",
+  "层级关系示意图": "preloader-layer-diagram",
+  "手": "hands-source",
+  "星星": "stars-source",
+  "背景": "bg-source",
+  "花瓣": "petals-source",
+};
+
 function generateAssetId(relPath, filename, existingIds) {
   const ext = path.extname(filename).toLowerCase().replace(".", "");
   const stem = path.parse(filename).name;
-  let base = stem
+  let base = (CHINESE_NAME_MAP[stem] || stem)
     .toLowerCase()
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/^-+|-+$/g, "");
@@ -174,7 +191,7 @@ function saveCatalog(catalog) {
 
 function cacheCodebase() {
   const codeFiles = walkDir(ROOT_DIR, (f) => CODE_EXTS.has(path.extname(f).toLowerCase()))
-    .filter((f) => !f.includes("igem-assets-catalog.json") && !f.includes("IGEM_ASSET_REGISTRY.md"));
+    .filter((f) => !f.includes("igem-assets-catalog.json") && !f.includes("IGEM_ASSET_REGISTRY.md") && !f.includes("upload-ready") && !f.includes("package-lock.json"));
 
   const cached = [];
   for (const f of codeFiles) {
@@ -190,7 +207,16 @@ function cacheCodebase() {
   return cached;
 }
 
-function analyzeCodebaseReferences(assetFiles, cachedCode = cacheCodebase()) {
+function hasAssetMention(line, needle) {
+  if (needle.includes("/") || needle.includes("\\")) {
+    return line.includes(needle);
+  }
+  const escaped = needle.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  const regex = new RegExp(`(?<=^|[^a-zA-Z0-9_-])${escaped}(?=[^a-zA-Z0-9_-]|$)`);
+  return regex.test(line);
+}
+
+function analyzeCodebaseReferences(assetFiles, cachedCode = cacheCodebase(), uploadUrlByPath = new Map()) {
   const referencesMap = new Map();
   for (const f of assetFiles) {
     referencesMap.set(f, []);
@@ -199,13 +225,18 @@ function analyzeCodebaseReferences(assetFiles, cachedCode = cacheCodebase()) {
   for (const fullPath of assetFiles) {
     const basename = path.basename(fullPath);
     const rel = path.relative(ROOT_DIR, fullPath).replace(/\\/g, "/");
+    // Code that already points at the CDN copy no longer mentions the local file name,
+    // so also match the full upload URL and the `${CDN_BASE}/<file>` template form.
+    const uploadUrl = uploadUrlByPath.get(rel);
+    const needles = [basename, rel];
+    if (uploadUrl) needles.push(uploadUrl, `}/${uploadUrl.split("/").pop()}`);
 
     for (const c of cachedCode) {
-      if (!c.content.includes(basename) && !c.content.includes(rel)) continue;
+      if (!needles.some((n) => c.content.includes(n))) continue;
 
       for (let i = 0; i < c.lines.length; i++) {
         const line = c.lines[i];
-        if (line.includes(basename) || line.includes(rel)) {
+        if (needles.some((n) => hasAssetMention(line, n))) {
           let matchType = "mention";
           if (line.includes("import ") || line.includes("require(")) matchType = "import";
           else if (line.includes("url(")) matchType = "css-url";
@@ -263,8 +294,18 @@ export function analyzeFolders(folders = ["src/assets"]) {
   console.log(`\nFound ${allAssetFiles.length} asset file(s) across: ${folders.join(", ")}`);
   console.log("Analyzing codebase references across all components...");
   const cachedCode = cacheCodebase();
-  const refsMap = analyzeCodebaseReferences(allAssetFiles, cachedCode);
   const catalog = loadCatalog();
+  const uploadUrlByPath = new Map(
+    Object.values(catalog.assets)
+      .filter((item) => item.uploadUrl)
+      .map((item) => [item.localPath, item.uploadUrl])
+  );
+  const uploadUrlByMd5 = new Map(
+    Object.values(catalog.assets)
+      .filter((item) => item.uploadUrl && item.md5)
+      .map((item) => [item.md5, item.uploadUrl])
+  );
+  const refsMap = analyzeCodebaseReferences(allAssetFiles, cachedCode, uploadUrlByPath);
   const existingIds = new Set(Object.keys(catalog.assets));
 
   let inUseCount = 0;
@@ -300,6 +341,7 @@ export function analyzeFolders(folders = ["src/assets"]) {
     if (!key) {
       newAssetCount++;
       const id = generateAssetId(relPath, filename, existingIds);
+      const inheritedUrl = uploadUrlByMd5.get(md5) || null;
       catalog.assets[id] = {
         id,
         kind,
@@ -308,12 +350,12 @@ export function analyzeFolders(folders = ["src/assets"]) {
         localPath: relPath,
         md5,
         fileSize: stat.size,
-        uploadUrl: null,
+        uploadUrl: inheritedUrl,
         status: isReferenced ? "in-use" : "standby",
         description: "",
         keywords: [path.parse(filename).name, kind],
         references: refs,
-        notes: isReferenced ? `Referenced in ${refs.length} location(s)` : "Standby/Unreferenced asset",
+        notes: isReferenced ? `Referenced in ${refs.length} location(s)` : (inheritedUrl ? "Standby/Mirrored asset with CDN URL" : "Standby/Unreferenced asset"),
       };
     } else {
       const item = catalog.assets[key];
@@ -324,10 +366,13 @@ export function analyzeFolders(folders = ["src/assets"]) {
       item.md5 = md5;
       item.category = inferCategory(relPath);
       item.references = refs;
+      if (!item.uploadUrl && uploadUrlByMd5.has(md5)) {
+        item.uploadUrl = uploadUrlByMd5.get(md5);
+      }
       if (item.status !== "deprecated" || isReferenced) {
         item.status = isReferenced ? "in-use" : "standby";
       }
-      item.notes = isReferenced ? `Referenced in ${refs.length} location(s)` : "Standby/Unreferenced asset";
+      item.notes = isReferenced ? `Referenced in ${refs.length} location(s)` : (item.uploadUrl ? "Standby/Mirrored asset with CDN URL" : "Standby/Unreferenced asset");
     }
   }
 
@@ -335,7 +380,7 @@ export function analyzeFolders(folders = ["src/assets"]) {
   let deprecatedCount = 0;
   for (const item of Object.values(catalog.assets)) {
     const fileExists = fs.existsSync(path.resolve(ROOT_DIR, item.localPath));
-    if (!fileExists) {
+    if (!fileExists && !item.uploadUrl) {
       item.status = "deprecated";
       item.references = [];
       item.notes = "文件已在本地删除 (File deleted from local disk)";
@@ -398,7 +443,7 @@ export function analyzeFolder(targetFolder = "src/assets") {
 
 export function scanAllProjectAssets() {
   console.log("\n--- Comprehensive Scanning of All Project Assets ---");
-  const scanDirs = ["src/assets", "public/assets", "文案集", "public/game-assets", "public/virtual-lab"];
+  const scanDirs = ["src/assets", "public/assets", "文案集", "public/game-assets", "public/virtual-lab", "background", "loading"];
   return analyzeFolders(scanDirs);
 }
 

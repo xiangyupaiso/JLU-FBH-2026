@@ -14,8 +14,11 @@
    gear shapes drawn in the page sketch, supplied by `background/dry.png`.
    ========================================================================== */
 
+/* The footer is a sibling of <Routes>, so it needs the palette named directly.
+   See route-palette-team.css for the rationale. */
 .wiki-page--dry-lab,
-.site-header.is-dry-lab-page {
+.site-header.is-dry-lab-page,
+.circure-footer.is-dry-lab-page {
   /* ① 三色板 —— 只有这三行需要改 */
   --route-main: #9bd6c0; /* 主色 rgb(155, 214, 192) */
   --route-soft: #c4f0de; /* 辅色 rgb(196, 240, 222) */

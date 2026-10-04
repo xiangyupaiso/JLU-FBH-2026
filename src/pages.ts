@@ -1,6 +1,7 @@
 import {
   Contribution,
   Description,
+  Design,
   Engineering,
   Experiments,
   Home,
@@ -21,6 +22,7 @@ import {
   AlternativePlatform,
   Software,
   Sustainability,
+  VisualDesign,
 } from "./contents";
 
 interface Base {
@@ -105,17 +107,12 @@ const Pages: (Page | Folder)[] = [
         component: Contribution,
         lead: "Make a useful contribution for future iGEM teams and document it on this page.",
       },
-    ],
-  },
-  {
-    name: "Wet Lab",
-    folder: [
       {
-        name: "Experiments",
-        title: "Experiments",
-        path: "/experiments",
-        component: Experiments,
-        lead: "Describe the research, experiments, and protocols you used in your project. It is designed to provide sufficient information for other teams to replicate our work.",
+        name: "Visual Design",
+        title: "Visual Design",
+        path: "/visual-design",
+        component: VisualDesign,
+        lead: "Explore CirCure's visual identity, design philosophy, and scientific illustration system.",
       },
       {
         name: "Notebook",
@@ -123,6 +120,32 @@ const Pages: (Page | Folder)[] = [
         path: "/notebook",
         component: Notebook,
         lead: "This serves as a chronological record of your team's progress throughout the season. It documents your daily activities, experiments, discussions, and decisions.",
+      },
+      {
+        name: "Safety and Security",
+        title: "Safety and Security",
+        path: "/safety-and-security",
+        component: SafetyAndSecurity,
+        lead: "Detail the safety and security considerations of your project, adressing potential risks and outlining the measures taken to mitigate them.",
+      },
+    ],
+  },
+  {
+    name: "Wet Lab",
+    folder: [
+      {
+        name: "Design",
+        title: "Design",
+        path: "/design",
+        component: Design,
+        lead: "Explore the molecular construct design, multi-epitope circuit architecture, and synthetic biology strategy of CirCure.",
+      },
+      {
+        name: "Experiments",
+        title: "Experiments",
+        path: "/experiments",
+        component: Experiments,
+        lead: "Describe the research, experiments, and protocols you used in your project. It is designed to provide sufficient information for other teams to replicate our work.",
       },
       {
         name: "Measurement",
@@ -137,13 +160,6 @@ const Pages: (Page | Folder)[] = [
         path: "/alternative-platform",
         component: AlternativePlatform,
         lead: "This award is designed to celebrate exemplary work done in alternative platforms, and covers anything that is not E. coli, S. cerevisiae, and B. subtilis.",
-      },
-      {
-        name: "Safety and Security",
-        title: "Safety and Security",
-        path: "/safety-and-security",
-        component: SafetyAndSecurity,
-        lead: "Detail the safety and security considerations of your project, adressing potential risks and outlining the measures taken to mitigate them.",
       },
     ],
   },

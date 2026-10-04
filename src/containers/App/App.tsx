@@ -5,6 +5,19 @@ import "../../styles/circure-nav.css";
 import "../../styles/circure-search.css";
 import "../../styles/circure-back-to-top.css";
 import "../../styles/circure-cursor.css";
+import "../../styles/circure-footer.css";
+/* All five module palettes are loaded here, once, rather than by each page
+   module. The footer renders outside <Routes> and so outside every palette
+   scope, and it is on the page whichever route you are on — a palette that is
+   only pulled in by `roster.tsx` simply does not exist on /model, which left
+   the footer on its fallback colour on four of the five routes. The per-page
+   imports stay in place; they are idempotent, since every rule here is scoped
+   to its own `.wiki-page--*` / `.is-<module>-page` class. */
+import "../../styles/route-palette-team.css";
+import "../../styles/route-palette-project.css";
+import "../../styles/route-palette-wetlab.css";
+import "../../styles/route-palette-drylab.css";
+import "../../styles/route-palette-engagement.css";
 import { Navigate, Route, Routes, useLocation } from "react-router-dom";
 import { getPathMapping, stringToSlug } from "../../utils";
 import { useEffect, useLayoutEffect } from "react";
@@ -22,10 +35,19 @@ import {
 const TEAM_ROUTES = new Set(["/roster", "/attributions", "/activities"]);
 
 const WET_LAB_ROUTES = new Set([
+  "/design",
   "/experiments",
-  "/notebook",
   "/measurement",
   "/alternative-platform",
+]);
+
+const PROJECT_ROUTES = new Set([
+  "/description",
+  "/engineering",
+  "/results",
+  "/contribution",
+  "/visual-design",
+  "/notebook",
   "/safety-and-security",
 ]);
 
@@ -51,13 +73,10 @@ const HOME_ROUTE = "/";
 // per-module palettes.
 const ROUTE_READER_ROUTES = new Set([
   ...TEAM_ROUTES,
+  ...PROJECT_ROUTES,
   ...WET_LAB_ROUTES,
   ...DRY_LAB_ROUTES,
   ...ENGAGEMENT_ROUTES,
-  "/description",
-  "/engineering",
-  "/results",
-  "/contribution",
 ]);
 
 const App = () => {
@@ -66,7 +85,6 @@ const App = () => {
   const currentPath =
     pathname.split(`${stringToSlug(import.meta.env.VITE_TEAM_NAME)}`).pop() ||
     "/";
-  const isRouteReader = ROUTE_READER_ROUTES.has(currentPath);
 
   // Each route loads its own art on demand, so every route change is covered
   // by the static loader from index.html until that route is presentable.
@@ -147,6 +165,14 @@ const App = () => {
           element={<Navigate to="/attributions" replace />}
         />
         <Route
+          path="/art"
+          element={<Navigate to="/visual-design" replace />}
+        />
+        <Route
+          path="/safety"
+          element={<Navigate to="/safety-and-security" replace />}
+        />
+        <Route
           path="*"
           element={
             <>
@@ -164,9 +190,7 @@ const App = () => {
       <SheepCursor />
 
       {/* MUST mention license AND have a link to team wiki's repository on gitlab.igem.org */}
-      <Footer
-        variant={isRouteReader ? "route" : undefined}
-      />
+      <Footer />
     </>
   );
 };

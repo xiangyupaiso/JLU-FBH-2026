@@ -1,8 +1,9 @@
 import type { WikiPageContent } from "../../components/wiki/wikiPageTypes";
+
 export const notebookPage: WikiPageContent = {
   route: "/notebook",
-  category: "wet-lab",
-  chapter: "Wet Lab / 02 of 05",
+  category: "project",
+  chapter: "Project / 06 of 07",
   eyebrow: "Notebook · Trace the work",
   title: "Notebook",
   lede: "Dates, samples, deviations, and decisions—one traceable record.",
@@ -147,14 +148,16 @@ export const notebookPage: WikiPageContent = {
     },
   ],
   links: [
-    { path: "/experiments", label: "Protocols" },
-    { path: "/engineering", label: "Engineering decisions" },
-    { path: "/results", label: "Result figures" },
+    { path: "/description", label: "Project rationale" },
+    { path: "/engineering", label: "Engineering success" },
+    { path: "/results", label: "Results & discussion" },
+    { path: "/contribution", label: "Contribution" },
+    { path: "/visual-design", label: "Visual design" },
+    { path: "/safety-and-security", label: "Safety and security" },
   ],
   next: {
-    path: "/measurement",
-    label: "Measurement",
-    title: "How will each readout remain comparable?",
+    path: "/safety-and-security",
+    label: "Safety and Security",
+    title: "Where must the project establish safety boundaries?",
   },
 };
-

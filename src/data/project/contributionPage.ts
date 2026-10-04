@@ -3,7 +3,7 @@ import type { WikiPageContent } from "../../components/wiki/wikiPageTypes";
 export const contributionPage: WikiPageContent = {
   route: "/contribution",
   category: "project",
-  chapter: "Project / 04 of 04",
+  chapter: "Project / 04 of 07",
   eyebrow: "Contribution · Open records",
   title: "Contribution",
   lede: "Reusable methods, tools, and records.",
@@ -123,10 +123,11 @@ export const contributionPage: WikiPageContent = {
     { path: "/software", label: "Software release" },
     { path: "/experiments", label: "Protocol records" },
     { path: "/human-practices", label: "HP method" },
+    { path: "/visual-design", label: "Visual Design" },
   ],
   next: {
-    path: "/experiments",
-    label: "Experiments",
-    title: "Follow the evidence into the lab.",
+    path: "/visual-design",
+    label: "Visual Design",
+    title: "Explore CirCure's visual identity and scientific design system.",
   },
 };

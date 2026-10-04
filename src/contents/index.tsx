@@ -10,12 +10,14 @@ export { Description } from "./description.tsx";
 export { Engineering } from "./engineering.tsx";
 export { Results } from "./results.tsx";
 export { Contribution } from "./contribution.tsx";
-// Wet Lab
-export { Experiments } from "./experiments.tsx";
+export { VisualDesign } from "./visual-design.tsx";
 export { Notebook } from "./notebook.tsx";
+export { SafetyAndSecurity } from "./safety-and-security.tsx";
+// Wet Lab
+export { Design } from "./design.tsx";
+export { Experiments } from "./experiments.tsx";
 export { Measurement } from "./measurement.tsx";
 export { AlternativePlatform } from "./alternative-platform.tsx";
-export { SafetyAndSecurity } from "./safety-and-security.tsx";
 // Dry Lab
 export { Model } from "./model.tsx";
 export { Software } from "./software.tsx";

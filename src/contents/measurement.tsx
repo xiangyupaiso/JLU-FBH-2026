@@ -6,7 +6,6 @@ import {
   ReadoutMatrix,
 } from "../components/wiki/features/WetLabFeatures";
 import { measurementPage } from "../data/wet-lab/measurementPage";
-import "../styles/route-palette-wetlab.css";
 
 export function Measurement() {
   return (

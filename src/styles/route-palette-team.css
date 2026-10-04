@@ -1,6 +1,10 @@
 /* Team module palette. */
+/* The footer is a sibling of <Routes>, not a descendant of .wiki-page--*, so it
+   cannot inherit these tokens. It carries the same module class and therefore
+   has to be named here too — adding a module means adding it in all three. */
 .wiki-page--team,
-.site-header.is-team-page {
+.site-header.is-team-page,
+.circure-footer.is-team-page {
   --route-main: #f5cf6f;
   --route-soft: #fee9b5;
   --route-base: #fffbd0;

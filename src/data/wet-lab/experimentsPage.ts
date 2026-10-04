@@ -4,7 +4,7 @@ import type { WikiPageContent } from "../../components/wiki/wikiPageTypes";
 const experimentsPageBase: WikiPageContent = {
   route: "/experiments",
   category: "wet-lab",
-  chapter: "Wet Lab / 01 of 05",
+  chapter: "Wet Lab / 02 of 04",
   eyebrow: "CirCure · Wet Lab Protocol & Verification",
   title: "Experiments",
   lede: "To test whether the CirCure multi-epitope circRNA vaccine can effectively activate cellular immunity specific to triple-negative breast cancer, we designed a series of progressively deeper experiments around the sequence construct → screen → optimise → validate → in vivo. They confirm not only that circRNA is correctly translated inside dendritic cells and presented on MHC-I, but also that it activates CD8⁺ T cells, drives effector memory differentiation, and kills tumour cells in vitro and in vivo.",
@@ -1726,15 +1726,13 @@ const experimentsPageBase: WikiPageContent = {
     },
   ],
   links: [
-    { path: "/notebook", label: "Lab Notebook" },
     { path: "/measurement", label: "Measurement" },
     { path: "/alternative-platform", label: "Alternative Platform" },
-    { path: "/safety-and-security", label: "Safety and Security" },
   ],
   next: {
-    path: "/notebook",
-    label: "Lab Notebook",
-    title: "Lab Notebook: Day-by-Day Experimental Record",
+    path: "/measurement",
+    label: "Measurement",
+    title: "How will each readout remain comparable?",
   },
 };
 

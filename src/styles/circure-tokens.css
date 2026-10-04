@@ -229,49 +229,6 @@ svg {
   color: var(--brand-navy);
 }
  
-/* Inner-page editorial Footer (replaces bg-dark Bootstrap footer) */
- 
-.circure-footer {
-  background: var(--brand-navy-deep);
-  color: var(--paper-bright);
-}
- 
-.circure-footer a {
-  color: var(--paper-bright);
-  font-weight: 600;
-  text-decoration: underline;
-  text-decoration-color: rgba(215, 132, 179, 0.55);
-  text-underline-offset: 3px;
-  transition: text-decoration-color 180ms ease, color 180ms ease;
-}
- 
-.circure-footer a:hover {
-  color: var(--care);
-  text-decoration-color: var(--care);
-}
- 
-.circure-footer h4,
-.circure-footer .circure-footer-heading {
-  font-family: var(--font-heading);
-  font-size: clamp(20px, 1.6vw, 26px);
-  font-weight: 600;
-  letter-spacing: -0.01em;
-  color: var(--paper-bright);
-}
- 
-.circure-footer hr {
-  border-color: rgba(252, 248, 241, 0.12);
-  opacity: 1;
-}
- 
-.circure-footer .subfoot {
-  color: var(--care);
-}
- 
-.circure-footer small {
-  color: rgba(252, 248, 241, 0.7);
-}
- 
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;

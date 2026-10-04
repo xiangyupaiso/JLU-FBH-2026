@@ -15,7 +15,6 @@ import {
 import { CirCureModelDecisionExplorer } from "../components/wiki/features/DryLabProjectExplorers";
 import { Trop2ComplexViewer } from "../components/wiki/features/Trop2ComplexViewer";
 import { modelEvidencePage } from "../data/modelPage";
-import "../styles/route-palette-drylab.css";
 import "../styles/dry-panel-model.css";
 
 /**

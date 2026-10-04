@@ -372,7 +372,7 @@ export const futureData = {
 export const descriptionPage: WikiPageContent = {
   route: "/description",
   category: "project",
-  chapter: "Project / 01 of 04",
+  chapter: "Project / 01 of 07",
   eyebrow: "Description · The Living Ring",
   title: "Description",
   lede: "A multi-target circular RNA strategy for triple-negative breast cancer.",
@@ -797,6 +797,7 @@ export const descriptionPage: WikiPageContent = {
     { path: "/engineering", label: "Engineering Success" },
     { path: "/results", label: "Results & Discussion" },
     { path: "/contribution", label: "Team Contribution" },
+    { path: "/visual-design", label: "Visual Design" },
   ],
   next: {
     path: "/engineering",
