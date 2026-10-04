@@ -2,7 +2,7 @@
 .home-intro {
   position: fixed;
   inset: 0;
-  z-index: 120;
+  z-index: 99;
   display: grid;
   place-items: center;
   pointer-events: none;
@@ -110,11 +110,8 @@
   outline-offset: 3px;
 }
 
-/* The header word stays unwritten until the signature lands on it. */
-:root[data-home-intro="playing"] .site-header .logo-word-full {
-  visibility: hidden;
-}
-:root[data-home-intro="landed"] .site-header .logo-word-full {
+/* The flying signature lands beneath the persistent header word. */
+:root[data-home-intro="landed"] .site-header.is-home-page .logo-word-full {
   animation: home-intro-land 600ms var(--ease-out) both;
 }
 @keyframes home-intro-land {

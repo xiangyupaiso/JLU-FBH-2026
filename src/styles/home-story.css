@@ -115,7 +115,7 @@ body:has(.home-story) .footer {
 }
 .story-chapter--platform {
   --chapter-bg: #fff4e2;
-  --next-bg: #fcf6ed;
+  --next-bg: var(--chapter-bg);
 }
 .story-chapter--switch {
   --chapter-bg: #fff4e2;
@@ -129,56 +129,6 @@ body:has(.home-story) .footer {
   --chapter-bg: #f7e7e6;
   --next-bg: #f7e7e6;
   --scene-hold: 145svh;
-}
-/* Hope light: useHomeStoryAnimation.ts appends this to #what-we-hope and
-   moves the span from the patient's heart to the top of the copy. The
-   frame starts below the header so the upper half of the halo never
-   spills onto it. Stacking: above the scene 9 art, below the copy text. */
-.story-chapter--hope .story-copy {
-  z-index: 2;
-}
-.story-hope-light {
-  position: fixed;
-  inset: var(--header-height) 0 0;
-  z-index: 1;
-  overflow: hidden;
-  visibility: hidden;
-  pointer-events: none;
-}
-.story-hope-light span {
-  position: absolute;
-  top: 0;
-  left: 0;
-  /* CROSS-FILE: HOPE_LIGHT_SIZE in useHomeStoryAnimation.ts. */
-  width: 800px;
-  height: 800px;
-  border-radius: 50%;
-  background: radial-gradient(
-    closest-side,
-    rgba(255, 245, 224, 0.85),
-    rgba(253, 216, 165, 0.45) 35%,
-    rgba(248, 203, 166, 0.16) 68%,
-    rgba(247, 231, 230, 0)
-  );
-  opacity: 0;
-  will-change: transform, opacity;
-}
-.story-hope-light.is-lit {
-  animation: story-hope-breathe 4.5s ease-in-out infinite;
-}
-@keyframes story-hope-breathe {
-  50% {
-    opacity: 0.92;
-  }
-}
-/* Without motion the halo simply rests on the copy. */
-.home-story:not(.has-story-motion) .story-chapter--hope .story-copy {
-  background: radial-gradient(
-    ellipse 75% 55% at 50% 0%,
-    rgba(255, 245, 224, 0.85),
-    rgba(253, 216, 165, 0.45) 35%,
-    rgba(247, 231, 230, 0)
-  );
 }
 .story-chapter::after {
   content: "";
@@ -253,6 +203,9 @@ body:has(.home-story) .footer {
   bottom: -1px;
   translate: -50% 0;
 }
+.story-art--ward-patient {
+  left: 46%;
+}
 .story-layer {
   position: absolute;
   display: block;
@@ -287,6 +240,32 @@ body:has(.home-story) .footer {
 .story-ward-change--ellipsis {
   z-index: 5;
 }
+.story-ward-infusion {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+}
+.story-ward-infusion path {
+  fill: none;
+  stroke-linecap: butt;
+}
+.story-ward-infusion-edge {
+  stroke: #626d83;
+  stroke-width: var(--tube-width, 15);
+  opacity: 0.82;
+}
+.story-ward-infusion-core {
+  stroke: #e3e4e3;
+  stroke-width: calc(var(--tube-width, 15) * 0.6);
+}
+.story-ward-infusion-light {
+  stroke: #f3f2ed;
+  stroke-width: calc(var(--tube-width, 15) * 0.4);
+  opacity: 0.45;
+}
 .story-map-landscape {
   z-index: 1;
 }
@@ -310,6 +289,9 @@ body:has(.home-story) .footer {
 }
 .story-morph-icon {
   z-index: 5;
+}
+.story-art--8 {
+  container-type: inline-size;
 }
 .story-challenge-heading {
   position: absolute;
@@ -355,32 +337,67 @@ body:has(.home-story) .footer {
   transform: translate(-50%, -50%);
   opacity: 0;
   color: var(--challenge-accent);
-  font: 500 clamp(16px, 1.55vw, 25px)/1.16 var(--font-editorial);
+  font: 500 clamp(12px, 1.67cqw, 25px)/1.16 var(--font-editorial);
   letter-spacing: -0.01em;
   text-align: center;
   text-wrap: balance;
   pointer-events: none;
 }
+.story-morph-thumbnail {
+  position: absolute;
+  z-index: 5;
+  display: block;
+  width: 9.5%;
+  translate: -50% -50%;
+  transform-origin: center;
+  opacity: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+.story-morph--surgery .story-morph-thumbnail,
+.story-morph--chemotherapy .story-morph-thumbnail {
+  left: 44%;
+  width: 8%;
+}
+.story-morph--resistance .story-morph-thumbnail,
+.story-morph--effects .story-morph-thumbnail,
+.story-morph--recurrence .story-morph-thumbnail {
+  left: 61%;
+}
 .story-morph--surgery .story-morph-word {
-  left: 38%;
+  left: 34%;
   top: 34%;
 }
 .story-morph--chemotherapy .story-morph-word {
-  left: 38%;
+  left: 34%;
   top: 70%;
 }
 .story-morph--resistance .story-morph-word {
-  left: 70%;
+  left: 74.5%;
   top: 38%;
 }
 .story-morph--effects .story-morph-word {
-  left: 70%;
+  left: 74.5%;
   top: 58%;
 }
 .story-morph--recurrence .story-morph-word {
-  left: 70%;
+  left: 74.5%;
   top: 75%;
 }
+.story-morph--surgery .story-morph-word,
+.story-morph--chemotherapy .story-morph-word {
+  width: 11.5%;
+}
+.story-morph--resistance .story-morph-word,
+.story-morph--effects .story-morph-word,
+.story-morph--recurrence .story-morph-word {
+  width: 16%;
+}
+.story-morph--surgery .story-morph-thumbnail { top: 34%; }
+.story-morph--chemotherapy .story-morph-thumbnail { top: 70%; }
+.story-morph--resistance .story-morph-thumbnail { top: 38%; }
+.story-morph--effects .story-morph-thumbnail { top: 58%; }
+.story-morph--recurrence .story-morph-thumbnail { top: 75%; }
 .story-sr-only {
   position: absolute;
   width: 1px;
@@ -957,6 +974,21 @@ body:has(.home-story) .footer {
   .story-morph-word {
     font-size: clamp(11px, 3.4vw, 18px);
   }
+  .story-morph--surgery .story-morph-thumbnail,
+  .story-morph--chemotherapy .story-morph-thumbnail {
+    left: 38%;
+    width: 9%;
+  }
+  .story-morph--surgery .story-morph-thumbnail { top: 31%; }
+  .story-morph--chemotherapy .story-morph-thumbnail { top: 64%; }
+  .story-morph--surgery .story-morph-word,
+  .story-morph--chemotherapy .story-morph-word {
+    left: 38%;
+    width: 19%;
+    font-size: clamp(11px, 3.1vw, 16px);
+  }
+  .story-morph--surgery .story-morph-word { top: 43%; }
+  .story-morph--chemotherapy .story-morph-word { top: 76%; }
   .story-challenge-heading {
     top: -28%;
     width: 29%;
@@ -1022,10 +1054,6 @@ body:has(.home-story) .footer {
     gap: 2px;
     padding: 0;
   }
-  .story-chapter--hope .story-art {
-    top: 39%;
-    width: calc(var(--scene-height) * 16 / 9 * 0.7);
-  }
   .story-hope-card {
     width: 100%;
     min-height: 44px;
@@ -1064,14 +1092,17 @@ body:has(.home-story) .footer {
     opacity: 0 !important;
   }
   .story-ward-change--patient,
+  .story-ward-infusion--changed,
   .story-ward-change--clinician,
   .story-ward-change--question,
   .story-ward-change--ellipsis,
   .story-morph-word,
+  .story-morph-thumbnail,
   .story-platform-note {
     opacity: 1 !important;
     visibility: visible !important;
   }
+  .story-morph-thumbnail { transform: none !important; }
 }
 
 .story-painted {

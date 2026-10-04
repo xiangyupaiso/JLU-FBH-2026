@@ -17,17 +17,15 @@ const SUBTITLE =
 
 // Seconds the sparkler takes to write the whole signature (lifts included),
 // and the pause as it lifts between strokes.
-const WRITE_DURATION = 1.5;
+const WRITE_DURATION = 2.4;
 const LIFT = 0.08;
 // Seconds of pure black before the first stroke, and how long the finished
 // signature holds before the flash.
 const START = 0.6;
-const HOLD = 2;
+const HOLD = 1;
 // The mask's round cap runs slightly ahead of the dash length.
 const CAP_LEAD = 40;
 const MAX_EMBERS = 140;
-// Keep the remainder of a skip gesture from scrolling the opening away.
-const INPUT_IDLE_MS = 220;
 
 type Ember = {
   x: number;
@@ -58,23 +56,24 @@ interface HomeIntroProps {
 }
 
 /**
- * Plays on every page load: a sparkler writes "CirCure" on black, holds, a
- * strobe reveals the portrait, and the wordmark flies into the header. Scroll
- * or Skip jumps to just before the flash and lets it finish.
+ * Plays on every page load: a sparkler writes CirCure on black, holds, and
+ * a single flash reveals the patient. The wordmark
+ * lands beneath the persistent header. Scroll or Skip completes
+ * the intro immediately so the same gesture can move the opening scene.
  *
  * Cross-file contract (rename with care):
  * - Drives .scene01-darkness / .scene01-portrait inside home-scene-01.tsx and
  *   sets its data-intro ("playing" | "done"), read by home-scene-01.css.
- * - Sets <html data-home-intro> and measures .site-header .logo-word-full
- *   (Navbar.tsx); home-intro.css hides that word until it lands.
+ * - Sets <html data-home-intro> ("playing" | "landed" | "revealing") and
+ *   measures .site-header .logo-word-full as the signature's landing point.
+ *   The navigation stays visible above the intro layer throughout.
  */
 export function HomeIntro({ scene }: HomeIntroProps) {
   const [playing, setPlaying] = useState(shouldPlayIntro);
   const layerRef = useRef<HTMLDivElement>(null);
-  const skipRef = useRef<() => void>(() => { });
-  const finishRef = useRef<() => void>(() => {});
+  const skipRef = useRef<() => void>(() => {});
 
-  // Set before paint so neither the header word nor the scroll cue flickers.
+  // Set before paint so the opening artwork and scroll cue do not flicker.
   useLayoutEffect(() => {
     const section = scene.current;
     const root = document.documentElement;
@@ -94,44 +93,14 @@ export function HomeIntro({ scene }: HomeIntroProps) {
     }
     section.dataset.intro = "playing";
     root.dataset.homeIntro = "playing";
-    // Keep the opening at the portrait while fonts and scroll pins settle.
-    // Do not hide overflow: changing the viewport width would rebuild pins.
-    const stayAtStart = () => {
-      if (window.scrollX || window.scrollY) {
-        window.scrollTo({ top: 0, left: 0, behavior: "instant" });
-      }
+    // Start a fresh reading once; native input must never be reset or consumed.
+    window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+    const skipOnInput = () => skipRef.current();
+    const onWheel = (event: WheelEvent) => {
+      if (event.deltaY) skipOnInput();
     };
-    let animationFinished = false;
-    let touching = false;
-    let lastInputAt = -Infinity;
-    let releaseTimer = 0;
-    const releaseWhenIdle = () => {
-      window.clearTimeout(releaseTimer);
-      if (!animationFinished || touching) return;
-      const remaining = Math.max(
-        0,
-        INPUT_IDLE_MS - (performance.now() - lastInputAt),
-      );
-      releaseTimer = window.setTimeout(() => setPlaying(false), remaining);
-    };
-    finishRef.current = () => {
-      animationFinished = true;
-      releaseWhenIdle();
-    };
-    const skipWithoutScrolling = (event: Event) => {
-      event.preventDefault();
-      lastInputAt = performance.now();
-      skipRef.current();
-      releaseWhenIdle();
-    };
-    const onTouchStart = () => {
-      touching = true;
-      window.clearTimeout(releaseTimer);
-    };
-    const onTouchEnd = (event: TouchEvent) => {
-      touching = event.touches.length > 0;
-      lastInputAt = performance.now();
-      releaseWhenIdle();
+    const onScroll = () => {
+      if (window.scrollY > 0) skipOnInput();
     };
     const onKey = (event: KeyboardEvent) => {
       if (
@@ -146,27 +115,31 @@ export function HomeIntro({ scene }: HomeIntroProps) {
           "Escape",
         ].includes(event.key)
       ) {
-        skipWithoutScrolling(event);
+        skipOnInput();
       }
     };
-    stayAtStart();
-    window.addEventListener("scroll", stayAtStart, { passive: true });
-    window.addEventListener("wheel", skipWithoutScrolling, { passive: false });
-    window.addEventListener("touchstart", onTouchStart, { passive: true });
-    window.addEventListener("touchmove", skipWithoutScrolling, { passive: false });
-    window.addEventListener("touchend", onTouchEnd, { passive: true });
-    window.addEventListener("touchcancel", onTouchEnd, { passive: true });
+    window.addEventListener("scroll", onScroll, { passive: true });
+    // Capture the intent even when the page loader stops bubbling. The loader
+    // can still block scrolling until the page is ready, without replaying us.
+    window.addEventListener("wheel", onWheel, { passive: true, capture: true });
+    window.addEventListener("touchmove", skipOnInput, {
+      passive: true,
+      capture: true,
+    });
     window.addEventListener("keydown", onKey);
+    const motionPreference = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    );
+    const onMotionChange = () => {
+      if (motionPreference.matches) skipOnInput();
+    };
+    motionPreference.addEventListener("change", onMotionChange);
     return () => {
-      window.clearTimeout(releaseTimer);
-      finishRef.current = () => {};
-      window.removeEventListener("scroll", stayAtStart);
-      window.removeEventListener("wheel", skipWithoutScrolling);
-      window.removeEventListener("touchstart", onTouchStart);
-      window.removeEventListener("touchmove", skipWithoutScrolling);
-      window.removeEventListener("touchend", onTouchEnd);
-      window.removeEventListener("touchcancel", onTouchEnd);
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("wheel", onWheel, true);
+      window.removeEventListener("touchmove", skipOnInput, true);
       window.removeEventListener("keydown", onKey);
+      motionPreference.removeEventListener("change", onMotionChange);
       delete root.dataset.homeIntro;
       section.dataset.intro = "done";
     };
@@ -195,6 +168,8 @@ export function HomeIntro({ scene }: HomeIntroProps) {
 
       // Embers live on a viewport canvas so they can fall past the wordmark.
       const embers: Ember[] = [];
+      let emissionBudget = 0;
+      let emissionFrame = -1;
       let emitting = true;
       const resize = () => {
         const ratio = Math.min(window.devicePixelRatio || 1, 2);
@@ -206,7 +181,13 @@ export function HomeIntro({ scene }: HomeIntroProps) {
       window.addEventListener("resize", resize);
 
       const emit = (x: number, y: number) => {
-        for (let i = 0; i < 3 && embers.length < MAX_EMBERS; i += 1) {
+        // Crossing two strokes in one slow frame must not charge the clock twice.
+        if (emissionFrame === gsap.ticker.frame) return;
+        emissionFrame = gsap.ticker.frame;
+        emissionBudget += 3 * Math.min(gsap.ticker.deltaRatio(60), 3);
+        const count = Math.floor(emissionBudget);
+        emissionBudget -= count;
+        for (let i = 0; i < count && embers.length < MAX_EMBERS; i += 1) {
           const angle = Math.random() * Math.PI * 2;
           const speed = 0.6 + Math.random() * 2.4;
           embers.push({
@@ -221,19 +202,23 @@ export function HomeIntro({ scene }: HomeIntroProps) {
       };
       const drawEmbers = () => {
         if (!context) return;
+        // Fractional 60 Hz steps preserve the original trajectory at any refresh rate.
+        const step = Math.min(gsap.ticker.deltaRatio(60), 3);
+        const damping = 0.96 ** step;
+        const distance = (0.96 * (1 - damping)) / (1 - 0.96);
         context.clearRect(0, 0, window.innerWidth, window.innerHeight);
         context.globalCompositeOperation = "lighter";
         for (let i = embers.length - 1; i >= 0; i -= 1) {
           const ember = embers[i];
-          ember.life -= 0.022;
+          ember.life -= 0.022 * step;
           if (ember.life <= 0) {
             embers.splice(i, 1);
             continue;
           }
-          ember.vx *= 0.96;
-          ember.vy = ember.vy * 0.96 + 0.09;
-          ember.x += ember.vx;
-          ember.y += ember.vy;
+          ember.x += ember.vx * distance;
+          ember.y += 2.25 * step + (ember.vy - 2.25) * distance;
+          ember.vx *= damping;
+          ember.vy = 2.25 + (ember.vy - 2.25) * damping;
           context.globalAlpha = ember.life;
           context.fillStyle = ember.life > 0.6 ? "#fff6fb" : "#e8b5d6";
           context.beginPath();
@@ -250,6 +235,11 @@ export function HomeIntro({ scene }: HomeIntroProps) {
         if (!emitting && embers.length === 0) gsap.ticker.remove(drawEmbers);
       };
       gsap.ticker.add(drawEmbers);
+      const stopEffects = () => {
+        emitting = false;
+        gsap.ticker.remove(drawEmbers);
+        window.removeEventListener("resize", resize);
+      };
 
       // Moves the glowing tip to the painted end of a stroke and sheds sparks.
       const placeTip = (path: SVGPathElement, drawn: number) => {
@@ -274,12 +264,12 @@ export function HomeIntro({ scene }: HomeIntroProps) {
         paused: true,
       });
       let disposed = false;
+      let skipped = false;
       void whenPageLoaderLeaves().then(() => {
-        if (!disposed) timeline.play();
+        if (!disposed && !skipped) timeline.play();
       });
 
-      // The signature is written on pure black; the woman stays hidden until
-      // the flash.
+      // Write the signature on the dark stage before the original light burst.
       timeline.set(darkness, { opacity: 1 }, 0);
       timeline.fromTo(
         select(".home-intro-skip"),
@@ -314,8 +304,8 @@ export function HomeIntro({ scene }: HomeIntroProps) {
               placeTip(
                 path,
                 length -
-                Number(gsap.getProperty(path, "strokeDashoffset")) +
-                CAP_LEAD,
+                  Number(gsap.getProperty(path, "strokeDashoffset")) +
+                  CAP_LEAD,
               ),
           },
           cursor,
@@ -349,17 +339,16 @@ export function HomeIntro({ scene }: HomeIntroProps) {
         },
         "strokes-done-=0.05",
       );
-      timeline.addLabel("written", ">");
+      // Anchor the pause to the final painted stroke, excluding its pen lift.
+      timeline.addLabel("written", cursor - LIFT);
 
       // The finished signature breathes softly while it holds in the dark.
       timeline.to(
         svg,
         {
           opacity: 0.86,
-          duration: 1.5,
+          duration: HOLD - 0.14,
           ease: "sine.inOut",
-          repeat: Math.max(0, Math.round(HOLD / 1.5) - 1),
-          yoyo: true,
         },
         "written",
       );
@@ -410,7 +399,7 @@ export function HomeIntro({ scene }: HomeIntroProps) {
         "flash+=0.07",
       );
 
-      // The signature flies into the header and hands over to the real logo.
+      // Land beneath the real header word while the navigation stays visible.
       const headerWord = () => {
         const word = document.querySelector(".site-header .logo-word-full");
         if (!word) return null;
@@ -419,8 +408,6 @@ export function HomeIntro({ scene }: HomeIntroProps) {
         const rect = range.getBoundingClientRect();
         return rect.width > 0 ? rect : null;
       };
-      // With a centred transform origin, scale never moves the box centre, so
-      // the untransformed centre is the live centre minus the current offset.
       let landing: DOMRect | null = null;
       const offsetTo = (axis: "x" | "y") => {
         landing ??= headerWord();
@@ -429,11 +416,11 @@ export function HomeIntro({ scene }: HomeIntroProps) {
         const current = Number(gsap.getProperty(flight, axis));
         return axis === "x"
           ? landing.left +
-          landing.width / 2 -
-          (box.left + box.width / 2 - current)
+              landing.width / 2 -
+              (box.left + box.width / 2 - current)
           : landing.top +
-          landing.height / 2 -
-          (box.top + box.height / 2 - current);
+              landing.height / 2 -
+              (box.top + box.height / 2 - current);
       };
       timeline.to(
         flight,
@@ -454,29 +441,50 @@ export function HomeIntro({ scene }: HomeIntroProps) {
           root.dataset.homeIntro = "landed";
         },
         undefined,
-        ">-0.06",
+        "flash+=0.81",
       );
-      timeline.to(flight, { autoAlpha: 0, duration: 0.2 }, ">");
-      timeline.call(() => {
-        section.dataset.intro = "done";
-      });
-      timeline.call(() => finishRef.current(), undefined, "+=0.6");
+      timeline.to(flight, { autoAlpha: 0, duration: 0.2 }, "flash+=0.81");
+      timeline.call(
+        () => {
+          root.dataset.homeIntro = "revealing";
+        },
+        undefined,
+        "flash+=1.01",
+      );
+      timeline.call(
+        () => {
+          section.dataset.intro = "done";
+        },
+        undefined,
+        "flash+=1.01",
+      );
+      const finish = () => {
+        stopEffects();
+        setPlaying(false);
+      };
+      timeline.call(finish, undefined, "+=0.12");
 
-      // Skip lands on the finished signature just before the flash, whether
-      // the tip is still writing or the word is holding.
-      const skipTo = timeline.labels.flash - 0.45;
+      // Finish even while waiting for the loader. Applying the final pose also
+      // clears the portrait darkness before native scrolling starts.
       const skip = () => {
-        if (timeline.time() >= skipTo) return;
+        if (skipped) return;
+        skipped = true;
         emitting = false;
-        timeline.seek(skipTo);
+        // Do not seek through intermediate callbacks or run light updates on Skip.
+        timeline.kill();
+        gsap.set(darkness, { opacity: 0 });
+        gsap.set(portrait, { scale: 1, x: 0 });
+        section.dataset.intro = "done";
+        root.dataset.homeIntro = "revealing";
+        finish();
       };
       skipRef.current = skip;
 
       return () => {
         disposed = true;
-        window.removeEventListener("resize", resize);
+        timeline.kill();
         skipRef.current = () => {};
-        gsap.ticker.remove(drawEmbers);
+        stopEffects();
       };
     },
     { scope: layerRef, dependencies: [playing] },

@@ -2,7 +2,7 @@ import gsap from "gsap";
 import { SplitText } from "gsap/SplitText";
 import { HOME_EASE, HOME_REST_RATIO, HOME_SCRUB } from "./homeMotion";
 import { createReadingInk, type InkCue } from "./readingInk";
-import { readingAccents, type ReadingBeat } from "./readingAccents";
+import { animateTnbcReading } from "./animateTnbcReading";
 
 type Splits = ReturnType<typeof SplitText.create>[];
 type Voice = "reflect" | "explain" | "weigh" | "assemble" | "exchange" | "expand" | "resolve";
@@ -124,19 +124,73 @@ export function animateArtworkWords(
   reveal(timeline, tokens, voice, compact, at, duration);
 }
 
-export function animateHomePrologue(prologue: HTMLElement, compact: boolean, splits: Splits) {
-  const timeline = gsap.timeline({ scrollTrigger: {
-    trigger: prologue, start: "top 72%", end: "bottom 48%",
-    scrub: HOME_SCRUB, invalidateOnRefresh: true,
-  } });
-  const clauses = prologue.querySelectorAll<HTMLElement>(".story-prologue-line");
-  clauses.forEach((clause, i) => {
-    animateArtworkWords(clause, timeline, i ? "resolve" : "reflect", compact, splits, i * 0.6, 0.85);
+function animateQuietReading(
+  copy: HTMLElement,
+  section: HTMLElement,
+  compact: boolean,
+  splits: Splits,
+  cleanups: (() => void)[],
+) {
+  const title = copy.querySelector<HTMLElement>("h2")!;
+  const paragraphs = [...copy.querySelectorAll<HTMLElement>(".story-body > p")];
+  const blocks = [title, ...paragraphs];
+  const hope = section.id === "what-we-hope";
+  copy.classList.add("has-quiet-reading");
+  cleanups.push(() => copy.classList.remove("has-quiet-reading"));
+  const headerHeight = Number.parseFloat(getComputedStyle(section).getPropertyValue("--header-height")) || 0;
+  const fits = !compact && window.innerHeight > 650 && copy.offsetHeight <= window.innerHeight - headerHeight + 2;
+  blocks.forEach((element) => {
+    const original = element.getAttribute("data-home-reading-text");
+    element.dataset.homeReadingText = "";
+    cleanups.push(() => {
+      if (original === null) delete element.dataset.homeReadingText;
+      else element.setAttribute("data-home-reading-text", original);
+    });
   });
-  timeline.fromTo(prologue.querySelector("button"), { opacity: 0, x: -8 },
-    { opacity: 1, x: 0, duration: 0.45, ease: HOME_EASE }, 1.2);
-  timeline.to({}, { duration: timeline.duration() * HOME_REST_RATIO });
-  return timeline;
+  const reading = gsap.timeline({
+    scrollTrigger: {
+      id: `home-${section.id}-reading`, trigger: copy,
+      start: fits ? `top top+=${headerHeight}` : "top 85%",
+      end: () => fits ? `+=${Math.round(window.innerHeight * (hope ? 1.6 : 1.4))}` : "bottom 65%",
+      pin: fits, scrub: 0.22, invalidateOnRefresh: true,
+    },
+  });
+
+  if (!fits) {
+    copy.classList.add("has-flow-reading");
+    cleanups.push(() => copy.classList.remove("has-flow-reading"));
+    // Each intact paragraph enters where it is read, even after zoom or reflow.
+    blocks.forEach((element) => {
+      gsap.fromTo(element, { opacity: 0, y: 6 }, {
+        opacity: 1, y: 0, duration: 1, ease: "sine.out",
+        scrollTrigger: {
+          trigger: element, start: "top 92%", end: "top 78%",
+          scrub: 0.18, invalidateOnRefresh: true,
+        },
+      });
+    });
+    reading.to({}, { duration: 1 });
+    return reading;
+  }
+
+  if (hope) {
+    // Give the patient's final question one emphasis; its explanation stays still.
+    animateArtworkWords(title, reading, "resolve", compact, splits, 0, 0.75);
+  } else {
+    reading.fromTo(title, { opacity: 0, y: 6 }, {
+      opacity: 1, y: 0, duration: 0.45, ease: "sine.out",
+    }, 0);
+  }
+  paragraphs.forEach((paragraph, index) => {
+    reading.fromTo(paragraph, { opacity: 0, y: 6 }, {
+      opacity: 1, y: 0, duration: 0.45, ease: "sine.out",
+    }, (hope ? 0.46 : 0.18) + index * (hope ? 0.3 : 0.18));
+  });
+  reading.addLabel("reading-complete");
+  reading.to({}, { duration: reading.duration() * 0.8 });
+  copy.dataset.readingHold = String(1 / 1.8);
+  cleanups.push(() => delete copy.dataset.readingHold);
+  return reading;
 }
 
 export function animateHomeReading(
@@ -146,8 +200,15 @@ export function animateHomeReading(
   splits: Splits,
   cleanups: (() => void)[],
 ) {
+  if (section.id === "why-tnbc") {
+    return animateTnbcReading(copy, section, compact, cleanups);
+  }
+  if (["our-platform", "plug-and-play", "beyond-tnbc", "what-we-hope"].includes(section.id)) {
+    return animateQuietReading(copy, section, compact, splits, cleanups);
+  }
   const voice = voices[section.id] || "reflect";
   const ward = section.id === "what-we-saw";
+  const readingRestRatio = HOME_REST_RATIO;
   copy.dataset.readingVoice = voice;
   cleanups.push(() => delete copy.dataset.readingVoice);
   if (ward) {
@@ -165,7 +226,6 @@ export function animateHomeReading(
     groups: element.matches("a, .story-carry")
       ? [[element]] : sentences(words(element, splits)),
   }));
-  const beats: ReadingBeat[] = [];
   const sentenceCount = entries.reduce((n, e) => n + e.groups.length, 0);
   const headerHeight = Number.parseFloat(getComputedStyle(section).getPropertyValue("--header-height")) || 0;
   const fits = copy.offsetHeight <= window.innerHeight - headerHeight + 2;
@@ -175,7 +235,7 @@ export function animateHomeReading(
       id: `home-${section.id}-reading`, trigger: copy,
       start: fits ? `top top+=${headerHeight}` : "top 80%",
       end: () => fits
-        ? `+=${Math.round(window.innerHeight * (ward ? 4.8 : 1.6 + sentenceCount * 0.25) * (1 + HOME_REST_RATIO))}`
+        ? `+=${Math.round(window.innerHeight * (ward ? 4.8 : 1.6 + sentenceCount * 0.25) * (1 + readingRestRatio))}`
         : "bottom 65%",
       pin: fits, scrub: HOME_SCRUB, invalidateOnRefresh: true,
     },
@@ -205,8 +265,6 @@ export function animateHomeReading(
 
   const titleGroups = sentences(titleWords);
   titleGroups.forEach((tokens, i) => reveal(reading, tokens, voice, compact, i * 0.62, 0.9, i));
-  beats.push({ element: title.querySelector<HTMLElement>("em") || title, at: 0.38,
-    duration: 0.62 * titleGroups.length, kind: "title" });
   const titleEnd = 0.62 * (titleGroups.length - 1) + 0.9;
   if (ward) {
     const entry = (selector: string) => entries.find(({ element }) => element.matches(selector))!;
@@ -235,23 +293,18 @@ export function animateHomeReading(
   } else {
     let cursor = titleEnd + 0.3;
     let sentenceIndex = 0;
-    entries.forEach(({ element, groups }) => {
+    entries.forEach(({ groups }) => {
       groups.forEach((tokens) => {
         const duration = Math.min(1.05, 0.65 + tokens.length * 0.018);
-        const receptor = element.matches(".story-receptors > span");
-        const challenge = element.matches(".story-challenges > li");
         const sentenceVoice = sentenceVoices[section.id]?.[sentenceIndex] || voice;
         reveal(reading, tokens, sentenceVoice, compact, cursor, duration, sentenceIndex++);
-        if (receptor || challenge) beats.push({ element, at: cursor, duration,
-          kind: receptor ? "receptor" : "challenge" });
         cursor += duration + 0.26 + Math.min(0.2, tokens.length * 0.008);
       });
     });
   }
-  cleanups.push(readingAccents(copy, section.id, reading, beats));
   reading.addLabel("reading-complete");
-  reading.to({}, { duration: reading.duration() * HOME_REST_RATIO });
-  copy.dataset.readingHold = String(1 / (1 + HOME_REST_RATIO));
+  reading.to({}, { duration: reading.duration() * readingRestRatio });
+  copy.dataset.readingHold = String(1 / (1 + readingRestRatio));
   cleanups.push(() => delete copy.dataset.readingHold);
   return reading;
 }
