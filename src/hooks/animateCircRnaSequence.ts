@@ -1,9 +1,13 @@
 import gsap from "gsap";
 import type { SplitText } from "gsap/SplitText";
 import { animateCircRna } from "./animateCircRna";
-import { HOME_EASE, HOME_SCRUB } from "./homeMotion";
+import { HOME_EASE, HOME_SCRUB, stillHold } from "./homeMotion";
 import { createRnaRingMorph } from "./createRnaRingMorph";
 import { animatePlatformAntigen } from "./animatePlatformAntigen";
+
+// The research figure is complete at FIGURE_END; FIGURE_REST holds it there.
+const FIGURE_END = 5.5;
+const FIGURE_REST = 0.65;
 
 const smooth = (from: number, to: number, value: number) => {
   const p = gsap.utils.clamp(0, 1, (value - from) / (to - from));
@@ -68,6 +72,15 @@ export function animateCircRnaSequence(
       scaleY: (target.height * (605.599 / 833)) / height,
     };
   };
+  // Desktop: lengthen the track so the finished figure holds still for the
+  // shared ratio before the antigen carry begins, at the same reveal speed.
+  let figureRest = FIGURE_REST;
+  if (!compact) {
+    const range = track.offsetHeight - window.innerHeight;
+    const hold = stillHold(range, FIGURE_REST / FIGURE_END);
+    figureRest = FIGURE_END * hold.rest;
+    gsap.set(track, { height: window.innerHeight + range * hold.scale });
+  }
   const timeline = gsap.timeline({
     defaults: { ease: HOME_EASE },
     scrollTrigger: {
@@ -156,8 +169,8 @@ export function animateCircRnaSequence(
     timeline.to(notes[index], { opacity: 1, duration: 0.2 }, at);
   });
   // Restore the complete research figure and leave a stable reading frame.
-  timeline.to([...sectors, ...notes], { opacity: 1, duration: 0.3 }, 5.2);
-  timeline.to({}, { duration: 0.65 }, 5.5);
+  timeline.to([...sectors, ...notes], { opacity: 1, duration: 0.3 }, FIGURE_END - 0.3);
+  timeline.to({}, { duration: figureRest }, FIGURE_END);
   cleanups.push(
     animatePlatformAntigen(sequence, targetRing, timeline, compact),
   );

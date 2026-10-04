@@ -48,21 +48,13 @@ import simulink from "../assets/partners/sponsor-simulink.png";
 import polyspace from "../assets/partners/sponsor-polyspace.png";
 
 /**
- * The two institution rows.
- *
- * Both rows size their wordmark to the *same* fraction of their seal
- * (`FOOTER_WORDMARK_RATIO`), so the two lines carry one typographic weight.
- * Giving each wordmark its own pixel width instead made the lower line's
- * lettering taller than the seal beside it — 58px of calligraphy above, 93px
- * of condensed sans below — and the pair read as two different typefaces at two
- * different sizes rather than as one matched set.
- *
- * The seals differ in size because they differ in source: the crest is 4195px
- * and can carry 96px, the hospital seal is only 295px and is held to 82px so it
- * stays sharp on a retina screen. `--crest-size` / `--seal-size` are written
- * onto the container by `Footer.tsx` and the seal row's offset is derived from
- * them, so changing a size here moves the alignment with it.
+ * Institution wordmarks retain their artwork and display widths. The college
+ * asset is cropped to its alpha bounds so its visible ink shares the university
+ * wordmark's left edge. CSS centres both seals in one shared column.
  */
+export const FOOTER_CLINICAL_COLLEGE_NAME =
+  "The First Bethune Clinical Medical College of Jilin University";
+
 export const FOOTER_MARK_UNIVERSITY: ReadonlyArray<FooterMark> = [
   { src: jluCrest, width: 96, alt: "Jilin University crest" },
   { src: jluWordmark, width: 235, alt: "吉林大学" },
@@ -70,18 +62,11 @@ export const FOOTER_MARK_UNIVERSITY: ReadonlyArray<FooterMark> = [
 
 export const FOOTER_MARK_CLINICAL: ReadonlyArray<FooterMark> = [
   { src: hospitalSeal, width: 82, alt: "The First Bethune Hospital of Jilin University" },
-  { src: collegeWordmark, width: 238, alt: "The First Bethune Clinical Medical College of Jilin University" },
+  { src: collegeWordmark, width: 238, alt: FOOTER_CLINICAL_COLLEGE_NAME },
 ];
 
-/**
- * Wordmark height as a fraction of its seal. Applied in `circure-footer.css`;
- * the `width` above is only the natural aspect ratio at that height.
- */
-export const FOOTER_WORDMARK_RATIO = 0.76;
-
 export const FOOTER_INSTITUTION_LINES: ReadonlyArray<string> = [
-  "The First Clinical Medical College of Jilin University",
-  "(Norman Bethune)",
+  FOOTER_CLINICAL_COLLEGE_NAME,
   "Xinmin Street 71, Chaoyang District, Changchun, Jilin, PRC",
 ];
 

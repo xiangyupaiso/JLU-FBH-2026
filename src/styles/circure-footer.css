@@ -8,12 +8,11 @@
    alongside `.wiki-page--*` and `.site-header.is-*`. That keeps the README's
    "module colour has exactly one home" contract true.
 
-   Everything below derives from those three palette entries with color-mix(),
-   so no hex value is written in this file except the two ink constants that
-   come from the global token set.
+   Reader footers derive from their module palette. Home shares its pink
+   entry surface with the final illustration through a global token.
    ========================================================================== */
 
-/* Fallbacks for Home and 404, which carry no module class.
+/* Fallbacks for routes without a reader module palette.
 
    These three must not sit on the bare `.circure-footer` selector. Each palette
    file is imported by its own page module (`roster.tsx` imports the team
@@ -40,9 +39,8 @@
    why the earlier navy panel and the module-tinted panel both looked wrong:
    both invented a second surface where there should only ever be one. */
 .circure-footer {
-  /* Paper: the page surface, warmed very slightly so the footer reads as a
-     distinct plane without a colour jump. */
-  --footer-surface: color-mix(in srgb, var(--route-base) 88%, #fbf7ef);
+  /* Start at the exact page colour; warm the paper gradually below the join. */
+  --footer-surface: var(--route-base);
   --footer-deep: color-mix(in srgb, var(--route-base) 76%, #f2e9d8);
   /* Ink: the module main is a pale tint, so it has to be mixed most of the way
      to near-black before it is legible as type. */
@@ -74,6 +72,12 @@
   font-family: var(--font-body);
 }
 
+.circure-footer.is-home-page {
+  --route-main: var(--care);
+  --footer-surface: var(--home-footer-surface);
+  --footer-deep: color-mix(in srgb, var(--home-footer-surface) 76%, #f7e7e6);
+}
+
 /* ----------------------------------------------------------------------------
    1. Panel — full-bleed surface, 1120px inner column (the reader's own width,
       so the footer and the article share one measure).
@@ -84,14 +88,31 @@
   width: 100%;
   max-width: none;
   padding: clamp(48px, 6vw, 84px) clamp(24px, 4.7vw, 72px) clamp(28px, 3vw, 40px);
-  /* No top rule and no tint step. The panel opens straight out of the page
-     surface; a border here drew a line across the full viewport that read as
-     a band rather than an edge. */
+  /* Continue the page surface beneath the inset divider. */
   background: linear-gradient(
-    176deg,
+    180deg,
     var(--footer-surface) 0%,
     var(--footer-deep) 100%
   );
+}
+
+/* A quiet boundary between page content and footer, aligned to the inner column. */
+.circure-footer__panel::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: min(1120px, calc(100% - 2 * clamp(24px, 4.7vw, 72px)));
+  height: 1px;
+  transform: translateX(-50%);
+  background: linear-gradient(
+    to right,
+    transparent,
+    var(--footer-line) 12%,
+    var(--footer-line) 88%,
+    transparent
+  );
+  pointer-events: none;
 }
 
 .circure-footer__inner {
@@ -108,64 +129,32 @@
    -------------------------------------------------------------------------- */
 
 .circure-footer__marks {
+  --mark-gap: clamp(16px, 1.8vw, 26px);
   display: grid;
   justify-items: start;
   gap: clamp(20px, 2.4vw, 32px);
 }
 
-/* `center`, not `baseline`. An image's baseline is its bottom edge, so baseline
-   alignment seats a 58px wordmark flush with the foot of a 96px round seal —
-   which drops the lettering about half its own height below the seal's centre
-   line and reads as "the text is sagging". A circular seal's geometric centre
-   is also its optical centre, so plain centring is what pairs a round mark with
-   a wordmark. */
+/* Both rows use the same columns, including when the wordmarks shrink on mobile. */
 .circure-footer__mark-row {
-  display: flex;
+  display: grid;
+  grid-template-columns: clamp(64px, 22vw, var(--crest-size)) minmax(0, var(--wordmark-size));
   align-items: center;
-  gap: clamp(16px, 1.8vw, 26px);
-}
-
-/* All four marks hang off two shared vertical lines: the round seals share a
-   centre line, and the two wordmarks share a left edge.
-   Left-aligning both rows and letting the flex gap do the spacing cannot
-   produce that — the seals are different diameters (96 vs 82), so the second
-   row's wordmark starts 7px short of the first row's. A positive `margin-left`
-   of half the difference moves the smaller seal right until its centre lands on
-   the crest's; because a flex item's gap is measured from its *margin box*, the
-   wordmark then falls into place on the shared edge with no further offset.
-   Both values come from the display sizes in `src/data/footer.ts` via the
-   `--crest-size` / `--seal-size` tokens the component writes. */
-.circure-footer__mark-row--seal .circure-footer__mark {
-  margin-left: calc((var(--crest-size) - var(--seal-size)) / 2);
-}
-
-/* Wordmarks are sized by height, as a fixed fraction of the seal in the same
-   row, so both lines carry one typographic weight. Pinning each wordmark's
-   width instead let the lower line's condensed sans run taller than the seal
-   beside it and the pair stopped reading as a matched set.
-   Each row sets `--row-size` to its own seal, so the fraction resolves per row
-   rather than against one shared number. */
-.circure-footer__mark-row {
-  --row-size: var(--crest-size);
-}
-
-.circure-footer__mark-row--seal {
-  --row-size: var(--seal-size);
-}
-
-.circure-footer__mark-row .circure-footer__mark--word {
-  width: auto;
-  height: calc(var(--seal-ratio) * var(--row-size));
-  max-height: none;
+  gap: var(--mark-gap);
+  width: 100%;
 }
 
 .circure-footer__mark {
   display: block;
+  max-width: 100%;
   height: auto;
-  max-height: 132px;
   object-fit: contain;
   user-select: none;
   -webkit-user-drag: none;
+}
+
+.circure-footer__mark:not(.circure-footer__mark--word) {
+  justify-self: center;
 }
 
 /* ----------------------------------------------------------------------------
@@ -499,10 +488,6 @@
    -------------------------------------------------------------------------- */
 
 @media (max-width: 900px) {
-  .circure-footer__mark {
-    max-height: 104px;
-  }
-
   /* The partner block is the widest thing in the panel, so it is the first to
      give up its two-column shape: the primary mark shrinks and the support rows
      stay beside it until they cannot. */
@@ -548,16 +533,6 @@
 }
 
 @media (max-width: 620px) {
-  /* Each row wraps rather than shrink: the crest and its wordmark must stay on
-     one line to keep the lockup readable, but the row may break between rows. */
-  .circure-footer__mark {
-    max-height: 78px;
-  }
-
-  .circure-footer__mark-row {
-    flex-wrap: wrap;
-  }
-
   .brand-emblem {
     width: min(44vw, 180px);
   }

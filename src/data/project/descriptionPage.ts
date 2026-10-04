@@ -1,4 +1,5 @@
 import type { WikiPageContent } from "../../components/wiki/wikiPageTypes";
+import type { CitationReference } from "../citations/citationTypes";
 import { descriptionFigures } from "./descriptionAssets";
 
 /**
@@ -11,15 +12,7 @@ import { descriptionFigures } from "./descriptionAssets";
  * in favor of formal scientific figure blocks.
  */
 
-export interface ReferenceItem {
-  id: number;
-  authors: string;
-  title: string;
-  journal: string;
-  volumeYear: string;
-}
-
-export const descriptionReferences: ReferenceItem[] = [
+export const descriptionReferences: CitationReference[] = [
   {
     id: 1,
     authors: "Sung, H. et al.",

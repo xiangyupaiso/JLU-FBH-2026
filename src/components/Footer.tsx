@@ -13,7 +13,6 @@ import {
   FOOTER_PARTNER_PRIMARY,
   FOOTER_PARTNER_SUPPORT,
   FOOTER_PARTNERS_LABEL,
-  FOOTER_WORDMARK_RATIO,
   type FooterMark,
 } from "../data/footer";
 import { useFooterEasterEgg } from "../hooks/useFooterEasterEgg";
@@ -21,31 +20,22 @@ import { useRouteModule } from "../hooks/useRouteModule";
 import { stringToSlug } from "../utils";
 
 /** One crest/seal and the wordmark it belongs to. */
-function MarkRow({
-  marks,
-  modifier,
-}: {
-  marks: ReadonlyArray<FooterMark>;
-  /** Aligns the round seal's centre with the crest's — see the CSS note. */
-  modifier?: string;
-}) {
+function MarkRow({ marks }: { marks: ReadonlyArray<FooterMark> }) {
   return (
-    <div className={`circure-footer__mark-row${modifier ?? ""}`}>
+    <div className="circure-footer__mark-row">
       {marks.map((mark, index) => (
         <img
           key={mark.src}
-          /* Index 0 is always the round seal, 1 the wordmark. The wordmark is
-             sized by height in CSS; the seal by width. */
+          /* Index 0 is the seal; both rows share the same grid columns. */
           className={
-              index === 0
-                ? "circure-footer__mark"
-                : "circure-footer__mark circure-footer__mark--word"
-            }
+            index === 0
+              ? "circure-footer__mark"
+              : "circure-footer__mark circure-footer__mark--word"
+          }
           src={mark.src}
           alt={mark.alt}
           width={mark.width}
           height={index === 0 ? mark.width : undefined}
-          style={index === 0 ? { width: `${mark.width}px` } : undefined}
           /* `eager`, not `lazy`: these sit below the fold but every reader
              reaches them, and a lazy mark pops in one frame after the footer
              does — a visible blank flash exactly where the page is meant to
@@ -77,29 +67,23 @@ export function Footer() {
 
   return (
     <footer
-      className={`circure-footer ${module.className}`.trim()}
+      className={`circure-footer ${module.home ? "is-home-page" : module.className}`.trim()}
       aria-label="Site footer"
     >
       <div className="circure-footer__panel">
         <div className="circure-footer__inner">
-          {/* The seal sizes and the wordmark ratio are the layout's inputs; they are
-              written onto the container so the CSS offsets that align the two
-              rows are derived from the same numbers the data layer declares. */}
+          {/* Shared columns align the seals' centres and the wordmarks' ink edges. */}
           <div
             className="circure-footer__marks"
             style={
               {
                 "--crest-size": `${FOOTER_MARK_UNIVERSITY[0].width}px`,
-                "--seal-size": `${FOOTER_MARK_CLINICAL[0].width}px`,
-                "--seal-ratio": FOOTER_WORDMARK_RATIO,
+                "--wordmark-size": `${Math.max(FOOTER_MARK_UNIVERSITY[1].width, FOOTER_MARK_CLINICAL[1].width)}px`,
               } as CSSProperties
             }
           >
             <MarkRow marks={FOOTER_MARK_UNIVERSITY} />
-            <MarkRow
-              marks={FOOTER_MARK_CLINICAL}
-              modifier=" circure-footer__mark-row--seal"
-            />
+            <MarkRow marks={FOOTER_MARK_CLINICAL} />
           </div>
 
           <div className="circure-footer__contact">

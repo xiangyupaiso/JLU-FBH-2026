@@ -58,8 +58,8 @@ interface HomeIntroProps {
 /**
  * Plays on every page load: a sparkler writes CirCure on black, holds, and
  * a single flash reveals the patient. The wordmark
- * lands beneath the persistent header. Scroll or Skip completes
- * the intro immediately so the same gesture can move the opening scene.
+ * lands beneath the persistent header. Only the Skip button completes the
+ * intro early; wheel, touch and scroll keys are held until it finishes.
  *
  * Cross-file contract (rename with care):
  * - Drives .scene01-darkness / .scene01-portrait inside home-scene-01.tsx and
@@ -93,37 +93,34 @@ export function HomeIntro({ scene }: HomeIntroProps) {
     }
     section.dataset.intro = "playing";
     root.dataset.homeIntro = "playing";
-    // Start a fresh reading once; native input must never be reset or consumed.
+    // Start a fresh reading once. Only the Skip button ends the intro early;
+    // until then scrolling is held so the opening scene cannot move beneath it.
     window.scrollTo({ top: 0, left: 0, behavior: "instant" });
-    const skipOnInput = () => skipRef.current();
-    const onWheel = (event: WheelEvent) => {
-      if (event.deltaY) skipOnInput();
-    };
+    const holdScroll = (event: Event) => event.preventDefault();
     const onScroll = () => {
-      if (window.scrollY > 0) skipOnInput();
+      // Scrollbar drags and scroll restoration bypass the input listeners.
+      if (window.scrollY > 0) window.scrollTo({ top: 0, behavior: "instant" });
     };
     const onKey = (event: KeyboardEvent) => {
       if (
-        [
-          "ArrowDown",
-          "ArrowUp",
-          "PageDown",
-          "PageUp",
-          "Home",
-          "End",
-          " ",
-          "Escape",
-        ].includes(event.key)
-      ) {
-        skipOnInput();
-      }
+        !["ArrowDown", "ArrowUp", "PageDown", "PageUp", "Home", "End", " "]
+          .includes(event.key)
+      )
+        return;
+      // Space/Enter must still activate a focused Skip button or nav control.
+      const target = event.target as Element | null;
+      if (target?.closest("button, input, textarea, select, [contenteditable]"))
+        return;
+      event.preventDefault();
     };
     window.addEventListener("scroll", onScroll, { passive: true });
-    // Capture the intent even when the page loader stops bubbling. The loader
-    // can still block scrolling until the page is ready, without replaying us.
-    window.addEventListener("wheel", onWheel, { passive: true, capture: true });
-    window.addEventListener("touchmove", skipOnInput, {
-      passive: true,
+    // Capture so the hold applies even when the page loader stops bubbling.
+    window.addEventListener("wheel", holdScroll, {
+      passive: false,
+      capture: true,
+    });
+    window.addEventListener("touchmove", holdScroll, {
+      passive: false,
       capture: true,
     });
     window.addEventListener("keydown", onKey);
@@ -131,13 +128,13 @@ export function HomeIntro({ scene }: HomeIntroProps) {
       "(prefers-reduced-motion: reduce)",
     );
     const onMotionChange = () => {
-      if (motionPreference.matches) skipOnInput();
+      if (motionPreference.matches) skipRef.current();
     };
     motionPreference.addEventListener("change", onMotionChange);
     return () => {
       window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("wheel", onWheel, true);
-      window.removeEventListener("touchmove", skipOnInput, true);
+      window.removeEventListener("wheel", holdScroll, true);
+      window.removeEventListener("touchmove", holdScroll, true);
       window.removeEventListener("keydown", onKey);
       motionPreference.removeEventListener("change", onMotionChange);
       delete root.dataset.homeIntro;

@@ -1,9 +1,20 @@
-import { useEffect, useId, type CSSProperties, type ReactNode } from "react";
-import { descriptionReferences, solutionData } from "../../../../data/project/descriptionPage";
+/* eslint-disable react-refresh/only-export-components */
+import { useId, type CSSProperties, type ReactNode } from "react";
+import {
+  descriptionPage,
+  descriptionReferences,
+  solutionData,
+} from "../../../../data/project/descriptionPage";
+import {
+  buildAuthorYearCitationIndex,
+  reportCitationIssues,
+} from "../../../../data/citations/citationIndex";
+import {
+  CitationReferenceList,
+  PROJECT_CITATION_FLASH,
+  createCitationRenderer,
+} from "../../citations/CitationRegister";
 import "../../../../styles/wiki-features.css";
-import { citationIndex } from "./citations";
-import { Backlinks, flashCitationTarget } from "./CitationLink";
-import { CitationPreview } from "./CitationPreview";
 
 /**
  * 8-step central mechanism chain for CirCure.
@@ -117,50 +128,34 @@ export function AntigenCandidateCards() {
   );
 }
 
-/**
- * Academic reference list with proper hanging indents and journal citations.
- */
-export function DescriptionReferenceList() {
-  // Deep links (#ref-N) are scrolled by the page motion hook; replay the
-  // flash on mount so the landed entry is still highlighted.
-  useEffect(() => {
-    const hash = window.location.hash.replace(/^#/, "");
-    if (!/^ref-\d+$/.test(hash)) return;
-    const el = document.getElementById(hash);
-    if (!el) return;
-    flashCitationTarget(el);
-  }, []);
+const descriptionCitationIndex = buildAuthorYearCitationIndex(
+  descriptionPage.sections,
+  descriptionReferences,
+);
+reportCitationIssues("description", descriptionCitationIndex);
 
+/** Inline renderer handed to `WikiRoutePage` on the Description page. */
+export const renderCitedText = createCitationRenderer(
+  descriptionCitationIndex,
+  PROJECT_CITATION_FLASH,
+);
+
+/**
+ * The bibliography, on the shared register: hanging index, authors, title,
+ * italic journal, volume/year and reverse back-links.
+ */
+function DescriptionReferenceList() {
   return (
-    <>
-      <ol className="description-reference-list" data-wiki-reveal>
-        {descriptionReferences.map((ref) => (
-          <li
-            key={ref.id}
-            id={`ref-${ref.id}`}
-            tabIndex={-1}
-            className="description-reference-item"
-          >
-            <span className="description-reference-item__index">[{ref.id}]</span>
-            <div
-              className="description-reference-item__content"
-              id={`ref-${ref.id}-body`}
-            >
-              <span className="description-reference-item__authors">{ref.authors} </span>
-              <span className="description-reference-item__title">{ref.title} </span>
-              <em className="description-reference-item__journal">{ref.journal} </em>
-              <span className="description-reference-item__vol">{ref.volumeYear}</span>
-              <Backlinks occs={citationIndex.byRef.get(ref.id) ?? []} />
-            </div>
-          </li>
-        ))}
-      </ol>
-      <CitationPreview />
-    </>
+    <div data-wiki-reveal>
+      <CitationReferenceList
+        references={descriptionReferences}
+        index={descriptionCitationIndex}
+        tint={PROJECT_CITATION_FLASH}
+      />
+    </div>
   );
 }
 
-// eslint-disable-next-line react-refresh/only-export-components
 export function descriptionFeatures(): Record<string, ReactNode> {
   return {
     "mechanism-route-chain": <MechanismRouteChain />,

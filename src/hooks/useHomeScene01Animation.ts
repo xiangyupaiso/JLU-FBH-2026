@@ -2,7 +2,7 @@ import { type RefObject } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { HOME_EASE } from "./homeMotion";
+import { HOME_EASE, HOME_STILL_RATIO } from "./homeMotion";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
@@ -58,6 +58,11 @@ export function useHomeScene01Animation({
       const buildTimeline = (compact: boolean) => {
         const select = gsap.utils.selector(section);
         const distance = compact ? 0.58 : 1;
+        // Desktop holds the finished prologue still for the shared ratio.
+        const restRatio = compact ? SCENE01_REST_RATIO : HOME_STILL_RATIO;
+        if (!compact) {
+          gsap.set(section, { "--scene01-scroll-scale": 1 + restRatio });
+        }
         section.classList.add("has-scene01-motion");
         // Layout offsets remain valid during refresh even when the current
         // frame is transformed; phones use a wider portrait than the stage.
@@ -203,7 +208,7 @@ export function useHomeScene01Animation({
           { autoAlpha: 1, y: 0, duration: 0.35 },
           PROLOGUE_START + 0.4,
         );
-        timeline.to({}, { duration: timeline.duration() * SCENE01_REST_RATIO });
+        timeline.to({}, { duration: timeline.duration() * restRatio });
 
         return () => section.classList.remove("has-scene01-motion");
       };

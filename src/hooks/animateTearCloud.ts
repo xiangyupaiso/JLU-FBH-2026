@@ -5,6 +5,8 @@ import { HOME_SCRUB } from "./homeMotion";
 
 type Grain = { x: number; y: number; alpha: number; rgb: number[] };
 type CloudBounds = { left: number; top: number; width: number; height: number };
+// Viewports the bridge starts before the tear track ends, while it is sticky.
+export const TEAR_CLOUD_LEAD = 0.24;
 const clamp = gsap.utils.clamp(0, 1);
 const smooth = (from: number, to: number, value: number) => {
   const p = clamp((value - from) / (to - from));
@@ -366,7 +368,7 @@ export function animateTearCloud(
     scrollTrigger: {
       id: "home-tear-cloud-carry",
       trigger: map,
-      start: () => from.end - window.innerHeight * 0.24,
+      start: () => from.end - window.innerHeight * TEAR_CLOUD_LEAD,
       end: () => to.start + Math.max(1, to.end - to.start) * 0.22,
       scrub: compact ? 0.42 : HOME_SCRUB,
       invalidateOnRefresh: true,
