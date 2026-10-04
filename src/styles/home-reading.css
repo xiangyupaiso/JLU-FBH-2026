@@ -11,7 +11,7 @@
   text-wrap: wrap;
 }
 .home-story .story-chapter .story-body {
-  width: min(100%, 1080px);
+  width: min(100%, 78ch);
   font-size: clamp(17px, 1.35vw, 20px);
   line-height: 1.75;
 }
@@ -25,8 +25,7 @@
   vertical-align: baseline;
   transform-origin: center 70%;
 }
-.home-story .story-reading-ink,
-.home-story .story-reading-accents {
+.home-story .story-reading-ink {
   position: absolute;
   inset: 0;
   width: 100%;
@@ -35,14 +34,6 @@
   overflow: hidden;
 }
 .home-story .story-reading-ink { visibility: hidden; z-index: 1; }
-.home-story .story-reading-accents {
-  color: var(--story-accent);
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 1.2;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
 .home-story .story-copy[data-reading-voice] .story-challenges li { border-color: transparent; }
 .home-story .story-copy.has-flow-reading { margin-bottom: 28svh; }
 .home-story .story-platform-note {
@@ -81,3 +72,48 @@
 @media (max-height: 650px) {
   .home-story .story-chapter .story-copy { padding-block: 32px; gap: 22px; }
 }
+
+/* Quiet explanations share a readable measure and leave room for the artwork. */
+.home-story .story-copy.has-quiet-reading h2 {
+  max-width: 30ch;
+  text-wrap: balance;
+}
+.home-story .story-copy.has-quiet-reading .story-body {
+  width: min(100%, 66ch);
+}
+.home-story .story-copy.has-quiet-reading .story-body > p {
+  text-align: left;
+  text-wrap: pretty;
+}
+.home-story .story-copy.has-quiet-reading .story-body > .story-carry {
+  text-align: center;
+}
+.home-story .story-copy.has-quiet-reading.has-flow-reading {
+  margin-bottom: 14svh;
+}
+@media (max-width: 800px), (max-height: 650px) {
+  .home-story .story-copy.has-quiet-reading {
+    min-height: auto;
+    padding-block: 48px;
+  }
+}
+
+/* TNBC reading audit: keep this scope independent of the other chapters. */
+.home-story #why-tnbc .story-body {
+  width: min(100%, 60ch);
+}
+.home-story #why-tnbc .story-body > p {
+  text-align: left;
+  text-wrap: pretty;
+}
+.home-story #why-tnbc .story-copy h2 {
+  max-width: 26ch;
+  text-wrap: balance;
+}
+@media (max-width: 800px) {
+  .home-story #why-tnbc .story-copy {
+    min-height: auto;
+    padding-block: 48px;
+  }
+}
+/* End TNBC reading audit. */

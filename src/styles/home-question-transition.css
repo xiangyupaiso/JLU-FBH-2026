@@ -1,0 +1,65 @@
+.story-question-transition {
+  position: fixed;
+  inset: 0;
+  z-index: 30;
+  overflow: hidden;
+  visibility: hidden;
+  pointer-events: none;
+}
+.home-story .story-clinical-stage.is-question-carried,
+.home-story .story-rna-sequence-stage.is-question-carried,
+.home-story .story-chapter-inner.is-question-carried {
+  position: fixed;
+  inset: 0;
+  z-index: 31;
+  width: 100%;
+  height: 100svh;
+  background: transparent !important;
+}
+.is-question-carried .story-backdrop,
+.is-question-carried .story-clinical-backdrop {
+  visibility: hidden;
+}
+.is-question-carried #why-circrna .story-backdrop {
+  visibility: visible;
+  opacity: var(--question-paper-opacity, 0) !important;
+}
+.is-question-carried #why-circrna [data-layer="4"] {
+  opacity: var(--question-ring-opacity, 0) !important;
+}
+.is-question-carried #a-new-direction [data-layer="8"] {
+  opacity: var(--question-bubble-opacity, 1) !important;
+}
+.story-question-sprite {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 32;
+  transform-origin: center;
+  will-change: transform, opacity;
+}
+.story-question-sprite > svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+.story-question-sprite > svg:first-child {
+  mix-blend-mode: multiply;
+}
+.story-question-ink {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100svh;
+  z-index: 32;
+  visibility: hidden;
+  pointer-events: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .story-question-transition,
+  .story-question-ink {
+    display: none;
+  }
+}

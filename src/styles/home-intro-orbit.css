@@ -1,0 +1,107 @@
+/* The closed strand and its release share HomeIntro's finite timeline. */
+.home-intro-orbit {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+}
+.home-intro-orbit-svg {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: min(94vw, 110vh, 1120px);
+  height: auto;
+  overflow: visible;
+}
+.home-intro-orbit-body,
+.home-intro-orbit-wave {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.home-intro-orbit-path,
+.home-intro-orbit-thread,
+.home-intro-orbit-wave {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+.home-intro-orbit-path {
+  stroke: url("#home-intro-orbit-ink");
+  stroke-width: 2.2;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  opacity: 1;
+  filter: drop-shadow(0 0 3px #f3c6df99) drop-shadow(0 0 8px #d784b344);
+}
+.home-intro-orbit-thread {
+  stroke: #e8b5d699;
+  stroke-width: 0.9;
+  opacity: 0;
+}
+.home-intro-orbit-nodes {
+  fill: #fff1e6;
+  stroke: #f3c6df;
+  stroke-width: 1.2;
+  stroke-linecap: round;
+  opacity: 0;
+}
+.home-intro-orbit-nodes line {
+  vector-effect: non-scaling-stroke;
+}
+.home-intro-orbit-tip {
+  opacity: 0;
+}
+.home-intro-orbit-wave {
+  stroke: #ffe3ef;
+  stroke-width: 1.5;
+  opacity: 0;
+  filter: drop-shadow(0 0 5px #e8b5d677);
+}
+.home-intro-bloom,
+.home-intro-flare {
+  position: absolute;
+  opacity: 0;
+  mix-blend-mode: screen;
+  pointer-events: none;
+}
+.home-intro-bloom {
+  inset: 0;
+  background: radial-gradient(
+    ellipse 48% 40% at 50% 50%,
+    #fff4e877,
+    #f3c6df3d 24%,
+    #d784b318 48%,
+    transparent 76%
+  );
+}
+.home-intro-flare {
+  top: calc(50% - 1px);
+  left: 50%;
+  width: min(76vw, 850px);
+  height: 2px;
+  transform: translateX(-50%);
+  transform-origin: center;
+  background: linear-gradient(
+    to right,
+    transparent,
+    #d784b333 18%,
+    #f3c6df99 40%,
+    #fff8ec 50%,
+    #f3c6df99 60%,
+    #d784b333 82%,
+    transparent
+  );
+  box-shadow: 0 0 12px 2px #f3c6df55;
+}
+
+@media (max-width: 800px) {
+  .home-intro-orbit-svg {
+    width: 104vw;
+  }
+  .home-intro-flare {
+    width: 92vw;
+  }
+}

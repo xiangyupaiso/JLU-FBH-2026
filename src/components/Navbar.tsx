@@ -238,6 +238,7 @@ export function Navbar() {
   const headerRef = useRef<HTMLElement>(null);
   const shellRef = useRef<HTMLDivElement>(null);
   const mobileToggleRef = useRef<HTMLButtonElement>(null);
+  const restoringFocusRef = useRef(false);
   const pathname = useLocation().pathname;
   const homeActive = isActive(pathname, "/");
 
@@ -292,6 +293,13 @@ export function Navbar() {
   // Clean up timers on unmount
   useEffect(() => () => clearTimers(), [clearTimers]);
 
+  // Crossing the layout breakpoint also cancels pending hover work.
+  useEffect(() => {
+    const desktop = window.matchMedia(`(min-width: ${NAV_BREAKPOINT + 1}px)`);
+    desktop.addEventListener("change", closeAll);
+    return () => desktop.removeEventListener("change", closeAll);
+  }, [closeAll]);
+
   // The dark header belongs only to Home's opening scene. Reuse the progress
   // listener so scrolling back, resizing and route changes restore its theme.
   useEffect(() => {
@@ -311,7 +319,7 @@ export function Navbar() {
       // contents/home-scene-01.tsx, #what-we-hope in contents/home-story.tsx,
       // #home-finale in components/home/HomeFinale.tsx. Renaming any of them
       // silently breaks the header theme (data-home-opening/-closing, styled in
-      // circure-nav.css). HomeIntro.tsx also measures .logo-word-full below.
+      // circure-nav.css). The navigation stays visible over the opening scene.
       const opening = homeActive
         ? document.querySelector<HTMLElement>(".home-scene01")
         : null;
@@ -376,7 +384,9 @@ export function Navbar() {
         );
         setOpenKey(null);
         clearTimers();
-        toggle?.focus();
+        restoringFocusRef.current = true;
+        toggle?.focus({ preventScroll: true });
+        restoringFocusRef.current = false;
       }
     };
     document.addEventListener("keydown", onKeyDown);
@@ -407,6 +417,7 @@ export function Navbar() {
     [openImmediate],
   );
 
+  const openIndex = DROPDOWNS.findIndex((d) => d.key === openKey);
   const wetLabActive = DROPDOWNS.find((d) => d.key === "wet-lab")?.cards.some(
     (card) => isActive(pathname, card.path),
   );
@@ -468,8 +479,8 @@ export function Navbar() {
         <div
           className="circure-nav-shell"
           ref={shellRef}
-          onPointerEnter={openKey ? clearTimers : undefined}
-          onPointerLeave={openKey ? queueClose : undefined}
+          onPointerEnter={clearTimers}
+          onPointerLeave={queueClose}
         >
           <div className="circure-nav-head">
             <Link to="/" className="wordmark" aria-label="CirCure home">
@@ -524,7 +535,9 @@ export function Navbar() {
                         dropdownActive(pathname, d) ? "page" : undefined
                       }
                       onPointerEnter={() => queueOpen(d.key)}
-                      onFocus={() => openImmediate(d.key)}
+                      onFocus={() => {
+                        if (!restoringFocusRef.current) openImmediate(d.key);
+                      }}
                       onClick={() => openImmediate(d.key)}
                       onKeyDown={onToggleKeydown}
                     >
@@ -567,73 +580,76 @@ export function Navbar() {
             </button>
           </div>
 
-          <span className="circure-nav-surface" aria-hidden="true">
-            {DROPDOWNS.map((dropdown) => (
-              <span
-                key={`${dropdown.key}-aura`}
-                className={`circure-nav-aura circure-nav-aura--${dropdown.key}`}
-              />
-            ))}
-          </span>
-
           <div
             className={`circure-mega-menu${openKey ? " is-open" : ""}`}
             id="circure-nav-menu"
             aria-hidden={!openKey}
             inert={!openKey || undefined}
           >
-            {DROPDOWNS.map((d) => {
-              const isActivePanel = openKey === d.key;
-              const manyCards = d.cards.length > 3;
-              return (
-                <div
-                  key={d.key}
-                  className={[
-                    "circure-nav-panel",
-                    isActivePanel ? "is-active" : "",
-                    manyCards ? "has-many-cards" : "",
-                  ]
-                    .filter(Boolean)
-                    .join(" ")}
-                  data-nav-panel={d.key}
-                  aria-hidden={!isActivePanel}
-                  style={
-                    manyCards
-                      ? {
-                          gridTemplateColumns: `1.13fr repeat(${d.cards.length}, 1fr)`,
-                        }
-                      : undefined
-                  }
-                >
-                  <article className="nav-intro-card">
-                    <span>{d.label}</span>
-                    <strong>{d.intro}</strong>
-                    <Link to={d.cards[0]?.path ?? "/"} onClick={closeAll}>
-                      {d.enterLabel} <b>→</b>
-                    </Link>
-                  </article>
-                  {d.cards.map((c, i) => (
-                    <Link
-                      key={c.path}
-                      to={c.path}
-                      className="nav-image-card"
-                      style={
-                        {
-                          "--nav-image": `url(${d.sprite})`,
-                          "--nav-col": `${(i / Math.max(1, d.cards.length - 1)) * 100}%`,
-                          "--nav-row": c.spriteRow,
-                        } as React.CSSProperties
-                      }
-                      onClick={closeAll}
-                    >
-                      <small>{c.small}</small>
-                      <strong>{c.name}</strong>
-                      <em>{c.em}</em>
-                    </Link>
-                  ))}
-                </div>
-              );
-            })}
+            <span className="circure-nav-surface" aria-hidden="true" />
+            <div className="circure-nav-viewport">
+              {DROPDOWNS.map((d, index) => {
+                const isActivePanel = openKey === d.key;
+                const manyCards = d.cards.length > 3;
+                return (
+                  <div
+                    key={d.key}
+                    className={[
+                      "circure-nav-panel",
+                      isActivePanel ? "is-active" : "",
+                      manyCards ? "has-many-cards" : "",
+                    ]
+                      .filter(Boolean)
+                      .join(" ")}
+                    data-nav-panel={d.key}
+                    aria-hidden={!isActivePanel}
+                    inert={!isActivePanel || undefined}
+                    style={
+                      {
+                        // Keep hidden panels on their side of the active chapter.
+                        // CSS transitions can reverse from their current position.
+                        "--nav-panel-side":
+                          openKey ? Math.sign(index - openIndex) : 0,
+                        gridTemplateColumns: manyCards
+                          ? `1.13fr repeat(${d.cards.length}, 1fr)`
+                          : undefined,
+                      } as React.CSSProperties
+                    }
+                  >
+                    <article className="nav-intro-card">
+                      <span>{d.label}</span>
+                      <strong>{d.intro}</strong>
+                      <Link to={d.cards[0]?.path ?? "/"} onClick={closeAll}>
+                        {d.enterLabel} <b>→</b>
+                      </Link>
+                    </article>
+                    {d.cards.map((c, i) => (
+                      <Link
+                        key={c.path}
+                        to={c.path}
+                        className="nav-image-card"
+                        onClick={closeAll}
+                      >
+                        {/* Each sprite is a 3 × 2 grid of square tiles. Keep the
+                            existing crop positions and scale each crop uniformly. */}
+                        <svg
+                          className="nav-image-artwork"
+                          viewBox={`${(i / Math.max(1, d.cards.length - 1)) * 2} ${Number.parseFloat(c.spriteRow) / 100} 1 1`}
+                          preserveAspectRatio="xMidYMid slice"
+                          aria-hidden="true"
+                          focusable="false"
+                        >
+                          <image href={d.sprite} width="3" height="2" />
+                        </svg>
+                        <small>{c.small}</small>
+                        <strong>{c.name}</strong>
+                        <em>{c.em}</em>
+                      </Link>
+                    ))}
+                  </div>
+                );
+              })}
+            </div>
           </div>
 
           <nav

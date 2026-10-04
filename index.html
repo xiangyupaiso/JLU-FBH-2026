@@ -261,7 +261,7 @@
     <script>
       // Start the stage timeline once the key art has decoded, so the hands
       // and ribbon never animate while still invisible. Wheel / touch on the
-      // loader must not scroll (or skip the Home intro) underneath it.
+      // loader must not scroll the page underneath it until content is ready.
       (function () {
         var loader = document.getElementById("page-loader");
         if (!loader) return;

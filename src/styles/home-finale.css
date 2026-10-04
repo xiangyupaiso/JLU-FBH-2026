@@ -1,12 +1,72 @@
 .home-story .story-finale {
   position: relative;
-  display: grid;
-  place-items: center;
+  --scene-height: calc(100svh - var(--header-height));
   min-height: calc(100svh - var(--header-height));
-  padding: clamp(32px, 10svh, 108px) 7%;
+  padding: 0;
   overflow: hidden;
   isolation: isolate;
   background: linear-gradient(#f7e7e6, #fcf6ed);
+}
+
+.home-story.has-story-motion .story-finale {
+  height: auto;
+}
+.story-finale > .story-final-statement {
+  display: grid;
+  align-content: center;
+  min-height: var(--scene-height);
+  padding: clamp(32px, 10svh, 108px) 7%;
+}
+.story-finale-explore {
+  position: relative;
+  height: var(--scene-height);
+  overflow: hidden;
+  isolation: isolate;
+}
+.has-story-motion .story-finale-explore {
+  position: absolute;
+  inset: 0;
+  height: 100%;
+  opacity: 0;
+  visibility: hidden;
+  z-index: 0;
+}
+.has-story-motion .story-finale-explore .story-backdrop {
+  /* A fixed centre keeps the pigment aligned through refresh and reverse scroll. */
+  --care-mask: radial-gradient(
+    circle at 50% 50%,
+    #000 calc(var(--care-radius, 0px) * 0.78),
+    transparent var(--care-radius, 0px)
+  );
+  -webkit-mask-image: var(--care-mask);
+  mask-image: var(--care-mask);
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+}
+.has-story-motion .story-finale-ambient {
+  z-index: 1;
+}
+.has-story-motion .story-final-statement {
+  z-index: 2;
+}
+.story-finale-explore .story-backdrop {
+  inset: 0;
+  height: 100%;
+}
+.story-finale-explore .story-art {
+  z-index: 2;
+}
+.home-story:has(.story-finale-explore) {
+  padding-bottom: 0;
+}
+/* Hope's illustration now resolves after the circRNA closing shot. */
+.home-story .story-chapter--hope .story-copy {
+  background: radial-gradient(
+    ellipse 75% 55% at 50% 0%,
+    rgba(255, 245, 224, 0.85),
+    rgba(253, 216, 165, 0.45) 35%,
+    rgba(247, 231, 230, 0)
+  );
 }
 
 /* Ambient layer: the painted circRNA ring from "Why circRNA?" and a warm
@@ -93,8 +153,8 @@
   display: none;
 }
 .story-final-statement__fold {
-  display: inline-block;
-  /* clip keeps the text baseline aligned, unlike overflow: hidden. */
+  /* Grid preserves the text baseline while clipping, including in Safari. */
+  display: inline-grid;
   overflow: clip;
   overflow-clip-margin: 0.2em;
   white-space: nowrap;
@@ -174,8 +234,20 @@
   transform: scaleX(var(--underline, 1));
 }
 @media (max-width: 800px) {
-  .home-story .story-finale {
+  .story-finale > .story-final-statement {
     padding-inline: 6%;
+  }
+  .story-finale-explore .story-art {
+    top: 35%;
+    width: calc(var(--scene-height) * 16 / 9 * 0.7);
+  }
+  body:has(.story-finale-explore[data-explore-in-view="true"])
+    .circure-back-to-top {
+    top: calc(var(--header-height) + 12px);
+    right: 14px;
+    bottom: auto;
+    width: 56px;
+    height: 56px;
   }
   .home-story .story-carry {
     font-size: clamp(17px, 4.6vw, 22px);
@@ -195,4 +267,64 @@
     width: min(100vw, 58svh);
     opacity: 0.16;
   }
+}
+
+@media (min-width: 801px) and (max-width: 1000px) and (max-height: 500px) {
+  body:has(.story-finale-explore[data-explore-in-view="true"])
+    .circure-back-to-top {
+    top: calc(var(--header-height) + 12px);
+    right: 8px;
+    bottom: auto;
+    width: 44px;
+    height: 44px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .story-finale-explore,
+  .story-finale-explore [data-hope-card] {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+  }
+}
+
+/* Continue the finale's warm paper into the mandatory site credits. */
+body:has(.home-story) .footer {
+  margin-top: 0 !important;
+  background: #fcf6ed !important;
+  color: #483741 !important;
+  border-top: 1px solid #e9d9dc;
+  box-shadow: none;
+}
+body:has(.home-story) .footer .container {
+  max-width: 1140px;
+}
+body:has(.home-story) .footer h4 {
+  color: #483741;
+  font-family: var(--font-heading);
+  font-weight: var(--weight-label);
+}
+body:has(.home-story) .footer p,
+body:has(.home-story) .footer small {
+  color: #695a64;
+}
+body:has(.home-story) .footer a {
+  color: #a25172;
+  font-weight: 500;
+  text-decoration: underline;
+  text-decoration-color: #d6afb9;
+  text-underline-offset: 0.2em;
+}
+body:has(.home-story) .footer a:hover {
+  color: #75364f;
+  text-decoration-color: currentColor;
+}
+body:has(.home-story) .footer a:focus-visible {
+  outline: 2px solid #a25172;
+  outline-offset: 4px;
+}
+body:has(.home-story) .footer hr {
+  border-color: #d6afb9;
+  opacity: 0.6;
 }

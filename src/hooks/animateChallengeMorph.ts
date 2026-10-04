@@ -27,9 +27,30 @@ export function animateChallengeMorph(
   compact: boolean,
 ): () => void {
   const cleanups: (() => void)[] = [];
+  const pending = new Map<SVGSVGElement, () => void>();
+  let prepareFrame = 0;
+  let stopped = false;
+  const flushPrepare = () => {
+    prepareFrame = 0;
+    if (stopped) return;
+    const next = pending.entries().next().value;
+    if (next) {
+      pending.delete(next[0]);
+      next[1]();
+    }
+    if (pending.size && !prepareFrame) {
+      prepareFrame = requestAnimationFrame(flushPrepare);
+    }
+  };
+  const queuePrepare = (icon: SVGSVGElement, task: () => void) => {
+    if (stopped) return;
+    pending.set(icon, task);
+    if (!prepareFrame) prepareFrame = requestAnimationFrame(flushPrepare);
+  };
   section.querySelectorAll<SVGSVGElement>("[data-morph-icon]").forEach((icon, index) => {
     const key = icon.dataset.morphIcon;
     const word = section.querySelector<HTMLElement>(`[data-morph-word="${key}"]`);
+    const thumbnail = section.querySelector<SVGSVGElement>(`[data-morph-thumbnail="${key}"]`);
     const crop = icon.querySelector("clipPath rect");
     const href = icon.querySelector("image")?.getAttribute("href");
     const art = icon.closest<HTMLElement>(".story-art");
@@ -49,11 +70,16 @@ export function animateChallengeMorph(
       canvas.remove();
       timeline.to(icon, { opacity: 0, duration: 0.2 }, 0.24 + index * 0.1);
       timeline.to(word, { opacity: 1, duration: 0.2 }, 0.4 + index * 0.1);
+      if (thumbnail) {
+        timeline.fromTo(thumbnail, { opacity: 0, scale: 1.2, y: 8 },
+          { opacity: 1, scale: 1, y: 0, duration: 0.2 }, 0.4 + index * 0.1);
+      }
       return;
     }
 
     const originalIconStyle = icon.style.opacity;
     const originalWordStyle = word.style.opacity;
+    const originalThumbnailStyle = thumbnail?.getAttribute("style");
     const state = { progress: 0 };
     const image = new Image();
     let disposed = false;
@@ -68,7 +94,10 @@ export function animateChallengeMorph(
     let spacing = 1.6;
     let accent = "#5475a5";
     let grains: Grain[] = [];
-    let resizeFrame = 0;
+    let decoded = false;
+    let pendingRebuild = false;
+    let transitionActive = false;
+    let useParticles = false;
     let activated = false;
     const gpuCanvas = document.createElement("canvas");
     gpuCanvas.className = "story-morph-grains";
@@ -77,16 +106,31 @@ export function animateChallengeMorph(
     canvas.after(gpuCanvas);
     let gpu: ReturnType<typeof createChallengeParticleRenderer> = null;
     let rendererInitialized = false;
+    let thumbnailX = 0;
+    let thumbnailY = 8;
+    let thumbnailScale = 1.2;
 
     const draw = () => {
       if (disposed) return;
       const p = state.progress;
+      const active = p > 0 && p < 1;
+      // Fast input keeps the original-image dissolve for its whole pass.
+      // Preparing late must not replace a half-visible icon with particles.
+      if (!active || !transitionActive) useParticles = ready;
+      transitionActive = active;
+      const particlesReady = ready && useParticles;
+      if (!active && pendingRebuild) scheduleRebuild();
       const finish = smooth(0.88, 1, p);
-      word.style.opacity = String(ready ? finish : smooth(0.5, 1, p));
-      icon.style.opacity = String(ready ? (p <= 0 ? 1 : 0) : 1 - smooth(0, 0.5, p));
-      canvas.style.visibility = ready && p > 0 && p < 1 ? "visible" : "hidden";
+      word.style.opacity = String(particlesReady ? finish : smooth(0.5, 1, p));
+      icon.style.opacity = String(particlesReady ? (p <= 0 ? 1 : 0) : 1 - smooth(0, 0.5, p));
+      if (thumbnail) {
+        const settle = smooth(0.5, 1, p);
+        thumbnail.style.opacity = String(smooth(0.62, 0.94, p));
+        thumbnail.style.transform = `translate(${thumbnailX * (1 - settle)}px, ${thumbnailY * (1 - settle)}px) scale(${1 + (thumbnailScale - 1) * (1 - settle)})`;
+      }
+      canvas.style.visibility = particlesReady && active ? "visible" : "hidden";
       gpuCanvas.style.visibility = canvas.style.visibility;
-      if (!ready || p <= 0 || p >= 1) return;
+      if (!particlesReady || !active) return;
       context.setTransform(ratio, 0, 0, ratio, 0, 0);
       context.clearRect(0, 0, width, height);
       context.globalAlpha = 1;
@@ -135,11 +179,6 @@ export function animateChallengeMorph(
 
     const rebuild = () => {
       if (disposed || !image.naturalWidth) return;
-      if (!rendererInitialized) {
-        rendererInitialized = true;
-        gpu = createChallengeParticleRenderer(gpuCanvas);
-        canvas.dataset.renderer = gpu ? "webgl" : "canvas";
-      }
       const artBox = art.getBoundingClientRect();
       const iconBox = icon.getBoundingClientRect();
       const wordBox = word.getBoundingClientRect();
@@ -152,6 +191,14 @@ export function animateChallengeMorph(
       sourceHeight = iconBox.height / scaleY * attr("height");
       const cropLeft = (iconBox.left - artBox.left) / scaleX + iconBox.width / scaleX * attr("x");
       const cropTop = (iconBox.top - artBox.top) / scaleY + iconBox.height / scaleY * attr("y");
+      if (thumbnail) {
+        // The thumbnail's CSS anchor remains stable while its own transform moves.
+        // Never sample the animated thumbnail as the particle source on refresh.
+        const style = getComputedStyle(thumbnail);
+        thumbnailX = cropLeft + sourceWidth / 2 - Number.parseFloat(style.left);
+        thumbnailY = cropTop + sourceHeight / 2 - Number.parseFloat(style.top);
+        thumbnailScale = sourceWidth / Number.parseFloat(style.width);
+      }
       const wordLeft = (wordBox.left - artBox.left) / scaleX;
       const wordTop = (wordBox.top - artBox.top) / scaleY;
       const padding = compact ? 22 : 42;
@@ -254,9 +301,23 @@ export function animateChallengeMorph(
     };
 
     const scheduleRebuild = () => {
-      if (disposed || !activated) return;
-      cancelAnimationFrame(resizeFrame);
-      resizeFrame = requestAnimationFrame(rebuild);
+      if (disposed || !activated || !decoded) return;
+      pendingRebuild = true;
+      if (transitionActive) return;
+      queuePrepare(icon, () => {
+        if (disposed || transitionActive) return;
+        // Shader setup and pixel sampling get separate frames. The five
+        // icons share this queue so they cannot all rebuild in one frame.
+        if (!rendererInitialized) {
+          rendererInitialized = true;
+          gpu = createChallengeParticleRenderer(gpuCanvas);
+          canvas.dataset.renderer = gpu ? "webgl" : "canvas";
+          scheduleRebuild();
+          return;
+        }
+        pendingRebuild = false;
+        rebuild();
+      });
     };
     const observer = new ResizeObserver(scheduleRebuild);
     const onContextLost = () => draw();
@@ -264,7 +325,18 @@ export function animateChallengeMorph(
     observer.observe(art);
     observer.observe(word);
     ScrollTrigger.addEventListener("refresh", scheduleRebuild);
-    image.onload = scheduleRebuild;
+    image.onload = () => {
+      // Decoding off the sampling callback avoids a lazy image decode there.
+      void image.decode().then(() => {
+        if (disposed) return;
+        decoded = true;
+        scheduleRebuild();
+      }).catch(() => {
+        if (disposed) return;
+        decoded = Boolean(image.naturalWidth);
+        scheduleRebuild();
+      });
+    };
     image.onerror = () => { ready = false; draw(); };
     // Sampling text and compiling WebGL must not compete with the page loader.
     // Prepare only when this chapter is approaching the viewport.
@@ -285,7 +357,7 @@ export function animateChallengeMorph(
       observer.disconnect();
       proximity.disconnect();
       ScrollTrigger.removeEventListener("refresh", scheduleRebuild);
-      cancelAnimationFrame(resizeFrame);
+      pending.delete(icon);
       image.onload = null;
       image.onerror = null;
       gpuCanvas.removeEventListener("webglcontextlost", onContextLost);
@@ -294,8 +366,17 @@ export function animateChallengeMorph(
       gpuCanvas.remove();
       icon.style.opacity = originalIconStyle;
       word.style.opacity = originalWordStyle;
+      if (thumbnail) {
+        if (originalThumbnailStyle === null) thumbnail.removeAttribute("style");
+        else if (originalThumbnailStyle !== undefined) thumbnail.setAttribute("style", originalThumbnailStyle);
+      }
       grains = [];
     });
   });
-  return () => cleanups.forEach((cleanup) => cleanup());
+  return () => {
+    stopped = true;
+    cancelAnimationFrame(prepareFrame);
+    pending.clear();
+    cleanups.forEach((cleanup) => cleanup());
+  };
 }

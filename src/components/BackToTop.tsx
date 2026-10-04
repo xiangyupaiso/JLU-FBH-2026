@@ -1,17 +1,12 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
+import { gsap } from "gsap";
 import backToTopImage from "../assets/wiki/back-to-top.png";
-import { clamp } from "../utils";
-import { GlassSheen } from "./GlassSheen";
-
-const MAGNET_PADDING = 80;
-const MAGNET_STRENGTH = 5;
-const MAX_MAGNET_OFFSET = 12;
 
 export function BackToTop() {
   const { pathname } = useLocation();
   const [isVisible, setIsVisible] = useState(false);
-  const buttonRef = useRef<HTMLButtonElement>(null);
+  const [isLaunching, setIsLaunching] = useState(false);
 
   // Every reader route (Wet Lab / Project / Dry Lab / Engagement) scrolls the
   // document through its full article via the unified document timeline, so a
@@ -45,92 +40,59 @@ export function BackToTop() {
   }, [pathname]);
 
   useEffect(() => {
-    const button = buttonRef.current;
-    if (!button || !isVisible) return;
+    if (!isLaunching) return;
 
-    const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)");
-    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-    let frame = 0;
-    let pointerX = 0;
-    let pointerY = 0;
-
-    const resetMagnet = () => {
-      button.classList.remove("is-magnetic");
-      button.style.setProperty("--magnet-x", "0px");
-      button.style.setProperty("--magnet-y", "0px");
-    };
-
-    const paintMagnet = () => {
-      frame = 0;
-      if (!finePointer.matches || reducedMotion.matches) {
-        resetMagnet();
-        return;
-      }
-
-      const bounds = button.getBoundingClientRect();
-      const centerX = bounds.left + bounds.width / 2;
-      const centerY = bounds.top + bounds.height / 2;
-      const withinX =
-        Math.abs(pointerX - centerX) < bounds.width / 2 + MAGNET_PADDING;
-      const withinY =
-        Math.abs(pointerY - centerY) < bounds.height / 2 + MAGNET_PADDING;
-
-      if (!withinX || !withinY) {
-        resetMagnet();
-        return;
-      }
-
-      const offsetX = clamp(
-        (pointerX - centerX) / MAGNET_STRENGTH,
-        -MAX_MAGNET_OFFSET,
-        MAX_MAGNET_OFFSET,
-      );
-      const offsetY = clamp(
-        (pointerY - centerY) / MAGNET_STRENGTH,
-        -MAX_MAGNET_OFFSET,
-        MAX_MAGNET_OFFSET,
-      );
-
-      button.classList.add("is-magnetic");
-      button.style.setProperty("--magnet-x", `${offsetX.toFixed(2)}px`);
-      button.style.setProperty("--magnet-y", `${offsetY.toFixed(2)}px`);
-    };
-
-    const trackPointer = (event: PointerEvent) => {
-      pointerX = event.clientX;
-      pointerY = event.clientY;
-      if (!frame) frame = window.requestAnimationFrame(paintMagnet);
-    };
-
-    window.addEventListener("pointermove", trackPointer, { passive: true });
+    const position = { y: window.scrollY };
+    const tween = gsap.to(position, {
+      y: 0,
+      duration: 0.72,
+      ease: "power2.inOut",
+      onUpdate: () => {
+        window.scrollTo({ top: position.y, behavior: "instant" });
+      },
+    });
 
     return () => {
-      if (frame) window.cancelAnimationFrame(frame);
-      window.removeEventListener("pointermove", trackPointer);
-      resetMagnet();
+      tween.kill();
     };
-  }, [isVisible]);
+  }, [isLaunching, pathname]);
 
   const returnToTop = () => {
+    if (isLaunching) return;
+
     const reducedMotion = window.matchMedia(
       "(prefers-reduced-motion: reduce)",
     ).matches;
-    window.scrollTo({ top: 0, behavior: reducedMotion ? "auto" : "smooth" });
+    if (reducedMotion) {
+      window.scrollTo({ top: 0, behavior: "instant" });
+    } else {
+      setIsLaunching(true);
+    }
   };
 
   return (
     <button
-      ref={buttonRef}
-      className={`circure-back-to-top${isVisible ? " is-visible" : ""}`}
+      className={`circure-back-to-top${isVisible || isLaunching ? " is-visible" : ""}${isLaunching ? " is-launching" : ""}`}
       type="button"
       onClick={returnToTop}
+      disabled={isLaunching}
       aria-label="Return to top"
-      aria-hidden={!isVisible}
-      tabIndex={isVisible ? 0 : -1}
+      aria-hidden={!isVisible && !isLaunching}
+      tabIndex={isVisible && !isLaunching ? 0 : -1}
       title="Return to top"
     >
-      <img src={backToTopImage} alt="" draggable={false} />
-      <GlassSheen src={backToTopImage} />
+      <span
+        className="circure-back-to-top__artwork"
+        aria-hidden="true"
+        onAnimationEnd={(event) => {
+          if (event.target === event.currentTarget) {
+            window.scrollTo({ top: 0, behavior: "instant" });
+            setIsLaunching(false);
+          }
+        }}
+      >
+        <img src={backToTopImage} alt="" draggable={false} />
+      </span>
     </button>
   );
 }

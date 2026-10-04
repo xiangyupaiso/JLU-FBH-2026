@@ -1,4 +1,6 @@
 import { stringToSlug } from "../utils";
+import { Link } from "react-router-dom";
+import { homeDestinations } from "../data/homeDestinations";
 
 export function Footer({ variant }: { variant?: "route" }) {
   const teamYear = import.meta.env.VITE_TEAM_YEAR;
@@ -13,41 +15,29 @@ export function Footer({ variant }: { variant?: "route" }) {
     >
       <div className="container">
         <div className="row mb-4">
-          <div className="col-lg-6 col-xs-12">
-            <h4 className="mb-3">Heading</h4>
+          <div className="col-lg-7 col-xs-12">
+            <h4 className="mb-3">CirCure</h4>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ac
-              ante mollis quam tristique convallis
+              {teamName} · iGEM {teamYear}
             </p>
+            <p>One Platform. More Possibilities.</p>
           </div>
-          <div className="col-lg-3 col-xs-12">
-            <h4 className="mt-lg-0 mt-sm-3">Links</h4>
-            <ul className="m-2 p-2">
-              <li>
-                <a href="#">Lorem ipsum</a>
-              </li>
-              <li>
-                <a href="#">Nam mauris velit</a>
-              </li>
-              <li>
-                <a href="#">Etiam vitae mauris</a>
-              </li>
-              <li>
-                <a href="#">Fusce scelerisque</a>
-              </li>
-              <li>
-                <a href="#">Sed faucibus</a>
-              </li>
-              <li>
-                <a href="#">Mauris efficitur nulla</a>
-              </li>
-            </ul>
-          </div>
-          <div className="col-lg-3 col-xs-12">
-            <h4 className="mt-lg-0 mt-sm-4 mb-3">Contact</h4>
-            <p>22, Lorem ipsum dolor, consectetur adipiscing</p>
-            <p className="mb-0">(541) 754-3010</p>
-            <p>info@hsdf.com</p>
+          <div className="col-lg-5 col-xs-12">
+            <h4 className="mt-lg-0 mt-sm-3">Explore</h4>
+            <nav aria-label="Footer chapters">
+              <ul className="list-unstyled row g-2 mt-3">
+                {homeDestinations.map(({ key, label, path }) => (
+                  <li className="col-6" key={key}>
+                    <Link
+                      to={path}
+                      className="d-inline-flex align-items-center py-2"
+                    >
+                      {label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
           </div>
         </div>
         <hr />

@@ -1,3 +1,4 @@
+import { useEffect, useRef, type ReactNode } from "react";
 import { PaintedReveal } from "./PaintedReveal";
 import ring from "../../assets/home/story/scene-1-layer-4.webp";
 import "../../styles/home-finale.css";
@@ -5,7 +6,21 @@ import "../../styles/home-finale.css";
 // The painted ring fills its wrapper; the wrapper owns size and motion.
 const RING_BOX = { left: 0, top: 0, width: "100%", height: "100%" };
 
-export function HomeFinale() {
+export function HomeFinale({ art }: { art: ReactNode }) {
+  const exploreRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const explore = exploreRef.current;
+    if (!explore) return;
+    // Reserve the lower mobile rows for navigation, including without motion.
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        explore.dataset.exploreInView = String(entry.isIntersecting);
+      },
+      { threshold: 0.25 },
+    );
+    observer.observe(explore);
+    return () => observer.disconnect();
+  }, []);
   return (
     <section
       // CROSS-FILE: #home-finale is read by Navbar.tsx and
@@ -50,6 +65,16 @@ export function HomeFinale() {
           <span>One Platform.</span>{" "}
           <strong data-finale="possibilities">More Possibilities.</strong>
         </p>
+      </div>
+      <div
+        className="story-finale-explore"
+        data-finale="explore"
+        ref={exploreRef}
+      >
+        <h2 className="story-sr-only" id="home-explore-title">
+          Continue exploring CirCure
+        </h2>
+        {art}
       </div>
     </section>
   );

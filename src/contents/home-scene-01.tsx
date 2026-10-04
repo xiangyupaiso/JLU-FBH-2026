@@ -9,7 +9,8 @@ import hairLossLabelUrl from "../assets/home/scene-01-new/hair-loss-label.webp";
 import hairLossUrl from "../assets/home/scene-01-new/hair-loss.webp";
 import surgeryLabelUrl from "../assets/home/scene-01-new/surgery-label.webp";
 import surgeryUrl from "../assets/home/scene-01-new/surgery.webp";
-import womanFrameUrl from "../assets/home/scene-01-new/woman-frame.webp";
+import womanFrameUrl from "../assets/home/scene-01-new/woman-frame-focus.webp";
+import womanPortraitUrl from "../assets/home/scene-01-new/woman-portrait.svg";
 import { HomeIntro } from "../components/home/HomeIntro";
 import { useHomeScene01Animation } from "../hooks/useHomeScene01Animation";
 import { HomeStory } from "./home-story";
@@ -69,37 +70,64 @@ export function Home() {
           <div className="home-scene01-canvas" data-surface="navy">
             <div className="scene01-darkness" aria-hidden="true" />
             <div className="scene01-stage">
-              {sceneItems.map(({ key, visual, description }) => (
+              {sceneItems.map(({ key, visual, label, description }) => (
                 <figure
                   className={`scene01-orbit scene01-orbit--${key}`}
                   key={key}
                 >
-                  <img src={visual} alt="" decoding="async" />
-                  <figcaption className="scene01-sr-only">
-                    {description}
-                  </figcaption>
-                </figure>
-              ))}
-              <div className="scene01-portrait">
-                <img
-                  className="scene01-frame"
-                  src={womanFrameUrl}
-                  alt="A woman in profile at the center of the surrounding burdens"
-                  fetchPriority="high"
-                />
-              </div>
-              <div className="scene01-labels">
-                {sceneItems.map(({ key, label }) => (
+                  <img
+                    className="scene01-visual"
+                    src={visual}
+                    alt=""
+                    decoding="async"
+                  />
                   <img
                     className={`scene01-label scene01-label--${key}`}
                     src={label}
                     alt=""
                     aria-hidden="true"
                     decoding="async"
-                    key={`${key}-label`}
                   />
-                ))}
+                  <figcaption className="scene01-sr-only">
+                    {description}
+                  </figcaption>
+                </figure>
+              ))}
+              <div className="scene01-frame-layer" aria-hidden="true">
+                <img src={womanFrameUrl} alt="" />
               </div>
+              <div className="scene01-portrait">
+                <div className="scene01-person">
+                  <img
+                    className="scene01-person-image"
+                    src={womanPortraitUrl}
+                    alt="A woman in profile at the center of the surrounding burdens"
+                    fetchPriority="high"
+                  />
+                </div>
+              </div>
+            </div>
+            <div className="scene01-head-darkness" aria-hidden="true" />
+            <div className="story-prologue scene01-prologue">
+              <p>
+                <span className="story-prologue-line">
+                  Behind every diagnosis,
+                </span>{" "}
+                <em className="story-prologue-line">there is a person.</em>
+              </p>
+              <button
+                type="button"
+                onClick={() =>
+                  rootRef.current
+                    ?.querySelector("#what-we-saw")
+                    ?.scrollIntoView({
+                      block: "start",
+                      behavior: "instant",
+                    })
+                }
+              >
+                It began with a question <span aria-hidden="true">↓</span>
+              </button>
             </div>
             <p className="scene01-scroll-cue" aria-hidden="true">
               <i />

@@ -1503,30 +1503,20 @@ html.has-route-reader-scroll {
 }
 
 /* 11. Global header on a skinned route ------------------------------------ */
-/* Only the fixed bar and its nav pills change colour per module; the pills
-   take the module's 辅色 so the header reads as part of the page. */
+/* The bar, dropdown and search inherit one module palette. */
 .site-header.is-route-page {
   --header-surface: var(--route-main);
   --header-ink: var(--route-ink);
+  --header-pill: var(--route-soft);
+  --header-pill-hover: color-mix(in srgb, var(--route-soft) 78%, var(--route-main));
+  --header-pill-active: color-mix(in srgb, var(--route-soft) 62%, var(--route-main));
+  --nav-surface-line: var(--route-line);
+  --nav-surface-shadow: color-mix(in srgb, var(--route-ink) 16%, transparent);
 }
 
 .site-header.is-route-page::before {
-  border-bottom-color: color-mix(in srgb, var(--route-ink) 8%, transparent);
+  border-bottom-color: transparent;
   background-color: var(--route-main);
-}
-
-.site-header.is-route-page .nav-link {
-  background: var(--route-soft);
-  color: var(--route-ink);
-}
-
-.site-header.is-route-page .nav-link:hover {
-  background: color-mix(in srgb, var(--route-soft) 78%, var(--route-main));
-}
-
-.site-header.is-route-page .nav-link[aria-expanded="true"],
-.site-header.is-route-page .nav-link[aria-current="page"] {
-  background: color-mix(in srgb, var(--route-soft) 62%, var(--route-main));
 }
 
 .site-header.is-route-page .wordmark-folio {
