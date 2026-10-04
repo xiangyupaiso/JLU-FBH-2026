@@ -1,25 +1,35 @@
 import {
   useEffect,
-  useId,
   useRef,
   type CSSProperties,
   type ReactNode,
 } from "react";
 import { PaintedReveal } from "../components/home/PaintedReveal";
 import { CircRnaArtwork } from "../components/home/CircRnaArtwork";
-import manifest from "../assets/home/story/manifest.json";
+import { HomeRnaSequence } from "../components/home/HomeRnaSequence";
+import { WardInfusionTube } from "../components/home/WardInfusionTube";
+import originalManifest from "../assets/home/story/manifest.json";
+import supplements from "../assets/home/supplements/manifest.json";
+import patientConcerned from "../assets/home/ward-transition/patient-teary-20261004.webp";
 const clinicianConcerned = "https://static.igem.wiki/teams/6056/wiki/files/pages/home/clinician-concerned.avif";
 const clinicianEllipsis = "https://static.igem.wiki/teams/6056/wiki/files/pages/home/clinician-ellipsis.avif";
 const patientQuestion = "https://static.igem.wiki/teams/6056/wiki/files/pages/home/patient-question.avif";
-const patientConcerned = "https://static.igem.wiki/teams/6056/wiki/files/pages/home/patient-concerned.avif";
 import { useHomeStoryAnimation } from "../hooks/useHomeStoryAnimation";
 import { HomeAntigenSwitch } from "../components/home/HomeAntigenSwitch";
 import { HomeFinale } from "../components/home/HomeFinale";
 import { HomeExploreLinks } from "../components/home/HomeExploreLinks";
 const mapDataNoteUrl = "https://static.igem.wiki/teams/6056/wiki/files/pages/home/map-data-note.avif";
+import mapLatestUrl from "../assets/home/story/map-latest-20261004.webp";
+import mapCloudNorthwestUrl from "../assets/home/story/map-cloud-northwest.webp";
 import "../styles/home-story.css";
 import "../styles/home-tnbc-map.css";
 import "../styles/home-reading.css";
+import "../styles/home-supplements.css";
+import "../styles/home-clinical-transition.css";
+import "../styles/home-composition.css";
+import "../styles/home-clinical-mobile.css";
+
+const manifest = { ...originalManifest, ...supplements };
 
 const imageUrls: Record<string, string> = {
   "../assets/home/story/scene-1-layer-1.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-1-layer-1.webp",
@@ -64,6 +74,18 @@ const imageUrls: Record<string, string> = {
   "../assets/home/story/scene-9-layer-2.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-9-layer-2.webp",
   "../assets/home/story/scene-9-layer-3.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-9-layer-3.webp",
 };
+const supplementUrls = import.meta.glob("../assets/home/supplements/*.webp", {
+  eager: true,
+  query: "?url",
+  import: "default",
+}) as Record<string, string>;
+
+function artworkUrl(file: string) {
+  return (
+    imageUrls[`../assets/home/story/${file}`] ??
+    supplementUrls[`../assets/home/supplements/${file}`]
+  );
+}
 
 type ArtworkId = keyof typeof manifest;
 
@@ -71,22 +93,26 @@ function StoryArtwork({
   scene,
   description,
   omitLayers = [],
+  backgroundLayer = 1,
   role = "img",
   children,
 }: {
   scene: ArtworkId;
   description: string;
   omitLayers?: number[];
+  backgroundLayer?: number;
   role?: "img" | "group";
   children?: ReactNode;
 }) {
   const artwork = manifest[scene];
-  const background = artwork.layers[0];
+  const background = artwork.layers.find(
+    (layer) => layer.number === backgroundLayer,
+  )!;
   return (
     <>
       <img
         className="story-backdrop"
-        src={imageUrls[`../assets/home/story/${background.file}`]}
+        src={artworkUrl(background.file)}
         alt=""
         aria-hidden="true"
         decoding="async"
@@ -97,9 +123,13 @@ function StoryArtwork({
         aria-label={description}
         style={{ "--art-aspect": artwork.aspect } as CSSProperties}
       >
-        {artwork.layers.map((layer, index) => {
-          if (index === 0 || omitLayers.includes(layer.number)) return null;
-          const src = imageUrls[`../assets/home/story/${layer.file}`];
+        {artwork.layers.map((layer) => {
+          if (
+            layer.number === backgroundLayer ||
+            omitLayers.includes(layer.number)
+          )
+            return null;
+          const src = artworkUrl(layer.file);
           const style = {
             left: `${layer.left}%`,
             top: `${layer.top}%`,
@@ -108,7 +138,7 @@ function StoryArtwork({
           };
           // Scene 1's ring is drawn by CircRnaArtwork, not here.
           const kind =
-            scene === "4" && layer.number === 6
+            (scene === "4" || scene === "thinking") && layer.number === 6
               ? "arrow"
               : scene === "2" && layer.number === 2
                 ? "platform"
@@ -153,6 +183,7 @@ function WardArtwork() {
         aria-hidden="true"
         decoding="async"
       />
+      <WardInfusionTube />
       <figure
         className="story-art story-art--ward"
         role="img"
@@ -233,79 +264,17 @@ function WardArtwork() {
   );
 }
 
+// Keep the original receiving cloud at its established viewport coordinates.
+// The latest map has complete land shapes and needs no painted repair layers.
 const mapMotionPieces = [
-  { name: "cloud-west", kind: "cloud", x: 0, y: 30, width: 8, height: 9 },
-  { name: "cloud-northwest", kind: "cloud", x: 10, y: 10, width: 9, height: 8 },
-  { name: "cloud-north", kind: "cloud", x: 57, y: 6, width: 8, height: 7 },
-  { name: "cloud-east", kind: "cloud", x: 93, y: 25, width: 7, height: 9 },
-  { name: "boat-smoke", kind: "cloud", x: 47, y: 66, width: 5, height: 4 },
-  { name: "wave-west-1", kind: "wave", x: 0, y: 64, width: 8, height: 4 },
-  { name: "wave-west-2", kind: "wave", x: 0, y: 69, width: 8, height: 4 },
-  { name: "wave-southwest-1", kind: "wave", x: 12, y: 78, width: 8, height: 4 },
-  { name: "wave-southwest-2", kind: "wave", x: 12, y: 82, width: 8, height: 5 },
   {
-    name: "wave-central-west-1",
-    kind: "wave",
-    x: 32,
-    y: 59,
-    width: 7,
-    height: 4,
+    name: "cloud-northwest",
+    kind: "cloud",
+    x: 12.78125,
+    y: 10,
+    width: 8.26875,
+    height: 8,
   },
-  {
-    name: "wave-central-west-2",
-    kind: "wave",
-    x: 39,
-    y: 64,
-    width: 9,
-    height: 4,
-  },
-  {
-    name: "wave-central-west-3",
-    kind: "wave",
-    x: 32,
-    y: 83,
-    width: 7,
-    height: 5,
-  },
-  { name: "wave-central", kind: "wave", x: 50, y: 52, width: 8, height: 5 },
-  {
-    name: "wave-central-east-1",
-    kind: "wave",
-    x: 63,
-    y: 40,
-    width: 9,
-    height: 5,
-  },
-  {
-    name: "wave-central-east-2",
-    kind: "wave",
-    x: 61,
-    y: 44,
-    width: 12,
-    height: 5,
-  },
-  {
-    name: "wave-central-east-3",
-    kind: "wave",
-    x: 60,
-    y: 64,
-    width: 12,
-    height: 5,
-  },
-  {
-    name: "wave-central-east-4",
-    kind: "wave",
-    x: 65,
-    y: 68,
-    width: 5,
-    height: 4,
-  },
-  { name: "wave-east-1", kind: "wave", x: 86, y: 39, width: 8, height: 4 },
-  { name: "wave-east-2", kind: "wave", x: 87, y: 43, width: 6, height: 4 },
-  { name: "wave-east-3", kind: "wave", x: 72, y: 74, width: 5, height: 4 },
-  { name: "wave-east-4", kind: "wave", x: 91, y: 81, width: 9, height: 5 },
-  { name: "wave-boat", kind: "wave", x: 43, y: 79.5, width: 9.5, height: 2.5 },
-  { name: "boat", kind: "boat", x: 42, y: 70, width: 13.2, height: 9 },
 ] as const;
 
 const mapStatistics = [
@@ -340,8 +309,7 @@ const mapStatistics = [
 ] as const;
 
 function MapArtwork() {
-  const landscapeMaskId = useId();
-  const mapLayer = manifest["3"].layers[1];
+  const mapLayer = { left: 0, top: 0, width: 100, height: 100 };
   const markerLayer = manifest["3"].layers[2];
   const markerSrc = imageUrls[`../assets/home/story/${markerLayer.file}`];
   // Independent windows preserve the artist's six original location marks.
@@ -353,7 +321,7 @@ function MapArtwork() {
     { x: 90, y: 57, width: 10, height: 17 },
     { x: 49, y: 86, width: 11, height: 14 },
   ];
-  const src = imageUrls[`../assets/home/story/${mapLayer.file}`];
+  const src = mapLatestUrl;
   return (
     <>
       <div className="tnbc-map-illustration">
@@ -361,7 +329,7 @@ function MapArtwork() {
           scene="3"
           omitLayers={[2, 3]}
           role="group"
-          description="An illustrative world map: six location marks appear one by one, showing that breast cancer affects people across the world. Locations are symbolic, not incidence data."
+          description="An illustrative world map, including Taiwan off the southeastern coast of China's mainland: six location marks appear one by one, showing that breast cancer affects people across the world. Locations are symbolic, not incidence data."
         >
           <svg
             className="story-layer story-map-landscape"
@@ -376,34 +344,11 @@ function MapArtwork() {
               height: `${mapLayer.height}%`,
             }}
           >
-            <defs>
-              <mask
-                id={landscapeMaskId}
-                maskUnits="userSpaceOnUse"
-                x="0"
-                y="0"
-                width="100"
-                height="100"
-              >
-                <rect width="100" height="100" fill="white" />
-                {mapMotionPieces.map((part) => (
-                  <rect
-                    key={part.name}
-                    x={part.x}
-                    y={part.y}
-                    width={part.width}
-                    height={part.height}
-                    fill="black"
-                  />
-                ))}
-              </mask>
-            </defs>
             <image
               href={src}
               width="100"
               height="100"
               preserveAspectRatio="none"
-              mask={`url(#${landscapeMaskId})`}
             />
           </svg>
           {mapMotionPieces.map((part, index) => (
@@ -413,25 +358,19 @@ function MapArtwork() {
               data-map-piece={part.name}
               style={
                 {
-                  left:
-                    part.name === "wave-central"
-                      ? "34%"
-                      : `${mapLayer.left + (mapLayer.width * part.x) / 100}%`,
-                  top:
-                    part.name === "wave-central"
-                      ? "92%"
-                      : `${mapLayer.top + (mapLayer.height * part.y) / 100}%`,
+                  left: `${mapLayer.left + (mapLayer.width * part.x) / 100}%`,
+                  top: `${mapLayer.top + (mapLayer.height * part.y) / 100}%`,
                   width: `${(mapLayer.width * part.width) / 100}%`,
                   height: `${(mapLayer.height * part.height) / 100}%`,
                   "--piece-index": index,
                 } as CSSProperties
               }
-              viewBox={`${part.x} ${part.y} ${part.width} ${part.height}`}
+              viewBox="0 0 100 100"
               preserveAspectRatio="none"
               aria-hidden="true"
             >
               <image
-                href={src}
+                href={mapCloudNorthwestUrl}
                 width="100"
                 height="100"
                 preserveAspectRatio="none"
@@ -566,7 +505,7 @@ function ChallengeArtwork() {
     <StoryArtwork
       scene="8"
       omitLayers={[5, 6]}
-      description="Surgery and chemotherapy transform into written treatment names; three limitations become drug resistance, severe side effects and recurrence risk."
+      description="Surgery, chemotherapy, drug resistance, severe side effects and recurrence risk, each paired with a small version of its original illustration."
     >
       <div
         className="story-challenge-heading story-challenge-heading--care"
@@ -615,6 +554,25 @@ function ChallengeArtwork() {
               clipPath={`url(#challenge-${item.key})`}
             />
           </svg>
+          <svg
+            className="story-morph-thumbnail"
+            data-morph-thumbnail={item.key}
+            viewBox={`${item.x} ${item.y} ${item.width} ${item.height}`}
+            preserveAspectRatio="none"
+            style={{
+              aspectRatio:
+                (iconLayer.width * item.width * manifest["8"].aspect) /
+                (iconLayer.height * item.height),
+            }}
+            aria-hidden="true"
+          >
+            <image
+              href={src}
+              width="100"
+              height="100"
+              preserveAspectRatio="none"
+            />
+          </svg>
           <span
             className="story-morph-word"
             data-morph-word={item.key}
@@ -629,7 +587,7 @@ function ChallengeArtwork() {
 }
 
 function VaccineArtwork() {
-  const boardSrc = imageUrls["../assets/home/story/scene-4-layer-2.webp"];
+  const boardSrc = artworkUrl("thinking-2.webp");
   const boardFrame = (side: "question" | "answer") => (
     <svg
       className="story-vaccine-mobile-frame"
@@ -647,7 +605,7 @@ function VaccineArtwork() {
   );
   return (
     <StoryArtwork
-      scene="4"
+      scene="thinking"
       role="group"
       description="From a question about tumor recognition to cancer vaccines and antigen presentation."
     >
@@ -656,7 +614,7 @@ function VaccineArtwork() {
         <div data-vaccine-copy="question">
           <h3>
             If conventional therapies lack sufficient targets, could the
-            patient’s own <span>immune system</span> recognize the tumor?
+            patient’s <span>immune system</span> recognize the tumor?
           </h3>
         </div>
       </article>
@@ -664,8 +622,8 @@ function VaccineArtwork() {
         {boardFrame("answer")}
         <div data-vaccine-copy="answer">
           <h3>
-            This led us to <span>cancer vaccines</span>: presenting tumor
-            antigens to train the immune system to recognize and attack tumors.
+            <span>Cancer vaccines</span> present tumor antigens to train the
+            immune system to recognize and attack tumors.
           </h3>
         </div>
       </article>
@@ -674,30 +632,77 @@ function VaccineArtwork() {
 }
 
 const platformNotes = [
-  ["structure", "Circular structure", "Multiple antigen sites"],
-  ["mechanism", "Vaccine mechanism", "Activates antitumor immunity"],
-  ["design", "Simple design", "Swap the antigen sequence"],
-  ["beyond", "Beyond TNBC", "Adaptable to other solid tumors"],
+  ["mechanism", "Immune recognition", "Present antigens to the immune system"],
+  ["design", "Antigen switching", "Replace the sequence, keep the backbone"],
+  ["structure", "Multiple targets", "Design for tumor heterogeneity"],
+  ["beyond", "Beyond TNBC", "A platform to explore other solid tumors"],
 ] as const;
 
 function PlatformArtwork() {
   return (
     <div className="story-platform-layout">
       <StoryArtwork
-        scene="2"
-        description="A central circRNA ring connects to four modular functions: multiple antigen sites, antitumor immunity, sequence replacement and other solid tumors."
-      />
-      {platformNotes.map(([key, title, detail]) => (
-        <span
-          className={`story-platform-note story-platform-note--${key}`}
-          data-platform-note={key}
-          key={key}
-        >
-          <strong>{title}</strong>
-          <small>{detail}</small>
-        </span>
-      ))}
+        scene="fan"
+        role="group"
+        description="Project advantages: immune recognition, antigen switching, multiple targets and a vision beyond TNBC. Conceptual platform design."
+      >
+        <div className="story-platform-notes">
+          {platformNotes.map(([key, title, detail]) => (
+            <span
+              className={`story-platform-note story-platform-note--${key}`}
+              data-platform-note={key}
+              key={key}
+            >
+              <strong>{title}</strong>
+              <small>{detail}</small>
+            </span>
+          ))}
+        </div>
+      </StoryArtwork>
     </div>
+  );
+}
+
+function TearArtwork() {
+  return (
+    <>
+      <StoryArtwork
+        scene="tear"
+        backgroundLayer={2}
+        omitLayers={[1]}
+        description="A hand-painted tear holds the patient's question: What if it comes back?"
+      />
+      <div
+        className="story-tear-copy story-tear-copy--before"
+        data-tear-copy="before"
+      >
+        <p className="story-tear-context">
+          During clinical training, we met patients living with triple-negative
+          breast cancer. After surgery and chemotherapy, one hope remained.
+        </p>
+        <div className="story-tear-dialogue">
+          <blockquote className="story-tear-wish">
+            “I just hope it never comes back.”
+          </blockquote>
+          <blockquote id="the-question" className="story-tear-question">
+            “What if it comes back?”
+          </blockquote>
+        </div>
+      </div>
+      <div
+        className="story-tear-copy story-tear-copy--after"
+        data-tear-copy="after"
+      >
+        <p>
+          Treatment had ended. <br />
+          The uncertainty had not.
+        </p>
+        <p className="story-tear-ending">
+          Her question <br />
+          stayed with us.
+        </p>
+      </div>
+    </>
   );
 }
 
@@ -757,7 +762,7 @@ function Chapter({
   id: string;
   title: ReactNode;
   children?: ReactNode;
-  art: ReactNode;
+  art?: ReactNode;
   className?: string;
   copyInArtwork?: boolean;
 }) {
@@ -772,11 +777,13 @@ function Chapter({
           {title}
         </h2>
       )}
-      <div className="story-scene-track">
-        <div className="story-chapter-inner">
-          <div className="story-visual">{art}</div>
+      {art && (
+        <div className="story-scene-track">
+          <div className="story-chapter-inner">
+            <div className="story-visual">{art}</div>
+          </div>
         </div>
-      </div>
+      )}
       {!copyInArtwork && (
         <div className="story-copy">
           <h2 id={`${id}-title`}>{title}</h2>
@@ -791,6 +798,7 @@ export function HomeStory() {
   const root = useRef<HTMLDivElement>(null);
   useHomeStoryAnimation(root);
   useEffect(() => {
+    const story = root.current;
     // Load hidden layers before their scene arrives, without loading every scene at once.
     const observer = new IntersectionObserver(
       (entries) => {
@@ -819,70 +827,54 @@ export function HomeStory() {
       });
     });
     if (mapStage) motionObserver.observe(mapStage);
+    // Keep the floating artwork button clear of the four platform captions.
+    const platformStage = root.current?.querySelector(
+      "#our-platform .story-chapter-inner",
+    );
+    const platformObserver = new IntersectionObserver(([entry]) => {
+      if (story) story.dataset.platformInView = String(entry.isIntersecting);
+    });
+    if (platformStage) platformObserver.observe(platformStage);
     return () => {
       observer.disconnect();
       motionObserver.disconnect();
+      platformObserver.disconnect();
+      if (story) delete story.dataset.platformInView;
     };
   }, []);
 
   return (
     <div className="home-story" ref={root}>
-      <div className="story-prologue">
-        <p>
-          <span className="story-prologue-line">Behind every diagnosis,</span>{" "}
-          <em className="story-prologue-line">there is a person.</em>
-        </p>
-        <button
-          type="button"
-          onClick={() =>
-            root.current?.querySelector("#what-we-saw")?.scrollIntoView({
-              block: "start",
-              behavior: "instant",
-            })
-          }
-        >
-          It began with a question <span aria-hidden="true">↓</span>
-        </button>
-      </div>
-
       <Chapter
         id="what-we-saw"
         className="story-chapter--clinic story-chapter--ward"
         title={
           <>
-            <span className="story-ward-title-line">She hoped the hardest part</span>
-            {" "}
+            <span className="story-ward-title-line">
+              She hoped the hardest part
+            </span>{" "}
             <em className="story-ward-title-ending">was over.</em>
           </>
         }
         art={<WardArtwork />}
-      >
-        <p className="story-ward-context">
-          During clinical training, we met patients living with triple-negative
-          breast cancer. After surgery and chemotherapy, one hope remained.
-        </p>
-        <div className="story-ward-dialogue">
-          <blockquote className="story-ward-wish">“I just hope it never comes back.”</blockquote>
-          <p id="the-question" className="story-ward-question">
-            “What if it comes back?”
-          </p>
-        </div>
-        <span className="story-ward-thread" aria-hidden="true" />
-        <p className="story-ward-aftermath">
-          <span>Treatment had ended.</span>{" "}
-          <span>The uncertainty had not.</span>{" "}
-          <span>Her question stayed with us.</span>
-        </p>
-      </Chapter>
+        copyInArtwork
+      />
+
+      <Chapter
+        id="what-stayed-with-us"
+        className="story-chapter--tear"
+        title="What if it comes back? That question stayed with us."
+        art={<TearArtwork />}
+        copyInArtwork
+      />
 
       <Chapter
         id="why-tnbc"
         className="story-chapter--map"
         title={
           <>
-            <em className="story-emphasis-why">Why</em> triple-negative
-            {" "}
-            breast cancer?
+            <em className="story-emphasis-why">Why</em> triple-negative breast
+            cancer?
           </>
         }
         art={<MapArtwork />}
@@ -910,8 +902,12 @@ export function HomeStory() {
           breast cancer treatments target.
         </p>
         <p className="story-emphasis">
-          Fewer familiar targets.
-          {" "}A high risk of recurrence and spread.
+          Fewer familiar targets. A high risk of recurrence and spread.
+        </p>
+        <p className="tnbc-patient-callback" data-tnbc-callback>
+          We kept returning to her question:{" "}
+          <span className="story-emphasis">“What if it comes back?”</span>{" "}
+          It is why we began looking for more options.
         </p>
         <a
           className="story-source"
@@ -923,87 +919,41 @@ export function HomeStory() {
         </a>
       </Chapter>
 
-      <Chapter
-        id="clinical-challenge"
-        className="story-chapter--challenge"
-        title={
-          <>
-            Treatment matters.
-            {" "}
-            <em>So does what comes next.</em>
-          </>
-        }
-        art={<ChallengeArtwork />}
-      >
-        <p>
-          Surgery and chemotherapy remain important parts of treatment. Yet
-          patients may still face:
-        </p>
-        <ul className="story-challenges">
-          <li>Drug resistance</li>
-          <li>Severe side effects</li>
-          <li>Recurrence</li>
-        </ul>
-        <p className="story-small">
-          Treatment can also include radiotherapy, immunotherapy and selected
-          targeted medicines, depending on the cancer.
-        </p>
-        <a
-          className="story-source"
-          href="https://www.cancer.gov/types/breast/treatment/triple-negative-breast-cancer"
-          target="_blank"
-          rel="noreferrer"
-        >
-          TNBC treatment · NCI ↗
-        </a>
-      </Chapter>
+      <div className="story-clinical-sequence">
+        <div className="story-clinical-stage">
+          <Chapter
+            id="clinical-challenge"
+            className="story-chapter--challenge"
+            title={
+              <>
+                Treatment matters. <em>So does what comes next.</em>
+              </>
+            }
+            art={<ChallengeArtwork />}
+            copyInArtwork
+          />
 
-      <Chapter
-        id="a-new-direction"
-        className="story-chapter--vaccine"
-        title="From a question to cancer vaccines"
-        copyInArtwork
-        art={<VaccineArtwork />}
+          <Chapter
+            id="a-new-direction"
+            className="story-chapter--vaccine"
+            title="From a question to cancer vaccines"
+            copyInArtwork
+            art={<VaccineArtwork />}
+          />
+        </div>
+      </div>
+
+      <HomeRnaSequence
+        rna={<CircRnaArtwork />}
+        platform={<PlatformArtwork />}
       />
-
-      <Chapter
-        id="why-circrna"
-        className="story-chapter--rna"
-        title="Why circRNA?"
-        copyInArtwork
-        art={<CircRnaArtwork />}
-      />
-
-      <Chapter
-        id="our-platform"
-        className="story-chapter--platform"
-        title={
-          <>
-            One backbone.
-            {" "}
-            <em>Room for more targets.</em>
-          </>
-        }
-        art={<PlatformArtwork />}
-      >
-        <p>
-          Tumors are not defined by a single target. We want to address that
-          diversity with a modular circRNA cancer vaccine platform.
-        </p>
-        <p>
-          Keep the vaccine framework. Replace the antigen sequence. Explore a
-          different tumor target.
-        </p>
-      </Chapter>
 
       <Chapter
         id="plug-and-play"
         className="story-chapter--switch"
         title={
           <>
-            Like changing
-            {" "}
-            <em>a key.</em>
+            Like changing <em>a key.</em>
           </>
         }
         art={<HomeAntigenSwitch />}
@@ -1024,9 +974,7 @@ export function HomeStory() {
         className="story-chapter--beyond"
         title={
           <>
-            Starting with TNBC.
-            {" "}
-            <em>Looking further.</em>
+            Starting with TNBC. <em>Looking further.</em>
           </>
         }
         art={<BeyondArtwork />}
@@ -1047,14 +995,9 @@ export function HomeStory() {
         className="story-chapter--hope"
         title={
           <>
-            “If it comes back,
-            {" "}
-            can we give her
-            {" "}
-            <em>more options?</em>”
+            “If it comes back, can we give her <em>more options?</em>”
           </>
         }
-        art={<HopeArtwork />}
       >
         <p>
           Clinical training showed us the uncertainty patients face. Research
@@ -1069,7 +1012,7 @@ export function HomeStory() {
           </span>
         </p>
       </Chapter>
-      <HomeFinale />
+      <HomeFinale art={<HopeArtwork />} />
     </div>
   );
 }

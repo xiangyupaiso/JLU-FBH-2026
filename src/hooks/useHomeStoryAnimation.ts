@@ -3,23 +3,24 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SplitText } from "gsap/SplitText";
-import { HOME_EASE, HOME_REST_RATIO, HOME_SCRUB } from "./homeMotion";
-import { animateCircRna } from "./animateCircRna";
-import { animateArtworkWords, animateHomePrologue, animateHomeReading } from "./animateHomeReading";
+import { HOME_EASE, HOME_SCRUB } from "./homeMotion";
+import { animateCircRnaSequence } from "./animateCircRnaSequence";
+import { animateHomeReading } from "./animateHomeReading";
 import { animateChallengeMorph } from "./animateChallengeMorph";
+import { animateTear } from "./animateHomeSupplements";
+import { animateWardTear } from "./animateWardTear";
+import { animateTearCloud } from "./animateTearCloud";
+import { animateFinaleExplore } from "./animateFinaleExplore";
+import { animateClinicalSequence } from "./animateClinicalSequence";
+import { animateQuestionWhy } from "./animateQuestionWhy";
+import { updateWardInfusionTube } from "./wardInfusionGeometry";
+import "../styles/home-question-transition.css";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger, SplitText);
 
 const ART_REVEAL_DURATION = 0.28;
 const ARTWORK_START = 0.06;
-// CROSS-FILE: .story-hope-light span size in home-story.css.
-const HOPE_LIGHT_SIZE = 800;
-// The heart sits ~63% down scene-9-layer-3; the glow starts ~2.2× that
-// layer's width (about 320px on desktop).
-const HOPE_HEART_Y = 0.63;
-const HOPE_GLOW_SCALE = 2.2;
-// The "If it comes back…" title warms slightly once it is under the light.
-const HOPE_LIT_INK = "#603846";
+const ART_REST_RATIO = 0.2;
 
 declare global {
   interface Window {
@@ -120,13 +121,20 @@ function choreographArt(
   };
 
   switch (section.id) {
+    case "what-stayed-with-us":
+      animateTear(section, timeline, compact, splits, cleanups);
+      break;
     case "what-we-saw": {
       const ward = (name: string) =>
         section.querySelector<HTMLElement>(`[data-ward="${name}"]`);
+      const tube = (name: string) =>
+        section.querySelector<SVGSVGElement>(`[data-ward-tube="${name}"]`);
+      timeline.eventCallback("onUpdate", () => updateWardInfusionTube(section));
       camera({ scale: 1.02 }, { scale: 1.005 });
+      // The clinician faces right, so she approaches from the left.
       timeline.fromTo(
         ward("original-3"),
-        { x: 36 * distance },
+        { x: -36 * distance },
         { x: 0, duration: 0.34, ease: HOME_EASE },
         0.04,
       );
@@ -146,6 +154,8 @@ function choreographArt(
           Number(at),
         );
       });
+      timeline.to(tube("original-2"), { opacity: 0, duration: 0.18, ease: HOME_EASE }, 0.42);
+      timeline.fromTo(tube("patient"), { opacity: 0 }, { opacity: 1, duration: 0.2, ease: HOME_EASE }, 0.42);
       timeline.fromTo(
         ward("question"),
         { opacity: 0, scale: 0.94, y: 8 * distance },
@@ -174,8 +184,8 @@ function choreographArt(
             opacity: 1,
             scale: 1,
             y: 0,
-            duration: 0.11,
-            ease: "back.out(1.35)",
+            duration: 0.15,
+            ease: "sine.out",
           },
           0.06 + index * 0.075,
         );
@@ -192,7 +202,7 @@ function choreographArt(
             rotate: 0,
             duration: 0.18,
             stagger: 0.07,
-            ease: "back.out(1.3)",
+            ease: "sine.out",
           },
           0.16,
         );
@@ -226,21 +236,21 @@ function choreographArt(
               duration: 0.28,
               ease: HOME_EASE,
             },
-            0.62,
+            0.76,
           );
         });
         timeline.to(
           section.querySelectorAll(".tnbc-map-note-val"),
           { scale: 1.1, duration: 0.24, ease: HOME_EASE },
-          0.65,
+          0.79,
         );
       }
       timeline.to(
         illustration,
         { opacity: 0.14, duration: 0.26, ease: HOME_EASE },
-        0.62,
+        0.76,
       );
-      timeline.to(mapCopy, { autoAlpha: 1, duration: 0.12 }, 0.65);
+      timeline.to(mapCopy, { autoAlpha: 1, duration: 0.12 }, 0.79);
       section
         .querySelectorAll<HTMLElement>("[data-map-copy]")
         .forEach((element, index) => {
@@ -248,7 +258,7 @@ function choreographArt(
             element,
             { opacity: 0, y: 16 * distance },
             { opacity: 1, y: 0, duration: 0.2, ease: HOME_EASE },
-            0.65 + index * 0.055,
+            0.79 + index * 0.055,
           );
         });
       break;
@@ -276,95 +286,34 @@ function choreographArt(
       break;
     }
     case "a-new-direction": {
-      camera({ scale: 1.03, xPercent: -0.3 }, { scale: 1.012, xPercent: 0.2 });
-      move(
-        2,
-        { y: 8, scale: 0.99, opacity: 0.78 },
-        { y: 0, scale: 1, opacity: 1 },
-        0,
-        0.35,
-        HOME_EASE,
+      // The shared clinical stage owns the board and the doctor. Keep the
+      // explanation intact while the surrounding illustrations settle in.
+      arrive(4, 0.08, { x: -8, opacity: 0 }, 0.3);
+      arrive(9, 0.04, { opacity: 0 }, 0.2);
+      arrive(10, 0.52, { opacity: 0 }, 0.2);
+      const question = section.querySelector<HTMLElement>(
+        '[data-vaccine-copy="question"] h3',
+      )!;
+      const answer = section.querySelector<HTMLElement>(
+        '[data-vaccine-copy="answer"] h3',
+      )!;
+      timeline.fromTo(
+        question,
+        { autoAlpha: 0 },
+        { autoAlpha: 1, duration: 0.26, ease: HOME_EASE },
+        0.04,
       );
-      move(
-        5,
-        { y: 14, scale: 0.99, opacity: 0.84 },
-        { y: 0, scale: 1, opacity: 1 },
-        0,
-        0.5,
-        HOME_EASE,
-      );
-      arrive(4, 0.08, { x: -14, opacity: 0.5 }, 0.3);
-      const question = section.querySelector<HTMLElement>('[data-vaccine-copy="question"] h3')!;
-      const answer = section.querySelector<HTMLElement>('[data-vaccine-copy="answer"] h3')!;
-      animateArtworkWords(question, timeline, "explain", compact, splits, 0.04, 0.26);
       arrive(8, 0.18, { y: 8, scale: 0.88, opacity: 0 }, 0.2);
+      arrive(6, 0.34, { opacity: 0 }, 0.12);
       paint("arrow", 0.36, 0.24);
-      arrive(3, 0.52, { x: 12, scale: 0.98, opacity: 0.18 }, 0.26);
+      arrive(3, 0.52, { x: 8, scale: 0.98, opacity: 0 }, 0.26);
       arrive(7, 0.56, { y: 8, scale: 0.86, opacity: 0 }, 0.18);
-      animateArtworkWords(answer, timeline, "assemble", compact, splits, 0.6, 0.3);
-      break;
-    }
-    case "why-circrna":
-      animateCircRna(section, timeline);
-      break;
-    case "our-platform": {
-      camera({ scale: 1.016 }, { scale: 1.005 });
-      gsap.set(section.querySelectorAll("[data-platform-note]"), { autoAlpha: 0 });
-      move(
-        2,
-        { opacity: 1, scale: 0.98 },
-        { opacity: 1, scale: 1 },
-        0,
-        0.9,
-        HOME_EASE,
+      timeline.fromTo(
+        answer,
+        { autoAlpha: 0 },
+        { autoAlpha: 1, duration: 0.3, ease: HOME_EASE },
+        0.6,
       );
-      const complete = section.querySelector(".story-paint-complete");
-      const core = section.querySelector(".story-paint-core");
-      const rays = [...section.querySelectorAll(".story-paint-ray")];
-      const platformImage = section.querySelector(
-        ".story-painted--platform image",
-      );
-      if (complete && core && platformImage && rays.length === 4) {
-        gsap.set(complete, { opacity: 0 });
-        gsap.set(core, { opacity: 0 });
-        gsap.set(rays, {
-          attr: { "stroke-dasharray": "1 1", "stroke-dashoffset": 1 },
-        });
-        timeline.to(
-          core,
-          { opacity: 1, duration: 0.18, ease: HOME_EASE },
-          0.06,
-        );
-        rays.forEach((ray) => {
-          timeline.to(
-            ray,
-            {
-              attr: { "stroke-dashoffset": 0 },
-              duration: 0.25,
-              ease: HOME_EASE,
-            },
-            0.28,
-          );
-        });
-        [4, 5, 6, 3].forEach((number, index) => {
-          arrive(
-            number,
-            0.51 + index * 0.055,
-            { opacity: 0, scale: 0.96 },
-            0.2,
-          );
-        });
-        ["structure", "mechanism", "beyond", "design"].forEach((key, index) => {
-          const note = section.querySelector<HTMLElement>(`[data-platform-note="${key}"]`)!;
-          timeline.to(note, { autoAlpha: 1, duration: 0.08 }, 0.69 + index * 0.055);
-          animateArtworkWords(note, timeline, "assemble", compact, splits, 0.69 + index * 0.055, 0.2);
-        });
-        timeline.to(
-          complete,
-          { opacity: 1, duration: 0.12, ease: "sine.inOut" },
-          0.88,
-        );
-      }
       break;
     }
     case "plug-and-play":
@@ -389,35 +338,6 @@ function choreographArt(
         HOME_EASE,
       );
       break;
-    case "what-we-hope":
-      camera({ scale: 1.025, yPercent: -0.15 }, { scale: 1.006, yPercent: 0 });
-      move(
-        2,
-        { y: 26, scale: 0.985, opacity: 0.6 },
-        { y: 0, scale: 1, opacity: 1 },
-        0.04,
-        0.72,
-        HOME_EASE,
-      );
-      move(
-        3,
-        { y: -12, scale: 0.985, opacity: 0.55 },
-        { y: 0, scale: 1, opacity: 1 },
-        0.22,
-        0.58,
-        HOME_EASE,
-      );
-      section
-        .querySelectorAll<HTMLElement>("[data-hope-card]")
-        .forEach((card, index) => {
-          timeline.fromTo(
-            card,
-            { opacity: 0, y: 12 * distance },
-            { opacity: 1, y: 0, duration: 0.23, ease: HOME_EASE },
-            0.52 + (index % 3) * 0.075,
-          );
-        });
-      break;
   }
 
   // Normalize the choreography; the parent reserves the completed-frame hold.
@@ -427,174 +347,167 @@ function choreographArt(
 export function useHomeStoryAnimation(root: RefObject<HTMLDivElement | null>) {
   useGSAP(
     () => {
-      gsap.set(root.current, { "--home-scroll-scale": 1 + HOME_REST_RATIO });
+      gsap.set(root.current, { "--home-scroll-scale": 1 + ART_REST_RATIO });
       let media = gsap.matchMedia();
+      let carryResizeProgress: number | undefined;
+      const mediaEvents = gsap as typeof gsap & {
+        addEventListener: (event: "matchMediaInit", callback: () => void) => void;
+        removeEventListener: (event: "matchMediaInit", callback: () => void) => void;
+      };
       const buildTimelines = (compact: boolean) => {
         const timelines = new Map<string, gsap.core.Timeline>();
         const splits: ReturnType<typeof SplitText.create>[] = [];
         const cleanups: (() => void)[] = [];
         let debugMotion: Window["__homeMotion"];
         root.current?.classList.add("has-story-motion");
-        const prologue = root.current?.querySelector<HTMLElement>(".story-prologue");
-        if (prologue) {
-          const opening = animateHomePrologue(prologue, compact, splits);
-          timelines.set("prologue", opening);
-        }
+        const clinicalSequence = root.current?.querySelector<HTMLElement>(
+          ".story-clinical-sequence",
+        );
+        clinicalSequence?.classList.add("has-clinical-transition");
         root.current
           ?.querySelectorAll<HTMLElement>(".story-chapter")
           .forEach((section) => {
+            if (section.closest(".story-rna-sequence")) {
+              const sequence = section.closest<HTMLElement>(".story-rna-sequence")!;
+              if (section.id === "why-circrna") {
+                timelines.set("circrna-platform", animateCircRnaSequence(sequence, compact, splits, cleanups));
+                cleanups.push(() => {
+                  sequence.querySelectorAll(".is-current").forEach((scene) => scene.classList.remove("is-current"));
+                });
+              } else if (section.id === "our-platform") {
+                const copy = sequence.querySelector<HTMLElement>(".story-rna-sequence-copy")!;
+                timelines.set(`${section.id}-reading`, animateHomeReading(copy, section, compact, splits, cleanups));
+              }
+              return;
+            }
+            if (section.closest(".has-clinical-transition")) return;
             const stage = section.querySelector<HTMLElement>(
               ".story-chapter-inner",
             );
             const track =
               section.querySelector<HTMLElement>(".story-scene-track");
             const visual = section.querySelector<HTMLElement>(".story-visual");
-            if (!stage || !track || !visual) return;
-            const stackedVaccine = compact && section.id === "a-new-direction";
-            const timeline = gsap.timeline({
-              defaults: { ease: "none" },
-              scrollTrigger: {
-                trigger: track,
-                start: () =>
-                  stackedVaccine
-                    ? "top 80%"
-                    : `top top+=${Number.parseFloat(getComputedStyle(stage).top) || 0}`,
-                end: () =>
-                  stackedVaccine
-                    ? "bottom bottom"
-                    : `bottom top+=${stage.offsetHeight + (Number.parseFloat(getComputedStyle(stage).top) || 0)}`,
-                scrub: compact ? 0.42 : HOME_SCRUB,
-                invalidateOnRefresh: true,
-                // CROSS-FILE: home-antigen-switch.css reads .is-current.
-                onToggle: ({ isActive }) =>
-                  section.classList.toggle("is-current", isActive),
-              },
-            });
-            // Keep the illustration visible on entry; the layer choreography
-            // begins while its contrast is still settling.
-            timeline.fromTo(
-              visual,
-              { opacity: 0.86 },
-              {
-                opacity: 1,
-                duration: ART_REVEAL_DURATION,
-                ease: "sine.inOut",
-              },
-              0,
-            );
-            const artworkTimeline = gsap.timeline({
-              defaults: { ease: "none" },
-            });
-            choreographArt(section, artworkTimeline, compact, splits, cleanups);
-            timeline.add(artworkTimeline, ARTWORK_START);
+            if (stage && track && visual) {
+              const stackedVaccine =
+                compact && section.id === "a-new-direction";
+              const stackedAntigen =
+                compact && section.id === "plug-and-play" &&
+                window.matchMedia("(orientation: portrait)").matches;
+              const flowScene = stackedVaccine || stackedAntigen;
+              const timeline = gsap.timeline({
+                defaults: { ease: "none" },
+                scrollTrigger: {
+                  trigger: track,
+                  start: () =>
+                    flowScene
+                      ? "top 80%"
+                      : `top top+=${Number.parseFloat(getComputedStyle(stage).top) || 0}`,
+                  end: () =>
+                    flowScene
+                      ? "bottom bottom"
+                      : `bottom top+=${stage.offsetHeight + (Number.parseFloat(getComputedStyle(stage).top) || 0)}`,
+                  scrub: compact ? 0.42 : HOME_SCRUB,
+                  invalidateOnRefresh: true,
+                  // CROSS-FILE: home-antigen-switch.css reads .is-current.
+                  onToggle: ({ isActive }) =>
+                    section.classList.toggle("is-current", isActive),
+                },
+              });
+              // Keep the illustration visible on entry; the layer choreography
+              // begins while its contrast is still settling.
+              timeline.fromTo(
+                visual,
+                { opacity: 0.86 },
+                {
+                  opacity: 1,
+                  duration: ART_REVEAL_DURATION,
+                  ease: "sine.inOut",
+                },
+                0,
+              );
+              const artworkTimeline = gsap.timeline({
+                defaults: { ease: "none" },
+              });
+              choreographArt(
+                section,
+                artworkTimeline,
+                compact,
+                splits,
+                cleanups,
+              );
+              // The tear needs time to become a cloud before map markers and
+              // statistics begin their own sequence.
+              timeline.add(
+                artworkTimeline,
+                section.id === "why-tnbc" ? 0.42 : ARTWORK_START,
+              );
 
-            if (stackedVaccine) {
-              // This mobile composition is taller than the viewport. Let it
-              // scroll through, then hold its fully revealed ending in view.
-              ScrollTrigger.create({
-                id: `home-${section.id}-hold`,
-                trigger: stage,
-                start: "bottom bottom",
-                end: () => `+=${Math.round(window.innerHeight * 0.45)}`,
-                pin: true,
-              });
-            } else {
-              timeline.to({}, {
-                duration: timeline.duration() * HOME_REST_RATIO,
-              });
+              if (stackedVaccine) {
+                // This mobile composition is taller than the viewport. Let it
+                // scroll through, then hold its fully revealed ending in view.
+                ScrollTrigger.create({
+                  id: `home-${section.id}-hold`,
+                  trigger: stage,
+                  start: "bottom bottom",
+                  end: () => `+=${Math.round(window.innerHeight * 0.45)}`,
+                  pin: true,
+                });
+              } else if (!stackedAntigen) {
+                timeline.to(
+                  {},
+                  {
+                    duration: timeline.duration() * ART_REST_RATIO,
+                  },
+                );
+              }
+              timelines.set(section.id, timeline);
             }
-            timelines.set(section.id, timeline);
 
             const copy = section.querySelector<HTMLElement>(".story-copy");
             if (copy) {
-              timelines.set(`${section.id}-reading`,
-                animateHomeReading(copy, section, compact, splits, cleanups));
+              timelines.set(
+                `${section.id}-reading`,
+                animateHomeReading(copy, section, compact, splits, cleanups),
+              );
             }
           });
 
-        // Hope light: the warm glow at the patient's heart (scene 9) lifts
-        // out of the artwork and settles as the overhead light of its copy.
-        // Both ends move while scrolling, so rects are read live every
-        // update, as in the finale carry below.
-        const hope = root.current?.querySelector<HTMLElement>("#what-we-hope");
-        const hopeArt = timelines.get("what-we-hope")?.scrollTrigger;
-        const hopeReading = ScrollTrigger.getById("home-what-we-hope-reading");
-        const hopeFigure = hope?.querySelector<HTMLElement>(".story-art--9");
-        const heart = hopeFigure?.querySelector<HTMLElement>('[data-layer="3"]');
-        const hopeCopy = hope?.querySelector<HTMLElement>(".story-copy");
-        const hopeTitle = hopeCopy?.querySelector<HTMLElement>("h2");
-        if (hope && hopeArt && hopeReading && hopeFigure && heart && hopeCopy && hopeTitle) {
-          const frame = document.createElement("div");
-          frame.className = "story-hope-light";
-          frame.setAttribute("aria-hidden", "true");
-          const light = document.createElement("span");
-          frame.append(light);
-          hope.append(frame);
-          cleanups.push(() => {
-            frame.remove();
-            gsap.set([hopeFigure, hopeTitle], { clearProps: "opacity,color" });
-          });
-          const clamp = gsap.utils.clamp(0, 1);
-          const glide = gsap.parseEase("sine.inOut");
-          const bloom = gsap.parseEase("sine.out");
-          const ink = gsap.utils.interpolate(
-            getComputedStyle(hopeTitle).color,
-            HOPE_LIT_INK,
+        if (root.current && clinicalSequence) {
+          const challenge = clinicalSequence.querySelector<HTMLElement>(
+            "#clinical-challenge",
+          )!;
+          const vaccine = clinicalSequence.querySelector<HTMLElement>(
+            "#a-new-direction",
+          )!;
+          const challengeArt = gsap.timeline();
+          const vaccineArt = gsap.timeline();
+          choreographArt(challenge, challengeArt, compact, splits, cleanups);
+          choreographArt(vaccine, vaccineArt, compact, splits, cleanups);
+          const clinical = animateClinicalSequence(
+            root.current,
+            challengeArt,
+            vaccineArt,
+            compact,
           );
-          const placeLight = (self: ScrollTrigger) => {
-            // 0 → 1 from lift-off to the copy's reading pin; afterwards the
-            // light stays on the copy's top edge and scrolls away with it.
-            const t = clamp(
-              (self.scroll() - self.start) / (hopeReading.start - self.start || 1),
-            );
-            const frameTop = frame.getBoundingClientRect().top;
-            const copy = hopeCopy.getBoundingClientRect();
-            const shown =
-              self.progress > 0 && self.progress < 1 && t > 0 && copy.bottom > frameTop;
-            frame.style.visibility = shown ? "visible" : "hidden";
-            frame.classList.toggle("is-lit", shown && t >= 1);
-            gsap.set(hopeFigure, { opacity: 1 - 0.5 * clamp(t / 0.6) });
-            gsap.set(hopeTitle, { color: ink(clamp((t - 0.55) / 0.45)) });
-            if (!shown) return;
-            const p = glide(t);
-            const from = heart.getBoundingClientRect();
-            const glow = from.width * HOPE_GLOW_SCALE;
-            const width = gsap.utils.interpolate(glow, copy.width * 1.5, p);
-            const height = gsap.utils.interpolate(
-              glow,
-              Math.min(copy.height, window.innerHeight) * 1.1,
-              p,
-            );
-            const x = gsap.utils.interpolate(
-              from.left + from.width / 2,
-              copy.left + copy.width / 2,
-              p,
-            );
-            // Aim for the top of the viewport until the copy's own top edge
-            // rises past it, so the light only ever travels upwards.
-            const y = gsap.utils.interpolate(
-              from.top + from.height * HOPE_HEART_Y,
-              Math.min(frameTop, copy.top),
-              p,
-            );
-            gsap.set(light, {
-              x: x - HOPE_LIGHT_SIZE / 2,
-              y: y - frameTop - HOPE_LIGHT_SIZE / 2,
-              scaleX: width / HOPE_LIGHT_SIZE,
-              scaleY: height / HOPE_LIGHT_SIZE,
-              opacity: bloom(clamp(t / 0.3)),
-            });
-          };
-          ScrollTrigger.create({
-            id: "home-hope-light",
-            trigger: hope,
-            // Lift off while the art is still held, then follow the copy
-            // until it has scrolled out after its reading pin.
-            start: () => hopeArt.end - window.innerHeight * 0.18,
-            end: () => hopeReading.end + window.innerHeight,
-            onUpdate: placeLight,
-            onRefresh: placeLight,
-          });
+          timelines.set("clinical-sequence", clinical.timeline);
+          cleanups.push(clinical.cleanup);
+        }
+
+        const wardTimeline = timelines.get("what-we-saw");
+        const tearTimeline = timelines.get("what-stayed-with-us");
+        const mapTimeline = timelines.get("why-tnbc");
+        if (root.current && wardTimeline && tearTimeline) {
+          cleanups.push(
+            animateWardTear(root.current, wardTimeline, tearTimeline, compact),
+          );
+        }
+        if (root.current && tearTimeline && mapTimeline) {
+          cleanups.push(animateTearCloud(root.current, tearTimeline, mapTimeline, compact));
+        }
+        const thinkingTimeline = timelines.get("clinical-sequence");
+        const rnaTimeline = timelines.get("circrna-platform") ?? timelines.get("why-circrna");
+        if (root.current && thinkingTimeline && rnaTimeline) {
+          cleanups.push(animateQuestionWhy(root.current, thinkingTimeline, rnaTimeline, compact));
         }
 
         // CROSS-FILE: id owned by HomeFinale.tsx; Navbar.tsx reads it too.
@@ -651,14 +564,29 @@ export function useHomeStoryAnimation(root: RefObject<HTMLDivElement | null>) {
           }
           if (name) {
             evolve
-              .fromTo(name, { "--merge": 0 }, { "--merge": 1, duration: 0.06 }, 0.2)
-              .to(name, { "--merge": 0.25, duration: 0.14, ease: "sine.out" }, 0.26);
+              .fromTo(
+                name,
+                { "--merge": 0 },
+                { "--merge": 1, duration: 0.06 },
+                0.2,
+              )
+              .to(
+                name,
+                { "--merge": 0.25, duration: 0.14, ease: "sine.out" },
+                0.26,
+              );
           }
           if (title) {
             evolve.fromTo(
               title,
               { autoAlpha: 0, y: compact ? 10 : 18, filter: "blur(6px)" },
-              { autoAlpha: 1, y: 0, filter: "blur(0px)", duration: 0.16, ease: HOME_EASE },
+              {
+                autoAlpha: 1,
+                y: 0,
+                filter: "blur(0px)",
+                duration: 0.16,
+                ease: HOME_EASE,
+              },
               0.3,
             );
           }
@@ -680,24 +608,37 @@ export function useHomeStoryAnimation(root: RefObject<HTMLDivElement | null>) {
           }
           if (ring && stroke && complete) {
             gsap.set(stroke, {
-              attr: { "stroke-dasharray": "1 1", "stroke-dashoffset": 1 },
+              attr: { "stroke-dasharray": "1 1", "stroke-dashoffset": -1 },
             });
             gsap.set(complete, { opacity: 0 });
             evolve.fromTo(
               ring,
-              { rotation: -24, scale: 0.9, opacity: 0.1 },
-              { rotation: 12, scale: 1, opacity: compact ? 0.16 : 0.2, duration: 0.66 },
+              { scale: 0.9, opacity: 0.1 },
+              {
+                scale: 1,
+                opacity: compact ? 0.16 : 0.2,
+                duration: 0.66,
+              },
               0.3,
             );
             evolve.to(
               stroke,
-              { attr: { "stroke-dashoffset": 0 }, duration: 0.46, ease: HOME_EASE },
+              {
+                attr: { "stroke-dashoffset": 0 },
+                duration: 0.46,
+                ease: HOME_EASE,
+              },
               0.3,
             );
             evolve.to(complete, { opacity: 1, duration: 0.08 }, 0.72);
           }
           if (glow) {
-            evolve.fromTo(glow, { opacity: 0.35 }, { opacity: 0.9, duration: 0.5 }, 0.3);
+            evolve.fromTo(
+              glow,
+              { opacity: 0.35 },
+              { opacity: 0.9, duration: 0.5 },
+              0.3,
+            );
           }
           if (possibilities) {
             evolve.fromTo(
@@ -707,21 +648,24 @@ export function useHomeStoryAnimation(root: RefObject<HTMLDivElement | null>) {
               0.74,
             );
           }
-          // Hold the finished frame for the last stretch of the pin.
-          evolve.to({}, { duration: 0.08 }, 0.92);
+          // Let the closing words rest before the circle opens into patient care.
+          evolve.to({}, { duration: 0.24 }, 0.96);
+          cleanups.push(animateFinaleExplore(finale, evolve, compact));
 
           const finaleTrigger = ScrollTrigger.create({
             id: "home-finale-reading",
             trigger: finale,
             start: () => {
-              const headerHeight = Number.parseFloat(
-                getComputedStyle(finale).getPropertyValue("--header-height"),
-              ) || 0;
+              const headerHeight =
+                Number.parseFloat(
+                  getComputedStyle(finale).getPropertyValue("--header-height"),
+                ) || 0;
               return finale.offsetHeight > window.innerHeight - headerHeight + 1
                 ? "bottom bottom"
                 : `top top+=${headerHeight}`;
             },
-            end: () => `+=${Math.round(window.innerHeight * (compact ? 1 : 1.3))}`,
+            end: () =>
+              `+=${Math.round(window.innerHeight * (compact ? 3 : 3.4))}`,
             pin: true,
             animation: evolve,
             scrub: compact ? 0.42 : HOME_SCRUB,
@@ -749,21 +693,37 @@ export function useHomeStoryAnimation(root: RefObject<HTMLDivElement | null>) {
               .forEach((node) => node.removeAttribute("style"));
             finale.after(ghost);
             cleanups.push(() => ghost.remove());
+            const ghostFold = ghost.querySelector<HTMLElement>(
+              '[data-finale="fold"]',
+            );
             const glide = gsap.parseEase("sine.inOut");
-            const place = ({ progress, start, end, scroll }: ScrollTrigger) => {
+            const motion = { progress: 0 };
+            const place = ({ start, end, scroll }: ScrollTrigger) => {
+              const progress = motion.progress;
+              ghost.dataset.progress = String(progress);
               const travelling = progress > 0 && progress < 1;
               carrySource.style.visibility = progress > 0 ? "hidden" : "";
               carryTarget.style.visibility = progress < 1 ? "hidden" : "";
               ghost.style.visibility = travelling ? "visible" : "hidden";
               if (!travelling) return;
+              // Rapid input can start the finale while this line is settling.
+              // Both copies must fold identically throughout that overlap.
+              if (ghostFold && fold) {
+                ghostFold.style.width = fold.style.width;
+                ghostFold.style.opacity = fold.style.opacity;
+                ghostFold.style.filter = fold.style.filter;
+                ghostFold.style.setProperty(
+                  "--feather", fold.style.getPropertyValue("--feather"),
+                );
+              }
               // Where the line sat when the carry began, and where the kicker
               // will sit once the finale pins: interpolating those (in page
               // terms) glides the clone steadily down the page as it scrolls.
               const now = scroll();
               const from = carrySource.getBoundingClientRect();
               const to = carryTarget.getBoundingClientRect();
-              const fromTop = from.top + (now - start);
-              const toTop = to.top - (end - now);
+              const fromTop = from.top + (Math.max(start, now) - start);
+              const toTop = to.top - (end - Math.min(end, now));
               const p = glide(progress);
               const scale = gsap.utils.interpolate(
                 from.width / ghost.offsetWidth,
@@ -781,15 +741,44 @@ export function useHomeStoryAnimation(root: RefObject<HTMLDivElement | null>) {
                 scale,
               });
             };
-            ScrollTrigger.create({
-              id: "home-finale-carry",
-              trigger: finale,
-              start: () => hopePin.end,
-              end: () => finaleTrigger.start,
-              onUpdate: place,
-              onRefresh: place,
+            const carry = gsap.timeline({
+              onUpdate: function (this: gsap.core.Timeline) {
+                if (this.scrollTrigger) place(this.scrollTrigger);
+              },
+              scrollTrigger: {
+                id: "home-finale-carry",
+                trigger: finale,
+                start: () => hopePin.end,
+                end: () => finaleTrigger.start,
+                scrub: compact ? 0.42 : HOME_SCRUB,
+                onRefresh: place,
+              },
             });
+            carry.fromTo(
+              motion,
+              { progress: 0 },
+              { progress: 1, duration: 1, ease: "none" },
+            );
+            // Reverse scrolling updates the adjacent scrubbed timelines in
+            // the opposite order. Sync again after the real fold is painted.
+            evolve.eventCallback("onUpdate", () => {
+              if (motion.progress > 0 && motion.progress < 1 && carry.scrollTrigger) {
+                place(carry.scrollTrigger);
+              }
+            });
+            // MatchMedia can remove this frame before the resize handler runs.
+            // Retain the last painted progress across its automatic rebuild.
+            const rememberMediaPosition = () => {
+              if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+                carryResizeProgress = undefined;
+                return;
+              }
+              const progress = Number.parseFloat(ghost.dataset.progress ?? "");
+              if (progress > 0 && progress < 1) carryResizeProgress = progress;
+            };
+            mediaEvents.addEventListener("matchMediaInit", rememberMediaPosition);
             cleanups.push(() => {
+              mediaEvents.removeEventListener("matchMediaInit", rememberMediaPosition);
               carrySource.style.visibility = "";
               carryTarget.style.visibility = "";
             });
@@ -821,54 +810,91 @@ export function useHomeStoryAnimation(root: RefObject<HTMLDivElement | null>) {
         }
 
         return () => {
-          splits.forEach((split) => split.revert());
           cleanups.forEach((cleanup) => cleanup());
+          splits.forEach((split) => split.revert());
           if (window.__homeMotion === debugMotion) {
             delete window.__homeMotion;
           }
           root.current?.classList.remove("has-story-motion");
+          clinicalSequence?.classList.remove("has-clinical-transition");
         };
       };
 
-      const registerMedia = () => media.add(
-        {
-          motion: "(prefers-reduced-motion: no-preference)",
-          compact: "(max-width: 800px)",
-          short: "(max-height: 650px)",
-        },
-        (context) => {
-          if (context.conditions?.motion) {
-            return buildTimelines(Boolean(context.conditions.compact));
-          }
-        },
-      );
+      const registerMedia = () =>
+        media.add(
+          {
+            motion: "(prefers-reduced-motion: no-preference)",
+            compact: "(max-width: 800px)",
+          },
+          (context) => {
+            if (context.conditions?.motion) {
+              return buildTimelines(Boolean(context.conditions.compact));
+            }
+          },
+        );
       registerMedia();
       // Pin eligibility must be measured again after font loading or zoom/reflow.
       let active = true;
       let resizeTimer = 0;
       let measuredWidth = window.innerWidth;
       let measuredHeight = window.innerHeight;
+      let questionResizeProgress: number | undefined;
       const rebuild = () => {
         if (!active) return;
-        const current = ScrollTrigger.getAll().find((trigger) =>
-          trigger.isActive && trigger.vars.id?.startsWith("home-") &&
-          trigger.vars.id.endsWith("-reading") && trigger.pin,
+        const current = ScrollTrigger.getAll().find(
+          (trigger) => trigger.isActive && trigger.vars.id === "home-question-why-carry",
+        ) || ScrollTrigger.getAll().find(
+          (trigger) => trigger.isActive &&
+            ["home-ward-tear-carry", "home-tear-cloud-carry", "home-clinical-sequence", "home-circrna-platform", "home-platform-antigen-carry", "home-question-why-carry", "home-finale-carry"].includes(trigger.vars.id || ""),
+        ) || ScrollTrigger.getAll().find(
+          (trigger) =>
+            trigger.isActive &&
+            trigger.vars.id?.startsWith("home-") &&
+            trigger.vars.id.endsWith("-reading") &&
+            trigger.pin,
         );
-        const position = current && { id: current.vars.id!, progress: current.progress };
+        const position = questionResizeProgress !== undefined ? {
+          id: "home-question-why-carry",
+          progress: questionResizeProgress,
+        } : carryResizeProgress !== undefined ? {
+          id: "home-finale-carry",
+          progress: carryResizeProgress,
+        } : current && {
+          id: current.vars.id!,
+          progress: current.progress,
+        };
+        questionResizeProgress = undefined;
+        carryResizeProgress = undefined;
         media.revert();
         media = gsap.matchMedia();
         registerMedia();
         ScrollTrigger.refresh();
         const next = position && ScrollTrigger.getById(position.id);
-        if (position && next?.pin) {
-          window.scrollTo({ top: next.start + (next.end - next.start) * position.progress, behavior: "instant" });
+        if (position && next) {
+          window.scrollTo({
+            top: next.start + (next.end - next.start) * position.progress,
+            behavior: "instant",
+          });
           ScrollTrigger.update();
           next.getTween()?.progress(1);
         }
       };
       const onResize = () => {
         // Ignore the small height changes caused by mobile browser chrome.
-        if (window.innerWidth === measuredWidth && Math.abs(window.innerHeight - measuredHeight) < 80) return;
+        if (
+          window.innerWidth === measuredWidth &&
+          Math.abs(window.innerHeight - measuredHeight) < 80
+        )
+          return;
+        // Save before ScrollTrigger refreshes the old geometry during debounce.
+        const progress = Number.parseFloat(root.current?.querySelector<HTMLElement>(".story-question-transition")?.dataset.progress ?? "");
+        if (questionResizeProgress === undefined && progress > 0 && progress < 1) {
+          questionResizeProgress = progress;
+        }
+        const carryProgress = Number.parseFloat(root.current?.querySelector<HTMLElement>(".story-final-carry")?.dataset.progress ?? "");
+        if (carryResizeProgress === undefined && carryProgress > 0 && carryProgress < 1) {
+          carryResizeProgress = carryProgress;
+        }
         window.clearTimeout(resizeTimer);
         resizeTimer = window.setTimeout(() => {
           measuredWidth = window.innerWidth;

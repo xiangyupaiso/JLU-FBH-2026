@@ -27,6 +27,39 @@ export function CircRnaArtwork() {
             width: layer.width + "%",
             height: layer.height + "%",
           };
+          if (layer.number === 2) {
+            return (
+              <svg
+                key={layer.number}
+                className="story-layer circrna-heading-art"
+                data-layer={2}
+                style={style}
+                viewBox="0 0 824 136"
+                aria-hidden="true"
+              >
+                {/* Preserve the original lettering while its question arrives independently. */}
+                <svg
+                  data-circrna-heading="words"
+                  width="760"
+                  height="136"
+                  viewBox="0 0 760 136"
+                  overflow="hidden"
+                >
+                  <image href={heading} width="824" height="136" />
+                </svg>
+                <svg
+                  data-circrna-heading="question"
+                  x="760"
+                  width="64"
+                  height="136"
+                  viewBox="760 0 64 136"
+                  overflow="hidden"
+                >
+                  <image href={heading} width="824" height="136" />
+                </svg>
+              </svg>
+            );
+          }
           if (layer.number === 4) {
             return (
               <PaintedReveal

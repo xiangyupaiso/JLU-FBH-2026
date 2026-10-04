@@ -6,59 +6,56 @@
 .story-hope-entry.is-previewing {
   z-index: 3;
 }
-/* DUPLICATE: base .story-hope-card/.story-hope-group layout lives in
-   home-story.css; the rules here override it. Check both files. */
+/* Base layout lives in home-story.css; keep the finale's existing geometry. */
 .story-hope-entry .story-hope-card {
-  /* Keep the original link typography despite the global button font reset. */
   font-family: var(--font-editorial) !important;
   border: 0;
-  border-radius: 16px;
+  border-radius: 6px;
   background: transparent;
   cursor: pointer;
   transition:
     color 220ms var(--ease-out),
     transform 220ms var(--ease-out),
-    text-shadow 220ms var(--ease-out),
     scale 180ms var(--ease-out);
 }
 .story-hope-entry.is-previewing .story-hope-card,
-.story-hope-entry .story-hope-card[aria-expanded="true"],
 .story-hope-entry .story-hope-card:focus-visible {
-  transform: translateY(-4px);
-  text-shadow: 0 6px 12px #69475330;
+  transform: translateY(-2px);
+}
+.story-hope-entry .story-hope-card:focus-visible {
+  outline: 2px solid #9c5871;
+  outline-offset: 4px;
 }
 .story-hope-entry .story-hope-card:active {
-  scale: 0.96;
+  scale: 0.98;
 }
 .home-explore-preview {
   position: absolute;
   top: 50%;
   left: calc(100% + 20px);
   width: clamp(240px, 21vw, 300px);
-  padding: 24px;
-  border: 1px solid rgba(255, 248, 242, 0.72);
-  border-radius: 20px;
-  background: rgba(255, 249, 245, 0.86);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  padding: 18px 20px;
+  border: 1px solid #e7d2d8;
+  border-radius: 12px;
+  background: #fff9f5;
   color: #694753;
-  box-shadow: 0 2px 6px #6947530a, 0 18px 48px #69475324;
+  box-shadow: 0 8px 24px #69475312;
   isolation: isolate;
   translate: 0 -50%;
   opacity: 0;
   visibility: hidden;
-  transform: translateY(6px) scale(0.98);
+  transform: translateY(6px);
   pointer-events: none;
   transition:
     opacity 200ms var(--ease-out),
-    transform 240ms var(--ease-out),
+    transform 220ms var(--ease-out),
     visibility 200ms;
 }
 .story-hope-group--right .home-explore-preview {
   left: auto;
   right: calc(100% + 20px);
 }
-/* The transparent bridge lets the pointer enter the hint without closing it. */
+/* The transparent bridge keeps a hovered description open across the gap. */
 .home-explore-preview::after {
   content: "";
   position: absolute;
@@ -75,146 +72,6 @@
   margin: 0;
   font: 400 15px/1.65 var(--font-sans);
 }
-.home-explore-preview::before,
-.home-explore-dialog::before {
-  content: "";
-  position: absolute;
-  z-index: -1;
-  inset: 0;
-  border-radius: inherit;
-  background: radial-gradient(ellipse at 14% 4%, #edb9cb99, transparent 70%);
-  opacity: 0.3;
-  pointer-events: none;
-}
-.story-hope-entry.is-previewing .home-explore-preview::before,
-.home-explore-dialog[open]::before {
-  animation: home-explore-breathe 3.6s ease-in-out infinite alternate;
-}
-.home-explore-dialog {
-  position: fixed;
-  inset: 0;
-  width: min(560px, calc(100vw - 40px));
-  max-width: none;
-  max-height: calc(100svh - 40px);
-  margin: auto;
-  padding: 44px;
-  overflow-y: auto;
-  overscroll-behavior: contain;
-  border: 1px solid #fff8f2;
-  border-radius: 28px;
-  background: #fff9f5;
-  color: #694753;
-  font-family: var(--font-sans);
-  isolation: isolate;
-  box-shadow: 0 4px 16px #69475312, 0 32px 96px #402b4933;
-}
-.home-explore-dialog::backdrop {
-  background: rgba(82, 48, 66, 0.2);
-  backdrop-filter: blur(10px) saturate(0.82);
-  -webkit-backdrop-filter: blur(10px) saturate(0.82);
-}
-.home-explore-dialog[open] {
-  animation: home-explore-enter 260ms var(--ease-out) both;
-}
-.home-explore-dialog[open] > :is(h2, .home-explore-summary, .home-explore-topics, .home-explore-action) {
-  animation: home-explore-content-enter 240ms var(--ease-out) both;
-}
-.home-explore-dialog[open] > .home-explore-summary { animation-delay: 60ms; }
-.home-explore-dialog[open] > .home-explore-topics { animation-delay: 120ms; }
-.home-explore-dialog[open] > .home-explore-action { animation-delay: 180ms; }
-html:has(.home-explore-dialog[open]) {
-  overflow: hidden;
-}
-.home-explore-close {
-  position: absolute;
-  top: 12px;
-  right: 12px;
-  display: grid;
-  place-items: center;
-  width: 44px;
-  height: 44px;
-  padding: 0;
-  border: 0;
-  border-radius: 50%;
-  background: transparent;
-  color: #845b6b;
-  cursor: pointer;
-  transition: background-color 180ms, scale 180ms;
-}
-.home-explore-close:hover { background: #f4e4e8; }
-.home-explore-close:active { scale: 0.96; }
-.home-explore-close svg {
-  width: 20px;
-  height: 20px;
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 1.5;
-  stroke-linecap: round;
-}
-.home-explore-dialog h2 {
-  margin: 0 0 18px;
-  padding-right: 12px;
-  color: #694753;
-  font: 400 clamp(34px, 4vw, 48px)/1.12 var(--font-editorial);
-  letter-spacing: -0.025em;
-}
-.home-explore-summary {
-  margin: 0;
-  font-size: 17px;
-  line-height: 1.7;
-}
-.home-explore-topics {
-  margin: 28px 0;
-  padding-top: 24px;
-  border-top: 1px solid #e7d2d8;
-}
-.home-explore-topics h3 {
-  margin: 0 0 14px;
-  font: 500 12px/1.5 var(--font-sans);
-  color: #9c5871;
-}
-.home-explore-topics ul {
-  display: grid;
-  gap: 10px;
-  margin: 0;
-  padding-left: 18px;
-  font-size: 15px;
-  line-height: 1.55;
-}
-.home-explore-topics li::marker { color: #b9869a; }
-.home-explore-action {
-  display: inline-flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 24px;
-  min-height: 48px;
-  padding: 12px 20px;
-  border-radius: 12px;
-  background: #87546b;
-  color: #fff9f5;
-  font-size: 14px;
-  font-weight: 500;
-  text-decoration: none;
-  transition: background-color 180ms, scale 180ms;
-}
-.home-explore-action:hover { background: #6e4057; color: #fff9f5; }
-.home-explore-action:active { scale: 0.96; }
-.home-explore-dialog :focus-visible {
-  outline: 2px solid #9c5871;
-  outline-offset: 4px;
-}
-@keyframes home-explore-breathe {
-  from { opacity: 0.25; }
-  to { opacity: 0.65; }
-}
-@keyframes home-explore-enter {
-  from { opacity: 0; transform: translateY(10px) scale(0.98); }
-  to { opacity: 1; transform: none; }
-}
-@keyframes home-explore-content-enter {
-  from { opacity: 0; transform: translateY(6px); }
-  to { opacity: 1; transform: none; }
-}
 @media (max-width: 800px) {
   .story-hope-group .home-explore-preview {
     top: auto;
@@ -222,46 +79,26 @@ html:has(.home-explore-dialog[open]) {
     left: 0;
     right: auto;
     width: min(280px, 80vw);
-    padding: 20px;
+    padding: 16px;
     translate: none;
   }
   .story-hope-group--right .home-explore-preview {
     left: auto;
     right: 0;
   }
-  .home-explore-dialog {
-    width: calc(100vw - 28px);
-    max-height: calc(100svh - 28px);
-    padding: 40px 26px 28px;
-    border-radius: 24px;
-  }
-  .home-explore-summary { font-size: 16px; }
-  .home-explore-action { width: 100%; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .home-explore-dialog[open],
-  .home-explore-dialog[open] > :is(h2, .home-explore-summary, .home-explore-topics, .home-explore-action),
-  .home-explore-dialog[open]::before,
-  .story-hope-entry.is-previewing .home-explore-preview::before {
-    animation: none;
-  }
   .home-explore-preview,
   .story-hope-entry .story-hope-card,
-  .home-explore-close,
-  .home-explore-action {
-    transition: none;
-  }
-  .story-hope-entry .story-hope-card:active,
-  .home-explore-close:active,
-  .home-explore-action:active {
-    scale: none;
-  }
-  .story-hope-entry .story-hope-card span,
-  .story-hope-entry.is-previewing .story-hope-card,
-  .story-hope-entry .story-hope-card[aria-expanded="true"],
-  .story-hope-entry .story-hope-card:focus-visible,
-  .home-explore-preview {
+  .story-hope-entry .story-hope-card span {
     transform: none;
     transition: none;
+  }
+  .story-hope-entry .story-hope-card:active {
+    scale: none;
+  }
+  .story-hope-entry.is-previewing .story-hope-card,
+  .story-hope-entry .story-hope-card:focus-visible {
+    transform: none;
   }
 }

@@ -10,7 +10,8 @@
 }
 #why-tnbc .story-art--3 {
   left: 50%;
-  top: 50%;
+  /* Leave breathing room above the sources without changing the painted scale. */
+  top: calc(50% - clamp(12px, 3.5svh, 36px));
   width: min(98%, calc((var(--scene-height) - 24px) * var(--art-aspect)));
   container-type: inline-size;
 }
