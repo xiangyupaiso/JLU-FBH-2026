@@ -1,5 +1,5 @@
 import { useState, type CSSProperties } from "react";
-import communityImage from "../../../assets/wiki/hp-community-workshop-v2.png";
+const communityImage = "https://static.igem.wiki/teams/6056/wiki/files/pages/shared/hp-community-workshop-v2.avif";
 import "../../../styles/wiki-features.css";
 
 export function EngagementSignature({

@@ -110,7 +110,6 @@ function option(s: number): EChartsOption {
     },
   });
   const g: Record<string, unknown>[] = [
-    text(492, 15.6, "Directed Interaction Scores Among the 17 Sustainable Development Goals", 22, "#000", "bold"),
     text(557, 38.6, "Rows: source goal (influencing)    |    Columns: target goal (influenced)", 13.5, "#434443"),
     text(198, 671, "Negative = trade-off", 10.5, "#821e3a", "bold"),
     text(557, 671, "Zero = no pre-registered direct edge", 10.5, "#545554"),
@@ -182,8 +181,10 @@ function option(s: number): EChartsOption {
           show: true,
           fontSize: 9.5 * s,
           fontFamily: FONT,
-          formatter: (p: unknown) =>
-            Number((p as { value: number[] }).value[2]).toFixed(2),
+          formatter: (p: unknown) => {
+            const v = Number((p as { value: number[] }).value[2]);
+            return Math.abs(v) < 1e-6 ? "" : v.toFixed(2);
+          },
         },
         itemStyle: { borderColor: "#fff", borderWidth: 1 },
       },

@@ -2,6 +2,7 @@ import { defineConfig, loadEnv, type Plugin } from "vite";
 import react from "@vitejs/plugin-react";
 import { stringToSlug } from "./src/utils/stringToSlug";
 import { resolve } from "node:path";
+import { rm } from "node:fs/promises";
 import tailwindcss from "tailwindcss";
 import autoprefixer from "autoprefixer";
 
@@ -65,13 +66,31 @@ function autoTrailingSlashPlugin(slug: string): Plugin {
   };
 }
 
+/** Keep unused iSpring backup slides in the repository, but out of the published site. */
+function excludeLocalOnlyCourseBackups(): Plugin {
+  let outDir = resolve("dist");
+  return {
+    name: "exclude-local-only-course-backups",
+    apply: "build",
+    configResolved(config) {
+      outDir = resolve(config.root, config.build.outDir);
+    },
+    async closeBundle() {
+      await rm(
+        resolve(outDir, "virtual-lab/experiment9-assets/ispring/data.local-only"),
+        { recursive: true, force: true },
+      );
+    },
+  };
+}
+
 // https://vitejs.dev/config/
 export default () => {
   const env = loadEnv("dev", process.cwd());
   const slug = stringToSlug(env.VITE_TEAM_NAME || "jlu-fbh");
   return defineConfig({
     base: `/${slug}/`,
-    plugins: [react(), nonBlockingAppCss(), autoTrailingSlashPlugin(slug)],
+    plugins: [react(), nonBlockingAppCss(), autoTrailingSlashPlugin(slug), excludeLocalOnlyCourseBackups()],
     css: {
       postcss: {
         plugins: [

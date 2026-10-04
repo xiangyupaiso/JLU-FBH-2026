@@ -1,4 +1,5 @@
-import { useMemo, useState, type DragEvent } from 'react';
+import { useEffect, useMemo, useRef, useState, type PointerEvent } from 'react';
+import { createPortal } from 'react-dom';
 import {
   ArrowLeft,
   Beaker,
@@ -260,6 +261,44 @@ function InstrumentMatchingGame({
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [matchedIds, setMatchedIds] = useState<string[]>([]);
   const [feedback, setFeedback] = useState<{ kind: 'success' | 'error'; text: string } | null>(null);
+  const gameRef = useRef<HTMLDivElement>(null);
+  const dragRef = useRef<{
+    id: string;
+    pointerId: number;
+    startX: number;
+    startY: number;
+    x: number;
+    y: number;
+    active: boolean;
+  } | null>(null);
+  const suppressClickRef = useRef(false);
+  const [dragPosition, setDragPosition] = useState({ x: 0, y: 0 });
+
+  useEffect(() => {
+    if (!draggedId) return;
+    const viewport = gameRef.current?.closest<HTMLElement>('[data-radix-scroll-area-viewport]');
+    if (!viewport) return;
+    let frame = 0;
+    let lastTime: number | null = null;
+    const scrollNearEdge = (time: number) => {
+      const elapsed = lastTime === null ? 0 : Math.min(time - lastTime, 32) / 1000;
+      lastTime = time;
+      const drag = dragRef.current;
+      if (drag?.active) {
+        const bounds = viewport.getBoundingClientRect();
+        const edge = Math.min(64, bounds.height / 4);
+        if (drag.x >= bounds.left && drag.x <= bounds.right &&
+            drag.y >= bounds.top - 24 && drag.y <= bounds.bottom + 24) {
+          const up = Math.max(0, Math.min(1, (bounds.top + edge - drag.y) / edge));
+          const down = Math.max(0, Math.min(1, (drag.y - bounds.bottom + edge) / edge));
+          viewport.scrollTop += (down - up) * 600 * elapsed;
+        }
+      }
+      frame = window.requestAnimationFrame(scrollNearEdge);
+    };
+    frame = window.requestAnimationFrame(scrollNearEdge);
+    return () => window.cancelAnimationFrame(frame);
+  }, [draggedId]);
 
   const trayItems = useMemo(() => {
     if (!instrumentTrayOrder) return instruments;
@@ -286,15 +325,58 @@ function InstrumentMatchingGame({
     setSelectedId(null);
   };
 
-  const handleDragStart = (event: DragEvent<HTMLButtonElement>, instrumentId: string) => {
-    event.dataTransfer.effectAllowed = 'move';
-    event.dataTransfer.setData('text/plain', instrumentId);
-    setDraggedId(instrumentId);
-    setSelectedId(instrumentId);
+  // Pointer capture keeps the drag alive when scrolling moves the source offscreen.
+  // Unlike native HTML drag-and-drop, this also leaves mouse-wheel scrolling available.
+  const startDrag = (event: PointerEvent<HTMLButtonElement>, id: string) => {
+    if (event.button !== 0 || !event.isPrimary) return;
+    suppressClickRef.current = false;
+    dragRef.current = {
+      id, pointerId: event.pointerId,
+      startX: event.clientX, startY: event.clientY,
+      x: event.clientX, y: event.clientY, active: false,
+    };
+    event.currentTarget.setPointerCapture(event.pointerId);
+  };
+
+  const moveDrag = (event: PointerEvent<HTMLButtonElement>) => {
+    const drag = dragRef.current;
+    if (!drag || drag.pointerId !== event.pointerId) return;
+    drag.x = event.clientX;
+    drag.y = event.clientY;
+    if (!drag.active && Math.hypot(drag.x - drag.startX, drag.y - drag.startY) < 6) return;
+    event.preventDefault();
+    drag.active = true;
+    suppressClickRef.current = true;
+    setDraggedId(drag.id);
+    setSelectedId(drag.id);
     setFeedback(null);
+    setDragPosition({ x: drag.x, y: drag.y });
+  };
+
+  const finishDrag = (event: PointerEvent<HTMLButtonElement>) => {
+    const drag = dragRef.current;
+    if (!drag || drag.pointerId !== event.pointerId) return;
+    dragRef.current = null;
+    setDraggedId(null);
+    if (event.currentTarget.hasPointerCapture(event.pointerId)) {
+      event.currentTarget.releasePointerCapture(event.pointerId);
+    }
+    if (!drag.active) return;
+    const target = document.elementFromPoint(event.clientX, event.clientY)
+      ?.closest<HTMLElement>('[data-equipment-target]');
+    if (target && gameRef.current?.contains(target)) {
+      tryMatch(target.dataset.equipmentTarget!, drag.id);
+    }
+  };
+
+  const cancelDrag = () => {
+    if (dragRef.current?.active) suppressClickRef.current = true;
+    dragRef.current = null;
+    setDraggedId(null);
   };
 
   const resetGame = () => {
+    cancelDrag();
     setDraggedId(null);
     setSelectedId(null);
     setMatchedIds([]);
@@ -302,7 +384,14 @@ function InstrumentMatchingGame({
   };
 
   return (
-    <div className="space-y-3 pr-3 pb-3 text-[10px]">
+    <div ref={gameRef} className="space-y-3 pr-3 pb-3 text-[10px] text-blue-100">
+      {draggedId && createPortal(
+        <div aria-hidden="true" className="pointer-events-none fixed z-[3000] h-16 w-16 rounded-lg border-2 border-amber-300 bg-white p-2 shadow-xl"
+          style={{ left: dragPosition.x + 12, top: dragPosition.y + 12 }}>
+          <MaterialArtwork material={instruments.find((instrument) => instrument.id === draggedId)!}
+            className="h-full w-full" artworkClassName="h-full" decorative />
+        </div>, document.body,
+      )}
       <div className="flex items-center justify-between gap-2">
         <div className="flex min-w-0 items-center gap-2">
           <button
@@ -350,15 +439,8 @@ function InstrumentMatchingGame({
             <button
               key={instrument.id}
               type="button"
+              data-equipment-target={instrument.id}
               onClick={() => tryMatch(instrument.id)}
-              onDragOver={(event) => {
-                event.preventDefault();
-                event.dataTransfer.dropEffect = 'move';
-              }}
-              onDrop={(event) => {
-                event.preventDefault();
-                tryMatch(instrument.id, event.dataTransfer.getData('text/plain'));
-              }}
               className={cn(
                 'lab-drop-slot flex min-h-12 w-full items-center gap-2 px-3 py-2 text-left transition-all',
                 isMatched
@@ -393,11 +475,19 @@ function InstrumentMatchingGame({
               <div key={instrument.id}>
                 <button
                   type="button"
-                  draggable={!isMatched}
+                  draggable={false}
                   disabled={isMatched}
-                  onDragStart={(event) => handleDragStart(event, instrument.id)}
-                  onDragEnd={() => setDraggedId(null)}
-                  onClick={() => {
+                  onPointerDown={(event) => startDrag(event, instrument.id)}
+                  onPointerMove={moveDrag}
+                  onPointerUp={finishDrag}
+                  onPointerCancel={cancelDrag}
+                  onLostPointerCapture={cancelDrag}
+                  style={{ touchAction: 'none' }}
+                  onClick={(event) => {
+                    if (suppressClickRef.current) {
+                      suppressClickRef.current = false;
+                      if (event.detail > 0) return;
+                    }
                     if (isMatched) return;
                     setSelectedId(instrument.id);
                     setFeedback(null);

@@ -11,7 +11,6 @@ import {
   SDG_EDGES,
   SDG_META,
 } from "../../../../../data/engagement/sustainability/sustainabilitySdgNetwork";
-import "../../../../../styles/sustainability-panels.css";
 
 declare global {
   interface Window {
@@ -405,15 +404,13 @@ export function SdgDimensionChord() {
       <div className="sust-chord__host" ref={hostRef}>
         {missing ? (
           <p className="sust-chord__missing">
-            Chord 可视化需要 d3（public/vendor/d3.min.js 尚未就绪）。
+            The chord diagram needs d3 (public/vendor/d3.min.js is not loaded).
           </p>
         ) : null}
       </div>
       <div className="sust-chord__tooltip" ref={tipRef} />
       <figcaption className="sust-chart-caption">
-        SDG-NEXUS 17 Chord：17 项 SDG（左弧）与 Social / Economic / Ecological
-        三维度（右弧）之间的协同（实色）与权衡（斜纹）关系，数据来自 Appendix B
-        Table B.1（99 条有向作用边）。
+        Weighted mapping of the 17 SDGs across social, economic, and environmental dimensions.
       </figcaption>
     </figure>
   );

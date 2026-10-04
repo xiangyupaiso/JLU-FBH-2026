@@ -64,7 +64,6 @@ function option(s: number): EChartsOption {
     },
   });
   const g: Record<string, unknown>[] = [
-    text(431.6, 15.6, "Pre-registered Direct-edge Boundary Matrix", 22, "#000", "center", "bold"),
     text(505.5, 34.7, "Rows = source goal    |    Columns = target goal    |    Natural UN order", 13.5, "#434443"),
     {
       type: "rect",
@@ -129,7 +128,10 @@ function option(s: number): EChartsOption {
           fontWeight: "bold",
           fontSize: 10.2 * s,
           fontFamily: FONT,
-          formatter: (p: unknown) => SYM[(p as { value: number[] }).value[2]],
+          formatter: (p: unknown) => {
+            const v = (p as { value: number[] }).value[2];
+            return v === 1 ? "" : SYM[v];
+          },
         },
         itemStyle: { borderColor: "#fff", borderWidth: 1 },
       },

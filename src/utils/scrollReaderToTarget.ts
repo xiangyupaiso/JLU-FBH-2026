@@ -59,3 +59,21 @@ export function scrollReaderToTarget(
   }
   window.scrollTo({ top: trackStart + targetScrollTop, behavior });
 }
+
+/**
+ * Jump to an element id from any control inside a reader route (feature
+ * panels, portalled rails). Resolves the page's reader frame from `from`.
+ */
+export function scrollReaderToId(
+  id: string,
+  from: Element,
+  behavior: ScrollBehavior = "instant",
+) {
+  const target = document.getElementById(id);
+  if (!target) return;
+  const inner = from
+    .closest(".wiki-page")
+    ?.querySelector<HTMLElement>(".route-frame__scroll");
+  scrollReaderToTarget(target, inner, behavior);
+  window.history.replaceState(window.history.state, "", `#${id}`);
+}

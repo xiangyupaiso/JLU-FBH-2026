@@ -201,5 +201,5 @@ export const experimentProtocolPairs: ExperimentProtocolPair[] = [
 ];
 
 export function experimentProtocolImage(page: number): string {
-  return `${import.meta.env.BASE_URL}assets/experiments/protocol/protocol-${String(page).padStart(2, "0")}.webp`;
+  return `https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/protocol/protocol-${String(page).padStart(2, "0")}.webp`;
 }

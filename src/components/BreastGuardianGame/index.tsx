@@ -13,9 +13,9 @@ export interface BreastGuardianGameProps {
 }
 
 const SPRITES = [
-  `${import.meta.env.BASE_URL}game-assets/assets/loading/loading-1.png`,
-  `${import.meta.env.BASE_URL}game-assets/assets/loading/loading-2.png`,
-  `${import.meta.env.BASE_URL}game-assets/assets/loading/loading-3.png`,
+  "https://static.igem.wiki/teams/6056/wiki/files/pages/games/breast-guardian/asset-8f186094407d9c6f.avif",
+  "https://static.igem.wiki/teams/6056/wiki/files/pages/games/breast-guardian/asset-7fa40ddbd4448803.avif",
+  "https://static.igem.wiki/teams/6056/wiki/files/pages/games/breast-guardian/asset-819d0baf4b0f6860.avif",
 ];
 
 export default function BreastGuardianGame({

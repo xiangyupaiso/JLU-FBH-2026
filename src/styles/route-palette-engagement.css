@@ -24,7 +24,7 @@
   --route-base: #fceac1; /* 底色 rgb(252, 234, 193) */
 
   /* ② 模块专属装饰素材（正文面板边缘的淡色花朵/花瓣图案） */
-  --route-frame-image: url("../assets/wiki/engagement.png");
+  --route-frame-image: url("https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/engagement.avif");
 
   /* ③ 标题与马克笔专属主题配色（深浅分明的双色层级设计） */
   --route-heading-ink: #4a2c1d;      /* 大标题 H2：深沉红咖褐，厚重深邃 */

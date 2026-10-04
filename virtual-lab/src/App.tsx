@@ -1,6 +1,6 @@
 // src/App.tsx
 import { useState, lazy, Suspense } from 'react';
-import { CatalogPage } from './pages';
+import { CatalogPage } from './pages/CatalogPage';
 
 const ExperimentPage1 = lazy(() => import('./pages/ExperimentPage1').then((m) => ({ default: m.ExperimentPage })));
 const ExperimentPage2 = lazy(() => import('./pages/ExperimentPage2').then((m) => ({ default: m.ExperimentPage })));

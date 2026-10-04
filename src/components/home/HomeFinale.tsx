@@ -1,6 +1,6 @@
 import { useEffect, useRef, type ReactNode } from "react";
 import { PaintedReveal } from "./PaintedReveal";
-import ring from "../../assets/home/story/scene-1-layer-4.webp";
+const ring = "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-1-layer-4.webp";
 import "../../styles/home-finale.css";
 
 // The painted ring fills its wrapper; the wrapper owns size and motion.

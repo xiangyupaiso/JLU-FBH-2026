@@ -43,6 +43,14 @@ interface WikiLineSidebarProps {
   protocolPairs?: ExperimentProtocolPair[];
   onOpenProtocolModal?: (pair: ExperimentProtocolPair, initialTab?: "flow" | "inventory") => void;
   onSelectSubheading?: (id: string) => void;
+  id?: string;
+  /** Jump animation for outline links (the mobile drawer uses "smooth"). */
+  scrollBehavior?: ScrollBehavior;
+  /**
+   * Drawer mode: renders a close button and is called after any outline or
+   * related link is chosen so the host can slide the drawer away.
+   */
+  onRequestClose?: () => void;
 }
 
 export function WikiLineSidebar({
@@ -56,6 +64,9 @@ export function WikiLineSidebar({
   protocolPairs,
   onOpenProtocolModal,
   onSelectSubheading,
+  id,
+  scrollBehavior = "instant",
+  onRequestClose,
 }: WikiLineSidebarProps) {
   const outlineRef = useRef<HTMLElement>(null);
   const ribbonRef = useRef<HTMLSpanElement>(null);
@@ -66,10 +77,11 @@ export function WikiLineSidebar({
   );
   const activeChildParentId = activeChildId
     ? items.find((item) =>
-        item.children?.some((child) => child.id === activeChildId),
-      )?.id
+      item.children?.some((child) => child.id === activeChildId),
+    )?.id
     : undefined;
   const expandedItemId = activeChildParentId ?? activeId;
+  const drawerMode = Boolean(onRequestClose);
 
   const protocolMap = useMemo(() => {
     if (!protocolPairs?.length) return new Map<string, ExperimentProtocolPair>();
@@ -135,9 +147,11 @@ export function WikiLineSidebar({
           ),
         ) || 78;
       const scrollContainer = scrollContainerRef?.current;
-      const readingLine = scrollContainer
+      // Mobile drawer: the article is in document flow, so read against the
+      // header instead of the (non-scrolling) frame.
+      const readingLine = scrollContainer && !drawerMode
         ? scrollContainer.getBoundingClientRect().top +
-          Math.min(112, scrollContainer.clientHeight * 0.22)
+        Math.min(112, scrollContainer.clientHeight * 0.22)
         : headerHeight + 108;
       let currentIndex = -1;
       let nextIndex = 0;
@@ -164,7 +178,7 @@ export function WikiLineSidebar({
       const contentDistance = Math.max(
         1,
         next.content.getBoundingClientRect().top -
-          current.content.getBoundingClientRect().top,
+        current.content.getBoundingClientRect().top,
       );
       const travelWindow = Math.min(
         220,
@@ -175,12 +189,12 @@ export function WikiLineSidebar({
         currentIndex === nextIndex
           ? 0
           : Math.min(
-              1,
-              Math.max(
-                0,
-                (readingLine + travelWindow - nextTop) / travelWindow,
-              ),
-            );
+            1,
+            Math.max(
+              0,
+              (readingLine + travelWindow - nextTop) / travelWindow,
+            ),
+          );
       const travel = rawTravel * rawTravel * (3 - 2 * rawTravel);
       const knotCenter =
         currentCenter + (nextCenter - currentCenter) * travel;
@@ -189,7 +203,7 @@ export function WikiLineSidebar({
         Math.max(
           0,
           (knotCenter - ribbonBounds.top) /
-            Math.max(1, ribbonBounds.height),
+          Math.max(1, ribbonBounds.height),
         ),
       );
       const nearest = travel < 0.5 ? current : next;
@@ -211,6 +225,9 @@ export function WikiLineSidebar({
 
     requestRibbonMeasureRef.current = requestMeasure;
     scrollTarget.addEventListener("scroll", requestMeasure, { passive: true });
+    if (drawerMode) {
+      window.addEventListener("scroll", requestMeasure, { passive: true });
+    }
     window.addEventListener("resize", requestMeasure, { passive: true });
     outline.addEventListener("scroll", requestMeasure, { passive: true });
     if (record) resizeObserver?.observe(record);
@@ -219,20 +236,21 @@ export function WikiLineSidebar({
     return () => {
       if (frame) cancelAnimationFrame(frame);
       scrollTarget.removeEventListener("scroll", requestMeasure);
+      window.removeEventListener("scroll", requestMeasure);
       window.removeEventListener("resize", requestMeasure);
       outline.removeEventListener("scroll", requestMeasure);
       resizeObserver?.disconnect();
       requestRibbonMeasureRef.current = () => undefined;
     };
-  }, [minimal, scrollContainerRef, targetSignature]);
+  }, [minimal, scrollContainerRef, targetSignature, drawerMode]);
 
   useEffect(() => {
     const outline = outlineRef.current;
     const targetId = ribbonTargetId || activeChildId || activeId;
     const target = targetId
       ? outline?.querySelector<HTMLElement>(
-          `[data-outline-target="${targetId}"]`,
-        )
+        `[data-outline-target="${targetId}"]`,
+      )
       : null;
     if (!outline || !target || !target.offsetParent) return;
 
@@ -266,7 +284,8 @@ export function WikiLineSidebar({
     const target = document.getElementById(id);
     if (!target) return;
 
-    scrollReaderToTarget(target, scrollContainerRef?.current, "instant");
+    scrollReaderToTarget(target, scrollContainerRef?.current, scrollBehavior);
+    onRequestClose?.();
   };
 
   const setScrollFromRibbon = (clientY: number) => {
@@ -358,115 +377,22 @@ export function WikiLineSidebar({
     totalChapters > 0
       ? Math.round((activeChapterNumber / totalChapters) * 100)
       : 0;
-  const [easterEggActive, setEasterEggActive] = useState(false);
-
-  const handleMascotClick = () => {
-    setEasterEggActive(true);
-    setTimeout(() => setEasterEggActive(false), 2400);
-  };
 
   return (
-    <aside ref={outlineRef} className="wiki-outline" aria-label={label}>
-      <header className="wiki-outline__header">
-        <div className="wiki-outline__header-main">
+    <aside ref={outlineRef} id={id} className="wiki-outline" aria-label={label}>
+      {onRequestClose ? (
+        <div className="wiki-outline__drawer-head">
+          <strong>{label}</strong>
           <button
             type="button"
-            className={`wiki-outline__mascot-btn ${
-              easterEggActive ? "is-bouncing" : ""
-            }`}
-            onClick={handleMascotClick}
-            aria-label="CirCure mascot sheep"
-            title="点击小羊触发彩蛋~"
+            className="wiki-outline__close"
+            aria-label="Close table of contents"
+            onClick={onRequestClose}
           >
-            <svg
-              className="wiki-outline__sheep-icon"
-              viewBox="0 0 36 36"
-              width="26"
-              height="26"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              aria-hidden="true"
-            >
-              {/* Fluffy sheep fleece cloud */}
-              <circle cx="13" cy="13" r="5" fill="#FFF6D6" />
-              <circle cx="18" cy="11" r="5.5" fill="#FFF6D6" />
-              <circle cx="23" cy="13" r="5" fill="#FFF6D6" />
-              <circle cx="25" cy="18" r="5" fill="#FFF6D6" />
-              <circle cx="23" cy="23" r="5" fill="#FFF6D6" />
-              <circle cx="18" cy="24" r="5.5" fill="#FFF6D6" />
-              <circle cx="13" cy="23" r="5" fill="#FFF6D6" />
-              <circle cx="11" cy="18" r="5" fill="#FFF6D6" />
-              <circle cx="18" cy="18" r="7" fill="#FFF6D6" />
-              {/* Ears */}
-              <ellipse
-                cx="8.5"
-                cy="18"
-                rx="2.5"
-                ry="1.5"
-                fill="#F9CCD4"
-                transform="rotate(-15 8.5 18)"
-              />
-              <ellipse
-                cx="27.5"
-                cy="18"
-                rx="2.5"
-                ry="1.5"
-                fill="#F9CCD4"
-                transform="rotate(15 27.5 18)"
-              />
-              {/* Horns */}
-              <path
-                d="M11 11 Q9 9 12 8"
-                stroke="#8C6239"
-                strokeWidth="1.6"
-                strokeLinecap="round"
-                fill="none"
-              />
-              <path
-                d="M25 11 Q27 9 24 8"
-                stroke="#8C6239"
-                strokeWidth="1.6"
-                strokeLinecap="round"
-                fill="none"
-              />
-              {/* Flower hat */}
-              <circle cx="22" cy="8" r="3.5" fill="#E88B97" />
-              <circle cx="22" cy="8" r="1.3" fill="#FEE08B" />
-              {/* Eyes */}
-              <ellipse cx="15" cy="18" rx="1.3" ry="1.8" fill="#3D291D" />
-              <ellipse cx="21" cy="18" rx="1.3" ry="1.8" fill="#3D291D" />
-              <circle cx="15.4" cy="17.3" r="0.5" fill="#FFFFFF" />
-              <circle cx="21.4" cy="17.3" r="0.5" fill="#FFFFFF" />
-              {/* Cheeks */}
-              <ellipse cx="12.5" cy="20.5" rx="1.8" ry="1.1" fill="#F497A8" />
-              <ellipse cx="23.5" cy="20.5" rx="1.8" ry="1.1" fill="#F497A8" />
-              {/* Mouth */}
-              <path
-                d="M17 19.8 L18 20.6 L19 19.8"
-                stroke="#7A4B29"
-                strokeWidth="1.1"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                fill="none"
-              />
-            </svg>
+            <span aria-hidden="true">×</span>
           </button>
-          <div className="wiki-outline__header-info">
-            <span className="wiki-outline__header-label">{label}</span>
-            <strong className="wiki-outline__header-counter">
-              {minimal
-                ? `${String(activeChapterNumber).padStart(2, "0")} / ${String(totalChapters).padStart(2, "0")}`
-                : `${items.length} chapters`}
-            </strong>
-          </div>
         </div>
-        {easterEggActive && (
-          <div className="wiki-outline__toast" role="status">
-            <span>咩~ 探索顺利！🌸</span>
-          </div>
-        )}
-      </header>
-
+      ) : null}
       <div className="wiki-outline__progress-pill" aria-hidden="true">
         <div
           className="wiki-outline__progress-pill-fill"
@@ -487,7 +413,7 @@ export function WikiLineSidebar({
           aria-valuenow={Math.round(
             (Math.max(0, items.findIndex((item) => item.id === activeId)) /
               Math.max(1, items.length - 1)) *
-              100,
+            100,
           )}
           onPointerDown={beginRibbonDrag}
           onPointerMove={moveRibbonDrag}
@@ -510,16 +436,14 @@ export function WikiLineSidebar({
 
           return (
             <div
-              className={`wiki-outline__group ${
-                isExpanded ? "is-expanded" : ""
-              }`}
+              className={`wiki-outline__group ${isExpanded ? "is-expanded" : ""
+                }`}
               key={item.id}
             >
               <a
                 href={`#${item.id}`}
-                className={`wiki-outline__primary ${
-                  activeId === item.id ? "is-active" : ""
-                }`}
+                className={`wiki-outline__primary ${activeId === item.id ? "is-active" : ""
+                  }`}
                 data-outline-target={item.id}
                 aria-current={activeId === item.id ? "location" : undefined}
                 aria-expanded={hasChildren ? isExpanded : undefined}
@@ -550,9 +474,8 @@ export function WikiLineSidebar({
                     const childPair = protocolMap.get(child.id);
                     return (
                       <a
-                        className={`wiki-outline__secondary ${
-                          ribbonTargetId === child.id ? "is-active" : ""
-                        }`}
+                        className={`wiki-outline__secondary ${ribbonTargetId === child.id ? "is-active" : ""
+                          }`}
                         href={`#${child.id}`}
                         data-outline-target={child.id}
                         onClick={(event) => jumpToSection(event, child.id)}
@@ -613,9 +536,9 @@ export function WikiLineSidebar({
 
       {links.length ? (
         <div className="wiki-outline__related">
-          <span className="wiki-outline__related-title">✦ 延伸阅读</span>
+          <span className="wiki-outline__related-title">✦ related links</span>
           {links.map((link) => (
-            <Link key={link.path} to={link.path}>
+            <Link key={link.path} to={link.path} onClick={onRequestClose}>
               <span>{link.label}</span>
               <span className="wiki-outline__link-arrow" aria-hidden="true">
                 ↗

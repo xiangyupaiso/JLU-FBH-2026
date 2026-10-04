@@ -1,8 +1,6 @@
 export { sustainabilityPage } from "./sustainabilityPage";
+export * from "./sdgChapterContract";
 export * from "./sustainabilityAssets";
 export * from "./sustainabilityData";
-export * from "./sustainabilityGrow";
-export * from "./sustainabilityImages";
-export * from "./sustainabilitySdg12";
-export * from "./sustainabilitySdg9";
+export * from "./sustainabilitySdg3";
 export * from "./sustainabilitySdgNetwork";

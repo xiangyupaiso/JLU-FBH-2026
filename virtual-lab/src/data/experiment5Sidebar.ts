@@ -1,9 +1,5 @@
 import type { ExperimentInfoSidebarData } from '../components/ExperimentInfoSidebar';
 
-const experiment3Image = './images/experiment3';
-const experiment5Image = './images/experiment5';
-const experiment7Image = './images/experiment7';
-const sharedPptImage = './experiment4_lab/assets/ppt';
 
 export const experiment5SidebarData = {
   experimentLabel: 'Experiment 05',
@@ -32,18 +28,18 @@ export const experiment5SidebarData = {
     },
   ],
   instruments: [
-    { id: 'pipette', name: "Micropipette", englishName: 'Micropipette', image: `${experiment3Image}/Pipette.png` },
-    { id: 'tip-box', name: "Tip Box", englishName: 'Pipette Tip Box', image: `${experiment5Image}/tip-box.png` },
-    { id: 'mini-centrifuge', name: "Benchtop Centrifuge", englishName: 'Mini Centrifuge', image: `${experiment5Image}/mini-centrifuge.png` },
-    { id: 'pcr-machine', name: "Thermal Cycler", englishName: 'PCR Thermal Cycler', image: `${experiment5Image}/pcr-machine.png` },
-    { id: 'balance', name: "Electronic Balance", englishName: 'Electronic Balance', image: `${sharedPptImage}/balance.png` },
-    { id: 'microwave', name: "Microwave", englishName: 'Microwave Oven', image: `${experiment3Image}/MicrowaveOvenClosed.png` },
-    { id: 'gel-comb', name: "Gel Comb", englishName: 'Gel Comb', image: `${sharedPptImage}/comb.png` },
-    { id: 'gel-tray', name: "Gel Casting Tray", englishName: 'Gel Tray', image: `${sharedPptImage}/gel-tray.png` },
-    { id: 'chamber', name: "Electrophoresis Tank", englishName: 'Electrophoresis Chamber', image: `${experiment3Image}/ElectrophoresisChamber.png` },
-    { id: 'power-supply', name: "Electrophoresis Power Supply", englishName: 'Electrophoresis Power Supply', image: `${experiment3Image}/ElectrophoresisPowerSupply.png` },
-    { id: 'gel-imager', name: "UV Gel Imager", englishName: 'UV Gel Imaging System', image: `${experiment3Image}/UVGelImagingSystem.png` },
-    { id: 'tweezers', name: "Forceps", englishName: 'Tweezers', image: `${sharedPptImage}/tweezers.png` },
+    { id: 'pipette', name: "Micropipette", englishName: 'Micropipette', image: `https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/pipette.avif` },
+    { id: 'tip-box', name: "Tip Box", englishName: 'Pipette Tip Box', image: `https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment5/tip-box.avif` },
+    { id: 'mini-centrifuge', name: "Benchtop Centrifuge", englishName: 'Mini Centrifuge', image: `https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment5/mini-centrifuge.avif` },
+    { id: 'pcr-machine', name: "Thermal Cycler", englishName: 'PCR Thermal Cycler', image: `https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment5/pcr-machine.avif` },
+    { id: 'balance', name: "Electronic Balance", englishName: 'Electronic Balance', image: `https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment4/ppt/balance.avif` },
+    { id: 'microwave', name: "Microwave", englishName: 'Microwave Oven', image: `https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/microwaveovenclosed.avif` },
+    { id: 'gel-comb', name: "Gel Comb", englishName: 'Gel Comb', image: `https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment4/ppt/comb.avif` },
+    { id: 'gel-tray', name: "Gel Casting Tray", englishName: 'Gel Tray', image: `https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment4/ppt/gel-tray.avif` },
+    { id: 'chamber', name: "Electrophoresis Tank", englishName: 'Electrophoresis Chamber', image: `https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/electrophoresischamber.avif` },
+    { id: 'power-supply', name: "Electrophoresis Power Supply", englishName: 'Electrophoresis Power Supply', image: `https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/electrophoresispowersupply.avif` },
+    { id: 'gel-imager', name: "UV Gel Imager", englishName: 'UV Gel Imaging System', image: `https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/uvgelimagingsystem.avif` },
+    { id: 'tweezers', name: "Forceps", englishName: 'Tweezers', image: `https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment4/ppt/tweezers.avif` },
   ],
   instrumentTrayOrder: [
     'tip-box',
@@ -60,17 +56,17 @@ export const experiment5SidebarData = {
     'tweezers',
   ],
   reagents: [
-    { id: 'pcr-buffer', name: '10× PCR Buffer', englishName: '10× PCR Reaction Buffer', image: `${experiment7Image}/image15.png` },
-    { id: 'dntp', name: "dNTP mix", englishName: 'dNTP Mixture', image: `${experiment7Image}/image14.png` },
-    { id: 'primer-f', name: "Forward primer", englishName: 'Forward Primer', image: `${experiment7Image}/image14.png` },
-    { id: 'primer-r', name: "Reverse primer", englishName: 'Reverse Primer', image: `${experiment7Image}/image14.png` },
-    { id: 'template-dna', name: "Template DNA", englishName: 'Template DNA', image: `${experiment7Image}/image19.png` },
-    { id: 'taq-polymerase', name: "Taq DNA polymerase", englishName: 'Taq DNA Polymerase', image: `${experiment7Image}/image14.png` },
-    { id: 'ddh2o', name: "Sterile deionized water", englishName: 'Sterile Deionized Water (ddH₂O)', image: `${experiment7Image}/image13.png` },
-    { id: 'agarose', name: "Agarose powder", englishName: 'Agarose Powder', image: `${experiment3Image}/ErlenmeyerFlaskPowder.png` },
-    { id: 'tae-buffer', name: "1× TAE electrophoresis buffer", englishName: '1×TAE Electrophoresis Buffer', image: `${experiment3Image}/ReagentCarboyBlue.png` },
-    { id: 'gelred', name: "Nucleic acid gel stain", englishName: 'GelRed', image: `${experiment3Image}/PCRTubeRed.png` },
-    { id: 'loading-buffer', name: "6× DNA loading buffer", englishName: '6×DNA Loading Buffer', image: `${experiment3Image}/EPTubeGreen.png` },
-    { id: 'dna-marker', name: "DNA ladder", englishName: 'DNA Molecular Weight Marker', image: `${experiment3Image}/EPTubeSmallBlue2.png` },
+    { id: 'pcr-buffer', name: '10× PCR Buffer', englishName: '10× PCR Reaction Buffer', image: `https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment7/image15.avif` },
+    { id: 'dntp', name: "dNTP mix", englishName: 'dNTP Mixture', image: `https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment7/image14.avif` },
+    { id: 'primer-f', name: "Forward primer", englishName: 'Forward Primer', image: `https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment7/image14.avif` },
+    { id: 'primer-r', name: "Reverse primer", englishName: 'Reverse Primer', image: `https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment7/image14.avif` },
+    { id: 'template-dna', name: "Template DNA", englishName: 'Template DNA', image: `https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment7/image19.avif` },
+    { id: 'taq-polymerase', name: "Taq DNA polymerase", englishName: 'Taq DNA Polymerase', image: `https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment7/image14.avif` },
+    { id: 'ddh2o', name: "Sterile deionized water", englishName: 'Sterile Deionized Water (ddH₂O)', image: `https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment7/image13.avif` },
+    { id: 'agarose', name: "Agarose powder", englishName: 'Agarose Powder', image: `https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/erlenmeyerflaskpowder.avif` },
+    { id: 'tae-buffer', name: "1× TAE electrophoresis buffer", englishName: '1×TAE Electrophoresis Buffer', image: `https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/reagentcarboyblue.avif` },
+    { id: 'gelred', name: "Nucleic acid gel stain", englishName: 'GelRed', image: `https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/pcrtubered.avif` },
+    { id: 'loading-buffer', name: "6× DNA loading buffer", englishName: '6×DNA Loading Buffer', image: `https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/eptubegreen.avif` },
+    { id: 'dna-marker', name: "DNA ladder", englishName: 'DNA Molecular Weight Marker', image: `https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/eptubesmallblue2.avif` },
   ],
 } satisfies ExperimentInfoSidebarData;

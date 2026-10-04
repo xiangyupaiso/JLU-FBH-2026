@@ -3,6 +3,7 @@ import {
   memo,
   useContext,
   useEffect,
+  useId,
   useMemo,
   useRef,
   useState,
@@ -52,6 +53,9 @@ import "../../styles/features/experiments-panels.css";
 
 type FeatureMap = Partial<Record<string, ReactNode>>;
 
+/** Mobile breakpoint; must match the `@media (max-width: 980px)` skin block. */
+const COMPACT_QUERY = "(max-width: 980px)";
+
 interface WikiScrollState {
   activeSection: string;
   activeSubsection: string;
@@ -70,6 +74,19 @@ const WikiPageScrollContext = createContext<WikiScrollState>({
 export function useRoutePageScroll() {
   return useContext(WikiPageScrollContext);
 }
+
+/**
+ * Optional per-page inline formatter for prose paragraphs (e.g. turning
+ * "(Sung et al. 2026)" into citation links). Receives the raw paragraph and
+ * the default `**bold**` formatter; when omitted every route page keeps its
+ * current rendering unchanged.
+ */
+export type InlineRenderer = (
+  text: string,
+  fallback: (t: string) => ReactNode,
+) => ReactNode;
+
+const InlineRendererContext = createContext<InlineRenderer | null>(null);
 
 interface WikiRoutePageProps {
   content: WikiPageContent;
@@ -93,6 +110,33 @@ interface WikiRoutePageProps {
   collapsibleSubheadings?: boolean;
   /** Optional protocol pairs metadata to enable TOC preview and modal */
   protocolPairs?: ExperimentProtocolPair[];
+  /**
+   * Optional inline formatter for prose paragraphs (citation links on the
+   * Description page). Defaults to plain `**bold**` rendering.
+   */
+  inlineRenderer?: InlineRenderer;
+  /**
+   * Deepest subheading level listed in the TOC, counted by index segments
+   * ("4.1" = 2, "4.1.1" = 3). Deeper subheadings stay on the page and in the
+   * scroll spy; the page can surface them elsewhere (e.g. a section rail).
+   */
+  outlineDepth?: number;
+  /**
+   * Replaces the default line sidebar with a page-specific navigation object.
+   *
+   * Generic extension point: the slot receives the live scroll-spy state and
+   * the reader frame ref, so an alternative outline (e.g. the Engineering
+   * page's concentric TIME dial) can drive the same article without the
+   * template naming any module. Ignored below 980px, where the compact drawer
+   * keeps the standard sidebar so the outline stays reachable on a phone.
+   */
+  outlineSlot?: (context: {
+    activeSection: string;
+    activeSubsection: string;
+    scrollContainerRef: RefObject<HTMLDivElement | null>;
+  }) => ReactNode;
+  /** Optional interactive feature or section mounted right between hero and reader track. */
+  leadSection?: ReactNode;
 }
 
 const STATUS_LABELS = {
@@ -230,6 +274,58 @@ function renderSubheadingTitle(title: string) {
   );
 }
 
+/**
+ * Turn an inline Markdown link into an anchor.
+ *
+ * Several pages are migrated from Markdown drafts whose "Further details are
+ * provided in [label](url)" cross-references would otherwise print as literal
+ * bracket-and-paren text. Deliberately recognises ONLY `[text](https://…)`, so
+ * an existing citation form such as `(Garrido-Castro et al., 2019)` — which
+ * `renderInlineFormatting` also leaves alone — cannot be affected.
+ */
+const MD_LINK_RE = /\[([^\]\n]{1,120})\]\((https?:\/\/[^\s)]+)\)/g;
+
+function linkify(text: string): ReactNode {
+  if (!text || !text.includes("](")) return renderInlineFormatting(text);
+
+  const nodes: ReactNode[] = [];
+  let lastIndex = 0;
+  let match: RegExpExecArray | null;
+
+  MD_LINK_RE.lastIndex = 0;
+  while ((match = MD_LINK_RE.exec(text)) !== null) {
+    if (match.index > lastIndex) {
+      nodes.push(
+        <span key={`t-${lastIndex}`}>
+          {renderInlineFormatting(text.slice(lastIndex, match.index))}
+        </span>,
+      );
+    }
+    nodes.push(
+      <a
+        className="wiki-prose-link"
+        href={match[2]}
+        key={`l-${match.index}`}
+        rel="noreferrer"
+        target="_blank"
+      >
+        {match[1]}
+      </a>,
+    );
+    lastIndex = match.index + match[0].length;
+  }
+
+  if (!nodes.length) return renderInlineFormatting(text);
+  if (lastIndex < text.length) {
+    nodes.push(
+      <span key={`t-${lastIndex}`}>
+        {renderInlineFormatting(text.slice(lastIndex))}
+      </span>,
+    );
+  }
+  return nodes;
+}
+
 function renderInlineFormatting(text: string): ReactNode {
   if (!text || !text.includes("**")) {
     return text;
@@ -254,7 +350,10 @@ function splitNoteContent(body: string): string[] {
   return [body.trim()];
 }
 
-function renderProseParagraphs(paragraphs: string[]): ReactNode[] {
+function renderProseParagraphs(
+  paragraphs: string[],
+  inline: InlineRenderer | null = null,
+): ReactNode[] {
   const elements: ReactNode[] = [];
   let stepBuffer: Array<{ num: string; text: string }> = [];
 
@@ -276,8 +375,12 @@ function renderProseParagraphs(paragraphs: string[]): ReactNode[] {
     );
   };
 
+  /** Linkify after `**bold**` so the emphasis split cannot break a URL apart. */
+  const prose = (text: string): ReactNode =>
+    inline ? inline(text, renderInlineFormatting) : linkify(text);
+
   paragraphs.forEach((paragraph, idx) => {
-    const stepMatch = paragraph.match(/^\s*(\d+)[\.、]\s+(.*)$/s);
+    const stepMatch = paragraph.match(/^\s*(\d+)[.、]\s+(.*)$/s);
     if (stepMatch) {
       stepBuffer.push({ num: stepMatch[1], text: stepMatch[2] });
       return;
@@ -315,7 +418,7 @@ function renderProseParagraphs(paragraphs: string[]): ReactNode[] {
     }
 
     elements.push(
-      <p key={`p-${idx}`}>{renderInlineFormatting(paragraph)}</p>,
+      <p key={`p-${idx}`}>{prose(paragraph)}</p>,
     );
   });
 
@@ -334,6 +437,8 @@ function RouteBlock({
   sectionId: string;
   scrollContainerRef?: RefObject<HTMLElement | null>;
 }) {
+  const inline = useContext(InlineRendererContext);
+
   const scrollToTarget = (targetId: string) => {
     const target = document.getElementById(targetId);
     if (!target) return;
@@ -345,7 +450,7 @@ function RouteBlock({
     case "prose":
       return (
         <div className="wiki-prose" data-wiki-reveal>
-          {renderProseParagraphs(block.paragraphs)}
+          {renderProseParagraphs(block.paragraphs, inline)}
         </div>
       );
     case "prose-linked":
@@ -490,6 +595,66 @@ function RouteBlock({
           {features[block.key]}
         </div>
       );
+    case "dbtl":
+      return (
+        <div className="wiki-dbtl" id={block.id} data-wiki-dbtl data-wiki-reveal>
+          <ol className="wiki-dbtl__track">
+            {block.stages.map((stage, stageIndex) => (
+              <li
+                className="wiki-dbtl__stage"
+                data-dbtl-stage={stage.key}
+                data-dbtl-index={stageIndex}
+                key={stage.key}
+              >
+                <h4 className="wiki-dbtl__stage-title">
+                  <span className="wiki-dbtl__stage-key" aria-hidden="true">
+                    {stage.title}
+                  </span>
+                  <span className="wiki-dbtl__stage-rule" aria-hidden="true" />
+                </h4>
+                <div className="wiki-dbtl__stage-body">
+                  {stage.blocks.map((nested, index) => (
+                    <RouteBlock
+                      key={`${block.id}-${stage.key}-${nested.type}-${index}`}
+                      block={nested}
+                      features={features}
+                      sectionId={sectionId}
+                      scrollContainerRef={scrollContainerRef}
+                    />
+                  ))}
+                </div>
+              </li>
+            ))}
+          </ol>
+        </div>
+      );
+    case "references":
+      return (
+        <div className="wiki-references" data-wiki-reveal>
+          <ol className="wiki-references__list">
+            {block.items.map((entry, index) => (
+              <li className="wiki-references__item" key={`${entry.label}-${index}`}>
+                <span className="wiki-references__index" aria-hidden="true">
+                  [{index + 1}]
+                </span>
+                <span className="wiki-references__body">
+                  <span>{entry.text}</span>
+                  {entry.href ? (
+                    <a
+                      className="wiki-references__link"
+                      href={entry.href}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      {entry.hrefLabel ?? "Source"}
+                    </a>
+                  ) : null}
+                </span>
+              </li>
+            ))}
+          </ol>
+        </div>
+      );
     case "chapter-link":
       return (
         <a
@@ -524,7 +689,9 @@ function RouteBlock({
       return (
         <figure className="wiki-epigraph" data-wiki-reveal>
           <blockquote>“{renderInlineFormatting(block.quote)}”</blockquote>
-          <p className="wiki-epigraph__zh">{renderInlineFormatting(block.translationZh)}</p>
+          {block.translationZh ? (
+            <p className="wiki-epigraph__zh">{renderInlineFormatting(block.translationZh)}</p>
+          ) : null}
           <figcaption>
             {block.attribution} · {block.attributionRole}
           </figcaption>
@@ -814,6 +981,10 @@ export function WikiRoutePage({
   hideHeroCopy = false,
   collapsibleSubheadings = false,
   protocolPairs,
+  inlineRenderer,
+  outlineDepth,
+  outlineSlot,
+  leadSection,
 }: WikiRoutePageProps) {
   const rootRef = useRef<HTMLElement>(null);
   const interfaceRef = useRef<HTMLDivElement>(null);
@@ -863,6 +1034,48 @@ export function WikiRoutePage({
   const wideFlow =
     enableWideFlow &&
     window.matchMedia("(min-width: 1200px) and (min-height: 700px)").matches;
+
+  // Mobile (≤980px, same breakpoint as the skin): plain document flow instead
+  // of the pinned reader, and the TOC becomes an off-canvas drawer.
+  const [compact, setCompact] = useState(
+    () => window.matchMedia(COMPACT_QUERY).matches,
+  );
+  const [tocOpen, setTocOpen] = useState(false);
+  const outlineId = useId();
+  const tocTriggerRef = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    const media = window.matchMedia(COMPACT_QUERY);
+    const onChange = () => setCompact(media.matches);
+    media.addEventListener("change", onChange);
+    return () => media.removeEventListener("change", onChange);
+  }, []);
+
+  const drawerOpen = compact && tocOpen;
+
+  useEffect(() => {
+    if (!drawerOpen) return;
+    const trigger = tocTriggerRef.current;
+    const outline = document.getElementById(outlineId);
+    outline?.querySelector<HTMLElement>(".wiki-outline__close")?.focus({
+      preventScroll: true,
+    });
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setTocOpen(false);
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => {
+      window.removeEventListener("keydown", onKeyDown);
+      trigger?.focus({ preventScroll: true });
+    };
+  }, [drawerOpen, outlineId]);
+
+  const documentFlow = wideFlow || compact;
+  const drawerScrollBehavior: ScrollBehavior = window.matchMedia(
+    "(prefers-reduced-motion: reduce)",
+  ).matches
+    ? "instant"
+    : "smooth";
   const sectionIds = useMemo(
     () => content.sections.map((section) => section.id),
     [content.sections],
@@ -872,10 +1085,10 @@ export function WikiRoutePage({
     sectionIds,
     scrollRef,
     content.route,
-    !wideFlow,
+    !documentFlow,
     wideFlow,
   );
-  useRouteReaderScroll(!wideFlow, interfaceRef, scrollRef);
+  useRouteReaderScroll(!documentFlow, interfaceRef, scrollRef);
 
   const scrollContextValue = useMemo(
     () => ({ activeSection, activeSubsection }),
@@ -885,7 +1098,8 @@ export function WikiRoutePage({
     const subheadings = section.blocks
       ?.filter(
         (block): block is Extract<WikiContentBlock, { type: "subheading" }> =>
-          block.type === "subheading",
+          block.type === "subheading" &&
+          (!outlineDepth || block.index.split(".").length <= outlineDepth),
       )
       .map((block) => ({
         id: block.id,
@@ -909,7 +1123,7 @@ export function WikiRoutePage({
       ref={rootRef}
       className={`wiki-page wiki-page--route wiki-page--manuscript route--reader ${
         wideFlow ? "route--wide-flow" : ""
-      } ${pageClassName}`}
+      } ${drawerOpen ? "is-toc-open" : ""} ${pageClassName}`}
       data-wiki-route={content.route}
       data-route-theme={theme}
       data-active-section={activeSection}
@@ -929,12 +1143,26 @@ export function WikiRoutePage({
         )}
       </header>
 
+      {leadSection ? (
+        <section className="wiki-lead-section-slot" data-wiki-reveal>
+          {leadSection}
+        </section>
+      ) : null}
+
       <div className="wiki-reader-track">
         <div
           ref={interfaceRef}
           className={`wiki-record${hideOutline ? " wiki-record--full" : ""}`}
         >
-          {hideOutline ? null : (
+          {hideOutline ? null : outlineSlot && !compact ? (
+            <div className="wiki-outline-slot">
+              {outlineSlot({
+                activeSection,
+                activeSubsection,
+                scrollContainerRef: scrollRef,
+              })}
+            </div>
+          ) : (
             <WikiLineSidebar
               activeId={activeSection}
               activeChildId={activeSubsection}
@@ -947,8 +1175,45 @@ export function WikiRoutePage({
                 setActiveProtocolModal({ pair, initialTab: tab })
               }
               onSelectSubheading={openSubheading}
+              {...(compact
+                ? {
+                    id: outlineId,
+                    scrollBehavior: drawerScrollBehavior,
+                    onRequestClose: () => setTocOpen(false),
+                  }
+                : {})}
             />
           )}
+
+          {compact && !hideOutline ? (
+            <>
+              <button
+                ref={tocTriggerRef}
+                type="button"
+                className="wiki-toc-trigger"
+                aria-controls={outlineId}
+                aria-expanded={tocOpen}
+                aria-label="Open table of contents"
+                onClick={() => setTocOpen(true)}
+              >
+                <svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true">
+                  <path
+                    d="M3 5h14M3 10h14M3 15h9"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    fill="none"
+                  />
+                </svg>
+                <span>TOC</span>
+              </button>
+              <div
+                className="wiki-toc-backdrop"
+                aria-hidden="true"
+                onClick={() => setTocOpen(false)}
+              />
+            </>
+          ) : null}
 
           <WikiPageScrollContext.Provider value={scrollContextValue}>
             <div className="route-frame">
@@ -959,18 +1224,20 @@ export function WikiRoutePage({
                 aria-label={`${content.title} article`}
               >
                 <article className="wiki-article">
-                  {content.sections.map((section) => (
-                    <MemoRouteSection
-                      key={section.id}
-                      section={section}
-                      feature={features[section.id]}
-                      features={features}
-                      scrollContainerRef={scrollRef}
-                      collapsibleSubheadings={collapsibleSubheadings}
-                      openSubheadingIds={openSubheadingIds}
-                      onToggleSubheading={toggleSubheading}
-                    />
-                  ))}
+                  <InlineRendererContext.Provider value={inlineRenderer ?? null}>
+                    {content.sections.map((section) => (
+                      <MemoRouteSection
+                        key={section.id}
+                        section={section}
+                        feature={features[section.id]}
+                        features={features}
+                        scrollContainerRef={scrollRef}
+                        collapsibleSubheadings={collapsibleSubheadings}
+                        openSubheadingIds={openSubheadingIds}
+                        onToggleSubheading={toggleSubheading}
+                      />
+                    ))}
+                  </InlineRendererContext.Provider>
                 </article>
               </div>
             </div>

@@ -1,29 +1,27 @@
 import { useEffect, useRef, useState, useCallback } from "react";
+// Type-only imports: erased at build time, Mol* itself comes from window.molstar
+import type { Viewer } from "molstar/lib/apps/viewer/app";
+import type { Vec3, Vec4 } from "molstar/lib/mol-math/linear-algebra";
+import type { PluginStateObject } from "molstar/lib/mol-plugin-state/objects";
+import type { StateObjectSelector } from "molstar/lib/mol-state";
+import type { Color } from "molstar/lib/mol-util/color";
 import trop2Pdb from "../../../assets/structures/trop2-ctl1.pdb?raw";
 import { TROP2_COMPLEX_DATA } from "../../../data/trop2ComplexData";
 import "../../../styles/trop2-complex-viewer.css";
 
 type ActiveSegment = "all" | "epitope" | "alpha1" | "alpha2" | "pocket";
+type MolstarGlobal = NonNullable<Window["molstar"]>;
+type ComponentSelector = StateObjectSelector<PluginStateObject.Molecule.Structure>;
+type ReprSelector = StateObjectSelector<PluginStateObject.Molecule.Structure.Representation3D>;
 
-interface ScreenPoint {
-  x: number;
-  y: number;
-  visible: boolean;
-}
-
-interface ProjectedContact {
-  x1: number;
-  y1: number;
-  x2: number;
-  y2: number;
-  visible: boolean;
-}
+// Mol* colors are branded numbers; Color(hex) is an identity function at runtime.
+const color = (hex: number) => hex as Color;
 
 /**
  * 100% Local & iGEM-Compliant Loader for Mol* Viewer
  * Guarantees zero external network requests and offline closed loop.
  */
-function loadLocalMolstar(): Promise<any> {
+function loadLocalMolstar(): Promise<MolstarGlobal> {
   if (typeof window !== "undefined" && window.molstar) {
     return Promise.resolve(window.molstar);
   }
@@ -71,15 +69,18 @@ function loadLocalMolstar(): Promise<any> {
 export function Trop2ComplexViewer() {
   const figureRef = useRef<HTMLElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
-  const viewerRef = useRef<any>(null);
-  const structureRef = useRef<any>(null);
-  const epitopeCompRef = useRef<any>(null);
-  const pocketCompRef = useRef<any>(null);
-  const alpha1CompRef = useRef<any>(null);
-  const alpha2CompRef = useRef<any>(null);
-  const surfaceReprRef = useRef<any>(null);
+  const viewerRef = useRef<Viewer | null>(null);
+  const structureRef = useRef<StateObjectSelector<PluginStateObject.Molecule.Structure> | null>(null);
+  const epitopeCompRef = useRef<ComponentSelector | undefined>(undefined);
+  const pocketCompRef = useRef<ComponentSelector | undefined>(undefined);
+  const alpha1CompRef = useRef<ComponentSelector | undefined>(undefined);
+  const alpha2CompRef = useRef<ComponentSelector | undefined>(undefined);
+  const surfaceReprRef = useRef<ReprSelector | null>(null);
   const isSurfaceUpdatingRef = useRef(false);
   const rafIdRef = useRef<number | null>(null);
+  const overlayRef = useRef<SVGSVGElement>(null);
+  const contactRefs = useRef<(SVGGElement | null)[]>([]);
+  const cameraSubsRef = useRef<{ unsubscribe: () => void }[]>([]);
 
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -103,42 +104,47 @@ export function Trop2ComplexViewer() {
     return () => document.removeEventListener("fullscreenchange", handleFsChange);
   }, []);
 
-  const [projectedContacts, setProjectedContacts] = useState<ProjectedContact[]>([]);
-
-  // Update 2D SVG projections from 3D camera (only when polar contacts layer is enabled)
+  // Project the polar contacts from the 3D camera straight onto the SVG lines.
+  // Writes DOM attributes imperatively so camera motion never re-renders React.
   const updateProjections = useCallback(() => {
     if (!showPolarContactsRef.current) return;
-    const viewer = viewerRef.current;
-    if (!viewer?.plugin?.canvas3d) return;
+    const svg = overlayRef.current;
+    const canvas3d = viewerRef.current?.plugin?.canvas3d;
+    if (!svg || !canvas3d) return;
 
-    const camera = viewer.plugin.canvas3d.camera;
-    const viewport = camera.viewport;
-    if (!viewport || viewport.width === 0 || viewport.height === 0) return;
+    const camera = canvas3d.camera;
+    const { x: vx, y: vy, width, height } = camera.viewport;
+    if (!width || !height) return;
 
-    const projectPoint = (pos: [number, number, number]): ScreenPoint => {
-      const v = [pos[0], pos[1], pos[2], 1];
-      camera.project(v, v);
-      const x = ((v[0] + 1) / 2) * viewport.width;
-      const y = ((-v[1] + 1) / 2) * viewport.height;
-      const visible = v[2] > -1 && v[2] < 1 && x >= 0 && x <= viewport.width && y >= 0 && y <= viewport.height;
+    // camera.project already returns window coordinates in drawing-buffer pixels
+    // (origin bottom-left), so the viewBox maps them onto CSS pixels at any DPR.
+    svg.setAttribute("viewBox", `0 0 ${width} ${height}`);
+
+    const v = [0, 0, 0, 0] as unknown as Vec4;
+    const project = (pos: [number, number, number]) => {
+      camera.project(v, pos as unknown as Vec3);
+      const x = v[0] - vx;
+      const y = height - (v[1] - vy);
+      const visible = v[2] > 0 && v[2] < 1 && x >= 0 && x <= width && y >= 0 && y <= height;
       return { x, y, visible };
     };
 
-    const contacts: ProjectedContact[] = TROP2_COMPLEX_DATA.polarContacts.map((contact) => {
-      const p1 = projectPoint(contact.start);
-      const p2 = projectPoint(contact.end);
-      return {
-        x1: p1.x,
-        y1: p1.y,
-        x2: p2.x,
-        y2: p2.y,
-        visible: p1.visible || p2.visible,
-      };
+    TROP2_COMPLEX_DATA.polarContacts.forEach((contact, i) => {
+      const group = contactRefs.current[i];
+      if (!group) return;
+      const p1 = project(contact.start);
+      const p2 = project(contact.end);
+      for (const line of Array.from(group.children)) {
+        line.setAttribute("x1", String(p1.x));
+        line.setAttribute("y1", String(p1.y));
+        line.setAttribute("x2", String(p2.x));
+        line.setAttribute("y2", String(p2.y));
+      }
+      group.setAttribute("visibility", p1.visible || p2.visible ? "visible" : "hidden");
     });
-    setProjectedContacts(contacts);
   }, []);
 
-  // RequestAnimationFrame throttled projection updater (prevents 60Hz React re-render lockup)
+  // RequestAnimationFrame throttled projection updater (at most one DOM write per frame)
   const scheduleUpdateProjections = useCallback(() => {
     if (!showPolarContactsRef.current) return;
     if (rafIdRef.current !== null) return;
@@ -183,7 +189,8 @@ export function Trop2ComplexViewer() {
           collapseLeftPanel: true,
           collapseRightPanel: true,
           disableAntialiasing: false,
-          pixelScale: Math.min(window.devicePixelRatio || 1, 2),
+          // Mol* multiplies pixelScale by devicePixelRatio; 1 already renders at native DPR.
+          pixelScale: 1,
           viewportShowReset: false,
           viewportShowScreenshotControls: false,
           viewportShowControls: false,
@@ -204,9 +211,10 @@ export function Trop2ComplexViewer() {
         viewerRef.current = viewer;
         const plugin = viewer.plugin;
 
-        // Ensure internal config turns off all default buttons that cause heavy panel mounts
-        if (plugin?.config && window.molstar?.PluginConfig?.Viewport) {
-          const V = window.molstar.PluginConfig.Viewport;
+        // Ensure internal config turns off all default buttons that cause heavy panel mounts.
+        // The viewer bundle exposes PluginConfig under lib.plugin, not at the top level.
+        const V = molstar.lib?.plugin?.PluginConfig?.Viewport;
+        if (plugin?.config && V) {
           plugin.config.set(V.ShowReset, false);
           plugin.config.set(V.ShowControls, false);
           plugin.config.set(V.ShowSettings, false);
@@ -220,7 +228,8 @@ export function Trop2ComplexViewer() {
           if (V.ShowXR) plugin.config.set(V.ShowXR, "never");
         }
 
-        // Activate SSAO, ambient contact shadows, and crisp silhouette outline
+        // SSAO, ambient contact shadows, and silhouette outline (opaque geometry only,
+        // so the transparent surface does not pay for extra depth passes)
         if (plugin.canvas3d) {
           plugin.canvas3d.setProps({
             postprocessing: {
@@ -228,9 +237,9 @@ export function Trop2ComplexViewer() {
                 name: "on",
                 params: {
                   scale: 1,
-                  color: 0x000000,
+                  color: color(0x000000),
                   threshold: 0.33,
-                  includeTransparent: true,
+                  includeTransparent: false,
                 },
               },
               occlusion: {
@@ -242,14 +251,14 @@ export function Trop2ComplexViewer() {
                   blurKernelSize: 15,
                   blurDepthBias: 0.5,
                   samples: 32,
-                  resolutionScale: 1,
-                  color: 0x000000,
+                  resolutionScale: 0.75,
+                  color: color(0x000000),
                   transparentThreshold: 0.4,
                 },
               },
             },
             renderer: {
-              backgroundColor: isDarkMode ? 0x0b0f19 : 0xf8fafc,
+              backgroundColor: color(isDarkMode ? 0x0b0f19 : 0xf8fafc),
             },
           });
         }
@@ -265,6 +274,8 @@ export function Trop2ComplexViewer() {
         structureRef.current = structure;
 
         // 1. MHC Heavy Chain (A) & β2M (B): Soft Lavender Cartoon Ribbon
+        // Kept opaque: a transparent cartoon pushes most of the scene through the
+        // OIT transparency pass and the SSAO transparent-depth pass every frame.
         const mhcComp = await plugin.builders.structure.tryCreateComponent(
           structure,
           {
@@ -280,8 +291,7 @@ export function Trop2ComplexViewer() {
           await plugin.builders.structure.representation.addRepresentation(mhcComp, {
             type: "cartoon",
             color: "uniform",
-            colorParams: { value: 0xc7d2fe },
-            typeParams: { alpha: 0.75 },
+            colorParams: { value: color(0xc7d2fe) },
           });
         }
 
@@ -302,7 +312,7 @@ export function Trop2ComplexViewer() {
           await plugin.builders.structure.representation.addRepresentation(epitopeComp, {
             type: "ball-and-stick",
             color: "uniform",
-            colorParams: { value: 0x00e5ff },
+            colorParams: { value: color(0x00e5ff) },
             typeParams: { sizeFactor: 0.28 },
           });
         }
@@ -325,7 +335,7 @@ export function Trop2ComplexViewer() {
           await plugin.builders.structure.representation.addRepresentation(pocketComp, {
             type: "ball-and-stick",
             color: "uniform",
-            colorParams: { value: 0x1d4ed8 },
+            colorParams: { value: color(0x1d4ed8) },
             typeParams: { sizeFactor: 0.22 },
           });
         }
@@ -361,10 +371,14 @@ export function Trop2ComplexViewer() {
         // Reset camera to focus on epitope cleft
         if (plugin.canvas3d) {
           plugin.managers.camera.reset(void 0, 0);
-          // Subscribe to camera updates with RAF throttling for 60fps smooth vector sync
-          plugin.canvas3d.camera.stateChanged.subscribe(() => {
-            scheduleUpdateProjections();
-          });
+          // camera.changed fires inside Mol*'s render loop whenever the view/projection
+          // matrices move (mouse rotate/zoom/pan and animated resets alike), at most once
+          // per frame, so the overlay is updated in the same frame as the 3D scene.
+          // camera.stateChanged only fires on programmatic setState, not on mouse input.
+          cameraSubsRef.current = [
+            plugin.canvas3d.camera.changed.subscribe(updateProjections),
+            plugin.canvas3d.resized.subscribe(scheduleUpdateProjections),
+          ];
         }
 
         scheduleUpdateProjections();
@@ -380,6 +394,8 @@ export function Trop2ComplexViewer() {
 
     return () => {
       isMounted = false;
+      cameraSubsRef.current.forEach((sub) => sub.unsubscribe());
+      cameraSubsRef.current = [];
       if (rafIdRef.current !== null) {
         cancelAnimationFrame(rafIdRef.current);
         rafIdRef.current = null;
@@ -424,8 +440,8 @@ export function Trop2ComplexViewer() {
             await plugin.builders.structure.representation.addRepresentation(epitopeComp, {
               type: "molecular-surface",
               color: "uniform",
-              colorParams: { value: 0x38bdf8 },
-              typeParams: { alpha: 0.45 },
+              colorParams: { value: color(0x38bdf8) },
+              typeParams: { alpha: 0.45, ignoreHydrogens: true },
             });
         }
       } else {
@@ -449,7 +465,7 @@ export function Trop2ComplexViewer() {
     if (viewer?.plugin?.canvas3d) {
       viewer.plugin.canvas3d.setProps({
         renderer: {
-          backgroundColor: nextDark ? 0x0b0f19 : 0xf8fafc,
+          backgroundColor: color(nextDark ? 0x0b0f19 : 0xf8fafc),
         },
       });
       scheduleUpdateProjections();
@@ -479,7 +495,7 @@ export function Trop2ComplexViewer() {
         return;
       }
 
-      let compCell: any = null;
+      let compCell: ComponentSelector | undefined;
       if (target === "epitope") compCell = epitopeCompRef.current;
       else if (target === "pocket") compCell = pocketCompRef.current;
       else if (target === "alpha1") compCell = alpha1CompRef.current;
@@ -633,31 +649,43 @@ export function Trop2ComplexViewer() {
           </div>
         )}
 
-        {/* Mol* Target Canvas */}
-        <div ref={containerRef} className="trop2-viewer-canvas" />
+        {/* Mol* Target Canvas (native cursor: keeps the global sheep cursor off the WebGL stage) */}
+        <div ref={containerRef} className="trop2-viewer-canvas" data-native-cursor />
 
-        {/* 2D Vector Projection Overlay for Polar Contacts & Residue Labels */}
-        <svg className="trop2-viewer-svg-overlay" aria-hidden="true">
-          {/* 17 Polar interaction dashed lines */}
+        {/* 2D Vector Projection Overlay for Polar Contacts. Line coordinates are
+            written by updateProjections; React only mounts the elements. */}
+        <svg
+          ref={overlayRef}
+          className="trop2-viewer-svg-overlay"
+          preserveAspectRatio="none"
+          aria-hidden="true"
+        >
           {showPolarContacts &&
-            projectedContacts.map((c, i) =>
-              c.visible ? (
+            TROP2_COMPLEX_DATA.polarContacts.map((_, i) => (
+              <g
+                key={`contact-${i}`}
+                ref={(el) => {
+                  contactRefs.current[i] = el;
+                }}
+                visibility="hidden"
+              >
+                {/* Wide faint stroke stands in for a per-frame drop-shadow filter */}
                 <line
-                  key={`contact-${i}`}
-                  x1={c.x1}
-                  y1={c.y1}
-                  x2={c.x2}
-                  y2={c.y2}
+                  stroke="rgba(250, 204, 21, 0.25)"
+                  strokeWidth="5"
+                  strokeLinecap="round"
+                  vectorEffect="non-scaling-stroke"
+                />
+                <line
                   stroke="#facc15"
                   strokeWidth="1.8"
                   strokeDasharray="4 3"
                   strokeLinecap="round"
                   opacity="0.95"
-                  filter="drop-shadow(0 0 2px rgba(250, 204, 21, 0.6))"
+                  vectorEffect="non-scaling-stroke"
                 />
-              ) : null
-            )}
-
+              </g>
+            ))}
         </svg>
 
         <div className="trop2-viewer-hint">
@@ -669,7 +697,7 @@ export function Trop2ComplexViewer() {
         <p className="trop2-viewer-caption">
           <strong>Figure M-01: Mol* rotatable 3D model of target-epitope complex.</strong> Reconstructed
           from PyMOL source session (<code>Trop2-CTL1.pse</code>). The HLA-A*02:01 heavy chain (Chain A)
-          and β2-microglobulin (Chain B) are rendered in semi-transparent lavender cartoon ribbons.
+          and β2-microglobulin (Chain B) are rendered in lavender cartoon ribbons.
           The Trop2-derived 9-mer CTL1 epitope (<strong>{TROP2_COMPLEX_DATA.epitopeSequence}</strong>, Chain C) is
           anchored in the MHC groove and displayed as prominent cyan sticks. Royal blue sticks
           delineate the 13 essential pocket anchoring residues (Tyr7, Glu63, Lys66, His70, Asp77, Tyr84,

@@ -1,11 +1,11 @@
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
-import bgImg from "../../assets/loading/bg.png";
-import handsImg from "../../assets/loading/hands.png";
-import ribbonImg from "../../assets/loading/ribbon.png";
-import lambImg from "../../assets/loading/lamb.png";
-import petalsImg from "../../assets/loading/petals.png";
-import starsImg from "../../assets/loading/stars.png";
+const bgImg = "https://static.igem.wiki/teams/6056/wiki/files/pages/shared/bg.avif";
+const handsImg = "https://static.igem.wiki/teams/6056/wiki/files/pages/shared/hands.avif";
+const ribbonImg = "https://static.igem.wiki/teams/6056/wiki/files/pages/shared/ribbon.avif";
+const lambImg = "https://static.igem.wiki/teams/6056/wiki/files/pages/shared/lamb.avif";
+const petalsImg = "https://static.igem.wiki/teams/6056/wiki/files/pages/shared/petals.avif";
+const starsImg = "https://static.igem.wiki/teams/6056/wiki/files/pages/shared/stars.avif";
 import "../../styles/page-preloader.css";
 
 interface PagePreloaderProps {

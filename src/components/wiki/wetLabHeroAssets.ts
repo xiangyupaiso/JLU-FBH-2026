@@ -1,8 +1,8 @@
-import experimentsHero from "../../assets/wiki/wet-lab-heroes/wet-lab-experiments-hero.webp";
-import measurementHero from "../../assets/wiki/wet-lab-heroes/wet-lab-measurement-hero.webp";
-import notebookHero from "../../assets/wiki/wet-lab-heroes/wet-lab-notebook-hero-v3.webp";
-import platformHero from "../../assets/wiki/wet-lab-heroes/wet-lab-platform-hero.webp";
-import safetyHero from "../../assets/wiki/wet-lab-heroes/wet-lab-safety-hero-v3.webp";
+const experimentsHero = "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/wet-lab-experiments-hero.webp";
+const measurementHero = "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/wet-lab-measurement-hero.webp";
+const notebookHero = "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/wet-lab-notebook-hero-v3.webp";
+const platformHero = "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/wet-lab-platform-hero.webp";
+const safetyHero = "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/wet-lab-safety-hero-v3.webp";
 
 export type WetLabHeroVariant =
   | "experiments"

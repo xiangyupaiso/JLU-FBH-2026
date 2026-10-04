@@ -1,10 +1,10 @@
 /* CirCure design tokens — Friendly Scientific Editorial.
    Loaded AFTER bootstrap.min.css so it overrides Bootstrap body/typography defaults.
-   Fonts are self-hosted in src/assets/fonts/ and remain same-origin at deploy time. */
+   Web fonts are served from the team's iGEM Uploads directory. */
 
 @font-face {
   font-family: "Fraunces";
-  src: url("../assets/fonts/fraunces-variable.woff2") format("woff2");
+  src: url("https://static.igem.wiki/teams/6056/wiki/files/fonts/site/fraunces-variable.woff2") format("woff2");
   font-style: normal;
   font-weight: 100 900;
   font-display: swap;
@@ -12,7 +12,7 @@
 
 @font-face {
   font-family: "Newsreader";
-  src: url("../assets/fonts/newsreader-variable.woff2") format("woff2");
+  src: url("https://static.igem.wiki/teams/6056/wiki/files/fonts/site/newsreader-variable.woff2") format("woff2");
   font-style: normal;
   font-weight: 200 800;
   font-display: swap;
@@ -20,7 +20,7 @@
 
 @font-face {
   font-family: "Fredoka";
-  src: url("../assets/fonts/fredoka-variable.woff2") format("woff2");
+  src: url("https://static.igem.wiki/teams/6056/wiki/files/fonts/site/fredoka-variable.woff2") format("woff2");
   font-style: normal;
   font-weight: 300 700;
   font-display: swap;
@@ -28,7 +28,7 @@
 
 @font-face {
   font-family: "Lexend";
-  src: url("../assets/fonts/lexend-variable.woff2") format("woff2");
+  src: url("https://static.igem.wiki/teams/6056/wiki/files/fonts/site/lexend-variable.woff2") format("woff2");
   font-style: normal;
   font-weight: 100 900;
   font-display: swap;
@@ -36,7 +36,7 @@
 
 @font-face {
   font-family: "IBM Plex Mono";
-  src: url("../assets/fonts/ibm-plex-mono.woff2") format("woff2");
+  src: url("https://static.igem.wiki/teams/6056/wiki/files/fonts/site/ibm-plex-mono.woff2") format("woff2");
   font-style: normal;
   font-weight: 400;
   font-display: swap;

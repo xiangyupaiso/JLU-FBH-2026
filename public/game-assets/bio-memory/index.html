@@ -40,10 +40,10 @@
 })();
 </script>
 <style>
-@font-face{font-family:"Fraunces";src:url("../fonts/fraunces-variable.woff2") format("woff2");font-weight:100 900;font-display:swap}
-@font-face{font-family:"Fredoka";src:url("../fonts/fredoka-variable.woff2") format("woff2");font-weight:300 700;font-display:swap}
-@font-face{font-family:"Lexend";src:url("../fonts/lexend-variable.woff2") format("woff2");font-weight:100 900;font-display:swap}
-@font-face{font-family:"IBM Plex Mono";src:url("../fonts/ibm-plex-mono.woff2") format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"Fraunces";src:url("https://static.igem.wiki/teams/6056/wiki/files/fonts/site/fraunces-variable.woff2") format("woff2");font-weight:100 900;font-display:swap}
+@font-face{font-family:"Fredoka";src:url("https://static.igem.wiki/teams/6056/wiki/files/fonts/site/fredoka-variable.woff2") format("woff2");font-weight:300 700;font-display:swap}
+@font-face{font-family:"Lexend";src:url("https://static.igem.wiki/teams/6056/wiki/files/fonts/site/lexend-variable.woff2") format("woff2");font-weight:100 900;font-display:swap}
+@font-face{font-family:"IBM Plex Mono";src:url("https://static.igem.wiki/teams/6056/wiki/files/fonts/site/ibm-plex-mono.woff2") format("woff2");font-weight:400;font-display:swap}
 /* ============ 基调：博物学家野外手札 ============ */
 :root{
   --paper:#eee7dc;
@@ -468,7 +468,7 @@ body.playing .wrap{max-width:none;padding-bottom:26px}
 
   <!-- 刊头 -->
   <header class="hero">
-    <div class="eyebrow rise" style="animation-delay:.05s"><img class="logo" src="logo.png" alt="iGEM team logo"></div>
+    <div class="eyebrow rise" style="animation-delay:.05s"><img class="logo" src="https://static.igem.wiki/teams/6056/wiki/files/pages/games/bio-memory/asset-e0dabcdc18218362.avif" alt="iGEM team logo"></div>
     <h1 class="rise" id="heroTitle" style="animation-delay:.15s">Bio <span class="accent">Memory Match</span></h1>
     <p class="sub rise" id="heroSub" style="animation-delay:.28s">A mini bio expedition: flip over specimen cards and rely on memory to find each organism's other half.</p>
     <div class="rule rise" style="animation-delay:.4s">MEMORY · EXPEDITION · PAIRS</div>
@@ -575,17 +575,17 @@ body.playing .wrap{max-width:none;padding-bottom:26px}
 
 <script>
 /* =========================================================
- * 素材配置 —— 直接替换下面的路径即可（相对 index.html 所在目录）
+ * 素材配置 —— 图片由 iGEM Uploads 提供，使用完整 CDN URL
  * ========================================================= */
 const IMAGES = [
-  'bio-1.png',  'bio-2.png',  'bio-3.png',
-  'bio-4.png',  'bio-5.png',  'bio-6.png',
-  'bio-7.png',  'bio-8.png',  'bio-9.png',
-  'bio-10.png', 'bio-11.png', 'bio-12.png',
-  'bio-13.png', 'bio-14.png', 'bio-15.png',
-  'bio-16.png', 'bio-17.png', 'bio-18.png'
+  'https://static.igem.wiki/teams/6056/wiki/files/pages/games/bio-memory/asset-72c0bf685b637ef6.avif',  'https://static.igem.wiki/teams/6056/wiki/files/pages/games/bio-memory/asset-5c5225eb2d246eb3.avif',  'https://static.igem.wiki/teams/6056/wiki/files/pages/games/bio-memory/asset-ecdd2c504db14e40.avif',
+  'https://static.igem.wiki/teams/6056/wiki/files/pages/games/bio-memory/asset-3416eccfe87be3ed.avif',  'https://static.igem.wiki/teams/6056/wiki/files/pages/games/bio-memory/asset-37b1e3dd7f60ef01.avif',  'https://static.igem.wiki/teams/6056/wiki/files/pages/games/bio-memory/asset-997e7a662cd60738.avif',
+  'https://static.igem.wiki/teams/6056/wiki/files/pages/games/bio-memory/asset-95d972e565d9b0f8.avif',  'https://static.igem.wiki/teams/6056/wiki/files/pages/games/bio-memory/asset-11ff924a94b3dc97.avif',  'https://static.igem.wiki/teams/6056/wiki/files/pages/games/bio-memory/asset-93d50d5c8055dfcc.avif',
+  'https://static.igem.wiki/teams/6056/wiki/files/pages/games/bio-memory/asset-c45bfa2596a55c50.avif', 'https://static.igem.wiki/teams/6056/wiki/files/pages/games/bio-memory/asset-71e543f33f5c0e67.avif', 'https://static.igem.wiki/teams/6056/wiki/files/pages/games/bio-memory/asset-075ed2acd2e89a33.avif',
+  'https://static.igem.wiki/teams/6056/wiki/files/pages/games/bio-memory/asset-f1eade93a1e21fba.avif', 'https://static.igem.wiki/teams/6056/wiki/files/pages/games/bio-memory/asset-ceecfdb76cf006c7.avif', 'https://static.igem.wiki/teams/6056/wiki/files/pages/games/bio-memory/asset-63fc3c1f02746e82.avif',
+  'https://static.igem.wiki/teams/6056/wiki/files/pages/games/bio-memory/asset-43bac6b2a935c85f.avif', 'https://static.igem.wiki/teams/6056/wiki/files/pages/games/bio-memory/asset-542b83eb1785335c.avif', 'https://static.igem.wiki/teams/6056/wiki/files/pages/games/bio-memory/asset-e16ed2e5fe73c484.avif'
 ];
-const CARD_BACK = 'card-back.jpg';
+const CARD_BACK = 'https://static.igem.wiki/teams/6056/wiki/files/pages/games/bio-memory/asset-0ea586e19e07abf8.avif';
 
 /* =========================================================
  * 图鉴档案 —— 与 IMAGES 按下标一一对应；改图后记得同步修改

@@ -71,32 +71,32 @@ const stepReagentAssets = {
 void stepReagentAssets;
 
 const experiment3Assets = {
-  pipette: './images/experiment3/Pipette.png',
-  pipetteBodyBlue: './images/experiment3/Pipette1_1.png',
-  pipetteTipBlue: './images/experiment3/Pipette1_2.png',
-  pipetteBodyWhite: './images/experiment3/Pipette3_1.png',
-  pipetteTipWhite: './images/experiment3/Pipette3_2.png',
-  tipBoxBlueClosed: './images/experiment3/PipetteTipBoxClosed1.png',
-  tipBoxBlueOpen: './images/experiment3/PipetteTipBoxOpen1.png',
-  tipBoxWhiteClosed: './images/experiment3/PipetteTipBoxClosed3.png',
-  tipBoxWhiteOpen: './images/experiment3/PipetteTipBoxOpen3.png',
-  columnEmpty: './images/experiment3/16.png',
-  columnCartridge: './images/experiment3/13.png',
-  emptyTube: './images/experiment3/EPTubeEmpty.png',
-  liquidTube: './images/experiment3/EPTubeBlue.png',
-  spoon: './images/experiment3/41.png',
-  powderClosed: './images/experiment3/ReagentBottleFilled.png',
-  powderOpen: './images/experiment3/42.png',
-  dyeClosed: './images/experiment3/ReagentBottleAmberCapped.png',
-  dyeOpen: './images/experiment3/46.png',
-  measuringCylinder: './images/experiment3/Beaker30ml.png',
-  castingBase: './images/experiment3/48.png',
-  castingCover: './images/experiment3/49.png',
-  castingFilled: './images/experiment3/50.png',
-  castingSolid: './images/experiment3/51.png',
-  shows1: './images/experiment3/shows1.png',
-  shows2: './images/experiment3/shows2.png',
-  shows3: './images/experiment3/shows3.png',
+  pipette: 'https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/pipette.avif',
+  pipetteBodyBlue: 'https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/pipette1-1.avif',
+  pipetteTipBlue: 'https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/pipette1-2.avif',
+  pipetteBodyWhite: 'https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/pipette3-1.avif',
+  pipetteTipWhite: 'https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/pipette3-2.avif',
+  tipBoxBlueClosed: 'https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/pipettetipboxclosed1.avif',
+  tipBoxBlueOpen: 'https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/pipettetipboxopen1.avif',
+  tipBoxWhiteClosed: 'https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/pipettetipboxclosed3.avif',
+  tipBoxWhiteOpen: 'https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/pipettetipboxopen3.avif',
+  columnEmpty: 'https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/16.avif',
+  columnCartridge: 'https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/13.avif',
+  emptyTube: 'https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/eptubeempty.avif',
+  liquidTube: 'https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/eptubeblue.avif',
+  spoon: 'https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/41.avif',
+  powderClosed: 'https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/reagentbottlefilled.avif',
+  powderOpen: 'https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/42.avif',
+  dyeClosed: 'https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/reagentbottleambercapped.avif',
+  dyeOpen: 'https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/46.avif',
+  measuringCylinder: 'https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/beaker30ml.avif',
+  castingBase: 'https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/48.avif',
+  castingCover: 'https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/49.avif',
+  castingFilled: 'https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/50.avif',
+  castingSolid: 'https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/51.avif',
+  shows1: 'https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/shows1.avif',
+  shows2: 'https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/shows2.avif',
+  shows3: 'https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/shows3.avif',
 } as const;
 
 type Experiment6Detail = 'loading90' | 'assembly91' | 'electrophoresisResult' | 'bandGuide' | null;
@@ -125,13 +125,13 @@ function getGelCoverPlacement() {
 }
 
 const experiment6StateAssets = {
-  sampleLiquid: './images/experiment6/8171.png',
-  reactionEmpty: './images/experiment6/81720.png',
-  reactionLiquid: './images/experiment6/81721.png',
-  reactionComplete: './images/experiment6/8710.png',
-  splitCollectionTube: './images/experiment6/8711.png',
-  columnLoaded: './images/experiment6/8712.png',
-  loadingBuffer: './images/experiment6/81756.png',
+  sampleLiquid: 'https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment6/8171.avif',
+  reactionEmpty: 'https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment6/81720.avif',
+  reactionLiquid: 'https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment6/81721.avif',
+  reactionComplete: 'https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment6/8710.avif',
+  splitCollectionTube: 'https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment6/8711.avif',
+  columnLoaded: 'https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment6/8712.avif',
+  loadingBuffer: 'https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment6/81756.avif',
 } as const;
 
 interface ReagentTubeProps {
@@ -146,7 +146,7 @@ interface ReagentTubeProps {
 
 function ReagentTube({
   id, alt, className, color, title,
-  imageSrc = './experiment4_lab/assets/ppt/sample-clear.png',
+  imageSrc = 'https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment4/ppt/sample-clear.avif',
   labelShape = 'square',
 }: ReagentTubeProps) {
   return (
@@ -1683,12 +1683,12 @@ const handleStepNavigation = useCallback((stepIndex: number) => {
               <img id="water-bath" src={pptAssets.waterBath} className="pointer-events-none absolute left-[39%] top-[14.4%] z-20 w-[9.2%]" alt="Water Bath" draggable={false} />
               <img id="centrifuge" src={pptAssets.centrifuge} className="pointer-events-none absolute left-[55%] top-[12.5%] z-20 w-[5.1%]" alt="Centrifuge" draggable={false} />
               <img src={pptAssets.cleanBenchSmall} className="pointer-events-none absolute left-[78.7%] top-[6.9%] z-20 w-[13.5%]" alt="Laminar Flow Cabinet" draggable={false} />
-              <img src="./experiment4_lab/assets/ppt/hospital-logo.png" className="pointer-events-none absolute left-[82.75%] top-[-0.73%] z-30 w-[6.98%]" alt="First Hospital of Jilin University Emblem" draggable={false} />
-              <img src="./experiment4_lab/assets/ppt/igem-logo.png" className="pointer-events-none absolute left-[91.37%] top-[1.05%] z-30 w-[7.84%]" alt="iGEM Logo" draggable={false} />
+              <img src="https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment4/ppt/hospital-logo.avif" className="pointer-events-none absolute left-[82.75%] top-[-0.73%] z-30 w-[6.98%]" alt="First Hospital of Jilin University Emblem" draggable={false} />
+              <img src="https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment4/ppt/igem-logo.avif" className="pointer-events-none absolute left-[91.37%] top-[1.05%] z-30 w-[7.84%]" alt="iGEM Logo" draggable={false} />
 
               {incubationDisplay && (
                 <div id="incubation-timer" className={`pointer-events-none absolute z-[70] flex items-center gap-2 text-black ${incubationDisplay.temperature === "Ice Bath" ? 'left-[70%] top-[56%]' : 'left-[47.5%] top-[5%]'}`}>
-                  <img src="./images/experiment1/hours.png" className="w-14 shrink-0 drop-shadow-[0_0_10px_rgba(255,220,80,0.8)]" alt="Experiment Timer" draggable={false} />
+                  <img src="https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment1/hours.avif" className="w-14 shrink-0 drop-shadow-[0_0_10px_rgba(255,220,80,0.8)]" alt="Experiment Timer" draggable={false} />
                   <div className="font-mono text-xl font-semibold italic leading-tight">
                     <div>{incubationDisplay.temperature}</div>
                     <div>{incubationDisplay.duration}</div>
@@ -1716,12 +1716,12 @@ const handleStepNavigation = useCallback((stepIndex: number) => {
               <div id="rack-reagents" className={`pointer-events-none absolute inset-0 ${isTarget('tube-rack') ? 'z-[95]' : 'z-30'}`}>
                 <ReagentTube id="reagent-hindiii" alt="HindIII" title="HindIII" color="#0f766e" className="left-[7.2%] top-[77.4%] h-[14.55%] w-[2.15%]" />
                 <div id="binding-buffer" onClick={() => handleItemClick('binding-buffer')} className={`absolute left-[9.55%] top-[78.2%] h-[14.55%] w-[2.15%] ${isTarget('binding-buffer') ? 'pointer-events-auto z-[90] cursor-pointer' : ''}`} style={isTarget('binding-buffer') ? compactTargetGlowStyle : undefined}>
-                  <img src="./experiment4_lab/assets/ppt/sample-clear.png" className="h-full w-full object-contain" alt="Gray Binding Buffer Tube" draggable={false} />
+                  <img src="https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment4/ppt/sample-clear.avif" className="h-full w-full object-contain" alt="Gray Binding Buffer Tube" draggable={false} />
                   <span className="pointer-events-none absolute left-[36%] top-[47%] h-[16%] w-[28%] border-[0.5px] border-slate-800/80 bg-[#C0C0C0]" />
                 </div>
                 <ReagentTube id="reagent-buffer" alt="Double-digestion Buffer" title="Double-digestion Buffer" color="#f97316" className="left-[11.9%] top-[75.4%] h-[14.55%] w-[2.15%]" />
                 <div id="wash-buffer" onClick={() => handleItemClick('wash-buffer')} className={`absolute left-[14.25%] top-[75.9%] h-[14.55%] w-[2.15%] ${isTarget('wash-buffer') ? 'pointer-events-auto z-[90] cursor-pointer' : ''}`} style={isTarget('wash-buffer') ? compactTargetGlowStyle : undefined}>
-                  <img src="./experiment4_lab/assets/ppt/sample-clear.png" className="h-full w-full object-contain" alt="Dark Green Wash Buffer Tube" draggable={false} />
+                  <img src="https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment4/ppt/sample-clear.avif" className="h-full w-full object-contain" alt="Dark Green Wash Buffer Tube" draggable={false} />
                   <span className="pointer-events-none absolute left-[36%] top-[47%] h-[16%] w-[28%] border-[0.5px] border-slate-800/80 bg-emerald-900" />
                 </div>
                 <ReagentTube id="reagent-bamhi" alt="BamHI" title="BamHI" color="#581c87" className="left-[16.6%] top-[74.8%] h-[14.55%] w-[2.15%]" />
@@ -1833,7 +1833,7 @@ const handleStepNavigation = useCallback((stepIndex: number) => {
                 role="button"
                 aria-label="Elution buffer"
               >
-                <img src="./experiment6-assets/ppt-media/image20.png" className="pointer-events-none absolute inset-0 h-full w-full object-contain" alt="Complete Elution Tube" draggable={false} />
+                <img src="https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment6/image20.avif" className="pointer-events-none absolute inset-0 h-full w-full object-contain" alt="Complete Elution Tube" draggable={false} />
                 <span className="pointer-events-none absolute left-[34%] top-[52%] h-[18%] w-[32%] border-[0.5px] border-slate-700/70 bg-[#c71585]" />
               </div>
               <div
@@ -1844,7 +1844,7 @@ const handleStepNavigation = useCallback((stepIndex: number) => {
                 role="button"
                 aria-label="Agarose Flask"
               >
-                <img id="flask-empty" src="./images/img17.png" className="pointer-events-none absolute inset-0 h-full w-full object-contain" alt="Empty Flask" draggable={false} />
+                <img id="flask-empty" src="https://static.igem.wiki/teams/6056/wiki/virtual-lab/common/img17.avif" className="pointer-events-none absolute inset-0 h-full w-full object-contain" alt="Empty Flask" draggable={false} />
                 <img id="flask-powder" src={pptAssets.flaskPowder} className="pointer-events-none absolute inset-0 h-full w-full object-contain opacity-0" alt="Flask Containing Agarose" draggable={false} />
                 <img id="flask-solution" src={pptAssets.flaskSolution} className="pointer-events-none absolute inset-0 h-full w-full object-contain opacity-0" alt="Dissolved Agarose Solution" draggable={false} />
                 <img id="flask-red" src={pptAssets.flaskRed} className="pointer-events-none absolute inset-0 h-full w-full object-contain opacity-0" alt="Flask After Adding Nucleic Acid Stain" draggable={false} />

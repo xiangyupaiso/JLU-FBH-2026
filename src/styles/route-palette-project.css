@@ -21,7 +21,7 @@
   --route-base: #f3f7e0; /* 底色 rgb(243, 247, 224) */
 
   /* ② 模块专属装饰素材（正文面板的植物藤蔓边框） */
-  --route-frame-image: url("../assets/wiki/project.png");
+  --route-frame-image: url("https://static.igem.wiki/teams/6056/wiki/files/pages/project/project.avif");
 
   /* ③ 标题与马克笔专属主题配色（深浅分明的双色层级设计） */
   --route-heading-ink: #243d2c;      /* 大标题 H2：深墨冷森绿，沉稳厚重 */

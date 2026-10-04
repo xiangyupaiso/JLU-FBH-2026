@@ -1,212 +1,204 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 import type {
-  StakeholderFieldRow,
+  ArticleBlock,
+  StakeholderArticle,
   StakeholderProfile,
-} from "../../../../../data/engagement/sustainability/sustainabilityData";
-import "../../../../../styles/sustainability-panels.css";
+} from "../../../../../data/engagement/sustainability/sdgChapterContract";
+import { stakeholderPhotos } from "../../../../../data/engagement/sustainability/sustainabilityPhotos";
 import { PatientChatDialog } from "./PatientChatDialog";
+import { RichText } from "./RichText";
+import { StakeholderPhotoReel } from "./StakeholderPhotoReel";
 
-const pad = (n: number) => String(Math.max(1, n)).padStart(2, "0");
-
-/** 调研走访卡片（field）的内容行：优先使用显式 fieldRows，否则由标准五字段推导。 */
-function resolveFieldRows(
-  profile: StakeholderProfile,
-): StakeholderFieldRow[] {
-  if (profile.fieldRows?.length) return [...profile.fieldRows];
-
-  const rows: StakeholderFieldRow[] = [];
-  if (profile.relevantStakeholder) {
-    rows.push({ label: "对象", paragraphs: [profile.relevantStakeholder] });
+function ArticleBlockView({ block }: { block: ArticleBlock }) {
+  if (typeof block === "string") {
+    return (
+      <p>
+        <RichText text={block} />
+      </p>
+    );
   }
-  if (profile.whyEngaged) {
-    rows.push({ label: "原因", paragraphs: [profile.whyEngaged] });
+  if ("quotes" in block) return <PatientChatDialog quotes={block.quotes} />;
+  // One engagement photo, placed between sections at body width.
+  if ("photo" in block) {
+    return (
+      <figure className="sust-stake-article__figure">
+        <img src={block.photo.src} alt={block.photo.alt} loading="lazy" decoding="async" />
+        <figcaption>{block.photo.caption}</figcaption>
+      </figure>
+    );
   }
-  if (profile.feedback) {
-    rows.push({ label: "反馈", paragraphs: [profile.feedback] });
-  }
-  const change: string[] = [];
-  if (profile.incorporated) change.push(profile.incorporated);
-  if (profile.improvement) change.push(profile.improvement);
-  if (change.length) rows.push({ label: "改变", paragraphs: change });
-  return rows;
-}
-
-function Expanded({
-  profile,
-  open,
-}: {
-  profile: StakeholderProfile;
-  open: boolean;
-}) {
   return (
-    <>
-      {open && profile.id === "tnbc-patients" && <PatientChatDialog />}
-      {profile.detailedInterview.map((paragraph, index) => (
-        <p key={index}>{paragraph}</p>
+    <ul className="sust-stake-article__bullets">
+      {block.bullets.map((item) => (
+        <li key={item}>
+          <RichText text={item} />
+        </li>
       ))}
-    </>
+    </ul>
   );
 }
 
-function InterviewCard({
-  profile,
-  ordinal,
-}: {
-  profile: StakeholderProfile;
-  ordinal: number;
-}) {
-  const [open, setOpen] = useState(false);
-  const roleLine = profile.role
-    ? profile.organization
-      ? `${profile.role} · ${profile.organization}`
-      : profile.role
-    : profile.organization;
-
+function ArticleView({ article }: { article: StakeholderArticle }) {
   return (
-    <article className="sust-stake-card sust-stake-card--interview">
-      <p className="sust-stake-card__code">INT-{pad(ordinal)} · 访谈</p>
-
-      <header className="sust-stake-card__head">
-        <h3 className="sust-stake-card__name">{profile.name}</h3>
-        {roleLine ? <p className="sust-stake-card__role">{roleLine}</p> : null}
-      </header>
-
-      <div className="sust-stake-card__context">
-        {profile.relevantStakeholder && <p>{profile.relevantStakeholder}</p>}
-        {profile.whyEngaged && (
-          <p>
-            <span className="sust-stake-card__runin">WHY WE ENGAGED</span>
-            {profile.whyEngaged}
-          </p>
-        )}
-      </div>
-
-      {profile.feedback && (
-        <blockquote className="sust-stake-card__quote">
-          {profile.feedback}
-        </blockquote>
-      )}
-
-      <div className="sust-stake-card__revision">
-        <p className="sust-stake-card__revision-body">
-          <span className="sust-stake-card__runin">项目修订</span>
-          {profile.incorporated}
-        </p>
-        {profile.improvement && (
-          <p className="sust-stake-card__improvement">{profile.improvement}</p>
-        )}
-      </div>
-
-      {profile.detailedInterview.length > 0 && (
-        <details
-          className="sust-stake-card__more"
-          open={open}
-          onToggle={(e) => setOpen(e.currentTarget.open)}
-        >
-          <summary className="sust-stake-card__summary">
-            <span className="sust-stake-card__sdg">{profile.sdgAddressed}</span>
-            <span className="sust-stake-card__toggle">阅读完整访谈</span>
-          </summary>
-          <div className="sust-stake-card__more-body">
-            <div className="sust-stake-card__more-inner">
-              <Expanded profile={profile} open={open} />
-            </div>
-          </div>
-        </details>
-      )}
+    <article className="sust-stake-article">
+      <h4 className="sust-stake-article__title">{article.title}</h4>
+      {article.sections.map((section, index) => (
+        <section className="sust-stake-article__section" key={index}>
+          {section.heading ? (
+            <h5 className="sust-stake-article__heading">{section.heading}</h5>
+          ) : null}
+          {section.blocks.map((block, blockIndex) => (
+            <ArticleBlockView block={block} key={blockIndex} />
+          ))}
+        </section>
+      ))}
     </article>
   );
 }
 
-function FieldCard({
-  profile,
-  ordinal,
-}: {
-  profile: StakeholderProfile;
-  ordinal: number;
-}) {
+const FIELDS = [
+  ["relevantStakeholder", "Relevant Stakeholder"],
+  ["challenge", "Challenge"],
+  ["keyInsight", "Key Insight"],
+  ["whatChanged", "What Changed"],
+] as const;
+
+/**
+ * Stakeholder card: Relevant Stakeholder / Challenge / Key Insight / What
+ * Changed, status + SDG pills, and the popup modal "Click more" interview
+ * article with full text and engagement photographs.
+ *
+ * When the profile has documented photographs, a reel bleeds off the right edge
+ * of the card and the body copy is narrowed to keep the measure readable; with
+ * none, the card falls back to the plain full-width layout.
+ */
+export function StakeholderProfileCard({ profile }: { profile: StakeholderProfile }) {
   const [open, setOpen] = useState(false);
-  const rows = resolveFieldRows(profile);
-  const roleLine = profile.role
-    ? profile.organization
-      ? `${profile.role} · ${profile.organization}`
-      : profile.role
-    : profile.organization;
+  // The reel is `pointer-events: none`, so the card owns the hover hold.
+  const [held, setHeld] = useState(false);
+  const photos = profile.photos ?? stakeholderPhotos(profile.id);
+
+  useEffect(() => {
+    if (!open) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpen(false);
+    };
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.body.style.overflow = prevOverflow;
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [open]);
 
   return (
-    <article className="sust-stake-card sust-stake-card--field">
-      <div className="sust-stake-card__body">
-        <aside className="sust-stake-card__aside">
-          <div>
-            <h3 className="sust-stake-card__name">{profile.name}</h3>
-            {roleLine ? (
-              <p className="sust-stake-card__role">{roleLine}</p>
-            ) : null}
-          </div>
-          <p className="sust-stake-card__code">FIELD-{pad(ordinal)} · 调研</p>
-        </aside>
+    <article
+      className={`sust-stake-card${photos.length ? " sust-stake-card--with-photos" : ""}`}
+      id={profile.id}
+      onMouseEnter={() => setHeld(true)}
+      onMouseLeave={() => setHeld(false)}
+    >
+      {photos.length ? (
+        <StakeholderPhotoReel photos={photos} label={profile.name} paused={held} />
+      ) : null}
 
-        <div className="sust-stake-card__main">
-          {rows.map((row) => (
+      <div className="sust-stake-card__body">
+        <header className="sust-stake-card__header">
+          <span className="sust-stake-card__index">{profile.index}</span>
+          <h4 className="sust-stake-card__name">{profile.name}</h4>
+          {profile.role ? <span className="sust-stake-card__role">{profile.role}</span> : null}
+        </header>
+
+        <dl className="sust-stake-card__fields">
+          {FIELDS.map(([key, label]) =>
+            profile[key] ? (
+              <div className="sust-stake-card__field" key={key}>
+                <dt>{label}</dt>
+                <dd>
+                  <RichText text={profile[key]} />
+                </dd>
+              </div>
+            ) : null,
+          )}
+        </dl>
+      </div>
+
+      <footer className="sust-stake-card__footer">
+        <span className="sust-stake-card__status">{profile.currentStatus}</span>
+        <ul className="sust-stake-card__sdgs" aria-label="SDGs addressed">
+          {profile.sdgs.map((sdg) => (
+            <li key={sdg} data-sdg={sdg}>
+              SDG {sdg}
+            </li>
+          ))}
+        </ul>
+        {profile.article ? (
+          <button
+            type="button"
+            className="sust-stake-card__toggle"
+            aria-haspopup="dialog"
+            onClick={() => setOpen(true)}
+          >
+            Click more
+          </button>
+        ) : null}
+      </footer>
+
+      {open && profile.article ? (
+        createPortal(
+          <div
+            className="sust-stake-modal-backdrop"
+            onClick={() => setOpen(false)}
+            role="presentation"
+          >
             <div
-              className={`sust-stake-card__row${
-                row.label === "反馈" ? " sust-stake-card__row--feedback" : ""
-              }`}
-              key={row.label}
+              className="sust-stake-modal"
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby={`modal-title-${profile.id}`}
+              onClick={(e) => e.stopPropagation()}
             >
-              <span className="sust-stake-card__row-label">{row.label}</span>
-              <div className="sust-stake-card__row-body">
-                {row.paragraphs.map((paragraph, index) => (
-                  <p
-                    className={
-                      row.label === "改变"
-                        ? "sust-stake-card__row-arrow"
-                        : undefined
-                    }
-                    key={index}
-                  >
-                    {paragraph}
-                  </p>
-                ))}
+              <button
+                type="button"
+                className="sust-stake-modal__close"
+                onClick={() => setOpen(false)}
+                aria-label="Close dialog"
+              >
+                &times;
+              </button>
+
+              <div className="sust-stake-modal__header">
+                <div className="sust-stake-modal__meta">
+                  <div className="sust-stake-modal__tags">
+                    <span className="sust-stake-card__index">{profile.index}</span>
+                    <span className="sust-stake-card__status">{profile.currentStatus}</span>
+                    <ul className="sust-stake-card__sdgs" aria-label="SDGs addressed">
+                      {profile.sdgs.map((sdg) => (
+                        <li key={sdg} data-sdg={sdg}>
+                          SDG {sdg}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  <h3 className="sust-stake-modal__name" id={`modal-title-${profile.id}`}>
+                    {profile.name}
+                  </h3>
+                  {profile.role ? (
+                    <span className="sust-stake-card__role">{profile.role}</span>
+                  ) : null}
+                </div>
+              </div>
+
+              <div className="sust-stake-modal__body">
+                <ArticleView article={profile.article} />
               </div>
             </div>
-          ))}
-        </div>
-      </div>
-
-      {profile.detailedInterview.length > 0 && (
-        <details
-          className="sust-stake-card__more"
-          open={open}
-          onToggle={(e) => setOpen(e.currentTarget.open)}
-        >
-          <summary className="sust-stake-card__summary">
-            <span className="sust-stake-card__sdg">{profile.sdgAddressed}</span>
-            <span className="sust-stake-card__toggle">查看调研记录</span>
-          </summary>
-          <div className="sust-stake-card__more-body">
-            <div className="sust-stake-card__more-inner">
-              <Expanded profile={profile} open={open} />
-            </div>
-          </div>
-        </details>
-      )}
+          </div>,
+          document.body,
+        )
+      ) : null}
     </article>
   );
 }
-
-export function StakeholderProfileCard({
-  profile,
-  ordinal = 1,
-}: {
-  profile: StakeholderProfile;
-  ordinal?: number;
-}) {
-  return profile.variant === "field" ? (
-    <FieldCard profile={profile} ordinal={ordinal} />
-  ) : (
-    <InterviewCard profile={profile} ordinal={ordinal} />
-  );
-}
-
-

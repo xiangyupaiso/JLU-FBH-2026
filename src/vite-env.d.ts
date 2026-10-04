@@ -15,14 +15,11 @@ declare module "*.pdb?raw" {
   export default content;
 }
 
+// Mol* is loaded at runtime from public/vendor/molstar/molstar.js (window.molstar).
+// The npm package of the same version supplies the types only; nothing is bundled.
 interface Window {
   molstar?: {
-    Viewer: {
-      create: (
-        element: string | HTMLElement,
-        options?: Record<string, unknown>
-      ) => Promise<any>;
-    };
-    [key: string]: any;
+    Viewer: typeof import("molstar/lib/apps/viewer/app").Viewer;
+    lib: typeof import("molstar/lib/apps/viewer/lib").lib;
   };
 }

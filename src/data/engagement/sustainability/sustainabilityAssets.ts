@@ -1,116 +1,152 @@
 /**
  * Sustainability page asset registry.
  *
- * Semantic key / file name / path / alt mapping for every image and PDF
- * attachment. Source assets live under
- * `文案集/Human Practice/sustainability/图片和附件`. The mapping below was
- * corrected against `Sustainability.md` (see the v2 optimization plan §2.1):
+ * Semantic key → file name / local source / iGEM URL / alt for every image and
+ * PDF the page renders. Local sources live in
+ * `文案集/engagement/sustainability/图片和附件/`; upload targets follow the team's
+ * `static.igem.wiki/teams/6056/wiki/files/...` naming (uploads are handled by
+ * the asset owner — see IGEM_ASSET_REGISTRY.md).
  *
- *   - `image 3.png`       → SST-QN overview preview
- *   - `filename 1.png`    → SDG association figure (replaced by SdgDimensionChord)
- *   - `filename 2.png`    → SCALE framework flow
- *   - `image 4.png`       → SET–DEVELOP–GROW framework
- *   - `image 5.png`       → SET stakeholder overview
- *   - `image 6.png`       → Scenario-based batch failure projection (SDG 9 C)
- *   - `ChatGPT Image …`   → SDG 9 evidence figure
- *
- * `uploadUrl` stays `null` until the iGEM Wiki uploads step is completed; the
- * bundled copies under `src/assets/wiki` are what the page renders in the
- * meantime.
+ * SST-QN Figures 5–7 are rendered as interactive charts (ECharts), and the
+ * Overview SDG / SET-DEVELOP-GROW graphics as components, so they have no
+ * image entry here. Engagement photographs live in `sustainabilityPhotos.ts`.
  */
+
+import overviewMapOfStakeholdersImg from "../../../assets/wiki/sustainability/sustainability-overview-map-of-stakeholders.png";
+import overviewScaleModelImg from "../../../assets/wiki/sustainability/sustainability-overview-scale-model.png";
+import overviewSstQnNetworkImg from "../../../assets/wiki/sustainability/sustainability-overview-sst-qn-network.png";
+import overviewReusableToolkitImg from "../../../assets/wiki/sustainability/sustainability-overview-reusable-toolkit.png";
+import overviewSetDevelopGrowImg from "../../../assets/wiki/sustainability/sustainability-overview-set-develop-grow.png";
+import sstQnStatusClassificationImg from "../../../assets/wiki/sustainability/sustainability-sst-qn-status-classification.png";
+import sdg3StakeholdersDistributionImg from "../../../assets/wiki/sustainability/sustainability-sdg3-stakeholders-distribution.png";
+import sdg3TraceableImprovementsImg from "../../../assets/wiki/sustainability/sustainability-sdg3-traceable-improvements.png";
+import sdg3DcMaturationFlowImg from "../../../assets/wiki/sustainability/sustainability-sdg3-dc-maturation-flow.png";
+import sdg3SplenocyteFlowImg from "../../../assets/wiki/sustainability/sustainability-sdg3-splenocyte-flow.png";
+import sdg3TumorGrowthImg from "../../../assets/wiki/sustainability/sustainability-sdg3-tumor-growth.png";
 
 export type SustainabilityAssetKind = "image" | "pdf";
 
 export interface SustainabilityAssetEntry {
   kind: SustainabilityAssetKind;
-  /** Semantic file name defined by the rename list (统一前缀 `sustainability-`) */
   fileName: string;
-  /** Original asset path relative to the repository root (pre-rename source) */
   localSourcePath: string;
-  /** Planned bundled asset path relative to the repository root */
-  targetPath: string;
-  /** Official iGEM server URL; `null` until the upload is completed */
-  uploadUrl: string | null;
+  localSrc?: string;
+  uploadUrl: string;
   alt: string;
-  /** Page section the asset belongs to */
   section: string;
-  /** Reuse / rendering constraints, when any */
-  usageNote?: string;
-  /**
-   * Vite-base-relative URL for assets served from `public/` (e.g. PDFs).
-   * Resolve with `import.meta.env.BASE_URL + webPath`.
-   */
-  webPath?: string | null;
-  /** PDF page count (displayed in the native PDF caption) */
   pdfPages?: number;
 }
 
+const IMG = "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement";
+const DOCS = "https://static.igem.wiki/teams/6056/wiki/files/docs";
+
 export const sustainabilityAssets = {
-  overviewSstQnPreview01: {
+  overviewMapOfStakeholders: {
     kind: "image",
-    fileName: "sustainability-overview-sst-qn-preview-01.png",
-    localSourcePath: "文案集/Human Practice/sustainability/图片和附件/image 3.png",
-    targetPath: "src/assets/wiki/sustainability-overview-sst-qn-preview-01.png",
-    uploadUrl: null,
-    alt: "SST-QN SDG 协同与权衡量化网络概念示意图",
-    section: "Overview — SST-QN 简述配图",
+    fileName: "sustainability-overview-map-of-stakeholders.png",
+    localSourcePath: "src/assets/wiki/sustainability/sustainability-overview-map-of-stakeholders.png",
+    localSrc: overviewMapOfStakeholdersImg,
+    uploadUrl: `${IMG}/sustainability-overview-map-of-stakeholders.avif`,
+    alt: "Map of stakeholders",
+    section: "Overview",
   },
-  overviewScaleFramework03: {
+  overviewScaleModel: {
     kind: "image",
-    fileName: "sustainability-overview-scale-framework-03.png",
-    localSourcePath: "文案集/Human Practice/sustainability/图片和附件/filename 2.png",
-    targetPath: "src/assets/wiki/sustainability-overview-scale-framework-03.png",
-    uploadUrl: null,
-    alt: "SCALE Framework 利益相关者动态改进机制流程图",
-    section: "Overview — SCALE Framework 流程图",
+    fileName: "sustainability-overview-scale-model.png",
+    localSourcePath: "src/assets/wiki/sustainability/sustainability-overview-scale-model.png",
+    localSrc: overviewScaleModelImg,
+    uploadUrl: `${IMG}/sustainability-overview-scale-model.avif`,
+    alt: "SCALE Model",
+    section: "Overview",
   },
-  frameworkSetDevelopGrow06: {
+  overviewSstQnNetwork: {
     kind: "image",
-    fileName: "sustainability-framework-set-develop-grow-06.png",
-    localSourcePath: "文案集/Human Practice/sustainability/图片和附件/image 4.png",
-    targetPath: "src/assets/wiki/sustainability-framework-set-develop-grow-06.png",
-    uploadUrl: null,
-    alt: "SET-DEVELOP-GROW 三层递进影响框架图",
-    section: "SET–DEVELOP–GROW Impact Framework — 三层框架图",
+    fileName: "sustainability-overview-sst-qn-network.png",
+    localSourcePath: "src/assets/wiki/sustainability/sustainability-overview-sst-qn-network.png",
+    localSrc: overviewSstQnNetworkImg,
+    uploadUrl: `${IMG}/sustainability-overview-sst-qn-network.avif`,
+    alt: "SDG Synergy–Trade-off Quantification Network (SST-QN)",
+    section: "Overview",
   },
-  setStakeholderOverview07: {
+  overviewReusableToolkit: {
     kind: "image",
-    fileName: "sustainability-set-stakeholder-overview-07.png",
-    localSourcePath: "文案集/Human Practice/sustainability/图片和附件/image 5.png",
-    targetPath: "src/assets/wiki/sustainability-set-stakeholder-overview-07.png",
-    uploadUrl: null,
-    alt: "利益相关者的参与总览",
-    section: "SET → Addressing Core Challenges — 利益相关者总览图",
+    fileName: "sustainability-overview-reusable-toolkit.png",
+    localSourcePath: "src/assets/wiki/sustainability/sustainability-overview-reusable-toolkit.png",
+    localSrc: overviewReusableToolkitImg,
+    uploadUrl: `${IMG}/sustainability-overview-reusable-toolkit.avif`,
+    alt: "Reusable Sustainability Toolkit",
+    section: "Overview",
   },
-  sdg9BatchProjection: {
+  sstQnStatusClassification: {
     kind: "image",
-    fileName: "sustainability-sdg9-batch-projection.png",
-    localSourcePath: "文案集/Human Practice/sustainability/图片和附件/image 6.png",
-    targetPath: "src/assets/wiki/sustainability-sdg9-batch-projection.png",
-    uploadUrl: null,
-    alt: "Scenario-based Batch Failure Projection 批次失败情景预测图",
-    section: "SDG 9 → C — Consequences（环境影响）",
+    fileName: "sustainability-sst-qn-status-classification.png",
+    localSourcePath: "src/assets/wiki/sustainability/sustainability-sst-qn-status-classification.png",
+    localSrc: sstQnStatusClassificationImg,
+    uploadUrl: `${IMG}/sustainability-sst-qn-status-classification.avif`,
+    alt: "SST-QN Interaction Status Classification",
+    section: "SST-QN",
   },
-  sdg9Evidence: {
+  frameworkSetDevelopGrow: {
     kind: "image",
-    fileName: "sustainability-sdg9-evidence.png",
-    localSourcePath: "文案集/Human Practice/sustainability/图片和附件/ChatGPT Image 2026年8月11日 20_33_38.png",
-    targetPath: "src/assets/wiki/sustainability-sdg9-evidence.png",
-    uploadUrl: null,
-    alt: "SDG 9 证据链统计图",
-    section: "SDG 9 → E — Evidence",
+    fileName: "sustainability-overview-set-develop-grow.png",
+    localSourcePath: "src/assets/wiki/sustainability/sustainability-overview-set-develop-grow.png",
+    localSrc: overviewSetDevelopGrowImg,
+    uploadUrl: `${IMG}/sustainability-framework-set-develop-grow.avif`,
+    alt: "SET-DEVELOP-GROW Impact Framework (SDG Impact Framework)",
+    section: "SDG Impact Framework",
   },
-  sstQnModelConstruction09: {
+  sdg3StakeholdersDistribution: {
+    kind: "image",
+    fileName: "sustainability-sdg3-stakeholders-distribution.png",
+    localSourcePath: "src/assets/wiki/sustainability/sustainability-sdg3-stakeholders-distribution.png",
+    localSrc: sdg3StakeholdersDistributionImg,
+    uploadUrl: `${IMG}/sustainability-sdg3-stakeholders-distribution.avif`,
+    alt: "49 stakeholders across five groups",
+    section: "SDG 3 — Evidence",
+  },
+  sdg3TraceableImprovements: {
+    kind: "image",
+    fileName: "sustainability-sdg3-traceable-improvements.png",
+    localSourcePath: "src/assets/wiki/sustainability/sustainability-sdg3-traceable-improvements.png",
+    localSrc: sdg3TraceableImprovementsImg,
+    uploadUrl: `${IMG}/sustainability-sdg3-traceable-improvements.avif`,
+    alt: "Eight traceable project improvements",
+    section: "SDG 3 — Evidence",
+  },
+  sdg3DcMaturationFlow: {
+    kind: "image",
+    fileName: "sustainability-sdg3-dc-maturation-flow.png",
+    localSourcePath: "src/assets/wiki/sustainability/sustainability-sdg3-dc-maturation-flow.png",
+    localSrc: sdg3DcMaturationFlowImg,
+    uploadUrl: `${IMG}/sustainability-sdg3-dc-maturation-flow.avif`,
+    alt: "In vitro flow cytometry of dendritic-cell maturation and CD8⁺ T-cell subsets",
+    section: "SDG 3 — Evidence",
+  },
+  sdg3SplenocyteFlow: {
+    kind: "image",
+    fileName: "sustainability-sdg3-splenocyte-flow.png",
+    localSourcePath: "src/assets/wiki/sustainability/sustainability-sdg3-splenocyte-flow.png",
+    localSrc: sdg3SplenocyteFlowImg,
+    uploadUrl: `${IMG}/sustainability-sdg3-splenocyte-flow.avif`,
+    alt: "In vivo splenocyte flow cytometry of IFN-γ⁺CD8⁺ and GzmB⁺CD8⁺ subsets",
+    section: "SDG 3 — Evidence",
+  },
+  sdg3TumorGrowth: {
+    kind: "image",
+    fileName: "sustainability-sdg3-tumor-growth.png",
+    localSourcePath: "src/assets/wiki/sustainability/sustainability-sdg3-tumor-growth.png",
+    localSrc: sdg3TumorGrowthImg,
+    uploadUrl: `${IMG}/sustainability-sdg3-tumor-growth.avif`,
+    alt: "Excised tumors and endpoint tumor volume across PBS, control and circRNA vaccine groups",
+    section: "SDG 3 — Evidence",
+  },
+  sstQnModelConstruction: {
     kind: "pdf",
     fileName: "sustainability-sst-qn-model-construction.pdf",
-    localSourcePath: "文案集/Human Practice/sustainability/图片和附件/SDG 模型构建.pdf",
-    targetPath: "public/assets/docs/sustainability-sst-qn-model-construction.pdf",
-    uploadUrl: null,
-    alt: "SST-QN SDG 模型构建方法论与完整评分矩阵",
-    section: "SST-QN 章节末尾 — 模型构建详细文档（“SDG 模型构建.pdf”）",
-    usageNote:
-      "以浏览器原生 PDF viewer 内嵌展示，需上传至 iGEM 服务器",
-    webPath: "assets/docs/sustainability-sst-qn-model-construction.pdf",
+    localSourcePath: "public/assets/docs/sustainability-sst-qn-model-construction.pdf",
+    uploadUrl: `${DOCS}/sustainability-sst-qn-model-construction.pdf`,
+    alt: "SDG 模型构建",
+    section: "SST-QN",
     pdfPages: 53,
   },
 } as const satisfies Record<string, SustainabilityAssetEntry>;
@@ -123,8 +159,10 @@ export type SustainabilityImageAssetKey = {
     : never;
 }[SustainabilityAssetKey];
 
-export type SustainabilityPdfAssetKey = {
-  [K in SustainabilityAssetKey]: (typeof sustainabilityAssets)[K]["kind"] extends "pdf"
-    ? K
-    : never;
-}[SustainabilityAssetKey];
+/** iGEM URL of a registered image with local fallback. */
+export const sustainabilityImage = (key: SustainabilityImageAssetKey): string =>
+  sustainabilityAssets[key].localSrc || sustainabilityAssets[key].uploadUrl;
+
+/** iGEM docs URL of a hosted PDF/HTML file name, with local dev fallback. */
+export const sustainabilityDocUrl = (fileName: string) =>
+  import.meta.env.DEV ? `/assets/docs/${fileName}` : `${DOCS}/${fileName}`;

@@ -3,7 +3,7 @@
   body,
   body * {
     cursor:
-      url("../assets/wiki/cursor-default.png") 13 12,
+      url("https://static.igem.wiki/teams/6056/wiki/files/pages/shared/cursor-default.avif") 13 12,
       auto !important;
   }
 
@@ -36,14 +36,14 @@
     )
     * {
     cursor:
-      url("../assets/wiki/cursor-active.png") 13 12,
+      url("https://static.igem.wiki/teams/6056/wiki/files/pages/shared/cursor-active.avif") 13 12,
       pointer !important;
   }
 
   body.is-pressing,
   body.is-pressing * {
     cursor:
-      url("../assets/wiki/cursor-active.png") 13 12,
+      url("https://static.igem.wiki/teams/6056/wiki/files/pages/shared/cursor-active.avif") 13 12,
       pointer !important;
   }
 }

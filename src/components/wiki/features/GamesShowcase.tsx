@@ -94,6 +94,7 @@ function GameExperience({
     const previousRootInert = appRoot?.inert ?? false;
 
     document.body.style.overflow = "hidden";
+    window.dispatchEvent(new Event("sheep-cursor-hide"));
     if (appRoot) appRoot.inert = true;
     closeButtonRef.current?.focus();
 
@@ -275,6 +276,19 @@ export function GamesStationMap() {
           </li>
         </ol>
       </div>
+      <p className="games-project-map__source-note">
+        <span className="games-project-map__source-mascot" aria-hidden="true">
+          <img
+            src="https://static.igem.wiki/teams/6056/wiki/files/pages/shared/lamb.avif"
+            alt=""
+            loading="lazy"
+          />
+        </span>
+        <span className="games-project-map__source-copy">
+          <span>Open source</span>
+          The source code for these games is openly available in our iGEM GitLab repository.
+        </span>
+      </p>
     </div>
   );
 }

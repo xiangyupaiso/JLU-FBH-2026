@@ -33,7 +33,7 @@ export function StepIndicator({
         <span>Experiment Steps</span>
       </h3>
 
-      <ScrollArea className="flex-1 -mx-1">
+      <ScrollArea className="min-h-0 flex-1 -mx-1">
         <div className="space-y-1.5 px-1">
           {steps.map((step, index) => {
             const isCompleted = completedSteps.includes(index);

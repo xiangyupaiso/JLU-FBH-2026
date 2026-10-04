@@ -1,5 +1,6 @@
 const EMBEDDED = new URLSearchParams(window.location.search).get("embed") === "1";
-const ASSET = "assets/ppt/";
+const ASSET = "https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment4/ppt/";
+const assetUrl = (name) => ASSET + name.replace(/\.png$/i, ".avif");
 
 const stages = [
   {
@@ -595,7 +596,7 @@ function renderStages() {
 
 function renderChoices(task) {
   els.choiceGrid.innerHTML = task.choices.map((choice, index) => {
-    const image = choice.asset ? `<img src="${ASSET}${choice.asset}" alt="" draggable="false" />` : "";
+    const image = choice.asset ? `<img src="${assetUrl(choice.asset)}" alt="" draggable="false" />` : "";
     const modeClass = task.mode === "drag" ? "" : "is-select";
     const sublabel = task.mode === "drag" ? `<small>${pad(index + 1)} · Drag or Click</small>` : "";
     return `
@@ -653,11 +654,11 @@ function render() {
 
   els.sceneTitle.textContent = `${stage.title} · Action ${taskNumber}`;
   els.sceneBadge.textContent = `STEP ${pad(stageNumber)}`;
-  els.targetImage.src = `${ASSET}${task.targetAsset}`;
+  els.targetImage.src = assetUrl(task.targetAsset);
   els.targetImage.alt = task.target;
   els.targetLabel.textContent = task.target;
   els.targetAction.textContent = task.mode === "drag" ? "Drag or click the target" : task.mode === "timer" ? "Select the duration and run" : "Select the correct setting";
-  els.sampleStateImage.src = `${ASSET}${stage.sample.asset}`;
+  els.sampleStateImage.src = assetUrl(stage.sample.asset);
   els.sampleStateImage.alt = stage.sample.label;
   els.sampleStateLabel.textContent = stage.sample.label;
   els.captionIndex.textContent = pad(taskNumber);

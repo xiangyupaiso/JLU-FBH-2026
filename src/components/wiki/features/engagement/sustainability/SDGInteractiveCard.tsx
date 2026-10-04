@@ -1,44 +1,35 @@
-import { useState } from "react";
+import type { MouseEvent } from "react";
 import type { CoreSdg } from "../../../../../data/engagement/sustainability/sustainabilityData";
-import "../../../../../styles/sustainability-panels.css";
 
+const jump = (event: MouseEvent<HTMLAnchorElement>, target: string) => {
+  event.preventDefault();
+  document.getElementById(target)?.scrollIntoView({ behavior: "smooth", block: "start" });
+};
+
+/**
+ * Overview core-SDG card: SDG colour top bar, goal number and title, one-line
+ * focus. Links to the goal's chapter when that chapter is on the page.
+ */
 export function SDGInteractiveCard({ sdg }: { sdg: CoreSdg }) {
-  const [flipped, setFlipped] = useState(false);
-
-  return (
-    <button
-      type="button"
-      className={`sust-sdg-card${flipped ? " is-flipped" : ""}`}
-      aria-pressed={flipped}
-      aria-label={`SDG ${sdg.number} ${sdg.title} — 点击翻转查看 CirCure 的回应`}
-      onClick={() => setFlipped((value) => !value)}
+  const body = (
+    <>
+      <span className="sust-sdg-card__number">SDG {sdg.number}</span>
+      <h4 className="sust-sdg-card__title">{sdg.title}</h4>
+      <p className="sust-sdg-card__summary">{sdg.summary}</p>
+    </>
+  );
+  return sdg.target ? (
+    <a
+      className="sust-sdg-card"
+      data-sdg={sdg.number}
+      href={`#${sdg.target}`}
+      onClick={(event) => jump(event, sdg.target!)}
     >
-      <span className="sust-sdg-card__inner">
-        <span
-          className="sust-sdg-card__face sust-sdg-card__face--front"
-          style={{ background: sdg.color.hex }}
-        >
-          <span className="sust-sdg-card__eyebrow">
-            Sustainable Development Goal
-          </span>
-          <span className="sust-sdg-card__number">
-            {String(sdg.number).padStart(2, "0")}
-          </span>
-          <span className="sust-sdg-card__title">{sdg.title}</span>
-          <span className="sust-sdg-card__hint">Hover / Click to flip</span>
-        </span>
-        <span className="sust-sdg-card__face sust-sdg-card__face--back">
-          <span className="sust-sdg-card__eyebrow">CirCure · 回应的核心挑战</span>
-          <span className="sust-sdg-card__title">SDG {sdg.number}</span>
-          <span className="sust-sdg-card__back-body">{sdg.challenge}</span>
-          <span className="sust-sdg-card__pill">{sdg.frameworkLayer}</span>
-          <span className="sust-sdg-card__hint">
-            SET–Develop–Grow · {sdg.title}
-          </span>
-        </span>
-      </span>
-    </button>
+      {body}
+    </a>
+  ) : (
+    <article className="sust-sdg-card" data-sdg={sdg.number}>
+      {body}
+    </article>
   );
 }
-
-

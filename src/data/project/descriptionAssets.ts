@@ -1,10 +1,10 @@
-import fig1 from "../../assets/wiki/description/description-figure1.png";
-import fig2 from "../../assets/wiki/description/description-figure2.png";
-import fig3 from "../../assets/wiki/description/description-figure3.png";
-import fig4 from "../../assets/wiki/description/description-figure4.png";
-import fig5 from "../../assets/wiki/description/description-figure5.png";
-import fig6 from "../../assets/wiki/description/description-figure6.png";
-import fig7 from "../../assets/wiki/description/description-figure7.png";
+const fig1 = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/description-figure1.avif";
+const fig2 = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/description-figure2.avif";
+const fig3 = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/description-figure3.avif";
+const fig4 = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/description-figure4.avif";
+const fig5 = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/description-figure5.avif";
+const fig6 = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/description-figure6.avif";
+const fig7 = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/description-figure7.avif";
 
 export const descriptionFigures = {
   fig1: {
