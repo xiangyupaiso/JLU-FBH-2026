@@ -3,17 +3,17 @@
     "teamId": "6056",
     "teamName": "JLU-FBH",
     "year": 2026,
-    "lastUpdated": "2026-10-05T08:59:57.243Z",
+    "lastUpdated": "2026-10-05T14:17:45.610Z",
     "stats": {
-      "total": 2021,
-      "inUse": 1482,
-      "standby": 507,
+      "total": 2061,
+      "inUse": 1542,
+      "standby": 487,
       "deprecated": 32,
       "byKind": {
-        "image": 1943,
+        "image": 1978,
         "font": 28,
         "structure": 3,
-        "pdf": 41,
+        "pdf": 46,
         "archive": 2,
         "video": 4
       }
@@ -3913,14 +3913,51 @@
       "md5": "3521f661ec0762d1328d5f6eb2564578",
       "fileSize": 2043955,
       "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/files/docs/sustainability-anchor-decide-toolkit-cn.pdf",
-      "status": "standby",
+      "status": "in-use",
       "description": "",
       "keywords": [
         "sustainability-anchor-decide-toolkit-cn",
         "pdf"
       ],
-      "references": [],
-      "notes": "Standby/Mirrored asset with CDN URL"
+      "references": [
+        {
+          "file": ".tmp-verify/catalog.backup.json",
+          "line": 3910,
+          "text": "\"fileName\": \"sustainability-anchor-decide-toolkit-cn.pdf\",",
+          "type": "mention"
+        },
+        {
+          "file": ".tmp-verify/catalog.backup.json",
+          "line": 3912,
+          "text": "\"localPath\": \"public/assets/docs/sustainability-anchor-decide-toolkit-cn.pdf\",",
+          "type": "mention"
+        },
+        {
+          "file": ".tmp-verify/catalog.backup.json",
+          "line": 3915,
+          "text": "\"uploadUrl\": \"https://static.igem.wiki/teams/6056/wiki/files/docs/sustainability-anchor-decide-toolkit-cn.pdf\",",
+          "type": "mention"
+        },
+        {
+          "file": ".tmp-verify/catalog.backup.json",
+          "line": 92399,
+          "text": "\"uploadUrl\": \"https://static.igem.wiki/teams/6056/wiki/files/docs/sustainability-anchor-decide-toolkit-cn.pdf\",",
+          "type": "mention"
+        },
+        {
+          "file": ".tmp-verify/registry.backup.md",
+          "line": 1982,
+          "text": "| 🟡 备用 | `pdf` | `engagement` | **Anchor & Decide Toolkit-Chinese.pdf**<br><sub>`anchor-decide-toolkit-chinese-pdf`</sub> | `文案集/engagement",
+          "type": "markdown-link"
+        },
+        {
+          "file": ".tmp-verify/registry.backup.md",
+          "line": 2001,
+          "text": "| 🟡 备用 | `pdf` | `engagement` | **sustainability-anchor-decide-toolkit-cn.pdf**<br><sub>`sustainability-anchor-decide-toolkit-cn-pdf`</sub>",
+          "type": "markdown-link"
+        }
+      ],
+      "notes": "Referenced in 6 location(s)"
     },
     "sustainability-anchor-decide-toolkit-en-pdf": {
       "id": "sustainability-anchor-decide-toolkit-en-pdf",
@@ -3931,14 +3968,51 @@
       "md5": "8077f8c9608526d47e22218be2db433e",
       "fileSize": 1859836,
       "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/files/docs/sustainability-anchor-decide-toolkit-en.pdf",
-      "status": "standby",
+      "status": "in-use",
       "description": "",
       "keywords": [
         "sustainability-anchor-decide-toolkit-en",
         "pdf"
       ],
-      "references": [],
-      "notes": "Standby/Mirrored asset with CDN URL"
+      "references": [
+        {
+          "file": ".tmp-verify/catalog.backup.json",
+          "line": 3928,
+          "text": "\"fileName\": \"sustainability-anchor-decide-toolkit-en.pdf\",",
+          "type": "mention"
+        },
+        {
+          "file": ".tmp-verify/catalog.backup.json",
+          "line": 3930,
+          "text": "\"localPath\": \"public/assets/docs/sustainability-anchor-decide-toolkit-en.pdf\",",
+          "type": "mention"
+        },
+        {
+          "file": ".tmp-verify/catalog.backup.json",
+          "line": 3933,
+          "text": "\"uploadUrl\": \"https://static.igem.wiki/teams/6056/wiki/files/docs/sustainability-anchor-decide-toolkit-en.pdf\",",
+          "type": "mention"
+        },
+        {
+          "file": ".tmp-verify/catalog.backup.json",
+          "line": 92417,
+          "text": "\"uploadUrl\": \"https://static.igem.wiki/teams/6056/wiki/files/docs/sustainability-anchor-decide-toolkit-en.pdf\",",
+          "type": "mention"
+        },
+        {
+          "file": ".tmp-verify/registry.backup.md",
+          "line": 1983,
+          "text": "| 🟡 备用 | `pdf` | `engagement` | **Anchor & Decide Toolkit-English.pdf**<br><sub>`anchor-decide-toolkit-english-pdf`</sub> | `文案集/engagement",
+          "type": "markdown-link"
+        },
+        {
+          "file": ".tmp-verify/registry.backup.md",
+          "line": 2002,
+          "text": "| 🟡 备用 | `pdf` | `engagement` | **sustainability-anchor-decide-toolkit-en.pdf**<br><sub>`sustainability-anchor-decide-toolkit-en-pdf`</sub>",
+          "type": "markdown-link"
+        }
+      ],
+      "notes": "Referenced in 6 location(s)"
     },
     "sustainability-claim-boundary-protocol-cn-pdf": {
       "id": "sustainability-claim-boundary-protocol-cn-pdf",
@@ -3949,14 +4023,51 @@
       "md5": "16a0ef2e021d4835979419922daae62f",
       "fileSize": 1341505,
       "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/files/docs/sustainability-claim-boundary-protocol-cn.pdf",
-      "status": "standby",
+      "status": "in-use",
       "description": "",
       "keywords": [
         "sustainability-claim-boundary-protocol-cn",
         "pdf"
       ],
-      "references": [],
-      "notes": "Standby/Mirrored asset with CDN URL"
+      "references": [
+        {
+          "file": ".tmp-verify/catalog.backup.json",
+          "line": 3946,
+          "text": "\"fileName\": \"sustainability-claim-boundary-protocol-cn.pdf\",",
+          "type": "mention"
+        },
+        {
+          "file": ".tmp-verify/catalog.backup.json",
+          "line": 3948,
+          "text": "\"localPath\": \"public/assets/docs/sustainability-claim-boundary-protocol-cn.pdf\",",
+          "type": "mention"
+        },
+        {
+          "file": ".tmp-verify/catalog.backup.json",
+          "line": 3951,
+          "text": "\"uploadUrl\": \"https://static.igem.wiki/teams/6056/wiki/files/docs/sustainability-claim-boundary-protocol-cn.pdf\",",
+          "type": "mention"
+        },
+        {
+          "file": ".tmp-verify/catalog.backup.json",
+          "line": 93089,
+          "text": "\"uploadUrl\": \"https://static.igem.wiki/teams/6056/wiki/files/docs/sustainability-claim-boundary-protocol-cn.pdf\",",
+          "type": "mention"
+        },
+        {
+          "file": ".tmp-verify/registry.backup.md",
+          "line": 1999,
+          "text": "| 🟡 备用 | `pdf` | `engagement` | **Sustainability Claim Boundary Protocol-Chinese.pdf**<br><sub>`sustainability-claim-boundary-protocol-chin",
+          "type": "markdown-link"
+        },
+        {
+          "file": ".tmp-verify/registry.backup.md",
+          "line": 2003,
+          "text": "| 🟡 备用 | `pdf` | `engagement` | **sustainability-claim-boundary-protocol-cn.pdf**<br><sub>`sustainability-claim-boundary-protocol-cn-pdf`</",
+          "type": "markdown-link"
+        }
+      ],
+      "notes": "Referenced in 6 location(s)"
     },
     "sustainability-claim-boundary-protocol-en-pdf": {
       "id": "sustainability-claim-boundary-protocol-en-pdf",
@@ -3967,14 +4078,51 @@
       "md5": "0c1bec68ce878e21cbb2cb798aaa4d4c",
       "fileSize": 2167243,
       "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/files/docs/sustainability-claim-boundary-protocol-en.pdf",
-      "status": "standby",
+      "status": "in-use",
       "description": "",
       "keywords": [
         "sustainability-claim-boundary-protocol-en",
         "pdf"
       ],
-      "references": [],
-      "notes": "Standby/Mirrored asset with CDN URL"
+      "references": [
+        {
+          "file": ".tmp-verify/catalog.backup.json",
+          "line": 3964,
+          "text": "\"fileName\": \"sustainability-claim-boundary-protocol-en.pdf\",",
+          "type": "mention"
+        },
+        {
+          "file": ".tmp-verify/catalog.backup.json",
+          "line": 3966,
+          "text": "\"localPath\": \"public/assets/docs/sustainability-claim-boundary-protocol-en.pdf\",",
+          "type": "mention"
+        },
+        {
+          "file": ".tmp-verify/catalog.backup.json",
+          "line": 3969,
+          "text": "\"uploadUrl\": \"https://static.igem.wiki/teams/6056/wiki/files/docs/sustainability-claim-boundary-protocol-en.pdf\",",
+          "type": "mention"
+        },
+        {
+          "file": ".tmp-verify/catalog.backup.json",
+          "line": 93107,
+          "text": "\"uploadUrl\": \"https://static.igem.wiki/teams/6056/wiki/files/docs/sustainability-claim-boundary-protocol-en.pdf\",",
+          "type": "mention"
+        },
+        {
+          "file": ".tmp-verify/registry.backup.md",
+          "line": 2000,
+          "text": "| 🟡 备用 | `pdf` | `engagement` | **Sustainability Claim Boundary Protocol-English.pdf**<br><sub>`sustainability-claim-boundary-protocol-engl",
+          "type": "markdown-link"
+        },
+        {
+          "file": ".tmp-verify/registry.backup.md",
+          "line": 2004,
+          "text": "| 🟡 备用 | `pdf` | `engagement` | **sustainability-claim-boundary-protocol-en.pdf**<br><sub>`sustainability-claim-boundary-protocol-en-pdf`</",
+          "type": "markdown-link"
+        }
+      ],
+      "notes": "Referenced in 6 location(s)"
     },
     "sustainability-core-question-anchor-cn-pdf": {
       "id": "sustainability-core-question-anchor-cn-pdf",
@@ -3985,14 +4133,51 @@
       "md5": "b6dee427ce3863fd00b3f9c9da405f5f",
       "fileSize": 1500490,
       "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/files/docs/sustainability-core-question-anchor-cn.pdf",
-      "status": "standby",
+      "status": "in-use",
       "description": "",
       "keywords": [
         "sustainability-core-question-anchor-cn",
         "pdf"
       ],
-      "references": [],
-      "notes": "Standby/Mirrored asset with CDN URL"
+      "references": [
+        {
+          "file": ".tmp-verify/catalog.backup.json",
+          "line": 3982,
+          "text": "\"fileName\": \"sustainability-core-question-anchor-cn.pdf\",",
+          "type": "mention"
+        },
+        {
+          "file": ".tmp-verify/catalog.backup.json",
+          "line": 3984,
+          "text": "\"localPath\": \"public/assets/docs/sustainability-core-question-anchor-cn.pdf\",",
+          "type": "mention"
+        },
+        {
+          "file": ".tmp-verify/catalog.backup.json",
+          "line": 3987,
+          "text": "\"uploadUrl\": \"https://static.igem.wiki/teams/6056/wiki/files/docs/sustainability-core-question-anchor-cn.pdf\",",
+          "type": "mention"
+        },
+        {
+          "file": ".tmp-verify/catalog.backup.json",
+          "line": 92435,
+          "text": "\"uploadUrl\": \"https://static.igem.wiki/teams/6056/wiki/files/docs/sustainability-core-question-anchor-cn.pdf\",",
+          "type": "mention"
+        },
+        {
+          "file": ".tmp-verify/registry.backup.md",
+          "line": 1984,
+          "text": "| 🟡 备用 | `pdf` | `engagement` | **Core Question Anchor-Chinese.pdf**<br><sub>`core-question-anchor-chinese-pdf`</sub> | `文案集/engagement/sus",
+          "type": "markdown-link"
+        },
+        {
+          "file": ".tmp-verify/registry.backup.md",
+          "line": 2005,
+          "text": "| 🟡 备用 | `pdf` | `engagement` | **sustainability-core-question-anchor-cn.pdf**<br><sub>`sustainability-core-question-anchor-cn-pdf`</sub> |",
+          "type": "markdown-link"
+        }
+      ],
+      "notes": "Referenced in 6 location(s)"
     },
     "sustainability-core-question-anchor-en-pdf": {
       "id": "sustainability-core-question-anchor-en-pdf",
@@ -4003,14 +4188,51 @@
       "md5": "a3ec930e9e3ac9cd9c34de46a5efd1ee",
       "fileSize": 2005862,
       "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/files/docs/sustainability-core-question-anchor-en.pdf",
-      "status": "standby",
+      "status": "in-use",
       "description": "",
       "keywords": [
         "sustainability-core-question-anchor-en",
         "pdf"
       ],
-      "references": [],
-      "notes": "Standby/Mirrored asset with CDN URL"
+      "references": [
+        {
+          "file": ".tmp-verify/catalog.backup.json",
+          "line": 4000,
+          "text": "\"fileName\": \"sustainability-core-question-anchor-en.pdf\",",
+          "type": "mention"
+        },
+        {
+          "file": ".tmp-verify/catalog.backup.json",
+          "line": 4002,
+          "text": "\"localPath\": \"public/assets/docs/sustainability-core-question-anchor-en.pdf\",",
+          "type": "mention"
+        },
+        {
+          "file": ".tmp-verify/catalog.backup.json",
+          "line": 4005,
+          "text": "\"uploadUrl\": \"https://static.igem.wiki/teams/6056/wiki/files/docs/sustainability-core-question-anchor-en.pdf\",",
+          "type": "mention"
+        },
+        {
+          "file": ".tmp-verify/catalog.backup.json",
+          "line": 92453,
+          "text": "\"uploadUrl\": \"https://static.igem.wiki/teams/6056/wiki/files/docs/sustainability-core-question-anchor-en.pdf\",",
+          "type": "mention"
+        },
+        {
+          "file": ".tmp-verify/registry.backup.md",
+          "line": 1985,
+          "text": "| 🟡 备用 | `pdf` | `engagement` | **Core Question Anchor-English.pdf**<br><sub>`core-question-anchor-english-pdf`</sub> | `文案集/engagement/sus",
+          "type": "markdown-link"
+        },
+        {
+          "file": ".tmp-verify/registry.backup.md",
+          "line": 2006,
+          "text": "| 🟡 备用 | `pdf` | `engagement` | **sustainability-core-question-anchor-en.pdf**<br><sub>`sustainability-core-question-anchor-en-pdf`</sub> |",
+          "type": "markdown-link"
+        }
+      ],
+      "notes": "Referenced in 6 location(s)"
     },
     "sustainability-feedback-to-action-record-cn-pdf": {
       "id": "sustainability-feedback-to-action-record-cn-pdf",
@@ -4021,14 +4243,51 @@
       "md5": "65d16ba8e41cb9dc78aa3359686dec8b",
       "fileSize": 272952,
       "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/files/docs/sustainability-feedback-to-action-record-cn.pdf",
-      "status": "standby",
+      "status": "in-use",
       "description": "",
       "keywords": [
         "sustainability-feedback-to-action-record-cn",
         "pdf"
       ],
-      "references": [],
-      "notes": "Standby/Mirrored asset with CDN URL"
+      "references": [
+        {
+          "file": ".tmp-verify/catalog.backup.json",
+          "line": 4018,
+          "text": "\"fileName\": \"sustainability-feedback-to-action-record-cn.pdf\",",
+          "type": "mention"
+        },
+        {
+          "file": ".tmp-verify/catalog.backup.json",
+          "line": 4020,
+          "text": "\"localPath\": \"public/assets/docs/sustainability-feedback-to-action-record-cn.pdf\",",
+          "type": "mention"
+        },
+        {
+          "file": ".tmp-verify/catalog.backup.json",
+          "line": 4023,
+          "text": "\"uploadUrl\": \"https://static.igem.wiki/teams/6056/wiki/files/docs/sustainability-feedback-to-action-record-cn.pdf\",",
+          "type": "mention"
+        },
+        {
+          "file": ".tmp-verify/catalog.backup.json",
+          "line": 92471,
+          "text": "\"uploadUrl\": \"https://static.igem.wiki/teams/6056/wiki/files/docs/sustainability-feedback-to-action-record-cn.pdf\",",
+          "type": "mention"
+        },
+        {
+          "file": ".tmp-verify/registry.backup.md",
+          "line": 1986,
+          "text": "| 🟡 备用 | `pdf` | `engagement` | **Feedback-to-Action Record-Chinese.pdf**<br><sub>`feedback-to-action-record-chinese-pdf`</sub> | `文案集/enga",
+          "type": "markdown-link"
+        },
+        {
+          "file": ".tmp-verify/registry.backup.md",
+          "line": 2007,
+          "text": "| 🟡 备用 | `pdf` | `engagement` | **sustainability-feedback-to-action-record-cn.pdf**<br><sub>`sustainability-feedback-to-action-record-cn-pd",
+          "type": "markdown-link"
+        }
+      ],
+      "notes": "Referenced in 6 location(s)"
     },
     "sustainability-feedback-to-action-record-en-pdf": {
       "id": "sustainability-feedback-to-action-record-en-pdf",
@@ -4039,14 +4298,51 @@
       "md5": "23a56314bb0334c9a1da1789f092ada7",
       "fileSize": 226844,
       "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/files/docs/sustainability-feedback-to-action-record-en.pdf",
-      "status": "standby",
+      "status": "in-use",
       "description": "",
       "keywords": [
         "sustainability-feedback-to-action-record-en",
         "pdf"
       ],
-      "references": [],
-      "notes": "Standby/Mirrored asset with CDN URL"
+      "references": [
+        {
+          "file": ".tmp-verify/catalog.backup.json",
+          "line": 4036,
+          "text": "\"fileName\": \"sustainability-feedback-to-action-record-en.pdf\",",
+          "type": "mention"
+        },
+        {
+          "file": ".tmp-verify/catalog.backup.json",
+          "line": 4038,
+          "text": "\"localPath\": \"public/assets/docs/sustainability-feedback-to-action-record-en.pdf\",",
+          "type": "mention"
+        },
+        {
+          "file": ".tmp-verify/catalog.backup.json",
+          "line": 4041,
+          "text": "\"uploadUrl\": \"https://static.igem.wiki/teams/6056/wiki/files/docs/sustainability-feedback-to-action-record-en.pdf\",",
+          "type": "mention"
+        },
+        {
+          "file": ".tmp-verify/catalog.backup.json",
+          "line": 92489,
+          "text": "\"uploadUrl\": \"https://static.igem.wiki/teams/6056/wiki/files/docs/sustainability-feedback-to-action-record-en.pdf\",",
+          "type": "mention"
+        },
+        {
+          "file": ".tmp-verify/registry.backup.md",
+          "line": 1987,
+          "text": "| 🟡 备用 | `pdf` | `engagement` | **Feedback-to-Action Record-English.pdf**<br><sub>`feedback-to-action-record-english-pdf`</sub> | `文案集/enga",
+          "type": "markdown-link"
+        },
+        {
+          "file": ".tmp-verify/registry.backup.md",
+          "line": 2008,
+          "text": "| 🟡 备用 | `pdf` | `engagement` | **sustainability-feedback-to-action-record-en.pdf**<br><sub>`sustainability-feedback-to-action-record-en-pd",
+          "type": "markdown-link"
+        }
+      ],
+      "notes": "Referenced in 6 location(s)"
     },
     "sustainability-resource-responsibility-map-cn-pdf": {
       "id": "sustainability-resource-responsibility-map-cn-pdf",
@@ -4057,14 +4353,51 @@
       "md5": "0723ed528e2e601d494ad18b40b1a7bb",
       "fileSize": 1732528,
       "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/files/docs/sustainability-resource-responsibility-map-cn.pdf",
-      "status": "standby",
+      "status": "in-use",
       "description": "",
       "keywords": [
         "sustainability-resource-responsibility-map-cn",
         "pdf"
       ],
-      "references": [],
-      "notes": "Standby/Mirrored asset with CDN URL"
+      "references": [
+        {
+          "file": ".tmp-verify/catalog.backup.json",
+          "line": 4054,
+          "text": "\"fileName\": \"sustainability-resource-responsibility-map-cn.pdf\",",
+          "type": "mention"
+        },
+        {
+          "file": ".tmp-verify/catalog.backup.json",
+          "line": 4056,
+          "text": "\"localPath\": \"public/assets/docs/sustainability-resource-responsibility-map-cn.pdf\",",
+          "type": "mention"
+        },
+        {
+          "file": ".tmp-verify/catalog.backup.json",
+          "line": 4059,
+          "text": "\"uploadUrl\": \"https://static.igem.wiki/teams/6056/wiki/files/docs/sustainability-resource-responsibility-map-cn.pdf\",",
+          "type": "mention"
+        },
+        {
+          "file": ".tmp-verify/catalog.backup.json",
+          "line": 92878,
+          "text": "\"uploadUrl\": \"https://static.igem.wiki/teams/6056/wiki/files/docs/sustainability-resource-responsibility-map-cn.pdf\",",
+          "type": "mention"
+        },
+        {
+          "file": ".tmp-verify/registry.backup.md",
+          "line": 1989,
+          "text": "| 🟡 备用 | `pdf` | `engagement` | **Resource Responsibility Map-Chinese.pdf**<br><sub>`resource-responsibility-map-chinese-pdf`</sub> | `文案集/",
+          "type": "markdown-link"
+        },
+        {
+          "file": ".tmp-verify/registry.backup.md",
+          "line": 2009,
+          "text": "| 🟡 备用 | `pdf` | `engagement` | **sustainability-resource-responsibility-map-cn.pdf**<br><sub>`sustainability-resource-responsibility-map-c",
+          "type": "markdown-link"
+        }
+      ],
+      "notes": "Referenced in 6 location(s)"
     },
     "sustainability-resource-responsibility-map-en-pdf": {
       "id": "sustainability-resource-responsibility-map-en-pdf",
@@ -4075,14 +4408,51 @@
       "md5": "54de4c44a14e23b9e0756ad0437acec6",
       "fileSize": 1806748,
       "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/files/docs/sustainability-resource-responsibility-map-en.pdf",
-      "status": "standby",
+      "status": "in-use",
       "description": "",
       "keywords": [
         "sustainability-resource-responsibility-map-en",
         "pdf"
       ],
-      "references": [],
-      "notes": "Standby/Mirrored asset with CDN URL"
+      "references": [
+        {
+          "file": ".tmp-verify/catalog.backup.json",
+          "line": 4072,
+          "text": "\"fileName\": \"sustainability-resource-responsibility-map-en.pdf\",",
+          "type": "mention"
+        },
+        {
+          "file": ".tmp-verify/catalog.backup.json",
+          "line": 4074,
+          "text": "\"localPath\": \"public/assets/docs/sustainability-resource-responsibility-map-en.pdf\",",
+          "type": "mention"
+        },
+        {
+          "file": ".tmp-verify/catalog.backup.json",
+          "line": 4077,
+          "text": "\"uploadUrl\": \"https://static.igem.wiki/teams/6056/wiki/files/docs/sustainability-resource-responsibility-map-en.pdf\",",
+          "type": "mention"
+        },
+        {
+          "file": ".tmp-verify/catalog.backup.json",
+          "line": 92896,
+          "text": "\"uploadUrl\": \"https://static.igem.wiki/teams/6056/wiki/files/docs/sustainability-resource-responsibility-map-en.pdf\",",
+          "type": "mention"
+        },
+        {
+          "file": ".tmp-verify/registry.backup.md",
+          "line": 1990,
+          "text": "| 🟡 备用 | `pdf` | `engagement` | **Resource Responsibility Map-English.pdf**<br><sub>`resource-responsibility-map-english-pdf`</sub> | `文案集/",
+          "type": "markdown-link"
+        },
+        {
+          "file": ".tmp-verify/registry.backup.md",
+          "line": 2010,
+          "text": "| 🟡 备用 | `pdf` | `engagement` | **sustainability-resource-responsibility-map-en.pdf**<br><sub>`sustainability-resource-responsibility-map-e",
+          "type": "markdown-link"
+        }
+      ],
+      "notes": "Referenced in 6 location(s)"
     },
     "sustainability-scenario-batch-failure-projection-report-cn-pdf": {
       "id": "sustainability-scenario-batch-failure-projection-report-cn-pdf",
@@ -4093,14 +4463,39 @@
       "md5": "7d0b35983eeec44819e59c15bcdf682c",
       "fileSize": 468878,
       "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/files/docs/sustainability-scenario-batch-failure-projection-report-cn.pdf",
-      "status": "standby",
+      "status": "in-use",
       "description": "",
       "keywords": [
         "sustainability-scenario-batch-failure-projection-report-cn",
         "pdf"
       ],
-      "references": [],
-      "notes": "Standby/Mirrored asset with CDN URL"
+      "references": [
+        {
+          "file": ".tmp-verify/catalog.backup.json",
+          "line": 4090,
+          "text": "\"fileName\": \"sustainability-scenario-batch-failure-projection-report-cn.pdf\",",
+          "type": "mention"
+        },
+        {
+          "file": ".tmp-verify/catalog.backup.json",
+          "line": 4092,
+          "text": "\"localPath\": \"public/assets/docs/sustainability-scenario-batch-failure-projection-report-cn.pdf\",",
+          "type": "mention"
+        },
+        {
+          "file": ".tmp-verify/catalog.backup.json",
+          "line": 4095,
+          "text": "\"uploadUrl\": \"https://static.igem.wiki/teams/6056/wiki/files/docs/sustainability-scenario-batch-failure-projection-report-cn.pdf\",",
+          "type": "mention"
+        },
+        {
+          "file": ".tmp-verify/registry.backup.md",
+          "line": 2011,
+          "text": "| 🟡 备用 | `pdf` | `engagement` | **sustainability-scenario-batch-failure-projection-report-cn.pdf**<br><sub>`sustainability-scenario-batch-f",
+          "type": "markdown-link"
+        }
+      ],
+      "notes": "Referenced in 4 location(s)"
     },
     "sustainability-scenario-batch-failure-projection-report-en-pdf": {
       "id": "sustainability-scenario-batch-failure-projection-report-en-pdf",
@@ -4111,14 +4506,39 @@
       "md5": "1ae2c340cf43c1a1f8e6e8825b7108d7",
       "fileSize": 357135,
       "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/files/docs/sustainability-scenario-batch-failure-projection-report-en.pdf",
-      "status": "standby",
+      "status": "in-use",
       "description": "",
       "keywords": [
         "sustainability-scenario-batch-failure-projection-report-en",
         "pdf"
       ],
-      "references": [],
-      "notes": "Standby/Mirrored asset with CDN URL"
+      "references": [
+        {
+          "file": ".tmp-verify/catalog.backup.json",
+          "line": 4108,
+          "text": "\"fileName\": \"sustainability-scenario-batch-failure-projection-report-en.pdf\",",
+          "type": "mention"
+        },
+        {
+          "file": ".tmp-verify/catalog.backup.json",
+          "line": 4110,
+          "text": "\"localPath\": \"public/assets/docs/sustainability-scenario-batch-failure-projection-report-en.pdf\",",
+          "type": "mention"
+        },
+        {
+          "file": ".tmp-verify/catalog.backup.json",
+          "line": 4113,
+          "text": "\"uploadUrl\": \"https://static.igem.wiki/teams/6056/wiki/files/docs/sustainability-scenario-batch-failure-projection-report-en.pdf\",",
+          "type": "mention"
+        },
+        {
+          "file": ".tmp-verify/registry.backup.md",
+          "line": 2012,
+          "text": "| 🟡 备用 | `pdf` | `engagement` | **sustainability-scenario-batch-failure-projection-report-en.pdf**<br><sub>`sustainability-scenario-batch-f",
+          "type": "markdown-link"
+        }
+      ],
+      "notes": "Referenced in 4 location(s)"
     },
     "sustainability-sdg-impact-documentation-template-cn-pdf": {
       "id": "sustainability-sdg-impact-documentation-template-cn-pdf",
@@ -4129,14 +4549,51 @@
       "md5": "4a737a06b3cfb1da5c8b004b2ffc411f",
       "fileSize": 241942,
       "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/files/docs/sustainability-sdg-impact-documentation-template-cn.pdf",
-      "status": "standby",
+      "status": "in-use",
       "description": "",
       "keywords": [
         "sustainability-sdg-impact-documentation-template-cn",
         "pdf"
       ],
-      "references": [],
-      "notes": "Standby/Mirrored asset with CDN URL"
+      "references": [
+        {
+          "file": ".tmp-verify/catalog.backup.json",
+          "line": 4126,
+          "text": "\"fileName\": \"sustainability-sdg-impact-documentation-template-cn.pdf\",",
+          "type": "mention"
+        },
+        {
+          "file": ".tmp-verify/catalog.backup.json",
+          "line": 4128,
+          "text": "\"localPath\": \"public/assets/docs/sustainability-sdg-impact-documentation-template-cn.pdf\",",
+          "type": "mention"
+        },
+        {
+          "file": ".tmp-verify/catalog.backup.json",
+          "line": 4131,
+          "text": "\"uploadUrl\": \"https://static.igem.wiki/teams/6056/wiki/files/docs/sustainability-sdg-impact-documentation-template-cn.pdf\",",
+          "type": "mention"
+        },
+        {
+          "file": ".tmp-verify/catalog.backup.json",
+          "line": 92914,
+          "text": "\"uploadUrl\": \"https://static.igem.wiki/teams/6056/wiki/files/docs/sustainability-sdg-impact-documentation-template-cn.pdf\",",
+          "type": "mention"
+        },
+        {
+          "file": ".tmp-verify/registry.backup.md",
+          "line": 1991,
+          "text": "| 🟡 备用 | `pdf` | `engagement` | **SDG Impact Documentation Template-Chinese.pdf**<br><sub>`sdg-impact-documentation-template-chinese-pdf`</",
+          "type": "markdown-link"
+        },
+        {
+          "file": ".tmp-verify/registry.backup.md",
+          "line": 2013,
+          "text": "| 🟡 备用 | `pdf` | `engagement` | **sustainability-sdg-impact-documentation-template-cn.pdf**<br><sub>`sustainability-sdg-impact-documentatio",
+          "type": "markdown-link"
+        }
+      ],
+      "notes": "Referenced in 6 location(s)"
     },
     "sustainability-sdg-impact-documentation-template-en-pdf": {
       "id": "sustainability-sdg-impact-documentation-template-en-pdf",
@@ -4147,14 +4604,51 @@
       "md5": "4e69490202fe0ee99bd7335acbffd640",
       "fileSize": 230536,
       "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/files/docs/sustainability-sdg-impact-documentation-template-en.pdf",
-      "status": "standby",
+      "status": "in-use",
       "description": "",
       "keywords": [
         "sustainability-sdg-impact-documentation-template-en",
         "pdf"
       ],
-      "references": [],
-      "notes": "Standby/Mirrored asset with CDN URL"
+      "references": [
+        {
+          "file": ".tmp-verify/catalog.backup.json",
+          "line": 4144,
+          "text": "\"fileName\": \"sustainability-sdg-impact-documentation-template-en.pdf\",",
+          "type": "mention"
+        },
+        {
+          "file": ".tmp-verify/catalog.backup.json",
+          "line": 4146,
+          "text": "\"localPath\": \"public/assets/docs/sustainability-sdg-impact-documentation-template-en.pdf\",",
+          "type": "mention"
+        },
+        {
+          "file": ".tmp-verify/catalog.backup.json",
+          "line": 4149,
+          "text": "\"uploadUrl\": \"https://static.igem.wiki/teams/6056/wiki/files/docs/sustainability-sdg-impact-documentation-template-en.pdf\",",
+          "type": "mention"
+        },
+        {
+          "file": ".tmp-verify/catalog.backup.json",
+          "line": 92932,
+          "text": "\"uploadUrl\": \"https://static.igem.wiki/teams/6056/wiki/files/docs/sustainability-sdg-impact-documentation-template-en.pdf\",",
+          "type": "mention"
+        },
+        {
+          "file": ".tmp-verify/registry.backup.md",
+          "line": 1992,
+          "text": "| 🟡 备用 | `pdf` | `engagement` | **SDG Impact Documentation Template-English.pdf**<br><sub>`sdg-impact-documentation-template-english-pdf`</",
+          "type": "markdown-link"
+        },
+        {
+          "file": ".tmp-verify/registry.backup.md",
+          "line": 2014,
+          "text": "| 🟡 备用 | `pdf` | `engagement` | **sustainability-sdg-impact-documentation-template-en.pdf**<br><sub>`sustainability-sdg-impact-documentatio",
+          "type": "markdown-link"
+        }
+      ],
+      "notes": "Referenced in 6 location(s)"
     },
     "sustainability-sst-qn-model-construction-pdf": {
       "id": "sustainability-sst-qn-model-construction-pdf",
@@ -4172,6 +4666,66 @@
         "pdf"
       ],
       "references": [
+        {
+          "file": ".tmp-verify/catalog.backup.json",
+          "line": 4162,
+          "text": "\"fileName\": \"sustainability-sst-qn-model-construction.pdf\",",
+          "type": "mention"
+        },
+        {
+          "file": ".tmp-verify/catalog.backup.json",
+          "line": 4164,
+          "text": "\"localPath\": \"public/assets/docs/sustainability-sst-qn-model-construction.pdf\",",
+          "type": "mention"
+        },
+        {
+          "file": ".tmp-verify/catalog.backup.json",
+          "line": 4167,
+          "text": "\"uploadUrl\": \"https://static.igem.wiki/teams/6056/wiki/files/docs/sustainability-sst-qn-model-construction.pdf\",",
+          "type": "mention"
+        },
+        {
+          "file": ".tmp-verify/catalog.backup.json",
+          "line": 4178,
+          "text": "\"text\": \"fileName: \\\"sustainability-sst-qn-model-construction.pdf\\\",\",",
+          "type": "mention"
+        },
+        {
+          "file": ".tmp-verify/catalog.backup.json",
+          "line": 4184,
+          "text": "\"text\": \"localSourcePath: \\\"public/assets/docs/sustainability-sst-qn-model-construction.pdf\\\",\",",
+          "type": "mention"
+        },
+        {
+          "file": ".tmp-verify/catalog.backup.json",
+          "line": 4190,
+          "text": "\"text\": \"uploadUrl: `${DOCS}/sustainability-sst-qn-model-construction.pdf`,\",",
+          "type": "mention"
+        },
+        {
+          "file": ".tmp-verify/catalog.backup.json",
+          "line": 92950,
+          "text": "\"uploadUrl\": \"https://static.igem.wiki/teams/6056/wiki/files/docs/sustainability-sst-qn-model-construction.pdf\",",
+          "type": "mention"
+        },
+        {
+          "file": ".tmp-verify/catalog.backup.json",
+          "line": 92961,
+          "text": "\"text\": \"uploadUrl: `${DOCS}/sustainability-sst-qn-model-construction.pdf`,\",",
+          "type": "mention"
+        },
+        {
+          "file": ".tmp-verify/registry.backup.md",
+          "line": 1505,
+          "text": "| 🟢 在用 | `pdf` | `engagement` | **SDG 模型构建.pdf**<br><sub>`sdg-pdf`</sub> | `文案集/engagement/sustainability/图片和附件/SDG 模型构建.pdf` | 1864.1 | [C",
+          "type": "markdown-link"
+        },
+        {
+          "file": ".tmp-verify/registry.backup.md",
+          "line": 1506,
+          "text": "| 🟢 在用 | `pdf` | `engagement` | **sustainability-sst-qn-model-construction.pdf**<br><sub>`sustainability-sst-qn-model-construction-pdf`</su",
+          "type": "markdown-link"
+        },
         {
           "file": "src/data/engagement/sustainability/sustainabilityAssets.ts",
           "line": 145,
@@ -4191,7 +4745,7 @@
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 3 location(s)"
+      "notes": "Referenced in 13 location(s)"
     },
     "sustainability-stakeholder-feedback-decision-protocol-cn-pdf": {
       "id": "sustainability-stakeholder-feedback-decision-protocol-cn-pdf",
@@ -4202,14 +4756,51 @@
       "md5": "5f5910b6d557d725677c31b3c93dad75",
       "fileSize": 2247595,
       "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/files/docs/sustainability-stakeholder-feedback-decision-protocol-cn.pdf",
-      "status": "standby",
+      "status": "in-use",
       "description": "",
       "keywords": [
         "sustainability-stakeholder-feedback-decision-protocol-cn",
         "pdf"
       ],
-      "references": [],
-      "notes": "Standby/Mirrored asset with CDN URL"
+      "references": [
+        {
+          "file": ".tmp-verify/catalog.backup.json",
+          "line": 4199,
+          "text": "\"fileName\": \"sustainability-stakeholder-feedback-decision-protocol-cn.pdf\",",
+          "type": "mention"
+        },
+        {
+          "file": ".tmp-verify/catalog.backup.json",
+          "line": 4201,
+          "text": "\"localPath\": \"public/assets/docs/sustainability-stakeholder-feedback-decision-protocol-cn.pdf\",",
+          "type": "mention"
+        },
+        {
+          "file": ".tmp-verify/catalog.backup.json",
+          "line": 4204,
+          "text": "\"uploadUrl\": \"https://static.igem.wiki/teams/6056/wiki/files/docs/sustainability-stakeholder-feedback-decision-protocol-cn.pdf\",",
+          "type": "mention"
+        },
+        {
+          "file": ".tmp-verify/catalog.backup.json",
+          "line": 92981,
+          "text": "\"uploadUrl\": \"https://static.igem.wiki/teams/6056/wiki/files/docs/sustainability-stakeholder-feedback-decision-protocol-cn.pdf\",",
+          "type": "mention"
+        },
+        {
+          "file": ".tmp-verify/registry.backup.md",
+          "line": 1993,
+          "text": "| 🟡 备用 | `pdf` | `engagement` | **Stakeholder Feedback Decision Protocol-Chinese.pdf**<br><sub>`stakeholder-feedback-decision-protocol-chin",
+          "type": "markdown-link"
+        },
+        {
+          "file": ".tmp-verify/registry.backup.md",
+          "line": 2015,
+          "text": "| 🟡 备用 | `pdf` | `engagement` | **sustainability-stakeholder-feedback-decision-protocol-cn.pdf**<br><sub>`sustainability-stakeholder-feedba",
+          "type": "markdown-link"
+        }
+      ],
+      "notes": "Referenced in 6 location(s)"
     },
     "sustainability-stakeholder-feedback-decision-protocol-en-pdf": {
       "id": "sustainability-stakeholder-feedback-decision-protocol-en-pdf",
@@ -4220,14 +4811,51 @@
       "md5": "8cdf1474f251c648976bf85973d08570",
       "fileSize": 1994410,
       "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/files/docs/sustainability-stakeholder-feedback-decision-protocol-en.pdf",
-      "status": "standby",
+      "status": "in-use",
       "description": "",
       "keywords": [
         "sustainability-stakeholder-feedback-decision-protocol-en",
         "pdf"
       ],
-      "references": [],
-      "notes": "Standby/Mirrored asset with CDN URL"
+      "references": [
+        {
+          "file": ".tmp-verify/catalog.backup.json",
+          "line": 4217,
+          "text": "\"fileName\": \"sustainability-stakeholder-feedback-decision-protocol-en.pdf\",",
+          "type": "mention"
+        },
+        {
+          "file": ".tmp-verify/catalog.backup.json",
+          "line": 4219,
+          "text": "\"localPath\": \"public/assets/docs/sustainability-stakeholder-feedback-decision-protocol-en.pdf\",",
+          "type": "mention"
+        },
+        {
+          "file": ".tmp-verify/catalog.backup.json",
+          "line": 4222,
+          "text": "\"uploadUrl\": \"https://static.igem.wiki/teams/6056/wiki/files/docs/sustainability-stakeholder-feedback-decision-protocol-en.pdf\",",
+          "type": "mention"
+        },
+        {
+          "file": ".tmp-verify/catalog.backup.json",
+          "line": 92999,
+          "text": "\"uploadUrl\": \"https://static.igem.wiki/teams/6056/wiki/files/docs/sustainability-stakeholder-feedback-decision-protocol-en.pdf\",",
+          "type": "mention"
+        },
+        {
+          "file": ".tmp-verify/registry.backup.md",
+          "line": 1994,
+          "text": "| 🟡 备用 | `pdf` | `engagement` | **Stakeholder Feedback Decision Protocol-English.pdf**<br><sub>`stakeholder-feedback-decision-protocol-engl",
+          "type": "markdown-link"
+        },
+        {
+          "file": ".tmp-verify/registry.backup.md",
+          "line": 2016,
+          "text": "| 🟡 备用 | `pdf` | `engagement` | **sustainability-stakeholder-feedback-decision-protocol-en.pdf**<br><sub>`sustainability-stakeholder-feedba",
+          "type": "markdown-link"
+        }
+      ],
+      "notes": "Referenced in 6 location(s)"
     },
     "sustainability-stakeholder-interview-guide-cn-pdf": {
       "id": "sustainability-stakeholder-interview-guide-cn-pdf",
@@ -4238,14 +4866,51 @@
       "md5": "960b2f6ed3a75a06985bc95f87fe0eeb",
       "fileSize": 2042268,
       "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/files/docs/sustainability-stakeholder-interview-guide-cn.pdf",
-      "status": "standby",
+      "status": "in-use",
       "description": "",
       "keywords": [
         "sustainability-stakeholder-interview-guide-cn",
         "pdf"
       ],
-      "references": [],
-      "notes": "Standby/Mirrored asset with CDN URL"
+      "references": [
+        {
+          "file": ".tmp-verify/catalog.backup.json",
+          "line": 4235,
+          "text": "\"fileName\": \"sustainability-stakeholder-interview-guide-cn.pdf\",",
+          "type": "mention"
+        },
+        {
+          "file": ".tmp-verify/catalog.backup.json",
+          "line": 4237,
+          "text": "\"localPath\": \"public/assets/docs/sustainability-stakeholder-interview-guide-cn.pdf\",",
+          "type": "mention"
+        },
+        {
+          "file": ".tmp-verify/catalog.backup.json",
+          "line": 4240,
+          "text": "\"uploadUrl\": \"https://static.igem.wiki/teams/6056/wiki/files/docs/sustainability-stakeholder-interview-guide-cn.pdf\",",
+          "type": "mention"
+        },
+        {
+          "file": ".tmp-verify/catalog.backup.json",
+          "line": 93017,
+          "text": "\"uploadUrl\": \"https://static.igem.wiki/teams/6056/wiki/files/docs/sustainability-stakeholder-interview-guide-cn.pdf\",",
+          "type": "mention"
+        },
+        {
+          "file": ".tmp-verify/registry.backup.md",
+          "line": 1995,
+          "text": "| 🟡 备用 | `pdf` | `engagement` | **Stakeholder Interview Guide-Chinese.pdf**<br><sub>`stakeholder-interview-guide-chinese-pdf`</sub> | `文案集/",
+          "type": "markdown-link"
+        },
+        {
+          "file": ".tmp-verify/registry.backup.md",
+          "line": 2017,
+          "text": "| 🟡 备用 | `pdf` | `engagement` | **sustainability-stakeholder-interview-guide-cn.pdf**<br><sub>`sustainability-stakeholder-interview-guide-c",
+          "type": "markdown-link"
+        }
+      ],
+      "notes": "Referenced in 6 location(s)"
     },
     "sustainability-stakeholder-interview-guide-en-pdf": {
       "id": "sustainability-stakeholder-interview-guide-en-pdf",
@@ -4256,14 +4921,51 @@
       "md5": "a562f5a8518e33a1cb19a87005b0097b",
       "fileSize": 1743336,
       "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/files/docs/sustainability-stakeholder-interview-guide-en.pdf",
-      "status": "standby",
+      "status": "in-use",
       "description": "",
       "keywords": [
         "sustainability-stakeholder-interview-guide-en",
         "pdf"
       ],
-      "references": [],
-      "notes": "Standby/Mirrored asset with CDN URL"
+      "references": [
+        {
+          "file": ".tmp-verify/catalog.backup.json",
+          "line": 4253,
+          "text": "\"fileName\": \"sustainability-stakeholder-interview-guide-en.pdf\",",
+          "type": "mention"
+        },
+        {
+          "file": ".tmp-verify/catalog.backup.json",
+          "line": 4255,
+          "text": "\"localPath\": \"public/assets/docs/sustainability-stakeholder-interview-guide-en.pdf\",",
+          "type": "mention"
+        },
+        {
+          "file": ".tmp-verify/catalog.backup.json",
+          "line": 4258,
+          "text": "\"uploadUrl\": \"https://static.igem.wiki/teams/6056/wiki/files/docs/sustainability-stakeholder-interview-guide-en.pdf\",",
+          "type": "mention"
+        },
+        {
+          "file": ".tmp-verify/catalog.backup.json",
+          "line": 93035,
+          "text": "\"uploadUrl\": \"https://static.igem.wiki/teams/6056/wiki/files/docs/sustainability-stakeholder-interview-guide-en.pdf\",",
+          "type": "mention"
+        },
+        {
+          "file": ".tmp-verify/registry.backup.md",
+          "line": 1996,
+          "text": "| 🟡 备用 | `pdf` | `engagement` | **Stakeholder Interview Guide-English.pdf**<br><sub>`stakeholder-interview-guide-english-pdf`</sub> | `文案集/",
+          "type": "markdown-link"
+        },
+        {
+          "file": ".tmp-verify/registry.backup.md",
+          "line": 2018,
+          "text": "| 🟡 备用 | `pdf` | `engagement` | **sustainability-stakeholder-interview-guide-en.pdf**<br><sub>`sustainability-stakeholder-interview-guide-e",
+          "type": "markdown-link"
+        }
+      ],
+      "notes": "Referenced in 6 location(s)"
     },
     "sustainability-stakeholder-sdg-mapping-guide-cn-pdf": {
       "id": "sustainability-stakeholder-sdg-mapping-guide-cn-pdf",
@@ -4274,14 +4976,51 @@
       "md5": "32c3edf7f3a099187b4334ea2eade84e",
       "fileSize": 1682646,
       "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/files/docs/sustainability-stakeholder-sdg-mapping-guide-cn.pdf",
-      "status": "standby",
+      "status": "in-use",
       "description": "",
       "keywords": [
         "sustainability-stakeholder-sdg-mapping-guide-cn",
         "pdf"
       ],
-      "references": [],
-      "notes": "Standby/Mirrored asset with CDN URL"
+      "references": [
+        {
+          "file": ".tmp-verify/catalog.backup.json",
+          "line": 4271,
+          "text": "\"fileName\": \"sustainability-stakeholder-sdg-mapping-guide-cn.pdf\",",
+          "type": "mention"
+        },
+        {
+          "file": ".tmp-verify/catalog.backup.json",
+          "line": 4273,
+          "text": "\"localPath\": \"public/assets/docs/sustainability-stakeholder-sdg-mapping-guide-cn.pdf\",",
+          "type": "mention"
+        },
+        {
+          "file": ".tmp-verify/catalog.backup.json",
+          "line": 4276,
+          "text": "\"uploadUrl\": \"https://static.igem.wiki/teams/6056/wiki/files/docs/sustainability-stakeholder-sdg-mapping-guide-cn.pdf\",",
+          "type": "mention"
+        },
+        {
+          "file": ".tmp-verify/catalog.backup.json",
+          "line": 93053,
+          "text": "\"uploadUrl\": \"https://static.igem.wiki/teams/6056/wiki/files/docs/sustainability-stakeholder-sdg-mapping-guide-cn.pdf\",",
+          "type": "mention"
+        },
+        {
+          "file": ".tmp-verify/registry.backup.md",
+          "line": 1997,
+          "text": "| 🟡 备用 | `pdf` | `engagement` | **Stakeholder–SDG Mapping Guide-Chinese.pdf**<br><sub>`stakeholder-sdg-mapping-guide-chinese-pdf`</sub> | `",
+          "type": "markdown-link"
+        },
+        {
+          "file": ".tmp-verify/registry.backup.md",
+          "line": 2019,
+          "text": "| 🟡 备用 | `pdf` | `engagement` | **sustainability-stakeholder-sdg-mapping-guide-cn.pdf**<br><sub>`sustainability-stakeholder-sdg-mapping-gui",
+          "type": "markdown-link"
+        }
+      ],
+      "notes": "Referenced in 6 location(s)"
     },
     "sustainability-stakeholder-sdg-mapping-guide-en-pdf": {
       "id": "sustainability-stakeholder-sdg-mapping-guide-en-pdf",
@@ -4292,14 +5031,51 @@
       "md5": "7f62cb21c1e10275a01c0bb1ce8c91fc",
       "fileSize": 995949,
       "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/files/docs/sustainability-stakeholder-sdg-mapping-guide-en.pdf",
-      "status": "standby",
+      "status": "in-use",
       "description": "",
       "keywords": [
         "sustainability-stakeholder-sdg-mapping-guide-en",
         "pdf"
       ],
-      "references": [],
-      "notes": "Standby/Mirrored asset with CDN URL"
+      "references": [
+        {
+          "file": ".tmp-verify/catalog.backup.json",
+          "line": 4289,
+          "text": "\"fileName\": \"sustainability-stakeholder-sdg-mapping-guide-en.pdf\",",
+          "type": "mention"
+        },
+        {
+          "file": ".tmp-verify/catalog.backup.json",
+          "line": 4291,
+          "text": "\"localPath\": \"public/assets/docs/sustainability-stakeholder-sdg-mapping-guide-en.pdf\",",
+          "type": "mention"
+        },
+        {
+          "file": ".tmp-verify/catalog.backup.json",
+          "line": 4294,
+          "text": "\"uploadUrl\": \"https://static.igem.wiki/teams/6056/wiki/files/docs/sustainability-stakeholder-sdg-mapping-guide-en.pdf\",",
+          "type": "mention"
+        },
+        {
+          "file": ".tmp-verify/catalog.backup.json",
+          "line": 93071,
+          "text": "\"uploadUrl\": \"https://static.igem.wiki/teams/6056/wiki/files/docs/sustainability-stakeholder-sdg-mapping-guide-en.pdf\",",
+          "type": "mention"
+        },
+        {
+          "file": ".tmp-verify/registry.backup.md",
+          "line": 1998,
+          "text": "| 🟡 备用 | `pdf` | `engagement` | **Stakeholder–SDG Mapping Guide-English.pdf**<br><sub>`stakeholder-sdg-mapping-guide-english-pdf`</sub> | `",
+          "type": "markdown-link"
+        },
+        {
+          "file": ".tmp-verify/registry.backup.md",
+          "line": 2020,
+          "text": "| 🟡 备用 | `pdf` | `engagement` | **sustainability-stakeholder-sdg-mapping-guide-en.pdf**<br><sub>`sustainability-stakeholder-sdg-mapping-gui",
+          "type": "markdown-link"
+        }
+      ],
+      "notes": "Referenced in 6 location(s)"
     },
     "protocol-01-webp": {
       "id": "protocol-01-webp",
@@ -97088,6 +97864,1468 @@
         }
       ],
       "notes": "Referenced in 1 location(s)"
+    },
+    "contribution-collab-apic-1-webp": {
+      "id": "contribution-collab-apic-1-webp",
+      "kind": "image",
+      "fileName": "contribution-collab-apic-1.webp",
+      "category": "project",
+      "localPath": "src/assets/wiki/contribution/contribution-collab-apic-1.webp",
+      "md5": "ecc83a8c81daea27315df2bf6912d833",
+      "fileSize": 448120,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "contribution-collab-apic-1",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/data/project/contributionAssets.ts",
+          "line": 76,
+          "text": "import apic1Img from \"../../../assets/wiki/contribution/contribution-collab-apic-1.webp\";",
+          "type": "import"
+        },
+        {
+          "file": "src/data/project/contributionAssets.ts",
+          "line": 424,
+          "text": "fileName: \"contribution-collab-apic-1.webp\",",
+          "type": "mention"
+        },
+        {
+          "file": "src/data/project/contributionAssets.ts",
+          "line": 425,
+          "text": "localSourcePath: `${assetDir}/contribution-collab-apic-1.webp`,",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 3 location(s)"
+    },
+    "contribution-collab-apic-2-webp": {
+      "id": "contribution-collab-apic-2-webp",
+      "kind": "image",
+      "fileName": "contribution-collab-apic-2.webp",
+      "category": "project",
+      "localPath": "src/assets/wiki/contribution/contribution-collab-apic-2.webp",
+      "md5": "9a6ee400fe2314ce168b8b7ec7d6e6e9",
+      "fileSize": 402168,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "contribution-collab-apic-2",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/data/project/contributionAssets.ts",
+          "line": 77,
+          "text": "import apic2Img from \"../../../assets/wiki/contribution/contribution-collab-apic-2.webp\";",
+          "type": "import"
+        },
+        {
+          "file": "src/data/project/contributionAssets.ts",
+          "line": 433,
+          "text": "fileName: \"contribution-collab-apic-2.webp\",",
+          "type": "mention"
+        },
+        {
+          "file": "src/data/project/contributionAssets.ts",
+          "line": 434,
+          "text": "localSourcePath: `${assetDir}/contribution-collab-apic-2.webp`,",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 3 location(s)"
+    },
+    "contribution-collab-ccic-1-webp": {
+      "id": "contribution-collab-ccic-1-webp",
+      "kind": "image",
+      "fileName": "contribution-collab-ccic-1.webp",
+      "category": "project",
+      "localPath": "src/assets/wiki/contribution/contribution-collab-ccic-1.webp",
+      "md5": "85cf98939a6db8f6b10a876e3e6cff80",
+      "fileSize": 172928,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "contribution-collab-ccic-1",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/data/project/contributionAssets.ts",
+          "line": 71,
+          "text": "import ccic1Img from \"../../../assets/wiki/contribution/contribution-collab-ccic-1.webp\";",
+          "type": "import"
+        },
+        {
+          "file": "src/data/project/contributionAssets.ts",
+          "line": 388,
+          "text": "fileName: \"contribution-collab-ccic-1.webp\",",
+          "type": "mention"
+        },
+        {
+          "file": "src/data/project/contributionAssets.ts",
+          "line": 389,
+          "text": "localSourcePath: `${assetDir}/contribution-collab-ccic-1.webp`,",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 3 location(s)"
+    },
+    "contribution-collab-ccic-2-webp": {
+      "id": "contribution-collab-ccic-2-webp",
+      "kind": "image",
+      "fileName": "contribution-collab-ccic-2.webp",
+      "category": "project",
+      "localPath": "src/assets/wiki/contribution/contribution-collab-ccic-2.webp",
+      "md5": "26262332eef50bc6624a39489b9d2f3e",
+      "fileSize": 123868,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "contribution-collab-ccic-2",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/data/project/contributionAssets.ts",
+          "line": 72,
+          "text": "import ccic2Img from \"../../../assets/wiki/contribution/contribution-collab-ccic-2.webp\";",
+          "type": "import"
+        },
+        {
+          "file": "src/data/project/contributionAssets.ts",
+          "line": 397,
+          "text": "fileName: \"contribution-collab-ccic-2.webp\",",
+          "type": "mention"
+        },
+        {
+          "file": "src/data/project/contributionAssets.ts",
+          "line": 398,
+          "text": "localSourcePath: `${assetDir}/contribution-collab-ccic-2.webp`,",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 3 location(s)"
+    },
+    "contribution-collab-ccic-3-webp": {
+      "id": "contribution-collab-ccic-3-webp",
+      "kind": "image",
+      "fileName": "contribution-collab-ccic-3.webp",
+      "category": "project",
+      "localPath": "src/assets/wiki/contribution/contribution-collab-ccic-3.webp",
+      "md5": "5e54c412744942c5ee50d448c82c9896",
+      "fileSize": 181248,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "contribution-collab-ccic-3",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/data/project/contributionAssets.ts",
+          "line": 73,
+          "text": "import ccic3Img from \"../../../assets/wiki/contribution/contribution-collab-ccic-3.webp\";",
+          "type": "import"
+        },
+        {
+          "file": "src/data/project/contributionAssets.ts",
+          "line": 406,
+          "text": "fileName: \"contribution-collab-ccic-3.webp\",",
+          "type": "mention"
+        },
+        {
+          "file": "src/data/project/contributionAssets.ts",
+          "line": 407,
+          "text": "localSourcePath: `${assetDir}/contribution-collab-ccic-3.webp`,",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 3 location(s)"
+    },
+    "contribution-collab-ccic-4-webp": {
+      "id": "contribution-collab-ccic-4-webp",
+      "kind": "image",
+      "fileName": "contribution-collab-ccic-4.webp",
+      "category": "project",
+      "localPath": "src/assets/wiki/contribution/contribution-collab-ccic-4.webp",
+      "md5": "5226dc879695d88e5b83cb950080f49e",
+      "fileSize": 142810,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "contribution-collab-ccic-4",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/data/project/contributionAssets.ts",
+          "line": 74,
+          "text": "import ccic4Img from \"../../../assets/wiki/contribution/contribution-collab-ccic-4.webp\";",
+          "type": "import"
+        },
+        {
+          "file": "src/data/project/contributionAssets.ts",
+          "line": 415,
+          "text": "fileName: \"contribution-collab-ccic-4.webp\",",
+          "type": "mention"
+        },
+        {
+          "file": "src/data/project/contributionAssets.ts",
+          "line": 416,
+          "text": "localSourcePath: `${assetDir}/contribution-collab-ccic-4.webp`,",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 3 location(s)"
+    },
+    "contribution-collab-letters-across-igem-1-webp": {
+      "id": "contribution-collab-letters-across-igem-1-webp",
+      "kind": "image",
+      "fileName": "contribution-collab-letters-across-igem-1.webp",
+      "category": "project",
+      "localPath": "src/assets/wiki/contribution/contribution-collab-letters-across-igem-1.webp",
+      "md5": "b269d2591c91d06fb3a2b9eb8f73b8e0",
+      "fileSize": 301118,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "contribution-collab-letters-across-igem-1",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/data/project/contributionAssets.ts",
+          "line": 67,
+          "text": "import lettersAcrossIgem1Img from \"../../../assets/wiki/contribution/contribution-collab-letters-across-igem-1.webp\";",
+          "type": "import"
+        },
+        {
+          "file": "src/data/project/contributionAssets.ts",
+          "line": 345,
+          "text": "fileName: \"contribution-collab-letters-across-igem-1.webp\",",
+          "type": "mention"
+        },
+        {
+          "file": "src/data/project/contributionAssets.ts",
+          "line": 346,
+          "text": "localSourcePath: `${assetDir}/contribution-collab-letters-across-igem-1.webp`,",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 3 location(s)"
+    },
+    "contribution-collab-letters-across-igem-2-webp": {
+      "id": "contribution-collab-letters-across-igem-2-webp",
+      "kind": "image",
+      "fileName": "contribution-collab-letters-across-igem-2.webp",
+      "category": "project",
+      "localPath": "src/assets/wiki/contribution/contribution-collab-letters-across-igem-2.webp",
+      "md5": "6f54743803443fd5c7f54b3cc9d127f8",
+      "fileSize": 48732,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "contribution-collab-letters-across-igem-2",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/data/project/contributionAssets.ts",
+          "line": 68,
+          "text": "import lettersAcrossIgem2Img from \"../../../assets/wiki/contribution/contribution-collab-letters-across-igem-2.webp\";",
+          "type": "import"
+        },
+        {
+          "file": "src/data/project/contributionAssets.ts",
+          "line": 354,
+          "text": "fileName: \"contribution-collab-letters-across-igem-2.webp\",",
+          "type": "mention"
+        },
+        {
+          "file": "src/data/project/contributionAssets.ts",
+          "line": 355,
+          "text": "localSourcePath: `${assetDir}/contribution-collab-letters-across-igem-2.webp`,",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 3 location(s)"
+    },
+    "contribution-collab-letters-across-igem-3-webp": {
+      "id": "contribution-collab-letters-across-igem-3-webp",
+      "kind": "image",
+      "fileName": "contribution-collab-letters-across-igem-3.webp",
+      "category": "project",
+      "localPath": "src/assets/wiki/contribution/contribution-collab-letters-across-igem-3.webp",
+      "md5": "b644bef9a92722354c5de29708413eea",
+      "fileSize": 40144,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "contribution-collab-letters-across-igem-3",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/data/project/contributionAssets.ts",
+          "line": 69,
+          "text": "import lettersAcrossIgem3Img from \"../../../assets/wiki/contribution/contribution-collab-letters-across-igem-3.webp\";",
+          "type": "import"
+        },
+        {
+          "file": "src/data/project/contributionAssets.ts",
+          "line": 363,
+          "text": "fileName: \"contribution-collab-letters-across-igem-3.webp\",",
+          "type": "mention"
+        },
+        {
+          "file": "src/data/project/contributionAssets.ts",
+          "line": 364,
+          "text": "localSourcePath: `${assetDir}/contribution-collab-letters-across-igem-3.webp`,",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 3 location(s)"
+    },
+    "contribution-collab-northeast-exchange-1-webp": {
+      "id": "contribution-collab-northeast-exchange-1-webp",
+      "kind": "image",
+      "fileName": "contribution-collab-northeast-exchange-1.webp",
+      "category": "project",
+      "localPath": "src/assets/wiki/contribution/contribution-collab-northeast-exchange-1.webp",
+      "md5": "87911b71a1f2c825fb7be86970ea550c",
+      "fileSize": 175454,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "contribution-collab-northeast-exchange-1",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/data/project/contributionAssets.ts",
+          "line": 63,
+          "text": "import northeastExchange1Img from \"../../../assets/wiki/contribution/contribution-collab-northeast-exchange-1.webp\";",
+          "type": "import"
+        },
+        {
+          "file": "src/data/project/contributionAssets.ts",
+          "line": 318,
+          "text": "fileName: \"contribution-collab-northeast-exchange-1.webp\",",
+          "type": "mention"
+        },
+        {
+          "file": "src/data/project/contributionAssets.ts",
+          "line": 319,
+          "text": "localSourcePath: `${assetDir}/contribution-collab-northeast-exchange-1.webp`,",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 3 location(s)"
+    },
+    "contribution-collab-northeast-exchange-2-webp": {
+      "id": "contribution-collab-northeast-exchange-2-webp",
+      "kind": "image",
+      "fileName": "contribution-collab-northeast-exchange-2.webp",
+      "category": "project",
+      "localPath": "src/assets/wiki/contribution/contribution-collab-northeast-exchange-2.webp",
+      "md5": "7a0b5033129182ad79f7524903994d01",
+      "fileSize": 171978,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "contribution-collab-northeast-exchange-2",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/data/project/contributionAssets.ts",
+          "line": 64,
+          "text": "import northeastExchange2Img from \"../../../assets/wiki/contribution/contribution-collab-northeast-exchange-2.webp\";",
+          "type": "import"
+        },
+        {
+          "file": "src/data/project/contributionAssets.ts",
+          "line": 327,
+          "text": "fileName: \"contribution-collab-northeast-exchange-2.webp\",",
+          "type": "mention"
+        },
+        {
+          "file": "src/data/project/contributionAssets.ts",
+          "line": 328,
+          "text": "localSourcePath: `${assetDir}/contribution-collab-northeast-exchange-2.webp`,",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 3 location(s)"
+    },
+    "contribution-collab-northeast-exchange-3-webp": {
+      "id": "contribution-collab-northeast-exchange-3-webp",
+      "kind": "image",
+      "fileName": "contribution-collab-northeast-exchange-3.webp",
+      "category": "project",
+      "localPath": "src/assets/wiki/contribution/contribution-collab-northeast-exchange-3.webp",
+      "md5": "e14026c5cce33d10ea050c625ed936fa",
+      "fileSize": 130512,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "contribution-collab-northeast-exchange-3",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/data/project/contributionAssets.ts",
+          "line": 65,
+          "text": "import northeastExchange3Img from \"../../../assets/wiki/contribution/contribution-collab-northeast-exchange-3.webp\";",
+          "type": "import"
+        },
+        {
+          "file": "src/data/project/contributionAssets.ts",
+          "line": 336,
+          "text": "fileName: \"contribution-collab-northeast-exchange-3.webp\",",
+          "type": "mention"
+        },
+        {
+          "file": "src/data/project/contributionAssets.ts",
+          "line": 337,
+          "text": "localSourcePath: `${assetDir}/contribution-collab-northeast-exchange-3.webp`,",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 3 location(s)"
+    },
+    "contribution-collab-regional-central-china-webp": {
+      "id": "contribution-collab-regional-central-china-webp",
+      "kind": "image",
+      "fileName": "contribution-collab-regional-central-china.webp",
+      "category": "project",
+      "localPath": "src/assets/wiki/contribution/contribution-collab-regional-central-china.webp",
+      "md5": "4dd2a69945d8d8137465a58b765bcd4e",
+      "fileSize": 111412,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "contribution-collab-regional-central-china",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/data/project/contributionAssets.ts",
+          "line": 82,
+          "text": "import regionalCentralChinaImg from \"../../../assets/wiki/contribution/contribution-collab-regional-central-china.webp\";",
+          "type": "import"
+        },
+        {
+          "file": "src/data/project/contributionAssets.ts",
+          "line": 469,
+          "text": "fileName: \"contribution-collab-regional-central-china.webp\",",
+          "type": "mention"
+        },
+        {
+          "file": "src/data/project/contributionAssets.ts",
+          "line": 470,
+          "text": "localSourcePath: `${assetDir}/contribution-collab-regional-central-china.webp`,",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 3 location(s)"
+    },
+    "contribution-collab-regional-east-china-webp": {
+      "id": "contribution-collab-regional-east-china-webp",
+      "kind": "image",
+      "fileName": "contribution-collab-regional-east-china.webp",
+      "category": "project",
+      "localPath": "src/assets/wiki/contribution/contribution-collab-regional-east-china.webp",
+      "md5": "7956b46befe9335d9eafe40387c5c312",
+      "fileSize": 298546,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "contribution-collab-regional-east-china",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/data/project/contributionAssets.ts",
+          "line": 80,
+          "text": "import regionalEastChinaImg from \"../../../assets/wiki/contribution/contribution-collab-regional-east-china.webp\";",
+          "type": "import"
+        },
+        {
+          "file": "src/data/project/contributionAssets.ts",
+          "line": 451,
+          "text": "fileName: \"contribution-collab-regional-east-china.webp\",",
+          "type": "mention"
+        },
+        {
+          "file": "src/data/project/contributionAssets.ts",
+          "line": 452,
+          "text": "localSourcePath: `${assetDir}/contribution-collab-regional-east-china.webp`,",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 3 location(s)"
+    },
+    "contribution-collab-regional-north-china-webp": {
+      "id": "contribution-collab-regional-north-china-webp",
+      "kind": "image",
+      "fileName": "contribution-collab-regional-north-china.webp",
+      "category": "project",
+      "localPath": "src/assets/wiki/contribution/contribution-collab-regional-north-china.webp",
+      "md5": "1480807aa653c94fc966b2bddc6f8489",
+      "fileSize": 301010,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "contribution-collab-regional-north-china",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/data/project/contributionAssets.ts",
+          "line": 79,
+          "text": "import regionalNorthChinaImg from \"../../../assets/wiki/contribution/contribution-collab-regional-north-china.webp\";",
+          "type": "import"
+        },
+        {
+          "file": "src/data/project/contributionAssets.ts",
+          "line": 442,
+          "text": "fileName: \"contribution-collab-regional-north-china.webp\",",
+          "type": "mention"
+        },
+        {
+          "file": "src/data/project/contributionAssets.ts",
+          "line": 443,
+          "text": "localSourcePath: `${assetDir}/contribution-collab-regional-north-china.webp`,",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 3 location(s)"
+    },
+    "contribution-collab-regional-south-china-webp": {
+      "id": "contribution-collab-regional-south-china-webp",
+      "kind": "image",
+      "fileName": "contribution-collab-regional-south-china.webp",
+      "category": "project",
+      "localPath": "src/assets/wiki/contribution/contribution-collab-regional-south-china.webp",
+      "md5": "2b2818ad2c7ad0aee3b9ab945132532a",
+      "fileSize": 78948,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "contribution-collab-regional-south-china",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/data/project/contributionAssets.ts",
+          "line": 81,
+          "text": "import regionalSouthChinaImg from \"../../../assets/wiki/contribution/contribution-collab-regional-south-china.webp\";",
+          "type": "import"
+        },
+        {
+          "file": "src/data/project/contributionAssets.ts",
+          "line": 460,
+          "text": "fileName: \"contribution-collab-regional-south-china.webp\",",
+          "type": "mention"
+        },
+        {
+          "file": "src/data/project/contributionAssets.ts",
+          "line": 461,
+          "text": "localSourcePath: `${assetDir}/contribution-collab-regional-south-china.webp`,",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 3 location(s)"
+    },
+    "contribution-education-bio-memory-cover-webp": {
+      "id": "contribution-education-bio-memory-cover-webp",
+      "kind": "image",
+      "fileName": "contribution-education-bio-memory-cover.webp",
+      "category": "project",
+      "localPath": "src/assets/wiki/contribution/contribution-education-bio-memory-cover.webp",
+      "md5": "ebe3fcba97b61324116bfa5a89582bd1",
+      "fileSize": 113552,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "contribution-education-bio-memory-cover",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/data/project/contributionAssets.ts",
+          "line": 43,
+          "text": "import bioMemoryCoverImg from \"../../../assets/wiki/contribution/contribution-education-bio-memory-cover.webp\";",
+          "type": "import"
+        },
+        {
+          "file": "src/data/project/contributionAssets.ts",
+          "line": 235,
+          "text": "fileName: \"contribution-education-bio-memory-cover.webp\",",
+          "type": "mention"
+        },
+        {
+          "file": "src/data/project/contributionAssets.ts",
+          "line": 236,
+          "text": "localSourcePath: `${assetDir}/contribution-education-bio-memory-cover.webp`,",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 3 location(s)"
+    },
+    "contribution-education-bio-strategy-arena-1-webp": {
+      "id": "contribution-education-bio-strategy-arena-1-webp",
+      "kind": "image",
+      "fileName": "contribution-education-bio-strategy-arena-1.webp",
+      "category": "project",
+      "localPath": "src/assets/wiki/contribution/contribution-education-bio-strategy-arena-1.webp",
+      "md5": "ccbbd54ca82c60d5a8b2e30c066be626",
+      "fileSize": 284472,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "contribution-education-bio-strategy-arena-1",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/data/project/contributionAssets.ts",
+          "line": 44,
+          "text": "import bioStrategyArena1Img from \"../../../assets/wiki/contribution/contribution-education-bio-strategy-arena-1.webp\";",
+          "type": "import"
+        },
+        {
+          "file": "src/data/project/contributionAssets.ts",
+          "line": 244,
+          "text": "fileName: \"contribution-education-bio-strategy-arena-1.webp\",",
+          "type": "mention"
+        },
+        {
+          "file": "src/data/project/contributionAssets.ts",
+          "line": 245,
+          "text": "localSourcePath: `${assetDir}/contribution-education-bio-strategy-arena-1.webp`,",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 3 location(s)"
+    },
+    "contribution-education-bio-strategy-arena-2-webp": {
+      "id": "contribution-education-bio-strategy-arena-2-webp",
+      "kind": "image",
+      "fileName": "contribution-education-bio-strategy-arena-2.webp",
+      "category": "project",
+      "localPath": "src/assets/wiki/contribution/contribution-education-bio-strategy-arena-2.webp",
+      "md5": "cdcfea7e190197169352a7f2f519cb5e",
+      "fileSize": 279828,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "contribution-education-bio-strategy-arena-2",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/data/project/contributionAssets.ts",
+          "line": 45,
+          "text": "import bioStrategyArena2Img from \"../../../assets/wiki/contribution/contribution-education-bio-strategy-arena-2.webp\";",
+          "type": "import"
+        },
+        {
+          "file": "src/data/project/contributionAssets.ts",
+          "line": 253,
+          "text": "fileName: \"contribution-education-bio-strategy-arena-2.webp\",",
+          "type": "mention"
+        },
+        {
+          "file": "src/data/project/contributionAssets.ts",
+          "line": 254,
+          "text": "localSourcePath: `${assetDir}/contribution-education-bio-strategy-arena-2.webp`,",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 3 location(s)"
+    },
+    "contribution-education-ethics-debate-1-webp": {
+      "id": "contribution-education-ethics-debate-1-webp",
+      "kind": "image",
+      "fileName": "contribution-education-ethics-debate-1.webp",
+      "category": "project",
+      "localPath": "src/assets/wiki/contribution/contribution-education-ethics-debate-1.webp",
+      "md5": "80334a13758ca2d92b484f53ddda951c",
+      "fileSize": 162982,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "contribution-education-ethics-debate-1",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/data/project/contributionAssets.ts",
+          "line": 60,
+          "text": "import ethicsDebate1Img from \"../../../assets/wiki/contribution/contribution-education-ethics-debate-1.webp\";",
+          "type": "import"
+        },
+        {
+          "file": "src/data/project/contributionAssets.ts",
+          "line": 298,
+          "text": "fileName: \"contribution-education-ethics-debate-1.webp\",",
+          "type": "mention"
+        },
+        {
+          "file": "src/data/project/contributionAssets.ts",
+          "line": 299,
+          "text": "localSourcePath: `${assetDir}/contribution-education-ethics-debate-1.webp`,",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 3 location(s)"
+    },
+    "contribution-education-ethics-debate-2-webp": {
+      "id": "contribution-education-ethics-debate-2-webp",
+      "kind": "image",
+      "fileName": "contribution-education-ethics-debate-2.webp",
+      "category": "project",
+      "localPath": "src/assets/wiki/contribution/contribution-education-ethics-debate-2.webp",
+      "md5": "f26529aedfa8dc60d15e003da78449cf",
+      "fileSize": 166446,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "contribution-education-ethics-debate-2",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/data/project/contributionAssets.ts",
+          "line": 61,
+          "text": "import ethicsDebate2Img from \"../../../assets/wiki/contribution/contribution-education-ethics-debate-2.webp\";",
+          "type": "import"
+        },
+        {
+          "file": "src/data/project/contributionAssets.ts",
+          "line": 307,
+          "text": "fileName: \"contribution-education-ethics-debate-2.webp\",",
+          "type": "mention"
+        },
+        {
+          "file": "src/data/project/contributionAssets.ts",
+          "line": 308,
+          "text": "localSourcePath: `${assetDir}/contribution-education-ethics-debate-2.webp`,",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 3 location(s)"
+    },
+    "contribution-education-music-festival-1-webp": {
+      "id": "contribution-education-music-festival-1-webp",
+      "kind": "image",
+      "fileName": "contribution-education-music-festival-1.webp",
+      "category": "project",
+      "localPath": "src/assets/wiki/contribution/contribution-education-music-festival-1.webp",
+      "md5": "dcf0b8b1a08b5ba79e1d7dea36d59846",
+      "fileSize": 321988,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "contribution-education-music-festival-1",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/data/project/contributionAssets.ts",
+          "line": 55,
+          "text": "import musicFestival1Img from \"../../../assets/wiki/contribution/contribution-education-music-festival-1.webp\";",
+          "type": "import"
+        },
+        {
+          "file": "src/data/project/contributionAssets.ts",
+          "line": 262,
+          "text": "fileName: \"contribution-education-music-festival-1.webp\",",
+          "type": "mention"
+        },
+        {
+          "file": "src/data/project/contributionAssets.ts",
+          "line": 263,
+          "text": "localSourcePath: `${assetDir}/contribution-education-music-festival-1.webp`,",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 3 location(s)"
+    },
+    "contribution-education-music-festival-2-webp": {
+      "id": "contribution-education-music-festival-2-webp",
+      "kind": "image",
+      "fileName": "contribution-education-music-festival-2.webp",
+      "category": "project",
+      "localPath": "src/assets/wiki/contribution/contribution-education-music-festival-2.webp",
+      "md5": "b7be1d642daa1b29c00f8508472c15ff",
+      "fileSize": 182334,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "contribution-education-music-festival-2",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/data/project/contributionAssets.ts",
+          "line": 56,
+          "text": "import musicFestival2Img from \"../../../assets/wiki/contribution/contribution-education-music-festival-2.webp\";",
+          "type": "import"
+        },
+        {
+          "file": "src/data/project/contributionAssets.ts",
+          "line": 271,
+          "text": "fileName: \"contribution-education-music-festival-2.webp\",",
+          "type": "mention"
+        },
+        {
+          "file": "src/data/project/contributionAssets.ts",
+          "line": 272,
+          "text": "localSourcePath: `${assetDir}/contribution-education-music-festival-2.webp`,",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 3 location(s)"
+    },
+    "contribution-education-music-festival-3-webp": {
+      "id": "contribution-education-music-festival-3-webp",
+      "kind": "image",
+      "fileName": "contribution-education-music-festival-3.webp",
+      "category": "project",
+      "localPath": "src/assets/wiki/contribution/contribution-education-music-festival-3.webp",
+      "md5": "4375dfaed51f5a8b1324b9e48ef26fdc",
+      "fileSize": 294564,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "contribution-education-music-festival-3",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/data/project/contributionAssets.ts",
+          "line": 57,
+          "text": "import musicFestival3Img from \"../../../assets/wiki/contribution/contribution-education-music-festival-3.webp\";",
+          "type": "import"
+        },
+        {
+          "file": "src/data/project/contributionAssets.ts",
+          "line": 280,
+          "text": "fileName: \"contribution-education-music-festival-3.webp\",",
+          "type": "mention"
+        },
+        {
+          "file": "src/data/project/contributionAssets.ts",
+          "line": 281,
+          "text": "localSourcePath: `${assetDir}/contribution-education-music-festival-3.webp`,",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 3 location(s)"
+    },
+    "contribution-education-music-festival-4-webp": {
+      "id": "contribution-education-music-festival-4-webp",
+      "kind": "image",
+      "fileName": "contribution-education-music-festival-4.webp",
+      "category": "project",
+      "localPath": "src/assets/wiki/contribution/contribution-education-music-festival-4.webp",
+      "md5": "279d8caeab936dde6d14dca052603a33",
+      "fileSize": 227116,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "contribution-education-music-festival-4",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/data/project/contributionAssets.ts",
+          "line": 58,
+          "text": "import musicFestival4Img from \"../../../assets/wiki/contribution/contribution-education-music-festival-4.webp\";",
+          "type": "import"
+        },
+        {
+          "file": "src/data/project/contributionAssets.ts",
+          "line": 289,
+          "text": "fileName: \"contribution-education-music-festival-4.webp\",",
+          "type": "mention"
+        },
+        {
+          "file": "src/data/project/contributionAssets.ts",
+          "line": 290,
+          "text": "localSourcePath: `${assetDir}/contribution-education-music-festival-4.webp`,",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 3 location(s)"
+    },
+    "contribution-education-synbio-classroom-1-webp": {
+      "id": "contribution-education-synbio-classroom-1-webp",
+      "kind": "image",
+      "fileName": "contribution-education-synbio-classroom-1.webp",
+      "category": "project",
+      "localPath": "src/assets/wiki/contribution/contribution-education-synbio-classroom-1.webp",
+      "md5": "9bf5ca40001a617e8653a5b9a88e2068",
+      "fileSize": 108772,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "contribution-education-synbio-classroom-1",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/data/project/contributionAssets.ts",
+          "line": 50,
+          "text": "import synbioClassroom1Img from \"../../../assets/wiki/contribution/contribution-education-synbio-classroom-1.webp\";",
+          "type": "import"
+        },
+        {
+          "file": "src/data/project/contributionAssets.ts",
+          "line": 199,
+          "text": "fileName: \"contribution-education-synbio-classroom-1.webp\",",
+          "type": "mention"
+        },
+        {
+          "file": "src/data/project/contributionAssets.ts",
+          "line": 200,
+          "text": "localSourcePath: `${assetDir}/contribution-education-synbio-classroom-1.webp`,",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 3 location(s)"
+    },
+    "contribution-education-synbio-classroom-2-webp": {
+      "id": "contribution-education-synbio-classroom-2-webp",
+      "kind": "image",
+      "fileName": "contribution-education-synbio-classroom-2.webp",
+      "category": "project",
+      "localPath": "src/assets/wiki/contribution/contribution-education-synbio-classroom-2.webp",
+      "md5": "f95f3884273510650e490a904f2761e6",
+      "fileSize": 73514,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "contribution-education-synbio-classroom-2",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/data/project/contributionAssets.ts",
+          "line": 51,
+          "text": "import synbioClassroom2Img from \"../../../assets/wiki/contribution/contribution-education-synbio-classroom-2.webp\";",
+          "type": "import"
+        },
+        {
+          "file": "src/data/project/contributionAssets.ts",
+          "line": 208,
+          "text": "fileName: \"contribution-education-synbio-classroom-2.webp\",",
+          "type": "mention"
+        },
+        {
+          "file": "src/data/project/contributionAssets.ts",
+          "line": 209,
+          "text": "localSourcePath: `${assetDir}/contribution-education-synbio-classroom-2.webp`,",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 3 location(s)"
+    },
+    "contribution-education-synbio-classroom-3-webp": {
+      "id": "contribution-education-synbio-classroom-3-webp",
+      "kind": "image",
+      "fileName": "contribution-education-synbio-classroom-3.webp",
+      "category": "project",
+      "localPath": "src/assets/wiki/contribution/contribution-education-synbio-classroom-3.webp",
+      "md5": "eb5c76987efca7edc6d6472d8454e574",
+      "fileSize": 138626,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "contribution-education-synbio-classroom-3",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/data/project/contributionAssets.ts",
+          "line": 52,
+          "text": "import synbioClassroom3Img from \"../../../assets/wiki/contribution/contribution-education-synbio-classroom-3.webp\";",
+          "type": "import"
+        },
+        {
+          "file": "src/data/project/contributionAssets.ts",
+          "line": 217,
+          "text": "fileName: \"contribution-education-synbio-classroom-3.webp\",",
+          "type": "mention"
+        },
+        {
+          "file": "src/data/project/contributionAssets.ts",
+          "line": 218,
+          "text": "localSourcePath: `${assetDir}/contribution-education-synbio-classroom-3.webp`,",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 3 location(s)"
+    },
+    "contribution-education-synbio-classroom-4-webp": {
+      "id": "contribution-education-synbio-classroom-4-webp",
+      "kind": "image",
+      "fileName": "contribution-education-synbio-classroom-4.webp",
+      "category": "project",
+      "localPath": "src/assets/wiki/contribution/contribution-education-synbio-classroom-4.webp",
+      "md5": "5b275db9ed47e5b41da5cdb852bf250d",
+      "fileSize": 178300,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "contribution-education-synbio-classroom-4",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/data/project/contributionAssets.ts",
+          "line": 53,
+          "text": "import synbioClassroom4Img from \"../../../assets/wiki/contribution/contribution-education-synbio-classroom-4.webp\";",
+          "type": "import"
+        },
+        {
+          "file": "src/data/project/contributionAssets.ts",
+          "line": 226,
+          "text": "fileName: \"contribution-education-synbio-classroom-4.webp\",",
+          "type": "mention"
+        },
+        {
+          "file": "src/data/project/contributionAssets.ts",
+          "line": 227,
+          "text": "localSourcePath: `${assetDir}/contribution-education-synbio-classroom-4.webp`,",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 3 location(s)"
+    },
+    "contribution-education-virtual-lab-1-webp": {
+      "id": "contribution-education-virtual-lab-1-webp",
+      "kind": "image",
+      "fileName": "contribution-education-virtual-lab-1.webp",
+      "category": "project",
+      "localPath": "src/assets/wiki/contribution/contribution-education-virtual-lab-1.webp",
+      "md5": "8a285def3944c297b9e47ea785c5bb0e",
+      "fileSize": 74574,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "contribution-education-virtual-lab-1",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/data/project/contributionAssets.ts",
+          "line": 47,
+          "text": "import virtualLab1Img from \"../../../assets/wiki/contribution/contribution-education-virtual-lab-1.webp\";",
+          "type": "import"
+        },
+        {
+          "file": "src/data/project/contributionAssets.ts",
+          "line": 181,
+          "text": "fileName: \"contribution-education-virtual-lab-1.webp\",",
+          "type": "mention"
+        },
+        {
+          "file": "src/data/project/contributionAssets.ts",
+          "line": 182,
+          "text": "localSourcePath: `${assetDir}/contribution-education-virtual-lab-1.webp`,",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 3 location(s)"
+    },
+    "contribution-education-virtual-lab-2-webp": {
+      "id": "contribution-education-virtual-lab-2-webp",
+      "kind": "image",
+      "fileName": "contribution-education-virtual-lab-2.webp",
+      "category": "project",
+      "localPath": "src/assets/wiki/contribution/contribution-education-virtual-lab-2.webp",
+      "md5": "0b665b4d42a61e0969a623a05788e588",
+      "fileSize": 69944,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "contribution-education-virtual-lab-2",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/data/project/contributionAssets.ts",
+          "line": 48,
+          "text": "import virtualLab2Img from \"../../../assets/wiki/contribution/contribution-education-virtual-lab-2.webp\";",
+          "type": "import"
+        },
+        {
+          "file": "src/data/project/contributionAssets.ts",
+          "line": 190,
+          "text": "fileName: \"contribution-education-virtual-lab-2.webp\",",
+          "type": "mention"
+        },
+        {
+          "file": "src/data/project/contributionAssets.ts",
+          "line": 191,
+          "text": "localSourcePath: `${assetDir}/contribution-education-virtual-lab-2.webp`,",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 3 location(s)"
+    },
+    "contribution-entrepreneurship-tam-sam-som-webp": {
+      "id": "contribution-entrepreneurship-tam-sam-som-webp",
+      "kind": "image",
+      "fileName": "contribution-entrepreneurship-tam-sam-som.webp",
+      "category": "project",
+      "localPath": "src/assets/wiki/contribution/contribution-entrepreneurship-tam-sam-som.webp",
+      "md5": "fab3d552a363d061b99d70dfebd279ed",
+      "fileSize": 75076,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "contribution-entrepreneurship-tam-sam-som",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/data/project/contributionAssets.ts",
+          "line": 41,
+          "text": "import tamSamSomImg from \"../../../assets/wiki/contribution/contribution-entrepreneurship-tam-sam-som.webp\";",
+          "type": "import"
+        },
+        {
+          "file": "src/data/project/contributionAssets.ts",
+          "line": 170,
+          "text": "fileName: \"contribution-entrepreneurship-tam-sam-som.webp\",",
+          "type": "mention"
+        },
+        {
+          "file": "src/data/project/contributionAssets.ts",
+          "line": 171,
+          "text": "localSourcePath: `${assetDir}/contribution-entrepreneurship-tam-sam-som.webp`,",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 3 location(s)"
+    },
+    "contribution-hardware-circore-device-webp": {
+      "id": "contribution-hardware-circore-device-webp",
+      "kind": "image",
+      "fileName": "contribution-hardware-circore-device.webp",
+      "category": "project",
+      "localPath": "src/assets/wiki/contribution/contribution-hardware-circore-device.webp",
+      "md5": "e1614c4e521e31faa7515a4af17df6aa",
+      "fileSize": 22960,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "contribution-hardware-circore-device",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/data/project/contributionAssets.ts",
+          "line": 37,
+          "text": "import circoreDeviceImg from \"../../../assets/wiki/contribution/contribution-hardware-circore-device.webp\";",
+          "type": "import"
+        },
+        {
+          "file": "src/data/project/contributionAssets.ts",
+          "line": 148,
+          "text": "fileName: \"contribution-hardware-circore-device.webp\",",
+          "type": "mention"
+        },
+        {
+          "file": "src/data/project/contributionAssets.ts",
+          "line": 149,
+          "text": "localSourcePath: `${assetDir}/contribution-hardware-circore-device.webp`,",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 3 location(s)"
+    },
+    "contribution-responsible-ddl-crisis-poster-webp": {
+      "id": "contribution-responsible-ddl-crisis-poster-webp",
+      "kind": "image",
+      "fileName": "contribution-responsible-ddl-crisis-poster.webp",
+      "category": "project",
+      "localPath": "src/assets/wiki/contribution/contribution-responsible-ddl-crisis-poster.webp",
+      "md5": "6d4afb15bfe5c44c2ac80d133416a342",
+      "fileSize": 230720,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "contribution-responsible-ddl-crisis-poster",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/data/project/contributionAssets.ts",
+          "line": 35,
+          "text": "import ddlCrisisPosterImg from \"../../../assets/wiki/contribution/contribution-responsible-ddl-crisis-poster.webp\";",
+          "type": "import"
+        },
+        {
+          "file": "src/data/project/contributionAssets.ts",
+          "line": 119,
+          "text": "fileName: \"contribution-responsible-ddl-crisis-poster.webp\",",
+          "type": "mention"
+        },
+        {
+          "file": "src/data/project/contributionAssets.ts",
+          "line": 120,
+          "text": "localSourcePath: `${assetDir}/contribution-responsible-ddl-crisis-poster.webp`,",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 3 location(s)"
+    },
+    "contribution-sdg-set-develop-grow-framework-webp": {
+      "id": "contribution-sdg-set-develop-grow-framework-webp",
+      "kind": "image",
+      "fileName": "contribution-sdg-set-develop-grow-framework.webp",
+      "category": "project",
+      "localPath": "src/assets/wiki/contribution/contribution-sdg-set-develop-grow-framework.webp",
+      "md5": "4b45a20baf5333b02b2a737ca9af9189",
+      "fileSize": 153230,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "contribution-sdg-set-develop-grow-framework",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/data/project/contributionAssets.ts",
+          "line": 39,
+          "text": "import sdgFrameworkImg from \"../../../assets/wiki/contribution/contribution-sdg-set-develop-grow-framework.webp\";",
+          "type": "import"
+        },
+        {
+          "file": "src/data/project/contributionAssets.ts",
+          "line": 159,
+          "text": "fileName: \"contribution-sdg-set-develop-grow-framework.webp\",",
+          "type": "mention"
+        },
+        {
+          "file": "src/data/project/contributionAssets.ts",
+          "line": 160,
+          "text": "localSourcePath: `${assetDir}/contribution-sdg-set-develop-grow-framework.webp`,",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 3 location(s)"
+    },
+    "design-eda-report-nc3rs-pdf": {
+      "id": "design-eda-report-nc3rs-pdf",
+      "kind": "pdf",
+      "fileName": "design-eda-report-nc3rs.pdf",
+      "category": "project",
+      "localPath": "public/assets/docs/design-eda-report-nc3rs.pdf",
+      "md5": "3c63482ce7f921798846ec953b8fd36c",
+      "fileSize": 350756,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "design-eda-report-nc3rs",
+        "pdf"
+      ],
+      "references": [
+        {
+          "file": "src/data/wet-lab/designAssets.ts",
+          "line": 144,
+          "text": "fileName: \"design-eda-report-nc3rs.pdf\",",
+          "type": "mention"
+        },
+        {
+          "file": "src/data/wet-lab/designAssets.ts",
+          "line": 145,
+          "text": "localSourcePath: \"public/assets/docs/design-eda-report-nc3rs.pdf\",",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 2 location(s)"
+    },
+    "igem-9-pdf": {
+      "id": "igem-9-pdf",
+      "kind": "pdf",
+      "fileName": "contribution-new-team-handbook.pdf",
+      "category": "engagement",
+      "localPath": "public/assets/docs/iGEM 新队伍建设与知识传承手册完整版9.pdf",
+      "md5": "f2b4e1b1483119e5ca8215815c4f3ffe",
+      "fileSize": 425457,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "iGEM 新队伍建设与知识传承手册完整版9",
+        "pdf"
+      ],
+      "references": [
+        {
+          "file": "src/data/project/contributionAssets.ts",
+          "line": 380,
+          "text": "fileName: \"iGEM 新队伍建设与知识传承手册完整版9.pdf\",",
+          "type": "mention"
+        },
+        {
+          "file": "src/data/project/contributionAssets.ts",
+          "line": 381,
+          "text": "localSourcePath: `${docDir}/iGEM 新队伍建设与知识传承手册完整版9.pdf`,",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 2 location(s)"
+    },
+    "together-with-igem-pdf": {
+      "id": "together-with-igem-pdf",
+      "kind": "pdf",
+      "fileName": "contribution-together-with-igem.pdf",
+      "category": "engagement",
+      "localPath": "public/assets/docs/Together With iGEM.pdf",
+      "md5": "f41f62d73d27698a447ff170f426e9c3",
+      "fileSize": 9563534,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "Together With iGEM",
+        "pdf"
+      ],
+      "references": [
+        {
+          "file": "src/data/project/contributionAssets.ts",
+          "line": 372,
+          "text": "fileName: \"Together With iGEM.pdf\",",
+          "type": "mention"
+        },
+        {
+          "file": "src/data/project/contributionAssets.ts",
+          "line": 373,
+          "text": "localSourcePath: `${docDir}/Together With iGEM.pdf`,",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 2 location(s)"
+    },
+    "docs-ba1331-pdf": {
+      "id": "docs-ba1331-pdf",
+      "kind": "pdf",
+      "fileName": "contribution-animal-ethics-handbook.pdf",
+      "category": "engagement",
+      "localPath": "public/assets/docs/动物伦理白皮书.pdf",
+      "md5": "e315ddd6f2ed96ef9cfd4cad8479cbbf",
+      "fileSize": 633220,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "动物伦理白皮书",
+        "pdf"
+      ],
+      "references": [
+        {
+          "file": "src/data/project/contributionAssets.ts",
+          "line": 128,
+          "text": "fileName: \"动物伦理白皮书.pdf\",",
+          "type": "mention"
+        },
+        {
+          "file": "src/data/project/contributionAssets.ts",
+          "line": 129,
+          "text": "localSourcePath: `${docDir}/动物伦理白皮书.pdf`,",
+          "type": "mention"
+        },
+        {
+          "file": "文案集/project/contribution/3.6 Contribution.md",
+          "line": 23,
+          "text": "[动物伦理白皮书\\.pdf](图片和附件/动物伦理白皮书.pdf)",
+          "type": "markdown-link"
+        }
+      ],
+      "notes": "Referenced in 3 location(s)"
+    },
+    "docs-a11182-pdf": {
+      "id": "docs-a11182-pdf",
+      "kind": "pdf",
+      "fileName": "contribution-laboratory-safety-handbook.pdf",
+      "category": "engagement",
+      "localPath": "public/assets/docs/实验室规范安全白皮书.pdf",
+      "md5": "d2967e09255370e1c598dd74a7928461",
+      "fileSize": 1263723,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "实验室规范安全白皮书",
+        "pdf"
+      ],
+      "references": [
+        {
+          "file": "src/data/project/contributionAssets.ts",
+          "line": 136,
+          "text": "fileName: \"实验室规范安全白皮书.pdf\",",
+          "type": "mention"
+        },
+        {
+          "file": "src/data/project/contributionAssets.ts",
+          "line": 137,
+          "text": "localSourcePath: `${docDir}/实验室规范安全白皮书.pdf`,",
+          "type": "mention"
+        },
+        {
+          "file": "文案集/project/contribution/3.6 Contribution.md",
+          "line": 35,
+          "text": "[实验室规范安全白皮书\\.pdf](图片和附件/实验室规范安全白皮书.pdf)",
+          "type": "markdown-link"
+        }
+      ],
+      "notes": "Referenced in 3 location(s)"
     }
   }
 }

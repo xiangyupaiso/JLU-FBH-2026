@@ -279,6 +279,24 @@ function renderSubheadingTitle(title: string) {
   );
 }
 
+/**
+ * Table cell content: `**bold**` plus the source manuscripts' literal `<br>`
+ * line breaks. Data tables carry short phrases, so this stays a text renderer —
+ * but a parts table's functional description is several sentences long and the
+ * author used `<br>` to keep sub-points apart, which must not collapse into one
+ * run-on line.
+ */
+function renderTableCell(cell: string): ReactNode {
+  if (!cell.includes("<br")) return renderInlineFormatting(cell);
+  const lines = cell.split(/<br\s*\/?>/);
+  return lines.map((line, index) => (
+    <span key={index}>
+      {renderInlineFormatting(line)}
+      {index < lines.length - 1 ? <br /> : null}
+    </span>
+  ));
+}
+
 function splitNoteContent(body: string): string[] {
   if (!body) return [];
   if (body.includes("\n")) {
@@ -490,6 +508,56 @@ function RouteBlock({
                       <td key={`${rowIndex}-${cellIndex}`}>{cell}</td>
                     ),
                   )}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      );
+    case "parts-table":
+      return (
+        <div
+          className="wiki-table-wrap wiki-table-wrap--parts"
+          data-wiki-reveal
+          role="region"
+          aria-label={block.caption ?? "Table"}
+          tabIndex={0}
+        >
+          <table className="wiki-table wiki-table--parts">
+            {block.caption ? <caption>{block.caption}</caption> : null}
+            <thead>
+              <tr>
+                {block.headers.map((header) => (
+                  <th scope="col" key={header}>
+                    {header}
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {block.rows.map((row) => (
+                <tr key={row.name}>
+                  <th scope="row">
+                    {/*
+                     * The part name IS the link. A Registry accession is a
+                     * hyperlink, not a name with its URL printed beside it —
+                     * printing the address adds a line of machine text to every
+                     * row and nothing a reader needs.
+                     */}
+                    <a
+                      className="wiki-table__part-link"
+                      href={row.href}
+                      rel="noreferrer"
+                      target="_blank"
+                    >
+                      {renderInlineFormatting(row.name)}
+                    </a>
+                  </th>
+                  {row.cells.map((cell, cellIndex) => (
+                    <td key={`${row.name}-${cellIndex}`}>
+                      {renderTableCell(cell)}
+                    </td>
+                  ))}
                 </tr>
               ))}
             </tbody>

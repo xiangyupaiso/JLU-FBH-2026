@@ -1,4 +1,9 @@
-export type WikiCategory = "project" | "wet-lab" | "dry-lab" | "engagement" | "team";
+export type WikiCategory =
+  | "project"
+  | "wet-lab"
+  | "dry-lab"
+  | "engagement"
+  | "team";
 
 export type WikiVisual =
   | "living-ring"
@@ -81,6 +86,22 @@ export type WikiContentBlock =
       caption?: string;
       headers: string[];
       rows: string[][];
+    }
+  /**
+   * A parts/registry table. Same `<table>` the `table` block emits — identical
+   * skin, identical responsive scroller — but the first column renders `name`
+   * as a link to `href` rather than as plain text, because a Registry accession
+   * is a hyperlink. Cells still support the data layer's `**bold**`.
+   */
+  | {
+      type: "parts-table";
+      caption?: string;
+      headers: string[];
+      rows: Array<{
+        name: string;
+        href: string;
+        cells: string[];
+      }>;
     }
   | {
       type: "mini-visual";

@@ -7,7 +7,7 @@ import backToTopImage from "../assets/wiki/back-to-top-girl.png";
 // padding activates the pull this far around the button; the cursor offset is
 // divided by the strength (higher = subtler pull).
 const MAGNET_PADDING = 100;
-const MAGNET_STRENGTH = 2;
+const MAGNET_STRENGTH = 6;
 
 export function BackToTop() {
   const { pathname } = useLocation();
