@@ -400,7 +400,8 @@ export function SdgDimensionChord() {
   }, [d3]);
 
   return (
-    <figure className="sust-chord">
+    // `wiki-figure` puts the chord in the page's FIG. nn caption sequence.
+    <figure className="wiki-figure sust-chord">
       <div className="sust-chord__host" ref={hostRef}>
         {missing ? (
           <p className="sust-chord__missing">

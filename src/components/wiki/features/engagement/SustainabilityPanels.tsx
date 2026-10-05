@@ -14,14 +14,13 @@ import {
   SdgInteractionHeatmap,
   SSTQNClassificationMatrix,
   SSTQNScoreProcess,
+  StakeholderDeck,
   StakeholderProfileCard,
   StatsGrid,
   SustainabilityPdfPreview,
+  ToolTable,
 } from "./sustainability";
-import {
-  scaleAnchorId,
-  type SdgChapter,
-} from "../../../../data/engagement/sustainability/sdgChapterContract";
+import type { SdgChapter } from "../../../../data/engagement/sustainability/sdgChapterContract";
 import {
   sustainabilityAssets,
   sustainabilityImage,
@@ -41,7 +40,6 @@ import {
 import { useRoutePageScroll } from "../../WikiRoutePage";
 import type { WikiContentBlock } from "../../wikiPageTypes";
 import type { ScaleRailStep } from "./sustainability/SCALEProgressChain";
-import { scrollReaderToId } from "../../../../utils";
 import "../../../../styles/features/sustainability-panels.css";
 
 /**
@@ -98,21 +96,44 @@ function ScaleRail({ chapter }: { chapter: SdgChapter }) {
   );
 }
 
+type StakeProfile = SdgChapter["stakeholders"]["profiles"][number];
+
+/** Consecutive profiles without a "Click more" article share one deck. */
+function stakeholderRuns(profiles: ReadonlyArray<StakeProfile>) {
+  const runs: StakeProfile[][] = [];
+  profiles.forEach((profile, index) => {
+    const previous = profiles[index - 1];
+    if (!profile.article && previous && !previous.article) runs[runs.length - 1].push(profile);
+    else runs.push([profile]);
+  });
+  return runs;
+}
+
+function LeadIn({ run }: { run: ReadonlyArray<StakeProfile> }) {
+  const paragraphs = run.flatMap((profile) => profile.leadIn ?? []);
+  if (!paragraphs.length) return null;
+  return (
+    <div className="wiki-prose">
+      {paragraphs.map((paragraph) => (
+        <p key={paragraph}>
+          <RichText text={paragraph} />
+        </p>
+      ))}
+    </div>
+  );
+}
+
 function StakeholderGrid({ chapter }: { chapter: SdgChapter }) {
   return (
     <div className="sust-stake-grid">
-      {chapter.stakeholders.profiles.map((profile) => (
-        <div className="sust-stake-grid__item" key={profile.id}>
-          {profile.leadIn ? (
-            <div className="wiki-prose">
-              {profile.leadIn.map((paragraph) => (
-                <p key={paragraph}>
-                  <RichText text={paragraph} />
-                </p>
-              ))}
-            </div>
-          ) : null}
-          <StakeholderProfileCard profile={profile} />
+      {stakeholderRuns(chapter.stakeholders.profiles).map((run) => (
+        <div className="sust-stake-grid__item" key={run[0].id}>
+          <LeadIn run={run} />
+          {run.length > 1 ? (
+            <StakeholderDeck profiles={run} />
+          ) : (
+            <StakeholderProfileCard profile={run[0]} />
+          )}
         </div>
       ))}
     </div>
@@ -122,7 +143,6 @@ function StakeholderGrid({ chapter }: { chapter: SdgChapter }) {
 /** E — Evidence: numbered Measurable items with figures, Significant prose. */
 function EvidencePanel({ chapter }: { chapter: SdgChapter }) {
   const { measurable, significant } = chapter.evidence;
-  const legacyId = scaleAnchorId(chapter, "legacy");
   return (
     <div className="sust-evidence">
       <h4 className="sust-minor-heading">Measurable</h4>
@@ -131,23 +151,10 @@ function EvidencePanel({ chapter }: { chapter: SdgChapter }) {
           <li className="sust-evidence__item" key={item.text}>
             <p>
               <RichText text={item.text} />
-              {item.link ? (
-                <>
-                  {" "}
-                  <a
-                    className="wiki-chapter-link wiki-chapter-link--inline"
-                    href={`#${legacyId}`}
-                    onClick={(event) => {
-                      event.preventDefault();
-                      scrollReaderToId(legacyId, event.currentTarget);
-                    }}
-                  >
-                    {item.link.label}
-                  </a>
-                </>
-              ) : null}
             </p>
+            {item.toolTable ? <ToolTable tools={chapter.legacy.tools} /> : null}
             {item.figure ? (
+              // The caption carries the page's "FIG. nn" badge, like every other figure.
               <figure className="wiki-figure">
                 <img
                   src={sustainabilityImage(item.figure)}
@@ -155,6 +162,7 @@ function EvidencePanel({ chapter }: { chapter: SdgChapter }) {
                   loading="lazy"
                   decoding="async"
                 />
+                <figcaption>{item.figureCaption ?? sustainabilityAssets[item.figure].alt}</figcaption>
               </figure>
             ) : null}
           </li>

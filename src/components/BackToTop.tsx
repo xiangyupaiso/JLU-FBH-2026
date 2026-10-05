@@ -1,10 +1,18 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { gsap } from "gsap";
-const backToTopImage = "https://static.igem.wiki/teams/6056/wiki/files/pages/shared/back-to-top.avif";
+import backToTopImage from "../assets/wiki/back-to-top-girl.png";
+
+// ReactBits Magnet defaults (https://www.reactbits.dev/animations/magnet):
+// padding activates the pull this far around the button; the cursor offset is
+// divided by the strength (higher = subtler pull).
+const MAGNET_PADDING = 100;
+const MAGNET_STRENGTH = 2;
 
 export function BackToTop() {
   const { pathname } = useLocation();
+  const buttonRef = useRef<HTMLButtonElement>(null);
+  const magnetRef = useRef<HTMLSpanElement>(null);
   const [isVisible, setIsVisible] = useState(false);
   const [isLaunching, setIsLaunching] = useState(false);
 
@@ -39,6 +47,59 @@ export function BackToTop() {
     };
   }, [pathname]);
 
+  // Magnet pull: a window-level proximity check against the stationary button
+  // box. The inner magnet layer is the only translated element, so its
+  // transform never fights the launch keyframes (which live one level deeper).
+  useEffect(() => {
+    if (!isVisible || isLaunching) return;
+    const finePointer = window.matchMedia(
+      "(hover: hover) and (pointer: fine)",
+    ).matches;
+    const reducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+    if (!finePointer || reducedMotion) return;
+
+    const resetMagnet = () => {
+      const magnet = magnetRef.current;
+      if (magnet) {
+        magnet.dataset.magnet = "false";
+        magnet.style.transform = "translate3d(0, 0, 0)";
+      }
+    };
+
+    const handleMouseMove = (event: MouseEvent) => {
+      const button = buttonRef.current;
+      const magnet = magnetRef.current;
+      if (!button || !magnet) return;
+
+      const rect = button.getBoundingClientRect();
+      const centerX = rect.left + rect.width / 2;
+      const centerY = rect.top + rect.height / 2;
+      const withinX =
+        Math.abs(event.clientX - centerX) < rect.width / 2 + MAGNET_PADDING;
+      const withinY =
+        Math.abs(event.clientY - centerY) < rect.height / 2 + MAGNET_PADDING;
+
+      if (withinX && withinY) {
+        magnet.dataset.magnet = "true";
+        magnet.style.transform = `translate3d(${(event.clientX - centerX) / MAGNET_STRENGTH}px, ${(event.clientY - centerY) / MAGNET_STRENGTH}px, 0)`;
+      } else {
+        resetMagnet();
+      }
+    };
+
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+      resetMagnet();
+    };
+  }, [isVisible, isLaunching]);
+
+  // Scroll-up tween. GSAP onComplete is the single source of truth for the
+  // launch lifecycle — completion in onAnimationEnd was ambiguous because the
+  // ::after pseudo-element also targets the same span, so the instant snap
+  // could fire twice.
   useEffect(() => {
     if (!isLaunching) return;
 
@@ -49,6 +110,10 @@ export function BackToTop() {
       ease: "power2.inOut",
       onUpdate: () => {
         window.scrollTo({ top: position.y, behavior: "instant" });
+      },
+      onComplete: () => {
+        window.scrollTo({ top: 0, behavior: "instant" });
+        setIsLaunching(false);
       },
     });
 
@@ -72,6 +137,7 @@ export function BackToTop() {
 
   return (
     <button
+      ref={buttonRef}
       className={`circure-back-to-top${isVisible || isLaunching ? " is-visible" : ""}${isLaunching ? " is-launching" : ""}`}
       type="button"
       onClick={returnToTop}
@@ -82,16 +148,13 @@ export function BackToTop() {
       title="Return to top"
     >
       <span
-        className="circure-back-to-top__artwork"
+        ref={magnetRef}
+        className="circure-back-to-top__magnet"
         aria-hidden="true"
-        onAnimationEnd={(event) => {
-          if (event.target === event.currentTarget) {
-            window.scrollTo({ top: 0, behavior: "instant" });
-            setIsLaunching(false);
-          }
-        }}
       >
-        <img src={backToTopImage} alt="" draggable={false} />
+        <span className="circure-back-to-top__artwork">
+          <img src={backToTopImage} alt="" draggable={false} />
+        </span>
       </span>
     </button>
   );

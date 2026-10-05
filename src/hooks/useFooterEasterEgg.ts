@@ -1,87 +1,201 @@
-import { useEffect, type RefObject } from "react";
-import { clamp } from "../utils";
+import {
+  useCallback,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+  type RefObject,
+} from "react";
 
-/**
- * Drives the footer easter egg by writing `--easter-p` on the root element.
- *
- * The emblem assembles as the reader overscrolls past the contact panel: 0 when
- * the section is one viewport below the fold, 1 once it has risen to the middle
- * of the viewport. Easing the value toward its target rather than scrubbing to
- * it directly gives the emblem a little weight, so it keeps assembling for a
- * moment after the gesture stops — the "resistance" the gesture should have.
- *
- * The easing is frame-rate independent (a fixed share of the remaining distance
- * per frame, not a per-frame increment), so a 120Hz display does not assemble it
- * twice as fast as a 60Hz one.
- *
- * Deliberately not GSAP. This is one `getBoundingClientRect` per frame on one
- * element, and the footer is mounted on all 22 pages; a ScrollTrigger per route
- * would cost far more than it explains. The same passive-listener + single rAF
- * shape as `BackToTop`'s visibility test.
- *
- * Under `prefers-reduced-motion` the value is pinned to 1 and the stylesheet
- * collapses the sticky window, so the emblem is simply present.
+/** Extra intent at the real document end reveals the hidden final chapter.
+ * No wheel cancellation, body lock, or interference with nested readers.
  */
-export function useFooterEasterEgg(rootRef: RefObject<HTMLElement | null>) {
+export function useFooterEasterEgg(
+  rootRef: RefObject<HTMLElement | null>,
+  seamRef: RefObject<HTMLButtonElement | null>,
+) {
+  const [revealed, setRevealed] = useState(false);
+  const returnY = useRef(0);
+  const closingFrame = useRef(0);
+  const reveal = useCallback(() => {
+    returnY.current = window.scrollY;
+    setRevealed(true);
+  }, []);
+  const close = useCallback(() => {
+    setRevealed(false);
+    closingFrame.current = window.requestAnimationFrame(() => {
+      window.scrollTo({ top: returnY.current, behavior: "instant" });
+      seamRef.current?.focus({ preventScroll: true });
+      closingFrame.current = 0;
+    });
+  }, [seamRef]);
+
+  useLayoutEffect(() => {
+    if (!revealed || !rootRef.current) return;
+    const reduced = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+    const headerHeight =
+      Number.parseFloat(
+        getComputedStyle(document.documentElement).getPropertyValue(
+          "--header-height",
+        ),
+      ) || 78;
+    const top =
+      window.scrollY +
+      rootRef.current.getBoundingClientRect().top -
+      headerHeight;
+    window.scrollTo({ top, behavior: reduced ? "instant" : "smooth" });
+    rootRef.current.focus({ preventScroll: true });
+  }, [revealed, rootRef]);
+
+  useEffect(() => () => window.cancelAnimationFrame(closingFrame.current), []);
+
   useEffect(() => {
-    const root = rootRef.current;
-    if (!root) return;
-
-    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-    /** Share of the remaining distance covered per frame. Lower = heavier. */
-    const EASE = 0.14;
-
-    let frame = 0;
-    let current = 0;
-    let target = 0;
-
-    const paint = () => {
-      const bounds = root.getBoundingClientRect();
-      // Progress tracks the section sliding up the viewport, not a sticky
-      // child: there is no sticky child any more (a tall track plus a short
-      // pinned window spent most of its scroll doing nothing). 0 as the
-      // section's top edge is one viewport below the fold, 1 once it has risen
-      // to the middle — so the emblem is fully assembled by the time the
-      // reader reaches the bottom of the page.
-      const raw =
-        (window.innerHeight - bounds.top) / (window.innerHeight * 0.62);
-      target = clamp(raw);
-
-      if (reducedMotion.matches) {
-        current = 1;
-      } else {
-        current += (target - current) * EASE;
-        // Snap once the gap is below what a frame can show, so the value parks
-        // at exactly 0 or 1 instead of asymptoting towards them.
-        if (Math.abs(target - current) < 0.001) current = target;
-      }
-      root.style.setProperty("--easter-p", current.toFixed(4));
+    const seam = seamRef.current;
+    if (!seam) return;
+    if (revealed) {
+      const escape = (event: KeyboardEvent) => {
+        if (
+          event.key === "Escape" &&
+          rootRef.current?.contains(event.target as Node)
+        )
+          close();
+      };
+      window.addEventListener("keydown", escape);
+      return () => window.removeEventListener("keydown", escape);
+    }
+    let arrived = 0;
+    let lastWheel = 0;
+    let armed = false;
+    let pressure = 0;
+    let resetTimer = 0;
+    let touchY = 0;
+    let touchReady = false;
+    const atEnd = () =>
+      document.documentElement.scrollHeight -
+        window.scrollY -
+        window.innerHeight <=
+      4;
+    const reset = () => {
+      pressure = 0;
+      armed = false;
+      seam.style.setProperty("--gate-p", "0");
     };
-
-    const step = () => {
-      paint();
-      // Keep easing after the gesture has stopped, until the value settles.
-      if (!reducedMotion.matches && current !== target) {
-        frame = window.requestAnimationFrame(step);
+    const onScroll = () => {
+      if (atEnd()) {
+        if (!arrived) arrived = performance.now();
       } else {
-        frame = 0;
+        arrived = 0;
+        reset();
       }
     };
-
-    const requestStep = () => {
-      if (!frame) frame = window.requestAnimationFrame(step);
+    const push = (distance: number) => {
+      pressure = Math.max(0, Math.min(240, pressure + distance));
+      seam.style.setProperty("--gate-p", String(pressure / 240));
+      window.clearTimeout(resetTimer);
+      if (pressure >= 240) {
+        reset();
+        reveal();
+      } else resetTimer = window.setTimeout(reset, 1000);
     };
-
-    window.addEventListener("scroll", requestStep, { passive: true });
-    window.addEventListener("resize", requestStep, { passive: true });
-    reducedMotion.addEventListener("change", requestStep);
-    requestStep();
-
+    const nestedControl = (target: EventTarget | null) => {
+      if (!(target instanceof Element)) return false;
+      if (
+        target.closest(
+          "input, textarea, select, [contenteditable='true'], [role='dialog']",
+        )
+      )
+        return true;
+      for (
+        let node: Element | null = target;
+        node && node !== document.body;
+        node = node.parentElement
+      ) {
+        if (
+          node.scrollHeight > node.clientHeight + 2 &&
+          /auto|scroll/.test(getComputedStyle(node).overflowY)
+        )
+          return true;
+      }
+      return false;
+    };
+    const wheel = (event: WheelEvent) => {
+      if (
+        event.ctrlKey ||
+        event.shiftKey ||
+        nestedControl(event.target) ||
+        Math.abs(event.deltaX) > Math.abs(event.deltaY)
+      )
+        return;
+      const now = performance.now();
+      const pause = now - lastWheel;
+      lastWheel = now;
+      if (!atEnd() || event.deltaY <= 0) {
+        reset();
+        return;
+      }
+      // The gesture that first reaches the footer never opens the scene.
+      // A short pause distinguishes the next deliberate gesture from inertia.
+      if (!arrived) {
+        arrived = now;
+        return;
+      }
+      if (now - arrived < 220) return;
+      if (!armed) {
+        if (pause < 160) return;
+        armed = true;
+      }
+      const delta =
+        event.deltaMode === 1
+          ? event.deltaY * 16
+          : event.deltaMode === 2
+            ? event.deltaY * window.innerHeight
+            : event.deltaY;
+      push(Math.min(delta, 120));
+    };
+    const keydown = (event: KeyboardEvent) => {
+      if (
+        nestedControl(event.target) ||
+        (event.target instanceof Element && event.target.closest("button, a"))
+      )
+        return;
+      if (
+        ["ArrowDown", "PageDown", " "].includes(event.key) &&
+        !event.shiftKey &&
+        atEnd()
+      ) {
+        if (arrived && performance.now() - arrived > 220) push(120);
+        else onScroll();
+      }
+    };
+    const touchStart = (event: TouchEvent) => {
+      touchReady =
+        event.touches.length === 1 && atEnd() && !nestedControl(event.target);
+      touchY = event.touches[0]?.clientY ?? 0;
+    };
+    const touchMove = (event: TouchEvent) => {
+      if (!touchReady || event.touches.length !== 1) return;
+      const next = event.touches[0].clientY;
+      const distance = touchY - next;
+      touchY = next;
+      if (distance > 0) push(distance * 3);
+      else reset();
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("wheel", wheel, { passive: true });
+    window.addEventListener("keydown", keydown);
+    window.addEventListener("touchstart", touchStart, { passive: true });
+    window.addEventListener("touchmove", touchMove, { passive: true });
     return () => {
-      if (frame) window.cancelAnimationFrame(frame);
-      window.removeEventListener("scroll", requestStep);
-      window.removeEventListener("resize", requestStep);
-      reducedMotion.removeEventListener("change", requestStep);
+      window.clearTimeout(resetTimer);
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("wheel", wheel);
+      window.removeEventListener("keydown", keydown);
+      window.removeEventListener("touchstart", touchStart);
+      window.removeEventListener("touchmove", touchMove);
     };
-  }, [rootRef]);
+  }, [revealed, reveal, close, rootRef, seamRef]);
+  return { revealed, reveal, close };
 }

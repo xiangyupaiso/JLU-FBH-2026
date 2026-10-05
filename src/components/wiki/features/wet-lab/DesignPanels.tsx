@@ -17,6 +17,7 @@ import {
   createCitationRenderer,
   type CitationFlashTint,
 } from "../../citations/CitationRegister";
+import { DocumentViewer } from "../../documents/DocumentViewer";
 import { DesignConstructViewer } from "./DesignConstructViewer";
 import "../../../../styles/features/design-panels.css";
 
@@ -53,26 +54,24 @@ export const renderDesignCitedText = createCitationRenderer(
 /**
  * Figure 9: the pre-registered animal-study design report, as a PDF.
  *
- * Deliberately not a `.wiki-figure`: that class carries the reader's `FIG. nn`
- * badge, and a document is not an illustration. The caption keeps the figure
- * register's typography so it still reads as the same editorial furniture.
+ * Rendered through the shared document viewer (WIKI_ARCHITECTURE_SPEC.md §4.6),
+ * so the report is collapsed until the reader asks for it: the PDF plugin is a
+ * separate process surface and the page should not carry it by default.
+ *
+ * The card shows the manuscript's own caption and nothing besides — the
+ * paragraph above already introduces the report in the team's words, and the
+ * accessible name comes from the same caption.
  */
 function DesignEdaReport() {
   const report = designAssets.edaReport;
 
   return (
-    <figure className="design-pdf-figure">
-      <iframe
-        className="design-pdf-figure__frame"
-        src={getDesignDocument("edaReport")}
-        title="NC3Rs Experimental Design Report for the CirCure in vivo tumour study"
-        /* The browser's PDF viewer is a separate, expensive surface. Defer it
-           until the reader approaches it so scrolling the page does not carry an
-           off-screen plugin through every projected frame. */
-        loading="lazy"
-      />
-      <figcaption>{report.caption}</figcaption>
-    </figure>
+    <DocumentViewer
+      document={{
+        caption: report.caption,
+        url: getDesignDocument("edaReport"),
+      }}
+    />
   );
 }
 

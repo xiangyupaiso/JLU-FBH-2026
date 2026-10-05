@@ -84,6 +84,8 @@ src/
 │   ├── proseInline.tsx                    # 共享行内排版（**bold** 与 Markdown 链接）
 │   ├── citations/                         # 跨页共享：全站唯一的引用文献系统实现
 │   │   └── CitationRegister.tsx
+│   ├── documents/                         # 跨页共享：正文内嵌文档（PDF）收展查看器
+│   │   └── DocumentViewer.tsx
 │   ├── WikiLineSidebar.tsx                # 全局侧边栏目录
 │   ├── WikiNextRecord.tsx                 # 底部下一页卡片
 │   └── features/                          # [3] 特征交互组件层
@@ -96,6 +98,7 @@ src/
 └── styles/                                # [4] 样式层
     ├── wiki-route-skin.css                # 全局宏观骨架与外壳尺寸（唯一宏观真理）
     ├── wiki-citations.css                 # 跨页共享：引用皮肤（只消费 --route-*）
+    ├── wiki-documents.css                 # 跨页共享：文档深色卡片与收展皮肤
     ├── route-palette-[module].css         # 模块主题三色板（主色/辅色/底色）
     └── features/                          # 页面专属微观尺寸样式
         └── alternative-platform-panels.css
@@ -427,29 +430,40 @@ export function pageFeatures(): Record<string, ReactNode> {
 
 ### 4.6 跨页共享模式：正文内嵌文档块（PDF / 报告）
 
-把一份文档（报告、表单、手册）作为正文内容展示。参考实现：Design 页的 Figure 9（`design-eda-report`）与 Sustainability 页的 `SustainabilityPdfPreview`。
+把一份文档（报告、表单、手册）作为正文内容展示。**统一走共享组件**，不要自己写 iframe 和外皮：
+
+| 层   | 路径                                                                    |
+| :--- | :---------------------------------------------------------------------- |
+| 组件 | `src/components/wiki/documents/DocumentViewer.tsx`                      |
+| 皮肤 | `src/styles/wiki-documents.css`（只消费 `--route-*`，四种模块自动适配） |
+
+外观是一条**收窄的深色横条**（`max-width: 760px` 居中）：用模块自己的深墨（`--route-heading-ink`）作条面，条上只有**一句话**（稿件自己的图注）和一个胶囊按钮，颜色的区分只由**条面本身**承担。**没有图标、没有顶部色线、没有端点圆点、没有「PDF」小标签、没有文件名、没有副标题、没有外链/下载按钮。** 理由见铁律 5 与铁律 7（并直接受铁律 3「剔除顶部线条、滑动圆点」与铁律 4「严禁 AI 眉标与机械小字」约束）。
+
+参考实现：Design 页的 Figure 9（`design-eda-report`）。Sustainability 页的 `SustainabilityPdfPreview` 是这套组件之前的历史实现，**待迁移**（迁移时传 `defaultOpen` 即可保持它现在常开的观感，传 `readLabel="Read the manual"` 之类可以改按钮文案）。
 
 ```tsx
-<figure className="<page>-pdf-figure">
-  <iframe
-    className="<page>-pdf-figure__frame"
-    src={getPageDocument("reportKey")}
-    title="…（无障碍标题：这是什么文档）"
-    loading="lazy"
-  />
-  <figcaption>{report.caption}</figcaption>
-</figure>
+<DocumentViewer
+  document={{
+    caption: report.caption, // 稿件为这个东西写的那句话：卡片上唯一的文字
+    url: getPageDocument("reportKey"), // 必须走解析函数
+  }}
+  // readLabel / closeLabel 可选，默认 "Read" / "Close"
+/>
 ```
 
-**五条铁律**
+**七条铁律**
 
-1. **绝不加 `.wiki-figure` 类。** 蓝色 `FIG. nn` 徽标挂在 `.wiki-figure figcaption::before`（`wiki-rebuild.css` 的 CSS 计数器）上；**文档不是插图**，套上就会出现「FIG. 10」与正文引用的「Figure 9」互相打架——Design 页踩过这个坑。图注排版由 `<page>-pdf-figure figcaption` 自行对齐图注字号（`13.5px` / 居中 / 85% 墨色）。
-2. **文档放 `public/assets/docs/`，URL 必须走解析函数**：`get[Page]Document(key) => uploadUrl || ${import.meta.env.BASE_URL}assets/docs/<fileName>`。这样 dev 与生产同源可用；资产字典里 `uploadUrl` 在官方上传前**严格留空**（与 4.2 图片双轨规范一致）。
-3. **必加 `loading="lazy"`**：插件面不在首屏创建，滚动时不必拖着一个屏外 surface。
-4. **高度只写在页面专属 CSS**（`--<page>-pdf-frame-height` 变量 + 移动端断点覆盖），TSX 里不写行内尺寸（铁律 2）。
-5. **图注文案由资产字典的 `caption` 提供**，是正式图注（如 `Experimental Design Report, NC3Rs EDA.`），**不带手写 `Figure N` 前缀**（徽标已经负责编号）。
+1. **默认收起，点击才展开。** 收起态不创建 `iframe`——插件面为零；首次展开后保持挂载，避免每次开合重新加载文档、丢失阅读页位。这条是**默认行为**，页面不需要做额外的事。
+2. **绝不加 `.wiki-figure` 类。** 蓝色 `FIG. nn` 徽标挂在 `.wiki-figure figcaption::before`（`wiki-rebuild.css` 的 CSS 计数器）上；**文档不是插图**，套上就会出现「FIG. 10」与正文引用的「Figure 9」互相打架——Design 页踩过这个坑。稿件那句话由 `.wiki-document__caption` 承载（15px、卡片内左对齐、白色），它是卡片的一部分，不再单独漂在正文里。
+3. **文档放 `public/assets/docs/`，URL 必须走解析函数**：`get[Page]Document(key) => uploadUrl || ${import.meta.env.BASE_URL}assets/docs/<fileName>`。这样 dev 与生产同源可用；资产字典里 `uploadUrl` 在官方上传前**严格留空**（与 4.2 图片双轨规范一致）。
+4. **不写行内尺寸**：卡片宽度与 frame 高度收敛在共享皮肤里（铁律 2）。
+5. **卡片上的文字只能来自稿件，一个字都不许自己加。** 卡片只显示资产字典里的 `caption`——稿件为这个内嵌物写的那句话（Design 是 `Figure 9. Experimental Design Report, NC3Rs EDA.`，去掉 `Figure N` 前缀），**不带手写编号**。**禁止**在卡片上补 `title` / `meta` / 文件名 / `PDF` 徽标 / 图标：这些字都是团队没写过的话，会让同一个东西在正文里被说三遍（正文一句 + 卡片标题 + 卡片副标题），一眼就是「生成味」。正文的引入句由 `designPage.ts` 的段落承担，那是数据层的事，不要搬到卡片上。
+6. **要弹窗而不是就地展开时**，在共享组件内加一个 `variant`，**不要**在页面里另写一套（否则又变成第二实现）。
+7. **文档块必须一眼看出是「一个东西」，不能是图注样式。** 正文列里图表、图注、正文段落都是同一套浅色排版，早先的文档块用「图注字号 + 居中 + 灰字 + 下划线链接」拼出来，读者（包括我们自己）会把它当成上面那张图的第二段图注——Design 页的 Figure 9 就发生过。所以文档块**必须**保留深色条面 + 真按钮，靠颜色和硬边界把它从正文里切出来。改配色只能改 `--route-*` 与条内的 `--doc-*` 派生量，不许改回浅色文字块。**颜色要醒目，文字要克制，装饰要为零**——颜色由条面本身承担，不靠加线、加点、加徽标来「设计」。
 
-**取舍提示**：内嵌文档会引入一个独立进程的插件 surface，本身不便宜（但它**不是**滚动掉帧的主因，见铁律 8）。若某页文档数量多、或文档不在正文叙事主线上，优先改成「卡片 + 打开报告」按钮（新标签页打开），把插件面移出正文。
+**CSS 特异性提示**：`wiki-documents.css` 里每条规则都写到 `.wiki-page .wiki-document .x` 三层，这是**有意为之**，不要「顺手简化」成一层。正文列里 `.wiki-page--route .wiki-prose p`（0,2,1）与 `.wiki-page--route .wiki-prose strong`（0,2,1）会给每个 `<p>`／`<strong>` 重新上色，`.wiki-prose figure`（0,1,1）还会强制 `display:flex / align-items:center / text-align:center`；两层选择器会输在打包顺序上，而卡片是深色面，颜色一旦失效就是白字白底。
+
+**取舍提示**：插件 surface 会引入一个独立进程的面，本身不便宜（但它**不是**滚动掉帧的主因，见铁律 8）。收起态让首屏与滚动完全不碰它；若某页文档多且不在叙事主线上，直接把动作链接放在正文里、不挂 `DocumentViewer` 也是可接受的。
 
 ---
 
@@ -591,7 +605,10 @@ $$
 4. ❌ **多层嵌套重导反模式**：类似 `descriptionData.ts` → `descriptionPage.ts` → `projectPages.ts` 无意义的三层包装。
 5. ❌ **第二套引用系统反模式**：页面自建 tooltip / 文献列表 / 跳转逻辑，导致锚点、回链、配色全站分叉（见 4.5）。
 6. ❌ **重部件裸挂反模式**：把数千节点的交互部件直接放进 feature 插槽却不声明编排退出，页面滚动掉帧（见铁律 8）。
-7. ❌ **文档冒充插图反模式**：给内嵌 PDF 的 `<figure>` 套上 `.wiki-figure`，于是蓝色 `FIG. nn` 徽标与正文的「Figure N」编号打架（见 4.6）。
+7. ❌ **文档冒充插图反模式**：给内嵌 PDF 的文档块套上 `.wiki-figure`，于是蓝色 `FIG. nn` 徽标与正文的「Figure N」编号打架；或绕开共享 `DocumentViewer` 自写 iframe（见 4.6）。
+8. ❌ **文档冒充图注反模式**：把内嵌文档块做成「图注字号 + 居中 + 灰字 + 下划线链接」，读者会当成上面那张图的第二段图注（Design 页 Figure 9 的真实反馈）；深色条面与真按钮必须都在（见 4.6 铁律 7）。
+9. ❌ **卡片自己加话反模式**：在文档卡片上补稿件里没有的标题 / 副标题 / 文件名 / `PDF` 徽标 / 图标，把同一件事说三遍，读者一眼看出是生成的装饰（见 4.6 铁律 5）。
+10. ❌ **给卡片加装饰反模式**：在文档条上加顶部色线、端点圆点之类的「设计感」小装饰——直接违反铁律 3，Design 页的 Figure 9 卡片加过一次，被一眼认出并删掉（见 4.6）。
 
 ### 迁移新页面时的 Check List
 
@@ -604,7 +621,10 @@ $$
 - [ ] 自定义图表通过 `features` 插槽挂载，并在对应 `[Page]Panels.tsx` 集中导出
 - [ ] 需要引用文献时复用了共享 register（`data/citations` + `components/wiki/citations` + `styles/wiki-citations.css`），没有自建第二套
 - [ ] 文献条目为字段化格式（`authors` / `title` / `journal` / `volumeYear` / `links`），`volumeYear` 保留稿件原标点
-- [ ] 内嵌文档未套 `.wiki-figure`、已加 `loading="lazy"`、URL 走 `get[Page]Document()`、文件位于 `public/assets/docs/`
+- [ ] 内嵌文档走共享 `DocumentViewer`（默认收起、展开才挂 iframe）、未套 `.wiki-figure`、URL 走 `get[Page]Document()`、文件位于 `public/assets/docs/`
+- [ ] 内嵌文档块保留了深色条面 / 真按钮，没有退化成图注样式（4.6 铁律 7）
+- [ ] 文档卡片上的文字**只有**资产字典的 `caption`，没有自加标题 / 副标题 / 文件名 / `PDF` 徽标 / 图标（4.6 铁律 5）
+- [ ] 文档条上没有顶部色线、端点圆点等装饰（铁律 3；4.6 反模式 10）
 - [ ] 若 feature 插槽偏重（数百节点 / SVG 图谱 / `clip-path` / 长列表 / `iframe`），已加 `data-wiki-route` 编排退出（铁律 8）
 - [ ] 已运行 `node scripts/measure-page-weight.mjs`，该页 feature 节点数没有明显高于同级页面
 - [ ] 组件样式就近收口在 `src/styles/features/`，没有污染全局样式

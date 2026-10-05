@@ -70,6 +70,9 @@ const STOPS = [
 
 const FONT = "'DejaVu Sans', 'Helvetica Neue', Arial, sans-serif";
 
+/** Colour bar geometry in design units, shared by the drawing and the hover probe. */
+const BAR = { x: 247.5, y: 692.5, width: 618.7, height: 16 };
+
 const cells: { value: number[]; label?: { color: string } }[] = [];
 const diag: { value: number[] }[] = [];
 M.forEach((row, r) =>
@@ -117,7 +120,7 @@ function option(s: number): EChartsOption {
     {
       type: "rect",
       silent: true,
-      shape: { x: 247.5 * s, y: 692.5 * s, width: 618.7 * s, height: 16 * s },
+      shape: { x: BAR.x * s, y: BAR.y * s, width: BAR.width * s, height: BAR.height * s },
       style: {
         fill: new echarts.graphic.LinearGradient(
           0, 0, 1, 0,
@@ -136,6 +139,32 @@ function option(s: number): EChartsOption {
       11.5, "#000", "bold",
       { sub: { fontSize: 7.5 * s, fontFamily: FONT, fontWeight: "bold", fill: "#000", padding: [3 * s, 0, 0, 0] } },
     ),
+    // Hover probe on the colour bar, moved and relabelled by `bindBarProbe`.
+    {
+      id: "probe-line",
+      type: "rect",
+      silent: true,
+      invisible: true,
+      shape: { x: -1.5 * s, y: (BAR.y - 5) * s, width: 3 * s, height: (BAR.height + 10) * s, r: 1.5 * s },
+      style: { fill: "#222" },
+    },
+    {
+      id: "probe-text",
+      type: "text",
+      silent: true,
+      invisible: true,
+      style: {
+        x: 0,
+        y: (BAR.y - 13) * s,
+        text: "",
+        fill: "#222",
+        fontSize: 10.5 * s,
+        fontWeight: "bold",
+        fontFamily: FONT,
+        textAlign: "center",
+        textVerticalAlign: "middle",
+      },
+    },
   ];
   return {
     animation: false,
@@ -187,6 +216,16 @@ function option(s: number): EChartsOption {
           },
         },
         itemStyle: { borderColor: "#fff", borderWidth: 1 },
+        // Cells picked from the colour bar float up: a raised drop shadow.
+        emphasis: {
+          itemStyle: {
+            borderColor: "#fff",
+            borderWidth: 2,
+            shadowBlur: 10 * s,
+            shadowOffsetY: 4 * s,
+            shadowColor: "rgba(20, 30, 40, 0.45)",
+          },
+        },
       },
       {
         type: "heatmap",
@@ -205,6 +244,8 @@ export function useSdgChart(
   makeOption: (s: number) => EChartsOption,
   w0: number,
   h0: number,
+  /** Called once with the chart; `scale()` reads the current design-to-pixel scale. */
+  onReady?: (chart: echarts.ECharts, scale: () => number) => void,
 ) {
   const ref = useRef<HTMLDivElement>(null);
   useEffect(() => {
@@ -219,7 +260,10 @@ export function useSdgChart(
       const height = Math.ceil((w * h0) / w0);
       el.style.height = `${height}px`;
       if (chart) chart.resize({ width: w, height });
-      else chart = echarts.init(el, undefined, { width: w, height });
+      else {
+        chart = echarts.init(el, undefined, { width: w, height });
+        onReady?.(chart, () => renderedWidth / w0);
+      }
       chart.setOption(makeOption(w / w0), true);
     };
     render();
@@ -234,8 +278,66 @@ export function useSdgChart(
   return ref;
 }
 
+/** Distinct non-zero scores shown in the matrix; the bar snaps to these. */
+const SCORES = [...new Set(cells.map((c) => c.value[2]).filter((v) => Math.abs(v) > 1e-6))].sort(
+  (a, b) => a - b,
+);
+
+/** How far (in score units) the pointer may sit from a score and still pick it. */
+const SNAP = 0.04;
+
+/**
+ * Colour-bar ↔ matrix link: moving along the bar lifts every cell carrying the
+ * score under the pointer (e.g. all the 0.60 cells) and marks that score on
+ * the bar. Leaving the bar drops them back.
+ */
+function bindBarProbe(chart: echarts.ECharts, scale: () => number) {
+  const zr = chart.getZr();
+  let picked: number | null = null;
+
+  const pick = (score: number | null) => {
+    if (score === picked) return;
+    picked = score;
+    chart.dispatchAction({ type: "downplay", seriesIndex: 0 });
+    const s = scale();
+    if (score === null) {
+      zr.setCursorStyle("default");
+      chart.setOption({
+        graphic: [
+          { id: "probe-line", invisible: true },
+          { id: "probe-text", invisible: true },
+        ],
+      });
+      return;
+    }
+    const dataIndex = cells.flatMap((c, i) => (Math.abs(c.value[2] - score) < 1e-6 ? [i] : []));
+    chart.dispatchAction({ type: "highlight", seriesIndex: 0, dataIndex });
+    zr.setCursorStyle("pointer");
+    const x = (BAR.x + ((score + 1) / 2) * BAR.width) * s;
+    chart.setOption({
+      graphic: [
+        { id: "probe-line", invisible: false, x },
+        { id: "probe-text", invisible: false, style: { x, text: score.toFixed(2) } },
+      ],
+    });
+  };
+
+  zr.on("mousemove", (e) => {
+    const s = scale();
+    const x = e.offsetX / s;
+    const y = e.offsetY / s;
+    const onBar =
+      x >= BAR.x - 6 && x <= BAR.x + BAR.width + 6 && y >= BAR.y - 18 && y <= BAR.y + BAR.height + 8;
+    if (!onBar) return pick(null);
+    const score = ((x - BAR.x) / BAR.width) * 2 - 1;
+    const nearest = SCORES.reduce((a, b) => (Math.abs(b - score) < Math.abs(a - score) ? b : a));
+    pick(Math.abs(nearest - score) <= SNAP ? nearest : null);
+  });
+  zr.on("globalout", () => pick(null));
+}
+
 export function SdgInteractionHeatmap() {
-  const ref = useSdgChart(option, 984, 753);
+  const ref = useSdgChart(option, 984, 753, bindBarProbe);
   return <div ref={ref} style={{ width: "100%" }} />;
 }
 

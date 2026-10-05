@@ -1,11 +1,10 @@
 import designHero from "../../assets/wiki/wet-lab-heroes/wet-lab-design-hero.webp";
+import platformHero from "../../assets/wiki/wet-lab-heroes/wet-lab-platform-hero.webp";
 
 const experimentsHero =
   "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/wet-lab-experiments-hero.webp";
 const measurementHero =
   "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/wet-lab-measurement-hero.webp";
-const platformHero =
-  "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/wet-lab-platform-hero.webp";
 
 export type WetLabHeroVariant =
   | "design"

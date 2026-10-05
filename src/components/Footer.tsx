@@ -1,6 +1,6 @@
-import { useRef, type CSSProperties } from "react";
-import emblemUrl from "../assets/story-nav/circure-emblem.png";
-import ribbonUrl from "../assets/story-nav/circure-ribbon.png";
+import { type CSSProperties } from "react";
+import { useLocation } from "react-router-dom";
+import { FooterEasterEgg } from "./FooterEasterEgg";
 import {
   FOOTER_EMAIL,
   FOOTER_EMAIL_DOMAIN,
@@ -15,7 +15,6 @@ import {
   FOOTER_PARTNERS_LABEL,
   type FooterMark,
 } from "../data/footer";
-import { useFooterEasterEgg } from "../hooks/useFooterEasterEgg";
 import { useRouteModule } from "../hooks/useRouteModule";
 import { stringToSlug } from "../utils";
 
@@ -61,9 +60,8 @@ export function Footer() {
   const teamName = import.meta.env.VITE_TEAM_NAME;
   const teamSlug = stringToSlug(teamName);
 
-  const easterRef = useRef<HTMLElement>(null);
+  const { pathname } = useLocation();
   const module = useRouteModule();
-  useFooterEasterEgg(easterRef);
 
   return (
     <footer
@@ -95,8 +93,16 @@ export function Footer() {
                 <span key={line}>{line}</span>
               ))}
             </p>
-            <a className="circure-footer__email" href={`mailto:${FOOTER_EMAIL}`}>
-              <span>{FOOTER_EMAIL_LOCAL}</span>@{FOOTER_EMAIL_DOMAIN}
+            <a
+              className="circure-footer__email"
+              href={`mailto:${FOOTER_EMAIL}`}
+            >
+              <span>
+                {FOOTER_EMAIL_LOCAL}@{FOOTER_EMAIL_DOMAIN}
+              </span>
+              <span className="circure-footer__email-arrow" aria-hidden="true">
+                ↗
+              </span>
             </a>
           </div>
 
@@ -117,7 +123,10 @@ export function Footer() {
               />
               <div className="circure-footer__partners-support">
                 {FOOTER_PARTNER_SUPPORT.map((row) => (
-                  <div className="circure-footer__partners-row" key={row[0].src}>
+                  <div
+                    className="circure-footer__partners-row"
+                    key={row[0].src}
+                  >
                     {row.map((mark) => (
                       <img
                         key={mark.src}
@@ -158,40 +167,7 @@ export function Footer() {
         </div>
       </div>
 
-      {/* The emblem assembles as the reader keeps scrolling past the panel. */}
-      <section
-        ref={easterRef}
-        className="circure-footer__easter"
-        aria-label="Let therapy evolve with the tumor"
-      >
-        <div className="circure-footer__easter-sticky">
-          <div className="brand-emblem" aria-hidden="true">
-            <div className="brand-emblem-disc">
-              <img className="brand-emblem-base" src={emblemUrl} alt="" />
-              <img className="brand-emblem-ribbon" src={ribbonUrl} alt="" />
-            </div>
-            <svg
-              className="brand-emblem-orbit"
-              viewBox="0 0 640 640"
-              role="presentation"
-            >
-              <circle className="brand-orbit-track" cx="320" cy="320" r="300" />
-              <path
-                className="brand-orbit-active"
-                pathLength={1}
-                d="M320 20a300 300 0 1 1-.1 0"
-              />
-              <circle className="brand-orbit-node" cx="116" cy="100" r="5" />
-              <circle className="brand-orbit-node" cx="570" cy="486" r="5" />
-            </svg>
-          </div>
-        </div>
-
-        <p className="circure-footer__easter-note">
-          <span>Let therapy evolve with the tumor.</span>
-          <span aria-hidden="true">CirCure</span>
-        </p>
-      </section>
+      <FooterEasterEgg key={pathname} />
     </footer>
   );
 }

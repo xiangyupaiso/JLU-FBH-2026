@@ -161,7 +161,7 @@ check(
 
 /* ---------------------------------------------------------------- sequence */
 
-const metrics = { advance: 12, basesPerRow: 60, lineHeight: 17.75, letterSpacing: 2.9 };
+const metrics = { advance: 12, basesPerRow: 50, lineHeight: 17.75, letterSpacing: 2.9 };
 const rows = geometry.buildSequenceRows(metrics);
 
 check("rows are generated", rows.length > 0);

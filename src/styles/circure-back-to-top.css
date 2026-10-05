@@ -23,6 +23,20 @@
   pointer-events: auto;
 }
 
+/* Magnet layer: only this element translates toward the cursor. Inactive uses
+   the slow settle, active the snappy follow (ReactBits Magnet defaults). */
+.circure-back-to-top__magnet {
+  display: block;
+  width: 100%;
+  height: 100%;
+  will-change: transform;
+  transition: transform 500ms ease-in-out;
+}
+
+.circure-back-to-top__magnet[data-magnet="true"] {
+  transition: transform 300ms ease-out;
+}
+
 .circure-back-to-top__artwork {
   position: relative;
   display: block;
@@ -31,25 +45,6 @@
   isolation: isolate;
   pointer-events: none;
   transform-origin: 50% 80%;
-}
-
-.circure-back-to-top__artwork::after {
-  position: absolute;
-  z-index: -1;
-  top: 80%;
-  left: 44%;
-  width: 12%;
-  height: 64px;
-  border-radius: 40% 40% 60% 60%;
-  background: linear-gradient(
-    to bottom,
-    rgb(255 244 208 / 85%),
-    rgb(232 160 116 / 45%) 40%,
-    rgb(232 160 116 / 0%)
-  );
-  content: "";
-  opacity: 0;
-  transform-origin: 50% 0;
 }
 
 .circure-back-to-top img {
@@ -86,10 +81,6 @@
   animation: circure-back-to-top-launch 720ms ease-in both;
 }
 
-.circure-back-to-top.is-launching .circure-back-to-top__artwork::after {
-  animation: circure-back-to-top-trail 720ms ease-in both;
-}
-
 @keyframes circure-back-to-top-launch {
   0% {
     transform: translateY(0) scale(1);
@@ -111,29 +102,6 @@
   }
 }
 
-@keyframes circure-back-to-top-trail {
-  0%,
-  14% {
-    opacity: 0;
-    transform: scaleY(0.2);
-  }
-
-  35% {
-    opacity: 0.75;
-    transform: scaleY(0.8);
-  }
-
-  70% {
-    opacity: 0.5;
-    transform: scaleY(1.3);
-  }
-
-  100% {
-    opacity: 0;
-    transform: scaleY(1.6);
-  }
-}
-
 @media (max-width: 620px) {
   .circure-back-to-top {
     right: 16px;
@@ -145,12 +113,12 @@
 
 @media (prefers-reduced-motion: reduce) {
   .circure-back-to-top,
-  .circure-back-to-top img {
+  .circure-back-to-top img,
+  .circure-back-to-top__magnet {
     transition: none;
   }
 
-  .circure-back-to-top.is-launching .circure-back-to-top__artwork,
-  .circure-back-to-top.is-launching .circure-back-to-top__artwork::after {
+  .circure-back-to-top.is-launching .circure-back-to-top__artwork {
     animation-duration: 1ms;
   }
 }

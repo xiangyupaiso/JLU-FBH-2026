@@ -8,7 +8,8 @@
       team's standalone HTML. Macro sizing is inherited from the reader skin
       (`--route-page`); only the viewer's own micro dimensions are declared, as
       variables at the top, per the "no hard-coded size in TSX" contract.
-   3. The embedded report's frame and caption, and the page's prose-link skin.
+   3. The page's prose-link skin. The embedded report's card and frame live in
+      the shared document skin (`styles/wiki-documents.css`), not here.
 
    Panels carry no outer margin: `.wiki-feature` supplies the shared 24px.
    Citations live in the shared register (`styles/wiki-citations.css`).
@@ -25,8 +26,9 @@
    `[data-wiki-reveal]` block a 680 ms opacity + translate transition.
 
    On a small card that is free. On this page's slots — `design-eda-report`
-   (a PDF plugin surface) and above all `construct-architecture-viewer`, at 82
-   SVG paths + 39 clip-path bars + 88 sequence rows inside one promoted layer —
+   (a PDF plugin surface once opened) and above all `construct-architecture-viewer`,
+   at 82 SVG paths + 39 clip-path bars + 106 sequence rows inside one promoted
+   layer —
    each new fractional offset invalidates that layer, so the main thread
    re-rasterises the whole widget while the reader is trying to scroll. That is
    the dropped frames, and it is why the page feels heavier than its neighbours
@@ -57,6 +59,10 @@
   --cc-head: var(--route-panel, #f7f9fb);
   --cc-site: var(--route-heading-ink, #14354c);
   --cc-site-deep: #0e2534;
+  /* Selection cue for elements. At 5 bp a glyph spans a third of a degree of
+     arc, so the wedge behind it is a hairline and the name has to carry the
+     selection instead. Restriction sites keep the site blue. */
+  --cc-select: #b3261e;
   --cc-wedge: var(--route-marker-bg, #d7eefb);
   --cc-panel-bg: var(--route-paper, #fff);
 
@@ -65,6 +71,8 @@
   --cc-grid-gap: 18px;
   --cc-head-pad: 9px 14px;
   --cc-head-size: 12.5px;
+  /* Owned by the component: `measure()` sizes the strand so exactly
+     `SEQUENCE_BASES_PER_ROW` bases fill a row, between 9px and 13.5px. */
   --cc-strand-size: 12.5px;
   --cc-strand-line: 1.42;
   --cc-strand-tracking: 0.235em;
@@ -202,18 +210,24 @@
   stroke: #99a3ae;
 }
 
+/* Selected element: the name (and the lead that ties it to the glyph) turns
+   red, which is what makes a 5 bp insert findable on a 5,267 bp ring. */
 .cc-g.is-on .cc-tag {
   stroke-width: 1.6;
   stroke: var(--cc-ink);
 }
 
 .cc-g.is-on .cc-lbl {
-  fill: var(--cc-ink);
+  fill: var(--cc-select);
   font-weight: 700;
 }
 
+.cc-g.is-on .cc-inlbl {
+  fill: var(--cc-select);
+}
+
 .cc-g.is-on .cc-lead {
-  stroke: #6e7883;
+  stroke: var(--cc-select);
   stroke-width: 1;
 }
 
@@ -393,7 +407,9 @@
   flex: 1 1 0;
   min-height: 0;
   overflow-y: auto;
-  overflow-x: hidden;
+  /* A row is a fixed fifty bases wide, so a panel narrower than the floor font
+     size can fit scrolls sideways rather than clipping the last bases. */
+  overflow-x: auto;
   padding: var(--cc-scroll-pad);
   scrollbar-width: thin;
   scrollbar-color: #cdd4dc transparent;
@@ -665,44 +681,8 @@
 
 @media (max-width: 620px) {
   .design-construct {
-    --cc-strand-size: 11px;
+    /* Tracking only: the strand size is computed by `measure()` at every width,
+       and an inline value from the component outranks anything declared here. */
     --cc-strand-tracking: 0.2em;
-  }
-}
-
-/* ============================================================================
-   Embedded NC3Rs EDA report (Figure 9)
-   The browser's own PDF viewer does the work; only the frame height is ours.
-   Intentionally not a `.wiki-figure`: that class carries the reader's `FIG. nn`
-   badge, and a document is not an illustration. The caption mirrors the figure
-   register's typography so it still reads as the same editorial furniture.
-   ========================================================================== */
-
-.wiki-page--design .design-pdf-figure {
-  margin: var(--wiki-space-block, 24px) 0;
-}
-
-.wiki-page--design .design-pdf-figure__frame {
-  display: block;
-  width: 100%;
-  height: 720px;
-  border: 1px solid var(--route-line);
-  border-radius: 8px;
-  background: #fff;
-}
-
-.wiki-page--design .design-pdf-figure figcaption {
-  width: 100%;
-  max-width: 760px;
-  margin: 14px auto 0;
-  font-size: 13.5px;
-  line-height: 1.6;
-  color: color-mix(in srgb, var(--route-ink) 85%, transparent);
-  text-align: center;
-}
-
-@media (max-width: 760px) {
-  .wiki-page--design .design-pdf-figure__frame {
-    height: 520px;
   }
 }

@@ -1,0 +1,203 @@
+/* ============================================================================
+   Documents — the one skin for a document shown in the body.
+   ----------------------------------------------------------------------------
+   Shared by every page that embeds a PDF (see WIKI_ARCHITECTURE_SPEC.md §4.6).
+
+   Why a DEEP TINTED BAR and not a caption line
+     A document block sits in the same prose column as the figures, so it was
+     first built out of caption-sized grey type — caption, title, links, all
+     centred. On the Design page that block follows `FIG. 09 In vivo study
+     design.` and the team read it as *a second caption for the figure above it*.
+     A document is an object, not an illustration caption, so it now wears an
+     object's marks: the module's own deep ink as its surface, a hard edge and a
+     real control. Surface colour is the fastest way to say "this is a different
+     kind of thing", and it is the ONLY device allowed here.
+
+   Why so little on it
+     The card carries exactly one line of text: the caption the manuscript
+     already gives for this embed. No invented title, subtitle, file name or
+     "PDF" tile — the earlier version said the same thing three times in words
+     nobody wrote, and the bar read like a generated placeholder rather than a
+     piece of the manuscript.
+
+   Why no ornament at all
+     No icon, no file-type badge, no rail along the top edge, no endpoint dot.
+     The team's own rules ban AI eyebrows and mechanical small print (铁律 4) and
+     generative ornaments — top rules, dots, dashed underlines (铁律 3). The card
+     is a dark bar, one sentence and one control; anything else drawn on it is
+     noise, and readers recognise it as such immediately.
+
+   Colour comes from `--route-*` only, so Project / Wet Lab / Dry Lab /
+   Engagement each get their own tint with no rule per page:
+     --route-heading-ink   the deep ink each module already uses for H2
+     --route-main          the control's fill
+
+   Specificity note (do not "simplify" these selectors)
+     Every rule is scoped `.wiki-page .wiki-document .x` — three classes deep on
+     purpose. Inside the prose column, `.wiki-page--route .wiki-prose p` (0,2,1)
+     and `.wiki-page--route .wiki-prose strong` (0,2,1) recolour every paragraph
+     and every <strong>, and `.wiki-prose figure` (0,1,1) forces
+     `display:flex / align-items:center / text-align:center`. A two-class
+     selector would leave the card's ink a coin flip on bundle order. The card is
+     a dark surface, so a wrong ink means white-on-white.
+   ========================================================================== */
+
+/* 1. Card tokens + the figure shell ---------------------------------------- */
+
+.wiki-page .wiki-document {
+  --doc-deep: var(--route-heading-ink, #14354c);
+  --doc-deep-2: color-mix(in srgb, var(--doc-deep) 72%, #000);
+  --doc-on: #ffffff;
+  --doc-radius: 12px;
+
+  /* Undo `.wiki-prose figure` (flex column, centred, centered text) and keep
+     the bar narrower than the prose column it sits in. */
+  display: grid;
+  align-items: stretch;
+  justify-content: normal;
+  gap: 0;
+  width: 100%;
+  max-width: 760px;
+  margin: var(--wiki-space-block, 24px) auto;
+  color: var(--doc-on);
+  text-align: left;
+}
+
+/* 2. The bar --------------------------------------------------------------- */
+
+.wiki-page .wiki-document .wiki-document__card {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 18px;
+  padding: 20px 20px 18px;
+  border-radius: var(--doc-radius);
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--doc-deep) 84%, #ffffff) 0%,
+    var(--doc-deep) 52%,
+    var(--doc-deep-2) 100%
+  );
+  box-shadow:
+    0 2px 4px color-mix(in srgb, var(--doc-deep) 18%, transparent),
+    0 16px 38px color-mix(in srgb, var(--doc-deep) 22%, transparent);
+  color: var(--doc-on);
+  text-align: left;
+}
+
+/* 3. The one line of text -------------------------------------------------- */
+
+.wiki-page .wiki-document .wiki-document__caption {
+  margin: 0;
+  color: var(--doc-on);
+  font-family: var(--font-body, inherit);
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.005em;
+  line-height: 1.45;
+  text-align: left;
+  text-wrap: pretty;
+}
+
+/* 4. The one control ------------------------------------------------------- */
+
+.wiki-page .wiki-document .wiki-document__toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 16px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--route-main, #b4dff0);
+  box-shadow: 0 8px 18px color-mix(in srgb, #000 24%, transparent);
+  color: var(--doc-deep-2);
+  cursor: pointer;
+  font-family: var(--font-body, inherit);
+  font-size: 13.5px;
+  font-weight: 700;
+  line-height: 1.1;
+  transition:
+    background-color 160ms cubic-bezier(0.22, 1, 0.36, 1),
+    color 160ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.wiki-page .wiki-document .wiki-document__toggle:hover {
+  background: color-mix(in srgb, var(--route-main, #b4dff0) 82%, #ffffff);
+}
+
+.wiki-page .wiki-document .wiki-document__toggle:focus-visible {
+  outline: 2px solid var(--doc-on);
+  outline-offset: 2px;
+}
+
+/* Chevron: drawn, so no icon dependency; it turns with `aria-expanded`. */
+.wiki-page .wiki-document .wiki-document__chevron {
+  width: 0;
+  height: 0;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-left: 7px solid currentColor;
+  transition: transform 160ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.wiki-page
+  .wiki-document
+  .wiki-document__toggle[aria-expanded="true"]
+  .wiki-document__chevron {
+  transform: rotate(90deg);
+}
+
+/* 5. The frame, in its own tray under the bar ------------------------------ */
+
+.wiki-page .wiki-document.is-open .wiki-document__card {
+  border-radius: var(--doc-radius) var(--doc-radius) 0 0;
+}
+
+.wiki-page .wiki-document .wiki-document__panel {
+  padding: 12px;
+  border-radius: 0 0 var(--doc-radius) var(--doc-radius);
+  background: var(--doc-deep-2);
+  box-shadow: 0 16px 38px color-mix(in srgb, var(--doc-deep) 22%, transparent);
+}
+
+.wiki-page .wiki-document .wiki-document__panel[hidden] {
+  display: none;
+}
+
+.wiki-page .wiki-document .wiki-document__frame {
+  display: block;
+  width: 100%;
+  height: clamp(420px, 82vh, 920px);
+  border: 0;
+  border-radius: 8px;
+  background: #fff;
+}
+
+/* 6. Narrow panels --------------------------------------------------------- */
+
+@media (max-width: 760px) {
+  .wiki-page .wiki-document .wiki-document__card {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 14px;
+    padding: 18px 16px 16px;
+  }
+
+  .wiki-page .wiki-document .wiki-document__toggle {
+    justify-self: start;
+  }
+
+  .wiki-page .wiki-document .wiki-document__panel {
+    padding: 8px;
+  }
+
+  .wiki-page .wiki-document .wiki-document__frame {
+    height: clamp(320px, 72vh, 640px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wiki-page .wiki-document .wiki-document__chevron,
+  .wiki-page .wiki-document .wiki-document__toggle {
+    transition: none;
+  }
+}

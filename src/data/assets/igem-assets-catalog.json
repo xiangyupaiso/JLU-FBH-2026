@@ -3,15 +3,15 @@
     "teamId": "6056",
     "teamName": "JLU-FBH",
     "year": 2026,
-    "lastUpdated": "2026-10-04T12:58:07.773Z",
+    "lastUpdated": "2026-10-05T08:59:57.243Z",
     "stats": {
-      "total": 1963,
-      "inUse": 1441,
-      "standby": 493,
-      "deprecated": 29,
+      "total": 2021,
+      "inUse": 1482,
+      "standby": 507,
+      "deprecated": 32,
       "byKind": {
-        "image": 1886,
-        "font": 27,
+        "image": 1943,
+        "font": 28,
         "structure": 3,
         "pdf": 41,
         "archive": 2,
@@ -694,20 +694,13 @@
       "md5": "6ae10f061df0bb994b9ce1833ecbda47",
       "fileSize": 113032,
       "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/woman-frame.webp",
-      "status": "in-use",
+      "status": "standby",
       "description": "",
       "keywords": [
         "woman-frame"
       ],
-      "references": [
-        {
-          "file": "src/contents/home-scene-01.tsx",
-          "line": 12,
-          "text": "const womanFrameUrl = \"https://static.igem.wiki/teams/6056/wiki/files/pages/home/woman-frame.webp\";",
-          "type": "mention"
-        }
-      ],
-      "notes": "Referenced in 1 location(s)",
+      "references": [],
+      "notes": "Standby/Mirrored asset with CDN URL",
       "kind": "image"
     },
     "map-data-note-png": {
@@ -726,7 +719,7 @@
       "references": [
         {
           "file": "src/contents/home-story.tsx",
-          "line": 19,
+          "line": 21,
           "text": "const mapDataNoteUrl = \"https://static.igem.wiki/teams/6056/wiki/files/pages/home/map-data-note.avif\";",
           "type": "mention"
         }
@@ -762,7 +755,7 @@
         },
         {
           "file": "src/contents/home-story.tsx",
-          "line": 25,
+          "line": 35,
           "text": "\"../assets/home/story/scene-1-layer-1.webp\": \"https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-1-layer-1.webp\",",
           "type": "mention"
         }
@@ -798,7 +791,7 @@
         },
         {
           "file": "src/contents/home-story.tsx",
-          "line": 26,
+          "line": 36,
           "text": "\"../assets/home/story/scene-1-layer-2.webp\": \"https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-1-layer-2.webp\",",
           "type": "mention"
         }
@@ -834,7 +827,7 @@
         },
         {
           "file": "src/contents/home-story.tsx",
-          "line": 27,
+          "line": 37,
           "text": "\"../assets/home/story/scene-1-layer-3.webp\": \"https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-1-layer-3.webp\",",
           "type": "mention"
         }
@@ -876,13 +869,13 @@
         },
         {
           "file": "src/components/home/HomeFinale.tsx",
-          "line": 2,
+          "line": 3,
           "text": "const ring = \"https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-1-layer-4.webp\";",
           "type": "mention"
         },
         {
           "file": "src/contents/home-story.tsx",
-          "line": 28,
+          "line": 38,
           "text": "\"../assets/home/story/scene-1-layer-4.webp\": \"https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-1-layer-4.webp\",",
           "type": "mention"
         }
@@ -918,7 +911,7 @@
         },
         {
           "file": "src/contents/home-story.tsx",
-          "line": 29,
+          "line": 39,
           "text": "\"../assets/home/story/scene-1-layer-5.webp\": \"https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-1-layer-5.webp\",",
           "type": "mention"
         }
@@ -948,7 +941,7 @@
         },
         {
           "file": "src/contents/home-story.tsx",
-          "line": 30,
+          "line": 40,
           "text": "\"../assets/home/story/scene-2-layer-1.webp\": \"https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-2-layer-1.webp\",",
           "type": "mention"
         }
@@ -978,7 +971,7 @@
         },
         {
           "file": "src/contents/home-story.tsx",
-          "line": 31,
+          "line": 41,
           "text": "\"../assets/home/story/scene-2-layer-2.webp\": \"https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-2-layer-2.webp\",",
           "type": "mention"
         }
@@ -1008,7 +1001,7 @@
         },
         {
           "file": "src/contents/home-story.tsx",
-          "line": 32,
+          "line": 42,
           "text": "\"../assets/home/story/scene-2-layer-3.webp\": \"https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-2-layer-3.webp\",",
           "type": "mention"
         }
@@ -1038,7 +1031,7 @@
         },
         {
           "file": "src/contents/home-story.tsx",
-          "line": 33,
+          "line": 43,
           "text": "\"../assets/home/story/scene-2-layer-4.webp\": \"https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-2-layer-4.webp\",",
           "type": "mention"
         }
@@ -1067,13 +1060,19 @@
           "type": "mention"
         },
         {
+          "file": "src/components/home/HomeAntigenSwitch.tsx",
+          "line": 10,
+          "text": "const immuneImage = \"https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-2-layer-5.webp\";",
+          "type": "mention"
+        },
+        {
           "file": "src/contents/home-story.tsx",
-          "line": 34,
+          "line": 44,
           "text": "\"../assets/home/story/scene-2-layer-5.webp\": \"https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-2-layer-5.webp\",",
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 2 location(s)",
+      "notes": "Referenced in 3 location(s)",
       "kind": "image"
     },
     "scene-2-layer-6-webp": {
@@ -1104,7 +1103,7 @@
         },
         {
           "file": "src/contents/home-story.tsx",
-          "line": 35,
+          "line": 45,
           "text": "\"../assets/home/story/scene-2-layer-6.webp\": \"https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-2-layer-6.webp\",",
           "type": "mention"
         }
@@ -1134,7 +1133,7 @@
         },
         {
           "file": "src/contents/home-story.tsx",
-          "line": 36,
+          "line": 46,
           "text": "\"../assets/home/story/scene-3-layer-1.webp\": \"https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-3-layer-1.webp\",",
           "type": "mention"
         }
@@ -1164,7 +1163,7 @@
         },
         {
           "file": "src/contents/home-story.tsx",
-          "line": 37,
+          "line": 47,
           "text": "\"../assets/home/story/scene-3-layer-2.webp\": \"https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-3-layer-2.webp\",",
           "type": "mention"
         }
@@ -1194,7 +1193,7 @@
         },
         {
           "file": "src/contents/home-story.tsx",
-          "line": 38,
+          "line": 48,
           "text": "\"../assets/home/story/scene-3-layer-3.webp\": \"https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-3-layer-3.webp\",",
           "type": "mention"
         }
@@ -1224,7 +1223,7 @@
         },
         {
           "file": "src/contents/home-story.tsx",
-          "line": 39,
+          "line": 49,
           "text": "\"../assets/home/story/scene-4-layer-1.webp\": \"https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-4-layer-1.webp\",",
           "type": "mention"
         }
@@ -1254,18 +1253,12 @@
         },
         {
           "file": "src/contents/home-story.tsx",
-          "line": 40,
+          "line": 50,
           "text": "\"../assets/home/story/scene-4-layer-2.webp\": \"https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-4-layer-2.webp\",",
-          "type": "mention"
-        },
-        {
-          "file": "src/contents/home-story.tsx",
-          "line": 632,
-          "text": "const boardSrc = imageUrls[\"../assets/home/story/scene-4-layer-2.webp\"];",
           "type": "mention"
         }
       ],
-      "notes": "Referenced in 3 location(s)",
+      "notes": "Referenced in 2 location(s)",
       "kind": "image"
     },
     "scene-4-layer-3-webp": {
@@ -1290,7 +1283,7 @@
         },
         {
           "file": "src/contents/home-story.tsx",
-          "line": 41,
+          "line": 51,
           "text": "\"../assets/home/story/scene-4-layer-3.webp\": \"https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-4-layer-3.webp\",",
           "type": "mention"
         }
@@ -1320,7 +1313,7 @@
         },
         {
           "file": "src/contents/home-story.tsx",
-          "line": 42,
+          "line": 52,
           "text": "\"../assets/home/story/scene-4-layer-4.webp\": \"https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-4-layer-4.webp\",",
           "type": "mention"
         }
@@ -1350,7 +1343,7 @@
         },
         {
           "file": "src/contents/home-story.tsx",
-          "line": 43,
+          "line": 53,
           "text": "\"../assets/home/story/scene-4-layer-5.webp\": \"https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-4-layer-5.webp\",",
           "type": "mention"
         }
@@ -1380,7 +1373,7 @@
         },
         {
           "file": "src/contents/home-story.tsx",
-          "line": 44,
+          "line": 54,
           "text": "\"../assets/home/story/scene-4-layer-6.webp\": \"https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-4-layer-6.webp\",",
           "type": "mention"
         }
@@ -1410,7 +1403,7 @@
         },
         {
           "file": "src/contents/home-story.tsx",
-          "line": 45,
+          "line": 55,
           "text": "\"../assets/home/story/scene-4-layer-7.webp\": \"https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-4-layer-7.webp\",",
           "type": "mention"
         }
@@ -1440,7 +1433,7 @@
         },
         {
           "file": "src/contents/home-story.tsx",
-          "line": 46,
+          "line": 56,
           "text": "\"../assets/home/story/scene-4-layer-8.webp\": \"https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-4-layer-8.webp\",",
           "type": "mention"
         }
@@ -1470,7 +1463,7 @@
         },
         {
           "file": "src/contents/home-story.tsx",
-          "line": 47,
+          "line": 57,
           "text": "\"../assets/home/story/scene-5-layer-1.webp\": \"https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-5-layer-1.webp\",",
           "type": "mention"
         }
@@ -1500,7 +1493,7 @@
         },
         {
           "file": "src/contents/home-story.tsx",
-          "line": 48,
+          "line": 58,
           "text": "\"../assets/home/story/scene-5-layer-2.webp\": \"https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-5-layer-2.webp\",",
           "type": "mention"
         }
@@ -1530,7 +1523,7 @@
         },
         {
           "file": "src/contents/home-story.tsx",
-          "line": 49,
+          "line": 59,
           "text": "\"../assets/home/story/scene-5-layer-3.webp\": \"https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-5-layer-3.webp\",",
           "type": "mention"
         }
@@ -1560,7 +1553,7 @@
         },
         {
           "file": "src/contents/home-story.tsx",
-          "line": 50,
+          "line": 60,
           "text": "\"../assets/home/story/scene-6-layer-1.webp\": \"https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-6-layer-1.webp\",",
           "type": "mention"
         }
@@ -1590,7 +1583,7 @@
         },
         {
           "file": "src/contents/home-story.tsx",
-          "line": 51,
+          "line": 61,
           "text": "\"../assets/home/story/scene-6-layer-2.webp\": \"https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-6-layer-2.webp\",",
           "type": "mention"
         }
@@ -1620,7 +1613,7 @@
         },
         {
           "file": "src/contents/home-story.tsx",
-          "line": 52,
+          "line": 62,
           "text": "\"../assets/home/story/scene-6-layer-3.webp\": \"https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-6-layer-3.webp\",",
           "type": "mention"
         }
@@ -1650,7 +1643,7 @@
         },
         {
           "file": "src/contents/home-story.tsx",
-          "line": 53,
+          "line": 63,
           "text": "\"../assets/home/story/scene-7-layer-1.webp\": \"https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-7-layer-1.webp\",",
           "type": "mention"
         }
@@ -1680,7 +1673,7 @@
         },
         {
           "file": "src/contents/home-story.tsx",
-          "line": 54,
+          "line": 64,
           "text": "\"../assets/home/story/scene-7-layer-2.webp\": \"https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-7-layer-2.webp\",",
           "type": "mention"
         }
@@ -1710,7 +1703,7 @@
         },
         {
           "file": "src/contents/home-story.tsx",
-          "line": 55,
+          "line": 65,
           "text": "\"../assets/home/story/scene-7-layer-3.webp\": \"https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-7-layer-3.webp\",",
           "type": "mention"
         }
@@ -1740,7 +1733,7 @@
         },
         {
           "file": "src/contents/home-story.tsx",
-          "line": 56,
+          "line": 66,
           "text": "\"../assets/home/story/scene-7-layer-4.webp\": \"https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-7-layer-4.webp\",",
           "type": "mention"
         }
@@ -1770,7 +1763,7 @@
         },
         {
           "file": "src/contents/home-story.tsx",
-          "line": 57,
+          "line": 67,
           "text": "\"../assets/home/story/scene-8-layer-1.webp\": \"https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-8-layer-1.webp\",",
           "type": "mention"
         }
@@ -1800,7 +1793,7 @@
         },
         {
           "file": "src/contents/home-story.tsx",
-          "line": 58,
+          "line": 68,
           "text": "\"../assets/home/story/scene-8-layer-2.webp\": \"https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-8-layer-2.webp\",",
           "type": "mention"
         }
@@ -1830,7 +1823,7 @@
         },
         {
           "file": "src/contents/home-story.tsx",
-          "line": 59,
+          "line": 69,
           "text": "\"../assets/home/story/scene-8-layer-3.webp\": \"https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-8-layer-3.webp\",",
           "type": "mention"
         }
@@ -1860,7 +1853,7 @@
         },
         {
           "file": "src/contents/home-story.tsx",
-          "line": 60,
+          "line": 70,
           "text": "\"../assets/home/story/scene-8-layer-4.webp\": \"https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-8-layer-4.webp\",",
           "type": "mention"
         }
@@ -1890,7 +1883,7 @@
         },
         {
           "file": "src/contents/home-story.tsx",
-          "line": 61,
+          "line": 71,
           "text": "\"../assets/home/story/scene-8-layer-5.webp\": \"https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-8-layer-5.webp\",",
           "type": "mention"
         }
@@ -1920,7 +1913,7 @@
         },
         {
           "file": "src/contents/home-story.tsx",
-          "line": 62,
+          "line": 72,
           "text": "\"../assets/home/story/scene-8-layer-6.webp\": \"https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-8-layer-6.webp\",",
           "type": "mention"
         }
@@ -1950,7 +1943,7 @@
         },
         {
           "file": "src/contents/home-story.tsx",
-          "line": 63,
+          "line": 73,
           "text": "\"../assets/home/story/scene-9-layer-1.webp\": \"https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-9-layer-1.webp\",",
           "type": "mention"
         }
@@ -1980,7 +1973,7 @@
         },
         {
           "file": "src/contents/home-story.tsx",
-          "line": 64,
+          "line": 74,
           "text": "\"../assets/home/story/scene-9-layer-2.webp\": \"https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-9-layer-2.webp\",",
           "type": "mention"
         }
@@ -2010,7 +2003,7 @@
         },
         {
           "file": "src/contents/home-story.tsx",
-          "line": 65,
+          "line": 75,
           "text": "\"../assets/home/story/scene-9-layer-3.webp\": \"https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-9-layer-3.webp\",",
           "type": "mention"
         }
@@ -2040,7 +2033,7 @@
         },
         {
           "file": "src/contents/home-story.tsx",
-          "line": 11,
+          "line": 14,
           "text": "const clinicianConcerned = \"https://static.igem.wiki/teams/6056/wiki/files/pages/home/clinician-concerned.avif\";",
           "type": "mention"
         }
@@ -2070,7 +2063,7 @@
         },
         {
           "file": "src/contents/home-story.tsx",
-          "line": 12,
+          "line": 15,
           "text": "const clinicianEllipsis = \"https://static.igem.wiki/teams/6056/wiki/files/pages/home/clinician-ellipsis.avif\";",
           "type": "mention"
         }
@@ -2097,15 +2090,9 @@
           "line": 10,
           "text": "| `未命名作品-4.png` | `patient-concerned.png`   | `eb0654a58c22f1bf7904caac35f71eac83ba4197965111801cb64b9e3c7b27f9` |",
           "type": "mention"
-        },
-        {
-          "file": "src/contents/home-story.tsx",
-          "line": 14,
-          "text": "const patientConcerned = \"https://static.igem.wiki/teams/6056/wiki/files/pages/home/patient-concerned.avif\";",
-          "type": "mention"
         }
       ],
-      "notes": "Referenced in 2 location(s)",
+      "notes": "Referenced in 1 location(s)",
       "kind": "image"
     },
     "patient-question-png": {
@@ -2130,7 +2117,7 @@
         },
         {
           "file": "src/contents/home-story.tsx",
-          "line": 13,
+          "line": 16,
           "text": "const patientQuestion = \"https://static.igem.wiki/teams/6056/wiki/files/pages/home/patient-question.avif\";",
           "type": "mention"
         }
@@ -2563,20 +2550,13 @@
       "md5": "a8de034a533b14618db15930efeac1fb",
       "fileSize": 63213,
       "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/shared/back-to-top.avif",
-      "status": "in-use",
+      "status": "standby",
       "description": "",
       "keywords": [
         "back-to-top"
       ],
-      "references": [
-        {
-          "file": "src/components/BackToTop.tsx",
-          "line": 3,
-          "text": "const backToTopImage = \"https://static.igem.wiki/teams/6056/wiki/files/pages/shared/back-to-top.avif\";",
-          "type": "mention"
-        }
-      ],
-      "notes": "Referenced in 1 location(s)",
+      "references": [],
+      "notes": "Standby/Mirrored asset with CDN URL",
       "kind": "image"
     },
     "breast-guardian-showcase-png": {
@@ -2946,8 +2926,8 @@
       "fileName": "engagement-education-hero-v2.webp",
       "category": "engagement",
       "localPath": "src/assets/wiki/engagement-heroes/engagement-education-hero-v2.webp",
-      "md5": "4b44a93d566414c5ad47e3fad9273b53",
-      "fileSize": 145428,
+      "md5": "1ce6dd3c8a4f544d434d334e4b16293b",
+      "fileSize": 143842,
       "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/engagement-education-hero-v2.webp",
       "status": "in-use",
       "description": "",
@@ -2958,8 +2938,8 @@
         {
           "file": "src/components/wiki/engagementHeroAssets.ts",
           "line": 1,
-          "text": "const educationHero = \"https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/engagement-education-hero-v2.webp\";",
-          "type": "mention"
+          "text": "import educationHero from \"../../assets/wiki/engagement-heroes/engagement-education-hero-v2.webp\";",
+          "type": "import"
         }
       ],
       "notes": "Referenced in 1 location(s)",
@@ -2982,8 +2962,8 @@
         {
           "file": "src/components/wiki/engagementHeroAssets.ts",
           "line": 2,
-          "text": "const entrepreneurshipHero = \"https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/engagement-entrepreneurship-hero-v2.webp\";",
-          "type": "mention"
+          "text": "import entrepreneurshipHero from \"../../assets/wiki/engagement-heroes/engagement-entrepreneurship-hero-v2.webp\";",
+          "type": "import"
         }
       ],
       "notes": "Referenced in 1 location(s)",
@@ -3011,8 +2991,8 @@
       "fileName": "engagement-human-practices-hero-v2.webp",
       "category": "engagement",
       "localPath": "src/assets/wiki/engagement-heroes/engagement-human-practices-hero-v2.webp",
-      "md5": "f964dee69566c1d457c825bc7f274924",
-      "fileSize": 119618,
+      "md5": "11e9c4069efe4b34ab29596e9f261dbe",
+      "fileSize": 126092,
       "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/engagement-human-practices-hero-v2.webp",
       "status": "in-use",
       "description": "",
@@ -3023,8 +3003,8 @@
         {
           "file": "src/components/wiki/engagementHeroAssets.ts",
           "line": 3,
-          "text": "const humanPracticesHero = \"https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/engagement-human-practices-hero-v2.webp\";",
-          "type": "mention"
+          "text": "import humanPracticesHero from \"../../assets/wiki/engagement-heroes/engagement-human-practices-hero-v2.webp\";",
+          "type": "import"
         }
       ],
       "notes": "Referenced in 1 location(s)",
@@ -3035,8 +3015,8 @@
       "fileName": "engagement-inclusivity-hero-v2.webp",
       "category": "engagement",
       "localPath": "src/assets/wiki/engagement-heroes/engagement-inclusivity-hero-v2.webp",
-      "md5": "74fcc8fb14b01793afb4515111fc9c50",
-      "fileSize": 146726,
+      "md5": "32e4ff03b4b9bdcaab7c37115bed6702",
+      "fileSize": 172564,
       "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/engagement-inclusivity-hero-v2.webp",
       "status": "in-use",
       "description": "",
@@ -3047,8 +3027,8 @@
         {
           "file": "src/components/wiki/engagementHeroAssets.ts",
           "line": 4,
-          "text": "const inclusivityHero = \"https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/engagement-inclusivity-hero-v2.webp\";",
-          "type": "mention"
+          "text": "import inclusivityHero from \"../../assets/wiki/engagement-heroes/engagement-inclusivity-hero-v2.webp\";",
+          "type": "import"
         }
       ],
       "notes": "Referenced in 1 location(s)",
@@ -3071,8 +3051,8 @@
         {
           "file": "src/components/wiki/engagementHeroAssets.ts",
           "line": 5,
-          "text": "const sustainabilityHero = \"https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/engagement-sustainability-hero-v2.webp\";",
-          "type": "mention"
+          "text": "import sustainabilityHero from \"../../assets/wiki/engagement-heroes/engagement-sustainability-hero-v2.webp\";",
+          "type": "import"
         }
       ],
       "notes": "Referenced in 1 location(s)",
@@ -3639,8 +3619,8 @@
       "references": [
         {
           "file": "src/components/wiki/wetLabHeroAssets.ts",
-          "line": 1,
-          "text": "const experimentsHero = \"https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/wet-lab-experiments-hero.webp\";",
+          "line": 4,
+          "text": "\"https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/wet-lab-experiments-hero.webp\";",
           "type": "mention"
         }
       ],
@@ -3680,8 +3660,8 @@
       "references": [
         {
           "file": "src/components/wiki/wetLabHeroAssets.ts",
-          "line": 2,
-          "text": "const measurementHero = \"https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/wet-lab-measurement-hero.webp\";",
+          "line": 6,
+          "text": "\"https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/wet-lab-measurement-hero.webp\";",
           "type": "mention"
         }
       ],
@@ -3724,15 +3704,9 @@
           "line": 8,
           "text": "\"https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/wet-lab-notebook-hero-v3.webp\";",
           "type": "mention"
-        },
-        {
-          "file": "src/components/wiki/wetLabHeroAssets.ts",
-          "line": 3,
-          "text": "const notebookHero = \"https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/wet-lab-notebook-hero-v3.webp\";",
-          "type": "mention"
         }
       ],
-      "notes": "Referenced in 2 location(s)",
+      "notes": "Referenced in 1 location(s)",
       "kind": "image"
     },
     "wet-lab-platform-hero-jpg": {
@@ -3768,8 +3742,8 @@
       "references": [
         {
           "file": "src/components/wiki/wetLabHeroAssets.ts",
-          "line": 4,
-          "text": "const platformHero = \"https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/wet-lab-platform-hero.webp\";",
+          "line": 8,
+          "text": "\"https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/wet-lab-platform-hero.webp\";",
           "type": "mention"
         }
       ],
@@ -3795,15 +3769,9 @@
           "line": 10,
           "text": "\"https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/wet-lab-safety-hero-v3.webp\";",
           "type": "mention"
-        },
-        {
-          "file": "src/components/wiki/wetLabHeroAssets.ts",
-          "line": 5,
-          "text": "const safetyHero = \"https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/wet-lab-safety-hero-v3.webp\";",
-          "type": "mention"
         }
       ],
-      "notes": "Referenced in 2 location(s)",
+      "notes": "Referenced in 1 location(s)",
       "kind": "image"
     },
     "wet-png": {
@@ -6410,24 +6378,17 @@
       "fileName": "engagement-education-hero.webp",
       "category": "engagement",
       "localPath": "src/assets/wiki/engagement-heroes/engagement-education-hero.webp",
-      "md5": "4b44a93d566414c5ad47e3fad9273b53",
-      "fileSize": 145428,
+      "md5": "1ce6dd3c8a4f544d434d334e4b16293b",
+      "fileSize": 143842,
       "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/engagement-education-hero-v2.webp",
-      "status": "in-use",
+      "status": "standby",
       "description": "",
       "keywords": [
         "engagement-education-hero",
         "image"
       ],
-      "references": [
-        {
-          "file": "src/components/wiki/engagementHeroAssets.ts",
-          "line": 1,
-          "text": "const educationHero = \"https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/engagement-education-hero-v2.webp\";",
-          "type": "mention"
-        }
-      ],
-      "notes": "Referenced in 1 location(s)"
+      "references": [],
+      "notes": "Standby/Mirrored asset with CDN URL"
     },
     "engagement-entrepreneurship-hero-webp": {
       "id": "engagement-entrepreneurship-hero-webp",
@@ -6438,21 +6399,14 @@
       "md5": "ed8f0613d1cf74126b054e9601b95eba",
       "fileSize": 154270,
       "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/engagement-entrepreneurship-hero-v2.webp",
-      "status": "in-use",
+      "status": "standby",
       "description": "",
       "keywords": [
         "engagement-entrepreneurship-hero",
         "image"
       ],
-      "references": [
-        {
-          "file": "src/components/wiki/engagementHeroAssets.ts",
-          "line": 2,
-          "text": "const entrepreneurshipHero = \"https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/engagement-entrepreneurship-hero-v2.webp\";",
-          "type": "mention"
-        }
-      ],
-      "notes": "Referenced in 1 location(s)"
+      "references": [],
+      "notes": "Standby/Mirrored asset with CDN URL"
     },
     "engagement-human-practices-hero-webp": {
       "id": "engagement-human-practices-hero-webp",
@@ -6460,24 +6414,17 @@
       "fileName": "engagement-human-practices-hero.webp",
       "category": "engagement",
       "localPath": "src/assets/wiki/engagement-heroes/engagement-human-practices-hero.webp",
-      "md5": "f964dee69566c1d457c825bc7f274924",
-      "fileSize": 119618,
+      "md5": "11e9c4069efe4b34ab29596e9f261dbe",
+      "fileSize": 126092,
       "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/engagement-human-practices-hero-v2.webp",
-      "status": "in-use",
+      "status": "standby",
       "description": "",
       "keywords": [
         "engagement-human-practices-hero",
         "image"
       ],
-      "references": [
-        {
-          "file": "src/components/wiki/engagementHeroAssets.ts",
-          "line": 3,
-          "text": "const humanPracticesHero = \"https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/engagement-human-practices-hero-v2.webp\";",
-          "type": "mention"
-        }
-      ],
-      "notes": "Referenced in 1 location(s)"
+      "references": [],
+      "notes": "Standby/Mirrored asset with CDN URL"
     },
     "engagement-inclusivity-hero-webp": {
       "id": "engagement-inclusivity-hero-webp",
@@ -6485,24 +6432,17 @@
       "fileName": "engagement-inclusivity-hero.webp",
       "category": "engagement",
       "localPath": "src/assets/wiki/engagement-heroes/engagement-inclusivity-hero.webp",
-      "md5": "74fcc8fb14b01793afb4515111fc9c50",
-      "fileSize": 146726,
+      "md5": "32e4ff03b4b9bdcaab7c37115bed6702",
+      "fileSize": 172564,
       "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/engagement-inclusivity-hero-v2.webp",
-      "status": "in-use",
+      "status": "standby",
       "description": "",
       "keywords": [
         "engagement-inclusivity-hero",
         "image"
       ],
-      "references": [
-        {
-          "file": "src/components/wiki/engagementHeroAssets.ts",
-          "line": 4,
-          "text": "const inclusivityHero = \"https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/engagement-inclusivity-hero-v2.webp\";",
-          "type": "mention"
-        }
-      ],
-      "notes": "Referenced in 1 location(s)"
+      "references": [],
+      "notes": "Standby/Mirrored asset with CDN URL"
     },
     "engagement-sustainability-hero-webp": {
       "id": "engagement-sustainability-hero-webp",
@@ -6513,21 +6453,14 @@
       "md5": "4bd221924f4737e35e8abb282aadbcbf",
       "fileSize": 149110,
       "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/engagement-sustainability-hero-v2.webp",
-      "status": "in-use",
+      "status": "standby",
       "description": "",
       "keywords": [
         "engagement-sustainability-hero",
         "image"
       ],
-      "references": [
-        {
-          "file": "src/components/wiki/engagementHeroAssets.ts",
-          "line": 5,
-          "text": "const sustainabilityHero = \"https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/engagement-sustainability-hero-v2.webp\";",
-          "type": "mention"
-        }
-      ],
-      "notes": "Referenced in 1 location(s)"
+      "references": [],
+      "notes": "Standby/Mirrored asset with CDN URL"
     },
     "project-contribution-hero-webp": {
       "id": "project-contribution-hero-webp",
@@ -6618,15 +6551,9 @@
           "line": 8,
           "text": "\"https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/wet-lab-notebook-hero-v3.webp\";",
           "type": "mention"
-        },
-        {
-          "file": "src/components/wiki/wetLabHeroAssets.ts",
-          "line": 3,
-          "text": "const notebookHero = \"https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/wet-lab-notebook-hero-v3.webp\";",
-          "type": "mention"
         }
       ],
-      "notes": "Referenced in 2 location(s)"
+      "notes": "Referenced in 1 location(s)"
     },
     "wet-lab-safety-hero-webp": {
       "id": "wet-lab-safety-hero-webp",
@@ -6649,15 +6576,9 @@
           "line": 10,
           "text": "\"https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/wet-lab-safety-hero-v3.webp\";",
           "type": "mention"
-        },
-        {
-          "file": "src/components/wiki/wetLabHeroAssets.ts",
-          "line": 5,
-          "text": "const safetyHero = \"https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/wet-lab-safety-hero-v3.webp\";",
-          "type": "mention"
         }
       ],
-      "notes": "Referenced in 2 location(s)"
+      "notes": "Referenced in 1 location(s)"
     },
     "trop2-ctl1-4a9d-pdb": {
       "id": "trop2-ctl1-4a9d-pdb",
@@ -93242,8 +93163,8 @@
       "fileName": "bethune-clinical-college.png",
       "category": "shared",
       "localPath": "src/assets/footer/bethune-clinical-college.png",
-      "md5": "bae1f63e2bafba58a38fbaebae9ea02e",
-      "fileSize": 77406,
+      "md5": "70e04c409f4f20daaa6f1fb04081d95f",
+      "fileSize": 65923,
       "uploadUrl": null,
       "status": "in-use",
       "description": "",
@@ -93379,7 +93300,7 @@
       "references": [
         {
           "file": "src/components/navIcons.ts",
-          "line": 13,
+          "line": 14,
           "text": "import alternativePlatform from \"../assets/nav-icons/nav-alternative-platform.webp\";",
           "type": "import"
         }
@@ -93497,7 +93418,7 @@
       "references": [
         {
           "file": "src/components/navIcons.ts",
-          "line": 20,
+          "line": 21,
           "text": "import education from \"../assets/nav-icons/nav-education.webp\";",
           "type": "import"
         }
@@ -93547,7 +93468,7 @@
       "references": [
         {
           "file": "src/components/navIcons.ts",
-          "line": 18,
+          "line": 19,
           "text": "import entrepreneurship from \"../assets/nav-icons/nav-entrepreneurship.webp\";",
           "type": "import"
         }
@@ -93572,7 +93493,7 @@
       "references": [
         {
           "file": "src/components/navIcons.ts",
-          "line": 11,
+          "line": 12,
           "text": "import experiments from \"../assets/nav-icons/nav-experiments.webp\";",
           "type": "import"
         }
@@ -93597,7 +93518,7 @@
       "references": [
         {
           "file": "src/components/navIcons.ts",
-          "line": 17,
+          "line": 18,
           "text": "import games from \"../assets/nav-icons/nav-games.webp\";",
           "type": "import"
         }
@@ -93622,7 +93543,7 @@
       "references": [
         {
           "file": "src/components/navIcons.ts",
-          "line": 16,
+          "line": 17,
           "text": "import hardware from \"../assets/nav-icons/nav-hardware.webp\";",
           "type": "import"
         }
@@ -93647,7 +93568,7 @@
       "references": [
         {
           "file": "src/components/navIcons.ts",
-          "line": 19,
+          "line": 20,
           "text": "import humanPractices from \"../assets/nav-icons/nav-human-practices.webp\";",
           "type": "import"
         }
@@ -93672,7 +93593,7 @@
       "references": [
         {
           "file": "src/components/navIcons.ts",
-          "line": 21,
+          "line": 22,
           "text": "import inclusivity from \"../assets/nav-icons/nav-inclusivity.webp\";",
           "type": "import"
         }
@@ -93697,7 +93618,7 @@
       "references": [
         {
           "file": "src/components/navIcons.ts",
-          "line": 12,
+          "line": 13,
           "text": "import measurement from \"../assets/nav-icons/nav-measurement.webp\";",
           "type": "import"
         }
@@ -93722,7 +93643,7 @@
       "references": [
         {
           "file": "src/components/navIcons.ts",
-          "line": 14,
+          "line": 15,
           "text": "import model from \"../assets/nav-icons/nav-model.webp\";",
           "type": "import"
         }
@@ -93747,7 +93668,7 @@
       "references": [
         {
           "file": "src/components/navIcons.ts",
-          "line": 9,
+          "line": 10,
           "text": "import notebook from \"../assets/nav-icons/nav-notebook.webp\";",
           "type": "import"
         }
@@ -93822,7 +93743,7 @@
       "references": [
         {
           "file": "src/components/navIcons.ts",
-          "line": 10,
+          "line": 11,
           "text": "import safety from \"../assets/nav-icons/nav-safety.webp\";",
           "type": "import"
         }
@@ -93847,7 +93768,7 @@
       "references": [
         {
           "file": "src/components/navIcons.ts",
-          "line": 15,
+          "line": 16,
           "text": "import software from \"../assets/nav-icons/nav-software.webp\";",
           "type": "import"
         }
@@ -93872,7 +93793,7 @@
       "references": [
         {
           "file": "src/components/navIcons.ts",
-          "line": 22,
+          "line": 23,
           "text": "import sustainability from \"../assets/nav-icons/nav-sustainability.webp\";",
           "type": "import"
         }
@@ -93972,7 +93893,7 @@
       "references": [
         {
           "file": "src/data/footer.ts",
-          "line": 123,
+          "line": 108,
           "text": "* logo, so beside it the row just repeated one shape; `sponsor-l-membrane.png`",
           "type": "mention"
         }
@@ -95027,14 +94948,14 @@
       "md5": "223c1a095e2c1aa762b7aa253eb7d8b2",
       "fileSize": 736187,
       "uploadUrl": null,
-      "status": "standby",
+      "status": "deprecated",
       "description": "",
       "keywords": [
         "Education_hd",
         "image"
       ],
       "references": [],
-      "notes": "Standby/Unreferenced asset"
+      "notes": "文件已在本地删除 (File deleted from local disk)"
     },
     "education-hd-webp": {
       "id": "education-hd-webp",
@@ -95156,14 +95077,14 @@
       "md5": "5d40ac3554b1ad601ec6f5b1cb973523",
       "fileSize": 782373,
       "uploadUrl": null,
-      "status": "standby",
+      "status": "deprecated",
       "description": "",
       "keywords": [
         "HumanPractices_hd",
         "image"
       ],
       "references": [],
-      "notes": "Standby/Unreferenced asset"
+      "notes": "文件已在本地删除 (File deleted from local disk)"
     },
     "humanpractices-hd-webp": {
       "id": "humanpractices-hd-webp",
@@ -95199,14 +95120,14 @@
       "md5": "eb982c33d1a2136ae4ad6501303c5a53",
       "fileSize": 1066762,
       "uploadUrl": null,
-      "status": "standby",
+      "status": "deprecated",
       "description": "",
       "keywords": [
         "Inclusivity_hd",
         "image"
       ],
       "references": [],
-      "notes": "Standby/Unreferenced asset"
+      "notes": "文件已在本地删除 (File deleted from local disk)"
     },
     "inclusivity-hd-webp": {
       "id": "inclusivity-hd-webp",
@@ -95592,6 +95513,1578 @@
           "line": 7,
           "text": "const petalsImg = \"https://static.igem.wiki/teams/6056/wiki/files/pages/shared/petals.avif\";",
           "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 1 location(s)"
+    },
+    "manrope-latin-variable-woff2": {
+      "id": "manrope-latin-variable-woff2",
+      "kind": "font",
+      "fileName": "manrope-latin-variable.woff2",
+      "category": "typography",
+      "localPath": "src/assets/fonts/manrope-latin-variable.woff2",
+      "md5": "101877a7a906c31436104fe33740ae44",
+      "fileSize": 24576,
+      "uploadUrl": null,
+      "status": "standby",
+      "description": "",
+      "keywords": [
+        "manrope-latin-variable",
+        "font"
+      ],
+      "references": [],
+      "notes": "Standby/Unreferenced asset"
+    },
+    "frame-mask-svg": {
+      "id": "frame-mask-svg",
+      "kind": "image",
+      "fileName": "frame-mask.svg",
+      "category": "home",
+      "localPath": "src/assets/home/scene-01-new/frame-mask.svg",
+      "md5": "d9b0b104e2c21b4c5b089932e9bd7b9c",
+      "fileSize": 29146,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "frame-mask",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/styles/home-scene-01.css",
+          "line": 117,
+          "text": "-webkit-mask-image: url(\"../assets/home/scene-01-new/frame-mask.svg\");",
+          "type": "css-url"
+        },
+        {
+          "file": "src/styles/home-scene-01.css",
+          "line": 118,
+          "text": "mask-image: url(\"../assets/home/scene-01-new/frame-mask.svg\");",
+          "type": "css-url"
+        }
+      ],
+      "notes": "Referenced in 2 location(s)"
+    },
+    "portrait-mask-svg": {
+      "id": "portrait-mask-svg",
+      "kind": "image",
+      "fileName": "portrait-mask.svg",
+      "category": "home",
+      "localPath": "src/assets/home/scene-01-new/portrait-mask.svg",
+      "md5": "41b65ac1af0f9f63b5d9227f66c8b33d",
+      "fileSize": 29124,
+      "uploadUrl": null,
+      "status": "standby",
+      "description": "",
+      "keywords": [
+        "portrait-mask",
+        "image"
+      ],
+      "references": [],
+      "notes": "Standby/Unreferenced asset"
+    },
+    "woman-frame-focus-webp": {
+      "id": "woman-frame-focus-webp",
+      "kind": "image",
+      "fileName": "woman-frame-focus.webp",
+      "category": "home",
+      "localPath": "src/assets/home/scene-01-new/woman-frame-focus.webp",
+      "md5": "4a2c7a2bc027aa4f0c604877cea156e5",
+      "fileSize": 338200,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "woman-frame-focus",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/contents/home-scene-01.tsx",
+          "line": 12,
+          "text": "import womanFrameUrl from \"../assets/home/scene-01-new/woman-frame-focus.webp\";",
+          "type": "import"
+        }
+      ],
+      "notes": "Referenced in 1 location(s)"
+    },
+    "woman-portrait-svg": {
+      "id": "woman-portrait-svg",
+      "kind": "image",
+      "fileName": "woman-portrait.svg",
+      "category": "home",
+      "localPath": "src/assets/home/scene-01-new/woman-portrait.svg",
+      "md5": "96af921506161476f9764011811d9f84",
+      "fileSize": 181450,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "woman-portrait",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/contents/home-scene-01.tsx",
+          "line": 13,
+          "text": "import womanPortraitUrl from \"../assets/home/scene-01-new/woman-portrait.svg\";",
+          "type": "import"
+        }
+      ],
+      "notes": "Referenced in 1 location(s)"
+    },
+    "map-bottom-restored-v2-png": {
+      "id": "map-bottom-restored-v2-png",
+      "kind": "image",
+      "fileName": "map-bottom-restored-v2.png",
+      "category": "home",
+      "localPath": "src/assets/home/story/map-bottom-restored-v2.png",
+      "md5": "8286d99824c0ec53e3260595bc7bbe0a",
+      "fileSize": 948159,
+      "uploadUrl": null,
+      "status": "standby",
+      "description": "",
+      "keywords": [
+        "map-bottom-restored-v2",
+        "image"
+      ],
+      "references": [],
+      "notes": "Standby/Unreferenced asset"
+    },
+    "map-bottom-restored-v2-webp": {
+      "id": "map-bottom-restored-v2-webp",
+      "kind": "image",
+      "fileName": "map-bottom-restored-v2.webp",
+      "category": "home",
+      "localPath": "src/assets/home/story/map-bottom-restored-v2.webp",
+      "md5": "a977aad42725f5c2d47960b1028a780a",
+      "fileSize": 661432,
+      "uploadUrl": null,
+      "status": "standby",
+      "description": "",
+      "keywords": [
+        "map-bottom-restored-v2",
+        "image"
+      ],
+      "references": [],
+      "notes": "Standby/Unreferenced asset"
+    },
+    "map-bottom-restored-png": {
+      "id": "map-bottom-restored-png",
+      "kind": "image",
+      "fileName": "map-bottom-restored.png",
+      "category": "home",
+      "localPath": "src/assets/home/story/map-bottom-restored.png",
+      "md5": "74230d4812fb9f0e7ceb1f1fbfb92c51",
+      "fileSize": 927927,
+      "uploadUrl": null,
+      "status": "standby",
+      "description": "",
+      "keywords": [
+        "map-bottom-restored",
+        "image"
+      ],
+      "references": [],
+      "notes": "Standby/Unreferenced asset"
+    },
+    "map-bottom-restored-webp": {
+      "id": "map-bottom-restored-webp",
+      "kind": "image",
+      "fileName": "map-bottom-restored.webp",
+      "category": "home",
+      "localPath": "src/assets/home/story/map-bottom-restored.webp",
+      "md5": "a559b167a938f88cc3688958551ce5b2",
+      "fileSize": 647336,
+      "uploadUrl": null,
+      "status": "standby",
+      "description": "",
+      "keywords": [
+        "map-bottom-restored",
+        "image"
+      ],
+      "references": [],
+      "notes": "Standby/Unreferenced asset"
+    },
+    "map-cloud-northwest-webp": {
+      "id": "map-cloud-northwest-webp",
+      "kind": "image",
+      "fileName": "map-cloud-northwest.webp",
+      "category": "home",
+      "localPath": "src/assets/home/story/map-cloud-northwest.webp",
+      "md5": "35f5c55bf79bddc058dc3fca7afa3fac",
+      "fileSize": 7124,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "map-cloud-northwest",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/contents/home-story.tsx",
+          "line": 23,
+          "text": "import mapCloudNorthwestUrl from \"../assets/home/story/map-cloud-northwest.webp\";",
+          "type": "import"
+        }
+      ],
+      "notes": "Referenced in 1 location(s)"
+    },
+    "map-latest-20261004-webp": {
+      "id": "map-latest-20261004-webp",
+      "kind": "image",
+      "fileName": "map-latest-20261004.webp",
+      "category": "home",
+      "localPath": "src/assets/home/story/map-latest-20261004.webp",
+      "md5": "ac92e50bda00bebe838a2c26f8c2b39b",
+      "fileSize": 758360,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "map-latest-20261004",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/contents/home-story.tsx",
+          "line": 22,
+          "text": "import mapLatestUrl from \"../assets/home/story/map-latest-20261004.webp\";",
+          "type": "import"
+        }
+      ],
+      "notes": "Referenced in 1 location(s)"
+    },
+    "map-taiwan-island-v2-png": {
+      "id": "map-taiwan-island-v2-png",
+      "kind": "image",
+      "fileName": "map-taiwan-island-v2.png",
+      "category": "home",
+      "localPath": "src/assets/home/story/map-taiwan-island-v2.png",
+      "md5": "77ae620b725244f716b1d847402e768f",
+      "fileSize": 438548,
+      "uploadUrl": null,
+      "status": "standby",
+      "description": "",
+      "keywords": [
+        "map-taiwan-island-v2",
+        "image"
+      ],
+      "references": [],
+      "notes": "Standby/Unreferenced asset"
+    },
+    "map-taiwan-island-v2-webp": {
+      "id": "map-taiwan-island-v2-webp",
+      "kind": "image",
+      "fileName": "map-taiwan-island-v2.webp",
+      "category": "home",
+      "localPath": "src/assets/home/story/map-taiwan-island-v2.webp",
+      "md5": "ec3ed5228737c4bfa739481c905295fe",
+      "fileSize": 280418,
+      "uploadUrl": null,
+      "status": "standby",
+      "description": "",
+      "keywords": [
+        "map-taiwan-island-v2",
+        "image"
+      ],
+      "references": [],
+      "notes": "Standby/Unreferenced asset"
+    },
+    "map-taiwan-island-png": {
+      "id": "map-taiwan-island-png",
+      "kind": "image",
+      "fileName": "map-taiwan-island.png",
+      "category": "home",
+      "localPath": "src/assets/home/story/map-taiwan-island.png",
+      "md5": "9f8ddd9246478a730e9960788372b238",
+      "fileSize": 938169,
+      "uploadUrl": null,
+      "status": "standby",
+      "description": "",
+      "keywords": [
+        "map-taiwan-island",
+        "image"
+      ],
+      "references": [],
+      "notes": "Standby/Unreferenced asset"
+    },
+    "map-taiwan-island-webp": {
+      "id": "map-taiwan-island-webp",
+      "kind": "image",
+      "fileName": "map-taiwan-island.webp",
+      "category": "home",
+      "localPath": "src/assets/home/story/map-taiwan-island.webp",
+      "md5": "c48ac3c5ad22a4f62bc4868f0a5b4362",
+      "fileSize": 644672,
+      "uploadUrl": null,
+      "status": "standby",
+      "description": "",
+      "keywords": [
+        "map-taiwan-island",
+        "image"
+      ],
+      "references": [],
+      "notes": "Standby/Unreferenced asset"
+    },
+    "fan-1-webp": {
+      "id": "fan-1-webp",
+      "kind": "image",
+      "fileName": "fan-1.webp",
+      "category": "home",
+      "localPath": "src/assets/home/supplements/fan-1.webp",
+      "md5": "a2c77d8a465839686756c3dd22ee46c2",
+      "fileSize": 198,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "fan-1",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/assets/home/supplements/manifest.json",
+          "line": 167,
+          "text": "\"file\": \"fan-1.webp\",",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 1 location(s)"
+    },
+    "fan-2-webp": {
+      "id": "fan-2-webp",
+      "kind": "image",
+      "fileName": "fan-2.webp",
+      "category": "home",
+      "localPath": "src/assets/home/supplements/fan-2.webp",
+      "md5": "fb8608cbf0cc10722a610a8649fc47a2",
+      "fileSize": 215594,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "fan-2",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/assets/home/supplements/manifest.json",
+          "line": 177,
+          "text": "\"file\": \"fan-2.webp\",",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 1 location(s)"
+    },
+    "fan-3-webp": {
+      "id": "fan-3-webp",
+      "kind": "image",
+      "fileName": "fan-3.webp",
+      "category": "home",
+      "localPath": "src/assets/home/supplements/fan-3.webp",
+      "md5": "c6cbd38adddf5621d9d9f8b13fd3f565",
+      "fileSize": 118788,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "fan-3",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/assets/home/supplements/manifest.json",
+          "line": 187,
+          "text": "\"file\": \"fan-3.webp\",",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 1 location(s)"
+    },
+    "fan-4-webp": {
+      "id": "fan-4-webp",
+      "kind": "image",
+      "fileName": "fan-4.webp",
+      "category": "home",
+      "localPath": "src/assets/home/supplements/fan-4.webp",
+      "md5": "b2b07b863649971b17ec6a4d4eadd40e",
+      "fileSize": 89710,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "fan-4",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/assets/home/supplements/manifest.json",
+          "line": 197,
+          "text": "\"file\": \"fan-4.webp\",",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 1 location(s)"
+    },
+    "fan-5-webp": {
+      "id": "fan-5-webp",
+      "kind": "image",
+      "fileName": "fan-5.webp",
+      "category": "home",
+      "localPath": "src/assets/home/supplements/fan-5.webp",
+      "md5": "8146b29df89622ca898ddda12a270c92",
+      "fileSize": 149670,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "fan-5",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/assets/home/supplements/manifest.json",
+          "line": 207,
+          "text": "\"file\": \"fan-5.webp\",",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 1 location(s)"
+    },
+    "fan-6-webp": {
+      "id": "fan-6-webp",
+      "kind": "image",
+      "fileName": "fan-6.webp",
+      "category": "home",
+      "localPath": "src/assets/home/supplements/fan-6.webp",
+      "md5": "e6defcb12c5c102cd1fba9bf9e5802af",
+      "fileSize": 215258,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "fan-6",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/assets/home/supplements/manifest.json",
+          "line": 217,
+          "text": "\"file\": \"fan-6.webp\",",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 1 location(s)"
+    },
+    "fan-7-webp": {
+      "id": "fan-7-webp",
+      "kind": "image",
+      "fileName": "fan-7.webp",
+      "category": "home",
+      "localPath": "src/assets/home/supplements/fan-7.webp",
+      "md5": "76a2fa0f2b7703a3c935fa40dc88eff2",
+      "fileSize": 247730,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "fan-7",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/assets/home/supplements/manifest.json",
+          "line": 227,
+          "text": "\"file\": \"fan-7.webp\",",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 1 location(s)"
+    },
+    "fan-8-webp": {
+      "id": "fan-8-webp",
+      "kind": "image",
+      "fileName": "fan-8.webp",
+      "category": "home",
+      "localPath": "src/assets/home/supplements/fan-8.webp",
+      "md5": "8e187905808e36a545bf9121ac026291",
+      "fileSize": 80932,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "fan-8",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/assets/home/supplements/manifest.json",
+          "line": 237,
+          "text": "\"file\": \"fan-8.webp\",",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 1 location(s)"
+    },
+    "tear-1-webp": {
+      "id": "tear-1-webp",
+      "kind": "image",
+      "fileName": "tear-1.webp",
+      "category": "home",
+      "localPath": "src/assets/home/supplements/tear-1.webp",
+      "md5": "c182a8a0682fd84c0dd9296019c599ba",
+      "fileSize": 282,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "tear-1",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/assets/home/supplements/manifest.json",
+          "line": 7,
+          "text": "\"file\": \"tear-1.webp\",",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 1 location(s)"
+    },
+    "tear-2-webp": {
+      "id": "tear-2-webp",
+      "kind": "image",
+      "fileName": "tear-2.webp",
+      "category": "home",
+      "localPath": "src/assets/home/supplements/tear-2.webp",
+      "md5": "a02462a02515b90f630cb21c44dadd4e",
+      "fileSize": 1838534,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "tear-2",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/assets/home/supplements/manifest.json",
+          "line": 17,
+          "text": "\"file\": \"tear-2.webp\",",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 1 location(s)"
+    },
+    "tear-3-webp": {
+      "id": "tear-3-webp",
+      "kind": "image",
+      "fileName": "tear-3.webp",
+      "category": "home",
+      "localPath": "src/assets/home/supplements/tear-3.webp",
+      "md5": "da2f4da722828d86df580572279ba821",
+      "fileSize": 536820,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "tear-3",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/assets/home/supplements/manifest.json",
+          "line": 27,
+          "text": "\"file\": \"tear-3.webp\",",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 1 location(s)"
+    },
+    "tear-4-webp": {
+      "id": "tear-4-webp",
+      "kind": "image",
+      "fileName": "tear-4.webp",
+      "category": "home",
+      "localPath": "src/assets/home/supplements/tear-4.webp",
+      "md5": "4f27190506054f97f38a9aa70083736f",
+      "fileSize": 546132,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "tear-4",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/assets/home/supplements/manifest.json",
+          "line": 37,
+          "text": "\"file\": \"tear-4.webp\",",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 1 location(s)"
+    },
+    "tear-5-webp": {
+      "id": "tear-5-webp",
+      "kind": "image",
+      "fileName": "tear-5.webp",
+      "category": "home",
+      "localPath": "src/assets/home/supplements/tear-5.webp",
+      "md5": "268d61be7d308050f5ec4a68b0944b47",
+      "fileSize": 501796,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "tear-5",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/assets/home/supplements/manifest.json",
+          "line": 47,
+          "text": "\"file\": \"tear-5.webp\",",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 1 location(s)"
+    },
+    "thinking-1-webp": {
+      "id": "thinking-1-webp",
+      "kind": "image",
+      "fileName": "thinking-1.webp",
+      "category": "home",
+      "localPath": "src/assets/home/supplements/thinking-1.webp",
+      "md5": "a8b4febd286db9e577ad9885bdd43628",
+      "fileSize": 198,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "thinking-1",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/assets/home/supplements/manifest.json",
+          "line": 62,
+          "text": "\"file\": \"thinking-1.webp\",",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 1 location(s)"
+    },
+    "thinking-10-webp": {
+      "id": "thinking-10-webp",
+      "kind": "image",
+      "fileName": "thinking-10.webp",
+      "category": "home",
+      "localPath": "src/assets/home/supplements/thinking-10.webp",
+      "md5": "1705012acd5c2af02a203c797fac7979",
+      "fileSize": 22670,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "thinking-10",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/assets/home/supplements/manifest.json",
+          "line": 152,
+          "text": "\"file\": \"thinking-10.webp\",",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 1 location(s)"
+    },
+    "thinking-2-webp": {
+      "id": "thinking-2-webp",
+      "kind": "image",
+      "fileName": "thinking-2.webp",
+      "category": "home",
+      "localPath": "src/assets/home/supplements/thinking-2.webp",
+      "md5": "11432546b4d66da43728c637525bea48",
+      "fileSize": 262486,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "thinking-2",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/assets/home/supplements/manifest.json",
+          "line": 72,
+          "text": "\"file\": \"thinking-2.webp\",",
+          "type": "mention"
+        },
+        {
+          "file": "src/contents/home-story.tsx",
+          "line": 590,
+          "text": "const boardSrc = artworkUrl(\"thinking-2.webp\");",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 2 location(s)"
+    },
+    "thinking-3-webp": {
+      "id": "thinking-3-webp",
+      "kind": "image",
+      "fileName": "thinking-3.webp",
+      "category": "home",
+      "localPath": "src/assets/home/supplements/thinking-3.webp",
+      "md5": "eb20f9ffd80b7c8b7ddade256927cbeb",
+      "fileSize": 139852,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "thinking-3",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/assets/home/supplements/manifest.json",
+          "line": 82,
+          "text": "\"file\": \"thinking-3.webp\",",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 1 location(s)"
+    },
+    "thinking-4-webp": {
+      "id": "thinking-4-webp",
+      "kind": "image",
+      "fileName": "thinking-4.webp",
+      "category": "home",
+      "localPath": "src/assets/home/supplements/thinking-4.webp",
+      "md5": "ce588f1f1f1f089890193ecfab1b7753",
+      "fileSize": 137620,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "thinking-4",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/assets/home/supplements/manifest.json",
+          "line": 92,
+          "text": "\"file\": \"thinking-4.webp\",",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 1 location(s)"
+    },
+    "thinking-5-webp": {
+      "id": "thinking-5-webp",
+      "kind": "image",
+      "fileName": "thinking-5.webp",
+      "category": "home",
+      "localPath": "src/assets/home/supplements/thinking-5.webp",
+      "md5": "4297bc50e501894ea254f0f0ad31c610",
+      "fileSize": 389260,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "thinking-5",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/assets/home/supplements/manifest.json",
+          "line": 102,
+          "text": "\"file\": \"thinking-5.webp\",",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 1 location(s)"
+    },
+    "thinking-6-webp": {
+      "id": "thinking-6-webp",
+      "kind": "image",
+      "fileName": "thinking-6.webp",
+      "category": "home",
+      "localPath": "src/assets/home/supplements/thinking-6.webp",
+      "md5": "cd7f87f45d12067365015d989ac7bd65",
+      "fileSize": 54338,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "thinking-6",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/assets/home/supplements/manifest.json",
+          "line": 112,
+          "text": "\"file\": \"thinking-6.webp\",",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 1 location(s)"
+    },
+    "thinking-7-webp": {
+      "id": "thinking-7-webp",
+      "kind": "image",
+      "fileName": "thinking-7.webp",
+      "category": "home",
+      "localPath": "src/assets/home/supplements/thinking-7.webp",
+      "md5": "b893dfc917cc304ae5d9b9642a135814",
+      "fileSize": 39514,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "thinking-7",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/assets/home/supplements/manifest.json",
+          "line": 122,
+          "text": "\"file\": \"thinking-7.webp\",",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 1 location(s)"
+    },
+    "thinking-8-webp": {
+      "id": "thinking-8-webp",
+      "kind": "image",
+      "fileName": "thinking-8.webp",
+      "category": "home",
+      "localPath": "src/assets/home/supplements/thinking-8.webp",
+      "md5": "bfc73233b0d05413e35bb8907bab0ba8",
+      "fileSize": 35176,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "thinking-8",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/assets/home/supplements/manifest.json",
+          "line": 132,
+          "text": "\"file\": \"thinking-8.webp\",",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 1 location(s)"
+    },
+    "thinking-9-webp": {
+      "id": "thinking-9-webp",
+      "kind": "image",
+      "fileName": "thinking-9.webp",
+      "category": "home",
+      "localPath": "src/assets/home/supplements/thinking-9.webp",
+      "md5": "2c1be399504141da606857e501117741",
+      "fileSize": 29744,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "thinking-9",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/assets/home/supplements/manifest.json",
+          "line": 142,
+          "text": "\"file\": \"thinking-9.webp\",",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 1 location(s)"
+    },
+    "patient-teardrop-20261004-webp": {
+      "id": "patient-teardrop-20261004-webp",
+      "kind": "image",
+      "fileName": "patient-teardrop-20261004.webp",
+      "category": "home",
+      "localPath": "src/assets/home/ward-transition/patient-teardrop-20261004.webp",
+      "md5": "968753ac98657f3d9bc2d6696de3aa0f",
+      "fileSize": 7850,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "patient-teardrop-20261004",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/hooks/animateWardTear.ts",
+          "line": 5,
+          "text": "import patientTeardrop from \"../assets/home/ward-transition/patient-teardrop-20261004.webp\";",
+          "type": "import"
+        }
+      ],
+      "notes": "Referenced in 1 location(s)"
+    },
+    "patient-teary-20261004-webp": {
+      "id": "patient-teary-20261004-webp",
+      "kind": "image",
+      "fileName": "patient-teary-20261004.webp",
+      "category": "home",
+      "localPath": "src/assets/home/ward-transition/patient-teary-20261004.webp",
+      "md5": "c5f31e2df41775ea4af1e3b3a9b3148d",
+      "fileSize": 1214110,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "patient-teary-20261004",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/contents/home-story.tsx",
+          "line": 13,
+          "text": "import patientConcerned from \"../assets/home/ward-transition/patient-teary-20261004.webp\";",
+          "type": "import"
+        }
+      ],
+      "notes": "Referenced in 1 location(s)"
+    },
+    "nav-design-webp": {
+      "id": "nav-design-webp",
+      "kind": "image",
+      "fileName": "nav-design.webp",
+      "category": "project",
+      "localPath": "src/assets/nav-icons/nav-design.webp",
+      "md5": "fcfc2892502485833888d271aecb7e5e",
+      "fileSize": 19126,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "nav-design",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/components/navIcons.ts",
+          "line": 9,
+          "text": "import designIcon from \"../assets/nav-icons/nav-design.webp\";",
+          "type": "import"
+        }
+      ],
+      "notes": "Referenced in 1 location(s)"
+    },
+    "back-to-top-girl-png": {
+      "id": "back-to-top-girl-png",
+      "kind": "image",
+      "fileName": "back-to-top-girl.png",
+      "category": "shared",
+      "localPath": "src/assets/wiki/back-to-top-girl.png",
+      "md5": "9e9cfcb1e5a4605d9304d57d3362c09e",
+      "fileSize": 977205,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "back-to-top-girl",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/components/BackToTop.tsx",
+          "line": 4,
+          "text": "import backToTopImage from \"../assets/wiki/back-to-top-girl.png\";",
+          "type": "import"
+        }
+      ],
+      "notes": "Referenced in 1 location(s)"
+    },
+    "design-fig1-circular-workflow-webp": {
+      "id": "design-fig1-circular-workflow-webp",
+      "kind": "image",
+      "fileName": "design-fig1-circular-workflow.webp",
+      "category": "project",
+      "localPath": "src/assets/wiki/design/design-fig1-circular-workflow.webp",
+      "md5": "573451cbd36a0194985182f89d9b98eb",
+      "fileSize": 83736,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "design-fig1-circular-workflow",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/data/wet-lab/designAssets.ts",
+          "line": 18,
+          "text": "import fig1 from \"../../assets/wiki/design/design-fig1-circular-workflow.webp\";",
+          "type": "import"
+        },
+        {
+          "file": "src/data/wet-lab/designAssets.ts",
+          "line": 49,
+          "text": "fileName: \"design-fig1-circular-workflow.webp\",",
+          "type": "mention"
+        },
+        {
+          "file": "src/data/wet-lab/designAssets.ts",
+          "line": 51,
+          "text": "\"src/assets/wiki/design/design-fig1-circular-workflow.webp\",",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 3 location(s)"
+    },
+    "design-fig2a-stability-webp": {
+      "id": "design-fig2a-stability-webp",
+      "kind": "image",
+      "fileName": "design-fig2a-stability.webp",
+      "category": "project",
+      "localPath": "src/assets/wiki/design/design-fig2a-stability.webp",
+      "md5": "6d9908d121ab9879e42dbc557a12f8ab",
+      "fileSize": 37972,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "design-fig2a-stability",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/data/wet-lab/designAssets.ts",
+          "line": 19,
+          "text": "import fig2a from \"../../assets/wiki/design/design-fig2a-stability.webp\";",
+          "type": "import"
+        },
+        {
+          "file": "src/data/wet-lab/designAssets.ts",
+          "line": 60,
+          "text": "fileName: \"design-fig2a-stability.webp\",",
+          "type": "mention"
+        },
+        {
+          "file": "src/data/wet-lab/designAssets.ts",
+          "line": 61,
+          "text": "localSourcePath: \"src/assets/wiki/design/design-fig2a-stability.webp\",",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 3 location(s)"
+    },
+    "design-fig2b-translation-initiation-webp": {
+      "id": "design-fig2b-translation-initiation-webp",
+      "kind": "image",
+      "fileName": "design-fig2b-translation-initiation.webp",
+      "category": "project",
+      "localPath": "src/assets/wiki/design/design-fig2b-translation-initiation.webp",
+      "md5": "4038347c40cd1c4bfd931f32f4f35f42",
+      "fileSize": 41888,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "design-fig2b-translation-initiation",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/data/wet-lab/designAssets.ts",
+          "line": 20,
+          "text": "import fig2b from \"../../assets/wiki/design/design-fig2b-translation-initiation.webp\";",
+          "type": "import"
+        },
+        {
+          "file": "src/data/wet-lab/designAssets.ts",
+          "line": 70,
+          "text": "fileName: \"design-fig2b-translation-initiation.webp\",",
+          "type": "mention"
+        },
+        {
+          "file": "src/data/wet-lab/designAssets.ts",
+          "line": 72,
+          "text": "\"src/assets/wiki/design/design-fig2b-translation-initiation.webp\",",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 3 location(s)"
+    },
+    "design-fig2c-innate-sensing-webp": {
+      "id": "design-fig2c-innate-sensing-webp",
+      "kind": "image",
+      "fileName": "design-fig2c-innate-sensing.webp",
+      "category": "project",
+      "localPath": "src/assets/wiki/design/design-fig2c-innate-sensing.webp",
+      "md5": "1904261169a0213eeab9a9a7eca1aab1",
+      "fileSize": 42434,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "design-fig2c-innate-sensing",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/data/wet-lab/designAssets.ts",
+          "line": 21,
+          "text": "import fig2c from \"../../assets/wiki/design/design-fig2c-innate-sensing.webp\";",
+          "type": "import"
+        },
+        {
+          "file": "src/data/wet-lab/designAssets.ts",
+          "line": 81,
+          "text": "fileName: \"design-fig2c-innate-sensing.webp\",",
+          "type": "mention"
+        },
+        {
+          "file": "src/data/wet-lab/designAssets.ts",
+          "line": 82,
+          "text": "localSourcePath: \"src/assets/wiki/design/design-fig2c-innate-sensing.webp\",",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 3 location(s)"
+    },
+    "design-fig3-four-antigens-webp": {
+      "id": "design-fig3-four-antigens-webp",
+      "kind": "image",
+      "fileName": "design-fig3-four-antigens.webp",
+      "category": "project",
+      "localPath": "src/assets/wiki/design/design-fig3-four-antigens.webp",
+      "md5": "252f8f74ffcf0cebf3b68d7c226784a0",
+      "fileSize": 116030,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "design-fig3-four-antigens",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/data/wet-lab/designAssets.ts",
+          "line": 22,
+          "text": "import fig3 from \"../../assets/wiki/design/design-fig3-four-antigens.webp\";",
+          "type": "import"
+        },
+        {
+          "file": "src/data/wet-lab/designAssets.ts",
+          "line": 91,
+          "text": "fileName: \"design-fig3-four-antigens.webp\",",
+          "type": "mention"
+        },
+        {
+          "file": "src/data/wet-lab/designAssets.ts",
+          "line": 92,
+          "text": "localSourcePath: \"src/assets/wiki/design/design-fig3-four-antigens.webp\",",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 3 location(s)"
+    },
+    "design-fig4-screening-funnel-webp": {
+      "id": "design-fig4-screening-funnel-webp",
+      "kind": "image",
+      "fileName": "design-fig4-screening-funnel.webp",
+      "category": "project",
+      "localPath": "src/assets/wiki/design/design-fig4-screening-funnel.webp",
+      "md5": "19035d9d555974ee2c97e723f4c51f25",
+      "fileSize": 114870,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "design-fig4-screening-funnel",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/data/wet-lab/designAssets.ts",
+          "line": 23,
+          "text": "import fig4 from \"../../assets/wiki/design/design-fig4-screening-funnel.webp\";",
+          "type": "import"
+        },
+        {
+          "file": "src/data/wet-lab/designAssets.ts",
+          "line": 101,
+          "text": "fileName: \"design-fig4-screening-funnel.webp\",",
+          "type": "mention"
+        },
+        {
+          "file": "src/data/wet-lab/designAssets.ts",
+          "line": 102,
+          "text": "localSourcePath: \"src/assets/wiki/design/design-fig4-screening-funnel.webp\",",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 3 location(s)"
+    },
+    "design-fig5-mechanism-of-action-webp": {
+      "id": "design-fig5-mechanism-of-action-webp",
+      "kind": "image",
+      "fileName": "design-fig5-mechanism-of-action.webp",
+      "category": "project",
+      "localPath": "src/assets/wiki/design/design-fig5-mechanism-of-action.webp",
+      "md5": "e6cf88c5e18973fc0cccf6a905a0a295",
+      "fileSize": 245370,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "design-fig5-mechanism-of-action",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/data/wet-lab/designAssets.ts",
+          "line": 24,
+          "text": "import fig5 from \"../../assets/wiki/design/design-fig5-mechanism-of-action.webp\";",
+          "type": "import"
+        },
+        {
+          "file": "src/data/wet-lab/designAssets.ts",
+          "line": 111,
+          "text": "fileName: \"design-fig5-mechanism-of-action.webp\",",
+          "type": "mention"
+        },
+        {
+          "file": "src/data/wet-lab/designAssets.ts",
+          "line": 113,
+          "text": "\"src/assets/wiki/design/design-fig5-mechanism-of-action.webp\",",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 3 location(s)"
+    },
+    "design-fig7-two-design-cycles-webp": {
+      "id": "design-fig7-two-design-cycles-webp",
+      "kind": "image",
+      "fileName": "design-fig7-two-design-cycles.webp",
+      "category": "project",
+      "localPath": "src/assets/wiki/design/design-fig7-two-design-cycles.webp",
+      "md5": "04d789211f839427590c877037881b3c",
+      "fileSize": 115736,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "design-fig7-two-design-cycles",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/data/wet-lab/designAssets.ts",
+          "line": 25,
+          "text": "import fig7 from \"../../assets/wiki/design/design-fig7-two-design-cycles.webp\";",
+          "type": "import"
+        },
+        {
+          "file": "src/data/wet-lab/designAssets.ts",
+          "line": 122,
+          "text": "fileName: \"design-fig7-two-design-cycles.webp\",",
+          "type": "mention"
+        },
+        {
+          "file": "src/data/wet-lab/designAssets.ts",
+          "line": 124,
+          "text": "\"src/assets/wiki/design/design-fig7-two-design-cycles.webp\",",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 3 location(s)"
+    },
+    "design-fig8-in-vivo-study-design-webp": {
+      "id": "design-fig8-in-vivo-study-design-webp",
+      "kind": "image",
+      "fileName": "design-fig8-in-vivo-study-design.webp",
+      "category": "project",
+      "localPath": "src/assets/wiki/design/design-fig8-in-vivo-study-design.webp",
+      "md5": "2069e16c23fcb1c0fad988f218debb08",
+      "fileSize": 76838,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "design-fig8-in-vivo-study-design",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/data/wet-lab/designAssets.ts",
+          "line": 26,
+          "text": "import fig8 from \"../../assets/wiki/design/design-fig8-in-vivo-study-design.webp\";",
+          "type": "import"
+        },
+        {
+          "file": "src/data/wet-lab/designAssets.ts",
+          "line": 133,
+          "text": "fileName: \"design-fig8-in-vivo-study-design.webp\",",
+          "type": "mention"
+        },
+        {
+          "file": "src/data/wet-lab/designAssets.ts",
+          "line": 135,
+          "text": "\"src/assets/wiki/design/design-fig8-in-vivo-study-design.webp\",",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 3 location(s)"
+    },
+    "hardware-fig1-gen1-overview-webp": {
+      "id": "hardware-fig1-gen1-overview-webp",
+      "kind": "image",
+      "fileName": "hardware-fig1-gen1-overview.webp",
+      "category": "shared",
+      "localPath": "src/assets/wiki/hardware/hardware-fig1-gen1-overview.webp",
+      "md5": "967667aa926fb9eb93256cc6033a2cae",
+      "fileSize": 60068,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "hardware-fig1-gen1-overview",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/data/drylab/hardwareAssets.ts",
+          "line": 18,
+          "text": "import fig1 from \"../../assets/wiki/hardware/hardware-fig1-gen1-overview.webp\";",
+          "type": "import"
+        },
+        {
+          "file": "src/data/drylab/hardwareAssets.ts",
+          "line": 41,
+          "text": "fileName: \"hardware-fig1-gen1-overview.webp\",",
+          "type": "mention"
+        },
+        {
+          "file": "src/data/drylab/hardwareAssets.ts",
+          "line": 43,
+          "text": "\"src/assets/wiki/hardware/hardware-fig1-gen1-overview.webp\",",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 3 location(s)"
+    },
+    "hardware-fig2-process-chain-webp": {
+      "id": "hardware-fig2-process-chain-webp",
+      "kind": "image",
+      "fileName": "hardware-fig2-process-chain.webp",
+      "category": "shared",
+      "localPath": "src/assets/wiki/hardware/hardware-fig2-process-chain.webp",
+      "md5": "551109ed3dd7f6541ae70ae348261a18",
+      "fileSize": 67194,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "hardware-fig2-process-chain",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/data/drylab/hardwareAssets.ts",
+          "line": 19,
+          "text": "import fig2 from \"../../assets/wiki/hardware/hardware-fig2-process-chain.webp\";",
+          "type": "import"
+        },
+        {
+          "file": "src/data/drylab/hardwareAssets.ts",
+          "line": 52,
+          "text": "fileName: \"hardware-fig2-process-chain.webp\",",
+          "type": "mention"
+        },
+        {
+          "file": "src/data/drylab/hardwareAssets.ts",
+          "line": 54,
+          "text": "\"src/assets/wiki/hardware/hardware-fig2-process-chain.webp\",",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 3 location(s)"
+    },
+    "hardware-fig3-gen1-exploded-webp": {
+      "id": "hardware-fig3-gen1-exploded-webp",
+      "kind": "image",
+      "fileName": "hardware-fig3-gen1-exploded.webp",
+      "category": "shared",
+      "localPath": "src/assets/wiki/hardware/hardware-fig3-gen1-exploded.webp",
+      "md5": "d60f72a776260c0640c01f035033a49c",
+      "fileSize": 74750,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "hardware-fig3-gen1-exploded",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/data/drylab/hardwareAssets.ts",
+          "line": 20,
+          "text": "import fig3 from \"../../assets/wiki/hardware/hardware-fig3-gen1-exploded.webp\";",
+          "type": "import"
+        },
+        {
+          "file": "src/data/drylab/hardwareAssets.ts",
+          "line": 64,
+          "text": "fileName: \"hardware-fig3-gen1-exploded.webp\",",
+          "type": "mention"
+        },
+        {
+          "file": "src/data/drylab/hardwareAssets.ts",
+          "line": 66,
+          "text": "\"src/assets/wiki/hardware/hardware-fig3-gen1-exploded.webp\",",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 3 location(s)"
+    },
+    "hardware-fig4-uv-interlock-webp": {
+      "id": "hardware-fig4-uv-interlock-webp",
+      "kind": "image",
+      "fileName": "hardware-fig4-uv-interlock.webp",
+      "category": "shared",
+      "localPath": "src/assets/wiki/hardware/hardware-fig4-uv-interlock.webp",
+      "md5": "95b72c6969eafd49a9643931bdffa71b",
+      "fileSize": 43326,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "hardware-fig4-uv-interlock",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/data/drylab/hardwareAssets.ts",
+          "line": 21,
+          "text": "import fig4 from \"../../assets/wiki/hardware/hardware-fig4-uv-interlock.webp\";",
+          "type": "import"
+        },
+        {
+          "file": "src/data/drylab/hardwareAssets.ts",
+          "line": 75,
+          "text": "fileName: \"hardware-fig4-uv-interlock.webp\",",
+          "type": "mention"
+        },
+        {
+          "file": "src/data/drylab/hardwareAssets.ts",
+          "line": 76,
+          "text": "localSourcePath: \"src/assets/wiki/hardware/hardware-fig4-uv-interlock.webp\",",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 3 location(s)"
+    },
+    "hardware-fig5-gen2-optical-electrical-webp": {
+      "id": "hardware-fig5-gen2-optical-electrical-webp",
+      "kind": "image",
+      "fileName": "hardware-fig5-gen2-optical-electrical.webp",
+      "category": "shared",
+      "localPath": "src/assets/wiki/hardware/hardware-fig5-gen2-optical-electrical.webp",
+      "md5": "8724db103f660d56abe8c0d7bc767157",
+      "fileSize": 50510,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "hardware-fig5-gen2-optical-electrical",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/data/drylab/hardwareAssets.ts",
+          "line": 22,
+          "text": "import fig5 from \"../../assets/wiki/hardware/hardware-fig5-gen2-optical-electrical.webp\";",
+          "type": "import"
+        },
+        {
+          "file": "src/data/drylab/hardwareAssets.ts",
+          "line": 86,
+          "text": "fileName: \"hardware-fig5-gen2-optical-electrical.webp\",",
+          "type": "mention"
+        },
+        {
+          "file": "src/data/drylab/hardwareAssets.ts",
+          "line": 88,
+          "text": "\"src/assets/wiki/hardware/hardware-fig5-gen2-optical-electrical.webp\",",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 3 location(s)"
+    },
+    "hardware-fig6-gen2-process-coverage-webp": {
+      "id": "hardware-fig6-gen2-process-coverage-webp",
+      "kind": "image",
+      "fileName": "hardware-fig6-gen2-process-coverage.webp",
+      "category": "shared",
+      "localPath": "src/assets/wiki/hardware/hardware-fig6-gen2-process-coverage.webp",
+      "md5": "41b97754c28ff9530ced6636bbd32730",
+      "fileSize": 49218,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "hardware-fig6-gen2-process-coverage",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/data/drylab/hardwareAssets.ts",
+          "line": 23,
+          "text": "import fig6 from \"../../assets/wiki/hardware/hardware-fig6-gen2-process-coverage.webp\";",
+          "type": "import"
+        },
+        {
+          "file": "src/data/drylab/hardwareAssets.ts",
+          "line": 98,
+          "text": "fileName: \"hardware-fig6-gen2-process-coverage.webp\",",
+          "type": "mention"
+        },
+        {
+          "file": "src/data/drylab/hardwareAssets.ts",
+          "line": 100,
+          "text": "\"src/assets/wiki/hardware/hardware-fig6-gen2-process-coverage.webp\",",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 3 location(s)"
+    },
+    "wet-lab-design-hero-webp": {
+      "id": "wet-lab-design-hero-webp",
+      "kind": "image",
+      "fileName": "wet-lab-design-hero.webp",
+      "category": "wet-lab",
+      "localPath": "src/assets/wiki/wet-lab-heroes/wet-lab-design-hero.webp",
+      "md5": "bcbb12de0b7f42b680d125cc0e6cd744",
+      "fileSize": 181760,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "wet-lab-design-hero",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/components/wiki/wetLabHeroAssets.ts",
+          "line": 1,
+          "text": "import designHero from \"../../assets/wiki/wet-lab-heroes/wet-lab-design-hero.webp\";",
+          "type": "import"
         }
       ],
       "notes": "Referenced in 1 location(s)"

@@ -43,10 +43,24 @@ import "../../../../styles/features/design-panels.css";
  * distinguishable from a linker at a glance — while the panel chrome around
  * them uses the Wet Lab palette rather than the delivery's neutral greys.
  */
+
+/**
+ * Bases per sequence row. Fixed rather than fitted: fifty bases to a line is the
+ * convention sequence editors use, and a fixed count means two preparations are
+ * comparable line by line. The strand is then sized so that exactly fifty bases
+ * fill the panel (see `measure()`), instead of the row length following the
+ * window width.
+ */
+export const SEQUENCE_BASES_PER_ROW = 50;
+
+const STRAND_MIN_PX = 9;
+const STRAND_MAX_PX = 13.5;
+
 export function DesignConstructViewer() {
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const selected = useMemo(() => findSelectable(selectedId), [selectedId]);
 
+  const rootRef = useRef<HTMLDivElement>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
   const measureRef = useRef<HTMLSpanElement>(null);
   const [metrics, setMetrics] = useState<SequenceMetrics | null>(null);
@@ -55,40 +69,77 @@ export function DesignConstructViewer() {
 
   metricsRef.current = metrics;
 
-  /* Measure one base's advance from the live typography, then follow resizes:
-     only the browser knows the resolved font metrics, and both the row width
-     and every feature bar coordinate depend on them. */
+  /* Size the strand so fifty bases fill the row, then measure one base's advance
+     from the live typography: only the browser knows the resolved font metrics,
+     and every feature bar, cut mark and tick coordinate depends on them. */
   useLayoutEffect(() => {
+    const root = rootRef.current;
     const box = scrollRef.current;
     const probe = measureRef.current;
-    if (!box || !probe) return;
+    if (!root || !box || !probe) return;
 
     const measure = () => {
-      const rect = probe.getBoundingClientRect();
-      const advance = rect.width / 100 || 12;
-      const style = window.getComputedStyle(probe);
-      const letterSpacing = Number.parseFloat(style.letterSpacing) || 0;
-      const lineHeight = rect.height;
-      let basesPerRow = Math.floor((box.clientWidth - 26) / advance);
-      basesPerRow = Math.floor(basesPerRow / 10) * 10;
-      basesPerRow = Math.min(120, Math.max(30, basesPerRow));
+      // The scroll box's padding and scrollbar are not usable row width.
+      const available = Math.max(0, box.clientWidth - 26);
+
+      const readProbe = () => {
+        const rect = probe.getBoundingClientRect();
+        const computed = window.getComputedStyle(probe);
+        const fontSize = Number.parseFloat(computed.fontSize) || 12.5;
+        const advance = rect.width / 100 || 12;
+        return {
+          rect,
+          fontSize,
+          advance,
+          // Advance per pixel of font size. Both the glyph advance and the
+          // em-based tracking scale with it, so one correction pass converges
+          // exactly — and it stays right if the tracking or the mono face changes.
+          ratio: advance / fontSize,
+          letterSpacing: Number.parseFloat(computed.letterSpacing) || 0,
+        };
+      };
+
+      const before = readProbe();
+      const strandSize = Math.min(
+        STRAND_MAX_PX,
+        Math.max(
+          STRAND_MIN_PX,
+          available / (SEQUENCE_BASES_PER_ROW * before.ratio),
+        ),
+      );
+
+      let reading = before;
+      if (Math.abs(strandSize - before.fontSize) > 0.05) {
+        // Write, then re-read: the probe reports the metrics of the new size.
+        root.style.setProperty(
+          "--cc-strand-size",
+          `${strandSize.toFixed(2)}px`,
+        );
+        reading = readProbe();
+      }
+
+      const { advance, letterSpacing } = reading;
+      const lineHeight = reading.rect.height;
 
       setMetrics((previous) =>
         previous &&
         previous.advance === advance &&
-        previous.basesPerRow === basesPerRow &&
+        previous.basesPerRow === SEQUENCE_BASES_PER_ROW &&
         previous.lineHeight === lineHeight &&
         previous.letterSpacing === letterSpacing
           ? previous
-          : { advance, basesPerRow, lineHeight, letterSpacing },
+          : {
+              advance,
+              basesPerRow: SEQUENCE_BASES_PER_ROW,
+              lineHeight,
+              letterSpacing,
+            },
       );
     };
 
     measure();
     const observer = new ResizeObserver(measure);
     observer.observe(box);
-    // Below 620px the strand font size steps down without changing the box
-    // width, so the resize event — not the observer — is what catches it.
     window.addEventListener("resize", measure);
     return () => {
       observer.disconnect();
@@ -137,7 +188,7 @@ export function DesignConstructViewer() {
   };
 
   return (
-    <div className="design-construct">
+    <div className="design-construct" ref={rootRef}>
       <div className="cc-grid">
         <section className="cc-panel">
           <div className="cc-phead">

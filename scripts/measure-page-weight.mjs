@@ -67,7 +67,7 @@ export const report = {
   hardware: Object.fromEntries(
     Object.entries(hardwareFeatures()).map(([key, node]) => [key, render(node)]),
   ),
-  sequence: sequenceNodes({ advance: 12, basesPerRow: 60, lineHeight: 17.75, letterSpacing: 2.9 }),
+  sequence: sequenceNodes({ advance: 12, basesPerRow: 50, lineHeight: 17.75, letterSpacing: 2.9 }),
 };
 `,
   "utf8",
