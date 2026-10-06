@@ -20,7 +20,7 @@ import "../../styles/route-palette-drylab.css";
 import "../../styles/route-palette-engagement.css";
 import { Navigate, Route, Routes, useLocation } from "react-router-dom";
 import { getPathMapping, stringToSlug } from "../../utils";
-import { useEffect, useLayoutEffect } from "react";
+import { Suspense, useEffect, useLayoutEffect, type ReactNode } from "react";
 import { Navbar } from "../../components/Navbar";
 import { Header } from "../../components/Header";
 import { NotFound } from "../../components/NotFound";
@@ -79,6 +79,15 @@ const ROUTE_READER_ROUTES = new Set([
   ...ENGAGEMENT_ROUTES,
 ]);
 
+// This effect commits only after the selected lazy page has mounted. Measuring
+// readiness from App itself could inspect the Suspense fallback or the old page.
+function PageReady({ children }: { children: ReactNode }) {
+  useEffect(() => {
+    hidePageLoaderWhenReady();
+  }, []);
+  return children;
+}
+
 const App = () => {
   const { pathname } = useLocation();
   const pathMapping = getPathMapping();
@@ -91,7 +100,51 @@ const App = () => {
   // Layout effect: the loader must be up before the new page's first paint.
   useLayoutEffect(() => {
     showPageLoader();
-    hidePageLoaderWhenReady();
+  }, [pathname]);
+
+  // React Router can retain the previous page while a lazy route suspends.
+  // Cover a real in-app navigation before that transition starts, not only
+  // after the new pathname finally commits.
+  useEffect(() => {
+    const committedPath = window.location.pathname;
+    const coverNavigation = (event: MouseEvent) => {
+      if (
+        event.button !== 0 ||
+        event.metaKey ||
+        event.ctrlKey ||
+        event.shiftKey ||
+        event.altKey
+      )
+        return;
+      const link =
+        event.target instanceof Element
+          ? event.target.closest<HTMLAnchorElement>("a[href]")
+          : null;
+      if (
+        !link ||
+        link.hasAttribute("download") ||
+        (link.target && link.target !== "_self")
+      )
+        return;
+      const target = new URL(link.href, window.location.href);
+      if (
+        target.origin === window.location.origin &&
+        target.pathname.startsWith(import.meta.env.BASE_URL) &&
+        target.pathname !== window.location.pathname
+      )
+        showPageLoader();
+    };
+    const coverHistoryNavigation = () => {
+      if (window.location.pathname !== committedPath) showPageLoader();
+      else if (!document.getElementById("page-loader")?.hidden)
+        hidePageLoaderWhenReady();
+    };
+    document.addEventListener("click", coverNavigation, true);
+    window.addEventListener("popstate", coverHistoryNavigation);
+    return () => {
+      document.removeEventListener("click", coverNavigation, true);
+      window.removeEventListener("popstate", coverHistoryNavigation);
+    };
   }, [pathname]);
 
   // Set Page Title
@@ -136,55 +189,59 @@ const App = () => {
       <Navbar />
 
       {/* Header and PageContent */}
-      <Routes>
-        {Object.entries(pathMapping).map(
-          ([path, { title, lead, component: Component }]) => (
-            <Route
-              key={path}
-              path={path}
-              element={
-                path === HOME_ROUTE ? (
-                  <Component />
-                ) : ROUTE_READER_ROUTES.has(path) ? (
-                  <Component />
-                ) : (
-                  <>
-                    <Header title={title || ""} lead={lead || ""} />
-                    <div className="container">
+      <Suspense fallback={null}>
+        <PageReady key={pathname}>
+          <Routes>
+            {Object.entries(pathMapping).map(
+              ([path, { title, lead, component: Component }]) => (
+                <Route
+                  key={path}
+                  path={path}
+                  element={
+                    path === HOME_ROUTE ? (
                       <Component />
-                    </div>
-                  </>
-                )
+                    ) : ROUTE_READER_ROUTES.has(path) ? (
+                      <Component />
+                    ) : (
+                      <>
+                        <Header title={title || ""} lead={lead || ""} />
+                        <div className="container">
+                          <Component />
+                        </div>
+                      </>
+                    )
+                  }
+                />
+              ),
+            )}
+            <Route path="/team" element={<Navigate to="/roster" replace />} />
+            <Route
+              path="/attribution"
+              element={<Navigate to="/attributions" replace />}
+            />
+            <Route
+              path="/art"
+              element={<Navigate to="/visual-design" replace />}
+            />
+            <Route
+              path="/safety"
+              element={<Navigate to="/safety-and-security" replace />}
+            />
+            <Route
+              path="*"
+              element={
+                <>
+                  <Header
+                    title="Not Found"
+                    lead="The requested URL was not found on this server."
+                  />
+                  <NotFound />
+                </>
               }
             />
-          ),
-        )}
-        <Route path="/team" element={<Navigate to="/roster" replace />} />
-        <Route
-          path="/attribution"
-          element={<Navigate to="/attributions" replace />}
-        />
-        <Route
-          path="/art"
-          element={<Navigate to="/visual-design" replace />}
-        />
-        <Route
-          path="/safety"
-          element={<Navigate to="/safety-and-security" replace />}
-        />
-        <Route
-          path="*"
-          element={
-            <>
-              <Header
-                title="Not Found"
-                lead="The requested URL was not found on this server."
-              />
-              <NotFound />
-            </>
-          }
-        />
-      </Routes>
+          </Routes>
+        </PageReady>
+      </Suspense>
 
       <BackToTop />
       <SheepCursor />

@@ -281,10 +281,14 @@ function renderSubheadingTitle(title: string) {
 
 /**
  * Table cell content: `**bold**` plus the source manuscripts' literal `<br>`
- * line breaks. Data tables carry short phrases, so this stays a text renderer —
- * but a parts table's functional description is several sentences long and the
- * author used `<br>` to keep sub-points apart, which must not collapse into one
- * run-on line.
+ * line breaks.
+ *
+ * Both table blocks use this — `table` as well as `parts-table`. The plain
+ * `table` block used to emit cells and captions as raw strings, which printed
+ * the data layer's `**raw**` markers literally; no page had ever put emphasis in
+ * a cell, so the two blocks had quietly drifted apart. Rendering both through
+ * the same helper keeps them identical, and for every existing page (no `**`, no
+ * `<br>` in any cell or caption) the output is unchanged.
  */
 function renderTableCell(cell: string): ReactNode {
   if (!cell.includes("<br")) return renderInlineFormatting(cell);
@@ -486,12 +490,14 @@ function RouteBlock({
           tabIndex={0}
         >
           <table className="wiki-table">
-            {block.caption ? <caption>{block.caption}</caption> : null}
+            {block.caption ? (
+              <caption>{renderInlineFormatting(block.caption)}</caption>
+            ) : null}
             <thead>
               <tr>
                 {block.headers.map((header) => (
                   <th scope="col" key={header}>
-                    {header}
+                    {renderInlineFormatting(header)}
                   </th>
                 ))}
               </tr>
@@ -502,10 +508,12 @@ function RouteBlock({
                   {row.map((cell, cellIndex) =>
                     cellIndex === 0 ? (
                       <th scope="row" key={`${rowIndex}-${cellIndex}`}>
-                        {cell}
+                        {renderTableCell(cell)}
                       </th>
                     ) : (
-                      <td key={`${rowIndex}-${cellIndex}`}>{cell}</td>
+                      <td key={`${rowIndex}-${cellIndex}`}>
+                        {renderTableCell(cell)}
+                      </td>
                     ),
                   )}
                 </tr>
@@ -524,12 +532,14 @@ function RouteBlock({
           tabIndex={0}
         >
           <table className="wiki-table wiki-table--parts">
-            {block.caption ? <caption>{block.caption}</caption> : null}
+            {block.caption ? (
+              <caption>{renderInlineFormatting(block.caption)}</caption>
+            ) : null}
             <thead>
               <tr>
                 {block.headers.map((header) => (
                   <th scope="col" key={header}>
-                    {header}
+                    {renderInlineFormatting(header)}
                   </th>
                 ))}
               </tr>

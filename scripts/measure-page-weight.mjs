@@ -28,6 +28,7 @@ writeFileSync(
   `import { renderToStaticMarkup } from "react-dom/server";
 import { MemoryRouter } from "react-router-dom";
 import { descriptionFeatures } from "../src/components/wiki/features/project/DescriptionPanels";
+import { resultsFeatures } from "../src/components/wiki/features/project/ResultsPanels";
 import { designFeatures } from "../src/components/wiki/features/wet-lab/DesignPanels";
 import { hardwareFeatures } from "../src/components/wiki/features/drylab/HardwarePanels";
 import { buildSequenceRows } from "../src/components/wiki/features/wet-lab/constructGeometry";
@@ -60,6 +61,9 @@ function sequenceNodes(metrics: { advance: number; basesPerRow: number; lineHeig
 export const report = {
   description: Object.fromEntries(
     Object.entries(descriptionFeatures()).map(([key, node]) => [key, render(node)]),
+  ),
+  results: Object.fromEntries(
+    Object.entries(resultsFeatures()).map(([key, node]) => [key, render(node)]),
   ),
   design: Object.fromEntries(
     Object.entries(designFeatures()).map(([key, node]) => [key, render(node)]),

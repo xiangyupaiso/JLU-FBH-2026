@@ -99,7 +99,7 @@ function inferCategory(filePath) {
   if (normalized.includes("wetlab") || normalized.includes("wet-lab")) return "wet-lab";
   if (normalized.includes("drylab") || normalized.includes("dry-lab")) return "dry-lab";
   if (normalized.includes("engagement") || normalized.includes("human-practices") || normalized.includes("sustainability") || normalized.includes("/hp/")) return "engagement";
-  if (normalized.includes("project") || normalized.includes("description") || normalized.includes("design") || normalized.includes("engineering")) return "project";
+  if (normalized.includes("project") || normalized.includes("description") || normalized.includes("design") || normalized.includes("engineering") || normalized.includes("/wiki/results/")) return "project";
   if (normalized.includes("team") || normalized.includes("members") || normalized.includes("roster")) return "team";
   if (normalized.includes("home") || normalized.includes("story")) return "home";
   if (normalized.includes("game") || normalized.includes("virtual-lab")) return "game";

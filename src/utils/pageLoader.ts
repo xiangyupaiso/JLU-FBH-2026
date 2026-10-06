@@ -4,12 +4,12 @@
  * The loader is plain HTML/CSS so it paints before the app bundle arrives.
  * This module only decides WHEN it leaves: as soon as the current route is
  * actually presentable and the loader's entrance has finished. Readiness
- * includes deferred styles, fonts and decoded first-viewport images.
+ * includes the selected route's styles, fonts, all decoded images and the
+ * first renderable frame of autoplay media used by its animations.
  */
 
 const LEAVE_MS = 380; // matches `.page-loader` opacity transition
 const COMPLETE_HOLD_MS = 350; // let the finished illustration register
-const MAX_WAIT_MS = 8000; // a stalled image must never trap the reader
 
 let token = 0;
 let leaveTimer = 0;
@@ -92,20 +92,12 @@ export function hidePageLoaderWhenReady() {
   readiness?.abort();
   readiness = new AbortController();
   const { signal } = readiness;
-  let timeout = 0;
-
   const ready = Promise.all([
     openingComplete(loader, signal),
-    Promise.race([
-      pageReady(signal),
-      new Promise<void>((resolve) => {
-        timeout = window.setTimeout(resolve, MAX_WAIT_MS);
-      }),
-    ]),
+    pageReady(signal),
   ]);
 
   void ready.then(() => {
-    window.clearTimeout(timeout);
     if (current !== token || signal.aborted || !isVisible(loader)) return;
     leaving = true;
     loader.classList.add("is-leaving");
@@ -120,14 +112,14 @@ export function hidePageLoaderWhenReady() {
 }
 
 async function pageReady(signal: AbortSignal) {
-  // Let the new route commit and lay out before measuring the first viewport.
+  // Let the selected route's effects initialize its animation DOM first.
   await new Promise((resolve) =>
     requestAnimationFrame(() => requestAnimationFrame(resolve)),
   );
   if (signal.aborted) return;
   await deferredStyles();
   if (signal.aborted) return;
-  await Promise.all([document.fonts?.ready, firstViewportImages(signal)]);
+  await Promise.all([document.fonts?.ready, pageImagesAndAnimations(signal)]);
 }
 
 /** The app stylesheet is loaded non-blocking (see vite.config.ts). */
@@ -148,42 +140,6 @@ function deferredStyles() {
 
 const URL_PATTERN = /url\(["']?([^"')]+)["']?\)/g;
 
-/**
- * Art that is fully transparent right now (scroll-revealed Home orbits, the
- * portrait behind the intro darkness) keeps loading in the background but
- * must not hold the loader.
- */
-function isShown(
-  element: Element,
-  visibility: WeakMap<Element, boolean>,
-): boolean {
-  const cached = visibility.get(element);
-  if (cached !== undefined) return cached;
-  const style = getComputedStyle(element);
-  const shown =
-    style.opacity !== "0" &&
-    style.visibility !== "hidden" &&
-    (!element.parentElement || isShown(element.parentElement, visibility));
-  visibility.set(element, shown);
-  return shown;
-}
-
-function inFirstViewport(
-  element: Element,
-  visibility: WeakMap<Element, boolean>,
-) {
-  const rect = element.getBoundingClientRect();
-  return (
-    rect.width > 0 &&
-    rect.height > 0 &&
-    rect.bottom > 0 &&
-    rect.right > 0 &&
-    rect.top < window.innerHeight &&
-    rect.left < window.innerWidth &&
-    isShown(element, visibility)
-  );
-}
-
 async function waitForImage(image: HTMLImageElement) {
   if (image.decode) return image.decode().catch(() => {});
   if (image.complete) return;
@@ -193,30 +149,60 @@ async function waitForImage(image: HTMLImageElement) {
   });
 }
 
-async function firstViewportImages(signal: AbortSignal): Promise<void> {
+async function waitForAnimation(video: HTMLVideoElement, signal: AbortSignal) {
+  if (video.readyState >= HTMLMediaElement.HAVE_CURRENT_DATA || video.error)
+    return;
+  if (!video.currentSrc && !video.src && !video.querySelector("source[src]"))
+    return;
+  await new Promise<void>((resolve) => {
+    const done = () => {
+      video.removeEventListener("loadeddata", done);
+      video.removeEventListener("error", done);
+      signal.removeEventListener("abort", done);
+      resolve();
+    };
+    video.addEventListener("loadeddata", done, { once: true });
+    video.addEventListener("error", done, { once: true });
+    signal.addEventListener("abort", done, { once: true });
+    video.preload = "auto";
+  });
+}
+
+async function pageImagesAndAnimations(signal: AbortSignal): Promise<void> {
   const root = document.getElementById("root");
   if (!root) return;
   const pending: Promise<void>[] = [];
   const seen = new Set<string>();
-  const visibility = new WeakMap<Element, boolean>();
   let count = 0;
+  const preload = (url: string) => {
+    if (!url || seen.has(url)) return;
+    seen.add(url);
+    const image = new Image();
+    image.src = url;
+    pending.push(waitForImage(image));
+  };
 
   // Route heroes and home scenes paint their art as CSS backgrounds.
   for (const element of root.querySelectorAll<HTMLElement>("*")) {
     if (signal.aborted) return;
     // Yield during large routes instead of blocking the loader's drawing.
     if (++count % 120 === 0) await new Promise(requestAnimationFrame);
-    if (!inFirstViewport(element, visibility)) continue;
-    if (element instanceof HTMLImageElement)
+    // Offscreen and initially transparent animation layers belong to this
+    // page too. Eager loading avoids waiting forever on a lazy image's decode.
+    if (element instanceof HTMLImageElement) {
+      element.loading = "eager";
       pending.push(waitForImage(element));
-    const background = getComputedStyle(element).backgroundImage;
-    if (!background.includes("url(")) continue;
-    for (const [, url] of background.matchAll(URL_PATTERN)) {
-      if (seen.has(url)) continue;
-      seen.add(url);
-      const image = new Image();
-      image.src = url;
-      pending.push(waitForImage(image));
+    }
+    if (element instanceof SVGImageElement) preload(element.href.baseVal);
+    if (element instanceof HTMLVideoElement) {
+      preload(element.poster);
+      if (element.autoplay) pending.push(waitForAnimation(element, signal));
+    }
+    for (const pseudo of [null, "::before", "::after"]) {
+      const style = getComputedStyle(element, pseudo);
+      for (const value of [style.backgroundImage, style.maskImage]) {
+        for (const [, url] of value.matchAll(URL_PATTERN)) preload(url);
+      }
     }
   }
 

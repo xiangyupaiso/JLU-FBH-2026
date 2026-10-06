@@ -6,9 +6,9 @@
 ## 一、资产库统计
 
 - **队伍编号 (Team ID)**: 6056 (JLU-FBH)
-- **统计时间戳**: 2026-10-05T14:17:45.610Z
-- **总资产数量**: 2061
-- **🟢 在用资产 (in-use)**: 1542 *(代码/文案中正被引用)*
+- **统计时间戳**: 2026-10-06T08:50:15.724Z
+- **总资产数量**: 2112
+- **🟢 在用资产 (in-use)**: 1593 *(代码/文案中正被引用)*
 - **🟡 备用资产 (standby)**: 487 *(已就绪或已上传，保留供后续页面选用)*
 - **⚪ 弃用资产 (deprecated)**: 32 *(已从本地删除或已弃用)*
 
@@ -16,7 +16,7 @@
 
 | 类型 | 标识 | 说明 | 数量 |
 | :--- | :---: | :--- | :---: |
-| `image` | 🖼️ 图片/图表 (PNG, JPG, WebP, SVG) | 静态资源 | 1978 |
+| `image` | 🖼️ 图片/图表 (PNG, JPG, WebP, SVG) | 静态资源 | 2029 |
 | `font` | 🔤 Web 字体 (woff2, woff, ttf) | 静态资源 | 28 |
 | `structure` | 🧬 3D 分子/生物结构 (pdb, cif, pse) | 静态资源 | 3 |
 | `pdf` | 📄 PDF 文档/手册/报告 | 静态资源 | 46 |
@@ -1338,6 +1338,57 @@
 | 🟢 在用 | `image` | `game` | **ReagentCarboyPouring.png**<br><sub>`reagentcarboypouring-png`</sub> | `public/virtual-lab/images/experiment3/ReagentCarboyPouring.png` | 589.4 | [CDN 链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/reagentcarboypouring.avif) | 1 | Referenced in 1 location(s) |
 | 🟢 在用 | `image` | `game` | **recombinant-plasmid.png**<br><sub>`recombinant-plasmid-png`</sub> | `public/virtual-lab/images/experiment8/sidebar/recombinant-plasmid.png` | 4.0 | [CDN 链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment8/sidebar/recombinant-plasmid.avif) | 1 | Referenced in 1 location(s) |
 | 🟢 在用 | `image` | `game` | **red-gel.png**<br><sub>`red-gel-png`</sub> | `public/virtual-lab/experiment4_lab/assets/ppt/red-gel.png` | 330.0 | [CDN 链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment4/ppt/red-gel.avif) | 2 | Referenced in 2 location(s) |
+| 🟢 在用 | `image` | `project` | **results-fig01-round1-elispot-wells.webp**<br><sub>`results-fig01-round1-elispot-wells-webp`</sub> | `src/assets/wiki/results/results-fig01-round1-elispot-wells.webp` | 64.9 | *待上传* | 3 | Referenced in 3 location(s) |
+| 🟢 在用 | `image` | `project` | **results-fig02-round1-k562-killing.webp**<br><sub>`results-fig02-round1-k562-killing-webp`</sub> | `src/assets/wiki/results/results-fig02-round1-k562-killing.webp` | 62.6 | *待上传* | 3 | Referenced in 3 location(s) |
+| 🟢 在用 | `image` | `project` | **results-fig03-round1-cd8-cd69-flow.webp**<br><sub>`results-fig03-round1-cd8-cd69-flow-webp`</sub> | `src/assets/wiki/results/results-fig03-round1-cd8-cd69-flow.webp` | 145.9 | *待上传* | 3 | Referenced in 3 location(s) |
+| 🟢 在用 | `image` | `project` | **results-fig04-combined-plasmid-map.webp**<br><sub>`results-fig04-combined-plasmid-map-webp`</sub> | `src/assets/wiki/results/results-fig04-combined-plasmid-map.webp` | 218.5 | *待上传* | 3 | Referenced in 3 location(s) |
+| 🟢 在用 | `image` | `project` | **results-fig05-template-linearisation-gel.webp**<br><sub>`results-fig05-template-linearisation-gel-webp`</sub> | `src/assets/wiki/results/results-fig05-template-linearisation-gel.webp` | 15.5 | *待上传* | 3 | Referenced in 3 location(s) |
+| 🟢 在用 | `image` | `project` | **results-fig06-back-splice-junction-sanger.webp**<br><sub>`results-fig06-back-splice-junction-sanger-webp`</sub> | `src/assets/wiki/results/results-fig06-back-splice-junction-sanger.webp` | 26.1 | *待上传* | 3 | Referenced in 3 location(s) |
+| 🟢 在用 | `image` | `project` | **results-fig07-dc-maturation-flow.webp**<br><sub>`results-fig07-dc-maturation-flow-webp`</sub> | `src/assets/wiki/results/results-fig07-dc-maturation-flow.webp` | 36.9 | *待上传* | 3 | Referenced in 3 location(s) |
+| 🟢 在用 | `image` | `project` | **results-fig08-dc-maturation-quantification.webp**<br><sub>`results-fig08-dc-maturation-quantification-webp`</sub> | `src/assets/wiki/results/results-fig08-dc-maturation-quantification.webp` | 11.5 | *待上传* | 3 | Referenced in 3 location(s) |
+| 🟢 在用 | `image` | `project` | **results-fig09-anti-flag-western-blot.webp**<br><sub>`results-fig09-anti-flag-western-blot-webp`</sub> | `src/assets/wiki/results/results-fig09-anti-flag-western-blot.webp` | 18.2 | *待上传* | 3 | Referenced in 3 location(s) |
+| 🟢 在用 | `image` | `project` | **results-fig10-cd8-cd69-flow.webp**<br><sub>`results-fig10-cd8-cd69-flow-webp`</sub> | `src/assets/wiki/results/results-fig10-cd8-cd69-flow.webp` | 56.5 | *待上传* | 3 | Referenced in 3 location(s) |
+| 🟢 在用 | `image` | `project` | **results-fig11-cd8-cd69-quantification.webp**<br><sub>`results-fig11-cd8-cd69-quantification-webp`</sub> | `src/assets/wiki/results/results-fig11-cd8-cd69-quantification.webp` | 11.3 | *待上传* | 3 | Referenced in 3 location(s) |
+| 🟢 在用 | `image` | `project` | **results-fig12-cd8-cd28-flow.webp**<br><sub>`results-fig12-cd8-cd28-flow-webp`</sub> | `src/assets/wiki/results/results-fig12-cd8-cd28-flow.webp` | 77.0 | *待上传* | 3 | Referenced in 3 location(s) |
+| 🟢 在用 | `image` | `project` | **results-fig13-cd8-cd28-quantification.webp**<br><sub>`results-fig13-cd8-cd28-quantification-webp`</sub> | `src/assets/wiki/results/results-fig13-cd8-cd28-quantification.webp` | 11.0 | *待上传* | 3 | Referenced in 3 location(s) |
+| 🟢 在用 | `image` | `project` | **results-fig14-effector-memory-flow.webp**<br><sub>`results-fig14-effector-memory-flow-webp`</sub> | `src/assets/wiki/results/results-fig14-effector-memory-flow.webp` | 44.1 | *待上传* | 3 | Referenced in 3 location(s) |
+| 🟢 在用 | `image` | `project` | **results-fig15-effector-memory-quantification.webp**<br><sub>`results-fig15-effector-memory-quantification-webp`</sub> | `src/assets/wiki/results/results-fig15-effector-memory-quantification.webp` | 15.4 | *待上传* | 3 | Referenced in 3 location(s) |
+| 🟢 在用 | `image` | `project` | **results-fig16-round2-elispot-wells.webp**<br><sub>`results-fig16-round2-elispot-wells-webp`</sub> | `src/assets/wiki/results/results-fig16-round2-elispot-wells.webp` | 54.7 | *待上传* | 3 | Referenced in 3 location(s) |
+| 🟢 在用 | `image` | `project` | **results-fig17-mda-mb-231-killing.webp**<br><sub>`results-fig17-mda-mb-231-killing-webp`</sub> | `src/assets/wiki/results/results-fig17-mda-mb-231-killing.webp` | 40.0 | *待上传* | 3 | Referenced in 3 location(s) |
+| 🟢 在用 | `image` | `project` | **results-fig18a-stability-gel.webp**<br><sub>`results-fig18a-stability-gel-webp`</sub> | `src/assets/wiki/results/results-fig18a-stability-gel.webp` | 45.7 | *待上传* | 3 | Referenced in 3 location(s) |
+| 🟢 在用 | `image` | `project` | **results-fig18b-rna-remaining-curve.webp**<br><sub>`results-fig18b-rna-remaining-curve-webp`</sub> | `src/assets/wiki/results/results-fig18b-rna-remaining-curve.webp` | 37.1 | *待上传* | 3 | Referenced in 3 location(s) |
+| 🟢 在用 | `image` | `project` | **results-fig19-off-target-cytotoxicity.webp**<br><sub>`results-fig19-off-target-cytotoxicity-webp`</sub> | `src/assets/wiki/results/results-fig19-off-target-cytotoxicity.webp` | 20.7 | *待上传* | 3 | Referenced in 3 location(s) |
+| 🟢 在用 | `image` | `project` | **results-fig20-lnp-dose-viability.webp**<br><sub>`results-fig20-lnp-dose-viability-webp`</sub> | `src/assets/wiki/results/results-fig20-lnp-dose-viability.webp` | 10.5 | *待上传* | 3 | Referenced in 3 location(s) |
+| 🟢 在用 | `image` | `project` | **results-fig21-lentiviral-plasmid-map.webp**<br><sub>`results-fig21-lentiviral-plasmid-map-webp`</sub> | `src/assets/wiki/results/results-fig21-lentiviral-plasmid-map.webp` | 193.5 | *待上传* | 3 | Referenced in 3 location(s) |
+| 🟢 在用 | `image` | `project` | **results-fig22-gfp-transduction-microscopy.webp**<br><sub>`results-fig22-gfp-transduction-microscopy-webp`</sub> | `src/assets/wiki/results/results-fig22-gfp-transduction-microscopy.webp` | 61.7 | *待上传* | 3 | Referenced in 3 location(s) |
+| 🟢 在用 | `image` | `project` | **results-fig23a-sort-gate-fsc-ssc.webp**<br><sub>`results-fig23a-sort-gate-fsc-ssc-webp`</sub> | `src/assets/wiki/results/results-fig23a-sort-gate-fsc-ssc.webp` | 47.6 | *待上传* | 3 | Referenced in 3 location(s) |
+| 🟢 在用 | `image` | `project` | **results-fig23b-sort-gate-singlets.webp**<br><sub>`results-fig23b-sort-gate-singlets-webp`</sub> | `src/assets/wiki/results/results-fig23b-sort-gate-singlets.webp` | 18.9 | *待上传* | 3 | Referenced in 3 location(s) |
+| 🟢 在用 | `image` | `project` | **results-fig23c-sort-gate-gfp.webp**<br><sub>`results-fig23c-sort-gate-gfp-webp`</sub> | `src/assets/wiki/results/results-fig23c-sort-gate-gfp.webp` | 47.4 | *待上传* | 3 | Referenced in 3 location(s) |
+| 🟢 在用 | `image` | `project` | **results-fig24-trop2-mrna-rt-pcr.webp**<br><sub>`results-fig24-trop2-mrna-rt-pcr-webp`</sub> | `src/assets/wiki/results/results-fig24-trop2-mrna-rt-pcr.webp` | 13.7 | *待上传* | 3 | Referenced in 3 location(s) |
+| 🟢 在用 | `image` | `project` | **results-fig25-surface-trop2-flow.webp**<br><sub>`results-fig25-surface-trop2-flow-webp`</sub> | `src/assets/wiki/results/results-fig25-surface-trop2-flow.webp` | 63.1 | *待上传* | 3 | Referenced in 3 location(s) |
+| 🟢 在用 | `image` | `project` | **results-fig26-excised-tumours.webp**<br><sub>`results-fig26-excised-tumours-webp`</sub> | `src/assets/wiki/results/results-fig26-excised-tumours.webp` | 18.6 | *待上传* | 3 | Referenced in 3 location(s) |
+| 🟢 在用 | `image` | `project` | **results-fig27-immunisation-scheme.webp**<br><sub>`results-fig27-immunisation-scheme-webp`</sub> | `src/assets/wiki/results/results-fig27-immunisation-scheme.webp` | 74.8 | *待上传* | 3 | Referenced in 3 location(s) |
+| 🟢 在用 | `image` | `project` | **results-fig28-tumour-growth-curves.webp**<br><sub>`results-fig28-tumour-growth-curves-webp`</sub> | `src/assets/wiki/results/results-fig28-tumour-growth-curves.webp` | 12.0 | *待上传* | 3 | Referenced in 3 location(s) |
+| 🟢 在用 | `image` | `project` | **results-fig29-cd8-granzyme-b-immunofluorescence.webp**<br><sub>`results-fig29-cd8-granzyme-b-immunofluorescence-webp`</sub> | `src/assets/wiki/results/results-fig29-cd8-granzyme-b-immunofluorescence.webp` | 31.7 | *待上传* | 3 | Referenced in 3 location(s) |
+| 🟢 在用 | `image` | `project` | **results-fig30-splenic-dc-maturation.webp**<br><sub>`results-fig30-splenic-dc-maturation-webp`</sub> | `src/assets/wiki/results/results-fig30-splenic-dc-maturation.webp` | 60.0 | *待上传* | 3 | Referenced in 3 location(s) |
+| 🟢 在用 | `image` | `project` | **results-fig31-splenic-cd69-activation.webp**<br><sub>`results-fig31-splenic-cd69-activation-webp`</sub> | `src/assets/wiki/results/results-fig31-splenic-cd69-activation.webp` | 41.4 | *待上传* | 3 | Referenced in 3 location(s) |
+| 🟢 在用 | `image` | `project` | **results-fig32-splenic-central-memory.webp**<br><sub>`results-fig32-splenic-central-memory-webp`</sub> | `src/assets/wiki/results/results-fig32-splenic-central-memory.webp` | 41.4 | *待上传* | 3 | Referenced in 3 location(s) |
+| 🟢 在用 | `image` | `project` | **results-fig33-splenic-ifn-gamma.webp**<br><sub>`results-fig33-splenic-ifn-gamma-webp`</sub> | `src/assets/wiki/results/results-fig33-splenic-ifn-gamma.webp` | 37.4 | *待上传* | 3 | Referenced in 3 location(s) |
+| 🟢 在用 | `image` | `project` | **results-fig34-splenic-granzyme-b.webp**<br><sub>`results-fig34-splenic-granzyme-b-webp`</sub> | `src/assets/wiki/results/results-fig34-splenic-granzyme-b.webp` | 37.3 | *待上传* | 3 | Referenced in 3 location(s) |
+| 🟢 在用 | `image` | `project` | **results-ihc-panel-1.webp**<br><sub>`results-ihc-panel-1-webp`</sub> | `src/assets/wiki/results/results-ihc-panel-1.webp` | 33.0 | *待上传* | 3 | Referenced in 3 location(s) |
+| 🟢 在用 | `image` | `project` | **results-ihc-panel-2.webp**<br><sub>`results-ihc-panel-2-webp`</sub> | `src/assets/wiki/results/results-ihc-panel-2.webp` | 35.3 | *待上传* | 3 | Referenced in 3 location(s) |
+| 🟢 在用 | `image` | `project` | **results-ihc-panel-3.webp**<br><sub>`results-ihc-panel-3-webp`</sub> | `src/assets/wiki/results/results-ihc-panel-3.webp` | 55.7 | *待上传* | 3 | Referenced in 3 location(s) |
+| 🟢 在用 | `image` | `project` | **results-ihc-panel-4.webp**<br><sub>`results-ihc-panel-4-webp`</sub> | `src/assets/wiki/results/results-ihc-panel-4.webp` | 38.0 | *待上传* | 3 | Referenced in 3 location(s) |
+| 🟢 在用 | `image` | `project` | **results-proteomics-pxd024322-abundance.webp**<br><sub>`results-proteomics-pxd024322-abundance-webp`</sub> | `src/assets/wiki/results/results-proteomics-pxd024322-abundance.webp` | 22.6 | *待上传* | 3 | Referenced in 3 location(s) |
+| 🟢 在用 | `image` | `project` | **results-proteomics-pxd024322-volcano.webp**<br><sub>`results-proteomics-pxd024322-volcano-webp`</sub> | `src/assets/wiki/results/results-proteomics-pxd024322-volcano.webp` | 30.4 | *待上传* | 3 | Referenced in 3 location(s) |
+| 🟢 在用 | `image` | `project` | **results-proteomics-pxd028102-abundance.webp**<br><sub>`results-proteomics-pxd028102-abundance-webp`</sub> | `src/assets/wiki/results/results-proteomics-pxd028102-abundance.webp` | 17.0 | *待上传* | 3 | Referenced in 3 location(s) |
+| 🟢 在用 | `image` | `project` | **results-proteomics-pxd028102-volcano.webp**<br><sub>`results-proteomics-pxd028102-volcano-webp`</sub> | `src/assets/wiki/results/results-proteomics-pxd028102-volcano.webp` | 42.6 | *待上传* | 3 | Referenced in 3 location(s) |
+| 🟢 在用 | `image` | `project` | **results-singlecell-celltype-umap.webp**<br><sub>`results-singlecell-celltype-umap-webp`</sub> | `src/assets/wiki/results/results-singlecell-celltype-umap.webp` | 38.1 | *待上传* | 3 | Referenced in 3 location(s) |
+| 🟢 在用 | `image` | `project` | **results-singlecell-malignant-detection.webp**<br><sub>`results-singlecell-malignant-detection-webp`</sub> | `src/assets/wiki/results/results-singlecell-malignant-detection.webp` | 30.3 | *待上传* | 3 | Referenced in 3 location(s) |
+| 🟢 在用 | `image` | `project` | **results-structural-anchor-burial-by-peptide.webp**<br><sub>`results-structural-anchor-burial-by-peptide-webp`</sub> | `src/assets/wiki/results/results-structural-anchor-burial-by-peptide.webp` | 20.5 | *待上传* | 3 | Referenced in 3 location(s) |
+| 🟢 在用 | `image` | `project` | **results-structural-burial-fill-by-peptide.webp**<br><sub>`results-structural-burial-fill-by-peptide-webp`</sub> | `src/assets/wiki/results/results-structural-burial-fill-by-peptide.webp` | 29.9 | *待上传* | 3 | Referenced in 3 location(s) |
+| 🟢 在用 | `image` | `project` | **results-structural-burial-vs-fill-scatter.webp**<br><sub>`results-structural-burial-vs-fill-scatter-webp`</sub> | `src/assets/wiki/results/results-structural-burial-vs-fill-scatter.webp` | 19.9 | *待上传* | 3 | Referenced in 3 location(s) |
+| 🟢 在用 | `image` | `project` | **results-structural-p2-p9-burial-heatmap.webp**<br><sub>`results-structural-p2-p9-burial-heatmap-webp`</sub> | `src/assets/wiki/results/results-structural-p2-p9-burial-heatmap.webp` | 27.3 | *待上传* | 3 | Referenced in 3 location(s) |
 | 🟢 在用 | `image` | `shared` | **ribbon.png**<br><sub>`ribbon-png`</sub> | `src/assets/loading/ribbon.png` | 504.5 | [CDN 链接](https://static.igem.wiki/teams/6056/wiki/files/pages/shared/ribbon.avif) | 1 | Referenced in 1 location(s) |
 | 🟢 在用 | `image` | `shared` | **ribbon.webp**<br><sub>`ribbon-webp`</sub> | `src/assets/loading/ribbon.webp` | 53.7 | [CDN 链接](https://static.igem.wiki/teams/6056/wiki/files/pages/shared/ribbon.webp) | 1 | Referenced in 1 location(s) |
 | 🟢 在用 | `image` | `game` | **safranin.png**<br><sub>`safranin-png`</sub> | `public/virtual-lab/images/experiment2/sidebar/safranin.png` | 1645.6 | [CDN 链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment2/sidebar/safranin.avif) | 1 | Referenced in 1 location(s) |

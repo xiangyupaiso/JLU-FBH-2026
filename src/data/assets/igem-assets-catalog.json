@@ -3,14 +3,14 @@
     "teamId": "6056",
     "teamName": "JLU-FBH",
     "year": 2026,
-    "lastUpdated": "2026-10-05T14:17:45.610Z",
+    "lastUpdated": "2026-10-06T08:50:15.724Z",
     "stats": {
-      "total": 2061,
-      "inUse": 1542,
+      "total": 2112,
+      "inUse": 1593,
       "standby": 487,
       "deprecated": 32,
       "byKind": {
-        "image": 1978,
+        "image": 2029,
         "font": 28,
         "structure": 3,
         "pdf": 46,
@@ -99323,6 +99323,1893 @@
           "line": 35,
           "text": "[实验室规范安全白皮书\\.pdf](图片和附件/实验室规范安全白皮书.pdf)",
           "type": "markdown-link"
+        }
+      ],
+      "notes": "Referenced in 3 location(s)"
+    },
+    "results-fig01-round1-elispot-wells-webp": {
+      "id": "results-fig01-round1-elispot-wells-webp",
+      "kind": "image",
+      "fileName": "results-fig01-round1-elispot-wells.webp",
+      "category": "project",
+      "localPath": "src/assets/wiki/results/results-fig01-round1-elispot-wells.webp",
+      "md5": "558914997c4edc12fcf50f65fc8913cc",
+      "fileSize": 66450,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "results-fig01-round1-elispot-wells",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 28,
+          "text": "import fig01 from \"../../assets/wiki/results/results-fig01-round1-elispot-wells.webp\";",
+          "type": "import"
+        },
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 243,
+          "text": "fileName: \"results-fig01-round1-elispot-wells.webp\",",
+          "type": "mention"
+        },
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 245,
+          "text": "\"src/assets/wiki/results/results-fig01-round1-elispot-wells.webp\",",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 3 location(s)"
+    },
+    "results-fig02-round1-k562-killing-webp": {
+      "id": "results-fig02-round1-k562-killing-webp",
+      "kind": "image",
+      "fileName": "results-fig02-round1-k562-killing.webp",
+      "category": "project",
+      "localPath": "src/assets/wiki/results/results-fig02-round1-k562-killing.webp",
+      "md5": "bbd7cb2c67125fead29ece3a24fad13c",
+      "fileSize": 64126,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "results-fig02-round1-k562-killing",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 29,
+          "text": "import fig02 from \"../../assets/wiki/results/results-fig02-round1-k562-killing.webp\";",
+          "type": "import"
+        },
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 254,
+          "text": "fileName: \"results-fig02-round1-k562-killing.webp\",",
+          "type": "mention"
+        },
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 256,
+          "text": "\"src/assets/wiki/results/results-fig02-round1-k562-killing.webp\",",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 3 location(s)"
+    },
+    "results-fig03-round1-cd8-cd69-flow-webp": {
+      "id": "results-fig03-round1-cd8-cd69-flow-webp",
+      "kind": "image",
+      "fileName": "results-fig03-round1-cd8-cd69-flow.webp",
+      "category": "project",
+      "localPath": "src/assets/wiki/results/results-fig03-round1-cd8-cd69-flow.webp",
+      "md5": "2421c3614a2906db1cb9ff2436e52616",
+      "fileSize": 149358,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "results-fig03-round1-cd8-cd69-flow",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 30,
+          "text": "import fig03 from \"../../assets/wiki/results/results-fig03-round1-cd8-cd69-flow.webp\";",
+          "type": "import"
+        },
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 265,
+          "text": "fileName: \"results-fig03-round1-cd8-cd69-flow.webp\",",
+          "type": "mention"
+        },
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 267,
+          "text": "\"src/assets/wiki/results/results-fig03-round1-cd8-cd69-flow.webp\",",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 3 location(s)"
+    },
+    "results-fig04-combined-plasmid-map-webp": {
+      "id": "results-fig04-combined-plasmid-map-webp",
+      "kind": "image",
+      "fileName": "results-fig04-combined-plasmid-map.webp",
+      "category": "project",
+      "localPath": "src/assets/wiki/results/results-fig04-combined-plasmid-map.webp",
+      "md5": "ff046ff7dace18b36e1f5cce4079f52d",
+      "fileSize": 223750,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "results-fig04-combined-plasmid-map",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 31,
+          "text": "import fig04 from \"../../assets/wiki/results/results-fig04-combined-plasmid-map.webp\";",
+          "type": "import"
+        },
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 277,
+          "text": "fileName: \"results-fig04-combined-plasmid-map.webp\",",
+          "type": "mention"
+        },
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 279,
+          "text": "\"src/assets/wiki/results/results-fig04-combined-plasmid-map.webp\",",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 3 location(s)"
+    },
+    "results-fig05-template-linearisation-gel-webp": {
+      "id": "results-fig05-template-linearisation-gel-webp",
+      "kind": "image",
+      "fileName": "results-fig05-template-linearisation-gel.webp",
+      "category": "project",
+      "localPath": "src/assets/wiki/results/results-fig05-template-linearisation-gel.webp",
+      "md5": "d838b51434efc05bc33919505ef423d3",
+      "fileSize": 15916,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "results-fig05-template-linearisation-gel",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 32,
+          "text": "import fig05 from \"../../assets/wiki/results/results-fig05-template-linearisation-gel.webp\";",
+          "type": "import"
+        },
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 288,
+          "text": "fileName: \"results-fig05-template-linearisation-gel.webp\",",
+          "type": "mention"
+        },
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 290,
+          "text": "\"src/assets/wiki/results/results-fig05-template-linearisation-gel.webp\",",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 3 location(s)"
+    },
+    "results-fig06-back-splice-junction-sanger-webp": {
+      "id": "results-fig06-back-splice-junction-sanger-webp",
+      "kind": "image",
+      "fileName": "results-fig06-back-splice-junction-sanger.webp",
+      "category": "project",
+      "localPath": "src/assets/wiki/results/results-fig06-back-splice-junction-sanger.webp",
+      "md5": "25553323143426fb94f1a39a309e1734",
+      "fileSize": 26756,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "results-fig06-back-splice-junction-sanger",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 33,
+          "text": "import fig06 from \"../../assets/wiki/results/results-fig06-back-splice-junction-sanger.webp\";",
+          "type": "import"
+        },
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 300,
+          "text": "fileName: \"results-fig06-back-splice-junction-sanger.webp\",",
+          "type": "mention"
+        },
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 302,
+          "text": "\"src/assets/wiki/results/results-fig06-back-splice-junction-sanger.webp\",",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 3 location(s)"
+    },
+    "results-fig07-dc-maturation-flow-webp": {
+      "id": "results-fig07-dc-maturation-flow-webp",
+      "kind": "image",
+      "fileName": "results-fig07-dc-maturation-flow.webp",
+      "category": "project",
+      "localPath": "src/assets/wiki/results/results-fig07-dc-maturation-flow.webp",
+      "md5": "104c8ff87b7f5af326fc316c0a7801d4",
+      "fileSize": 37812,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "results-fig07-dc-maturation-flow",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 34,
+          "text": "import fig07 from \"../../assets/wiki/results/results-fig07-dc-maturation-flow.webp\";",
+          "type": "import"
+        },
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 312,
+          "text": "fileName: \"results-fig07-dc-maturation-flow.webp\",",
+          "type": "mention"
+        },
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 314,
+          "text": "\"src/assets/wiki/results/results-fig07-dc-maturation-flow.webp\",",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 3 location(s)"
+    },
+    "results-fig08-dc-maturation-quantification-webp": {
+      "id": "results-fig08-dc-maturation-quantification-webp",
+      "kind": "image",
+      "fileName": "results-fig08-dc-maturation-quantification.webp",
+      "category": "project",
+      "localPath": "src/assets/wiki/results/results-fig08-dc-maturation-quantification.webp",
+      "md5": "6008250557527740ee0e1b6565de8163",
+      "fileSize": 11734,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "results-fig08-dc-maturation-quantification",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 35,
+          "text": "import fig08 from \"../../assets/wiki/results/results-fig08-dc-maturation-quantification.webp\";",
+          "type": "import"
+        },
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 323,
+          "text": "fileName: \"results-fig08-dc-maturation-quantification.webp\",",
+          "type": "mention"
+        },
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 325,
+          "text": "\"src/assets/wiki/results/results-fig08-dc-maturation-quantification.webp\",",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 3 location(s)"
+    },
+    "results-fig09-anti-flag-western-blot-webp": {
+      "id": "results-fig09-anti-flag-western-blot-webp",
+      "kind": "image",
+      "fileName": "results-fig09-anti-flag-western-blot.webp",
+      "category": "project",
+      "localPath": "src/assets/wiki/results/results-fig09-anti-flag-western-blot.webp",
+      "md5": "3d726594cba152ea1981e3785bc1d7dd",
+      "fileSize": 18604,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "results-fig09-anti-flag-western-blot",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 36,
+          "text": "import fig09 from \"../../assets/wiki/results/results-fig09-anti-flag-western-blot.webp\";",
+          "type": "import"
+        },
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 334,
+          "text": "fileName: \"results-fig09-anti-flag-western-blot.webp\",",
+          "type": "mention"
+        },
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 336,
+          "text": "\"src/assets/wiki/results/results-fig09-anti-flag-western-blot.webp\",",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 3 location(s)"
+    },
+    "results-fig10-cd8-cd69-flow-webp": {
+      "id": "results-fig10-cd8-cd69-flow-webp",
+      "kind": "image",
+      "fileName": "results-fig10-cd8-cd69-flow.webp",
+      "category": "project",
+      "localPath": "src/assets/wiki/results/results-fig10-cd8-cd69-flow.webp",
+      "md5": "7cb4f459322ca8943c927bdd7aaf1790",
+      "fileSize": 57872,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "results-fig10-cd8-cd69-flow",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 37,
+          "text": "import fig10 from \"../../assets/wiki/results/results-fig10-cd8-cd69-flow.webp\";",
+          "type": "import"
+        },
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 345,
+          "text": "fileName: \"results-fig10-cd8-cd69-flow.webp\",",
+          "type": "mention"
+        },
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 346,
+          "text": "localSourcePath: \"src/assets/wiki/results/results-fig10-cd8-cd69-flow.webp\",",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 3 location(s)"
+    },
+    "results-fig11-cd8-cd69-quantification-webp": {
+      "id": "results-fig11-cd8-cd69-quantification-webp",
+      "kind": "image",
+      "fileName": "results-fig11-cd8-cd69-quantification.webp",
+      "category": "project",
+      "localPath": "src/assets/wiki/results/results-fig11-cd8-cd69-quantification.webp",
+      "md5": "d84724ad144037d1a97572644d2c96f4",
+      "fileSize": 11600,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "results-fig11-cd8-cd69-quantification",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 38,
+          "text": "import fig11 from \"../../assets/wiki/results/results-fig11-cd8-cd69-quantification.webp\";",
+          "type": "import"
+        },
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 355,
+          "text": "fileName: \"results-fig11-cd8-cd69-quantification.webp\",",
+          "type": "mention"
+        },
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 357,
+          "text": "\"src/assets/wiki/results/results-fig11-cd8-cd69-quantification.webp\",",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 3 location(s)"
+    },
+    "results-fig12-cd8-cd28-flow-webp": {
+      "id": "results-fig12-cd8-cd28-flow-webp",
+      "kind": "image",
+      "fileName": "results-fig12-cd8-cd28-flow.webp",
+      "category": "project",
+      "localPath": "src/assets/wiki/results/results-fig12-cd8-cd28-flow.webp",
+      "md5": "4b2b840d4fbf28ec0129bf13978dfb85",
+      "fileSize": 78800,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "results-fig12-cd8-cd28-flow",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 39,
+          "text": "import fig12 from \"../../assets/wiki/results/results-fig12-cd8-cd28-flow.webp\";",
+          "type": "import"
+        },
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 366,
+          "text": "fileName: \"results-fig12-cd8-cd28-flow.webp\",",
+          "type": "mention"
+        },
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 367,
+          "text": "localSourcePath: \"src/assets/wiki/results/results-fig12-cd8-cd28-flow.webp\",",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 3 location(s)"
+    },
+    "results-fig13-cd8-cd28-quantification-webp": {
+      "id": "results-fig13-cd8-cd28-quantification-webp",
+      "kind": "image",
+      "fileName": "results-fig13-cd8-cd28-quantification.webp",
+      "category": "project",
+      "localPath": "src/assets/wiki/results/results-fig13-cd8-cd28-quantification.webp",
+      "md5": "62801713c46cad87f4f099860a6b1504",
+      "fileSize": 11304,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "results-fig13-cd8-cd28-quantification",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 40,
+          "text": "import fig13 from \"../../assets/wiki/results/results-fig13-cd8-cd28-quantification.webp\";",
+          "type": "import"
+        },
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 376,
+          "text": "fileName: \"results-fig13-cd8-cd28-quantification.webp\",",
+          "type": "mention"
+        },
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 378,
+          "text": "\"src/assets/wiki/results/results-fig13-cd8-cd28-quantification.webp\",",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 3 location(s)"
+    },
+    "results-fig14-effector-memory-flow-webp": {
+      "id": "results-fig14-effector-memory-flow-webp",
+      "kind": "image",
+      "fileName": "results-fig14-effector-memory-flow.webp",
+      "category": "project",
+      "localPath": "src/assets/wiki/results/results-fig14-effector-memory-flow.webp",
+      "md5": "8441427c3e76d3e620c8fb678c037a76",
+      "fileSize": 45174,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "results-fig14-effector-memory-flow",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 41,
+          "text": "import fig14 from \"../../assets/wiki/results/results-fig14-effector-memory-flow.webp\";",
+          "type": "import"
+        },
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 387,
+          "text": "fileName: \"results-fig14-effector-memory-flow.webp\",",
+          "type": "mention"
+        },
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 389,
+          "text": "\"src/assets/wiki/results/results-fig14-effector-memory-flow.webp\",",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 3 location(s)"
+    },
+    "results-fig15-effector-memory-quantification-webp": {
+      "id": "results-fig15-effector-memory-quantification-webp",
+      "kind": "image",
+      "fileName": "results-fig15-effector-memory-quantification.webp",
+      "category": "project",
+      "localPath": "src/assets/wiki/results/results-fig15-effector-memory-quantification.webp",
+      "md5": "ea2e83330b2b0d7c75f2360254422dd3",
+      "fileSize": 15770,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "results-fig15-effector-memory-quantification",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 42,
+          "text": "import fig15 from \"../../assets/wiki/results/results-fig15-effector-memory-quantification.webp\";",
+          "type": "import"
+        },
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 398,
+          "text": "fileName: \"results-fig15-effector-memory-quantification.webp\",",
+          "type": "mention"
+        },
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 400,
+          "text": "\"src/assets/wiki/results/results-fig15-effector-memory-quantification.webp\",",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 3 location(s)"
+    },
+    "results-fig16-round2-elispot-wells-webp": {
+      "id": "results-fig16-round2-elispot-wells-webp",
+      "kind": "image",
+      "fileName": "results-fig16-round2-elispot-wells.webp",
+      "category": "project",
+      "localPath": "src/assets/wiki/results/results-fig16-round2-elispot-wells.webp",
+      "md5": "92dad517a54bd01167c2cbff190521e0",
+      "fileSize": 56042,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "results-fig16-round2-elispot-wells",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 43,
+          "text": "import fig16 from \"../../assets/wiki/results/results-fig16-round2-elispot-wells.webp\";",
+          "type": "import"
+        },
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 409,
+          "text": "fileName: \"results-fig16-round2-elispot-wells.webp\",",
+          "type": "mention"
+        },
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 411,
+          "text": "\"src/assets/wiki/results/results-fig16-round2-elispot-wells.webp\",",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 3 location(s)"
+    },
+    "results-fig17-mda-mb-231-killing-webp": {
+      "id": "results-fig17-mda-mb-231-killing-webp",
+      "kind": "image",
+      "fileName": "results-fig17-mda-mb-231-killing.webp",
+      "category": "project",
+      "localPath": "src/assets/wiki/results/results-fig17-mda-mb-231-killing.webp",
+      "md5": "5a19e6ef9ae85dcc09d6a0ad861b1471",
+      "fileSize": 40996,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "results-fig17-mda-mb-231-killing",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 44,
+          "text": "import fig17 from \"../../assets/wiki/results/results-fig17-mda-mb-231-killing.webp\";",
+          "type": "import"
+        },
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 420,
+          "text": "fileName: \"results-fig17-mda-mb-231-killing.webp\",",
+          "type": "mention"
+        },
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 422,
+          "text": "\"src/assets/wiki/results/results-fig17-mda-mb-231-killing.webp\",",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 3 location(s)"
+    },
+    "results-fig18a-stability-gel-webp": {
+      "id": "results-fig18a-stability-gel-webp",
+      "kind": "image",
+      "fileName": "results-fig18a-stability-gel.webp",
+      "category": "project",
+      "localPath": "src/assets/wiki/results/results-fig18a-stability-gel.webp",
+      "md5": "51c74b56428710c4ad41b2314b3ecd97",
+      "fileSize": 46784,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "results-fig18a-stability-gel",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 45,
+          "text": "import fig18a from \"../../assets/wiki/results/results-fig18a-stability-gel.webp\";",
+          "type": "import"
+        },
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 432,
+          "text": "fileName: \"results-fig18a-stability-gel.webp\",",
+          "type": "mention"
+        },
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 434,
+          "text": "\"src/assets/wiki/results/results-fig18a-stability-gel.webp\",",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 3 location(s)"
+    },
+    "results-fig18b-rna-remaining-curve-webp": {
+      "id": "results-fig18b-rna-remaining-curve-webp",
+      "kind": "image",
+      "fileName": "results-fig18b-rna-remaining-curve.webp",
+      "category": "project",
+      "localPath": "src/assets/wiki/results/results-fig18b-rna-remaining-curve.webp",
+      "md5": "68c02235ad6f842ee32fe042036108b1",
+      "fileSize": 38012,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "results-fig18b-rna-remaining-curve",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 46,
+          "text": "import fig18b from \"../../assets/wiki/results/results-fig18b-rna-remaining-curve.webp\";",
+          "type": "import"
+        },
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 444,
+          "text": "fileName: \"results-fig18b-rna-remaining-curve.webp\",",
+          "type": "mention"
+        },
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 446,
+          "text": "\"src/assets/wiki/results/results-fig18b-rna-remaining-curve.webp\",",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 3 location(s)"
+    },
+    "results-fig19-off-target-cytotoxicity-webp": {
+      "id": "results-fig19-off-target-cytotoxicity-webp",
+      "kind": "image",
+      "fileName": "results-fig19-off-target-cytotoxicity.webp",
+      "category": "project",
+      "localPath": "src/assets/wiki/results/results-fig19-off-target-cytotoxicity.webp",
+      "md5": "761d88ecd067fcfc65b7201c8400f0ff",
+      "fileSize": 21164,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "results-fig19-off-target-cytotoxicity",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 47,
+          "text": "import fig19 from \"../../assets/wiki/results/results-fig19-off-target-cytotoxicity.webp\";",
+          "type": "import"
+        },
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 455,
+          "text": "fileName: \"results-fig19-off-target-cytotoxicity.webp\",",
+          "type": "mention"
+        },
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 457,
+          "text": "\"src/assets/wiki/results/results-fig19-off-target-cytotoxicity.webp\",",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 3 location(s)"
+    },
+    "results-fig20-lnp-dose-viability-webp": {
+      "id": "results-fig20-lnp-dose-viability-webp",
+      "kind": "image",
+      "fileName": "results-fig20-lnp-dose-viability.webp",
+      "category": "project",
+      "localPath": "src/assets/wiki/results/results-fig20-lnp-dose-viability.webp",
+      "md5": "4b057b7845ef5caf1e356bd6dd56991f",
+      "fileSize": 10724,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "results-fig20-lnp-dose-viability",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 48,
+          "text": "import fig20 from \"../../assets/wiki/results/results-fig20-lnp-dose-viability.webp\";",
+          "type": "import"
+        },
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 467,
+          "text": "fileName: \"results-fig20-lnp-dose-viability.webp\",",
+          "type": "mention"
+        },
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 469,
+          "text": "\"src/assets/wiki/results/results-fig20-lnp-dose-viability.webp\",",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 3 location(s)"
+    },
+    "results-fig21-lentiviral-plasmid-map-webp": {
+      "id": "results-fig21-lentiviral-plasmid-map-webp",
+      "kind": "image",
+      "fileName": "results-fig21-lentiviral-plasmid-map.webp",
+      "category": "project",
+      "localPath": "src/assets/wiki/results/results-fig21-lentiviral-plasmid-map.webp",
+      "md5": "8450fee845ec56219781a3b77e324caa",
+      "fileSize": 198160,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "results-fig21-lentiviral-plasmid-map",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 49,
+          "text": "import fig21 from \"../../assets/wiki/results/results-fig21-lentiviral-plasmid-map.webp\";",
+          "type": "import"
+        },
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 478,
+          "text": "fileName: \"results-fig21-lentiviral-plasmid-map.webp\",",
+          "type": "mention"
+        },
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 480,
+          "text": "\"src/assets/wiki/results/results-fig21-lentiviral-plasmid-map.webp\",",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 3 location(s)"
+    },
+    "results-fig22-gfp-transduction-microscopy-webp": {
+      "id": "results-fig22-gfp-transduction-microscopy-webp",
+      "kind": "image",
+      "fileName": "results-fig22-gfp-transduction-microscopy.webp",
+      "category": "project",
+      "localPath": "src/assets/wiki/results/results-fig22-gfp-transduction-microscopy.webp",
+      "md5": "b3caeaf442c3f3619f71c60bc04b84d1",
+      "fileSize": 63160,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "results-fig22-gfp-transduction-microscopy",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 50,
+          "text": "import fig22 from \"../../assets/wiki/results/results-fig22-gfp-transduction-microscopy.webp\";",
+          "type": "import"
+        },
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 490,
+          "text": "fileName: \"results-fig22-gfp-transduction-microscopy.webp\",",
+          "type": "mention"
+        },
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 492,
+          "text": "\"src/assets/wiki/results/results-fig22-gfp-transduction-microscopy.webp\",",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 3 location(s)"
+    },
+    "results-fig23a-sort-gate-fsc-ssc-webp": {
+      "id": "results-fig23a-sort-gate-fsc-ssc-webp",
+      "kind": "image",
+      "fileName": "results-fig23a-sort-gate-fsc-ssc.webp",
+      "category": "project",
+      "localPath": "src/assets/wiki/results/results-fig23a-sort-gate-fsc-ssc.webp",
+      "md5": "689fe29d2954a5c8ff3dc721e0729a7e",
+      "fileSize": 48706,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "results-fig23a-sort-gate-fsc-ssc",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 51,
+          "text": "import fig23a from \"../../assets/wiki/results/results-fig23a-sort-gate-fsc-ssc.webp\";",
+          "type": "import"
+        },
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 502,
+          "text": "fileName: \"results-fig23a-sort-gate-fsc-ssc.webp\",",
+          "type": "mention"
+        },
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 504,
+          "text": "\"src/assets/wiki/results/results-fig23a-sort-gate-fsc-ssc.webp\",",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 3 location(s)"
+    },
+    "results-fig23b-sort-gate-singlets-webp": {
+      "id": "results-fig23b-sort-gate-singlets-webp",
+      "kind": "image",
+      "fileName": "results-fig23b-sort-gate-singlets.webp",
+      "category": "project",
+      "localPath": "src/assets/wiki/results/results-fig23b-sort-gate-singlets.webp",
+      "md5": "457da329cd75a24605a4954b50aab59d",
+      "fileSize": 19372,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "results-fig23b-sort-gate-singlets",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 52,
+          "text": "import fig23b from \"../../assets/wiki/results/results-fig23b-sort-gate-singlets.webp\";",
+          "type": "import"
+        },
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 513,
+          "text": "fileName: \"results-fig23b-sort-gate-singlets.webp\",",
+          "type": "mention"
+        },
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 515,
+          "text": "\"src/assets/wiki/results/results-fig23b-sort-gate-singlets.webp\",",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 3 location(s)"
+    },
+    "results-fig23c-sort-gate-gfp-webp": {
+      "id": "results-fig23c-sort-gate-gfp-webp",
+      "kind": "image",
+      "fileName": "results-fig23c-sort-gate-gfp.webp",
+      "category": "project",
+      "localPath": "src/assets/wiki/results/results-fig23c-sort-gate-gfp.webp",
+      "md5": "fd96f3aa40c3af42101a54fcf20216a4",
+      "fileSize": 48514,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "results-fig23c-sort-gate-gfp",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 53,
+          "text": "import fig23c from \"../../assets/wiki/results/results-fig23c-sort-gate-gfp.webp\";",
+          "type": "import"
+        },
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 523,
+          "text": "fileName: \"results-fig23c-sort-gate-gfp.webp\",",
+          "type": "mention"
+        },
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 525,
+          "text": "\"src/assets/wiki/results/results-fig23c-sort-gate-gfp.webp\",",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 3 location(s)"
+    },
+    "results-fig24-trop2-mrna-rt-pcr-webp": {
+      "id": "results-fig24-trop2-mrna-rt-pcr-webp",
+      "kind": "image",
+      "fileName": "results-fig24-trop2-mrna-rt-pcr.webp",
+      "category": "project",
+      "localPath": "src/assets/wiki/results/results-fig24-trop2-mrna-rt-pcr.webp",
+      "md5": "ac14e72c8e685640c78d05d163073da6",
+      "fileSize": 14048,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "results-fig24-trop2-mrna-rt-pcr",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 54,
+          "text": "import fig24 from \"../../assets/wiki/results/results-fig24-trop2-mrna-rt-pcr.webp\";",
+          "type": "import"
+        },
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 533,
+          "text": "fileName: \"results-fig24-trop2-mrna-rt-pcr.webp\",",
+          "type": "mention"
+        },
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 535,
+          "text": "\"src/assets/wiki/results/results-fig24-trop2-mrna-rt-pcr.webp\",",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 3 location(s)"
+    },
+    "results-fig25-surface-trop2-flow-webp": {
+      "id": "results-fig25-surface-trop2-flow-webp",
+      "kind": "image",
+      "fileName": "results-fig25-surface-trop2-flow.webp",
+      "category": "project",
+      "localPath": "src/assets/wiki/results/results-fig25-surface-trop2-flow.webp",
+      "md5": "465b4f63e286d8ef838461c73ce9d3a1",
+      "fileSize": 64648,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "results-fig25-surface-trop2-flow",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 55,
+          "text": "import fig25 from \"../../assets/wiki/results/results-fig25-surface-trop2-flow.webp\";",
+          "type": "import"
+        },
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 544,
+          "text": "fileName: \"results-fig25-surface-trop2-flow.webp\",",
+          "type": "mention"
+        },
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 546,
+          "text": "\"src/assets/wiki/results/results-fig25-surface-trop2-flow.webp\",",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 3 location(s)"
+    },
+    "results-fig26-excised-tumours-webp": {
+      "id": "results-fig26-excised-tumours-webp",
+      "kind": "image",
+      "fileName": "results-fig26-excised-tumours.webp",
+      "category": "project",
+      "localPath": "src/assets/wiki/results/results-fig26-excised-tumours.webp",
+      "md5": "7f0bb715aa7eb2d74425461901643726",
+      "fileSize": 19002,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "results-fig26-excised-tumours",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 56,
+          "text": "import fig26 from \"../../assets/wiki/results/results-fig26-excised-tumours.webp\";",
+          "type": "import"
+        },
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 555,
+          "text": "fileName: \"results-fig26-excised-tumours.webp\",",
+          "type": "mention"
+        },
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 557,
+          "text": "\"src/assets/wiki/results/results-fig26-excised-tumours.webp\",",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 3 location(s)"
+    },
+    "results-fig27-immunisation-scheme-webp": {
+      "id": "results-fig27-immunisation-scheme-webp",
+      "kind": "image",
+      "fileName": "results-fig27-immunisation-scheme.webp",
+      "category": "project",
+      "localPath": "src/assets/wiki/results/results-fig27-immunisation-scheme.webp",
+      "md5": "5e2a44f8f53d30575e80a33fc6318e19",
+      "fileSize": 76592,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "results-fig27-immunisation-scheme",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 57,
+          "text": "import fig27 from \"../../assets/wiki/results/results-fig27-immunisation-scheme.webp\";",
+          "type": "import"
+        },
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 566,
+          "text": "fileName: \"results-fig27-immunisation-scheme.webp\",",
+          "type": "mention"
+        },
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 568,
+          "text": "\"src/assets/wiki/results/results-fig27-immunisation-scheme.webp\",",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 3 location(s)"
+    },
+    "results-fig28-tumour-growth-curves-webp": {
+      "id": "results-fig28-tumour-growth-curves-webp",
+      "kind": "image",
+      "fileName": "results-fig28-tumour-growth-curves.webp",
+      "category": "project",
+      "localPath": "src/assets/wiki/results/results-fig28-tumour-growth-curves.webp",
+      "md5": "b994b9ef67b370c609999b850523708e",
+      "fileSize": 12242,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "results-fig28-tumour-growth-curves",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 58,
+          "text": "import fig28 from \"../../assets/wiki/results/results-fig28-tumour-growth-curves.webp\";",
+          "type": "import"
+        },
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 577,
+          "text": "fileName: \"results-fig28-tumour-growth-curves.webp\",",
+          "type": "mention"
+        },
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 579,
+          "text": "\"src/assets/wiki/results/results-fig28-tumour-growth-curves.webp\",",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 3 location(s)"
+    },
+    "results-fig29-cd8-granzyme-b-immunofluorescence-webp": {
+      "id": "results-fig29-cd8-granzyme-b-immunofluorescence-webp",
+      "kind": "image",
+      "fileName": "results-fig29-cd8-granzyme-b-immunofluorescence.webp",
+      "category": "project",
+      "localPath": "src/assets/wiki/results/results-fig29-cd8-granzyme-b-immunofluorescence.webp",
+      "md5": "de5b479786716aa539fe2f0e5a38b8b7",
+      "fileSize": 32446,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "results-fig29-cd8-granzyme-b-immunofluorescence",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 59,
+          "text": "import fig29 from \"../../assets/wiki/results/results-fig29-cd8-granzyme-b-immunofluorescence.webp\";",
+          "type": "import"
+        },
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 588,
+          "text": "fileName: \"results-fig29-cd8-granzyme-b-immunofluorescence.webp\",",
+          "type": "mention"
+        },
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 590,
+          "text": "\"src/assets/wiki/results/results-fig29-cd8-granzyme-b-immunofluorescence.webp\",",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 3 location(s)"
+    },
+    "results-fig30-splenic-dc-maturation-webp": {
+      "id": "results-fig30-splenic-dc-maturation-webp",
+      "kind": "image",
+      "fileName": "results-fig30-splenic-dc-maturation.webp",
+      "category": "project",
+      "localPath": "src/assets/wiki/results/results-fig30-splenic-dc-maturation.webp",
+      "md5": "1ad8fcf08a34f8bd23b3d96f568f9632",
+      "fileSize": 61432,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "results-fig30-splenic-dc-maturation",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 60,
+          "text": "import fig30 from \"../../assets/wiki/results/results-fig30-splenic-dc-maturation.webp\";",
+          "type": "import"
+        },
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 599,
+          "text": "fileName: \"results-fig30-splenic-dc-maturation.webp\",",
+          "type": "mention"
+        },
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 601,
+          "text": "\"src/assets/wiki/results/results-fig30-splenic-dc-maturation.webp\",",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 3 location(s)"
+    },
+    "results-fig31-splenic-cd69-activation-webp": {
+      "id": "results-fig31-splenic-cd69-activation-webp",
+      "kind": "image",
+      "fileName": "results-fig31-splenic-cd69-activation.webp",
+      "category": "project",
+      "localPath": "src/assets/wiki/results/results-fig31-splenic-cd69-activation.webp",
+      "md5": "05042d1207875284857022b5534ea274",
+      "fileSize": 42366,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "results-fig31-splenic-cd69-activation",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 61,
+          "text": "import fig31 from \"../../assets/wiki/results/results-fig31-splenic-cd69-activation.webp\";",
+          "type": "import"
+        },
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 610,
+          "text": "fileName: \"results-fig31-splenic-cd69-activation.webp\",",
+          "type": "mention"
+        },
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 612,
+          "text": "\"src/assets/wiki/results/results-fig31-splenic-cd69-activation.webp\",",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 3 location(s)"
+    },
+    "results-fig32-splenic-central-memory-webp": {
+      "id": "results-fig32-splenic-central-memory-webp",
+      "kind": "image",
+      "fileName": "results-fig32-splenic-central-memory.webp",
+      "category": "project",
+      "localPath": "src/assets/wiki/results/results-fig32-splenic-central-memory.webp",
+      "md5": "11d71fd1c540482dd60ec30a7ec36103",
+      "fileSize": 42386,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "results-fig32-splenic-central-memory",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 62,
+          "text": "import fig32 from \"../../assets/wiki/results/results-fig32-splenic-central-memory.webp\";",
+          "type": "import"
+        },
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 621,
+          "text": "fileName: \"results-fig32-splenic-central-memory.webp\",",
+          "type": "mention"
+        },
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 623,
+          "text": "\"src/assets/wiki/results/results-fig32-splenic-central-memory.webp\",",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 3 location(s)"
+    },
+    "results-fig33-splenic-ifn-gamma-webp": {
+      "id": "results-fig33-splenic-ifn-gamma-webp",
+      "kind": "image",
+      "fileName": "results-fig33-splenic-ifn-gamma.webp",
+      "category": "project",
+      "localPath": "src/assets/wiki/results/results-fig33-splenic-ifn-gamma.webp",
+      "md5": "bc95d0990d7c4f433e143ce1b24dd7a3",
+      "fileSize": 38268,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "results-fig33-splenic-ifn-gamma",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 63,
+          "text": "import fig33 from \"../../assets/wiki/results/results-fig33-splenic-ifn-gamma.webp\";",
+          "type": "import"
+        },
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 633,
+          "text": "fileName: \"results-fig33-splenic-ifn-gamma.webp\",",
+          "type": "mention"
+        },
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 635,
+          "text": "\"src/assets/wiki/results/results-fig33-splenic-ifn-gamma.webp\",",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 3 location(s)"
+    },
+    "results-fig34-splenic-granzyme-b-webp": {
+      "id": "results-fig34-splenic-granzyme-b-webp",
+      "kind": "image",
+      "fileName": "results-fig34-splenic-granzyme-b.webp",
+      "category": "project",
+      "localPath": "src/assets/wiki/results/results-fig34-splenic-granzyme-b.webp",
+      "md5": "6135f41454f9569b7cdead5630e6a709",
+      "fileSize": 38200,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "results-fig34-splenic-granzyme-b",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 64,
+          "text": "import fig34 from \"../../assets/wiki/results/results-fig34-splenic-granzyme-b.webp\";",
+          "type": "import"
+        },
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 644,
+          "text": "fileName: \"results-fig34-splenic-granzyme-b.webp\",",
+          "type": "mention"
+        },
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 646,
+          "text": "\"src/assets/wiki/results/results-fig34-splenic-granzyme-b.webp\",",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 3 location(s)"
+    },
+    "results-ihc-panel-1-webp": {
+      "id": "results-ihc-panel-1-webp",
+      "kind": "image",
+      "fileName": "results-ihc-panel-1.webp",
+      "category": "project",
+      "localPath": "src/assets/wiki/results/results-ihc-panel-1.webp",
+      "md5": "6f28aab40cd7554a448b5ae3cd499913",
+      "fileSize": 33782,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "results-ihc-panel-1",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 74,
+          "text": "import ihcPanel1 from \"../../assets/wiki/results/results-ihc-panel-1.webp\";",
+          "type": "import"
+        },
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 163,
+          "text": "fileName: \"results-ihc-panel-1.webp\",",
+          "type": "mention"
+        },
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 164,
+          "text": "localSourcePath: \"src/assets/wiki/results/results-ihc-panel-1.webp\",",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 3 location(s)"
+    },
+    "results-ihc-panel-2-webp": {
+      "id": "results-ihc-panel-2-webp",
+      "kind": "image",
+      "fileName": "results-ihc-panel-2.webp",
+      "category": "project",
+      "localPath": "src/assets/wiki/results/results-ihc-panel-2.webp",
+      "md5": "ef907a43b1989b514153d890c273e9ff",
+      "fileSize": 36162,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "results-ihc-panel-2",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 75,
+          "text": "import ihcPanel2 from \"../../assets/wiki/results/results-ihc-panel-2.webp\";",
+          "type": "import"
+        },
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 172,
+          "text": "fileName: \"results-ihc-panel-2.webp\",",
+          "type": "mention"
+        },
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 173,
+          "text": "localSourcePath: \"src/assets/wiki/results/results-ihc-panel-2.webp\",",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 3 location(s)"
+    },
+    "results-ihc-panel-3-webp": {
+      "id": "results-ihc-panel-3-webp",
+      "kind": "image",
+      "fileName": "results-ihc-panel-3.webp",
+      "category": "project",
+      "localPath": "src/assets/wiki/results/results-ihc-panel-3.webp",
+      "md5": "cdd1eeed111217ba6ecaa8f9466a7a33",
+      "fileSize": 57062,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "results-ihc-panel-3",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 76,
+          "text": "import ihcPanel3 from \"../../assets/wiki/results/results-ihc-panel-3.webp\";",
+          "type": "import"
+        },
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 181,
+          "text": "fileName: \"results-ihc-panel-3.webp\",",
+          "type": "mention"
+        },
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 182,
+          "text": "localSourcePath: \"src/assets/wiki/results/results-ihc-panel-3.webp\",",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 3 location(s)"
+    },
+    "results-ihc-panel-4-webp": {
+      "id": "results-ihc-panel-4-webp",
+      "kind": "image",
+      "fileName": "results-ihc-panel-4.webp",
+      "category": "project",
+      "localPath": "src/assets/wiki/results/results-ihc-panel-4.webp",
+      "md5": "4ce57d41e77d179d4b9c3dc507014dab",
+      "fileSize": 38944,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "results-ihc-panel-4",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 77,
+          "text": "import ihcPanel4 from \"../../assets/wiki/results/results-ihc-panel-4.webp\";",
+          "type": "import"
+        },
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 190,
+          "text": "fileName: \"results-ihc-panel-4.webp\",",
+          "type": "mention"
+        },
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 191,
+          "text": "localSourcePath: \"src/assets/wiki/results/results-ihc-panel-4.webp\",",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 3 location(s)"
+    },
+    "results-proteomics-pxd024322-abundance-webp": {
+      "id": "results-proteomics-pxd024322-abundance-webp",
+      "kind": "image",
+      "fileName": "results-proteomics-pxd024322-abundance.webp",
+      "category": "project",
+      "localPath": "src/assets/wiki/results/results-proteomics-pxd024322-abundance.webp",
+      "md5": "d95670a3de9f4deafd2eafdca46ed7b3",
+      "fileSize": 23160,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "results-proteomics-pxd024322-abundance",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 67,
+          "text": "import proteomicsPxd024322Abundance from \"../../assets/wiki/results/results-proteomics-pxd024322-abundance.webp\";",
+          "type": "import"
+        },
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 109,
+          "text": "fileName: \"results-proteomics-pxd024322-abundance.webp\",",
+          "type": "mention"
+        },
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 111,
+          "text": "\"src/assets/wiki/results/results-proteomics-pxd024322-abundance.webp\",",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 3 location(s)"
+    },
+    "results-proteomics-pxd024322-volcano-webp": {
+      "id": "results-proteomics-pxd024322-volcano-webp",
+      "kind": "image",
+      "fileName": "results-proteomics-pxd024322-volcano.webp",
+      "category": "project",
+      "localPath": "src/assets/wiki/results/results-proteomics-pxd024322-volcano.webp",
+      "md5": "f0ece4b701c72007e126b62d207fda81",
+      "fileSize": 31158,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "results-proteomics-pxd024322-volcano",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 66,
+          "text": "import proteomicsPxd024322Volcano from \"../../assets/wiki/results/results-proteomics-pxd024322-volcano.webp\";",
+          "type": "import"
+        },
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 99,
+          "text": "fileName: \"results-proteomics-pxd024322-volcano.webp\",",
+          "type": "mention"
+        },
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 101,
+          "text": "\"src/assets/wiki/results/results-proteomics-pxd024322-volcano.webp\",",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 3 location(s)"
+    },
+    "results-proteomics-pxd028102-abundance-webp": {
+      "id": "results-proteomics-pxd028102-abundance-webp",
+      "kind": "image",
+      "fileName": "results-proteomics-pxd028102-abundance.webp",
+      "category": "project",
+      "localPath": "src/assets/wiki/results/results-proteomics-pxd028102-abundance.webp",
+      "md5": "9a7c783ea674bf44e2a19a81335aac63",
+      "fileSize": 17454,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "results-proteomics-pxd028102-abundance",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 69,
+          "text": "import proteomicsPxd028102Abundance from \"../../assets/wiki/results/results-proteomics-pxd028102-abundance.webp\";",
+          "type": "import"
+        },
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 129,
+          "text": "fileName: \"results-proteomics-pxd028102-abundance.webp\",",
+          "type": "mention"
+        },
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 131,
+          "text": "\"src/assets/wiki/results/results-proteomics-pxd028102-abundance.webp\",",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 3 location(s)"
+    },
+    "results-proteomics-pxd028102-volcano-webp": {
+      "id": "results-proteomics-pxd028102-volcano-webp",
+      "kind": "image",
+      "fileName": "results-proteomics-pxd028102-volcano.webp",
+      "category": "project",
+      "localPath": "src/assets/wiki/results/results-proteomics-pxd028102-volcano.webp",
+      "md5": "b088a33fbd6bf574a28d6b22eef9239f",
+      "fileSize": 43604,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "results-proteomics-pxd028102-volcano",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 68,
+          "text": "import proteomicsPxd028102Volcano from \"../../assets/wiki/results/results-proteomics-pxd028102-volcano.webp\";",
+          "type": "import"
+        },
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 119,
+          "text": "fileName: \"results-proteomics-pxd028102-volcano.webp\",",
+          "type": "mention"
+        },
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 121,
+          "text": "\"src/assets/wiki/results/results-proteomics-pxd028102-volcano.webp\",",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 3 location(s)"
+    },
+    "results-singlecell-celltype-umap-webp": {
+      "id": "results-singlecell-celltype-umap-webp",
+      "kind": "image",
+      "fileName": "results-singlecell-celltype-umap.webp",
+      "category": "project",
+      "localPath": "src/assets/wiki/results/results-singlecell-celltype-umap.webp",
+      "md5": "22517bc4f45c4574ae1656b68605896e",
+      "fileSize": 39060,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "results-singlecell-celltype-umap",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 71,
+          "text": "import singleCellUmap from \"../../assets/wiki/results/results-singlecell-celltype-umap.webp\";",
+          "type": "import"
+        },
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 141,
+          "text": "fileName: \"results-singlecell-celltype-umap.webp\",",
+          "type": "mention"
+        },
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 143,
+          "text": "\"src/assets/wiki/results/results-singlecell-celltype-umap.webp\",",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 3 location(s)"
+    },
+    "results-singlecell-malignant-detection-webp": {
+      "id": "results-singlecell-malignant-detection-webp",
+      "kind": "image",
+      "fileName": "results-singlecell-malignant-detection.webp",
+      "category": "project",
+      "localPath": "src/assets/wiki/results/results-singlecell-malignant-detection.webp",
+      "md5": "e32af3be7120d56569650847048bd677",
+      "fileSize": 30978,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "results-singlecell-malignant-detection",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 72,
+          "text": "import singleCellDetection from \"../../assets/wiki/results/results-singlecell-malignant-detection.webp\";",
+          "type": "import"
+        },
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 151,
+          "text": "fileName: \"results-singlecell-malignant-detection.webp\",",
+          "type": "mention"
+        },
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 153,
+          "text": "\"src/assets/wiki/results/results-singlecell-malignant-detection.webp\",",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 3 location(s)"
+    },
+    "results-structural-anchor-burial-by-peptide-webp": {
+      "id": "results-structural-anchor-burial-by-peptide-webp",
+      "kind": "image",
+      "fileName": "results-structural-anchor-burial-by-peptide.webp",
+      "category": "project",
+      "localPath": "src/assets/wiki/results/results-structural-anchor-burial-by-peptide.webp",
+      "md5": "438d80c23b48ea995b69f3ab295a1d7c",
+      "fileSize": 21024,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "results-structural-anchor-burial-by-peptide",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 81,
+          "text": "import structuralAnchorBurial from \"../../assets/wiki/results/results-structural-anchor-burial-by-peptide.webp\";",
+          "type": "import"
+        },
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 221,
+          "text": "fileName: \"results-structural-anchor-burial-by-peptide.webp\",",
+          "type": "mention"
+        },
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 223,
+          "text": "\"src/assets/wiki/results/results-structural-anchor-burial-by-peptide.webp\",",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 3 location(s)"
+    },
+    "results-structural-burial-fill-by-peptide-webp": {
+      "id": "results-structural-burial-fill-by-peptide-webp",
+      "kind": "image",
+      "fileName": "results-structural-burial-fill-by-peptide.webp",
+      "category": "project",
+      "localPath": "src/assets/wiki/results/results-structural-burial-fill-by-peptide.webp",
+      "md5": "1c5a172df5abfbad809e2a5fb79ae784",
+      "fileSize": 30596,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "results-structural-burial-fill-by-peptide",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 82,
+          "text": "import structuralBurialFill from \"../../assets/wiki/results/results-structural-burial-fill-by-peptide.webp\";",
+          "type": "import"
+        },
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 231,
+          "text": "fileName: \"results-structural-burial-fill-by-peptide.webp\",",
+          "type": "mention"
+        },
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 233,
+          "text": "\"src/assets/wiki/results/results-structural-burial-fill-by-peptide.webp\",",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 3 location(s)"
+    },
+    "results-structural-burial-vs-fill-scatter-webp": {
+      "id": "results-structural-burial-vs-fill-scatter-webp",
+      "kind": "image",
+      "fileName": "results-structural-burial-vs-fill-scatter.webp",
+      "category": "project",
+      "localPath": "src/assets/wiki/results/results-structural-burial-vs-fill-scatter.webp",
+      "md5": "cbaf89be7004d486b14e8e7dc8bfef7d",
+      "fileSize": 20398,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "results-structural-burial-vs-fill-scatter",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 79,
+          "text": "import structuralBurialVsFill from \"../../assets/wiki/results/results-structural-burial-vs-fill-scatter.webp\";",
+          "type": "import"
+        },
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 201,
+          "text": "fileName: \"results-structural-burial-vs-fill-scatter.webp\",",
+          "type": "mention"
+        },
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 203,
+          "text": "\"src/assets/wiki/results/results-structural-burial-vs-fill-scatter.webp\",",
+          "type": "mention"
+        }
+      ],
+      "notes": "Referenced in 3 location(s)"
+    },
+    "results-structural-p2-p9-burial-heatmap-webp": {
+      "id": "results-structural-p2-p9-burial-heatmap-webp",
+      "kind": "image",
+      "fileName": "results-structural-p2-p9-burial-heatmap.webp",
+      "category": "project",
+      "localPath": "src/assets/wiki/results/results-structural-p2-p9-burial-heatmap.webp",
+      "md5": "cad07fdde5537d7cee59290e4f071276",
+      "fileSize": 27950,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "results-structural-p2-p9-burial-heatmap",
+        "image"
+      ],
+      "references": [
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 80,
+          "text": "import structuralBurialHeatmap from \"../../assets/wiki/results/results-structural-p2-p9-burial-heatmap.webp\";",
+          "type": "import"
+        },
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 211,
+          "text": "fileName: \"results-structural-p2-p9-burial-heatmap.webp\",",
+          "type": "mention"
+        },
+        {
+          "file": "src/data/project/resultsAssets.ts",
+          "line": 213,
+          "text": "\"src/assets/wiki/results/results-structural-p2-p9-burial-heatmap.webp\",",
+          "type": "mention"
         }
       ],
       "notes": "Referenced in 3 location(s)"

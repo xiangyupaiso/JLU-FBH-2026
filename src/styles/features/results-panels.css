@@ -1,0 +1,154 @@
+/* --------------------------------------------------------------------------
+   Results page — page-scoped micro layout.
+
+   Everything here is scoped to `[data-wiki-route="/results"]` (铁律 7): the
+   reader's own skin keeps ownership of the frame, the heading contract, the
+   spacing scale and the `FIG. nn` counter. This file only adds what the Results
+   manuscript needs and nothing else does:
+
+   1. `figure-plate` — the ~24px grid that sets two to four of the manuscript's
+      own charts side by side, plus the size cap that keeps any single figure
+      inside one screen without shrinking the fine print on a flow plot.
+   2. The run-in labels this manuscript writes on their own line
+      (`**Result**`, `**Limitations and scope**`, `**Interpretation**｜…`) arrive
+      as the shared `.wiki-protocol-step-*` skin, which carries a coloured bar and
+      a card fill. 铁律 3/4 forbid both, so they are re-set to plain bold body
+      copy at the reader's own type size.
+   3. Figure 18B is the second half of Figure 18, so it must not advance the
+      `FIG. nn` counter.
+
+   No scroll-choreography opt-out (铁律 8). That rule is for pages whose *feature
+   slots* are hundreds of nodes deep — a vector atlas, a long list, an embedded
+   plugin surface — because `useWikiPageMotion` repositions every `.wiki-feature`
+   layer on every frame. `node scripts/measure-page-weight.mjs` reports this
+   page's eight slots at 230 nodes in total, lighter than Description's 301, and
+   the heaviest is the 196-node bibliography. The reader's entrance and parallax
+   language is therefore kept rather than traded away for a cost that is not
+   there.
+   -------------------------------------------------------------------------- */
+
+/* --------------------------------------------------------------- figure plate */
+
+.wiki-page[data-wiki-route="/results"] .results-plate {
+  width: 100%;
+  margin: 0;
+}
+
+/* Numbered plates live inside `.wiki-feature`, which already carries the 24px
+   block rhythm — the reader's `.wiki-figure` margin would double it. */
+.wiki-page[data-wiki-route="/results"] .wiki-feature .wiki-figure {
+  margin: 0 auto !important;
+}
+
+.wiki-page[data-wiki-route="/results"] .results-plate__grid {
+  display: grid;
+  width: 100%;
+  gap: var(--wiki-space-block, 24px);
+  align-items: start;
+  justify-items: stretch;
+}
+
+.wiki-page[data-wiki-route="/results"] .results-plate__grid--cols-1 {
+  grid-template-columns: minmax(0, 1fr);
+  justify-items: center;
+}
+
+.wiki-page[data-wiki-route="/results"] .results-plate__grid--cols-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.wiki-page[data-wiki-route="/results"] .results-plate__grid--cols-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.wiki-page[data-wiki-route="/results"] .results-plate img {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
+  border-radius: 4px;
+  border: 0;
+  box-shadow: none;
+}
+
+/* One figure, one screen: proportions are preserved, so the cap only bites on
+   the tall single-column plates and the two plasmid maps. */
+.wiki-page[data-wiki-route="/results"] .results-plate img,
+.wiki-page[data-wiki-route="/results"] .wiki-figure img {
+  max-height: min(76vh, 820px);
+}
+
+@media (max-width: 767px) {
+  .wiki-page[data-wiki-route="/results"] .results-plate__grid--cols-2,
+  .wiki-page[data-wiki-route="/results"] .results-plate__grid--cols-3 {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* Figure 18A and 18B are one numbered figure: 18B reads the same `FIG. 18`. */
+.wiki-page[data-wiki-route="/results"] .results-plate--share-number {
+  counter-increment: none;
+}
+
+/* --------------------------------------------- run-in labels & numbered runs */
+
+.wiki-page[data-wiki-route="/results"]
+  .wiki-prose
+  .wiki-protocol-step-subheading {
+  display: block;
+  margin: 0;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: 700;
+  letter-spacing: normal;
+  color: var(--route-heading-ink, #243d2c);
+}
+
+.wiki-page[data-wiki-route="/results"]
+  .wiki-prose
+  .wiki-protocol-step-subheading::before {
+  content: none;
+}
+
+.wiki-page[data-wiki-route="/results"] .wiki-prose .wiki-protocol-step-list {
+  margin: 0;
+  gap: var(--wiki-space-p, 16px);
+}
+
+.wiki-page[data-wiki-route="/results"] .wiki-prose .wiki-protocol-step-item {
+  padding: 0;
+  gap: 10px;
+  background: none;
+  border: 0;
+  border-radius: 0;
+  transform: none;
+}
+
+.wiki-page[data-wiki-route="/results"]
+  .wiki-prose
+  .wiki-protocol-step-item:hover {
+  background: none;
+  border-color: transparent;
+  transform: none;
+}
+
+.wiki-page[data-wiki-route="/results"] .wiki-prose .wiki-protocol-step-badge {
+  width: auto;
+  min-width: 1.35em;
+  height: auto;
+  margin-top: 0;
+  padding: 0;
+  border-radius: 0;
+  background: none;
+  color: var(--route-subheading-ink, #84382b);
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: 700;
+}
+
+.wiki-page[data-wiki-route="/results"] .wiki-prose .wiki-protocol-step-text {
+  font-size: inherit;
+  line-height: inherit;
+  color: inherit;
+}

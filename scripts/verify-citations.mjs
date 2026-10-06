@@ -30,18 +30,22 @@ import { linkify } from "../src/components/wiki/proseInline";
 import { descriptionFeatures, renderCitedText } from "../src/components/wiki/features/project/DescriptionPanels";
 import { designFeatures, renderDesignCitedText } from "../src/components/wiki/features/wet-lab/DesignPanels";
 import { hardwareFeatures, renderHardwareCitedText } from "../src/components/wiki/features/drylab/HardwarePanels";
+import { resultsFeatures, renderResultsText } from "../src/components/wiki/features/project/ResultsPanels";
 import { descriptionPage, descriptionReferences } from "../src/data/project/descriptionPage";
 import { designPage, designReferences } from "../src/data/wet-lab/designPage";
 import { hardwarePage, hardwareReferences } from "../src/data/drylab/hardwarePage";
+import { resultsPage } from "../src/data/project/resultsPage";
+import { resultsReferences } from "../src/data/project/resultsReferences";
 import { buildAuthorYearCitationIndex, buildNumericCitationIndex } from "../src/data/citations/citationIndex";
 
 const render = (node: unknown) =>
   renderToStaticMarkup(<MemoryRouter>{node as never}</MemoryRouter>);
 
-function page(name: string, sections: never, refs: never, index: never, renderer: never, feature: unknown) {
+function page(name: string, sections: never, refs: never, index: never, renderer: never, feature: unknown, minimumCited = 12) {
   const paragraphs = [...(index as { byParagraph: Map<string, unknown> }).byParagraph.keys()] as string[];
   return {
     name,
+    minimumCited,
     references: refs,
     indexPath: index,
     register: render(feature),
@@ -55,6 +59,20 @@ function page(name: string, sections: never, refs: never, index: never, renderer
 const descriptionIndex = buildAuthorYearCitationIndex(descriptionPage.sections, descriptionReferences);
 const designIndex = buildNumericCitationIndex(designPage.sections, designReferences);
 const hardwareIndex = buildNumericCitationIndex(hardwarePage.sections, hardwareReferences);
+const resultsIndex = buildNumericCitationIndex(resultsPage.sections, resultsReferences);
+
+/**
+ * Emphasis rules are checked as units, not through the corpus: the paragraphs
+ * that carry a gene-name italic or a significance note of asterisks mostly carry
+ * no citation marker, so the indexed paragraphs alone would never exercise them.
+ */
+const emphasis = {
+  italic: render(<p>{(renderResultsText as never as (t: string, f: unknown) => unknown)("circularised through the T4 *td* permuted intron", linkify)}</p>),
+  hla: render(<p>{(renderResultsText as never as (t: string, f: unknown) => unknown)("screened against HLA-A*02:01 and HLA-A*02:01 again", linkify)}</p>),
+  stars: render(<p>{(renderResultsText as never as (t: string, f: unknown) => unknown)("Error bars are SD; *** denotes P < 0.001 for Blank vs Combined.", linkify)}</p>),
+  stars4: render(<p>{(renderResultsText as never as (t: string, f: unknown) => unknown)("**** denotes P < 0.0001.", linkify)}</p>),
+  bold: render(<p>{(renderResultsText as never as (t: string, f: unknown) => unknown)("**Aim**｜Quantify at **single-cell resolution** the frequency.", linkify)}</p>),
+};
 
 export const report = {
   description: page(
@@ -81,6 +99,16 @@ export const report = {
     renderHardwareCitedText as never,
     hardwareFeatures()["hardware-references"],
   ),
+  results: page(
+    "results",
+    resultsPage.sections as never,
+    resultsReferences as never,
+    resultsIndex as never,
+    renderResultsText as never,
+    resultsFeatures()["results-references"],
+    11,
+  ),
+  emphasis,
 };
 `,
   "utf8",
@@ -136,7 +164,12 @@ const textOf = (html) =>
     .replace(/&nbsp;/g, " ")
     .replace(/\s+/g, " ");
 
-for (const page of [report.description, report.design, report.hardware]) {
+for (const page of [
+  report.description,
+  report.design,
+  report.hardware,
+  report.results,
+]) {
   const { name, references, indexPath, register, cited } = page;
 
   /* -------------------------------------------------------------- register */
@@ -214,7 +247,7 @@ for (const page of [report.description, report.design, report.hardware]) {
   );
   check(
     `${name}: paragraphs with citations were found`,
-    cited.length >= 12,
+    cited.length >= page.minimumCited,
     `${cited.length}`,
   );
   check(
@@ -336,6 +369,52 @@ check(
   hardware.register.includes("<em>Ribonuclease R (RNase R) Manual</em>"),
 );
 
+const results = report.results;
+check(
+  "results: bracketed markers keep their numerals",
+  results.cited.some((entry) => />\[17\]</.test(entry.html)),
+);
+check(
+  "results: every reference is cited in the text",
+  new Set([...results.indexPath.byRef.keys()]).size ===
+    results.references.length,
+  `${new Set([...results.indexPath.byRef.keys()]).size} of ${results.references.length}`,
+);
+check(
+  "results: adjacent markers both resolve",
+  results.cited.some(
+    (entry) =>
+      occurrences(entry.html, 'class="wiki-cite"') >= 2 &&
+      />\[9\]</.test(entry.html) &&
+      />\[10\]</.test(entry.html),
+  ),
+);
+check(
+  "results: the manuscript's italics render as emphasis",
+  report.emphasis.italic.includes("<em>td</em>"),
+  report.emphasis.italic,
+);
+// `HLA-A*02:01` is the manuscript's most frequent token; its asterisk must never
+// open an emphasis run.
+check(
+  "results: HLA-A*02:01 is never mistaken for emphasis",
+  occurrences(report.emphasis.hla, "HLA-A*02:01") === 2 &&
+    !report.emphasis.hla.includes("<em>"),
+  report.emphasis.hla,
+);
+check(
+  "results: the significance asterisks stay literal",
+  report.emphasis.stars.includes("*** denotes") &&
+    !report.emphasis.stars.includes("<em>") &&
+    report.emphasis.stars4.includes("**** denotes"),
+  `${report.emphasis.stars} || ${report.emphasis.stars4}`,
+);
+check(
+  "results: `**bold**` still reaches the reader's formatter",
+  occurrences(report.emphasis.bold, "<strong>") === 2,
+  report.emphasis.bold,
+);
+
 /* ----------------------------------------------------------------- report */
 
 if (failures.length) {
@@ -344,7 +423,12 @@ if (failures.length) {
   process.exit(1);
 }
 
-for (const page of [report.description, report.design, report.hardware]) {
+for (const page of [
+  report.description,
+  report.design,
+  report.hardware,
+  report.results,
+]) {
   console.log(
     `  ${page.name.padEnd(12)} ${page.references.length} references, ` +
       `${page.cited.length} cited paragraphs, ${page.register.length.toLocaleString()} chars`,
