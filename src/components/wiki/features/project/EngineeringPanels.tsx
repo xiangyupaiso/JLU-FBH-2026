@@ -1,25 +1,23 @@
-import { useMemo, useState, type MouseEvent, type ReactNode, type RefObject } from "react";
-import { Link } from "react-router-dom";
+import { useId, useRef, type MouseEvent } from "react";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 import {
   ENGINEERING_ITERATIONS,
   TIME_CYCLES,
-  engineeringPage,
+  type EngineeringIterationDatum,
 } from "../../../../data/project/engineeringPage";
-import { useDbTLStage, type DbTLStageKey } from "../../../../hooks/useDbTLStage";
-import { scrollReaderToId, scrollReaderToTarget } from "../../../../utils";
+import type { WikiDbTLStageKey as DbTLStageKey } from "../../wikiPageTypes";
 import "../../../../styles/features/engineering-dial.css";
+gsap.registerPlugin(useGSAP);
 
-// eslint-disable-next-line react-refresh/only-export-components
-export function engineeringFeatures(): Record<string, ReactNode> {
-  return {};
+export interface EngineeringOutlineProps {
+  activeIteration: EngineeringIterationDatum;
+  activeStage: DbTLStageKey;
+  onNavigate: (
+    iteration: EngineeringIterationDatum,
+    stage?: DbTLStageKey,
+  ) => void;
 }
-
-interface EngineeringOutlineProps {
-  activeSection: string;
-  activeSubsection: string;
-  scrollContainerRef: RefObject<HTMLDivElement | null>;
-}
-
 // Dial geometry, all in viewBox units around the centre (C, C).
 const C = 120;
 const RING_OUT = 98; // outer TIME ring
@@ -36,7 +34,12 @@ const polar = (r: number, deg: number) => {
 const f2 = (n: number) => n.toFixed(2);
 
 // Annular sector path (donut wedge)
-function sectorPath(rInner: number, rOuter: number, startDeg: number, sweepDeg: number) {
+function sectorPath(
+  rInner: number,
+  rOuter: number,
+  startDeg: number,
+  sweepDeg: number,
+) {
   const [x1, y1] = polar(rOuter, startDeg);
   const [x2, y2] = polar(rOuter, startDeg + sweepDeg);
   const [x3, y3] = polar(rInner, startDeg + sweepDeg);
@@ -95,58 +98,53 @@ const STAGES: { key: DbTLStageKey; label: string; start: number }[] = [
 const HAND = `M ${C - 2.6} ${C + 6} L ${C - 1.4} ${C - 22} L ${C} ${C - 27} L ${C + 1.4} ${C - 22} L ${C + 2.6} ${C + 6} Z`;
 
 const cycleWord = (title: string) => title.split(":")[0];
-const dbtlIdFor = (index: string) => `dbtl-${index.replace(".", "-")}`;
 
 export function EngineeringOutline({
-  activeSection,
-  activeSubsection,
-  scrollContainerRef,
+  activeIteration,
+  activeStage,
+  onNavigate,
 }: EngineeringOutlineProps) {
-  const activeStage = useDbTLStage(scrollContainerRef, activeSection);
-
-  const activeIteration = useMemo(() => {
-    if (activeSubsection) {
-      const match = ENGINEERING_ITERATIONS.find((it) => it.id === activeSubsection);
-      if (match) return match;
-    }
-    const bySection = ENGINEERING_ITERATIONS.find((it) => it.cycleId === activeSection);
-    return bySection || ENGINEERING_ITERATIONS[0];
-  }, [activeSection, activeSubsection]);
-
-  // Outer ring: highlight only, follows the section and changes once per cycle.
-  const sectionCycle = TIME_CYCLES.findIndex((cycle) => cycle.id === activeSection);
-  const activeCycle = sectionCycle >= 0 ? sectionCycle : activeIteration.cycle - 1;
-  const current = TIME_CYCLES[activeCycle] ?? TIME_CYCLES[0];
-
-  // Inner hand: keep a running angle so Design after Learn turns forward a
-  // quarter instead of spinning back three quarters.
-  const shownStage: DbTLStageKey = activeStage || "design";
-  const shown = STAGES.find((s) => s.key === shownStage) ?? STAGES[0];
-  const targetAngle = shown.start + 45;
-  const [hand, setHand] = useState({ stage: shownStage, angle: targetAngle });
-  if (hand.stage !== shownStage) {
-    const delta = ((((targetAngle - hand.angle) % 360) + 540) % 360) - 180;
-    setHand({ stage: shownStage, angle: hand.angle + delta });
-  }
-
-  const jumpTo = (id: string, e: MouseEvent<Element>) => {
-    e.preventDefault();
-    scrollReaderToId(id, e.currentTarget, "smooth");
+  const activeCycle = activeIteration.cycle - 1;
+  const shownStage = activeStage;
+  const dialId = useId();
+  const svgRef = useRef<SVGSVGElement>(null);
+  const angle = useRef(315);
+  useGSAP(
+    () => {
+      const shown = STAGES.find((s) => s.key === shownStage) ?? STAGES[0];
+      const target = shown.start + 45;
+      const delta = ((((target - angle.current) % 360) + 540) % 360) - 180;
+      angle.current += delta;
+      gsap.to(svgRef.current?.querySelector(".eng-dial__hand") ?? [], {
+        rotation: angle.current,
+        svgOrigin: `${C} ${C}`,
+        smoothOrigin: false,
+        duration: window.matchMedia("(prefers-reduced-motion: reduce)").matches
+          ? 0
+          : 0.35,
+        ease: "power2.out",
+        overwrite: true,
+      });
+    },
+    { scope: svgRef, dependencies: [shownStage] },
+  );
+  const jumpTo = (id: string, event: MouseEvent<Element>) => {
+    event.preventDefault();
+    const first = ENGINEERING_ITERATIONS.find((it) => it.cycleId === id);
+    if (first) onNavigate(first);
   };
-
-  const jumpToStage = (stage: DbTLStageKey, e: MouseEvent<Element>) => {
-    e.preventDefault();
-    const target = document.querySelector<HTMLElement>(
-      `#${CSS.escape(dbtlIdFor(activeIteration.index))} [data-dbtl-stage="${stage}"]`,
-    );
-    if (target) scrollReaderToTarget(target, scrollContainerRef.current, "smooth");
+  const jumpToStage = (stage: DbTLStageKey, event: MouseEvent<Element>) => {
+    event.preventDefault();
+    onNavigate(activeIteration, stage);
   };
-
   return (
-    <nav className="eng-mech-nav" aria-label="CirCure TIME Engineering Navigation">
-      {/* 1. TIME dial: outer ring highlights the cycle, inner hand points at the stage */}
+    <nav
+      className="eng-mech-nav"
+      aria-label="TIME cycles and engineering stages"
+    >
       <div className="eng-mech-figure-box">
         <svg
+          ref={svgRef}
           viewBox="0 0 240 240"
           className="eng-dial"
           role="group"
@@ -154,11 +152,19 @@ export function EngineeringOutline({
         >
           <defs>
             {CYCLE_START.map((start, i) => (
-              <path key={start} id={`eng-dial-arc-${i}`} d={labelArc(start + 6, start + 84)} />
+              <path
+                key={start}
+                id={`${dialId}-arc-${i}`}
+                d={labelArc(start + 6, start + 84)}
+              />
             ))}
           </defs>
 
-          <path className="eng-dial__teeth" d={gearPath(30, 108, 9)} transform={`translate(${C} ${C})`} />
+          <path
+            className="eng-dial__teeth"
+            d={gearPath(30, 108, 9)}
+            transform={`translate(${C} ${C})`}
+          />
           <circle className="eng-dial__bezel" cx={C} cy={C} r={RING_OUT + 3} />
 
           {/* Outer ring: four project-level TIME cycles */}
@@ -179,12 +185,15 @@ export function EngineeringOutline({
             const face = (
               <>
                 <title>{`Cycle ${i + 1} · ${word}${recorded ? "" : " (coming soon)"}`}</title>
-                <path className="eng-dial__cycle-face" d={sectorPath(RING_IN, RING_OUT, start, 90)} />
+                <path
+                  className="eng-dial__cycle-face"
+                  d={sectorPath(RING_IN, RING_OUT, start, 90)}
+                />
                 <text className="eng-dial__cycle-letter" x={f2(lx)} y={f2(ly)}>
                   {cycle.letter}
                 </text>
                 <text className="eng-dial__cycle-word">
-                  <textPath href={`#eng-dial-arc-${i}`} startOffset="50%">
+                  <textPath href={`#${dialId}-arc-${i}`} startOffset="50%">
                     {word}
                   </textPath>
                 </text>
@@ -208,7 +217,12 @@ export function EngineeringOutline({
             );
           })}
 
-          <circle className="eng-dial__groove" cx={C} cy={C} r={(RING_IN + DIAL_OUT) / 2} />
+          <circle
+            className="eng-dial__groove"
+            cx={C}
+            cy={C}
+            r={(RING_IN + DIAL_OUT) / 2}
+          />
 
           {/* Inner dial: DBTL stages of the current iteration */}
           {STAGES.map((stage) => {
@@ -218,13 +232,16 @@ export function EngineeringOutline({
             return (
               <a
                 key={stage.key}
-                href={`#${dbtlIdFor(activeIteration.index)}`}
+                href={`#${activeIteration.id}-${stage.key}`}
                 className={`eng-dial__stage eng-dial__stage--${stage.key}${isActive ? " is-active" : ""}`}
                 aria-label={`Iteration ${activeIteration.index}: ${stage.label}`}
                 aria-current={isActive ? "step" : undefined}
                 onClick={(e) => jumpToStage(stage.key, e)}
               >
-                <path className="eng-dial__stage-face" d={sectorPath(DIAL_IN, DIAL_OUT, stage.start, 90)} />
+                <path
+                  className="eng-dial__stage-face"
+                  d={sectorPath(DIAL_IN, DIAL_OUT, stage.start, 90)}
+                />
                 <text className="eng-dial__stage-label" x={f2(lx)} y={f2(ly)}>
                   {stage.label}
                 </text>
@@ -232,64 +249,17 @@ export function EngineeringOutline({
             );
           })}
 
-          <path className="eng-dial__hand" d={HAND} style={{ transform: `rotate(${hand.angle}deg)` }} />
+          <path className="eng-dial__hand" d={HAND} />
           <circle className="eng-dial__hub" cx={C} cy={C} r="7.5" />
           <circle className="eng-dial__pin" cx={C} cy={C} r="2.6" />
-        </svg>
-
-        <p className="eng-dial__readout" aria-live="polite">
-          <span>
-            Cycle {activeCycle + 1} · {cycleWord(current.title)}
+        </svg>{" "}
+        <p className="eng-current-iteration" aria-live="polite">
+          <span className="eng-current-iteration__index">
+            {activeIteration.index}
           </span>
-          <span className={`eng-dial__readout-stage eng-dial__readout-stage--${shownStage}`}>
-            {activeIteration.index} · {shown.label}
-          </span>
+          <span>{activeIteration.short}</span>
         </p>
       </div>
-
-      {/* 2. Sequential Iterations Stepper Ladder (Clean Academic Architecture) */}
-      <div className="eng-mech-ladder">
-        <div className="eng-mech-ladder-head">
-          <span className="eng-mech-ladder-title">Iterations</span>
-          <span className="eng-mech-ladder-count">
-            {activeIteration.index} / {ENGINEERING_ITERATIONS.length}
-          </span>
-        </div>
-
-        <ul className="eng-mech-ladder-list">
-          {ENGINEERING_ITERATIONS.map((it) => {
-            const isSelected = it.id === activeIteration.id;
-            return (
-              <li key={it.id} className="eng-mech-ladder-item">
-                <a
-                  href={`#${it.id}`}
-                  className={`eng-mech-ladder-link ${isSelected ? "eng-mech-ladder-link--active" : ""}`}
-                  onClick={(e) => jumpTo(it.id, e)}
-                >
-                  <span className="eng-mech-ladder-pin" aria-hidden="true" />
-                  <span className="eng-mech-ladder-index">{it.index}</span>
-                  <span className="eng-mech-ladder-text">{it.short}</span>
-                </a>
-              </li>
-            );
-          })}
-        </ul>
-      </div>
-
-      {/* 3. Cross-Page Related Links */}
-      {engineeringPage.links?.length ? (
-        <div className="eng-mech-related">
-          <span className="eng-mech-related-title">✦ RELATED DOCUMENTATION</span>
-          <div className="eng-mech-related-links">
-            {engineeringPage.links.map((link) => (
-              <Link key={link.path} to={link.path} className="eng-mech-related-item">
-                <span>{link.label}</span>
-                <span aria-hidden="true">↗</span>
-              </Link>
-            ))}
-          </div>
-        </div>
-      ) : null}
     </nav>
   );
 }

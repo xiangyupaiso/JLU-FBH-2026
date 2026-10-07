@@ -49,13 +49,10 @@ body {
 }
 
 /* footer */
+/* The closing panel styles itself in circure-footer.css, which loads after this
+   file and carries class-level selectors. These bare `footer a` rules stay for
+   the iGEM template pages that still use the default .container footer. */
 footer a {
-  color: white;
   font-weight: bold;
   text-decoration: none;
-}
-
-footer a:hover {
-  color: white;
-  text-decoration: underline;
 }

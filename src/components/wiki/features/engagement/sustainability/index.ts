@@ -1,4 +1,4 @@
-export { StakeholderProfileCard } from "./StakeholderProfileCard";
+export { StakeholderDeck, StakeholderProfileCard } from "./StakeholderProfileCard";
 export { StakeholderPhotoReel } from "./StakeholderPhotoReel";
 export { PatientChatDialog } from "./PatientChatDialog";
 export { ConsequencesDimensionCard } from "./ConsequencesDimensionCard";
@@ -11,7 +11,7 @@ export { SSTQNScoreProcess } from "./SSTQNScoreProcess";
 export { SdgInteractionHeatmap } from "./SdgInteractionHeatmap";
 export { SdgBoundaryMatrix } from "./SdgBoundaryMatrix";
 export { SdgDimensionChord } from "./SdgDimensionChord";
-export { PdfToolList } from "./PdfToolList";
+export { PdfToolList, ToolTable } from "./PdfToolList";
 export { RichText } from "./RichText";
 export {
   SustainabilityPdfPreview,

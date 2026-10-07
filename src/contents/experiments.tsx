@@ -3,7 +3,6 @@ import { getWetLabHeroImage } from "../components/wiki/wetLabHeroAssets";
 import { experimentsFeatures } from "../components/wiki/features/wet-lab/ExperimentsPanels";
 import { experimentsPage } from "../data/wet-lab/experimentsPage";
 import { experimentProtocolPairs } from "../data/wet-lab/experimentProtocolPages";
-import "../styles/route-palette-wetlab.css";
 
 export function Experiments() {
   return (

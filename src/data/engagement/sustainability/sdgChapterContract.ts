@@ -89,14 +89,18 @@ export interface LegacyTool {
   why: string;
   whatItHelpsWith: string;
   bestFor: string;
+  /** One-line summary shown in the Evidence tool table. */
+  whatItDoes: string;
   pdfs: ReadonlyArray<LegacyToolPdf>;
 }
 
 export interface EvidenceItem {
   text: string;
   figure?: SustainabilityImageAssetKey;
-  /** In-page link appended after the item (e.g. to the Legacy tools). */
-  link?: { label: string; target: "legacy" };
+  /** Caption under `figure` (with its FIG. number); defaults to the asset's alt text. */
+  figureCaption?: string;
+  /** Follow the item with the chapter's Legacy tool table (Tool / What it does / Download). */
+  toolTable?: true;
 }
 
 export type ScaleStepKey = "stakeholder" | "consequences" | "alignment" | "legacy" | "evidence";

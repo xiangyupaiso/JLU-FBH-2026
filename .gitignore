@@ -22,3 +22,9 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+upload-ready/
+
+# Scratch space for the scripts/ verification harnesses and for builds that
+# must keep esbuild's temp files inside the workspace.
+.tmp-verify/
+.tmp-build/

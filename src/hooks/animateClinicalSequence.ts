@@ -1,7 +1,8 @@
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { HOME_EASE, HOME_SCRUB } from "./homeMotion";
+import { HOME_EASE, HOME_SCRUB, stillHold } from "./homeMotion";
 import { createClinicalParticleMorph } from "./createClinicalParticleMorph";
+import { QUESTION_WHY_LEAD } from "./animateQuestionWhy";
 
 /** Keep both clinical scenes in one viewport while the nurse hands the
  * narrative to the doctor. The parent GSAP context owns every tween. */
@@ -127,7 +128,23 @@ export function animateClinicalSequence(
   );
   timeline.to(challenge, { autoAlpha: 0, duration: 0.1 }, transitionAt + 1.02);
   timeline.add(vaccineArt, vaccineAt);
-  timeline.to({}, { duration: 0.65 }, vaccineEnd);
+  let rest = 0.65;
+  if (!compact) {
+    // Desktop: the "Why circRNA?" bridge starts while this stage is sticky.
+    // Reserve its lead on top of the still hold, keeping the reveal speed.
+    const hold = stillHold(
+      sequence.offsetHeight - stage.offsetHeight,
+      rest / vaccineEnd,
+      window.innerHeight * QUESTION_WHY_LEAD,
+    );
+    rest = vaccineEnd * hold.rest;
+    const scale =
+      Number.parseFloat(
+        getComputedStyle(sequence).getPropertyValue("--home-scroll-scale"),
+      ) || 1;
+    gsap.set(sequence, { "--home-scroll-scale": scale * hold.scale });
+  }
+  timeline.to({}, { duration: rest }, vaccineEnd);
 
   const update = () => {
     const time = timeline.time();

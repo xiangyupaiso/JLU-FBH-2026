@@ -1,34 +1,33 @@
-const experimentsHero = "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/wet-lab-experiments-hero.webp";
-const measurementHero = "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/wet-lab-measurement-hero.webp";
-const notebookHero = "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/wet-lab-notebook-hero-v3.webp";
-const platformHero = "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/wet-lab-platform-hero.webp";
-const safetyHero = "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/wet-lab-safety-hero-v3.webp";
+import designHero from "../../assets/wiki/wet-lab-heroes/wet-lab-design-hero.webp";
+import platformHero from "../../assets/wiki/wet-lab-heroes/wet-lab-platform-hero.webp";
+
+const experimentsHero =
+  "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/wet-lab-experiments-hero.webp";
+const measurementHero =
+  "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/wet-lab-measurement-hero.webp";
 
 export type WetLabHeroVariant =
+  | "design"
   | "experiments"
-  | "notebook"
   | "measurement"
-  | "platform"
-  | "safety";
+  | "platform";
 
 const VARIANT_BY_ROUTE: Record<string, WetLabHeroVariant> = {
+  "/design": "design",
   "/experiments": "experiments",
-  "/notebook": "notebook",
   "/measurement": "measurement",
   "/alternative-platform": "platform",
-  "/safety-and-security": "safety",
 };
 
 const HERO_BY_VARIANT: Record<WetLabHeroVariant, string> = {
+  design: designHero,
   experiments: experimentsHero,
-  notebook: notebookHero,
   measurement: measurementHero,
   platform: platformHero,
-  safety: safetyHero,
 };
 
 export function getWetLabHeroVariant(route: string) {
-  return VARIANT_BY_ROUTE[route] ?? "experiments";
+  return VARIANT_BY_ROUTE[route] ?? "design";
 }
 
 export function getWetLabHeroImage(route: string) {

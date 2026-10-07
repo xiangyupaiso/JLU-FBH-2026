@@ -2,7 +2,7 @@ import type { WikiPageContent } from "../../components/wiki/wikiPageTypes";
 export const measurementPage: WikiPageContent = {
   route: "/measurement",
   category: "wet-lab",
-  chapter: "Wet Lab / 03 of 05",
+  chapter: "Wet Lab / 03 of 04",
   eyebrow: "Measurement · Quantify the claim",
   title: "Measurement",
   lede: "Calibration, controls, range, and uncertainty beside every result.",

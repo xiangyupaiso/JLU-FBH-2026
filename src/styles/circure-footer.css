@@ -1,0 +1,448 @@
+/* ============================================================================
+   CirCure footer — edge-to-edge closing panel + emblem easter egg.
+
+   The panel is a sibling of <Routes> in App.tsx, so it inherits none of the
+   reader-route tokens. It is therefore its own palette carrier: Navbar's module
+   test is mirrored onto <footer class="circure-footer is-<module>-page">, and
+   every route-palette-<module>.css names `.circure-footer.is-<module>-page`
+   alongside `.wiki-page--*` and `.site-header.is-*`. That keeps the README's
+   "module colour has exactly one home" contract true.
+
+   Reader footers derive from their module palette. Home shares its pink
+   entry surface with the final illustration through a global token.
+   ========================================================================== */
+
+/* Fallbacks for routes without a reader module palette.
+
+   These three must not sit on the bare `.circure-footer` selector. Each palette
+   file is imported by its own page module (`roster.tsx` imports the team
+   palette, `model.tsx` the dry-lab one), so the footer only ever competes with
+   the one palette its route pulled in — and at equal specificity, whichever
+   stylesheet Vite emitted last would win. That silently overrode the real
+   palette on four of the five routes. `:where()` drops this declaration to zero
+   specificity so `.circure-footer.is-<module>-page` always wins.
+
+   Only `--route-main` needs this treatment. Every `--footer-*` value below is
+   declared once on `.circure-footer` and *references* `--route-main`; custom
+   properties are substituted on the element at computed-value time, so those
+   derivations already follow whichever module palette is in force. */
+:where(.circure-footer) {
+  --route-main: #b4dff0;
+  --route-soft: #e0f5ee;
+  --route-base: #fdf5d1;
+}
+
+/* The panel continues the reader's own page surface. `--route-base` is exactly
+   what `.wiki-page--route` paints behind the article (`--route-page-bg`), so
+   the footer joins it with no seam — which is the contract the reader skin
+   already states for its closing block. Sampling the article's colour is also
+   why the earlier navy panel and the module-tinted panel both looked wrong:
+   both invented a second surface where there should only ever be one. */
+.circure-footer {
+  /* Start at the exact page colour; warm the paper gradually below the join. */
+  --footer-surface: var(--route-base);
+  --footer-deep: color-mix(in srgb, var(--route-base) 76%, #f2e9d8);
+  /* Ink: the module main is a pale tint, so it has to be mixed most of the way
+     to near-black before it is legible as type. */
+  --footer-ink: color-mix(in srgb, var(--route-main) 10%, #1b1719);
+  --footer-muted: color-mix(in srgb, var(--route-main) 16%, #55504c);
+  --footer-accent: color-mix(in srgb, var(--route-main) 74%, #1b1719);
+  /* Derived from the panel's own ink, not `--route-ink`: that token is only
+     declared inside `.wiki-page--route` scope and would resolve to nothing
+     here, silently collapsing the hairline to `transparent`. */
+  --footer-line: color-mix(in srgb, #1b1719 16%, transparent);
+  /* Disc plate behind the emblem — still light, so the multiply-blended navy
+     line art inside `.brand-emblem-disc` keeps its contrast. */
+  --footer-disc: #fcf8f1;
+
+  position: relative;
+  display: block;
+  width: 100%;
+  /* Zero, always. The reader routes set the document background to navy
+     (`body:has(.route--reader)` in wiki-route-skin.css) as a backdrop behind
+     the pinned article; any space above the footer would expose it as a hard
+     blue band across the page. Non-reader pages have no such backdrop, and
+     their <main> already carries its own `.mt-5`. */
+  margin-top: 0;
+  color: var(--footer-ink);
+  font-family: var(--font-body);
+}
+
+.circure-footer.is-home-page {
+  --route-main: var(--care);
+  --footer-surface: var(--home-footer-surface);
+  --footer-deep: color-mix(in srgb, var(--home-footer-surface) 76%, #f7e7e6);
+}
+
+/* ----------------------------------------------------------------------------
+   1. Panel — full-bleed surface, 1120px inner column (the reader's own width,
+      so the footer and the article share one measure).
+   -------------------------------------------------------------------------- */
+
+.circure-footer__panel {
+  position: relative;
+  width: 100%;
+  max-width: none;
+  padding: clamp(48px, 6vw, 84px) clamp(24px, 4.7vw, 72px)
+    clamp(28px, 3vw, 40px);
+  /* Continue the page surface beneath the inset divider. */
+  background: linear-gradient(
+    180deg,
+    var(--footer-surface) 0%,
+    var(--footer-deep) 100%
+  );
+}
+
+/* A quiet boundary between page content and footer, aligned to the inner column. */
+.circure-footer__panel::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: min(1120px, calc(100% - 2 * clamp(24px, 4.7vw, 72px)));
+  height: 1px;
+  transform: translateX(-50%);
+  background: linear-gradient(
+    to right,
+    transparent,
+    var(--footer-line) 12%,
+    var(--footer-line) 88%,
+    transparent
+  );
+  pointer-events: none;
+}
+
+.circure-footer__inner {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+  column-gap: clamp(40px, 6vw, 88px);
+  width: min(1120px, 100%);
+  margin: 0 auto;
+}
+
+/* ----------------------------------------------------------------------------
+   2. Marks — two rows, left aligned, each row a crest/seal and its wordmark.
+      Per-mark display widths live in `src/data/footer.ts`; nothing here
+      normalises them, because the sources differ by an order of magnitude
+      (crest 4195px vs seal 295px).
+   -------------------------------------------------------------------------- */
+
+.circure-footer__marks {
+  --mark-gap: clamp(16px, 1.8vw, 26px);
+  display: grid;
+  grid-column: 2;
+  grid-row: 1;
+  align-self: center;
+  justify-items: start;
+  gap: clamp(20px, 2.4vw, 32px);
+}
+
+/* Both rows use the same columns, including when the wordmarks shrink on mobile. */
+.circure-footer__mark-row {
+  display: grid;
+  grid-template-columns: clamp(64px, 22vw, var(--crest-size)) minmax(
+      0,
+      var(--wordmark-size)
+    );
+  align-items: center;
+  gap: var(--mark-gap);
+  width: 100%;
+}
+
+.circure-footer__mark {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.circure-footer__mark:not(.circure-footer__mark--word) {
+  justify-self: center;
+}
+
+/* ----------------------------------------------------------------------------
+   3. Contact — the heading sits above the address, not above the marks.
+   -------------------------------------------------------------------------- */
+
+.circure-footer__contact {
+  display: grid;
+  grid-column: 1;
+  grid-row: 1;
+  justify-items: start;
+  gap: clamp(18px, 2vw, 26px);
+  margin-top: 0;
+  text-align: left;
+}
+
+.circure-footer__contact-title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(42px, 5.8vw, 78px);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  color: var(--footer-ink);
+}
+
+/* The full stop is the one accent on the line, as on the reference card. */
+.circure-footer__contact-title em {
+  color: var(--footer-accent);
+  font-style: normal;
+}
+
+.circure-footer__address {
+  display: grid;
+  gap: 3px;
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: clamp(14px, 1.15vw, 16px);
+  font-weight: 300;
+  line-height: 1.6;
+  color: var(--footer-muted);
+  text-wrap: balance;
+}
+
+.circure-footer__email {
+  display: inline-flex;
+  min-height: 48px;
+  align-items: center;
+  gap: 24px;
+  font-family: var(--font-body);
+  font-size: clamp(17px, 1.6vw, 23px);
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  color: var(--footer-ink);
+  transition: color 200ms var(--ease-out);
+}
+
+.circure-footer__email:hover,
+.circure-footer__email:focus-visible {
+  color: var(--footer-ink);
+  text-underline-offset: 4px;
+  text-decoration-color: currentColor;
+}
+
+/* `text-decoration: underline` on the anchor would run the rule straight
+   through the whole string, and the browser then flags `jlu-fbh.cn` as a
+   top-level domain. Underlining only the local part keeps the address reading
+   as one token. */
+.circure-footer__email span {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-color: transparent;
+  transition: text-decoration-color 200ms var(--ease-out);
+}
+
+.circure-footer__email:hover span,
+.circure-footer__email:focus-visible span {
+  text-decoration-color: currentColor;
+}
+
+/* ----------------------------------------------------------------------------
+   4. Partners — the Cancer Center at full size, the supporting marks as bare
+      icons in two rows beside it. No captions: the marks are recognition cues
+      for people who already know the project, and a row of six identical
+      labels would only add noise.
+   -------------------------------------------------------------------------- */
+
+.circure-footer__partners {
+  display: grid;
+  grid-column: 1 / -1;
+  justify-items: center;
+  gap: clamp(14px, 1.6vw, 20px);
+  margin-top: clamp(36px, 5vw, 64px);
+  padding-block: clamp(32px, 4vw, 52px);
+  border-top: 1px solid var(--footer-line);
+  border-bottom: 1px solid var(--footer-line);
+  text-align: center;
+}
+
+.circure-footer__partners-label {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--footer-muted);
+}
+
+/* Two columns: the primary mark keeps its own aspect ratio at full size while
+   the support rows stack beside it. `align-items: center` seats the primary
+   mark against the middle of the two rows rather than the top. */
+.circure-footer__partners-body {
+  display: flex;
+  align-items: center;
+  gap: clamp(48px, 6.5vw, 96px);
+}
+
+.circure-footer__partners-primary {
+  display: block;
+  height: auto;
+  object-fit: contain;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+/* Grid, not centred flex rows: a `justify-content: center` row on each line
+   centres each row on its own width, so a wide row and a narrow row end up
+   offset from each other — the pair reads as scattered. A fixed two-column grid
+   puts every mark in the same column across both rows, which is what makes the
+   block read as a set. */
+.circure-footer__partners-support {
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  align-items: center;
+  justify-items: center;
+  column-gap: clamp(34px, 4.4vw, 68px);
+  row-gap: clamp(26px, 3.2vw, 44px);
+}
+
+.circure-footer__partners-row {
+  display: contents;
+}
+
+.circure-footer__partners-mark {
+  display: block;
+  height: auto;
+  max-height: 54px;
+  object-fit: contain;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+/* ----------------------------------------------------------------------------
+   5. Colophon — the licence notice and the repository link. iGEM requires both
+      on every page; their wording is fixed by `src/data/footer.ts`.
+   -------------------------------------------------------------------------- */
+
+.circure-footer__colophon {
+  position: relative;
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px clamp(18px, 2vw, 32px);
+  margin-top: 0;
+  padding-top: 18px;
+  border-top: 0;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.02em;
+  line-height: 1.6;
+  color: var(--footer-muted);
+}
+
+.circure-footer__colophon a {
+  color: color-mix(in srgb, var(--footer-ink) 84%, transparent);
+  font-weight: 600;
+  text-decoration-color: color-mix(
+    in srgb,
+    var(--footer-accent) 62%,
+    transparent
+  );
+  text-underline-offset: 3px;
+  transition:
+    color 180ms var(--ease-out),
+    text-decoration-color 180ms var(--ease-out);
+}
+
+.circure-footer__colophon a:hover,
+.circure-footer__colophon a:focus-visible {
+  color: var(--footer-accent);
+  text-decoration-color: var(--footer-accent);
+}
+
+/* Tactile contact link and the restrained two-column contact spread. */
+.circure-footer__email-arrow {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--footer-line);
+  border-radius: 50%;
+  text-decoration: none !important;
+  transition:
+    transform 240ms var(--ease-out),
+    background-color 240ms var(--ease-out);
+}
+.circure-footer__email:hover .circure-footer__email-arrow {
+  transform: rotate(45deg);
+  background: color-mix(in srgb, var(--footer-accent) 12%, transparent);
+}
+.circure-footer a:focus-visible {
+  outline: 2px solid var(--footer-ink);
+  outline-offset: 4px;
+}
+.circure-footer__colophon > span {
+  flex: 1 1 360px;
+}
+.circure-footer__colophon a {
+  text-decoration: underline;
+}
+@media (max-width: 900px) {
+  .circure-footer__inner {
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+    column-gap: 32px;
+  }
+  .circure-footer__marks {
+    --crest-size: 64px !important;
+    --wordmark-size: 180px !important;
+    --mark-gap: 14px;
+  }
+  .circure-footer__partners-primary {
+    width: 104px;
+  }
+  .circure-footer__partners-mark {
+    max-height: 44px;
+  }
+  .circure-footer__partners-body {
+    gap: 32px;
+  }
+}
+@media (max-width: 700px) {
+  .circure-footer__inner {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .circure-footer__marks {
+    grid-column: 1;
+    grid-row: 2;
+    margin-top: 36px;
+  }
+  .circure-footer__contact {
+    grid-column: 1;
+    grid-row: 1;
+  }
+  .circure-footer__partners-body {
+    flex-direction: column;
+    gap: 24px;
+  }
+  .circure-footer__partners-primary {
+    width: 116px;
+  }
+  .circure-footer__partners-support {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+    width: 100%;
+  }
+  .circure-footer__partners-mark {
+    max-width: 100%;
+  }
+  .circure-footer__colophon {
+    gap: 16px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .circure-footer a,
+  .circure-footer__email-arrow {
+    transition: none;
+  }
+  .circure-footer__email:hover .circure-footer__email-arrow {
+    transform: none;
+  }
+}

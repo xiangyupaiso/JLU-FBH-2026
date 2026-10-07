@@ -5,9 +5,22 @@ import "../../styles/circure-nav.css";
 import "../../styles/circure-search.css";
 import "../../styles/circure-back-to-top.css";
 import "../../styles/circure-cursor.css";
+import "../../styles/circure-footer.css";
+/* All five module palettes are loaded here, once, rather than by each page
+   module. The footer renders outside <Routes> and so outside every palette
+   scope, and it is on the page whichever route you are on — a palette that is
+   only pulled in by `roster.tsx` simply does not exist on /model, which left
+   the footer on its fallback colour on four of the five routes. The per-page
+   imports stay in place; they are idempotent, since every rule here is scoped
+   to its own `.wiki-page--*` / `.is-<module>-page` class. */
+import "../../styles/route-palette-team.css";
+import "../../styles/route-palette-project.css";
+import "../../styles/route-palette-wetlab.css";
+import "../../styles/route-palette-drylab.css";
+import "../../styles/route-palette-engagement.css";
 import { Navigate, Route, Routes, useLocation } from "react-router-dom";
 import { getPathMapping, stringToSlug } from "../../utils";
-import { useEffect, useLayoutEffect } from "react";
+import { Suspense, useEffect, useLayoutEffect, type ReactNode } from "react";
 import { Navbar } from "../../components/Navbar";
 import { Header } from "../../components/Header";
 import { NotFound } from "../../components/NotFound";
@@ -22,10 +35,19 @@ import {
 const TEAM_ROUTES = new Set(["/roster", "/attributions", "/activities"]);
 
 const WET_LAB_ROUTES = new Set([
+  "/design",
   "/experiments",
-  "/notebook",
   "/measurement",
   "/alternative-platform",
+]);
+
+const PROJECT_ROUTES = new Set([
+  "/description",
+  "/engineering",
+  "/results",
+  "/contribution",
+  "/visual-design",
+  "/notebook",
   "/safety-and-security",
 ]);
 
@@ -51,14 +73,20 @@ const HOME_ROUTE = "/";
 // per-module palettes.
 const ROUTE_READER_ROUTES = new Set([
   ...TEAM_ROUTES,
+  ...PROJECT_ROUTES,
   ...WET_LAB_ROUTES,
   ...DRY_LAB_ROUTES,
   ...ENGAGEMENT_ROUTES,
-  "/description",
-  "/engineering",
-  "/results",
-  "/contribution",
 ]);
+
+// This effect commits only after the selected lazy page has mounted. Measuring
+// readiness from App itself could inspect the Suspense fallback or the old page.
+function PageReady({ children }: { children: ReactNode }) {
+  useEffect(() => {
+    hidePageLoaderWhenReady();
+  }, []);
+  return children;
+}
 
 const App = () => {
   const { pathname } = useLocation();
@@ -66,14 +94,57 @@ const App = () => {
   const currentPath =
     pathname.split(`${stringToSlug(import.meta.env.VITE_TEAM_NAME)}`).pop() ||
     "/";
-  const isRouteReader = ROUTE_READER_ROUTES.has(currentPath);
 
   // Each route loads its own art on demand, so every route change is covered
   // by the static loader from index.html until that route is presentable.
   // Layout effect: the loader must be up before the new page's first paint.
   useLayoutEffect(() => {
     showPageLoader();
-    hidePageLoaderWhenReady();
+  }, [pathname]);
+
+  // React Router can retain the previous page while a lazy route suspends.
+  // Cover a real in-app navigation before that transition starts, not only
+  // after the new pathname finally commits.
+  useEffect(() => {
+    const committedPath = window.location.pathname;
+    const coverNavigation = (event: MouseEvent) => {
+      if (
+        event.button !== 0 ||
+        event.metaKey ||
+        event.ctrlKey ||
+        event.shiftKey ||
+        event.altKey
+      )
+        return;
+      const link =
+        event.target instanceof Element
+          ? event.target.closest<HTMLAnchorElement>("a[href]")
+          : null;
+      if (
+        !link ||
+        link.hasAttribute("download") ||
+        (link.target && link.target !== "_self")
+      )
+        return;
+      const target = new URL(link.href, window.location.href);
+      if (
+        target.origin === window.location.origin &&
+        target.pathname.startsWith(import.meta.env.BASE_URL) &&
+        target.pathname !== window.location.pathname
+      )
+        showPageLoader();
+    };
+    const coverHistoryNavigation = () => {
+      if (window.location.pathname !== committedPath) showPageLoader();
+      else if (!document.getElementById("page-loader")?.hidden)
+        hidePageLoaderWhenReady();
+    };
+    document.addEventListener("click", coverNavigation, true);
+    window.addEventListener("popstate", coverHistoryNavigation);
+    return () => {
+      document.removeEventListener("click", coverNavigation, true);
+      window.removeEventListener("popstate", coverHistoryNavigation);
+    };
   }, [pathname]);
 
   // Set Page Title
@@ -118,55 +189,65 @@ const App = () => {
       <Navbar />
 
       {/* Header and PageContent */}
-      <Routes>
-        {Object.entries(pathMapping).map(
-          ([path, { title, lead, component: Component }]) => (
-            <Route
-              key={path}
-              path={path}
-              element={
-                path === HOME_ROUTE ? (
-                  <Component />
-                ) : ROUTE_READER_ROUTES.has(path) ? (
-                  <Component />
-                ) : (
-                  <>
-                    <Header title={title || ""} lead={lead || ""} />
-                    <div className="container">
+      <Suspense fallback={null}>
+        <PageReady key={pathname}>
+          <Routes>
+            {Object.entries(pathMapping).map(
+              ([path, { title, lead, component: Component }]) => (
+                <Route
+                  key={path}
+                  path={path}
+                  element={
+                    path === HOME_ROUTE ? (
                       <Component />
-                    </div>
-                  </>
-                )
+                    ) : ROUTE_READER_ROUTES.has(path) ? (
+                      <Component />
+                    ) : (
+                      <>
+                        <Header title={title || ""} lead={lead || ""} />
+                        <div className="container">
+                          <Component />
+                        </div>
+                      </>
+                    )
+                  }
+                />
+              ),
+            )}
+            <Route path="/team" element={<Navigate to="/roster" replace />} />
+            <Route
+              path="/attribution"
+              element={<Navigate to="/attributions" replace />}
+            />
+            <Route
+              path="/art"
+              element={<Navigate to="/visual-design" replace />}
+            />
+            <Route
+              path="/safety"
+              element={<Navigate to="/safety-and-security" replace />}
+            />
+            <Route
+              path="*"
+              element={
+                <>
+                  <Header
+                    title="Not Found"
+                    lead="The requested URL was not found on this server."
+                  />
+                  <NotFound />
+                </>
               }
             />
-          ),
-        )}
-        <Route path="/team" element={<Navigate to="/roster" replace />} />
-        <Route
-          path="/attribution"
-          element={<Navigate to="/attributions" replace />}
-        />
-        <Route
-          path="*"
-          element={
-            <>
-              <Header
-                title="Not Found"
-                lead="The requested URL was not found on this server."
-              />
-              <NotFound />
-            </>
-          }
-        />
-      </Routes>
+          </Routes>
+        </PageReady>
+      </Suspense>
 
       <BackToTop />
       <SheepCursor />
 
       {/* MUST mention license AND have a link to team wiki's repository on gitlab.igem.org */}
-      <Footer
-        variant={isRouteReader ? "route" : undefined}
-      />
+      <Footer />
     </>
   );
 };

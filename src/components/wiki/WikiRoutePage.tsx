@@ -20,6 +20,7 @@ import type {
   WikiPageContent,
   WikiSection,
 } from "./wikiPageTypes";
+import { linkify, renderInlineFormatting } from "./proseInline";
 import { WikiLineSidebar } from "./WikiLineSidebar";
 import { WikiNextRecord } from "./WikiNextRecord";
 import { WikiProtocolModal } from "./WikiProtocolViewer";
@@ -266,86 +267,53 @@ function renderSubheadingTitle(title: string) {
   const sub = title.slice(match.index + 1).trim();
   return (
     <>
-      <span className="wiki-subheading-line wiki-subheading-line--lead">{lead}</span>
+      <span className="wiki-subheading-line wiki-subheading-line--lead">
+        {lead}
+      </span>
       {sub ? (
-        <span className="wiki-subheading-line wiki-subheading-line--sub">{sub}</span>
+        <span className="wiki-subheading-line wiki-subheading-line--sub">
+          {sub}
+        </span>
       ) : null}
     </>
   );
 }
 
 /**
- * Turn an inline Markdown link into an anchor.
+ * Table cell content: `**bold**` plus the source manuscripts' literal `<br>`
+ * line breaks.
  *
- * Several pages are migrated from Markdown drafts whose "Further details are
- * provided in [label](url)" cross-references would otherwise print as literal
- * bracket-and-paren text. Deliberately recognises ONLY `[text](https://…)`, so
- * an existing citation form such as `(Garrido-Castro et al., 2019)` — which
- * `renderInlineFormatting` also leaves alone — cannot be affected.
+ * Both table blocks use this — `table` as well as `parts-table`. The plain
+ * `table` block used to emit cells and captions as raw strings, which printed
+ * the data layer's `**raw**` markers literally; no page had ever put emphasis in
+ * a cell, so the two blocks had quietly drifted apart. Rendering both through
+ * the same helper keeps them identical, and for every existing page (no `**`, no
+ * `<br>` in any cell or caption) the output is unchanged.
  */
-const MD_LINK_RE = /\[([^\]\n]{1,120})\]\((https?:\/\/[^\s)]+)\)/g;
-
-function linkify(text: string): ReactNode {
-  if (!text || !text.includes("](")) return renderInlineFormatting(text);
-
-  const nodes: ReactNode[] = [];
-  let lastIndex = 0;
-  let match: RegExpExecArray | null;
-
-  MD_LINK_RE.lastIndex = 0;
-  while ((match = MD_LINK_RE.exec(text)) !== null) {
-    if (match.index > lastIndex) {
-      nodes.push(
-        <span key={`t-${lastIndex}`}>
-          {renderInlineFormatting(text.slice(lastIndex, match.index))}
-        </span>,
-      );
-    }
-    nodes.push(
-      <a
-        className="wiki-prose-link"
-        href={match[2]}
-        key={`l-${match.index}`}
-        rel="noreferrer"
-        target="_blank"
-      >
-        {match[1]}
-      </a>,
-    );
-    lastIndex = match.index + match[0].length;
-  }
-
-  if (!nodes.length) return renderInlineFormatting(text);
-  if (lastIndex < text.length) {
-    nodes.push(
-      <span key={`t-${lastIndex}`}>
-        {renderInlineFormatting(text.slice(lastIndex))}
-      </span>,
-    );
-  }
-  return nodes;
-}
-
-function renderInlineFormatting(text: string): ReactNode {
-  if (!text || !text.includes("**")) {
-    return text;
-  }
-  const parts = text.split(/(\*\*[^*]+?\*\*)/g);
-  return parts.map((part, index) => {
-    if (part.startsWith("**") && part.endsWith("**")) {
-      return <strong key={index}>{part.slice(2, -2)}</strong>;
-    }
-    return part;
-  });
+function renderTableCell(cell: string): ReactNode {
+  if (!cell.includes("<br")) return renderInlineFormatting(cell);
+  const lines = cell.split(/<br\s*\/?>/);
+  return lines.map((line, index) => (
+    <span key={index}>
+      {renderInlineFormatting(line)}
+      {index < lines.length - 1 ? <br /> : null}
+    </span>
+  ));
 }
 
 function splitNoteContent(body: string): string[] {
   if (!body) return [];
   if (body.includes("\n")) {
-    return body.split(/\n+/).map((s) => s.trim()).filter(Boolean);
+    return body
+      .split(/\n+/)
+      .map((s) => s.trim())
+      .filter(Boolean);
   }
   if (/1\.\s+.*2\.\s+/.test(body)) {
-    return body.split(/(?=\b\d+\.\s+)/).map((s) => s.trim()).filter(Boolean);
+    return body
+      .split(/(?=\b\d+\.\s+)/)
+      .map((s) => s.trim())
+      .filter(Boolean);
   }
   return [body.trim()];
 }
@@ -375,9 +343,14 @@ function renderProseParagraphs(
     );
   };
 
-  /** Linkify after `**bold**` so the emphasis split cannot break a URL apart. */
+  /**
+   * Linkify after `**bold**` so the emphasis split cannot break a URL apart.
+   * Inline renderers receive `linkify` as their fallback — it delegates to
+   * `renderInlineFormatting` for any text without a `](`, so a citation layer
+   * inherits plain emphasis rendering and gains Markdown links for free.
+   */
   const prose = (text: string): ReactNode =>
-    inline ? inline(text, renderInlineFormatting) : linkify(text);
+    inline ? inline(text, linkify) : linkify(text);
 
   paragraphs.forEach((paragraph, idx) => {
     const stepMatch = paragraph.match(/^\s*(\d+)[.、]\s+(.*)$/s);
@@ -417,9 +390,7 @@ function renderProseParagraphs(
       return;
     }
 
-    elements.push(
-      <p key={`p-${idx}`}>{prose(paragraph)}</p>,
-    );
+    elements.push(<p key={`p-${idx}`}>{prose(paragraph)}</p>);
   });
 
   flushSteps("flush-end");
@@ -519,12 +490,14 @@ function RouteBlock({
           tabIndex={0}
         >
           <table className="wiki-table">
-            {block.caption ? <caption>{block.caption}</caption> : null}
+            {block.caption ? (
+              <caption>{renderInlineFormatting(block.caption)}</caption>
+            ) : null}
             <thead>
               <tr>
                 {block.headers.map((header) => (
                   <th scope="col" key={header}>
-                    {header}
+                    {renderInlineFormatting(header)}
                   </th>
                 ))}
               </tr>
@@ -535,12 +508,66 @@ function RouteBlock({
                   {row.map((cell, cellIndex) =>
                     cellIndex === 0 ? (
                       <th scope="row" key={`${rowIndex}-${cellIndex}`}>
-                        {cell}
+                        {renderTableCell(cell)}
                       </th>
                     ) : (
-                      <td key={`${rowIndex}-${cellIndex}`}>{cell}</td>
+                      <td key={`${rowIndex}-${cellIndex}`}>
+                        {renderTableCell(cell)}
+                      </td>
                     ),
                   )}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      );
+    case "parts-table":
+      return (
+        <div
+          className="wiki-table-wrap wiki-table-wrap--parts"
+          data-wiki-reveal
+          role="region"
+          aria-label={block.caption ?? "Table"}
+          tabIndex={0}
+        >
+          <table className="wiki-table wiki-table--parts">
+            {block.caption ? (
+              <caption>{renderInlineFormatting(block.caption)}</caption>
+            ) : null}
+            <thead>
+              <tr>
+                {block.headers.map((header) => (
+                  <th scope="col" key={header}>
+                    {renderInlineFormatting(header)}
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {block.rows.map((row) => (
+                <tr key={row.name}>
+                  <th scope="row">
+                    {/*
+                     * The part name IS the link. A Registry accession is a
+                     * hyperlink, not a name with its URL printed beside it —
+                     * printing the address adds a line of machine text to every
+                     * row and nothing a reader needs.
+                     */}
+                    <a
+                      className="wiki-table__part-link"
+                      href={row.href}
+                      rel="noreferrer"
+                      target="_blank"
+                    >
+                      {renderInlineFormatting(row.name)}
+                    </a>
+                  </th>
+                  {row.cells.map((cell, cellIndex) => (
+                    <td key={`${row.name}-${cellIndex}`}>
+                      {renderTableCell(cell)}
+                    </td>
+                  ))}
                 </tr>
               ))}
             </tbody>
@@ -586,7 +613,9 @@ function RouteBlock({
           data-wiki-outline-parent={sectionId}
           data-wiki-reveal
         >
-          <span className="wiki-subheading__title">{renderSubheadingTitle(block.title)}</span>
+          <span className="wiki-subheading__title">
+            {renderSubheadingTitle(block.title)}
+          </span>
         </h3>
       );
     case "feature":
@@ -597,7 +626,12 @@ function RouteBlock({
       );
     case "dbtl":
       return (
-        <div className="wiki-dbtl" id={block.id} data-wiki-dbtl data-wiki-reveal>
+        <div
+          className="wiki-dbtl"
+          id={block.id}
+          data-wiki-dbtl
+          data-wiki-reveal
+        >
           <ol className="wiki-dbtl__track">
             {block.stages.map((stage, stageIndex) => (
               <li
@@ -633,7 +667,10 @@ function RouteBlock({
         <div className="wiki-references" data-wiki-reveal>
           <ol className="wiki-references__list">
             {block.items.map((entry, index) => (
-              <li className="wiki-references__item" key={`${entry.label}-${index}`}>
+              <li
+                className="wiki-references__item"
+                key={`${entry.label}-${index}`}
+              >
                 <span className="wiki-references__index" aria-hidden="true">
                   [{index + 1}]
                 </span>
@@ -690,7 +727,9 @@ function RouteBlock({
         <figure className="wiki-epigraph" data-wiki-reveal>
           <blockquote>“{renderInlineFormatting(block.quote)}”</blockquote>
           {block.translationZh ? (
-            <p className="wiki-epigraph__zh">{renderInlineFormatting(block.translationZh)}</p>
+            <p className="wiki-epigraph__zh">
+              {renderInlineFormatting(block.translationZh)}
+            </p>
           ) : null}
           <figcaption>
             {block.attribution} · {block.attributionRole}
@@ -740,11 +779,15 @@ function renderSectionTitle(title: string) {
   return (
     <>
       <span className="wiki-heading-line wiki-heading-line--lead">
-        <span className="wiki-heading-marker wiki-heading-marker--lead">{lead}</span>
+        <span className="wiki-heading-marker wiki-heading-marker--lead">
+          {lead}
+        </span>
       </span>
       {sub ? (
         <span className="wiki-heading-line wiki-heading-line--sub">
-          <span className="wiki-heading-marker wiki-heading-marker--sub">{sub}</span>
+          <span className="wiki-heading-marker wiki-heading-marker--sub">
+            {sub}
+          </span>
         </span>
       ) : null}
     </>
@@ -953,7 +996,9 @@ function RouteSection({
           {section.note ? (
             <aside className="wiki-boundary" data-wiki-reveal>
               {section.note.label ? (
-                <span className="wiki-boundary__label">{section.note.label}</span>
+                <span className="wiki-boundary__label">
+                  {section.note.label}
+                </span>
               ) : null}
               <div className="wiki-boundary__body">
                 {splitNoteContent(section.note.body).map((line, index) => (
@@ -990,7 +1035,6 @@ export function WikiRoutePage({
   const interfaceRef = useRef<HTMLDivElement>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
 
-
   const [activeProtocolModal, setActiveProtocolModal] = useState<{
     pair: ExperimentProtocolPair;
     initialTab?: "flow" | "inventory";
@@ -1017,7 +1061,6 @@ export function WikiRoutePage({
       return next;
     });
   };
-
 
   useEffect(() => {
     const handleHash = () => {
@@ -1196,7 +1239,12 @@ export function WikiRoutePage({
                 aria-label="Open table of contents"
                 onClick={() => setTocOpen(true)}
               >
-                <svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true">
+                <svg
+                  viewBox="0 0 20 20"
+                  width="18"
+                  height="18"
+                  aria-hidden="true"
+                >
                   <path
                     d="M3 5h14M3 10h14M3 15h9"
                     stroke="currentColor"
@@ -1224,7 +1272,9 @@ export function WikiRoutePage({
                 aria-label={`${content.title} article`}
               >
                 <article className="wiki-article">
-                  <InlineRendererContext.Provider value={inlineRenderer ?? null}>
+                  <InlineRendererContext.Provider
+                    value={inlineRenderer ?? null}
+                  >
                     {content.sections.map((section) => (
                       <MemoRouteSection
                         key={section.id}

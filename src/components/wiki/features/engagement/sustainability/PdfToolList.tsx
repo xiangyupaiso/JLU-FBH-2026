@@ -50,32 +50,36 @@ export function PdfToolList({
 
   return (
     <div className={`sust-archive sust-archive--${grid}`}>
-      <div className="sust-archive__cabinet">
-        {tools.map((tool, index) => (
-          <button
-            key={tool.title}
-            type="button"
-            role="tab"
-            id={tabId(index)}
-            aria-selected={index === open}
-            aria-controls={panelId}
-            className="sust-folder"
-            data-tint={TINTS[index % TINTS.length]}
-            onClick={() => setOpen(index)}
-          >
-            {/* The paper that slides out of the folder when it is opened. */}
-            <span className="sust-folder__paper" aria-hidden="true">
-              <span className="sust-folder__paper-label">{tool.title}</span>
-            </span>
-            <span className="sust-folder__cover">
-              <span className="sust-folder__no">FILE {String(index + 1).padStart(2, "0")}</span>
-              <span className="sust-folder__title">{tool.title}</span>
-              <span className="sust-folder__meta">
-                {tool.pdfs.map((pdf) => pdfLabel(pdf.label)).join(" · ")}
+      {/* The cabinet stretches to the card's height so both columns align. */}
+      <div className="sust-archive__side">
+        <div className="sust-archive__cabinet" role="tablist">
+          {tools.map((tool, index) => (
+            <button
+              key={tool.title}
+              type="button"
+              role="tab"
+              id={tabId(index)}
+              aria-selected={index === open}
+              aria-controls={panelId}
+              className="sust-folder"
+              data-tint={TINTS[index % TINTS.length]}
+              onClick={() => setOpen(index)}
+            >
+              {/* The paper that slides out of the folder when it is opened. */}
+              <span className="sust-folder__paper" aria-hidden="true">
+                <span className="sust-folder__paper-label">{tool.title}</span>
               </span>
-            </span>
-          </button>
-        ))}
+              <span className="sust-folder__cover">
+                <span className="sust-folder__no">FILE {String(index + 1).padStart(2, "0")}</span>
+                <span className="sust-folder__title">{tool.title}</span>
+                <span className="sust-folder__meta">
+                  {tool.pdfs.map((pdf) => pdfLabel(pdf.label)).join(" · ")}
+                </span>
+              </span>
+            </button>
+          ))}
+        </div>
+        <p className="sust-archive__hint">Click the document to learn.</p>
       </div>
 
       <article
@@ -115,6 +119,50 @@ export function PdfToolList({
           ))}
         </div>
       </article>
+    </div>
+  );
+}
+
+/** English first, as the Evidence table lists them. */
+const byEnglishFirst = (a: { label: string }, b: { label: string }) =>
+  Number(b.label === "English") - Number(a.label === "English");
+
+/** Evidence summary of the Legacy tools: Tool / What it does / Download. */
+export function ToolTable({ tools }: { tools: ReadonlyArray<LegacyTool> }) {
+  return (
+    <div className="wiki-table-wrap sust-tool-table" role="region" aria-label="Reusable tools">
+      <table className="wiki-table">
+        <thead>
+          <tr>
+            <th scope="col">Tool</th>
+            <th scope="col">What it does</th>
+            <th scope="col">Download</th>
+          </tr>
+        </thead>
+        <tbody>
+          {tools.map((tool) => (
+            <tr key={tool.title}>
+              <th scope="row">{tool.title}</th>
+              <td>{tool.whatItDoes}</td>
+              <td className="sust-tool-table__links">
+                {[...tool.pdfs].sort(byEnglishFirst).map((pdf, index) => (
+                  <span key={pdf.fileName}>
+                    {index ? " / " : null}
+                    <a
+                      href={sustainabilityDocUrl(pdf.fileName)}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`${tool.title} (${pdf.label}), opens in a new tab`}
+                    >
+                      {pdf.label}
+                    </a>
+                  </span>
+                ))}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 }

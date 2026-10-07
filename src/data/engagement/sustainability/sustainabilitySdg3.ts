@@ -665,6 +665,8 @@ export const sdg3Chapter: SdgChapter = {
           "Clarifying **whom to ask, what to ask, how to follow up, and which findings need cross-checking**.",
         bestFor:
           "Interviews with patients, clinicians, public health professionals, healthcare financing stakeholders, and other groups requiring tailored or sensitive communication.",
+        whatItDoes:
+          "Tailor core questions, follow-up prompts, and methods for cross-checking findings to each stakeholder’s role, helping the team identify real needs more precisely.",
         pdfs: pdfPair("stakeholder-interview-guide"),
       },
       {
@@ -673,6 +675,8 @@ export const sdg3Chapter: SdgChapter = {
         whatItHelpsWith: "Identifying the **primary SDG, related SDGs, and rationale for each link**.",
         bestFor:
           "Organizing large volumes of stakeholder feedback and laying a clear foundation for alignment assessment and analysis across SDGs.",
+        whatItDoes:
+          "Identify the primary SDG and related SDGs based on stakeholder feedback, and document the rationale for each link to support subsequent analysis across SDGs.",
         pdfs: pdfPair("stakeholder-sdg-mapping-guide"),
       },
       {
@@ -682,6 +686,8 @@ export const sdg3Chapter: SdgChapter = {
           "Recording **how key feedback was handled, what changed, and the reasoning behind the final decision**.",
         bestFor:
           "Showing how stakeholder feedback led to concrete changes in project design, evaluation, or communication.",
+        whatItDoes:
+          "Track how stakeholder feedback is assessed, adopted, or held for further consideration, and how it translates into specific changes in project design, evaluation, or communication.",
         pdfs: pdfPair("feedback-to-action-record"),
       },
       {
@@ -691,6 +697,8 @@ export const sdg3Chapter: SdgChapter = {
           "Distinguishing **changes supported by current evidence, impacts that depend on specific conditions, and outcomes requiring future validation**.",
         bestFor:
           "Preparing the Consequences, Evidence, and Sustainability summaries while keeping claims within the limits of available evidence.",
+        whatItDoes:
+          "Document changes already made, potential long-term impacts, and the limits of available evidence, distinguishing supported findings from conditional inferences and future possibilities.",
         pdfs: pdfPair("sdg-impact-documentation-template"),
       },
     ],
@@ -730,7 +738,7 @@ export const sdg3Chapter: SdgChapter = {
       },
       {
         text: "Developed **four reusable tools, each available in Chinese and English, totaling eight files**, covering stakeholder interviews, SDG mapping, feedback-to-action tracking, and impact documentation to support reuse by other teams.",
-        link: { label: "Click here to learn more and download.", target: "legacy" },
+        toolTable: true,
       },
     ],
     significant: [

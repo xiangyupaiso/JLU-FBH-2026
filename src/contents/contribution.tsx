@@ -1,11 +1,10 @@
 import { WikiRoutePage } from "../components/wiki/WikiRoutePage";
 import {
-  ResourceShelf,
-  ResultGateTable,
-} from "../components/wiki/features/ProjectFeatures";
+  contributionFeatures,
+  renderContributionCitedText,
+} from "../components/wiki/features/project/ContributionPanels";
 import { getProjectHeroImage } from "../components/wiki/projectHeroAssets";
 import { contributionPage } from "../data/project/contributionPage";
-import "../styles/route-palette-project.css";
 
 export function Contribution() {
   return (
@@ -13,13 +12,11 @@ export function Contribution() {
       content={contributionPage}
       heroImage={getProjectHeroImage(contributionPage.route)}
       theme="project"
-      pageClassName="wiki-page--project"
+      pageClassName="wiki-page--project wiki-page--contribution"
       hideHeroCopy
-      features={{
-        "contribution-packages": <ResourceShelf />,
-        "contribution-reuse": <ResourceShelf />,
-        "contribution-release": <ResultGateTable />,
-      }}
+      outlineDepth={2}
+      features={contributionFeatures()}
+      inlineRenderer={renderContributionCitedText}
     />
   );
 }

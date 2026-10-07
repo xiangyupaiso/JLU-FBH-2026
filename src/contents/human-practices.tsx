@@ -5,7 +5,6 @@ import { HumanPracticesOriginTree } from "../components/wiki/features/HumanPract
 import { HpInteractiveWaterfall } from "../components/wiki/features/engagement/HpInteractiveWaterfall";
 import { getEngagementHeroImage } from "../components/wiki/engagementHeroAssets";
 import { humanPracticesPage } from "../data/engagement/humanPracticesPage";
-import "../styles/route-palette-engagement.css";
 
 export function HumanPractices() {
   return (

@@ -472,6 +472,14 @@ export function WikiLineSidebar({
                 >
                   {item.children.map((child) => {
                     const childPair = protocolMap.get(child.id);
+                    // Manuscript numbering can omit introductory sections.
+                    // The outline must use its displayed parent chapter instead.
+                    const childIndex = /^\d+$/.test(item.index)
+                      ? child.index.replace(/^\d+(?=\.)/, String(Number(item.index)))
+                      : child.index;
+                    const childLabel = child.index && child.label.startsWith(`${child.index} `)
+                      ? child.label.slice(child.index.length).trimStart()
+                      : child.label;
                     return (
                       <a
                         className={`wiki-outline__secondary ${ribbonTargetId === child.id ? "is-active" : ""
@@ -499,13 +507,13 @@ export function WikiLineSidebar({
                         aria-current={
                           ribbonTargetId === child.id ? "location" : undefined
                         }
-                        title={child.label}
+                        title={`${childIndex} ${childLabel}`.trim()}
                         key={child.id}
                       >
                         <span className="wiki-outline__sub-index">
-                          {child.index}
+                          {childIndex}
                         </span>
-                        <strong>{child.label}</strong>
+                        <strong>{childLabel}</strong>
                         {childPair ? (
                           <button
                             type="button"

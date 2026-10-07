@@ -1,0 +1,432 @@
+/* A locally rendered, intentionally hidden final chapter. No remote runtime. */
+.finale-seam {
+  display: grid;
+  place-items: center;
+  padding: 12px 24px 28px;
+  background: var(--footer-deep);
+}
+.finale-gate {
+  --gate-p: 0;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  min-height: 48px;
+  padding: 12px 18px;
+  border: 0;
+  background: transparent;
+  color: var(--footer-muted);
+  font: 400 10px/1.4 var(--font-mono);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition:
+    color 180ms var(--ease-out),
+    transform 180ms var(--ease-out);
+}
+.finale-gate:hover {
+  color: var(--footer-ink);
+}
+.finale-gate:active {
+  transform: scale(0.96);
+}
+.finale-gate__line {
+  position: absolute;
+  top: 0;
+  left: 18px;
+  right: 18px;
+  height: 1px;
+  background: var(--footer-accent);
+  transform: scaleX(calc(0.12 + var(--gate-p) * 0.88));
+  transition: transform 160ms var(--ease-out);
+}
+.finale-gate__arrow {
+  display: inline-block;
+  font-size: 16px;
+  transform: translateY(calc(var(--gate-p) * 7px));
+  transition: transform 160ms var(--ease-out);
+}
+.circure-hidden-finale {
+  --finale-ink: #f8e9e8;
+  --finale-accent: var(--care);
+  position: relative;
+  height: 0;
+  overflow: clip;
+  background: #21141f;
+  color: var(--finale-ink);
+  scroll-margin-top: var(--header-height);
+}
+.circure-hidden-finale.is-revealed {
+  height: auto;
+  min-height: calc(100svh - var(--header-height));
+}
+.circure-hidden-finale:focus {
+  outline: none;
+}
+.finale-stage {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: calc(100svh - var(--header-height));
+  padding: clamp(72px, 7vw, 104px) clamp(24px, 4.7vw, 72px);
+  background:
+    radial-gradient(
+      ellipse at 26% 50%,
+      rgba(215, 132, 179, 0.09),
+      transparent 56%
+    ),
+    #21141f;
+  animation: finale-curtain 700ms var(--ease-out) both;
+}
+.finale-icon-button {
+  position: absolute;
+  z-index: 2;
+  right: clamp(24px, 4.7vw, 72px);
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 12px;
+  border: 1px solid rgba(248, 233, 232, 0.18);
+  border-radius: 50%;
+  background: transparent;
+  color: #cdb5c3;
+  cursor: pointer;
+  transition:
+    color 180ms var(--ease-out),
+    background-color 180ms var(--ease-out),
+    transform 180ms var(--ease-out);
+}
+.finale-icon-button svg {
+  width: 20px;
+  height: 20px;
+  stroke: currentColor;
+  stroke-width: 1.3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.finale-close {
+  top: 24px;
+}
+.finale-replay {
+  bottom: 24px;
+}
+.finale-icon-button:hover {
+  color: var(--finale-ink);
+  background: rgba(248, 233, 232, 0.06);
+}
+.finale-icon-button:active {
+  transform: scale(0.96);
+}
+.finale-icon-button:focus-visible {
+  outline: 2px solid var(--finale-ink);
+  outline-offset: 4px;
+}
+.finale-composition {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 2fr) minmax(0, 0.15fr);
+  width: min(1280px, 100%);
+  margin: auto;
+  align-items: center;
+  gap: clamp(28px, 4vw, 68px);
+}
+.finale-emblem {
+  position: relative;
+  width: min(100%, 260px);
+  aspect-ratio: 1;
+  justify-self: center;
+  animation: finale-emblem-in 1100ms var(--ease-out) 300ms both;
+}
+.finale-emblem__disc {
+  position: absolute;
+  inset: 5%;
+  border-radius: 50%;
+  overflow: hidden;
+  background: #fcf8f1;
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.1),
+    0 20px 60px rgba(0, 0, 0, 0.18);
+}
+.finale-emblem__disc img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  mix-blend-mode: multiply;
+}
+.finale-emblem__ribbon {
+  animation: finale-ribbon-in 1000ms var(--ease-out) 1100ms both;
+}
+.finale-emblem__orbit {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  transform: rotate(-18deg);
+}
+.finale-emblem__orbit > circle:first-child {
+  stroke: rgba(248, 233, 232, 0.22);
+  stroke-width: 0.65;
+  stroke-dasharray: 2 7;
+}
+.finale-emblem__draw {
+  stroke: var(--finale-accent);
+  stroke-width: 1.25;
+  stroke-dasharray: 1;
+  animation: finale-draw 1500ms var(--ease-out) 500ms both;
+}
+.finale-emblem__node {
+  fill: var(--finale-accent);
+}
+.finale-brand {
+  position: relative;
+  min-width: 0;
+  padding-top: 20px;
+}
+.finale-wordmark {
+  position: relative;
+  width: 100%;
+  margin-top: clamp(24px, 4vw, 48px);
+}
+.finale-wordmark > svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+.finale-glyph-outline {
+  fill: none;
+  stroke: var(--finale-accent);
+  stroke-width: 1.2px;
+  stroke-dasharray: 1;
+  stroke-linecap: round;
+  animation: finale-draw 1300ms var(--ease-out)
+    calc(500ms + var(--glyph-index) * 70ms) both;
+}
+.finale-glyph-fill {
+  fill: var(--finale-ink);
+  animation: finale-fill 1000ms var(--ease-out)
+    calc(1400ms + var(--glyph-index) * 65ms) both;
+}
+.finale-particles {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+.finale-scan {
+  position: absolute;
+  left: 0;
+  top: -12px;
+  bottom: -12px;
+  width: 100%;
+  border-left: 1px solid var(--finale-accent);
+  pointer-events: none;
+  animation: finale-scan 1800ms var(--ease-out) 450ms both;
+}
+.finale-scan::before,
+.finale-scan::after {
+  content: "";
+  position: absolute;
+  left: -3px;
+  width: 7px;
+  height: 7px;
+  border: 1px solid var(--finale-accent);
+  background: #21141f;
+}
+.finale-scan::before {
+  top: 0;
+}
+.finale-scan::after {
+  bottom: 0;
+}
+.finale-tagline {
+  margin: 32px 0 0;
+  font: 400 clamp(20px, 2.6vw, 34px)/1.3 var(--font-editorial);
+  letter-spacing: -0.02em;
+  animation: finale-label-in 900ms var(--ease-out) 1800ms both;
+}
+.finale-tagline span {
+  color: var(--finale-accent);
+}
+.finale-thread {
+  display: block;
+  width: min(100%, 550px);
+  height: auto;
+  margin-top: 4px;
+  opacity: 0.65;
+}
+.finale-thread path {
+  stroke: var(--finale-accent);
+  stroke-width: 1;
+  stroke-linecap: round;
+  stroke-dasharray: 1;
+  animation: finale-draw 1800ms var(--ease-out) 1300ms both;
+}
+.finale-orbits {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+.finale-orbits i {
+  position: absolute;
+  width: 90%;
+  height: 85%;
+  left: 3%;
+  top: 3%;
+  border: 1px solid rgba(215, 132, 179, 0.07);
+  border-radius: 50%;
+  transform: rotate(-16deg);
+}
+.finale-orbits i:nth-child(2) {
+  width: 115%;
+  height: 120%;
+  left: -10%;
+  top: -15%;
+}
+.finale-orbits i:nth-child(3) {
+  width: 138%;
+  height: 152%;
+  left: -23%;
+  top: -31%;
+}
+@keyframes finale-curtain {
+  from {
+    clip-path: inset(40% 0 0);
+    opacity: 0.4;
+  }
+  to {
+    clip-path: inset(0);
+    opacity: 1;
+  }
+}
+@keyframes finale-emblem-in {
+  from {
+    opacity: 0;
+    transform: translateY(24px) rotate(-9deg) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes finale-ribbon-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes finale-draw {
+  from {
+    stroke-dashoffset: 1;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes finale-fill {
+  from {
+    opacity: 0;
+    clip-path: inset(100% 0 0);
+  }
+  to {
+    opacity: 1;
+    clip-path: inset(0);
+  }
+}
+@keyframes finale-label-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes finale-scan {
+  0% {
+    transform: translateX(0);
+    opacity: 0;
+  }
+  12% {
+    opacity: 0.75;
+  }
+  80% {
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+@media (max-width: 900px) {
+  .finale-composition {
+    grid-template-columns: minmax(0, 0.85fr) minmax(0, 2fr);
+    gap: 32px;
+  }
+  .finale-emblem {
+    width: min(100%, 210px);
+  }
+}
+@media (max-width: 600px) {
+  .finale-stage {
+    padding: 76px 24px max(76px, env(safe-area-inset-bottom));
+  }
+  .finale-composition {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 44px;
+  }
+  .finale-emblem {
+    width: 128px;
+    justify-self: start;
+    margin-left: 6px;
+  }
+  .finale-brand {
+    width: 90%;
+    justify-self: center;
+    padding-top: 0;
+  }
+  .finale-wordmark {
+    margin-top: 24px;
+  }
+  .finale-tagline {
+    margin-top: 24px;
+    font-size: 23px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .finale-stage,
+  .finale-stage *,
+  .finale-stage *::before,
+  .finale-stage *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+  .finale-particles,
+  .finale-scan {
+    display: none;
+  }
+  .finale-gate,
+  .finale-gate__line,
+  .finale-gate__arrow {
+    transition: none;
+  }
+  .finale-gate:active,
+  .finale-stage button:active {
+    transform: none;
+  }
+}

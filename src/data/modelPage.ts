@@ -94,7 +94,7 @@ export const modelEvidencePage: WikiPageContent = {
     },
     {
       id: "model-architecture",
-      index: "02",
+      index: "03",
       kicker: "Model architecture",
       navLabel: "Architecture",
       title: "An integrated Wet–Dry architecture.",
@@ -130,7 +130,7 @@ export const modelEvidencePage: WikiPageContent = {
     },
     {
       id: "model-epitope",
-      index: "03",
+      index: "04",
       kicker: "Model I · Epitope prioritisation",
       navLabel: "Epitope ranking",
       title: "Multi-criteria epitope prioritisation.",
@@ -160,7 +160,7 @@ export const modelEvidencePage: WikiPageContent = {
     },
     {
       id: "model-structure",
-      index: "04",
+      index: "05",
       kicker: "Model II · circRNA structure",
       navLabel: "circRNA structure",
       title: "Comparative assessment of circRNA constructs.",
@@ -190,7 +190,7 @@ export const modelEvidencePage: WikiPageContent = {
     },
     {
       id: "model-dynamics",
-      index: "05",
+      index: "06",
       kicker: "Model III · Expression dynamics",
       navLabel: "Expression dynamics",
       title: "Expression dynamics and experimental windows.",
@@ -220,7 +220,7 @@ export const modelEvidencePage: WikiPageContent = {
     },
     {
       id: "model-validation",
-      index: "06",
+      index: "07",
       kicker: "Cross-model validation",
       navLabel: "Validation",
       title: "Validation and sensitivity analysis.",
@@ -250,7 +250,7 @@ export const modelEvidencePage: WikiPageContent = {
     },
     {
       id: "model-wet-dry",
-      index: "07",
+      index: "08",
       kicker: "Wet–Dry iteration",
       navLabel: "Wet–Dry loop",
       title: "Wet–Dry feedback and design revision.",
@@ -280,7 +280,7 @@ export const modelEvidencePage: WikiPageContent = {
     },
     {
       id: "model-limitations",
-      index: "08",
+      index: "09",
       kicker: "Applicability and limits",
       navLabel: "Scope & limits",
       title: "Applicability, uncertainty, and limitations.",
@@ -310,7 +310,7 @@ export const modelEvidencePage: WikiPageContent = {
     },
     {
       id: "model-reproducibility",
-      index: "09",
+      index: "10",
       kicker: "Reproducibility",
       navLabel: "Reproducibility",
       title: "Reproducibility and computational release.",

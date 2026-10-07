@@ -3,13 +3,18 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SplitText } from "gsap/SplitText";
-import { HOME_EASE, HOME_SCRUB } from "./homeMotion";
+import {
+  HOME_EASE,
+  HOME_SCRUB,
+  HOME_STILL_RATIO,
+  stillHold,
+} from "./homeMotion";
 import { animateCircRnaSequence } from "./animateCircRnaSequence";
 import { animateHomeReading } from "./animateHomeReading";
 import { animateChallengeMorph } from "./animateChallengeMorph";
 import { animateTear } from "./animateHomeSupplements";
-import { animateWardTear } from "./animateWardTear";
-import { animateTearCloud } from "./animateTearCloud";
+import { animateWardTear, WARD_TEAR_LEAD } from "./animateWardTear";
+import { animateTearCloud, TEAR_CLOUD_LEAD } from "./animateTearCloud";
 import { animateFinaleExplore } from "./animateFinaleExplore";
 import { animateClinicalSequence } from "./animateClinicalSequence";
 import { animateQuestionWhy } from "./animateQuestionWhy";
@@ -20,7 +25,12 @@ gsap.registerPlugin(useGSAP, ScrollTrigger, SplitText);
 
 const ART_REVEAL_DURATION = 0.28;
 const ARTWORK_START = 0.06;
-const ART_REST_RATIO = 0.2;
+const ART_REST_RATIO = HOME_STILL_RATIO;
+// Chapters whose outgoing bridge starts while the chapter is still sticky.
+const BRIDGE_LEADS: Record<string, number> = {
+  "what-we-saw": WARD_TEAR_LEAD,
+  "what-stayed-with-us": TEAR_CLOUD_LEAD,
+};
 
 declare global {
   interface Window {
@@ -396,6 +406,22 @@ export function useHomeStoryAnimation(root: RefObject<HTMLDivElement | null>) {
                   "(max-width: 800px) and (orientation: portrait), (max-height: 650px) and (orientation: landscape)",
                 ).matches;
               const flowScene = stackedVaccine || stackedAntigen;
+              // Desktop: a bridge leaving this scene early must not eat its
+              // still hold, so the track also reserves the bridge's lead.
+              let restRatio = ART_REST_RATIO;
+              const lead = BRIDGE_LEADS[section.id];
+              if (!compact && lead) {
+                const hold = stillHold(
+                  track.offsetHeight - stage.offsetHeight,
+                  ART_REST_RATIO,
+                  window.innerHeight * lead,
+                  ART_REST_RATIO,
+                );
+                restRatio = hold.rest;
+                gsap.set(section, {
+                  "--home-scroll-scale": (1 + ART_REST_RATIO) * hold.scale,
+                });
+              }
               const timeline = gsap.timeline({
                 defaults: { ease: "none" },
                 scrollTrigger: {
@@ -458,7 +484,7 @@ export function useHomeStoryAnimation(root: RefObject<HTMLDivElement | null>) {
                 timeline.to(
                   {},
                   {
-                    duration: timeline.duration() * ART_REST_RATIO,
+                    duration: timeline.duration() * restRatio,
                   },
                 );
               }
@@ -653,6 +679,15 @@ export function useHomeStoryAnimation(root: RefObject<HTMLDivElement | null>) {
           // Let the closing words rest before the circle opens into patient care.
           evolve.to({}, { duration: 0.24 }, 0.96);
           cleanups.push(animateFinaleExplore(finale, evolve, compact));
+          // Desktop: hold the settled care links still for the shared ratio.
+          let finaleScale = 1;
+          const settled = evolve.labels["care-complete"];
+          if (!compact && settled) {
+            const rest = evolve.duration() - settled;
+            const hold = stillHold(1, rest / settled);
+            finaleScale = hold.scale;
+            evolve.to({}, { duration: settled * hold.rest - rest });
+          }
 
           const finaleTrigger = ScrollTrigger.create({
             id: "home-finale-reading",
@@ -667,7 +702,7 @@ export function useHomeStoryAnimation(root: RefObject<HTMLDivElement | null>) {
                 : `top top+=${headerHeight}`;
             },
             end: () =>
-              `+=${Math.round(window.innerHeight * (compact ? 3 : 3.4))}`,
+              `+=${Math.round(window.innerHeight * (compact ? 3 : 3.4) * finaleScale)}`,
             pin: true,
             animation: evolve,
             scrub: compact ? 0.42 : HOME_SCRUB,

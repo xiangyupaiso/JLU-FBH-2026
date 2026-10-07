@@ -16,8 +16,11 @@
    `background/engagement.png`.
    ========================================================================== */
 
+/* The footer is a sibling of <Routes>, so it needs the palette named directly.
+   See route-palette-team.css for the rationale. */
 .wiki-page--engagement,
-.site-header.is-engagement-page {
+.site-header.is-engagement-page,
+.circure-footer.is-engagement-page {
   /* ① 三色板 —— 只有这三行需要改 */
   --route-main: #e6a272; /* 主色 rgb(230, 162, 114) */
   --route-soft: #f7c7a1; /* 辅色 rgb(247, 199, 161) */

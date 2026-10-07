@@ -2,7 +2,7 @@ import type { WikiPageContent } from "../../components/wiki/wikiPageTypes";
 export const alternativePlatformPage: WikiPageContent = {
   route: "/alternative-platform",
   category: "wet-lab",
-  chapter: "Wet Lab / 04 of 05",
+  chapter: "Wet Lab / 04 of 04",
   eyebrow: "Alternative platform · Context first",
   title: "Alternative Platform",
   lede: "The host changes expression, safety, cost, and comparability.",
@@ -131,9 +131,9 @@ export const alternativePlatformPage: WikiPageContent = {
     { path: "/safety-and-security", label: "Platform safety" },
   ],
   next: {
-    path: "/safety-and-security",
-    label: "Safety and Security",
-    title: "Where must the project stop?",
+    path: "/model",
+    label: "Model",
+    title: "Which designs deserve the first experiment?",
   },
 };
 

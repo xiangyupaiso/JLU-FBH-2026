@@ -7,6 +7,8 @@ import patientTeardrop from "../assets/home/ward-transition/patient-teardrop-202
 // The portrait and detached drop share the artist's 2752 × 2064 canvas.
 const PATIENT_CANVAS = { width: 2752, height: 2064 };
 const DROP = { left: 681, top: 1144, width: 74, height: 103 };
+// Viewports the bridge starts before the ward track ends, while it is sticky.
+export const WARD_TEAR_LEAD = 0.36;
 
 const clamp = gsap.utils.clamp(0, 1);
 const smooth = (from: number, to: number, value: number) => {
@@ -224,7 +226,7 @@ export function animateWardTear(
     scrollTrigger: {
       id: "home-ward-tear-carry",
       trigger: tear,
-      start: () => from.end - window.innerHeight * 0.36,
+      start: () => from.end - window.innerHeight * WARD_TEAR_LEAD,
       // Finish while the illustration is still sticky, leaving a reading pause.
       end: () =>
         to.start +

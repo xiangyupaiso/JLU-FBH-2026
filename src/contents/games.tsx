@@ -6,7 +6,6 @@ import {
   GamesStationMap,
 } from "../components/wiki/features/GamesShowcase";
 import { gamesPage } from "../data/gamesPage";
-import "../styles/route-palette-drylab.css";
 
 /**
  * Dry Lab 04 — Games.
@@ -25,6 +24,7 @@ export function Games() {
         theme="dry-lab"
         pageClassName="wiki-page--dry-lab wiki-page--games"
         hideOutline
+        hideHeroCopy
         features={{
           "games-project-map": <GamesStationMap />,
           "game-breast-guardian": <GameLaunchCard game="breast-guardian" />,

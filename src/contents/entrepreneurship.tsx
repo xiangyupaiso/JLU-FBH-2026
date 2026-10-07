@@ -6,7 +6,6 @@ import {
 } from "../components/wiki/features/EngagementFeatures";
 import { getEngagementHeroImage } from "../components/wiki/engagementHeroAssets";
 import { entrepreneurshipPage } from "../data/engagement/entrepreneurshipPage";
-import "../styles/route-palette-engagement.css";
 
 export function Entrepreneurship() {
   return (

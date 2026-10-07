@@ -8,6 +8,8 @@ import {
   headingPartOpacity,
 } from "./questionInk";
 
+// Viewports the bridge starts before the clinical track ends, while it is sticky.
+export const QUESTION_WHY_LEAD = 0.28;
 const clamp = gsap.utils.clamp(0, 1);
 const smooth = (from: number, to: number, value: number) => {
   const t = clamp((value - from) / (to - from));
@@ -214,7 +216,7 @@ export function animateQuestionWhy(
     scrollTrigger: {
       id: "home-question-why-carry",
       trigger: destination.parentElement!,
-      start: () => from.end - window.innerHeight * 0.28,
+      start: () => from.end - window.innerHeight * QUESTION_WHY_LEAD,
       // The next shared timeline starts with a one-second circRNA reveal.
       // Finish inside that reveal, well before its ring-to-platform handoff.
       end: () =>

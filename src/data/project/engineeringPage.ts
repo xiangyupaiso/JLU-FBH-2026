@@ -3,6 +3,7 @@ import type {
   WikiDbTLStage,
   WikiPageContent,
 } from "../../components/wiki/wikiPageTypes";
+import { cycle2Iterations, cycle2Section } from "./engineeringRecordAdditions";
 
 /**
  * Engineering — the CirCure TIME record.
@@ -14,9 +15,8 @@ import type {
  * and its current engineering stage.
  *
  * The concentric dial that visualises this lives in
- * `components/wiki/features/project/TimeDial.tsx`; the plain-data arrays below
- * are its only input. Cycle 1 (Targeting) is the first record published here —
- * its ten iterations are transcribed from the team draft in
+ * `components/wiki/features/project/EngineeringPanels.tsx`; the plain-data
+ * arrays below are its input. Cycles 1 and 2 are transcribed from the team draft in
  * `文案集/project/engineering/Engineering改2.md`.
  */
 
@@ -62,7 +62,7 @@ export const TIME_CYCLES: EngineeringCycleDatum[] = [
     id: "engineering-cycle-2",
     letter: "I",
     title: "Integration: from epitope exploration to Combined",
-    status: "planned",
+    status: "recorded",
   },
   {
     id: "engineering-cycle-3",
@@ -176,7 +176,8 @@ export const ENGINEERING_ITERATIONS: EngineeringIterationDatum[] = [
     cycle: 1,
     cycleId: "engineering-cycle-1",
     index: "1.5",
-    label: "Iteration 1.5｜Building a four-dimensional antigen-evidence framework",
+    label:
+      "Iteration 1.5｜Building a four-dimensional antigen-evidence framework",
     short: "A four-dimensional evidence framework",
     teams: ["dry-lab", "ihp"],
   },
@@ -185,7 +186,8 @@ export const ENGINEERING_ITERATIONS: EngineeringIterationDatum[] = [
     cycle: 1,
     cycleId: "engineering-cycle-1",
     index: "1.6",
-    label: "Iteration 1.6｜Testing the four antigen sources with protein evidence",
+    label:
+      "Iteration 1.6｜Testing the four antigen sources with protein evidence",
     short: "Protein evidence for four antigen sources",
     teams: ["dry-lab"],
   },
@@ -213,7 +215,8 @@ export const ENGINEERING_ITERATIONS: EngineeringIterationDatum[] = [
     cycle: 1,
     cycleId: "engineering-cycle-1",
     index: "1.9",
-    label: "Iteration 1.9｜Connecting the first Dry Lab workflow in CircuForge V1.0",
+    label:
+      "Iteration 1.9｜Connecting the first Dry Lab workflow in CircuForge V1.0",
     short: "The first CircuForge V1.0 workflow",
     teams: ["dry-lab", "entrepreneurship"],
   },
@@ -226,12 +229,13 @@ export const ENGINEERING_ITERATIONS: EngineeringIterationDatum[] = [
     short: "A common human DC–T-cell workflow",
     teams: ["wet-lab", "ihp"],
   },
+  ...cycle2Iterations,
 ];
 
 export const engineeringPage: WikiPageContent = {
   route: "/engineering",
   category: "project",
-  chapter: "Project / 02 of 04",
+  chapter: "Project / 02 of 07",
   eyebrow: "Engineering · The TIME record",
   title: "Engineering",
   lede: "Four project-level cycles on the outer scale, Design–Build–Test–Learn on the inner.",
@@ -241,9 +245,15 @@ export const engineeringPage: WikiPageContent = {
   visualLabel: "CirCure TIME engineering system",
   visualSteps: ["Design", "Build", "Test", "Learn"],
   facts: [
-    { label: "T", value: "Targeting — intended use to a four-antigen strategy" },
+    {
+      label: "T",
+      value: "Targeting — intended use to a four-antigen strategy",
+    },
     { label: "I", value: "Integration — epitope exploration to Combined" },
-    { label: "M", value: "Measurement — the molecular and cellular evidence chain" },
+    {
+      label: "M",
+      value: "Measurement — the molecular and cellular evidence chain",
+    },
     { label: "E", value: "Evaluation — evidence across biological scales" },
   ],
   sections: [
@@ -267,7 +277,7 @@ export const engineeringPage: WikiPageContent = {
           type: "callout",
           tone: "navy",
           label: "How to read this page",
-          body: "The dial in the margin is the navigation. Its outer ring selects a TIME cycle, its inner ring tracks the Design–Build–Test–Learn stage you are reading, and the team rows below it show which groups drove each iteration. Click any arc or title to move.",
+          body: "The dial's outer ring selects a TIME cycle, and its inner ring tracks the Design–Build–Test–Learn stage you are reading. The heading identifies the current iteration. Scroll to follow the engineering story, or open a TIME letter below and click a small gear to jump directly to an iteration.",
         },
       ],
     },
@@ -488,7 +498,8 @@ export const engineeringPage: WikiPageContent = {
           type: "subheading",
           id: "eng-t-1-3",
           index: "1.3",
-          title: "Iteration 1.3｜Building the first educational and visual entry",
+          title:
+            "Iteration 1.3｜Building the first educational and visual entry",
         },
         dbtl("dbtl-1-3", {
           design: [
@@ -725,7 +736,8 @@ export const engineeringPage: WikiPageContent = {
           type: "subheading",
           id: "eng-t-1-8",
           index: "1.8",
-          title: "Iteration 1.8｜Extending antigen complementarity across patients",
+          title:
+            "Iteration 1.8｜Extending antigen complementarity across patients",
         },
         dbtl("dbtl-1-8", {
           design: [
@@ -811,8 +823,7 @@ export const engineeringPage: WikiPageContent = {
           type: "subheading",
           id: "eng-t-1-10",
           index: "1.10",
-          title:
-            "Iteration 1.10｜Preparing a common human DC–T-cell workflow",
+          title: "Iteration 1.10｜Preparing a common human DC–T-cell workflow",
         },
         dbtl("dbtl-1-10", {
           design: [
@@ -865,6 +876,7 @@ export const engineeringPage: WikiPageContent = {
         body: "Cycle 1 completed the T—Targeting stage of TIME, moving from intended use to a four-antigen strategy ready for epitope-level engineering. We selected a measurable circRNA platform, built a four-dimensional antigen-evidence framework and retained TROP2, B7-H4, Nectin-4 and LIV-1 through protein, malignant-cell and patient-level analyses. Education and Visual Design established an adaptable first language for circRNA; CircuForge V1.0 began to connect the computational handoff; and the common DC–T-cell workflow prepared a shared experimental setting. Cycle 2 can now ask a narrower engineering question: which epitopes from the four antigen sources should be encoded, built and compared?",
       },
     },
+    cycle2Section,
   ],
   links: [
     { path: "/description", label: "Project rationale" },

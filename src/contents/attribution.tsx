@@ -2,7 +2,6 @@ import { WikiRoutePage } from "../components/wiki/WikiRoutePage";
 import { TeamInspirations } from "../components/wiki/features/team/TeamInspirations";
 import { getTeamHeroImage } from "../components/wiki/teamHeroAssets";
 import { attributionPage } from "../data/team/attributionPage";
-import "../styles/route-palette-team.css";
 
 export function Attribution() {
   return (

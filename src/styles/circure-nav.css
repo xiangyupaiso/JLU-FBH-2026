@@ -1,9 +1,4 @@
-/* CirCure navigation shell — extracted from story-nav prototype.
-   `html.nav-menu-open .X` → `.site-header.is-nav-open .X`
-   `html.mobile-menu-open .X` → `.site-header.is-mobile-open .X`
-   Sprite images are cropped by <Navbar/> with SVG viewboxes, preserving their
-   proportions as the dropdown cards resize.
-   Logo fold/mark/ribbon progress vars default to 0 (wordmark 常显, per plan). */
+/* CirCure navigation: anchored desktop dropdowns and a mobile accordion. */
 
 @font-face {
   font-family: "Manrope";
@@ -14,7 +9,7 @@
 }
 
 :root {
-  --nav-control-radius: 999px;
+  --nav-control-radius: 12px;
   --nav-control-height: 36px;
 }
 
@@ -22,18 +17,15 @@
   --header-surface: var(--paper-bright);
   --header-ink: var(--brand-navy-deep);
   --header-line: rgba(27, 23, 25, 0.06);
-  --header-pill: #f7edc9;
-  --header-pill-hover: #f2e2ae;
-  --header-pill-active: #f0dfa5;
-  --nav-surface: var(--header-surface);
-  --nav-ease: cubic-bezier(0.22, 1, 0.36, 1);
-  --nav-duration: 300ms;
-  --nav-panel-travel: clamp(56px, 5vw, 80px);
+  --nav-surface: rgba(250, 245, 238, 0.985);
+  --nav-surface-end: rgba(245, 237, 230, 0.985);
+  --nav-surface-accent: rgba(215, 132, 179, 0.14);
   --nav-surface-line: rgba(16, 47, 89, 0.1);
-  --nav-surface-shadow: rgba(16, 47, 89, 0.14);
+  --nav-surface-shadow: rgba(16, 47, 89, 0.1);
+  --nav-theme-accent: var(--care);
   --nav-card-sheen: rgba(215, 132, 179, 0.16);
   --nav-drop-offset: calc(var(--header-height) - 18px);
-  --nav-menu-height: clamp(360px, 43vh, 430px);
+  --nav-menu-height: clamp(170px, 19vh, 204px);
   --logo-fold-progress: 0;
   --logo-mark-progress: 0;
   --logo-ribbon-progress: 0;
@@ -55,19 +47,8 @@
   left: 0;
   height: var(--header-height);
   border-bottom: 1px solid transparent;
-  border-radius: 0;
-  background-color: var(--header-surface);
+  background-color: transparent;
   content: "";
-  transition:
-    height var(--nav-duration) var(--nav-ease),
-    border-radius var(--nav-duration) var(--nav-ease),
-    background-color 240ms var(--ease-out),
-    box-shadow 240ms var(--ease-out);
-}
-
-.site-header.is-nav-open::after,
-.site-header.is-mobile-open::after {
-  opacity: 0;
 }
 
 /* Pink Thread reading-progress line along the header's bottom edge. */
@@ -89,20 +70,22 @@
    CROSS-FILE: data-home-opening/-closing are set by Navbar.tsx from the Home
    page's .home-scene01, #what-we-hope and #home-finale positions. */
 .site-header.is-home-page::before {
-  background-color: var(--header-surface);
+  background-color: rgba(252, 248, 241, 0.96);
+  transition:
+    background-color 240ms var(--ease-out),
+    border-color 240ms var(--ease-out);
 }
 
 /* Only the opening scene shares the illustration's dark background. */
 .site-header.is-home-page[data-home-opening="true"] {
-  --header-surface: #21141f;
+  --header-surface: #f8e9e8;
   --header-ink: #f8e9e8;
   --header-line: rgba(248, 233, 232, 0.14);
-  --nav-surface: var(--header-surface);
-  --header-pill: rgba(248, 233, 232, 0.1);
-  --header-pill-hover: rgba(215, 132, 179, 0.22);
-  --header-pill-active: rgba(215, 132, 179, 0.26);
+  --nav-surface: rgba(33, 20, 31, 0.98);
+  --nav-surface-end: rgba(48, 31, 46, 0.98);
   --nav-surface-line: rgba(248, 233, 232, 0.16);
   --nav-surface-shadow: rgba(12, 7, 14, 0.32);
+  --nav-theme-accent: #d784b3;
   --nav-card-sheen: rgba(215, 132, 179, 0.18);
 }
 
@@ -115,37 +98,92 @@
   color: rgba(248, 233, 232, 0.62);
 }
 
+.site-header.is-home-page[data-home-opening="true"] .nav-link {
+  background: rgba(248, 233, 232, 0.1);
+  color: #f8e9e8;
+}
+
+.site-header.is-home-page[data-home-opening="true"] .nav-link:hover {
+  background: rgba(215, 132, 179, 0.22);
+}
+
+.site-header.is-home-page[data-home-opening="true"] .nav-link[aria-current="page"],
+.site-header.is-home-page[data-home-opening="true"] .nav-link[aria-expanded="true"] {
+  background: rgba(215, 132, 179, 0.26);
+  box-shadow: inset 0 -1px 0 #d784b3;
+}
+
+.site-header.is-home-page[data-home-opening="true"] .page-search {
+  --header-ink: #4a344a;
+  --header-surface: #f8e9e8;
+}
+
+.site-header.is-home-page[data-home-opening="true"] .page-search__pill {
+  background: #4a344a;
+  color: #f8e9e8;
+  box-shadow: 0 1px 2px rgba(10, 6, 12, 0.28);
+}
+
+.site-header.is-home-page[data-home-opening="true"] .page-search.is-open .page-search__pill {
+  background: #f4e8ed;
+  color: #332438;
+  box-shadow: inset 0 0 0 1px rgba(215, 132, 179, 0.42);
+}
+
+.site-header.is-home-page[data-home-opening="true"] .page-search__bubble {
+  background: #4a344a;
+  color: #f8e9e8;
+}
+
 /* The final Home chapter has its own blush surface. */
 .site-header.is-home-page[data-home-closing="true"] {
   --header-ink: #694753;
   --header-surface: #f7e7e6;
-  --header-pill: rgba(255, 250, 246, 0.66);
-  --header-pill-hover: #f0ced9;
-  --header-pill-active: #f0ced9;
+  --nav-surface: rgba(255, 246, 247, 0.98);
+  --nav-surface-end: rgba(248, 232, 235, 0.98);
 }
 .site-header.is-home-page[data-home-closing="true"]::before {
   background-color: #f7e7e6;
+}
+.site-header.is-home-page[data-home-closing="true"] .nav-link {
+  color: var(--header-ink);
+  background: rgba(255, 250, 246, 0.66);
+}
+.site-header.is-home-page[data-home-closing="true"] .nav-link:hover,
+.site-header.is-home-page[data-home-closing="true"] .nav-link[aria-current="page"],
+.site-header.is-home-page[data-home-closing="true"] .nav-link[aria-expanded="true"] {
+  background: #f0ced9;
+}
+.site-header.is-home-page[data-home-closing="true"] .page-search.is-open .page-search__pill {
+  background: #fff9f5;
+  color: #694753;
+  box-shadow: inset 0 0 0 1px #ba8e9e;
 }
 
 /* Inner-page header treatments are supplied by their existing route palettes. */
 
 .site-header[data-nav-theme="project"] {
+  --nav-theme-accent: #a83f69;
   --nav-card-sheen: rgba(228, 132, 151, 0.2);
 }
 
 .site-header[data-nav-theme="wet-lab"] {
+  --nav-theme-accent: #5f9f87;
   --nav-card-sheen: rgba(92, 190, 165, 0.18);
 }
 
 .site-header[data-nav-theme="dry-lab"] {
+  --nav-theme-accent: #7183c5;
   --nav-card-sheen: rgba(112, 152, 214, 0.2);
 }
 
 .site-header[data-nav-theme="engagement"] {
+  --nav-theme-accent: #ba7894;
   --nav-card-sheen: rgba(217, 145, 164, 0.18);
 }
 
 .circure-nav-shell {
+  --nav-menu-width: 304px;
   position: relative;
   width: min(100%, 1440px);
   height: 40px;
@@ -153,9 +191,8 @@
   color: var(--header-ink);
   pointer-events: auto;
   transition:
-    height var(--nav-duration) var(--nav-ease),
+    height 440ms var(--ease-out),
     color 260ms var(--ease-out);
-  will-change: height;
 }
 
 .circure-nav-head {
@@ -168,12 +205,209 @@
   gap: 20px;
 }
 
+.circure-nav-surface {
+  position: absolute;
+  z-index: 0;
+  top: calc(var(--nav-drop-offset) - 1px);
+  right: 0;
+  left: 0;
+  width: 100%;
+  height: var(--nav-menu-height);
+  overflow: hidden;
+  border: 1px solid var(--nav-surface-line);
+  border-top: 0;
+  border-radius: 0 0 var(--radius-panel) var(--radius-panel);
+  isolation: isolate;
+  background: linear-gradient(
+    180deg,
+    var(--nav-surface) 0%,
+    var(--nav-surface-end) 100%
+  );
+  box-shadow: 0 24px 64px var(--nav-surface-shadow);
+  opacity: 0;
+  pointer-events: none;
+  transform: translate3d(0, -12px, 0);
+  transform-origin: 50% 0;
+  backdrop-filter: blur(18px);
+  transition:
+    opacity 360ms var(--ease-out),
+    transform 440ms var(--ease-out);
+  will-change: opacity, transform;
+}
+
+.circure-nav-aura {
+  position: absolute;
+  z-index: -1;
+  inset: -12% -4% -18%;
+  opacity: 0;
+  pointer-events: none;
+  filter: saturate(1.12);
+  transform: translate3d(0, -8px, 0) scale(1.025);
+  transform-origin: 50% 12%;
+  transition:
+    opacity 520ms var(--ease-out),
+    transform 760ms var(--ease-out);
+  will-change: opacity, transform;
+}
+
+.circure-nav-aura--project {
+  background:
+    radial-gradient(
+      ellipse 42% 80% at 8% 5%,
+      rgba(184, 68, 112, 0.29),
+      transparent 66%
+    ),
+    radial-gradient(
+      ellipse 38% 68% at 54% -4%,
+      rgba(224, 133, 155, 0.23),
+      transparent 66%
+    ),
+    radial-gradient(
+      ellipse 34% 72% at 96% 12%,
+      rgba(241, 174, 126, 0.21),
+      transparent 68%
+    ),
+    linear-gradient(
+      105deg,
+      rgba(184, 68, 112, 0.06),
+      rgba(224, 133, 155, 0.07) 52%,
+      rgba(241, 174, 126, 0.08)
+    );
+}
+
+.circure-nav-aura--wet-lab {
+  background:
+    radial-gradient(
+      ellipse 44% 82% at 7% 2%,
+      rgba(71, 179, 162, 0.29),
+      transparent 66%
+    ),
+    radial-gradient(
+      ellipse 40% 72% at 54% -6%,
+      rgba(174, 220, 85, 0.24),
+      transparent 68%
+    ),
+    radial-gradient(
+      ellipse 34% 74% at 96% 10%,
+      rgba(86, 180, 211, 0.21),
+      transparent 68%
+    ),
+    linear-gradient(
+      105deg,
+      rgba(71, 179, 162, 0.07),
+      rgba(174, 220, 85, 0.08) 52%,
+      rgba(86, 180, 211, 0.07)
+    );
+}
+
+.circure-nav-aura--dry-lab {
+  background:
+    radial-gradient(
+      ellipse 44% 82% at 7% 2%,
+      rgba(80, 96, 179, 0.29),
+      transparent 66%
+    ),
+    radial-gradient(
+      ellipse 40% 70% at 55% -7%,
+      rgba(93, 176, 196, 0.24),
+      transparent 68%
+    ),
+    radial-gradient(
+      ellipse 34% 72% at 97% 12%,
+      rgba(139, 157, 213, 0.21),
+      transparent 68%
+    ),
+    linear-gradient(
+      105deg,
+      rgba(80, 96, 179, 0.07),
+      rgba(93, 176, 196, 0.07) 52%,
+      rgba(139, 157, 213, 0.08)
+    );
+}
+
+.circure-nav-aura--team {
+  background:
+    radial-gradient(
+      ellipse 44% 82% at 8% 3%,
+      rgba(245, 207, 111, 0.32),
+      transparent 66%
+    ),
+    radial-gradient(
+      ellipse 40% 72% at 53% -6%,
+      rgba(254, 233, 181, 0.26),
+      transparent 68%
+    ),
+    radial-gradient(
+      ellipse 36% 74% at 96% 12%,
+      rgba(230, 162, 114, 0.22),
+      transparent 68%
+    ),
+    linear-gradient(
+      105deg,
+      rgba(245, 207, 111, 0.08),
+      rgba(254, 233, 181, 0.08) 52%,
+      rgba(230, 162, 114, 0.07)
+    );
+}
+
+.circure-nav-aura--engagement {
+  background:
+    radial-gradient(
+      ellipse 44% 82% at 8% 3%,
+      rgba(215, 145, 164, 0.27),
+      transparent 66%
+    ),
+    radial-gradient(
+      ellipse 40% 72% at 53% -6%,
+      rgba(169, 151, 205, 0.23),
+      transparent 68%
+    ),
+    radial-gradient(
+      ellipse 36% 74% at 96% 12%,
+      rgba(242, 171, 128, 0.2),
+      transparent 68%
+    ),
+    linear-gradient(
+      105deg,
+      rgba(215, 145, 164, 0.07),
+      rgba(169, 151, 205, 0.07) 52%,
+      rgba(242, 171, 128, 0.06)
+    );
+}
+
+.site-header[data-nav-theme="team"] .circure-nav-aura--team,
+.site-header[data-nav-theme="project"] .circure-nav-aura--project,
+.site-header[data-nav-theme="wet-lab"] .circure-nav-aura--wet-lab,
+.site-header[data-nav-theme="dry-lab"] .circure-nav-aura--dry-lab,
+.site-header[data-nav-theme="engagement"] .circure-nav-aura--engagement {
+  opacity: 1;
+  transform: translate3d(0, 0, 0) scale(1);
+}
+
+.site-header.is-nav-open .circure-nav-surface {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
 .site-header.is-nav-open .circure-nav-shell {
   height: calc(var(--nav-drop-offset) + var(--nav-menu-height));
   color: var(--header-ink);
 }
 
 @media (min-width: 981px) {
+  .circure-nav-surface {
+    right: auto;
+    left: 50%;
+    width: 100vw;
+    translate: -50% 0;
+  }
+
+  .circure-nav-surface {
+    border-right: 0;
+    border-left: 0;
+    border-radius: 0 0 26px 26px;
+  }
+
   .circure-nav-panel {
     inset: 12px 14px;
   }
@@ -276,19 +510,14 @@
   transform-origin: 9.2px 8.8px;
 }
 
-.wordmark-folio,
-.nav-folio {
-  font-family: "Manrope", var(--font-sans);
-  font-variant-numeric: lining-nums tabular-nums;
-}
-
 .wordmark-folio {
   position: absolute;
   left: 39px;
   top: 26px;
+  font-family: var(--font-mono);
   font-size: 10px;
   font-weight: 600;
-  letter-spacing: 0.035em;
+  letter-spacing: 0.08em;
   color: rgba(27, 23, 25, 0.6);
   white-space: nowrap;
   line-height: 1;
@@ -311,6 +540,24 @@
   list-style: none;
 }
 
+/* Section accent — Home/Team fall back to the Pink Thread. */
+.nav-item {
+  --accent: var(--care);
+}
+
+.nav-item[data-section="project"] {
+  --accent: #a83f69;
+}
+.nav-item[data-section="wet-lab"] {
+  --accent: #5f9f87;
+}
+.nav-item[data-section="dry-lab"] {
+  --accent: #7183c5;
+}
+.nav-item[data-section="engagement"] {
+  --accent: #ba7894;
+}
+
 .nav-link {
   position: relative;
   display: inline-flex;
@@ -320,15 +567,15 @@
   margin: 0;
   border: 0;
   border-radius: var(--nav-control-radius);
-  background: var(--header-pill);
-  color: var(--header-ink);
+  background: #f7edc9;
+  color: var(--brand-navy-deep);
   white-space: nowrap;
   text-decoration: none;
   transition:
     background-color var(--duration-fast) var(--ease-out),
     box-shadow var(--duration-fast) var(--ease-out),
     opacity var(--duration-fast) var(--ease-out),
-    transform var(--nav-duration) var(--nav-ease);
+    transform var(--duration-fast) var(--ease-out);
 }
 
 button.nav-link {
@@ -336,34 +583,53 @@ button.nav-link {
 }
 
 .nav-link:hover {
-  background: var(--header-pill-hover);
+  background: #f2e2ae;
   opacity: 1;
   transform: translateY(-1px);
 }
 
 .nav-link[aria-expanded="true"],
 .nav-link[aria-current="page"] {
-  background: var(--header-pill-active);
-  box-shadow: none;
+  background: #f0dfa5;
+  box-shadow: inset 0 -1px 0 var(--accent);
   opacity: 1;
 }
 
-.nav-link:active {
-  transform: scale(0.985);
-  transition-duration: 80ms;
-}
-
 .nav-link:focus-visible {
-  box-shadow: none;
-  outline: 2px solid var(--header-ink);
+  outline: 2px solid var(--accent);
   outline-offset: 2px;
 }
 
+.nav-link::after {
+  content: "";
+  position: absolute;
+  right: 12px;
+  left: 12px;
+  bottom: 3px;
+  height: 1px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--duration-fast) var(--ease-out);
+}
+
+.nav-link:hover::after,
+.nav-link[aria-expanded="true"]::after,
+.nav-link[aria-current="page"]::after {
+  transform: scaleX(1);
+}
+
+/* De-emphasise the other links while a panel is open. */
+.site-header.is-nav-open .desktop-nav .nav-link:not([aria-expanded="true"]) {
+  opacity: 0.72;
+}
+
 .nav-folio {
+  font-family: var(--font-mono);
   font-size: 10px;
-  font-weight: 650;
-  letter-spacing: 0.015em;
-  color: color-mix(in srgb, var(--header-ink) 72%, transparent);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--accent);
   margin-right: 6px;
 }
 
@@ -371,7 +637,7 @@ button.nav-link {
   width: 10px;
   height: 6px;
   margin-left: 5px;
-  transition: transform var(--nav-duration) var(--nav-ease);
+  transition: transform var(--duration-fast) var(--ease-out);
 }
 
 .nav-caret path {
@@ -397,294 +663,130 @@ button.nav-link {
   display: none;
 }
 
+/* A small dropdown under the active category; original hand-drawn icons. */
 .circure-mega-menu {
-  --nav-menu-width: min(1548px, calc(100vw - 36px));
-  --nav-curve-radius: min(32px, calc((100vw - var(--nav-menu-width)) / 2));
   position: absolute;
   z-index: 2;
-  top: var(--nav-drop-offset);
-  right: auto;
-  left: 50%;
-  width: var(--nav-menu-width);
-  height: var(--nav-menu-height);
-  overflow: visible;
-  translate: -50% 0;
+  top: calc(var(--nav-drop-offset) - 10px);
+  left: var(--nav-panel-left, 10px);
+  width: min(var(--nav-menu-width), calc(100% - 20px));
+  padding-top: 10px;
   visibility: hidden;
   opacity: 0;
   pointer-events: none;
+  transform: translateY(-6px);
   transition:
-    visibility 0s linear var(--nav-duration),
-    opacity 180ms ease;
-  will-change: opacity;
+    visibility 0s linear 160ms,
+    opacity 160ms var(--ease-out),
+    transform 200ms var(--ease-out);
 }
 
 .circure-mega-menu.is-open {
   visibility: visible;
   opacity: 1;
   pointer-events: auto;
-  transition:
-    visibility 0s,
-    opacity 160ms ease;
-}
-
-/* Unfold only the surface and clipping window; card geometry stays fixed. */
-.circure-nav-surface {
-  position: absolute;
-  inset: 0 0 auto;
-  height: 0;
-  border-radius: 0 0 var(--nav-curve-radius) var(--nav-curve-radius);
-  background-color: var(--nav-surface);
-  filter: drop-shadow(0 18px 22px var(--nav-surface-shadow));
-  /* Keep the shadow below the bar-to-menu join, including curved shoulders. */
-  clip-path: inset(0 -128px -128px);
-  pointer-events: none;
-  transition: height var(--nav-duration) var(--nav-ease);
-}
-
-.circure-mega-menu.is-open .circure-nav-surface {
-  height: 100%;
-}
-
-.circure-nav-surface::before,
-.circure-nav-surface::after {
-  position: absolute;
-  top: 0;
-  width: var(--nav-curve-radius);
-  height: var(--nav-curve-radius);
-  content: "";
-}
-
-.circure-nav-surface::before {
-  left: calc(-1 * var(--nav-curve-radius));
-  background: radial-gradient(
-    circle at 0 100%,
-    transparent calc(var(--nav-curve-radius) - 0.5px),
-    var(--nav-surface) var(--nav-curve-radius)
-  );
-}
-
-.circure-nav-surface::after {
-  right: calc(-1 * var(--nav-curve-radius));
-  background: radial-gradient(
-    circle at 100% 100%,
-    transparent calc(var(--nav-curve-radius) - 0.5px),
-    var(--nav-surface) var(--nav-curve-radius)
-  );
-}
-
-.circure-nav-viewport {
-  position: absolute;
-  inset: 0;
-  overflow: hidden;
-  border-radius: 0 0 var(--nav-curve-radius) var(--nav-curve-radius);
-  clip-path: inset(0 0 100% round 0 0 var(--nav-curve-radius) var(--nav-curve-radius));
-  transition: clip-path var(--nav-duration) var(--nav-ease);
-}
-
-.circure-mega-menu.is-open .circure-nav-viewport {
-  clip-path: inset(0 round 0 0 var(--nav-curve-radius) var(--nav-curve-radius));
+  transform: translateY(0);
+  transition-delay: 0s;
 }
 
 .circure-nav-panel {
-  position: absolute;
-  inset: 14px 18px;
-  display: grid;
-  /* intro card + 3 image cards by default; Navbar overrides grid-template-columns
-     inline when a dropdown has more than 3 image cards (4 or 5). */
-  grid-template-columns: 1.13fr repeat(3, 1fr);
-  gap: clamp(7px, 0.7vw, 11px);
-  opacity: 0;
-  pointer-events: none;
-  transform: translate3d(0, 4px, 0);
-  transition:
-    opacity 140ms ease-out,
-    transform 440ms var(--nav-ease);
-}
-
-/* The shared viewport stays open while chapters slide past one another.
-   A bounded horizontal travel keeps the card layout stable at every width. */
-.circure-mega-menu.is-open .circure-nav-panel {
-  transform: translate3d(
-    calc(var(--nav-panel-side, 0) * var(--nav-panel-travel)),
-    0,
-    0
-  );
+  display: none;
+  max-height: calc(100svh - var(--header-height) - 12px);
+  grid-template-columns: minmax(0, 1fr);
+  gap: 4px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 8px;
+  border: 1px solid var(--nav-surface-line);
+  border-radius: 18px;
+  background: var(--nav-surface);
+  box-shadow:
+    0 2px 6px var(--nav-surface-shadow),
+    0 18px 40px var(--nav-surface-shadow);
+  scrollbar-width: thin;
+  scrollbar-color: var(--nav-theme-accent) transparent;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
 }
 
 .circure-nav-panel.is-active {
-  opacity: 1;
-  pointer-events: auto;
-  transition:
-    opacity 220ms ease-out,
-    transform 440ms var(--nav-ease);
+  display: grid;
 }
 
-.nav-intro-card,
 .nav-image-card {
-  position: relative;
+  display: flex;
   min-width: 0;
-  overflow: hidden;
-  border-radius: clamp(26px, 2.2vw, 34px);
-}
-
-.nav-intro-card {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: clamp(28px, 2.6vw, 42px);
-  border: 0;
-  border-radius: 0;
-  background: transparent;
-}
-
-.nav-intro-card > span,
-.nav-image-card small {
-  font-size: 9px;
-  font-weight: 780;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-}
-
-.nav-intro-card > span {
-  display: none;
-}
-
-.nav-intro-card > strong {
-  max-width: 320px;
-  font-family: var(--font-editorial);
-  font-size: clamp(22px, 1.7vw, 28px);
-  font-weight: 500;
-  letter-spacing: -0.035em;
-  line-height: 1.08;
-}
-
-.nav-intro-card > a {
-  display: none;
-}
-
-.nav-intro-card b {
-  color: var(--care);
-  font-size: 17px;
-  font-weight: 500;
-}
-
-.nav-image-card {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  gap: 10px;
-  padding: clamp(22px, 1.8vw, 30px);
-  isolation: isolate;
-  background-color: #24446a;
-  color: var(--paper-bright);
+  min-height: 68px;
+  align-items: center;
+  gap: 16px;
+  padding: 10px 14px;
+  border-radius: 12px;
+  color: var(--header-ink);
   text-decoration: none;
   transition:
-    transform var(--nav-duration) var(--nav-ease),
-    box-shadow 240ms var(--ease-out),
-    filter 240ms var(--ease-out);
-}
-
-.nav-image-artwork {
-  position: absolute;
-  z-index: -2;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-}
-
-.nav-image-card::before {
-  position: absolute;
-  z-index: -1;
-  inset: 0;
-  background: linear-gradient(
-    180deg,
-    rgba(7, 24, 48, 0.02) 28%,
-    rgba(6, 20, 42, 0.86) 100%
-  );
-  content: "";
-}
-
-.nav-image-card::after {
-  position: absolute;
-  z-index: -1;
-  inset: 0;
-  background: radial-gradient(
-    ellipse 86% 52% at 50% 0%,
-    var(--nav-card-sheen),
-    transparent 72%
-  );
-  content: "";
-  opacity: 0;
-  transition: opacity 220ms var(--ease-out);
+    background-color 160ms var(--ease-out),
+    color 160ms var(--ease-out),
+    transform 160ms var(--ease-out);
 }
 
 .nav-image-card:hover,
-.nav-image-card:focus-visible {
-  color: var(--paper-bright);
-  text-decoration: none;
-  filter: saturate(0.98) brightness(1.035);
-  transform: translateY(-1.5px);
-  box-shadow: 0 6px 16px var(--nav-surface-shadow);
+.nav-image-card[aria-current="page"] {
+  background: color-mix(in srgb, var(--nav-theme-accent) 12%, transparent);
 }
 
 .nav-image-card:focus-visible {
-  outline: 2px solid var(--header-ink);
-  outline-offset: 3px;
+  outline: 2px solid var(--nav-theme-accent);
+  outline-offset: -2px;
+  background: color-mix(in srgb, var(--nav-theme-accent) 12%, transparent);
 }
 
 .nav-image-card:active {
-  transform: scale(0.99);
-  transition-duration: 80ms;
+  transform: scale(0.96);
 }
 
-.nav-image-card:hover::after {
-  opacity: 0.72;
+.nav-card-thumb {
+  display: grid;
+  width: 48px;
+  height: 48px;
+  flex: none;
+  place-items: center;
 }
 
-.nav-image-card small {
-  color: #f1bad9;
-  display: none;
+.nav-card-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
-.nav-image-card strong {
-  max-width: none;
-  font-family: var(--font-sans);
-  font-size: clamp(24px, 2vw, 30px);
-  font-weight: 700;
-  letter-spacing: -0.045em;
-  line-height: 1.05;
-  hyphens: auto;
-  overflow-wrap: anywhere;
+.nav-card-info {
+  min-width: 0;
 }
 
-.nav-image-card em {
-  display: none;
+.nav-card-info strong {
+  display: block;
+  white-space: nowrap;
+  font-family: "Fredoka", var(--font-sans);
+  font-size: 20px;
+  font-weight: 650;
+  letter-spacing: -0.018em;
+  line-height: 1.15;
 }
 
-/* When more than 3 image cards are present, shrink title size so the panel
-   does not overflow horizontally. Navbar applies .has-many-cards class. */
-.circure-nav-panel.has-many-cards .nav-image-card strong {
-  font-size: clamp(18px, 1.72vw, 28px);
-}
-
-.circure-nav-panel.has-many-cards .nav-image-card {
-  padding: clamp(20px, 1.55vw, 26px);
-}
-
-@media (min-width: 981px) and (max-width: 1180px) {
-  .circure-nav-panel {
-    inset-inline: 13px;
-    gap: 6px;
+@media (min-width: 981px) {
+  .circure-nav-surface {
+    display: none;
   }
 
-  .nav-intro-card {
-    padding-inline: 24px;
+  .site-header.is-nav-open .circure-nav-shell {
+    height: 40px;
   }
+}
 
-  .circure-nav-panel.has-many-cards .nav-image-card {
-    padding-inline: 16px;
-  }
+.circure-mobile-group__icon {
+  width: 26px;
+  height: 26px;
+  object-fit: contain;
+  flex-shrink: 0;
 }
 
 @media (max-width: 980px) {
@@ -705,16 +807,26 @@ button.nav-link {
     color: var(--header-ink);
   }
 
-  .site-header.is-mobile-open::before {
-    height: calc(14px + min(526px, calc(100svh - 34px)));
-    border-radius: 0 0 28px 28px;
-    box-shadow: 0 18px 44px var(--nav-surface-shadow);
-  }
-
   .circure-nav-head {
     height: 44px;
     grid-template-columns: minmax(0, 1fr) auto auto;
     gap: 8px;
+  }
+
+  .circure-nav-surface {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 0 0 var(--radius-panel-mobile) var(--radius-panel-mobile);
+  }
+
+  .site-header.is-mobile-open .circure-nav-surface {
+    height: 100%;
+    opacity: 1;
+    transform: scale(1);
   }
 
   .desktop-nav,
@@ -730,37 +842,22 @@ button.nav-link {
     align-items: center;
     gap: 8px;
     padding: 0 6px 0 13px;
-    border: 0;
-    border-radius: 999px;
-    background: var(--header-pill);
+    background: transparent;
     color: inherit;
     cursor: pointer;
     font-size: 12px;
     font-weight: 720;
-    transition:
-      background-color 180ms ease,
-      transform var(--nav-duration) var(--nav-ease);
   }
 
   .site-header.is-mobile-open .mobile-menu-toggle {
-    background: var(--header-pill-active);
-  }
-
-  .mobile-menu-toggle:active {
-    transform: scale(0.985);
-    transition-duration: 80ms;
-  }
-
-  .mobile-menu-toggle:focus-visible {
-    outline: 2px solid var(--header-ink);
-    outline-offset: 3px;
+    background: rgba(255, 255, 255, 0.08);
   }
 
   .mobile-menu-toggle svg {
     width: 26px;
     height: 30px;
     transform: rotate(-5deg) scale(0.72);
-    transition: transform var(--nav-duration) var(--nav-ease);
+    transition: transform 420ms var(--ease-out);
   }
 
   .site-header.is-mobile-open .mobile-menu-toggle svg {
@@ -774,11 +871,7 @@ button.nav-link {
     right: 4px;
     bottom: 2px;
     left: 4px;
-    display: grid;
-    grid-auto-rows: minmax(56px, auto);
-    grid-template-rows: none;
-    align-content: start;
-    gap: 6px;
+    display: block;
     overflow-y: auto;
     overscroll-behavior-y: contain;
     scrollbar-width: thin;
@@ -786,10 +879,10 @@ button.nav-link {
     -webkit-overflow-scrolling: touch;
     opacity: 0;
     pointer-events: none;
-    transform: translateY(-5px);
+    transform: translateY(-10px);
     transition:
       opacity 220ms var(--ease-out),
-      transform var(--nav-duration) var(--nav-ease);
+      transform 480ms var(--ease-out);
   }
 
   .circure-mobile-menu::-webkit-scrollbar {
@@ -813,31 +906,14 @@ button.nav-link {
     align-items: center;
     justify-content: space-between;
     padding: 0 11px;
-    border: 0;
-    border-radius: 18px;
+    border-top: 1px solid var(--nav-surface-line);
     color: var(--header-ink);
     font-family: var(--font-editorial);
     font-size: clamp(22px, 6.8vw, 31px);
     letter-spacing: -0.035em;
-    background: var(--header-pill);
-    text-decoration: none;
+    background: transparent;
     cursor: pointer;
     text-align: left;
-    transition:
-      background-color 180ms ease,
-      transform var(--nav-duration) var(--nav-ease);
-  }
-
-  .circure-mobile-menu a:hover,
-  .circure-mobile-menu a:focus-visible {
-    background: var(--header-pill-hover);
-    outline: 2px solid var(--header-ink);
-    outline-offset: -2px;
-  }
-
-  .circure-mobile-menu a:active {
-    transform: scale(0.99);
-    transition-duration: 80ms;
   }
 
   .circure-mobile-menu a::after,
@@ -920,10 +996,10 @@ button.nav-link {
     gap: 12px;
     padding: 0 12px 0 14px;
     border-top: 0;
-    font-family: var(--font-sans);
-    font-size: 16px;
-    font-weight: 650;
-    letter-spacing: 0;
+    font-family: "Fredoka", var(--font-sans);
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: -0.012em;
   }
 
   .circure-mobile-menu .circure-mobile-group__link::after {
@@ -960,10 +1036,6 @@ button.nav-link {
     height: min(502px, calc(100svh - 28px));
   }
 
-  .site-header.is-mobile-open::before {
-    height: calc(14px + min(502px, calc(100svh - 28px)));
-  }
-
   .circure-mobile-menu {
     top: 55px;
   }
@@ -971,30 +1043,23 @@ button.nav-link {
 
 @media (prefers-reduced-motion: reduce) {
   .site-header,
-  .site-header::before,
   .site-header.is-home-page::before,
   .circure-nav-shell,
-  .circure-mega-menu,
   .circure-nav-surface,
-  .circure-nav-viewport,
+  .circure-mega-menu,
   .circure-nav-panel,
+  .circure-nav-aura,
   .circure-mobile-menu,
   .circure-mobile-group__panel,
   .circure-mobile-group__caret,
   .mobile-menu-toggle svg,
   .nav-caret,
-  .nav-link,
   .nav-image-card,
-  .nav-image-card::after,
-  .mobile-menu-toggle,
-  .circure-mobile-menu a {
+  .nav-link::after {
     transition-duration: 1ms !important;
   }
 
-  .nav-link,
-  .circure-nav-panel,
-  .nav-image-card,
-  .circure-mobile-menu a {
-    transform: none !important;
+  .nav-image-card:active {
+    transform: none;
   }
 }

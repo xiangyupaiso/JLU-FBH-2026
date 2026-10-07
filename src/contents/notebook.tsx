@@ -1,20 +1,19 @@
 import { WikiRoutePage } from "../components/wiki/WikiRoutePage";
-import { getWetLabHeroImage } from "../components/wiki/wetLabHeroAssets";
+import { getProjectHeroImage } from "../components/wiki/projectHeroAssets";
 import {
   NotebookRecordSchema,
   NotebookTrace,
   NotebookTraceability,
 } from "../components/wiki/features/WetLabFeatures";
-import { notebookPage } from "../data/wet-lab/notebookPage";
-import "../styles/route-palette-wetlab.css";
+import { notebookPage } from "../data/project/notebookPage";
 
 export function Notebook() {
   return (
     <WikiRoutePage
       content={notebookPage}
-      heroImage={getWetLabHeroImage(notebookPage.route)}
-      theme="wet-lab"
-      pageClassName="wiki-page--wet-lab"
+      heroImage={getProjectHeroImage(notebookPage.route)}
+      theme="project"
+      pageClassName="wiki-page--project"
       hideHeroCopy
       features={{
         "notebook-schema": <NotebookRecordSchema />,

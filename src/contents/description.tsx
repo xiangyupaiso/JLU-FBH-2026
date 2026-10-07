@@ -1,9 +1,10 @@
 import { WikiRoutePage } from "../components/wiki/WikiRoutePage";
-import { descriptionFeatures } from "../components/wiki/features/project/DescriptionPanels";
-import { renderCitedText } from "../components/wiki/features/project/CitationLink";
+import {
+  descriptionFeatures,
+  renderCitedText,
+} from "../components/wiki/features/project/DescriptionPanels";
 import { getProjectHeroImage } from "../components/wiki/projectHeroAssets";
 import { descriptionPage } from "../data/project/descriptionPage";
-import "../styles/route-palette-project.css";
 import "../styles/description-page.css";
 
 export function Description() {

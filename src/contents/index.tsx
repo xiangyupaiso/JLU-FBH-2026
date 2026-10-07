@@ -1,29 +1,86 @@
-// The home route is the immersive scroll story from the LJY-PART branch.
-export { Home } from "./home-scene-01.tsx";
+import { lazy } from "react";
+
+// Keep page metadata synchronous, but load only the selected route's code,
+// styles and asset dictionary. App's Suspense boundary owns the loading cover.
+export const Home = lazy(() =>
+  import("./home-scene-01").then((m) => ({ default: m.Home })),
+);
 // Team
-export { Roster } from "./roster.tsx";
-export { Attribution } from "./attribution.tsx";
-export { Activities } from "./activities.tsx";
-export { Roster as Members } from "./roster.tsx";
+export const Roster = lazy(() =>
+  import("./roster").then((m) => ({ default: m.Roster })),
+);
+export const Attribution = lazy(() =>
+  import("./attribution").then((m) => ({ default: m.Attribution })),
+);
+export const Activities = lazy(() =>
+  import("./activities").then((m) => ({ default: m.Activities })),
+);
+export { Roster as Members };
 // Project
-export { Description } from "./description.tsx";
-export { Engineering } from "./engineering.tsx";
-export { Results } from "./results.tsx";
-export { Contribution } from "./contribution.tsx";
+export const Description = lazy(() =>
+  import("./description").then((m) => ({ default: m.Description })),
+);
+export const Engineering = lazy(() =>
+  import("./engineering").then((m) => ({ default: m.Engineering })),
+);
+export const Results = lazy(() =>
+  import("./results").then((m) => ({ default: m.Results })),
+);
+export const Contribution = lazy(() =>
+  import("./contribution").then((m) => ({ default: m.Contribution })),
+);
+export const VisualDesign = lazy(() =>
+  import("./visual-design").then((m) => ({ default: m.VisualDesign })),
+);
+export const Notebook = lazy(() =>
+  import("./notebook").then((m) => ({ default: m.Notebook })),
+);
+export const SafetyAndSecurity = lazy(() =>
+  import("./safety-and-security").then((m) => ({
+    default: m.SafetyAndSecurity,
+  })),
+);
 // Wet Lab
-export { Experiments } from "./experiments.tsx";
-export { Notebook } from "./notebook.tsx";
-export { Measurement } from "./measurement.tsx";
-export { AlternativePlatform } from "./alternative-platform.tsx";
-export { SafetyAndSecurity } from "./safety-and-security.tsx";
+export const Design = lazy(() =>
+  import("./design").then((m) => ({ default: m.Design })),
+);
+export const Experiments = lazy(() =>
+  import("./experiments").then((m) => ({ default: m.Experiments })),
+);
+export const Measurement = lazy(() =>
+  import("./measurement").then((m) => ({ default: m.Measurement })),
+);
+export const AlternativePlatform = lazy(() =>
+  import("./alternative-platform").then((m) => ({
+    default: m.AlternativePlatform,
+  })),
+);
 // Dry Lab
-export { Model } from "./model.tsx";
-export { Software } from "./software.tsx";
-export { Hardware } from "./hardware.tsx";
-export { Games } from "./games.tsx";
+export const Model = lazy(() =>
+  import("./model").then((m) => ({ default: m.Model })),
+);
+export const Software = lazy(() =>
+  import("./software").then((m) => ({ default: m.Software })),
+);
+export const Hardware = lazy(() =>
+  import("./hardware").then((m) => ({ default: m.Hardware })),
+);
+export const Games = lazy(() =>
+  import("./games").then((m) => ({ default: m.Games })),
+);
 // Engagement
-export { Entrepreneurship } from "./entrepreneurship.tsx";
-export { HumanPractices } from "./human-practices.tsx";
-export { Education } from "./education.tsx";
-export { Inclusivity } from "./inclusivity.tsx";
-export { Sustainability } from "./sustainability.tsx";
+export const Entrepreneurship = lazy(() =>
+  import("./entrepreneurship").then((m) => ({ default: m.Entrepreneurship })),
+);
+export const HumanPractices = lazy(() =>
+  import("./human-practices").then((m) => ({ default: m.HumanPractices })),
+);
+export const Education = lazy(() =>
+  import("./education").then((m) => ({ default: m.Education })),
+);
+export const Inclusivity = lazy(() =>
+  import("./inclusivity").then((m) => ({ default: m.Inclusivity })),
+);
+export const Sustainability = lazy(() =>
+  import("./sustainability").then((m) => ({ default: m.Sustainability })),
+);

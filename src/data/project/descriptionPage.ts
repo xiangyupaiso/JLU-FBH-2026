@@ -1,4 +1,5 @@
 import type { WikiPageContent } from "../../components/wiki/wikiPageTypes";
+import type { CitationReference } from "../citations/citationTypes";
 import { descriptionFigures } from "./descriptionAssets";
 
 /**
@@ -11,15 +12,7 @@ import { descriptionFigures } from "./descriptionAssets";
  * in favor of formal scientific figure blocks.
  */
 
-export interface ReferenceItem {
-  id: number;
-  authors: string;
-  title: string;
-  journal: string;
-  volumeYear: string;
-}
-
-export const descriptionReferences: ReferenceItem[] = [
+export const descriptionReferences: CitationReference[] = [
   {
     id: 1,
     authors: "Sung, H. et al.",
@@ -239,7 +232,7 @@ export const solutionData = {
   },
   circRnaDesignModule: {
     kicker: "Molecular architecture",
-    title: "circRNA Design Module",
+    title: "CircRNA Design Module",
     paragraphs: [
       "Once candidate antigens were selected, we asked a second question: **How can several tumor antigens be encoded within one stable RNA molecule?**",
       "We designed a single circRNA construct containing multiple antigen-coding sequences. **2A peptides** were introduced between antigen sequences to enable their separation during translation, while codon optimization was used to improve compatibility with human cellular translation (Chng et al. 2015).",
@@ -260,7 +253,7 @@ export const solutionData = {
   },
   deliveryModule: {
     kicker: "Preclinical delivery route",
-    title: "Delivery",
+    title: "Delivery Module",
     paragraphs: [
       "For future therapeutic applications, we envision **lipid nanoparticles (LNPs)** as the primary delivery system for CirCure. LNPs may protect circRNA from degradation, improve cellular uptake, and facilitate delivery to relevant target cells. This strategy is also compatible with the broader development of RNA-based therapeutic platforms.",
       "In the current in vitro validation, however, we use **electroporation** to introduce circRNA into cells efficiently. This approach provides a direct and reproducible method for evaluating the biological activity of our constructs while minimizing the influence of delivery efficiency as an independent experimental variable (Wan et al. 2024).",
@@ -270,7 +263,7 @@ export const solutionData = {
   },
   immuneActivationModule: {
     kicker: "In vitro immunological evaluation",
-    title: "Immune Activation",
+    title: "Immune Activation Module",
     paragraphs: [
       "Following intracellular delivery, we evaluated whether CirCure could support sustained antigen expression and activate immune cells involved in antigen processing and presentation.",
       "**CirCure produces more sustained antigen expression than the corresponding mRNA control.** Detectable expression persisted for approximately three days, whereas the mRNA signal declined more rapidly. This finding supports the rationale for selecting circRNA as the RNA architecture of CirCure and suggests that its prolonged expression may provide a broader time window for downstream antigen processing and presentation.",
@@ -281,7 +274,7 @@ export const solutionData = {
   },
   inVivoValidationModule: {
     kicker: "Preclinical evidence & translational boundaries",
-    title: "In Vivo Validation Module",
+    title: "Tumor Killing Module",
     paragraphs: [
       "We evaluated the anti-tumor activity of CirCure at both **cellular and animal levels.**",
       "In vitro, the functional consequence of CirCure-induced immune activation was assessed using a calcein-release-based cytotoxicity assay. Under the tested conditions, **CirCure-mediated immune responses resulted in up to approximately 80% killing of TNBC cells.** This result provides initial evidence that the immune responses induced by CirCure can translate into measurable tumor-cell cytotoxicity.",
@@ -372,7 +365,7 @@ export const futureData = {
 export const descriptionPage: WikiPageContent = {
   route: "/description",
   category: "project",
-  chapter: "Project / 01 of 04",
+  chapter: "Project / 01 of 07",
   eyebrow: "Description · The Living Ring",
   title: "Description",
   lede: "A multi-target circular RNA strategy for triple-negative breast cancer.",
@@ -420,24 +413,8 @@ export const descriptionPage: WikiPageContent = {
           paragraphs: introductionData.paragraphs.slice(0, 2),
         },
         {
-          type: "split",
-          id: "intro-split",
-          prose: [
-            {
-              type: "prose",
-              paragraphs: [introductionData.paragraphs[2]],
-            },
-          ],
-          aside: {
-            type: "mini-visual",
-            title: "Why TNBC",
-            items: [
-              "Aggressive clinical course",
-              "Relatively poor median survival",
-              "High risk of recurrence and metastasis",
-              "Limited conventional molecular targets",
-            ],
-          },
+          type: "prose",
+          paragraphs: [introductionData.paragraphs[2]],
         },
         {
           type: "prose",
@@ -454,42 +431,6 @@ export const descriptionPage: WikiPageContent = {
         {
           type: "prose",
           paragraphs: [introductionData.vaccineFormatComparison],
-        },
-        {
-          type: "table",
-          caption: "Table 1 | Comparison of therapeutic vaccine modalities",
-          headers: [
-            "Modality",
-            "Structural Topology",
-            "Production & Delivery",
-            "Durability & Immunostimulation",
-          ],
-          rows: [
-            [
-              "circRNA (CirCure)",
-              "Covalently closed loop; exonuclease-resistant",
-              "Cytoplasmic translation; no nuclear entry required",
-              "More sustained expression; potential adjuvant-like immunostimulation",
-            ],
-            [
-              "Linear mRNA",
-              "Linear; exonuclease-sensitive",
-              "Cytoplasmic translation",
-              "Less sustained expression",
-            ],
-            [
-              "DNA Vaccine",
-              "Plasmid double-stranded DNA",
-              "Requires nuclear entry",
-              "—",
-            ],
-            [
-              "Protein / Peptide",
-              "Synthesized antigen polypeptide",
-              "Requires production and delivery of the antigen itself",
-              "—",
-            ],
-          ],
         },
         {
           type: "prose",
@@ -515,10 +456,6 @@ export const descriptionPage: WikiPageContent = {
             "The central mechanism of CirCure can be summarized as:",
             "**Antigen selection → circRNA engineering → RNA production → purification & quality control → cellular delivery → antigen expression & presentation → CD8⁺ T-cell activation → TNBC cell killing**",
           ],
-        },
-        {
-          type: "feature",
-          key: "mechanism-route-chain",
         },
         {
           type: "figure",
@@ -566,24 +503,8 @@ export const descriptionPage: WikiPageContent = {
           paragraphs: solutionData.productionQcModule.paragraphs.slice(0, 4),
         },
         {
-          type: "split",
-          id: "qc-split",
-          prose: [
-            {
-              type: "prose",
-              paragraphs: [solutionData.productionQcModule.paragraphs[4]],
-            },
-          ],
-          aside: {
-            type: "mini-visual",
-            title: "Molecular Characterization",
-            items: [
-              "Circularization rate and purity >90%",
-              "RNase R treatment to remove linear RNA",
-              "RT-qPCR verification",
-              "Back-splice junction (BSJ) sequencing",
-            ],
-          },
+          type: "prose",
+          paragraphs: [solutionData.productionQcModule.paragraphs[4]],
         },
         {
           type: "subheading",
@@ -606,12 +527,6 @@ export const descriptionPage: WikiPageContent = {
         {
           type: "prose",
           paragraphs: solutionData.immuneActivationModule.paragraphs,
-        },
-        {
-          type: "callout",
-          tone: "navy",
-          label: "Functional Readout",
-          body: "More sustained antigen expression than the mRNA control (~3 days); DC uptake and activation (CD80/CD86) without pronounced cytotoxicity; up to ~80% TNBC cell killing under our experimental conditions (calcein release).",
         },
         {
           type: "subheading",
@@ -684,56 +599,12 @@ export const descriptionPage: WikiPageContent = {
           paragraphs: oncologyImpactData.paragraphs.slice(0, 2),
         },
         {
-          type: "callout",
-          tone: "coral",
-          label: "Evidence boundary",
-          body:
-            "Current data cover the first four links of the chain; tumor control, recurrence, and survival remain untested.",
-        },
-        {
           type: "figure",
           ...descriptionFigures.fig6,
         },
         {
           type: "prose",
           paragraphs: oncologyImpactData.paragraphs.slice(2),
-        },
-        {
-          type: "table",
-          caption:
-            "Table 2 | Access dimensions to be evaluated alongside biological efficacy",
-          headers: [
-            "Dimension",
-            "Key Evaluation Focus",
-            "Planned Evaluation",
-          ],
-          rows: [
-            [
-              "Manufacturability",
-              "Can circRNA production be performed reproducibly at scale?",
-              "Reproducibility of self-splicing intron-mediated production and purification beyond laboratory scale",
-            ],
-            [
-              "Storage Stability",
-              "Can product quality be maintained under practical storage conditions?",
-              "Product quality over time under practical storage conditions",
-            ],
-            [
-              "Delivery Requirements",
-              "Is the delivery method clinically feasible with low procedural burden?",
-              "Administration complexity and feasibility of the proposed delivery system",
-            ],
-            [
-              "Companion Biomarkers",
-              "How are patients stratified for multi-antigen match?",
-              "Patient selection by tumor antigen profile (Trop-2, LIV-1, Nectin-4, B7-H4)",
-            ],
-            [
-              "Cost & Scalability",
-              "Are manufacturing costs compatible with broader patient access?",
-              "Cost and manufacturing complexity weighed against biological performance",
-            ],
-          ],
         },
       ],
     },
@@ -770,8 +641,7 @@ export const descriptionPage: WikiPageContent = {
         {
           type: "epigraph",
           quote: futureData.paragraphs[2],
-          translationZh:
-            "对我们而言，CirCure 不是终点，而是探索合成生物学如何构建更精准、更具适应性肿瘤疗法的起点。",
+          translationZh: "",
           attribution: "CirCure Team",
           attributionRole: "Project Manifesto",
         },
@@ -797,6 +667,7 @@ export const descriptionPage: WikiPageContent = {
     { path: "/engineering", label: "Engineering Success" },
     { path: "/results", label: "Results & Discussion" },
     { path: "/contribution", label: "Team Contribution" },
+    { path: "/visual-design", label: "Visual Design" },
   ],
   next: {
     path: "/engineering",

@@ -1,0 +1,99 @@
+import { useId, useState } from "react";
+import "../../../styles/wiki-documents.css";
+
+/**
+ * Shared document viewer for the wiki.
+ *
+ * Implements the housing convention's §4.6 pattern: a document displayed in the
+ * body as a card that is **collapsed until the reader asks for it**. Collapsed is
+ * the default because the frame it opens is a browser PDF plugin — a separate
+ * process surface that is not free to composite, and that nothing on the page
+ * needs before the reader actually wants to read the document.
+ *
+ * Three rules this component exists to enforce:
+ *
+ *   1. **The manuscript writes the card, not the developer.** The only text on
+ *      the card is the document's own caption — the line the source manuscript
+ *      already gives for this embed (on Design, `Figure 9. Experimental Design
+ *      Report, NC3Rs EDA.`). No invented title, subtitle, file name or "PDF"
+ *      badge: every one of those is a sentence the team never wrote, and the
+ *      page ends up saying the same thing three times.
+ *   2. **It must not read as a figure caption.** A first version was caption-sized
+ *      grey type in the prose column, and the team read it as a second caption
+ *      under the figure above it. Hence the deep tinted surface and a real
+ *      control. It is deliberately **not** a `.wiki-figure` — the reader's blue
+ *      `FIG. nn` badge hangs on that class.
+ *
+ *   3. **No decoration.** No icon, no file-type badge, no colour rail along the
+ *      top edge, no dot: the reader's own rules ban AI eyebrows and mechanical
+ *      small print (铁律 4) and generative ornaments such as top rules and dots
+ *      (铁律 3). The colour that distinguishes the block is the block's own
+ *      surface.
+ */
+
+export interface WikiDocument {
+  /**
+   * The manuscript's own words for this document — the only text shown, and the
+   * frame's accessible name.
+   */
+  caption: string;
+  /** Resolved URL — always built through the page's own document resolver. */
+  url: string;
+}
+
+export function DocumentViewer({
+  document,
+  /** Open on first paint. Off by default; the Sustainability report passes true. */
+  defaultOpen = false,
+  /** Labels for the collapse control, so a manual is not called a "report". */
+  readLabel = "Read",
+  closeLabel = "Close",
+}: {
+  document: WikiDocument;
+  defaultOpen?: boolean;
+  readLabel?: string;
+  closeLabel?: string;
+}) {
+  const [open, setOpen] = useState(defaultOpen);
+  /** Once opened the frame stays mounted: re-creating a PDF surface on every
+      toggle would reload the document and lose the reader's page. */
+  const [mounted, setMounted] = useState(defaultOpen);
+  const panelId = useId();
+  const toggleLabel = open ? closeLabel : readLabel;
+
+  const toggle = () => {
+    setOpen((previous) => {
+      if (!previous) setMounted(true);
+      return !previous;
+    });
+  };
+
+  return (
+    <figure className={`wiki-document${open ? " is-open" : ""}`}>
+      <div className="wiki-document__card">
+        <p className="wiki-document__caption">{document.caption}</p>
+        <button
+          type="button"
+          className="wiki-document__toggle"
+          aria-expanded={open}
+          aria-controls={panelId}
+          aria-label={`${toggleLabel} — ${document.caption}`}
+          onClick={toggle}
+        >
+          <span className="wiki-document__chevron" aria-hidden="true" />
+          {toggleLabel}
+        </button>
+      </div>
+
+      <div className="wiki-document__panel" id={panelId} hidden={!open}>
+        {mounted ? (
+          <iframe
+            className="wiki-document__frame"
+            src={document.url}
+            title={document.caption}
+          />
+        ) : null}
+      </div>
+    </figure>
+  );
+}

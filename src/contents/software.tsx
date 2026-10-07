@@ -13,7 +13,6 @@ import {
 } from "../components/wiki/features/SoftwareEvidenceFeatures";
 import { CirCureSoftwareWorkflowExplorer } from "../components/wiki/features/DryLabProjectExplorers";
 import { softwareEvidencePage } from "../data/softwarePage";
-import "../styles/route-palette-drylab.css";
 import "../styles/dry-panel-software.css";
 
 /**
