@@ -82,6 +82,7 @@ export function animateChallengeMorph(
     const originalThumbnailStyle = thumbnail?.getAttribute("style");
     const state = { progress: 0 };
     const image = new Image();
+    image.crossOrigin = "anonymous";
     let disposed = false;
     let ready = false;
     let width = 1;

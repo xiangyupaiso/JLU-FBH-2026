@@ -13,6 +13,11 @@
   font-display: swap;
 }
 
+:root {
+  --nav-control-radius: 999px;
+  --nav-control-height: 36px;
+}
+
 .site-header {
   --header-surface: var(--paper-bright);
   --header-ink: var(--brand-navy-deep);
@@ -309,12 +314,12 @@
 .nav-link {
   position: relative;
   display: inline-flex;
-  min-height: 36px;
+  min-height: var(--nav-control-height);
   align-items: center;
   padding: 0 13px;
   margin: 0;
   border: 0;
-  border-radius: 999px;
+  border-radius: var(--nav-control-radius);
   background: var(--header-pill);
   color: var(--header-ink);
   white-space: nowrap;

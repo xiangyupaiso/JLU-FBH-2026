@@ -63,34 +63,34 @@ function reveal(
 ) {
   const travel = compact ? 0.55 : 1;
   // A closed aperture hides the entire future sentence, including its silhouette.
-  // Each word opens within its own typographic box; layout never moves with it.
+  // Font-relative clearance also preserves overhangs on short italic words.
   const from: gsap.TweenVars = { yPercent: 24 * travel,
-    clipPath: "inset(100% -12% -20% -12%)" };
+    clipPath: "inset(100% -0.35em -0.35em -0.35em)" };
   let order: "start" | "center" | "end" = "start";
   switch (voice) {
     case "reflect": break;
     case "explain":
       from.yPercent = 0;
-      from.clipPath = "inset(-20% 100% -20% 0%)";
+      from.clipPath = "inset(-0.35em 100% -0.35em -0.35em)";
       break;
     case "weigh":
       from.yPercent = -18 * travel;
-      from.clipPath = "inset(-20% -12% 100% -12%)";
+      from.clipPath = "inset(-0.35em -0.35em 100% -0.35em)";
       break;
     case "assemble":
       from.yPercent = 0;
-      from.clipPath = "inset(-20% 50% -20% 50%)";
+      from.clipPath = "inset(-0.35em 50% -0.35em 50%)";
       order = "center";
       break;
     case "exchange":
       from.xPercent = (sentenceIndex % 2 ? 12 : -12) * travel;
       from.yPercent = 0;
-      from.clipPath = sentenceIndex % 2 ? "inset(-20% 100% -20% 0%)" : "inset(-20% 0% -20% 100%)";
+      from.clipPath = sentenceIndex % 2 ? "inset(-0.35em 100% -0.35em -0.35em)" : "inset(-0.35em -0.35em -0.35em 100%)";
       order = sentenceIndex % 2 ? "end" : "start";
       break;
     case "expand":
       from.yPercent = 0;
-      from.clipPath = "inset(-20% 50% -20% 50%)";
+      from.clipPath = "inset(-0.35em 50% -0.35em 50%)";
       from.x = (i: number) => (i - (tokens.length - 1) / 2) * -1.3 * travel;
       order = "center";
       break;
@@ -101,7 +101,7 @@ function reveal(
   }, at);
   timeline.fromTo(tokens, from, {
     x: 0, xPercent: 0, yPercent: 0,
-    clipPath: "inset(-20% -12% -20% -12%)",
+    clipPath: "inset(-0.35em -0.35em -0.35em -0.35em)",
     duration: duration * 0.72,
     stagger: { amount: duration * 0.28, from: order, ease: "sine.inOut" },
     ease: "power3.out",

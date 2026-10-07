@@ -1,10 +1,11 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { type MouseEvent, useCallback, useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 const teamCrestUrl = "https://static.igem.wiki/teams/6056/wiki/files/pages/shared/jlu-fbh-crest.avif";
 const projectWetlabSprite = "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/nav-project-wetlab-v2.webp";
 const drylabEngagementSprite = "https://static.igem.wiki/teams/6056/wiki/files/pages/dry-lab/nav-drylab-engagement-v2.webp";
 import Pages from "../pages";
 import { PageSearch } from "./PageSearch";
+import { HOME_INTRO_REPLAY_EVENT } from "../utils/homeIntro";
 
 interface NavCard {
   name: string;
@@ -288,6 +289,23 @@ export function Navbar() {
     setMobileOpen(false);
   }, [clearTimers]);
 
+  const returnHome = (event: MouseEvent<HTMLAnchorElement>) => {
+    if (
+      event.defaultPrevented ||
+      event.button !== 0 ||
+      event.metaKey ||
+      event.ctrlKey ||
+      event.shiftKey ||
+      event.altKey
+    )
+      return;
+    closeAll();
+    if (homeActive) {
+      event.preventDefault();
+      window.dispatchEvent(new Event(HOME_INTRO_REPLAY_EVENT));
+    }
+  };
+
   // Close on route change
   useEffect(() => {
     closeAll();
@@ -486,7 +504,12 @@ export function Navbar() {
           onPointerLeave={queueClose}
         >
           <div className="circure-nav-head">
-            <Link to="/" className="wordmark" aria-label="CirCure home">
+            <Link
+              to="/"
+              className="wordmark"
+              aria-label="CirCure home"
+              onClick={returnHome}
+            >
               <span className="wordmark-stage" aria-hidden="true">
                 <span className="wordmark-crest">
                   <img
@@ -521,6 +544,7 @@ export function Navbar() {
                   <Link
                     className="nav-link"
                     to="/"
+                    onClick={returnHome}
                     aria-current={homeActive ? "page" : undefined}
                   >
                     Home
@@ -668,7 +692,7 @@ export function Navbar() {
           >
             <Link
               to="/"
-              onClick={closeAll}
+              onClick={returnHome}
               aria-current={homeActive ? "page" : undefined}
             >
               Home

@@ -1,5 +1,6 @@
 import {
   useEffect,
+  useId,
   useRef,
   type CSSProperties,
   type ReactNode,
@@ -154,6 +155,7 @@ function StoryArtwork({
           ) : (
             <img
               key={layer.file}
+              crossOrigin="anonymous"
               src={src}
               alt=""
               aria-hidden="true"
@@ -264,24 +266,45 @@ function WardArtwork() {
   );
 }
 
-// Keep the original receiving cloud at its established viewport coordinates.
-// The latest map has complete land shapes and needs no painted repair layers.
+// Crop the original moving details independently of the latest land artwork.
 const mapMotionPieces = [
+  { name: "cloud-west", kind: "cloud", x: 0, y: 30, width: 8, height: 9 },
   {
     name: "cloud-northwest",
     kind: "cloud",
-    x: 12.78125,
+    x: 10,
     y: 10,
-    width: 8.26875,
+    width: 9,
     height: 8,
   },
+  { name: "cloud-north", kind: "cloud", x: 57, y: 6, width: 8, height: 7 },
+  { name: "cloud-east", kind: "cloud", x: 93, y: 25, width: 7, height: 9 },
+  { name: "boat-smoke", kind: "cloud", x: 47, y: 66, width: 5, height: 4 },
+  { name: "wave-west-1", kind: "wave", x: 0, y: 64, width: 8, height: 4 },
+  { name: "wave-west-2", kind: "wave", x: 0, y: 69, width: 8, height: 4 },
+  { name: "wave-southwest-1", kind: "wave", x: 12, y: 78, width: 8, height: 4 },
+  { name: "wave-southwest-2", kind: "wave", x: 12, y: 82, width: 8, height: 5 },
+  { name: "wave-central-west-1", kind: "wave", x: 32, y: 59, width: 7, height: 4 },
+  { name: "wave-central-west-2", kind: "wave", x: 39, y: 64, width: 9, height: 4 },
+  { name: "wave-central-west-3", kind: "wave", x: 32, y: 83, width: 7, height: 5 },
+  { name: "wave-central", kind: "wave", x: 50, y: 52, width: 8, height: 5 },
+  { name: "wave-central-east-1", kind: "wave", x: 63, y: 40, width: 9, height: 5 },
+  { name: "wave-central-east-2", kind: "wave", x: 61, y: 44, width: 12, height: 5 },
+  { name: "wave-central-east-3", kind: "wave", x: 60, y: 64, width: 12, height: 5 },
+  { name: "wave-central-east-4", kind: "wave", x: 65, y: 68, width: 5, height: 4 },
+  { name: "wave-east-1", kind: "wave", x: 86, y: 39, width: 8, height: 4 },
+  { name: "wave-east-2", kind: "wave", x: 87, y: 43, width: 6, height: 4 },
+  { name: "wave-east-3", kind: "wave", x: 72, y: 74, width: 5, height: 4 },
+  { name: "wave-east-4", kind: "wave", x: 91, y: 81, width: 9, height: 5 },
+  { name: "wave-boat", kind: "wave", x: 43, y: 79.5, width: 9.5, height: 2.5 },
+  { name: "boat", kind: "boat", x: 42, y: 70, width: 13.2, height: 9 },
 ] as const;
 
 const mapStatistics = [
   {
     key: "incidence-countries",
     value: "164",
-    detail: "countries · #1 incidence",
+    detail: "countries · 1st in incidence",
     description:
       "164 countries where breast cancer ranks first for new cases among women",
   },
@@ -295,7 +318,7 @@ const mapStatistics = [
   {
     key: "mortality-countries",
     value: "122",
-    detail: "countries · #1 mortality",
+    detail: "countries · 1st in mortality",
     description:
       "122 countries where breast cancer ranks first for cancer deaths among women",
   },
@@ -309,7 +332,13 @@ const mapStatistics = [
 ] as const;
 
 function MapArtwork() {
+  const detailMaskId = useId();
+  const detailInkId = `${detailMaskId}-ink`;
+  const detailFrameId = `${detailMaskId}-frame`;
+  const boatClipId = `${detailMaskId}-boat`;
   const mapLayer = { left: 0, top: 0, width: 100, height: 100 };
+  const detailLayer = manifest["3"].layers[1];
+  const detailSrc = imageUrls[`../assets/home/story/${detailLayer.file}`];
   const markerLayer = manifest["3"].layers[2];
   const markerSrc = imageUrls[`../assets/home/story/${markerLayer.file}`];
   // Independent windows preserve the artist's six original location marks.
@@ -344,6 +373,40 @@ function MapArtwork() {
               height: `${mapLayer.height}%`,
             }}
           >
+            <defs>
+              {/* Remove the old pink frame only where it crosses blue details. */}
+              <filter id={detailInkId} colorInterpolationFilters="sRGB">
+                <feColorMatrix values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  -100 0 100 0 0" />
+              </filter>
+              <clipPath id={detailFrameId}>
+                <rect x="5.44" width="0.55" height="100" />
+                <rect x="95.24" width="0.55" height="100" />
+              </clipPath>
+              <clipPath id={boatClipId}>
+                {/* Keep the smoke edge out of the independently rocking boat. */}
+                <path d="M42 70 H48.7 V70.56 H55.2 V79 H42 Z" />
+              </clipPath>
+              <mask
+                id={detailMaskId}
+                maskUnits="userSpaceOnUse"
+                x="0"
+                y="0"
+                width="100"
+                height="100"
+              >
+                <rect width="100" height="100" fill="white" />
+                <rect x="5.44" width="0.55" height="100" fill="black" />
+                <rect x="95.24" width="0.55" height="100" fill="black" />
+                <image
+                  href={detailSrc}
+                  width="100"
+                  height="100"
+                  preserveAspectRatio="none"
+                  clipPath={`url(#${detailFrameId})`}
+                  filter={`url(#${detailInkId})`}
+                />
+              </mask>
+            </defs>
             <image
               href={src}
               width="100"
@@ -358,19 +421,39 @@ function MapArtwork() {
               data-map-piece={part.name}
               style={
                 {
-                  left: `${mapLayer.left + (mapLayer.width * part.x) / 100}%`,
-                  top: `${mapLayer.top + (mapLayer.height * part.y) / 100}%`,
-                  width: `${(mapLayer.width * part.width) / 100}%`,
-                  height: `${(mapLayer.height * part.height) / 100}%`,
+                  left:
+                    part.name === "wave-central"
+                      ? "34%"
+                      : `${detailLayer.left + (detailLayer.width * part.x) / 100}%`,
+                  top:
+                    part.name === "wave-central"
+                      ? "92%"
+                      : `${detailLayer.top + (detailLayer.height * part.y) / 100}%`,
+                  width: `${(detailLayer.width * part.width) / 100}%`,
+                  height: `${(detailLayer.height * part.height) / 100}%`,
                   "--piece-index": index,
                 } as CSSProperties
               }
-              viewBox="0 0 100 100"
+              viewBox={
+                part.name === "cloud-northwest"
+                  ? "0 0 100 100"
+                  : `${part.x} ${part.y} ${part.width} ${part.height}`
+              }
               preserveAspectRatio="none"
               aria-hidden="true"
             >
               <image
-                href={mapCloudNorthwestUrl}
+                href={
+                  part.name === "cloud-northwest"
+                    ? mapCloudNorthwestUrl
+                    : detailSrc
+                }
+                mask={
+                  part.x < 5.99 || part.x + part.width > 95.24
+                    ? `url(#${detailMaskId})`
+                    : undefined
+                }
+                clipPath={part.name === "boat" ? `url(#${boatClipId})` : undefined}
                 width="100"
                 height="100"
                 preserveAspectRatio="none"
@@ -614,7 +697,10 @@ function VaccineArtwork() {
         <div data-vaccine-copy="question">
           <h3>
             If conventional therapies lack sufficient targets, could the
-            patient’s <span>immune system</span> recognize the tumor?
+            patient’s <span>immune system</span>{" "}
+            <span className="story-vaccine-question-ending">
+              recognize the tumor?
+            </span>
           </h3>
         </div>
       </article>
@@ -957,17 +1043,8 @@ export function HomeStory() {
           </>
         }
         art={<HomeAntigenSwitch />}
-      >
-        <p>
-          Drag or select an antigen above to explore the same backbone with a
-          different target.
-        </p>
-        <p>
-          Our design separates the shared circRNA backbone from the
-          antigen-encoding sequence. A, B and C illustrate this concept; they
-          are not experimental results.
-        </p>
-      </Chapter>
+        copyInArtwork
+      />
 
       <Chapter
         id="beyond-tnbc"

@@ -1,12 +1,18 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { gsap } from "gsap";
+import { HOME_INTRO_REPLAY_EVENT } from "../utils/homeIntro";
 const backToTopImage = "https://static.igem.wiki/teams/6056/wiki/files/pages/shared/back-to-top.avif";
 
 export function BackToTop() {
   const { pathname } = useLocation();
   const [isVisible, setIsVisible] = useState(false);
   const [isLaunching, setIsLaunching] = useState(false);
+  const topLabel = pathname === "/" ? "Return to CirCure title" : "Return to top";
+
+  useEffect(() => {
+    setIsLaunching(false);
+  }, [pathname]);
 
   // Every reader route (Wet Lab / Project / Dry Lab / Engagement) scrolls the
   // document through its full article via the unified document timeline, so a
@@ -50,6 +56,13 @@ export function BackToTop() {
       onUpdate: () => {
         window.scrollTo({ top: position.y, behavior: "instant" });
       },
+      onComplete: () => {
+        window.scrollTo({ top: 0, behavior: "instant" });
+        if (pathname === "/") {
+          window.dispatchEvent(new Event(HOME_INTRO_REPLAY_EVENT));
+        }
+        setIsLaunching(false);
+      },
     });
 
     return () => {
@@ -65,6 +78,9 @@ export function BackToTop() {
     ).matches;
     if (reducedMotion) {
       window.scrollTo({ top: 0, behavior: "instant" });
+      if (pathname === "/") {
+        window.dispatchEvent(new Event(HOME_INTRO_REPLAY_EVENT));
+      }
     } else {
       setIsLaunching(true);
     }
@@ -76,20 +92,14 @@ export function BackToTop() {
       type="button"
       onClick={returnToTop}
       disabled={isLaunching}
-      aria-label="Return to top"
+      aria-label={topLabel}
       aria-hidden={!isVisible && !isLaunching}
       tabIndex={isVisible && !isLaunching ? 0 : -1}
-      title="Return to top"
+      title={topLabel}
     >
       <span
         className="circure-back-to-top__artwork"
         aria-hidden="true"
-        onAnimationEnd={(event) => {
-          if (event.target === event.currentTarget) {
-            window.scrollTo({ top: 0, behavior: "instant" });
-            setIsLaunching(false);
-          }
-        }}
       >
         <img src={backToTopImage} alt="" draggable={false} />
       </span>

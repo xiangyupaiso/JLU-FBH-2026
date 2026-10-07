@@ -62,21 +62,17 @@ export function createReadingInk(stage: HTMLElement, cues: InkCue[], transfers: 
     if (plates.has(cue)) return plates.get(cue);
     const stageBox = stage.getBoundingClientRect();
     const boxes = cue.tokens.map(token => token.getBoundingClientRect());
-    const left = Math.min(...boxes.map(b => b.left)) - stageBox.left - 4;
-    const top = Math.min(...boxes.map(b => b.top)) - stageBox.top - 4;
-    const w = Math.ceil(Math.max(...boxes.map(b => b.right)) - stageBox.left - left + 4);
-    const h = Math.ceil(Math.max(...boxes.map(b => b.bottom)) - stageBox.top - top + 4);
-    if (w <= 0 || h <= 0) return;
+    if (!boxes.length) return;
+    const bounds = boxes.map(box => ({
+      left: box.left - stageBox.left, right: box.right - stageBox.left,
+      top: box.top - stageBox.top, bottom: box.bottom - stageBox.top,
+    }));
     const scratch = document.createElement("canvas");
-    const sampleRatio = 1.5;
-    scratch.width = Math.ceil(w * sampleRatio);
-    scratch.height = Math.ceil(h * sampleRatio);
     const ink = scratch.getContext("2d", { willReadFrequently: true });
     if (!ink) return;
-    ink.scale(sampleRatio, sampleRatio);
-    ink.textBaseline = "alphabetic";
+    const runs: { text: string; font: string; color: string; letterSpacing: string; x: number; baseline: number }[] = [];
     const range = document.createRange();
-    for (const token of cue.tokens) {
+    for (const [index, token] of cue.tokens.entries()) {
       const walker = document.createTreeWalker(token, NodeFilter.SHOW_TEXT);
       let node: Node | null;
       while ((node = walker.nextNode())) {
@@ -84,16 +80,40 @@ export function createReadingInk(stage: HTMLElement, cues: InkCue[], transfers: 
         if (!text.trim()) continue;
         const style = getComputedStyle(node.parentElement!);
         ink.font = `${style.fontStyle} ${style.fontWeight} ${style.fontSize} ${style.fontFamily}`;
-        ink.fillStyle = style.color;
         ink.letterSpacing = style.letterSpacing === "normal" ? "0px" : style.letterSpacing;
         range.selectNodeContents(node);
         const box = range.getBoundingClientRect();
         const metrics = ink.measureText(text);
         const ascent = metrics.fontBoundingBoxAscent ?? metrics.actualBoundingBoxAscent;
         const descent = metrics.fontBoundingBoxDescent ?? metrics.actualBoundingBoxDescent;
-        const baseline = box.top - stageBox.top - top + (box.height - ascent - descent) / 2 + ascent;
-        ink.fillText(text, box.left - stageBox.left - left, baseline);
+        const x = box.left - stageBox.left;
+        const baseline = box.top - stageBox.top + (box.height - ascent - descent) / 2 + ascent;
+        // Italic contours can extend beyond the word's advance box. Include them
+        // in both the raster and particle ownership, so shared words stay whole.
+        const bound = bounds[index];
+        bound.left = Math.min(bound.left, x - metrics.actualBoundingBoxLeft);
+        bound.right = Math.max(bound.right, x + metrics.actualBoundingBoxRight);
+        bound.top = Math.min(bound.top, baseline - metrics.actualBoundingBoxAscent);
+        bound.bottom = Math.max(bound.bottom, baseline + metrics.actualBoundingBoxDescent);
+        runs.push({ text, font: ink.font, color: style.color,
+          letterSpacing: ink.letterSpacing, x, baseline });
       }
+    }
+    const left = Math.min(...bounds.map(b => b.left)) - 4;
+    const top = Math.min(...bounds.map(b => b.top)) - 4;
+    const w = Math.ceil(Math.max(...bounds.map(b => b.right)) - left + 4);
+    const h = Math.ceil(Math.max(...bounds.map(b => b.bottom)) - top + 4);
+    if (w <= 0 || h <= 0) return;
+    const sampleRatio = 1.5;
+    scratch.width = Math.ceil(w * sampleRatio);
+    scratch.height = Math.ceil(h * sampleRatio);
+    ink.scale(sampleRatio, sampleRatio);
+    ink.textBaseline = "alphabetic";
+    for (const run of runs) {
+      ink.font = run.font;
+      ink.fillStyle = run.color;
+      ink.letterSpacing = run.letterSpacing;
+      ink.fillText(run.text, run.x - left, run.baseline - top);
     }
     const pixels = ink.getImageData(0, 0, scratch.width, scratch.height).data;
     const grains: Grain[] = [];
@@ -105,8 +125,8 @@ export function createReadingInk(stage: HTMLElement, cues: InkCue[], transfers: 
         const alpha = pixels[offset + 3] / 255;
         if (alpha < 0.1) continue;
         const gx = left + x / sampleRatio, gy = top + y / sampleRatio;
-        const token = boxes.findIndex(b => gx >= b.left - stageBox.left - 2 && gx <= b.right - stageBox.left + 2
-          && gy >= b.top - stageBox.top - 2 && gy <= b.bottom - stageBox.top + 2);
+        const token = bounds.findIndex(b => gx >= b.left - 2 && gx <= b.right + 2
+          && gy >= b.top - 2 && gy <= b.bottom + 2);
         const rgb = [pixels[offset], pixels[offset + 1], pixels[offset + 2]];
         grains.push({ x: gx, y: gy, alpha, token, rgb,
           color: `rgb(${rgb.join(",")})`, phase: noise(grains.length) });

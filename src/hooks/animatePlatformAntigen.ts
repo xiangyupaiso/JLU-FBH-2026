@@ -118,7 +118,12 @@ export function animatePlatformAntigen(
     const scroll = gsap.utils.interpolate(start, end, motion.progress);
     const active = Boolean(fan && motion.progress > 0 && motion.progress < 1);
     sequence.dataset.antigenBridgeProgress = String(motion.progress);
-    if (!active || !context || !fan || disposed) {
+    // The carry clone contains only the closed ring. Once the mechanism is
+    // opened, its live ribosome and protein must remain visible on the real SVG.
+    const mechanismOpen =
+      target.closest<HTMLElement>(".home-antigen-switch")?.dataset
+        .mechanismExpanded === "true";
+    if (!active || !context || !fan || disposed || mechanismOpen) {
       restore();
       return;
     }
@@ -164,6 +169,15 @@ export function animatePlatformAntigen(
       installed?.setAttribute("filter", localReferences(selected));
     }
   };
+  // Opening the mechanism can change visibility without a scroll update.
+  const mechanism = target.closest<HTMLElement>(".home-antigen-switch");
+  const mechanismObserver = new MutationObserver(render);
+  if (mechanism) {
+    mechanismObserver.observe(mechanism, {
+      attributes: true,
+      attributeFilter: ["data-mechanism-expanded"],
+    });
+  }
   const timeline = gsap.timeline({
     onUpdate: render,
     scrollTrigger: {
@@ -271,6 +285,7 @@ export function animatePlatformAntigen(
 
   return () => {
     disposed = true;
+    mechanismObserver.disconnect();
     timeline.scrollTrigger?.kill();
     timeline.kill();
     restore();

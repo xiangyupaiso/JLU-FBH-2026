@@ -80,6 +80,11 @@
   text-shadow: 0 0 18px rgba(215, 132, 179, 0.45);
   visibility: hidden;
 }
+.home-intro-subtitle-word {
+  display: inline-block;
+  white-space: nowrap;
+  opacity: 0;
+}
 .home-intro-skip {
   position: absolute;
   z-index: 3;

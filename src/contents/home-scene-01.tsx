@@ -12,6 +12,7 @@ const surgeryUrl = "https://static.igem.wiki/teams/6056/wiki/files/pages/home/su
 import womanFrameUrl from "../assets/home/scene-01-new/woman-frame-focus.webp";
 import womanPortraitUrl from "../assets/home/scene-01-new/woman-portrait.svg";
 import { HomeIntro } from "../components/home/HomeIntro";
+import { HomePlayback } from "../components/home/HomePlayback";
 import { useHomeScene01Animation } from "../hooks/useHomeScene01Animation";
 import { HomeStory } from "./home-story";
 import "../styles/home-scene-01.css";
@@ -138,6 +139,7 @@ export function Home() {
         <HomeIntro scene={sceneRef} />
         <HomeStory />
       </main>
+      <HomePlayback root={rootRef} />
     </div>
   );
 }
