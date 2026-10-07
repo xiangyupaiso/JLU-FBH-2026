@@ -91,6 +91,35 @@
   counter-increment: none;
 }
 
+/* Single assay figures & bar charts: scaled down to academic readable dimensions */
+.wiki-page[data-wiki-route="/results"] .wiki-figure:has(img[src*="fig05"]),
+.wiki-page[data-wiki-route="/results"] .wiki-figure:has(img[src*="fig08"]),
+.wiki-page[data-wiki-route="/results"] .wiki-figure:has(img[src*="fig09"]),
+.wiki-page[data-wiki-route="/results"] .wiki-figure:has(img[src*="fig11"]),
+.wiki-page[data-wiki-route="/results"] .wiki-figure:has(img[src*="fig13"]),
+.wiki-page[data-wiki-route="/results"] .wiki-figure:has(img[src*="fig15"]),
+.wiki-page[data-wiki-route="/results"] .wiki-figure:has(img[src*="fig17"]),
+.wiki-page[data-wiki-route="/results"] .wiki-figure:has(img[src*="fig18a"]),
+.wiki-page[data-wiki-route="/results"] .wiki-figure:has(img[src*="fig19"]) {
+  max-width: 540px;
+  margin: var(--wiki-space-block, 24px) auto !important;
+}
+
+.wiki-page[data-wiki-route="/results"] .wiki-figure:has(img[src*="fig05"]) img,
+.wiki-page[data-wiki-route="/results"] .wiki-figure:has(img[src*="fig08"]) img,
+.wiki-page[data-wiki-route="/results"] .wiki-figure:has(img[src*="fig09"]) img,
+.wiki-page[data-wiki-route="/results"] .wiki-figure:has(img[src*="fig11"]) img,
+.wiki-page[data-wiki-route="/results"] .wiki-figure:has(img[src*="fig13"]) img,
+.wiki-page[data-wiki-route="/results"] .wiki-figure:has(img[src*="fig15"]) img,
+.wiki-page[data-wiki-route="/results"] .wiki-figure:has(img[src*="fig17"]) img,
+.wiki-page[data-wiki-route="/results"] .wiki-figure:has(img[src*="fig18a"]) img,
+.wiki-page[data-wiki-route="/results"] .wiki-figure:has(img[src*="fig19"]) img {
+  max-width: 100%;
+  width: auto;
+  max-height: 420px;
+  margin: 0 auto;
+}
+
 /* --------------------------------------------- run-in labels & numbered runs */
 
 .wiki-page[data-wiki-route="/results"]

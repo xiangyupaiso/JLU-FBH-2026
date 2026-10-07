@@ -52,12 +52,14 @@ import "../../../../styles/features/contribution-panels.css";
 /** The page's own prose already introduces every figure; the gallery only lays them out. */
 function ContributionFigureGallery({
   keys,
+  className,
 }: {
   keys: readonly ContributionImageAssetKey[];
+  className?: string;
 }) {
   return (
     <div
-      className="contribution-gallery"
+      className={`contribution-gallery${className ? ` ${className}` : ""}`}
       data-count={keys.length}
       data-wiki-reveal
     >
@@ -134,11 +136,13 @@ export function contributionFeatures(): Record<string, ReactNode> {
     ),
     "contribution-gallery-bio-strategy-arena": (
       <ContributionFigureGallery
+        className="contribution-gallery--cards"
         keys={["bioStrategyArena1", "bioStrategyArena2"]}
       />
     ),
     "contribution-gallery-music-festival": (
       <ContributionFigureGallery
+        className="contribution-gallery--compact-grid"
         keys={[
           "musicFestival1",
           "musicFestival2",
@@ -169,13 +173,17 @@ export function contributionFeatures(): Record<string, ReactNode> {
       />
     ),
     "contribution-gallery-ccic": (
-      <ContributionFigureGallery keys={["ccic1", "ccic2", "ccic3", "ccic4"]} />
+      <ContributionFigureGallery
+        className="contribution-gallery--compact-grid"
+        keys={["ccic1", "ccic2", "ccic3", "ccic4"]}
+      />
     ),
     "contribution-gallery-apic": (
       <ContributionFigureGallery keys={["apic1", "apic2"]} />
     ),
     "contribution-gallery-regional-exchanges": (
       <ContributionFigureGallery
+        className="contribution-gallery--compact-grid"
         keys={[
           "regionalNorthChina",
           "regionalEastChina",

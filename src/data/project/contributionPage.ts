@@ -264,8 +264,30 @@ export const contributionPage: WikiPageContent = {
 
     /* =================================================================== 02 */
     {
-      id: "contribution-responsible-research",
+      id: "contribution-therapeutic-approach",
       index: "02",
+      kicker: "Therapeutic approach",
+      navLabel: "A New Therapeutic Approach",
+      title:
+        "A New Therapeutic Approach: A Circular RNA Vaccine for Triple-Negative Breast Cancer",
+      summary:
+        "CirCure combines four TNBC-associated antigens into a single modular circular RNA vaccine for postoperative adjuvant immunotherapy.",
+      blocks: [
+        prose(
+          "The central contribution of our project is CirCure, a multi-antigen circular RNA vaccine designed as a possible postoperative adjuvant treatment for triple-negative breast cancer (TNBC). Although surgery can remove the primary tumour, residual tumour cells may remain and later contribute to recurrence or metastasis. This challenge is particularly important in TNBC because tumour cells can differ substantially in their antigen expression, allowing cells with low or absent expression of one target to escape immune recognition.",
+          "CirCure addresses this problem by combining epitopes from four TNBC-associated antigens: TROP2, B7-H4, Nectin-4 and LIV-1. These targets were selected through our dry-lab validation and incorporated into a single circular RNA construct. By presenting multiple tumour-associated targets at the same time, CirCure is designed to broaden immune recognition across heterogeneous tumour-cell populations and reduce dependence on any single antigen.",
+          "The circular RNA architecture also provides a flexible way to combine several antigenic sequences within one vaccine. Its covalently closed structure can improve resistance to degradation and support sustained antigen expression. CirCure therefore connects multi-antigen recognition with a programmable RNA platform that can be further adapted according to different tumour antigen profiles.",
+          "Our experimental results provided initial support for the feasibility of this approach. The purified Combined vaccine reached a circular fraction of 99.30 ± 0.17%. In functional assays, it increased dendritic-cell maturation, CD8⁺ T-cell activation, effector-memory differentiation and IFN-γ secretion. Combined-primed T cells achieved 83.57 ± 1.68% killing of MDA-MB-231 tumour cells at an E ratio of 80:1, while the tested normal cell lines showed substantially lower killing.",
+          "CirCure may therefore provide a new therapeutic direction for postoperative TNBC treatment. Instead of relying on a single target or directly delivering a cytotoxic drug, it is designed to stimulate the immune system to recognise several tumour-associated antigens and eliminate residual tumour cells. In this way, the vaccine could complement surgery and existing treatment strategies by addressing tumour cells that remain after primary treatment.",
+          "At this stage, CirCure should be understood as a proposed therapeutic solution supported by experimental evidence, rather than as a confirmed treatment outcome. Its main contribution is the development of a multi-antigen circular RNA vaccine strategy for TNBC, together with an integrated route from antigen selection and RNA construction to immune activation and tumour-cell killing. Because the antigen cassette is modular, this design may also be adapted to other tumour types and antigen profiles in future work.",
+        ),
+      ],
+    },
+
+    /* =================================================================== 03 */
+    {
+      id: "contribution-responsible-research",
+      index: "03",
       kicker: "Responsible research",
       navLabel: "Responsible Research in Practice",
       title:
@@ -347,10 +369,10 @@ export const contributionPage: WikiPageContent = {
       ],
     },
 
-    /* =================================================================== 03 */
+    /* =================================================================== 04 */
     {
       id: "contribution-wet-lab",
-      index: "03",
+      index: "04",
       kicker: "Reusable wet lab",
       navLabel: "Reusable Wet Lab Resources",
       title: "Reusable Wet Lab Resources for circRNA Vaccine Development",
@@ -391,28 +413,7 @@ export const contributionPage: WikiPageContent = {
           "During the development of **CirCure**, we found that measuring circRNA was not simply a matter of reporting a single qPCR value or showing resistance to RNase R. Before a circRNA preparation could be used in downstream experiments, we had to answer several connected questions: Did the RNA form a covalently closed circle? What proportion of the purified product was circular rather than linear? Was the assay performed within a reliable input range? And could the resulting value be used to decide whether a batch was suitable for further experiments?",
           "For an iGEM team entering circRNA research for the first time, these questions are often addressed using different methods, while the criteria for interpreting the results remain unclear. Rather than keeping the measurement logic developed during our project within our own laboratory records, we consolidated it into a **reusable circRNA circularity measurement and release framework** for the iGEM community.",
           "The framework is based on a divergent–convergent RT-qPCR assay, but its main contribution is not the use of this assay itself. Instead, it defines how circularity should be measured, calibrated and interpreted. The divergent primer pair spans the back-splice junction and detects the circular RNA species, while the convergent primer pair is designed to detect the linear precursor. Under this primer convention, the circular fraction is calculated as:",
-        ),
-        {
-          type: "table",
-          caption:
-            "Circular fraction, as defined by the divergent–convergent RT-qPCR primer convention: f_circ = 2^(−Cq_div) / ( 2^(−Cq_div) + 2^(−Cq_conv) )",
-          headers: ["Term", "Meaning in the assay"],
-          rows: [
-            [
-              "Cq_div",
-              "Quantification cycle of the divergent primer pair, which spans the back-splice junction and therefore detects the circular RNA species.",
-            ],
-            [
-              "Cq_conv",
-              "Quantification cycle of the convergent primer pair, which is designed to detect the linear precursor.",
-            ],
-            [
-              "f_circ",
-              "Circular fraction of the preparation — the quantity the release criteria below are applied to.",
-            ],
-          ],
-        },
-        prose(
+          "f_circ = 2^(−Cq_div) / ( 2^(−Cq_div) + 2^(−Cq_conv) )",
           "The framework requires an input-volume series before any circularity ratio is calculated. In our workflow, both primer channels were tested using 2, 4 and 6 µL of cDNA input, with three technical replicates at each volume. A no-template control was included on every plate, and a backbone-encoded GFP amplicon was measured in both channels as an equal-input control. Because the 2 µL input did not meet the acceptance criteria, 4 µL was selected as the working input volume.",
           "A circRNA preparation was considered **release-grade** only when it satisfied several pre-defined conditions: a circular fraction of at least 90%, an approximately one-cycle Cq shift per two-fold increase in input in both channels, close agreement among technical replicates, matched GFP Cq values between the two primer channels, and an undetected no-template control. These criteria transform circularity measurement from an isolated numerical result into a reproducible decision-making process.",
           "Our contribution is therefore not the creation of a new circRNA detection technique. It is the documentation of an explicit and reusable measurement standard that connects primer design, input calibration, control selection, calculation and batch-release decisions. Other iGEM teams can adopt the complete framework or selectively reuse individual components, such as the input-volume series, the equal-input control, the primer-species convention or the release checklist.",
@@ -454,10 +455,10 @@ export const contributionPage: WikiPageContent = {
       ],
     },
 
-    /* =================================================================== 04 */
+    /* =================================================================== 05 */
     {
       id: "contribution-computational-tools",
-      index: "04",
+      index: "05",
       kicker: "Computational tools",
       navLabel: "Accessible Computational Tools",
       title: "Accessible Computational Tools for Cancer Vaccine Design",
@@ -508,10 +509,10 @@ export const contributionPage: WikiPageContent = {
       ],
     },
 
-    /* =================================================================== 05 */
+    /* =================================================================== 06 */
     {
       id: "contribution-hardware",
-      index: "05",
+      index: "06",
       kicker: "Hardware",
       navLabel: "Modular Hardware Platform",
       title:
@@ -571,10 +572,10 @@ export const contributionPage: WikiPageContent = {
       ],
     },
 
-    /* =================================================================== 06 */
+    /* =================================================================== 07 */
     {
       id: "contribution-model",
-      index: "06",
+      index: "07",
       kicker: "Model",
       navLabel: "Modelling Before Animal Experiments",
       title:
@@ -646,10 +647,10 @@ export const contributionPage: WikiPageContent = {
       ],
     },
 
-    /* =================================================================== 07 */
+    /* =================================================================== 08 */
     {
       id: "contribution-sustainability",
-      index: "07",
+      index: "08",
       kicker: "Sustainability",
       navLabel: "Sustainable Innovation Framework",
       title: "A Sustainable Innovation Framework for Synthetic Biology",
@@ -706,10 +707,10 @@ export const contributionPage: WikiPageContent = {
       ],
     },
 
-    /* =================================================================== 08 */
+    /* =================================================================== 09 */
     {
       id: "contribution-translation",
-      index: "08",
+      index: "09",
       kicker: "Translation",
       navLabel: "Translation Pathway",
       title:
@@ -773,10 +774,10 @@ export const contributionPage: WikiPageContent = {
       ],
     },
 
-    /* =================================================================== 09 */
+    /* =================================================================== 10 */
     {
       id: "contribution-education",
-      index: "09",
+      index: "10",
       kicker: "Education",
       navLabel: "Making Synthetic Biology Education More Accessible",
       title: "Making Synthetic Biology Education More Accessible",
@@ -883,10 +884,10 @@ export const contributionPage: WikiPageContent = {
       ],
     },
 
-    /* =================================================================== 10 */
+    /* =================================================================== 11 */
     {
       id: "contribution-collaboration",
-      index: "10",
+      index: "11",
       kicker: "Collaboration",
       navLabel: "Collaboration",
       title: "Collaboration",
@@ -998,10 +999,10 @@ export const contributionPage: WikiPageContent = {
       ],
     },
 
-    /* =================================================================== 11 */
+    /* =================================================================== 12 */
     {
       id: "contribution-references",
-      index: "11",
+      index: "12",
       kicker: "Bibliography",
       navLabel: "References",
       title: "References",
