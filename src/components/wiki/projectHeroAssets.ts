@@ -1,5 +1,6 @@
 import contributionHero from "../../assets/wiki/project-heroes/project-contribution-hero.webp";
-import descriptionHero from "../../assets/wiki/project-heroes/project-description-hero.webp";
+const descriptionHero =
+  "https://static.igem.wiki/teams/6056/wiki/files/pages/project/project-description-hero.webp";
 import engineeringHero from "../../assets/wiki/project-heroes/project-engineering-hero.webp";
 import resultsHero from "../../assets/wiki/project-heroes/project-results-hero.webp";
 import artHero from "../../assets/wiki/art-heroes/art-hero.webp";

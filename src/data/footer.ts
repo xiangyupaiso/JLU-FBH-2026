@@ -37,15 +37,16 @@ export interface FooterMark {
   alt: string;
 }
 
-import jluCrest from "../assets/footer/jlu-crest.png";
-import jluWordmark from "../assets/footer/jlu-wordmark-black.png";
-import collegeWordmark from "../assets/footer/bethune-clinical-college.png";
-import hospitalSeal from "../assets/footer/bethune-hospital-seal.png";
-import cancerCenter from "../assets/partners/cancer-center.png";
-import charlesRiver from "../assets/partners/sponsor-charles-river.png";
-import mathworks from "../assets/partners/sponsor-mathworks.png";
-import simulink from "../assets/partners/sponsor-simulink.png";
-import polyspace from "../assets/partners/sponsor-polyspace.png";
+const SHARED_CDN = "https://static.igem.wiki/teams/6056/wiki/files/pages/shared";
+const jluCrest = `${SHARED_CDN}/jlu-crest.avif`;
+const jluWordmark = `${SHARED_CDN}/jlu-wordmark-black.avif`;
+const collegeWordmark = `${SHARED_CDN}/bethune-clinical-college.avif`;
+const hospitalSeal = `${SHARED_CDN}/bethune-hospital-seal.avif`;
+const cancerCenter = `${SHARED_CDN}/cancer-center.avif`;
+const charlesRiver = `${SHARED_CDN}/sponsor-charles-river.avif`;
+const mathworks = `${SHARED_CDN}/sponsor-mathworks.avif`;
+const simulink = `${SHARED_CDN}/sponsor-simulink.avif`;
+const polyspace = `${SHARED_CDN}/sponsor-polyspace.avif`;
 
 /**
  * Institution wordmarks retain their artwork and display widths. The college

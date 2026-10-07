@@ -1,49 +1,27 @@
-import roster from "../assets/nav-icons/nav-roster.webp";
-import attributions from "../assets/nav-icons/nav-attributions.webp";
-import activities from "../assets/nav-icons/nav-activities.webp";
-import description from "../assets/nav-icons/nav-description.webp";
-import engineering from "../assets/nav-icons/nav-engineering.webp";
-import results from "../assets/nav-icons/nav-results.webp";
-import contribution from "../assets/nav-icons/nav-contribution.webp";
-import visualDesign from "../assets/nav-icons/nav-visual-design.webp";
-import designIcon from "../assets/nav-icons/nav-design.webp";
-import notebook from "../assets/nav-icons/nav-notebook.webp";
-import safety from "../assets/nav-icons/nav-safety.webp";
-import experiments from "../assets/nav-icons/nav-experiments.webp";
-import measurement from "../assets/nav-icons/nav-measurement.webp";
-import alternativePlatform from "../assets/nav-icons/nav-alternative-platform.webp";
-import model from "../assets/nav-icons/nav-model.webp";
-import software from "../assets/nav-icons/nav-software.webp";
-import hardware from "../assets/nav-icons/nav-hardware.webp";
-import games from "../assets/nav-icons/nav-games.webp";
-import entrepreneurship from "../assets/nav-icons/nav-entrepreneurship.webp";
-import humanPractices from "../assets/nav-icons/nav-human-practices.webp";
-import education from "../assets/nav-icons/nav-education.webp";
-import inclusivity from "../assets/nav-icons/nav-inclusivity.webp";
-import sustainability from "../assets/nav-icons/nav-sustainability.webp";
+const CDN_BASE = "https://static.igem.wiki/teams/6056/wiki/files/pages/shared";
 
 export const NAV_ICONS: Record<string, string> = {
-  Roster: roster,
-  Attributions: attributions,
-  Activities: activities,
-  Description: description,
-  Engineering: engineering,
-  Results: results,
-  Contribution: contribution,
-  "Visual Design": visualDesign,
-  Design: designIcon,
-  Notebook: notebook,
-  "Safety and Security": safety,
-  Experiments: experiments,
-  Measurement: measurement,
-  "Alternative Platform": alternativePlatform,
-  Model: model,
-  Software: software,
-  Hardware: hardware,
-  Games: games,
-  Entrepreneurship: entrepreneurship,
-  "Human Practices": humanPractices,
-  Education: education,
-  Inclusivity: inclusivity,
-  Sustainability: sustainability,
+  Roster: `${CDN_BASE}/nav-roster.webp`,
+  Attributions: `${CDN_BASE}/nav-attributions.webp`,
+  Activities: `${CDN_BASE}/nav-activities.webp`,
+  Description: `${CDN_BASE}/nav-description.webp`,
+  Engineering: `${CDN_BASE}/nav-engineering.webp`,
+  Results: `${CDN_BASE}/nav-results.webp`,
+  Contribution: `${CDN_BASE}/nav-contribution.webp`,
+  "Visual Design": `${CDN_BASE}/nav-visual-design.webp`,
+  Design: `${CDN_BASE}/nav-design.webp`,
+  Notebook: `${CDN_BASE}/nav-notebook.webp`,
+  "Safety and Security": `${CDN_BASE}/nav-safety.webp`,
+  Experiments: `${CDN_BASE}/nav-experiments.webp`,
+  Measurement: `${CDN_BASE}/nav-measurement.webp`,
+  "Alternative Platform": `${CDN_BASE}/nav-alternative-platform.webp`,
+  Model: `${CDN_BASE}/nav-model.webp`,
+  Software: `${CDN_BASE}/nav-software.webp`,
+  Hardware: `${CDN_BASE}/nav-hardware.webp`,
+  Games: `${CDN_BASE}/nav-games.webp`,
+  Entrepreneurship: `${CDN_BASE}/nav-entrepreneurship.webp`,
+  "Human Practices": `${CDN_BASE}/nav-human-practices.webp`,
+  Education: `${CDN_BASE}/nav-education.webp`,
+  Inclusivity: `${CDN_BASE}/nav-inclusivity.webp`,
+  Sustainability: `${CDN_BASE}/nav-sustainability.webp`,
 };

@@ -200,8 +200,11 @@ export function Navbar() {
       const headerHeight = Number.parseFloat(
         getComputedStyle(header).getPropertyValue("--header-height"),
       ) || 0;
+      // Home loads lazily after the header. Keep its initial dark theme until
+      // the opening scene mounts, then let scrolling determine the theme.
       header.dataset.homeOpening = String(
-        !!opening && opening.getBoundingClientRect().bottom > headerHeight,
+        homeActive &&
+          (!opening || opening.getBoundingClientRect().bottom > headerHeight),
       );
       const closing = homeActive
         ? document.getElementById("what-we-hope")?.getBoundingClientRect()

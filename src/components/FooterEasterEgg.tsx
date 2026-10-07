@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState, type CSSProperties } from "react";
-import emblemUrl from "../assets/story-nav/circure-emblem.png";
-import ribbonUrl from "../assets/story-nav/circure-ribbon.png";
+const emblemUrl = "https://static.igem.wiki/teams/6056/wiki/files/pages/shared/circure-emblem.avif";
+const ribbonUrl = "https://static.igem.wiki/teams/6056/wiki/files/pages/shared/circure-ribbon.avif";
 import {
   INTRO_WORDMARK_GLYPHS,
   INTRO_WORDMARK_VIEWBOX,
