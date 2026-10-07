@@ -131,7 +131,7 @@ const I = {
   columnAssembly:'https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/16.avif', columnAssemblyOpen:'https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/8201.avif',
   sampleOpen:'https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/8202.avif', columnAssemblyLoaded:'https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/8203.avif',
   finalCollectionTube:'https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/8310.avif', greenEluent:'https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/081.avif',
-  cleanBench:'https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment7/cleanBenchSmall.webp', electrophoresis:'https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/31.avif',
+  cleanBench:'https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment7/cleanbenchsmall.webp', electrophoresis:'https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/31.avif',
   amber:'https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/reagentbottleambercapped.avif', filledBottle:'https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/reagentbottlefilled.avif',
   beaker30:'https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/beaker30ml.avif',
   spoon:'https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/41.avif', powderOpen:'https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/42.avif', flaskMixed:'https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment3/43.avif',
