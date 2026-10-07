@@ -9,6 +9,11 @@ import {
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { measureAntigenTransit, pointOnTransit } from "./useAntigenTransit";
+import {
+  HOME_PLAYBACK_STATE_EVENT,
+  readHomePlaybackState,
+  type HomePlaybackState,
+} from "../utils/homePlayback";
 
 // One clock owns both the illustrations and the explanatory stages.
 // These durations explain the sequence, not biological time.
@@ -20,6 +25,7 @@ export function useAntigenMechanism(
   root: RefObject<HTMLDivElement | null>,
   selected: number,
   { growing, processed, peptide }: ProteinPaths,
+  enabled = true,
 ) {
   const [phase, setPhase] = useState(0);
   const [playing, setPlaying] = useState(false);
@@ -38,10 +44,49 @@ export function useAntigenMechanism(
     activated.current = true;
     setRun((previous) => previous + 1);
   }, []);
+  const syncPlayback = useCallback((state: HomePlaybackState) => {
+    const sequence = timeline.current;
+    if (!sequence) return;
+    sequence.timeScale(state.mode === "playing" ? state.rate : 1);
+    if (
+      state.mode === "paused" ||
+      document.hidden ||
+      (state.mode === "playing" && !inViewport.current)
+    ) {
+      sequence.pause();
+      setPlaying(false);
+    } else if (
+      activated.current &&
+      !reducedMotion.current &&
+      sequence.progress() < 1
+    ) {
+      sequence.resume();
+      setPlaying(true);
+    }
+  }, []);
+  useEffect(() => {
+    const onPlaybackState = (event: Event) => {
+      const state = (event as CustomEvent<HomePlaybackState>).detail;
+      // A chapter jump pauses the player; scrolling resumes the visible example.
+      if (
+        enabled &&
+        state.mode === "manual" &&
+        inViewport.current &&
+        !activated.current &&
+        !document.hidden
+      )
+        replay();
+      else syncPlayback(state);
+    };
+    window.addEventListener(HOME_PLAYBACK_STATE_EVENT, onPlaybackState);
+    return () => {
+      window.removeEventListener(HOME_PLAYBACK_STATE_EVENT, onPlaybackState);
+    };
+  }, [syncPlayback, replay, enabled]);
 
   useLayoutEffect(() => {
     const scene = root.current;
-    if (!scene) return;
+    if (!scene || !enabled) return;
     reducedMotion.current = window.matchMedia(
       "(prefers-reduced-motion: reduce)",
     ).matches;
@@ -291,14 +336,17 @@ export function useAntigenMechanism(
         );
       });
     render();
-    if (reducedMotion.current || (activated.current && document.hidden)) {
+    const playback = readHomePlaybackState();
+    sequence.timeScale(playback.mode === "playing" ? playback.rate : 1);
+    if (reducedMotion.current || (activated.current && document.hidden && playback.mode === "manual")) {
       sequence.progress(1).pause();
       setPhase(finalStage);
       setPlaying(false);
     } else if (activated.current) {
       setPhase(0);
-      setPlaying(true);
-      sequence.play(0);
+      const paused = playback.mode === "paused" || document.hidden;
+      setPlaying(!paused);
+      if (!paused) sequence.play(0);
     }
     let frame = 0;
     const observer = new ResizeObserver(() => {
@@ -322,11 +370,11 @@ export function useAntigenMechanism(
       sequence.kill();
       if (timeline.current === sequence) timeline.current = null;
     };
-  }, [root, selected, run, growing, processed, peptide]);
+  }, [root, selected, run, growing, processed, peptide, enabled]);
 
   useEffect(() => {
     const scene = root.current;
-    if (!scene) return;
+    if (!scene || !enabled) return;
     const media = window.matchMedia("(prefers-reduced-motion: reduce)");
     let resizeTimer = 0;
     let resizing = false;
@@ -372,12 +420,14 @@ export function useAntigenMechanism(
     const observer = new IntersectionObserver(
       ([entry]) => {
         inViewport.current = entry.isIntersecting;
+        const playback = readHomePlaybackState();
         const visibleHeight =
           Math.min(
             entry.boundingClientRect.height,
             entry.rootBounds?.height ?? window.innerHeight,
           ) * 0.55;
         if (
+          playback.mode === "manual" &&
           entry.isIntersecting &&
           entry.intersectionRect.height >= visibleHeight &&
           !activated.current &&
@@ -385,8 +435,15 @@ export function useAntigenMechanism(
         )
           replay();
         if (!entry.isIntersecting && !resizing) {
-          if (activated.current) stop();
-          activated.current = false;
+          if (playback.mode === "manual") {
+            if (activated.current) stop();
+            activated.current = false;
+          } else {
+            timeline.current?.pause();
+            setPlaying(false);
+          }
+        } else if (playback.mode !== "manual") {
+          syncPlayback(playback);
         }
       },
       { threshold: Array.from({ length: 21 }, (_, index) => index / 20) },
@@ -397,7 +454,9 @@ export function useAntigenMechanism(
       stop();
     };
     const visibilityChanged = () => {
-      if (document.hidden) stop();
+      const playback = readHomePlaybackState();
+      if (playback.mode !== "manual") syncPlayback(playback);
+      else if (document.hidden) stop();
       else if (inViewport.current) replay();
     };
     media.addEventListener("change", preferenceChanged);
@@ -412,6 +471,6 @@ export function useAntigenMechanism(
       activated.current = false;
       inViewport.current = false;
     };
-  }, [root, replay, stop]);
+  }, [root, replay, stop, syncPlayback, enabled]);
   return { phase, playing, replay };
 }

@@ -1,5 +1,18 @@
 /* CirCure navigation: anchored desktop dropdowns and a mobile accordion. */
 
+@font-face {
+  font-family: "Manrope";
+  src: url("../assets/fonts/manrope-latin-variable.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 200 800;
+  font-display: swap;
+}
+
+:root {
+  --nav-control-radius: 12px;
+  --nav-control-height: 36px;
+}
+
 .site-header {
   --header-surface: var(--paper-bright);
   --header-ink: var(--brand-navy-deep);
@@ -548,12 +561,12 @@
 .nav-link {
   position: relative;
   display: inline-flex;
-  min-height: 36px;
+  min-height: var(--nav-control-height);
   align-items: center;
   padding: 0 13px;
   margin: 0;
   border: 0;
-  border-radius: 12px;
+  border-radius: var(--nav-control-radius);
   background: #f7edc9;
   color: var(--brand-navy-deep);
   white-space: nowrap;

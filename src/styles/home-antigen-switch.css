@@ -9,7 +9,7 @@
   padding: 34px 4%;
   color: #865762;
   background: #fff4e2;
-  font-family: var(--font-sans);
+  font-family: var(--font-body);
 }
 .home-antigen-switch__content {
   width: min(100%, 1160px, calc((var(--scene-height) - 210px) * 2.12));
@@ -275,7 +275,7 @@
   translate: -50% 0;
   white-space: nowrap;
   color: #8c666b;
-  font-size: 13px;
+  font-size: 16px;
   line-height: 1.4;
   pointer-events: none;
 }
@@ -305,7 +305,7 @@
   border: 0;
   background: transparent;
   color: var(--option-color);
-  font: 400 15px var(--font-sans);
+  font: 500 18px var(--font-body);
   cursor: grab;
   touch-action: none;
   user-select: none;
@@ -395,10 +395,10 @@
   justify-content: center;
   gap: 12px;
   margin-top: 28px;
-  color: #a18b7d;
+  color: #765464;
 }
 .home-antigen-switch__science {
-  font-size: 11px;
+  font-size: 16px;
 }
 .home-antigen-switch__science summary {
   cursor: pointer;
@@ -409,7 +409,7 @@
   left: 50%;
   bottom: calc(100% + 10px);
   translate: -50% 0;
-  width: min(420px, 100%);
+  width: min(560px, 88vw);
   max-height: min(420px, calc(var(--scene-height) - 90px));
   overflow-y: auto;
   overscroll-behavior: contain;
@@ -419,7 +419,7 @@
   background: #fff8eb;
   box-shadow: 0 8px 25px #805b4720;
   color: #8a7065;
-  font-size: 12px;
+  font-size: 16px;
   line-height: 1.65;
 }
 .home-antigen-switch__science p {
@@ -427,8 +427,8 @@
 }
 .home-antigen-switch__science p + p {
   margin-top: 9px;
-  color: #a38c7d;
-  font-size: 10px;
+  color: #765e58;
+  font-size: 15px;
 }
 .home-antigen-switch__science a {
   color: inherit;
@@ -493,14 +493,14 @@
   }
   .home-antigen-switch__option {
     width: 74px;
-    font-size: 12px;
+    font-size: 15px;
   }
   .home-antigen-switch__option svg {
     width: 65px;
     height: 31px;
   }
   .home-antigen-switch__hint {
-    font-size: 12px;
+    font-size: 15px;
   }
   .home-antigen-switch__cell-label {
     font-size: 45px;
@@ -518,7 +518,104 @@
     margin-top: 22px;
   }
   .home-antigen-switch__science {
-    font-size: 10px;
+    font-size: 15px;
+  }
+}
+
+/* The overview keeps the replaceable construct beside its explanation.
+   The complete cell mechanism opens automatically on arrival. */
+.home-antigen-switch__copy {
+  color: var(--story-ink);
+  font: 400 clamp(18px, 1.55vw, 22px)/1.65 var(--font-body);
+}
+.home-antigen-switch__copy h3 {
+  margin: 0 0 24px;
+  font: 400 clamp(38px, 4.1vw, 58px)/1.15 var(--font-editorial);
+  letter-spacing: -0.035em;
+}
+.home-antigen-switch__copy h3 em {
+  color: var(--story-accent);
+  font: inherit;
+}
+.home-antigen-switch__copy p:last-child {
+  margin-bottom: 0;
+  color: #695a64;
+  font-size: 0.9em;
+}
+.home-antigen-switch[data-mechanism-expanded="true"] .home-antigen-switch__copy {
+  display: none;
+}
+.home-antigen-switch[data-mechanism-expanded="true"] .home-antigen-switch__content {
+  animation: antigen-mechanism-reveal 0.55s ease-out both;
+}
+@keyframes antigen-mechanism-reveal {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.home-antigen-switch[data-mechanism-expanded="false"] .home-antigen-switch__content {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  column-gap: clamp(40px, 6vw, 100px);
+  row-gap: 32px;
+  align-items: center;
+  width: min(100%, 1160px);
+}
+.home-antigen-switch[data-mechanism-expanded="false"] .home-antigen-switch__diagram {
+  display: block;
+  grid-column: 1;
+  grid-row: 1;
+}
+.home-antigen-switch[data-mechanism-expanded="false"] .home-antigen-switch__rna {
+  width: min(100%, 360px, 44svh);
+}
+.home-antigen-switch[data-mechanism-expanded="false"] .home-antigen-switch__copy {
+  grid-column: 2;
+  grid-row: 1;
+}
+.home-antigen-switch[data-mechanism-expanded="false"] .home-antigen-switch__options {
+  grid-column: 1;
+  grid-row: 2;
+  gap: clamp(12px, 2vw, 30px);
+  margin: 0;
+}
+.home-antigen-switch[data-mechanism-expanded="false"] .home-antigen-switch__footer {
+  display: none;
+}
+.home-antigen-switch[data-mechanism-expanded="false"] .home-antigen-switch__bridge,
+.home-antigen-switch[data-mechanism-expanded="false"] .home-antigen-switch__target,
+.home-antigen-switch[data-mechanism-expanded="false"] .home-antigen-switch__ribosome-orbit,
+.home-antigen-switch[data-mechanism-expanded="false"] .home-antigen-switch__science,
+.home-antigen-switch[data-mechanism-expanded="false"] .home-antigen-switch__replay {
+  display: none;
+}
+
+@media (max-width: 800px) and (orientation: portrait) {
+  .home-antigen-switch[data-mechanism-expanded="false"] .home-antigen-switch__content {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .home-antigen-switch[data-mechanism-expanded="false"] .home-antigen-switch__rna {
+    width: min(250px, 70vw);
+  }
+  .home-antigen-switch[data-mechanism-expanded="false"] .home-antigen-switch__copy {
+    grid-column: 1;
+    grid-row: 3;
+    order: 3;
+    width: 100%;
+  }
+  .home-antigen-switch[data-mechanism-expanded="false"] .home-antigen-switch__options {
+    order: 2;
+    gap: 12px;
+  }
+  .home-antigen-switch__option {
+    width: clamp(84px, 24vw, 110px);
+  }
+  .home-antigen-switch__copy h3 {
+    margin-bottom: 20px;
+    font-size: clamp(34px, 8.5vw, 48px);
+  }
+  .home-antigen-switch__footer .home-antigen-switch__science {
+    font-size: 15px;
   }
 }
 @media (prefers-reduced-motion: reduce) {
@@ -591,5 +688,37 @@
   .story-chapter--switch .home-antigen-switch__footer {
     order: 5;
     margin-top: 0;
+  }
+}
+
+@media (max-height: 650px) and (orientation: landscape) {
+  .home-story .story-chapter--switch .story-scene-track {
+    height: auto;
+  }
+  .home-story .story-chapter--switch .story-chapter-inner {
+    position: relative;
+    height: auto;
+    min-height: 100svh;
+    overflow: visible;
+    contain: layout style;
+  }
+  .home-story .story-chapter--switch .story-visual {
+    position: relative;
+    inset: auto;
+    padding-top: var(--header-height);
+  }
+  .story-chapter--switch .home-antigen-switch {
+    height: auto;
+    min-height: var(--scene-height);
+    padding: 28px 5%;
+  }
+  .story-chapter--switch .home-antigen-switch__content {
+    width: 100%;
+  }
+  .home-antigen-switch[data-mechanism-expanded="false"] .home-antigen-switch__content {
+    column-gap: 32px;
+  }
+  .home-antigen-switch__copy h3 {
+    font-size: 36px;
   }
 }

@@ -12,6 +12,7 @@
 }
 .home-story .story-chapter .story-body {
   width: min(100%, 78ch);
+  font-family: var(--font-body);
   font-size: clamp(17px, 1.35vw, 20px);
   line-height: 1.75;
 }
@@ -109,6 +110,17 @@
 .home-story #why-tnbc .story-copy h2 {
   max-width: 26ch;
   text-wrap: balance;
+}
+.home-story #why-tnbc .story-source {
+  color: #315f87;
+  font-family: var(--font-body);
+  font-weight: 500;
+  text-decoration-color: #6e94b2;
+  text-decoration-thickness: 1.5px;
+}
+.home-story #why-tnbc .story-source:hover {
+  color: #234767;
+  text-decoration-color: currentColor;
 }
 @media (max-width: 800px) {
   .home-story #why-tnbc .story-copy {

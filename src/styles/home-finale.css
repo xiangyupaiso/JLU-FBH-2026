@@ -165,6 +165,10 @@
 .story-final-statement__fold {
   /* Grid preserves the text baseline while clipping, including in Safari. */
   display: inline-grid;
+  /* Masks also clip italic overhangs beyond the advance width. Include that
+     ink in scrollWidth; the matching margin keeps the sentence spacing intact. */
+  padding-inline-end: 0.3em;
+  margin-inline-end: -0.3em;
   overflow: clip;
   overflow-clip-margin: 0.2em;
   white-space: nowrap;

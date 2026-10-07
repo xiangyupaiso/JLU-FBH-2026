@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { gsap } from "gsap";
+import { HOME_INTRO_REPLAY_EVENT } from "../utils/homeIntro";
 import backToTopImage from "../assets/wiki/back-to-top-girl.png";
 
 // ReactBits Magnet defaults (https://www.reactbits.dev/animations/magnet):
@@ -15,6 +16,11 @@ export function BackToTop() {
   const magnetRef = useRef<HTMLSpanElement>(null);
   const [isVisible, setIsVisible] = useState(false);
   const [isLaunching, setIsLaunching] = useState(false);
+  const topLabel = pathname === "/" ? "Return to CirCure title" : "Return to top";
+
+  useEffect(() => {
+    setIsLaunching(false);
+  }, [pathname]);
 
   // Every reader route (Wet Lab / Project / Dry Lab / Engagement) scrolls the
   // document through its full article via the unified document timeline, so a
@@ -113,6 +119,9 @@ export function BackToTop() {
       },
       onComplete: () => {
         window.scrollTo({ top: 0, behavior: "instant" });
+        if (pathname === "/") {
+          window.dispatchEvent(new Event(HOME_INTRO_REPLAY_EVENT));
+        }
         setIsLaunching(false);
       },
     });
@@ -130,6 +139,9 @@ export function BackToTop() {
     ).matches;
     if (reducedMotion) {
       window.scrollTo({ top: 0, behavior: "instant" });
+      if (pathname === "/") {
+        window.dispatchEvent(new Event(HOME_INTRO_REPLAY_EVENT));
+      }
     } else {
       setIsLaunching(true);
     }
@@ -142,10 +154,10 @@ export function BackToTop() {
       type="button"
       onClick={returnToTop}
       disabled={isLaunching}
-      aria-label="Return to top"
+      aria-label={topLabel}
       aria-hidden={!isVisible && !isLaunching}
       tabIndex={isVisible && !isLaunching ? 0 : -1}
-      title="Return to top"
+      title={topLabel}
     >
       <span
         ref={magnetRef}

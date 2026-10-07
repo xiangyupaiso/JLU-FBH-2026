@@ -104,7 +104,7 @@
   z-index: 2;
   width: 24%;
   color: #3f5869;
-  font: 400 clamp(16px, 1.45vw, 21px)/1.65 var(--font-sans);
+  font: 400 clamp(19px, 1.65vw, 25px)/1.6 var(--font-body);
 }
 .story-tear-copy--before {
   left: 6%;
@@ -145,6 +145,7 @@
 }
 .story-art--thinking .story-vaccine-copy--question {
   left: 11%;
+  width: 19.5%;
 }
 .story-art--thinking .story-vaccine-copy--answer {
   top: 37%;
@@ -152,7 +153,15 @@
   width: 25.5%;
 }
 .story-art--thinking .story-vaccine-copy h3 {
+  /* These h3 elements hold scientific body copy, so use the body face. */
+  font-family: var(--font-body) !important;
   font-size: 1.9cqw;
+  line-height: 1.4;
+  letter-spacing: 0;
+}
+.story-art--thinking .story-vaccine-question-ending {
+  color: inherit;
+  white-space: nowrap;
 }
 .story-art--thinking .story-vaccine-copy--answer h3 {
   font-size: 1.8cqw;
@@ -162,6 +171,10 @@
 .story-art--fan {
   container-type: inline-size;
   width: min(94%, calc((var(--scene-height) - 24px) * 16 / 9));
+}
+.story-art--fan > [data-layer="2"] {
+  /* Keep the center divider below the gap in the painted title. */
+  clip-path: polygon(0 0, 47% 0, 47% 21%, 54% 21%, 54% 0, 100% 0, 100% 100%, 0 100%);
 }
 .story-platform-notes {
   position: absolute;
@@ -202,12 +215,14 @@
   display: none;
 }
 .story-art--fan .story-platform-note strong {
+  font-family: var(--font-body);
   font-size: 1.8cqw;
   line-height: 1.2;
   letter-spacing: -0.015em;
 }
 .story-art--fan .story-platform-note small {
   max-width: 24ch;
+  font-family: var(--font-body);
   font-size: 1.15cqw;
   line-height: 1.5;
   text-wrap: balance;
@@ -251,7 +266,7 @@
     right: auto;
     translate: -50% 0;
     text-align: center;
-    font-size: 15px;
+    font-size: 17px;
     line-height: 1.5;
   }
   .story-tear-copy--before {
@@ -391,7 +406,7 @@
     width: calc(var(--scene-height) * 0.5 * 4 / 3);
   }
   .story-tear-copy {
-    font-size: 13px;
+    font-size: 15px;
   }
   .story-tear-copy blockquote {
     font-size: 20px;
@@ -590,7 +605,7 @@
     width: min(100%, 460px);
     translate: none;
     text-align: center;
-    font-size: 15px;
+    font-size: 17px;
     line-height: 1.5;
   }
   .story-chapter--tear .story-tear-copy--before {

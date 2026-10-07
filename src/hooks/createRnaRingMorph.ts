@@ -130,6 +130,7 @@ export function createRnaRingMorph(
   stage.append(canvas);
   const context = canvas.getContext("2d");
   const image = new Image();
+  image.crossOrigin = "anonymous";
   const href = source.querySelector<SVGImageElement>("image")?.href.baseVal;
   const originalLoading = target.getAttribute("loading");
   let paint: ReturnType<typeof preparePaint> = null;
