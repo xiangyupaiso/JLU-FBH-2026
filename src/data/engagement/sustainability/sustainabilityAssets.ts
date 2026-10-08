@@ -12,6 +12,7 @@
  * image entry here. Engagement photographs live in `sustainabilityPhotos.ts`.
  */
 
+import overviewMastheadImg from "../../../assets/wiki/sustainability/sustainability-overview-masthead.avif";
 import overviewMapOfStakeholdersImg from "../../../assets/wiki/sustainability/sustainability-overview-map-of-stakeholders.png";
 import overviewScaleModelImg from "../../../assets/wiki/sustainability/sustainability-overview-scale-model.png";
 import overviewSstQnNetworkImg from "../../../assets/wiki/sustainability/sustainability-overview-sst-qn-network.png";
@@ -41,6 +42,15 @@ const IMG = "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement";
 const DOCS = "https://static.igem.wiki/teams/6056/wiki/files/docs";
 
 export const sustainabilityAssets = {
+  overviewMasthead: {
+    kind: "image",
+    fileName: "sustainability-overview-masthead.avif",
+    localSourcePath: "src/assets/wiki/sustainability/sustainability-overview-masthead.avif",
+    localSrc: overviewMastheadImg,
+    uploadUrl: `${IMG}/sustainability-overview-masthead.avif`,
+    alt: "Children holding up the 17 UN Sustainable Development Goal icons",
+    section: "Overview",
+  },
   overviewMapOfStakeholders: {
     kind: "image",
     fileName: "sustainability-overview-map-of-stakeholders.png",

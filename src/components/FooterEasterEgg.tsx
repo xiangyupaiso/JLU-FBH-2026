@@ -6,6 +6,7 @@ import {
   INTRO_WORDMARK_VIEWBOX,
 } from "../data/homeIntroWordmark";
 import { useFooterEasterEgg } from "../hooks/useFooterEasterEgg";
+import { PageImagePreloads } from "./common/PageImagePreloads";
 import "../styles/footer-easter-egg.css";
 
 /** Sample the real CirCure vector artwork, so particles and outlines match exactly. */
@@ -103,6 +104,7 @@ export function FooterEasterEgg() {
 
   return (
     <>
+      <PageImagePreloads sources={[emblemUrl, ribbonUrl]} />
       <div className="finale-seam">
         <button
           ref={seamRef}

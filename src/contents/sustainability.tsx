@@ -12,6 +12,7 @@ export function Sustainability() {
       pageClassName="wiki-page--engagement wiki-page--sustainability"
       hideHeroCopy
       outlineDepth={2}
+      outlineVariant="marker"
       features={sustainabilityFeatures()}
     />
   );

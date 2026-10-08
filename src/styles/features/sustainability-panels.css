@@ -65,6 +65,12 @@
   margin: -2.4% auto 0;
 }
 
+.sust-matrix-tooltip {
+  line-height: 1.55 !important;
+  overflow-wrap: anywhere;
+  text-align: left;
+}
+
 /* SDG Impact Framework (SET / DEVELOP / GROW) figure, shown a size smaller. */
 .wiki-page--sustainability #sdg-impact-framework .wiki-figure img {
   max-width: min(100%, 720px);
@@ -131,23 +137,25 @@ a.sust-sdg-card:focus-visible {
 
 .sust-sdg-card__number {
   color: var(--sdg);
-  font-size: 13px;
-  font-weight: 700;
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
 }
 
 .sust-sdg-card__title {
   margin: 0;
   font-family: var(--font-editorial);
-  font-size: 19px;
+  font-size: 15px;
   font-weight: 600;
-  line-height: 1.25;
+  line-height: 1.35;
 }
 
 .sust-sdg-card__summary {
   margin: 0;
   color: var(--route-muted);
-  font-size: 14px;
-  line-height: 1.55;
+  font-size: 13px;
+  line-height: 1.5;
 }
 
 /* Overview · SET / DEVELOP / GROW tiers ---------------------------------- */
@@ -164,7 +172,7 @@ a.sust-sdg-card:focus-visible {
   flex-direction: column;
   gap: 10px;
   padding: 20px;
-  border: 1.5px solid var(--route-line);
+  border: none;
   border-radius: 12px;
   background: color-mix(in srgb, var(--route-main) calc(100% - var(--tier)), #fff);
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
@@ -178,7 +186,6 @@ a.sust-sdg-card:focus-visible {
 
 .sust-tier-card[data-layer="SET"] {
   background: #f6fef2;
-  border-color: #c8dbc8;
 }
 
 .sust-tier-card[data-layer="SET"] .sust-tier-card__layer {
@@ -191,7 +198,6 @@ a.sust-sdg-card:focus-visible {
 
 .sust-tier-card[data-layer="DEVELOP"] {
   background: #fdf4ff;
-  border-color: #d8aec8;
 }
 
 .sust-tier-card[data-layer="DEVELOP"] .sust-tier-card__layer {
@@ -204,7 +210,6 @@ a.sust-sdg-card:focus-visible {
 
 .sust-tier-card[data-layer="GROW"] {
   background: #fff7ed;
-  border-color: #f6bf93;
 }
 
 .sust-tier-card[data-layer="GROW"] .sust-tier-card__layer {
@@ -215,31 +220,36 @@ a.sust-sdg-card:focus-visible {
   color: #5a2c09;
 }
 
-.sust-tier-card__title {
+.sust-tier-card__header {
   display: flex;
   flex-direction: column;
   gap: 4px;
-  margin: 0;
-  color: var(--route-ink);
-  font-family: var(--font-editorial);
-  font-size: 18px;
-  font-weight: 600;
-  line-height: 1.3;
 }
 
 .sust-tier-card__layer {
+  display: block;
   font-family: var(--font-sans);
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: 0.05em;
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
   text-transform: uppercase;
+  line-height: 1.2;
+}
+
+.sust-tier-card__title {
+  display: block;
+  margin: 0;
+  font-family: var(--font-editorial);
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.35;
 }
 
 .sust-tier-card__desc {
   margin: 0;
   color: var(--route-muted);
-  font-size: 14px;
-  line-height: 1.55;
+  font-size: 13px;
+  line-height: 1.5;
 }
 
 .sust-tier-card__sdgs {
@@ -438,7 +448,7 @@ a.sust-sdg-pill:focus-visible {
 
 .sust-chord__host {
   width: 100%;
-  height: clamp(360px, 46vw, 540px);
+  height: clamp(400px, 50vw, 580px);
 }
 
 .sust-chord__host svg {
@@ -460,16 +470,17 @@ a.sust-sdg-pill:focus-visible {
   position: absolute;
   top: 0;
   left: 0;
-  z-index: 9;
-  max-width: 280px;
-  padding: 8px 10px;
+  z-index: 99;
+  max-width: 320px;
+  padding: 8px 12px;
   border-radius: 6px;
-  background: rgba(17, 24, 39, 0.92);
+  background: rgba(17, 24, 39, 0.95);
   color: #fff;
-  font-size: 11.5px;
+  font-size: 13px;
   line-height: 1.45;
   opacity: 0;
   pointer-events: none;
+  transform: translate(-100%, -100%);
   transition: opacity 120ms ease-out;
 }
 
@@ -576,7 +587,7 @@ a.sust-sdg-pill:focus-visible {
 /* Copy on the left, photographs on the right. */
 @container (min-width: 640px) {
   .sust-stake-card--with-photos .sust-stake-card__body {
-    grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
@@ -640,12 +651,12 @@ a.sust-sdg-pill:focus-visible {
   }
 }
 
-/* Photographs on the right of the copy: one framed plate. */
+/* Photographs fill their column beside the copy. */
 .sust-stake-card__media {
   position: relative;
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 10px 24px rgb(27 36 18 / 0.14);
+  align-self: center;
+  justify-self: center;
+  width: 100%;
 }
 
 /* Status row along the bottom of every card, "Click more" at its right. */
@@ -961,8 +972,10 @@ a.sust-sdg-pill:focus-visible {
 
 .sust-consequence-card__row dt {
   color: var(--row);
-  font-size: 13px;
+  font-size: 16px;
   font-weight: 700;
+  line-height: 1.35;
+  margin-bottom: 4px;
 }
 
 .sust-consequence-card__row--boundary dt {
@@ -1538,180 +1551,120 @@ a.sust-sdg-pill:focus-visible {
   }
 }
 
-/* ============================================================================
-   S · Stakeholder photo reel
-   ----------------------------------------------------------------------------
-   The engagement photographs are part of the printed card, not a widget slid
-   on top of it. The layer bleeds off the card's right edge and past its top
-   rule, its left margin dissolves into the card paper with a wide `mask-image`
-   ramp (no dark scrim — legibility comes from the narrowed measure instead),
-   and the frames cross-fade with an alternating breath so no two neighbours
-   drift alike. Only `opacity` / `transform` animate.
-   ========================================================================== */
+/* S · Full-width photographs, hover navigation and a caption in the body font. */
 
 .sust-stake-reel {
+  margin: 0;
+  width: 100%;
+}
+
+.sust-stake-reel__media {
   position: relative;
-  z-index: 0;
-  inline-size: 100%;
-  aspect-ratio: 4 / 3;
-  pointer-events: none;
-  overflow: hidden;
 }
 
 .sust-stake-reel__frame {
-  position: absolute;
-  inset: 0;
+  position: relative;
+  min-width: 0;
+  aspect-ratio: 4 / 3;
 }
 
 .sust-stake-reel__img {
   position: absolute;
   inset: 0;
-  inline-size: 100%;
-  block-size: 100%;
-  object-fit: cover;
-  /* One grade for the whole set so the sequence reads as a single roll of
-     film: slightly desaturated, warmed, gently flattened. */
-  filter: saturate(0.85) sepia(0.12) contrast(0.96);
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
   opacity: 0;
-  transform: scale(1);
-  transition: opacity var(--reel-fade, 1.3s) cubic-bezier(0.4, 0, 0.2, 1);
-  animation: sust-reel-breathe 12s ease-in-out infinite alternate;
-}
-
-/* Neighbouring frames drift in opposite directions; the others rest. */
-.sust-stake-reel__img:nth-child(odd) {
-  animation-name: sust-reel-breathe-in;
-}
-
-.sust-stake-reel__img:nth-child(even) {
-  animation-name: sust-reel-breathe-out;
+  transition: opacity var(--reel-fade, 0.4s) ease-in-out;
 }
 
 .sust-stake-reel__img[data-active] {
   opacity: 1;
 }
 
-@keyframes sust-reel-breathe-in {
-  from {
-    transform: scale(1);
-  }
-  to {
-    transform: scale(1.06);
-  }
-}
-
-@keyframes sust-reel-breathe-out {
-  from {
-    transform: scale(1.06);
-  }
-  to {
-    transform: scale(1);
-  }
-}
-
-/* Caption sits on the photo: serif italic, cream, whisper-weight shadow. */
-.sust-stake-reel__caption {
+.sust-stake-reel__arrow {
   position: absolute;
-  inset-inline: 14px;
-  bottom: 10px;
-  margin: 0;
-  color: color-mix(in srgb, var(--route-paper) 82%, #fff);
-  font-family: var(--font-editorial);
-  font-size: 12px;
-  font-style: italic;
-  line-height: 1.4;
-  text-shadow: 0 1px 3px rgb(27 36 18 / 0.5);
-  animation: sust-reel-caption 1.4s cubic-bezier(0.4, 0, 0.2, 1);
+  top: 50%;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: rgb(24 24 22 / 0.4);
+  color: #fff;
+  cursor: pointer;
+  transform: translateY(-50%);
+  transition: opacity 160ms ease, background-color 160ms ease;
 }
 
-/* The single piece of chrome: a plate number over a hairline that fills across
-   the dwell. No dots, no arrows. The fill only runs while the reel is on screen
-   and not held, so a held or unseen reel never shows a half-filled rule. */
-.sust-stake-reel__count {
-  position: absolute;
-  inset-inline: 14px;
-  top: 10px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin: 0;
-  color: color-mix(in srgb, var(--route-paper) 88%, #fff);
-  font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 0.08em;
-  text-shadow: 0 1px 4px rgb(27 36 18 / 0.7);
+.sust-stake-reel__arrow--previous {
+  left: 12px;
 }
 
-.sust-stake-reel__rule {
-  position: relative;
-  flex: 1;
-  block-size: 2px;
-  background: color-mix(in srgb, var(--route-paper) 40%, transparent);
+.sust-stake-reel__arrow--next {
+  right: 12px;
 }
 
-.sust-stake-reel__rule-fill {
-  display: block;
-  inline-size: 0;
-  block-size: 100%;
-  background: var(--route-main);
+.sust-stake-reel__arrow svg {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
-.sust-stake-reel__rule[data-holding] .sust-stake-reel__rule-fill {
-  animation: sust-reel-fill var(--reel-dwell, 3.8s) linear forwards;
+.sust-stake-reel__arrow:hover {
+  background: rgb(24 24 22 / 0.65);
 }
 
-@keyframes sust-reel-fill {
-  from {
-    inline-size: 0;
-  }
-  to {
-    inline-size: 100%;
-  }
+.sust-stake-reel__arrow:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
 }
 
-@keyframes sust-reel-caption {
-  from {
+@media (hover: hover) and (pointer: fine) {
+  .sust-stake-reel__arrow {
     opacity: 0;
+    pointer-events: none;
   }
-  to {
+
+  .sust-stake-reel__media:is(:hover, :focus-within) .sust-stake-reel__arrow {
     opacity: 1;
+    pointer-events: auto;
   }
 }
 
-/* Engagement photos inside the "Click more" article sit at body width. */
-.sust-stake-article__figure {
-  margin: 18px 0 4px;
-}
-
-.sust-stake-article__figure img {
-  display: block;
-  inline-size: 100%;
-  block-size: auto;
-  border-radius: 8px;
-}
-
-.sust-stake-article__figure figcaption {
-  margin-top: 7px;
-  color: var(--route-muted);
-  font-family: var(--font-editorial);
-  font-size: 13px;
-  font-style: italic;
+.sust-stake-reel__caption {
+  display: grid;
+  min-height: 3em;
+  margin: 12px 0 0;
+  color: var(--route-muted, #766c61);
+  font-family: var(--font-sans);
+  font-size: clamp(13px, 0.9vw, 15px);
+  font-style: normal;
   line-height: 1.5;
+  text-align: left;
+}
+
+/* Reserve the tallest caption so autoplay never changes the reading geometry. */
+.sust-stake-reel__caption-text {
+  grid-area: 1 / 1;
+  visibility: hidden;
+}
+
+.sust-stake-reel__caption-text[data-current] {
+  visibility: visible;
 }
 
 @media (prefers-reduced-motion: reduce) {
   .sust-stake-reel__img {
-    animation: none;
-    transition: opacity 600ms linear;
-  }
-
-  .sust-stake-reel__caption {
-    animation: none;
-  }
-
-  /* The hairline is progress, not decoration — keep it filling. */
-  .sust-stake-reel__rule-fill {
-    animation-duration: 1ms;
+    transition: none;
   }
 }
 
@@ -1798,6 +1751,54 @@ a.sust-sdg-pill:focus-visible {
 }
 
 /* ============================================================================
+   Key Findings Note Box
+   ============================================================================ */
+
+.wiki-page--sustainability .wiki-boundary {
+  margin: 28px 0 !important;
+  padding: 20px 24px !important;
+  border: 1px solid color-mix(in srgb, var(--route-line, rgba(29, 29, 31, 0.12)) 80%, transparent) !important;
+  border-left: 4px solid var(--route-accent, #c5192d) !important;
+  border-radius: 0 12px 12px 0 !important;
+  background: color-mix(in srgb, var(--route-soft, #fdf6ec) 45%, rgba(255, 255, 255, 0.95)) !important;
+}
+
+.wiki-page--sustainability .wiki-boundary > span,
+.wiki-page--sustainability .wiki-boundary__label {
+  display: block !important;
+  margin-bottom: 14px !important;
+  color: var(--route-accent, #c5192d) !important;
+  font-family: var(--font-sans) !important;
+  font-size: clamp(20px, 1.8vw, 22px) !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.03em !important;
+  text-transform: uppercase !important;
+  line-height: 1.25 !important;
+}
+
+.wiki-page--sustainability .wiki-boundary p,
+.wiki-page--sustainability .wiki-boundary__body p {
+  margin: 0 0 12px 0 !important;
+  color: var(--route-ink, #2d2426) !important;
+  font-family: var(--font-body), var(--font-sans), sans-serif !important;
+  font-size: 17px !important;
+  font-weight: 400 !important;
+  line-height: 1.72 !important;
+  letter-spacing: -0.005em;
+  text-wrap: pretty;
+}
+
+.wiki-page--sustainability .wiki-boundary p:last-child,
+.wiki-page--sustainability .wiki-boundary__body p:last-child {
+  margin-bottom: 0 !important;
+}
+
+.wiki-page--sustainability .wiki-boundary strong {
+  color: var(--route-heading-ink, var(--route-ink, #2d2426)) !important;
+  font-weight: 700 !important;
+}
+
+/* ============================================================================
    Stakeholder Profile Popup Modal (Click More)
    ============================================================================ */
 
@@ -1818,7 +1819,7 @@ a.sust-sdg-pill:focus-visible {
 .sust-stake-modal {
   position: relative;
   width: 100%;
-  max-width: 980px;
+  max-width: 1120px;
   max-height: 90vh;
   display: flex;
   flex-direction: column;
@@ -1856,23 +1857,33 @@ a.sust-sdg-pill:focus-visible {
   transform: rotate(90deg);
 }
 
-/* Popup: the card face unchanged on top, a dashed rule, then the full text.
-   The whole sheet scrolls; the close button stays pinned to its corner. */
+/* Large centered gallery followed by the interview text; close stays visible. */
 .sust-stake-modal__scroll {
   flex: 1;
   min-height: 0;
   overflow-y: auto;
 }
 
-.sust-stake-card--in-modal {
-  border: 0;
-  border-top: 3px solid var(--route-main);
-  border-radius: 0;
+.sust-stake-modal__header {
+  padding: 24px 76px 16px 28px;
 }
 
 /* Room for the close button beside the name. */
-.sust-stake-card--in-modal .sust-stake-card__header {
-  padding-inline-end: 44px;
+.sust-stake-modal__header h3 {
+  margin: 0;
+  color: var(--route-heading-ink, #4a2c1d);
+  font-family: var(--font-editorial);
+  font-size: clamp(24px, 3vw, 34px);
+}
+
+.sust-stake-modal__gallery {
+  margin: 0 28px 24px;
+
+}
+
+.sust-stake-modal__gallery .sust-stake-reel__frame {
+  aspect-ratio: auto;
+  height: clamp(260px, 58vh, 650px);
 }
 
 .sust-stake-modal__body {
@@ -1919,6 +1930,20 @@ a.sust-sdg-pill:focus-visible {
 }
 
 @media (max-width: 640px) {
+  .sust-stake-modal__header {
+    padding-left: 18px;
+  }
+
+  .sust-stake-modal__gallery {
+    margin-inline: 18px;
+  }
+
+  .sust-stake-modal__gallery .sust-stake-reel__frame {
+    height: auto;
+    min-height: 0;
+    aspect-ratio: 4 / 3;
+  }
+
   .sust-stake-modal__body {
     margin: 0 18px;
     padding: 18px 0 24px;
@@ -1928,16 +1953,85 @@ a.sust-sdg-pill:focus-visible {
 /* ============================================================================
    S · Stakeholder deck (profiles without "Click more")
    ----------------------------------------------------------------------------
-   From stakeholder-versions.html, recoloured to the route palette: numbered
-   voice rail on the left, one paper card on the right with the copy beside a
-   larger tilted photo plate, and the status row at the bottom like the cards.
+   A voice rail seeks the scrolling sequence of cards in the reading window.
    ========================================================================== */
 
-.sust-deck {
+.sust-deck__viewport {
   display: grid;
   grid-template-columns: 220px minmax(0, 1fr);
   gap: 22px;
   align-items: start;
+}
+
+.sust-deck__rail {
+  position: sticky;
+  top: 24px;
+}
+
+.sust-deck__stage {
+  min-width: 0;
+}
+
+.sust-deck__cards {
+  position: relative;
+  display: grid;
+  gap: 24px;
+  min-width: 0;
+}
+
+.sust-deck[data-scroll-deck] {
+  height: calc(var(--deck-height) + var(--deck-travel));
+  overflow-anchor: none;
+}
+
+.sust-deck[data-scroll-deck] .sust-deck__viewport {
+  position: sticky;
+  top: var(--deck-top);
+}
+
+.sust-deck[data-scroll-deck] .sust-deck__rail {
+  position: relative;
+  top: auto;
+  align-self: start;
+  max-height: var(--deck-height);
+  overflow-y: auto;
+}
+
+.sust-deck[data-scroll-deck] .sust-deck__tab:is(:hover, [aria-selected="true"]) {
+  transform: none;
+}
+
+.sust-deck[data-scroll-deck] .sust-deck__stage {
+  position: relative;
+  display: block;
+  height: var(--deck-height);
+  overflow: hidden;
+}
+
+.sust-deck[data-scroll-deck] .sust-deck__card {
+  position: absolute;
+  inset: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  min-height: var(--deck-height);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.sust-deck[data-scroll-deck] .sust-deck__card[data-active] {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.sust-deck[data-scroll-deck] .sust-deck__cards {
+  display: block;
+  height: 100%;
+}
+
+.sust-deck[data-scroll-deck] .sust-deck__body {
+  flex: 1;
 }
 
 .sust-deck__label {
@@ -2074,14 +2168,6 @@ a.sust-sdg-pill:focus-visible {
   letter-spacing: -0.02em;
 }
 
-.sust-deck__step {
-  color: var(--route-muted);
-  font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 0.12em;
-  white-space: nowrap;
-}
-
 /* Copy | larger photo plate. */
 .sust-deck__grid {
   display: grid;
@@ -2127,7 +2213,7 @@ a.sust-sdg-pill:focus-visible {
   font-style: italic;
   line-height: 1.45;
 }
-/* Tilted plate with two paper layers behind it, as in the source component. */
+/* Centered photo plate with a restrained paper border. */
 .sust-deck__visual {
   position: relative;
   padding: 14px;
@@ -2137,7 +2223,6 @@ a.sust-sdg-pill:focus-visible {
 .sust-deck__frame {
   position: relative;
   border-radius: 16px;
-  transform: rotate(-3deg);
   filter: drop-shadow(0 16px 20px rgb(49 34 24 / 0.18));
 }
 
@@ -2153,18 +2238,22 @@ a.sust-sdg-pill:focus-visible {
   inset: -7px;
   z-index: -1;
   background: color-mix(in srgb, var(--route-main) 22%, #fff);
-  transform: rotate(4deg);
 }
 
 .sust-deck__frame::after {
   inset: -12px;
   z-index: -2;
   background: color-mix(in srgb, var(--route-accent) 14%, #fff);
-  transform: rotate(-5deg);
 }
 
-.sust-deck__frame .sust-stake-reel {
-  border-radius: 16px;
+.sust-deck__frame:has(.sust-stake-reel) {
+  border-radius: 0;
+  filter: none;
+}
+
+.sust-deck__frame:has(.sust-stake-reel)::before,
+.sust-deck__frame:has(.sust-stake-reel)::after {
+  content: none;
 }
 
 /* No documented photographs: a typographic plate instead of a picture. */
@@ -2202,8 +2291,8 @@ a.sust-sdg-pill:focus-visible {
   text-shadow: 0 1px 10px rgb(0 0 0 / 0.2);
 }
 
-@media (max-width: 900px) {
-  .sust-deck {
+@media (max-width: 980px) {
+  .sust-deck__viewport {
     grid-template-columns: minmax(0, 1fr);
     gap: 12px;
   }
@@ -2242,6 +2331,18 @@ a.sust-sdg-pill:focus-visible {
   .sust-deck__visual {
     order: -1;
     max-inline-size: 440px;
+    justify-self: center;
+    width: 100%;
+  }
+
+  .sust-deck__rail {
+    top: calc(var(--header-height, 78px) + 34px);
+    z-index: 3;
+    background: var(--route-paper, #fffdf0);
+  }
+
+  .sust-deck__card {
+    scroll-margin-top: calc(var(--header-height, 78px) + 140px);
   }
 }
 
@@ -2251,5 +2352,17 @@ a.sust-sdg-pill:focus-visible {
   .sust-deck__visual {
     transition: none;
     animation: none;
+  }
+}
+@media (min-width: 981px) {
+  .sust-deck__field--lead {
+    /* Keep the lead stakeholder copy in the existing grid row while letting it
+       use the open space above the visual panel on wider screens. */
+    width: calc(190% + clamp(20px, 3vw, 36px));
+    min-block-size: 4.3rem;
+  }
+
+  .sust-deck__field--lead dd {
+    max-width: none;
   }
 }

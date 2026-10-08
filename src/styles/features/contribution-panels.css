@@ -49,8 +49,8 @@
 .wiki-page--contribution .contribution-gallery {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  column-gap: var(--wiki-space-block, 24px);
-  row-gap: var(--wiki-space-block, 24px);
+  column-gap: 16px;
+  row-gap: 16px;
   align-items: start;
   width: 100%;
 }
@@ -65,17 +65,16 @@
   object-fit: cover;
 }
 
-/* Beat the global `.wiki-figure` margin without `!important`: two classes win
-   on specificity (0,3,0 against 0,2,0), so the grid alone spaces the set. */
+/* Reset figure margin: must use !important to override the global .wiki-figure margin */
 .wiki-page--contribution .contribution-gallery .contribution-gallery__item {
-  margin: 0;
+  margin: 0 !important;
 }
 
 .wiki-page--contribution .contribution-gallery__item figcaption {
   max-width: none;
-  margin-top: 10px;
+  margin-top: 8px;
   font-size: 12.5px;
-  line-height: 1.55;
+  line-height: 1.45;
   text-wrap: pretty;
 }
 
@@ -102,12 +101,17 @@
   object-fit: contain;
 }
 
-/* 4-photo sets: scaled down so 4 photos comfortably fit on screen without vertical overwhelm */
+/* 4-photo sets: scaled down & centered so all 4 photos comfortably fit on screen together with reduced gap */
+.wiki-page--contribution .contribution-gallery[data-count="4"],
 .wiki-page--contribution .contribution-gallery--compact-grid {
   max-width: 820px;
-  margin: 0 auto;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  column-gap: 16px;
+  row-gap: 14px;
 }
 
+.wiki-page--contribution .contribution-gallery[data-count="4"] .contribution-gallery__item img,
 .wiki-page--contribution .contribution-gallery--compact-grid .contribution-gallery__item img {
   max-height: 210px;
   aspect-ratio: 16 / 10;

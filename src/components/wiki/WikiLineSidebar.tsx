@@ -27,6 +27,9 @@ export interface WikiLineSidebarItem {
   }>;
 }
 
+/** Desktop outline looks under review; omitted keeps the legacy card. */
+export type WikiLineSidebarVariant = "line" | "ribbon" | "marker";
+
 export interface WikiLineSidebarLink {
   label: string;
   path: string;
@@ -51,6 +54,7 @@ interface WikiLineSidebarProps {
    * related link is chosen so the host can slide the drawer away.
    */
   onRequestClose?: () => void;
+  variant?: WikiLineSidebarVariant;
 }
 
 export function WikiLineSidebar({
@@ -67,8 +71,10 @@ export function WikiLineSidebar({
   id,
   scrollBehavior = "instant",
   onRequestClose,
+  variant,
 }: WikiLineSidebarProps) {
   const outlineRef = useRef<HTMLElement>(null);
+  const navRef = useRef<HTMLElement>(null);
   const ribbonRef = useRef<HTMLSpanElement>(null);
   const pointerIdRef = useRef<number | null>(null);
   const requestRibbonMeasureRef = useRef<() => void>(() => undefined);
@@ -274,6 +280,40 @@ export function WikiLineSidebar({
 
   }, [activeChildId, activeId, ribbonTargetId]);
 
+  // "line" variant: park the rail thumb on the row being read. Measured in nav
+  // coordinates so wrapped (multi-line) labels get a matching thumb height.
+  const thumbTargetId = ribbonTargetId || activeChildId || activeId;
+  useEffect(() => {
+    const nav = navRef.current;
+    if (variant !== "line" || !nav) return;
+
+    let frame = 0;
+    const place = () => {
+      frame = 0;
+      const target = nav.querySelector<HTMLElement>(
+        `[data-outline-target="${thumbTargetId}"]`,
+      );
+      if (!target) return;
+      const bounds = target.getBoundingClientRect();
+      const top = bounds.top - nav.getBoundingClientRect().top;
+      nav.style.setProperty("--wiki-outline-thumb-y", `${top.toFixed(1)}px`);
+      nav.style.setProperty("--wiki-outline-thumb-h", `${bounds.height.toFixed(1)}px`);
+    };
+    const request = () => {
+      if (!frame) frame = requestAnimationFrame(place);
+    };
+    // Subnav expand/collapse and label rewraps both resize the nav.
+    const observer =
+      "ResizeObserver" in window ? new ResizeObserver(request) : null;
+    observer?.observe(nav);
+    request();
+
+    return () => {
+      if (frame) cancelAnimationFrame(frame);
+      observer?.disconnect();
+    };
+  }, [variant, thumbTargetId]);
+
   const jumpToSection = (
     event: MouseEvent<HTMLAnchorElement>,
     id: string,
@@ -379,7 +419,12 @@ export function WikiLineSidebar({
       : 0;
 
   return (
-    <aside ref={outlineRef} id={id} className="wiki-outline" aria-label={label}>
+    <aside
+      ref={outlineRef}
+      id={id}
+      className={`wiki-outline${variant ? ` wiki-outline--${variant}` : ""}`}
+      aria-label={label}
+    >
       {onRequestClose ? (
         <div className="wiki-outline__drawer-head">
           <strong>{label}</strong>
@@ -400,7 +445,10 @@ export function WikiLineSidebar({
         />
       </div>
 
-      <nav aria-label={label}>
+      <nav ref={navRef} aria-label={label}>
+        {variant === "line" ? (
+          <span className="wiki-outline__thumb" aria-hidden="true" />
+        ) : null}
         <span
           ref={ribbonRef}
           className="wiki-outline__ribbon"
@@ -451,7 +499,9 @@ export function WikiLineSidebar({
                 title={item.label}
               >
                 <span className="wiki-outline__index">
-                  {minimal ? Number.parseInt(item.index, 10) : item.index}
+                  {minimal && (!variant || variant === "marker")
+                    ? Number.parseInt(item.index, 10)
+                    : item.index}
                 </span>
                 <span className="wiki-outline__copy">
                   {!minimal && item.meta ? <small>{item.meta}</small> : null}
@@ -544,7 +594,9 @@ export function WikiLineSidebar({
 
       {links.length ? (
         <div className="wiki-outline__related">
-          <span className="wiki-outline__related-title">✦ related links</span>
+          <span className="wiki-outline__related-title">
+            {variant ? "Related" : "✦ related links"}
+          </span>
           {links.map((link) => (
             <Link key={link.path} to={link.path} onClick={onRequestClose}>
               <span>{link.label}</span>

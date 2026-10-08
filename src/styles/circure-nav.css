@@ -625,15 +625,6 @@ button.nav-link {
   opacity: 0.72;
 }
 
-.nav-folio {
-  font-family: var(--font-mono);
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  color: var(--accent);
-  margin-right: 6px;
-}
-
 .nav-caret {
   width: 10px;
   height: 6px;
@@ -651,12 +642,6 @@ button.nav-link {
 
 .nav-link[aria-expanded="true"] .nav-caret {
   transform: rotate(-180deg);
-}
-
-@media (max-width: 1180px) {
-  .nav-folio {
-    display: none;
-  }
 }
 
 .mobile-menu-toggle,

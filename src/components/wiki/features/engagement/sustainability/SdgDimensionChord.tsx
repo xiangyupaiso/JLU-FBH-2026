@@ -296,10 +296,11 @@ export function SdgDimensionChord() {
         .selectAll("text")
         .data(tv)
         .join("text")
-        .attr("x", (v) => Math.sin(ang(v)) * (R + BAND + 12))
-        .attr("y", (v) => -Math.cos(ang(v)) * (R + BAND + 12))
+        .attr("x", (v) => Math.sin(ang(v)) * (R + BAND + 14))
+        .attr("y", (v) => -Math.cos(ang(v)) * (R + BAND + 14))
         .attr("dy", ".32em")
-        .attr("font-size", 8.5)
+        .attr("font-size", 10.5)
+        .attr("font-weight", 600)
         .attr("fill", "#64748b")
         .text((v) => v);
     });
@@ -307,11 +308,11 @@ export function SdgDimensionChord() {
     g.selectAll("text.dimname")
       .data(rightGroups)
       .join("text")
-      .attr("x", (d) => Math.sin((d.start + d.end) / 2) * (R + BAND + 40))
-      .attr("y", (d) => -Math.cos((d.start + d.end) / 2) * (R + BAND + 40))
+      .attr("x", (d) => Math.sin((d.start + d.end) / 2) * (R + BAND + 44))
+      .attr("y", (d) => -Math.cos((d.start + d.end) / 2) * (R + BAND + 44))
       .attr("dy", ".32em")
-      .attr("font-size", 15)
-      .attr("font-weight", 700)
+      .attr("font-size", 17)
+      .attr("font-weight", 800)
       .attr("fill", "#111")
       .text((d) => d.name);
 
@@ -323,13 +324,13 @@ export function SdgDimensionChord() {
           m,
           x1: Math.sin(m) * (R + BAND + 2),
           y1: -Math.cos(m) * (R + BAND + 2),
-          y: -Math.cos(m) * (R + BAND + 16),
+          y: -Math.cos(m) * (R + BAND + 18),
         };
       })
       .sort((a, b) => a.y - b.y);
     for (let i = 1; i < labels.length; i++) {
-      if (labels[i].y < labels[i - 1].y + 16) {
-        labels[i].y = labels[i - 1].y + 16;
+      if (labels[i].y < labels[i - 1].y + 19) {
+        labels[i].y = labels[i - 1].y + 19;
       }
     }
 
@@ -339,20 +340,20 @@ export function SdgDimensionChord() {
       .attr(
         "points",
         (d) =>
-          `${d.x1},${d.y1} ${Math.sin(d.m) * (R + BAND + 16)},${d.y} ${-(R + BAND + 26)},${d.y}`,
+          `${d.x1},${d.y1} ${Math.sin(d.m) * (R + BAND + 18)},${d.y} ${-(R + BAND + 32)},${d.y}`,
       )
       .attr("fill", "none")
       .attr("stroke", (d) => d.d.color)
-      .attr("stroke-width", 0.9)
-      .attr("stroke-opacity", 0.7);
+      .attr("stroke-width", 1)
+      .attr("stroke-opacity", 0.75);
     labG
       .append("text")
-      .attr("x", -(R + BAND + 31))
+      .attr("x", -(R + BAND + 38))
       .attr("y", (d) => d.y)
       .attr("dy", ".32em")
       .attr("text-anchor", "end")
-      .attr("font-size", 12)
-      .attr("font-weight", 600)
+      .attr("font-size", 14.5)
+      .attr("font-weight", 700)
       .attr("fill", (d) => d.d.color)
       .text((d) => `${d.d.id} ${d.d.name}`);
 
@@ -378,9 +379,16 @@ export function SdgDimensionChord() {
     })
       .on("mousemove", (e) => {
         const hostRect = host.getBoundingClientRect();
+        const tipEl = tipRef.current;
+        const tipW = tipEl ? tipEl.offsetWidth || 250 : 250;
+        const tipH = tipEl ? tipEl.offsetHeight || 65 : 65;
+        let posX = e.clientX - hostRect.left - 16;
+        let posY = e.clientY - hostRect.top - 16;
+        if (posX - tipW < 8) posX = tipW + 8;
+        if (posY - tipH < 8) posY = tipH + 8;
         tipNode
-          .style("left", `${e.clientX - hostRect.left + 14}px`)
-          .style("top", `${e.clientY - hostRect.top + 12}px`);
+          .style("left", `${posX}px`)
+          .style("top", `${posY}px`);
       })
       .on("mouseleave", () => {
         rib.attr("opacity", 1);

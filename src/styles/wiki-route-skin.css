@@ -618,6 +618,504 @@ html.has-route-reader-scroll {
     color-mix(in srgb, var(--route-accent) 12%, transparent);
 }
 
+/* 6b. TOC variants (desktop only — `variant` is never passed to the drawer) --
+   Shared "no chrome" base: the outline sits directly on the mat, typography
+   carries the hierarchy, and only text colour marks the reading position.
+   Labels wrap instead of truncating. Colours come from the module's own
+   heading inks so every route stays in family.
+   A `line`   — 1px rail + a thumb that glides to the row being read.
+   B `ribbon` — the CirCure ribbon knot rides the rail (draggable scrubber).
+   C `marker` — the article's highlighter swash sweeps under the active label. */
+.wiki-page.wiki-page--route
+  .wiki-outline:is(.wiki-outline--line, .wiki-outline--ribbon, .wiki-outline--marker) {
+  --toc-ink: var(--route-heading-ink, var(--route-ink));
+  --toc-ink-sub: var(--route-subheading-ink, var(--route-ink));
+  /* Rest/faint inks stay >= 4.5:1 on every module's mat colour. */
+  --toc-rest: color-mix(in srgb, var(--toc-ink) 82%, transparent);
+  --toc-faint: color-mix(in srgb, var(--toc-ink) 72%, transparent);
+
+  /* Vertically centred in the mat; still scrolls past max-height. */
+  align-self: center;
+  margin: 0;
+  padding: 6px 6px 6px 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  transform: none;
+}
+
+.wiki-page.wiki-page--route
+  .wiki-outline:is(.wiki-outline--line, .wiki-outline--ribbon, .wiki-outline--marker)
+  :is(.wiki-outline__progress-pill, .wiki-outline__active-pill, .wiki-outline__sub-index) {
+  display: none;
+}
+
+.wiki-page.wiki-page--route
+  .wiki-outline:is(.wiki-outline--line, .wiki-outline--ribbon, .wiki-outline--marker)
+  nav {
+  position: relative;
+  gap: 0;
+  padding: 0;
+}
+
+.wiki-page.wiki-page--route
+  .wiki-outline:is(.wiki-outline--line, .wiki-outline--ribbon, .wiki-outline--marker)
+  .wiki-outline__group {
+  border: 0;
+}
+
+.wiki-page.wiki-page--route
+  .wiki-outline:is(.wiki-outline--line, .wiki-outline--ribbon, .wiki-outline--marker)
+  nav
+  .wiki-outline__primary {
+  min-height: 0;
+  grid-template-columns: 24px minmax(0, 1fr);
+  gap: 8px;
+  align-items: baseline;
+  padding: 8px 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  color: var(--toc-rest);
+  transform: none;
+  transition: color 220ms var(--ease-out);
+}
+
+.wiki-page.wiki-page--route
+  .wiki-outline:is(.wiki-outline--line, .wiki-outline--ribbon, .wiki-outline--marker)
+  nav
+  :is(.wiki-outline__primary, .wiki-outline__secondary):is(:hover, :focus-visible, .is-active) {
+  border-color: transparent;
+  background: transparent;
+  box-shadow: none;
+  color: var(--toc-ink);
+  transform: none;
+}
+
+.wiki-page.wiki-page--route
+  .wiki-outline:is(.wiki-outline--line, .wiki-outline--ribbon, .wiki-outline--marker)
+  nav
+  :is(.wiki-outline__primary, .wiki-outline__secondary, .wiki-outline__related a):focus-visible {
+  outline: 2px solid var(--route-accent);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* Plain figures, no badge. */
+.wiki-page.wiki-page--route
+  .wiki-outline:is(.wiki-outline--line, .wiki-outline--ribbon, .wiki-outline--marker)
+  nav
+  .wiki-outline__primary
+  .wiki-outline__index {
+  display: inline;
+  width: auto;
+  height: auto;
+  border-radius: 0;
+  background: none;
+  box-shadow: none;
+  color: var(--toc-faint);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  transform: none;
+  transition: color 220ms var(--ease-out);
+}
+
+.wiki-page.wiki-page--route
+  .wiki-outline:is(.wiki-outline--line, .wiki-outline--ribbon, .wiki-outline--marker)
+  nav
+  .wiki-outline__primary.is-active
+  .wiki-outline__index {
+  color: var(--toc-ink);
+}
+
+/* Full labels: wrap with a hanging indent instead of an ellipsis. */
+.wiki-page.wiki-page--route
+  .wiki-outline:is(.wiki-outline--line, .wiki-outline--ribbon, .wiki-outline--marker)
+  .wiki-outline__primary
+  .wiki-outline__copy
+  strong {
+  overflow: visible;
+  font-family: var(--font-sans);
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: -0.005em;
+  line-height: 1.4;
+  text-overflow: clip;
+  text-wrap: pretty;
+  white-space: normal;
+}
+
+.wiki-page.wiki-page--route
+  .wiki-outline:is(.wiki-outline--line, .wiki-outline--ribbon, .wiki-outline--marker)
+  .wiki-outline__subnav {
+  gap: 0;
+  margin: 0 0 8px 32px;
+  padding: 0;
+  border: 0;
+}
+
+.wiki-page.wiki-page--route
+  .wiki-outline:is(.wiki-outline--line, .wiki-outline--ribbon, .wiki-outline--marker)
+  nav
+  .wiki-outline__secondary {
+  min-height: 0;
+  grid-template-columns: minmax(0, 1fr);
+  padding: 5px 0;
+  border: 0;
+  border-radius: 0;
+  color: var(--toc-faint);
+  opacity: 1;
+  transition: color 220ms var(--ease-out);
+}
+
+.wiki-page.wiki-page--route
+  .wiki-outline:is(.wiki-outline--line, .wiki-outline--ribbon, .wiki-outline--marker)
+  nav
+  .wiki-outline__secondary:is(:hover, :focus-visible, .is-active) {
+  padding-left: 0;
+  color: var(--toc-ink-sub);
+}
+
+.wiki-page.wiki-page--route
+  .wiki-outline:is(.wiki-outline--line, .wiki-outline--ribbon, .wiki-outline--marker)
+  .wiki-outline__secondary
+  > strong {
+  overflow: visible;
+  font-size: 13.5px;
+  font-weight: 450;
+  line-height: 1.4;
+  text-overflow: clip;
+  text-wrap: pretty;
+  white-space: normal;
+}
+
+/* Related links: a quiet footnote, not a second menu. */
+.wiki-page.wiki-page--route
+  .wiki-outline:is(.wiki-outline--line, .wiki-outline--ribbon, .wiki-outline--marker)
+  .wiki-outline__related {
+  gap: 0;
+  margin-top: 20px;
+  padding-top: 14px;
+  border-top: 1px solid var(--route-line);
+}
+
+.wiki-page.wiki-page--route
+  .wiki-outline:is(.wiki-outline--line, .wiki-outline--ribbon, .wiki-outline--marker)
+  .wiki-outline__related-title {
+  margin-bottom: 6px;
+  color: var(--toc-faint);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.wiki-page.wiki-page--route
+  .wiki-outline:is(.wiki-outline--line, .wiki-outline--ribbon, .wiki-outline--marker)
+  .wiki-outline__related
+  a {
+  min-height: 0;
+  justify-content: flex-start;
+  gap: 6px;
+  padding: 4px 0;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  box-shadow: none;
+  color: var(--toc-rest);
+  font-size: 14px;
+  font-weight: 500;
+  transition: color 200ms var(--ease-out);
+}
+
+.wiki-page.wiki-page--route
+  .wiki-outline:is(.wiki-outline--line, .wiki-outline--ribbon, .wiki-outline--marker)
+  .wiki-outline__related
+  a:is(:hover, :focus-visible) {
+  background: none;
+  box-shadow: none;
+  color: var(--toc-ink);
+  transform: none;
+}
+
+.wiki-page.wiki-page--route .wiki-outline .wiki-outline__link-arrow {
+  display: inline-block;
+  transition: transform 200ms var(--ease-out);
+}
+
+.wiki-page.wiki-page--route
+  .wiki-outline__related
+  a:is(:hover, :focus-visible)
+  .wiki-outline__link-arrow {
+  transform: translate(2px, -2px);
+}
+
+/* A · line ---------------------------------------------------------------- */
+.wiki-page.wiki-page--route .wiki-outline.wiki-outline--line nav {
+  padding-left: 14px;
+}
+
+.wiki-page.wiki-page--route .wiki-outline.wiki-outline--line nav::before {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 1px;
+  background: var(--route-line);
+  content: "";
+}
+
+.wiki-page.wiki-page--route .wiki-outline--line .wiki-outline__thumb {
+  position: absolute;
+  top: 0;
+  left: -0.5px;
+  width: 2px;
+  height: var(--wiki-outline-thumb-h, 0px);
+  border-radius: 1px;
+  background: var(--toc-ink);
+  transform: translateY(var(--wiki-outline-thumb-y, 0px));
+  transition:
+    transform 260ms var(--ease-out),
+    height 260ms var(--ease-out);
+}
+
+/* B · ribbon -------------------------------------------------------------- */
+.wiki-page.wiki-page--route .wiki-outline.wiki-outline--ribbon nav {
+  padding-left: 26px;
+}
+
+.wiki-page.wiki-page--route .wiki-outline--ribbon .wiki-outline__ribbon {
+  display: block;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 18px;
+  cursor: grab;
+  pointer-events: auto;
+  touch-action: none;
+}
+
+.wiki-page.wiki-page--route
+  .wiki-outline--ribbon
+  .wiki-outline__ribbon:is(:active, .is-dragging) {
+  cursor: grabbing;
+}
+
+.wiki-page.wiki-page--route
+  .wiki-outline--ribbon
+  .wiki-outline__ribbon:focus-visible {
+  outline: 2px solid var(--route-accent);
+  outline-offset: 2px;
+  border-radius: 9px;
+}
+
+.wiki-page.wiki-page--route .wiki-outline--ribbon .wiki-outline__ribbon-progress {
+  width: 1px;
+  background: color-mix(in srgb, var(--care) 70%, var(--toc-ink));
+  box-shadow: none;
+}
+
+.wiki-page.wiki-page--route .wiki-outline--ribbon .wiki-outline__ribbon-rest {
+  width: 1px;
+  background: var(--route-line);
+}
+
+.wiki-page.wiki-page--route .wiki-outline--ribbon .wiki-outline__ribbon-knot {
+  width: 15px;
+  height: 22px;
+  color: var(--care);
+  filter: none;
+  transition: scale 220ms var(--ease-out);
+}
+
+.wiki-page.wiki-page--route
+  .wiki-outline--ribbon
+  .wiki-outline__ribbon:is(:hover, :focus-visible, .is-dragging)
+  .wiki-outline__ribbon-knot {
+  scale: 1.15;
+}
+
+/* C · marker -------------------------------------------------------------- */
+.wiki-page.wiki-page--route
+  .wiki-outline--marker
+  nav
+  .wiki-outline__primary
+  .wiki-outline__index {
+  font-family: var(--font-display);
+  font-size: 17px;
+  font-variant-numeric: oldstyle-nums proportional-nums;
+  letter-spacing: 0;
+}
+
+/* Labels become inline so the swash follows each wrapped line. */
+.wiki-page.wiki-page--route .wiki-outline--marker .wiki-outline__copy,
+.wiki-page.wiki-page--route .wiki-outline--marker nav .wiki-outline__secondary {
+  display: block;
+}
+
+.wiki-page.wiki-page--route
+  .wiki-outline--marker
+  :is(.wiki-outline__copy strong, .wiki-outline__secondary > strong) {
+  /* The article swash sits on white paper; the TOC sits on the tinted mat,
+     so pull the swash toward the module colour to keep it legible. */
+  --toc-marker: color-mix(
+    in srgb,
+    var(--route-main) 45%,
+    var(--route-marker-bg, #c4c7be)
+  );
+  display: inline;
+  padding: 0 0.12em;
+  margin: 0 -0.12em;
+  background: linear-gradient(
+      to bottom,
+      transparent 54%,
+      var(--toc-marker) 54%,
+      var(--toc-marker) 92%,
+      transparent 92%
+    )
+    no-repeat 0 0 / 0% 100%;
+  transition: background-size 460ms var(--ease-out);
+}
+
+.wiki-page.wiki-page--route
+  .wiki-outline--marker
+  :is(.wiki-outline__primary, .wiki-outline__secondary).is-active
+  strong {
+  background-size: 100% 100%;
+}
+
+/* 6c. Section masthead ------------------------------------------------------
+   Full-bleed photo at the top of a section (e.g. Sustainability / Overview).
+   The photo bleeds to the frame edges and dissolves into the paper; the
+   epigraph is set over its faded lower edge, institutional-report style.
+   Bleed offsets mirror `.wiki-article` padding. */
+.wiki-page--route .wiki-masthead {
+  --masthead-bleed-top: clamp(40px, 5vw, 64px);
+  --masthead-bleed-x: clamp(26px, 5vw, 72px);
+
+  position: relative;
+  margin: calc(-1 * var(--masthead-bleed-top))
+    calc(-1 * var(--masthead-bleed-x)) clamp(36px, 4vw, 56px);
+  padding: 0;
+}
+
+.wiki-page--route .wiki-masthead__image {
+  display: block;
+  width: 100%;
+  height: clamp(240px, 26vw, 380px);
+  object-fit: cover;
+  object-position: center 38%;
+  -webkit-mask-image: linear-gradient(to bottom, #000 42%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 42%, transparent 100%);
+  animation: wiki-masthead-image 1600ms var(--ease-out) both;
+}
+
+.wiki-page--route .wiki-masthead__epigraph {
+  position: relative;
+  /* Wide measure: the quote should read as 2-3 long lines, not a column. */
+  max-width: 64rem;
+  /* Light overlap only: the quote starts where the photo is mostly faded. */
+  margin: clamp(-56px, -3.5vw, -32px) auto 0;
+  padding: 0 clamp(20px, 3vw, 40px);
+  text-align: center;
+  animation: wiki-masthead-copy 1100ms var(--ease-out) 420ms both;
+}
+
+.wiki-page--route .wiki-masthead__epigraph blockquote {
+  margin: 0;
+  color: var(--route-heading-ink, var(--route-ink));
+  font-family: var(--font-display) !important;
+  font-size: clamp(19px, 1.75vw, 25px);
+  font-weight: 650;
+  letter-spacing: -0.005em;
+  line-height: 1.45;
+  text-wrap: pretty;
+}
+
+.wiki-page--route .wiki-masthead__epigraph blockquote::before,
+.wiki-page--route .wiki-masthead__epigraph blockquote::after {
+  color: var(--route-accent);
+}
+
+.wiki-page--route .wiki-masthead__epigraph blockquote::before {
+  content: "\201C";
+}
+
+.wiki-page--route .wiki-masthead__epigraph blockquote::after {
+  content: "\201D";
+}
+
+/* Attribution sits flush right under the centred quote. */
+.wiki-page--route .wiki-masthead__epigraph cite {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+  margin-top: 18px;
+  font-style: normal;
+  text-align: right;
+}
+
+/* Short hairline between quote and attribution. */
+.wiki-page--route .wiki-masthead__epigraph cite::before {
+  width: 40px;
+  height: 1px;
+  margin-bottom: 12px;
+  background: var(--route-line-strong);
+  content: "";
+}
+
+.wiki-page--route .wiki-masthead__epigraph cite strong {
+  color: var(--route-heading-ink, var(--route-ink));
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 650;
+  letter-spacing: 0.01em;
+}
+
+.wiki-page--route .wiki-masthead__epigraph cite span {
+  color: color-mix(in srgb, var(--route-heading-ink, var(--route-ink)) 72%, transparent);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+@keyframes wiki-masthead-image {
+  from {
+    opacity: 0;
+    transform: scale(1.04);
+  }
+}
+
+@keyframes wiki-masthead-copy {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+}
+
+@media (max-width: 640px) {
+  .wiki-page--route .wiki-masthead {
+    --masthead-bleed-top: 24px;
+    --masthead-bleed-x: 20px;
+  }
+
+  .wiki-page--route .wiki-masthead__image {
+    height: 200px;
+  }
+
+  .wiki-page--route .wiki-masthead__epigraph {
+    margin-top: -20px;
+  }
+}
+
 /* 7. Frame + inner reader -------------------------------------------------- */
 /* Contract: its height derives from the grid stretch (row = mat content box);
    the inner scroll container fills the frame, so no viewport calc exists
@@ -1560,12 +2058,15 @@ html.has-route-reader-scroll {
     top: auto;
     display: block;
     height: auto;
+    max-height: none;
+    overflow: visible;
     padding: 16px;
   }
 
   .wiki-page.wiki-page--route .wiki-record .route-frame {
     height: auto;
     min-height: 0;
+    overflow: clip;
     background-position: top center;
     background-repeat: repeat-y;
     background-size: 100% auto;

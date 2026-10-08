@@ -126,6 +126,7 @@ export function contributionFeatures(): Record<string, ReactNode> {
     ),
     "contribution-gallery-synbio-classroom": (
       <ContributionFigureGallery
+        className="contribution-gallery--compact-grid"
         keys={[
           "synbioClassroom1",
           "synbioClassroom2",

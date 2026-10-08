@@ -114,10 +114,16 @@ const overviewSection: WikiSection = {
   index: "01",
   kicker: "01 / Overview",
   navLabel: "Overview",
+  masthead: {
+    image: sustainabilityImage("overviewMasthead"),
+    imageAlt: sustainabilityAssets.overviewMasthead.alt,
+    quote: sustainabilityEpigraph.quote,
+    attribution: sustainabilityEpigraph.attribution,
+    attributionRole: sustainabilityEpigraph.attributionRole,
+  },
   title: "Overview",
   summary: "",
   blocks: [
-    { type: "epigraph", ...sustainabilityEpigraph },
     prose(sustainabilityOverview.intro),
     feature("sdg-cards"),
     prose(sustainabilityOverview.framework),

@@ -15,6 +15,7 @@ export function Description() {
       theme="project"
       pageClassName="wiki-page--project wiki-page--description"
       hideHeroCopy
+      outlineVariant="line"
       features={descriptionFeatures()}
       inlineRenderer={renderCitedText}
     />

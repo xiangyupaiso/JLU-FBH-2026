@@ -11,19 +11,18 @@ const jump = (target: string) =>
 export function OverviewSetDevelopGrowCards({ tiers }: { tiers: ReadonlyArray<ImpactTier> }) {
   return (
     <div className="sust-tier-grid">
-      {tiers.map((tier) => {
-        const linked = tier.sdgs.filter((sdg) => sdg.target);
-        return (
-          <article className="sust-tier-card" data-layer={tier.layer} key={tier.layer}>
-            <h4 className="sust-tier-card__title">
-              <span className="sust-tier-card__layer">{tier.layer}</span>
-              {tier.title}
-            </h4>
-            <p className="sust-tier-card__desc">{tier.description}</p>
-            {linked.length ? (
-              <ul className="sust-tier-card__sdgs">
-                {linked.map((sdg) => (
-                  <li key={sdg.number}>
+      {tiers.map((tier) => (
+        <article className="sust-tier-card" data-layer={tier.layer} key={tier.layer}>
+          <div className="sust-tier-card__header">
+            <span className="sust-tier-card__layer">{tier.layer}</span>
+            <h4 className="sust-tier-card__title">{tier.title}</h4>
+          </div>
+          <p className="sust-tier-card__desc">{tier.description}</p>
+          {tier.sdgs.length ? (
+            <ul className="sust-tier-card__sdgs">
+              {tier.sdgs.map((sdg) => (
+                <li key={sdg.number}>
+                  {sdg.target ? (
                     <a
                       className="sust-sdg-pill"
                       data-sdg={sdg.number}
@@ -35,13 +34,17 @@ export function OverviewSetDevelopGrowCards({ tiers }: { tiers: ReadonlyArray<Im
                     >
                       SDG {sdg.number}
                     </a>
-                  </li>
-                ))}
-              </ul>
-            ) : null}
-          </article>
-        );
-      })}
+                  ) : (
+                    <span className="sust-sdg-pill" data-sdg={sdg.number}>
+                      SDG {sdg.number}
+                    </span>
+                  )}
+                </li>
+              ))}
+            </ul>
+          ) : null}
+        </article>
+      ))}
     </div>
   );
 }

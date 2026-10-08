@@ -45,6 +45,7 @@
 * **改交互/图表**：直达 `src/components/wiki/features/` 或对应游戏/可视化子目录；
 * **改宏观骨架尺寸**：唯一修改位置为 `src/styles/wiki-route-skin.css`；
 * **改模块色彩主题**：唯一修改位置为对应模块的 `src/styles/route-palette-[module].css`（只需设定主色、辅色、底色三基准色）。
+* **图片加载策略**：统一使用 `WikiRoutePage` 的自动图片收集与共享加载器；交互后才出现的普通图片通过 `preloadImages` 或 `PageImagePreloads` 声明，详见 [架构规范 §4.7.1](./WIKI_ARCHITECTURE_SPEC.md#471-共享模板的图片准备契约新页面自动继承)。
 
 ---
 

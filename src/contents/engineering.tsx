@@ -6,6 +6,8 @@ import {
 import { WikiNextRecord } from "../components/wiki/WikiNextRecord";
 import { getProjectHeroImage } from "../components/wiki/projectHeroAssets";
 import { engineeringPage } from "../data/project/engineeringPage";
+import { PageImagePreloads } from "../components/common/PageImagePreloads";
+import { wikiPageImages } from "../components/wiki/wikiPageImages";
 import "../styles/wiki-rebuild.css";
 import "../styles/wetlab-editorial.css";
 import "../styles/wiki-route-skin.css";
@@ -20,6 +22,7 @@ export function Engineering() {
       data-wiki-route="/engineering"
       data-route-theme="project"
     >
+      <PageImagePreloads sources={wikiPageImages(engineeringPage)} />
       <header
         ref={heroRef}
         className="wiki-hero"

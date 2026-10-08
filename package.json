@@ -7,6 +7,7 @@
     "dev": "vite",
     "build": "node ./node_modules/typescript/bin/tsc && node ./node_modules/vite/bin/vite.js build",
     "lint": "eslint . --max-warnings 0",
+    "test:page-loading": "node --test scripts/verify-page-image-loading.mjs",
     "format": "prettier --write \"**/*.{ts,tsx,md,json,css}\"",
     "preview": "vite preview"
   },

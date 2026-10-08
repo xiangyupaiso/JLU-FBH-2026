@@ -159,7 +159,7 @@ function StoryArtwork({
               src={src}
               alt=""
               aria-hidden="true"
-              loading="lazy"
+              loading="eager"
               decoding="async"
               className="story-layer story-layer--reveal"
               data-layer={layer.number}
@@ -200,7 +200,7 @@ function WardArtwork() {
             src={imageUrls[`../assets/home/story/${item.file}`]}
             alt=""
             aria-hidden="true"
-            loading="lazy"
+            loading="eager"
             decoding="async"
             style={{
               left: `${item.left}%`,
@@ -221,7 +221,7 @@ function WardArtwork() {
             src={src}
             alt=""
             aria-hidden="true"
-            loading="lazy"
+            loading="eager"
             decoding="async"
           />
         ))}
@@ -236,7 +236,7 @@ function WardArtwork() {
           data-ward="original-2"
           src={imageUrls[`../assets/home/story/${patient.file}`]}
           alt=""
-          loading="lazy"
+          loading="eager"
           decoding="async"
           style={{
             left: `${patient.left}%`,
@@ -250,7 +250,7 @@ function WardArtwork() {
           data-ward="patient"
           src={patientConcerned}
           alt=""
-          loading="lazy"
+          loading="eager"
           decoding="async"
         />
         <img
@@ -258,7 +258,7 @@ function WardArtwork() {
           data-ward="question"
           src={patientQuestion}
           alt=""
-          loading="lazy"
+          loading="eager"
           decoding="async"
         />
       </div>
@@ -811,7 +811,7 @@ function BeyondArtwork() {
           data-layer="2"
           src={imageUrls[`../assets/home/story/${family.file}`]}
           alt=""
-          loading="lazy"
+          loading="eager"
           decoding="async"
           style={{
             left: `${family.left}%`,
@@ -885,22 +885,6 @@ export function HomeStory() {
   useHomeStoryAnimation(root);
   useEffect(() => {
     const story = root.current;
-    // Load hidden layers before their scene arrives, without loading every scene at once.
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach(({ isIntersecting, target }) => {
-          if (!isIntersecting) return;
-          target.querySelectorAll("img").forEach((image) => {
-            image.loading = "eager";
-          });
-          observer.unobserve(target);
-        });
-      },
-      { rootMargin: "100% 0px" },
-    );
-    root.current?.querySelectorAll(".story-scene-track").forEach((scene) => {
-      observer.observe(scene);
-    });
     // Ambient motion continues while the artwork is visible, including scroll endpoints.
     const mapStage = root.current?.querySelector(
       ".story-chapter--map .story-chapter-inner",
@@ -922,7 +906,6 @@ export function HomeStory() {
     });
     if (platformStage) platformObserver.observe(platformStage);
     return () => {
-      observer.disconnect();
       motionObserver.disconnect();
       platformObserver.disconnect();
       if (story) delete story.dataset.platformInView;

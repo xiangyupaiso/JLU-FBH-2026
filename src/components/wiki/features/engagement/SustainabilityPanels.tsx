@@ -91,8 +91,15 @@ function chapterRailSteps(chapter: SdgChapter): ScaleRailStep[] {
 function ScaleRail({ chapter }: { chapter: SdgChapter }) {
   const { activeSubsection } = useRoutePageScroll();
   const steps = useMemo(() => chapterRailSteps(chapter), [chapter]);
+  const chapterIndex = sustainabilityChapters.findIndex((item) => item.id === chapter.id);
+  const endId = sustainabilityChapters[chapterIndex + 1]?.headingId ?? stakeholderTracker.id;
   return (
-    <SCALEProgressChain steps={steps} parentId={chapter.headingId} activeId={activeSubsection} />
+    <SCALEProgressChain
+      steps={steps}
+      parentId={chapter.headingId}
+      endId={endId}
+      activeId={activeSubsection}
+    />
   );
 }
 

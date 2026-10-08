@@ -14,6 +14,7 @@ export function Hardware() {
       theme="dry-lab"
       pageClassName="wiki-page--dry-lab wiki-page--hardware"
       hideHeroCopy
+      outlineVariant="ribbon"
       features={hardwareFeatures()}
       inlineRenderer={renderHardwareCitedText}
     />

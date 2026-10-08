@@ -394,7 +394,7 @@ export function Navbar() {
                     Home
                   </Link>
                 </li>
-                {DROPDOWNS.map((d, i) => (
+                {DROPDOWNS.map((d) => (
                   <li key={d.key} className="nav-item" data-section={d.key}>
                     <button
                       className="nav-link"
@@ -413,9 +413,6 @@ export function Navbar() {
                       }}
                       onKeyDown={onToggleKeydown}
                     >
-                      <span className="nav-folio" aria-hidden="true">
-                        {String(i + 1).padStart(2, "0")}
-                      </span>
                       {d.label}
                       <svg
                         className="nav-caret"
@@ -498,7 +495,7 @@ export function Navbar() {
                       onClick={closeAll}
                     >
                       <span className="nav-card-thumb" aria-hidden="true">
-                        <img src={c.icon} alt="" loading="lazy" />
+                        <img src={c.icon} alt="" loading="eager" />
                       </span>
                       <span className="nav-card-info">
                         <strong>{c.name}</strong>
@@ -575,7 +572,7 @@ export function Navbar() {
                               src={c.icon}
                               alt=""
                               className="circure-mobile-group__icon"
-                              loading="lazy"
+                              loading="eager"
                             />
                           ) : null}
                           <span>{c.name}</span>

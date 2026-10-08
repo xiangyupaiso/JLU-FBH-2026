@@ -27,6 +27,21 @@ export function scrollReaderToTarget(
   options: { block?: ScrollLogicalPosition } = {},
 ) {
   const track = inner?.closest<HTMLElement>(".wiki-reader-track");
+  // Scroll-driven panels can occupy one viewport while owning different
+  // reading positions. Their calibrated targets remain valid for deep links.
+  const declaredTop =
+    target instanceof HTMLElement ? target.dataset.readerScrollTop : undefined;
+  if (declaredTop !== undefined && Number.isFinite(Number(declaredTop))) {
+    const position = Number(declaredTop);
+    const projected =
+      inner && track && getComputedStyle(inner).overflowY === "hidden";
+    if (projected && behavior !== "smooth") inner.scrollTop = position;
+    window.scrollTo({
+      top: projected ? readerTrackStart(track) + position : position,
+      behavior,
+    });
+    return;
+  }
   if (!inner || !track || getComputedStyle(inner).overflowY !== "hidden") {
     if (target instanceof Range) {
       const bounds = target.getBoundingClientRect();

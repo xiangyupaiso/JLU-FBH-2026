@@ -33,6 +33,7 @@ import "../../../styles/hp-panels.css";
  */
 
 import { clamp } from "../../../utils";
+import { PageImagePreloads } from "../../common/PageImagePreloads";
 
 type TimelineCardStyle = CSSProperties & {
   "--angle"?: string;
@@ -891,6 +892,7 @@ export function HumanPracticesTimeline() {
       data-wiki-section
       aria-label="Detailed Human Practices timeline"
     >
+      <PageImagePreloads sources={timelineRecords.map((record) => record.image)} />
       <header className="hp-section-head hp-story-timeline__head">
         <div>
           <p className="hp-kicker">03 / Evidence timeline</p>
