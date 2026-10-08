@@ -65,6 +65,8 @@ export function PdfToolList({
               data-tint={TINTS[index % TINTS.length]}
               onClick={() => setOpen(index)}
             >
+              {/* Folder back plate: keeps physical back support when cover swings open in 3D */}
+              <span className="sust-folder__back" aria-hidden="true" />
               {/* The paper that slides out of the folder when it is opened. */}
               <span className="sust-folder__paper" aria-hidden="true">
                 <span className="sust-folder__paper-label">{tool.title}</span>

@@ -13,6 +13,9 @@ import {
 } from "react";
 import { createPortal } from "react-dom";
 import "../../../styles/games-page.css";
+import bombCatArt from "../../../assets/wiki/bomb-cat-showcase.webp";
+import breastGuardianArt from "../../../assets/wiki/breast-guardian-showcase.webp";
+import virtualLabArt from "../../../assets/wiki/virtual-lab-showcase.webp";
 
 /**
  * Games — interactive station map + four playable projects.
@@ -293,42 +296,48 @@ export function GamesStationMap() {
   );
 }
 
-const LAUNCH_COPY: Record<
-  GameKey,
-  {
-    chapters: string[];
-    small: string;
-    strong: string;
-  }
-> = {
+interface GameLaunchConfig {
+  station: string;
+  badge: string;
+  title: string;
+  subtitle: string;
+  coverImage?: string;
+}
+
+const GAME_LAUNCH_CONFIG: Record<GameKey, GameLaunchConfig> = {
   "breast-guardian": {
-    chapters: ["01 / Childhood", "02 / Youth", "03 / Elderly"],
-    small: "Interactive breast health journey",
-    strong: "Enter the story.",
+    station: "Project 01",
+    badge: "Story RPG · 3 Chapters",
+    title: "Breast Guardian RPG",
+    subtitle: "Interactive breast health journey",
+    coverImage: breastGuardianArt,
   },
   "bomb-cat": {
-    chapters: ["01 / Local play", "02 / Online rooms", "03 / Rules"],
-    small: "Scientific card strategy",
-    strong: "Defuse the outbreak.",
+    station: "Project 02",
+    badge: "Card Strategy · 2–4 Players",
+    title: "circRNA Bomb Cat",
+    subtitle: "TNBC immune defense & outbreak defusal",
+    coverImage: bombCatArt,
   },
   "bio-memory": {
-    chapters: ["01 / Field guide", "02 / Memory match", "03 / Specimen codex"],
-    small: "Biology memory field guide",
-    strong: "Find the pair.",
+    station: "Project 03",
+    badge: "Specimen Match · 18 Pairs",
+    title: "Bio Memory Match",
+    subtitle: "Biology specimen field guide",
   },
   "virtual-lab": {
-    chapters: ["01 / Beginner", "02 / Intermediate", "03 / Advanced"],
-    small: "Nine interactive molecular biology experiments",
-    strong: "Enter the laboratory.",
+    station: "Project 04",
+    badge: "Virtual Lab · 9 Protocols",
+    title: "Virtual Laboratory",
+    subtitle: "Molecular biology workbench",
+    coverImage: virtualLabArt,
   },
 };
 
 /** One showcase launch card; clicking anywhere opens the game surface. */
 export function GameLaunchCard({ game }: { game: GameKey }) {
   const { openGame } = useGames();
-  const isBombCat = game === "bomb-cat";
-  const isBioMemory = game === "bio-memory";
-  const copy = LAUNCH_COPY[game];
+  const config = GAME_LAUNCH_CONFIG[game];
 
   return (
     <div className={`games-showcase games-showcase--${game}`}>
@@ -338,35 +347,47 @@ export function GameLaunchCard({ game }: { game: GameKey }) {
         onClick={(event) => openGame(game, event.currentTarget)}
         aria-haspopup="dialog"
       >
-        <span className="games-showcase__art" aria-hidden="true" />
-        <span className="games-showcase__chapters" aria-hidden="true">
-          {copy.chapters.map((chapter) => (
-            <i key={chapter}>{chapter}</i>
-          ))}
-        </span>
-        {isBombCat ? (
-          <span className="games-showcase__cards" aria-hidden="true">
-            <i>circRNA</i>
-            <i>TNBC</i>
-            <i>VAX</i>
+        <div className="games-showcase__canvas-stage" aria-hidden="true">
+          <div
+            className="games-showcase__art"
+            style={
+              config.coverImage
+                ? { backgroundImage: `url(${config.coverImage})` }
+                : undefined
+            }
+          />
+          <div className="games-showcase__vignette" />
+        </div>
+
+        <div className="games-showcase__hud">
+          <span className="games-showcase__station-badge">
+            <svg
+              className="games-showcase__knot-mark"
+              viewBox="0 0 32 46"
+              aria-hidden="true"
+            >
+              <use href="#circure-ribbon-knot" />
+            </svg>
+            <strong>{config.station}</strong>
           </span>
-        ) : null}
-        {isBioMemory ? (
-          <span className="games-showcase__bio-mark" aria-hidden="true">
-            <i>DNA</i>
-            <i>RNA</i>
-            <i>CELL</i>
-          </span>
-        ) : null}
-        <span className="games-showcase__copy">
-          <small>{copy.small}</small>
-          <strong>{copy.strong}</strong>
-          <em>Click anywhere to expand and play full screen</em>
-        </span>
-        <span className="games-showcase__play" aria-hidden="true">
-          <b>▶</b>
-          Play
-        </span>
+          <span className="games-showcase__mode-pill">{config.badge}</span>
+        </div>
+
+        <div className="games-showcase__dock">
+          <div className="games-showcase__dock-meta">
+            <strong className="games-showcase__title">{config.title}</strong>
+            <span className="games-showcase__subtitle">{config.subtitle}</span>
+          </div>
+          <div className="games-showcase__dock-action">
+            <span className="games-showcase__cta-btn">
+              <b className="games-showcase__cta-play" aria-hidden="true">
+                ▶
+              </b>
+              <span>Play</span>
+            </span>
+            <span className="games-showcase__hint">Full Screen</span>
+          </div>
+        </div>
       </button>
     </div>
   );

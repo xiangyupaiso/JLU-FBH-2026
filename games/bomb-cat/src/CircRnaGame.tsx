@@ -18,6 +18,7 @@ import { usePeerNetwork, type UsePeerNetworkReturn } from './hooks/usePeerNetwor
 import type { PlayerDef } from './engine/gameEngine';
 import { MAX_PLAYERS, BOT_NAMES } from './constants/cards';
 import type { GameState, Lang, NetworkAction, Screen } from './types/game';
+import coverImg from './assets/cover.webp';
 
 // ───────── 工具 ─────────
 
@@ -159,32 +160,32 @@ export default function CircRnaGame() {
 
       {/* ════════ 菜单 ════════ */}
       {screen === 'menu' && (
-        <div className="flex min-h-screen flex-col items-center justify-center px-5 text-center">
-          <div className="text-[60px]">🧬💥</div>
+        <div className="flex min-h-screen flex-col items-center justify-center px-5 py-8 text-center">
+          <div className="relative mb-3 w-full max-w-[360px] overflow-hidden rounded-2xl border border-stone-800/15 shadow-lg">
+            <img
+              src={coverImg}
+              alt="circRNA Bomb Cat"
+              className="w-full h-auto object-cover"
+            />
+          </div>
           <h1
-            className="mt-1 text-[40px] font-bold"
-            style={{ fontFamily: 'var(--font-editorial, serif)', letterSpacing: '-0.02em' }}
+            className="text-[32px] font-bold"
+            style={{ fontFamily: 'var(--font-editorial, serif)', letterSpacing: '-0.02em', color: 'var(--navy-deep, #102f59)' }}
           >
             {T({ cn: 'circRNA 爆炸猫', en: 'circRNA Bomb Cat' }, lang)}
           </h1>
-          <div className="mt-1.5 text-[16px] opacity-75">
-            {T({ cn: '免疫逃逸', en: 'Immune Escape' }, lang)}
+          <div className="mt-1 text-[13px] font-medium opacity-75" style={{ color: 'var(--navy-deep, #102f59)' }}>
+            {T({ cn: 'TNBC 免疫防御 · 策略卡牌', en: 'TNBC Immune Defense · Strategy Card Duel' }, lang)}
           </div>
-          <p className="mt-3 max-w-[460px] text-[13px] opacity-60">
-            {T({
-              cn: '一款关于三阴性乳腺癌 circRNA 治疗型疫苗的科普卡牌游戏 · iGEM Education',
-              en: 'A card game on a circRNA therapeutic vaccine for TNBC · iGEM Education',
-            }, lang)}
-          </p>
-          <div className="mt-7 flex flex-col gap-3.5">
+          <div className="mt-5 flex flex-col gap-2.5 w-full max-w-[260px]">
             <Button variant="pink" size="big" onClick={() => setScreen('online')}>
-              <Globe size={18} /> {T({ cn: '在线游玩', en: 'Online Play' }, lang)}
+              <Globe size={18} /> {T({ cn: '在线联机对局', en: 'Online Play' }, lang)}
             </Button>
             <Button variant="primary" size="big" onClick={() => setLocalCountModal(true)}>
-              <Bot size={18} /> {T({ cn: '本地游玩', en: 'Local Play' }, lang)}
+              <Bot size={18} /> {T({ cn: '本地人机对局', en: 'Local Bot Play' }, lang)}
             </Button>
             <Button variant="ghost" size="big" onClick={() => setScreen('rules')}>
-              <BookOpen size={18} /> {T({ cn: '查看规则', en: 'View Rules' }, lang)}
+              <BookOpen size={18} /> {T({ cn: '查看游戏规则', en: 'View Rules' }, lang)}
             </Button>
           </div>
         </div>

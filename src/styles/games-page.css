@@ -104,34 +104,13 @@
 .wiki-page--games .games-project-map__ribbon {
   position: absolute;
   z-index: 0;
-  top: 57px;
+  /* Thin ground line under the knot tails (node top 33px + tail y 41). */
+  top: 73px;
   right: calc(100% / 8);
   left: calc(100% / 8);
-  height: 9px;
-  border-top: 1px solid var(--route-line-strong);
-  border-bottom: 1px solid var(--route-line-strong);
+  height: 2px;
+  border-radius: 2px;
   background: var(--games-ribbon-soft);
-}
-
-.wiki-page--games .games-project-map__ribbon::before,
-.wiki-page--games .games-project-map__ribbon::after {
-  position: absolute;
-  top: -1px;
-  width: 30%;
-  height: 9px;
-  background: var(--games-ribbon);
-  content: "";
-}
-
-.wiki-page--games .games-project-map__ribbon::before {
-  right: 100%;
-  clip-path: polygon(8px 0, 100% 0, 100% 100%, 0 100%);
-}
-
-.wiki-page--games .games-project-map__ribbon::after {
-  left: 100%;
-  background: color-mix(in srgb, var(--games-ribbon) 30%, transparent);
-  clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 100%, 0 100%);
 }
 
 .wiki-page--games .games-project-map__stations {
@@ -234,8 +213,8 @@
   display: block;
   width: 32px;
   height: 46px;
-  color: inherit;
-  fill: currentColor;
+  stroke: currentColor;
+  stroke-width: 2.6;
 }
 
 .wiki-page--games .games-project-map strong {
@@ -276,569 +255,541 @@
 
 .wiki-page--games .games-showcase__launch {
   position: relative;
-  display: block;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   width: 100%;
-  height: clamp(360px, 46vw, 560px);
+  min-height: 480px;
+  height: clamp(480px, 46vw, 620px);
   overflow: hidden;
   margin: 0;
-  padding: 0;
+  padding: clamp(20px, 2.5vw, 32px);
   border: 1px solid var(--route-line-strong);
-  border-radius: 0;
-  background: var(--route-ink);
-  color: var(--route-paper);
+  border-radius: 14px;
+  background: var(--route-paper);
+  color: var(--route-ink);
   font: inherit;
   text-align: left;
-  cursor: zoom-in;
+  cursor: pointer;
   isolation: isolate;
+  box-shadow: 0 4px 20px rgba(20, 34, 50, 0.05);
+  transition: transform 260ms var(--ease-out), box-shadow 260ms ease,
+    border-color 260ms ease;
 }
 
 .wiki-page--games .games-showcase__launch::after {
   position: absolute;
   z-index: 1;
-  inset: 14px;
-  border: 1px solid color-mix(in srgb, var(--route-paper) 30%, transparent);
+  inset: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 8px;
   content: "";
   pointer-events: none;
+  transition: border-color 260ms ease;
 }
 
 .wiki-page--games .games-showcase__launch:is(:hover, :focus-visible) {
   outline: 0;
+  transform: translateY(-3px);
+  box-shadow: 0 16px 36px rgba(20, 34, 50, 0.12);
+  border-color: var(--route-accent);
 }
 
 .wiki-page--games .games-showcase__launch:focus-visible {
-  box-shadow: 0 0 0 3px var(--route-paper), 0 0 0 5px var(--route-ink);
+  box-shadow: 0 0 0 3px var(--route-paper), 0 0 0 6px var(--route-accent);
+}
+
+.wiki-page--games .games-showcase__launch:active {
+  transform: translateY(-1px) scale(0.995);
+}
+
+/* Canvas stage */
+.wiki-page--games .games-showcase__canvas-stage {
+  position: absolute;
+  z-index: -2;
+  inset: 0;
+  overflow: hidden;
 }
 
 .wiki-page--games .games-showcase__art {
   position: absolute;
-  z-index: -2;
   inset: 0;
-  background-image: var(--dry-lab-art);
-  background-position: center 58%;
+  background-position: center;
   background-size: cover;
-  filter: saturate(0.72) contrast(0.92) brightness(0.64);
-  transform: scale(1.01);
-  transition: transform 700ms var(--ease-out), filter 500ms ease;
+  background-repeat: no-repeat;
+  transform: scale(1);
+  transition: transform 600ms var(--ease-out), filter 500ms ease;
 }
 
-.wiki-page--games .games-showcase__launch::before {
+.wiki-page--games
+  .games-showcase__launch:is(:hover, :focus-visible)
+  .games-showcase__art {
+  transform: scale(1.025);
+}
+
+.wiki-page--games .games-showcase__vignette {
   position: absolute;
-  z-index: -1;
   inset: 0;
-  background: color-mix(in srgb, var(--route-ink) 42%, transparent);
-  content: "";
-}
-
-.wiki-page--games
-  .games-showcase__launch:is(:hover, :focus-visible)
-  .games-showcase__art {
-  filter: saturate(0.82) contrast(0.96) brightness(0.72);
-  transform: scale(1.035);
-}
-
-.wiki-page--games .games-showcase__chapters {
-  position: absolute;
-  z-index: 2;
-  top: 36px;
-  right: 38px;
-  left: 38px;
-  display: flex;
-  justify-content: flex-end;
-  gap: clamp(18px, 3vw, 46px);
-  color: color-mix(in srgb, var(--route-paper) 68%, transparent);
-}
-
-.wiki-page--games .games-showcase__chapters i {
-  font-size: 9px;
-  font-style: normal;
-  font-weight: 650;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-}
-
-.wiki-page--games .games-showcase__copy {
-  position: absolute;
-  z-index: 2;
-  right: clamp(150px, 20vw, 250px);
-  bottom: clamp(42px, 7vw, 82px);
-  left: clamp(32px, 6vw, 78px);
-  display: flex;
-  max-width: 680px;
-  flex-direction: column;
-  align-items: flex-start;
-}
-
-.wiki-page--games .games-showcase__copy small,
-.wiki-page--games .games-showcase__copy em {
-  font-size: 10px;
-  font-style: normal;
-  font-weight: 650;
-  letter-spacing: 0.14em;
-  line-height: 1.4;
-  text-transform: uppercase;
-}
-
-.wiki-page--games .games-showcase__copy small {
-  color: color-mix(in srgb, var(--route-paper) 70%, transparent);
-}
-
-.wiki-page--games .games-showcase__copy strong {
-  margin-top: 12px;
-  font-family: var(--font-editorial);
-  font-size: clamp(48px, 7.2vw, 96px);
-  font-weight: 400;
-  letter-spacing: -0.055em;
-  line-height: 0.92;
-}
-
-.wiki-page--games .games-showcase__copy em {
-  margin-top: clamp(30px, 5vw, 54px);
-  color: var(--route-paper);
-}
-
-.wiki-page--games .games-showcase__play {
-  position: absolute;
-  z-index: 2;
-  right: clamp(32px, 5vw, 64px);
-  bottom: clamp(34px, 6vw, 68px);
-  display: grid;
-  width: clamp(96px, 10vw, 126px);
-  height: clamp(96px, 10vw, 126px);
-  place-items: center;
-  align-content: center;
-  gap: 8px;
-  border: 1px solid var(--route-main);
-  border-radius: 50%;
-  background: var(--route-main);
-  box-shadow: 0 12px 28px var(--route-line-strong);
-  color: var(--route-ink);
-  font-size: 9px;
-  font-weight: 700;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  transition: background-color 220ms ease, border-color 220ms ease,
-    box-shadow 260ms ease, transform 300ms var(--ease-out);
-}
-
-.wiki-page--games .games-showcase__play b {
-  font-size: 19px;
-  font-weight: 400;
-  line-height: 1;
-  transform: translateX(2px);
-}
-
-.wiki-page--games
-  .games-showcase__launch:is(:hover, :focus-visible)
-  .games-showcase__play {
-  border-color: var(--route-accent);
-  background: var(--route-accent);
-  color: var(--route-paper);
-  box-shadow: 0 18px 34px var(--route-line-strong);
-  transform: rotate(-4deg) translateY(-4px);
-}
-
-.wiki-page--games .games-showcase__launch:active .games-showcase__play {
-  box-shadow: 0 8px 18px var(--route-line);
-  transform: scale(0.96);
-}
-
-/* Breast Guardian: full-colour artwork, light-on-dark copy. */
-.wiki-page--games .games-showcase--breast-guardian .games-showcase__launch {
-  border-color: var(--route-line-strong);
-  background: color-mix(in srgb, var(--route-soft) 60%, #ffffff);
-  color: var(--route-ink);
-}
-
-.wiki-page--games
-  .games-showcase--breast-guardian
-  .games-showcase__launch:focus-visible {
-  box-shadow: 0 0 0 3px var(--route-paper), 0 0 0 6px var(--route-accent);
-}
-
-.wiki-page--games
-  .games-showcase--breast-guardian
-  .games-showcase__launch::before {
-  background: linear-gradient(
-      90deg,
-      color-mix(in srgb, var(--route-ink) 26%, transparent) 0%,
-      color-mix(in srgb, var(--route-ink) 9%, transparent) 58%,
-      transparent 100%
-    ),
-    linear-gradient(
-      0deg,
-      color-mix(in srgb, var(--route-ink) 22%, transparent) 0%,
-      color-mix(in srgb, var(--route-ink) 5%, transparent) 60%,
-      transparent 100%
-    );
-}
-
-.wiki-page--games
-  .games-showcase--breast-guardian
-  .games-showcase__art {
-  background-image: url("https://static.igem.wiki/teams/6056/wiki/files/pages/shared/breast-guardian-showcase.avif");
-  background-position: center 56%;
-  background-size: cover;
-  filter: saturate(0.98) contrast(1.01) brightness(0.99);
-}
-
-.wiki-page--games
-  .games-showcase--breast-guardian
-  .games-showcase__launch:is(:hover, :focus-visible)
-  .games-showcase__art {
-  filter: saturate(1.02) contrast(1.02) brightness(1.01);
-}
-
-.wiki-page--games
-  .games-showcase--breast-guardian
-  :is(.games-showcase__chapters, .games-showcase__copy) {
-  color: var(--route-paper);
-  text-shadow: 0 1px 2px color-mix(in srgb, var(--route-ink) 36%, transparent),
-    0 5px 22px color-mix(in srgb, var(--route-ink) 22%, transparent);
-}
-
-.wiki-page--games
-  .games-showcase--breast-guardian
-  .games-showcase__copy small {
-  color: color-mix(in srgb, var(--route-paper) 82%, transparent);
-}
-
-.wiki-page--games
-  .games-showcase--breast-guardian
-  .games-showcase__copy em {
-  color: var(--route-paper);
-}
-
-.wiki-page--games
-  .games-showcase--breast-guardian
-  .games-showcase__play {
-  border-color: color-mix(in srgb, var(--route-paper) 65%, transparent);
-  background: transparent;
-  box-shadow: none;
-  color: var(--route-paper);
-}
-
-.wiki-page--games
-  .games-showcase--breast-guardian
-  .games-showcase__launch:is(:hover, :focus-visible)
-  .games-showcase__play {
-  border-color: var(--route-paper);
-  background: color-mix(in srgb, var(--route-paper) 20%, transparent);
-  color: var(--route-paper);
-  box-shadow: 0 12px 34px color-mix(in srgb, var(--route-ink) 22%, transparent);
-  transform: translateY(-2px) scale(1.04);
-}
-
-.wiki-page--games
-  .games-showcase--breast-guardian
-  .games-showcase__launch:active
-  .games-showcase__play {
-  border-color: color-mix(in srgb, var(--route-paper) 88%, transparent);
-  background: color-mix(in srgb, var(--route-paper) 14%, transparent);
-  box-shadow: 0 7px 18px color-mix(in srgb, var(--route-ink) 18%, transparent);
-  transform: scale(0.98);
-}
-
-/* Bomb Cat: flat paper surface with CSS-drawn cards. */
-.wiki-page--games .games-showcase--bomb-cat .games-showcase__launch {
-  border-color: var(--route-line-strong);
-  background: color-mix(in srgb, var(--route-base) 82%, #ffffff);
-  color: var(--route-ink);
-}
-
-.wiki-page--games .games-showcase--bomb-cat .games-showcase__launch::before {
-  background: color-mix(in srgb, var(--route-base) 12%, transparent);
-}
-
-.wiki-page--games .games-showcase--bomb-cat .games-showcase__launch::after {
-  border-color: var(--route-line);
-}
-
-.wiki-page--games .games-showcase--bomb-cat .games-showcase__art {
-  background: color-mix(in srgb, var(--route-base) 82%, #ffffff);
-  filter: none;
-}
-
-.wiki-page--games
-  .games-showcase--bomb-cat
-  .games-showcase__launch:is(:hover, :focus-visible)
-  .games-showcase__art {
-  filter: none;
-}
-
-.wiki-page--games .games-showcase--bomb-cat .games-showcase__chapters,
-.wiki-page--games .games-showcase--bomb-cat .games-showcase__copy small {
-  color: var(--route-muted);
-}
-
-.wiki-page--games .games-showcase--bomb-cat .games-showcase__copy em {
-  color: var(--route-ink);
-}
-
-.wiki-page--games .games-showcase--bomb-cat .games-showcase__play {
-  border-color: var(--route-accent);
-  background: transparent;
-  box-shadow: none;
-  color: var(--route-accent);
-}
-
-.wiki-page--games
-  .games-showcase--bomb-cat
-  .games-showcase__launch:is(:hover, :focus-visible)
-  .games-showcase__play {
-  border-color: var(--route-accent);
-  background: var(--route-soft);
-  color: var(--route-ink);
-  box-shadow: 0 12px 30px var(--route-line);
-  transform: translateY(-2px) scale(1.035);
-}
-
-.wiki-page--games .games-showcase--bomb-cat .games-showcase__launch:active .games-showcase__play {
-  border-color: var(--route-accent);
-  background: color-mix(in srgb, var(--route-soft) 60%, transparent);
-  box-shadow: 0 6px 16px var(--route-line);
-  transform: scale(0.98);
-}
-
-/* Bio memory: paper field guide with CSS-drawn specimen cards. */
-.wiki-page--games .games-showcase--bio-memory .games-showcase__launch {
-  border-color: var(--route-line-strong);
-  background: color-mix(in srgb, var(--route-base) 78%, #ffffff);
-  color: var(--route-ink);
-}
-
-.wiki-page--games .games-showcase--bio-memory .games-showcase__launch::before {
-  background: linear-gradient(
-    90deg,
-    color-mix(in srgb, var(--route-base) 96%, transparent) 0%,
-    color-mix(in srgb, var(--route-base) 88%, transparent) 48%,
-    color-mix(in srgb, var(--route-base) 24%, transparent) 72%,
-    color-mix(in srgb, var(--route-base) 8%, transparent) 100%
-  );
-}
-
-.wiki-page--games .games-showcase--bio-memory .games-showcase__launch::after {
-  border-color: var(--route-line);
-}
-
-.wiki-page--games .games-showcase--bio-memory .games-showcase__art {
-  background-color: color-mix(in srgb, var(--route-base) 78%, #ffffff);
-  background-image:
-    radial-gradient(
-      circle at 79% 35%,
-      color-mix(in srgb, var(--route-accent) 26%, transparent) 0 2px,
-      transparent 3px
-    ),
-    radial-gradient(
-      circle at 85% 49%,
-      color-mix(in srgb, var(--route-main) 34%, transparent) 0 2px,
-      transparent 3px
-    ),
-    linear-gradient(var(--route-line) 1px, transparent 1px),
-    linear-gradient(90deg, var(--route-line) 1px, transparent 1px),
-    radial-gradient(
-      circle at 82% 45%,
-      color-mix(in srgb, var(--route-paper) 96%, transparent) 0 22%,
-      transparent 22.4%
-    ),
-    linear-gradient(
-      135deg,
-      color-mix(in srgb, var(--route-base) 88%, #ffffff) 0%,
-      color-mix(in srgb, var(--route-base) 70%, var(--route-soft)) 100%
-    );
-  background-position:
-    0 0,
-    0 0,
-    center,
-    center,
-    center,
-    center;
-  background-size:
-    auto,
-    auto,
-    34px 34px,
-    34px 34px,
-    auto,
-    auto;
-  filter: none;
-}
-
-.wiki-page--games
-  .games-showcase--bio-memory
-  .games-showcase__launch:is(:hover, :focus-visible)
-  .games-showcase__art {
-  filter: none;
-  transform: scale(1.018);
-}
-
-.wiki-page--games .games-showcase--bio-memory .games-showcase__chapters,
-.wiki-page--games .games-showcase--bio-memory .games-showcase__copy small {
-  color: var(--route-muted);
-}
-
-.wiki-page--games .games-showcase--bio-memory .games-showcase__copy em {
-  color: var(--route-ink);
-}
-
-.wiki-page--games .games-showcase--bio-memory .games-showcase__play {
-  border-color: var(--route-accent);
-  background: color-mix(in srgb, var(--route-paper) 55%, transparent);
-  box-shadow: none;
-  color: var(--route-ink);
-}
-
-.wiki-page--games
-  .games-showcase--bio-memory
-  .games-showcase__launch:is(:hover, :focus-visible)
-  .games-showcase__play {
-  border-color: var(--route-accent);
-  background: color-mix(in srgb, var(--route-paper) 84%, transparent);
-  box-shadow: 0 14px 30px var(--route-line);
-  transform: translateY(-2px) scale(1.035);
-}
-
-.wiki-page--games .games-showcase--bio-memory .games-showcase__launch:active .games-showcase__play {
-  transform: scale(0.96);
-}
-
-.wiki-page--games .games-showcase__bio-mark {
-  position: absolute;
-  z-index: 1;
-  top: 24%;
-  right: clamp(90px, 12vw, 150px);
-  width: clamp(220px, 28vw, 330px);
-  height: clamp(200px, 28vw, 310px);
   pointer-events: none;
 }
 
-.wiki-page--games .games-showcase__bio-mark::before,
-.wiki-page--games .games-showcase__bio-mark::after {
-  position: absolute;
-  border: 1px solid var(--route-line-strong);
-  border-radius: 50%;
-  content: "";
+/* Top HUD */
+.wiki-page--games .games-showcase__hud {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  width: 100%;
 }
 
-.wiki-page--games .games-showcase__bio-mark::before {
-  top: 16%;
-  right: 2%;
-  width: 42%;
-  aspect-ratio: 1;
-  box-shadow:
-    -58px 48px 0 -26px color-mix(in srgb, var(--route-main) 40%, transparent),
-    -100px -14px 0 -33px color-mix(in srgb, var(--route-accent) 30%, transparent);
+.wiki-page--games .games-showcase__station-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 12px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(20, 34, 50, 0.12);
 }
 
-.wiki-page--games .games-showcase__bio-mark::after {
-  right: 19%;
-  bottom: 4%;
-  width: 18%;
-  aspect-ratio: 1;
-  background: color-mix(in srgb, var(--route-paper) 46%, transparent);
+.wiki-page--games .games-showcase__knot-mark {
+  width: 14px;
+  height: 20px;
+  fill: var(--route-accent);
+  flex-shrink: 0;
 }
 
-.wiki-page--games .games-showcase__bio-mark i {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  display: grid;
-  width: clamp(104px, 12vw, 140px);
-  height: clamp(154px, 17vw, 202px);
-  place-items: end center;
-  padding: 16px 10px;
-  border: 1px solid var(--route-line-strong);
-  border-radius: 13px;
-  background:
-    radial-gradient(
-      circle at 50% 32%,
-      transparent 0 23px,
-      var(--route-line-strong) 24px 25px,
-      transparent 26px
-    ),
-    linear-gradient(
-      150deg,
-      color-mix(in srgb, var(--route-paper) 98%, transparent),
-      color-mix(in srgb, var(--route-base) 94%, #ffffff)
-    );
-  box-shadow:
-    0 2px 4px var(--route-line),
-    0 18px 32px var(--route-line);
+.wiki-page--games .games-showcase__station-badge strong {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
   color: var(--route-ink);
+}
+
+.wiki-page--games .games-showcase__mode-pill {
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(20, 34, 50, 0.12);
+  color: var(--route-ink);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+/* Bottom Action Dock */
+.wiki-page--games .games-showcase__dock {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+  padding: 14px 20px;
+  border-radius: 12px;
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(20, 34, 50, 0.12);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+}
+
+.wiki-page--games .games-showcase__dock-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.wiki-page--games .games-showcase__title {
   font-family: var(--font-editorial);
+  font-size: clamp(20px, 2.2vw, 28px);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+.wiki-page--games .games-showcase__subtitle {
+  font-size: 12px;
+  line-height: 1.4;
+  opacity: 0.75;
+  color: inherit;
+}
+
+.wiki-page--games .games-showcase__dock-action {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.wiki-page--games .games-showcase__cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 22px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 200ms ease, box-shadow 200ms ease,
+    background-color 200ms ease;
+}
+
+.wiki-page--games .games-showcase__cta-play {
   font-size: 11px;
   font-style: normal;
   font-weight: 700;
-  letter-spacing: 0.14em;
-  transform-origin: 50% 100%;
+  transform: translateX(1px);
 }
 
-.wiki-page--games .games-showcase__bio-mark i:nth-child(1) {
-  transform: translate(-86%, -45%) rotate(-13deg);
+.wiki-page--games
+  .games-showcase__launch:is(:hover, :focus-visible)
+  .games-showcase__cta-btn {
+  transform: translateY(-2px) scale(1.04);
 }
 
-.wiki-page--games .games-showcase__bio-mark i:nth-child(2) {
-  transform: translate(-50%, -52%) rotate(-1deg);
-}
-
-.wiki-page--games .games-showcase__bio-mark i:nth-child(3) {
-  transform: translate(-14%, -44%) rotate(12deg);
-}
-
-.wiki-page--games .games-showcase__cards {
-  position: absolute;
-  z-index: 1;
-  top: 26%;
-  right: clamp(92px, 12vw, 148px);
-  width: clamp(210px, 26vw, 310px);
-  height: clamp(180px, 26vw, 290px);
-  opacity: 0.82;
-  pointer-events: none;
-}
-
-.wiki-page--games .games-showcase__cards i {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  display: grid;
-  width: clamp(110px, 13vw, 150px);
-  height: clamp(156px, 18vw, 210px);
-  place-items: end center;
-  padding: 18px 10px;
-  border: 1px solid var(--route-accent);
-  border-radius: 10px;
-  background: color-mix(in srgb, var(--route-paper) 96%, transparent);
-  box-shadow: 0 12px 24px var(--route-line);
-  color: var(--route-ink);
-  font-family: var(--font-editorial);
-  font-size: 13px;
-  font-style: normal;
-  font-weight: 700;
+.wiki-page--games .games-showcase__hint {
+  font-family: var(--font-mono);
+  font-size: 9px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  transform-origin: 50% 100%;
+  opacity: 0.6;
+  white-space: nowrap;
 }
 
-.wiki-page--games .games-showcase__cards i::before {
-  position: absolute;
-  top: 18px;
-  left: 50%;
-  width: 46px;
-  height: 46px;
-  border: 1px solid currentColor;
-  border-radius: 50%;
-  content: "";
-  transform: translateX(-50%);
+/* ============================================================================
+   Game Themes
+   ========================================================================== */
+
+/* ── 02. BOMB CAT ── */
+.wiki-page--games .games-showcase--bomb-cat .games-showcase__launch {
+  border-color: rgba(224, 185, 120, 0.45);
+  background: #fbf6ec;
 }
 
-.wiki-page--games .games-showcase__cards i:nth-child(1) {
-  transform: translate(-76%, -47%) rotate(-12deg);
+.wiki-page--games .games-showcase--bomb-cat .games-showcase__launch::after {
+  border-color: rgba(205, 140, 80, 0.28);
 }
 
-.wiki-page--games .games-showcase__cards i:nth-child(2) {
-  transform: translate(-50%, -50%);
+.wiki-page--games .games-showcase--bomb-cat .games-showcase__art {
+  background-position: center 36%;
+  background-size: cover;
+  filter: none;
 }
 
-.wiki-page--games .games-showcase__cards i:nth-child(3) {
-  transform: translate(-24%, -47%) rotate(12deg);
+.wiki-page--games .games-showcase--bomb-cat .games-showcase__vignette {
+  background: linear-gradient(
+    180deg,
+    rgba(251, 246, 236, 0.94) 0%,
+    rgba(251, 246, 236, 0.4) 14%,
+    transparent 28%,
+    transparent 65%,
+    rgba(251, 246, 236, 0.82) 84%,
+    rgba(251, 246, 236, 0.96) 100%
+  );
+}
+
+.wiki-page--games .games-showcase--bomb-cat .games-showcase__station-badge {
+  background: rgba(253, 250, 244, 0.92);
+  border-color: rgba(215, 145, 90, 0.3);
+  color: #19355e;
+}
+
+.wiki-page--games .games-showcase--bomb-cat .games-showcase__station-badge strong {
+  color: #19355e;
+}
+
+.wiki-page--games .games-showcase--bomb-cat .games-showcase__mode-pill {
+  background: rgba(255, 255, 255, 0.9);
+  border-color: rgba(200, 160, 120, 0.35);
+  color: #1b1719;
+}
+
+.wiki-page--games .games-showcase--bomb-cat .games-showcase__dock {
+  background: rgba(253, 250, 244, 0.92);
+  border-color: rgba(215, 150, 100, 0.3);
+  color: #142232;
+}
+
+.wiki-page--games .games-showcase--bomb-cat .games-showcase__title {
+  color: #102f59;
+}
+
+.wiki-page--games .games-showcase--bomb-cat .games-showcase__cta-btn {
+  background: #e65c70;
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 0 4px 14px rgba(230, 92, 112, 0.35);
+}
+
+.wiki-page--games
+  .games-showcase--bomb-cat
+  .games-showcase__launch:is(:hover, :focus-visible)
+  .games-showcase__cta-btn {
+  background: #d4495e;
+  box-shadow: 0 6px 20px rgba(230, 92, 112, 0.5);
+}
+
+/* ── 01. BREAST GUARDIAN RPG ── */
+.wiki-page--games .games-showcase--breast-guardian .games-showcase__launch {
+  border-color: rgba(182, 83, 119, 0.3);
+  background: #fdfaf7;
+}
+
+.wiki-page--games .games-showcase--breast-guardian .games-showcase__launch::after {
+  border-color: rgba(182, 83, 119, 0.22);
+}
+
+.wiki-page--games .games-showcase--breast-guardian .games-showcase__art {
+  background-position: center 48%;
+  background-size: cover;
+  filter: none;
+}
+
+.wiki-page--games .games-showcase--breast-guardian .games-showcase__vignette {
+  background: linear-gradient(
+    180deg,
+    rgba(253, 248, 244, 0.94) 0%,
+    rgba(253, 248, 244, 0.35) 15%,
+    transparent 28%,
+    transparent 65%,
+    rgba(253, 248, 244, 0.82) 84%,
+    rgba(253, 248, 244, 0.96) 100%
+  );
+}
+
+.wiki-page--games .games-showcase--breast-guardian .games-showcase__station-badge {
+  background: rgba(254, 250, 248, 0.92);
+  border-color: rgba(182, 83, 119, 0.3);
+  color: #754356;
+}
+
+.wiki-page--games .games-showcase--breast-guardian .games-showcase__station-badge strong {
+  color: #754356;
+}
+
+.wiki-page--games .games-showcase--breast-guardian .games-showcase__mode-pill {
+  background: rgba(255, 255, 255, 0.9);
+  border-color: rgba(182, 83, 119, 0.3);
+  color: #754356;
+}
+
+.wiki-page--games .games-showcase--breast-guardian .games-showcase__dock {
+  background: rgba(254, 250, 248, 0.92);
+  border-color: rgba(182, 83, 119, 0.3);
+  color: #2b1820;
+}
+
+.wiki-page--games .games-showcase--breast-guardian .games-showcase__title {
+  color: #592338;
+}
+
+.wiki-page--games .games-showcase--breast-guardian .games-showcase__subtitle {
+  color: #754356;
+}
+
+.wiki-page--games .games-showcase--breast-guardian .games-showcase__cta-btn {
+  background: #b65377;
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 0 4px 14px rgba(182, 83, 119, 0.35);
+}
+
+.wiki-page--games
+  .games-showcase--breast-guardian
+  .games-showcase__launch:is(:hover, :focus-visible)
+  .games-showcase__cta-btn {
+  background: #9d3f61;
+  box-shadow: 0 6px 20px rgba(182, 83, 119, 0.5);
+}
+
+/* ── 03. BIO MEMORY MATCH ── */
+.wiki-page--games .games-showcase--bio-memory .games-showcase__launch {
+  border-color: rgba(47, 111, 104, 0.32);
+  background: #f7f3ec;
+}
+
+.wiki-page--games .games-showcase--bio-memory .games-showcase__launch::after {
+  border-color: rgba(47, 111, 104, 0.22);
+}
+
+.wiki-page--games .games-showcase--bio-memory .games-showcase__art {
+  background-color: #f7f3ec;
+  background-image: radial-gradient(
+      circle at 78% 34%,
+      rgba(47, 111, 104, 0.15) 0 3px,
+      transparent 4px
+    ),
+    radial-gradient(
+      circle at 86% 48%,
+      rgba(195, 154, 85, 0.2) 0 3px,
+      transparent 4px
+    ),
+    linear-gradient(rgba(20, 34, 50, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(20, 34, 50, 0.05) 1px, transparent 1px),
+    linear-gradient(135deg, #f7f3ec 0%, #ede5d7 100%);
+  background-size: auto, auto, 32px 32px, 32px 32px, auto;
+}
+
+.wiki-page--games .games-showcase--bio-memory .games-showcase__vignette {
+  background: linear-gradient(
+    180deg,
+    rgba(247, 243, 236, 0.95) 0%,
+    rgba(247, 243, 236, 0.45) 15%,
+    transparent 30%,
+    transparent 65%,
+    rgba(247, 243, 236, 0.85) 84%,
+    rgba(247, 243, 236, 0.98) 100%
+  );
+}
+
+.wiki-page--games .games-showcase--bio-memory .games-showcase__station-badge {
+  background: rgba(255, 255, 255, 0.92);
+  border-color: rgba(47, 111, 104, 0.3);
+  color: #2f6f68;
+}
+
+.wiki-page--games .games-showcase--bio-memory .games-showcase__station-badge strong {
+  color: #2f6f68;
+}
+
+.wiki-page--games .games-showcase--bio-memory .games-showcase__dock {
+  background: rgba(253, 250, 244, 0.92);
+  border-color: rgba(47, 111, 104, 0.28);
+  color: #142232;
+}
+
+.wiki-page--games .games-showcase--bio-memory .games-showcase__title {
+  color: #1a423e;
+}
+
+.wiki-page--games .games-showcase--bio-memory .games-showcase__cta-btn {
+  background: #2f6f68;
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 0 4px 14px rgba(47, 111, 104, 0.35);
+}
+
+.wiki-page--games
+  .games-showcase--bio-memory
+  .games-showcase__launch:is(:hover, :focus-visible)
+  .games-showcase__cta-btn {
+  background: #255953;
+  box-shadow: 0 6px 20px rgba(47, 111, 104, 0.5);
+}
+
+/* ── 04. VIRTUAL LABORATORY ── */
+.wiki-page--games .games-showcase--virtual-lab .games-showcase__launch {
+  border-color: rgba(43, 92, 143, 0.35);
+  background: #0f1d30;
+  color: #fcfbf7;
+}
+
+.wiki-page--games .games-showcase--virtual-lab .games-showcase__launch::after {
+  border-color: rgba(255, 255, 255, 0.18);
+}
+
+.wiki-page--games .games-showcase--virtual-lab .games-showcase__art {
+  background-position: center;
+  background-size: cover;
+  filter: saturate(1.02) contrast(1.02);
+}
+
+.wiki-page--games .games-showcase--virtual-lab .games-showcase__vignette {
+  background: linear-gradient(
+    180deg,
+    rgba(15, 29, 48, 0.94) 0%,
+    rgba(15, 29, 48, 0.45) 15%,
+    transparent 30%,
+    rgba(15, 29, 48, 0.15) 60%,
+    rgba(15, 29, 48, 0.82) 84%,
+    rgba(15, 29, 48, 0.96) 100%
+  );
+}
+
+.wiki-page--games .games-showcase--virtual-lab .games-showcase__station-badge {
+  background: rgba(23, 63, 120, 0.85);
+  border-color: rgba(255, 255, 255, 0.25);
+  color: #e0f2fe;
+}
+
+.wiki-page--games .games-showcase--virtual-lab .games-showcase__station-badge strong {
+  color: #e0f2fe;
+}
+
+.wiki-page--games .games-showcase--virtual-lab .games-showcase__mode-pill {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+}
+
+.wiki-page--games .games-showcase--virtual-lab .games-showcase__dock {
+  background: rgba(15, 29, 48, 0.9);
+  border-color: rgba(255, 255, 255, 0.18);
+  color: #ffffff;
+}
+
+.wiki-page--games .games-showcase--virtual-lab .games-showcase__title {
+  color: #ffffff;
+}
+
+.wiki-page--games .games-showcase--virtual-lab .games-showcase__cta-btn {
+  background: #2563eb;
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.4);
+}
+
+.wiki-page--games
+  .games-showcase--virtual-lab
+  .games-showcase__launch:is(:hover, :focus-visible)
+  .games-showcase__cta-btn {
+  background: #1d4ed8;
+  box-shadow: 0 6px 20px rgba(37, 99, 235, 0.55);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .wiki-page--games .games-showcase__launch {
+    min-height: 400px;
+    padding: 16px;
+  }
+
+  .wiki-page--games .games-showcase__hud {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .wiki-page--games .games-showcase__dock {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    padding: 14px;
+  }
+
+  .wiki-page--games .games-showcase__dock-action {
+    align-items: stretch;
+  }
+
+  .wiki-page--games .games-showcase__cta-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .wiki-page--games .games-showcase__hint {
+    text-align: center;
+  }
 }
 
 /* --- 4. Full-screen play surface (portal to <body>, own colour world) ------ */
@@ -1010,19 +961,6 @@
 
 @media (max-width: 900px) {
   .wiki-page--games .games-project-map__ribbon {
-    top: 0;
-    right: auto;
-    bottom: 0;
-    left: 28px;
-    width: 9px;
-    height: auto;
-    border: 0;
-    border-right: 1px solid var(--route-line-strong);
-    border-left: 1px solid var(--route-line);
-  }
-
-  .wiki-page--games .games-project-map__ribbon::before,
-  .wiki-page--games .games-project-map__ribbon::after {
     display: none;
   }
 
@@ -1192,11 +1130,6 @@
   min-height: 0;
   border: 0;
   background: #fcf8f1;
-}
-
-.wiki-page--games .games-showcase--virtual-lab .games-showcase__art {
-  background: radial-gradient(ellipse at 74% 35%, rgba(215, 132, 179, 0.5), transparent 50%),
-    linear-gradient(135deg, #0b213f, #173f78 55%, #754356);
 }
 
 @media (prefers-reduced-motion: reduce) {

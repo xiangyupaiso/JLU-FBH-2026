@@ -39,6 +39,12 @@ body:has(.site-header[data-home-closing="true"]) .home-playback {
   --player-line: rgba(105, 71, 83, 0.12);
 }
 
+/* The mobile menu sheet sits under the header (z 100); step aside for it. */
+body:has(.site-header.is-mobile-open) .home-playback {
+  visibility: hidden;
+  pointer-events: none;
+}
+
 .home-playback *,
 .home-playback *::before,
 .home-playback *::after {
