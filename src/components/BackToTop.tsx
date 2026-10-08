@@ -1,8 +1,9 @@
 import { useEffect, useRef, useState } from "react";
 import { useLocation } from "react-router-dom";
-import { gsap } from "gsap";
 import { HOME_INTRO_REPLAY_EVENT } from "../utils/homeIntro";
-import backToTopImage from "../assets/wiki/back-to-top-girl.png";
+
+const backToTopImage =
+  "https://static.igem.wiki/teams/6056/wiki/files/pages/shared/back-to-top-girl.avif";
 
 // ReactBits Magnet defaults (https://www.reactbits.dev/animations/magnet):
 // padding activates the pull this far around the button; the cursor offset is
@@ -102,32 +103,45 @@ export function BackToTop() {
     };
   }, [isVisible, isLaunching]);
 
-  // Scroll-up tween. GSAP onComplete is the single source of truth for the
-  // launch lifecycle — completion in onAnimationEnd was ambiguous because the
-  // ::after pseudo-element also targets the same span, so the instant snap
-  // could fire twice.
+  // Scroll-up tween via standard requestAnimationFrame (720ms quad ease-in-out).
+  // Dependency-free and aligned with the launch animation lifecycle.
   useEffect(() => {
     if (!isLaunching) return;
 
-    const position = { y: window.scrollY };
-    const tween = gsap.to(position, {
-      y: 0,
-      duration: 0.72,
-      ease: "power2.inOut",
-      onUpdate: () => {
-        window.scrollTo({ top: position.y, behavior: "instant" });
-      },
-      onComplete: () => {
+    const startY = window.scrollY;
+    const duration = 720;
+    const startTime = performance.now();
+    let animFrame = 0;
+
+    const step = (now: number) => {
+      const elapsed = now - startTime;
+      const progress = Math.min(1, elapsed / duration);
+      // Quad ease-in-out (power2.inOut equivalent)
+      const ease =
+        progress < 0.5
+          ? 2 * progress * progress
+          : 1 - Math.pow(-2 * progress + 2, 2) / 2;
+
+      window.scrollTo({
+        top: Math.round(startY * (1 - ease)),
+        behavior: "instant",
+      });
+
+      if (progress < 1) {
+        animFrame = window.requestAnimationFrame(step);
+      } else {
         window.scrollTo({ top: 0, behavior: "instant" });
         if (pathname === "/") {
           window.dispatchEvent(new Event(HOME_INTRO_REPLAY_EVENT));
         }
         setIsLaunching(false);
-      },
-    });
+      }
+    };
+
+    animFrame = window.requestAnimationFrame(step);
 
     return () => {
-      tween.kill();
+      if (animFrame) window.cancelAnimationFrame(animFrame);
     };
   }, [isLaunching, pathname]);
 
