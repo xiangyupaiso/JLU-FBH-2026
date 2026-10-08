@@ -116,7 +116,7 @@ function MaterialPreviewDialog({
           <>
             <DialogHeader>
               <DialogTitle className="lab-serif">{material.name}</DialogTitle>
-              <DialogDescription className="lab-muted">{material.englishName}</DialogDescription>
+              <DialogDescription className="lab-muted" data-no-translate>{material.englishName}</DialogDescription>
             </DialogHeader>
             <div className="lab-specimen-plate flex max-h-[65vh] min-h-64 items-center justify-center overflow-hidden p-6">
               <MaterialArtwork
@@ -458,7 +458,7 @@ function InstrumentMatchingGame({
               </span>
               <span className="min-w-0">
                 <span className="lab-ink block font-medium">{instrument.name}</span>
-                <span className="lab-muted">{instrument.englishName}</span>
+                <span className="lab-muted" data-no-translate>{instrument.englishName}</span>
               </span>
             </button>
           );
@@ -560,7 +560,7 @@ function InstrumentOverview({
           <MaterialThumbnail material={instrument} onPreview={setPreviewMaterial} />
           <div className="min-w-0">
             <p className="lab-ink text-[11px] font-medium">{instrument.name}</p>
-            <p className="lab-muted mt-0.5 break-words text-[10px] leading-snug">{instrument.englishName}</p>
+            <p className="lab-muted mt-0.5 break-words text-[10px] leading-snug" data-no-translate>{instrument.englishName}</p>
           </div>
         </div>
       ))}
@@ -602,7 +602,7 @@ function ReagentList({ reagents }: Pick<ExperimentInfoSidebarData, 'reagents'>) 
           <MaterialThumbnail material={reagent} onPreview={setPreviewMaterial} />
           <div className="min-w-0">
             <p className="lab-ink text-[11px] font-medium">{reagent.name}</p>
-            <p className="lab-muted mt-0.5 break-words text-[10px] leading-snug">{reagent.englishName}</p>
+            <p className="lab-muted mt-0.5 break-words text-[10px] leading-snug" data-no-translate>{reagent.englishName}</p>
           </div>
         </div>
       ))}

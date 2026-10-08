@@ -2,6 +2,44 @@
 @tailwind components;
 @tailwind utilities;
 
+.lab-language-toggle {
+  position: fixed;
+  top: 7px;
+  right: 60px;
+  z-index: 250;
+  display: grid;
+  width: 58px;
+  height: 34px;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.52);
+  border-radius: 999px;
+  background: #153e34;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.18);
+  color: #fff;
+  cursor: pointer;
+  font: 700 12px/1 "Lexend", "PingFang SC", "Microsoft YaHei", sans-serif;
+  letter-spacing: 0.02em;
+}
+
+.lab-language-toggle:hover,
+.lab-language-toggle:focus-visible {
+  background: #245c4d;
+}
+
+.lab-language-toggle:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+}
+
+@media (max-width: 480px) {
+  .lab-language-toggle {
+    top: 9px;
+    right: 52px;
+    width: 46px;
+    height: 30px;
+  }
+}
+
 @font-face {
   font-family: "Fraunces";
   src: url("https://static.igem.wiki/teams/6056/wiki/files/fonts/site/fraunces-variable.woff2") format("woff2");

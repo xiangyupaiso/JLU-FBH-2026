@@ -1,6 +1,8 @@
 // src/App.tsx
 import { useState, lazy, Suspense } from 'react';
 import { CatalogPage } from './pages/CatalogPage';
+import { useLabLanguage } from './i18n/LabLanguage';
+import { LanguageToggle } from './i18n/LanguageToggle';
 
 const ExperimentPage1 = lazy(() => import('./pages/ExperimentPage1').then((m) => ({ default: m.ExperimentPage })));
 const ExperimentPage2 = lazy(() => import('./pages/ExperimentPage2').then((m) => ({ default: m.ExperimentPage })));
@@ -12,7 +14,9 @@ const ExperimentPage7 = lazy(() => import('./pages/ExperimentPage7').then((m) =>
 const ExperimentPage8 = lazy(() => import('./pages/ExperimentPage8').then((m) => ({ default: m.ExperimentPage })));
 const ExperimentPage9 = lazy(() => import('./pages/ExperimentPage9').then((m) => ({ default: m.ExperimentPage })));
 
-const experimentComponents: Record<string, React.ComponentType<any>> = {
+type ExperimentPageProps = { experimentId?: string; onBack: () => void; onRestart: () => void };
+
+const experimentComponents: Record<string, React.ComponentType<ExperimentPageProps>> = {
   '1': ExperimentPage1,
   'exp1': ExperimentPage1,
   '2': ExperimentPage2,
@@ -36,6 +40,7 @@ const experimentComponents: Record<string, React.ComponentType<any>> = {
 type Page = 'catalog' | 'experiment';
 
 function App() {
+  const { language, toggleLanguage } = useLabLanguage();
   const [experimentRevision, setExperimentRevision] = useState(0);
   const [currentPage, setCurrentPage] = useState<Page>('catalog');
   const [selectedExperiment, setSelectedExperiment] = useState<string | null>(null);
@@ -54,6 +59,7 @@ function App() {
 
   return (
     <div className="virtual-lab-theme min-h-screen bg-background text-foreground">
+      <LanguageToggle language={language} onToggle={toggleLanguage} />
       {currentPage === 'catalog' && (
         <CatalogPage onSelectExperiment={handleSelectExperiment} />
       )}
@@ -68,7 +74,7 @@ function App() {
         >
           <ExperimentComponent 
             key={`${selectedExperiment}-${experimentRevision}`}
-            experimentId={selectedExperiment}
+            experimentId={selectedExperiment ?? undefined}
             onBack={handleBackToCatalog} 
             onRestart={() => setExperimentRevision((revision) => revision + 1)} 
           />
