@@ -21,7 +21,7 @@ import type {
   WikiSection,
 } from "./wikiPageTypes";
 import { linkify, renderInlineFormatting } from "./proseInline";
-import { WikiLineSidebar, type WikiLineSidebarVariant } from "./WikiLineSidebar";
+import { WikiLineSidebar } from "./WikiLineSidebar";
 import { WikiNextRecord } from "./WikiNextRecord";
 import { WikiProtocolModal } from "./WikiProtocolViewer";
 import { PageImagePreloads } from "../common/PageImagePreloads";
@@ -150,8 +150,6 @@ interface WikiRoutePageProps {
   }) => ReactNode;
   /** Optional interactive feature or section mounted right between hero and reader track. */
   leadSection?: ReactNode;
-  /** Desktop TOC look ("line" | "ribbon" | "marker"); the mobile drawer is unchanged. */
-  outlineVariant?: WikiLineSidebarVariant;
 }
 
 const STATUS_LABELS = {
@@ -1062,7 +1060,6 @@ export function WikiRoutePage({
   outlineDepth,
   outlineSlot,
   leadSection,
-  outlineVariant,
 }: WikiRoutePageProps) {
   const imageSources = useMemo(
     () => [
@@ -1196,7 +1193,8 @@ export function WikiRoutePage({
       }));
     return {
       id: section.id,
-      index: section.index,
+      // Unnumbered sections (e.g. a "00" station map) stay unnumbered here too.
+      index: section.hideSectionNumber ? "" : section.index,
       label: section.navLabel ?? section.title,
       meta: section.kicker,
       children: subheadings?.length ? subheadings : undefined,
@@ -1270,7 +1268,7 @@ export function WikiRoutePage({
                     scrollBehavior: drawerScrollBehavior,
                     onRequestClose: () => setTocOpen(false),
                   }
-                : { variant: outlineVariant })}
+                : {})}
             />
           )}
 

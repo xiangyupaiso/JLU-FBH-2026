@@ -606,6 +606,7 @@ $$
    - 宏观阅读器外壳尺寸（`--route-page`, `--toc-w`, `--reader-h`）。
    - 全局垂直节奏阶梯（铁律 6 规定的 16px / 24px / 28px / 44px 及容器重置）。
    - 标题马克笔折行与双色系统契约。
+   - 侧边栏目录（`WikiLineSidebar`，`wiki-route-skin.css` §6 marker outline）：全站唯一一套样式，无卡片外壳，当前项用正文同款马克笔底纹标记，颜色取 `--route-heading-ink / --route-subheading-ink / --route-marker-bg`。层级契约：一级 = Fraunces 旧式数字 + 15px；二级 = 13.5px 缩进、不显示编号；三级（如 `1.1.1`）= 12.5px 再缩进并带细竖线，仅在正在阅读的二级标题下展开。标题一律换行显示，禁止省略号截断。页面不得再为目录写专属覆盖样式。
    - 凡是约束**“全站正文基本面貌一致性”**的基础规则，必须统一收敛在全局。
 2. **严禁写在总体的特例（页面独有资产，收敛在 `[page]-panels.css`）**：
    - 某个页面特有的自定义可视化（如 Description 的 8 步机制链 CSS、四抗原卡片网格；Sustainability 的 3D 旋转立体卡片；Experiments 的专属 Protocol 步骤抽屉）。
