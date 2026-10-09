@@ -1,0 +1,80 @@
+.official-attributions-page {
+  --official-attributions-paper: #fffbd0;
+  --official-attributions-ink: #3e2d14;
+  min-height: 0;
+  background: var(--official-attributions-paper);
+  color: var(--official-attributions-ink);
+}
+
+.site-header.is-team-page::before {
+  background-color: var(--route-main, #f5cf6f);
+}
+
+.official-attributions-page__hero {
+  position: relative;
+  height: 100dvh;
+  min-height: 100dvh;
+  margin-top: calc(-1 * var(--header-height));
+  overflow: hidden;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.official-attributions-page__sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.official-attributions-page__form {
+  box-sizing: border-box;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.official-attributions-page__form iframe {
+  display: block;
+  width: 100%;
+  min-height: 720px;
+  border: 0;
+  background: #fff;
+}
+
+.official-attributions-page .wiki-next.wiki-next--record {
+  --next-record-ink: var(--official-attributions-ink);
+  --next-record-muted: color-mix(
+    in srgb,
+    var(--official-attributions-ink) 62%,
+    transparent
+  );
+  --next-record-line: color-mix(
+    in srgb,
+    var(--official-attributions-ink) 22%,
+    transparent
+  );
+  --next-record-paper: var(--official-attributions-paper);
+  --next-record-accent: #d39b4a;
+  width: min(1120px, calc(100% - 48px));
+  margin: 0 auto;
+  padding: 64px 0 82px;
+  border-top: 1px solid var(--next-record-line);
+}
+
+@media (max-width: 760px) {
+  .official-attributions-page__form {
+    width: 100%;
+  }
+
+  .official-attributions-page .wiki-next.wiki-next--record {
+    width: calc(100% - 32px);
+    padding: 52px 0 64px;
+  }
+}

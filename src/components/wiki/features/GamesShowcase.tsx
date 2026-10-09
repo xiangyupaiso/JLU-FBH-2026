@@ -15,6 +15,7 @@ import { createPortal } from "react-dom";
 import "../../../styles/games-page.css";
 import bombCatArt from "../../../assets/wiki/bomb-cat-showcase.webp";
 import breastGuardianArt from "../../../assets/wiki/breast-guardian-showcase.webp";
+import bioMemoryArt from "../../../assets/wiki/bio-memory-showcase.webp";
 import virtualLabArt from "../../../assets/wiki/virtual-lab-showcase.webp";
 
 /**
@@ -324,6 +325,7 @@ const GAME_LAUNCH_CONFIG: Record<GameKey, GameLaunchConfig> = {
     badge: "Specimen Match · 18 Pairs",
     title: "Bio Memory Match",
     subtitle: "Biology specimen field guide",
+    coverImage: bioMemoryArt,
   },
   "virtual-lab": {
     station: "Project 04",
@@ -385,7 +387,6 @@ export function GameLaunchCard({ game }: { game: GameKey }) {
               </b>
               <span>Play</span>
             </span>
-            <span className="games-showcase__hint">Full Screen</span>
           </div>
         </div>
       </button>
