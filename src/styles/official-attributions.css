@@ -1,92 +1,51 @@
-/* The official live document owns the full reading viewport. With no
-   side gutter or nested decorative frame, native iframe scrolling reaches
-   its boundary before wheel input continues into the host page. */
-.official-attributions-page__reader {
-  position: relative;
-  height: var(--reader-h);
-  margin: 0;
-  background: #ffffff;
-  scroll-margin-top: var(--header-height);
+/* The shared Team shell owns the sidebar, decorated frame and document
+   timeline. Only the live iframe's complete content height is page-specific. */
+.official-attributions-page__form {
+  box-sizing: border-box;
+  min-height: 0;
+  padding: clamp(40px, 5vw, 64px) clamp(26px, 5vw, 72px);
 }
 
-.official-attributions-page__reader iframe {
+.official-attributions-page__form iframe {
   display: block;
   width: 100%;
-  height: 100%;
+  height: var(--attribution-form-height, 900px);
   border: 0;
   background: #ffffff;
 }
 
-.official-attributions-page__outline {
+.official-attributions-page__document {
+  position: relative;
+}
+
+.official-attributions-page__bookmark {
   position: absolute;
-  z-index: 4;
-  top: 12px;
-  right: 24px;
-  width: min(300px, calc(100% - 32px));
-  color: var(--route-heading-ink);
-  font-family: var(--font-sans);
+  top: var(--attribution-bookmark-top);
+  left: 0;
+  width: 1px;
+  height: 1px;
+  pointer-events: none;
+  scroll-margin-top: calc(var(--header-height) + 32px);
 }
 
-.official-attributions-page__outline summary {
-  width: fit-content;
-  margin-left: auto;
-  padding: 9px 16px;
-  border: 1px solid var(--route-line-strong);
-  border-radius: 20px;
-  background: var(--route-base);
-  font-size: 14px;
-  font-weight: 650;
-  cursor: pointer;
+/* No reveal/transform choreography on the live embedded document. */
+.official-attributions-page__form,
+.official-attributions-page__form iframe {
+  opacity: 1;
+  transform: none;
+  transition: none;
+  will-change: auto;
 }
 
-.official-attributions-page__outline nav {
-  display: grid;
-  gap: 2px;
-  margin-top: 8px;
-  padding: 12px;
-  border: 1px solid var(--route-line-strong);
-  border-radius: 12px;
-  background: var(--route-base);
-  box-shadow: var(--route-shadow);
+.official-attributions-page .wiki-outline__drawer-head {
+  display: none;
 }
 
-.official-attributions-page__outline a {
-  display: grid;
-  grid-template-columns: 22px minmax(0, 1fr);
-  gap: 8px;
-  padding: 10px 4px;
-  color: inherit;
-  font-size: 14px;
-  line-height: 1.4;
-  text-decoration: none;
-}
-
-.official-attributions-page__outline a span {
-  font-family: var(--font-display);
-  font-size: 17px;
-}
-
-.official-attributions-page__outline a strong {
-  font-weight: 500;
-}
-
-.official-attributions-page__outline a:is(:hover, .is-active) strong {
-  background: linear-gradient(
-    transparent 55%,
-    var(--route-marker-bg) 55%,
-    var(--route-marker-bg) 92%,
-    transparent 92%
-  );
-}
-
-.official-attributions-page__outline :is(summary, a):focus-visible {
-  outline: 2px solid var(--route-heading-ink);
-  outline-offset: 2px;
-}
-
-@media (max-width: 640px) {
-  .official-attributions-page__outline {
-    top: 6px;
-    right: 16px;
+@media (max-width: 980px) {
+  .official-attributions-page__form {
+    padding: 24px 18px;
+  }
+  .official-attributions-page .wiki-outline__drawer-head {
+    display: flex;
   }
 }
