@@ -2,8 +2,7 @@
 
 @font-face {
   font-family: "Manrope";
-  src: url("https://static.igem.wiki/teams/6056/wiki/files/fonts/site/site/manrope-latin-variable.woff2") format("woff2"),
-       url("../assets/fonts/manrope-latin-variable.woff2") format("woff2");
+  src: url("https://static.igem.wiki/teams/6056/wiki/files/fonts/site/manrope-latin-variable-e310b55a7fd9.woff2") format("woff2");
   font-style: normal;
   font-weight: 200 800;
   font-display: swap;

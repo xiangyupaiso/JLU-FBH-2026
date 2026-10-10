@@ -32,54 +32,54 @@
  * under `pages/project/`.
  */
 
-import ddlCrisisPosterImg from "../../assets/wiki/contribution/contribution-responsible-ddl-crisis-poster.webp";
+const ddlCrisisPosterImg = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/contribution/contribution-responsible-ddl-crisis-poster-1947ba1bf803.webp";
 
-import circoreDeviceImg from "../../assets/wiki/contribution/contribution-hardware-circore-device.webp";
+const circoreDeviceImg = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/contribution/contribution-hardware-circore-device-cce193f20a95.webp";
 
-import sdgFrameworkImg from "../../assets/wiki/contribution/contribution-sdg-set-develop-grow-framework.webp";
+const sdgFrameworkImg = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/contribution/contribution-sdg-set-develop-grow-framework-2a21c9b3895c.webp";
 
-import tamSamSomImg from "../../assets/wiki/contribution/contribution-entrepreneurship-tam-sam-som.webp";
+const tamSamSomImg = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/contribution/contribution-entrepreneurship-tam-sam-som-15c258abe6a7.webp";
 
-import bioMemoryCoverImg from "../../assets/wiki/contribution/contribution-education-bio-memory-cover.webp";
-import bioStrategyArena1Img from "../../assets/wiki/contribution/contribution-education-bio-strategy-arena-1.webp";
-import bioStrategyArena2Img from "../../assets/wiki/contribution/contribution-education-bio-strategy-arena-2.webp";
+const bioMemoryCoverImg = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/contribution/contribution-education-bio-memory-cover-c9e5096f1b79.webp";
+const bioStrategyArena1Img = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/contribution/contribution-education-bio-strategy-arena-1-4dde6b3fbb18.webp";
+const bioStrategyArena2Img = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/contribution/contribution-education-bio-strategy-arena-2-9d2bc7dabbf6.webp";
 
-import virtualLab1Img from "../../assets/wiki/contribution/contribution-education-virtual-lab-1.webp";
-import virtualLab2Img from "../../assets/wiki/contribution/contribution-education-virtual-lab-2.webp";
+const virtualLab1Img = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/contribution/contribution-education-virtual-lab-1-55d67d3ba88e.webp";
+const virtualLab2Img = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/contribution/contribution-education-virtual-lab-2-1243700ee70f.webp";
 
-import synbioClassroom1Img from "../../assets/wiki/contribution/contribution-education-synbio-classroom-1.webp";
-import synbioClassroom2Img from "../../assets/wiki/contribution/contribution-education-synbio-classroom-2.webp";
-import synbioClassroom3Img from "../../assets/wiki/contribution/contribution-education-synbio-classroom-3.webp";
-import synbioClassroom4Img from "../../assets/wiki/contribution/contribution-education-synbio-classroom-4.webp";
+const synbioClassroom1Img = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/contribution/contribution-education-synbio-classroom-1-7b4bbddf90c2.webp";
+const synbioClassroom2Img = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/contribution/contribution-education-synbio-classroom-2-bf181a767d6a.webp";
+const synbioClassroom3Img = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/contribution/contribution-education-synbio-classroom-3-ac5832f75713.webp";
+const synbioClassroom4Img = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/contribution/contribution-education-synbio-classroom-4-998942cb4f72.webp";
 
-import musicFestival1Img from "../../assets/wiki/contribution/contribution-education-music-festival-1.webp";
-import musicFestival2Img from "../../assets/wiki/contribution/contribution-education-music-festival-2.webp";
-import musicFestival3Img from "../../assets/wiki/contribution/contribution-education-music-festival-3.webp";
-import musicFestival4Img from "../../assets/wiki/contribution/contribution-education-music-festival-4.webp";
+const musicFestival1Img = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/contribution/contribution-education-music-festival-1-7357164fb39b.webp";
+const musicFestival2Img = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/contribution/contribution-education-music-festival-2-db52106de9fc.webp";
+const musicFestival3Img = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/contribution/contribution-education-music-festival-3-8f48062e2ab1.webp";
+const musicFestival4Img = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/contribution/contribution-education-music-festival-4-52536f97544f.webp";
 
-import ethicsDebate1Img from "../../assets/wiki/contribution/contribution-education-ethics-debate-1.webp";
-import ethicsDebate2Img from "../../assets/wiki/contribution/contribution-education-ethics-debate-2.webp";
+const ethicsDebate1Img = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/contribution/contribution-education-ethics-debate-1-c2c7e8c4d197.webp";
+const ethicsDebate2Img = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/contribution/contribution-education-ethics-debate-2-b44a7554e324.webp";
 
-import northeastExchange1Img from "../../assets/wiki/contribution/contribution-collab-northeast-exchange-1.webp";
-import northeastExchange2Img from "../../assets/wiki/contribution/contribution-collab-northeast-exchange-2.webp";
-import northeastExchange3Img from "../../assets/wiki/contribution/contribution-collab-northeast-exchange-3.webp";
+const northeastExchange1Img = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/contribution/contribution-collab-northeast-exchange-1-aafdc4bcdd85.webp";
+const northeastExchange2Img = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/contribution/contribution-collab-northeast-exchange-2-48262538ed99.webp";
+const northeastExchange3Img = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/contribution/contribution-collab-northeast-exchange-3-93554848c087.webp";
 
-import lettersAcrossIgem1Img from "../../assets/wiki/contribution/contribution-collab-letters-across-igem-1.webp";
-import lettersAcrossIgem2Img from "../../assets/wiki/contribution/contribution-collab-letters-across-igem-2.webp";
-import lettersAcrossIgem3Img from "../../assets/wiki/contribution/contribution-collab-letters-across-igem-3.webp";
+const lettersAcrossIgem1Img = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/contribution/contribution-collab-letters-across-igem-1-ff61293f485c.webp";
+const lettersAcrossIgem2Img = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/contribution/contribution-collab-letters-across-igem-2-021f4b5ee8f0.webp";
+const lettersAcrossIgem3Img = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/contribution/contribution-collab-letters-across-igem-3-e9afeee34d09.webp";
 
-import ccic1Img from "../../assets/wiki/contribution/contribution-collab-ccic-1.webp";
-import ccic2Img from "../../assets/wiki/contribution/contribution-collab-ccic-2.webp";
-import ccic3Img from "../../assets/wiki/contribution/contribution-collab-ccic-3.webp";
-import ccic4Img from "../../assets/wiki/contribution/contribution-collab-ccic-4.webp";
+const ccic1Img = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/contribution/contribution-collab-ccic-1-a8ed72a7cd82.webp";
+const ccic2Img = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/contribution/contribution-collab-ccic-2-885f894abadd.webp";
+const ccic3Img = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/contribution/contribution-collab-ccic-3-4c3533bab071.webp";
+const ccic4Img = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/contribution/contribution-collab-ccic-4-3c37d5ecaa14.webp";
 
-import apic1Img from "../../assets/wiki/contribution/contribution-collab-apic-1.webp";
-import apic2Img from "../../assets/wiki/contribution/contribution-collab-apic-2.webp";
+const apic1Img = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/contribution/contribution-collab-apic-1-9eb8087d530a.webp";
+const apic2Img = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/contribution/contribution-collab-apic-2-e2d2998aef73.webp";
 
-import regionalNorthChinaImg from "../../assets/wiki/contribution/contribution-collab-regional-north-china.webp";
-import regionalEastChinaImg from "../../assets/wiki/contribution/contribution-collab-regional-east-china.webp";
-import regionalSouthChinaImg from "../../assets/wiki/contribution/contribution-collab-regional-south-china.webp";
-import regionalCentralChinaImg from "../../assets/wiki/contribution/contribution-collab-regional-central-china.webp";
+const regionalNorthChinaImg = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/contribution/contribution-collab-regional-north-china-27865d2b4c45.webp";
+const regionalEastChinaImg = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/contribution/contribution-collab-regional-east-china-de9c844fc0fd.webp";
+const regionalSouthChinaImg = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/contribution/contribution-collab-regional-south-china-4d207c6a3bae.webp";
+const regionalCentralChinaImg = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/contribution/contribution-collab-regional-central-china-111bffd776c7.webp";
 
 export type ContributionAssetKind = "image" | "pdf";
 
@@ -131,7 +131,7 @@ export const contributionAssets = {
     fileName: "contribution-responsible-ddl-crisis-poster.webp",
     localSourcePath: `${assetDir}/contribution-responsible-ddl-crisis-poster.webp`,
     localSrc: ddlCrisisPosterImg,
-    uploadUrl: "",
+    uploadUrl: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/contribution/contribution-responsible-ddl-crisis-poster-1947ba1bf803.webp",
     alt: "Poster of DDL Crisis murder mystery game",
     section: "Responsible Research in Practice",
   },
@@ -140,7 +140,7 @@ export const contributionAssets = {
     fileName: "动物伦理白皮书.pdf",
     uploadFileName: "contribution-animal-ethics-handbook.pdf",
     localSourcePath: `${docDir}/动物伦理白皮书.pdf`,
-    uploadUrl: "",
+    uploadUrl: "https://static.igem.wiki/teams/6056/wiki/files/docs/asset-7b4b25ecb86d9333.pdf",
     alt: "Animal Model Research Safety and Ethics Handbook",
     section: "Responsible Research in Practice",
   },
@@ -149,7 +149,7 @@ export const contributionAssets = {
     fileName: "实验室规范安全白皮书.pdf",
     uploadFileName: "contribution-laboratory-safety-handbook.pdf",
     localSourcePath: `${docDir}/实验室规范安全白皮书.pdf`,
-    uploadUrl: "",
+    uploadUrl: "https://static.igem.wiki/teams/6056/wiki/files/docs/asset-80682e097984b61a.pdf",
     alt: "Laboratory Safety Handbook",
     section: "Responsible Research in Practice",
   },
@@ -162,7 +162,7 @@ export const contributionAssets = {
     fileName: "contribution-hardware-circore-device.webp",
     localSourcePath: `${assetDir}/contribution-hardware-circore-device.webp`,
     localSrc: circoreDeviceImg,
-    uploadUrl: "",
+    uploadUrl: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/contribution/contribution-hardware-circore-device-cce193f20a95.webp",
     alt: "Schematic diagram of the CirCore circRNA vaccine expression device",
     section: "Modular Hardware Platform",
   },
@@ -173,7 +173,7 @@ export const contributionAssets = {
     fileName: "contribution-sdg-set-develop-grow-framework.webp",
     localSourcePath: `${assetDir}/contribution-sdg-set-develop-grow-framework.webp`,
     localSrc: sdgFrameworkImg,
-    uploadUrl: "",
+    uploadUrl: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/contribution/contribution-sdg-set-develop-grow-framework-2a21c9b3895c.webp",
     alt: "SET-DEVELOP-GROW Impact Framework (SDG Impact Framework)",
     section: "Sustainable Innovation Framework",
   },
@@ -184,7 +184,7 @@ export const contributionAssets = {
     fileName: "contribution-entrepreneurship-tam-sam-som.webp",
     localSourcePath: `${assetDir}/contribution-entrepreneurship-tam-sam-som.webp`,
     localSrc: tamSamSomImg,
-    uploadUrl: "",
+    uploadUrl: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/contribution/contribution-entrepreneurship-tam-sam-som-15c258abe6a7.webp",
     alt: "TAM-SAM-SOM market size estimation",
     section: "Translation Pathway",
   },
@@ -195,7 +195,7 @@ export const contributionAssets = {
     fileName: "contribution-education-virtual-lab-1.webp",
     localSourcePath: `${assetDir}/contribution-education-virtual-lab-1.webp`,
     localSrc: virtualLab1Img,
-    uploadUrl: "",
+    uploadUrl: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/contribution/contribution-education-virtual-lab-1-55d67d3ba88e.webp",
     alt: "Virtual Laboratory operation example, experiment 2 main working page",
     section: "Education",
   },
@@ -204,7 +204,7 @@ export const contributionAssets = {
     fileName: "contribution-education-virtual-lab-2.webp",
     localSourcePath: `${assetDir}/contribution-education-virtual-lab-2.webp`,
     localSrc: virtualLab2Img,
-    uploadUrl: "",
+    uploadUrl: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/contribution/contribution-education-virtual-lab-2-1243700ee70f.webp",
     alt: "Virtual Laboratory operation example, experiment 6 reagent addition",
     section: "Education",
   },
@@ -213,7 +213,7 @@ export const contributionAssets = {
     fileName: "contribution-education-synbio-classroom-1.webp",
     localSourcePath: `${assetDir}/contribution-education-synbio-classroom-1.webp`,
     localSrc: synbioClassroom1Img,
-    uploadUrl: "",
+    uploadUrl: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/contribution/contribution-education-synbio-classroom-1-7b4bbddf90c2.webp",
     alt: "Activity photo from SynBio Classroom, students loading samples",
     section: "Education",
   },
@@ -222,7 +222,7 @@ export const contributionAssets = {
     fileName: "contribution-education-synbio-classroom-2.webp",
     localSourcePath: `${assetDir}/contribution-education-synbio-classroom-2.webp`,
     localSrc: synbioClassroom2Img,
-    uploadUrl: "",
+    uploadUrl: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/contribution/contribution-education-synbio-classroom-2-bf181a767d6a.webp",
     alt: "Activity photo from SynBio Classroom, students operating equipment",
     section: "Education",
   },
@@ -231,7 +231,7 @@ export const contributionAssets = {
     fileName: "contribution-education-synbio-classroom-3.webp",
     localSourcePath: `${assetDir}/contribution-education-synbio-classroom-3.webp`,
     localSrc: synbioClassroom3Img,
-    uploadUrl: "",
+    uploadUrl: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/contribution/contribution-education-synbio-classroom-3-ac5832f75713.webp",
     alt: "Activity photo from SynBio Classroom, group photo in the laboratory",
     section: "Education",
   },
@@ -240,7 +240,7 @@ export const contributionAssets = {
     fileName: "contribution-education-synbio-classroom-4.webp",
     localSourcePath: `${assetDir}/contribution-education-synbio-classroom-4.webp`,
     localSrc: synbioClassroom4Img,
-    uploadUrl: "",
+    uploadUrl: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/contribution/contribution-education-synbio-classroom-4-998942cb4f72.webp",
     alt: "Activity photo from SynBio Classroom, closing group photo",
     section: "Education",
   },
@@ -249,7 +249,7 @@ export const contributionAssets = {
     fileName: "contribution-education-bio-memory-cover.webp",
     localSourcePath: `${assetDir}/contribution-education-bio-memory-cover.webp`,
     localSrc: bioMemoryCoverImg,
-    uploadUrl: "",
+    uploadUrl: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/contribution/contribution-education-bio-memory-cover-c9e5096f1b79.webp",
     alt: "Cover design of the Bio Memory Match game",
     section: "Education",
   },
@@ -258,7 +258,7 @@ export const contributionAssets = {
     fileName: "contribution-education-bio-strategy-arena-1.webp",
     localSourcePath: `${assetDir}/contribution-education-bio-strategy-arena-1.webp`,
     localSrc: bioStrategyArena1Img,
-    uploadUrl: "",
+    uploadUrl: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/contribution/contribution-education-bio-strategy-arena-1-4dde6b3fbb18.webp",
     alt: "Design example of the Bio Strategy Arena game, card sheet",
     section: "Education",
   },
@@ -267,7 +267,7 @@ export const contributionAssets = {
     fileName: "contribution-education-bio-strategy-arena-2.webp",
     localSourcePath: `${assetDir}/contribution-education-bio-strategy-arena-2.webp`,
     localSrc: bioStrategyArena2Img,
-    uploadUrl: "",
+    uploadUrl: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/contribution/contribution-education-bio-strategy-arena-2-9d2bc7dabbf6.webp",
     alt: "Design example of the Bio Strategy Arena game, quorum-sensing card",
     section: "Education",
   },
@@ -276,7 +276,7 @@ export const contributionAssets = {
     fileName: "contribution-education-music-festival-1.webp",
     localSourcePath: `${assetDir}/contribution-education-music-festival-1.webp`,
     localSrc: musicFestival1Img,
-    uploadUrl: "",
+    uploadUrl: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/contribution/contribution-education-music-festival-1-7357164fb39b.webp",
     alt: "Photo from the Music Festival outreach activity, group photo",
     section: "Education",
   },
@@ -285,7 +285,7 @@ export const contributionAssets = {
     fileName: "contribution-education-music-festival-2.webp",
     localSourcePath: `${assetDir}/contribution-education-music-festival-2.webp`,
     localSrc: musicFestival2Img,
-    uploadUrl: "",
+    uploadUrl: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/contribution/contribution-education-music-festival-2-db52106de9fc.webp",
     alt: "Photo from the Music Festival outreach activity, event site",
     section: "Education",
   },
@@ -294,7 +294,7 @@ export const contributionAssets = {
     fileName: "contribution-education-music-festival-3.webp",
     localSourcePath: `${assetDir}/contribution-education-music-festival-3.webp`,
     localSrc: musicFestival3Img,
-    uploadUrl: "",
+    uploadUrl: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/contribution/contribution-education-music-festival-3-8f48062e2ab1.webp",
     alt: "Photo from the Music Festival outreach activity, activity booth",
     section: "Education",
   },
@@ -303,7 +303,7 @@ export const contributionAssets = {
     fileName: "contribution-education-music-festival-4.webp",
     localSourcePath: `${assetDir}/contribution-education-music-festival-4.webp`,
     localSrc: musicFestival4Img,
-    uploadUrl: "",
+    uploadUrl: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/contribution/contribution-education-music-festival-4-52536f97544f.webp",
     alt: "Photo from the Music Festival outreach activity, participants taking part",
     section: "Education",
   },
@@ -312,7 +312,7 @@ export const contributionAssets = {
     fileName: "contribution-education-ethics-debate-1.webp",
     localSourcePath: `${assetDir}/contribution-education-ethics-debate-1.webp`,
     localSrc: ethicsDebate1Img,
-    uploadUrl: "",
+    uploadUrl: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/contribution/contribution-education-ethics-debate-1-c2c7e8c4d197.webp",
     alt: "Photo from the Ethics Debate, group photo of the participants",
     section: "Education",
   },
@@ -321,7 +321,7 @@ export const contributionAssets = {
     fileName: "contribution-education-ethics-debate-2.webp",
     localSourcePath: `${assetDir}/contribution-education-ethics-debate-2.webp`,
     localSrc: ethicsDebate2Img,
-    uploadUrl: "",
+    uploadUrl: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/contribution/contribution-education-ethics-debate-2-b44a7554e324.webp",
     alt: "Poster of the Ethics Debate activity",
     section: "Education",
   },
@@ -332,7 +332,7 @@ export const contributionAssets = {
     fileName: "contribution-collab-northeast-exchange-1.webp",
     localSourcePath: `${assetDir}/contribution-collab-northeast-exchange-1.webp`,
     localSrc: northeastExchange1Img,
-    uploadUrl: "",
+    uploadUrl: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/contribution/contribution-collab-northeast-exchange-1-aafdc4bcdd85.webp",
     alt: "Photo from the iGEM Northeast Regional Exchange, group photo",
     section: "Collaboration",
   },
@@ -341,7 +341,7 @@ export const contributionAssets = {
     fileName: "contribution-collab-northeast-exchange-2.webp",
     localSourcePath: `${assetDir}/contribution-collab-northeast-exchange-2.webp`,
     localSrc: northeastExchange2Img,
-    uploadUrl: "",
+    uploadUrl: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/contribution/contribution-collab-northeast-exchange-2-48262538ed99.webp",
     alt: "Photo from the iGEM Northeast Regional Exchange, hosted roundtable",
     section: "Collaboration",
   },
@@ -350,7 +350,7 @@ export const contributionAssets = {
     fileName: "contribution-collab-northeast-exchange-3.webp",
     localSourcePath: `${assetDir}/contribution-collab-northeast-exchange-3.webp`,
     localSrc: northeastExchange3Img,
-    uploadUrl: "",
+    uploadUrl: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/contribution/contribution-collab-northeast-exchange-3-93554848c087.webp",
     alt: "Photo from the iGEM Northeast Regional Exchange, registration desk",
     section: "Collaboration",
   },
@@ -359,7 +359,7 @@ export const contributionAssets = {
     fileName: "contribution-collab-letters-across-igem-1.webp",
     localSourcePath: `${assetDir}/contribution-collab-letters-across-igem-1.webp`,
     localSrc: lettersAcrossIgem1Img,
-    uploadUrl: "",
+    uploadUrl: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/contribution/contribution-collab-letters-across-igem-1-ff61293f485c.webp",
     alt: "Photo from Letters Across iGEM, JLU-FBH group photo",
     section: "Collaboration",
   },
@@ -368,7 +368,7 @@ export const contributionAssets = {
     fileName: "contribution-collab-letters-across-igem-2.webp",
     localSourcePath: `${assetDir}/contribution-collab-letters-across-igem-2.webp`,
     localSrc: lettersAcrossIgem2Img,
-    uploadUrl: "",
+    uploadUrl: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/contribution/contribution-collab-letters-across-igem-2-021f4b5ee8f0.webp",
     alt: "Photo from Letters Across iGEM, a letter from WHU-China",
     section: "Collaboration",
   },
@@ -377,7 +377,7 @@ export const contributionAssets = {
     fileName: "contribution-collab-letters-across-igem-3.webp",
     localSourcePath: `${assetDir}/contribution-collab-letters-across-igem-3.webp`,
     localSrc: lettersAcrossIgem3Img,
-    uploadUrl: "",
+    uploadUrl: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/contribution/contribution-collab-letters-across-igem-3-e9afeee34d09.webp",
     alt: "Photo from Letters Across iGEM, a letter from TJUSLS_China",
     section: "Collaboration",
   },
@@ -386,7 +386,7 @@ export const contributionAssets = {
     fileName: "Together With iGEM.pdf",
     uploadFileName: "contribution-together-with-igem.pdf",
     localSourcePath: `${docDir}/Together With iGEM.pdf`,
-    uploadUrl: "",
+    uploadUrl: "https://static.igem.wiki/teams/6056/wiki/files/docs/asset-e422a0dd03ee7ae3.pdf",
     alt: "Together With iGEM — cross-team science communication handbook",
     section: "Collaboration",
   },
@@ -395,7 +395,7 @@ export const contributionAssets = {
     fileName: "iGEM 新队伍建设与知识传承手册完整版9.pdf",
     uploadFileName: "contribution-new-team-handbook.pdf",
     localSourcePath: `${docDir}/iGEM 新队伍建设与知识传承手册完整版9.pdf`,
-    uploadUrl: "",
+    uploadUrl: "https://static.igem.wiki/teams/6056/wiki/files/docs/asset-657db5562ff018e8.pdf",
     alt: "New Team Development and Knowledge Inheritance Handbook",
     section: "Collaboration",
   },
@@ -404,7 +404,7 @@ export const contributionAssets = {
     fileName: "contribution-collab-ccic-1.webp",
     localSourcePath: `${assetDir}/contribution-collab-ccic-1.webp`,
     localSrc: ccic1Img,
-    uploadUrl: "",
+    uploadUrl: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/contribution/contribution-collab-ccic-1-a8ed72a7cd82.webp",
     alt: "Photo from Synbiopunk-CCiC 2026, team group photo",
     section: "Collaboration",
   },
@@ -413,7 +413,7 @@ export const contributionAssets = {
     fileName: "contribution-collab-ccic-2.webp",
     localSourcePath: `${assetDir}/contribution-collab-ccic-2.webp`,
     localSrc: ccic2Img,
-    uploadUrl: "",
+    uploadUrl: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/contribution/contribution-collab-ccic-2-885f894abadd.webp",
     alt: "Photo from Synbiopunk-CCiC 2026, roundtable discussion",
     section: "Collaboration",
   },
@@ -422,7 +422,7 @@ export const contributionAssets = {
     fileName: "contribution-collab-ccic-3.webp",
     localSourcePath: `${assetDir}/contribution-collab-ccic-3.webp`,
     localSrc: ccic3Img,
-    uploadUrl: "",
+    uploadUrl: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/contribution/contribution-collab-ccic-3-4c3533bab071.webp",
     alt: "Photo from Synbiopunk-CCiC 2026, poster and project exchange",
     section: "Collaboration",
   },
@@ -431,7 +431,7 @@ export const contributionAssets = {
     fileName: "contribution-collab-ccic-4.webp",
     localSourcePath: `${assetDir}/contribution-collab-ccic-4.webp`,
     localSrc: ccic4Img,
-    uploadUrl: "",
+    uploadUrl: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/contribution/contribution-collab-ccic-4-3c37d5ecaa14.webp",
     alt: "Photo from Synbiopunk-CCiC 2026, roundtable game",
     section: "Collaboration",
   },
@@ -440,7 +440,7 @@ export const contributionAssets = {
     fileName: "contribution-collab-apic-1.webp",
     localSourcePath: `${assetDir}/contribution-collab-apic-1.webp`,
     localSrc: apic1Img,
-    uploadUrl: "",
+    uploadUrl: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/contribution/contribution-collab-apic-1-9eb8087d530a.webp",
     alt: "Photo from the 1st Grand APiC, Shenzhen group photo",
     section: "Collaboration",
   },
@@ -449,7 +449,7 @@ export const contributionAssets = {
     fileName: "contribution-collab-apic-2.webp",
     localSourcePath: `${assetDir}/contribution-collab-apic-2.webp`,
     localSrc: apic2Img,
-    uploadUrl: "",
+    uploadUrl: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/contribution/contribution-collab-apic-2-e2d2998aef73.webp",
     alt: "Photo from the 1st Grand APiC, Hong Kong group photo",
     section: "Collaboration",
   },
@@ -458,7 +458,7 @@ export const contributionAssets = {
     fileName: "contribution-collab-regional-north-china.webp",
     localSourcePath: `${assetDir}/contribution-collab-regional-north-china.webp`,
     localSrc: regionalNorthChinaImg,
-    uploadUrl: "",
+    uploadUrl: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/contribution/contribution-collab-regional-north-china-27865d2b4c45.webp",
     alt: "Photo from the North China regional exchange",
     section: "Collaboration",
   },
@@ -467,7 +467,7 @@ export const contributionAssets = {
     fileName: "contribution-collab-regional-east-china.webp",
     localSourcePath: `${assetDir}/contribution-collab-regional-east-china.webp`,
     localSrc: regionalEastChinaImg,
-    uploadUrl: "",
+    uploadUrl: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/contribution/contribution-collab-regional-east-china-de9c844fc0fd.webp",
     alt: "Photo from the East China regional exchange",
     section: "Collaboration",
   },
@@ -476,7 +476,7 @@ export const contributionAssets = {
     fileName: "contribution-collab-regional-south-china.webp",
     localSourcePath: `${assetDir}/contribution-collab-regional-south-china.webp`,
     localSrc: regionalSouthChinaImg,
-    uploadUrl: "",
+    uploadUrl: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/contribution/contribution-collab-regional-south-china-4d207c6a3bae.webp",
     alt: "Photo from the South China regional exchange",
     section: "Collaboration",
   },
@@ -485,7 +485,7 @@ export const contributionAssets = {
     fileName: "contribution-collab-regional-central-china.webp",
     localSourcePath: `${assetDir}/contribution-collab-regional-central-china.webp`,
     localSrc: regionalCentralChinaImg,
-    uploadUrl: "",
+    uploadUrl: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/contribution/contribution-collab-regional-central-china-111bffd776c7.webp",
     alt: "Photo from the Central China regional exchange",
     section: "Collaboration",
   },
@@ -508,12 +508,10 @@ export type ContributionDocAssetKey = {
 }[ContributionAssetKey];
 
 /**
- * Resolve one image: the bundled local copy today, the CDN URL once uploads
- * land. `localSrc` wins so the page never depends on an unfinished upload, and
- * the fallback keeps a URL-only entry working after the local file is retired.
+ * Resolve one image from iGEM CDN, with a local preview as fallback.
  */
 export const contributionImage = (key: ContributionImageAssetKey): string =>
-  contributionAssets[key].localSrc || contributionAssets[key].uploadUrl;
+  contributionAssets[key].uploadUrl || contributionAssets[key].localSrc || "";
 
 /**
  * Local URL of a document kept in `public/assets/docs/`.
@@ -532,13 +530,11 @@ const localDocUrl = (fileName: string): string =>
 /**
  * iGEM docs URL of a hosted PDF, with the local copy as the fallback.
  *
- * `uploadUrl` is blank while the files await upload, so the page renders from
- * the copy in `public/`; once a CDN URL is filled in, production uses it.
+ * Prefer the hosted file in development and production.
  */
 export const contributionDocUrl = (key: ContributionDocAssetKey): string => {
   const entry = contributionAssets[key];
   const local = localDocUrl(entry.fileName);
-  if (import.meta.env.DEV) return local;
   return entry.uploadUrl || local;
 };
 

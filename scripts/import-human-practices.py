@@ -195,9 +195,9 @@ for block in dialogue_blocks:
         active_interview["blocks"].append(block)
 if active_interview is not None:
     origin_interviews.append(active_interview)
-# Keep the original interview transcript in the page as well as in the
-# scroll-linked cards. The interactive version must not hide source copy.
-origin["blocks"] = origin_blocks[:diagram_index] + [{"type": "feature", "key": "hp-origin-tree"}] + origin_blocks[diagram_index + 1:]
+# The tree's transcript cards are the published interview text. Keep one
+# source copy in origin_interviews and continue the article at its Summary.
+origin["blocks"] = origin_blocks[:diagram_index] + [{"type": "feature", "key": "hp-origin-tree"}] + origin_blocks[summary_index:]
 
 contents = [{key: value for key, value in section.items() if key not in {"index", "kicker"}} for section in sections]
 output = (

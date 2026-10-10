@@ -75,7 +75,7 @@
   background: #ffffff;
 }
 
-/* Video Layers: Hard Instant Cut (Zero Ghosting / Transition Disabled) */
+/* Animated image layers: instant cut without ghosting. */
 .hp-waterfall-video {
   position: absolute;
   inset: 0;

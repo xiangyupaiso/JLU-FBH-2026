@@ -18,7 +18,7 @@ import { usePeerNetwork, type UsePeerNetworkReturn } from './hooks/usePeerNetwor
 import type { PlayerDef } from './engine/gameEngine';
 import { MAX_PLAYERS, BOT_NAMES } from './constants/cards';
 import type { GameState, Lang, NetworkAction, Screen } from './types/game';
-import coverImg from './assets/cover.webp';
+const coverImg = "https://static.igem.wiki/teams/6056/wiki/files/pages/games/bomb-cat/cover-9a800b8be673.webp";
 
 // ───────── 工具 ─────────
 

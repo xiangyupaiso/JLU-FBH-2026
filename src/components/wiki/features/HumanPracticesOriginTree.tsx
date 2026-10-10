@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, type ReactNode } from "react";
+import { useCallback, useEffect, useRef, useState, type ReactNode } from "react";
 import { UserRound } from "lucide-react";
 import { originInterviewRecords } from "../../../data/engagement/humanPracticesCopy";
 import { scrollReaderToTarget } from "../../../utils";
@@ -6,16 +6,16 @@ import "../../../styles/hp-origin-tree.css";
 
 const names = ["药博会", "刘雅文", "公众", "贾琳", "王磊", "李成丽", "田润辉"];
 const basePoints = [
-  { x: 50, y: 7 }, { x: 50, y: 22 }, { x: 50, y: 37 },
-  { x: 50, y: 52 }, { x: 26, y: 68 }, { x: 74, y: 68 },
-  { x: 50, y: 88 },
+  { x: 50, y: 4 }, { x: 50, y: 22 }, { x: 50, y: 40 },
+  { x: 50, y: 58 }, { x: 26, y: 76 }, { x: 74, y: 76 },
+  { x: 50, y: 94 },
 ];
 const forwardEdges = [[0, 1], [1, 2], [2, 3], [3, 4], [3, 5]];
 const returnEdges = [
-  { id: "liu-return", from: 5, to: 1, path: "M 88 68 H 94 V 22 H 65" },
-  { id: "jia-return", from: 6, to: 3, path: "M 50 88 H 93 V 52 H 64" },
-  { id: "public-return", from: 6, to: 2, path: "M 50 88 H 4 V 37 H 36" },
-  { id: "wang-return", from: 6, to: 4, path: "M 50 88 H 10 V 68 H 12" },
+  { id: "liu-return", from: 5, to: 1, path: "M 84 76 H 94 V 22 H 63" },
+  { id: "jia-return", from: 6, to: 3, path: "M 59 94 H 92 V 58 H 63" },
+  { id: "public-return", from: 6, to: 2, path: "M 41 94 H 4 V 40 H 37" },
+  { id: "wang-return", from: 6, to: 4, path: "M 41 94 H 10 V 76 H 13" },
 ];
 const storySteps: Array<{ person: number; phase: "first" | "followup" | "review"; label: string; returnFrom?: number }> = [
   { person: 0, phase: "first", label: "Industry field research" },
@@ -30,27 +30,28 @@ const storySteps: Array<{ person: number; phase: "first" | "followup" | "review"
   { person: 3, phase: "followup", label: "Follow-up interview", returnFrom: 6 },
   { person: 4, phase: "followup", label: "Follow-up interview", returnFrom: 6 },
 ];
+const leadSteps = 2;
 const introPoints = [
   { x: 8, y: 50 }, { x: 24, y: 50 }, { x: 40, y: 50 },
   { x: 56, y: 50 }, { x: 74, y: 76 }, { x: 74, y: 24 },
   { x: 91, y: 50 },
 ];
 const introForwardPaths = [
-  "M 14 50 H 17", "M 30 50 H 33", "M 46 50 H 49",
-  "M 62 50 H 66 V 24 H 67", "M 62 50 H 66 V 76 H 67",
-  "M 81 24 H 82 V 50", "M 81 76 H 82 V 50", "M 82 50 H 84",
+  "M 13.5 50 H 18.2", "M 29.5 50 H 34.2", "M 45.5 50 H 50.2",
+  "M 61.5 50 H 65 V 24 H 68.2", "M 61.5 50 H 65 V 76 H 68.2",
+  "M 79.4 24 H 82.4 V 50", "M 79.4 76 H 82.4 V 50", "M 82.4 50 H 85.5",
 ];
 const introReturnPaths = [
-  "M 80 24 H 86 V 10 H 34 V 50 H 30",
-  "M 91 58 V 89 H 56 V 58",
-  "M 91 58 V 93 H 40 V 58",
-  "M 91 58 V 96 H 74 V 84",
+  "M 79.4 24 H 86 V 10 H 34 V 50 H 30",
+  "M 91 62.5 V 89 H 56 V 62.5",
+  "M 91 62.5 V 93 H 40 V 62.5",
+  "M 91 62.5 V 96 H 74 V 88.5",
 ];
 type Point = { x: number; y: number };
 
 function connector(a: Point, b: Point) {
-  const startY = a.y + 5.5;
-  const endY = b.y - 6.5;
+  const startY = a.y + 5.8;
+  const endY = b.y - 6.4;
   const mid = (startY + endY) / 2;
   return `M ${a.x} ${startY} C ${a.x} ${mid}, ${b.x} ${mid}, ${b.x} ${endY}`;
 }
@@ -90,9 +91,14 @@ export function HumanPracticesOriginTree() {
   const rootRef = useRef<HTMLDivElement>(null);
   const cardRef = useRef<HTMLDivElement>(null);
   const hoverExitTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const activeRef = useRef(0);
+  const navigationRef = useRef<{ index: number; expiresAt: number } | null>(null);
+  const wheelGestureRef = useRef<{ active: boolean; releaseAt: number; timer: ReturnType<typeof setTimeout> | null }>({ active: false, releaseAt: 0, timer: null });
   const [active, setActive] = useState(0);
   const [unlocked, setUnlocked] = useState(0);
   const [hoveredProfile, setHoveredProfile] = useState<number | null>(null);
+  const [hoveredTreeProfile, setHoveredTreeProfile] = useState<number | null>(null);
+  const [firstViewAtStep, setFirstViewAtStep] = useState<number | null>(null);
 
   const showProfile = (index: number) => {
     if (hoverExitTimer.current) clearTimeout(hoverExitTimer.current);
@@ -108,6 +114,18 @@ export function HumanPracticesOriginTree() {
     if (hoverExitTimer.current) clearTimeout(hoverExitTimer.current);
   }, []);
 
+  const goToStep = useCallback((index: number) => {
+    const root = rootRef.current;
+    const inner = root?.closest<HTMLElement>(".route-frame__scroll");
+    const marker = root?.querySelector<HTMLElement>(`#hp-origin-step-${index}`);
+    if (!inner || !marker) return;
+    navigationRef.current = { index, expiresAt: performance.now() + 1200 };
+    activeRef.current = index;
+    setActive(index);
+    setUnlocked((previous) => Math.max(previous, index));
+    scrollReaderToTarget(marker, inner, window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth");
+  }, []);
+
   useEffect(() => {
     const root = rootRef.current;
     const inner = root?.closest<HTMLElement>(".route-frame__scroll");
@@ -115,46 +133,103 @@ export function HumanPracticesOriginTree() {
     // This feature spans multiple viewport-length steps. Reveal its stage directly;
     // the shared 8% IntersectionObserver threshold cannot reveal a block this tall.
     root.closest<HTMLElement>("[data-wiki-reveal]")?.classList.add("is-visible");
+    const intro = root.querySelector<HTMLElement>(".hp-origin-flow__intro");
+    const stage = root.querySelector<HTMLElement>(".hp-origin-flow__stage");
     let frame = 0;
     const update = () => {
       frame = 0;
-      const step = root.offsetHeight / (storySteps.length + 1);
+      const step = root.offsetHeight / (storySteps.length + leadSteps);
       const scrolled = inner.getBoundingClientRect().top - root.getBoundingClientRect().top;
-      const index = Math.max(0, Math.min(storySteps.length - 1, Math.floor((scrolled - step + step * 0.25) / step)));
+      const morph = Math.max(0, Math.min(1, (scrolled - step) / step));
+      root.style.setProperty("--hp-origin-shift", `${-30 * morph}%`);
+      root.style.setProperty("--hp-origin-turn", `${90 * morph}deg`);
+      root.style.setProperty("--hp-origin-scale-x", String(1 - 0.5 * morph));
+      root.style.setProperty("--hp-origin-intro-opacity", String(Math.max(0, Math.min(1, (1 - morph) * 1.6))));
+      root.style.setProperty("--hp-origin-stage-opacity", String(Math.max(0, Math.min(1, (morph - 0.55) / 0.4))));
+      const stageReady = morph >= 0.9;
+      root.classList.toggle("is-transforming", morph > 0.02 && !stageReady);
+      root.classList.toggle("is-stage-ready", stageReady);
+      if (intro && intro.inert !== stageReady) intro.inert = stageReady;
+      if (stage && stage.inert === stageReady) stage.inert = !stageReady;
+      const index = Math.max(0, Math.min(storySteps.length - 1, Math.floor((scrolled - step * leadSteps + step * 0.25) / step)));
+      const navigation = navigationRef.current;
+      if (navigation) {
+        if (performance.now() < navigation.expiresAt && Math.abs(scrolled - (navigation.index + leadSteps) * step) > 64) return;
+        navigationRef.current = null;
+      }
+      activeRef.current = index;
       setActive(index);
       setUnlocked((previous) => Math.max(previous, index));
     };
     const requestUpdate = () => {
       if (!frame) frame = requestAnimationFrame(update);
     };
-    const skipFlowWhenOutside = (event: WheelEvent) => {
-      if (event.deltaY <= 0) return;
-      const step = root.offsetHeight / (storySteps.length + 1);
+    const holdWheelGesture = () => {
+      const gesture = wheelGestureRef.current;
+      if (!gesture.active) gesture.releaseAt = performance.now() + 420;
+      gesture.active = true;
+      if (gesture.timer) clearTimeout(gesture.timer);
+      gesture.timer = setTimeout(() => {
+        gesture.active = false;
+        gesture.timer = null;
+      }, Math.max(170, gesture.releaseAt - performance.now()));
+    };
+    const handleWheel = (event: WheelEvent) => {
+      if (Math.abs(event.deltaY) < 1) return;
+      const gesture = wheelGestureRef.current;
+      if (gesture.active) {
+        event.preventDefault();
+        holdWheelGesture();
+        return;
+      }
+      const step = root.offsetHeight / (storySteps.length + leadSteps);
       const scrolled = inner.getBoundingClientRect().top - root.getBoundingClientRect().top;
-      if (scrolled < step || scrolled >= root.offsetHeight - step) return;
-      const target = event.target;
-      if (target instanceof Element && target.closest(".hp-origin-flow__tree, .hp-origin-flow__card")) return;
-      const next = root.closest(".wiki-feature")?.nextElementSibling;
-      if (!(next instanceof HTMLElement)) return;
+      if (scrolled < step * leadSteps - 48 || scrolled > root.offsetHeight - step + 48) return;
+      const target = event.target instanceof Element ? event.target : null;
+      const card = target?.closest<HTMLElement>(".hp-origin-flow__card");
+      const tree = target?.closest(".hp-origin-flow__tree");
+      const direction = Math.sign(event.deltaY);
+      if (card) {
+        const remaining = card.scrollHeight - card.clientHeight - card.scrollTop;
+        if (direction > 0 ? remaining > 2 : card.scrollTop > 2) return;
+      }
+      if (!card && !tree && direction < 0) return;
       event.preventDefault();
-      scrollReaderToTarget(next, inner, "smooth");
+      holdWheelGesture();
+      if ((!card && !tree) || (direction > 0 && activeRef.current === storySteps.length - 1)) {
+        const next = root.closest(".wiki-feature")?.nextElementSibling;
+        if (next instanceof HTMLElement) {
+          navigationRef.current = null;
+          scrollReaderToTarget(next, inner, "smooth");
+        }
+        return;
+      }
+      if (direction < 0 && activeRef.current === 0) {
+        navigationRef.current = null;
+        const intro = root.querySelector<HTMLElement>(".hp-origin-flow__intro");
+        if (intro) scrollReaderToTarget(intro, inner, "smooth");
+        return;
+      }
+      goToStep(Math.max(0, Math.min(storySteps.length - 1, activeRef.current + direction)));
     };
     inner.addEventListener("scroll", requestUpdate, { passive: true });
-    inner.addEventListener("wheel", skipFlowWhenOutside, { passive: false });
+    inner.addEventListener("wheel", handleWheel, { passive: false });
     window.addEventListener("scroll", requestUpdate, { passive: true });
     window.addEventListener("resize", requestUpdate, { passive: true });
     update();
     return () => {
       if (frame) cancelAnimationFrame(frame);
+      if (wheelGestureRef.current.timer) clearTimeout(wheelGestureRef.current.timer);
       inner.removeEventListener("scroll", requestUpdate);
-      inner.removeEventListener("wheel", skipFlowWhenOutside);
+      inner.removeEventListener("wheel", handleWheel);
       window.removeEventListener("scroll", requestUpdate);
       window.removeEventListener("resize", requestUpdate);
     };
-  }, []);
+  }, [goToStep]);
 
   useEffect(() => {
     cardRef.current?.scrollTo({ top: 0 });
+    setFirstViewAtStep(null);
   }, [active]);
 
   const revisit = (index: number) => {
@@ -166,21 +241,27 @@ export function HumanPracticesOriginTree() {
       }
     }
     if (targetStep < 0) return;
-    const marker = document.getElementById(`hp-origin-step-${targetStep}`);
-    const inner = rootRef.current?.closest<HTMLElement>(".route-frame__scroll");
-    if (marker) {
-      setActive(targetStep);
-      scrollReaderToTarget(marker, inner, "smooth");
-    }
+    goToStep(targetStep);
   };
 
   const currentStep = storySteps[active];
   const record = originInterviewRecords[currentStep.person];
-  const visibleParagraphs = interviewParagraphs(currentStep.person, currentStep.phase);
+  const showingFirst = currentStep.phase === "followup" && firstViewAtStep === active;
+  const displayedPhase = showingFirst ? "first" : currentStep.phase;
+  const displayedReturnFrom = showingFirst ? undefined : currentStep.returnFrom;
+  const firstRoundLabel = storySteps.find((step) => step.person === currentStep.person && step.phase === "first")?.label ?? "First interview";
+  const displayedLabel = showingFirst ? firstRoundLabel : currentStep.label;
+  const visibleParagraphs = interviewParagraphs(currentStep.person, displayedPhase);
   const visitedPeople = new Set(storySteps.slice(0, unlocked + 1).map((step) => step.person));
+  const returnedPeople = new Set(storySteps.slice(0, unlocked + 1).filter((step) => step.phase === "followup").map((step) => step.person));
+  const activeTracePaths = displayedReturnFrom !== undefined
+    ? returnEdges.filter((edge) => edge.from === displayedReturnFrom && edge.to === currentStep.person).map((edge) => edge.path)
+    : currentStep.person === 6
+      ? ["M 26 82 C 26 83.5, 38 83.5, 50 83.5", "M 74 82 C 74 83.5, 62 83.5, 50 83.5", "M 50 83.5 L 50 88"]
+      : forwardEdges.filter(([, to]) => to === currentStep.person).map(([from, to]) => connector(basePoints[from], basePoints[to]));
 
   return (
-    <div className="hp-origin-flow" ref={rootRef} style={{ height: `calc(var(--hp-origin-step) * ${storySteps.length + 1})` }}>
+    <div className="hp-origin-flow" ref={rootRef} style={{ height: `calc(var(--hp-origin-step) * ${storySteps.length + leadSteps})` }}>
       <section className="hp-origin-flow__intro" aria-label="Stakeholder network overview">
         <div className="hp-origin-flow__intro-heading">
           <span>III / Origin</span>
@@ -230,46 +311,47 @@ export function HumanPracticesOriginTree() {
           )}
           </div>
         </div>
-        <p className="hp-origin-flow__intro-hint">Hover over a stakeholder for context · Scroll to follow the dialogue</p>
+        <p className="hp-origin-flow__intro-prompt">Hover over a portrait to see each stakeholder’s background</p>
       </section>
       {storySteps.map((step, index) => (
         <span
           className="hp-origin-flow__step"
           id={`hp-origin-step-${index}`}
           key={`${step.person}-${step.phase}-${index}`}
-          style={{ top: `${(index + 1) / (storySteps.length + 1) * 100}%` }}
+          style={{ top: `${(index + leadSteps) / (storySteps.length + leadSteps) * 100}%` }}
           aria-hidden="true"
         />
       ))}
 
       <section className="hp-origin-flow__stage" aria-label="Origin stakeholder interview network">
         <div className="hp-origin-flow__heading">
-          <span>Origin / CIRC dialogue</span>
           <strong>Stakeholder interviews</strong>
-          <span aria-live="polite">{String(active + 1).padStart(2, "0")} / {String(storySteps.length).padStart(2, "0")}</span>
         </div>
         <h3 className="hp-origin-flow__sr-only">IV. Stakeholder Interview Contents under the CIRC Framework</h3>
 
         <div className="hp-origin-flow__tree" aria-label="Interview sequence">
           <svg className="hp-origin-flow__links" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
             <defs>
-              <marker id="hp-origin-forward-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 Z" /></marker>
-              <marker id="hp-origin-return-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 Z" /></marker>
+              <marker id="hp-origin-forward-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="3.2" markerHeight="3.2" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 Z" /></marker>
+              <marker id="hp-origin-return-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="4" markerHeight="4" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 Z" /></marker>
             </defs>
             {forwardEdges.map(([from, to]) => (
-              <path key={`${from}-${to}`} d={connector(basePoints[from], basePoints[to])} className={`${visitedPeople.has(from) && visitedPeople.has(to) ? "is-lit" : ""}${currentStep.person === to && currentStep.returnFrom === undefined ? " is-current" : ""}`} markerEnd="url(#hp-origin-forward-arrow)" />
+              <path key={`${from}-${to}`} d={connector(basePoints[from], basePoints[to])} className={`${visitedPeople.has(from) && visitedPeople.has(to) ? "is-lit" : ""}${currentStep.person === to && displayedReturnFrom === undefined ? " is-current" : ""}`} markerEnd="url(#hp-origin-forward-arrow)" />
             ))}
-            <path d="M 26 73 C 26 78, 38 78, 50 78" className={visitedPeople.has(4) ? "is-lit" : ""} />
-            <path d="M 74 73 C 74 78, 62 78, 50 78" className={visitedPeople.has(5) ? "is-lit" : ""} />
-            <path d="M 50 78 L 50 83" className={`${visitedPeople.has(4) && visitedPeople.has(5) ? "is-lit" : ""}${currentStep.person === 6 ? " is-current" : ""}`} markerEnd="url(#hp-origin-forward-arrow)" />
+            <path d="M 26 82 C 26 83.5, 38 83.5, 50 83.5" className={visitedPeople.has(4) ? "is-lit" : ""} />
+            <path d="M 74 82 C 74 83.5, 62 83.5, 50 83.5" className={visitedPeople.has(5) ? "is-lit" : ""} />
+            <path d="M 50 83.5 L 50 88" className={`${visitedPeople.has(4) && visitedPeople.has(5) ? "is-lit" : ""}${currentStep.person === 6 ? " is-current" : ""}`} markerEnd="url(#hp-origin-forward-arrow)" />
             {returnEdges.map((edge) => (
-              <path key={edge.id} d={edge.path} className={`hp-origin-flow__return-link${visitedPeople.has(edge.from) ? " is-lit" : ""}${currentStep.returnFrom === edge.from && currentStep.person === edge.to ? " is-current" : ""}`} markerEnd="url(#hp-origin-return-arrow)" />
+              <path key={edge.id} d={edge.path} className={`hp-origin-flow__return-link${visitedPeople.has(edge.from) ? " is-lit" : ""}${displayedReturnFrom === edge.from && currentStep.person === edge.to ? " is-current" : ""}`} markerEnd="url(#hp-origin-return-arrow)" />
+            ))}
+            {activeTracePaths.map((path, index) => (
+              <path key={`${active}-${displayedPhase}-${index}`} d={path} pathLength={100} className={`hp-origin-flow__active-trace${displayedReturnFrom !== undefined ? " is-return" : ""}`} />
             ))}
           </svg>
 
           {originInterviewRecords.map((item, index) => (
             <button
-              className={`hp-origin-flow__person${visitedPeople.has(index) ? " is-lit" : " is-locked"}${index === currentStep.person ? " is-active" : ""}${index === currentStep.person && currentStep.returnFrom !== undefined ? " is-revisit" : ""}${[1, 2, 3, 4].includes(index) ? " has-followup" : ""}`}
+              className={`hp-origin-flow__person${visitedPeople.has(index) ? " is-lit" : " is-locked"}${index === currentStep.person ? " is-active" : ""}${index === currentStep.person && displayedReturnFrom !== undefined ? " is-revisit" : ""}${returnedPeople.has(index) ? " has-followup" : ""}`}
               key={item.id}
               type="button"
               aria-disabled={!visitedPeople.has(index)}
@@ -277,23 +359,36 @@ export function HumanPracticesOriginTree() {
               aria-label={`${names[index] ?? item.title}: ${item.title}`}
               style={{ left: `${basePoints[index].x}%`, top: `${basePoints[index].y}%` }}
               onClick={() => revisit(index)}
+              onMouseEnter={() => setHoveredTreeProfile(index)}
+              onMouseLeave={() => setHoveredTreeProfile(null)}
+              onFocus={() => setHoveredTreeProfile(index)}
+              onBlur={() => setHoveredTreeProfile(null)}
             >
               <span className="hp-origin-flow__person-back" aria-hidden="true" />
               <span className="hp-origin-flow__person-front">
-                <span className="hp-origin-flow__name">{names[index] ?? item.title}</span>
                 <span className="hp-origin-flow__portrait" aria-hidden="true">{index === 0 ? "EXPO" : <UserRound size={25} strokeWidth={1.6} />}</span>
               </span>
             </button>
           ))}
+          {hoveredTreeProfile !== null && (
+            <aside
+              className={`hp-origin-flow__tree-tooltip${basePoints[hoveredTreeProfile].x > 50 ? " is-left" : " is-right"}`}
+              style={{ left: `${basePoints[hoveredTreeProfile].x}%`, top: `${basePoints[hoveredTreeProfile].y}%` }}
+              role="tooltip"
+            >
+              <strong>{names[hoveredTreeProfile]}</strong>
+              <span>{originInterviewRecords[hoveredTreeProfile].title}</span>
+            </aside>
+          )}
         </div>
 
         <div
-          className={`hp-origin-flow__card${currentStep.returnFrom !== undefined ? " is-followup" : ""}`}
-          key={`${record.id}-${active}`}
+          className={`hp-origin-flow__card${displayedReturnFrom !== undefined ? " is-followup" : ""}`}
+          key={`${record.id}-${active}-${displayedPhase}`}
           ref={cardRef}
           role="region"
           tabIndex={0}
-          aria-label={`${names[currentStep.person]} ${currentStep.label} notes`}
+          aria-label={`${names[currentStep.person]} ${displayedLabel} notes`}
           onKeyDown={(event) => {
             if (["ArrowDown", "ArrowUp", "PageDown", "PageUp", "Home", "End", " "].includes(event.key)) {
               event.stopPropagation();
@@ -301,9 +396,14 @@ export function HumanPracticesOriginTree() {
           }}
         >
           <div className="hp-origin-flow__card-head">
-            <span>{String(active + 1).padStart(2, "0")} / {String(storySteps.length).padStart(2, "0")} · {currentStep.label}</span>
             <h3>{names[currentStep.person]}</h3>
             <p>{record.title}</p>
+            {currentStep.phase === "followup" && (
+              <div className="hp-origin-flow__phase-switch" role="group" aria-label={`${names[currentStep.person]} interview round`}>
+                <button type="button" aria-pressed={showingFirst} onClick={() => setFirstViewAtStep(active)}>{firstRoundLabel}</button>
+                <button type="button" aria-pressed={!showingFirst} onClick={() => setFirstViewAtStep(null)}>Follow-up</button>
+              </div>
+            )}
           </div>
           <div className="hp-origin-flow__card-body">
             {visibleParagraphs.map((paragraph, paragraphIndex) => {

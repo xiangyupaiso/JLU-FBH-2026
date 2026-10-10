@@ -1,8 +1,8 @@
 import educationHero from "../../assets/wiki/engagement-heroes/engagement-education-hero-v2.webp";
-import entrepreneurshipHero from "../../assets/wiki/engagement-heroes/engagement-entrepreneurship-hero-v2.webp";
-import humanPracticesHero from "../../assets/wiki/engagement-heroes/engagement-human-practices-hero-v2.webp";
+const entrepreneurshipHero = "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/engagement-entrepreneurship-hero-v2-efb0a019ee72.webp";
+const humanPracticesHero = "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/engagement-human-practices-hero-v2-ce6ea8234186.webp";
 import inclusivityHero from "../../assets/wiki/engagement-heroes/engagement-inclusivity-hero-v2.webp";
-import sustainabilityHero from "../../assets/wiki/engagement-heroes/engagement-sustainability-hero-v2.webp";
+const sustainabilityHero = "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/engagement-sustainability-hero-v2-af187053f50d.webp";
 
 /**
  * Per-page hero art for the Engagement reader.
