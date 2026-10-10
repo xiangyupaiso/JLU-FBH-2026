@@ -9,8 +9,8 @@ const hairLossLabelUrl = "https://static.igem.wiki/teams/6056/wiki/files/pages/h
 const hairLossUrl = "https://static.igem.wiki/teams/6056/wiki/files/pages/home/hair-loss.webp";
 const surgeryLabelUrl = "https://static.igem.wiki/teams/6056/wiki/files/pages/home/surgery-label.webp";
 const surgeryUrl = "https://static.igem.wiki/teams/6056/wiki/files/pages/home/surgery.webp";
-import womanFrameUrl from "../assets/home/scene-01-new/woman-frame-focus.webp";
-import womanPortraitUrl from "../assets/home/scene-01-new/woman-portrait.svg";
+const womanFrameUrl = "https://static.igem.wiki/teams/6056/wiki/files/pages/home/woman-frame-focus-b24540ae8a11.webp";
+const womanPortraitUrl = "https://static.igem.wiki/teams/6056/wiki/files/pages/home/woman-portrait-02efc9a4ddeb.svg";
 import { HomeIntro } from "../components/home/HomeIntro";
 import { HomePlayback } from "../components/home/HomePlayback";
 import { useHomeScene01Animation } from "../hooks/useHomeScene01Animation";

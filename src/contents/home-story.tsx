@@ -11,7 +11,7 @@ import { HomeRnaSequence } from "../components/home/HomeRnaSequence";
 import { WardInfusionTube } from "../components/home/WardInfusionTube";
 import originalManifest from "../assets/home/story/manifest.json";
 import supplements from "../assets/home/supplements/manifest.json";
-import patientConcerned from "../assets/home/ward-transition/patient-teary-20261004.webp";
+const patientConcerned = "https://static.igem.wiki/teams/6056/wiki/files/pages/home/patient-teary-20261004-467cbc4b5db7.webp";
 const clinicianConcerned = "https://static.igem.wiki/teams/6056/wiki/files/pages/home/clinician-concerned.avif";
 const clinicianEllipsis = "https://static.igem.wiki/teams/6056/wiki/files/pages/home/clinician-ellipsis.avif";
 const patientQuestion = "https://static.igem.wiki/teams/6056/wiki/files/pages/home/patient-question.avif";
@@ -20,8 +20,8 @@ import { HomeAntigenSwitch } from "../components/home/HomeAntigenSwitch";
 import { HomeFinale } from "../components/home/HomeFinale";
 import { HomeExploreLinks } from "../components/home/HomeExploreLinks";
 const mapDataNoteUrl = "https://static.igem.wiki/teams/6056/wiki/files/pages/home/map-data-note.avif";
-import mapLatestUrl from "../assets/home/story/map-latest-20261004.webp";
-import mapCloudNorthwestUrl from "../assets/home/story/map-cloud-northwest.webp";
+const mapLatestUrl = "https://static.igem.wiki/teams/6056/wiki/files/pages/home/map-latest-20261004-02da5d799cd2.webp";
+const mapCloudNorthwestUrl = "https://static.igem.wiki/teams/6056/wiki/files/pages/home/map-cloud-northwest-7a14ee146da5.webp";
 import "../styles/home-story.css";
 import "../styles/home-tnbc-map.css";
 import "../styles/home-reading.css";
@@ -75,11 +75,31 @@ const imageUrls: Record<string, string> = {
   "../assets/home/story/scene-9-layer-2.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-9-layer-2.webp",
   "../assets/home/story/scene-9-layer-3.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-9-layer-3.webp",
 };
-const supplementUrls = import.meta.glob("../assets/home/supplements/*.webp", {
-  eager: true,
-  query: "?url",
-  import: "default",
-}) as Record<string, string>;
+const supplementUrls: Record<string, string> = {
+  "../assets/home/supplements/fan-1.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/fan-1-7b6a2cdfd1c0.webp",
+  "../assets/home/supplements/fan-2.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/fan-2-99316fb0dee8.webp",
+  "../assets/home/supplements/fan-3.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/fan-3-5a2cfbaaa1bd.webp",
+  "../assets/home/supplements/fan-4.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/fan-4-ca142f3896a2.webp",
+  "../assets/home/supplements/fan-5.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/fan-5-6e5a6d6fc4bd.webp",
+  "../assets/home/supplements/fan-6.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/fan-6-f2d48ddfefe2.webp",
+  "../assets/home/supplements/fan-7.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/fan-7-e0b9ba792000.webp",
+  "../assets/home/supplements/fan-8.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/fan-8-2576354a8c9d.webp",
+  "../assets/home/supplements/tear-1.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/tear-1-6f99fafd2a57.webp",
+  "../assets/home/supplements/tear-2.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/tear-2-df0640fe68b9.webp",
+  "../assets/home/supplements/tear-3.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/tear-3-e5777e499af5.webp",
+  "../assets/home/supplements/tear-4.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/tear-4-74fdbdde9e93.webp",
+  "../assets/home/supplements/tear-5.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/tear-5-3a26285560f2.webp",
+  "../assets/home/supplements/thinking-1.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/thinking-1-cf39f9eecc9d.webp",
+  "../assets/home/supplements/thinking-10.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/thinking-10-958af66e1b31.webp",
+  "../assets/home/supplements/thinking-2.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/thinking-2-9c0e1bf60d35.webp",
+  "../assets/home/supplements/thinking-3.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/thinking-3-946139db0f4f.webp",
+  "../assets/home/supplements/thinking-4.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/thinking-4-a202ea746a90.webp",
+  "../assets/home/supplements/thinking-5.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/thinking-5-e9181f8afd09.webp",
+  "../assets/home/supplements/thinking-6.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/thinking-6-3ae0541c5bcc.webp",
+  "../assets/home/supplements/thinking-7.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/thinking-7-da0eb2680bea.webp",
+  "../assets/home/supplements/thinking-8.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/thinking-8-f1b1cea38333.webp",
+  "../assets/home/supplements/thinking-9.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/thinking-9-f7c387ca859a.webp",
+};
 
 function artworkUrl(file: string) {
   return (

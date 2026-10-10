@@ -13,10 +13,10 @@ import {
 } from "react";
 import { createPortal } from "react-dom";
 import "../../../styles/games-page.css";
-import bombCatArt from "../../../assets/wiki/bomb-cat-showcase.webp";
-import breastGuardianArt from "../../../assets/wiki/breast-guardian-showcase.webp";
-import bioMemoryArt from "../../../assets/wiki/bio-memory-showcase.webp";
-import virtualLabArt from "../../../assets/wiki/virtual-lab-showcase.webp";
+const bombCatArt = "https://static.igem.wiki/teams/6056/wiki/files/pages/games/bomb-cat/cover-9a800b8be673.webp";
+const breastGuardianArt = "https://static.igem.wiki/teams/6056/wiki/files/pages/shared/breast-guardian-showcase-86cd548b1ac0.webp";
+const bioMemoryArt = "https://static.igem.wiki/teams/6056/wiki/files/pages/shared/bio-memory-showcase-e198853d2fb5.webp";
+const virtualLabArt = "https://static.igem.wiki/teams/6056/wiki/files/pages/shared/virtual-lab-showcase-4b03b6f1bbbb.webp";
 
 /**
  * Games — interactive station map + four playable projects.
