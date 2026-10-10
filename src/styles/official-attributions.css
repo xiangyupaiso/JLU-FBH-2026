@@ -33,19 +33,22 @@
   border: 0;
 }
 
+/* iframe 挂载区：整条区域底色设为纯白，使 iframe 窄屏居中后两侧留白为白底（不透出黄色底色） */
 .official-attributions-page__form {
   box-sizing: border-box;
   width: 100%;
   margin: 0 auto;
-  padding: 0;
+  padding: 24px 0 54px;
+  background: #ffffff;
 }
 
 .official-attributions-page__form iframe {
   display: block;
-  width: 100%;
+  width: min(1140px, calc(100% - 48px));
+  margin: 0 auto;
   min-height: 720px;
   border: 0;
-  background: #fff;
+  background: #ffffff;
 }
 
 .official-attributions-page .wiki-next.wiki-next--record {
@@ -85,7 +88,11 @@
 
 @media (max-width: 760px) {
   .official-attributions-page__form {
-    width: 100%;
+    padding: 16px 0 36px;
+  }
+
+  .official-attributions-page__form iframe {
+    width: calc(100% - 32px);
   }
 
   .official-attributions-page .wiki-next.wiki-next--record {

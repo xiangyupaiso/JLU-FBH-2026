@@ -25,8 +25,6 @@ import sdg3DcMaturationFlowImg from "../../../assets/wiki/sustainability/sustain
 import sdg3SplenocyteFlowImg from "../../../assets/wiki/sustainability/sustainability-sdg3-splenocyte-flow.png";
 import sdg3TumorGrowthImg from "../../../assets/wiki/sustainability/sustainability-sdg3-tumor-growth.png";
 import sdg9TraceableExpertFeedbackImg from "../../../assets/wiki/sustainability/sustainability-sdg9-traceable-expert-feedback.png";
-import sdg9BatchProjectionImg from "../../../assets/wiki/sustainability-sdg9-batch-projection.png";
-import sdg9EvidenceImg from "../../../assets/wiki/sustainability-sdg9-evidence.png";
 
 export type SustainabilityAssetKind = "image" | "pdf";
 
@@ -162,27 +160,41 @@ export const sustainabilityAssets = {
     alt: "Seven traceable SDG 9 expert feedback records",
     section: "SDG 9 — Evidence",
   },
-  sdg9BatchProjection: {
+  sdg9Evidence2: {
     kind: "image",
-    fileName: "sustainability-sdg9-batch-projection.png",
-    localSourcePath: "src/assets/wiki/sustainability-sdg9-batch-projection.png",
-    localSrc: sdg9BatchProjectionImg,
+    fileName: "evidence-2.avif",
+    localSourcePath: "",
     uploadUrl: `${IMG}/sustainability/sdg9/evidence-2.avif`,
     alt: "Vaccine constructs and comparative immune responses",
     section: "SDG 9 — Evidence",
   },
+  sdg9BatchProjection: {
+    kind: "image",
+    fileName: "evidence-2.avif",
+    localSourcePath: "",
+    uploadUrl: `${IMG}/sustainability/sdg9/evidence-2.avif`,
+    alt: "Vaccine constructs and comparative immune responses",
+    section: "SDG 9 — Evidence",
+  },
+  sdg9Evidence3: {
+    kind: "image",
+    fileName: "evidence-3.avif",
+    localSourcePath: "",
+    uploadUrl: `${IMG}/sustainability/sdg9/evidence-3.avif`,
+    alt: "Circularization and antigen translation evidence",
+    section: "SDG 9 — Evidence",
+  },
   sdg9Evidence: {
     kind: "image",
-    fileName: "sustainability-sdg9-evidence.png",
-    localSourcePath: "src/assets/wiki/sustainability-sdg9-evidence.png",
-    localSrc: sdg9EvidenceImg,
+    fileName: "evidence-3.avif",
+    localSourcePath: "",
     uploadUrl: `${IMG}/sustainability/sdg9/evidence-3.avif`,
     alt: "Circularization and antigen translation evidence",
     section: "SDG 9 — Evidence",
   },
   sdg9Evidence4: {
     kind: "image",
-    fileName: "sustainability-sdg9-evidence-4.avif",
+    fileName: "evidence-4.avif",
     localSourcePath: "",
     uploadUrl: `${IMG}/sustainability/sdg9/evidence-4.avif`,
     alt: "CTL selectivity assessment",
@@ -190,7 +202,7 @@ export const sustainabilityAssets = {
   },
   sdg9Evidence5: {
     kind: "image",
-    fileName: "sustainability-sdg9-evidence-5.avif",
+    fileName: "evidence-5.avif",
     localSourcePath: "",
     uploadUrl: `${IMG}/sustainability/sdg9/evidence-5.avif`,
     alt: "Three-module vaccine design system",
