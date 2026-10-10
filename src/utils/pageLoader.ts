@@ -171,6 +171,12 @@ async function waitForAnimation(video: HTMLVideoElement, signal: AbortSignal) {
 async function pageImagesAndAnimations(signal: AbortSignal): Promise<void> {
   const root = document.getElementById("root");
   if (!root) return;
+  // The Software record contains a large set of screenshot figures. Let the
+  // browser's native lazy loader fetch those as readers approach them instead
+  // of making every below-the-fold image a prerequisite for opening the page.
+  const isSoftwareRoute = Boolean(
+    root.querySelector('[data-wiki-route="/software"]'),
+  );
   const pending: Promise<void>[] = [];
   const seen = new Set<string>();
   let count = 0;
@@ -187,9 +193,11 @@ async function pageImagesAndAnimations(signal: AbortSignal): Promise<void> {
     if (signal.aborted) return;
     // Yield during large routes instead of blocking the loader's drawing.
     if (++count % 120 === 0) await new Promise(requestAnimationFrame);
-    // Offscreen and initially transparent animation layers belong to this
-    // page too. Eager loading avoids waiting forever on a lazy image's decode.
+    // Software screenshots stay lazy: decoding all of them before dismissing
+    // the route loader can hold the page behind tens of megabytes of PNGs.
+    // Other routes retain the existing eager-readiness behavior.
     if (element instanceof HTMLImageElement) {
+      if (isSoftwareRoute && element.loading === "lazy") continue;
       element.loading = "eager";
       pending.push(waitForImage(element));
     }

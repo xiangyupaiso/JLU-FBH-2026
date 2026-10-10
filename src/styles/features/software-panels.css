@@ -1,0 +1,41 @@
+.software-guide-feature {
+  margin: 0;
+}
+
+.software-guide-feature .wiki-document {
+  max-width: 100%;
+}
+
+/* Use the Hardware figure treatment, but keep labels from Software's own
+   manuscript (including subfigures such as 4A and 6B). */
+.wiki-page--software .wiki-figure--labelled figcaption::before {
+  display: none;
+  content: none;
+}
+
+.wiki-page--software .wiki-figure--labelled .wiki-figure__label {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2.5px 8px;
+  margin-right: 10px;
+  border: 1px solid rgba(22, 43, 76, 0.25);
+  border-radius: 4px;
+  background: var(--brand-navy, #162b4c);
+  color: #ffffff;
+  box-shadow: 0 1px 3px rgba(22, 43, 76, 0.12);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  line-height: 1.25;
+  vertical-align: 1.5px;
+}
+
+.wiki-page--software .wiki-figure--labelled .wiki-figure__caption {
+  display: inline;
+  color: color-mix(in srgb, var(--ink, #25312d) 85%, transparent);
+  font-size: 13.5px;
+  font-style: italic;
+  line-height: 1.6;
+}

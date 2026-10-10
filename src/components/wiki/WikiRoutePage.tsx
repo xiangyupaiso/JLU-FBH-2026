@@ -21,7 +21,7 @@ import type {
   WikiSection,
 } from "./wikiPageTypes";
 import { linkify, renderInlineFormatting } from "./proseInline";
-import { WikiLineSidebar } from "./WikiLineSidebar";
+import { WikiLineSidebar, type WikiLineSidebarItem } from "./WikiLineSidebar";
 import { WikiNextRecord } from "./WikiNextRecord";
 import { WikiProtocolModal } from "./WikiProtocolViewer";
 import type { ExperimentProtocolPair } from "../../data/wet-lab/experimentProtocolPages";
@@ -280,22 +280,18 @@ function renderSubheadingTitle(title: string) {
 }
 
 /**
- * Table cell content: `**bold**` plus the source manuscripts' literal `<br>`
- * line breaks.
+ * Table cell content: Markdown links, `**bold**`, plus the source manuscripts'
+ * literal `<br>` line breaks.
  *
- * Both table blocks use this — `table` as well as `parts-table`. The plain
- * `table` block used to emit cells and captions as raw strings, which printed
- * the data layer's `**raw**` markers literally; no page had ever put emphasis in
- * a cell, so the two blocks had quietly drifted apart. Rendering both through
- * the same helper keeps them identical, and for every existing page (no `**`, no
- * `<br>` in any cell or caption) the output is unchanged.
+ * Both table blocks use this — `table` as well as `parts-table`. Rendering both
+ * through the same helper keeps links and emphasis consistent in every table.
  */
 function renderTableCell(cell: string): ReactNode {
-  if (!cell.includes("<br")) return renderInlineFormatting(cell);
+  if (!cell.includes("<br")) return linkify(cell);
   const lines = cell.split(/<br\s*\/?>/);
   return lines.map((line, index) => (
     <span key={index}>
-      {renderInlineFormatting(line)}
+      {linkify(line)}
       {index < lines.length - 1 ? <br /> : null}
     </span>
   ));
@@ -397,6 +393,49 @@ function renderProseParagraphs(
   return elements;
 }
 
+function CodeBlock({
+  code,
+  language,
+  onCopy,
+}: {
+  code: string;
+  language?: string;
+  onCopy: (code: string) => Promise<boolean>;
+}) {
+  const [copied, setCopied] = useState(false);
+  const displayLanguage = language?.trim() || "text";
+  const languageClass = displayLanguage.toLowerCase().replace(/[^a-z0-9]+/g, "-");
+
+  return (
+    <div
+      className={`wiki-code wiki-code--${languageClass}`}
+      data-wiki-reveal
+      data-language={displayLanguage}
+    >
+      <div className="wiki-code__bar">
+        <span className="wiki-code__language">{displayLanguage}</span>
+        <button
+          type="button"
+          className="wiki-code__copy"
+          onClick={() => {
+            void onCopy(code).then((success) => {
+              if (!success) return;
+              setCopied(true);
+              window.setTimeout(() => setCopied(false), 1600);
+            });
+          }}
+          aria-label={`Copy ${displayLanguage} code`}
+        >
+          {copied ? "Copied" : "Copy"}
+        </button>
+      </div>
+      <pre className="wiki-code__body">
+        <code>{code}</code>
+      </pre>
+    </div>
+  );
+}
+
 function RouteBlock({
   block,
   features,
@@ -417,12 +456,38 @@ function RouteBlock({
     scrollReaderToTarget(target, scrollContainerRef?.current, "instant");
   };
 
+  const copyCode = async (code: string) => {
+    try {
+      await navigator.clipboard.writeText(code);
+      return true;
+    } catch {
+      const textarea = document.createElement("textarea");
+      textarea.value = code;
+      textarea.setAttribute("readonly", "true");
+      textarea.style.position = "fixed";
+      textarea.style.opacity = "0";
+      document.body.appendChild(textarea);
+      textarea.select();
+      const copied = document.execCommand("copy");
+      textarea.remove();
+      return copied;
+    }
+  };
+
   switch (block.type) {
     case "prose":
       return (
         <div className="wiki-prose" data-wiki-reveal>
           {renderProseParagraphs(block.paragraphs, inline)}
         </div>
+      );
+    case "code":
+      return (
+        <CodeBlock
+          code={block.code}
+          language={block.language}
+          onCopy={copyCode}
+        />
       );
     case "prose-linked":
       return (
@@ -452,14 +517,28 @@ function RouteBlock({
       );
     case "figure":
       return (
-        <figure className="wiki-figure" data-wiki-reveal>
+        <figure
+          className={`wiki-figure${block.figureLabel ? " wiki-figure--labelled" : ""}`}
+          data-wiki-reveal
+        >
           <img
             src={block.src}
             alt={block.alt}
             loading="lazy"
             decoding="async"
           />
-          {block.caption ? <figcaption>{block.caption}</figcaption> : null}
+          {block.figureLabel ? (
+            <figcaption>
+              <span className="wiki-figure__label">{block.figureLabel}</span>
+              {block.caption ? (
+                <span className="wiki-figure__caption">
+                  {renderInlineFormatting(block.caption)}
+                </span>
+              ) : null}
+            </figcaption>
+          ) : block.caption ? (
+            <figcaption>{block.caption}</figcaption>
+          ) : null}
         </figure>
       );
     case "image-placeholder":
@@ -613,6 +692,9 @@ function RouteBlock({
           data-wiki-outline-parent={sectionId}
           data-wiki-reveal
         >
+          {block.anchorIds?.map((anchorId) => (
+            <span className="wiki-anchor" id={anchorId} key={anchorId} />
+          ))}
           <span className="wiki-subheading__title">
             {renderSubheadingTitle(block.title)}
           </span>
@@ -926,6 +1008,9 @@ function RouteSection({
         }`}
         data-wiki-reveal
       >
+        {section.anchorIds?.map((anchorId) => (
+          <span className="wiki-anchor" id={anchorId} key={anchorId} />
+        ))}
         {section.hideSectionNumber ? null : (
           <span className="wiki-section-number" aria-hidden="true">
             {String(Number.parseInt(section.index, 10)).padStart(2, "0")}
@@ -1137,7 +1222,7 @@ export function WikiRoutePage({
     () => ({ activeSection, activeSubsection }),
     [activeSection, activeSubsection],
   );
-  const sidebarItems = content.sections.map((section) => {
+  const sidebarItems: WikiLineSidebarItem[] = content.sections.map((section) => {
     const subheadings = section.blocks
       ?.filter(
         (block): block is Extract<WikiContentBlock, { type: "subheading" }> =>
@@ -1148,13 +1233,35 @@ export function WikiRoutePage({
         id: block.id,
         index: block.index,
         label: block.title,
+        children: [] as WikiLineSidebarItem[],
       }));
+    const subheadingByIndex = new Map(
+      subheadings?.map((subheading) => [subheading.index, subheading]) ?? [],
+    );
+    const nestedSubheadings: WikiLineSidebarItem[] = [];
+    const subheadingById = new Map<string, WikiLineSidebarItem>();
+    (subheadings ?? []).forEach((subheading) => {
+      const parentIndex = subheading.index.split(".").slice(0, -1).join(".");
+      const parent = subheadingByIndex.get(parentIndex);
+      const child = {
+        id: subheading.id,
+        index: subheading.index,
+        label: subheading.label,
+        children: [] as WikiLineSidebarItem[],
+      };
+      subheadingById.set(child.id, child);
+      if (parent) {
+        subheadingById.get(parent.id)?.children?.push(child);
+      } else {
+        nestedSubheadings.push(child);
+      }
+    });
     return {
       id: section.id,
       index: section.index,
       label: section.navLabel ?? section.title,
       meta: section.kicker,
-      children: subheadings?.length ? subheadings : undefined,
+      children: nestedSubheadings.length ? nestedSubheadings : undefined,
     };
   });
   const heroStyle = heroImage

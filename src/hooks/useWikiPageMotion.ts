@@ -38,7 +38,29 @@ export function useWikiPageMotion(
         section.style.setProperty("--wiki-section-drift", "0px");
       });
 
-      if (!("IntersectionObserver" in window)) return;
+      const routeHash = window.location.hash.slice(1);
+      const hashFrame = requestAnimationFrame(() => {
+        const routeTarget = routeHash ? document.getElementById(routeHash) : null;
+        if (!routeTarget || !root.contains(routeTarget)) return;
+
+        scrollReaderToTarget(routeTarget, null, "instant");
+        const section = sections.find(
+          (candidate) => candidate === routeTarget || candidate.contains(routeTarget),
+        );
+        if (section) setActiveSection(section.id);
+        if (sectionIds.includes(routeHash)) {
+          setActiveSubsection("");
+        } else {
+          const outlineAnchor = routeTarget.closest<HTMLElement>(
+            "[data-wiki-outline-anchor]",
+          );
+          setActiveSubsection(outlineAnchor?.id ?? routeHash);
+        }
+      });
+
+      if (!("IntersectionObserver" in window)) {
+        return () => cancelAnimationFrame(hashFrame);
+      }
       const observer = new IntersectionObserver(
         (entries) => {
           const visible = entries
@@ -55,6 +77,7 @@ export function useWikiPageMotion(
       );
       sections.forEach((section) => observer.observe(section));
       return () => {
+        cancelAnimationFrame(hashFrame);
         observer.disconnect();
         sections.forEach((section) => {
           section.removeAttribute("data-wiki-active");

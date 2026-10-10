@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import { Link } from "react-router-dom";
+import { scrollReaderToId } from "../../utils/scrollReaderToTarget";
 
 /**
  * Inline prose formatting for the shared reader.
@@ -8,7 +9,7 @@ import { Link } from "react-router-dom";
  * can be reasoned about — and exercised — without pulling in the reader
  * template, its sidebar, or the page registry.
  *
- * - `renderInlineFormatting` handles the data layer's `**bold**` markers.
+ * - `renderInlineFormatting` handles the data layer's `**bold**` and `*italic*` markers.
  * - `linkify` layers Markdown links on top and delegates everything else to the
  *   formatter, so a caller never has to choose between the two.
  */
@@ -32,7 +33,7 @@ import { Link } from "react-router-dom";
  * fallback, so a citation layer inherits Markdown links for free.
  */
 const MD_LINK_RE =
-  /\[([^\]\n]{1,120})\]\((https?:\/\/[^\s)]+|\/[A-Za-z0-9\-_/]*)\)/g;
+  /\[([^\]\n]{1,120})\]\((https?:\/\/[^\s)]+|\/[A-Za-z0-9\-_/]*|#[A-Za-z0-9_-]+)\)/g;
 
 export function linkify(text: string): ReactNode {
   if (!text || !text.includes("](")) return renderInlineFormatting(text);
@@ -52,7 +53,19 @@ export function linkify(text: string): ReactNode {
     }
     const href = match[2];
     nodes.push(
-      href.startsWith("/") ? (
+      href.startsWith("#") ? (
+        <a
+          className="wiki-prose-link wiki-prose-link--anchor"
+          href={href}
+          key={`l-${match.index}`}
+          onClick={(event) => {
+            event.preventDefault();
+            scrollReaderToId(href.slice(1), event.currentTarget);
+          }}
+        >
+          {match[1]}
+        </a>
+      ) : href.startsWith("/") ? (
         <Link
           className="wiki-prose-link wiki-prose-link--route"
           key={`l-${match.index}`}
@@ -86,15 +99,21 @@ export function linkify(text: string): ReactNode {
   return nodes;
 }
 
-/** Render the `**bold**` markers the data layer writes. */
+const INLINE_EMPHASIS_RE =
+  /(\*\*[\s\S]+?\*\*|(?<![\w*])\*(?!\*)(?:[^*\n]|\*(?!\*))+?\*(?!\*))/g;
+
+/** Render Markdown bold and italic markers without mistaking scientific `*` tokens for emphasis. */
 export function renderInlineFormatting(text: string): ReactNode {
-  if (!text || !text.includes("**")) {
+  if (!text || !text.includes("*")) {
     return text;
   }
-  const parts = text.split(/(\*\*[^*]+?\*\*)/g);
+  const parts = text.split(INLINE_EMPHASIS_RE);
   return parts.map((part, index) => {
     if (part.startsWith("**") && part.endsWith("**")) {
       return <strong key={index}>{part.slice(2, -2)}</strong>;
+    }
+    if (part.startsWith("*") && part.endsWith("*") && part.length > 2) {
+      return <em key={index}>{part.slice(1, -1)}</em>;
     }
     return part;
   });
