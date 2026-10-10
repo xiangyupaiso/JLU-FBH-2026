@@ -1,108 +1,92 @@
-.official-attributions-page {
-  --official-attributions-paper: #fffbd0;
-  --official-attributions-ink: #3e2d14;
-  min-height: 0;
-  background: var(--official-attributions-paper);
-  color: var(--official-attributions-ink);
-}
-
-.site-header.is-team-page::before {
-  background-color: var(--route-main, #f5cf6f);
-}
-
-.official-attributions-page__hero {
+/* The official live document owns the full reading viewport. With no
+   side gutter or nested decorative frame, native iframe scrolling reaches
+   its boundary before wheel input continues into the host page. */
+.official-attributions-page__reader {
   position: relative;
-  height: 100dvh;
-  min-height: 100dvh;
-  margin-top: calc(-1 * var(--header-height));
-  overflow: hidden;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-.official-attributions-page__sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
-}
-
-/* iframe 挂载区：整条区域底色设为纯白，使 iframe 窄屏居中后两侧留白为白底（不透出黄色底色） */
-.official-attributions-page__form {
-  box-sizing: border-box;
-  width: 100%;
-  margin: 0 auto;
-  padding: 24px 0 54px;
+  height: var(--reader-h);
+  margin: 0;
   background: #ffffff;
+  scroll-margin-top: var(--header-height);
 }
 
-.official-attributions-page__form iframe {
+.official-attributions-page__reader iframe {
   display: block;
-  width: min(1140px, calc(100% - 48px));
-  margin: 0 auto;
-  min-height: 720px;
+  width: 100%;
+  height: 100%;
   border: 0;
   background: #ffffff;
 }
 
-.official-attributions-page .wiki-next.wiki-next--record {
-  --next-record-ink: var(--official-attributions-ink);
-  --next-record-muted: color-mix(
-    in srgb,
-    var(--official-attributions-ink) 62%,
-    transparent
-  );
-  --next-record-line: color-mix(
-    in srgb,
-    var(--official-attributions-ink) 22%,
-    transparent
-  );
-  --next-record-paper: var(--official-attributions-paper);
-  --next-record-accent: #d39b4a;
-  width: min(1120px, calc(100% - 48px));
-  margin: 0 auto;
-  padding: 64px 0 82px;
-  border-top: 1px solid var(--next-record-line);
+.official-attributions-page__outline {
+  position: absolute;
+  z-index: 4;
+  top: 12px;
+  right: 24px;
+  width: min(300px, calc(100% - 32px));
+  color: var(--route-heading-ink);
+  font-family: var(--font-sans);
 }
 
-/* Match the shared reader-route hero contract on compact screens, while
-   keeping the desktop full-height cover above unchanged. */
-@media (max-width: 980px) {
-  .official-attributions-page__hero {
-    width: 100%;
-    height: auto;
-    min-height: 0;
-    max-height: 45vh;
-    aspect-ratio: 16 / 9;
-    margin-top: 0;
-    background-position: center top;
-    background-size: contain;
-  }
+.official-attributions-page__outline summary {
+  width: fit-content;
+  margin-left: auto;
+  padding: 9px 16px;
+  border: 1px solid var(--route-line-strong);
+  border-radius: 20px;
+  background: var(--route-base);
+  font-size: 14px;
+  font-weight: 650;
+  cursor: pointer;
 }
 
-@media (max-width: 760px) {
-  .official-attributions-page__form {
-    padding: 16px 0 36px;
-  }
+.official-attributions-page__outline nav {
+  display: grid;
+  gap: 2px;
+  margin-top: 8px;
+  padding: 12px;
+  border: 1px solid var(--route-line-strong);
+  border-radius: 12px;
+  background: var(--route-base);
+  box-shadow: var(--route-shadow);
+}
 
-  .official-attributions-page__form iframe {
-    width: calc(100% - 32px);
-  }
+.official-attributions-page__outline a {
+  display: grid;
+  grid-template-columns: 22px minmax(0, 1fr);
+  gap: 8px;
+  padding: 10px 4px;
+  color: inherit;
+  font-size: 14px;
+  line-height: 1.4;
+  text-decoration: none;
+}
 
-  .official-attributions-page .wiki-next.wiki-next--record {
-    width: calc(100% - 32px);
-    padding: 52px 0 64px;
-  }
+.official-attributions-page__outline a span {
+  font-family: var(--font-display);
+  font-size: 17px;
+}
+
+.official-attributions-page__outline a strong {
+  font-weight: 500;
+}
+
+.official-attributions-page__outline a:is(:hover, .is-active) strong {
+  background: linear-gradient(
+    transparent 55%,
+    var(--route-marker-bg) 55%,
+    var(--route-marker-bg) 92%,
+    transparent 92%
+  );
+}
+
+.official-attributions-page__outline :is(summary, a):focus-visible {
+  outline: 2px solid var(--route-heading-ink);
+  outline-offset: 2px;
 }
 
 @media (max-width: 640px) {
-  html:has(.official-attributions-page) {
-    --header-height: 62px;
+  .official-attributions-page__outline {
+    top: 6px;
+    right: 16px;
   }
 }
