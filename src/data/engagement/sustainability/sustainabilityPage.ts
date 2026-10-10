@@ -2,7 +2,7 @@
  * Sustainability page — structured `WikiPageContent` for the shared renderer.
  *
  * Source: 文案集/engagement/sustainability/6.3 Sustainability wiki定稿.md
- * Scope: Overview → SDG 3 → Stakeholder Sustainability Tracker.
+ * Scope: Overview → SDG 3 → Stakeholder Sustainability Tracker → SDG 9.
  * Pure data layer — zero React/JSX elements. SDG chapters are expanded from
  * the `SdgChapter` contract by `chapterBlocks`, so every chapter shares one
  * heading tree (4.x → 4.x.1–4.x.5) and one set of feature keys.
@@ -89,11 +89,15 @@ function chapterBlocks(chapter: SdgChapter): WikiContentBlock[] {
 
     step(2),
     prose(...chapter.alignment.lead),
-    {
-      type: "table",
-      headers: [...chapter.alignment.table.headers],
-      rows: chapter.alignment.table.rows.map((row) => [...row]),
-    },
+    ...(chapter.alignment.table
+      ? [
+          {
+            type: "table" as const,
+            headers: [...chapter.alignment.table.headers],
+            rows: chapter.alignment.table.rows.map((row) => [...row]),
+          },
+        ]
+      : []),
     { type: "note", label: "Key Findings", body: chapter.alignment.findings.join("\n") },
 
     step(3),
@@ -201,10 +205,11 @@ const setCoreChallenges: WikiSection = {
   summary: "",
   blocks: [
     prose(...setCoreChallengesSection.paragraphs),
-    ...sustainabilityChapters.flatMap(chapterBlocks),
+    ...chapterBlocks(sustainabilityChapters[0]),
     subheading(stakeholderTracker.id, stakeholderTracker.index, stakeholderTracker.title),
     prose(...stakeholderTracker.paragraphs),
     feature("stakeholder-tracker-tools"),
+    ...sustainabilityChapters.slice(1).flatMap(chapterBlocks),
   ],
 };
 

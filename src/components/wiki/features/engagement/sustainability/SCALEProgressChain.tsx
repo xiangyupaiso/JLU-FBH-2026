@@ -76,12 +76,24 @@ export function SCALEProgressChain({
       const readingLine = reader && window.matchMedia(DESKTOP_QUERY).matches
         ? reader.getBoundingClientRect().top + Math.min(112, reader.clientHeight * 0.22) + 18
         : headerHeight + 108;
-      const nextChapter = document.getElementById(endId);
+      const nextChapter = endId ? document.getElementById(endId) : null;
+      const lastStepId = steps[steps.length - 1]?.id;
+      const lastStep = lastStepId ? document.getElementById(lastStepId) : null;
+      // With no later same-level chapter, end at the final step's feature
+      // instead of keeping the rail alive through the rest of the page.
+      const finalFeature = lastStep?.nextElementSibling?.nextElementSibling;
       const endTop = nextChapter?.getBoundingClientRect().top
+        ?? finalFeature?.getBoundingClientRect().bottom
         ?? startEl.closest(".wiki-section")?.getBoundingClientRect().bottom
         ?? Infinity;
       const entered = startRect.top <= readingLine;
-      const exited = endTop <= readingLine;
+      // The final chapter has no following same-level heading. Let its rail
+      // leave once the final feature has cleared the reader viewport, so it
+      // cannot remain fixed over the page's Next page card.
+      const exitLine = nextChapter
+        ? readingLine
+        : reader?.getBoundingClientRect().bottom ?? readingLine;
+      const exited = endTop <= exitLine;
       const isInside = entered && !exited;
 
       setInChapter(isInside);

@@ -91,8 +91,20 @@ function chapterRailSteps(chapter: SdgChapter): ScaleRailStep[] {
 function ScaleRail({ chapter }: { chapter: SdgChapter }) {
   const { activeSubsection } = useRoutePageScroll();
   const steps = useMemo(() => chapterRailSteps(chapter), [chapter]);
-  const chapterIndex = sustainabilityChapters.findIndex((item) => item.id === chapter.id);
-  const endId = sustainabilityChapters[chapterIndex + 1]?.headingId ?? stakeholderTracker.id;
+  const allSubheadings = sustainabilityPage.sections
+    .flatMap((section) => section.blocks ?? [])
+    .filter(
+      (block): block is Extract<WikiContentBlock, { type: "subheading" }> =>
+        block.type === "subheading",
+    );
+  const chapterIndex = allSubheadings.findIndex((block) => block.id === chapter.headingId);
+  const chapterDepth = chapter.index.split(".").length;
+  const nextChapter = allSubheadings
+    .slice(chapterIndex + 1)
+    .find((block) => block.index.split(".").length === chapterDepth);
+  // A chapter ends at the next same-level heading. For the final chapter,
+  // SCALEProgressChain falls back to the containing SET section's bottom.
+  const endId = nextChapter?.id ?? "";
   return (
     <SCALEProgressChain
       steps={steps}
@@ -161,7 +173,7 @@ function EvidencePanel({ chapter }: { chapter: SdgChapter }) {
             </p>
             {item.toolTable ? <ToolTable tools={chapter.legacy.tools} /> : null}
             {item.figure ? (
-              // The caption carries the page's "FIG. nn" badge, like every other figure.
+              // Keep the caption as the source text; figure labels are not added here.
               <figure className="wiki-figure">
                 <img
                   src={sustainabilityImage(item.figure)}

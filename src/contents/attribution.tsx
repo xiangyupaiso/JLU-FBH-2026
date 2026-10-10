@@ -1,4 +1,4 @@
-import { useEffect, useState, type CSSProperties } from "react";
+import { useLayoutEffect, useRef, useState, type CSSProperties } from "react";
 import { WikiNextRecord } from "../components/wiki/WikiNextRecord";
 import { getTeamHeroImage } from "../components/wiki/teamHeroAssets";
 import "../styles/official-attributions.css";
@@ -27,13 +27,19 @@ function readAttributionFormMessage(data: unknown): AttributionFormMessage | nul
 
 export function Attribution() {
   const [formHeight, setFormHeight] = useState(DEFAULT_FORM_HEIGHT);
+  const frameRef = useRef<HTMLIFrameElement>(null);
   const heroStyle = {
     backgroundImage: `url(${getTeamHeroImage("/attributions")})`,
   } as CSSProperties;
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const onMessage = (event: MessageEvent<unknown>) => {
-      if (event.origin !== "https://teams.igem.org") return;
+      const frame = frameRef.current;
+      if (
+        !frame ||
+        event.origin !== "https://teams.igem.org" ||
+        event.source !== frame.contentWindow
+      ) return;
 
       const message = readAttributionFormMessage(event.data);
       if (message?.type !== "igem-attribution-form") return;
@@ -42,6 +48,10 @@ export function Attribution() {
       if (!Number.isFinite(reportedHeight) || reportedHeight <= 0) return;
 
       setFormHeight(Math.ceil(reportedHeight + 100));
+      // The official app sends its height after rendering the form. An iframe
+      // load event alone only confirms that its app shell has arrived.
+      frame.dataset.pageEmbedReady = "true";
+      frame.dispatchEvent(new Event("wiki-embed-ready"));
     };
 
     window.addEventListener("message", onMessage);
@@ -67,11 +77,13 @@ export function Attribution() {
         aria-label="Official iGEM attribution form"
       >
         <iframe
+          ref={frameRef}
           id="igem-attribution-form"
           title="Official iGEM attribution form"
           src={OFFICIAL_ATTRIBUTIONS_URL}
           style={{ height: `${formHeight}px` }}
           loading="eager"
+          data-page-embed-ready="false"
         />
       </section>
 
@@ -79,6 +91,7 @@ export function Attribution() {
         path="/activities"
         label="Team Activities"
         title="Explore our team building, outreach, and milestones."
+        reveal={false}
       />
     </main>
   );

@@ -90,14 +90,16 @@ const profilePhotos = (profile: StakeholderProfile) => {
 function StakeMeta({ profile }: { profile: StakeholderProfile }) {
   return (
     <dl className="sust-stake-meta">
-      <div className="sust-stake-meta__item">
-        <dt>Current Status</dt>
-        <dd>
-          <span className="sust-stake-card__status">
-            {profile.currentStatus}
-          </span>
-        </dd>
-      </div>
+      {profile.currentStatus ? (
+        <div className="sust-stake-meta__item">
+          <dt>Current Status</dt>
+          <dd>
+            <span className="sust-stake-card__status">
+              {profile.currentStatus}
+            </span>
+          </dd>
+        </div>
+      ) : null}
       <div className="sust-stake-meta__item">
         <dt>SDGs Addressed</dt>
         <dd>
