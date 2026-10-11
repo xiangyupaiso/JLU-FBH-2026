@@ -73,6 +73,9 @@ export function HomeMoleculeGallery() {
       <h2 id="molecule-gallery-title" className="story-sr-only">
         Many possible vaccine platforms. We chose circRNA.
       </h2>
+      <p className="story-sr-only">
+        Platforms considered: {captions.join(", ")}.
+      </p>
       <div className="home-molecule-gallery__stage">
         <div className="home-molecule-gallery__choices" aria-hidden="true">
           {captions.map((caption, index) => (

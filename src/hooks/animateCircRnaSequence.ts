@@ -1,18 +1,19 @@
 import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import type { SplitText } from "gsap/SplitText";
 import { animateCircRna } from "./animateCircRna";
-import { HOME_EASE, HOME_SCRUB, stillHold } from "./homeMotion";
+import {
+  HOME_EASE,
+  HOME_SCRUB,
+  settleHomeScrubEndpoint,
+  stillHold,
+} from "./homeMotion";
 import { createRnaRingMorph } from "./createRnaRingMorph";
 import { animatePlatformAntigen } from "./animatePlatformAntigen";
 
-// The research figure is complete at FIGURE_END; FIGURE_REST holds it there.
+// Retain the original scroll budget when shortening the finished-frame hold.
 const FIGURE_END = 5.5;
 const FIGURE_REST = 0.65;
-
-const smooth = (from: number, to: number, value: number) => {
-  const p = gsap.utils.clamp(0, 1, (value - from) / (to - from));
-  return p * p * (3 - 2 * p);
-};
 
 export function animateCircRnaSequence(
   sequence: HTMLElement,
@@ -31,7 +32,15 @@ export function animateCircRnaSequence(
   const ring = rna.querySelector<SVGElement>('[data-layer="4"]')!;
   const targetRing =
     platform.querySelector<HTMLImageElement>('[data-layer="3"]')!;
+  gsap.set(ring, { x: 0, y: 0, scaleX: 1, scaleY: 1 });
   const transfer = { progress: 0 };
+  let transitionActive = false;
+  let usePaintedRing = false;
+  let refreshing = false;
+  const beginRefresh = () => { refreshing = true; };
+  const endRefresh = () => { refreshing = false; };
+  ScrollTrigger.addEventListener("refreshInit", beginRefresh);
+  ScrollTrigger.addEventListener("refresh", endRefresh);
   const morph = createRnaRingMorph(
     stage,
     ring,
@@ -40,43 +49,35 @@ export function animateCircRnaSequence(
     drawTransfer,
   );
   cleanups.push(morph.dispose);
+  cleanups.push(() => {
+    ScrollTrigger.removeEventListener("refreshInit", beginRefresh);
+    ScrollTrigger.removeEventListener("refresh", endRefresh);
+  });
   function drawTransfer() {
     const p = transfer.progress;
-    const ready = morph.render(p);
+    const active = p > 0 && p < 1;
+    // Keep one route for the whole pass when a texture finishes decoding late.
+    if (!refreshing) {
+      if (!active || !transitionActive) usePaintedRing = morph.render(0);
+      transitionActive = active;
+    }
+    const ready = morph.render(p, usePaintedRing);
+    // Both renderers carry one visible ring to the same endpoint. A late
+    // texture must not turn the end of the flight into an opacity dissolve.
     gsap.set(ring, {
-      opacity: ready && p > 0 ? 0 : 1 - smooth(0.82, 1, p),
+      opacity: (ready && p > 0) || p >= 1 ? 0 : 1,
     });
     gsap.set(targetRing, {
-      opacity: ready ? (p >= 1 ? 1 : 0) : smooth(0.82, 1, p),
+      opacity: p >= 1 ? 1 : 0,
     });
   }
-
-  // fan-3 is 611 x 833 with 450 transparent rows above the circle. Its red
-  // outer edge fits a circle centred at (306.009, 757.002), diameter 605.599.
-  // Match the visible paint, including the part below the original canvas.
-  const destination = () => {
-    const source = ring.getBoundingClientRect();
-    const target = targetRing.getBoundingClientRect();
-    const width =
-      source.width / (Number(gsap.getProperty(ring, "scaleX")) || 1);
-    const height =
-      source.height / (Number(gsap.getProperty(ring, "scaleY")) || 1);
-    const centerX =
-      source.left + source.width / 2 - Number(gsap.getProperty(ring, "x"));
-    const centerY =
-      source.top + source.height / 2 - Number(gsap.getProperty(ring, "y"));
-    return {
-      x: target.left + target.width * (306.009 / 611) - centerX,
-      y: target.top + target.height * (757.002 / 833) - centerY,
-      scaleX: (target.width * (605.599 / 611)) / width,
-      scaleY: (target.height * (605.599 / 833)) / height,
-    };
-  };
-  // Desktop: lengthen the track so the finished figure holds still for the
-  // shared ratio before the antigen carry begins, at the same reveal speed.
+  // Use one short finished-frame hold before the antigen carry. Scale its
+  // track with the duration so the figure still reveals at the same speed.
+  const range = track.offsetHeight - window.innerHeight;
   let figureRest = FIGURE_REST;
-  if (!compact) {
-    const range = track.offsetHeight - window.innerHeight;
+  // Home can still be hidden under its loader. Keep the CSS track until the
+  // preparation rebuild can measure it instead of freezing its height at zero.
+  if (range > 0 && Number.isFinite(range)) {
     const hold = stillHold(range, FIGURE_REST / FIGURE_END);
     figureRest = FIGURE_END * hold.rest;
     gsap.set(track, { height: window.innerHeight + range * hold.scale });
@@ -88,9 +89,11 @@ export function animateCircRnaSequence(
       trigger: track,
       start: "top top",
       end: "bottom bottom",
-      scrub: compact ? 0.5 : HOME_SCRUB,
+      scrub: HOME_SCRUB,
       invalidateOnRefresh: true,
-      onUpdate: ({ progress, isActive }) => {
+      onUpdate: (self) => {
+        settleHomeScrubEndpoint(self);
+        const { progress, isActive } = self;
         rna.classList.toggle("is-current", isActive && progress < 0.42);
         platform.classList.toggle("is-current", isActive && progress >= 0.42);
       },
@@ -108,20 +111,6 @@ export function animateCircRnaSequence(
   timeline.to(outgoing, { opacity: 0, duration: 0.65 }, 1.3);
   timeline.to(paper, { opacity: 0, duration: 1.1 }, 1.3);
   timeline.to(stage, { backgroundColor: "#fff4e2", duration: 1.1 }, 1.3);
-  timeline.fromTo(
-    ring,
-    { x: 0, y: 0, scaleX: 1, scaleY: 1 },
-    {
-      x: () => destination().x,
-      y: () => destination().y,
-      scaleX: () => destination().scaleX,
-      scaleY: () => destination().scaleY,
-      duration: 1.25,
-      ease: "power2.inOut",
-    },
-    1.35,
-  );
-
   // Carry one solid ring: pigment, stroke width and the incoming original
   // artwork change together along a curved route. Native images keep the
   // transition usable while the two texture plates are decoding.

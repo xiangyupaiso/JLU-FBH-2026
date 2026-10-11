@@ -1,4 +1,5 @@
 import gsap from "gsap";
+import { HOME_STILL_RATIO } from "./homeMotion";
 
 // Continue the existing circRNA closing shot in the same pinned viewport.
 // Every phase belongs to one scrubbed timeline, so reverse scroll retraces it.
@@ -42,7 +43,7 @@ export function animateFinaleExplore(
   const paperRadius = () =>
     Math.hypot(finale.clientWidth / 2, finale.clientHeight / 2) / 0.78;
 
-  gsap.set(explore, { autoAlpha: 0 });
+  gsap.set(explore, { autoAlpha: 0, "--care-footer-blend": 0 });
   gsap.set(background, {
     opacity: 0,
     "--care-radius": "0px",
@@ -155,6 +156,12 @@ export function animateFinaleExplore(
     { opacity: 0, duration: ringFadeDuration, ease: "sine.inOut" },
     ringFadeStart,
   );
+  // Blend into the footer only after the circle has filled the viewport.
+  timeline.to(
+    explore,
+    { "--care-footer-blend": 1, duration: 0.36, ease: "sine.inOut" },
+    ringExpanded,
+  );
   timeline.to(
     patient,
     {
@@ -192,7 +199,7 @@ export function animateFinaleExplore(
     );
   });
   timeline.addLabel("care-complete", navigationReady);
-  timeline.to({}, { duration: 0.42 }, "care-complete");
+  timeline.to({}, { duration: navigationReady * HOME_STILL_RATIO }, "care-complete");
 
   // Refresh can render the timeline with callbacks suppressed. Animate the
   // native flag itself so resize restores navigation along with the image,

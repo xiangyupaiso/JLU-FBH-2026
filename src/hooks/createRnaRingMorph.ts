@@ -1,5 +1,6 @@
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { trackPagePreparation } from "../utils/pageLoader";
 
 const clamp = gsap.utils.clamp(0, 1);
 const smooth = (from: number, to: number, value: number) => {
@@ -140,6 +141,14 @@ export function createRnaRingMorph(
   let ready = false;
   let frame = 0;
   let lastProgress = 0;
+  let resolvePreparation!: () => void;
+  const stopTrackingPreparation = trackPagePreparation(new Promise<void>((resolve) => {
+    resolvePreparation = resolve;
+  }));
+  const finishPreparation = () => {
+    resolvePreparation();
+    stopTrackingPreparation();
+  };
 
   function measure() {
     const stageBox = stage.getBoundingClientRect();
@@ -170,16 +179,17 @@ export function createRnaRingMorph(
     return { x, y, width, height, toX, toY, toWidth, toHeight, dx, dy, bend };
   }
 
-  function draw(progress: number) {
+  function draw(progress: number, painted = true) {
     lastProgress = clamp(progress);
     const tone = smooth(0.03, 0.72, lastProgress);
     const incoming = smooth(0.3, 0.94, lastProgress);
     canvas.dataset.progress = String(lastProgress);
     canvas.dataset.tone = String(tone);
     canvas.dataset.shape = String(incoming);
-    const visible = ready && !disposed && lastProgress > 0 && lastProgress < 1;
+    const available = ready && painted && !disposed;
+    const visible = available && lastProgress > 0 && lastProgress < 1;
     canvas.style.visibility = visible ? "visible" : "hidden";
-    if (!visible || !context || !paint || !fan || !geometry) return ready;
+    if (disposed || !geometry) return available;
     const g = geometry;
     const p = smooth(0, 1, lastProgress);
     const x = curve(
@@ -193,6 +203,16 @@ export function createRnaRingMorph(
     const breath = Math.sin(Math.PI * p) * (compact ? 0.015 : 0.035);
     const width = mix(g.width, g.toWidth, p) * (1 + breath);
     const height = mix(g.height, g.toHeight, p) * (1 + breath);
+    // The native artwork follows this same flight when texture preparation
+    // fails or finishes late. Keep its axes unrotated so refresh can recover
+    // its original bounds by removing only translation and scale.
+    gsap.set(source, {
+      x: x - g.x,
+      y: y - g.y,
+      scaleX: width / g.width,
+      scaleY: height / g.height,
+    });
+    if (!visible || !context || !paint || !fan) return available;
     const rotation = Math.sin(Math.PI * p) * (compact ? 3 : 5);
     canvas.style.transform = `translate3d(${x - (g.width * PAINT_EXTENT) / 2}px, ${y - (g.height * PAINT_EXTENT) / 2}px, 0) rotate(${rotation}deg) scale(${width / g.width}, ${height / g.height})`;
     context.clearRect(0, 0, canvas.width, canvas.height);
@@ -225,20 +245,29 @@ export function createRnaRingMorph(
     fanPlate(fan.lettering, smooth(0.64, 0.98, lastProgress));
     context.globalAlpha = 1;
     context.globalCompositeOperation = "source-over";
-    return ready;
+    return available;
   }
 
   const refresh = () => {
-    if (
-      disposed ||
-      !context ||
-      !image.naturalWidth ||
-      !target.naturalWidth ||
-      !target.complete
-    )
+    if (disposed) return;
+    // Native geometry does not depend on decoded pixels or a Canvas context.
+    // Preserve the last valid measurement while the loader hides the stage.
+    const measured = measure();
+    if (measured.width && measured.height && measured.toWidth) {
+      geometry = measured;
+    }
+    if (!context) {
+      if (geometry) onReady();
+      finishPreparation();
       return;
-    geometry = measure();
-    if (!geometry.width || !geometry.height || !geometry.toWidth) return;
+    }
+    if (!image.naturalWidth || !target.naturalWidth || !target.complete) {
+      if (geometry) onReady();
+      if ([image, target].some((art) => art.complete && !art.naturalWidth))
+        finishPreparation();
+      return;
+    }
+    if (!geometry) return;
     const resolution = Math.min(
       1024,
       Math.max(
@@ -259,7 +288,11 @@ export function createRnaRingMorph(
     } catch {
       ready = false;
     }
-    onReady();
+    try {
+      onReady();
+    } finally {
+      finishPreparation();
+    }
   };
   const schedule = () => {
     if (disposed) return;
@@ -273,22 +306,28 @@ export function createRnaRingMorph(
   observer.observe(stage);
   image.addEventListener("load", schedule);
   target.addEventListener("load", schedule);
+  image.addEventListener("error", finishPreparation);
+  target.addEventListener("error", finishPreparation);
   ScrollTrigger.addEventListener("refresh", schedule);
   target.loading = "eager";
   if (href) image.src = href;
+  if (!context || !href) finishPreparation();
   void Promise.all([image.decode(), target.decode()])
     .then(schedule)
-    .catch(() => {});
+    .catch(schedule);
 
   return {
     render: draw,
     dispose() {
       disposed = true;
+      finishPreparation();
       observer.disconnect();
       cancelAnimationFrame(frame);
       ScrollTrigger.removeEventListener("refresh", schedule);
       image.removeEventListener("load", schedule);
       target.removeEventListener("load", schedule);
+      image.removeEventListener("error", finishPreparation);
+      target.removeEventListener("error", finishPreparation);
       canvas.remove();
       if (originalLoading === null) target.removeAttribute("loading");
       else target.setAttribute("loading", originalLoading);

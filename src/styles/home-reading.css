@@ -36,7 +36,7 @@
 }
 .home-story .story-reading-ink { visibility: hidden; z-index: 1; }
 .home-story .story-copy[data-reading-voice] .story-challenges li { border-color: transparent; }
-.home-story .story-copy.has-flow-reading { margin-bottom: 28svh; }
+.home-story .story-copy.has-flow-reading { margin-bottom: 8svh; }
 .home-story .story-platform-note {
   opacity: 1;
 }
@@ -87,7 +87,7 @@
   text-wrap: pretty;
 }
 .home-story .story-copy.has-quiet-reading.has-flow-reading {
-  margin-bottom: 14svh;
+  margin-bottom: 8svh;
 }
 @media (max-width: 800px), (max-height: 650px) {
   .home-story .story-copy.has-quiet-reading {
@@ -133,7 +133,7 @@
   --tnbc-gap: clamp(36px, 4.4vw, 68px);
   grid-template-columns: var(--tnbc-columns);
   column-gap: var(--tnbc-gap);
-  row-gap: clamp(14px, 2svh, 22px);
+  row-gap: clamp(24px, 3svh, 34px);
   justify-items: stretch;
   max-width: 1320px;
   margin-inline: auto;
@@ -189,7 +189,7 @@
   grid-row: 1 / span 6;
   align-self: center;
   justify-self: center;
-  width: min(100%, 400px);
+  width: min(100%, 420px);
   aspect-ratio: 1;
   margin: 0;
   isolation: isolate;
@@ -204,7 +204,7 @@
   margin-top: 2px;
 }
 .home-story #why-tnbc .tnbc-reading-bridge-wash {
-  position: fixed;
+  position: absolute;
   inset: 0;
   z-index: 61;
   background: #f9e8e8;
@@ -212,7 +212,7 @@
   pointer-events: none;
 }
 .home-story #why-tnbc .tnbc-reading-word-transfer {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   z-index: 63;
@@ -267,9 +267,10 @@
     flex-direction: column;
   }
   .home-story #why-tnbc .tnbc-diagram {
+    order: -1;
     align-self: center;
     width: min(100%, 280px);
-    margin: 0 0 14px;
+    margin: 0 0 24px;
   }
   .home-story #why-tnbc .story-receptors {
     width: 100%;

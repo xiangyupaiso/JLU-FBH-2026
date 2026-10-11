@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { FooterEasterEgg } from "./FooterEasterEgg";
+import { FooterSponsors } from "./FooterSponsors";
 import {
   FOOTER_CLINICAL_COLLEGE_NAME,
   FOOTER_CLINICAL_HOSPITAL_NAME,
@@ -13,7 +14,6 @@ import {
   FOOTER_MARK_CANCER_CENTER,
   FOOTER_MARK_CLINICAL,
   FOOTER_MARK_UNIVERSITY,
-  FOOTER_ORGANISATIONS,
   type FooterMark,
 } from "../data/footer";
 import { useRouteModule } from "../hooks/useRouteModule";
@@ -45,16 +45,16 @@ export function Footer() {
   const teamSlug = stringToSlug(teamName);
   const { pathname } = useLocation();
   const module = useRouteModule();
-  const footerPanelRef = useRef<HTMLDivElement>(null);
+  const footerRef = useRef<HTMLElement>(null);
 
   // Fixed story and reader controls should not cover the closing content.
   useEffect(() => {
-    const panel = footerPanelRef.current;
-    if (!panel) return;
+    const footer = footerRef.current;
+    if (!footer) return;
     let frame = 0;
     const syncVisibility = () => {
       frame = 0;
-      const rect = panel.getBoundingClientRect();
+      const rect = footer.getBoundingClientRect();
       document.documentElement.toggleAttribute(
         "data-footer-visible",
         rect.top < window.innerHeight && rect.bottom > 0,
@@ -64,7 +64,7 @@ export function Footer() {
       if (!frame) frame = window.requestAnimationFrame(syncVisibility);
     };
     const observer = new IntersectionObserver(scheduleSync);
-    observer.observe(panel);
+    observer.observe(footer);
     window.addEventListener("scroll", scheduleSync, { passive: true });
     window.addEventListener("resize", scheduleSync);
     syncVisibility();
@@ -79,25 +79,30 @@ export function Footer() {
 
   return (
     <footer
-      className={["circure-footer", module.home ? "is-home-page" : module.className]
+      ref={footerRef}
+      className={[
+        "circure-footer",
+        module.home ? "is-home-page" : module.className,
+      ]
         .filter(Boolean)
         .join(" ")}
       aria-label="Site footer"
     >
-      <div ref={footerPanelRef} className="circure-footer__panel">
+      <div className="circure-footer__panel">
         <div className="circure-footer__paper">
           <div className="circure-footer__inner">
             <div className="circure-footer__opening">
-              <div>
-                <p className="circure-footer__eyebrow">
-                  JLU-FBH <span aria-hidden="true">·</span> iGEM {teamYear}
-                </p>
-                <h2>
+              <p className="circure-footer__eyebrow">
+                JLU-FBH <span aria-hidden="true">·</span> iGEM {teamYear}
+              </p>
+              <h2>
+                <span className="circure-footer__opening-lead">
                   Behind every step,
-                  <br />
-                  <span>many hands.</span>
-                </h2>
-              </div>
+                </span>{" "}
+                <em className="circure-footer__opening-statement">
+                  many hands.
+                </em>
+              </h2>
               <p className="circure-footer__opening-note">
                 CirCure grows through the care, knowledge and support of a wider
                 community. We are grateful to the people and organisations who
@@ -110,11 +115,10 @@ export function Footer() {
               aria-labelledby="footer-institutions-title"
             >
               <div className="circure-footer__section-heading">
-                <p className="circure-footer__eyebrow">The places behind the work</p>
                 <h3 id="footer-institutions-title">Our institutional home</h3>
               </div>
               <div className="circure-footer__institution-grid">
-                <div className="circure-footer__institution">
+                <div className="circure-footer__institution circure-footer__institution--academic">
                   <p className="circure-footer__credit-type">Academic home</p>
                   <MarkRow marks={FOOTER_MARK_UNIVERSITY} />
                   <p className="circure-footer__credit-name">Jilin University</p>
@@ -146,58 +150,7 @@ export function Footer() {
               </div>
             </section>
 
-            <section
-              className="circure-footer__acknowledgements"
-              aria-labelledby="footer-acknowledgements-title"
-            >
-              <div className="circure-footer__section-heading">
-                <p className="circure-footer__eyebrow">Acknowledgements</p>
-                <h3 id="footer-acknowledgements-title">With thanks</h3>
-              </div>
-              <div className="circure-footer__organisation-grid">
-                {FOOTER_ORGANISATIONS.map((organisation) => (
-                  <div className="circure-footer__organisation" key={organisation.name}>
-                    <div className="circure-footer__organisation-mark">
-                      {organisation.marks.map((mark) => (
-                        <img
-                          key={mark.src}
-                          src={mark.src}
-                          alt=""
-                          width={mark.width}
-                          style={{ width: mark.width }}
-                          loading="lazy"
-                          decoding="async"
-                          draggable={false}
-                        />
-                      ))}
-                    </div>
-                    <p className="circure-footer__credit-name">{organisation.name}</p>
-                    {organisation.products.length > 0 && (
-                      <div className="circure-footer__products">
-                        <p className="circure-footer__credit-type">
-                          {organisation.name} tools
-                        </p>
-                        <div className="circure-footer__product-list">
-                          {organisation.products.map((product) => (
-                            <div className="circure-footer__product" key={product.src}>
-                              <img
-                                src={product.src}
-                                alt=""
-                                width={product.width}
-                                loading="lazy"
-                                decoding="async"
-                                draggable={false}
-                              />
-                              <span>{product.alt}</span>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-                    )}
-                  </div>
-                ))}
-              </div>
-            </section>
+            <FooterSponsors />
           </div>
         </div>
 
@@ -209,8 +162,13 @@ export function Footer() {
                 <h3>Let the conversation continue.</h3>
               </div>
               <div className="circure-footer__contact-details">
-                <a className="circure-footer__email" href={"mailto:" + FOOTER_EMAIL}>
-                  <span>{FOOTER_EMAIL_LOCAL}@{FOOTER_EMAIL_DOMAIN}</span>
+                <a
+                  className="circure-footer__email"
+                  href={"mailto:" + FOOTER_EMAIL}
+                >
+                  <span>
+                    {FOOTER_EMAIL_LOCAL}@{FOOTER_EMAIL_DOMAIN}
+                  </span>
                   <span aria-hidden="true">↗</span>
                 </a>
                 <p className="circure-footer__address">
@@ -220,7 +178,10 @@ export function Footer() {
                 </p>
               </div>
             </div>
-            <nav className="circure-footer__navigation" aria-label="Footer navigation">
+            <nav
+              className="circure-footer__navigation"
+              aria-label="Footer navigation"
+            >
               <Link to="/description">Project</Link>
               <Link to="/roster">Team</Link>
               <Link to="/attributions">Attributions</Link>
@@ -235,7 +196,9 @@ export function Footer() {
               </p>
               <p>
                 The repository used to create this website is available at{" "}
-                <a href={"https://gitlab.igem.org/" + teamYear + "/" + teamSlug}>
+                <a
+                  href={"https://gitlab.igem.org/" + teamYear + "/" + teamSlug}
+                >
                   gitlab.igem.org/{teamYear}/{teamSlug}
                 </a>
                 .

@@ -1,4 +1,5 @@
 import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 // The patient's question leads into a concise marker-by-marker explanation.
 export function animateTnbcReading(
@@ -18,6 +19,13 @@ export function animateTnbcReading(
     layer("negative-middle"),
     layer("negative-lower"),
   ];
+  const source = copy.querySelector<HTMLElement>(".story-source")!;
+  const section = copy.closest<HTMLElement>(".story-chapter")!;
+  const headerHeight =
+    Number.parseFloat(
+      getComputedStyle(section).getPropertyValue("--header-height"),
+    ) || 0;
+  const fits = copy.offsetHeight <= window.innerHeight - headerHeight + 2;
 
   // Preserve searchable phrases that cross emphasis or receptor sign nodes.
   [title, ...receptorLabels].forEach((element) => {
@@ -28,104 +36,234 @@ export function animateTnbcReading(
       else element.setAttribute("data-home-reading-text", original);
     });
   });
+  if (!fits) {
+    // Taller explanations follow their elements into view instead of waiting
+    // for a desktop-sized reading sequence to advance off screen.
+    const reading = gsap.timeline({
+      scrollTrigger: {
+        id: "home-why-tnbc-reading",
+        trigger: copy,
+        start: "top 85%",
+        end: "bottom 65%",
+        scrub: 0.22,
+        invalidateOnRefresh: true,
+      },
+    });
+    const cell = gsap.timeline({
+      defaults: { ease: "sine.out" },
+      scrollTrigger: {
+        trigger: diagram,
+        start: "top 90%",
+        end: "top 48%",
+        scrub: 0.22,
+        invalidateOnRefresh: true,
+      },
+    });
+    cell.fromTo(
+      diagram,
+      { autoAlpha: 0, y: 12, scale: 0.98 },
+      {
+        autoAlpha: 1,
+        y: 0,
+        scale: 1,
+        duration: 0.34,
+      },
+      0,
+    );
+    cellLayers.forEach((image, index) => {
+      cell.fromTo(
+        image,
+        { opacity: 0 },
+        {
+          opacity: 1,
+          duration: 0.3,
+        },
+        0.08 + index * 0.14,
+      );
+    });
+    const marks = gsap.timeline({
+      defaults: { ease: "sine.out" },
+      scrollTrigger: {
+        trigger: receptors,
+        start: "top 90%",
+        end: "top 52%",
+        scrub: 0.22,
+        invalidateOnRefresh: true,
+      },
+    });
+    marks.fromTo(
+      receptorLabels,
+      { opacity: 0, y: 6 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.5,
+        stagger: 0.16,
+      },
+      0,
+    );
+    marks.fromTo(
+      negativeLayers,
+      { opacity: 0, y: -5 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.34,
+        stagger: 0.16,
+      },
+      0.08,
+    );
+    [...paragraphs, source].forEach((element) => {
+      gsap.fromTo(
+        element,
+        { autoAlpha: 0, y: 8 },
+        {
+          autoAlpha: 1,
+          y: 0,
+          ease: "sine.out",
+          scrollTrigger: {
+            trigger: element,
+            start: "top 94%",
+            end: "top 80%",
+            scrub: 0.18,
+            invalidateOnRefresh: true,
+          },
+        },
+      );
+    });
+    reading.to({}, { duration: 1 });
+    reading.addLabel("reading-complete");
+    const syncPhaseLabels = () => {
+      const trigger = reading.scrollTrigger;
+      if (
+        !trigger ||
+        !Number.isFinite(trigger.start) ||
+        !Number.isFinite(trigger.end) ||
+        trigger.end <= trigger.start
+      ) return;
+      const { start, end } = trigger;
+      const phases = [
+        ["cell-visible", cell],
+        ["markers-visible", marks],
+      ] as const;
+      phases.forEach(([label, animation]) => {
+        const phaseTrigger = animation.scrollTrigger;
+        if (
+          !phaseTrigger ||
+          !Number.isFinite(phaseTrigger.start) ||
+          !Number.isFinite(phaseTrigger.end) ||
+          phaseTrigger.end <= phaseTrigger.start
+        ) return;
+        const progress = gsap.utils.clamp(
+          0,
+          1,
+          (phaseTrigger.end - start) / (end - start),
+        );
+        reading.addLabel(label, progress * reading.duration());
+      });
+    };
+    // Resolve playback stops after every trigger has refreshed its geometry.
+    ScrollTrigger.addEventListener("refresh", syncPhaseLabels);
+    cleanups.push(() =>
+      ScrollTrigger.removeEventListener("refresh", syncPhaseLabels),
+    );
+    syncPhaseLabels();
+    return reading;
+  }
+  // The map bridge reveals only the title. All remaining content belongs to
+  // this reversible sequence, which starts at the bridge's natural handoff.
+  gsap.set([diagram, receptors, ...paragraphs, source], { autoAlpha: 0 });
+  gsap.set([...cellLayers, ...receptorLabels, ...negativeLayers], {
+    opacity: 0,
+  });
   const reading = gsap.timeline({
+    defaults: { ease: "sine.out" },
     scrollTrigger: {
       id: "home-why-tnbc-reading",
       trigger: copy,
-      start: "top 85%",
-      end: "bottom 65%",
+      start: () => `top top+=${headerHeight}`,
+      end: () => `+=${Math.round(window.innerHeight * 1.6)}`,
+      pin: true,
       scrub: 0.22,
       invalidateOnRefresh: true,
     },
   });
-
-  // The short cell build and the three marks stay tied to their nearby copy.
-  const cell = gsap.timeline({
-    scrollTrigger: {
-      trigger: diagram,
-      start: "top 90%",
-      end: "top 48%",
-      scrub: 0.22,
-      invalidateOnRefresh: true,
-    },
-  });
-  cell.fromTo(
+  reading.addLabel("title-readable", 0);
+  reading.fromTo(
     diagram,
-    { opacity: 0, y: 10, scale: 0.98 },
+    { autoAlpha: 0, y: 12, scale: 0.98 },
     {
-      opacity: 1,
+      autoAlpha: 1,
       y: 0,
       scale: 1,
-      duration: 0.34,
-      ease: "sine.out",
+      duration: 0.45,
     },
-    0,
+    0.3,
   );
   cellLayers.forEach((image, index) => {
-    cell.fromTo(
+    reading.fromTo(
       image,
       { opacity: 0 },
       {
         opacity: 1,
-        duration: 0.3,
-        ease: "sine.out",
+        duration: 0.38,
       },
-      0.08 + index * 0.14,
+      0.32 + index * 0.12,
     );
   });
-
-  const marks = gsap.timeline({
-    scrollTrigger: {
-      trigger: receptors,
-      start: "top 90%",
-      end: "top 52%",
-      scrub: 0.22,
-      invalidateOnRefresh: true,
+  reading.addLabel("cell-visible", 1.06);
+  const reveal = (element: HTMLElement, at: number, duration = 0.5) => {
+    reading.fromTo(
+      element,
+      { autoAlpha: 0, y: 8 },
+      {
+        autoAlpha: 1,
+        y: 0,
+        duration,
+      },
+      at,
+    );
+  };
+  reveal(paragraphs[0], 1.15);
+  reading.fromTo(
+    receptors,
+    { autoAlpha: 0 },
+    {
+      autoAlpha: 1,
+      duration: 0.24,
     },
-  });
+    1.85,
+  );
   receptorLabels.forEach((label, index) => {
-    const at = index * 0.24;
-    marks.fromTo(
+    const at = 1.95 + index * 0.36;
+    reading.fromTo(
       label,
       { opacity: 0, y: 6 },
       {
         opacity: 1,
         y: 0,
         duration: 0.32,
-        ease: "sine.out",
       },
       at,
     );
-    marks.fromTo(
+    reading.fromTo(
       negativeLayers[index],
       { opacity: 0, y: -5 },
       {
         opacity: 1,
         y: 0,
         duration: 0.26,
-        ease: "sine.out",
       },
       at + 0.08,
     );
   });
-  paragraphs.forEach((paragraph) => {
-    gsap.fromTo(
-      paragraph,
-      { opacity: 0 },
-      {
-        opacity: 1,
-        duration: 1,
-        ease: "sine.out",
-        scrollTrigger: {
-          trigger: paragraph,
-          start: "top 115%",
-          end: "top 96%",
-          scrub: 0.18,
-          invalidateOnRefresh: true,
-        },
-      },
-    );
-  });
-  reading.to({}, { duration: 1 });
+  reading.addLabel("markers-visible", 3.01);
+  reveal(paragraphs[1], 3.18, 0.45);
+  reveal(paragraphs[2], 3.8);
+  reveal(paragraphs[3], 4.48);
+  reveal(source, 5.12, 0.32);
+  reading.addLabel("reading-complete", 5.44);
+  // A short completed-frame hold gives the conclusion room before the clinic.
+  reading.to({}, { duration: 0.95 });
   return reading;
 }

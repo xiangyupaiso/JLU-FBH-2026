@@ -128,11 +128,22 @@
 
       /* Caption sits below the lamb on the canvas, but never below the fold
          on ultrawide screens where the cover canvas overflows vertically. */
-      .page-loader__caption {
+      .page-loader__feedback {
         position: absolute;
         left: 50%;
-        top: min(calc(50vh + 0.34 * max(100vh, 56.25vw)), calc(100vh - 3.2rem));
+        top: min(calc(50vh + 0.34 * max(100vh, 56.25vw)), calc(100vh - 8rem));
+        top: min(calc(50vh + 0.34 * max(100vh, 56.25vw)), calc(100svh - 8rem));
         transform: translate(-50%, -50%);
+        width: calc(100% - 2rem);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.55rem;
+        text-align: center;
+        color: #634f46;
+        font: 400 0.875rem / 1.4 system-ui, sans-serif;
+      }
+      .page-loader__caption {
         display: flex;
         align-items: baseline;
         margin: 0;
@@ -142,6 +153,27 @@
         letter-spacing: 0.05em;
         text-shadow: 0 1px 3px rgba(255, 255, 255, 0.9);
         opacity: 1;
+      }
+      .page-loader__status, .page-loader__wait { margin: 0; }
+      .page-loader__wait { max-width: 28rem; }
+      .page-loader__retry {
+        border: 1px solid #a78875;
+        border-radius: 999px;
+        padding: 0.4rem 1rem;
+        background: #fff3e8;
+        color: #634f46;
+        font: inherit;
+        cursor: pointer;
+      }
+      .page-loader__retry:focus-visible { outline: 2px solid #634f46; outline-offset: 3px; }
+      .page-loader__feedback [hidden] { display: none; }
+      @media (max-height: 500px) and (min-aspect-ratio: 4/3) {
+        .page-loader__feedback {
+          top: auto;
+          bottom: 0.75rem;
+          transform: translateX(-50%);
+          gap: 0.35rem;
+        }
       }
       .page-loader__caption span {
         display: inline-block;
@@ -224,7 +256,7 @@
       class="page-loader"
       role="status"
       aria-live="polite"
-      aria-label="Loading page content"
+      aria-atomic="true"
     >
       <div class="page-loader__stage" aria-hidden="true">
         <img class="pl-bg" src="https://static.igem.wiki/teams/6056/wiki/files/pages/shared/bg.webp" alt="" fetchpriority="high" />
@@ -265,7 +297,12 @@
         <div class="pl-petals"><img src="https://static.igem.wiki/teams/6056/wiki/files/pages/shared/petals.webp" alt="" /></div>
         <div class="pl-stars"><img src="https://static.igem.wiki/teams/6056/wiki/files/pages/shared/stars.webp" alt="" /></div>
       </div>
-      <p class="page-loader__caption" aria-hidden="true">loading<span>.</span><span>.</span><span>.</span></p>
+      <div class="page-loader__feedback">
+        <p class="page-loader__caption" aria-hidden="true">loading<span>.</span><span>.</span><span>.</span></p>
+        <p class="page-loader__status" data-loader-status>Preparing your page…</p>
+        <p class="page-loader__wait" data-loader-wait hidden>Taking a little longer. Your page is still loading.</p>
+        <button class="page-loader__retry" data-loader-retry type="button" hidden>Reload page</button>
+      </div>
     </div>
     <script>
       // Start the stage timeline once the key art has decoded, so the hands
@@ -280,6 +317,54 @@
         };
         loader.addEventListener("wheel", block, { passive: false });
         loader.addEventListener("touchmove", block, { passive: false });
+
+        // Long waits explain what is happening and offer recovery. Elapsed
+        // time never counts as a successful page load or reveals unfinished art.
+        var status = loader.querySelector("[data-loader-status]");
+        var wait = loader.querySelector("[data-loader-wait]");
+        var retry = loader.querySelector("[data-loader-retry]");
+        var slowTimer = 0;
+        var retryTimer = 0;
+        var stopWait = function () {
+          clearTimeout(slowTimer);
+          clearTimeout(retryTimer);
+        };
+        var watchWait = function () {
+          stopWait();
+          status.textContent = "Preparing your page…";
+          wait.hidden = true;
+          retry.hidden = true;
+          slowTimer = setTimeout(function () {
+            if (!loader.hidden) wait.hidden = false;
+          }, 12000);
+          retryTimer = setTimeout(function () {
+            if (!loader.hidden) retry.hidden = false;
+          }, 30000);
+        };
+        var failed = function () {
+          if (loader.hidden) return;
+          stopWait();
+          status.textContent = "The page could not load. Please try again.";
+          wait.hidden = true;
+          retry.hidden = false;
+        };
+        retry.addEventListener("click", function () { window.location.reload(); });
+        loader.addEventListener("loaderstart", watchWait);
+        loader.addEventListener("loaderstatus", function () {
+          status.textContent = loader.dataset.message;
+        });
+        loader.addEventListener("loaderready", function () {
+          stopWait();
+          wait.hidden = true;
+          retry.hidden = true;
+        });
+        loader.addEventListener("loadererror", failed);
+        window.addEventListener("vite:preloadError", failed);
+        window.addEventListener("error", function (event) {
+          var target = event.target;
+          if (target && target.tagName === "SCRIPT" && target.type === "module") failed();
+        }, true);
+        watchWait();
 
         var frame = 0;
         var play = function () {
@@ -341,15 +426,6 @@
           clearTimeout(fallback);
           play();
         });
-
-        // Fallback safeguard: if route initialization or asset settling stalls,
-        // never leave the visitor trapped behind the loading cover.
-        setTimeout(function () {
-          if (loader && !loader.hidden && !loader.classList.contains("is-leaving")) {
-            loader.classList.add("is-leaving");
-            setTimeout(function () { loader.hidden = true; }, 380);
-          }
-        }, 10000);
       })();
     </script>
     <div id="root"></div>

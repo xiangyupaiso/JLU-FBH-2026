@@ -2,9 +2,11 @@ import { useEffect, useId, useRef, useState } from "react";
 import "../styles/footer-photo-glass.css";
 
 const MAX_MAP_PIXELS = 320_000;
-const REFRACTION_RANGE = 12;
-const CHANNEL_SCALES = [0.96, 1, 1.04].map(
-  (channel) => 2 * REFRACTION_RANGE * 0.75 * channel,
+// The former navigation lens's convex bevel, scaled to a photograph's edge.
+// Keep the flat centre at 1:1 so faces and the complete composition stay clear.
+const LENS = { ior: 2.4, thickness: 16, range: 24, strength: 0.75 };
+const CHANNEL_SCALES = [0.988, 1, 1.012].map(
+  (channel) => 2 * LENS.range * LENS.strength * channel,
 );
 
 type GlassMaps = {
@@ -12,6 +14,7 @@ type GlassMaps = {
   height: number;
   displacement: string;
   edge: string;
+  reflection: string;
 };
 
 /** Refract a narrow rounded edge while leaving the photograph's centre intact. */
@@ -33,7 +36,9 @@ function createGlassMaps(
 
   const displacement = context.createImageData(canvas.width, canvas.height);
   const edge = context.createImageData(canvas.width, canvas.height);
-  const bevel = Math.min(radius - 1, Math.max(12, Math.min(18, width * 0.025)));
+  const reflection = context.createImageData(canvas.width, canvas.height);
+  const bevel = Math.min(radius - 1, Math.max(18, Math.min(30, width * 0.03)));
+  const reflectionWidth = Math.min(3, Math.max(1.8, bevel * 0.1));
 
   for (let py = 0; py < canvas.height; py++) {
     for (let px = 0; px < canvas.width; px++) {
@@ -51,15 +56,29 @@ function createGlassMaps(
       const normalY =
         Math.sign(dy) *
         (outsideLength ? outsideY / outsideLength : qy >= qx ? 1 : 0);
-      const rim = Math.max(0, Math.min(1, 1 - inside / bevel));
-      const bend = inside >= 0 ? REFRACTION_RANGE * rim * rim : 0;
+      const t = Math.max(0, Math.min(1, inside / bevel));
+      const rim = inside >= 0 ? 1 - t * t * (3 - 2 * t) : 0;
+      let bend = 0;
+      if (inside > 0 && inside < bevel) {
+        const curve = 1 - Math.max(0.0001, t);
+        const heightAtEdge = Math.sqrt(1 - curve * curve);
+        const incident = Math.atan(curve / heightAtEdge);
+        const refracted = Math.asin(Math.sin(incident) / LENS.ior);
+        // Snell's law through the curved bevel and the flat depth below it.
+        bend = Math.min(
+          LENS.range,
+          0.5 *
+            (LENS.thickness + heightAtEdge * bevel) *
+            Math.tan(incident - refracted),
+        );
+      }
       const index = (py * canvas.width + px) * 4;
 
       displacement.data[index] = Math.round(
-        128 - (127 * normalX * bend) / REFRACTION_RANGE,
+        128 - (127 * normalX * bend) / LENS.range,
       );
       displacement.data[index + 1] = Math.round(
-        128 - (127 * normalY * bend) / REFRACTION_RANGE,
+        128 - (127 * normalY * bend) / LENS.range,
       );
       displacement.data[index + 2] = 128;
       displacement.data[index + 3] = 255;
@@ -67,18 +86,32 @@ function createGlassMaps(
       edge.data[index] = 255;
       edge.data[index + 1] = 255;
       edge.data[index + 2] = 255;
-      edge.data[index + 3] = inside >= 0 ? Math.round(255 * rim * rim) : 0;
+      edge.data[index + 3] = Math.round(255 * rim);
+
+      // Opposing highlights follow the normal through the rounded corners.
+      const facing = Math.abs(normalX * 0.5 - normalY * Math.sqrt(0.75));
+      const grazing =
+        inside > 0 && inside < reflectionWidth
+          ? Math.sin((Math.PI * inside) / reflectionWidth)
+          : 0;
+      reflection.data[index] = 255;
+      reflection.data[index + 1] = 255;
+      reflection.data[index + 2] = 255;
+      reflection.data[index + 3] = Math.round(255 * grazing * facing ** 2);
     }
   }
 
   context.putImageData(displacement, 0, 0);
   const displacementUrl = canvas.toDataURL("image/png");
   context.putImageData(edge, 0, 0);
+  const edgeUrl = canvas.toDataURL("image/png");
+  context.putImageData(reflection, 0, 0);
   return {
     width,
     height,
     displacement: displacementUrl,
-    edge: canvas.toDataURL("image/png"),
+    edge: edgeUrl,
+    reflection: canvas.toDataURL("image/png"),
   };
 }
 
@@ -106,9 +139,13 @@ export function FooterPhotoGlass({ src }: { src: string }) {
       }
       const width = Math.round(frame.clientWidth);
       const height = Math.round(frame.clientHeight);
-      const radius =
-        Number.parseFloat(getComputedStyle(frame).borderTopLeftRadius) || 20;
-      const size = width + ":" + height + ":" + radius;
+      const radius = Math.min(
+        width / 2,
+        height / 2,
+        Number.parseFloat(getComputedStyle(frame).borderTopLeftRadius) || 28,
+      );
+      const size =
+        width + ":" + height + ":" + radius + ":" + window.devicePixelRatio;
       if (width < 1 || height < 1 || size === previousSize) return;
       previousSize = size;
       setMaps(createGlassMaps(width, height, radius));
@@ -153,8 +190,13 @@ export function FooterPhotoGlass({ src }: { src: string }) {
                 width={maps.width}
                 height={maps.height}
                 preserveAspectRatio="none"
-                result="bevel"
+                result="rawBevel"
               />
+              {/* Correct 128/255 to 0.5 so neutral pixels stay motionless. */}
+              <feComponentTransfer in="rawBevel" result="bevel">
+                <feFuncR type="linear" slope="1" intercept={-0.5 / 255} />
+                <feFuncG type="linear" slope="1" intercept={-0.5 / 255} />
+              </feComponentTransfer>
               <feDisplacementMap
                 in="SourceGraphic"
                 in2="bevel"
@@ -220,6 +262,13 @@ export function FooterPhotoGlass({ src }: { src: string }) {
             height={maps.height}
             preserveAspectRatio="none"
             filter={"url(#" + id + ")"}
+          />
+          <image
+            className="footer-photo-glass__reflection"
+            href={maps.reflection}
+            width={maps.width}
+            height={maps.height}
+            preserveAspectRatio="none"
           />
         </>
       )}

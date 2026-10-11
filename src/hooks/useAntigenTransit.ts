@@ -14,7 +14,6 @@ export type AntigenTransit = {
   tcell: TransitCurve;
   tcellScale: number;
   tcellAngle: number;
-  outlineAngle: number;
 };
 
 export function pointOnTransit(curve: TransitCurve, progress: number) {
@@ -122,7 +121,6 @@ export function measureAntigenTransit(
       tcell,
       tcellScale,
       tcellAngle,
-      outlineAngle: [90, 45, -45][selected],
     };
     return [
       processing.x,
