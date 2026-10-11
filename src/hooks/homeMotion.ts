@@ -22,6 +22,9 @@ export const HOME_STILL_RATIO = 0.2;
  * track by and the new rest share; the reveal speed stays unchanged.
  */
 export function stillHold(range: number, rest: number, lead = 0, still = HOME_STILL_RATIO) {
+  // A chapter can mount while the page loader keeps it unmeasurable. Keep its
+  // normal track length instead of writing Infinity into CSS.
+  if (!(range > 0) || !Number.isFinite(range)) return { scale: 1, rest };
   const reveal = range / (1 + rest);
   const next = reveal * (1 + still) + lead;
   return { scale: next / range, rest: next / reveal - 1 };

@@ -17,7 +17,7 @@ import "../../styles/home-antigen-switch.css";
 
 const antigens = [
   { name: "A", color: "#a65370" },
-  { name: "B", color: "#63784f" },
+  { name: "B", color: "#a17755" },
   { name: "C", color: "#7c699f" },
 ] as const;
 
@@ -108,16 +108,30 @@ function Peptide({ index }: { index: number }) {
   );
 }
 
-export function HomeAntigenSwitch() {
+type AntigenViewProps = {
+  view: "overview" | "mechanism";
+  selected: number;
+  select: (index: number) => void;
+  hasInteracted: boolean;
+  interact: () => void;
+  active: boolean;
+};
+
+function AntigenView({
+  view,
+  selected,
+  select,
+  hasInteracted,
+  interact,
+  active,
+}: AntigenViewProps) {
   const root = useRef<HTMLDivElement>(null);
-  const [selected, setSelected] = useState(0);
-  const [hasInteracted, setHasInteracted] = useState(false);
-  const [mechanismExpanded, setMechanismExpanded] = useState(false);
+  const mechanismExpanded = view === "mechanism";
   const { phase, playing, replay } = useAntigenMechanism(root, selected, {
     growing: nascentProteinPath,
     processed: processedProteinPath,
     peptide: productEpitopes[selected],
-  }, mechanismExpanded);
+  }, mechanismExpanded && active);
   const id = useId().replace(/:/g, "");
   const slotId = id + "-slot";
   const backboneId = id + "-backbone";
@@ -126,58 +140,36 @@ export function HomeAntigenSwitch() {
   const antigen = antigens[selected];
   const handleSelect = useCallback(
     (index: number) => {
-      setSelected(index);
-      setHasInteracted(true);
-      if (mechanismExpanded) replay();
+      select(index);
+      interact();
+      if (mechanismExpanded && active) replay();
     },
-    [mechanismExpanded, replay],
+    [active, interact, mechanismExpanded, replay, select],
   );
   useAntigenDrag(root, handleSelect);
-  const showMechanism = useCallback(() => {
-    const scene = root.current;
-    const notes = scene?.querySelector("details");
-    if (notes) notes.open = false;
-    setMechanismExpanded(true);
-    // Re-measure the carried ring and normal-flow chapter heights after layout.
-    requestAnimationFrame(() => {
-      if (scene?.isConnected) ScrollTrigger.refresh();
-    });
-  }, []);
   useEffect(() => {
-    const chapter = root.current?.closest(".story-chapter");
-    if (!chapter) return;
-    // The overview hands off to the example as the chapter reaches the screen.
-    const trigger = ScrollTrigger.create({
-      trigger: chapter,
-      start: "top top",
-      end: "bottom top",
-      onEnter: showMechanism,
-      onEnterBack: showMechanism,
-    });
-    if (trigger.progress > 0) showMechanism();
-    return () => trigger.kill();
-  }, [showMechanism]);
-  useEffect(() => {
+    if (!mechanismExpanded) return;
     const onPlaybackAntigen = (event: Event) => {
       const index = (event as CustomEvent<{ selected: number }>).detail.selected;
       if (!Number.isInteger(index) || index < 0 || index >= antigens.length)
         return;
-      setSelected(index);
-      setHasInteracted(true);
-      showMechanism();
-      replay();
+      select(index);
+      interact();
+      if (active) replay();
     };
     window.addEventListener(HOME_PLAYBACK_ANTIGEN_EVENT, onPlaybackAntigen);
     return () => {
       window.removeEventListener(HOME_PLAYBACK_ANTIGEN_EVENT, onPlaybackAntigen);
     };
-  }, [replay, showMechanism]);
+  }, [active, interact, mechanismExpanded, replay, select]);
 
   return (
     <div
       ref={root}
       className="home-antigen-switch"
+      data-antigen-view={view}
       data-mechanism-expanded={mechanismExpanded}
+      inert={!active}
       data-guidance={!hasInteracted}
       data-phase={mechanismExpanded ? phase : 0}
       data-playing={mechanismExpanded && playing}
@@ -834,6 +826,197 @@ export function HomeAntigenSwitch() {
           ? `${phaseLabels[phase]}. Conceptual mechanism.`
           : "Shared circRNA backbone with a replaceable antigen sequence."}
       </p>
+    </div>
+  );
+}
+
+export function HomeAntigenSwitch() {
+  const root = useRef<HTMLDivElement>(null);
+  const [selected, setSelected] = useState(0);
+  const [hasInteracted, setHasInteracted] = useState(false);
+  const [mechanismActive, setMechanismActive] = useState(false);
+  const interact = useCallback(() => setHasInteracted(true), []);
+
+  useEffect(() => {
+    const story = root.current;
+    const chapter = story?.closest<HTMLElement>(".story-chapter");
+    const overview = story?.querySelector<HTMLElement>(
+      '[data-antigen-view="overview"]',
+    );
+    const mechanism = story?.querySelector<HTMLElement>(
+      '[data-antigen-view="mechanism"]',
+    );
+    const copy = overview?.querySelector<HTMLElement>(
+      ".home-antigen-switch__copy",
+    );
+    const overviewRing = overview?.querySelector<HTMLElement>(
+      "[data-antigen-ring]",
+    );
+    const overviewOptions = overview?.querySelector<HTMLElement>(
+      ".home-antigen-switch__options",
+    );
+    const mechanismRing = mechanism?.querySelector<HTMLElement>(
+      "[data-antigen-ring]",
+    );
+    const mechanismOptions = mechanism?.querySelector<HTMLElement>(
+      ".home-antigen-switch__options",
+    );
+    if (
+      !chapter ||
+      !overview ||
+      !mechanism ||
+      !copy ||
+      !overviewRing ||
+      !overviewOptions ||
+      !mechanismRing ||
+      !mechanismOptions
+    )
+      return;
+
+    const flow = window.matchMedia(
+      "(max-width: 800px) and (orientation: portrait), (max-height: 650px) and (orientation: landscape), (prefers-reduced-motion: reduce)",
+    );
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    let triggers: ScrollTrigger[] = [];
+    const alpha = (element: HTMLElement, value: number) => {
+      element.style.opacity = String(value);
+      element.style.visibility = value < 0.001 ? "hidden" : "visible";
+    };
+    const smooth = (value: number) => {
+      const p = Math.max(0, Math.min(1, value));
+      return p * p * (3 - 2 * p);
+    };
+    let carryGeometry = { dx: 0, dy: 0, sx: 1, sy: 1 };
+    const measureCarry = () => {
+      overviewRing.style.removeProperty("transform");
+      const from = overviewRing.getBoundingClientRect();
+      const to = mechanismRing.getBoundingClientRect();
+      carryGeometry = {
+        dx: to.left - from.left,
+        dy: to.top - from.top,
+        sx: to.width / from.width,
+        sy: to.height / from.height,
+      };
+    };
+    const build = () => {
+      triggers.forEach((trigger) => trigger.kill());
+      triggers = [];
+      if (flow.matches) {
+        alpha(overview, 1);
+        alpha(mechanism, 1);
+        mechanism.style.removeProperty("background-color");
+        overviewRing.style.removeProperty("transform");
+        overviewOptions.style.removeProperty("opacity");
+        overviewOptions.inert = false;
+        mechanismRing.style.removeProperty("opacity");
+        mechanismOptions.style.removeProperty("opacity");
+        setMechanismActive(false);
+        const fade = reducedMotion.matches
+          ? null
+          : ScrollTrigger.create({
+              id: "home-antigen-overview-fade",
+              trigger: copy,
+              start: "top 48%",
+              end: "bottom 12%",
+              onUpdate: ({ progress }) => {
+                copy.style.opacity = String(1 - smooth(progress));
+              },
+            });
+        const entry = ScrollTrigger.create({
+          id: "home-antigen-mechanism-entry",
+          trigger: mechanism,
+          start: "top 72%",
+          end: "bottom top",
+          onEnter: () => setMechanismActive(true),
+          onEnterBack: () => setMechanismActive(true),
+          onLeaveBack: () => setMechanismActive(false),
+        });
+        if (fade) triggers.push(fade);
+        triggers.push(entry);
+        copy.style.opacity = fade ? String(1 - smooth(fade.progress)) : "1";
+        setMechanismActive(entry.progress > 0);
+        return;
+      }
+
+      // Carry the construct into the mechanism layout while the copy fades.
+      // Choices change location after the old labels have disappeared.
+      mechanism.style.backgroundColor = "transparent";
+      overviewRing.style.transformOrigin = "top left";
+      measureCarry();
+      const render = (progress: number) => {
+        const travel = smooth((progress - 0.4) / 0.44);
+        const handoff = smooth((progress - 0.84) / 0.12);
+        const oldOptions = 1 - smooth((progress - 0.48) / 0.2);
+        copy.style.opacity = String(1 - smooth((progress - 0.18) / 0.4));
+        const { dx, dy, sx, sy } = carryGeometry;
+        overviewRing.style.transform =
+          `translate(${dx * travel}px, ${dy * travel}px) ` +
+          `scale(${1 + (sx - 1) * travel}, ${1 + (sy - 1) * travel})`;
+        overviewOptions.style.opacity = String(oldOptions);
+        overviewOptions.inert = oldOptions < 0.05;
+        alpha(overview, 1 - handoff);
+        alpha(mechanism, smooth((progress - 0.45) / 0.27));
+        mechanismRing.style.opacity = String(handoff);
+        mechanismOptions.style.opacity = String(
+          smooth((progress - 0.63) / 0.2),
+        );
+        setMechanismActive(progress >= 0.9);
+      };
+      const trigger = ScrollTrigger.create({
+        id: "home-antigen-overview-transition",
+        trigger: chapter,
+        start: "top top",
+        end: () => `+=${Math.round(window.innerHeight * 0.95)}`,
+        refreshPriority: -2,
+        onUpdate: ({ progress }) => render(progress),
+        onRefresh: ({ progress }) => {
+          measureCarry();
+          render(progress);
+        },
+      });
+      triggers.push(trigger);
+      render(trigger.progress);
+    };
+    build();
+    flow.addEventListener("change", build);
+    reducedMotion.addEventListener("change", build);
+    return () => {
+      flow.removeEventListener("change", build);
+      reducedMotion.removeEventListener("change", build);
+      triggers.forEach((trigger) => trigger.kill());
+      overview.style.removeProperty("opacity");
+      overview.style.removeProperty("visibility");
+      mechanism.style.removeProperty("opacity");
+      mechanism.style.removeProperty("visibility");
+      mechanism.style.removeProperty("background-color");
+      overviewRing.style.removeProperty("transform");
+      overviewRing.style.removeProperty("transform-origin");
+      overviewOptions.style.removeProperty("opacity");
+      overviewOptions.inert = false;
+      mechanismRing.style.removeProperty("opacity");
+      mechanismOptions.style.removeProperty("opacity");
+      copy.style.removeProperty("opacity");
+    };
+  }, []);
+
+  return (
+    <div ref={root} className="home-antigen-switch-story">
+      <AntigenView
+        view="overview"
+        selected={selected}
+        select={setSelected}
+        hasInteracted={hasInteracted}
+        interact={interact}
+        active={!mechanismActive}
+      />
+      <AntigenView
+        view="mechanism"
+        selected={selected}
+        select={setSelected}
+        hasInteracted={hasInteracted}
+        interact={interact}
+        active={mechanismActive}
+      />
     </div>
   );
 }

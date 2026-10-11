@@ -1,11 +1,15 @@
 import { type CSSProperties } from "react";
 import { PaintedReveal } from "./PaintedReveal";
 import manifest from "../../assets/home/story/manifest.json";
-const paper = "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-1-layer-1.webp";
-const heading = "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-1-layer-2.webp";
-const annotation = "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-1-layer-3.webp";
-const ring = "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-1-layer-4.webp";
-const benefits = "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-1-layer-5.webp";
+import ring from "../../assets/home/story/scene-1-layer-4.webp";
+const paper =
+  "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-1-layer-1.webp";
+const heading =
+  "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-1-layer-2.webp";
+const annotation =
+  "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-1-layer-3.webp";
+const benefits =
+  "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-1-layer-5.webp";
 import "../../styles/home-circrna.css";
 
 const sources = [paper, heading, annotation, ring, benefits];

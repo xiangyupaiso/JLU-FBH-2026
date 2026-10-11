@@ -1,0 +1,303 @@
+/* The closing sheet lifts as the reader scrolls through the hidden chapter. */
+.finale-photo-window {
+  --photo-reveal: 0;
+  position: relative;
+  height: 185svh;
+  overflow: clip;
+  background: #211a23;
+  color: #f8f4ee;
+}
+
+.finale-photo-track {
+  position: relative;
+  height: 100%;
+}
+
+.finale-photo-sticky {
+  position: sticky;
+  top: var(--header-height, 78px);
+  isolation: isolate;
+  display: grid;
+  place-items: center;
+  height: calc(100svh - var(--header-height, 78px));
+  padding: 18px clamp(18px, 4vw, 64px);
+  background: radial-gradient(ellipse at 50% 45%, #49323c 0, #211a23 75%);
+}
+
+.finale-photo-content {
+  position: relative;
+  z-index: 1;
+  width: min(1210px, 100%, calc(100svh - 25px));
+  transform: perspective(1400px)
+    translate3d(0, calc((1 - var(--photo-reveal)) * 38px), 0)
+    rotateX(calc((1 - var(--photo-reveal)) * 2.5deg))
+    scale(calc(0.97 + var(--photo-reveal) * 0.03));
+  transform-origin: 50% 65%;
+  will-change: transform;
+}
+
+.finale-photo-close {
+  position: absolute;
+  z-index: 6;
+  top: 18px;
+  right: clamp(18px, 4vw, 64px);
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 1px solid rgb(249 235 233 / 34%);
+  border-radius: 50%;
+  background: rgb(249 235 233 / 7%);
+  color: #f9ebe9;
+  cursor: pointer;
+}
+
+.finale-photo-close:hover {
+  background: rgb(249 235 233 / 15%);
+}
+.finale-photo-close:focus-visible,
+.finale-photo-figure a:focus-visible {
+  outline: 2px solid #f6c4d9;
+  outline-offset: 4px;
+}
+
+.finale-photo-heading {
+  padding-right: 56px;
+}
+.finale-photo-heading p {
+  margin: 0 0 8px;
+  color: #d8bac7;
+  font:
+    600 12px/1.5 "Manrope",
+    sans-serif;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.finale-photo-heading h2 {
+  margin: 0;
+  font:
+    400 clamp(32px, 4vw, 54px)/1.05 "Newsreader",
+    Georgia,
+    serif;
+  letter-spacing: -0.025em;
+}
+
+.finale-photo-figure {
+  margin: clamp(16px, 2vh, 22px) 0 0;
+}
+.finale-photo-frame {
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  aspect-ratio: 2600 / 1734;
+  overflow: hidden;
+  border: 1px solid rgb(255 247 246 / 62%);
+  border-radius: clamp(18px, 2vw, 28px);
+  background: #3b2934;
+  box-shadow:
+    0 12px 0 -6px rgb(226 188 202 / 30%),
+    0 25px 30px -18px rgb(255 227 237 / 26%),
+    0 40px 76px rgb(8 5 11 / 48%);
+}
+.finale-photo-frame > img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  pointer-events: none;
+}
+.finale-photo-frame::after {
+  content: "";
+  position: absolute;
+  z-index: 3;
+  inset: 0;
+  border-radius: inherit;
+  background:
+    radial-gradient(ellipse at 0 0, rgb(255 255 255 / 32%), transparent 24%),
+    radial-gradient(
+      ellipse at 100% 100%,
+      rgb(247 205 229 / 20%),
+      transparent 25%
+    ),
+    linear-gradient(
+      180deg,
+      rgb(255 255 255 / 18%),
+      transparent 5% 94%,
+      rgb(35 11 28 / 24%)
+    ),
+    linear-gradient(
+      90deg,
+      rgb(255 255 255 / 16%),
+      transparent 4% 96%,
+      rgb(255 255 255 / 12%)
+    );
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 88%),
+    inset 0 0 0 2px rgb(255 255 255 / 13%),
+    inset 0 10px 14px -11px rgb(255 255 255 / 58%),
+    inset 0 -14px 18px -12px rgb(31 8 24 / 70%);
+  pointer-events: none;
+}
+
+.finale-photo-cover {
+  position: absolute;
+  z-index: 4;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 36px;
+  border: 1px solid rgb(255 238 238 / 10%);
+  border-top: 0;
+  border-radius: 0 0 30px 30px;
+  background:
+    radial-gradient(ellipse at 50% 10%, rgb(116 72 93 / 25%), transparent 65%),
+    linear-gradient(180deg, #31232f, #281d2a 70%, #241a26);
+  box-shadow: 0 24px 42px rgb(11 5 16 / 47%);
+  transform: perspective(1200px)
+    translate3d(0, calc(var(--photo-reveal) * -102%), 0)
+    rotateX(calc(var(--photo-reveal) * -3deg));
+  transform-origin: 50% 0;
+  will-change: transform;
+}
+.finale-photo-cover::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 20px;
+  border-radius: 0 0 30px 30px;
+  background: linear-gradient(180deg, transparent, rgb(255 228 240 / 9%));
+  box-shadow: inset 0 -1px 0 rgb(255 239 247 / 30%);
+}
+.finale-photo-cover__eyebrow {
+  color: #d7b9c8;
+  font:
+    600 12px/1.5 "Manrope",
+    sans-serif;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+.finale-photo-cover__title {
+  color: #f8f1ed;
+  font:
+    400 clamp(36px, 5vw, 70px)/1.08 "Newsreader",
+    Georgia,
+    serif;
+  letter-spacing: -0.025em;
+  text-align: center;
+}
+.finale-photo-cover__action {
+  margin-top: 14px;
+  color: #d7b9c8;
+  font:
+    500 12px/1.5 "Manrope",
+    sans-serif;
+  letter-spacing: 0.08em;
+}
+.finale-photo-cover__action span {
+  display: inline-block;
+  margin-left: 8px;
+}
+.finale-photo-figure figcaption {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 8px 24px;
+  margin-top: 8px;
+  color: #d6bdc9;
+  font:
+    500 13px/1.5 "Manrope",
+    sans-serif;
+}
+.finale-photo-figure a {
+  color: #f8e6ec;
+  text-underline-offset: 4px;
+}
+@media (max-width: 720px) {
+  .finale-photo-window {
+    height: 165svh;
+  }
+  .finale-photo-sticky {
+    padding: 24px 18px;
+  }
+  .finale-photo-heading h2 {
+    font-size: clamp(30px, 8vw, 42px);
+  }
+  .finale-photo-frame {
+    border-radius: 18px;
+  }
+  .finale-photo-cover {
+    border-radius: 0 0 20px 20px;
+  }
+  .finale-photo-cover__title {
+    font-size: clamp(34px, 9vw, 46px);
+  }
+  .finale-photo-figure figcaption {
+    font-size: 12px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .finale-photo-window {
+    --photo-reveal: 1 !important;
+    height: auto;
+  }
+  .finale-photo-sticky {
+    position: relative;
+    top: auto;
+    height: auto;
+  }
+  .finale-photo-content {
+    transform: none;
+  }
+  .finale-photo-cover {
+    display: none;
+  }
+}
+
+@media (max-height: 520px) {
+  .finale-photo-window {
+    --photo-reveal: 1 !important;
+    height: auto;
+  }
+  .finale-photo-sticky {
+    position: relative;
+    top: auto;
+    height: auto;
+  }
+  .finale-photo-content {
+    transform: none;
+  }
+  .finale-photo-cover {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-transparency: reduce), (prefers-contrast: more) {
+  .finale-photo-frame::after {
+    display: none;
+  }
+}
+
+@media (forced-colors: active) {
+  .finale-photo-frame {
+    border: 2px solid CanvasText;
+    box-shadow: none;
+  }
+  .finale-photo-frame::after {
+    display: none;
+  }
+  .finale-photo-cover {
+    background: Canvas;
+    border-color: CanvasText;
+    box-shadow: none;
+  }
+  .finale-photo-figure a {
+    color: LinkText;
+  }
+}

@@ -37,9 +37,8 @@ export function HomeFinale({ art }: { art: ReactNode }) {
         </div>
       </div>
       <div className="story-final-statement">
-        {/* CROSS-FILE: the last line of "What we hope" (home-story.tsx)
-            travels down to this spot, then "the question behind" folds away,
-            leaving "That is CirCure." Without motion the fold stays hidden. */}
+        {/* The closing line recalls the question beside the doctor, then
+            "the question behind" folds away to leave "That is CirCure." */}
         <p className="story-final-statement__kicker">
           <span data-final-carry="target">
             That is

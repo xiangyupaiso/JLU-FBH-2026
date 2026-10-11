@@ -79,6 +79,12 @@ export function animateWardTear(
       ".story-ward-original--2, .story-ward-original--3",
     )
     .forEach((element) => (element.style.opacity = "0"));
+  const message = room.querySelector<HTMLElement>(".story-ward-message");
+  if (message) {
+    message.style.opacity = "1";
+    message.style.removeProperty("visibility");
+    message.style.transform = "none";
+  }
   const patient = room.querySelector<HTMLElement>('[data-ward="patient"]')!;
   const wash = document.createElement("img");
   wash.className = "story-tear-wash";

@@ -2,12 +2,12 @@
 export const homeDestinations = [
   {
     key: "description",
-    label: "The project",
+    label: "Description",
     path: "/description",
     summary:
       "Discover why CirCure explores a modular circRNA vaccine platform for triple-negative breast cancer.",
     topics: ["The clinical challenge", "Our circRNA vaccine concept", "The proposed project design"],
-    action: "Explore the project",
+    action: "Explore the description",
   },
   {
     key: "engineering",
@@ -19,13 +19,22 @@ export const homeDestinations = [
     action: "Follow the engineering",
   },
   {
-    key: "experiments",
-    label: "Experiments",
-    path: "/experiments",
+    key: "sustainability",
+    label: "Sustainability",
+    path: "/sustainability",
     summary:
-      "Explore the planned wet-lab route from circRNA construction to immune recognition, with controls at every step.",
-    topics: ["The five experimental gates", "Protocols and sample records", "Controls and readouts"],
-    action: "Explore the experiments",
+      "Explore how CirCure evaluates its impact against the Sustainable Development Goals and plans for responsible development.",
+    topics: ["Project overview", "Sustainability assessment", "SDG impact framework"],
+    action: "Explore sustainability",
+  },
+  {
+    key: "contribution",
+    label: "Contribution",
+    path: "/contribution",
+    summary:
+      "Explore reusable wet-lab resources, computational tools and records shared for future iGEM teams.",
+    topics: ["Wet-lab resources and parts", "Computational tools", "Education and collaboration"],
+    action: "Explore our contributions",
   },
   {
     key: "model",
@@ -37,17 +46,8 @@ export const homeDestinations = [
     action: "Explore the models",
   },
   {
-    key: "human-practices",
-    label: "Human practices",
-    path: "/human-practices",
-    summary:
-      "See how our Human Practices approach connects stakeholder perspectives with responsible research and design decisions.",
-    topics: ["Stakeholder questions", "Feedback and design changes", "Ethics and responsibility"],
-    action: "Explore human practices",
-  },
-  {
     key: "team",
-    label: "Our team",
+    label: "Team",
     path: "/roster",
     summary:
       "Get to know the students, instructors and advisors bringing different disciplines together around CirCure.",

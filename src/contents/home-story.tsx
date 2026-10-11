@@ -17,6 +17,8 @@ const clinicianEllipsis = "https://static.igem.wiki/teams/6056/wiki/files/pages/
 const patientQuestion = "https://static.igem.wiki/teams/6056/wiki/files/pages/home/patient-question.avif";
 import { useHomeStoryAnimation } from "../hooks/useHomeStoryAnimation";
 import { HomeAntigenSwitch } from "../components/home/HomeAntigenSwitch";
+import { HomeMoleculeGallery } from "../components/home/HomeMoleculeGallery";
+import { HomeTnbcDiagram } from "../components/home/HomeTnbcDiagram";
 import { HomeFinale } from "../components/home/HomeFinale";
 import { HomeExploreLinks } from "../components/home/HomeExploreLinks";
 const mapDataNoteUrl = "https://static.igem.wiki/teams/6056/wiki/files/pages/home/map-data-note.avif";
@@ -262,6 +264,18 @@ function WardArtwork() {
           decoding="async"
         />
       </div>
+      <div className="story-ward-message" data-ward-message>
+        <blockquote>
+          “If it comes back, can we give her <em>more options?</em>”
+        </blockquote>
+        <p>
+          Clinical training showed us the uncertainty patients face. Research
+          gives us a way to work toward an answer.
+        </p>
+        <p className="story-ward-message__closing">
+          That is the question behind <em>CirCure.</em>
+        </p>
+      </div>
     </>
   );
 }
@@ -488,7 +502,10 @@ function MapArtwork() {
       <div className="tnbc-map-copy">
         <h3 className="tnbc-map-intro">
           <span className="tnbc-map-intro-lead" data-map-copy>
-            Breast cancer is the
+            <span className="tnbc-map-intro-shared" data-tnbc-map-shared>
+              Breast cancer
+            </span>{" "}
+            is the
           </span>
           <strong className="tnbc-map-intro-focus" data-map-copy>
             most common cancer
@@ -844,6 +861,7 @@ function Chapter({
   art,
   className = "",
   copyInArtwork = false,
+  titleInArtwork = false,
 }: {
   id: string;
   title: ReactNode;
@@ -851,6 +869,7 @@ function Chapter({
   art?: ReactNode;
   className?: string;
   copyInArtwork?: boolean;
+  titleInArtwork?: boolean;
 }) {
   return (
     <section
@@ -858,7 +877,7 @@ function Chapter({
       className={`story-chapter ${className}`}
       aria-labelledby={`${id}-title`}
     >
-      {copyInArtwork && (
+      {copyInArtwork && !titleInArtwork && (
         <h2 className="story-sr-only" id={`${id}-title`}>
           {title}
         </h2>
@@ -866,11 +885,18 @@ function Chapter({
       {art && (
         <div className="story-scene-track">
           <div className="story-chapter-inner">
-            <div className="story-visual">{art}</div>
+            <div className="story-visual">
+              {art}
+              {titleInArtwork && (
+                <h2 className="story-artwork-title" id={`${id}-title`}>
+                  {title}
+                </h2>
+              )}
+            </div>
           </div>
         </div>
       )}
-      {!copyInArtwork && (
+      {!copyInArtwork && !titleInArtwork && (
         <div className="story-copy">
           <h2 id={`${id}-title`}>{title}</h2>
           <div className="story-body">{children}</div>
@@ -942,8 +968,10 @@ export function HomeStory() {
         className="story-chapter--map"
         title={
           <>
-            <em className="story-emphasis-why">Why</em> triple-negative breast
-            cancer?
+            <em className="story-emphasis-why">Why</em> triple-negative{" "}
+            <span className="tnbc-reading-title-shared" data-tnbc-title-shared>
+              breast cancer
+            </span>{"?"}
           </>
         }
         art={<MapArtwork />}
@@ -952,6 +980,7 @@ export function HomeStory() {
           For patients with triple-negative breast cancer (TNBC), recurrence is
           an especially difficult concern.
         </p>
+        <HomeTnbcDiagram />
         <div
           className="story-receptors"
           aria-label="Estrogen receptor negative, progesterone receptor negative, HER2 negative"
@@ -1012,6 +1041,8 @@ export function HomeStory() {
         </div>
       </div>
 
+      <HomeMoleculeGallery />
+
       <HomeRnaSequence
         rna={<CircRnaArtwork />}
         platform={<PlatformArtwork />}
@@ -1034,44 +1065,19 @@ export function HomeStory() {
         className="story-chapter--beyond"
         title={
           <>
-            Starting with TNBC. <em>Looking further.</em>
+            <span className="story-beyond-glow" aria-hidden="true" />
+            <span className="story-beyond-line">
+              <span className="story-beyond-ink">Starting with TNBC.</span>
+            </span>{" "}
+            <em className="story-beyond-line">
+              <span className="story-beyond-ink">Looking further.</span>
+            </em>
           </>
         }
         art={<BeyondArtwork />}
-      >
-        <p>
-          We start with triple-negative breast cancer. Our longer-term vision is
-          a framework that can be adapted to other solid tumors.
-        </p>
-        <p>
-          Each new target will need its own validation. The ambition stays the
-          same: more flexibility, and more possibilities for patients.
-        </p>
-      </Chapter>
+        titleInArtwork
+      />
 
-      {/* CROSS-FILE: #what-we-hope is read by Navbar.tsx for the header theme. */}
-      <Chapter
-        id="what-we-hope"
-        className="story-chapter--hope"
-        title={
-          <>
-            “If it comes back, can we give her <em>more options?</em>”
-          </>
-        }
-      >
-        <p>
-          Clinical training showed us the uncertainty patients face. Research
-          gives us a way to work toward an answer.
-        </p>
-        {/* CROSS-FILE: this line travels down into HomeFinale.tsx, where it
-            becomes "That is CirCure." (useHomeStoryAnimation.ts, finale). */}
-        <p className="story-carry">
-          <span data-final-carry="source">
-            That is the question behind{" "}
-            <span className="story-emphasis">CirCure.</span>
-          </span>
-        </p>
-      </Chapter>
       <HomeFinale art={<HopeArtwork />} />
     </div>
   );

@@ -13,8 +13,6 @@ const voices: Record<string, Voice> = {
   "clinical-challenge": "weigh",
   "our-platform": "assemble",
   "plug-and-play": "exchange",
-  "beyond-tnbc": "expand",
-  "what-we-hope": "resolve",
 };
 
 // Follow the argument sentence by sentence: context → evidence → consequence;
@@ -24,8 +22,6 @@ const sentenceVoices: Record<string, Voice[]> = {
   "clinical-challenge": ["resolve", "weigh", "explain", "explain", "explain", "reflect", "reflect"],
   "our-platform": ["explain", "expand", "assemble", "exchange", "expand"],
   "plug-and-play": ["exchange", "assemble", "reflect"],
-  "beyond-tnbc": ["assemble", "expand", "explain", "resolve"],
-  "what-we-hope": ["reflect", "resolve", "assemble"],
 };
 
 // Split words, never measured lines: browser reflow remains free at any zoom.
@@ -128,13 +124,11 @@ function animateQuietReading(
   copy: HTMLElement,
   section: HTMLElement,
   compact: boolean,
-  splits: Splits,
   cleanups: (() => void)[],
 ) {
   const title = copy.querySelector<HTMLElement>("h2")!;
   const paragraphs = [...copy.querySelectorAll<HTMLElement>(".story-body > p")];
   const blocks = [title, ...paragraphs];
-  const hope = section.id === "what-we-hope";
   copy.classList.add("has-quiet-reading");
   cleanups.push(() => copy.classList.remove("has-quiet-reading"));
   const headerHeight = Number.parseFloat(getComputedStyle(section).getPropertyValue("--header-height")) || 0;
@@ -151,7 +145,7 @@ function animateQuietReading(
     scrollTrigger: {
       id: `home-${section.id}-reading`, trigger: copy,
       start: fits ? `top top+=${headerHeight}` : "top 85%",
-      end: () => fits ? `+=${Math.round(window.innerHeight * (hope ? 1.6 : 1.4))}` : "bottom 65%",
+      end: () => fits ? `+=${Math.round(window.innerHeight * 1.4)}` : "bottom 65%",
       pin: fits, scrub: 0.22, invalidateOnRefresh: true,
     },
   });
@@ -173,18 +167,13 @@ function animateQuietReading(
     return reading;
   }
 
-  if (hope) {
-    // Give the patient's final question one emphasis; its explanation stays still.
-    animateArtworkWords(title, reading, "resolve", compact, splits, 0, 0.75);
-  } else {
-    reading.fromTo(title, { opacity: 0, y: 6 }, {
-      opacity: 1, y: 0, duration: 0.45, ease: "sine.out",
-    }, 0);
-  }
+  reading.fromTo(title, { opacity: 0, y: 6 }, {
+    opacity: 1, y: 0, duration: 0.45, ease: "sine.out",
+  }, 0);
   paragraphs.forEach((paragraph, index) => {
     reading.fromTo(paragraph, { opacity: 0, y: 6 }, {
       opacity: 1, y: 0, duration: 0.45, ease: "sine.out",
-    }, (hope ? 0.46 : 0.18) + index * (hope ? 0.3 : 0.18));
+    }, 0.18 + index * 0.18);
   });
   reading.addLabel("reading-complete");
   reading.to({}, { duration: reading.duration() * 0.8 });
@@ -201,10 +190,10 @@ export function animateHomeReading(
   cleanups: (() => void)[],
 ) {
   if (section.id === "why-tnbc") {
-    return animateTnbcReading(copy, section, compact, cleanups);
+    return animateTnbcReading(copy, cleanups);
   }
-  if (["our-platform", "plug-and-play", "beyond-tnbc", "what-we-hope"].includes(section.id)) {
-    return animateQuietReading(copy, section, compact, splits, cleanups);
+  if (["our-platform", "plug-and-play"].includes(section.id)) {
+    return animateQuietReading(copy, section, compact, cleanups);
   }
   const voice = voices[section.id] || "reflect";
   const ward = section.id === "what-we-saw";
@@ -222,8 +211,8 @@ export function animateHomeReading(
   )];
   const entries = targets.map((element) => ({
     element,
-    // Keep source links and the finale's travelling phrase structurally intact.
-    groups: element.matches("a, .story-carry")
+    // Keep source links structurally intact.
+    groups: element.matches("a")
       ? [[element]] : sentences(words(element, splits)),
   }));
   const sentenceCount = entries.reduce((n, e) => n + e.groups.length, 0);

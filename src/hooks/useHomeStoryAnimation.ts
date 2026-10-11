@@ -17,9 +17,9 @@ import { animateWardTear, WARD_TEAR_LEAD } from "./animateWardTear";
 import { animateTearCloud, TEAR_CLOUD_LEAD } from "./animateTearCloud";
 import { animateFinaleExplore } from "./animateFinaleExplore";
 import { animateClinicalSequence } from "./animateClinicalSequence";
-import { animateQuestionWhy } from "./animateQuestionWhy";
+import { animateGalleryWhy } from "./animateGalleryWhy";
+import { animateTnbcBridge } from "./animateTnbcBridge";
 import { updateWardInfusionTube } from "./wardInfusionGeometry";
-import "../styles/home-question-transition.css";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger, SplitText);
 
@@ -177,6 +177,12 @@ function choreographArt(
         { opacity: 0, scale: 0.9 },
         { opacity: 1, scale: 1, duration: 0.13, ease: HOME_EASE },
         0.89,
+      );
+      timeline.fromTo(
+        section.querySelector("[data-ward-message]"),
+        { autoAlpha: 0, y: compact ? 8 : 12 },
+        { autoAlpha: 1, y: 0, duration: 0.2, ease: HOME_EASE },
+        1.04,
       );
       break;
     }
@@ -347,6 +353,26 @@ function choreographArt(
         0.6,
         HOME_EASE,
       );
+      timeline.fromTo(
+        section.querySelector<HTMLElement>(".story-beyond-glow")!,
+        { autoAlpha: 0 },
+        { autoAlpha: 0.32, duration: 0.55, ease: "sine.inOut" },
+        0.16,
+      );
+      section
+        .querySelectorAll<HTMLElement>(".story-beyond-ink")
+        .forEach((line, index) => {
+          timeline.fromTo(
+            line,
+            { autoAlpha: 0 },
+            {
+              autoAlpha: 1,
+              duration: 0.48,
+              ease: "sine.inOut",
+            },
+            0.25 + index * 0.04,
+          );
+        });
       break;
   }
 
@@ -359,10 +385,10 @@ export function useHomeStoryAnimation(root: RefObject<HTMLDivElement | null>) {
     () => {
       gsap.set(root.current, { "--home-scroll-scale": 1 + ART_REST_RATIO });
       let media = gsap.matchMedia();
-      let carryResizeProgress: number | undefined;
+      let galleryResizeProgress: number | undefined;
       const mediaEvents = gsap as typeof gsap & {
-        addEventListener: (event: "matchMediaInit", callback: () => void) => void;
-        removeEventListener: (event: "matchMediaInit", callback: () => void) => void;
+        addEventListener: (event: "matchMediaInit" | "matchMedia", callback: () => void) => void;
+        removeEventListener: (event: "matchMediaInit" | "matchMedia", callback: () => void) => void;
       };
       const buildTimelines = (compact: boolean) => {
         const timelines = new Map<string, gsap.core.Timeline>();
@@ -500,6 +526,13 @@ export function useHomeStoryAnimation(root: RefObject<HTMLDivElement | null>) {
             }
           });
 
+        const tnbc = root.current?.querySelector<HTMLElement>("#why-tnbc");
+        if (tnbc) {
+          const bridge = animateTnbcBridge(tnbc);
+          timelines.set("tnbc-copy-bridge", bridge.timeline);
+          cleanups.push(bridge.cleanup);
+        }
+
         if (root.current && clinicalSequence) {
           const challenge = clinicalSequence.querySelector<HTMLElement>(
             "#clinical-challenge",
@@ -521,6 +554,47 @@ export function useHomeStoryAnimation(root: RefObject<HTMLDivElement | null>) {
           cleanups.push(clinical.cleanup);
         }
 
+        if (root.current) {
+          cleanups.push(animateGalleryWhy(root.current, compact));
+          const rememberGalleryPosition = () => {
+            if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+              galleryResizeProgress = undefined;
+              if (root.current) delete root.current.dataset.galleryBridgeProgress;
+              return;
+            }
+            const progress = Number.parseFloat(
+              document.querySelector<HTMLElement>(".home-gallery-ring-transfer")
+                ?.dataset.progress ?? "",
+            );
+            if (progress > 0 && progress < 1) {
+              galleryResizeProgress = progress;
+              if (root.current) root.current.dataset.galleryBridgeProgress = String(progress);
+            }
+          };
+          const resumeGalleryPosition = () => {
+            const story = root.current;
+            if (!story) return;
+            const progress = Number.parseFloat(
+              story.dataset.galleryBridgeProgress ?? "",
+            );
+            const trigger = ScrollTrigger.getById("home-gallery-why-ring");
+            if (!(progress > 0 && progress < 1) || !trigger) return;
+            delete story.dataset.galleryBridgeProgress;
+            window.scrollTo({
+              top: trigger.start + (trigger.end - trigger.start) * progress,
+              behavior: "instant",
+            });
+            ScrollTrigger.update();
+            trigger.getTween()?.progress(1);
+          };
+          mediaEvents.addEventListener("matchMediaInit", rememberGalleryPosition);
+          mediaEvents.addEventListener("matchMedia", resumeGalleryPosition);
+          cleanups.push(() => {
+            mediaEvents.removeEventListener("matchMediaInit", rememberGalleryPosition);
+            mediaEvents.removeEventListener("matchMedia", resumeGalleryPosition);
+          });
+        }
+
         const wardTimeline = timelines.get("what-we-saw");
         const tearTimeline = timelines.get("what-stayed-with-us");
         const mapTimeline = timelines.get("why-tnbc");
@@ -532,12 +606,6 @@ export function useHomeStoryAnimation(root: RefObject<HTMLDivElement | null>) {
         if (root.current && tearTimeline && mapTimeline) {
           cleanups.push(animateTearCloud(root.current, tearTimeline, mapTimeline, compact));
         }
-        const thinkingTimeline = timelines.get("clinical-sequence");
-        const rnaTimeline = timelines.get("circrna-platform") ?? timelines.get("why-circrna");
-        if (root.current && thinkingTimeline && rnaTimeline) {
-          cleanups.push(animateQuestionWhy(root.current, thinkingTimeline, rnaTimeline, compact));
-        }
-
         // CROSS-FILE: id owned by HomeFinale.tsx; Navbar.tsx reads it too.
         const finale = root.current?.querySelector<HTMLElement>("#home-finale");
         if (finale) {
@@ -555,16 +623,7 @@ export function useHomeStoryAnimation(root: RefObject<HTMLDivElement | null>) {
             finale.querySelector<HTMLElement>(`[data-final-copy="${part}"]`);
           const title = copy("title");
           const tagline = copy("tagline");
-          // CROSS-FILE: source is the last line of #what-we-hope in
-          // home-story.tsx; target is the kicker in HomeFinale.tsx.
-          const carrySource = root.current?.querySelector<HTMLElement>(
-            '[data-final-carry="source"]',
-          );
-          const carryTarget = finale.querySelector<HTMLElement>(
-            '[data-final-carry="target"]',
-          );
-
-          // 2. Pinned finale, scrubbed: "the question behind" folds away so the
+          // Pinned finale: "the question behind" folds away so the
           //    flanks close in on "That is CirCure." (centred text does the
           //    drawing together), the name glows as they meet, then the
           //    statement, its light pass and the tagline follow while the
@@ -689,7 +748,7 @@ export function useHomeStoryAnimation(root: RefObject<HTMLDivElement | null>) {
             evolve.to({}, { duration: settled * hold.rest - rest });
           }
 
-          const finaleTrigger = ScrollTrigger.create({
+          ScrollTrigger.create({
             id: "home-finale-reading",
             trigger: finale,
             start: () => {
@@ -711,115 +770,6 @@ export function useHomeStoryAnimation(root: RefObject<HTMLDivElement | null>) {
           });
           timelines.set("home-finale", evolve);
 
-          // 1. Carry: between the "What we hope" reading pin and the finale
-          //    pin, a clone of the kicker follows the scroll from the scene 9
-          //    line to its place in the finale, shrinking from that line's
-          //    width to the kicker's. Rects are read live every update, so
-          //    resizes and fast scrolls cannot leave it off target. Created
-          //    after both pins so their layout is already applied.
-          const hopePin = ScrollTrigger.getById("home-what-we-hope-reading");
-          if (carrySource && carryTarget && hopePin) {
-            const ghost = document.createElement("span");
-            ghost.className = "story-final-carry";
-            ghost.setAttribute("aria-hidden", "true");
-            ghost.append(carryTarget.cloneNode(true));
-            // The clone keeps the full sentence at its natural width: drop
-            // inline motion styles copied from the kicker (fold width etc.).
-            ghost
-              .querySelectorAll("[style]")
-              .forEach((node) => node.removeAttribute("style"));
-            finale.after(ghost);
-            cleanups.push(() => ghost.remove());
-            const ghostFold = ghost.querySelector<HTMLElement>(
-              '[data-finale="fold"]',
-            );
-            const glide = gsap.parseEase("sine.inOut");
-            const motion = { progress: 0 };
-            const place = ({ start, end, scroll }: ScrollTrigger) => {
-              const progress = motion.progress;
-              ghost.dataset.progress = String(progress);
-              const travelling = progress > 0 && progress < 1;
-              carrySource.style.visibility = progress > 0 ? "hidden" : "";
-              carryTarget.style.visibility = progress < 1 ? "hidden" : "";
-              ghost.style.visibility = travelling ? "visible" : "hidden";
-              if (!travelling) return;
-              // Rapid input can start the finale while this line is settling.
-              // Both copies must fold identically throughout that overlap.
-              if (ghostFold && fold) {
-                ghostFold.style.width = fold.style.width;
-                ghostFold.style.opacity = fold.style.opacity;
-                ghostFold.style.filter = fold.style.filter;
-                ghostFold.style.setProperty(
-                  "--feather", fold.style.getPropertyValue("--feather"),
-                );
-              }
-              // Where the line sat when the carry began, and where the kicker
-              // will sit once the finale pins: interpolating those (in page
-              // terms) glides the clone steadily down the page as it scrolls.
-              const now = scroll();
-              const from = carrySource.getBoundingClientRect();
-              const to = carryTarget.getBoundingClientRect();
-              const fromTop = from.top + (Math.max(start, now) - start);
-              const toTop = to.top - (end - Math.min(end, now));
-              const p = glide(progress);
-              const scale = gsap.utils.interpolate(
-                from.width / ghost.offsetWidth,
-                to.width / ghost.offsetWidth,
-                p,
-              );
-              const y = gsap.utils.interpolate(
-                fromTop + from.height / 2,
-                toTop + to.height / 2,
-                p,
-              );
-              gsap.set(ghost, {
-                x: gsap.utils.interpolate(from.left, to.left, p),
-                y: y - (ghost.offsetHeight * scale) / 2,
-                scale,
-              });
-            };
-            const carry = gsap.timeline({
-              onUpdate: function (this: gsap.core.Timeline) {
-                if (this.scrollTrigger) place(this.scrollTrigger);
-              },
-              scrollTrigger: {
-                id: "home-finale-carry",
-                trigger: finale,
-                start: () => hopePin.end,
-                end: () => finaleTrigger.start,
-                scrub: compact ? 0.42 : HOME_SCRUB,
-                onRefresh: place,
-              },
-            });
-            carry.fromTo(
-              motion,
-              { progress: 0 },
-              { progress: 1, duration: 1, ease: "none" },
-            );
-            // Reverse scrolling updates the adjacent scrubbed timelines in
-            // the opposite order. Sync again after the real fold is painted.
-            evolve.eventCallback("onUpdate", () => {
-              if (motion.progress > 0 && motion.progress < 1 && carry.scrollTrigger) {
-                place(carry.scrollTrigger);
-              }
-            });
-            // MatchMedia can remove this frame before the resize handler runs.
-            // Retain the last painted progress across its automatic rebuild.
-            const rememberMediaPosition = () => {
-              if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-                carryResizeProgress = undefined;
-                return;
-              }
-              const progress = Number.parseFloat(ghost.dataset.progress ?? "");
-              if (progress > 0 && progress < 1) carryResizeProgress = progress;
-            };
-            mediaEvents.addEventListener("matchMediaInit", rememberMediaPosition);
-            cleanups.push(() => {
-              mediaEvents.removeEventListener("matchMediaInit", rememberMediaPosition);
-              carrySource.style.visibility = "";
-              carryTarget.style.visibility = "";
-            });
-          }
         }
 
         if (import.meta.env.DEV) {
@@ -875,14 +825,11 @@ export function useHomeStoryAnimation(root: RefObject<HTMLDivElement | null>) {
       let resizeTimer = 0;
       let measuredWidth = window.innerWidth;
       let measuredHeight = window.innerHeight;
-      let questionResizeProgress: number | undefined;
-      const rebuild = () => {
-        if (!active) return;
-        const current = ScrollTrigger.getAll().find(
-          (trigger) => trigger.isActive && trigger.vars.id === "home-question-why-carry",
-        ) || ScrollTrigger.getAll().find(
+      let resizePosition: { id: string; progress: number } | undefined;
+      const activeTrigger = () =>
+        ScrollTrigger.getAll().find(
           (trigger) => trigger.isActive &&
-            ["home-ward-tear-carry", "home-tear-cloud-carry", "home-clinical-sequence", "home-circrna-platform", "home-platform-antigen-carry", "home-question-why-carry", "home-finale-carry"].includes(trigger.vars.id || ""),
+            ["home-ward-tear-carry", "home-tear-cloud-carry", "home-tnbc-copy-bridge", "home-clinical-sequence", "home-molecule-gallery-intro", "home-gallery-why-ring", "home-circrna-platform", "home-platform-antigen-carry", "home-antigen-overview-transition", "home-antigen-overview-fade", "home-antigen-mechanism-entry"].includes(trigger.vars.id || ""),
         ) || ScrollTrigger.getAll().find(
           (trigger) =>
             trigger.isActive &&
@@ -890,18 +837,19 @@ export function useHomeStoryAnimation(root: RefObject<HTMLDivElement | null>) {
             trigger.vars.id.endsWith("-reading") &&
             trigger.pin,
         );
-        const position = questionResizeProgress !== undefined ? {
-          id: "home-question-why-carry",
-          progress: questionResizeProgress,
-        } : carryResizeProgress !== undefined ? {
-          id: "home-finale-carry",
-          progress: carryResizeProgress,
-        } : current && {
+      const rebuild = () => {
+        if (!active) return;
+        const current = activeTrigger();
+        const position = galleryResizeProgress !== undefined ? {
+          id: "home-gallery-why-ring",
+          progress: galleryResizeProgress,
+        } : resizePosition ?? (current && {
           id: current.vars.id!,
           progress: current.progress,
-        };
-        questionResizeProgress = undefined;
-        carryResizeProgress = undefined;
+        });
+        galleryResizeProgress = undefined;
+        resizePosition = undefined;
+        if (root.current) delete root.current.dataset.galleryBridgeProgress;
         media.revert();
         media = gsap.matchMedia();
         registerMedia();
@@ -924,13 +872,20 @@ export function useHomeStoryAnimation(root: RefObject<HTMLDivElement | null>) {
         )
           return;
         // Save before ScrollTrigger refreshes the old geometry during debounce.
-        const progress = Number.parseFloat(root.current?.querySelector<HTMLElement>(".story-question-transition")?.dataset.progress ?? "");
-        if (questionResizeProgress === undefined && progress > 0 && progress < 1) {
-          questionResizeProgress = progress;
+        const selected = activeTrigger();
+        if (resizePosition === undefined && selected) {
+          resizePosition = {
+            id: selected.vars.id!,
+            progress: selected.progress,
+          };
         }
-        const carryProgress = Number.parseFloat(root.current?.querySelector<HTMLElement>(".story-final-carry")?.dataset.progress ?? "");
-        if (carryResizeProgress === undefined && carryProgress > 0 && carryProgress < 1) {
-          carryResizeProgress = carryProgress;
+        const galleryProgress = Number.parseFloat(
+          document.querySelector<HTMLElement>(".home-gallery-ring-transfer")
+            ?.dataset.progress ?? "",
+        );
+        if (galleryResizeProgress === undefined && galleryProgress > 0 && galleryProgress < 1) {
+          galleryResizeProgress = galleryProgress;
+          if (root.current) root.current.dataset.galleryBridgeProgress = String(galleryProgress);
         }
         window.clearTimeout(resizeTimer);
         resizeTimer = window.setTimeout(() => {

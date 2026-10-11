@@ -1,110 +1,200 @@
-import { useEffect, useRef, useState, type CSSProperties } from "react";
-const emblemUrl = "https://static.igem.wiki/teams/6056/wiki/files/pages/shared/circure-emblem.avif";
-const ribbonUrl = "https://static.igem.wiki/teams/6056/wiki/files/pages/shared/circure-ribbon.avif";
-import {
-  INTRO_WORDMARK_GLYPHS,
-  INTRO_WORDMARK_VIEWBOX,
-} from "../data/homeIntroWordmark";
+import { lazy, Suspense, useEffect, useRef, useState } from "react";
+import { ArrowRight, Download, RotateCcw, X } from "lucide-react";
+import { Link } from "react-router-dom";
+import lambUrl from "../assets/loading/lamb.webp";
+import manropeFontUrl from "../assets/fonts/manrope-latin-variable.woff2";
+import manropeOfl from "../assets/fonts/manrope-OFL.txt?raw";
+import newsreaderFontUrl from "../assets/fonts/newsreader-variable.woff2";
 import { useFooterEasterEgg } from "../hooks/useFooterEasterEgg";
-import { PageImagePreloads } from "./common/PageImagePreloads";
 import "../styles/footer-easter-egg.css";
 
-/** Sample the real CirCure vector artwork, so particles and outlines match exactly. */
-function ParticleWordmark() {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    const context = canvas?.getContext("2d");
-    if (!canvas || !context) return;
-    const motion = window.matchMedia("(prefers-reduced-motion: reduce)");
-    if (motion.matches) return;
-    const width = 900;
-    const height = 217;
-    const sample = document.createElement("canvas");
-    sample.width = canvas.width = width;
-    sample.height = canvas.height = height;
-    const sampleContext = sample.getContext("2d");
-    if (!sampleContext) return;
-    sampleContext.scale(width / 2950, height / 710);
-    sampleContext.translate(-62, -40);
-    INTRO_WORDMARK_GLYPHS.forEach((glyph) =>
-      sampleContext.fill(new Path2D(glyph)),
-    );
-    const pixels = sampleContext.getImageData(0, 0, width, height).data;
-    const targets: { x: number; y: number }[] = [];
-    for (let y = 0; y < height; y += 5) {
-      for (let x = 0; x < width; x += 5) {
-        if (pixels[(y * width + x) * 4 + 3] > 100) targets.push({ x, y });
-      }
-    }
-    const stride = Math.max(1, Math.ceil(targets.length / 1200));
-    const particles = targets
-      .filter((_, index) => index % stride === 0)
-      .map((target, index) => {
-        const phase = index * 2.39996;
-        return {
-          ...target,
-          dx: Math.cos(phase) * (70 + (index % 130)),
-          dy: Math.sin(phase) * (50 + (index % 80)),
-          delay: (index % 11) * 24,
-        };
-      });
-    let frame = 0;
-    let start = 0;
-    let visible = true;
-    const observer = new IntersectionObserver(([entry]) => {
-      visible = entry.isIntersecting;
-    });
-    observer.observe(canvas);
-    const paint = (now: number) => {
-      if (!start) start = now;
-      const elapsed = now - start;
-      context.clearRect(0, 0, width, height);
-      if (motion.matches || elapsed > 2500) {
-        frame = 0;
-        return;
-      }
-      if (visible && !document.hidden) {
-        const fade =
-          Math.min(1, elapsed / 240) *
-          Math.max(0, 1 - Math.max(0, elapsed - 1650) / 850);
-        particles.forEach((particle, index) => {
-          const p = Math.min(1, Math.max(0, (elapsed - particle.delay) / 1450));
-          const remainder = (1 - p) ** 3;
-          context.fillStyle =
-            index % 4 === 0
-              ? `rgba(248,233,232,${fade})`
-              : `rgba(215,132,179,${fade})`;
-          context.fillRect(
-            particle.x + particle.dx * remainder,
-            particle.y + particle.dy * remainder,
-            1.6,
-            1.6,
-          );
-        });
-      }
-      frame = window.requestAnimationFrame(paint);
-    };
-    frame = window.requestAnimationFrame(paint);
-    return () => {
-      window.cancelAnimationFrame(frame);
-      observer.disconnect();
-    };
-  }, []);
+const FooterPhotoScene = lazy(() => import("./FooterPhotoScene"));
+
+async function assetAsDataUrl(url: string): Promise<string> {
+  const response = await fetch(url);
+  if (!response.ok) throw new Error("The keepsake font could not be loaded.");
+  const blob = await response.blob();
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => resolve(String(reader.result));
+    reader.onerror = () =>
+      reject(new Error("The keepsake font could not be read."));
+    reader.readAsDataURL(blob);
+  });
+}
+
+/** Keep the downloaded ticket independent of installed or network fonts. */
+function keepsakeSvg(newsreader: string, manrope: string): string {
+  const fontLicense = manropeOfl.replace(
+    /^Copyright 2018 The Manrope Project Authors[^\n]*\n/,
+    "Copyright 2020 The Newsreader Project Authors (http://github.com/productiontype/Newsreader)\nCopyright 2018 The Manrope Project Authors (https://github.com/googlefonts/manrope)\n",
+  );
+  return [
+    '<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="554" viewBox="0 0 1200 554">',
+    "<metadata><![CDATA[",
+    fontLicense,
+    "]]></metadata>",
+    '<style>@font-face{font-family:TicketNewsreader;src:url("',
+    newsreader,
+    '") format("woff2");font-weight:200 800}',
+    '@font-face{font-family:TicketManrope;src:url("',
+    manrope,
+    '") format("woff2");font-weight:200 800}</style>',
+    '<defs><linearGradient id="main" x2="1" y2="1"><stop stop-color="#382c35"/><stop offset="1" stop-color="#30242d"/></linearGradient>',
+    '<mask id="cut"><rect width="1200" height="554" rx="15" fill="white"/><circle cx="910" cy="0" r="16" fill="black"/><circle cx="910" cy="554" r="16" fill="black"/></mask></defs>',
+    '<g mask="url(#cut)">',
+    '<rect width="1200" height="554" fill="url(#main)"/>',
+    '<rect x="910" width="290" height="554" fill="#efe7de"/>',
+    '<path d="M910 32V522" stroke="#aa858a" stroke-width="1.5" stroke-dasharray="3 5"/>',
+    '<rect x="0.75" y="0.75" width="1198.5" height="552.5" rx="14.25" fill="none" stroke="#a78a90" stroke-width="1.5"/>',
+    "</g>",
+    '<text x="64" y="83" fill="#fff9f4" font-family="TicketNewsreader,Georgia,serif" font-size="45">CirCure</text>',
+    '<text x="846" y="78" text-anchor="end" fill="#d4c5c7" font-family="TicketManrope,Arial,sans-serif" font-size="21">After the last page</text>',
+    '<text x="64" y="220" fill="#f7e7e5" font-family="TicketNewsreader,Georgia,serif" font-size="54">You found</text>',
+    '<text x="60" y="326" fill="#e5b3b9" font-family="TicketNewsreader,Georgia,serif" font-size="94">the extra loop.</text>',
+    '<path d="M64 462H846" stroke="#786b73" stroke-width="1.2"/>',
+    '<text x="64" y="508" fill="#e4d4d7" font-family="TicketManrope,Arial,sans-serif" font-size="21">JLU-FBH · iGEM 2026</text>',
+    '<circle cx="1055" cy="195" r="108" fill="none" stroke="#b58c8b" stroke-width="1.4"/>',
+    '<text x="1055" y="243" text-anchor="middle" fill="#6f4456" font-family="TicketNewsreader,Georgia,serif" font-size="130">01</text>',
+    '<text x="1055" y="339" text-anchor="middle" fill="#6f5a62" font-family="TicketManrope,Arial,sans-serif" font-size="21">Hidden edition</text>',
+    "</svg>",
+  ].join("");
+}
+
+function TicketStub({ back = false }: { back?: boolean }) {
   return (
-    <canvas ref={canvasRef} className="finale-particles" aria-hidden="true" />
+    <div className="finale-ticket__stub" aria-hidden="true">
+      <svg
+        className="finale-ticket__stub-loop"
+        viewBox="0 0 200 200"
+        focusable="false"
+      >
+        <circle cx="100" cy="100" r="84" />
+      </svg>
+      <span className="finale-ticket__stub-number">01</span>
+      {!back && (
+        <span className="finale-ticket__stub-label">Hidden edition</span>
+      )}
+      {back && (
+        <span className="finale-ticket__lamb">
+          <img src={lambUrl} alt="" decoding="async" />
+        </span>
+      )}
+    </div>
   );
 }
 
 export function FooterEasterEgg() {
   const rootRef = useRef<HTMLElement>(null);
   const seamRef = useRef<HTMLButtonElement>(null);
+  const artRef = useRef<HTMLDivElement>(null);
   const { revealed, reveal, close } = useFooterEasterEgg(rootRef, seamRef);
+  const [started, setStarted] = useState(false);
+  const [flipped, setFlipped] = useState(false);
   const [take, setTake] = useState(0);
+  const [downloadState, setDownloadState] = useState<
+    "idle" | "saving" | "saved" | "error"
+  >("idle");
+  const [downloadAttempt, setDownloadAttempt] = useState(0);
+  const [downloadUrl, setDownloadUrl] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (!revealed || !artRef.current) return;
+    const art = artRef.current;
+    if (!("IntersectionObserver" in window)) {
+      setStarted(true);
+      return;
+    }
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setStarted(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.4 },
+    );
+    observer.observe(art);
+    return () => observer.disconnect();
+  }, [revealed]);
+
+  useEffect(() => {
+    if (!revealed) return;
+    let cancelled = false;
+    let objectUrl: string | null = null;
+    setDownloadState("saving");
+    Promise.all([
+      assetAsDataUrl(newsreaderFontUrl),
+      assetAsDataUrl(manropeFontUrl),
+    ])
+      .then(([newsreader, manrope]) => {
+        const svg = keepsakeSvg(newsreader, manrope);
+        objectUrl = URL.createObjectURL(
+          new Blob([svg], { type: "image/svg+xml;charset=utf-8" }),
+        );
+        if (cancelled) {
+          URL.revokeObjectURL(objectUrl);
+          return;
+        }
+        setDownloadUrl(objectUrl);
+        setDownloadState("idle");
+      })
+      .catch(() => {
+        if (!cancelled) setDownloadState("error");
+      });
+    return () => {
+      cancelled = true;
+      if (objectUrl) URL.revokeObjectURL(objectUrl);
+    };
+  }, [revealed, downloadAttempt]);
+
+  const closeKeepsake = () => {
+    setStarted(false);
+    setFlipped(false);
+    setDownloadState("idle");
+    setDownloadAttempt(0);
+    setDownloadUrl(null);
+    close();
+  };
+
+  const replay = () => {
+    setFlipped(false);
+    setTake((value) => value + 1);
+  };
+
+  const turnKeepsake = () => {
+    setFlipped((value) => !value);
+    if (window.matchMedia("(max-width: 720px)").matches) {
+      rootRef.current?.scrollIntoView({
+        block: "start",
+        behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches
+          ? "instant"
+          : "smooth",
+      });
+    }
+  };
+
+  const downloadKeepsake = () => {
+    if (!downloadUrl) return;
+    const link = document.createElement("a");
+    link.href = downloadUrl;
+    link.download = "circure-extra-loop.svg";
+    document.body.append(link);
+    link.click();
+    link.remove();
+    setDownloadState("saved");
+  };
+
+  const saveOrRetry = () => {
+    if (downloadState === "error") {
+      setDownloadAttempt((value) => value + 1);
+      return;
+    }
+    downloadKeepsake();
+  };
 
   return (
     <>
-      <PageImagePreloads sources={[emblemUrl, ribbonUrl]} />
       <div className="finale-seam">
         <button
           ref={seamRef}
@@ -121,122 +211,159 @@ export function FooterEasterEgg() {
           </span>
           <span className="visually-hidden">
             {" "}
-            — keep scrolling or activate to reveal the CirCure hidden finale
+            — keep scrolling or activate to reveal the team photograph and
+            hidden keepsake
           </span>
         </button>
       </div>
       <section
         ref={rootRef}
         id="circure-hidden-finale"
-        className={`circure-hidden-finale${revealed ? " is-revealed" : ""}`}
-        aria-label="CirCure hidden finale. Let therapy evolve with the tumor."
+        className={"circure-hidden-finale" + (revealed ? " is-revealed" : "")}
+        aria-label="Team photograph and hidden CirCure keepsake"
         aria-hidden={!revealed}
         inert={!revealed || undefined}
         tabIndex={-1}
         data-theme="dark"
       >
         {revealed && (
-          <div className="finale-stage">
-            <button
-              className="finale-icon-button finale-close"
-              type="button"
-              onClick={close}
-              aria-label="Return to footer"
-            >
-              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path d="m6 6 12 12M18 6 6 18" />
-              </svg>
-            </button>
-            <div className="finale-orbits" aria-hidden="true">
-              <i />
-              <i />
-              <i />
-            </div>
-            <div className="finale-composition" key={take}>
-              <div className="finale-emblem" aria-hidden="true">
-                <div className="finale-emblem__disc">
-                  <img src={emblemUrl} alt="" />
-                  <img
-                    className="finale-emblem__ribbon"
-                    src={ribbonUrl}
-                    alt=""
-                  />
+          <>
+            <Suspense
+              fallback={
+                <div className="finale-photo-loading" role="status">
+                  Preparing the team photograph…
                 </div>
-                <svg
-                  className="finale-emblem__orbit"
-                  viewBox="0 0 320 320"
-                  fill="none"
-                >
-                  <circle cx="160" cy="160" r="152" />
-                  <circle
-                    className="finale-emblem__draw"
-                    cx="160"
-                    cy="160"
-                    r="152"
-                    pathLength="1"
-                  />
-                  <circle
-                    className="finale-emblem__node"
-                    cx="52"
-                    cy="53"
-                    r="4"
-                  />
-                </svg>
-              </div>
-              <div className="finale-brand">
-                <div
-                  className="finale-wordmark"
-                  role="img"
-                  aria-label="CirCure"
-                >
-                  <svg viewBox={INTRO_WORDMARK_VIEWBOX} aria-hidden="true">
-                    {INTRO_WORDMARK_GLYPHS.map((glyph, index) => (
-                      <g
-                        key={index}
-                        style={{ "--glyph-index": index } as CSSProperties}
-                      >
-                        <path
-                          className="finale-glyph-outline"
-                          d={glyph}
-                          pathLength="1"
-                          vectorEffect="non-scaling-stroke"
-                        />
-                        <path className="finale-glyph-fill" d={glyph} />
-                      </g>
-                    ))}
-                  </svg>
-                  <ParticleWordmark />
-                  <span className="finale-scan" aria-hidden="true" />
-                </div>
-                <p className="finale-tagline">
-                  Let therapy evolve
-                  <br />
-                  with the tumor<span>.</span>
-                </p>
-                <svg
-                  className="finale-thread"
-                  viewBox="0 0 600 100"
-                  fill="none"
-                  aria-hidden="true"
-                >
-                  <path
-                    pathLength="1"
-                    d="M5 67C96 26 132 80 192 54S333 29 409 53c71 23 147 23 169-7 24-33-38-49-52-19-10 22 17 38 66 44"
-                  />
-                </svg>
-              </div>
-            </div>
-            <button
-              className="finale-icon-button finale-replay"
-              type="button"
-              onClick={() => setTake((value) => value + 1)}
-              aria-label="Replay the CirCure animation"
+              }
             >
-              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path d="M4 11a8 8 0 1 1 2 6M4 5v6h6" />
-              </svg>
-            </button>
-          </div>
+              <FooterPhotoScene onClose={closeKeepsake} />
+            </Suspense>
+            <div className={"finale-stage" + (started ? " is-ready" : "")}>
+              <button
+                className="finale-close"
+                type="button"
+                onClick={closeKeepsake}
+                aria-label="Return to footer"
+              >
+                <X aria-hidden="true" size={20} strokeWidth={1.6} />
+              </button>
+              <div ref={artRef} className="finale-art" key={take}>
+                <div className="finale-ticket-shell">
+                  <div
+                    className={"finale-ticket" + (flipped ? " is-flipped" : "")}
+                  >
+                    <div
+                      className="finale-ticket__face finale-ticket__front"
+                      aria-hidden={flipped}
+                      inert={flipped || undefined}
+                    >
+                      <div className="finale-ticket__body">
+                        <div className="finale-ticket__masthead">
+                          <span>CirCure</span>
+                          <span>After the last page</span>
+                        </div>
+                        <div className="finale-ticket__copy">
+                          <h2>
+                            <span>You found</span>
+                            <strong>the extra loop.</strong>
+                          </h2>
+                        </div>
+                        <div className="finale-ticket__signature">
+                          JLU-FBH · iGEM 2026
+                        </div>
+                      </div>
+                      <TicketStub />
+                    </div>
+                    <div
+                      className="finale-ticket__face finale-ticket__back"
+                      aria-hidden={!flipped}
+                      inert={!flipped || undefined}
+                    >
+                      <div className="finale-ticket__body">
+                        <div className="finale-ticket__masthead">
+                          <span>CirCure</span>
+                          <span>After the last page</span>
+                        </div>
+                        <div className="finale-ticket__copy finale-ticket__copy--back">
+                          <h2>
+                            <span>The question</span>
+                            <strong>stays with us.</strong>
+                          </h2>
+                          <p>
+                            “What if it comes back?” That question led to
+                            CirCure. Thank you for looking one page further.
+                          </p>
+                        </div>
+                        <div className="finale-ticket__signature">
+                          JLU-FBH · iGEM 2026
+                        </div>
+                      </div>
+                      <TicketStub back />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="finale-actions">
+                <button
+                  className="finale-action finale-action--primary"
+                  type="button"
+                  onClick={turnKeepsake}
+                  aria-label={
+                    flipped
+                      ? "Show the front of the keepsake"
+                      : "Turn the keepsake over"
+                  }
+                >
+                  <RotateCcw aria-hidden="true" size={18} strokeWidth={1.7} />
+                  {flipped ? "Show the front" : "Turn the card"}
+                </button>
+                {flipped ? (
+                  <Link
+                    className="finale-action finale-action--secondary"
+                    to="/description"
+                  >
+                    Explore the story
+                    <ArrowRight
+                      aria-hidden="true"
+                      size={18}
+                      strokeWidth={1.7}
+                    />
+                  </Link>
+                ) : (
+                  <button
+                    className="finale-action finale-action--secondary"
+                    type="button"
+                    onClick={saveOrRetry}
+                    disabled={!downloadUrl && downloadState !== "error"}
+                  >
+                    <Download aria-hidden="true" size={18} strokeWidth={1.7} />
+                    {downloadState === "saving"
+                      ? "Preparing..."
+                      : downloadState === "error"
+                        ? "Retry save"
+                        : "Save the keepsake"}
+                  </button>
+                )}
+                <button
+                  className="finale-action finale-action--quiet"
+                  type="button"
+                  onClick={replay}
+                >
+                  Replay reveal
+                </button>
+              </div>
+              <p className="visually-hidden" role="status">
+                {flipped
+                  ? "The back of the keepsake is showing."
+                  : "The front of the keepsake is showing."}
+                {downloadState === "saved"
+                  ? " The keepsake download was requested."
+                  : ""}
+                {downloadState === "error"
+                  ? " The keepsake could not be saved. Try again."
+                  : ""}
+              </p>
+            </div>
+          </>
         )}
       </section>
     </>

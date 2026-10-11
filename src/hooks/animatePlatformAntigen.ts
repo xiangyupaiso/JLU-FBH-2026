@@ -123,7 +123,15 @@ export function animatePlatformAntigen(
     const mechanismOpen =
       target.closest<HTMLElement>(".home-antigen-switch")?.dataset
         .mechanismExpanded === "true";
-    if (!active || !context || !fan || disposed || mechanismOpen) {
+    // The expanded mechanism owns the ring only after its chapter begins.
+    // Keep the reading copy visible when scrolling back into this bridge.
+    if (
+      !active ||
+      !context ||
+      !fan ||
+      disposed ||
+      (mechanismOpen && window.scrollY >= end)
+    ) {
       restore();
       return;
     }

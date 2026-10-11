@@ -14,17 +14,17 @@ const CHAPTERS = [
   { id: "why-tnbc", title: "Why TNBC?" },
   { id: "clinical-challenge", title: "The treatment challenge" },
   { id: "a-new-direction", title: "A new direction" },
+  { id: "molecule-gallery", title: "DNA, mRNA and circRNA" },
   { id: "why-circrna", title: "Why circular RNA?" },
   { id: "our-platform", title: "One adaptable platform" },
   { id: "plug-and-play", title: "Changing the antigen" },
   { id: "beyond-tnbc", title: "Looking further" },
-  { id: "what-we-hope", title: "What we hope" },
   { id: "home-finale", title: "That is CirCure" },
 ] as const;
 
 type Anchor = {
   chapter: number;
-  kind?: "reading";
+  kind?: "reading" | "bridge";
   progress: number;
   label?: string;
 };
@@ -38,30 +38,31 @@ const BEATS: readonly Beat[] = [
   { chapter: 0, progress: 0.98, travel: 2, hold: 3 },
   { chapter: 1, progress: 0, travel: 2 },
   { chapter: 1, progress: 0.42, travel: 4, hold: 2 },
-  { chapter: 1, progress: 0.9, travel: 4, hold: 3 },
+  { chapter: 1, progress: 0.9, travel: 4, hold: 14 },
   { chapter: 2, progress: 0.29, label: "wish-readable", travel: 4, hold: 2 },
   { chapter: 2, progress: 0.5, label: "question-readable", travel: 3, hold: 3 },
   { chapter: 2, progress: 0.84, travel: 5, hold: 2 },
   { chapter: 3, progress: 0, travel: 5 },
   { chapter: 3, progress: 0.88, travel: 7, hold: 4 },
-  { chapter: 3, kind: "reading", progress: 0.94, travel: 8, hold: 6 },
-  { chapter: 4, progress: 0, travel: 2 },
+  { chapter: 3, kind: "bridge", progress: 1, travel: 4, hold: 2 },
+  { chapter: 3, kind: "reading", progress: 0.94, travel: 4, hold: 4 },
+  { chapter: 4, progress: 0.08, travel: 2 },
   { chapter: 4, progress: 0.27, travel: 5, hold: 3 },
   { chapter: 5, progress: 0.72, travel: 7, hold: 3 },
   { chapter: 5, progress: 0.97, travel: 4, hold: 2 },
-  { chapter: 6, progress: 0, travel: 5 },
-  { chapter: 6, progress: 0.2, travel: 5, hold: 3 },
-  { chapter: 7, progress: 0.47, travel: 5 },
-  { chapter: 7, progress: 0.9, travel: 10, hold: 4 },
-  { chapter: 7, kind: "reading", progress: 0.94, travel: 6, hold: 5 },
-  { chapter: 8, progress: 0.12, travel: 3, hold: 1, antigen: 0 },
-  { chapter: 8, progress: 0.5, travel: 2, hold: 10 },
-  { chapter: 8, progress: 0.5, travel: 0, hold: 10, antigen: 1 },
-  { chapter: 8, progress: 0.5, travel: 0, hold: 10, antigen: 2 },
-  { chapter: 8, progress: 0.96, travel: 4, hold: 2 },
-  { chapter: 9, progress: 0.88, travel: 5, hold: 3 },
-  { chapter: 9, kind: "reading", progress: 0.94, travel: 6, hold: 5 },
-  { chapter: 10, kind: "reading", progress: 0.94, travel: 7, hold: 5 },
+  { chapter: 6, progress: 0.38, label: "choices-visible", travel: 4, hold: 3 },
+  { chapter: 6, progress: 0.88, label: "circ-selected", travel: 4, hold: 3 },
+  { chapter: 7, progress: 0, travel: 5 },
+  { chapter: 7, progress: 0.2, travel: 5, hold: 3 },
+  { chapter: 8, progress: 0.47, travel: 5 },
+  { chapter: 8, progress: 0.9, travel: 10, hold: 4 },
+  { chapter: 8, kind: "reading", progress: 0.94, travel: 6, hold: 5 },
+  { chapter: 9, progress: 0.12, travel: 3, hold: 2 },
+  { chapter: 9, progress: 0.5, travel: 2, hold: 10, antigen: 0 },
+  { chapter: 9, progress: 0.5, travel: 0, hold: 10, antigen: 1 },
+  { chapter: 9, progress: 0.5, travel: 0, hold: 10, antigen: 2 },
+  { chapter: 9, progress: 0.96, travel: 4, hold: 2 },
+  { chapter: 10, progress: 0.88, travel: 5, hold: 3 },
   { chapter: 11, progress: 0, travel: 4 },
   { chapter: 11, progress: 0.4, label: "circle-to-care", travel: 5, hold: 3 },
   { chapter: 11, progress: 0.98, travel: 7, hold: 3 },
@@ -126,6 +127,9 @@ export function useHomePlayback(root: RefObject<HTMLDivElement | null>) {
         chapter === 0 ? ".home-scene01" : `#${CHAPTERS[chapter].id}`,
       );
     const findTrigger = (anchor: Anchor) => {
+      if (anchor.kind === "bridge") {
+        return ScrollTrigger.getById("home-tnbc-copy-bridge");
+      }
       if (anchor.kind === "reading") {
         return ScrollTrigger.getById(
           `home-${CHAPTERS[anchor.chapter].id}-reading`,
@@ -136,11 +140,13 @@ export function useHomePlayback(root: RefObject<HTMLDivElement | null>) {
           ? "home-person-transition"
           : anchor.chapter === 4 || anchor.chapter === 5
             ? "home-clinical-sequence"
-            : anchor.chapter === 6 || anchor.chapter === 7
-              ? "home-circrna-platform"
-              : anchor.chapter === 11
-                ? "home-finale-reading"
-                : undefined;
+            : anchor.chapter === 6
+              ? "home-molecule-gallery-intro"
+              : anchor.chapter === 7 || anchor.chapter === 8
+                ? "home-circrna-platform"
+                : anchor.chapter === 11
+                  ? "home-finale-reading"
+                  : undefined;
       if (id) return ScrollTrigger.getById(id);
       const track = section(anchor.chapter)?.querySelector(
         ".story-scene-track",
@@ -153,23 +159,32 @@ export function useHomePlayback(root: RefObject<HTMLDivElement | null>) {
       const flowAntigen = window.matchMedia(
         "(max-width: 800px) and (orientation: portrait), (max-height: 650px) and (orientation: landscape)",
       ).matches;
-      if (anchor.chapter === 8 && flowAntigen) {
-        const diagram = section(8)?.querySelector<HTMLElement>(
-          ".home-antigen-switch",
+      if (anchor.chapter === 9 && flowAntigen) {
+        const overview = section(9)?.querySelector<HTMLElement>(
+          '.home-antigen-switch[data-antigen-view="overview"]',
         );
-        if (diagram) {
-          const top = diagram.getBoundingClientRect().top + window.scrollY - 96;
+        const mechanism = section(9)?.querySelector<HTMLElement>(
+          '.home-antigen-switch[data-antigen-view="mechanism"]',
+        );
+        if (overview && mechanism) {
+          const overviewTop =
+            overview.getBoundingClientRect().top + window.scrollY - 96;
+          const mechanismTop =
+            mechanism.getBoundingClientRect().top + window.scrollY - 96;
           const extra = Math.max(
             0,
-            diagram.offsetHeight - window.innerHeight + 156,
+            mechanism.offsetHeight - window.innerHeight + 156,
           );
-          return Math.max(
-            0,
-            Math.min(
-              maxScroll(),
-              top + extra * Math.max(0, (anchor.progress - 0.5) * 2),
-            ),
-          );
+          const progress = anchor.progress;
+          let y = overviewTop;
+          if (progress > 0.5) {
+            y = mechanismTop + extra * clamp((progress - 0.5) / 0.46);
+          } else if (progress > 0.12) {
+            y =
+              overviewTop +
+              (mechanismTop - overviewTop) * ((progress - 0.12) / 0.38);
+          }
+          return Math.max(0, Math.min(maxScroll(), y));
         }
       }
       const trigger = findTrigger(anchor);
@@ -229,15 +244,19 @@ export function useHomePlayback(root: RefObject<HTMLDivElement | null>) {
     };
     const entry = (index: number): Anchor => ({
       chapter: index,
-      kind: index === 10 ? "reading" : undefined,
-      progress: index === 5 ? 0.55 : index === 7 ? 0.47 : 0,
+      progress: index === 4 ? 0.08 : index === 5 ? 0.55 : index === 8 ? 0.47 : 0,
     });
     const seekAnchor = (index: number): Anchor => ({
       ...entry(index),
       progress: [
-        0, 0.9, 0.5, 0.88, 0.27, 0.72, 0.2, 0.9, 0.12, 0.88, 0.94, 0.15,
+        0.24, 0.9, 0.5, 0.88, 0.27, 0.91, 0.38, 0.2, 0.9, 0.12, 0.88, 0.15,
       ][index],
-      label: index === 2 ? "question-readable" : undefined,
+      label:
+        index === 2
+          ? "question-readable"
+          : index === 6
+            ? "choices-visible"
+            : undefined,
     });
     const paint = () => {
       const y = window.scrollY;
@@ -255,6 +274,17 @@ export function useHomePlayback(root: RefObject<HTMLDivElement | null>) {
         reducedMotion: preference.matches,
       });
     };
+    const settleScrubs = () => {
+      ScrollTrigger.getAll()
+        .filter((trigger) => {
+          const element = trigger.trigger;
+          return trigger.isActive && element && page.contains(element);
+        })
+        .forEach((trigger) => {
+          const tween = trigger.getTween();
+          if (tween && typeof tween.progress === "function") tween.progress(1);
+        });
+    };
     const changeMode = (next: HomePlaybackMode) => {
       mode = next;
       lastTime = 0;
@@ -263,16 +293,11 @@ export function useHomePlayback(root: RefObject<HTMLDivElement | null>) {
         cancelAnimationFrame(frame);
         frame = 0;
         // Finish only the small scrub lag, retaining the scroll's current frame.
-        ScrollTrigger.getAll()
-          .filter((trigger) => {
-            const element = trigger.trigger;
-            return element && page.contains(element);
-          })
-          .forEach((trigger) => trigger.getTween()?.progress(1));
+        settleScrubs();
       }
       if (next === "manual") {
         beatIndex = -1;
-        section(8)?.style.removeProperty("--home-playback-phase-offset");
+        section(9)?.style.removeProperty("--home-playback-phase-offset");
       }
       paint();
     };
@@ -296,8 +321,8 @@ export function useHomePlayback(root: RefObject<HTMLDivElement | null>) {
     };
     const followAntigen = (delta: number) => {
       if (!compactDiagram.matches) return;
-      const diagram = section(8)?.querySelector<HTMLElement>(
-        ".home-antigen-switch",
+      const diagram = section(9)?.querySelector<HTMLElement>(
+        '.home-antigen-switch[data-antigen-view="mechanism"]',
       );
       if (!diagram) return;
       const phase = Number(diagram.dataset.phase);
@@ -327,9 +352,9 @@ export function useHomePlayback(root: RefObject<HTMLDivElement | null>) {
     };
     const followAntigenCaption = () => {
       if (!compactDiagram.matches) return;
-      const chapter = section(8);
+      const chapter = section(9);
       const diagram = chapter?.querySelector<HTMLElement>(
-        '.home-antigen-switch[data-mechanism-expanded="true"]',
+        '.home-antigen-switch[data-antigen-view="mechanism"]',
       );
       if (!diagram) return;
       const caption = diagram.querySelector<HTMLElement>(
@@ -367,21 +392,22 @@ export function useHomePlayback(root: RefObject<HTMLDivElement | null>) {
     };
     const chooseBeat = () => {
       const inAntigen =
-        window.scrollY >= position(entry(8)) - 3 &&
-        window.scrollY < position(entry(9));
-      const index = inAntigen
-        ? BEATS.findIndex((beat) => beat.antigen === 0)
-        : BEATS.findIndex((beat) => position(beat) > window.scrollY + 3);
+        window.scrollY >= position(entry(9)) - 3 &&
+        window.scrollY < position(entry(10));
+      const overviewBeat = BEATS.findIndex(
+        (beat) => beat.chapter === 9 && beat.progress === 0.12,
+      );
+      let index: number;
+      if (inAntigen) {
+        index =
+          window.scrollY <= position(BEATS[overviewBeat]) + 3
+            ? overviewBeat
+            : BEATS.findIndex((beat) => beat.antigen === 0);
+      } else {
+        index = BEATS.findIndex((beat) => position(beat) > window.scrollY + 3);
+      }
       if (index < 0) return false;
       beginBeat(index);
-      // Starting halfway through the antigen chapter still includes its demo.
-      if (BEATS[index].chapter === 8) {
-        window.dispatchEvent(
-          new CustomEvent(HOME_PLAYBACK_ANTIGEN_EVENT, {
-            detail: { selected: 0 },
-          }),
-        );
-      }
       return true;
     };
     const tick = (time: number) => {
@@ -419,7 +445,8 @@ export function useHomePlayback(root: RefObject<HTMLDivElement | null>) {
           holdElapsed += delta;
           // Tall phone diagrams use a camera move from translation to priming
           // and recognition, keeping the currently explained stage in view.
-          if (beat.chapter === 8 && beat.progress <= 0.5) followAntigen(delta);
+          if (beat.chapter === 9 && beat.antigen !== undefined)
+            followAntigen(delta);
           if (holdElapsed >= (beat.hold ?? 0)) {
             if (beatIndex === BEATS.length - 1) {
               ended = true;
@@ -430,7 +457,8 @@ export function useHomePlayback(root: RefObject<HTMLDivElement | null>) {
           }
         }
         // Caption positioning also runs during the approach to the diagram.
-        if (beat.chapter === 8) followAntigenCaption();
+        if (beat.chapter === 9 && beat.antigen !== undefined)
+          followAntigenCaption();
       }
       if (time - lastPaint >= 150) {
         paint();
@@ -464,15 +492,17 @@ export function useHomePlayback(root: RefObject<HTMLDivElement | null>) {
       },
       seekChapter(index) {
         if (index < 0 || index >= CHAPTERS.length) return;
-        changeMode("paused");
-        section(8)?.style.removeProperty("--home-playback-phase-offset");
+        changeMode("manual");
+        section(9)?.style.removeProperty("--home-playback-phase-offset");
         beatIndex = -1;
         ended = false;
         preload(index);
         // Trigger boundaries already include all pin spacers; fragments would
         // misalign shared clinical/RNA scenes and replay the intro on refresh.
-        scrollTo(position(seekAnchor(index)) + (index === 0 ? 0 : 1));
-        if (index === 0) replay();
+        scrollTo(position(seekAnchor(index)) + 1);
+        // A chapter jump is instantaneous, so paint every affected timeline
+        // at its destination frame before the previous scene can flash.
+        settleScrubs();
         paint();
       },
       setRate(next) {
@@ -590,7 +620,7 @@ export function useHomePlayback(root: RefObject<HTMLDivElement | null>) {
     if (mode === "playing") requestTick();
     return () => {
       cancelAnimationFrame(frame);
-      section(8)?.style.removeProperty("--home-playback-phase-offset");
+      section(9)?.style.removeProperty("--home-playback-phase-offset");
       window.removeEventListener("wheel", scrollInput, true);
       window.removeEventListener("touchmove", scrollInput, true);
       window.removeEventListener("pointerdown", interaction, true);

@@ -190,8 +190,8 @@ export function Navbar() {
         max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)) : 0;
       header.style.setProperty("--scroll-p", progress.toFixed(4));
       // CROSS-FILE: reads Home DOM every frame. .home-scene01 lives in
-      // contents/home-scene-01.tsx, #what-we-hope in contents/home-story.tsx,
-      // #home-finale in components/home/HomeFinale.tsx. Renaming any of them
+      // contents/home-scene-01.tsx and #home-finale in HomeFinale.tsx.
+      // Renaming either of them
       // silently breaks the header theme (data-home-opening/-closing, styled in
       // circure-nav.css). HomeIntro.tsx also measures .logo-word-full below.
       const opening = homeActive
@@ -207,13 +207,10 @@ export function Navbar() {
           (!opening || opening.getBoundingClientRect().bottom > headerHeight),
       );
       const closing = homeActive
-        ? document.getElementById("what-we-hope")?.getBoundingClientRect()
-        : null;
-      const closingEnd = homeActive
-        ? document.getElementById("home-finale")?.getBoundingClientRect() ?? closing
+        ? document.getElementById("home-finale")?.getBoundingClientRect()
         : null;
       header.dataset.homeClosing = String(
-        !!closing && !!closingEnd && closing.top <= headerHeight + 1 && closingEnd.bottom > headerHeight,
+        !!closing && closing.top <= headerHeight + 1 && closing.bottom > headerHeight,
       );
     };
 

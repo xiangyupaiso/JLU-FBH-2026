@@ -19,8 +19,10 @@ export function HomePlayback({ root }: HomePlaybackProps) {
     setRate,
   } = useHomePlayback(root);
   const [showScenes, setShowScenes] = useState(false);
+  const [hasMoreScenes, setHasMoreScenes] = useState(false);
   const playerRef = useRef<HTMLDivElement>(null);
   const panelRef = useRef<HTMLDivElement>(null);
+  const listRef = useRef<HTMLOListElement>(null);
   const scenesButtonRef = useRef<HTMLButtonElement>(null);
   const id = useId();
   const currentChapter = chapters[chapterIndex] ?? chapters[0];
@@ -36,6 +38,21 @@ export function HomePlayback({ root }: HomePlaybackProps) {
   useEffect(() => {
     if (!showScenes) return;
 
+    const centerCurrent = () => {
+      const list = listRef.current;
+      const current = panelRef.current?.querySelector<HTMLButtonElement>(
+        '[aria-current="step"]',
+      );
+      if (!list || !current) return;
+      const listBox = list.getBoundingClientRect();
+      const currentBox = current.getBoundingClientRect();
+      list.scrollTop +=
+        currentBox.top - listBox.top - (listBox.height - currentBox.height) / 2;
+      setHasMoreScenes(
+        list.scrollTop + list.clientHeight < list.scrollHeight - 2,
+      );
+    };
+    centerCurrent();
     panelRef.current
       ?.querySelector<HTMLButtonElement>('[aria-current="step"]')
       ?.focus({ preventScroll: true });
@@ -56,11 +73,13 @@ export function HomePlayback({ root }: HomePlaybackProps) {
     };
     document.addEventListener("pointerdown", dismissOutside);
     document.addEventListener("keydown", dismissEscape);
+    window.addEventListener("resize", centerCurrent);
     return () => {
       document.removeEventListener("pointerdown", dismissOutside);
       document.removeEventListener("keydown", dismissEscape);
+      window.removeEventListener("resize", centerCurrent);
     };
-  }, [showScenes]);
+  }, [showScenes, chapterIndex]);
 
   const closeScenes = () => {
     setShowScenes(false);
@@ -72,6 +91,7 @@ export function HomePlayback({ root }: HomePlaybackProps) {
       className={`home-playback${reducedMotion ? " is-static" : ""}`}
       data-home-player=""
       data-playback-mode={mode}
+      data-playback-chapter={currentChapter.id}
       ref={playerRef}
       onBlur={(event) => {
         if (!event.currentTarget.contains(event.relatedTarget))
@@ -84,12 +104,16 @@ export function HomePlayback({ root }: HomePlaybackProps) {
           id={`${id}-scenes`}
           ref={panelRef}
           role="dialog"
-          aria-label="Story scenes"
+          aria-labelledby={`${id}-scenes-title`}
         >
           <div className="home-playback-scenes-heading">
             <div>
-              <h2>Scenes</h2>
+              <span className="home-playback-eyebrow">Story navigation</span>
+              <h2 id={`${id}-scenes-title`}>Choose a scene</h2>
             </div>
+            <span className="home-playback-scene-count" aria-hidden="true">
+              {String(chapterIndex + 1).padStart(2, "0")} / {chapters.length}
+            </span>
             <button
               className="home-playback-close"
               type="button"
@@ -99,7 +123,16 @@ export function HomePlayback({ root }: HomePlaybackProps) {
               <X size={14} aria-hidden="true" />
             </button>
           </div>
-          <ol className="home-playback-scene-list">
+          <ol
+            className="home-playback-scene-list"
+            ref={listRef}
+            onScroll={(event) => {
+              const list = event.currentTarget;
+              setHasMoreScenes(
+                list.scrollTop + list.clientHeight < list.scrollHeight - 2,
+              );
+            }}
+          >
             {chapters.map((chapter, index) => (
               <li key={chapter.id}>
                 <button
@@ -121,6 +154,11 @@ export function HomePlayback({ root }: HomePlaybackProps) {
               </li>
             ))}
           </ol>
+          {hasMoreScenes && (
+            <span className="home-playback-list-hint" aria-hidden="true">
+              Scroll for more scenes ↓
+            </span>
+          )}
           {!reducedMotion && (
             <div className="home-playback-settings">
               <span>Speed</span>
@@ -192,6 +230,10 @@ export function HomePlayback({ root }: HomePlaybackProps) {
         >
           <span className="home-playback-index" aria-hidden="true">
             {String(chapterIndex + 1).padStart(2, "0")}
+            <small>/{chapters.length}</small>
+          </span>
+          <span className="home-playback-scene-caption" aria-hidden="true">
+            Scene
           </span>
           <ChevronUp
             size={11}
