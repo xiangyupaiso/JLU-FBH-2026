@@ -15,12 +15,12 @@
  * and Figures 2, 4, 5 and 6 are the team's own process and logic diagrams.
  */
 
-import fig1 from "../../assets/wiki/hardware/hardware-fig1-gen1-overview.webp";
-import fig2 from "../../assets/wiki/hardware/hardware-fig2-process-chain.webp";
-import fig3 from "../../assets/wiki/hardware/hardware-fig3-gen1-exploded.webp";
-import fig4 from "../../assets/wiki/hardware/hardware-fig4-uv-interlock.webp";
-import fig5 from "../../assets/wiki/hardware/hardware-fig5-gen2-optical-electrical.webp";
-import fig6 from "../../assets/wiki/hardware/hardware-fig6-gen2-process-coverage.webp";
+const fig1 = "https://static.igem.wiki/teams/6056/wiki/files/pages/dry-lab/hardware-fig1-gen1-overview-3718fcfaf275.webp";
+const fig2 = "https://static.igem.wiki/teams/6056/wiki/files/pages/dry-lab/hardware-fig2-process-chain-fa2d847da50e.webp";
+const fig3 = "https://static.igem.wiki/teams/6056/wiki/files/pages/dry-lab/hardware-fig3-gen1-exploded-4a4edca412b8.webp";
+const fig4 = "https://static.igem.wiki/teams/6056/wiki/files/pages/dry-lab/hardware-fig4-uv-interlock-0d0608b7c975.webp";
+const fig5 = "https://static.igem.wiki/teams/6056/wiki/files/pages/dry-lab/hardware-fig5-gen2-optical-electrical-853e8b7de2a3.webp";
+const fig6 = "https://static.igem.wiki/teams/6056/wiki/files/pages/dry-lab/hardware-fig6-gen2-process-coverage-02a6f31c5c9d.webp";
 
 export type HardwareAssetKind = "image";
 

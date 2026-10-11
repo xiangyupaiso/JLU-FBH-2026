@@ -10,6 +10,9 @@
 
 const LEAVE_MS = 380; // matches `.page-loader` opacity transition
 const COMPLETE_HOLD_MS = 350; // let the finished illustration register
+// External apps may never send their readiness message when their service is
+// unavailable. This limit applies only to explicitly opted-in embeds.
+const EMBED_WAIT_MS = 12000;
 
 let token = 0;
 let leaveTimer = 0;
@@ -192,6 +195,24 @@ async function waitForAnimation(video: HTMLVideoElement, signal: AbortSignal) {
   });
 }
 
+async function waitForEmbed(frame: HTMLIFrameElement, signal: AbortSignal) {
+  if (signal.aborted || frame.dataset.pageEmbedReady === "true") return;
+  await new Promise<void>((resolve) => {
+    const done = () => {
+      window.clearTimeout(timeout);
+      frame.removeEventListener("wiki-embed-ready", done);
+      frame.removeEventListener("error", done);
+      signal.removeEventListener("abort", done);
+      resolve();
+    };
+    const timeout = window.setTimeout(done, EMBED_WAIT_MS);
+    frame.addEventListener("wiki-embed-ready", done, { once: true });
+    frame.addEventListener("error", done, { once: true });
+    signal.addEventListener("abort", done, { once: true });
+    if (signal.aborted || frame.dataset.pageEmbedReady === "true") done();
+  });
+}
+
 async function pageImagesAndAnimations(signal: AbortSignal): Promise<void> {
   const root = document.getElementById("root");
   if (!root) return;
@@ -233,6 +254,12 @@ async function pageImagesAndAnimations(signal: AbortSignal): Promise<void> {
     if (element instanceof HTMLVideoElement) {
       preload(element.poster);
       if (element.autoplay) pending.push(waitForAnimation(element, signal));
+    }
+    if (
+      element instanceof HTMLIFrameElement &&
+      element.hasAttribute("data-page-embed-ready")
+    ) {
+      pending.push(waitForEmbed(element, signal));
     }
     for (const pseudo of [null, "::before", "::after"]) {
       const style = getComputedStyle(element, pseudo);

@@ -54,11 +54,16 @@ export interface StakeholderProfile {
    * profiles with nothing documented render without a photo layer.
    */
   photos?: ReadonlyArray<StakeholderPhoto>;
-  relevantStakeholder: string;
+  relevantStakeholder?: string;
+  activityType?: string;
+  partner?: string;
   challenge?: string;
   keyInsight: string;
+  whatWeDid?: string;
   whatChanged: string;
-  currentStatus: string;
+  whatChangedLabel?: string;
+  /** Some source cards intentionally omit a status line. */
+  currentStatus?: string;
   sdgs: ReadonlyArray<number>;
   /** Prose that sits in the main flow right before this card. */
   leadIn?: ReadonlyArray<string>;
@@ -82,6 +87,8 @@ export interface AlignmentTable {
 export interface LegacyToolPdf {
   label: string;
   fileName: string;
+  /** Explicit manuscript URL, including when a PDF is reused by another tool. */
+  url?: string;
 }
 
 export interface LegacyTool {
@@ -97,7 +104,7 @@ export interface LegacyTool {
 export interface EvidenceItem {
   text: string;
   figure?: SustainabilityImageAssetKey;
-  /** Caption under `figure` (with its FIG. number); defaults to the asset's alt text. */
+  /** Caption under `figure`; defaults to the asset's alt text. */
   figureCaption?: string;
   /** Follow the item with the chapter's Legacy tool table (Tool / What it does / Download). */
   toolTable?: true;
@@ -124,14 +131,17 @@ export interface SdgChapter {
     dimensions: ReadonlyArray<ConsequenceDimension>;
   };
   alignment: {
+    leadHeading?: string;
     lead: ReadonlyArray<string>;
-    table: AlignmentTable;
+    /** Optional because some chapters present alignment as prose findings only. */
+    table?: AlignmentTable;
     findings: ReadonlyArray<string>;
   };
   legacy: { intro: ReadonlyArray<string>; tools: ReadonlyArray<LegacyTool> };
   evidence: {
     intro: ReadonlyArray<string>;
     stats: ReadonlyArray<SustainabilityStat>;
+    measurableIntro?: ReadonlyArray<string>;
     measurable: ReadonlyArray<EvidenceItem>;
     significant: ReadonlyArray<string>;
   };

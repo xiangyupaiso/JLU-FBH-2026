@@ -91,8 +91,20 @@ function chapterRailSteps(chapter: SdgChapter): ScaleRailStep[] {
 function ScaleRail({ chapter }: { chapter: SdgChapter }) {
   const { activeSubsection } = useRoutePageScroll();
   const steps = useMemo(() => chapterRailSteps(chapter), [chapter]);
-  const chapterIndex = sustainabilityChapters.findIndex((item) => item.id === chapter.id);
-  const endId = sustainabilityChapters[chapterIndex + 1]?.headingId ?? stakeholderTracker.id;
+  const allSubheadings = sustainabilityPage.sections
+    .flatMap((section) => section.blocks ?? [])
+    .filter(
+      (block): block is Extract<WikiContentBlock, { type: "subheading" }> =>
+        block.type === "subheading",
+    );
+  const chapterIndex = allSubheadings.findIndex((block) => block.id === chapter.headingId);
+  const chapterDepth = chapter.index.split(".").length;
+  const nextChapter = allSubheadings
+    .slice(chapterIndex + 1)
+    .find((block) => block.index.split(".").length === chapterDepth);
+  // A chapter ends at the next same-level heading. For the final chapter,
+  // SCALEProgressChain falls back to the containing SET section's bottom.
+  const endId = nextChapter?.id ?? "";
   return (
     <SCALEProgressChain
       steps={steps}
@@ -149,10 +161,19 @@ function StakeholderGrid({ chapter }: { chapter: SdgChapter }) {
 
 /** E — Evidence: numbered Measurable items with figures, Significant prose. */
 function EvidencePanel({ chapter }: { chapter: SdgChapter }) {
-  const { measurable, significant } = chapter.evidence;
+  const { measurableIntro, measurable, significant } = chapter.evidence;
   return (
     <div className="sust-evidence">
       <h4 className="sust-minor-heading">Measurable</h4>
+      {measurableIntro?.length ? (
+        <div className="wiki-prose">
+          {measurableIntro.map((paragraph) => (
+            <p key={paragraph}>
+              <RichText text={paragraph} />
+            </p>
+          ))}
+        </div>
+      ) : null}
       <ol className="sust-evidence__list">
         {measurable.map((item) => (
           <li className="sust-evidence__item" key={item.text}>
@@ -161,7 +182,7 @@ function EvidencePanel({ chapter }: { chapter: SdgChapter }) {
             </p>
             {item.toolTable ? <ToolTable tools={chapter.legacy.tools} /> : null}
             {item.figure ? (
-              // The caption carries the page's "FIG. nn" badge, like every other figure.
+              // Keep the caption as the source text; figure labels are not added here.
               <figure className="wiki-figure">
                 <img
                   src={sustainabilityImage(item.figure)}
@@ -193,6 +214,18 @@ function chapterFeatures(chapter: SdgChapter): FeatureMap {
     [keys.rail]: <ScaleRail chapter={chapter} />,
     [keys.stakeholders]: <StakeholderGrid chapter={chapter} />,
     [keys.consequences]: <ConsequencesDimensionCard consequences={chapter.consequences} />,
+    [keys.alignmentLead]: (
+      <div>
+        <h4 className="sust-minor-heading">{chapter.alignment.leadHeading}</h4>
+        <div className="wiki-prose">
+          {chapter.alignment.lead.map((paragraph) => (
+            <p key={paragraph}>
+              <RichText text={paragraph} />
+            </p>
+          ))}
+        </div>
+      </div>
+    ),
     [keys.legacy]: <PdfToolList tools={chapter.legacy.tools} instance={`${chapter.id}-legacy`} />,
     [keys.evidence]: <EvidencePanel chapter={chapter} />,
   };

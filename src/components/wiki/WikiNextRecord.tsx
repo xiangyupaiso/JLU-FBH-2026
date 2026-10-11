@@ -6,15 +6,20 @@ interface WikiNextRecordProps {
   path: string;
   label: string;
   title: string;
+  reveal?: boolean;
 }
 
 export const WikiNextRecord = memo(function WikiNextRecord({
   path,
   label,
   title,
+  reveal = true,
 }: WikiNextRecordProps) {
   return (
-    <section className="wiki-next wiki-next--record" data-wiki-reveal>
+    <section
+      className="wiki-next wiki-next--record"
+      data-wiki-reveal={reveal ? "" : undefined}
+    >
       <div className="wiki-next__inner">
         <div className="wiki-next__copy">
           <h2>{title}</h2>

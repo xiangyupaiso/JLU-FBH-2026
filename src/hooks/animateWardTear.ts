@@ -2,7 +2,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { HOME_SCRUB } from "./homeMotion";
 import { updateWardInfusionTube } from "./wardInfusionGeometry";
-import patientTeardrop from "../assets/home/ward-transition/patient-teardrop-20261004.webp";
+const patientTeardrop = "https://static.igem.wiki/teams/6056/wiki/files/pages/home/patient-teardrop-20261004-765c97bc4482.webp";
 
 // The portrait and detached drop share the artist's 2752 × 2064 canvas.
 const PATIENT_CANVAS = { width: 2752, height: 2064 };

@@ -27,8 +27,31 @@ export interface WikiLineSidebarItem {
   }>;
 }
 
-/** Desktop outline looks under review; omitted keeps the legacy card. */
-export type WikiLineSidebarVariant = "line" | "ribbon" | "marker";
+type WikiLineSidebarChild = NonNullable<WikiLineSidebarItem["children"]>[number];
+
+/**
+ * Level-3 headings ("1.1.1") are listed only under the level-2 heading being
+ * read, so long records stay short. `isTrail` marks that level-2 parent.
+ */
+function outlineRows(children: WikiLineSidebarChild[], activeChildId: string) {
+  const depthOf = (index: string) => index.split(".").length;
+  const baseDepth = Math.min(...children.map((child) => depthOf(child.index)));
+  let groupId = "";
+  const rows = children.map((child) => {
+    const tertiary = depthOf(child.index) > baseDepth;
+    if (!tertiary) groupId = child.id;
+    return { child, tertiary, groupId };
+  });
+  const activeGroupId =
+    rows.find((row) => row.child.id === activeChildId)?.groupId ?? "";
+  return rows
+    .filter((row) => !row.tertiary || row.groupId === activeGroupId)
+    .map(({ child, tertiary }) => ({
+      child,
+      tertiary,
+      isTrail: !tertiary && child.id === activeGroupId,
+    }));
+}
 
 export interface WikiLineSidebarLink {
   label: string;
@@ -54,7 +77,6 @@ interface WikiLineSidebarProps {
    * related link is chosen so the host can slide the drawer away.
    */
   onRequestClose?: () => void;
-  variant?: WikiLineSidebarVariant;
 }
 
 export function WikiLineSidebar({
@@ -71,10 +93,8 @@ export function WikiLineSidebar({
   id,
   scrollBehavior = "instant",
   onRequestClose,
-  variant,
 }: WikiLineSidebarProps) {
   const outlineRef = useRef<HTMLElement>(null);
-  const navRef = useRef<HTMLElement>(null);
   const ribbonRef = useRef<HTMLSpanElement>(null);
   const pointerIdRef = useRef<number | null>(null);
   const requestRibbonMeasureRef = useRef<() => void>(() => undefined);
@@ -280,40 +300,6 @@ export function WikiLineSidebar({
 
   }, [activeChildId, activeId, ribbonTargetId]);
 
-  // "line" variant: park the rail thumb on the row being read. Measured in nav
-  // coordinates so wrapped (multi-line) labels get a matching thumb height.
-  const thumbTargetId = ribbonTargetId || activeChildId || activeId;
-  useEffect(() => {
-    const nav = navRef.current;
-    if (variant !== "line" || !nav) return;
-
-    let frame = 0;
-    const place = () => {
-      frame = 0;
-      const target = nav.querySelector<HTMLElement>(
-        `[data-outline-target="${thumbTargetId}"]`,
-      );
-      if (!target) return;
-      const bounds = target.getBoundingClientRect();
-      const top = bounds.top - nav.getBoundingClientRect().top;
-      nav.style.setProperty("--wiki-outline-thumb-y", `${top.toFixed(1)}px`);
-      nav.style.setProperty("--wiki-outline-thumb-h", `${bounds.height.toFixed(1)}px`);
-    };
-    const request = () => {
-      if (!frame) frame = requestAnimationFrame(place);
-    };
-    // Subnav expand/collapse and label rewraps both resize the nav.
-    const observer =
-      "ResizeObserver" in window ? new ResizeObserver(request) : null;
-    observer?.observe(nav);
-    request();
-
-    return () => {
-      if (frame) cancelAnimationFrame(frame);
-      observer?.disconnect();
-    };
-  }, [variant, thumbTargetId]);
-
   const jumpToSection = (
     event: MouseEvent<HTMLAnchorElement>,
     id: string,
@@ -410,19 +396,11 @@ export function WikiLineSidebar({
     scrollReaderToTarget(content, scrollContainerRef?.current, "instant");
   };
 
-  const currentIndex = items.findIndex((item) => item.id === activeId);
-  const activeChapterNumber = Math.max(1, currentIndex + 1);
-  const totalChapters = items.length;
-  const progressPercent =
-    totalChapters > 0
-      ? Math.round((activeChapterNumber / totalChapters) * 100)
-      : 0;
-
   return (
     <aside
       ref={outlineRef}
       id={id}
-      className={`wiki-outline${variant ? ` wiki-outline--${variant}` : ""}`}
+      className="wiki-outline wiki-outline--marker"
       aria-label={label}
     >
       {onRequestClose ? (
@@ -438,17 +416,7 @@ export function WikiLineSidebar({
           </button>
         </div>
       ) : null}
-      <div className="wiki-outline__progress-pill" aria-hidden="true">
-        <div
-          className="wiki-outline__progress-pill-fill"
-          style={{ width: `${progressPercent}%` }}
-        />
-      </div>
-
-      <nav ref={navRef} aria-label={label}>
-        {variant === "line" ? (
-          <span className="wiki-outline__thumb" aria-hidden="true" />
-        ) : null}
+      <nav aria-label={label}>
         <span
           ref={ribbonRef}
           className="wiki-outline__ribbon"
@@ -499,20 +467,14 @@ export function WikiLineSidebar({
                 title={item.label}
               >
                 <span className="wiki-outline__index">
-                  {minimal && (!variant || variant === "marker")
-                    ? Number.parseInt(item.index, 10)
+                  {minimal && /^\d+$/.test(item.index)
+                    ? Number(item.index)
                     : item.index}
                 </span>
                 <span className="wiki-outline__copy">
                   {!minimal && item.meta ? <small>{item.meta}</small> : null}
                   <strong>{item.label}</strong>
                 </span>
-                {activeId === item.id && (
-                  <span
-                    className="wiki-outline__active-pill"
-                    aria-hidden="true"
-                  />
-                )}
               </a>
 
               {isExpanded && item.children ? (
@@ -520,8 +482,9 @@ export function WikiLineSidebar({
                   className="wiki-outline__subnav"
                   aria-label={`${item.label} subsections`}
                 >
-                  {item.children.map((child) => {
+                  {outlineRows(item.children, activeChildId).map(({ child, tertiary, isTrail }) => {
                     const childPair = protocolMap.get(child.id);
+                    const isActive = ribbonTargetId === child.id;
                     // Manuscript numbering can omit introductory sections.
                     // The outline must use its displayed parent chapter instead.
                     const childIndex = /^\d+$/.test(item.index)
@@ -532,8 +495,11 @@ export function WikiLineSidebar({
                       : child.label;
                     return (
                       <a
-                        className={`wiki-outline__secondary ${ribbonTargetId === child.id ? "is-active" : ""
-                          }`}
+                        className={`wiki-outline__secondary${
+                          tertiary ? " is-tertiary" : ""
+                        }${isActive ? " is-active" : ""}${
+                          isTrail && !isActive ? " is-trail" : ""
+                        }`}
                         href={`#${child.id}`}
                         data-outline-target={child.id}
                         onClick={(event) => jumpToSection(event, child.id)}
@@ -554,9 +520,7 @@ export function WikiLineSidebar({
                             setHoveredProtocol(null);
                           }, 220);
                         }}
-                        aria-current={
-                          ribbonTargetId === child.id ? "location" : undefined
-                        }
+                        aria-current={isActive ? "location" : undefined}
                         title={`${childIndex} ${childLabel}`.trim()}
                         key={child.id}
                       >
@@ -594,9 +558,7 @@ export function WikiLineSidebar({
 
       {links.length ? (
         <div className="wiki-outline__related">
-          <span className="wiki-outline__related-title">
-            {variant ? "Related" : "✦ related links"}
-          </span>
+          <span className="wiki-outline__related-title">Related</span>
           {links.map((link) => (
             <Link key={link.path} to={link.path} onClick={onRequestClose}>
               <span>{link.label}</span>

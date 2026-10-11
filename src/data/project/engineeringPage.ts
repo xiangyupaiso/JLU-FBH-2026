@@ -4,6 +4,7 @@ import type {
   WikiPageContent,
 } from "../../components/wiki/wikiPageTypes";
 import { cycle2Iterations, cycle2Section } from "./engineeringRecordAdditions";
+import engineeringOverviewPanoramic from "../../assets/wiki/engineering/engineering-overview-panoramic.webp";
 
 /**
  * Engineering — the CirCure TIME record.
@@ -273,6 +274,13 @@ export const engineeringPage: WikiPageContent = {
         p([
           "The surrounding gears represent the teams that keep TIME moving. Dry Lab converts biological questions into traceable antigen and epitope decisions, structural hypotheses and quantitative predictions, supported by CircuForge, TorusFold and mathematical modelling. Wet Lab converts these designs into physical constructs and molecular, cellular and broader biological measurements, with experimental practice also giving rise to CirCore. Integrated Human Practices introduces clinical needs, ethical requirements and evidence boundaries where they can refine project decisions. Education examines the transfer of scientific concepts and procedures; Visual Design develops a coherent project language; and Entrepreneurship connects experimental progress with preparation, collaboration and further development. Their engagement varies across the four cycles, but every effective connection contributes torque to the same engineering system.",
         ]),
+        {
+          type: "figure",
+          src: engineeringOverviewPanoramic,
+          alt: "CirCure TIME Engineering System — Overview of central TIME cycles, DBTL stages, and six contributing team gears with mascots",
+          caption:
+            "CirCure TIME engineering architecture overview: central stopwatch dial flanked by six contributing team gears and mascots.",
+        },
         {
           type: "callout",
           tone: "navy",

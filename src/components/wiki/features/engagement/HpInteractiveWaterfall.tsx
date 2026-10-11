@@ -1,8 +1,6 @@
 import { useState, useRef, useEffect, useCallback } from "react";
-import waterfallFullMp4 from "../../../../assets/wiki/hp/hp-waterfall-loop.mp4";
-import waterfallFullWebm from "../../../../assets/wiki/hp/hp-waterfall-loop.webm";
-import waterfallCoreMp4 from "../../../../assets/wiki/hp/hp-waterfall-core.mp4";
-import waterfallCoreWebm from "../../../../assets/wiki/hp/hp-waterfall-core.webm";
+import waterfallFullWebpLocal from "../../../../assets/wiki/hp/hp-waterfall-loop.webp";
+import waterfallCoreWebpLocal from "../../../../assets/wiki/hp/hp-waterfall-core.webp";
 import {
   RETURN_CONTOUR,
   PROJECT_CONTOUR,
@@ -11,6 +9,11 @@ import {
 } from "./hpContours";
 import { scrollReaderToTarget } from "../../../../utils";
 import "../../../../styles/features/hp-waterfall-interactive.css";
+
+const WATERFALL_LOOP_CDN =
+  "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/ihp/hp-waterfall-loop.webp";
+const WATERFALL_CORE_CDN =
+  "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/ihp/hp-waterfall-core.webp";
 
 type HotspotKey = "overview" | "human" | "origin" | "project" | "return";
 
@@ -125,8 +128,6 @@ const HOTSPOTS: Record<HotspotKey, HotspotData> = {
 
 export function HpInteractiveWaterfall() {
   const containerRef = useRef<HTMLElement>(null);
-  const fullVideoRef = useRef<HTMLVideoElement>(null);
-  const coreVideoRef = useRef<HTMLVideoElement>(null);
 
   const [activeKey, setActiveKey] = useState<HotspotKey>("overview");
   const [scrollProgress, setScrollProgress] = useState(0);
@@ -134,26 +135,11 @@ export function HpInteractiveWaterfall() {
 
   const activeData = HOTSPOTS[activeKey];
 
-  // Instant cut between full landscape and core building (0 ghosting)
-  // If user clicked a tab: manualFocus controls it (Overview = false, others = true)
-  // Else (driven by scroll within the sticky container):
-  // When scrollProgress < 0.45: false (Full Landscape)
-  // When scrollProgress >= 0.45: true (Core Building)
+  // Smooth cinematic masking: active on tab click or scroll past threshold
   const isCore =
     manualFocus !== null
       ? manualFocus
-      : scrollProgress >= 0.45;
-
-  // Autoplay fallback and sync
-  useEffect(() => {
-    const v1 = fullVideoRef.current;
-    const v2 = coreVideoRef.current;
-    const playBoth = () => {
-      if (v1) v1.play().catch(() => {});
-      if (v2) v2.play().catch(() => {});
-    };
-    playBoth();
-  }, []);
+      : scrollProgress >= 0.32;
 
   // Pinned scroll listener: card stays frozen in viewport while mouse wheel scrolls from 0 to 1
   useEffect(() => {
@@ -177,7 +163,7 @@ export function HpInteractiveWaterfall() {
         const scrolled = topOffset - rect.top;
         const progress = Math.max(0, Math.min(1, scrolled / pinDistance));
         setScrollProgress(progress);
-        if (progress < 0.2 && manualFocus === null) {
+        if (progress < 0.22 && manualFocus === null) {
           setActiveKey("overview");
         }
       }
@@ -216,43 +202,32 @@ export function HpInteractiveWaterfall() {
           {/* Visual Stage */}
           <div className="hp-waterfall-stage-wrapper">
             <div className="hp-waterfall-stage">
-              {/* 1. Base Layer: Full Landscape Video */}
-              <video
-                ref={fullVideoRef}
-                className="hp-waterfall-video hp-video-full"
-                style={{
-                  opacity: isCore ? 0 : 1,
-                  visibility: isCore ? "hidden" : "visible",
+              {/* 1. Base Layer: Full Landscape Animated WebP (Continuous loop) */}
+              <img
+                src={WATERFALL_LOOP_CDN}
+                onError={(e) => {
+                  e.currentTarget.src = waterfallFullWebpLocal;
                 }}
-                autoPlay
-                loop
-                muted
-                playsInline
-                preload="auto"
-              >
-                <source src={waterfallFullMp4} type="video/mp4" />
-                <source src={waterfallFullWebm} type="video/webm" />
-                Your browser does not support HTML5 video playback.
-              </video>
+                alt="Human Practices Waterfall Overview"
+                className="hp-waterfall-media hp-media-full"
+              />
 
-              {/* 2. Top Layer: Focused Core Building Video (Solid White Background) */}
-              <video
-                ref={coreVideoRef}
-                className="hp-waterfall-video hp-video-core"
-                style={{
-                  opacity: isCore ? 1 : 0,
-                  visibility: isCore ? "visible" : "hidden",
-                }}
-                autoPlay
-                loop
-                muted
-                playsInline
-                preload="auto"
+              {/* 2. Soft Gradient Vignette Veil Mask (Dissolves outer scenery into clean white) */}
+              <div
+                className={`hp-waterfall-mask-veil ${isCore ? "is-active" : ""}`}
                 aria-hidden="true"
-              >
-                <source src={waterfallCoreMp4} type="video/mp4" />
-                <source src={waterfallCoreWebm} type="video/webm" />
-              </video>
+              />
+
+              {/* 3. Top Layer: Focused Core Building Animated WebP (Solid White Background) */}
+              <img
+                src={WATERFALL_CORE_CDN}
+                onError={(e) => {
+                  e.currentTarget.src = waterfallCoreWebpLocal;
+                }}
+                alt="Human Practices Core Framework"
+                className={`hp-waterfall-media hp-media-core ${isCore ? "is-active" : ""}`}
+                aria-hidden="true"
+              />
 
               {/* 3. SVG Interactive Hotspots Layer */}
               <svg

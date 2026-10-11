@@ -3,6 +3,15 @@
   <head>
     <meta charset="UTF-8" />
     <script>
+      (function () {
+        var base = "/jlu-fbh/";
+        var path = window.location.pathname;
+        if (path === "/" || path === "" || path === "/jlu-fbh") {
+          window.location.replace(base + window.location.search + window.location.hash);
+        } else if (!path.startsWith(base)) {
+          window.location.replace(base.replace(/\/$/, "") + (path.startsWith("/") ? path : "/" + path) + window.location.search + window.location.hash);
+        }
+      })();
       // Set this before ScrollTrigger initializes: it captures this value and
       // restores it after layout refreshes, including the first font load.
       if ("scrollRestoration" in history) history.scrollRestoration = "manual";
@@ -332,6 +341,15 @@
           clearTimeout(fallback);
           play();
         });
+
+        // Fallback safeguard: if route initialization or asset settling stalls,
+        // never leave the visitor trapped behind the loading cover.
+        setTimeout(function () {
+          if (loader && !loader.hidden && !loader.classList.contains("is-leaving")) {
+            loader.classList.add("is-leaving");
+            setTimeout(function () { loader.hidden = true; }, 380);
+          }
+        }, 10000);
       })();
     </script>
     <div id="root"></div>

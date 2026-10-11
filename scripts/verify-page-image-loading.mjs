@@ -16,6 +16,7 @@ const tick = async () => {
 
 function environment() {
   const requests = [];
+  const embedTimers = new Set();
   class Image extends EventTarget {
     src = "";
     srcset = "";
@@ -55,6 +56,14 @@ function environment() {
     preload = "none";
     error = null;
   }
+  class Frame extends EventTarget {
+    dataset = { pageEmbedReady: "false" };
+    hasAttribute(name) { return name === "data-page-embed-ready"; }
+    finish() {
+      this.dataset.pageEmbedReady = "true";
+      this.dispatchEvent(new Event("wiki-embed-ready"));
+    }
+  }
   const loader = Object.assign(new EventTarget(), {
     hidden: false,
     classList: (() => {
@@ -76,8 +85,14 @@ function environment() {
       fonts: { ready: Promise.resolve() },
     },
     window: {
-      setTimeout: (fn) => setImmediate(fn),
-      clearTimeout: (id) => clearImmediate(id),
+      setTimeout: (fn, ms) => {
+        if (ms >= 12000) { embedTimers.add(fn); return fn; }
+        return setImmediate(fn);
+      },
+      clearTimeout: (id) => {
+        if (typeof id === "function") embedTimers.delete(id);
+        else clearImmediate(id);
+      },
       matchMedia: () => ({ matches: true }),
     },
     requestAnimationFrame: (fn) => setImmediate(fn),
@@ -88,10 +103,12 @@ function environment() {
     AbortController, Promise, Image,
     HTMLImageElement: Image, SVGImageElement: SvgImage,
     HTMLVideoElement: Video, HTMLMediaElement: Video,
+    HTMLIFrameElement: Frame,
   });
   vm.runInContext(loaderSource, context);
   return {
-    context, loader, requests, Image, SvgImage, Video,
+    context, loader, requests, Image, SvgImage, Video, Frame, embedTimers,
+    expireEmbeds: () => [...embedTimers].forEach((fn) => fn()),
     page: (nextElements, nextHints = []) => { elements = nextElements; hints = nextHints; },
     ready: () => context.hidePageLoaderWhenReady(),
   };
@@ -199,6 +216,68 @@ test("autoplay artwork waits for its first frame while PDF and game links stay o
   assert.equal(env.requests.length, 0);
   video.readyState = 2;
   video.dispatchEvent(new Event("loadeddata"));
+  await tick();
+  assert.equal(env.loader.hidden, true);
+});
+
+test("external form app shell loading cannot release the cover before its readiness message", async () => {
+  const env = environment();
+  const frame = new env.Frame();
+  env.page([frame]);
+  env.ready();
+  await tick();
+  frame.dispatchEvent(new Event("load"));
+  await tick();
+  assert.equal(env.loader.hidden, false);
+  frame.finish();
+  await tick();
+  assert.equal(env.loader.hidden, true);
+  assert.equal(env.embedTimers.size, 0);
+});
+
+test("an embed already ready before the page scan does not need a second message", async () => {
+  const env = environment();
+  const frame = new env.Frame();
+  frame.finish();
+  env.page([frame]);
+  env.ready();
+  await tick();
+  assert.equal(env.loader.hidden, true);
+  assert.equal(env.embedTimers.size, 0);
+});
+
+test("external embed timeout releases only that wait and still waits for ordinary images", async () => {
+  const env = environment();
+  const frame = new env.Frame();
+  const image = new env.Image("slow-page.webp");
+  env.page([frame, image]);
+  env.ready();
+  await tick();
+  env.expireEmbeds();
+  await tick();
+  assert.equal(env.loader.hidden, false);
+  image.finish();
+  await tick();
+  assert.equal(env.loader.hidden, true);
+});
+
+test("changing routes cancels embed timers and ignores the old form readiness message", async () => {
+  const env = environment();
+  const frame = new env.Frame();
+  env.page([frame]);
+  env.ready();
+  await tick();
+  assert.equal(env.embedTimers.size, 1);
+  env.context.showPageLoader();
+  const nextImage = new env.Image("next-route.webp");
+  env.page([nextImage]);
+  env.ready();
+  await tick();
+  assert.equal(env.embedTimers.size, 0);
+  frame.finish();
+  await tick();
+  assert.equal(env.loader.hidden, false);
+  nextImage.finish();
   await tick();
   assert.equal(env.loader.hidden, true);
 });

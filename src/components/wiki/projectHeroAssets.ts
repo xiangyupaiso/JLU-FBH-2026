@@ -3,7 +3,7 @@ const descriptionHero =
   "https://static.igem.wiki/teams/6056/wiki/files/pages/project/project-description-hero.webp";
 import engineeringHero from "../../assets/wiki/project-heroes/project-engineering-hero.webp";
 import resultsHero from "../../assets/wiki/project-heroes/project-results-hero.webp";
-import artHero from "../../assets/wiki/art-heroes/art-hero.webp";
+const artHero = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/heroes/art-hero-ef55f5540bcf.webp";
 
 const notebookHero =
   "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/wet-lab-notebook-hero-v3.webp";

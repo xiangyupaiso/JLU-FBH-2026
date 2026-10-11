@@ -66,8 +66,11 @@ function ArticleView({ article }: { article: StakeholderArticle }) {
 
 const FIELDS = [
   ["relevantStakeholder", "Relevant Stakeholder"],
+  ["activityType", "Activity Type"],
+  ["partner", "Partner"],
   ["challenge", "Challenge"],
   ["keyInsight", "Key Insight"],
+  ["whatWeDid", "What We Did"],
   ["whatChanged", "What Changed"],
 ] as const;
 
@@ -90,14 +93,16 @@ const profilePhotos = (profile: StakeholderProfile) => {
 function StakeMeta({ profile }: { profile: StakeholderProfile }) {
   return (
     <dl className="sust-stake-meta">
-      <div className="sust-stake-meta__item">
-        <dt>Current Status</dt>
-        <dd>
-          <span className="sust-stake-card__status">
-            {profile.currentStatus}
-          </span>
-        </dd>
-      </div>
+      {profile.currentStatus ? (
+        <div className="sust-stake-meta__item">
+          <dt>Current Status</dt>
+          <dd>
+            <span className="sust-stake-card__status">
+              {profile.currentStatus}
+            </span>
+          </dd>
+        </div>
+      ) : null}
       <div className="sust-stake-meta__item">
         <dt>SDGs Addressed</dt>
         <dd>
@@ -145,7 +150,7 @@ function StakeCardFace({
             {FIELDS.map(([key, label]) =>
               profile[key] ? (
                 <div className="sust-stake-card__field" key={key}>
-                  <dt>{label}</dt>
+                  <dt>{key === "whatChanged" ? profile.whatChangedLabel ?? label : label}</dt>
                   <dd>
                     <RichText text={profile[key]} />
                   </dd>
@@ -650,7 +655,7 @@ export function StakeholderDeck({
                               className={`sust-deck__field${key === "challenge" ? " sust-deck__field--quote" : ""}${key === "relevantStakeholder" ? " sust-deck__field--lead" : ""}`}
                               key={key}
                             >
-                              <dt>{label}</dt>
+                              <dt>{key === "whatChanged" ? profile.whatChangedLabel ?? label : label}</dt>
                               <dd>
                                 <RichText text={profile[key]} />
                               </dd>
