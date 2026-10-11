@@ -24,6 +24,14 @@ import type {
   WikiSection,
 } from "../../wikiPageTypes";
 import { EngineeringOutline } from "./EngineeringPanels";
+import gearTSrc from "../../../../assets/wiki/engineering/engineering-gear-t.webp";
+import gearTActiveSrc from "../../../../assets/wiki/engineering/engineering-gear-t-active.webp";
+import gearISrc from "../../../../assets/wiki/engineering/engineering-gear-i.webp";
+import gearIActiveSrc from "../../../../assets/wiki/engineering/engineering-gear-i-active.webp";
+import gearMSrc from "../../../../assets/wiki/engineering/engineering-gear-m.webp";
+import gearMActiveSrc from "../../../../assets/wiki/engineering/engineering-gear-m-active.webp";
+import gearESrc from "../../../../assets/wiki/engineering/engineering-gear-e.webp";
+import gearEActiveSrc from "../../../../assets/wiki/engineering/engineering-gear-e-active.webp";
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
@@ -645,27 +653,32 @@ function CycleScenes({
   );
 }
 
-function SmallGear({ phase }: { phase: number }) {
-  const points: string[] = [];
-  for (let tooth = 0; tooth < 12; tooth++) {
-    for (const [offset, radius] of [
-      [-0.3, 18.5],
-      [-0.14, 24],
-      [0.14, 24],
-      [0.3, 18.5],
-    ]) {
-      const angle = (((tooth + offset) * 30 + phase) * Math.PI) / 180;
-      points.push(
-        `${(28 + radius * Math.cos(angle)).toFixed(2)},${(28 + radius * Math.sin(angle)).toFixed(2)}`,
-      );
-    }
-  }
+const GEAR_ASSETS: Record<string, { normal: string; active: string }> = {
+  t: { normal: gearTSrc, active: gearTActiveSrc },
+  i: { normal: gearISrc, active: gearIActiveSrc },
+  m: { normal: gearMSrc, active: gearMActiveSrc },
+  e: { normal: gearESrc, active: gearEActiveSrc },
+};
+
+function SmallGear({
+  letter,
+  isActive,
+  phase,
+}: {
+  letter: string;
+  isActive: boolean;
+  phase: number;
+}) {
+  const assets = GEAR_ASSETS[letter.toLowerCase()] ?? GEAR_ASSETS.t;
+  const src = isActive ? assets.active : assets.normal;
   return (
-    <svg viewBox="0 0 56 56" aria-hidden="true">
-      <polygon points={points.join(" ")} />
-      <circle cx="28" cy="28" r="12" />
-      <circle className="eng-small-gear__hub" cx="28" cy="28" r="4" />
-    </svg>
+    <img
+      src={src}
+      alt=""
+      aria-hidden="true"
+      className="eng-small-gear__img"
+      style={{ "--gear-phase": `${phase}deg` } as CSSProperties}
+    />
   );
 }
 
@@ -804,7 +817,11 @@ function GearNavigation({
                     });
                   }}
                 >
-                  <SmallGear phase={index % 2 ? 15 : 0} />
+                  <SmallGear
+                    letter={cycle.letter}
+                    isActive={selection.id === iteration.id}
+                    phase={index % 2 ? 7.5 : 0}
+                  />
                   <span>{iteration.index}</span>
                 </button>
               ))}
