@@ -1,3 +1,13 @@
+import fig1Local from "../../assets/wiki/design/design-fig1-circular-workflow.webp";
+import fig2aLocal from "../../assets/wiki/design/design-fig2a-stability.webp";
+import fig2bLocal from "../../assets/wiki/design/design-fig2b-translation-initiation.webp";
+import fig2cLocal from "../../assets/wiki/design/design-fig2c-innate-sensing.webp";
+import fig3Local from "../../assets/wiki/design/design-fig3-four-antigens.webp";
+import fig4Local from "../../assets/wiki/design/design-fig4-screening-funnel.webp";
+import fig5Local from "../../assets/wiki/design/design-fig5-mechanism-of-action.webp";
+import fig7Local from "../../assets/wiki/design/design-fig7-two-design-cycles.webp";
+import fig8Local from "../../assets/wiki/design/design-fig8-in-vivo-study-design.webp";
+
 /**
  * Design page asset registry.
  *
@@ -11,19 +21,11 @@
  * Preparation (PNG -> flattened WebP, and the EDA report copy) is recorded in
  * scripts/prepare-design-assets.py.
  *
- * When the uploads are confirmed, each `uploadUrl` becomes
- * `https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/<fileName>`.
+ * The manuscript's Wet Lab CDN URLs are used in production, with the bundled
+ * WebP files retained as local preview fallbacks.
  */
 
-const fig1 = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/design/design-fig1-circular-workflow-b43ee238217d.webp";
-const fig2a = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/design/design-fig2a-stability-faca8e585172.webp";
-const fig2b = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/design/design-fig2b-translation-initiation-7d08e5879945.webp";
-const fig2c = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/design/design-fig2c-innate-sensing-92bd3023e4d4.webp";
-const fig3 = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/design/design-fig3-four-antigens-498138625bea.webp";
-const fig4 = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/design/design-fig4-screening-funnel-5818c7ba45a8.webp";
-const fig5 = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/design/design-fig5-mechanism-of-action-00e4cad47990.webp";
-const fig7 = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/design/design-fig7-two-design-cycles-2345ab5f1c11.webp";
-const fig8 = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/design/design-fig8-in-vivo-study-design-b23d8f4ca06f.webp";
+const CDN_BASE = "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab";
 
 export type DesignAssetKind = "image" | "pdf";
 
@@ -49,20 +51,20 @@ export const designAssets = {
     fileName: "design-fig1-circular-workflow.webp",
     localSourcePath:
       "src/assets/wiki/design/design-fig1-circular-workflow.webp",
-    localSrc: fig1,
-    uploadUrl: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/design/design-fig1-circular-workflow-b43ee238217d.webp",
+    localSrc: fig1Local,
+    uploadUrl: `${CDN_BASE}/circure-at-a-glance.avif`,
     alt: "Circular workflow diagram of the CirCure platform, from plasmid template through in vitro transcription, self-splicing circularisation, lipid-nanoparticle delivery and dendritic-cell priming to CD8⁺ T-cell killing of triple-negative breast cancer cells",
-    caption: "CirCure at a glance.",
+    caption: "CirCure at a glance",
     section: "Overview",
   },
   fig2a: {
     kind: "image",
     fileName: "design-fig2a-stability.webp",
     localSourcePath: "src/assets/wiki/design/design-fig2a-stability.webp",
-    localSrc: fig2a,
-    uploadUrl: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/design/design-fig2a-stability-faca8e585172.webp",
+    localSrc: fig2aLocal,
+    uploadUrl: `${CDN_BASE}/stability.avif`,
     alt: "Side-by-side comparison of linear mRNA and circRNA stability: exonucleases attack the free 5′ and 3′ ends of the linear transcript, whereas the covalently closed circle offers no free end and therefore no exonuclease substrate",
-    caption: "Stability.",
+    caption: "Stability",
     section: "Why circRNA",
   },
   fig2b: {
@@ -70,40 +72,40 @@ export const designAssets = {
     fileName: "design-fig2b-translation-initiation.webp",
     localSourcePath:
       "src/assets/wiki/design/design-fig2b-translation-initiation.webp",
-    localSrc: fig2b,
-    uploadUrl: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/design/design-fig2b-translation-initiation-7d08e5879945.webp",
+    localSrc: fig2bLocal,
+    uploadUrl: `${CDN_BASE}/translation-initiation.avif`,
     alt: "Side-by-side comparison of translation initiation: cap-dependent recruitment of the ribosome on linear mRNA versus internal ribosome entry site driven, cap-independent initiation on circRNA",
-    caption: "Translation initiation.",
+    caption: "Translation initiation",
     section: "Why circRNA",
   },
   fig2c: {
     kind: "image",
     fileName: "design-fig2c-innate-sensing.webp",
     localSourcePath: "src/assets/wiki/design/design-fig2c-innate-sensing.webp",
-    localSrc: fig2c,
-    uploadUrl: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/design/design-fig2c-innate-sensing-92bd3023e4d4.webp",
+    localSrc: fig2cLocal,
+    uploadUrl: `${CDN_BASE}/innate-sensing.avif`,
     alt: "Side-by-side comparison of innate immune sensing: unmodified circRNA in the cytoplasm is detected by RIG-I and MDA5 and matures the dendritic cell, supplying the danger signal carried by the vaccine itself",
-    caption: "Innate sensing.",
+    caption: "Innate sensing",
     section: "Why circRNA",
   },
   fig3: {
     kind: "image",
     fileName: "design-fig3-four-antigens.webp",
     localSourcePath: "src/assets/wiki/design/design-fig3-four-antigens.webp",
-    localSrc: fig3,
-    uploadUrl: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/design/design-fig3-four-antigens-498138625bea.webp",
+    localSrc: fig3Local,
+    uploadUrl: `${CDN_BASE}/the-four-antigens-of-circure.avif`,
     alt: "Four antigen tiles summarising TROP2 as a calcium signal transducer driving proliferation and migration, Nectin-4 as an adhesion molecule supporting adhesion-dependent growth and metastasis, B7-H4 as a checkpoint ligand suppressing CD8⁺ T cells, and LIV-1 as a zinc transporter associated with epithelial–mesenchymal transition",
-    caption: "The four antigens of CirCure.",
+    caption: "The four antigens of CirCure",
     section: "Target selection",
   },
   fig4: {
     kind: "image",
     fileName: "design-fig4-screening-funnel.webp",
     localSourcePath: "src/assets/wiki/design/design-fig4-screening-funnel.webp",
-    localSrc: fig4,
-    uploadUrl: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/design/design-fig4-screening-funnel-5818c7ba45a8.webp",
+    localSrc: fig4Local,
+    uploadUrl: `${CDN_BASE}/the-screening-funnel.avif`,
     alt: "Screening funnel narrowing candidate 9-mers from four antigens through NetMHCpan binding prediction, VaxiJen antigenicity, NetChop proteasomal cleavage and a structural and redundancy filter to thirteen buildable single-epitope constructs, then through IFN-γ ELISpot to the eight selected epitopes",
-    caption: "The screening funnel.",
+    caption: "The screening funnel",
     section: "From antigen to epitope",
   },
   fig5: {
@@ -111,10 +113,10 @@ export const designAssets = {
     fileName: "design-fig5-mechanism-of-action.webp",
     localSourcePath:
       "src/assets/wiki/design/design-fig5-mechanism-of-action.webp",
-    localSrc: fig5,
-    uploadUrl: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/design/design-fig5-mechanism-of-action-00e4cad47990.webp",
+    localSrc: fig5Local,
+    uploadUrl: `${CDN_BASE}/mechanism-of-action.avif`,
     alt: "Mechanism of action: subcutaneous circRNA-lipid nanoparticle drainage to the draining lymph node, dendritic-cell uptake and endosomal escape, cap-independent translation of the polyprotein, MITD-directed MHC class I presentation, CD8⁺ T-cell priming with CD69 activation and CD45RO⁺CCR7⁻ effector-memory commitment, and perforin and granzyme killing of triple-negative breast cancer cells",
-    caption: "Mechanism of action.",
+    caption: "Mechanism of action",
     section: "Mechanism",
   },
   fig7: {
@@ -122,10 +124,10 @@ export const designAssets = {
     fileName: "design-fig7-two-design-cycles.webp",
     localSourcePath:
       "src/assets/wiki/design/design-fig7-two-design-cycles.webp",
-    localSrc: fig7,
-    uploadUrl: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/design/design-fig7-two-design-cycles-2345ab5f1c11.webp",
+    localSrc: fig7Local,
+    uploadUrl: `${CDN_BASE}/two-design-cycles.avif`,
     alt: "Two sequential Design–Build–Test–Learn cycles: the first comparing thirteen single-epitope constructs by IFN-γ ELISpot to select the eight epitopes, the second comparing empty vector, single-epitope and combined constructs against dendritic-cell maturation, translation, T-cell activation and MDA-MB-231 killing",
-    caption: "Two design cycles.",
+    caption: "Two design cycles",
     section: "Experimental design",
   },
   fig8: {
@@ -133,8 +135,8 @@ export const designAssets = {
     fileName: "design-fig8-in-vivo-study-design.webp",
     localSourcePath:
       "src/assets/wiki/design/design-fig8-in-vivo-study-design.webp",
-    localSrc: fig8,
-    uploadUrl: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/design/design-fig8-in-vivo-study-design-b23d8f4ca06f.webp",
+    localSrc: fig8Local,
+    uploadUrl: `${CDN_BASE}/immunisation-scheme-for-the-three-groups.avif`,
     alt: "Horizontal timeline of the mouse tumour study: TROP2-overexpressing 4T1 inoculation on day 0 in immunocompetent BALB/c mice, five weekly subcutaneous doses of PBS vehicle, empty-vector circRNA-lipid nanoparticle or combined circRNA-lipid nanoparticle at the tail base, calliper tumour-volume follow-up to a day 35 endpoint, and tumour and spleen harvest for mechanism readouts",
     caption: "In vivo study design.",
     section: "Experimental design",

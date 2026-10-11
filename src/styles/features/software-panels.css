@@ -39,3 +39,32 @@
   font-style: italic;
   line-height: 1.6;
 }
+
+/* Markdown links in the manuscript use the Dry Lab dual-tone palette so
+   source links stand apart from muted body text without adding a new component. */
+.wiki-page--software .wiki-prose-link {
+  color: var(--route-subheading-ink, #633256);
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: color-mix(
+    in srgb,
+    var(--route-subheading-ink, #633256) 48%,
+    transparent
+  );
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  transition:
+    color 160ms ease,
+    text-decoration-color 160ms ease;
+}
+
+.wiki-page--software .wiki-prose-link:is(:hover, :focus-visible) {
+  color: var(--route-heading-ink, #153e34);
+  text-decoration-color: currentColor;
+}
+
+.wiki-page--software .wiki-prose-link:focus-visible {
+  outline: 2px solid var(--route-accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
