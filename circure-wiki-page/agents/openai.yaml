@@ -1,0 +1,7 @@
+interface:
+  display_name: "CirCure Wiki Page Engineering"
+  short_description: "Unified workflow to build or update CirCure Wiki pages"
+  brand_color: "#173F78"
+  default_prompt: "Use $circure-wiki-page to build or surgically update this CirCure Wiki page following the Description paradigm and WIKI_ARCHITECTURE_SPEC constraints."
+policy:
+  allow_implicit_invocation: true

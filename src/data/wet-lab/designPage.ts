@@ -5,7 +5,7 @@ import { designAssets, getDesignImage } from "./designAssets";
 /**
  * Design page — structured typed content.
  *
- * Provenance: 文案集/wetlab/design/CirCure_Design.md
+ * Provenance: Downloads/Official-wiki-main/文案集/wetlab/design/CirCure_Design.md
  *
  * Every prose string is preserved verbatim from the manuscript, including the
  * numbered `[n]` citation markers (resolved to the reference list by the
@@ -21,177 +21,11 @@ import { designAssets, getDesignImage } from "./designAssets";
 export const designReferences: CitationReference[] = [
   {
     id: 1,
-    authors: "Gao G, Wang Z, Qu X, Zhang Z.",
+    authors: "Bergmann-Leitner, E. S. et al.",
     title:
-      "Prognostic value of tumor-infiltrating lymphocytes in patients with triple-negative breast cancer: a systematic review and meta-analysis.",
-    journal: "BMC Cancer.",
-    volumeYear: "2020;20:179.",
-    links: [
-      {
-        href: "https://doi.org/10.1186/s12885-020-6668-z",
-        label: "doi:10.1186/s12885-020-6668-z",
-      },
-    ],
-  },
-  {
-    id: 2,
-    authors: "",
-    title:
-      "Individualized mRNA vaccines evoke durable T cell immunity in adjuvant TNBC.",
-    journal: "Nature.",
-    volumeYear: "",
-    links: [
-      {
-        href: "https://doi.org/10.1038/s41586-025-10004-2",
-        label: "doi:10.1038/s41586-025-10004-2",
-      },
-      {
-        href: "https://pubmed.ncbi.nlm.nih.gov/41708868/",
-        label: "PMID: 41708868",
-      },
-    ],
-  },
-  {
-    id: 3,
-    authors: "Jeck WR, Sorrentino JA, Wang K, et al.",
-    title:
-      "Circular RNAs are abundant, conserved, and associated with ALU repeats.",
-    journal: "RNA.",
-    volumeYear: "2013;19(2):141–157.",
-    links: [
-      {
-        href: "https://pubmed.ncbi.nlm.nih.gov/23249763/",
-        label: "PMID: 23249763",
-      },
-    ],
-  },
-  {
-    id: 4,
-    authors:
-      "Enuka Y, Lauriola M, Feldman ME, Sas-Chen A, Ulitsky I, Yarden Y.",
-    title:
-      "Circular RNAs are long-lived and display only minimal early alterations in response to a growth factor.",
-    journal: "Nucleic Acids Res.",
-    volumeYear: "2016;44(3):1370–1383.",
-    links: [
-      {
-        href: "https://pubmed.ncbi.nlm.nih.gov/26657629/",
-        label: "PMID: 26657629",
-      },
-    ],
-  },
-  {
-    id: 5,
-    authors: "Gong Z, Hu W, Zhou C, Guo J, Yang L, Wang B.",
-    title:
-      "Recent advances and perspectives on the development of circular RNA cancer vaccines.",
-    journal: "npj Vaccines.",
-    volumeYear: "2025;10:41.",
-    links: [
-      {
-        href: "https://doi.org/10.1038/s41541-025-01097-x",
-        label: "doi:10.1038/s41541-025-01097-x",
-      },
-    ],
-  },
-  {
-    id: 6,
-    authors: "",
-    title:
-      "Future potential targets of antibody–drug conjugates in breast cancer.",
-    journal: "",
-    volumeYear: "",
-    links: [
-      {
-        href: "https://pmc.ncbi.nlm.nih.gov/articles/PMC10063401/",
-        label: "PMC10063401",
-      },
-    ],
-  },
-  {
-    id: 7,
-    authors: "",
-    title:
-      "Trop2-based antibody–drug conjugates: emerging strategy and progress in triple-negative breast cancer therapy.",
-    journal: "Curr Oncol.",
-    volumeYear: "",
-    links: [
-      {
-        href: "https://doi.org/10.3390/curroncol33020092",
-        label: "doi:10.3390/curroncol33020092",
-      },
-      {
-        href: "https://pubmed.ncbi.nlm.nih.gov/41744856/",
-        label: "PMID: 41744856",
-      },
-    ],
-  },
-  {
-    id: 8,
-    authors: "",
-    title:
-      "TROP2-targeting antibody–drug conjugates in breast cancer and ovarian carcinoma: therapeutic advances and resistance mechanisms.",
-    journal: "",
-    volumeYear: "",
-    links: [
-      {
-        href: "https://pubmed.ncbi.nlm.nih.gov/42040770/",
-        label: "PMID: 42040770",
-      },
-      {
-        href: "https://pmc.ncbi.nlm.nih.gov/articles/PMC13103265/",
-        label: "PMC13103265",
-      },
-    ],
-  },
-  {
-    id: 9,
-    authors: "",
-    title: "IEDB Population Coverage tool.",
-    journal: "",
-    volumeYear: "",
-    links: [
-      {
-        href: "https://tools.iedb.org/population/",
-        label: "https://tools.iedb.org/population/",
-      },
-    ],
-  },
-  {
-    id: 10,
-    authors: "Nielsen M, Lundegaard C, Lund O, Keşmir C.",
-    title:
-      "The role of the proteasome in generating cytotoxic T cell epitopes: insights obtained from improved predictions of proteasomal cleavage.",
-    journal: "Immunogenetics.",
-    volumeYear: "2005;57:33–41.",
-    links: [
-      {
-        href: "https://pubmed.ncbi.nlm.nih.gov/15744535/",
-        label: "PMID: 15744535",
-      },
-    ],
-  },
-  {
-    id: 11,
-    authors: "Kreiter S, Selmi A, Diken M, et al.",
-    title:
-      "Increased antigen presentation efficiency by coupling antigens to MHC class I trafficking signals.",
-    journal: "J Immunol.",
-    volumeYear: "2008;180(1):309–318.",
-    links: [
-      {
-        href: "https://pubmed.ncbi.nlm.nih.gov/18097032/",
-        label: "PMID: 18097032",
-      },
-    ],
-  },
-  {
-    id: 12,
-    authors: "Bergmann-Leitner ES, Duncan EH, Leitner WW, et al.",
-    title:
-      "C3d-defined complement receptor-binding peptide p28 conjugated to circumsporozoite protein provides protection against *Plasmodium berghei*.",
-    journal: "Vaccine.",
-    volumeYear: "2007;25(45):7732–7736.",
+      "C3d-defined complement receptor-binding peptide p28 conjugated to circumsporozoite protein provides protection against Plasmodium berghei.",
+    journal: "Vaccine",
+    volumeYear: "25(45), pp. 7732–7736 (2007).",
     links: [
       {
         href: "https://pubmed.ncbi.nlm.nih.gov/17931754/",
@@ -200,25 +34,80 @@ export const designReferences: CitationReference[] = [
     ],
   },
   {
-    id: 13,
-    authors: "",
+    id: 2,
+    authors: "Corti, C. et al.",
     title:
-      "In silico design and in vitro validation of a multi-epitope peptide vaccine targeting triple-negative breast cancer.",
-    journal: "Front Oncol.",
-    volumeYear: "2025;15:1611991.",
+      "Future potential targets of antibody-drug conjugates in breast cancer.",
+    journal: "The Breast",
+    volumeYear: "69, pp. 312–322 (2023).",
     links: [
       {
-        href: "https://pubmed.ncbi.nlm.nih.gov/40626008/",
-        label: "PMID: 40626008",
+        href: "https://doi.org/10.1016/j.breast.2023.03.007",
+        label: "doi:10.1016/j.breast.2023.03.007",
       },
     ],
   },
   {
-    id: 14,
-    authors: "Hou X, Zaks T, Langer R, Dong Y.",
+    id: 3,
+    authors: "Enuka, Y. et al.",
+    title:
+      "Circular RNAs are long-lived and display only minimal early alterations in response to a growth factor.",
+    journal: "Nucleic Acids Research",
+    volumeYear: "44(3), pp. 1370–1383 (2016).",
+    links: [
+      {
+        href: "https://pubmed.ncbi.nlm.nih.gov/26657629/",
+        label: "PMID: 26657629",
+      },
+    ],
+  },
+  {
+    id: 4,
+    authors: "Eroles, P., Dawid de Vera, M. T. and Lago, V.",
+    title:
+      "TROP2-targeting antibody–drug conjugates in breast cancer and ovarian carcinoma: therapeutic advances and resistance mechanisms.",
+    journal: "Cancer Drug Resistance",
+    volumeYear: "9, 6 (2026).",
+    links: [
+      {
+        href: "https://doi.org/10.20517/cdr.2025.195",
+        label: "doi:10.20517/cdr.2025.195",
+      },
+    ],
+  },
+  {
+    id: 5,
+    authors: "Gao, G. et al.",
+    title:
+      "Prognostic value of tumor-infiltrating lymphocytes in patients with triple-negative breast cancer: a systematic review and meta-analysis.",
+    journal: "BMC Cancer",
+    volumeYear: "20, 179 (2020).",
+    links: [
+      {
+        href: "https://doi.org/10.1186/s12885-020-6668-z",
+        label: "doi:10.1186/s12885-020-6668-z",
+      },
+    ],
+  },
+  {
+    id: 6,
+    authors: "Gong, Z. et al.",
+    title: "Recent advances and perspectives on the development of circular RNA cancer vaccines.",
+    journal: "npj Vaccines",
+    volumeYear: "10, 41 (2025).",
+    links: [
+      {
+        href: "https://doi.org/10.1038/s41541-025-01097-x",
+        label: "doi:10.1038/s41541-025-01097-x",
+      },
+    ],
+  },
+  {
+    id: 7,
+    authors: "Hou, X. et al.",
     title: "Lipid nanoparticles for mRNA delivery.",
-    journal: "Nat Rev Mater.",
-    volumeYear: "2021;6(12):1078–1094.",
+    journal: "Nature Reviews Materials",
+    volumeYear: "6(12), pp. 1078–1094 (2021).",
     links: [
       {
         href: "https://pubmed.ncbi.nlm.nih.gov/34394960/",
@@ -227,16 +116,99 @@ export const designReferences: CitationReference[] = [
     ],
   },
   {
-    id: 15,
-    authors: "Percie du Sert N, Hurst V, Ahluwalia A, et al.",
+    id: 8,
+    authors: "Jeck, W. R. et al.",
     title:
-      "The ARRIVE guidelines 2.0: updated guidelines for reporting animal research.",
-    journal: "PLoS Biol.",
-    volumeYear: "2020;18(7):e3000410.",
+      "Circular RNAs are abundant, conserved, and associated with ALU repeats.",
+    journal: "RNA",
+    volumeYear: "19(2), pp. 141–157 (2013).",
     links: [
       {
-        href: "https://pubmed.ncbi.nlm.nih.gov/32663219/",
-        label: "PMID: 32663219",
+        href: "https://pubmed.ncbi.nlm.nih.gov/23249763/",
+        label: "PMID: 23249763",
+      },
+    ],
+  },
+  {
+    id: 9,
+    authors: "Kreiter, S. et al.",
+    title:
+      "Increased antigen presentation efficiency by coupling antigens to MHC class I trafficking signals.",
+    journal: "The Journal of Immunology",
+    volumeYear: "180(1), pp. 309–318 (2008).",
+    links: [
+      {
+        href: "https://pubmed.ncbi.nlm.nih.gov/18097032/",
+        label: "PMID: 18097032",
+      },
+    ],
+  },
+  {
+    id: 10,
+    authors: "Li, T. et al.",
+    title:
+      "Trop2-based antibody–drug conjugates: emerging strategy and progress in triple-negative breast cancer therapy.",
+    journal: "Current Oncology",
+    volumeYear: "33(2), 92 (2026).",
+    links: [
+      {
+        href: "https://doi.org/10.3390/curroncol33020092",
+        label: "doi:10.3390/curroncol33020092",
+      },
+    ],
+  },
+  {
+    id: 11,
+    authors: "Nielsen, M. et al.",
+    title:
+      "The role of the proteasome in generating cytotoxic T cell epitopes: insights obtained from improved predictions of proteasomal cleavage.",
+    journal: "Immunogenetics",
+    volumeYear: "57(1–2), pp. 33–41 (2005).",
+    links: [
+      {
+        href: "https://pubmed.ncbi.nlm.nih.gov/15744535/",
+        label: "PMID: 15744535",
+      },
+    ],
+  },
+  {
+    id: 12,
+    authors: "Percie du Sert, N. et al.",
+    title:
+      "The ARRIVE guidelines 2.0: updated guidelines for reporting animal research.",
+    journal: "PLoS Biology",
+    volumeYear: "18(7), e3000410 (2020).",
+    links: [
+      {
+        href: "https://doi.org/10.1371/journal.pbio.3000410",
+        label: "doi:10.1371/journal.pbio.3000410",
+      },
+    ],
+  },
+  {
+    id: 13,
+    authors: "Sahin, U. et al.",
+    title: "Individualized mRNA vaccines evoke durable T cell immunity in adjuvant TNBC.",
+    journal: "Nature",
+    volumeYear: "651(8107), pp. 1088–1096 (2026).",
+    links: [
+      {
+        href: "https://doi.org/10.1038/s41586-025-10004-2",
+        label: "doi:10.1038/s41586-025-10004-2",
+      },
+    ],
+  },
+  {
+    id: 14,
+    authors: "Zhou, P. et al.",
+    title:
+      "In silico design and in vitro validation of a multi-epitope peptide vaccine targeting triple-negative breast cancer.",
+    journal: "Frontiers in Oncology",
+    volumeYear: "15, 1611991 (2025).",
+    links: [
+      {
+        href: "https://doi.org/10.3389/fonc.2025.1611991",
+        label: "doi:10.3389/fonc.2025.1611991",
       },
     ],
   },
@@ -296,7 +268,7 @@ export const designPage: WikiPageContent = {
         {
           type: "prose",
           paragraphs: [
-            "Triple-negative breast cancer lacks the oestrogen receptor, the progesterone receptor, and HER2, so the three targeted therapies that transformed outcomes in other breast cancers have nothing to bind to. Chemotherapy remains the backbone of treatment; relapse is early, and the options after relapse are thin. What TNBC does have is immune visibility: tumour-infiltrating lymphocyte density is one of the few reproducible favourable prognostic markers in the disease[1], suggesting that T cells already find these tumours and that giving them a target is a reasonable approach.",
+            "Triple-negative breast cancer (TNBC) lacks the oestrogen receptor, the progesterone receptor, and HER2, so the three targeted therapies that transformed outcomes in other breast cancers have nothing to bind to. Chemotherapy remains the backbone of treatment; relapse is early, and the options after relapse are thin. What TNBC does have is immune visibility: tumour-infiltrating lymphocyte density is one of the few reproducible favourable prognostic markers in the disease[5], suggesting that T cells already find these tumours and that giving them a target is a reasonable approach.",
             "CirCure is our attempt at that target. It is a multi-epitope circular RNA (circRNA) vaccine platform that runs as a single chain from bench to tumour. A plasmid, pCirCure-circMEV, is transcribed in vitro by T7 polymerase; a self-splicing intron closes the transcript into a covalently closed circle; the circle is packaged in a lipid nanoparticle and injected subcutaneously. Dendritic cells take up the particle and translate the circRNA, display the encoded peptides on MHC class I, and prime CD8⁺ T cells that go on to kill TNBC cells.",
             "We built and tested the platform in two rounds. We screened thirteen single-epitope constructs against each other in human HLA-A*02:01 dendritic-cell and T-cell cultures, and assembled the eight epitopes that came through into one construct, which we carried into a TROP2-positive mouse model of TNBC.",
             "How each quantity was defined, controlled and calibrated, including the pre-registered design of the animal study, is on [Measurement](/measurement). Sequences and part documentation are on [Parts](https://registry.igem.org/parts); the smaller engineering cycles run on individual experimental details are on [Engineering](/engineering).",
@@ -322,8 +294,8 @@ export const designPage: WikiPageContent = {
         {
           type: "prose",
           paragraphs: [
-            "The instruction has to be carried by some molecule, and linear mRNA is the obvious chassis for a nucleic-acid cancer vaccine. It is clinically validated, and an individualised mRNA vaccine has been shown to evoke durable T-cell immunity in adjuvant TNBC[2]. We chose circRNA instead, for three reasons that matter specifically to a therapeutic vaccine.",
-            "The first is stability. A linear mRNA has free 5′ and 3′ ends, and that is where exonucleases begin. A covalently closed circle has neither, and circRNAs are correspondingly long-lived in cells[3][4]. Longer expression per molecule delivered means less RNA per dose and fewer doses, so less carrier and less total exposure. We did not take the property from the literature and leave it there; we measured it on the vaccine batch itself.",
+            "The instruction has to be carried by some molecule, and linear mRNA is the obvious chassis for a nucleic-acid cancer vaccine. It is clinically validated, and an individualised mRNA vaccine has been shown to evoke durable T-cell immunity in adjuvant TNBC[13]. We chose circRNA instead, for three reasons that matter specifically to a therapeutic vaccine.",
+            "The first is stability. A linear mRNA has free 5′ and 3′ ends, and that is where exonucleases begin. A covalently closed circle has neither, and circRNAs are correspondingly long-lived in cells[8][3]. Longer expression per molecule delivered means less RNA per dose and fewer doses, so less carrier and less total exposure. We did not take the property from the literature and leave it there; we measured it on the vaccine batch itself.",
           ],
         },
         {
@@ -347,7 +319,7 @@ export const designPage: WikiPageContent = {
         {
           type: "prose",
           paragraphs: [
-            "The third is that the circle is its own adjuvant. Unmodified circRNA is sensed in the cytoplasm by RIG-I and MDA5, which matures the dendritic cell and supplies the innate danger signal a therapeutic vaccine needs. circRNA cancer vaccines exploit this actively[5], and it was one of our main reasons for choosing the chassis: the adjuvant travels with the molecule, and the innate stimulus lands in the same cell that presents the antigen. It also fixes how the vaccine has to be read. Since the backbone contributes to the response on its own, the contribution of the epitopes shows up only against an empty-vector circRNA arm that carries the complete backbone and adjuvant with no epitope encoded. Every functional comparison in the project uses that control.",
+            "The third is that the circle is its own adjuvant. Unmodified circRNA is sensed in the cytoplasm by RIG-I and MDA5, which matures the dendritic cell and supplies the innate danger signal a therapeutic vaccine needs. circRNA cancer vaccines exploit this actively[6], and it was one of our main reasons for choosing the chassis: the adjuvant travels with the molecule, and the innate stimulus lands in the same cell that presents the antigen. It also fixes how the vaccine has to be read. Since the backbone contributes to the response on its own, the contribution of the epitopes shows up only against an empty-vector circRNA arm that carries the complete backbone and adjuvant with no epitope encoded. Every functional comparison in the project uses that control.",
           ],
         },
         {
@@ -370,8 +342,8 @@ export const designPage: WikiPageContent = {
         {
           type: "prose",
           paragraphs: [
-            "With the chassis settled, the question is what to encode in it. A therapeutic cancer vaccine lives or dies on the antigen, and a student team has no access to patient tumour tissue, no immunohistochemistry series across normal organs, and no way to find out for itself whether a given surface protein is really enriched on TNBC. So we looked for antigens where somebody else had already done that work, and the antibody–drug conjugate field has done it more thoroughly than anyone.",
-            "An approved or clinical-stage ADC against a target establishes three things we could not establish ourselves. The antigen is on the tumour surface in real patients at a density high enough for a binder to find, which is a stronger statement than any cell-line expression dataset. Its expression across normal tissue has already been characterised and judged tolerable enough that a cytotoxic payload can be delivered systemically against it, so the tumour-versus-normal differential has been tested in people rather than inferred. And the target carries a developed body of clinical expression data and reagents, so anyone who picks up the platform later has something to compare against[6].",
+            "With the chassis settled, the question is what to encode in it. A therapeutic cancer vaccine lives or dies on the antigen, and a student team has no access to patient tumour tissue, no immunohistochemistry series across normal organs, and no way to find out for itself whether a given surface protein is really enriched on TNBC. So we looked for antigens where somebody else had already done that work, and the antibody–drug conjugate（ADC）field has done it more thoroughly than anyone else.",
+            "An approved or clinical-stage ADC against a target establishes three things we could not establish ourselves. The antigen is on the tumour surface in real patients at a density high enough for a binder to find, which is a stronger statement than any cell-line expression dataset. Its expression across normal tissue has already been characterised and judged tolerable enough that a cytotoxic payload can be delivered systemically against it, so the tumour-versus-normal differential has been tested in people rather than inferred. And the target carries a developed body of clinical expression data and reagents, so anyone who picks up the platform later has something to compare against[2].",
             "A vaccine then attacks the same antigen by a different route. An ADC has to bind the folded ectodomain from outside the cell, so only surface-accessible epitopes are available to it. A vaccine attacks peptides presented on MHC class I, which are processed from the whole protein inside the cell, so buried and intracellular regions are in play as well. The effector is a cytotoxic T cell rather than a delivered drug, so there is no payload to distribute and no linker chemistry to tune.",
             "On that basis we set four criteria. A candidate antigen had to be present on the TNBC cell surface; validated by an approved or clinical-stage ADC; limited in expression in essential normal tissue; and mechanistically involved in the malignant phenotype, so that losing the antigen under immune pressure would cost the tumour fitness. Four antigens cleared all four.",
           ],
@@ -379,10 +351,10 @@ export const designPage: WikiPageContent = {
         {
           type: "prose",
           paragraphs: [
-            "**TROP2** (TACSTD2) is a transmembrane calcium-signal transducer that drives proliferation, migration and invasion, and high expression carries a poor prognosis in TNBC. It is the target of an approved ADC in metastatic TNBC, which makes it the most extensively validated of the four and the reason it later became our representative antigen in vivo[7].",
-            "**Nectin-4** (PVRL4) is an adhesion molecule of the nectin family that supports adhesion-dependent growth and metastasis. It is largely absent from adult normal tissue and re-expressed in carcinoma, which gives it an unusually wide therapeutic window. It is an approved ADC target in urothelial carcinoma and under investigation in breast cancer[6].",
-            "**B7-H4** (VTCN1) is a B7-family immune checkpoint ligand that suppresses T-cell proliferation and cytokine production and contributes to the immunosuppressive TNBC microenvironment. Both ADC and checkpoint programmes against it are in clinical development[6]. Of the four it is the one doing immunological harm by itself, so a CTL response against B7-H4-presenting cells should preferentially remove the cells that are suppressing that response. That is our reasoning; no experiment in this project tests it.",
-            "**LIV-1** (SLC39A6 / ZIP6) is a zinc transporter that drives epithelial–mesenchymal transition and associates with metastatic spread. It is a clinical-stage ADC target in TNBC[6].",
+            "**TROP2** (TACSTD2) is a transmembrane calcium-signal transducer that drives proliferation, migration and invasion, and high expression carries a poor prognosis in TNBC. It is the target of an approved ADC in metastatic TNBC, which makes it the most extensively validated of the four and the reason it later became our representative antigen in vivo[10].",
+            "**Nectin-4** (PVRL4) is an adhesion molecule of the nectin family that supports adhesion-dependent growth and metastasis. It is largely absent from adult normal tissue and re-expressed in carcinoma, which gives it an unusually wide therapeutic window. It is an approved ADC target in urothelial carcinoma and under investigation in breast cancer[2].",
+            "**B7-H4** (VTCN1) is a B7-family immune checkpoint ligand that suppresses T-cell proliferation and cytokine production and contributes to the immunosuppressive TNBC microenvironment. Both ADC and checkpoint programmes against it are in clinical development[2]. Of the four it is the one doing immunological harm by itself, so a CTL response against B7-H4-presenting cells should preferentially remove the cells that are suppressing that response. That is our reasoning; no experiment in this project tests it.",
+            "**LIV-1** (SLC39A6 / ZIP6) is a zinc transporter that drives epithelial–mesenchymal transition and associates with metastatic spread. It is a clinical-stage ADC target in TNBC[2].",
           ],
         },
         {
@@ -394,8 +366,8 @@ export const designPage: WikiPageContent = {
         {
           type: "prose",
           paragraphs: [
-            "Carrying all four rather than the best one hedges against antigenic heterogeneity: expression of any single target varies between cells within one tumour, and sustained pressure on one antigen selects for antigen-loss escape[8]. Each antigen is represented in the final cassette by exactly two epitopes, a ceiling set by B7-H4, which entered the wet-lab screen with only two validated candidates.",
-            "Covering four antigens does nothing for population coverage. Every epitope in CirCure is HLA-A*02:01-restricted, so the fraction of patients the current design could serve is bounded by that single allele however many antigens the cassette carries[9]. The restriction did buy us something we relied on throughout: the entire in vitro programme could run in commercially sourced, HLA-A*02:01-typed human mononuclear cells, so no blood was drawn from volunteers and every immunological readout came from human cells of the correct type.",
+            "Carrying all four rather than the best one hedges against antigenic heterogeneity: expression of any single target varies between cells within one tumour, and sustained pressure on one antigen selects for antigen-loss escape[4]. Each antigen is represented in the final cassette by exactly two epitopes, a ceiling set by B7-H4, which entered the wet-lab screen with only two validated candidates.",
+            "Covering four antigens does nothing for population coverage. Every epitope in CirCure is HLA-A*02:01-restricted, so the fraction of patients the current design could serve is bounded by that single allele however many antigens the cassette carries. The restriction did buy us something we relied on throughout: the entire in vitro programme could run in commercially sourced, HLA-A*02:01-typed human mononuclear cells, so no blood was drawn from volunteers and every immunological readout came from human cells of the correct type.",
           ],
         },
       ],
@@ -414,7 +386,7 @@ export const designPage: WikiPageContent = {
           paragraphs: [
             "Having four antigens does not tell us what to put in the circle. The cassette encodes short peptides rather than the four proteins, for three reasons.",
             "A CD8⁺ T cell never sees a protein. It sees an eight- to ten-residue peptide held in an MHC class I groove, and only a small fraction of any protein's sequence is processed and loaded that way. Most of a full-length antigen would therefore contribute nothing to the response we are trying to raise. Size is the second reason: four full-length antigens come to close to two thousand codons, roughly six kilobases of coding sequence, against a whole plasmid of 5267 bp and a circularisation chemistry whose efficiency falls as the precursor grows. The nine-epitope cassette occupies about 340 bp. The third reason is what these particular proteins do. Expressing intact B7-H4 in a dendritic cell would put a functional checkpoint ligand on the surface of the very cell that is trying to prime the T cell, and TROP2 and LIV-1 are an active signalling receptor and an active transporter. Encoding epitopes alone avoids handing the dendritic cell a working copy of any of them.",
-            "Which peptides, then. Candidate 9-mers from all four antigens were scored for MHC class I binding with NetMHCpan 4.1 through the IEDB NextGen pipeline, restricted to HLA-A*02:01. Predicted binders were passed through VaxiJen at a threshold of 0.5 to remove peptides unlikely to be antigenic. Binding to MHC-I is necessary but not sufficient, since the peptide must also be liberated from the polyprotein by the proteasome, so the ordering of fragments within the cassette was guided by NetChop cleavage prediction[10], placing epitope boundaries where the proteasome is predicted to cut. What survived a structural and redundancy filter was a buildable candidate set of thirteen constructs: three from TROP2, two from B7-H4, three from Nectin-4 and five from LIV-1. That asymmetry is what the filters left, and it later set the per-antigen ceiling of two.",
+            "Which peptides, then. Candidate 9-mers from all four antigens were scored for MHC class I binding with NetMHCpan 4.1 through the IEDB NextGen pipeline, restricted to HLA-A*02:01. Predicted binders were passed through VaxiJen at a threshold of 0.5 to remove peptides unlikely to be antigenic. Binding to MHC-I is necessary but not sufficient, since the peptide must also be liberated from the polyprotein by the proteasome, so the ordering of fragments within the cassette was guided by NetChop cleavage prediction[11], placing epitope boundaries where the proteasome is predicted to cut. What survived a structural and redundancy filter was a buildable candidate set of thirteen constructs: three from TROP2, two from B7-H4, three from Nectin-4 and five from LIV-1. That asymmetry is what the filters left, and it later set the per-antigen ceiling of two.",
             "The fifth stage is the bench. All thirteen constructs were built into one shared backbone, verified identically, and compared head to head by IFN-γ ELISpot in a human dendritic-cell and T-cell co-culture. Across thirteen sequences that had all cleared the computational filter, the response spanned 47 to 271 spot-forming cells, a 5.8-fold range that the prediction scores gave no hint of. Without the wet-lab screen, all thirteen would have entered the vaccine at equal weight. How that screen was run, and what it changed, is section 7.",
           ],
         },
@@ -439,7 +411,7 @@ export const designPage: WikiPageContent = {
           type: "prose",
           paragraphs: [
             "Everything the construct does, it does inside a dendritic cell. After a subcutaneous dose, given at the base of the tail in our mouse study, the circRNA-LNP drains through the lymphatics into local lymphoid tissue, where a dendritic cell internalises the particle and endosomal escape releases the circRNA into the cytoplasm. Translation begins without a cap: synIRES-RC25, a synthetic internal ribosome entry site derived from the human rhinovirus 3 5′ UTR and carrying an eIF4G-recruiting aptamer, places the ribosome directly on the message. What the ribosome produces is a single polyprotein. At its N-terminus sits a tPA signal and pro sequence, which directs the nascent chain into the secretory and processing pathway. Then comes the epitope cassette: eight tandem fragments, separated by flexible linkers, carrying the two highest-scoring epitopes of each of the four antigens. Downstream of the cassette lie a GS linker, four tandem copies of mC3dP28, the MITD signal, and a FLAG tag.",
-            "Two of those elements convert expression into presentation. MITD is an MHC class I trafficking signal, and fusing an antigen to it routes the translation product through the class I pathway, raising the efficiency with which its peptides reach the cell surface[11]. mC3dP28 is a complement-C3d-derived p28 peptide that acts as a molecular adjuvant when coupled to an antigen[12]; we carry four tandem copies because C3d adjuvanticity scales with copy number. Acting alongside them is the circRNA backbone itself, sensed intracellularly as described in section 1. Between them, the adjuvant module and the backbone drive the dendritic cell to mature and upregulate CD80 and CD86, which is signal 2, the signal that decides whether antigen presentation produces immunity or tolerance.",
+            "Two of those elements convert expression into presentation. MITD is an MHC class I trafficking signal, and fusing an antigen to it routes the translation product through the class I pathway, raising the efficiency with which its peptides reach the cell surface[9]. mC3dP28 is a complement-C3d-derived p28 peptide that acts as a molecular adjuvant when coupled to an antigen[1]; we carry four tandem copies because C3d adjuvanticity scales with copy number. Acting alongside them is the circRNA backbone itself, sensed intracellularly as described in section 1. Between them, the adjuvant module and the backbone drive the dendritic cell to mature and upregulate CD80 and CD86, which is signal 2, the signal that decides whether antigen presentation produces immunity or tolerance.",
             "The mature, antigen-loaded dendritic cell then meets a CD8⁺ T cell. Peptide–MHC-I engagement of the T-cell receptor provides signal 1; CD80 and CD86 engaging CD28 provide signal 2. The T cell activates, as read by CD69 within hours; it expands; and it commits to an effector-memory phenotype, CD45RO⁺CCR7⁻, which is what separates a response that persists from one that fades with the dose. Those primed cytotoxic T cells then recognise the same peptide–MHC-I complexes displayed on TNBC cells and kill through the perforin and granzyme axis, releasing IFN-γ and Granzyme B as they do so.",
           ],
         },
@@ -484,7 +456,7 @@ export const designPage: WikiPageContent = {
         {
           type: "prose",
           paragraphs: [
-            "A finished circle still has to reach a dendritic cell. circRNA is large and highly charged and does not cross the plasma membrane, so it needs a carrier. In vitro we use electroporation, which loads dendritic cells without a carrier contributing to the immunological readout. In the animal we use lipid nanoparticles: the clinically validated route for RNA vaccines[14], tolerant of repeated subcutaneous dosing, and indifferent to whether the cargo is linear or circular.",
+            "A finished circle still has to reach a dendritic cell. circRNA is large and highly charged and does not cross the plasma membrane, so it needs a carrier. In vitro we use electroporation, which loads dendritic cells without a carrier contributing to the immunological readout. In the animal we use lipid nanoparticles: the clinically validated route for RNA vaccines[7], tolerant of repeated subcutaneous dosing, and indifferent to whether the cargo is linear or circular.",
             "Our LNP is commercially sourced. We specified a particle size of about 120 nm. After subcutaneous injection, particles in roughly the 20–200 nm range drain through the lymphatics to the draining node instead of remaining at the injection site, and particles toward the upper end of that window are efficiently internalised by dendritic cells, which is where the chain in section 4 requires the cargo to arrive. Dose is expressed in circRNA mass, 10 µg per injection, since the circRNA is the active ingredient.",
             "The lipid composition is the supplier's proprietary formulation and was not disclosed to us, and we hold no vendor figures for polydispersity, zeta potential or encapsulation efficiency; the equipment to measure them ourselves was outside what this project could access. Three things limit what that gap can do to our conclusions. The tolerated dose window was measured on our own material, as a CCK-8 dose–viability series on dendritic cells across 0 to 400 ng per well. A single supplier and a single batch were used throughout, so the formulation cannot differ between groups. And the in vivo empty-vector arm receives identical particles carrying non-coding cargo, so any effect of the carrier appears in that arm and is subtracted by design. With access to particle characterisation we would run loaded and empty particles on the same plate, which is what separates carrier toxicity from innate activation by the cargo. That experiment is in our Outlook.",
           ],
@@ -566,7 +538,7 @@ export const designPage: WikiPageContent = {
           paragraphs: [
             "Both cycles ran in culture, so the last question is whether the construct restrains a tumour in an animal. That needs a tumour carrying the antigen the vaccine targets, and wild-type 4T1 barely expresses TROP2. We therefore built a stable TROP2-overexpressing 4T1 line with a commercially produced second-generation lentiviral preparation carrying a CopGFP reporter and puromycin resistance, and validated it through four sequential checkpoints, each with its own readout: GFP microscopy for transduction, flow sorting through a three-step gate followed by puromycin selection for enrichment, RT-PCR for transcript, and flow cytometry for surface TROP2. The first two steps use GFP as a surrogate for successful integration; the last two measure TROP2 itself, which is what a T cell can see, and reporting all four makes the chain from virus to validated tool line auditable end to end.",
             "That line went into immunocompetent BALB/c mice. The host keeps the complete adaptive immune system the vaccine's mechanism depends on, and it matches the clinical population for a disease of women modelled with a cell line of female origin. Three arms (PBS vehicle, empty-vector circRNA-LNP and Combined circRNA-LNP) received five weekly subcutaneous doses at the tail base from the day of tumour inoculation, with tumour volume followed by calliper to a D35 endpoint and tumour and spleen taken for mechanism readouts.",
-            "The design of that study was built in the **NC3Rs Experimental Design Assistant** before any animal was ordered, producing an Experimental Design Report conforming to the ARRIVE 2.0 Essential 10[15]. Sample size, the minimum biologically important effect, randomisation, blinding, inclusion and exclusion criteria, the primary outcome and the full statistical plan including the two pre-specified pairwise contrasts were all fixed in advance. The report is embedded below, and the reasoning behind each entry is on [Measurement](/measurement).",
+            "The design of that study was built in the **NC3Rs Experimental Design Assistant** before any animal was ordered, producing an Experimental Design Report conforming to the ARRIVE 2.0 Essential 10[12]. Sample size, the minimum biologically important effect, randomisation, blinding, inclusion and exclusion criteria, the primary outcome and the full statistical plan including the two pre-specified pairwise contrasts were all fixed in advance. The report is embedded below, and the reasoning behind each entry is on [Measurement](/measurement).",
           ],
         },
         {
@@ -598,7 +570,7 @@ export const designPage: WikiPageContent = {
             "**Validating the other three antigens in vivo.** The tumour model overexpresses TROP2 alone, so the B7-H4, Nectin-4 and LIV-1 epitopes had no target in it. TROP2 was chosen deliberately as the representative antigen, being the strongest performer in the primary screen. Extending the work means building 4T1 lines overexpressing each of the remaining three by the same lentiviral route, and then a line co-expressing all four, which would test in one model whether the epitopes of the cassette act together.",
             "**Taking safety into an organism.** The safety work in this project was done entirely in cell culture, and what it establishes is specificity and a working dose window. The study that would support a tolerability claim is a repeat-dose toxicology study in both sexes at the efficacy dose and a deliberate multiple of it, on the dosing schedule actually proposed, with a recovery cohort, clinical chemistry and haematology, histopathology of the organs where the target antigens are expressed at low level, and biodistribution of both the circRNA and a labelled carrier. It pairs naturally with the transgenic model above: the same animals can carry the specificity readouts and the toxicology endpoints, which is also the arrangement the 3Rs favour.",
             "**Characterising the particle.** Our LNP is commercially sourced and its composition is proprietary, so we can attribute no effect to any specific lipid. With access to dynamic light scattering, zeta potential measurement and a RiboGreen encapsulation assay, we would characterise each batch and require a certificate of analysis for it. The single experiment that would add most is running loaded and empty particles on the same plate across the same dose series, which separates carrier toxicity from innate activation by the cargo.",
-            "**Widening the population the design can serve.** Adding antigens broadens the response within a patient and leaves the fraction of patients served unchanged, since that is bounded by HLA-A*02:01[9]. Covering further HLA supertypes means returning to the prediction stage and building allele-matched cassettes. The platform is suited to it: the backbone, the adjuvant module and the trafficking elements stay as they are, and only the antigen zone of Figure 6 is rebuilt.",
+            "**Widening the population the design can serve.** Adding antigens broadens the response within a patient and leaves the fraction of patients served unchanged, since that is bounded by HLA-A*02:01. Covering further HLA supertypes means returning to the prediction stage and building allele-matched cassettes. The platform is suited to it: the backbone, the adjuvant module and the trafficking elements stay as they are, and only the antigen zone of Figure 6 is rebuilt.",
           ],
         },
       ],

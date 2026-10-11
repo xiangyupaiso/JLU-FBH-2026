@@ -160,17 +160,172 @@
   box-shadow: 0 16px 38px color-mix(in srgb, var(--doc-deep) 22%, transparent);
 }
 
+.wiki-page .wiki-document .wiki-document__description,
+.wiki-page .wiki-document .wiki-document__actions,
+.wiki-page .wiki-document .wiki-document__fallback {
+  margin: 0 4px 12px;
+  color: color-mix(in srgb, var(--doc-on) 88%, transparent);
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.wiki-page .wiki-document .wiki-document__actions {
+  margin-bottom: 14px;
+}
+
+.wiki-page .wiki-document .wiki-document__actions a {
+  color: var(--doc-on);
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.wiki-page .wiki-document .wiki-document__fallback {
+  margin: 12px 4px 0;
+}
+
 .wiki-page .wiki-document .wiki-document__panel[hidden] {
   display: none;
 }
 
-.wiki-page .wiki-document .wiki-document__frame {
-  display: block;
-  width: 100%;
-  height: clamp(420px, 82vh, 920px);
-  border: 0;
+.wiki-page .wiki-document .wiki-document__reader {
+  overflow: hidden;
   border-radius: 8px;
+  background: #36393d;
+}
+
+.wiki-page .wiki-document .wiki-document__toolbar {
+  position: sticky;
+  z-index: 2;
+  top: 0;
+  display: flex;
+  min-height: 44px;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  background: #292c30;
+  color: #fff;
+  font-size: 13px;
+}
+
+.wiki-page .wiki-document .wiki-document__toolbar button {
+  display: grid;
+  width: 30px;
+  height: 30px;
+  place-items: center;
+  border: 0;
+  border-radius: 5px;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  font-size: 20px;
+  line-height: 1;
+}
+
+.wiki-page .wiki-document .wiki-document__toolbar button:hover:not(:disabled) {
+  background: #ffffff20;
+}
+
+.wiki-page .wiki-document .wiki-document__toolbar button:disabled {
+  opacity: 0.42;
+}
+
+.wiki-page .wiki-document .wiki-document__page-number {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  margin: 0;
+  color: #fff;
+  white-space: nowrap;
+}
+
+.wiki-page .wiki-document .wiki-document__page-number input {
+  width: 44px;
+  height: 28px;
+  border: 1px solid #ffffff3d;
+  border-radius: 4px;
+  background: #1d2023;
+  color: #fff;
+  font: inherit;
+  text-align: center;
+}
+
+.wiki-page .wiki-document .wiki-document__toolbar-spacer {
+  flex: 1;
+}
+
+.wiki-page .wiki-document .wiki-document__zoom-value {
+  min-width: 42px;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+
+.wiki-page .wiki-document .wiki-document__pages {
+  display: flex;
+  max-height: clamp(320px, 76vh, 820px);
+  flex-direction: column;
+  gap: 14px;
+  overflow: auto;
+  padding: 16px;
+  overscroll-behavior: contain;
+  scrollbar-color: #87909a #292c30;
+}
+
+.wiki-page .wiki-document .wiki-document__page {
+  display: flex;
+  flex: 0 0 auto;
+  justify-content: center;
+  scroll-margin-block: 12px;
+}
+
+.wiki-page .wiki-document .wiki-document__page-content {
+  position: relative;
+  flex: 0 0 auto;
   background: #fff;
+  box-shadow: 0 2px 12px #0005;
+}
+
+.wiki-page .wiki-document .wiki-document__page-content canvas {
+  display: block;
+}
+
+.wiki-page .wiki-document .wiki-document__text-layer {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  overflow: hidden;
+  color-scheme: only light;
+  line-height: 1;
+  letter-spacing: normal;
+  word-spacing: normal;
+  text-align: initial;
+  transform-origin: 0 0;
+  caret-color: #111;
+  --total-scale-factor: 1;
+  --min-font-size: 1;
+  --min-font-size-inv: 1;
+  --text-scale-factor: 1;
+}
+
+.wiki-page .wiki-document .wiki-document__text-layer :is(span, br) {
+  position: absolute;
+  color: transparent;
+  cursor: text;
+  white-space: pre;
+  transform-origin: 0 0;
+  user-select: text;
+}
+
+.wiki-page .wiki-document .wiki-document__text-layer ::selection {
+  background: color-mix(in srgb, #5598f0 42%, transparent);
+  color: transparent;
+}
+
+.wiki-page .wiki-document .wiki-document__load-state {
+  margin: 0;
+  padding: 28px 16px;
+  color: #fff;
+  text-align: center;
 }
 
 /* 6. Narrow panels --------------------------------------------------------- */
@@ -190,8 +345,9 @@
     padding: 8px;
   }
 
-  .wiki-page .wiki-document .wiki-document__frame {
-    height: clamp(320px, 72vh, 640px);
+  .wiki-page .wiki-document .wiki-document__pages {
+    max-height: 72vh;
+    padding: 10px;
   }
 }
 

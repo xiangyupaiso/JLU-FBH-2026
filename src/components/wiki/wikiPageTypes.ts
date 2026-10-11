@@ -74,7 +74,15 @@ export interface WikiReferenceEntry {
  */
 export type WikiContentBlock =
   | { type: "prose"; paragraphs: string[] }
-  | { type: "figure"; src: string; alt: string; caption?: string }
+  | { type: "code"; language?: string; code: string }
+  | {
+      type: "figure";
+      src: string;
+      alt: string;
+      caption?: string;
+      /** Manuscript-provided figure label, including subfigure suffixes such as 4A. */
+      figureLabel?: string;
+    }
   | {
       type: "image-placeholder";
       filename: string;
@@ -122,6 +130,7 @@ export type WikiContentBlock =
       index: string;
       kicker?: string;
       title: string;
+      anchorIds?: string[];
     }
   | { type: "feature"; key: string }
   | { type: "chapter-link"; target: string; label: string }
@@ -198,6 +207,7 @@ export interface WikiSection {
   layout?: WikiSectionLayout;
   items?: WikiItem[];
   blocks?: WikiContentBlock[];
+  anchorIds?: string[];
   note?: {
     label: string;
     body: string;

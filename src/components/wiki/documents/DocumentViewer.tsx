@@ -1,4 +1,5 @@
 import { useId, useState } from "react";
+import { PdfDocumentSurface } from "./PdfDocumentSurface";
 import "../../../styles/wiki-documents.css";
 
 /**
@@ -6,9 +7,8 @@ import "../../../styles/wiki-documents.css";
  *
  * Implements the housing convention's §4.6 pattern: a document displayed in the
  * body as a card that is **collapsed until the reader asks for it**. Collapsed is
- * the default because the frame it opens is a browser PDF plugin — a separate
- * process surface that is not free to composite, and that nothing on the page
- * needs before the reader actually wants to read the document.
+ * the default so the PDF is fetched and rendered only when the reader asks to
+ * read it.
  *
  * Three rules this component exists to enforce:
  *
@@ -39,6 +39,12 @@ export interface WikiDocument {
   caption: string;
   /** Resolved URL — always built through the page's own document resolver. */
   url: string;
+  /** Optional manuscript-provided description shown after the card opens. */
+  description?: string;
+  /** Optional direct links preserved from the manuscript's embed. */
+  openUrl?: string;
+  downloadUrl?: string;
+  fallbackText?: string;
 }
 
 export function DocumentViewer({
@@ -87,11 +93,33 @@ export function DocumentViewer({
 
       <div className="wiki-document__panel" id={panelId} hidden={!open}>
         {mounted ? (
-          <iframe
-            className="wiki-document__frame"
-            src={document.url}
-            title={document.caption}
-          />
+          <>
+            {document.description ? (
+              <p className="wiki-document__description">
+                {document.description}
+              </p>
+            ) : null}
+            {document.openUrl || document.downloadUrl ? (
+              <p className="wiki-document__actions">
+                {document.openUrl ? (
+                  <a href={document.openUrl} target="_blank" rel="noreferrer">
+                    Open PDF
+                  </a>
+                ) : null}
+                {document.openUrl && document.downloadUrl ? " or " : null}
+                {document.downloadUrl ? (
+                  <a href={document.downloadUrl} download>
+                    download the guide
+                  </a>
+                ) : null}
+                .
+              </p>
+            ) : null}
+            <PdfDocumentSurface url={document.url} title={document.caption} />
+            {document.fallbackText ? (
+              <p className="wiki-document__fallback">{document.fallbackText}</p>
+            ) : null}
+          </>
         ) : null}
       </div>
     </figure>

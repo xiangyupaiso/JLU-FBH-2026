@@ -350,7 +350,16 @@ export function SheepCursor() {
     }
 
     function out(event: PointerEvent) {
-      if (!event.relatedTarget) hide();
+      const relatedElement =
+        event.relatedTarget instanceof Element ? event.relatedTarget : null;
+      // Embedded documents (especially the browser's PDF viewer) own their
+      // pointer stream. Stop tracking before the stream disappears into iframe.
+      if (!relatedElement || relatedElement.closest("iframe")) hide();
+    }
+
+    function over(event: PointerEvent) {
+      const element = event.target instanceof Element ? event.target : null;
+      if (element?.closest("iframe")) hide();
     }
 
     function scroll() {
@@ -382,6 +391,7 @@ export function SheepCursor() {
     });
     window.addEventListener("pointerup", up, { passive: true });
     window.addEventListener("pointerout", out);
+    window.addEventListener("pointerover", over, { capture: true });
     window.addEventListener("pointercancel", hide);
     window.addEventListener("blur", hide);
     window.addEventListener("dragstart", hide);
@@ -397,6 +407,7 @@ export function SheepCursor() {
       window.removeEventListener("pointerdown", down, true);
       window.removeEventListener("pointerup", up);
       window.removeEventListener("pointerout", out);
+      window.removeEventListener("pointerover", over, true);
       window.removeEventListener("pointercancel", hide);
       window.removeEventListener("blur", hide);
       window.removeEventListener("dragstart", hide);
