@@ -159,13 +159,19 @@ export type DesignImageKey = {
 }[DesignAssetKey];
 
 /** Registered image URL: iGEM CDN once uploaded, bundled preview until then. */
-export const getDesignImage = (key: DesignImageKey): string =>
-  designAssets[key].uploadUrl || designAssets[key].localSrc || "";
+export const getDesignImage = (key: DesignImageKey): string => {
+  const entry = (designAssets as Record<string, any>)[key];
+  return entry?.uploadUrl || entry?.localSrc || "";
+};
 
 /**
  * Document URL served from the site's own `public/` tree, so the embedded
  * report works identically in development and in the published bundle.
  */
-export const getDesignDocument = (key: DesignAssetKey): string =>
-  designAssets[key].uploadUrl ||
-  `${import.meta.env.BASE_URL}${designAssets[key].localSourcePath.replace(/^public\//, "")}`;
+export const getDesignDocument = (key: DesignAssetKey): string => {
+  const entry = (designAssets as Record<string, any>)[key];
+  return (
+    entry?.uploadUrl ||
+    `${import.meta.env.BASE_URL}${(entry?.localSourcePath || "").replace(/^public\//, "")}`
+  );
+};

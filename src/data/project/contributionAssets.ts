@@ -510,8 +510,10 @@ export type ContributionDocAssetKey = {
 /**
  * Resolve one image from iGEM CDN, with a local preview as fallback.
  */
-export const contributionImage = (key: ContributionImageAssetKey): string =>
-  contributionAssets[key].uploadUrl || contributionAssets[key].localSrc || "";
+export const contributionImage = (key: ContributionImageAssetKey): string => {
+  const entry = (contributionAssets as Record<string, any>)[key];
+  return entry?.uploadUrl || entry?.localSrc || "";
+};
 
 /**
  * Local URL of a document kept in `public/assets/docs/`.

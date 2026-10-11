@@ -655,5 +655,7 @@ export const resultsAssets = {
 export type ResultsAssetKey = keyof typeof resultsAssets;
 
 /** Registered image URL: iGEM CDN once uploaded, bundled preview until then. */
-export const getResultsImage = (key: ResultsAssetKey): string =>
-  resultsAssets[key].uploadUrl || resultsAssets[key].localSrc || "";
+export const getResultsImage = (key: ResultsAssetKey): string => {
+  const entry = (resultsAssets as Record<string, any>)[key];
+  return entry?.uploadUrl || entry?.localSrc || "";
+};

@@ -278,7 +278,8 @@ export const engineeringPage: WikiPageContent = {
           type: "figure",
           src: engineeringOverviewPanoramic,
           alt: "CirCure TIME Engineering System — Overview of central TIME cycles, DBTL stages, and six contributing team gears with mascots",
-          caption: "Figure E00 · CirCure TIME engineering architecture overview: central stopwatch dial flanked by six contributing team gears and mascots.",
+          caption:
+            "CirCure TIME engineering architecture overview: central stopwatch dial flanked by six contributing team gears and mascots.",
         },
         {
           type: "callout",
