@@ -451,13 +451,6 @@ export const descriptionPage: WikiPageContent = {
           paragraphs: solutionData.leadParagraphs,
         },
         {
-          type: "prose",
-          paragraphs: [
-            "The central mechanism of CirCure can be summarized as:",
-            "**Antigen selection → circRNA engineering → RNA production → purification & quality control → cellular delivery → antigen expression & presentation → CD8⁺ T-cell activation → TNBC cell killing**",
-          ],
-        },
-        {
           type: "figure",
           ...descriptionFigures.fig2,
         },

@@ -1,0 +1,51 @@
+/* The shared Team shell owns the sidebar, decorated frame and document
+   timeline. Only the live iframe's complete content height is page-specific. */
+.official-attributions-page__form {
+  box-sizing: border-box;
+  min-height: 0;
+  padding: clamp(40px, 5vw, 64px) clamp(26px, 5vw, 72px);
+}
+
+.official-attributions-page__form iframe {
+  display: block;
+  width: 100%;
+  height: var(--attribution-form-height, 900px);
+  border: 0;
+  background: #ffffff;
+}
+
+.official-attributions-page__document {
+  position: relative;
+}
+
+.official-attributions-page__bookmark {
+  position: absolute;
+  top: var(--attribution-bookmark-top);
+  left: 0;
+  width: 1px;
+  height: 1px;
+  pointer-events: none;
+  scroll-margin-top: calc(var(--header-height) + 32px);
+}
+
+/* No reveal/transform choreography on the live embedded document. */
+.official-attributions-page__form,
+.official-attributions-page__form iframe {
+  opacity: 1;
+  transform: none;
+  transition: none;
+  will-change: auto;
+}
+
+.official-attributions-page .wiki-outline__drawer-head {
+  display: none;
+}
+
+@media (max-width: 980px) {
+  .official-attributions-page__form {
+    padding: 24px 18px;
+  }
+  .official-attributions-page .wiki-outline__drawer-head {
+    display: flex;
+  }
+}

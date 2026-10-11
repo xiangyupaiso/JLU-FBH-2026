@@ -32,27 +32,111 @@ const DESKTOP_QUERY = "(min-width: 981px)";
 export function SCALEProgressChain({
   steps,
   parentId,
+  endId,
   activeId,
 }: {
   steps: ReadonlyArray<ScaleRailStep>;
   /** The chapter heading; the rail shows (without a current step) on it too. */
   parentId: string;
+  /** The next chapter heading, after all content in the final SCALE step. */
+  endId: string;
   activeId: string;
 }) {
   const anchorRef = useRef<HTMLSpanElement>(null);
   const [host, setHost] = useState<HTMLElement | null>(null);
   const [left, setLeft] = useState<number | null>(null);
-
-  const activeIndex = steps.findIndex((step) => step.id === activeId);
-  const hasCurrent = activeIndex !== -1;
-  const visible = hasCurrent || activeId === parentId;
-  const stateOf = (index: number): StepState =>
-    index < activeIndex ? "done" : index === activeIndex ? "current" : "upcoming";
+  const [inChapter, setInChapter] = useState(false);
+  const [realActiveIndex, setRealActiveIndex] = useState(-1);
 
   // Portal target = the route page root, so the module palette vars still apply.
   useEffect(() => {
     setHost(anchorRef.current?.closest<HTMLElement>(".wiki-page") ?? null);
   }, []);
+
+  // Use the next chapter heading, never the last step's introductory block.
+  useEffect(() => {
+    const reader = anchorRef.current?.closest<HTMLElement>(".route-frame__scroll");
+    const scrollContainer = reader ?? window;
+    let frame = 0;
+
+    const updateRail = () => {
+      frame = 0;
+      const startEl = document.getElementById(parentId);
+      if (!startEl) {
+        setInChapter(false);
+        return;
+      }
+
+      const startRect = startEl.getBoundingClientRect();
+      const headerHeight = Number.parseFloat(
+        getComputedStyle(document.documentElement).getPropertyValue("--header-height"),
+      ) || 78;
+      // Match the article scroll spy: use reader coordinates on desktop and
+      // the document reading line under the header on compact screens.
+      const readingLine = reader && window.matchMedia(DESKTOP_QUERY).matches
+        ? reader.getBoundingClientRect().top + Math.min(112, reader.clientHeight * 0.22) + 18
+        : headerHeight + 108;
+      const nextChapter = endId ? document.getElementById(endId) : null;
+      const lastStepId = steps[steps.length - 1]?.id;
+      const lastStep = lastStepId ? document.getElementById(lastStepId) : null;
+      // With no later same-level chapter, end at the final step's feature
+      // instead of keeping the rail alive through the rest of the page.
+      const finalFeature = lastStep?.nextElementSibling?.nextElementSibling;
+      const endTop = nextChapter?.getBoundingClientRect().top
+        ?? finalFeature?.getBoundingClientRect().bottom
+        ?? startEl.closest(".wiki-section")?.getBoundingClientRect().bottom
+        ?? Infinity;
+      const entered = startRect.top <= readingLine;
+      // The final chapter has no following same-level heading. Let its rail
+      // leave once the final feature has cleared the reader viewport, so it
+      // cannot remain fixed over the page's Next page card.
+      // On compact screens the reader grows with the entire article; its
+      // bottom is not a viewport boundary and would hide the final rail early.
+      const viewportBottom = reader && window.matchMedia(DESKTOP_QUERY).matches
+        ? reader.getBoundingClientRect().bottom
+        : window.innerHeight;
+      const exitLine = nextChapter ? readingLine : viewportBottom;
+      const exited = endTop <= exitLine;
+      const isInside = entered && !exited;
+
+      setInChapter(isInside);
+
+      if (isInside) {
+        let activeIdx = -1;
+        steps.forEach((step, idx) => {
+          const el = document.getElementById(step.id);
+          if (el && el.getBoundingClientRect().top <= readingLine) {
+            activeIdx = idx;
+          }
+        });
+        setRealActiveIndex(activeIdx);
+      } else {
+        setRealActiveIndex(-1);
+      }
+    };
+
+    const requestUpdate = () => {
+      if (!frame) frame = requestAnimationFrame(updateRail);
+    };
+    updateRail();
+    scrollContainer.addEventListener("scroll", requestUpdate, { passive: true });
+    if (scrollContainer !== window) {
+      window.addEventListener("scroll", requestUpdate, { passive: true });
+    }
+    window.addEventListener("resize", requestUpdate, { passive: true });
+    return () => {
+      if (frame) cancelAnimationFrame(frame);
+      scrollContainer.removeEventListener("scroll", requestUpdate);
+      window.removeEventListener("scroll", requestUpdate);
+      window.removeEventListener("resize", requestUpdate);
+    };
+  }, [parentId, endId, steps]);
+
+  const activeIndex = realActiveIndex !== -1 ? realActiveIndex : steps.findIndex((step) => step.id === activeId);
+  const hasCurrent = activeIndex !== -1;
+  const visible = inChapter;
+  const stateOf = (index: number): StepState =>
+    index < activeIndex ? "done" : index === activeIndex ? "current" : "upcoming";
 
   // Desktop: centre the rail in the gap right of the TOC card.
   useEffect(() => {

@@ -514,36 +514,29 @@
     color 180ms ease,
     transform 160ms ease;
 }
-.eng-small-gear svg {
+.eng-small-gear__img {
   display: block;
   flex: 0 0 auto;
-  width: 60px;
-  height: 60px;
-  overflow: visible;
+  width: 58px;
+  height: 58px;
+  object-fit: contain;
   pointer-events: none;
+  transform: rotate(var(--gear-phase, 0deg));
+  filter: drop-shadow(0 1px 2px rgba(36, 61, 44, 0.08));
+  transition:
+    transform 220ms cubic-bezier(0.34, 1.56, 0.64, 1),
+    filter 200ms ease;
 }
-.eng-small-gear polygon {
-  fill: #fcfdf9;
-  stroke: currentColor;
-  stroke-width: 1.4;
-  stroke-linejoin: round;
-  transition: fill 180ms ease;
+.eng-small-gear:hover .eng-small-gear__img {
+  transform: scale(1.08) rotate(var(--gear-phase, 0deg));
+  filter: drop-shadow(0 3px 8px rgba(36, 61, 44, 0.16));
 }
-.eng-small-gear circle {
-  fill: #fcfdf9;
-  stroke: currentColor;
-  stroke-width: 1.2;
-  transition: fill 180ms ease;
+.eng-small-gear.is-active .eng-small-gear__img {
+  transform: scale(1.06) rotate(var(--gear-phase, 0deg));
+  filter: drop-shadow(0 2px 8px color-mix(in srgb, var(--gear-color) 45%, transparent));
 }
-.eng-small-gear .eng-small-gear__hub {
-  fill: currentColor;
-  stroke: none;
-}
-.eng-small-gear.is-active polygon {
-  fill: color-mix(in srgb, var(--gear-color) 25%, #fff);
-}
-.eng-small-gear.is-active circle {
-  fill: color-mix(in srgb, var(--gear-color) 12%, #fff);
+.eng-small-gear.is-active span {
+  font-weight: 750;
 }
 .eng-small-gear.is-active::before {
   content: "";
@@ -554,9 +547,6 @@
   height: 6px;
   background: currentColor;
   border-radius: 50%;
-}
-.eng-small-gear:hover polygon {
-  fill: color-mix(in srgb, var(--gear-color) 18%, #fff);
 }
 .eng-small-gear:focus-visible {
   outline: 2px solid var(--gear-color);

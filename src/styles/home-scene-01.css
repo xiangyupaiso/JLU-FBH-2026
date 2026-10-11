@@ -114,8 +114,8 @@ body:has(.home-redesign) {
 }
 .scene01-frame-layer {
   z-index: 4;
-  -webkit-mask-image: url("../assets/home/scene-01-new/frame-mask.svg");
-  mask-image: url("../assets/home/scene-01-new/frame-mask.svg");
+  -webkit-mask-image: url("https://static.igem.wiki/teams/6056/wiki/files/pages/home/frame-mask-120c57e35eaf.svg");
+  mask-image: url("https://static.igem.wiki/teams/6056/wiki/files/pages/home/frame-mask-120c57e35eaf.svg");
   -webkit-mask-size: 100% 100%;
   mask-size: 100% 100%;
 }
@@ -224,6 +224,9 @@ body:has(.home-redesign) {
 }
 .scene01-prologue button {
   pointer-events: auto;
+  font-size: clamp(23px, 2vw, 32px);
+  font-weight: 500;
+  line-height: 1.35;
 }
 .scene01-prologue button:focus-visible {
   outline: 2px solid #d9abc1;

@@ -12,7 +12,8 @@
  * image entry here. Engagement photographs live in `sustainabilityPhotos.ts`.
  */
 
-import overviewMapOfStakeholdersImg from "../../../assets/wiki/sustainability/sustainability-overview-map-of-stakeholders.png";
+const overviewMastheadImg = "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/sustainability-overview-masthead-96e3e6da2d09.avif";
+const overviewMapOfStakeholdersImg = "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/sustainability-overview-map-of-stakeholders-c62c0fdbb594.avif";
 import overviewScaleModelImg from "../../../assets/wiki/sustainability/sustainability-overview-scale-model.png";
 import overviewSstQnNetworkImg from "../../../assets/wiki/sustainability/sustainability-overview-sst-qn-network.png";
 import overviewReusableToolkitImg from "../../../assets/wiki/sustainability/sustainability-overview-reusable-toolkit.png";
@@ -23,6 +24,8 @@ import sdg3TraceableImprovementsImg from "../../../assets/wiki/sustainability/su
 import sdg3DcMaturationFlowImg from "../../../assets/wiki/sustainability/sustainability-sdg3-dc-maturation-flow.png";
 import sdg3SplenocyteFlowImg from "../../../assets/wiki/sustainability/sustainability-sdg3-splenocyte-flow.png";
 import sdg3TumorGrowthImg from "../../../assets/wiki/sustainability/sustainability-sdg3-tumor-growth.png";
+import sdg9TraceableExpertFeedbackImg from "../../../assets/wiki/sustainability/sustainability-sdg9-traceable-expert-feedback.png";
+import { sdg12EvidenceAssets } from "./sustainabilitySdg12Assets";
 
 export type SustainabilityAssetKind = "image" | "pdf";
 
@@ -41,6 +44,15 @@ const IMG = "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement";
 const DOCS = "https://static.igem.wiki/teams/6056/wiki/files/docs";
 
 export const sustainabilityAssets = {
+  overviewMasthead: {
+    kind: "image",
+    fileName: "sustainability-overview-masthead.avif",
+    localSourcePath: "src/assets/wiki/sustainability/sustainability-overview-masthead.avif",
+    localSrc: overviewMastheadImg,
+    uploadUrl: `${IMG}/sustainability-overview-masthead.avif`,
+    alt: "Children holding up the 17 UN Sustainable Development Goal icons",
+    section: "Overview",
+  },
   overviewMapOfStakeholders: {
     kind: "image",
     fileName: "sustainability-overview-map-of-stakeholders.png",
@@ -140,6 +152,64 @@ export const sustainabilityAssets = {
     alt: "Excised tumors and endpoint tumor volume across PBS, control and circRNA vaccine groups",
     section: "SDG 3 — Evidence",
   },
+  sdg9TraceableExpertFeedback: {
+    kind: "image",
+    fileName: "sustainability-sdg9-traceable-expert-feedback.png",
+    localSourcePath: "src/assets/wiki/sustainability/sustainability-sdg9-traceable-expert-feedback.png",
+    localSrc: sdg9TraceableExpertFeedbackImg,
+    uploadUrl: `${IMG}/sustainability/sdg9/evidence-1.avif`,
+    alt: "Seven traceable SDG 9 expert feedback records",
+    section: "SDG 9 — Evidence",
+  },
+  sdg9Evidence2: {
+    kind: "image",
+    fileName: "evidence-2.avif",
+    localSourcePath: "",
+    uploadUrl: `${IMG}/sustainability/sdg9/evidence-2.avif`,
+    alt: "Vaccine constructs and comparative immune responses",
+    section: "SDG 9 — Evidence",
+  },
+  sdg9BatchProjection: {
+    kind: "image",
+    fileName: "evidence-2.avif",
+    localSourcePath: "",
+    uploadUrl: `${IMG}/sustainability/sdg9/evidence-2.avif`,
+    alt: "Vaccine constructs and comparative immune responses",
+    section: "SDG 9 — Evidence",
+  },
+  sdg9Evidence3: {
+    kind: "image",
+    fileName: "evidence-3.avif",
+    localSourcePath: "",
+    uploadUrl: `${IMG}/sustainability/sdg9/evidence-3.avif`,
+    alt: "Circularization and antigen translation evidence",
+    section: "SDG 9 — Evidence",
+  },
+  sdg9Evidence: {
+    kind: "image",
+    fileName: "evidence-3.avif",
+    localSourcePath: "",
+    uploadUrl: `${IMG}/sustainability/sdg9/evidence-3.avif`,
+    alt: "Circularization and antigen translation evidence",
+    section: "SDG 9 — Evidence",
+  },
+  sdg9Evidence4: {
+    kind: "image",
+    fileName: "evidence-4.avif",
+    localSourcePath: "",
+    uploadUrl: `${IMG}/sustainability/sdg9/evidence-4.avif`,
+    alt: "CTL selectivity assessment",
+    section: "SDG 9 — Evidence",
+  },
+  sdg9Evidence5: {
+    kind: "image",
+    fileName: "evidence-5.avif",
+    localSourcePath: "",
+    uploadUrl: `${IMG}/sustainability/sdg9/evidence-5.avif`,
+    alt: "Three-module vaccine design system",
+    section: "SDG 9 — Evidence",
+  },
+  ...sdg12EvidenceAssets,
   sstQnModelConstruction: {
     kind: "pdf",
     fileName: "sustainability-sst-qn-model-construction.pdf",
@@ -160,8 +230,10 @@ export type SustainabilityImageAssetKey = {
 }[SustainabilityAssetKey];
 
 /** iGEM URL of a registered image with local fallback. */
-export const sustainabilityImage = (key: SustainabilityImageAssetKey): string =>
-  sustainabilityAssets[key].localSrc || sustainabilityAssets[key].uploadUrl;
+export const sustainabilityImage = (key: SustainabilityImageAssetKey): string => {
+  const entry = sustainabilityAssets[key] as SustainabilityAssetEntry;
+  return entry.localSrc || entry.uploadUrl;
+};
 
 /** iGEM docs URL of a hosted PDF/HTML file name, with local dev fallback. */
 export const sustainabilityDocUrl = (fileName: string) =>

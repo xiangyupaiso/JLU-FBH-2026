@@ -54,6 +54,7 @@ export function createQuestionInk(
   root.append(canvas);
   const context = canvas.getContext("2d");
   const target = new Image();
+  target.crossOrigin = "anonymous";
   target.src = targetUrl;
   let disposed = false;
   let requested = false;

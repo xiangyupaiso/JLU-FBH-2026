@@ -103,11 +103,10 @@ export function useWikiPageMotion(
       root.querySelectorAll<HTMLElement>("[data-wiki-outline-anchor]"),
     );
     const routeHash = window.location.hash.slice(1);
+    // Sustainability's sticky reading windows need stable ancestors at every
+    // desktop width, including the narrower reader with its visible TOC.
     const lightweightRoute =
-      wideFlow ||
-      route === "/experiments" ||
-      (route === "/sustainability" &&
-        window.matchMedia("(min-width: 1200px) and (min-height: 700px)").matches);
+      wideFlow || route === "/experiments" || route === "/sustainability";
     const canObserve = "IntersectionObserver" in window;
 
     if (reducedMotion.matches || !canObserve || lightweightRoute) {
@@ -271,7 +270,10 @@ export function useWikiPageMotion(
           const pageBottomReached =
             scrollContainer.scrollTop + viewportHeight >= scrollContainer.scrollHeight - 4;
           if (pageBottomReached && currentAnchors.length) {
-            currentSubsection = currentAnchors[currentAnchors.length - 1]?.id ?? currentSubsection;
+            const lastAnchor = currentAnchors[currentAnchors.length - 1];
+            if (lastAnchor && lastAnchor.getBoundingClientRect().bottom >= 0) {
+              currentSubsection = lastAnchor.id;
+            }
           }
         }
         if (currentSection !== lastActiveSection) {

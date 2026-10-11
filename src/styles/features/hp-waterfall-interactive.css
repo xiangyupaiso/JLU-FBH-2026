@@ -75,8 +75,8 @@
   background: #ffffff;
 }
 
-/* Video Layers: Hard Instant Cut (Zero Ghosting / Transition Disabled) */
-.hp-waterfall-video {
+/* Media Layers: Smooth Organic Background Masking & Transition */
+.hp-waterfall-media {
   position: absolute;
   inset: 0;
   width: 100%;
@@ -85,16 +85,50 @@
   display: block;
   image-rendering: -webkit-optimize-contrast;
   image-rendering: crisp-edges;
-  transition: none !important;
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-drag: none;
 }
 
-.hp-waterfall-video.hp-video-full {
+.hp-waterfall-media.hp-media-full {
   z-index: 1;
+  opacity: 1;
+  clip-path: inset(1.8% 0 1.8% 0);
 }
 
-.hp-waterfall-video.hp-video-core {
+/* Layer 2: Soft Gradient Vignette Veil Mask (Dissolves outer landscape smoothly into clean white) */
+.hp-waterfall-mask-veil {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    ellipse 58% 66% at 48% 50%,
+    transparent 38%,
+    rgba(255, 255, 255, 0.75) 65%,
+    #ffffff 90%
+  );
+  pointer-events: none;
   z-index: 2;
-  transition: none !important;
+  opacity: 0;
+  transition: opacity 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity;
+}
+
+.hp-waterfall-mask-veil.is-active {
+  opacity: 1;
+}
+
+/* Layer 3: Top Focused Core Building */
+.hp-waterfall-media.hp-media-core {
+  z-index: 3;
+  opacity: 0;
+  transition: opacity 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity;
+}
+
+.hp-waterfall-media.hp-media-core.is-active {
+  opacity: 1;
 }
 
 /* SVG Overlay & Hotspots */

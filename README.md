@@ -45,6 +45,7 @@
 * **改交互/图表**：直达 `src/components/wiki/features/` 或对应游戏/可视化子目录；
 * **改宏观骨架尺寸**：唯一修改位置为 `src/styles/wiki-route-skin.css`；
 * **改模块色彩主题**：唯一修改位置为对应模块的 `src/styles/route-palette-[module].css`（只需设定主色、辅色、底色三基准色）。
+* **图片加载策略**：统一使用 `WikiRoutePage` 的自动图片收集与共享加载器；交互后才出现的普通图片通过 `preloadImages` 或 `PageImagePreloads` 声明，详见 [架构规范 §4.7.1](./WIKI_ARCHITECTURE_SPEC.md#471-共享模板的图片准备契约新页面自动继承)。
 
 ---
 
@@ -105,7 +106,7 @@ CirCure Wiki
 * **智能视觉隐匿 (`hideHeroCopy`)**：当插画本身已内嵌艺术字标题时，自动屏蔽首屏浮层文本叠加，呈现纯粹饱满的插画；同时在 DOM 底层保留隐藏的语义化 `h1`（`.wiki-hero__sr-only`），完美兼顾视觉美感与 a11y 无障碍/SEO 评审规范。
 
 ### 3. 学术长文沉浸式阅读器 (Manuscript Reader System)
-* **动态丝带 TOC 侧边栏 (`WikiLineSidebar`)**：实时监听当前视口激活的章节与小节，动态高亮显示，提供平滑点击跳转与丝带指示器。
+* **马克笔 TOC 侧边栏 (`WikiLineSidebar`)**：实时监听当前视口激活的章节与小节，当前项以正文同款马克笔底纹标记；三级标题仅在正在阅读的二级标题下展开，标题完整换行显示。
 * **闭环下一章衔接 (`WikiNextRecord`)**：正文结尾统一配备沉浸式递进卡片，指引评委顺畅阅读下一个关联章节。
 * **独立三色主题体系**：Team（暖茶金）、Project（青翠竹绿）、Wet Lab（晴天水蓝）、Dry Lab（数理薄荷绿）、Engagement（柔粉珊瑚），仅需定义 3 个颜色 Token 即可自动推导全套衍生色。
 
@@ -269,7 +270,38 @@ stages:
 
 ---
 
-## 八、 授权与知识产权 (License)
+## 八、 多环境构建与部署适配记录 (Deployment & Compatibility Notes)
+
+为保障本项目在 **iGEM 官方 GitLab**、**云端边缘分发 (Cloudflare Workers/Pages)** 及 **本地/VPS 容器化环境** 下的一致稳定运行，工程层面维护了以下适配规范：
+
+### 1. 包管理器严格锁定 Yarn v1.x (Classic)
+- **配置位置**：`package.json` 中的 `"packageManager": "yarn@1.22.22"`，与根目录 `yarn.lock` 严格绑定。
+- **背景与原因**：
+  iGEM 官方流水线（`.gitlab-ci.yml`）严格使用 `yarn install --frozen-lockfile`；现代云端平台（如 Cloudflare）在检测到 `yarn.lock` 时会默认尝试调用 Yarn 4.x 并报错（`YN0028 lockfile migration forbidden`）。
+- **统一方案**：通过 `packageManager` 字段强制锁定为 Yarn `1.22.22`，使 Cloudflare 与 iGEM GitLab 官方环境保持 100% 同构，推送回 iGEM GitLab 时**零冲突、无需任何回滚**。
+
+### 2. 双重静态路由对齐机制 (`scripts/postbuild-slug.mjs`)
+- **配置位置**：`package.json` 的 `build` 脚本及 `scripts/postbuild-slug.mjs`。
+- **背景与原因**：
+  iGEM 官方规则要求全站基准路径必须挂载于队伍标识符下（`base: "/jlu-fbh/"`），而在独立顶级域名（如自定义测试域或根域名）直接访问 `/` 时，纯静态托管会因缺少物理前缀目录而无法正确定位资产。
+- **自动对齐**：构建完成后自动将 `dist/` 核心产物深度同步至 `dist/jlu-fbh/`。
+  - 在 iGEM 官方 GitLab Pages 上，访问 `https://2026.igem.wiki/jlu-fbh/` 原生对齐；
+  - 在独立域名或 Cloudflare 边缘节点上，访问根路径 `/` 或前缀路径 `/jlu-fbh/` 均可 100% 正常响应。
+
+### 3. TypeScript 资产索引类型保护
+- **涉及文件**：
+  - `src/data/project/contributionAssets.ts`
+  - `src/data/project/resultsAssets.ts`
+  - `src/data/wet-lab/designAssets.ts`
+- **修复说明**：修复了在严苛 TypeScript 编译模式下，宽泛联合键（Union Key）索引未分配导致的 `TS2339 (Property does not exist on type 'never')` 编译报错，保证任何 CI/CD 机器在执行全量 `tsc` 检查时 0 错误平稳通过。
+
+### 4. 辅助配置文件说明（推送官方无需删除）
+- **`wrangler.json`**：仅供 Cloudflare 识别静态资源根目录（`./dist`），推送到 iGEM GitLab 时完全被 `.gitlab-ci.yml` 忽略，不产生任何副作用。
+- **`.dockerignore`**：排除 `.git`、`node_modules` 等无关文件，用于本地/服务器 Docker 镜像编译时加速上下文传输。
+
+---
+
+## 九、 授权与知识产权 (License)
 
 本项目遵循 [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/)（知识共享署名 4.0 国际许可协议）开源授权。
 

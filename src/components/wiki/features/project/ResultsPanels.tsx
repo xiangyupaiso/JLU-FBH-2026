@@ -40,8 +40,11 @@ import {
 } from "../../../../data/project/resultsAssets";
 import { resultsPage } from "../../../../data/project/resultsPage";
 import { resultsReferences } from "../../../../data/project/resultsReferences";
+import { EpitopeStructuralValidationChart } from "./EpitopeStructuralValidationChart";
 import type { InlineRenderer } from "../../WikiRoutePage";
 import "../../../../styles/features/results-panels.css";
+
+export { EpitopeStructuralValidationChart };
 
 /* ------------------------------------------------------------- figure plate */
 
@@ -140,17 +143,7 @@ function plateFeatures(): Record<string, ReactNode> {
         keys={["ihcPanel1", "ihcPanel2", "ihcPanel3", "ihcPanel4"]}
       />
     ),
-    "results-plate-structural": (
-      <FigurePlate
-        columns={2}
-        keys={[
-          "structuralBurialVsFill",
-          "structuralBurialHeatmap",
-          "structuralAnchorBurial",
-          "structuralBurialFill",
-        ]}
-      />
-    ),
+    "results-plate-structural": <EpitopeStructuralValidationChart />,
     "results-plate-fig18b": (
       <FigurePlate
         columns={1}

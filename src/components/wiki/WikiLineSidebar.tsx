@@ -7,7 +7,6 @@ import {
   type MouseEvent,
   type PointerEvent,
   type RefObject,
-  type ReactNode,
 } from "react";
 import { Link } from "react-router-dom";
 import { readerTrackStart, scrollReaderToTarget } from "../../utils";
@@ -21,29 +20,37 @@ export interface WikiLineSidebarItem {
   index: string;
   label: string;
   meta?: string;
-  children?: WikiLineSidebarItem[];
+  children?: Array<{
+    id: string;
+    index: string;
+    label: string;
+  }>;
 }
 
-function findParentId(
-  items: WikiLineSidebarItem[],
-  childId: string,
-): string | undefined {
-  for (const item of items) {
-    if (item.children?.some((child) => child.id === childId)) return item.id;
-    const nestedParent = item.children?.length
-      ? findParentId(item.children, childId)
-      : undefined;
-    if (nestedParent) return nestedParent;
-  }
-  return undefined;
-}
+type WikiLineSidebarChild = NonNullable<WikiLineSidebarItem["children"]>[number];
 
-function containsItem(items: WikiLineSidebarItem[] | undefined, id: string): boolean {
-  return Boolean(
-    items?.some(
-      (item) => item.id === id || containsItem(item.children, id),
-    ),
-  );
+/**
+ * Level-3 headings ("1.1.1") are listed only under the level-2 heading being
+ * read, so long records stay short. `isTrail` marks that level-2 parent.
+ */
+function outlineRows(children: WikiLineSidebarChild[], activeChildId: string) {
+  const depthOf = (index: string) => index.split(".").length;
+  const baseDepth = Math.min(...children.map((child) => depthOf(child.index)));
+  let groupId = "";
+  const rows = children.map((child) => {
+    const tertiary = depthOf(child.index) > baseDepth;
+    if (!tertiary) groupId = child.id;
+    return { child, tertiary, groupId };
+  });
+  const activeGroupId =
+    rows.find((row) => row.child.id === activeChildId)?.groupId ?? "";
+  return rows
+    .filter((row) => !row.tertiary || row.groupId === activeGroupId)
+    .map(({ child, tertiary }) => ({
+      child,
+      tertiary,
+      isTrail: !tertiary && child.id === activeGroupId,
+    }));
 }
 
 export interface WikiLineSidebarLink {
@@ -95,7 +102,9 @@ export function WikiLineSidebar({
     activeChildId || activeId,
   );
   const activeChildParentId = activeChildId
-    ? findParentId(items, activeChildId)
+    ? items.find((item) =>
+      item.children?.some((child) => child.id === activeChildId),
+    )?.id
     : undefined;
   const expandedItemId = activeChildParentId ?? activeId;
   const drawerMode = Boolean(onRequestClose);
@@ -119,9 +128,7 @@ export function WikiLineSidebar({
   const targetSignature = items
     .flatMap((item) => [
       item.id,
-      ...(function flattenChildren(children: WikiLineSidebarItem[] | undefined): string[] {
-        return children?.flatMap((child) => [child.id, ...flattenChildren(child.children)]) ?? [];
-      })(item.children),
+      ...(item.children?.map((child) => child.id) ?? []),
     ])
     .join("|");
 
@@ -389,95 +396,13 @@ export function WikiLineSidebar({
     scrollReaderToTarget(content, scrollContainerRef?.current, "instant");
   };
 
-  const currentIndex = items.findIndex((item) => item.id === activeId);
-  const activeChapterNumber = Math.max(1, currentIndex + 1);
-  const totalChapters = items.length;
-  const progressPercent =
-    totalChapters > 0
-      ? Math.round((activeChapterNumber / totalChapters) * 100)
-      : 0;
-
-  const renderSubnav = (
-    children: WikiLineSidebarItem[],
-    parent: WikiLineSidebarItem,
-    depth: number,
-  ): ReactNode => (
-    <div
-      className={`wiki-outline__subnav wiki-outline__subnav--depth-${depth}`}
-      aria-label={`${parent.label} subsections`}
-    >
-      {children.map((child) => {
-        const childPair = protocolMap.get(child.id);
-        const childIndex = /^\d+$/.test(parent.index)
-          ? child.index.replace(/^\d+(?=\.)/, String(Number(parent.index)))
-          : child.index;
-        const childLabel = child.index && child.label.startsWith(`${child.index} `)
-          ? child.label.slice(child.index.length).trimStart()
-          : child.label;
-        const hasChildren = Boolean(minimal && child.children?.length);
-        const isExpanded = hasChildren && (
-          child.id === activeId ||
-          containsItem(child.children, activeChildId) ||
-          containsItem(child.children, ribbonTargetId)
-        );
-
-        return (
-          <div
-            className={`wiki-outline__subgroup ${isExpanded ? "is-expanded" : ""}`}
-            key={child.id}
-          >
-            <a
-              className={`wiki-outline__secondary wiki-outline__secondary--depth-${depth} ${ribbonTargetId === child.id ? "is-active" : ""}`}
-              href={`#${child.id}`}
-              data-outline-target={child.id}
-              onClick={(event) => jumpToSection(event, child.id)}
-              onMouseEnter={(event) => {
-                if (!childPair) return;
-                if (hoverTimeoutRef.current) window.clearTimeout(hoverTimeoutRef.current);
-                const target = event.currentTarget;
-                hoverTimeoutRef.current = window.setTimeout(() => {
-                  setHoveredProtocol({ pair: childPair, rect: target.getBoundingClientRect() });
-                }, 160);
-              }}
-              onMouseLeave={() => {
-                if (hoverTimeoutRef.current) window.clearTimeout(hoverTimeoutRef.current);
-                hoverTimeoutRef.current = window.setTimeout(() => setHoveredProtocol(null), 220);
-              }}
-              aria-current={ribbonTargetId === child.id ? "location" : undefined}
-              title={`${childIndex} ${childLabel}`.trim()}
-            >
-              <span className="wiki-outline__sub-index">{childIndex}</span>
-              <strong>{childLabel}</strong>
-              {childPair ? (
-                <button
-                  type="button"
-                  className="wiki-outline__protocol-icon"
-                  title="实验图谱速览 (点击可直接放大查看)"
-                  onClick={(event) => {
-                    event.stopPropagation();
-                    event.preventDefault();
-                    onOpenProtocolModal?.(childPair);
-                  }}
-                >
-                  <svg viewBox="0 0 16 16" width="12" height="12" fill="currentColor" aria-hidden="true">
-                    <path d="M14 3H2a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1zm-1 8H3V5h10v6z" />
-                    <circle cx="5.5" cy="7.5" r="1.2" />
-                    <path d="M12 10.2 9.5 7.5 7 10.2h5z" />
-                  </svg>
-                </button>
-              ) : null}
-            </a>
-            {isExpanded && child.children
-              ? renderSubnav(child.children, child, depth + 1)
-              : null}
-          </div>
-        );
-      })}
-    </div>
-  );
-
   return (
-    <aside ref={outlineRef} id={id} className="wiki-outline" aria-label={label}>
+    <aside
+      ref={outlineRef}
+      id={id}
+      className="wiki-outline wiki-outline--marker"
+      aria-label={label}
+    >
       {onRequestClose ? (
         <div className="wiki-outline__drawer-head">
           <strong>{label}</strong>
@@ -491,13 +416,6 @@ export function WikiLineSidebar({
           </button>
         </div>
       ) : null}
-      <div className="wiki-outline__progress-pill" aria-hidden="true">
-        <div
-          className="wiki-outline__progress-pill-fill"
-          style={{ width: `${progressPercent}%` }}
-        />
-      </div>
-
       <nav aria-label={label}>
         <span
           ref={ribbonRef}
@@ -530,12 +448,7 @@ export function WikiLineSidebar({
         </span>
         {items.map((item) => {
           const hasChildren = Boolean(minimal && item.children?.length);
-          const isExpanded = hasChildren && (
-            expandedItemId === item.id ||
-            item.id === activeId ||
-            containsItem(item.children, activeChildId) ||
-            containsItem(item.children, ribbonTargetId)
-          );
+          const isExpanded = hasChildren && expandedItemId === item.id;
 
           return (
             <div
@@ -554,23 +467,90 @@ export function WikiLineSidebar({
                 title={item.label}
               >
                 <span className="wiki-outline__index">
-                  {minimal ? Number.parseInt(item.index, 10) : item.index}
+                  {minimal && /^\d+$/.test(item.index)
+                    ? Number(item.index)
+                    : item.index}
                 </span>
                 <span className="wiki-outline__copy">
                   {!minimal && item.meta ? <small>{item.meta}</small> : null}
                   <strong>{item.label}</strong>
                 </span>
-                {activeId === item.id && (
-                  <span
-                    className="wiki-outline__active-pill"
-                    aria-hidden="true"
-                  />
-                )}
               </a>
 
-              {isExpanded && item.children
-                ? renderSubnav(item.children, item, 1)
-                : null}
+              {isExpanded && item.children ? (
+                <div
+                  className="wiki-outline__subnav"
+                  aria-label={`${item.label} subsections`}
+                >
+                  {outlineRows(item.children, activeChildId).map(({ child, tertiary, isTrail }) => {
+                    const childPair = protocolMap.get(child.id);
+                    const isActive = ribbonTargetId === child.id;
+                    // Manuscript numbering can omit introductory sections.
+                    // The outline must use its displayed parent chapter instead.
+                    const childIndex = /^\d+$/.test(item.index)
+                      ? child.index.replace(/^\d+(?=\.)/, String(Number(item.index)))
+                      : child.index;
+                    const childLabel = child.index && child.label.startsWith(`${child.index} `)
+                      ? child.label.slice(child.index.length).trimStart()
+                      : child.label;
+                    return (
+                      <a
+                        className={`wiki-outline__secondary${
+                          tertiary ? " is-tertiary" : ""
+                        }${isActive ? " is-active" : ""}${
+                          isTrail && !isActive ? " is-trail" : ""
+                        }`}
+                        href={`#${child.id}`}
+                        data-outline-target={child.id}
+                        onClick={(event) => jumpToSection(event, child.id)}
+                        onMouseEnter={(event) => {
+                          if (!childPair) return;
+                          if (hoverTimeoutRef.current) window.clearTimeout(hoverTimeoutRef.current);
+                          const target = event.currentTarget;
+                          hoverTimeoutRef.current = window.setTimeout(() => {
+                            setHoveredProtocol({
+                              pair: childPair,
+                              rect: target.getBoundingClientRect(),
+                            });
+                          }, 160);
+                        }}
+                        onMouseLeave={() => {
+                          if (hoverTimeoutRef.current) window.clearTimeout(hoverTimeoutRef.current);
+                          hoverTimeoutRef.current = window.setTimeout(() => {
+                            setHoveredProtocol(null);
+                          }, 220);
+                        }}
+                        aria-current={isActive ? "location" : undefined}
+                        title={`${childIndex} ${childLabel}`.trim()}
+                        key={child.id}
+                      >
+                        <span className="wiki-outline__sub-index">
+                          {childIndex}
+                        </span>
+                        <strong>{childLabel}</strong>
+                        {childPair ? (
+                          <button
+                            type="button"
+                            className="wiki-outline__protocol-icon"
+                            title="实验图谱速览 (点击可直接放大查看)"
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              e.preventDefault();
+                              onOpenProtocolModal?.(childPair);
+                            }}
+                          >
+                            <svg viewBox="0 0 16 16" width="12" height="12" fill="currentColor" aria-hidden="true">
+                              <path d="M14 3H2a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1zm-1 8H3V5h10v6z" />
+                              <circle cx="5.5" cy="7.5" r="1.2" />
+                              <path d="M12 10.2 9.5 7.5 7 10.2h5z" />
+                            </svg>
+                          </button>
+                        ) : null}
+                      </a>
+                    );
+                  })}
+                </div>
+              ) : null}
             </div>
           );
         })}
@@ -578,7 +558,7 @@ export function WikiLineSidebar({
 
       {links.length ? (
         <div className="wiki-outline__related">
-          <span className="wiki-outline__related-title">✦ related links</span>
+          <span className="wiki-outline__related-title">Related</span>
           {links.map((link) => (
             <Link key={link.path} to={link.path} onClick={onRequestClose}>
               <span>{link.label}</span>

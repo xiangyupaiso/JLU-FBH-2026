@@ -1,11 +1,12 @@
 import { useEffect, useRef, useState, type CSSProperties } from "react";
-import emblemUrl from "../assets/story-nav/circure-emblem.png";
-import ribbonUrl from "../assets/story-nav/circure-ribbon.png";
+const emblemUrl = "https://static.igem.wiki/teams/6056/wiki/files/pages/shared/circure-emblem.avif";
+const ribbonUrl = "https://static.igem.wiki/teams/6056/wiki/files/pages/shared/circure-ribbon.avif";
 import {
   INTRO_WORDMARK_GLYPHS,
   INTRO_WORDMARK_VIEWBOX,
 } from "../data/homeIntroWordmark";
 import { useFooterEasterEgg } from "../hooks/useFooterEasterEgg";
+import { PageImagePreloads } from "./common/PageImagePreloads";
 import "../styles/footer-easter-egg.css";
 
 /** Sample the real CirCure vector artwork, so particles and outlines match exactly. */
@@ -103,6 +104,7 @@ export function FooterEasterEgg() {
 
   return (
     <>
+      <PageImagePreloads sources={[emblemUrl, ribbonUrl]} />
       <div className="finale-seam">
         <button
           ref={seamRef}

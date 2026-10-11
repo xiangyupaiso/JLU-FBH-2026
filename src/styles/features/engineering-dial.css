@@ -1,80 +1,23 @@
-/* Engineering-only TIME dial; geometry and colour roles retained. */
+/* Engineering TIME dial — Layered artwork and dual animated pointers */
 .eng-dial a {
   cursor: pointer;
   outline: none;
 }
 
-.eng-dial__teeth {
-  fill: #ffffff;
-  stroke: var(--eng-ink);
-  stroke-width: 1.4;
-  stroke-linejoin: round;
+.eng-dial__base-image {
+  pointer-events: none;
+  user-select: none;
 }
 
-.eng-dial__bezel {
-  fill: #ffffff;
-  stroke: var(--eng-ink);
-  stroke-width: 1.4;
-}
-
-.eng-dial__groove {
-  fill: none;
-  stroke: var(--eng-ink);
-  stroke-width: 1.2;
-}
-
-/* Outer TIME ring ---------------------------------------------------------- */
-
-.eng-dial__cycle {
-  --c: var(--eng-t);
-}
-.eng-dial__cycle--i {
-  --c: var(--eng-i);
-}
-.eng-dial__cycle--m {
-  --c: var(--eng-m);
-}
-.eng-dial__cycle--e {
-  --c: var(--eng-e);
-}
-
+/* Outer TIME ring interactive sectors -------------------------------------- */
 .eng-dial__cycle-face {
-  fill: color-mix(in srgb, var(--c) 8%, #ffffff);
-  stroke: color-mix(in srgb, var(--eng-ink) 35%, transparent);
-  stroke-width: 0.8;
-  transition: fill 320ms ease;
-}
-
-.eng-dial__cycle-letter {
-  font-size: 19px;
-  font-weight: 800;
-  text-anchor: middle;
-  dominant-baseline: central;
-  fill: color-mix(in srgb, var(--c) 45%, #ffffff);
-  transition: fill 320ms ease;
-}
-
-.eng-dial__cycle-word {
-  font-size: 6.6px;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  text-anchor: middle;
-  fill: color-mix(in srgb, var(--c) 45%, #ffffff);
-  transition: fill 320ms ease;
+  fill: transparent;
+  stroke: none;
+  transition: fill 240ms ease;
 }
 
 .eng-dial__cycle.is-active .eng-dial__cycle-face {
-  fill: color-mix(in srgb, var(--c) 26%, #ffffff);
-}
-
-.eng-dial__cycle.is-active .eng-dial__cycle-letter,
-.eng-dial__cycle.is-active .eng-dial__cycle-word {
-  fill: color-mix(in srgb, var(--c) 82%, var(--eng-ink));
-}
-
-.eng-dial__cycle.is-planned .eng-dial__cycle-face {
-  stroke-dasharray: 2.5 2.5;
+  fill: rgba(255, 255, 255, 0.3);
 }
 
 .eng-dial__cycle.is-planned {
@@ -83,67 +26,37 @@
 
 a.eng-dial__cycle:not(.is-active):hover .eng-dial__cycle-face,
 a.eng-dial__cycle:focus-visible .eng-dial__cycle-face {
-  fill: color-mix(in srgb, var(--c) 16%, #ffffff);
+  fill: rgba(255, 255, 255, 0.16);
 }
 
-/* Inner DBTL dial ---------------------------------------------------------- */
-
-.eng-dial__stage {
-  --s: var(--eng-design);
-}
-.eng-dial__stage--build {
-  --s: var(--eng-build);
-}
-.eng-dial__stage--test {
-  --s: var(--eng-test);
-}
-.eng-dial__stage--learn {
-  --s: var(--eng-learn);
-}
-
+/* Inner DBTL dial interactive sectors -------------------------------------- */
 .eng-dial__stage-face {
-  fill: #ffffff;
-  stroke: color-mix(in srgb, var(--eng-ink) 30%, transparent);
-  stroke-width: 0.8;
-  transition: fill 240ms ease;
-}
-
-.eng-dial__stage-label {
-  font-size: 9px;
-  font-weight: 700;
-  text-anchor: middle;
-  dominant-baseline: central;
-  fill: color-mix(in srgb, var(--eng-ink) 55%, transparent);
+  fill: transparent;
+  stroke: none;
   transition: fill 240ms ease;
 }
 
 .eng-dial__stage.is-active .eng-dial__stage-face {
-  fill: color-mix(in srgb, var(--s) 18%, #ffffff);
+  fill: rgba(255, 255, 255, 0.36);
 }
 
-.eng-dial__stage.is-active .eng-dial__stage-label {
-  fill: var(--s);
-  font-weight: 800;
+a.eng-dial__stage:not(.is-active):hover .eng-dial__stage-face,
+a.eng-dial__stage:focus-visible .eng-dial__stage-face {
+  fill: rgba(255, 255, 255, 0.18);
 }
 
-.eng-dial__stage:not(.is-active):hover .eng-dial__stage-face,
-.eng-dial__stage:focus-visible .eng-dial__stage-face {
-  fill: color-mix(in srgb, var(--s) 9%, #ffffff);
+/* Dual pointers and center cap --------------------------------------------- */
+.eng-dial__hand-long,
+.eng-dial__hand-short {
+  pointer-events: none;
+  user-select: none;
+  will-change: transform;
+  filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.18));
 }
 
-.eng-dial__hand {
-  fill: #e1a73c;
-  stroke: #7c5108;
-  stroke-width: 0.8;
-  stroke-linejoin: round;
+.eng-dial__cap {
+  pointer-events: none;
+  user-select: none;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.22));
 }
 
-.eng-dial__hub {
-  fill: #ffffff;
-  stroke: var(--eng-ink);
-  stroke-width: 1.4;
-}
-
-.eng-dial__pin {
-  fill: var(--eng-ink);
-}

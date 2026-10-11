@@ -10,6 +10,9 @@
 
 const LEAVE_MS = 380; // matches `.page-loader` opacity transition
 const COMPLETE_HOLD_MS = 350; // let the finished illustration register
+// External apps may never send their readiness message when their service is
+// unavailable. This limit applies only to explicitly opted-in embeds.
+const EMBED_WAIT_MS = 12000;
 
 let token = 0;
 let leaveTimer = 0;
@@ -117,22 +120,30 @@ async function pageReady(signal: AbortSignal) {
     requestAnimationFrame(() => requestAnimationFrame(resolve)),
   );
   if (signal.aborted) return;
-  await deferredStyles();
+  await deferredStyles(signal);
   if (signal.aborted) return;
   await Promise.all([document.fonts?.ready, pageImagesAndAnimations(signal)]);
 }
 
 /** The app stylesheet is loaded non-blocking (see vite.config.ts). */
-function deferredStyles() {
+function deferredStyles(signal: AbortSignal) {
   const links = Array.from(
     document.querySelectorAll<HTMLLinkElement>("link[data-deferred-css]"),
-  ).filter((link) => link.media !== "all");
+  ).filter((link) => link.media !== "all" && !link.sheet);
   return Promise.all(
     links.map(
       (link) =>
         new Promise<void>((resolve) => {
-          link.addEventListener("load", () => resolve(), { once: true });
-          link.addEventListener("error", () => resolve(), { once: true });
+          const done = () => {
+            link.removeEventListener("load", done);
+            link.removeEventListener("error", done);
+            signal.removeEventListener("abort", done);
+            resolve();
+          };
+          link.addEventListener("load", done, { once: true });
+          link.addEventListener("error", done, { once: true });
+          signal.addEventListener("abort", done, { once: true });
+          if (signal.aborted || link.media === "all" || link.sheet) done();
         }),
     ),
   );
@@ -140,13 +151,29 @@ function deferredStyles() {
 
 const URL_PATTERN = /url\(["']?([^"')]+)["']?\)/g;
 
-async function waitForImage(image: HTMLImageElement) {
-  if (image.decode) return image.decode().catch(() => {});
-  if (image.complete) return;
-  return new Promise<void>((resolve) => {
-    image.addEventListener("load", () => resolve(), { once: true });
-    image.addEventListener("error", () => resolve(), { once: true });
-  });
+async function waitForImage(image: HTMLImageElement, signal: AbortSignal) {
+  if (signal.aborted || (!image.src && !image.srcset)) return;
+  // Switching lazy -> eager starts a new request. decode() called before that
+  // request is ready can reject, which must not be mistaken for a loaded image.
+  image.loading = "eager";
+  if (!image.complete) {
+    await new Promise<void>((resolve) => {
+      const done = () => {
+        image.removeEventListener("load", done);
+        image.removeEventListener("error", done);
+        signal.removeEventListener("abort", done);
+        resolve();
+      };
+      image.addEventListener("load", done, { once: true });
+      image.addEventListener("error", done, { once: true });
+      signal.addEventListener("abort", done, { once: true });
+      if (image.complete || signal.aborted) done();
+    });
+  }
+  // A failed URL settles through error; it must not trap the loader forever.
+  if (!signal.aborted && image.naturalWidth > 0 && image.decode) {
+    await image.decode().catch(() => {});
+  }
 }
 
 async function waitForAnimation(video: HTMLVideoElement, signal: AbortSignal) {
@@ -168,47 +195,81 @@ async function waitForAnimation(video: HTMLVideoElement, signal: AbortSignal) {
   });
 }
 
+async function waitForEmbed(frame: HTMLIFrameElement, signal: AbortSignal) {
+  if (signal.aborted || frame.dataset.pageEmbedReady === "true") return;
+  await new Promise<void>((resolve) => {
+    const done = () => {
+      window.clearTimeout(timeout);
+      frame.removeEventListener("wiki-embed-ready", done);
+      frame.removeEventListener("error", done);
+      signal.removeEventListener("abort", done);
+      resolve();
+    };
+    const timeout = window.setTimeout(done, EMBED_WAIT_MS);
+    frame.addEventListener("wiki-embed-ready", done, { once: true });
+    frame.addEventListener("error", done, { once: true });
+    signal.addEventListener("abort", done, { once: true });
+    if (signal.aborted || frame.dataset.pageEmbedReady === "true") done();
+  });
+}
+
 async function pageImagesAndAnimations(signal: AbortSignal): Promise<void> {
   const root = document.getElementById("root");
   if (!root) return;
-  // The Software record contains a large set of screenshot figures. Let the
-  // browser's native lazy loader fetch those as readers approach them instead
-  // of making every below-the-fold image a prerequisite for opening the page.
-  const isSoftwareRoute = Boolean(
-    root.querySelector('[data-wiki-route="/software"]'),
-  );
   const pending: Promise<void>[] = [];
   const seen = new Set<string>();
   let count = 0;
-  const preload = (url: string) => {
-    if (!url || seen.has(url)) return;
-    seen.add(url);
+  const preload = (url: string, crossOrigin: string | null = null) => {
+    if (!url || url.startsWith("#")) return;
+    const key = JSON.stringify([url, crossOrigin]);
+    if (seen.has(key)) return;
+    seen.add(key);
     const image = new Image();
+    if (crossOrigin !== null) image.crossOrigin = crossOrigin;
     image.src = url;
-    pending.push(waitForImage(image));
+    pending.push(waitForImage(image, signal));
   };
+
+  // React hoists these resource hints into <head>. They include figures in
+  // closed drawers, inactive tabs and dialogs that are not in the route DOM.
+  for (const link of document.querySelectorAll<HTMLLinkElement>(
+    'link[rel="preload"][as="image"]',
+  )) {
+    preload(link.href, link.crossOrigin);
+  }
 
   // Route heroes and home scenes paint their art as CSS backgrounds.
   for (const element of root.querySelectorAll<HTMLElement>("*")) {
     if (signal.aborted) return;
     // Yield during large routes instead of blocking the loader's drawing.
     if (++count % 120 === 0) await new Promise(requestAnimationFrame);
-    // Software screenshots stay lazy: decoding all of them before dismissing
-    // the route loader can hold the page behind tens of megabytes of PNGs.
-    // Other routes retain the existing eager-readiness behavior.
+    // Offscreen and initially transparent animation layers belong to this
+    // page too. Eager loading avoids waiting forever on a lazy image's decode.
     if (element instanceof HTMLImageElement) {
-      if (isSoftwareRoute && element.loading === "lazy") continue;
-      element.loading = "eager";
-      pending.push(waitForImage(element));
+      pending.push(waitForImage(element, signal));
     }
-    if (element instanceof SVGImageElement) preload(element.href.baseVal);
+    if (element instanceof SVGImageElement) {
+      preload(element.href.baseVal, element.getAttribute("crossorigin"));
+    }
     if (element instanceof HTMLVideoElement) {
       preload(element.poster);
       if (element.autoplay) pending.push(waitForAnimation(element, signal));
     }
+    if (
+      element instanceof HTMLIFrameElement &&
+      element.hasAttribute("data-page-embed-ready")
+    ) {
+      pending.push(waitForEmbed(element, signal));
+    }
     for (const pseudo of [null, "::before", "::after"]) {
       const style = getComputedStyle(element, pseudo);
-      for (const value of [style.backgroundImage, style.maskImage]) {
+      for (const value of [
+        style.backgroundImage,
+        style.maskImage,
+        style.borderImageSource,
+        style.listStyleImage,
+        style.content,
+      ]) {
         for (const [, url] of value.matchAll(URL_PATTERN)) preload(url);
       }
     }

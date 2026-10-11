@@ -1,15 +1,18 @@
 import {
   useCallback,
+  useEffect,
   useId,
   useRef,
   useState,
   type CSSProperties,
 } from "react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 const ringImage = "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-1-layer-4.webp";
 const targetImage = "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-2-layer-6.webp";
 const immuneImage = "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-2-layer-5.webp";
 import { useAntigenDrag } from "../../hooks/useAntigenDrag";
 import { useAntigenMechanism } from "../../hooks/useAntigenMechanism";
+import { HOME_PLAYBACK_ANTIGEN_EVENT } from "../../utils/homePlayback";
 import "../../styles/home-antigen-switch.css";
 
 const antigens = [
@@ -109,11 +112,12 @@ export function HomeAntigenSwitch() {
   const root = useRef<HTMLDivElement>(null);
   const [selected, setSelected] = useState(0);
   const [hasInteracted, setHasInteracted] = useState(false);
+  const [mechanismExpanded, setMechanismExpanded] = useState(false);
   const { phase, playing, replay } = useAntigenMechanism(root, selected, {
     growing: nascentProteinPath,
     processed: processedProteinPath,
     peptide: productEpitopes[selected],
-  });
+  }, mechanismExpanded);
   const id = useId().replace(/:/g, "");
   const slotId = id + "-slot";
   const backboneId = id + "-backbone";
@@ -124,22 +128,62 @@ export function HomeAntigenSwitch() {
     (index: number) => {
       setSelected(index);
       setHasInteracted(true);
-      replay();
+      if (mechanismExpanded) replay();
     },
-    [replay],
+    [mechanismExpanded, replay],
   );
   useAntigenDrag(root, handleSelect);
+  const showMechanism = useCallback(() => {
+    const scene = root.current;
+    const notes = scene?.querySelector("details");
+    if (notes) notes.open = false;
+    setMechanismExpanded(true);
+    // Re-measure the carried ring and normal-flow chapter heights after layout.
+    requestAnimationFrame(() => {
+      if (scene?.isConnected) ScrollTrigger.refresh();
+    });
+  }, []);
+  useEffect(() => {
+    const chapter = root.current?.closest(".story-chapter");
+    if (!chapter) return;
+    // The overview hands off to the example as the chapter reaches the screen.
+    const trigger = ScrollTrigger.create({
+      trigger: chapter,
+      start: "top top",
+      end: "bottom top",
+      onEnter: showMechanism,
+      onEnterBack: showMechanism,
+    });
+    if (trigger.progress > 0) showMechanism();
+    return () => trigger.kill();
+  }, [showMechanism]);
+  useEffect(() => {
+    const onPlaybackAntigen = (event: Event) => {
+      const index = (event as CustomEvent<{ selected: number }>).detail.selected;
+      if (!Number.isInteger(index) || index < 0 || index >= antigens.length)
+        return;
+      setSelected(index);
+      setHasInteracted(true);
+      showMechanism();
+      replay();
+    };
+    window.addEventListener(HOME_PLAYBACK_ANTIGEN_EVENT, onPlaybackAntigen);
+    return () => {
+      window.removeEventListener(HOME_PLAYBACK_ANTIGEN_EVENT, onPlaybackAntigen);
+    };
+  }, [replay, showMechanism]);
 
   return (
     <div
       ref={root}
       className="home-antigen-switch"
+      data-mechanism-expanded={mechanismExpanded}
       data-guidance={!hasInteracted}
-      data-phase={phase}
-      data-playing={playing}
-      data-primed={phase >= 4}
-      data-engaged={phase >= 5}
-      data-apoptosis={phase === 7}
+      data-phase={mechanismExpanded ? phase : 0}
+      data-playing={mechanismExpanded && playing}
+      data-primed={mechanismExpanded && phase >= 4}
+      data-engaged={mechanismExpanded && phase >= 5}
+      data-apoptosis={mechanismExpanded && phase === 7}
       data-selected-filter={filterUrl(selected)}
       style={
         {
@@ -148,7 +192,7 @@ export function HomeAntigenSwitch() {
       }
     >
       <div className="home-antigen-switch__content">
-        <div className="home-antigen-switch__diagram">
+        <div className="home-antigen-switch__diagram" id={id + "-diagram"}>
           <div className="home-antigen-switch__rna" data-antigen-ring>
             <svg
               viewBox="0 0 300 300"
@@ -387,7 +431,7 @@ export function HomeAntigenSwitch() {
               circRNA
             </span>
           </div>
-          <div className="home-antigen-switch__bridge">
+          <div className="home-antigen-switch__bridge" aria-hidden={!mechanismExpanded}>
             <svg
               data-antigen-bridge
               className="home-antigen-switch__arrow"
@@ -565,7 +609,7 @@ export function HomeAntigenSwitch() {
               ))}
             </span>
           </div>
-          <div className="home-antigen-switch__target">
+          <div className="home-antigen-switch__target" aria-hidden={!mechanismExpanded}>
             <svg
               viewBox="-45 -12 510 470"
               role="img"
@@ -672,6 +716,18 @@ export function HomeAntigenSwitch() {
             </svg>
           </div>
         </div>
+        <div className="home-antigen-switch__copy">
+          <h3>Like changing <em>a key.</em></h3>
+          <p>
+            Drag or select an antigen sequence to explore the same backbone
+            with a different target.
+          </p>
+          <p>
+            Our design separates the shared circRNA backbone from the
+            antigen-encoding sequence. A, B and C illustrate this concept;
+            they are not experimental results.
+          </p>
+        </div>
         <div
           className="home-antigen-switch__options"
           role="group"
@@ -708,7 +764,7 @@ export function HomeAntigenSwitch() {
         </div>
         <div className="home-antigen-switch__footer">
           <details className="home-antigen-switch__science">
-            <summary>How it works</summary>
+            <summary>Mechanism notes</summary>
             <div className="home-antigen-switch__science-content">
               <p>
                 Change the antigen-encoding sequence during construct design.
@@ -752,7 +808,7 @@ export function HomeAntigenSwitch() {
             onClick={replay}
             aria-label="Replay the antigen mechanism"
           >
-            ↻
+            ↻ Replay
           </button>
         </div>
       </div>
@@ -773,8 +829,10 @@ export function HomeAntigenSwitch() {
         </svg>
       </div>
       <p className="story-sr-only" role="status" aria-live="polite">
-        Antigen-encoding sequence {antigen.name} selected. {phaseLabels[phase]}.
-        Conceptual mechanism.
+        Antigen-encoding sequence {antigen.name} selected.{" "}
+        {mechanismExpanded
+          ? `${phaseLabels[phase]}. Conceptual mechanism.`
+          : "Shared circRNA backbone with a replaceable antigen sequence."}
       </p>
     </div>
   );

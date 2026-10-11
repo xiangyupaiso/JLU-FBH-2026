@@ -1,5 +1,5 @@
-import designHero from "../../assets/wiki/wet-lab-heroes/wet-lab-design-hero.webp";
-import platformHero from "../../assets/wiki/wet-lab-heroes/wet-lab-platform-hero.webp";
+const designHero = "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/wet-lab-design-hero-b77d14a9e8d7.webp";
+const platformHero = "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/wet-lab-platform-hero-63e29cd53ae1.webp";
 
 const experimentsHero =
   "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/wet-lab-experiments-hero.webp";

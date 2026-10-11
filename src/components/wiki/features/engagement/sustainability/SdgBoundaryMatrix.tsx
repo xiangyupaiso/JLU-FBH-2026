@@ -1,5 +1,5 @@
 import type { EChartsOption } from "echarts";
-import { SDG, useSdgChart } from "./SdgInteractionHeatmap";
+import { SDG, sdgTooltip, useSdgChart } from "./SdgInteractionHeatmap";
 
 /** 17x17 boundary classes, row = source, column = target. 0 "-", 1 "0", 2 C, 3 E, 4 ±. */
 const M = [
@@ -106,11 +106,12 @@ function option(s: number): EChartsOption {
       axisLabel: { align: "right", color: "#000", fontSize: 10 * s, fontFamily: FONT, margin: 8 * s },
     },
     tooltip: {
+      ...sdgTooltip(978.1 * s),
       formatter: (p: unknown) => {
         const [c, r, v] = (p as { value: number[] }).value;
         return c === r
           ? `SDG ${r + 1} ${SDG[r]} (diagonal / not defined)`
-          : `SDG ${r + 1} ${SDG[r]} → SDG ${c + 1} ${SDG[c]}: <b>${SYM[v]}</b> ${LEGEND.find((l) => l.i === v)!.desc}`;
+          : `SDG ${r + 1} ${SDG[r]}<br/>→ SDG ${c + 1} ${SDG[c]}<br/><b>${SYM[v]}</b> ${LEGEND.find((l) => l.i === v)!.desc}`;
       },
     },
     visualMap: {

@@ -2,7 +2,7 @@
  * Structured content for the Sustainability page (Engagement route).
  *
  * Source: 文案集/engagement/sustainability/6.3 Sustainability wiki定稿.md
- * Scope: Overview → SDG 3 → Stakeholder Sustainability Tracker.
+ * Scope: Overview → SDG 3 → Stakeholder Sustainability Tracker → SDG 9 → SDG 12.
  * Pure data layer — zero React/JSX elements. Copy is verbatim from the source;
  * `**bold**` markers are rendered by the shared inline formatter.
  *
@@ -14,6 +14,8 @@
 
 import { pdfPair, type LegacyTool, type SdgChapter, type SustainabilityStat } from "./sdgChapterContract";
 import { sdg3Chapter } from "./sustainabilitySdg3";
+import { sdg9Chapter } from "./sustainabilitySdg9";
+import { sdg12Chapter } from "./sustainabilitySdg12";
 
 /* ----------------------------------------------------------------------------
  * Epigraph
@@ -63,8 +65,8 @@ export const sustainabilityOverview = {
     "Beyond project evaluation, we also **documented** our actions, data, and impact, ultimately forming **26 reusable methods and tools** that make our SDG contributions more **measurable, verifiable, and reusable** for future iGEM teams.",
 };
 
-/** Three core SDGs (Overview graphic, rebuilt as cards). SDG 9 / 12 chapters
- * are not online yet, so they point to the SET section that introduces them. */
+/** Three core SDGs (Overview graphic, rebuilt as cards). SDG 12 remains queued
+ * for a later chapter; SDG 9 links to its live chapter below. */
 export const coreSdgs: ReadonlyArray<CoreSdg> = [
   {
     number: 3,
@@ -76,7 +78,7 @@ export const coreSdgs: ReadonlyArray<CoreSdg> = [
     number: 9,
     title: "Industry, Innovation and Infrastructure",
     summary: "Translating biomedical innovations into practice.",
-    target: "set-core-challenges",
+    target: "sdg9-industry",
   },
   {
     number: 12,
@@ -95,7 +97,7 @@ export const impactTiers: ReadonlyArray<ImpactTier> = [
     description: "Focuses on CirCure’s three core goals.",
     sdgs: [
       { number: 3, target: "sdg3-health" },
-      { number: 9, target: "set-core-challenges" },
+      { number: 9, target: "sdg9-industry" },
       { number: 12, target: "set-core-challenges" },
     ],
   },
@@ -214,7 +216,7 @@ export const setCoreChallengesSection = {
 
 
 /** SDG chapters live on the page, in reading order. */
-export const sustainabilityChapters: ReadonlyArray<SdgChapter> = [sdg3Chapter];
+export const sustainabilityChapters: ReadonlyArray<SdgChapter> = [sdg3Chapter, sdg9Chapter, sdg12Chapter];
 
 /* ----------------------------------------------------------------------------
  * Stakeholder Sustainability Tracker

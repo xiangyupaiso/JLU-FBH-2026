@@ -24,6 +24,9 @@ import { linkify, renderInlineFormatting } from "./proseInline";
 import { WikiLineSidebar, type WikiLineSidebarItem } from "./WikiLineSidebar";
 import { WikiNextRecord } from "./WikiNextRecord";
 import { WikiProtocolModal } from "./WikiProtocolViewer";
+import { PageImagePreloads } from "../common/PageImagePreloads";
+import { wikiPageImages } from "./wikiPageImages";
+import { experimentProtocolImage } from "../../data/wet-lab/experimentProtocolPages";
 import type { ExperimentProtocolPair } from "../../data/wet-lab/experimentProtocolPages";
 import "../../styles/wiki-rebuild.css";
 import "../../styles/wetlab-editorial.css";
@@ -50,6 +53,10 @@ import "../../styles/features/experiments-panels.css";
  *
  * Wet Lab records use this component with their own three-token palette;
  * nothing in the route structure changes between modules.
+ *
+ * Image readiness is part of this template: hero and every content figure
+ * preload before the shared loading cover leaves. Interaction-only images
+ * use `preloadImages` or the shared `PageImagePreloads` in their Feature.
  */
 
 type FeatureMap = Partial<Record<string, ReactNode>>;
@@ -93,6 +100,11 @@ interface WikiRoutePageProps {
   content: WikiPageContent;
   /** Per-page full-bleed hero art; resolved by the module's asset map. */
   heroImage?: string;
+  /**
+   * Small images used only by an inactive tab or dialog. Hero and content
+   * figures are collected automatically; do not list PDF or game resources.
+   */
+  preloadImages?: readonly string[];
   features?: FeatureMap;
   /** Module scope class that carries the palette, e.g. `wiki-page--project`. */
   pageClassName?: string;
@@ -524,7 +536,7 @@ function RouteBlock({
           <img
             src={block.src}
             alt={block.alt}
-            loading="lazy"
+            loading="eager"
             decoding="async"
           />
           {block.figureLabel ? (
@@ -1002,6 +1014,23 @@ function RouteSection({
       data-section-layout={section.layout ?? "editorial"}
       data-wiki-section
     >
+      {section.masthead ? (
+        <figure className="wiki-masthead">
+          <img
+            className="wiki-masthead__image"
+            src={section.masthead.image}
+            alt={section.masthead.imageAlt}
+            decoding="async"
+          />
+          <figcaption className="wiki-masthead__epigraph">
+            <blockquote>{renderInlineFormatting(section.masthead.quote)}</blockquote>
+            <cite>
+              <strong>{section.masthead.attribution}</strong>
+              <span>{section.masthead.attributionRole}</span>
+            </cite>
+          </figcaption>
+        </figure>
+      ) : null}
       <header
         className={`wiki-section__heading${
           section.hideSectionNumber ? " wiki-section__heading--unnumbered" : ""
@@ -1103,6 +1132,7 @@ const MemoRouteSection = memo(RouteSection);
 export function WikiRoutePage({
   content,
   heroImage,
+  preloadImages,
   features = {},
   pageClassName = "",
   theme,
@@ -1116,6 +1146,18 @@ export function WikiRoutePage({
   outlineSlot,
   leadSection,
 }: WikiRoutePageProps) {
+  const imageSources = useMemo(
+    () => [
+      heroImage,
+      ...wikiPageImages(content),
+      ...(preloadImages ?? []),
+      ...(protocolPairs ?? []).flatMap((pair) => [
+        experimentProtocolImage(pair.flowPage),
+        experimentProtocolImage(pair.inventoryPage),
+      ]),
+    ],
+    [content, heroImage, preloadImages, protocolPairs],
+  );
   const rootRef = useRef<HTMLElement>(null);
   const interfaceRef = useRef<HTMLDivElement>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -1258,7 +1300,8 @@ export function WikiRoutePage({
     });
     return {
       id: section.id,
-      index: section.index,
+      // Unnumbered sections (e.g. a "00" station map) stay unnumbered here too.
+      index: section.hideSectionNumber ? "" : section.index,
       label: section.navLabel ?? section.title,
       meta: section.kicker,
       children: nestedSubheadings.length ? nestedSubheadings : undefined,
@@ -1278,6 +1321,7 @@ export function WikiRoutePage({
       data-route-theme={theme}
       data-active-section={activeSection}
     >
+      <PageImagePreloads sources={imageSources} />
       <div className="wiki-page-progress" aria-hidden="true">
         <span />
       </div>

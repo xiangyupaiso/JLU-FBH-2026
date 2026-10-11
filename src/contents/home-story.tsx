@@ -1,5 +1,6 @@
 import {
   useEffect,
+  useId,
   useRef,
   type CSSProperties,
   type ReactNode,
@@ -10,7 +11,7 @@ import { HomeRnaSequence } from "../components/home/HomeRnaSequence";
 import { WardInfusionTube } from "../components/home/WardInfusionTube";
 import originalManifest from "../assets/home/story/manifest.json";
 import supplements from "../assets/home/supplements/manifest.json";
-import patientConcerned from "../assets/home/ward-transition/patient-teary-20261004.webp";
+const patientConcerned = "https://static.igem.wiki/teams/6056/wiki/files/pages/home/patient-teary-20261004-467cbc4b5db7.webp";
 const clinicianConcerned = "https://static.igem.wiki/teams/6056/wiki/files/pages/home/clinician-concerned.avif";
 const clinicianEllipsis = "https://static.igem.wiki/teams/6056/wiki/files/pages/home/clinician-ellipsis.avif";
 const patientQuestion = "https://static.igem.wiki/teams/6056/wiki/files/pages/home/patient-question.avif";
@@ -19,8 +20,8 @@ import { HomeAntigenSwitch } from "../components/home/HomeAntigenSwitch";
 import { HomeFinale } from "../components/home/HomeFinale";
 import { HomeExploreLinks } from "../components/home/HomeExploreLinks";
 const mapDataNoteUrl = "https://static.igem.wiki/teams/6056/wiki/files/pages/home/map-data-note.avif";
-import mapLatestUrl from "../assets/home/story/map-latest-20261004.webp";
-import mapCloudNorthwestUrl from "../assets/home/story/map-cloud-northwest.webp";
+const mapLatestUrl = "https://static.igem.wiki/teams/6056/wiki/files/pages/home/map-latest-20261004-02da5d799cd2.webp";
+const mapCloudNorthwestUrl = "https://static.igem.wiki/teams/6056/wiki/files/pages/home/map-cloud-northwest-7a14ee146da5.webp";
 import "../styles/home-story.css";
 import "../styles/home-tnbc-map.css";
 import "../styles/home-reading.css";
@@ -74,11 +75,31 @@ const imageUrls: Record<string, string> = {
   "../assets/home/story/scene-9-layer-2.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-9-layer-2.webp",
   "../assets/home/story/scene-9-layer-3.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-9-layer-3.webp",
 };
-const supplementUrls = import.meta.glob("../assets/home/supplements/*.webp", {
-  eager: true,
-  query: "?url",
-  import: "default",
-}) as Record<string, string>;
+const supplementUrls: Record<string, string> = {
+  "../assets/home/supplements/fan-1.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/fan-1-7b6a2cdfd1c0.webp",
+  "../assets/home/supplements/fan-2.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/fan-2-99316fb0dee8.webp",
+  "../assets/home/supplements/fan-3.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/fan-3-5a2cfbaaa1bd.webp",
+  "../assets/home/supplements/fan-4.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/fan-4-ca142f3896a2.webp",
+  "../assets/home/supplements/fan-5.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/fan-5-6e5a6d6fc4bd.webp",
+  "../assets/home/supplements/fan-6.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/fan-6-f2d48ddfefe2.webp",
+  "../assets/home/supplements/fan-7.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/fan-7-e0b9ba792000.webp",
+  "../assets/home/supplements/fan-8.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/fan-8-2576354a8c9d.webp",
+  "../assets/home/supplements/tear-1.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/tear-1-6f99fafd2a57.webp",
+  "../assets/home/supplements/tear-2.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/tear-2-df0640fe68b9.webp",
+  "../assets/home/supplements/tear-3.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/tear-3-e5777e499af5.webp",
+  "../assets/home/supplements/tear-4.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/tear-4-74fdbdde9e93.webp",
+  "../assets/home/supplements/tear-5.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/tear-5-3a26285560f2.webp",
+  "../assets/home/supplements/thinking-1.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/thinking-1-cf39f9eecc9d.webp",
+  "../assets/home/supplements/thinking-10.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/thinking-10-958af66e1b31.webp",
+  "../assets/home/supplements/thinking-2.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/thinking-2-9c0e1bf60d35.webp",
+  "../assets/home/supplements/thinking-3.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/thinking-3-946139db0f4f.webp",
+  "../assets/home/supplements/thinking-4.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/thinking-4-a202ea746a90.webp",
+  "../assets/home/supplements/thinking-5.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/thinking-5-e9181f8afd09.webp",
+  "../assets/home/supplements/thinking-6.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/thinking-6-3ae0541c5bcc.webp",
+  "../assets/home/supplements/thinking-7.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/thinking-7-da0eb2680bea.webp",
+  "../assets/home/supplements/thinking-8.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/thinking-8-f1b1cea38333.webp",
+  "../assets/home/supplements/thinking-9.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/thinking-9-f7c387ca859a.webp",
+};
 
 function artworkUrl(file: string) {
   return (
@@ -154,10 +175,11 @@ function StoryArtwork({
           ) : (
             <img
               key={layer.file}
+              crossOrigin="anonymous"
               src={src}
               alt=""
               aria-hidden="true"
-              loading="lazy"
+              loading="eager"
               decoding="async"
               className="story-layer story-layer--reveal"
               data-layer={layer.number}
@@ -198,7 +220,7 @@ function WardArtwork() {
             src={imageUrls[`../assets/home/story/${item.file}`]}
             alt=""
             aria-hidden="true"
-            loading="lazy"
+            loading="eager"
             decoding="async"
             style={{
               left: `${item.left}%`,
@@ -219,7 +241,7 @@ function WardArtwork() {
             src={src}
             alt=""
             aria-hidden="true"
-            loading="lazy"
+            loading="eager"
             decoding="async"
           />
         ))}
@@ -234,7 +256,7 @@ function WardArtwork() {
           data-ward="original-2"
           src={imageUrls[`../assets/home/story/${patient.file}`]}
           alt=""
-          loading="lazy"
+          loading="eager"
           decoding="async"
           style={{
             left: `${patient.left}%`,
@@ -248,7 +270,7 @@ function WardArtwork() {
           data-ward="patient"
           src={patientConcerned}
           alt=""
-          loading="lazy"
+          loading="eager"
           decoding="async"
         />
         <img
@@ -256,7 +278,7 @@ function WardArtwork() {
           data-ward="question"
           src={patientQuestion}
           alt=""
-          loading="lazy"
+          loading="eager"
           decoding="async"
         />
       </div>
@@ -264,24 +286,45 @@ function WardArtwork() {
   );
 }
 
-// Keep the original receiving cloud at its established viewport coordinates.
-// The latest map has complete land shapes and needs no painted repair layers.
+// Crop the original moving details independently of the latest land artwork.
 const mapMotionPieces = [
+  { name: "cloud-west", kind: "cloud", x: 0, y: 30, width: 8, height: 9 },
   {
     name: "cloud-northwest",
     kind: "cloud",
-    x: 12.78125,
+    x: 10,
     y: 10,
-    width: 8.26875,
+    width: 9,
     height: 8,
   },
+  { name: "cloud-north", kind: "cloud", x: 57, y: 6, width: 8, height: 7 },
+  { name: "cloud-east", kind: "cloud", x: 93, y: 25, width: 7, height: 9 },
+  { name: "boat-smoke", kind: "cloud", x: 47, y: 66, width: 5, height: 4 },
+  { name: "wave-west-1", kind: "wave", x: 0, y: 64, width: 8, height: 4 },
+  { name: "wave-west-2", kind: "wave", x: 0, y: 69, width: 8, height: 4 },
+  { name: "wave-southwest-1", kind: "wave", x: 12, y: 78, width: 8, height: 4 },
+  { name: "wave-southwest-2", kind: "wave", x: 12, y: 82, width: 8, height: 5 },
+  { name: "wave-central-west-1", kind: "wave", x: 32, y: 59, width: 7, height: 4 },
+  { name: "wave-central-west-2", kind: "wave", x: 39, y: 64, width: 9, height: 4 },
+  { name: "wave-central-west-3", kind: "wave", x: 32, y: 83, width: 7, height: 5 },
+  { name: "wave-central", kind: "wave", x: 50, y: 52, width: 8, height: 5 },
+  { name: "wave-central-east-1", kind: "wave", x: 63, y: 40, width: 9, height: 5 },
+  { name: "wave-central-east-2", kind: "wave", x: 61, y: 44, width: 12, height: 5 },
+  { name: "wave-central-east-3", kind: "wave", x: 60, y: 64, width: 12, height: 5 },
+  { name: "wave-central-east-4", kind: "wave", x: 65, y: 68, width: 5, height: 4 },
+  { name: "wave-east-1", kind: "wave", x: 86, y: 39, width: 8, height: 4 },
+  { name: "wave-east-2", kind: "wave", x: 87, y: 43, width: 6, height: 4 },
+  { name: "wave-east-3", kind: "wave", x: 72, y: 74, width: 5, height: 4 },
+  { name: "wave-east-4", kind: "wave", x: 91, y: 81, width: 9, height: 5 },
+  { name: "wave-boat", kind: "wave", x: 43, y: 79.5, width: 9.5, height: 2.5 },
+  { name: "boat", kind: "boat", x: 42, y: 70, width: 13.2, height: 9 },
 ] as const;
 
 const mapStatistics = [
   {
     key: "incidence-countries",
     value: "164",
-    detail: "countries · #1 incidence",
+    detail: "countries · 1st in incidence",
     description:
       "164 countries where breast cancer ranks first for new cases among women",
   },
@@ -295,7 +338,7 @@ const mapStatistics = [
   {
     key: "mortality-countries",
     value: "122",
-    detail: "countries · #1 mortality",
+    detail: "countries · 1st in mortality",
     description:
       "122 countries where breast cancer ranks first for cancer deaths among women",
   },
@@ -309,7 +352,13 @@ const mapStatistics = [
 ] as const;
 
 function MapArtwork() {
+  const detailMaskId = useId();
+  const detailInkId = `${detailMaskId}-ink`;
+  const detailFrameId = `${detailMaskId}-frame`;
+  const boatClipId = `${detailMaskId}-boat`;
   const mapLayer = { left: 0, top: 0, width: 100, height: 100 };
+  const detailLayer = manifest["3"].layers[1];
+  const detailSrc = imageUrls[`../assets/home/story/${detailLayer.file}`];
   const markerLayer = manifest["3"].layers[2];
   const markerSrc = imageUrls[`../assets/home/story/${markerLayer.file}`];
   // Independent windows preserve the artist's six original location marks.
@@ -344,6 +393,40 @@ function MapArtwork() {
               height: `${mapLayer.height}%`,
             }}
           >
+            <defs>
+              {/* Remove the old pink frame only where it crosses blue details. */}
+              <filter id={detailInkId} colorInterpolationFilters="sRGB">
+                <feColorMatrix values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  -100 0 100 0 0" />
+              </filter>
+              <clipPath id={detailFrameId}>
+                <rect x="5.44" width="0.55" height="100" />
+                <rect x="95.24" width="0.55" height="100" />
+              </clipPath>
+              <clipPath id={boatClipId}>
+                {/* Keep the smoke edge out of the independently rocking boat. */}
+                <path d="M42 70 H48.7 V70.56 H55.2 V79 H42 Z" />
+              </clipPath>
+              <mask
+                id={detailMaskId}
+                maskUnits="userSpaceOnUse"
+                x="0"
+                y="0"
+                width="100"
+                height="100"
+              >
+                <rect width="100" height="100" fill="white" />
+                <rect x="5.44" width="0.55" height="100" fill="black" />
+                <rect x="95.24" width="0.55" height="100" fill="black" />
+                <image
+                  href={detailSrc}
+                  width="100"
+                  height="100"
+                  preserveAspectRatio="none"
+                  clipPath={`url(#${detailFrameId})`}
+                  filter={`url(#${detailInkId})`}
+                />
+              </mask>
+            </defs>
             <image
               href={src}
               width="100"
@@ -358,19 +441,39 @@ function MapArtwork() {
               data-map-piece={part.name}
               style={
                 {
-                  left: `${mapLayer.left + (mapLayer.width * part.x) / 100}%`,
-                  top: `${mapLayer.top + (mapLayer.height * part.y) / 100}%`,
-                  width: `${(mapLayer.width * part.width) / 100}%`,
-                  height: `${(mapLayer.height * part.height) / 100}%`,
+                  left:
+                    part.name === "wave-central"
+                      ? "34%"
+                      : `${detailLayer.left + (detailLayer.width * part.x) / 100}%`,
+                  top:
+                    part.name === "wave-central"
+                      ? "92%"
+                      : `${detailLayer.top + (detailLayer.height * part.y) / 100}%`,
+                  width: `${(detailLayer.width * part.width) / 100}%`,
+                  height: `${(detailLayer.height * part.height) / 100}%`,
                   "--piece-index": index,
                 } as CSSProperties
               }
-              viewBox="0 0 100 100"
+              viewBox={
+                part.name === "cloud-northwest"
+                  ? "0 0 100 100"
+                  : `${part.x} ${part.y} ${part.width} ${part.height}`
+              }
               preserveAspectRatio="none"
               aria-hidden="true"
             >
               <image
-                href={mapCloudNorthwestUrl}
+                href={
+                  part.name === "cloud-northwest"
+                    ? mapCloudNorthwestUrl
+                    : detailSrc
+                }
+                mask={
+                  part.x < 5.99 || part.x + part.width > 95.24
+                    ? `url(#${detailMaskId})`
+                    : undefined
+                }
+                clipPath={part.name === "boat" ? `url(#${boatClipId})` : undefined}
                 width="100"
                 height="100"
                 preserveAspectRatio="none"
@@ -614,7 +717,10 @@ function VaccineArtwork() {
         <div data-vaccine-copy="question">
           <h3>
             If conventional therapies lack sufficient targets, could the
-            patient’s <span>immune system</span> recognize the tumor?
+            patient’s <span>immune system</span>{" "}
+            <span className="story-vaccine-question-ending">
+              recognize the tumor?
+            </span>
           </h3>
         </div>
       </article>
@@ -725,7 +831,7 @@ function BeyondArtwork() {
           data-layer="2"
           src={imageUrls[`../assets/home/story/${family.file}`]}
           alt=""
-          loading="lazy"
+          loading="eager"
           decoding="async"
           style={{
             left: `${family.left}%`,
@@ -799,22 +905,6 @@ export function HomeStory() {
   useHomeStoryAnimation(root);
   useEffect(() => {
     const story = root.current;
-    // Load hidden layers before their scene arrives, without loading every scene at once.
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach(({ isIntersecting, target }) => {
-          if (!isIntersecting) return;
-          target.querySelectorAll("img").forEach((image) => {
-            image.loading = "eager";
-          });
-          observer.unobserve(target);
-        });
-      },
-      { rootMargin: "100% 0px" },
-    );
-    root.current?.querySelectorAll(".story-scene-track").forEach((scene) => {
-      observer.observe(scene);
-    });
     // Ambient motion continues while the artwork is visible, including scroll endpoints.
     const mapStage = root.current?.querySelector(
       ".story-chapter--map .story-chapter-inner",
@@ -836,7 +926,6 @@ export function HomeStory() {
     });
     if (platformStage) platformObserver.observe(platformStage);
     return () => {
-      observer.disconnect();
       motionObserver.disconnect();
       platformObserver.disconnect();
       if (story) delete story.dataset.platformInView;
@@ -957,17 +1046,8 @@ export function HomeStory() {
           </>
         }
         art={<HomeAntigenSwitch />}
-      >
-        <p>
-          Drag or select an antigen above to explore the same backbone with a
-          different target.
-        </p>
-        <p>
-          Our design separates the shared circRNA backbone from the
-          antigen-encoding sequence. A, B and C illustrate this concept; they
-          are not experimental results.
-        </p>
-      </Chapter>
+        copyInArtwork
+      />
 
       <Chapter
         id="beyond-tnbc"

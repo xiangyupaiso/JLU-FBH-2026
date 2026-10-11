@@ -401,8 +401,10 @@ export function useHomeStoryAnimation(root: RefObject<HTMLDivElement | null>) {
               const stackedVaccine =
                 compact && section.id === "a-new-direction";
               const stackedAntigen =
-                compact && section.id === "plug-and-play" &&
-                window.matchMedia("(orientation: portrait)").matches;
+                section.id === "plug-and-play" &&
+                window.matchMedia(
+                  "(max-width: 800px) and (orientation: portrait), (max-height: 650px) and (orientation: landscape)",
+                ).matches;
               const flowScene = stackedVaccine || stackedAntigen;
               // Desktop: a bridge leaving this scene early must not eat its
               // still hold, so the track also reserves the bridge's lead.

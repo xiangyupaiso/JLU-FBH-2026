@@ -1,8 +1,9 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { type MouseEvent, useCallback, useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 const teamCrestUrl = "https://static.igem.wiki/teams/6056/wiki/files/pages/shared/jlu-fbh-crest.avif";
 import Pages from "../pages";
 import { PageSearch } from "./PageSearch";
+import { HOME_INTRO_REPLAY_EVENT } from "../utils/homeIntro";
 import { useRouteModule } from "../hooks/useRouteModule";
 import { NAV_ICONS } from "./navIcons";
 
@@ -141,6 +142,23 @@ export function Navbar() {
     setMobileOpen(false);
   }, [clearTimers]);
 
+  const returnHome = (event: MouseEvent<HTMLAnchorElement>) => {
+    if (
+      event.defaultPrevented ||
+      event.button !== 0 ||
+      event.metaKey ||
+      event.ctrlKey ||
+      event.shiftKey ||
+      event.altKey
+    )
+      return;
+    closeAll();
+    if (homeActive) {
+      event.preventDefault();
+      window.dispatchEvent(new Event(HOME_INTRO_REPLAY_EVENT));
+    }
+  };
+
   // Close on route change
   useEffect(() => {
     closeAll();
@@ -182,8 +200,11 @@ export function Navbar() {
       const headerHeight = Number.parseFloat(
         getComputedStyle(header).getPropertyValue("--header-height"),
       ) || 0;
+      // Home loads lazily after the header. Keep its initial dark theme until
+      // the opening scene mounts, then let scrolling determine the theme.
       header.dataset.homeOpening = String(
-        !!opening && opening.getBoundingClientRect().bottom > headerHeight,
+        homeActive &&
+          (!opening || opening.getBoundingClientRect().bottom > headerHeight),
       );
       const closing = homeActive
         ? document.getElementById("what-we-hope")?.getBoundingClientRect()
@@ -327,7 +348,12 @@ export function Navbar() {
           onPointerLeave={openKey ? queueClose : undefined}
         >
           <div className="circure-nav-head">
-            <Link to="/" className="wordmark" aria-label="CirCure home">
+            <Link
+              to="/"
+              className="wordmark"
+              aria-label="CirCure home"
+              onClick={returnHome}
+            >
               <span className="wordmark-stage" aria-hidden="true">
                 <span className="wordmark-crest">
                   <img
@@ -362,12 +388,13 @@ export function Navbar() {
                   <Link
                     className="nav-link"
                     to="/"
+                    onClick={returnHome}
                     aria-current={homeActive ? "page" : undefined}
                   >
                     Home
                   </Link>
                 </li>
-                {DROPDOWNS.map((d, i) => (
+                {DROPDOWNS.map((d) => (
                   <li key={d.key} className="nav-item" data-section={d.key}>
                     <button
                       className="nav-link"
@@ -386,9 +413,6 @@ export function Navbar() {
                       }}
                       onKeyDown={onToggleKeydown}
                     >
-                      <span className="nav-folio" aria-hidden="true">
-                        {String(i + 1).padStart(2, "0")}
-                      </span>
                       {d.label}
                       <svg
                         className="nav-caret"
@@ -471,7 +495,7 @@ export function Navbar() {
                       onClick={closeAll}
                     >
                       <span className="nav-card-thumb" aria-hidden="true">
-                        <img src={c.icon} alt="" loading="lazy" />
+                        <img src={c.icon} alt="" loading="eager" />
                       </span>
                       <span className="nav-card-info">
                         <strong>{c.name}</strong>
@@ -492,7 +516,7 @@ export function Navbar() {
           >
             <Link
               to="/"
-              onClick={closeAll}
+              onClick={returnHome}
               aria-current={homeActive ? "page" : undefined}
             >
               Home
@@ -548,7 +572,7 @@ export function Navbar() {
                               src={c.icon}
                               alt=""
                               className="circure-mobile-group__icon"
-                              loading="lazy"
+                              loading="eager"
                             />
                           ) : null}
                           <span>{c.name}</span>

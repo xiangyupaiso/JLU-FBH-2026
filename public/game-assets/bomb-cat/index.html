@@ -5,75 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>circRNA Bomb Cat</title>
     <script>
-      (() => {
-        const notifyParent = (type, detail = {}) => {
-          if (window.parent === window) return;
-          window.parent.postMessage(
-            { source: "bomb-cat-game", type, ...detail },
-            window.location.origin,
-          );
-        };
-        let hasReportedCompletion = false;
-
-        window.addEventListener("DOMContentLoaded", () => {
-          const completionObserver = new MutationObserver(() => {
-            if (hasReportedCompletion) return;
-            const heading = Array.from(document.querySelectorAll("h2")).find(
-              (element) =>
-                ["你赢了！", "游戏结束", "You win!", "Game over"].includes(
-                  element.textContent?.trim() ?? "",
-                ),
-            );
-            if (!heading) return;
-
-            hasReportedCompletion = true;
-            notifyParent("bomb-cat:complete", {
-              stats: {
-                title: heading.textContent?.trim() ?? "",
-                won: ["你赢了！", "You win!"].includes(
-                  heading.textContent?.trim() ?? "",
-                ),
-              },
-            });
-            completionObserver.disconnect();
-          });
-          completionObserver.observe(document.body, {
-            childList: true,
-            subtree: true,
-          });
-        });
-
-        window.addEventListener("load", () => {
-          notifyParent("bomb-cat:ready");
-        });
-
-        window.addEventListener("keydown", (event) => {
-          if (event.key !== "Escape") return;
-          event.preventDefault();
-          notifyParent("bomb-cat:close");
-        });
-
-        document.addEventListener("bomb-cat:complete", (event) => {
-          notifyParent("bomb-cat:complete", {
-            stats: event.detail?.stats ?? {},
-          });
-        });
-      })();
+      // Wiki integration: notify the host page when the game is ready, closed
+      // (Esc), or finished. The prebuilt wiki bundle had this inline; it now
+      // lives in the React tree (src/components/WikiBridge.tsx) so a rebuild
+      // keeps the same behaviour. Standalone, window.parent === window and
+      // every notifyParent() call is a no-op.
     </script>
-    <script
-      type="module"
-      crossorigin
-      src="./assets/index-Ck7NErL3.js"
-    ></script>
-    <link
-      rel="stylesheet"
-      crossorigin
-      href="./assets/index-DgrBh623.css"
-    />
-    <link rel="stylesheet" href="./assets/tailwind-utilities.css" />
-    <link rel="stylesheet" href="./assets/circure-skin.css" />
+    <script type="module" crossorigin src="./assets/index-DvtZyval.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-Cqlp2Gvx.css">
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root"></div>
   </body>
 </html>

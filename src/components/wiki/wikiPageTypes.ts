@@ -168,6 +168,14 @@ export type WikiContentBlock =
       aside: WikiContentBlock;
     };
 
+export interface WikiMasthead {
+  image: string;
+  imageAlt: string;
+  quote: string;
+  attribution: string;
+  attributionRole: string;
+}
+
 export interface WikiSection {
   id: string;
   index: string;
@@ -188,6 +196,11 @@ export interface WikiSection {
    */
   hideSectionNumber?: boolean;
   navLabel?: string;
+  /**
+   * Full-bleed photo masthead rendered above the section heading, with an
+   * epigraph laid over the photo's faded lower edge. Reader-route only.
+   */
+  masthead?: WikiMasthead;
   title: string;
   summary: string;
   body?: string[];

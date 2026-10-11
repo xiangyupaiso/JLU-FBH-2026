@@ -282,3 +282,41 @@ export const sdg3AllPhotos: ReadonlyArray<StakeholderPhoto> = [
 /** Photos of one profile, or an empty list when nothing was documented. */
 export const stakeholderPhotos = (id: string): StakeholderPhotoSet =>
   sdg3StakeholderPhotos[id] ?? [];
+
+/* ----------------------------------------------------------------------------
+ * SDG 9 — iGEM-hosted interview photo sets
+ * -------------------------------------------------------------------------- */
+
+const hostedSdg9PhotoSet = (
+  slug: string,
+  count: number,
+  label: string,
+): StakeholderPhotoSet =>
+  Array.from({ length: count }, (_, index) => ({
+    src: `https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/sustainability/sdg9/${slug}-${index + 1}.avif`,
+    alt: `${label} interview photo ${index + 1}`,
+    caption: label,
+  }));
+
+/** The source manuscript supplied iGEM-hosted images rather than local files. */
+export const sdg9PhotoSets = {
+  "sdg9-01": hostedSdg9PhotoSet("01-yishu-wang", 5, "Interview with Professor Yishu Wang"),
+  "sdg9-02": [
+    {
+      src: "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/sustainability/sdg9/02-qingtian-guan.avif",
+      alt: "Interview with Mr. Guan Qingtian interview photo 1",
+      caption: "Interview with Mr. Guan Qingtian",
+    },
+  ],
+  "sdg9-03": hostedSdg9PhotoSet("03-jifan-hu", 6, "Interview with Professor Jifan Hu"),
+  "sdg9-04": hostedSdg9PhotoSet("04-tiesuo-zhao", 5, "Interview with Professor Tiesuo Zhao"),
+  "sdg9-05": hostedSdg9PhotoSet("05-junqi-niu", 6, "Interview with Professor Junqi Niu"),
+  "sdg9-06": hostedSdg9PhotoSet("06-yuning-zhang", 7, "Interview with Professor Yuning Zhang"),
+  "sdg9-07": hostedSdg9PhotoSet("07-di-wu", 6, "Interview with Professor Wu Di"),
+  "sdg9-08": hostedSdg9PhotoSet(
+    "08-shanghai-lin-gang-research-center-for-medical-equipment",
+    6,
+    "Visit to the Shanghai Lingang Research Center for Medical Equipment",
+  ),
+  "sdg9-09": hostedSdg9PhotoSet("09-hualan-bio", 6, "Discussion with Hualan Bio"),
+} as const satisfies Record<string, StakeholderPhotoSet>;
