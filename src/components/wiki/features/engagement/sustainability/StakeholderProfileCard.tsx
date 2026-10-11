@@ -66,8 +66,11 @@ function ArticleView({ article }: { article: StakeholderArticle }) {
 
 const FIELDS = [
   ["relevantStakeholder", "Relevant Stakeholder"],
+  ["activityType", "Activity Type"],
+  ["partner", "Partner"],
   ["challenge", "Challenge"],
   ["keyInsight", "Key Insight"],
+  ["whatWeDid", "What We Did"],
   ["whatChanged", "What Changed"],
 ] as const;
 
@@ -147,7 +150,7 @@ function StakeCardFace({
             {FIELDS.map(([key, label]) =>
               profile[key] ? (
                 <div className="sust-stake-card__field" key={key}>
-                  <dt>{label}</dt>
+                  <dt>{key === "whatChanged" ? profile.whatChangedLabel ?? label : label}</dt>
                   <dd>
                     <RichText text={profile[key]} />
                   </dd>
@@ -652,7 +655,7 @@ export function StakeholderDeck({
                               className={`sust-deck__field${key === "challenge" ? " sust-deck__field--quote" : ""}${key === "relevantStakeholder" ? " sust-deck__field--lead" : ""}`}
                               key={key}
                             >
-                              <dt>{label}</dt>
+                              <dt>{key === "whatChanged" ? profile.whatChangedLabel ?? label : label}</dt>
                               <dd>
                                 <RichText text={profile[key]} />
                               </dd>

@@ -2,7 +2,7 @@
  * Structured content for the Sustainability page (Engagement route).
  *
  * Source: 文案集/engagement/sustainability/6.3 Sustainability wiki定稿.md
- * Scope: Overview → SDG 3 → Stakeholder Sustainability Tracker → SDG 9.
+ * Scope: Overview → SDG 3 → Stakeholder Sustainability Tracker → SDG 9 → SDG 12.
  * Pure data layer — zero React/JSX elements. Copy is verbatim from the source;
  * `**bold**` markers are rendered by the shared inline formatter.
  *
@@ -15,6 +15,7 @@
 import { pdfPair, type LegacyTool, type SdgChapter, type SustainabilityStat } from "./sdgChapterContract";
 import { sdg3Chapter } from "./sustainabilitySdg3";
 import { sdg9Chapter } from "./sustainabilitySdg9";
+import { sdg12Chapter } from "./sustainabilitySdg12";
 
 /* ----------------------------------------------------------------------------
  * Epigraph
@@ -215,7 +216,7 @@ export const setCoreChallengesSection = {
 
 
 /** SDG chapters live on the page, in reading order. */
-export const sustainabilityChapters: ReadonlyArray<SdgChapter> = [sdg3Chapter, sdg9Chapter];
+export const sustainabilityChapters: ReadonlyArray<SdgChapter> = [sdg3Chapter, sdg9Chapter, sdg12Chapter];
 
 /* ----------------------------------------------------------------------------
  * Stakeholder Sustainability Tracker

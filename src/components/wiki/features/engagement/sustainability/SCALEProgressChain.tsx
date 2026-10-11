@@ -90,9 +90,12 @@ export function SCALEProgressChain({
       // The final chapter has no following same-level heading. Let its rail
       // leave once the final feature has cleared the reader viewport, so it
       // cannot remain fixed over the page's Next page card.
-      const exitLine = nextChapter
-        ? readingLine
-        : reader?.getBoundingClientRect().bottom ?? readingLine;
+      // On compact screens the reader grows with the entire article; its
+      // bottom is not a viewport boundary and would hide the final rail early.
+      const viewportBottom = reader && window.matchMedia(DESKTOP_QUERY).matches
+        ? reader.getBoundingClientRect().bottom
+        : window.innerHeight;
+      const exitLine = nextChapter ? readingLine : viewportBottom;
       const exited = endTop <= exitLine;
       const isInside = entered && !exited;
 

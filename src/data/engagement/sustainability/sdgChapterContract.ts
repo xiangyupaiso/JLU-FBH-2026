@@ -55,9 +55,13 @@ export interface StakeholderProfile {
    */
   photos?: ReadonlyArray<StakeholderPhoto>;
   relevantStakeholder?: string;
+  activityType?: string;
+  partner?: string;
   challenge?: string;
   keyInsight: string;
+  whatWeDid?: string;
   whatChanged: string;
+  whatChangedLabel?: string;
   /** Some source cards intentionally omit a status line. */
   currentStatus?: string;
   sdgs: ReadonlyArray<number>;
@@ -83,6 +87,8 @@ export interface AlignmentTable {
 export interface LegacyToolPdf {
   label: string;
   fileName: string;
+  /** Explicit manuscript URL, including when a PDF is reused by another tool. */
+  url?: string;
 }
 
 export interface LegacyTool {
@@ -125,6 +131,7 @@ export interface SdgChapter {
     dimensions: ReadonlyArray<ConsequenceDimension>;
   };
   alignment: {
+    leadHeading?: string;
     lead: ReadonlyArray<string>;
     /** Optional because some chapters present alignment as prose findings only. */
     table?: AlignmentTable;
@@ -134,6 +141,7 @@ export interface SdgChapter {
   evidence: {
     intro: ReadonlyArray<string>;
     stats: ReadonlyArray<SustainabilityStat>;
+    measurableIntro?: ReadonlyArray<string>;
     measurable: ReadonlyArray<EvidenceItem>;
     significant: ReadonlyArray<string>;
   };

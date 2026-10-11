@@ -25,6 +25,7 @@ import sdg3DcMaturationFlowImg from "../../../assets/wiki/sustainability/sustain
 import sdg3SplenocyteFlowImg from "../../../assets/wiki/sustainability/sustainability-sdg3-splenocyte-flow.png";
 import sdg3TumorGrowthImg from "../../../assets/wiki/sustainability/sustainability-sdg3-tumor-growth.png";
 import sdg9TraceableExpertFeedbackImg from "../../../assets/wiki/sustainability/sustainability-sdg9-traceable-expert-feedback.png";
+import { sdg12EvidenceAssets } from "./sustainabilitySdg12Assets";
 
 export type SustainabilityAssetKind = "image" | "pdf";
 
@@ -208,6 +209,7 @@ export const sustainabilityAssets = {
     alt: "Three-module vaccine design system",
     section: "SDG 9 — Evidence",
   },
+  ...sdg12EvidenceAssets,
   sstQnModelConstruction: {
     kind: "pdf",
     fileName: "sustainability-sst-qn-model-construction.pdf",

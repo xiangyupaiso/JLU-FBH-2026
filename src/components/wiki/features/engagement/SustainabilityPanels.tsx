@@ -161,10 +161,19 @@ function StakeholderGrid({ chapter }: { chapter: SdgChapter }) {
 
 /** E — Evidence: numbered Measurable items with figures, Significant prose. */
 function EvidencePanel({ chapter }: { chapter: SdgChapter }) {
-  const { measurable, significant } = chapter.evidence;
+  const { measurableIntro, measurable, significant } = chapter.evidence;
   return (
     <div className="sust-evidence">
       <h4 className="sust-minor-heading">Measurable</h4>
+      {measurableIntro?.length ? (
+        <div className="wiki-prose">
+          {measurableIntro.map((paragraph) => (
+            <p key={paragraph}>
+              <RichText text={paragraph} />
+            </p>
+          ))}
+        </div>
+      ) : null}
       <ol className="sust-evidence__list">
         {measurable.map((item) => (
           <li className="sust-evidence__item" key={item.text}>
@@ -205,6 +214,18 @@ function chapterFeatures(chapter: SdgChapter): FeatureMap {
     [keys.rail]: <ScaleRail chapter={chapter} />,
     [keys.stakeholders]: <StakeholderGrid chapter={chapter} />,
     [keys.consequences]: <ConsequencesDimensionCard consequences={chapter.consequences} />,
+    [keys.alignmentLead]: (
+      <div>
+        <h4 className="sust-minor-heading">{chapter.alignment.leadHeading}</h4>
+        <div className="wiki-prose">
+          {chapter.alignment.lead.map((paragraph) => (
+            <p key={paragraph}>
+              <RichText text={paragraph} />
+            </p>
+          ))}
+        </div>
+      </div>
+    ),
     [keys.legacy]: <PdfToolList tools={chapter.legacy.tools} instance={`${chapter.id}-legacy`} />,
     [keys.evidence]: <EvidencePanel chapter={chapter} />,
   };

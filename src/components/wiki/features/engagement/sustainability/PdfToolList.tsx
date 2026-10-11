@@ -111,7 +111,7 @@ export function PdfToolList({
             <a
               key={pdf.fileName}
               className="sust-tool-card__btn"
-              href={sustainabilityDocUrl(pdf.fileName)}
+              href={pdf.url ?? sustainabilityDocUrl(pdf.fileName)}
               target="_blank"
               rel="noopener noreferrer"
               aria-label={`${active.title} (${pdf.label}), opens in a new tab`}
@@ -151,7 +151,7 @@ export function ToolTable({ tools }: { tools: ReadonlyArray<LegacyTool> }) {
                   <span key={pdf.fileName}>
                     {index ? " / " : null}
                     <a
-                      href={sustainabilityDocUrl(pdf.fileName)}
+                      href={pdf.url ?? sustainabilityDocUrl(pdf.fileName)}
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label={`${tool.title} (${pdf.label}), opens in a new tab`}

@@ -2,7 +2,7 @@
  * Sustainability page — structured `WikiPageContent` for the shared renderer.
  *
  * Source: 文案集/engagement/sustainability/6.3 Sustainability wiki定稿.md
- * Scope: Overview → SDG 3 → Stakeholder Sustainability Tracker → SDG 9.
+ * Scope: Overview → SDG 3 → Stakeholder Sustainability Tracker → SDG 9 → SDG 12.
  * Pure data layer — zero React/JSX elements. SDG chapters are expanded from
  * the `SdgChapter` contract by `chapterBlocks`, so every chapter shares one
  * heading tree (4.x → 4.x.1–4.x.5) and one set of feature keys.
@@ -53,6 +53,7 @@ export const chapterFeatureKeys = (chapter: Pick<SdgChapter, "id">) => ({
   rail: `${chapter.id}-scale-rail`,
   stakeholders: `${chapter.id}-stakeholders`,
   consequences: `${chapter.id}-consequences`,
+  alignmentLead: `${chapter.id}-alignment-lead`,
   legacy: `${chapter.id}-legacy-tools`,
   evidence: `${chapter.id}-evidence`,
 });
@@ -88,7 +89,9 @@ function chapterBlocks(chapter: SdgChapter): WikiContentBlock[] {
     feature(keys.consequences),
 
     step(2),
-    prose(...chapter.alignment.lead),
+    chapter.alignment.leadHeading
+      ? feature(keys.alignmentLead)
+      : prose(...chapter.alignment.lead),
     ...(chapter.alignment.table
       ? [
           {
