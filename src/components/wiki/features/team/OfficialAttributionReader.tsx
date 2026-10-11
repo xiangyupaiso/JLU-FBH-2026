@@ -111,6 +111,57 @@ export function OfficialAttributionReader() {
   }, []);
 
   useEffect(() => {
+    const inner = scrollRef.current;
+    if (!inner) return;
+
+    let frame = 0;
+    const updateActiveSection = () => {
+      frame = 0;
+      const innerBounds = inner.getBoundingClientRect();
+      const headerHeight =
+        Number.parseFloat(
+          getComputedStyle(document.documentElement).getPropertyValue(
+            "--header-height",
+          ),
+        ) || 78;
+      // Keep the active item tied to the reading line below the fixed header.
+      // The same viewport rule works for the projected desktop reader and the
+      // natural mobile flow because the bookmarks move with the live iframe.
+      const readingLine = Math.max(innerBounds.top + 48, headerHeight + 24);
+      let active: string = attributionPage.sections[0].id;
+      for (const section of attributionPage.sections) {
+        const bookmark = document.getElementById(`attribution-${section.id}`);
+        if (bookmark && bookmark.getBoundingClientRect().top <= readingLine) {
+          active = section.id;
+        }
+      }
+      setSelectedSection((current) => (current === active ? current : active));
+    };
+    const requestUpdate = () => {
+      if (!frame) frame = window.requestAnimationFrame(updateActiveSection);
+    };
+    const observer = new ResizeObserver(requestUpdate);
+
+    observer.observe(inner);
+    const documentShell = inner.querySelector(
+      ".official-attributions-page__document",
+    );
+    if (documentShell) observer.observe(documentShell);
+    window.addEventListener("scroll", requestUpdate, { passive: true });
+    inner.addEventListener("scroll", requestUpdate, { passive: true });
+    window.addEventListener("resize", requestUpdate, { passive: true });
+    requestUpdate();
+
+    return () => {
+      if (frame) window.cancelAnimationFrame(frame);
+      observer.disconnect();
+      window.removeEventListener("scroll", requestUpdate);
+      inner.removeEventListener("scroll", requestUpdate);
+      window.removeEventListener("resize", requestUpdate);
+    };
+  }, [compact, formWidth, reportedHeight]);
+
+  useEffect(() => {
     if (!tocOpen) return;
     const trigger = triggerRef.current;
     closeRef.current?.focus({ preventScroll: true });
