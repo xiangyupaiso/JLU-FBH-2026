@@ -1,7 +1,13 @@
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import whyRingTexture from "../assets/home/story/scene-1-layer-4.webp";
-import { HOME_EASE, HOME_SCRUB } from "./homeMotion";
+import {
+  HOME_EASE,
+  HOME_SCRUB,
+  isHomeMotionRefreshing,
+  settleHomeScrubEndpoint,
+} from "./homeMotion";
+import { animateThinkingGallery } from "./animateThinkingGallery";
 
 type Bounds = { left: number; top: number; width: number; height: number };
 const GALLERY_RING_OPACITY = 0.64;
@@ -79,6 +85,7 @@ export function animateGalleryWhy(root: HTMLElement, compact: boolean) {
       end: "bottom bottom",
       scrub: compact ? 0.42 : HOME_SCRUB,
       invalidateOnRefresh: true,
+      onUpdate: settleHomeScrubEndpoint,
     },
   });
   intro.fromTo(
@@ -139,7 +146,8 @@ export function animateGalleryWhy(root: HTMLElement, compact: boolean) {
     1.4,
   );
   intro.addLabel("circ-selected", 1.74);
-  intro.to({}, { duration: 0.48 }, 1.76);
+  intro.to({}, { duration: 0.12 }, 1.76);
+  const cleanupThinking = animateThinkingGallery(root, intro, compact);
 
   const ghost = source.cloneNode(true) as SVGSVGElement;
   ghost.removeAttribute("style");
@@ -238,6 +246,7 @@ export function animateGalleryWhy(root: HTMLElement, compact: boolean) {
   const smooth = (from: number, to: number, value: number) =>
     ease(gsap.utils.clamp(0, 1, (value - from) / (to - from)));
   const draw = () => {
+    if (isHomeMotionRefreshing()) return;
     // The preceding pinned scenes can change their spacing after load. Read
     // the visible section boundary, not a cached ScrollTrigger progress.
     const galleryEnd = gallery.getBoundingClientRect().bottom + window.scrollY;
@@ -325,18 +334,32 @@ export function animateGalleryWhy(root: HTMLElement, compact: boolean) {
     onUpdate: draw,
     onRefresh: () => {
       geometry = undefined;
-      draw();
     },
   });
   let frame = 0;
-  let refreshFrame = 0;
-  let lastRefreshAnchor: number | undefined;
+  let refreshPending = false;
+  const refreshAnchor = () => {
+    if (!refreshPending || isHomeMotionRefreshing()) return;
+    refreshPending = false;
+    if (Math.abs(bridge.start - (whyStart() - window.innerHeight)) > 2) {
+      bridge.refresh();
+      draw();
+    }
+  };
+  const onRefresh = () => {
+    refreshPending = false;
+    geometry = undefined;
+    draw();
+  };
   const onScroll = () => {
     if (frame) return;
     frame = window.requestAnimationFrame(() => {
       frame = 0;
+      if (isHomeMotionRefreshing()) return;
       draw();
-      // A late layout shift must also update scene-picker and resize anchors.
+      // Continue painting from real layout while scrolling. Re-measuring all
+      // pinned chapters mid-gesture can briefly pull native scrolling back.
+      // Update this unpinned bridge's anchors once the gesture has settled.
       const galleryBottom = gallery.getBoundingClientRect().bottom;
       if (
         galleryBottom <= -window.innerHeight ||
@@ -344,27 +367,20 @@ export function animateGalleryWhy(root: HTMLElement, compact: boolean) {
       )
         return;
       const anchor = whyStart() - window.innerHeight;
-      if (
-        !refreshFrame &&
-        Math.abs(bridge.start - anchor) > 2 &&
-        (lastRefreshAnchor === undefined ||
-          Math.abs(lastRefreshAnchor - anchor) > 2)
-      ) {
-        lastRefreshAnchor = anchor;
-        refreshFrame = window.requestAnimationFrame(() => {
-          refreshFrame = 0;
-          ScrollTrigger.refresh();
-        });
-      }
+      if (Math.abs(bridge.start - anchor) > 2) refreshPending = true;
     });
   };
   window.addEventListener("scroll", onScroll, { passive: true });
+  ScrollTrigger.addEventListener("scrollEnd", refreshAnchor);
+  ScrollTrigger.addEventListener("refresh", onRefresh);
   draw();
 
   return () => {
+    cleanupThinking();
     window.removeEventListener("scroll", onScroll);
+    ScrollTrigger.removeEventListener("scrollEnd", refreshAnchor);
+    ScrollTrigger.removeEventListener("refresh", onRefresh);
     window.cancelAnimationFrame(frame);
-    window.cancelAnimationFrame(refreshFrame);
     intro.kill();
     bridge.kill();
     source.style.visibility = originalSourceVisibility;

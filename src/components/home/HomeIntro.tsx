@@ -61,7 +61,7 @@ interface HomeIntroProps {
  * a single flash reveals the patient. The wordmark
  * lands beneath the persistent header. Scroll or Skip completes
  * the intro immediately so the same gesture can move the opening scene.
- * Re-entering Home or returning to its top restarts the complete intro.
+ * Re-entering Home or explicitly returning to its title restarts the intro.
  * Reduced motion shows the finished title until the reader continues.
  *
  * Cross-file contract (rename with care):
@@ -81,15 +81,11 @@ export function HomeIntro({ scene }: HomeIntroProps) {
   const skipRef = useRef<() => void>(() => {});
 
   useLayoutEffect(() => {
-    let leftTop = false;
+    // A responsive ScrollTrigger rebuild can temporarily move the page to 0.
+    // Only an explicit replay request should restart a completed intro.
     const replay = () => {
-      leftTop = false;
       setMode(shouldPlayIntro() ? "opening" : "title");
       setReplayCount((count) => count + 1);
-    };
-    const onScroll = () => {
-      if (window.scrollY > 0) leftTop = true;
-      else if (leftTop) replay();
     };
     const onHomeKey = (event: KeyboardEvent) => {
       if (event.key !== "Home" || event.altKey) return;
@@ -103,11 +99,9 @@ export function HomeIntro({ scene }: HomeIntroProps) {
       replay();
     };
     window.addEventListener(HOME_INTRO_REPLAY_EVENT, replay);
-    window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("keydown", onHomeKey);
     return () => {
       window.removeEventListener(HOME_INTRO_REPLAY_EVENT, replay);
-      window.removeEventListener("scroll", onScroll);
       window.removeEventListener("keydown", onHomeKey);
     };
   }, []);
@@ -213,6 +207,7 @@ export function HomeIntro({ scene }: HomeIntroProps) {
       const svg = layer.querySelector<SVGSVGElement>(".home-intro-word")!;
       const flight = layer.querySelector<HTMLElement>(".home-intro-flight")!;
       const tip = layer.querySelector<SVGGElement>(".home-intro-tip")!;
+      const tipCore = layer.querySelector<SVGCircleElement>(".home-intro-tip-core")!;
       const canvas =
         layer.querySelector<HTMLCanvasElement>(".home-intro-embers")!;
       const darkness = section.querySelector<HTMLElement>(".scene01-darkness");
@@ -220,7 +215,12 @@ export function HomeIntro({ scene }: HomeIntroProps) {
       const strokes = gsap.utils.toArray<SVGPathElement>(
         select(".home-intro-mask path"),
       );
+      const setHeaderGlow = (active: boolean) => {
+        document.querySelector(".site-header .logo-word-full")
+          ?.classList.toggle("is-intro-landed", active);
+      };
       const revealScene = () => {
+        setHeaderGlow(false);
         gsap.set(darkness, { opacity: 0 });
         gsap.set(portrait, { scale: 1, x: 0 });
         section.dataset.intro = "done";
@@ -265,7 +265,11 @@ export function HomeIntro({ scene }: HomeIntroProps) {
       let emissionBudget = 0;
       let emissionFrame = -1;
       let emitting = true;
+      let drawing = false;
+      let tipMatrix: DOMMatrix | null = null;
+      let tipMatrixDirty = true;
       const resize = () => {
+        tipMatrixDirty = true;
         const ratio = Math.min(window.devicePixelRatio || 1, 2);
         canvas.width = window.innerWidth * ratio;
         canvas.height = window.innerHeight * ratio;
@@ -293,6 +297,7 @@ export function HomeIntro({ scene }: HomeIntroProps) {
             size: 0.8 + Math.random() * 1.6,
           });
         }
+        startDrawing();
       };
       const drawEmbers = () => {
         if (!context || playback.mode === "paused") return;
@@ -327,23 +332,40 @@ export function HomeIntro({ scene }: HomeIntroProps) {
           context.fill();
         }
         context.globalAlpha = 1;
-        if (!emitting && embers.length === 0) gsap.ticker.remove(drawEmbers);
+        if (!emitting && embers.length === 0) {
+          gsap.ticker.remove(drawEmbers);
+          drawing = false;
+        }
       };
-      gsap.ticker.add(drawEmbers);
+      const startDrawing = () => {
+        if (!context || !embers.length || drawing) return;
+        drawing = true;
+        gsap.ticker.add(drawEmbers);
+      };
       const stopEffects = () => {
         emitting = false;
         gsap.ticker.remove(drawEmbers);
+        drawing = false;
+        tipCore.style.animationPlayState = "paused";
+        setHeaderGlow(false);
         window.removeEventListener("resize", resize);
       };
 
       // Moves the glowing tip to the painted end of a stroke and sheds sparks.
       const placeTip = (path: SVGPathElement, drawn: number) => {
+        if (!emitting) return; // context cleanup can render old stroke tweens
         const length = Number(path.dataset.length);
         const point = path.getPointAtLength(
           Math.min(length, Math.max(0, drawn)),
         );
+        // The word stays still while it is written. Read its final geometry
+        // once, before writing the tip transform, and remeasure on resize.
+        if (tipMatrixDirty) {
+          tipMatrix = svg.getScreenCTM();
+          tipMatrixDirty = false;
+        }
+        const matrix = tipMatrix;
         tip.setAttribute("transform", `translate(${point.x} ${point.y})`);
-        const matrix = svg.getScreenCTM();
         if (emitting && matrix) {
           emit(
             point.x * matrix.a + point.y * matrix.c + matrix.e,
@@ -364,8 +386,17 @@ export function HomeIntro({ scene }: HomeIntroProps) {
       const syncPlayback = (state: HomePlaybackState) => {
         playback = state;
         timeline.timeScale(state.mode === "playing" ? state.rate : 1);
-        if (state.mode === "paused" || !loaderReady) timeline.pause();
-        else if (!disposed && !skipped) timeline.resume();
+        if (state.mode === "paused" || !loaderReady) {
+          timeline.pause();
+          gsap.ticker.remove(drawEmbers);
+          drawing = false;
+          tipCore.style.animationPlayState = "paused";
+        } else if (!disposed && !skipped) {
+          timeline.resume();
+          startDrawing();
+          tipCore.style.animationPlayState =
+            emitting && timeline.time() >= START ? "running" : "paused";
+        }
       };
       const onPlaybackState = (event: Event) => {
         syncPlayback((event as CustomEvent<HomePlaybackState>).detail);
@@ -377,6 +408,8 @@ export function HomeIntro({ scene }: HomeIntroProps) {
         .then(() => whenPageLoaderLeaves())
         .then(() => {
           if (disposed || skipped) return;
+          tipMatrix = svg.getScreenCTM();
+          tipMatrixDirty = false;
           loaderReady = true;
           syncPlayback(readHomePlaybackState());
         });
@@ -391,6 +424,7 @@ export function HomeIntro({ scene }: HomeIntroProps) {
       );
       timeline.set(tip, { autoAlpha: 0 }, 0);
       timeline.set(tip, { autoAlpha: 1 }, START);
+      timeline.set(tipCore, { animationPlayState: "running" }, START);
 
       // Each centre line sweeps its mask like a sparkler.
       let cursor = START;
@@ -429,6 +463,7 @@ export function HomeIntro({ scene }: HomeIntroProps) {
       timeline.call(
         () => {
           emitting = false;
+          tipCore.style.animationPlayState = "paused";
         },
         undefined,
         "strokes-done",
@@ -561,6 +596,7 @@ export function HomeIntro({ scene }: HomeIntroProps) {
       );
       timeline.call(
         () => {
+          setHeaderGlow(true);
           root.dataset.homeIntro = "landed";
         },
         undefined,
@@ -569,6 +605,7 @@ export function HomeIntro({ scene }: HomeIntroProps) {
       timeline.to(flight, { autoAlpha: 0, duration: 0.2 }, "flash+=0.81");
       timeline.call(
         () => {
+          setHeaderGlow(false);
           root.dataset.homeIntro = "revealing";
         },
         undefined,

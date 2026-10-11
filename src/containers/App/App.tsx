@@ -131,8 +131,16 @@ const App = () => {
         target.origin === window.location.origin &&
         target.pathname.startsWith(import.meta.env.BASE_URL) &&
         target.pathname !== window.location.pathname
-      )
+      ) {
+        const previousPath = window.location.pathname;
         showPageLoader();
+        // A link handler can cancel navigation after this capture listener.
+        // The mounted page still needs to release the cover in that case.
+        window.setTimeout(() => {
+          if (event.defaultPrevented && window.location.pathname === previousPath)
+            hidePageLoaderWhenReady();
+        }, 0);
+      }
     };
     const coverHistoryNavigation = () => {
       if (window.location.pathname !== committedPath) showPageLoader();

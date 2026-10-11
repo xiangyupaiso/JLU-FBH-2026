@@ -11,6 +11,10 @@
   pointer-events: none;
 }
 
+.footer-photo-glass__reflection {
+  opacity: 0.72;
+}
+
 @media (prefers-reduced-transparency: reduce),
   (prefers-contrast: more),
   (forced-colors: active) {

@@ -1,13 +1,16 @@
+import { isHomeMotionRefreshing } from "./homeMotion";
+
 export type InkCue = {
   tokens: HTMLElement[];
   state: { progress: number };
 };
 export type InkTransfer = { source: InkCue; target: InkCue; state: { progress: number } };
-export type InkArtworkTransfer = { source: InkCue; target: HTMLImageElement; state: { progress: number } };
+export type InkArtworkTransfer = { source: InkCue; element: HTMLElement; target: HTMLImageElement; state: { progress: number } };
 type Grain = { x: number; y: number; alpha: number; color: string; rgb: number[]; phase: number; token: number };
-type Plate = { grains: Grain[]; x: number; y: number; width: number; height: number; spacing: number; raster: HTMLCanvasElement };
+type Plate = { grains: Grain[]; x: number; y: number; width: number; height: number; spacing: number };
 type Pair = { a: Grain; b: Grain; shared: boolean };
-type ArtworkFlight = { plate: Plate; pairs: Pair[]; direction: number[]; low: number; high: number };
+type ArtworkFlight = { plate: Plate; pairs: Pair[]; direction: number[]; low: number; high: number;
+  mask: { angle: number; center: number; extent: number } };
 
 const clamp = (v: number) => Math.max(0, Math.min(1, v));
 const smooth = (a: number, b: number, v: number) => {
@@ -33,21 +36,23 @@ export function createReadingInk(stage: HTMLElement, cues: InkCue[], transfers: 
   const plates = new Map<InkCue, Plate>();
   const correspondences = new Map<InkTransfer, Pair[]>();
   const artworkFlights = new Map<InkArtworkTransfer, ArtworkFlight>();
-  // Reuse the reading surface: a short carry does not need another WebGL context.
-  const hold = artworkTransfers.length ? document.createElement("canvas") : null;
-  const holdContext = hold?.getContext("2d");
+  const artworkModes = new Map<InkArtworkTransfer, "particles" | "dissolve" | "waiting">();
   const original = new Map<HTMLElement, string | null>();
+  const originalMasks = new Map<HTMLElement, string>();
   const opacity = new Map<InkCue, number>();
   let disposed = false;
   let width = 0;
   let height = 0;
   let ratio = 1;
   let lastProgress: number[] = [];
+  let prepareFrame = 0;
   for (const cue of cues) for (const token of cue.tokens) {
     original.set(token, token.getAttribute("style"));
     token.style.opacity = "0";
   }
   for (const transfer of artworkTransfers) {
+    original.set(transfer.element, transfer.element.getAttribute("style"));
+    originalMasks.set(transfer.element, transfer.element.style.maskImage);
     original.set(transfer.target, transfer.target.getAttribute("style"));
     transfer.target.style.opacity = "0";
   }
@@ -61,7 +66,13 @@ export function createReadingInk(stage: HTMLElement, cues: InkCue[], transfers: 
   const prepare = (cue: InkCue): Plate | undefined => {
     if (plates.has(cue)) return plates.get(cue);
     const stageBox = stage.getBoundingClientRect();
-    const boxes = cue.tokens.map(token => token.getBoundingClientRect());
+    const range = document.createRange();
+    // Surface padding protects italic overflow, but is not owned pigment.
+    // Use the text advance so adjacent words keep separate grain ownership.
+    const boxes = cue.tokens.map(token => {
+      range.selectNodeContents(token);
+      return range.getBoundingClientRect();
+    });
     if (!boxes.length) return;
     const bounds = boxes.map(box => ({
       left: box.left - stageBox.left, right: box.right - stageBox.left,
@@ -71,7 +82,6 @@ export function createReadingInk(stage: HTMLElement, cues: InkCue[], transfers: 
     const ink = scratch.getContext("2d", { willReadFrequently: true });
     if (!ink) return;
     const runs: { text: string; font: string; color: string; letterSpacing: string; x: number; baseline: number }[] = [];
-    const range = document.createRange();
     for (const [index, token] of cue.tokens.entries()) {
       const walker = document.createTreeWalker(token, NodeFilter.SHOW_TEXT);
       let node: Node | null;
@@ -136,7 +146,7 @@ export function createReadingInk(stage: HTMLElement, cues: InkCue[], transfers: 
     const cap = compact ? 3200 : 6200;
     const stride = Math.max(1, Math.ceil(grains.length / cap));
     const plate = { grains: grains.filter((_, i) => i % stride === 0), x: left, y: top,
-      width: w, height: h, spacing: spacing * Math.sqrt(stride), raster: scratch };
+      width: w, height: h, spacing: spacing * Math.sqrt(stride) };
     plates.set(cue, plate);
     canvas.dataset.sampledGrains = String([...plates.values()].reduce((n, p) => n + p.grains.length, 0));
     return plate;
@@ -195,7 +205,8 @@ export function createReadingInk(stage: HTMLElement, cues: InkCue[], transfers: 
     if (!pairs) {
       pairs = [];
       const matchedSource = new Set<number>(), matchedTarget = new Set<number>();
-      const key = (token: HTMLElement) => token.textContent?.toLowerCase().replace(/[^a-z0-9]/g, "");
+      // Punctuation is part of the contour: "back.”" cannot supply "back?”".
+      const key = (token: HTMLElement) => token.textContent?.trim().toLowerCase();
       const pair = (a: Grain[], b: Grain[], shared: boolean) => {
         const count = Math.max(a.length, b.length);
         if (!a.length || !b.length) return;
@@ -271,7 +282,14 @@ export function createReadingInk(stage: HTMLElement, cues: InkCue[], transfers: 
     const projection = (px: number, py: number) => px * direction[0] + py * direction[1];
     const corners = [projection(from.x, from.y), projection(from.x + from.width, from.y),
       projection(from.x, from.y + from.height), projection(from.x + from.width, from.y + from.height)];
+    const textBox = transition.element.getBoundingClientRect();
     const flight = { plate: from, direction, low: Math.min(...corners), high: Math.max(...corners),
+      mask: {
+        angle: Math.atan2(direction[0], -direction[1]) * 180 / Math.PI,
+        center: projection(textBox.left - stageBox.left + textBox.width / 2,
+          textBox.top - stageBox.top + textBox.height / 2),
+        extent: Math.abs(textBox.width * direction[0]) + Math.abs(textBox.height * direction[1]),
+      },
       // Keep one moving grain per source point; repeating origins brightens the glyphs.
       pairs: from.grains.map((a, i) => ({ a, b: targets[Math.floor(i / from.grains.length * targets.length)], shared: false })) };
     artworkFlights.set(transition, flight);
@@ -279,53 +297,80 @@ export function createReadingInk(stage: HTMLElement, cues: InkCue[], transfers: 
     return flight;
   };
 
+  const scheduleArtworkPreparation = () => {
+    if (disposed || prepareFrame || !context || !artworkTransfers.length) return;
+    prepareFrame = requestAnimationFrame(() => {
+      prepareFrame = 0;
+      if (disposed || isHomeMotionRefreshing() || !stage.isConnected
+        || !stage.clientWidth || !stage.clientHeight) return;
+      // Decode and sample before scrolling reaches the handoff. Warming the
+      // cache must not change the current pass's renderer or visible layers.
+      artworkTransfers.forEach(prepareArtwork);
+    });
+  };
+
   const carryArtwork = (transition: InkArtworkTransfer) => {
-    const { source, target, state } = transition;
+    const { source, element, target, state } = transition;
     const p = state.progress;
+    element.style.maskImage = originalMasks.get(element) || "";
     target.style.opacity = String(smooth(0.8, 1, p));
     canvas.dataset.artworkProgress = p.toFixed(3);
-    if (p <= 0) return;
-    if (!target.complete || !target.naturalWidth) {
+    // Refresh renders temporary startAt endpoints while measuring the page.
+    // Keep the same renderer for the real pass throughout that measurement.
+    const refreshing = isHomeMotionRefreshing();
+    if (!refreshing && p <= 0) artworkModes.delete(transition);
+    if (p <= 0) {
+      canvas.dataset.artworkMode = "idle";
+      return;
+    }
+    const available = target.complete && target.naturalWidth > 0;
+    let mode = artworkModes.get(transition);
+    if (p >= 1) {
+      // A pass that began without its artwork keeps the native question even
+      // at the endpoint. Late decoding must not swap the two layers in a hold.
+      const waiting = mode === "waiting" || !available;
+      if (!refreshing) {
+        if (waiting) artworkModes.set(transition, "waiting");
+        else artworkModes.delete(transition);
+      }
+      canvas.dataset.artworkMode = waiting ? "waiting" : mode || "complete";
+      setOpacity(source, waiting ? 1 : 0);
+      target.style.opacity = waiting ? "0" : "1";
+      return;
+    }
+    if (!mode && !refreshing) {
+      mode = !available ? "waiting" : context && prepareArtwork(transition) ? "particles" : "dissolve";
+      artworkModes.set(transition, mode);
+    }
+    canvas.dataset.artworkMode = mode || "waiting";
+    if (!available || mode === "waiting") {
       setOpacity(source, 1);
       target.style.opacity = "0";
       return;
     }
-    if (p >= 1) { setOpacity(source, 0); return; }
-    const flight = context && holdContext && prepareArtwork(transition);
+    // A decoded image can be used on the next pass; it must not replace an
+    // already visible native dissolve with particles halfway through this one.
+    const flight = mode === "particles" && context && prepareArtwork(transition);
     if (!flight) {
       // Keep the same crossfade if a drawing surface cannot be initialized.
       setOpacity(source, 1 - smooth(0.8, 1, p));
       return;
     }
-    setOpacity(source, 0);
-    const { plate, pairs, direction, low, high } = flight;
+    setOpacity(source, p < 0.29 ? 1 : 0);
+    const { plate, pairs, direction, low, high, mask } = flight;
     const span = Math.max(1, high - low);
     const shedAt = (x: number, y: number) => (high - x * direction[0] - y * direction[1]) / span * 0.2;
     const native = smooth(0.8, 1, p);
-    // Keep unshorn letters sharp. This mask and the moving grains share the
-    // same erosion front, so the source never vanishes in one frame.
+    // Erode the original browser glyphs. Repainting them into a raster at p > 0
+    // changes italic contours and antialiasing in a single frame.
     if (p < 0.29) {
-      if (hold!.width !== plate.raster.width || hold!.height !== plate.raster.height) {
-        hold!.width = plate.raster.width; hold!.height = plate.raster.height;
-      }
-      holdContext!.clearRect(0, 0, hold!.width, hold!.height);
-      holdContext!.drawImage(plate.raster, 0, 0);
-      holdContext!.globalCompositeOperation = "destination-in";
-      const sx = hold!.width / plate.width, sy = hold!.height / plate.height;
-      const origin = plate.x * direction[0] + plate.y * direction[1];
-      const mask = holdContext!.createLinearGradient(
-        (low - origin) * direction[0] * sx, (low - origin) * direction[1] * sy,
-        (high - origin) * direction[0] * sx, (high - origin) * direction[1] * sy,
-      );
-      for (let stop = 0; stop <= 24; stop++) {
-        const alpha = 1 - smooth(0, 0.09, p - (1 - stop / 24) * 0.2);
-        mask.addColorStop(stop / 24, `rgba(0,0,0,${alpha})`);
-      }
-      holdContext!.fillStyle = mask;
-      holdContext!.fillRect(0, 0, hold!.width, hold!.height);
-      holdContext!.globalCompositeOperation = "source-over";
-      context!.globalAlpha = 1;
-      context!.drawImage(hold!, plate.x, plate.y, plate.width, plate.height);
+      const stops = Array.from({ length: 25 }, (_, index) => {
+        const position = index / 24;
+        const projection = mask.center + (position - 0.5) * mask.extent;
+        const alpha = 1 - smooth(0, 0.09, p - (high - projection) / span * 0.2);
+        return `rgba(0,0,0,${alpha}) ${position * 100}%`;
+      });
+      element.style.maskImage = `linear-gradient(${mask.angle}deg, ${stops.join(",")})`;
     }
     for (const { a, b } of pairs) {
       const delay = shedAt(a.x, a.y);
@@ -379,14 +424,18 @@ export function createReadingInk(stage: HTMLElement, cues: InkCue[], transfers: 
     artworkFlights.clear();
     lastProgress = [];
     render();
+    scheduleArtworkPreparation();
   };
   artworkTransfers.forEach(({ target }) => { void target.decode().then(invalidate).catch(() => {}); });
+  scheduleArtworkPreparation();
   return { render, invalidate, dispose: () => {
     disposed = true;
+    if (prepareFrame) cancelAnimationFrame(prepareFrame);
     canvas.remove();
     plates.clear();
     correspondences.clear();
     artworkFlights.clear();
+    artworkModes.clear();
     original.forEach((style, element) => {
       if (style === null) element.removeAttribute("style"); else element.setAttribute("style", style);
     });

@@ -8,6 +8,7 @@ import {
   HOME_SCRUB,
   HOME_STILL_RATIO,
   stillHold,
+  settleHomeScrubEndpoint,
 } from "./homeMotion";
 import { animateCircRnaSequence } from "./animateCircRnaSequence";
 import { animateHomeReading } from "./animateHomeReading";
@@ -20,6 +21,7 @@ import { animateClinicalSequence } from "./animateClinicalSequence";
 import { animateGalleryWhy } from "./animateGalleryWhy";
 import { animateTnbcBridge } from "./animateTnbcBridge";
 import { updateWardInfusionTube } from "./wardInfusionGeometry";
+import { registerPagePreparation } from "../utils/pageLoader";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger, SplitText);
 
@@ -177,12 +179,6 @@ function choreographArt(
         { opacity: 0, scale: 0.9 },
         { opacity: 1, scale: 1, duration: 0.13, ease: HOME_EASE },
         0.89,
-      );
-      timeline.fromTo(
-        section.querySelector("[data-ward-message]"),
-        { autoAlpha: 0, y: compact ? 8 : 12 },
-        { autoAlpha: 1, y: 0, duration: 0.2, ease: HOME_EASE },
-        1.04,
       );
       break;
     }
@@ -386,6 +382,97 @@ export function useHomeStoryAnimation(root: RefObject<HTMLDivElement | null>) {
       gsap.set(root.current, { "--home-scroll-scale": 1 + ART_REST_RATIO });
       let media = gsap.matchMedia();
       let galleryResizeProgress: number | undefined;
+      const antigenFlow = window.matchMedia(
+        "(max-width: 800px) and (orientation: portrait), (max-height: 650px) and (orientation: landscape), (prefers-reduced-motion: reduce)",
+      );
+      type ResizePosition = {
+        id: string;
+        progress: number;
+        antigenFlow?: boolean;
+        antigenMechanism?: boolean;
+      };
+      let resizePosition: ResizePosition | undefined;
+      const primaryIds = new Set([
+        "home-person-transition",
+        "home-ward-tear-carry", "home-tear-cloud-carry", "home-tnbc-copy-bridge",
+        "home-why-tnbc-reading",
+        "home-clinical-sequence", "home-thinking-gallery-carry", "home-molecule-gallery-intro", "home-gallery-why-ring",
+        "home-circrna-platform", "home-platform-antigen-carry",
+        "home-antigen-overview-transition", "home-antigen-overview-fade",
+        "home-antigen-mechanism-entry",
+      ]);
+      const activeTrigger = () => {
+        const reading = ScrollTrigger.getById("home-why-tnbc-reading");
+        const animation = reading?.animation as gsap.core.Timeline | undefined;
+        // On tall screens the clinic enters below the still-unfolding copy.
+        // Preserve the reading beat during a resize until its conclusion lands.
+        if (reading?.isActive && animation &&
+            animation.time() < animation.labels["reading-complete"]) return reading;
+        return ScrollTrigger.getAll().filter(
+          (trigger) =>
+            trigger.isActive &&
+            (primaryIds.has(trigger.vars.id || "") ||
+              (trigger.vars.id?.startsWith("home-") &&
+                ((trigger.vars.id.endsWith("-reading") && trigger.pin) ||
+                  trigger.vars.id.endsWith("-art")))),
+        ).sort((a, b) =>
+          // This bridge remains foreground while the gallery intro overlaps.
+          Number(b.vars.id === "home-thinking-gallery-carry") -
+          Number(a.vars.id === "home-thinking-gallery-carry") ||
+          // A tall earlier chapter can remain active behind the foreground
+          // scene. Prefer the latest start, then its bridge on equal bounds.
+          b.start - a.start ||
+          Number(primaryIds.has(b.vars.id || "")) - Number(primaryIds.has(a.vars.id || "")),
+        )[0];
+      };
+      const capturePosition = (trigger = activeTrigger()): ResizePosition | undefined => {
+        const id = trigger?.vars.id;
+        if (!trigger || !id) return;
+        const position: ResizePosition = { id, progress: trigger.progress };
+        if (id === "home-plug-and-play-art" || id.startsWith("home-antigen-")) {
+          const entry = ScrollTrigger.getById("home-antigen-mechanism-entry");
+          const transition = ScrollTrigger.getById("home-antigen-overview-transition");
+          position.antigenFlow = Boolean(entry);
+          position.antigenMechanism = entry
+            ? window.scrollY >= entry.start
+            : (transition?.progress ?? 0) >= 0.9;
+        }
+        return position;
+      };
+      const restorePosition = (position: ResizePosition) => {
+        let trigger = ScrollTrigger.getById(position.id);
+        let top: number | undefined;
+        const entry = ScrollTrigger.getById("home-antigen-mechanism-entry");
+        if (position.antigenFlow !== undefined &&
+          (position.antigenFlow !== antigenFlow.matches || !trigger)) {
+          // Flow and overlay layouts have different trigger IDs and ranges.
+          // Carry the same view across that boundary rather than its old ratio.
+          if (antigenFlow.matches) {
+            const chapter = root.current?.querySelector<HTMLElement>("#plug-and-play");
+            const view = chapter?.querySelector<HTMLElement>(
+              `[data-antigen-view="${position.antigenMechanism ? "mechanism" : "overview"}"]`,
+            );
+            if (chapter && view) {
+              const header = Number.parseFloat(getComputedStyle(chapter)
+                .getPropertyValue("--header-height")) || 78;
+              top = view.getBoundingClientRect().top + window.scrollY - header;
+            }
+            trigger = entry;
+          } else {
+            trigger = ScrollTrigger.getById("home-antigen-overview-transition");
+            if (trigger) top = position.antigenMechanism
+              ? trigger.end + 1
+              : trigger.start;
+          }
+        } else if (trigger) {
+          top = trigger.start + (trigger.end - trigger.start) * position.progress;
+        }
+        if (top === undefined) return false;
+        window.scrollTo({ top, behavior: "instant" });
+        ScrollTrigger.update();
+        trigger?.getTween()?.progress(1);
+        return true;
+      };
       const mediaEvents = gsap as typeof gsap & {
         addEventListener: (event: "matchMediaInit" | "matchMedia", callback: () => void) => void;
         removeEventListener: (event: "matchMediaInit" | "matchMedia", callback: () => void) => void;
@@ -434,7 +521,12 @@ export function useHomeStoryAnimation(root: RefObject<HTMLDivElement | null>) {
               const flowScene = stackedVaccine || stackedAntigen;
               // Desktop: a bridge leaving this scene early must not eat its
               // still hold, so the track also reserves the bridge's lead.
-              let restRatio = ART_REST_RATIO;
+              // This map already has a dedicated reading handoff. Keep its
+              // final statistics briefly still without adding a second pause.
+              let restRatio = section.id === "why-tnbc" ? 0.08 : ART_REST_RATIO;
+              if (section.id === "why-tnbc") {
+                gsap.set(section, { "--home-scroll-scale": 1 + restRatio });
+              }
               const lead = BRIDGE_LEADS[section.id];
               if (!compact && lead) {
                 const hold = stillHold(
@@ -451,6 +543,7 @@ export function useHomeStoryAnimation(root: RefObject<HTMLDivElement | null>) {
               const timeline = gsap.timeline({
                 defaults: { ease: "none" },
                 scrollTrigger: {
+                  id: `home-${section.id}-art`,
                   trigger: track,
                   start: () =>
                     flowScene
@@ -460,8 +553,9 @@ export function useHomeStoryAnimation(root: RefObject<HTMLDivElement | null>) {
                     flowScene
                       ? "bottom bottom"
                       : `bottom top+=${stage.offsetHeight + (Number.parseFloat(getComputedStyle(stage).top) || 0)}`,
-                  scrub: compact ? 0.42 : HOME_SCRUB,
+                  scrub: HOME_SCRUB,
                   invalidateOnRefresh: true,
+                  onUpdate: settleHomeScrubEndpoint,
                   // CROSS-FILE: home-antigen-switch.css reads .is-current.
                   onToggle: ({ isActive }) =>
                     section.classList.toggle("is-current", isActive),
@@ -489,11 +583,20 @@ export function useHomeStoryAnimation(root: RefObject<HTMLDivElement | null>) {
                 splits,
                 cleanups,
               );
-              // The tear needs time to become a cloud before map markers and
-              // statistics begin their own sequence.
+              // The cloud bridge already masks the arriving map. Start its
+              // marks immediately instead of reserving a second empty lead-in.
+              // Shorten the track by the removed lead to retain reveal speed.
+              if (section.id === "why-tnbc") {
+                const artDuration = artworkTimeline.duration();
+                gsap.set(section, {
+                  "--home-scroll-scale":
+                    (1 + restRatio) * (artDuration + ARTWORK_START) /
+                    (artDuration + 0.42),
+                });
+              }
               timeline.add(
                 artworkTimeline,
-                section.id === "why-tnbc" ? 0.42 : ARTWORK_START,
+                ARTWORK_START,
               );
 
               if (stackedVaccine) {
@@ -559,8 +662,13 @@ export function useHomeStoryAnimation(root: RefObject<HTMLDivElement | null>) {
           const rememberGalleryPosition = () => {
             if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
               galleryResizeProgress = undefined;
+              resizePosition = undefined;
               if (root.current) delete root.current.dataset.galleryBridgeProgress;
               return;
+            }
+            const selected = activeTrigger();
+            if (resizePosition === undefined && selected) {
+              resizePosition = capturePosition(selected);
             }
             const progress = Number.parseFloat(
               document.querySelector<HTMLElement>(".home-gallery-ring-transfer")
@@ -574,18 +682,16 @@ export function useHomeStoryAnimation(root: RefObject<HTMLDivElement | null>) {
           const resumeGalleryPosition = () => {
             const story = root.current;
             if (!story) return;
-            const progress = Number.parseFloat(
+            const galleryProgress = Number.parseFloat(
               story.dataset.galleryBridgeProgress ?? "",
             );
-            const trigger = ScrollTrigger.getById("home-gallery-why-ring");
-            if (!(progress > 0 && progress < 1) || !trigger) return;
+            const position = galleryProgress > 0 && galleryProgress < 1
+              ? { id: "home-gallery-why-ring", progress: galleryProgress }
+              : resizePosition;
+            if (!position || !restorePosition(position)) return;
             delete story.dataset.galleryBridgeProgress;
-            window.scrollTo({
-              top: trigger.start + (trigger.end - trigger.start) * progress,
-              behavior: "instant",
-            });
-            ScrollTrigger.update();
-            trigger.getTween()?.progress(1);
+            galleryResizeProgress = undefined;
+            resizePosition = undefined;
           };
           mediaEvents.addEventListener("matchMediaInit", rememberGalleryPosition);
           mediaEvents.addEventListener("matchMedia", resumeGalleryPosition);
@@ -764,7 +870,8 @@ export function useHomeStoryAnimation(root: RefObject<HTMLDivElement | null>) {
               `+=${Math.round(window.innerHeight * (compact ? 3 : 3.4) * finaleScale)}`,
             pin: true,
             animation: evolve,
-            scrub: compact ? 0.42 : HOME_SCRUB,
+            scrub: HOME_SCRUB,
+            onUpdate: settleHomeScrubEndpoint,
             // The fold's start width is re-measured after font or size changes.
             invalidateOnRefresh: true,
           });
@@ -803,6 +910,8 @@ export function useHomeStoryAnimation(root: RefObject<HTMLDivElement | null>) {
             delete window.__homeMotion;
           }
           root.current?.classList.remove("has-story-motion");
+          root.current?.querySelectorAll(".story-chapter.is-current")
+            .forEach((section) => section.classList.remove("is-current"));
           clinicalSequence?.classList.remove("has-clinical-transition");
         };
       };
@@ -825,28 +934,13 @@ export function useHomeStoryAnimation(root: RefObject<HTMLDivElement | null>) {
       let resizeTimer = 0;
       let measuredWidth = window.innerWidth;
       let measuredHeight = window.innerHeight;
-      let resizePosition: { id: string; progress: number } | undefined;
-      const activeTrigger = () =>
-        ScrollTrigger.getAll().find(
-          (trigger) => trigger.isActive &&
-            ["home-ward-tear-carry", "home-tear-cloud-carry", "home-tnbc-copy-bridge", "home-clinical-sequence", "home-molecule-gallery-intro", "home-gallery-why-ring", "home-circrna-platform", "home-platform-antigen-carry", "home-antigen-overview-transition", "home-antigen-overview-fade", "home-antigen-mechanism-entry"].includes(trigger.vars.id || ""),
-        ) || ScrollTrigger.getAll().find(
-          (trigger) =>
-            trigger.isActive &&
-            trigger.vars.id?.startsWith("home-") &&
-            trigger.vars.id.endsWith("-reading") &&
-            trigger.pin,
-        );
       const rebuild = () => {
         if (!active) return;
         const current = activeTrigger();
         const position = galleryResizeProgress !== undefined ? {
           id: "home-gallery-why-ring",
           progress: galleryResizeProgress,
-        } : resizePosition ?? (current && {
-          id: current.vars.id!,
-          progress: current.progress,
-        });
+        } : resizePosition ?? capturePosition(current);
         galleryResizeProgress = undefined;
         resizePosition = undefined;
         if (root.current) delete root.current.dataset.galleryBridgeProgress;
@@ -854,15 +948,7 @@ export function useHomeStoryAnimation(root: RefObject<HTMLDivElement | null>) {
         media = gsap.matchMedia();
         registerMedia();
         ScrollTrigger.refresh();
-        const next = position && ScrollTrigger.getById(position.id);
-        if (position && next) {
-          window.scrollTo({
-            top: next.start + (next.end - next.start) * position.progress,
-            behavior: "instant",
-          });
-          ScrollTrigger.update();
-          next.getTween()?.progress(1);
-        }
+        if (position) restorePosition(position);
       };
       const onResize = () => {
         // Ignore the small height changes caused by mobile browser chrome.
@@ -874,10 +960,7 @@ export function useHomeStoryAnimation(root: RefObject<HTMLDivElement | null>) {
         // Save before ScrollTrigger refreshes the old geometry during debounce.
         const selected = activeTrigger();
         if (resizePosition === undefined && selected) {
-          resizePosition = {
-            id: selected.vars.id!,
-            progress: selected.progress,
-          };
+          resizePosition = capturePosition(selected);
         }
         const galleryProgress = Number.parseFloat(
           document.querySelector<HTMLElement>(".home-gallery-ring-transfer")
@@ -895,15 +978,12 @@ export function useHomeStoryAnimation(root: RefObject<HTMLDivElement | null>) {
         }, 220);
       };
       window.addEventListener("resize", onResize);
-      // Warm route entries already use the final fonts. Rebuilding all SplitText
-      // nodes and pins again in the next microtask only duplicates layout work.
-      if (document.fonts.status !== "loaded") {
-        document.fonts.ready.then(() => {
-          if (active) rebuild();
-        });
-      }
+      // The main stylesheet can arrive after this hook mounts. Measure the
+      // final fonts and art under the loader, before releasing the intro.
+      const removePreparation = registerPagePreparation(rebuild);
       return () => {
         active = false;
+        removePreparation();
         window.removeEventListener("resize", onResize);
         window.clearTimeout(resizeTimer);
         media.revert();

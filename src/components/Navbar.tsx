@@ -179,7 +179,9 @@ export function Navbar() {
   useEffect(() => {
     const header = headerRef.current;
     if (!header) return;
-    header.style.setProperty("--scroll-p", "0");
+    if (header.style.getPropertyValue("--scroll-p") !== "0") {
+      header.style.setProperty("--scroll-p", "0");
+    }
     const root = document.documentElement;
     let frame = 0;
 
@@ -188,7 +190,7 @@ export function Navbar() {
       const max = root.scrollHeight - window.innerHeight;
       const progress =
         max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)) : 0;
-      header.style.setProperty("--scroll-p", progress.toFixed(4));
+      const progressValue = progress.toFixed(4);
       // CROSS-FILE: reads Home DOM every frame. .home-scene01 lives in
       // contents/home-scene-01.tsx and #home-finale in HomeFinale.tsx.
       // Renaming either of them
@@ -202,16 +204,26 @@ export function Navbar() {
       ) || 0;
       // Home loads lazily after the header. Keep its initial dark theme until
       // the opening scene mounts, then let scrolling determine the theme.
-      header.dataset.homeOpening = String(
+      const homeOpening = String(
         homeActive &&
           (!opening || opening.getBoundingClientRect().bottom > headerHeight),
       );
       const closing = homeActive
         ? document.getElementById("home-finale")?.getBoundingClientRect()
         : null;
-      header.dataset.homeClosing = String(
+      const homeClosing = String(
         !!closing && closing.top <= headerHeight + 1 && closing.bottom > headerHeight,
       );
+      // Finish layout reads before changing styles or header theme attributes.
+      if (header.style.getPropertyValue("--scroll-p") !== progressValue) {
+        header.style.setProperty("--scroll-p", progressValue);
+      }
+      if (header.dataset.homeOpening !== homeOpening) {
+        header.dataset.homeOpening = homeOpening;
+      }
+      if (header.dataset.homeClosing !== homeClosing) {
+        header.dataset.homeClosing = homeClosing;
+      }
     };
 
     const request = () => {

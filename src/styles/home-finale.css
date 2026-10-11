@@ -30,10 +30,12 @@
   inset: auto 0 0;
   height: clamp(64px, 12svh, 120px);
   background: linear-gradient(to bottom, transparent, var(--home-footer-surface));
+  opacity: var(--care-footer-blend, 1);
   z-index: 1;
   pointer-events: none;
 }
 .has-story-motion .story-finale-explore {
+  --care-footer-blend: 0;
   position: absolute;
   inset: 0;
   height: 100%;

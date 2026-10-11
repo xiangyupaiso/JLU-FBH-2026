@@ -1,17 +1,90 @@
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
 // A short scrub smooths wheel input without leaving the illustration trailing.
-export const HOME_SCRUB = 0.48;
+export const HOME_SCRUB = 0.22;
 // NOTE: "sine.inOut" is also hardcoded in animateCircRna.ts and in
 // useHomeStoryAnimation.ts (paint() and several tweens). Changing this alone
 // will not retune those; search for the literal.
 export const HOME_EASE = "sine.inOut";
 
-// Add half the animation's scroll distance as a completed-frame hold. Scaling
-// the track by the same amount preserves the original reveal speed.
-export const HOME_REST_RATIO = 0.5;
+// Briefly settle the completed frame without a second screen of empty scroll.
+// Scaling the track by the same amount preserves the original reveal speed.
+export const HOME_REST_RATIO = 0.08;
 
 // Desktop: every scrubbed scene stays perfectly still for this fraction of its
 // own reveal distance before the next scene, or the bridge into it, moves.
-export const HOME_STILL_RATIO = 0.2;
+export const HOME_STILL_RATIO = 0.06;
+
+// GSAP exposes this refresh flag at runtime; its current types omit it.
+export function isHomeMotionRefreshing() {
+  return Boolean(
+    (ScrollTrigger as typeof ScrollTrigger & { isRefreshing?: boolean })
+      .isRefreshing,
+  );
+}
+
+/** Release carried overlays at the native scroll boundary, even when a fast
+ * wheel input has left their scrubbed animation several frames behind. */
+export function settleHomeScrubEndpoint(trigger: ScrollTrigger) {
+  if (
+    isHomeMotionRefreshing() ||
+    (trigger.progress !== 0 && trigger.progress !== 1)
+  ) return;
+  trigger.getTween()?.progress(1);
+  trigger.animation?.progress(trigger.progress);
+}
+
+/** Watch a visible carry's native boundary when Safari scroll callbacks lag.
+ * Interior frames keep their scrub; endpoint rendering stays with the caller. */
+export function createHomeScrubBoundaryGuard(
+  getTrigger: () => ScrollTrigger | undefined,
+  render: () => void,
+) {
+  let frame = 0;
+  let active = false;
+  let disposed = false;
+  const cancel = () => {
+    cancelAnimationFrame(frame);
+    frame = 0;
+  };
+  const schedule = () => {
+    if (!disposed && active && !frame) frame = requestAnimationFrame(check);
+  };
+  const check = () => {
+    frame = 0;
+    if (disposed || !active) return;
+    // Refresh temporarily rewinds native scroll while measuring its pins.
+    if (!isHomeMotionRefreshing()) {
+      const trigger = getTrigger();
+      if (
+        trigger && trigger.end > trigger.start &&
+        (window.scrollY <= trigger.start || window.scrollY >= trigger.end)
+      ) {
+        // Refresh the scroll cache and native scenes before releasing the carry.
+        // Reentrant renders may cancel or rearm this watch for the final state.
+        active = false;
+        ScrollTrigger.update();
+        settleHomeScrubEndpoint(trigger);
+        render();
+        return;
+      }
+    }
+    schedule();
+  };
+  return {
+    setActive(value: boolean) {
+      if (disposed) return;
+      active = value;
+      if (active) schedule();
+      else cancel();
+    },
+    dispose() {
+      disposed = true;
+      active = false;
+      cancel();
+    },
+  };
+}
 
 /**
  * Desktop scroll budget for a scene whose timeline ends in an empty rest tween.

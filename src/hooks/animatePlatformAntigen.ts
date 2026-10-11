@@ -1,6 +1,12 @@
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { separateFanPaint } from "./createRnaRingMorph";
+import {
+  createHomeScrubBoundaryGuard,
+  isHomeMotionRefreshing,
+  settleHomeScrubEndpoint,
+} from "./homeMotion";
+import { trackPagePreparation } from "../utils/pageLoader";
 
 const smooth = (value: number) => {
   const p = gsap.utils.clamp(0, 1, value);
@@ -90,6 +96,9 @@ export function animatePlatformAntigen(
   let end = 0;
   let settleEnd = 0;
   let departStart = 0;
+  let transitionActive = false;
+  let usePaintedRing = false;
+  let sourceCompleted = false;
   const motion = { progress: 0 };
   const targetVisual = antigen.querySelector<HTMLElement>(".story-visual");
   const targetName = target.querySelector<HTMLElement>(
@@ -113,11 +122,33 @@ export function animatePlatformAntigen(
     ghost.style.visibility = "hidden";
   };
   const render = () => {
+    if (disposed || isHomeMotionRefreshing()) return;
+    const actual = gsap.utils.clamp(
+      0,
+      1,
+      (window.scrollY - start) / Math.max(1, end - start),
+    );
+    const active = actual > 0 && actual < 1;
+    // A quick chapter jump can reach this carry before the source scrub does.
+    // Finish that painting before its closed-ring copy takes ownership.
+    if (actual > 0 && !sourceCompleted) {
+      sourceTimeline.scrollTrigger?.getTween()?.progress(1);
+      sourceTimeline.progress(1);
+      sourceCompleted = true;
+    } else if (actual === 0 && sourceCompleted) {
+      sourceTimeline.scrollTrigger?.getTween()?.progress(1);
+      sourceTimeline.progress(sourceTimeline.scrollTrigger?.progress ?? 0);
+      sourceCompleted = false;
+    }
+    // A texture decoded midway through a pass becomes available next time.
+    // Switching the live original to its fixed copy midway causes a flash.
+    if (!active || !transitionActive) usePaintedRing = Boolean(fan);
+    transitionActive = active;
     // Render from scrubbed progress even after the last wheel event. Geometry
     // uses the same virtual scroll, so DOM scrolling cannot pull the ring away.
     const scroll = gsap.utils.interpolate(start, end, motion.progress);
-    const active = Boolean(fan && motion.progress > 0 && motion.progress < 1);
     sequence.dataset.antigenBridgeProgress = String(motion.progress);
+    ghost.dataset.renderer = usePaintedRing ? "painted" : "native";
     // The carry clone contains only the closed ring. Once the mechanism is
     // opened, its live ribosome and protein must remain visible on the real SVG.
     const mechanismOpen =
@@ -127,14 +158,16 @@ export function animatePlatformAntigen(
     // Keep the reading copy visible when scrolling back into this bridge.
     if (
       !active ||
+      !usePaintedRing ||
       !context ||
       !fan ||
-      disposed ||
       (mechanismOpen && window.scrollY >= end)
     ) {
+      boundaryGuard.setActive(false);
       restore();
       return;
     }
+    boundaryGuard.setActive(true);
     source.style.visibility = "hidden";
     target.style.visibility = "hidden";
     ghost.style.visibility = "visible";
@@ -177,6 +210,10 @@ export function animatePlatformAntigen(
       installed?.setAttribute("filter", localReferences(selected));
     }
   };
+  const boundaryGuard = createHomeScrubBoundaryGuard(
+    () => timeline.scrollTrigger,
+    render,
+  );
   // Opening the mechanism can change visibility without a scroll update.
   const mechanism = target.closest<HTMLElement>(".home-antigen-switch");
   const mechanismObserver = new MutationObserver(render);
@@ -197,6 +234,10 @@ export function animatePlatformAntigen(
       start: () => sourceTimeline.scrollTrigger?.end ?? 0,
       end: () => antigen.getBoundingClientRect().top + window.scrollY,
       scrub: compact ? 0.28 : 0.36,
+      onUpdate: (self) => {
+        settleHomeScrubEndpoint(self);
+        render();
+      },
       onRefresh: (self) => {
         start = self.start;
         end = Math.max(start + 1, self.end);
@@ -265,7 +306,10 @@ export function animatePlatformAntigen(
     { progress: 0 },
     { progress: 1, duration: 1, ease: "none", immediateRender: false },
   );
-  void source
+  // Refresh can temporarily reset scroll and rewind scrubbed timelines. Draw
+  // only after all chapters have restored their real geometry and progress.
+  ScrollTrigger.addEventListener("refresh", render);
+  const preparation = source
     .decode()
     .then(() => {
       if (disposed || !context) return;
@@ -290,9 +334,13 @@ export function animatePlatformAntigen(
       }
     })
     .catch(() => {});
+  const stopTrackingPreparation = trackPagePreparation(preparation);
 
   return () => {
     disposed = true;
+    boundaryGuard.dispose();
+    stopTrackingPreparation();
+    ScrollTrigger.removeEventListener("refresh", render);
     mechanismObserver.disconnect();
     timeline.scrollTrigger?.kill();
     timeline.kill();

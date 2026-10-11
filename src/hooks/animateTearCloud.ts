@@ -1,12 +1,17 @@
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { createChallengeParticleRenderer } from "./challengeParticleRenderer";
-import { HOME_SCRUB } from "./homeMotion";
+import {
+  createHomeScrubBoundaryGuard,
+  isHomeMotionRefreshing,
+  settleHomeScrubEndpoint,
+} from "./homeMotion";
 
 type Grain = { x: number; y: number; alpha: number; rgb: number[] };
 type CloudBounds = { left: number; top: number; width: number; height: number };
 // Viewports the bridge starts before the tear track ends, while it is sticky.
 export const TEAR_CLOUD_LEAD = 0.24;
+const BRIDGE_SCRUB = 0.2;
 const clamp = gsap.utils.clamp(0, 1);
 const smooth = (from: number, to: number, value: number) => {
   const p = clamp((value - from) / (to - from));
@@ -64,6 +69,7 @@ export function animateTearCloud(
   root.append(frame, canvas, fallback);
   const context = fallback.getContext("2d");
   const cloudImage = new Image();
+  cloudImage.crossOrigin = "anonymous";
   cloudImage.src = cloud.querySelector<SVGImageElement>("image")!.href.baseVal;
   const tearImages = [3, 4, 5].map((number) =>
     tear.querySelector<HTMLImageElement>(`[data-layer="${number}"]`)!,
@@ -71,6 +77,7 @@ export function animateTearCloud(
   const state = { progress: 0 };
   let disposed = false;
   let ready = false;
+  let particlePass: boolean | undefined;
   let prepareFrame = 0;
   let fixed = false;
   let width = 0;
@@ -144,6 +151,10 @@ export function animateTearCloud(
       return;
     width = frame.clientWidth;
     height = frame.clientHeight;
+    // Safari's toolbar changes the fixed viewport without resizing the native
+    // svh stages. Keep sampled pixels at their measured size between refreshes.
+    canvas.style.width = fallback.style.width = `${width}px`;
+    canvas.style.height = fallback.style.height = `${height}px`;
     ratio = Math.min(window.devicePixelRatio || 1, 2);
     const sample = document.createElement("canvas");
     sample.width = Math.ceil(width);
@@ -286,7 +297,7 @@ export function animateTearCloud(
     });
   };
   const renderParticles = (progress: number) => {
-    const visible = fixed && ready && progress > 0 && progress < 1;
+    const visible = fixed && particlePass && ready && progress > 0 && progress < 1;
     canvas.style.visibility = visible ? "visible" : "hidden";
     fallback.style.visibility = "hidden";
     if (!visible || gpu?.render(progress)) return;
@@ -330,48 +341,67 @@ export function animateTearCloud(
     context.globalAlpha = 1;
   };
   const draw = () => {
-    if (disposed) return;
+    if (disposed || isHomeMotionRefreshing()) return;
     const p = state.progress;
     const active = p > 0 && p < 1;
+    boundaryGuard.setActive(active);
     setFixed(active);
     frame.style.visibility = active ? "visible" : "hidden";
     frame.dataset.progress = p.toFixed(3);
-    frame.dataset.phase =
-      p < 0.08
-        ? "hold"
-        : p < 0.7
-          ? "disperse"
-          : p < 0.82
-            ? "cloud-hold"
-            : "map-reveal";
+    frame.dataset.phase = p === 0
+      ? "idle"
+      : p < 0.7
+        ? "disperse"
+        : p < 1
+          ? "map-reveal"
+          : "complete";
     if (!active) {
+      particlePass = undefined;
+      frame.dataset.particleMode = "idle";
       renderParticles(0);
       return;
     }
     if (!ready) prepare();
-    const color = smooth(0.18, 0.72, p);
+    // Keep the same rendering path for this pass if the images were still
+    // decoding on entry; newly ready particles belong to the next pass.
+    if (particlePass === undefined) {
+      const waitingForLettering = source.querySelector<HTMLElement>(
+        ".story-reading-ink",
+      )?.dataset.artworkMode === "waiting";
+      // That earlier pass still owns the native question. Crossfade the whole
+      // stage instead of sampling lettering that remains hidden in the tear.
+      particlePass = ready && !waitingForLettering;
+    }
+    frame.dataset.particleMode = particlePass ? "particles" : "crossfade";
+    const color = smooth(0, 0.72, p);
     frame.style.backgroundColor = background(color);
     wash[0].style.opacity = String(1 - color);
     wash[1].style.opacity = String(color);
-    source.style.opacity = String(1 - smooth(0.18, 0.36, p));
-    // Keep the original cloud independent of its surroundings: first gather
-    // the pigment, then hold the cloud alone, then reveal the map around it.
+    source.style.opacity = String(
+      1 - smooth(particlePass ? 0.18 : 0, particlePass ? 0.36 : 0.7, p),
+    );
+    // Gather the pigment first, then let the completed cloud reveal its map.
     destination.style.opacity = "1";
     destination.style.setProperty(
       "--tear-cloud-map-reveal",
-      String(smooth(0.82, 0.98, p)),
+      String(smooth(0.7, 1, p)),
     );
-    cloud.style.opacity = String(smooth(0.62, 0.7, p));
-    renderParticles(smooth(0.08, 0.7, p));
+    cloud.style.opacity = String(smooth(particlePass ? 0.62 : 0.22, 0.7, p));
+    renderParticles(smooth(0, 0.7, p));
   };
+  const boundaryGuard = createHomeScrubBoundaryGuard(
+    () => timeline.scrollTrigger,
+    draw,
+  );
   const timeline = gsap.timeline({
     scrollTrigger: {
       id: "home-tear-cloud-carry",
       trigger: map,
       start: () => from.end - window.innerHeight * TEAR_CLOUD_LEAD,
       end: () => to.start + Math.max(1, to.end - to.start) * 0.22,
-      scrub: compact ? 0.42 : HOME_SCRUB,
+      scrub: compact ? 0.18 : BRIDGE_SCRUB,
       invalidateOnRefresh: true,
+      onUpdate: settleHomeScrubEndpoint,
     },
   });
   timeline.fromTo(
@@ -401,6 +431,7 @@ export function animateTearCloud(
     prepareFrame = 0;
     frame.dataset.scrollStart = String(timeline.scrollTrigger!.start);
     frame.dataset.scrollEnd = String(timeline.scrollTrigger!.end);
+    settleHomeScrubEndpoint(timeline.scrollTrigger!);
     draw();
     if (prewarm.isActive) schedulePrepare();
   };
@@ -419,6 +450,7 @@ export function animateTearCloud(
   refresh();
   return () => {
     disposed = true;
+    boundaryGuard.dispose();
     cancelAnimationFrame(prepareFrame);
     prewarm.kill();
     ScrollTrigger.removeEventListener("refresh", refresh);

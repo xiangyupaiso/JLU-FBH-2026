@@ -2,7 +2,7 @@ import { type RefObject } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { HOME_EASE, HOME_STILL_RATIO } from "./homeMotion";
+import { HOME_EASE, settleHomeScrubEndpoint } from "./homeMotion";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
@@ -22,8 +22,8 @@ const DEPTHS = [
 ] as const;
 
 // Keep the opening responsive without changing later chapters' reading time.
-const SCENE01_SCRUB = 0.24;
-const SCENE01_REST_RATIO = 0.12;
+const SCENE01_SCRUB = 0.2;
+const SCENE01_REST_RATIO = 0.04;
 // Keep the paper, labels and ribbon fixed behind the approaching person.
 // Fit a verified solid-ink rectangle inside the original 4000 × 2250 drawing.
 // The head's outer bounds still contain purple contours at close-up scale.
@@ -58,11 +58,8 @@ export function useHomeScene01Animation({
       const buildTimeline = (compact: boolean) => {
         const select = gsap.utils.selector(section);
         const distance = compact ? 0.58 : 1;
-        // Desktop holds the finished prologue still for the shared ratio.
-        const restRatio = compact ? SCENE01_REST_RATIO : HOME_STILL_RATIO;
-        if (!compact) {
-          gsap.set(section, { "--scene01-scroll-scale": 1 + restRatio });
-        }
+        // Keep only a brief completed-frame rest before native scrolling exits.
+        const restRatio = SCENE01_REST_RATIO;
         section.classList.add("has-scene01-motion");
         // Layout offsets remain valid during refresh even when the current
         // frame is transformed; phones use a wider portrait than the stage.
@@ -92,6 +89,7 @@ export function useHomeScene01Animation({
               `+=${Math.max(1, section.offsetHeight - canvas.offsetHeight)}`,
             scrub: SCENE01_SCRUB,
             invalidateOnRefresh: true,
+            onUpdate: settleHomeScrubEndpoint,
           },
         });
 

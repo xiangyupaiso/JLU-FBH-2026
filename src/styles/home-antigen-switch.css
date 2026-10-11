@@ -124,9 +124,6 @@
   font: 400 14px var(--font-sans);
   text-anchor: middle;
 }
-.home-antigen-switch__ribosome-orbit {
-  transform-origin: 150px 150px;
-}
 .home-antigen-switch__ribosome {
   opacity: 0;
 }
@@ -179,7 +176,9 @@
   .home-antigen-switch__protein {
   opacity: 0;
 }
-.home-antigen-switch__presented-peptide {
+.home-antigen-switch__presenter,
+.home-antigen-switch__presented-peptide,
+.home-antigen-switch__presentation-label {
   opacity: 0;
 }
 .home-antigen-switch__binding-wash {
@@ -244,10 +243,25 @@
 .home-antigen-switch__tcell {
   opacity: 0.78;
 }
-.home-antigen-switch__tcr-site {
+.home-antigen-switch__activation-glow {
+  opacity: 0;
+  pointer-events: none;
+}
+.home-antigen-switch__activation-wash {
   fill: var(--selected-color);
+  fill-opacity: 0.14;
+}
+.home-antigen-switch__activation-ring {
+  fill: none;
   stroke: var(--selected-color);
+  stroke-opacity: 0.5;
+  stroke-width: 1.8;
+}
+.home-antigen-switch__tcr-site {
+  fill: none;
+  stroke: #63765b;
   stroke-width: 1.5;
+  stroke-linecap: round;
   stroke-linejoin: round;
 }
 .home-antigen-switch__tcell-label {
@@ -658,6 +672,10 @@
     height: auto;
     padding: 32px 5% 40px;
   }
+  .story-chapter--switch [data-antigen-view="mechanism"] {
+    /* Leave room above the RNA for the nascent chain. */
+    padding-top: 80px;
+  }
   .story-chapter--switch .home-antigen-switch__content {
     display: grid;
     justify-items: center;
@@ -695,6 +713,13 @@
   .story-chapter--switch .home-antigen-switch__footer {
     order: 5;
     margin-top: 0;
+  }
+}
+
+@media (max-width: 360px) and (orientation: portrait) {
+  .story-chapter--switch [data-antigen-view="mechanism"] {
+    /* Keep the growing chain below the floating story controls. */
+    padding-top: 120px;
   }
 }
 

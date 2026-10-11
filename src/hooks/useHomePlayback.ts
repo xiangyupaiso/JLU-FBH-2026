@@ -38,18 +38,20 @@ const BEATS: readonly Beat[] = [
   { chapter: 0, progress: 0.98, travel: 2, hold: 3 },
   { chapter: 1, progress: 0, travel: 2 },
   { chapter: 1, progress: 0.42, travel: 4, hold: 2 },
-  { chapter: 1, progress: 0.9, travel: 4, hold: 14 },
+  { chapter: 1, progress: 0.9, travel: 4, hold: 3 },
   { chapter: 2, progress: 0.29, label: "wish-readable", travel: 4, hold: 2 },
   { chapter: 2, progress: 0.5, label: "question-readable", travel: 3, hold: 3 },
   { chapter: 2, progress: 0.84, travel: 5, hold: 2 },
   { chapter: 3, progress: 0, travel: 5 },
-  { chapter: 3, progress: 0.88, travel: 7, hold: 4 },
-  { chapter: 3, kind: "bridge", progress: 1, travel: 4, hold: 2 },
-  { chapter: 3, kind: "reading", progress: 0.94, travel: 4, hold: 4 },
+  { chapter: 3, kind: "bridge", progress: 0, travel: 7, hold: 3 },
+  { chapter: 3, kind: "bridge", progress: 1, travel: 3, hold: 1 },
+  { chapter: 3, kind: "reading", progress: 0.2, label: "cell-visible", travel: 2, hold: 1 },
+  { chapter: 3, kind: "reading", progress: 0.5, label: "markers-visible", travel: 4, hold: 1 },
+  { chapter: 3, kind: "reading", progress: 0.94, label: "reading-complete", travel: 5, hold: 4 },
   { chapter: 4, progress: 0.08, travel: 2 },
   { chapter: 4, progress: 0.27, travel: 5, hold: 3 },
   { chapter: 5, progress: 0.72, travel: 7, hold: 3 },
-  { chapter: 5, progress: 0.97, travel: 4, hold: 2 },
+  { chapter: 5, kind: "bridge", progress: 0, travel: 4, hold: 2 },
   { chapter: 6, progress: 0.38, label: "choices-visible", travel: 4, hold: 3 },
   { chapter: 6, progress: 0.88, label: "circ-selected", travel: 4, hold: 3 },
   { chapter: 7, progress: 0, travel: 5 },
@@ -126,9 +128,14 @@ export function useHomePlayback(root: RefObject<HTMLDivElement | null>) {
       page.querySelector<HTMLElement>(
         chapter === 0 ? ".home-scene01" : `#${CHAPTERS[chapter].id}`,
       );
+    const introComplete = () =>
+      section(0)?.dataset.intro === "done" &&
+      !document.querySelector(".home-intro");
     const findTrigger = (anchor: Anchor) => {
       if (anchor.kind === "bridge") {
-        return ScrollTrigger.getById("home-tnbc-copy-bridge");
+        return ScrollTrigger.getById(anchor.chapter === 5
+          ? "home-thinking-gallery-carry"
+          : "home-tnbc-copy-bridge");
       }
       if (anchor.kind === "reading") {
         return ScrollTrigger.getById(
@@ -248,8 +255,9 @@ export function useHomePlayback(root: RefObject<HTMLDivElement | null>) {
     });
     const seekAnchor = (index: number): Anchor => ({
       ...entry(index),
+      kind: index === 3 ? "bridge" : undefined,
       progress: [
-        0.24, 0.9, 0.5, 0.88, 0.27, 0.91, 0.38, 0.2, 0.9, 0.12, 0.88, 0.15,
+        0.24, 0.9, 0.5, 0, 0.27, 0.91, 0.38, 0.2, 0.9, 0.12, 0.88, 0.15,
       ][index],
       label:
         index === 2
@@ -259,17 +267,30 @@ export function useHomePlayback(root: RefObject<HTMLDivElement | null>) {
             : undefined,
     });
     const paint = () => {
-      const y = window.scrollY;
       let chapterIndex = 0;
-      CHAPTERS.forEach((_, index) => {
-        if (y >= position(entry(index)) - 4) chapterIndex = index;
-      });
-      const end = position({ chapter: 11, progress: 0.98 });
+      let progress = 0;
+      // The opening owns the screen until its portal and GSAP context are
+      // removed. Measuring the scroll story here competes with that animation.
+      // A manual jump can paint before React removes the skipped intro portal.
+      // Its destination still needs to appear immediately in the scene list.
+      if (introComplete() || (mode === "manual" && window.scrollY > 0)) {
+        const y = window.scrollY;
+        // Entries follow the story's document order. Stop at the next chapter
+        // so the opening does not measure distant, complex scene interiors.
+        for (let index = 1; index < CHAPTERS.length; index++) {
+          const start = position(entry(index));
+          if (!Number.isFinite(start)) continue;
+          if (y < start - 4) break;
+          chapterIndex = index;
+        }
+        const end = position({ chapter: 11, progress: 0.98 });
+        progress = clamp(y / Math.max(1, end));
+      }
       setView({
         mode,
         rate,
         chapterIndex,
-        progress: clamp(y / Math.max(1, end)),
+        progress,
         ended,
         reducedMotion: preference.matches,
       });
@@ -278,7 +299,9 @@ export function useHomePlayback(root: RefObject<HTMLDivElement | null>) {
       ScrollTrigger.getAll()
         .filter((trigger) => {
           const element = trigger.trigger;
-          return trigger.isActive && element && page.contains(element);
+          // Instant jumps also leave the old scene inactive. Its scrub tween
+          // still needs to reach the new frame so carried artwork disappears.
+          return element && page.contains(element);
         })
         .forEach((trigger) => {
           const tween = trigger.getTween();
@@ -391,6 +414,12 @@ export function useHomePlayback(root: RefObject<HTMLDivElement | null>) {
       preload(BEATS[index].chapter);
     };
     const chooseBeat = () => {
+      // The intro always hands over at the top. Start its first beat directly
+      // instead of forcing layout in the distant antigen chapter to locate it.
+      if (window.scrollY === 0) {
+        beginBeat(0);
+        return true;
+      }
       const inAntigen =
         window.scrollY >= position(entry(9)) - 3 &&
         window.scrollY < position(entry(10));
@@ -417,7 +446,7 @@ export function useHomePlayback(root: RefObject<HTMLDivElement | null>) {
         ? Math.min(0.1, (time - lastTime) / 1000) * rate
         : 0;
       lastTime = time;
-      const introDone = section(0)?.dataset.intro === "done";
+      const introDone = introComplete();
       if (introDone && beatIndex < 0 && !chooseBeat()) {
         ended = true;
         changeMode("paused");
@@ -545,7 +574,10 @@ export function useHomePlayback(root: RefObject<HTMLDivElement | null>) {
           "End",
           " ",
           "Escape",
-        ].includes(event.key)
+        ].includes(event.key) ||
+        (event.key === "Enter" &&
+          target instanceof Element &&
+          target.closest("[data-antigen-option]"))
       )
         manual(event);
     };

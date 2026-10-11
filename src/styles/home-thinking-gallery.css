@@ -1,0 +1,68 @@
+.home-thinking-gallery-wash {
+  position: fixed;
+  inset: 0;
+  z-index: 30;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.home-story .home-molecule-gallery__stage.is-thinking-gallery-target {
+  position: fixed;
+  inset: 0;
+  z-index: 31;
+  background: transparent !important;
+}
+
+.is-thinking-gallery-target .home-molecule-gallery__decision {
+  opacity: 0 !important;
+}
+
+.is-thinking-gallery-source .story-clinical-backdrop,
+.is-thinking-gallery-source
+  #a-new-direction
+  .story-art
+  > :not([data-layer="7"]):not([data-layer="8"]) {
+  opacity: var(--thinking-scene-opacity, 1) !important;
+}
+
+.is-thinking-gallery-source > .story-clinical-backdrop:first-child {
+  opacity: 0 !important;
+}
+
+.is-thinking-gallery-source #a-new-direction [data-layer="7"],
+.is-thinking-gallery-source #a-new-direction [data-layer="8"] {
+  opacity: var(--thinking-cloud-opacity, 1) !important;
+}
+
+.is-thinking-gallery-target .home-molecule-gallery__card {
+  opacity: var(--thinking-card-opacity, 0) !important;
+  transform: none !important;
+}
+
+.is-thinking-gallery-target [data-gallery-layer="symbols"] {
+  opacity: var(--thinking-symbol-opacity, 0) !important;
+}
+
+.is-thinking-gallery-target [data-gallery-ring] {
+  opacity: calc(var(--thinking-symbol-opacity, 0) * 0.64) !important;
+}
+
+.is-thinking-gallery-target [data-gallery-layer="labels"] {
+  opacity: var(--thinking-label-opacity, 0) !important;
+}
+
+.home-thinking-gallery-ink {
+  position: fixed;
+  inset: 0;
+  z-index: 32;
+  width: 100%;
+  height: 100svh;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-thinking-gallery-wash,
+  .home-thinking-gallery-ink {
+    display: none;
+  }
+}

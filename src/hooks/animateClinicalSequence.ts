@@ -1,6 +1,6 @@
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { HOME_EASE, HOME_SCRUB, stillHold } from "./homeMotion";
+import { HOME_EASE, HOME_SCRUB, stillHold, settleHomeScrubEndpoint } from "./homeMotion";
 import { createClinicalParticleMorph } from "./createClinicalParticleMorph";
 import { resetTnbcCopyOpacity, setTnbcCopyOpacity } from "./tnbcCopyOpacity";
 
@@ -64,7 +64,7 @@ export function animateClinicalSequence(
 
   const challengeAt = 0.8;
   const challengeEnd = challengeAt + challengeArt.duration();
-  const transitionAt = challengeEnd + 0.5;
+  const transitionAt = challengeEnd + 0.12;
   const transitionDuration = 1.15;
   const vaccineAt = transitionAt + transitionDuration;
   const vaccineEnd = vaccineAt + vaccineArt.duration();
@@ -99,10 +99,19 @@ export function animateClinicalSequence(
         scrollTrigger: {
           id: "home-tnbc-clinical-exit",
           trigger: sequence,
-          start: "top bottom",
+          start: () => {
+            const trigger = ScrollTrigger.getById("home-why-tnbc-reading");
+            const animation = trigger?.animation as gsap.core.Timeline | undefined;
+            if (!trigger || trigger.pin || !animation) return "top bottom";
+            // Tall reading panels finish their conclusion before the next
+            // scene dims them, even though both remain in normal flow.
+            const complete = animation.labels["reading-complete"] / animation.duration();
+            return trigger.start + (trigger.end - trigger.start) * complete;
+          },
           end: "top top",
-          scrub: compact ? 0.22 : HOME_SCRUB,
+          scrub: HOME_SCRUB,
           invalidateOnRefresh: true,
+          onUpdate: settleHomeScrubEndpoint,
         },
       },
     );
@@ -206,8 +215,9 @@ export function animateClinicalSequence(
     animation: timeline,
     start: "top bottom",
     end: () => `bottom top+=${stage.offsetHeight}`,
-    scrub: compact ? 0.42 : HOME_SCRUB,
+    scrub: HOME_SCRUB,
     invalidateOnRefresh: true,
+    onUpdate: settleHomeScrubEndpoint,
     onRefresh: (trigger) => {
       particles.refresh();
       sequence.dataset.scrollStart = String(trigger.start);

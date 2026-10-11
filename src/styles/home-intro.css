@@ -57,6 +57,7 @@
 }
 .home-intro-tip-core {
   animation: home-intro-sizzle 90ms steps(2, jump-none) infinite alternate;
+  animation-play-state: paused;
 }
 @keyframes home-intro-sizzle {
   from {
@@ -116,7 +117,7 @@
 }
 
 /* The flying signature lands beneath the persistent header word. */
-:root[data-home-intro="landed"] .site-header.is-home-page .logo-word-full {
+.site-header.is-home-page .logo-word-full.is-intro-landed {
   animation: home-intro-land 600ms var(--ease-out) both;
 }
 @keyframes home-intro-land {

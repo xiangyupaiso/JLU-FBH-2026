@@ -19,6 +19,73 @@ let leaveTimer = 0;
 let leaving = false;
 let readiness: AbortController | undefined;
 const leaveListeners = new Set<() => void>();
+const pagePreparations = new Set<() => void | Promise<void>>();
+const preparationTasks = new Set<Promise<void>>();
+const settledSvgSources = new Set<string>();
+const nativeSvgTasks = new Map<string, Promise<void>>();
+const nativeSvgPreloads = new Set<SVGSVGElement>();
+
+const svgSource = (image: SVGImageElement) =>
+  JSON.stringify([image.href.baseVal, image.getAttribute("crossorigin")]);
+
+// Register before React mounts. A decoded HTML Image and an SVG image have
+// separate loading lifecycles, even when they point at the same artwork.
+for (const type of ["load", "error"]) {
+  document.addEventListener(type, (event) => {
+    if (event.target instanceof SVGImageElement) {
+      const source = svgSource(event.target);
+      settledSvgSources.add(source);
+    }
+  }, true);
+}
+
+/** Register layout work that needs the route's final styles, fonts and art. */
+export function registerPagePreparation(prepare: () => void | Promise<void>) {
+  pagePreparations.add(prepare);
+  return () => { pagePreparations.delete(prepare); };
+}
+
+/** Track work already started by a scene, including work created by a rebuild.
+ * The scene owns its failure fallback. Cleanup releases snapshots waiting on
+ * an unmounted scene even if its original decode promise has not settled. */
+export function trackPagePreparation(task: Promise<void>) {
+  let resolve!: () => void;
+  const pending = new Promise<void>((done) => { resolve = done; });
+  preparationTasks.add(pending);
+  const finish = () => {
+    preparationTasks.delete(pending);
+    resolve();
+  };
+  void task.then(finish, finish);
+  return finish;
+}
+
+async function finishPagePreparations(signal: AbortSignal) {
+  while (!signal.aborted && preparationTasks.size) {
+    const batch = Array.from(preparationTasks);
+    await new Promise<void>((resolve) => {
+      const done = () => {
+        signal.removeEventListener("abort", done);
+        resolve();
+      };
+      signal.addEventListener("abort", done, { once: true });
+      void Promise.all(batch).then(done);
+      if (signal.aborted) done();
+    });
+  }
+}
+
+function reportStatus(loader: HTMLElement, phase: string, message: string) {
+  loader.dataset.phase = phase;
+  loader.dataset.message = message;
+  loader.dispatchEvent(new Event("loaderstatus"));
+}
+
+function renderFrames() {
+  return new Promise<void>((resolve) =>
+    requestAnimationFrame(() => requestAnimationFrame(() => resolve())),
+  );
+}
 
 function loaderElement() {
   return document.getElementById("page-loader");
@@ -46,6 +113,10 @@ export function showPageLoader() {
   if (!loader) return;
   ++token;
   readiness?.abort();
+  nativeSvgPreloads.forEach((svg) => svg.remove());
+  nativeSvgPreloads.clear();
+  nativeSvgTasks.clear();
+  settledSvgSources.clear();
   window.clearTimeout(leaveTimer);
   if (isVisible(loader)) return; // first load or an overlapping navigation
 
@@ -97,11 +168,13 @@ export function hidePageLoaderWhenReady() {
   const { signal } = readiness;
   const ready = Promise.all([
     openingComplete(loader, signal),
-    pageReady(signal),
+    pageReady(loader, signal),
   ]);
 
   void ready.then(() => {
     if (current !== token || signal.aborted || !isVisible(loader)) return;
+    reportStatus(loader, "ready", "Ready");
+    loader.dispatchEvent(new Event("loaderready"));
     leaving = true;
     loader.classList.add("is-leaving");
     notifyLeave();
@@ -111,45 +184,142 @@ export function hidePageLoaderWhenReady() {
       loader.classList.remove("is-leaving", "is-playing");
       leaving = false;
     }, LEAVE_MS);
+  }).catch(() => {
+    if (current !== token || signal.aborted || !isVisible(loader)) return;
+    reportStatus(loader, "error", "The page could not load. Please try again.");
+    loader.dispatchEvent(new Event("loadererror"));
   });
 }
 
-async function pageReady(signal: AbortSignal) {
+async function pageReady(loader: HTMLElement, signal: AbortSignal) {
   // Let the selected route's effects initialize its animation DOM first.
-  await new Promise((resolve) =>
-    requestAnimationFrame(() => requestAnimationFrame(resolve)),
-  );
+  await renderFrames();
   if (signal.aborted) return;
+  reportStatus(loader, "styles", "Preparing the page…");
   await deferredStyles(signal);
   if (signal.aborted) return;
-  await Promise.all([document.fonts?.ready, pageImagesAndAnimations(signal)]);
+  // Applying the non-blocking stylesheet can start new font requests. Do not
+  // capture fonts.ready before the browser has laid out its styled content.
+  await renderFrames();
+  if (signal.aborted) return;
+  const seenArt = new Set<string>();
+  const preparedElements = new WeakMap<Element, string>();
+  const prepareArt = () => pageImagesAndAnimations(signal, (complete, total) => {
+    reportStatus(loader, "assets", `Preparing artwork · ${complete} of ${total} ready`);
+  }, seenArt, preparedElements);
+  reportStatus(loader, "assets", "Preparing the artwork…");
+  await prepareArt();
+  if (signal.aborted) return;
+  reportStatus(loader, "fonts", "Preparing the text…");
+  await document.fonts?.ready;
+  if (signal.aborted) return;
+  reportStatus(loader, "layout", "Preparing the scene…");
+  await Promise.all(Array.from(pagePreparations, (prepare) => prepare()));
+  if (signal.aborted) return;
+  // Font-dependent animation geometry and refreshed pins must paint before
+  // HomeIntro is allowed to play, rather than settling during the reveal.
+  await renderFrames();
+  if (signal.aborted) return;
+  // Preparation can mount new transfer layers or replace image clones. Their
+  // own requests and decode must finish too, even when the source art is cached.
+  await prepareArt();
+  if (signal.aborted) return;
+  await document.fonts?.ready;
+  if (signal.aborted) return;
+  reportStatus(loader, "layout", "Preparing the scene…");
+  // Rebuilds can start new decode -> RAF -> pixel-sampling work. Drain the
+  // current tasks, including tasks added while waiting or during final paint.
+  do {
+    await finishPagePreparations(signal);
+    if (signal.aborted) return;
+    await renderFrames();
+  } while (!signal.aborted && preparationTasks.size);
 }
 
 /** The app stylesheet is loaded non-blocking (see vite.config.ts). */
 function deferredStyles(signal: AbortSignal) {
   const links = Array.from(
     document.querySelectorAll<HTMLLinkElement>("link[data-deferred-css]"),
-  ).filter((link) => link.media !== "all" && !link.sheet);
+  );
   return Promise.all(
     links.map(
       (link) =>
-        new Promise<void>((resolve) => {
-          const done = () => {
+        new Promise<void>((resolve, reject) => {
+          const cleanup = () => {
             link.removeEventListener("load", done);
-            link.removeEventListener("error", done);
+            link.removeEventListener("error", failed);
             signal.removeEventListener("abort", done);
+          };
+          const done = () => {
+            cleanup();
             resolve();
           };
+          const failed = () => {
+            cleanup();
+            // A stylesheet failure cannot produce a presentable page.
+            reject(new Error("Page stylesheet could not load"));
+          };
           link.addEventListener("load", done, { once: true });
-          link.addEventListener("error", done, { once: true });
+          link.addEventListener("error", failed, { once: true });
           signal.addEventListener("abort", done, { once: true });
-          if (signal.aborted || link.media === "all" || link.sheet) done();
+          if (signal.aborted) done();
+          else if (link.dataset.styleState === "error") failed();
+          // Chromium can retain a sheet object after a failed request. Only
+          // the successful print -> all swap proves this CSS has applied.
+          else if (link.media === "all") done();
         }),
     ),
   );
 }
 
 const URL_PATTERN = /url\(["']?([^"')]+)["']?\)/g;
+
+function waitForSvgImage(image: SVGImageElement, signal: AbortSignal) {
+  const source = svgSource(image);
+  if (signal.aborted || settledSvgSources.has(source)) return Promise.resolve();
+  const existing = nativeSvgTasks.get(source);
+  if (existing) return existing;
+  let cancelled = false;
+  const pending = new Promise<void>((resolve) => {
+    const namespace = "http://www.w3.org/2000/svg";
+    const svg = document.createElementNS(namespace, "svg");
+    const art = document.createElementNS(namespace, "image");
+    svg.setAttribute("viewBox", "0 0 1 1");
+    svg.setAttribute("aria-hidden", "true");
+    svg.setAttribute("data-page-asset-preload", "");
+    svg.style.cssText = "position:fixed;left:0;top:0;width:1px;height:1px;opacity:.01;pointer-events:none";
+    art.setAttribute("width", "1");
+    art.setAttribute("height", "1");
+    const crossOrigin = image.getAttribute("crossorigin");
+    if (crossOrigin !== null) art.setAttribute("crossorigin", crossOrigin);
+    const done = () => {
+      art.removeEventListener("load", done);
+      art.removeEventListener("error", done);
+      signal.removeEventListener("abort", done);
+      if (signal.aborted) {
+        cancelled = true;
+        svg.remove();
+        nativeSvgPreloads.delete(svg);
+        if (nativeSvgTasks.get(source) === pending) nativeSvgTasks.delete(source);
+      } else {
+        settledSvgSources.add(source);
+      }
+      resolve();
+    };
+    art.addEventListener("load", done, { once: true });
+    art.addEventListener("error", done, { once: true });
+    signal.addEventListener("abort", done, { once: true });
+    // An independent native SVG client loads even while the story keeps its
+    // image transparent. Retain it for this route so SVG resources stay warm.
+    svg.append(art);
+    nativeSvgPreloads.add(svg);
+    document.body.append(svg);
+    art.setAttribute("href", image.href.baseVal);
+    if (signal.aborted) done();
+  });
+  if (!cancelled) nativeSvgTasks.set(source, pending);
+  return pending;
+}
 
 async function waitForImage(image: HTMLImageElement, signal: AbortSignal) {
   if (signal.aborted || (!image.src && !image.srcset)) return;
@@ -213,21 +383,48 @@ async function waitForEmbed(frame: HTMLIFrameElement, signal: AbortSignal) {
   });
 }
 
-async function pageImagesAndAnimations(signal: AbortSignal): Promise<void> {
-  const root = document.getElementById("root");
+async function pageImagesAndAnimations(
+  signal: AbortSignal,
+  onProgress: (complete: number, total: number) => void,
+  seen: Set<string>,
+  preparedElements: WeakMap<Element, string>,
+): Promise<void> {
+  // Home transfer layers and other React portals mount alongside #root.
+  const root = document.body;
   if (!root) return;
+  const loader = loaderElement();
   const pending: Promise<void>[] = [];
-  const seen = new Set<string>();
+  let complete = 0;
+  let scanned = false;
   let count = 0;
-  const preload = (url: string, crossOrigin: string | null = null) => {
+  const track = (task: Promise<void>) => {
+    pending.push(task.then(() => {
+      ++complete;
+      if (scanned && !signal.aborted) onProgress(complete, pending.length);
+    }));
+  };
+  const preload = (
+    url: string,
+    crossOrigin: string | null = null,
+    element?: SVGImageElement,
+  ) => {
     if (!url || url.startsWith("#")) return;
     const key = JSON.stringify([url, crossOrigin]);
-    if (seen.has(key)) return;
+    // A new SVG clone can start its own request even when an earlier node
+    // used this URL. It needs its own load/decode probe, not the old URL gate.
+    if (element
+      ? preparedElements.get(element) === key && settledSvgSources.has(key)
+      : seen.has(key)) return;
     seen.add(key);
     const image = new Image();
     if (crossOrigin !== null) image.crossOrigin = crossOrigin;
     image.src = url;
-    pending.push(waitForImage(image, signal));
+    track(Promise.all([
+      waitForImage(image, signal),
+      ...(element ? [waitForSvgImage(element, signal)] : []),
+    ]).then(() => {
+      if (element) preparedElements.set(element, key);
+    }));
   };
 
   // React hoists these resource hints into <head>. They include figures in
@@ -239,27 +436,37 @@ async function pageImagesAndAnimations(signal: AbortSignal): Promise<void> {
   }
 
   // Route heroes and home scenes paint their art as CSS backgrounds.
-  for (const element of root.querySelectorAll<HTMLElement>("*")) {
+  for (const element of root.querySelectorAll<HTMLElement>("*:not([data-page-asset-preload], [data-page-asset-preload] *)")) {
     if (signal.aborted) return;
+    if (element === loader || loader?.contains(element)) continue;
     // Yield during large routes instead of blocking the loader's drawing.
     if (++count % 120 === 0) await new Promise(requestAnimationFrame);
     // Offscreen and initially transparent animation layers belong to this
     // page too. Eager loading avoids waiting forever on a lazy image's decode.
     if (element instanceof HTMLImageElement) {
-      pending.push(waitForImage(element, signal));
+      const source = () => JSON.stringify([
+        element.currentSrc || element.src, element.srcset, element.crossOrigin,
+      ]);
+      if (!element.complete || preparedElements.get(element) !== source()) {
+        track(waitForImage(element, signal).then(() => {
+          preparedElements.set(element, source());
+        }));
+      }
     }
     if (element instanceof SVGImageElement) {
-      preload(element.href.baseVal, element.getAttribute("crossorigin"));
+      preload(element.href.baseVal, element.getAttribute("crossorigin"), element);
     }
     if (element instanceof HTMLVideoElement) {
       preload(element.poster);
-      if (element.autoplay) pending.push(waitForAnimation(element, signal));
+      if (element.autoplay) track(waitForAnimation(element, signal));
     }
     if (
       element instanceof HTMLIFrameElement &&
-      element.hasAttribute("data-page-embed-ready")
+      element.hasAttribute("data-page-embed-ready") &&
+      !preparedElements.has(element)
     ) {
-      pending.push(waitForEmbed(element, signal));
+      preparedElements.set(element, "embed");
+      track(waitForEmbed(element, signal));
     }
     for (const pseudo of [null, "::before", "::after"]) {
       const style = getComputedStyle(element, pseudo);
@@ -275,5 +482,7 @@ async function pageImagesAndAnimations(signal: AbortSignal): Promise<void> {
     }
   }
 
+  scanned = true;
+  if (!signal.aborted && pending.length) onProgress(complete, pending.length);
   await Promise.all(pending);
 }

@@ -7,7 +7,6 @@ import {
   type RefObject,
 } from "react";
 import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { measureAntigenTransit, pointOnTransit } from "./useAntigenTransit";
 import {
   HOME_PLAYBACK_STATE_EVENT,
@@ -86,7 +85,12 @@ export function useAntigenMechanism(
 
   useLayoutEffect(() => {
     const scene = root.current;
-    if (!scene || !enabled) return;
+    if (!scene) return;
+    if (!enabled) {
+      setPhase(0);
+      setPlaying(false);
+      return;
+    }
     reducedMotion.current = window.matchMedia(
       "(prefers-reduced-motion: reduce)",
     ).matches;
@@ -97,20 +101,19 @@ export function useAntigenMechanism(
         `.home-antigen-switch__${name}`,
       );
     const product = select("product-route");
+    const ribosomeOrbit = select("ribosome-orbit");
     const tcell = select("tcell");
     const proteins = all("protein");
     const tcellLabel = select("tcell-label");
     let labelSize = parseFloat(
       getComputedStyle(scene).getPropertyValue("--tcell-label-size"),
     );
-    tcellLabel.setAttribute("y", selected === 0 ? "63" : "-62");
-    tcellLabel.setAttribute("x", selected === 1 ? "-38" : "0");
     const active = scene
       .querySelector(`[data-antigen-contact="${selected}"]`)
       ?.closest(".home-antigen-switch__cell");
     if (!product || !tcell || !active) return;
     let geometry = measureAntigenTransit(scene, selected);
-    const motion = {
+    const initialMotion = {
       travel: 0,
       dock: 0,
       approach: 0,
@@ -118,14 +121,13 @@ export function useAntigenMechanism(
       turn: 0,
       outline: 0,
       growth: 0,
+      orbit: -55,
     };
-    const growProtein = gsap.utils.interpolate(
-      growing.replace(/-?\d+(?:\.\d+)?/g, "0"),
-      growing,
-    );
+    const motion = { ...initialMotion };
     const growingToProcessed = gsap.utils.interpolate(growing, processed);
     const processedToPeptide = gsap.utils.interpolate(processed, peptide);
     const render = () => {
+      ribosomeOrbit.setAttribute("transform", `rotate(${motion.orbit} 150 150)`);
       if (geometry) {
         const route = pointOnTransit(geometry.product, motion.travel);
         const x =
@@ -150,25 +152,26 @@ export function useAntigenMechanism(
         "transform",
         `rotate(${motion.turn * (geometry?.tcellAngle ?? 180)})`,
       );
-      select("tcr-outline").setAttribute(
-        "transform",
-        `rotate(${motion.turn * (geometry?.outlineAngle ?? 90)}) scale(1.4)`,
-      );
       tcellLabel.style.fontSize = `${16 + (labelSize - 16) * motion.migration}px`;
+      tcellLabel.setAttribute("y", `${63 - (selected === 0 ? 0 : 125) * motion.migration}`);
+      tcellLabel.setAttribute("x", `${(selected === 1 ? -38 : 0) * motion.migration}`);
       select("cytotoxic-turn").setAttribute(
         "transform",
         `rotate(${(geometry?.tcellAngle ?? 180) - 180})`,
       );
-      proteins.forEach((path) =>
+      proteins.forEach((path) => {
         path.setAttribute(
           "d",
           motion.outline === 0
-            ? growProtein(motion.growth)
+            ? growing
             : motion.outline <= 1
               ? growingToProcessed(motion.outline)
               : processedToPeptide(motion.outline - 1),
-        ),
-      );
+        );
+        // Reveal the chain from the exit before morphing the released protein.
+        path.style.strokeDasharray = motion.outline === 0 ? "1" : "none";
+        path.style.strokeDashoffset = `${motion.outline === 0 ? 1 - motion.growth : 0}`;
+      });
     };
     let lastPhase = -1;
     const syncPhase = () => {
@@ -187,56 +190,64 @@ export function useAntigenMechanism(
       onComplete: () => setPlaying(false),
     });
     timeline.current = sequence;
-    const zero = { opacity: 0 };
-    gsap.set(proteins, {
-      ...zero,
-      fillOpacity: 0,
-      strokeDasharray: "none",
-      strokeDashoffset: 0,
-    });
-    proteins.forEach((path) =>
-      gsap.set(path, {
-        strokeWidth: path.classList.contains(
-          "home-antigen-switch__protein-wash",
-        )
-          ? 4.5
-          : 2.35,
-      }),
-    );
-    gsap.set(tcell, { opacity: 0.78 });
-    gsap.set(select("ribosome"), zero);
-    gsap.set(
-      [
-        select("binding-wash"),
-        select("priming-contact"),
-        select("synapse"),
-        select("presented-peptide"),
-        ...all("granule"),
-        ...all("apoptotic-body"),
-        ...all("target-status"),
-      ],
-      zero,
-    );
-    gsap.set(select("presenter"), { opacity: 0.65 });
-    gsap.set(select("tcell-sub-label"), { opacity: 1 });
-    gsap.set(select("tcell-label"), { fontSize: 16 });
-    gsap.set(all("cell-response"), { opacity: 0.55, scale: 1 });
-    gsap.set(all("tumor-peptide"), { opacity: 0.65 });
-    gsap.set(all("flow-in"), {
-      opacity: 0.4,
-      strokeDasharray: 1,
-      strokeDashoffset: 1,
-    });
+    const resetVisuals = () => {
+      Object.assign(motion, initialMotion);
+      const zero = { opacity: 0 };
+      gsap.set(proteins, {
+        ...zero,
+        fillOpacity: 0,
+        strokeDasharray: 1,
+        strokeDashoffset: 1,
+      });
+      proteins.forEach((path) =>
+        gsap.set(path, {
+          strokeWidth: path.classList.contains(
+            "home-antigen-switch__protein-wash",
+          )
+            ? 4.5
+            : 2.35,
+        }),
+      );
+      gsap.set(tcell, { opacity: 0.78 });
+      gsap.set([select("dendritic-cell"), select("dc-label")], { opacity: 1 });
+      gsap.set(select("ribosome"), zero);
+      gsap.set(
+        [
+          select("binding-wash"),
+          select("priming-contact"),
+          select("synapse"),
+          select("presenter"),
+          select("presented-peptide"),
+          select("presentation-label"),
+          select("activation-glow"),
+          ...all("granule"),
+          ...all("apoptotic-body"),
+          ...all("target-status"),
+        ],
+        zero,
+      );
+      gsap.set(select("tcell-sub-label"), { opacity: 1 });
+      gsap.set(select("tcell-label"), { fontSize: 16, opacity: 1 });
+      gsap.set(all("cell-response"), { opacity: 0.55, scale: 1 });
+      gsap.set(all("tumor-peptide"), { opacity: 0.65 });
+      gsap.set(all("flow-in"), {
+        opacity: 0.4,
+        strokeDasharray: 1,
+        strokeDashoffset: 1,
+      });
+      render();
+    };
+    resetVisuals();
     sequence
       .to(select("ribosome"), { opacity: 1, duration: 0.28 }, 0.15)
       .to(proteins, { opacity: 0.95, duration: 0.25 }, 0.35)
-      .to(motion, { growth: 1, duration: 1.15, ease: "sine.out" }, 0.4)
-      .to(select("ribosome"), { opacity: 0, duration: 0.42 }, 1.55)
-      .to(motion, { travel: 1, duration: 1.15 }, 1.55)
+      .to(motion, { growth: 1, orbit: 0, duration: 1.15, ease: "sine.inOut" }, 0.4)
+      .to(select("ribosome"), { opacity: 0, duration: 0.35 }, 1.7)
+      .to(motion, { travel: 1, duration: 1 }, 1.7)
       .to(
         all("flow-in"),
         { strokeDashoffset: 0, opacity: 0.65, duration: 0.6 },
-        1.55,
+        1.7,
       )
       .to(motion, { outline: 1, duration: 0.4 }, 2.7)
       .to(motion, { outline: 2, duration: 0.38 }, 3.1)
@@ -246,14 +257,34 @@ export function useAntigenMechanism(
       .to(select("binding-wash"), { opacity: 0.12, duration: 0.25 }, 3.55)
       .to(proteins, { opacity: 0, duration: 0.24 }, 3.85)
       .to(select("presented-peptide"), { opacity: 1, duration: 0.24 }, 3.85)
+      .to(select("presentation-label"), { opacity: 1, duration: 0.24 }, 3.85)
       .to(select("binding-wash"), { opacity: 0, duration: 0.4 }, 3.95)
       .to(motion, { approach: 1, duration: 0.4 }, 3.85)
       .to(tcell, { opacity: 1, duration: 0.4 }, 3.85)
       .to(select("priming-contact"), { opacity: 0.28, duration: 0.22 }, 4.2)
+      .to(select("activation-glow"), { opacity: 1, duration: 0.4 }, 4.3)
       .to(select("priming-contact"), { opacity: 0, duration: 0.32 }, 4.55)
+      // End the presentation vignette while the activated T cell takes focus.
+      .to(
+        [select("dendritic-cell"), select("dc-label")],
+        { opacity: 0.28, duration: 0.6 },
+        4.75,
+      )
+      .to(
+        [
+          select("presenter"),
+          select("presented-peptide"),
+          select("presentation-label"),
+        ],
+        { opacity: 0, duration: 0.45 },
+        4.75,
+      )
+      .to(all("flow-in"), { opacity: 0.1, duration: 0.6 }, 4.75)
       .to(motion, { turn: 1, duration: 0.85 }, 4.75)
       .to(motion, { migration: 1, duration: 1.45 }, 4.75)
+      .to(tcellLabel, { opacity: 0, duration: 0.15 }, 4.75)
       .to(select("tcell-sub-label"), { opacity: 0, duration: 0.3 }, 4.75)
+      .to(tcellLabel, { opacity: 1, duration: 0.25 }, 6.2)
       .to(select("synapse"), { opacity: 0.5, duration: 0.28 }, 6.2)
       .to(
         active.querySelector(".home-antigen-switch__cell-response"),
@@ -335,7 +366,6 @@ export function useAntigenMechanism(
           7.45,
         );
       });
-    render();
     const playback = readHomePlaybackState();
     sequence.timeScale(playback.mode === "playing" ? playback.rate : 1);
     if (reducedMotion.current || (activated.current && document.hidden && playback.mode === "manual")) {
@@ -368,6 +398,8 @@ export function useAntigenMechanism(
       observer.disconnect();
       cancelAnimationFrame(frame);
       sequence.kill();
+      // Re-entry starts from antigen translation, without the last run's peptide.
+      resetVisuals();
       if (timeline.current === sequence) timeline.current = null;
     };
   }, [root, selected, run, growing, processed, peptide, enabled]);
@@ -378,12 +410,8 @@ export function useAntigenMechanism(
     const media = window.matchMedia("(prefers-reduced-motion: reduce)");
     let resizeTimer = 0;
     let resizing = false;
-    let resizeProgress: number | undefined;
     let measuredWidth = window.innerWidth;
     let measuredHeight = window.innerHeight;
-    const track = scene.closest(".story-scene-track");
-    const sceneTrigger = () =>
-      ScrollTrigger.getAll().find((trigger) => trigger.vars.trigger === track);
     const resize = () => {
       // Match the story's gate: mobile address bars do not rebuild its tracks.
       if (
@@ -397,22 +425,12 @@ export function useAntigenMechanism(
         measuredHeight = window.innerHeight;
         return;
       }
-      resizeProgress ??= sceneTrigger()?.progress;
-      if (resizeProgress === undefined) return;
       resizing = true;
       window.clearTimeout(resizeTimer);
-      // The parent story rebuilds its viewport-dependent tracks after 220ms.
+      // The story owns scroll restoration across overview/flow layouts. Keep
+      // the mechanism alive during its rebuild without applying a second seek.
       resizeTimer = window.setTimeout(() => {
-        const trigger = sceneTrigger();
-        if (trigger && scene.isConnected && resizeProgress !== undefined) {
-          window.scrollTo({
-            top: trigger.start + (trigger.end - trigger.start) * resizeProgress,
-            behavior: "instant",
-          });
-          ScrollTrigger.update();
-        }
         resizing = false;
-        resizeProgress = undefined;
         measuredWidth = window.innerWidth;
         measuredHeight = window.innerHeight;
       }, 300);

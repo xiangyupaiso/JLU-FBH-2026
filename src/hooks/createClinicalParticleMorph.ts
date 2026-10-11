@@ -1,6 +1,14 @@
 import { createChallengeParticleRenderer } from "./challengeParticleRenderer";
 
 type Pigment = { x: number; y: number; rgba: number[] };
+type PaintBox = { left: number; top: number; width: number; height: number };
+type ParticleLayout = {
+  width: number;
+  height: number;
+  ratio: number;
+  source: PaintBox;
+  target: PaintBox;
+};
 const smooth = (start: number, end: number, value: number) => {
   const p = Math.max(0, Math.min(1, (value - start) / (end - start)));
   return p * p * (3 - 2 * p);
@@ -49,6 +57,49 @@ export function createClinicalParticleMorph(
   let targetSpacing = 1;
   let data = new Float32Array();
   let colors = new Float32Array();
+  let layout: ParticleLayout | undefined;
+  let layoutPending = false;
+
+  const measureLayout = (): ParticleLayout => {
+    const stageBox = stage.getBoundingClientRect();
+    const localBox = (image: HTMLImageElement): PaintBox => {
+      const box = image.getBoundingClientRect();
+      return {
+        left: box.left - stageBox.left,
+        top: box.top - stageBox.top,
+        width: box.width,
+        height: box.height,
+      };
+    };
+    return {
+      width: stage.clientWidth,
+      height: stage.clientHeight,
+      ratio: Math.min(window.devicePixelRatio || 1, compact ? 1.5 : 2),
+      source: localBox(source),
+      target: localBox(target),
+    };
+  };
+  const sameBox = (a: PaintBox, b: PaintBox) =>
+    (Object.keys(a) as (keyof PaintBox)[]).every(
+      (key) => Math.abs(a[key] - b[key]) < 0.5,
+    );
+  const upload = () => {
+    gpu?.upload(
+      data,
+      width,
+      height,
+      ratio,
+      sourceSpacing,
+      [84, 117, 165],
+      colors,
+      targetSpacing,
+    );
+    fallback.width = Math.ceil(width * ratio);
+    fallback.height = Math.ceil(height * ratio);
+    canvas.dataset.renderer = gpu && gpuAvailable ? "webgl" : "canvas";
+    canvas.dataset.particleCount = String(data.length / 11);
+    ready = Boolean((gpuAvailable && gpu) || context);
+  };
 
   const sample = (image: HTMLImageElement, stageBox: DOMRect) => {
     const box = image.getBoundingClientRect();
@@ -101,9 +152,8 @@ export function createClinicalParticleMorph(
       const origins = sample(source, box);
       const targets = sample(target, box);
       if (!origins?.points.length || !targets?.points.length) return;
-      width = stage.clientWidth;
-      height = stage.clientHeight;
-      ratio = Math.min(window.devicePixelRatio || 1, compact ? 1.5 : 2);
+      layout = measureLayout();
+      ({ width, height, ratio } = layout);
       sourceSpacing = origins.spacing;
       targetSpacing = targets.spacing;
       const count = Math.max(origins.points.length, targets.points.length);
@@ -135,21 +185,7 @@ export function createClinicalParticleMorph(
         initialized = true;
         gpu = createChallengeParticleRenderer(canvas, true);
       }
-      gpu?.upload(
-        data,
-        width,
-        height,
-        ratio,
-        sourceSpacing,
-        [84, 117, 165],
-        colors,
-        targetSpacing,
-      );
-      fallback.width = Math.ceil(width * ratio);
-      fallback.height = Math.ceil(height * ratio);
-      canvas.dataset.renderer = gpu && gpuAvailable ? "webgl" : "canvas";
-      canvas.dataset.particleCount = String(count);
-      ready = Boolean((gpuAvailable && gpu) || context);
+      upload();
     } catch {
       // Decode/sampling failures retain a continuous original-image dissolve.
       ready = false;
@@ -176,6 +212,10 @@ export function createClinicalParticleMorph(
   const draw = (value: number, sourceIsSettled = true) => {
     if (disposed) return;
     ownsSource = sourceIsSettled;
+    if (ownsSource && layoutPending) {
+      layoutPending = false;
+      refresh();
+    }
     progress = Math.max(0, Math.min(1, value));
     const active = progress > 0 && progress < 1;
     // Fast input can enter before preparation finishes. Keep that whole pass
@@ -253,14 +293,46 @@ export function createClinicalParticleMorph(
 
   const refresh = () => {
     if (disposed) return;
-    ready = false;
-    useParticles = false;
-    preparationAttempted = false;
-    cancelAnimationFrame(prepareFrame);
-    prepareFrame = 0;
     cancelAnimationFrame(resizeFrame);
     resizeFrame = requestAnimationFrame(() => {
       resizeFrame = 0;
+      if (ready && layout && !ownsSource) {
+        // The nurse can still be moving under the entrance timeline. Measure
+        // its resting image once that timeline hands ownership back to us.
+        layoutPending = true;
+      } else if (ready && layout) {
+        // Refresh temporarily rewinds parent timelines. Measure after that
+        // finishes, and keep the current pass on its existing pigment path.
+        const next = measureLayout();
+        if (
+          next.width > 0 && next.height > 0 &&
+          next.source.width > 0 && next.source.height > 0 &&
+          next.target.width > 0 && next.target.height > 0 &&
+          (next.width !== layout.width || next.height !== layout.height ||
+            next.ratio !== layout.ratio ||
+            !sameBox(next.source, layout.source) ||
+            !sameBox(next.target, layout.target))
+        ) {
+          // Reposition the same sampled pigment within the resized originals.
+          // Pixel correspondence and opacity thresholds stay fixed both ways.
+          const reframe = (before: PaintBox, after: PaintBox, offset: number) => {
+            const scaleX = after.width / before.width;
+            const scaleY = after.height / before.height;
+            for (let i = offset; i < data.length; i += 11) {
+              data[i] = after.left + (data[i] - before.left) * scaleX;
+              data[i + 1] = after.top + (data[i + 1] - before.top) * scaleY;
+            }
+            return Math.sqrt(scaleX * scaleY);
+          };
+          sourceSpacing *= reframe(layout.source, next.source, 0);
+          targetSpacing *= reframe(layout.target, next.target, 2);
+          layout = next;
+          ({ width, height, ratio } = next);
+          upload();
+        }
+      } else {
+        preparationAttempted = false;
+      }
       draw(progress, ownsSource);
     });
   };
