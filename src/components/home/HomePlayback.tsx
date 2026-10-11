@@ -1,9 +1,18 @@
-import { useEffect, useId, useRef, useState, type RefObject } from "react";
-import { ChevronUp, Pause, Play, RotateCcw, X } from "lucide-react";
+import {
+  useEffect,
+  useId,
+  useRef,
+  useState,
+  type CSSProperties,
+  type RefObject,
+} from "react";
+import { ArrowRight, List, Pause, Play, RotateCcw, X } from "lucide-react";
 import { useHomePlayback } from "../../hooks/useHomePlayback";
 import "../../styles/home-playback.css";
 
 type HomePlaybackProps = { root: RefObject<HTMLDivElement | null> };
+
+const PLAYBACK_RATES = [0.75, 1, 1.2, 1.5];
 
 export function HomePlayback({ root }: HomePlaybackProps) {
   const {
@@ -21,6 +30,7 @@ export function HomePlayback({ root }: HomePlaybackProps) {
   const [showScenes, setShowScenes] = useState(false);
   const playerRef = useRef<HTMLDivElement>(null);
   const panelRef = useRef<HTMLDivElement>(null);
+  const listRef = useRef<HTMLOListElement>(null);
   const scenesButtonRef = useRef<HTMLButtonElement>(null);
   const id = useId();
   const currentChapter = chapters[chapterIndex] ?? chapters[0];
@@ -32,10 +42,24 @@ export function HomePlayback({ root }: HomePlaybackProps) {
         ? "Resume story"
         : "Play story";
   const percent = Math.round(Math.min(1, Math.max(0, progress)) * 100);
+  const nextRate =
+    PLAYBACK_RATES[(PLAYBACK_RATES.indexOf(rate) + 1) % PLAYBACK_RATES.length];
 
   useEffect(() => {
     if (!showScenes) return;
 
+    const centerCurrent = () => {
+      const list = listRef.current;
+      const current = panelRef.current?.querySelector<HTMLButtonElement>(
+        '[aria-current="step"]',
+      );
+      if (!list || !current) return;
+      const listBox = list.getBoundingClientRect();
+      const currentBox = current.getBoundingClientRect();
+      list.scrollTop +=
+        currentBox.top - listBox.top - (listBox.height - currentBox.height) / 2;
+    };
+    centerCurrent();
     panelRef.current
       ?.querySelector<HTMLButtonElement>('[aria-current="step"]')
       ?.focus({ preventScroll: true });
@@ -56,9 +80,11 @@ export function HomePlayback({ root }: HomePlaybackProps) {
     };
     document.addEventListener("pointerdown", dismissOutside);
     document.addEventListener("keydown", dismissEscape);
+    window.addEventListener("resize", centerCurrent);
     return () => {
       document.removeEventListener("pointerdown", dismissOutside);
       document.removeEventListener("keydown", dismissEscape);
+      window.removeEventListener("resize", centerCurrent);
     };
   }, [showScenes]);
 
@@ -72,79 +98,82 @@ export function HomePlayback({ root }: HomePlaybackProps) {
       className={`home-playback${reducedMotion ? " is-static" : ""}`}
       data-home-player=""
       data-playback-mode={mode}
+      data-playback-chapter={currentChapter.id}
       ref={playerRef}
       onBlur={(event) => {
-        if (!event.currentTarget.contains(event.relatedTarget))
+        // Safari can clear focus on pointerdown before a scene receives click.
+        // Outside pointer presses are dismissed separately; only a real focus
+        // destination should close the directory during keyboard navigation.
+        if (
+          event.relatedTarget &&
+          !event.currentTarget.contains(event.relatedTarget)
+        )
           setShowScenes(false);
       }}
     >
-      {showScenes && (
-        <div
-          className="home-playback-scenes"
-          id={`${id}-scenes`}
-          ref={panelRef}
-          role="dialog"
-          aria-label="Story scenes"
-        >
-          <div className="home-playback-scenes-heading">
-            <div>
-              <h2>Scenes</h2>
-            </div>
-            <button
-              className="home-playback-close"
-              type="button"
-              onClick={closeScenes}
-              aria-label="Close scene list"
-            >
-              <X size={14} aria-hidden="true" />
-            </button>
-          </div>
-          <ol className="home-playback-scene-list">
-            {chapters.map((chapter, index) => (
-              <li key={chapter.id}>
-                <button
-                  type="button"
-                  aria-current={index === chapterIndex ? "step" : undefined}
-                  onClick={() => {
-                    seekChapter(index);
-                    closeScenes();
-                  }}
-                >
-                  <span
-                    className="home-playback-scene-number"
-                    aria-hidden="true"
-                  >
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
-                  <span>{chapter.title}</span>
-                </button>
-              </li>
-            ))}
-          </ol>
+      <div
+        className="home-playback-scenes"
+        data-open={showScenes}
+        inert={!showScenes}
+        aria-hidden={!showScenes}
+        id={`${id}-scenes`}
+        ref={panelRef}
+        role="dialog"
+        aria-labelledby={`${id}-scenes-title`}
+      >
+        <div className="home-playback-scenes-heading">
+          <h2 id={`${id}-scenes-title`}>Scenes</h2>
           {!reducedMotion && (
-            <div className="home-playback-settings">
-              <span>Speed</span>
-              <div
-                className="home-playback-speeds"
-                role="group"
-                aria-label="Playback speed"
-              >
-                {[0.75, 1, 1.2, 1.5].map((speed) => (
-                  <button
-                    type="button"
-                    key={speed}
-                    aria-pressed={rate === speed}
-                    aria-label={`Playback speed ${speed} times`}
-                    onClick={() => setRate(speed)}
-                  >
-                    {speed}×
-                  </button>
-                ))}
-              </div>
-            </div>
+            <button
+              className="home-playback-speed"
+              type="button"
+              aria-label={`Playback speed ${rate} times; change to ${nextRate} times`}
+              title={`Playback speed · ${rate}× → ${nextRate}×`}
+              onClick={() => setRate(nextRate)}
+            >
+              {rate}×
+            </button>
           )}
+          <button
+            className="home-playback-close"
+            type="button"
+            onClick={closeScenes}
+            aria-label="Close scene list"
+          >
+            <X size={18} strokeWidth={1.5} aria-hidden="true" />
+          </button>
         </div>
-      )}
+        <ol className="home-playback-scene-list" ref={listRef}>
+          {chapters.map((chapter, index) => (
+            <li
+              key={chapter.id}
+              style={{ "--scene-order": index } as CSSProperties}
+            >
+              <button
+                type="button"
+                aria-current={index === chapterIndex ? "step" : undefined}
+                onClick={() => {
+                  seekChapter(index);
+                  closeScenes();
+                }}
+              >
+                <span className="home-playback-scene-number" aria-hidden="true">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+                <span className="home-playback-scene-title">
+                  {chapter.title}
+                </span>
+                <ArrowRight
+                  className="home-playback-scene-arrow"
+                  size={15}
+                  strokeWidth={1.5}
+                  aria-hidden="true"
+                />
+              </button>
+            </li>
+          ))}
+        </ol>
+      </div>
 
       <div
         className="home-playback-bar"
@@ -155,23 +184,26 @@ export function HomePlayback({ root }: HomePlaybackProps) {
           <button
             className="home-playback-toggle"
             type="button"
-            onClick={toggle}
+            onClick={() => {
+              setShowScenes(false);
+              toggle();
+            }}
             aria-label={playLabel}
             title={playLabel}
             aria-pressed={mode === "playing"}
           >
             {ended ? (
-              <RotateCcw size={14} aria-hidden="true" />
+              <RotateCcw size={16} aria-hidden="true" />
             ) : mode === "playing" ? (
               <Pause
-                size={13}
+                size={15}
                 fill="currentColor"
                 strokeWidth={1.5}
                 aria-hidden="true"
               />
             ) : (
               <Play
-                size={13}
+                size={15}
                 fill="currentColor"
                 strokeWidth={1.5}
                 aria-hidden="true"
@@ -183,21 +215,17 @@ export function HomePlayback({ root }: HomePlaybackProps) {
           className="home-playback-scenes-toggle"
           type="button"
           ref={scenesButtonRef}
-          onClick={() => setShowScenes((visible) => !visible)}
+          onClick={() => {
+            if (!showScenes && mode === "playing") toggle();
+            setShowScenes((visible) => !visible);
+          }}
           aria-label="Choose a story scene"
           aria-haspopup="dialog"
           aria-expanded={showScenes}
-          aria-controls={showScenes ? `${id}-scenes` : undefined}
+          aria-controls={`${id}-scenes`}
           title={`${String(chapterIndex + 1).padStart(2, "0")} / ${chapters.length} · ${currentChapter.title}`}
         >
-          <span className="home-playback-index" aria-hidden="true">
-            {String(chapterIndex + 1).padStart(2, "0")}
-          </span>
-          <ChevronUp
-            size={11}
-            className={showScenes ? "is-open" : ""}
-            aria-hidden="true"
-          />
+          <List size={19} strokeWidth={1.5} aria-hidden="true" />
         </button>
         <div
           className="home-playback-progress"

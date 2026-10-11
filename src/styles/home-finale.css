@@ -30,10 +30,12 @@
   inset: auto 0 0;
   height: clamp(64px, 12svh, 120px);
   background: linear-gradient(to bottom, transparent, var(--home-footer-surface));
+  opacity: var(--care-footer-blend, 1);
   z-index: 1;
   pointer-events: none;
 }
 .has-story-motion .story-finale-explore {
+  --care-footer-blend: 0;
   position: absolute;
   inset: 0;
   height: 100%;
@@ -69,16 +71,6 @@
 .home-story:has(.story-finale-explore) {
   padding-bottom: 0;
 }
-/* Hope's illustration now resolves after the circRNA closing shot. */
-.home-story .story-chapter--hope .story-copy {
-  background: radial-gradient(
-    ellipse 75% 55% at 50% 0%,
-    rgba(255, 245, 224, 0.85),
-    rgba(253, 216, 165, 0.45) 35%,
-    rgba(247, 231, 230, 0)
-  );
-}
-
 /* Ambient layer: the painted circRNA ring from "Why circRNA?" and a warm
    glow. HomeFinale motion in useHomeStoryAnimation.ts draws, turns and
    lights them while the statement is pinned. Without motion they rest here. */
@@ -119,44 +111,23 @@
   width: 100%;
   text-align: center;
 }
-/* The carried line. CROSS-FILE: .story-carry is the last line of
-   #what-we-hope (home-story.tsx). useHomeStoryAnimation.ts moves a clone
-   (.story-final-carry) from it down to the kicker, then folds the kicker
-   (fold width/opacity, --merge on the name). All three share one face so
-   the clone only has to scale. */
-.home-story .story-carry,
-.home-story .story-final-statement__kicker,
-.home-story .story-final-carry {
+/* The closing line folds into "That is CirCure." */
+.home-story .story-final-statement__kicker {
   color: var(--story-ink);
   font-style: italic;
   font-weight: 400;
   white-space: nowrap;
 }
-/* circure-tokens.css forces the body face on every <p> (!important), so
-   the face is set on the inner spans, which only inherit from the <p>. */
+/* circure-tokens.css forces the body face on every <p> (!important). */
 .home-story [data-final-carry] {
   font-family: var(--font-editorial);
 }
-.home-story .story-carry {
-  font-size: clamp(20px, 1.7vw, 26px);
-  line-height: 1.4;
-}
-.home-story .story-final-statement__kicker,
-.home-story .story-final-carry {
+.home-story .story-final-statement__kicker {
   font-size: clamp(22px, min(2.4vw, 4.4svh), 36px);
   line-height: 1.3;
 }
 .home-story .story-final-statement__kicker {
   margin: 0 0 clamp(18px, 3.2svh, 34px);
-}
-.home-story .story-final-carry {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 90; /* below the site header (100) */
-  visibility: hidden;
-  transform-origin: 0 0;
-  pointer-events: none;
 }
 /* Without motion there is no fold to watch: show the answer directly. */
 .home-story:not(.has-story-motion) .story-final-statement__fold {
@@ -263,11 +234,7 @@
     width: 56px;
     height: 56px;
   }
-  .home-story .story-carry {
-    font-size: clamp(17px, 4.6vw, 22px);
-  }
-  .home-story .story-final-statement__kicker,
-  .home-story .story-final-carry {
+  .home-story .story-final-statement__kicker {
     font-size: clamp(17px, 5vw, 24px);
   }
   /* Too narrow for one line: "with the tumor." takes the second. */

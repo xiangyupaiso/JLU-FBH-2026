@@ -11,17 +11,26 @@ import { HomeRnaSequence } from "../components/home/HomeRnaSequence";
 import { WardInfusionTube } from "../components/home/WardInfusionTube";
 import originalManifest from "../assets/home/story/manifest.json";
 import supplements from "../assets/home/supplements/manifest.json";
-const patientConcerned = "https://static.igem.wiki/teams/6056/wiki/files/pages/home/patient-teary-20261004-467cbc4b5db7.webp";
-const clinicianConcerned = "https://static.igem.wiki/teams/6056/wiki/files/pages/home/clinician-concerned.avif";
-const clinicianEllipsis = "https://static.igem.wiki/teams/6056/wiki/files/pages/home/clinician-ellipsis.avif";
-const patientQuestion = "https://static.igem.wiki/teams/6056/wiki/files/pages/home/patient-question.avif";
+const patientConcerned =
+  "https://static.igem.wiki/teams/6056/wiki/files/pages/home/patient-teary-20261004-467cbc4b5db7.webp";
+const clinicianConcerned =
+  "https://static.igem.wiki/teams/6056/wiki/files/pages/home/clinician-concerned.avif";
+const clinicianEllipsis =
+  "https://static.igem.wiki/teams/6056/wiki/files/pages/home/clinician-ellipsis.avif";
+const patientQuestion =
+  "https://static.igem.wiki/teams/6056/wiki/files/pages/home/patient-question.avif";
 import { useHomeStoryAnimation } from "../hooks/useHomeStoryAnimation";
 import { HomeAntigenSwitch } from "../components/home/HomeAntigenSwitch";
+import { HomeMoleculeGallery } from "../components/home/HomeMoleculeGallery";
+import { HomeTnbcDiagram } from "../components/home/HomeTnbcDiagram";
 import { HomeFinale } from "../components/home/HomeFinale";
 import { HomeExploreLinks } from "../components/home/HomeExploreLinks";
-const mapDataNoteUrl = "https://static.igem.wiki/teams/6056/wiki/files/pages/home/map-data-note.avif";
-const mapLatestUrl = "https://static.igem.wiki/teams/6056/wiki/files/pages/home/map-latest-20261004-02da5d799cd2.webp";
-const mapCloudNorthwestUrl = "https://static.igem.wiki/teams/6056/wiki/files/pages/home/map-cloud-northwest-7a14ee146da5.webp";
+const mapDataNoteUrl =
+  "https://static.igem.wiki/teams/6056/wiki/files/pages/home/map-data-note.avif";
+const mapLatestUrl =
+  "https://static.igem.wiki/teams/6056/wiki/files/pages/home/map-latest-20261004-02da5d799cd2.webp";
+const mapCloudNorthwestUrl =
+  "https://static.igem.wiki/teams/6056/wiki/files/pages/home/map-cloud-northwest-7a14ee146da5.webp";
 import "../styles/home-story.css";
 import "../styles/home-tnbc-map.css";
 import "../styles/home-reading.css";
@@ -33,72 +42,136 @@ import "../styles/home-clinical-mobile.css";
 const manifest = { ...originalManifest, ...supplements };
 
 const imageUrls: Record<string, string> = {
-  "../assets/home/story/scene-1-layer-1.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-1-layer-1.webp",
-  "../assets/home/story/scene-1-layer-2.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-1-layer-2.webp",
-  "../assets/home/story/scene-1-layer-3.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-1-layer-3.webp",
-  "../assets/home/story/scene-1-layer-4.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-1-layer-4.webp",
-  "../assets/home/story/scene-1-layer-5.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-1-layer-5.webp",
-  "../assets/home/story/scene-2-layer-1.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-2-layer-1.webp",
-  "../assets/home/story/scene-2-layer-2.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-2-layer-2.webp",
-  "../assets/home/story/scene-2-layer-3.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-2-layer-3.webp",
-  "../assets/home/story/scene-2-layer-4.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-2-layer-4.webp",
-  "../assets/home/story/scene-2-layer-5.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-2-layer-5.webp",
-  "../assets/home/story/scene-2-layer-6.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-2-layer-6.webp",
-  "../assets/home/story/scene-3-layer-1.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-3-layer-1.webp",
-  "../assets/home/story/scene-3-layer-2.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-3-layer-2.webp",
-  "../assets/home/story/scene-3-layer-3.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-3-layer-3.webp",
-  "../assets/home/story/scene-4-layer-1.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-4-layer-1.webp",
-  "../assets/home/story/scene-4-layer-2.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-4-layer-2.webp",
-  "../assets/home/story/scene-4-layer-3.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-4-layer-3.webp",
-  "../assets/home/story/scene-4-layer-4.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-4-layer-4.webp",
-  "../assets/home/story/scene-4-layer-5.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-4-layer-5.webp",
-  "../assets/home/story/scene-4-layer-6.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-4-layer-6.webp",
-  "../assets/home/story/scene-4-layer-7.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-4-layer-7.webp",
-  "../assets/home/story/scene-4-layer-8.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-4-layer-8.webp",
-  "../assets/home/story/scene-5-layer-1.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-5-layer-1.webp",
-  "../assets/home/story/scene-5-layer-2.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-5-layer-2.webp",
-  "../assets/home/story/scene-5-layer-3.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-5-layer-3.webp",
-  "../assets/home/story/scene-6-layer-1.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-6-layer-1.webp",
-  "../assets/home/story/scene-6-layer-2.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-6-layer-2.webp",
-  "../assets/home/story/scene-6-layer-3.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-6-layer-3.webp",
-  "../assets/home/story/scene-7-layer-1.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-7-layer-1.webp",
-  "../assets/home/story/scene-7-layer-2.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-7-layer-2.webp",
-  "../assets/home/story/scene-7-layer-3.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-7-layer-3.webp",
-  "../assets/home/story/scene-7-layer-4.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-7-layer-4.webp",
-  "../assets/home/story/scene-8-layer-1.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-8-layer-1.webp",
-  "../assets/home/story/scene-8-layer-2.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-8-layer-2.webp",
-  "../assets/home/story/scene-8-layer-3.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-8-layer-3.webp",
-  "../assets/home/story/scene-8-layer-4.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-8-layer-4.webp",
-  "../assets/home/story/scene-8-layer-5.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-8-layer-5.webp",
-  "../assets/home/story/scene-8-layer-6.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-8-layer-6.webp",
-  "../assets/home/story/scene-9-layer-1.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-9-layer-1.webp",
-  "../assets/home/story/scene-9-layer-2.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-9-layer-2.webp",
-  "../assets/home/story/scene-9-layer-3.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-9-layer-3.webp",
+  "../assets/home/story/scene-1-layer-1.webp":
+    "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-1-layer-1.webp",
+  "../assets/home/story/scene-1-layer-2.webp":
+    "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-1-layer-2.webp",
+  "../assets/home/story/scene-1-layer-3.webp":
+    "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-1-layer-3.webp",
+  "../assets/home/story/scene-1-layer-4.webp":
+    "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-1-layer-4.webp",
+  "../assets/home/story/scene-1-layer-5.webp":
+    "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-1-layer-5.webp",
+  "../assets/home/story/scene-2-layer-1.webp":
+    "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-2-layer-1.webp",
+  "../assets/home/story/scene-2-layer-2.webp":
+    "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-2-layer-2.webp",
+  "../assets/home/story/scene-2-layer-3.webp":
+    "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-2-layer-3.webp",
+  "../assets/home/story/scene-2-layer-4.webp":
+    "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-2-layer-4.webp",
+  "../assets/home/story/scene-2-layer-5.webp":
+    "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-2-layer-5.webp",
+  "../assets/home/story/scene-2-layer-6.webp":
+    "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-2-layer-6.webp",
+  "../assets/home/story/scene-3-layer-1.webp":
+    "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-3-layer-1.webp",
+  "../assets/home/story/scene-3-layer-2.webp":
+    "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-3-layer-2.webp",
+  "../assets/home/story/scene-3-layer-3.webp":
+    "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-3-layer-3.webp",
+  "../assets/home/story/scene-4-layer-1.webp":
+    "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-4-layer-1.webp",
+  "../assets/home/story/scene-4-layer-2.webp":
+    "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-4-layer-2.webp",
+  "../assets/home/story/scene-4-layer-3.webp":
+    "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-4-layer-3.webp",
+  "../assets/home/story/scene-4-layer-4.webp":
+    "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-4-layer-4.webp",
+  "../assets/home/story/scene-4-layer-5.webp":
+    "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-4-layer-5.webp",
+  "../assets/home/story/scene-4-layer-6.webp":
+    "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-4-layer-6.webp",
+  "../assets/home/story/scene-4-layer-7.webp":
+    "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-4-layer-7.webp",
+  "../assets/home/story/scene-4-layer-8.webp":
+    "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-4-layer-8.webp",
+  "../assets/home/story/scene-5-layer-1.webp":
+    "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-5-layer-1.webp",
+  "../assets/home/story/scene-5-layer-2.webp":
+    "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-5-layer-2.webp",
+  "../assets/home/story/scene-5-layer-3.webp":
+    "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-5-layer-3.webp",
+  "../assets/home/story/scene-6-layer-1.webp":
+    "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-6-layer-1.webp",
+  "../assets/home/story/scene-6-layer-2.webp":
+    "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-6-layer-2.webp",
+  "../assets/home/story/scene-6-layer-3.webp":
+    "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-6-layer-3.webp",
+  "../assets/home/story/scene-7-layer-1.webp":
+    "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-7-layer-1.webp",
+  "../assets/home/story/scene-7-layer-2.webp":
+    "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-7-layer-2.webp",
+  "../assets/home/story/scene-7-layer-3.webp":
+    "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-7-layer-3.webp",
+  "../assets/home/story/scene-7-layer-4.webp":
+    "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-7-layer-4.webp",
+  "../assets/home/story/scene-8-layer-1.webp":
+    "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-8-layer-1.webp",
+  "../assets/home/story/scene-8-layer-2.webp":
+    "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-8-layer-2.webp",
+  "../assets/home/story/scene-8-layer-3.webp":
+    "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-8-layer-3.webp",
+  "../assets/home/story/scene-8-layer-4.webp":
+    "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-8-layer-4.webp",
+  "../assets/home/story/scene-8-layer-5.webp":
+    "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-8-layer-5.webp",
+  "../assets/home/story/scene-8-layer-6.webp":
+    "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-8-layer-6.webp",
+  "../assets/home/story/scene-9-layer-1.webp":
+    "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-9-layer-1.webp",
+  "../assets/home/story/scene-9-layer-2.webp":
+    "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-9-layer-2.webp",
+  "../assets/home/story/scene-9-layer-3.webp":
+    "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-9-layer-3.webp",
 };
 const supplementUrls: Record<string, string> = {
-  "../assets/home/supplements/fan-1.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/fan-1-7b6a2cdfd1c0.webp",
-  "../assets/home/supplements/fan-2.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/fan-2-99316fb0dee8.webp",
-  "../assets/home/supplements/fan-3.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/fan-3-5a2cfbaaa1bd.webp",
-  "../assets/home/supplements/fan-4.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/fan-4-ca142f3896a2.webp",
-  "../assets/home/supplements/fan-5.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/fan-5-6e5a6d6fc4bd.webp",
-  "../assets/home/supplements/fan-6.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/fan-6-f2d48ddfefe2.webp",
-  "../assets/home/supplements/fan-7.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/fan-7-e0b9ba792000.webp",
-  "../assets/home/supplements/fan-8.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/fan-8-2576354a8c9d.webp",
-  "../assets/home/supplements/tear-1.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/tear-1-6f99fafd2a57.webp",
-  "../assets/home/supplements/tear-2.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/tear-2-df0640fe68b9.webp",
-  "../assets/home/supplements/tear-3.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/tear-3-e5777e499af5.webp",
-  "../assets/home/supplements/tear-4.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/tear-4-74fdbdde9e93.webp",
-  "../assets/home/supplements/tear-5.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/tear-5-3a26285560f2.webp",
-  "../assets/home/supplements/thinking-1.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/thinking-1-cf39f9eecc9d.webp",
-  "../assets/home/supplements/thinking-10.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/thinking-10-958af66e1b31.webp",
-  "../assets/home/supplements/thinking-2.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/thinking-2-9c0e1bf60d35.webp",
-  "../assets/home/supplements/thinking-3.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/thinking-3-946139db0f4f.webp",
-  "../assets/home/supplements/thinking-4.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/thinking-4-a202ea746a90.webp",
-  "../assets/home/supplements/thinking-5.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/thinking-5-e9181f8afd09.webp",
-  "../assets/home/supplements/thinking-6.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/thinking-6-3ae0541c5bcc.webp",
-  "../assets/home/supplements/thinking-7.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/thinking-7-da0eb2680bea.webp",
-  "../assets/home/supplements/thinking-8.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/thinking-8-f1b1cea38333.webp",
-  "../assets/home/supplements/thinking-9.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/home/thinking-9-f7c387ca859a.webp",
+  "../assets/home/supplements/fan-1.webp":
+    "https://static.igem.wiki/teams/6056/wiki/files/pages/home/fan-1-7b6a2cdfd1c0.webp",
+  "../assets/home/supplements/fan-2.webp":
+    "https://static.igem.wiki/teams/6056/wiki/files/pages/home/fan-2-99316fb0dee8.webp",
+  "../assets/home/supplements/fan-3.webp":
+    "https://static.igem.wiki/teams/6056/wiki/files/pages/home/fan-3-5a2cfbaaa1bd.webp",
+  "../assets/home/supplements/fan-4.webp":
+    "https://static.igem.wiki/teams/6056/wiki/files/pages/home/fan-4-ca142f3896a2.webp",
+  "../assets/home/supplements/fan-5.webp":
+    "https://static.igem.wiki/teams/6056/wiki/files/pages/home/fan-5-6e5a6d6fc4bd.webp",
+  "../assets/home/supplements/fan-6.webp":
+    "https://static.igem.wiki/teams/6056/wiki/files/pages/home/fan-6-f2d48ddfefe2.webp",
+  "../assets/home/supplements/fan-7.webp":
+    "https://static.igem.wiki/teams/6056/wiki/files/pages/home/fan-7-e0b9ba792000.webp",
+  "../assets/home/supplements/fan-8.webp":
+    "https://static.igem.wiki/teams/6056/wiki/files/pages/home/fan-8-2576354a8c9d.webp",
+  "../assets/home/supplements/tear-1.webp":
+    "https://static.igem.wiki/teams/6056/wiki/files/pages/home/tear-1-6f99fafd2a57.webp",
+  "../assets/home/supplements/tear-2.webp":
+    "https://static.igem.wiki/teams/6056/wiki/files/pages/home/tear-2-df0640fe68b9.webp",
+  "../assets/home/supplements/tear-3.webp":
+    "https://static.igem.wiki/teams/6056/wiki/files/pages/home/tear-3-e5777e499af5.webp",
+  "../assets/home/supplements/tear-4.webp":
+    "https://static.igem.wiki/teams/6056/wiki/files/pages/home/tear-4-74fdbdde9e93.webp",
+  "../assets/home/supplements/tear-5.webp":
+    "https://static.igem.wiki/teams/6056/wiki/files/pages/home/tear-5-3a26285560f2.webp",
+  "../assets/home/supplements/thinking-1.webp":
+    "https://static.igem.wiki/teams/6056/wiki/files/pages/home/thinking-1-cf39f9eecc9d.webp",
+  "../assets/home/supplements/thinking-10.webp":
+    "https://static.igem.wiki/teams/6056/wiki/files/pages/home/thinking-10-958af66e1b31.webp",
+  "../assets/home/supplements/thinking-2.webp":
+    "https://static.igem.wiki/teams/6056/wiki/files/pages/home/thinking-2-9c0e1bf60d35.webp",
+  "../assets/home/supplements/thinking-3.webp":
+    "https://static.igem.wiki/teams/6056/wiki/files/pages/home/thinking-3-946139db0f4f.webp",
+  "../assets/home/supplements/thinking-4.webp":
+    "https://static.igem.wiki/teams/6056/wiki/files/pages/home/thinking-4-a202ea746a90.webp",
+  "../assets/home/supplements/thinking-5.webp":
+    "https://static.igem.wiki/teams/6056/wiki/files/pages/home/thinking-5-e9181f8afd09.webp",
+  "../assets/home/supplements/thinking-6.webp":
+    "https://static.igem.wiki/teams/6056/wiki/files/pages/home/thinking-6-3ae0541c5bcc.webp",
+  "../assets/home/supplements/thinking-7.webp":
+    "https://static.igem.wiki/teams/6056/wiki/files/pages/home/thinking-7-da0eb2680bea.webp",
+  "../assets/home/supplements/thinking-8.webp":
+    "https://static.igem.wiki/teams/6056/wiki/files/pages/home/thinking-8-f1b1cea38333.webp",
+  "../assets/home/supplements/thinking-9.webp":
+    "https://static.igem.wiki/teams/6056/wiki/files/pages/home/thinking-9-f7c387ca859a.webp",
 };
 
 function artworkUrl(file: string) {
@@ -286,7 +359,9 @@ function WardArtwork() {
   );
 }
 
-// Crop the original moving details independently of the latest land artwork.
+const mapSouthIslandOffsetY = 3;
+
+// Source crops stay fixed; optional left/top place details around the latest land.
 const mapMotionPieces = [
   { name: "cloud-west", kind: "cloud", x: 0, y: 30, width: 8, height: 9 },
   {
@@ -297,27 +372,122 @@ const mapMotionPieces = [
     width: 9,
     height: 8,
   },
-  { name: "cloud-north", kind: "cloud", x: 57, y: 6, width: 8, height: 7 },
+  {
+    name: "cloud-north",
+    kind: "cloud",
+    x: 57,
+    y: 6,
+    width: 8,
+    height: 7,
+    left: 85,
+    top: 5,
+  },
   { name: "cloud-east", kind: "cloud", x: 93, y: 25, width: 7, height: 9 },
-  { name: "boat-smoke", kind: "cloud", x: 47, y: 66, width: 5, height: 4 },
+  {
+    name: "boat-smoke",
+    kind: "cloud",
+    x: 47,
+    y: 66,
+    width: 5,
+    height: 4,
+    left: 43.775,
+    top: 62,
+  },
   { name: "wave-west-1", kind: "wave", x: 0, y: 64, width: 8, height: 4 },
   { name: "wave-west-2", kind: "wave", x: 0, y: 69, width: 8, height: 4 },
   { name: "wave-southwest-1", kind: "wave", x: 12, y: 78, width: 8, height: 4 },
   { name: "wave-southwest-2", kind: "wave", x: 12, y: 82, width: 8, height: 5 },
-  { name: "wave-central-west-1", kind: "wave", x: 32, y: 59, width: 7, height: 4 },
-  { name: "wave-central-west-2", kind: "wave", x: 39, y: 64, width: 9, height: 4 },
-  { name: "wave-central-west-3", kind: "wave", x: 32, y: 83, width: 7, height: 5 },
-  { name: "wave-central", kind: "wave", x: 50, y: 52, width: 8, height: 5 },
-  { name: "wave-central-east-1", kind: "wave", x: 63, y: 40, width: 9, height: 5 },
-  { name: "wave-central-east-2", kind: "wave", x: 61, y: 44, width: 12, height: 5 },
-  { name: "wave-central-east-3", kind: "wave", x: 60, y: 64, width: 12, height: 5 },
-  { name: "wave-central-east-4", kind: "wave", x: 65, y: 68, width: 5, height: 4 },
+  {
+    name: "wave-central-west-1",
+    kind: "wave",
+    x: 32,
+    y: 59,
+    width: 7,
+    height: 4,
+  },
+  {
+    name: "wave-central-west-2",
+    kind: "wave",
+    x: 39,
+    y: 64,
+    width: 9,
+    height: 4,
+    top: 55,
+  },
+  {
+    name: "wave-central-west-3",
+    kind: "wave",
+    x: 32,
+    y: 83,
+    width: 7,
+    height: 5,
+  },
+  {
+    name: "wave-central",
+    kind: "wave",
+    x: 50,
+    y: 52,
+    width: 8,
+    height: 5,
+    left: 34,
+    top: 92,
+  },
+  {
+    name: "wave-central-east-1",
+    kind: "wave",
+    x: 63,
+    y: 40,
+    width: 9,
+    height: 5,
+  },
+  {
+    name: "wave-central-east-2",
+    kind: "wave",
+    x: 61,
+    y: 44,
+    width: 12,
+    height: 5,
+  },
+  {
+    name: "wave-central-east-3",
+    kind: "wave",
+    x: 60,
+    y: 64,
+    width: 12,
+    height: 5,
+  },
+  {
+    name: "wave-central-east-4",
+    kind: "wave",
+    x: 65,
+    y: 68,
+    width: 5,
+    height: 4,
+  },
   { name: "wave-east-1", kind: "wave", x: 86, y: 39, width: 8, height: 4 },
   { name: "wave-east-2", kind: "wave", x: 87, y: 43, width: 6, height: 4 },
   { name: "wave-east-3", kind: "wave", x: 72, y: 74, width: 5, height: 4 },
   { name: "wave-east-4", kind: "wave", x: 91, y: 81, width: 9, height: 5 },
-  { name: "wave-boat", kind: "wave", x: 43, y: 79.5, width: 9.5, height: 2.5 },
-  { name: "boat", kind: "boat", x: 42, y: 70, width: 13.2, height: 9 },
+  {
+    name: "wave-boat",
+    kind: "wave",
+    x: 43,
+    y: 79.5,
+    width: 9.5,
+    height: 2.5,
+    left: 40.1,
+    top: 75.5,
+  },
+  {
+    name: "boat",
+    kind: "boat",
+    x: 42,
+    y: 70,
+    width: 13.2,
+    height: 9,
+    left: 39.18125,
+    top: 66,
+  },
 ] as const;
 
 const mapStatistics = [
@@ -356,6 +526,8 @@ function MapArtwork() {
   const detailInkId = `${detailMaskId}-ink`;
   const detailFrameId = `${detailMaskId}-frame`;
   const boatClipId = `${detailMaskId}-boat`;
+  const islandClipId = `${detailMaskId}-south-island`;
+  const mainlandMaskId = `${detailMaskId}-mainland`;
   const mapLayer = { left: 0, top: 0, width: 100, height: 100 };
   const detailLayer = manifest["3"].layers[1];
   const detailSrc = imageUrls[`../assets/home/story/${detailLayer.file}`];
@@ -368,7 +540,7 @@ function MapArtwork() {
     { x: 40, y: 9, width: 10, height: 15 },
     { x: 78, y: 9, width: 11, height: 15 },
     { x: 90, y: 57, width: 10, height: 17 },
-    { x: 49, y: 86, width: 11, height: 14 },
+    { x: 49, y: 86, width: 11, height: 14, offsetY: mapSouthIslandOffsetY },
   ];
   const src = mapLatestUrl;
   return (
@@ -394,6 +566,21 @@ function MapArtwork() {
             }}
           >
             <defs>
+              {/* Move the southern island and its islets without repainting them. */}
+              <clipPath id={islandClipId}>
+                <rect x="44" y="70" width="27" height="28" />
+              </clipPath>
+              <mask
+                id={mainlandMaskId}
+                maskUnits="userSpaceOnUse"
+                x="0"
+                y="0"
+                width="100"
+                height="100"
+              >
+                <rect width="100" height="100" fill="white" />
+                <rect x="44" y="70" width="27" height="28" fill="black" />
+              </mask>
               {/* Remove the old pink frame only where it crosses blue details. */}
               <filter id={detailInkId} colorInterpolationFilters="sRGB">
                 <feColorMatrix values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  -100 0 100 0 0" />
@@ -429,10 +616,20 @@ function MapArtwork() {
             </defs>
             <image
               href={src}
+              mask={`url(#${mainlandMaskId})`}
               width="100"
               height="100"
               preserveAspectRatio="none"
             />
+            <g transform={`translate(0 ${mapSouthIslandOffsetY})`}>
+              <image
+                href={src}
+                clipPath={`url(#${islandClipId})`}
+                width="100"
+                height="100"
+                preserveAspectRatio="none"
+              />
+            </g>
           </svg>
           {mapMotionPieces.map((part, index) => (
             <svg
@@ -442,12 +639,12 @@ function MapArtwork() {
               style={
                 {
                   left:
-                    part.name === "wave-central"
-                      ? "34%"
+                    "left" in part
+                      ? `${part.left}%`
                       : `${detailLayer.left + (detailLayer.width * part.x) / 100}%`,
                   top:
-                    part.name === "wave-central"
-                      ? "92%"
+                    "top" in part
+                      ? `${part.top}%`
                       : `${detailLayer.top + (detailLayer.height * part.y) / 100}%`,
                   width: `${(detailLayer.width * part.width) / 100}%`,
                   height: `${(detailLayer.height * part.height) / 100}%`,
@@ -473,7 +670,9 @@ function MapArtwork() {
                     ? `url(#${detailMaskId})`
                     : undefined
                 }
-                clipPath={part.name === "boat" ? `url(#${boatClipId})` : undefined}
+                clipPath={
+                  part.name === "boat" ? `url(#${boatClipId})` : undefined
+                }
                 width="100"
                 height="100"
                 preserveAspectRatio="none"
@@ -490,7 +689,7 @@ function MapArtwork() {
               aria-hidden="true"
               style={{
                 left: `${markerLayer.left + (markerLayer.width * marker.x) / 100}%`,
-                top: `${markerLayer.top + (markerLayer.height * marker.y) / 100}%`,
+                top: `${markerLayer.top + (markerLayer.height * marker.y) / 100 + (marker.offsetY ?? 0)}%`,
                 width: `${(markerLayer.width * marker.width) / 100}%`,
                 height: `${(markerLayer.height * marker.height) / 100}%`,
               }}
@@ -508,7 +707,10 @@ function MapArtwork() {
       <div className="tnbc-map-copy">
         <h3 className="tnbc-map-intro">
           <span className="tnbc-map-intro-lead" data-map-copy>
-            Breast cancer is the
+            <span className="tnbc-map-intro-shared" data-tnbc-map-shared>
+              Breast cancer
+            </span>{" "}
+            is the
           </span>
           <strong className="tnbc-map-intro-focus" data-map-copy>
             most common cancer
@@ -864,6 +1066,7 @@ function Chapter({
   art,
   className = "",
   copyInArtwork = false,
+  titleInArtwork = false,
 }: {
   id: string;
   title: ReactNode;
@@ -871,6 +1074,7 @@ function Chapter({
   art?: ReactNode;
   className?: string;
   copyInArtwork?: boolean;
+  titleInArtwork?: boolean;
 }) {
   return (
     <section
@@ -878,7 +1082,7 @@ function Chapter({
       className={`story-chapter ${className}`}
       aria-labelledby={`${id}-title`}
     >
-      {copyInArtwork && (
+      {copyInArtwork && !titleInArtwork && (
         <h2 className="story-sr-only" id={`${id}-title`}>
           {title}
         </h2>
@@ -886,11 +1090,18 @@ function Chapter({
       {art && (
         <div className="story-scene-track">
           <div className="story-chapter-inner">
-            <div className="story-visual">{art}</div>
+            <div className="story-visual">
+              {art}
+              {titleInArtwork && (
+                <h2 className="story-artwork-title" id={`${id}-title`}>
+                  {title}
+                </h2>
+              )}
+            </div>
           </div>
         </div>
       )}
-      {!copyInArtwork && (
+      {!copyInArtwork && !titleInArtwork && (
         <div className="story-copy">
           <h2 id={`${id}-title`}>{title}</h2>
           <div className="story-body">{children}</div>
@@ -962,8 +1173,10 @@ export function HomeStory() {
         className="story-chapter--map"
         title={
           <>
-            <em className="story-emphasis-why">Why</em> triple-negative breast
-            cancer?
+            <em className="story-emphasis-why">Why</em> triple-negative{" "}
+            <span className="tnbc-reading-title-shared" data-tnbc-title-shared>
+              breast cancer
+            </span>{"?"}
           </>
         }
         art={<MapArtwork />}
@@ -972,6 +1185,7 @@ export function HomeStory() {
           For patients with triple-negative breast cancer (TNBC), recurrence is
           an especially difficult concern.
         </p>
+        <HomeTnbcDiagram />
         <div
           className="story-receptors"
           aria-label="Estrogen receptor negative, progesterone receptor negative, HER2 negative"
@@ -1032,6 +1246,8 @@ export function HomeStory() {
         </div>
       </div>
 
+      <HomeMoleculeGallery />
+
       <HomeRnaSequence
         rna={<CircRnaArtwork />}
         platform={<PlatformArtwork />}
@@ -1054,44 +1270,19 @@ export function HomeStory() {
         className="story-chapter--beyond"
         title={
           <>
-            Starting with TNBC. <em>Looking further.</em>
+            <span className="story-beyond-glow" aria-hidden="true" />
+            <span className="story-beyond-line">
+              <span className="story-beyond-ink">Starting with TNBC.</span>
+            </span>{" "}
+            <em className="story-beyond-line">
+              <span className="story-beyond-ink">Looking further.</span>
+            </em>
           </>
         }
         art={<BeyondArtwork />}
-      >
-        <p>
-          We start with triple-negative breast cancer. Our longer-term vision is
-          a framework that can be adapted to other solid tumors.
-        </p>
-        <p>
-          Each new target will need its own validation. The ambition stays the
-          same: more flexibility, and more possibilities for patients.
-        </p>
-      </Chapter>
+        titleInArtwork
+      />
 
-      {/* CROSS-FILE: #what-we-hope is read by Navbar.tsx for the header theme. */}
-      <Chapter
-        id="what-we-hope"
-        className="story-chapter--hope"
-        title={
-          <>
-            “If it comes back, can we give her <em>more options?</em>”
-          </>
-        }
-      >
-        <p>
-          Clinical training showed us the uncertainty patients face. Research
-          gives us a way to work toward an answer.
-        </p>
-        {/* CROSS-FILE: this line travels down into HomeFinale.tsx, where it
-            becomes "That is CirCure." (useHomeStoryAnimation.ts, finale). */}
-        <p className="story-carry">
-          <span data-final-carry="source">
-            That is the question behind{" "}
-            <span className="story-emphasis">CirCure.</span>
-          </span>
-        </p>
-      </Chapter>
       <HomeFinale art={<HopeArtwork />} />
     </div>
   );

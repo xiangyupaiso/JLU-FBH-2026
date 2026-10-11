@@ -29,6 +29,7 @@ export function animateTear(
   const target = cue(question);
   const transfer = { source, target, state: { progress: 0 } };
   const carry = { source: target,
+    element: question,
     target: section.querySelector<HTMLImageElement>('[data-layer="5"]')!,
     state: { progress: 0 } };
   const ink = createReadingInk(stage, [source, target], [transfer], compact, [carry]);

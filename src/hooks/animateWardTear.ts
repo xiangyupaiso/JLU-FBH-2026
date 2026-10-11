@@ -1,6 +1,10 @@
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { HOME_SCRUB } from "./homeMotion";
+import {
+  createHomeScrubBoundaryGuard,
+  isHomeMotionRefreshing,
+  settleHomeScrubEndpoint,
+} from "./homeMotion";
 import { updateWardInfusionTube } from "./wardInfusionGeometry";
 const patientTeardrop = "https://static.igem.wiki/teams/6056/wiki/files/pages/home/patient-teardrop-20261004-765c97bc4482.webp";
 
@@ -9,6 +13,7 @@ const PATIENT_CANVAS = { width: 2752, height: 2064 };
 const DROP = { left: 681, top: 1144, width: 74, height: 103 };
 // Viewports the bridge starts before the ward track ends, while it is sticky.
 export const WARD_TEAR_LEAD = 0.36;
+const BRIDGE_SCRUB = 0.2;
 
 const clamp = gsap.utils.clamp(0, 1);
 const smooth = (from: number, to: number, value: number) => {
@@ -108,6 +113,8 @@ export function animateWardTear(
   root.append(frame);
 
   let disposed = false;
+  let artworkReady = false;
+  let paintedPass: boolean | undefined;
   const state = { progress: 0 };
   const measure = () => {
     updateWardInfusionTube(room);
@@ -135,9 +142,17 @@ export function animateWardTear(
   };
   let geometry = measure();
   const draw = () => {
-    if (disposed) return;
+    if (disposed || isHomeMotionRefreshing()) return;
     const p = state.progress;
     const active = p > 0 && p < 1;
+    boundaryGuard.setActive(active);
+    // A late decode must not replace a quiet crossfade with a drop midway
+    // through one pass. The next entry can use the fully decoded artwork.
+    if (!active) paintedPass = undefined;
+    else if (paintedPass === undefined) paintedPass = artworkReady;
+    frame.dataset.artworkMode = active
+      ? paintedPass ? "painted" : "crossfade"
+      : "idle";
     frame.dataset.progress = p.toFixed(3);
     frame.dataset.phase =
       p === 0
@@ -154,7 +169,9 @@ export function animateWardTear(
     frame.style.visibility = active ? "visible" : "hidden";
     images.forEach((image, index) => {
       image.style.visibility =
-        p > 0 && p < 0.94 ? "hidden" : originalVisibility[index];
+        paintedPass && p > 0 && p < 0.94
+          ? "hidden"
+          : originalVisibility[index];
     });
     if (!active) return;
     const {
@@ -208,20 +225,28 @@ export function animateWardTear(
     Object.assign(bead.style, {
       width: `${visibleWidth}px`,
       height: `${visibleHeight}px`,
-      opacity: String(smooth(0.02, 0.12, p) * (1 - painted)),
+      opacity: String(paintedPass ? smooth(0.02, 0.12, p) * (1 - painted) : 0),
       transform: `translate(${beadX - visibleWidth / 2}px, ${beadY - visibleHeight / 2}px) rotate(${-slip * 4 * (1 - painted)}deg)`,
     });
     Object.assign(sprite.style, {
       width: `${spriteWidth}px`,
       height: `${spriteHeight}px`,
-      opacity: String(painted),
+      opacity: String(paintedPass ? painted : 0),
       transform: `translate(${x - spriteWidth / 2}px, ${y - spriteHeight / 2}px) scale(${scale})`,
     });
-    frame.style.backgroundColor = backgroundColor(smooth(0.46, 0.8, p));
-    frame.style.opacity = String(1 - smooth(0.94, 1, p));
-    room.style.opacity = String(1 - smooth(0.48, 0.8, p));
-    wash.style.opacity = String(smooth(0.48, 0.8, p));
+    // A quiet fallback must respond from entry, even before the drop decodes.
+    const roomFade = smooth(paintedPass ? 0.48 : 0, 0.8, p);
+    frame.style.backgroundColor = backgroundColor(
+      smooth(paintedPass ? 0.46 : 0, 0.8, p),
+    );
+    frame.style.opacity = String(1 - smooth(paintedPass ? 0.94 : 0.8, 1, p));
+    room.style.opacity = String(1 - roomFade);
+    wash.style.opacity = String(roomFade);
   };
+  const boundaryGuard = createHomeScrubBoundaryGuard(
+    () => timeline.scrollTrigger,
+    draw,
+  );
   const timeline = gsap.timeline({
     scrollTrigger: {
       id: "home-ward-tear-carry",
@@ -232,8 +257,9 @@ export function animateWardTear(
         to.start +
         Math.max(1, stage.parentElement!.offsetHeight - stage.offsetHeight) *
           0.17,
-      scrub: compact ? 0.42 : HOME_SCRUB,
+      scrub: compact ? 0.18 : BRIDGE_SCRUB,
       invalidateOnRefresh: true,
+      onUpdate: settleHomeScrubEndpoint,
     },
   });
   timeline.fromTo(
@@ -246,6 +272,7 @@ export function animateWardTear(
     const trigger = timeline.scrollTrigger!;
     frame.dataset.scrollStart = String(trigger.start);
     frame.dataset.scrollEnd = String(trigger.end);
+    settleHomeScrubEndpoint(trigger);
     draw();
   };
   // A clone created after page load still needs its own image-load measurement.
@@ -258,7 +285,10 @@ export function animateWardTear(
     ...Array.from(sprite.querySelectorAll("img"), (image) => image.decode()),
   ])
     .then(() => {
-      if (!disposed) refresh();
+      if (!disposed) {
+        artworkReady = true;
+        refresh();
+      }
     })
     .catch(() => {});
   ScrollTrigger.addEventListener("refresh", refresh);
@@ -266,6 +296,7 @@ export function animateWardTear(
   draw();
   return () => {
     disposed = true;
+    boundaryGuard.dispose();
     roomBackdrop.removeEventListener("load", refresh);
     ScrollTrigger.removeEventListener("refresh", refresh);
     timeline.scrollTrigger?.kill();

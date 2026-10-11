@@ -124,6 +124,16 @@
 .has-story-motion .story-tear-dialogue > blockquote {
   grid-area: 1 / 1;
   align-self: start;
+  /* Leave the synthetic italic overhang inside the mask's border box without
+     changing the text's position, available width, or line breaks. */
+  padding-inline: 0.25em;
+  margin-inline: -0.25em;
+}
+.has-story-motion .story-tear-dialogue .story-reading-word {
+  /* Word opacity creates its own surface in Safari. Keep italic contours
+     inside that surface while preserving the original advance and wrapping. */
+  padding-inline: 0.25em;
+  margin-inline: -0.25em;
 }
 .story-tear-question {
   color: #365d75;

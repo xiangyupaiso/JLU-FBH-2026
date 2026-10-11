@@ -6,18 +6,20 @@ import {
   useState,
   type CSSProperties,
 } from "react";
+import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 const ringImage = "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-1-layer-4.webp";
 const targetImage = "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-2-layer-6.webp";
 const immuneImage = "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-2-layer-5.webp";
 import { useAntigenDrag } from "../../hooks/useAntigenDrag";
 import { useAntigenMechanism } from "../../hooks/useAntigenMechanism";
+import { HOME_EASE } from "../../hooks/homeMotion";
 import { HOME_PLAYBACK_ANTIGEN_EVENT } from "../../utils/homePlayback";
 import "../../styles/home-antigen-switch.css";
 
 const antigens = [
   { name: "A", color: "#a65370" },
-  { name: "B", color: "#63784f" },
+  { name: "B", color: "#a17755" },
   { name: "C", color: "#7c699f" },
 ] as const;
 
@@ -32,6 +34,8 @@ const nascentProteinPath =
   "M0 0 C0 -7 10 -6 8 -12 C6 -18 -4 -18 2 -22 C8 -26 12 -28 5 -33 C5 -33 5 -33 5 -33";
 const processedProteinPath =
   "M0 0 C0 -2 3 -3 2 -5 C2 -5 2 -5 2 -5 C2 -5 2 -5 2 -5 C2 -5 2 -5 2 -5";
+const ribosomeFrame = "translate(260.6 72.6) rotate(55)";
+const ribosomeExit = "translate(7 -23)";
 // Split the painted receptor along its natural attachment, not a straight cut.
 const receptorEdge =
   "M99 56 C98 61 97 64 96 67 C94 70 94 73 96 76 C98 82 97 88 93 98 H137 V56 Z";
@@ -43,10 +47,10 @@ const productEpitopes = epitopes.map((path) =>
 );
 const phaseLabels = [
   "Antigen sequence",
-  "Antigen expression",
+  "Antigen translation",
   "Processing & presentation",
   "T-cell priming",
-  "T-cell migration",
+  "Activated T cell",
   "Tumor recognition",
   "Cytotoxic response",
   "Target-cell apoptosis",
@@ -108,16 +112,32 @@ function Peptide({ index }: { index: number }) {
   );
 }
 
-export function HomeAntigenSwitch() {
+type AntigenViewProps = {
+  view: "overview" | "mechanism";
+  selected: number;
+  select: (index: number) => void;
+  hasInteracted: boolean;
+  interact: () => void;
+  active: boolean;
+  interactive: boolean;
+};
+
+function AntigenView({
+  view,
+  selected,
+  select,
+  hasInteracted,
+  interact,
+  active,
+  interactive,
+}: AntigenViewProps) {
   const root = useRef<HTMLDivElement>(null);
-  const [selected, setSelected] = useState(0);
-  const [hasInteracted, setHasInteracted] = useState(false);
-  const [mechanismExpanded, setMechanismExpanded] = useState(false);
+  const mechanismExpanded = view === "mechanism";
   const { phase, playing, replay } = useAntigenMechanism(root, selected, {
     growing: nascentProteinPath,
     processed: processedProteinPath,
     peptide: productEpitopes[selected],
-  }, mechanismExpanded);
+  }, mechanismExpanded && active);
   const id = useId().replace(/:/g, "");
   const slotId = id + "-slot";
   const backboneId = id + "-backbone";
@@ -126,58 +146,36 @@ export function HomeAntigenSwitch() {
   const antigen = antigens[selected];
   const handleSelect = useCallback(
     (index: number) => {
-      setSelected(index);
-      setHasInteracted(true);
-      if (mechanismExpanded) replay();
+      select(index);
+      interact();
+      if (mechanismExpanded && active) replay();
     },
-    [mechanismExpanded, replay],
+    [active, interact, mechanismExpanded, replay, select],
   );
   useAntigenDrag(root, handleSelect);
-  const showMechanism = useCallback(() => {
-    const scene = root.current;
-    const notes = scene?.querySelector("details");
-    if (notes) notes.open = false;
-    setMechanismExpanded(true);
-    // Re-measure the carried ring and normal-flow chapter heights after layout.
-    requestAnimationFrame(() => {
-      if (scene?.isConnected) ScrollTrigger.refresh();
-    });
-  }, []);
   useEffect(() => {
-    const chapter = root.current?.closest(".story-chapter");
-    if (!chapter) return;
-    // The overview hands off to the example as the chapter reaches the screen.
-    const trigger = ScrollTrigger.create({
-      trigger: chapter,
-      start: "top top",
-      end: "bottom top",
-      onEnter: showMechanism,
-      onEnterBack: showMechanism,
-    });
-    if (trigger.progress > 0) showMechanism();
-    return () => trigger.kill();
-  }, [showMechanism]);
-  useEffect(() => {
+    if (!mechanismExpanded) return;
     const onPlaybackAntigen = (event: Event) => {
       const index = (event as CustomEvent<{ selected: number }>).detail.selected;
       if (!Number.isInteger(index) || index < 0 || index >= antigens.length)
         return;
-      setSelected(index);
-      setHasInteracted(true);
-      showMechanism();
-      replay();
+      select(index);
+      interact();
+      if (active) replay();
     };
     window.addEventListener(HOME_PLAYBACK_ANTIGEN_EVENT, onPlaybackAntigen);
     return () => {
       window.removeEventListener(HOME_PLAYBACK_ANTIGEN_EVENT, onPlaybackAntigen);
     };
-  }, [replay, showMechanism]);
+  }, [active, interact, mechanismExpanded, replay, select]);
 
   return (
     <div
       ref={root}
       className="home-antigen-switch"
+      data-antigen-view={view}
       data-mechanism-expanded={mechanismExpanded}
+      inert={!interactive}
       data-guidance={!hasInteracted}
       data-phase={mechanismExpanded ? phase : 0}
       data-playing={mechanismExpanded && playing}
@@ -374,15 +372,16 @@ export function HomeAntigenSwitch() {
                 className="home-antigen-switch__guide"
                 d="M84 15 Q150 -13 216 15"
               />
+              {/* Transit measures the fixed release point after translation. */}
+              <g data-antigen-product-frame transform={ribosomeFrame}>
+                <g data-antigen-product-origin transform={ribosomeExit} />
+              </g>
               <g
                 className="home-antigen-switch__ribosome-orbit"
                 aria-hidden="true"
               >
                 {/* The RNA channel and exit share a tangent-aligned frame. */}
-                <g
-                  data-antigen-product-frame
-                  transform="translate(260.6 72.6) rotate(55)"
-                >
+                <g transform={ribosomeFrame}>
                   <g className="home-antigen-switch__ribosome">
                     <path
                       className="home-antigen-switch__rna-channel"
@@ -410,7 +409,7 @@ export function HomeAntigenSwitch() {
                       />
                     </g>
                   </g>
-                  <g data-antigen-product-origin transform="translate(7 -23)">
+                  <g transform={ribosomeExit}>
                     <g className="home-antigen-switch__product-route">
                       {[" home-antigen-switch__protein-wash", ""].map(
                         (wash) => (
@@ -455,6 +454,7 @@ export function HomeAntigenSwitch() {
               {/* Both image crops share the source painting's 0.8 scale. */}
               <svg
                 data-antigen-dc
+                className="home-antigen-switch__dendritic-cell"
                 x="32.8"
                 y="4.4"
                 width="98.4"
@@ -509,7 +509,27 @@ export function HomeAntigenSwitch() {
                 >
                   <Peptide index={selected} />
                 </g>
-                <g className="home-antigen-switch__tcell" data-antigen-tcell>
+                <g
+                  className="home-antigen-switch__tcell"
+                  transform="translate(216 74) scale(1.1)"
+                  data-antigen-tcell
+                >
+                  <g className="home-antigen-switch__activation-glow">
+                    <ellipse
+                      className="home-antigen-switch__activation-wash"
+                      cx="0"
+                      cy="-2"
+                      rx="47"
+                      ry="48"
+                    />
+                    <ellipse
+                      className="home-antigen-switch__activation-ring"
+                      cx="0"
+                      cy="-2"
+                      rx="42"
+                      ry="43"
+                    />
+                  </g>
                   <use
                     href={"#" + id + "-painted-tcell"}
                     x="-45"
@@ -526,7 +546,7 @@ export function HomeAntigenSwitch() {
                         width="34.4"
                         height="31.1"
                       />
-                      {/* The recognition site stays on the TCR, not the DC peptide. */}
+                      {/* An empty receptor pocket stays on the T cell. */}
                       <g
                         className="home-antigen-switch__tcr-site"
                         transform="translate(-55 0)"
@@ -534,7 +554,8 @@ export function HomeAntigenSwitch() {
                       >
                         <path
                           className="home-antigen-switch__tcr-outline"
-                          d={epitopes[selected]}
+                          d="M-7 -9 Q7 -10 7 0 Q7 10 -7 9"
+                          transform="scale(1.4)"
                         />
                       </g>
                     </g>
@@ -586,13 +607,13 @@ export function HomeAntigenSwitch() {
               <text
                 x="72"
                 y="142"
-                className="home-antigen-switch__bridge-label"
+                className="home-antigen-switch__bridge-label home-antigen-switch__dc-label"
               >
                 Dendritic cell
                 <tspan
                   x="72"
                   dy="20"
-                  className="home-antigen-switch__molecule-label"
+                  className="home-antigen-switch__molecule-label home-antigen-switch__presentation-label"
                 >
                   peptide–MHC-I
                 </tspan>
@@ -774,8 +795,14 @@ export function HomeAntigenSwitch() {
                 movement between views is schematic. Dendritic cells prime
                 antigen-specific CD8⁺ T cells, which can recognize matching
                 peptide–MHC-I on tumor cells with compatible HLA. The TCR
-                remains attached to the T cell during migration; the dendritic
-                cell and tumor each present their own peptide–MHC-I. Shapes on
+                remains attached to the T cell during migration. Its open
+                outline represents a receptor pocket, not a carried antigen.
+                The peptide–MHC-I stays on the dendritic cell during priming;
+                it is not handed to the T cell. The dendritic cell and tumor
+                each present their own peptide–MHC-I. The colored aura marks
+                T-cell activation and follows the T cell; the dendritic-cell
+                presentation fades from view as attention shifts to the target.
+                Shapes on
                 the target show presented peptide identities, not a pre-existing
                 TCR match.
               </p>
@@ -790,6 +817,7 @@ export function HomeAntigenSwitch() {
                 is followed; delivery, costimulation, expansion and migration
                 are simplified and time-compressed. This is a possible
                 mechanism, not evidence of efficacy for this construct.
+                Each new target requires its own validation.
               </p>
               <p>
                 <a
@@ -834,6 +862,276 @@ export function HomeAntigenSwitch() {
           ? `${phaseLabels[phase]}. Conceptual mechanism.`
           : "Shared circRNA backbone with a replaceable antigen sequence."}
       </p>
+    </div>
+  );
+}
+
+export function HomeAntigenSwitch() {
+  const root = useRef<HTMLDivElement>(null);
+  const advance = useRef<((index: number) => void) | null>(null);
+  const [selected, setSelected] = useState(0);
+  const [hasInteracted, setHasInteracted] = useState(false);
+  const [mechanismActive, setMechanismActive] = useState(false);
+  const [flowLayout, setFlowLayout] = useState(false);
+  const interact = useCallback(() => setHasInteracted(true), []);
+  const selectOverview = useCallback((index: number) => {
+    setSelected(index);
+    advance.current?.(index);
+  }, []);
+
+  useEffect(() => {
+    const story = root.current;
+    const chapter = story?.closest<HTMLElement>(".story-chapter");
+    const overview = story?.querySelector<HTMLElement>(
+      '[data-antigen-view="overview"]',
+    );
+    const mechanism = story?.querySelector<HTMLElement>(
+      '[data-antigen-view="mechanism"]',
+    );
+    const copy = overview?.querySelector<HTMLElement>(
+      ".home-antigen-switch__copy",
+    );
+    const overviewRing = overview?.querySelector<HTMLElement>(
+      "[data-antigen-ring]",
+    );
+    const overviewOptions = overview?.querySelector<HTMLElement>(
+      ".home-antigen-switch__options",
+    );
+    const mechanismRing = mechanism?.querySelector<HTMLElement>(
+      "[data-antigen-ring]",
+    );
+    const mechanismOptions = mechanism?.querySelector<HTMLElement>(
+      ".home-antigen-switch__options",
+    );
+    if (
+      !chapter ||
+      !overview ||
+      !mechanism ||
+      !copy ||
+      !overviewRing ||
+      !overviewOptions ||
+      !mechanismRing ||
+      !mechanismOptions
+    )
+      return;
+
+    const flow = window.matchMedia(
+      "(max-width: 800px) and (orientation: portrait), (max-height: 650px) and (orientation: landscape), (prefers-reduced-motion: reduce)",
+    );
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    let triggers: ScrollTrigger[] = [];
+    let advanceTween: gsap.core.Tween | null = null;
+    const cancelAdvance = () => {
+      advanceTween?.kill();
+      advanceTween = null;
+    };
+    // Installation commits before scrolling, which cancels unfinished drags.
+    advance.current = (index) => {
+      cancelAdvance();
+      const transition = triggers.find(
+        (trigger) => trigger.vars.id === "home-antigen-overview-transition",
+      );
+      const header = document.querySelector<HTMLElement>(".site-header");
+      const headerBottom = header?.getBoundingClientRect().bottom ?? 0;
+      const destination = flow.matches
+        ? window.scrollY +
+          mechanism.getBoundingClientRect().top -
+          headerBottom -
+          24
+        : transition?.end;
+      if (destination === undefined) return;
+      const top = Math.max(
+        0,
+        Math.min(
+          document.documentElement.scrollHeight - window.innerHeight,
+          destination + (flow.matches ? 0 : 1),
+        ),
+      );
+      if (top <= window.scrollY) return;
+      const transferFocus = overview.contains(document.activeElement);
+      const complete = () => {
+        advanceTween = null;
+        if (transferFocus) {
+          mechanismOptions
+            .querySelector<HTMLButtonElement>(
+              `[data-antigen-option="${index}"]`,
+            )
+            ?.focus({ preventScroll: true });
+        }
+      };
+      const scroll = (y: number) => {
+        window.scrollTo({ top: y, behavior: "instant" });
+        ScrollTrigger.update();
+      };
+      if (reducedMotion.matches) {
+        scroll(top);
+        complete();
+        return;
+      }
+      const position = { y: window.scrollY };
+      advanceTween = gsap.to(position, {
+        y: top,
+        duration: 1.1,
+        ease: HOME_EASE,
+        onUpdate: () => scroll(position.y),
+        onComplete: complete,
+      });
+    };
+    const alpha = (element: HTMLElement, value: number) => {
+      element.style.opacity = String(value);
+      element.style.visibility = value < 0.001 ? "hidden" : "visible";
+    };
+    const smooth = (value: number) => {
+      const p = Math.max(0, Math.min(1, value));
+      return p * p * (3 - 2 * p);
+    };
+    let carryGeometry = { dx: 0, dy: 0, sx: 1, sy: 1 };
+    const measureCarry = () => {
+      overviewRing.style.removeProperty("transform");
+      const from = overviewRing.getBoundingClientRect();
+      const to = mechanismRing.getBoundingClientRect();
+      carryGeometry = {
+        dx: to.left - from.left,
+        dy: to.top - from.top,
+        sx: to.width / from.width,
+        sy: to.height / from.height,
+      };
+    };
+    const build = () => {
+      cancelAdvance();
+      triggers.forEach((trigger) => trigger.kill());
+      triggers = [];
+      setFlowLayout(flow.matches);
+      if (flow.matches) {
+        alpha(overview, 1);
+        alpha(mechanism, 1);
+        mechanism.style.removeProperty("background-color");
+        overviewRing.style.removeProperty("transform");
+        overviewOptions.style.removeProperty("opacity");
+        overviewOptions.inert = false;
+        mechanismRing.style.removeProperty("opacity");
+        mechanismOptions.style.removeProperty("opacity");
+        setMechanismActive(false);
+        const fade = reducedMotion.matches
+          ? null
+          : ScrollTrigger.create({
+              id: "home-antigen-overview-fade",
+              trigger: copy,
+              start: "top 48%",
+              end: "bottom 12%",
+              onUpdate: ({ progress }) => {
+                copy.style.opacity = String(1 - smooth(progress));
+              },
+            });
+        const entry = ScrollTrigger.create({
+          id: "home-antigen-mechanism-entry",
+          trigger: mechanism,
+          start: "top 72%",
+          end: "bottom top",
+          onEnter: () => setMechanismActive(true),
+          onEnterBack: () => setMechanismActive(true),
+          onLeaveBack: () => setMechanismActive(false),
+        });
+        if (fade) triggers.push(fade);
+        triggers.push(entry);
+        copy.style.opacity = fade ? String(1 - smooth(fade.progress)) : "1";
+        setMechanismActive(entry.progress > 0);
+        return;
+      }
+
+      // Carry the construct into the mechanism layout while the copy fades.
+      // Choices change location after the old labels have disappeared.
+      mechanism.style.backgroundColor = "transparent";
+      overviewRing.style.transformOrigin = "top left";
+      measureCarry();
+      const render = (progress: number) => {
+        const travel = smooth((progress - 0.4) / 0.44);
+        const handoff = smooth((progress - 0.84) / 0.12);
+        const oldOptions = 1 - smooth((progress - 0.48) / 0.2);
+        copy.style.opacity = String(1 - smooth((progress - 0.18) / 0.4));
+        const { dx, dy, sx, sy } = carryGeometry;
+        overviewRing.style.transform =
+          `translate(${dx * travel}px, ${dy * travel}px) ` +
+          `scale(${1 + (sx - 1) * travel}, ${1 + (sy - 1) * travel})`;
+        overviewOptions.style.opacity = String(oldOptions);
+        overviewOptions.inert = oldOptions < 0.05;
+        alpha(overview, 1 - handoff);
+        alpha(mechanism, smooth((progress - 0.45) / 0.27));
+        mechanismRing.style.opacity = String(handoff);
+        mechanismOptions.style.opacity = String(
+          smooth((progress - 0.63) / 0.2),
+        );
+        setMechanismActive(progress >= 0.9);
+      };
+      const trigger = ScrollTrigger.create({
+        id: "home-antigen-overview-transition",
+        trigger: chapter,
+        start: "top top",
+        end: () => `+=${Math.round(window.innerHeight * 0.95)}`,
+        refreshPriority: -2,
+        onUpdate: ({ progress }) => render(progress),
+        onRefresh: ({ progress }) => {
+          measureCarry();
+          render(progress);
+        },
+      });
+      triggers.push(trigger);
+      render(trigger.progress);
+    };
+    build();
+    window.addEventListener("wheel", cancelAdvance, { passive: true });
+    window.addEventListener("touchstart", cancelAdvance, { passive: true });
+    window.addEventListener("pointerdown", cancelAdvance, true);
+    window.addEventListener("keydown", cancelAdvance, true);
+    window.addEventListener("resize", cancelAdvance);
+    flow.addEventListener("change", build);
+    reducedMotion.addEventListener("change", build);
+    return () => {
+      advance.current = null;
+      cancelAdvance();
+      window.removeEventListener("wheel", cancelAdvance);
+      window.removeEventListener("touchstart", cancelAdvance);
+      window.removeEventListener("pointerdown", cancelAdvance, true);
+      window.removeEventListener("keydown", cancelAdvance, true);
+      window.removeEventListener("resize", cancelAdvance);
+      flow.removeEventListener("change", build);
+      reducedMotion.removeEventListener("change", build);
+      triggers.forEach((trigger) => trigger.kill());
+      overview.style.removeProperty("opacity");
+      overview.style.removeProperty("visibility");
+      mechanism.style.removeProperty("opacity");
+      mechanism.style.removeProperty("visibility");
+      mechanism.style.removeProperty("background-color");
+      overviewRing.style.removeProperty("transform");
+      overviewRing.style.removeProperty("transform-origin");
+      overviewOptions.style.removeProperty("opacity");
+      overviewOptions.inert = false;
+      mechanismRing.style.removeProperty("opacity");
+      mechanismOptions.style.removeProperty("opacity");
+      copy.style.removeProperty("opacity");
+    };
+  }, []);
+
+  return (
+    <div ref={root} className="home-antigen-switch-story">
+      <AntigenView
+        view="overview"
+        selected={selected}
+        select={selectOverview}
+        hasInteracted={hasInteracted}
+        interact={interact}
+        active={!mechanismActive}
+        interactive={flowLayout || !mechanismActive}
+      />
+      <AntigenView
+        view="mechanism"
+        selected={selected}
+        select={setSelected}
+        hasInteracted={hasInteracted}
+        interact={interact}
+        active={mechanismActive}
+        interactive={flowLayout || mechanismActive}
+      />
     </div>
   );
 }

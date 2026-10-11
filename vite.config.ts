@@ -20,7 +20,7 @@ function nonBlockingAppCss(): Plugin {
       handler: (html) =>
         html.replace(
           /<link rel="stylesheet" crossorigin href="([^"]+\.css)">/g,
-          `<link rel="stylesheet" crossorigin href="$1" media="print" data-deferred-css onload="this.media='all'"><noscript><link rel="stylesheet" href="$1"></noscript>`,
+          `<link rel="stylesheet" crossorigin href="$1" media="print" data-deferred-css onload="this.media='all';this.dataset.styleState='loaded'" onerror="this.dataset.styleState='error'"><noscript><link rel="stylesheet" href="$1"></noscript>`,
         ),
     },
   };

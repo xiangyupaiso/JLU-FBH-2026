@@ -1,6 +1,6 @@
 import gsap from "gsap";
 import { SplitText } from "gsap/SplitText";
-import { HOME_EASE, HOME_REST_RATIO, HOME_SCRUB } from "./homeMotion";
+import { HOME_EASE, HOME_REST_RATIO, HOME_SCRUB, settleHomeScrubEndpoint } from "./homeMotion";
 import { createReadingInk, type InkCue } from "./readingInk";
 import { animateTnbcReading } from "./animateTnbcReading";
 
@@ -13,8 +13,6 @@ const voices: Record<string, Voice> = {
   "clinical-challenge": "weigh",
   "our-platform": "assemble",
   "plug-and-play": "exchange",
-  "beyond-tnbc": "expand",
-  "what-we-hope": "resolve",
 };
 
 // Follow the argument sentence by sentence: context → evidence → consequence;
@@ -24,8 +22,6 @@ const sentenceVoices: Record<string, Voice[]> = {
   "clinical-challenge": ["resolve", "weigh", "explain", "explain", "explain", "reflect", "reflect"],
   "our-platform": ["explain", "expand", "assemble", "exchange", "expand"],
   "plug-and-play": ["exchange", "assemble", "reflect"],
-  "beyond-tnbc": ["assemble", "expand", "explain", "resolve"],
-  "what-we-hope": ["reflect", "resolve", "assemble"],
 };
 
 // Split words, never measured lines: browser reflow remains free at any zoom.
@@ -64,44 +60,68 @@ function reveal(
   const travel = compact ? 0.55 : 1;
   // A closed aperture hides the entire future sentence, including its silhouette.
   // Font-relative clearance also preserves overhangs on short italic words.
-  const from: gsap.TweenVars = { yPercent: 24 * travel,
-    clipPath: "inset(100% -0.35em -0.35em -0.35em)" };
+  // Resolve the clearance once in the word's local box. Matching % units avoid
+  // GSAP dropping the initial aperture or changing a calc term's sign mid-tween.
+  const clearance = tokens.map(token => {
+    const pixels = Number.parseFloat(getComputedStyle(token).fontSize) * 0.35;
+    return {
+      x: pixels / Math.max(1, token.offsetWidth) * 100,
+      y: pixels / Math.max(1, token.offsetHeight) * 100,
+    };
+  });
+  const inset = (edges: number[]) => `inset(${edges.map(edge => `${edge}%`).join(" ")})`;
+  const open = (index: number) => {
+    const { x, y } = clearance[index];
+    return [-y, -x, -y, -x];
+  };
+  let aperture: "top" | "right" | "bottom" | "left" | "center" = "top";
+  const from: gsap.TweenVars = { yPercent: 24 * travel };
   let order: "start" | "center" | "end" = "start";
   switch (voice) {
     case "reflect": break;
     case "explain":
       from.yPercent = 0;
-      from.clipPath = "inset(-0.35em 100% -0.35em -0.35em)";
+      aperture = "right";
       break;
     case "weigh":
       from.yPercent = -18 * travel;
-      from.clipPath = "inset(-0.35em -0.35em 100% -0.35em)";
+      aperture = "bottom";
       break;
     case "assemble":
       from.yPercent = 0;
-      from.clipPath = "inset(-0.35em 50% -0.35em 50%)";
+      aperture = "center";
       order = "center";
       break;
     case "exchange":
       from.xPercent = (sentenceIndex % 2 ? 12 : -12) * travel;
       from.yPercent = 0;
-      from.clipPath = sentenceIndex % 2 ? "inset(-0.35em 100% -0.35em -0.35em)" : "inset(-0.35em -0.35em -0.35em 100%)";
+      aperture = sentenceIndex % 2 ? "right" : "left";
       order = sentenceIndex % 2 ? "end" : "start";
       break;
     case "expand":
       from.yPercent = 0;
-      from.clipPath = "inset(-0.35em 50% -0.35em 50%)";
+      aperture = "center";
       from.x = (i: number) => (i - (tokens.length - 1) / 2) * -1.3 * travel;
       order = "center";
       break;
     case "resolve": order = "center"; break;
   }
+  from.clipPath = (index: number) => {
+    const edges = open(index);
+    const { x, y } = clearance[index];
+    if (aperture === "center") edges[1] = edges[3] = 50;
+    else if (aperture === "top") edges[0] = 100 + y;
+    else if (aperture === "right") edges[1] = 100 + x;
+    else if (aperture === "bottom") edges[2] = 100 + y;
+    else edges[3] = 100 + x;
+    return inset(edges);
+  };
   timeline.fromTo(tokens, { opacity: 0 }, { opacity: 1, duration: 0.015,
     stagger: { amount: duration * 0.28, from: order, ease: "sine.inOut" },
   }, at);
   timeline.fromTo(tokens, from, {
     x: 0, xPercent: 0, yPercent: 0,
-    clipPath: "inset(-0.35em -0.35em -0.35em -0.35em)",
+    clipPath: (index: number) => inset(open(index)),
     duration: duration * 0.72,
     stagger: { amount: duration * 0.28, from: order, ease: "sine.inOut" },
     ease: "power3.out",
@@ -128,13 +148,11 @@ function animateQuietReading(
   copy: HTMLElement,
   section: HTMLElement,
   compact: boolean,
-  splits: Splits,
   cleanups: (() => void)[],
 ) {
   const title = copy.querySelector<HTMLElement>("h2")!;
   const paragraphs = [...copy.querySelectorAll<HTMLElement>(".story-body > p")];
   const blocks = [title, ...paragraphs];
-  const hope = section.id === "what-we-hope";
   copy.classList.add("has-quiet-reading");
   cleanups.push(() => copy.classList.remove("has-quiet-reading"));
   const headerHeight = Number.parseFloat(getComputedStyle(section).getPropertyValue("--header-height")) || 0;
@@ -151,8 +169,11 @@ function animateQuietReading(
     scrollTrigger: {
       id: `home-${section.id}-reading`, trigger: copy,
       start: fits ? `top top+=${headerHeight}` : "top 85%",
-      end: () => fits ? `+=${Math.round(window.innerHeight * (hope ? 1.6 : 1.4))}` : "bottom 65%",
+      end: () => fits
+        ? `+=${Math.round(window.innerHeight * 1.4 / 1.8 * (1 + HOME_REST_RATIO))}`
+        : "bottom 65%",
       pin: fits, scrub: 0.22, invalidateOnRefresh: true,
+      onUpdate: settleHomeScrubEndpoint,
     },
   });
 
@@ -173,22 +194,17 @@ function animateQuietReading(
     return reading;
   }
 
-  if (hope) {
-    // Give the patient's final question one emphasis; its explanation stays still.
-    animateArtworkWords(title, reading, "resolve", compact, splits, 0, 0.75);
-  } else {
-    reading.fromTo(title, { opacity: 0, y: 6 }, {
-      opacity: 1, y: 0, duration: 0.45, ease: "sine.out",
-    }, 0);
-  }
+  reading.fromTo(title, { opacity: 0, y: 6 }, {
+    opacity: 1, y: 0, duration: 0.45, ease: "sine.out",
+  }, 0);
   paragraphs.forEach((paragraph, index) => {
     reading.fromTo(paragraph, { opacity: 0, y: 6 }, {
       opacity: 1, y: 0, duration: 0.45, ease: "sine.out",
-    }, (hope ? 0.46 : 0.18) + index * (hope ? 0.3 : 0.18));
+    }, 0.18 + index * 0.18);
   });
   reading.addLabel("reading-complete");
-  reading.to({}, { duration: reading.duration() * 0.8 });
-  copy.dataset.readingHold = String(1 / 1.8);
+  reading.to({}, { duration: reading.duration() * HOME_REST_RATIO });
+  copy.dataset.readingHold = String(1 / (1 + HOME_REST_RATIO));
   cleanups.push(() => delete copy.dataset.readingHold);
   return reading;
 }
@@ -201,10 +217,10 @@ export function animateHomeReading(
   cleanups: (() => void)[],
 ) {
   if (section.id === "why-tnbc") {
-    return animateTnbcReading(copy, section, compact, cleanups);
+    return animateTnbcReading(copy, cleanups);
   }
-  if (["our-platform", "plug-and-play", "beyond-tnbc", "what-we-hope"].includes(section.id)) {
-    return animateQuietReading(copy, section, compact, splits, cleanups);
+  if (["our-platform", "plug-and-play"].includes(section.id)) {
+    return animateQuietReading(copy, section, compact, cleanups);
   }
   const voice = voices[section.id] || "reflect";
   const ward = section.id === "what-we-saw";
@@ -222,8 +238,8 @@ export function animateHomeReading(
   )];
   const entries = targets.map((element) => ({
     element,
-    // Keep source links and the finale's travelling phrase structurally intact.
-    groups: element.matches("a, .story-carry")
+    // Keep source links structurally intact.
+    groups: element.matches("a")
       ? [[element]] : sentences(words(element, splits)),
   }));
   const sentenceCount = entries.reduce((n, e) => n + e.groups.length, 0);
@@ -238,6 +254,7 @@ export function animateHomeReading(
         ? `+=${Math.round(window.innerHeight * (ward ? 4.8 : 1.6 + sentenceCount * 0.25) * (1 + readingRestRatio))}`
         : "bottom 65%",
       pin: fits, scrub: HOME_SCRUB, invalidateOnRefresh: true,
+      onUpdate: settleHomeScrubEndpoint,
     },
   });
   if (!fits) {

@@ -1,68 +1,64 @@
+import grammarly from "../assets/partners/sponsor-grammarly.png";
+import charlesRiver from "../assets/partners/sponsor-charles-river-english.svg";
+import igem from "../assets/partners/sponsor-igem.png";
+import lark from "../assets/partners/sponsor-lark.png";
+import mathworks from "../assets/partners/sponsor-mathworks.png";
+import schrodinger from "../assets/partners/sponsor-schrodinger.png";
+import jluWordmark from "../assets/partners/jlu-wordmark-bilingual.webp";
+
 /**
  * Footer — single source of truth for the closing panel.
  *
  * Two rules govern this file:
  *   1. Nothing here is derived from the route. The panel's colour comes from the
  *      module palette (`route-palette-<module>.css`), not from a value below.
- *   2. Every mark keeps its own intrinsic pixel size. The crest is 4195px, the
- *      hospital seal is 295px; CSS decides how much of that is *shown*, never
- *      this file. Nothing is upscaled beyond its source resolution.
+ *   2. Artwork is kept as supplied by the team. CSS sets its displayed size
+ *      and preserves the marks' proportions.
  *
- * The panel is warm off-white paper, so every mark below is a *dark* ink
- * version. The zip shipped a black and a white cut of each wordmark; the white
- * knock-outs are invisible here and the outline cuts lose their hairlines when
- * reduced to this size.
+ * The panel is warm off-white paper. Institutional marks retain their supplied
+ * colours; sponsor marks are softened to neutral grey by the ribbon CSS.
  *   - `jlu-crest`               solid, not the outline cut (L2) — hairlines
  *                                break up when reduced to 92px.
- *   - `jlu-wordmark-black`       the black knock-out (L4), not the white one
- *                                (L5). Verified: 11,119 dark opaque pixels
- *                                against 6 light ones, so L5 would have
- *                                rendered as an empty box on paper.
+ *   - `jlu-wordmark-bilingual`  right-hand crop of the team's supplied blue
+ *                                Chinese/English signature, without redrawing.
  *   - `bethune-clinical-college` solid, not the outline cut (L1).
  *   - `bethune-hospital-seal`   the only version that exists.
  */
 
 /**
- * A mark rendered in the footer. `src` is a Vite import, never a path string.
+ * A mark rendered in the footer from the team's hosted or bundled assets.
  */
 export interface FooterMark {
   src: string;
-  /**
-   * Rendered width in px at the desktop breakpoint. This is a *display size*,
-   * always <= the asset's own pixel width. It is intentionally per-mark: the
-   * panel is a contact card, not a normalised logo grid.
-   */
+  /** Display width in pixels; responsive CSS can scale the artwork down. */
   width: number;
-  /** Accessible name; the mark is decorative next to the address it labels. */
+  /** Accessible name; marks beside a written institution name are decorative. */
   alt: string;
 }
 
-const SHARED_CDN = "https://static.igem.wiki/teams/6056/wiki/files/pages/shared";
+const SHARED_CDN =
+  "https://static.igem.wiki/teams/6056/wiki/files/pages/shared";
 const jluCrest = `${SHARED_CDN}/jlu-crest.avif`;
-const jluWordmark = `${SHARED_CDN}/jlu-wordmark-black.avif`;
 const collegeWordmark = `${SHARED_CDN}/bethune-clinical-college.avif`;
 const hospitalSeal = `${SHARED_CDN}/bethune-hospital-seal.avif`;
 const cancerCenter = `${SHARED_CDN}/cancer-center.avif`;
-const charlesRiver = `${SHARED_CDN}/sponsor-charles-river.avif`;
-const mathworks = `${SHARED_CDN}/sponsor-mathworks.avif`;
-const simulink = `${SHARED_CDN}/sponsor-simulink.avif`;
-const polyspace = `${SHARED_CDN}/sponsor-polyspace.avif`;
 
 /**
- * Institution wordmarks retain their artwork and display widths. The college
- * asset is cropped to its alpha bounds so its visible ink shares the university
- * wordmark's left edge. CSS centres both seals in one shared column.
+ * Institution names are written in the component, so these assets are
+ * decorative signatures rather than the only source of a name.
  */
 export const FOOTER_CLINICAL_COLLEGE_NAME =
   "The First Bethune Clinical Medical College of Jilin University";
+export const FOOTER_CLINICAL_HOSPITAL_NAME =
+  "The First Bethune Hospital of Jilin University";
 
 export const FOOTER_MARK_UNIVERSITY: ReadonlyArray<FooterMark> = [
   { src: jluCrest, width: 96, alt: "Jilin University crest" },
-  { src: jluWordmark, width: 235, alt: "吉林大学" },
+  { src: jluWordmark, width: 160, alt: "吉林大学 · Jilin University" },
 ];
 
 export const FOOTER_MARK_CLINICAL: ReadonlyArray<FooterMark> = [
-  { src: hospitalSeal, width: 82, alt: "The First Bethune Hospital of Jilin University" },
+  { src: hospitalSeal, width: 82, alt: FOOTER_CLINICAL_HOSPITAL_NAME },
   { src: collegeWordmark, width: 238, alt: FOOTER_CLINICAL_COLLEGE_NAME },
 ];
 
@@ -86,54 +82,45 @@ export const FOOTER_EMAIL = `${FOOTER_EMAIL_LOCAL}@${FOOTER_EMAIL_DOMAIN}`;
  */
 export const FOOTER_LICENSE_LABEL =
   "Creative Commons Attribution 4.0 International license";
-export const FOOTER_LICENSE_URL = "https://creativecommons.org/licenses/by/4.0/";
+export const FOOTER_LICENSE_URL =
+  "https://creativecommons.org/licenses/by/4.0/";
 
-/**
- * Partners — the Cancer Center mark and the supporting companies.
- *
- * Two tiers, because the sources are not comparable at one size:
- *   - `FOOTER_PARTNER_PRIMARY` is the Cancer Center. Its artwork is three
- *     stacked lines (four-colour ring, the hospital lockup, 肿瘤中心 / CANCER
- *     CENTER) and is illegible below ~100px, so it is set apart at 132px.
- *   - `FOOTER_PARTNER_SUPPORT` are single-line marks shown as bare icons — no
- *     captions, no per-item labels.
- *
- * Each row pairs one long lockup with one compact glyph. The source set is
- * two of each — two wide lockups (Charles River, MathWorks) and two square
- * product marks (Simulink, Polyspace) — so a 2×2 block split by shape would
- * give two rows of one kind, which reads as a wide row with a stub under it
- * rather than as a set. One of each per row makes the two rows mirror each
- * other and keeps the block's silhouette even.
- *
- * L-Membrane was dropped. Its mark is the same black triangle as the MathWorks
- * logo, so beside it the row just repeated one shape; `sponsor-l-membrane.png`
- * stays in `src/assets/partners/` if it is ever needed.
- *
- * Every `width` is a display size at the desktop breakpoint and never exceeds
- * the asset's own pixel width. All marks are transparent PNGs with their ink
- * left in the source colour, so they read on the panel's paper ground directly.
- *
- * The archive supplied as `维通利华.zip` actually contains Charles River (the
- * CRO); `charles-river` is named for what is inside the file rather than for
- * the archive it arrived in.
- */
-export const FOOTER_PARTNER_PRIMARY: FooterMark = {
+/** The Cancer Center is part of the clinical institution, not a sponsor tier. */
+export const FOOTER_MARK_CANCER_CENTER: FooterMark = {
   src: cancerCenter,
   width: 132,
   alt: "Cancer Center, The First Bethune Hospital of Jilin University",
 };
 
-export const FOOTER_PARTNER_SUPPORT: ReadonlyArray<
-  ReadonlyArray<FooterMark>
-> = [
-  [
-    { src: mathworks, width: 158, alt: "MathWorks" },
-    { src: simulink, width: 50, alt: "Simulink" },
-  ],
-  [
-    { src: charlesRiver, width: 214, alt: "Charles River" },
-    { src: polyspace, width: 60, alt: "Polyspace" },
-  ],
-];
+export interface FooterOrganisation {
+  name: string;
+  marks: ReadonlyArray<FooterMark>;
+}
 
-export const FOOTER_PARTNERS_LABEL = "Sponsors & Teammates";
+/** Each organisation is represented by its main signature in the logo ribbons. */
+export const FOOTER_ORGANISATIONS: ReadonlyArray<FooterOrganisation> = [
+  {
+    name: "MathWorks",
+    marks: [{ src: mathworks, width: 300, alt: "MathWorks" }],
+  },
+  {
+    name: "Charles River",
+    marks: [{ src: charlesRiver, width: 240, alt: "Charles River" }],
+  },
+  {
+    name: "Lark",
+    marks: [{ src: lark, width: 230, alt: "Lark" }],
+  },
+  {
+    name: "Grammarly",
+    marks: [{ src: grammarly, width: 290, alt: "Grammarly" }],
+  },
+  {
+    name: "Schrödinger",
+    marks: [{ src: schrodinger, width: 310, alt: "Schrödinger" }],
+  },
+  {
+    name: "iGEM",
+    marks: [{ src: igem, width: 128, alt: "iGEM" }],
+  },
+];

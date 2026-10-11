@@ -120,15 +120,11 @@ body:has(.home-story) .footer {
 .story-chapter--switch {
   --chapter-bg: #fff4e2;
   --next-bg: #f2eee5;
+  --scene-hold: 180svh;
 }
 .story-chapter--beyond {
   --chapter-bg: #f2eee5;
   --next-bg: #f7e7e6;
-}
-.story-chapter--hope {
-  --chapter-bg: #f7e7e6;
-  --next-bg: #f7e7e6;
-  --scene-hold: 145svh;
 }
 .story-chapter::after {
   content: "";
@@ -196,6 +192,87 @@ body:has(.home-story) .footer {
     78%,
     calc((var(--scene-height) - 32px) * var(--art-aspect) * 0.78)
   );
+}
+.story-chapter--beyond .story-artwork-title {
+  position: absolute;
+  z-index: 4;
+  top: 21%;
+  left: 15%;
+  width: min(40vw, 650px);
+  margin: 0;
+  isolation: isolate;
+  pointer-events: none;
+  color: #493943;
+  font: 400 clamp(34px, 3.25vw, 64px)/1.12 var(--font-editorial);
+  letter-spacing: -0.035em;
+  text-shadow:
+    0 -1px 0 rgba(255, 255, 247, 0.72),
+    0 2px 5px rgba(76, 57, 66, 0.12);
+}
+.story-chapter--beyond .story-beyond-line {
+  display: block;
+  width: max-content;
+  max-width: 100%;
+  white-space: nowrap;
+}
+.story-chapter--beyond .story-beyond-line + .story-beyond-line {
+  margin-top: 0.12em;
+  margin-left: clamp(20px, 3vw, 50px);
+}
+.story-chapter--beyond .story-beyond-ink {
+  display: block;
+}
+.story-chapter--beyond .story-beyond-glow {
+  position: absolute;
+  z-index: -1;
+  inset: -62% -8% -72% -12%;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse at 43% 43%,
+    rgba(255, 253, 233, 0.92),
+    rgba(255, 242, 195, 0.5) 42%,
+    rgba(255, 236, 181, 0) 72%
+  );
+  filter: blur(15px);
+  opacity: 0;
+}
+@media (max-width: 800px) {
+  .story-chapter--beyond .story-artwork-title {
+    top: 16%;
+    left: 8%;
+    width: 84%;
+    font-size: clamp(25px, 4.5vw, 40px);
+  }
+  .story-chapter--beyond .story-beyond-line + .story-beyond-line {
+    margin-left: 18px;
+  }
+}
+@media (max-width: 600px) and (orientation: portrait) {
+  .story-chapter--beyond .story-artwork-title {
+    top: 17%;
+    left: 5%;
+    width: 90%;
+    font-size: clamp(25px, 7vw, 33px);
+  }
+  .story-chapter--beyond .story-beyond-line + .story-beyond-line {
+    margin-top: 0.18em;
+    margin-left: 12px;
+  }
+}
+@media (max-height: 600px) and (orientation: landscape) {
+  .story-chapter--beyond .story-artwork-title {
+    top: 12%;
+    left: 18%;
+    font-size: clamp(24px, 3vw, 29px);
+  }
+  .story-chapter--beyond .story-beyond-line + .story-beyond-line {
+    margin-left: 12px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .story-chapter--beyond .story-beyond-glow {
+    display: none;
+  }
 }
 .story-art--ward-patient,
 .story-art--family {
@@ -369,7 +446,7 @@ body:has(.home-story) .footer {
   top: 34%;
 }
 .story-morph--chemotherapy .story-morph-word {
-  left: 34%;
+  left: 35.75%;
   top: 70%;
 }
 .story-morph--resistance .story-morph-word {
@@ -394,7 +471,7 @@ body:has(.home-story) .footer {
   width: 16%;
 }
 .story-morph--surgery .story-morph-thumbnail { top: 34%; }
-.story-morph--chemotherapy .story-morph-thumbnail { top: 70%; }
+.story-morph--chemotherapy .story-morph-thumbnail { left: 46.5%; top: 70%; }
 .story-morph--resistance .story-morph-thumbnail { top: 38%; }
 .story-morph--effects .story-morph-thumbnail { top: 58%; }
 .story-morph--recurrence .story-morph-thumbnail { top: 75%; }
@@ -561,9 +638,6 @@ body:has(.home-story) .footer {
   line-height: 1.16;
   letter-spacing: 0;
 }
-.story-chapter.story-chapter--hope .story-copy {
-  background: transparent;
-}
 .story-chapter:not(.story-chapter--ward) .story-body {
   width: min(100%, 650px);
   font-size: 19px;
@@ -636,9 +710,6 @@ body:has(.home-story) .footer {
   }
   .story-chapter--map .story-body .story-emphasis {
     font-size: 20px;
-  }
-  .story-chapter--hope .story-carry {
-    white-space: normal;
   }
 }
 @media (max-width: 380px), (max-height: 650px) {
@@ -952,9 +1023,6 @@ body:has(.home-story) .footer {
   }
   .story-chapter--clinic {
     --scene-hold: 125svh;
-  }
-  .story-chapter--hope {
-    --scene-hold: 135svh;
   }
   .story-copy {
     grid-template-columns: 1fr;

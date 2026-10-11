@@ -61,10 +61,6 @@ export function readingAccents(
       branches = [-1, 1].map(d => `M ${middle} ${y} C ${middle + d * w * 0.15} ${y + 12} ${middle + d * w * 0.3} ${y + 12} ${middle + d * w * 0.4} ${y + 18}`);
     } else if (chapter === "plug-and-play") {
       initial = `M ${left} ${y} L ${left + w * 0.28} ${y} L ${left + w * 0.28} ${y + 9} L ${left + w * 0.46} ${y + 9} L ${left + w * 0.46} ${y} L ${right} ${y}`;
-    } else if (chapter === "beyond-tnbc" || chapter === "what-we-hope") {
-      initial = `M ${middle - 3} ${y} C ${middle - 1} ${y + 1} ${middle + 1} ${y + 1} ${middle + 3} ${y}`;
-      if (chapter === "what-we-hope") branches = [-1, 0, 1].map(d =>
-        `M ${middle} ${y} Q ${middle + d * 22} ${y + 8} ${middle + d * 36} ${y + 17}`);
     }
     path.setAttribute("d", initial);
     svg.append(path);

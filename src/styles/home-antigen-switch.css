@@ -1,3 +1,17 @@
+.home-antigen-switch-story {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: #fff4e2;
+}
+.home-antigen-switch-story > .home-antigen-switch {
+  position: absolute;
+  inset: 0;
+}
+.home-antigen-switch-story > [data-antigen-view="mechanism"] {
+  opacity: 0;
+  visibility: hidden;
+}
 .home-antigen-switch {
   --tcell-label-size: 20px;
   position: relative;
@@ -110,9 +124,6 @@
   font: 400 14px var(--font-sans);
   text-anchor: middle;
 }
-.home-antigen-switch__ribosome-orbit {
-  transform-origin: 150px 150px;
-}
 .home-antigen-switch__ribosome {
   opacity: 0;
 }
@@ -165,7 +176,9 @@
   .home-antigen-switch__protein {
   opacity: 0;
 }
-.home-antigen-switch__presented-peptide {
+.home-antigen-switch__presenter,
+.home-antigen-switch__presented-peptide,
+.home-antigen-switch__presentation-label {
   opacity: 0;
 }
 .home-antigen-switch__binding-wash {
@@ -230,10 +243,25 @@
 .home-antigen-switch__tcell {
   opacity: 0.78;
 }
-.home-antigen-switch__tcr-site {
+.home-antigen-switch__activation-glow {
+  opacity: 0;
+  pointer-events: none;
+}
+.home-antigen-switch__activation-wash {
   fill: var(--selected-color);
+  fill-opacity: 0.14;
+}
+.home-antigen-switch__activation-ring {
+  fill: none;
   stroke: var(--selected-color);
+  stroke-opacity: 0.5;
+  stroke-width: 1.8;
+}
+.home-antigen-switch__tcr-site {
+  fill: none;
+  stroke: #63765b;
   stroke-width: 1.5;
+  stroke-linecap: round;
   stroke-linejoin: round;
 }
 .home-antigen-switch__tcell-label {
@@ -545,13 +573,6 @@
 .home-antigen-switch[data-mechanism-expanded="true"] .home-antigen-switch__copy {
   display: none;
 }
-.home-antigen-switch[data-mechanism-expanded="true"] .home-antigen-switch__content {
-  animation: antigen-mechanism-reveal 0.55s ease-out both;
-}
-@keyframes antigen-mechanism-reveal {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
 .home-antigen-switch[data-mechanism-expanded="false"] .home-antigen-switch__content {
   display: grid;
   grid-template-columns: 0.9fr 1.1fr;
@@ -651,6 +672,10 @@
     height: auto;
     padding: 32px 5% 40px;
   }
+  .story-chapter--switch [data-antigen-view="mechanism"] {
+    /* Leave room above the RNA for the nascent chain. */
+    padding-top: 80px;
+  }
   .story-chapter--switch .home-antigen-switch__content {
     display: grid;
     justify-items: center;
@@ -691,6 +716,13 @@
   }
 }
 
+@media (max-width: 360px) and (orientation: portrait) {
+  .story-chapter--switch [data-antigen-view="mechanism"] {
+    /* Keep the growing chain below the floating story controls. */
+    padding-top: 120px;
+  }
+}
+
 @media (max-height: 650px) and (orientation: landscape) {
   .home-story .story-chapter--switch .story-scene-track {
     height: auto;
@@ -720,5 +752,43 @@
   }
   .home-antigen-switch__copy h3 {
     font-size: 36px;
+  }
+}
+
+/* Both chapters occupy stable space. On narrow or short screens they follow
+   normal page flow, so the long mechanism remains readable below the intro. */
+@media (max-width: 800px) and (orientation: portrait),
+  (max-height: 650px) and (orientation: landscape),
+  (prefers-reduced-motion: reduce) {
+  .home-antigen-switch-story {
+    height: auto;
+  }
+  .home-antigen-switch-story > .home-antigen-switch {
+    position: relative;
+    inset: auto;
+    height: auto;
+    min-height: 100svh;
+  }
+  .home-antigen-switch-story > [data-antigen-view="mechanism"] {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-story .story-chapter--switch .story-scene-track {
+    height: auto;
+  }
+  .home-story .story-chapter--switch .story-chapter-inner {
+    position: relative;
+    height: auto;
+    min-height: 100svh;
+    overflow: visible;
+    contain: layout style;
+  }
+  .home-story .story-chapter--switch .story-visual {
+    position: relative;
+    inset: auto;
+    padding-top: var(--header-height);
   }
 }
