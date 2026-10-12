@@ -22,6 +22,13 @@ const FRAME_NAME = "igem-attribution-form";
 const FORM_ORIGIN = new URL(attributionPage.formUrl).origin;
 const COMPACT_QUERY = "(max-width: 980px)";
 
+function sectionFromHostHash(hash: string) {
+  const value = hash.replace(/^#(?:attribution-)?/, "");
+  return attributionPage.sections.some((section) => section.id === value)
+    ? value
+    : null;
+}
+
 function readFormHeight(data: unknown): number | null {
   if (typeof data === "string") {
     try {
@@ -45,8 +52,9 @@ export function OfficialAttributionReader() {
   const closeRef = useRef<HTMLButtonElement>(null);
   const [reportedHeight, setReportedHeight] = useState<number | null>(null);
   const [formWidth, setFormWidth] = useState(819);
+  const initialSection = sectionFromHostHash(window.location.hash);
   const [selectedSection, setSelectedSection] = useState<string>(
-    attributionPage.sections[0].id,
+    initialSection ?? attributionPage.sections[0].id,
   );
   const [compact, setCompact] = useState(
     () => window.matchMedia(COMPACT_QUERY).matches,
@@ -61,6 +69,43 @@ export function OfficialAttributionReader() {
   const formStyle = {
     "--attribution-form-height": `${reportedHeight ?? bookmarks.contentHeight + 100}px`,
   } as CSSProperties;
+
+  const jumpToSection = (sectionId: string) => {
+    const bookmark = document.getElementById(`attribution-${sectionId}`);
+    if (bookmark) {
+      const inner = scrollRef.current;
+      if (!compact && inner) {
+        const offset =
+          inner.scrollTop +
+          bookmark.getBoundingClientRect().top -
+          inner.getBoundingClientRect().top -
+          32;
+        bookmark.dataset.readerScrollTop = String(
+          Math.max(
+            0,
+            Math.min(inner.scrollHeight - inner.clientHeight, offset),
+          ),
+        );
+      } else {
+        delete bookmark.dataset.readerScrollTop;
+      }
+      scrollReaderToTarget(bookmark, scrollRef.current);
+    }
+    window.history.replaceState(
+      window.history.state,
+      "",
+      `#attribution-${sectionId}`,
+    );
+    setSelectedSection(sectionId);
+    setTocOpen(false);
+  };
+
+  useEffect(() => {
+    const initial = sectionFromHostHash(window.location.hash);
+    if (!initial) return;
+    const timer = window.setTimeout(() => jumpToSection(initial), 120);
+    return () => window.clearTimeout(timer);
+  }, []);
 
   // Keep the full live document on the shared reader timeline, including
   // gestures over the table of contents and the surrounding Team background.
@@ -240,38 +285,7 @@ export function OfficialAttributionReader() {
                       )
                         return;
                       event.preventDefault();
-                      const bookmark = document.getElementById(
-                        `attribution-${section.id}`,
-                      );
-                      if (bookmark) {
-                        const inner = scrollRef.current;
-                        if (!compact && inner) {
-                          const offset =
-                            inner.scrollTop +
-                            bookmark.getBoundingClientRect().top -
-                            inner.getBoundingClientRect().top -
-                            32;
-                          bookmark.dataset.readerScrollTop = String(
-                            Math.max(
-                              0,
-                              Math.min(
-                                inner.scrollHeight - inner.clientHeight,
-                                offset,
-                              ),
-                            ),
-                          );
-                        } else {
-                          delete bookmark.dataset.readerScrollTop;
-                        }
-                        scrollReaderToTarget(bookmark, scrollRef.current);
-                      }
-                      window.history.replaceState(
-                        window.history.state,
-                        "",
-                        `#attribution-${section.id}`,
-                      );
-                      setSelectedSection(section.id);
-                      setTocOpen(false);
+                      jumpToSection(section.id);
                     }}
                   >
                     <span className="wiki-outline__index">{index + 1}</span>
@@ -329,6 +343,26 @@ export function OfficialAttributionReader() {
                 style={formStyle}
               >
                 <div className="official-attributions-page__document">
+                  <nav
+                    className="official-attributions-page__jump-nav"
+                    aria-label="Official attribution Jump to navigation"
+                  >
+                    <span className="official-attributions-page__jump-title">
+                      Jump to
+                    </span>
+                    <div className="official-attributions-page__jump-chips">
+                      {attributionPage.sections.map((section) => (
+                        <button
+                          key={section.id}
+                          type="button"
+                          className={`official-attributions-page__jump-chip${selectedSection === section.id ? " is-active" : ""}`}
+                          onClick={() => jumpToSection(section.id)}
+                        >
+                          {section.label}
+                        </button>
+                      ))}
+                    </div>
+                  </nav>
                   {attributionPage.sections.map((section, index) => (
                     <span
                       key={section.id}
@@ -347,7 +381,11 @@ export function OfficialAttributionReader() {
                     id={FRAME_NAME}
                     name={FRAME_NAME}
                     title="Official iGEM attribution form"
-                    src={attributionPage.formUrl}
+                    src={
+                      initialSection
+                        ? `${attributionPage.formUrl}#${initialSection}`
+                        : attributionPage.formUrl
+                    }
                     loading="eager"
                     data-page-embed-ready="false"
                   />
