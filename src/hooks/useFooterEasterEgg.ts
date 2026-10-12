@@ -72,6 +72,8 @@ export function useFooterEasterEgg(
     let resetTimer = 0;
     let touchY = 0;
     let touchReady = false;
+    // The whole footer reads the pressure, so its panel can give way.
+    const gate = seam.closest("footer") ?? seam;
     const atEnd = () =>
       document.documentElement.scrollHeight -
         window.scrollY -
@@ -80,7 +82,7 @@ export function useFooterEasterEgg(
     const reset = () => {
       pressure = 0;
       armed = false;
-      seam.style.setProperty("--gate-p", "0");
+      gate.style.setProperty("--gate-p", "0");
     };
     const onScroll = () => {
       if (atEnd()) {
@@ -92,7 +94,7 @@ export function useFooterEasterEgg(
     };
     const push = (distance: number) => {
       pressure = Math.max(0, Math.min(240, pressure + distance));
-      seam.style.setProperty("--gate-p", String(pressure / 240));
+      gate.style.setProperty("--gate-p", String(pressure / 240));
       window.clearTimeout(resetTimer);
       if (pressure >= 240) {
         reset();

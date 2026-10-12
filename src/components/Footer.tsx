@@ -3,7 +3,6 @@ import { Link, useLocation } from "react-router-dom";
 import { FooterEasterEgg } from "./FooterEasterEgg";
 import { FooterSponsors } from "./FooterSponsors";
 import {
-  FOOTER_CLINICAL_COLLEGE_NAME,
   FOOTER_CLINICAL_HOSPITAL_NAME,
   FOOTER_EMAIL,
   FOOTER_EMAIL_DOMAIN,
@@ -13,16 +12,30 @@ import {
   FOOTER_LICENSE_URL,
   FOOTER_MARK_CANCER_CENTER,
   FOOTER_MARK_CLINICAL,
+  FOOTER_MARK_TEACHING,
   FOOTER_MARK_UNIVERSITY,
   type FooterMark,
 } from "../data/footer";
 import { useRouteModule } from "../hooks/useRouteModule";
 import { stringToSlug } from "../utils";
 
-/** Institution names are written beside these decorative signatures. */
-function MarkRow({ marks }: { marks: ReadonlyArray<FooterMark> }) {
+/** One institution; its marks carry the name, so the group is announced once. */
+function MarkRow({
+  kind,
+  label,
+  marks,
+}: {
+  kind: string;
+  label: string;
+  marks: ReadonlyArray<FooterMark>;
+}) {
   return (
-    <div className="circure-footer__mark-row">
+    <li
+      className="circure-footer__mark-row"
+      data-mark={kind}
+      role="img"
+      aria-label={label}
+    >
       {marks.map((mark) => (
         <img
           key={mark.src}
@@ -34,11 +47,11 @@ function MarkRow({ marks }: { marks: ReadonlyArray<FooterMark> }) {
           draggable={false}
         />
       ))}
-    </div>
+    </li>
   );
 }
 
-/** Shared closing chapter; only its colour follows the active route palette. */
+/** Shared closing panel; a hidden photograph waits beyond its end. */
 export function Footer() {
   const teamYear = import.meta.env.VITE_TEAM_YEAR;
   const teamName = import.meta.env.VITE_TEAM_NAME;
@@ -89,121 +102,70 @@ export function Footer() {
       aria-label="Site footer"
     >
       <div className="circure-footer__panel">
-        <div className="circure-footer__paper">
-          <div className="circure-footer__inner">
-            <div className="circure-footer__opening">
-              <p className="circure-footer__eyebrow">
-                JLU-FBH <span aria-hidden="true">·</span> iGEM {teamYear}
-              </p>
-              <h2>
-                <span className="circure-footer__opening-lead">
-                  Behind every step,
-                </span>{" "}
-                <em className="circure-footer__opening-statement">
-                  many hands.
-                </em>
-              </h2>
-              <p className="circure-footer__opening-note">
-                CirCure grows through the care, knowledge and support of a wider
-                community. We are grateful to the people and organisations who
-                have stood alongside our team.
-              </p>
-            </div>
+        <div className="circure-footer__inner">
+          {/* The university above; its clinical college beside two departments. */}
+          <ul className="circure-footer__marks">
+            <MarkRow
+              kind="university"
+              label="Jilin University"
+              marks={FOOTER_MARK_UNIVERSITY}
+            />
+          </ul>
+          <ul className="circure-footer__marks circure-footer__marks--row">
+            <MarkRow
+              kind="clinical"
+              label={FOOTER_CLINICAL_HOSPITAL_NAME}
+              marks={FOOTER_MARK_CLINICAL}
+            />
+            <MarkRow
+              kind="teaching"
+              label={FOOTER_MARK_TEACHING.alt}
+              marks={[FOOTER_MARK_TEACHING]}
+            />
+            <MarkRow
+              kind="cancer"
+              label={FOOTER_MARK_CANCER_CENTER.alt}
+              marks={[FOOTER_MARK_CANCER_CENTER]}
+            />
+          </ul>
 
-            <section
-              className="circure-footer__institutions"
-              aria-labelledby="footer-institutions-title"
-            >
-              <div className="circure-footer__section-heading">
-                <h3 id="footer-institutions-title">Our institutional home</h3>
-              </div>
-              <div className="circure-footer__institution-grid">
-                <div className="circure-footer__institution circure-footer__institution--academic">
-                  <p className="circure-footer__credit-type">Academic home</p>
-                  <MarkRow marks={FOOTER_MARK_UNIVERSITY} />
-                  <p className="circure-footer__credit-name">Jilin University</p>
-                </div>
-                <div className="circure-footer__institution">
-                  <p className="circure-footer__credit-type">Clinical home</p>
-                  <MarkRow marks={FOOTER_MARK_CLINICAL} />
-                  <p className="circure-footer__credit-name">
-                    {FOOTER_CLINICAL_HOSPITAL_NAME}
-                  </p>
-                  <p className="circure-footer__clinical-college">
-                    {FOOTER_CLINICAL_COLLEGE_NAME}
-                  </p>
-                  <div className="circure-footer__clinical-team">
-                    <img
-                      src={FOOTER_MARK_CANCER_CENTER.src}
-                      alt=""
-                      width={FOOTER_MARK_CANCER_CENTER.width}
-                      loading="lazy"
-                      decoding="async"
-                      draggable={false}
-                    />
-                    <p>
-                      <span>Within the hospital</span>
-                      {FOOTER_MARK_CANCER_CENTER.alt}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </section>
-
-            <FooterSponsors />
+          <div className="circure-footer__contact">
+            <h2>Keep in touch</h2>
+            <address>
+              <a href={"mailto:" + FOOTER_EMAIL}>
+                <span>{FOOTER_EMAIL_LOCAL}</span>@{FOOTER_EMAIL_DOMAIN}
+              </a>
+              {FOOTER_INSTITUTION_LINES.map((line) => (
+                <span key={line}>{line}</span>
+              ))}
+            </address>
           </div>
-        </div>
 
-        <div className="circure-footer__closing">
-          <div className="circure-footer__inner">
-            <div className="circure-footer__contact">
-              <div>
-                <p className="circure-footer__eyebrow">Keep in touch</p>
-                <h3>Let the conversation continue.</h3>
-              </div>
-              <div className="circure-footer__contact-details">
-                <a
-                  className="circure-footer__email"
-                  href={"mailto:" + FOOTER_EMAIL}
-                >
-                  <span>
-                    {FOOTER_EMAIL_LOCAL}@{FOOTER_EMAIL_DOMAIN}
-                  </span>
-                  <span aria-hidden="true">↗</span>
-                </a>
-                <p className="circure-footer__address">
-                  {FOOTER_INSTITUTION_LINES.map((line) => (
-                    <span key={line}>{line}</span>
-                  ))}
-                </p>
-              </div>
-            </div>
-            <nav
-              className="circure-footer__navigation"
-              aria-label="Footer navigation"
-            >
-              <Link to="/description">Project</Link>
-              <Link to="/roster">Team</Link>
-              <Link to="/attributions">Attributions</Link>
-            </nav>
-            <div className="circure-footer__colophon">
-              <p>
-                © {teamYear} — Content on this site is licensed under a{" "}
-                <a href={FOOTER_LICENSE_URL} rel="license">
-                  {FOOTER_LICENSE_LABEL}
-                </a>
-                .
-              </p>
-              <p>
-                The repository used to create this website is available at{" "}
-                <a
-                  href={"https://gitlab.igem.org/" + teamYear + "/" + teamSlug}
-                >
-                  gitlab.igem.org/{teamYear}/{teamSlug}
-                </a>
-                .
-              </p>
-            </div>
+          <FooterSponsors />
+
+          <nav
+            className="circure-footer__navigation"
+            aria-label="Footer navigation"
+          >
+            <Link to="/description">Project</Link>
+            <Link to="/roster">Team</Link>
+            <Link to="/attributions">Attributions</Link>
+          </nav>
+          <div className="circure-footer__colophon">
+            <p>
+              © {teamYear} — Content on this site is licensed under a{" "}
+              <a href={FOOTER_LICENSE_URL} rel="license">
+                {FOOTER_LICENSE_LABEL}
+              </a>
+              .
+            </p>
+            <p>
+              The repository used to create this website is available at{" "}
+              <a href={"https://gitlab.igem.org/" + teamYear + "/" + teamSlug}>
+                gitlab.igem.org/{teamYear}/{teamSlug}
+              </a>
+              .
+            </p>
           </div>
         </div>
       </div>

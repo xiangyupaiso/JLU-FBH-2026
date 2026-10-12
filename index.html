@@ -360,9 +360,14 @@
         });
         loader.addEventListener("loadererror", failed);
         window.addEventListener("vite:preloadError", failed);
+        window.addEventListener("unhandledrejection", failed);
         window.addEventListener("error", function (event) {
           var target = event.target;
-          if (target && target.tagName === "SCRIPT" && target.type === "module") failed();
+          if (
+            (target && target.tagName === "SCRIPT" && target.type === "module") ||
+            event.error ||
+            !target || target === window
+          ) failed();
         }, true);
         watchWait();
 

@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from "react";
-import { ArrowDown, ArrowUp, Download } from "lucide-react";
 import teamPhotoUrl from "../assets/footer/team-keepsake.webp";
 import lambUrl from "../assets/loading/lamb.webp";
 import hopeHandsUrl from "../assets/home/story/scene-9-layer-2.webp";
@@ -26,10 +25,7 @@ export default function FooterPhotoScene() {
       aria-label="The people behind CirCure"
     >
       <div ref={stageRef} className="keepsake-scroll-stage">
-        <div
-          ref={pinRef}
-          className={"keepsake-pin" + (flipped ? " is-flipped" : "")}
-        >
+        <div ref={pinRef} className="keepsake-pin">
           <div className="keepsake-perspective">
             <div
               ref={cardRef}
@@ -58,13 +54,6 @@ export default function FooterPhotoScene() {
                     </p>
                   )}
                 </div>
-                <figcaption>
-                  <p>JLU-FBH · iGEM 2026</p>
-                  <h2>This is us.</h2>
-                  <span className="keepsake-front__note">
-                    Many hands. One shared hope.
-                  </span>
-                </figcaption>
               </figure>
 
               <div
@@ -142,24 +131,6 @@ export default function FooterPhotoScene() {
             </div>
           </div>
 
-          <div className="keepsake-controls">
-            <span className="keepsake-scroll-hint" aria-hidden="true">
-              {flipped ? (
-                <ArrowUp size={14} strokeWidth={1.5} />
-              ) : (
-                <ArrowDown size={14} strokeWidth={1.5} />
-              )}
-              {flipped ? "Scroll up to return" : "Keep scrolling"}
-            </span>
-            <a
-              href={teamPhotoUrl}
-              download="circure-team-photo.webp"
-              aria-label="Save the full team photograph"
-            >
-              <Download aria-hidden="true" size={15} strokeWidth={1.5} />
-              Save photo
-            </a>
-          </div>
           <p className="visually-hidden" role="status">
             {staticView
               ? "The photograph and personal note are both showing."
