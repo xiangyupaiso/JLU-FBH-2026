@@ -89,43 +89,6 @@
   transform: scale(var(--keepsake-image-scale, 1.3));
   transform-origin: center center;
 }
-.keepsake-photograph::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    180deg,
-    transparent 64%,
-    rgb(29 18 22 / 24%) 78%,
-    rgb(29 18 22 / 83%)
-  );
-  pointer-events: none;
-}
-.keepsake-front figcaption {
-  position: absolute;
-  z-index: 3;
-  bottom: 32px;
-  left: clamp(26px, 3vw, 48px);
-  color: #fff8ee;
-}
-.keepsake-front figcaption p {
-  margin: 0 0 8px;
-  color: #ead9cb;
-  font: 400 12px/1.5 var(--font-body);
-  letter-spacing: 0.05em;
-}
-.keepsake-front figcaption h2 {
-  margin: 0;
-  color: #fff8ee;
-  font: 500 clamp(28px, 2.6vw, 38px)/1.2 var(--font-body);
-  letter-spacing: -0.035em;
-}
-.keepsake-front__note {
-  display: block;
-  margin-top: 10px;
-  color: #ead9cb;
-  font: 400 13px/1.6 var(--font-body);
-}
 /* The reverse is the story's quiet epilogue, with its original painted figure. */
 .keepsake-back {
   --letter-hidden-top: max(
@@ -307,53 +270,6 @@
 .keepsake-card.is-flipped .keepsake-lamb img {
   animation: keepsake-peek 600ms var(--ease-out) 1000ms both;
 }
-.keepsake-controls {
-  position: absolute;
-  z-index: 4;
-  right: clamp(26px, 3vw, 48px);
-  bottom: 25px;
-  left: clamp(26px, 3vw, 48px);
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  gap: 24px;
-  color: #f4e9dd;
-}
-.keepsake-scroll-hint {
-  position: absolute;
-  left: 50%;
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  transform: translateX(-50%);
-  font: 400 12px/1.5 var(--font-body);
-}
-.keepsake-controls a {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  min-height: 44px;
-  padding: 8px 0;
-  color: inherit;
-  font: 400 12px/1.5 var(--font-body);
-  text-decoration: none;
-}
-.keepsake-controls a:hover {
-  color: #fff;
-  text-decoration: underline;
-  text-underline-offset: 5px;
-}
-.keepsake-pin.is-flipped .keepsake-controls {
-  color: #705e55;
-}
-.keepsake-pin.is-flipped .keepsake-controls a:hover {
-  color: #493a3c;
-}
-.keepsake-controls a:focus-visible {
-  outline: 2px solid currentColor;
-  outline-offset: 5px;
-}
 .keepsake-photo-error {
   position: absolute;
   z-index: 2;
@@ -392,37 +308,16 @@
     --card-height: max(
       560px,
       calc(100svh - var(--header-height, 78px) - var(--scene-inset) * 2),
-      calc(var(--photo-height) + 164px)
+      var(--photo-height)
     );
-  }
-  .keepsake-front figcaption {
-    position: relative;
-    bottom: auto;
-    left: auto;
-    display: flex;
-    flex: 1;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 28px 24px 78px;
-    text-align: center;
   }
   .keepsake-front {
     display: flex;
     flex-direction: column;
+    justify-content: center;
   }
   .keepsake-photograph {
     flex: none;
-  }
-  .keepsake-front figcaption p {
-    margin-bottom: 7px;
-    font-size: 10px;
-  }
-  .keepsake-front figcaption h2 {
-    font-size: 36px;
-  }
-  .keepsake-photograph::after {
-    display: none;
   }
   .keepsake-letter__sheet {
     padding: 24px 22px 68px;
@@ -478,21 +373,6 @@
     bottom: 63px;
     width: 35px;
     height: 35px;
-  }
-  .keepsake-controls {
-    right: 24px;
-    bottom: 17px;
-    left: 24px;
-    justify-content: space-between;
-    gap: 12px;
-  }
-  .keepsake-scroll-hint {
-    position: static;
-    transform: none;
-    font-size: 10px;
-  }
-  .keepsake-controls a {
-    font-size: 10px;
   }
 }
 /* Keep the entire epilogue readable when browser chrome leaves little height. */
@@ -640,9 +520,6 @@
     height: 30px;
     bottom: 58px;
   }
-  .keepsake-controls {
-    bottom: 10px;
-  }
 }
 .finale-photo-window.is-static .keepsake-scroll-stage {
   height: auto;
@@ -696,14 +573,6 @@
   transform: translate(-19%, 0);
   animation: none;
 }
-.finale-photo-window.is-static .keepsake-controls {
-  position: relative;
-  inset: auto;
-  padding-block: 12px;
-}
-.finale-photo-window.is-static .keepsake-scroll-hint {
-  display: none;
-}
 @media (prefers-reduced-motion: reduce) {
   .keepsake-letter__body > *,
   .keepsake-lamb img {
@@ -717,14 +586,13 @@
     border-color: CanvasText;
     box-shadow: none;
   }
-  .keepsake-back::before,
-  .keepsake-photograph::after {
+  .keepsake-back::before {
     display: none;
   }
   .keepsake-letter__farewell::before {
     background: CanvasText;
   }
-  .finale-photo-window :is(h2, h3, p, span, strong, em, a, .keepsake-controls) {
+  .finale-photo-window :is(h3, p, span, strong, em) {
     color: CanvasText;
   }
 }

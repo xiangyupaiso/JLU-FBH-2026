@@ -5,6 +5,9 @@ import lark from "../assets/partners/sponsor-lark.png";
 import mathworks from "../assets/partners/sponsor-mathworks.png";
 import schrodinger from "../assets/partners/sponsor-schrodinger.png";
 import jluWordmark from "../assets/partners/jlu-wordmark-bilingual.webp";
+import teachingSeal from "../assets/partners/bethune-teaching-department.webp";
+import coreFacility from "../assets/partners/sponsor-jlu-core-facility.webp";
+import itm from "../assets/partners/sponsor-jlu-itm.webp";
 
 /**
  * Footer — single source of truth for the closing panel.
@@ -85,6 +88,12 @@ export const FOOTER_LICENSE_LABEL =
 export const FOOTER_LICENSE_URL =
   "https://creativecommons.org/licenses/by/4.0/";
 
+export const FOOTER_MARK_TEACHING: FooterMark = {
+  src: teachingSeal,
+  width: 84,
+  alt: "Department of Teaching, The First Bethune School of Clinical Medicine, Jilin University",
+};
+
 /** The Cancer Center is part of the clinical institution, not a sponsor tier. */
 export const FOOTER_MARK_CANCER_CENTER: FooterMark = {
   src: cancerCenter,
@@ -97,30 +106,62 @@ export interface FooterOrganisation {
   marks: ReadonlyArray<FooterMark>;
 }
 
-/** Each organisation is represented by its main signature in the logo ribbons. */
-export const FOOTER_ORGANISATIONS: ReadonlyArray<FooterOrganisation> = [
-  {
-    name: "MathWorks",
-    marks: [{ src: mathworks, width: 300, alt: "MathWorks" }],
-  },
-  {
-    name: "Charles River",
-    marks: [{ src: charlesRiver, width: 240, alt: "Charles River" }],
-  },
-  {
-    name: "Lark",
-    marks: [{ src: lark, width: 230, alt: "Lark" }],
-  },
-  {
-    name: "Grammarly",
-    marks: [{ src: grammarly, width: 290, alt: "Grammarly" }],
-  },
-  {
-    name: "Schrödinger",
-    marks: [{ src: schrodinger, width: 310, alt: "Schrödinger" }],
-  },
-  {
-    name: "iGEM",
-    marks: [{ src: igem, width: 128, alt: "iGEM" }],
-  },
+/**
+ * Each organisation is represented by its main signature in the logo ribbons.
+ * The first ribbon holds the sponsors and the hospital's two supporting
+ * institutes; the second holds everyone else we thank.
+ */
+export const FOOTER_SPONSOR_ROWS: ReadonlyArray<
+  ReadonlyArray<FooterOrganisation>
+> = [
+  [
+    {
+      // Vital River (维通利华) is Charles River's company in China.
+      name: "Charles River",
+      marks: [{ src: charlesRiver, width: 240, alt: "Charles River" }],
+    },
+    {
+      name: "MathWorks",
+      marks: [{ src: mathworks, width: 300, alt: "MathWorks" }],
+    },
+    {
+      // Schrödinger publishes PyMOL.
+      name: "Schrödinger",
+      marks: [{ src: schrodinger, width: 310, alt: "Schrödinger" }],
+    },
+    {
+      name: "Lark",
+      marks: [{ src: lark, width: 230, alt: "Lark" }],
+    },
+    {
+      name: "Core Facility",
+      marks: [
+        {
+          src: coreFacility,
+          width: 88,
+          alt: "Core Facility of the First Hospital of Jilin University",
+        },
+      ],
+    },
+    {
+      name: "ITM",
+      marks: [
+        {
+          src: itm,
+          width: 88,
+          alt: "Institute of Translational Medicine, the First Hospital of Jilin University",
+        },
+      ],
+    },
+  ],
+  [
+    {
+      name: "Grammarly",
+      marks: [{ src: grammarly, width: 290, alt: "Grammarly" }],
+    },
+    {
+      name: "iGEM",
+      marks: [{ src: igem, width: 128, alt: "iGEM" }],
+    },
+  ],
 ];

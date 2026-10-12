@@ -1,9 +1,4 @@
-import { FOOTER_ORGANISATIONS } from "../data/footer";
-
-const SPONSOR_ROWS = [
-  FOOTER_ORGANISATIONS.slice(0, 3),
-  FOOTER_ORGANISATIONS.slice(3),
-];
+import { FOOTER_SPONSOR_ROWS } from "../data/footer";
 
 /** Repeated signatures keep both ribbons continuous; only originals are read. */
 export function FooterSponsors() {
@@ -12,13 +7,15 @@ export function FooterSponsors() {
       className="circure-footer__acknowledgements"
       aria-labelledby="footer-acknowledgements-title"
     >
-      <div className="circure-footer__section-heading">
-        <h3 id="footer-acknowledgements-title">With thanks</h3>
-      </div>
+      <h2 id="footer-acknowledgements-title">With thanks</h2>
       <div className="circure-footer__marquee">
-        {SPONSOR_ROWS.map((organisations, rowIndex) => (
+        {FOOTER_SPONSOR_ROWS.map((organisations, rowIndex) => (
           <div className="circure-footer__marquee-row" key={rowIndex}>
-            <div className="circure-footer__marquee-track">
+            {/* Duration grows with the row so both ribbons drift at one pace. */}
+            <div
+              className="circure-footer__marquee-track"
+              style={{ animationDuration: `${organisations.length * 33}s` }}
+            >
               {[false, true].map((duplicate) => (
                 <ul
                   className="circure-footer__marquee-group"

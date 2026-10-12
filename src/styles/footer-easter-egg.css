@@ -9,6 +9,10 @@
   color: #f5f0e7;
   font-family: var(--font-body);
 }
+/* Focus moves here on reveal so Escape works; the photograph is its own cue. */
+.circure-photo-afterword:focus {
+  outline: none;
+}
 .finale-photo-loading {
   width: 100%;
   aspect-ratio: 2600 / 1734;
