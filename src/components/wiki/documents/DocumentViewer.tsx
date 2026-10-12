@@ -1,5 +1,4 @@
 import { useId, useState } from "react";
-import { PdfDocumentSurface } from "./PdfDocumentSurface";
 import "../../../styles/wiki-documents.css";
 
 /**
@@ -7,8 +6,9 @@ import "../../../styles/wiki-documents.css";
  *
  * Implements the housing convention's §4.6 pattern: a document displayed in the
  * body as a card that is **collapsed until the reader asks for it**. Collapsed is
- * the default so the PDF is fetched and rendered only when the reader asks to
- * read it.
+ * the default so the frame it opens is a browser PDF plugin — a separate
+ * process surface that is not free to composite, and that nothing on the page
+ * needs before the reader actually wants to read the document.
  *
  * Three rules this component exists to enforce:
  *
@@ -115,7 +115,11 @@ export function DocumentViewer({
                 .
               </p>
             ) : null}
-            <PdfDocumentSurface url={document.url} title={document.caption} />
+            <iframe
+              className="wiki-document__frame"
+              src={document.url}
+              title={document.caption}
+            />
             {document.fallbackText ? (
               <p className="wiki-document__fallback">{document.fallbackText}</p>
             ) : null}

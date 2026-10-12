@@ -1,3 +1,5 @@
+import { DocumentViewer } from "../../../documents/DocumentViewer";
+
 export interface SustainabilityPdfManual {
   title: string;
   meta: string;
@@ -5,23 +7,18 @@ export interface SustainabilityPdfManual {
   fileName: string;
 }
 
-/** Inline PDF report: native browser viewer plus a visible title and open/download links. */
+/** Inline PDF report using the unified Wiki DocumentViewer. */
 export function SustainabilityPdfPreview({ manual }: { manual: SustainabilityPdfManual }) {
   return (
-    <figure className="sust-pdf-native">
-      <iframe className="sust-pdf-native__frame" src={manual.pdfUrl} title={`${manual.title} PDF`} />
-      <figcaption className="sust-pdf-native__caption">
-        <h4 className="sust-pdf-native__title">{manual.title}</h4>
-        <p className="sust-pdf-native__meta">{manual.meta}</p>
-        <div className="sust-pdf-native__actions">
-          <a className="sust-pdf-native__link" href={manual.pdfUrl} target="_blank" rel="noopener noreferrer">
-            Open in new tab
-          </a>
-          <a className="sust-pdf-native__link" href={manual.pdfUrl} download={manual.fileName}>
-            Download
-          </a>
-        </div>
-      </figcaption>
-    </figure>
+    <DocumentViewer
+      document={{
+        caption: manual.title,
+        url: manual.pdfUrl,
+        description: manual.meta,
+        openUrl: manual.pdfUrl,
+        downloadUrl: manual.pdfUrl,
+      }}
+      defaultOpen={true}
+    />
   );
 }
