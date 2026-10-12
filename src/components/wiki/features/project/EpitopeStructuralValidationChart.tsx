@@ -61,9 +61,10 @@ export function EpitopeStructuralValidationChart() {
       },
       tooltip: {
         position: "top",
-        formatter: (params: any) => {
+        formatter: (p) => {
+          const params = p as echarts.DefaultLabelFormatterCallbackParams;
           if (params.seriesType === "custom") {
-            const [xIdx, yIdx] = params.value;
+            const [xIdx, yIdx] = params.value as number[];
             const row = EPITOPE_HEATMAP_DATA[yIdx];
             return `
               <div style="font-size:12px; line-height:1.4;">
@@ -74,7 +75,7 @@ export function EpitopeStructuralValidationChart() {
               </div>
             `;
           }
-          const [xIdx, yIdx, val] = params.value;
+          const [xIdx, yIdx, val] = params.value as number[];
           const row = EPITOPE_HEATMAP_DATA[yIdx];
           const status = row.passed
             ? '<span style="color:#207062; font-weight:600;">✓ Pass</span>'
@@ -154,7 +155,7 @@ export function EpitopeStructuralValidationChart() {
           type: "custom",
           renderItem: (_params, api) => {
             const pt = api.coord([api.value(0), api.value(1)]);
-            const size = (api as any).size([1, 1]);
+            const size = api.size!([1, 1]) as number[];
             const halfW = size[0] / 2;
             const halfH = size[1] / 2;
             return {
@@ -239,8 +240,8 @@ export function EpitopeStructuralValidationChart() {
       tooltip: {
         trigger: "axis",
         axisPointer: { type: "shadow" },
-        formatter: (params: any) => {
-          const item = params[0];
+        formatter: (params) => {
+          const item = (params as echarts.DefaultLabelFormatterCallbackParams[])[0];
           const row = EPITOPE_VOLUME_DATA[item.dataIndex];
           const statusText = row.passed
             ? '<span style="color:#207062; font-weight:600;">✓ Pass (≥ 60% fill)</span>'
@@ -309,7 +310,7 @@ export function EpitopeStructuralValidationChart() {
             show: true,
             position: "right",
             distance: 6,
-            formatter: (params: any) => {
+            formatter: (params) => {
               const row = EPITOPE_VOLUME_DATA[params.dataIndex];
               return `${row.fill}%`;
             },

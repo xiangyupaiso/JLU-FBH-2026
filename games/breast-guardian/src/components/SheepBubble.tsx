@@ -1,6 +1,6 @@
-import { useCallback, useEffect, useState } from 'react';
-
-import { SHEEP_LINES } from '@/data/sheepLines';
+import { useState, useCallback, useEffect } from 'react';
+import { getSheepLines } from '@/data/sheepLines';
+import { useGame } from '@/hooks/gameState';
 import { cn } from '@/lib/utils';
 
 const SWITCH_MS = 5000;
@@ -27,31 +27,33 @@ interface SheepSpeechProps {
   bubbleClassName?: string;
 }
 
-function pickNext(current: number) {
-  if (SHEEP_LINES.length < 2) return current;
-  let next = current;
-  while (next === current) {
-    next = Math.floor(Math.random() * SHEEP_LINES.length);
-  }
-  return next;
-}
-
 /**
  * 小羊话术状态：随机初始句 + 每 5s 自动切换 + 手动切换。
  * 供「小羊+气泡」一体组件与「独立气泡」组件复用。
  */
 export function useSheepLine() {
-  const [index, setIndex] = useState(() => Math.floor(Math.random() * SHEEP_LINES.length));
+  const { state } = useGame();
+  const lines = getSheepLines(state?.language);
+  const [index, setIndex] = useState(() => Math.floor(Math.random() * lines.length));
 
-  const next = useCallback(() => setIndex((i) => pickNext(i)), []);
+  const next = useCallback(() => {
+    setIndex((i) => {
+      if (lines.length < 2) return i;
+      let nextIndex = i;
+      while (nextIndex === i) {
+        nextIndex = Math.floor(Math.random() * lines.length);
+      }
+      return nextIndex;
+    });
+  }, [lines.length]);
 
   useEffect(() => {
     if (window.matchMedia?.('(prefers-reduced-motion: reduce)').matches) return;
-    const id = window.setInterval(() => setIndex((i) => pickNext(i)), SWITCH_MS);
+    const id = window.setInterval(next, SWITCH_MS);
     return () => window.clearInterval(id);
-  }, []);
+  }, [next]);
 
-  return { line: SHEEP_LINES[index], next };
+  return { line: lines[index % lines.length], next };
 }
 
 /**
@@ -82,7 +84,7 @@ export function SheepSpeech({ className = '', bubbleClassName = '' }: SheepSpeec
  */
 export default function SheepBubble({
   src,
-  alt = 'IP 小羊',
+  alt = 'Mascot Sheep',
   className = '',
   bubbleClassName = '-top-2',
   imgClassName = '',
@@ -90,11 +92,9 @@ export default function SheepBubble({
   const { line, next } = useSheepLine();
 
   return (
-    // 外层容器保持透明：不添加任何 bg-white / 背景色，避免遮挡页面全局背景。
     <div className={cn('relative bg-transparent', className)}>
       <div
         className={cn(
-          // 仅保留气泡框本体的圆角与粉色背景；气泡本身不拦截点击。
           'pointer-events-none absolute right-0 z-10 max-w-[85%] rounded-2xl border-2 border-pink-300 bg-pink-100/95 px-3 py-2 text-[13px] font-bold leading-snug text-pink-950 shadow-md sm:text-sm',
           bubbleClassName
         )}
@@ -106,7 +106,7 @@ export default function SheepBubble({
         type="button"
         onClick={next}
         className="block h-full w-full cursor-pointer border-0 bg-transparent p-0"
-        title="点击小羊换一句"
+        title="Click mascot for another tip"
       >
         <img src={src} alt={alt} className={cn('w-full select-none', imgClassName)} draggable={false} />
       </button>

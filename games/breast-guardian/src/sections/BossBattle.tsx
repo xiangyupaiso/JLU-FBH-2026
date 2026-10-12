@@ -2,8 +2,8 @@ import { useState, useEffect } from 'react';
 import { useGame } from '@/hooks/gameState';
 import { BOSSES_BY_PLAYTHROUGH } from '@/data/bossProgression';
 import { Button } from '@/components/ui/button';
-import { ALL_SKILLS } from '@/data/skills';
-import { BOSSES } from '@/types';
+import { getSkillById } from '@/data/skills';
+import { getBossData } from '@/types';
 import type { BossType, Skill } from '@/types';
 import { getBossAssetPath, getCharacterAssetPath, getSceneAssetPath } from '@/data/assets';
 
@@ -16,9 +16,9 @@ interface FeedbackState {
   type: FeedbackType;
 }
 
-// 宝可梦风格战斗页面 - 完整修复版
 export default function BossBattle() {
-  const { state, dispatch, useSkillInBattle, defeatBoss } = useGame();
+  const { state, dispatch, useSkillInBattle, defeatBoss, openExitMenu } = useGame();
+  const isZh = state.language === 'zh';
   const [boss] = useState<BossType>(state.currentBoss!);
   const [showResult, setShowResult] = useState(false);
   const [battleResult, setBattleResult] = useState<'win' | 'lose' | null>(null);
@@ -29,14 +29,14 @@ export default function BossBattle() {
   const [gameStarted, setGameStarted] = useState(false);
   const [hasDefeatedBoss, setHasDefeatedBoss] = useState(false);
 
-  const bossData = BOSSES[boss];
+  const bossData = getBossData(boss, state.language);
   const bossSkills = bossData.skills;
   const guardianState = state.currentPerspective === 'child' ? '懂事' : '坚定';
   const activeBosses = BOSSES_BY_PLAYTHROUGH[state.playthrough];
   const defeatedCount = state.defeatedBosses.filter((item) => activeBosses.includes(item)).length;
 
-  // 获取玩家当前装备的技能
-  const playerSkills = state.equippedSkills.map(id => ALL_SKILLS[id]).filter(Boolean);
+  // 获取玩家当前装备的技能（按当前语言）
+  const playerSkills = state.equippedSkills.map(id => getSkillById(id, state.language)).filter(Boolean) as Skill[];
 
   // 获取负面技能来源的记忆点
   const getNegativeSkillSource = (skillId: string): number | undefined => {
@@ -47,18 +47,19 @@ export default function BossBattle() {
   useEffect(() => {
     if (!gameStarted) {
       setGameStarted(true);
-      // BOSS先手攻击
       setTimeout(() => {
         const skill = bossSkills[0];
         setFeedback({
           show: true,
-          text: `${bossData.name} 使用了 ${skill?.name}！\n${skill?.feedback}`,
+          text: isZh
+            ? `${bossData.name}释放了【${skill?.name}】！\n${skill?.feedback}`
+            : `${bossData.name} used ${skill?.name}!\n${skill?.feedback}`,
           type: 'boss'
         });
         setIsPlayerTurn(false);
       }, 500);
     }
-  }, [gameStarted, bossData, bossSkills]);
+  }, [gameStarted, bossData, bossSkills, isZh]);
 
   // 点击继续反馈
   const handleContinueFeedback = () => {
@@ -67,16 +68,11 @@ export default function BossBattle() {
     setFeedback({ show: false, text: '', type: null });
     
     if (feedback.type === 'boss') {
-      // BOSS攻击后，切换到玩家回合
       setIsPlayerTurn(true);
     } else if (feedback.type === 'player') {
-      // 玩家攻击后，检查战斗结果
-      // 必须使用全部4个技能才能击败BOSS
       const usedSkillCount = (state.battleState?.usedSkills.length || 0);
       
-      // 需要4个技能全部使用才能击败BOSS
       if (usedSkillCount >= 4) {
-        // 击败BOSS - 只调用一次defeatBoss
         if (!hasDefeatedBoss) {
           setHasDefeatedBoss(true);
           defeatBoss(boss);
@@ -84,29 +80,27 @@ export default function BossBattle() {
         setBattleResult('win');
         setShowResult(true);
       } else {
-        // BOSS回合 - 继续战斗
         const nextRound = currentRound + 1;
         setCurrentRound(nextRound);
         setTimeout(() => {
           const skill = bossSkills[nextRound];
           setFeedback({
             show: true,
-            text: `${bossData.name} 使用了 ${skill?.name}！\n${skill?.feedback}`,
+            text: isZh
+              ? `${bossData.name}释放了【${skill?.name}】！\n${skill?.feedback}`
+              : `${bossData.name} used ${skill?.name}!\n${skill?.feedback}`,
             type: 'boss'
           });
           setIsPlayerTurn(false);
         }, 300);
       }
     } else if (feedback.type === 'negative') {
-      // 负面技能，显示"继续"按钮让玩家主动跳转到BE结局
       setShowNegativeContinue(true);
     }
   };
 
-  // 负面技能后点击继续跳转到BE结局
   const handleNegativeContinue = () => {
     setShowNegativeContinue(false);
-    // 直接跳转到BE结局页面
     dispatch({ type: 'SET_PHASE', payload: 'beEnding' });
   };
 
@@ -116,20 +110,21 @@ export default function BossBattle() {
     setIsPlayerTurn(false);
 
     if (skill.type === 'negative') {
-      // 使用负面技能 - 显示深红色反馈
       setFeedback({
         show: true,
-        text: `你使用了负面技能【${skill.name}】！\n${skill.effect}\n\n眼前一黑，你感到一阵眩晕...`,
+        text: isZh
+          ? `使用了负面技能【${skill.name}】！\n${skill.effect}\n\n眼前一黑，强烈的眩晕感袭来...`
+          : `You used the negative skill [${skill.name}]!\n${skill.effect}\n\nYour vision darkens as dizziness overwhelms you...`,
         type: 'negative'
       });
-      // 获取负面技能来源的记忆点
       const negativeSkillSource = getNegativeSkillSource(skill.id);
       useSkillInBattle(skill.id, true, negativeSkillSource);
     } else {
-      // 使用正向技能 - 显示蓝色反馈
       setFeedback({
         show: true,
-        text: `你使用了【${skill.name}】！\n${skill.effect}\n\n${skill.description}`,
+        text: isZh
+          ? `使用了技能【${skill.name}】！\n${skill.effect}\n\n${skill.description}`
+          : `You cast [${skill.name}]!\n${skill.effect}\n\n${skill.description}`,
         type: 'player'
       });
       useSkillInBattle(skill.id, false);
@@ -137,38 +132,33 @@ export default function BossBattle() {
   };
 
   const handleGiveUp = () => {
-    if (confirm('是否放弃战斗？')) {
+    const confirmMsg = isZh
+      ? '确定要放弃本次战斗吗？'
+      : 'Are you sure you want to surrender and withdraw from battle?';
+    if (confirm(confirmMsg)) {
       dispatch({ type: 'SET_PHASE', payload: 'bossEntry' });
     }
   };
 
   const handleEndBattle = () => {
     if (battleResult === 'win') {
-      // 检查是否击败全部BOSS才能通关
-      // defeatedBosses已经包含了当前击败的BOSS（在handleContinueFeedback中已调用）
       if (defeatedCount >= activeBosses.length) {
-        // 通关当前周目
         if (state.playthrough === 1) {
-          // 一周目通关，进入HE结局
           dispatch({ type: 'SET_PHASE', payload: 'heEnding' });
         } else {
-          // 二周目通关，标记当前线完整通关并进入特殊结局
           dispatch({ type: 'COMPLETE_PERSPECTIVE' });
           dispatch({ type: 'SET_PHASE', payload: 'specialEnding' });
         }
       } else {
-        // 还没击败全部BOSS，返回BOSS入口继续挑战
         dispatch({ type: 'SET_PHASE', payload: 'bossEntry' });
       }
     }
   };
 
-  // 计算BOSS血量百分比 - 4个技能全部用完才归零
   const bossHealthPercent = state.battleState 
     ? Math.max(0, 100 - state.battleState.usedSkills.length * 25)
     : 100;
 
-  // 获取反馈框样式
   const getFeedbackStyle = () => {
     switch (feedback.type) {
       case 'player':
@@ -200,15 +190,23 @@ export default function BossBattle() {
         <div className="fixed inset-0 bg-black/90 z-[60] flex items-center justify-center">
           <div className="text-center max-w-md p-8">
             <div className="text-6xl mb-4 animate-pulse">😵</div>
-            <p className="text-red-500 text-2xl mb-2">眼前一黑...</p>
-            <p className="text-red-400 text-lg mb-8">你感到一阵眩晕</p>
-            <p className="text-gray-400 mb-8">你使用了负面技能，黑雾强化了BOSS，乳腺主城受到了严重损伤...</p>
+            <p className="text-red-500 text-2xl mb-2">
+              {isZh ? '眼前一黑...' : 'Vision fading...'}
+            </p>
+            <p className="text-red-400 text-lg mb-8">
+              {isZh ? '强烈的眩晕感袭来' : 'Dizziness overwhelms you'}
+            </p>
+            <p className="text-gray-400 mb-8">
+              {isZh
+                ? '你使用了不健康的生活习惯技能，黑雾强化了BOSS，对乳腺主城造成了严重伤害...'
+                : 'You triggered a negative habit skill! The dark mist empowered the BOSS, inflicting severe damage on the mammary citadel...'}
+            </p>
             <Button
               size="lg"
               className="bg-red-600 hover:bg-red-700 text-white px-8 py-4 text-lg"
               onClick={handleNegativeContinue}
             >
-              继续
+              {isZh ? '继续' : 'Continue'}
             </Button>
           </div>
         </div>
@@ -216,8 +214,17 @@ export default function BossBattle() {
 
       {/* 战斗区域 */}
       <div className="relative z-10 h-screen flex flex-col">
-        {/* 上方：BOSS信息 */}
-        <div className="flex justify-end p-4">
+        {/* 上方：退出/撤退按钮与BOSS信息 */}
+        <div className="flex justify-between items-start p-4">
+          <button
+            type="button"
+            onClick={openExitMenu}
+            className="flex items-center gap-1.5 rounded-none border-2 border-red-800 bg-black/70 px-3 py-1.5 text-xs font-bold text-red-200 shadow-[0_2px_0_#7f1d1d] transition-all hover:bg-red-950 active:translate-y-0.5 active:shadow-none"
+            title={isZh ? '撤退 / 退出' : 'Withdraw / Exit'}
+          >
+            <span className="text-red-400 font-black">✕</span>
+            <span>{isZh ? '撤退 / 退出' : 'Withdraw / Exit'}</span>
+          </button>
           <div className="bg-black/50 rounded-xl p-4 max-w-xs">
             <div className="flex items-center gap-3 mb-2">
               <div className="w-16 h-16 bg-gradient-to-br from-red-600 to-purple-800 rounded-full flex items-center justify-center animate-pulse overflow-hidden">
@@ -255,13 +262,13 @@ export default function BossBattle() {
               <div className="w-16 h-16 bg-gradient-to-br from-blue-400 to-cyan-400 rounded-full flex items-center justify-center overflow-hidden">
                 <img
                   src={getCharacterAssetPath('主角', guardianState, state.currentPerspective || 'adult')}
-                  alt="守护者"
+                  alt="Guardian"
                   className="h-full w-full object-cover"
                 />
               </div>
               <div>
-                <h3 className="text-blue-400 font-bold">守护者</h3>
-                <p className="text-xs text-gray-400">健康状态</p>
+                <h3 className="text-blue-400 font-bold">{isZh ? '守护者' : 'Guardian'}</h3>
+                <p className="text-xs text-gray-400">{isZh ? '健康状态' : 'Vitality Status'}</p>
               </div>
             </div>
           </div>
@@ -269,13 +276,11 @@ export default function BossBattle() {
 
         {/* 下方：全屏宽度反馈对话框或技能选择区 */}
         {feedback.show ? (
-          /* 全屏宽度反馈对话框 */
           <div 
             className={`mx-4 mb-4 rounded-2xl p-6 border-2 ${getFeedbackStyle()} backdrop-blur-sm animate-in slide-in-from-bottom duration-300`}
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex items-start gap-4">
-              {/* 图标 */}
               <div className={`w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0 ${
                 feedback.type === 'player' ? 'bg-blue-500' :
                 feedback.type === 'boss' ? 'bg-red-500' :
@@ -287,16 +292,17 @@ export default function BossBattle() {
                 </span>
               </div>
               
-              {/* 反馈内容 */}
               <div className="flex-1">
                 <p className={`text-sm font-medium mb-2 ${
                   feedback.type === 'player' ? 'text-blue-300' :
                   feedback.type === 'boss' ? 'text-red-300' :
                   'text-red-400'
                 }`}>
-                  {feedback.type === 'player' ? '我方行动' :
-                   feedback.type === 'boss' ? 'BOSS攻击' :
-                   '危险！使用了负面技能'}
+                  {feedback.type === 'player'
+                    ? (isZh ? '我方行动' : 'Player Action')
+                    : feedback.type === 'boss'
+                    ? (isZh ? 'BOSS攻击' : 'BOSS Attack')
+                    : (isZh ? '危险！使用了负面技能' : 'Danger! Negative Habit Triggered')}
                 </p>
                 <p className="text-white text-lg leading-relaxed whitespace-pre-line">
                   {feedback.text}
@@ -304,17 +310,15 @@ export default function BossBattle() {
               </div>
             </div>
             
-            {/* 点击继续提示 - 负面技能时不显示，因为有专门的继续按钮 */}
             {feedback.type !== 'negative' && (
               <div className="mt-6 text-center">
                 <p className="text-white/60 text-sm animate-pulse">
-                  点击任意位置继续
+                  {isZh ? '点击任意位置继续' : 'Click anywhere to continue'}
                 </p>
               </div>
             )}
           </div>
         ) : (
-          /* 技能选择区 */
           <div className="bg-black/60 rounded-t-2xl p-4">
             {/* 回合提示 */}
             <div className="text-center mb-3">
@@ -323,7 +327,9 @@ export default function BossBattle() {
                   ? 'bg-blue-500/30 text-blue-300' 
                   : 'bg-red-500/30 text-red-300'
               }`}>
-                {isPlayerTurn ? '◆ 你的回合' : '◆ BOSS回合'}
+                {isPlayerTurn
+                  ? (isZh ? '◆ 你的回合' : '◆ Your Turn')
+                  : (isZh ? '◆ BOSS回合' : '◆ BOSS Turn')}
               </span>
             </div>
             
@@ -369,7 +375,7 @@ export default function BossBattle() {
                 onClick={handleGiveUp}
                 disabled={battleResult !== null}
               >
-                放弃战斗
+                {isZh ? '放弃战斗' : 'Withdraw'}
               </Button>
             </div>
           </div>
@@ -381,20 +387,24 @@ export default function BossBattle() {
         <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50">
           <div className="bg-gray-900 rounded-2xl p-8 max-w-md text-center">
             <div className="text-6xl mb-4">🎉</div>
-            <h3 className="text-2xl font-bold text-green-400 mb-2">战斗胜利！</h3>
+            <h3 className="text-2xl font-bold text-green-400 mb-2">
+              {isZh ? '战斗胜利！' : 'Victory!'}
+            </h3>
             <p className="text-gray-300 mb-4">
-              你成功驱散了{bossData.name}的黑雾！
-              <br />
-              乳腺主城的细胞们安全了。
+              {isZh
+                ? `你成功驱散了${bossData.name}的黑雾！\n乳腺主城的细胞们安全了。`
+                : `You successfully dispelled ${bossData.name}'s dark mist!\nThe cells in the mammary citadel are safe now.`}
             </p>
             <p className="text-gray-400 text-sm mb-4">
-              已击败BOSS: {defeatedCount}/{activeBosses.length}
+              {isZh
+                ? `已击败BOSS: ${defeatedCount}/${activeBosses.length}`
+                : `BOSSes Defeated: ${defeatedCount}/${activeBosses.length}`}
             </p>
             <Button
               className="bg-green-500 hover:bg-green-600"
               onClick={handleEndBattle}
             >
-              继续冒险
+              {isZh ? '继续冒险' : 'Continue Adventure'}
             </Button>
           </div>
         </div>

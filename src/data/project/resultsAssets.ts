@@ -656,6 +656,6 @@ export type ResultsAssetKey = keyof typeof resultsAssets;
 
 /** Registered image URL: iGEM CDN once uploaded, bundled preview until then. */
 export const getResultsImage = (key: ResultsAssetKey): string => {
-  const entry = (resultsAssets as Record<string, any>)[key];
+  const entry: ResultsAssetEntry = resultsAssets[key];
   return entry?.uploadUrl || entry?.localSrc || "";
 };

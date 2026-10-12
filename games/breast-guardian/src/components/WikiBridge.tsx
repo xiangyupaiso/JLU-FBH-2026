@@ -13,7 +13,9 @@ function notifyParent(type: string, detail: Record<string, unknown> = {}) {
 }
 
 export default function WikiBridge() {
-  const { state } = useGame();
+  const { state, openExitMenu, closeExitMenu } = useGame();
+  const stateRef = useRef(state);
+  stateRef.current = state;
   const reportedPhaseRef = useRef<string | null>(null);
 
   useEffect(() => {
@@ -22,12 +24,20 @@ export default function WikiBridge() {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key !== 'Escape') return;
       event.preventDefault();
-      notifyParent('breast-guardian:close');
+
+      const currentState = stateRef.current;
+      if (currentState.isExitMenuOpen) {
+        closeExitMenu();
+      } else if (currentState.currentPhase !== 'mainMenu') {
+        openExitMenu();
+      } else {
+        notifyParent('breast-guardian:close');
+      }
     };
 
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, []);
+  }, [openExitMenu, closeExitMenu]);
 
   useEffect(() => {
     if (!['beEnding', 'heEnding', 'specialEnding'].includes(state.currentPhase)) {

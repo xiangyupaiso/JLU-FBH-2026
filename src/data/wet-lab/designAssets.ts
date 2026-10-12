@@ -162,7 +162,7 @@ export type DesignImageKey = {
 
 /** Registered image URL: iGEM CDN once uploaded, bundled preview until then. */
 export const getDesignImage = (key: DesignImageKey): string => {
-  const entry = (designAssets as Record<string, any>)[key];
+  const entry: DesignAssetEntry = designAssets[key];
   return entry?.uploadUrl || entry?.localSrc || "";
 };
 
@@ -171,7 +171,7 @@ export const getDesignImage = (key: DesignImageKey): string => {
  * report works identically in development and in the published bundle.
  */
 export const getDesignDocument = (key: DesignAssetKey): string => {
-  const entry = (designAssets as Record<string, any>)[key];
+  const entry: DesignAssetEntry = designAssets[key];
   return (
     entry?.uploadUrl ||
     `${import.meta.env.BASE_URL}${(entry?.localSourcePath || "").replace(/^public\//, "")}`

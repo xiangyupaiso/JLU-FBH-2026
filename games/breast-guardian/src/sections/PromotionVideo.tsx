@@ -4,19 +4,20 @@ import { SkipForward } from 'lucide-react';
 import { getSceneAssetPath, getCharacterAssetPath } from '@/data/assets';
 import { StoryControlBar, StoryLogDrawer, useStoryPlayback } from '@/components/storyControls';
 
-// promotion 场景类型定义
+// Promotion scene type definition
 interface PromoScene {
-  bg?: string; // 场景切换（继承上一场景）
+  bg?: string; // Scene switch (inherits previous if omitted)
   speaker: string;
   text: string;
-  state?: string; // 派蒙立绘状态（继承上一状态）
+  state?: string; // Paimon portrait mood (inherits previous if omitted)
 }
 
-// 三阴性乳腺癌工程研发联动剧情 - GALGAME 模式
+// Triple-negative breast cancer synthetic biology R&D narrative - Visual Novel mode
 export default function PromotionVideo() {
-  const { dispatch } = useGame();
+  const { state, dispatch } = useGame();
+  const isZh = state.language === 'zh';
 
-  const scenes: PromoScene[] = [
+  const scenesZh: PromoScene[] = [
     { bg: '碎片化记忆中枢', speaker: '旁白', text: '熟悉的神经元光晕在四周缓缓漂浮，记忆的余温还未完全散去。' },
     { speaker: '派蒙', state: '认真', text: '你刚刚走完了这一段人生旅程，完成了属于这个阶段的守护。' },
     { speaker: '派蒙', state: '温柔', text: '其实，关于乳腺健康的考验，散落在人生的每一个时期。' },
@@ -44,12 +45,41 @@ export default function PromotionVideo() {
     { speaker: '派蒙', text: '也许下一次，我们还会在守护的旅途中再见。' }
   ];
 
-  // 剧情播放引擎：打字机 / AUTO / SKIP / HIDE / LOG（最后一句停留，由结算浮层接管）
+  const scenesEn: PromoScene[] = [
+    { bg: '碎片化记忆中枢', speaker: 'Narrator', text: 'Familiar neural halos drift gently around you; the lingering warmth of memories has yet to fully dissipate.' },
+    { speaker: 'Paimon', state: '认真', text: 'You have just walked this passage of life, fulfilling the guardianship that belongs to this chapter.' },
+    { speaker: 'Paimon', state: '温柔', text: 'In truth, challenges to breast health are scattered across every phase of life.' },
+    { speaker: 'Paimon', text: 'Concern for family in childhood, mindful self-care in adulthood, courage facing illness in elderhood... each is an essential part of guardianship.' },
+    { speaker: 'Paimon', text: 'Right now, your memories resonate softly with the other two phases of life.' },
+    { speaker: 'Paimon', text: 'And all present acts of care ultimately point in one unified direction: toward the future, and greater therapeutic possibilities.' },
+    { speaker: 'Paimon', text: 'Look! These shimmering lights are fragments of future memories resonating with this very moment.' },
+    { speaker: 'Paimon', text: 'Connected together, they trace the precise path researchers are charting to solve triple-negative breast cancer.' },
+    { bg: '生信筛选研究像素背景图', speaker: 'Researcher A', text: 'First, through extensive literature mining and bioinformatics screening, we identified multiple highly expressed, tumor-specific antigenic epitopes on the surface of triple-negative breast cancer cells.' },
+    { speaker: 'Researcher A', text: 'Subsequent bioinformatics validation confirmed that these antigens can be efficiently recognized, processed, and presented by host immune cells, serving as key breakthroughs for targeted immunotherapy.' },
+    { bg: '环状 RNA 载体像素背景图', speaker: 'Researcher B', text: 'Having identified targets, we required a stable and reliable delivery vehicle. For this, we chose circular RNA (circRNA) as an innovative platform.' },
+    { speaker: 'Researcher B', text: 'Departing from conventional single-target constructs, we engineered a plug-and-play modular multi-epitope platform capable of co-delivering multiple antigens simultaneously.' },
+    { bg: '免疫通路像素背景图', speaker: 'Researcher C', text: 'Unlike linear mRNA, circular RNA possesses a covalently closed loop with superior structural stability, enabling sustained expression of tumor antigens in vivo.' },
+    { speaker: 'Researcher C', text: 'Sustained antigen expression robustly activates dendritic cells, which in turn prime cytotoxic CD8+ T cells to trigger potent antitumor immune responses.' },
+    { bg: '多癌种拓展平台像素背景图', speaker: 'Researcher D', text: 'The value of this plug-and-play modular platform extends far beyond triple-negative breast cancer.' },
+    { speaker: 'Researcher D', text: 'By simply interchanging target cassettes, we can formulate tailored personalized vaccines against diverse solid tumors, helping patients prevent recurrence and reclaim renewed hope in life.' },
+    { bg: '激活的碎片化记忆中枢', speaker: 'Paimon', state: '雀跃', text: 'Wow! The gears of synthetic engineering have begun turning!' },
+    { speaker: 'Paimon', state: '认真', text: 'From target screening and vector construction to immune mechanism validation and broad-spectrum platform expansion, a complete translational engineering cycle has taken shape!' },
+    { speaker: 'Paimon', state: '温柔', text: 'Today, you safeguard your health in the present.' },
+    { speaker: 'Paimon', text: 'In the future, we aspire to safeguard every patient, granting them the chance to embrace life anew.' },
+    { speaker: 'Paimon', state: '期待', text: 'Guardianship always begins with understanding.' },
+    { speaker: 'Paimon', text: 'If you would like, please share your thoughts by filling out the feedback survey at the end.' },
+    { speaker: 'Paimon', text: 'Every insight you provide makes this mission of guardianship more complete.' },
+    { speaker: 'Paimon', state: '欣慰', text: 'Click "Return to Main Menu" to return to the beginning.' },
+    { speaker: 'Paimon', text: 'Perhaps on the next leg of our guardian journey, we shall meet again.' }
+  ];
+
+  const scenes = isZh ? scenesZh : scenesEn;
+
+  // Story playback engine
   const pb = useStoryPlayback(scenes, () => {});
   const currentScene = pb.current;
   const isLastScene = pb.isLast;
 
-  // 向后扫描：当前背景（继承）
   const getCurrentBg = (idx: number): string => {
     let bg = '碎片化记忆中枢';
     for (let i = 0; i <= idx; i++) {
@@ -58,7 +88,6 @@ export default function PromotionVideo() {
     return bg;
   };
 
-  // 向后扫描：当前派蒙立绘状态（继承）
   const getCurrentPaimonState = (idx: number): string => {
     let st = '认真';
     for (let i = 0; i <= idx; i++) {
@@ -69,18 +98,17 @@ export default function PromotionVideo() {
 
   const bgPath = getSceneAssetPath(getCurrentBg(pb.index));
   const paimonPath = getCharacterAssetPath('派蒙', getCurrentPaimonState(pb.index));
-  const showPaimon = currentScene?.speaker === '派蒙';
+  const showPaimon = currentScene?.speaker === 'Paimon' || currentScene?.speaker === '派蒙';
 
   const handleSkip = () => {
     dispatch({ type: 'SET_PHASE', payload: 'endingPage' });
   };
 
-  // 研究员无独立立绘，复用 medical 组白大褂立绘做头像
   const getSpeakerAvatar = (speaker: string) => {
-    if (speaker === '研究员A') return getCharacterAssetPath('社区医生', '专业');
-    if (speaker === '研究员B') return getCharacterAssetPath('药店店员', '友善');
-    if (speaker === '研究员C') return getCharacterAssetPath('乳腺科医生（专家）', '专业');
-    if (speaker === '研究员D') return getCharacterAssetPath('营养师', '专业');
+    if (speaker === 'Researcher A' || speaker === '研究员A') return getCharacterAssetPath('社区医生', '专业');
+    if (speaker === 'Researcher B' || speaker === '研究员B') return getCharacterAssetPath('药店店员', '友善');
+    if (speaker === 'Researcher C' || speaker === '研究员C') return getCharacterAssetPath('乳腺科医生（专家）', '专业');
+    if (speaker === 'Researcher D' || speaker === '研究员D') return getCharacterAssetPath('营养师', '专业');
     return undefined;
   };
 
@@ -89,30 +117,35 @@ export default function PromotionVideo() {
       className="min-h-screen bg-gradient-to-b from-pink-900/80 to-pink-950 relative overflow-hidden"
       onClick={pb.handleScreenClick}
     >
-      {/* 背景场景 */}
+      {/* Background image */}
       {bgPath && (
         <img src={bgPath} alt="" className="absolute inset-0 h-full w-full object-cover" />
       )}
-      {/* 上下压暗蒙层：保证顶部标题与底部对话框可读 */}
       <div className="absolute inset-0 bg-gradient-to-b from-black/45 via-pink-950/10 to-black/35" />
 
-      {/* 派蒙立绘（半身像，右侧站立、下缘藏入对话框后） */}
+      {/* Paimon sprite */}
       {showPaimon && paimonPath && (
         <img
           src={paimonPath}
-          alt="派蒙"
+          alt="Paimon"
           className="absolute bottom-24 right-2 z-10 h-[50%] max-h-[420px] object-contain drop-shadow-2xl md:right-6"
         />
       )}
 
-      {/* 标题区域 */}
+      {/* Header title */}
       <div className="absolute top-8 left-0 right-0 text-center z-10">
         <div className="text-4xl mb-2 drop-shadow-md">🔬</div>
-        <h1 className="text-2xl font-bold text-white mb-1 drop-shadow-[0_2px_6px_rgba(0,0,0,0.8)]">未来 · 治疗的可能</h1>
-        <p className="text-white/80 text-sm drop-shadow-[0_1px_4px_rgba(0,0,0,0.8)]">三阴性乳腺癌工程研发联动剧情</p>
+        <h1 className="text-2xl font-bold text-white mb-1 drop-shadow-[0_2px_6px_rgba(0,0,0,0.8)]">
+          {isZh ? '向未来 · 探寻更多治疗可能' : 'The Future · Therapeutic Possibilities'}
+        </h1>
+        <p className="text-white/80 text-sm drop-shadow-[0_1px_4px_rgba(0,0,0,0.8)]">
+          {isZh
+            ? '三阴性乳腺癌合成生物学工程研发联动'
+            : 'Triple-Negative Breast Cancer Synthetic Biology R&D Narrative'}
+        </p>
       </div>
 
-      {/* 复古像素快捷控制栏：跳过科普 / 回退 / AUTO / SKIP / HIDE / LOG */}
+      {/* Retro Pixel Controls */}
       <StoryControlBar
         className={pb.hiddenUiClass}
         extra={
@@ -121,7 +154,7 @@ export default function PromotionVideo() {
             onClick={(e) => { e.stopPropagation(); handleSkip(); }}
           >
             <SkipForward className="h-3.5 w-3.5" />
-            跳过科普
+            {isZh ? '跳过宣讲' : 'Skip Epilogue'}
           </button>
         }
         canBack={pb.index > 0}
@@ -133,15 +166,15 @@ export default function PromotionVideo() {
         onShowLog={() => pb.setShowLog(true)}
       />
 
-      {/* 对话框 - GALGAME 经典布局（打字机渲染） */}
+      {/* Dialog box */}
       <div className={`absolute bottom-16 left-4 right-4 z-20 ${pb.hiddenUiClass}`}>
         <div className="bg-black/60 backdrop-blur-sm rounded-xl p-4 border border-white/10">
-          {/* 角色名和头像 */}
+          {/* Speaker and avatar */}
           {currentScene?.speaker && (
             <div className="flex items-center gap-2 mb-2">
               <div className="w-10 h-10 rounded-full overflow-hidden flex items-center justify-center text-lg bg-pink-400/30">
-                {currentScene.speaker === '派蒙' && paimonPath ? (
-                  <img src={paimonPath} alt="派蒙" className="h-full w-full object-cover" />
+                {(currentScene.speaker === 'Paimon' || currentScene.speaker === '派蒙') && paimonPath ? (
+                  <img src={paimonPath} alt="Paimon" className="h-full w-full object-cover" />
                 ) : getSpeakerAvatar(currentScene.speaker) ? (
                   <img src={getSpeakerAvatar(currentScene.speaker)!} alt={currentScene.speaker} className="h-full w-full object-cover" />
                 ) : (
@@ -152,29 +185,31 @@ export default function PromotionVideo() {
             </div>
           )}
 
-          {/* 对话内容 */}
+          {/* Dialog text */}
           <p className={`text-white text-lg leading-relaxed ${
-            currentScene?.speaker === '旁白' ? 'text-gray-300' : ''
+            currentScene?.speaker === 'Narrator' || currentScene?.speaker === '旁白' ? 'text-gray-300' : ''
           }`}>
             {pb.displayed}
           </p>
 
-          {/* 进度指示器 */}
+          {/* Progress */}
           <div className="flex justify-between items-center mt-4 pt-3 border-t border-white/10">
             <span className="text-white/50 text-xs">
               {pb.index + 1} / {scenes.length}
             </span>
             {!isLastScene && (
-              <span className="text-white/50 text-xs animate-pulse">点击继续 →</span>
+              <span className="text-white/50 text-xs animate-pulse">
+                {isZh ? '点击继续 →' : 'Click to continue →'}
+              </span>
             )}
           </div>
         </div>
       </div>
 
-      {/* 历史台词抽屉 */}
+      {/* Story log drawer */}
       <StoryLogDrawer open={pb.showLog} onClose={() => pb.setShowLog(false)} entries={pb.log} />
 
-      {/* 剧情结束 - 进入结尾页 */}
+      {/* Completion Modal */}
       {isLastScene && (
         <div
           className="absolute inset-0 bg-black/70 flex items-center justify-center z-40"
@@ -182,9 +217,13 @@ export default function PromotionVideo() {
         >
           <div className="max-w-md w-full p-6 text-center">
             <div className="text-6xl mb-4">🔬</div>
-            <h2 className="text-2xl font-bold text-white mb-2">工程研发之旅结束</h2>
+            <h2 className="text-2xl font-bold text-white mb-2">
+              {isZh ? '工程研发宣讲体验完成' : 'Synthetic Engineering Journey Concluded'}
+            </h2>
             <p className="text-white/70 mb-6">
-              从靶点筛选到广谱平台，三阴性乳腺癌的治疗路径已在你眼前展开。
+              {isZh
+                ? '从靶点筛选到广谱平台拓展，三阴性乳腺癌的破局之路已展现在你面前。'
+                : 'From target screening to broad-spectrum platforms, the therapeutic trajectory for TNBC has unfolded before you.'}
             </p>
             <div className="space-y-3">
               <Button
@@ -192,7 +231,7 @@ export default function PromotionVideo() {
                 className="w-full bg-pink-500 hover:bg-pink-600 text-white"
                 onClick={handleSkip}
               >
-                进入结尾页
+                {isZh ? '前往最终尾页' : 'Proceed to Finale'}
               </Button>
             </div>
           </div>

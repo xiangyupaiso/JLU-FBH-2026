@@ -1,7 +1,8 @@
-import type { Skill } from '@/types';
+import type { Skill, Perspective, Language } from '@/types';
 
-// 初始4个技能
-export const INITIAL_SKILLS: Skill[] = [
+// ==================== 中文技能定义 ====================
+
+export const INITIAL_SKILLS_ZH: Skill[] = [
   {
     id: 'cellRepair',
     name: '细胞修复术',
@@ -36,8 +37,7 @@ export const INITIAL_SKILLS: Skill[] = [
   }
 ];
 
-// 幼年线技能（6个）
-export const CHILD_SKILLS: Record<number, { he: Skill; be: Skill }> = {
+export const CHILD_SKILLS_ZH: Record<number, { he: Skill; be: Skill }> = {
   1: {
     he: {
       id: 'accompanyCare',
@@ -100,8 +100,7 @@ export const CHILD_SKILLS: Record<number, { he: Skill; be: Skill }> = {
   }
 };
 
-// 青壮年线技能（6个）
-export const ADULT_SKILLS: Record<number, { he: Skill; be: Skill }> = {
+export const ADULT_SKILLS_ZH: Record<number, { he: Skill; be: Skill }> = {
   1: {
     he: {
       id: 'refuseAlcohol',
@@ -164,8 +163,7 @@ export const ADULT_SKILLS: Record<number, { he: Skill; be: Skill }> = {
   }
 };
 
-// 老年线技能（6个）
-export const ELDER_SKILLS: Record<number, { he: Skill; be: Skill }> = {
+export const ELDER_SKILLS_ZH: Record<number, { he: Skill; be: Skill }> = {
   1: {
     he: {
       id: 'timelyMedical',
@@ -228,48 +226,301 @@ export const ELDER_SKILLS: Record<number, { he: Skill; be: Skill }> = {
   }
 };
 
-// 获取所有技能
-export const ALL_SKILLS: Record<string, Skill> = {
-  // 初始技能
-  cellRepair: INITIAL_SKILLS[0],
-  hormoneBalance: INITIAL_SKILLS[1],
-  immuneBoost: INITIAL_SKILLS[2],
-  detox: INITIAL_SKILLS[3],
-  // 幼年线技能
-  ...Object.entries(CHILD_SKILLS).reduce((acc, [, val]) => ({
+export const ALL_SKILLS_ZH: Record<string, Skill> = {
+  cellRepair: INITIAL_SKILLS_ZH[0],
+  hormoneBalance: INITIAL_SKILLS_ZH[1],
+  immuneBoost: INITIAL_SKILLS_ZH[2],
+  detox: INITIAL_SKILLS_ZH[3],
+  ...Object.entries(CHILD_SKILLS_ZH).reduce((acc, [, val]) => ({
     ...acc,
     [val.he.id]: val.he,
     [val.be.id]: val.be
   }), {}),
-  // 青壮年线技能
-  ...Object.entries(ADULT_SKILLS).reduce((acc, [, val]) => ({
+  ...Object.entries(ADULT_SKILLS_ZH).reduce((acc, [, val]) => ({
     ...acc,
     [val.he.id]: val.he,
     [val.be.id]: val.be
   }), {}),
-  // 老年线技能
-  ...Object.entries(ELDER_SKILLS).reduce((acc, [, val]) => ({
+  ...Object.entries(ELDER_SKILLS_ZH).reduce((acc, [, val]) => ({
     ...acc,
     [val.he.id]: val.he,
     [val.be.id]: val.be
   }), {})
 };
 
-// 根据视角和记忆点获取技能
-export function getSkillsByMemory(perspective: 'child' | 'adult' | 'elder', memoryPoint: number): { he: Skill; be: Skill } {
-  switch (perspective) {
-    case 'child':
-      return CHILD_SKILLS[memoryPoint];
-    case 'adult':
-      return ADULT_SKILLS[memoryPoint];
-    case 'elder':
-      return ELDER_SKILLS[memoryPoint];
-    default:
-      return CHILD_SKILLS[1];
+// ==================== 英文技能定义 ====================
+
+export const INITIAL_SKILLS_EN: Skill[] = [
+  {
+    id: 'cellRepair',
+    name: 'Cellular Repair',
+    description: 'Repair damaged mammary epithelial cells and restore tissue integrity',
+    type: 'positive',
+    effect: 'Repairs mammary epithelial cellular damage',
+    icon: 'heal'
+  },
+  {
+    id: 'hormoneBalance',
+    name: 'Hormone Balance',
+    description: 'Regulate endocrine signaling and maintain estrogen homeostasis',
+    type: 'positive',
+    effect: 'Balances estrogen levels and stabilizes hormonal signals',
+    icon: 'balance'
+  },
+  {
+    id: 'immuneBoost',
+    name: 'Immune Fortification',
+    description: 'Strengthen the immune microenvironment and boost cellular resistance',
+    type: 'positive',
+    effect: 'Enhances immune cell activity and surveillance',
+    icon: 'shield'
+  },
+  {
+    id: 'detox',
+    name: 'Toxin Purge',
+    description: 'Clear metabolic toxins and cleanse the mammary microenvironment',
+    type: 'positive',
+    effect: 'Clears harmful metabolic toxins and reduces oxidative stress',
+    icon: 'cleanse'
   }
+];
+
+export const CHILD_SKILLS_EN: Record<number, { he: Skill; be: Skill }> = {
+  1: {
+    he: {
+      id: 'accompanyCare',
+      name: 'Loving Companionship',
+      description: "Stay gently by Mom's side and let her rest peacefully",
+      type: 'positive',
+      effect: "Relieves Mom's exhaustion and disperses BOSS dark mist",
+      icon: 'heart',
+      source: 'Childhood Memory 1: Clinging Demands'
+    },
+    be: {
+      id: 'willfulClingy',
+      name: 'Willful Clinging',
+      description: 'Stubbornly pestering Mom to stay awake past midnight',
+      type: 'negative',
+      effect: "Depletes Mom's physical stamina; BOSS dark mist intensifies",
+      icon: 'danger',
+      source: 'Childhood Memory 1: Clinging Demands'
+    }
+  },
+  2: {
+    he: {
+      id: 'reasonableSchedule',
+      name: 'Balanced Schedule',
+      description: "Manage study hours mindfully so Mom doesn't worry",
+      type: 'positive',
+      effect: "Brings Mom peace of mind; BOSS cannot draw near",
+      icon: 'clock',
+      source: 'Childhood Memory 2: Midnight Study'
+    },
+    be: {
+      id: 'stubbornStudy',
+      name: 'Stubborn Midnight Study',
+      description: 'Secretly studying late into the night, depriving Mom of rest',
+      type: 'negative',
+      effect: "Keeps Mom anxious and sleepless; BOSS dark mist spreads",
+      icon: 'danger',
+      source: 'Childhood Memory 2: Midnight Study'
+    }
+  },
+  3: {
+    he: {
+      id: 'warmComfort',
+      name: 'Heartfelt Solace',
+      description: "Comfort Mom's feelings and offer loving emotional reassurance",
+      type: 'positive',
+      effect: "Disperses Mom's inner sorrow; BOSS dissolves completely",
+      icon: 'sparkle',
+      source: 'Childhood Memory 3: Thoughtless Taunt'
+    },
+    be: {
+      id: 'ignorantMockery',
+      name: 'Thoughtless Ridicule',
+      description: 'Speaking hurtful, insensitive words that break your mother’s heart',
+      type: 'negative',
+      effect: "Grieves your mother deeply; BOSS awakens in full wrath",
+      icon: 'danger',
+      source: 'Childhood Memory 3: Thoughtless Taunt'
+    }
+  }
+};
+
+export const ADULT_SKILLS_EN: Record<number, { he: Skill; be: Skill }> = {
+  1: {
+    he: {
+      id: 'refuseAlcohol',
+      name: 'Alcohol Abstinence',
+      description: 'Decline alcoholic beverages to protect mammary health',
+      type: 'positive',
+      effect: 'Reduces hormonal disruption; BOSS cannot materialize',
+      icon: 'shield',
+      source: 'Adult Memory 1: Corporate Drinking'
+    },
+    be: {
+      id: 'forcedDrinking',
+      name: 'Compelled Drinking',
+      description: 'Reluctantly binge drinking for workplace expectations',
+      type: 'negative',
+      effect: 'Irritates mammary parenchyma; BOSS dark mist expands',
+      icon: 'danger',
+      source: 'Adult Memory 1: Corporate Drinking'
+    }
+  },
+  2: {
+    he: {
+      id: 'adequateSleep',
+      name: 'Restorative Sleep',
+      description: 'Maintain regular sleep cycles and stabilize endocrine rhythms',
+      type: 'positive',
+      effect: 'Rebalances hormone levels; BOSS weakens and fades away',
+      icon: 'moon',
+      source: 'Adult Memory 2: Project Crunch'
+    },
+    be: {
+      id: 'stayUpLate',
+      name: 'Exhaustive All-Nighters',
+      description: 'Working late through continuous sleepless nights for project deadlines',
+      type: 'negative',
+      effect: 'Triggers severe endocrine chaos; BOSS dark mist envelops the citadel',
+      icon: 'danger',
+      source: 'Adult Memory 2: Project Crunch'
+    }
+  },
+  3: {
+    he: {
+      id: 'rationalMedication',
+      name: 'Rational Health Choices',
+      description: 'Reject uncertified weight-loss pills and manage body fitness safely',
+      type: 'positive',
+      effect: 'Prevents hormonal surges; BOSS cannot sustain form',
+      icon: 'pill',
+      source: 'Adult Memory 3: Illicit Diet Pills'
+    },
+    be: {
+      id: 'abuseDrugs',
+      name: 'Medication Abuse',
+      description: 'Blindly consuming unverified counterfeit slimming pills',
+      type: 'negative',
+      effect: 'Induces estrogenic storm; BOSS awakens into a frenzy',
+      icon: 'danger',
+      source: 'Adult Memory 3: Illicit Diet Pills'
+    }
+  }
+};
+
+export const ELDER_SKILLS_EN: Record<number, { he: Skill; be: Skill }> = {
+  1: {
+    he: {
+      id: 'timelyMedical',
+      name: 'Prompt Consultation',
+      description: 'Consult physicians immediately upon finding abnormalities for early cure',
+      type: 'positive',
+      effect: 'Eliminates early lesions; BOSS is purged successfully',
+      icon: 'hospital',
+      source: 'Elder Memory 1: Concealed Illness'
+    },
+    be: {
+      id: 'hideIllness',
+      name: 'Concealing Illness',
+      description: 'Silently bearing symptoms alone without telling children',
+      type: 'negative',
+      effect: 'Aggravates pathology; BOSS awakens into full ferocity',
+      icon: 'danger',
+      source: 'Elder Memory 1: Concealed Illness'
+    }
+  },
+  2: {
+    he: {
+      id: 'regularCheckup',
+      name: 'Routine Screening',
+      description: 'Undergo periodic clinical breast exams to stop disease before onset',
+      type: 'positive',
+      effect: 'Prevents disease onset; BOSS is successfully repelled',
+      icon: 'clipboard',
+      source: 'Elder Memory 2: Skipped Checkups'
+    },
+    be: {
+      id: 'delayCheckup',
+      name: 'Neglecting Screenings',
+      description: 'Dismissing clinical checkups as unnecessary fuss',
+      type: 'negative',
+      effect: 'Misses golden window for early detection; BOSS dark mist spreads',
+      icon: 'danger',
+      source: 'Elder Memory 2: Skipped Checkups'
+    }
+  },
+  3: {
+    he: {
+      id: 'scientificTreatment',
+      name: 'Evidence-Based Care',
+      description: 'Trust accredited clinical professionals and adhere to standard regimens',
+      type: 'positive',
+      effect: 'Blocks disease progression; BOSS is eradicated',
+      icon: 'stethoscope',
+      source: 'Elder Memory 3: Folk Remedies'
+    },
+    be: {
+      id: 'folkRemedy',
+      name: 'Unverified Folk Remedies',
+      description: 'Putting faith in dubious folklore remedies, delaying standard treatment',
+      type: 'negative',
+      effect: 'Disease deteriorates rapidly; BOSS completely awakens',
+      icon: 'danger',
+      source: 'Elder Memory 3: Folk Remedies'
+    }
+  }
+};
+
+export const ALL_SKILLS_EN: Record<string, Skill> = {
+  cellRepair: INITIAL_SKILLS_EN[0],
+  hormoneBalance: INITIAL_SKILLS_EN[1],
+  immuneBoost: INITIAL_SKILLS_EN[2],
+  detox: INITIAL_SKILLS_EN[3],
+  ...Object.entries(CHILD_SKILLS_EN).reduce((acc, [, val]) => ({
+    ...acc,
+    [val.he.id]: val.he,
+    [val.be.id]: val.be
+  }), {}),
+  ...Object.entries(ADULT_SKILLS_EN).reduce((acc, [, val]) => ({
+    ...acc,
+    [val.he.id]: val.he,
+    [val.be.id]: val.be
+  }), {}),
+  ...Object.entries(ELDER_SKILLS_EN).reduce((acc, [, val]) => ({
+    ...acc,
+    [val.he.id]: val.he,
+    [val.be.id]: val.be
+  }), {})
+};
+
+// ==================== 默认兼容导出与查询辅助函数 ====================
+
+export const INITIAL_SKILLS = INITIAL_SKILLS_ZH;
+export const CHILD_SKILLS = CHILD_SKILLS_ZH;
+export const ADULT_SKILLS = ADULT_SKILLS_ZH;
+export const ELDER_SKILLS = ELDER_SKILLS_ZH;
+export const ALL_SKILLS = ALL_SKILLS_ZH;
+
+export function getAllSkills(lang: Language = 'zh'): Record<string, Skill> {
+  return lang === 'en' ? ALL_SKILLS_EN : ALL_SKILLS_ZH;
 }
 
-// 根据技能ID获取技能
-export function getSkillById(skillId: string): Skill | undefined {
-  return ALL_SKILLS[skillId];
+export function getSkillsByMemory(
+  perspective: Perspective,
+  memoryPoint: number,
+  lang: Language = 'zh'
+): { he: Skill; be: Skill } {
+  const store =
+    lang === 'en'
+      ? { child: CHILD_SKILLS_EN, adult: ADULT_SKILLS_EN, elder: ELDER_SKILLS_EN }
+      : { child: CHILD_SKILLS_ZH, adult: ADULT_SKILLS_ZH, elder: ELDER_SKILLS_ZH };
+
+  return store[perspective]?.[memoryPoint] ?? store.child[1];
+}
+
+export function getSkillById(skillId: string, lang: Language = 'zh'): Skill | undefined {
+  return (lang === 'en' ? ALL_SKILLS_EN : ALL_SKILLS_ZH)[skillId];
 }

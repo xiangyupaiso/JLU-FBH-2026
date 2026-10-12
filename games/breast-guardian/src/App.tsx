@@ -18,6 +18,7 @@ import PromotionVideo from '@/sections/PromotionVideo';
 import EndingPage from '@/sections/EndingPage';
 import AssetPreloader from '@/components/AssetPreloader';
 import WikiBridge from '@/components/WikiBridge';
+import ExitMenuModal from '@/components/ExitMenuModal';
 import './App.css';
 
 function GameContent() {
@@ -69,6 +70,7 @@ function App() {
       <WikiBridge />
       <AssetPreloader />
       <GameContent />
+      <ExitMenuModal />
     </GameProvider>
   );
 }

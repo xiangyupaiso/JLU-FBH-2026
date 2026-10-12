@@ -1,3 +1,4 @@
+import biorender from "../assets/partners/sponsor-biorender.webp";
 import grammarly from "../assets/partners/sponsor-grammarly.png";
 import charlesRiver from "../assets/partners/sponsor-charles-river-english.svg";
 import igem from "../assets/partners/sponsor-igem.png";
@@ -158,6 +159,10 @@ export const FOOTER_SPONSOR_ROWS: ReadonlyArray<
     {
       name: "Grammarly",
       marks: [{ src: grammarly, width: 290, alt: "Grammarly" }],
+    },
+    {
+      name: "BioRender",
+      marks: [{ src: biorender, width: 105, alt: "BioRender" }],
     },
     {
       name: "iGEM",

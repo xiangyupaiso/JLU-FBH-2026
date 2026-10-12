@@ -1734,17 +1734,24 @@ a.sust-sdg-pill:focus-visible {
    In general wiki routes, a colon in a section title causes a break with a
    smaller sub-title. On the Sustainability page (e.g. "SET: Addressing Core
    Challenges"), keep lead and sub on the exact same line as requested.
+   Scoped to the page root so it cannot reach other routes. The shared h2 is a
+   column flexbox, which forces its lines to block; plain flow lets them sit
+   inline.
    ========================================================================== */
 
-.wiki-section__heading h2 .wiki-heading-line {
+.wiki-page--sustainability .wiki-section__heading h2 {
+  display: block !important;
+}
+
+.wiki-page--sustainability .wiki-section__heading h2 .wiki-heading-line {
   display: inline !important;
 }
 
-.wiki-section__heading h2 .wiki-heading-line--lead {
+.wiki-page--sustainability .wiki-section__heading h2 .wiki-heading-line--lead {
   margin-right: 0.35em !important;
 }
 
-.wiki-section__heading h2 .wiki-heading-marker--sub {
+.wiki-page--sustainability .wiki-section__heading h2 .wiki-heading-marker--sub {
   font-size: clamp(21px, 2.2vw, 25px) !important;
   font-weight: 750 !important;
   line-height: inherit !important;

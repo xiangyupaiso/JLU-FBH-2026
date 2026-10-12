@@ -48,37 +48,40 @@ function guessRoute(choice: Choice): EndingType {
   if (choice.type === 'HE' || choice.type === 'BE') return choice.type;
   if (choice.route === 'HE' || choice.route === 'BE') return choice.route;
   const text = `${choice.result || ''}${choice.paimonDialogue || ''}`;
-  return text.includes('BE 主线') || text.includes('BOSS 彻底觉醒') || text.includes('任性') ? 'BE' : 'HE';
+  return text.includes('BE 主线') || text.includes('BE Mainline') || text.includes('BOSS 彻底觉醒') || text.includes('任性') || text.includes('Awakened') ? 'BE' : 'HE';
 }
 
 function isDirectiveLine(line: string) {
   const trimmed = line.trim();
   return (
     trimmed === '————' ||
-    /^旁白[：:].*屏幕右上角弹出/.test(trimmed) ||
+    trimmed === '----' ||
+    /^(?:旁白|Narrator)[：:].*(?:跳过科普|Skip Science|appears|button)/i.test(trimmed) ||
     /^【(?:场景切换|立绘|特殊|剧情跳转|剧情汇流)：/.test(trimmed) ||
     /^【脚本结束】$/.test(trimmed) ||
+    /^\[End of Script\]$/i.test(trimmed) ||
     /^(?:开场|第[一二三四五六七八九十]+幕|主线\s*\d+|主线剧情|结局\s*\d+|HE 主线|BE 主线|HE 结局|BE 结局|拒酒周旋主线|妥协饮酒主线|合理下班主线|熬夜透支主线|科学控药主线|滥用药物主线|及时就医主线|隐瞒拖延主线|按时体检主线|拖延体检主线|科学治疗主线|偏方延误主线)(?:（.*）)?(?:[：:].*)?$/.test(trimmed) ||
-    /^[^：:]{1,32}结局(?:对应版)?(?:（.*）)?(?:[：:].*)?$/.test(trimmed) ||
-    /^分支\s*\d+[：:]/.test(trimmed) ||
-    /^互动\s*\d+[：:]/.test(trimmed) ||
-    /^选\s*\d+[：:]/.test(trimmed) ||
-    /^选项\s*[A-Za-z0-9]+[：:]/.test(trimmed)
+    /^(?:Opening|Act\s+[IVX\d]+|Main Story\s*\d*|Mainline\s*\d*|HE Mainline|BE Mainline|HE Ending|BE Ending|Ending\s*\d*)(?:（.*）)?(?:[：:].*)?$/i.test(trimmed) ||
+    /^[^：:]{1,40}(?:结局|Ending)(?:对应版)?(?:（.*）)?(?:[：:].*)?$/i.test(trimmed) ||
+    /^(?:分支|Branch)\s*\d+[：:]/i.test(trimmed) ||
+    /^(?:互动|Interaction)\s*\d+[：:]/i.test(trimmed) ||
+    /^(?:选|Choice)\s*\d+[：:]/i.test(trimmed) ||
+    /^(?:选项|Option)\s*[A-Za-z0-9]+[：:]/i.test(trimmed)
   );
 }
 
 function parseScriptLine(line?: string) {
   if (!line) return { speaker: undefined, text: '' };
   const match = line.match(/^([^：:]{1,24})[：:](.*)$/);
-  if (!match || line.startsWith('选项')) return { speaker: undefined, text: line };
+  if (!match || line.startsWith('选项') || line.startsWith('Option') || line.startsWith('Choice')) return { speaker: undefined, text: line };
   return { speaker: match[1].trim(), text: match[2].trim() };
 }
 
 function isDisplayableScene(scene?: StoryScene) {
   if (!scene) return false;
-  if (/^(开场|第[一二三四五六七八九十]+幕|HE 主线|BE 主线)$/.test(scene.speaker || '')) return false;
+  if (/^(开场|第[一二三四五六七八九十]+幕|HE 主线|BE 主线|Opening|Act\s+[IVX\d]+|HE Mainline|BE Mainline)$/i.test(scene.speaker || '')) return false;
   const visibleLines = scene.text.split('\n').filter((line) => line.trim() && !isDirectiveLine(line));
-  return visibleLines.length > 0 && scene.speaker !== '舞台指示';
+  return visibleLines.length > 0 && scene.speaker !== '舞台指示' && scene.speaker !== 'Stage Direction';
 }
 
 function getNextDisplaySceneIndex(scenes: StoryScene[], startIndex: number) {
@@ -112,7 +115,7 @@ function getDisplayEntriesFromRange(lines: string[], start: number, end: number)
 }
 
 function getOptionText(line: string) {
-  const match = line.trim().match(/^选项\s*\d+[：:](.*)$/);
+  const match = line.trim().match(/^(?:选项|Option)\s*\d+[：:](.*)$/i);
   return match?.[1]?.trim() || line.trim();
 }
 
@@ -123,14 +126,17 @@ function getScriptPlayback(text?: string): ScriptPlayback {
   const lines = text.split('\n');
   const allEntries = getDisplayScriptEntries(text) ?? [];
   const optionStart = lines.findIndex((line, index) =>
-    line.trim().match(/^选项\s*1[：:]/) &&
-    lines[index + 1]?.trim().match(/^选项\s*2[：:]/) &&
-    lines[index + 2]?.trim().match(/^选项\s*3[：:]/)
+    (line.trim().match(/^选项\s*1[：:]/) || line.trim().match(/^Option\s*1[：:]/i)) &&
+    (lines[index + 1]?.trim().match(/^选项\s*2[：:]/) || lines[index + 1]?.trim().match(/^Option\s*2[：:]/i)) &&
+    (lines[index + 2]?.trim().match(/^选项\s*3[：:]/) || lines[index + 2]?.trim().match(/^Option\s*3[：:]/i))
   );
   if (optionStart < 0) return { ...empty, entries: allEntries };
 
   const branchStarts = [1, 2, 3].map((number) =>
-    lines.findIndex((line, index) => index > optionStart && line.trim().match(new RegExp(`^互动\\s*${number}[：:]`)))
+    lines.findIndex((line, index) =>
+      index > optionStart &&
+      (line.trim().match(new RegExp(`^互动\\s*${number}[：:]`)) || line.trim().match(new RegExp(`^Interaction\\s*${number}[：:]`, 'i')))
+    )
   );
   if (branchStarts.some((index) => index < 0)) return { ...empty, entries: allEntries };
 
@@ -138,8 +144,10 @@ function getScriptPlayback(text?: string): ScriptPlayback {
     index > Math.max(...branchStarts) &&
     (
       line.trim().startsWith('主线剧情') ||
+      line.trim().toLowerCase().startsWith('main story') ||
       line.includes('所有互动选项汇流后') ||
-      line.includes('所有互动选项汇流后')
+      line.toLowerCase().includes('after all interaction choices') ||
+      line.toLowerCase().includes('converge after all interaction choices')
     )
   );
   if (commonStart < 0) return { ...empty, entries: allEntries };
@@ -180,7 +188,8 @@ export default function VisualNovel() {
   const { state, dispatch, completeMemoryPoint } = useGame();
   const perspective = state.currentPerspective!;
   const memoryPoint = state.currentMemoryPoint;
-  const story = getMemoryStory(perspective, memoryPoint);
+  const isZh = state.language === 'zh';
+  const story = getMemoryStory(perspective, memoryPoint, state.language);
   const firstSceneIndex = useMemo(() => getNextDisplaySceneIndex(story.scenes, -1) ?? 0, [story.scenes]);
 
   const [sceneIndex, setSceneIndex] = useState(firstSceneIndex);
@@ -322,21 +331,20 @@ export default function VisualNovel() {
 
   const getSpeakerAvatar = (speaker?: string) => {
     if (!speaker) return '◆';
-    if (speaker.includes('派蒙')) return 'P';
-    if (speaker.includes('妈妈')) return 'M';
-    if (speaker.includes('爸爸')) return 'F';
-    if (speaker.includes('医生')) return 'D';
+    if (speaker.includes('派蒙') || speaker.includes('Paimon')) return 'P';
+    if (speaker.includes('妈妈') || speaker.includes('Mom')) return 'M';
+    if (speaker.includes('爸爸') || speaker.includes('Dad')) return 'F';
+    if (speaker.includes('医生') || speaker.includes('Doctor') || speaker.includes('Physician')) return 'D';
     if (speaker.includes('BOSS')) return '!';
-    if (speaker.includes('旁白')) return 'N';
+    if (speaker.includes('旁白') || speaker.includes('Narrator')) return 'N';
     return speaker.slice(0, 1);
   };
-  const currentSceneIsNarration = currentScene?.speaker === '旁白';
+  const currentSceneIsNarration = currentScene?.speaker === '旁白' || currentScene?.speaker === 'Narrator';
 
   return (
     <div
       className={`min-h-screen bg-gradient-to-b ${getBackgroundColor()} relative overflow-hidden`}
       onClick={() => {
-        // 手动点击屏幕：解除自动播放并推进
         setAutoPlay(false);
         handleNextScene();
       }}
@@ -381,7 +389,7 @@ export default function VisualNovel() {
         <div className="text-xs text-white/55">{story.description}</div>
       </div>
 
-      {/* 复古像素快捷控制栏：回退 / AUTO / SKIP / HIDE / LOG / 设置 / 回溯 */}
+      {/* Retro Pixel Controls: BACK / AUTO / SKIP / HIDE / LOG / SETTINGS / Rewind */}
       <StoryControlBar
         canBack={state.playthrough === 2 && sceneIndex !== firstSceneIndex}
         onBack={state.playthrough === 2 ? handleBack : undefined}
@@ -398,13 +406,13 @@ export default function VisualNovel() {
               onClick={(event) => { event.stopPropagation(); handleTimeTravel(); }}
             >
               <Undo className="h-3.5 w-3.5" />
-              回溯
+              Rewind
             </button>
           ) : undefined
         }
       />
 
-      {/* 历史台词抽屉 */}
+      {/* Story log drawer */}
       <StoryLogDrawer
         open={showLog}
         onClose={() => setShowLog(false)}
@@ -415,11 +423,10 @@ export default function VisualNovel() {
       />
 
       {!dialogHidden && (
-        // 剧情主对话框：点击全屏任意区域推进下一句
         <div className="absolute bottom-6 left-4 right-4 z-30 md:left-16 md:right-16">
           <div className={`${DIALOG_BOX} p-5 md:p-6`}>
             <div className={DIALOG_INNER} />
-            {currentScene?.speaker && currentScene.speaker !== '旁白' && (
+            {currentScene?.speaker && currentScene.speaker !== '旁白' && currentScene.speaker !== 'Narrator' && (
               <div className={SPEAKER_TAG}>
                 <span className={SPEAKER_AVATAR}>
                   {getSpeakerAvatarPath(currentScene.speaker, perspective, visualState) ? (
@@ -448,7 +455,7 @@ export default function VisualNovel() {
       )}
 
       {showChoices && (
-        <ChoiceLayer title="你会如何选择？">
+        <ChoiceLayer title={isZh ? '你将做出怎样的选择？' : 'What will you choose?'}>
           {story.firstChoices.map((choice) => (
             <ChoiceButton key={choice.id} choice={choice} onClick={() => handleFirstChoice(choice)} />
           ))}
@@ -457,8 +464,8 @@ export default function VisualNovel() {
 
       {showFirstResult && selectedFirstChoice && (
         <ScriptLayer
-          title="分支剧情"
-          action={selectedFirstChoice.nextChoices?.length ? '继续选择' : '进入后续选择'}
+          title={isZh ? '分支故事' : 'Branch Story'}
+          action={selectedFirstChoice.nextChoices?.length ? (isZh ? '继续选择' : 'Continue to Choose') : (isZh ? '进入最终抉择' : 'Proceed to Decisions')}
           baseVisual={visualState}
           perspective={perspective}
           onContinue={continueAfterFirstResult}
@@ -468,7 +475,7 @@ export default function VisualNovel() {
       )}
 
       {showBranchChoices && selectedFirstChoice?.nextChoices?.length && (
-        <ChoiceLayer title="接下来你会怎么做？" visual={getInitialVisualStateFromText(selectedFirstChoice.result, perspective, visualState)}>
+        <ChoiceLayer title={isZh ? '接下来你将做什么？' : 'What will you do next?'} visual={getInitialVisualStateFromText(selectedFirstChoice.result, perspective, visualState)}>
           {selectedFirstChoice.nextChoices.map((choice) => (
             <ChoiceButton key={choice.id} choice={choice} onClick={() => handleBranchChoice(choice)} />
           ))}
@@ -476,7 +483,7 @@ export default function VisualNovel() {
       )}
 
       {showSecondChoices && ending && (
-        <ChoiceLayer title={ending === 'HE' ? 'HE 主线：接下来怎么守护？' : 'BE 主线：接下来会怎么发展？'} visual={secondChoiceVisual}>
+        <ChoiceLayer title={ending === 'HE' ? (isZh ? 'HE线：你将如何守护？' : 'HE Route: How will you safeguard her?') : (isZh ? 'BE线：事情将如何发展？' : 'BE Route: How will events unfold?')} visual={secondChoiceVisual}>
           {secondChoices.map((choice) => (
             <ChoiceButton key={choice.id} choice={choice} onClick={() => handleSecondChoice(choice)} />
           ))}
@@ -485,8 +492,8 @@ export default function VisualNovel() {
 
       {showSecondResult && selectedSecondChoice && (
         <ScriptLayer
-          title="后续剧情"
-          action="继续"
+          title={isZh ? '后续剧情' : 'Subsequent Story'}
+          action={isZh ? '继续' : 'Continue'}
           baseVisual={visualState}
           perspective={perspective}
           onContinue={continueAfterSecondResult}
@@ -496,8 +503,8 @@ export default function VisualNovel() {
       )}
 
       {showFeedback && selectedFirstChoice && (
-        <ScriptLayer title={ending === 'HE' ? 'HE 反馈' : 'BE 反馈'} action="继续" visual={secondResultVisual} onContinue={handleContinue}>
-          <p className="mb-3 font-medium text-pink-600">派蒙：{selectedFirstChoice.paimonDialogue}</p>
+        <ScriptLayer title={ending === 'HE' ? (isZh ? 'HE反馈' : 'HE Feedback') : (isZh ? 'BE反馈' : 'BE Feedback')} action={isZh ? '继续' : 'Continue'} visual={secondResultVisual} onContinue={handleContinue}>
+          <p className="mb-3 font-medium text-pink-600">{isZh ? '派蒙：' : 'Paimon: '}{selectedFirstChoice.paimonDialogue}</p>
           <p className="rounded-lg bg-pink-100/80 p-3 text-stone-700">{selectedFirstChoice.microEffect}</p>
         </ScriptLayer>
       )}
@@ -505,19 +512,19 @@ export default function VisualNovel() {
       {showSettings && (
         <div className="absolute inset-0 bg-black/70 flex items-center justify-center z-40" onClick={(event) => event.stopPropagation()}>
           <div className="bg-white rounded-2xl p-6 max-w-sm w-full">
-            <h3 className="text-lg font-bold mb-4">设置</h3>
+            <h3 className="text-lg font-bold mb-4">{isZh ? '设置' : 'Settings'}</h3>
             <div className="space-y-4">
               <label className="block text-sm text-gray-600">
-                文字速度
+                {isZh ? '文字速度' : 'Text Speed'}
                 <input type="range" className="w-full" min="1" max="5" defaultValue="3" />
               </label>
               <label className="block text-sm text-gray-600">
-                音量
+                {isZh ? '音量' : 'Volume'}
                 <input type="range" className="w-full" min="0" max="100" defaultValue="50" />
               </label>
             </div>
             <Button className="w-full mt-4" onClick={() => setShowSettings(false)}>
-              关闭
+              {isZh ? '关闭' : 'Close'}
             </Button>
           </div>
         </div>
@@ -600,12 +607,23 @@ function getSpeakerAvatarPath(
   visualState: { portraits: Array<{ role: string; state: string; path: string }> }
 ) {
   if (!speaker) return undefined;
-  if (speaker.includes('派蒙')) return getCharacterAssetPath('派蒙', '开心');
-  if (speaker.includes('主角')) {
+  if (speaker.includes('派蒙') || speaker.includes('Paimon')) return getCharacterAssetPath('派蒙', '开心');
+  if (speaker.includes('主角') || speaker.includes('Protagonist') || speaker.includes('Player')) {
     return visualState.portraits.find((portrait) => portrait.role === '主角')?.path ||
       getCharacterAssetPath('主角', '正常', perspective);
   }
-  const portrait = visualState.portraits.find((item) => speaker.includes(item.role));
+  const speakerRoleMap: Record<string, string> = {
+    'Mom': '妈妈', 'Mother': '妈妈',
+    'Dad': '爸爸', 'Father': '爸爸',
+    'Son': '儿子',
+    'Daughter': '女儿',
+    'Manager': '经理',
+    'Aunt Zhang': '张阿姨',
+    'Aunt Li': '李阿姨',
+    'Secretory Cell': '分泌细胞'
+  };
+  const targetRole = Object.entries(speakerRoleMap).find(([en]) => speaker.includes(en))?.[1] || speaker;
+  const portrait = visualState.portraits.find((item) => speaker.includes(item.role) || targetRole.includes(item.role));
   return portrait?.path;
 }
 
@@ -652,28 +670,25 @@ function getInitialVisualStateFromText(
 function getScienceSkipTarget(text: string | undefined, entries: DisplayScriptEntry[] | null) {
   if (!text || !entries) return null;
   const lines = text.split('\n');
-  const scienceStart = lines.findIndex((line) => line.includes('第三幕') || line.includes('插入式微观科普'));
+  const scienceStart = lines.findIndex((line) =>
+    line.includes('第三幕') ||
+    line.includes('插入式微观科普') ||
+    line.toLowerCase().includes('act iii') ||
+    line.toLowerCase().includes('microscopic science')
+  );
   if (scienceStart < 0) return null;
 
   const routeStart = lines.findIndex((line, index) =>
     index > scienceStart &&
     !line.trim().startsWith('【') &&
     (
-      line.includes('防线稳固结局') ||
-      line.includes('黑雾笼罩结局') ||
-      line.includes('防线修复结局') ||
-      line.includes('黑雾蔓延结局') ||
-      line.includes('守护成功结局') ||
-      line.includes('风险加重结局') ||
-      line.includes('及时就医结局') ||
-      line.includes('隐瞒拖延结局') ||
-      line.includes('按时体检结局') ||
-      line.includes('拖延体检结局') ||
-      line.includes('科学治疗结局') ||
-      line.includes('偏方延误结局') ||
-      /^HE 结局/.test(line.trim()) ||
-      /^BE 结局/.test(line.trim()) ||
-      /^结局\s*[12]/.test(line.trim())
+      line.includes('结局') ||
+      line.toLowerCase().includes('ending') ||
+      /^HE 结局/i.test(line.trim()) ||
+      /^BE 结局/i.test(line.trim()) ||
+      /^HE Ending/i.test(line.trim()) ||
+      /^BE Ending/i.test(line.trim()) ||
+      /^(?:结局|Ending)\s*[12]/i.test(line.trim())
     )
   );
   if (routeStart < 0) return null;
@@ -741,6 +756,8 @@ function ScriptLayer({
   onContinue?: () => void;
   scriptText?: string;
 }) {
+  const { state } = useGame();
+  const isZh = state?.language === 'zh';
   const playback = useMemo(() => getScriptPlayback(scriptText), [scriptText]);
   const [selectedInlineChoice, setSelectedInlineChoice] = useState<number | null>(null);
   const [waitingForInlineChoice, setWaitingForInlineChoice] = useState(false);
@@ -756,7 +773,7 @@ function ScriptLayer({
   const [lineIndex, setLineIndex] = useState(0);
   const currentEntry = scriptEntries?.[lineIndex];
   const parsedLine = parseScriptLine(currentEntry?.text);
-  const isNarration = parsedLine.speaker === '旁白' || (!parsedLine.speaker && Boolean(currentEntry));
+  const isNarration = parsedLine.speaker === '旁白' || parsedLine.speaker === 'Narrator' || (!parsedLine.speaker && Boolean(currentEntry));
   const scienceSkipTarget = useMemo(() => getScienceSkipTarget(scriptText, scriptEntries), [scriptText, scriptEntries]);
   const canSkipScience =
     scienceSkipTarget !== null &&
@@ -828,7 +845,7 @@ function ScriptLayer({
           <div className="absolute bottom-6 left-4 right-4 z-30 md:left-16 md:right-16">
             <div className={`${DIALOG_BOX} p-5 md:p-6`}>
               <div className={DIALOG_INNER} />
-              {parsedLine.speaker && parsedLine.speaker !== '旁白' && (
+              {parsedLine.speaker && parsedLine.speaker !== '旁白' && parsedLine.speaker !== 'Narrator' && (
                 <div className={SPEAKER_TAG}>
                   <span>{parsedLine.speaker || title}</span>
                 </div>
@@ -847,13 +864,13 @@ function ScriptLayer({
               className="rounded-none border-2 border-[#3E2723] bg-[#FFFDF8] text-[#6B2D5C] shadow-[0_3px_0_#3E2723] hover:bg-[#F3E5CE] hover:text-[#6B2D5C] absolute right-4 top-4 z-20"
               onClick={(event) => { event.stopPropagation(); handleSkipScience(); }}
             >
-              跳过科普
+              {isZh ? '跳过科普' : 'Skip Science'}
             </Button>
           )}
           {waitingForInlineChoice && playback.inlineChoices.length > 0 && (
             <div className={`${CHOICE_OVERLAY}`} onClick={(event) => event.stopPropagation()}>
               <div className="relative z-30 w-[min(760px,calc(100vw-2rem))] px-4">
-                <p className={CHOICE_TITLE}>你会如何选择？</p>
+                <p className={CHOICE_TITLE}>{isZh ? '你将做出怎样的选择？' : 'What will you choose?'}</p>
                 <div className="flex flex-col gap-3.5 items-center">
                   {playback.inlineChoices.map((choice, index) => (
                     <button
@@ -878,7 +895,7 @@ function ScriptLayer({
             <div className="max-h-[64vh] overflow-y-auto pr-2 leading-relaxed text-[#2B1B17]">{children}</div>
             {action && onContinue && (
               <div className="mt-4 flex justify-end">
-                <span className="text-xs font-bold text-[#8D6E63]">点击任意处继续</span>
+                <span className="text-xs font-bold text-[#8D6E63]">Click anywhere to continue</span>
                 <span className={`${NEXT_ARROW} ml-1`}>▼</span>
               </div>
             )}

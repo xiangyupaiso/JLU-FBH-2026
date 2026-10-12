@@ -105,19 +105,6 @@ export default () => {
           wiki: resolve("index.html"),
           laboratory: resolve("virtual-lab/index.html"),
         },
-        output: {
-          manualChunks(id) {
-            if (id.includes("node_modules")) {
-              return "vendor";
-            }
-            if (id.includes("src/contents")) {
-              return "wiki-contents";
-            }
-            if (id.includes("src/data")) {
-              return "wiki-data";
-            }
-          },
-        },
       },
     },
     optimizeDeps: {

@@ -17,14 +17,14 @@ import {
 } from '@/components/dialogStyles';
 import { StoryControlBar, StoryLogDrawer, useStoryPlayback } from '@/components/storyControls';
 
-// 场景类型定义
+// Scene type definition
 interface Scene {
   speaker?: string;
   text: string;
 }
 
-// 各视角穿越剧情数据
-const TRIGGER_SCENES: Record<Perspective, Scene[]> = {
+// Dimension leap trigger narrative per perspective (ZH)
+const TRIGGER_SCENES_ZH: Record<Perspective, Scene[]> = {
   child: [
     { speaker: '旁白', text: '医院的走廊里，消毒水的味道弥漫在空气中。' },
     { speaker: '旁白', text: '10岁的你坐在妈妈病房的陪护小床上，手里紧紧攥着一本绘本。' },
@@ -53,24 +53,63 @@ const TRIGGER_SCENES: Record<Perspective, Scene[]> = {
   ]
 };
 
-// 视角标题
-const PERSPECTIVE_TITLES: Record<Perspective, { title: string; icon: string }> = {
+// Dimension leap trigger narrative per perspective (EN)
+const TRIGGER_SCENES_EN: Record<Perspective, Scene[]> = {
+  child: [
+    { speaker: 'Narrator', text: 'In the hospital hallway, the scent of antiseptic hangs thick in the air.' },
+    { speaker: 'Narrator', text: 'At 10 years old, you sit quietly on the folding cot in Mom\'s hospital room, tightly clutching a picture book.' },
+    { speaker: 'Narrator', text: 'Mom just finished her examination. The doctor said she needs further observation.' },
+    { speaker: 'Narrator', text: 'Looking at Mom\'s pale face, your heart fills with fear and worry...' },
+    { speaker: 'Narrator', text: 'Suddenly, a warm, radiant light envelops you...' },
+    { speaker: 'Narrator', text: 'When you open your eyes again, you find yourself transported into a wondrous world...' }
+  ],
+  adult: [
+    { speaker: 'Narrator', text: 'In the hallway of the health checkup center, you grip your newly issued physical examination report.' },
+    { speaker: 'Narrator', text: 'The words "Breast Nodule" on the report cause your heart to sink abruptly.' },
+    { speaker: 'Narrator', text: 'At 32, you always believed you were young and that health crises were far removed from your life.' },
+    { speaker: 'Narrator', text: 'The doctor\'s words echo in your ears: "Regular follow-ups are needed. Mind your lifestyle habits..."' },
+    { speaker: 'Narrator', text: 'Sitting in the waiting lounge chair, countless anxious thoughts flood your mind...' },
+    { speaker: 'Narrator', text: 'Suddenly, a warm, radiant light envelops you...' },
+    { speaker: 'Narrator', text: 'When you open your eyes again, you find yourself transported into a wondrous world...' }
+  ],
+  elder: [
+    { speaker: 'Narrator', text: 'In the consultation room of the community clinic, you sit across from the doctor.' },
+    { speaker: 'Narrator', text: 'At 65, you always felt your health was relatively robust.' },
+    { speaker: 'Narrator', text: 'Yet the persistent hard lump in your chest recently compelled you to come for an examination.' },
+    { speaker: 'Narrator', text: 'The physician\'s advice leaves you unsettled: "I strongly recommend visiting a major hospital for advanced diagnostics..."' },
+    { speaker: 'Narrator', text: 'Stepping out of the clinic, you tightly hold the cloth doll your daughter gave you years ago...' },
+    { speaker: 'Narrator', text: 'Suddenly, a warm, radiant light envelops you...' },
+    { speaker: 'Narrator', text: 'When you open your eyes again, you find yourself transported into a wondrous world...' }
+  ]
+};
+
+// Perspective titles (ZH)
+const PERSPECTIVE_TITLES_ZH: Record<Perspective, { title: string; icon: string }> = {
   child: { title: '幼年视角·穿越触发', icon: '🏥' },
   adult: { title: '青壮年视角·穿越触发', icon: '📋' },
   elder: { title: '老年视角·穿越触发', icon: '🧸' }
 };
 
+// Perspective titles (EN)
+const PERSPECTIVE_TITLES_EN: Record<Perspective, { title: string; icon: string }> = {
+  child: { title: 'Child Perspective · Dimension Leap', icon: '🏥' },
+  adult: { title: 'Adult Perspective · Dimension Leap', icon: '📋' },
+  elder: { title: 'Elder Perspective · Dimension Leap', icon: '🧸' }
+};
+
 export default function RealityTrigger() {
   const { state, dispatch } = useGame();
   const perspective = state.currentPerspective!;
-  const scenes = TRIGGER_SCENES[perspective];
-  const titleInfo = PERSPECTIVE_TITLES[perspective];
+  const isZh = state.language === 'zh';
+
+  const scenes = isZh ? TRIGGER_SCENES_ZH[perspective] : TRIGGER_SCENES_EN[perspective];
+  const titleInfo = isZh ? PERSPECTIVE_TITLES_ZH[perspective] : PERSPECTIVE_TITLES_EN[perspective];
 
   const [showSettings, setShowSettings] = useState(false);
   const [showTransition, setShowTransition] = useState(false);
 
   const pb = useStoryPlayback(scenes, () => {
-    // 显示穿越动画
+    // Show leap transition animation
     setShowTransition(true);
     setTimeout(() => {
       dispatch({ type: 'SET_PHASE', payload: 'tutorial' });
@@ -88,7 +127,7 @@ export default function RealityTrigger() {
     perspective
   );
 
-  // 获取背景颜色
+  // Background color gradient
   const getBackgroundColor = () => {
     switch (perspective) {
       case 'child':
@@ -102,20 +141,22 @@ export default function RealityTrigger() {
     }
   };
 
-  // 获取角色头像
+  // Avatar lookup
   const getSpeakerAvatar = (speaker?: string) => {
     if (!speaker) return null;
-    if (speaker === '旁白') return '📖';
+    if (speaker === 'Narrator' || speaker === '旁白') return '📖';
     return '👤';
   };
 
-  // 穿越动画
+  // Leap animation
   if (showTransition) {
     return (
       <div className="min-h-screen bg-white flex items-center justify-center animate-pulse">
         <div className="text-center">
           <div className="text-6xl mb-4 animate-bounce">✨</div>
-          <p className="text-xl text-pink-600">正在穿越到微观世界...</p>
+          <p className="text-xl text-pink-600">
+            {isZh ? '正在穿越至微观世界...' : 'Leaping into the Micro World...'}
+          </p>
         </div>
       </div>
     );
@@ -133,24 +174,24 @@ export default function RealityTrigger() {
       {protagonist && (
         <img
           src={protagonist}
-          alt="主角"
+          alt="Protagonist"
           className="absolute bottom-40 right-8 hidden max-h-[52vh] max-w-[34vw] object-contain drop-shadow-[0_18px_30px_rgba(0,0,0,0.45)] md:block"
         />
       )}
-      {/* 背景场景 */}
+      {/* Background scene icon */}
       <div className="absolute inset-0 flex items-center justify-center opacity-0 pointer-events-none">
         <div className="text-9xl">
           {titleInfo.icon}
         </div>
       </div>
 
-      {/* 标题区域 */}
+      {/* Header title */}
       <div className="absolute top-8 left-0 right-0 text-center z-10">
         <div className="text-5xl mb-2">{titleInfo.icon}</div>
         <h1 className="text-2xl font-bold text-white/80 mb-1">{titleInfo.title}</h1>
       </div>
 
-      {/* 复古像素快捷控制栏：回退 / AUTO / SKIP / HIDE / LOG / 设置 */}
+      {/* Retro Pixel Story Control Bar */}
       <StoryControlBar
         className={pb.hiddenUiClass}
         canBack={pb.index > 0}
@@ -163,47 +204,49 @@ export default function RealityTrigger() {
         onSettings={() => setShowSettings(true)}
       />
 
-      {/* 剧情对话框：点击全屏任意区域推进下一句 */}
+      {/* Dialog box */}
       <div className={`absolute bottom-6 left-4 right-4 z-30 md:left-16 md:right-16 ${pb.hiddenUiClass}`}>
         <div className={`${DIALOG_BOX} p-5 md:p-6`}>
           <div className={DIALOG_INNER} />
-          {/* 悬浮说话人铭牌（旁白隐藏） */}
-          {currentScene?.speaker && currentScene.speaker !== '旁白' && (
+          {/* Speaker tag (hidden for narrator) */}
+          {currentScene?.speaker && currentScene.speaker !== 'Narrator' && currentScene.speaker !== '旁白' && (
             <div className={SPEAKER_TAG}>
               <span className={SPEAKER_AVATAR}>{getSpeakerAvatar(currentScene.speaker)}</span>
               <span>{currentScene.speaker}</span>
             </div>
           )}
 
-          {/* 对话内容（打字机渲染） */}
+          {/* Dialog text (typewriter rendering) */}
           <p className={`${DIALOG_TEXT} ${
-            currentScene?.speaker === '旁白' ? DIALOG_TEXT_NARRATION : ''
+            currentScene?.speaker === 'Narrator' || currentScene?.speaker === '旁白' ? DIALOG_TEXT_NARRATION : ''
           }`}>
             {pb.displayed}
           </p>
 
-          {/* 进度指示器 */}
+          {/* Progress indicator */}
           <div className={DIALOG_PROGRESS}>
             <span className="text-xs font-medium text-[#8D6E63]">
               {pb.index + 1} / {scenes.length}
             </span>
             {!isLastScene && (
               <span className={NEXT_HINT_INLINE}>
-                点击继续
+                {isZh ? '点击继续' : 'Click to continue'}
                 <span className={NEXT_ARROW}>▼</span>
               </span>
             )}
             {isLastScene && (
-              <span className="text-xs font-medium text-[#D81B60] animate-pulse">即将穿越...</span>
+              <span className="text-xs font-medium text-[#D81B60] animate-pulse">
+                {isZh ? '即将穿越...' : 'Leaping imminent...'}
+              </span>
             )}
           </div>
         </div>
       </div>
 
-      {/* 历史台词抽屉 */}
+      {/* Story log drawer */}
       <StoryLogDrawer open={pb.showLog} onClose={() => pb.setShowLog(false)} entries={pb.log} />
 
-      {/* 设置对话框 */}
+      {/* Settings modal */}
       {showSettings && (
         <div
           className="absolute inset-0 bg-black/70 flex items-center justify-center z-50"
@@ -212,15 +255,19 @@ export default function RealityTrigger() {
           <div className="bg-white rounded-2xl p-6 max-w-sm w-full">
             <h3 className="text-lg font-bold mb-4 flex items-center gap-2">
               <Settings className="w-4 h-4" />
-              设置
+              {isZh ? '设置' : 'Settings'}
             </h3>
             <div className="space-y-4">
               <div>
-                <label className="text-sm text-gray-600">文字速度</label>
+                <label className="text-sm text-gray-600">
+                  {isZh ? '文字速度' : 'Text Speed'}
+                </label>
                 <input type="range" className="w-full" min="1" max="5" defaultValue="3" />
               </div>
               <div>
-                <label className="text-sm text-gray-600">音量</label>
+                <label className="text-sm text-gray-600">
+                  {isZh ? '音量' : 'Volume'}
+                </label>
                 <input type="range" className="w-full" min="0" max="100" defaultValue="50" />
               </div>
             </div>
@@ -228,7 +275,7 @@ export default function RealityTrigger() {
               className="w-full mt-4"
               onClick={() => setShowSettings(false)}
             >
-              关闭
+              {isZh ? '关闭' : 'Close'}
             </Button>
           </div>
         </div>

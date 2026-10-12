@@ -15,8 +15,10 @@
 }
 
 /* Existing manuscript feature components consume these semantic aliases.
-   Derive them from the shared palette so there is only one colour source. */
-.wiki-page.wiki-page--wet-lab {
+   Derive them from the shared palette so there is only one colour source.
+   The selector outranks wetlab-editorial.css's `.wiki-page.wiki-page--manuscript`
+   defaults, so the palette wins whatever order the route stylesheets load in. */
+.wiki-page.wiki-page--manuscript.wiki-page--wet-lab {
   --wet-paper: var(--route-paper);
   --wet-paper-light: var(--route-paper);
   --wet-paper-deep: var(--route-panel);

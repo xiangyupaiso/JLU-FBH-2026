@@ -1,8 +1,9 @@
+import type { Language } from '@/types';
+
 /**
- * IP 小羊内置话术库（15 句，逐字来自《线上游戏优化方案》）。
- * 点击随机切换；不主动点击时每 5s 自动切换。
+ * IP 小羊内置话术库（中文 15 句）
  */
-export const SHEEP_LINES: string[] = [
+export const SHEEP_LINES_ZH: string[] = [
   '欢迎来到乳腺守护者的世界，准备好开启你的守护之旅了吗？',
   '每月一次乳房自查很重要，早发现、早就医，是最靠谱的健康习惯！',
   '酒精会刺激乳腺组织增生，能少喝就少喝，健康永远排在第一位～',
@@ -19,3 +20,30 @@ export const SHEEP_LINES: string[] = [
   '你的每一份反馈都很珍贵，会让《乳腺守护者》变得越来越好哦！',
   '嘿！别总熬夜啦，规律作息才是乳腺健康的最佳守护盾哦！'
 ];
+
+/**
+ * IP Mascot Sheep Dialogue Database (English 15 lines)
+ */
+export const SHEEP_LINES_EN: string[] = [
+  'Welcome to the world of Breast Guardian! Are you ready to embark on your journey of protection?',
+  'Monthly breast self-examinations are vital: early detection and prompt consultation are your most reliable health habits!',
+  'Alcohol stimulates abnormal mammary tissue proliferation—minimize intake, because your health always comes first~',
+  "Negative emotions won't simply vanish on their own; giving yourself time to unwind also safeguards your mammary citadel!",
+  'Middle-aged and elderly women should maintain annual clinical breast screenings; many early-stage lesions are completely painless!',
+  'Every storyline features both HE (Happy Ending) and BE (Bad Ending) paths—each choice leads to a distinct destiny~',
+  'Playthrough 2 unlocks Time-Travel recollection, allowing unlimited replays to discover the most fulfilling endings!',
+  'The Knowledge Handbook on the home screen compiles all BOSS profiles and clinical science facts—accessible anytime!',
+  'Completing Playthrough 2 unlocks the Future Hospital easter egg, showcasing cutting-edge visions of cancer therapy!',
+  'Did you know? Triple-Negative Breast Cancer (TNBC) lacks three classic therapeutic receptors, remaining a formidable clinical challenge.',
+  'Unlike linear RNA, circular RNA (circRNA) possesses a closed-loop structure that is far more stable, sustaining prolonged immune activation.',
+  'While treating Triple-Negative Breast Cancer is challenging, synthetic biologists and scientists are continually pioneering novel breakthroughs!',
+  'Remember to complete the Guardian Evaluation Report after the game to review the medical insights you have gained~',
+  'Every piece of your feedback is invaluable and helps make Breast Guardian even better!',
+  'Hey! Stop pulling all-nighters—a regular sleep schedule is your greatest biological shield for breast wellness!'
+];
+
+export const SHEEP_LINES = SHEEP_LINES_ZH;
+
+export function getSheepLines(lang: Language = 'zh'): string[] {
+  return lang === 'en' ? SHEEP_LINES_EN : SHEEP_LINES_ZH;
+}

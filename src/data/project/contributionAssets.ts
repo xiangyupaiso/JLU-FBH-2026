@@ -511,7 +511,7 @@ export type ContributionDocAssetKey = {
  * Resolve one image from iGEM CDN, with a local preview as fallback.
  */
 export const contributionImage = (key: ContributionImageAssetKey): string => {
-  const entry = (contributionAssets as Record<string, any>)[key];
+  const entry: ContributionAssetEntry = contributionAssets[key];
   return entry?.uploadUrl || entry?.localSrc || "";
 };
 

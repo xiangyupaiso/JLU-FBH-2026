@@ -1,6 +1,7 @@
 import React, { createContext, useContext, useReducer, useCallback } from 'react';
 import type {
   GameState,
+  Language,
   Perspective,
   PerspectiveProgress,
   GamePhase,
@@ -14,7 +15,7 @@ const INITIAL_SKILLS = ['cellRepair', 'hormoneBalance', 'immuneBoost', 'detox'];
 
 const emptyProgress = (): PerspectiveProgress => ({ memories: { 1: null, 2: null, 3: null }, completed: false });
 
-// 全局游戏状态 - 无存档，纯内存状态
+// 全局游戏状态 - 内存状态，语言持久化于 localStorage
 const initialState: GameState = {
   currentPhase: 'mainMenu',
   currentPerspective: null,
@@ -40,15 +41,19 @@ const initialState: GameState = {
   playthrough: 1,
   skipStory: false,
   hasCompletedTutorial: false,
+  language: (typeof window !== 'undefined' && localStorage.getItem('breast_guardian_lang') as Language) || 'zh',
 
   battleState: null,
   // 记录战斗中使用的负面技能来源（用于BE结局跳转）
-  lastUsedNegativeSkillSource: null as number | null
+  lastUsedNegativeSkillSource: null as number | null,
+  isExitMenuOpen: false
 };
 
 // Action类型
 type GameAction =
   | { type: 'SET_PHASE'; payload: GamePhase }
+  | { type: 'SET_EXIT_MENU_OPEN'; payload: boolean }
+  | { type: 'SET_LANGUAGE'; payload: Language }
   | { type: 'SET_PERSPECTIVE'; payload: Perspective | null }
   | { type: 'SET_MEMORY_POINT'; payload: number }
   | { type: 'SET_BOSS'; payload: BossType | null }
@@ -76,7 +81,16 @@ type GameAction =
 function gameReducer(state: GameState, action: GameAction): GameState {
   switch (action.type) {
     case 'SET_PHASE':
-      return { ...state, currentPhase: action.payload };
+      return { ...state, currentPhase: action.payload, isExitMenuOpen: false };
+
+    case 'SET_EXIT_MENU_OPEN':
+      return { ...state, isExitMenuOpen: action.payload };
+
+    case 'SET_LANGUAGE':
+      if (typeof window !== 'undefined') {
+        localStorage.setItem('breast_guardian_lang', action.payload);
+      }
+      return { ...state, language: action.payload };
 
     case 'SET_PERSPECTIVE':
       return { ...state, currentPerspective: action.payload };
@@ -215,7 +229,7 @@ function gameReducer(state: GameState, action: GameAction): GameState {
       };
     
     case 'RESET_GAME':
-      return initialState;
+      return { ...initialState, language: state.language };
     
     case 'START_NEW_GAME': {
       // 全视角解锁后开新线：保留各线进度与共享技能背包，只重置本局流程
@@ -232,6 +246,7 @@ function gameReducer(state: GameState, action: GameAction): GameState {
         : {};
       return {
         ...initialState,
+        language: state.language,
         ...preserved,
         currentPerspective: action.payload,
         currentPhase: 'realityTrigger'
@@ -259,6 +274,9 @@ function gameReducer(state: GameState, action: GameAction): GameState {
 interface GameContextType {
   state: GameState;
   dispatch: React.Dispatch<GameAction>;
+  setLanguage: (lang: Language) => void;
+  openExitMenu: () => void;
+  closeExitMenu: () => void;
   // 游戏流程
   startNewGame: (perspective: Perspective) => void;
   startWeek2: () => void;
@@ -366,6 +384,18 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
     dispatch({ type: 'RESET_GAME' });
   }, []);
 
+  const setLanguage = useCallback((lang: Language) => {
+    dispatch({ type: 'SET_LANGUAGE', payload: lang });
+  }, []);
+
+  const openExitMenu = useCallback(() => {
+    dispatch({ type: 'SET_EXIT_MENU_OPEN', payload: true });
+  }, []);
+
+  const closeExitMenu = useCallback(() => {
+    dispatch({ type: 'SET_EXIT_MENU_OPEN', payload: false });
+  }, []);
+
   const canChallengeBoss = useCallback((memoryPoint: number) => {
     const target = state.currentPerspective || 'child';
     const result = state.perspectivesData[target].memories[memoryPoint];
@@ -375,6 +405,9 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
   const value: GameContextType = {
     state,
     dispatch,
+    setLanguage,
+    openExitMenu,
+    closeExitMenu,
     startNewGame,
     startWeek2,
     completeMemoryPoint,

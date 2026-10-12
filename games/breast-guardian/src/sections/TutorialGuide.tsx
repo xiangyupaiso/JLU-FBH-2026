@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { useGame } from '@/hooks/gameState';
 import { Button } from '@/components/ui/button';
 import { Brain, Sword } from 'lucide-react';
-import { Card, CardContent } from '@/components/ui/card';
 import { getBossAssetPath, getCharacterAssetPath, getSceneAssetPath } from '@/data/assets';
 import {
   DIALOG_BOX,
@@ -18,15 +17,15 @@ import {
 } from '@/components/dialogStyles';
 import { StoryControlBar, StoryLogDrawer, useStoryPlayback } from '@/components/storyControls';
 
-// 场景类型定义
+// Scene type definition
 interface Scene {
   speaker?: string;
   text: string;
   background: 'main' | 'memory' | 'boss';
 }
 
-// 新手引导剧情数据
-const tutorialScenes: Scene[] = [
+// Tutorial narrative scenes (ZH)
+const tutorialScenesZh: Scene[] = [
   // 第一阶段：微观主城（场景1-7）
   { speaker: '旁白', text: '当你再次睁开眼睛时，发现自己来到了一个奇妙的世界...', background: 'main' },
   { speaker: '旁白', text: '主角在朦胧中醒来，脚下温润，光点漂浮，远处黑雾弥漫，茫然道："我这是在哪？好陌生……"', background: 'main' },
@@ -54,18 +53,42 @@ const tutorialScenes: Scene[] = [
   { speaker: '派蒙', text: '准备好，冒险开始！', background: 'boss' },
 ];
 
-// 技能名称映射
-const SKILL_NAME_MAP: Record<string, string> = {
-  cellRepair: '细胞修复术',
-  hormoneBalance: '激素平衡',
-  immuneBoost: '免疫强化',
-  detox: '毒素净化'
-};
+// Tutorial narrative scenes (EN)
+const tutorialScenesEn: Scene[] = [
+  // Stage 1: Micro Citadel
+  { speaker: 'Narrator', text: 'When you open your eyes again, you find yourself transported into a wondrous world...', background: 'main' },
+  { speaker: 'Narrator', text: 'The protagonist awakens in a haze. Beneath their feet is a gentle warmth, specks of light drift gently, and dark mist gathers in the distance. Dazed, they murmur: "Where am I? Everything feels so unfamiliar..."', background: 'main' },
+  { speaker: 'Paimon', text: 'Master! You are finally here! The Symptom BOSSes have been terrorizing us relentlessly!', background: 'main' },
+  { speaker: 'Protagonist', text: 'Who are you? Is this place... inside my body?', background: 'main' },
+  { speaker: 'Paimon', text: 'I am Paimon, Guardian Sprite of the Mammary Citadel! This is your breast tissue. BOSSes run amok within the dark mist, and harmful habits have been silently damaging our world.', background: 'main' },
+  { speaker: 'Protagonist', text: 'Me? How could that happen?', background: 'main' },
+  { speaker: 'Paimon', text: 'Let\'s head to the Core Sector first! I will help you figure out how to defend this citadel!', background: 'main' },
+  
+  // Stage 2: Brain Memory Center
+  { speaker: 'Narrator', text: 'Scene transitions to the Brain Memory Center. Paimon points toward the luminous neurons: "This is the Brain Memory Center. It lets you reflect on your past life choices!"', background: 'memory' },
+  { speaker: 'Paimon', text: 'We can enter Memory Points through these neural synapses, relive past events, and rewrite previous decisions!', background: 'memory' },
+  { speaker: 'Paimon', text: 'Different choices lead to different endings. The center will also bestow exclusive skills based on your outcomes!', background: 'memory' },
+  { speaker: 'Paimon', text: 'Whether you reach an HE or BE, clearing a Memory Point unlocks its corresponding BOSS challenge! That is the only path to salvaging our Mammary Citadel!', background: 'memory' },
+  
+  // Stage 3: Diseased Mammary Tissue
+  { speaker: 'Narrator', text: 'Scene transitions to the perimeter of the Diseased Mammary Tissue. The BOSS Arena interface manifests, displaying three locked icons in line.', background: 'boss' },
+  { speaker: 'Paimon', text: 'This is the Diseased Mammary Tissue—the battlefield of those villainous BOSSes! The dense dark mist in the distance is entirely their doing!', background: 'boss' },
+  { speaker: 'Paimon', text: 'See these three ominous BOSS icons? They correspond directly to Memory Points 1, 2, and 3!', background: 'boss' },
+  { speaker: 'Paimon', text: 'Clear Memory Point 1 → Unlock BOSS 1; Clear Memory Point 2 → Unlock BOSS 2, and so forth!', background: 'boss' },
+  { speaker: 'Paimon', text: 'Defeat all current BOSSes, and you will rescue us from this crisis! Let\'s go!', background: 'boss' },
+  { speaker: 'Paimon', text: 'Here are 4 foundational skills to empower you against the BOSSes!', background: 'boss' },
+  { speaker: 'Paimon', text: '[Cellular Repair] heals cells, [Hormone Balance] stabilizes regulation, [Immune Fortification] boosts combat power, and [Toxin Purge] expels impurities.', background: 'boss' },
+  { speaker: 'Paimon', text: 'Combine your Memory Point skills with foundational skills to defeat every BOSS and safeguard the Mammary Citadel!', background: 'boss' },
+  { speaker: 'Paimon', text: 'Get ready—the adventure begins!', background: 'boss' },
+];
 
 export default function TutorialGuide() {
   const { state, dispatch } = useGame();
   const [showSettings, setShowSettings] = useState(false);
   const [showComplete, setShowComplete] = useState(false);
+
+  const isZh = state.language === 'zh';
+  const tutorialScenes = isZh ? tutorialScenesZh : tutorialScenesEn;
 
   const pb = useStoryPlayback(tutorialScenes, () => setShowComplete(true));
 
@@ -81,143 +104,131 @@ export default function TutorialGuide() {
         : getSceneAssetPath('乳腺主城（正常）');
 
   const handleComplete = () => {
-    // 完成新手引导
     dispatch({ type: 'COMPLETE_TUTORIAL' });
-    // 跳转到微观主城
     dispatch({ type: 'SET_PHASE', payload: 'microWorldMain' });
   };
 
-  // 获取角色头像
   const getSpeakerAvatar = (speaker?: string) => {
     if (!speaker) return null;
-    if (speaker === '派蒙') return '🧚';
-    if (speaker === '主角') return '👤';
-    if (speaker === '旁白') return '📖';
+    if (speaker === 'Paimon' || speaker === '派蒙') return '🧚';
+    if (speaker === 'Protagonist' || speaker === '主角') return '👤';
+    if (speaker === 'Narrator' || speaker === '旁白') return '📖';
     return '👤';
   };
 
-  // 渲染背景内容
   const renderBackground = () => {
     switch (currentScene.background) {
       case 'main':
         return (
           <div className="absolute inset-0 bg-gradient-to-b from-pink-100 to-pink-200">
-            {/* 微观主城背景元素 */}
+            {/* Micro Citadel background mockup */}
             <div className="absolute top-20 left-1/2 -translate-x-1/2 text-center">
-              <h2 className="text-2xl font-bold text-pink-700">微观乳腺主城</h2>
-              <p className="text-sm text-pink-600/70">一周目 · 核心枢纽</p>
+              <h2 className="text-2xl font-bold text-pink-700">
+                {isZh ? '微观乳腺主城' : 'Micro Mammary Citadel'}
+              </h2>
+              <p className="text-sm text-pink-600/70">
+                {isZh ? '一周目 · 核心区域' : 'Playthrough 1 · Central Nexus'}
+              </p>
             </div>
             
-            {/* 派蒙提示区域 */}
+            {/* Paimon dialog preview */}
             <div className="absolute top-36 left-1/2 -translate-x-1/2 w-80">
-              <div className="bg-white/80 rounded-xl p-4 flex items-start gap-3 shadow-sm">
-                <div className="w-12 h-12 bg-pink-300 rounded-full flex items-center justify-center flex-shrink-0">
-                  {paimonPortrait ? (
-                    <img src={paimonPortrait} alt="派蒙" className="h-full w-full rounded-full object-cover" />
-                  ) : (
-                    <span className="text-2xl">🧚</span>
-                  )}
-                </div>
-                <div>
-                  <p className="text-sm font-medium text-pink-700">派蒙</p>
-                  <p className="text-xs text-gray-600 mt-1">
-                    这里是你的乳腺主城，那些黑雾和怪物，都是你的不良生活习惯催生的，快去探索一下吧。
-                  </p>
-                </div>
+              <div className="bg-white/80 rounded-2xl p-4 border border-pink-200 shadow-sm text-center">
+                <span className="text-xs bg-pink-100 text-pink-700 px-2 py-0.5 rounded-full font-medium">
+                  {isZh ? '守护精灵派蒙' : 'Guardian Sprite Paimon'}
+                </span>
+                <p className="text-sm text-pink-800 mt-2">
+                  {isZh
+                    ? '欢迎来到乳腺主城！这里是守护健康的第一站～'
+                    : 'Welcome to the Mammary Citadel! The first frontier of health guardianship~'}
+                </p>
               </div>
             </div>
 
-            {/* 功能入口 */}
-            <div className="absolute top-72 left-1/2 -translate-x-1/2 w-80 space-y-4">
-              <Card className="bg-gradient-to-r from-blue-50 to-blue-100 border-blue-200 opacity-60">
-                <CardContent className="p-5 flex items-center gap-4">
-                  <div className="w-14 h-14 bg-blue-400 rounded-xl flex items-center justify-center">
-                    <Brain className="w-7 h-7 text-white" />
-                  </div>
-                  <div>
-                    <h3 className="font-bold text-blue-700">大脑记忆中枢</h3>
-                    <p className="text-xs text-blue-600/70">回溯记忆，学习技能</p>
-                  </div>
-                </CardContent>
-              </Card>
-
-              <Card className="bg-gradient-to-r from-red-50 to-red-100 border-red-200 opacity-60">
-                <CardContent className="p-5 flex items-center gap-4">
-                  <div className="w-14 h-14 bg-red-400 rounded-xl flex items-center justify-center">
-                    <Sword className="w-7 h-7 text-white" />
-                  </div>
-                  <div>
-                    <h3 className="font-bold text-red-700">病变的乳腺组织</h3>
-                    <p className="text-xs text-red-600/70">挑战症状BOSS (0个已解锁)</p>
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
-
-            {/* 装饰元素 */}
-            <div className="absolute bottom-20 left-4 opacity-20">
-              <div className="w-8 h-8 bg-pink-400 rounded-full animate-pulse" />
-            </div>
-            <div className="absolute top-24 right-4 opacity-15">
-              <div className="w-6 h-6 bg-pink-500 rounded-full animate-bounce" />
+            {/* Micro world entrance preview */}
+            <div className="absolute bottom-36 left-1/2 -translate-x-1/2 flex gap-4">
+              <div className="bg-white/60 rounded-xl p-4 border border-pink-200 text-center w-36">
+                <Brain className="w-8 h-8 text-pink-500 mx-auto mb-2" />
+                <span className="text-xs font-bold text-pink-700">
+                  {isZh ? '大脑记忆中枢' : 'Memory Center'}
+                </span>
+                <p className="text-[10px] text-pink-500">
+                  {isZh ? '回溯过往生活' : 'Review past life'}
+                </p>
+              </div>
+              <div className="bg-white/60 rounded-xl p-4 border border-pink-200 text-center w-36">
+                <Sword className="w-8 h-8 text-pink-500 mx-auto mb-2" />
+                <span className="text-xs font-bold text-pink-700">
+                  {isZh ? '症状BOSS' : 'Symptom BOSS'}
+                </span>
+                <p className="text-[10px] text-pink-500">
+                  {isZh ? '驱散病症黑雾' : 'Disperse dark mist'}
+                </p>
+              </div>
             </div>
           </div>
         );
       
       case 'memory':
         return (
-          <div className="absolute inset-0 bg-gradient-to-b from-indigo-100 to-purple-100">
-            {/* 大脑记忆中枢背景 */}
-            <div className="absolute top-4 left-4">
-              <span className="text-indigo-600 text-sm">← 返回主城</span>
-            </div>
-            
+          <div className="absolute inset-0 bg-gradient-to-b from-indigo-900 to-purple-950">
+            {/* Brain memory center mockup */}
             <div className="absolute top-16 left-1/2 -translate-x-1/2 text-center">
-              <h2 className="text-2xl font-bold text-indigo-700">大脑记忆中枢</h2>
-              <p className="text-sm text-indigo-600/70">一周目 · 记忆点通关后锁定</p>
+              <h2 className="text-2xl font-bold text-indigo-200">
+                {isZh ? '大脑记忆中枢' : 'Brain Memory Center'}
+              </h2>
+              <p className="text-sm text-indigo-300/70">
+                {isZh ? '回溯过往 · 改写选择' : 'Retrace the Past · Rewrite Decisions'}
+              </p>
             </div>
 
-            {/* 记忆点列表 */}
-            <div className="absolute top-36 left-1/2 -translate-x-1/2 w-80 space-y-3">
-              <div className="bg-yellow-100 rounded-xl p-4 border border-yellow-300 flex items-center gap-3">
-                <div className="w-10 h-10 bg-yellow-400 rounded-full flex items-center justify-center text-white font-bold">1</div>
-                <div className="flex-1">
-                  <h3 className="font-bold text-gray-800">记忆点标题</h3>
-                  <p className="text-xs text-gray-600">记忆点描述</p>
+            {/* Neural connection line */}
+            <div className="absolute top-32 left-1/2 -translate-x-1/2 w-72 h-1 bg-gradient-to-r from-indigo-500 via-purple-400 to-pink-500 rounded-full opacity-60" />
+
+            {/* 3 Memory points preview */}
+            <div className="absolute top-40 left-1/2 -translate-x-1/2 w-80 space-y-3">
+              {[
+                {
+                  title: isZh ? '记忆点1: 习惯重塑' : 'Memory 1: Habit Reshaping',
+                  boss: isZh ? '解锁肿块BOSS' : 'Unlocks Lump BOSS',
+                  color: 'indigo'
+                },
+                {
+                  title: isZh ? '记忆点2: 情绪调适' : 'Memory 2: Emotional Balance',
+                  boss: isZh ? '解锁分泌BOSS' : 'Unlocks Discharge BOSS',
+                  color: 'purple'
+                },
+                {
+                  title: isZh ? '记忆点3: 科学认知' : 'Memory 3: Scientific Awareness',
+                  boss: isZh ? '解锁皮肤BOSS' : 'Unlocks Peau BOSS',
+                  color: 'pink'
+                }
+              ].map((item, idx) => (
+                <div key={idx} className="bg-white/10 backdrop-blur-sm rounded-xl p-3 border border-white/20 flex items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center text-xs font-bold text-white">
+                      {idx + 1}
+                    </div>
+                    <div>
+                      <p className="text-xs font-bold text-white">{item.title}</p>
+                      <p className="text-[10px] text-white/60">{item.boss}</p>
+                    </div>
+                  </div>
+                  <span className="text-[10px] bg-white/10 text-white/70 px-2 py-0.5 rounded">
+                    {isZh ? '未解锁' : 'Locked'}
+                  </span>
                 </div>
-                <span className="text-xs bg-blue-100 text-blue-600 px-2 py-1 rounded">可进入</span>
-              </div>
-              
-              <div className="bg-gray-100 rounded-xl p-4 border border-gray-200 flex items-center gap-3 opacity-60">
-                <div className="w-10 h-10 bg-gray-400 rounded-full flex items-center justify-center text-white font-bold">2</div>
-                <div className="flex-1">
-                  <h3 className="font-bold text-gray-800">记忆点标题</h3>
-                  <p className="text-xs text-gray-600">记忆点描述</p>
-                </div>
-                <span className="text-xs bg-gray-200 text-gray-500 px-2 py-1 rounded">未解锁</span>
-              </div>
-              
-              <div className="bg-gray-100 rounded-xl p-4 border border-gray-200 flex items-center gap-3 opacity-60">
-                <div className="w-10 h-10 bg-gray-400 rounded-full flex items-center justify-center text-white font-bold">3</div>
-                <div className="flex-1">
-                  <h3 className="font-bold text-gray-800">记忆点标题</h3>
-                  <p className="text-xs text-gray-600">记忆点描述</p>
-                </div>
-                <span className="text-xs bg-gray-200 text-gray-500 px-2 py-1 rounded">未解锁</span>
-              </div>
+              ))}
             </div>
 
-            {/* 已装备技能 */}
-            <div className="absolute bottom-32 left-1/2 -translate-x-1/2 w-80">
-              <div className="bg-white/80 rounded-xl p-4">
-                <h4 className="text-sm font-medium text-gray-700 mb-3">已装备技能</h4>
-                <div className="flex flex-wrap gap-2">
-                  {state.equippedSkills.map((skillId) => (
-                    <span key={skillId} className="text-xs bg-pink-100 text-pink-600 px-2 py-1 rounded">
-                      {SKILL_NAME_MAP[skillId] || skillId}
-                    </span>
-                  ))}
-                </div>
+            {/* Tip box */}
+            <div className="absolute bottom-36 left-1/2 -translate-x-1/2 w-80">
+              <div className="bg-indigo-950/60 rounded-xl p-3 border border-indigo-700/50">
+                <p className="text-xs text-indigo-200/80 text-center">
+                  {isZh
+                    ? '💡 通关每个记忆点，即可获得专属技能并解锁对应BOSS'
+                    : '💡 Clear each Memory Point to gain exclusive skills & unlock the corresponding BOSS'}
+                </p>
               </div>
             </div>
           </div>
@@ -225,65 +236,81 @@ export default function TutorialGuide() {
       
       case 'boss':
         return (
-          <div className="absolute inset-0 bg-gradient-to-b from-red-900 to-red-950">
-            {/* 病变乳腺组织背景 */}
-            <div className="absolute top-4 left-4">
-              <span className="text-red-300 text-sm">← 返回主城</span>
-            </div>
-            
+          <div className="absolute inset-0 bg-gradient-to-b from-gray-900 to-red-950">
+            {/* Diseased tissue title */}
             <div className="absolute top-16 left-1/2 -translate-x-1/2 text-center">
-              <h2 className="text-2xl font-bold text-red-400">病变的乳腺组织</h2>
-              <p className="text-sm text-red-300/70">BOSS挑战区 · 第1周目</p>
+              <h2 className="text-2xl font-bold text-red-300">
+                {isZh ? '病变乳腺组织 · 症状BOSS挑战区' : 'Diseased Mammary Tissue · BOSS Challenge Area'}
+              </h2>
+              <p className="text-sm text-red-400/70">
+                {isZh ? '击败所有BOSS · 驱散黑雾' : 'Defeat All BOSSes · Disperse Dark Mist'}
+              </p>
             </div>
 
-            {/* BOSS列表 */}
-            <div className="absolute top-36 left-1/2 -translate-x-1/2 w-80 space-y-3">
+            {/* 3 BOSS cards */}
+            <div className="absolute top-32 left-1/2 -translate-x-1/2 w-80 space-y-3">
               <div className="bg-red-800/60 rounded-xl p-4 border border-red-700 flex items-center gap-3">
                 <div className="w-12 h-12 bg-red-600 rounded-full flex items-center justify-center overflow-hidden">
-                  <img src={getBossAssetPath('breastLump', '狰狞')} alt="乳房硬块BOSS" className="h-full w-full object-cover" />
+                  <img src={getBossAssetPath('breastLump', '狰狞')} alt="BOSS" className="h-full w-full object-cover" />
                 </div>
                 <div className="flex-1">
-                  <h3 className="font-bold text-red-200">乳房硬块BOSS</h3>
-                  <p className="text-xs text-red-300/70">解锁条件: 通关记忆点1</p>
+                  <h3 className="font-bold text-red-200">
+                    {isZh ? '肿块BOSS' : 'Breast Lump BOSS'}
+                  </h3>
+                  <p className="text-xs text-red-300/70">
+                    {isZh ? '解锁条件: 通关记忆点1' : 'Unlock: Clear Memory Point 1'}
+                  </p>
                 </div>
                 <span className="text-xs bg-gray-600 text-gray-300 px-2 py-1 rounded flex items-center gap-1">
-                  <span>🔒</span> 未解锁
+                  <span>🔒</span> {isZh ? '未解锁' : 'Locked'}
                 </span>
               </div>
               
               <div className="bg-red-800/60 rounded-xl p-4 border border-red-700 flex items-center gap-3">
                 <div className="w-12 h-12 bg-red-600 rounded-full flex items-center justify-center overflow-hidden">
-                  <img src={getBossAssetPath('nippleDischarge', '狰狞')} alt="乳头溢液BOSS" className="h-full w-full object-cover" />
+                  <img src={getBossAssetPath('nippleDischarge', '狰狞')} alt="BOSS" className="h-full w-full object-cover" />
                 </div>
                 <div className="flex-1">
-                  <h3 className="font-bold text-red-200">乳头溢液BOSS</h3>
-                  <p className="text-xs text-red-300/70">解锁条件: 通关记忆点2</p>
+                  <h3 className="font-bold text-red-200">
+                    {isZh ? '乳头溢液BOSS' : 'Nipple Discharge BOSS'}
+                  </h3>
+                  <p className="text-xs text-red-300/70">
+                    {isZh ? '解锁条件: 通关记忆点2' : 'Unlock: Clear Memory Point 2'}
+                  </p>
                 </div>
                 <span className="text-xs bg-gray-600 text-gray-300 px-2 py-1 rounded flex items-center gap-1">
-                  <span>🔒</span> 未解锁
+                  <span>🔒</span> {isZh ? '未解锁' : 'Locked'}
                 </span>
               </div>
               
               <div className="bg-red-800/60 rounded-xl p-4 border border-red-700 flex items-center gap-3">
                 <div className="w-12 h-12 bg-red-600 rounded-full flex items-center justify-center overflow-hidden">
-                  <img src={getBossAssetPath('orangePeel', '狰狞')} alt="橘皮样改变BOSS" className="h-full w-full object-cover" />
+                  <img src={getBossAssetPath('orangePeel', '狰狞')} alt="BOSS" className="h-full w-full object-cover" />
                 </div>
                 <div className="flex-1">
-                  <h3 className="font-bold text-red-200">橘皮样改变BOSS</h3>
-                  <p className="text-xs text-red-300/70">解锁条件: 通关记忆点3</p>
+                  <h3 className="font-bold text-red-200">
+                    {isZh ? '橘皮样改变BOSS' : "Peau d'Orange BOSS"}
+                  </h3>
+                  <p className="text-xs text-red-300/70">
+                    {isZh ? '解锁条件: 通关记忆点3' : 'Unlock: Clear Memory Point 3'}
+                  </p>
                 </div>
                 <span className="text-xs bg-gray-600 text-gray-300 px-2 py-1 rounded flex items-center gap-1">
-                  <span>🔒</span> 未解锁
+                  <span>🔒</span> {isZh ? '未解锁' : 'Locked'}
                 </span>
               </div>
             </div>
 
-            {/* 挑战进度 */}
+            {/* Challenge Progress */}
             <div className="absolute bottom-40 left-1/2 -translate-x-1/2 w-80">
               <div className="bg-red-900/60 rounded-xl p-4 border border-red-700">
                 <div className="flex justify-between items-center mb-2">
-                  <span className="text-sm text-red-200">挑战进度</span>
-                  <span className="text-sm text-red-400">0 / 3 已击败</span>
+                  <span className="text-sm text-red-200">
+                    {isZh ? '挑战进度' : 'Challenge Progress'}
+                  </span>
+                  <span className="text-sm text-red-400">
+                    {isZh ? '0 / 3 已击败' : '0 / 3 Defeated'}
+                  </span>
                 </div>
                 <div className="w-full h-2 bg-red-800 rounded-full overflow-hidden">
                   <div className="h-full bg-red-500 w-0" />
@@ -291,11 +318,13 @@ export default function TutorialGuide() {
               </div>
             </div>
 
-            {/* 提示 */}
+            {/* Tip */}
             <div className="absolute bottom-24 left-1/2 -translate-x-1/2 w-80">
               <div className="bg-red-800/40 rounded-xl p-3 border border-red-700/50">
                 <p className="text-xs text-red-300/80 text-center">
-                  提示：通关对应记忆点即可挑战对应BOSS。击败全部3个BOSS即可触发结局。
+                  {isZh
+                    ? '提示：通关对应记忆点即可挑战对应BOSS。击败全部3个BOSS即可触发结局。'
+                    : 'Tip: Clear each Memory Point to unlock its corresponding BOSS. Defeating all 3 BOSSes triggers the ending.'}
                 </p>
               </div>
             </div>
@@ -312,7 +341,7 @@ export default function TutorialGuide() {
       className="min-h-screen relative overflow-hidden"
       onClick={pb.handleScreenClick}
     >
-      {/* 背景 */}
+      {/* Background */}
       {renderBackground()}
 
       {backgroundImage && (
@@ -325,20 +354,19 @@ export default function TutorialGuide() {
       <div className="absolute inset-0 z-[2] bg-gradient-to-b from-transparent via-transparent to-black/20 pointer-events-none" />
       <div className="absolute inset-x-0 bottom-40 z-[3] hidden md:flex items-end justify-between px-8 pointer-events-none">
         {protagonistPortrait && (
-          <img src={protagonistPortrait} alt="主角" className="max-h-[44vh] max-w-[30vw] object-contain drop-shadow-[0_18px_30px_rgba(0,0,0,0.35)]" />
+          <img src={protagonistPortrait} alt="Protagonist" className="max-h-[44vh] max-w-[30vw] object-contain drop-shadow-[0_18px_30px_rgba(0,0,0,0.35)]" />
         )}
-        {currentScene.speaker === '派蒙' && paimonPortrait && (
-          <img src={paimonPortrait} alt="派蒙" className="max-h-[42vh] max-w-[28vw] object-contain drop-shadow-[0_18px_30px_rgba(0,0,0,0.28)]" />
+        {(currentScene.speaker === '派蒙' || currentScene.speaker === 'Paimon') && paimonPortrait && (
+          <img src={paimonPortrait} alt="Paimon" className="max-h-[42vh] max-w-[28vw] object-contain drop-shadow-[0_18px_30px_rgba(0,0,0,0.28)]" />
         )}
         {currentScene.background === 'boss' && (
           <img src={getBossAssetPath('breastLump', '狰狞')} alt="BOSS" className="max-h-[36vh] max-w-[24vw] object-contain drop-shadow-[0_18px_30px_rgba(0,0,0,0.45)]" />
         )}
       </div>
 
-      {/* 环境自适应暗角：压立绘底脚，保证对话框区域辨识度 */}
       <div className={`${DIALOG_VIGNETTE} z-[4]`} />
 
-      {/* 复古像素快捷控制栏：回退 / AUTO / SKIP / HIDE / LOG / 设置 */}
+      {/* Story controls */}
       <StoryControlBar
         className={pb.hiddenUiClass}
         canBack={pb.index > 0}
@@ -351,18 +379,18 @@ export default function TutorialGuide() {
         onSettings={() => setShowSettings(true)}
       />
 
-      {/* 剧情对话框：点击全屏任意区域推进下一句 */}
+      {/* Story dialog box */}
       {!showComplete && (
       <div className={`absolute bottom-6 left-4 right-4 z-30 md:left-16 md:right-16 ${pb.hiddenUiClass}`}>
         <div className={`${DIALOG_BOX} p-5 md:p-6`}>
           <div className={DIALOG_INNER} />
-          {currentScene?.speaker && currentScene.speaker !== '旁白' && (
+          {currentScene?.speaker && currentScene.speaker !== '旁白' && currentScene.speaker !== 'Narrator' && (
             <div className={SPEAKER_TAG}>
               <span className={SPEAKER_AVATAR}>
-                {currentScene.speaker === '派蒙' && paimonPortrait ? (
-                  <img src={paimonPortrait} alt="派蒙" className="h-full w-full object-cover" />
-                ) : currentScene.speaker === '主角' && protagonistPortrait ? (
-                  <img src={protagonistPortrait} alt="主角" className="h-full w-full object-cover" />
+                {(currentScene.speaker === '派蒙' || currentScene.speaker === 'Paimon') && paimonPortrait ? (
+                  <img src={paimonPortrait} alt="Paimon" className="h-full w-full object-cover" />
+                ) : (currentScene.speaker === '主角' || currentScene.speaker === 'Protagonist') && protagonistPortrait ? (
+                  <img src={protagonistPortrait} alt="Protagonist" className="h-full w-full object-cover" />
                 ) : (
                   getSpeakerAvatar(currentScene.speaker)
                 )}
@@ -371,18 +399,18 @@ export default function TutorialGuide() {
             </div>
           )}
 
-          <p className={`${DIALOG_TEXT} ${currentScene?.speaker === '旁白' ? DIALOG_TEXT_NARRATION : ''}`}>
+          <p className={`${DIALOG_TEXT} ${currentScene?.speaker === '旁白' || currentScene?.speaker === 'Narrator' ? DIALOG_TEXT_NARRATION : ''}`}>
             {pb.displayed}
           </p>
 
-          {/* 进度指示器 */}
+          {/* Progress */}
           <div className={DIALOG_PROGRESS}>
             <span className="text-xs font-medium text-[#8D6E63]">
               {pb.index + 1} / {tutorialScenes.length}
             </span>
             {!isLastScene && (
               <span className={NEXT_HINT_INLINE}>
-                点击继续
+                {isZh ? '点击继续' : 'Click to continue'}
                 <span className={NEXT_ARROW}>▼</span>
               </span>
             )}
@@ -391,10 +419,10 @@ export default function TutorialGuide() {
       </div>
       )}
 
-      {/* 历史台词抽屉 */}
+      {/* Story log drawer */}
       <StoryLogDrawer open={pb.showLog} onClose={() => pb.setShowLog(false)} entries={pb.log} />
 
-      {/* 引导完成界面 */}
+      {/* Tutorial complete modal */}
       {showComplete && (
         <div
           className="absolute inset-0 z-40 flex items-center justify-center bg-gradient-to-b from-pink-200/60 via-white/50 to-pink-200/70 backdrop-blur-md"
@@ -402,13 +430,19 @@ export default function TutorialGuide() {
         >
           <div className="max-w-md w-full p-6 text-center">
             <div className="text-6xl mb-4">🎉</div>
-            <h2 className="text-2xl font-bold text-stone-800 mb-2">新手引导完成！</h2>
+            <h2 className="text-2xl font-bold text-stone-800 mb-2">
+              {isZh ? '新手引导完成！' : 'Tutorial Complete!'}
+            </h2>
             <p className="text-stone-600 mb-6">
-              你已经了解了游戏的基本玩法。现在，开始你的乳腺守护冒险吧！
+              {isZh
+                ? '你已经了解了游戏的基本玩法。现在，开始你的乳腺守护冒险吧！'
+                : 'You now grasp the core mechanics. Embark on your breast guardian journey!'}
             </p>
             <div className="rounded-xl bg-white/60 border border-pink-200/80 p-4 mb-6">
               <p className="text-sm text-stone-700">
-                💡 提示：通关记忆点解锁BOSS，击败所有BOSS触发结局
+                {isZh
+                  ? '💡 提示：通关记忆点解锁BOSS，击败所有BOSS触发结局'
+                  : '💡 Tip: Clear Memory Points to unlock BOSSes; defeat all BOSSes to achieve endings.'}
               </p>
             </div>
             <Button
@@ -416,27 +450,33 @@ export default function TutorialGuide() {
               className="rounded-full bg-gradient-to-r from-pink-500 to-rose-400 hover:from-pink-600 hover:to-rose-500 text-white px-8 border-[1.5px] border-white/80 shadow-[0_6px_18px_rgba(236,72,153,0.35)]"
               onClick={handleComplete}
             >
-              开始冒险
+              {isZh ? '开始冒险' : 'Begin Adventure'}
             </Button>
           </div>
         </div>
       )}
 
-      {/* 设置对话框 */}
+      {/* Settings modal */}
       {showSettings && (
         <div 
           className="absolute inset-0 bg-black/70 flex items-center justify-center z-50"
           onClick={(e) => e.stopPropagation()}
         >
           <div className="bg-white rounded-2xl p-6 max-w-sm w-full">
-            <h3 className="text-lg font-bold mb-4">设置</h3>
+            <h3 className="text-lg font-bold mb-4">
+              {isZh ? '设置' : 'Settings'}
+            </h3>
             <div className="space-y-4">
               <div>
-                <label className="text-sm text-gray-600">文字速度</label>
+                <label className="text-sm text-gray-600">
+                  {isZh ? '文字速度' : 'Text Speed'}
+                </label>
                 <input type="range" className="w-full" min="1" max="5" defaultValue="3" />
               </div>
               <div>
-                <label className="text-sm text-gray-600">音量</label>
+                <label className="text-sm text-gray-600">
+                  {isZh ? '音量' : 'Volume'}
+                </label>
                 <input type="range" className="w-full" min="0" max="100" defaultValue="50" />
               </div>
             </div>
@@ -444,7 +484,7 @@ export default function TutorialGuide() {
               className="w-full mt-4"
               onClick={() => setShowSettings(false)}
             >
-              关闭
+              {isZh ? '关闭' : 'Close'}
             </Button>
           </div>
         </div>

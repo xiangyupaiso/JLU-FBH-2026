@@ -1,5 +1,6 @@
 // 游戏类型定义
 
+export type Language = 'zh' | 'en';
 export type Perspective = 'child' | 'adult' | 'elder';
 export type MemoryPoint = 1 | 2 | 3;
 export type EndingType = 'HE' | 'BE';
@@ -140,6 +141,7 @@ export interface GameState {
   playthrough: Playthrough;
   skipStory: boolean;
   hasCompletedTutorial: boolean;
+  language: Language;
 
   battleState: {
     bossHealth: number;
@@ -149,20 +151,23 @@ export interface GameState {
   } | null;
   // 记录战斗中使用的负面技能来源（用于BE结局跳转）
   lastUsedNegativeSkillSource: number | null;
+  isExitMenuOpen: boolean;
 }
 
-// 视角定义
-export const PERSPECTIVES: Record<Perspective, { 
-  name: string; 
-  description: string; 
-  age: string; 
+export interface PerspectiveInfo {
+  name: string;
+  description: string;
+  age: string;
   character: string;
   possessive: string;
   color: string;
-}> = {
+}
+
+// 视角定义（中文）
+export const PERSPECTIVES_ZH: Record<Perspective, PerspectiveInfo> = {
   child: {
     name: '幼年视角',
-    description: '守护妈妈的乳腺世界',
+    description: '10岁小女孩 · 守护妈妈的乳腺健康世界',
     age: '10岁',
     character: '小女孩',
     possessive: '妈妈的',
@@ -170,7 +175,7 @@ export const PERSPECTIVES: Record<Perspective, {
   },
   adult: {
     name: '青壮年视角',
-    description: '守护自己的健康人生',
+    description: '32岁职场女性 · 守护自己的健康生命旅途',
     age: '32岁',
     character: '职场女性',
     possessive: '自己的',
@@ -178,19 +183,53 @@ export const PERSPECTIVES: Record<Perspective, {
   },
   elder: {
     name: '老年视角',
-    description: '岁月安康，乳腺守护',
+    description: '65岁奶奶 · 晚年安康，关爱乳腺健康',
     age: '65岁',
     character: '奶奶',
-    possessive: '属于你的',
+    possessive: '您的',
     color: 'purple'
   }
 };
 
-// 6大BOSS定义 - 新版技能
-export const BOSSES: Record<BossType, Boss> = {
+// 视角定义（英文）
+export const PERSPECTIVES_EN: Record<Perspective, PerspectiveInfo> = {
+  child: {
+    name: 'Child Perspective',
+    description: "Safeguard Mom's breast health world",
+    age: 'Age 10',
+    character: 'Little Girl',
+    possessive: "Mom's",
+    color: 'amber'
+  },
+  adult: {
+    name: 'Adult Perspective',
+    description: 'Protect your own healthy life journey',
+    age: 'Age 32',
+    character: 'Career Woman',
+    possessive: 'your own',
+    color: 'blue'
+  },
+  elder: {
+    name: 'Elder Perspective',
+    description: 'Golden years of peace, breast wellness',
+    age: 'Age 65',
+    character: 'Grandmother',
+    possessive: 'your',
+    color: 'purple'
+  }
+};
+
+export const PERSPECTIVES = PERSPECTIVES_ZH;
+
+export function getPerspectiveData(p: Perspective, lang: Language = 'zh'): PerspectiveInfo {
+  return (lang === 'en' ? PERSPECTIVES_EN : PERSPECTIVES_ZH)[p];
+}
+
+// 6大BOSS定义（中文）
+export const BOSSES_ZH: Record<BossType, Boss> = {
   breastLump: {
     id: 'breastLump',
-    name: '乳房硬块BOSS',
+    name: '肿块BOSS',
     description: '乳腺异常增生的具象化，坚硬的肿块压迫着乳腺组织',
     symptoms: ['乳房出现无痛性硬块', '肿块边界不清', '质地较硬'],
     science: {
@@ -297,6 +336,124 @@ export const BOSSES: Record<BossType, Boss> = {
     week: 2
   }
 };
+
+// 6大BOSS定义（英文）
+export const BOSSES_EN: Record<BossType, Boss> = {
+  breastLump: {
+    id: 'breastLump',
+    name: 'Breast Lump BOSS',
+    description: 'The embodiment of abnormal hyperplasia, a rigid tumor compressing healthy mammary parenchyma.',
+    symptoms: ['Painless solitary breast lump', 'Ill-defined irregular borders', 'Firm or stony texture'],
+    science: {
+      mechanism: 'Abnormal proliferation of epithelial cells forming a nodular mass, frequently triggered by endocrine disruption, hormonal imbalance, or genetic predisposition.',
+      earlySigns: ['Painless palpable nodule', 'Subtle cutaneous dimpling', 'Spontaneous nipple secretion'],
+      medicalAdvice: 'Discovering a breast lump warrants immediate clinical breast ultrasound or mammographic examination.'
+    },
+    skills: [
+      { name: 'Nodular Infiltration', description: 'Hard nodules silently infiltrate mammary tissue', feedback: 'The BOSS coalesces dark mist: a hard nodule with irregular borders silently invades mammary tissue...' },
+      { name: 'Nodular Proliferation', description: 'The primary mass rapidly enlarges', feedback: 'The BOSS unleashes dark energy: the primary mass rapidly enlarges, sprouting satellite micro-nodules that adhere tighter to surrounding parenchyma...' },
+      { name: 'Deep Infiltration', description: 'Infiltrating deep pectoral fascia', feedback: 'The BOSS breaches superficial fascia, invading deep pectoral structures and tethering sensory nerves, triggering persistent radiating pain...' },
+      { name: 'Occult Dissemination', description: 'Forming occult micro-nodules in other quadrants', feedback: 'The BOSS disperses occult micro-spores, establishing subclinical foci in distant quadrants detectable only via diagnostic imaging...' }
+    ],
+    week: 1
+  },
+  skinDimple: {
+    id: 'skinDimple',
+    name: 'Skin Dimpling BOSS',
+    description: "The embodiment of ligamentous traction, pulling the overlying skin inward to create a dimpled depression.",
+    symptoms: ['Localized skin indentation', "Dimple-like cutaneous tethering (Dimple Sign)", 'Skin fixation to underlying tissue'],
+    science: {
+      mechanism: "Tumor invasion into Cooper's suspensory ligaments induces fibrous contracture, drawing the attached dermis inward.",
+      earlySigns: ['Localized skin tethering', 'Accentuated when raising arms or standing', 'May soften in supine position'],
+      medicalAdvice: "Skin dimpling is a classic clinical hallmark of underlying malignancy requiring urgent diagnostic evaluation."
+    },
+    skills: [
+      { name: 'Ligamentous Contracture', description: 'The central skin draws inward to form a dimple', feedback: "The BOSS constricts dark purple Cooper's ligaments, slowly pulling the central skin inward into an eerie dimple..." },
+      { name: 'Multifocal Indentation', description: 'Scattered tethering points across the breast', feedback: "The BOSS entangles multiple Cooper's ligaments, producing scattered pit marks across the skin that deepen during movement..." },
+      { name: 'Fascial Adhesion', description: 'Tethering ligaments to deep chest wall fascia', feedback: "The BOSS anchors Cooper's ligaments directly to the deep chest wall fascia, fixing the dimple in place with traction pain upon palpation..." },
+      { name: 'Ulcerative Breakdown', description: 'Skin breakdown at the center of the dimple', feedback: 'Persistent ligamentous tension induces localized ischemic necrosis, causing superficial dermal breakdown with serous exudation...' }
+    ],
+    week: 2
+  },
+  orangePeel: {
+    id: 'orangePeel',
+    name: "Peau d'Orange BOSS",
+    description: "The embodiment of dermal lymphatic obstruction, producing a coarse orange-peel cutaneous texture.",
+    symptoms: ['Thickened, indurated breast skin', 'Prominently indented follicular pores', "Classic orange-peel (peau d'orange) appearance"],
+    science: {
+      mechanism: 'Tumor emboli occlude subdermal lymphatic channels, causing dermal lymphedema while tethered hair follicle pores remain pitted.',
+      earlySigns: ['Enlarged cutaneous pores', 'Skin thickening and induration', "Coarse non-pitting edema (peau d'orange)"],
+      medicalAdvice: "Peau d'orange indicates advanced cutaneous lymphatic involvement or inflammatory carcinoma, demanding urgent clinical intervention."
+    },
+    skills: [
+      { name: 'Lymphatic Stasis Curse', description: "The skin thickens into a coarse peau d'orange pattern", feedback: "The BOSS plugs subdermal lymphatic vessels; the skin turns thick and edematous, with indented pores forming a dense peau d'orange texture..." },
+      { name: 'Edema Spread', description: 'Edema spreads from breast to chest wall', feedback: 'The BOSS extends lymphatic blockage; diffuse edema spreads across the breast and axilla, rendering skin tense, shiny, and non-pitting...' },
+      { name: 'Follicular Hyperkeratosis', description: 'Pores enlarge and harden', feedback: 'The BOSS stimulates keratinization within edematous follicles; pores widen and stiffen, accentuating the leathery texture with severe itching...' },
+      { name: 'Lymphatic Thrombosis', description: 'Complete obstruction of major lymphatic trunks', feedback: 'The BOSS forms solid lymphatic tumor emboli, entirely blocking primary lymphatic trunks; the breast becomes spherical, swollen, and warm to the touch...' }
+    ],
+    week: 1
+  },
+  lymphNode: {
+    id: 'lymphNode',
+    name: 'Axillary Lymphadenopathy BOSS',
+    description: 'The incarnation of lymphatic metastasis, swollen lymph nodes blocking normal drainage and conglomerating into hard masses.',
+    symptoms: ['Palpable axillary swelling', 'Lymph node enlargement', 'Possible localized tenderness'],
+    science: {
+      mechanism: 'Malignant cells migrate through lymphatic pathways into axillary sentinel nodes, triggering reactive proliferation, tumor colonization, and nodal enlargement.',
+      earlySigns: ['Painless axillary mass', 'Firm or stony nodal texture', 'Poor mobility or matted fixation'],
+      medicalAdvice: 'Unexplained axillary lymphadenopathy mandates immediate examination to evaluate regional lymph node metastasis.'
+    },
+    skills: [
+      { name: 'Nodal Matting', description: 'Lymph nodes conglomerate into a fixed mass', feedback: 'The BOSS expands into the axilla; nodes multiply and harden like stone, coalescing into a matted, immobile conglomeration fixed to surrounding tissue...' },
+      { name: 'Nodal Ulceration', description: 'Ulceration and purulent drainage from nodes', feedback: 'The BOSS erodes swollen lymph nodes; the cutaneous surface ruptures, draining dark hemorrhagic purulent fluid with foul odor...' },
+      { name: 'Regional Dissemination', description: 'Nodal enlargement spreads along lymphatic chains', feedback: 'The BOSS advances along regional lymph chains; matted nodes spread from the axilla to supraclavicular and parasternal basins in a bead-like chain...' },
+      { name: 'Neurovascular Compression', description: 'Compressing the axillary vein and brachial plexus', feedback: 'The conglomerated nodal mass compresses the axillary vein and adjacent nerve plexus, resulting in upper limb edema, numbness, and restricted motion...' }
+    ],
+    week: 2
+  },
+  nippleDischarge: {
+    id: 'nippleDischarge',
+    name: 'Nipple Discharge BOSS',
+    description: 'The incarnation of ductal secretory pathology, abnormal bloody or serous secretions leaking from the nipple.',
+    symptoms: ['Abnormal nipple discharge', 'Serosanguinous or bloody secretion', 'Unilateral single-duct fluid discharge'],
+    science: {
+      mechanism: 'Intraductal proliferative lesions or neoplasms irritate secretory epithelium and erode microvasculature, inducing spontaneous discharge.',
+      earlySigns: ['Spontaneous non-lactational discharge', 'Bloody or serous fluid', 'Discharge localized to a single orifice'],
+      medicalAdvice: 'Spontaneous nipple discharge—especially unilateral bloody or single-pore discharge—warrants prompt ductoscopy or imaging.'
+    },
+    skills: [
+      { name: 'Ductal Regurgitation', description: 'Dark reddish fluid oozes from the nipple pore', feedback: 'The BOSS erodes mammary ducts; dark reddish fluid seeps spontaneously from a solitary duct orifice outside of lactation...' },
+      { name: 'Persistent Hemorrhage', description: 'Discharge turns continuous and frank bloody', feedback: 'The BOSS dilates diseased ducts; intermittent discharge turns continuous and profuse, shifting to bright red frank blood...' },
+      { name: 'Multiductal Discharge', description: 'Multiple pores ooze simultaneously', feedback: 'The BOSS infiltrates adjacent collecting ducts; multiple orifices simultaneously weep fluid laced with mucin and micro-clots...' },
+      { name: 'Ductal Occlusion', description: 'Tumor thrombi obstruct the duct', feedback: 'The BOSS forms intraductal tumor plugs; fluid stops abruptly, triggering acute ductal distension, localized throbbing pain, and a palpable cord-like mass...' }
+    ],
+    week: 1
+  },
+  nippleRetraction: {
+    id: 'nippleRetraction',
+    name: 'Nipple Retraction BOSS',
+    description: 'The embodiment of lactiferous duct fibrosis, shortening and tethering the nipple inward.',
+    symptoms: ['Inward retraction/inversion of the nipple', 'Asymmetrical nipple axis deviation', 'Secondary areolar crusting or discharge'],
+    science: {
+      mechanism: 'Fibrotic contracture of periductal connective tissue shortens the major lactiferous ducts, dragging the nipple inward.',
+      earlySigns: ['Progressive nipple flattening or retraction', 'Areolar skin puckering', 'Alteration in nipple pointing direction'],
+      medicalAdvice: 'Newly acquired, progressive nipple retraction is a crucial warning sign of retroareolar malignancy requiring prompt medical attention.'
+    },
+    skills: [
+      { name: 'Fibrous Traction', description: 'The nipple is drawn sideways and inverted', feedback: 'The BOSS contracts subareolar ductal fibers; an invisible force pulls the nipple askew, flattening and dragging it behind the areola...' },
+      { name: 'Nipple Fixation', description: 'Nipple adheres rigidly to areolar bed', feedback: 'The BOSS binds the retracted nipple tightly to the areolar stromal bed; the inverted nipple cannot be manually everted, accompanied by areolar thickening...' },
+      { name: 'Nipple Ulceration', description: 'Erosion and persistent crusting on nipple tip', feedback: 'Continuous fibrous traction induces ischemia and friction necrosis; the nipple apex ulcerates and crusts with chronic non-healing erosion...' },
+      { name: 'Areolar Infiltration', description: 'Hard indurated plaques develop in the areola', feedback: 'The BOSS infiltrates the areolar complex; indurated plaques fuse with the retracted nipple into a rigid, ill-defined infiltrative mass...' }
+    ],
+    week: 2
+  }
+};
+
+export const BOSSES = BOSSES_ZH;
+
+export function getBossData(bossType: BossType, lang: Language = 'zh'): Boss {
+  return (lang === 'en' ? BOSSES_EN : BOSSES_ZH)[bossType];
+}
 
 // 一周目BOSS顺序（全视角统一）
 export const WEEK1_BOSSES: BossType[] = ['breastLump', 'nippleDischarge', 'orangePeel'];

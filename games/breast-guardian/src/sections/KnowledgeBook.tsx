@@ -1,91 +1,9 @@
 import { useGame } from '@/hooks/gameState';
 import { ChevronLeft, Skull, Sparkles, TriangleAlert } from 'lucide-react';
-import { BOSSES } from '@/types';
-import { ALL_SKILLS } from '@/data/skills';
+import { BOSSES_ZH, BOSSES_EN } from '@/types';
+import { getAllSkills } from '@/data/skills';
 import { useState } from 'react';
 import { assetUrl } from '@/data/assetUrls';
-
-// 技能名称映射表（id -> 中文名）
-const SKILL_NAME_MAP: Record<string, string> = {
-  // 初始技能
-  cellRepair: '细胞修复术',
-  hormoneBalance: '激素平衡',
-  immuneBoost: '免疫强化',
-  detox: '毒素净化',
-  // 幼年线技能
-  accompanyCare: '陪伴关怀',
-  willfulClingy: '任性粘人',
-  reasonableSchedule: '合理安排',
-  stubbornStudy: '固执熬夜',
-  warmComfort: '温暖安慰',
-  ignorantMockery: '无知嘲笑',
-  // 青壮年线技能
-  refuseAlcohol: '拒绝酒精',
-  forcedDrinking: '被迫饮酒',
-  adequateSleep: '充足睡眠',
-  stayUpLate: '熬夜透支',
-  rationalMedication: '理性用药',
-  abuseDrugs: '滥用药物',
-  // 老年线技能
-  timelyMedical: '及时就医',
-  hideIllness: '隐瞒病情',
-  regularCheckup: '定期体检',
-  delayCheckup: '拖延体检',
-  scientificTreatment: '科学治疗',
-  folkRemedy: '迷信偏方'
-};
-
-// 技能描述映射表
-const SKILL_DESC_MAP: Record<string, string> = {
-  cellRepair: '修复受损的乳腺细胞，恢复组织健康',
-  hormoneBalance: '调节内分泌，维持激素稳定',
-  immuneBoost: '增强免疫系统，提高抵抗力',
-  detox: '清除体内毒素，净化乳腺环境',
-  accompanyCare: '多陪伴妈妈，让她好好休息',
-  willfulClingy: '缠着妈妈熬夜陪伴',
-  reasonableSchedule: '合理规划时间，不让妈妈牵挂',
-  stubbornStudy: '偷偷熬夜学习不让妈妈休息',
-  warmComfort: '关心妈妈情绪，给她温暖支持',
-  ignorantMockery: '随口说出伤害妈妈的话',
-  refuseAlcohol: '远离酒精刺激，保护乳腺健康',
-  forcedDrinking: '为了工作不得不喝酒',
-  adequateSleep: '保持规律作息，维持内分泌稳定',
-  stayUpLate: '为了项目连续熬夜',
-  rationalMedication: '拒绝三无产品，科学管理身材',
-  abuseDrugs: '盲目服用三无减肥药',
-  timelyMedical: '发现异常立即就医，早发现早治疗',
-  hideIllness: '独自硬扛，不告诉子女',
-  regularCheckup: '按时进行乳腺检查，防患于未然',
-  delayCheckup: '把体检当成瞎折腾',
-  scientificTreatment: '相信专业医生，坚持正规治疗',
-  folkRemedy: '听信民间偏方，延误正规治疗'
-};
-
-// 技能效果映射表
-const SKILL_EFFECT_MAP: Record<string, string> = {
-  cellRepair: '修复乳腺细胞损伤',
-  hormoneBalance: '平衡雌激素水平',
-  immuneBoost: '提升免疫细胞活性',
-  detox: '清除有害物质',
-  accompanyCare: '缓解妈妈疲劳，驱散BOSS黑雾',
-  willfulClingy: '让妈妈劳累，BOSS黑雾强化',
-  reasonableSchedule: '让妈妈安心，BOSS无法靠近',
-  stubbornStudy: '让妈妈牵挂，BOSS黑雾蔓延',
-  warmComfort: '驱散妈妈心结，BOSS彻底消散',
-  ignorantMockery: '让妈妈伤心，BOSS彻底觉醒',
-  refuseAlcohol: '减少激素紊乱，BOSS无法成型',
-  forcedDrinking: '刺激乳腺组织，BOSS黑雾扩散',
-  adequateSleep: '平衡激素水平，BOSS虚弱消散',
-  stayUpLate: '内分泌紊乱，BOSS黑雾笼罩',
-  rationalMedication: '避免激素风暴，BOSS无法存在',
-  abuseDrugs: '激素风暴，BOSS彻底觉醒',
-  timelyMedical: '消除早期病灶，BOSS被成功清除',
-  hideIllness: '加重病情，BOSS彻底觉醒',
-  regularCheckup: '预防疾病发生，BOSS被成功驱散',
-  delayCheckup: '错失早期发现机会，BOSS黑雾蔓延',
-  scientificTreatment: '阻断病情恶化，BOSS被成功驱散',
-  folkRemedy: '病情恶化，BOSS彻底觉醒'
-};
 
 // 毛玻璃纸片容器：呼应背景柔焦水彩质感
 const paperCard =
@@ -93,13 +11,14 @@ const paperCard =
 
 // 知识手册 - 开局全解锁，无需收集
 export default function KnowledgeBook() {
-  const { dispatch } = useGame();
+  const { state, dispatch } = useGame();
+  const isZh = state.language === 'zh';
   const [activeTab, setActiveTab] = useState<'boss' | 'skill'>('boss');
   const [selectedBoss, setSelectedBoss] = useState<string | null>(null);
   const [selectedSkill, setSelectedSkill] = useState<string | null>(null);
 
-  const bossList = Object.values(BOSSES);
-  const skillList = Object.values(ALL_SKILLS);
+  const bossList = Object.values(isZh ? BOSSES_ZH : BOSSES_EN);
+  const skillList = Object.values(getAllSkills(state.language));
 
   return (
     <div className="relative min-h-screen isolate p-4 md:p-6">
@@ -112,18 +31,22 @@ export default function KnowledgeBook() {
         onClick={() => dispatch({ type: 'SET_PHASE', payload: 'mainMenu' })}
       >
         <ChevronLeft className="h-4 w-4" />
-        返回
+        {isZh ? '返回' : 'Back'}
       </button>
 
       {/* 标题 */}
       <div className="flex flex-col items-center gap-2 pt-14 pb-6 md:pt-16">
-        <h2 className="font-serif text-3xl font-bold tracking-wide text-[#5A4868] md:text-4xl">知识手册</h2>
+        <h2 className="font-serif text-3xl font-bold tracking-wide text-[#5A4868] md:text-4xl">
+          {isZh ? '知识手册' : 'Knowledge Handbook'}
+        </h2>
         <div className="flex w-56 items-center gap-3">
           <span className="h-px flex-1 bg-gradient-to-r from-transparent to-[#C8A2C8]/70" />
           <Sparkles className="h-3.5 w-3.5 text-[#C878A8]" />
           <span className="h-px flex-1 bg-gradient-to-l from-transparent to-[#C8A2C8]/70" />
         </div>
-        <p className="text-sm text-[#857497]">乳腺健康知识图鉴</p>
+        <p className="text-sm text-[#857497]">
+          {isZh ? '乳腺健康临床科普全书' : 'Breast Health Clinical Encyclopedia'}
+        </p>
       </div>
 
       {/* 标签切换 */}
@@ -140,7 +63,7 @@ export default function KnowledgeBook() {
           }}
         >
           <Skull className="h-4 w-4" />
-          BOSS图鉴
+          {isZh ? '症状BOSS图鉴' : 'BOSS Codex'}
         </button>
         <button
           className={`flex flex-1 items-center justify-center gap-2 rounded-full py-2.5 text-sm font-semibold transition-all duration-300 active:scale-95 ${
@@ -154,7 +77,7 @@ export default function KnowledgeBook() {
           }}
         >
           <Sparkles className="h-4 w-4" />
-          技能图鉴
+          {isZh ? '技能图鉴' : 'Skill Codex'}
         </button>
       </div>
 
@@ -182,7 +105,9 @@ export default function KnowledgeBook() {
                             : 'bg-[#E8A4C8]/40 text-[#96497E]'
                         }`}
                       >
-                        {boss.week === 1 ? '一周目' : '二周目'}
+                        {isZh
+                          ? (boss.week === 1 ? '一周目BOSS' : '二周目BOSS')
+                          : (boss.week === 1 ? 'Week 1 BOSS' : 'Week 2 BOSS')}
                       </span>
                     </div>
                   </div>
@@ -198,7 +123,7 @@ export default function KnowledgeBook() {
                 onClick={() => setSelectedBoss(null)}
               >
                 <ChevronLeft className="h-4 w-4" />
-                返回列表
+                {isZh ? '返回列表' : 'Back to Codex'}
               </button>
               {(() => {
                 const boss = bossList.find(b => b.id === selectedBoss);
@@ -218,38 +143,50 @@ export default function KnowledgeBook() {
                               : 'bg-[#E8A4C8]/40 text-[#96497E]'
                           }`}
                         >
-                          {boss.week === 1 ? '一周目BOSS' : '二周目BOSS'}
+                          {isZh
+                            ? (boss.week === 1 ? '一周目BOSS' : '二周目BOSS')
+                            : (boss.week === 1 ? 'Week 1 BOSS' : 'Week 2 BOSS')}
                         </span>
                       </div>
                     </div>
 
                     <div className="space-y-6">
                       <div className="border-t border-[#C8A2C8]/25 pt-4">
-                        <h4 className="mb-2 text-sm font-semibold text-[#9C4674]">症状表现</h4>
+                        <h4 className="mb-2 text-sm font-semibold text-[#9C4674]">
+                          {isZh ? '症状表现' : 'Clinical Symptoms'}
+                        </h4>
                         <ul className="list-inside list-disc space-y-1 text-[#6B5878] marker:text-[#C8A2C8]">
                           {boss.symptoms.map((s, i) => <li key={i}>{s}</li>)}
                         </ul>
                       </div>
 
                       <div className="border-t border-[#C8A2C8]/25 pt-4">
-                        <h4 className="mb-2 text-sm font-semibold text-[#9C4674]">发病机制</h4>
+                        <h4 className="mb-2 text-sm font-semibold text-[#9C4674]">
+                          {isZh ? '发病机制' : 'Pathological Mechanism'}
+                        </h4>
                         <p className="leading-relaxed text-[#6B5878]">{boss.science.mechanism}</p>
                       </div>
 
                       <div className="border-t border-[#C8A2C8]/25 pt-4">
-                        <h4 className="mb-2 text-sm font-semibold text-[#9C4674]">早期征兆</h4>
+                        <h4 className="mb-2 text-sm font-semibold text-[#9C4674]">
+                          {isZh ? '早期征兆' : 'Early Warning Signs'}
+                        </h4>
                         <ul className="list-inside list-disc space-y-1 text-[#6B5878] marker:text-[#C8A2C8]">
                           {boss.science.earlySigns.map((s, i) => <li key={i}>{s}</li>)}
                         </ul>
                       </div>
 
                       <div className="border-t border-[#C8A2C8]/25 pt-4">
-                        <h4 className="mb-2 text-sm font-semibold text-[#9C4674]">医疗建议</h4>
+                        <h4 className="mb-2 text-sm font-semibold text-[#9C4674]">
+                          {isZh ? '医疗建议' : 'Clinical Advice'}
+                        </h4>
                         <p className="leading-relaxed text-[#6B5878]">{boss.science.medicalAdvice}</p>
                       </div>
 
                       <div className="border-t border-[#C8A2C8]/25 pt-4">
-                        <h4 className="mb-3 text-sm font-semibold text-[#9C4674]">BOSS技能</h4>
+                        <h4 className="mb-3 text-sm font-semibold text-[#9C4674]">
+                          {isZh ? 'BOSS技能' : 'BOSS Abilities'}
+                        </h4>
                         <div className="space-y-3">
                           {boss.skills.map((skill, i) => (
                             <div key={i} className="rounded-xl bg-[#F7EDF4]/80 p-3.5">
@@ -294,7 +231,7 @@ export default function KnowledgeBook() {
                     </div>
                     <div className="min-w-0">
                       <h3 className="truncate font-serif text-lg font-bold text-[#5A4868]">
-                        {SKILL_NAME_MAP[skill.id] || skill.name}
+                        {skill.name}
                       </h3>
                       <span
                         className={`mt-1 inline-block rounded-full px-2.5 py-0.5 text-xs ${
@@ -303,11 +240,13 @@ export default function KnowledgeBook() {
                             : 'bg-[#A878C8]/20 text-[#7A5298]'
                         }`}
                       >
-                        {skill.type === 'positive' ? '正向技能' : '负面技能'}
+                        {isZh
+                          ? (skill.type === 'positive' ? '正向技能' : '负面技能')
+                          : (skill.type === 'positive' ? 'Positive Skill' : 'Negative Skill')}
                       </span>
                     </div>
                   </div>
-                  <p className="text-sm leading-relaxed text-[#6B5878]">{SKILL_DESC_MAP[skill.id] || skill.description}</p>
+                  <p className="text-sm leading-relaxed text-[#6B5878]">{skill.description}</p>
                 </div>
               ))}
             </div>
@@ -319,7 +258,7 @@ export default function KnowledgeBook() {
                 onClick={() => setSelectedSkill(null)}
               >
                 <ChevronLeft className="h-4 w-4" />
-                返回列表
+                {isZh ? '返回列表' : 'Back to Codex'}
               </button>
               {(() => {
                 const skill = skillList.find(s => s.id === selectedSkill);
@@ -340,7 +279,7 @@ export default function KnowledgeBook() {
                       </div>
                       <div>
                         <h3 className="font-serif text-2xl font-bold text-[#5A4868]">
-                          {SKILL_NAME_MAP[skill.id] || skill.name}
+                          {skill.name}
                         </h3>
                         <span
                           className={`mt-1 inline-block rounded-full px-3 py-0.5 text-xs ${
@@ -349,20 +288,26 @@ export default function KnowledgeBook() {
                               : 'bg-[#A878C8]/20 text-[#7A5298]'
                           }`}
                         >
-                          {skill.type === 'positive' ? '正向技能' : '负面技能'}
+                          {isZh
+                            ? (skill.type === 'positive' ? '正向技能' : '负面技能')
+                            : (skill.type === 'positive' ? 'Positive Skill' : 'Negative Skill')}
                         </span>
                       </div>
                     </div>
 
                     <div className="space-y-5">
                       <div className="border-t border-[#C8A2C8]/25 pt-4">
-                        <h4 className="mb-2 text-sm font-semibold text-[#9C4674]">技能描述</h4>
-                        <p className="leading-relaxed text-[#6B5878]">{SKILL_DESC_MAP[skill.id] || skill.description}</p>
+                        <h4 className="mb-2 text-sm font-semibold text-[#9C4674]">
+                          {isZh ? '技能描述' : 'Skill Description'}
+                        </h4>
+                        <p className="leading-relaxed text-[#6B5878]">{skill.description}</p>
                       </div>
 
                       <div className="border-t border-[#C8A2C8]/25 pt-4">
-                        <h4 className="mb-2 text-sm font-semibold text-[#9C4674]">技能效果</h4>
-                        <p className="leading-relaxed text-[#6B5878]">{SKILL_EFFECT_MAP[skill.id] || skill.effect}</p>
+                        <h4 className="mb-2 text-sm font-semibold text-[#9C4674]">
+                          {isZh ? '技能效果' : 'Skill Effect'}
+                        </h4>
+                        <p className="leading-relaxed text-[#6B5878]">{skill.effect}</p>
                       </div>
                     </div>
                   </div>
