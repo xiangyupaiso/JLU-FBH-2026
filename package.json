@@ -6,10 +6,9 @@
   "packageManager": "yarn@1.22.22",
   "scripts": {
     "dev": "vite",
-    "build": "node ./node_modules/typescript/bin/tsc && node ./node_modules/vite/bin/vite.js build && node scripts/postbuild-slug.mjs && node scripts/prepare-cloudflare-assets.mjs",
+    "build": "node ./node_modules/typescript/bin/tsc && node ./node_modules/vite/bin/vite.js build && node scripts/postbuild-slug.mjs",
     "lint": "eslint . --max-warnings 0",
     "test:page-loading": "node --test scripts/verify-page-image-loading.mjs",
-    "test:cloudflare": "node --test scripts/verify-cloudflare-assets.mjs",
     "format": "prettier --write \"**/*.{ts,tsx,md,json,css}\"",
     "preview": "vite preview"
   },

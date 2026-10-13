@@ -29,4 +29,3 @@ outputs/
 # must keep esbuild's temp files inside the workspace.
 .tmp-verify/
 .tmp-build/
-.wrangler/
