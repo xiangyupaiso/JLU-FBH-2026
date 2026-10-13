@@ -168,8 +168,8 @@ export function StoryControlBar({
   const isZh = lang
     ? lang === 'zh'
     : typeof window !== 'undefined'
-      ? localStorage.getItem('breast_guardian_lang') !== 'en'
-      : true;
+      ? localStorage.getItem('breast_guardian_lang') === 'zh'
+      : false;
 
   const handleExit = onExit || openExitMenu;
 
@@ -243,8 +243,8 @@ export function StoryLogDrawer({
   const isZh = lang
     ? lang === 'zh'
     : typeof window !== 'undefined'
-      ? localStorage.getItem('breast_guardian_lang') !== 'en'
-      : true;
+      ? localStorage.getItem('breast_guardian_lang') === 'zh'
+      : false;
 
   useEffect(() => {
     if (open) {

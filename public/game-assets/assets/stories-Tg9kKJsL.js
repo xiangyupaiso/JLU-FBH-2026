@@ -5451,4 +5451,4 @@ BE 版
 派蒙：一时的侥幸，换来的可能是一生的悔恨，别让迷信偏方，成为伤害自己、拖累家人的导火索。老年乳腺疾病患者更需谨慎，正规治疗才是唯一可靠的选择。
 【立绘：主角 / 坚定、派蒙 / 期待】
 旁白：我轻轻点头，眼眶泛红，眼泪忍不住掉下来，这段记忆带来的悔恨，让我刻骨铭心，这一次，我彻底记住了，再也不会因为病急乱投医而轻信偏方。
-旁白：记忆点 3 通关完成，已成功解锁两大病症 BOSS—— 酒窝征 BOSS、橘皮样改变 BOSS！可前往病变乳腺组织进行挑战！`}],bossUnlocked:["orangePeel","skinDimple"],skillHE:{id:"scientificTreatment",name:"科学治疗",description:"正向记忆技能",type:"positive",effect:"驱散黑雾，稳定乳腺主城。",icon:"heart"},skillBE:{id:"folkRemedy",name:"迷信偏方",description:"负面记忆技能",type:"negative",effect:"加重黑雾，使 BOSS 更容易觉醒。",icon:"danger"}}},d={child:o,adult:s,elder:l},c={child:i,adult:a,elder:r};function m(e,n,t="zh"){return(t==="en"?c:d)[e][n]}export{m as g};
+旁白：记忆点 3 通关完成，已成功解锁两大病症 BOSS—— 酒窝征 BOSS、橘皮样改变 BOSS！可前往病变乳腺组织进行挑战！`}],bossUnlocked:["orangePeel","skinDimple"],skillHE:{id:"scientificTreatment",name:"科学治疗",description:"正向记忆技能",type:"positive",effect:"驱散黑雾，稳定乳腺主城。",icon:"heart"},skillBE:{id:"folkRemedy",name:"迷信偏方",description:"负面记忆技能",type:"negative",effect:"加重黑雾，使 BOSS 更容易觉醒。",icon:"danger"}}},d={child:o,adult:s,elder:l},c={child:i,adult:a,elder:r};function m(e,n,t="en"){return(t==="en"?c:d)[e][n]}export{m as g};

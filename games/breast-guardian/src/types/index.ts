@@ -219,9 +219,9 @@ export const PERSPECTIVES_EN: Record<Perspective, PerspectiveInfo> = {
   }
 };
 
-export const PERSPECTIVES = PERSPECTIVES_ZH;
+export const PERSPECTIVES = PERSPECTIVES_EN;
 
-export function getPerspectiveData(p: Perspective, lang: Language = 'zh'): PerspectiveInfo {
+export function getPerspectiveData(p: Perspective, lang: Language = 'en'): PerspectiveInfo {
   return (lang === 'en' ? PERSPECTIVES_EN : PERSPECTIVES_ZH)[p];
 }
 
@@ -449,9 +449,9 @@ export const BOSSES_EN: Record<BossType, Boss> = {
   }
 };
 
-export const BOSSES = BOSSES_ZH;
+export const BOSSES = BOSSES_EN;
 
-export function getBossData(bossType: BossType, lang: Language = 'zh'): Boss {
+export function getBossData(bossType: BossType, lang: Language = 'en'): Boss {
   return (lang === 'en' ? BOSSES_EN : BOSSES_ZH)[bossType];
 }
 

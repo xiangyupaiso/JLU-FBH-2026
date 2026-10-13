@@ -243,11 +243,11 @@ export const SPECIAL_ENDINGS_EN: Record<Perspective, SpecialEndingData> = {
   }
 };
 
-export const SPECIAL_ENDINGS = SPECIAL_ENDINGS_ZH;
+export const SPECIAL_ENDINGS = SPECIAL_ENDINGS_EN;
 
 export function getSpecialEnding(
   perspective: Perspective,
-  lang: Language = 'zh'
+  lang: Language = 'en'
 ): SpecialEndingData {
   const store = lang === 'en' ? SPECIAL_ENDINGS_EN : SPECIAL_ENDINGS_ZH;
   return store[perspective];

@@ -502,16 +502,16 @@ export const INITIAL_SKILLS = INITIAL_SKILLS_ZH;
 export const CHILD_SKILLS = CHILD_SKILLS_ZH;
 export const ADULT_SKILLS = ADULT_SKILLS_ZH;
 export const ELDER_SKILLS = ELDER_SKILLS_ZH;
-export const ALL_SKILLS = ALL_SKILLS_ZH;
+export const ALL_SKILLS = ALL_SKILLS_EN;
 
-export function getAllSkills(lang: Language = 'zh'): Record<string, Skill> {
+export function getAllSkills(lang: Language = 'en'): Record<string, Skill> {
   return lang === 'en' ? ALL_SKILLS_EN : ALL_SKILLS_ZH;
 }
 
 export function getSkillsByMemory(
   perspective: Perspective,
   memoryPoint: number,
-  lang: Language = 'zh'
+  lang: Language = 'en'
 ): { he: Skill; be: Skill } {
   const store =
     lang === 'en'
@@ -521,6 +521,6 @@ export function getSkillsByMemory(
   return store[perspective]?.[memoryPoint] ?? store.child[1];
 }
 
-export function getSkillById(skillId: string, lang: Language = 'zh'): Skill | undefined {
+export function getSkillById(skillId: string, lang: Language = 'en'): Skill | undefined {
   return (lang === 'en' ? ALL_SKILLS_EN : ALL_SKILLS_ZH)[skillId];
 }

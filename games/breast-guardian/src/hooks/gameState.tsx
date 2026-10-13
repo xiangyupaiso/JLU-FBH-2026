@@ -41,7 +41,7 @@ const initialState: GameState = {
   playthrough: 1,
   skipStory: false,
   hasCompletedTutorial: false,
-  language: (typeof window !== 'undefined' && localStorage.getItem('breast_guardian_lang') as Language) || 'zh',
+  language: (typeof window !== 'undefined' && (localStorage.getItem('breast_guardian_lang') as Language)) || 'en',
 
   battleState: null,
   // 记录战斗中使用的负面技能来源（用于BE结局跳转）

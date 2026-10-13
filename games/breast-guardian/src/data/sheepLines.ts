@@ -44,6 +44,6 @@ export const SHEEP_LINES_EN: string[] = [
 
 export const SHEEP_LINES = SHEEP_LINES_ZH;
 
-export function getSheepLines(lang: Language = 'zh'): string[] {
+export function getSheepLines(lang: Language = 'en'): string[] {
   return lang === 'en' ? SHEEP_LINES_EN : SHEEP_LINES_ZH;
 }

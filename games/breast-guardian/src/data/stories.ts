@@ -18,12 +18,12 @@ export const MEMORY_STORIES_EN: Record<Perspective, Record<number, MemoryPointDa
   elder: ELDER_STORIES
 };
 
-export const MEMORY_STORIES = MEMORY_STORIES_ZH;
+export const MEMORY_STORIES = MEMORY_STORIES_EN;
 
 export function getMemoryStory(
   perspective: Perspective,
   memoryPoint: number,
-  lang: Language = 'zh'
+  lang: Language = 'en'
 ): MemoryPointData {
   const store = lang === 'en' ? MEMORY_STORIES_EN : MEMORY_STORIES_ZH;
   return store[perspective][memoryPoint];
