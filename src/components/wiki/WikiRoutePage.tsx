@@ -548,7 +548,7 @@ function RouteBlock({
     case "figure":
       return (
         <figure
-          className={`wiki-figure${block.figureLabel ? " wiki-figure--labelled" : ""}`}
+          className={`wiki-figure${block.figureLabel ? " wiki-figure--labelled" : ""}${block.src.includes("education-feedback-invitation") ? " wiki-figure--education-feedback" : ""}`}
           data-wiki-reveal
         >
           <img
@@ -807,7 +807,7 @@ function RouteBlock({
     case "chapter-link":
       return (
         <a
-          className="wiki-chapter-link"
+          className={`wiki-chapter-link${block.imageSrc ? " wiki-chapter-link--image" : ""}`}
           href={`#${block.target}`}
           data-wiki-reveal
           onClick={(event) => {
@@ -815,6 +815,7 @@ function RouteBlock({
             scrollToTarget(block.target);
           }}
         >
+          {block.imageSrc ? <img src={block.imageSrc} alt={block.imageAlt ?? ""} loading="lazy" /> : null}
           <span>{block.label}</span>
           <b aria-hidden="true">↘</b>
         </a>

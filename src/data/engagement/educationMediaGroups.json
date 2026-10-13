@@ -1,0 +1,283 @@
+[
+  {
+    "key": "education-media-group-1",
+    "items": [
+      {
+        "kind": "pdf",
+        "src": "__BASE__assets/education/virtual-laboratory-white-paper-english-cover.pdf",
+        "title": "Virtual Laboratory White Paper "
+      },
+      {
+        "kind": "pdf",
+        "src": "__BASE__assets/education/g01-virtual-laboratory-implementation-manual-cover.pdf",
+        "title": "G01 Virtual Laboratory Implementation Manual"
+      }
+    ]
+  },
+  {
+    "key": "education-media-group-2",
+    "items": [
+      {
+        "kind": "image",
+        "src": "__BASE__assets/education/evidence-when-dialogue-changed-the-route-photo-26.png",
+        "alt": "Illustration for When Dialogue Changed the Route",
+        "caption": ""
+      },
+      {
+        "kind": "image",
+        "src": "__BASE__assets/education/evidence-when-dialogue-changed-the-route-photo-27.png",
+        "alt": "Illustration for When Dialogue Changed the Route",
+        "caption": ""
+      }
+    ]
+  },
+  {
+    "key": "education-media-group-3",
+    "items": [
+      {
+        "kind": "image",
+        "src": "__BASE__assets/education/battle-heroes.png",
+        "alt": "Illustration for Turning Biological Relationships into Game Rules",
+        "caption": ""
+      },
+      {
+        "kind": "image",
+        "src": "__BASE__assets/education/battle-heroes-2.png",
+        "alt": "Illustration for Turning Biological Relationships into Game Rules",
+        "caption": ""
+      }
+    ]
+  },
+  {
+    "key": "education-media-group-4",
+    "items": [
+      {
+        "kind": "image",
+        "src": "__BASE__assets/education/continuation-knowledge-moved-again-photo-33.png",
+        "alt": "Illustration for Knowledge Moved Again",
+        "caption": ""
+      },
+      {
+        "kind": "image",
+        "src": "__BASE__assets/education/continuation-knowledge-moved-again-photo-34.png",
+        "alt": "Illustration for Knowledge Moved Again",
+        "caption": ""
+      },
+      {
+        "kind": "image",
+        "src": "__BASE__assets/education/continuation-knowledge-moved-again-photo-35.png",
+        "alt": "Illustration for Knowledge Moved Again",
+        "caption": ""
+      },
+      {
+        "kind": "image",
+        "src": "__BASE__assets/education/continuation-knowledge-moved-again-photo-36.png",
+        "alt": "Illustration for Knowledge Moved Again",
+        "caption": ""
+      },
+      {
+        "kind": "image",
+        "src": "__BASE__assets/education/continuation-knowledge-moved-again-photo-37.png",
+        "alt": "Illustration for Knowledge Moved Again",
+        "caption": ""
+      }
+    ]
+  },
+  {
+    "key": "education-media-group-5",
+    "items": [
+      {
+        "kind": "image",
+        "src": "__BASE__assets/education/continuation-migration-means-redesign-photo-41.png",
+        "alt": "Illustration for Migration Means Redesign",
+        "caption": ""
+      },
+      {
+        "kind": "image",
+        "src": "__BASE__assets/education/continuation-migration-means-redesign-photo-42.png",
+        "alt": "Illustration for Migration Means Redesign",
+        "caption": ""
+      }
+    ]
+  },
+  {
+    "key": "education-media-group-6",
+    "items": [
+      {
+        "kind": "image",
+        "src": "__BASE__assets/education/continuation-a-mechanism-that-travelled-photo-47.png",
+        "alt": "Illustration for A Mechanism That Travelled",
+        "caption": ""
+      },
+      {
+        "kind": "image",
+        "src": "__BASE__assets/education/continuation-a-mechanism-that-travelled-photo-46.png",
+        "alt": "Illustration for A Mechanism That Travelled",
+        "caption": ""
+      },
+      {
+        "kind": "image",
+        "src": "__BASE__assets/education/continuation-a-mechanism-that-travelled-photo-48.png",
+        "alt": "Illustration for A Mechanism That Travelled",
+        "caption": ""
+      },
+      {
+        "kind": "image",
+        "src": "__BASE__assets/education/continuation-a-mechanism-that-travelled-photo-49.png",
+        "alt": "Illustration for A Mechanism That Travelled",
+        "caption": ""
+      },
+      {
+        "kind": "image",
+        "src": "__BASE__assets/education/continuation-a-mechanism-that-travelled-photo-50.png",
+        "alt": "Illustration for A Mechanism That Travelled",
+        "caption": ""
+      }
+    ]
+  },
+  {
+    "key": "education-media-group-7",
+    "items": [
+      {
+        "kind": "pdf",
+        "src": "__BASE__assets/education/wp05-evidence-and-evaluation-in-education-cover.pdf",
+        "title": "WP05 Evidence and Evaluation in Education"
+      },
+      {
+        "kind": "pdf",
+        "src": "__BASE__assets/education/g02-life-stage-narrative-serious-game-design-playbook-cover.pdf",
+        "title": "G02 Life Stage Narrative Serious Game Design Playbook"
+      }
+    ]
+  },
+  {
+    "key": "education-media-group-8",
+    "items": [
+      {
+        "kind": "pdf",
+        "src": "__BASE__assets/education/a-seed-planted-in-the-heart-final.pdf",
+        "title": "A-Seed-Planted-in-the-Heart"
+      },
+      {
+        "kind": "pdf",
+        "src": "__BASE__assets/education/jlu-fbh-105-days-visual-journey.pdf",
+        "title": "JLU-FBH 105 Days Visual Journey"
+      }
+    ]
+  },
+  {
+    "key": "education-media-group-9",
+    "items": [
+      {
+        "kind": "pdf",
+        "src": "__BASE__assets/education/education-lineage-map-education-as-a-living-system.pdf",
+        "title": "Education Lineage Map-Education as a living system"
+      },
+      {
+        "kind": "pdf",
+        "src": "__BASE__assets/education/wp04-recursive-development-and-education-lineage-cover.pdf",
+        "title": "WP04 Recursive Development and Education Lineage."
+      }
+    ]
+  },
+  {
+    "key": "education-media-group-10",
+    "items": [
+      {
+        "kind": "pdf",
+        "src": "__BASE__assets/education/g01-virtual-laboratory-implementation-manual-cover.pdf",
+        "title": "G01 Virtual Laboratory Implementation Manual"
+      },
+      {
+        "kind": "pdf",
+        "src": "__BASE__assets/education/g02-life-stage-narrative-serious-game-design-playbook-cover.pdf",
+        "title": "G02 Life Stage Narrative Serious Game Design Playbook"
+      },
+      {
+        "kind": "pdf",
+        "src": "__BASE__assets/education/wp01-recursive-care-preserving-the-learner-cover.pdf",
+        "title": "WP01 Recursive Care Preserving the Learner"
+      },
+      {
+        "kind": "pdf",
+        "src": "__BASE__assets/education/wp02-from-community-to-portfolio-cover.pdf",
+        "title": "WP02 From Community to Portfolio"
+      },
+      {
+        "kind": "pdf",
+        "src": "__BASE__assets/education/wp03-from-dialogue-to-shape-cover.pdf",
+        "title": "WP03 From Dialogue to Shape."
+      },
+      {
+        "kind": "pdf",
+        "src": "__BASE__assets/education/wp04-recursive-development-and-education-lineage-cover.pdf",
+        "title": "WP04 Recursive Development and Education Lineage."
+      },
+      {
+        "kind": "pdf",
+        "src": "__BASE__assets/education/wp05-evidence-and-evaluation-in-education-cover.pdf",
+        "title": "WP05 Evidence and Evaluation in Education"
+      },
+      {
+        "kind": "pdf",
+        "src": "__BASE__assets/education/virtual-laboratory-white-paper-english-cover.pdf",
+        "title": "Virtual Laboratory White Paper "
+      }
+    ]
+  },
+  {
+    "key": "education-media-group-11",
+    "items": [
+      {
+        "kind": "pdf",
+        "src": "__BASE__assets/education/p01-winter-outreach-implementation-package.pdf",
+        "title": "P01 Winter Outreach Implementation Package"
+      },
+      {
+        "kind": "pdf",
+        "src": "__BASE__assets/education/p02-vaccine-classroom-implementation-package.pdf",
+        "title": "P02 Vaccine Classroom Implementation Package"
+      },
+      {
+        "kind": "pdf",
+        "src": "__BASE__assets/education/p03-synbio-classroom-implementation-package.pdf",
+        "title": "P03 Synbio Classroom Implementation Package"
+      },
+      {
+        "kind": "pdf",
+        "src": "__BASE__assets/education/p04-xinghua-festival-implementation-package.pdf",
+        "title": "P04 Xinghua Festival Implementation Package"
+      },
+      {
+        "kind": "pdf",
+        "src": "__BASE__assets/education/p05-health-run-implementation-package.pdf",
+        "title": "P05 Health Run Implementation Package"
+      },
+      {
+        "kind": "pdf",
+        "src": "__BASE__assets/education/p06-music-festival-implementation-package.pdf",
+        "title": "P06 Music Festival Implementation Package"
+      }
+    ]
+  },
+  {
+    "key": "education-media-group-12",
+    "items": [
+      {
+        "kind": "pdf",
+        "src": "__BASE__assets/education/a-seed-planted-in-the-heart-final.pdf",
+        "title": "A-Seed-Planted-in-the-Heart"
+      },
+      {
+        "kind": "pdf",
+        "src": "__BASE__assets/education/letters-to-my-body-final.pdf",
+        "title": "Letters to My Body"
+      },
+      {
+        "kind": "pdf",
+        "src": "__BASE__assets/education/field-guide-to-learning-final.pdf",
+        "title": "A Field Guide to Learning - Inaugural Issue"
+      }
+    ]
+  }
+]

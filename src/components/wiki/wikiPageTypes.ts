@@ -142,7 +142,7 @@ export type WikiContentBlock =
       anchorIds?: string[];
     }
   | { type: "feature"; key: string }
-  | { type: "chapter-link"; target: string; label: string }
+  | { type: "chapter-link"; target: string; label: string; imageSrc?: string; imageAlt?: string }
   /**
    * A Design–Build–Test–Learn quartet. `id` is the anchor the concentric TIME
    * dial uses to resolve the active stage, and each stage carries
