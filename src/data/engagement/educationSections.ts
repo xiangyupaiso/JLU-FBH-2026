@@ -264,10 +264,8 @@ const rawSections: WikiSection[] = [
         ]
       },
       {
-        "type": "prose",
-        "paragraphs": [
-          "[Explore the Community & Educational Function Map](__BASE__assets/education/community-educational-function-map.html)"
-        ]
+        "type": "feature",
+        "key": "education-interactive-map"
       },
       {
         "type": "prose",
@@ -444,10 +442,8 @@ const rawSections: WikiSection[] = [
         ]
       },
       {
-        "type": "prose",
-        "paragraphs": [
-          "[Open the Education Design Board](__BASE__assets/education/education-design-board.html)"
-        ]
+        "type": "feature",
+        "key": "education-interactive-design-board"
       },
       {
         "type": "prose",
@@ -1086,10 +1082,8 @@ const rawSections: WikiSection[] = [
         "alt": "Pilu town iteration"
       },
       {
-        "type": "prose",
-        "paragraphs": [
-          "[Hailun Pilu Virtual Laboratory (1).zip](__BASE__assets/education/hailun-pilu-virtual-laboratory-2.zip)"
-        ]
+        "type": "feature",
+        "key": "education-gallery-virtual-laboratory"
       },
       {
         "type": "prose",
@@ -1340,10 +1334,8 @@ const rawSections: WikiSection[] = [
         "alt": "Illustration for EVIDENCE："
       },
       {
-        "type": "prose",
-        "paragraphs": [
-          "[Synbio Classroom.zip](__BASE__assets/education/synbio-classroom.zip)"
-        ]
+        "type": "feature",
+        "key": "education-gallery-synbio-classroom"
       },
       {
         "type": "figure",
@@ -2062,10 +2054,8 @@ const rawSections: WikiSection[] = [
         ]
       },
       {
-        "type": "prose",
-        "paragraphs": [
-          "[Winter Outreach.zip](__BASE__assets/education/winter-outreach.zip)"
-        ]
+        "type": "feature",
+        "key": "education-gallery-winter-outreach"
       },
       {
         "type": "figure",
@@ -2234,10 +2224,8 @@ const rawSections: WikiSection[] = [
         ]
       },
       {
-        "type": "prose",
-        "paragraphs": [
-          "[Air to Bread Classroom.zip](__BASE__assets/education/air-to-bread-classroom.zip)"
-        ]
+        "type": "feature",
+        "key": "education-gallery-air-to-bread-classroom"
       },
       {
         "type": "prose",
@@ -2586,10 +2574,8 @@ const rawSections: WikiSection[] = [
         ]
       },
       {
-        "type": "prose",
-        "paragraphs": [
-          "[Vaccine Classroom.zip](__BASE__assets/education/vaccine-classroom.zip)"
-        ]
+        "type": "feature",
+        "key": "education-gallery-vaccine-classroom"
       },
       {
         "type": "figure",
@@ -2944,10 +2930,8 @@ const rawSections: WikiSection[] = [
         "alt": "Illustration for CONTINUATION ："
       },
       {
-        "type": "prose",
-        "paragraphs": [
-          "[Xinghua Festival.zip](__BASE__assets/education/xinghua-festival.zip)"
-        ]
+        "type": "feature",
+        "key": "education-gallery-xinghua-festival"
       },
       {
         "type": "figure",
@@ -3269,10 +3253,8 @@ const rawSections: WikiSection[] = [
         "alt": "Illustration for CONTINUATION："
       },
       {
-        "type": "prose",
-        "paragraphs": [
-          "[Health Run.zip](__BASE__assets/education/health-run.zip)"
-        ]
+        "type": "feature",
+        "key": "education-gallery-health-run"
       },
       {
         "type": "figure",
@@ -3615,10 +3597,8 @@ const rawSections: WikiSection[] = [
         "alt": "Illustration for CONTINUATION："
       },
       {
-        "type": "prose",
-        "paragraphs": [
-          "[Music Festival.zip](__BASE__assets/education/music-festival.zip)"
-        ]
+        "type": "feature",
+        "key": "education-gallery-music-festival"
       },
       {
         "type": "figure",
@@ -3954,10 +3934,8 @@ const rawSections: WikiSection[] = [
         ]
       },
       {
-        "type": "prose",
-        "paragraphs": [
-          "[Breast Guardian Evidence Room.html](__BASE__assets/education/breast-guardian-evidence-room.html)"
-        ]
+        "type": "feature",
+        "key": "education-interactive-evidence-room"
       },
       {
         "type": "prose",
@@ -4551,10 +4529,8 @@ const rawSections: WikiSection[] = [
         "alt": "Illustration for PARTICIPATION："
       },
       {
-        "type": "prose",
-        "paragraphs": [
-          "[Ethics Debate.zip](__BASE__assets/education/ethics-debate.zip)"
-        ]
+        "type": "feature",
+        "key": "education-gallery-ethics-debate"
       },
       {
         "type": "figure",

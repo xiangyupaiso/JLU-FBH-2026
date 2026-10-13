@@ -68,6 +68,24 @@ VIDEO_PLACEHOLDERS = {
     "《Breast Guardian》Instructional video.mp4",
 }
 
+INTERACTIVE_HTML = {
+    "Community & Educational Function Map.html": "education-interactive-map",
+    "index.html": "education-interactive-design-board",
+    "Breast Guardian Evidence Room.html": "education-interactive-evidence-room",
+}
+
+PHOTO_GALLERIES = {
+    "Hailun Pilu Virtual Laboratory (1).zip": "education-gallery-virtual-laboratory",
+    "Synbio Classroom.zip": "education-gallery-synbio-classroom",
+    "Winter Outreach.zip": "education-gallery-winter-outreach",
+    "Air to Bread Classroom.zip": "education-gallery-air-to-bread-classroom",
+    "Vaccine Classroom.zip": "education-gallery-vaccine-classroom",
+    "Xinghua Festival.zip": "education-gallery-xinghua-festival",
+    "Health Run.zip": "education-gallery-health-run",
+    "Music Festival.zip": "education-gallery-music-festival",
+    "Ethics Debate.zip": "education-gallery-ethics-debate",
+}
+
 LINK_LABELS = {
     "Community & Educational Function Map.html": "Explore the Community & Educational Function Map",
     "Community-Function-Map-source.zip": "Download the map source code",
@@ -206,6 +224,13 @@ def main() -> None:
             flush()
             continue
         image = LINK.fullmatch(stripped)
+        if image:
+            original = unquote(image.group(3).removeprefix("Images_attachments/"))
+            feature_key = INTERACTIVE_HTML.get(original) or PHOTO_GALLERIES.get(original)
+            if feature_key:
+                flush()
+                current["blocks"].append({"type": "feature", "key": feature_key})
+                continue
         if image and unquote(image.group(3).removeprefix("Images_attachments/")) in VIDEO_PLACEHOLDERS:
             flush()
             current["blocks"].append({"type": "note", "label": "Video coming soon", "body": "The instructional video will be added here."})
