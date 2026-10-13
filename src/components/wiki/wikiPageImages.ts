@@ -5,6 +5,9 @@ export function wikiPageImages(content: WikiPageContent): string[] {
   const images = new Set<string>();
   const visit = (block: WikiContentBlock) => {
     if (block.type === "figure") images.add(block.src);
+    if (block.type === "carousel") {
+      block.images.forEach((img) => images.add(img.src));
+    }
     if (block.type === "dbtl") {
       block.stages.forEach((stage) => stage.blocks.forEach(visit));
     }

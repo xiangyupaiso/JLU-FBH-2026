@@ -23,6 +23,8 @@ import type {
   WikiDbTLStageKey,
   WikiSection,
 } from "../../wikiPageTypes";
+import { EngineeringCarousel } from "./EngineeringCarousel";
+import { engineeringOutcome } from "../../../../data/project/engineeringOutcome";
 import { EngineeringOutline } from "./EngineeringPanels";
 import gearTSrc from "../../../../assets/wiki/engineering/engineering-gear-t.webp";
 import gearTActiveSrc from "../../../../assets/wiki/engineering/engineering-gear-t-active.webp";
@@ -64,10 +66,14 @@ function iterationRecords(section: WikiSection): IterationRecord[] {
       current = iteration ? { iteration, stages: [] } : undefined;
       if (current) records.push(current);
     } else if (block.type === "dbtl" && current) {
-      current.stages = block.stages.map((stage) => ({
-        ...stage,
-        blocks: [...stage.blocks],
-      }));
+      current.stages = block.stages.map((stage) => {
+        const nonRefBlocks = stage.blocks.filter((b) => b.type !== "references");
+        const refBlocks = stage.blocks.filter((b) => b.type === "references");
+        return {
+          ...stage,
+          blocks: [...nonRefBlocks, ...refBlocks],
+        };
+      });
     } else if (block.type === "references" && current) {
       const locations = engineeringReferenceStages[current.iteration.index];
       for (const stage of current.stages) {
@@ -76,6 +82,13 @@ function iterationRecords(section: WikiSection): IterationRecord[] {
         );
         if (items.length) stage.blocks.push({ type: "references", items });
       }
+    }
+  }
+  for (const record of records) {
+    for (const stage of record.stages) {
+      const nonRef = stage.blocks.filter((b) => b.type !== "references");
+      const refBlocks = stage.blocks.filter((b) => b.type === "references");
+      stage.blocks = [...nonRef, ...refBlocks];
     }
   }
   return records;
@@ -266,6 +279,53 @@ function EngineeringBlock({ block }: { block: WikiContentBlock }) {
           </ol>
         </aside>
       );
+    case "carousel":
+      return (
+        <EngineeringCarousel
+          images={block.images}
+          caption={block.caption}
+          figureLabel={block.figureLabel}
+        />
+      );
+    case "code":
+      return (
+        <details className="eng-code-fold">
+          <summary className="eng-code-fold__summary">
+            <span className="eng-code-fold__label">
+              {block.label ?? "Code snippet"}
+            </span>
+            <span className="eng-code-fold__badge">{block.language ?? "R"}</span>
+            <svg
+              className="eng-code-fold__icon"
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+            >
+              <path
+                d="m6 9 6 6 6-6"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </summary>
+          <pre className="eng-code-fold__pre">
+            <code>{block.code}</code>
+          </pre>
+        </details>
+      );
+    case "note":
+      return (
+        <aside className="eng-stage-note" aria-label={block.label}>
+          {block.label ? (
+            <strong className="eng-stage-note__label">{block.label}</strong>
+          ) : null}
+          <p className="eng-stage-note__body">
+            <InlineCopy text={block.body} />
+          </p>
+        </aside>
+      );
     default:
       return null;
   }
@@ -417,7 +477,8 @@ function CycleScenes({
                 slide: slides[slideIndex],
               });
               if (slideIndex > 0 || stageIndex > 0)
-                timeline.to(panel, { autoAlpha: 1, duration: 0.14 }, cursor);
+                timeline.to(panel, { autoAlpha: 1, duration: 0.18 }, cursor);
+
               // Keep the existing document-driven reading and transitions;
               // the fixed title sits above this narrower reading window.
               const overflow = () =>
@@ -425,23 +486,37 @@ function CycleScenes({
                   0,
                   (content?.scrollHeight ?? 0) - (viewport?.clientHeight ?? 0),
                 );
-              const readingTime = 0.9 + overflow() / 450;
+
+              // 1. Initial top dwell so the reader can absorb the opening before scroll begins
+              const topDwell = 0.32;
+              const readingStart = cursor + topDwell;
+
+              // 2. Reading scroll rate: increased density divisor (320px instead of 450px)
+              // so vertical travel moves steadily without rushing
+              const readingDuration = 1.0 + overflow() / 320;
+
               if (content)
                 timeline.fromTo(
                   content,
                   { y: 0 },
                   {
                     y: () => -overflow(),
-                    duration: readingTime,
+                    duration: readingDuration,
                     ease: "none",
                     immediateRender: false,
                   },
-                  cursor + 0.24,
+                  readingStart,
                 );
-              cursor += readingTime + 0.56;
+
+              // 3. Generous bottom dwell buffer:
+              // Holds content at the bottom so the reader can comfortably finish reading
+              // the conclusions and examining figures/captions without premature stage transition.
+              const bottomDwell = overflow() > 0 ? 0.95 : 0.65;
+              cursor = readingStart + readingDuration + bottomDwell;
+
               if (stageIndex < record.stages.length - 1) {
-                timeline.to(panel, { autoAlpha: 0, duration: 0.14 }, cursor);
-                cursor += 0.14;
+                timeline.to(panel, { autoAlpha: 0, duration: 0.18 }, cursor);
+                cursor += 0.18;
               }
             });
             if (slideIndex < records.length - 1) {
@@ -452,12 +527,12 @@ function CycleScenes({
                 track,
                 {
                   x: () => -(slideIndex + 1) * clip.clientWidth,
-                  duration: 0.55,
-                  ease: "none",
+                  duration: 0.7,
+                  ease: "power1.inOut",
                 },
                 cursor,
               );
-              cursor += 0.55;
+              cursor += 0.7;
             }
           });
           timeline.to({}, { duration: 0.01 }, cursor);
@@ -496,7 +571,9 @@ function CycleScenes({
             trigger: element,
             animation: timeline,
             pin: true,
-            scrub: true,
+            scrub: window.matchMedia("(prefers-reduced-motion: reduce)").matches
+              ? true
+              : 0.6,
             start: () =>
               `top ${getComputedStyle(document.documentElement).getPropertyValue("--header-height").trim() || "78px"}`,
             end: () =>
@@ -515,11 +592,13 @@ function CycleScenes({
                 const time =
                   timeline.labels[`${record.iteration.id}-${key}`] ?? 0;
                 // Land after the fade-in so the requested stage is immediately readable.
+                const targetTime = time + 0.22;
                 const position =
                   trigger.start +
                   (trigger.end - trigger.start) *
-                    ((time + 0.18) / timeline.duration());
+                    (targetTime / timeline.duration());
                 window.scrollTo({ top: position, behavior: "instant" });
+                timeline.time(targetTime);
                 trigger.update();
               }),
             ),
@@ -992,6 +1071,31 @@ export function EngineeringJourney({
           ) : null}
         </div>
       ))}
+      <section className="eng-outcome-final" id="engineering-outcome">
+        <header className="eng-outcome-final__heading">
+          <h2>
+            <EngineeringArticleHeading title={engineeringOutcome.title} />
+          </h2>
+        </header>
+        <div className="wiki-blocks">
+          {engineeringOutcome.paragraphs.map((text, index) => (
+            <div className="wiki-prose" key={index}>
+              <p>
+                <InlineCopy text={text} />
+              </p>
+            </div>
+          ))}
+          {engineeringOutcome.links.length > 0 ? (
+            <div className="wiki-prose eng-outcome-final__links">
+              {engineeringOutcome.links.map((link, index) => (
+                <p key={index}>
+                  <InlineCopy text={link} />
+                </p>
+              ))}
+            </div>
+          ) : null}
+        </div>
+      </section>
       {navigationVisible
         ? createPortal(
             <GearNavigation selection={selection} onNavigate={onNavigate} />,
