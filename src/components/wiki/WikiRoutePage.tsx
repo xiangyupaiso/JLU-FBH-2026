@@ -105,6 +105,8 @@ interface WikiRoutePageProps {
    * figures are collected automatically; do not list PDF or game resources.
    */
   preloadImages?: readonly string[];
+  /** Let long articles load body figures as the reader reaches them. */
+  deferContentImages?: boolean;
   features?: FeatureMap;
   /** Module scope class that carries the palette, e.g. `wiki-page--project`. */
   pageClassName?: string;
@@ -134,6 +136,8 @@ interface WikiRoutePageProps {
    * scroll spy; the page can surface them elsewhere (e.g. a section rail).
    */
   outlineDepth?: number;
+  /** List every included heading under its chapter, even in long records. */
+  showAllOutlineHeadings?: boolean;
   /**
    * Replaces the default line sidebar with a page-specific navigation object.
    *
@@ -536,7 +540,7 @@ function RouteBlock({
           <img
             src={block.src}
             alt={block.alt}
-            loading="eager"
+            loading={block.src.includes("/assets/education/") ? "lazy" : "eager"}
             decoding="async"
           />
           {block.figureLabel ? (
@@ -1133,6 +1137,7 @@ export function WikiRoutePage({
   content,
   heroImage,
   preloadImages,
+  deferContentImages = false,
   features = {},
   pageClassName = "",
   theme,
@@ -1143,20 +1148,21 @@ export function WikiRoutePage({
   protocolPairs,
   inlineRenderer,
   outlineDepth,
+  showAllOutlineHeadings = false,
   outlineSlot,
   leadSection,
 }: WikiRoutePageProps) {
   const imageSources = useMemo(
     () => [
       heroImage,
-      ...wikiPageImages(content),
+      ...(deferContentImages ? [] : wikiPageImages(content)),
       ...(preloadImages ?? []),
       ...(protocolPairs ?? []).flatMap((pair) => [
         ...(typeof pair.flowPage === "number" ? [experimentProtocolImage(pair.flowPage)] : []),
         ...(typeof pair.inventoryPage === "number" ? [experimentProtocolImage(pair.inventoryPage)] : []),
       ]),
     ],
-    [content, heroImage, preloadImages, protocolPairs],
+    [content, heroImage, preloadImages, protocolPairs, deferContentImages],
   );
   const rootRef = useRef<HTMLElement>(null);
   const interfaceRef = useRef<HTMLDivElement>(null);
@@ -1274,7 +1280,7 @@ export function WikiRoutePage({
       .map((block) => ({
         id: block.id,
         index: block.index,
-        label: block.title,
+        label: block.title.replace(/\*\*/g, ""),
         children: [] as WikiLineSidebarItem[],
       }));
     const subheadingByIndex = new Map(
@@ -1292,7 +1298,7 @@ export function WikiRoutePage({
         children: [] as WikiLineSidebarItem[],
       };
       subheadingById.set(child.id, child);
-      if (parent) {
+      if (parent && !showAllOutlineHeadings) {
         subheadingById.get(parent.id)?.children?.push(child);
       } else {
         nestedSubheadings.push(child);
@@ -1363,6 +1369,7 @@ export function WikiRoutePage({
               items={sidebarItems}
               links={content.links}
               minimal
+              showAllChildren={showAllOutlineHeadings}
               scrollContainerRef={scrollRef}
               protocolPairs={protocolPairs}
               onOpenProtocolModal={(pair, tab) =>

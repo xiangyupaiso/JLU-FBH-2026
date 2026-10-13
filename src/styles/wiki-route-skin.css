@@ -591,6 +591,13 @@ html.has-route-reader-scroll {
   font-size: 12.5px;
 }
 
+.wiki-page.wiki-page--route
+  .wiki-outline.wiki-outline--marker
+  nav
+  .wiki-outline__secondary--depth-4.is-tertiary {
+  margin-left: 14px;
+}
+
 /* Level-2 parent of the heading being read: ink only, no swash. */
 .wiki-page.wiki-page--route
   .wiki-outline--marker
