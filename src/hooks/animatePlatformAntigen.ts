@@ -56,6 +56,9 @@ export function animatePlatformAntigen(
   const paint = document.createElement("canvas");
   paint.width = paint.height = compact ? 512 : 768;
   const context = paint.getContext("2d");
+  const lettering = document.createElement("canvas");
+  lettering.width = lettering.height = paint.width;
+  const letteringContext = lettering.getContext("2d");
   const incoming = targetSvg.cloneNode(true) as SVGSVGElement;
   // Keep only the closed construct; mechanism animation stays in its chapter.
   [...incoming.children].forEach((child) => {
@@ -85,10 +88,14 @@ export function animatePlatformAntigen(
   });
   const name = document.createElement("span");
   name.textContent = "circRNA";
-  ghost.append(paint, incoming, name);
+  ghost.append(paint, lettering, incoming, name);
   root.append(ghost);
   const sourceVisibility = source.style.visibility;
   const targetVisibility = target.style.visibility;
+  const platformLayout = sequence.querySelector<HTMLElement>(
+    ".story-platform-layout",
+  );
+  const platformOpacity = platformLayout?.style.opacity ?? "";
   let fan: ReturnType<typeof separateFanPaint> = null;
   let disposed = false;
   let start = 0;
@@ -148,6 +155,15 @@ export function animatePlatformAntigen(
     const scroll = gsap.utils.interpolate(start, end, motion.progress);
     sequence.dataset.antigenBridgeProgress = String(motion.progress);
     ghost.dataset.renderer = usePaintedRing ? "painted" : "native";
+    // Keep all advantages together until this bridge starts. Fade their parent
+    // early in the flight so the fixed ring clears the mobile reading rows.
+    // The source timeline still owns each child's cumulative reveal.
+    if (platformLayout && !hasReading) {
+      const fade = gsap.utils.clamp(0, 1, motion.progress / 0.18);
+      platformLayout.style.opacity = usePaintedRing
+        ? String((1 - fade) ** 3)
+        : platformOpacity;
+    }
     // The carry clone contains only the closed ring. Once the mechanism is
     // opened, its live ribosome and protein must remain visible on the real SVG.
     const mechanismOpen =
@@ -209,7 +225,10 @@ export function animatePlatformAntigen(
         : 1,
     );
     paint.style.opacity = String(1 - pigment);
-    incoming.style.opacity = name.style.opacity = String(pigment);
+    incoming.style.opacity = String(pigment);
+    // Keep the ring solid while the two different centre labels take turns.
+    lettering.style.opacity = String(1 - smooth(pigment / 0.45));
+    name.style.opacity = String(smooth((pigment - 0.55) / 0.45));
     name.style.fontSize = `${
       gsap.utils.interpolate(compact ? 11 : 28, targetFont, leaving ? p : 0) /
       scale
@@ -234,6 +253,36 @@ export function animatePlatformAntigen(
       attributeFilter: ["data-mechanism-expanded"],
     });
   }
+  const preparePaint = () => {
+    if (disposed || fan || !context || !letteringContext) return;
+    try {
+      const textures = separateFanPaint(source);
+      if (!textures) return;
+      // Preserve each plate's crop inside the incoming construct's square
+      // coordinate system, including the original fan ring's lower edge.
+      const unit = paint.width;
+      const sourceGeometry = getRnaRingGeometry(source);
+      for (const [plateContext, texture] of [
+        [context, textures.ring],
+        [letteringContext, textures.lettering],
+      ] as const) {
+        plateContext.clearRect(0, 0, unit, unit);
+        plateContext.drawImage(
+          texture,
+          (0.5 - sourceGeometry.centerX / sourceGeometry.diameter) * unit,
+          (0.5 - sourceGeometry.centerY / sourceGeometry.diameter) * unit,
+          (sourceGeometry.width / sourceGeometry.diameter) * unit,
+          (sourceGeometry.height / sourceGeometry.diameter) * unit,
+        );
+      }
+      fan = textures;
+    } catch {
+      restore();
+    }
+  };
+  // Responsive rebuilds already have a loaded source. Prepare it before the
+  // first refresh locks the renderer for a flight restored midway through.
+  if (source.complete && source.naturalWidth) preparePaint();
   const timeline = gsap.timeline({
     onUpdate: render,
     scrollTrigger: {
@@ -328,27 +377,8 @@ export function animatePlatformAntigen(
   const preparation = source
     .decode()
     .then(() => {
-      if (disposed || !context) return;
-      try {
-        fan = separateFanPaint(source);
-        if (!fan) return;
-        // Preserve each plate's crop inside the incoming construct's square
-        // coordinate system, including the original fan ring's lower edge.
-        const unit = paint.width;
-        const sourceGeometry = getRnaRingGeometry(source);
-        for (const texture of [fan.ring, fan.lettering]) {
-          context.drawImage(
-            texture,
-            (0.5 - sourceGeometry.centerX / sourceGeometry.diameter) * unit,
-            (0.5 - sourceGeometry.centerY / sourceGeometry.diameter) * unit,
-            (sourceGeometry.width / sourceGeometry.diameter) * unit,
-            (sourceGeometry.height / sourceGeometry.diameter) * unit,
-          );
-        }
-        render();
-      } catch {
-        restore();
-      }
+      preparePaint();
+      render();
     })
     .catch(() => {});
   const stopTrackingPreparation = trackPagePreparation(preparation);
@@ -362,6 +392,7 @@ export function animatePlatformAntigen(
     timeline.scrollTrigger?.kill();
     timeline.kill();
     restore();
+    if (platformLayout) platformLayout.style.opacity = platformOpacity;
     ghost.remove();
     fan = null;
     delete sequence.dataset.antigenBridgeProgress;

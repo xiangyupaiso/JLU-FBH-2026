@@ -11,6 +11,7 @@ import { HomeRnaSequence } from "../components/home/HomeRnaSequence";
 import { WardInfusionTube } from "../components/home/WardInfusionTube";
 import originalManifest from "../assets/home/story/manifest.json";
 import supplements from "../assets/home/supplements/manifest.json";
+import projectAdvantages from "../assets/home/supplements/project-advantages.png";
 const patientConcerned =
   "https://static.igem.wiki/teams/6056/wiki/files/pages/home/patient-teary-20261004-467cbc4b5db7.webp";
 const clinicianConcerned =
@@ -141,8 +142,7 @@ const supplementUrls: Record<string, string> = {
     "https://static.igem.wiki/teams/6056/wiki/files/pages/home/fan-6-f2d48ddfefe2.webp",
   "../assets/home/supplements/fan-7.webp":
     "https://static.igem.wiki/teams/6056/wiki/files/pages/home/fan-7-e0b9ba792000.webp",
-  "../assets/home/supplements/fan-8.webp":
-    "https://static.igem.wiki/teams/6056/wiki/files/pages/home/fan-8-2576354a8c9d.webp",
+  "../assets/home/supplements/project-advantages.png": projectAdvantages,
   "../assets/home/supplements/tear-1.webp":
     "https://static.igem.wiki/teams/6056/wiki/files/pages/home/tear-1-6f99fafd2a57.webp",
   "../assets/home/supplements/tear-2.webp":
@@ -919,10 +919,14 @@ function VaccineArtwork() {
         {boardFrame("question")}
         <div data-vaccine-copy="question">
           <h3>
-            If conventional therapies lack sufficient targets, could the
-            patient’s <span>immune system</span>{" "}
-            <span className="story-vaccine-question-ending">
-              recognize the tumor?
+            <span className="story-vaccine-context">
+              If conventional therapies lack sufficient targets,
+            </span>{" "}
+            <span className="story-vaccine-question">
+              could the patient’s <strong>immune system</strong>{" "}
+              <span className="story-vaccine-question-ending">
+                recognize the tumor?
+              </span>
             </span>
           </h3>
         </div>
@@ -931,8 +935,13 @@ function VaccineArtwork() {
         {boardFrame("answer")}
         <div data-vaccine-copy="answer">
           <h3>
-            <span>Cancer vaccines</span> present tumor antigens to train the
-            immune system to recognize and attack tumors.
+            <strong className="story-vaccine-answer-title">
+              Cancer vaccines
+            </strong>{" "}
+            <span className="story-vaccine-context">
+              present <strong>tumor antigens</strong> to train the immune system
+              to <strong>recognize and attack tumors.</strong>
+            </span>
           </h3>
         </div>
       </article>

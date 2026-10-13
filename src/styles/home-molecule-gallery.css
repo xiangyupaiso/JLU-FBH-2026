@@ -86,6 +86,13 @@
   will-change: transform, opacity;
 }
 
+.home-story.is-gallery-why-carry .home-molecule-gallery,
+.home-story.is-gallery-why-carry .home-molecule-gallery__stage,
+.home-story.is-gallery-why-carry .story-rna-sequence,
+.home-story.is-gallery-why-carry .story-rna-sequence-stage {
+  background-color: var(--gallery-why-surface) !important;
+}
+
 .home-gallery-ring-transfer {
   position: fixed;
   top: 0;
@@ -129,7 +136,7 @@
 
   .home-molecule-gallery__title {
     width: calc(100% - 58px);
-    margin: 0 0 5%;
+    margin: 0 auto 5%;
   }
 
   .home-molecule-gallery__choices {
@@ -178,6 +185,21 @@
 
   .home-molecule-gallery__decision {
     bottom: 0;
+  }
+}
+
+/* Keep both card columns below the floating player and above the decision. */
+@media (max-width: 800px) and (max-aspect-ratio: 3/4) {
+  .home-molecule-gallery__stage {
+    padding-block: calc(var(--header-height) + 124px) 100px;
+  }
+
+  .home-molecule-gallery__artwork {
+    width: min(100%, 30svh, calc((100svh - var(--header-height) - 224px) * 0.48));
+  }
+
+  .home-molecule-gallery__decision {
+    bottom: 32px;
   }
 }
 

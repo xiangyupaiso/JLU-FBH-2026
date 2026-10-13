@@ -11,8 +11,10 @@ import {
 import { createRnaRingMorph } from "./createRnaRingMorph";
 import { animatePlatformAntigen } from "./animatePlatformAntigen";
 
-// Retain the original scroll budget when shortening the finished-frame hold.
-const FIGURE_END = 5.5;
+// Give the completed Why artwork a reading beat before its ring departs.
+const WHY_READING_HOLD = 0.36;
+const BASE_FIGURE_END = 5.5;
+const FIGURE_END = BASE_FIGURE_END + WHY_READING_HOLD;
 const FIGURE_REST = 0.65;
 
 export function animateCircRnaSequence(
@@ -73,7 +75,10 @@ export function animateCircRnaSequence(
   }
   // Use one short finished-frame hold before the antigen carry. Scale its
   // track with the duration so the figure still reveals at the same speed.
-  const range = track.offsetHeight - window.innerHeight;
+  // Reserve the extra reading distance without accelerating the later reveals.
+  const range =
+    (track.offsetHeight - window.innerHeight) *
+    ((FIGURE_END + FIGURE_REST) / (BASE_FIGURE_END + FIGURE_REST));
   let figureRest = FIGURE_REST;
   // Home can still be hidden under its loader. Keep the CSS track until the
   // preparation rebuild can measure it instead of freezing its height at zero.
@@ -100,6 +105,7 @@ export function animateCircRnaSequence(
     },
   });
   animateCircRna(rna, timeline);
+  timeline.addLabel("why-readable", timeline.duration());
   const paper = rna.querySelector(".story-backdrop");
   const outgoing = rna.querySelectorAll(
     '[data-layer="2"], [data-layer="3"], .circrna-benefit-art, .circrna-caption',
@@ -125,6 +131,7 @@ export function animateCircRnaSequence(
     },
     1.25,
   );
+  timeline.addLabel("ring-to-platform", 1.25);
   timeline.to(
     platform.querySelector(".story-backdrop"),
     { opacity: 1, duration: 0.8 },
@@ -145,19 +152,25 @@ export function animateCircRnaSequence(
     platform.querySelector<HTMLElement>(`[data-platform-note="${key}"]`)!,
   );
   gsap.set([...sectors, ...notes], { autoAlpha: 0 });
-  // Hide inactive regions completely; the base painting and carried ring
-  // stay in place while each advantage appears in its original position.
+  // Reveal each advantage in order and keep earlier regions visible.
   sectors.forEach((sector, index) => {
-    const at = 3 + index * 0.55;
-    if (index > 0) {
-      timeline.to(sectors[index - 1], { autoAlpha: 0, duration: 0.2 }, at);
-      timeline.to(notes[index - 1], { autoAlpha: 0, duration: 0.2 }, at);
-    }
-    timeline.to(sector, { autoAlpha: 1, duration: 0.2 }, at);
-    timeline.to(notes[index], { autoAlpha: 1, duration: 0.2 }, at);
+    const at = 3 + index * 0.58;
+    timeline.fromTo(
+      sector,
+      { autoAlpha: 0, y: compact ? 4 : 8 },
+      { autoAlpha: 1, y: 0, duration: 0.44 },
+      at,
+    );
+    timeline.fromTo(
+      notes[index],
+      { autoAlpha: 0, y: compact ? 4 : 6 },
+      { autoAlpha: 1, y: 0, duration: 0.34 },
+      at + 0.1,
+    );
   });
-  // Restore the complete research figure and leave a stable reading frame.
-  timeline.to([...sectors, ...notes], { autoAlpha: 1, duration: 0.3 }, FIGURE_END - 0.3);
+  // Extend only the gap after Why; all outgoing beats keep their own timing.
+  timeline.shiftChildren(WHY_READING_HOLD, true, 1.25);
+  // Leave the complete figure in a stable reading frame.
   timeline.addLabel("advantages-readable", FIGURE_END);
   timeline.to({}, { duration: figureRest }, FIGURE_END);
   cleanups.push(
