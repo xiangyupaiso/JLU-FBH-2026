@@ -6,7 +6,7 @@
 
 **中文。** **TIME**是JLU\-FBH为组织CirCure循证工程进程而构建的系统。**TIME**代表四轮相互衔接的项目级循环：**Targeting、Integration、Measurement与Evaluation**。整套系统以机械停表呈现：中央大齿轮的外圈刻画TIME，内圈运行Design–Build–Test–Learn，两枚指针则共同定位项目所处的整体循环与当前工程阶段。但TIME不只是四个循环首字母组成的名字，它也回应着CirCure最初的紧迫感：面对复发风险，每一个经得起检验的决定，都应让下一个答案更快到来。这枚停表因此记录着抗原筛选、构建设计与功能验证中的证据如何转化为下一项工程决定，也承载着我们的长期愿望：让这些研究进展有机会为复发风险较高的患者争取更多用于康复、陪伴家人和回归日常生活的时间。
 
-![image<span data-type=](图片和附件/image.png)\.png" />
+![image\.png](图片和附件/image.png)
 
 > **Figure E01｜The CirCure TIME Engineering System｜CirCure TIME工程系统**
 >
@@ -18,7 +18,7 @@
 
 **中文。** 在TIME中，**Dry Lab与Wet Lab是两枚主要主动轮**。Dry Lab将生物学问题转化为可追踪的抗原与表位决策、结构假设和定量预测，Wet Lab则将这些设计转化为实体构建及分子和细胞证据。二者交替驱动中央机构，并形成CircuForge、TorusFold、数学模型等工程产出。**iHP、Education、Visual Design与Entrepreneurship作为从动齿轮**，将科学进展转化为临床与伦理修订、可传递的学习、连贯的项目表达及开发要求，并把反馈带入下一次DBTL，持续引导和拓展主传动路线。
 
-<https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-overviewcycle\.avif>
+https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-overviewcycle\.avif
 
 最后一段的文字用上面这个图片在网页上展示⬆️
 
@@ -46,7 +46,7 @@
 
 ### Build｜构建
 
-**English\.**We combined this direction with literature research and clinical discussions with Lei Wang and Chengli Li, both oncology doctors, and **built an intended\-use specification with three defined elements\.** First, the clinical setting was the period after neoadjuvant treatment and surgery, when some patients remain at higher risk of recurrence\. Second, the proposed role was an antigen\-directed immune approach that could complement standard treatment\. Third, later development would require a documented antigen rationale, molecular eligibility criteria and measurable molecular and immune\-response evidence\. Tumour\-antigen expression and HLA compatibility were recorded as questions for the subsequent Dry Lab and epitope analyses\.
+**English\. **We combined this direction with literature research and clinical discussions with Lei Wang and Chengli Li, both oncology doctors, and **built an intended\-use specification with three defined elements\.** First, the clinical setting was the period after neoadjuvant treatment and surgery, when some patients remain at higher risk of recurrence\. Second, the proposed role was an antigen\-directed immune approach that could complement standard treatment\. Third, later development would require a documented antigen rationale, molecular eligibility criteria and measurable molecular and immune\-response evidence\. Tumour\-antigen expression and HLA compatibility were recorded as questions for the subsequent Dry Lab and epitope analyses\.
 
 **中文。** 我们结合文献调研，以及与王磊、李成丽两位肿瘤科医生的临床讨论，建立了**包含三项明确内容的预期用途说明。**第一，临床情境定位于新辅助治疗及手术之后，部分患者仍面临较高复发风险的阶段；第二，项目拟探索一种能够补充标准治疗的抗原导向免疫策略；第三，后续开发需要形成抗原选择依据、分子适用条件以及可测量的分子与免疫应答证据。肿瘤抗原表达和HLA匹配则被记录为后续干实验及表位分析需要回答的问题。
 
@@ -86,6 +86,15 @@
 
 **Table C1\-01｜Platform decision matrix｜平台选择决策矩阵**
 
+| Design requirement    | Linear mRNA                                                | Engineered circRNA                                                | Project check                                          | Design implication                                        |
+| --------------------- | ---------------------------------------------------------- | ----------------------------------------------------------------- | ------------------------------------------------------ | --------------------------------------------------------- |
+| Antigen coding        | Can encode the selected antigen sequence                   | Can encode the selected antigen sequence                          | Sequence and construct feasibility                     | Both formats meet the basic coding requirement            |
+| RNA stability         | Free ends remain susceptible to exonuclease-mediated decay | Closed topology can improve nuclease resistance                   | Literature and technical consultation                  | circRNA better matches the intended persistence question  |
+| Expression duration   | Expression is constrained by RNA lifetime                  | Engineered circRNA can extend translation duration                | Published expression studies                           | Supports staged persistence measurements                  |
+| Immune stimulation    | Depends on sequence, modification, purity and delivery     | Innate sensing is tunable through RNA design and preparation      | Literature and iHP discussion                          | Evaluate it under defined preparation conditions          |
+| Preparation           | Comparatively direct production route                      | Requires circularization and added identity checks                | Team facilities and planned Experiments                | Assign a measurable checkpoint to every preparation stage |
+| Functional evaluation | Can enter protein and immune assays                        | Can enter the same downstream assays after circularization checks | FLAG expression, DC–T-cell culture and immune readouts | Provides a continuous molecule-to-function route          |
+
 ### Test｜测试
 
 **English\.** We tested the selected platform against the operations required by the literature and the resources available to the team\. For each molecular stage, we asked whether there was a defined way to obtain the material, an accessible measurement and an observable output that could be passed to the next stage\.
@@ -93,6 +102,14 @@
 **中文。** 我们依据文献与技术咨询提出的操作要求以及团队能够使用的实验条件，对所选平台进行逐阶段检验。对于每个分子阶段，我们分别确认材料如何获得、是否存在可执行的检测方法，以及能否形成可以交接到下一阶段的可观察输出。
 
 **Table C1\-02｜Stage\-by\-stage feasibility check for the circRNA route｜circRNA路线的逐阶段可行性检查**
+
+| Stage                          | Material source or operation                                                          | Available project check                                                                                                                                                                        | Observable output                                                                | Decision   |
+| ------------------------------ | ------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | ---------- |
+| DNA template                   | Recombinant plasmids assembled by a commercial service provider                       | Supplier plasmid map, sequence file and sample label were matched to the intended design before the delivered material entered the team’s recorded template-processing and transcription route | DNA template corresponding to the intended construct                             | Executable |
+| Linear transcription precursor | In vitro transcription from the DNA template and the designed self-splicing precursor | RNA preparation and nucleic-acid analytical methods recorded in Experiments                                                                                                                    | Detectable linear precursor                                                      | Executable |
+| Mature circRNA                 | Self-splicing and circularization of the precursor                                    | RNA purification, RNase R treatment and the corresponding nucleic-acid analysis recorded in Experiments                                                                                        | A circRNA preparation that can be evaluated separately from the linear precursor | Executable |
+| Encoded protein                | Translation after cellular delivery                                                   | FLAG-associated protein-expression measurement                                                                                                                                                 | Expected FLAG-associated expression signal                                       | Executable |
+| Immune function                | circRNA-loaded DCs co-cultured with T cells                                           | ELISpot, flow cytometry and target-cell killing assays                                                                                                                                         | IFN-γ-associated, activation and effector readouts                               | Executable |
 
 **English\.** All five stages therefore had a defined source or procedure, an accessible measurement and an observable output\. This established the testability of the circRNA route; the resulting RNA, protein and immune\-response evidence is presented in the later cycles\.
 
@@ -126,31 +143,31 @@
 
 > **Figure C1\-01｜Winter Outreach and the first visual identity｜寒假巡讲与初版视觉识别****（此部分图片用村哥在网页上展示的那个插件）**
 >
-> <https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c1\-01\-1\.avif>
+> https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c1\-01\-1\.avif
 >
-> <https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c1\-01\-2\.avif>
+> https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c1\-01\-2\.avif
 >
-> <https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c1\-01\-3\.avif>
+> https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c1\-01\-3\.avif
 >
-> <https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c1\-01\-4\.avif>
+> https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c1\-01\-4\.avif
 >
-> <https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c1\-01\-5\.avif>
+> https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c1\-01\-5\.avif
 >
-> <https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c1\-01\-6\.avif>
+> https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c1\-01\-6\.avif
 >
-> <https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c1\-01\-7\.avif>
+> https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c1\-01\-7\.avif
 >
-> <https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c1\-01\-8\.avif>
+> https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c1\-01\-8\.avif
 >
-> <https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c1\-01\-9\.avif>
+> https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c1\-01\-9\.avif
 >
-> <https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c1\-01\-10\.avif>
+> https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c1\-01\-10\.avif
 >
-> <https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c1\-01\-11\.avif>
+> https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c1\-01\-11\.avif
 >
-> <https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c1\-01\-12\.avif>
+> https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c1\-01\-12\.avif
 >
-> <https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c1\-01\-13\.avif>
+> https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c1\-01\-13\.avif
 >
 > **English caption\.** Winter Outreach introduced circRNA through five school\-adapted teaching decks and the Dream circRNA activity\. The first sheep character and project emblem maintained visual continuity across the materials\.
 >
@@ -194,31 +211,37 @@
 
 > **Figure C1\-02A｜Published TROP2 staining in TNBC tissue｜已发表的TNBC组织TROP2染色**
 >
-> <https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c1\-02a\.avif>
+> https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c1\-02a\.avif
 >
 > **English caption\.** Representative TROP2 immunohistochemistry in TNBC tissue, showing intermediate staining in the left and middle fields and high staining in the right field\. Reproduced from Figure 2 of Izci et al\. \(2022\), under CC BY 4\.0; the tissue fields are retained and an external panel label has been added\.
 >
 > **中文图注。** TNBC组织中TROP2的代表性免疫组化图像，左侧与中间视野呈中等染色，右侧呈较强染色。转载自Izci等（2022）的Figure 2，采用CC BY 4\.0许可；保留完整组织视野，并添加外部面板编号。
 >
+> 
+>
 > **Figure C1\-02B｜Published B7\-H4 tissue\-staining patterns｜已发表的B7\-H4组织染色模式**
 >
-> <https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c1\-02b\.avif>
+> https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c1\-02b\.avif
 >
 > **English caption\.** Representative B7\-H4 immunostaining showing strong, moderate, weak and negative staining, as labelled in the source image\. Cropped from Figure 1d of Wang et al\. \(2018\), under CC BY 4\.0; source labels and scale bars are retained, with an external panel label added\.
 >
 > **中文图注。** B7\-H4代表性免疫组化图像，按原图标注展示强、中、弱及阴性染色。裁取自Wang等（2018）的Figure 1d，采用CC BY 4\.0许可；保留原图标签与比例尺，并添加外部面板编号。
 >
+> 
+>
 > **Figure C1\-02C｜Published Nectin\-4 staining in TNBC tissue｜已发表的TNBC组织Nectin\-4染色**
 >
-> <https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c1\-02c\.avif>
+> https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c1\-02c\.avif
 >
 > **English caption\.** Representative TNBC tissue showing strong, moderate and negative Nectin\-4 staining in the original panels A, B and C, respectively \(200× magnification\)\. Reproduced from Figure 1 of Zeindler et al\. \(2019\), under CC BY; original panel labels and scale bars are retained, with an external panel label added\.
 >
 > **中文图注。** TNBC组织中Nectin\-4的代表性强、中及阴性染色，分别对应原图A、B和C面板（200倍放大）。转载自Zeindler等（2019）的Figure 1，采用CC BY许可；保留原面板标签与比例尺，并添加外部面板编号。
 >
+> 
+>
 > **Figure C1\-02D｜Published SLC39A6/LIV\-1 staining in breast\-cancer tissue｜已发表的乳腺癌组织SLC39A6/LIV\-1染色**
 >
-> <https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c1\-02d\.avif>
+> https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c1\-02d\.avif
 >
 > **English caption\.** Representative positive and negative SLC39A6/LIV\-1 immunostaining in breast\-cancer tissue, corresponding to the original panels A and B\. Reproduced from Figure 1 of Althobiti et al\. \(2021\), under CC BY 4\.0; an external panel label has been added\. These images illustrate breast\-cancer tissue staining rather than TNBC\-specific prevalence\.
 >
@@ -437,31 +460,37 @@ write.csv(
 
 > **Figure C1\-03A｜Differential protein abundance in PXD024322｜PXD024322蛋白差异丰度**
 >
-> <https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c1\-03a\.avif>
+> https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c1\-03a\.avif
 >
 > **English caption\.** Volcano plot comparing TNBC tumours with normal\-breast samples in PXD024322 using a batch\-adjusted limma model\. Axes show the fitted log₂ fold change and −log₁₀ Benjamini–Hochberg\-adjusted P value\. TROP2, B7\-H4, LIV\-1 and Nectin\-4 are highlighted against the quantified proteome\.
 >
 > **中文图注。** PXD024322中TNBC肿瘤与正常乳腺样本的蛋白差异丰度火山图，采用校正批次的limma模型。横纵轴分别为拟合的log₂倍数变化及Benjamini–Hochberg校正P值的−log₁₀转换，图中突出TROP2、B7\-H4、LIV\-1及Nectin\-4。
 >
+> 
+>
 > **Figure C1\-03B｜Candidate\-protein abundance in PXD024322｜PXD024322候选蛋白丰度**
 >
-> <https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c1\-03b\.avif>
+> https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c1\-03b\.avif
 >
 > **English caption\.** Batch\-adjusted log₂ protein\-abundance distributions for TROP2, B7\-H4, LIV\-1 and Nectin\-4 in PXD024322\. Grey and orange points represent normal\-breast and TNBC samples, respectively\. Each panel reports the fitted log₂ fold change and Benjamini–Hochberg\-adjusted P value\.
 >
 > **中文图注。** PXD024322中TROP2、B7\-H4、LIV\-1及Nectin\-4经批次校正的log₂蛋白丰度分布。灰色与橙色散点分别代表正常乳腺及TNBC样本，各面板标注拟合的log₂倍数变化与Benjamini–Hochberg校正P值。
 >
+> 
+>
 > **Figure C1\-03C｜Paired differential protein abundance in PXD028102｜PXD028102配对蛋白差异丰度**
 >
-> <https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c1\-03c\.avif>
+> https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c1\-03c\.avif
 >
 > **English caption\.** Volcano plot from the patient\-paired limma comparison of TNBC tumours and matched normal\-adjacent tissue in PXD028102\. Axes show the fitted log₂ fold change and −log₁₀ Benjamini–Hochberg\-adjusted P value\. TROP2, B7\-H4 and Nectin\-4 are highlighted\.
 >
 > **中文图注。** PXD028102中TNBC肿瘤与患者匹配癌旁正常组织的配对limma分析火山图。横纵轴分别为拟合的log₂倍数变化及Benjamini–Hochberg校正P值的−log₁₀转换，图中突出TROP2、B7\-H4及Nectin\-4。
 >
+> 
+>
 > **Figure C1\-03D｜Candidate\-protein abundance in PXD028102｜PXD028102候选蛋白丰度**
 >
-> <https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c1\-03d\.avif>
+> https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c1\-03d\.avif
 >
 > **English caption\.** Target\-centred log₂ abundance distributions for TROP2, B7\-H4 and Nectin\-4 in PXD028102\. Grey and orange points represent normal\-adjacent tissue \(NAT\) and TNBC samples, respectively\. Diamonds and connecting lines indicate group means, while statistical estimates derive from the patient\-paired model; the lines do not connect individual patient pairs\.
 >
@@ -507,29 +536,40 @@ write.csv(
 
 **Table C1\-04｜Malignant\-cell enrichment and compartment\-specific detection of candidate genes｜候选基因的恶性细胞富集与细胞区室检出率**
 
+| Gene    | Antigen  | Malignant vs non-malignant log₂ fold change | FDR         | Malignant-cell detection | Immune-cell detection | CAF detection |
+| ------- | -------- | ------------------------------------------- | ----------- | ------------------------ | --------------------- | ------------- |
+| TACSTD2 | TROP2    | 4.074                                       | 8.37 × 10⁻⁵ | 70.40%                   | 4.00%                 | 5.40%         |
+| SLC39A6 | LIV-1    | 0.853                                       | 0.0196      | 39.40%                   | 8.50%                 | 20.70%        |
+| NECTIN4 | Nectin-4 | 4.755                                       | 3.70 × 10⁻⁶ | 37.80%                   | 1.00%                 | 0.60%         |
+| VTCN1   | B7-H4    | 5.393                                       | 2.52 × 10⁻⁵ | 19.80%                   | 0.30%                 | 0.40%         |
+
 **English note\.** Log₂ fold changes and FDR values describe the patient\-paired pseudobulk comparison between malignant and non\-malignant compartments\. Detection rates indicate the fraction of cells within each compartment with a raw UMI count greater than zero for the corresponding gene\. CAF, cancer\-associated fibroblast\.
 
 **中文表注。** log₂倍数变化与FDR对应以患者为单位的恶性与非恶性细胞配对pseudobulk比较。检出率指各细胞区室中，对应基因原始UMI计数大于零的细胞比例。CAF为癌症相关成纤维细胞。
 
 > **Figure C1\-04A｜Cell\-lineage distribution in the TNBC single\-cell subset｜TNBC单细胞子集的细胞谱系分布**
 >
-> <https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c1\-04a\.avif>
+> https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c1\-04a\.avif
 >
 > **English caption\.** Harmony\-integrated UMAP of the 39,324 quality\-controlled cells in the GSE176078 TNBC subset\. Each point represents a cell, coloured by its annotated major lineage\. The map locates malignant cells alongside epithelial, immune, stromal and endothelial populations\.
 >
 > **中文图注。** GSE176078 TNBC子集中39,324个质量控制后细胞的Harmony整合UMAP。每个点代表一个细胞，颜色对应其主要谱系注释。图中展示恶性细胞及上皮、免疫、基质和内皮等细胞群的分布。
 >
+> 
+>
 > **Figure C1\-04B｜Candidate\-gene expression across cell populations｜候选基因在不同细胞群中的表达**
 >
-> <https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c1\-04b\.avif>
+> https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c1\-04b\.avif
 >
 > **English caption\.** Candidate\-gene expression on the Harmony UMAP \(left\) and expression distributions across cell compartments \(right\)\. Rows show TROP2/*TACSTD2*, B7\-H4/*VTCN1*, LIV\-1/*SLC39A6* and Nectin\-4/*NECTIN4* \(also labelled PVRL4\)\. Expression is displayed as ln\(CP10K \+ 1\), calculated from raw counts\. Cancer\-associated fibroblasts \(CAFs\) are included in the stromal compartment and also shown separately\.
 >
 > **中文图注。** 候选基因在Harmony UMAP上的表达分布（左）及不同细胞区室中的表达分布（右）。各行依次为TROP2/*TACSTD2*、B7\-H4/*VTCN1*、LIV\-1/*SLC39A6*及Nectin\-4/*NECTIN4*（图中亦标为PVRL4）。表达值采用由原始计数计算的ln\(CP10K \+ 1\)。癌症相关成纤维细胞（CAFs）包含于基质区室，并单独展示。
 >
+> 
+>
 > **Figure C1\-04C｜Case\-wise detection of the four\-gene panel in malignant cells｜四基因组合在各病例恶性细胞中的检出情况**
 >
-> <https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c1\-04c\.avif>
+> https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c1\-04c\.avif
 >
 > **English caption\.** The pie chart represents 9,491 malignant cells from eight cases in the GSE176078 TNBC subset\. Each case contributes a sector proportional to its malignant\-cell count, divided into coloured portions with at least one candidate gene detected and grey portions with none detected\. Labels report the case\-specific detection fraction and malignant\-cell number\. The pooled detection fraction was 81\.4% \(7,727/9,491\)\.
 >
@@ -571,7 +611,7 @@ write.csv(
 
 > **Figure C1\-05｜Patient\-level representation of the four antigen\-source genes｜四种抗原来源基因的患者层代表范围**
 >
-> <https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c1\-05\.avif>
+> https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c1\-05\.avif
 >
 > **English caption\.** cBioPortal OncoPrint of 115 selected TCGA TNBC cases using the query `AMP EXP >= 0.5`, which identifies copy\-number amplification or an mRNA expression Z\-score of at least 0\.5\. The proportions meeting this rule were 38% for *TACSTD2*, 31% for *VTCN1*, 79% for *NECTIN4* and 4% for *SLC39A6*\. At least one of the four genes met the rule in 101 of 115 cases \(88%\)\.
 >
@@ -599,11 +639,11 @@ write.csv(
 
 > **Figure C1\-06｜CircuForge V1\.0 module interfaces｜CircuForge V1\.0模块界面****（此部分图片用村哥在网页上展示的那个插件）**
 >
-> <https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c1\-06a\.avif>
+> https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c1\-06a\.avif
 >
-> <https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c1\-06b\.avif>
+> https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c1\-06b\.avif
 >
-> <https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c1\-06c\.avif>
+> https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c1\-06c\.avif
 >
 > **English caption\.** CircuForge V1\.0 module interfaces\. **\(A\)** Data import and quality control, showing quantitative\-data and sample\-metadata upload, preprocessing controls and quality\-control plots\. **\(B\)** Candidate\-target screening, showing Limma analysis settings and a volcano plot\. **\(C\)** Epitope prediction, showing protein\-sequence input, prediction\-mode and HLA settings, and a candidate\-peptide results table\.
 >
@@ -617,7 +657,7 @@ write.csv(
 
 > **Figure C1\-07｜Five\-team online iGEM software exchange｜五队iGEM线上软件交流**
 >
-> <https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c1\-07\.avif>
+> https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c1\-07\.avif
 >
 > **English caption\.** Group screenshot from a five\-team online iGEM software exchange involving JLU\-FBH, HUBU\-WUHAN, AFMU\-China, JLU\-SPH and LZU\-GANSU\.
 >
@@ -641,7 +681,7 @@ write.csv(
 
 **English\.** Based on the Wet Lab protocol and human\-material ethics discussion with Junqi Niu, we placed procurement, cell preparation and record continuity within the experimental plan\. We then built a standardized preparation and co\-culture framework beginning with commercial HLA\-A\*02:01 PBMC material\. CD14\-positive monocytes were isolated for GM\-CSF/IL\-4\-induced monocyte\-derived DC culture, while CD3\-positive T cells were obtained from the CD14\-negative fraction\. The framework specified how circRNA\-loaded DCs would later enter a common DC–T\-cell co\-culture for ELISpot, flow\-cytometry and killing readouts \(Miltenyi Biotec, n\.d\.\-a; Miltenyi Biotec, n\.d\.\-b; Sallusto and Lanzavecchia, 1994\)\.
 
-**中文。** 根据Wet Lab实验方案以及与牛俊奇老师进行的人源材料伦理讨论，我们将材料获取、细胞准备和记录连续性纳入实验计划。随后，我们建立以商业来源HLA\-A\*02:01 PBMC为起点的标准化制备与共培养框架：分选CD14阳性单核细胞，并以GM\-CSF/IL\-4诱导单核细胞来源DC；从CD14阴性组分中进一步获得CD3阳性T细胞。框架同时规定后续circRNA负载DC如何进入统一DC–T细胞共培养，并承接ELISpot、流式和杀伤读出（Miltenyi Biotec，无日期，CD14；Miltenyi Biotec，无日期，CD3；Sallusto and Lanzavecchia, 1994）。
+**中文。** 根据Wet Lab实验方案以及与牛俊奇老师进行的人源材料伦理讨论，我们将材料获取、细胞准备和记录连续性纳入实验计划。随后，我们建立以商业来源HLA\-A\*02:01 PBMC为起点的标准化制备与共培养框架：分选CD14阳性单核细胞，并以GM\-CSF/IL\-4诱导单核细胞来源DC；从CD14阴性组分中进一步获得CD3阳性T细胞。框架同时规定后续circRNA负载DC如何进入统一DC–T细胞共培养，并承接ELISpot、流式和杀伤读出（Miltenyi Biotec，无日期，CD14；Miltenyi Biotec，无日期，CD3；Sallusto and Lanzavecchia, 1994）。 
 
 > **References｜参考文献**
 >
@@ -668,6 +708,8 @@ write.csv(
 **English\.** Cycle 1 completed the **T—Targeting** stage of TIME, moving from intended use to a four\-antigen strategy ready for epitope\-level engineering\. We selected a measurable circRNA platform, established a clinically grounded four\-antigen starting set and retained TROP2, B7\-H4, Nectin\-4 and LIV\-1 through clinical, protein\-level, malignant\-cell and patient\-level evidence\.Education and Visual Design established an adaptable first language for circRNA; CircuForge V1\.0 began to connect the computational handoff; and the common DC–T\-cell workflow prepared a shared experimental setting\. Cycle 2 could now ask a narrower engineering question: which epitopes from the four antigen sources should be encoded, built and compared?
 
 **中文。** Cycle 1完成了TIME中的**T——锁定目标（Targeting）**，从预期用途推进到能够进入表位工程的四抗原策略。我们选择了可逐级检验的circRNA平台，形成具有临床依据的四抗原起始集合，并通过临床、蛋白、恶性细胞及患者层证据保留TROP2、B7\-H4、Nectin\-4和LIV\-1。Education与Visual Design建立了可适配受众的第一套circRNA表达方式，CircuForge V1\.0开始连接计算交接，统一DC–T细胞流程则准备了共同实验情境。Cycle 2由此进入更具体的工程问题：四种抗原来源中的哪些表位应当被编码、构建并进入比较？
+
+
 
 # Cycle 2 — Integration: From epitope exploration to Combined｜Cycle 2——整合：从表位探索到Combined
 
@@ -696,6 +738,7 @@ Iteration 2\.1｜Defining a traceable epitope\-prediction route｜建立可追�
 **English\.** We built a staged prioritisation route using all overlapping nine\-amino\-acid windows from the four canonical protein sequences\. Each peptide record linked its sequence and source coordinates to predicted HLA\-A\*02:01 binding affinity, sequence\-based immunogenicity and processing\-related outputs\. The numerical screen applied two predefined criteria in sequence:
 
 1. **Binding\-affinity criterion:** Peptides with a predicted HLA\-A\*02:01 binding IC50 below 500 nM were retained, identifying sequences with stronger predicted binding\.
+
 2. **Immunogenicity criterion:** The retained peptides were further required to have an IEDB immunogenicity score above zero, prioritising sequences with favourable immunogenicity predictions\.
 
 Processing\- and eluted\-ligand\-related outputs were retained as supporting fields for subsequent review rather than applied as additional independent cutoffs \(Reynisson et al\., 2020; Calis et al\., 2013; Peters et al\., 2003; Tenzer et al\., 2005\)\.
@@ -705,6 +748,7 @@ Peptides satisfying both criteria then entered a source\-protein context review\
 **中文。** 我们以四条标准蛋白序列中的全部重叠九氨基酸窗口建立分阶段优先排序路线。每条肽段记录将其序列和来源坐标与预测的HLA\-A\*02:01结合亲和力、基于序列的免疫原性及加工相关输出对应起来。数值筛选依次采用两项预先确定的判据：
 
 1. **结合亲和力判据：** 保留预测HLA\-A\*02:01结合IC50低于500 nM的肽段，用于识别预测结合能力较强的序列。
+
 2. **免疫原性判据：** 进一步要求上述肽段的IEDB免疫原性评分大于0，优先保留免疫原性预测结果较好的序列。
 
 加工及洗脱配体相关输出作为后续复核的支持字段保留，不再单独设置为淘汰阈值（Reynisson et al\., 2020；Calis et al\., 2013；Peters et al\., 2003；Tenzer et al\., 2005）。
@@ -733,7 +777,7 @@ We then mapped these 51 peptides back to their source proteins and compared thei
 
 > **Figure C2\-01｜From overlapping peptides to a 17\-epitope shortlist｜从重叠肽段形成17条候选表位**
 >
-> <https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c2\-01\.avif>
+> https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c2\-01\.avif
 >
 > **English caption\.** Binding\-affinity and immunogenicity thresholds followed by source\-protein context review reduced 1,838 overlapping nine\-amino\-acid peptides to 17 traceable candidate epitopes\.
 >
@@ -766,9 +810,13 @@ We then mapped these 51 peptides back to their source proteins and compared thei
 The review was organised into five dimensions:
 
 1. **Groove placement:** the peptide’s position and orientation within the HLA binding groove\.
+
 2. **P2/P9 anchoring:** side\-chain burial at positions 2 and 9 and their accommodation within the B and F pockets, respectively\.
+
 3. **Interface contacts:** peptide–HLA contacts and the conserved backbone hydrogen\-bond network\.
+
 4. **Model consistency:** agreement in structural measurements and review outcomes across the five sampled models\.
+
 5. **Structural conflicts:** recurring steric clashes, distortion or displacement\.
 
 Each record remained linked to the source antigen, protein coordinates and IEDB prediction history\. The representative TROP2 peptide `SVCWCVNSV` documented the PyMOL workflow for examining peptide placement, interface residues and predicted hydrogen bonds \(Saper et al\., 1991\)\.
@@ -778,16 +826,20 @@ Each record remained linked to the source antigen, protein coordinates and IEDB 
 复核围绕五个维度展开：
 
 1. **结合槽位置：** 肽段在HLA结合槽中的位置与方向。
+
 2. **P2/P9锚定：** 第2位与第9位侧链的埋藏程度，以及分别与B口袋和F口袋的配合情况。
+
 3. **界面接触：** 肽段与HLA之间的接触及保守主链氢键网络。
+
 4. **模型一致性：** 五个采样模型的结构测量及复核结果是否一致。
+
 5. **结构冲突：** 是否反复出现空间碰撞、构象扭曲或位置偏移。
 
 每条记录继续关联来源抗原、蛋白坐标及IEDB预测历程。代表性TROP2肽段`SVCWCVNSV`用于记录PyMOL观察流程，展示肽段位置、界面残基及预测氢键（Saper et al\., 1991）。
 
 > **Figure C2\-02A｜Unified AlphaFold 3 structural\-review workflow｜统一的AlphaFold 3结构复核流程**
 >
-> <https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c2\-02a\.avif>
+> https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c2\-02a\.avif
 >
 > **English caption\.** Each candidate peptide was modelled with the HLA\-A\*02:01 heavy chain and β2\-microglobulin\. All five returned models were retained and assessed across five structural\-review dimensions\. `SVCWCVNSV` illustrated the PyMOL measurement and visualization workflow\.
 >
@@ -807,6 +859,26 @@ Each record remained linked to the source antigen, protein coordinates and IEDB 
 
 **Table C2\-02B｜Structural measurements and first\-round coding status of 17 candidate epitopes｜17条候选表位的结构测量与首轮编码状态**
 
+| Antigen  | Peptide   | P2 side-chain burial (%) | P9 side-chain burial (%) | P9 buried area / reference ratio (Å² / %) | Conserved hydrogen-bond network | TCR-facing exposed area (Å²) | First-round coding status |
+| -------- | --------- | ------------------------ | ------------------------ | ----------------------------------------- | ------------------------------- | ---------------------------- | ------------------------- |
+| TROP2    | RLFRERYRL | 99.8                     | 99.7                     | 143.8 / 103                               | 11.11                           | 374                          | Included                  |
+| TROP2    | SVCWCVNSV | 99.8                     | 100                      | 114.4 / 82                                | 11.11                           | 245                          | Included                  |
+| TROP2    | TLIYYLDEI | 99.8                     | 100                      | 140.0 / 100                               | 11.11                           | 361                          | Included                  |
+| TROP2    | YLDEIPPKF | 99.8                     | 99.4                     | 173.3 / 124                               | 11.11                           | 270                          | Included                  |
+| B7-H4    | AVFADQVIV | 99.8                     | 100                      | 115.1 / 82                                | 11.11                           | 252                          | Included                  |
+| B7-H4    | WLKEGVLGL | 99.8                     | 99.9                     | 140.2 / 100                               | 11.11                           | 147                          | Included                  |
+| Nectin-4 | AVTSEFHLV | 99.9                     | 100                      | 114.3 / 82                                | 11.11                           | 240                          | Included                  |
+| Nectin-4 | FLAEASVRG | 99.8                     | Undefined                | 0.0 / 0                                   | 11.11                           | 293                          | Not included              |
+| Nectin-4 | FQARLRLRV | 99                       | 100                      | 113.7 / 81                                | 11.11                           | 424                          | Included                  |
+| Nectin-4 | HILHVSFLA | 99.9                     | 99.4                     | 60.1 / 43                                 | 11.11                           | 269                          | Not included              |
+| Nectin-4 | RLRVLVPPL | 99.8                     | 100                      | 139.6 / 100                               | 11.11                           | 259                          | Included                  |
+| Nectin-4 | YINGRGHLV | 99.9                     | 100                      | 113.5 / 81                                | 11.11                           | 226                          | Included                  |
+| LIV-1    | FIGHYAENV | 99.9                     | 100                      | 113.9 / 81                                | 11.11                           | 249                          | Included                  |
+| LIV-1    | GLHNFSDGL | 99.7                     | 99.7                     | 139.8 / 100                               | 11.11                           | 222                          | Included                  |
+| LIV-1    | GVATLAWMV | 99.8                     | 100                      | 113.3 / 81                                | 11.11                           | 280                          | Included                  |
+| LIV-1    | SVAVFCHEL | 99.8                     | 99.7                     | 139.8 / 100                               | 11.11                           | 277                          | Included                  |
+| LIV-1    | TVSEGTHFL | 99.8                     | 99.7                     | 139.5 / 100                               | 11.11                           | 234                          | Included                  |
+
 **English note\.** Coding status records inclusion in the first\-round experimental design; structural measurements provide accompanying computational descriptions\. Numerical measurements are means across five models, while the conserved\-network column counts hydrogen bonds present in all five\. The P9 reference ratio uses 140 Å² as its denominator and may exceed 100%\. “Undefined” denotes an undefined side\-chain burial percentage\.
 
 **中文表注。** 编码状态记录各序列是否纳入首轮实验设计，结构测量作为相应的计算描述并列呈现。数值测量为五个模型的均值，保守网络列记录在全部五个模型中均存在的氢键数。第9位参照比例以140 Å²为分母，可以超过100%；“无定义”表示该侧链埋藏比例无法定义。
@@ -817,7 +889,7 @@ Each record remained linked to the source antigen, protein coordinates and IEDB 
 
 > **Figure C2\-02C｜Representative peptide–HLA structural visualization｜代表性肽–HLA结构可视化**
 >
-> <https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c2\-02c\.avif>
+> https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c2\-02c\.avif
 >
 > **English caption\.** A representative PyMOL view illustrates the predicted placement of `SVCWCVNSV` within the HLA\-A\*02:01 binding groove, together with surrounding interface residues and predicted hydrogen bonds\. Structural measurements included all five sampled models\.
 >
@@ -911,6 +983,14 @@ Each record remained linked to the source antigen, protein coordinates and IEDB 
 
 **中文。** 对RNase R纯化后的TROP2\-CTL1制备物开展RT\-qPCR评价，确定4 µL为工作输入。发散引物靶向环化接缝，收敛引物提供原始计算所用的比较信号。4 µL条件下，记录的环状—线性相关信号比为32\.5:1，估算环状组分为96\.96±0\.70%（三个技术复孔），与6 µL结果保持一致。这些测量支持代表性制备物中富含circRNA。沿统一路线获得的13份制备物随后在匹配的电转与培养条件下进入首轮DC–T细胞筛选。
 
+| Input volume | Recorded circular-to-linear signal ratio | Estimated circular fraction |
+| ------------ | ---------------------------------------- | --------------------------- |
+| 2 µL         | 13.0:1                                   | 92.85±0.08%                 |
+| 4 µL         | 32.5:1                                   | 96.96±0.70%                 |
+| 6 µL         | 26.4:1                                   | 96.25±1.14%                 |
+
+
+
 > **Table C2\-01｜RT\-qPCR assessment of the representative first\-round preparation｜首轮代表性制备物的RT\-qPCR评价**
 >
 > **English note\.** TROP2\-CTL1 served as the representative first\-round preparation\. Each input volume included three technical replicate wells; estimated fractions are reported as mean±SD using the source calculation\. The 4 µL input was selected for subsequent measurements\.
@@ -949,7 +1029,7 @@ Each record remained linked to the source antigen, protein coordinates and IEDB 
 
 > **Figure C2\-03｜First\-round ELISpot selection of eight modules｜首轮ELISpot选择8个模块**
 >
-> <https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c2\-03\.avif>
+> https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c2\-03\.avif
 >
 > **English caption\.** First\-round IFN\-γ ELISpot compared 13 epitope\-encoding circRNA preparations and selected two responsive modules from each of the four antigen sources\.
 >
@@ -983,9 +1063,9 @@ Each record remained linked to the source antigen, protein coordinates and IEDB 
 
 > **Figure C2\-04｜Two\-round recognition activity in Vaccine Classroom｜Vaccine Classroom两轮识别活动（****此部分图片用村哥在网页上展示的那个插件）**
 >
-> <https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c2\-04a\.avif>
+> https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c2\-04a\.avif
 >
-> <https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c2\-04b\.avif>
+> https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c2\-04b\.avif
 >
 > **English caption\.** **\(A\)** Approximate classroom recognition accuracy in the limited\-clue and clear\-clue rounds\. **\(B\)** Classroom scene from the Vaccine Classroom activity at the Primary School Affiliated to Jilin University\.
 >
@@ -1007,7 +1087,7 @@ Each record remained linked to the source antigen, protein coordinates and IEDB 
 
 > **Figure C2\-05A｜First teacher\-guided use of the Virtual Laboratory｜教师首次使用Virtual Laboratory**
 >
-> <https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c2\-05a\.avif>
+> https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c2\-05a\.avif
 >
 > **English caption\.** During the first activity at Hailun No\. 1 High School, the teacher used the initial Virtual Laboratory with support from the development team\. This activity revealed the need for clearer experimental purposes and more visible connections between consecutive steps\.
 >
@@ -1027,7 +1107,7 @@ Each record remained linked to the source antigen, protein coordinates and IEDB 
 
 > **Figure C2\-05B｜Teacher\-led use of the revised Virtual Laboratory｜教师独立使用改版后的Virtual Laboratory**
 >
-> <https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c2\-05b\.avif>
+> https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c2\-05b\.avif
 >
 > **English caption\.** After revision, the same teacher independently organised the Virtual Laboratory and continued using it after the development team had left\.
 >
@@ -1063,7 +1143,7 @@ Each record remained linked to the source antigen, protein coordinates and IEDB 
 
 > **Figure C2\-06｜Complementary first\-round functional\-assessment workflow｜首轮互补功能评价流程**
 >
-> <https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c2\-06\.avif>
+> https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c2\-06\.avif
 >
 > **English caption\.** **\(A\)** CD8/CD69 staining and flow cytometry assessed early T\-cell activation under the TROP2 CTL1 and CTL2 conditions\. **\(B\)** Calcein\-AM release from K562 targets measured overall effector\-cell cytotoxicity at an effector\-to\-target ratio of 80:1, with spontaneous\- and maximum\-release controls supporting normalisation\.
 >
@@ -1077,7 +1157,7 @@ Each record remained linked to the source antigen, protein coordinates and IEDB 
 
 > **Figure C2\-07A｜First\-round CD8/CD69 flow cytometry｜首轮CD8/CD69流式检测**
 >
-> <https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c2\-07a\.avif>
+> https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c2\-07a\.avif
 >
 > **English caption\.** CD8/CD69 flow cytometry following TROP2 CTL1 or CTL2 stimulation\. Red ellipses identify the lymphocyte gate; green boxes identify CD8⁺CD69⁺ cells within that gate\.
 >
@@ -1085,7 +1165,7 @@ Each record remained linked to the source antigen, protein coordinates and IEDB 
 >
 > **Figure C2\-07B｜First\-round K562 killing｜首轮K562杀伤检测**
 >
-> <https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c2\-07b\.avif>
+> https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c2\-07b\.avif
 >
 > **English caption\.** K562 killing was measured by Calcein\-AM release at an effector\-to\-target ratio of 80:1 across the first\-round constructs\.
 >
@@ -1119,7 +1199,7 @@ Each record remained linked to the source antigen, protein coordinates and IEDB 
 
 > **Figure C2\-08｜Combined construct plasmid map｜Combined构建体质粒图谱**
 >
-> <https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c2\-08\.avif>
+> https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c2\-08\.avif
 >
 > **English caption\.** Plasmid map of the Combined construct, designed to incorporate eight modules selected through the first\-round ELISpot screen\.
 >
@@ -1153,13 +1233,13 @@ Each record remained linked to the source antigen, protein coordinates and IEDB 
 
 > **Figure C2\-09｜CircuForge V2\.0 review, confirmation and export interfaces｜CircuForge V2\.0审查、确认与导出界面****（此部分图片用村哥在网页上展示的那个插件）**
 >
-> <https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c2\-09a\.avif>
+> https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c2\-09a\.avif
 >
-> <https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c2\-09b\.avif>
+> https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c2\-09b\.avif
 >
-> <https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c2\-09c\.avif>
+> https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c2\-09c\.avif
 >
-> <https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c2\-09d\.avif>
+> https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c2\-09d\.avif
 >
 > **English caption\.** CircuForge V2\.0 interfaces illustrated using a hepatocellular carcinoma proteomics demo project\. **\(A\)** The Design Cart, labelled “Design list”, displays saved targets and epitopes, project identifiers and project\-saving controls\. **\(B\)** The construct interface provides researcher review controls for the inferred mature circRNA boundary and backbone design, alongside a confirmation\-record field\. **\(C\)** The export interface displays construct\-generation status, review guidance and file\-download options\. **\(D\)** The Evidence Card summarises candidate\-target evidence while retaining the requirement for user confirmation\.
 >
@@ -1223,7 +1303,7 @@ Junction sequencing recovered the expected connection between the precursor’s 
 
 > **Figure C3\-01A｜DNA transcription\-template check for the four antigen\-encoding constructs｜四种抗原编码构建的DNA转录模板检查**
 >
-> <https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c3\-01a\.avif>
+> https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c3\-01a\.avif
 >
 > **English caption\.** Agarose\-gel electrophoresis documented the four antigen\-encoding DNA transcription templates before T7 transcription\.
 >
@@ -1231,13 +1311,22 @@ Junction sequencing recovered the expected connection between the precursor’s 
 
 **Table C3\-01｜RT\-qPCR assessment of purified Combined｜纯化Combined的RT\-qPCR评价**
 
+| Measure                                  | Recorded result |
+| ---------------------------------------- | --------------- |
+| Working input                            | 4 µL            |
+| Technical wells                          | 3               |
+| ΔCq: convergent−divergent                | 7.19±0.39       |
+| Recorded circular-to-linear signal ratio | 145.7:1         |
+| Estimated circular fraction              | 99.30±0.17%     |
+| Release criterion                        | ≥90%            |
+
 > **English note\.** Results describe the RNase R\-purified Combined preparation\. ΔCq and estimated circular fraction are reported as mean±SD across three technical wells; the ratio and fraction follow the recorded calculation\.
 >
 > **中文说明。** 结果对应RNase R纯化后的Combined制备物。ΔCq及估算环状组分以三个技术复孔的均值±标准差表示；比值与比例沿用原始计算方法。
 >
 > **Figure C3\-01B｜Junction\-sequence verification of Combined circRNA｜Combined circRNA的接缝序列验证**
 >
-> <https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c3\-01b\.avif>
+> https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c3\-01b\.avif
 >
 > **English caption\.** Sanger sequencing of the junction\-spanning amplification product identified the expected head\-to\-tail connection in Combined\.
 >
@@ -1277,7 +1366,7 @@ Junction sequencing recovered the expected connection between the precursor’s 
 
 > **Figure C3\-02A｜RNA electrophoresis over time｜RNA时间序列电泳**
 >
-> <https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c3\-02a\.avif>
+> https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c3\-02a\.avif
 >
 > **English caption\.** Combined circRNA and its linear precursor were compared by electrophoresis after incubation at 37 °C for 0, 24, 48 and 72 h\.
 >
@@ -1285,7 +1374,7 @@ Junction sequencing recovered the expected connection between the precursor’s 
 >
 > **Figure C3\-02B｜Relative RNA band intensity｜RNA条带相对灰度**
 >
-> <https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c3\-02b\.avif>
+> https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c3\-02b\.avif
 >
 > **English caption\.** Relative band intensities were normalised to each RNA’s own 0 h value\. Lines connect the measured time points\.
 >
@@ -1321,7 +1410,7 @@ Junction sequencing recovered the expected connection between the precursor’s 
 
 > **Figure C3\-03｜Segmentation and overlap scheme for Combined RNA｜Combined RNA分段与重叠方案**
 >
-> <https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c3\-03\.avif>
+> https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c3\-03\.avif
 >
 > **English caption\.** The 2,013 nt Combined sequence was divided into ten overlapping fragments\. Hatched regions indicate shared sequence between neighbouring fragments\. The diagram uses 0\-based half\-open coordinates; Table C3\-02 lists the corresponding 1\-based inclusive positions\.
 >
@@ -1334,6 +1423,19 @@ Junction sequencing recovered the expected connection between the precursor’s 
 **中文。** 分段记录形成十个长度为195–249 nt的片段，其覆盖范围完整保留2,013 nt原始序列。八组相邻片段重叠30 nt，最后一组重叠50 nt。各片段的位置、长度与重叠关系均被记录，为局部预测及后续组装建立明确的序列对应关系。
 
 **Table C3\-02｜Fragment coordinates and overlaps for Combined RNA｜Combined RNA片段坐标与重叠记录**
+
+| Fragment | Sequence positions | Length (nt) | Overlap with previous fragment (nt) |
+| -------- | ------------------ | ----------- | ----------------------------------- |
+| C1       | 1–195              | 195         | —                                   |
+| C2       | 166–396            | 231         | 30                                  |
+| C3       | 367–588            | 222         | 30                                  |
+| C4       | 559–781            | 223         | 30                                  |
+| C5       | 752–982            | 231         | 30                                  |
+| C6       | 953–1201           | 249         | 30                                  |
+| C7       | 1172–1406          | 235         | 30                                  |
+| C8       | 1377–1619          | 243         | 30                                  |
+| C9       | 1590–1818          | 229         | 30                                  |
+| C10      | 1769–2013          | 245         | 50                                  |
 
 > **English note\.** Coordinates are 1\-based and inclusive\. C1 and C10 flank the back\-splice junction and share no residues with each other in this segmentation record\.
 >
@@ -1371,13 +1473,19 @@ Junction sequencing recovered the expected connection between the precursor’s 
 
 > **Figure C3\-04A｜Structural views before and after fragment refinement｜片段精修前后的结构视图**
 >
-> <https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c3\-04a\.avif>
+> https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c3\-04a\.avif
 >
 > **English caption\.** P\-atom views of the same 200 nt Combined fragment before refinement \(left\) and after final Amber refinement \(right\)\. Both views originate from all\-atom models of the same run\.
 >
 > **中文图注。** 同一200 nt Combined片段精修前（左）及最终Amber精修后（右）的P原子视图，两幅视图均来自同一次运行的全原子模型。
 
 **Table C3\-03｜Geometric diagnostics during refinement of the 200 nt fragment｜200 nt片段精修过程的几何诊断**
+
+| Stage              | Non-adjacent P-atom close-contact pairs | Fragment terminal P–P distance (Å) |
+| ------------------ | --------------------------------------- | ---------------------------------- |
+| Raw reconstruction | 8                                       | 6.751                              |
+| PPR refinement     | 4                                       | 5.899                              |
+| Amber refinement   | 3                                       | 5.673                              |
 
 > **English note\.** Close contacts count P\-atom pairs separated by at least three sequence positions and less than 3 Å in space\. Terminal distance is measured between the first and last P atoms of the 200 nt fragment\.
 >
@@ -1389,7 +1497,7 @@ Junction sequencing recovered the expected connection between the precursor’s 
 
 > **Figure C3\-04B｜Full\-length structural hypothesis for Combined RNA｜Combined RNA全长结构假设**
 >
-> <https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c3\-04b\.avif>
+> https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c3\-04b\.avif
 >
 > **English caption\.** The separately retained full\-length Combined model represents 2,013 nt and contains 42,831 atoms\. It is presented as a sequence\-specific structural hypothesis\.
 >
@@ -1439,7 +1547,7 @@ The maturation comparison showed a stronger response with Combined\. CD80⁺CD86
 
 > **Figure C3\-05A｜Anti\-FLAG Western blot｜抗FLAG Western blot**
 >
-> <https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c3\-05a\.avif>
+> https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c3\-05a\.avif
 >
 > **English caption\.** Anti\-FLAG Western blot with β\-actin as the loading reference\. The original circRNA and Blank lane labels are retained\.
 >
@@ -1447,7 +1555,7 @@ The maturation comparison showed a stronger response with Combined\. CD80⁺CD86
 >
 > **Figure C3\-05B｜Representative DC CD80/CD86 flow cytometry｜DC CD80/CD86代表性流式图**
 >
-> <https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c3\-05b\.avif>
+> https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c3\-05b\.avif
 >
 > **English caption\.** Representative flow\-cytometry plots show CD80⁺CD86⁺ DCs across the five circRNA groups\.
 >
@@ -1455,7 +1563,7 @@ The maturation comparison showed a stronger response with Combined\. CD80⁺CD86
 >
 > **Figure C3\-05C｜Quantification of DC maturation｜DC成熟定量比较**
 >
-> <https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c3\-05c\.avif>
+> https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c3\-05c\.avif
 >
 > **English caption\.** CD80⁺CD86⁺ DC frequencies are shown as mean ± SD; \*\*\* denotes P \< 0\.001 for Blank versus Combined\.
 >
@@ -1499,7 +1607,7 @@ The maturation comparison showed a stronger response with Combined\. CD80⁺CD86
 
 > **Figure C3\-06A｜T\-cell activation\-associated phenotype｜T细胞激活相关表型**
 >
-> <https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c3\-06a\.avif>
+> https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c3\-06a\.avif
 >
 > **English caption\.** Representative flow\-cytometry plots \(top\) and quantitative comparison \(bottom\) of CD8⁺CD69⁺ cells across the five circRNA groups, assessing the activation\-associated T\-cell response\.
 >
@@ -1507,7 +1615,7 @@ The maturation comparison showed a stronger response with Combined\. CD80⁺CD86
 >
 > **Figure C3\-06B｜Co\-stimulation\-associated T\-cell phenotype｜共刺激相关T细胞表型**
 >
-> <https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c3\-06b\.avif>
+> https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c3\-06b\.avif
 >
 > **English caption\.** Representative flow\-cytometry plots \(top\) and quantitative comparison \(bottom\) of CD8⁺CD28⁺ cells across the five circRNA groups, assessing the co\-stimulation\-associated phenotype\.
 >
@@ -1515,7 +1623,7 @@ The maturation comparison showed a stronger response with Combined\. CD80⁺CD86
 >
 > **Figure C3\-06C｜Effector\-memory\-associated T\-cell phenotype｜效应记忆相关T细胞表型**
 >
-> <https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c3\-06c\.avif>
+> https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c3\-06c\.avif
 >
 > **English caption\.** Representative flow\-cytometry plots \(top\) and quantitative comparison \(bottom\) of the CD45RO⁺CCR7⁻ population across the five circRNA groups, assessing the effector\-memory\-associated phenotype\.
 >
@@ -1555,7 +1663,7 @@ The maturation comparison showed a stronger response with Combined\. CD80⁺CD86
 
 > **Figure C3\-07｜Second\-round IFN\-γ ELISpot｜第二轮IFN\-γ ELISpot**
 >
-> <https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c3\-07\.avif>
+> https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c3\-07\.avif
 >
 > **English caption\.** IFN\-γ ELISpot comparison across the five second\-round circRNA groups\. Combined produced the highest recorded spot count, followed by the paired TROP2 CTL1\+2 design\.
 >
@@ -1597,7 +1705,7 @@ The maturation comparison showed a stronger response with Combined\. CD80⁺CD86
 
 > **Figure C3\-08｜MDA\-MB\-231 killing across three effector\-to\-target ratios｜三个效靶比下的MDA\-MB\-231杀伤**
 >
-> <https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c3\-08\.avif>
+> https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c3\-08\.avif
 >
 > **English caption\.** Killing of MDA\-MB\-231 TNBC cells by T cells stimulated through DCs receiving Blank, TROP2 CTL1, TROP2 CTL2, TROP2 CTL1\+2 or Combined circRNA, at effector\-to\-target ratios of 20:1, 40:1 and 80:1\. Killing increased with the effector\-to\-target ratio, with Combined showing the highest recorded activity at all three ratios\.
 >
@@ -1633,7 +1741,7 @@ The maturation comparison showed a stronger response with Combined\. CD80⁺CD86
 
 > **Figure C3\-09｜Tumour and non\-tumour target\-cell killing｜肿瘤与非肿瘤靶细胞杀伤比较**
 >
-> <https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c3\-09\.avif>
+> https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c3\-09\.avif
 >
 > **English caption\.** Combined\-primed T cells showed substantially higher killing of MDA\-MB\-231 than of four HLA\-A\*02:01\-positive non\-tumour cell lines at both tested ratios\. Values are mean±SD across three technical replicate wells per condition\.
 >
@@ -1673,7 +1781,7 @@ The maturation comparison showed a stronger response with Combined\. CD80⁺CD86
 
 > **Figure C3\-10｜DC viability across empty\-LNP input levels｜不同空载LNP输入量下的DC活力**
 >
-> <https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c3\-10\.avif>
+> https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c3\-10\.avif
 >
 > **English caption\.** Immature monocyte\-derived DCs received empty LNP without circRNA cargo for 24 h\. Relative viability remained near baseline at 50–200 ng per well and decreased at 400 ng\. Values are mean±SD across four replicate wells, normalised to the 0 ng control\.
 >
@@ -1741,9 +1849,9 @@ With this purpose, we brought the programme to Pilu Town and organised a Gram\-s
 
 > **Figure C3\-11｜Gram\-staining learning activity in Pilu Town｜毗卢镇革兰氏染色学习活动（****此部分图片用村哥在网页上展示的那个插件）**
 >
-> <https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c3\-11a\.avif>
+> https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c3\-11a\.avif
 >
-> <https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c3\-11b\.avif>
+> https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c3\-11b\.avif
 >
 > **English caption\.** During the Gram\-staining learning activity in Pilu Town, team members used illustrated teaching materials to introduce crystal violet and iodine, explaining their roles in the staining procedure to primary\-school learners\.
 >
@@ -1779,11 +1887,11 @@ With this purpose, we brought the programme to Pilu Town and organised a Gram\-s
 
 > **Figure C3\-12｜Synbio Classroom practical learning and discussion｜Synbio Classroom实践学习与讨论****（此部分图片用村哥在网页上展示的那个插件）**
 >
-> <https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c3\-12a\.avif>
+> https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c3\-12a\.avif
 >
-> <https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c3\-12b\.avif>
+> https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c3\-12b\.avif
 >
-> <https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c3\-12c\.avif>
+> https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c3\-12c\.avif
 >
 > **English caption\.** Photographs from Synbio Classroom document guided pipetting practice, a classroom discussion of gel electrophoresis results, and a group photograph of learners and JLU\-FBH team members\.
 >
@@ -1802,493 +1910,3 @@ With this purpose, we brought the programme to Pilu Town and organised a Gram\-s
 ### Design｜设计
 
 **English\.** Iteration 1\.3 established CirCure’s first sheep\-based visual identity, which later appeared in presentation materials, keychains and fridge magnets at China iGEM exchanges\. Participants recognised the shared character and suggested that it could also represent the different work behind the project, including Dry Lab, Wet Lab and Engineering\. We therefore asked how the original sheep could evolve into distinct project roles while remaining recognisably part of CirCure\.
-
-**中文。** Iteration 1\.3建立了CirCure初版小羊视觉形象，随后应用于展示材料、钥匙扣和冰箱贴，并进入中国iGEM交流活动。参与者认可这一共同形象，也建议通过小羊进一步呈现Dry Lab、Wet Lab和Engineering等不同工作类型。我们据此提出新的设计问题：如何让初版小羊发展出不同项目角色，同时保持CirCure统一的视觉识别？
-
-### Build｜构建
-
-**English\.** In response to this feedback, Visual Design developed a role\-based sheep family by translating each team’s characteristic work into clothing, tools and actions\. Laboratory instruments identified Wet Lab, computers and computational elements represented Dry Lab and Software, and teaching materials distinguished Education\. The original silhouette, facial features and colour palette remained consistent across the variants, which were then applied to revised presentation materials, keychains and fridge magnets\.
-
-**中文。** 接纳交流反馈后，Visual Design提炼各组具有代表性的工作特点，将其转化为小羊的服装、工具与动作，建立角色化小羊家族：以实验仪器表现Wet Lab，以电脑和计算元素表现Dry Lab与Software，以教学材料表现Education。各角色沿用初版轮廓、面部特征与基础配色，再应用于新版展示材料、钥匙扣和冰箱贴，使不同团队职能在同一项目形象中清楚呈现。
-
-### Test｜测试
-
-**English\.** The revised character family and its corresponding merchandise were taken to subsequent iGEM exchange activities\. Qualitative feedback focused on two outcomes: the variants remained recognisable as members of the same CirCure character family, and their clothing, tools and actions made the represented roles easier to distinguish\. The same role cues also remained visible when transferred from presentation graphics to the smaller surfaces of keychains and fridge magnets\. These exchanges therefore tested both project\-level consistency and role\-level clarity across digital and physical formats\.
-
-**中文。** 新版角色家族及其对应文创再次进入后续iGEM交流活动。现场定性反馈主要集中在两项结果：不同版本仍能够被识别为同一套CirCure小羊形象，服装、工具与动作则使其代表的团队职能更加容易区分。当角色由展示图转移至面积更小的钥匙扣和冰箱贴时，相应视觉线索仍能保持可见。因此，本轮交流同时检验了数字与实体载体中的项目统一性及角色辨识度。
-
-> **Figure C3\-13｜CirCure sheep character designs and iGEM exchange displays｜CirCure小羊角色设计与iGEM交流展示****（此部分图片用村哥在网页上展示的那个插件）**
->
-> <https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c3\-13a\.avif>
->
-> <https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c3\-13b\.avif>
->
-> <https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c3\-13c\.avif>
->
-> <https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c3\-13d\.avif>
->
-> <https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c3\-13e\.avif>
->
-> **English caption\.** Photographs document CirCure project displays and discussions at iGEM exchange activities\. The sheep character variants share a consistent colour palette and core appearance, while accessories including a blueprint, microphone and notebook provide distinct visual cues for different team roles\.
->
-> **中文图注。** 照片记录了CirCure项目在iGEM交流活动中的展示与现场讨论。不同小羊角色保持统一配色与核心外形，并通过图纸、麦克风和笔记本等配件，为不同团队职能提供各具特点的视觉线索。
-
-### Learn｜学习
-
-**English\.** The two rounds of exchange established a reusable visual rule: the sheep’s silhouette, face and colour palette should remain fixed as the project identity, while clothing, tools and actions could vary to express different roles\. We retained this “shared identity plus role\-specific cues” system for later Wiki and presentation materials\. It also provided the visual basis for representing the project teams as distinguishable but connected gears within the CirCure TIME overview\.
-
-**中文。** 两轮交流形成了一项可复用的视觉规则：以小羊的轮廓、面部特征和基础配色维持项目身份，以服装、工具与动作表现不同团队角色。我们将这套“共同身份＋角色线索”的系统保留至后续Wiki及展示材料中，并以此作为CirCure TIME总览图中各团队小齿轮既可区分、又相互连接的视觉基础。
-
-## Cycle 3 Summary｜Cycle 3总结
-
-**English\.** **M—Measurement** connected the Combined design to measurable molecular and cellular performance\. Five comparison preparations followed a shared production route, with Combined’s RT\-qPCR and junction sequencing supporting its circular identity and enriched composition\. The time course demonstrated greater RNA persistence than the linear precursor, while TorusFold produced a structural hypothesis for the full\-length sequence\. Cellular measurements then connected circRNA translation with DC maturation, T\-cell responses, IFN\-γ secretion and tumour\-cell killing\. The non\-tumour\-cell comparison and empty\-LNP assay complemented these functional results with target\-selectivity and carrier\-viability evidence\. CircuForge improved the transfer of design records, layered educational activities brought experimental workflows to different learners, and the revised visual system made team roles recognisable\. Together, these outcomes established the experimental basis for evaluating Combined in vivo and made the project’s methods and findings easier to use and communicate\.
-
-**中文。** **M——测量（Measurement）**将Combined设计推进为可测的分子与细胞表现。五组比较材料沿共同路线完成制备，Combined的RT\-qPCR与接缝测序为其环状身份及富集组成提供支持。时间序列显示其持续性高于线性前体，TorusFold则为全长序列形成结构假设。细胞检测进一步连接circRNA翻译、DC成熟、T细胞应答、IFN\-γ分泌与肿瘤细胞杀伤；非肿瘤细胞比较和空载LNP实验分别补充靶细胞选择性与载体相关活力证据。CircuForge完善设计记录交接，分层教育活动让不同学习者理解并实践实验流程，角色化视觉系统使团队职能更易识别。本轮由此为Combined进入体内评价建立实验基础，也使项目方法与成果更便于使用和交流。
-
-# Cycle 4 — Evaluation: Extending molecular and cellular evidence to in vivo evaluation｜Cycle 4——评价：将分子与细胞证据延伸至体内评价
-
-**English\.** TIME reaches **E—Evaluation**\. Cycle 3 established in vitro molecular and cellular evidence for Combined; this cycle examined whether those responses could translate into tumour control in vivo\. After submitting the Animal Use Form and receiving approval, we established TROP2\-expressing 4T1 model cells and conducted a three\-group comparison of PBS, empty\-vector circRNA–LNP and Combined circRNA–LNP in BALB/c mice\. Wet Lab measured tumour growth, splenic immune responses and local tumour signals\. Alongside these experiments, Dry Lab developed Cell2Dose, a mathematical model informed by experimental data, to combine selected readouts with published parameters, simulate vaccine action and explore dose\-related uncertainty\. Together, the experimental observations and mechanistic calculations extended the evaluation of Combined from in vitro activity to tumour control and associated immune responses in the animal model\.
-
-**中文。** TIME进入**E——评价（Evaluation）**。Cycle 3已经为Combined建立体外分子与细胞证据，本轮进一步考察这些应答能否转化为疫苗的体内肿瘤控制效果。团队提交Animal Use Form并获得批准后，建立TROP2表达4T1模型细胞，在BALB/c小鼠中开展PBS、空载体circRNA–LNP与Combined circRNA–LNP三组比较。Wet Lab测量肿瘤生长、脾脏免疫应答及肿瘤局部免疫信号；Dry Lab则开发了基于实验数据的数学模型Cell2Dose，结合部分实验读数与已发表参数，模拟疫苗作用过程并探索剂量相关不确定性。实验观察与机制计算共同将Combined的评价由体外活性推进至动物模型中的肿瘤控制及相关免疫应答。
-
-## Iteration 4\.1｜Establishing a verified TROP2\-expressing 4T1 model cell input｜建立经验证的TROP2表达4T1模型细胞输入
-
-### Design｜设计
-
-**English\.** Evaluation in immunocompetent BALB/c mice required a syngeneic tumour background and a defined model target\. Following consultation with Zheng Hu on tumour\-model selection, Wet Lab retained 4T1 as the murine tumour background and introduced human TROP2 as the model antigen\.
-
-**中文。** 在免疫完整BALB/c小鼠中开展评价，需要同源小鼠肿瘤背景及明确的模型靶点。Wet Lab与胡正老师讨论荷瘤模型选择后，确定保留4T1作为小鼠肿瘤背景，并引入人TROP2作为模型抗原。
-
-### Build｜构建
-
-**English\.** Building on Junqi Niu’s guidance in Iteration 1\.10, we consulted him again on lentiviral biosafety and model\-cell preparation\. Wet Lab then established a four\-step BSL\-2 workflow: transduction of 4T1 cells with supplier\-prepared TROP2 lentivirus, GFP observation after 48–72 h, enrichment of GFP\-positive singlets by flow sorting and maintenance under puromycin selection\. Wild\-type and modified cells were subsequently prepared in parallel for semi\-quantitative RT\-PCR and surface\-TROP2 flow\-cytometry validation \(Naldini et al\., 1996; Zufferey et al\., 1997\)\.
-
-**中文。** 在Iteration 1\.10牛俊奇老师指导的基础上，我们再次就慢病毒生物安全及模型细胞制备进行咨询。Wet Lab随后在BSL\-2条件下建立四步构建流程：使用供应商制备的TROP2慢病毒转导4T1细胞，48–72 h后观察GFP表达，通过流式分选富集GFP阳性单细胞，并在嘌呤霉素选择压力下维持培养。野生型与改造后的细胞随后平行进入半定量RT\-PCR及TROP2膜表面流式验证（Naldini et al\., 1996；Zufferey et al\., 1997）。
-
-> **References｜参考文献**
->
-> Naldini L, Blömer U, Gallay P, et al\. In vivo gene delivery and stable transduction of nondividing cells by a lentiviral vector\. *Science*\. 1996;272:263–267\. [doi:10\.1126/science\.272\.5259\.263](https://doi.org/10.1126/science.272.5259.263)
->
-> Zufferey R, Nagy D, Mandel RJ, Naldini L, Trono D\. Multiply attenuated lentiviral vector achieves efficient gene delivery in vivo\. *Nature Biotechnology*\. 1997;15:871–875\. [doi:10\.1038/nbt0997\-871](https://doi.org/10.1038/nbt0997-871)
-
-### Test｜测试
-
-**English\.** GFP fluorescence was broadly distributed across the transduced\-cell field without visible rounding or detachment, supporting successful transduction without evident morphological cytotoxicity\. During flow sorting, 84\.1% of the remaining singlet events were GFP\-positive\. Semi\-quantitative RT\-PCR subsequently recorded a 75\.83 ± 3\.27\-fold increase in TROP2 transcript signal relative to wild\-type 4T1 cells \(`P < 0.0001`, `n = 3` independent RNA extractions\); because this method has a limited dynamic range, the result was interpreted as an order\-of\-magnitude increase rather than a calibrated expression fold change\. Surface staining provided the decisive model\-cell validation: 99\.9% of the sorted and drug\-selected cells were TROP2\-positive, compared with 0% of wild\-type 4T1 cells\. These successive measurements established a predominantly TROP2\-expressing 4T1 population for the subsequent in vivo study\.
-
-**中文。** GFP荧光在转导细胞视野中广泛分布，细胞未出现明显圆缩或脱落，说明慢病毒成功进入细胞，且未观察到明显的形态学细胞毒性。流式分选时，经过单细胞门筛选后，剩余事件中84\.1%呈GFP阳性。随后，半定量RT\-PCR显示转导组TROP2转录信号较野生型4T1升高75\.83 ± 3\.27倍（`P < 0.0001`，`n = 3`次独立RNA提取）；考虑该方法的动态范围限制，这一结果用于说明TROP2转录信号发生数量级升高，而不作为经校准的精确表达倍数。膜表面染色进一步提供决定性的模型验证：分选并经药物筛选后的细胞中，TROP2阳性率达到99\.9%，而野生型4T1为0%。这些连续测量共同确立了以TROP2表达细胞为主体的4T1细胞群，用于后续体内研究。
-
-> **Figure C4\-01A｜TROP2 transcript detection｜TROP2转录检测**
->
-> <https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c4\-01a\.avif>
->
-> **English caption\.** Semi\-quantitative RT\-PCR compared TROP2 transcript signals between wild\-type and TROP2\-expressing 4T1 cells\. Values are mean ± SD from three independent RNA extractions; \*\*\*\* denotes P \< 0\.0001\. The relative signal supports markedly increased transcription\.
->
-> **中文图注。** 半定量RT\-PCR比较野生型与TROP2表达4T1细胞的TROP2转录信号。结果为三次独立RNA提取的均值±标准差，\*\*\*\*表示P \< 0\.0001；相对信号支持TROP2转录明显增强。
->
-> **Figure C4\-01B｜Surface TROP2 expression｜TROP2膜表面表达**
->
-> <https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c4\-01b\.avif>
->
-> **English caption\.** Surface TROP2 staining compared wild\-type 4T1 cells \(left\) with the sorted and puromycin\-selected TROP2\-expressing population \(right\)\. The recorded TROP2\-positive fractions were 0% and 99\.9%, respectively\.
->
-> **中文图注。** 膜表面TROP2染色比较野生型4T1细胞（左）与经分选及嘌呤霉素筛选的TROP2表达细胞群（右），记录的TROP2阳性率分别为0%和99\.9%。
->
-> **Figure C4\-01C｜GFP fluorescence after lentiviral transduction｜慢病毒转导后的GFP荧光**
->
-> <https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c4\-01c\.avif>
->
-> **English caption\.** Representative 4T1 cell fields 48–72 h after lentiviral transduction\. Columns show bright\-field, GFP\-channel and merged images\. GFP fluorescence was visible in the transduced cells\. Scale bars: 200 µm\.
->
-> **中文图注。** 慢病毒转导后48–72 h的代表性4T1细胞视野，各列依次为明场、GFP通道及合并图像，可见转导细胞中的GFP荧光。比例尺：200 µm。
->
-> **Figure C4\-01D｜Gating strategy for GFP\-positive cell sorting｜GFP阳性细胞分选的设门流程**
->
-> <https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c4\-01d\.avif>
->
-> **English caption\.** Sequential gates identified the cell population using FSC\-A/SSC\-A, selected singlets using FSC\-A/FSC\-H and identified GFP\-positive cells\. The respective gates retained 68\.8%, 89\.3% and 84\.1% of their parent populations; the final value represents GFP positivity within the singlet gate\.
->
-> **中文图注。** 从左至右依次通过FSC\-A/SSC\-A确定细胞群、FSC\-A/FSC\-H筛选单细胞，再识别GFP阳性细胞。三个门分别保留各自上一级群体的68\.8%、89\.3%和84\.1%；最后一项表示单细胞门内的GFP阳性比例。
-
-### Learn｜学习
-
-**English\.** We successfully established and verified a human TROP2\-expressing 4T1 cell population, providing the tumour\-cell material needed to establish a TROP2\-bearing tumour model in immunocompetent BALB/c mice\. With this material ready, Wet Lab proceeded to define the control groups, administration schedule, animal\-welfare criteria and systemic and local immune measurements for evaluating Combined’s in vivo tumour\-control effect\.
-
-**中文。** 我们成功构建并验证了表达人TROP2的4T1细胞群，为在免疫完整的BALB/c小鼠中建立携带人TROP2靶点的荷瘤模型提供了细胞材料。基于这一成果，Wet Lab进一步确定对照分组、给药日程、动物福利标准及系统性与局部免疫测量方案，以评价Combined的体内肿瘤控制效果。
-
-[Further details: Experiments — TROP2\-expressing 4T1 construction](https://2026.igem.wiki/jlu-fbh/experiments)｜[详见Experiments：TROP2表达4T1构建](https://2026.igem.wiki/jlu-fbh/experiments)
-
-## Iteration 4\.2｜Turning the in vivo question into an approved Wet Lab protocol｜将体内问题转化为获批Wet Lab方案
-
-### Design｜设计
-
-**English\.** With the model\-cell input established, the evaluation needed to distinguish tumour progression, carrier\-associated effects and the contribution of the complete Combined preparation\. Jiuwei Cui further advised that tumour control should be interpreted together with systemic and local immune evidence\. We therefore defined three connected endpoints: longitudinal tumour growth, splenic immune phenotypes and intratumoural CD8/Granzyme B signals \(Pulaski and Ostrand\-Rosenberg, 2000\)\.
-
-**中文。** 模型细胞输入确立后，评价方案需要区分肿瘤自身进程、载体相关效应及完整Combined制备物的贡献。崔久嵬老师进一步建议，肿瘤控制结果应结合系统性与局部免疫证据进行解释。因此，我们确定纵向肿瘤生长、脾脏免疫表型及肿瘤组织CD8/Granzyme B信号三类相互衔接的终点（Pulaski and Ostrand\-Rosenberg, 2000）。
-
-> **References｜参考文献**
->
-> Pulaski BA, Ostrand\-Rosenberg S\. Mouse 4T1 breast tumor model\. *Current Protocols in Immunology*\. 2000;Chapter 20 20\.2\. [PMID:18432775](https://pubmed.ncbi.nlm.nih.gov/18432775/)
-
-### Build｜构建
-
-**English\.** Wet Lab built the protocol around three groups of immunocompetent BALB/c mice: PBS, empty\-vector circRNA–LNP and Combined circRNA–LNP, with five animals per group\. TROP2\-expressing 4T1 cells were inoculated on D0, followed by the recorded five\-administration schedule on D0, D7, D14, D21 and D28 and a common D35 endpoint\. The protocol also specified animal coding, group allocation, consistent inoculation and administration routes, longitudinal tumour measurement, humane endpoints and coordinated tissue collection\. Consultation with Guangjie Sun on animal ethics and the 3Rs was translated into an Experimental Design Assistant record and an Animal Use Form, with approval obtained before the animal work began \(Percie du Sert et al\., 2020; NC3Rs, n\.d\.\)\.
-
-**中文。** Wet Lab围绕三组免疫完整BALB/c小鼠建立动物方案：PBS、空载体circRNA–LNP和Combined circRNA–LNP，每组5只。D0接种TROP2表达4T1细胞，随后按照记录方案于D0、D7、D14、D21和D28进行五次给药，并在D35设置统一终点。方案同时规定动物编码、分组、一致的接种与给药路径、纵向肿瘤测量、人道终点及协同取材。与孙广杰老师围绕动物伦理和3R原则的咨询被转化为Experimental Design Assistant记录及Animal Use Form，并在动物工作开始前取得批准（Percie du Sert et al\., 2020；NC3Rs，无日期）。
-
-> **References｜参考文献**
->
-> Percie du Sert N, Hurst V, Ahluwalia A, et al\. The ARRIVE guidelines 2\.0: updated guidelines for reporting animal research\. *PLoS Biology*\. 2020;18:e3000410\. [doi:10\.1371/journal\.pbio\.3000410](https://doi.org/10.1371/journal.pbio.3000410)
->
-> NC3Rs\(n\.d\.\)\. *Experimental Design Assistant*\. [Resource](https://eda.nc3rs.org.uk/)
-
-### Test｜测试
-
-**English\.** We tested the interpretability of the protocol by tracing each planned conclusion to a specific comparison\. PBS versus empty vector measured the carrier and backbone background; empty vector versus Combined measured the additional effect associated with the antigen\-encoding sequence; and PBS versus Combined described the overall effect of the complete preparation\. Tumour measurements, splenic phenotyping and tumour\-tissue imaging were then linked through the same animal identifiers\. This review confirmed that every endpoint had an appropriate comparator and could be collected from the same cohort without introducing additional animals\.
-
-**中文。** 我们通过将每项预期结论对应到具体组间比较，检验方案能否支持清晰解释：PBS与空载体组的比较衡量载体及骨架背景，空载体与Combined的比较评价抗原编码序列相关的增量效应，PBS与Combined的比较则反映完整制备物的总体效应。随后，我们利用统一动物编号连接肿瘤测量、脾脏免疫表型及肿瘤组织成像。复核确认每项终点均具有相应对照，并能够由同一动物队列提供，从而无需为不同终点增加动物。
-
-> **Figure C4\-02｜Approved three\-group animal\-study design｜获批的三组动物实验设计**
->
-> <https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c4\-02\.avif>
->
-> **English caption\.** Three\-group animal\-study schedule\. PBS, empty\-vector circRNA–LNP and Combined circRNA–LNP groups each contained five mice, with administrations on D0, D7, D14, D21 and D28 and endpoint collection on D35\.
->
-> **中文图注。** 三组动物实验日程。PBS、空载体circRNA–LNP及Combined circRNA–LNP组各含5只小鼠，于D0、D7、D14、D21和D28进行处理，并于D35终点取材。
-
-### Learn｜学习
-
-**English\.** The approved protocol fixed the 4T1–TROP2 model, three comparison groups, dosing schedule and endpoint measurements before the study began\. These conditions provided Dry Lab with a common framework for modelling how molecular input, immune responses and tumour growth might interact under the same experimental schedule\.
-
-**中文。** 获批方案在研究开始前明确了4T1–TROP2模型、三组比较、给药日程及终点评价。这些条件为Dry Lab提供了统一的计算框架，用于模拟同一实验日程下分子输入、免疫应答与肿瘤生长之间的相互作用。
-
-[Further details: Integrated Human Practices — animal model, readout and ethics consultations](https://2026.igem.wiki/jlu-fbh/human-practices)｜[详见Integrated Human Practices：动物模型、读出及伦理咨询](https://2026.igem.wiki/jlu-fbh/human-practices)
-
-## Iteration 4\.3｜Modelling vaccine performance from cell\-based measurements｜以细胞实验数据建立疫苗性能模型
-
-### Design｜设计
-
-**English\.** Iteration 4\.2 established the animal model, comparison groups and administration schedule\. Dry Lab used these conditions and existing experimental measurements to develop Cell2Dose: A Cell\-Informed Mechanistic Model for Tumor Vaccine Dose Exploration\. The model examined four complementary aspects of Combined performance: **\(1\) antitumour efficacy**, assessing tumour suppression; **\(2\) cell viability**, assessing carrier\-related effects on cell survival; **\(3\) systemic exposure**, estimating material entering the systemic compartment; and **\(4\) innate immune activation**, assessing stimulation against a predefined model criterion\. By connecting delivery, circRNA expression and immune responses, Cell2Dose provided a quantitative basis for comparing candidate doses across these four aspects \(Wesselhoeft et al\., 2018; Chen et al\., 2022; Benzekry et al\., 2014\)\.
-
-**中文。** Iteration 4\.2确定了动物模型、比较分组与给药日程。Dry Lab结合这些条件与已有实验测量，设计Cell2Dose——基于细胞数据的肿瘤疫苗机制与剂量探索模型，从四个互补方面评价Combined：**（1）抗肿瘤效果**，评价肿瘤抑制程度；**（2）细胞活力**，评价载体相关因素对细胞存活的影响；**（3）系统暴露**，估计给药材料进入全身分布的程度；**（4）先天免疫激活**，依据模型预设判据评价刺激水平。通过连接递送、circRNA表达与免疫应答，Cell2Dose为综合比较候选剂量的四项表现提供定量依据（Wesselhoeft et al\., 2018；Chen et al\., 2022；Benzekry et al\., 2014）。
-
-> **References｜参考文献**
->
-> Wesselhoeft RA, Kowalski PS, Anderson DG\. Engineering circular RNA for potent and stable translation in eukaryotic cells\. *Nature Communications*\. 2018;9:2629\. [doi:10\.1038/s41467\-018\-05096\-6](https://doi.org/10.1038/s41467-018-05096-6)
->
-> Chen J, Ye Z, Huang C, et al\. Lipid nanoparticle\-mediated lymph node\-targeting delivery of mRNA cancer vaccine elicits robust CD8\+ T cell response\. *Proceedings of the National Academy of Sciences USA*\. 2022;119:e2207841119\. [doi:10\.1073/pnas\.2207841119](https://doi.org/10.1073/pnas.2207841119)
->
-> Benzekry S, Lamont C, Beheshti A, et al\. Classical mathematical models for description and prediction of experimental tumor growth\. *PLoS Computational Biology*\. 2014;10:e1003800\. [doi:10\.1371/journal\.pcbi\.1003800](https://doi.org/10.1371/journal.pcbi.1003800)
-
-### Build｜构建
-
-**English\.** We built a two\-part Cell2Dose workflow connecting experimental measurements to vaccine\-action simulation\.
-
-**\(1\) Parameter calibration\.** Empty\-LNP CCK\-8 data and background\-corrected killing measurements entered finite\-grid Bayesian numerical integration to estimate the viability\-response parameters `E50` and `h`, and the killing\-response parameters `K_ET` and `n`\. Relative immune\-marker measurements supplied supporting inputs for DC\- and T\-cell\-associated responses\.
-
-**\(2\) Vaccine\-action simulation\.** Ordinary differential equations described material distribution from the subcutaneous injection site to lymph nodes, circRNA translation, innate stimulation associated with RNA and LNP, DC maturation and T\-cell priming\. Effector\-cell killing and immune suppression then contributed to the simulated tumour response\. The D0/D7/D14/D21/D28 schedule supplied five administrations; published parameters and registered uncertainty ranges supported processes beyond the measured cell responses\.
-
-**中文。** 我们建立Cell2Dose的两部分计算流程，将实验测量连接到疫苗作用模拟。
-
-**（1）参数校准。** 将空载LNP的CCK\-8数据与背景校正后的杀伤测量输入有限网格贝叶斯数值积分，估计活力响应参数`E50`与`h`，以及杀伤响应参数`K_ET`与`n`。免疫标志物的相对读数则为DC与T细胞相关应答提供辅助输入。
-
-**（2）疫苗作用模拟。** 通过常微分方程组，描述给药材料由皮下注射部位向淋巴结分布、circRNA翻译、RNA与LNP相关的先天免疫刺激、DC成熟及T细胞启动，再结合效应细胞杀伤与免疫抑制计算肿瘤变化。D0/D7/D14/D21/D28日程对应五次给药；实测细胞反应之外的过程由已发表参数及登记的不确定范围支持。
-
-### Test｜测试
-
-**English\.** Calibration translated the viability and background\-corrected killing measurements into quantitative response functions for Cell2Dose\. The posterior median nominal input retaining half the model baseline viability, `E50`, was 407\.26 ng \(95% credible interval: 402\.17–422\.93 ng\)\. The effector\-to\-target ratio producing 50% background\-corrected killing, `K_ET`, was 38\.08 \(95% credible interval: 32\.94–44\.02\)\. These fitted responses connected experimental measurements with the model’s delivery and immune processes, providing quantitative inputs for candidate\-dose comparison\. Haiming Song reviewed parameter identifiability, uncertainty registration and numerical checks, clarifying which quantities were constrained by measurements and which required uncertainty analysis\.
-
-**中文。** 校准将细胞活力与背景校正后的杀伤测量转化为Cell2Dose中的定量响应函数。保留模型基线活力一半的名义输入量`E50`，其后验中位数为407\.26 ng，95%可信区间为402\.17–422\.93 ng；背景校正后杀伤达到50%所对应的效靶比`K_ET`为38\.08，95%可信区间为32\.94–44\.02。两类拟合响应将实验测量与模型中的递送及免疫过程连接起来，为候选剂量比较提供定量输入。宋海明老师进一步复核参数可辨识性、不确定性登记及数值检查，明确哪些量受到实测数据约束，哪些需要通过不确定性分析考察。
-
-> **Figure C4\-03A｜Cell2Dose viability\-response calibration｜Cell2Dose细胞活力响应校准**
->
-> <https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c4\-03a\.avif>
->
-> **English caption\.** Empty\-LNP CCK\-8 measurements were fitted to estimate the viability\-response parameters `E50` and `h`\. Orange points show observed measurements, the blue line shows the posterior median response, and shading indicates the 95% conditional mean interval\. The red dashed line marks 80% of the median baseline\.
->
-> **中文图注。** 空载LNP的CCK\-8测量用于拟合活力响应参数`E50`与`h`。橙色点为实测数据，蓝线为后验中位响应，阴影表示条件均值的95%区间，红色虚线标示基线中位值的80%。
->
-> **Figure C4\-03B｜Cell2Dose background\-corrected killing calibration｜Cell2Dose背景校正后的杀伤响应校准**
->
-> <https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c4\-03b\.avif>
->
-> **English caption\.** Blank\-corrected Combined killing measurements were fitted to estimate the effector\-to\-target response parameter `K_ET`\. Orange points show corrected means, with error bars representing propagated observation uncertainty\. The blue line shows the posterior median response, and shading indicates the 95% conditional mean interval\.
->
-> **中文图注。** 经Blank背景校正的Combined杀伤测量用于拟合效靶比响应参数`K_ET`。橙色点为校正后的均值，误差棒表示传播的观测不确定度；蓝线为后验中位响应，阴影表示条件均值的95%区间。
->
-> **Figure C4\-03C｜Cell2Dose model architecture｜Cell2Dose模型总体架构**
->
-> **欧阳哥正在绘制中**
->
-> **English caption\.** The Cell2Dose architecture connects experimentally calibrated response functions with delivery, circRNA expression, immune responses and tumour control to support dose exploration\.
->
-> **中文图注。** Cell2Dose架构将实验校准的响应函数与递送、circRNA表达、免疫应答及肿瘤控制连接起来，为剂量探索提供计算框架。
-
-### Learn｜学习
-
-**English\.** We established a quantitative bridge from cell measurements to vaccine\-action simulation, allowing efficacy, viability, systemic exposure and innate activation to be evaluated within one framework\. The next decision was to compare doses while varying parameters beyond the reach of the cell assays, so that the recommendation would reflect a range of plausible biological conditions\.
-
-**中文。** 我们建立了从细胞测量进入疫苗作用模拟的定量连接，使抗肿瘤效果、细胞活力、系统暴露及先天免疫激活能够在同一框架中接受评价。下一步，在比较剂量的同时改变细胞实验无法直接约束的参数，使推荐结果能够综合考虑不同的可能生物学条件。
-
-[Further details: Model — parameter calibration and vaccine\-action simulation](https://2026.igem.wiki/jlu-fbh/model)｜[详见Model：参数校准与疫苗作用模拟](https://2026.igem.wiki/jlu-fbh/model)
-
-## Iteration 4\.4｜Selecting a dose through joint vaccine\-performance evaluation｜通过疫苗性能联合评价选择剂量
-
-### Design｜设计
-
-**English\.** Iteration 4\.3 connected measured cell responses to the simulated action of Combined\. We next asked which dose could satisfy the four performance criteria when delivery and immune\-effect parameters varied together\. A dose was required to meet the predefined tumour\-control, viability, systemic\-exposure and innate\-activation conditions simultaneously in at least 80% of sampled parameter sets\. This rule made the recommendation depend on balanced performance across biological variation\.
-
-**中文。** Iteration 4\.3已经将实测细胞应答连接到Combined作用过程的模拟。下一步，我们关注递送与免疫效应参数共同变化时，哪些剂量仍能满足四项性能要求。为此，我们规定：推荐剂量需要在至少80%的参数抽样中，同时达到预设的肿瘤控制、细胞活力、系统暴露及先天免疫激活判据，使剂量选择建立在不同生物学条件下的综合表现之上。
-
-### Build｜构建
-
-**English\.** We built a dose\-comparison workflow combining cell\-response parameter samples with Latin hypercube sampling of uncertain model factors to form 1,024 parameter sets\. These factors included `f_lymph`, the lymph\-node allocation fraction, and `γ_ET`, which mapped modelled effector activity to the experimental effector\-to\-target scale\. We evaluated 301 doses from 0 to 30 µg at 0\.1\-µg intervals, using the same parameter sets and five\-administration schedule throughout\. For each dose, the proportion of simulations simultaneously satisfying the efficacy, viability, systemic\-exposure and innate\-activation criteria defined the joint pass probability, `p_joint`\.
-
-**中文。** 我们结合细胞响应参数抽样与不确定模型因素的拉丁超立方采样，形成1,024组参数集。其中包括淋巴结分配比例`f_lymph`，以及将模型效应细胞活性映射至实验效靶比尺度的`γ_ET`。随后以0\.1 µg间隔评价0–30 µg范围内的301个剂量，全程使用相同参数集与五次给药日程。对每个剂量，同时满足抗肿瘤效果、细胞活力、系统暴露及先天免疫激活四项判据的模拟比例，定义为联合通过概率`p_joint`。
-
-### Test｜测试
-
-**English\.** The dose scan identified a favourable region around 10 µg\. The joint pass probability was 81\.15% at 10\.0 µg, while 10\.2 µg achieved the highest grid value of 81\.45%\. Both exceeded the predefined 80% threshold, indicating that all four criteria were satisfied together in approximately eight out of ten sampled scenarios\. Their similar scores supported approximately 10 µg as a candidate dose for experimental evaluation, balancing simulated tumour control with the three accompanying screening conditions\.
-
-**中文。** 剂量扫描在约10 µg附近形成较高的联合评分。10\.0 µg的联合通过概率为81\.15%，10\.2 µg获得网格最高值81\.45%，两者均达到预设的80%门槛，即约八成抽样情景能够同时满足四项判据。相近的评分支持将约10 µg作为实验评价的候选剂量，在模拟肿瘤控制的同时兼顾其余三项筛查条件。
-
-> **Figure C4\-04｜Cell2Dose dose\-dependent criterion passage｜Cell2Dose不同剂量下的判据通过率**
->
-> <https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c4\-04\.avif>
->
-> **English caption\.** Cell2Dose evaluated 301 doses from 0 to 30 µg per injection using 1,024 shared parameter sets\. Blue shows the efficacy\-criterion pass fraction; orange shows the fraction passing all three proxy screens for viability, systemic exposure and innate activation; green shows the fraction satisfying all four criteria simultaneously\. The horizontal dashed line marks the 80% threshold, and the vertical line identifies the highest grid value at 10\.2 µg, with a joint pass probability of 81\.45%\.
->
-> **中文图注。** Cell2Dose采用相同的1,024组参数，评价单次给药量0–30 µg范围内的301个剂量。蓝线表示效应判据通过比例，橙线表示细胞活力、系统暴露及先天免疫激活三项代理筛查同时通过的比例，绿线表示四项判据全部通过的比例。水平虚线标示80%门槛，竖线标示联合通过率最高的网格剂量10\.2 µg，其联合通过概率为81\.45%。
-
-### Learn｜学习
-
-**English\.** Cell2Dose integrated experimental evidence and parameter uncertainty to support a candidate dose around 10 µg\. The 81\.15% joint pass probability at 10\.0 µg provided quantitative context for the dose specified in the approved animal protocol\. Evaluation then moved from simulated performance to observed tumour control: Iteration 4\.5 compared tumour volumes and growth trajectories across PBS, empty\-vector circRNA–LNP and Combined circRNA–LNP to assess the additional antitumour effect of the antigen\-encoding vaccine\.
-
-**中文。** Cell2Dose综合实验依据与参数不确定性，支持将约10 µg作为候选剂量。10\.0 µg的联合通过概率为81\.15%，为获批动物方案中采用的剂量提供定量参考。随后，评价由模拟表现转向实际肿瘤控制：Iteration 4\.5比较PBS、空载体circRNA–LNP及Combined circRNA–LNP三组的肿瘤体积与生长轨迹，考察抗原编码疫苗在载体背景上增加的抗肿瘤效果。
-
-[Further details: Model — Cell2Dose dose evaluation](https://2026.igem.wiki/jlu-fbh/model)｜[详见Model：Cell2Dose剂量评价](https://2026.igem.wiki/jlu-fbh/model)
-
-## Iteration 4\.5｜Measuring tumour control under the three\-group comparison｜在三组比较中测量肿瘤控制
-
-### Design｜设计
-
-**English\.** Combined’s molecular and cellular results established the basis for testing its antitumour activity, while Iteration 4\.4 assessed candidate doses computationally\. We next evaluated **the vaccine’s in vivo tumour\-control effect** using D35 tumour volume as the primary endpoint and group mean growth trajectories to describe its development over time\. PBS and empty\-vector circRNA–LNP controls distinguished the overall Combined effect from the delivery\-and\-backbone background\.
-
-**中文。** Combined的分子与细胞结果为评价抗肿瘤作用建立了实验依据，Iteration 4\.4则从计算层面评价候选剂量。本轮进一步检验**疫苗的体内肿瘤控制效果**：以D35肿瘤体积作为主要终点，各组平均生长曲线呈现肿瘤变化过程，并通过PBS与空载体circRNA–LNP对照，区分Combined的总体效果与递送、骨架背景的贡献。
-
-### Build｜构建
-
-**English\.** Five female BALB/c mice per group received TROP2\-expressing 4T1 cells and were assigned to PBS, empty\-vector circRNA–LNP or Combined circRNA–LNP\. Each group received five scheduled administrations on D0, D7, D14, D21 and D28, with collection on D35\. Tumours were measured three times at each timepoint by a blinded operator, and the mean was retained under the individual animal identifier\.
-
-**中文。** 每组5只雌性BALB/c小鼠接种TROP2表达4T1细胞，并分别进入PBS、空载体circRNA–LNP及Combined circRNA–LNP组。三组均在D0、D7、D14、D21和D28接受五次预定处理，并于D35统一取材。每个时间点由盲法测量人员连续测量肿瘤三次，取平均值并保留对应动物编号。
-
-### Test｜测试
-
-**English\.** Endpoint tumour volumes were \(233\.64\\pm28\.33\) mm³ for PBS, \(90\.36\\pm13\.51\) mm³ for empty vector and \(24\.20\\pm9\.72\) mm³ for Combined \(\(n=5\) animals per group\)\. The overall difference was supported by one\-way ANOVA \(\(F\(2,12\)=159\.2\), \(P=2\.3\\times10^\{\-9\}\)\)\. Combined produced 89\.6% tumour\-growth inhibition relative to PBS and 73\.2% relative to empty vector, while empty vector produced 61\.3% inhibition relative to PBS; all three pre\-specified comparisons remained significant after Holm correction\.
-
-**中文。** D35终点肿瘤体积分别为PBS组\(233\.64\\pm28\.33\) mm³、空载体组\(90\.36\\pm13\.51\) mm³和Combined组\(24\.20\\pm9\.72\) mm³（每组\(n=5\)）。单因素方差分析支持三组总体差异（\(F\(2,12\)=159\.2\)，\(P=2\.3\\times10^\{\-9\}\)）。Combined相对PBS及空载体的肿瘤生长抑制率分别为89\.6%和73\.2%，空载体相对PBS为61\.3%；三项预设比较经Holm校正后均保持显著。
-
-> **Figure C4\-05A｜Mean tumour growth curves｜组平均肿瘤生长曲线**
->
-> <https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c4\-05a\.avif>
->
-> **English caption\.** Group\-mean tumour volumes across the six\-week study, with five mice per group\. Control denotes empty\-vector circRNA–LNP, and circRNA vaccine denotes Combined circRNA–LNP\. Week 1 corresponds to D0 and Week 6 to D35\. Curves describe the growth trajectories; D35 tumour volume was the primary endpoint\.
->
-> **中文图注。** 六周研究期间的组平均肿瘤体积，每组5只小鼠。Control对应空载体circRNA–LNP，circRNA vaccine对应Combined circRNA–LNP。第1周对应D0，第6周对应D35；曲线描述肿瘤生长过程，D35肿瘤体积为主要终点。
->
-> **Figure C4\-05B｜Excised tumours at D35｜D35离体肿瘤**
->
-> <https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c4\-05b\.avif>
->
-> **English caption\.** Excised tumours collected at D35\. Rows from top to bottom represent PBS, empty\-vector circRNA–LNP and Combined circRNA–LNP, with five tumours per group\. Background grid spacing: 1 cm\.
->
-> **中文图注。** D35取材获得的离体肿瘤，从上至下依次为PBS、空载体circRNA–LNP及Combined circRNA–LNP，每组5个肿瘤。背景网格间距为1 cm。
-
-**Table C4\-02｜D35 endpoint tumour volumes｜D35终点肿瘤体积**
-
-> **English note\.** Each value represents one animal; five animals were analysed per group\.
->
-> **中文说明。** 每个数值对应一只动物，每组纳入5只动物。
-
-### Learn｜学习
-
-**English\.** The comparison showed that Combined achieved the strongest antitumour effect among the three groups\. Building on this difference in efficacy, the next iteration traced the systemic immune\-response chain from splenic dendritic\-cell maturation and CD8⁺ T\-cell activation to memory\-associated phenotypes and effector responses\.
-
-**中文。** 实验结果的比较进一步明确了Combined表现出最强的抗肿瘤效果。基于这一效果差异，下一轮继续追踪由脾脏DC成熟、CD8⁺ T细胞激活延伸至记忆相关表型与效应输出的系统性免疫应答链。
-
-[Further details: Results — in vivo tumour control](https://2026.igem.wiki/jlu-fbh/results)｜[详见Results：体内肿瘤控制](https://2026.igem.wiki/jlu-fbh/results)
-
-## Iteration 4\.6｜Connecting tumour control with systemic immune measurements｜连接肿瘤控制与系统免疫测量
-
-### Design｜设计
-
-**English\.** To determine whether Combined’s tumour control was accompanied by coordinated systemic immune activation, we arranged the splenic measurements along the immune\-response chain: dendritic\-cell maturation, CD8⁺ T\-cell activation, memory\-associated differentiation and the effector outputs IFN\-γ and Granzyme B\. This sequence connected antigen presentation, T\-cell response and effector function within one evaluation framework\.
-
-**中文。** 为判断Combined的肿瘤控制是否伴随协调的系统性免疫激活，我们按照免疫应答的递进过程组织脾脏测量：由DC成熟进入CD8⁺ T细胞激活与记忆相关分化，再延伸至IFN\-γ和Granzyme B效应输出，从而在同一评价框架中连接抗原呈递、T细胞应答与效应功能。
-
-### Build｜构建
-
-**English\.** Splenocytes from three animals per group were analysed by flow cytometry\. After dendritic cells and CD8⁺ T cells were identified through their respective gating strategies, CD80/CD86 co\-expression was used to evaluate dendritic\-cell maturation, CD69 to indicate CD8⁺ T\-cell activation and CD44/CD62L to describe memory\-associated differentiation\. Intracellular staining further measured IFN\-γ as a cytokine\-response output and Granzyme B as a cytotoxic\-effector indicator\. Each animal was retained as an independent statistical unit\.
-
-**中文。** 取每组3只动物的脾细胞进行流式分析。通过相应设门识别DC与CD8⁺ T细胞后，以CD80/CD86共表达评价DC成熟，以CD69反映CD8⁺ T细胞激活，并以CD44/CD62L描述记忆相关分化；进一步通过胞内染色测量IFN\-γ所代表的细胞因子应答，以及Granzyme B所反映的细胞毒效应潜力。每只动物均作为独立统计单位。
-
-### Test｜测试
-
-English\. The five measurements formed a coherent systemic immune\-response pattern\. Empty\-vector circRNA–LNP produced an intermediate increase above PBS, while Combined generated the strongest response at every stage—from dendritic\-cell maturation and CD8⁺ T\-cell activation to memory\-associated differentiation, IFN\-γ production and Granzyme B expression\. Combined remained significantly higher than both controls after Holm correction across all five panels\. The consistency of this pattern connected Combined’s tumour\-control performance with coordinated activation of the systemic immune\-response chain rather than a change in a single marker\.
-
-中文。 五项测量共同呈现出连贯的系统性免疫应答模式。空载体circRNA–LNP相较PBS产生中等程度的升高，Combined则在DC成熟、CD8⁺ T细胞激活、记忆相关分化、IFN\-γ产生及Granzyme B表达各环节均表现出最强应答；经Holm校正后，Combined在五项检测中仍均显著高于两组对照。各环节的一致变化将Combined的肿瘤控制表现与系统性免疫应答链的协调激活联系起来，而非局限于某一项孤立指标的改变。
-
-**English\.** The following five panels show representative splenic flow\-cytometry plots and corresponding quantitative results\. circRNA\-vector/Vector denotes empty\-vector circRNA–LNP, while circRNA\-antigens/Antigens denotes Combined circRNA–LNP\. Quantification shows mean ± SD from three animals per group; percentages within the flow plots refer to the displayed samples\. For the indicated comparisons, ns denotes no significant difference, \*\*\* P \< 0\.001 and \*\*\*\* P \< 0\.0001\.
-
-**中文。** 以下五张图分别展示脾脏免疫检测的代表性流式图及对应定量结果。图中circRNA\-vector／Vector对应空载体circRNA–LNP，circRNA\-antigens／Antigens对应Combined circRNA–LNP。定量结果为每组3只动物的均值±标准差，流式图内的百分比对应所展示样本。图示比较中，ns表示差异不显著，\*\*\*表示P \< 0\.001，\*\*\*\*表示P \< 0\.0001。
-
-> **Figure C4\-06A｜Splenic dendritic\-cell maturation｜脾脏DC成熟**
->
-> <https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c4\-06a\.avif>
->
-> **English caption\.** Representative CD80/CD86 flow plots \(left\) and quantification of CD80⁺CD86⁺ cells within the splenic dendritic\-cell population \(right\), assessing the maturation\-associated response at D35\.
->
-> **中文图注。** D35脾脏DC的CD80/CD86代表性流式图（左）及DC群内CD80⁺CD86⁺细胞比例的定量结果（右），用于评价成熟相关应答。
->
-> **Figure C4\-06B｜Splenic CD8 T\-cell activation｜脾脏CD8 T细胞激活**
->
-> <https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c4\-06b\.avif>
->
-> **English caption\.** Representative CD69 flow plots \(left\) and quantification of CD69\-positive cells within the splenic CD8 T\-cell population \(right\), assessing early activation at D35\.
->
-> **中文图注。** D35脾脏CD8 T细胞的CD69代表性流式图（左）及CD69阳性细胞比例的定量结果（右），用于评价早期激活。
->
-> **Figure C4\-06C｜Splenic CD8 T\-cell memory\-associated phenotype｜脾脏CD8 T细胞记忆相关表型**
->
-> <https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c4\-06c\.avif>
->
-> **English caption\.** Representative CD44/CD62L flow plots \(left\) and quantification of the CD44⁺CD62L⁺ population within splenic CD8 T cells \(right\), assessing the central\-memory\-associated phenotype at D35\.
->
-> **中文图注。** D35脾脏CD8 T细胞的CD44/CD62L代表性流式图（左）及CD44⁺CD62L⁺细胞比例的定量结果（右），用于评价中央记忆相关表型。
->
-> **Figure C4\-06D｜Intracellular IFN\-γ in splenic CD8 T cells｜脾脏CD8 T细胞胞内IFN\-γ**
->
-> <https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c4\-06d\.avif>
->
-> **English caption\.** Representative intracellular IFN\-γ flow plots \(left\) and quantification of IFN\-γ\-positive cells within the splenic CD8 T\-cell population \(right\) at D35\.
->
-> **中文图注。** D35脾脏CD8 T细胞的胞内IFN\-γ代表性流式图（左）及IFN\-γ阳性细胞比例的定量结果（右）。
->
-> **Figure C4\-06E｜Intracellular Granzyme B in splenic CD8 T cells｜脾脏CD8 T细胞胞内Granzyme B**
->
-> <https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c4\-06e\.avif>
->
-> **English caption\.** Representative intracellular Granzyme B flow plots \(left\) and quantification of Granzyme B\-positive cells within the splenic CD8 T\-cell population \(right\) at D35\.
->
-> **中文图注。** D35脾脏CD8 T细胞的胞内Granzyme B代表性流式图（左）及Granzyme B阳性细胞比例的定量结果（右）。
->
-> **English note\.** circRNA\-vector/Vector denotes empty\-vector circRNA–LNP, and circRNA\-antigens/Antigens denotes Combined circRNA–LNP\. Quantification shows mean ± SD from three animals per group; percentages in representative flow plots describe the displayed samples\. ns, not significant; \*\*\* P \< 0\.001; \*\*\*\* P \< 0\.0001 for the indicated comparisons\.
->
-> **中文说明。** circRNA\-vector／Vector对应空载体circRNA–LNP，circRNA\-antigens／Antigens对应Combined circRNA–LNP。定量结果为每组3只动物的均值±标准差；代表性流式图中的百分比对应所展示样本。图示比较中，ns表示差异不显著，\*\*\*表示P \< 0\.001，\*\*\*\*表示P \< 0\.0001。
-
-### Learn｜学习
-
-**English\.** The splenic results connected lower tumour burden with broader systemic immune\-associated changes\. Because intracellular staining used polyclonal rather than peptide\-specific re\-stimulation, these measurements described overall effector capacity rather than epitope\-specific responses\. We therefore next examined whether CD8\-associated signals were also present inside the tumour\.
-
-**中文。** 脾脏结果将较低肿瘤负荷与更广泛的系统性免疫相关变化连接起来。由于胞内染色采用多克隆刺激而非特定肽段再刺激，这些测量反映总体效应能力，而不能直接证明表位特异性应答。因此，下一轮进一步考察肿瘤内部是否同样出现CD8相关信号。
-
-[Further details: Results — systemic immune response](https://2026.igem.wiki/jlu-fbh/results)｜[详见Results：系统免疫应答](https://2026.igem.wiki/jlu-fbh/results)
-
-## Iteration 4\.7｜Examining local immune signals in tumour tissue｜考察肿瘤组织中的局部免疫信号
-
-### Design｜设计
-
-**English\.** The splenic measurements described systemic immune changes but did not show whether immune cells entered the tumour\. We therefore used tumour immunofluorescence to examine local CD8 distribution and the accompanying Granzyme B channel under the same three\-group comparison\.
-
-**中文。** 脾脏测量反映了系统性免疫变化，但不能说明免疫细胞是否进入肿瘤组织。因此，我们在同一三组比较中使用肿瘤免疫荧光，考察局部CD8分布及相应Granzyme B通道。
-
-### Build｜构建
-
-**English\.** One tumour section from each of three animals per group was processed in a single randomised staining and imaging batch\. CD8, Granzyme B and nuclear channels were acquired under identical exposure and magnification, with a secondary\-only control used to assess background\. Group identities remained coded during field selection and imaging\.
-
-**中文。** 每组3只动物各提供一张肿瘤切片，并在同一随机化批次中完成染色与成像。CD8、Granzyme B及细胞核通道采用相同曝光与放大倍数采集，同时设置仅含二抗的对照以评价背景。视野选择及成像过程中持续隐藏组别身份。
-
-### Test｜测试
-
-**English\.** The representative sections showed sparse intratumoural CD8 signal in PBS, an intermediate signal in the empty\-vector group and the strongest signal in Combined\. Because only one field was collected per animal and immune infiltration was spatially heterogeneous, the images were interpreted qualitatively without density estimates or statistical comparison\. The Granzyme B channel showed a stronger signal in Combined, but its reticular morphology and the absence of single\-stain and isotype\-control sections prevented that signal from establishing cytotoxic activity\. The direct local conclusion was therefore increased CD8\-associated infiltration in the Combined sections\.
-
-**中文。** 代表性切片显示，PBS组肿瘤内CD8信号稀少，空载体组居中，Combined组最强。由于每只动物仅采集一个视野，且免疫浸润在肿瘤内分布不均，本结果仅作定性解释，不计算细胞密度或开展组间统计。Combined组Granzyme B通道同样呈现更强信号，但其网状形态以及单染和同型对照的缺失，使该信号不足以证明局部细胞毒活性。因此，本轮能够直接支持的局部结论是Combined切片中CD8相关浸润增加。
-
-> **Figure C4\-07｜Tumour CD8 and Granzyme B immunofluorescence｜肿瘤CD8与Granzyme B免疫荧光**
->
-> <https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c4\-07\.avif>
->
-> **English caption\.** Representative tumour sections stained for CD8 and Granzyme B, with merged views\. circRNA\-vector denotes empty\-vector circRNA–LNP, and circRNA\-antigens denotes Combined circRNA–LNP\. Combined showed stronger CD8\-associated signals in the displayed fields; the images provide a qualitative comparison of local immune infiltration\.
->
-> **中文图注。** 肿瘤代表性切片的CD8、Granzyme B染色及合并图像。circRNA\-vector对应空载体circRNA–LNP，circRNA\-antigens对应Combined circRNA–LNP。所展示视野中，Combined呈现更强的CD8相关信号，为局部免疫浸润提供定性比较。
-
-### Learn｜学习
-
-**English\.** Bringing tumour growth, splenic phenotypes and tissue images together taught us that each measurement answered a different question: whether tumour growth was suppressed, whether systemic immunity changed and whether CD8\-associated signals were present locally\. Their agreement strengthened the interpretation of Combined’s performance in this model, while increased staining alone could not establish cytotoxic function or antigen\-specific recognition\. This distinction was particularly important because BALB/c mice carry H\-2ᵈ, whereas the selected epitopes were defined in a human HLA\-A\*02:01 context\. We therefore recognised that further development required matching each conclusion to the evidence supporting it and using an HLA\-matched system to investigate antigen\-specific recognition\.
-
-**中文。** 将肿瘤生长、脾脏表型与组织图像结合后，我们进一步认识到，每项测量回答的问题不同：肿瘤生长是否受到抑制、系统免疫是否发生变化，以及局部是否出现CD8相关信号。三者相互补充，增强了对Combined在当前模型中表现的解释，但染色增强本身不能直接证明细胞毒功能或抗原特异性识别。尤其是BALB/c小鼠携带H\-2ᵈ，而所选表位在人HLA\-A\*02:01情境下完成筛选。因此，我们认识到，后续迭代需要将每项结论与其支持证据逐一对应，并通过HLA匹配体系进一步验证抗原特异性识别。
-
-[Further details: Results — tumour immunofluorescence](https://2026.igem.wiki/jlu-fbh/results) and [Integrated Human Practices — interpretation of local signals](https://2026.igem.wiki/jlu-fbh/human-practices)｜[详见Results：肿瘤免疫荧光](https://2026.igem.wiki/jlu-fbh/results)及[Integrated Human Practices：局部信号解释](https://2026.igem.wiki/jlu-fbh/human-practices)
-
-## Iteration 4\.8｜Integrating the evidence for Combined’s in vivo performance｜整合Combined体内表现的证据
-
-### Design｜设计
-
-**English\.** Tiesuo Zhao’s guidance clarified the distinction between the human HLA\-A\*02:01 epitope\-design context and evaluation in ordinary BALB/c mice bearing human\-TROP2\-expressing 4T1 tumours\. Together with Jiuwei Cui, we defined the final task: integrate tumour and immune measurements into a clear account of Combined’s performance, while identifying the contribution and scope of each experimental and computational result\.
-
-**中文。** 赵铁锁老师的建议帮助我们区分人HLA\-A\*02:01表位设计情境与人TROP2表达4T1肿瘤在普通BALB/c小鼠中的评价。结合崔久嵬老师的指导，我们明确最后一轮任务：整合肿瘤与免疫测量，清晰呈现Combined的体内表现，同时说明各项实验与计算结果的贡献及适用范围。
-
-### Build｜构建
-
-**English\.** We assembled an evidence table covering model\-cell verification, tumour control, splenic immune measurements, tumour immunofluorescence and Cell2Dose\. Each entry linked the direct record to its supported conclusion and evidence scope\. For Cell2Dose, we distinguished calibration inputs from comparison records: IFN\-γ and Granzyme B measurements contributed to immune\-response inputs, while animal tumour, DC and CD69 records were compared with the retained model baseline\.
-
-**中文。** 我们建立证据表，汇总模型细胞验证、肿瘤控制、脾脏免疫测量、肿瘤免疫荧光及Cell2Dose，将直接记录与其支持的结论、适用范围逐项对应。模型部分进一步区分校准输入与比较记录：IFN\-γ和Granzyme B测量参与免疫应答输入构建，动物肿瘤、DC及CD69记录则与保留的模型基线进行比较。
-
-**Table C4\-01｜Evidence supporting the final interpretation｜支持最终解释的证据表**
-
-> **English note\.** Tumour volumes are mean±SD for five animals per group\. The semi\-quantitative RT\-PCR value describes the recorded transcript\-signal increase; Cell2Dose probabilities describe sampled model scenarios\.
->
-> **中文说明。** 肿瘤体积为每组5只动物的均值±标准差。半定量RT\-PCR数值描述记录的转录信号升高；Cell2Dose概率描述模型抽样情景的通过比例。
-
-### Test｜测试
-
-**English\.** We cross\-checked the table against the source results and organised the findings into an integrated evidence map\. Combined’s D35 tumour volume was 89\.6% lower than PBS and 73\.2% lower than empty vector, accompanied by the highest values across all five splenic panels and stronger local CD8\-associated signals\. Together, these experimental observations established an in vivo proof of concept for Combined in the 4T1–TROP2 BALB/c model\. Cell2Dose complemented this result through mechanistic simulation and conditional dose evaluation, with the map distinguishing data used for calibration from observations used for comparison\.
-
-**中文。** 我们将证据表与原始结果逐项核对，再整理为综合证据地图。Combined的D35肿瘤体积较PBS降低89\.6%，较空载体降低73\.2%，同时在五项脾脏检测中获得最高读出，并呈现更强的局部CD8相关信号。这些实验观察共同建立Combined在4T1–TROP2 BALB/c模型中的体内概念验证。Cell2Dose则通过机制模拟与条件性剂量评价补充计算依据，图中分别标明用于校准及用于比较的数据。
-
-> **Figure C4\-08｜Integrated evidence map for Combined｜Combined综合证据地图**
->
-> <https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c4\-08\.avif>
->
-> **English caption\.** The evidence map connects Combined’s tumour\-control and immune\-response observations with model\-cell verification and Cell2Dose calculations\. Labelled links distinguish model calibration inputs from held\-out comparisons\.
->
-> **中文图注。** 综合证据地图连接Combined的肿瘤控制、免疫应答观察、模型细胞验证及Cell2Dose计算，并通过连线标注明确区分模型校准输入与留出比较。
-
-### Learn｜学习
-
-**English\.** The final integration brought tumour control, systemic immune responses and local CD8 observations into a coherent in vivo proof of concept, complemented by Cell2Dose’s mechanistic and dose evaluation\. TIME concluded with a clear engineering outcome: Combined’s performance was supported by traceable materials, defined comparisons and connected measurements, while each result retained its experimental or computational meaning\.
-
-**中文。** 最终整合将肿瘤控制、系统性免疫应答与局部CD8观察汇聚为连贯的体内概念验证，并由Cell2Dose补充机制与剂量评价。TIME由此形成明确的工程成果：Combined的表现具有可追踪的材料、清晰的比较及相互衔接的测量支持，各项结果也保留其具体的实验或计算含义。
-
-[Further details: Integrated Human Practices — evidence review](https://2026.igem.wiki/jlu-fbh/human-practices), [Model — Cell2Dose](https://2026.igem.wiki/jlu-fbh/model), [Results — in vivo proof of concept](https://2026.igem.wiki/jlu-fbh/results) and [Entrepreneurship — development pathway](https://2026.igem.wiki/jlu-fbh/entrepreneurship)｜[详见Integrated Human Practices：证据复核](https://2026.igem.wiki/jlu-fbh/human-practices)、[Model：Cell2Dose](https://2026.igem.wiki/jlu-fbh/model)、[Results：体内概念验证](https://2026.igem.wiki/jlu-fbh/results)及[Entrepreneurship：开发路径](https://2026.igem.wiki/jlu-fbh/entrepreneurship)
-
-## Cycle 4 Summary｜Cycle 4小结
-
-**English\.** **E—Evaluation** completed a major engineering milestone: carrying Combined from molecular and cellular activity to demonstrated tumour control in vivo\. We established verified TROP2\-expressing 4T1 model cells and completed an approved three\-group animal study, in which Combined achieved the strongest tumour control alongside systemic immune changes and increased local CD8\-associated signals\. These experimental results established an in vivo proof of concept in the tested BALB/c model\. Cell2Dose complemented the findings through mechanistic simulation and dose\-uncertainty evaluation\. Together, model\-cell construction, biological measurements and computational analysis brought the four TIME cycles to a concrete engineering outcome\.
-
-**中文。** **E——评价（Evaluation）**完成了项目的一项关键跨越：将Combined的分子与细胞活性推进至实际的体内肿瘤控制。我们成功建立经验证的TROP2表达4T1模型细胞，并完成获批的三组动物研究；Combined表现出最强的肿瘤控制效果，同时伴随系统性免疫变化与增强的局部CD8相关信号。这些实验结果建立了Combined在所用BALB/c模型中的体内概念验证，Cell2Dose进一步通过机制模拟与剂量不确定性评价补充计算依据。模型细胞构建、生物学测量与计算分析由此相互衔接，使TIME四轮工程迭代最终落在明确的工程成果上。
-
-# Engineering Outcome｜工程成果
-
-**English\.** CirCure established a connected engineering route from evidence\-supported antigen selection to an in vivo proof of concept for Combined\. Protein, malignant\-cell and patient\-level analyses supported the four antigen sources; epitope prediction, structural review and experimental screening shaped their encoded composition\. Molecular and cellular measurements then connected circRNA preparation with translation and immune responses, culminating in the strongest tumour control among the three tested groups in the 4T1–TROP2 BALB/c model\. Each conclusion remains linked to the material, comparator and measurement that supports it, while Cell2Dose adds mechanistic simulation and dose\-uncertainty evaluation grounded in identified experimental inputs and published parameters\.
-
-**中文。** CirCure建立了一条从循证抗原选择通向Combined体内概念验证的连续工程路线。蛋白、恶性细胞及患者层面的分析支持四种抗原来源，表位预测、结构复核与实验筛选进一步确定编码组成；分子与细胞测量随后将circRNA制备连接到蛋白翻译和免疫应答，最终在4T1–TROP2 BALB/c模型中获得三组比较中最强的肿瘤控制效果。每项结论均对应支持它的材料、对照与测量，Cell2Dose则依据来源明确的实验输入与已发表参数，补充疫苗作用机制模拟和剂量不确定性评价。
-
-**English\.** Dry Lab and Wet Lab supplied the principal drive, and the challenges encountered along their route generated resources that others could build upon\. CircuForge preserved evidence behind design decisions, TorusFold enabled full\-length RNA structural exploration and CirCore translated preparation experience into a hardware concept\. Clinical and ethical consultation refined the use and interpretation of evidence; layered Education brought scientific practice to learners with different backgrounds and resources; Visual Design made project roles recognisable; and Entrepreneurship connected these achievements with development planning\. The resulting contribution is both an experimentally evaluated vaccine design and a set of methods for making research easier to trace, share and reuse\.
-
-**中文。** Dry Lab与Wet Lab提供主要推进动力，沿途遇到的具体问题也催生了可供他人继续使用的成果：CircuForge保留设计决定背后的证据，TorusFold支持全长RNA结构探索，CirCore将制备经验转化为硬件构想。临床与伦理咨询完善证据的使用和解释，分层教育让不同知识背景与资源条件的学习者接触科学实践，Visual Design使项目职能清楚可见，Entrepreneurship则将这些成果连接到开发规划。因此，项目既形成了经过实验评价的疫苗设计，也积累了让研究更易追踪、分享与复用的方法。
-
-**English\.** For people facing TNBC, time holds treatment decisions, the uncertainty of recurrence and the hope of returning to ordinary life\. This is the purpose that keeps **TIME** moving\. Future HLA\-matched, antigen\-specific and product\-exposure studies can bring stronger evidence into its next turn, carrying CirCure closer to clinical relevance\. We hope that the time invested at the bench can one day help patients gain more time beyond it—to recover, to be with those they love and to continue lives shaped by more than illness\.
-
-**中文。** 对于面对TNBC的人们，时间承载着治疗的选择、对复发的忧虑，以及回到日常生活的盼望。这也是**TIME**持续转动的方向。未来，HLA匹配、抗原特异性及产品暴露研究有望为下一轮循环带来更坚实的证据，推动CirCure逐步走向临床转化。我们希望，今天投入实验台前的时间，有一天能够成为患者重新拥有的时间——用于康复、陪伴所爱的人，也用于继续书写不只围绕疾病展开的人生。
-
-[Further details: Results — experimental evidence](https://2026.igem.wiki/jlu-fbh/results), [Model — Cell2Dose](https://2026.igem.wiki/jlu-fbh/model), [Software — CircuForge and TorusFold](https://2026.igem.wiki/jlu-fbh/software), [Hardware — CirCore](https://2026.igem.wiki/jlu-fbh/hardware) and [Integrated Human Practices — decision records](https://2026.igem.wiki/jlu-fbh/human-practices)｜[详见Results：实验证据](https://2026.igem.wiki/jlu-fbh/results)、[Model：Cell2Dose](https://2026.igem.wiki/jlu-fbh/model)、[Software：CircuForge与TorusFold](https://2026.igem.wiki/jlu-fbh/software)、[Hardware：CirCore](https://2026.igem.wiki/jlu-fbh/hardware)及[Integrated Human Practices：决策记录](https://2026.igem.wiki/jlu-fbh/human-practices)
