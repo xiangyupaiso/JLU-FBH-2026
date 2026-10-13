@@ -122,7 +122,9 @@ export function animateTnbcBridge(section: HTMLElement) {
     wash.style.visibility = visible ? "visible" : "hidden";
     word.style.visibility = visible ? "visible" : "hidden";
     wash.style.opacity = String(fade(0, 0.88, progress));
-    setTnbcCopyOpacity(copy, "bridge", fade(0.08, 0.78, progress));
+    // Complete the carried word's journey before the longer title and diagram
+    // become readable, so wrapped lines do not expose an empty middle phrase.
+    setTnbcCopyOpacity(copy, "bridge", fade(0.62, 0.9, progress));
     target.style.opacity = String(fade(0.72, 0.94, progress));
     source.style.visibility = visible ? "hidden" : original.sourceVisibility;
     // Clear the outgoing headline before the shared word crosses its lines.

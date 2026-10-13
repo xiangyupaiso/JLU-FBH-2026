@@ -3,7 +3,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { isHomeMotionRefreshing, settleHomeScrubEndpoint } from "./homeMotion";
 import {
   createThinkingGalleryInk,
-  THINKING_PUNCTUATION_CROPS,
+  THINKING_MAGNIFIER_CROP,
   type InkBounds,
 } from "./createThinkingGalleryInk";
 import "../styles/home-thinking-gallery.css";
@@ -13,7 +13,7 @@ const smooth = (start: number, end: number, value: number) => {
   return t * t * (3 - 2 * t);
 };
 
-/** Clear the scene before its punctuation opens into the next chapter's choices.
+/** Carry the painted magnifier into the next chapter's choices.
  * Local opacity overrides leave the chapter timelines intact for reverse scrolling. */
 export function animateThinkingGallery(
   root: HTMLElement,
@@ -25,9 +25,8 @@ export function animateThinkingGallery(
     ".home-molecule-gallery__stage",
   );
   const thinking = root.querySelector<HTMLElement>("#a-new-direction");
-  const sources = [8, 7].map((layer) =>
-    thinking?.querySelector<HTMLImageElement>(`[data-layer="${layer}"]`),
-  );
+  const magnifier =
+    thinking?.querySelector<HTMLImageElement>('[data-layer="4"]');
   const cards = Array.from(
     root.querySelectorAll<HTMLElement>("[data-gallery-card]"),
   );
@@ -35,18 +34,21 @@ export function animateThinkingGallery(
   if (
     !source ||
     !destination ||
-    !sources[0] ||
-    !sources[1] ||
+    !magnifier ||
     !clinical ||
     !intro.scrollTrigger
   ) {
     return () => {};
   }
-  const images = sources as HTMLImageElement[];
   const wash = document.createElement("div");
   wash.className = "home-thinking-gallery-wash";
   wash.setAttribute("aria-hidden", "true");
   document.body.append(wash);
+  // The canvas carries the magnifier; only the medical tools remain in this sheet.
+  magnifier.style.setProperty(
+    "--thinking-magnifier-cutoff",
+    `${(THINKING_MAGNIFIER_CROP.top + THINKING_MAGNIFIER_CROP.height) * 100}%`,
+  );
   const state = { progress: 0 };
   let disposed = false;
   let carried = false;
@@ -60,31 +62,39 @@ export function animateThinkingGallery(
   };
   const measure = (progress: number) => {
     const stageBounds = bounds(source);
-    // Keep the punctuation in its settled viewport position while the source
+    // Keep the magnifier in its settled viewport position while the source
     // chapter scrolls away. The same coordinates apply when returning to it.
-    const nextSources = images.map((image, index) => {
+    const nextSources = [magnifier].map((image) => {
       const box = bounds(image);
-      const settled = { ...box, top: box.top - stageBounds.top };
-      // Move the isolated marks into the centre and enlarge them modestly as
-      // the scene clears, preserving the original painting's aspect ratio.
-      const crop = THINKING_PUNCTUATION_CROPS[index];
-      const amount = smooth(0.08, 0.18, progress);
-      const scale = (compact ? Math.max(1, 56 / box.width) : 1) * 1.35;
+      // Isolate the existing painted magnifier from the medical-tools sheet.
+      // Preserve its aspect ratio as it moves into the centre of the viewport.
+      const crop = THINKING_MAGNIFIER_CROP;
+      let settled = { ...box, top: box.top - stageBounds.top };
+      if (box.width === 0 || box.height === 0) {
+        // Phone layouts hide the medical-tools sheet. Introduce its magnifier
+        // directly at the centre instead of measuring that hidden image.
+        const width = 88 / crop.width;
+        const height = width * (image.naturalHeight / image.naturalWidth);
+        settled = {
+          left: window.innerWidth / 2 - (crop.left + crop.width / 2) * width,
+          top: window.innerHeight / 2 - (crop.top + crop.height / 2) * height,
+          width,
+          height,
+        };
+      }
+      const amount = smooth(0.015, 0.24, progress);
+      const scale = (compact ? 112 : 156) / (settled.width * crop.width);
       const width = gsap.utils.interpolate(
-        box.width,
-        box.width * scale,
+        settled.width,
+        settled.width * scale,
         amount,
       );
       const height = gsap.utils.interpolate(
-        box.height,
-        box.height * scale,
+        settled.height,
+        settled.height * scale,
         amount,
       );
-      const gap = Math.min(window.innerWidth * 0.12, compact ? 48 : 90);
-      const left =
-        window.innerWidth / 2 +
-        (index === 0 ? -gap : gap) -
-        (crop.left + crop.width / 2) * width;
+      const left = window.innerWidth / 2 - (crop.left + crop.width / 2) * width;
       const top =
         window.innerHeight / 2 - (crop.top + crop.height / 2) * height;
       return {
@@ -119,7 +129,7 @@ export function animateThinkingGallery(
       clinical.getTween()?.progress(1);
     }
   };
-  const ink = createThinkingGalleryInk(images, cards, compact, () => {
+  const ink = createThinkingGalleryInk(magnifier, cards, compact, () => {
     if (!disposed && !carried) draw();
   });
   const draw = () => {
@@ -138,7 +148,7 @@ export function animateThinkingGallery(
       return;
     }
     const p = state.progress;
-    // Give the centred punctuation a longer still hold. One shared progress
+    // Give the centred magnifier a still hold. One shared progress
     // keeps the background, ink and destination reveal in the same rhythm.
     const phaseProgress =
       p <= 0.18
@@ -156,7 +166,7 @@ export function animateThinkingGallery(
       phaseProgress < 0.18
         ? "scene-exit"
         : phaseProgress < 0.34
-          ? "punctuation"
+          ? "magnifier"
           : phaseProgress < 0.62
             ? "disperse"
             : phaseProgress < 0.9
@@ -184,7 +194,7 @@ export function animateThinkingGallery(
     if (entering) useParticles = ready;
     if (!useParticles) {
       // Keep the native chapter reveal when image sampling is unavailable;
-      // an opaque wash would otherwise cover the only remaining punctuation.
+      // an opaque wash would otherwise cover the original magnifier.
       carry(false);
       wash.style.visibility = "hidden";
       ink.render(phaseProgress, sourceBounds, targetBounds, false);
@@ -195,13 +205,17 @@ export function animateThinkingGallery(
     wash.style.opacity = String(sceneExit);
     wash.style.backgroundColor = gsap.utils.interpolate(
       "#f0f3fd",
-      "#fceeed",
+      "#fff4e2",
       color,
     );
     source.style.setProperty("--thinking-scene-opacity", String(1 - sceneExit));
     source.style.setProperty(
       "--thinking-cloud-opacity",
       String(1 - smooth(0, 0.08, p)),
+    );
+    destination.style.setProperty(
+      "--thinking-title-opacity",
+      String(smooth(0.86, 0.98, phaseProgress)),
     );
     cards.forEach((card, index) => {
       card.style.setProperty(
@@ -269,6 +283,8 @@ export function animateThinkingGallery(
     carry(false);
     source.style.removeProperty("--thinking-scene-opacity");
     source.style.removeProperty("--thinking-cloud-opacity");
+    destination.style.removeProperty("--thinking-title-opacity");
+    magnifier.style.removeProperty("--thinking-magnifier-cutoff");
     cards.forEach((card) => {
       [
         "--thinking-card-opacity",

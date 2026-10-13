@@ -86,6 +86,15 @@ export function animateClinicalSequence(
   const particles = createClinicalParticleMorph(stage, nurse, doctor, compact);
   const pigment = { progress: 0 };
 
+  const entryStart = () => {
+    const trigger = ScrollTrigger.getById("home-why-tnbc-reading");
+    const animation = trigger?.animation as gsap.core.Timeline | undefined;
+    if (!trigger || trigger.pin || !animation) return "top bottom";
+    // Flowing copy owns the foreground until its final source is readable.
+    const complete = animation.labels["reading-complete"] / animation.duration();
+    return trigger.start + (trigger.end - trigger.start) * complete;
+  };
+
   // The reading and the next scene crossfade over the same entry span.
   if (reading) {
     const exit = { opacity: 1 };
@@ -99,15 +108,7 @@ export function animateClinicalSequence(
         scrollTrigger: {
           id: "home-tnbc-clinical-exit",
           trigger: sequence,
-          start: () => {
-            const trigger = ScrollTrigger.getById("home-why-tnbc-reading");
-            const animation = trigger?.animation as gsap.core.Timeline | undefined;
-            if (!trigger || trigger.pin || !animation) return "top bottom";
-            // Tall reading panels finish their conclusion before the next
-            // scene dims them, even though both remain in normal flow.
-            const complete = animation.labels["reading-complete"] / animation.duration();
-            return trigger.start + (trigger.end - trigger.start) * complete;
-          },
+          start: entryStart,
           end: "top top",
           scrub: HOME_SCRUB,
           invalidateOnRefresh: true,
@@ -213,7 +214,7 @@ export function animateClinicalSequence(
     id: "home-clinical-sequence",
     trigger: sequence,
     animation: timeline,
-    start: "top bottom",
+    start: entryStart,
     end: () => `bottom top+=${stage.offsetHeight}`,
     scrub: HOME_SCRUB,
     invalidateOnRefresh: true,

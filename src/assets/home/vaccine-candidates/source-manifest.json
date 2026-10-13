@@ -1,0 +1,381 @@
+{
+  "coordinate_system": "Source canvas 2560x1440, pixel coordinates, crop bounds [left,top,right,bottom) with right and bottom exclusive.",
+  "processing": "No resizing, color replacement or painted edits. Boards use alpha_composite(layer-1, layer-5); each output is cropped to the nonzero alpha bounds. Ring has transparent padding for a square canvas.",
+  "encoding": {
+    "format": "WEBP",
+    "lossless": true,
+    "exact": true,
+    "method": 6
+  },
+  "sources": {
+    "layer-1": {
+      "file": "layer-1.png",
+      "sha256": "fc19653a10d63164cbe77e77aa5c80613f5400c7c022ab6b150f3ff1cb0de51b",
+      "dimensions": [
+        2560,
+        1440
+      ],
+      "alpha_bounds": [
+        91,
+        368,
+        2491,
+        1393
+      ]
+    },
+    "layer-2": {
+      "file": "layer-2.png",
+      "sha256": "2f60b14cfa7f375fa8e52b145ab2b283715a858035751ceb330c5734b57a6ff5",
+      "dimensions": [
+        2560,
+        1440
+      ],
+      "alpha_bounds": [
+        1395,
+        672,
+        1831,
+        1104
+      ]
+    },
+    "layer-3": {
+      "file": "layer-3.png",
+      "sha256": "15ea539a6e8c30fc87cd87d2cfcf457b09269bfbe41b539119ab3a952e7a77d7",
+      "dimensions": [
+        2560,
+        1440
+      ],
+      "alpha_bounds": [
+        201,
+        693,
+        2426,
+        1213
+      ]
+    },
+    "layer-4": {
+      "file": "layer-4.png",
+      "sha256": "16567e4a2f4d8580a2f687b1d05ac3b6821f7dbd14c25e7b504464ee3c66052b",
+      "dimensions": [
+        2560,
+        1440
+      ],
+      "alpha_bounds": [
+        180,
+        403,
+        2432,
+        622
+      ]
+    },
+    "layer-5": {
+      "file": "layer-5.png",
+      "sha256": "573d7dc9f2fbafb50e21f3953b007b2ff24405bc01b5c72f0cca033ce65dbe73",
+      "dimensions": [
+        2560,
+        1440
+      ],
+      "alpha_bounds": [
+        64,
+        221,
+        2518,
+        1408
+      ]
+    },
+    "layer-6": {
+      "file": "layer-6.png",
+      "sha256": "cdb499c2d2fc0c2b784e870b933743e3f6664b0c60d50a9bab04016c45e9c676",
+      "dimensions": [
+        2560,
+        1440
+      ],
+      "alpha_bounds": [
+        479,
+        58,
+        2082,
+        180
+      ]
+    },
+    "project-advantages-title": {
+      "file": "IMG_2174.png",
+      "sha256": "f7a69afafc985ddefdbc60d7b691683f4c744ff6ce6aecf2c0c7a084858bb18f",
+      "dimensions": [
+        2560,
+        1440
+      ],
+      "alpha_bounds": [
+        788,
+        80,
+        1983,
+        268
+      ]
+    }
+  },
+  "columns": [
+    0,
+    650,
+    1300,
+    1922,
+    2560
+  ],
+  "outputs": {
+    "dna-board.webp": {
+      "sources": [
+        "layer-1",
+        "layer-5"
+      ],
+      "crop": [
+        64,
+        222,
+        638,
+        1408
+      ],
+      "dimensions": [
+        574,
+        1186
+      ],
+      "sha256": "6cf221cbf0e0a9bda6adea889ca5b85e21052bd67a1bb62217d3eb92d2c03f01",
+      "rgba_sha256": "1a80cfa48bd73bb6782f6d957177fb7704d3fb52d5e764fea4f3199a399e028e",
+      "rgba_decode_exact": true
+    },
+    "dna-label.webp": {
+      "sources": [
+        "layer-4"
+      ],
+      "crop": [
+        180,
+        421,
+        532,
+        581
+      ],
+      "dimensions": [
+        352,
+        160
+      ],
+      "sha256": "dd212267d05e4febfbeff0bdb6830fe9a1ae2676c2719052dfb76ebf242e6a60",
+      "rgba_sha256": "3d46c62b084163b2d05bfeac3b566046cb36109b7af2e73bd1a857e4a856d044",
+      "rgba_decode_exact": true
+    },
+    "dna-illustration.webp": {
+      "sources": [
+        "layer-3"
+      ],
+      "crop": [
+        201,
+        693,
+        498,
+        1178
+      ],
+      "dimensions": [
+        297,
+        485
+      ],
+      "sha256": "f4875ee4cd97688f446e47141ca0ed9aa36629ab84e3c08a5246aebebe3ccecc",
+      "rgba_sha256": "affb1e7cb209b47d038b90c7b9a50b9311f059964b9dee2535e6f9e3955a897b",
+      "rgba_decode_exact": true
+    },
+    "mrna-board.webp": {
+      "sources": [
+        "layer-1",
+        "layer-5"
+      ],
+      "crop": [
+        680,
+        221,
+        1257,
+        1405
+      ],
+      "dimensions": [
+        577,
+        1184
+      ],
+      "sha256": "c9cc7a35c7f209217a9f7287bd4de7a4d2fc5c12d44aad2cdabd480553dae2af",
+      "rgba_sha256": "a217e4fd50253372a6d07c2cf07d7c34ee202f4101045945783ec4ab5ffb6c6a",
+      "rgba_decode_exact": true
+    },
+    "mrna-label.webp": {
+      "sources": [
+        "layer-4"
+      ],
+      "crop": [
+        732,
+        406,
+        1174,
+        540
+      ],
+      "dimensions": [
+        442,
+        134
+      ],
+      "sha256": "87e5cbd5bae6fd99c50a5a25851d8d100910f622ae00aa70ae67298a68bce569",
+      "rgba_sha256": "240aa6a9988a732536e103e8cdf8185397cb41b2c40c220f3083ddb5c37dbdce",
+      "rgba_decode_exact": true
+    },
+    "mrna-illustration.webp": {
+      "sources": [
+        "layer-3"
+      ],
+      "crop": [
+        793,
+        698,
+        1108,
+        1211
+      ],
+      "dimensions": [
+        315,
+        513
+      ],
+      "sha256": "1573d6efd9f0871756d61d22844953f32f1bef9f83b09ab2b8cb12103a56013a",
+      "rgba_sha256": "ff0bf14ba66b285673628b04e766d3bcfcd6186614b2dba99051bfc2d40ec2a5",
+      "rgba_decode_exact": true
+    },
+    "circrna-board.webp": {
+      "sources": [
+        "layer-1",
+        "layer-5"
+      ],
+      "crop": [
+        1325,
+        221,
+        1902,
+        1405
+      ],
+      "dimensions": [
+        577,
+        1184
+      ],
+      "sha256": "5c071d7bdf482e5cbc774e4d629cccf1fde08f717bc77572e228f07405c842c6",
+      "rgba_sha256": "17e4d0f1df9dd1c3ddd140ea6e3721d59786aaf4f9fff213394ba1274c46e798",
+      "rgba_decode_exact": true
+    },
+    "circrna-label.webp": {
+      "sources": [
+        "layer-4"
+      ],
+      "crop": [
+        1392,
+        403,
+        1851,
+        541
+      ],
+      "dimensions": [
+        459,
+        138
+      ],
+      "sha256": "ed719fc3c4c48f4fcb3a90e2718514e37c12560807fe930b91a58a44ccb856e9",
+      "rgba_sha256": "07347980fa3a1ad4742a456f339d12f2055543315bd6ef10e3b331432a3dcfb9",
+      "rgba_decode_exact": true
+    },
+    "protein-board.webp": {
+      "sources": [
+        "layer-1",
+        "layer-5"
+      ],
+      "crop": [
+        1944,
+        222,
+        2518,
+        1408
+      ],
+      "dimensions": [
+        574,
+        1186
+      ],
+      "sha256": "b1361b1f01f7dde1f54079e33a94bb1b0459c7e1b2ea275578c6695b4ddb60e7",
+      "rgba_sha256": "f5f3b3b458c117270c553f27d9b73dad1969730386ec3ff45fc5d9df608b091b",
+      "rgba_decode_exact": true
+    },
+    "protein-label.webp": {
+      "sources": [
+        "layer-4"
+      ],
+      "crop": [
+        2008,
+        415,
+        2432,
+        622
+      ],
+      "dimensions": [
+        424,
+        207
+      ],
+      "sha256": "064cba1dbc496c01075df4fd9f9e81f7afce40181bee743485a4e5a27b8937ff",
+      "rgba_sha256": "f08e8e20ccdc8aae6d9f18f6d65b82cf315a64932f9fb53ea6c6d37080b2d47b",
+      "rgba_decode_exact": true
+    },
+    "protein-illustration.webp": {
+      "sources": [
+        "layer-3"
+      ],
+      "crop": [
+        2067,
+        743,
+        2426,
+        1213
+      ],
+      "dimensions": [
+        359,
+        470
+      ],
+      "sha256": "d9047ce6802838fbe51d6d5b75d346110d3acc9c54c5705c65cd363cd492e227",
+      "rgba_sha256": "ef0fe398651fadc43004b558dc73e2c719ca7a3fbce818fef71d3089f3d12e07",
+      "rgba_decode_exact": true
+    },
+    "ring.webp": {
+      "sources": [
+        "layer-2"
+      ],
+      "crop": [
+        1395,
+        672,
+        1831,
+        1104
+      ],
+      "dimensions": [
+        436,
+        436
+      ],
+      "sha256": "527def50afb2c70517b6921c15a7a338aaca12f8c422624c3b65258637ecf7d4",
+      "rgba_sha256": "8053926bf488e7548b8d11b7da037736da87ecf7b92ee9596248e77bbdaafb5d",
+      "rgba_decode_exact": true,
+      "transparent_padding": {
+        "left": 0,
+        "top": 2,
+        "right": 0,
+        "bottom": 2
+      }
+    },
+    "title.webp": {
+      "sources": [
+        "layer-6"
+      ],
+      "crop": [
+        479,
+        58,
+        2082,
+        180
+      ],
+      "dimensions": [
+        1603,
+        122
+      ],
+      "sha256": "2c591392c975818c3a55ddb0089618fa911ffe7d4b2987eb2b5de6f4754a5b6d",
+      "rgba_sha256": "096a39008bdceb5879065ea152046089f69b2afa60e761570df02a68cbce2396",
+      "rgba_decode_exact": true
+    },
+    "project-advantages-title.webp": {
+      "sources": [
+        "project-advantages-title"
+      ],
+      "crop": [
+        788,
+        80,
+        1983,
+        268
+      ],
+      "dimensions": [
+        1195,
+        188
+      ],
+      "sha256": "dbd25a8e9fa22e1df1a6d09a6ad3ed693e7627f9eecec4a54e7636959580ac10",
+      "rgba_sha256": "8b2daf5d2de12e03039d84de4be123006370744fcd8e3ce11d55ade6ac49c127",
+      "rgba_decode_exact": true
+    }
+  }
+}

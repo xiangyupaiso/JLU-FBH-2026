@@ -331,6 +331,20 @@ function choreographArt(
     case "plug-and-play":
       // Keep the drag surface still; antigen changes belong to the reader.
       break;
+    case "what-we-hope":
+      camera({ scale: 1.025 }, { scale: 1.005 });
+      arrive(2, 0.02, { x: -12, y: 8, opacity: 0 }, 0.32);
+      arrive(3, 0.1, { x: -8, y: 6, opacity: 0 }, 0.32);
+      section.querySelectorAll<HTMLElement>("[data-hope-copy]")
+        .forEach((part, index) => {
+          timeline.fromTo(
+            part,
+            { autoAlpha: 0, y: compact ? 6 : 10 },
+            { autoAlpha: 1, y: 0, duration: 0.24, ease: HOME_EASE },
+            0.2 + index * 0.18,
+          );
+        });
+      break;
     case "beyond-tnbc":
       camera({ scale: 1.025, xPercent: -0.2 }, { scale: 1.006, xPercent: 0 });
       move(
@@ -497,9 +511,6 @@ export function useHomeStoryAnimation(root: RefObject<HTMLDivElement | null>) {
                 cleanups.push(() => {
                   sequence.querySelectorAll(".is-current").forEach((scene) => scene.classList.remove("is-current"));
                 });
-              } else if (section.id === "our-platform") {
-                const copy = sequence.querySelector<HTMLElement>(".story-rna-sequence-copy")!;
-                timelines.set(`${section.id}-reading`, animateHomeReading(copy, section, compact, splits, cleanups));
               }
               return;
             }
