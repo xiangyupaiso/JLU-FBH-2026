@@ -17,7 +17,7 @@ export function wikiPageImages(content: WikiPageContent): string[] {
     }
   };
   content.sections.forEach((section) => {
-    if (section.masthead) images.add(section.masthead.image);
+    if (section.masthead?.image) images.add(section.masthead.image);
     section.blocks?.forEach(visit);
   });
   return [...images];

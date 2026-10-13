@@ -311,31 +311,6 @@
   color: var(--route-ink, #1f2a22);
 }
 
-/* FIG 01: design requirements diagram scaled down appropriately */
-.wiki-page--project .wiki-figure:has(img[src*="figure1"]),
-.wiki-page--project .wiki-figure:has(img[alt*="Clinical challenges"]) {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  max-width: 680px;
-  margin: var(--wiki-space-block, 24px) auto;
-}
-
-.wiki-page--project .wiki-figure:has(img[src*="figure1"]) img,
-.wiki-page--project .wiki-figure:has(img[alt*="Clinical challenges"]) img,
-.wiki-page--project .wiki-figure img[src*="figure1"],
-.wiki-page--project .wiki-figure img[alt*="Clinical challenges"] {
-  max-width: 100%;
-  width: auto;
-  max-height: min(520px, 60vh);
-  object-fit: contain;
-}
-
-.wiki-page--project .wiki-figure:has(img[src*="figure1"]) figcaption,
-.wiki-page--project .wiki-figure:has(img[alt*="Clinical challenges"]) figcaption {
-  text-align: center;
-}
-
 /* FIG 03: circular plasmid map sizing constrained to comfortably fit in one screen */
 .wiki-page--project .wiki-figure:has(img[src*="figure3"]),
 .wiki-page--project .wiki-figure:has(img[alt*="circRNA backbone"]) {

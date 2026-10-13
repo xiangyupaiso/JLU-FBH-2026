@@ -52,7 +52,11 @@
 
 /* Static RNA drawings do not need the reader's continuous parallax repaint. */
 .wiki-page[data-wiki-route="/entrepreneurship"]
-  .wiki-feature:has(.circure-orbit) {
+  .wiki-feature:has(
+    .circure-orbit,
+    .circure-golden-circle,
+    .stakeholder-matrix-3d
+  ) {
   opacity: 1 !important;
   transform: none !important;
   transition: none !important;
@@ -131,24 +135,6 @@
 }
 .circure-orbit--impacts .circure-orbit__subtitle {
   font-size: 23px;
-}
-
-.circure-orbit__wash {
-  fill: var(--orbit-color);
-  transition: opacity 180ms ease;
-}
-
-.circure-orbit__wash-base {
-  opacity: 0.42;
-}
-.circure-orbit__wash-layer {
-  opacity: 0.25;
-}
-.circure-orbit__wash-light {
-  opacity: 0.14;
-}
-.circure-orbit__wash.is-active .circure-orbit__wash-layer {
-  opacity: 0.4;
 }
 
 .circure-orbit__node {
@@ -263,84 +249,92 @@
   margin-right: 5px;
 }
 
-.circure-orbit .circure-orbit__detail {
+/* Light pigment sits directly on the article; there is no component surface. */
+.entrepreneurship-watercolor {
+  opacity: 0.92;
+  transition: opacity 180ms ease;
+}
+.entrepreneurship-watercolor.is-active {
+  opacity: 1;
+}
+.entrepreneurship-watercolor__edge {
+  stroke: var(--orbit-ink);
+  stroke-width: 1.35;
+  opacity: 0.17;
+}
+
+/* The same bounded reading strip serves every diagram. */
+.wiki-page .entrepreneurship-detail {
   position: absolute;
-  z-index: 3;
+  z-index: 4;
   right: 0;
   bottom: 0;
   left: 0;
   box-sizing: border-box;
-  max-height: min(320px, 60vh);
+  max-height: min(340px, 62vh);
   overflow-y: auto;
   overscroll-behavior: contain;
-  padding: 23px 28px 25px;
-  border: 1px solid color-mix(in srgb, var(--orbit-color) 38%, transparent);
-  border-radius: 22px 26px 21px 25px;
+  padding: 24px 28px;
+  border: 1px solid color-mix(in srgb, var(--orbit-ink) 12%, transparent);
+  border-radius: 9px;
   background:
     radial-gradient(
-      ellipse at 5% 15%,
-      color-mix(in srgb, var(--orbit-color) 32%, transparent),
-      transparent 70%
+      ellipse at 0 0,
+      color-mix(in srgb, var(--orbit-color) 18%, transparent),
+      transparent 75%
     ),
-    radial-gradient(
-      ellipse at 92% 95%,
-      color-mix(in srgb, var(--orbit-color) 24%, transparent),
-      transparent 65%
-    ),
-    rgb(255 253 250 / 88%);
-  color: #454153;
-  box-shadow:
-    0 14px 38px rgb(73 55 77 / 10%),
-    0 2px 8px rgb(73 55 77 / 4%);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  animation: circure-detail-enter 180ms ease-out both;
+    rgb(255 253 247 / 94%);
+  box-shadow: 0 8px 26px rgb(62 47 55 / 7%);
+  backdrop-filter: blur(10px);
+  color: #48444f;
+  font-family: var(--font-sans, sans-serif);
+  animation: entrepreneurship-detail-enter 160ms ease-out both;
   scrollbar-width: thin;
   scrollbar-color: var(--orbit-color) transparent;
 }
-
-.circure-orbit .circure-orbit__detail--above {
-  top: 14%;
+.wiki-page .entrepreneurship-detail--above {
+  top: 0;
   bottom: auto;
 }
-
-.circure-orbit .circure-orbit__detail h3 {
-  margin: 0 22px 12px 0;
+.wiki-page .entrepreneurship-detail h3 {
+  margin: 0 26px 14px 0;
   padding: 0;
   border: 0;
   color: var(--orbit-ink);
   font-family: inherit;
   font-size: 18px;
-  font-weight: 650;
+  font-weight: 600;
   line-height: 1.4;
   letter-spacing: 0;
   text-transform: none;
 }
-
-.circure-orbit .circure-orbit__detail h3::before {
+.wiki-page .entrepreneurship-detail h3::before {
   display: none;
 }
-
-.circure-orbit .circure-orbit__detail-copy {
+.wiki-page .entrepreneurship-detail__body {
+  display: grid;
+  gap: 12px;
+}
+.wiki-page .entrepreneurship-detail p {
   margin: 0;
-  color: #454153;
+  color: #48444f;
   font-size: 15px;
   line-height: 1.75;
-  overflow-wrap: anywhere;
   text-align: left;
+  overflow-wrap: anywhere;
 }
-
-.circure-orbit .circure-orbit__detail-group {
-  margin: 0 0 7px;
+.wiki-page .entrepreneurship-detail .entrepreneurship-detail__lead {
+  font-weight: 600;
+}
+.wiki-page .entrepreneurship-detail .entrepreneurship-detail__group {
+  margin: 0 0 6px;
   color: var(--orbit-ink);
   font-size: 13px;
-  line-height: 1.4;
 }
-
-.circure-orbit__close {
+.entrepreneurship-detail__close {
   position: absolute;
-  top: 13px;
-  right: 13px;
+  top: 12px;
+  right: 12px;
   display: grid;
   width: 32px;
   height: 32px;
@@ -348,48 +342,263 @@
   padding: 0;
   border: 0;
   border-radius: 50%;
-  background: rgb(255 255 255 / 38%);
+  background: transparent;
   color: var(--orbit-ink);
   cursor: pointer;
 }
-
-.circure-orbit__close svg {
-  width: 18px;
-  height: 18px;
+.entrepreneurship-detail__close svg {
+  width: 16px;
+  height: 16px;
   fill: none;
   stroke: currentColor;
-  stroke-width: 1.5;
+  stroke-width: 1.35;
   stroke-linecap: round;
 }
-
-.circure-orbit__close:hover {
-  background: rgb(255 255 255 / 75%);
+.entrepreneurship-detail__close:hover {
+  background: color-mix(in srgb, var(--orbit-color) 18%, transparent);
 }
-.circure-orbit__close:focus-visible {
-  outline: 2px solid var(--orbit-ink);
+.entrepreneurship-detail:focus-visible,
+.entrepreneurship-detail__close:focus-visible {
+  outline: 1.5px solid var(--orbit-ink);
+  outline-offset: 3px;
 }
 
-@keyframes circure-detail-enter {
+.circure-golden-circle,
+.stakeholder-matrix-3d {
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0;
+  color: #514858;
+  font-family: var(--font-sans, sans-serif);
+}
+.circure-golden-circle {
+  max-width: 600px;
+}
+.circure-golden-circle__stage {
+  position: relative;
+  aspect-ratio: 640 / 520;
+}
+.circure-golden-circle__drawing,
+.stakeholder-matrix-3d__drawing {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+.circure-golden-circle__node {
+  position: absolute;
+  display: grid;
+  width: 23.4375%;
+  height: 23.0769%;
+  place-items: center;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--orbit-ink);
+  font-family: var(--font-serif, Georgia, serif);
+  font-size: clamp(26px, 2.8vw, 36px);
+  font-weight: 500;
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+.circure-golden-circle__node--why {
+  top: 21.1538%;
+  left: 38.2813%;
+}
+.circure-golden-circle__node--what {
+  top: 57.3077%;
+  left: 19.8438%;
+}
+.circure-golden-circle__node--how {
+  top: 57.3077%;
+  left: 56.7188%;
+}
+.circure-golden-circle__node:focus-visible {
+  outline: 1.5px solid var(--orbit-ink);
+  outline-offset: 5px;
+}
+
+.stakeholder-matrix-3d {
+  max-width: 720px;
+}
+.stakeholder-matrix-3d [data-orbit-tone="rose"] {
+  --stakeholder-color: #b96078;
+}
+.stakeholder-matrix-3d [data-orbit-tone="sky"] {
+  --stakeholder-color: #477ea8;
+}
+.stakeholder-matrix-3d [data-orbit-tone="slate"] {
+  --stakeholder-color: #518e8a;
+}
+.stakeholder-matrix-3d [data-orbit-tone="peach"] {
+  --stakeholder-color: #c3834b;
+}
+.stakeholder-matrix-3d [data-orbit-tone="sage"] {
+  --stakeholder-color: #6c8b49;
+}
+.stakeholder-matrix-3d [data-orbit-tone="yellow"] {
+  --stakeholder-color: #b8a24e;
+}
+.stakeholder-matrix-3d [data-orbit-tone="mauve"] {
+  --stakeholder-color: #86669b;
+}
+.stakeholder-matrix-3d__stage {
+  position: relative;
+  aspect-ratio: 720 / 510;
+  margin: 0;
+}
+.stakeholder-matrix-3d__grid {
+  fill: none;
+  stroke: #9d979c;
+  stroke-width: 0.75;
+  opacity: 0.24;
+}
+.stakeholder-matrix-3d__axes {
+  fill: none;
+  stroke: #756675;
+  stroke-width: 1.2;
+  color: #756675;
+}
+.stakeholder-matrix-3d__axis-labels {
+  fill: #63596b;
+  font-size: 17px;
+  font-weight: 500;
+}
+.stakeholder-matrix-3d__ticks {
+  fill: #938690;
+  font-size: 12px;
+}
+.stakeholder-matrix-3d__dot {
+  fill: var(--stakeholder-color);
+}
+.stakeholder-matrix-3d__selection {
+  fill: none;
+  stroke: var(--stakeholder-color);
+  stroke-width: 0.8;
+  opacity: 0.5;
+}
+.stakeholder-matrix-3d__projection {
+  fill: none;
+  stroke: var(--stakeholder-color);
+  stroke-width: 0.75;
+  stroke-dasharray: 3 6;
+  opacity: 0;
+}
+.stakeholder-matrix-3d__point.is-active .stakeholder-matrix-3d__projection {
+  opacity: 0.5;
+}
+.stakeholder-matrix-3d__point-trigger {
+  position: absolute;
+  top: var(--point-y);
+  left: var(--point-x);
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+.stakeholder-matrix-3d__point-trigger:focus-visible {
+  outline: 1.5px solid var(--orbit-ink);
+  outline-offset: 1px;
+}
+.stakeholder-matrix-3d__legend {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px 24px;
+  padding: 4px 0 0;
+}
+.stakeholder-matrix-3d__legend-item {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #635967;
+  font: inherit;
+  font-size: 13px;
+  line-height: 1.5;
+  text-align: left;
+  cursor: pointer;
+}
+.stakeholder-matrix-3d__swatch {
+  position: relative;
+  top: -1px;
+  flex: 0 0 7px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--stakeholder-color);
+}
+.stakeholder-matrix-3d__legend-item:hover,
+.stakeholder-matrix-3d__legend-item[aria-expanded="true"] {
+  color: var(--orbit-ink);
+}
+.stakeholder-matrix-3d__legend-item:focus-visible {
+  outline: 1.5px solid var(--orbit-ink);
+  outline-offset: 4px;
+}
+.stakeholder-matrix-3d .entrepreneurship-detail {
+  top: 48%;
+  bottom: auto;
+}
+.wiki-page .stakeholder-matrix-3d__dimensions {
+  display: grid;
+  gap: 12px;
+  margin: 0;
+}
+.wiki-page .stakeholder-matrix-3d__dimensions > div {
+  display: grid;
+  grid-template-columns: 102px 1fr;
+  gap: 14px;
+}
+.wiki-page .stakeholder-matrix-3d__dimensions dt {
+  color: var(--orbit-ink);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.65;
+}
+.wiki-page .stakeholder-matrix-3d__dimensions dt span {
+  margin-left: 8px;
+  color: #8a7e89;
+  font-size: 12px;
+  font-weight: 400;
+}
+.wiki-page .stakeholder-matrix-3d__dimensions dd {
+  margin: 0;
+  color: #48444f;
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+@keyframes entrepreneurship-detail-enter {
   from {
     opacity: 0;
-    transform: translateY(6px);
+    transform: translateY(4px);
   }
   to {
     opacity: 1;
     transform: translateY(0);
   }
 }
-
 @media (max-width: 600px) {
-  .circure-orbit .circure-orbit__detail {
+  .wiki-page .entrepreneurship-detail {
     max-height: min(300px, 58vh);
-    padding: 18px 20px 20px;
-    border-radius: 17px 20px 16px 19px;
+    padding: 20px;
   }
-  .circure-orbit .circure-orbit__detail h3 {
+  .wiki-page .entrepreneurship-detail h3 {
     font-size: 16px;
   }
-  .circure-orbit .circure-orbit__detail-copy {
+  .wiki-page .entrepreneurship-detail p {
     font-size: 14px;
     line-height: 1.65;
   }
@@ -400,14 +609,27 @@
     width: 10px;
     height: 10px;
   }
+  .stakeholder-matrix-3d__legend {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  .stakeholder-matrix-3d__legend-item {
+    padding: 5px 0;
+  }
+  .stakeholder-matrix-3d .entrepreneurship-detail {
+    top: 40%;
+  }
+  .wiki-page .stakeholder-matrix-3d__dimensions > div {
+    grid-template-columns: 1fr;
+    gap: 2px;
+  }
 }
-
 @media (prefers-reduced-motion: reduce) {
-  .circure-orbit__node,
-  .circure-orbit__wash {
+  .entrepreneurship-watercolor,
+  .circure-orbit__node {
     transition: none;
   }
-  .circure-orbit .circure-orbit__detail {
+  .wiki-page .entrepreneurship-detail {
     animation: none;
   }
 }

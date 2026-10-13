@@ -732,19 +732,31 @@ html.has-route-reader-scroll {
   animation: wiki-masthead-image 1600ms var(--ease-out) both;
 }
 
-.wiki-page--route .wiki-masthead__epigraph {
+.wiki-page--route .wiki-masthead__epigraph,
+.wiki-page--route .wiki-epigraph {
   position: relative;
   /* Wide measure: the quote should read as 2-3 long lines, not a column. */
   max-width: 64rem;
-  /* Light overlap only: the quote starts where the photo is mostly faded. */
-  margin: clamp(-56px, -3.5vw, -32px) auto 0;
   padding: 0 clamp(20px, 3vw, 40px);
   text-align: center;
+  box-sizing: border-box;
+}
+
+.wiki-page--route .wiki-masthead__epigraph {
+  /* Light overlap only: the quote starts where the photo is mostly faded. */
+  margin: clamp(-56px, -3.5vw, -32px) auto 0;
   animation: wiki-masthead-copy 1100ms var(--ease-out) 420ms both;
 }
 
-.wiki-page--route .wiki-masthead__epigraph blockquote {
-  margin: 0;
+.wiki-page--route .wiki-epigraph {
+  margin: clamp(36px, 4.5vw, 56px) auto !important;
+  border: none !important;
+}
+
+.wiki-page--route .wiki-masthead__epigraph blockquote,
+.wiki-page--route .wiki-epigraph blockquote {
+  margin: 0 auto;
+  max-width: 58rem;
   color: var(--route-heading-ink, var(--route-ink));
   font-family: var(--font-display) !important;
   font-size: clamp(19px, 1.75vw, 25px);
@@ -752,23 +764,30 @@ html.has-route-reader-scroll {
   letter-spacing: -0.005em;
   line-height: 1.45;
   text-wrap: pretty;
+  text-align: center;
 }
 
 .wiki-page--route .wiki-masthead__epigraph blockquote::before,
-.wiki-page--route .wiki-masthead__epigraph blockquote::after {
+.wiki-page--route .wiki-masthead__epigraph blockquote::after,
+.wiki-page--route .wiki-epigraph blockquote::before,
+.wiki-page--route .wiki-epigraph blockquote::after {
   color: var(--route-accent);
 }
 
-.wiki-page--route .wiki-masthead__epigraph blockquote::before {
+.wiki-page--route .wiki-masthead__epigraph blockquote::before,
+.wiki-page--route .wiki-epigraph blockquote::before {
   content: "\201C";
 }
 
-.wiki-page--route .wiki-masthead__epigraph blockquote::after {
+.wiki-page--route .wiki-masthead__epigraph blockquote::after,
+.wiki-page--route .wiki-epigraph blockquote::after {
   content: "\201D";
 }
 
 /* Attribution sits flush right under the centred quote. */
-.wiki-page--route .wiki-masthead__epigraph cite {
+.wiki-page--route .wiki-masthead__epigraph cite,
+.wiki-page--route .wiki-epigraph cite,
+.wiki-page--route .wiki-epigraph figcaption {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
@@ -779,7 +798,9 @@ html.has-route-reader-scroll {
 }
 
 /* Short hairline between quote and attribution. */
-.wiki-page--route .wiki-masthead__epigraph cite::before {
+.wiki-page--route .wiki-masthead__epigraph cite::before,
+.wiki-page--route .wiki-epigraph cite::before,
+.wiki-page--route .wiki-epigraph figcaption::before {
   width: 40px;
   height: 1px;
   margin-bottom: 12px;
@@ -787,7 +808,9 @@ html.has-route-reader-scroll {
   content: "";
 }
 
-.wiki-page--route .wiki-masthead__epigraph cite strong {
+.wiki-page--route .wiki-masthead__epigraph cite strong,
+.wiki-page--route .wiki-epigraph cite strong,
+.wiki-page--route .wiki-epigraph figcaption strong {
   color: var(--route-heading-ink, var(--route-ink));
   font-family: var(--font-sans);
   font-size: 14px;
@@ -795,12 +818,24 @@ html.has-route-reader-scroll {
   letter-spacing: 0.01em;
 }
 
-.wiki-page--route .wiki-masthead__epigraph cite span {
+.wiki-page--route .wiki-masthead__epigraph cite span,
+.wiki-page--route .wiki-epigraph cite span,
+.wiki-page--route .wiki-epigraph figcaption span {
   color: color-mix(in srgb, var(--route-heading-ink, var(--route-ink)) 72%, transparent);
   font-family: var(--font-mono);
   font-size: 11px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
+}
+
+.wiki-page--route .wiki-epigraph__zh {
+  margin: 12px auto 0;
+  max-width: 54rem;
+  text-align: center;
+  font-family: var(--font-sans);
+  font-size: 15px;
+  color: color-mix(in srgb, var(--route-heading-ink, var(--route-ink)) 75%, transparent);
+  line-height: 1.6;
 }
 
 @keyframes wiki-masthead-image {
@@ -1001,10 +1036,6 @@ html.has-route-reader-scroll {
 }
 
 .wiki-page--route .wiki-boundary {
-  margin: var(--wiki-space-block, 24px) 0 !important;
-}
-
-.wiki-page--route .wiki-epigraph {
   margin: var(--wiki-space-block, 24px) 0 !important;
 }
 
@@ -2084,6 +2115,31 @@ html.has-route-reader-scroll {
 /* Route pages project the article onto the document scroll. Keeping the route
    frame itself non-scrollable prevents the scrollbar from stealing/releasing
    the article width while the browser is deciding which scroll owner wins. */
+.wiki-page.wiki-page--route.route--document-flow .wiki-reader-track {
+  height: auto;
+}
+
+.wiki-page.wiki-page--route.route--document-flow .wiki-reader-track > .wiki-record {
+  position: relative;
+  top: auto;
+  height: auto;
+  max-height: none;
+  overflow: visible;
+}
+
+.wiki-page.wiki-page--route.route--document-flow .route-frame,
+.wiki-page.wiki-page--route.route--document-flow .route-frame__scroll {
+  height: auto;
+  max-height: none;
+  overflow: visible;
+}
+
+.wiki-page.wiki-page--route.route--document-flow .route-frame {
+  background-size: 100% auto;
+  background-position: top center;
+  background-repeat: repeat-y;
+}
+
 @media (min-width: 1200px) and (min-height: 700px) {
   .wiki-page--route.route--wide-flow .wiki-reader-track {
     height: auto;

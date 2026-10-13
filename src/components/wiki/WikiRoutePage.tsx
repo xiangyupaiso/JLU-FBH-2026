@@ -114,6 +114,8 @@ interface WikiRoutePageProps {
   theme?: string;
   /** Opt into the document-flow reader used by pages with long visual panels. */
   enableWideFlow?: boolean;
+  /** Keep interactive galleries in normal document flow at every viewport size. */
+  documentFlow?: boolean;
   /**
    * Library layout variant: render without the TOC card and let the reader frame
    * take the released width. Used by `/games`.
@@ -497,6 +499,18 @@ function RouteBlock({
           {renderProseParagraphs(block.paragraphs, inline)}
         </div>
       );
+    case "list": {
+      const List = block.ordered ? "ol" : "ul";
+      return (
+        <div className="wiki-prose" data-wiki-reveal>
+          <List className="wiki-prose-list" start={block.ordered ? block.start : undefined}>
+            {block.items.map((item, index) => (
+              <li key={index}>{inline ? inline(item, linkify) : linkify(item)}</li>
+            ))}
+          </List>
+        </div>
+      );
+    }
     case "code":
       return (
         <CodeBlock
@@ -534,7 +548,7 @@ function RouteBlock({
     case "figure":
       return (
         <figure
-          className={`wiki-figure${block.figureLabel ? " wiki-figure--labelled" : ""}`}
+          className={`wiki-figure${block.figureLabel ? " wiki-figure--labelled" : ""}${block.src.includes("education-feedback-invitation") ? " wiki-figure--education-feedback" : ""}`}
           data-wiki-reveal
         >
           <img
@@ -552,7 +566,7 @@ function RouteBlock({
                 </span>
               ) : null}
             </figcaption>
-          ) : block.caption ? (
+          ) : block.caption || block.showFigureNumber ? (
             <figcaption>{block.caption}</figcaption>
           ) : null}
         </figure>
@@ -793,7 +807,7 @@ function RouteBlock({
     case "chapter-link":
       return (
         <a
-          className="wiki-chapter-link"
+          className={`wiki-chapter-link${block.imageSrc ? " wiki-chapter-link--image" : ""}`}
           href={`#${block.target}`}
           data-wiki-reveal
           onClick={(event) => {
@@ -801,6 +815,7 @@ function RouteBlock({
             scrollToTarget(block.target);
           }}
         >
+          {block.imageSrc ? <img src={block.imageSrc} alt={block.imageAlt ?? ""} loading="lazy" /> : null}
           <span>{block.label}</span>
           <b aria-hidden="true">↘</b>
         </a>
@@ -820,20 +835,36 @@ function RouteBlock({
         </aside>
       );
     }
-    case "epigraph":
+    case "epigraph": {
+      const cleanQuote = block.quote
+        .trim()
+        .replace(/^\*\*|\*\*$/g, "")
+        .replace(/^[“"']\s*|\s*[”"']$/g, "")
+        .trim();
+      let author = block.attribution?.trim() || "";
+      let role = block.attributionRole?.trim() || "";
+      if (!role && author.includes(" · ")) {
+        const parts = author.split(/\s*·\s*/);
+        author = parts[0];
+        role = parts.slice(1).join(" · ");
+      }
       return (
         <figure className="wiki-epigraph" data-wiki-reveal>
-          <blockquote>“{renderInlineFormatting(block.quote)}”</blockquote>
+          <blockquote>{renderInlineFormatting(cleanQuote)}</blockquote>
           {block.translationZh ? (
             <p className="wiki-epigraph__zh">
               {renderInlineFormatting(block.translationZh)}
             </p>
           ) : null}
-          <figcaption>
-            {block.attribution} · {block.attributionRole}
-          </figcaption>
+          {author || role ? (
+            <cite>
+              {author ? <strong>{author}</strong> : null}
+              {role ? <span>{role}</span> : null}
+            </cite>
+          ) : null}
         </figure>
       );
+    }
     case "split":
       return (
         <div className="wiki-blocks--split" id={block.id}>
@@ -1019,18 +1050,18 @@ function RouteSection({
       data-wiki-section
     >
       {section.masthead ? (
-        <figure className="wiki-masthead">
-          <img
+        <figure className={`wiki-masthead${section.masthead.image ? "" : " wiki-masthead--quote-only"}`}>
+          {section.masthead.image ? <img
             className="wiki-masthead__image"
             src={section.masthead.image}
             alt={section.masthead.imageAlt}
             decoding="async"
-          />
+          /> : null}
           <figcaption className="wiki-masthead__epigraph">
             <blockquote>{renderInlineFormatting(section.masthead.quote)}</blockquote>
             <cite>
               <strong>{section.masthead.attribution}</strong>
-              <span>{section.masthead.attributionRole}</span>
+              {section.masthead.attributionRole ? <span>{section.masthead.attributionRole}</span> : null}
             </cite>
           </figcaption>
         </figure>
@@ -1142,6 +1173,7 @@ export function WikiRoutePage({
   pageClassName = "",
   theme,
   enableWideFlow = false,
+  documentFlow: forceDocumentFlow = false,
   hideOutline = false,
   hideHeroCopy = false,
   collapsibleSubheadings = false,
@@ -1246,7 +1278,7 @@ export function WikiRoutePage({
     };
   }, [drawerOpen, outlineId]);
 
-  const documentFlow = wideFlow || compact;
+  const documentFlow = forceDocumentFlow || wideFlow || compact;
   const drawerScrollBehavior: ScrollBehavior = window.matchMedia(
     "(prefers-reduced-motion: reduce)",
   ).matches
@@ -1322,7 +1354,7 @@ export function WikiRoutePage({
       ref={rootRef}
       className={`wiki-page wiki-page--route wiki-page--manuscript route--reader ${
         wideFlow ? "route--wide-flow" : ""
-      } ${drawerOpen ? "is-toc-open" : ""} ${pageClassName}`}
+      } ${forceDocumentFlow ? "route--document-flow" : ""} ${drawerOpen ? "is-toc-open" : ""} ${pageClassName}`}
       data-wiki-route={content.route}
       data-route-theme={theme}
       data-active-section={activeSection}

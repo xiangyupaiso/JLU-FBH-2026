@@ -1,5 +1,7 @@
 import type { WikiSection } from "../../components/wiki/wikiPageTypes";
 
+import { educationAssetUrl, replaceEducationAssetLinks } from "./educationRemoteAssets";
+
 // Generated from education-source.md by scripts/import-education.py.
 const rawSections: WikiSection[] = [
   {
@@ -268,12 +270,6 @@ const rawSections: WikiSection[] = [
         "key": "education-interactive-map"
       },
       {
-        "type": "prose",
-        "paragraphs": [
-          "[Download the map source code](__BASE__assets/education/community-function-map-source.zip)"
-        ]
-      },
-      {
         "type": "subheading",
         "id": "education-portfolio-optimization",
         "index": "2.3",
@@ -340,10 +336,8 @@ const rawSections: WikiSection[] = [
         ]
       },
       {
-        "type": "prose",
-        "paragraphs": [
-          "$x_i= \\begin{cases} 1, & \\text{if education format } i \\text{ is selected},\\ 0, & \\text{otherwise}. \\end{cases}$"
-        ]
+        "type": "feature",
+        "key": "education-equation-1"
       },
       {
         "type": "prose",
@@ -358,10 +352,8 @@ const rawSections: WikiSection[] = [
         ]
       },
       {
-        "type": "prose",
-        "paragraphs": [
-          "$y_k \\leq \\sum_{i=1}^{n} a_{ik}x_i, \\qquad \\max Z=\\sum_{k=1}^{K} w_k y_k$"
-        ]
+        "type": "feature",
+        "key": "education-equation-2"
       },
       {
         "type": "prose",
@@ -400,10 +392,8 @@ const rawSections: WikiSection[] = [
         ]
       },
       {
-        "type": "prose",
-        "paragraphs": [
-          "$\\sum_{i=1}^{n} c_{ir}x_i \\leq C_r$"
-        ]
+        "type": "feature",
+        "key": "education-equation-3"
       },
       {
         "type": "prose",
@@ -444,12 +434,6 @@ const rawSections: WikiSection[] = [
       {
         "type": "feature",
         "key": "education-interactive-design-board"
-      },
-      {
-        "type": "prose",
-        "paragraphs": [
-          "[Download the Education Design Board source code](__BASE__assets/education/education-design-board-source.zip)"
-        ]
       },
       {
         "type": "prose",
@@ -563,10 +547,10 @@ const rawSections: WikiSection[] = [
         "title": "CONTEXT："
       },
       {
-        "type": "prose",
-        "paragraphs": [
-          "##### When Time and Space Break the Experiment Apart"
-        ]
+        "type": "subheading",
+        "id": "when-time-and-space-break-the-experiment-apart",
+        "index": "3.2.1.1.1",
+        "title": "When Time and Space Break the Experiment Apart"
       },
       {
         "type": "prose",
@@ -617,10 +601,10 @@ const rawSections: WikiSection[] = [
         "title": "DESIGN："
       },
       {
-        "type": "prose",
-        "paragraphs": [
-          "##### Nine Experiments, One Course"
-        ]
+        "type": "subheading",
+        "id": "nine-experiments-one-course",
+        "index": "3.2.1.2.1",
+        "title": "Nine Experiments, One Course"
       },
       {
         "type": "prose",
@@ -670,10 +654,10 @@ const rawSections: WikiSection[] = [
         "alt": "Virtual laboratory nine experiments"
       },
       {
-        "type": "prose",
-        "paragraphs": [
-          "##### From Watching to Operating"
-        ]
+        "type": "subheading",
+        "id": "from-watching-to-operating",
+        "index": "3.2.1.2.2",
+        "title": "From Watching to Operating"
       },
       {
         "type": "prose",
@@ -759,10 +743,10 @@ const rawSections: WikiSection[] = [
         "alt": "Virtual laboratory interface"
       },
       {
-        "type": "prose",
-        "paragraphs": [
-          "##### A Door to the Real Laboratory"
-        ]
+        "type": "subheading",
+        "id": "a-door-to-the-real-laboratory",
+        "index": "3.2.1.2.3",
+        "title": "A Door to the Real Laboratory"
       },
       {
         "type": "prose",
@@ -819,10 +803,10 @@ const rawSections: WikiSection[] = [
         "title": "CONTINUATION："
       },
       {
-        "type": "prose",
-        "paragraphs": [
-          "##### Hailun"
-        ]
+        "type": "subheading",
+        "id": "hailun",
+        "index": "3.2.1.3.1",
+        "title": "Hailun"
       },
       {
         "type": "prose",
@@ -867,10 +851,10 @@ const rawSections: WikiSection[] = [
         "title": "EVIDENCE："
       },
       {
-        "type": "prose",
-        "paragraphs": [
-          "##### Pilu Town"
-        ]
+        "type": "subheading",
+        "id": "pilu-town",
+        "index": "3.2.1.4.1",
+        "title": "Pilu Town"
       },
       {
         "type": "prose",
@@ -897,10 +881,10 @@ const rawSections: WikiSection[] = [
         ]
       },
       {
-        "type": "prose",
-        "paragraphs": [
-          "##### Two Classroom Bridges Before the Screen"
-        ]
+        "type": "subheading",
+        "id": "two-classroom-bridges-before-the-screen",
+        "index": "3.2.1.4.2",
+        "title": "Two Classroom Bridges Before the Screen"
       },
       {
         "type": "prose",
@@ -1065,16 +1049,8 @@ const rawSections: WikiSection[] = [
         ]
       },
       {
-        "type": "prose",
-        "paragraphs": [
-          "[Virtual Laboratory White Paper .pdf](__BASE__assets/education/virtual-laboratory-white-paper-english-cover.pdf)"
-        ]
-      },
-      {
-        "type": "prose",
-        "paragraphs": [
-          "[G01_Virtual_Laboratory_Implementation_Manual.pdf](__BASE__assets/education/g01-virtual-laboratory-implementation-manual-cover.pdf)"
-        ]
+        "type": "feature",
+        "key": "education-media-group-1"
       },
       {
         "type": "figure",
@@ -1121,10 +1097,10 @@ const rawSections: WikiSection[] = [
         "title": "CONTEXT："
       },
       {
-        "type": "prose",
-        "paragraphs": [
-          "##### From Textbook Knowledge to Real Research"
-        ]
+        "type": "subheading",
+        "id": "from-textbook-knowledge-to-real-research",
+        "index": "3.2.2.1.1",
+        "title": "From Textbook Knowledge to Real Research"
       },
       {
         "type": "prose",
@@ -1174,10 +1150,10 @@ const rawSections: WikiSection[] = [
         "title": "**DESIGN：**"
       },
       {
-        "type": "prose",
-        "paragraphs": [
-          "##### Five Lessons, One Learning Route"
-        ]
+        "type": "subheading",
+        "id": "five-lessons-one-learning-route",
+        "index": "3.2.2.2.1",
+        "title": "Five Lessons, One Learning Route"
       },
       {
         "type": "prose",
@@ -1228,10 +1204,10 @@ const rawSections: WikiSection[] = [
         ]
       },
       {
-        "type": "prose",
-        "paragraphs": [
-          "##### Designing Under Constraints"
-        ]
+        "type": "subheading",
+        "id": "designing-under-constraints",
+        "index": "3.2.2.2.2",
+        "title": "Designing Under Constraints"
       },
       {
         "type": "prose",
@@ -1258,10 +1234,10 @@ const rawSections: WikiSection[] = [
         "title": "EVIDENCE："
       },
       {
-        "type": "prose",
-        "paragraphs": [
-          "##### When Dialogue Changed the Route"
-        ]
+        "type": "subheading",
+        "id": "when-dialogue-changed-the-route",
+        "index": "3.2.2.3.1",
+        "title": "When Dialogue Changed the Route"
       },
       {
         "type": "prose",
@@ -1324,28 +1300,19 @@ const rawSections: WikiSection[] = [
         ]
       },
       {
-        "type": "figure",
-        "src": "__BASE__assets/education/evidence-when-dialogue-changed-the-route-photo-26.png",
-        "alt": "Illustration for EVIDENCE："
-      },
-      {
-        "type": "figure",
-        "src": "__BASE__assets/education/evidence-when-dialogue-changed-the-route-photo-27.png",
-        "alt": "Illustration for EVIDENCE："
+        "type": "feature",
+        "key": "education-media-group-2"
       },
       {
         "type": "feature",
         "key": "education-gallery-synbio-classroom"
       },
       {
-        "type": "figure",
-        "src": "__BASE__assets/education/reusable-resources-icon.png",
-        "alt": "Illustration for EVIDENCE："
-      },
-      {
         "type": "chapter-link",
         "target": "build-upon-continue-from-here",
-        "label": "Unlock reusable resources"
+        "label": "Unlock reusable resources",
+        "imageSrc": "__BASE__assets/education/reusable-resources-icon.png",
+        "imageAlt": "Unlock reusable resources"
       },
       {
         "type": "subheading",
@@ -1360,10 +1327,10 @@ const rawSections: WikiSection[] = [
         "title": "DESIGN："
       },
       {
-        "type": "prose",
-        "paragraphs": [
-          "##### Turning Biological Relationships into Game Rules"
-        ]
+        "type": "subheading",
+        "id": "turning-biological-relationships-into-game-rules",
+        "index": "3.2.3.1.1",
+        "title": "Turning Biological Relationships into Game Rules"
       },
       {
         "type": "prose",
@@ -1438,14 +1405,8 @@ const rawSections: WikiSection[] = [
         ]
       },
       {
-        "type": "figure",
-        "src": "__BASE__assets/education/battle-heroes.png",
-        "alt": "Illustration for DESIGN："
-      },
-      {
-        "type": "figure",
-        "src": "__BASE__assets/education/battle-heroes-2.png",
-        "alt": "Illustration for DESIGN："
+        "type": "feature",
+        "key": "education-media-group-3"
       },
       {
         "type": "prose",
@@ -1490,10 +1451,10 @@ const rawSections: WikiSection[] = [
         "title": "CONTEXT:"
       },
       {
-        "type": "prose",
-        "paragraphs": [
-          "##### Bringing Synthetic Biology Beyond the University"
-        ]
+        "type": "subheading",
+        "id": "bringing-synthetic-biology-beyond-the-university",
+        "index": "3.3.1.1.1",
+        "title": "Bringing Synthetic Biology Beyond the University"
       },
       {
         "type": "prose",
@@ -1538,10 +1499,10 @@ const rawSections: WikiSection[] = [
         "title": "DESIGN:"
       },
       {
-        "type": "prose",
-        "paragraphs": [
-          "##### Understanding Synthetic Biology Through Familiar Ideas"
-        ]
+        "type": "subheading",
+        "id": "understanding-synthetic-biology-through-familiar-ideas",
+        "index": "3.3.1.2.1",
+        "title": "Understanding Synthetic Biology Through Familiar Ideas"
       },
       {
         "type": "prose",
@@ -1604,10 +1565,10 @@ const rawSections: WikiSection[] = [
         ]
       },
       {
-        "type": "prose",
-        "paragraphs": [
-          "##### Discovering iGEM and the Engineering Cycle"
-        ]
+        "type": "subheading",
+        "id": "discovering-igem-and-the-engineering-cycle",
+        "index": "3.3.1.2.2",
+        "title": "Discovering iGEM and the Engineering Cycle"
       },
       {
         "type": "prose",
@@ -1694,10 +1655,10 @@ const rawSections: WikiSection[] = [
         ]
       },
       {
-        "type": "prose",
-        "paragraphs": [
-          "##### Learning Through Real iGEM Projects"
-        ]
+        "type": "subheading",
+        "id": "learning-through-real-igem-projects",
+        "index": "3.3.1.2.3",
+        "title": "Learning Through Real iGEM Projects"
       },
       {
         "type": "prose",
@@ -1766,10 +1727,10 @@ const rawSections: WikiSection[] = [
         "title": "PARTICIPATION:"
       },
       {
-        "type": "prose",
-        "paragraphs": [
-          "##### Five Schools, Five Learning Settings"
-        ]
+        "type": "subheading",
+        "id": "five-schools-five-learning-settings",
+        "index": "3.3.1.3.1",
+        "title": "Five Schools, Five Learning Settings"
       },
       {
         "type": "prose",
@@ -1898,10 +1859,10 @@ const rawSections: WikiSection[] = [
         ]
       },
       {
-        "type": "prose",
-        "paragraphs": [
-          "##### From Scientific Knowledge to Personal Questions"
-        ]
+        "type": "subheading",
+        "id": "from-scientific-knowledge-to-personal-questions",
+        "index": "3.3.1.3.2",
+        "title": "From Scientific Knowledge to Personal Questions"
       },
       {
         "type": "prose",
@@ -1976,10 +1937,10 @@ const rawSections: WikiSection[] = [
         "title": "CONTINUATION:"
       },
       {
-        "type": "prose",
-        "paragraphs": [
-          "##### What Remained After the Outreach"
-        ]
+        "type": "subheading",
+        "id": "what-remained-after-the-outreach",
+        "index": "3.3.1.4.1",
+        "title": "What Remained After the Outreach"
       },
       {
         "type": "prose",
@@ -2058,14 +2019,11 @@ const rawSections: WikiSection[] = [
         "key": "education-gallery-winter-outreach"
       },
       {
-        "type": "figure",
-        "src": "__BASE__assets/education/reusable-resources-icon.png",
-        "alt": "Illustration for CONTINUATION:"
-      },
-      {
         "type": "chapter-link",
         "target": "build-upon-continue-from-here",
-        "label": "Unlock reusable resources"
+        "label": "Unlock reusable resources",
+        "imageSrc": "__BASE__assets/education/reusable-resources-icon.png",
+        "imageAlt": "Unlock reusable resources"
       },
       {
         "type": "subheading",
@@ -2086,10 +2044,10 @@ const rawSections: WikiSection[] = [
         "title": "CONTEXT："
       },
       {
-        "type": "prose",
-        "paragraphs": [
-          "##### Starting from Brea"
-        ]
+        "type": "subheading",
+        "id": "starting-from-brea",
+        "index": "3.3.2.1.1",
+        "title": "Starting from Brea"
       },
       {
         "type": "prose",
@@ -2128,10 +2086,10 @@ const rawSections: WikiSection[] = [
         "title": "DESIGN："
       },
       {
-        "type": "prose",
-        "paragraphs": [
-          "##### From Everyday Analogies to Biological Systems"
-        ]
+        "type": "subheading",
+        "id": "from-everyday-analogies-to-biological-systems",
+        "index": "3.3.2.2.1",
+        "title": "From Everyday Analogies to Biological Systems"
       },
       {
         "type": "prose",
@@ -2188,10 +2146,10 @@ const rawSections: WikiSection[] = [
         "title": "PARTICIPATION："
       },
       {
-        "type": "prose",
-        "paragraphs": [
-          "##### Questions Before Answers"
-        ]
+        "type": "subheading",
+        "id": "questions-before-answers",
+        "index": "3.3.2.3.1",
+        "title": "Questions Before Answers"
       },
       {
         "type": "prose",
@@ -2234,14 +2192,11 @@ const rawSections: WikiSection[] = [
         ]
       },
       {
-        "type": "figure",
-        "src": "__BASE__assets/education/reusable-resources-icon.png",
-        "alt": "Illustration for PARTICIPATION："
-      },
-      {
         "type": "chapter-link",
         "target": "build-upon-continue-from-here",
-        "label": "Unlock reusable resources"
+        "label": "Unlock reusable resources",
+        "imageSrc": "__BASE__assets/education/reusable-resources-icon.png",
+        "imageAlt": "Unlock reusable resources"
       },
       {
         "type": "subheading",
@@ -2262,10 +2217,10 @@ const rawSections: WikiSection[] = [
         "title": "CONTEXT："
       },
       {
-        "type": "prose",
-        "paragraphs": [
-          "##### Children Already Had a Vaccine Story"
-        ]
+        "type": "subheading",
+        "id": "children-already-had-a-vaccine-story",
+        "index": "3.3.3.1.1",
+        "title": "Children Already Had a Vaccine Story"
       },
       {
         "type": "prose",
@@ -2334,10 +2289,10 @@ const rawSections: WikiSection[] = [
         "title": "DESIGN："
       },
       {
-        "type": "prose",
-        "paragraphs": [
-          "##### The Wanted Poster"
-        ]
+        "type": "subheading",
+        "id": "the-wanted-poster",
+        "index": "3.3.3.2.1",
+        "title": "The Wanted Poster"
       },
       {
         "type": "prose",
@@ -2388,10 +2343,10 @@ const rawSections: WikiSection[] = [
         ]
       },
       {
-        "type": "prose",
-        "paragraphs": [
-          "##### A Metaphor Is Useful Only If It Knows Where to Stop"
-        ]
+        "type": "subheading",
+        "id": "a-metaphor-is-useful-only-if-it-knows-where-to-stop",
+        "index": "3.3.3.2.2",
+        "title": "A Metaphor Is Useful Only If It Knows Where to Stop"
       },
       {
         "type": "prose",
@@ -2442,10 +2397,10 @@ const rawSections: WikiSection[] = [
         "title": "**PARTICIPATION：**"
       },
       {
-        "type": "prose",
-        "paragraphs": [
-          "##### When Hands Went Up"
-        ]
+        "type": "subheading",
+        "id": "when-hands-went-up",
+        "index": "3.3.3.3.1",
+        "title": "When Hands Went Up"
       },
       {
         "type": "prose",
@@ -2514,10 +2469,10 @@ const rawSections: WikiSection[] = [
         "title": "CONTINUATION："
       },
       {
-        "type": "prose",
-        "paragraphs": [
-          "##### A Classroom We Could Hand Over"
-        ]
+        "type": "subheading",
+        "id": "a-classroom-we-could-hand-over",
+        "index": "3.3.3.4.1",
+        "title": "A Classroom We Could Hand Over"
       },
       {
         "type": "prose",
@@ -2578,14 +2533,11 @@ const rawSections: WikiSection[] = [
         "key": "education-gallery-vaccine-classroom"
       },
       {
-        "type": "figure",
-        "src": "__BASE__assets/education/reusable-resources-icon.png",
-        "alt": "Illustration for CONTINUATION："
-      },
-      {
         "type": "chapter-link",
         "target": "build-upon-continue-from-here",
-        "label": "Unlock reusable resources"
+        "label": "Unlock reusable resources",
+        "imageSrc": "__BASE__assets/education/reusable-resources-icon.png",
+        "imageAlt": "Unlock reusable resources"
       },
       {
         "type": "subheading",
@@ -2612,10 +2564,10 @@ const rawSections: WikiSection[] = [
         "title": "**CONTEXT：**"
       },
       {
-        "type": "prose",
-        "paragraphs": [
-          "##### Public Space Changes the Format"
-        ]
+        "type": "subheading",
+        "id": "public-space-changes-the-format",
+        "index": "3.4.1.1.1",
+        "title": "Public Space Changes the Format"
       },
       {
         "type": "prose",
@@ -2660,10 +2612,10 @@ const rawSections: WikiSection[] = [
         "title": "DESIGN："
       },
       {
-        "type": "prose",
-        "paragraphs": [
-          "##### A Guided Core with Open Choices"
-        ]
+        "type": "subheading",
+        "id": "a-guided-core-with-open-choices",
+        "index": "3.4.1.2.1",
+        "title": "A Guided Core with Open Choices"
       },
       {
         "type": "prose",
@@ -2713,10 +2665,10 @@ const rawSections: WikiSection[] = [
         "title": "**PARTICIPATION：**"
       },
       {
-        "type": "prose",
-        "paragraphs": [
-          "##### When Questions Crossed the Display Board"
-        ]
+        "type": "subheading",
+        "id": "when-questions-crossed-the-display-board",
+        "index": "3.4.1.3.1",
+        "title": "When Questions Crossed the Display Board"
       },
       {
         "type": "prose",
@@ -2779,10 +2731,10 @@ const rawSections: WikiSection[] = [
         ]
       },
       {
-        "type": "prose",
-        "paragraphs": [
-          "##### From Self-Care to Mutual Care"
-        ]
+        "type": "subheading",
+        "id": "from-self-care-to-mutual-care",
+        "index": "3.4.1.3.2",
+        "title": "From Self-Care to Mutual Care"
       },
       {
         "type": "prose",
@@ -2851,10 +2803,10 @@ const rawSections: WikiSection[] = [
         "title": "CONTINUATION ："
       },
       {
-        "type": "prose",
-        "paragraphs": [
-          "##### Knowledge Moved Again"
-        ]
+        "type": "subheading",
+        "id": "knowledge-moved-again",
+        "index": "3.4.1.4.1",
+        "title": "Knowledge Moved Again"
       },
       {
         "type": "prose",
@@ -2905,43 +2857,19 @@ const rawSections: WikiSection[] = [
         ]
       },
       {
-        "type": "figure",
-        "src": "__BASE__assets/education/continuation-knowledge-moved-again-photo-33.png",
-        "alt": "Illustration for CONTINUATION ："
-      },
-      {
-        "type": "figure",
-        "src": "__BASE__assets/education/continuation-knowledge-moved-again-photo-34.png",
-        "alt": "Illustration for CONTINUATION ："
-      },
-      {
-        "type": "figure",
-        "src": "__BASE__assets/education/continuation-knowledge-moved-again-photo-35.png",
-        "alt": "Illustration for CONTINUATION ："
-      },
-      {
-        "type": "figure",
-        "src": "__BASE__assets/education/continuation-knowledge-moved-again-photo-36.png",
-        "alt": "Illustration for CONTINUATION ："
-      },
-      {
-        "type": "figure",
-        "src": "__BASE__assets/education/continuation-knowledge-moved-again-photo-37.png",
-        "alt": "Illustration for CONTINUATION ："
+        "type": "feature",
+        "key": "education-media-group-4"
       },
       {
         "type": "feature",
         "key": "education-gallery-xinghua-festival"
       },
       {
-        "type": "figure",
-        "src": "__BASE__assets/education/reusable-resources-icon.png",
-        "alt": "Illustration for CONTINUATION ："
-      },
-      {
         "type": "chapter-link",
         "target": "build-upon-continue-from-here",
-        "label": "Unlock reusable resources"
+        "label": "Unlock reusable resources",
+        "imageSrc": "__BASE__assets/education/reusable-resources-icon.png",
+        "imageAlt": "Unlock reusable resources"
       },
       {
         "type": "subheading",
@@ -2962,10 +2890,10 @@ const rawSections: WikiSection[] = [
         "title": "**CONTEXT：**"
       },
       {
-        "type": "prose",
-        "paragraphs": [
-          "##### When Knowledge Began to Move"
-        ]
+        "type": "subheading",
+        "id": "when-knowledge-began-to-move",
+        "index": "3.4.2.1.1",
+        "title": "When Knowledge Began to Move"
       },
       {
         "type": "prose",
@@ -3027,10 +2955,10 @@ const rawSections: WikiSection[] = [
         "title": "PARTICIPATION："
       },
       {
-        "type": "prose",
-        "paragraphs": [
-          "##### Health Questions in a Young Adult Context"
-        ]
+        "type": "subheading",
+        "id": "health-questions-in-a-young-adult-context",
+        "index": "3.4.2.2.1",
+        "title": "Health Questions in a Young Adult Context"
       },
       {
         "type": "prose",
@@ -3087,10 +3015,10 @@ const rawSections: WikiSection[] = [
         "title": "DESIGN："
       },
       {
-        "type": "prose",
-        "paragraphs": [
-          "##### The Route Became Part of the Learning"
-        ]
+        "type": "subheading",
+        "id": "the-route-became-part-of-the-learning",
+        "index": "3.4.2.3.1",
+        "title": "The Route Became Part of the Learning"
       },
       {
         "type": "prose",
@@ -3159,10 +3087,10 @@ const rawSections: WikiSection[] = [
         "title": "CONTINUATION："
       },
       {
-        "type": "prose",
-        "paragraphs": [
-          "##### Migration Means Redesign"
-        ]
+        "type": "subheading",
+        "id": "migration-means-redesign",
+        "index": "3.4.2.4.1",
+        "title": "Migration Means Redesign"
       },
       {
         "type": "prose",
@@ -3243,28 +3171,19 @@ const rawSections: WikiSection[] = [
         ]
       },
       {
-        "type": "figure",
-        "src": "__BASE__assets/education/continuation-migration-means-redesign-photo-41.png",
-        "alt": "Illustration for CONTINUATION："
-      },
-      {
-        "type": "figure",
-        "src": "__BASE__assets/education/continuation-migration-means-redesign-photo-42.png",
-        "alt": "Illustration for CONTINUATION："
+        "type": "feature",
+        "key": "education-media-group-5"
       },
       {
         "type": "feature",
         "key": "education-gallery-health-run"
       },
       {
-        "type": "figure",
-        "src": "__BASE__assets/education/reusable-resources-icon.png",
-        "alt": "Illustration for CONTINUATION："
-      },
-      {
         "type": "chapter-link",
         "target": "build-upon-continue-from-here",
-        "label": "Unlock reusable resources"
+        "label": "Unlock reusable resources",
+        "imageSrc": "__BASE__assets/education/reusable-resources-icon.png",
+        "imageAlt": "Unlock reusable resources"
       },
       {
         "type": "subheading",
@@ -3291,10 +3210,10 @@ const rawSections: WikiSection[] = [
         "title": "**CONTEXT：**"
       },
       {
-        "type": "prose",
-        "paragraphs": [
-          "##### Science Can Be Entered Through the Senses"
-        ]
+        "type": "subheading",
+        "id": "science-can-be-entered-through-the-senses",
+        "index": "3.5.1.1.1",
+        "title": "Science Can Be Entered Through the Senses"
       },
       {
         "type": "prose",
@@ -3339,10 +3258,10 @@ const rawSections: WikiSection[] = [
         "title": "DESIGN："
       },
       {
-        "type": "prose",
-        "paragraphs": [
-          "##### Molecular Rhythm"
-        ]
+        "type": "subheading",
+        "id": "molecular-rhythm",
+        "index": "3.5.1.2.1",
+        "title": "Molecular Rhythm"
       },
       {
         "type": "prose",
@@ -3398,10 +3317,10 @@ const rawSections: WikiSection[] = [
         "alt": "Molecular rhythm"
       },
       {
-        "type": "prose",
-        "paragraphs": [
-          "##### Transcript Plan"
-        ]
+        "type": "subheading",
+        "id": "transcript-plan",
+        "index": "3.5.1.2.2",
+        "title": "Transcript Plan"
       },
       {
         "type": "prose",
@@ -3458,10 +3377,10 @@ const rawSections: WikiSection[] = [
         "title": "**PARTICIPATION：**"
       },
       {
-        "type": "prose",
-        "paragraphs": [
-          "##### Gene Jukebox"
-        ]
+        "type": "subheading",
+        "id": "gene-jukebox",
+        "index": "3.5.1.3.1",
+        "title": "Gene Jukebox"
       },
       {
         "type": "prose",
@@ -3506,10 +3425,10 @@ const rawSections: WikiSection[] = [
         "title": "CONTINUATION："
       },
       {
-        "type": "prose",
-        "paragraphs": [
-          "##### A Mechanism That Travelled"
-        ]
+        "type": "subheading",
+        "id": "a-mechanism-that-travelled",
+        "index": "3.5.1.4.1",
+        "title": "A Mechanism That Travelled"
       },
       {
         "type": "prose",
@@ -3572,43 +3491,19 @@ const rawSections: WikiSection[] = [
         ]
       },
       {
-        "type": "figure",
-        "src": "__BASE__assets/education/continuation-a-mechanism-that-travelled-photo-47.png",
-        "alt": "Illustration for CONTINUATION："
-      },
-      {
-        "type": "figure",
-        "src": "__BASE__assets/education/continuation-a-mechanism-that-travelled-photo-46.png",
-        "alt": "Illustration for CONTINUATION："
-      },
-      {
-        "type": "figure",
-        "src": "__BASE__assets/education/continuation-a-mechanism-that-travelled-photo-48.png",
-        "alt": "Illustration for CONTINUATION："
-      },
-      {
-        "type": "figure",
-        "src": "__BASE__assets/education/continuation-a-mechanism-that-travelled-photo-49.png",
-        "alt": "Illustration for CONTINUATION："
-      },
-      {
-        "type": "figure",
-        "src": "__BASE__assets/education/continuation-a-mechanism-that-travelled-photo-50.png",
-        "alt": "Illustration for CONTINUATION："
+        "type": "feature",
+        "key": "education-media-group-6"
       },
       {
         "type": "feature",
         "key": "education-gallery-music-festival"
       },
       {
-        "type": "figure",
-        "src": "__BASE__assets/education/reusable-resources-icon.png",
-        "alt": "Illustration for CONTINUATION："
-      },
-      {
         "type": "chapter-link",
         "target": "build-upon-continue-from-here",
-        "label": "Unlock reusable resources"
+        "label": "Unlock reusable resources",
+        "imageSrc": "__BASE__assets/education/reusable-resources-icon.png",
+        "imageAlt": "Unlock reusable resources"
       },
       {
         "type": "subheading",
@@ -3629,10 +3524,10 @@ const rawSections: WikiSection[] = [
         "title": "**CONTEXT:**"
       },
       {
-        "type": "prose",
-        "paragraphs": [
-          "##### **The** Same Knowledge Enters Different Lives"
-        ]
+        "type": "subheading",
+        "id": "the-same-knowledge-enters-different-lives",
+        "index": "3.5.2.1.1",
+        "title": "**The** Same Knowledge Enters Different Lives"
       },
       {
         "type": "prose",
@@ -3700,10 +3595,10 @@ const rawSections: WikiSection[] = [
         "title": "DESIGN："
       },
       {
-        "type": "prose",
-        "paragraphs": [
-          "##### Choices Need Consequences"
-        ]
+        "type": "subheading",
+        "id": "choices-need-consequences",
+        "index": "3.5.2.2.1",
+        "title": "Choices Need Consequences"
       },
       {
         "type": "prose",
@@ -3760,10 +3655,10 @@ const rawSections: WikiSection[] = [
         ]
       },
       {
-        "type": "prose",
-        "paragraphs": [
-          "##### First Playthrough, Second Playthrough"
-        ]
+        "type": "subheading",
+        "id": "first-playthrough-second-playthrough",
+        "index": "3.5.2.2.2",
+        "title": "First Playthrough, Second Playthrough"
       },
       {
         "type": "prose",
@@ -3838,10 +3733,10 @@ const rawSections: WikiSection[] = [
         "title": "EVIDENCE："
       },
       {
-        "type": "prose",
-        "paragraphs": [
-          "##### What 24 Players Told Us"
-        ]
+        "type": "subheading",
+        "id": "what-24-players-told-us",
+        "index": "3.5.2.3.1",
+        "title": "What 24 Players Told Us"
       },
       {
         "type": "prose",
@@ -3940,12 +3835,6 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "[Breast-Guardian-Evidence-Source.zip](__BASE__assets/education/breast-guardian-evidence-source.zip)"
-        ]
-      },
-      {
-        "type": "prose",
-        "paragraphs": [
           "Breast Guardian ultimately brought personal experience, real-life choices, and future medicine into a single world that players could enter, fail within, and revisit."
         ]
       },
@@ -3962,16 +3851,8 @@ const rawSections: WikiSection[] = [
         ]
       },
       {
-        "type": "prose",
-        "paragraphs": [
-          "[WP05_Evidence_and_Evaluation_in_Education.pdf](__BASE__assets/education/wp05-evidence-and-evaluation-in-education-cover.pdf)"
-        ]
-      },
-      {
-        "type": "prose",
-        "paragraphs": [
-          "[G02_Life_Stage_Narrative_Serious_Game_Design_Playbook.pdf](__BASE__assets/education/g02-life-stage-narrative-serious-game-design-playbook-cover.pdf)"
-        ]
+        "type": "feature",
+        "key": "education-media-group-7"
       },
       {
         "type": "note",
@@ -4003,10 +3884,10 @@ const rawSections: WikiSection[] = [
         "title": "CONTEXT:"
       },
       {
-        "type": "prose",
-        "paragraphs": [
-          "##### A Body Built Through Reading"
-        ]
+        "type": "subheading",
+        "id": "a-body-built-through-reading",
+        "index": "3.5.3.1.1",
+        "title": "A Body Built Through Reading"
       },
       {
         "type": "prose",
@@ -4063,10 +3944,10 @@ const rawSections: WikiSection[] = [
         "title": "DESIGN："
       },
       {
-        "type": "prose",
-        "paragraphs": [
-          "##### Literature and Medical Footnotes"
-        ]
+        "type": "subheading",
+        "id": "literature-and-medical-footnotes",
+        "index": "3.5.3.2.1",
+        "title": "Literature and Medical Footnotes"
       },
       {
         "type": "prose",
@@ -4123,10 +4004,10 @@ const rawSections: WikiSection[] = [
         ]
       },
       {
-        "type": "prose",
-        "paragraphs": [
-          "##### The Unmarked"
-        ]
+        "type": "subheading",
+        "id": "the-unmarked",
+        "index": "3.5.3.2.2",
+        "title": "The Unmarked"
       },
       {
         "type": "prose",
@@ -4183,10 +4064,10 @@ const rawSections: WikiSection[] = [
         "title": "PARTICIPATION："
       },
       {
-        "type": "prose",
-        "paragraphs": [
-          "##### When the Book Reached Its Readers"
-        ]
+        "type": "subheading",
+        "id": "when-the-book-reached-its-readers",
+        "index": "3.5.3.3.1",
+        "title": "When the Book Reached Its Readers"
       },
       {
         "type": "prose",
@@ -4309,10 +4190,10 @@ const rawSections: WikiSection[] = [
         "title": "CONTEXT："
       },
       {
-        "type": "prose",
-        "paragraphs": [
-          "##### When Science Meets a Value Choice"
-        ]
+        "type": "subheading",
+        "id": "when-science-meets-a-value-choice",
+        "index": "3.5.4.1.1",
+        "title": "When Science Meets a Value Choice"
       },
       {
         "type": "prose",
@@ -4369,10 +4250,10 @@ const rawSections: WikiSection[] = [
         "title": "DESIGN："
       },
       {
-        "type": "prose",
-        "paragraphs": [
-          "##### Testing an Argument with Real Cases"
-        ]
+        "type": "subheading",
+        "id": "testing-an-argument-with-real-cases",
+        "index": "3.5.4.2.1",
+        "title": "Testing an Argument with Real Cases"
       },
       {
         "type": "prose",
@@ -4446,10 +4327,10 @@ const rawSections: WikiSection[] = [
         "title": "PARTICIPATION："
       },
       {
-        "type": "prose",
-        "paragraphs": [
-          "##### Dialogue Without a Standard Position"
-        ]
+        "type": "subheading",
+        "id": "dialogue-without-a-standard-position",
+        "index": "3.5.4.3.1",
+        "title": "Dialogue Without a Standard Position"
       },
       {
         "type": "prose",
@@ -4526,21 +4407,18 @@ const rawSections: WikiSection[] = [
       {
         "type": "figure",
         "src": "__BASE__assets/education/participation-dialogue-without-a-standard-position-photo-61.png",
-        "alt": "Illustration for PARTICIPATION："
+        "alt": "Illustration for Dialogue Without a Standard Position"
       },
       {
         "type": "feature",
         "key": "education-gallery-ethics-debate"
       },
       {
-        "type": "figure",
-        "src": "__BASE__assets/education/reusable-resources-icon.png",
-        "alt": "Illustration for PARTICIPATION："
-      },
-      {
         "type": "chapter-link",
         "target": "build-upon-continue-from-here",
-        "label": "Unlock reusable resources"
+        "label": "Unlock reusable resources",
+        "imageSrc": "__BASE__assets/education/reusable-resources-icon.png",
+        "imageAlt": "Unlock reusable resources"
       },
       {
         "type": "subheading",
@@ -4603,10 +4481,10 @@ const rawSections: WikiSection[] = [
         "title": "CONTINUATION:"
       },
       {
-        "type": "prose",
-        "paragraphs": [
-          "##### 105 Days of Learning"
-        ]
+        "type": "subheading",
+        "id": "105-days-of-learning",
+        "index": "3.6.1.1.1",
+        "title": "105 Days of Learning"
       },
       {
         "type": "prose",
@@ -4699,10 +4577,10 @@ const rawSections: WikiSection[] = [
         "title": "PARTICIPATION："
       },
       {
-        "type": "prose",
-        "paragraphs": [
-          "##### From Reading to Contribution"
-        ]
+        "type": "subheading",
+        "id": "from-reading-to-contribution",
+        "index": "3.6.1.2.1",
+        "title": "From Reading to Contribution"
       },
       {
         "type": "prose",
@@ -4777,10 +4655,10 @@ const rawSections: WikiSection[] = [
         "title": "DESIGN:"
       },
       {
-        "type": "prose",
-        "paragraphs": [
-          "##### Different Media, Different Entries"
-        ]
+        "type": "subheading",
+        "id": "different-media-different-entries",
+        "index": "3.6.1.3.1",
+        "title": "Different Media, Different Entries"
       },
       {
         "type": "prose",
@@ -4843,22 +4721,14 @@ const rawSections: WikiSection[] = [
         ]
       },
       {
-        "type": "prose",
-        "paragraphs": [
-          "[A-Seed-Planted-in-the-Heart.pdf](__BASE__assets/education/a-seed-planted-in-the-heart-final.pdf)"
-        ]
+        "type": "feature",
+        "key": "education-media-group-8"
       },
       {
-        "type": "prose",
-        "paragraphs": [
-          "[JLU-FBH_105_Days_Visual_Journey.pdf](__BASE__assets/education/jlu-fbh-105-days-visual-journey.pdf)"
-        ]
-      },
-      {
-        "type": "prose",
-        "paragraphs": [
-          "##### Bio Memory Match"
-        ]
+        "type": "subheading",
+        "id": "bio-memory-match",
+        "index": "3.6.1.3.2",
+        "title": "Bio Memory Match"
       },
       {
         "type": "prose",
@@ -4941,7 +4811,7 @@ const rawSections: WikiSection[] = [
       {
         "type": "figure",
         "src": "__BASE__assets/education/design-photo-65.png",
-        "alt": "Illustration for DESIGN:"
+        "alt": "Illustration for Bio Memory Match"
       },
       {
         "type": "prose",
@@ -4950,10 +4820,10 @@ const rawSections: WikiSection[] = [
         ]
       },
       {
-        "type": "prose",
-        "paragraphs": [
-          "##### circRNA Bomb Cat"
-        ]
+        "type": "subheading",
+        "id": "circrna-bomb-cat",
+        "index": "3.6.1.3.3",
+        "title": "circRNA Bomb Cat"
       },
       {
         "type": "prose",
@@ -5158,7 +5028,7 @@ const rawSections: WikiSection[] = [
       },
       {
         "type": "subheading",
-        "id": "pilu-town",
+        "id": "pilu-town-2",
         "index": "4.1.1",
         "title": "Pilu Town"
       },
@@ -5409,16 +5279,8 @@ const rawSections: WikiSection[] = [
         ]
       },
       {
-        "type": "prose",
-        "paragraphs": [
-          "[Education Lineage Map-Education as a living system.pdf](__BASE__assets/education/education-lineage-map-education-as-a-living-system.pdf)"
-        ]
-      },
-      {
-        "type": "prose",
-        "paragraphs": [
-          "[WP04_Recursive_Development_and_Education_Lineage..pdf](__BASE__assets/education/wp04-recursive-development-and-education-lineage-cover.pdf)"
-        ]
+        "type": "feature",
+        "key": "education-media-group-9"
       },
       {
         "type": "subheading",
@@ -5712,52 +5574,8 @@ const rawSections: WikiSection[] = [
         ]
       },
       {
-        "type": "prose",
-        "paragraphs": [
-          "[G01_Virtual_Laboratory_Implementation_Manual.pdf](__BASE__assets/education/g01-virtual-laboratory-implementation-manual-cover.pdf)"
-        ]
-      },
-      {
-        "type": "prose",
-        "paragraphs": [
-          "[G02_Life_Stage_Narrative_Serious_Game_Design_Playbook.pdf](__BASE__assets/education/g02-life-stage-narrative-serious-game-design-playbook-cover.pdf)"
-        ]
-      },
-      {
-        "type": "prose",
-        "paragraphs": [
-          "[WP01_Recursive_Care_Preserving_the_Learner.pdf](__BASE__assets/education/wp01-recursive-care-preserving-the-learner-cover.pdf)"
-        ]
-      },
-      {
-        "type": "prose",
-        "paragraphs": [
-          "[WP02_From_Community_to_Portfolio.pdf](__BASE__assets/education/wp02-from-community-to-portfolio-cover.pdf)"
-        ]
-      },
-      {
-        "type": "prose",
-        "paragraphs": [
-          "[WP03_From_Dialogue_to_Shape..pdf](__BASE__assets/education/wp03-from-dialogue-to-shape-cover.pdf)"
-        ]
-      },
-      {
-        "type": "prose",
-        "paragraphs": [
-          "[WP04_Recursive_Development_and_Education_Lineage..pdf](__BASE__assets/education/wp04-recursive-development-and-education-lineage-cover.pdf)"
-        ]
-      },
-      {
-        "type": "prose",
-        "paragraphs": [
-          "[WP05_Evidence_and_Evaluation_in_Education.pdf](__BASE__assets/education/wp05-evidence-and-evaluation-in-education-cover.pdf)"
-        ]
-      },
-      {
-        "type": "prose",
-        "paragraphs": [
-          "[Virtual Laboratory White Paper .pdf](__BASE__assets/education/virtual-laboratory-white-paper-english-cover.pdf)"
-        ]
+        "type": "feature",
+        "key": "education-media-group-10"
       },
       {
         "type": "subheading",
@@ -5790,40 +5608,8 @@ const rawSections: WikiSection[] = [
         ]
       },
       {
-        "type": "prose",
-        "paragraphs": [
-          "[P01_Winter_Outreach_Implementation_Package.pdf](__BASE__assets/education/p01-winter-outreach-implementation-package.pdf)"
-        ]
-      },
-      {
-        "type": "prose",
-        "paragraphs": [
-          "[P02_Vaccine_Classroom_Implementation_Package.pdf](__BASE__assets/education/p02-vaccine-classroom-implementation-package.pdf)"
-        ]
-      },
-      {
-        "type": "prose",
-        "paragraphs": [
-          "[P03_Synbio_Classroom_Implementation_Package.pdf](__BASE__assets/education/p03-synbio-classroom-implementation-package.pdf)"
-        ]
-      },
-      {
-        "type": "prose",
-        "paragraphs": [
-          "[P04_Xinghua_Festival_Implementation_Package.pdf](__BASE__assets/education/p04-xinghua-festival-implementation-package.pdf)"
-        ]
-      },
-      {
-        "type": "prose",
-        "paragraphs": [
-          "[P05_Health_Run_Implementation_Package.pdf](__BASE__assets/education/p05-health-run-implementation-package.pdf)"
-        ]
-      },
-      {
-        "type": "prose",
-        "paragraphs": [
-          "[P06_Music_Festival_Implementation_Package.pdf](__BASE__assets/education/p06-music-festival-implementation-package.pdf)"
-        ]
+        "type": "feature",
+        "key": "education-media-group-11"
       },
       {
         "type": "subheading",
@@ -6042,22 +5828,8 @@ const rawSections: WikiSection[] = [
         ]
       },
       {
-        "type": "prose",
-        "paragraphs": [
-          "[A-Seed-Planted-in-the-Heart.pdf](__BASE__assets/education/a-seed-planted-in-the-heart-final.pdf)"
-        ]
-      },
-      {
-        "type": "prose",
-        "paragraphs": [
-          "[Letters_to_My_Body.pdf](__BASE__assets/education/letters-to-my-body-final.pdf)"
-        ]
-      },
-      {
-        "type": "prose",
-        "paragraphs": [
-          "[A Field Guide to Learning - Inaugural Issue.pdf](__BASE__assets/education/field-guide-to-learning-final.pdf)"
-        ]
+        "type": "feature",
+        "key": "education-media-group-12"
       },
       {
         "type": "subheading",
@@ -6236,8 +6008,10 @@ const rawSections: WikiSection[] = [
 export const educationSections: WikiSection[] = rawSections.map((section) => ({
   ...section,
   blocks: section.blocks?.map((block) => block.type === "figure"
-    ? { ...block, src: block.src.replace("__BASE__", import.meta.env.BASE_URL) }
+    ? { ...block, src: educationAssetUrl(block.src) }
+    : block.type === "chapter-link" && block.imageSrc
+      ? { ...block, imageSrc: educationAssetUrl(block.imageSrc) }
     : block.type === "prose"
-      ? { ...block, paragraphs: block.paragraphs.map((paragraph) => paragraph.split("__BASE__").join(import.meta.env.BASE_URL)) }
+      ? { ...block, paragraphs: block.paragraphs.map(replaceEducationAssetLinks) }
       : block),
 }));

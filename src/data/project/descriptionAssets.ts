@@ -1,6 +1,6 @@
 const fig1 = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/description-figure1.avif";
 const fig2 = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/description-figure2.avif";
-const fig3 = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/description-figure3.avif";
+const fig3 = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/schematic-of-multi-antigen-circrna-backbone-architecture.avif";
 const fig4 = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/description-figure4.avif";
 const fig5 = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/description-figure5.avif";
 const fig6 = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/description-figure6.avif";

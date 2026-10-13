@@ -1,4 +1,4 @@
-import { useId, useState } from "react";
+import { useEffect, useId, useRef, useState } from "react";
 import "../../../styles/wiki-documents.css";
 
 /**
@@ -47,7 +47,133 @@ export interface WikiDocument {
   fallbackText?: string;
 }
 
-export function DocumentViewer({
+type DocumentViewerProps = {
+  document: WikiDocument;
+  defaultOpen?: boolean;
+  readLabel?: string;
+  closeLabel?: string;
+} & (
+  | { variant?: "inline" }
+  | { variant: "modal"; open: boolean; onOpenChange: (open: boolean) => void }
+);
+
+export function DocumentViewer(props: DocumentViewerProps) {
+  return props.variant === "modal" ? (
+    <DocumentDialog
+      document={props.document}
+      open={props.open}
+      onOpenChange={props.onOpenChange}
+    />
+  ) : (
+    <InlineDocumentViewer {...props} />
+  );
+}
+
+/** Native top-layer dialog keeps the route palette and traps focus, including
+ * the PDF frame. The browser restores focus to the attachment/folder button. */
+function DocumentDialog({
+  document,
+  open,
+  onOpenChange,
+}: {
+  document: WikiDocument;
+  open: boolean;
+  onOpenChange: (open: boolean) => void;
+}) {
+  const dialogRef = useRef<HTMLDialogElement>(null);
+  const titleId = useId();
+
+  useEffect(() => {
+    const dialog = dialogRef.current;
+    if (!dialog) return;
+    const opener = window.document.activeElement;
+    if (open && !dialog.open) dialog.showModal();
+    if (!open && dialog.open) dialog.close();
+    return () => {
+      if (dialog.open) dialog.close();
+      if (opener instanceof HTMLElement && opener.isConnected)
+        opener.focus({ preventScroll: true });
+    };
+  }, [open]);
+
+  return (
+    <dialog
+      ref={dialogRef}
+      className="wiki-document wiki-document--modal"
+      aria-labelledby={titleId}
+      onCancel={() => onOpenChange(false)}
+      onClose={() => {
+        // Ignore the queued close event from React's development effect replay
+        // if that replay has already opened the dialog again.
+        if (!dialogRef.current?.open) onOpenChange(false);
+      }}
+      onClick={(event) => {
+        if (event.target !== event.currentTarget) return;
+        const bounds = event.currentTarget.getBoundingClientRect();
+        if (
+          event.clientX < bounds.left ||
+          event.clientX > bounds.right ||
+          event.clientY < bounds.top ||
+          event.clientY > bounds.bottom
+        )
+          onOpenChange(false);
+      }}
+    >
+      <header className="wiki-document__card">
+        <h2 className="wiki-document__caption" id={titleId}>
+          {document.caption}
+        </h2>
+        <button
+          type="button"
+          className="wiki-document__toggle"
+          autoFocus
+          onClick={() => onOpenChange(false)}
+        >
+          Close
+        </button>
+      </header>
+      <div className="wiki-document__panel">
+        {open ? <DocumentContents document={document} /> : null}
+      </div>
+    </dialog>
+  );
+}
+
+function DocumentContents({ document }: { document: WikiDocument }) {
+  return (
+    <>
+      {document.description ? (
+        <p className="wiki-document__description">{document.description}</p>
+      ) : null}
+      {document.openUrl || document.downloadUrl ? (
+        <p className="wiki-document__actions">
+          {document.openUrl ? (
+            <a href={document.openUrl} target="_blank" rel="noreferrer">
+              Open PDF
+            </a>
+          ) : null}
+          {document.openUrl && document.downloadUrl ? " or " : null}
+          {document.downloadUrl ? (
+            <a href={document.downloadUrl} download>
+              download the guide
+            </a>
+          ) : null}
+          .
+        </p>
+      ) : null}
+      <iframe
+        className="wiki-document__frame"
+        src={document.url}
+        title={document.caption}
+      />
+      {document.fallbackText ? (
+        <p className="wiki-document__fallback">{document.fallbackText}</p>
+      ) : null}
+    </>
+  );
+}
+
+function InlineDocumentViewer({
   document,
   /** Open on first paint. Off by default; the Sustainability report passes true. */
   defaultOpen = false,
@@ -92,39 +218,7 @@ export function DocumentViewer({
       </div>
 
       <div className="wiki-document__panel" id={panelId} hidden={!open}>
-        {mounted ? (
-          <>
-            {document.description ? (
-              <p className="wiki-document__description">
-                {document.description}
-              </p>
-            ) : null}
-            {document.openUrl || document.downloadUrl ? (
-              <p className="wiki-document__actions">
-                {document.openUrl ? (
-                  <a href={document.openUrl} target="_blank" rel="noreferrer">
-                    Open PDF
-                  </a>
-                ) : null}
-                {document.openUrl && document.downloadUrl ? " or " : null}
-                {document.downloadUrl ? (
-                  <a href={document.downloadUrl} download>
-                    download the guide
-                  </a>
-                ) : null}
-                .
-              </p>
-            ) : null}
-            <iframe
-              className="wiki-document__frame"
-              src={document.url}
-              title={document.caption}
-            />
-            {document.fallbackText ? (
-              <p className="wiki-document__fallback">{document.fallbackText}</p>
-            ) : null}
-          </>
-        ) : null}
+        {mounted ? <DocumentContents document={document} /> : null}
       </div>
     </figure>
   );

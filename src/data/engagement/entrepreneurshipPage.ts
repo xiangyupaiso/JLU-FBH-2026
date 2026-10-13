@@ -95,6 +95,151 @@ export const entrepreneurshipImpacts: EntrepreneurshipOrbitTopic[] = [
   },
 ];
 
+export interface GoldenCircleTopic {
+  id: "why" | "what" | "how";
+  title: string;
+  subtitle?: string;
+  lead: string;
+  body: string;
+  tone: "lavender" | "rose" | "yellow";
+}
+
+export const goldenCircleTopics: GoldenCircleTopic[] = [
+  {
+    id: "why",
+    title: "Why",
+    lead: "TNBC lacks specific targeted therapies and often has a poor prognosis.",
+    body: "Current cancer vaccines may face limited epitope coverage, tumor antigen escape, and delivery challenges.",
+    tone: "lavender",
+  },
+  {
+    id: "what",
+    title: "What",
+    lead: "CirCure is a prototype multi-epitope circRNA therapeutic vaccine for TNBC.",
+    body: "It includes an epitope-screening computational tool, a multi-epitope circRNA recombinant plasmid, in vitro validation data, preliminary mouse-study results, and a commercialization and regulatory feasibility assessment.",
+    tone: "rose",
+  },
+  {
+    id: "how",
+    title: "How",
+    lead: "We broaden tumor immune recognition by developing a multi-epitope circRNA vaccine.",
+    body: "We screen HLA-matched tumor antigen epitopes, design and validate a circular RNA expression construct, evaluate immunogenicity and antitumor effects in cells and animal models, and assess regulatory, CMC, and IP feasibility for future preclinical translation.",
+    tone: "yellow",
+  },
+];
+
+export interface Stakeholder3DItem {
+  id: number;
+  name: string;
+  tone: EntrepreneurshipOrbitTone;
+  coordinates: {
+    interest: number;
+    influence: number;
+    impact: number;
+  };
+  details: {
+    interest: string;
+    impact: string;
+    influence: string;
+  };
+}
+
+export const stakeholders3DList: Stakeholder3DItem[] = [
+  {
+    id: 1,
+    name: "Patients & Patient Representatives",
+    tone: "rose",
+    coordinates: { interest: 9, influence: 4, impact: 10 },
+    details: {
+      interest: "Treatment efficacy, safety, burden, and accessibility",
+      influence:
+        "Limited direct decision-making power; shape design through feedback on patient needs",
+      impact:
+        "Short term: increased participation burden; Long term: effects on treatment choices",
+    },
+  },
+  {
+    id: 2,
+    name: "Clinicians and the Healthcare System",
+    tone: "sky",
+    coordinates: { interest: 9, influence: 9, impact: 8 },
+    details: {
+      interest: "Clinical value, patient eligibility, and feasibility",
+      influence:
+        "Directly shape patient screening and clinical pathways; inform R&D through professional collaboration",
+      impact:
+        "Short term: additional research workload; Long term: effects on clinical workflows",
+    },
+  },
+  {
+    id: 3,
+    name: "Scientific and Technical Experts",
+    tone: "slate",
+    coordinates: { interest: 8, influence: 7, impact: 5 },
+    details: {
+      interest:
+        "Scientific rationale, technical approach, and quality of evidence",
+      influence:
+        "Limited direct decision-making power; guide technical direction through expertise",
+      impact:
+        "Short term: knowledge exchange; Long term: advances in technology development",
+    },
+  },
+  {
+    id: 4,
+    name: "Industry and Development Partners",
+    tone: "peach",
+    coordinates: { interest: 8, influence: 9, impact: 8 },
+    details: {
+      interest: "Development value, CMC, quality, and collaboration potential",
+      influence:
+        "Directly influence resource allocation for development; shape translation pathways through industry experience",
+      impact:
+        "Short term: resources committed to evaluation; Long term: shared development risks and returns",
+    },
+  },
+  {
+    id: 5,
+    name: "Regulatory, Policy, and Payer Stakeholders",
+    tone: "sage",
+    coordinates: { interest: 7, influence: 10, impact: 4 },
+    details: {
+      interest: "Compliance, safety, reimbursement, and accessibility",
+      influence:
+        "Directly determine market access requirements; guide development through policies and regulations",
+      impact:
+        "Short term: limited effects; Long term: effects on regulatory review and resource allocation",
+    },
+  },
+  {
+    id: 6,
+    name: "Commercialization and Resource Support Partners",
+    tone: "yellow",
+    coordinates: { interest: 7, influence: 8, impact: 6 },
+    details: {
+      interest:
+        "Intellectual property, financing, and research commercialization",
+      influence:
+        "Directly influence funding and ownership rights; advance commercialization through resource networks",
+      impact:
+        "Short term: resources committed to evaluation; Long term: returns linked to commercialization",
+    },
+  },
+  {
+    id: 7,
+    name: "JLU-FBH Project Team",
+    tone: "mauve",
+    coordinates: { interest: 10, influence: 10, impact: 9 },
+    details: {
+      interest: "Scientific value, patient value, and project progress",
+      influence:
+        "Directly determines the technical approach; integrates external input through stakeholder collaboration",
+      impact:
+        "Short term: responsibility for R&D investment; Long term: effects on project outcomes and partnerships",
+    },
+  },
+];
+
 export const entrepreneurshipPage: WikiPageContent = {
   route: "/entrepreneurship",
   category: "engagement",
@@ -143,8 +288,32 @@ export const entrepreneurshipPage: WikiPageContent = {
       blocks: [{ type: "feature", key: "positive-long-term-impacts" }],
     },
     {
-      id: "venture-discovery",
+      id: "circure-golden-circle",
       index: "03",
+      kicker: "",
+      title: "The Golden Circle Framework",
+      summary: "",
+      blocks: [{ type: "feature", key: "circure-golden-circle" }],
+    },
+    {
+      id: "stakeholder-matrix-3d",
+      index: "04",
+      kicker: "",
+      title: "Interest × Influence × Impact Framework",
+      summary: "",
+      blocks: [{ type: "feature", key: "stakeholder-matrix-3d" }],
+    },
+    {
+      id: "entrepreneurship-milestone",
+      index: "05",
+      kicker: "",
+      title: "Milestone",
+      summary: "",
+      blocks: [{ type: "feature", key: "entrepreneurship-milestone" }],
+    },
+    {
+      id: "venture-discovery",
+      index: "06",
       kicker: "Problem discovery",
       title: "Do not confuse a disease burden with a customer need.",
       summary:
@@ -173,7 +342,7 @@ export const entrepreneurshipPage: WikiPageContent = {
     },
     {
       id: "venture-hypotheses",
-      index: "04",
+      index: "07",
       kicker: "Assumption ledger",
       title: "Test the riskiest assumption first.",
       summary:
@@ -208,7 +377,7 @@ export const entrepreneurshipPage: WikiPageContent = {
     },
     {
       id: "venture-roadmap",
-      index: "05",
+      index: "08",
       kicker: "Responsible roadmap",
       title: "Separate the next year from the final vision.",
       summary:

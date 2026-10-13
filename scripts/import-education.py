@@ -23,7 +23,7 @@ OUTPUT = ROOT / "src/data/engagement/educationSections.ts"
 MANIFEST = ROOT / "src/data/engagement/educationAssets.json"
 
 LINK = re.compile(r"(!?)\[([^\]]+)\]\((Images_attachments/[^)]+)\)")
-HEADING = re.compile(r"^(#{1,4})\s+(.+)$")
+HEADING = re.compile(r"^(#{1,5})\s+(.+)$")
 ESCAPE = re.compile(r"\\([\\`*_{}\[\]()#+.!<>~&-])")
 NAMES = {
     "ChatGPT 图像 2026年10月9日 14_05_39.png": "education-overview-map",
@@ -151,6 +151,9 @@ def main() -> None:
     manifest: list[dict[str, object]] = []
     urls: dict[str, str] = {}
     for index, (original, label, context) in enumerate(entries, 1):
+        if original.lower().endswith(".zip"):
+            manifest.append({"source": original, "status": "archive-omitted"})
+            continue
         if original in VIDEO_PLACEHOLDERS:
             manifest.append({"source": original, "status": "video-placeholder"})
             continue
@@ -178,8 +181,9 @@ def main() -> None:
     current: dict | None = None
     paragraph: list[str] = []
     current_context = "Education"
-    heading_counts = [0, 0, 0, 0]
+    heading_counts = [0, 0, 0, 0, 0]
     used_ids: set[str] = set()
+    equation_count = 0
 
     def unique_id(text: str) -> str:
         base = slug(text) or "section"
@@ -192,8 +196,14 @@ def main() -> None:
         return candidate
 
     def flush() -> None:
+        nonlocal equation_count
         if current is not None and paragraph:
-            current["blocks"].append({"type": "prose", "paragraphs": [" ".join(paragraph)]})
+            body = " ".join(paragraph)
+            if body.startswith("$") and body.endswith("$"):
+                equation_count += 1
+                current["blocks"].append({"type": "feature", "key": f"education-equation-{equation_count}"})
+            else:
+                current["blocks"].append({"type": "prose", "paragraphs": [body]})
         paragraph.clear()
 
     for line in lines:
@@ -208,12 +218,12 @@ def main() -> None:
                 if title.startswith("6.2 Education"):
                     continue
                 heading_counts[0] += 1
-                heading_counts[1:] = [0, 0, 0]
+                heading_counts[1:] = [0, 0, 0, 0]
                 current = {"id": unique_id(title), "index": str(heading_counts[0]), "kicker": "Education", "title": title, "summary": "", "blocks": []}
                 sections.append(current)
             elif current is not None:
                 heading_counts[depth - 1] += 1
-                heading_counts[depth:] = [0] * (4 - depth)
+                heading_counts[depth:] = [0] * (5 - depth)
                 index = ".".join(str(count) for count in heading_counts[:depth])
                 current["blocks"].append({"type": "subheading", "id": unique_id(title), "index": index, "title": title})
             continue
@@ -235,10 +245,22 @@ def main() -> None:
             flush()
             current["blocks"].append({"type": "note", "label": "Video coming soon", "body": "The instructional video will be added here."})
             continue
+        if image and unquote(image.group(3).removeprefix("Images_attachments/")).lower().endswith(".zip"):
+            flush()
+            continue
         if image and image.group(1) == "!":
             flush()
             original = unquote(image.group(3).removeprefix("Images_attachments/"))
             if original in urls:
+                if urls[original] == "reusable-resources-icon.png":
+                    current["blocks"].append({
+                        "type": "chapter-link",
+                        "target": "build-upon-continue-from-here",
+                        "label": "Unlock reusable resources",
+                        "imageSrc": f"__BASE__assets/education/{urls[original]}",
+                        "imageAlt": "Unlock reusable resources",
+                    })
+                    continue
                 alt = NAMES.get(original, "")
                 if not alt:
                     alt = f"Illustration for {current_context}"
@@ -259,7 +281,8 @@ def main() -> None:
             return f"[{label}](__BASE__assets/education/{urls[original]})"
 
         stripped = LINK.sub(replace_link, stripped)
-        paragraph.append(clean(stripped))
+        if stripped:
+            paragraph.append(clean(stripped))
     flush()
 
     sections[0]["blocks"].insert(0, {
@@ -279,7 +302,6 @@ def main() -> None:
                 if paragraph_text.startswith("【此处插入站内跳转"):
                     continue
                 if "Unlock Reusable Resources" in paragraph_text:
-                    revised.append({"type": "chapter-link", "target": "build-upon-continue-from-here", "label": "Unlock reusable resources"})
                     continue
                 if paragraph_text.startswith("【点击查看 Sustainability"):
                     block["paragraphs"] = ["[Explore the Air-to-Bread sustainability analysis](/sustainability)"]
@@ -288,24 +310,65 @@ def main() -> None:
             revised.append(block)
         section["blocks"] = revised
 
+    # Consecutive manuscript images and PDF links become the editorial grids.
+    media_groups = []
+    pdf_link = re.compile(r"^\[([^]]+)\]\((__BASE__assets/education/[^)]+\.pdf)\)$", re.I)
+    for section in sections:
+        grouped = []
+        pending = []
+
+        def flush_media() -> None:
+            if len(pending) < 2:
+                grouped.extend(block for block, _ in pending)
+            else:
+                key = f"education-media-group-{len(media_groups) + 1}"
+                media_groups.append({"key": key, "items": [item for _, item in pending]})
+                grouped.append({"type": "feature", "key": key})
+            pending.clear()
+
+        for block in section["blocks"]:
+            item = None
+            if block["type"] == "figure":
+                item = {"kind": "image", "src": block["src"], "alt": block["alt"], "caption": block.get("caption", "")}
+            elif block["type"] == "prose":
+                match = pdf_link.fullmatch(block["paragraphs"][0])
+                if match:
+                    item = {"kind": "pdf", "src": match.group(2), "title": match.group(1).replace("_", " ").removesuffix(".pdf")}
+            if item:
+                if pending and item["kind"] != pending[-1][1]["kind"]:
+                    flush_media()
+                pending.append((block, item))
+            else:
+                flush_media()
+                grouped.append(block)
+        flush_media()
+        section["blocks"] = grouped
+
+    (ROOT / "src/data/engagement/educationMediaGroups.json").write_text(
+        json.dumps(media_groups, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
+    )
+
     serialized = json.dumps(sections, ensure_ascii=False, indent=2)
     OUTPUT.write_text(
         'import type { WikiSection } from "../../components/wiki/wikiPageTypes";\n\n'
+        'import { educationAssetUrl, replaceEducationAssetLinks } from "./educationRemoteAssets";\n\n'
         '// Generated from education-source.md by scripts/import-education.py.\n'
         f'const rawSections: WikiSection[] = {serialized};\n\n'
         'export const educationSections: WikiSection[] = rawSections.map((section) => ({\n'
         '  ...section,\n'
         '  blocks: section.blocks?.map((block) => block.type === "figure"\n'
-        '    ? { ...block, src: block.src.replace("__BASE__", import.meta.env.BASE_URL) }\n'
+        '    ? { ...block, src: educationAssetUrl(block.src) }\n'
+        '    : block.type === "chapter-link" && block.imageSrc\n'
+        '      ? { ...block, imageSrc: educationAssetUrl(block.imageSrc) }\n'
         '    : block.type === "prose"\n'
-        '      ? { ...block, paragraphs: block.paragraphs.map((paragraph) => paragraph.split("__BASE__").join(import.meta.env.BASE_URL)) }\n'
+        '      ? { ...block, paragraphs: block.paragraphs.map(replaceEducationAssetLinks) }\n'
         '      : block),\n'
         '}));\n',
         encoding="utf-8",
     )
     MANIFEST.write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(f"Imported {len(sections)} chapters, {len(entries)} referenced assets, {len(by_digest)} unique files.")
-    print("Unavailable:", [item["source"] for item in manifest if item.get("status")])
+    print("Unavailable:", [item["source"] for item in manifest if item.get("status") == "placeholder"])
 
 
 if __name__ == "__main__":

@@ -1,7 +1,11 @@
 import { useState } from "react";
-import type { LegacyTool } from "../../../../../data/engagement/sustainability/sdgChapterContract";
+import type {
+  LegacyTool,
+  LegacyToolPdf,
+} from "../../../../../data/engagement/sustainability/sdgChapterContract";
 import { sustainabilityDocUrl } from "../../../../../data/engagement/sustainability/sustainabilityAssets";
 import { RichText } from "./RichText";
+import "../../../../../styles/wiki-pdf-folders.css";
 
 type ToolCard = Pick<LegacyTool, "title" | "pdfs"> &
   Partial<Pick<LegacyTool, "why" | "whatItHelpsWith" | "bestFor">>;
@@ -12,7 +16,8 @@ const ROWS = [
   ["bestFor", "Best for"],
 ] as const;
 
-const pdfLabel = (label: string) => (label === "Template" ? "Template" : `${label} PDF`);
+const pdfLabel = (label: string) =>
+  label === "Template" ? "Template" : `${label} PDF`;
 
 /** Folder tints, cycled so a set of any length stays in the cream/olive family. */
 const TINTS = ["peach", "wheat", "sage", "sand"] as const;
@@ -32,10 +37,15 @@ const TINTS = ["peach", "wheat", "sage", "sand"] as const;
 export function PdfToolList({
   tools,
   instance,
+  onPdfSelect,
+  showFileNumbers = true,
 }: {
   tools: ReadonlyArray<ToolCard>;
   /** Unique per archive on the page; defaults to a single shared instance. */
   instance?: string;
+  /** Override navigation for pages that read folder documents in a modal. */
+  onPdfSelect?: (pdf: LegacyToolPdf, title: string) => void;
+  showFileNumbers?: boolean;
 }) {
   const [open, setOpen] = useState(0);
   const active = tools[open];
@@ -46,7 +56,8 @@ export function PdfToolList({
   const tabId = (index: number) => `${uid}-archive-tab-${index}`;
   const panelId = `${uid}-archive-panel`;
   /** 2×2 while there is more than one tool; a single folder when there is one. */
-  const grid = tools.length > 1 ? (tools.length <= 4 ? "2x2" : "3up") : "single";
+  const grid =
+    tools.length > 1 ? (tools.length <= 4 ? "2x2" : "3up") : "single";
 
   return (
     <div className={`sust-archive sust-archive--${grid}`}>
@@ -72,7 +83,11 @@ export function PdfToolList({
                 <span className="sust-folder__paper-label">{tool.title}</span>
               </span>
               <span className="sust-folder__cover">
-                <span className="sust-folder__no">FILE {String(index + 1).padStart(2, "0")}</span>
+                {showFileNumbers ? (
+                  <span className="sust-folder__no">
+                    FILE {String(index + 1).padStart(2, "0")}
+                  </span>
+                ) : null}
                 <span className="sust-folder__title">{tool.title}</span>
                 <span className="sust-folder__meta">
                   {tool.pdfs.map((pdf) => pdfLabel(pdf.label)).join(" · ")}
@@ -112,9 +127,17 @@ export function PdfToolList({
               key={pdf.fileName}
               className="sust-tool-card__btn"
               href={pdf.url ?? sustainabilityDocUrl(pdf.fileName)}
-              target="_blank"
+              target={onPdfSelect ? undefined : "_blank"}
               rel="noopener noreferrer"
-              aria-label={`${active.title} (${pdf.label}), opens in a new tab`}
+              aria-label={`${active.title} (${pdf.label}), opens in ${onPdfSelect ? "a dialog" : "a new tab"}`}
+              onClick={
+                onPdfSelect
+                  ? (event) => {
+                      event.preventDefault();
+                      onPdfSelect(pdf, active.title);
+                    }
+                  : undefined
+              }
             >
               {pdfLabel(pdf.label)}
             </a>
@@ -132,7 +155,11 @@ const byEnglishFirst = (a: { label: string }, b: { label: string }) =>
 /** Evidence summary of the Legacy tools: Tool / What it does / Download. */
 export function ToolTable({ tools }: { tools: ReadonlyArray<LegacyTool> }) {
   return (
-    <div className="wiki-table-wrap sust-tool-table" role="region" aria-label="Reusable tools">
+    <div
+      className="wiki-table-wrap sust-tool-table"
+      role="region"
+      aria-label="Reusable tools"
+    >
       <table className="wiki-table">
         <thead>
           <tr>

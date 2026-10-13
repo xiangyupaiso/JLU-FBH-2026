@@ -74,6 +74,7 @@ export interface WikiReferenceEntry {
  */
 export type WikiContentBlock =
   | { type: "prose"; paragraphs: string[] }
+  | { type: "list"; items: string[]; ordered?: boolean; start?: number }
   | { type: "code"; language?: string; code: string; label?: string }
   | {
       type: "figure";
@@ -82,6 +83,8 @@ export type WikiContentBlock =
       caption?: string;
       /** Manuscript-provided figure label, including subfigure suffixes such as 4A. */
       figureLabel?: string;
+      /** Keep the shared FIG counter visible when the manuscript has no caption. */
+      showFigureNumber?: boolean;
     }
   | {
       type: "carousel";
@@ -139,7 +142,7 @@ export type WikiContentBlock =
       anchorIds?: string[];
     }
   | { type: "feature"; key: string }
-  | { type: "chapter-link"; target: string; label: string }
+  | { type: "chapter-link"; target: string; label: string; imageSrc?: string; imageAlt?: string }
   /**
    * A Design–Build–Test–Learn quartet. `id` is the anchor the concentric TIME
    * dial uses to resolve the active stage, and each stage carries
@@ -175,8 +178,8 @@ export type WikiContentBlock =
     };
 
 export interface WikiMasthead {
-  image: string;
-  imageAlt: string;
+  image?: string;
+  imageAlt?: string;
   quote: string;
   attribution: string;
   attributionRole: string;

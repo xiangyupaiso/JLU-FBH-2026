@@ -5,10 +5,19 @@
   overflow: visible;
 }
 
+/* Keep the large SVG network fixed while the reader scrolls through its own animation. */
+.wiki-page--human-practices #hp-origin .wiki-feature:has(.hp-origin-flow),
+.wiki-page--human-practices #hp-origin .wiki-feature:has(.hp-origin-flow)[data-wiki-reveal] {
+  opacity: 1 !important;
+  transform: none !important;
+  transition: none !important;
+  will-change: auto !important;
+}
+
 .hp-origin-flow {
   --hp-origin-step: min(720px, calc(100dvh - var(--header-height) - 30px));
   --hp-flow-first: #f8dc91;
-  --hp-flow-followup: #edaa62;
+  --hp-flow-followup: #bf6a2d;
   --hp-flow-orange: #c8712c;
   --hp-flow-return: #9e5727;
   --hp-flow-ink: #59371f;
@@ -30,11 +39,11 @@
   border-radius: 0;
   background: transparent;
 }
-.hp-origin-flow__intro-heading { position: absolute; top: 3%; left: 4%; z-index: 2; opacity: var(--hp-origin-intro-opacity, 1); }
+.hp-origin-flow__intro-heading { position: absolute; top: 3%; left: 4%; z-index: 2; opacity: 1; }
 .hp-origin-flow__intro-heading span { color: var(--hp-flow-orange); font-family: var(--font-mono); font-size: 11px; letter-spacing: .08em; }
 .hp-origin-flow__intro-heading h3 { margin: 4px 0 0; color: var(--route-heading-ink); font-family: var(--font-editorial); font-size: clamp(20px, 2vw, 30px); line-height: 1.1; }
-.hp-origin-flow__intro-network { position: absolute; inset: 16% 3% 8%; opacity: var(--hp-origin-intro-opacity, 1); transform: translateX(var(--hp-origin-shift, 0%)) rotate(var(--hp-origin-turn, 0deg)) scaleX(var(--hp-origin-scale-x, 1)); transform-origin: center center; will-change: transform, opacity; }
-.hp-origin-flow__intro-prompt { position: absolute; right: 4%; bottom: 3%; z-index: 2; margin: 0; color: var(--hp-flow-ink); font-family: var(--font-sans); font-size: 12px; font-weight: 600; opacity: var(--hp-origin-intro-opacity, 1); }
+.hp-origin-flow__intro-network { position: absolute; inset: 16% 3% 8%; opacity: 1; transform: translate3d(0, 0, 0); transform-origin: center center; will-change: transform, opacity; }
+.hp-origin-flow__intro-prompt { position: absolute; right: 4%; bottom: 3%; z-index: 2; margin: 0; color: var(--hp-flow-ink); font-family: var(--font-sans); font-size: 12px; font-weight: 600; opacity: 1; }
 .hp-origin-flow.is-transforming .hp-origin-flow__intro-network { pointer-events: none; }
 .hp-origin-flow.is-transforming .hp-origin-flow__intro-tooltip { visibility: hidden; }
 .hp-origin-flow.is-stage-ready .hp-origin-flow__intro { pointer-events: none; }
@@ -107,7 +116,7 @@
   border: 0;
   border-radius: 0;
   background: transparent;
-  opacity: var(--hp-origin-stage-opacity, 0);
+  opacity: 0;
   pointer-events: none;
 }
 .hp-origin-flow.is-stage-ready .hp-origin-flow__stage { pointer-events: auto; }
@@ -178,7 +187,7 @@
 .hp-origin-flow__person.is-locked .hp-origin-flow__person-front { border-color: #d4c39c; background: #f9f0d7; color: #b3a17d; box-shadow: none; }
 .hp-origin-flow__person.is-active { transform: translate(-50%, -50%) scale(1.13); }
 .hp-origin-flow__person.is-active .hp-origin-flow__person-front { border-color: #ac6226; background: #ffdd82; color: #59371f; box-shadow: 0 0 0 4px rgb(240 176 74 / 20%), 0 10px 28px rgb(136 77 30 / 20%); }
-.hp-origin-flow__person.is-revisit .hp-origin-flow__person-front { border-color: #95501e; background: var(--hp-flow-followup); color: #53301a; box-shadow: 0 0 0 4px rgb(202 105 36 / 20%), 0 10px 28px rgb(136 77 30 / 22%); animation: hp-origin-revisit-raise 360ms cubic-bezier(.22, 1, .36, 1) both; }
+.hp-origin-flow__person.is-revisit .hp-origin-flow__person-front { border-color: #783b19; background: var(--hp-flow-followup); color: #fff8e8; box-shadow: 0 0 0 4px rgb(165 78 28 / 24%), 0 10px 28px rgb(105 48 18 / 25%); animation: hp-origin-revisit-raise 360ms cubic-bezier(.22, 1, .36, 1) both; }
 .hp-origin-flow__person.is-revisit .hp-origin-flow__person-back { border-color: #b87934; background: var(--hp-flow-first); }
 .hp-origin-flow__person:focus-visible { outline: 3px solid var(--hp-flow-return); outline-offset: 6px; }
 .hp-origin-flow__tree-tooltip { position: absolute; z-index: 8; width: min(230px, 25vw); padding: 10px 13px; border: 1px solid #c98b4b; border-radius: 12px; background: rgb(255 250 233 / 97%); box-shadow: 0 12px 28px rgb(104 61 27 / 18%); pointer-events: none; transform: translate(58px, -50%); animation: hp-origin-tree-tooltip-enter 180ms ease-out both; }

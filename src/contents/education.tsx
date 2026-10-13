@@ -1,6 +1,6 @@
 import { WikiRoutePage } from "../components/wiki/WikiRoutePage";
 import { getEngagementHeroImage } from "../components/wiki/engagementHeroAssets";
-import { educationFeatures } from "../components/wiki/features/engagement/EducationMedia";
+import { educationFeatures, renderEducationInline } from "../components/wiki/features/engagement/EducationMedia";
 import { educationPage } from "../data/engagement/educationPage";
 
 export function Education() {
@@ -15,6 +15,7 @@ export function Education() {
       showAllOutlineHeadings
       deferContentImages
       features={educationFeatures()}
+      inlineRenderer={renderEducationInline}
     />
   );
 }

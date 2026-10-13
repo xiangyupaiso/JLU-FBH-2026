@@ -4,6 +4,14 @@
 
 ---
 
+## GitLab 代码体积
+
+实验 4、9 使用不同版本的 iSpring 播放器。为保留原有点击和动画，生成的 HTML、JS、CSS 保存在 `vendor/ispring-code.br`；`npm run dev` 和 `npm run build` 会先运行 `scripts/virtual-lab-vendor.mjs restore`，还原到 `public/virtual-lab/`。这些还原文件被 Git 忽略。需要修改课件时，先改本地还原文件，再运行 `node scripts/virtual-lab-vendor.mjs pack` 更新压缩包。
+
+实验 9 的 `data.local-only` 是未参与构建的备用幻灯片，保留本地副本即可。实验 6 从代码中拆出的 15 张图片位于 `public/virtual-lab/images/experiment6-inline/`，正式提交 Wiki 前仍需上传到 iGEM 静态资源平台并替换路径。
+
+---
+
 ## 一、 系统架构与工程设计 (System Architecture)
 
 ### 1. 双入口独立多页应用 (Vite Multi-Page Architecture)

@@ -1,10 +1,7 @@
 import { WikiRoutePage } from "../components/wiki/WikiRoutePage";
 import { getProjectHeroImage } from "../components/wiki/projectHeroAssets";
-import {
-  SafetyBoundary,
-  SafetyControlHierarchy,
-  SafetyNoGoLedger,
-} from "../components/wiki/features/WetLabFeatures";
+import { safetyFeatures, renderSafetyInline } from "../components/wiki/features/project/SafetyPanels";
+import { safetyImagePreloads } from "../data/project/safetyAssets";
 import { safetyPage } from "../data/project/safetyPage";
 
 export function SafetyAndSecurity() {
@@ -13,13 +10,12 @@ export function SafetyAndSecurity() {
       content={safetyPage}
       heroImage={getProjectHeroImage(safetyPage.route)}
       theme="project"
-      pageClassName="wiki-page--project"
+      pageClassName="wiki-page--project wiki-page--safety"
       hideHeroCopy
-      features={{
-        "safety-risks": <SafetyBoundary />,
-        "safety-controls": <SafetyControlHierarchy />,
-        "safety-boundaries": <SafetyNoGoLedger />,
-      }}
+      features={safetyFeatures()}
+      inlineRenderer={renderSafetyInline}
+      preloadImages={safetyImagePreloads}
+      outlineDepth={2}
     />
   );
 }

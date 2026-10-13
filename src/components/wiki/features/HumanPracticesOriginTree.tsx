@@ -134,23 +134,43 @@ export function HumanPracticesOriginTree() {
     // the shared 8% IntersectionObserver threshold cannot reveal a block this tall.
     root.closest<HTMLElement>("[data-wiki-reveal]")?.classList.add("is-visible");
     const intro = root.querySelector<HTMLElement>(".hp-origin-flow__intro");
+    const introHeading = root.querySelector<HTMLElement>(".hp-origin-flow__intro-heading");
+    const introNetwork = root.querySelector<HTMLElement>(".hp-origin-flow__intro-network");
+    const introPrompt = root.querySelector<HTMLElement>(".hp-origin-flow__intro-prompt");
     const stage = root.querySelector<HTMLElement>(".hp-origin-flow__stage");
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const narrowScreen = window.matchMedia("(max-width: 760px)");
     let frame = 0;
+    let renderedMorph = -1;
+    let renderedMotion = false;
     const update = () => {
       frame = 0;
       const step = root.offsetHeight / (storySteps.length + leadSteps);
       const scrolled = inner.getBoundingClientRect().top - root.getBoundingClientRect().top;
       const morph = Math.max(0, Math.min(1, (scrolled - step) / step));
-      root.style.setProperty("--hp-origin-shift", `${-30 * morph}%`);
-      root.style.setProperty("--hp-origin-turn", `${90 * morph}deg`);
-      root.style.setProperty("--hp-origin-scale-x", String(1 - 0.5 * morph));
-      root.style.setProperty("--hp-origin-intro-opacity", String(Math.max(0, Math.min(1, (1 - morph) * 1.6))));
-      root.style.setProperty("--hp-origin-stage-opacity", String(Math.max(0, Math.min(1, (morph - 0.55) / 0.4))));
-      const stageReady = morph >= 0.9;
-      root.classList.toggle("is-transforming", morph > 0.02 && !stageReady);
-      root.classList.toggle("is-stage-ready", stageReady);
-      if (intro && intro.inert !== stageReady) intro.inert = stageReady;
-      if (stage && stage.inert === stageReady) stage.inert = !stageReady;
+      const motionEnabled = !reducedMotion.matches && !narrowScreen.matches;
+      if (morph !== renderedMorph || motionEnabled !== renderedMotion) {
+        const eased = morph * morph * (3 - 2 * morph);
+        const introOpacity = Math.max(0, Math.min(1, (0.94 - morph) / 0.26));
+        const stageOpacity = Math.max(0, Math.min(1, (morph - 0.7) / 0.24));
+        if (introNetwork) {
+          introNetwork.style.transform = motionEnabled
+            ? `translate3d(${-30 * eased}%, 0, 0) rotate(${90 * eased}deg) scaleX(${1 - 0.5 * eased})`
+            : "none";
+          introNetwork.style.opacity = String(introOpacity);
+        }
+        if (introHeading) introHeading.style.opacity = String(introOpacity);
+        if (introPrompt) introPrompt.style.opacity = String(introOpacity);
+        if (stage) stage.style.opacity = String(stageOpacity);
+        if (intro) intro.style.visibility = morph >= 0.94 ? "hidden" : "visible";
+        const stageReady = morph >= 0.9;
+        root.classList.toggle("is-transforming", morph > 0.02 && !stageReady);
+        root.classList.toggle("is-stage-ready", stageReady);
+        if (intro && intro.inert !== stageReady) intro.inert = stageReady;
+        if (stage && stage.inert === stageReady) stage.inert = !stageReady;
+        renderedMorph = morph;
+        renderedMotion = motionEnabled;
+      }
       const index = Math.max(0, Math.min(storySteps.length - 1, Math.floor((scrolled - step * leadSteps + step * 0.25) / step)));
       const navigation = navigationRef.current;
       if (navigation) {
@@ -187,16 +207,14 @@ export function HumanPracticesOriginTree() {
       if (scrolled < step * leadSteps - 48 || scrolled > root.offsetHeight - step + 48) return;
       const target = event.target instanceof Element ? event.target : null;
       const card = target?.closest<HTMLElement>(".hp-origin-flow__card");
-      const tree = target?.closest(".hp-origin-flow__tree");
       const direction = Math.sign(event.deltaY);
       if (card) {
         const remaining = card.scrollHeight - card.clientHeight - card.scrollTop;
         if (direction > 0 ? remaining > 2 : card.scrollTop > 2) return;
       }
-      if (!card && !tree && direction < 0) return;
       event.preventDefault();
       holdWheelGesture();
-      if ((!card && !tree) || (direction > 0 && activeRef.current === storySteps.length - 1)) {
+      if (direction > 0 && activeRef.current === storySteps.length - 1) {
         const next = root.closest(".wiki-feature")?.nextElementSibling;
         if (next instanceof HTMLElement) {
           navigationRef.current = null;
@@ -216,6 +234,8 @@ export function HumanPracticesOriginTree() {
     inner.addEventListener("wheel", handleWheel, { passive: false });
     window.addEventListener("scroll", requestUpdate, { passive: true });
     window.addEventListener("resize", requestUpdate, { passive: true });
+    reducedMotion.addEventListener("change", requestUpdate);
+    narrowScreen.addEventListener("change", requestUpdate);
     update();
     return () => {
       if (frame) cancelAnimationFrame(frame);
@@ -224,6 +244,8 @@ export function HumanPracticesOriginTree() {
       inner.removeEventListener("wheel", handleWheel);
       window.removeEventListener("scroll", requestUpdate);
       window.removeEventListener("resize", requestUpdate);
+      reducedMotion.removeEventListener("change", requestUpdate);
+      narrowScreen.removeEventListener("change", requestUpdate);
     };
   }, [goToStep]);
 

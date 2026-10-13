@@ -13,7 +13,7 @@ import { cycle4Iterations, cycle4Section } from "./engineeringCycle4";
  * `TIME` is the team's own engineering system: four project-level cycles
  * (**T**argeting, **I**ntegration, **M**easurement, **E**valuation) on the outer
  * scale of a central gear, with Design–Build–Test–Learn running on the inner
- * scale. The two hands of the dial locate the project inside its current cycle
+ * scale. The two hands of the dial locate the project within its current cycle
  * and its current engineering stage.
  */
 
@@ -106,22 +106,34 @@ const overviewSection: WikiSection = {
     {
       type: "prose",
       paragraphs: [
-        "**TIME** is the engineering framework JLU-FBH built to organise the evidence-driven development of CirCure. It represents four connected project-level cycles: **Targeting, Integration, Measurement, and Evaluation**. The system is embodied in the form of a mechanical stopwatch: TIME marks the outer scale of the central gear, Design–Build–Test–Learn (DBTL) runs along the inner scale, and dual hands locate the project within its current cycle and engineering stage. Yet TIME is more than an acronym—it reflects the urgency at the heart of CirCure. When tumor recurrence remains a constant threat, every well-founded engineering decision must bring the next answer closer. Our stopwatch therefore records not only the progress of engineering, but also our effort to turn evidence into action without losing time.",
-        "Surrounding the central dial are the team disciplines that keep TIME moving forward. Dry Lab converts biological questions into traceable antigen and epitope decisions, structural hypotheses, and quantitative predictions, supported by CircuForge, TorusFold, and mathematical modelling. Wet Lab translates these designs into physical constructs and quantitative molecular, cellular, and in vivo measurements, with experimental practice simultaneously giving rise to CirCore. Integrated Human Practices introduces clinical needs, ethical requirements, and evidence boundaries directly into project decisions. Education examines the transfer of scientific concepts and procedures; Visual Design establishes a coherent visual language; and Entrepreneurship connects experimental progress with real-world collaboration and translational feasibility. Although their engagement varies across the four cycles, every discipline contributes driving torque to the same engineering system.",
+        "**TIME** is the engineering framework JLU-FBH built to organise the evidence-driven development of CirCure. It represents four connected project-level cycles: **Targeting, Integration, Measurement, and Evaluation**. The system is embodied in the form of a mechanical stopwatch: TIME marks the outer scale of the central gear, Design–Build–Test–Learn (DBTL) runs along the inner scale, and dual hands locate the project within its current cycle and engineering stage. Yet TIME is more than an acronym—it reflects the urgency at the heart of CirCure: when recurrence remains a constant threat, every well-founded engineering decision must bring the next answer closer. Our stopwatch therefore records not only the progress of engineering, but also our effort to turn evidence into action without losing time.",
       ],
+    },
+    {
+      type: "figure",
+      src: "interactive-system-overview",
+      alt: "The CirCure TIME Engineering System",
+      caption:
+        "CirCure TIME connects four project-level cycles with recurring Design–Build–Test–Learn iterations and the coordinated engagement of the project teams.",
+    },
+    {
+      type: "prose",
+      paragraphs: [
+        "In TIME, **Dry Lab and Wet Lab act as the primary driving gears**. Dry Lab turns biological questions into traceable antigen and epitope decisions, structural hypotheses and quantitative predictions, supported by CircuForge, TorusFold, and mathematical modelling. Wet Lab translates these designs into physical constructs and quantitative molecular, cellular, and in vivo measurements, with experimental practice simultaneously giving rise to CirCore. **iHP, Education, Visual Design and Entrepreneurship operate as driven gears**, translating scientific progress into clinical and ethical refinements, transferable learning, coherent communication and development requirements. Their feedback then enters the next DBTL iteration, guiding and extending the main drive.",
+      ],
+    },
+    {
+      type: "figure",
+      src: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-overviewcycle-2.avif",
+      alt: "CirCure TIME Four Connected Cycles Overview",
+      caption:
+        "Four connected cycles record how CirCure progressed through TIME: Targeting (Cycle 1), Integration (Cycle 2), Measurement (Cycle 3), and Evaluation (Cycle 4).",
     },
     {
       type: "callout",
       tone: "navy",
       label: "How to read this page",
       body: "The dial's outer ring selects a TIME cycle, and its inner ring tracks the Design–Build–Test–Learn stage you are reading. The heading identifies the current iteration. Scroll to follow the engineering story, or open a TIME letter below and click a small gear to jump directly to an iteration.",
-    },
-    {
-      type: "figure",
-      src: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-overviewcycle.avif",
-      alt: "CirCure TIME Engineering System Overview",
-      caption:
-        "Overview of the CirCure TIME engineering framework. The outer scale of the central dial represents the four engineering cycles—Targeting, Integration, Measurement, and Evaluation—while the inner scale tracks the Design–Build–Test–Learn cadence. Six satellite gears illustrate the continuous contributions of team disciplines driving the central mechanism.",
     },
   ],
 };
