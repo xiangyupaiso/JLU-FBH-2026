@@ -33,7 +33,7 @@ import { scrollReaderToId } from "../../utils/scrollReaderToTarget";
  * fallback, so a citation layer inherits Markdown links for free.
  */
 const MD_LINK_RE =
-  /\[([^\]\n]{1,120})\]\((https?:\/\/[^\s)]+|\/[A-Za-z0-9\-_/]*|#[A-Za-z0-9_-]+)\)/g;
+  /\[([^\]\n]{1,120})\]\((https?:\/\/[^\s)]+|\/[A-Za-z0-9%.\-_/]*|#[A-Za-z0-9_-]+)\)/g;
 
 export function linkify(text: string): ReactNode {
   if (!text || !text.includes("](")) return renderInlineFormatting(text);
@@ -52,6 +52,7 @@ export function linkify(text: string): ReactNode {
       );
     }
     const href = match[2];
+    const isAsset = /\/assets\/education\/[^?#]+\.(?:pdf|pptx|zip|html|mp4)$/i.test(href);
     nodes.push(
       href.startsWith("#") ? (
         <a
@@ -65,7 +66,7 @@ export function linkify(text: string): ReactNode {
         >
           {match[1]}
         </a>
-      ) : href.startsWith("/") ? (
+      ) : href.startsWith("/") && !isAsset ? (
         <Link
           className="wiki-prose-link wiki-prose-link--route"
           key={`l-${match.index}`}
