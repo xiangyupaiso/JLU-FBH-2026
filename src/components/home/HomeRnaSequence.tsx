@@ -32,30 +32,15 @@ export function HomeRnaSequence({
             className="story-chapter story-chapter--platform"
             aria-labelledby="our-platform-title"
           >
+            <h2 className="story-sr-only" id="our-platform-title">
+              Project advantages
+            </h2>
             <div className="story-scene-track">
               <div className="story-chapter-inner">
                 <div className="story-visual">{platform}</div>
               </div>
             </div>
           </section>
-        </div>
-      </div>
-      <div className="story-rna-sequence-reading">
-        <div className="story-rna-reading-anchor" aria-hidden="true" />
-        <div className="story-copy story-rna-sequence-copy">
-          <h2 id="our-platform-title">
-            One backbone. <em>Room for more targets.</em>
-          </h2>
-          <div className="story-body">
-            <p>
-              Tumors are not defined by a single target. We want to address that
-              diversity with a modular circRNA cancer vaccine platform.
-            </p>
-            <p>
-              Keep the vaccine framework. Replace the antigen sequence. Explore
-              a different tumor target.
-            </p>
-          </div>
         </div>
       </div>
     </div>

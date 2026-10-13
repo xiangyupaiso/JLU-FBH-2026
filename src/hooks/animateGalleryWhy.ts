@@ -59,12 +59,9 @@ export function animateGalleryWhy(root: HTMLElement, compact: boolean) {
   )!;
   const stacked =
     compact && !window.matchMedia("(min-aspect-ratio: 4/5)").matches;
-  // The mRNA card sits behind the centred circRNA card on wide screens.
-  const alternativeRest = (card: HTMLElement) =>
-    stacked ? 0.08 : card === cards[1] ? 0.035 : 0.12;
   const detailLayers = cards.flatMap((card) =>
     Array.from(
-      card.querySelectorAll<SVGImageElement>(
+      card.querySelectorAll<SVGElement>(
         '[data-gallery-layer="symbols"], [data-gallery-layer="labels"]',
       ),
     ),
@@ -72,10 +69,12 @@ export function animateGalleryWhy(root: HTMLElement, compact: boolean) {
 
   // A staggered fromTo only initializes the first target immediately. Set all
   // layers before creating the timeline so the entering edge has one state.
-  gsap.set(cards, { opacity: 0, y: compact ? 10 : 16 });
+  gsap.set(cards, { autoAlpha: 0, y: compact ? 10 : 16 });
   gsap.set(detailLayers, { opacity: 0 });
   gsap.set(source, { opacity: 0, filter: GALLERY_RING_TONE });
   gsap.set(decision, { opacity: 0 });
+  const title = gallery.querySelector<HTMLElement>(".home-molecule-gallery__title")!;
+  gsap.set(title, { autoAlpha: 0 });
 
   const intro = gsap.timeline({
     scrollTrigger: {
@@ -91,12 +90,12 @@ export function animateGalleryWhy(root: HTMLElement, compact: boolean) {
   intro.fromTo(
     stage,
     { backgroundColor: "#f0f3fd" },
-    { backgroundColor: "#fceeed", duration: 0.48, ease: HOME_EASE },
+    { backgroundColor: "#fff4e2", duration: 0.48, ease: HOME_EASE },
     0,
   );
   intro.to(
     cards,
-    { opacity: 1, y: 0, stagger: 0.09, duration: 0.26, ease: HOME_EASE },
+    { autoAlpha: 1, y: 0, stagger: 0.09, duration: 0.26, ease: HOME_EASE },
     0.08,
   );
   cards.forEach((card, index) => {
@@ -106,11 +105,12 @@ export function animateGalleryWhy(root: HTMLElement, compact: boolean) {
       0.18 + index * 0.09,
     );
     intro.to(
-      card.querySelector('[data-gallery-layer="labels"]'),
+      card.querySelectorAll('[data-gallery-layer="labels"]'),
       { opacity: 1, duration: 0.2, ease: HOME_EASE },
       0.24 + index * 0.09,
     );
   });
+  intro.to(title, { autoAlpha: 1, duration: 0.26, ease: HOME_EASE }, 0.08);
   intro.to(
     source,
     { opacity: GALLERY_RING_OPACITY, duration: 0.24, ease: HOME_EASE },
@@ -120,7 +120,7 @@ export function animateGalleryWhy(root: HTMLElement, compact: boolean) {
   intro.to(
     alternatives,
     {
-      opacity: (_index: number, card: HTMLElement) => alternativeRest(card),
+      autoAlpha: 0,
       y: -8,
       stagger: 0.025,
       duration: 0.36,
@@ -128,6 +128,7 @@ export function animateGalleryWhy(root: HTMLElement, compact: boolean) {
     },
     0.96,
   );
+  intro.to(title, { autoAlpha: 0, duration: 0.36, ease: HOME_EASE }, 0.96);
   intro.to(
     chosen,
     {
@@ -174,13 +175,10 @@ export function animateGalleryWhy(root: HTMLElement, compact: boolean) {
   const cardCopy = chosen.cloneNode(true) as HTMLElement;
   cardCopy.removeAttribute("style");
   cardCopy.querySelector("[data-gallery-ring]")?.remove();
-  // The painted symbol sheet already contains a pale ring. The travelling
-  // copy supplies the only ring while this card fades from view.
-  cardCopy.querySelector("[data-gallery-symbols]")?.remove();
   // This clone is made before the detail reveal runs. Keep its label painted
   // during handoff instead of carrying the timeline's initial opacity: 0.
   cardCopy
-    .querySelectorAll<SVGImageElement>('[data-gallery-layer="labels"]')
+    .querySelectorAll<SVGElement>('[data-gallery-layer="labels"]')
     .forEach((label) => {
       label.style.opacity = "1";
     });
@@ -278,10 +276,7 @@ export function animateGalleryWhy(root: HTMLElement, compact: boolean) {
     target.style.visibility = arrived ? originalTargetVisibility : "hidden";
     if (p > 0) {
       gsap.set(chosen, { opacity: 0 });
-      gsap.set(alternatives, {
-        opacity: (_index: number, card: HTMLElement) =>
-          alternativeRest(card) * (1 - smooth(0, 0.32, p)),
-      });
+      gsap.set(alternatives, { autoAlpha: 0 });
       gsap.set(decision, { opacity: 1 - smooth(0, 0.25, p) });
       gsap.set(cardCopy, { opacity: 1 - smooth(0.08, 0.5, p) });
       // The Why timeline takes ownership when its ring morph starts at 1.25.

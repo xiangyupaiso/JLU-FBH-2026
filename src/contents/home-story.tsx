@@ -24,6 +24,7 @@ import { HomeAntigenSwitch } from "../components/home/HomeAntigenSwitch";
 import { HomeMoleculeGallery } from "../components/home/HomeMoleculeGallery";
 import { HomeTnbcDiagram } from "../components/home/HomeTnbcDiagram";
 import { HomeFinale } from "../components/home/HomeFinale";
+import { HomeHopeArtwork } from "../components/home/HomeHopeArtwork";
 import { HomeExploreLinks } from "../components/home/HomeExploreLinks";
 const mapDataNoteUrl =
   "https://static.igem.wiki/teams/6056/wiki/files/pages/home/map-data-note.avif";
@@ -1173,7 +1174,7 @@ export function HomeStory() {
         className="story-chapter--map"
         title={
           <>
-            <em className="story-emphasis-why">Why</em> triple-negative{" "}
+            <em className="story-emphasis-why">Why</em> we choose triple-negative{" "}
             <span className="tnbc-reading-title-shared" data-tnbc-title-shared>
               breast cancer
             </span>{"?"}
@@ -1181,45 +1182,35 @@ export function HomeStory() {
         }
         art={<MapArtwork />}
       >
-        <p>
-          For patients with triple-negative breast cancer (TNBC), recurrence is
-          an especially difficult concern.
-        </p>
-        <HomeTnbcDiagram />
-        <div
-          className="story-receptors"
-          aria-label="Estrogen receptor negative, progesterone receptor negative, HER2 negative"
-        >
-          <span>
-            ER <b>−</b>
-          </span>
-          <span>
-            PR <b>−</b>
-          </span>
-          <span>
-            HER2 <b>−</b>
-          </span>
+        <div className="tnbc-context">
+          <HomeTnbcDiagram />
+          <p>
+            For patients with triple-negative breast cancer (TNBC), recurrence is
+            an especially difficult concern.
+          </p>
         </div>
-        <p>
-          TNBC lacks the hormone receptors and HER2 overexpression that many
-          breast cancer treatments target.
-        </p>
-        <p className="story-emphasis">
-          Fewer familiar targets. A high risk of recurrence and spread.
-        </p>
-        <p className="tnbc-patient-callback" data-tnbc-callback>
-          We kept returning to her question:{" "}
-          <span className="story-emphasis">“What if it comes back?”</span>{" "}
-          It is why we began looking for more options.
-        </p>
-        <a
-          className="story-source"
-          href="https://www.cancer.gov/types/breast/breast-cancer-types/triple-negative"
-          target="_blank"
-          rel="noreferrer"
-        >
-          About TNBC · NCI ↗
-        </a>
+        <div className="tnbc-explanation">
+          <p>
+            TNBC lacks the hormone receptors and HER2 overexpression that many
+            breast cancer treatments target.
+          </p>
+          <p className="story-emphasis">
+            Fewer familiar targets. A high risk of recurrence and spread.
+          </p>
+          <p className="tnbc-patient-callback" data-tnbc-callback>
+            We kept returning to her question:{" "}
+            <span className="story-emphasis">“What if it comes back?”</span>{" "}
+            It is why we began looking for more options.
+          </p>
+          <a
+            className="story-source"
+            href="https://www.cancer.gov/types/breast/breast-cancer-types/triple-negative"
+            target="_blank"
+            rel="noreferrer"
+          >
+            About TNBC · NCI ↗
+          </a>
+        </div>
       </Chapter>
 
       <div className="story-clinical-sequence">
@@ -1281,6 +1272,14 @@ export function HomeStory() {
         }
         art={<BeyondArtwork />}
         titleInArtwork
+      />
+
+      <Chapter
+        id="what-we-hope"
+        className="story-chapter--hope-return"
+        title="The question behind CirCure"
+        art={<HomeHopeArtwork />}
+        copyInArtwork
       />
 
       <HomeFinale art={<HopeArtwork />} />

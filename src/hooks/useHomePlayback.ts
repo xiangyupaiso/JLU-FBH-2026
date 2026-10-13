@@ -16,9 +16,10 @@ const CHAPTERS = [
   { id: "a-new-direction", title: "A new direction" },
   { id: "molecule-gallery", title: "DNA, mRNA and circRNA" },
   { id: "why-circrna", title: "Why circular RNA?" },
-  { id: "our-platform", title: "One adaptable platform" },
+  { id: "our-platform", title: "Project advantages" },
   { id: "plug-and-play", title: "Changing the antigen" },
   { id: "beyond-tnbc", title: "Looking further" },
+  { id: "what-we-hope", title: "The question behind CirCure" },
   { id: "home-finale", title: "That is CirCure" },
 ] as const;
 
@@ -57,17 +58,17 @@ const BEATS: readonly Beat[] = [
   { chapter: 7, progress: 0, travel: 5 },
   { chapter: 7, progress: 0.2, travel: 5, hold: 3 },
   { chapter: 8, progress: 0.47, travel: 5 },
-  { chapter: 8, progress: 0.9, travel: 10, hold: 4 },
-  { chapter: 8, kind: "reading", progress: 0.94, travel: 6, hold: 5 },
+  { chapter: 8, progress: 0.9, label: "advantages-readable", travel: 10, hold: 4 },
   { chapter: 9, progress: 0.12, travel: 3, hold: 2 },
   { chapter: 9, progress: 0.5, travel: 2, hold: 10, antigen: 0 },
   { chapter: 9, progress: 0.5, travel: 0, hold: 10, antigen: 1 },
   { chapter: 9, progress: 0.5, travel: 0, hold: 10, antigen: 2 },
   { chapter: 9, progress: 0.96, travel: 4, hold: 2 },
   { chapter: 10, progress: 0.88, travel: 5, hold: 3 },
-  { chapter: 11, progress: 0, travel: 4 },
-  { chapter: 11, progress: 0.4, label: "circle-to-care", travel: 5, hold: 3 },
-  { chapter: 11, progress: 0.98, travel: 7, hold: 3 },
+  { chapter: 11, progress: 0.82, travel: 5, hold: 4 },
+  { chapter: 12, progress: 0, travel: 4 },
+  { chapter: 12, progress: 0.4, label: "circle-to-care", travel: 5, hold: 3 },
+  { chapter: 12, progress: 0.98, travel: 7, hold: 3 },
 ];
 
 const DEFAULT_RATE = 1.2;
@@ -151,7 +152,7 @@ export function useHomePlayback(root: RefObject<HTMLDivElement | null>) {
               ? "home-molecule-gallery-intro"
               : anchor.chapter === 7 || anchor.chapter === 8
                 ? "home-circrna-platform"
-                : anchor.chapter === 11
+                : anchor.chapter === 12
                   ? "home-finale-reading"
                   : undefined;
       if (id) return ScrollTrigger.getById(id);
@@ -257,14 +258,16 @@ export function useHomePlayback(root: RefObject<HTMLDivElement | null>) {
       ...entry(index),
       kind: index === 3 ? "bridge" : undefined,
       progress: [
-        0.24, 0.9, 0.5, 0, 0.27, 0.91, 0.38, 0.2, 0.9, 0.12, 0.88, 0.15,
+        0.24, 0.9, 0.5, 0, 0.27, 0.91, 0.38, 0.2, 0.9, 0.12, 0.88, 0.82, 0.15,
       ][index],
       label:
         index === 2
           ? "question-readable"
           : index === 6
             ? "choices-visible"
-            : undefined,
+            : index === 8
+              ? "advantages-readable"
+              : undefined,
     });
     const paint = () => {
       let chapterIndex = 0;
@@ -283,7 +286,7 @@ export function useHomePlayback(root: RefObject<HTMLDivElement | null>) {
           if (y < start - 4) break;
           chapterIndex = index;
         }
-        const end = position({ chapter: 11, progress: 0.98 });
+        const end = position({ chapter: 12, progress: 0.98 });
         progress = clamp(y / Math.max(1, end));
       }
       setView({

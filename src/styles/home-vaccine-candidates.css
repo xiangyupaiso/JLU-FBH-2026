@@ -1,0 +1,175 @@
+.story-candidates-backdrop {
+  background: #fff4e2;
+}
+
+.story-art.story-art--candidates {
+  --art-aspect: 16 / 9;
+  container-type: inline-size;
+  width: min(94%, calc((var(--scene-height) - 32px) * 16 / 9));
+}
+
+.story-candidates-title {
+  top: 1%;
+  left: 15%;
+  width: 70%;
+  height: auto;
+}
+
+.story-art--candidates .story-candidates-grid {
+  inset: 16% 0 0;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.8%;
+  justify-items: center;
+}
+
+.story-candidate {
+  position: relative;
+  min-width: 0;
+  max-width: 100%;
+  height: 100%;
+  aspect-ratio: 574 / 1186;
+}
+
+.story-candidate-board {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.story-candidate-content {
+  inset: 0;
+}
+
+.story-candidate-label {
+  position: absolute;
+  top: 14%;
+  left: 11%;
+  width: 78%;
+  height: 16%;
+  object-fit: contain;
+}
+
+.story-candidate-illustration {
+  position: absolute;
+  top: 39%;
+  left: 17%;
+  width: 66%;
+  height: 40%;
+  object-fit: contain;
+}
+
+.story-candidate--protein .story-candidate-illustration {
+  left: 11%;
+  width: 78%;
+}
+
+.story-candidate-ring {
+  top: 40%;
+  left: 13%;
+  width: 74%;
+  height: auto;
+  aspect-ratio: 1;
+}
+
+.story-art--candidates .story-candidate-caption {
+  top: auto;
+  right: 9%;
+  bottom: 9%;
+  left: 9%;
+  width: auto;
+  display: block;
+  color: #765b60;
+  font: 400 clamp(12px, 1.35cqw, 19px)/1.4 var(--font-body);
+  text-align: center;
+  text-wrap: balance;
+}
+
+.story-art--candidates .story-candidate-caption::before {
+  display: none;
+}
+
+.story-candidate--circrna .story-candidate-caption {
+  color: #a0444f;
+  font-weight: 600;
+}
+
+/* Keep the paintings intact while giving each phone-size panel room to read. */
+@media (max-width: 800px) and (orientation: portrait) {
+  .story-art.story-art--candidates {
+    top: 3%;
+    width: min(
+      92%,
+      calc(
+        (
+            max(100svh, 54vw + var(--header-height) + 360px) -
+              var(--header-height) - 56px
+          ) *
+          0.54
+      )
+    );
+    aspect-ratio: 0.54;
+    translate: -50% 0;
+  }
+
+  .story-candidates-title {
+    top: 0;
+    left: 0;
+    /* Leave the existing fixed playback control its own title-line space. */
+    width: calc(100% - 58px);
+  }
+
+  .story-art--candidates .story-candidates-grid {
+    top: 8%;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: repeat(2, minmax(0, 1fr));
+    gap: 2% 5%;
+  }
+
+  .story-art--candidates .story-candidate-caption {
+    right: 8%;
+    bottom: 9%;
+    left: 8%;
+    font-size: clamp(11px, 3.5cqw, 14px);
+    line-height: 1.35;
+  }
+
+  .home-story:not(.has-story-motion) #our-platform .story-scene-track {
+    height: auto;
+  }
+
+  .home-story:not(.has-story-motion) #our-platform .story-chapter-inner {
+    height: max(100svh, calc(170vw + var(--header-height) + 40px));
+  }
+}
+
+@media (max-width: 360px) and (orientation: portrait) {
+  .story-art.story-art--candidates {
+    /* Keep the upper-right painting clear of the fixed playback control. */
+    left: calc(50% - 12px);
+  }
+
+  .story-art--candidates .story-candidates-grid {
+    right: 24px;
+  }
+}
+
+@media (max-height: 650px) and (orientation: landscape) {
+  .story-art.story-art--candidates {
+    width: min(94%, calc((var(--scene-height) - 20px) * 16 / 9));
+  }
+
+  .story-art--candidates .story-candidate-caption {
+    font-size: clamp(10px, 1.65cqw, 13px);
+    bottom: 8%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .story-art--candidates .story-layer,
+  .story-art--candidates .story-candidate-caption {
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+}

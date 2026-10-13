@@ -1,5 +1,6 @@
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { HOME_REST_RATIO } from "./homeMotion";
 
 // The patient's question leads into a concise marker-by-marker explanation.
 export function animateTnbcReading(
@@ -7,7 +8,11 @@ export function animateTnbcReading(
   cleanups: (() => void)[],
 ) {
   const title = copy.querySelector<HTMLElement>("h2")!;
-  const paragraphs = [...copy.querySelectorAll<HTMLElement>(".story-body > p")];
+  const paragraphs = [
+    ...copy.querySelectorAll<HTMLElement>(
+      ".tnbc-context > p, .tnbc-explanation > p",
+    ),
+  ];
   const receptors = copy.querySelector<HTMLElement>(".story-receptors")!;
   const receptorLabels = [...receptors.querySelectorAll<HTMLElement>("span")];
   const diagram = copy.querySelector<HTMLElement>(".tnbc-diagram")!;
@@ -54,7 +59,7 @@ export function animateTnbcReading(
       scrollTrigger: {
         trigger: diagram,
         start: "top 90%",
-        end: "top 48%",
+        end: "top 45%",
         scrub: 0.22,
         invalidateOnRefresh: true,
       },
@@ -66,7 +71,7 @@ export function animateTnbcReading(
         autoAlpha: 1,
         y: 0,
         scale: 1,
-        duration: 0.34,
+        duration: 0.22,
       },
       0,
     );
@@ -76,43 +81,29 @@ export function animateTnbcReading(
         { opacity: 0 },
         {
           opacity: 1,
-          duration: 0.3,
+          duration: 0.22,
         },
-        0.08 + index * 0.14,
+        0.12 + index * 0.1,
       );
     });
-    const marks = gsap.timeline({
-      defaults: { ease: "sine.out" },
-      scrollTrigger: {
-        trigger: receptors,
-        start: "top 90%",
-        end: "top 52%",
-        scrub: 0.22,
-        invalidateOnRefresh: true,
-      },
+    cell.addLabel("cell-visible", 0.64);
+    // Labels and their crosses follow the completed marker artwork together.
+    receptorLabels.forEach((label, index) => {
+      const at = 0.68 + index * 0.16;
+      cell.fromTo(
+        label,
+        { opacity: 0, y: 6 },
+        { opacity: 1, y: 0, duration: 0.18 },
+        at,
+      );
+      cell.fromTo(
+        negativeLayers[index],
+        { opacity: 0, y: -5 },
+        { opacity: 1, y: 0, duration: 0.16 },
+        at + 0.06,
+      );
     });
-    marks.fromTo(
-      receptorLabels,
-      { opacity: 0, y: 6 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 0.5,
-        stagger: 0.16,
-      },
-      0,
-    );
-    marks.fromTo(
-      negativeLayers,
-      { opacity: 0, y: -5 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 0.34,
-        stagger: 0.16,
-      },
-      0.08,
-    );
+    cell.addLabel("markers-visible");
     [...paragraphs, source].forEach((element) => {
       gsap.fromTo(
         element,
@@ -142,22 +133,21 @@ export function animateTnbcReading(
         trigger.end <= trigger.start
       ) return;
       const { start, end } = trigger;
-      const phases = [
-        ["cell-visible", cell],
-        ["markers-visible", marks],
-      ] as const;
-      phases.forEach(([label, animation]) => {
-        const phaseTrigger = animation.scrollTrigger;
+      ["cell-visible", "markers-visible"].forEach((label) => {
+        const phaseTrigger = cell.scrollTrigger;
         if (
           !phaseTrigger ||
           !Number.isFinite(phaseTrigger.start) ||
           !Number.isFinite(phaseTrigger.end) ||
           phaseTrigger.end <= phaseTrigger.start
         ) return;
+        const phaseEnd = phaseTrigger.start +
+          (phaseTrigger.end - phaseTrigger.start) *
+          (cell.labels[label] / cell.duration());
         const progress = gsap.utils.clamp(
           0,
           1,
-          (phaseTrigger.end - start) / (end - start),
+          (phaseEnd - start) / (end - start),
         );
         reading.addLabel(label, progress * reading.duration());
       });
@@ -264,6 +254,6 @@ export function animateTnbcReading(
   reveal(source, 5.12, 0.32);
   reading.addLabel("reading-complete", 5.44);
   // A short completed-frame hold gives the conclusion room before the clinic.
-  reading.to({}, { duration: 0.95 });
+  reading.to({}, { duration: reading.duration() * HOME_REST_RATIO });
   return reading;
 }

@@ -91,6 +91,28 @@ function preparePaint(image: HTMLImageElement, compact: boolean) {
   return plates;
 }
 
+export function getRnaRingGeometry(image: HTMLImageElement) {
+  if (image.dataset.ringFormat === "square") {
+    // The square plate keeps its centered bounds while the image decodes.
+    const width = image.naturalWidth || 1;
+    const height = image.naturalHeight || 1;
+    return {
+      width,
+      height,
+      centerX: width / 2,
+      centerY: height / 2,
+      diameter: Math.min(width, height),
+    };
+  }
+  return {
+    width: 611,
+    height: 833,
+    centerX: 306.009,
+    centerY: 757.002,
+    diameter: 605.599,
+  };
+}
+
 export function separateFanPaint(image: HTMLImageElement) {
   const ring = document.createElement("canvas");
   const lettering = document.createElement("canvas");
@@ -100,6 +122,8 @@ export function separateFanPaint(image: HTMLImageElement) {
   const words = lettering.getContext("2d");
   if (!ink || !words) return null;
   ink.drawImage(image, 0, 0);
+  // The new plate contains only the ring; preserve every painted color.
+  if (image.dataset.ringFormat === "square") return { ring, lettering };
   const red = ink.getImageData(0, 0, ring.width, ring.height);
   const gold = words.createImageData(ring.width, ring.height);
   for (let i = 0; i < red.data.length; i += 4) {
@@ -154,6 +178,7 @@ export function createRnaRingMorph(
     const stageBox = stage.getBoundingClientRect();
     const box = source.getBoundingClientRect();
     const destination = target.getBoundingClientRect();
+    const targetGeometry = getRnaRingGeometry(target);
     const width = box.width / (Number(gsap.getProperty(source, "scaleX")) || 1);
     const height =
       box.height / (Number(gsap.getProperty(source, "scaleY")) || 1);
@@ -168,11 +193,17 @@ export function createRnaRingMorph(
       Number(gsap.getProperty(source, "y")) -
       stageBox.top;
     const toX =
-      destination.left - stageBox.left + destination.width * (306.009 / 611);
+      destination.left -
+      stageBox.left +
+      destination.width * (targetGeometry.centerX / targetGeometry.width);
     const toY =
-      destination.top - stageBox.top + destination.height * (757.002 / 833);
-    const toWidth = destination.width * (605.599 / 611);
-    const toHeight = destination.height * (605.599 / 833);
+      destination.top -
+      stageBox.top +
+      destination.height * (targetGeometry.centerY / targetGeometry.height);
+    const toWidth =
+      destination.width * (targetGeometry.diameter / targetGeometry.width);
+    const toHeight =
+      destination.height * (targetGeometry.diameter / targetGeometry.height);
     const dx = toX - x,
       dy = toY - y;
     const bend = Math.min(compact ? 28 : 65, stage.clientWidth * 0.055);
@@ -231,14 +262,17 @@ export function createRnaRingMorph(
     const fraction = index - lower;
     plate(paint[lower], (1 - fraction) * (1 - incoming));
     plate(paint[Math.min(PAINT_STEPS, lower + 1)], fraction * (1 - incoming));
+    const targetGeometry = getRnaRingGeometry(target);
     const fanPlate = (texture: CanvasImageSource, alpha: number) => {
       context.globalAlpha = alpha;
       context.drawImage(
         texture,
-        padding + (0.5 - 306.009 / 605.599) * unit,
-        padding + (0.5 - 757.002 / 605.599) * unit,
-        (611 / 605.599) * unit,
-        (833 / 605.599) * unit,
+        padding +
+          (0.5 - targetGeometry.centerX / targetGeometry.diameter) * unit,
+        padding +
+          (0.5 - targetGeometry.centerY / targetGeometry.diameter) * unit,
+        (targetGeometry.width / targetGeometry.diameter) * unit,
+        (targetGeometry.height / targetGeometry.diameter) * unit,
       );
     };
     fanPlate(fan.ring, incoming);
