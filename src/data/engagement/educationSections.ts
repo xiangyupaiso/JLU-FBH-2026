@@ -1,5 +1,7 @@
 import type { WikiSection } from "../../components/wiki/wikiPageTypes";
 
+import { educationAssetUrl, replaceEducationAssetLinks } from "./educationRemoteAssets";
+
 // Generated from education-source.md by scripts/import-education.py.
 const rawSections: WikiSection[] = [
   {
@@ -6006,10 +6008,10 @@ const rawSections: WikiSection[] = [
 export const educationSections: WikiSection[] = rawSections.map((section) => ({
   ...section,
   blocks: section.blocks?.map((block) => block.type === "figure"
-    ? { ...block, src: block.src.replace("__BASE__", import.meta.env.BASE_URL) }
+    ? { ...block, src: educationAssetUrl(block.src) }
     : block.type === "chapter-link" && block.imageSrc
-      ? { ...block, imageSrc: block.imageSrc.replace("__BASE__", import.meta.env.BASE_URL) }
+      ? { ...block, imageSrc: educationAssetUrl(block.imageSrc) }
     : block.type === "prose"
-      ? { ...block, paragraphs: block.paragraphs.map((paragraph) => paragraph.split("__BASE__").join(import.meta.env.BASE_URL)) }
+      ? { ...block, paragraphs: block.paragraphs.map(replaceEducationAssetLinks) }
       : block),
 }));

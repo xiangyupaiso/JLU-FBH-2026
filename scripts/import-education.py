@@ -351,16 +351,17 @@ def main() -> None:
     serialized = json.dumps(sections, ensure_ascii=False, indent=2)
     OUTPUT.write_text(
         'import type { WikiSection } from "../../components/wiki/wikiPageTypes";\n\n'
+        'import { educationAssetUrl, replaceEducationAssetLinks } from "./educationRemoteAssets";\n\n'
         '// Generated from education-source.md by scripts/import-education.py.\n'
         f'const rawSections: WikiSection[] = {serialized};\n\n'
         'export const educationSections: WikiSection[] = rawSections.map((section) => ({\n'
         '  ...section,\n'
         '  blocks: section.blocks?.map((block) => block.type === "figure"\n'
-        '    ? { ...block, src: block.src.replace("__BASE__", import.meta.env.BASE_URL) }\n'
+        '    ? { ...block, src: educationAssetUrl(block.src) }\n'
         '    : block.type === "chapter-link" && block.imageSrc\n'
-        '      ? { ...block, imageSrc: block.imageSrc.replace("__BASE__", import.meta.env.BASE_URL) }\n'
+        '      ? { ...block, imageSrc: educationAssetUrl(block.imageSrc) }\n'
         '    : block.type === "prose"\n'
-        '      ? { ...block, paragraphs: block.paragraphs.map((paragraph) => paragraph.split("__BASE__").join(import.meta.env.BASE_URL)) }\n'
+        '      ? { ...block, paragraphs: block.paragraphs.map(replaceEducationAssetLinks) }\n'
         '      : block),\n'
         '}));\n',
         encoding="utf-8",

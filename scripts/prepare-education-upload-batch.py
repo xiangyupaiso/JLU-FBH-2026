@@ -17,11 +17,7 @@ SECTIONS = ROOT / "src/data/engagement/educationSections.ts"
 GALLERIES = ROOT / "src/data/engagement/educationGalleries.json"
 GROUPS = ROOT / "src/data/engagement/educationMediaGroups.json"
 ASSET_REFERENCE = re.compile(r"__BASE__assets/education/([A-Za-z0-9._/-]+)")
-INTERACTIVES = (
-    "community-educational-function-map.html",
-    "education-design-board.html",
-    "breast-guardian-evidence-room.html",
-)
+CDN = "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/education/figures/"
 
 
 def english_name(value: str) -> str:
@@ -31,6 +27,11 @@ def english_name(value: str) -> str:
     return name or f"asset-{hashlib.sha256(value.encode()).hexdigest()[:10]}"
 
 
+def inferred_url(filename: str) -> str:
+    name = re.sub(r"\.(?:png|jpe?g|webp)$", ".avif", filename, flags=re.I)
+    return CDN + name
+
+
 def main() -> None:
     text = SECTIONS.read_text(encoding="utf-8")
     raw = text.split("const rawSections: WikiSection[] = ", 1)[1].split(";\n\nexport const", 1)[0]
@@ -38,7 +39,7 @@ def main() -> None:
     groups = json.loads(GROUPS.read_text(encoding="utf-8"))
     galleries = json.loads(GALLERIES.read_text(encoding="utf-8"))
 
-    paths = set(INTERACTIVES)
+    paths = set()
     for section in sections:
         for block in section["blocks"]:
             paths.update(ASSET_REFERENCE.findall(json.dumps(block, ensure_ascii=False)))
@@ -64,6 +65,8 @@ def main() -> None:
             raise FileNotFoundError(source)
         if source.suffix.lower() == ".zip":
             raise ValueError(f"ZIP is excluded from this batch: {relative}")
+        if source.suffix.lower() in {".html", ".pptx"}:
+            continue
         destination = Path(english_name(source.name))
         if any(record["upload_path"] == destination.as_posix() for record in records):
             raise ValueError(f"Duplicate flattened filename: {destination}")
@@ -76,7 +79,7 @@ def main() -> None:
             "source_path": "public/assets/education/" + relative,
             "sha256": digest,
             "bytes": source.stat().st_size,
-            "url": "",
+            "url": inferred_url(destination.name),
         })
 
     current_paths = {record["upload_path"] for record in records}
@@ -101,8 +104,8 @@ def main() -> None:
     )
     (BATCH / "README-upload-instructions.txt").write_text(
         "Education 页面上传批次（2026-10-13）\n"
-        "全部资源文件已放在本目录同一层；CSV/JSON 和本说明无需上传。\n"
-        "资源文件名已统一为英文。请在 upload-manifest.csv 的 url 列填写每个文件上传后获得的真实 URL，或提供等价的文件名—URL 对照。\n"
+        "全部资源文件已放在本目录同一层；CSV/JSON 和本说明无需上传。HTML 已编入网页代码，PPT 已由单独的 PDF 批次替代。\n"
+        "资源文件名已统一为英文。清单中的 URL 按你提供的 iGEM 目录和文件名推断，未逐项核验。\n"
         "收到 URL 后会逐一核对并替换网页源码中的本地路径。ZIP 文件已从页面和本批次移除。\n",
         encoding="utf-8",
     )

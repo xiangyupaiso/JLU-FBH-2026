@@ -1,45 +1,56 @@
-import { useState, type ReactNode, type TouchEvent } from "react";
+import { useEffect, useRef, useState, type ReactNode, type TouchEvent } from "react";
 import galleries from "../../../../data/engagement/educationGalleries.json";
 import mediaGroups from "../../../../data/engagement/educationMediaGroups.json";
+import { educationAssetUrl } from "../../../../data/engagement/educationRemoteAssets";
 import "../../../../styles/features/education-media.css";
 
 type Gallery = (typeof galleries)[number];
 type MediaGroup = (typeof mediaGroups)[number];
 
-const assetUrl = (value: string) => value.replace("__BASE__", import.meta.env.BASE_URL);
-
 const interactivePages = {
   "education-interactive-map": {
     title: "Community & Educational Function Map",
-    file: "community-educational-function-map.html",
+    load: () => import("../../../../data/engagement/interactive/community-educational-function-map.html?raw").then((module) => module.default),
     height: 730,
   },
   "education-interactive-design-board": {
     title: "Education Design Board",
-    file: "education-design-board.html",
+    load: () => import("../../../../data/engagement/interactive/education-design-board.html?raw").then((module) => module.default),
     height: 850,
   },
   "education-interactive-evidence-room": {
     title: "Breast Guardian Evidence Room",
-    file: "breast-guardian-evidence-room.html",
+    load: () => import("../../../../data/engagement/interactive/breast-guardian-evidence-room.html?raw").then((module) => module.default),
     height: 900,
   },
 } as const;
 
 function InteractivePage({ item }: { item: (typeof interactivePages)[keyof typeof interactivePages] }) {
-  const src = `${import.meta.env.BASE_URL}assets/education/${item.file}`;
+  const container = useRef<HTMLElement>(null);
+  const [html, setHtml] = useState("");
+  useEffect(() => {
+    let active = true;
+    const load = () => { void item.load().then((value) => { if (active) setHtml(value); }); };
+    if (!container.current || !("IntersectionObserver" in window)) {
+      load();
+      return () => { active = false; };
+    }
+    const observer = new IntersectionObserver((entries) => {
+      if (entries.some((entry) => entry.isIntersecting)) {
+        observer.disconnect();
+        load();
+      }
+    }, { rootMargin: "500px" });
+    observer.observe(container.current);
+    return () => { active = false; observer.disconnect(); };
+  }, [item]);
   return (
-    <section className="education-interactive" aria-label={item.title}>
+    <section className="education-interactive" aria-label={item.title} ref={container}>
       <div className="education-interactive__head">
         <strong>{item.title}</strong>
       </div>
-      <iframe
-        src={src}
-        title={item.title}
-        loading="lazy"
-        sandbox="allow-scripts allow-popups"
-        style={{ height: item.height }}
-      />
+      {html ? <iframe srcDoc={html} title={item.title} loading="lazy" sandbox="allow-scripts allow-popups" style={{ height: item.height }} />
+        : <div className="education-interactive__loading" style={{ minHeight: item.height }}>Loading interactive activity…</div>}
     </section>
   );
 }
@@ -49,10 +60,10 @@ function MediaGrid({ group }: { group: MediaGroup }) {
   return (
     <div className="education-media-grid" data-count={group.items.length} data-pdf={allPdf || undefined}>
       {group.items.map((item, index) => {
-        const src = assetUrl(item.src);
+        const src = educationAssetUrl(item.src);
         if (item.kind === "pdf") {
           const filename = src.split("/").at(-1) ?? "";
-          const preview = `${import.meta.env.BASE_URL}assets/education/pdf-previews/${filename.replace(/\.pdf$/i, ".webp")}`;
+          const preview = educationAssetUrl(`pdf-previews/${filename.replace(/\.pdf$/i, ".webp")}`);
           return (
             <a className="education-media-grid__pdf" href={src} target="_blank" rel="noreferrer" key={`${src}-${index}`}>
               <img src={preview} alt="" loading="lazy" decoding="async" />
@@ -84,7 +95,7 @@ function PhotoGallery({ gallery }: { gallery: Gallery }) {
     setTouchStart(null);
   };
   const photo = photos[index];
-  const src = `${import.meta.env.BASE_URL}assets/education/galleries/${photo.file}`;
+  const src = educationAssetUrl(`galleries/${photo.file}`);
   return (
     <figure
       className="education-gallery"
