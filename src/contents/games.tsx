@@ -27,10 +27,10 @@ export function Games() {
         hideHeroCopy
         features={{
           "games-project-map": <GamesStationMap />,
+          "game-virtual-lab": <GameLaunchCard game="virtual-lab" />,
           "game-breast-guardian": <GameLaunchCard game="breast-guardian" />,
           "game-bomb-cat": <GameLaunchCard game="bomb-cat" />,
           "game-bio-memory": <GameLaunchCard game="bio-memory" />,
-          "game-virtual-lab": <GameLaunchCard game="virtual-lab" />,
         }}
       />
     </GamesProvider>

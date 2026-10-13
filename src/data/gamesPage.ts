@@ -39,9 +39,19 @@ export const gamesPage: WikiPageContent = {
       blocks: [{ type: "feature", key: "games-project-map" }],
     },
     {
-      id: "game-breast-guardian",
+      id: "game-virtual-lab",
       index: "01",
       kicker: "Playable project / 01",
+      navLabel: "Virtual Laboratory",
+      title: "Virtual Laboratory",
+      summary:
+        "Practise nine molecular biology workflows across beginner, intermediate and advanced levels, with interactive equipment, guided steps and restart controls.",
+      blocks: [{ type: "feature", key: "game-virtual-lab" }],
+    },
+    {
+      id: "game-breast-guardian",
+      index: "02",
+      kicker: "Playable project / 02",
       navLabel: "Breast Guardian RPG",
       title: "Breast Guardian RPG",
       summary:
@@ -50,8 +60,8 @@ export const gamesPage: WikiPageContent = {
     },
     {
       id: "game-bomb-cat",
-      index: "02",
-      kicker: "Playable project / 02",
+      index: "03",
+      kicker: "Playable project / 03",
       navLabel: "Bomb Cat",
       title: "Bomb Cat",
       summary:
@@ -60,23 +70,13 @@ export const gamesPage: WikiPageContent = {
     },
     {
       id: "game-bio-memory",
-      index: "03",
-      kicker: "Playable project / 03",
+      index: "04",
+      kicker: "Playable project / 04",
       navLabel: "Bio Memory Match",
       title: "Bio Memory Match",
       summary:
         "A specimen-card memory game for discovering biology concepts through observation, recall and matching.",
       blocks: [{ type: "feature", key: "game-bio-memory" }],
-    },
-    {
-      id: "game-virtual-lab",
-      index: "04",
-      kicker: "Playable project / 04",
-      navLabel: "Virtual Laboratory",
-      title: "Virtual Laboratory",
-      summary:
-        "Practise nine molecular biology workflows across beginner, intermediate and advanced levels, with interactive equipment, guided steps and restart controls.",
-      blocks: [{ type: "feature", key: "game-virtual-lab" }],
     },
   ],
   links: [],

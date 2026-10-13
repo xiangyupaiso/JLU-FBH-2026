@@ -1,81 +1,71 @@
-/** Invisible host bookmarks calibrated against the live official form on
- * 2026-10-11. Recalibrate after official content/layout changes. Widths are
- * iframe viewport widths, not site viewport widths. */
-type Calibration = {
-  width: number;
-  contentHeight: number;
-  offsets: readonly number[];
-};
+/** Dynamic responsive section distribution profiles for the official iGEM attribution form.
+ * Ratios represent proportional offsets of sections [ai-tool-use, igem-partner-offers, external-contributions, timeline]
+ * relative to the live reported form height. Section 0 (team-member-contributions) sits right below the header.
+ */
+interface ResponsiveProfile {
+  minWidth: number;
+  fallbackHeight: number;
+  topOffset: number;
+  ratios: readonly [number, number, number, number];
+}
 
-const layouts: { minWidth: number; samples: Calibration[] }[] = [
+const PROFILES: readonly ResponsiveProfile[] = [
   {
     minWidth: 0,
-    samples: [
-      {
-        width: 305,
-        contentHeight: 22573,
-        offsets: [288, 11708, 12598, 13958, 22246],
-      },
-      {
-        width: 596,
-        contentHeight: 21125,
-        offsets: [192, 11580, 12470, 13570, 20798],
-      },
-    ],
+    fallbackHeight: 22000,
+    topOffset: 240,
+    ratios: [0.535, 0.575, 0.635, 0.985],
   },
   {
     minWidth: 640,
-    samples: [
-      {
-        width: 695,
-        contentHeight: 22234,
-        offsets: [192, 12284, 13222, 14382, 21906],
-      },
-    ],
+    fallbackHeight: 21500,
+    topOffset: 192,
+    ratios: [0.55, 0.595, 0.648, 0.985],
   },
   {
     minWidth: 768,
-    samples: [
-      {
-        width: 774,
-        contentHeight: 13932,
-        offsets: [192, 7640, 8300, 9264, 13604],
-      },
-      {
-        width: 819,
-        contentHeight: 13812,
-        offsets: [192, 7540, 8200, 9144, 13484],
-      },
-      {
-        width: 1443,
-        contentHeight: 11490,
-        offsets: [144, 7092, 7474, 8190, 11162],
-      },
-    ],
+    fallbackHeight: 13800,
+    topOffset: 192,
+    ratios: [0.548, 0.595, 0.664, 0.976],
+  },
+  {
+    minWidth: 1024,
+    fallbackHeight: 11500,
+    topOffset: 144,
+    ratios: [0.615, 0.65, 0.712, 0.972],
   },
 ];
 
-export function getAttributionBookmarks(width: number) {
-  const layout = layouts.reduce(
-    (selected, entry) => (width >= entry.minWidth ? entry : selected),
-    layouts[0],
-  );
-  const samples = layout.samples;
+export function getAttributionBookmarks(
+  width: number,
+  reportedHeight?: number | null,
+) {
   const upper =
-    samples.find((sample) => sample.width >= width) ??
-    samples[samples.length - 1];
-  const lower = samples.reduce(
-    (selected, sample) => (sample.width <= width ? sample : selected),
-    samples[0],
-  );
+    PROFILES.find((p) => p.minWidth >= width) ?? PROFILES[PROFILES.length - 1];
+  const lower =
+    PROFILES.slice()
+      .reverse()
+      .find((p) => p.minWidth <= width) ?? PROFILES[0];
   const fraction =
-    lower === upper ? 0 : (width - lower.width) / (upper.width - lower.width);
-  const interpolate = (a: number, b: number) =>
-    Math.round(a + (b - a) * fraction);
+    lower.minWidth === upper.minWidth
+      ? 0
+      : (width - lower.minWidth) / (upper.minWidth - lower.minWidth);
+
+  const lerp = (a: number, b: number) => a + (b - a) * fraction;
+
+  const contentHeight =
+    reportedHeight && reportedHeight > 0
+      ? reportedHeight
+      : Math.round(lerp(lower.fallbackHeight, upper.fallbackHeight));
+
+  const topOffset = Math.round(lerp(lower.topOffset, upper.topOffset));
+  const ratios = lower.ratios.map((r, i) => lerp(r, upper.ratios[i]));
+
   return {
-    contentHeight: interpolate(lower.contentHeight, upper.contentHeight),
-    offsets: lower.offsets.map((offset, index) =>
-      interpolate(offset, upper.offsets[index]),
-    ),
+    contentHeight,
+    offsets: [
+      topOffset,
+      ...ratios.map((ratio) => Math.round(ratio * contentHeight)),
+    ],
   };
 }

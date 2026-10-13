@@ -1,0 +1,413 @@
+/* SVG paint and the matching translucent reading surfaces share one palette. */
+[data-orbit-tone="peach"] {
+  --orbit-color: #f0c891;
+  --orbit-ink: #765731;
+}
+[data-orbit-tone="sage"] {
+  --orbit-color: #c8dca0;
+  --orbit-ink: #4e6037;
+}
+[data-orbit-tone="sky"] {
+  --orbit-color: #a9cfdf;
+  --orbit-ink: #405e6e;
+}
+[data-orbit-tone="lavender"] {
+  --orbit-color: #c6b4d8;
+  --orbit-ink: #665173;
+}
+[data-orbit-tone="rose"] {
+  --orbit-color: #e8b5cd;
+  --orbit-ink: #7b4c64;
+}
+[data-orbit-tone="yellow"] {
+  --orbit-color: #ffdf7b;
+  --orbit-ink: #715c29;
+}
+[data-orbit-tone="lime"] {
+  --orbit-color: #c5df8b;
+  --orbit-ink: #4e6234;
+}
+[data-orbit-tone="slate"] {
+  --orbit-color: #89a9b9;
+  --orbit-ink: #3e5968;
+}
+[data-orbit-tone="mauve"] {
+  --orbit-color: #a392b6;
+  --orbit-ink: #604e70;
+}
+
+/* The visible diagram titles replace the repeated section heading. Keep the
+   semantic headings and outline anchors available to assistive technology. */
+.wiki-page[data-wiki-route="/entrepreneurship"]
+  :is(#potential-problems-and-solutions, #positive-long-term-impacts)
+  > .wiki-section__heading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* Static RNA drawings do not need the reader's continuous parallax repaint. */
+.wiki-page[data-wiki-route="/entrepreneurship"]
+  .wiki-feature:has(.circure-orbit) {
+  opacity: 1 !important;
+  transform: none !important;
+  transition: none !important;
+  will-change: auto !important;
+}
+
+.circure-orbit {
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  max-width: 640px;
+  aspect-ratio: 640 / 570;
+  margin: 0 auto;
+  color: #504c65;
+  font-family: var(--font-sans, sans-serif);
+}
+
+.circure-orbit__drawing {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.circure-orbit__title {
+  fill: #b87994;
+  font-size: 24px;
+  font-weight: 650;
+  letter-spacing: 0.1px;
+}
+
+.circure-orbit__title--arched {
+  fill: #c67d96;
+  font-size: 36px;
+  font-weight: 650;
+}
+
+.circure-orbit__backbone {
+  fill: none;
+  stroke: #c2b6ce;
+  stroke-width: 6;
+  opacity: 0.72;
+}
+
+.circure-orbit__base {
+  stroke: var(--orbit-color);
+  stroke-width: 3;
+  opacity: 0.9;
+}
+
+.circure-orbit__bead {
+  fill: var(--orbit-color);
+  stroke: #fffcfa;
+  stroke-width: 0.9;
+}
+
+.circure-orbit__brand,
+.circure-orbit__subtitle {
+  text-anchor: middle;
+}
+
+.circure-orbit__brand {
+  fill: #504c65;
+  font-size: 23px;
+  font-weight: 650;
+}
+
+.circure-orbit__subtitle {
+  fill: #9481a6;
+  font-size: 19px;
+  font-weight: 400;
+}
+
+.circure-orbit--impacts .circure-orbit__brand {
+  font-size: 27px;
+}
+.circure-orbit--impacts .circure-orbit__subtitle {
+  font-size: 23px;
+}
+
+.circure-orbit__wash {
+  fill: var(--orbit-color);
+  transition: opacity 180ms ease;
+}
+
+.circure-orbit__wash-base {
+  opacity: 0.42;
+}
+.circure-orbit__wash-layer {
+  opacity: 0.25;
+}
+.circure-orbit__wash-light {
+  opacity: 0.14;
+}
+.circure-orbit__wash.is-active .circure-orbit__wash-layer {
+  opacity: 0.4;
+}
+
+.circure-orbit__node {
+  position: absolute;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 20%;
+  height: 22.456%;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: #504c65;
+  font: inherit;
+  font-size: clamp(12px, 1.15vw, 16px);
+  font-weight: 650;
+  line-height: 1.28;
+  text-align: center;
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 180ms ease;
+}
+
+.circure-orbit__node:hover {
+  transform: translateY(-2px);
+}
+.circure-orbit__node:focus-visible {
+  outline: 2px solid var(--orbit-ink);
+  outline-offset: 4px;
+}
+
+.circure-orbit__node--safety {
+  left: 40%;
+  top: 14.561%;
+}
+.circure-orbit__node--patient-access {
+  left: 64.6875%;
+  top: 35.0877%;
+}
+.circure-orbit__node--data-privacy {
+  left: 55.3125%;
+  top: 67.5439%;
+}
+.circure-orbit__node--manufacturing-qc {
+  left: 24.6875%;
+  top: 67.5439%;
+  font-size: clamp(10px, 1vw, 14px);
+}
+.circure-orbit__node--clinical-trust {
+  left: 15.3125%;
+  top: 35.0877%;
+}
+
+/* Impact dots retain the four-point composition of the supplied reference.
+   The full title is the accessible name and appears in its reading strip. */
+.circure-orbit--impacts .circure-orbit__node {
+  width: 11.25%;
+  height: 12.6316%;
+}
+.circure-orbit__node--treatment-options {
+  left: 26.875%;
+  top: 28.4211%;
+}
+.circure-orbit__node--patient-matching {
+  left: 61.875%;
+  top: 28.4211%;
+}
+.circure-orbit__node--vaccine-development {
+  left: 26.875%;
+  top: 67.7193%;
+}
+.circure-orbit__node--collaboration {
+  left: 61.875%;
+  top: 67.7193%;
+}
+
+.circure-orbit__legend {
+  position: absolute;
+  right: 0;
+  bottom: 3%;
+  left: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 12px 34px;
+  color: #80728f;
+  font-size: clamp(11px, 1vw, 14px);
+}
+
+.circure-orbit__legend > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.circure-orbit__legend i {
+  display: inline-block;
+  width: 13px;
+  height: 13px;
+  flex: none;
+  border-radius: 50%;
+  background: var(--orbit-color);
+  opacity: 0.78;
+}
+
+.circure-orbit__legend i + i {
+  margin-right: 5px;
+}
+
+.circure-orbit .circure-orbit__detail {
+  position: absolute;
+  z-index: 3;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  box-sizing: border-box;
+  max-height: min(320px, 60vh);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 23px 28px 25px;
+  border: 1px solid color-mix(in srgb, var(--orbit-color) 38%, transparent);
+  border-radius: 22px 26px 21px 25px;
+  background:
+    radial-gradient(
+      ellipse at 5% 15%,
+      color-mix(in srgb, var(--orbit-color) 32%, transparent),
+      transparent 70%
+    ),
+    radial-gradient(
+      ellipse at 92% 95%,
+      color-mix(in srgb, var(--orbit-color) 24%, transparent),
+      transparent 65%
+    ),
+    rgb(255 253 250 / 88%);
+  color: #454153;
+  box-shadow:
+    0 14px 38px rgb(73 55 77 / 10%),
+    0 2px 8px rgb(73 55 77 / 4%);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  animation: circure-detail-enter 180ms ease-out both;
+  scrollbar-width: thin;
+  scrollbar-color: var(--orbit-color) transparent;
+}
+
+.circure-orbit .circure-orbit__detail--above {
+  top: 14%;
+  bottom: auto;
+}
+
+.circure-orbit .circure-orbit__detail h3 {
+  margin: 0 22px 12px 0;
+  padding: 0;
+  border: 0;
+  color: var(--orbit-ink);
+  font-family: inherit;
+  font-size: 18px;
+  font-weight: 650;
+  line-height: 1.4;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.circure-orbit .circure-orbit__detail h3::before {
+  display: none;
+}
+
+.circure-orbit .circure-orbit__detail-copy {
+  margin: 0;
+  color: #454153;
+  font-size: 15px;
+  line-height: 1.75;
+  overflow-wrap: anywhere;
+  text-align: left;
+}
+
+.circure-orbit .circure-orbit__detail-group {
+  margin: 0 0 7px;
+  color: var(--orbit-ink);
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.circure-orbit__close {
+  position: absolute;
+  top: 13px;
+  right: 13px;
+  display: grid;
+  width: 32px;
+  height: 32px;
+  place-items: center;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: rgb(255 255 255 / 38%);
+  color: var(--orbit-ink);
+  cursor: pointer;
+}
+
+.circure-orbit__close svg {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+}
+
+.circure-orbit__close:hover {
+  background: rgb(255 255 255 / 75%);
+}
+.circure-orbit__close:focus-visible {
+  outline: 2px solid var(--orbit-ink);
+}
+
+@keyframes circure-detail-enter {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 600px) {
+  .circure-orbit .circure-orbit__detail {
+    max-height: min(300px, 58vh);
+    padding: 18px 20px 20px;
+    border-radius: 17px 20px 16px 19px;
+  }
+  .circure-orbit .circure-orbit__detail h3 {
+    font-size: 16px;
+  }
+  .circure-orbit .circure-orbit__detail-copy {
+    font-size: 14px;
+    line-height: 1.65;
+  }
+  .circure-orbit__legend {
+    gap: 10px 18px;
+  }
+  .circure-orbit__legend i {
+    width: 10px;
+    height: 10px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .circure-orbit__node,
+  .circure-orbit__wash {
+    transition: none;
+  }
+  .circure-orbit .circure-orbit__detail {
+    animation: none;
+  }
+}

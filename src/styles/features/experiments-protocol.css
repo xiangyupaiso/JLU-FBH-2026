@@ -1,595 +1,472 @@
-.wiki-page.wiki-page--wet-lab .wiki-feature:has(> .exp-atlas) {
-  --exp-atlas-bleed: clamp(26px, 5vw, 72px);
-  width: calc(100% + 2 * (var(--exp-atlas-bleed) - 10px));
-  margin-inline: calc(10px - var(--exp-atlas-bleed));
-  overflow: visible;
-}
-
+/* Independent experiment routes and their shared image viewer. */
 .exp-atlas {
-  margin: 0 0 42px;
-  padding: 0;
+  min-width: 0;
+  margin: 0;
   color: var(--route-ink, #263c44);
 }
 
-.exp-atlas__header,
-.exp-protocol-spread__heading {
-  display: flex;
-  align-items: end;
-  justify-content: space-between;
-  gap: 20px;
-}
-
-.exp-atlas__eyebrow {
-  display: block;
-  margin-bottom: 6px;
-  color: var(--route-subheading-ink, #6c7c75);
-  font: 600 11px/1.3 var(--font-body);
-  text-transform: uppercase;
-}
-
-.exp-atlas__header h3 {
-  margin: 0;
-  color: var(--route-heading-ink, #173f52);
-  font: 600 clamp(21px, 2vw, 29px)/1.15 var(--font-heading);
-}
-
-.exp-atlas__count {
-  flex: none;
-  padding-bottom: 3px;
-  color: var(--route-subheading-ink, #6c7c75);
-  font: 500 12px/1.2 var(--font-body);
-}
-
+/* Vertical index map */
 .exp-atlas__map {
   display: grid;
-  grid-template-columns: repeat(5, minmax(145px, 1fr));
+  grid-template-columns: repeat(7, minmax(106px, 1fr));
+  align-items: start;
+  padding: 28px 14px 8px;
   overflow-x: auto;
-  margin: 22px 0 0;
-  padding: 0 0 12px;
+  overflow-y: hidden;
   scrollbar-width: thin;
+  scrollbar-color: #aac7cc transparent;
+  border: 1px solid var(--route-line-strong, #aac7cc);
+  border-radius: 9px;
+  background:
+    radial-gradient(
+        circle at 12px 12px,
+        rgba(38, 123, 132, 0.08) 1px,
+        transparent 1.5px
+      )
+      0 0 / 24px 24px,
+    #fff;
 }
 
-.exp-atlas__phase {
+.exp-atlas__stage {
   min-width: 0;
-  padding: 0 7px;
-  border-left: 1px solid var(--route-line, #d0e1e1);
+  padding: 0 6px;
 }
 
-.exp-atlas__phase:first-child {
-  padding-left: 0;
-  border-left: 0;
-}
-
-.exp-atlas__phase-heading {
-  display: flex;
-  align-items: baseline;
-  gap: 7px;
-  min-height: 32px;
-  border-bottom: 2px solid var(--route-line-strong, #aac7cc);
-  color: var(--route-heading-ink, #173f52);
-}
-
-.exp-atlas__phase-heading span {
-  color: var(--route-subheading-ink, #6c7c75);
-  font: 500 10px/1 var(--font-mono);
-}
-
-.exp-atlas__phase-heading strong {
-  font: 600 13px/1.2 var(--font-body);
-}
-
-.exp-atlas__nodes {
+.exp-atlas__stage-track {
+  position: relative;
   display: grid;
-  align-content: start;
-  gap: 4px;
-  padding-top: 9px;
+  grid-auto-rows: 100px;
+  min-width: 0;
+}
+
+.exp-atlas__route {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.exp-atlas__route path {
+  fill: none;
+  stroke: #8cbdbc;
+  stroke-width: 2;
+  stroke-linejoin: round;
 }
 
 .exp-atlas__node {
-  display: grid;
-  grid-template-columns: 32px minmax(0, 1fr);
-  align-items: center;
-  gap: 5px;
+  --node-x: 35%;
+  position: relative;
+  z-index: 1;
+  display: block;
   width: 100%;
-  min-height: 34px;
-  padding: 5px 4px;
-  border: 1px solid transparent;
-  border-radius: 4px;
+  min-width: 0;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  border-radius: 6px;
   background: transparent;
   color: var(--route-ink, #263c44);
-  text-align: left;
   cursor: pointer;
+}
+
+.exp-atlas__node:nth-of-type(even) {
+  --node-x: 65%;
+}
+
+.exp-atlas__node-dot {
+  position: absolute;
+  top: 12px;
+  left: var(--node-x);
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #267b84;
+  transform: translateX(-50%);
   transition:
     background-color 160ms ease,
-    border-color 160ms ease;
+    box-shadow 160ms ease;
 }
 
-.exp-atlas__node:hover,
-.exp-atlas__node.is-active {
-  border-color: var(--route-line-strong, #aac7cc);
-  background: #e7f2f0;
+.exp-atlas__node:hover .exp-atlas__node-dot,
+.exp-atlas__node:focus-visible .exp-atlas__node-dot,
+.exp-atlas__node.is-active .exp-atlas__node-dot {
+  background: #173f52;
+  box-shadow: 0 0 0 6px rgba(38, 123, 132, 0.13);
 }
 
-.exp-atlas__node > span {
-  color: var(--route-subheading-ink, #6c7c75);
-  font: 600 11px/1 var(--font-mono);
+.exp-atlas__node.is-pending .exp-atlas__node-dot {
+  background: #789b99;
 }
 
-.exp-atlas__node small {
-  min-width: 0;
-  font: 500 11px/1.25 var(--font-body);
-  overflow-wrap: break-word;
-}
-
-.exp-atlas__note {
-  margin: 0 0 14px;
-  color: var(--route-subheading-ink, #6c7c75);
-  font: 400 11px/1.4 var(--font-body);
-}
-
-.exp-atlas__reader {
-  padding-top: 20px;
-  border-top: 1px solid var(--route-line, #d0e1e1);
-}
-
-.exp-atlas__selection {
-  height: 108px;
-  overflow-y: auto;
-}
-
-.exp-atlas__selection h4 {
-  margin: 0;
-  color: var(--route-heading-ink, #173f52);
-  font: 600 clamp(19px, 1.8vw, 25px)/1.25 var(--font-heading);
-}
-
-.exp-atlas__selection p {
-  margin: 10px 0 0;
-  padding: 9px 12px;
-  border-left: 3px solid var(--route-subheading-ink, #6c7c75);
-  background: #eef4f0;
-  color: var(--route-ink, #263c44);
-  font: 400 12px/1.5 var(--font-body);
-}
-
-.exp-atlas__book-stage {
-  position: relative;
-  margin-top: 17px;
-}
-
-.exp-atlas__book {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  height: clamp(610px, 70vw, 740px);
-  border: 1px solid var(--route-line-strong, #aac7cc);
-  background: #fff;
-  box-shadow: 0 10px 24px rgba(23, 63, 82, 0.08);
-}
-
-.exp-atlas__edge-nav {
+.exp-atlas__node-code {
   position: absolute;
-  z-index: 2;
-  top: 50%;
-  display: flex;
-  align-items: center;
-  width: 64px;
-  height: 160px;
-  transform: translateY(-50%);
+  top: 38px;
+  left: var(--node-x);
+  color: var(--route-heading-ink, #173f52);
+  font: 600 13px/1 var(--font-body, sans-serif);
+  white-space: nowrap;
+  transform: translateX(-50%);
 }
 
-.exp-atlas__edge-nav--previous {
-  left: 0;
-  justify-content: flex-start;
+.exp-atlas__node:focus-visible {
+  outline: 2px solid #267b84;
+  outline-offset: 3px;
 }
 
-.exp-atlas__edge-nav--next {
-  right: 0;
-  justify-content: flex-end;
-}
-
-.exp-atlas__edge-nav button {
+/* Top-layer protocol viewer */
+.wiki-protocol-modal {
+  position: fixed;
+  z-index: 10000;
+  inset: 0;
   display: grid;
   place-items: center;
-  width: 48px;
-  height: 64px;
-  padding: 0;
-  border: 1px solid var(--route-line-strong, #aac7cc);
-  background: rgba(255, 255, 255, 0.96);
-  box-shadow: 0 3px 14px rgba(23, 63, 82, 0.15);
-  color: var(--route-heading-ink, #173f52);
-  font: 600 24px/1 var(--font-body);
+  padding: clamp(10px, 2vw, 24px);
+  background: rgba(12, 35, 45, 0.78);
+  backdrop-filter: blur(4px);
+}
+
+.wiki-protocol-modal__surface {
+  display: flex;
+  width: min(1240px, 96vw);
+  height: min(92vh, 940px);
+  min-height: 0;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid #aac7cc;
+  border-radius: 14px;
+  background: #f6fbfa;
+  box-shadow: 0 26px 90px rgba(7, 29, 38, 0.38);
+  outline: none;
+}
+
+.wiki-protocol-modal__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px 20px;
+  border-bottom: 1px solid #d0e1e1;
+  background: #fff;
+}
+
+.wiki-protocol-modal__meta {
+  min-width: 0;
+}
+
+.wiki-protocol-modal__meta h4 {
+  margin: 0;
+  color: #173f52;
+  font: 700 clamp(17px, 2vw, 24px)/1.25 var(--font-heading, serif);
+}
+
+.wiki-protocol-modal__code {
+  display: inline-block;
+  margin-right: 8px;
+  padding: 4px 7px;
+  border-radius: 5px;
+  background: #173f52;
+  color: #fff;
+  font: 700 12px/1 var(--font-mono, monospace);
+  vertical-align: 2px;
+}
+
+.wiki-protocol-modal__header-actions,
+.wiki-protocol-modal__tabs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.wiki-protocol-modal__header-actions button,
+.wiki-protocol-modal__tabs button {
+  min-height: 36px;
+  padding: 8px 12px;
+  border: 1px solid #aac7cc;
+  border-radius: 7px;
+  background: #fff;
+  color: #173f52;
+  font: 600 12px/1.1 var(--font-body, sans-serif);
   cursor: pointer;
-  transition:
-    background-color 160ms ease,
-    color 160ms ease;
 }
 
-.exp-atlas__edge-nav--previous button {
-  border-radius: 0 6px 6px 0;
+.wiki-protocol-modal__header-actions button:hover:not(:disabled),
+.wiki-protocol-modal__tabs button:hover:not(:disabled) {
+  border-color: #267b84;
+  background: #edf7f6;
 }
 
-.exp-atlas__edge-nav--next button {
-  border-radius: 6px 0 0 6px;
+.wiki-protocol-modal__header-actions button:disabled,
+.wiki-protocol-modal__tabs button:disabled {
+  cursor: not-allowed;
+  opacity: 0.42;
 }
 
-.exp-atlas__edge-nav button:hover:not(:disabled) {
-  background: var(--route-heading-ink, #173f52);
+.wiki-protocol-modal__close {
+  border-color: #173f52 !important;
+  background: #173f52 !important;
+  color: #fff !important;
+}
+
+.wiki-protocol-modal__boundary {
+  margin: 0;
+  padding: 10px 20px;
+  border-bottom: 1px solid #f0dbab;
+  background: #fff8e8;
+  color: #664d1a;
+  font: 400 12px/1.5 var(--font-body, sans-serif);
+}
+
+.wiki-protocol-modal__tabs {
+  padding: 10px 20px;
+  border-bottom: 1px solid #d0e1e1;
+  background: #fff;
+}
+
+.wiki-protocol-modal__tabs button.is-active {
+  border-color: #173f52;
+  background: #173f52;
   color: #fff;
 }
 
-.exp-atlas__edge-nav button:disabled {
-  color: var(--route-subheading-ink, #6c7c75);
-  cursor: default;
+.wiki-protocol-modal__tabs button span {
+  margin-right: 5px;
+  font: 700 11px/1 var(--font-mono, monospace);
 }
 
-@media (hover: hover) and (pointer: fine) {
-  .exp-atlas__edge-nav button {
-    opacity: 0;
-    transform: translateX(-8px);
-    transition:
-      opacity 160ms ease,
-      transform 160ms ease,
-      background-color 160ms ease,
-      color 160ms ease;
-  }
-
-  .exp-atlas__edge-nav--next button {
-    transform: translateX(8px);
-  }
-
-  .exp-atlas__edge-nav:hover button,
-  .exp-atlas__edge-nav:focus-within button {
-    opacity: 1;
-    transform: translateX(0);
-  }
+.wiki-protocol-modal__size-toggle {
+  margin-left: auto;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .exp-atlas__edge-nav button {
-    transition: none;
-  }
-}
-
-.exp-atlas__page {
-  display: grid;
-  grid-template-rows: 24px minmax(0, 1fr) 24px;
-  gap: 8px;
-  min-width: 0;
-  min-height: 0;
-  padding: clamp(8px, 1.2vw, 16px);
-  border: 0;
-  background: #fff;
-  color: var(--route-ink, #263c44);
-  text-align: left;
-  cursor: zoom-in;
-}
-
-.exp-atlas__page + .exp-atlas__page {
-  border-left: 1px solid var(--route-line-strong, #aac7cc);
-  box-shadow: inset 7px 0 12px -12px rgba(23, 63, 82, 0.5);
-}
-
-.exp-atlas__page-heading {
+.wiki-protocol-modal__stage {
+  position: relative;
   display: flex;
+  min-height: 0;
+  flex: 1;
   align-items: center;
-  gap: 8px;
-  margin: 0;
-  color: var(--route-heading-ink, #173f52);
-  font: 600 12px/1.3 var(--font-body);
+  justify-content: center;
+  padding: 18px 66px 28px;
+  background: #eff6f5;
+  touch-action: pan-y;
 }
 
-.exp-atlas__page-heading strong {
-  color: var(--route-subheading-ink, #6c7c75);
-  font: 600 11px/1 var(--font-mono);
+.wiki-protocol-modal__image-scroll {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  overflow: auto;
+  border: 1px solid #d0e1e1;
+  border-radius: 9px;
+  background: #fff;
+  scrollbar-width: thin;
 }
 
-.exp-atlas__page img {
+.wiki-protocol-modal__image-scroll img {
+  position: absolute;
+  inset: 0;
   display: block;
   width: 100%;
   height: 100%;
-  min-width: 0;
-  min-height: 0;
   object-fit: contain;
   background: #fff;
 }
 
-.exp-atlas__page-zoom {
-  align-self: center;
-  justify-self: end;
-  color: var(--route-heading-ink, #173f52);
-  font: 600 11px/1.2 var(--font-body);
-  text-decoration: underline;
-  text-underline-offset: 3px;
-}
-
-.exp-atlas__footer,
-.exp-atlas__viewer-header,
-.exp-atlas__viewer-actions {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.exp-atlas__footer {
-  justify-content: space-between;
-  flex-wrap: wrap;
-  margin-top: 18px;
-}
-
-.exp-atlas__viewer-actions button {
-  padding: 9px 11px;
-  border: 1px solid var(--route-line-strong, #aac7cc);
-  border-radius: 4px;
-  background: #fff;
-  color: var(--route-heading-ink, #173f52);
-  font: 600 12px/1.2 var(--font-body);
-  cursor: pointer;
-}
-
-.exp-atlas__position {
-  color: var(--route-subheading-ink, #6c7c75);
-  font: 500 11px/1 var(--font-mono);
-}
-
-.exp-atlas__jump {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  min-height: 38px;
-  padding: 9px 14px;
-  border: 1px solid var(--route-heading-ink, #173f52);
-  border-radius: 4px;
-  background: var(--route-heading-ink, #173f52);
-  color: #fff;
-  font: 600 12px/1.2 var(--font-body);
-  cursor: pointer;
-}
-
-.exp-atlas__jump:hover {
-  background: var(--route-subheading-ink, #547f81);
-}
-
-.exp-atlas__node:focus-visible,
-.exp-atlas__page:focus-visible,
-.exp-atlas__edge-nav button:focus-visible,
-.exp-atlas__footer button:focus-visible,
-.exp-atlas__viewer button:focus-visible,
-.exp-protocol-spread a:focus-visible {
-  outline: 2px solid var(--route-accent, #398b9a);
-  outline-offset: 2px;
-}
-
-.exp-atlas__viewer {
-  width: min(96vw, 1800px);
-  height: min(94vh, 1300px);
-  max-width: none;
-  max-height: none;
-  padding: 0;
-  border: 1px solid var(--route-line-strong, #aac7cc);
-  border-radius: 6px;
-  background: #f7fbfa;
-  color: var(--route-ink, #263c44);
-  box-shadow: 0 24px 80px rgba(12, 35, 45, 0.25);
-}
-
-.exp-atlas__viewer[open] {
-  display: flex;
-  flex-direction: column;
-}
-
-.exp-atlas__viewer::backdrop {
-  background: rgba(12, 35, 45, 0.72);
-}
-
-.exp-atlas__viewer-header {
-  justify-content: space-between;
-  flex-wrap: wrap;
-  padding: 14px 18px;
-  border-bottom: 1px solid var(--route-line, #d0e1e1);
-}
-
-.exp-atlas__viewer-header h4 {
-  margin: 0;
-  color: var(--route-heading-ink, #173f52);
-  font: 600 18px/1.25 var(--font-heading);
-}
-
-.exp-atlas__viewer-scroll {
-  flex: 1;
-  min-height: 0;
-  overflow: auto;
-  padding: 18px;
-  text-align: center;
-}
-
-.exp-atlas__viewer-scroll img {
-  display: block;
+.wiki-protocol-modal__image-scroll img.is-actual {
+  position: static;
   width: auto;
   height: auto;
-  max-width: 100%;
-  margin: 0 auto;
-  background: #fff;
-}
-
-.exp-atlas__viewer-scroll img.is-actual {
   max-width: none;
+  max-height: none;
 }
 
+.wiki-protocol-modal__edge {
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  display: grid;
+  width: 44px;
+  height: 68px;
+  place-items: center;
+  border: 1px solid #aac7cc;
+  border-radius: 9px;
+  background: rgba(255, 255, 255, 0.94);
+  color: #173f52;
+  font: 400 34px/1 var(--font-body, sans-serif);
+  cursor: pointer;
+  box-shadow: 0 5px 18px rgba(23, 63, 82, 0.14);
+  transform: translateY(-50%);
+}
+
+.wiki-protocol-modal__edge:hover:not(:disabled) {
+  border-color: #173f52;
+  background: #173f52;
+  color: #fff;
+}
+
+.wiki-protocol-modal__edge:disabled {
+  cursor: default;
+  opacity: 0.22;
+}
+
+.wiki-protocol-modal__edge--left {
+  left: 12px;
+}
+.wiki-protocol-modal__edge--right {
+  right: 12px;
+}
+
+.wiki-protocol-modal__empty {
+  display: grid;
+  gap: 8px;
+  place-items: center;
+  padding: 40px;
+  color: #587977;
+  text-align: center;
+  font: 400 13px/1.5 var(--font-body, sans-serif);
+}
+
+.wiki-protocol-modal__empty strong {
+  color: #173f52;
+  font: 700 18px/1.25 var(--font-heading, serif);
+}
+
+/* Static protocol figures in the article */
 .exp-protocol-spread {
-  position: relative;
   margin: 28px 0 36px;
-  padding: clamp(12px, 1.5vw, 18px);
-  border: 1px solid var(--route-line-strong, #aac7cc);
-  border-radius: 6px;
-  background: #f7fbfa;
+  padding: 18px;
+  border: 1px solid #d0e1e1;
+  border-radius: 9px;
+  background: #fff;
+  box-shadow: 0 6px 20px rgba(23, 63, 82, 0.05);
 }
 
 .exp-protocol-spread__heading {
-  align-items: center;
-  margin-bottom: 12px;
-  padding-right: 190px;
-}
-
-.exp-protocol-spread__heading strong {
-  display: block;
-  color: var(--route-heading-ink, #173f52);
-  font: 600 clamp(16px, 1.3vw, 20px)/1.25 var(--font-heading);
+  margin: 0 0 8px;
+  color: #173f52;
+  font: 700 16px/1.3 var(--font-heading, serif);
 }
 
 .exp-protocol-spread__boundary {
-  margin: 0 0 12px;
-  padding: 9px 11px;
-  border-left: 3px solid var(--route-subheading-ink, #6c7c75);
-  background: #eef4f0;
-  color: var(--route-ink, #263c44);
-  font: 400 12px/1.5 var(--font-body);
+  margin: 0 0 14px;
+  padding: 8px 12px;
+  border-left: 3px solid #3e8d97;
+  border-radius: 0 4px 4px 0;
+  background: #f0f7f6;
+  font: 400 12px/1.5 var(--font-body, sans-serif);
 }
 
 .exp-protocol-spread__images {
-  display: block;
-}
-
-.exp-protocol-spread__images:has(.exp-protocol-spread__materials[open]) {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  align-items: start;
-  gap: 12px;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 16px;
 }
 
-.exp-protocol-spread__images a {
-  display: flex;
-  flex-direction: column;
-  min-width: 0;
-  padding: 8px;
-  border: 1px solid var(--route-line, #d0e1e1);
-  background: #fff;
-  color: var(--route-heading-ink, #173f52);
+.exp-protocol-spread__workflow,
+.exp-protocol-spread__materials a {
+  display: block;
+  color: #263c44;
   text-decoration: none;
 }
 
-.exp-protocol-spread__images span,
-.exp-protocol-spread__images small {
-  font: 600 11px/1.3 var(--font-body);
+.exp-protocol-spread__workflow span,
+.exp-protocol-spread__materials a span {
+  display: block;
+  margin-bottom: 6px;
+  color: #173f52;
+  font: 700 12px/1.2 var(--font-body, sans-serif);
 }
 
-.exp-protocol-spread__images img {
+.exp-protocol-spread__workflow img,
+.exp-protocol-spread__materials a img {
   display: block;
   width: 100%;
-  height: auto;
-  margin: 7px 0;
+  max-height: 520px;
+  border: 1px solid #d4e5e4;
+  border-radius: 6px;
   background: #fff;
+  object-fit: contain;
 }
 
-.exp-protocol-spread__images small {
-  margin-top: auto;
-  text-decoration: underline;
-  text-underline-offset: 3px;
+.exp-protocol-spread__workflow small,
+.exp-protocol-spread__materials a small {
+  display: inline-block;
+  margin-top: 6px;
+  color: #267b84;
+  font: 600 11px/1 var(--font-body, sans-serif);
 }
 
 .exp-protocol-spread__materials {
-  min-width: 0;
-}
-
-.exp-protocol-spread__materials:not([open]) {
-  position: absolute;
-  top: clamp(12px, 1.5vw, 18px);
-  right: clamp(12px, 1.5vw, 18px);
+  margin-top: 12px;
 }
 
 .exp-protocol-spread__materials summary {
-  padding: 11px 12px;
-  border: 1px solid var(--route-line-strong, #aac7cc);
-  border-radius: 4px;
-  background: #fff;
-  color: var(--route-heading-ink, #173f52);
-  font: 600 12px/1.3 var(--font-body);
+  width: fit-content;
+  padding: 8px 14px;
+  border: 1px solid #aac7cc;
+  border-radius: 6px;
+  background: #f0f7f6;
+  color: #173f52;
+  font: 600 12px/1.2 var(--font-body, sans-serif);
   cursor: pointer;
 }
 
 .exp-protocol-spread__materials[open] summary {
-  margin-bottom: 8px;
-  background: #e7f2f0;
+  margin-bottom: 12px;
 }
 
-@media (max-width: 760px) {
-  .wiki-page.wiki-page--wet-lab .wiki-feature:has(> .exp-atlas) {
-    --exp-atlas-bleed: 20px;
+@media (max-width: 860px) {
+  .wiki-protocol-modal__surface {
+    width: 98vw;
+    height: 94vh;
   }
-
-  .wiki-page.wiki-page--route:has(.exp-atlas) .wiki-outline {
-    height: 100%;
-    max-height: 100%;
-    overflow-y: auto;
-  }
-
-  .exp-atlas__header {
-    align-items: start;
-  }
-
-  .exp-atlas__count {
-    display: none;
-  }
-
-  .exp-atlas__book {
-    display: flex;
-    height: clamp(440px, 115vw, 600px);
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    scrollbar-width: thin;
-  }
-
-  .exp-atlas__edge-nav {
-    top: 76%;
-    width: 52px;
-    height: 120px;
-  }
-
-  .exp-atlas__edge-nav button {
-    opacity: 1;
-    transform: none;
-  }
-
-  .exp-atlas__page {
-    flex: 0 0 min(84vw, 420px);
-    scroll-snap-align: start;
-  }
-
-  .exp-atlas__selection {
-    height: 160px;
-  }
-
-  .exp-atlas__footer {
-    align-items: stretch;
+  .wiki-protocol-modal__header {
+    align-items: flex-start;
     flex-direction: column;
   }
-
-  .exp-atlas__jump {
-    justify-content: center;
+  .wiki-protocol-modal__header-actions {
+    width: 100%;
   }
-
-  .exp-atlas__viewer-header {
-    align-items: start;
+  .wiki-protocol-modal__size-toggle {
+    margin-left: 0;
   }
+}
 
-  .exp-atlas__viewer-scroll {
-    padding: 8px;
+@media (max-width: 560px) {
+  .exp-atlas__map {
+    padding-inline: 10px;
   }
-
-  .exp-protocol-spread__images,
-  .exp-protocol-spread__images:has(.exp-protocol-spread__materials[open]) {
-    grid-template-columns: minmax(0, 1fr);
+  .wiki-protocol-modal {
+    padding: 0;
   }
-
-  .exp-protocol-spread__heading {
-    padding-right: 0;
+  .wiki-protocol-modal__surface {
+    width: 100vw;
+    height: 100vh;
+    border-radius: 0;
   }
-
-  .exp-protocol-spread__materials:not([open]) {
-    position: static;
-    margin-top: 8px;
+  .wiki-protocol-modal__header,
+  .wiki-protocol-modal__tabs {
+    padding-inline: 14px;
   }
+  .wiki-protocol-modal__stage {
+    padding: 12px 48px 24px;
+  }
+  .wiki-protocol-modal__edge {
+    width: 34px;
+    height: 54px;
+  }
+  .wiki-protocol-modal__edge--left {
+    left: 7px;
+  }
+  .wiki-protocol-modal__edge--right {
+    right: 7px;
+  }
+}
 
-  .exp-protocol-spread__materials summary {
-    width: fit-content;
+@media (prefers-reduced-motion: reduce) {
+  .exp-atlas__node-dot {
+    transition: none;
   }
 }

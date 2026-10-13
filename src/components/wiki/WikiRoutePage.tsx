@@ -1152,8 +1152,8 @@ export function WikiRoutePage({
       ...wikiPageImages(content),
       ...(preloadImages ?? []),
       ...(protocolPairs ?? []).flatMap((pair) => [
-        experimentProtocolImage(pair.flowPage),
-        experimentProtocolImage(pair.inventoryPage),
+        ...(typeof pair.flowPage === "number" ? [experimentProtocolImage(pair.flowPage)] : []),
+        ...(typeof pair.inventoryPage === "number" ? [experimentProtocolImage(pair.inventoryPage)] : []),
       ]),
     ],
     [content, heroImage, preloadImages, protocolPairs],

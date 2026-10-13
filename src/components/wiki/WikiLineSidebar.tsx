@@ -504,7 +504,7 @@ export function WikiLineSidebar({
                         data-outline-target={child.id}
                         onClick={(event) => jumpToSection(event, child.id)}
                         onMouseEnter={(event) => {
-                          if (!childPair) return;
+                          if (!childPair || !childPair.hasFigure) return;
                           if (hoverTimeoutRef.current) window.clearTimeout(hoverTimeoutRef.current);
                           const target = event.currentTarget;
                           hoverTimeoutRef.current = window.setTimeout(() => {
@@ -528,7 +528,7 @@ export function WikiLineSidebar({
                           {childIndex}
                         </span>
                         <strong>{childLabel}</strong>
-                        {childPair ? (
+                        {childPair && childPair.hasFigure ? (
                           <button
                             type="button"
                             className="wiki-outline__protocol-icon"

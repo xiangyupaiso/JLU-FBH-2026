@@ -12,6 +12,7 @@ import {
   type ReactNode,
 } from "react";
 import { createPortal } from "react-dom";
+import { scrollReaderToTarget } from "../../../utils";
 import "../../../styles/games-page.css";
 const bombCatArt = "https://static.igem.wiki/teams/6056/wiki/files/pages/games/bomb-cat/cover-9a800b8be673.webp";
 const breastGuardianArt = "https://static.igem.wiki/teams/6056/wiki/files/pages/shared/breast-guardian-showcase-86cd548b1ac0.webp";
@@ -37,37 +38,37 @@ const BombCatGame = lazy(() => import("../../BombCatGame"));
 const BioMemoryGame = lazy(() => import("../../BioMemoryGame"));
 const VirtualLaboratory = lazy(() => import("../../VirtualLaboratory"));
 
-type GameKey = "breast-guardian" | "bomb-cat" | "bio-memory" | "virtual-lab";
+type GameKey = "virtual-lab" | "breast-guardian" | "bomb-cat" | "bio-memory";
 
 const GAME_META: Record<GameKey, { station: string; title: string }> = {
+  "virtual-lab": {
+    station: "Project 01 · Virtual Laboratory",
+    title: "Virtual Laboratory",
+  },
   "breast-guardian": {
-    station: "Project 01 · Interactive Story",
+    station: "Project 02 · Interactive Story",
     title: "Breast Guardian RPG",
   },
   "bomb-cat": {
-    station: "Project 02 · Strategy Card Game",
+    station: "Project 03 · Strategy Card Game",
     title: "Bomb Cat",
   },
   "bio-memory": {
-    station: "Project 03 · Specimen Match",
+    station: "Project 04 · Specimen Match",
     title: "Bio Memory Match",
-  },
-  "virtual-lab": {
-    station: "Project 04 · Virtual Laboratory",
-    title: "Virtual Laboratory",
   },
 };
 
 const SECTION_ID: Record<GameKey, string> = {
+  "virtual-lab": "game-virtual-lab",
   "breast-guardian": "game-breast-guardian",
   "bomb-cat": "game-bomb-cat",
   "bio-memory": "game-bio-memory",
-  "virtual-lab": "game-virtual-lab",
 };
 
 interface GamesContextValue {
   openGame: (game: GameKey, trigger: HTMLElement | null) => void;
-  scrollToShowcase: (game: GameKey) => void;
+  scrollToShowcase: (game: GameKey, triggerEl?: Element | null) => void;
 }
 
 const GamesContext = createContext<GamesContextValue | null>(null);
@@ -187,13 +188,26 @@ export function GamesProvider({ children }: { children: ReactNode }) {
     );
   }, []);
 
-  const scrollToShowcase = useCallback((game: GameKey) => {
-    const target = document.getElementById(SECTION_ID[game]);
-    target?.scrollIntoView({
-      behavior: "instant",
-      block: "start",
-    });
-  }, []);
+  const scrollToShowcase = useCallback(
+    (game: GameKey, triggerEl?: Element | null) => {
+      const targetId = SECTION_ID[game];
+      const target = document.getElementById(targetId);
+      if (!target) return;
+      const inner =
+        target.closest<HTMLElement>(".route-frame__scroll") ??
+        (triggerEl as HTMLElement)?.closest<HTMLElement>(".route-frame__scroll");
+      const reduceMotion = window.matchMedia(
+        "(prefers-reduced-motion: reduce)",
+      ).matches;
+      scrollReaderToTarget(
+        target,
+        inner,
+        reduceMotion ? "instant" : "smooth",
+        { block: "start" },
+      );
+    },
+    [],
+  );
 
   const value = useMemo(
     () => ({ openGame, scrollToShowcase }),
@@ -219,10 +233,25 @@ export function GamesStationMap() {
       <div className="games-project-map__stage">
         <span className="games-project-map__ribbon" aria-hidden="true" />
         <ol className="games-project-map__stations">
+          <li id="virtual-laboratory" className="is-available">
+            <button
+              type="button"
+              onClick={(e) => scrollToShowcase("virtual-lab", e.currentTarget)}
+              aria-controls="game-virtual-lab"
+            >
+              <span className="games-project-map__node" aria-hidden="true">
+                <svg className="ribbon-mark" viewBox="0 0 32 46">
+                  <use href="#circure-ribbon-knot" />
+                </svg>
+              </span>
+              <strong id="virtual-lab-title">Virtual Laboratory</strong>
+            </button>
+          </li>
+
           <li id="breast-guardian-rpg" className="is-available">
             <button
               type="button"
-              onClick={() => scrollToShowcase("breast-guardian")}
+              onClick={(e) => scrollToShowcase("breast-guardian", e.currentTarget)}
               aria-controls="game-breast-guardian"
             >
               <span className="games-project-map__node" aria-hidden="true">
@@ -237,7 +266,7 @@ export function GamesStationMap() {
           <li id="exploding-cat-card-game" className="is-available">
             <button
               type="button"
-              onClick={() => scrollToShowcase("bomb-cat")}
+              onClick={(e) => scrollToShowcase("bomb-cat", e.currentTarget)}
               aria-controls="game-bomb-cat"
             >
               <span className="games-project-map__node" aria-hidden="true">
@@ -252,7 +281,7 @@ export function GamesStationMap() {
           <li id="bio-memory-match" className="is-available">
             <button
               type="button"
-              onClick={() => scrollToShowcase("bio-memory")}
+              onClick={(e) => scrollToShowcase("bio-memory", e.currentTarget)}
               aria-controls="game-bio-memory"
             >
               <span className="games-project-map__node" aria-hidden="true">
@@ -261,21 +290,6 @@ export function GamesStationMap() {
                 </svg>
               </span>
               <strong>Bio Memory Match</strong>
-            </button>
-          </li>
-
-          <li id="virtual-laboratory" className="is-available">
-            <button
-              type="button"
-              onClick={() => scrollToShowcase("virtual-lab")}
-              aria-controls="game-virtual-lab"
-            >
-              <span className="games-project-map__node" aria-hidden="true">
-                <svg className="ribbon-mark" viewBox="0 0 32 46">
-                  <use href="#circure-ribbon-knot" />
-                </svg>
-              </span>
-              <strong id="virtual-lab-title">Virtual Laboratory</strong>
             </button>
           </li>
         </ol>
@@ -306,33 +320,33 @@ interface GameLaunchConfig {
 }
 
 const GAME_LAUNCH_CONFIG: Record<GameKey, GameLaunchConfig> = {
-  "breast-guardian": {
+  "virtual-lab": {
     station: "Project 01",
+    badge: "Virtual Lab · 9 Protocols",
+    title: "Virtual Laboratory",
+    subtitle: "Molecular biology workbench",
+    coverImage: virtualLabArt,
+  },
+  "breast-guardian": {
+    station: "Project 02",
     badge: "Story RPG · 3 Chapters",
     title: "Breast Guardian RPG",
     subtitle: "Interactive breast health journey",
     coverImage: breastGuardianArt,
   },
   "bomb-cat": {
-    station: "Project 02",
+    station: "Project 03",
     badge: "Card Strategy · 2–4 Players",
     title: "circRNA Bomb Cat",
     subtitle: "TNBC immune defense & outbreak defusal",
     coverImage: bombCatArt,
   },
   "bio-memory": {
-    station: "Project 03",
+    station: "Project 04",
     badge: "Specimen Match · 18 Pairs",
     title: "Bio Memory Match",
     subtitle: "Biology specimen field guide",
     coverImage: bioMemoryArt,
-  },
-  "virtual-lab": {
-    station: "Project 04",
-    badge: "Virtual Lab · 9 Protocols",
-    title: "Virtual Laboratory",
-    subtitle: "Molecular biology workbench",
-    coverImage: virtualLabArt,
   },
 };
 

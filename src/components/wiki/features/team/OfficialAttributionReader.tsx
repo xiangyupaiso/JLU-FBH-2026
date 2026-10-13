@@ -65,7 +65,7 @@ export function OfficialAttributionReader() {
   const heroStyle = {
     "--route-hero-image": `url(${heroImage})`,
   } as CSSProperties;
-  const bookmarks = getAttributionBookmarks(formWidth);
+  const bookmarks = getAttributionBookmarks(formWidth, reportedHeight);
   const formStyle = {
     "--attribution-form-height": `${reportedHeight ?? bookmarks.contentHeight + 100}px`,
   } as CSSProperties;
