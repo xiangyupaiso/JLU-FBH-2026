@@ -1,9 +1,4 @@
 import { WikiRoutePage } from "../components/wiki/WikiRoutePage";
-import {
-  ConsentMatrix,
-  DecisionProofTable,
-  DialogueLoop,
-} from "../components/wiki/features/EngagementFeatures";
 import { getEngagementHeroImage } from "../components/wiki/engagementHeroAssets";
 import { educationPage } from "../data/engagement/educationPage";
 
@@ -15,11 +10,8 @@ export function Education() {
       theme="engagement"
       pageClassName="wiki-page--engagement"
       hideHeroCopy
-      features={{
-        "education-design": <DialogueLoop />,
-        "education-activities": <DecisionProofTable />,
-        "education-evaluation": <ConsentMatrix />,
-      }}
+      outlineDepth={2}
+      deferContentImages
     />
   );
 }
