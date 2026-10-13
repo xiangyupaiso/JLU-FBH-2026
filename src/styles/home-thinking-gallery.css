@@ -17,6 +17,10 @@
   opacity: 0 !important;
 }
 
+.is-thinking-gallery-target .home-molecule-gallery__title {
+  opacity: var(--thinking-title-opacity, 0) !important;
+}
+
 .is-thinking-gallery-source .story-clinical-backdrop,
 .is-thinking-gallery-source
   #a-new-direction
@@ -27,6 +31,10 @@
 
 .is-thinking-gallery-source > .story-clinical-backdrop:first-child {
   opacity: 0 !important;
+}
+
+.is-thinking-gallery-source #a-new-direction [data-layer="4"] {
+  clip-path: inset(var(--thinking-magnifier-cutoff) 0 0 0);
 }
 
 .is-thinking-gallery-source #a-new-direction [data-layer="7"],

@@ -1,6 +1,6 @@
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { separateFanPaint } from "./createRnaRingMorph";
+import { getRnaRingGeometry, separateFanPaint } from "./createRnaRingMorph";
 import {
   createHomeScrubBoundaryGuard,
   isHomeMotionRefreshing,
@@ -13,8 +13,8 @@ const smooth = (value: number) => {
   return p * p * (3 - 2 * p);
 };
 
-/** Carry the original ring through a quiet reading column, then hand it to
- * the interactive construct. The column reserves its own space in the copy. */
+/** Carry the candidate figure's ring into the interactive construct, using
+ * the existing reading anchor only when that chapter is present. */
 export function animatePlatformAntigen(
   sequence: HTMLElement,
   source: HTMLImageElement,
@@ -28,6 +28,7 @@ export function animatePlatformAntigen(
   const anchor = sequence.querySelector<HTMLElement>(
     ".story-rna-reading-anchor",
   );
+  const hasReading = Boolean(reading && anchor);
   const antigen = root?.querySelector<HTMLElement>("#plug-and-play");
   const target = antigen?.querySelector<HTMLElement>("[data-antigen-ring]");
   const targetSvg = target?.querySelector("svg");
@@ -39,8 +40,6 @@ export function animatePlatformAntigen(
   );
   if (
     !root ||
-    !reading ||
-    !anchor ||
     !antigen ||
     !target ||
     !targetSvg ||
@@ -51,7 +50,7 @@ export function animatePlatformAntigen(
   }
 
   const ghost = document.createElement("div");
-  ghost.className = "story-rna-reading-ring";
+  ghost.className = "story-rna-antigen-carry";
   ghost.style.transformOrigin = "0 0";
   ghost.setAttribute("aria-hidden", "true");
   const paint = document.createElement("canvas");
@@ -68,8 +67,8 @@ export function animatePlatformAntigen(
   });
   const identifiers = new Map<string, string>();
   incoming.querySelectorAll<SVGElement>("[id]").forEach((element) => {
-    identifiers.set(element.id, `${element.id}-reading`);
-    element.id = `${element.id}-reading`;
+    identifiers.set(element.id, `${element.id}-carry`);
+    element.id = `${element.id}-carry`;
   });
   const localReferences = (value: string) => {
     for (const [id, replacement] of identifiers) {
@@ -155,7 +154,7 @@ export function animatePlatformAntigen(
       target.closest<HTMLElement>(".home-antigen-switch")?.dataset
         .mechanismExpanded === "true";
     // The expanded mechanism owns the ring only after its chapter begins.
-    // Keep the reading copy visible when scrolling back into this bridge.
+    // Restore the carry when scrolling back into this bridge.
     if (
       !active ||
       !usePaintedRing ||
@@ -171,21 +170,33 @@ export function animatePlatformAntigen(
     source.style.visibility = "hidden";
     target.style.visibility = "hidden";
     ghost.style.visibility = "visible";
-    const entering = scroll < settleEnd;
-    const leaving = scroll > departStart;
-    const p = entering
-      ? smooth((scroll - start) / Math.max(1, settleEnd - start))
-      : leaving
-        ? smooth((scroll - departStart) / Math.max(1, end - departStart))
-        : 0;
-    // Once departing, keep the reading endpoint fixed. The sticky anchor's
-    // release must not add an upward movement to the flight into the next scene.
-    const a = entering ? from : restingAt(leaving ? departStart : scroll);
-    const b = entering ? restingAt(scroll) : leaving ? to : a;
+    const entering = hasReading && scroll < settleEnd;
+    const leaving = !hasReading || scroll > departStart;
+    const p = hasReading
+      ? entering
+        ? smooth((scroll - start) / Math.max(1, settleEnd - start))
+        : leaving
+          ? smooth((scroll - departStart) / Math.max(1, end - departStart))
+          : 0
+      : smooth((scroll - start) / Math.max(1, end - start));
+    // A departing reading ring stays at its anchor until the direct flight
+    // takes over; sequences without reading use only their two endpoints.
+    const a = hasReading
+      ? entering
+        ? from
+        : restingAt(leaving ? departStart : scroll)
+      : from;
+    const b = hasReading
+      ? entering
+        ? restingAt(scroll)
+        : leaving
+          ? to
+          : a
+      : to;
     const size = gsap.utils.interpolate(a.size, b.size, p);
     const x = gsap.utils.interpolate(a.x, b.x, p);
     const y = gsap.utils.interpolate(a.y, b.y, p);
-    const pigment = entering ? smooth(p) : 1;
+    const pigment = !hasReading || entering ? smooth(p) : 1;
     const scale = size / baseSize;
     ghost.style.transform = `translate3d(${x - size / 2}px, ${y - size / 2}px, 0) scale(${scale})`;
     ghost.style.opacity = String(
@@ -227,10 +238,9 @@ export function animatePlatformAntigen(
     onUpdate: render,
     scrollTrigger: {
       id: "home-platform-antigen-carry",
-      // The reading chapter may insert a pin spacer. Measure this bridge after
-      // those triggers so its handoff still lands on the visible construct.
+      // Measure after the chapter triggers so the handoff lands on the construct.
       refreshPriority: -1,
-      trigger: reading,
+      trigger: reading && anchor ? reading : sequence,
       start: () => sourceTimeline.scrollTrigger?.end ?? 0,
       end: () => antigen.getBoundingClientRect().top + window.scrollY,
       scrub: compact ? 0.28 : 0.36,
@@ -245,16 +255,20 @@ export function animatePlatformAntigen(
         // taller mobile source stage leaves with its bottom at the viewport.
         const sourceBox = source.getBoundingClientRect();
         const sourceStageBox = sourceStage.getBoundingClientRect();
+        const sourceGeometry = getRnaRingGeometry(source);
         const targetBox = targetSvg.getBoundingClientRect();
-        const restBox = anchor.getBoundingClientRect();
         from = {
-          x: sourceBox.left + sourceBox.width * (306.009 / 611),
+          x:
+            sourceBox.left +
+            sourceBox.width * (sourceGeometry.centerX / sourceGeometry.width),
           y:
             sourceBox.top +
-            sourceBox.height * (757.002 / 833) -
+            sourceBox.height *
+              (sourceGeometry.centerY / sourceGeometry.height) -
             sourceStageBox.top +
             Math.min(0, window.innerHeight - sourceStageBox.height),
-          size: sourceBox.width * (605.599 / 611),
+          size:
+            sourceBox.width * (sourceGeometry.diameter / sourceGeometry.width),
         };
         to = {
           x: targetBox.left + targetBox.width / 2,
@@ -264,36 +278,38 @@ export function animatePlatformAntigen(
             targetStage.getBoundingClientRect().top,
           size: targetBox.width,
         };
-        rest = {
-          x: restBox.left + restBox.width / 2,
-          size: restBox.width,
-          top: Number.parseFloat(getComputedStyle(anchor).top) || 0,
-          naturalTop:
-            reading.getBoundingClientRect().top +
-            window.scrollY +
-            Number.parseFloat(getComputedStyle(reading).paddingTop),
-        };
+        if (reading && anchor) {
+          const restBox = anchor.getBoundingClientRect();
+          rest = {
+            x: restBox.left + restBox.width / 2,
+            size: restBox.width,
+            top: Number.parseFloat(getComputedStyle(anchor).top) || 0,
+            naturalTop:
+              reading.getBoundingClientRect().top +
+              window.scrollY +
+              Number.parseFloat(getComputedStyle(reading).paddingTop),
+          };
+          const distance = end - start;
+          settleEnd =
+            start + Math.min(distance * 0.32, window.innerHeight * 0.72);
+          departStart =
+            end - Math.min(distance * 0.28, window.innerHeight * 0.65);
+          const readingTrigger = ScrollTrigger.getById(
+            "home-our-platform-reading",
+          );
+          if (readingTrigger?.pin) {
+            departStart = Math.max(settleEnd, readingTrigger.end);
+          }
+          departStart = Math.min(departStart, end - 1);
+        }
         // Rasterize at the largest endpoint so mobile enlargement stays crisp.
-        baseSize = Math.max(from.size, rest.size, to.size);
+        baseSize = Math.max(from.size, to.size, hasReading ? rest.size : 0);
         ghost.style.width = ghost.style.height = `${baseSize}px`;
         targetFont = targetName
           ? Number.parseFloat(getComputedStyle(targetName).fontSize)
           : compact
             ? 22
             : 46;
-        const distance = end - start;
-        settleEnd =
-          start + Math.min(distance * 0.32, window.innerHeight * 0.72);
-        departStart =
-          end - Math.min(distance * 0.28, window.innerHeight * 0.65);
-        // Keep the ring with the pinned explanation until the page can leave.
-        const readingTrigger = ScrollTrigger.getById(
-          "home-our-platform-reading",
-        );
-        if (readingTrigger?.pin) {
-          departStart = Math.max(settleEnd, readingTrigger.end);
-        }
-        departStart = Math.min(departStart, end - 1);
         motion.progress = self.progress;
         sequence.dataset.antigenBridgeStart = String(start);
         sequence.dataset.antigenBridgeEnd = String(end);
@@ -316,16 +332,17 @@ export function animatePlatformAntigen(
       try {
         fan = separateFanPaint(source);
         if (!fan) return;
-        // The red ring extends below its plate. Preserve that crop when painting
-        // it into the same square coordinate system as the incoming construct.
+        // Preserve each plate's crop inside the incoming construct's square
+        // coordinate system, including the original fan ring's lower edge.
         const unit = paint.width;
+        const sourceGeometry = getRnaRingGeometry(source);
         for (const texture of [fan.ring, fan.lettering]) {
           context.drawImage(
             texture,
-            (0.5 - 306.009 / 605.599) * unit,
-            (0.5 - 757.002 / 605.599) * unit,
-            (611 / 605.599) * unit,
-            (833 / 605.599) * unit,
+            (0.5 - sourceGeometry.centerX / sourceGeometry.diameter) * unit,
+            (0.5 - sourceGeometry.centerY / sourceGeometry.diameter) * unit,
+            (sourceGeometry.width / sourceGeometry.diameter) * unit,
+            (sourceGeometry.height / sourceGeometry.diameter) * unit,
           );
         }
         render();

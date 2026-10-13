@@ -21,22 +21,35 @@ export function HomeTnbcDiagram() {
     <figure
       className="tnbc-diagram"
       role="img"
-      aria-label="Conceptual cell illustration with three crossed-out marker symbols, representing the three negative test results in TNBC."
+      aria-label="Conceptual cell illustration with illustrative symbols labelled ER negative, PR negative and HER2 negative."
     >
-      {layers.map(({ name, src }) => (
-        <img
-          key={name}
-          src={src}
-          className="tnbc-diagram__layer"
-          data-tnbc-layer={name}
-          alt=""
-          aria-hidden="true"
-          width="1000"
-          height="1000"
-          decoding="async"
-          draggable={false}
-        />
-      ))}
+      <div className="tnbc-diagram__art">
+        {layers.map(({ name, src }) => (
+          <img
+            key={name}
+            src={src}
+            className="tnbc-diagram__layer"
+            data-tnbc-layer={name}
+            alt=""
+            aria-hidden="true"
+            width="1000"
+            height="1000"
+            decoding="async"
+            draggable={false}
+          />
+        ))}
+      </div>
+      <div className="story-receptors" aria-hidden="true">
+        <span>
+          ER <b>−</b>
+        </span>
+        <span>
+          PR <b>−</b>
+        </span>
+        <span>
+          HER2 <b>−</b>
+        </span>
+      </div>
     </figure>
   );
 }

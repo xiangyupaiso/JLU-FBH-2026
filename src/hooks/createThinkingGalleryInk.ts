@@ -40,10 +40,13 @@ type Particle = {
   radius: number;
 };
 
-export const THINKING_PUNCTUATION_CROPS = [
-  { left: 0.29, top: 0.145, width: 0.41, height: 0.455 },
-  { left: 0.37, top: 0.13, width: 0.27, height: 0.5 },
-];
+// The upper-right magnifier in thinking-4.webp, clear of the medical tools below.
+export const THINKING_MAGNIFIER_CROP = {
+  left: 485 / 692,
+  top: 0,
+  width: 207 / 692,
+  height: 216 / 778,
+};
 
 // Breakpoint rebuilds can sample these immediately without an empty ink pass.
 // Only decoded images are shared; each renderer owns its mutable source masks.
@@ -79,10 +82,10 @@ function randomGenerator() {
   };
 }
 
-function departureAt(x: number, y: number, source: number) {
-  const grain = Math.sin(x * 179.3 + y * 281.9 + source * 47.1) * 43758.5453;
+function departureAt(x: number, y: number) {
+  const grain = Math.sin(x * 179.3 + y * 281.9) * 43758.5453;
   const noise = grain - Math.floor(grain);
-  const sweep = source === 0 ? 1 - y : y;
+  const sweep = 1 - y;
   return 0.34 + (sweep * 0.68 + noise * 0.32) * 0.1;
 }
 
@@ -98,11 +101,8 @@ function takePoint(points: InkPoint[], value: number) {
   return points[left];
 }
 
-function sampleSource(
-  image: HTMLImageElement,
-  index: number,
-): SourceInk | null {
-  const crop = THINKING_PUNCTUATION_CROPS[index];
+function sampleSource(image: HTMLImageElement): SourceInk | null {
+  const crop = THINKING_MAGNIFIER_CROP;
   const canvas = document.createElement("canvas");
   canvas.width = Math.ceil(image.naturalWidth * crop.width);
   canvas.height = Math.ceil(image.naturalHeight * crop.height);
@@ -131,19 +131,16 @@ function sampleSource(
       const r = pixels.data[offset];
       const g = pixels.data[offset + 1];
       const b = pixels.data[offset + 2];
-      // Hue and luminance remove the white cloud without a rectangular crop.
-      const ink =
-        index === 0
-          ? smooth(12, 27, b - r) *
-            smooth(3, 13, b - g) *
-            (1 - smooth(176, 207, r))
-          : smooth(19, 38, r - b) * smooth(12, 30, r - g);
-      const opacity = Math.round(pixels.data[offset + 3] * ink);
+      // Keep both the pink frame and the pale blue glass of the original art.
+      const opacity = pixels.data[offset + 3];
       pixels.data[offset + 3] = opacity;
       alpha[pixel] = opacity;
       const nx = crop.left + ((x + 0.5) / canvas.width) * crop.width;
       const ny = crop.top + ((y + 0.5) / canvas.height) * crop.height;
-      departure[pixel] = departureAt(nx, ny, index);
+      departure[pixel] = departureAt(
+        (nx - crop.left) / crop.width,
+        (ny - crop.top) / crop.height,
+      );
       if (opacity < 20) continue;
       weight += opacity;
       points.push({ x: nx, y: ny, r, g, b, alpha: opacity / 255, weight });
@@ -156,20 +153,19 @@ function sampleSource(
 
 function sampleTarget(
   image: HTMLImageElement,
-  index: number,
   compact: boolean,
 ) {
   const canvas = document.createElement("canvas");
   canvas.width = compact ? 128 : 160;
-  canvas.height = canvas.width * 2.25;
+  canvas.height = Math.round(canvas.width * (1186 / 574));
   const context = canvas.getContext("2d", { willReadFrequently: true });
   if (!context) return [];
-  const regionWidth = image.naturalWidth / 4;
+  // Each candidate now has its own complete painting rather than a sheet crop.
   context.drawImage(
     image,
-    regionWidth * index,
     0,
-    regionWidth,
+    0,
+    image.naturalWidth,
     image.naturalHeight,
     0,
     0,
@@ -200,7 +196,7 @@ function sampleTarget(
 }
 
 export function createThinkingGalleryInk(
-  sources: HTMLImageElement[],
+  source: HTMLImageElement,
   cards: HTMLElement[],
   compact: boolean,
   onReady: () => void,
@@ -250,39 +246,32 @@ export function createThinkingGalleryInk(
 
   const prepare = async () => {
     try {
-      if (!context || sources.length < 2 || cards.length < 4) return;
-      const sourceImages = sources
-        .slice(0, 2)
-        .map((source) => source.currentSrc || source.src);
-      const targetImages = cards.slice(0, 4).map((card, index) => {
+      if (!context || cards.length < 4) return;
+      const sourceImage = source.currentSrc || source.src;
+      const targetImages = cards.slice(0, 4).map((card) => {
         const symbol = card.querySelector<SVGImageElement>(
-          index === 2 ? "[data-gallery-ring] image" : "[data-gallery-symbols]",
+          "[data-gallery-ink]",
         );
         return symbol?.getAttribute("href") || "";
       });
-      const hrefs = [...sourceImages, ...targetImages];
+      const hrefs = [sourceImage, ...targetImages];
       const cached = hrefs.map((href) => decodedImages.get(href) || null);
       // The cached branch deliberately reaches ready before this factory returns.
       const images = cached.every((image) => image !== null)
         ? cached
         : await Promise.all(hrefs.map(load));
       if (disposed || images.some((image) => !image)) return;
-      const sampledSources = images
-        .slice(0, 2)
-        .map((image, index) => sampleSource(image!, index));
+      const sampledSource = sampleSource(images[0]!);
       const sampledTargets = images
-        .slice(2)
-        .map((image, index) => sampleTarget(image!, index, compact));
-      if (
-        sampledSources.some((source) => !source) ||
-        sampledTargets.some((target) => target.length < 24)
-      )
+        .slice(1)
+        .map((image) => sampleTarget(image!, compact));
+      if (!sampledSource || sampledTargets.some((target) => target.length < 24))
         return;
-      sourceInk = sampledSources as SourceInk[];
+      sourceInk = [sampledSource];
       const random = randomGenerator();
       particles = Array.from({ length: compact ? 1000 : 2000 }, (_, index) => {
-        const source = index % 2;
-        const target = Math.floor(index / 2) % 4;
+        const source = 0;
+        const target = index % 4;
         const from = takePoint(sourceInk[source].points, random());
         const to = takePoint(sampledTargets[target], random());
         const angle = random() * Math.PI * 2;
@@ -292,7 +281,12 @@ export function createThinkingGalleryInk(
           target,
           from,
           to,
-          departure: departureAt(from.x, from.y, source),
+          departure: departureAt(
+            (from.x - THINKING_MAGNIFIER_CROP.left) /
+              THINKING_MAGNIFIER_CROP.width,
+            (from.y - THINKING_MAGNIFIER_CROP.top) /
+              THINKING_MAGNIFIER_CROP.height,
+          ),
           // Gaussian density gives the ink a full body and a sparse, soft tail.
           driftX: Math.cos(angle) * radial * 0.62,
           driftY: Math.sin(angle) * radial * 0.25,
@@ -324,9 +318,9 @@ export function createThinkingGalleryInk(
     if (disposed || !context) return false;
     const valid =
       ready &&
-      sourceBounds.length >= 2 &&
+      sourceBounds.length >= 1 &&
       targetBounds.length >= 4 &&
-      [...sourceBounds.slice(0, 2), ...targetBounds.slice(0, 4)].every(
+      [...sourceBounds.slice(0, 1), ...targetBounds.slice(0, 4)].every(
         (bounds) => bounds.width > 0 && bounds.height > 0,
       );
     if (!active || !valid) {
@@ -354,7 +348,9 @@ export function createThinkingGalleryInk(
     canvas.style.display = "block";
     context.clearRect(0, 0, width, height);
     const p = clamp(progress);
-    const enter = smooth(0, 0.08, p);
+    // Desktop hands over the existing mark at full opacity, while phones
+    // introduce the hidden artwork gradually as the reading panels fade.
+    const enter = compact ? smooth(0, 0.18, p) : 1;
     if (enter <= 0 || p >= 1) return true;
 
     // The filtered raster erodes with the same departure field as its grains.
@@ -398,8 +394,7 @@ export function createThinkingGalleryInk(
       const inward =
         smooth(0.38, 0.62, p) * (compact ? 1 : 0.28) * (1 - gather);
       const floatingX = mix(sourceX, width * 0.5, inward);
-      const direction = particle.source === 0 ? 1 : -1;
-      const turn = direction * (0.12 + unfurl * 0.62);
+      const turn = 0.12 + unfurl * 0.62;
       const flowX =
         particle.driftX * Math.cos(turn) - particle.driftY * Math.sin(turn);
       const flowY =
@@ -407,7 +402,7 @@ export function createThinkingGalleryInk(
         particle.driftY * Math.cos(turn) -
         0.18 -
         Math.sin(flowX * 2.2 + unfurl * 1.4) * 0.22;
-      // The two plumes curl towards each other; every offset vanishes at landing.
+      // The magnifier opens into a plume; every offset vanishes at landing.
       const offsetX = softOffset(
         flowX * spread * drift,
         floatingX - 12,
@@ -439,7 +434,10 @@ export function createThinkingGalleryInk(
         handoff *
         mix(particle.from.alpha, particle.to.alpha, gather) *
         mix(1, particle.softness, drift);
-      const scale = Math.max(0.7, Math.min(1.8, from.width / 208));
+      const scale = Math.max(
+        0.7,
+        Math.min(1.8, (from.width * THINKING_MAGNIFIER_CROP.width) / 112),
+      );
       const radius =
         particle.radius *
         mix(scale, compact ? 1 : 1.25, gather) *

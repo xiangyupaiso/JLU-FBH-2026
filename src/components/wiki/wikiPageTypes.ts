@@ -74,13 +74,19 @@ export interface WikiReferenceEntry {
  */
 export type WikiContentBlock =
   | { type: "prose"; paragraphs: string[] }
-  | { type: "code"; language?: string; code: string }
+  | { type: "code"; language?: string; code: string; label?: string }
   | {
       type: "figure";
       src: string;
       alt: string;
       caption?: string;
       /** Manuscript-provided figure label, including subfigure suffixes such as 4A. */
+      figureLabel?: string;
+    }
+  | {
+      type: "carousel";
+      images: Array<{ src: string; alt?: string }>;
+      caption?: string;
       figureLabel?: string;
     }
   | {

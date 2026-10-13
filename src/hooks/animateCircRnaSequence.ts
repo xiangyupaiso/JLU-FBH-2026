@@ -144,21 +144,21 @@ export function animateCircRnaSequence(
   const notes = ["mechanism", "design", "structure", "beyond"].map((key) =>
     platform.querySelector<HTMLElement>(`[data-platform-note="${key}"]`)!,
   );
-  // Establish the complete original painting before guiding attention through
-  // its four regions. Whole notes stay horizontal and keep their fixed layout.
-  timeline.to(sectors, { opacity: 0.38, duration: 0.3 }, 2.4);
-  timeline.to(notes, { opacity: 0.4, duration: 0.3 }, 2.4);
+  gsap.set([...sectors, ...notes], { autoAlpha: 0 });
+  // Hide inactive regions completely; the base painting and carried ring
+  // stay in place while each advantage appears in its original position.
   sectors.forEach((sector, index) => {
     const at = 3 + index * 0.55;
     if (index > 0) {
-      timeline.to(sectors[index - 1], { opacity: 0.38, duration: 0.2 }, at);
-      timeline.to(notes[index - 1], { opacity: 0.4, duration: 0.2 }, at);
+      timeline.to(sectors[index - 1], { autoAlpha: 0, duration: 0.2 }, at);
+      timeline.to(notes[index - 1], { autoAlpha: 0, duration: 0.2 }, at);
     }
-    timeline.to(sector, { opacity: 1, duration: 0.2 }, at);
-    timeline.to(notes[index], { opacity: 1, duration: 0.2 }, at);
+    timeline.to(sector, { autoAlpha: 1, duration: 0.2 }, at);
+    timeline.to(notes[index], { autoAlpha: 1, duration: 0.2 }, at);
   });
   // Restore the complete research figure and leave a stable reading frame.
-  timeline.to([...sectors, ...notes], { opacity: 1, duration: 0.3 }, FIGURE_END - 0.3);
+  timeline.to([...sectors, ...notes], { autoAlpha: 1, duration: 0.3 }, FIGURE_END - 0.3);
+  timeline.addLabel("advantages-readable", FIGURE_END);
   timeline.to({}, { duration: figureRest }, FIGURE_END);
   cleanups.push(
     animatePlatformAntigen(sequence, targetRing, timeline, compact),

@@ -15,6 +15,9 @@
   opacity: 1;
   transform: none;
 }
+.wiki-page--engineering .wiki-figure figcaption::before {
+  display: none !important;
+}
 .wiki-page--engineering .eng-introduction,
 .wiki-page--engineering .eng-outcome {
   width: min(1040px, calc(100% - 64px));
@@ -735,3 +738,214 @@
     transform: none;
   }
 }
+
+/* Academic Carousel */
+.wiki-page--engineering .eng-carousel {
+  margin: 28px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  outline: none;
+}
+.wiki-page--engineering .eng-carousel:focus-visible {
+  outline: 2px solid var(--route-heading-ink);
+  border-radius: 12px;
+}
+.wiki-page--engineering .eng-carousel__frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  max-height: 480px;
+  background: rgba(0, 0, 0, 0.04);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+}
+.wiki-page--engineering .eng-carousel__image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+.wiki-page--engineering .eng-carousel__arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--route-heading-ink);
+  cursor: pointer;
+  transition: all 160ms ease;
+  z-index: 2;
+}
+.wiki-page--engineering .eng-carousel__arrow:hover {
+  background: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  transform: translateY(-50%) scale(1.05);
+}
+.wiki-page--engineering .eng-carousel__arrow--prev {
+  left: 12px;
+}
+.wiki-page--engineering .eng-carousel__arrow--next {
+  right: 12px;
+}
+.wiki-page--engineering .eng-carousel__counter {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  background: rgba(0, 0, 0, 0.65);
+  color: #ffffff;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-family: var(--font-mono, monospace);
+  letter-spacing: 0.5px;
+  backdrop-filter: blur(4px);
+  z-index: 2;
+}
+.wiki-page--engineering .eng-carousel__dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  padding: 4px 0;
+  flex-wrap: wrap;
+}
+.wiki-page--engineering .eng-carousel__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--route-line) 80%, transparent);
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: all 160ms ease;
+}
+.wiki-page--engineering .eng-carousel__dot.is-active {
+  background: var(--route-heading-ink);
+  transform: scale(1.25);
+}
+.wiki-page--engineering .eng-carousel__caption {
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--route-muted);
+  text-align: center;
+  padding: 0 16px;
+}
+
+/* Collapsible Code Blocks */
+.wiki-page--engineering .eng-code-fold {
+  margin: 20px 0;
+  border-radius: 10px;
+  border: 1px solid var(--route-line);
+  background: color-mix(in srgb, var(--route-paper) 60%, transparent);
+  overflow: hidden;
+  transition: background-color 160ms ease;
+}
+.wiki-page--engineering .eng-code-fold[open] {
+  background: var(--route-paper);
+}
+.wiki-page--engineering .eng-code-fold__summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 16px;
+  cursor: pointer;
+  list-style: none;
+  user-select: none;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--route-heading-ink);
+  background: color-mix(in srgb, var(--route-line) 20%, transparent);
+}
+.wiki-page--engineering .eng-code-fold__summary::-webkit-details-marker {
+  display: none;
+}
+.wiki-page--engineering .eng-code-fold__summary:hover {
+  background: color-mix(in srgb, var(--route-line) 35%, transparent);
+}
+.wiki-page--engineering .eng-code-fold__label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.wiki-page--engineering .eng-code-fold__badge {
+  font-size: 11px;
+  text-transform: uppercase;
+  padding: 2px 6px;
+  border-radius: 4px;
+  background: var(--route-marker-bg, rgba(0, 0, 0, 0.06));
+  color: var(--route-subheading-ink);
+  font-family: var(--font-mono, monospace);
+}
+.wiki-page--engineering .eng-code-fold__icon {
+  width: 16px;
+  height: 16px;
+  transition: transform 180ms ease;
+}
+.wiki-page--engineering .eng-code-fold[open] .eng-code-fold__icon {
+  transform: rotate(180deg);
+}
+.wiki-page--engineering .eng-code-fold__pre {
+  margin: 0;
+  padding: 14px 16px;
+  overflow-x: auto;
+  font-family: var(--font-mono, monospace);
+  font-size: 13px;
+  line-height: 1.55;
+  background: #f8fafc;
+  color: #1e293b;
+  border-top: 1px solid var(--route-line);
+}
+
+/* Stage Notes */
+.wiki-page--engineering .eng-stage-note {
+  margin: 20px 0;
+  padding: 14px 18px;
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--route-paper) 80%, transparent);
+  border-left: 4px solid var(--route-heading-ink);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+}
+.wiki-page--engineering .eng-stage-note__label {
+  display: block;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--route-heading-ink);
+  margin-bottom: 6px;
+}
+.wiki-page--engineering .eng-stage-note__body {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--route-muted);
+}
+
+/* Engineering Outcome Final Section */
+.wiki-page--engineering .eng-outcome-final {
+  width: min(1040px, calc(100% - 64px));
+  margin: 48px auto;
+  padding: 48px 0;
+  border-top: 1px solid var(--route-line);
+}
+.wiki-page--engineering .eng-outcome-final__heading {
+  margin: 0 0 24px;
+}
+.wiki-page--engineering .eng-outcome-final h2 {
+  margin: 0;
+  color: var(--route-heading-ink);
+  font-family: var(--font-sans), sans-serif !important;
+  font-size: clamp(24px, 2.5vw, 30px);
+  font-weight: 700;
+  line-height: 1.35;
+}
+.wiki-page--engineering .eng-outcome-final__links {
+  margin-top: 24px;
+}
+

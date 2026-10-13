@@ -129,7 +129,7 @@
 
 /* The map and reading share one pink canvas; the figure anchors the explanation. */
 .home-story #why-tnbc .story-copy {
-  --tnbc-columns: minmax(300px, 0.9fr) minmax(0, 1.1fr);
+  --tnbc-columns: minmax(300px, 1fr) minmax(0, 1fr);
   --tnbc-gap: clamp(36px, 4.4vw, 68px);
   grid-template-columns: var(--tnbc-columns);
   column-gap: var(--tnbc-gap);
@@ -157,47 +157,58 @@
   column-gap: var(--tnbc-gap);
   width: 100%;
   line-height: 1.6;
+  align-items: center;
 }
-.home-story #why-tnbc .story-body > :not(.tnbc-diagram) {
-  grid-column: 2;
-  max-width: 58ch;
+.home-story #why-tnbc .tnbc-context,
+.home-story #why-tnbc .tnbc-explanation {
+  min-width: 0;
 }
-.home-story #why-tnbc .story-body > p {
+.home-story #why-tnbc .tnbc-context > p,
+.home-story #why-tnbc .tnbc-explanation > p {
+  text-align: left;
+  text-wrap: pretty;
   margin-bottom: 18px;
 }
+.home-story #why-tnbc .tnbc-context > p {
+  margin: 20px 0 0;
+}
 .home-story #why-tnbc .story-receptors {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 0;
-  margin: 6px 0 20px;
-  padding-top: 13px;
-  border-top: 1px solid rgba(162, 81, 114, 0.28);
+  position: absolute;
+  inset: 0;
+  display: block;
+  margin: 0;
+  padding: 0;
+  border: 0;
 }
 .home-story #why-tnbc .story-receptors > span {
-  justify-content: center;
-  font-size: clamp(27px, 2.5vw, 34px);
+  position: absolute;
+  left: 78%;
+  top: 12%;
+  gap: 6px;
+  white-space: nowrap;
+  font-size: clamp(21px, 1.8vw, 28px);
 }
-.home-story #why-tnbc .story-receptors > span:first-child {
-  justify-content: flex-start;
+.home-story #why-tnbc .story-receptors > span:nth-child(2) {
+  top: 47%;
 }
-.home-story #why-tnbc .story-receptors > span + span {
-  border-left: 1px solid rgba(162, 81, 114, 0.16);
+.home-story #why-tnbc .story-receptors > span:nth-child(3) {
+  top: 78%;
 }
 .home-story #why-tnbc .tnbc-diagram {
   position: relative;
-  grid-column: 1;
-  grid-row: 1 / span 6;
-  align-self: center;
-  justify-self: center;
-  width: min(100%, 420px);
-  aspect-ratio: 1;
+  width: min(100%, 500px);
+  aspect-ratio: 1.3158;
   margin: 0;
   isolation: isolate;
 }
+.tnbc-diagram__art {
+  position: absolute;
+  inset: 0 24% 0 0;
+}
 .home-story #why-tnbc .tnbc-patient-callback {
   margin-top: 4px;
-  padding-left: 17px;
-  border-left: 2px solid rgba(162, 81, 114, 0.46);
+  padding-left: 0;
+  border-left: 0;
 }
 .home-story #why-tnbc .story-source {
   justify-self: start;
@@ -265,22 +276,25 @@
   .home-story #why-tnbc .story-body {
     display: flex;
     flex-direction: column;
+    align-items: stretch;
+    gap: 24px;
   }
   .home-story #why-tnbc .tnbc-diagram {
-    order: -1;
-    align-self: center;
-    width: min(100%, 280px);
-    margin: 0 0 24px;
+    width: min(100%, 350px);
+    margin-inline: auto;
   }
-  .home-story #why-tnbc .story-receptors {
-    width: 100%;
+  .home-story #why-tnbc .story-receptors > span {
+    font-size: clamp(18px, 5vw, 23px);
   }
 }
 @media (max-width: 380px) {
   .home-story #why-tnbc .tnbc-diagram {
-    width: min(100%, 236px);
+    aspect-ratio: 1.3889;
+  }
+  .home-story #why-tnbc .tnbc-diagram__art {
+    right: 28%;
   }
   .home-story #why-tnbc .story-receptors > span {
-    font-size: 25px;
+    left: 74%;
   }
 }

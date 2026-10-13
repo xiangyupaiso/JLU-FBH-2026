@@ -120,9 +120,9 @@
   pointer-events: none;
   background: var(--spark-fill, #b8527a);
   filter: drop-shadow(0 0 3px var(--spark-glow, rgba(184, 82, 122, 0.5)));
-  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M8 0.5 C8 4.6 11.4 8 15.5 8 C11.4 8 8 11.4 8 15.5 C8 11.4 4.6 8 0.5 8 C4.6 8 8 4.6 8 0.5 Z' fill='%23000'/%3E%3Ccircle cx='8' cy='8' r='1.5' fill='%23000'/%3E%3Cpath d='M8 2v12M2 8h12' stroke='%23000' stroke-width='1' stroke-linecap='round'/%3E%3C/svg%3E")
+  -webkit-mask: url("https://static.igem.wiki/teams/6056/wiki/shared/cursor-sparkle-mask.avif")
     center / contain no-repeat;
-  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M8 0.5 C8 4.6 11.4 8 15.5 8 C11.4 8 8 11.4 8 15.5 C8 11.4 4.6 8 0.5 8 C4.6 8 8 4.6 8 0.5 Z' fill='%23000'/%3E%3Ccircle cx='8' cy='8' r='1.5' fill='%23000'/%3E%3Cpath d='M8 2v12M2 8h12' stroke='%23000' stroke-width='1' stroke-linecap='round'/%3E%3C/svg%3E")
+  mask: url("https://static.igem.wiki/teams/6056/wiki/shared/cursor-sparkle-mask.avif")
     center / contain no-repeat;
   will-change: transform, opacity;
 }
