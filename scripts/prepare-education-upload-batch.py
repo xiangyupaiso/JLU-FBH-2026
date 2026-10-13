@@ -64,19 +64,9 @@ def main() -> None:
             raise FileNotFoundError(source)
         if source.suffix.lower() == ".zip":
             raise ValueError(f"ZIP is excluded from this batch: {relative}")
-        if relative.startswith("galleries/"):
-            destination = Path("gallery-photos") / Path(relative).relative_to("galleries")
-        elif relative.startswith("pdf-previews/"):
-            destination = Path(relative)
-        elif source.suffix.lower() == ".html":
-            destination = Path("interactive-html") / source.name
-        elif source.suffix.lower() == ".pdf":
-            destination = Path("pdf") / source.name
-        elif source.suffix.lower() == ".pptx":
-            destination = Path("presentations") / source.name
-        else:
-            destination = Path("figures") / source.name
-        destination = Path(*(english_name(part) for part in destination.parts))
+        destination = Path(english_name(source.name))
+        if any(record["upload_path"] == destination.as_posix() for record in records):
+            raise ValueError(f"Duplicate flattened filename: {destination}")
         target = BATCH / destination
         target.parent.mkdir(parents=True, exist_ok=True)
         shutil.copy2(source, target)
@@ -96,6 +86,11 @@ def main() -> None:
             raise ValueError(f"Unsafe old batch path: {stale}")
         if target.is_file():
             target.unlink()
+    for directory in sorted((path for path in BATCH.rglob("*") if path.is_dir()), key=lambda path: len(path.parts), reverse=True):
+        try:
+            directory.rmdir()
+        except OSError:
+            pass
 
     with (BATCH / "upload-manifest.csv").open("w", encoding="utf-8-sig", newline="") as file:
         writer = csv.DictWriter(file, fieldnames=["upload_path", "source_path", "sha256", "bytes", "url"])
@@ -106,8 +101,8 @@ def main() -> None:
     )
     (BATCH / "README-upload-instructions.txt").write_text(
         "Education 页面上传批次（2026-10-13）\n"
-        "按子文件夹上传本目录中的资源文件；CSV/JSON 和本说明无需上传。\n"
-        "文件名及文件夹名已统一为英文。请在 upload-manifest.csv 的 url 列填写每个文件上传后获得的真实 URL，或提供等价的文件名—URL 对照。\n"
+        "全部资源文件已放在本目录同一层；CSV/JSON 和本说明无需上传。\n"
+        "资源文件名已统一为英文。请在 upload-manifest.csv 的 url 列填写每个文件上传后获得的真实 URL，或提供等价的文件名—URL 对照。\n"
         "收到 URL 后会逐一核对并替换网页源码中的本地路径。ZIP 文件已从页面和本批次移除。\n",
         encoding="utf-8",
     )
