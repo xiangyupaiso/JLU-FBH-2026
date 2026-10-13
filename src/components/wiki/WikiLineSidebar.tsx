@@ -30,10 +30,10 @@ export interface WikiLineSidebarItem {
 type WikiLineSidebarChild = NonNullable<WikiLineSidebarItem["children"]>[number];
 
 /**
- * Level-3 headings ("1.1.1") are listed only under the level-2 heading being
- * read, so long records stay short. `isTrail` marks that level-2 parent.
+ * By default, deeper headings are listed only under the level-2 heading being
+ * read, so long records stay short. Education opts into the full outline.
  */
-function outlineRows(children: WikiLineSidebarChild[], activeChildId: string) {
+function outlineRows(children: WikiLineSidebarChild[], activeChildId: string, showAllChildren = false) {
   const depthOf = (index: string) => index.split(".").length;
   const baseDepth = Math.min(...children.map((child) => depthOf(child.index)));
   let groupId = "";
@@ -45,7 +45,7 @@ function outlineRows(children: WikiLineSidebarChild[], activeChildId: string) {
   const activeGroupId =
     rows.find((row) => row.child.id === activeChildId)?.groupId ?? "";
   return rows
-    .filter((row) => !row.tertiary || row.groupId === activeGroupId)
+    .filter((row) => showAllChildren || !row.tertiary || row.groupId === activeGroupId)
     .map(({ child, tertiary }) => ({
       child,
       tertiary,
@@ -65,6 +65,7 @@ interface WikiLineSidebarProps {
   links?: WikiLineSidebarLink[];
   label?: string;
   minimal?: boolean;
+  showAllChildren?: boolean;
   scrollContainerRef?: RefObject<HTMLElement | null>;
   protocolPairs?: ExperimentProtocolPair[];
   onOpenProtocolModal?: (pair: ExperimentProtocolPair, initialTab?: "flow" | "inventory") => void;
@@ -86,6 +87,7 @@ export function WikiLineSidebar({
   links = [],
   label = "On this page",
   minimal = false,
+  showAllChildren = false,
   scrollContainerRef,
   protocolPairs,
   onOpenProtocolModal,
@@ -482,7 +484,7 @@ export function WikiLineSidebar({
                   className="wiki-outline__subnav"
                   aria-label={`${item.label} subsections`}
                 >
-                  {outlineRows(item.children, activeChildId).map(({ child, tertiary, isTrail }) => {
+                  {outlineRows(item.children, activeChildId, showAllChildren).map(({ child, tertiary, isTrail }) => {
                     const childPair = protocolMap.get(child.id);
                     const isActive = ribbonTargetId === child.id;
                     // Manuscript numbering can omit introductory sections.
@@ -495,7 +497,7 @@ export function WikiLineSidebar({
                       : child.label;
                     return (
                       <a
-                        className={`wiki-outline__secondary${
+                        className={`wiki-outline__secondary wiki-outline__secondary--depth-${Math.min(child.index.split(".").length, 4)}${
                           tertiary ? " is-tertiary" : ""
                         }${isActive ? " is-active" : ""}${
                           isTrail && !isActive ? " is-trail" : ""

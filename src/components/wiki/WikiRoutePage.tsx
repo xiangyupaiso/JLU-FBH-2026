@@ -136,6 +136,8 @@ interface WikiRoutePageProps {
    * scroll spy; the page can surface them elsewhere (e.g. a section rail).
    */
   outlineDepth?: number;
+  /** List every included heading under its chapter, even in long records. */
+  showAllOutlineHeadings?: boolean;
   /**
    * Replaces the default line sidebar with a page-specific navigation object.
    *
@@ -1146,6 +1148,7 @@ export function WikiRoutePage({
   protocolPairs,
   inlineRenderer,
   outlineDepth,
+  showAllOutlineHeadings = false,
   outlineSlot,
   leadSection,
 }: WikiRoutePageProps) {
@@ -1277,7 +1280,7 @@ export function WikiRoutePage({
       .map((block) => ({
         id: block.id,
         index: block.index,
-        label: block.title,
+        label: block.title.replace(/\*\*/g, ""),
         children: [] as WikiLineSidebarItem[],
       }));
     const subheadingByIndex = new Map(
@@ -1295,7 +1298,7 @@ export function WikiRoutePage({
         children: [] as WikiLineSidebarItem[],
       };
       subheadingById.set(child.id, child);
-      if (parent) {
+      if (parent && !showAllOutlineHeadings) {
         subheadingById.get(parent.id)?.children?.push(child);
       } else {
         nestedSubheadings.push(child);
@@ -1366,6 +1369,7 @@ export function WikiRoutePage({
               items={sidebarItems}
               links={content.links}
               minimal
+              showAllChildren={showAllOutlineHeadings}
               scrollContainerRef={scrollRef}
               protocolPairs={protocolPairs}
               onOpenProtocolModal={(pair, tab) =>

@@ -10,7 +10,8 @@ export function Education() {
       theme="engagement"
       pageClassName="wiki-page--engagement"
       hideHeroCopy
-      outlineDepth={2}
+      outlineDepth={4}
+      showAllOutlineHeadings
       deferContentImages
     />
   );
