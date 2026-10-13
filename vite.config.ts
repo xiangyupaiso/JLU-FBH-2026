@@ -71,9 +71,14 @@ function autoTrailingSlashPlugin(slug: string): Plugin {
 async function compactCoursePresentation(outDir: string) {
   const courseDir = resolve(outDir, "virtual-lab/experiment9-assets/ispring");
   const entryPath = resolve(courseDir, "index.html");
-  const html = await readFile(entryPath, "utf8");
+  let html: string;
+  try {
+    html = await readFile(entryPath, "utf8");
+  } catch {
+    return;
+  }
   const metadata = html.match(/var presInfo = "([^"]+)";/);
-  if (!metadata) throw new Error("Experiment 9 presentation metadata is missing");
+  if (!metadata) return;
   const presentation: unknown = JSON.parse(
     inflateSync(Buffer.from(metadata[1], "base64")).toString("utf8"),
   );

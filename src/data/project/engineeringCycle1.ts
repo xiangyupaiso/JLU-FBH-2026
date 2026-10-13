@@ -640,9 +640,35 @@ export const cycle1Section: WikiSection = {
 ]
         },
         {
-          type: "note",
-          label: "Table C1-03｜Four-dimensional antigen-evidence map",
-          body: "Table C1-03｜Four-dimensional antigen-evidence map｜四维抗原证据图谱"
+          type: "table",
+          caption: "Table C1-03｜Four-dimensional antigen-evidence map｜四维抗原证据图谱",
+          headers: ["Evidence dimension", "Question", "Primary source", "Decision produced"],
+          rows: [
+            [
+              "Protein abundance",
+              "Is each antigen supported by protein-level measurements in TNBC tissue?",
+              "Public TNBC quantitative-proteomics cohorts",
+              "Retain or reconsider each antigen source"
+            ],
+            [
+              "Malignant-cell enrichment",
+              "Is the corresponding expression signal enriched in malignant cells?",
+              "A public cell-resolved breast-cancer atlas",
+              "Establish tumour-cell relevance and cellular complementarity"
+            ],
+            [
+              "Patient representation",
+              "How broadly do individual antigens and their union represent TNBC cases?",
+              "Patient-level cancer-genomics records",
+              "Evaluate the patient-level value of retaining four antigen sources"
+            ],
+            [
+              "Clinical evidence",
+              "How do tissue, prognostic and translational studies support continued development?",
+              "Published TNBC histopathological and translational studies",
+              "Integrate quantitative results with clinical context"
+            ]
+          ]
         }
           ]
         }
@@ -857,8 +883,59 @@ export const cycle1Section: WikiSection = {
 ]
         },
         {
+          type: "table",
+          caption: "Table C1-04｜Malignant-cell enrichment and compartment-specific detection of candidate genes｜候选基因的恶性细胞富集与细胞区室检出率",
+          headers: [
+            "Gene",
+            "Antigen",
+            "Malignant vs non-malignant log₂ fold change",
+            "FDR",
+            "Malignant-cell detection",
+            "Immune-cell detection",
+            "CAF detection"
+          ],
+          rows: [
+            [
+              "TACSTD2",
+              "TROP2",
+              "4.074",
+              "8.37 × 10⁻⁵",
+              "70.40%",
+              "4.00%",
+              "5.40%"
+            ],
+            [
+              "SLC39A6",
+              "LIV-1",
+              "0.853",
+              "0.0196",
+              "39.40%",
+              "8.50%",
+              "20.70%"
+            ],
+            [
+              "NECTIN4",
+              "Nectin-4",
+              "4.755",
+              "3.70 × 10⁻⁶",
+              "37.80%",
+              "1.00%",
+              "0.60%"
+            ],
+            [
+              "VTCN1",
+              "B7-H4",
+              "5.393",
+              "2.52 × 10⁻⁵",
+              "19.80%",
+              "0.30%",
+              "0.40%"
+            ]
+          ]
+        },
+        {
           type: "note",
-          label: "Table C1-04｜Malignant-cell enrichment and compartment-specific detection of candidate genes",
+          label: "Table C1-04 note",
           body: "Log₂ fold changes and FDR values describe the patient-paired pseudobulk comparison between malignant and non-malignant compartments. Detection rates indicate the fraction of cells within each compartment with a raw UMI count greater than zero for the corresponding gene. CAF, cancer-associated fibroblast."
         },
         {

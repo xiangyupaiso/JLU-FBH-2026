@@ -2207,30 +2207,37 @@
 }
 
 .wiki-epigraph {
-  max-width: 720px;
-  margin: 44px 0 0 70px;
-  padding: 26px 0;
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
+  max-width: 64rem;
+  margin: 36px auto;
+  padding: 0 24px;
+  text-align: center;
+  border-top: none;
+  border-bottom: none;
 }
 .wiki-epigraph blockquote {
-  margin: 0;
-  font-family: var(--font-body);
-  font-size: 20px;
+  margin: 0 auto;
+  font-family: var(--font-display, var(--font-body));
+  font-size: 22px;
   line-height: 1.5;
   color: var(--brand-navy);
+  text-align: center;
 }
 .wiki-epigraph__zh {
-  margin: 12px 0 0;
+  margin: 12px auto 0;
   font-family: var(--font-body);
   font-size: 15px;
   color: var(--muted);
+  text-align: center;
 }
+.wiki-epigraph cite,
 .wiki-epigraph figcaption {
-  margin-top: 12px;
-  font-family: var(--font-body);
-  font-size: 14px;
-  color: var(--muted);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+  margin-top: 18px;
+  text-align: right;
+  font-style: normal;
 }
 
 /* Blocks path (sustainability): text fills the article column like the
@@ -2291,4 +2298,15 @@
     order: 2;
   }
 }
+
+.wiki-prose .wiki-prose-list {
+  margin: 0;
+  padding-inline-start: 1.4em;
+  color: inherit;
+  font: inherit;
+  line-height: 1.7;
+}
+.wiki-prose ul.wiki-prose-list { list-style: disc; }
+.wiki-prose ol.wiki-prose-list { list-style: decimal; }
+.wiki-prose .wiki-prose-list li + li { margin-top: 8px; }
 

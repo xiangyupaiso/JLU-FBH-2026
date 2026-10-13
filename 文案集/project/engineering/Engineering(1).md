@@ -6,7 +6,7 @@
 
 **中文。** **TIME**是JLU\-FBH为组织CirCure循证工程进程而构建的系统。**TIME**代表四轮相互衔接的项目级循环：**Targeting、Integration、Measurement与Evaluation**。整套系统以机械停表呈现：中央大齿轮的外圈刻画TIME，内圈运行Design–Build–Test–Learn，两枚指针则共同定位项目所处的整体循环与当前工程阶段。但TIME不只是四个循环首字母组成的名字，它也回应着CirCure最初的紧迫感：面对复发风险，每一个经得起检验的决定，都应让下一个答案更快到来。这枚停表因此记录着抗原筛选、构建设计与功能验证中的证据如何转化为下一项工程决定，也承载着我们的长期愿望：让这些研究进展有机会为复发风险较高的患者争取更多用于康复、陪伴家人和回归日常生活的时间。
 
-![image\.png](图片和附件/image.png)
+![image<span data-type=](图片和附件/image.png)\.png" />
 
 > **Figure E01｜The CirCure TIME Engineering System｜CirCure TIME工程系统**
 >
@@ -86,13 +86,13 @@ https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engin
 
 **Table C1\-01｜Platform decision matrix｜平台选择决策矩阵**
 
-| Design requirement    | Linear mRNA                                                | Engineered circRNA                                                | Project check                                          | Design implication                                        |
-| --------------------- | ---------------------------------------------------------- | ----------------------------------------------------------------- | ------------------------------------------------------ | --------------------------------------------------------- |
-| Antigen coding        | Can encode the selected antigen sequence                   | Can encode the selected antigen sequence                          | Sequence and construct feasibility                     | Both formats meet the basic coding requirement            |
-| RNA stability         | Free ends remain susceptible to exonuclease-mediated decay | Closed topology can improve nuclease resistance                   | Literature and technical consultation                  | circRNA better matches the intended persistence question  |
-| Expression duration   | Expression is constrained by RNA lifetime                  | Engineered circRNA can extend translation duration                | Published expression studies                           | Supports staged persistence measurements                  |
-| Immune stimulation    | Depends on sequence, modification, purity and delivery     | Innate sensing is tunable through RNA design and preparation      | Literature and iHP discussion                          | Evaluate it under defined preparation conditions          |
-| Preparation           | Comparatively direct production route                      | Requires circularization and added identity checks                | Team facilities and planned Experiments                | Assign a measurable checkpoint to every preparation stage |
+| Design requirement    | Linear mRNA                                                | Engineered circRNA                                                | Project check                                           | Design implication                                        |
+| --------------------- | ---------------------------------------------------------- | ----------------------------------------------------------------- | ------------------------------------------------------- | --------------------------------------------------------- |
+| Antigen coding        | Can encode the selected antigen sequence                   | Can encode the selected antigen sequence                          | Sequence and construct feasibility                      | Both formats meet the basic coding requirement            |
+| RNA stability         | Free ends remain susceptible to exonuclease-mediated decay | Closed topology can improve nuclease resistance                   | Literature and technical consultation                   | circRNA better matches the intended persistence question  |
+| Expression duration   | Expression is constrained by RNA lifetime                  | Engineered circRNA can extend translation duration                | Published expression studies                            | Supports staged persistence measurements                  |
+| Immune stimulation    | Depends on sequence, modification, purity and delivery     | Innate sensing is tunable through RNA design and preparation      | Literature and iHP discussion                           | Evaluate it under defined preparation conditions          |
+| Preparation           | Comparatively direct production route                      | Requires circularization and added identity checks                | Team facilities and planned Experiments                 | Assign a measurable checkpoint to every preparation stage |
 | Functional evaluation | Can enter protein and immune assays                        | Can enter the same downstream assays after circularization checks | FLAG expression, DC–T-cell culture and immune readouts | Provides a continuous molecule-to-function route          |
 
 ### Test｜测试
@@ -103,13 +103,13 @@ https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engin
 
 **Table C1\-02｜Stage\-by\-stage feasibility check for the circRNA route｜circRNA路线的逐阶段可行性检查**
 
-| Stage                          | Material source or operation                                                          | Available project check                                                                                                                                                                        | Observable output                                                                | Decision   |
-| ------------------------------ | ------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | ---------- |
+| Stage                          | Material source or operation                                                          | Available project check                                                                                                                                                                         | Observable output                                                                | Decision   |
+| ------------------------------ | ------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | ---------- |
 | DNA template                   | Recombinant plasmids assembled by a commercial service provider                       | Supplier plasmid map, sequence file and sample label were matched to the intended design before the delivered material entered the team’s recorded template-processing and transcription route | DNA template corresponding to the intended construct                             | Executable |
-| Linear transcription precursor | In vitro transcription from the DNA template and the designed self-splicing precursor | RNA preparation and nucleic-acid analytical methods recorded in Experiments                                                                                                                    | Detectable linear precursor                                                      | Executable |
-| Mature circRNA                 | Self-splicing and circularization of the precursor                                    | RNA purification, RNase R treatment and the corresponding nucleic-acid analysis recorded in Experiments                                                                                        | A circRNA preparation that can be evaluated separately from the linear precursor | Executable |
-| Encoded protein                | Translation after cellular delivery                                                   | FLAG-associated protein-expression measurement                                                                                                                                                 | Expected FLAG-associated expression signal                                       | Executable |
-| Immune function                | circRNA-loaded DCs co-cultured with T cells                                           | ELISpot, flow cytometry and target-cell killing assays                                                                                                                                         | IFN-γ-associated, activation and effector readouts                               | Executable |
+| Linear transcription precursor | In vitro transcription from the DNA template and the designed self-splicing precursor | RNA preparation and nucleic-acid analytical methods recorded in Experiments                                                                                                                     | Detectable linear precursor                                                      | Executable |
+| Mature circRNA                 | Self-splicing and circularization of the precursor                                    | RNA purification, RNase R treatment and the corresponding nucleic-acid analysis recorded in Experiments                                                                                         | A circRNA preparation that can be evaluated separately from the linear precursor | Executable |
+| Encoded protein                | Translation after cellular delivery                                                   | FLAG-associated protein-expression measurement                                                                                                                                                  | Expected FLAG-associated expression signal                                       | Executable |
+| Immune function                | circRNA-loaded DCs co-cultured with T cells                                           | ELISpot, flow cytometry and target-cell killing assays                                                                                                                                          | IFN-γ-associated, activation and effector readouts                              | Executable |
 
 **English\.** All five stages therefore had a defined source or procedure, an accessible measurement and an observable output\. This established the testability of the circRNA route; the resulting RNA, protein and immune\-response evidence is presented in the later cycles\.
 
@@ -217,8 +217,6 @@ https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engin
 >
 > **中文图注。** TNBC组织中TROP2的代表性免疫组化图像，左侧与中间视野呈中等染色，右侧呈较强染色。转载自Izci等（2022）的Figure 2，采用CC BY 4\.0许可；保留完整组织视野，并添加外部面板编号。
 >
-> 
->
 > **Figure C1\-02B｜Published B7\-H4 tissue\-staining patterns｜已发表的B7\-H4组织染色模式**
 >
 > https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c1\-02b\.avif
@@ -227,8 +225,6 @@ https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engin
 >
 > **中文图注。** B7\-H4代表性免疫组化图像，按原图标注展示强、中、弱及阴性染色。裁取自Wang等（2018）的Figure 1d，采用CC BY 4\.0许可；保留原图标签与比例尺，并添加外部面板编号。
 >
-> 
->
 > **Figure C1\-02C｜Published Nectin\-4 staining in TNBC tissue｜已发表的TNBC组织Nectin\-4染色**
 >
 > https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c1\-02c\.avif
@@ -236,8 +232,6 @@ https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engin
 > **English caption\.** Representative TNBC tissue showing strong, moderate and negative Nectin\-4 staining in the original panels A, B and C, respectively \(200× magnification\)\. Reproduced from Figure 1 of Zeindler et al\. \(2019\), under CC BY; original panel labels and scale bars are retained, with an external panel label added\.
 >
 > **中文图注。** TNBC组织中Nectin\-4的代表性强、中及阴性染色，分别对应原图A、B和C面板（200倍放大）。转载自Zeindler等（2019）的Figure 1，采用CC BY许可；保留原面板标签与比例尺，并添加外部面板编号。
->
-> 
 >
 > **Figure C1\-02D｜Published SLC39A6/LIV\-1 staining in breast\-cancer tissue｜已发表的乳腺癌组织SLC39A6/LIV\-1染色**
 >
@@ -466,8 +460,6 @@ write.csv(
 >
 > **中文图注。** PXD024322中TNBC肿瘤与正常乳腺样本的蛋白差异丰度火山图，采用校正批次的limma模型。横纵轴分别为拟合的log₂倍数变化及Benjamini–Hochberg校正P值的−log₁₀转换，图中突出TROP2、B7\-H4、LIV\-1及Nectin\-4。
 >
-> 
->
 > **Figure C1\-03B｜Candidate\-protein abundance in PXD024322｜PXD024322候选蛋白丰度**
 >
 > https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c1\-03b\.avif
@@ -476,8 +468,6 @@ write.csv(
 >
 > **中文图注。** PXD024322中TROP2、B7\-H4、LIV\-1及Nectin\-4经批次校正的log₂蛋白丰度分布。灰色与橙色散点分别代表正常乳腺及TNBC样本，各面板标注拟合的log₂倍数变化与Benjamini–Hochberg校正P值。
 >
-> 
->
 > **Figure C1\-03C｜Paired differential protein abundance in PXD028102｜PXD028102配对蛋白差异丰度**
 >
 > https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c1\-03c\.avif
@@ -485,8 +475,6 @@ write.csv(
 > **English caption\.** Volcano plot from the patient\-paired limma comparison of TNBC tumours and matched normal\-adjacent tissue in PXD028102\. Axes show the fitted log₂ fold change and −log₁₀ Benjamini–Hochberg\-adjusted P value\. TROP2, B7\-H4 and Nectin\-4 are highlighted\.
 >
 > **中文图注。** PXD028102中TNBC肿瘤与患者匹配癌旁正常组织的配对limma分析火山图。横纵轴分别为拟合的log₂倍数变化及Benjamini–Hochberg校正P值的−log₁₀转换，图中突出TROP2、B7\-H4及Nectin\-4。
->
-> 
 >
 > **Figure C1\-03D｜Candidate\-protein abundance in PXD028102｜PXD028102候选蛋白丰度**
 >
@@ -536,12 +524,12 @@ write.csv(
 
 **Table C1\-04｜Malignant\-cell enrichment and compartment\-specific detection of candidate genes｜候选基因的恶性细胞富集与细胞区室检出率**
 
-| Gene    | Antigen  | Malignant vs non-malignant log₂ fold change | FDR         | Malignant-cell detection | Immune-cell detection | CAF detection |
-| ------- | -------- | ------------------------------------------- | ----------- | ------------------------ | --------------------- | ------------- |
-| TACSTD2 | TROP2    | 4.074                                       | 8.37 × 10⁻⁵ | 70.40%                   | 4.00%                 | 5.40%         |
-| SLC39A6 | LIV-1    | 0.853                                       | 0.0196      | 39.40%                   | 8.50%                 | 20.70%        |
-| NECTIN4 | Nectin-4 | 4.755                                       | 3.70 × 10⁻⁶ | 37.80%                   | 1.00%                 | 0.60%         |
-| VTCN1   | B7-H4    | 5.393                                       | 2.52 × 10⁻⁵ | 19.80%                   | 0.30%                 | 0.40%         |
+| Gene    | Antigen  | Malignant vs non-malignant log₂ fold change | FDR            | Malignant-cell detection | Immune-cell detection | CAF detection |
+| ------- | -------- | -------------------------------------------- | -------------- | ------------------------ | --------------------- | ------------- |
+| TACSTD2 | TROP2    | 4.074                                        | 8.37 × 10⁻⁵ | 70.40%                   | 4.00%                 | 5.40%         |
+| SLC39A6 | LIV-1    | 0.853                                        | 0.0196         | 39.40%                   | 8.50%                 | 20.70%        |
+| NECTIN4 | Nectin-4 | 4.755                                        | 3.70 × 10⁻⁶ | 37.80%                   | 1.00%                 | 0.60%         |
+| VTCN1   | B7-H4    | 5.393                                        | 2.52 × 10⁻⁵ | 19.80%                   | 0.30%                 | 0.40%         |
 
 **English note\.** Log₂ fold changes and FDR values describe the patient\-paired pseudobulk comparison between malignant and non\-malignant compartments\. Detection rates indicate the fraction of cells within each compartment with a raw UMI count greater than zero for the corresponding gene\. CAF, cancer\-associated fibroblast\.
 
@@ -555,8 +543,6 @@ write.csv(
 >
 > **中文图注。** GSE176078 TNBC子集中39,324个质量控制后细胞的Harmony整合UMAP。每个点代表一个细胞，颜色对应其主要谱系注释。图中展示恶性细胞及上皮、免疫、基质和内皮等细胞群的分布。
 >
-> 
->
 > **Figure C1\-04B｜Candidate\-gene expression across cell populations｜候选基因在不同细胞群中的表达**
 >
 > https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/engineering/engineering\-c1\-04b\.avif
@@ -564,8 +550,6 @@ write.csv(
 > **English caption\.** Candidate\-gene expression on the Harmony UMAP \(left\) and expression distributions across cell compartments \(right\)\. Rows show TROP2/*TACSTD2*, B7\-H4/*VTCN1*, LIV\-1/*SLC39A6* and Nectin\-4/*NECTIN4* \(also labelled PVRL4\)\. Expression is displayed as ln\(CP10K \+ 1\), calculated from raw counts\. Cancer\-associated fibroblasts \(CAFs\) are included in the stromal compartment and also shown separately\.
 >
 > **中文图注。** 候选基因在Harmony UMAP上的表达分布（左）及不同细胞区室中的表达分布（右）。各行依次为TROP2/*TACSTD2*、B7\-H4/*VTCN1*、LIV\-1/*SLC39A6*及Nectin\-4/*NECTIN4*（图中亦标为PVRL4）。表达值采用由原始计数计算的ln\(CP10K \+ 1\)。癌症相关成纤维细胞（CAFs）包含于基质区室，并单独展示。
->
-> 
 >
 > **Figure C1\-04C｜Case\-wise detection of the four\-gene panel in malignant cells｜四基因组合在各病例恶性细胞中的检出情况**
 >
@@ -681,7 +665,7 @@ write.csv(
 
 **English\.** Based on the Wet Lab protocol and human\-material ethics discussion with Junqi Niu, we placed procurement, cell preparation and record continuity within the experimental plan\. We then built a standardized preparation and co\-culture framework beginning with commercial HLA\-A\*02:01 PBMC material\. CD14\-positive monocytes were isolated for GM\-CSF/IL\-4\-induced monocyte\-derived DC culture, while CD3\-positive T cells were obtained from the CD14\-negative fraction\. The framework specified how circRNA\-loaded DCs would later enter a common DC–T\-cell co\-culture for ELISpot, flow\-cytometry and killing readouts \(Miltenyi Biotec, n\.d\.\-a; Miltenyi Biotec, n\.d\.\-b; Sallusto and Lanzavecchia, 1994\)\.
 
-**中文。** 根据Wet Lab实验方案以及与牛俊奇老师进行的人源材料伦理讨论，我们将材料获取、细胞准备和记录连续性纳入实验计划。随后，我们建立以商业来源HLA\-A\*02:01 PBMC为起点的标准化制备与共培养框架：分选CD14阳性单核细胞，并以GM\-CSF/IL\-4诱导单核细胞来源DC；从CD14阴性组分中进一步获得CD3阳性T细胞。框架同时规定后续circRNA负载DC如何进入统一DC–T细胞共培养，并承接ELISpot、流式和杀伤读出（Miltenyi Biotec，无日期，CD14；Miltenyi Biotec，无日期，CD3；Sallusto and Lanzavecchia, 1994）。 
+**中文。** 根据Wet Lab实验方案以及与牛俊奇老师进行的人源材料伦理讨论，我们将材料获取、细胞准备和记录连续性纳入实验计划。随后，我们建立以商业来源HLA\-A\*02:01 PBMC为起点的标准化制备与共培养框架：分选CD14阳性单核细胞，并以GM\-CSF/IL\-4诱导单核细胞来源DC；从CD14阴性组分中进一步获得CD3阳性T细胞。框架同时规定后续circRNA负载DC如何进入统一DC–T细胞共培养，并承接ELISpot、流式和杀伤读出（Miltenyi Biotec，无日期，CD14；Miltenyi Biotec，无日期，CD3；Sallusto and Lanzavecchia, 1994）。
 
 > **References｜参考文献**
 >
@@ -708,8 +692,6 @@ write.csv(
 **English\.** Cycle 1 completed the **T—Targeting** stage of TIME, moving from intended use to a four\-antigen strategy ready for epitope\-level engineering\. We selected a measurable circRNA platform, established a clinically grounded four\-antigen starting set and retained TROP2, B7\-H4, Nectin\-4 and LIV\-1 through clinical, protein\-level, malignant\-cell and patient\-level evidence\.Education and Visual Design established an adaptable first language for circRNA; CircuForge V1\.0 began to connect the computational handoff; and the common DC–T\-cell workflow prepared a shared experimental setting\. Cycle 2 could now ask a narrower engineering question: which epitopes from the four antigen sources should be encoded, built and compared?
 
 **中文。** Cycle 1完成了TIME中的**T——锁定目标（Targeting）**，从预期用途推进到能够进入表位工程的四抗原策略。我们选择了可逐级检验的circRNA平台，形成具有临床依据的四抗原起始集合，并通过临床、蛋白、恶性细胞及患者层证据保留TROP2、B7\-H4、Nectin\-4和LIV\-1。Education与Visual Design建立了可适配受众的第一套circRNA表达方式，CircuForge V1\.0开始连接计算交接，统一DC–T细胞流程则准备了共同实验情境。Cycle 2由此进入更具体的工程问题：四种抗原来源中的哪些表位应当被编码、构建并进入比较？
-
-
 
 # Cycle 2 — Integration: From epitope exploration to Combined｜Cycle 2——整合：从表位探索到Combined
 
@@ -738,7 +720,6 @@ Iteration 2\.1｜Defining a traceable epitope\-prediction route｜建立可追�
 **English\.** We built a staged prioritisation route using all overlapping nine\-amino\-acid windows from the four canonical protein sequences\. Each peptide record linked its sequence and source coordinates to predicted HLA\-A\*02:01 binding affinity, sequence\-based immunogenicity and processing\-related outputs\. The numerical screen applied two predefined criteria in sequence:
 
 1. **Binding\-affinity criterion:** Peptides with a predicted HLA\-A\*02:01 binding IC50 below 500 nM were retained, identifying sequences with stronger predicted binding\.
-
 2. **Immunogenicity criterion:** The retained peptides were further required to have an IEDB immunogenicity score above zero, prioritising sequences with favourable immunogenicity predictions\.
 
 Processing\- and eluted\-ligand\-related outputs were retained as supporting fields for subsequent review rather than applied as additional independent cutoffs \(Reynisson et al\., 2020; Calis et al\., 2013; Peters et al\., 2003; Tenzer et al\., 2005\)\.
@@ -748,7 +729,6 @@ Peptides satisfying both criteria then entered a source\-protein context review\
 **中文。** 我们以四条标准蛋白序列中的全部重叠九氨基酸窗口建立分阶段优先排序路线。每条肽段记录将其序列和来源坐标与预测的HLA\-A\*02:01结合亲和力、基于序列的免疫原性及加工相关输出对应起来。数值筛选依次采用两项预先确定的判据：
 
 1. **结合亲和力判据：** 保留预测HLA\-A\*02:01结合IC50低于500 nM的肽段，用于识别预测结合能力较强的序列。
-
 2. **免疫原性判据：** 进一步要求上述肽段的IEDB免疫原性评分大于0，优先保留免疫原性预测结果较好的序列。
 
 加工及洗脱配体相关输出作为后续复核的支持字段保留，不再单独设置为淘汰阈值（Reynisson et al\., 2020；Calis et al\., 2013；Peters et al\., 2003；Tenzer et al\., 2005）。
@@ -810,13 +790,9 @@ We then mapped these 51 peptides back to their source proteins and compared thei
 The review was organised into five dimensions:
 
 1. **Groove placement:** the peptide’s position and orientation within the HLA binding groove\.
-
 2. **P2/P9 anchoring:** side\-chain burial at positions 2 and 9 and their accommodation within the B and F pockets, respectively\.
-
 3. **Interface contacts:** peptide–HLA contacts and the conserved backbone hydrogen\-bond network\.
-
 4. **Model consistency:** agreement in structural measurements and review outcomes across the five sampled models\.
-
 5. **Structural conflicts:** recurring steric clashes, distortion or displacement\.
 
 Each record remained linked to the source antigen, protein coordinates and IEDB prediction history\. The representative TROP2 peptide `SVCWCVNSV` documented the PyMOL workflow for examining peptide placement, interface residues and predicted hydrogen bonds \(Saper et al\., 1991\)\.
@@ -826,13 +802,9 @@ Each record remained linked to the source antigen, protein coordinates and IEDB 
 复核围绕五个维度展开：
 
 1. **结合槽位置：** 肽段在HLA结合槽中的位置与方向。
-
 2. **P2/P9锚定：** 第2位与第9位侧链的埋藏程度，以及分别与B口袋和F口袋的配合情况。
-
 3. **界面接触：** 肽段与HLA之间的接触及保守主链氢键网络。
-
 4. **模型一致性：** 五个采样模型的结构测量及复核结果是否一致。
-
 5. **结构冲突：** 是否反复出现空间碰撞、构象扭曲或位置偏移。
 
 每条记录继续关联来源抗原、蛋白坐标及IEDB预测历程。代表性TROP2肽段`SVCWCVNSV`用于记录PyMOL观察流程，展示肽段位置、界面残基及预测氢键（Saper et al\., 1991）。
@@ -860,24 +832,24 @@ Each record remained linked to the source antigen, protein coordinates and IEDB 
 **Table C2\-02B｜Structural measurements and first\-round coding status of 17 candidate epitopes｜17条候选表位的结构测量与首轮编码状态**
 
 | Antigen  | Peptide   | P2 side-chain burial (%) | P9 side-chain burial (%) | P9 buried area / reference ratio (Å² / %) | Conserved hydrogen-bond network | TCR-facing exposed area (Å²) | First-round coding status |
-| -------- | --------- | ------------------------ | ------------------------ | ----------------------------------------- | ------------------------------- | ---------------------------- | ------------------------- |
-| TROP2    | RLFRERYRL | 99.8                     | 99.7                     | 143.8 / 103                               | 11.11                           | 374                          | Included                  |
-| TROP2    | SVCWCVNSV | 99.8                     | 100                      | 114.4 / 82                                | 11.11                           | 245                          | Included                  |
-| TROP2    | TLIYYLDEI | 99.8                     | 100                      | 140.0 / 100                               | 11.11                           | 361                          | Included                  |
-| TROP2    | YLDEIPPKF | 99.8                     | 99.4                     | 173.3 / 124                               | 11.11                           | 270                          | Included                  |
-| B7-H4    | AVFADQVIV | 99.8                     | 100                      | 115.1 / 82                                | 11.11                           | 252                          | Included                  |
-| B7-H4    | WLKEGVLGL | 99.8                     | 99.9                     | 140.2 / 100                               | 11.11                           | 147                          | Included                  |
-| Nectin-4 | AVTSEFHLV | 99.9                     | 100                      | 114.3 / 82                                | 11.11                           | 240                          | Included                  |
-| Nectin-4 | FLAEASVRG | 99.8                     | Undefined                | 0.0 / 0                                   | 11.11                           | 293                          | Not included              |
-| Nectin-4 | FQARLRLRV | 99                       | 100                      | 113.7 / 81                                | 11.11                           | 424                          | Included                  |
-| Nectin-4 | HILHVSFLA | 99.9                     | 99.4                     | 60.1 / 43                                 | 11.11                           | 269                          | Not included              |
-| Nectin-4 | RLRVLVPPL | 99.8                     | 100                      | 139.6 / 100                               | 11.11                           | 259                          | Included                  |
-| Nectin-4 | YINGRGHLV | 99.9                     | 100                      | 113.5 / 81                                | 11.11                           | 226                          | Included                  |
-| LIV-1    | FIGHYAENV | 99.9                     | 100                      | 113.9 / 81                                | 11.11                           | 249                          | Included                  |
-| LIV-1    | GLHNFSDGL | 99.7                     | 99.7                     | 139.8 / 100                               | 11.11                           | 222                          | Included                  |
-| LIV-1    | GVATLAWMV | 99.8                     | 100                      | 113.3 / 81                                | 11.11                           | 280                          | Included                  |
-| LIV-1    | SVAVFCHEL | 99.8                     | 99.7                     | 139.8 / 100                               | 11.11                           | 277                          | Included                  |
-| LIV-1    | TVSEGTHFL | 99.8                     | 99.7                     | 139.5 / 100                               | 11.11                           | 234                          | Included                  |
+| -------- | --------- | ------------------------ | ------------------------ | ------------------------------------------- | ------------------------------- | ------------------------------ | ------------------------- |
+| TROP2    | RLFRERYRL | 99.8                     | 99.7                     | 143.8 / 103                                 | 11.11                           | 374                            | Included                  |
+| TROP2    | SVCWCVNSV | 99.8                     | 100                      | 114.4 / 82                                  | 11.11                           | 245                            | Included                  |
+| TROP2    | TLIYYLDEI | 99.8                     | 100                      | 140.0 / 100                                 | 11.11                           | 361                            | Included                  |
+| TROP2    | YLDEIPPKF | 99.8                     | 99.4                     | 173.3 / 124                                 | 11.11                           | 270                            | Included                  |
+| B7-H4    | AVFADQVIV | 99.8                     | 100                      | 115.1 / 82                                  | 11.11                           | 252                            | Included                  |
+| B7-H4    | WLKEGVLGL | 99.8                     | 99.9                     | 140.2 / 100                                 | 11.11                           | 147                            | Included                  |
+| Nectin-4 | AVTSEFHLV | 99.9                     | 100                      | 114.3 / 82                                  | 11.11                           | 240                            | Included                  |
+| Nectin-4 | FLAEASVRG | 99.8                     | Undefined                | 0.0 / 0                                     | 11.11                           | 293                            | Not included              |
+| Nectin-4 | FQARLRLRV | 99                       | 100                      | 113.7 / 81                                  | 11.11                           | 424                            | Included                  |
+| Nectin-4 | HILHVSFLA | 99.9                     | 99.4                     | 60.1 / 43                                   | 11.11                           | 269                            | Not included              |
+| Nectin-4 | RLRVLVPPL | 99.8                     | 100                      | 139.6 / 100                                 | 11.11                           | 259                            | Included                  |
+| Nectin-4 | YINGRGHLV | 99.9                     | 100                      | 113.5 / 81                                  | 11.11                           | 226                            | Included                  |
+| LIV-1    | FIGHYAENV | 99.9                     | 100                      | 113.9 / 81                                  | 11.11                           | 249                            | Included                  |
+| LIV-1    | GLHNFSDGL | 99.7                     | 99.7                     | 139.8 / 100                                 | 11.11                           | 222                            | Included                  |
+| LIV-1    | GVATLAWMV | 99.8                     | 100                      | 113.3 / 81                                  | 11.11                           | 280                            | Included                  |
+| LIV-1    | SVAVFCHEL | 99.8                     | 99.7                     | 139.8 / 100                                 | 11.11                           | 277                            | Included                  |
+| LIV-1    | TVSEGTHFL | 99.8                     | 99.7                     | 139.5 / 100                                 | 11.11                           | 234                            | Included                  |
 
 **English note\.** Coding status records inclusion in the first\-round experimental design; structural measurements provide accompanying computational descriptions\. Numerical measurements are means across five models, while the conserved\-network column counts hydrogen bonds present in all five\. The P9 reference ratio uses 140 Å² as its denominator and may exceed 100%\. “Undefined” denotes an undefined side\-chain burial percentage\.
 
@@ -985,11 +957,9 @@ Each record remained linked to the source antigen, protein coordinates and IEDB 
 
 | Input volume | Recorded circular-to-linear signal ratio | Estimated circular fraction |
 | ------------ | ---------------------------------------- | --------------------------- |
-| 2 µL         | 13.0:1                                   | 92.85±0.08%                 |
-| 4 µL         | 32.5:1                                   | 96.96±0.70%                 |
-| 6 µL         | 26.4:1                                   | 96.25±1.14%                 |
-
-
+| 2 µL        | 13.0:1                                   | 92.85±0.08%                |
+| 4 µL        | 32.5:1                                   | 96.96±0.70%                |
+| 6 µL        | 26.4:1                                   | 96.25±1.14%                |
 
 > **Table C2\-01｜RT\-qPCR assessment of the representative first\-round preparation｜首轮代表性制备物的RT\-qPCR评价**
 >
@@ -1313,12 +1283,12 @@ Junction sequencing recovered the expected connection between the precursor’s 
 
 | Measure                                  | Recorded result |
 | ---------------------------------------- | --------------- |
-| Working input                            | 4 µL            |
+| Working input                            | 4 µL           |
 | Technical wells                          | 3               |
-| ΔCq: convergent−divergent                | 7.19±0.39       |
+| ΔCq: convergent−divergent              | 7.19±0.39      |
 | Recorded circular-to-linear signal ratio | 145.7:1         |
-| Estimated circular fraction              | 99.30±0.17%     |
-| Release criterion                        | ≥90%            |
+| Estimated circular fraction              | 99.30±0.17%    |
+| Release criterion                        | ≥90%           |
 
 > **English note\.** Results describe the RNase R\-purified Combined preparation\. ΔCq and estimated circular fraction are reported as mean±SD across three technical wells; the ratio and fraction follow the recorded calculation\.
 >
@@ -1426,16 +1396,16 @@ Junction sequencing recovered the expected connection between the precursor’s 
 
 | Fragment | Sequence positions | Length (nt) | Overlap with previous fragment (nt) |
 | -------- | ------------------ | ----------- | ----------------------------------- |
-| C1       | 1–195              | 195         | —                                   |
-| C2       | 166–396            | 231         | 30                                  |
-| C3       | 367–588            | 222         | 30                                  |
-| C4       | 559–781            | 223         | 30                                  |
-| C5       | 752–982            | 231         | 30                                  |
-| C6       | 953–1201           | 249         | 30                                  |
-| C7       | 1172–1406          | 235         | 30                                  |
-| C8       | 1377–1619          | 243         | 30                                  |
-| C9       | 1590–1818          | 229         | 30                                  |
-| C10      | 1769–2013          | 245         | 50                                  |
+| C1       | 1–195             | 195         | —                                  |
+| C2       | 166–396           | 231         | 30                                  |
+| C3       | 367–588           | 222         | 30                                  |
+| C4       | 559–781           | 223         | 30                                  |
+| C5       | 752–982           | 231         | 30                                  |
+| C6       | 953–1201          | 249         | 30                                  |
+| C7       | 1172–1406         | 235         | 30                                  |
+| C8       | 1377–1619         | 243         | 30                                  |
+| C9       | 1590–1818         | 229         | 30                                  |
+| C10      | 1769–2013         | 245         | 50                                  |
 
 > **English note\.** Coordinates are 1\-based and inclusive\. C1 and C10 flank the back\-splice junction and share no residues with each other in this segmentation record\.
 >
@@ -1482,10 +1452,10 @@ Junction sequencing recovered the expected connection between the precursor’s 
 **Table C3\-03｜Geometric diagnostics during refinement of the 200 nt fragment｜200 nt片段精修过程的几何诊断**
 
 | Stage              | Non-adjacent P-atom close-contact pairs | Fragment terminal P–P distance (Å) |
-| ------------------ | --------------------------------------- | ---------------------------------- |
-| Raw reconstruction | 8                                       | 6.751                              |
-| PPR refinement     | 4                                       | 5.899                              |
-| Amber refinement   | 3                                       | 5.673                              |
+| ------------------ | --------------------------------------- | ------------------------------------ |
+| Raw reconstruction | 8                                       | 6.751                                |
+| PPR refinement     | 4                                       | 5.899                                |
+| Amber refinement   | 3                                       | 5.673                                |
 
 > **English note\.** Close contacts count P\-atom pairs separated by at least three sequence positions and less than 3 Å in space\. Terminal distance is measured between the first and last P atoms of the 200 nt fragment\.
 >

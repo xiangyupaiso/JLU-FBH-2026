@@ -141,10 +141,7 @@ figcaption,
 .wiki-section__summary,
 .wiki-prose,
 .wiki-prose p,
-.wiki-callout p,
-.wiki-epigraph blockquote,
-.wiki-epigraph p,
-.wiki-epigraph figcaption {
+.wiki-callout p {
   font-family: var(--font-body) !important;
 }
  

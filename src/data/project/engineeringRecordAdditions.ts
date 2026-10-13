@@ -300,8 +300,41 @@ export const cycle2Section: WikiSection = {
 ]
         },
         {
+          type: "table",
+          caption: "Table C2-02B｜Structural measurements and first-round coding status of 17 candidate epitopes｜17条候选表位的结构测量与首轮编码状态",
+          headers: [
+            "Antigen",
+            "Peptide",
+            "P2 side-chain burial (%)",
+            "P9 side-chain burial (%)",
+            "P9 buried area / reference ratio (Å² / %)",
+            "Conserved hydrogen-bond network",
+            "TCR-facing exposed area (Å²)",
+            "First-round coding status"
+          ],
+          rows: [
+            ["TROP2", "RLFRERYRL", "99.8", "99.7", "143.8 / 103", "11.11", "374", "Included"],
+            ["TROP2", "SVCWCVNSV", "99.8", "100", "114.4 / 82", "11.11", "245", "Included"],
+            ["TROP2", "TLIYYLDEI", "99.8", "100", "140.0 / 100", "11.11", "361", "Included"],
+            ["TROP2", "YLDEIPPKF", "99.8", "99.4", "173.3 / 124", "11.11", "270", "Included"],
+            ["B7-H4", "AVFADQVIV", "99.8", "100", "115.1 / 82", "11.11", "252", "Included"],
+            ["B7-H4", "WLKEGVLGL", "99.8", "99.9", "140.2 / 100", "11.11", "147", "Included"],
+            ["Nectin-4", "AVTSEFHLV", "99.9", "100", "114.3 / 82", "11.11", "240", "Included"],
+            ["Nectin-4", "FLAEASVRG", "99.8", "Undefined", "0.0 / 0", "11.11", "293", "Not included"],
+            ["Nectin-4", "FQARLRLRV", "99", "100", "113.7 / 81", "11.11", "424", "Included"],
+            ["Nectin-4", "HILHVSFLA", "99.9", "99.4", "60.1 / 43", "11.11", "269", "Not included"],
+            ["Nectin-4", "RLRVLVPPL", "99.8", "100", "139.6 / 100", "11.11", "259", "Included"],
+            ["Nectin-4", "YINGRGHLV", "99.9", "100", "113.5 / 81", "11.11", "226", "Included"],
+            ["LIV-1", "FIGHYAENV", "99.9", "100", "113.9 / 81", "11.11", "249", "Included"],
+            ["LIV-1", "GLHNFSDGL", "99.7", "99.7", "139.8 / 100", "11.11", "222", "Included"],
+            ["LIV-1", "GVATLAWMV", "99.8", "100", "113.3 / 81", "11.11", "280", "Included"],
+            ["LIV-1", "SVAVFCHEL", "99.8", "99.7", "139.8 / 100", "11.11", "277", "Included"],
+            ["LIV-1", "TVSEGTHFL", "99.8", "99.7", "139.5 / 100", "11.11", "234", "Included"]
+          ]
+        },
+        {
           type: "note",
-          label: "Table C2-02B｜Structural measurements and first-round coding status of 17 candidate epitopes",
+          label: "Table C2-02B note",
           body: "Coding status records inclusion in the first-round experimental design; structural measurements provide accompanying computational descriptions. Numerical measurements are means across five models, while the conserved-network column counts hydrogen bonds present in all five. The P9 reference ratio uses 140 Å² as its denominator and may exceed 100%. “Undefined” denotes an undefined side-chain burial percentage."
         },
         {
@@ -520,8 +553,18 @@ export const cycle2Section: WikiSection = {
 ]
         },
         {
+          type: "table",
+          caption: "Table C2-01｜RT-qPCR assessment of the representative first-round preparation｜首轮代表性制备物的RT-qPCR评价",
+          headers: ["Input volume", "Recorded circular-to-linear signal ratio", "Estimated circular fraction"],
+          rows: [
+            ["2 µL", "13.0:1", "92.85±0.08%"],
+            ["4 µL", "32.5:1", "96.96±0.70%"],
+            ["6 µL", "26.4:1", "96.25±1.14%"]
+          ]
+        },
+        {
           type: "note",
-          label: "Table C2-01｜RT-qPCR assessment of the representative first-round preparation",
+          label: "Table C2-01 note",
           body: "TROP2-CTL1 served as the representative first-round preparation. Each input volume included three technical replicate wells; estimated fractions are reported as mean±SD using the source calculation. The 4 µL input was selected for subsequent measurements."
         }
           ]
