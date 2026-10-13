@@ -19,6 +19,8 @@
 | **数据科学可视化** | [Apache ECharts](https://echarts.apache.org/) | 6.x | 实验拟合曲线、动态数据图表与多维统计看板 |
 | **主站 UI 与设计系统** | 原生 CSS Variables (Design Tokens) + Bootstrap | 5.3 | 语义化设计 Token，兼顾通用栅格与沉浸式阅读器排版 |
 | **实验仿真 UI 系统** | Tailwind CSS (沙箱作用域隔离) + Lucide Icons | 3.4 + 1.x | 虚拟实验室专属原子化排版系统，完全隔离不污染主站 |
+| **无障碍交互原语** | [Radix UI](https://www.radix-ui.com/primitives) | 1.x | Headless Dialog / Tabs / ScrollArea 组件，保障键盘导航与 a11y 合规 |
+| **矢量动画补充** | [lottie-web](https://airbnb.io/lottie/) | 5.x | AE 导出矢量动画播放，与 GSAP 主时间轴协同编排 |
 
 ---
 
@@ -191,6 +193,11 @@ Official-wiki/
 │       ├── App.tsx                          # 实验室顶层分发与按需懒加载 (Code-Splitting) 容器
 │       ├── main.tsx                         # 实验室挂载起点
 │       └── index.css                        # 实验室专用 Tailwind 样式入口
+├── scripts/                                 # 工程、资产与内容校验脚本
+│   ├── postbuild-slug.mjs                   # 构建后产物双路径对齐同步（详见 §八.2）
+│   ├── igem-asset-manager.mjs               # 官方资产上云登记与索引库维护工具
+│   ├── verify-*.mjs / check-cdn-links.mjs   # 页面忠实性、引用与外链合规校验
+│   └── prepare-*.py                         # 各模块插画资产批量预处理（格式/尺寸/压缩）
 ├── .env                                     # 队伍元数据环境变量（Team ID、Team Name、Year）
 ├── .gitlab-ci.yml                           # iGEM 官方 GitLab CI/CD 自动化构建发布管道
 ├── eslint.config.js                         # ESLint 9 平面语法配置

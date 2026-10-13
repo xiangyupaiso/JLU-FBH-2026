@@ -95029,7 +95029,7 @@
       "localPath": "src/assets/wiki/team-heroes/team-activities-hero.webp",
       "md5": "a64ec14f3ebe656e45ecbad44becf66e",
       "fileSize": 187610,
-      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/team/team-collaboration-hero.webp",
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/team/team-activities-hero.webp",
       "status": "in-use",
       "description": "",
       "keywords": [
@@ -95473,8 +95473,8 @@
       "localPath": "background/team_2460x1440/team_activities_hd.webp",
       "md5": "a64ec14f3ebe656e45ecbad44becf66e",
       "fileSize": 187610,
-      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/team/team-collaboration-hero.webp",
-      "status": "standby",
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/team/team-activities-hero.webp",
+      "status": "in-use",
       "description": "",
       "keywords": [
         "team_activities_hd",

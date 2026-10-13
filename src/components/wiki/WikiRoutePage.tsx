@@ -497,6 +497,18 @@ function RouteBlock({
           {renderProseParagraphs(block.paragraphs, inline)}
         </div>
       );
+    case "list": {
+      const List = block.ordered ? "ol" : "ul";
+      return (
+        <div className="wiki-prose" data-wiki-reveal>
+          <List className="wiki-prose-list" start={block.ordered ? block.start : undefined}>
+            {block.items.map((item, index) => (
+              <li key={index}>{inline ? inline(item, linkify) : linkify(item)}</li>
+            ))}
+          </List>
+        </div>
+      );
+    }
     case "code":
       return (
         <CodeBlock
@@ -552,7 +564,7 @@ function RouteBlock({
                 </span>
               ) : null}
             </figcaption>
-          ) : block.caption ? (
+          ) : block.caption || block.showFigureNumber ? (
             <figcaption>{block.caption}</figcaption>
           ) : null}
         </figure>
@@ -820,20 +832,36 @@ function RouteBlock({
         </aside>
       );
     }
-    case "epigraph":
+    case "epigraph": {
+      const cleanQuote = block.quote
+        .trim()
+        .replace(/^\*\*|\*\*$/g, "")
+        .replace(/^[“"']\s*|\s*[”"']$/g, "")
+        .trim();
+      let author = block.attribution?.trim() || "";
+      let role = block.attributionRole?.trim() || "";
+      if (!role && author.includes(" · ")) {
+        const parts = author.split(/\s*·\s*/);
+        author = parts[0];
+        role = parts.slice(1).join(" · ");
+      }
       return (
         <figure className="wiki-epigraph" data-wiki-reveal>
-          <blockquote>“{renderInlineFormatting(block.quote)}”</blockquote>
+          <blockquote>{renderInlineFormatting(cleanQuote)}</blockquote>
           {block.translationZh ? (
             <p className="wiki-epigraph__zh">
               {renderInlineFormatting(block.translationZh)}
             </p>
           ) : null}
-          <figcaption>
-            {block.attribution} · {block.attributionRole}
-          </figcaption>
+          {author || role ? (
+            <cite>
+              {author ? <strong>{author}</strong> : null}
+              {role ? <span>{role}</span> : null}
+            </cite>
+          ) : null}
         </figure>
       );
+    }
     case "split":
       return (
         <div className="wiki-blocks--split" id={block.id}>
@@ -1019,18 +1047,18 @@ function RouteSection({
       data-wiki-section
     >
       {section.masthead ? (
-        <figure className="wiki-masthead">
-          <img
+        <figure className={`wiki-masthead${section.masthead.image ? "" : " wiki-masthead--quote-only"}`}>
+          {section.masthead.image ? <img
             className="wiki-masthead__image"
             src={section.masthead.image}
             alt={section.masthead.imageAlt}
             decoding="async"
-          />
+          /> : null}
           <figcaption className="wiki-masthead__epigraph">
             <blockquote>{renderInlineFormatting(section.masthead.quote)}</blockquote>
             <cite>
               <strong>{section.masthead.attribution}</strong>
-              <span>{section.masthead.attributionRole}</span>
+              {section.masthead.attributionRole ? <span>{section.masthead.attributionRole}</span> : null}
             </cite>
           </figcaption>
         </figure>

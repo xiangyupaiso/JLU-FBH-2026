@@ -15,9 +15,6 @@
   opacity: 1;
   transform: none;
 }
-.wiki-page--engineering .wiki-figure figcaption::before {
-  display: none !important;
-}
 .wiki-page--engineering .eng-introduction,
 .wiki-page--engineering .eng-outcome {
   width: min(1040px, calc(100% - 64px));
@@ -429,7 +426,7 @@
   position: absolute;
   bottom: calc(100% + 14px);
   left: 50%;
-  width: min(620px, calc(100vw - 32px));
+  width: min(560px, calc(100vw - 32px));
   padding: 18px 22px 20px;
   border: 1px solid rgba(255, 255, 255, 0.8);
   border-radius: 20px;
@@ -476,13 +473,15 @@
   font-weight: 400;
 }
 .eng-gear-cluster {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(46px, 1fr));
-  gap: 8px 0;
-  max-height: min(300px, 45dvh);
-  padding: 4px 8px 0;
-  overflow: auto;
-  scrollbar-width: thin;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 12px 10px;
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 4px 4px 0;
+  overflow: visible;
 }
 .eng-gear-cluster:empty {
   display: none;
@@ -499,10 +498,10 @@
   flex-direction: column;
   align-items: center;
   justify-content: flex-end;
-  gap: 1px;
-  width: 100%;
-  min-width: 44px;
-  height: 76px;
+  gap: 2px;
+  width: 58px;
+  flex: 0 0 58px;
+  height: 74px;
   margin: 0;
   padding: 0;
   border: 0;
@@ -513,6 +512,7 @@
   font-size: 12px;
   font-weight: 650;
   font-variant-numeric: tabular-nums;
+  text-align: center;
   transition:
     color 180ms ease,
     transform 160ms ease;
@@ -706,7 +706,20 @@
     font-size: 30px;
   }
   .eng-cycle-flyout {
-    padding: 16px 18px;
+    padding: 16px 14px;
+  }
+  .eng-gear-cluster {
+    gap: 8px 6px;
+  }
+  .eng-small-gear {
+    width: 48px;
+    flex: 0 0 48px;
+    height: 66px;
+    font-size: 11px;
+  }
+  .eng-small-gear__img {
+    width: 46px;
+    height: 46px;
   }
   .eng-cycle-flyout::after {
     left: calc(
@@ -739,104 +752,17 @@
   }
 }
 
-/* Academic Carousel */
-.wiki-page--engineering .eng-carousel {
-  margin: 28px 0;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  outline: none;
+/* Reusable Photo Reel in Engineering Stages */
+.wiki-page--engineering .sust-stake-reel {
+  margin: 20px 0;
 }
-.wiki-page--engineering .eng-carousel:focus-visible {
-  outline: 2px solid var(--route-heading-ink);
-  border-radius: 12px;
-}
-.wiki-page--engineering .eng-carousel__frame {
-  position: relative;
-  width: 100%;
+.wiki-page--engineering .sust-stake-reel__frame {
   aspect-ratio: 16 / 10;
   max-height: 480px;
   background: rgba(0, 0, 0, 0.04);
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
-}
-.wiki-page--engineering .eng-carousel__image {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  display: block;
-}
-.wiki-page--engineering .eng-carousel__arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 38px;
-  height: 38px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(6px);
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--route-heading-ink);
-  cursor: pointer;
-  transition: all 160ms ease;
-  z-index: 2;
-}
-.wiki-page--engineering .eng-carousel__arrow:hover {
-  background: #ffffff;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-  transform: translateY(-50%) scale(1.05);
-}
-.wiki-page--engineering .eng-carousel__arrow--prev {
-  left: 12px;
-}
-.wiki-page--engineering .eng-carousel__arrow--next {
-  right: 12px;
-}
-.wiki-page--engineering .eng-carousel__counter {
-  position: absolute;
-  bottom: 12px;
-  right: 12px;
-  background: rgba(0, 0, 0, 0.65);
-  color: #ffffff;
-  padding: 4px 10px;
-  border-radius: 12px;
-  font-size: 12px;
-  font-family: var(--font-mono, monospace);
-  letter-spacing: 0.5px;
-  backdrop-filter: blur(4px);
-  z-index: 2;
-}
-.wiki-page--engineering .eng-carousel__dots {
-  display: flex;
-  justify-content: center;
-  gap: 8px;
-  padding: 4px 0;
-  flex-wrap: wrap;
-}
-.wiki-page--engineering .eng-carousel__dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: color-mix(in srgb, var(--route-line) 80%, transparent);
-  border: none;
-  cursor: pointer;
-  padding: 0;
-  transition: all 160ms ease;
-}
-.wiki-page--engineering .eng-carousel__dot.is-active {
-  background: var(--route-heading-ink);
-  transform: scale(1.25);
-}
-.wiki-page--engineering .eng-carousel__caption {
-  font-size: 14px;
-  line-height: 1.5;
-  color: var(--route-muted);
-  text-align: center;
-  padding: 0 16px;
 }
 
 /* Collapsible Code Blocks */

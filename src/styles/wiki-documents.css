@@ -225,3 +225,45 @@
     transition: none;
   }
 }
+
+/* Top-layer reading surface shared by attachment and folder triggers. */
+.wiki-page .wiki-document.wiki-document--modal {
+  width: min(1080px, calc(100vw - 40px));
+  max-width: none;
+  max-height: calc(100dvh - 40px);
+  margin: auto;
+  padding: 0;
+  border: 0;
+  border-radius: var(--doc-radius);
+  background: var(--doc-deep-2);
+  box-shadow: 0 24px 90px rgb(0 0 0 / 0.3);
+}
+
+.wiki-page .wiki-document--modal:not([open]) {
+  display: none;
+}
+.wiki-document--modal::backdrop {
+  background: rgb(12 22 16 / 0.72);
+}
+.wiki-page .wiki-document--modal .wiki-document__card {
+  border-radius: var(--doc-radius) var(--doc-radius) 0 0;
+  box-shadow: none;
+}
+.wiki-page .wiki-document--modal .wiki-document__frame {
+  height: calc(100dvh - 160px);
+  min-height: 240px;
+}
+
+@media (max-width: 760px) {
+  .wiki-page .wiki-document.wiki-document--modal {
+    width: calc(100vw - 16px);
+    max-height: calc(100dvh - 16px);
+  }
+  .wiki-page .wiki-document--modal .wiki-document__card {
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 10px;
+  }
+  .wiki-page .wiki-document--modal .wiki-document__frame {
+    height: calc(100dvh - 150px);
+  }
+}

@@ -212,8 +212,21 @@ export const cycle3Section: WikiSection = {
           caption: "Figure C3-01A · Agarose-gel electrophoresis documented the four antigen-encoding DNA transcription templates before T7 transcription."
         },
         {
+          type: "table",
+          caption: "Table C3-01｜RT-qPCR assessment of purified Combined｜纯化Combined的RT-qPCR评价",
+          headers: ["Measure", "Recorded result"],
+          rows: [
+            ["Working input", "4 µL"],
+            ["Technical wells", "3"],
+            ["ΔCq: convergent−divergent", "7.19±0.39"],
+            ["Recorded circular-to-linear signal ratio", "145.7:1"],
+            ["Estimated circular fraction", "99.30±0.17%"],
+            ["Release criterion", "≥90%"]
+          ]
+        },
+        {
           type: "note",
-          label: "Table C3-01｜RT-qPCR assessment of purified Combined",
+          label: "Table C3-01 note",
           body: "Results describe the RNase R-purified Combined preparation. ΔCq and estimated circular fraction are reported as mean±SD across three technical wells; the ratio and fraction follow the recorded calculation."
         },
         {
@@ -401,8 +414,25 @@ export const cycle3Section: WikiSection = {
 ]
         },
         {
+          type: "table",
+          caption: "Table C3-02｜Fragment coordinates and overlaps for Combined RNA｜Combined RNA片段坐标与重叠记录",
+          headers: ["Fragment", "Sequence positions", "Length (nt)", "Overlap with previous fragment (nt)"],
+          rows: [
+            ["C1", "1–195", "195", "—"],
+            ["C2", "166–396", "231", "30"],
+            ["C3", "367–588", "222", "30"],
+            ["C4", "559–781", "223", "30"],
+            ["C5", "752–982", "231", "30"],
+            ["C6", "953–1201", "249", "30"],
+            ["C7", "1172–1406", "235", "30"],
+            ["C8", "1377–1619", "243", "30"],
+            ["C9", "1590–1818", "229", "30"],
+            ["C10", "1769–2013", "245", "50"]
+          ]
+        },
+        {
           type: "note",
-          label: "Table C3-02｜Fragment coordinates and overlaps for Combined RNA",
+          label: "Table C3-02 note",
           body: "Coordinates are 1-based and inclusive. C1 and C10 flank the back-splice junction and share no residues with each other in this segmentation record."
         }
           ]
@@ -483,8 +513,18 @@ export const cycle3Section: WikiSection = {
           caption: "Figure C3-04A · P-atom views of the same 200 nt Combined fragment before refinement (left) and after final Amber refinement (right). Both views originate from all-atom models of the same run."
         },
         {
+          type: "table",
+          caption: "Table C3-03｜Geometric diagnostics during refinement of the 200 nt fragment｜200 nt片段精修过程的几何诊断",
+          headers: ["Stage", "Non-adjacent P-atom close-contact pairs", "Fragment terminal P–P distance (Å)"],
+          rows: [
+            ["Raw reconstruction", "8", "6.751"],
+            ["PPR refinement", "4", "5.899"],
+            ["Amber refinement", "3", "5.673"]
+          ]
+        },
+        {
           type: "note",
-          label: "Table C3-03｜Geometric diagnostics during refinement of the 200 nt fragment",
+          label: "Table C3-03 note",
           body: "Close contacts count P-atom pairs separated by at least three sequence positions and less than 3 Å in space. Terminal distance is measured between the first and last P atoms of the 200 nt fragment."
         },
         {

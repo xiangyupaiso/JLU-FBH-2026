@@ -10,6 +10,8 @@ import {
   DecisionProofTable,
   TradeoffOrbit,
 } from "../EngagementFeatures";
+import { CirCureGoldenCircle } from "./CirCureGoldenCircle";
+import { StakeholderMatrix3D } from "./StakeholderMatrix3D";
 import "../../../../styles/features/entrepreneurship-panels.css";
 
 const concernPositions = [
@@ -318,10 +320,15 @@ export function PositiveLongTermImpacts() {
   return <CircureOrbitPanel topics={entrepreneurshipImpacts} impacts />;
 }
 
+export { CirCureGoldenCircle } from "./CirCureGoldenCircle";
+export { StakeholderMatrix3D } from "./StakeholderMatrix3D";
+
 export function entrepreneurshipFeatures(): Record<string, ReactNode> {
   return {
     "potential-problems-and-solutions": <PotentialProblemsAndSolutions />,
     "positive-long-term-impacts": <PositiveLongTermImpacts />,
+    "circure-golden-circle": <CirCureGoldenCircle />,
+    "stakeholder-matrix-3d": <StakeholderMatrix3D />,
     "venture-discovery": <AssumptionFunnel />,
     "venture-hypotheses": <DecisionProofTable />,
     "venture-roadmap": <TradeoffOrbit />,

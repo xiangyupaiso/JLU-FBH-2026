@@ -23,9 +23,11 @@ import type {
   WikiDbTLStageKey,
   WikiSection,
 } from "../../wikiPageTypes";
-import { EngineeringCarousel } from "./EngineeringCarousel";
+import { StakeholderPhotoReel } from "../engagement/sustainability/StakeholderPhotoReel";
+import "../../../../styles/features/sustainability-panels.css";
 import { engineeringOutcome } from "../../../../data/project/engineeringOutcome";
 import { EngineeringOutline } from "./EngineeringPanels";
+import { EngineeringSystemOverview } from "./EngineeringSystemOverview";
 import gearTSrc from "../../../../assets/wiki/engineering/engineering-gear-t.webp";
 import gearTActiveSrc from "../../../../assets/wiki/engineering/engineering-gear-t-active.webp";
 import gearISrc from "../../../../assets/wiki/engineering/engineering-gear-i.webp";
@@ -281,10 +283,13 @@ function EngineeringBlock({ block }: { block: WikiContentBlock }) {
       );
     case "carousel":
       return (
-        <EngineeringCarousel
-          images={block.images}
-          caption={block.caption}
-          figureLabel={block.figureLabel}
+        <StakeholderPhotoReel
+          photos={block.images.map((img, i) => ({
+            src: img.src,
+            alt: img.alt ?? `${block.figureLabel ?? "Figure"} slide ${i + 1}`,
+            caption: block.caption ?? "",
+          }))}
+          label={block.figureLabel ?? "Engineering slide reel"}
         />
       );
     case "code":
@@ -346,9 +351,16 @@ export function EngineeringIntroduction({ section }: { section: WikiSection }) {
         </h2>
       </header>
       <div className="wiki-blocks">
-        {blocks?.map((block, index) => (
-          <EngineeringBlock block={block} key={index} />
-        ))}
+        {blocks?.map((block, index) => {
+          if (
+            section.id === "engineering-overview" &&
+            block.type === "figure" &&
+            block.src === "interactive-system-overview"
+          ) {
+            return <EngineeringSystemOverview key={index} />;
+          }
+          return <EngineeringBlock block={block} key={index} />;
+        })}
       </div>
     </section>
   );

@@ -358,7 +358,7 @@ export const futureData = {
   paragraphs: [
     "Our goal is to develop CirCure from an early-stage TNBC circRNA vaccine candidate into a **scalable platform for cancer immunotherapy**. The next stage of work will focus on completing the experimental chain from **RNA quality and antigen expression to immune activation and TNBC cell killing**, followed by in vivo validation of anti-tumor efficacy. Further refinement of our computational models will also allow candidate designs to be prioritized before animal experiments.",
     "Beyond TNBC, the modular design of CirCure could be adapted to different tumor-associated antigens and cancer types. In the long term, we hope to explore personalized vaccine design, intellectual-property development, and clinical translation. However, these remain future directions rather than completed outcomes.",
-    "**For us, CirCure is not the endpoint, but a starting point for exploring how synthetic biology can create more precise and adaptable cancer therapies.**",
+    "For us, CirCure is not the endpoint, but a starting point for exploring how synthetic biology can create more precise and adaptable cancer therapies.",
   ],
 };
 
