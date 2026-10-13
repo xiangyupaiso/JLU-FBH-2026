@@ -294,7 +294,33 @@ function EngineeringBlock({ block }: { block: WikiContentBlock }) {
       );
     case "code":
       return (
-        <details className="eng-code-fold">
+        <details
+          className="eng-code-fold"
+          onToggle={(e) => {
+            const details = e.currentTarget;
+            if (details.open) {
+              const body = details.closest<HTMLElement>(".eng-stage-body");
+              if (body) {
+                const detailsRect = details.getBoundingClientRect();
+                const bodyRect = body.getBoundingClientRect();
+                if (detailsRect.bottom > bodyRect.bottom) {
+                  const diff = detailsRect.bottom - bodyRect.bottom + 16;
+                  const content = details.closest<HTMLElement>(".eng-stage-content");
+                  if (content) {
+                    const currentTransform = new DOMMatrixReadOnly(
+                      getComputedStyle(content).transform,
+                    );
+                    gsap.to(content, {
+                      y: currentTransform.m42 - diff,
+                      duration: 0.25,
+                      ease: "power2.out",
+                    });
+                  }
+                }
+              }
+            }
+          }}
+        >
           <summary className="eng-code-fold__summary">
             <span className="eng-code-fold__label">
               {block.label ?? "Code snippet"}
@@ -505,7 +531,7 @@ function CycleScenes({
 
               // 2. Reading scroll rate: increased density divisor (320px instead of 450px)
               // so vertical travel moves steadily without rushing
-              const readingDuration = 1.0 + overflow() / 320;
+              const readingDuration = Math.max(1.5, 1.0 + overflow() / 320);
 
               if (content)
                 timeline.fromTo(
@@ -523,7 +549,7 @@ function CycleScenes({
               // 3. Generous bottom dwell buffer:
               // Holds content at the bottom so the reader can comfortably finish reading
               // the conclusions and examining figures/captions without premature stage transition.
-              const bottomDwell = overflow() > 0 ? 0.95 : 0.65;
+              const bottomDwell = overflow() > 0 ? 1.2 : 0.9;
               cursor = readingStart + readingDuration + bottomDwell;
 
               if (stageIndex < record.stages.length - 1) {
@@ -715,25 +741,67 @@ function CycleScenes({
                   className="eng-stage-stack"
                   id={`dbtl-${record.iteration.index.replace(".", "-")}`}
                 >
-                  {record.stages.map((stage) => (
-                    <section
-                      className="eng-stage"
-                      id={`${record.iteration.id}-${stage.key}`}
-                      data-iteration={record.iteration.id}
-                      data-dbtl-stage={stage.key}
-                      key={stage.key}
-                      aria-label={`${record.iteration.index} ${stage.title}`}
-                    >
-                      <h4 className="eng-stage-title">{stage.title}</h4>
-                      <div className="eng-stage-body">
-                        <div className="eng-stage-content">
-                          {stage.blocks.map((block, index) => (
-                            <EngineeringBlock block={block} key={index} />
-                          ))}
+                  {record.stages.map((stage, stageIndex) => {
+                    const prevStage = record.stages[stageIndex - 1];
+                    const nextStage = record.stages[stageIndex + 1];
+                    return (
+                      <section
+                        className="eng-stage"
+                        id={`${record.iteration.id}-${stage.key}`}
+                        data-iteration={record.iteration.id}
+                        data-dbtl-stage={stage.key}
+                        key={stage.key}
+                        aria-label={`${record.iteration.index} ${stage.title}`}
+                      >
+                        <div className="eng-stage-header">
+                          <button
+                            type="button"
+                            className="eng-stage-arrow"
+                            aria-label={
+                              prevStage
+                                ? `Previous stage: ${prevStage.title}`
+                                : "No previous stage"
+                            }
+                            disabled={!prevStage}
+                            onClick={() =>
+                              prevStage &&
+                              onNavigate(record.iteration, prevStage.key)
+                            }
+                          >
+                            <svg viewBox="0 0 24 24" aria-hidden="true">
+                              <path d="m15 18-6-6 6-6" />
+                            </svg>
+                          </button>
+                          <h4 className="eng-stage-title">{stage.title}</h4>
+                          <button
+                            type="button"
+                            className="eng-stage-arrow"
+                            aria-label={
+                              nextStage
+                                ? `Next stage: ${nextStage.title}`
+                                : "No next stage"
+                            }
+                            disabled={!nextStage}
+                            onClick={() =>
+                              nextStage &&
+                              onNavigate(record.iteration, nextStage.key)
+                            }
+                          >
+                            <svg viewBox="0 0 24 24" aria-hidden="true">
+                              <path d="m9 6 6 6-6 6" />
+                            </svg>
+                          </button>
                         </div>
-                      </div>
-                    </section>
-                  ))}
+                        <div className="eng-stage-body">
+                          <div className="eng-stage-content">
+                            {stage.blocks.map((block, index) => (
+                              <EngineeringBlock block={block} key={index} />
+                            ))}
+                          </div>
+                        </div>
+                      </section>
+                    );
+                  })}
                 </div>
               </article>
             );

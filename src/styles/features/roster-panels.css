@@ -1,0 +1,601 @@
+/* Roster components consume the shared Team palette and reader dimensions. */
+.wiki-page--roster .wiki-lead-section-slot {
+  margin: 0;
+  padding: 0;
+}
+
+.wiki-page--roster .roster-opening {
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+
+/* Same language as the Sustainability masthead: the photograph dissolves into
+   the paper and the motto is set over its faded lower edge. The top tenth of
+   the frame (glass roof and lamps) is cropped away. */
+.roster-opening__photo > img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4000 / 2400;
+  object-fit: cover;
+  object-position: 50% 100%;
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    #000 72%,
+    rgba(0, 0, 0, 0.55) 86%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    #000 72%,
+    rgba(0, 0, 0, 0.55) 86%,
+    transparent 100%
+  );
+}
+
+.wiki-page--roster .roster-opening > figcaption {
+  position: relative;
+  margin: clamp(-80px, -5vw, -28px) 0 0;
+  padding: 0 24px clamp(40px, 5vw, 72px);
+  color: var(--route-heading-ink);
+  font-family: var(--font-display) !important;
+  font-size: clamp(26px, 3vw, 44px);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  text-align: center;
+  text-wrap: balance;
+  animation: wiki-masthead-copy 1100ms var(--ease-out) 300ms both;
+}
+.wiki-page--roster .roster-opening figcaption strong {
+  font: inherit;
+  font-weight: 600;
+  color: inherit;
+}
+
+/* One undistorted viewport-sized drawing. Only the content moves over it. */
+.wiki-page.wiki-page--roster.route--document-flow .route-frame {
+  isolation: isolate;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+.wiki-page.wiki-page--roster .route-frame::before {
+  position: sticky;
+  top: var(--header-height);
+  z-index: 0;
+  display: block;
+  height: var(--reader-h);
+  background: var(--route-paper) var(--route-frame-image) center / cover
+    no-repeat;
+  content: "";
+  pointer-events: none;
+}
+/* The drawing keeps its full margin box so sticking ends at the frame's
+   bottom edge; the article is pulled up over it instead. A zero-height margin
+   box let the drawing ride past the frame and cover Next page and the footer. */
+.wiki-page.wiki-page--roster .route-frame > .route-frame__scroll {
+  margin-top: calc(-1 * var(--reader-h));
+}
+
+.wiki-page--roster .wiki-feature,
+.wiki-page--roster .wiki-feature[data-wiki-reveal] {
+  opacity: 1 !important;
+  transform: none !important;
+  transition: none !important;
+  will-change: auto !important;
+}
+
+.roster-panels {
+  --roster-portrait-width: clamp(138px, 17vw, 208px);
+  --roster-gap: clamp(18px, 3vw, 36px);
+  display: grid;
+  gap: var(--wiki-space-section);
+}
+
+.wiki-page--roster .roster-collection {
+  margin: 0;
+  min-width: 0;
+}
+
+.wiki-page--roster .roster-collection h3 {
+  margin: 0 0 24px;
+  color: var(--route-subheading-ink);
+  font-family: "Fraunces", "Newsreader", Georgia, serif;
+  font-size: clamp(21px, 2.2vw, 25px);
+  font-weight: 600;
+  line-height: 1.35;
+  text-align: center;
+}
+
+.roster-people {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 28px var(--roster-gap);
+  margin: 0 auto;
+}
+
+.roster-people--teachers {
+  max-width: calc(var(--roster-portrait-width) * 3 + var(--roster-gap) * 2);
+}
+
+.roster-people--four {
+  max-width: calc(var(--roster-portrait-width) * 4 + var(--roster-gap) * 3);
+}
+
+.wiki-page--roster .roster-person {
+  display: flex;
+  flex: 0 0 var(--roster-portrait-width);
+  flex-direction: column;
+  align-items: center;
+  width: var(--roster-portrait-width);
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 3px;
+  background: transparent;
+  color: var(--route-heading-ink);
+  font: inherit;
+  line-height: 1.4;
+  text-align: center;
+  text-decoration: none;
+  box-shadow: none;
+}
+
+button.roster-person {
+  cursor: pointer;
+}
+
+.roster-person__photo {
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  /* One portrait shape for everyone; the photographs carry the colour. */
+  border-radius: 12px;
+  background: var(--route-paper);
+}
+
+.roster-person__photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 25%;
+  transition: transform 600ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.wiki-page--roster .roster-person__name {
+  display: block;
+  margin-top: 14px;
+  font-family: "Fraunces", "Newsreader", Georgia, serif;
+  font-size: clamp(18px, 1.65vw, 21px);
+  font-weight: 600;
+}
+
+.wiki-page--roster .roster-person__role {
+  display: block;
+  margin-top: 4px;
+  color: var(--route-muted);
+  font-size: 13px;
+}
+
+.roster-person__open {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  display: grid;
+  width: 32px;
+  height: 32px;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--route-paper);
+  color: var(--route-subheading-ink);
+  transition:
+    opacity 220ms ease,
+    transform 220ms ease;
+}
+
+.roster-person:focus-visible,
+.roster-gallery__item:focus-visible,
+.roster-group-members:focus-visible {
+  outline: 3px solid var(--route-subheading-ink);
+  outline-offset: 5px;
+}
+
+/* Touch screens keep the arrow as the "open profile" cue; pointers reveal it. */
+@media (hover: hover) {
+  .roster-person__open {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  button.roster-person:hover .roster-person__photo img {
+    transform: scale(1.04);
+  }
+  button.roster-person:hover .roster-person__open,
+  button.roster-person:focus-visible .roster-person__open {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Click-controlled Accordion Gallery: a full photograph and four narrow strips. */
+.roster-gallery {
+  position: relative;
+  width: 100%;
+  height: 460px;
+  perspective: 1400px;
+  perspective-origin: 50% 50%;
+  contain: layout paint;
+  overflow-anchor: none;
+}
+
+.wiki-page.wiki-page--roster .roster-gallery__item {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  min-width: 0;
+  min-height: 0;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+  border-radius: 16px;
+  background: transparent;
+  color: white;
+  cursor: pointer;
+  text-align: left;
+  box-shadow: 0 10px 30px -18px rgba(35, 28, 18, 0.6);
+  transform-origin: center;
+  will-change: transform;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.roster-gallery__frame {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border-radius: inherit;
+}
+/* Media stay on their own layers for the page's lifetime: promoting and
+   demoting them around every transition re-rasterised the 4000px photos. */
+.roster-gallery__media {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  will-change: transform;
+}
+
+.roster-gallery__item img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  user-select: none;
+}
+
+/* Bottom shade keeps the white captions legible on every photo. */
+.roster-gallery__item::after {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg, rgba(35, 28, 18, 0.6), transparent 42%);
+  content: "";
+  pointer-events: none;
+}
+
+.roster-gallery__label,
+.roster-gallery__strip {
+  position: absolute;
+  z-index: 1;
+  color: #fff;
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 1.2;
+  white-space: nowrap;
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.35);
+}
+
+.roster-gallery__label {
+  left: clamp(18px, 2.2vw, 28px);
+  bottom: clamp(18px, 2.2vw, 26px);
+  font-size: clamp(20px, 2.1vw, 28px);
+  opacity: 0;
+}
+.roster-gallery__bar {
+  display: block;
+  width: 28px;
+  height: 2px;
+  margin-bottom: 12px;
+  border-radius: 1px;
+  background: currentColor;
+}
+.roster-gallery__strip {
+  bottom: 22px;
+  left: 50%;
+  font-size: clamp(15px, 1.3vw, 18px);
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  writing-mode: vertical-rl;
+  transform: translateX(-50%) rotate(180deg);
+}
+.roster-gallery[data-orientation="vertical"] {
+  perspective: none;
+}
+.roster-gallery[data-orientation="vertical"] .roster-gallery__strip {
+  left: 16px;
+  bottom: 50%;
+  writing-mode: horizontal-tb;
+  transform: translateY(50%);
+}
+
+.roster-group-members {
+  margin-top: 28px;
+}
+.roster-group-members__content {
+  animation: roster-group-enter 420ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.wiki-page--roster .roster-group-members h3 {
+  color: var(--route-heading-ink);
+}
+.roster-role-groups {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 28px var(--roster-gap);
+}
+.roster-role-group {
+  flex: 0 0 100%;
+  min-width: 0;
+}
+.roster-role-group--paired-lead {
+  flex-basis: var(--roster-portrait-width);
+}
+.wiki-page--roster .roster-role-group h4 {
+  margin: 0 0 14px;
+  font-family: "Fraunces", "Newsreader", Georgia, serif;
+  font-size: 18px;
+  font-weight: 500;
+  text-align: center;
+  color: var(--route-subheading-ink);
+}
+
+@keyframes roster-group-enter {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* A single glass surface, mounted only while a profile is open.
+   Blur stays constant; only transform and opacity animate. */
+.roster-dialog-overlay {
+  position: fixed;
+  z-index: 1100;
+  inset: 0;
+  background: rgba(37, 29, 20, 0.4);
+  animation: roster-dialog-fade 200ms ease both;
+}
+.roster-dialog {
+  position: fixed;
+  z-index: 1101;
+  top: 50%;
+  left: 50%;
+  display: grid;
+  grid-template-columns: minmax(180px, 0.72fr) minmax(0, 1.28fr);
+  grid-template-rows: minmax(0, 1fr) auto;
+  width: min(1040px, calc(100vw - 64px));
+  max-height: min(840px, calc(100dvh - 64px));
+  padding: clamp(28px, 3.2vw, 44px);
+  gap: 0 clamp(28px, 3.5vw, 48px);
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.82);
+  border-radius: 26px;
+  background:
+    radial-gradient(ellipse at 0 0, rgba(245, 207, 111, 0.28), transparent 58%),
+    radial-gradient(
+      ellipse at 100% 100%,
+      rgba(215, 132, 179, 0.13),
+      transparent 55%
+    ),
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.91),
+      rgba(255, 253, 243, 0.78)
+    );
+  -webkit-backdrop-filter: blur(16px) saturate(140%);
+  backdrop-filter: blur(16px) saturate(140%);
+  color: #3e2d14;
+  box-shadow:
+    0 24px 80px rgba(25, 19, 13, 0.22),
+    inset 0 1px 0 white;
+  font-family: "Lexend", sans-serif;
+  transform: translate(-50%, -50%);
+  animation: roster-dialog-enter 340ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.roster-dialog__close {
+  position: absolute;
+  z-index: 2;
+  top: 12px;
+  right: 12px;
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  padding: 0;
+  border: 1px solid rgba(118, 35, 56, 0.13);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.7);
+  color: #762338;
+  cursor: pointer;
+  transition:
+    background-color 180ms ease,
+    transform 180ms ease;
+}
+.roster-dialog__close:hover {
+  background: #fff;
+  transform: rotate(90deg);
+}
+.roster-dialog__portrait {
+  align-self: start;
+}
+.roster-dialog__portrait img {
+  display: block;
+  width: 100%;
+  max-height: min(460px, 55dvh);
+  object-fit: contain;
+  border-radius: 12px;
+  box-shadow: 0 10px 24px rgba(62, 45, 20, 0.1);
+}
+.roster-dialog__portrait p {
+  margin: 16px 0 0;
+  font-size: 14px;
+  color: #762338;
+  text-align: center;
+}
+.roster-dialog__body {
+  min-height: 0;
+  padding: 8px 14px 2px 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  scrollbar-color: #b5a58b transparent;
+}
+.roster-dialog__title {
+  margin: 0 0 12px;
+  font-family: "Fraunces", "Newsreader", Georgia, serif;
+  font-size: clamp(30px, 3.2vw, 44px);
+  font-weight: 600;
+  line-height: 1.2;
+}
+.roster-dialog__tagline {
+  margin: 0 0 28px;
+  color: #762338;
+  font-size: 15px;
+  line-height: 1.7;
+}
+.roster-dialog__bio p {
+  margin: 0 0 16px;
+  font-size: 14px;
+  line-height: 1.9;
+}
+.roster-dialog .roster-dialog__quote {
+  grid-column: 1 / -1;
+  margin: 28px 0 0;
+  padding: 24px 16px 0;
+  border-top: 1px solid rgba(118, 35, 56, 0.14);
+  font-family: "Newsreader", Georgia, serif;
+  font-size: clamp(22px, 2.3vw, 28px);
+  font-style: italic;
+  line-height: 1.45;
+  color: #762338;
+  text-align: center;
+  text-wrap: balance;
+}
+.roster-dialog .roster-dialog__quote-text {
+  display: block;
+}
+.roster-dialog .roster-dialog__cite {
+  display: block;
+  margin-top: 10px;
+  font-size: clamp(16px, 1.6vw, 20px);
+  font-style: italic;
+  text-align: right;
+  color: #762338;
+}
+.roster-dialog button:focus-visible {
+  outline: 3px solid #762338;
+  outline-offset: 3px;
+}
+@keyframes roster-dialog-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes roster-dialog-enter {
+  from {
+    opacity: 0;
+    transform: translate(-50%, calc(-50% + 16px)) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+@supports not (
+  (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))
+) {
+  .roster-dialog {
+    background-color: #fffdf3;
+  }
+}
+
+@media (max-width: 980px) {
+  .roster-people--four {
+    max-width: calc(var(--roster-portrait-width) * 2 + var(--roster-gap));
+  }
+}
+
+@media (max-width: 600px) {
+  .roster-panels {
+    --roster-portrait-width: min(36vw, 175px);
+    --roster-gap: 18px;
+  }
+  .roster-people--teachers {
+    --roster-portrait-width: min(23vw, 138px);
+  }
+  .roster-gallery__label {
+    left: 16px;
+    bottom: 16px;
+  }
+  .roster-dialog {
+    display: block;
+    width: calc(100vw - 24px);
+    max-height: calc(100dvh - 32px);
+    padding: 20px 22px 24px;
+    border-radius: 20px;
+    -webkit-backdrop-filter: blur(10px) saturate(130%);
+    backdrop-filter: blur(10px) saturate(130%);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+  .roster-dialog__close {
+    position: sticky;
+    top: 0;
+    margin: 0 0 -42px auto;
+  }
+  .roster-dialog__portrait {
+    width: min(55%, 210px);
+    margin: 0 auto 24px;
+  }
+  .roster-dialog__portrait img {
+    max-height: 240px;
+  }
+  .roster-dialog__body {
+    padding: 0;
+    overflow: visible;
+  }
+  .roster-dialog__title,
+  .roster-dialog__tagline {
+    text-align: center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .roster-panels *,
+  .roster-dialog,
+  .roster-dialog-overlay {
+    animation: none !important;
+    transition: none !important;
+  }
+}

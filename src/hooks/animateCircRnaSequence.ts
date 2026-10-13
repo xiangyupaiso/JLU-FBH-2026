@@ -145,19 +145,12 @@ export function animateCircRnaSequence(
     platform.querySelector<HTMLElement>(`[data-platform-note="${key}"]`)!,
   );
   gsap.set([...sectors, ...notes], { autoAlpha: 0 });
-  // Hide inactive regions completely; the base painting and carried ring
-  // stay in place while each advantage appears in its original position.
+  // Each advantage appears in its original position and stays, so the
+  // complete research figure builds up one region at a time.
   sectors.forEach((sector, index) => {
     const at = 3 + index * 0.55;
-    if (index > 0) {
-      timeline.to(sectors[index - 1], { autoAlpha: 0, duration: 0.2 }, at);
-      timeline.to(notes[index - 1], { autoAlpha: 0, duration: 0.2 }, at);
-    }
-    timeline.to(sector, { autoAlpha: 1, duration: 0.2 }, at);
-    timeline.to(notes[index], { autoAlpha: 1, duration: 0.2 }, at);
+    timeline.to([sector, notes[index]], { autoAlpha: 1, duration: 0.2 }, at);
   });
-  // Restore the complete research figure and leave a stable reading frame.
-  timeline.to([...sectors, ...notes], { autoAlpha: 1, duration: 0.3 }, FIGURE_END - 0.3);
   timeline.addLabel("advantages-readable", FIGURE_END);
   timeline.to({}, { duration: figureRest }, FIGURE_END);
   cleanups.push(

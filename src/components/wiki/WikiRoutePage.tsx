@@ -114,6 +114,8 @@ interface WikiRoutePageProps {
   theme?: string;
   /** Opt into the document-flow reader used by pages with long visual panels. */
   enableWideFlow?: boolean;
+  /** Keep interactive galleries in normal document flow at every viewport size. */
+  documentFlow?: boolean;
   /**
    * Library layout variant: render without the TOC card and let the reader frame
    * take the released width. Used by `/games`.
@@ -1170,6 +1172,7 @@ export function WikiRoutePage({
   pageClassName = "",
   theme,
   enableWideFlow = false,
+  documentFlow: forceDocumentFlow = false,
   hideOutline = false,
   hideHeroCopy = false,
   collapsibleSubheadings = false,
@@ -1274,7 +1277,7 @@ export function WikiRoutePage({
     };
   }, [drawerOpen, outlineId]);
 
-  const documentFlow = wideFlow || compact;
+  const documentFlow = forceDocumentFlow || wideFlow || compact;
   const drawerScrollBehavior: ScrollBehavior = window.matchMedia(
     "(prefers-reduced-motion: reduce)",
   ).matches
@@ -1350,7 +1353,7 @@ export function WikiRoutePage({
       ref={rootRef}
       className={`wiki-page wiki-page--route wiki-page--manuscript route--reader ${
         wideFlow ? "route--wide-flow" : ""
-      } ${drawerOpen ? "is-toc-open" : ""} ${pageClassName}`}
+      } ${forceDocumentFlow ? "route--document-flow" : ""} ${drawerOpen ? "is-toc-open" : ""} ${pageClassName}`}
       data-wiki-route={content.route}
       data-route-theme={theme}
       data-active-section={activeSection}

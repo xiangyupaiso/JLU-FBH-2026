@@ -1,10 +1,12 @@
 import { useEffect, useRef, useState } from "react";
-import teamPhotoUrl from "../assets/footer/team-keepsake.webp";
+import { rosterAssets } from "../data/team/rosterAssets";
 import lambUrl from "../assets/loading/lamb.webp";
 import hopeHandsUrl from "../assets/home/story/scene-9-layer-2.webp";
 import hopePatientUrl from "../assets/home/story/scene-9-layer-3.webp";
 import { useFooterPhotoTurn } from "../hooks/useFooterPhotoTurn";
 import "../styles/footer-photo-scene.css";
+
+const teamPhotoUrl = rosterAssets["team-photo"];
 
 /** The photo eases into view, rests, then turns with native scrolling. */
 export default function FooterPhotoScene() {

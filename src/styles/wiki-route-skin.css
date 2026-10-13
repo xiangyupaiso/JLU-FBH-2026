@@ -2115,6 +2115,31 @@ html.has-route-reader-scroll {
 /* Route pages project the article onto the document scroll. Keeping the route
    frame itself non-scrollable prevents the scrollbar from stealing/releasing
    the article width while the browser is deciding which scroll owner wins. */
+.wiki-page.wiki-page--route.route--document-flow .wiki-reader-track {
+  height: auto;
+}
+
+.wiki-page.wiki-page--route.route--document-flow .wiki-reader-track > .wiki-record {
+  position: relative;
+  top: auto;
+  height: auto;
+  max-height: none;
+  overflow: visible;
+}
+
+.wiki-page.wiki-page--route.route--document-flow .route-frame,
+.wiki-page.wiki-page--route.route--document-flow .route-frame__scroll {
+  height: auto;
+  max-height: none;
+  overflow: visible;
+}
+
+.wiki-page.wiki-page--route.route--document-flow .route-frame {
+  background-size: 100% auto;
+  background-position: top center;
+  background-repeat: repeat-y;
+}
+
 @media (min-width: 1200px) and (min-height: 700px) {
   .wiki-page--route.route--wide-flow .wiki-reader-track {
     height: auto;

@@ -124,7 +124,7 @@ const overviewSection: WikiSection = {
     },
     {
       type: "figure",
-      src: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-overviewcycle.avif",
+      src: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-overviewcycle-2.avif",
       alt: "CirCure TIME Four Connected Cycles Overview",
       caption:
         "Four connected cycles record how CirCure progressed through TIME: Targeting (Cycle 1), Integration (Cycle 2), Measurement (Cycle 3), and Evaluation (Cycle 4).",

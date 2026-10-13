@@ -107,21 +107,21 @@ export interface GoldenCircleTopic {
 export const goldenCircleTopics: GoldenCircleTopic[] = [
   {
     id: "why",
-    title: "WHY",
+    title: "Why",
     lead: "TNBC lacks specific targeted therapies and often has a poor prognosis.",
     body: "Current cancer vaccines may face limited epitope coverage, tumor antigen escape, and delivery challenges.",
     tone: "lavender",
   },
   {
     id: "what",
-    title: "WHAT",
+    title: "What",
     lead: "CirCure is a prototype multi-epitope circRNA therapeutic vaccine for TNBC.",
     body: "It includes an epitope-screening computational tool, a multi-epitope circRNA recombinant plasmid, in vitro validation data, preliminary mouse-study results, and a commercialization and regulatory feasibility assessment.",
     tone: "rose",
   },
   {
     id: "how",
-    title: "HOW",
+    title: "How",
     lead: "We broaden tumor immune recognition by developing a multi-epitope circRNA vaccine.",
     body: "We screen HLA-matched tumor antigen epitopes, design and validate a circular RNA expression construct, evaluate immunogenicity and antitumor effects in cells and animal models, and assess regulatory, CMC, and IP feasibility for future preclinical translation.",
     tone: "yellow",
@@ -131,8 +131,6 @@ export const goldenCircleTopics: GoldenCircleTopic[] = [
 export interface Stakeholder3DItem {
   id: number;
   name: string;
-  chineseName: string;
-  color: string;
   tone: EntrepreneurshipOrbitTone;
   coordinates: {
     interest: number;
@@ -144,129 +142,101 @@ export interface Stakeholder3DItem {
     impact: string;
     influence: string;
   };
-  iconType:
-    | "patient"
-    | "hospital"
-    | "microscope"
-    | "industry"
-    | "policy"
-    | "finance"
-    | "team";
 }
 
 export const stakeholders3DList: Stakeholder3DItem[] = [
   {
     id: 1,
     name: "Patients & Patient Representatives",
-    chineseName: "患者与患者代表",
-    color: "#ff4d6d",
     tone: "rose",
     coordinates: { interest: 9, influence: 4, impact: 10 },
     details: {
       interest: "Treatment efficacy, safety, burden, and accessibility",
-      impact:
-        "Limited direct decision-making power; shape design through feedback on patient needs",
       influence:
+        "Limited direct decision-making power; shape design through feedback on patient needs",
+      impact:
         "Short term: increased participation burden; Long term: effects on treatment choices",
     },
-    iconType: "patient",
   },
   {
     id: 2,
     name: "Clinicians and the Healthcare System",
-    chineseName: "临床与医疗体系",
-    color: "#2563eb",
     tone: "sky",
     coordinates: { interest: 9, influence: 9, impact: 8 },
     details: {
       interest: "Clinical value, patient eligibility, and feasibility",
-      impact:
-        "Directly shape patient screening and clinical pathways; inform R&D through professional collaboration",
       influence:
+        "Directly shape patient screening and clinical pathways; inform R&D through professional collaboration",
+      impact:
         "Short term: additional research workload; Long term: effects on clinical workflows",
     },
-    iconType: "hospital",
   },
   {
     id: 3,
     name: "Scientific and Technical Experts",
-    chineseName: "科研与技术专家",
-    color: "#06b6d4",
     tone: "slate",
     coordinates: { interest: 8, influence: 7, impact: 5 },
     details: {
-      interest: "Scientific rationale, technical approach, and quality of evidence",
-      impact:
-        "Limited direct decision-making power; guide technical direction through expertise",
+      interest:
+        "Scientific rationale, technical approach, and quality of evidence",
       influence:
+        "Limited direct decision-making power; guide technical direction through expertise",
+      impact:
         "Short term: knowledge exchange; Long term: advances in technology development",
     },
-    iconType: "microscope",
   },
   {
     id: 4,
     name: "Industry and Development Partners",
-    chineseName: "产业与开发合作伙伴",
-    color: "#f97316",
     tone: "peach",
     coordinates: { interest: 8, influence: 9, impact: 8 },
     details: {
       interest: "Development value, CMC, quality, and collaboration potential",
-      impact:
-        "Directly influence resource allocation for development; shape translation pathways through industry experience",
       influence:
+        "Directly influence resource allocation for development; shape translation pathways through industry experience",
+      impact:
         "Short term: resources committed to evaluation; Long term: shared development risks and returns",
     },
-    iconType: "industry",
   },
   {
     id: 5,
     name: "Regulatory, Policy, and Payer Stakeholders",
-    chineseName: "监管、政策与支付体系",
-    color: "#10b981",
     tone: "sage",
     coordinates: { interest: 7, influence: 10, impact: 4 },
     details: {
       interest: "Compliance, safety, reimbursement, and accessibility",
-      impact:
-        "Directly determine market access requirements; guide development through policies and regulations",
       influence:
+        "Directly determine market access requirements; guide development through policies and regulations",
+      impact:
         "Short term: limited effects; Long term: effects on regulatory review and resource allocation",
     },
-    iconType: "policy",
   },
   {
     id: 6,
     name: "Commercialization and Resource Support Partners",
-    chineseName: "商业化与资源支持方",
-    color: "#ca8a04",
     tone: "yellow",
     coordinates: { interest: 7, influence: 8, impact: 6 },
     details: {
       interest:
         "Intellectual property, financing, and research commercialization",
-      impact:
-        "Directly influence funding and ownership rights; advance commercialization through resource networks",
       influence:
+        "Directly influence funding and ownership rights; advance commercialization through resource networks",
+      impact:
         "Short term: resources committed to evaluation; Long term: returns linked to commercialization",
     },
-    iconType: "finance",
   },
   {
     id: 7,
     name: "JLU-FBH Project Team",
-    chineseName: "JLU-FBH 项目团队",
-    color: "#8b5cf6",
     tone: "mauve",
     coordinates: { interest: 10, influence: 10, impact: 9 },
     details: {
       interest: "Scientific value, patient value, and project progress",
-      impact:
-        "Directly determines the technical approach; integrates external input through stakeholder collaboration",
       influence:
+        "Directly determines the technical approach; integrates external input through stakeholder collaboration",
+      impact:
         "Short term: responsibility for R&D investment; Long term: effects on project outcomes and partnerships",
     },
-    iconType: "team",
   },
 ];
 
@@ -320,24 +290,30 @@ export const entrepreneurshipPage: WikiPageContent = {
     {
       id: "circure-golden-circle",
       index: "03",
-      kicker: "Strategic Value",
-      title: "CirCure Value Proposition: Golden Circle",
-      summary:
-        "Aligning why TNBC calls for targeted intervention, what CirCure delivers as a multi-epitope circular RNA vaccine, and how our systematic engineering translates.",
+      kicker: "",
+      title: "The Golden Circle Framework",
+      summary: "",
       blocks: [{ type: "feature", key: "circure-golden-circle" }],
     },
     {
       id: "stakeholder-matrix-3d",
       index: "04",
-      kicker: "Stakeholder Ecosystem",
-      title: "Multi-Dimensional Stakeholder Analysis",
-      summary:
-        "Evaluating key stakeholder groups across Interest, Influence, and Impact to formulate balanced translation pathways and clinical adoption frameworks.",
+      kicker: "",
+      title: "Interest × Influence × Impact Framework",
+      summary: "",
       blocks: [{ type: "feature", key: "stakeholder-matrix-3d" }],
     },
     {
-      id: "venture-discovery",
+      id: "entrepreneurship-milestone",
       index: "05",
+      kicker: "",
+      title: "Milestone",
+      summary: "",
+      blocks: [{ type: "feature", key: "entrepreneurship-milestone" }],
+    },
+    {
+      id: "venture-discovery",
+      index: "06",
       kicker: "Problem discovery",
       title: "Do not confuse a disease burden with a customer need.",
       summary:
@@ -366,7 +342,7 @@ export const entrepreneurshipPage: WikiPageContent = {
     },
     {
       id: "venture-hypotheses",
-      index: "06",
+      index: "07",
       kicker: "Assumption ledger",
       title: "Test the riskiest assumption first.",
       summary:
@@ -401,7 +377,7 @@ export const entrepreneurshipPage: WikiPageContent = {
     },
     {
       id: "venture-roadmap",
-      index: "07",
+      index: "08",
       kicker: "Responsible roadmap",
       title: "Separate the next year from the final vision.",
       summary:
