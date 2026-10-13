@@ -350,7 +350,7 @@ export function animateTearCloud(
     frame.dataset.progress = p.toFixed(3);
     frame.dataset.phase = p === 0
       ? "idle"
-      : p < 0.7
+      : p < 0.4
         ? "disperse"
         : p < 1
           ? "map-reveal"
@@ -380,13 +380,14 @@ export function animateTearCloud(
     source.style.opacity = String(
       1 - smooth(particlePass ? 0.18 : 0, particlePass ? 0.36 : 0.7, p),
     );
-    // Gather the pigment first, then let the completed cloud reveal its map.
+    // Reveal the map while the pigment gathers; a small cloud alone leaves
+    // the middle of the viewport empty during a slow scroll or pause.
     destination.style.opacity = "1";
     destination.style.setProperty(
       "--tear-cloud-map-reveal",
-      String(smooth(0.7, 1, p)),
+      String(smooth(particlePass ? 0.4 : 0.22, 1, p)),
     );
-    cloud.style.opacity = String(smooth(particlePass ? 0.62 : 0.22, 0.7, p));
+    cloud.style.opacity = String(smooth(particlePass ? 0.5 : 0.22, 0.7, p));
     renderParticles(smooth(0, 0.7, p));
   };
   const boundaryGuard = createHomeScrubBoundaryGuard(
