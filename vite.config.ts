@@ -100,6 +100,8 @@ export default () => {
       },
     },
     build: {
+      target: "esnext",
+      minify: process.platform === "win32" ? false : "esbuild",
       rollupOptions: {
         input: {
           wiki: resolve("index.html"),
