@@ -61,9 +61,14 @@ function MediaGrid({ group }: { group: MediaGroup }) {
         const src = educationAssetUrl(item.src);
         if (item.kind === "pdf") {
           const title = "title" in item ? String(item.title) : "Education PDF";
+          const cover = /\.pdf$/i.test(item.src)
+            ? educationAssetUrl(item.src.replace(/\.pdf$/i, ".webp"))
+            : null;
           return (
             <figure className="education-media-grid__pdf" key={`${src}-${index}`}>
-              <iframe src={`${src}#toolbar=0`} title={title} loading="lazy" />
+              {cover
+                ? <a className="education-media-grid__pdf-cover" href={src} target="_blank" rel="noreferrer" aria-label={`Open ${title} PDF`}><img src={cover} alt={`${title} cover`} loading="lazy" decoding="async" /></a>
+                : <iframe src={`${src}#toolbar=0`} title={title} loading="lazy" />}
               <figcaption><a href={src} target="_blank" rel="noreferrer">{title} ↗</a></figcaption>
             </figure>
           );
