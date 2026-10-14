@@ -437,7 +437,7 @@ html {
   will-change: clip-path;
 }
 
-/* 右侧边缘柔和暗角过渡 + 1px 香槟金分界线 */
+/* 右侧边缘无竖线、同色温自然羽化过渡 */
 .roster-dialog__visual::after {
   position: absolute;
   z-index: 2;
@@ -445,18 +445,18 @@ html {
   background:
     linear-gradient(
       90deg,
-      transparent 76%,
-      rgba(17, 11, 13, 0.55) 94%,
-      rgba(17, 11, 13, 0.92) 100%
+      transparent 58%,
+      rgba(24, 15, 18, 0.48) 82%,
+      #180f12 100%
     ),
     linear-gradient(
       180deg,
-      rgba(14, 9, 10, 0.38) 0%,
-      transparent 22%,
+      rgba(14, 9, 10, 0.32) 0%,
+      transparent 20%,
       transparent 88%,
-      rgba(14, 9, 10, 0.35) 100%
+      rgba(14, 9, 10, 0.32) 100%
     );
-  border-right: 1px solid rgba(223, 186, 115, 0.2);
+  border-right: 0;
   content: "";
   pointer-events: none;
 }
