@@ -91,8 +91,7 @@ CirCure Wiki
     ├── 05.1 Entrepreneurship (/entrepreneurship) # 商业化落地构想、市场分析与转化蓝图
     ├── 05.2 Human Practices (/human-practices)   # 深入一线 Stakeholder 走访与伦理思辨闭环
     ├── 05.3 Education (/education)               # 生物科技通识教育、中小学科普与教材编写
-    ├── 05.4 Inclusivity (/inclusivity)           # 多元、包容性科学传播与无障碍行动
-    └── 05.5 Sustainability (/sustainability)     # 联合国可持续发展目标（SDG 9 / 12）量化评估
+    └── 05.4 Sustainability (/sustainability)     # 联合国可持续发展目标（SDG 9 / 12）量化评估
 ```
 
 ---

@@ -9,7 +9,6 @@ export function EngagementSignature({
     | "entrepreneurship"
     | "human-practices"
     | "education"
-    | "inclusivity"
     | "sustainability";
 }) {
   if (variant === "human-practices") {
@@ -28,29 +27,8 @@ export function EngagementSignature({
     );
   }
   if (variant === "education") return <DialogueLoop compact />;
-  if (variant === "inclusivity") return <BarrierMap compact />;
   if (variant === "sustainability") return <TradeoffOrbit compact />;
   return <AssumptionFunnel compact />;
-}
-
-export function DecisionProofTable() {
-  const rows = [
-    ["Purpose", "single target story", "clinical heterogeneity signal", "portfolio question", "DR–01"],
-    ["Design", "risk as prose", "delivery and specificity concern", "hard continuation gates", "SAFE–01"],
-    ["Execution", "one attractive readout", "mechanism critique", "separate assay dependencies", "EXP–03"],
-    ["Governance", "publication by default", "consent and missing voices", "tiered publication gate", "HP–04"],
-    ["Implementation", "ideal user", "workflow constraint", "adoption boundary", "IMP–02"],
-  ];
-  return (
-    <div className="feature-panel hp-decision-proof">
-      <header>
-        {['Layer', 'Before', 'Stakeholder signal', 'Decision', 'Primary proof'].map((label) => <span key={label}>{label}</span>)}
-      </header>
-      {rows.map((row) => (
-        <div key={row[0]}>{row.map((cell, index) => <span className={index === 4 ? "proof" : ""} key={cell}>{cell}</span>)}</div>
-      ))}
-    </div>
-  );
 }
 
 export function AssumptionFunnel({ compact = false }: { compact?: boolean }) {
@@ -85,20 +63,6 @@ export function DialogueLoop({ compact = false }: { compact?: boolean }) {
   );
 }
 
-export function BarrierMap({ compact = false }: { compact?: boolean }) {
-  return (
-    <figure className={`signature-panel signature-panel--engagement engagement-barrier-map ${compact ? "is-compact" : ""}`}>
-      <figcaption><span>Barrier map</span><strong>Access remains incomplete when a node is missing</strong></figcaption>
-      <svg viewBox="0 0 620 390" aria-hidden="true"><path d="M90 72L310 194L528 67M310 194L103 326M310 194L516 324" /></svg>
-      {[
-        ["language", "1"], ["cost", "2"], ["location", "3"], ["digital", "4"],
-      ].map(([label, pos]) => <span className={`node node--${pos}`} key={label}>{label}</span>)}
-      <span className="center">access</span>
-      <span className="missing">missing voice</span>
-    </figure>
-  );
-}
-
 export function TradeoffOrbit({ compact = false }: { compact?: boolean }) {
   const [focus, setFocus] = useState(0);
   const dimensions = ["environment", "society", "access", "economy"];
@@ -114,19 +78,5 @@ export function TradeoffOrbit({ compact = false }: { compact?: boolean }) {
       </div>
       <p>positive impact · negative impact · evidence status · next measure</p>
     </figure>
-  );
-}
-
-export function ConsentMatrix() {
-  return (
-    <div className="feature-panel feature-table engagement-consent-matrix">
-      <header><span>Participation</span><span>Publication</span><span>Required record</span></header>
-      {[
-        ["Conversation", "No quotation", "purpose + notes + retention"],
-        ["Attributed insight", "Role only", "explicit wording approval"],
-        ["Image / recording", "Named media", "separate media consent"],
-        ["Restricted evidence", "Not public", "access owner + reason"],
-      ].map((row) => <div key={row[0]}>{row.map((cell) => <span key={cell}>{cell}</span>)}</div>)}
-    </div>
   );
 }

@@ -1,9 +1,9 @@
 // Official iGEM CDN assets supplied with the Roster manuscript.
 export const rosterAssets: Record<string, string> = {
   "team-photo":
-    "https://static.igem.wiki/teams/6056/wiki/files/pages/team/team-heying.avif",
+    "https://static.igem.wiki/teams/6056/wiki/files/pages/team/team-heying-1.avif",
   "bin-liu":
-    "https://static.igem.wiki/teams/6056/wiki/files/pages/team/team-liubin.avif",
+    "https://static.igem.wiki/teams/6056/wiki/files/pages/team/team-lb.avif",
   "guoyue-lv":
     "https://static.igem.wiki/teams/6056/wiki/files/pages/team/team-lvguoyue.avif",
   "jiuwei-cui":
@@ -38,6 +38,8 @@ export const rosterAssets: Record<string, string> = {
     "https://static.igem.wiki/teams/6056/wiki/files/pages/team/team-5.avif",
   "jingtong-xu":
     "https://static.igem.wiki/teams/6056/wiki/files/pages/team/team-6.avif",
+  "jiayi-zhang":
+    "https://static.igem.wiki/teams/6056/wiki/files/pages/team/team-zhangjy-1.avif",
   "dry-lab":
     "https://static.igem.wiki/teams/6056/wiki/files/pages/team/team-dry.avif",
   "ouyang-li":

@@ -22,7 +22,6 @@ export type WikiVisual =
   | "venture-path"
   | "human-thread"
   | "education-dialogue"
-  | "inclusion-network"
   | "sustainability-radar";
 
 export type WikiSectionLayout =

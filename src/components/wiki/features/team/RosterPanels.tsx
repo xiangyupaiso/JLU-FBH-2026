@@ -498,7 +498,7 @@ function RosterPanels() {
         photo,
         {
           scale: 1.18,
-          filter: "blur(6px) brightness(0.65)",
+          filter: "blur(6px) brightness(1.06)",
           duration: 0.34,
           ease: "power3.in",
         },
@@ -670,7 +670,7 @@ function RosterPanels() {
             {
               scale: 1.28,
               x: -24,
-              filter: "blur(8px) brightness(0.65)",
+              filter: "blur(8px) brightness(1.06)",
             },
             {
               scale: 1.04,
@@ -916,7 +916,9 @@ function RosterPanels() {
                     className="roster-dialog__kicker"
                   >
                     <span className="roster-dialog__kicker-role">
-                      {collectionTitle
+                      {collectionTitle &&
+                      collectionTitle.toLowerCase() !==
+                        active.role.toLowerCase()
                         ? `${collectionTitle} · ${active.role}`
                         : active.role}
                     </span>

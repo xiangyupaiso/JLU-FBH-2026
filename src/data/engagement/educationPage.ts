@@ -5,7 +5,7 @@ import { educationSections } from "./educationSections";
 export const educationPage: WikiPageContent = {
   route: "/education",
   category: "engagement",
-  chapter: "Engagement / 03 of 05",
+  chapter: "Engagement / 03 of 04",
   eyebrow: "Education · Learning through participation",
   title: "Education",
   lede: "Different barriers call for different educational responses.",
@@ -21,8 +21,8 @@ export const educationPage: WikiPageContent = {
     { path: "/contribution", label: "Reusable materials" },
   ],
   next: {
-    path: "/inclusivity",
-    label: "Inclusivity",
-    title: "Who can participate—and who is still missing?",
+    path: "/sustainability",
+    label: "Sustainability",
+    title: "Which impacts persist beyond the project year?",
   },
 };

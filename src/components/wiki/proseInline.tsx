@@ -66,7 +66,7 @@ export function linkify(text: string): ReactNode {
         >
           {match[1]}
         </a>
-      ) : href.startsWith("/") ? (
+      ) : href.startsWith("/") && !isAsset ? (
         <Link
           className="wiki-prose-link wiki-prose-link--route"
           key={`l-${match.index}`}

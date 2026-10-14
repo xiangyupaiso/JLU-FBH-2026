@@ -1,7 +1,6 @@
 import educationHero from "../../assets/wiki/engagement-heroes/engagement-education-hero-v2.webp";
 const entrepreneurshipHero = "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/engagement-entrepreneurship-hero-v2-efb0a019ee72.webp";
 const humanPracticesHero = "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/engagement-human-practices-hero-v2-ce6ea8234186.webp";
-import inclusivityHero from "../../assets/wiki/engagement-heroes/engagement-inclusivity-hero-v2.webp";
 const sustainabilityHero = "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/engagement-sustainability-hero-v2-af187053f50d.webp";
 
 /**
@@ -17,14 +16,12 @@ export type EngagementHeroVariant =
   | "entrepreneurship"
   | "human-practices"
   | "education"
-  | "inclusivity"
   | "sustainability";
 
 const VARIANT_BY_ROUTE: Record<string, EngagementHeroVariant> = {
   "/entrepreneurship": "entrepreneurship",
   "/human-practices": "human-practices",
   "/education": "education",
-  "/inclusivity": "inclusivity",
   "/sustainability": "sustainability",
 };
 
@@ -32,7 +29,6 @@ const HERO_BY_VARIANT: Record<EngagementHeroVariant, string> = {
   entrepreneurship: entrepreneurshipHero,
   "human-practices": humanPracticesHero,
   education: educationHero,
-  inclusivity: inclusivityHero,
   sustainability: sustainabilityHero,
 };
 

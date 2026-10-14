@@ -484,7 +484,7 @@ export const entrepreneurshipDocuments: Record<
 export const entrepreneurshipPage: WikiPageContent = {
   route: "/entrepreneurship",
   category: "engagement",
-  chapter: "Engagement / 01 of 05",
+  chapter: "Engagement / 01 of 04",
   eyebrow: "Entrepreneurship · Validate the path",
   title: "Entrepreneurship",
   lede: "Test the path from need to adoption.",

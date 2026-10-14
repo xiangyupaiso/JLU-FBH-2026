@@ -3,7 +3,7 @@ import { useFooterPhotoTurn } from "../hooks/useFooterPhotoTurn";
 import "../styles/footer-photo-scene.css";
 
 const teamPhotoUrl =
-  "https://static.igem.wiki/teams/6056/wiki/files/pages/team/team-heying.avif";
+  "https://static.igem.wiki/teams/6056/wiki/files/pages/team/team-heying-1.avif";
 const lambUrl =
   "https://static.igem.wiki/teams/6056/wiki/files/pages/shared/lamb.webp";
 const hopeHandsUrl =

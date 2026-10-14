@@ -78,9 +78,6 @@ export const HumanPractices = lazy(() =>
 export const Education = lazy(() =>
   import("./education").then((m) => ({ default: m.Education })),
 );
-export const Inclusivity = lazy(() =>
-  import("./inclusivity").then((m) => ({ default: m.Inclusivity })),
-);
 export const Sustainability = lazy(() =>
   import("./sustainability").then((m) => ({ default: m.Sustainability })),
 );
