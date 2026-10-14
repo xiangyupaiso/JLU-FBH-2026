@@ -384,8 +384,8 @@ export const entrepreneurshipHighlights: EntrepreneurshipHighlight[] = [
     question:
       "Has the team discovered their first potential customers and identified any unmet needs not yet covered by other existing solutions?",
     paragraphs: [
-      "**Yes.** Our team discovered **Jilin Jika Biotechnology Co., Ltd.** and **Jilin Jien Zhihe Biotherapy Technology Co., Ltd.** as our first potential customers — both have signed a letter of intent with us — through a patient-first process: conversations with **Dr. Lei Wang** (Department of Oncology, the First Hospital of Jilin University) narrowed \"TNBC\" into one specific clinical decision point, and we then worked outward to the companies able to carry such a candidate forward. Research hospitals are our validation tier; the patients below are the end beneficiaries. (see [[see:Primary Customer Segment|primary-customer-segment]])",
-      "The unmet need is equally specific: TNBC patients still carrying **residual invasive disease after neoadjuvant therapy and surgery**, whose recurrence risk does not end when their treatment does. Pembrolizumab, capecitabine and olaparib each help part of this group, but eligibility stays gated by treatment stage and molecular features. Shared-antigen vaccines such as STEMVAC and ITI-5000 fix their antigens without patient-level HLA matching; personalised neoantigen vaccines buy that fit with per-patient manufacture. **In the programmes we could identify, none combines post-surgical risk stratification, TAA and HLA matching, and multi-epitope circRNA design to serve one defined population** — the gap CirCure occupies, as an addition to standard of care, not a replacement. (see [[see:Unmet Needs|unmet-needs-first-customers]])",
+      "**Yes.** Our team discovered **Jilin Jika Biotechnology Co., Ltd.** and **Jilin Jien Zhihe Biotherapy Technology Co., Ltd.** as our first potential customers — both have signed a letter of intent with us — through a patient-first process: conversations with **Dr. Lei Wang** (Department of Oncology, the First Hospital of Jilin University) narrowed \"TNBC\" into one specific clinical decision point, and we then worked outward to the companies able to carry such a candidate forward. Research hospitals are our validation tier; the patients below are the end beneficiaries.",
+      "The unmet need is equally specific: TNBC patients still carrying **residual invasive disease after neoadjuvant therapy and surgery**, whose recurrence risk does not end when their treatment does. Pembrolizumab, capecitabine and olaparib each help part of this group, but eligibility stays gated by treatment stage and molecular features. Shared-antigen vaccines such as STEMVAC and ITI-5000 fix their antigens without patient-level HLA matching; personalised neoantigen vaccines buy that fit with per-patient manufacture. **In the programmes we could identify, none combines post-surgical risk stratification, TAA and HLA matching, and multi-epitope circRNA design to serve one defined population** — the gap CirCure occupies, as an addition to standard of care, not a replacement.",
     ],
   },
   {
@@ -394,9 +394,9 @@ export const entrepreneurshipHighlights: EntrepreneurshipHighlight[] = [
       "Has the team shown that their solution is possible, scalable and inventive?",
     paragraphs: [
       "**Yes.** We have considered all three in full: feasibility tested against experimental evidence and clinical judgement, scalability across production, technology, demand, opportunity, risk and finance, and originality that runs through the whole development path.",
-      "**Possible:** CirCure exists as a tested construct, not a proposal. Circularisation is confirmed three independent ways — RNase R resistance, divergent- versus convergent-primer RT-qPCR, and sequencing across the back-splice junction — and all 15 candidate epitopes were ranked by measured IFN-γ ELISpot response rather than by prediction. Clinical and industry advisers, among them **Prof. Jiuwei Cui** and **Prof. Fei Ma**, have reviewed the route, and the clinical entry point CirCure targets already exist in post-surgical care, using tests a breast centre can already run. (see [[see:Technology|technology]])",
-      "**Scalable:** We tested this on every axis scalability has. Production: the circularisation reaction is enzyme-free and runs in a device we designed to keep it consistent as batch size grows. Technology: design, TAA/HLA matching and epitope selection are standardised, so a new antigen set does not mean a new platform. Demand: the high-risk post-surgical TNBC population is defined, and it is reached through tests breast centres already run. Opportunity: those same capabilities transfer to further candidates and indications once the first is validated. Risk: TAA/HLA coverage and CMC maturity are the binding limits, and we set out how each is verified and controlled. Finance: licensing and co-development revenue arrives at milestones long before any product revenue. (see [[see:Scalability|scalability]])",
-      "**Inventive:** The original idea in CirCure is not circRNA but an inversion: pathology, recurrence risk, TAA expression and HLA background do not filter patients after a vaccine is designed — they define the product before it exists. That places us deliberately between fixed shared-antigen vaccines and per-patient neoantigen vaccines, on a route neither school occupies. The skill is in restraint: \"multi-epitope\" means curated, not accumulated, and an epitope that adds construct, analysis and quality-control burden without adding patient coverage is cut. The imagination is refusing to stop at the molecule —The invention extends into the **CircRNA Vaccine Design System**, which records why a candidate was chosen and why it later changed, and into a **circularisation device** that turns a bench reaction into a repeatable one. (see [[see:Inventive|inventive]])",
+      "**Possible:** CirCure exists as a tested construct, not a proposal. Circularisation is confirmed three independent ways — RNase R resistance, divergent- versus convergent-primer RT-qPCR, and sequencing across the back-splice junction — and all 15 candidate epitopes were ranked by measured IFN-γ ELISpot response rather than by prediction. Clinical and industry advisers, among them **Prof. Jiuwei Cui** and **Prof. Fei Ma**, have reviewed the route, and the clinical entry point CirCure targets already exist in post-surgical care, using tests a breast centre can already run.",
+      "**Scalable:** We tested this on every axis scalability has. Production: the circularisation reaction is enzyme-free and runs in a device we designed to keep it consistent as batch size grows. Technology: design, TAA/HLA matching and epitope selection are standardised, so a new antigen set does not mean a new platform. Demand: the high-risk post-surgical TNBC population is defined, and it is reached through tests breast centres already run. Opportunity: those same capabilities transfer to further candidates and indications once the first is validated. Risk: TAA/HLA coverage and CMC maturity are the binding limits, and we set out how each is verified and controlled. Finance: licensing and co-development revenue arrives at milestones long before any product revenue.",
+      "**Inventive:** The original idea in CirCure is not circRNA but an inversion: pathology, recurrence risk, TAA expression and HLA background do not filter patients after a vaccine is designed — they define the product before it exists. That places us deliberately between fixed shared-antigen vaccines and per-patient neoantigen vaccines, on a route neither school occupies. The skill is in restraint: \"multi-epitope\" means curated, not accumulated, and an epitope that adds construct, analysis and quality-control burden without adding patient coverage is cut. The imagination is refusing to stop at the molecule —The invention extends into the **CircRNA Vaccine Design System**, which records why a candidate was chosen and why it later changed, and into a **circularisation device** that turns a bench reaction into a repeatable one.",
     ],
   },
   {
@@ -407,7 +407,6 @@ export const entrepreneurshipHighlights: EntrepreneurshipHighlight[] = [
       "Yes. We have set out a **five-year development path**.The roadmap runs from late 2025 to 2030 in six parallel streams, so entrepreneurship and partnership work advances alongside the science rather than after it — from platform construction through candidate validation and IND preparation to early clinical exploration.",
       "The First Hospital of Jilin University supplies the early site, funding and clinical platform; specialist laboratories, CRO/CDMO and industry partners enter as delivery, CMC, quality and regulatory work begins, with funding released against technical progress rather than committed in advance.",
       "**Risks** are scored by impact and likelihood across five domains — candidate identity, manufacturability, TAA/HLA coverage, safety and funding continuity — and each carries both a mitigation and a decision rule.",
-      "(see [[see:Milestone|milestone]], [[see:Risk Analysis|risk-analysis]],  [[see:Key Resources|business-model]])",
     ],
   },
   {
@@ -417,7 +416,6 @@ export const entrepreneurshipHighlights: EntrepreneurshipHighlight[] = [
     paragraphs: [
       "We investigated the capabilities needed to develop CirCure from an early-stage candidate into a real product and compared them with our team’s existing capabilities. This helped us identify gaps and prompted us to actively gain experience in product development and entrepreneurship. With support from Bethune First Hospital of Jilin University, participation in the iGEM Entrepreneurship Workshop, and ongoing discussions with clinical and industry professionals, we have gradually built a professional network to support CirCure’s continued development.",
       "We also identified and contacted external stakeholders needed for the project’s development, enabling CirCure to access support beyond our team’s existing capabilities, from specialized validation to industrial translation and business development.",
-      "(see [[see:Skills, Capabilities & Stakeholders|skills-capabilities-stakeholders]])",
     ],
   },
   {
@@ -427,7 +425,6 @@ export const entrepreneurshipHighlights: EntrepreneurshipHighlight[] = [
     paragraphs: [
       "Yes. We assessed what a fully developed CirCure could contribute. For high-risk TNBC patients meeting the screening conditions, it would add an antigen-specific option alongside standard care and make patient–candidate matching explicit rather than assumed; the approach itself is reusable, and the clinic–laboratory–industry collaboration behind it is an outcome in its own right (SDG 3, 9 and 17).",
       "However, like any new therapeutic technology, it raises scientific and social challenges — cross-reactivity, the long-term safety of circRNA and its delivery, and the manufacturing complexity of a multi-epitope construct; then the testing burden screening creates, the patients it may exclude, the sensitivity of the data, and the trust an early-stage vaccine must earn. Each has a defined response built into our development decisions.",
-      "(see [[see:Long-Term Impacts|positive-long-term-impacts]], [[see:Potential Problems & Their Solutions|potential-problems-and-solutions]])",
     ],
   },
 ];
@@ -608,12 +605,6 @@ export const entrepreneurshipPage: WikiPageContent = {
           ],
         },
         {
-          type: "prose",
-          paragraphs: [
-            "(See more in [Integrated Human Practices](/human-practices).)",
-          ],
-        },
-        {
           type: "figure",
           src: entrepreneurshipAssets.illustrations.who,
           alt: "Diagram defining CirCure's target patient population",
@@ -624,12 +615,6 @@ export const entrepreneurshipPage: WikiPageContent = {
           id: "empathy-map",
           index: "3.3.2",
           title: "Empathy Map",
-        },
-        {
-          type: "prose",
-          paragraphs: [
-            "[Explore the Empathy Map](https://gamestorming.com/empathy-mapping/)",
-          ],
         },
         {
           type: "prose",
@@ -655,12 +640,6 @@ export const entrepreneurshipPage: WikiPageContent = {
           id: "value-proposition-canvas",
           index: "3.4",
           title: "Value Proposition Canvas",
-        },
-        {
-          type: "prose",
-          paragraphs: [
-            "[Explore the Value Proposition Canvas](https://www.strategyzer.com/library/the-value-proposition-canvas)",
-          ],
         },
         {
           type: "prose",
@@ -1302,12 +1281,6 @@ export const entrepreneurshipPage: WikiPageContent = {
           type: "prose",
           paragraphs: [
             "Through in-depth discussions with **Yongli Jia, a manager at Hualan Biological Engineering, Inc.**, we gained a more systematic understanding of risk management, particularly risk quantification, risk management practices, and response planning. Mr. Jia emphasized that modern businesses face a wide range of risks and that effectively identifying and addressing these risks has become critical to success, especially for technology-driven innovative companies.",
-          ],
-        },
-        {
-          type: "prose",
-          paragraphs: [
-            "(See more in [Integrated Human Practices](/human-practices).)",
           ],
         },
         {
