@@ -138,3 +138,17 @@
   transition: none !important;
   will-change: auto !important;
 }
+
+/* Match the shared editorial figure caption used by Entrepreneurship. */
+.wiki-page--model .wiki-prose p:has(.model-figure-caption),
+.wiki-page--model .trop2-viewer-caption {
+  font-family: var(--font-sans);
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: color-mix(in srgb, var(--ink) 85%, transparent);
+  text-align: center;
+}
+.wiki-page--model .trop2-viewer-footer::before {
+  content: none;
+  display: none;
+}
