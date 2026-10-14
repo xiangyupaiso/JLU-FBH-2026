@@ -5,9 +5,7 @@
   "type": "module",
   "packageManager": "yarn@1.22.22",
   "scripts": {
-    "predev": "node scripts/virtual-lab-vendor.mjs restore",
     "dev": "vite",
-    "prebuild": "node scripts/virtual-lab-vendor.mjs restore",
     "build": "node ./node_modules/typescript/bin/tsc && node ./node_modules/vite/bin/vite.js build && node scripts/postbuild-slug.mjs",
     "lint": "eslint . --max-warnings 0",
     "test:page-loading": "node --test scripts/verify-page-image-loading.mjs",

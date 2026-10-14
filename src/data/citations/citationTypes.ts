@@ -35,7 +35,7 @@ export interface CitationReference {
 
 export type CitationSegment =
   | { kind: "text"; text: string }
-  | { kind: "cite"; text: string; refId: number };
+  | { kind: "cite"; text: string; refId: number; refIds?: readonly number[] };
 
 export interface CitationOccurrence {
   occId: string;

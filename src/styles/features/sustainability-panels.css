@@ -2086,3 +2086,673 @@ a.sust-sdg-pill:focus-visible {
     max-width: none;
   }
 }
+
+/* ==========================================================================
+   SDG 4 — activity cards: event meta, audience and teaching resources
+   ========================================================================== */
+
+.sust-stake-card__event {
+  flex-basis: 100%;
+  margin: 5px 0 0;
+  color: var(--route-muted);
+  font-size: 12.5px;
+  line-height: 1.5;
+}
+
+.sust-stake-card__resources-hint {
+  margin-top: 4px;
+  color: var(--route-muted);
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.sust-stake-card__resource-btns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px !important;
+}
+
+.sust-stake-card__resource-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 14px;
+  border: 1px solid color-mix(in srgb, var(--route-accent) 45%, var(--route-line));
+  border-radius: var(--radius-control, 8px);
+  background: #fff;
+  color: var(--route-accent);
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.4;
+  text-decoration: none;
+  transition:
+    background-color var(--duration-fast, 160ms) var(--ease-out, ease),
+    border-color var(--duration-fast, 160ms) var(--ease-out, ease);
+}
+
+.sust-stake-card__resource-btn:hover {
+  background: var(--route-panel);
+  border-color: var(--route-accent);
+}
+
+.sust-stake-card__resource-btn:focus-visible {
+  outline: 2px solid var(--route-accent);
+  outline-offset: 2px;
+}
+
+/* ==========================================================================
+   SDG 4 — education panel: resource showcases, audience groups, evidence
+   ========================================================================== */
+
+.sust-edu {
+  display: grid;
+  gap: 24px;
+}
+
+.sust-edu-resource-grid {
+  display: grid;
+  gap: 22px;
+}
+
+.sust-edu-resource {
+  padding: clamp(18px, 2.4vw, 26px);
+  border: 1px solid var(--route-line);
+  border-top: 3px solid var(--route-main);
+  border-radius: 12px;
+  background: #fff;
+}
+
+.sust-edu-resource__title {
+  margin: 0 0 12px;
+  color: var(--route-heading-ink, var(--route-ink));
+  font-family: var(--font-sans);
+  font-size: 19px;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.sust-edu-resource .wiki-prose {
+  margin: 0;
+}
+
+.sust-edu-resource__figure {
+  margin: 14px 0 0;
+}
+
+.sust-edu-resource__figure img {
+  border-radius: 10px;
+}
+
+.sust-edu-resource__games {
+  display: inline-flex;
+  margin-top: 14px;
+  padding: 8px 18px;
+  border: 1px solid color-mix(in srgb, var(--route-accent) 45%, var(--route-line));
+  border-radius: var(--radius-control, 8px);
+  background: #fff;
+  color: var(--route-accent);
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.sust-edu-resource__games:hover {
+  background: var(--route-panel);
+}
+
+.sust-edu-resource__games:focus-visible {
+  outline: 2px solid var(--route-accent);
+  outline-offset: 2px;
+}
+
+/* Picture book CN/EN PDFs side by side (manuscript instruction). */
+.sust-edu-resource__pdfs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.sust-edu-group {
+  display: grid;
+  gap: 14px;
+}
+
+.sust-edu-group__title {
+  margin: 12px 0 0;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--route-line);
+  color: var(--route-subheading-ink, var(--route-accent));
+  font-family: var(--font-sans);
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.sust-edu-group .wiki-prose,
+.sust-edu-closing .wiki-prose {
+  margin: 0;
+}
+
+.sust-edu-inline-link {
+  color: #c5192d;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.sust-edu-closing {
+  display: grid;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.sust-evidence__item-title {
+  margin: 0 0 6px;
+  color: var(--route-heading-ink, var(--route-ink));
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+/* ==========================================================================
+   SDG 4 — five-bookmark feedback microplate cards
+   Ported from 五书签卡片组件_修复版.html; palette retuned to the official SDG 4
+   red family. All selectors stay scoped under .edu-feedback.
+   ========================================================================== */
+
+.sust-consequences .edu-feedback {
+  margin: 20px 0 8px;
+}
+
+.edu-feedback {
+  --ef-accent: #c5192d;
+  --ef-rail: #fdf1f0;
+  --ef-paper: #ffffff;
+  --ef-ink: #5f3d3d;
+  --ef-muted: #8a6f68;
+  --ef-rule: #eed8d4;
+  color: var(--ef-ink);
+  font-size: 16px;
+  line-height: 1.6;
+  width: 100%;
+  min-width: 0;
+}
+
+.edu-feedback[data-scroll-deck] {
+  height: calc(var(--ef-height, 620px) + var(--ef-travel, 0px));
+  overflow-anchor: none;
+}
+
+.edu-feedback[data-scroll-deck] .ef-card {
+  position: sticky;
+  top: var(--ef-top, 24px);
+}
+
+.edu-feedback *,
+.edu-feedback *::before,
+.edu-feedback *::after {
+  box-sizing: border-box;
+}
+
+.edu-feedback .ef-tabs {
+  display: grid;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+}
+
+.edu-feedback .ef-card {
+  display: grid;
+  grid-template-columns: 216px minmax(0, 1fr);
+  position: relative;
+  min-width: 0;
+  min-height: 620px;
+  border: 1px solid var(--ef-rule);
+  border-top: 3px solid var(--ef-accent);
+  border-radius: 12px;
+  background: var(--ef-paper);
+  box-shadow: 0 5px 18px rgb(120 45 45 / 5%);
+  isolation: isolate;
+}
+
+.edu-feedback .ef-rail {
+  min-width: 0;
+  background: var(--ef-rail);
+  border-radius: 9px 0 0 11px;
+  padding: 24px 17px;
+}
+
+.edu-feedback .ef-tab {
+  position: relative;
+  isolation: isolate;
+  min-height: 103px;
+  width: 100%;
+  margin: 0;
+  padding: 13px 17px 23px;
+  border: 0;
+  background: transparent;
+  color: #5c2a2a;
+  font-family: inherit;
+  font-size: 17px;
+  line-height: 1.28;
+  font-weight: 600;
+  text-align: left;
+  cursor: pointer;
+  touch-action: manipulation;
+  filter: drop-shadow(0 3px 3px rgb(169 54 34 / 7%));
+  transition: transform 140ms ease;
+}
+
+.edu-feedback .ef-tab::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(145deg, #fffdfc, #fdeceb);
+  border: 1px solid #f1d3cf;
+  border-radius: 7px 7px 0 0;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 50% calc(100% - 13px), 0 100%);
+}
+
+.edu-feedback .ef-tab[aria-selected="true"]::before {
+  background: linear-gradient(145deg, #ffdcd6, #f9bdb4);
+  border-left: 3px solid var(--ef-accent);
+  border-right-color: #e7a39a;
+  border-top-color: #e7a39a;
+}
+
+.edu-feedback .ef-tab[aria-selected="true"] {
+  font-weight: 700;
+}
+
+.edu-feedback .ef-tab::after {
+  content: "";
+  position: absolute;
+  top: 1px;
+  right: 1px;
+  width: 12px;
+  height: 12px;
+  background: #f3d2cc;
+  clip-path: polygon(0 0, 100% 100%, 0 100%);
+  border-radius: 0 5px 0 2px;
+  pointer-events: none;
+}
+
+.edu-feedback .ef-tab[aria-selected="true"]::after {
+  background: #e29a90;
+}
+
+.edu-feedback .ef-tab:hover {
+  transform: translateX(2px);
+}
+
+.edu-feedback .ef-tab:not([aria-selected="true"]):hover::before {
+  background: #ffe2de;
+}
+
+.edu-feedback .ef-tab:focus-visible {
+  outline: 2px solid #8c3b3b;
+  outline-offset: 3px;
+  border-radius: 5px;
+}
+
+.edu-feedback .ef-tab-number {
+  display: block;
+  margin-bottom: 6px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 24px;
+  line-height: 1;
+  font-weight: 700;
+}
+
+.edu-feedback .ef-content,
+.edu-feedback .ef-panel {
+  min-width: 0;
+}
+
+.edu-feedback .ef-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.edu-feedback .ef-panel {
+  width: 100%;
+  scroll-margin-top: 20px;
+}
+
+.edu-feedback .ef-panel[hidden] {
+  display: none !important;
+}
+
+.edu-feedback .ef-panel[data-active] {
+  animation: efPanelIn 220ms cubic-bezier(0.2, 0.65, 0.3, 1);
+}
+
+@keyframes efPanelIn {
+  from {
+    transform: translateY(18px);
+    opacity: 0.35;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.edu-feedback .ef-panel:focus-visible {
+  outline: 2px solid #8c3b3b;
+  outline-offset: -6px;
+}
+
+.edu-feedback .ef-body {
+  min-width: 0;
+  padding: 27px 30px 24px;
+}
+
+.edu-feedback .ef-title {
+  margin: 0 0 12px;
+  color: var(--ef-ink);
+  font: 700 clamp(28px, 2.7vw, 36px) / 1.25 Georgia, "Times New Roman", serif;
+  overflow-wrap: anywhere;
+}
+
+.edu-feedback .ef-title-number {
+  color: var(--ef-accent);
+  margin-right: 8px;
+}
+
+.edu-feedback .ef-question {
+  margin: 0 0 24px;
+  color: var(--ef-ink);
+  font-family: inherit;
+  font-size: clamp(18px, 1.7vw, 22px);
+  font-weight: 400;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.edu-feedback .ef-data {
+  display: grid;
+  grid-template-columns: minmax(0, 1.45fr) minmax(210px, 1fr);
+  gap: 27px;
+  align-items: center;
+}
+
+.edu-feedback .ef-table {
+  align-self: center;
+  border-collapse: collapse;
+  width: 100%;
+  color: var(--ef-ink);
+  font: inherit;
+  font-size: 14px;
+  line-height: 1.45;
+  table-layout: fixed;
+}
+
+.edu-feedback .ef-figure {
+  margin: 0;
+  min-width: 0;
+}
+
+.edu-feedback .ef-plate {
+  display: grid;
+  grid-template-columns: 16px repeat(12, minmax(0, 1fr));
+  gap: clamp(4px, 0.65vw, 9px);
+  width: 100%;
+  min-width: 0;
+  align-items: center;
+}
+
+.edu-feedback .ef-axis {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ef-muted);
+  font: 12px/1 var(--font-sans, "Segoe UI", sans-serif);
+  min-width: 0;
+  height: 18px;
+}
+
+.edu-feedback .ef-well {
+  display: grid;
+  place-items: center;
+  aspect-ratio: 1;
+  width: 100%;
+  min-width: 0;
+  border-radius: 50%;
+  background: var(--well-fill);
+  color: var(--well-ink);
+  font: 700 clamp(11px, 1.2vw, 17px)/1 var(--font-sans, "Segoe UI", sans-serif);
+}
+
+.edu-feedback .ef-well svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* SDG 4 red ramp — option letters cycle A … G. */
+.edu-feedback .ef-well[data-color="0"],
+.edu-feedback .ef-key[data-color="0"] {
+  --well-fill: #de5a44;
+  --well-ink: #fff;
+}
+
+.edu-feedback .ef-well[data-color="1"],
+.edu-feedback .ef-key[data-color="1"] {
+  --well-fill: #f0917a;
+  --well-ink: #5c2a2a;
+}
+
+.edu-feedback .ef-well[data-color="2"],
+.edu-feedback .ef-key[data-color="2"] {
+  --well-fill: #c5192d;
+  --well-ink: #fff;
+}
+
+.edu-feedback .ef-well[data-color="3"],
+.edu-feedback .ef-key[data-color="3"] {
+  --well-fill: #f8c4bb;
+  --well-ink: #5c2a2a;
+}
+
+.edu-feedback .ef-well[data-color="4"],
+.edu-feedback .ef-key[data-color="4"] {
+  --well-fill: #8e1b29;
+  --well-ink: #fff;
+}
+
+.edu-feedback .ef-well[data-color="5"],
+.edu-feedback .ef-key[data-color="5"] {
+  --well-fill: #fce3de;
+  --well-ink: #5c2a2a;
+}
+
+.edu-feedback .ef-well[data-color="6"],
+.edu-feedback .ef-key[data-color="6"] {
+  --well-fill: #b04a38;
+  --well-ink: #fff;
+}
+
+.edu-feedback .ef-table th,
+.edu-feedback .ef-table td {
+  border: 0;
+  border-bottom: 1px solid #f4e8e6;
+  padding: 10px 0;
+  vertical-align: top;
+  overflow-wrap: anywhere;
+  background: transparent;
+}
+
+.edu-feedback .ef-table th {
+  color: var(--ef-muted);
+  font-size: 12px;
+  text-align: left;
+  font-weight: 400;
+}
+
+.edu-feedback .ef-table .ef-count,
+.edu-feedback .ef-table .ef-share {
+  text-align: right;
+  width: 48px;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+.edu-feedback .ef-table .ef-share {
+  width: 57px;
+}
+
+.edu-feedback .ef-table td.ef-count {
+  font-weight: 700;
+}
+
+.edu-feedback .ef-option {
+  display: grid;
+  grid-template-columns: 22px minmax(0, 1fr);
+  align-items: start;
+  gap: 8px;
+  padding-right: 7px;
+}
+
+.edu-feedback .ef-key {
+  display: grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  font: 700 12px/1 var(--font-sans, "Segoe UI", sans-serif);
+}
+
+.edu-feedback .ef-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (max-width: 1050px) {
+  .edu-feedback .ef-card {
+    grid-template-columns: 176px minmax(0, 1fr);
+  }
+
+  .edu-feedback .ef-rail {
+    padding: 24px 12px;
+  }
+
+  .edu-feedback .ef-tab {
+    padding: 13px 12px 24px;
+    font-size: 16px;
+  }
+
+  .edu-feedback .ef-body {
+    padding: 25px 22px 21px;
+  }
+
+  .edu-feedback .ef-data {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 19px;
+  }
+
+  .edu-feedback .ef-table {
+    font-size: 15px;
+  }
+
+  .edu-feedback .ef-table .ef-count {
+    width: 70px;
+  }
+
+  .edu-feedback .ef-table .ef-share {
+    width: 76px;
+  }
+}
+
+@media (max-width: 650px) {
+  .edu-feedback .ef-card {
+    grid-template-columns: 88px minmax(0, 1fr);
+    min-height: 540px;
+  }
+
+  .edu-feedback .ef-rail {
+    padding: 15px 7px;
+  }
+
+  .edu-feedback .ef-tabs {
+    gap: 9px;
+  }
+
+  .edu-feedback .ef-tab {
+    min-height: 93px;
+    padding: 11px 7px 23px;
+    font-size: 12px;
+  }
+
+  .edu-feedback .ef-tab-number {
+    font-size: 21px;
+  }
+
+  .edu-feedback .ef-body {
+    padding: 18px 11px;
+  }
+
+  .edu-feedback .ef-title {
+    font-size: 24px;
+  }
+
+  .edu-feedback .ef-question {
+    margin-bottom: 18px;
+    font-size: 17px;
+  }
+
+  .edu-feedback .ef-plate {
+    gap: 2px;
+    grid-template-columns: 10px repeat(12, minmax(0, 1fr));
+  }
+
+  .edu-feedback .ef-axis {
+    font-size: 11px;
+  }
+
+  .edu-feedback .ef-table {
+    font-size: 12px;
+  }
+
+  .edu-feedback .ef-table .ef-count {
+    width: 31px;
+  }
+
+  .edu-feedback .ef-table .ef-share {
+    width: 40px;
+  }
+
+  .edu-feedback .ef-option {
+    grid-template-columns: 18px minmax(0, 1fr);
+    gap: 4px;
+    padding-right: 2px;
+  }
+
+  .edu-feedback .ef-key {
+    width: 18px;
+    height: 18px;
+    font-size: 11px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .edu-feedback .ef-tab {
+    transition: none;
+  }
+
+  .edu-feedback .ef-panel[data-active] {
+    animation: none;
+  }
+}

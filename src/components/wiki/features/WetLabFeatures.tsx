@@ -89,7 +89,6 @@ export function FiveGateMap({ compact = false }: { compact?: boolean }) {
     </figure>
   );
 }
-
 export function NotebookTrace({ compact = false }: { compact?: boolean }) {
   const records = [
     ["12 Mar", "NB–01", "Construct acceptance", "design", "recorded"],
@@ -433,5 +432,3 @@ export function SafetyNoGoLedger() {
     </div>
   );
 }
-
-export { PlatformOrbit, PlatformWorkflow, PlatformEvidenceMatrix } from "./wet-lab/AlternativePlatformPanels";

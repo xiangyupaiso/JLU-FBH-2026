@@ -7,6 +7,37 @@ import "../../../../styles/features/education-media.css";
 type Gallery = (typeof galleries)[number];
 type MediaGroup = (typeof mediaGroups)[number];
 
+function useNearViewport<T extends HTMLElement>() {
+  const ref = useRef<T>(null);
+  const [near, setNear] = useState(false);
+  useEffect(() => {
+    const element = ref.current;
+    if (!element) return;
+    if (!("IntersectionObserver" in window)) {
+      setNear(true);
+      return;
+    }
+    const observer = new IntersectionObserver(([entry]) => setNear(entry.isIntersecting), { rootMargin: "400px 0px" });
+    observer.observe(element);
+    return () => observer.disconnect();
+  }, []);
+  return { ref, near };
+}
+
+function DocumentCover({ source, title }: { source: string; title: string }) {
+  const webp = educationAssetUrl(source.replace(/\.pdf$/i, ".webp"));
+  const candidates = [webp, webp.replace(/\.webp$/i, ".avif")];
+  const [candidate, setCandidate] = useState(0);
+  if (candidate >= candidates.length) return <span className="education-media-grid__pdf-missing">Cover unavailable · Open PDF</span>;
+  return <img
+    src={candidates[candidate]}
+    alt={`${title} cover`}
+    loading="lazy"
+    decoding="async"
+    onError={() => setCandidate((current) => current + 1)}
+  />;
+}
+
 const interactivePages = {
   "education-interactive-map": {
     title: "Community & Educational Function Map",
@@ -26,54 +57,55 @@ const interactivePages = {
 } as const;
 
 function InteractivePage({ item }: { item: (typeof interactivePages)[keyof typeof interactivePages] }) {
-  const container = useRef<HTMLElement>(null);
   const [html, setHtml] = useState("");
-  useEffect(() => {
-    let active = true;
-    const load = () => { void item.load().then((value) => { if (active) setHtml(value); }); };
-    if (!container.current || !("IntersectionObserver" in window)) {
-      load();
-      return () => { active = false; };
+  const [status, setStatus] = useState<"idle" | "loading" | "ready" | "error">("idle");
+  const load = async () => {
+    setStatus("loading");
+    try {
+      setHtml(await item.load());
+      setStatus("ready");
+    } catch {
+      setStatus("error");
     }
-    const observer = new IntersectionObserver((entries) => {
-      if (entries.some((entry) => entry.isIntersecting)) {
-        observer.disconnect();
-        load();
-      }
-    }, { rootMargin: "500px" });
-    observer.observe(container.current);
-    return () => { active = false; observer.disconnect(); };
-  }, [item]);
+  };
   return (
-    <section className="education-interactive" aria-label={item.title} ref={container}>
+    <section className="education-interactive" aria-label={item.title}>
       <div className="education-interactive__head">
         <strong>{item.title}</strong>
       </div>
-      {html ? <iframe srcDoc={html} title={item.title} loading="lazy" sandbox="allow-scripts allow-popups" style={{ height: item.height }} />
-        : <div className="education-interactive__loading" style={{ minHeight: item.height }}>Loading interactive activity…</div>}
+      {status === "ready" && html ? <iframe srcDoc={html} title={item.title} loading="lazy" sandbox="allow-scripts allow-popups" style={{ height: item.height }} />
+        : <div className="education-interactive__launch">
+            <p>{status === "loading" ? "Loading activity…" : status === "error" ? "This activity could not load. Please try again." : "Explore this activity here on the Education page."}</p>
+            <button type="button" onClick={() => { void load(); }} disabled={status === "loading"}>
+              {status === "error" ? "Try again" : "Play here"}
+            </button>
+          </div>}
     </section>
   );
 }
 
 function MediaGrid({ group }: { group: MediaGroup }) {
   const allPdf = group.items.every((item) => item.kind === "pdf");
+  const { ref, near } = useNearViewport<HTMLDivElement>();
   return (
-    <div className="education-media-grid" data-count={group.items.length} data-pdf={allPdf || undefined}>
+    <div className="education-media-grid" data-count={group.items.length} data-pdf={allPdf || undefined} ref={ref}>
       {group.items.map((item, index) => {
         const src = educationAssetUrl(item.src);
         if (item.kind === "pdf") {
-          const filename = src.split("/").at(-1) ?? "";
-          const preview = educationAssetUrl(`pdf-previews/${filename.replace(/\.pdf$/i, ".webp")}`);
+          const title = "title" in item ? String(item.title) : "Education PDF";
+          const hasCover = /\.pdf$/i.test(item.src);
           return (
-            <a className="education-media-grid__pdf" href={src} target="_blank" rel="noreferrer" key={`${src}-${index}`}>
-              <img src={preview} alt="" loading="lazy" decoding="async" />
-              <span>{"title" in item ? item.title : filename}</span>
-            </a>
+            <figure className="education-media-grid__pdf" key={`${src}-${index}`}>
+              {hasCover
+                ? <a className="education-media-grid__pdf-cover" href={src} target="_blank" rel="noreferrer" aria-label={`Open ${title} PDF`}>{near ? <DocumentCover source={item.src} title={title} /> : <span className="education-media-grid__placeholder" />}</a>
+                : near ? <iframe src={`${src}#toolbar=0`} title={title} loading="lazy" /> : <span className="education-media-grid__placeholder" />}
+              <figcaption><a href={src} target="_blank" rel="noreferrer">{title} ↗</a></figcaption>
+            </figure>
           );
         }
         return (
           <figure className="education-media-grid__image" key={`${src}-${index}`}>
-            <img src={src} alt={"alt" in item ? item.alt : "Education illustration"} loading="lazy" decoding="async" />
+            {near ? <img src={src} alt={"alt" in item ? item.alt : "Education illustration"} loading="lazy" decoding="async" /> : <span className="education-media-grid__placeholder education-media-grid__placeholder--image" />}
             {"caption" in item && item.caption ? <figcaption>{item.caption}</figcaption> : null}
           </figure>
         );
@@ -85,6 +117,7 @@ function MediaGrid({ group }: { group: MediaGroup }) {
 function PhotoGallery({ gallery }: { gallery: Gallery }) {
   const [index, setIndex] = useState(0);
   const [touchStart, setTouchStart] = useState<number | null>(null);
+  const { ref, near } = useNearViewport<HTMLElement>();
   const photos = gallery.images;
   const count = photos.length;
   const go = (step: number) => setIndex((current) => (current + step + count) % count);
@@ -94,11 +127,14 @@ function PhotoGallery({ gallery }: { gallery: Gallery }) {
     if (Math.abs(distance) > 45) go(distance < 0 ? 1 : -1);
     setTouchStart(null);
   };
-  const photo = photos[index];
-  const src = educationAssetUrl(`galleries/${photo.file}`);
+  const visible = [-1, 0, 1].map((offset) => ({
+    offset,
+    photoIndex: (index + offset + count) % count,
+  }));
   return (
     <figure
       className="education-gallery"
+      ref={ref}
       aria-label={`${gallery.title} photographs`}
       tabIndex={0}
       onKeyDown={(event) => {
@@ -109,12 +145,22 @@ function PhotoGallery({ gallery }: { gallery: Gallery }) {
       onTouchEnd={onTouchEnd}
     >
       <div className="education-gallery__stage">
-        <img src={src} alt={photo.caption} loading="lazy" decoding="async" />
+        {visible.map(({ offset, photoIndex }) => {
+          const photo = photos[photoIndex];
+          return <button
+            type="button"
+            className={`education-gallery__card education-gallery__card--${offset === 0 ? "active" : offset < 0 ? "previous" : "next"}`}
+            key={`${photo.file}-${offset}`}
+            onClick={() => offset && go(offset)}
+            aria-label={offset === 0 ? photo.caption : `${offset < 0 ? "Previous" : "Next"}: ${photo.caption}`}
+            tabIndex={offset === 0 ? -1 : 0}
+          >{near ? <img src={educationAssetUrl(`galleries/${photo.file}`)} alt={photo.caption} loading="lazy" decoding="async" /> : null}</button>;
+        })}
         <button type="button" className="education-gallery__arrow education-gallery__arrow--prev" onClick={() => go(-1)} aria-label={`Previous ${gallery.title} photograph`}>‹</button>
         <button type="button" className="education-gallery__arrow education-gallery__arrow--next" onClick={() => go(1)} aria-label={`Next ${gallery.title} photograph`}>›</button>
       </div>
       <figcaption>
-        <span>{photo.caption}</span>
+        <span>{photos[index].caption}</span>
         <span>{index + 1} / {count}</span>
       </figcaption>
     </figure>
@@ -153,6 +199,7 @@ export function educationFeatures() {
 }
 
 export function renderEducationInline(text: string, fallback: (value: string) => ReactNode): ReactNode {
+  text = text.replace(/\*\*(?=\[[^\]]+\]\()/g, "").replace(/(?<=\))\*\*/g, "");
   if (!text.includes("$")) return fallback(text);
   return text.split(/(\$[^$]+\$)/g).map((part, index) => {
     if (!part.startsWith("$") || !part.endsWith("$")) return <span key={index}>{fallback(part)}</span>;

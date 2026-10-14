@@ -633,3 +633,295 @@
     animation: none;
   }
 }
+
+/* Show the complete square stakeholder icon in the detail header. */
+.wiki-page .entrepreneurship-detail__image {
+  display: block;
+  width: 104px;
+  height: 104px;
+  max-width: 100%;
+  margin: 0 auto 14px;
+  border-radius: 7px;
+  object-fit: contain;
+  object-position: center;
+}
+
+/* Our Highlights, judging format: one question per row, the answer folded
+   until the reader asks for it. */
+.wiki-page .highlights-record {
+  margin: 0;
+}
+.wiki-page .highlights-record__item {
+  border: 1px solid rgb(74 44 29 / 14%);
+  border-radius: 12px;
+  background: rgb(255 253 247 / 72%);
+  transition: background-color 180ms ease, border-color 180ms ease;
+}
+.wiki-page .highlights-record__item.is-open {
+  border-color: color-mix(in srgb, var(--route-subheading-ink) 32%, transparent);
+  background: rgb(255 253 247 / 95%);
+}
+.wiki-page .highlights-record__item + .highlights-record__item {
+  margin-top: 12px;
+}
+.wiki-page .highlights-record__toggle {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  width: 100%;
+  min-height: 56px;
+  padding: 18px 20px;
+  border: 0;
+  border-radius: 11px;
+  background: none;
+  color: inherit;
+  font-family: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 180ms ease, color 180ms ease;
+}
+.wiki-page .highlights-record__toggle:hover {
+  background: color-mix(in srgb, var(--route-subheading-ink) 5%, transparent);
+}
+.wiki-page .highlights-record__toggle:focus-visible {
+  outline: 2px solid var(--route-subheading-ink);
+  outline-offset: 3px;
+}
+.wiki-page .highlights-record__toggle:active {
+  background: color-mix(in srgb, var(--route-subheading-ink) 9%, transparent);
+}
+.wiki-page .highlights-record__question {
+  flex: 1;
+  min-width: 0;
+  color: var(--route-heading-ink);
+  font-size: 15.5px;
+  font-weight: 600;
+  line-height: 1.55;
+}
+.wiki-page .highlights-record__toggle svg {
+  flex: none;
+  align-self: center;
+  box-sizing: content-box;
+  width: 16px;
+  height: 16px;
+  padding: 7px;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--route-subheading-ink) 7%, transparent);
+  fill: none;
+  stroke: var(--route-subheading-ink);
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: transform 180ms ease;
+}
+.wiki-page .highlights-record__item.is-open .highlights-record__toggle svg {
+  transform: rotate(180deg);
+}
+.wiki-page .highlights-record__answer {
+  padding: 0 20px 20px;
+}
+.wiki-page .highlights-record__answer p {
+  margin: 0 0 12px;
+  font-size: 15.5px;
+  line-height: 1.75;
+}
+.wiki-page .highlights-record__answer p:last-child {
+  margin-bottom: 0;
+}
+
+/* Page links keep the shared semantics, with the Engagement palette. */
+.wiki-page--entrepreneurship a.wiki-cite {
+  white-space: nowrap;
+  font-size: 0.78em;
+  line-height: 0;
+  vertical-align: super;
+}
+.wiki-page--entrepreneurship :is(.wiki-prose-link, .wiki-chapter-link--inline) {
+  color: var(--route-subheading-ink);
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: color-mix(in srgb, var(--route-subheading-ink) 40%, transparent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+  overflow-wrap: anywhere;
+  border-radius: 3px;
+  transition: color 160ms ease, text-decoration-color 160ms ease, background-color 160ms ease;
+}
+.wiki-page--entrepreneurship :is(.wiki-prose-link, .wiki-chapter-link--inline):is(:hover, :focus-visible) {
+  color: var(--route-heading-ink);
+  text-decoration-color: currentColor;
+  background-color: color-mix(in srgb, var(--route-subheading-ink) 6%, transparent);
+}
+.wiki-page--entrepreneurship :is(.wiki-prose-link, .wiki-chapter-link--inline, .wiki-reference-item__link):focus-visible {
+  outline: 2px solid var(--route-subheading-ink);
+  outline-offset: 4px;
+}
+.wiki-page--entrepreneurship .wiki-prose-link[target="_blank"]::after {
+  content: "\00a0↗";
+  display: inline-block;
+  font-size: 0.85em;
+  text-decoration: none;
+}
+.wiki-page--entrepreneurship .wiki-chapter-link--inline::after {
+  content: "\00a0→";
+  display: inline-block;
+  font-size: 0.9em;
+  text-decoration: none;
+}
+.wiki-page--entrepreneurship p > .wiki-prose-link:only-child {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  min-height: 44px;
+  max-width: 100%;
+  padding: 8px 14px;
+  border: 1px solid color-mix(in srgb, var(--route-subheading-ink) 22%, transparent);
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--route-subheading-ink) 4%, transparent);
+  font-size: 0.92em;
+  text-decoration: none;
+}
+.wiki-page--entrepreneurship .wiki-reference-item__link {
+  overflow-wrap: anywhere;
+  color: var(--route-subheading-ink);
+}
+@media (max-width: 640px) {
+  .wiki-page .highlights-record__toggle {
+    align-items: flex-start;
+    gap: 12px;
+    padding: 16px;
+  }
+  .wiki-page .highlights-record__toggle svg {
+    align-self: flex-start;
+  }
+  .wiki-page .highlights-record__answer {
+    padding: 0 16px 16px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .wiki-page .highlights-record__item,
+  .wiki-page .highlights-record__toggle,
+  .wiki-page .highlights-record__toggle svg,
+  .wiki-page--entrepreneurship :is(.wiki-prose-link, .wiki-chapter-link--inline) {
+    transition: none;
+  }
+}
+
+/* Business Model Canvas: figure stays visible; the nine written elaborations
+   collapse into one disclosure the reader expands with a single click. */
+.wiki-page .business-model-canvas {
+  margin: 0;
+}
+.wiki-page .business-model-canvas__figure {
+  margin: 0;
+}
+.wiki-page .business-model-canvas__figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid rgb(74 44 29 / 10%);
+  border-radius: 9px;
+  background: #fffdf7;
+}
+.wiki-page .business-model-canvas__toggle {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  margin-top: 14px;
+  padding: 12px 16px;
+  border: 1px solid rgb(74 44 29 / 16%);
+  border-radius: 8px;
+  background: rgb(255 253 247 / 88%);
+  color: var(--route-heading-ink, #4a2c1d);
+  font-family: var(--font-sans, sans-serif);
+  font-size: 15px;
+  line-height: 1.5;
+  text-align: left;
+  cursor: pointer;
+  transition:
+    background 140ms ease,
+    border-color 140ms ease;
+}
+.wiki-page .business-model-canvas__toggle:hover {
+  background: rgb(74 44 29 / 5%);
+  border-color: rgb(74 44 29 / 28%);
+}
+.wiki-page .business-model-canvas__toggle svg {
+  flex: none;
+  width: 15px;
+  height: 15px;
+  fill: none;
+  stroke: currentcolor;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: transform 180ms ease;
+}
+.wiki-page .business-model-canvas__toggle[aria-expanded="true"] svg {
+  transform: rotate(180deg);
+}
+.wiki-page .business-model-canvas__body {
+  padding: 4px 2px 0;
+}
+.wiki-page .business-model-canvas__section {
+  margin-top: 22px;
+}
+.wiki-page .business-model-canvas__section:first-child {
+  margin-top: 14px;
+}
+.wiki-page .business-model-canvas__section h4 {
+  margin: 0 0 8px;
+  color: var(--route-heading-ink, #4a2c1d);
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+.wiki-page .business-model-canvas__section p {
+  margin: 0 0 12px;
+  font-size: 15.5px;
+  line-height: 1.75;
+}
+
+/* Thank-you letter laid over the signed massage paper. */
+.wiki-page .thank-you-note {
+  margin: 0;
+  padding: clamp(28px, 4vw, 52px) clamp(20px, 5vw, 72px);
+  border-radius: 10px;
+  background-image: var(--thanks-bg);
+  background-size: cover;
+  background-position: center;
+}
+.wiki-page .thank-you-note__paper {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: clamp(24px, 3.4vw, 44px) clamp(22px, 4vw, 52px);
+  border-radius: 8px;
+  background: rgb(255 253 247 / 86%);
+  backdrop-filter: blur(3px);
+}
+.wiki-page .thank-you-note__paper h3 {
+  margin: 0 0 18px;
+  color: var(--route-heading-ink, #4a2c1d);
+  font-size: clamp(19px, 2vw, 22px);
+  line-height: 1.4;
+  text-align: center;
+}
+.wiki-page .thank-you-note__paper p {
+  margin: 0 0 14px;
+  font-size: 15.5px;
+  line-height: 1.8;
+}
+.wiki-page .thank-you-note__paper .thank-you-note__sign-off {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+  margin-top: 22px;
+  margin-bottom: 0;
+  text-align: right;
+}
+.wiki-page .thank-you-note__paper .thank-you-note__sign-off span {
+  display: block;
+}

@@ -22,6 +22,5 @@ export const NAV_ICONS: Record<string, string> = {
   Entrepreneurship: `${CDN_BASE}/nav-entrepreneurship.webp`,
   "Human Practices": `${CDN_BASE}/nav-human-practices.webp`,
   Education: `${CDN_BASE}/nav-education.webp`,
-  Inclusivity: `${CDN_BASE}/nav-inclusivity.webp`,
   Sustainability: `${CDN_BASE}/nav-sustainability.webp`,
 };

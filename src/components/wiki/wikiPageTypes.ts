@@ -22,7 +22,6 @@ export type WikiVisual =
   | "venture-path"
   | "human-thread"
   | "education-dialogue"
-  | "inclusion-network"
   | "sustainability-radar";
 
 export type WikiSectionLayout =
@@ -74,6 +73,7 @@ export interface WikiReferenceEntry {
  */
 export type WikiContentBlock =
   | { type: "prose"; paragraphs: string[] }
+  | { type: "quote"; text: string }
   | { type: "list"; items: string[]; ordered?: boolean; start?: number }
   | { type: "code"; language?: string; code: string; label?: string }
   | {
@@ -139,6 +139,7 @@ export type WikiContentBlock =
       index: string;
       kicker?: string;
       title: string;
+      level?: 3 | 4;
       anchorIds?: string[];
     }
   | { type: "feature"; key: string }
@@ -204,6 +205,11 @@ export interface WikiSection {
    * manuscript template ignores it, and no Wet Lab section sets it.
    */
   hideSectionNumber?: boolean;
+  /**
+   * Drops the entire section heading header. Used for visual-first full-page
+   * features (e.g. Roster) where an overarching section title is redundant.
+   */
+  hideHeading?: boolean;
   navLabel?: string;
   /**
    * Full-bleed photo masthead rendered above the section heading, with an

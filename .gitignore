@@ -28,17 +28,6 @@ outputs/
 # iSpring's unused, image-inlined slide backups. The live player loads data/.
 public/virtual-lab/experiment9-assets/ispring/data.local-only/
 
-# Generated iSpring runtime code is restored from virtual-lab/vendor/ispring-code.br.
-/public/virtual-lab/experiment4_html/*.html
-/public/virtual-lab/experiment4_html/data/*.js
-/public/virtual-lab/experiment4_html/data/*.css
-/public/virtual-lab/experiment4_html/data/*.html
-/public/virtual-lab/experiment9-assets/ispring/*.html
-/public/virtual-lab/experiment9-assets/ispring/data/*.js
-/public/virtual-lab/experiment9-assets/ispring/data/*.css
-/public/virtual-lab/experiment9-assets/ispring/data/*.html
-
-
 # Scratch space for the scripts/ verification harnesses and for builds that
 # must keep esbuild's temp files inside the workspace.
 .tmp-verify/

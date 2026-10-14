@@ -1,15 +1,31 @@
 /* eslint-disable react-refresh/only-export-components */
-import { useId, type ReactNode } from "react";
+import { useId, useState, type CSSProperties, type ReactNode } from "react";
 import {
+  businessModelCanvas,
   entrepreneurshipConcerns,
+  entrepreneurshipDocuments,
+  entrepreneurshipHighlights,
   entrepreneurshipImpacts,
+  entrepreneurshipPage,
+  entrepreneurshipThankYouNote,
+  type EntrepreneurshipDocumentKey,
   type EntrepreneurshipOrbitTopic,
 } from "../../../../data/engagement/entrepreneurshipPage";
+import { entrepreneurshipReferences } from "../../../../data/engagement/entrepreneurshipReferences";
 import {
-  AssumptionFunnel,
-  DecisionProofTable,
-  TradeoffOrbit,
-} from "../EngagementFeatures";
+  buildNumericCitationIndex,
+  reportCitationIssues,
+} from "../../../../data/citations/citationIndex";
+import {
+  CitationReferenceList,
+  createCitationRenderer,
+  type CitationFlashTint,
+} from "../../citations/CitationRegister";
+import {
+  linkify,
+  renderInlineFormatting as renderEmphasis,
+} from "../../proseInline";
+import { DocumentViewer } from "../../documents/DocumentViewer";
 import { CirCureGoldenCircle } from "./CirCureGoldenCircle";
 import { StakeholderMatrix3D } from "./StakeholderMatrix3D";
 import {
@@ -226,15 +242,201 @@ export function PositiveLongTermImpacts() {
 export { CirCureGoldenCircle } from "./CirCureGoldenCircle";
 export { StakeholderMatrix3D } from "./StakeholderMatrix3D";
 
+/** Warm peacock-teal landing flash belonging to the Engagement palette. */
+const ENTREPRENEURSHIP_CITATION_FLASH: CitationFlashTint = {
+  ramp: "rgba(23, 74, 71, 0.16)",
+  ring: "0 0 0 3px rgba(23, 74, 71, 0.38)",
+};
+
+const entrepreneurshipCitationIndex = buildNumericCitationIndex(
+  entrepreneurshipPage.sections,
+  entrepreneurshipReferences,
+);
+reportCitationIssues("entrepreneurship", entrepreneurshipCitationIndex);
+
+const renderNumberedCitation = createCitationRenderer(
+  entrepreneurshipCitationIndex,
+  ENTREPRENEURSHIP_CITATION_FLASH,
+);
+
+/** Shared numeric citations, previews and bibliography backlinks. */
+export const renderEntrepreneurshipInline = renderNumberedCitation;
+
+/**
+ * Business Model Canvas: the canvas figure stays visible, while the nine
+ * written elaborations beneath it collapse into a single disclosure — one
+ * click expands the whole block, as the manuscript asks.
+ */
+export function BusinessModelCanvas() {
+  const [open, setOpen] = useState(false);
+  const regionId = useId();
+  return (
+    <div className="business-model-canvas" data-wiki-reveal>
+      <figure className="business-model-canvas__figure">
+        <img
+          src={businessModelCanvas.image}
+          alt={businessModelCanvas.imageAlt}
+          loading="lazy"
+        />
+      </figure>
+      <button
+        type="button"
+        className="business-model-canvas__toggle"
+        aria-expanded={open}
+        aria-controls={regionId}
+        onClick={() => setOpen((value) => !value)}
+      >
+        <span>{businessModelCanvas.prompt}</span>
+        <svg viewBox="0 0 16 16" aria-hidden="true">
+          <path d="m4 6 4 4 4-4" />
+        </svg>
+      </button>
+      <div
+        id={regionId}
+        className={`business-model-canvas__body${open ? " is-open" : ""}`}
+        hidden={!open}
+      >
+        {businessModelCanvas.sections.map((section) => (
+          <section key={section.id} className="business-model-canvas__section">
+            <h4>{section.title}</h4>
+            {section.paragraphs.map((paragraph, index) => (
+              <p key={index}>{renderEmphasis(paragraph)}</p>
+            ))}
+          </section>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+/** The team's thank-you letter, laid over the signed massage paper. */
+export function ThankYouNote() {
+  return (
+    <div
+      className="thank-you-note"
+      data-wiki-reveal
+      style={
+        {
+          "--thanks-bg": `url(${entrepreneurshipThankYouNote.background})`,
+        } as CSSProperties
+      }
+    >
+      <div className="thank-you-note__paper">
+        <h3>{entrepreneurshipThankYouNote.title}</h3>
+        {entrepreneurshipThankYouNote.paragraphs.map((paragraph, index) => (
+          <p key={index}>{renderEmphasis(paragraph)}</p>
+        ))}
+        <p className="thank-you-note__sign-off">
+          {entrepreneurshipThankYouNote.signOff.map((line, index) => (
+            <span key={index}>{renderEmphasis(line)}</span>
+          ))}
+        </p>
+      </div>
+    </div>
+  );
+}
+
+/**
+ * Our Highlights, in judging format: the record shows one question per row and
+ * keeps the team's answer folded until the reader asks for it — one row open
+ * at a time, like a judgeship Q&A sheet.
+ */
+export function OurHighlights() {
+  const [openId, setOpenId] = useState<string | null>(null);
+  return (
+    <div className="highlights-record" data-wiki-reveal>
+      {entrepreneurshipHighlights.map((item) => {
+        const open = openId === item.id;
+        return (
+          <article
+            key={item.id}
+            className={`highlights-record__item${open ? " is-open" : ""}`}
+          >
+            <button
+              type="button"
+              id={`${item.id}-toggle`}
+              className="highlights-record__toggle"
+              aria-expanded={open}
+              aria-controls={`${item.id}-answer`}
+              onClick={() => setOpenId(open ? null : item.id)}
+            >
+              <span className="highlights-record__question">
+                {item.question}
+              </span>
+              <svg viewBox="0 0 16 16" aria-hidden="true">
+                <path d="m4 6 4 4 4-4" />
+              </svg>
+            </button>
+            <div
+              id={`${item.id}-answer`}
+              role="region"
+              aria-labelledby={`${item.id}-toggle`}
+              className="highlights-record__answer"
+              hidden={!open}
+            >
+              {item.paragraphs.map((paragraph, paragraphIndex) => (
+                <p key={paragraphIndex}>
+                  {renderEntrepreneurshipInline(paragraph, linkify)}
+                </p>
+              ))}
+            </div>
+          </article>
+        );
+      })}
+    </div>
+  );
+}
+
+/** One manuscript document housed in the wiki's shared collapsible PDF card. */
+function EntrepreneurshipDocumentCard({
+  docKey,
+}: {
+  docKey: EntrepreneurshipDocumentKey;
+}) {
+  const document = entrepreneurshipDocuments[docKey];
+  return (
+    <div data-wiki-reveal>
+      <DocumentViewer
+        document={{
+          caption: document.caption,
+          url: document.url,
+          downloadUrl: document.url,
+        }}
+      />
+    </div>
+  );
+}
+
+/** The bibliography on the shared citation register (hover, flash, back-links). */
+function EntrepreneurshipReferenceList() {
+  return (
+    <div data-wiki-reveal>
+      <CitationReferenceList
+        references={entrepreneurshipReferences}
+        index={entrepreneurshipCitationIndex}
+        tint={ENTREPRENEURSHIP_CITATION_FLASH}
+      />
+    </div>
+  );
+}
+
 export function entrepreneurshipFeatures(): Record<string, ReactNode> {
   return {
+    "our-highlights": <OurHighlights />,
     "potential-problems-and-solutions": <PotentialProblemsAndSolutions />,
     "positive-long-term-impacts": <PositiveLongTermImpacts />,
     "circure-golden-circle": <CirCureGoldenCircle />,
     "stakeholder-matrix-3d": <StakeholderMatrix3D />,
     "entrepreneurship-milestone": <MilestoneTimeline />,
-    "venture-discovery": <AssumptionFunnel />,
-    "venture-hypotheses": <DecisionProofTable />,
-    "venture-roadmap": <TradeoffOrbit />,
+    "business-model-canvas": <BusinessModelCanvas />,
+    "thank-you-note": <ThankYouNote />,
+    "entrepreneurship-references": <EntrepreneurshipReferenceList />,
+    "doc-jika": <EntrepreneurshipDocumentCard docKey="jika" />,
+    "doc-jienzhihe": <EntrepreneurshipDocumentCard docKey="jienzhihe" />,
+    "doc-scalability": <EntrepreneurshipDocumentCard docKey="scalability" />,
+    "doc-business-plan": <EntrepreneurshipDocumentCard docKey="businessPlan" />,
+    "doc-ccic-poster": <EntrepreneurshipDocumentCard docKey="ccicPoster" />,
+    "doc-apic-poster": <EntrepreneurshipDocumentCard docKey="apicPoster" />,
+    "doc-legal-plan": <EntrepreneurshipDocumentCard docKey="legalPlan" />,
   };
 }

@@ -100,6 +100,8 @@ interface WikiRoutePageProps {
   content: WikiPageContent;
   /** Per-page full-bleed hero art; resolved by the module's asset map. */
   heroImage?: string;
+  /** Optional bundled image shown underneath the primary hero if its request fails. */
+  heroFallbackImage?: string;
   /**
    * Small images used only by an inactive tab or dialog. Hero and content
    * figures are collected automatically; do not list PDF or game resources.
@@ -125,6 +127,8 @@ interface WikiRoutePageProps {
   hideHeroCopy?: boolean;
   /** When true, subheadings within blocks are collapsed into accordion cards */
   collapsibleSubheadings?: boolean;
+  /** Sections whose subheadings should be rendered as collapsible drawers. */
+  collapsibleSubheadingSections?: readonly string[];
   /** Optional protocol pairs metadata to enable TOC preview and modal */
   protocolPairs?: ExperimentProtocolPair[];
   /**
@@ -454,6 +458,35 @@ function CodeBlock({
   );
 }
 
+/** Render manuscript blocks inside shared tabs and disclosures with the same
+ * formatting, citation context and figure semantics as the surrounding page. */
+export function WikiContentBlocks({ blocks, features = {}, sectionId }: {
+  blocks: readonly WikiContentBlock[];
+  features?: FeatureMap;
+  sectionId: string;
+}) {
+  return <>{blocks.map((block, index) => (
+    <RouteBlock key={index} block={block} features={features} sectionId={sectionId} />
+  ))}</>;
+}
+
+function EducationViewportFigureImage({ src, alt }: { src: string; alt: string }) {
+  const containerRef = useRef<HTMLSpanElement>(null);
+  const [near, setNear] = useState(false);
+  useEffect(() => {
+    const element = containerRef.current;
+    if (!element) return;
+    if (!("IntersectionObserver" in window)) {
+      setNear(true);
+      return;
+    }
+    const observer = new IntersectionObserver(([entry]) => setNear(entry.isIntersecting), { rootMargin: "400px 0px" });
+    observer.observe(element);
+    return () => observer.disconnect();
+  }, []);
+  return <span className="education-figure-window" ref={containerRef}>{near ? <img src={src} alt={alt} loading="lazy" decoding="async" /> : null}</span>;
+}
+
 function RouteBlock({
   block,
   features,
@@ -498,6 +531,12 @@ function RouteBlock({
         <div className="wiki-prose" data-wiki-reveal>
           {renderProseParagraphs(block.paragraphs, inline)}
         </div>
+      );
+    case "quote":
+      return (
+        <blockquote className="wiki-quote" data-wiki-reveal>
+          {inline ? inline(block.text, linkify) : linkify(block.text)}
+        </blockquote>
       );
     case "list": {
       const List = block.ordered ? "ol" : "ul";
@@ -551,12 +590,9 @@ function RouteBlock({
           className={`wiki-figure${block.figureLabel ? " wiki-figure--labelled" : ""}${block.src.includes("education-feedback-invitation") ? " wiki-figure--education-feedback" : ""}`}
           data-wiki-reveal
         >
-          <img
-            src={block.src}
-            alt={block.alt}
-            loading={block.src.includes("/assets/education/") ? "lazy" : "eager"}
-            decoding="async"
-          />
+          {block.src.includes("/engagement/education/figures/")
+            ? <EducationViewportFigureImage src={block.src} alt={block.alt} />
+            : <img src={block.src} alt={block.alt} loading={block.src.includes("/assets/education/") ? "lazy" : "eager"} decoding="async" />}
           {block.figureLabel ? (
             <figcaption>
               <span className="wiki-figure__label">{block.figureLabel}</span>
@@ -569,6 +605,17 @@ function RouteBlock({
           ) : block.caption || block.showFigureNumber ? (
             <figcaption>{block.caption}</figcaption>
           ) : null}
+        </figure>
+      );
+    case "carousel":
+      return (
+        <figure className="wiki-figure wiki-figure--carousel" data-wiki-reveal>
+          <div className="wiki-figure__row">
+            {block.images.map((img) => (
+              <img key={img.src} src={img.src} alt={img.alt ?? ""} loading="lazy" decoding="async" />
+            ))}
+          </div>
+          {block.caption ? <figcaption>{renderInlineFormatting(block.caption)}</figcaption> : null}
         </figure>
       );
     case "image-placeholder":
@@ -710,7 +757,7 @@ function RouteBlock({
           {block.label ? (
             <span className="wiki-callout__label">{block.label}</span>
           ) : null}
-          <p>{renderInlineFormatting(block.body)}</p>
+          <p>{inline ? inline(block.body, linkify) : linkify(block.body)}</p>
         </aside>
       );
     case "subheading":
@@ -991,6 +1038,7 @@ function RouteSection({
   features,
   scrollContainerRef,
   collapsibleSubheadings = false,
+  collapsibleSubheadingSections,
   openSubheadingIds,
   onToggleSubheading,
 }: {
@@ -999,6 +1047,7 @@ function RouteSection({
   features: FeatureMap;
   scrollContainerRef?: RefObject<HTMLElement | null>;
   collapsibleSubheadings?: boolean;
+  collapsibleSubheadingSections?: readonly string[];
   openSubheadingIds?: Set<string>;
   onToggleSubheading?: (id: string) => void;
 }) {
@@ -1010,7 +1059,9 @@ function RouteSection({
   );
 
   const shouldCollapseSubheadings = Boolean(
-    collapsibleSubheadings && blocks && firstSubIndex !== -1,
+    (collapsibleSubheadings || collapsibleSubheadingSections?.includes(section.id)) &&
+      blocks &&
+      firstSubIndex !== -1,
   );
 
   const { overviewBlocks, subheadingGroups } = useMemo(() => {
@@ -1066,24 +1117,26 @@ function RouteSection({
           </figcaption>
         </figure>
       ) : null}
-      <header
-        className={`wiki-section__heading${
-          section.hideSectionNumber ? " wiki-section__heading--unnumbered" : ""
-        }`}
-        data-wiki-reveal
-      >
-        {section.anchorIds?.map((anchorId) => (
-          <span className="wiki-anchor" id={anchorId} key={anchorId} />
-        ))}
-        {section.hideSectionNumber ? null : (
-          <span className="wiki-section-number" aria-hidden="true">
-            {String(Number.parseInt(section.index, 10)).padStart(2, "0")}
-          </span>
-        )}
-        <div className="wiki-section__heading-body">
-          <h2>{renderSectionTitle(section.title)}</h2>
-        </div>
-      </header>
+      {section.hideHeading ? null : (
+        <header
+          className={`wiki-section__heading${
+            section.hideSectionNumber ? " wiki-section__heading--unnumbered" : ""
+          }`}
+          data-wiki-reveal
+        >
+          {section.anchorIds?.map((anchorId) => (
+            <span className="wiki-anchor" id={anchorId} key={anchorId} />
+          ))}
+          {section.hideSectionNumber ? null : (
+            <span className="wiki-section-number" aria-hidden="true">
+              {String(Number.parseInt(section.index, 10)).padStart(2, "0")}
+            </span>
+          )}
+          <div className="wiki-section__heading-body">
+            <h2>{renderSectionTitle(section.title)}</h2>
+          </div>
+        </header>
+      )}
 
       {blocks ? (
         shouldCollapseSubheadings ? (
@@ -1167,6 +1220,7 @@ const MemoRouteSection = memo(RouteSection);
 export function WikiRoutePage({
   content,
   heroImage,
+  heroFallbackImage,
   preloadImages,
   deferContentImages = false,
   features = {},
@@ -1177,6 +1231,7 @@ export function WikiRoutePage({
   hideOutline = false,
   hideHeroCopy = false,
   collapsibleSubheadings = false,
+  collapsibleSubheadingSections,
   protocolPairs,
   inlineRenderer,
   outlineDepth,
@@ -1187,6 +1242,7 @@ export function WikiRoutePage({
   const imageSources = useMemo(
     () => [
       heroImage,
+      heroFallbackImage,
       ...(deferContentImages ? [] : wikiPageImages(content)),
       ...(preloadImages ?? []),
       ...(protocolPairs ?? []).flatMap((pair) => [
@@ -1194,7 +1250,7 @@ export function WikiRoutePage({
         ...(typeof pair.inventoryPage === "number" ? [experimentProtocolImage(pair.inventoryPage)] : []),
       ]),
     ],
-    [content, heroImage, preloadImages, protocolPairs, deferContentImages],
+    [content, heroImage, heroFallbackImage, preloadImages, protocolPairs, deferContentImages],
   );
   const rootRef = useRef<HTMLElement>(null);
   const interfaceRef = useRef<HTMLDivElement>(null);
@@ -1321,16 +1377,16 @@ export function WikiRoutePage({
     const nestedSubheadings: WikiLineSidebarItem[] = [];
     const subheadingById = new Map<string, WikiLineSidebarItem>();
     (subheadings ?? []).forEach((subheading) => {
-      const parentIndex = subheading.index.split(".").slice(0, -1).join(".");
-      const parent = subheadingByIndex.get(parentIndex);
       const child = {
         id: subheading.id,
         index: subheading.index,
         label: subheading.label,
         children: [] as WikiLineSidebarItem[],
       };
+      const parentIndex = child.index.split(".").slice(0, -1).join(".");
+      const parent = subheadingByIndex.get(parentIndex);
       subheadingById.set(child.id, child);
-      if (parent && !showAllOutlineHeadings) {
+      if (parent) {
         subheadingById.get(parent.id)?.children?.push(child);
       } else {
         nestedSubheadings.push(child);
@@ -1346,7 +1402,7 @@ export function WikiRoutePage({
     };
   });
   const heroStyle = heroImage
-    ? ({ "--route-hero-image": `url(${heroImage})` } as CSSProperties)
+    ? ({ "--route-hero-image": `url("${heroImage}")${heroFallbackImage ? `, url("${heroFallbackImage}")` : ""}` } as CSSProperties)
     : undefined;
 
   return (
@@ -1473,6 +1529,7 @@ export function WikiRoutePage({
                         features={features}
                         scrollContainerRef={scrollRef}
                         collapsibleSubheadings={collapsibleSubheadings}
+                        collapsibleSubheadingSections={collapsibleSubheadingSections}
                         openSubheadingIds={openSubheadingIds}
                         onToggleSubheading={toggleSubheading}
                       />

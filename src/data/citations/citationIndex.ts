@@ -18,8 +18,15 @@
  * which is why the data layer never has to carry citation metadata.
  */
 
-import type { CitationIndex, CitationReference, CitationSegment } from "./citationTypes";
-import type { WikiContentBlock, WikiSection } from "../../components/wiki/wikiPageTypes";
+import type {
+  CitationIndex,
+  CitationReference,
+  CitationSegment,
+} from "./citationTypes";
+import type {
+  WikiContentBlock,
+  WikiSection,
+} from "../../components/wiki/wikiPageTypes";
 
 /* --------------------------------------------------------------- assembly */
 
@@ -33,8 +40,17 @@ function assemble(
   sections: readonly WikiSection[],
   tokenize: ParagraphTokenizer,
 ): CitationIndex {
-  const byParagraph = new Map<string, { segments: CitationSegment[]; occs: import("./citationTypes").CitationOccurrence[] }>();
-  const byRef = new Map<number, import("./citationTypes").CitationOccurrence[]>();
+  const byParagraph = new Map<
+    string,
+    {
+      segments: CitationSegment[];
+      occs: import("./citationTypes").CitationOccurrence[];
+    }
+  >();
+  const byRef = new Map<
+    number,
+    import("./citationTypes").CitationOccurrence[]
+  >();
   const issues: string[] = [];
 
   const addOccurrence = (refId: number, sectionId: string) => {
@@ -56,8 +72,13 @@ function assemble(
       return;
     }
     const segments = tokenize(paragraph, (issue) => issues.push(issue));
-    if (import.meta.env.DEV && segments.map((s) => s.text).join("") !== paragraph) {
-      issues.push(`segments do not reconstruct the paragraph: ${paragraph.slice(0, 60)}`);
+    if (
+      import.meta.env.DEV &&
+      segments.map((s) => s.text).join("") !== paragraph
+    ) {
+      issues.push(
+        `segments do not reconstruct the paragraph: ${paragraph.slice(0, 60)}`,
+      );
     }
     if (!segments.some((segment) => segment.kind === "cite")) return;
 
@@ -66,16 +87,26 @@ function assemble(
         (segment): segment is Extract<CitationSegment, { kind: "cite" }> =>
           segment.kind === "cite",
       )
-      .map((segment) => addOccurrence(segment.refId, sectionId));
+      .flatMap((segment) =>
+        (segment.refIds ?? [segment.refId]).map((refId) =>
+          addOccurrence(refId, sectionId),
+        ),
+      );
 
     byParagraph.set(paragraph, { segments, occs });
   };
 
   const visitBlock = (block: WikiContentBlock, sectionId: string) => {
     if (block.type === "prose") {
-      block.paragraphs.forEach((paragraph) => visitParagraph(paragraph, sectionId));
+      block.paragraphs.forEach((paragraph) =>
+        visitParagraph(paragraph, sectionId),
+      );
+    } else if (block.type === "quote") {
+      visitParagraph(block.text, sectionId);
     } else if (block.type === "split") {
       block.prose.forEach((nested) => visitBlock(nested, sectionId));
+    } else if (block.type === "callout") {
+      visitParagraph(block.body, sectionId);
     }
   };
 
@@ -88,9 +119,10 @@ function assemble(
 
 /* ----------------------------------------------------------- numeric style */
 
-const MARKER_RE = /\[(\d{1,2})\]/g;
+const MARKER_RE =
+  /\[(\d{1,2}(?:\s*[–-]\s*\d{1,2})?(?:\s*,\s*\d{1,2}(?:\s*[–-]\s*\d{1,2})?)*)\]/g;
 
-/** Split on `[n]` markers, validating each against the reference list. */
+/** Resolve single, comma-separated and ranged markers without changing their text. */
 export function tokenizeNumericCitations(
   text: string,
   knownRefs: ReadonlySet<number>,
@@ -104,15 +136,35 @@ export function tokenizeNumericCitations(
   while ((match = MARKER_RE.exec(text)) !== null) {
     // `[label](url)` is a Markdown link, not a citation.
     if (text[match.index + match[0].length] === "(") continue;
-    const refId = Number(match[1]);
-    if (!knownRefs.has(refId)) {
-      onIssue?.(`no reference [${refId}]: ${text.slice(0, 60)}`);
+    const refIds: number[] = [];
+    let valid = true;
+    for (const item of match[1].split(/\s*,\s*/)) {
+      const [start, end = start] = item.split(/\s*[–-]\s*/).map(Number);
+      if (end < start) {
+        onIssue?.(`descending citation range [${item}]: ${text.slice(0, 60)}`);
+        valid = false;
+        break;
+      }
+      for (let refId = start; refId <= end; refId++) {
+        if (!knownRefs.has(refId)) {
+          onIssue?.(`no reference [${refId}]: ${text.slice(0, 60)}`);
+          valid = false;
+        }
+        if (!refIds.includes(refId)) refIds.push(refId);
+      }
+    }
+    if (!valid) {
       continue;
     }
     if (match.index > last) {
       segments.push({ kind: "text", text: text.slice(last, match.index) });
     }
-    segments.push({ kind: "cite", text: match[0], refId });
+    segments.push({
+      kind: "cite",
+      text: match[0],
+      refId: refIds[0],
+      ...(refIds.length > 1 ? { refIds } : {}),
+    });
     last = match.index + match[0].length;
   }
 
@@ -144,7 +196,7 @@ interface AuthorYearKey {
 
 const GROUP_RE = /\(([^()]*?\b(?:19|20)\d{2})\)/g;
 const ITEM_RE =
-  /^(?:(?<init>(?:\p{Lu}\.-?)+)\s+)?(?<sur>\p{Lu}[\p{L}'-]+)(?:\s+et al\.|\s+and\s+(?<second>\p{Lu}[\p{L}'-]+))?\s+(?<year>(?:19|20)\d{2})$/u;
+  /^(?:(?<init>(?:\p{Lu}\.-?)+)\s+)?(?<sur>\p{Lu}[\p{L}'-]*(?:\s+(?:(?!(?:et|and)\s)\p{Ll}[\p{L}'-]*\s+)?\p{Lu}[\p{L}'-]*)*)(?:\s+et al\.|\s+and\s+(?<second>\p{Lu}[\p{L}'-]+))?,?\s+(?<year>(?:19|20)\d{2})$/u;
 const BOLD_RE = /\*\*[^*]+?\*\*/g;
 const SEP_RE = /;\s*/g;
 
@@ -160,11 +212,13 @@ export function buildAuthorYearKeys(
     const surname = reference.authors.slice(0, comma).trim();
     const initials =
       comma >= 0
-        ? reference.authors.slice(comma + 1).split(/,|&| et al\./)[0].trim()
+        ? reference.authors
+            .slice(comma + 1)
+            .split(/,|&| et al\./)[0]
+            .trim()
         : "";
-    const amp = reference.authors.indexOf("&");
-    const second =
-      amp >= 0 ? reference.authors.slice(amp + 1).split(",")[0].trim() : undefined;
+    const second = reference.authors.match(/(?:&|\band)\s+([^,.]+)(?:,|$)/)?.[1]
+      .trim();
     const year = reference.volumeYear.match(/\((\d{4})\)/)?.[1] ?? "";
     return {
       id: reference.id,
@@ -178,17 +232,27 @@ export function buildAuthorYearKeys(
 
 type MatchResult = { id: number } | { reason: "unresolved" | "ambiguous" };
 
-function matchAuthorYear(item: string, keys: readonly AuthorYearKey[]): MatchResult {
+function matchAuthorYear(
+  item: string,
+  keys: readonly AuthorYearKey[],
+): MatchResult {
   const match = ITEM_RE.exec(nfc(item.trim()));
   if (!match?.groups) return { reason: "unresolved" };
-  const { sur, year, init, second } = match.groups as Record<string, string | undefined>;
+  const { sur, year, init, second } = match.groups as Record<
+    string,
+    string | undefined
+  >;
 
-  let candidates = keys.filter((key) => key.surname === sur && key.year === year);
+  let candidates = keys.filter(
+    (key) => key.surname === sur && key.year === year,
+  );
   if (init) {
     const wanted = normInitials(init);
     candidates = candidates.filter((key) => {
       const have = normInitials(key.initials);
-      return have === wanted || have.startsWith(wanted) || wanted.startsWith(have);
+      return (
+        have === wanted || have.startsWith(wanted) || wanted.startsWith(have)
+      );
     });
   }
   if (second) {
@@ -237,6 +301,8 @@ export function tokenizeAuthorYearCitations(
     const end = start + groupMatch[0].length;
     const inner = groupMatch[1];
 
+    if (!/\p{L}/u.test(inner)) continue;
+
     if (boldRanges.some(([from, to]) => start < to && end > from)) {
       onIssue?.(`citation inside bold text: ${inner}`);
       continue;
@@ -268,7 +334,11 @@ export function tokenizeAuthorYearCitations(
       if (index > 0) pushText(inner.slice(itemRanges[index - 1][1], from));
       const result = results[index];
       if (result && "id" in result) {
-        segments.push({ kind: "cite", text: inner.slice(from, to), refId: result.id });
+        segments.push({
+          kind: "cite",
+          text: inner.slice(from, to),
+          refId: result.id,
+        });
       }
     });
     // The closing parenthesis stays with the trailing text slice.
@@ -289,7 +359,10 @@ export function buildAuthorYearCitationIndex(
 }
 
 /** Log unresolved/ambiguous citations once per index, in development only. */
-export function reportCitationIssues(label: string, index: CitationIndex): void {
+export function reportCitationIssues(
+  label: string,
+  index: CitationIndex,
+): void {
   if (import.meta.env.DEV && index.issues.length) {
     console.error(`[citations:${label}]`, index.issues);
   }

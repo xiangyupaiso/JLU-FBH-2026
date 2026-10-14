@@ -182,10 +182,8 @@ const rawSections: WikiSection[] = [
         ]
       },
       {
-        "type": "prose",
-        "paragraphs": [
-          "[WP01_Recursive_Care_Preserving_the_Learner.pdf](__BASE__assets/education/wp01-recursive-care-preserving-the-learner-cover.pdf)"
-        ]
+        "type": "feature",
+        "key": "education-media-group-1"
       },
       {
         "type": "subheading",
@@ -426,10 +424,8 @@ const rawSections: WikiSection[] = [
         ]
       },
       {
-        "type": "prose",
-        "paragraphs": [
-          "[WP02_From_Community_to_Portfolio.pdf](__BASE__assets/education/wp02-from-community-to-portfolio-cover.pdf)"
-        ]
+        "type": "feature",
+        "key": "education-media-group-2"
       },
       {
         "type": "feature",
@@ -899,10 +895,8 @@ const rawSections: WikiSection[] = [
         ]
       },
       {
-        "type": "prose",
-        "paragraphs": [
-          "[小小科学家——给细菌拍身份证_English_Final.pptx](__BASE__assets/education/little-scientist-bacteria-id.pptx)"
-        ]
+        "type": "feature",
+        "key": "education-media-group-3"
       },
       {
         "type": "prose",
@@ -1050,7 +1044,7 @@ const rawSections: WikiSection[] = [
       },
       {
         "type": "feature",
-        "key": "education-media-group-1"
+        "key": "education-media-group-4"
       },
       {
         "type": "figure",
@@ -1147,7 +1141,7 @@ const rawSections: WikiSection[] = [
         "type": "subheading",
         "id": "design-2",
         "index": "3.2.2.2",
-        "title": "**DESIGN：**"
+        "title": "DESIGN："
       },
       {
         "type": "subheading",
@@ -1301,7 +1295,7 @@ const rawSections: WikiSection[] = [
       },
       {
         "type": "feature",
-        "key": "education-media-group-2"
+        "key": "education-media-group-5"
       },
       {
         "type": "feature",
@@ -1318,7 +1312,7 @@ const rawSections: WikiSection[] = [
         "type": "subheading",
         "id": "bio-heroes",
         "index": "3.2.3",
-        "title": "**Bio-Heroes**"
+        "title": "Bio-Heroes"
       },
       {
         "type": "subheading",
@@ -1406,7 +1400,7 @@ const rawSections: WikiSection[] = [
       },
       {
         "type": "feature",
-        "key": "education-media-group-3"
+        "key": "education-media-group-6"
       },
       {
         "type": "prose",
@@ -2394,7 +2388,7 @@ const rawSections: WikiSection[] = [
         "type": "subheading",
         "id": "participation-3",
         "index": "3.3.3.3",
-        "title": "**PARTICIPATION：**"
+        "title": "PARTICIPATION："
       },
       {
         "type": "subheading",
@@ -2561,7 +2555,7 @@ const rawSections: WikiSection[] = [
         "type": "subheading",
         "id": "context-6",
         "index": "3.4.1.1",
-        "title": "**CONTEXT：**"
+        "title": "CONTEXT："
       },
       {
         "type": "subheading",
@@ -2662,7 +2656,7 @@ const rawSections: WikiSection[] = [
         "type": "subheading",
         "id": "participation-4",
         "index": "3.4.1.3",
-        "title": "**PARTICIPATION：**"
+        "title": "PARTICIPATION："
       },
       {
         "type": "subheading",
@@ -2858,7 +2852,7 @@ const rawSections: WikiSection[] = [
       },
       {
         "type": "feature",
-        "key": "education-media-group-4"
+        "key": "education-media-group-7"
       },
       {
         "type": "feature",
@@ -2887,7 +2881,7 @@ const rawSections: WikiSection[] = [
         "type": "subheading",
         "id": "context-7",
         "index": "3.4.2.1",
-        "title": "**CONTEXT：**"
+        "title": "CONTEXT："
       },
       {
         "type": "subheading",
@@ -3172,7 +3166,7 @@ const rawSections: WikiSection[] = [
       },
       {
         "type": "feature",
-        "key": "education-media-group-5"
+        "key": "education-media-group-8"
       },
       {
         "type": "feature",
@@ -3207,7 +3201,7 @@ const rawSections: WikiSection[] = [
         "type": "subheading",
         "id": "context-8",
         "index": "3.5.1.1",
-        "title": "**CONTEXT：**"
+        "title": "CONTEXT："
       },
       {
         "type": "subheading",
@@ -3374,7 +3368,7 @@ const rawSections: WikiSection[] = [
         "type": "subheading",
         "id": "participation-6",
         "index": "3.5.1.3",
-        "title": "**PARTICIPATION：**"
+        "title": "PARTICIPATION："
       },
       {
         "type": "subheading",
@@ -3492,7 +3486,7 @@ const rawSections: WikiSection[] = [
       },
       {
         "type": "feature",
-        "key": "education-media-group-6"
+        "key": "education-media-group-9"
       },
       {
         "type": "feature",
@@ -3521,13 +3515,13 @@ const rawSections: WikiSection[] = [
         "type": "subheading",
         "id": "context-9",
         "index": "3.5.2.1",
-        "title": "**CONTEXT:**"
+        "title": "CONTEXT:"
       },
       {
         "type": "subheading",
         "id": "the-same-knowledge-enters-different-lives",
         "index": "3.5.2.1.1",
-        "title": "**The** Same Knowledge Enters Different Lives"
+        "title": "The Same Knowledge Enters Different Lives"
       },
       {
         "type": "prose",
@@ -3852,7 +3846,7 @@ const rawSections: WikiSection[] = [
       },
       {
         "type": "feature",
-        "key": "education-media-group-7"
+        "key": "education-media-group-10"
       },
       {
         "type": "note",
@@ -4166,10 +4160,8 @@ const rawSections: WikiSection[] = [
         ]
       },
       {
-        "type": "prose",
-        "paragraphs": [
-          "[Letters_to_My_Body.pdf](__BASE__assets/education/letters-to-my-body-final.pdf)"
-        ]
+        "type": "feature",
+        "key": "education-media-group-11"
       },
       {
         "type": "subheading",
@@ -4565,10 +4557,8 @@ const rawSections: WikiSection[] = [
         ]
       },
       {
-        "type": "prose",
-        "paragraphs": [
-          "[A Field Guide to Learning - Inaugural Issue.pdf](__BASE__assets/education/field-guide-to-learning-final.pdf)"
-        ]
+        "type": "feature",
+        "key": "education-media-group-12"
       },
       {
         "type": "subheading",
@@ -4722,7 +4712,7 @@ const rawSections: WikiSection[] = [
       },
       {
         "type": "feature",
-        "key": "education-media-group-8"
+        "key": "education-media-group-13"
       },
       {
         "type": "subheading",
@@ -5015,10 +5005,8 @@ const rawSections: WikiSection[] = [
         ]
       },
       {
-        "type": "prose",
-        "paragraphs": [
-          "[WP03_From_Dialogue_to_Shape..pdf](__BASE__assets/education/wp03-from-dialogue-to-shape-cover.pdf)"
-        ]
+        "type": "feature",
+        "key": "education-media-group-14"
       },
       {
         "type": "subheading",
@@ -5280,7 +5268,7 @@ const rawSections: WikiSection[] = [
       },
       {
         "type": "feature",
-        "key": "education-media-group-9"
+        "key": "education-media-group-15"
       },
       {
         "type": "subheading",
@@ -5436,7 +5424,7 @@ const rawSections: WikiSection[] = [
         "type": "subheading",
         "id": "mid-apr-2026-expert-consultation-medical-education-medical-humanities",
         "index": "4.2.2.1",
-        "title": "**Mid-Apr 2026 · Expert Consultation · Medical Education & Medical Humanities**"
+        "title": "Mid-Apr 2026 · Expert Consultation · Medical Education & Medical Humanities"
       },
       {
         "type": "prose",
@@ -5575,7 +5563,7 @@ const rawSections: WikiSection[] = [
       },
       {
         "type": "feature",
-        "key": "education-media-group-10"
+        "key": "education-media-group-16"
       },
       {
         "type": "subheading",
@@ -5609,7 +5597,7 @@ const rawSections: WikiSection[] = [
       },
       {
         "type": "feature",
-        "key": "education-media-group-11"
+        "key": "education-media-group-17"
       },
       {
         "type": "subheading",
@@ -5654,10 +5642,8 @@ const rawSections: WikiSection[] = [
         ]
       },
       {
-        "type": "prose",
-        "paragraphs": [
-          "[小小科学家——给细菌拍身份证_English_Final.pptx](__BASE__assets/education/little-scientist-bacteria-id.pptx)"
-        ]
+        "type": "feature",
+        "key": "education-media-group-18"
       },
       {
         "type": "prose",
@@ -5666,10 +5652,8 @@ const rawSections: WikiSection[] = [
         ]
       },
       {
-        "type": "prose",
-        "paragraphs": [
-          "[生命科学冒险记_English_Final.pptx](__BASE__assets/education/life-science-adventure.pptx)"
-        ]
+        "type": "feature",
+        "key": "education-media-group-19"
       },
       {
         "type": "subheading",
@@ -5684,10 +5668,8 @@ const rawSections: WikiSection[] = [
         ]
       },
       {
-        "type": "prose",
-        "paragraphs": [
-          "[Air_into_Bread_with_Gemy_English.pptx](__BASE__assets/education/air-into-bread-with-gemy-english.pptx)"
-        ]
+        "type": "feature",
+        "key": "education-media-group-20"
       },
       {
         "type": "subheading",
@@ -5708,10 +5690,8 @@ const rawSections: WikiSection[] = [
         ]
       },
       {
-        "type": "prose",
-        "paragraphs": [
-          "[01_SynBio_Classroom_Lesson_1_Opening_and_Lab_Safety_EN.pptx](__BASE__assets/education/synbio-classroom-lesson-1-english.pptx)"
-        ]
+        "type": "feature",
+        "key": "education-media-group-21"
       },
       {
         "type": "prose",
@@ -5720,10 +5700,8 @@ const rawSections: WikiSection[] = [
         ]
       },
       {
-        "type": "prose",
-        "paragraphs": [
-          "[02_SynBio_Classroom_Lesson_2_PCR_and_Gel_Electrophoresis_EN.pptx](__BASE__assets/education/synbio-classroom-lesson-2-english.pptx)"
-        ]
+        "type": "feature",
+        "key": "education-media-group-22"
       },
       {
         "type": "prose",
@@ -5732,10 +5710,8 @@ const rawSections: WikiSection[] = [
         ]
       },
       {
-        "type": "prose",
-        "paragraphs": [
-          "[03_SynBio_Classroom_Lesson_3_Crude_DNA_Extraction_EN.pptx](__BASE__assets/education/synbio-classroom-lesson-3-english.pptx)"
-        ]
+        "type": "feature",
+        "key": "education-media-group-23"
       },
       {
         "type": "prose",
@@ -5744,10 +5720,8 @@ const rawSections: WikiSection[] = [
         ]
       },
       {
-        "type": "prose",
-        "paragraphs": [
-          "[04_SynBio_Classroom_Lesson_4_Life_Science_Monopoly_EN.pptx](__BASE__assets/education/synbio-classroom-lesson-4-english.pptx)"
-        ]
+        "type": "feature",
+        "key": "education-media-group-24"
       },
       {
         "type": "prose",
@@ -5756,10 +5730,8 @@ const rawSections: WikiSection[] = [
         ]
       },
       {
-        "type": "prose",
-        "paragraphs": [
-          "[05_SynBio_Classroom_Lesson_5_Plasmid_Game_EN.pptx](__BASE__assets/education/synbio-classroom-lesson-5-english.pptx)"
-        ]
+        "type": "feature",
+        "key": "education-media-group-25"
       },
       {
         "type": "prose",
@@ -5768,34 +5740,8 @@ const rawSections: WikiSection[] = [
         ]
       },
       {
-        "type": "prose",
-        "paragraphs": [
-          "[Winter Outreach-Hailun, Heilongjiang.pptx](__BASE__assets/education/igem-fbh-jlu-hp.pptx)"
-        ]
-      },
-      {
-        "type": "prose",
-        "paragraphs": [
-          "[Winter Outreach-Chongqing.pptx](__BASE__assets/education/winter-outreach-chongqing-english.pptx)"
-        ]
-      },
-      {
-        "type": "prose",
-        "paragraphs": [
-          "[Winter Outreach-Yanji, Jilin.pptx](__BASE__assets/education/igem-pptx.pptx)"
-        ]
-      },
-      {
-        "type": "prose",
-        "paragraphs": [
-          "[Winter Outreach-Jining-Shandong.pptx](__BASE__assets/education/shi-zhiyuan-igem-back-to-school-propaganda-english.pptx)"
-        ]
-      },
-      {
-        "type": "prose",
-        "paragraphs": [
-          "[Winter Outreach-Turin, Italy.pptx](__BASE__assets/education/winter-outreach-igem-introduction.pptx)"
-        ]
+        "type": "feature",
+        "key": "education-media-group-26"
       },
       {
         "type": "subheading",
@@ -5829,7 +5775,7 @@ const rawSections: WikiSection[] = [
       },
       {
         "type": "feature",
-        "key": "education-media-group-12"
+        "key": "education-media-group-27"
       },
       {
         "type": "subheading",

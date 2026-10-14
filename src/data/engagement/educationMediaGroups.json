@@ -4,6 +4,36 @@
     "items": [
       {
         "kind": "pdf",
+        "src": "__BASE__assets/education/wp01-recursive-care-preserving-the-learner-cover.pdf",
+        "title": "WP01 Recursive Care Preserving the Learner"
+      }
+    ]
+  },
+  {
+    "key": "education-media-group-2",
+    "items": [
+      {
+        "kind": "pdf",
+        "src": "__BASE__assets/education/wp02-from-community-to-portfolio-cover.pdf",
+        "title": "WP02 From Community to Portfolio"
+      }
+    ]
+  },
+  {
+    "key": "education-media-group-3",
+    "items": [
+      {
+        "kind": "pdf",
+        "src": "__BASE__assets/education/little-scientist-bacteria-id.pptx",
+        "title": "小小科学家——给细菌拍身份证 English Final"
+      }
+    ]
+  },
+  {
+    "key": "education-media-group-4",
+    "items": [
+      {
+        "kind": "pdf",
         "src": "__BASE__assets/education/virtual-laboratory-white-paper-english-cover.pdf",
         "title": "Virtual Laboratory White Paper "
       },
@@ -15,7 +45,7 @@
     ]
   },
   {
-    "key": "education-media-group-2",
+    "key": "education-media-group-5",
     "items": [
       {
         "kind": "image",
@@ -32,7 +62,7 @@
     ]
   },
   {
-    "key": "education-media-group-3",
+    "key": "education-media-group-6",
     "items": [
       {
         "kind": "image",
@@ -49,7 +79,7 @@
     ]
   },
   {
-    "key": "education-media-group-4",
+    "key": "education-media-group-7",
     "items": [
       {
         "kind": "image",
@@ -84,7 +114,7 @@
     ]
   },
   {
-    "key": "education-media-group-5",
+    "key": "education-media-group-8",
     "items": [
       {
         "kind": "image",
@@ -101,7 +131,7 @@
     ]
   },
   {
-    "key": "education-media-group-6",
+    "key": "education-media-group-9",
     "items": [
       {
         "kind": "image",
@@ -136,7 +166,7 @@
     ]
   },
   {
-    "key": "education-media-group-7",
+    "key": "education-media-group-10",
     "items": [
       {
         "kind": "pdf",
@@ -151,7 +181,27 @@
     ]
   },
   {
-    "key": "education-media-group-8",
+    "key": "education-media-group-11",
+    "items": [
+      {
+        "kind": "pdf",
+        "src": "__BASE__assets/education/letters-to-my-body-final.pdf",
+        "title": "Letters to My Body"
+      }
+    ]
+  },
+  {
+    "key": "education-media-group-12",
+    "items": [
+      {
+        "kind": "pdf",
+        "src": "__BASE__assets/education/field-guide-to-learning-final.pdf",
+        "title": "A Field Guide to Learning - Inaugural Issue"
+      }
+    ]
+  },
+  {
+    "key": "education-media-group-13",
     "items": [
       {
         "kind": "pdf",
@@ -166,7 +216,17 @@
     ]
   },
   {
-    "key": "education-media-group-9",
+    "key": "education-media-group-14",
+    "items": [
+      {
+        "kind": "pdf",
+        "src": "__BASE__assets/education/wp03-from-dialogue-to-shape-cover.pdf",
+        "title": "WP03 From Dialogue to Shape."
+      }
+    ]
+  },
+  {
+    "key": "education-media-group-15",
     "items": [
       {
         "kind": "pdf",
@@ -181,7 +241,7 @@
     ]
   },
   {
-    "key": "education-media-group-10",
+    "key": "education-media-group-16",
     "items": [
       {
         "kind": "pdf",
@@ -226,7 +286,7 @@
     ]
   },
   {
-    "key": "education-media-group-11",
+    "key": "education-media-group-17",
     "items": [
       {
         "kind": "pdf",
@@ -261,7 +321,117 @@
     ]
   },
   {
-    "key": "education-media-group-12",
+    "key": "education-media-group-18",
+    "items": [
+      {
+        "kind": "pdf",
+        "src": "__BASE__assets/education/little-scientist-bacteria-id.pptx",
+        "title": "小小科学家——给细菌拍身份证 English Final"
+      }
+    ]
+  },
+  {
+    "key": "education-media-group-19",
+    "items": [
+      {
+        "kind": "pdf",
+        "src": "__BASE__assets/education/life-science-adventure.pptx",
+        "title": "生命科学冒险记 English Final"
+      }
+    ]
+  },
+  {
+    "key": "education-media-group-20",
+    "items": [
+      {
+        "kind": "pdf",
+        "src": "__BASE__assets/education/air-into-bread-with-gemy-english.pptx",
+        "title": "Air into Bread with Gemy English"
+      }
+    ]
+  },
+  {
+    "key": "education-media-group-21",
+    "items": [
+      {
+        "kind": "pdf",
+        "src": "__BASE__assets/education/synbio-classroom-lesson-1-english.pptx",
+        "title": "01 SynBio Classroom Lesson 1 Opening and Lab Safety EN"
+      }
+    ]
+  },
+  {
+    "key": "education-media-group-22",
+    "items": [
+      {
+        "kind": "pdf",
+        "src": "__BASE__assets/education/synbio-classroom-lesson-2-english.pptx",
+        "title": "02 SynBio Classroom Lesson 2 PCR and Gel Electrophoresis EN"
+      }
+    ]
+  },
+  {
+    "key": "education-media-group-23",
+    "items": [
+      {
+        "kind": "pdf",
+        "src": "__BASE__assets/education/synbio-classroom-lesson-3-english.pptx",
+        "title": "03 SynBio Classroom Lesson 3 Crude DNA Extraction EN"
+      }
+    ]
+  },
+  {
+    "key": "education-media-group-24",
+    "items": [
+      {
+        "kind": "pdf",
+        "src": "__BASE__assets/education/synbio-classroom-lesson-4-english.pptx",
+        "title": "04 SynBio Classroom Lesson 4 Life Science Monopoly EN"
+      }
+    ]
+  },
+  {
+    "key": "education-media-group-25",
+    "items": [
+      {
+        "kind": "pdf",
+        "src": "__BASE__assets/education/synbio-classroom-lesson-5-english.pptx",
+        "title": "05 SynBio Classroom Lesson 5 Plasmid Game EN"
+      }
+    ]
+  },
+  {
+    "key": "education-media-group-26",
+    "items": [
+      {
+        "kind": "pdf",
+        "src": "__BASE__assets/education/igem-fbh-jlu-hp.pptx",
+        "title": "Winter Outreach-Hailun, Heilongjiang"
+      },
+      {
+        "kind": "pdf",
+        "src": "__BASE__assets/education/winter-outreach-chongqing-english.pptx",
+        "title": "Winter Outreach-Chongqing"
+      },
+      {
+        "kind": "pdf",
+        "src": "__BASE__assets/education/igem-pptx.pptx",
+        "title": "Winter Outreach-Yanji, Jilin"
+      },
+      {
+        "kind": "pdf",
+        "src": "__BASE__assets/education/shi-zhiyuan-igem-back-to-school-propaganda-english.pptx",
+        "title": "Winter Outreach-Jining-Shandong"
+      },
+      {
+        "kind": "pdf",
+        "src": "__BASE__assets/education/winter-outreach-igem-introduction.pptx",
+        "title": "Winter Outreach-Turin, Italy"
+      }
+    ]
+  },
+  {
+    "key": "education-media-group-27",
     "items": [
       {
         "kind": "pdf",
