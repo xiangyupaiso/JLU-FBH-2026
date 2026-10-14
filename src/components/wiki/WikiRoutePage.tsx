@@ -127,6 +127,8 @@ interface WikiRoutePageProps {
   hideHeroCopy?: boolean;
   /** When true, subheadings within blocks are collapsed into accordion cards */
   collapsibleSubheadings?: boolean;
+  /** Sections whose subheadings should be rendered as collapsible drawers. */
+  collapsibleSubheadingSections?: readonly string[];
   /** Optional protocol pairs metadata to enable TOC preview and modal */
   protocolPairs?: ExperimentProtocolPair[];
   /**
@@ -512,6 +514,12 @@ function RouteBlock({
         <div className="wiki-prose" data-wiki-reveal>
           {renderProseParagraphs(block.paragraphs, inline)}
         </div>
+      );
+    case "quote":
+      return (
+        <blockquote className="wiki-quote" data-wiki-reveal>
+          {inline ? inline(block.text, linkify) : linkify(block.text)}
+        </blockquote>
       );
     case "list": {
       const List = block.ordered ? "ol" : "ul";
@@ -1011,6 +1019,7 @@ function RouteSection({
   features,
   scrollContainerRef,
   collapsibleSubheadings = false,
+  collapsibleSubheadingSections,
   openSubheadingIds,
   onToggleSubheading,
 }: {
@@ -1019,6 +1028,7 @@ function RouteSection({
   features: FeatureMap;
   scrollContainerRef?: RefObject<HTMLElement | null>;
   collapsibleSubheadings?: boolean;
+  collapsibleSubheadingSections?: readonly string[];
   openSubheadingIds?: Set<string>;
   onToggleSubheading?: (id: string) => void;
 }) {
@@ -1030,7 +1040,9 @@ function RouteSection({
   );
 
   const shouldCollapseSubheadings = Boolean(
-    collapsibleSubheadings && blocks && firstSubIndex !== -1,
+    (collapsibleSubheadings || collapsibleSubheadingSections?.includes(section.id)) &&
+      blocks &&
+      firstSubIndex !== -1,
   );
 
   const { overviewBlocks, subheadingGroups } = useMemo(() => {
@@ -1200,6 +1212,7 @@ export function WikiRoutePage({
   hideOutline = false,
   hideHeroCopy = false,
   collapsibleSubheadings = false,
+  collapsibleSubheadingSections,
   protocolPairs,
   inlineRenderer,
   outlineDepth,
@@ -1339,15 +1352,34 @@ export function WikiRoutePage({
         label: block.title.replace(/\*\*/g, ""),
         children: [] as WikiLineSidebarItem[],
       }));
-    // WikiLineSidebar derives depth and the active heading group from dotted
-    // indices. It consumes a flat list; nesting here silently drops level 3.
+    const subheadingByIndex = new Map(
+      subheadings?.map((subheading) => [subheading.index, subheading]) ?? [],
+    );
+    const nestedSubheadings: WikiLineSidebarItem[] = [];
+    const subheadingById = new Map<string, WikiLineSidebarItem>();
+    (subheadings ?? []).forEach((subheading) => {
+      const child = {
+        id: subheading.id,
+        index: subheading.index,
+        label: subheading.label,
+        children: [] as WikiLineSidebarItem[],
+      };
+      const parentIndex = child.index.split(".").slice(0, -1).join(".");
+      const parent = subheadingByIndex.get(parentIndex);
+      subheadingById.set(child.id, child);
+      if (parent) {
+        subheadingById.get(parent.id)?.children?.push(child);
+      } else {
+        nestedSubheadings.push(child);
+      }
+    });
     return {
       id: section.id,
       // Unnumbered sections (e.g. a "00" station map) stay unnumbered here too.
       index: section.hideSectionNumber ? "" : section.index,
       label: section.navLabel ?? section.title,
       meta: section.kicker,
-      children: subheadings?.length ? subheadings : undefined,
+      children: nestedSubheadings.length ? nestedSubheadings : undefined,
     };
   });
   const heroStyle = heroImage
@@ -1478,6 +1510,7 @@ export function WikiRoutePage({
                         features={features}
                         scrollContainerRef={scrollRef}
                         collapsibleSubheadings={collapsibleSubheadings}
+                        collapsibleSubheadingSections={collapsibleSubheadingSections}
                         openSubheadingIds={openSubheadingIds}
                         onToggleSubheading={toggleSubheading}
                       />
