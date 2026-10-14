@@ -100,6 +100,8 @@ interface WikiRoutePageProps {
   content: WikiPageContent;
   /** Per-page full-bleed hero art; resolved by the module's asset map. */
   heroImage?: string;
+  /** Optional bundled image shown underneath the primary hero if its request fails. */
+  heroFallbackImage?: string;
   /**
    * Small images used only by an inactive tab or dialog. Hero and content
    * figures are collected automatically; do not list PDF or game resources.
@@ -1165,6 +1167,7 @@ const MemoRouteSection = memo(RouteSection);
 export function WikiRoutePage({
   content,
   heroImage,
+  heroFallbackImage,
   preloadImages,
   deferContentImages = false,
   features = {},
@@ -1184,6 +1187,7 @@ export function WikiRoutePage({
   const imageSources = useMemo(
     () => [
       heroImage,
+      heroFallbackImage,
       ...(deferContentImages ? [] : wikiPageImages(content)),
       ...(preloadImages ?? []),
       ...(protocolPairs ?? []).flatMap((pair) => [
@@ -1191,7 +1195,7 @@ export function WikiRoutePage({
         ...(typeof pair.inventoryPage === "number" ? [experimentProtocolImage(pair.inventoryPage)] : []),
       ]),
     ],
-    [content, heroImage, preloadImages, protocolPairs, deferContentImages],
+    [content, heroImage, heroFallbackImage, preloadImages, protocolPairs, deferContentImages],
   );
   const rootRef = useRef<HTMLElement>(null);
   const interfaceRef = useRef<HTMLDivElement>(null);
@@ -1343,7 +1347,7 @@ export function WikiRoutePage({
     };
   });
   const heroStyle = heroImage
-    ? ({ "--route-hero-image": `url(${heroImage})` } as CSSProperties)
+    ? ({ "--route-hero-image": `url("${heroImage}")${heroFallbackImage ? `, url("${heroFallbackImage}")` : ""}` } as CSSProperties)
     : undefined;
 
   return (
