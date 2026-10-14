@@ -468,6 +468,23 @@ export function WikiContentBlocks({ blocks, features = {}, sectionId }: {
   ))}</>;
 }
 
+function EducationViewportFigureImage({ src, alt }: { src: string; alt: string }) {
+  const containerRef = useRef<HTMLSpanElement>(null);
+  const [near, setNear] = useState(false);
+  useEffect(() => {
+    const element = containerRef.current;
+    if (!element) return;
+    if (!("IntersectionObserver" in window)) {
+      setNear(true);
+      return;
+    }
+    const observer = new IntersectionObserver(([entry]) => setNear(entry.isIntersecting), { rootMargin: "400px 0px" });
+    observer.observe(element);
+    return () => observer.disconnect();
+  }, []);
+  return <span className="education-figure-window" ref={containerRef}>{near ? <img src={src} alt={alt} loading="lazy" decoding="async" /> : null}</span>;
+}
+
 function RouteBlock({
   block,
   features,
@@ -565,18 +582,9 @@ function RouteBlock({
           className={`wiki-figure${block.figureLabel ? " wiki-figure--labelled" : ""}${block.src.includes("education-feedback-invitation") ? " wiki-figure--education-feedback" : ""}`}
           data-wiki-reveal
         >
-          <img
-            src={block.src}
-            alt={block.alt}
-            loading={block.src.includes("/assets/education/") || block.src.includes("/engagement/education/figures/") ? "lazy" : "eager"}
-            decoding="async"
-            onError={(event) => {
-              if (!block.src.includes("/engagement/education/figures/") || event.currentTarget.dataset.localFallback) return;
-              event.currentTarget.dataset.localFallback = "true";
-              const fileName = block.src.split("/").at(-1)?.replace(/\.avif$/i, ".png");
-              if (fileName) event.currentTarget.src = `${import.meta.env.BASE_URL}assets/education/${fileName}`;
-            }}
-          />
+          {block.src.includes("/engagement/education/figures/")
+            ? <EducationViewportFigureImage src={block.src} alt={block.alt} />
+            : <img src={block.src} alt={block.alt} loading={block.src.includes("/assets/education/") ? "lazy" : "eager"} decoding="async" />}
           {block.figureLabel ? (
             <figcaption>
               <span className="wiki-figure__label">{block.figureLabel}</span>
