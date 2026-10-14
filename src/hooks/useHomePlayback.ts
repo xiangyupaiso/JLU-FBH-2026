@@ -6,6 +6,7 @@ import {
   type HomePlaybackMode,
 } from "../utils/homePlayback";
 import { HOME_INTRO_REPLAY_EVENT } from "../utils/homeIntro";
+import { ANTIGEN_PLAYBACK_HOLD } from "./antigenMechanismTiming";
 
 const CHAPTERS = [
   { id: "top", title: "Behind the diagnosis" },
@@ -60,12 +61,30 @@ const BEATS: readonly Beat[] = [
   { chapter: 8, progress: 0.47, travel: 5 },
   { chapter: 8, progress: 0.9, label: "advantages-readable", travel: 10, hold: 4 },
   { chapter: 9, progress: 0.12, travel: 3, hold: 2 },
-  { chapter: 9, progress: 0.5, travel: 2, hold: 10, antigen: 0 },
-  { chapter: 9, progress: 0.5, travel: 0, hold: 10, antigen: 1 },
-  { chapter: 9, progress: 0.5, travel: 0, hold: 10, antigen: 2 },
+  {
+    chapter: 9,
+    progress: 0.5,
+    travel: 2,
+    hold: ANTIGEN_PLAYBACK_HOLD,
+    antigen: 0,
+  },
+  {
+    chapter: 9,
+    progress: 0.5,
+    travel: 0,
+    hold: ANTIGEN_PLAYBACK_HOLD,
+    antigen: 1,
+  },
+  {
+    chapter: 9,
+    progress: 0.5,
+    travel: 0,
+    hold: ANTIGEN_PLAYBACK_HOLD,
+    antigen: 2,
+  },
   { chapter: 9, progress: 0.96, travel: 4, hold: 2 },
   { chapter: 10, progress: 0.88, travel: 5, hold: 3 },
-  { chapter: 11, progress: 0.82, travel: 5, hold: 4 },
+  { chapter: 11, progress: 0.82, label: "hope-readable", travel: 5, hold: 4 },
   { chapter: 12, progress: 0, travel: 4 },
   { chapter: 12, progress: 0.4, label: "circle-to-care", travel: 5, hold: 3 },
   { chapter: 12, progress: 0.98, travel: 7, hold: 3 },

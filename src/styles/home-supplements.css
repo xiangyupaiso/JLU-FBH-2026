@@ -150,7 +150,7 @@
   container-type: inline-size;
 }
 .story-art--thinking .story-vaccine-copy {
-  top: 31%;
+  top: 30%;
   width: 18.5%;
 }
 .story-art--thinking .story-vaccine-copy--question {
@@ -158,25 +158,48 @@
   width: 19.5%;
 }
 .story-art--thinking .story-vaccine-copy--answer {
-  top: 37%;
+  top: 34%;
   left: 65.5%;
   width: 25.5%;
 }
 .story-art--thinking .story-vaccine-copy h3 {
   /* These h3 elements hold scientific body copy, so use the body face. */
   font-family: var(--font-body) !important;
-  font-size: 1.9cqw;
-  line-height: 1.4;
+  font-size: 2.05cqw;
+  line-height: 1.35;
   letter-spacing: 0;
+}
+.story-art--thinking .story-vaccine-copy .story-vaccine-context {
+  display: block;
+  color: #51434b;
+  font-weight: 400;
+}
+.story-art--thinking .story-vaccine-question {
+  display: block;
+  width: 125%;
+  margin-top: 0.5em;
+  color: #403740;
+  font-size: 1.12em;
+  font-weight: 500;
+  line-height: 1.25;
+}
+.story-art--thinking .story-vaccine-copy--answer h3 {
+  font-size: 2cqw;
+  line-height: 1.22;
+}
+.story-art--thinking .story-vaccine-copy strong {
+  color: var(--vaccine-accent);
+  font-weight: 700;
 }
 .story-art--thinking .story-vaccine-question-ending {
   color: inherit;
-  white-space: nowrap;
 }
-.story-art--thinking .story-vaccine-copy--answer h3 {
-  font-size: 1.8cqw;
-  line-height: 1.32;
-  letter-spacing: -0.015em;
+.story-art--thinking .story-vaccine-answer-title {
+  display: block;
+  margin-bottom: 0.35em;
+  font-size: 1.22em;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
 }
 .story-art--fan {
   container-type: inline-size;
@@ -363,9 +386,8 @@
   .story-art--thinking .story-vaccine-copy h3 {
     font-size: clamp(25px, 7.4cqw, 33px);
   }
-  .story-art--thinking .story-vaccine-copy--answer h3 {
-    line-height: 1.2;
-    letter-spacing: -0.025em;
+  .story-art--thinking .story-vaccine-question {
+    width: 100%;
   }
 
   /* Keep the complete fan painting, then read its four notes at phone size. */

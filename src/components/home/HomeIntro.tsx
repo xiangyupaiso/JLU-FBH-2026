@@ -106,6 +106,51 @@ export function HomeIntro({ scene }: HomeIntroProps) {
     };
   }, []);
 
+  useLayoutEffect(() => {
+    if (playing) return;
+
+    let returning = false;
+    let replayed = false;
+    let lastY = window.scrollY;
+    const replayAtTop = () => {
+      if (!returning || replayed || window.scrollY > 0) return;
+      replayed = true;
+      window.dispatchEvent(new Event(HOME_INTRO_REPLAY_EVENT));
+    };
+    const onWheel = (event: WheelEvent) => {
+      if (
+        event.ctrlKey ||
+        (event.target instanceof Element &&
+          event.target.closest(".home-playback-scenes"))
+      )
+        return;
+      if (event.deltaY === 0) return;
+      returning = event.deltaY < 0;
+      // Also handle another upward gesture when the document is already at 0.
+      replayAtTop();
+    };
+    const onScroll = () => {
+      const nextY = window.scrollY;
+      if (nextY > lastY) returning = false;
+      lastY = nextY;
+      replayAtTop();
+    };
+    const onResize = () => {
+      // ScrollTrigger may move to 0 while rebuilding its responsive layout.
+      returning = false;
+    };
+
+    // Arm only from upward wheel intent; programmatic scroll-to-top stays quiet.
+    window.addEventListener("wheel", onWheel, { passive: true, capture: true });
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onResize, { passive: true });
+    return () => {
+      window.removeEventListener("wheel", onWheel, true);
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onResize);
+    };
+  }, [playing]);
+
   // Set before paint so the opening artwork and scroll cue do not flicker.
   useLayoutEffect(() => {
     const section = scene.current;
