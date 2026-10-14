@@ -2,7 +2,8 @@
  * Sustainability page — structured `WikiPageContent` for the shared renderer.
  *
  * Source: 文案集/engagement/sustainability/6.3 Sustainability wiki定稿.md
- * Scope: Overview → SDG 3 → Stakeholder Sustainability Tracker → SDG 9 → SDG 12.
+ * Scope: Overview → SDG 3 → Stakeholder Sustainability Tracker → SDG 9 →
+ * SDG 12 (SET) → SDG 4 (DEVELOP).
  * Pure data layer — zero React/JSX elements. SDG chapters are expanded from
  * the `SdgChapter` contract by `chapterBlocks`, so every chapter shares one
  * heading tree (4.x → 4.x.1–4.x.5) and one set of feature keys.
@@ -24,6 +25,7 @@ import {
   type SustainabilityImageAssetKey,
 } from "./sustainabilityAssets";
 import {
+  developSection,
   impactFrameworkSection,
   setCoreChallengesSection,
   sstqnSection,
@@ -81,11 +83,11 @@ function chapterBlocks(chapter: SdgChapter): WikiContentBlock[] {
     feature(keys.rail),
 
     step(0),
-    prose(...chapter.stakeholders.lead),
+    ...(chapter.stakeholders.lead.length ? [prose(...chapter.stakeholders.lead)] : []),
     feature(keys.stakeholders),
 
     step(1),
-    prose(...chapter.consequences.lead),
+    ...(chapter.consequences.lead.length ? [prose(...chapter.consequences.lead)] : []),
     feature(keys.consequences),
 
     step(2),
@@ -212,7 +214,24 @@ const setCoreChallenges: WikiSection = {
     subheading(stakeholderTracker.id, stakeholderTracker.index, stakeholderTracker.title),
     prose(...stakeholderTracker.paragraphs),
     feature("stakeholder-tracker-tools"),
-    ...sustainabilityChapters.slice(1).flatMap(chapterBlocks),
+    // SET chapters: SDG 9 / 12 only; DEVELOP chapters live in section 05.
+    ...sustainabilityChapters.slice(1, 3).flatMap(chapterBlocks),
+  ],
+};
+
+/* ----------------------------------------------------------------------------
+ * 05 / DEVELOP — SDG 4 (further DEVELOP/GROW chapters join here later)
+ * -------------------------------------------------------------------------- */
+const developBroaderImpact: WikiSection = {
+  id: "develop-broader-impact",
+  index: "05",
+  kicker: "05 / DEVELOP",
+  navLabel: "DEVELOP — Expanding Broader Impact",
+  title: developSection.title,
+  summary: "",
+  blocks: [
+    prose(...developSection.paragraphs),
+    ...chapterBlocks(sustainabilityChapters[3]),
   ],
 };
 
@@ -231,7 +250,13 @@ export const sustainabilityPage: WikiPageContent = {
   visualLabel: "Sustainability",
   visualSteps: [],
   facts: [],
-  sections: [overviewSection, sstQnSection, impactFramework, setCoreChallenges],
+  sections: [
+    overviewSection,
+    sstQnSection,
+    impactFramework,
+    setCoreChallenges,
+    developBroaderImpact,
+  ],
   links: [
     { path: "/human-practices", label: "Human Practices" },
     { path: "/education", label: "Education" },

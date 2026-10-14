@@ -1,4 +1,8 @@
 /* Roster components consume the shared Team palette and reader dimensions. */
+.wiki-page--roster .wiki-section__heading {
+  display: none !important;
+}
+
 .wiki-page--roster .wiki-lead-section-slot {
   margin: 0;
   padding: 0;
@@ -10,9 +14,6 @@
   padding: 0;
 }
 
-/* Same language as the Sustainability masthead: the photograph dissolves into
-   the paper and the motto is set over its faded lower edge. The top tenth of
-   the frame (glass roof and lamps) is cropped away. */
 .roster-opening__photo > img {
   display: block;
   width: 100%;
@@ -52,7 +53,6 @@
   color: inherit;
 }
 
-/* One undistorted viewport-sized drawing. Only the content moves over it. */
 .wiki-page.wiki-page--roster.route--document-flow .route-frame {
   isolation: isolate;
   border: 0;
@@ -71,9 +71,6 @@
   content: "";
   pointer-events: none;
 }
-/* The drawing keeps its full margin box so sticking ends at the frame's
-   bottom edge; the article is pulled up over it instead. A zero-height margin
-   box let the drawing ride past the frame and cover Next page and the footer. */
 .wiki-page.wiki-page--roster .route-frame > .route-frame__scroll {
   margin-top: calc(-1 * var(--reader-h));
 }
@@ -155,7 +152,6 @@ button.roster-person {
   width: 100%;
   aspect-ratio: 4 / 5;
   overflow: hidden;
-  /* One portrait shape for everyone; the photographs carry the colour. */
   border-radius: 12px;
   background: var(--route-paper);
 }
@@ -207,7 +203,6 @@ button.roster-person {
   outline-offset: 5px;
 }
 
-/* Touch screens keep the arrow as the "open profile" cue; pointers reveal it. */
 @media (hover: hover) {
   .roster-person__open {
     opacity: 0;
@@ -223,7 +218,6 @@ button.roster-person {
   }
 }
 
-/* Click-controlled Accordion Gallery: a full photograph and four narrow strips. */
 .roster-gallery {
   position: relative;
   width: 100%;
@@ -261,8 +255,7 @@ button.roster-person {
   overflow: hidden;
   border-radius: inherit;
 }
-/* Media stay on their own layers for the page's lifetime: promoting and
-   demoting them around every transition re-rasterised the 4000px photos. */
+
 .roster-gallery__media {
   position: absolute;
   top: 50%;
@@ -278,7 +271,6 @@ button.roster-person {
   user-select: none;
 }
 
-/* Bottom shade keeps the white captions legible on every photo. */
 .roster-gallery__item::after {
   position: absolute;
   inset: 0;
@@ -374,179 +366,394 @@ button.roster-person {
   }
 }
 
-/* A single glass surface, mounted only while a profile is open.
-   Blur stays constant; only transform and opacity animate. */
+/* ==========================================================================
+   Awwwards-Grade Obsidian Burgundy & Champagne Gold Editorial Theater
+   ========================================================================== */
+
+html {
+  scrollbar-gutter: stable;
+}
+
 .roster-dialog-overlay {
   position: fixed;
   z-index: 1100;
   inset: 0;
-  background: rgba(37, 29, 20, 0.4);
-  animation: roster-dialog-fade 200ms ease both;
+  touch-action: none;
+  overscroll-behavior: contain;
+  background:
+    radial-gradient(
+      circle at 50% 50%,
+      rgba(118, 35, 56, 0.24) 0%,
+      rgba(10, 7, 8, 0.88) 75%
+    );
+  -webkit-backdrop-filter: blur(22px) saturate(140%);
+  backdrop-filter: blur(22px) saturate(140%);
 }
+
 .roster-dialog {
   position: fixed;
   z-index: 1101;
   top: 50%;
   left: 50%;
   display: grid;
-  grid-template-columns: minmax(180px, 0.72fr) minmax(0, 1.28fr);
-  grid-template-rows: minmax(0, 1fr) auto;
-  width: min(1040px, calc(100vw - 64px));
-  max-height: min(840px, calc(100dvh - 64px));
-  padding: clamp(28px, 3.2vw, 44px);
-  gap: 0 clamp(28px, 3.5vw, 48px);
+  grid-template-columns: minmax(320px, 0.86fr) minmax(0, 1.14fr);
+  width: min(1140px, calc(100% - 48px));
+  max-width: calc(100% - 48px);
+  height: min(720px, calc(100dvh - 48px));
+  padding: 0;
   overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.82);
-  border-radius: 26px;
+  border: 1px solid rgba(223, 186, 115, 0.26);
+  border-radius: 20px;
   background:
-    radial-gradient(ellipse at 0 0, rgba(245, 207, 111, 0.28), transparent 58%),
     radial-gradient(
-      ellipse at 100% 100%,
-      rgba(215, 132, 179, 0.13),
-      transparent 55%
+      ellipse at 88% 12%,
+      rgba(148, 39, 66, 0.24),
+      transparent 54%
     ),
-    linear-gradient(
-      135deg,
-      rgba(255, 255, 255, 0.91),
-      rgba(255, 253, 243, 0.78)
-    );
-  -webkit-backdrop-filter: blur(16px) saturate(140%);
-  backdrop-filter: blur(16px) saturate(140%);
-  color: #3e2d14;
+    radial-gradient(
+      ellipse at 15% 95%,
+      rgba(223, 186, 115, 0.08),
+      transparent 48%
+    ),
+    linear-gradient(145deg, #191013 0%, #110b0d 100%);
+  color: #f5ede0;
   box-shadow:
-    0 24px 80px rgba(25, 19, 13, 0.22),
-    inset 0 1px 0 white;
+    0 40px 120px -16px rgba(0, 0, 0, 0.78),
+    0 0 0 1px rgba(255, 255, 255, 0.05),
+    inset 0 1px 0 rgba(255, 248, 231, 0.14);
   font-family: "Lexend", sans-serif;
   transform: translate(-50%, -50%);
-  animation: roster-dialog-enter 340ms cubic-bezier(0.22, 1, 0.36, 1) both;
 }
-.roster-dialog__close {
+
+/* 左侧栏：100% 零边距全出血肖像碑体（彻底消除 Box-in-Box） */
+.roster-dialog__visual {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background: #120c0e;
+  will-change: clip-path;
+}
+
+/* 右侧边缘柔和暗角过渡 + 1px 香槟金分界线 */
+.roster-dialog__visual::after {
   position: absolute;
   z-index: 2;
-  top: 12px;
-  right: 12px;
-  display: grid;
-  place-items: center;
-  width: 42px;
-  height: 42px;
-  padding: 0;
-  border: 1px solid rgba(118, 35, 56, 0.13);
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.7);
-  color: #762338;
-  cursor: pointer;
-  transition:
-    background-color 180ms ease,
-    transform 180ms ease;
+  inset: 0;
+  background:
+    linear-gradient(
+      90deg,
+      transparent 76%,
+      rgba(17, 11, 13, 0.55) 94%,
+      rgba(17, 11, 13, 0.92) 100%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(14, 9, 10, 0.38) 0%,
+      transparent 22%,
+      transparent 88%,
+      rgba(14, 9, 10, 0.35) 100%
+    );
+  border-right: 1px solid rgba(223, 186, 115, 0.2);
+  content: "";
+  pointer-events: none;
 }
-.roster-dialog__close:hover {
-  background: #fff;
-  transform: rotate(90deg);
-}
-.roster-dialog__portrait {
-  align-self: start;
-}
-.roster-dialog__portrait img {
+
+.roster-dialog__photo {
   display: block;
   width: 100%;
-  max-height: min(460px, 55dvh);
-  object-fit: contain;
-  border-radius: 12px;
-  box-shadow: 0 10px 24px rgba(62, 45, 20, 0.1);
+  height: 100%;
+  /* 78% 纵向焦点：裁去头顶多余浅色天空，同时完整保留人物面部与底部 iGEM / 院徽手牌 */
+  object-fit: cover;
+  object-position: center 78%;
+  transform: scale(1.04);
+  will-change: transform, filter;
 }
-.roster-dialog__portrait p {
-  margin: 16px 0 0;
-  font-size: 14px;
-  color: #762338;
-  text-align: center;
+
+/* GSAP 破幕鎏金酒红快门帘 */
+.roster-dialog__shutter {
+  position: absolute;
+  z-index: 3;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    #191013 0%,
+    #762338 55%,
+    #dfba73 100%
+  );
+  transform: scaleX(0);
+  pointer-events: none;
+  will-change: transform;
 }
-.roster-dialog__body {
+
+
+/* 右侧栏：暗夜高定杂志内页 */
+.roster-dialog__editorial {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
   min-height: 0;
-  padding: 8px 14px 2px 0;
-  overflow-y: auto;
-  overscroll-behavior: contain;
-  scrollbar-width: thin;
-  scrollbar-color: #b5a58b transparent;
+  padding: clamp(28px, 3.4vw, 42px) clamp(30px, 4vw, 52px)
+    clamp(26px, 3vw, 38px);
+  overflow: hidden;
 }
-.roster-dialog__title {
-  margin: 0 0 12px;
+
+/* 背景巨型斜体姓氏水印 */
+.roster-dialog__watermark {
+  position: absolute;
+  z-index: 0;
+  top: 38px;
+  right: -12px;
   font-family: "Fraunces", "Newsreader", Georgia, serif;
-  font-size: clamp(30px, 3.2vw, 44px);
-  font-weight: 600;
-  line-height: 1.2;
+  font-size: clamp(110px, 13vw, 176px);
+  font-style: italic;
+  font-weight: 700;
+  line-height: 0.85;
+  letter-spacing: -0.04em;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(223, 186, 115, 0.08);
+  background: linear-gradient(
+    180deg,
+    rgba(223, 186, 115, 0.07) 0%,
+    rgba(223, 186, 115, 0.01) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  pointer-events: none;
+  user-select: none;
+  will-change: transform, opacity;
 }
-.roster-dialog__tagline {
-  margin: 0 0 28px;
-  color: #762338;
-  font-size: 15px;
-  line-height: 1.7;
+
+/* 顶部瑞士网格档案栏与高定关闭键 */
+.roster-dialog__topbar {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 18px;
 }
-.roster-dialog__bio p {
-  margin: 0 0 16px;
-  font-size: 14px;
-  line-height: 1.9;
+
+.roster-dialog__kicker {
+  display: inline-flex;
+  align-items: center;
 }
-.roster-dialog .roster-dialog__quote {
-  grid-column: 1 / -1;
-  margin: 28px 0 0;
-  padding: 24px 16px 0;
-  border-top: 1px solid rgba(118, 35, 56, 0.14);
+
+.roster-dialog__kicker-role {
   font-family: "Newsreader", Georgia, serif;
-  font-size: clamp(22px, 2.3vw, 28px);
+  font-size: 15px;
+  font-style: italic;
+  letter-spacing: 0.02em;
+  color: #dfba73;
+  text-transform: none;
+}
+
+.roster-dialog__close {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 1px solid rgba(223, 186, 115, 0.24);
+  border-radius: 50%;
+  background: rgba(255, 248, 235, 0.04);
+  color: #dfba73;
+  cursor: pointer;
+  transition:
+    background-color 220ms ease,
+    border-color 220ms ease,
+    color 220ms ease,
+    transform 220ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.roster-dialog__close:hover {
+  background: rgba(223, 186, 115, 0.14);
+  border-color: rgba(223, 186, 115, 0.55);
+  color: #f7eedc;
+  transform: rotate(90deg) scale(1.05);
+}
+
+.roster-dialog__close:active {
+  transform: rotate(90deg) scale(0.95);
+}
+
+/* 姓名大标题遮罩破土区 */
+.roster-dialog__header {
+  position: relative;
+  z-index: 2;
+  flex: 0 0 auto;
+}
+
+.roster-dialog__title-mask {
+  margin: 0;
+  padding-bottom: 6px;
+  overflow: hidden;
+  font-family: "Fraunces", "Newsreader", Georgia, serif;
+  font-size: clamp(38px, 4.2vw, 58px);
+  font-weight: 600;
+  line-height: 1.06;
+  letter-spacing: -0.025em;
+  color: #fbf6ec;
+}
+
+.roster-dialog__title-inner {
+  display: block;
+  transform-origin: left bottom;
+  will-change: transform;
+}
+
+.roster-dialog__tagline {
+  margin: 10px 0 0;
+  font-family: "Newsreader", Georgia, serif;
+  font-size: clamp(16.5px, 1.55vw, 19.5px);
   font-style: italic;
   line-height: 1.45;
-  color: #762338;
-  text-align: center;
+  color: #e4a396;
+}
+
+/* 激光刻度鎏金线 */
+.roster-dialog__rule {
+  width: 100%;
+  height: 1px;
+  margin: 20px 0 6px;
+  background: linear-gradient(
+    90deg,
+    #dfba73 0%,
+    rgba(223, 186, 115, 0.25) 60%,
+    transparent 100%
+  );
+  transform-origin: left center;
+  will-change: transform;
+}
+
+.roster-dialog__rule--subtle {
+  margin: 0 0 16px;
+  background: linear-gradient(
+    90deg,
+    rgba(223, 186, 115, 0.5) 0%,
+    rgba(223, 186, 115, 0.12) 75%,
+    transparent 100%
+  );
+}
+
+/* 传记正文无痕渐隐滚动区 */
+.roster-dialog__body {
+  position: relative;
+  z-index: 2;
+  flex: 1 1 auto;
+  min-height: 0;
+  padding: 16px 8px 22px 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    #000 18px,
+    #000 calc(100% - 28px),
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    #000 18px,
+    #000 calc(100% - 28px),
+    transparent 100%
+  );
+}
+
+.roster-dialog__body::-webkit-scrollbar {
+  display: none;
+}
+
+.roster-dialog__bio p {
+  margin: 0 0 16px;
+  max-width: 62ch;
+  font-size: 14.5px;
+  font-weight: 300;
+  line-height: 1.92;
+  letter-spacing: 0.01em;
+  color: rgba(245, 237, 224, 0.84);
+}
+
+.roster-dialog__bio p:first-child::first-letter {
+  float: left;
+  margin: 2px 10px -4px 0;
+  font-family: "Fraunces", "Newsreader", Georgia, serif;
+  font-size: 40px;
+  font-weight: 600;
+  line-height: 0.9;
+  color: #dfba73;
+}
+
+.roster-dialog__bio p:last-child {
+  margin-bottom: 4px;
+}
+
+/* 底部无框高定个人宣言（彻底告别普通色块引用条） */
+.roster-dialog__manifesto {
+  position: relative;
+  z-index: 2;
+  flex: 0 0 auto;
+  margin-top: 6px;
+}
+
+.roster-dialog__manifesto-inner {
+  display: block;
+}
+
+.roster-dialog .roster-dialog__quote {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  font-family: "Newsreader", Georgia, serif;
+  font-size: clamp(18px, 1.75vw, 22px);
+  font-style: italic;
+  line-height: 1.45;
+  color: #faf2e3;
+  text-align: left;
   text-wrap: balance;
 }
+
 .roster-dialog .roster-dialog__quote-text {
   display: block;
 }
+
 .roster-dialog .roster-dialog__cite {
   display: block;
-  margin-top: 10px;
-  font-size: clamp(16px, 1.6vw, 20px);
-  font-style: italic;
-  text-align: right;
-  color: #762338;
+  margin-top: 6px;
+  font-size: 13px;
+  font-style: normal;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #dfba73;
 }
-.roster-dialog button:focus-visible {
-  outline: 3px solid #762338;
+
+.roster-dialog button:focus-visible,
+.roster-dialog__body:focus-visible {
+  outline: 2px solid #dfba73;
   outline-offset: 3px;
-}
-@keyframes roster-dialog-fade {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-@keyframes roster-dialog-enter {
-  from {
-    opacity: 0;
-    transform: translate(-50%, calc(-50% + 16px)) scale(0.97);
-  }
-  to {
-    opacity: 1;
-    transform: translate(-50%, -50%) scale(1);
-  }
-}
-@supports not (
-  (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))
-) {
-  .roster-dialog {
-    background-color: #fffdf3;
-  }
 }
 
 @media (max-width: 980px) {
   .roster-people--four {
     max-width: calc(var(--roster-portrait-width) * 2 + var(--roster-gap));
   }
+  .roster-dialog {
+    grid-template-columns: minmax(260px, 0.82fr) minmax(0, 1.18fr);
+    width: calc(100% - 32px);
+    max-width: calc(100% - 32px);
+    height: min(680px, calc(100dvh - 32px));
+  }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 720px) {
   .roster-panels {
     --roster-portrait-width: min(36vw, 175px);
     --roster-gap: 18px;
@@ -559,35 +766,37 @@ button.roster-person {
     bottom: 16px;
   }
   .roster-dialog {
-    display: block;
-    width: calc(100vw - 24px);
-    max-height: calc(100dvh - 32px);
-    padding: 20px 22px 24px;
-    border-radius: 20px;
-    -webkit-backdrop-filter: blur(10px) saturate(130%);
-    backdrop-filter: blur(10px) saturate(130%);
+    display: flex;
+    flex-direction: column;
+    width: calc(100% - 20px);
+    max-width: calc(100% - 20px);
+    height: auto;
+    max-height: calc(100dvh - 24px);
+    border-radius: 18px;
     overflow-y: auto;
     overscroll-behavior: contain;
   }
-  .roster-dialog__close {
-    position: sticky;
-    top: 0;
-    margin: 0 0 -42px auto;
+  .roster-dialog__visual {
+    height: 320px;
+    flex: 0 0 320px;
   }
-  .roster-dialog__portrait {
-    width: min(55%, 210px);
-    margin: 0 auto 24px;
+  .roster-dialog__visual::after {
+    background: linear-gradient(
+      180deg,
+      transparent 65%,
+      rgba(17, 11, 13, 0.96) 100%
+    );
+    border-right: 0;
   }
-  .roster-dialog__portrait img {
-    max-height: 240px;
-  }
-  .roster-dialog__body {
-    padding: 0;
+  .roster-dialog__editorial {
+    padding: 20px 22px 26px;
     overflow: visible;
   }
-  .roster-dialog__title,
-  .roster-dialog__tagline {
-    text-align: center;
+  .roster-dialog__body {
+    padding: 12px 0;
+    overflow: visible;
+    -webkit-mask-image: none;
+    mask-image: none;
   }
 }
 

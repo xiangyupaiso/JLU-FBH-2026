@@ -59,16 +59,22 @@ const Paragraphs = ({ items }: { items: ReadonlyArray<string> }) => (
  */
 export function ConsequencesDimensionCard({
   consequences,
+  shortTermFeature,
 }: {
   consequences: SdgChapter["consequences"];
+  /** Optional feature rendered directly after the short-term paragraphs (SDG 4). */
+  shortTermFeature?: ReactNode;
 }) {
   return (
     <div className="sust-consequences">
       <h4 className="sust-minor-heading">{consequences.shortTerm.heading}</h4>
       <Paragraphs items={consequences.shortTerm.paragraphs} />
+      {shortTermFeature}
 
       <h4 className="sust-minor-heading">{consequences.longTerm.heading}</h4>
-      <Paragraphs items={[consequences.longTerm.intro]} />
+      {consequences.longTerm.intro ? (
+        <Paragraphs items={[consequences.longTerm.intro]} />
+      ) : null}
 
       <ul className="sust-consequence-grid">
         {consequences.dimensions.map((dimension) => (

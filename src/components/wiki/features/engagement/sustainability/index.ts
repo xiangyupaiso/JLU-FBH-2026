@@ -2,6 +2,7 @@ export { StakeholderDeck, StakeholderProfileCard } from "./StakeholderProfileCar
 export { StakeholderPhotoReel } from "./StakeholderPhotoReel";
 export { PatientChatDialog } from "./PatientChatDialog";
 export { ConsequencesDimensionCard } from "./ConsequencesDimensionCard";
+export { EduFeedbackCards } from "./EduFeedbackCards";
 export { SDGInteractiveCard } from "./SDGInteractiveCard";
 export { OverviewSetDevelopGrowCards } from "./OverviewSetDevelopGrowCards";
 export { CountUpStat, StatsGrid } from "./CountUpStat";

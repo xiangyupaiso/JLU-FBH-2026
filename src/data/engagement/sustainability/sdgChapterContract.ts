@@ -45,7 +45,7 @@ export interface StakeholderArticle {
 
 export interface StakeholderProfile {
   id: string;
-  /** Ordinal from the source heading ("01" … "12"). */
+  /** Ordinal from the source heading ("01" … "18"). */
   index: string;
   name: string;
   role?: string;
@@ -58,8 +58,11 @@ export interface StakeholderProfile {
   activityType?: string;
   partner?: string;
   challenge?: string;
-  keyInsight: string;
+  /** Educator/interview cards carry Key Insight; SDG 4 activity cards omit it. */
+  keyInsight?: string;
   whatWeDid?: string;
+  /** SDG 4 activity cards label this field "Our Response". */
+  whatWeDidLabel?: string;
   whatChanged: string;
   whatChangedLabel?: string;
   /** Some source cards intentionally omit a status line. */
@@ -68,6 +71,55 @@ export interface StakeholderProfile {
   /** Prose that sits in the main flow right before this card. */
   leadIn?: ReadonlyArray<string>;
   article?: StakeholderArticle;
+  /* ----- SDG 4 education-activity metadata (optional; other chapters omit) -- */
+  /** Event date line, e.g. "Jan. 24, 2026". */
+  date?: string;
+  /** Venue line, e.g. "Heilongjiang Hailun No.1 High School". */
+  location?: string;
+  /** Attendance line, e.g. "130 Students". */
+  participants?: string;
+  /** The manuscript "For" audience line. */
+  audience?: string;
+  /** "Teaching Resources" asset list, e.g. slides · cards · guides. */
+  resourcesNote?: string;
+  /** Second teaching-resource line ("For teachers and other teams …"). */
+  resourcesHint?: string;
+  /** Teaching-resource downloads (explicit manuscript URLs). */
+  resourcePdfs?: ReadonlyArray<LegacyToolPdf>;
+}
+
+/** A reusable educational resource showcased inside an SDG 4 S section. */
+export interface EducationResource {
+  id: string;
+  title: string;
+  paragraphs: ReadonlyArray<string>;
+  figure?: SustainabilityImageAssetKey;
+  /** Side-by-side document links (e.g. the picture book CN/EN PDFs). */
+  pdfs?: ReadonlyArray<LegacyToolPdf>;
+  /** Manuscript sends readers to the Games route for this resource. */
+  gamesLink?: boolean;
+}
+
+/** One audience group (Young Learners, Secondary School …) and its activities. */
+export interface EducationActivityGroup {
+  id: string;
+  title: string;
+  intro: ReadonlyArray<string>;
+  activities: ReadonlyArray<StakeholderProfile>;
+}
+
+/** Chapter-specific continuation after the stakeholder cards (SDG 4 only). */
+export interface EducationShowcase {
+  /** Prose between the educator cards and the four resource showcases. */
+  transition: ReadonlyArray<string>;
+  resources: ReadonlyArray<EducationResource>;
+  /** Prose introducing the audience-grouped activities; last sentence links. */
+  activitiesLead: ReadonlyArray<string>;
+  /** The trailing "click here to read the evidence" sentence, split for linking. */
+  activitiesLeadLink?: { before: string; label: string; after: string; target: string };
+  groups: ReadonlyArray<EducationActivityGroup>;
+  /** Final "Making Science Explorable and Resources Shareable" block. */
+  closing: { title: string; paragraphs: ReadonlyArray<string> };
 }
 
 export interface ConsequenceDimension {
@@ -102,6 +154,8 @@ export interface LegacyTool {
 }
 
 export interface EvidenceItem {
+  /** Bold manuscript lead, e.g. "Educational activity reach" (number from the list). */
+  title?: string;
   text: string;
   figure?: SustainabilityImageAssetKey;
   /** Caption under `figure`; defaults to the asset's alt text. */
@@ -123,10 +177,14 @@ export interface SdgChapter {
   stakeholders: {
     lead: ReadonlyArray<string>;
     profiles: ReadonlyArray<StakeholderProfile>;
+    /** SDG 4 only: resource showcases and audience-grouped activities. */
+    extras?: EducationShowcase;
   };
   consequences: {
     lead: ReadonlyArray<string>;
     shortTerm: { heading: string; paragraphs: ReadonlyArray<string> };
+    /** Feature rendered right after the short-term paragraphs (SDG 4 microplate). */
+    featureKey?: string;
     longTerm: { heading: string; intro: string };
     dimensions: ReadonlyArray<ConsequenceDimension>;
   };
@@ -143,6 +201,8 @@ export interface SdgChapter {
     stats: ReadonlyArray<SustainabilityStat>;
     measurableIntro?: ReadonlyArray<string>;
     measurable: ReadonlyArray<EvidenceItem>;
+    /** Closing prose after the numbered measurable items (SDG 4). */
+    measurableClosing?: ReadonlyArray<string>;
     significant: ReadonlyArray<string>;
   };
 }

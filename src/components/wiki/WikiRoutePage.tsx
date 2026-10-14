@@ -1066,24 +1066,26 @@ function RouteSection({
           </figcaption>
         </figure>
       ) : null}
-      <header
-        className={`wiki-section__heading${
-          section.hideSectionNumber ? " wiki-section__heading--unnumbered" : ""
-        }`}
-        data-wiki-reveal
-      >
-        {section.anchorIds?.map((anchorId) => (
-          <span className="wiki-anchor" id={anchorId} key={anchorId} />
-        ))}
-        {section.hideSectionNumber ? null : (
-          <span className="wiki-section-number" aria-hidden="true">
-            {String(Number.parseInt(section.index, 10)).padStart(2, "0")}
-          </span>
-        )}
-        <div className="wiki-section__heading-body">
-          <h2>{renderSectionTitle(section.title)}</h2>
-        </div>
-      </header>
+      {section.hideHeading ? null : (
+        <header
+          className={`wiki-section__heading${
+            section.hideSectionNumber ? " wiki-section__heading--unnumbered" : ""
+          }`}
+          data-wiki-reveal
+        >
+          {section.anchorIds?.map((anchorId) => (
+            <span className="wiki-anchor" id={anchorId} key={anchorId} />
+          ))}
+          {section.hideSectionNumber ? null : (
+            <span className="wiki-section-number" aria-hidden="true">
+              {String(Number.parseInt(section.index, 10)).padStart(2, "0")}
+            </span>
+          )}
+          <div className="wiki-section__heading-body">
+            <h2>{renderSectionTitle(section.title)}</h2>
+          </div>
+        </header>
+      )}
 
       {blocks ? (
         shouldCollapseSubheadings ? (

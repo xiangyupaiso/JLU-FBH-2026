@@ -1,9 +1,11 @@
 import { useMemo, type ReactNode } from "react";
+import { Link } from "react-router-dom";
 /* eslint-disable react-refresh/only-export-components --
    This module exports the feature-map builder next to its small layout
    helpers; it is not a fast-refresh boundary. */
 import {
   ConsequencesDimensionCard,
+  EduFeedbackCards,
   OverviewSetDevelopGrowCards,
   PdfToolList,
   RichText,
@@ -20,7 +22,10 @@ import {
   SustainabilityPdfPreview,
   ToolTable,
 } from "./sustainability";
-import type { SdgChapter } from "../../../../data/engagement/sustainability/sdgChapterContract";
+import type {
+  EducationResource,
+  SdgChapter,
+} from "../../../../data/engagement/sustainability/sdgChapterContract";
 import {
   sustainabilityAssets,
   sustainabilityImage,
@@ -159,9 +164,145 @@ function StakeholderGrid({ chapter }: { chapter: SdgChapter }) {
   );
 }
 
+/** One reusable educational resource (virtual lab, game, picture book …). */
+function ResourceShowcase({ resource }: { resource: EducationResource }) {
+  return (
+    <article className="sust-edu-resource">
+      <h5 className="sust-edu-resource__title">{resource.title}</h5>
+      <div className="wiki-prose">
+        {resource.paragraphs.map((paragraph) => (
+          <p key={paragraph}>
+            <RichText text={paragraph} />
+          </p>
+        ))}
+      </div>
+      {resource.figure ? (
+        <figure className="wiki-figure sust-edu-resource__figure">
+          <img
+            src={sustainabilityImage(resource.figure)}
+            alt={sustainabilityAssets[resource.figure].alt}
+            loading="lazy"
+            decoding="async"
+          />
+        </figure>
+      ) : null}
+      {resource.gamesLink ? (
+        <Link className="sust-edu-resource__games" to="/games">
+          Visit the Games page
+          <span aria-hidden="true"> →</span>
+        </Link>
+      ) : null}
+      {resource.pdfs?.length ? (
+        <div className="sust-edu-resource__pdfs">
+          {resource.pdfs.map((pdf) => (
+            <a
+              key={pdf.fileName}
+              className="sust-stake-card__resource-btn"
+              href={pdf.url}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {pdf.label}
+            </a>
+          ))}
+        </div>
+      ) : null}
+    </article>
+  );
+}
+
+/**
+ * SDG 4 S section: the three educator cards, then the four resource
+ * showcases and the eighteen activities grouped by audience.
+ */
+function Sdg4StakeholderPanel({ chapter }: { chapter: SdgChapter }) {
+  const extras = chapter.stakeholders.extras;
+  if (!extras) return <StakeholderGrid chapter={chapter} />;
+  return (
+    <div className="sust-edu">
+      <StakeholderGrid chapter={chapter} />
+
+      <div className="wiki-prose">
+        {extras.transition.map((paragraph) => (
+          <p key={paragraph}>
+            <RichText text={paragraph} />
+          </p>
+        ))}
+      </div>
+      <div className="sust-edu-resource-grid">
+        {extras.resources.map((resource) => (
+          <ResourceShowcase key={resource.id} resource={resource} />
+        ))}
+      </div>
+
+      <div className="wiki-prose">
+        {extras.activitiesLead.map((paragraph) => (
+          <p key={paragraph}>
+            <RichText text={paragraph} />
+          </p>
+        ))}
+        {extras.activitiesLeadLink ? (
+          <p>
+            <RichText text={extras.activitiesLeadLink.before} />
+            <a
+              className="sust-edu-inline-link"
+              href={`#${extras.activitiesLeadLink.target}`}
+              onClick={(event) => {
+                event.preventDefault();
+                document
+                  .getElementById(extras.activitiesLeadLink!.target)
+                  ?.scrollIntoView({ behavior: "smooth", block: "start" });
+              }}
+            >
+              {extras.activitiesLeadLink.label}
+            </a>
+            <RichText text={extras.activitiesLeadLink.after} />
+          </p>
+        ) : null}
+      </div>
+
+      {extras.groups.map((group) => (
+        <section className="sust-edu-group" key={group.id}>
+          <h5 className="sust-edu-group__title">{group.title}</h5>
+          <div className="wiki-prose">
+            {group.intro.map((paragraph) => (
+              <p key={paragraph}>
+                <RichText text={paragraph} />
+              </p>
+            ))}
+          </div>
+          <div className="sust-stake-grid">
+            {stakeholderRuns(group.activities).map((run) => (
+              <div className="sust-stake-grid__item" key={run[0].id}>
+                <LeadIn run={run} />
+                {run.length > 1 ? (
+                  <StakeholderDeck profiles={run} />
+                ) : (
+                  <StakeholderProfileCard profile={run[0]} />
+                )}
+              </div>
+            ))}
+          </div>
+        </section>
+      ))}
+
+      <section className="sust-edu-closing">
+        <h5 className="sust-edu-group__title">{extras.closing.title}</h5>
+        <div className="wiki-prose">
+          {extras.closing.paragraphs.map((paragraph) => (
+            <p key={paragraph}>
+              <RichText text={paragraph} />
+            </p>
+          ))}
+        </div>
+      </section>
+    </div>
+  );
+}
+
 /** E — Evidence: numbered Measurable items with figures, Significant prose. */
 function EvidencePanel({ chapter }: { chapter: SdgChapter }) {
-  const { measurableIntro, measurable, significant } = chapter.evidence;
+  const { measurableIntro, measurable, measurableClosing, significant } = chapter.evidence;
   return (
     <div className="sust-evidence">
       <h4 className="sust-minor-heading">Measurable</h4>
@@ -176,7 +317,10 @@ function EvidencePanel({ chapter }: { chapter: SdgChapter }) {
       ) : null}
       <ol className="sust-evidence__list">
         {measurable.map((item) => (
-          <li className="sust-evidence__item" key={item.text}>
+          <li className="sust-evidence__item" key={item.title ?? item.text}>
+            {item.title ? (
+              <h5 className="sust-evidence__item-title">{item.title}</h5>
+            ) : null}
             <p>
               <RichText text={item.text} />
             </p>
@@ -196,6 +340,15 @@ function EvidencePanel({ chapter }: { chapter: SdgChapter }) {
           </li>
         ))}
       </ol>
+      {measurableClosing?.length ? (
+        <div className="wiki-prose">
+          {measurableClosing.map((paragraph) => (
+            <p key={paragraph}>
+              <RichText text={paragraph} />
+            </p>
+          ))}
+        </div>
+      ) : null}
       <h4 className="sust-minor-heading">Significant</h4>
       <div className="wiki-prose">
         {significant.map((paragraph) => (
@@ -208,12 +361,30 @@ function EvidencePanel({ chapter }: { chapter: SdgChapter }) {
   );
 }
 
+/** Chapter-specific slots keyed from the data layer (e.g. microplate survey). */
+const chapterConsequenceSlots: Record<string, ReactNode> = {
+  "sdg4-feedback": <EduFeedbackCards />,
+};
+
 function chapterFeatures(chapter: SdgChapter): FeatureMap {
   const keys = chapterFeatureKeys(chapter);
   return {
     [keys.rail]: <ScaleRail chapter={chapter} />,
-    [keys.stakeholders]: <StakeholderGrid chapter={chapter} />,
-    [keys.consequences]: <ConsequencesDimensionCard consequences={chapter.consequences} />,
+    [keys.stakeholders]: chapter.stakeholders.extras ? (
+      <Sdg4StakeholderPanel chapter={chapter} />
+    ) : (
+      <StakeholderGrid chapter={chapter} />
+    ),
+    [keys.consequences]: (
+      <ConsequencesDimensionCard
+        consequences={chapter.consequences}
+        shortTermFeature={
+          chapter.consequences.featureKey
+            ? chapterConsequenceSlots[chapter.consequences.featureKey]
+            : null
+        }
+      />
+    ),
     [keys.alignmentLead]: (
       <div>
         <h4 className="sust-minor-heading">{chapter.alignment.leadHeading}</h4>

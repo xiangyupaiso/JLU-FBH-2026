@@ -105,10 +105,24 @@ export function WikiLineSidebar({
   );
   const activeChildParentId = activeChildId
     ? items.find((item) =>
-      item.children?.some((child) => child.id === activeChildId),
+      item.children?.some(
+        (child) =>
+          child.id === activeChildId ||
+          child.id.startsWith(`${activeChildId.split("-")[0]}-`),
+      ),
     )?.id
     : undefined;
-  const expandedItemId = activeChildParentId ?? activeId;
+  const expandedItemId = showAllChildren ? (activeChildParentId ?? activeId) : activeChildParentId;
+  const activeTopChildId = useMemo(() => {
+    if (!activeChildId || !expandedItemId) return "";
+    const parent = items.find((item) => item.id === expandedItemId);
+    const children = parent?.children;
+    if (!children?.length) return "";
+    const exact = children.find((child) => child.id === activeChildId);
+    if (exact) return exact.id;
+    const prefix = `${activeChildId.split("-")[0]}-`;
+    return children.find((child) => child.id.startsWith(prefix))?.id ?? "";
+  }, [activeChildId, expandedItemId, items]);
   const drawerMode = Boolean(onRequestClose);
 
   const protocolMap = useMemo(() => {
@@ -484,9 +498,9 @@ export function WikiLineSidebar({
                   className="wiki-outline__subnav"
                   aria-label={`${item.label} subsections`}
                 >
-                  {outlineRows(item.children, activeChildId, showAllChildren).map(({ child, tertiary, isTrail }) => {
+                  {outlineRows(item.children, activeTopChildId || activeChildId, showAllChildren).map(({ child, tertiary, isTrail }) => {
                     const childPair = protocolMap.get(child.id);
-                    const isActive = ribbonTargetId === child.id;
+                    const isActive = (activeTopChildId || ribbonTargetId) === child.id;
                     // Manuscript numbering can omit introductory sections.
                     // The outline must use its displayed parent chapter instead.
                     const childIndex = /^\d+$/.test(item.index)

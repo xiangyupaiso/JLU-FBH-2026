@@ -582,6 +582,7 @@ export const rosterPage: WikiPageContent = {
       kicker: "",
       title: "Meet Our Team",
       hideSectionNumber: true,
+      hideHeading: true,
       summary: "",
       blocks: [{ type: "feature", key: "roster" }],
     },
