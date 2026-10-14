@@ -454,6 +454,18 @@ function CodeBlock({
   );
 }
 
+/** Render manuscript blocks inside shared tabs and disclosures with the same
+ * formatting, citation context and figure semantics as the surrounding page. */
+export function WikiContentBlocks({ blocks, features = {}, sectionId }: {
+  blocks: readonly WikiContentBlock[];
+  features?: FeatureMap;
+  sectionId: string;
+}) {
+  return <>{blocks.map((block, index) => (
+    <RouteBlock key={index} block={block} features={features} sectionId={sectionId} />
+  ))}</>;
+}
+
 function RouteBlock({
   block,
   features,
@@ -1317,34 +1329,15 @@ export function WikiRoutePage({
         label: block.title.replace(/\*\*/g, ""),
         children: [] as WikiLineSidebarItem[],
       }));
-    const subheadingByIndex = new Map(
-      subheadings?.map((subheading) => [subheading.index, subheading]) ?? [],
-    );
-    const nestedSubheadings: WikiLineSidebarItem[] = [];
-    const subheadingById = new Map<string, WikiLineSidebarItem>();
-    (subheadings ?? []).forEach((subheading) => {
-      const parentIndex = subheading.index.split(".").slice(0, -1).join(".");
-      const parent = subheadingByIndex.get(parentIndex);
-      const child = {
-        id: subheading.id,
-        index: subheading.index,
-        label: subheading.label,
-        children: [] as WikiLineSidebarItem[],
-      };
-      subheadingById.set(child.id, child);
-      if (parent && !showAllOutlineHeadings) {
-        subheadingById.get(parent.id)?.children?.push(child);
-      } else {
-        nestedSubheadings.push(child);
-      }
-    });
+    // WikiLineSidebar derives depth and the active heading group from dotted
+    // indices. It consumes a flat list; nesting here silently drops level 3.
     return {
       id: section.id,
       // Unnumbered sections (e.g. a "00" station map) stay unnumbered here too.
       index: section.hideSectionNumber ? "" : section.index,
       label: section.navLabel ?? section.title,
       meta: section.kicker,
-      children: nestedSubheadings.length ? nestedSubheadings : undefined,
+      children: subheadings?.length ? subheadings : undefined,
     };
   });
   const heroStyle = heroImage
