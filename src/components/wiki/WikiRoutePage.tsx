@@ -591,6 +591,17 @@ function RouteBlock({
           ) : null}
         </figure>
       );
+    case "carousel":
+      return (
+        <figure className="wiki-figure wiki-figure--carousel" data-wiki-reveal>
+          <div className="wiki-figure__row">
+            {block.images.map((img) => (
+              <img key={img.src} src={img.src} alt={img.alt ?? ""} loading="lazy" decoding="async" />
+            ))}
+          </div>
+          {block.caption ? <figcaption>{renderInlineFormatting(block.caption)}</figcaption> : null}
+        </figure>
+      );
     case "image-placeholder":
       return (
         <figure

@@ -1353,6 +1353,22 @@ html.has-route-reader-scroll {
   text-align: center;
 }
 
+/* 9b. Side-by-side image row (`carousel`) — document/translation pairs, photo sets. */
+.wiki-page--route .wiki-figure--carousel .wiki-figure__row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.wiki-page--route .wiki-figure--carousel .wiki-figure__row img {
+  flex: 1 1 300px;
+  min-width: 0;
+  height: auto;
+  object-fit: contain;
+}
+
 /* 9a. Pull-out card (`mini-visual`) --------------------------------------- */
 /* Structural port of the Hardware module's "SYSTEM AT A GLANCE" card. The
    container line above already supplies the skin (radius, panel fill, inset

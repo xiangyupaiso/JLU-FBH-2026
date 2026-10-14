@@ -906,6 +906,7 @@
   color: var(--route-heading-ink, #4a2c1d);
   font-size: clamp(19px, 2vw, 22px);
   line-height: 1.4;
+  text-align: center;
 }
 .wiki-page .thank-you-note__paper p {
   margin: 0 0 14px;
@@ -915,9 +916,11 @@
 .wiki-page .thank-you-note__paper .thank-you-note__sign-off {
   display: flex;
   flex-direction: column;
+  align-items: flex-end;
   gap: 4px;
   margin-top: 22px;
   margin-bottom: 0;
+  text-align: right;
 }
 .wiki-page .thank-you-note__paper .thank-you-note__sign-off span {
   display: block;
