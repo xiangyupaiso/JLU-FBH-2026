@@ -1,9 +1,4 @@
-import {
-  useId,
-  useState,
-  type KeyboardEvent,
-  type ReactNode,
-} from "react";
+import { useId, useState, type ReactNode } from "react";
 import { scrollReaderToTarget } from "../../../../utils";
 import {
   experimentProtocolImage,
@@ -17,12 +12,8 @@ import "../../../../styles/features/experiments-protocol.css";
 
 const RING_CENTER = 560;
 const STAGE_RADIUS = 204;
-const STAGE_LABEL_RADIUS = 286;
 const LEAF_RADIUS = 406;
-const LEAF_LABEL_RADIUS = 443;
 const OUTER_RADIUS = 505;
-const FULL_VIEW_BOX = "0 0 1120 1120";
-const CENTER_VIEW_BOX = "360 360 400 400";
 
 function ringPoint(angle: number, radius: number) {
   const radians = (angle * Math.PI) / 180;
@@ -32,59 +23,10 @@ function ringPoint(angle: number, radius: number) {
   };
 }
 
-function wrapSvgLabel(label: string, maxChars: number): string[] {
-  const words = label.split(/\s+/);
-  const lines: string[] = [];
-  let line = "";
-
-  words.forEach((word) => {
-    const candidate = line ? `${line} ${word}` : word;
-    if (line && candidate.length > maxChars) {
-      lines.push(line);
-      line = word;
-    } else {
-      line = candidate;
-    }
-  });
-  if (line) lines.push(line);
-  return lines;
-}
-
-function wrappedSvgText(
-  label: string,
-  x: number,
-  y: number,
-  textAnchor: "start" | "end" | "middle",
-  className: string,
-  maxChars: number,
-): ReactNode {
-  const lines = wrapSvgLabel(label, maxChars);
-  const lineHeight = className.includes("stage") ? 15 : 14;
-  const firstY = y - ((lines.length - 1) * lineHeight) / 2;
-
-  return (
-    <text
-      className={className}
-      x={x}
-      y={firstY}
-      textAnchor={textAnchor}
-      dominantBaseline="central"
-    >
-      {lines.map((line, index) => (
-        <tspan key={`${line}-${index}`} x={x} dy={index === 0 ? 0 : lineHeight}>
-          {line}
-        </tspan>
-      ))}
-    </text>
-  );
-}
-
-function leafAngles(stageAngle: number, count: number): number[] {
-  if (count <= 1) return [stageAngle];
-  const span = count >= 5 ? 104 : count === 4 ? 90 : count === 3 ? 72 : 48;
-  const start = stageAngle - span / 2;
-  const step = span / (count - 1);
-  return Array.from({ length: count }, (_, index) => start + step * index);
+function ringArc(start: number, end: number, radius: number) {
+  const from = ringPoint(start, radius);
+  const to = ringPoint(end, radius);
+  return `M ${from.x} ${from.y} A ${radius} ${radius} 0 0 ${end > start ? 1 : 0} ${to.x} ${to.y}`;
 }
 
 /** The supplied single-ring design, with each leaf bound to its protocol pair. */

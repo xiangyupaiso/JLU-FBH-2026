@@ -14,7 +14,7 @@ import { animatePlatformAntigen } from "./animatePlatformAntigen";
 // Give the completed Why artwork a reading beat before its ring departs.
 const WHY_READING_HOLD = 0.36;
 const BASE_FIGURE_END = 5.5;
-const FIGURE_END = BASE_FIGURE_END + WHY_READING_HOLD;
+const BASE_WHY_REVEAL_END = 1.06;
 const FIGURE_REST = 0.65;
 
 export function animateCircRnaSequence(
@@ -34,6 +34,13 @@ export function animateCircRnaSequence(
   const ring = rna.querySelector<SVGElement>('[data-layer="4"]')!;
   const targetRing =
     platform.querySelector<HTMLImageElement>('[data-layer="3"]')!;
+  // Keep Why's reveals in their own timeline; only the later carry shifts.
+  const whyTimeline = gsap.timeline();
+  animateCircRna(rna, whyTimeline);
+  const whyRevealEnd = whyTimeline.duration();
+  const addedReadingTime =
+    whyRevealEnd - BASE_WHY_REVEAL_END + WHY_READING_HOLD;
+  const figureEnd = BASE_FIGURE_END + addedReadingTime;
   gsap.set(ring, { x: 0, y: 0, scaleX: 1, scaleY: 1 });
   const transfer = { progress: 0 };
   let transitionActive = false;
@@ -78,13 +85,13 @@ export function animateCircRnaSequence(
   // Reserve the extra reading distance without accelerating the later reveals.
   const range =
     (track.offsetHeight - window.innerHeight) *
-    ((FIGURE_END + FIGURE_REST) / (BASE_FIGURE_END + FIGURE_REST));
+    ((figureEnd + FIGURE_REST) / (BASE_FIGURE_END + FIGURE_REST));
   let figureRest = FIGURE_REST;
   // Home can still be hidden under its loader. Keep the CSS track until the
   // preparation rebuild can measure it instead of freezing its height at zero.
   if (range > 0 && Number.isFinite(range)) {
-    const hold = stillHold(range, FIGURE_REST / FIGURE_END);
-    figureRest = FIGURE_END * hold.rest;
+    const hold = stillHold(range, FIGURE_REST / figureEnd);
+    figureRest = figureEnd * hold.rest;
     gsap.set(track, { height: window.innerHeight + range * hold.scale });
   }
   const timeline = gsap.timeline({
@@ -104,8 +111,7 @@ export function animateCircRnaSequence(
       },
     },
   });
-  animateCircRna(rna, timeline);
-  timeline.addLabel("why-readable", timeline.duration());
+  timeline.add(whyTimeline, 0);
   const paper = rna.querySelector(".story-backdrop");
   const outgoing = rna.querySelectorAll(
     '[data-layer="2"], [data-layer="3"], .circrna-benefit-art, .circrna-caption',
@@ -168,11 +174,20 @@ export function animateCircRnaSequence(
       at + 0.1,
     );
   });
-  // Extend only the gap after Why; all outgoing beats keep their own timing.
-  timeline.shiftChildren(WHY_READING_HOLD, true, 1.25);
+  // Preserve the platform choreography while Why gains separate reading beats.
+  timeline.shiftChildren(addedReadingTime, true, 1.25);
+  timeline.addLabel(
+    "stability-readable",
+    whyTimeline.labels["stability-readable"],
+  );
+  timeline.addLabel(
+    "expression-readable",
+    whyTimeline.labels["expression-readable"],
+  );
+  timeline.addLabel("why-readable", whyRevealEnd);
   // Leave the complete figure in a stable reading frame.
-  timeline.addLabel("advantages-readable", FIGURE_END);
-  timeline.to({}, { duration: figureRest }, FIGURE_END);
+  timeline.addLabel("advantages-readable", figureEnd);
+  timeline.to({}, { duration: figureRest }, figureEnd);
   cleanups.push(
     animatePlatformAntigen(sequence, targetRing, timeline, compact),
   );

@@ -130,7 +130,7 @@ function environment() {
   }
   const context = vm.createContext({
     document: Object.assign(new EventTarget(), {
-      body: { querySelectorAll: () => [...elements, ...portals], append() {} },
+      body: { querySelector: () => null, querySelectorAll: () => [...elements, ...portals], append() {} },
       createElementNS: (_namespace, name) => {
         if (name === "svg") {
           const svg = { style: {}, removed: false, setAttribute() {}, append() {}, remove() { this.removed = true; } };
