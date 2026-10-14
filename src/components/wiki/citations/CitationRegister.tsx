@@ -376,7 +376,7 @@ export function createCitationRenderer(
         >
           {/* The link shows exactly what the author wrote: an author-year group,
               a bracketed numeral, or whatever the next manuscript uses. */}
-          {segment.text}
+          {fallback(segment.text)}
         </CitationLink>
       );
     });
