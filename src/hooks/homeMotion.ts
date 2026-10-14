@@ -2,9 +2,9 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 // A short scrub smooths wheel input without leaving the illustration trailing.
 export const HOME_SCRUB = 0.22;
-// NOTE: "sine.inOut" is also hardcoded in animateCircRna.ts and in
-// useHomeStoryAnimation.ts (paint() and several tweens). Changing this alone
-// will not retune those; search for the literal.
+// NOTE: "sine.inOut" is also hardcoded in useHomeStoryAnimation.ts (paint()
+// and several tweens). Changing this alone will not retune those; search for
+// the literal.
 export const HOME_EASE = "sine.inOut";
 
 // Briefly settle the completed frame without a second screen of empty scroll.
