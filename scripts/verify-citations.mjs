@@ -31,11 +31,14 @@ import { descriptionFeatures, renderCitedText } from "../src/components/wiki/fea
 import { designFeatures, renderDesignCitedText } from "../src/components/wiki/features/wet-lab/DesignPanels";
 import { hardwareFeatures, renderHardwareCitedText } from "../src/components/wiki/features/drylab/HardwarePanels";
 import { resultsFeatures, renderResultsText } from "../src/components/wiki/features/project/ResultsPanels";
+import { entrepreneurshipFeatures, renderEntrepreneurshipInline } from "../src/components/wiki/features/engagement/EntrepreneurshipPanels";
 import { descriptionPage, descriptionReferences } from "../src/data/project/descriptionPage";
 import { designPage, designReferences } from "../src/data/wet-lab/designPage";
 import { hardwarePage, hardwareReferences } from "../src/data/drylab/hardwarePage";
 import { resultsPage } from "../src/data/project/resultsPage";
 import { resultsReferences } from "../src/data/project/resultsReferences";
+import { entrepreneurshipPage } from "../src/data/engagement/entrepreneurshipPage";
+import { entrepreneurshipReferences } from "../src/data/engagement/entrepreneurshipReferences";
 import { buildAuthorYearCitationIndex, buildNumericCitationIndex } from "../src/data/citations/citationIndex";
 
 const render = (node: unknown) =>
@@ -60,6 +63,7 @@ const descriptionIndex = buildAuthorYearCitationIndex(descriptionPage.sections, 
 const designIndex = buildNumericCitationIndex(designPage.sections, designReferences);
 const hardwareIndex = buildNumericCitationIndex(hardwarePage.sections, hardwareReferences);
 const resultsIndex = buildNumericCitationIndex(resultsPage.sections, resultsReferences);
+const entrepreneurshipIndex = buildNumericCitationIndex(entrepreneurshipPage.sections, entrepreneurshipReferences);
 
 /**
  * Emphasis rules are checked as units, not through the corpus: the paragraphs
@@ -75,6 +79,15 @@ const emphasis = {
 };
 
 export const report = {
+  entrepreneurship: page(
+    "entrepreneurship",
+    entrepreneurshipPage.sections as never,
+    entrepreneurshipReferences as never,
+    entrepreneurshipIndex as never,
+    renderEntrepreneurshipInline as never,
+    entrepreneurshipFeatures()["entrepreneurship-references"],
+    8,
+  ),
   description: page(
     "description",
     descriptionPage.sections as never,
@@ -169,6 +182,7 @@ for (const page of [
   report.design,
   report.hardware,
   report.results,
+  report.entrepreneurship,
 ]) {
   const { name, references, indexPath, register, cited } = page;
 
@@ -290,7 +304,9 @@ for (const page of [
   // Back-links: a cited reference must link back, an uncited one must not.
   const citedRefIds = new Set(
     cited.flatMap((entry) =>
-      [...entry.html.matchAll(/href="#ref-(\d+)"/g)].map((m) => Number(m[1])),
+      [...entry.html.matchAll(/aria-describedby="([^"]+)"/g)].flatMap((m) =>
+        [...m[1].matchAll(/ref-(\d+)-body/g)].map((ref) => Number(ref[1])),
+      ),
     ),
   );
   const backlinkRefIds = new Set(
@@ -345,7 +361,12 @@ check(
 check(
   "design: adjacent markers both resolve",
   design.cited.some(
-    (entry) => />\[3\]</.test(entry.html) && />\[4\]</.test(entry.html),
+    (entry) => {
+      const adjacent = entry.paragraph.match(/\[(\d+)\]\[(\d+)\]/);
+      return adjacent &&
+        entry.html.includes(`href="#ref-${adjacent[1]}"`) &&
+        entry.html.includes(`href="#ref-${adjacent[2]}"`);
+    },
   ),
 );
 check(
@@ -417,6 +438,33 @@ check(
 
 /* ----------------------------------------------------------------- report */
 
+const entrepreneurship = report.entrepreneurship;
+check(
+  "entrepreneurship: comma and range markers preserve the manuscript",
+  entrepreneurship.cited.some((entry) => />\[9,10\]</.test(entry.html)) &&
+    entrepreneurship.cited.some((entry) => />\[11–13\]</.test(entry.html)),
+);
+check(
+  "entrepreneurship: patient callout citations reach the shared register",
+  entrepreneurship.cited.some(
+    (entry) => entry.paragraph.startsWith("She had completed") &&
+      entry.html.includes('href="#ref-1"') &&
+      entry.html.includes('href="#ref-4"'),
+  ),
+);
+check(
+  "entrepreneurship: every source has a return link, including range members",
+  entrepreneurship.references.every((reference) =>
+    entrepreneurship.indexPath.byRef.has(reference.id),
+  ),
+);
+check(
+  "entrepreneurship: grouped previews describe all their sources",
+  entrepreneurship.cited.some((entry) =>
+    entry.html.includes('aria-describedby="ref-9-body ref-10-body"'),
+  ),
+);
+
 if (failures.length) {
   console.error(`\n${failures.length} check(s) failed:`);
   for (const failure of failures) console.error(`  ✗ ${failure}`);
@@ -428,6 +476,7 @@ for (const page of [
   report.design,
   report.hardware,
   report.results,
+  report.entrepreneurship,
 ]) {
   console.log(
     `  ${page.name.padEnd(12)} ${page.references.length} references, ` +

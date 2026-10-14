@@ -1,14 +1,16 @@
-import biorender from "../assets/partners/sponsor-biorender.webp";
-import grammarly from "../assets/partners/sponsor-grammarly.png";
-import charlesRiver from "../assets/partners/sponsor-charles-river-english.svg";
-import igem from "../assets/partners/sponsor-igem.png";
-import lark from "../assets/partners/sponsor-lark.png";
-import mathworks from "../assets/partners/sponsor-mathworks.png";
-import schrodinger from "../assets/partners/sponsor-schrodinger.png";
-import jluWordmark from "../assets/partners/jlu-wordmark-bilingual.webp";
-import teachingSeal from "../assets/partners/bethune-teaching-department.webp";
-import coreFacility from "../assets/partners/sponsor-jlu-core-facility.webp";
-import itm from "../assets/partners/sponsor-jlu-itm.webp";
+const SHARED_CDN =
+  "https://static.igem.wiki/teams/6056/wiki/files/pages/shared";
+const biorender = `${SHARED_CDN}/sponsor-biorender.webp`;
+const grammarly = `${SHARED_CDN}/sponsor-grammarly.avif`;
+const charlesRiver = `${SHARED_CDN}/sponsor-charles-river-english.webp`;
+const igem = `${SHARED_CDN}/sponsor-igem.avif`;
+const lark = `${SHARED_CDN}/sponsor-lark.avif`;
+const mathworks = `${SHARED_CDN}/sponsor-mathworks.avif`;
+const schrodinger = `${SHARED_CDN}/sponsor-schrodinger.avif`;
+const jluWordmark = `${SHARED_CDN}/jlu-wordmark-bilingual.webp`;
+const teachingSeal = `${SHARED_CDN}/bethune-teaching-department.webp`;
+const coreFacility = `${SHARED_CDN}/sponsor-jlu-core-facility.webp`;
+const itm = `${SHARED_CDN}/sponsor-jlu-itm.webp`;
 
 /**
  * Footer — single source of truth for the closing panel.
@@ -40,8 +42,6 @@ export interface FooterMark {
   alt: string;
 }
 
-const SHARED_CDN =
-  "https://static.igem.wiki/teams/6056/wiki/files/pages/shared";
 const jluCrest = `${SHARED_CDN}/jlu-crest.avif`;
 const collegeWordmark = `${SHARED_CDN}/bethune-clinical-college.avif`;
 const hospitalSeal = `${SHARED_CDN}/bethune-hospital-seal.avif`;

@@ -710,7 +710,7 @@ function RouteBlock({
           {block.label ? (
             <span className="wiki-callout__label">{block.label}</span>
           ) : null}
-          <p>{renderInlineFormatting(block.body)}</p>
+          <p>{inline ? inline(block.body, linkify) : linkify(block.body)}</p>
         </aside>
       );
     case "subheading":

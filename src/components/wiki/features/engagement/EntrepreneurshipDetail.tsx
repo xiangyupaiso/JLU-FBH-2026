@@ -107,6 +107,7 @@ export function EntrepreneurshipDetail({
   title,
   tone,
   group,
+  image,
   above = false,
   onClose,
   children,
@@ -115,6 +116,7 @@ export function EntrepreneurshipDetail({
   title: string;
   tone: EntrepreneurshipOrbitTone;
   group?: string;
+  image?: string;
   above?: boolean;
   onClose: () => void;
   children: ReactNode;
@@ -154,6 +156,14 @@ export function EntrepreneurshipDetail({
         </svg>
       </button>
       {group ? <p className="entrepreneurship-detail__group">{group}</p> : null}
+      {image ? (
+        <img
+          className="entrepreneurship-detail__image"
+          src={image}
+          alt={title}
+          loading="lazy"
+        />
+      ) : null}
       <h3 id={`${id}-title`}>{title}</h3>
       <div className="entrepreneurship-detail__body">{children}</div>
     </section>

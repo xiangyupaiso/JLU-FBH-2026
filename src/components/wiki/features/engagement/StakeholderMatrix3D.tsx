@@ -228,6 +228,7 @@ export function StakeholderMatrix3D() {
           id={detail.detailId}
           title={active.name}
           tone={active.tone}
+          image={active.image}
           above
           onClose={detail.closeDetail}
         >
