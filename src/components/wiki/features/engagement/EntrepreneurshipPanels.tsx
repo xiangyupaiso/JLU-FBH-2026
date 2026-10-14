@@ -1,17 +1,40 @@
 /* eslint-disable react-refresh/only-export-components */
-import { useEffect, useId, useRef, useState, type ReactNode } from "react";
+import { useId, useState, type CSSProperties, type ReactNode } from "react";
 import {
+  businessModelCanvas,
   entrepreneurshipConcerns,
+  entrepreneurshipDocuments,
+  entrepreneurshipHighlights,
   entrepreneurshipImpacts,
+  entrepreneurshipPage,
+  entrepreneurshipThankYouNote,
+  type EntrepreneurshipDocumentKey,
   type EntrepreneurshipOrbitTopic,
 } from "../../../../data/engagement/entrepreneurshipPage";
+import { entrepreneurshipReferences } from "../../../../data/engagement/entrepreneurshipReferences";
 import {
-  AssumptionFunnel,
-  DecisionProofTable,
-  TradeoffOrbit,
-} from "../EngagementFeatures";
+  buildNumericCitationIndex,
+  reportCitationIssues,
+} from "../../../../data/citations/citationIndex";
+import {
+  CitationReferenceList,
+  createCitationRenderer,
+  type CitationFlashTint,
+} from "../../citations/CitationRegister";
+import {
+  linkify,
+  renderInlineFormatting as renderEmphasis,
+} from "../../proseInline";
+import { scrollReaderToId } from "../../../../utils/scrollReaderToTarget";
+import { DocumentViewer } from "../../documents/DocumentViewer";
 import { CirCureGoldenCircle } from "./CirCureGoldenCircle";
 import { StakeholderMatrix3D } from "./StakeholderMatrix3D";
+import {
+  EntrepreneurshipDetail,
+  useEntrepreneurshipDetail,
+} from "./EntrepreneurshipDetail";
+import { WatercolorCircle } from "./EntrepreneurshipWatercolor";
+import { MilestoneTimeline } from "./MilestoneTimeline";
 import "../../../../styles/features/entrepreneurship-panels.css";
 
 const concernPositions = [
@@ -97,10 +120,8 @@ function CircureOrbitPanel({
   impacts?: boolean;
 }) {
   const id = useId();
-  const rootRef = useRef<HTMLDivElement>(null);
-  const triggerRef = useRef<HTMLButtonElement | null>(null);
-  const suppressFocusRef = useRef(false);
-  const [activeIndex, setActiveIndex] = useState<number | null>(null);
+  const detail = useEntrepreneurshipDetail();
+  const { activeIndex } = detail;
   const active = activeIndex === null ? null : topics[activeIndex];
   const positions = impacts ? impactPositions : concernPositions;
   const title = impacts
@@ -110,44 +131,12 @@ function CircureOrbitPanel({
     activeIndex !== null &&
     (impacts ? activeIndex >= 2 : activeIndex === 2 || activeIndex === 3);
 
-  useEffect(() => {
-    if (!active) return;
-    const closeOnEscape = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setActiveIndex(null);
-    };
-    const closeOutside = (event: PointerEvent) => {
-      if (!rootRef.current?.contains(event.target as Node))
-        setActiveIndex(null);
-    };
-    document.addEventListener("keydown", closeOnEscape);
-    document.addEventListener("pointerdown", closeOutside);
-    return () => {
-      document.removeEventListener("keydown", closeOnEscape);
-      document.removeEventListener("pointerdown", closeOutside);
-    };
-  }, [active]);
-
-  const closeDetail = () => {
-    setActiveIndex(null);
-    suppressFocusRef.current = true;
-    triggerRef.current?.focus({ preventScroll: true });
-    suppressFocusRef.current = false;
-  };
-
   return (
     <div
-      ref={rootRef}
       className={`circure-orbit circure-orbit--${impacts ? "impacts" : "concerns"}`}
       role="group"
       aria-label={title}
-      onPointerLeave={() => {
-        if (!rootRef.current?.contains(document.activeElement))
-          setActiveIndex(null);
-      }}
-      onBlur={(event) => {
-        if (!event.currentTarget.contains(event.relatedTarget))
-          setActiveIndex(null);
-      }}
+      {...detail.containerProps}
     >
       <svg
         className="circure-orbit__drawing"
@@ -155,29 +144,6 @@ function CircureOrbitPanel({
         aria-hidden="true"
       >
         <defs>
-          <filter
-            id={`${id}-watercolor`}
-            x="-15%"
-            y="-15%"
-            width="130%"
-            height="130%"
-          >
-            <feTurbulence
-              type="fractalNoise"
-              baseFrequency="0.045"
-              numOctaves="3"
-              seed="8"
-              result="grain"
-            />
-            <feDisplacementMap
-              in="SourceGraphic"
-              in2="grain"
-              scale="4"
-              xChannelSelector="R"
-              yChannelSelector="G"
-            />
-            <feGaussianBlur stdDeviation="0.45" />
-          </filter>
           <path id={`${id}-title-arc`} d="M 55,166 Q 320,-30 585,166" />
         </defs>
         {impacts ? (
@@ -205,33 +171,15 @@ function CircureOrbitPanel({
           const [x, y] = positions[index];
           const radius = impacts ? 32 : 64;
           return (
-            <g
-              className={`circure-orbit__wash ${activeIndex === index ? "is-active" : ""}`}
-              data-orbit-tone={topic.tone}
+            <WatercolorCircle
               key={topic.id}
-              filter={`url(#${id}-watercolor)`}
-            >
-              <circle
-                className="circure-orbit__wash-base"
-                cx={x}
-                cy={y}
-                r={radius}
-              />
-              <ellipse
-                className="circure-orbit__wash-layer"
-                cx={x - radius * 0.12}
-                cy={y + radius * 0.04}
-                rx={radius * 0.88}
-                ry={radius * 0.94}
-              />
-              <ellipse
-                className="circure-orbit__wash-light"
-                cx={x + radius * 0.2}
-                cy={y - radius * 0.16}
-                rx={radius * 0.69}
-                ry={radius * 0.72}
-              />
-            </g>
+              cx={x}
+              cy={y}
+              radius={radius}
+              tone={topic.tone}
+              seed={8 + index * 7}
+              active={activeIndex === index}
+            />
           );
         })}
       </svg>
@@ -245,22 +193,7 @@ function CircureOrbitPanel({
           aria-label={
             topic.group ? `${topic.group}: ${topic.title}` : topic.title
           }
-          aria-expanded={activeIndex === index}
-          aria-controls={activeIndex === index ? `${id}-detail` : undefined}
-          onPointerEnter={(event) => {
-            if (event.pointerType === "touch") return;
-            triggerRef.current = event.currentTarget;
-            setActiveIndex(index);
-          }}
-          onFocus={(event) => {
-            if (suppressFocusRef.current) return;
-            triggerRef.current = event.currentTarget;
-            setActiveIndex(index);
-          }}
-          onClick={(event) => {
-            triggerRef.current = event.currentTarget;
-            setActiveIndex(index);
-          }}
+          {...detail.triggerProps(index)}
         >
           {topic.label.map((line) => (
             <span key={line}>{line}</span>
@@ -284,29 +217,16 @@ function CircureOrbitPanel({
       ) : null}
 
       {active ? (
-        <div
-          id={`${id}-detail`}
-          className={`circure-orbit__detail ${detailAbove ? "circure-orbit__detail--above" : ""}`}
-          data-orbit-tone={active.tone}
-          role="region"
-          aria-labelledby={`${id}-detail-title`}
+        <EntrepreneurshipDetail
+          id={detail.detailId}
+          title={active.title}
+          tone={active.tone}
+          group={active.group}
+          above={detailAbove}
+          onClose={detail.closeDetail}
         >
-          <button
-            className="circure-orbit__close"
-            type="button"
-            aria-label="Close details"
-            onClick={closeDetail}
-          >
-            <svg viewBox="0 0 20 20" aria-hidden="true">
-              <path d="m5 5 10 10M15 5 5 15" />
-            </svg>
-          </button>
-          {active.group ? (
-            <p className="circure-orbit__detail-group">{active.group}</p>
-          ) : null}
-          <h3 id={`${id}-detail-title`}>{active.title}</h3>
-          <p className="circure-orbit__detail-copy">{active.body}</p>
-        </div>
+          <p>{active.body}</p>
+        </EntrepreneurshipDetail>
       ) : null}
     </div>
   );
@@ -323,14 +243,243 @@ export function PositiveLongTermImpacts() {
 export { CirCureGoldenCircle } from "./CirCureGoldenCircle";
 export { StakeholderMatrix3D } from "./StakeholderMatrix3D";
 
+/** Warm peacock-teal landing flash belonging to the Engagement palette. */
+const ENTREPRENEURSHIP_CITATION_FLASH: CitationFlashTint = {
+  ramp: "rgba(23, 74, 71, 0.16)",
+  ring: "0 0 0 3px rgba(23, 74, 71, 0.38)",
+};
+
+const entrepreneurshipCitationIndex = buildNumericCitationIndex(
+  entrepreneurshipPage.sections,
+  entrepreneurshipReferences,
+);
+reportCitationIssues("entrepreneurship", entrepreneurshipCitationIndex);
+
+const renderNumberedCitation = createCitationRenderer(
+  entrepreneurshipCitationIndex,
+  ENTREPRENEURSHIP_CITATION_FLASH,
+);
+
+/**
+ * Keep whole paragraphs in the shared citation index; section references are
+ * rendered only in its text fallback, so they cannot break citation lookup.
+ */
+export const renderEntrepreneurshipInline = (
+  text: string,
+  fallback: (t: string) => ReactNode,
+): ReactNode => {
+  return renderNumberedCitation(text, (plainText) => {
+    const parts = plainText.split(/(\[\[see:[^\]]+\]\])/g);
+    return parts.map((part, index) => {
+      const match = part.match(/^\[\[see:([^|\]]+)\|([^\]]+)\]\]$/);
+      if (!match) return fallback(part);
+      const [, label, target] = match;
+      return (
+        <a
+          key={`${target}-${index}`}
+          className="wiki-chapter-link wiki-chapter-link--inline"
+          href={`#${target}`}
+          onClick={(event) => {
+            if (
+              event.metaKey ||
+              event.ctrlKey ||
+              event.shiftKey ||
+              event.button !== 0
+            )
+              return;
+            event.preventDefault();
+            const reduceMotion = window.matchMedia(
+              "(prefers-reduced-motion: reduce)",
+            ).matches;
+            scrollReaderToId(
+              target,
+              event.currentTarget,
+              reduceMotion ? "instant" : "smooth",
+            );
+          }}
+        >
+          {label}
+        </a>
+      );
+    });
+  });
+};
+
+/**
+ * Business Model Canvas: the canvas figure stays visible, while the nine
+ * written elaborations beneath it collapse into a single disclosure — one
+ * click expands the whole block, as the manuscript asks.
+ */
+export function BusinessModelCanvas() {
+  const [open, setOpen] = useState(false);
+  const regionId = useId();
+  return (
+    <div className="business-model-canvas" data-wiki-reveal>
+      <figure className="business-model-canvas__figure">
+        <img
+          src={businessModelCanvas.image}
+          alt={businessModelCanvas.imageAlt}
+          loading="lazy"
+        />
+      </figure>
+      <button
+        type="button"
+        className="business-model-canvas__toggle"
+        aria-expanded={open}
+        aria-controls={regionId}
+        onClick={() => setOpen((value) => !value)}
+      >
+        <span>{businessModelCanvas.prompt}</span>
+        <svg viewBox="0 0 16 16" aria-hidden="true">
+          <path d="m4 6 4 4 4-4" />
+        </svg>
+      </button>
+      <div
+        id={regionId}
+        className={`business-model-canvas__body${open ? " is-open" : ""}`}
+        hidden={!open}
+      >
+        {businessModelCanvas.sections.map((section) => (
+          <section key={section.id} className="business-model-canvas__section">
+            <h4>{section.title}</h4>
+            {section.paragraphs.map((paragraph, index) => (
+              <p key={index}>{renderEmphasis(paragraph)}</p>
+            ))}
+          </section>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+/** The team's thank-you letter, laid over the signed massage paper. */
+export function ThankYouNote() {
+  return (
+    <div
+      className="thank-you-note"
+      data-wiki-reveal
+      style={
+        {
+          "--thanks-bg": `url(${entrepreneurshipThankYouNote.background})`,
+        } as CSSProperties
+      }
+    >
+      <div className="thank-you-note__paper">
+        <h3>{entrepreneurshipThankYouNote.title}</h3>
+        {entrepreneurshipThankYouNote.paragraphs.map((paragraph, index) => (
+          <p key={index}>{renderEmphasis(paragraph)}</p>
+        ))}
+        <p className="thank-you-note__sign-off">
+          {entrepreneurshipThankYouNote.signOff.map((line, index) => (
+            <span key={index}>{renderEmphasis(line)}</span>
+          ))}
+        </p>
+      </div>
+    </div>
+  );
+}
+
+/**
+ * Our Highlights, in judging format: the record shows one question per row and
+ * keeps the team's answer folded until the reader asks for it — one row open
+ * at a time, like a judgeship Q&A sheet.
+ */
+export function OurHighlights() {
+  const [openId, setOpenId] = useState<string | null>(null);
+  return (
+    <div className="highlights-record" data-wiki-reveal>
+      {entrepreneurshipHighlights.map((item) => {
+        const open = openId === item.id;
+        return (
+          <article
+            key={item.id}
+            className={`highlights-record__item${open ? " is-open" : ""}`}
+          >
+            <button
+              type="button"
+              id={`${item.id}-toggle`}
+              className="highlights-record__toggle"
+              aria-expanded={open}
+              aria-controls={`${item.id}-answer`}
+              onClick={() => setOpenId(open ? null : item.id)}
+            >
+              <span className="highlights-record__question">
+                {item.question}
+              </span>
+              <svg viewBox="0 0 16 16" aria-hidden="true">
+                <path d="m4 6 4 4 4-4" />
+              </svg>
+            </button>
+            <div
+              id={`${item.id}-answer`}
+              role="region"
+              aria-labelledby={`${item.id}-toggle`}
+              className="highlights-record__answer"
+              hidden={!open}
+            >
+              {item.paragraphs.map((paragraph, paragraphIndex) => (
+                <p key={paragraphIndex}>
+                  {renderEntrepreneurshipInline(paragraph, linkify)}
+                </p>
+              ))}
+            </div>
+          </article>
+        );
+      })}
+    </div>
+  );
+}
+
+/** One manuscript document housed in the wiki's shared collapsible PDF card. */
+function EntrepreneurshipDocumentCard({
+  docKey,
+}: {
+  docKey: EntrepreneurshipDocumentKey;
+}) {
+  const document = entrepreneurshipDocuments[docKey];
+  return (
+    <div data-wiki-reveal>
+      <DocumentViewer
+        document={{
+          caption: document.caption,
+          url: document.url,
+          downloadUrl: document.url,
+        }}
+      />
+    </div>
+  );
+}
+
+/** The bibliography on the shared citation register (hover, flash, back-links). */
+function EntrepreneurshipReferenceList() {
+  return (
+    <div data-wiki-reveal>
+      <CitationReferenceList
+        references={entrepreneurshipReferences}
+        index={entrepreneurshipCitationIndex}
+        tint={ENTREPRENEURSHIP_CITATION_FLASH}
+      />
+    </div>
+  );
+}
+
 export function entrepreneurshipFeatures(): Record<string, ReactNode> {
   return {
+    "our-highlights": <OurHighlights />,
     "potential-problems-and-solutions": <PotentialProblemsAndSolutions />,
     "positive-long-term-impacts": <PositiveLongTermImpacts />,
     "circure-golden-circle": <CirCureGoldenCircle />,
     "stakeholder-matrix-3d": <StakeholderMatrix3D />,
-    "venture-discovery": <AssumptionFunnel />,
-    "venture-hypotheses": <DecisionProofTable />,
-    "venture-roadmap": <TradeoffOrbit />,
+    "entrepreneurship-milestone": <MilestoneTimeline />,
+    "business-model-canvas": <BusinessModelCanvas />,
+    "thank-you-note": <ThankYouNote />,
+    "entrepreneurship-references": <EntrepreneurshipReferenceList />,
+    "doc-jika": <EntrepreneurshipDocumentCard docKey="jika" />,
+    "doc-jienzhihe": <EntrepreneurshipDocumentCard docKey="jienzhihe" />,
+    "doc-scalability": <EntrepreneurshipDocumentCard docKey="scalability" />,
+    "doc-business-plan": <EntrepreneurshipDocumentCard docKey="businessPlan" />,
+    "doc-ccic-poster": <EntrepreneurshipDocumentCard docKey="ccicPoster" />,
+    "doc-apic-poster": <EntrepreneurshipDocumentCard docKey="apicPoster" />,
+    "doc-legal-plan": <EntrepreneurshipDocumentCard docKey="legalPlan" />,
   };
 }

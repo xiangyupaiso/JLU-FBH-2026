@@ -1,9 +1,55 @@
+.home-story {
+  --hope-room-surface: #edf0fa;
+  --hope-room-feather: clamp(96px, 16svh, 160px);
+}
+
 .home-story .story-chapter--beyond {
-  --next-bg: #edf0fa;
+  --next-bg: var(--hope-room-surface);
+}
+
+/* Blend inside the painted viewports so a separate colour strip cannot
+   interrupt the handoff to the hospital room. */
+.home-story .story-chapter--beyond::after,
+.home-story .story-chapter--hope-return::after {
+  display: none;
+}
+
+.story-chapter--beyond .story-chapter-inner::after,
+.story-chapter--hope-return .story-chapter-inner::before,
+.story-chapter--hope-return .story-chapter-inner::after {
+  content: "";
+  position: absolute;
+  inset-inline: 0;
+  height: var(--hope-room-feather);
+  z-index: 5;
+  pointer-events: none;
+}
+
+.story-chapter--beyond .story-chapter-inner::after {
+  bottom: 0;
+  background: linear-gradient(to bottom, transparent, var(--hope-room-surface));
+  opacity: var(--hope-exit-feather, 1);
+}
+
+.story-chapter--hope-return .story-chapter-inner::before {
+  top: 0;
+  background: linear-gradient(to bottom, var(--hope-room-surface), transparent);
+  opacity: var(--hope-entry-feather, 1);
+}
+
+.story-chapter--hope-return .story-chapter-inner::after {
+  bottom: 0;
+  background: linear-gradient(to bottom, transparent, var(--next-bg));
+  opacity: var(--hope-exit-feather, 1);
+}
+
+.has-story-motion .story-chapter--beyond,
+.has-story-motion .story-chapter--hope-return {
+  --hope-exit-feather: 0;
 }
 
 .home-story .story-chapter--hope-return {
-  --chapter-bg: #edf0fa;
+  --chapter-bg: var(--hope-room-surface);
   --next-bg: #f7e7e6;
   --scene-hold: 145svh;
 }
@@ -47,6 +93,7 @@
   width: 32%;
   color: #3f465f;
   isolation: isolate;
+  opacity: var(--hope-copy-exit, 1);
 }
 
 /* A feathered wash keeps the original room visible around the reading area. */
@@ -57,6 +104,7 @@
   inset: -40px -30px;
   background: radial-gradient(ellipse, #f5f5fbe8 45%, #f5f5fb00 73%);
   filter: blur(10px);
+  opacity: var(--hope-wash-opacity, 1);
   pointer-events: none;
 }
 
@@ -98,19 +146,33 @@
     height: 100%;
     aspect-ratio: auto;
     translate: none;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto minmax(0, 1fr);
+    gap: clamp(18px, 3svh, 28px);
+    padding: calc(var(--scene-height) * 0.05) 8% 0;
+    box-sizing: border-box;
   }
 
   .story-hope-people {
-    inset: auto auto 0 50%;
-    width: min(180vw, 730px);
+    position: relative;
+    inset: auto;
+    grid-row: 2;
+    place-self: end center;
+    width: auto;
+    height: 100%;
+    max-height: min(101.25vw, 410.625px);
     aspect-ratio: 16 / 9;
-    translate: -40% 0;
+    translate: 10% 0;
   }
 
   .story-hope-copy {
-    top: 5%;
-    left: 8%;
-    width: 84%;
+    position: relative;
+    grid-row: 1;
+    top: auto;
+    left: auto;
+    width: 100%;
+    min-width: 0;
   }
 
   .story-hope-copy h3 {
@@ -147,5 +209,12 @@
 
   .story-hope-copy .story-hope-carry {
     margin-top: 0.7em;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  /* Keep the static entrance wash above the reading area. */
+  .story-chapter--hope-return .story-chapter-inner::before {
+    height: var(--header-height);
   }
 }

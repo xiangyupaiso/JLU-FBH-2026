@@ -26,6 +26,7 @@ import sdg3SplenocyteFlowImg from "../../../assets/wiki/sustainability/sustainab
 import sdg3TumorGrowthImg from "../../../assets/wiki/sustainability/sustainability-sdg3-tumor-growth.png";
 import sdg9TraceableExpertFeedbackImg from "../../../assets/wiki/sustainability/sustainability-sdg9-traceable-expert-feedback.png";
 import { sdg12EvidenceAssets } from "./sustainabilitySdg12Assets";
+import { sdg4ImageAssets } from "./sustainabilitySdg4Assets";
 
 export type SustainabilityAssetKind = "image" | "pdf";
 
@@ -210,6 +211,7 @@ export const sustainabilityAssets = {
     section: "SDG 9 — Evidence",
   },
   ...sdg12EvidenceAssets,
+  ...sdg4ImageAssets,
   sstQnModelConstruction: {
     kind: "pdf",
     fileName: "sustainability-sst-qn-model-construction.pdf",

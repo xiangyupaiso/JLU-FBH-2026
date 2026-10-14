@@ -1,9 +1,10 @@
 import { lazy, Suspense, useRef } from "react";
-import lambUrl from "../assets/loading/lamb.webp";
 import { useFooterEasterEgg } from "../hooks/useFooterEasterEgg";
 import "../styles/footer-easter-egg.css";
 
 const FooterPhotoScene = lazy(() => import("./FooterPhotoScene"));
+const lambUrl =
+  "https://static.igem.wiki/teams/6056/wiki/files/pages/shared/lamb.webp";
 
 /** A photographic afterword waits beneath the footer; pushing past the end opens it. */
 export function FooterEasterEgg() {

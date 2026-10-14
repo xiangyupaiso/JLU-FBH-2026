@@ -107,7 +107,7 @@
   content: "";
   position: absolute;
   inset: 0;
-  background: url("../assets/home/story/scene-9-layer-1.webp") center / cover;
+  background: url("https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-9-layer-1.webp") center / cover;
   opacity: 0.44;
   pointer-events: none;
 }

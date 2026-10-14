@@ -89,6 +89,48 @@ const profilePhotos = (profile: StakeholderProfile) => {
   );
 };
 
+/** SDG 4 activity card: date · venue · attendance line under the name. */
+function EventMeta({ profile }: { profile: StakeholderProfile }) {
+  const items = [profile.date, profile.location, profile.participants].filter(Boolean);
+  if (!items.length) return null;
+  return <p className="sust-stake-card__event">{items.join(" · ")}</p>;
+}
+
+/** SDG 4 activity card: Teaching resources with manuscript download links. */
+function ResourceDownloads({ profile }: { profile: StakeholderProfile }) {
+  if (!profile.resourcesNote && !profile.resourcePdfs?.length) return null;
+  return (
+    <div className="sust-stake-card__field">
+      <dt>Teaching Resources</dt>
+      {profile.resourcesNote ? (
+        <dd>
+          <RichText text={profile.resourcesNote} />
+        </dd>
+      ) : null}
+      {profile.resourcesHint ? (
+        <dd className="sust-stake-card__resources-hint">
+          <RichText text={profile.resourcesHint} />
+        </dd>
+      ) : null}
+      {profile.resourcePdfs?.length ? (
+        <dd className="sust-stake-card__resource-btns">
+          {profile.resourcePdfs.map((pdf) => (
+            <a
+              key={pdf.fileName}
+              className="sust-stake-card__resource-btn"
+              href={pdf.url}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {pdf.label} resource
+            </a>
+          ))}
+        </dd>
+      ) : null}
+    </div>
+  );
+}
+
 /** "Current Status" + "SDGs Addressed" on one row, as in the finalized wiki copy. */
 function StakeMeta({ profile }: { profile: StakeholderProfile }) {
   return (
@@ -143,20 +185,36 @@ function StakeCardFace({
           {profile.role ? (
             <span className="sust-stake-card__role">{profile.role}</span>
           ) : null}
+          <EventMeta profile={profile} />
         </header>
 
         <div className="sust-stake-card__body">
           <dl className="sust-stake-card__fields">
+            {profile.audience ? (
+              <div className="sust-stake-card__field">
+                <dt>For</dt>
+                <dd>
+                  <RichText text={profile.audience} />
+                </dd>
+              </div>
+            ) : null}
             {FIELDS.map(([key, label]) =>
               profile[key] ? (
                 <div className="sust-stake-card__field" key={key}>
-                  <dt>{key === "whatChanged" ? profile.whatChangedLabel ?? label : label}</dt>
+                  <dt>
+                    {key === "whatChanged"
+                      ? profile.whatChangedLabel ?? label
+                      : key === "whatWeDid"
+                        ? profile.whatWeDidLabel ?? label
+                        : label}
+                  </dt>
                   <dd>
                     <RichText text={profile[key]} />
                   </dd>
                 </div>
               ) : null,
             )}
+            <ResourceDownloads profile={profile} />
           </dl>
           {photos.length ? (
             <div className="sust-stake-card__media">

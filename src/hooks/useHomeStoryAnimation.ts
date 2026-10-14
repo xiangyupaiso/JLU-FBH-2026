@@ -20,6 +20,7 @@ import { animateFinaleExplore } from "./animateFinaleExplore";
 import { animateClinicalSequence } from "./animateClinicalSequence";
 import { animateGalleryWhy } from "./animateGalleryWhy";
 import { animateTnbcBridge } from "./animateTnbcBridge";
+import { animateHopeHandoff } from "./animateHopeHandoff";
 import { updateWardInfusionTube } from "./wardInfusionGeometry";
 import { registerPagePreparation } from "../utils/pageLoader";
 
@@ -223,7 +224,10 @@ function choreographArt(
             .matches;
         const noteScale = () =>
           portrait()
-            ? 1.12
+            ? Math.min(
+                1.06,
+                (visual.clientWidth / 2 - 24) / notes[0].offsetWidth,
+              )
             : Math.min(
                 1.18,
                 (visual.clientWidth * 0.92 - 48) / (notes[0].offsetWidth * 4),
@@ -331,20 +335,36 @@ function choreographArt(
     case "plug-and-play":
       // Keep the drag surface still; antigen changes belong to the reader.
       break;
-    case "what-we-hope":
+    case "what-we-hope": {
       camera({ scale: 1.025 }, { scale: 1.005 });
       arrive(2, 0.02, { x: -12, y: 8, opacity: 0 }, 0.32);
       arrive(3, 0.1, { x: -8, y: 6, opacity: 0 }, 0.32);
-      section.querySelectorAll<HTMLElement>("[data-hope-copy]")
-        .forEach((part, index) => {
-          timeline.fromTo(
-            part,
-            { autoAlpha: 0, y: compact ? 6 : 10 },
-            { autoAlpha: 1, y: 0, duration: 0.24, ease: HOME_EASE },
-            0.2 + index * 0.18,
-          );
-        });
+      const copyStart = 0.4;
+      const copyInterval = 0.18;
+      const copyDuration = 0.24;
+      const copyParts = section.querySelectorAll<HTMLElement>("[data-hope-copy]");
+      copyParts.forEach((part, index) => {
+        timeline.fromTo(
+          part,
+          { autoAlpha: 0, y: compact ? 6 : 10 },
+          { autoAlpha: 1, y: 0, duration: copyDuration, ease: HOME_EASE },
+          copyStart + index * copyInterval,
+        );
+      });
+      const copy = section.querySelector<HTMLElement>(".story-hope-copy");
+      if (copy && copyParts.length) {
+        const copyComplete = copyStart + (copyParts.length - 1) * copyInterval + copyDuration;
+        timeline.addLabel("hope-copy-visible", copyComplete);
+        // Reveal the reading wash only after every line is fully visible.
+        timeline.fromTo(
+          copy,
+          { "--hope-wash-opacity": 0 },
+          { "--hope-wash-opacity": 1, duration: 0.24, ease: HOME_EASE },
+          "hope-copy-visible+=0.04",
+        );
+      }
       break;
+    }
     case "beyond-tnbc":
       camera({ scale: 1.025, xPercent: -0.2 }, { scale: 1.006, xPercent: 0 });
       move(
@@ -556,10 +576,13 @@ export function useHomeStoryAnimation(root: RefObject<HTMLDivElement | null>) {
                 scrollTrigger: {
                   id: `home-${section.id}-art`,
                   trigger: track,
-                  start: () =>
-                    flowScene
-                      ? "top 80%"
-                      : `top top+=${Number.parseFloat(getComputedStyle(stage).top) || 0}`,
+                  start: () => {
+                    if (flowScene) return "top 80%";
+                    // Let the people arrive with the room, then begin the
+                    // question once the incoming viewport has settled.
+                    if (section.id === "what-we-hope") return "top 60%";
+                    return `top top+=${Number.parseFloat(getComputedStyle(stage).top) || 0}`;
+                  },
                   end: () =>
                     flowScene
                       ? "bottom bottom"
@@ -609,6 +632,9 @@ export function useHomeStoryAnimation(root: RefObject<HTMLDivElement | null>) {
                 artworkTimeline,
                 ARTWORK_START,
               );
+              if (section.id === "what-we-hope") {
+                timeline.addLabel("hope-readable", ARTWORK_START + artworkTimeline.duration());
+              }
 
               if (stackedVaccine) {
                 // This mobile composition is taller than the viewport. Let it
@@ -639,6 +665,8 @@ export function useHomeStoryAnimation(root: RefObject<HTMLDivElement | null>) {
               );
             }
           });
+
+        if (root.current) animateHopeHandoff(root.current);
 
         const tnbc = root.current?.querySelector<HTMLElement>("#why-tnbc");
         if (tnbc) {

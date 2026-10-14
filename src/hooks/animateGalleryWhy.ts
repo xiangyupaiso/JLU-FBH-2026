@@ -99,11 +99,15 @@ export function animateGalleryWhy(root: HTMLElement, compact: boolean) {
     0.08,
   );
   cards.forEach((card, index) => {
-    intro.to(
-      card.querySelector('[data-gallery-layer="symbols"]'),
-      { opacity: 1, duration: 0.2, ease: HOME_EASE },
-      0.18 + index * 0.09,
-    );
+    // circRNA uses its own carried ring, so it has no separate symbol layer.
+    const symbols = card.querySelector('[data-gallery-layer="symbols"]');
+    if (symbols) {
+      intro.to(
+        symbols,
+        { opacity: 1, duration: 0.2, ease: HOME_EASE },
+        0.18 + index * 0.09,
+      );
+    }
     intro.to(
       card.querySelectorAll('[data-gallery-layer="labels"]'),
       { opacity: 1, duration: 0.2, ease: HOME_EASE },
@@ -243,6 +247,7 @@ export function animateGalleryWhy(root: HTMLElement, compact: boolean) {
   };
   const smooth = (from: number, to: number, value: number) =>
     ease(gsap.utils.clamp(0, 1, (value - from) / (to - from)));
+  const bridgeSurface = gsap.utils.interpolate("#fff4e2", "#fceeed");
   const draw = () => {
     if (isHomeMotionRefreshing()) return;
     // The preceding pinned scenes can change their spacing after load. Read
@@ -256,6 +261,14 @@ export function animateGalleryWhy(root: HTMLElement, compact: boolean) {
     ghost.dataset.progress = String(p);
     const arrived = p >= 1 - 0.0001;
     const travelling = p > 0 && !arrived;
+    // Both native panels share one surface while the ring crosses their seam.
+    // Removing the override gives each chapter's timeline its background back.
+    root.classList.toggle("is-gallery-why-carry", travelling);
+    if (travelling) {
+      root.style.setProperty("--gallery-why-surface", bridgeSurface(smooth(0, 1, p)));
+    } else {
+      root.style.removeProperty("--gallery-why-surface");
+    }
     if (p > 0) prepare();
     else if (crossedIntoBridge) {
       // Restore the gallery's actual scroll frame. A scene-picker jump can
@@ -279,9 +292,10 @@ export function animateGalleryWhy(root: HTMLElement, compact: boolean) {
       gsap.set(alternatives, { autoAlpha: 0 });
       gsap.set(decision, { opacity: 1 - smooth(0, 0.25, p) });
       gsap.set(cardCopy, { opacity: 1 - smooth(0.08, 0.5, p) });
-      // The Why timeline takes ownership when its ring morph starts at 1.25.
+      // The Why timeline takes ownership when its ring morph starts.
       // Before then, a direct chapter jump must show the finished native ring.
-      if ((whyTrigger?.animation?.time() ?? 0) < 1.25) {
+      const whyTimeline = whyTrigger?.animation as gsap.core.Timeline | undefined;
+      if ((whyTimeline?.time() ?? 0) < (whyTimeline?.labels["ring-to-platform"] ?? 1.25)) {
         gsap.set(target, { opacity: arrived ? 1 : 0 });
       }
     }
@@ -376,6 +390,8 @@ export function animateGalleryWhy(root: HTMLElement, compact: boolean) {
     ScrollTrigger.removeEventListener("scrollEnd", refreshAnchor);
     ScrollTrigger.removeEventListener("refresh", onRefresh);
     window.cancelAnimationFrame(frame);
+    root.classList.remove("is-gallery-why-carry");
+    root.style.removeProperty("--gallery-why-surface");
     intro.kill();
     bridge.kill();
     source.style.visibility = originalSourceVisibility;

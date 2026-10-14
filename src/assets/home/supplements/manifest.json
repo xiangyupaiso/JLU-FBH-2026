@@ -234,13 +234,13 @@
       },
       {
         "number": 8,
-        "file": "fan-8.webp",
-        "left": 30.78125,
-        "top": 5.555555555555555,
-        "width": 44.8046875,
-        "height": 13.055555555555557,
-        "source": "\u6247\u5f62/\u672a\u547d\u540d\u4f5c\u54c1-8.png",
-        "sha256": "02370d6a8ca580245dedc21350ba62eb1489e80074013668b329d89a12a2559f"
+        "file": "project-advantages.png",
+        "left": 0.0,
+        "top": 0.0,
+        "width": 100.0,
+        "height": 100.0,
+        "source": "IMG_2174.png",
+        "sha256": "f7a69afafc985ddefdbc60d7b691683f4c744ff6ce6aecf2c0c7a084858bb18f"
       }
     ]
   }

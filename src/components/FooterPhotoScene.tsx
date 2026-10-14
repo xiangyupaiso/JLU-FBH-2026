@@ -1,10 +1,15 @@
 import { useEffect, useRef, useState } from "react";
-import teamPhotoUrl from "../assets/footer/team-keepsake.webp";
-import lambUrl from "../assets/loading/lamb.webp";
-import hopeHandsUrl from "../assets/home/story/scene-9-layer-2.webp";
-import hopePatientUrl from "../assets/home/story/scene-9-layer-3.webp";
 import { useFooterPhotoTurn } from "../hooks/useFooterPhotoTurn";
 import "../styles/footer-photo-scene.css";
+
+const teamPhotoUrl =
+  "https://static.igem.wiki/teams/6056/wiki/files/pages/team/team-heying.avif";
+const lambUrl =
+  "https://static.igem.wiki/teams/6056/wiki/files/pages/shared/lamb.webp";
+const hopeHandsUrl =
+  "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-9-layer-2.webp";
+const hopePatientUrl =
+  "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-9-layer-3.webp";
 
 /** The photo eases into view, rests, then turns with native scrolling. */
 export default function FooterPhotoScene() {

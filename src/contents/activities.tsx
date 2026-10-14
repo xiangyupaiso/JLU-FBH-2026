@@ -1,18 +1,15 @@
-import { WikiRoutePage } from "../components/wiki/WikiRoutePage";
-import { TeamInspirations } from "../components/wiki/features/team/TeamInspirations";
-import { getTeamHeroImage } from "../components/wiki/teamHeroAssets";
+import { ActivitiesExperience } from "../components/wiki/features/team/ActivitiesPanels";
 import { activitiesPage } from "../data/team/activitiesPage";
+import { activitiesPhotos } from "../data/team/activitiesAssets";
+import { getTeamHeroImage } from "../components/wiki/teamHeroAssets";
+import "../styles/wiki-route-skin.css";
 
 export function Activities() {
   return (
-    <WikiRoutePage
+    <ActivitiesExperience
       content={activitiesPage}
+      photos={activitiesPhotos}
       heroImage={getTeamHeroImage(activitiesPage.route)}
-      theme="team"
-      pageClassName="wiki-page--team"
-      hideHeroCopy
-      features={{ inspirations: <TeamInspirations /> }}
     />
   );
 }
-

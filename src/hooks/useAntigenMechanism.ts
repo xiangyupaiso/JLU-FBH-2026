@@ -8,6 +8,7 @@ import {
 } from "react";
 import { gsap } from "gsap";
 import { measureAntigenTransit, pointOnTransit } from "./useAntigenTransit";
+import { ANTIGEN_STAGE_STARTS } from "./antigenMechanismTiming";
 import {
   HOME_PLAYBACK_STATE_EVENT,
   readHomePlaybackState,
@@ -16,7 +17,7 @@ import {
 
 // One clock owns both the illustrations and the explanatory stages.
 // These durations explain the sequence, not biological time.
-const stageStarts = [0, 0.15, 2.5, 3.85, 4.75, 6.2, 6.85, 7.45];
+const stageStarts = Object.values(ANTIGEN_STAGE_STARTS);
 const finalStage = stageStarts.length - 1;
 type ProteinPaths = { growing: string; processed: string; peptide: string };
 
@@ -127,7 +128,10 @@ export function useAntigenMechanism(
     const growingToProcessed = gsap.utils.interpolate(growing, processed);
     const processedToPeptide = gsap.utils.interpolate(processed, peptide);
     const render = () => {
-      ribosomeOrbit.setAttribute("transform", `rotate(${motion.orbit} 150 150)`);
+      ribosomeOrbit.setAttribute(
+        "transform",
+        `rotate(${motion.orbit} 150 150)`,
+      );
       if (geometry) {
         const route = pointOnTransit(geometry.product, motion.travel);
         const x =
@@ -153,8 +157,14 @@ export function useAntigenMechanism(
         `rotate(${motion.turn * (geometry?.tcellAngle ?? 180)})`,
       );
       tcellLabel.style.fontSize = `${16 + (labelSize - 16) * motion.migration}px`;
-      tcellLabel.setAttribute("y", `${63 - (selected === 0 ? 0 : 125) * motion.migration}`);
-      tcellLabel.setAttribute("x", `${(selected === 1 ? -38 : 0) * motion.migration}`);
+      tcellLabel.setAttribute(
+        "y",
+        `${63 - (selected === 0 ? 0 : 125) * motion.migration}`,
+      );
+      tcellLabel.setAttribute(
+        "x",
+        `${(selected === 1 ? -38 : 0) * motion.migration}`,
+      );
       select("cytotoxic-turn").setAttribute(
         "transform",
         `rotate(${(geometry?.tcellAngle ?? 180) - 180})`,
@@ -238,37 +248,79 @@ export function useAntigenMechanism(
       render();
     };
     resetVisuals();
+    const stage = ANTIGEN_STAGE_STARTS;
     sequence
-      .to(select("ribosome"), { opacity: 1, duration: 0.28 }, 0.15)
-      .to(proteins, { opacity: 0.95, duration: 0.25 }, 0.35)
-      .to(motion, { growth: 1, orbit: 0, duration: 1.15, ease: "sine.inOut" }, 0.4)
-      .to(select("ribosome"), { opacity: 0, duration: 0.35 }, 1.7)
-      .to(motion, { travel: 1, duration: 1 }, 1.7)
+      .to(select("ribosome"), { opacity: 1, duration: 0.45 }, stage.translation)
+      .to(proteins, { opacity: 0.95, duration: 0.4 }, stage.translation + 0.3)
+      .to(
+        motion,
+        { growth: 1, orbit: 0, duration: 1.8, ease: "sine.inOut" },
+        stage.translation + 0.45,
+      )
+      // Hold the translated chain before it travels to the presenting cell.
+      .to(
+        select("ribosome"),
+        { opacity: 0, duration: 0.5 },
+        stage.processing - 0.8,
+      )
+      .to(motion, { travel: 1, duration: 1.4 }, stage.processing - 0.8)
       .to(
         all("flow-in"),
-        { strokeDashoffset: 0, opacity: 0.65, duration: 0.6 },
-        1.7,
+        { strokeDashoffset: 0, opacity: 0.65, duration: 0.9 },
+        stage.processing - 0.8,
       )
-      .to(motion, { outline: 1, duration: 0.4 }, 2.7)
-      .to(motion, { outline: 2, duration: 0.38 }, 3.1)
-      .to(proteins, { fillOpacity: 1, duration: 0.38 }, 3.1)
-      .to(motion, { dock: 1, duration: 0.5 }, 3.4)
-      .to(select("presenter"), { opacity: 1, duration: 0.4 }, 3.4)
-      .to(select("binding-wash"), { opacity: 0.12, duration: 0.25 }, 3.55)
-      .to(proteins, { opacity: 0, duration: 0.24 }, 3.85)
-      .to(select("presented-peptide"), { opacity: 1, duration: 0.24 }, 3.85)
-      .to(select("presentation-label"), { opacity: 1, duration: 0.24 }, 3.85)
-      .to(select("binding-wash"), { opacity: 0, duration: 0.4 }, 3.95)
-      .to(motion, { approach: 1, duration: 0.4 }, 3.85)
-      .to(tcell, { opacity: 1, duration: 0.4 }, 3.85)
-      .to(select("priming-contact"), { opacity: 0.28, duration: 0.22 }, 4.2)
-      .to(select("activation-glow"), { opacity: 1, duration: 0.4 }, 4.3)
-      .to(select("priming-contact"), { opacity: 0, duration: 0.32 }, 4.55)
+      .to(motion, { outline: 1, duration: 0.6 }, stage.processing + 0.6)
+      .to(motion, { outline: 2, duration: 0.6 }, stage.processing + 1.2)
+      .to(proteins, { fillOpacity: 1, duration: 0.6 }, stage.processing + 1.2)
+      .to(motion, { dock: 1, duration: 0.8 }, stage.processing + 1.6)
+      .to(
+        select("presenter"),
+        { opacity: 1, duration: 0.6 },
+        stage.processing + 1.6,
+      )
+      .to(
+        select("binding-wash"),
+        { opacity: 0.12, duration: 0.4 },
+        stage.processing + 1.8,
+      )
+      .to(proteins, { opacity: 0, duration: 0.4 }, stage.priming)
+      .to(
+        select("presented-peptide"),
+        { opacity: 1, duration: 0.4 },
+        stage.priming,
+      )
+      .to(
+        select("presentation-label"),
+        { opacity: 1, duration: 0.4 },
+        stage.priming,
+      )
+      .to(
+        select("binding-wash"),
+        { opacity: 0, duration: 0.6 },
+        stage.priming + 0.2,
+      )
+      .to(motion, { approach: 1, duration: 0.65 }, stage.priming)
+      .to(tcell, { opacity: 1, duration: 0.65 }, stage.priming)
+      .to(
+        select("priming-contact"),
+        { opacity: 0.28, duration: 0.35 },
+        stage.priming + 0.6,
+      )
+      .to(
+        select("activation-glow"),
+        { opacity: 1, duration: 0.65 },
+        stage.priming + 0.9,
+      )
+      .to(
+        select("priming-contact"),
+        { opacity: 0, duration: 0.5 },
+        stage.priming + 1.6,
+      )
       // End the presentation vignette while the activated T cell takes focus.
       .to(
         [select("dendritic-cell"), select("dc-label")],
         { opacity: 0.28, duration: 0.6 },
-        4.75,
+        stage.activated,
       )
       .to(
         [
@@ -277,40 +329,45 @@ export function useAntigenMechanism(
           select("presentation-label"),
         ],
         { opacity: 0, duration: 0.45 },
-        4.75,
+        stage.activated,
       )
-      .to(all("flow-in"), { opacity: 0.1, duration: 0.6 }, 4.75)
-      .to(motion, { turn: 1, duration: 0.85 }, 4.75)
-      .to(motion, { migration: 1, duration: 1.45 }, 4.75)
-      .to(tcellLabel, { opacity: 0, duration: 0.15 }, 4.75)
-      .to(select("tcell-sub-label"), { opacity: 0, duration: 0.3 }, 4.75)
-      .to(tcellLabel, { opacity: 1, duration: 0.25 }, 6.2)
-      .to(select("synapse"), { opacity: 0.5, duration: 0.28 }, 6.2)
+      .to(all("flow-in"), { opacity: 0.1, duration: 0.6 }, stage.activated)
+      .to(motion, { turn: 1, duration: 1.2 }, stage.activated)
+      .to(motion, { migration: 1, duration: 2.1 }, stage.activated)
+      .to(tcellLabel, { opacity: 0, duration: 0.15 }, stage.activated)
+      .to(
+        select("tcell-sub-label"),
+        { opacity: 0, duration: 0.3 },
+        stage.activated,
+      )
+      .to(tcellLabel, { opacity: 1, duration: 0.4 }, stage.recognition)
+      .to(select("synapse"), { opacity: 0.5, duration: 0.5 }, stage.recognition)
       .to(
         active.querySelector(".home-antigen-switch__cell-response"),
-        { opacity: 1, duration: 0.3 },
-        6.2,
+        { opacity: 1, duration: 0.5 },
+        stage.recognition,
       )
       .to(
         active.querySelector(".home-antigen-switch__tumor-peptide"),
-        { opacity: 1, duration: 0.3 },
-        6.2,
+        { opacity: 1, duration: 0.5 },
+        stage.recognition,
       )
-      .to(select("synapse"), { opacity: 0, duration: 0.65 }, 7.45)
+      // Leave the matched contact visible before releasing cytotoxic granules.
+      .to(select("synapse"), { opacity: 0, duration: 1 }, stage.apoptosis)
       .to(
         active.querySelector(".home-antigen-switch__cell-response"),
-        { opacity: 0.22, scale: 0.68, duration: 0.95 },
-        7.45,
+        { opacity: 0.22, scale: 0.68, duration: 1.6 },
+        stage.apoptosis,
       )
       .to(
         active.querySelector(".home-antigen-switch__tumor-peptide"),
-        { opacity: 0.15, duration: 0.95 },
-        7.45,
+        { opacity: 0.15, duration: 1.6 },
+        stage.apoptosis,
       )
       .to(
         active.querySelector(".home-antigen-switch__target-status"),
-        { opacity: 1, duration: 0.45 },
-        7.8,
+        { opacity: 1, duration: 0.65 },
+        stage.apoptosis + 0.65,
       );
     proteins.forEach((path) =>
       sequence.to(
@@ -321,9 +378,9 @@ export function useAntigenMechanism(
           )
             ? 2.5
             : 0.9,
-          duration: 0.38,
+          duration: 0.6,
         },
-        3.1,
+        stage.processing + 1.2,
       ),
     );
     all("granule").forEach((granule, index) => {
@@ -332,13 +389,13 @@ export function useAntigenMechanism(
       sequence
         .to(
           granule,
-          { opacity: 0.85, x: 40, scale: 1, duration: 0.16 },
-          6.85 + index * 0.08,
+          { opacity: 0.85, x: 40, scale: 1, duration: 0.3 },
+          stage.cytotoxic + index * 0.16,
         )
         .to(
           granule,
-          { opacity: 0, x: 100, scale: 0.7, duration: 0.48 },
-          7.01 + index * 0.08,
+          { opacity: 0, x: 100, scale: 0.7, duration: 0.85 },
+          stage.cytotoxic + 0.3 + index * 0.16,
         );
     });
     active
@@ -361,14 +418,17 @@ export function useAntigenMechanism(
             x: coordinate("--body-end-x"),
             y: coordinate("--body-end-y"),
             scale: 0.9,
-            duration: 0.95,
+            duration: 1.6,
           },
-          7.45,
+          stage.apoptosis,
         );
       });
     const playback = readHomePlaybackState();
     sequence.timeScale(playback.mode === "playing" ? playback.rate : 1);
-    if (reducedMotion.current || (activated.current && document.hidden && playback.mode === "manual")) {
+    if (
+      reducedMotion.current ||
+      (activated.current && document.hidden && playback.mode === "manual")
+    ) {
       sequence.progress(1).pause();
       setPhase(finalStage);
       setPlaying(false);

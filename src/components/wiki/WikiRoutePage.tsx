@@ -116,6 +116,8 @@ interface WikiRoutePageProps {
   theme?: string;
   /** Opt into the document-flow reader used by pages with long visual panels. */
   enableWideFlow?: boolean;
+  /** Keep interactive galleries in normal document flow at every viewport size. */
+  documentFlow?: boolean;
   /**
    * Library layout variant: render without the TOC card and let the reader frame
    * take the released width. Used by `/games`.
@@ -454,6 +456,18 @@ function CodeBlock({
   );
 }
 
+/** Render manuscript blocks inside shared tabs and disclosures with the same
+ * formatting, citation context and figure semantics as the surrounding page. */
+export function WikiContentBlocks({ blocks, features = {}, sectionId }: {
+  blocks: readonly WikiContentBlock[];
+  features?: FeatureMap;
+  sectionId: string;
+}) {
+  return <>{blocks.map((block, index) => (
+    <RouteBlock key={index} block={block} features={features} sectionId={sectionId} />
+  ))}</>;
+}
+
 function RouteBlock({
   block,
   features,
@@ -710,7 +724,7 @@ function RouteBlock({
           {block.label ? (
             <span className="wiki-callout__label">{block.label}</span>
           ) : null}
-          <p>{renderInlineFormatting(block.body)}</p>
+          <p>{inline ? inline(block.body, linkify) : linkify(block.body)}</p>
         </aside>
       );
     case "subheading":
@@ -1066,24 +1080,26 @@ function RouteSection({
           </figcaption>
         </figure>
       ) : null}
-      <header
-        className={`wiki-section__heading${
-          section.hideSectionNumber ? " wiki-section__heading--unnumbered" : ""
-        }`}
-        data-wiki-reveal
-      >
-        {section.anchorIds?.map((anchorId) => (
-          <span className="wiki-anchor" id={anchorId} key={anchorId} />
-        ))}
-        {section.hideSectionNumber ? null : (
-          <span className="wiki-section-number" aria-hidden="true">
-            {String(Number.parseInt(section.index, 10)).padStart(2, "0")}
-          </span>
-        )}
-        <div className="wiki-section__heading-body">
-          <h2>{renderSectionTitle(section.title)}</h2>
-        </div>
-      </header>
+      {section.hideHeading ? null : (
+        <header
+          className={`wiki-section__heading${
+            section.hideSectionNumber ? " wiki-section__heading--unnumbered" : ""
+          }`}
+          data-wiki-reveal
+        >
+          {section.anchorIds?.map((anchorId) => (
+            <span className="wiki-anchor" id={anchorId} key={anchorId} />
+          ))}
+          {section.hideSectionNumber ? null : (
+            <span className="wiki-section-number" aria-hidden="true">
+              {String(Number.parseInt(section.index, 10)).padStart(2, "0")}
+            </span>
+          )}
+          <div className="wiki-section__heading-body">
+            <h2>{renderSectionTitle(section.title)}</h2>
+          </div>
+        </header>
+      )}
 
       {blocks ? (
         shouldCollapseSubheadings ? (
@@ -1174,6 +1190,7 @@ export function WikiRoutePage({
   pageClassName = "",
   theme,
   enableWideFlow = false,
+  documentFlow: forceDocumentFlow = false,
   hideOutline = false,
   hideHeroCopy = false,
   collapsibleSubheadings = false,
@@ -1279,7 +1296,7 @@ export function WikiRoutePage({
     };
   }, [drawerOpen, outlineId]);
 
-  const documentFlow = wideFlow || compact;
+  const documentFlow = forceDocumentFlow || wideFlow || compact;
   const drawerScrollBehavior: ScrollBehavior = window.matchMedia(
     "(prefers-reduced-motion: reduce)",
   ).matches
@@ -1316,34 +1333,15 @@ export function WikiRoutePage({
         label: block.title.replace(/\*\*/g, ""),
         children: [] as WikiLineSidebarItem[],
       }));
-    const subheadingByIndex = new Map(
-      subheadings?.map((subheading) => [subheading.index, subheading]) ?? [],
-    );
-    const nestedSubheadings: WikiLineSidebarItem[] = [];
-    const subheadingById = new Map<string, WikiLineSidebarItem>();
-    (subheadings ?? []).forEach((subheading) => {
-      const parentIndex = subheading.index.split(".").slice(0, -1).join(".");
-      const parent = subheadingByIndex.get(parentIndex);
-      const child = {
-        id: subheading.id,
-        index: subheading.index,
-        label: subheading.label,
-        children: [] as WikiLineSidebarItem[],
-      };
-      subheadingById.set(child.id, child);
-      if (parent && !showAllOutlineHeadings) {
-        subheadingById.get(parent.id)?.children?.push(child);
-      } else {
-        nestedSubheadings.push(child);
-      }
-    });
+    // WikiLineSidebar derives depth and the active heading group from dotted
+    // indices. It consumes a flat list; nesting here silently drops level 3.
     return {
       id: section.id,
       // Unnumbered sections (e.g. a "00" station map) stay unnumbered here too.
       index: section.hideSectionNumber ? "" : section.index,
       label: section.navLabel ?? section.title,
       meta: section.kicker,
-      children: nestedSubheadings.length ? nestedSubheadings : undefined,
+      children: subheadings?.length ? subheadings : undefined,
     };
   });
   const heroStyle = heroImage
@@ -1355,7 +1353,7 @@ export function WikiRoutePage({
       ref={rootRef}
       className={`wiki-page wiki-page--route wiki-page--manuscript route--reader ${
         wideFlow ? "route--wide-flow" : ""
-      } ${drawerOpen ? "is-toc-open" : ""} ${pageClassName}`}
+      } ${forceDocumentFlow ? "route--document-flow" : ""} ${drawerOpen ? "is-toc-open" : ""} ${pageClassName}`}
       data-wiki-route={content.route}
       data-route-theme={theme}
       data-active-section={activeSection}

@@ -204,6 +204,11 @@ export interface WikiSection {
    * manuscript template ignores it, and no Wet Lab section sets it.
    */
   hideSectionNumber?: boolean;
+  /**
+   * Drops the entire section heading header. Used for visual-first full-page
+   * features (e.g. Roster) where an overarching section title is redundant.
+   */
+  hideHeading?: boolean;
   navLabel?: string;
   /**
    * Full-bleed photo masthead rendered above the section heading, with an

@@ -92,7 +92,8 @@ export function flashCitationTarget(
  * the back stack stays clean), move focus, and flash.
  */
 export function jumpToAnchor(id: string, tint?: CitationFlashTint): void {
-  const el = document.getElementById(id);
+  const target = document.getElementById(id);
+  const el = target?.closest<HTMLElement>(".wiki-cite") ?? target;
   if (!el) return;
 
   el.closest("[data-wiki-reveal]")?.classList.add("is-visible");
@@ -114,7 +115,7 @@ export function jumpToAnchor(id: string, tint?: CitationFlashTint): void {
 /* ----------------------------------------------------------------- preview */
 
 interface PreviewState {
-  refId: number;
+  refIds: readonly number[];
   top: number;
   left: number;
   width: number;
@@ -142,7 +143,10 @@ function clearTimers() {
   window.clearTimeout(hideTimer);
 }
 
-function positionFor(refId: number, anchor: HTMLElement): PreviewState {
+function positionFor(
+  refIds: readonly number[],
+  anchor: HTMLElement,
+): PreviewState {
   const rect = anchor.getBoundingClientRect();
   const width = Math.min(MAX_WIDTH, window.innerWidth - EDGE * 2);
   const left = Math.min(
@@ -150,10 +154,14 @@ function positionFor(refId: number, anchor: HTMLElement): PreviewState {
     window.innerWidth - width - EDGE,
   );
   const spaceBelow = window.innerHeight - rect.bottom;
+  const estimatedHeight = Math.min(
+    ESTIMATED_HEIGHT * refIds.length,
+    window.innerHeight / 2 - EDGE * 2,
+  );
   const placeAbove =
-    spaceBelow < ESTIMATED_HEIGHT + GAP && rect.top > spaceBelow;
+    spaceBelow < estimatedHeight + GAP && rect.top > spaceBelow;
   return {
-    refId,
+    refIds,
     width,
     left,
     placement: placeAbove ? "top" : "bottom",
@@ -180,11 +188,14 @@ export const citationPreview = {
   getServerSnapshot() {
     return current;
   },
-  show(refId: number, anchor: HTMLElement) {
+  show(refId: number | readonly number[], anchor: HTMLElement) {
     clearTimers();
     showTimer = window.setTimeout(() => {
       if (!window.matchMedia("(hover: hover)").matches) return;
-      current = positionFor(refId, anchor);
+      current = positionFor(
+        typeof refId === "number" ? [refId] : refId,
+        anchor,
+      );
       emit();
     }, SHOW_DELAY);
   },
@@ -222,7 +233,15 @@ export function CitationPreview({
   );
 
   useEffect(() => {
-    const dismiss = () => citationPreview.hide();
+    const dismiss = (event?: Event) => {
+      if (
+        event?.type === "scroll" &&
+        event.target instanceof Element &&
+        event.target.closest(".wiki-cite-preview")
+      )
+        return;
+      citationPreview.hide();
+    };
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") dismiss();
     };
@@ -237,8 +256,11 @@ export function CitationPreview({
   }, []);
 
   if (!state) return null;
-  const reference = references.find((item) => item.id === state.refId);
-  if (!reference) return null;
+  const previewReferences = state.refIds.flatMap((refId) => {
+    const reference = references.find((item) => item.id === refId);
+    return reference ? [reference] : [];
+  });
+  if (!previewReferences.length) return null;
 
   return createPortal(
     <div
@@ -254,11 +276,15 @@ export function CitationPreview({
       onPointerEnter={citationPreview.keep}
       onPointerLeave={citationPreview.scheduleHide}
     >
-      <span className="wiki-cite-preview__index">[{reference.id}]</span>{" "}
-      {reference.authors ? <span>{reference.authors} </span> : null}
-      <span>{reference.title} </span>
-      {reference.journal ? <em>{reference.journal} </em> : null}
-      <span>{reference.volumeYear}</span>
+      {previewReferences.map((reference) => (
+        <div className="wiki-cite-preview__entry" key={reference.id}>
+          <span className="wiki-cite-preview__index">[{reference.id}]</span>{" "}
+          {reference.authors ? <span>{reference.authors} </span> : null}
+          <span>{reference.title} </span>
+          {reference.journal ? <em>{reference.journal} </em> : null}
+          <span>{reference.volumeYear}</span>
+        </div>
+      ))}
     </div>,
     document.body,
   );
@@ -268,38 +294,50 @@ export function CitationPreview({
 
 function CitationLink({
   occ,
+  additionalOccs = [],
   tint,
   children,
 }: {
   occ: CitationOccurrence;
+  additionalOccs?: readonly CitationOccurrence[];
   tint?: CitationFlashTint;
   children?: ReactNode;
 }) {
+  const refIds = [occ, ...additionalOccs].map((occurrence) => occurrence.refId);
   return (
     <a
       id={occ.occId}
       href={`#ref-${occ.refId}`}
       className="wiki-cite"
       role="doc-biblioref"
-      aria-describedby={`ref-${occ.refId}-body`}
+      aria-describedby={refIds.map((refId) => `ref-${refId}-body`).join(" ")}
       onClick={(event) => {
         if (MODIFIER_KEYS(event)) return; // let the browser open the anchor
         event.preventDefault();
+        citationPreview.hide();
         jumpToAnchor(`ref-${occ.refId}`, tint);
       }}
       onPointerEnter={(event) => {
         if (event.pointerType === "mouse") {
-          citationPreview.show(occ.refId, event.currentTarget);
+          citationPreview.show(refIds, event.currentTarget);
         }
       }}
       onPointerLeave={citationPreview.scheduleHide}
       onFocus={(event) => {
         if (event.currentTarget.matches(":focus-visible")) {
-          citationPreview.show(occ.refId, event.currentTarget);
+          citationPreview.show(refIds, event.currentTarget);
         }
       }}
       onBlur={citationPreview.hide}
     >
+      {additionalOccs.map((occurrence) => (
+        <span
+          key={occurrence.occId}
+          id={occurrence.occId}
+          className="wiki-cite__additional-target"
+          aria-hidden="true"
+        />
+      ))}
       {children ?? `[${occ.refId}]`}
     </a>
   );
@@ -320,21 +358,28 @@ export function createCitationRenderer(
     if (!entry) return fallback(text);
 
     let occurrenceIndex = 0;
-    return entry.segments.map((segment, segmentIndex) =>
-      segment.kind === "text" ? (
-        <Fragment key={segmentIndex}>{fallback(segment.text)}</Fragment>
-      ) : (
+    return entry.segments.map((segment, segmentIndex) => {
+      if (segment.kind === "text") {
+        return <Fragment key={segmentIndex}>{fallback(segment.text)}</Fragment>;
+      }
+      const occurrences = entry.occs.slice(
+        occurrenceIndex,
+        occurrenceIndex + (segment.refIds?.length ?? 1),
+      );
+      occurrenceIndex += occurrences.length;
+      return (
         <CitationLink
           key={segmentIndex}
-          occ={entry.occs[occurrenceIndex++]}
+          occ={occurrences[0]}
+          additionalOccs={occurrences.slice(1)}
           tint={tint}
         >
           {/* The link shows exactly what the author wrote: an author-year group,
               a bracketed numeral, or whatever the next manuscript uses. */}
-          {segment.text}
+          {fallback(segment.text)}
         </CitationLink>
-      ),
-    );
+      );
+    });
   };
 }
 
