@@ -570,6 +570,12 @@ function RouteBlock({
             alt={block.alt}
             loading={block.src.includes("/assets/education/") || block.src.includes("/engagement/education/figures/") ? "lazy" : "eager"}
             decoding="async"
+            onError={(event) => {
+              if (!block.src.includes("/engagement/education/figures/") || event.currentTarget.dataset.localFallback) return;
+              event.currentTarget.dataset.localFallback = "true";
+              const fileName = block.src.split("/").at(-1)?.replace(/\.avif$/i, ".png");
+              if (fileName) event.currentTarget.src = `${import.meta.env.BASE_URL}assets/education/${fileName}`;
+            }}
           />
           {block.figureLabel ? (
             <figcaption>

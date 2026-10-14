@@ -1,4 +1,4 @@
-import { useState, type ReactNode, type TouchEvent } from "react";
+import { useState, type ReactNode, type SyntheticEvent, type TouchEvent } from "react";
 import galleries from "../../../../data/engagement/educationGalleries.json";
 import mediaGroups from "../../../../data/engagement/educationMediaGroups.json";
 import { educationAssetUrl } from "../../../../data/engagement/educationRemoteAssets";
@@ -6,6 +6,27 @@ import "../../../../styles/features/education-media.css";
 
 type Gallery = (typeof galleries)[number];
 type MediaGroup = (typeof mediaGroups)[number];
+
+function useLocalImageOnError(event: SyntheticEvent<HTMLImageElement>, localPath: string) {
+  const image = event.currentTarget;
+  if (image.dataset.localFallback) return;
+  image.dataset.localFallback = "true";
+  image.src = `${import.meta.env.BASE_URL}${localPath}`;
+}
+
+function DocumentCover({ source, title }: { source: string; title: string }) {
+  const webp = educationAssetUrl(source.replace(/\.pdf$/i, ".webp"));
+  const candidates = [webp, webp.replace(/\.webp$/i, ".avif")];
+  const [candidate, setCandidate] = useState(0);
+  if (candidate >= candidates.length) return <span className="education-media-grid__pdf-missing">Cover unavailable · Open PDF</span>;
+  return <img
+    src={candidates[candidate]}
+    alt={`${title} cover`}
+    loading="lazy"
+    decoding="async"
+    onError={() => setCandidate((current) => current + 1)}
+  />;
+}
 
 const interactivePages = {
   "education-interactive-map": {
@@ -61,13 +82,11 @@ function MediaGrid({ group }: { group: MediaGroup }) {
         const src = educationAssetUrl(item.src);
         if (item.kind === "pdf") {
           const title = "title" in item ? String(item.title) : "Education PDF";
-          const cover = /\.pdf$/i.test(item.src)
-            ? educationAssetUrl(item.src.replace(/\.pdf$/i, ".webp"))
-            : null;
+          const hasCover = /\.pdf$/i.test(item.src);
           return (
             <figure className="education-media-grid__pdf" key={`${src}-${index}`}>
-              {cover
-                ? <a className="education-media-grid__pdf-cover" href={src} target="_blank" rel="noreferrer" aria-label={`Open ${title} PDF`}><img src={cover} alt={`${title} cover`} loading="lazy" decoding="async" /></a>
+              {hasCover
+                ? <a className="education-media-grid__pdf-cover" href={src} target="_blank" rel="noreferrer" aria-label={`Open ${title} PDF`}><DocumentCover source={item.src} title={title} /></a>
                 : <iframe src={`${src}#toolbar=0`} title={title} loading="lazy" />}
               <figcaption><a href={src} target="_blank" rel="noreferrer">{title} ↗</a></figcaption>
             </figure>
@@ -75,7 +94,7 @@ function MediaGrid({ group }: { group: MediaGroup }) {
         }
         return (
           <figure className="education-media-grid__image" key={`${src}-${index}`}>
-            <img src={src} alt={"alt" in item ? item.alt : "Education illustration"} loading="lazy" decoding="async" />
+            <img src={src} alt={"alt" in item ? item.alt : "Education illustration"} loading="lazy" decoding="async" onError={(event) => useLocalImageOnError(event, item.src.replace(/^__BASE__/, ""))} />
             {"caption" in item && item.caption ? <figcaption>{item.caption}</figcaption> : null}
           </figure>
         );
@@ -122,7 +141,7 @@ function PhotoGallery({ gallery }: { gallery: Gallery }) {
             onClick={() => offset && go(offset)}
             aria-label={offset === 0 ? photo.caption : `${offset < 0 ? "Previous" : "Next"}: ${photo.caption}`}
             tabIndex={offset === 0 ? -1 : 0}
-          ><img src={educationAssetUrl(`galleries/${photo.file}`)} alt={photo.caption} loading="lazy" decoding="async" /></button>;
+          ><img src={educationAssetUrl(`galleries/${photo.file}`)} alt={photo.caption} loading="lazy" decoding="async" onError={(event) => useLocalImageOnError(event, `assets/education/galleries/${photo.file}`)} /></button>;
         })}
         <button type="button" className="education-gallery__arrow education-gallery__arrow--prev" onClick={() => go(-1)} aria-label={`Previous ${gallery.title} photograph`}>‹</button>
         <button type="button" className="education-gallery__arrow education-gallery__arrow--next" onClick={() => go(1)} aria-label={`Next ${gallery.title} photograph`}>›</button>

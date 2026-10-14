@@ -19,9 +19,7 @@ const convertedSlides: Record<string, string> = {
 
 const renamedDocuments: Record<string, string> = {
   "letters-to-my-body-final.pdf": "letters-to-my-body.pdf",
-  "letters-to-my-body-final.webp": "letters-to-my-body.webp",
   "a-seed-planted-in-the-heart-final.pdf": "a-seed-planted-in-the-heart.pdf",
-  "a-seed-planted-in-the-heart-final.webp": "a-seed-planted-in-the-heart.webp",
 };
 
 export function educationAssetUrl(value: string): string {

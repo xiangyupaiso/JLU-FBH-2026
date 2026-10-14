@@ -129,6 +129,15 @@
   object-fit: contain;
   background: #fff;
 }
+.education-media-grid__pdf-missing {
+  display: grid;
+  place-items: center;
+  height: clamp(340px, 48vw, 620px);
+  padding: 20px;
+  color: #344f66;
+  text-align: center;
+  background: #f5f1e9;
+}
 .education-media-grid__pdf a { color: #25364c; text-decoration: none; }
 .education-media-grid__pdf a:hover,
 .education-media-grid__pdf a:focus-visible { text-decoration: underline; }
@@ -250,6 +259,7 @@
   .education-media-grid__image figcaption { font-size: 11px; padding: 7px; }
   .education-media-grid__pdf iframe { height: 320px; }
   .education-media-grid__pdf-cover img { height: 320px; }
+  .education-media-grid__pdf-missing { height: 320px; }
   .education-gallery__stage { aspect-ratio: 4 / 3; }
   .education-gallery__card { width: 76%; height: 84%; }
   .education-gallery__arrow { width: 36px; height: 36px; font-size: 26px; }

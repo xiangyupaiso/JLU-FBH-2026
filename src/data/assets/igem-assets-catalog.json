@@ -109489,7 +109489,7 @@
       "md5": "cde8ff3e53015ad1a8942a95f9ff3726",
       "sha256": "b8065623358388245a845e787429805a78e6ff3da00ea1fbb7025710975e06f4",
       "fileSize": 21698593,
-      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/education/figures/letters-to-my-body-final.pdf",
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/education/figures/letters-to-my-body.pdf",
       "status": "in-use",
       "kind": "pdf",
       "upload": {
@@ -109499,22 +109499,22 @@
           "team": "6056"
         },
         "status": "uploaded",
-        "remoteName": "letters-to-my-body-final.pdf",
-        "source": "user-provided-directory-pattern",
+        "remoteName": "letters-to-my-body.pdf",
+        "source": "user-provided-url",
         "uploadedAt": null,
         "verifiedAt": null,
         "references": [
           {
             "file": "src/data/engagement/educationRemoteAssets.ts",
             "old": "__BASE__assets/education/letters-to-my-body-final.pdf",
-            "new": "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/education/figures/letters-to-my-body-final.pdf",
+            "new": "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/education/figures/letters-to-my-body.pdf",
             "type": "generated-asset-map",
             "status": "replaced"
           }
         ],
         "unresolved": [],
         "checks": [
-          "TypeScript and production build passed; individual CDN URLs not checked at user request"
+          "User-provided URL; page and CDN checks skipped at user request"
         ],
         "error": null
       }
@@ -110059,7 +110059,7 @@
       "md5": "614d604dac988e5fb4bb2916ae7d5d36",
       "sha256": "242446aacce6ff37bbfd3afd1ddbaa6ac005ffe85df66a71f97fff2e32122a19",
       "fileSize": 66388,
-      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/education/figures/letters-to-my-body-final.avif",
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/education/figures/letters-to-my-body-final.webp",
       "status": "in-use",
       "kind": "image",
       "upload": {
@@ -110069,22 +110069,22 @@
           "team": "6056"
         },
         "status": "uploaded",
-        "remoteName": "letters-to-my-body-final.avif",
-        "source": "user-provided-directory-pattern",
+        "remoteName": "letters-to-my-body-final.webp",
+        "source": "user-provided-url",
         "uploadedAt": null,
         "verifiedAt": null,
         "references": [
           {
             "file": "src/data/engagement/educationRemoteAssets.ts",
             "old": "__BASE__assets/education/letters-to-my-body-final.webp",
-            "new": "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/education/figures/letters-to-my-body-final.avif",
+            "new": "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/education/figures/letters-to-my-body-final.webp",
             "type": "generated-asset-map",
             "status": "replaced"
           }
         ],
         "unresolved": [],
         "checks": [
-          "TypeScript and production build passed; individual CDN URLs not checked at user request"
+          "User-provided URL; page and CDN checks skipped at user request"
         ],
         "error": null
       }
@@ -110135,7 +110135,7 @@
       "md5": "960720664e72f22e19da1a91c3f8d214",
       "sha256": "7ce3fe7c51cab0c3b7a2a17af551a81a956697cc68816bebbe69a4e28d00bb1f",
       "fileSize": 98778,
-      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/education/figures/p02-vaccine-classroom-implementation-package.avif",
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/education/figures/p02-vaccine-classroom-implementation-package.webp",
       "status": "in-use",
       "kind": "image",
       "upload": {
@@ -110145,22 +110145,22 @@
           "team": "6056"
         },
         "status": "uploaded",
-        "remoteName": "p02-vaccine-classroom-implementation-package.avif",
-        "source": "user-provided-directory-pattern",
+        "remoteName": "p02-vaccine-classroom-implementation-package.webp",
+        "source": "user-provided-url",
         "uploadedAt": null,
         "verifiedAt": null,
         "references": [
           {
             "file": "src/data/engagement/educationRemoteAssets.ts",
             "old": "__BASE__assets/education/p02-vaccine-classroom-implementation-package.webp",
-            "new": "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/education/figures/p02-vaccine-classroom-implementation-package.avif",
+            "new": "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/education/figures/p02-vaccine-classroom-implementation-package.webp",
             "type": "generated-asset-map",
             "status": "replaced"
           }
         ],
         "unresolved": [],
         "checks": [
-          "TypeScript and production build passed; individual CDN URLs not checked at user request"
+          "User-provided URL; page and CDN checks skipped at user request"
         ],
         "error": null
       }
@@ -110325,7 +110325,7 @@
       "md5": "1d8a51868af041e8d67e63a9479887c2",
       "sha256": "bcb082fa06c036d496d4fc45b4f193867c9836bbc3123589bb044b3acdc89c09",
       "fileSize": 106918,
-      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/education/figures/virtual-laboratory-white-paper-english-cover.avif",
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/education/figures/virtual-laboratory-white-paper-english-cover.webp",
       "status": "in-use",
       "kind": "image",
       "upload": {
@@ -110335,22 +110335,22 @@
           "team": "6056"
         },
         "status": "uploaded",
-        "remoteName": "virtual-laboratory-white-paper-english-cover.avif",
-        "source": "user-provided-directory-pattern",
+        "remoteName": "virtual-laboratory-white-paper-english-cover.webp",
+        "source": "user-provided-url",
         "uploadedAt": null,
         "verifiedAt": null,
         "references": [
           {
             "file": "src/data/engagement/educationRemoteAssets.ts",
             "old": "__BASE__assets/education/virtual-laboratory-white-paper-english-cover.webp",
-            "new": "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/education/figures/virtual-laboratory-white-paper-english-cover.avif",
+            "new": "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/education/figures/virtual-laboratory-white-paper-english-cover.webp",
             "type": "generated-asset-map",
             "status": "replaced"
           }
         ],
         "unresolved": [],
         "checks": [
-          "TypeScript and production build passed; individual CDN URLs not checked at user request"
+          "User-provided URL; page and CDN checks skipped at user request"
         ],
         "error": null
       }
