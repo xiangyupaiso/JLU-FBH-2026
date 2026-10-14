@@ -393,6 +393,9 @@ async function pageImagesAndAnimations(
   const root = document.body;
   if (!root) return;
   const loader = loaderElement();
+  // Education has a long article with many remote figures. Its text is usable
+  // before those figures arrive, so only the shell and hero gate the loader.
+  const deferredArticle = root.querySelector(".wiki-page--education .wiki-article");
   const pending: Promise<void>[] = [];
   let complete = 0;
   let scanned = false;
@@ -439,6 +442,7 @@ async function pageImagesAndAnimations(
   for (const element of root.querySelectorAll<HTMLElement>("*:not([data-page-asset-preload], [data-page-asset-preload] *)")) {
     if (signal.aborted) return;
     if (element === loader || loader?.contains(element)) continue;
+    if (deferredArticle?.contains(element)) continue;
     // Yield during large routes instead of blocking the loader's drawing.
     if (++count % 120 === 0) await new Promise(requestAnimationFrame);
     // Offscreen and initially transparent animation layers belong to this

@@ -52,6 +52,7 @@ export function linkify(text: string): ReactNode {
       );
     }
     const href = match[2];
+    const isAsset = /^\/(?:assets|game-assets|virtual-lab)\//.test(href);
     nodes.push(
       href.startsWith("#") ? (
         <a

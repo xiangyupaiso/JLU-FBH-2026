@@ -552,7 +552,7 @@ function RouteBlock({
           <img
             src={block.src}
             alt={block.alt}
-            loading={block.src.includes("/assets/education/") ? "lazy" : "eager"}
+            loading={block.src.includes("/assets/education/") || block.src.includes("/engagement/education/figures/") ? "lazy" : "eager"}
             decoding="async"
           />
           {block.figureLabel ? (

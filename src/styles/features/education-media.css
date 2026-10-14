@@ -54,6 +54,27 @@
 
 .education-interactive iframe { display: block; width: 100%; border: 0; background: #fffaf1; }
 
+.education-interactive__launch {
+  display: grid;
+  justify-items: center;
+  gap: 12px;
+  padding: 36px 20px 44px;
+  text-align: center;
+  color: #51372d;
+}
+
+.education-interactive__launch p { margin: 0; }
+.education-interactive__launch button {
+  border: 0;
+  border-radius: 999px;
+  padding: 10px 24px;
+  background: #344f66;
+  color: #fff;
+  font: inherit;
+  cursor: pointer;
+}
+.education-interactive__launch button:disabled { opacity: .6; cursor: wait; }
+
 .education-media-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -80,8 +101,7 @@
   overflow: hidden;
 }
 
-.education-media-grid__image img,
-.education-media-grid__pdf img {
+.education-media-grid__image img {
   display: block;
   width: 100%;
   aspect-ratio: 4 / 3;
@@ -89,9 +109,17 @@
   background: #f8f8f6;
 }
 
-.education-media-grid__pdf img { aspect-ratio: 4 / 5; object-position: top; }
-.education-media-grid__pdf { color: #25364c; text-decoration: none; }
-.education-media-grid__pdf span,
+.education-media-grid__pdf iframe {
+  display: block;
+  width: 100%;
+  height: clamp(340px, 48vw, 620px);
+  border: 0;
+  background: #f8f8f6;
+}
+.education-media-grid__pdf a { color: #25364c; text-decoration: none; }
+.education-media-grid__pdf a:hover,
+.education-media-grid__pdf a:focus-visible { text-decoration: underline; }
+.education-media-grid__pdf figcaption,
 .education-media-grid__image figcaption {
   display: block;
   padding: 10px 12px;
@@ -100,8 +128,7 @@
   overflow-wrap: anywhere;
 }
 
-.education-media-grid__pdf:hover,
-.education-media-grid__pdf:focus-visible { border-color: #5078a0; box-shadow: 0 0 0 2px #c8dfed; }
+.education-media-grid__pdf:focus-within { border-color: #5078a0; box-shadow: 0 0 0 2px #c8dfed; }
 
 .education-equation {
   display: flex;
@@ -130,18 +157,40 @@
 
 .education-gallery__stage {
   position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   min-height: 240px;
   aspect-ratio: 16 / 10;
-  background: #f1ede6;
+  overflow: hidden;
+  perspective: 1600px;
+  background: radial-gradient(circle at center, #fffdf9 0%, #e8eef2 100%);
 }
 
-.education-gallery__stage img {
+.education-gallery__card {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 68%;
+  height: 86%;
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid #d5dfe5;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 14px 36px #233e5a24;
+  cursor: pointer;
+  transition: transform 420ms cubic-bezier(.22, 1, .36, 1), opacity 420ms, box-shadow 420ms;
+}
+
+.education-gallery__card--active { z-index: 3; transform: translate(-50%, -50%); cursor: default; box-shadow: 0 20px 48px #233e5a36; }
+.education-gallery__card--previous { z-index: 2; transform: translate(-105%, -50%) scale(.88) rotateY(16deg); opacity: .75; }
+.education-gallery__card--next { z-index: 2; transform: translate(5%, -50%) scale(.88) rotateY(-16deg); opacity: .75; }
+.education-gallery__card--previous:hover,
+.education-gallery__card--next:hover,
+.education-gallery__card--previous:focus-visible,
+.education-gallery__card--next:focus-visible { opacity: 1; }
+
+.education-gallery__card img {
   width: 100%;
   height: 100%;
-  max-height: 680px;
   object-fit: contain;
 }
 
@@ -149,7 +198,7 @@
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  z-index: 1;
+  z-index: 4;
   display: grid;
   place-items: center;
   width: 42px;
@@ -184,9 +233,11 @@
   .education-media-grid[data-count="5"],
   .education-media-grid[data-pdf="true"] { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
   .education-media-grid[data-count="5"] > * { grid-column: auto !important; }
-  .education-media-grid__pdf span,
+  .education-media-grid__pdf figcaption,
   .education-media-grid__image figcaption { font-size: 11px; padding: 7px; }
+  .education-media-grid__pdf iframe { height: 320px; }
   .education-gallery__stage { aspect-ratio: 4 / 3; }
+  .education-gallery__card { width: 76%; height: 84%; }
   .education-gallery__arrow { width: 36px; height: 36px; font-size: 26px; }
   .education-interactive__head { flex-wrap: wrap; }
 }

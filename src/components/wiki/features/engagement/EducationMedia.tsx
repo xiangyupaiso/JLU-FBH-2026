@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, type ReactNode, type TouchEvent } from "react";
+import { useState, type ReactNode, type TouchEvent } from "react";
 import galleries from "../../../../data/engagement/educationGalleries.json";
 import mediaGroups from "../../../../data/engagement/educationMediaGroups.json";
 import { educationAssetUrl } from "../../../../data/engagement/educationRemoteAssets";
@@ -26,31 +26,29 @@ const interactivePages = {
 } as const;
 
 function InteractivePage({ item }: { item: (typeof interactivePages)[keyof typeof interactivePages] }) {
-  const container = useRef<HTMLElement>(null);
   const [html, setHtml] = useState("");
-  useEffect(() => {
-    let active = true;
-    const load = () => { void item.load().then((value) => { if (active) setHtml(value); }); };
-    if (!container.current || !("IntersectionObserver" in window)) {
-      load();
-      return () => { active = false; };
+  const [status, setStatus] = useState<"idle" | "loading" | "ready" | "error">("idle");
+  const load = async () => {
+    setStatus("loading");
+    try {
+      setHtml(await item.load());
+      setStatus("ready");
+    } catch {
+      setStatus("error");
     }
-    const observer = new IntersectionObserver((entries) => {
-      if (entries.some((entry) => entry.isIntersecting)) {
-        observer.disconnect();
-        load();
-      }
-    }, { rootMargin: "500px" });
-    observer.observe(container.current);
-    return () => { active = false; observer.disconnect(); };
-  }, [item]);
+  };
   return (
-    <section className="education-interactive" aria-label={item.title} ref={container}>
+    <section className="education-interactive" aria-label={item.title}>
       <div className="education-interactive__head">
         <strong>{item.title}</strong>
       </div>
-      {html ? <iframe srcDoc={html} title={item.title} loading="lazy" sandbox="allow-scripts allow-popups" style={{ height: item.height }} />
-        : <div className="education-interactive__loading" style={{ minHeight: item.height }}>Loading interactive activity…</div>}
+      {status === "ready" && html ? <iframe srcDoc={html} title={item.title} loading="lazy" sandbox="allow-scripts allow-popups" style={{ height: item.height }} />
+        : <div className="education-interactive__launch">
+            <p>{status === "loading" ? "Loading activity…" : status === "error" ? "This activity could not load. Please try again." : "Explore this activity here on the Education page."}</p>
+            <button type="button" onClick={() => { void load(); }} disabled={status === "loading"}>
+              {status === "error" ? "Try again" : "Play here"}
+            </button>
+          </div>}
     </section>
   );
 }
@@ -62,13 +60,12 @@ function MediaGrid({ group }: { group: MediaGroup }) {
       {group.items.map((item, index) => {
         const src = educationAssetUrl(item.src);
         if (item.kind === "pdf") {
-          const filename = src.split("/").at(-1) ?? "";
-          const preview = educationAssetUrl(`pdf-previews/${filename.replace(/\.pdf$/i, ".webp")}`);
+          const title = "title" in item ? String(item.title) : "Education PDF";
           return (
-            <a className="education-media-grid__pdf" href={src} target="_blank" rel="noreferrer" key={`${src}-${index}`}>
-              <img src={preview} alt="" loading="lazy" decoding="async" />
-              <span>{"title" in item ? item.title : filename}</span>
-            </a>
+            <figure className="education-media-grid__pdf" key={`${src}-${index}`}>
+              <iframe src={`${src}#toolbar=0`} title={title} loading="lazy" />
+              <figcaption><a href={src} target="_blank" rel="noreferrer">{title} ↗</a></figcaption>
+            </figure>
           );
         }
         return (
@@ -94,8 +91,10 @@ function PhotoGallery({ gallery }: { gallery: Gallery }) {
     if (Math.abs(distance) > 45) go(distance < 0 ? 1 : -1);
     setTouchStart(null);
   };
-  const photo = photos[index];
-  const src = educationAssetUrl(`galleries/${photo.file}`);
+  const visible = [-1, 0, 1].map((offset) => ({
+    offset,
+    photoIndex: (index + offset + count) % count,
+  }));
   return (
     <figure
       className="education-gallery"
@@ -109,12 +108,22 @@ function PhotoGallery({ gallery }: { gallery: Gallery }) {
       onTouchEnd={onTouchEnd}
     >
       <div className="education-gallery__stage">
-        <img src={src} alt={photo.caption} loading="lazy" decoding="async" />
+        {visible.map(({ offset, photoIndex }) => {
+          const photo = photos[photoIndex];
+          return <button
+            type="button"
+            className={`education-gallery__card education-gallery__card--${offset === 0 ? "active" : offset < 0 ? "previous" : "next"}`}
+            key={`${photo.file}-${offset}`}
+            onClick={() => offset && go(offset)}
+            aria-label={offset === 0 ? photo.caption : `${offset < 0 ? "Previous" : "Next"}: ${photo.caption}`}
+            tabIndex={offset === 0 ? -1 : 0}
+          ><img src={educationAssetUrl(`galleries/${photo.file}`)} alt={photo.caption} loading="lazy" decoding="async" /></button>;
+        })}
         <button type="button" className="education-gallery__arrow education-gallery__arrow--prev" onClick={() => go(-1)} aria-label={`Previous ${gallery.title} photograph`}>‹</button>
         <button type="button" className="education-gallery__arrow education-gallery__arrow--next" onClick={() => go(1)} aria-label={`Next ${gallery.title} photograph`}>›</button>
       </div>
       <figcaption>
-        <span>{photo.caption}</span>
+        <span>{photos[index].caption}</span>
         <span>{index + 1} / {count}</span>
       </figcaption>
     </figure>
@@ -153,6 +162,7 @@ export function educationFeatures() {
 }
 
 export function renderEducationInline(text: string, fallback: (value: string) => ReactNode): ReactNode {
+  text = text.replace(/\*\*(?=\[[^\]]+\]\()/g, "").replace(/(?<=\))\*\*/g, "");
   if (!text.includes("$")) return fallback(text);
   return text.split(/(\$[^$]+\$)/g).map((part, index) => {
     if (!part.startsWith("$") || !part.endsWith("$")) return <span key={index}>{fallback(part)}</span>;

@@ -9,7 +9,7 @@ export function Education() {
       content={educationPage}
       heroImage={getEngagementHeroImage(educationPage.route)}
       theme="engagement"
-      pageClassName="wiki-page--engagement"
+      pageClassName="wiki-page--engagement wiki-page--education"
       hideHeroCopy
       outlineDepth={4}
       showAllOutlineHeadings

@@ -212,7 +212,7 @@ def main() -> None:
         if heading:
             flush()
             depth = len(heading.group(1))
-            title = clean(heading.group(2))
+            title = clean(heading.group(2)).replace("**", "").strip("*")
             current_context = title
             if depth == 1:
                 if title.startswith("6.2 Education"):
@@ -310,15 +310,17 @@ def main() -> None:
             revised.append(block)
         section["blocks"] = revised
 
-    # Consecutive manuscript images and PDF links become the editorial grids.
+    # Manuscript images and uploaded PDF documents become inline editorial grids.
     media_groups = []
-    pdf_link = re.compile(r"^\[([^]]+)\]\((__BASE__assets/education/[^)]+\.pdf)\)$", re.I)
+    pdf_link = re.compile(r"^\[([^]]+)\]\((__BASE__assets/education/[^)]+\.(?:pdf|pptx))\)$", re.I)
     for section in sections:
         grouped = []
         pending = []
 
         def flush_media() -> None:
-            if len(pending) < 2:
+            if not pending:
+                return
+            if len(pending) < 2 and pending[0][1]["kind"] != "pdf":
                 grouped.extend(block for block, _ in pending)
             else:
                 key = f"education-media-group-{len(media_groups) + 1}"
@@ -333,7 +335,8 @@ def main() -> None:
             elif block["type"] == "prose":
                 match = pdf_link.fullmatch(block["paragraphs"][0])
                 if match:
-                    item = {"kind": "pdf", "src": match.group(2), "title": match.group(1).replace("_", " ").removesuffix(".pdf")}
+                    title = re.sub(r"\.(?:pdf|pptx)$", "", match.group(1).replace("_", " "), flags=re.I)
+                    item = {"kind": "pdf", "src": match.group(2), "title": title}
             if item:
                 if pending and item["kind"] != pending[-1][1]["kind"]:
                     flush_media()
