@@ -41,7 +41,16 @@ assert not re.search(r'[\u3400-\u9fff]', all_text), 'Published Model content mus
 assert all(f'path: "/{route}"' in page for route in ('software','hardware','games'))
 
 for cohort, expected in [('024322',(5024,911,2799)), ('028102',(4495,158,2878))]:
-    rows = json.loads((ROOT/'src/data/drylab/modelVolcanoData.json').read_text())[cohort]
+    name = 'PXD024322_TNBC_vs_Normal_limma_ALL_9088_proteins(1).csv' if cohort == '024322' else 'PXD028102_paired_limma_imputed_ALL.csv'
+    rows = []
+    for row in csv.DictReader((source/name).open(encoding='utf-8-sig', newline='')):
+        try:
+            fc = float(row['log2FC_TNBC_minus_Normal' if cohort == '024322' else 'log2FC_TNBC_minus_NAT'])
+            p = float(row['adj.P.Val'])
+        except ValueError:
+            continue
+        assert 0 < p <= 1
+        rows.append([row['Symbol'], fc, p])
     threshold, fdr = (.15,.05) if cohort=='024322' else (1,.01)
     up = sum(r[1]>=threshold and r[2]<fdr for r in rows)
     down = sum(r[1]<=-threshold and r[2]<fdr for r in rows)
@@ -77,7 +86,11 @@ for p in panels.values():
         for e in p['entries']: blocks(e['blocks'])
     if p['kind']=='fold': blocks(p['blocks'])
 for download in downloads:
-    assert (ROOT/'public'/download['path']).is_file()
+    if download['path'].startswith('https://'):
+        assert download['path'].startswith('https://static.igem.wiki/teams/6056/wiki/files/pages/dry-lab/model/')
+        assert download['path'].endswith('.csv')
+    else:
+        assert (ROOT/'public'/download['path']).is_file()
 for file in re.findall(r'from "(../../assets/wiki/model/[^"]+)"', (ROOT/'src/data/drylab/modelAssets.ts').read_text(encoding='utf-8')):
     assert (ROOT/'src/data/drylab'/file).is_file()
 assert '参照这个表格（' not in all_text

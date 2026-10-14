@@ -71,8 +71,15 @@ asset_code += '} as const;\nexport type ModelAssetKey = keyof typeof modelAssets
 (DATA / 'modelAssets.ts').write_text(asset_code, encoding='utf-8')
 
 downloads = []
+remote_downloads = {
+    'PXD024322_TNBC_vs_Normal_limma_ALL_9088_proteins(1).csv': 'https://static.igem.wiki/teams/6056/wiki/files/pages/dry-lab/model/pxd024322-tnbc-vs-normal-limma-all-9088-proteins-1.csv',
+    'PXD028102_paired_limma_imputed_ALL.csv': 'https://static.igem.wiki/teams/6056/wiki/files/pages/dry-lab/model/pxd028102-paired-limma-imputed-all.csv',
+}
 for i, path in enumerate(sorted(SOURCE.rglob('*'))):
     if path.suffix not in ('.csv', '.log'):
+        continue
+    if path.name in remote_downloads:
+        downloads.append(dict(label=path.name, path=remote_downloads[path.name]))
         continue
     name = re.sub(r'[^a-z0-9._-]+', '-', path.stem.lower()).strip('-') + path.suffix
     shutil.copy2(path, DOWNLOADS / name)
@@ -335,22 +342,6 @@ data += '\nexport const modelDownloads = ' + dump(downloads) + ';\n'
 data += '\nexport const modelPage: WikiPageContent = {\n route: "/model", category: "dry-lab", chapter: "Dry Lab / 01 of 04", eyebrow: "Model", title: "Model", lede: "", boundary: "", visual: "model-manuscript", visualLabel: "Model", visualSteps: [], facts: [],\n sections: [\n' + first + ',\n    ...manuscriptSections\n ],\n links: [{ path: "/software", label: "Software" }, { path: "/hardware", label: "Hardware" }, { path: "/games", label: "Games" }], next: { path: "/software", label: "Software", title: "Software" }\n};\n'
 (DATA/'modelPage.ts').write_text(data, encoding='utf-8')
 
-volcano = {}
-for cohort, name in [('024322','PXD024322_TNBC_vs_Normal_limma_ALL_9088_proteins(1).csv'),('028102','PXD028102_paired_limma_imputed_ALL.csv')]:
-    rows = list(csv.DictReader((SOURCE/name).open(encoding='utf-8-sig', newline='')))
-    points = []
-    for row in rows:
-        try:
-            fc = float(row['log2FC_TNBC_minus_Normal' if cohort=='024322' else 'log2FC_TNBC_minus_NAT'])
-            p = float(row['adj.P.Val'])
-        except ValueError:
-            continue
-        if not (p > 0 and p <= 1):
-            raise ValueError(f'Invalid adjusted P: {p}')
-        points.append([row['Symbol'], fc, p, row.get('Accession',row.get('Gene_ID',''))])
-    volcano[cohort] = points
-(DATA/'modelVolcanoData.json').write_text(dump(volcano),encoding='utf-8')
-
 sasa = list(csv.DictReader((SOURCE/'17个表位相关原始数据(2)/00_SASA_PIVOT.csv').open(encoding='utf-8-sig')))
 groups = {'trop2':'TROP2','b7h4':'B7-H4','nectin4':'Nectin-4','liv1':'LIV-1'}
 order = ['RLFRERYRL','SVCWCVNSV','TLIYYLDEI','YLDEIPPKF','AVFADQVIV','WLKEGVLGL','AVTSEFHLV','FLAEASVRG','FQARLRLRV','HILHVSFLA','RLRVLV PPL'.replace(' ',''),'YINGRGHLV','FIGHYAENV','GLHNFSDGL','GVATLAWMV','SVAVFCHEL','TVSEGTHFL']
@@ -360,4 +351,4 @@ for pep in order:
     heatmap.append(dict(peptide=pep, target=groups[r['target']], values=[float(r[f'P{i}']) if r[f'P{i}'] else None for i in range(1,10)]))
 assert len(heatmap)==17 and all(len(r['values'])==9 for r in heatmap)
 (DATA/'modelHeatmapData.json').write_text(dump(heatmap),encoding='utf-8')
-print(f'Imported {len(sections)} manuscript chapters, {len(panels)} panels, {len(assets)} images, {len(references)} references; volcano points: ' + str({k:len(v) for k,v in volcano.items()}))
+print(f'Imported {len(sections)} manuscript chapters, {len(panels)} panels, {len(assets)} images, {len(references)} references; volcano data is hosted remotely')
