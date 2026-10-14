@@ -1,0 +1,164 @@
+/* Measurement page: reuse the manuscript drawer and Results-style figure plates. */
+
+.wiki-page[data-wiki-route="/measurement"] .wiki-protocol-drawer--page-fold {
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid var(--route-line-strong);
+  border-radius: 3px;
+  background: var(--route-paper);
+  box-shadow: none;
+  transition: border-color 180ms ease;
+}
+
+.wiki-page[data-wiki-route="/measurement"]
+  .wiki-protocol-drawer--page-fold.is-open {
+  border-color: var(--route-subheading-ink);
+}
+
+.wiki-page[data-wiki-route="/measurement"]
+  .wiki-protocol-drawer--page-fold
+  .wiki-protocol-drawer__header {
+  display: grid;
+  min-height: 78px;
+  grid-template-columns: minmax(0, 1fr) 24px;
+  gap: 16px;
+  align-items: end;
+  padding: 15px 18px 12px;
+  background: transparent;
+}
+
+.wiki-page[data-wiki-route="/measurement"]
+  .wiki-protocol-drawer--page-fold.is-open
+  .wiki-protocol-drawer__header {
+  border-bottom: 1px solid var(--route-line);
+  background: color-mix(in srgb, var(--route-base) 22%, var(--route-paper));
+}
+
+.wiki-page[data-wiki-route="/measurement"]
+  .wiki-protocol-drawer--page-fold
+  .wiki-protocol-drawer__header:hover {
+  background: color-mix(in srgb, var(--route-base) 34%, var(--route-paper));
+}
+
+.wiki-page[data-wiki-route="/measurement"]
+  .wiki-protocol-drawer--page-fold
+  .wiki-protocol-drawer__header:focus-visible {
+  outline: 2px solid var(--route-subheading-ink);
+  outline-offset: -3px;
+}
+
+.wiki-page[data-wiki-route="/measurement"]
+  .wiki-protocol-drawer--page-fold
+  .wiki-protocol-drawer__title-row {
+  display: block;
+  width: 100%;
+}
+
+.wiki-page[data-wiki-route="/measurement"]
+  .wiki-protocol-drawer--page-fold
+  .wiki-protocol-drawer__title {
+  overflow: visible;
+  color: var(--route-subheading-ink) !important;
+  font-family: var(--font-sans), sans-serif !important;
+  font-size: 17px;
+  font-weight: 650;
+  letter-spacing: 0;
+  line-height: 1.42;
+  text-overflow: clip;
+  white-space: normal;
+}
+
+.wiki-page[data-wiki-route="/measurement"]
+  .wiki-protocol-drawer--page-fold
+  .wiki-protocol-drawer__chevron {
+  align-self: end;
+  width: 22px;
+  height: 22px;
+  border-radius: 2px;
+}
+
+.wiki-page[data-wiki-route="/measurement"]
+  .wiki-protocol-drawer--page-fold
+  .wiki-protocol-drawer__body {
+  gap: 16px;
+  padding: 18px 20px 20px;
+  background: var(--route-paper);
+}
+
+.wiki-page[data-wiki-route="/measurement"] .wiki-subheading--nested {
+  margin: 4px 0 0 !important;
+}
+
+.wiki-page[data-wiki-route="/measurement"] .measurement-model-volcanoes {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.wiki-page[data-wiki-route="/measurement"] .measurement-model-volcanoes h4 {
+  margin: 0 0 12px;
+  color: var(--route-heading-ink);
+  font-size: 16px;
+  font-weight: 650;
+  line-height: 1.4;
+}
+
+.wiki-page[data-wiki-route="/measurement"] .model-chart-panel {
+  min-width: 0;
+}
+
+.wiki-page[data-wiki-route="/measurement"] .model-chart {
+  width: 100%;
+  height: 420px;
+}
+
+.wiki-page[data-wiki-route="/measurement"] .model-chart-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.wiki-page[data-wiki-route="/measurement"] .model-chart-filters button {
+  padding: 7px 10px;
+  border: 1px solid var(--route-line-strong);
+  background: var(--route-paper);
+  color: var(--route-ink);
+  cursor: pointer;
+}
+
+.wiki-page[data-wiki-route="/measurement"]
+  .model-chart-filters
+  button[aria-pressed="false"] {
+  opacity: 0.5;
+  text-decoration: line-through;
+}
+
+.wiki-page[data-wiki-route="/measurement"] .model-chart-rule {
+  margin: 10px 0;
+  color: var(--route-muted);
+  font-size: 13px;
+}
+
+@media (max-width: 800px) {
+  .wiki-page[data-wiki-route="/measurement"] .measurement-model-volcanoes {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .wiki-page[data-wiki-route="/measurement"] .model-chart {
+    height: 360px;
+  }
+}
+
+.wiki-page[data-wiki-route="/measurement"]
+  .wiki-subheading--nested
+  .wiki-subheading__title {
+  color: var(--route-subheading-ink) !important;
+  font-size: 16px;
+  letter-spacing: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wiki-page[data-wiki-route="/measurement"] .wiki-protocol-drawer--page-fold {
+    transition: none;
+  }
+}

@@ -634,15 +634,16 @@
   }
 }
 
-/* Stakeholder portrait shown at the top of the detail popover. */
+/* Show the complete square stakeholder icon in the detail header. */
 .wiki-page .entrepreneurship-detail__image {
   display: block;
-  width: 100%;
-  max-height: 190px;
-  margin-bottom: 14px;
+  width: 104px;
+  height: 104px;
+  max-width: 100%;
+  margin: 0 auto 14px;
   border-radius: 7px;
-  object-fit: cover;
-  object-position: center top;
+  object-fit: contain;
+  object-position: center;
 }
 
 /* Our Highlights, judging format: one question per row, the answer folded

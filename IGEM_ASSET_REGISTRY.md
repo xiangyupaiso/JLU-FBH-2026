@@ -6,17 +6,17 @@
 ## 一、资产库统计
 
 - **队伍编号 (Team ID)**: 6056 (JLU-FBH)
-- **统计时间戳**: 2026-10-10T06:23:54+00:00
-- **总资产数量**: 2120
-- **🟢 在用资产 (in-use)**: 1597 *(代码/文案中正被引用)*
-- **🟡 备用资产 (standby)**: 491 *(已就绪或已上传，保留供后续页面选用)*
-- **⚪ 弃用资产 (deprecated)**: 32 *(已从本地删除或已弃用)*
+- **统计时间戳**: 2026-10-14
+- **总资产数量**: 2115
+- **🟢 在用资产 (in-use)**: 1594 *(代码/文案中正被引用)*
+- **🟡 备用资产 (standby)**: 490 *(已就绪或已上传，保留供后续页面选用)*
+- **⚪ 弃用资产 (deprecated)**: 31 *(已从本地删除或已弃用)*
 
 ### 类型细分统计
 
 | 类型 | 标识 | 说明 | 数量 |
 | :--- | :---: | :--- | :---: |
-| `image` | 🖼️ 图片/图表 (PNG, JPG, WebP, SVG) | 静态资源 | 2037 |
+| `image` | 🖼️ 图片/图表 (PNG, JPG, WebP, SVG) | 静态资源 | 2032 |
 | `font` | 🔤 Web 字体 (woff2, woff, ttf) | 静态资源 | 28 |
 | `structure` | 🧬 3D 分子/生物结构 (pdb, cif, pse) | 静态资源 | 3 |
 | `pdf` | 📄 PDF 文档/手册/报告 | 静态资源 | 46 |
@@ -548,7 +548,6 @@
 | 🟢 在用 | `image` | `engagement` | **engagement-education-hero-v2.webp**<br><sub>`engagement-education-hero-v2-webp`</sub> | `src/assets/wiki/engagement-heroes/engagement-education-hero-v2.webp` | 140.5 | [CDN 链接](https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/education/games/education-page-hero-01f9811aecb2.webp) | 1 | Referenced in 1 location(s) |
 | 🟢 在用 | `image` | `engagement` | **engagement-entrepreneurship-hero-v2.webp**<br><sub>`engagement-entrepreneurship-hero-v2-webp`</sub> | `src/assets/wiki/engagement-heroes/engagement-entrepreneurship-hero-v2.webp` | 150.7 | [CDN 链接](https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/engagement-entrepreneurship-hero-v2-efb0a019ee72.webp) | 1 | Referenced in 1 location(s) |
 | 🟢 在用 | `image` | `engagement` | **engagement-human-practices-hero-v2.webp**<br><sub>`engagement-human-practices-hero-v2-webp`</sub> | `src/assets/wiki/engagement-heroes/engagement-human-practices-hero-v2.webp` | 123.1 | [CDN 链接](https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/engagement-human-practices-hero-v2-ce6ea8234186.webp) | 1 | Referenced in 1 location(s) |
-| 🟢 在用 | `image` | `engagement` | **engagement-inclusivity-hero-v2.webp**<br><sub>`engagement-inclusivity-hero-v2-webp`</sub> | `src/assets/wiki/engagement-heroes/engagement-inclusivity-hero-v2.webp` | 168.5 | [CDN 链接](https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/engagement-inclusivity-hero-v2.webp) | 1 | Referenced in 1 location(s) |
 | 🟢 在用 | `image` | `engagement` | **engagement-sustainability-hero-v2.webp**<br><sub>`engagement-sustainability-hero-v2-webp`</sub> | `src/assets/wiki/engagement-heroes/engagement-sustainability-hero-v2.webp` | 145.6 | [CDN 链接](https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/engagement-sustainability-hero-v2-af187053f50d.webp) | 1 | Referenced in 1 location(s) |
 | 🟢 在用 | `image` | `engagement` | **engagement.png**<br><sub>`engagement-png`</sub> | `src/assets/wiki/engagement.png` | 263.1 | [CDN 链接](https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/engagement.avif) | 2 | Referenced in 2 location(s) |
 | 🟢 在用 | `image` | `shared` | **Entrepreneurship_hd.webp**<br><sub>`entrepreneurship-hd-webp`</sub> | `background/子界面psd2_已解压/Entrepreneurship_hd.webp` | 150.7 | [CDN 链接](https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/engagement-entrepreneurship-hero-v2.webp) | 1 | Referenced in 1 location(s) |
@@ -1205,7 +1204,6 @@
 | 🟢 在用 | `image` | `game` | **img97.png**<br><sub>`img97-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img97.png` | 9.3 | [CDN 链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment9/ispring/img97.avif) | 60 | Referenced in 60 location(s) |
 | 🟢 在用 | `image` | `game` | **img98.png**<br><sub>`img98-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img98.png` | 5.2 | [CDN 链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment9/ispring/img98.avif) | 45 | Referenced in 45 location(s) |
 | 🟢 在用 | `image` | `game` | **img99.png**<br><sub>`img99-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img99.png` | 5.3 | [CDN 链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment9/ispring/img99.avif) | 54 | Referenced in 54 location(s) |
-| 🟢 在用 | `image` | `shared` | **Inclusivity_hd.webp**<br><sub>`inclusivity-hd-webp`</sub> | `background/子界面psd2_已解压/Inclusivity_hd.webp` | 143.3 | [CDN 链接](https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/engagement-inclusivity-hero-v2.webp) | 1 | Referenced in 1 location(s) |
 | 🟢 在用 | `image` | `game` | **incubator-open.png**<br><sub>`incubator-open-png`</sub> | `public/virtual-lab/images/experiment1/incubator-open.png` | 1509.2 | [CDN 链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment1/incubator-open.avif) | 1 | Referenced in 1 location(s) |
 | 🟢 在用 | `image` | `game` | **incubator.png**<br><sub>`incubator-52ea-png`</sub> | `public/virtual-lab/images/experiment9/sidebar/incubator.png` | 1967.7 | [CDN 链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment9/processed/instruments/constant-temperature-incubator-95b44c20f7.avif) | 1 | Referenced in 1 location(s) |
 | 🟢 在用 | `image` | `game` | **incubator.png**<br><sub>`incubator-9cd2-png`</sub> | `public/virtual-lab/images/incubator.png` | 9.2 | [CDN 链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/common/incubator.avif) | 3 | Referenced in 3 location(s) |
@@ -1259,7 +1257,6 @@
 | 🟢 在用 | `image` | `game` | **nav-games.webp**<br><sub>`nav-games-webp`</sub> | `src/assets/nav-icons/nav-games.webp` | 16.5 | *待上传* | 1 | Referenced in 1 location(s) |
 | 🟢 在用 | `image` | `shared` | **nav-hardware.webp**<br><sub>`nav-hardware-webp`</sub> | `src/assets/nav-icons/nav-hardware.webp` | 13.5 | *待上传* | 1 | Referenced in 1 location(s) |
 | 🟢 在用 | `image` | `engagement` | **nav-human-practices.webp**<br><sub>`nav-human-practices-webp`</sub> | `src/assets/nav-icons/nav-human-practices.webp` | 14.7 | *待上传* | 1 | Referenced in 1 location(s) |
-| 🟢 在用 | `image` | `shared` | **nav-inclusivity.webp**<br><sub>`nav-inclusivity-webp`</sub> | `src/assets/nav-icons/nav-inclusivity.webp` | 17.7 | *待上传* | 1 | Referenced in 1 location(s) |
 | 🟢 在用 | `image` | `shared` | **nav-measurement.webp**<br><sub>`nav-measurement-webp`</sub> | `src/assets/nav-icons/nav-measurement.webp` | 20.4 | *待上传* | 1 | Referenced in 1 location(s) |
 | 🟢 在用 | `image` | `shared` | **nav-model.webp**<br><sub>`nav-model-webp`</sub> | `src/assets/nav-icons/nav-model.webp` | 19.8 | *待上传* | 1 | Referenced in 1 location(s) |
 | 🟢 在用 | `image` | `shared` | **nav-notebook.webp**<br><sub>`nav-notebook-webp`</sub> | `src/assets/nav-icons/nav-notebook.webp` | 20.1 | *待上传* | 1 | Referenced in 1 location(s) |
@@ -1692,7 +1689,6 @@
 | 🟡 备用 | `image` | `engagement` | **engagement-entrepreneurship-hero.webp**<br><sub>`engagement-entrepreneurship-hero-webp`</sub> | `src/assets/wiki/engagement-heroes/engagement-entrepreneurship-hero.webp` | 150.7 | [CDN 链接](https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/engagement-entrepreneurship-hero-v2.webp) | 0 | Standby/Mirrored asset with CDN URL |
 | 🟡 备用 | `image` | `engagement` | **engagement-hero.webp**<br><sub>`engagement-hero-webp`</sub> | `src/assets/wiki/engagement-heroes/engagement-hero.webp` | 90.9 | *待上传* | 0 | Standby/Unreferenced asset |
 | 🟡 备用 | `image` | `engagement` | **engagement-human-practices-hero.webp**<br><sub>`engagement-human-practices-hero-webp`</sub> | `src/assets/wiki/engagement-heroes/engagement-human-practices-hero.webp` | 123.1 | [CDN 链接](https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/engagement-human-practices-hero-v2.webp) | 0 | Standby/Mirrored asset with CDN URL |
-| 🟡 备用 | `image` | `engagement` | **engagement-inclusivity-hero.webp**<br><sub>`engagement-inclusivity-hero-webp`</sub> | `src/assets/wiki/engagement-heroes/engagement-inclusivity-hero.webp` | 168.5 | [CDN 链接](https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/engagement-inclusivity-hero-v2.webp) | 0 | Standby/Mirrored asset with CDN URL |
 | 🟡 备用 | `image` | `engagement` | **engagement-sustainability-hero.webp**<br><sub>`engagement-sustainability-hero-webp`</sub> | `src/assets/wiki/engagement-heroes/engagement-sustainability-hero.webp` | 145.6 | [CDN 链接](https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/engagement-sustainability-hero-v2.webp) | 0 | Standby/Mirrored asset with CDN URL |
 | 🟡 备用 | `image` | `shared` | **Entrepreneurship_hd.png**<br><sub>`entrepreneurship-hd-png`</sub> | `background/子界面psd2_已解压/Entrepreneurship_hd.png` | 1142.8 | *待上传* | 0 | Standby/Unreferenced asset |
 | 🟡 备用 | `image` | `game` | **ep tube  (2).png**<br><sub>`ep-tube-2-png`</sub> | `public/virtual-lab/experiment9-assets/processed/Shared Resources/ep tube  (2).png` | 5.2 | *待上传* | 0 | Standby/Unreferenced asset |
@@ -2129,7 +2125,6 @@
 | ⚪ 弃用 | `image` | `shared` | **HumanPractices_hd.png**<br><sub>`humanpractices-hd-png`</sub> | `background/子界面psd2_已解压/HumanPractices_hd.png` | 764.0 | *已弃用* | 0 | 文件已在本地删除 (File deleted from local disk) |
 | ⚪ 弃用 | `image` | `shared` | **ihp.png**<br><sub>`ihp-png`</sub> | `background/子界面2_已解压/ihp.png` | - | *已弃用* | 0 | 文件已在本地删除 (File deleted from local disk) |
 | ⚪ 弃用 | `image` | `shared` | **inclusisirity.png**<br><sub>`inclusisirity-png`</sub> | `background/子界面2_已解压/inclusisirity.png` | - | *已弃用* | 0 | 文件已在本地删除 (File deleted from local disk) |
-| ⚪ 弃用 | `image` | `shared` | **Inclusivity_hd.png**<br><sub>`inclusivity-hd-png`</sub> | `background/子界面psd2_已解压/Inclusivity_hd.png` | 1041.8 | *已弃用* | 0 | 文件已在本地删除 (File deleted from local disk) |
 | ⚪ 弃用 | `image` | `shared` | **measuerment_hero.jpg**<br><sub>`measuerment-hero-jpg`</sub> | `background/measuerment_hero.jpg` | - | *已弃用* | 0 | 文件已在本地删除 (File deleted from local disk) |
 | ⚪ 弃用 | `image` | `shared` | **model_hero.jpg**<br><sub>`model-hero-jpg`</sub> | `background/model_hero.jpg` | - | *已弃用* | 0 | 文件已在本地删除 (File deleted from local disk) |
 | ⚪ 弃用 | `image` | `shared` | **notebook.png**<br><sub>`notebook-png`</sub> | `background/子界面2_已解压/notebook.png` | - | *已弃用* | 0 | 文件已在本地删除 (File deleted from local disk) |

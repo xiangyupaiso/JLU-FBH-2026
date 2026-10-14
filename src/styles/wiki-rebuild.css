@@ -2061,7 +2061,8 @@
   counter-increment: wiki-figure;
 }
 
-.wiki-figure figcaption::before {
+.wiki-figure figcaption::before,
+.wiki-figure-caption-label {
   content: "FIG. " counter(wiki-figure, decimal-leading-zero);
   display: inline-flex;
   align-items: center;

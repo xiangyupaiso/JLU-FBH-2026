@@ -5,12 +5,12 @@
     "year": 2026,
     "lastUpdated": "2026-10-14",
     "stats": {
-      "total": 2287,
-      "inUse": 1764,
-      "standby": 491,
-      "deprecated": 32,
+      "total": 2247,
+      "inUse": 1726,
+      "standby": 490,
+      "deprecated": 31,
       "byKind": {
-        "image": 2185,
+        "image": 2145,
         "font": 28,
         "structure": 3,
         "pdf": 65,
@@ -3098,30 +3098,6 @@
         ],
         "error": null
       }
-    },
-    "engagement-inclusivity-hero-v2-webp": {
-      "id": "engagement-inclusivity-hero-v2-webp",
-      "fileName": "engagement-inclusivity-hero-v2.webp",
-      "category": "engagement",
-      "localPath": "src/assets/wiki/engagement-heroes/engagement-inclusivity-hero-v2.webp",
-      "md5": "32e4ff03b4b9bdcaab7c37115bed6702",
-      "fileSize": 172564,
-      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/engagement-inclusivity-hero-v2.webp",
-      "status": "in-use",
-      "description": "",
-      "keywords": [
-        "engagement-inclusivity-hero-v2"
-      ],
-      "references": [
-        {
-          "file": "src/components/wiki/engagementHeroAssets.ts",
-          "line": 4,
-          "text": "import inclusivityHero from \"../../assets/wiki/engagement-heroes/engagement-inclusivity-hero-v2.webp\";",
-          "type": "import"
-        }
-      ],
-      "notes": "Referenced in 1 location(s)",
-      "kind": "image"
     },
     "engagement-sustainability-hero-v2-webp": {
       "id": "engagement-sustainability-hero-v2-webp",
@@ -7360,24 +7336,6 @@
       "description": "",
       "keywords": [
         "engagement-human-practices-hero",
-        "image"
-      ],
-      "references": [],
-      "notes": "Standby/Mirrored asset with CDN URL"
-    },
-    "engagement-inclusivity-hero-webp": {
-      "id": "engagement-inclusivity-hero-webp",
-      "kind": "image",
-      "fileName": "engagement-inclusivity-hero.webp",
-      "category": "engagement",
-      "localPath": "src/assets/wiki/engagement-heroes/engagement-inclusivity-hero.webp",
-      "md5": "32e4ff03b4b9bdcaab7c37115bed6702",
-      "fileSize": 172564,
-      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/engagement-inclusivity-hero-v2.webp",
-      "status": "standby",
-      "description": "",
-      "keywords": [
-        "engagement-inclusivity-hero",
         "image"
       ],
       "references": [],
@@ -94581,31 +94539,6 @@
       ],
       "notes": "Referenced in 1 location(s)"
     },
-    "nav-inclusivity-webp": {
-      "id": "nav-inclusivity-webp",
-      "kind": "image",
-      "fileName": "nav-inclusivity.webp",
-      "category": "shared",
-      "localPath": "src/assets/nav-icons/nav-inclusivity.webp",
-      "md5": "6ed63bea902ee8d847b9bc364664c9d2",
-      "fileSize": 18132,
-      "uploadUrl": null,
-      "status": "in-use",
-      "description": "",
-      "keywords": [
-        "nav-inclusivity",
-        "image"
-      ],
-      "references": [
-        {
-          "file": "src/components/navIcons.ts",
-          "line": 22,
-          "text": "import inclusivity from \"../assets/nav-icons/nav-inclusivity.webp\";",
-          "type": "import"
-        }
-      ],
-      "notes": "Referenced in 1 location(s)"
-    },
     "nav-measurement-webp": {
       "id": "nav-measurement-webp",
       "kind": "image",
@@ -96172,49 +96105,6 @@
           "file": "src/components/wiki/engagementHeroAssets.ts",
           "line": 3,
           "text": "const humanPracticesHero = \"https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/engagement-human-practices-hero-v2.webp\";",
-          "type": "mention"
-        }
-      ],
-      "notes": "Referenced in 1 location(s)"
-    },
-    "inclusivity-hd-png": {
-      "id": "inclusivity-hd-png",
-      "kind": "image",
-      "fileName": "Inclusivity_hd.png",
-      "category": "shared",
-      "localPath": "background/子界面psd2_已解压/Inclusivity_hd.png",
-      "md5": "eb982c33d1a2136ae4ad6501303c5a53",
-      "fileSize": 1066762,
-      "uploadUrl": null,
-      "status": "deprecated",
-      "description": "",
-      "keywords": [
-        "Inclusivity_hd",
-        "image"
-      ],
-      "references": [],
-      "notes": "文件已在本地删除 (File deleted from local disk)"
-    },
-    "inclusivity-hd-webp": {
-      "id": "inclusivity-hd-webp",
-      "kind": "image",
-      "fileName": "Inclusivity_hd.webp",
-      "category": "shared",
-      "localPath": "background/子界面psd2_已解压/Inclusivity_hd.webp",
-      "md5": "74fcc8fb14b01793afb4515111fc9c50",
-      "fileSize": 146726,
-      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/engagement-inclusivity-hero-v2.webp",
-      "status": "in-use",
-      "description": "",
-      "keywords": [
-        "Inclusivity_hd",
-        "image"
-      ],
-      "references": [
-        {
-          "file": "src/components/wiki/engagementHeroAssets.ts",
-          "line": 4,
-          "text": "const inclusivityHero = \"https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/engagement-inclusivity-hero-v2.webp\";",
           "type": "mention"
         }
       ],

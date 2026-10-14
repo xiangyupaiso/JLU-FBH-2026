@@ -2,7 +2,7 @@
    Engagement module palette  (换色唯一入口)
    ----------------------------------------------------------------------------
    The Engagement reader (Entrepreneurship / Human Practices / Education /
-   Inclusivity; Sustainability follows in its own round) shares this one
+   Sustainability) shares this one
    palette. To re-skin the module — or to copy this file for the next module —
    only the three hex values below need to change; every other colour used by
    `wiki-route-skin.css` is derived from them with color-mix().

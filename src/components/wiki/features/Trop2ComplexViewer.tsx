@@ -695,7 +695,7 @@ export function Trop2ComplexViewer() {
 
       <figcaption className="trop2-viewer-footer">
         <p className="trop2-viewer-caption">
-          <strong>Figure M-01: Mol* rotatable 3D model of target-epitope complex.</strong> Reconstructed
+          <span className="wiki-figure-caption-label">FIG. M-01</span>Mol* rotatable 3D model of target-epitope complex. Reconstructed
           from PyMOL source session (<code>Trop2-CTL1.pse</code>). The HLA-A*02:01 heavy chain (Chain A)
           and β2-microglobulin (Chain B) are rendered in lavender cartoon ribbons.
           The Trop2-derived 9-mer CTL1 epitope (<strong>{TROP2_COMPLEX_DATA.epitopeSequence}</strong>, Chain C) is

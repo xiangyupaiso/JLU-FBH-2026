@@ -241,7 +241,7 @@ const developBroaderImpact: WikiSection = {
 export const sustainabilityPage: WikiPageContent = {
   route: "/sustainability",
   category: "engagement",
-  chapter: "Engagement / 05 of 05",
+  chapter: "Engagement / 04 of 04",
   eyebrow: "Sustainability",
   title: "Sustainability",
   lede: "",
@@ -260,7 +260,6 @@ export const sustainabilityPage: WikiPageContent = {
   links: [
     { path: "/human-practices", label: "Human Practices" },
     { path: "/education", label: "Education" },
-    { path: "/inclusivity", label: "Inclusivity" },
   ],
   next: {
     path: "/roster",

@@ -5,6 +5,12 @@ import type {
 import type { WikiContentBlock } from "../../components/wiki/wikiPageTypes";
 import { modelPage, modelPanels, modelReferences } from "./modelPage";
 
+/** Recognize caption labels only; prose references such as "Figure 16 summarizes" stay prose. */
+export function parseModelFigureCaption(text: string) {
+  const match = /^(?:\*\*)?Figure\s+(\d+[A-Z]?)[.:]\s*(?:\*\*)?\s*(.+)$/s.exec(text);
+  return match ? { label: `FIG. ${match[1].padStart(2, "0")}`, text: match[2] } : null;
+}
+
 /** This manuscript uses comma-separated, frequently bold author/year labels.
  * Match its own bibliography labels without rewriting any displayed copy. */
 export function buildModelCitationIndex(): CitationIndex {
@@ -30,6 +36,7 @@ export function buildModelCitationIndex(): CitationIndex {
     };
   });
   const visit = (text: string, sectionId: string) => {
+    text = parseModelFigureCaption(text)?.text ?? text;
     if (index.byParagraph.has(text)) return;
     const matches = labels
       .flatMap(({ id, pattern }) =>
