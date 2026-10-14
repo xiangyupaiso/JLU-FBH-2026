@@ -15,7 +15,7 @@ import {
   modelReferences,
 } from "../../../../data/drylab/modelPage";
 import type { ModelPanel } from "../../../../data/drylab/modelPanelTypes";
-import { buildModelCitationIndex } from "../../../../data/drylab/modelCitationIndex";
+import { buildModelCitationIndex, parseModelFigureCaption } from "../../../../data/drylab/modelCitationIndex";
 import "../../../../styles/features/model-panels.css";
 
 const citationIndex = buildModelCitationIndex();
@@ -23,7 +23,17 @@ const tint = {
   ramp: "rgba(21,62,52,0.14)",
   ring: "0 0 0 3px rgba(21,62,52,0.32)",
 };
-export const renderModelCitedText = createCitationRenderer(citationIndex, tint);
+const renderCitedText = createCitationRenderer(citationIndex, tint);
+export function renderModelCitedText(text: string, fallback: (text: string) => ReactNode) {
+  const caption = parseModelFigureCaption(text);
+  if (!caption) return renderCitedText(text, fallback);
+  return (
+    <span className="model-figure-caption">
+      <span className="wiki-figure-caption-label">{caption.label}</span>
+      {renderCitedText(caption.text, fallback)}
+    </span>
+  );
+}
 
 function ModelFold({
   title,

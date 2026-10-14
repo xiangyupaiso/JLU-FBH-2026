@@ -3,7 +3,7 @@ import { build } from "esbuild";
 
 const result = await build({
   stdin: {
-    contents: `export { buildModelCitationIndex } from "./src/data/drylab/modelCitationIndex";
+    contents: `export { buildModelCitationIndex, parseModelFigureCaption } from "./src/data/drylab/modelCitationIndex";
       export { createEpitopeHeatmapOption } from "./src/components/wiki/features/project/EpitopeStructuralValidationChart";`,
     resolveDir: process.cwd(),
   },
@@ -20,9 +20,12 @@ const { writeFile, unlink } = await import("node:fs/promises");
 const path = new URL("../.model-verification.mjs", import.meta.url);
 try {
   await writeFile(path, result.outputFiles[0].text);
-  const { buildModelCitationIndex, createEpitopeHeatmapOption } = await import(
+  const { buildModelCitationIndex, parseModelFigureCaption, createEpitopeHeatmapOption } = await import(
     path.href
   );
+  assert.deepEqual(parseModelFigureCaption("**Figure 5.** Caption with **emphasis**."), { label: "FIG. 05", text: "Caption with **emphasis**." });
+  assert.deepEqual(parseModelFigureCaption("**Figure 15. **Caption."), { label: "FIG. 15", text: "Caption." });
+  assert.equal(parseModelFigureCaption("Figure 16 summarizes burial."), null);
   const index = buildModelCitationIndex();
   assert(
     index.byParagraph.size > 25,
