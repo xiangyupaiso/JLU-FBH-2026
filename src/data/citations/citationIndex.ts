@@ -101,6 +101,8 @@ function assemble(
       block.paragraphs.forEach((paragraph) =>
         visitParagraph(paragraph, sectionId),
       );
+    } else if (block.type === "quote") {
+      visitParagraph(block.text, sectionId);
     } else if (block.type === "split") {
       block.prose.forEach((nested) => visitBlock(nested, sectionId));
     } else if (block.type === "callout") {
@@ -194,7 +196,7 @@ interface AuthorYearKey {
 
 const GROUP_RE = /\(([^()]*?\b(?:19|20)\d{2})\)/g;
 const ITEM_RE =
-  /^(?:(?<init>(?:\p{Lu}\.-?)+)\s+)?(?<sur>\p{Lu}[\p{L}'-]+)(?:\s+et al\.|\s+and\s+(?<second>\p{Lu}[\p{L}'-]+))?\s+(?<year>(?:19|20)\d{2})$/u;
+  /^(?:(?<init>(?:\p{Lu}\.-?)+)\s+)?(?<sur>\p{Lu}[\p{L}'-]*(?:\s+(?:(?!(?:et|and)\s)\p{Ll}[\p{L}'-]*\s+)?\p{Lu}[\p{L}'-]*)*)(?:\s+et al\.|\s+and\s+(?<second>\p{Lu}[\p{L}'-]+))?,?\s+(?<year>(?:19|20)\d{2})$/u;
 const BOLD_RE = /\*\*[^*]+?\*\*/g;
 const SEP_RE = /;\s*/g;
 
@@ -215,14 +217,8 @@ export function buildAuthorYearKeys(
             .split(/,|&| et al\./)[0]
             .trim()
         : "";
-    const amp = reference.authors.indexOf("&");
-    const second =
-      amp >= 0
-        ? reference.authors
-            .slice(amp + 1)
-            .split(",")[0]
-            .trim()
-        : undefined;
+    const second = reference.authors.match(/(?:&|\band)\s+([^,.]+)(?:,|$)/)?.[1]
+      .trim();
     const year = reference.volumeYear.match(/\((\d{4})\)/)?.[1] ?? "";
     return {
       id: reference.id,
@@ -304,6 +300,8 @@ export function tokenizeAuthorYearCitations(
     const start = groupMatch.index;
     const end = start + groupMatch[0].length;
     const inner = groupMatch[1];
+
+    if (!/\p{L}/u.test(inner)) continue;
 
     if (boldRanges.some(([from, to]) => start < to && end > from)) {
       onIssue?.(`citation inside bold text: ${inner}`);

@@ -73,6 +73,7 @@ export interface WikiReferenceEntry {
  */
 export type WikiContentBlock =
   | { type: "prose"; paragraphs: string[] }
+  | { type: "quote"; text: string }
   | { type: "list"; items: string[]; ordered?: boolean; start?: number }
   | { type: "code"; language?: string; code: string; label?: string }
   | {
@@ -138,6 +139,7 @@ export type WikiContentBlock =
       index: string;
       kicker?: string;
       title: string;
+      level?: 3 | 4;
       anchorIds?: string[];
     }
   | { type: "feature"; key: string }

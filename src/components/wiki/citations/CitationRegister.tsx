@@ -96,6 +96,17 @@ export function jumpToAnchor(id: string, tint?: CitationFlashTint): void {
   const el = target?.closest<HTMLElement>(".wiki-cite") ?? target;
   if (!el) return;
 
+  const closedSubheading = el.closest<HTMLElement>(
+    "[data-wiki-subheading-fold]:not(.is-open)",
+  );
+  if (closedSubheading) {
+    closedSubheading
+      .querySelector<HTMLButtonElement>(".wiki-protocol-drawer__header")
+      ?.click();
+    window.requestAnimationFrame(() => jumpToAnchor(id, tint));
+    return;
+  }
+
   el.closest("[data-wiki-reveal]")?.classList.add("is-visible");
 
   const reduceMotion = window.matchMedia(

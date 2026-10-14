@@ -2928,7 +2928,7 @@
       "localPath": "src/assets/wiki/engagement-heroes/engagement-education-hero-v2.webp",
       "md5": "1ce6dd3c8a4f544d434d334e4b16293b",
       "fileSize": 143842,
-      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/engagement-education-hero-v2.webp",
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/education/games/education-page-hero-01f9811aecb2.webp",
       "status": "in-use",
       "description": "",
       "keywords": [
@@ -2938,12 +2938,27 @@
         {
           "file": "src/components/wiki/engagementHeroAssets.ts",
           "line": 1,
-          "text": "import educationHero from \"../../assets/wiki/engagement-heroes/engagement-education-hero-v2.webp\";",
-          "type": "import"
+          "type": "remote-image-url",
+          "occurrence": 1
         }
       ],
       "notes": "Referenced in 1 location(s)",
-      "kind": "image"
+      "kind": "image",
+      "sha256": "01f9811aecb24868d1f4efa8df214c1286bd3b826c18f6eb948b20ced5b76955",
+      "stagedPath": "../上传批次/2026-10-14-education-embedded/files/education-page-hero/education-page-hero-01f9811aecb2.webp",
+      "upload": {
+        "target": {
+          "platform": "igem",
+          "year": 2026,
+          "team": "6056"
+        },
+        "status": "uploaded",
+        "source": "user-provided-folder-and-example-url",
+        "remoteName": "education-page-hero-01f9811aecb2.webp",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "verificationNote": "User asked to skip remote URL checks; URL inferred from provided example and filename."
+      }
     },
     "engagement-entrepreneurship-hero-v2-webp": {
       "id": "engagement-entrepreneurship-hero-v2-webp",
@@ -110927,6 +110942,1162 @@
           "TypeScript and production build passed; individual CDN URLs not checked at user request"
         ],
         "error": null
+      }
+    },
+    "education-embedded-909d7fd86037": {
+      "id": "education-embedded-909d7fd86037",
+      "fileName": "community-educational-function-map-909d7fd86037.svg",
+      "category": "engagement",
+      "fileSize": 258,
+      "status": "in-use",
+      "kind": "image",
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/education/games/community-educational-function-map-909d7fd86037.svg",
+      "sha256": "909d7fd860372f28414084911632a7559a29256c88f1181458c228afb06aeb32",
+      "references": [
+        {
+          "file": "src/data/engagement/interactive/community-educational-function-map.html",
+          "line": 2,
+          "type": "remote-image-url",
+          "occurrence": 1
+        }
+      ],
+      "stagedPath": "../上传批次/2026-10-14-education-embedded/files/community-educational-function-map/community-educational-function-map-909d7fd86037.svg",
+      "upload": {
+        "target": {
+          "platform": "igem",
+          "year": 2026,
+          "team": "6056"
+        },
+        "status": "uploaded",
+        "source": "user-provided-folder-and-example-url",
+        "remoteName": "community-educational-function-map-909d7fd86037.svg",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "verificationNote": "User asked to skip remote URL checks; URL inferred from provided example and filename."
+      }
+    },
+    "education-embedded-73642f08fbcc": {
+      "id": "education-embedded-73642f08fbcc",
+      "fileName": "community-educational-function-map-73642f08fbcc.webp",
+      "category": "engagement",
+      "fileSize": 130666,
+      "status": "in-use",
+      "kind": "image",
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/education/games/community-educational-function-map-73642f08fbcc.webp",
+      "sha256": "73642f08fbcc960f5d1bd38b4ff3a2ab6b5277965ab2e8e4014418591be783c5",
+      "references": [
+        {
+          "file": "src/data/engagement/interactive/community-educational-function-map.html",
+          "line": 20,
+          "type": "remote-image-url",
+          "occurrence": 2
+        }
+      ],
+      "stagedPath": "../上传批次/2026-10-14-education-embedded/files/community-educational-function-map/community-educational-function-map-73642f08fbcc.webp",
+      "upload": {
+        "target": {
+          "platform": "igem",
+          "year": 2026,
+          "team": "6056"
+        },
+        "status": "uploaded",
+        "source": "user-provided-folder-and-example-url",
+        "remoteName": "community-educational-function-map-73642f08fbcc.webp",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "verificationNote": "User asked to skip remote URL checks; URL inferred from provided example and filename."
+      }
+    },
+    "education-embedded-dddda3937679": {
+      "id": "education-embedded-dddda3937679",
+      "fileName": "community-educational-function-map-dddda3937679.webp",
+      "category": "engagement",
+      "fileSize": 147134,
+      "status": "in-use",
+      "kind": "image",
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/education/games/community-educational-function-map-dddda3937679.webp",
+      "sha256": "dddda3937679bf508a48922a8ae4fbea3ab955653802c102f19d521f467c01fd",
+      "references": [
+        {
+          "file": "src/data/engagement/interactive/community-educational-function-map.html",
+          "line": 20,
+          "type": "remote-image-url",
+          "occurrence": 3
+        }
+      ],
+      "stagedPath": "../上传批次/2026-10-14-education-embedded/files/community-educational-function-map/community-educational-function-map-dddda3937679.webp",
+      "upload": {
+        "target": {
+          "platform": "igem",
+          "year": 2026,
+          "team": "6056"
+        },
+        "status": "uploaded",
+        "source": "user-provided-folder-and-example-url",
+        "remoteName": "community-educational-function-map-dddda3937679.webp",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "verificationNote": "User asked to skip remote URL checks; URL inferred from provided example and filename."
+      }
+    },
+    "education-embedded-56b9eda954dc": {
+      "id": "education-embedded-56b9eda954dc",
+      "fileName": "community-educational-function-map-56b9eda954dc.webp",
+      "category": "engagement",
+      "fileSize": 156300,
+      "status": "in-use",
+      "kind": "image",
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/education/games/community-educational-function-map-56b9eda954dc.webp",
+      "sha256": "56b9eda954dc1fe44c64d90212673ca1c804246cc8ddc58c4d5bf931a1cbaa2e",
+      "references": [
+        {
+          "file": "src/data/engagement/interactive/community-educational-function-map.html",
+          "line": 20,
+          "type": "remote-image-url",
+          "occurrence": 4
+        }
+      ],
+      "stagedPath": "../上传批次/2026-10-14-education-embedded/files/community-educational-function-map/community-educational-function-map-56b9eda954dc.webp",
+      "upload": {
+        "target": {
+          "platform": "igem",
+          "year": 2026,
+          "team": "6056"
+        },
+        "status": "uploaded",
+        "source": "user-provided-folder-and-example-url",
+        "remoteName": "community-educational-function-map-56b9eda954dc.webp",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "verificationNote": "User asked to skip remote URL checks; URL inferred from provided example and filename."
+      }
+    },
+    "education-embedded-8a32853e6710": {
+      "id": "education-embedded-8a32853e6710",
+      "fileName": "community-educational-function-map-8a32853e6710.webp",
+      "category": "engagement",
+      "fileSize": 133202,
+      "status": "in-use",
+      "kind": "image",
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/education/games/community-educational-function-map-8a32853e6710.webp",
+      "sha256": "8a32853e67102ac4b9df1c9b724bbed59d45aa6cef3159975b8f767792a513a5",
+      "references": [
+        {
+          "file": "src/data/engagement/interactive/community-educational-function-map.html",
+          "line": 20,
+          "type": "remote-image-url",
+          "occurrence": 5
+        }
+      ],
+      "stagedPath": "../上传批次/2026-10-14-education-embedded/files/community-educational-function-map/community-educational-function-map-8a32853e6710.webp",
+      "upload": {
+        "target": {
+          "platform": "igem",
+          "year": 2026,
+          "team": "6056"
+        },
+        "status": "uploaded",
+        "source": "user-provided-folder-and-example-url",
+        "remoteName": "community-educational-function-map-8a32853e6710.webp",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "verificationNote": "User asked to skip remote URL checks; URL inferred from provided example and filename."
+      }
+    },
+    "education-embedded-ca3633703563": {
+      "id": "education-embedded-ca3633703563",
+      "fileName": "community-educational-function-map-ca3633703563.webp",
+      "category": "engagement",
+      "fileSize": 143416,
+      "status": "in-use",
+      "kind": "image",
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/education/games/community-educational-function-map-ca3633703563.webp",
+      "sha256": "ca363370356308b637e3726efd8052d5ce1606d495aca38b115ddd7af771484f",
+      "references": [
+        {
+          "file": "src/data/engagement/interactive/community-educational-function-map.html",
+          "line": 20,
+          "type": "remote-image-url",
+          "occurrence": 6
+        }
+      ],
+      "stagedPath": "../上传批次/2026-10-14-education-embedded/files/community-educational-function-map/community-educational-function-map-ca3633703563.webp",
+      "upload": {
+        "target": {
+          "platform": "igem",
+          "year": 2026,
+          "team": "6056"
+        },
+        "status": "uploaded",
+        "source": "user-provided-folder-and-example-url",
+        "remoteName": "community-educational-function-map-ca3633703563.webp",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "verificationNote": "User asked to skip remote URL checks; URL inferred from provided example and filename."
+      }
+    },
+    "education-embedded-ddc4e00d6411": {
+      "id": "education-embedded-ddc4e00d6411",
+      "fileName": "community-educational-function-map-ddc4e00d6411.webp",
+      "category": "engagement",
+      "fileSize": 129188,
+      "status": "in-use",
+      "kind": "image",
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/education/games/community-educational-function-map-ddc4e00d6411.webp",
+      "sha256": "ddc4e00d64118f6c2ccb6db9253d97ba601c911e1d1b9d05e6f3f74a4b52169b",
+      "references": [
+        {
+          "file": "src/data/engagement/interactive/community-educational-function-map.html",
+          "line": 20,
+          "type": "remote-image-url",
+          "occurrence": 7
+        },
+        {
+          "file": "src/data/engagement/interactive/breast-guardian-evidence-room.html",
+          "line": 26,
+          "type": "remote-image-url",
+          "occurrence": 4
+        },
+        {
+          "file": "src/data/engagement/interactive/breast-guardian-evidence-room.html",
+          "line": 35,
+          "type": "remote-image-url",
+          "occurrence": 6
+        },
+        {
+          "file": "src/data/engagement/interactive/breast-guardian-evidence-room.html",
+          "line": 42,
+          "type": "remote-image-url",
+          "occurrence": 13
+        }
+      ],
+      "stagedPath": "../上传批次/2026-10-14-education-embedded/files/community-educational-function-map/community-educational-function-map-ddc4e00d6411.webp",
+      "upload": {
+        "target": {
+          "platform": "igem",
+          "year": 2026,
+          "team": "6056"
+        },
+        "status": "uploaded",
+        "source": "user-provided-folder-and-example-url",
+        "remoteName": "community-educational-function-map-ddc4e00d6411.webp",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "verificationNote": "User asked to skip remote URL checks; URL inferred from provided example and filename."
+      }
+    },
+    "education-embedded-28a6f8bf3245": {
+      "id": "education-embedded-28a6f8bf3245",
+      "fileName": "community-educational-function-map-28a6f8bf3245.webp",
+      "category": "engagement",
+      "fileSize": 162956,
+      "status": "in-use",
+      "kind": "image",
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/education/games/community-educational-function-map-28a6f8bf3245.webp",
+      "sha256": "28a6f8bf3245a7bfd88a56cb4fdd77b43be97e6d94fd1e707f50a2be4cc3152b",
+      "references": [
+        {
+          "file": "src/data/engagement/interactive/community-educational-function-map.html",
+          "line": 20,
+          "type": "remote-image-url",
+          "occurrence": 8
+        }
+      ],
+      "stagedPath": "../上传批次/2026-10-14-education-embedded/files/community-educational-function-map/community-educational-function-map-28a6f8bf3245.webp",
+      "upload": {
+        "target": {
+          "platform": "igem",
+          "year": 2026,
+          "team": "6056"
+        },
+        "status": "uploaded",
+        "source": "user-provided-folder-and-example-url",
+        "remoteName": "community-educational-function-map-28a6f8bf3245.webp",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "verificationNote": "User asked to skip remote URL checks; URL inferred from provided example and filename."
+      }
+    },
+    "education-embedded-e8b7f3625aed": {
+      "id": "education-embedded-e8b7f3625aed",
+      "fileName": "community-educational-function-map-e8b7f3625aed.webp",
+      "category": "engagement",
+      "fileSize": 128190,
+      "status": "in-use",
+      "kind": "image",
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/education/games/community-educational-function-map-e8b7f3625aed.webp",
+      "sha256": "e8b7f3625aed59eac69509cebccf7f55e9eb506a0ef4b1f58111c62b14b74e62",
+      "references": [
+        {
+          "file": "src/data/engagement/interactive/community-educational-function-map.html",
+          "line": 20,
+          "type": "remote-image-url",
+          "occurrence": 9
+        }
+      ],
+      "stagedPath": "../上传批次/2026-10-14-education-embedded/files/community-educational-function-map/community-educational-function-map-e8b7f3625aed.webp",
+      "upload": {
+        "target": {
+          "platform": "igem",
+          "year": 2026,
+          "team": "6056"
+        },
+        "status": "uploaded",
+        "source": "user-provided-folder-and-example-url",
+        "remoteName": "community-educational-function-map-e8b7f3625aed.webp",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "verificationNote": "User asked to skip remote URL checks; URL inferred from provided example and filename."
+      }
+    },
+    "education-embedded-77bad1bf80bc": {
+      "id": "education-embedded-77bad1bf80bc",
+      "fileName": "community-educational-function-map-77bad1bf80bc.webp",
+      "category": "engagement",
+      "fileSize": 201586,
+      "status": "in-use",
+      "kind": "image",
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/education/games/community-educational-function-map-77bad1bf80bc.webp",
+      "sha256": "77bad1bf80bc5f15401850a8e980a8bc4e2176de5f56533f379203e445b0329f",
+      "references": [
+        {
+          "file": "src/data/engagement/interactive/community-educational-function-map.html",
+          "line": 20,
+          "type": "remote-image-url",
+          "occurrence": 10
+        }
+      ],
+      "stagedPath": "../上传批次/2026-10-14-education-embedded/files/community-educational-function-map/community-educational-function-map-77bad1bf80bc.webp",
+      "upload": {
+        "target": {
+          "platform": "igem",
+          "year": 2026,
+          "team": "6056"
+        },
+        "status": "uploaded",
+        "source": "user-provided-folder-and-example-url",
+        "remoteName": "community-educational-function-map-77bad1bf80bc.webp",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "verificationNote": "User asked to skip remote URL checks; URL inferred from provided example and filename."
+      }
+    },
+    "education-embedded-f8ad55c603de": {
+      "id": "education-embedded-f8ad55c603de",
+      "fileName": "community-educational-function-map-f8ad55c603de.webp",
+      "category": "engagement",
+      "fileSize": 156100,
+      "status": "in-use",
+      "kind": "image",
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/education/games/community-educational-function-map-f8ad55c603de.webp",
+      "sha256": "f8ad55c603de3195f9e3351169b0c5a1864d51841e0255c08f77113ed6f219ab",
+      "references": [
+        {
+          "file": "src/data/engagement/interactive/community-educational-function-map.html",
+          "line": 20,
+          "type": "remote-image-url",
+          "occurrence": 11
+        }
+      ],
+      "stagedPath": "../上传批次/2026-10-14-education-embedded/files/community-educational-function-map/community-educational-function-map-f8ad55c603de.webp",
+      "upload": {
+        "target": {
+          "platform": "igem",
+          "year": 2026,
+          "team": "6056"
+        },
+        "status": "uploaded",
+        "source": "user-provided-folder-and-example-url",
+        "remoteName": "community-educational-function-map-f8ad55c603de.webp",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "verificationNote": "User asked to skip remote URL checks; URL inferred from provided example and filename."
+      }
+    },
+    "education-embedded-3a47ef84ab63": {
+      "id": "education-embedded-3a47ef84ab63",
+      "fileName": "community-educational-function-map-3a47ef84ab63.webp",
+      "category": "engagement",
+      "fileSize": 173904,
+      "status": "in-use",
+      "kind": "image",
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/education/games/community-educational-function-map-3a47ef84ab63.webp",
+      "sha256": "3a47ef84ab639d2cb4f50b2c2c587abd6cd84f70b2534b16e66a9b2839effe03",
+      "references": [
+        {
+          "file": "src/data/engagement/interactive/community-educational-function-map.html",
+          "line": 20,
+          "type": "remote-image-url",
+          "occurrence": 12
+        }
+      ],
+      "stagedPath": "../上传批次/2026-10-14-education-embedded/files/community-educational-function-map/community-educational-function-map-3a47ef84ab63.webp",
+      "upload": {
+        "target": {
+          "platform": "igem",
+          "year": 2026,
+          "team": "6056"
+        },
+        "status": "uploaded",
+        "source": "user-provided-folder-and-example-url",
+        "remoteName": "community-educational-function-map-3a47ef84ab63.webp",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "verificationNote": "User asked to skip remote URL checks; URL inferred from provided example and filename."
+      }
+    },
+    "education-embedded-441b2659626f": {
+      "id": "education-embedded-441b2659626f",
+      "fileName": "education-design-board-441b2659626f.svg",
+      "category": "engagement",
+      "fileSize": 259,
+      "status": "in-use",
+      "kind": "image",
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/education/games/education-design-board-441b2659626f.svg",
+      "sha256": "441b2659626f29d9b67a88e7ab53599b1a5a9f42b19e846b283e7164a550b292",
+      "references": [
+        {
+          "file": "src/data/engagement/interactive/education-design-board.html",
+          "line": 10,
+          "type": "remote-image-url",
+          "occurrence": 1
+        }
+      ],
+      "stagedPath": "../上传批次/2026-10-14-education-embedded/files/education-design-board/education-design-board-441b2659626f.svg",
+      "upload": {
+        "target": {
+          "platform": "igem",
+          "year": 2026,
+          "team": "6056"
+        },
+        "status": "uploaded",
+        "source": "user-provided-folder-and-example-url",
+        "remoteName": "education-design-board-441b2659626f.svg",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "verificationNote": "User asked to skip remote URL checks; URL inferred from provided example and filename."
+      }
+    },
+    "education-embedded-492eaacf8eb6": {
+      "id": "education-embedded-492eaacf8eb6",
+      "fileName": "education-design-board-492eaacf8eb6.webp",
+      "category": "engagement",
+      "fileSize": 140720,
+      "status": "in-use",
+      "kind": "image",
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/education/games/education-design-board-492eaacf8eb6.webp",
+      "sha256": "492eaacf8eb6f935706fdb996b2d90602eea8384b4221e287c3c04fc829af10f",
+      "references": [
+        {
+          "file": "src/data/engagement/interactive/education-design-board.html",
+          "line": 24,
+          "type": "remote-image-url",
+          "occurrence": 2
+        },
+        {
+          "file": "src/data/engagement/interactive/education-design-board.html",
+          "line": 67,
+          "type": "remote-image-url",
+          "occurrence": 6
+        }
+      ],
+      "stagedPath": "../上传批次/2026-10-14-education-embedded/files/education-design-board/education-design-board-492eaacf8eb6.webp",
+      "upload": {
+        "target": {
+          "platform": "igem",
+          "year": 2026,
+          "team": "6056"
+        },
+        "status": "uploaded",
+        "source": "user-provided-folder-and-example-url",
+        "remoteName": "education-design-board-492eaacf8eb6.webp",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "verificationNote": "User asked to skip remote URL checks; URL inferred from provided example and filename."
+      }
+    },
+    "education-embedded-4c6daada8ca0": {
+      "id": "education-embedded-4c6daada8ca0",
+      "fileName": "education-design-board-4c6daada8ca0.webp",
+      "category": "engagement",
+      "fileSize": 173864,
+      "status": "in-use",
+      "kind": "image",
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/education/games/education-design-board-4c6daada8ca0.webp",
+      "sha256": "4c6daada8ca057a6370a0efb8903f485261640837e56c5a03b0e0f62d1a94c64",
+      "references": [
+        {
+          "file": "src/data/engagement/interactive/education-design-board.html",
+          "line": 52,
+          "type": "remote-image-url",
+          "occurrence": 3
+        },
+        {
+          "file": "src/data/engagement/interactive/education-design-board.html",
+          "line": 67,
+          "type": "remote-image-url",
+          "occurrence": 10
+        }
+      ],
+      "stagedPath": "../上传批次/2026-10-14-education-embedded/files/education-design-board/education-design-board-4c6daada8ca0.webp",
+      "upload": {
+        "target": {
+          "platform": "igem",
+          "year": 2026,
+          "team": "6056"
+        },
+        "status": "uploaded",
+        "source": "user-provided-folder-and-example-url",
+        "remoteName": "education-design-board-4c6daada8ca0.webp",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "verificationNote": "User asked to skip remote URL checks; URL inferred from provided example and filename."
+      }
+    },
+    "education-embedded-99371d10bc0e": {
+      "id": "education-embedded-99371d10bc0e",
+      "fileName": "education-design-board-99371d10bc0e.webp",
+      "category": "engagement",
+      "fileSize": 127884,
+      "status": "in-use",
+      "kind": "image",
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/education/games/education-design-board-99371d10bc0e.webp",
+      "sha256": "99371d10bc0e0b3c872969e6adaed943759dcbeb19fb9af899cdaa7fab82e99d",
+      "references": [
+        {
+          "file": "src/data/engagement/interactive/education-design-board.html",
+          "line": 67,
+          "type": "remote-image-url",
+          "occurrence": 4
+        }
+      ],
+      "stagedPath": "../上传批次/2026-10-14-education-embedded/files/education-design-board/education-design-board-99371d10bc0e.webp",
+      "upload": {
+        "target": {
+          "platform": "igem",
+          "year": 2026,
+          "team": "6056"
+        },
+        "status": "uploaded",
+        "source": "user-provided-folder-and-example-url",
+        "remoteName": "education-design-board-99371d10bc0e.webp",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "verificationNote": "User asked to skip remote URL checks; URL inferred from provided example and filename."
+      }
+    },
+    "education-embedded-b9f7909dee82": {
+      "id": "education-embedded-b9f7909dee82",
+      "fileName": "education-design-board-b9f7909dee82.webp",
+      "category": "engagement",
+      "fileSize": 140738,
+      "status": "in-use",
+      "kind": "image",
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/education/games/education-design-board-b9f7909dee82.webp",
+      "sha256": "b9f7909dee823abb033f926dc045359fb6e7416adac6589b90e85cb21108586f",
+      "references": [
+        {
+          "file": "src/data/engagement/interactive/education-design-board.html",
+          "line": 67,
+          "type": "remote-image-url",
+          "occurrence": 5
+        }
+      ],
+      "stagedPath": "../上传批次/2026-10-14-education-embedded/files/education-design-board/education-design-board-b9f7909dee82.webp",
+      "upload": {
+        "target": {
+          "platform": "igem",
+          "year": 2026,
+          "team": "6056"
+        },
+        "status": "uploaded",
+        "source": "user-provided-folder-and-example-url",
+        "remoteName": "education-design-board-b9f7909dee82.webp",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "verificationNote": "User asked to skip remote URL checks; URL inferred from provided example and filename."
+      }
+    },
+    "education-embedded-25a6b89ad4d1": {
+      "id": "education-embedded-25a6b89ad4d1",
+      "fileName": "education-design-board-25a6b89ad4d1.webp",
+      "category": "engagement",
+      "fileSize": 151274,
+      "status": "in-use",
+      "kind": "image",
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/education/games/education-design-board-25a6b89ad4d1.webp",
+      "sha256": "25a6b89ad4d15e78c2dcf56f6efcc7ef9b6a6017aca9f4479ebfd8360682a19c",
+      "references": [
+        {
+          "file": "src/data/engagement/interactive/education-design-board.html",
+          "line": 67,
+          "type": "remote-image-url",
+          "occurrence": 7
+        }
+      ],
+      "stagedPath": "../上传批次/2026-10-14-education-embedded/files/education-design-board/education-design-board-25a6b89ad4d1.webp",
+      "upload": {
+        "target": {
+          "platform": "igem",
+          "year": 2026,
+          "team": "6056"
+        },
+        "status": "uploaded",
+        "source": "user-provided-folder-and-example-url",
+        "remoteName": "education-design-board-25a6b89ad4d1.webp",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "verificationNote": "User asked to skip remote URL checks; URL inferred from provided example and filename."
+      }
+    },
+    "education-embedded-a25043eecc2b": {
+      "id": "education-embedded-a25043eecc2b",
+      "fileName": "education-design-board-a25043eecc2b.webp",
+      "category": "engagement",
+      "fileSize": 160810,
+      "status": "in-use",
+      "kind": "image",
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/education/games/education-design-board-a25043eecc2b.webp",
+      "sha256": "a25043eecc2be6b467ffcb6ea584192551f741be3656ab362b90517d16df74ed",
+      "references": [
+        {
+          "file": "src/data/engagement/interactive/education-design-board.html",
+          "line": 67,
+          "type": "remote-image-url",
+          "occurrence": 8
+        }
+      ],
+      "stagedPath": "../上传批次/2026-10-14-education-embedded/files/education-design-board/education-design-board-a25043eecc2b.webp",
+      "upload": {
+        "target": {
+          "platform": "igem",
+          "year": 2026,
+          "team": "6056"
+        },
+        "status": "uploaded",
+        "source": "user-provided-folder-and-example-url",
+        "remoteName": "education-design-board-a25043eecc2b.webp",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "verificationNote": "User asked to skip remote URL checks; URL inferred from provided example and filename."
+      }
+    },
+    "education-embedded-8bc8d5746989": {
+      "id": "education-embedded-8bc8d5746989",
+      "fileName": "education-design-board-8bc8d5746989.webp",
+      "category": "engagement",
+      "fileSize": 124504,
+      "status": "in-use",
+      "kind": "image",
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/education/games/education-design-board-8bc8d5746989.webp",
+      "sha256": "8bc8d5746989b70d6578341a26874650d5866f10a2e26ede4e59d3a532797c93",
+      "references": [
+        {
+          "file": "src/data/engagement/interactive/education-design-board.html",
+          "line": 67,
+          "type": "remote-image-url",
+          "occurrence": 9
+        }
+      ],
+      "stagedPath": "../上传批次/2026-10-14-education-embedded/files/education-design-board/education-design-board-8bc8d5746989.webp",
+      "upload": {
+        "target": {
+          "platform": "igem",
+          "year": 2026,
+          "team": "6056"
+        },
+        "status": "uploaded",
+        "source": "user-provided-folder-and-example-url",
+        "remoteName": "education-design-board-8bc8d5746989.webp",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "verificationNote": "User asked to skip remote URL checks; URL inferred from provided example and filename."
+      }
+    },
+    "education-embedded-e641edeba234": {
+      "id": "education-embedded-e641edeba234",
+      "fileName": "education-design-board-e641edeba234.webp",
+      "category": "engagement",
+      "fileSize": 175302,
+      "status": "in-use",
+      "kind": "image",
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/education/games/education-design-board-e641edeba234.webp",
+      "sha256": "e641edeba2342c7c0fa2a90a7b02ccf6938197639592cfab4adf255d37eb999b",
+      "references": [
+        {
+          "file": "src/data/engagement/interactive/education-design-board.html",
+          "line": 67,
+          "type": "remote-image-url",
+          "occurrence": 11
+        }
+      ],
+      "stagedPath": "../上传批次/2026-10-14-education-embedded/files/education-design-board/education-design-board-e641edeba234.webp",
+      "upload": {
+        "target": {
+          "platform": "igem",
+          "year": 2026,
+          "team": "6056"
+        },
+        "status": "uploaded",
+        "source": "user-provided-folder-and-example-url",
+        "remoteName": "education-design-board-e641edeba234.webp",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "verificationNote": "User asked to skip remote URL checks; URL inferred from provided example and filename."
+      }
+    },
+    "education-embedded-38844737c0e9": {
+      "id": "education-embedded-38844737c0e9",
+      "fileName": "education-design-board-38844737c0e9.webp",
+      "category": "engagement",
+      "fileSize": 82844,
+      "status": "in-use",
+      "kind": "image",
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/education/games/education-design-board-38844737c0e9.webp",
+      "sha256": "38844737c0e9625e79c91337cb70900f8ad5cc806a953ce86e03b3366e31be16",
+      "references": [
+        {
+          "file": "src/data/engagement/interactive/education-design-board.html",
+          "line": 67,
+          "type": "remote-image-url",
+          "occurrence": 12
+        }
+      ],
+      "stagedPath": "../上传批次/2026-10-14-education-embedded/files/education-design-board/education-design-board-38844737c0e9.webp",
+      "upload": {
+        "target": {
+          "platform": "igem",
+          "year": 2026,
+          "team": "6056"
+        },
+        "status": "uploaded",
+        "source": "user-provided-folder-and-example-url",
+        "remoteName": "education-design-board-38844737c0e9.webp",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "verificationNote": "User asked to skip remote URL checks; URL inferred from provided example and filename."
+      }
+    },
+    "education-embedded-f094eac038db": {
+      "id": "education-embedded-f094eac038db",
+      "fileName": "education-design-board-f094eac038db.webp",
+      "category": "engagement",
+      "fileSize": 152842,
+      "status": "in-use",
+      "kind": "image",
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/education/games/education-design-board-f094eac038db.webp",
+      "sha256": "f094eac038dbb18f80a1d428b17c02c1d9be1234651bba87c727717d3a09831c",
+      "references": [
+        {
+          "file": "src/data/engagement/interactive/education-design-board.html",
+          "line": 67,
+          "type": "remote-image-url",
+          "occurrence": 13
+        }
+      ],
+      "stagedPath": "../上传批次/2026-10-14-education-embedded/files/education-design-board/education-design-board-f094eac038db.webp",
+      "upload": {
+        "target": {
+          "platform": "igem",
+          "year": 2026,
+          "team": "6056"
+        },
+        "status": "uploaded",
+        "source": "user-provided-folder-and-example-url",
+        "remoteName": "education-design-board-f094eac038db.webp",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "verificationNote": "User asked to skip remote URL checks; URL inferred from provided example and filename."
+      }
+    },
+    "education-embedded-0f7ba64532a9": {
+      "id": "education-embedded-0f7ba64532a9",
+      "fileName": "breast-guardian-evidence-room-0f7ba64532a9.svg",
+      "category": "engagement",
+      "fileSize": 258,
+      "status": "in-use",
+      "kind": "image",
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/education/games/breast-guardian-evidence-room-0f7ba64532a9.svg",
+      "sha256": "0f7ba64532a934936da6d138bd470915238d2225244d32977693150c1bb8eb2f",
+      "references": [
+        {
+          "file": "src/data/engagement/interactive/breast-guardian-evidence-room.html",
+          "line": 2,
+          "type": "remote-image-url",
+          "occurrence": 1
+        }
+      ],
+      "stagedPath": "../上传批次/2026-10-14-education-embedded/files/breast-guardian-evidence-room/breast-guardian-evidence-room-0f7ba64532a9.svg",
+      "upload": {
+        "target": {
+          "platform": "igem",
+          "year": 2026,
+          "team": "6056"
+        },
+        "status": "uploaded",
+        "source": "user-provided-folder-and-example-url",
+        "remoteName": "breast-guardian-evidence-room-0f7ba64532a9.svg",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "verificationNote": "User asked to skip remote URL checks; URL inferred from provided example and filename."
+      }
+    },
+    "education-embedded-fa90c6f750f3": {
+      "id": "education-embedded-fa90c6f750f3",
+      "fileName": "breast-guardian-evidence-room-fa90c6f750f3.webp",
+      "category": "engagement",
+      "fileSize": 83072,
+      "status": "in-use",
+      "kind": "image",
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/education/games/breast-guardian-evidence-room-fa90c6f750f3.webp",
+      "sha256": "fa90c6f750f3a4af19f12eb376902fe1320337f81a201c852231a62c3dab678d",
+      "references": [
+        {
+          "file": "src/data/engagement/interactive/breast-guardian-evidence-room.html",
+          "line": 24,
+          "type": "remote-image-url",
+          "occurrence": 2
+        }
+      ],
+      "stagedPath": "../上传批次/2026-10-14-education-embedded/files/breast-guardian-evidence-room/breast-guardian-evidence-room-fa90c6f750f3.webp",
+      "upload": {
+        "target": {
+          "platform": "igem",
+          "year": 2026,
+          "team": "6056"
+        },
+        "status": "uploaded",
+        "source": "user-provided-folder-and-example-url",
+        "remoteName": "breast-guardian-evidence-room-fa90c6f750f3.webp",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "verificationNote": "User asked to skip remote URL checks; URL inferred from provided example and filename."
+      }
+    },
+    "education-embedded-3a168e28afe7": {
+      "id": "education-embedded-3a168e28afe7",
+      "fileName": "breast-guardian-evidence-room-3a168e28afe7.webp",
+      "category": "engagement",
+      "fileSize": 143246,
+      "status": "in-use",
+      "kind": "image",
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/education/games/breast-guardian-evidence-room-3a168e28afe7.webp",
+      "sha256": "3a168e28afe70692f647493293d3478213de4a11274fe3229ec6b0c705dbf0e1",
+      "references": [
+        {
+          "file": "src/data/engagement/interactive/breast-guardian-evidence-room.html",
+          "line": 25,
+          "type": "remote-image-url",
+          "occurrence": 3
+        }
+      ],
+      "stagedPath": "../上传批次/2026-10-14-education-embedded/files/breast-guardian-evidence-room/breast-guardian-evidence-room-3a168e28afe7.webp",
+      "upload": {
+        "target": {
+          "platform": "igem",
+          "year": 2026,
+          "team": "6056"
+        },
+        "status": "uploaded",
+        "source": "user-provided-folder-and-example-url",
+        "remoteName": "breast-guardian-evidence-room-3a168e28afe7.webp",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "verificationNote": "User asked to skip remote URL checks; URL inferred from provided example and filename."
+      }
+    },
+    "education-embedded-ebb5ffc9f744": {
+      "id": "education-embedded-ebb5ffc9f744",
+      "fileName": "breast-guardian-evidence-room-ebb5ffc9f744.webp",
+      "category": "engagement",
+      "fileSize": 177236,
+      "status": "in-use",
+      "kind": "image",
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/education/games/breast-guardian-evidence-room-ebb5ffc9f744.webp",
+      "sha256": "ebb5ffc9f744840f0576c41953fe18d1836373875ab29149c8964893af1df3bb",
+      "references": [
+        {
+          "file": "src/data/engagement/interactive/breast-guardian-evidence-room.html",
+          "line": 27,
+          "type": "remote-image-url",
+          "occurrence": 5
+        },
+        {
+          "file": "src/data/engagement/interactive/breast-guardian-evidence-room.html",
+          "line": 42,
+          "type": "remote-image-url",
+          "occurrence": 8
+        }
+      ],
+      "stagedPath": "../上传批次/2026-10-14-education-embedded/files/breast-guardian-evidence-room/breast-guardian-evidence-room-ebb5ffc9f744.webp",
+      "upload": {
+        "target": {
+          "platform": "igem",
+          "year": 2026,
+          "team": "6056"
+        },
+        "status": "uploaded",
+        "source": "user-provided-folder-and-example-url",
+        "remoteName": "breast-guardian-evidence-room-ebb5ffc9f744.webp",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "verificationNote": "User asked to skip remote URL checks; URL inferred from provided example and filename."
+      }
+    },
+    "education-embedded-1f5da91cba68": {
+      "id": "education-embedded-1f5da91cba68",
+      "fileName": "breast-guardian-evidence-room-1f5da91cba68.webp",
+      "category": "engagement",
+      "fileSize": 517058,
+      "status": "in-use",
+      "kind": "image",
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/education/games/breast-guardian-evidence-room-1f5da91cba68.webp",
+      "sha256": "1f5da91cba68fd8599a3c5a68bd74308220aab0eaf545517205d09a6c54a4c49",
+      "references": [
+        {
+          "file": "src/data/engagement/interactive/breast-guardian-evidence-room.html",
+          "line": 42,
+          "type": "remote-image-url",
+          "occurrence": 7
+        }
+      ],
+      "stagedPath": "../上传批次/2026-10-14-education-embedded/files/breast-guardian-evidence-room/breast-guardian-evidence-room-1f5da91cba68.webp",
+      "upload": {
+        "target": {
+          "platform": "igem",
+          "year": 2026,
+          "team": "6056"
+        },
+        "status": "uploaded",
+        "source": "user-provided-folder-and-example-url",
+        "remoteName": "breast-guardian-evidence-room-1f5da91cba68.webp",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "verificationNote": "User asked to skip remote URL checks; URL inferred from provided example and filename."
+      }
+    },
+    "education-embedded-13ec9112ede0": {
+      "id": "education-embedded-13ec9112ede0",
+      "fileName": "breast-guardian-evidence-room-13ec9112ede0.webp",
+      "category": "engagement",
+      "fileSize": 458964,
+      "status": "in-use",
+      "kind": "image",
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/education/games/breast-guardian-evidence-room-13ec9112ede0.webp",
+      "sha256": "13ec9112ede0845a95703c2e7cc05886e90ae65308979d728eb40d5e61f9625d",
+      "references": [
+        {
+          "file": "src/data/engagement/interactive/breast-guardian-evidence-room.html",
+          "line": 42,
+          "type": "remote-image-url",
+          "occurrence": 9
+        }
+      ],
+      "stagedPath": "../上传批次/2026-10-14-education-embedded/files/breast-guardian-evidence-room/breast-guardian-evidence-room-13ec9112ede0.webp",
+      "upload": {
+        "target": {
+          "platform": "igem",
+          "year": 2026,
+          "team": "6056"
+        },
+        "status": "uploaded",
+        "source": "user-provided-folder-and-example-url",
+        "remoteName": "breast-guardian-evidence-room-13ec9112ede0.webp",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "verificationNote": "User asked to skip remote URL checks; URL inferred from provided example and filename."
+      }
+    },
+    "education-embedded-35c7810bf429": {
+      "id": "education-embedded-35c7810bf429",
+      "fileName": "breast-guardian-evidence-room-35c7810bf429.webp",
+      "category": "engagement",
+      "fileSize": 545230,
+      "status": "in-use",
+      "kind": "image",
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/education/games/breast-guardian-evidence-room-35c7810bf429.webp",
+      "sha256": "35c7810bf429736b5fda4b3d3e6ede3bd38e61dd6d4669d6086653532c31a68f",
+      "references": [
+        {
+          "file": "src/data/engagement/interactive/breast-guardian-evidence-room.html",
+          "line": 42,
+          "type": "remote-image-url",
+          "occurrence": 10
+        }
+      ],
+      "stagedPath": "../上传批次/2026-10-14-education-embedded/files/breast-guardian-evidence-room/breast-guardian-evidence-room-35c7810bf429.webp",
+      "upload": {
+        "target": {
+          "platform": "igem",
+          "year": 2026,
+          "team": "6056"
+        },
+        "status": "uploaded",
+        "source": "user-provided-folder-and-example-url",
+        "remoteName": "breast-guardian-evidence-room-35c7810bf429.webp",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "verificationNote": "User asked to skip remote URL checks; URL inferred from provided example and filename."
+      }
+    },
+    "education-embedded-28701de5ce78": {
+      "id": "education-embedded-28701de5ce78",
+      "fileName": "breast-guardian-evidence-room-28701de5ce78.webp",
+      "category": "engagement",
+      "fileSize": 511486,
+      "status": "in-use",
+      "kind": "image",
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/education/games/breast-guardian-evidence-room-28701de5ce78.webp",
+      "sha256": "28701de5ce78e52b453ef660730ba1671f54adcfec0c36ccaa51da6a8d5216c3",
+      "references": [
+        {
+          "file": "src/data/engagement/interactive/breast-guardian-evidence-room.html",
+          "line": 42,
+          "type": "remote-image-url",
+          "occurrence": 11
+        }
+      ],
+      "stagedPath": "../上传批次/2026-10-14-education-embedded/files/breast-guardian-evidence-room/breast-guardian-evidence-room-28701de5ce78.webp",
+      "upload": {
+        "target": {
+          "platform": "igem",
+          "year": 2026,
+          "team": "6056"
+        },
+        "status": "uploaded",
+        "source": "user-provided-folder-and-example-url",
+        "remoteName": "breast-guardian-evidence-room-28701de5ce78.webp",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "verificationNote": "User asked to skip remote URL checks; URL inferred from provided example and filename."
+      }
+    },
+    "education-embedded-f739af2b307f": {
+      "id": "education-embedded-f739af2b307f",
+      "fileName": "breast-guardian-evidence-room-f739af2b307f.webp",
+      "category": "engagement",
+      "fileSize": 453408,
+      "status": "in-use",
+      "kind": "image",
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/education/games/breast-guardian-evidence-room-f739af2b307f.webp",
+      "sha256": "f739af2b307fe19887ed9d86d1b3a67861f07ce5a8874fb7264a78095ece5259",
+      "references": [
+        {
+          "file": "src/data/engagement/interactive/breast-guardian-evidence-room.html",
+          "line": 42,
+          "type": "remote-image-url",
+          "occurrence": 12
+        }
+      ],
+      "stagedPath": "../上传批次/2026-10-14-education-embedded/files/breast-guardian-evidence-room/breast-guardian-evidence-room-f739af2b307f.webp",
+      "upload": {
+        "target": {
+          "platform": "igem",
+          "year": 2026,
+          "team": "6056"
+        },
+        "status": "uploaded",
+        "source": "user-provided-folder-and-example-url",
+        "remoteName": "breast-guardian-evidence-room-f739af2b307f.webp",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "verificationNote": "User asked to skip remote URL checks; URL inferred from provided example and filename."
+      }
+    },
+    "education-embedded-079379e90303": {
+      "id": "education-embedded-079379e90303",
+      "fileName": "breast-guardian-evidence-room-079379e90303.webp",
+      "category": "engagement",
+      "fileSize": 556450,
+      "status": "in-use",
+      "kind": "image",
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/education/games/breast-guardian-evidence-room-079379e90303.webp",
+      "sha256": "079379e9030311d994de5fd04c23432f3f967411109c8b82991ef1aa4eef294e",
+      "references": [
+        {
+          "file": "src/data/engagement/interactive/breast-guardian-evidence-room.html",
+          "line": 42,
+          "type": "remote-image-url",
+          "occurrence": 14
+        }
+      ],
+      "stagedPath": "../上传批次/2026-10-14-education-embedded/files/breast-guardian-evidence-room/breast-guardian-evidence-room-079379e90303.webp",
+      "upload": {
+        "target": {
+          "platform": "igem",
+          "year": 2026,
+          "team": "6056"
+        },
+        "status": "uploaded",
+        "source": "user-provided-folder-and-example-url",
+        "remoteName": "breast-guardian-evidence-room-079379e90303.webp",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "verificationNote": "User asked to skip remote URL checks; URL inferred from provided example and filename."
+      }
+    },
+    "education-embedded-7f69307291bd": {
+      "id": "education-embedded-7f69307291bd",
+      "fileName": "breast-guardian-evidence-room-7f69307291bd.webp",
+      "category": "engagement",
+      "fileSize": 492298,
+      "status": "in-use",
+      "kind": "image",
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/education/games/breast-guardian-evidence-room-7f69307291bd.webp",
+      "sha256": "7f69307291bd813bfde74f83b32126d76a66b79a9c147ae4cbd5c7d1b081ba5a",
+      "references": [
+        {
+          "file": "src/data/engagement/interactive/breast-guardian-evidence-room.html",
+          "line": 42,
+          "type": "remote-image-url",
+          "occurrence": 15
+        }
+      ],
+      "stagedPath": "../上传批次/2026-10-14-education-embedded/files/breast-guardian-evidence-room/breast-guardian-evidence-room-7f69307291bd.webp",
+      "upload": {
+        "target": {
+          "platform": "igem",
+          "year": 2026,
+          "team": "6056"
+        },
+        "status": "uploaded",
+        "source": "user-provided-folder-and-example-url",
+        "remoteName": "breast-guardian-evidence-room-7f69307291bd.webp",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "verificationNote": "User asked to skip remote URL checks; URL inferred from provided example and filename."
+      }
+    },
+    "education-embedded-e1879b76e5f3": {
+      "id": "education-embedded-e1879b76e5f3",
+      "fileName": "breast-guardian-evidence-room-e1879b76e5f3.webp",
+      "category": "engagement",
+      "fileSize": 544930,
+      "status": "in-use",
+      "kind": "image",
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/education/games/breast-guardian-evidence-room-e1879b76e5f3.webp",
+      "sha256": "e1879b76e5f31d87020f22bc9965f1312bb4fff752896350ced744cd075332cc",
+      "references": [
+        {
+          "file": "src/data/engagement/interactive/breast-guardian-evidence-room.html",
+          "line": 42,
+          "type": "remote-image-url",
+          "occurrence": 16
+        }
+      ],
+      "stagedPath": "../上传批次/2026-10-14-education-embedded/files/breast-guardian-evidence-room/breast-guardian-evidence-room-e1879b76e5f3.webp",
+      "upload": {
+        "target": {
+          "platform": "igem",
+          "year": 2026,
+          "team": "6056"
+        },
+        "status": "uploaded",
+        "source": "user-provided-folder-and-example-url",
+        "remoteName": "breast-guardian-evidence-room-e1879b76e5f3.webp",
+        "uploadedAt": null,
+        "verifiedAt": null,
+        "verificationNote": "User asked to skip remote URL checks; URL inferred from provided example and filename."
       }
     }
   }

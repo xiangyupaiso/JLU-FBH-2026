@@ -10,7 +10,6 @@ from __future__ import annotations
 import hashlib
 import json
 import re
-import shutil
 import unicodedata
 from pathlib import Path
 from urllib.parse import unquote
@@ -18,7 +17,6 @@ from urllib.parse import unquote
 ROOT = Path(__file__).resolve().parents[1]
 SOURCE = ROOT / "src/data/engagement/education-source.md"
 ATTACHMENTS = ROOT.parent / "6.2 Education （英_终稿）" / "Images_attachments"
-DEST = ROOT / "public/assets/education"
 OUTPUT = ROOT / "src/data/engagement/educationSections.ts"
 MANIFEST = ROOT / "src/data/engagement/educationAssets.json"
 
@@ -124,6 +122,14 @@ def resource_name(original: str, label: str, context: str, index: int) -> str:
     return f"{name}{extension}"
 
 
+def sha256_file(path: Path) -> str:
+    digest = hashlib.sha256()
+    with path.open("rb") as source:
+        for chunk in iter(lambda: source.read(1024 * 1024), b""):
+            digest.update(chunk)
+    return digest.hexdigest()
+
+
 def main() -> None:
     source = SOURCE.read_text(encoding="utf-8")
     lines = source.splitlines()
@@ -138,14 +144,13 @@ def main() -> None:
             if original not in [item[0] for item in entries]:
                 entries.append((original, clean(match.group(2)), context))
 
-    DEST.mkdir(parents=True, exist_ok=True)
     used_names: set[str] = set()
     by_digest: dict[str, str] = {}
     if MANIFEST.exists():
         for old in json.loads(MANIFEST.read_text(encoding="utf-8")):
             filename = old.get("file")
             digest = old.get("sha256")
-            if filename and digest and (DEST / filename).is_file():
+            if filename and digest:
                 used_names.add(filename)
                 by_digest[digest] = filename
     manifest: list[dict[str, object]] = []
@@ -161,7 +166,7 @@ def main() -> None:
         if not path.is_file() or path.stat().st_size == 0:
             manifest.append({"source": original, "status": "missing-or-empty"})
             continue
-        digest = hashlib.sha256(path.read_bytes()).hexdigest()
+        digest = sha256_file(path)
         if digest in by_digest:
             name = by_digest[digest]
         else:
@@ -171,7 +176,6 @@ def main() -> None:
             while name in used_names:
                 name = f"{stem}-{suffix}.{ext}"
                 suffix += 1
-            shutil.copy2(path, DEST / name)
             used_names.add(name)
             by_digest[digest] = name
         urls[original] = name

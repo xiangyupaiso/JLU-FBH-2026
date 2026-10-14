@@ -100,16 +100,19 @@ export function linkify(text: string): ReactNode {
   return nodes;
 }
 
-const INLINE_EMPHASIS_RE =
-  /(\*\*[\s\S]+?\*\*|(?<![\w*])\*(?!\*)(?:[^*\n]|\*(?!\*))+?\*(?!\*))/g;
+const INLINE_FORMATTING_RE =
+  /(`[^`]+`|\*\*[\s\S]+?\*\*|(?<![\w*])\*(?!\*)(?:[^*\n]|\*(?!\*))+?\*(?!\*))/g;
 
 /** Render Markdown bold and italic markers without mistaking scientific `*` tokens for emphasis. */
 export function renderInlineFormatting(text: string): ReactNode {
-  if (!text || !text.includes("*")) {
+  if (!text || (!text.includes("*") && !text.includes("`"))) {
     return text;
   }
-  const parts = text.split(INLINE_EMPHASIS_RE);
+  const parts = text.split(INLINE_FORMATTING_RE);
   return parts.map((part, index) => {
+    if (part.startsWith("`") && part.endsWith("`")) {
+      return <code key={index}>{part.slice(1, -1)}</code>;
+    }
     if (part.startsWith("**") && part.endsWith("**")) {
       return <strong key={index}>{part.slice(2, -2)}</strong>;
     }

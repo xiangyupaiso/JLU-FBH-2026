@@ -32,6 +32,7 @@ import { designFeatures, renderDesignCitedText } from "../src/components/wiki/fe
 import { hardwareFeatures, renderHardwareCitedText } from "../src/components/wiki/features/drylab/HardwarePanels";
 import { resultsFeatures, renderResultsText } from "../src/components/wiki/features/project/ResultsPanels";
 import { entrepreneurshipFeatures, renderEntrepreneurshipInline } from "../src/components/wiki/features/engagement/EntrepreneurshipPanels";
+import { alternativePlatformFeatures, renderAlternativePlatformCitedText } from "../src/components/wiki/features/wet-lab/AlternativePlatformPanels";
 import { descriptionPage, descriptionReferences } from "../src/data/project/descriptionPage";
 import { designPage, designReferences } from "../src/data/wet-lab/designPage";
 import { hardwarePage, hardwareReferences } from "../src/data/drylab/hardwarePage";
@@ -39,6 +40,7 @@ import { resultsPage } from "../src/data/project/resultsPage";
 import { resultsReferences } from "../src/data/project/resultsReferences";
 import { entrepreneurshipPage } from "../src/data/engagement/entrepreneurshipPage";
 import { entrepreneurshipReferences } from "../src/data/engagement/entrepreneurshipReferences";
+import { alternativePlatformPage, alternativePlatformReferences } from "../src/data/wet-lab/alternativePlatformPage";
 import { buildAuthorYearCitationIndex, buildNumericCitationIndex } from "../src/data/citations/citationIndex";
 
 const render = (node: unknown) =>
@@ -64,6 +66,7 @@ const designIndex = buildNumericCitationIndex(designPage.sections, designReferen
 const hardwareIndex = buildNumericCitationIndex(hardwarePage.sections, hardwareReferences);
 const resultsIndex = buildNumericCitationIndex(resultsPage.sections, resultsReferences);
 const entrepreneurshipIndex = buildNumericCitationIndex(entrepreneurshipPage.sections, entrepreneurshipReferences);
+const alternativePlatformIndex = buildAuthorYearCitationIndex(alternativePlatformPage.sections, alternativePlatformReferences);
 
 /**
  * Emphasis rules are checked as units, not through the corpus: the paragraphs
@@ -87,6 +90,14 @@ export const report = {
     renderEntrepreneurshipInline as never,
     entrepreneurshipFeatures()["entrepreneurship-references"],
     8,
+  ),
+  alternativePlatform: page(
+    "alternative-platform",
+    alternativePlatformPage.sections as never,
+    alternativePlatformReferences as never,
+    alternativePlatformIndex as never,
+    renderAlternativePlatformCitedText as never,
+    alternativePlatformFeatures()["alternative-platform-references"],
   ),
   description: page(
     "description",
@@ -183,6 +194,7 @@ for (const page of [
   report.hardware,
   report.results,
   report.entrepreneurship,
+  report.alternativePlatform,
 ]) {
   const { name, references, indexPath, register, cited } = page;
 
@@ -465,6 +477,20 @@ check(
   ),
 );
 
+const alternativePlatform = report.alternativePlatform;
+check(
+  "alternative-platform: comma-separated author-year citations resolve",
+  alternativePlatform.cited.some((entry) =>
+    /<a[^>]*class="wiki-cite"[^>]*>Bardia et al\., 2021<\/a>/.test(entry.html),
+  ),
+);
+check(
+  "alternative-platform: multi-word surnames resolve",
+  alternativePlatform.cited.some((entry) =>
+    /<a[^>]*class="wiki-cite"[^>]*>Percie du Sert et al\., 2020<\/a>/.test(entry.html),
+  ),
+);
+
 if (failures.length) {
   console.error(`\n${failures.length} check(s) failed:`);
   for (const failure of failures) console.error(`  ✗ ${failure}`);
@@ -477,6 +503,7 @@ for (const page of [
   report.hardware,
   report.results,
   report.entrepreneurship,
+  report.alternativePlatform,
 ]) {
   console.log(
     `  ${page.name.padEnd(12)} ${page.references.length} references, ` +

@@ -127,6 +127,8 @@ interface WikiRoutePageProps {
   hideHeroCopy?: boolean;
   /** When true, subheadings within blocks are collapsed into accordion cards */
   collapsibleSubheadings?: boolean;
+  /** Sections whose subheadings should be rendered as collapsible drawers. */
+  collapsibleSubheadingSections?: readonly string[];
   /** Optional protocol pairs metadata to enable TOC preview and modal */
   protocolPairs?: ExperimentProtocolPair[];
   /**
@@ -468,6 +470,23 @@ export function WikiContentBlocks({ blocks, features = {}, sectionId }: {
   ))}</>;
 }
 
+function EducationViewportFigureImage({ src, alt }: { src: string; alt: string }) {
+  const containerRef = useRef<HTMLSpanElement>(null);
+  const [near, setNear] = useState(false);
+  useEffect(() => {
+    const element = containerRef.current;
+    if (!element) return;
+    if (!("IntersectionObserver" in window)) {
+      setNear(true);
+      return;
+    }
+    const observer = new IntersectionObserver(([entry]) => setNear(entry.isIntersecting), { rootMargin: "400px 0px" });
+    observer.observe(element);
+    return () => observer.disconnect();
+  }, []);
+  return <span className="education-figure-window" ref={containerRef}>{near ? <img src={src} alt={alt} loading="lazy" decoding="async" /> : null}</span>;
+}
+
 function RouteBlock({
   block,
   features,
@@ -512,6 +531,12 @@ function RouteBlock({
         <div className="wiki-prose" data-wiki-reveal>
           {renderProseParagraphs(block.paragraphs, inline)}
         </div>
+      );
+    case "quote":
+      return (
+        <blockquote className="wiki-quote" data-wiki-reveal>
+          {inline ? inline(block.text, linkify) : linkify(block.text)}
+        </blockquote>
       );
     case "list": {
       const List = block.ordered ? "ol" : "ul";
@@ -565,18 +590,9 @@ function RouteBlock({
           className={`wiki-figure${block.figureLabel ? " wiki-figure--labelled" : ""}${block.src.includes("education-feedback-invitation") ? " wiki-figure--education-feedback" : ""}`}
           data-wiki-reveal
         >
-          <img
-            src={block.src}
-            alt={block.alt}
-            loading={block.src.includes("/assets/education/") || block.src.includes("/engagement/education/figures/") ? "lazy" : "eager"}
-            decoding="async"
-            onError={(event) => {
-              if (!block.src.includes("/engagement/education/figures/") || event.currentTarget.dataset.localFallback) return;
-              event.currentTarget.dataset.localFallback = "true";
-              const fileName = block.src.split("/").at(-1)?.replace(/\.avif$/i, ".png");
-              if (fileName) event.currentTarget.src = `${import.meta.env.BASE_URL}assets/education/${fileName}`;
-            }}
-          />
+          {block.src.includes("/engagement/education/figures/")
+            ? <EducationViewportFigureImage src={block.src} alt={block.alt} />
+            : <img src={block.src} alt={block.alt} loading={block.src.includes("/assets/education/") ? "lazy" : "eager"} decoding="async" />}
           {block.figureLabel ? (
             <figcaption>
               <span className="wiki-figure__label">{block.figureLabel}</span>
@@ -1022,6 +1038,7 @@ function RouteSection({
   features,
   scrollContainerRef,
   collapsibleSubheadings = false,
+  collapsibleSubheadingSections,
   openSubheadingIds,
   onToggleSubheading,
 }: {
@@ -1030,6 +1047,7 @@ function RouteSection({
   features: FeatureMap;
   scrollContainerRef?: RefObject<HTMLElement | null>;
   collapsibleSubheadings?: boolean;
+  collapsibleSubheadingSections?: readonly string[];
   openSubheadingIds?: Set<string>;
   onToggleSubheading?: (id: string) => void;
 }) {
@@ -1041,7 +1059,9 @@ function RouteSection({
   );
 
   const shouldCollapseSubheadings = Boolean(
-    collapsibleSubheadings && blocks && firstSubIndex !== -1,
+    (collapsibleSubheadings || collapsibleSubheadingSections?.includes(section.id)) &&
+      blocks &&
+      firstSubIndex !== -1,
   );
 
   const { overviewBlocks, subheadingGroups } = useMemo(() => {
@@ -1211,6 +1231,7 @@ export function WikiRoutePage({
   hideOutline = false,
   hideHeroCopy = false,
   collapsibleSubheadings = false,
+  collapsibleSubheadingSections,
   protocolPairs,
   inlineRenderer,
   outlineDepth,
@@ -1350,15 +1371,34 @@ export function WikiRoutePage({
         label: block.title.replace(/\*\*/g, ""),
         children: [] as WikiLineSidebarItem[],
       }));
-    // WikiLineSidebar derives depth and the active heading group from dotted
-    // indices. It consumes a flat list; nesting here silently drops level 3.
+    const subheadingByIndex = new Map(
+      subheadings?.map((subheading) => [subheading.index, subheading]) ?? [],
+    );
+    const nestedSubheadings: WikiLineSidebarItem[] = [];
+    const subheadingById = new Map<string, WikiLineSidebarItem>();
+    (subheadings ?? []).forEach((subheading) => {
+      const child = {
+        id: subheading.id,
+        index: subheading.index,
+        label: subheading.label,
+        children: [] as WikiLineSidebarItem[],
+      };
+      const parentIndex = child.index.split(".").slice(0, -1).join(".");
+      const parent = subheadingByIndex.get(parentIndex);
+      subheadingById.set(child.id, child);
+      if (parent) {
+        subheadingById.get(parent.id)?.children?.push(child);
+      } else {
+        nestedSubheadings.push(child);
+      }
+    });
     return {
       id: section.id,
       // Unnumbered sections (e.g. a "00" station map) stay unnumbered here too.
       index: section.hideSectionNumber ? "" : section.index,
       label: section.navLabel ?? section.title,
       meta: section.kicker,
-      children: subheadings?.length ? subheadings : undefined,
+      children: nestedSubheadings.length ? nestedSubheadings : undefined,
     };
   });
   const heroStyle = heroImage
@@ -1489,6 +1529,7 @@ export function WikiRoutePage({
                         features={features}
                         scrollContainerRef={scrollRef}
                         collapsibleSubheadings={collapsibleSubheadings}
+                        collapsibleSubheadingSections={collapsibleSubheadingSections}
                         openSubheadingIds={openSubheadingIds}
                         onToggleSubheading={toggleSubheading}
                       />

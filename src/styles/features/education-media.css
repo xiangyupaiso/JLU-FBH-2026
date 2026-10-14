@@ -47,6 +47,9 @@
 
 .wiki-page--engagement .wiki-figure--education-feedback img { width: 100%; height: auto; }
 
+.education-figure-window { display: block; width: 100%; aspect-ratio: 16 / 9; }
+.education-figure-window:has(img) { aspect-ratio: auto; }
+
 .education-interactive__head {
   display: flex;
   align-items: center;
@@ -113,6 +116,14 @@
   object-fit: contain;
   background: #f8f8f6;
 }
+
+.education-media-grid__placeholder {
+  display: block;
+  width: 100%;
+  height: clamp(340px, 48vw, 620px);
+  background: #f8f8f6;
+}
+.education-media-grid__placeholder--image { height: auto; aspect-ratio: 4 / 3; }
 
 .education-media-grid__pdf iframe {
   display: block;
@@ -258,6 +269,8 @@
   .education-media-grid__pdf figcaption,
   .education-media-grid__image figcaption { font-size: 11px; padding: 7px; }
   .education-media-grid__pdf iframe { height: 320px; }
+  .education-media-grid__placeholder { height: 320px; }
+  .education-media-grid__placeholder--image { height: auto; }
   .education-media-grid__pdf-cover img { height: 320px; }
   .education-media-grid__pdf-missing { height: 320px; }
   .education-gallery__stage { aspect-ratio: 4 / 3; }
