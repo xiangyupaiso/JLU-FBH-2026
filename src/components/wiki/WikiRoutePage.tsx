@@ -587,7 +587,7 @@ function RouteBlock({
     case "figure":
       return (
         <figure
-          className={`wiki-figure${block.figureLabel ? " wiki-figure--labelled" : ""}${block.src.includes("education-feedback-invitation") ? " wiki-figure--education-feedback" : ""}`}
+          className={`wiki-figure${block.className ? ` ${block.className}` : ""}${block.figureLabel ? " wiki-figure--labelled" : ""}${block.src.includes("education-feedback-invitation") ? " wiki-figure--education-feedback" : ""}`}
           data-wiki-reveal
         >
           {block.src.includes("/engagement/education/figures/")

@@ -1,7 +1,9 @@
 import {
+  useEffect,
   useId,
+  useRef,
   useState,
-  type KeyboardEvent,
+  type CSSProperties,
   type ReactNode,
 } from "react";
 import { scrollReaderToTarget } from "../../../../utils";
@@ -15,242 +17,274 @@ import { experimentRingStages } from "../../../../data/wet-lab/experimentProtoco
 import { WikiProtocolModal } from "../../WikiProtocolViewer";
 import "../../../../styles/features/experiments-protocol.css";
 
-const RING_CENTER = 560;
-const STAGE_RADIUS = 204;
-const STAGE_LABEL_RADIUS = 286;
-const LEAF_RADIUS = 406;
-const LEAF_LABEL_RADIUS = 443;
-const OUTER_RADIUS = 505;
-const FULL_VIEW_BOX = "0 0 1120 1120";
-const CENTER_VIEW_BOX = "360 360 400 400";
+type Point = { x: number; y: number };
 
-function ringPoint(angle: number, radius: number) {
-  const radians = (angle * Math.PI) / 180;
+function pointStyle(point: Point, color?: string): CSSProperties {
   return {
-    x: RING_CENTER + Math.cos(radians) * radius,
-    y: RING_CENTER + Math.sin(radians) * radius,
-  };
+    "--node-x": `${point.x}px`,
+    "--node-y": `${point.y}px`,
+    ...(color ? { "--node-color": color } : {}),
+  } as CSSProperties;
 }
 
-function wrapSvgLabel(label: string, maxChars: number): string[] {
-  const words = label.split(/\s+/);
-  const lines: string[] = [];
-  let line = "";
-
-  words.forEach((word) => {
-    const candidate = line ? `${line} ${word}` : word;
-    if (line && candidate.length > maxChars) {
-      lines.push(line);
-      line = word;
-    } else {
-      line = candidate;
-    }
-  });
-  if (line) lines.push(line);
-  return lines;
+function spokePath(from: Point, to: Point) {
+  const distance = Math.hypot(to.x - from.x, to.y - from.y);
+  const dx = (to.x - from.x) / distance;
+  const dy = (to.y - from.y) / distance;
+  return `M ${from.x + dx * 44} ${from.y + dy * 44} L ${to.x - dx * 28} ${to.y - dy * 28}`;
 }
 
-function wrappedSvgText(
-  label: string,
-  x: number,
-  y: number,
-  textAnchor: "start" | "end" | "middle",
-  className: string,
-  maxChars: number,
-): ReactNode {
-  const lines = wrapSvgLabel(label, maxChars);
-  const lineHeight = className.includes("stage") ? 15 : 14;
-  const firstY = y - ((lines.length - 1) * lineHeight) / 2;
-
-  return (
-    <text
-      className={className}
-      x={x}
-      y={firstY}
-      textAnchor={textAnchor}
-      dominantBaseline="central"
-    >
-      {lines.map((line, index) => (
-        <tspan key={`${line}-${index}`} x={x} dy={index === 0 ? 0 : lineHeight}>
-          {line}
-        </tspan>
-      ))}
-    </text>
-  );
-}
-
-function leafAngles(stageAngle: number, count: number): number[] {
-  if (count <= 1) return [stageAngle];
-  const span = count >= 5 ? 104 : count === 4 ? 90 : count === 3 ? 72 : 48;
-  const start = stageAngle - span / 2;
-  const step = span / (count - 1);
-  return Array.from({ length: count }, (_, index) => start + step * index);
-}
-
-/** The supplied single-ring design, with each leaf bound to its protocol pair. */
+/** Reveal one protocol branch at a time, reserving readable space for its labels. */
 export function ExperimentProtocolAtlas() {
+  const [showStages, setShowStages] = useState(false);
+  const [expandedStage, setExpandedStage] = useState<string | null>(null);
   const [activeKey, setActiveKey] = useState<string | null>(null);
-  const ringId = useId().replace(/:/g, "");
+  const [size, setSize] = useState({ width: 960, height: 520 });
+  const mapRef = useRef<HTMLDivElement>(null);
+  const centreRef = useRef<HTMLButtonElement>(null);
+  const stageRefs = useRef(new Map<string, HTMLButtonElement>());
+  const atlasId = useId().replace(/:/g, "");
+  const stagesId = `${atlasId}-stages`;
+  const hintId = `${atlasId}-hint`;
+  const selectedIndex = experimentRingStages.findIndex(
+    (stage) => stage.number === expandedStage,
+  );
+  const selectedStage = experimentRingStages[selectedIndex] ?? null;
   const activePair = activeKey
     ? (experimentProtocolPairs.find((pair) => pair.key === activeKey) ?? null)
     : null;
 
-  const openPair = (pair: ExperimentProtocolPair) => {
-    setActiveKey(pair.key);
-  };
+  useEffect(() => {
+    const map = mapRef.current;
+    if (!map) return;
+    const observer = new ResizeObserver(([entry]) => {
+      if (!entry) return;
+      const { width, height } = entry.contentRect;
+      if (!width || !height) return;
+      setSize((previous) =>
+        previous.width === width && previous.height === height
+          ? previous
+          : { width, height },
+      );
+    });
+    observer.observe(map);
+    return () => observer.disconnect();
+  }, []);
 
+  const centre: Point = {
+    x: size.width * (selectedStage ? 0.28 : 0.5),
+    y: size.height / 2 - (selectedStage ? 10 : 18),
+  };
+  const radiusX = selectedStage
+    ? Math.min(size.width * 0.19, 185)
+    : Math.min(size.width * 0.235, 220);
+  const radiusY = selectedStage ? 184 : 158;
+  const hubs = experimentRingStages.map((_, index) => {
+    const relativeIndex =
+      (index - selectedIndex + experimentRingStages.length) %
+      experimentRingStages.length;
+    const angle = selectedStage
+      ? ((relativeIndex === 0 ? 0 : 52 + (relativeIndex - 1) * 51.2) * Math.PI) / 180
+      : -Math.PI / 2 + (index * Math.PI * 2) / experimentRingStages.length;
+    return {
+      x: centre.x + Math.cos(angle) * radiusX,
+      y: centre.y + Math.sin(angle) * radiusY,
+    };
+  });
+  const leaves = selectedStage
+    ? selectedStage.nodes.flatMap((node) => {
+        const pair = experimentProtocolPairs.find(
+          (entry) => entry.key === node.key,
+        );
+        return pair ? [{ pair, label: node.label }] : [];
+      })
+    : [];
+  const leafPoints = leaves.map((_, index) => ({
+    x: size.width * 0.61,
+    y: centre.y + (index - (leaves.length - 1) / 2) * 82,
+  }));
+
+  const toggleStages = () => {
+    setShowStages(!showStages);
+    setExpandedStage(null);
+  };
+  const toggleStage = (number: string) => {
+    setExpandedStage((current) => (current === number ? null : number));
+  };
   const jumpToArticle = () => {
     if (!activePair) return;
     const target = document.getElementById(activePair.targetId);
     if (!target) return;
     setActiveKey(null);
     const reader = target.closest<HTMLElement>(".route-frame__scroll");
-    scrollReaderToTarget(target, reader, "smooth");
+    const behavior = window.matchMedia("(prefers-reduced-motion: reduce)")
+      .matches
+      ? "instant"
+      : "smooth";
+    scrollReaderToTarget(target, reader, behavior);
   };
 
   return (
-    <section className="exp-atlas" aria-label="Experiments">
-      <nav className="exp-atlas__map" aria-label="Illustrated experiment index">
+    <section
+      className={`exp-atlas${showStages ? " is-expanded" : ""}${selectedStage ? " has-branch" : ""}`}
+      aria-label="Interactive experiment map"
+      onKeyDown={(event) => {
+        if (event.key !== "Escape" || !showStages || activeKey) return;
+        event.preventDefault();
+        if (expandedStage) {
+          stageRefs.current.get(expandedStage)?.focus({ preventScroll: true });
+          setExpandedStage(null);
+        } else {
+          centreRef.current?.focus({ preventScroll: true });
+          setShowStages(false);
+        }
+      }}
+    >
+      <div ref={mapRef} className="exp-atlas__map">
         <svg
-          className="exp-atlas__ring"
-          viewBox="0 0 1120 1120"
-          role="group"
-          aria-label="Experiment protocols"
+          className="exp-atlas__connections"
+          viewBox={`0 0 ${size.width} ${size.height}`}
+          aria-hidden="true"
+          focusable="false"
         >
-          {experimentRingStages.map((stage) => {
-            const hub = ringPoint(stage.angle, STAGE_RADIUS);
-            const labelId = `${ringId}-stage-${stage.number}`;
-            const reverseLabel = Math.sin((stage.angle * Math.PI) / 180) > 0;
+          {showStages ? (
+            <>
+              <ellipse
+                className="exp-atlas__orbit"
+                cx={centre.x}
+                cy={centre.y}
+                rx={radiusX}
+                ry={radiusY}
+              />
+              {experimentRingStages.map((stage, index) => (
+                <path
+                  key={stage.number}
+                  className={`exp-atlas__spoke${expandedStage === stage.number ? " is-selected" : ""}`}
+                  d={spokePath(centre, hubs[index])}
+                  color={stage.color}
+                />
+              ))}
+            </>
+          ) : null}
+          {selectedStage
+            ? leafPoints.map((point, index) => {
+                const hub = hubs[selectedIndex];
+                const startX = hub.x + 28;
+                const endX = point.x;
+                const controlX = startX + (endX - startX) * 0.6;
+                return (
+                  <path
+                    key={leaves[index].pair.key}
+                    className="exp-atlas__branch"
+                    color={selectedStage.color}
+                    d={`M ${startX} ${hub.y} C ${controlX} ${hub.y}, ${controlX} ${point.y}, ${endX} ${point.y}`}
+                  />
+                );
+              })
+            : null}
+        </svg>
 
+        <div className="exp-atlas__centre-position" style={pointStyle(centre)}>
+          <button
+            ref={centreRef}
+            className="exp-atlas__centre"
+            type="button"
+            aria-expanded={showStages}
+            aria-controls={stagesId}
+            aria-describedby={hintId}
+            aria-label={
+              showStages
+                ? "Collapse experiment stages"
+                : "Show experiment stages"
+            }
+            onClick={toggleStages}
+          >
+            <span className="exp-atlas__centre-circle" aria-hidden="true">
+              C
+              <span className="exp-atlas__toggle">
+                {showStages ? "−" : "+"}
+              </span>
+            </span>
+          </button>
+        </div>
+
+        <div id={stagesId} className="exp-atlas__stages" hidden={!showStages}>
+          {experimentRingStages.map((stage, index) => {
+            const isSelected = expandedStage === stage.number;
             return (
-              <g
-                className="exp-atlas__stage"
+              <div
                 key={stage.number}
-                color={stage.color}
+                className="exp-atlas__stage-position"
+                style={pointStyle(hubs[index], stage.color)}
               >
-                <g aria-hidden="true">
-                  <path
-                    className="exp-atlas__spoke"
-                    d={`M ${RING_CENTER} ${RING_CENTER} L ${hub.x} ${hub.y}`}
-                  />
-                  <path
-                    className="exp-atlas__outer-arc"
-                    d={ringArc(stage.start, stage.end, OUTER_RADIUS)}
-                  />
-                  <path
-                    id={labelId}
-                    fill="none"
-                    d={ringArc(
-                      reverseLabel ? stage.end : stage.start,
-                      reverseLabel ? stage.start : stage.end,
-                      OUTER_RADIUS,
-                    )}
-                  />
-                  <text className="exp-atlas__stage-title">
-                    <textPath
-                      href={`#${labelId}`}
-                      startOffset="50%"
-                      textAnchor="middle"
-                      dominantBaseline={reverseLabel ? "hanging" : "auto"}
-                    >
-                      {stage.label}
-                    </textPath>
-                  </text>
-                </g>
-                {stage.nodes.map((node) => {
-                  const pair = experimentProtocolPairs.find(
-                    (entry) => entry.key === node.key,
-                  );
-                  if (!pair) return null;
-                  const point = ringPoint(node.angle, LEAF_RADIUS);
-                  const branch = ringArc(stage.angle, node.angle, STAGE_RADIUS);
-                  const label = ringPoint(node.angle, LEAF_RADIUS + 26.5);
-                  const left = Math.cos((node.angle * Math.PI) / 180) < 0;
-
-                  return (
-                    <g key={node.key}>
-                      <path
-                        className="exp-atlas__branch"
-                        d={`${branch} L ${point.x} ${point.y}`}
-                        aria-hidden="true"
-                      />
-                      <g
-                        className={`exp-atlas__node${activeKey === pair.key ? " is-active" : ""}`}
-                        role="button"
-                        tabIndex={0}
-                        aria-haspopup="dialog"
-                        aria-label={`${pair.code} ${pair.title}`}
-                        data-protocol-key={pair.key}
-                        onClick={() => openPair(pair)}
-                        onKeyDown={(event) => {
-                          if (event.key === "Enter" || event.key === " ") {
-                            event.preventDefault();
-                            openPair(pair);
-                          }
-                        }}
-                      >
-                        <circle
-                          className="exp-atlas__node-hit"
-                          cx={point.x}
-                          cy={point.y}
-                          r="26"
-                        />
-                        <circle
-                          className="exp-atlas__node-dot"
-                          cx={point.x}
-                          cy={point.y}
-                          r="17.5"
-                        />
-                        <text
-                          className="exp-atlas__node-code"
-                          x={point.x}
-                          y={point.y}
-                          textAnchor="middle"
-                          dominantBaseline="central"
-                        >
-                          {pair.code}
-                        </text>
-                        <text
-                          className="exp-atlas__node-title"
-                          x={label.x}
-                          y={label.y}
-                          textAnchor={left ? "end" : "start"}
-                          dominantBaseline="central"
-                          transform={`rotate(${node.angle + (left ? 180 : 0)} ${label.x} ${label.y})`}
-                        >
-                          {node.label}
-                        </text>
-                      </g>
-                    </g>
-                  );
-                })}
-                <g className="exp-atlas__hub" aria-hidden="true">
-                  <circle cx={hub.x} cy={hub.y} r="23" />
-                  <text
-                    x={hub.x}
-                    y={hub.y}
-                    textAnchor="middle"
-                    dominantBaseline="central"
-                  >
+                <button
+                  ref={(button) => {
+                    if (button) stageRefs.current.set(stage.number, button);
+                    else stageRefs.current.delete(stage.number);
+                  }}
+                  type="button"
+                  className={`exp-atlas__stage${isSelected ? " is-selected" : ""}`}
+                  aria-expanded={isSelected}
+                  aria-controls={
+                    isSelected ? `${atlasId}-protocols` : undefined
+                  }
+                  aria-label={`Stage ${stage.number}, ${stage.label}`}
+                  onClick={() => toggleStage(stage.number)}
+                >
+                  <span className="exp-atlas__stage-circle" aria-hidden="true">
                     {stage.number}
-                  </text>
-                </g>
-              </g>
+                    <span className="exp-atlas__toggle">
+                      {isSelected ? "−" : "+"}
+                    </span>
+                  </span>
+                  <span className="exp-atlas__stage-title">{stage.label}</span>
+                </button>
+              </div>
             );
           })}
-          <g className="exp-atlas__center" aria-hidden="true">
-            <circle cx={RING_CENTER} cy={RING_CENTER} r="27" />
-            <text
-              x={RING_CENTER}
-              y={RING_CENTER}
-              textAnchor="middle"
-              dominantBaseline="central"
-            >
-              C
-            </text>
-          </g>
-        </svg>
-      </nav>
+        </div>
+
+        {selectedStage ? (
+          <div
+            id={`${atlasId}-protocols`}
+            className="exp-atlas__leaves"
+            aria-label={`Stage ${selectedStage.number} protocols`}
+          >
+            {leaves.map(({ pair, label }, index) => (
+              <div
+                className="exp-atlas__leaf-position"
+                key={pair.key}
+                style={pointStyle(leafPoints[index], selectedStage.color)}
+              >
+                <button
+                  type="button"
+                  className={`exp-atlas__node${activeKey === pair.key ? " is-active" : ""}`}
+                  aria-haspopup="dialog"
+                  aria-label={`${pair.code} ${pair.title}`}
+                  data-protocol-key={pair.key}
+                  onClick={() => setActiveKey(pair.key)}
+                >
+                  <span className="exp-atlas__node-code" aria-hidden="true">
+                    {pair.code}
+                  </span>
+                  <span className="exp-atlas__node-title">{label}</span>
+                  <span className="exp-atlas__node-arrow" aria-hidden="true">
+                    ↗
+                  </span>
+                </button>
+              </div>
+            ))}
+          </div>
+        ) : null}
+      </div>
+
+      <p className="exp-atlas__instruction" id={hintId} aria-live="polite">
+        {selectedStage
+          ? `${selectedStage.label} · Select a protocol to view its workflow and materials.`
+          : showStages
+            ? "Select a numbered stage to explore its protocols."
+            : "Start with C, then select a stage to reveal its protocols."}
+      </p>
 
       <WikiProtocolModal
         pair={activePair}

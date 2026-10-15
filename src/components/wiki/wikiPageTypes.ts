@@ -81,6 +81,7 @@ export type WikiContentBlock =
       src: string;
       alt: string;
       caption?: string;
+      className?: string;
       /** Manuscript-provided figure label, including subfigure suffixes such as 4A. */
       figureLabel?: string;
       /** Keep the shared FIG counter visible when the manuscript has no caption. */

@@ -1273,6 +1273,7 @@ export const entrepreneurshipPage: WikiPageContent = {
         },
         {
           type: "figure",
+          className: "entrepreneurship-figure--portrait",
           src: entrepreneurshipAssets.illustrations.riskInterview,
           alt: "Risk interview with Yongli Jia of Hualan Biological Engineering",
           caption: "Risk interview with Yongli Jia of Hualan Biological Engineering.",
