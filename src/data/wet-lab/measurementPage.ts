@@ -1,6 +1,50 @@
 import type { WikiPageContent } from "../../components/wiki/wikiPageTypes";
 import { getMeasurementImage } from "./measurementAssets";
 
+export interface MeasurementJudgingCriterion {
+  id: string;
+  question: string;
+  paragraphs: string[];
+}
+
+export const measurementJudgingCriteria: MeasurementJudgingCriterion[] = [
+  {
+    id: "q1",
+    question: "Could the measurement(s) be reproduced by other iGEM teams?",
+    paragraphs: [
+      "Fourteen methods are described on this page. Eleven of them run on equipment a standard wet lab already has: a thermal cycler, a real-time PCR instrument, a gel imager, a plate reader, a flow cytometer, a cell sorter, an ELISpot reader and a fluorescence microscope. Nothing depends on custom hardware or an instrument-specific calibrant. The other three are dry-lab analyses that need public data and a workstation. Another team reruns those and gets our numbers, because the accessions, software settings and thresholds are listed below, the single-cell input is identified by its SHA-256 checksum, and the 85 structural models are archived with their job requests, coordinates and confidence files. The circularity assay is the one we expect to be reproduced most often, because a team building circRNA cannot avoid the question it answers, and its formula, primer convention, input series and release threshold are all written out below.",
+      "One constraint limits reproduction. The human immunology used commercially sourced HLA-A*02:01 mononuclear cells from one donor, so another team would reproduce the method and get its own frequencies.",
+    ],
+  },
+  {
+    id: "q2",
+    question: "Are the methods or protocols described well?",
+    paragraphs: [
+      "Each method on this page carries its own Protocols section with reagents, volumes, concentrations, times, temperatures and instrument settings, and its Experimental workflow section names every experiment in the project that used it. The complete step lists are on our Experiments page, where every experiment follows one template: Background, Materials and Reagents, Equipment, Experimental Design, Step-by-Step Instructions, Notes.",
+      "The Experimental Design block states which controls were seeded and what each subtracts, whether replicates are technical or biological, how many there are, what the statistical unit is, and what the number may be cited as. Where an assay ran without a control, it says so and states the consequence. The Round 1 ELISpot block records that no negative and no positive well was seeded, that values are raw counts, and that no value from that round may be cited as an antigen-specific T-cell frequency.",
+      "The three dry-lab methods are written to the same standard, with dataset accessions, software settings, numerical thresholds, acceptance criteria and exclusion rules all stated, and with the stage-by-stage counts recorded so the screens can be audited. The full parameter sets and per-model values are on our Model page.",
+    ],
+  },
+  {
+    id: "q3",
+    question: "Could it be useful to other projects?",
+    paragraphs: [
+      "Circular RNA is unusual ground in iGEM. Searching the Registry by sequence role returns two group I introns and two autocatalytically spliced introns across more than 32,000 sequence features, and 64 human-host parts against 502 for *E. coli*. The main precedent is Team Gifu, who worked on circular RNA from 2014. A team starting a circRNA project inherits a large literature and almost no community measurement practice or Registry parts.",
+      "We deposited 30 parts covering the circularisation backbone, the adjuvant module, the trafficking and membrane-targeting elements and the epitope cassettes, grouped into a part collection, with the measurements reported here attached to the parts they characterise. The circularity assay below is described in enough detail to be adopted directly, including the input-volume series that establishes the working range before a ratio is taken. The empty-vector control design applies to any team delivering RNA or DNA into innate-immune-competent cells. And the structural epitope check below reports the absolute buried area of the anchor residue alongside the burial percentage that is normally quoted. The percentage saturates near 100% whatever the residue's size: in our own set, three peptides share a burial of 99.4% at buried areas of 60.1, 143.8 and 173.3 Å². The change is free for any team doing the same work.",
+    ],
+  },
+  {
+    id: "q4",
+    question:
+      "Did the team validate and calibrate their measurement process appropriately for their approach?",
+    paragraphs: [
+      "Calibration took five forms. The circularity assay was run at three input volumes before any release figure was taken; the 2 µL arm failed the acceptance rule, so 4 µL was fixed as the working input, and a backbone-encoded GFP amplicon confirmed equal template input across both primer channels. Every Calcein-AM figure is computed between two measured bounds on the same plate, spontaneous and maximum release. Every per-cell readout rests on a counted and viability-gated input, so SFC per 10⁵ cells and every effector-to-target ratio share a measured denominator. Flow cytometry used single-stain compensation beads at a CV below 5%, isotype and unstained tubes, FMO controls and a fixable viability dye. Immunofluorescence sections were imaged in one batch under uniform exposure and magnification against a secondary-only control section, so that signal could be separated from the autofluorescence of necrotic tumour tissue.",
+      "Three dry-lab checks belong here as well. The structural tier began by testing whether AlphaFold's own confidence score could serve as its criterion: ipTM across 85 models runs from 0.932 to 0.970 and its rank correlation with the position-9 fill ratio is +0.02, so a geometric criterion was built instead and confidence is reported as a record. Between-model dispersion then decided which measurements were allowed to carry a threshold, with anchor-position burial reproducible to 0.0 percentage points at the median and central-segment burial varying by several points. And the fill-ratio threshold was placed inside a measured gap, since alanine candidates reach 43.3% and the lowest passing candidate sits at 80.4%, so any cutoff between 44% and 80% classifies all 17 systems identically.",
+      "Three things were not validated, and the text says so where the numbers appear. The divergent and convergent primer pairs were not checked against standard curves for equal amplification efficiency. No microscopy field was counted manually. And neither of the two dry-lab exclusion rules has been tested against a measurement.",
+    ],
+  },
+];
+
 export const measurementPage: WikiPageContent = {
   route: "/measurement",
   category: "wet-lab",
@@ -22,94 +66,8 @@ export const measurementPage: WikiPageContent = {
       summary: "",
       blocks: [
         {
-          type: "subheading",
-          id: "01-judging-criteria-1-1-could-the-measurement-s-be-reproduced-by-other-igem-teams",
-          index: "1",
-          title:
-            "1. Could the measurement(s) be reproduced by other iGEM teams?",
-          level: 3,
-        },
-        {
-          type: "prose",
-          paragraphs: [
-            "Fourteen methods are described on this page. Eleven of them run on equipment a standard wet lab already has: a thermal cycler, a real-time PCR instrument, a gel imager, a plate reader, a flow cytometer, a cell sorter, an ELISpot reader and a fluorescence microscope. Nothing depends on custom hardware or an instrument-specific calibrant. The other three are dry-lab analyses that need public data and a workstation. Another team reruns those and gets our numbers, because the accessions, software settings and thresholds are listed below, the single-cell input is identified by its SHA-256 checksum, and the 85 structural models are archived with their job requests, coordinates and confidence files. The circularity assay is the one we expect to be reproduced most often, because a team building circRNA cannot avoid the question it answers, and its formula, primer convention, input series and release threshold are all written out below.",
-          ],
-        },
-        {
-          type: "prose",
-          paragraphs: [
-            "One constraint limits reproduction. The human immunology used commercially sourced HLA-A*02:01 mononuclear cells from one donor, so another team would reproduce the method and get its own frequencies.",
-          ],
-        },
-        {
-          type: "subheading",
-          id: "01-judging-criteria-2-2-are-the-methods-or-protocols-described-well",
-          index: "2",
-          title: "2. Are the methods or protocols described well?",
-          level: 3,
-        },
-        {
-          type: "prose",
-          paragraphs: [
-            "Each method on this page carries its own Protocols section with reagents, volumes, concentrations, times, temperatures and instrument settings, and its Experimental workflow section names every experiment in the project that used it. The complete step lists are on our Experiments page, where every experiment follows one template: Background, Materials and Reagents, Equipment, Experimental Design, Step-by-Step Instructions, Notes.",
-          ],
-        },
-        {
-          type: "prose",
-          paragraphs: [
-            "The Experimental Design block states which controls were seeded and what each subtracts, whether replicates are technical or biological, how many there are, what the statistical unit is, and what the number may be cited as. Where an assay ran without a control, it says so and states the consequence. The Round 1 ELISpot block records that no negative and no positive well was seeded, that values are raw counts, and that no value from that round may be cited as an antigen-specific T-cell frequency.",
-          ],
-        },
-        {
-          type: "prose",
-          paragraphs: [
-            "The three dry-lab methods are written to the same standard, with dataset accessions, software settings, numerical thresholds, acceptance criteria and exclusion rules all stated, and with the stage-by-stage counts recorded so the screens can be audited. The full parameter sets and per-model values are on our Model page.",
-          ],
-        },
-        {
-          type: "subheading",
-          id: "01-judging-criteria-3-3-could-it-be-useful-to-other-projects",
-          index: "3",
-          title: "3. Could it be useful to other projects?",
-          level: 3,
-        },
-        {
-          type: "prose",
-          paragraphs: [
-            "Circular RNA is unusual ground in iGEM. Searching the Registry by sequence role returns two group I introns and two autocatalytically spliced introns across more than 32,000 sequence features, and 64 human-host parts against 502 for *E. coli*. The main precedent is Team Gifu, who worked on circular RNA from 2014. A team starting a circRNA project inherits a large literature and almost no community measurement practice or Registry parts.",
-          ],
-        },
-        {
-          type: "prose",
-          paragraphs: [
-            "We deposited 30 parts covering the circularisation backbone, the adjuvant module, the trafficking and membrane-targeting elements and the epitope cassettes, grouped into a part collection, with the measurements reported here attached to the parts they characterise. The circularity assay below is described in enough detail to be adopted directly, including the input-volume series that establishes the working range before a ratio is taken. The empty-vector control design applies to any team delivering RNA or DNA into innate-immune-competent cells. And the structural epitope check below reports the absolute buried area of the anchor residue alongside the burial percentage that is normally quoted. The percentage saturates near 100% whatever the residue's size: in our own set, three peptides share a burial of 99.4% at buried areas of 60.1, 143.8 and 173.3 Å². The change is free for any team doing the same work.",
-          ],
-        },
-        {
-          type: "subheading",
-          id: "01-judging-criteria-4-4-did-the-team-validate-and-calibrate-their-measurement-process-appropriately-for-their-approach",
-          index: "4",
-          title:
-            "4. Did the team validate and calibrate their measurement process appropriately for their approach?",
-          level: 3,
-        },
-        {
-          type: "prose",
-          paragraphs: [
-            "Calibration took five forms. The circularity assay was run at three input volumes before any release figure was taken; the 2 µL arm failed the acceptance rule, so 4 µL was fixed as the working input, and a backbone-encoded GFP amplicon confirmed equal template input across both primer channels. Every Calcein-AM figure is computed between two measured bounds on the same plate, spontaneous and maximum release. Every per-cell readout rests on a counted and viability-gated input, so SFC per 10⁵ cells and every effector-to-target ratio share a measured denominator. Flow cytometry used single-stain compensation beads at a CV below 5%, isotype and unstained tubes, FMO controls and a fixable viability dye. Immunofluorescence sections were imaged in one batch under uniform exposure and magnification against a secondary-only control section, so that signal could be separated from the autofluorescence of necrotic tumour tissue.",
-          ],
-        },
-        {
-          type: "prose",
-          paragraphs: [
-            "Three dry-lab checks belong here as well. The structural tier began by testing whether AlphaFold's own confidence score could serve as its criterion: ipTM across 85 models runs from 0.932 to 0.970 and its rank correlation with the position-9 fill ratio is +0.02, so a geometric criterion was built instead and confidence is reported as a record. Between-model dispersion then decided which measurements were allowed to carry a threshold, with anchor-position burial reproducible to 0.0 percentage points at the median and central-segment burial varying by several points. And the fill-ratio threshold was placed inside a measured gap, since alanine candidates reach 43.3% and the lowest passing candidate sits at 80.4%, so any cutoff between 44% and 80% classifies all 17 systems identically.",
-          ],
-        },
-        {
-          type: "prose",
-          paragraphs: [
-            "Three things were not validated, and the text says so where the numbers appear. The divergent and convergent primer pairs were not checked against standard curves for equal amplification efficiency. No microscopy field was counted manually. And neither of the two dry-lab exclusion rules has been tested against a measurement.",
-          ],
+          type: "feature",
+          key: "measurement-judging-criteria",
         },
       ],
     },
@@ -131,7 +89,7 @@ export const measurementPage: WikiPageContent = {
           id: "02-contributions-to-measurement-1-1-a-circularity-assay-with-a-working-range-check-so-the-figure-is-comparable",
           index: "1",
           title:
-            "1. A circularity assay with a working-range check, so the figure is comparable.",
+            "A circularity assay with a working-range check, so the figure is comparable.",
           level: 3,
         },
         {
@@ -157,7 +115,7 @@ export const measurementPage: WikiPageContent = {
           id: "02-contributions-to-measurement-2-2-an-empty-vector-control-that-separates-the-antigen-from-its-carrier",
           index: "2",
           title:
-            "2. An empty-vector control that separates the antigen from its carrier.",
+            "An empty-vector control that separates the antigen from its carrier.",
           level: 3,
         },
         {
@@ -177,7 +135,7 @@ export const measurementPage: WikiPageContent = {
           id: "02-contributions-to-measurement-3-3-absolute-anchor-buried-area-reported-beside-the-burial-percentage",
           index: "3",
           title:
-            "3. Absolute anchor buried area reported beside the burial percentage.",
+            "Absolute anchor buried area reported beside the burial percentage.",
           level: 3,
         },
         {
@@ -202,7 +160,7 @@ export const measurementPage: WikiPageContent = {
           type: "subheading",
           id: "02-contributions-to-measurement-4-4-stated-denominators-and-labelled-replicates-throughout",
           index: "4",
-          title: "4. Stated denominators and labelled replicates throughout.",
+          title: "Stated denominators and labelled replicates throughout.",
           level: 3,
         },
         {
@@ -221,7 +179,7 @@ export const measurementPage: WikiPageContent = {
           type: "subheading",
           id: "02-contributions-to-measurement-5-5-thirty-registry-parts-grouped-as-a-collection",
           index: "5",
-          title: "5. Thirty Registry parts, grouped as a collection.",
+          title: "Thirty Registry parts, grouped as a collection.",
           level: 3,
         },
         {
@@ -726,7 +684,7 @@ export const measurementPage: WikiPageContent = {
         {
           type: "prose",
           paragraphs: [
-            "The first thing measured was whether AlphaFold's own confidence could serve as the criterion. It could not. Across the 85 models ipTM ran from 0.932 to 0.970, and its rank correlation with the position-9 fill ratio was +0.02. HILHVSFLA, one of the two peptides this stage rejects, has an ipTM of 0.960. A separate geometric criterion was therefore built, and confidence is reported alongside it as a record.",
+            "The first thing measured was whether AlphaFold's own confidence could serve as the criterion. It could not, so a separate geometric criterion was built and confidence is reported alongside it as a record.",
           ],
         },
         {
@@ -1061,7 +1019,7 @@ export const measurementPage: WikiPageContent = {
         {
           type: "prose",
           paragraphs: [
-            "Several methods can address circularity and each answers a different question. RNase R resistance with a gel readout shows that something survives digestion, but highly structured linear RNA also survives (Xiao and Wilusz, 2019), and circRNA migrates anomalously in native gels (Abe et al., 2022), so band position cannot establish circularity at all. Northern blot resolves species without amplification bias, at a cost in material and throughput that a summer project cannot meet. Sequencing across the back-splice junction reads covalent closure directly and says nothing about what fraction of the preparation is circular. Divergent-primer RT-PCR, established in circRNA biology since Jeck et al. (2013), distinguishes circular from linear template by pointing primers outward from the junction, and it is quantitative.",
+            "Several methods can address circularity and each answers a different question. RNase R resistance with a gel readout shows that something survives digestion, but highly structured linear RNA also survives (Xiao and Wilusz, 2019), and circRNA migrates anomalously in native gels (Abe et al., 2022), so band position cannot establish circularity at all. Northern blot resolves species without amplification bias, at a cost in material and throughput that a summer project cannot meet. Sequencing across the ligation site reads covalent closure directly and says nothing about what fraction of the preparation is circular. Divergent-primer RT-PCR, established in circRNA biology since Jeck et al. (2013), distinguishes circular from linear template by pointing primers outward from the junction, and it is quantitative.",
           ],
         },
         {
@@ -1098,7 +1056,7 @@ export const measurementPage: WikiPageContent = {
         {
           type: "prose",
           paragraphs: [
-            "The channel convention belongs with the formula. Here the divergent pair spans the back-splice junction and reads the circular species only, and the convergent pair is positioned to read the linear precursor. A reader assuming that the convergent channel reads total RNA will read the denominator as double-counting, so any team adopting the assay should say which convention its primer placement implements.",
+            "The channel convention belongs with the formula. Here the divergent pair spans the ligation site and reads the circular species only, and the convergent pair is positioned to read the linear precursor. A reader assuming that the convergent channel reads total RNA will read the denominator as double-counting, so any team adopting the assay should say which convention its primer placement implements.",
           ],
         },
         {
@@ -1137,7 +1095,7 @@ export const measurementPage: WikiPageContent = {
             "6. Circularise in the kit reaction containing GTP and Mg²⁺ at 55 °C for 10 to 15 min.",
             "7. Digest residual linear RNA with RNase R, 2 U per 2.0 µg RNA in 20 µL at 37 °C.",
             "8. Read A260/280, reverse-transcribe, and run RT-qPCR with both primer sets at 2, 4 and 6 µL, three wells per volume. Cycling: 95 °C 3 min, then 40 cycles of 95 °C 10 s and 60 °C 30 s.",
-            "9. For release-grade material, sequence across the back-splice junction.",
+            "9. For release-grade material, sequence across the ligation site.",
           ],
         },
         {
@@ -1185,14 +1143,14 @@ export const measurementPage: WikiPageContent = {
           src: getMeasurementImage(
             "sanger-trace-across-the-back-splice-junction-bsj-of-the-combined-vaccine",
           ),
-          alt: "Sanger trace across the back-splice junction of the Combined vaccine",
+          alt: "Sanger trace across the ligation site of the Combined vaccine",
           caption:
-            "Sanger trace across the back-splice junction of the Combined vaccine",
+            "Sanger trace across the ligation site of the Combined vaccine",
         },
         {
           type: "prose",
           paragraphs: [
-            "Sequencing across the back-splice junction on the same batch reads `AGCGGATGGGTACCCCACCAT | GACCATTTGTGTGGTAAAAA`, the 3′ end of the precursor joined head to tail to its 5′ end, with a flat baseline and single sharp peaks either side.",
+            "Sequencing across the ligation site on the same batch reads `CTCAGTAGATGTTTTCTTGGGT | CTACCGTTTAATATTGCGTCATAT`, the 3′ end of the precursor running head to tail into its 5′ end, with single well-separated peaks on both sides and no overlapping signal at the join itself.",
           ],
         },
         {
@@ -2646,7 +2604,7 @@ export const measurementPage: WikiPageContent = {
           type: "subheading",
           id: "09-future-work-1-1-circularity-on-every-batch-with-calibrated-primer-pairs",
           index: "1",
-          title: "1. Circularity on every batch, with calibrated primer pairs.",
+          title: "Circularity on every batch, with calibrated primer pairs.",
           level: 3,
         },
         {
@@ -2659,7 +2617,7 @@ export const measurementPage: WikiPageContent = {
           type: "subheading",
           id: "09-future-work-2-2-more-hla-alleles-and-presentation-measured-on-cells",
           index: "2",
-          title: "2. More HLA alleles, and presentation measured on cells.",
+          title: "More HLA alleles, and presentation measured on cells.",
           level: 3,
         },
         {
@@ -2672,7 +2630,7 @@ export const measurementPage: WikiPageContent = {
           type: "subheading",
           id: "09-future-work-3-3-an-hla-matched-mouse-model-with-tetramer-staining",
           index: "3",
-          title: "3. An HLA-matched mouse model, with tetramer staining.",
+          title: "An HLA-matched mouse model, with tetramer staining.",
           level: 3,
         },
         {

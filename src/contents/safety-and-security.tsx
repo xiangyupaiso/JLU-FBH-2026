@@ -15,6 +15,7 @@ export function SafetyAndSecurity() {
       features={safetyFeatures()}
       inlineRenderer={renderSafetyInline}
       preloadImages={safetyImagePreloads}
+      deferContentImages
       outlineDepth={2}
     />
   );

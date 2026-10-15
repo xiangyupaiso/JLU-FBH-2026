@@ -1307,6 +1307,19 @@ export function getSafetyFigure(key: SafetyAssetKey) {
     caption: asset.caption,
   };
 }
-export const safetyImagePreloads = Object.values(safetyAssets)
-  .filter((asset) => asset.fileName.endsWith(".avif"))
+
+// Only preload hero and first-section visuals; defer the remaining 60+ images
+// to avoid blocking the loader when CDN is slow (HTTP/3 stalls, etc.).
+export const safetyImagePreloads = [
+  safetyAssets["safe-on-framework.avif"],
+  safetyAssets["1-1-three-level-laboratory-safety-management-system.avif"],
+  safetyAssets["2-1-1-bow-tie-model.avif"],
+].map((a) => a.uploadUrl);
+
+export const safetyDeferredImages = Object.values(safetyAssets)
+  .filter(
+    (asset) =>
+      asset.fileName.endsWith(".avif") &&
+      !safetyImagePreloads.includes(asset.uploadUrl),
+  )
   .map((asset) => asset.uploadUrl);

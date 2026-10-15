@@ -7,10 +7,10 @@ import {
   type EngineeringIterationDatum,
 } from "../../../../data/project/engineeringPage";
 import type { WikiDbTLStageKey as DbTLStageKey } from "../../wikiPageTypes";
-import dialBaseSrc from "../../../../assets/wiki/engineering/engineering-dial-base.webp";
-import handLongSrc from "../../../../assets/wiki/engineering/engineering-dial-hand-long.webp";
-import handShortSrc from "../../../../assets/wiki/engineering/engineering-dial-hand-short.webp";
-import dialCapSrc from "../../../../assets/wiki/engineering/engineering-dial-cap.webp";
+const dialBaseSrc = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-dial-base.webp";
+const handLongSrc = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-dial-hand-long.webp";
+const handShortSrc = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-dial-hand-short.webp";
+const dialCapSrc = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-dial-cap.webp";
 import "../../../../styles/features/engineering-dial.css";
 
 gsap.registerPlugin(useGSAP);

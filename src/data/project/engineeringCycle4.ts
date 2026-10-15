@@ -377,10 +377,10 @@ export const cycle4Section: WikiSection = {
           caption: "Figure C4-03B · Blank-corrected Combined killing measurements were fitted to estimate the effector-to-target response parameter `K_ET`. Orange points show corrected means, with error bars representing propagated observation uncertainty. The blue line shows the posterior median response, and shading indicates the 95% conditional mean interval."
         },
         {
-          type: "image-placeholder",
-          filename: "figure-c4-03c.png",
-          instruction: "欧阳哥正在绘制中",
-          caption: "The Cell2Dose architecture connects experimentally calibrated response functions with delivery, circRNA expression, immune responses and tumour control to support dose exploration."
+          type: "figure",
+          src: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-c4-03c-2.avif",
+          alt: "Figure C4-03C",
+          caption: "Figure C4-03C · The Cell2Dose architecture connects experimentally calibrated response functions with delivery, circRNA expression, immune responses and tumour control to support dose exploration."
         }
           ]
         },

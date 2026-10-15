@@ -506,9 +506,17 @@ export function WikiLineSidebar({
                     const childIndex = /^\d+$/.test(item.index)
                       ? child.index.replace(/^\d+(?=\.)/, String(Number(item.index)))
                       : child.index;
-                    const childLabel = child.index && child.label.startsWith(`${child.index} `)
-                      ? child.label.slice(child.index.length).trimStart()
-                      : child.label;
+                    const childLabel = child.index
+                      ? child.label
+                          .replace(
+                            new RegExp(
+                              `^${child.index.replace(/\./g, "\\.")}[.\\s]+`,
+                            ),
+                            "",
+                          )
+                          .replace(/^\.\s*/, "")
+                          .trim()
+                      : child.label.replace(/^\.\s*/, "").trim();
                     return (
                       <a
                         className={`wiki-outline__secondary wiki-outline__secondary--depth-${Math.min(child.index.split(".").length, 4)}${

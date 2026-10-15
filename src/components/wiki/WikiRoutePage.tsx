@@ -984,7 +984,8 @@ function ProtocolSubheadingDrawer({
   scrollContainerRef?: RefObject<HTMLElement | null>;
 }) {
   const cleanTitle = subheading.title
-    .replace(new RegExp(`^${subheading.index}\\s*`), "")
+    .replace(new RegExp(`^${subheading.index.replace(/\./g, "\\.")}[.\\s]+`), "")
+    .replace(/^\.\s*/, "")
     .trim();
 
   return (

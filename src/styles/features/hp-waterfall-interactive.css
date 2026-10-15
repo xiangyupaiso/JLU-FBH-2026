@@ -18,7 +18,7 @@
   --hp-map-rule: color-mix(in srgb, var(--hp-map-accent) 20%, transparent);
   position: relative;
   width: 100%;
-  height: 180vh; /* Pinned scroll track */
+  height: 240vh; /* Pinned 3-stage scroll track */
   margin: 0;
   padding: 0;
   background: #ffffff;
@@ -99,36 +99,34 @@
   z-index: 1;
   opacity: 1;
   clip-path: inset(1.8% 0 1.8% 0);
+  transition: opacity 0.45s cubic-bezier(0.22, 1, 0.36, 1), visibility 0.45s ease;
+  will-change: opacity;
 }
 
-/* Layer 2: Soft Gradient Vignette Veil Mask (Dissolves outer landscape smoothly into clean white) */
-.hp-waterfall-mask-veil {
+.hp-waterfall-media.hp-media-full.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* Layer 2: Middle Winding Stream Layer (Behind Core Building) */
+.hp-waterfall-media.hp-media-stream {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
-  background: radial-gradient(
-    ellipse 58% 66% at 48% 50%,
-    transparent 38%,
-    rgba(255, 255, 255, 0.75) 65%,
-    #ffffff 90%
-  );
-  pointer-events: none;
   z-index: 2;
-  opacity: 0;
-  transition: opacity 0.5s cubic-bezier(0.22, 1, 0.36, 1);
-  will-change: opacity;
-}
-
-.hp-waterfall-mask-veil.is-active {
-  opacity: 1;
+  pointer-events: none;
+  /* End the stream before the wide gray fade baked into its right tip. */
+  -webkit-mask-image: linear-gradient(to right, #000 75%, transparent 78%);
+  mask-image: linear-gradient(to right, #000 75%, transparent 78%);
 }
 
 /* Layer 3: Top Focused Core Building */
 .hp-waterfall-media.hp-media-core {
   z-index: 3;
   opacity: 0;
-  transition: opacity 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: opacity 0.45s cubic-bezier(0.22, 1, 0.36, 1);
   will-change: opacity;
 }
 

@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+import { useState, type ReactNode } from "react";
 import { EpitopeStructuralValidationChart } from "../project/EpitopeStructuralValidationChart";
 import { ModelVolcanoChart } from "../drylab/ModelVolcanoChart";
 import { WikiFigurePlate } from "../../WikiFigurePlate";
@@ -6,7 +6,53 @@ import {
   getMeasurementImage,
   measurementAssets,
 } from "../../../../data/wet-lab/measurementAssets";
+import { measurementJudgingCriteria } from "../../../../data/wet-lab/measurementPage";
+import { renderInlineFormatting } from "../../proseInline";
 import "../../../../styles/features/measurement-panels.css";
+
+export function MeasurementJudgingCriteria() {
+  const [openId, setOpenId] = useState<string | null>(null);
+  return (
+    <div className="highlights-record" data-wiki-reveal>
+      {measurementJudgingCriteria.map((item) => {
+        const open = openId === item.id;
+        return (
+          <article
+            key={item.id}
+            className={`highlights-record__item${open ? " is-open" : ""}`}
+          >
+            <button
+              type="button"
+              id={`${item.id}-toggle`}
+              className="highlights-record__toggle"
+              aria-expanded={open}
+              aria-controls={`${item.id}-answer`}
+              onClick={() => setOpenId(open ? null : item.id)}
+            >
+              <span className="highlights-record__question">
+                {item.question}
+              </span>
+              <svg viewBox="0 0 16 16" aria-hidden="true">
+                <path d="m4 6 4 4 4-4" />
+              </svg>
+            </button>
+            <div
+              id={`${item.id}-answer`}
+              role="region"
+              aria-labelledby={`${item.id}-toggle`}
+              className="highlights-record__answer"
+              hidden={!open}
+            >
+              {item.paragraphs.map((paragraph, paragraphIndex) => (
+                <p key={paragraphIndex}>{renderInlineFormatting(paragraph)}</p>
+              ))}
+            </div>
+          </article>
+        );
+      })}
+    </div>
+  );
+}
 
 const plateGroups = [
   {
@@ -57,6 +103,7 @@ const plateGroups = [
 
 export function measurementFeatures(): Record<string, ReactNode> {
   return {
+    "measurement-judging-criteria": <MeasurementJudgingCriteria />,
     "measurement-structural-validation": <EpitopeStructuralValidationChart />,
     "measurement-proteomics-volcanoes": (
       <div className="measurement-model-volcanoes">

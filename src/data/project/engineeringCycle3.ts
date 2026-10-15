@@ -231,9 +231,9 @@ export const cycle3Section: WikiSection = {
         },
         {
           type: "figure",
-          src: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-c3-01b.avif",
+          src: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-c3-01b-new.avif",
           alt: "Figure C3-01B",
-          caption: "Figure C3-01B · Sanger sequencing of the junction-spanning amplification product identified the expected head-to-tail connection in Combined."
+          caption: "Figure C3-01B · Sanger chromatogram of the Combined junction-spanning amplification product. The marked junction connects the expected 3′- and 5′-side sequences."
         }
           ]
         },
