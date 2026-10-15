@@ -185,7 +185,10 @@ export function modelFeatures(): Record<string, ReactNode> {
       <ul className="model-downloads">
         {modelDownloads.map((file) => (
           <li key={file.path}>
-            <a href={`${import.meta.env.BASE_URL}${file.path}`} download>
+            <a
+              href={file.path.startsWith("https://") ? file.path : `${import.meta.env.BASE_URL}${file.path}`}
+              download
+            >
               {file.label}
             </a>
           </li>

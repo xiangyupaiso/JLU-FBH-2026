@@ -4,6 +4,7 @@ import { build } from "esbuild";
 const result = await build({
   stdin: {
     contents: `export { buildModelCitationIndex, parseModelFigureCaption } from "./src/data/drylab/modelCitationIndex";
+      export { loadModelVolcanoData } from "./src/data/drylab/modelVolcanoData";
       export { createEpitopeHeatmapOption } from "./src/components/wiki/features/project/EpitopeStructuralValidationChart";`,
     resolveDir: process.cwd(),
   },
@@ -18,9 +19,10 @@ const result = await build({
 // Import from the project so external React/ECharts resolve against its dependencies.
 const { writeFile, unlink } = await import("node:fs/promises");
 const path = new URL("../.model-verification.mjs", import.meta.url);
+const originalFetch = globalThis.fetch;
 try {
   await writeFile(path, result.outputFiles[0].text);
-  const { buildModelCitationIndex, parseModelFigureCaption, createEpitopeHeatmapOption } = await import(
+  const { buildModelCitationIndex, parseModelFigureCaption, createEpitopeHeatmapOption, loadModelVolcanoData } = await import(
     path.href
   );
   assert.deepEqual(parseModelFigureCaption("**Figure 5.** Caption with **emphasis**."), { label: "FIG. 05", text: "Caption with **emphasis**." });
@@ -74,9 +76,26 @@ try {
     option.tooltip.formatter({ seriesType: "heatmap", value: [2, 0, 20] }),
     /20%/,
   );
+  let requests = 0;
+  globalThis.fetch = async () => {
+    requests++;
+    if (requests === 1) return new Response(null, { status: 503 });
+    if (requests === 2) return Response.json({ "024322": [["bad", 0, 0, "id"]] });
+    return Response.json({ "024322": [["TACSTD2", 0.185, 0.037, "id"]], "028102": [["VTCN1", -1.2, 0.001, "id"]] });
+  };
+  await assert.rejects(loadModelVolcanoData(), /HTTP 503/);
+  await assert.rejects(loadModelVolcanoData(), /Invalid volcano data/);
+  const first = loadModelVolcanoData();
+  assert.equal(first, loadModelVolcanoData(), "Both charts share one pending request");
+  const loaded = await first;
+  assert.equal(loaded["024322"][0][0], "TACSTD2");
+  assert.equal(await loadModelVolcanoData(), loaded, "Loaded data stays cached");
+  assert.equal(requests, 3, "Failed requests retry; successful requests are reused");
+  console.log('Remote volcano loader checks passed: HTTP errors, invalid data, retry and shared cache.');
   console.log(
     `Model interaction checks passed: ${index.byParagraph.size} cited paragraphs; stable citation text; heatmap zero, missing and measured-cell tooltips.`,
   );
 } finally {
+  globalThis.fetch = originalFetch;
   await unlink(path).catch(() => {});
 }
