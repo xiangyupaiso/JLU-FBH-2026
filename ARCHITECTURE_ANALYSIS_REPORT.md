@@ -137,7 +137,7 @@ const pathMapping = getPathMapping();
 #### 3. 本地存储占用与非生产资源外溢
 * `background/` 目录中存放了接近 **186 MB 的 Photoshop 原生源文件 (`.psd`)**；
 * `public/` 目录高达 **614 MB**；
-* `scripts/postbuild-slug.mjs` 在构建产物中又完整复制了一份 `dist/jlu-fbh`，导致打包产物膨胀至 **563 MB**。
+* **2026-10-14 已修复**：`scripts/postbuild-slug.mjs` 原先完整复制 `dist/jlu-fbh`，本次实测重复部分约 **1.33 GB**；现改为 Cloudflare 路径映射，`dist/` 只保留一份产物。本地静态资源本身的体积仍需另行处理。
 
 ---
 

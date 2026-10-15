@@ -91,8 +91,7 @@ CirCure Wiki
     ├── 05.1 Entrepreneurship (/entrepreneurship) # 商业化落地构想、市场分析与转化蓝图
     ├── 05.2 Human Practices (/human-practices)   # 深入一线 Stakeholder 走访与伦理思辨闭环
     ├── 05.3 Education (/education)               # 生物科技通识教育、中小学科普与教材编写
-    ├── 05.4 Inclusivity (/inclusivity)           # 多元、包容性科学传播与无障碍行动
-    └── 05.5 Sustainability (/sustainability)     # 联合国可持续发展目标（SDG 9 / 12）量化评估
+    └── 05.4 Sustainability (/sustainability)     # 联合国可持续发展目标（SDG 9 / 12）量化评估
 ```
 
 ---
@@ -194,7 +193,7 @@ Official-wiki/
 │       ├── main.tsx                         # 实验室挂载起点
 │       └── index.css                        # 实验室专用 Tailwind 样式入口
 ├── scripts/                                 # 工程、资产与内容校验脚本
-│   ├── postbuild-slug.mjs                   # 构建后产物双路径对齐同步（详见 §八.2）
+│   ├── postbuild-slug.mjs                   # 构建后生成路径映射及上传排除清单（详见 §八.2）
 │   ├── igem-asset-manager.mjs               # 官方资产上云登记与索引库维护工具
 │   ├── verify-*.mjs / check-cdn-links.mjs   # 页面忠实性、引用与外链合规校验
 │   └── prepare-*.py                         # 各模块插画资产批量预处理（格式/尺寸/压缩）
@@ -287,13 +286,19 @@ stages:
   iGEM 官方流水线（`.gitlab-ci.yml`）严格使用 `yarn install --frozen-lockfile`；现代云端平台（如 Cloudflare）在检测到 `yarn.lock` 时会默认尝试调用 Yarn 4.x 并报错（`YN0028 lockfile migration forbidden`）。
 - **统一方案**：通过 `packageManager` 字段强制锁定为 Yarn `1.22.22`，使 Cloudflare 与 iGEM GitLab 官方环境保持 100% 同构，推送回 iGEM GitLab 时**零冲突、无需任何回滚**。
 
-### 2. 双重静态路由对齐机制 (`scripts/postbuild-slug.mjs`)
+### 2. 单份构建产物与路径映射 (`scripts/postbuild-slug.mjs`)
 - **配置位置**：`package.json` 的 `build` 脚本及 `scripts/postbuild-slug.mjs`。
-- **背景与原因**：
-  iGEM 官方规则要求全站基准路径必须挂载于队伍标识符下（`base: "/jlu-fbh/"`），而在独立顶级域名（如自定义测试域或根域名）直接访问 `/` 时，纯静态托管会因缺少物理前缀目录而无法正确定位资产。
-- **自动对齐**：构建完成后自动将 `dist/` 核心产物深度同步至 `dist/jlu-fbh/`。
-  - 在 iGEM 官方 GitLab Pages 上，访问 `https://2026.igem.wiki/jlu-fbh/` 原生对齐；
-  - 在独立域名或 Cloudflare 边缘节点上，访问根路径 `/` 或前缀路径 `/jlu-fbh/` 均可 100% 正常响应。
+- **构建目录**：`dist/` 只保留一份产物，不再复制到 `dist/jlu-fbh/`。正常重新构建会清理旧的重复目录。
+- **路径对齐**：脚本读取 Vite 实际解析的 `base`，生成 Cloudflare 的 `_redirects`。核心规则如下，最后一行是内部映射，不改变浏览器地址；此外自动生成 HTML 和目录入口的规范地址规则，防止平台自动跳转时丢失队伍前缀：
+  ```text
+  / /jlu-fbh/ 302
+  /jlu-fbh /jlu-fbh/ 301
+  /jlu-fbh/* /:splat 200
+  ```
+  - 本地 `npm run preview` 与 iGEM GitLab Pages 原生将单份产物挂载到 `/jlu-fbh/`；
+  - Cloudflare Workers/Pages 通过上述规则访问相同文件，保留 `wrangler.json` 中的 SPA 回退；
+  - GitHub Pages 不读取 `_redirects`，部署时须确保站点挂载路径与 Vite 的 `base` 一致，并单独配置深层页面回退。
+- **大文件排除**：仍生成 Cloudflare 的 `.assetsignore`，只在上传时跳过超过 25 MiB 的文件。它不会缩小本地 `dist/` 或 GitLab 构建产物，不能替代静态资源迁移。
 
 ### 3. TypeScript 资产索引类型保护
 - **涉及文件**：

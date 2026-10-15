@@ -1,6 +1,15 @@
 import { useLayoutEffect, useState, type RefObject } from "react";
 import { clamp, scrollReaderToTarget } from "../utils";
 
+function findSections(root: HTMLElement, sectionIds: string[]) {
+  return sectionIds
+    .map((id) => document.getElementById(id))
+    .filter(
+      (section): section is HTMLElement =>
+        Boolean(section && root.contains(section)),
+    );
+}
+
 export function useWikiPageMotion(
   rootRef: RefObject<HTMLElement | null>,
   sectionIds: string[],
@@ -24,9 +33,7 @@ export function useWikiPageMotion(
     if (!root) return;
 
     if (!enabled) {
-      const sections = sectionIds
-        .map((id) => root.querySelector<HTMLElement>(`#${id}`))
-        .filter((section): section is HTMLElement => Boolean(section));
+      const sections = findSections(root, sectionIds);
       const revealElements = Array.from(
         root.querySelectorAll<HTMLElement>("[data-wiki-reveal]"),
       );
@@ -96,9 +103,7 @@ export function useWikiPageMotion(
     const revealElements = Array.from(
       root.querySelectorAll<HTMLElement>("[data-wiki-reveal]"),
     );
-    const sections = sectionIds
-      .map((id) => root.querySelector<HTMLElement>(`#${id}`))
-      .filter((section): section is HTMLElement => Boolean(section));
+    const sections = findSections(root, sectionIds);
     const outlineAnchors = Array.from(
       root.querySelectorAll<HTMLElement>("[data-wiki-outline-anchor]"),
     );

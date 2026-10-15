@@ -4,7 +4,7 @@ import { humanPracticesSections } from "./humanPracticesCopy";
 export const humanPracticesPage: WikiPageContent = {
   route: "/human-practices",
   category: "engagement",
-  chapter: "Engagement / 02 of 05",
+  chapter: "Engagement / 02 of 04",
   eyebrow: "Integrated Human Practices",
   title: "Human Practices",
   lede: "Our Human Practices revolve around one core conviction:** never‑ending love**.",

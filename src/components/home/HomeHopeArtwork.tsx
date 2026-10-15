@@ -58,9 +58,6 @@ export function HomeHopeArtwork() {
             Clinical training showed us the uncertainty patients face. Research
             gives us a way to work toward an answer.
           </p>
-          <p className="story-hope-carry" data-hope-copy="carry">
-            That is the question behind <strong>CirCure.</strong>
-          </p>
         </article>
       </div>
     </>

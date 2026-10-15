@@ -31,6 +31,7 @@ import { descriptionFeatures } from "../src/components/wiki/features/project/Des
 import { resultsFeatures } from "../src/components/wiki/features/project/ResultsPanels";
 import { designFeatures } from "../src/components/wiki/features/wet-lab/DesignPanels";
 import { hardwareFeatures } from "../src/components/wiki/features/drylab/HardwarePanels";
+import { alternativePlatformFeatures } from "../src/components/wiki/features/wet-lab/AlternativePlatformPanels";
 import { buildSequenceRows } from "../src/components/wiki/features/wet-lab/constructGeometry";
 
 const render = (node: unknown) =>
@@ -70,6 +71,9 @@ export const report = {
   ),
   hardware: Object.fromEntries(
     Object.entries(hardwareFeatures()).map(([key, node]) => [key, render(node)]),
+  ),
+  alternativePlatform: Object.fromEntries(
+    Object.entries(alternativePlatformFeatures()).map(([key, node]) => [key, render(node)]),
   ),
   sequence: sequenceNodes({ advance: 12, basesPerRow: 50, lineHeight: 17.75, letterSpacing: 2.9 }),
 };

@@ -634,15 +634,16 @@
   }
 }
 
-/* Stakeholder portrait shown at the top of the detail popover. */
+/* Show the complete square stakeholder icon in the detail header. */
 .wiki-page .entrepreneurship-detail__image {
   display: block;
-  width: 100%;
-  max-height: 190px;
-  margin-bottom: 14px;
+  width: 104px;
+  height: 104px;
+  max-width: 100%;
+  margin: 0 auto 14px;
   border-radius: 7px;
-  object-fit: cover;
-  object-position: center top;
+  object-fit: contain;
+  object-position: center;
 }
 
 /* Our Highlights, judging format: one question per row, the answer folded
@@ -905,6 +906,7 @@
   color: var(--route-heading-ink, #4a2c1d);
   font-size: clamp(19px, 2vw, 22px);
   line-height: 1.4;
+  text-align: center;
 }
 .wiki-page .thank-you-note__paper p {
   margin: 0 0 14px;
@@ -914,9 +916,11 @@
 .wiki-page .thank-you-note__paper .thank-you-note__sign-off {
   display: flex;
   flex-direction: column;
+  align-items: flex-end;
   gap: 4px;
   margin-top: 22px;
   margin-bottom: 0;
+  text-align: right;
 }
 .wiki-page .thank-you-note__paper .thank-you-note__sign-off span {
   display: block;

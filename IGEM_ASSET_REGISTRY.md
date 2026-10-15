@@ -6,17 +6,17 @@
 ## 一、资产库统计
 
 - **队伍编号 (Team ID)**: 6056 (JLU-FBH)
-- **统计时间戳**: 2026-10-10T06:23:54+00:00
-- **总资产数量**: 2120
-- **🟢 在用资产 (in-use)**: 1597 *(代码/文案中正被引用)*
-- **🟡 备用资产 (standby)**: 491 *(已就绪或已上传，保留供后续页面选用)*
-- **⚪ 弃用资产 (deprecated)**: 32 *(已从本地删除或已弃用)*
+- **统计时间戳**: 2026-10-14
+- **总资产数量**: 2115
+- **🟢 在用资产 (in-use)**: 1594 *(代码/文案中正被引用)*
+- **🟡 备用资产 (standby)**: 490 *(已就绪或已上传，保留供后续页面选用)*
+- **⚪ 弃用资产 (deprecated)**: 31 *(已从本地删除或已弃用)*
 
 ### 类型细分统计
 
 | 类型 | 标识 | 说明 | 数量 |
 | :--- | :---: | :--- | :---: |
-| `image` | 🖼️ 图片/图表 (PNG, JPG, WebP, SVG) | 静态资源 | 2037 |
+| `image` | 🖼️ 图片/图表 (PNG, JPG, WebP, SVG) | 静态资源 | 2032 |
 | `font` | 🔤 Web 字体 (woff2, woff, ttf) | 静态资源 | 28 |
 | `structure` | 🧬 3D 分子/生物结构 (pdb, cif, pse) | 静态资源 | 3 |
 | `pdf` | 📄 PDF 文档/手册/报告 | 静态资源 | 46 |
@@ -545,10 +545,9 @@
 | 🟢 在用 | `image` | `game` | **ending-chain.png**<br><sub>`ending-chain-png`</sub> | `public/game-assets/assets/ui/ending-chain.png` | 10.8 | [CDN 链接](https://static.igem.wiki/teams/6056/wiki/files/pages/games/breast-guardian/asset-f2061a7b109704ac.avif) | 3 | Referenced in 3 location(s) |
 | 🟢 在用 | `image` | `home` | **ending-home-btn.png**<br><sub>`ending-home-btn-png`</sub> | `public/game-assets/assets/ui/ending-home-btn.png` | 185.6 | [CDN 链接](https://static.igem.wiki/teams/6056/wiki/files/pages/games/breast-guardian/ending-home-btn.avif) | 3 | Referenced in 3 location(s) |
 | 🟢 在用 | `image` | `game` | **ending-plate.png**<br><sub>`ending-plate-png`</sub> | `public/game-assets/assets/ui/ending-plate.png` | 111.4 | [CDN 链接](https://static.igem.wiki/teams/6056/wiki/files/pages/games/breast-guardian/asset-d1da96f0b439f169.avif) | 3 | Referenced in 3 location(s) |
-| 🟢 在用 | `image` | `engagement` | **engagement-education-hero-v2.webp**<br><sub>`engagement-education-hero-v2-webp`</sub> | `src/assets/wiki/engagement-heroes/engagement-education-hero-v2.webp` | 140.5 | [CDN 链接](https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/engagement-education-hero-v2.webp) | 1 | Referenced in 1 location(s) |
+| 🟢 在用 | `image` | `engagement` | **engagement-education-hero-v2.webp**<br><sub>`engagement-education-hero-v2-webp`</sub> | `src/assets/wiki/engagement-heroes/engagement-education-hero-v2.webp` | 140.5 | [CDN 链接](https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/education/games/education-page-hero-01f9811aecb2.webp) | 1 | Referenced in 1 location(s) |
 | 🟢 在用 | `image` | `engagement` | **engagement-entrepreneurship-hero-v2.webp**<br><sub>`engagement-entrepreneurship-hero-v2-webp`</sub> | `src/assets/wiki/engagement-heroes/engagement-entrepreneurship-hero-v2.webp` | 150.7 | [CDN 链接](https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/engagement-entrepreneurship-hero-v2-efb0a019ee72.webp) | 1 | Referenced in 1 location(s) |
 | 🟢 在用 | `image` | `engagement` | **engagement-human-practices-hero-v2.webp**<br><sub>`engagement-human-practices-hero-v2-webp`</sub> | `src/assets/wiki/engagement-heroes/engagement-human-practices-hero-v2.webp` | 123.1 | [CDN 链接](https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/engagement-human-practices-hero-v2-ce6ea8234186.webp) | 1 | Referenced in 1 location(s) |
-| 🟢 在用 | `image` | `engagement` | **engagement-inclusivity-hero-v2.webp**<br><sub>`engagement-inclusivity-hero-v2-webp`</sub> | `src/assets/wiki/engagement-heroes/engagement-inclusivity-hero-v2.webp` | 168.5 | [CDN 链接](https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/engagement-inclusivity-hero-v2.webp) | 1 | Referenced in 1 location(s) |
 | 🟢 在用 | `image` | `engagement` | **engagement-sustainability-hero-v2.webp**<br><sub>`engagement-sustainability-hero-v2-webp`</sub> | `src/assets/wiki/engagement-heroes/engagement-sustainability-hero-v2.webp` | 145.6 | [CDN 链接](https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/engagement-sustainability-hero-v2-af187053f50d.webp) | 1 | Referenced in 1 location(s) |
 | 🟢 在用 | `image` | `engagement` | **engagement.png**<br><sub>`engagement-png`</sub> | `src/assets/wiki/engagement.png` | 263.1 | [CDN 链接](https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/engagement.avif) | 2 | Referenced in 2 location(s) |
 | 🟢 在用 | `image` | `shared` | **Entrepreneurship_hd.webp**<br><sub>`entrepreneurship-hd-webp`</sub> | `background/子界面psd2_已解压/Entrepreneurship_hd.webp` | 150.7 | [CDN 链接](https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/engagement-entrepreneurship-hero-v2.webp) | 1 | Referenced in 1 location(s) |
@@ -1205,7 +1204,6 @@
 | 🟢 在用 | `image` | `game` | **img97.png**<br><sub>`img97-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img97.png` | 9.3 | [CDN 链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment9/ispring/img97.avif) | 60 | Referenced in 60 location(s) |
 | 🟢 在用 | `image` | `game` | **img98.png**<br><sub>`img98-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img98.png` | 5.2 | [CDN 链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment9/ispring/img98.avif) | 45 | Referenced in 45 location(s) |
 | 🟢 在用 | `image` | `game` | **img99.png**<br><sub>`img99-png`</sub> | `public/virtual-lab/experiment9-assets/ispring/data/img99.png` | 5.3 | [CDN 链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment9/ispring/img99.avif) | 54 | Referenced in 54 location(s) |
-| 🟢 在用 | `image` | `shared` | **Inclusivity_hd.webp**<br><sub>`inclusivity-hd-webp`</sub> | `background/子界面psd2_已解压/Inclusivity_hd.webp` | 143.3 | [CDN 链接](https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/engagement-inclusivity-hero-v2.webp) | 1 | Referenced in 1 location(s) |
 | 🟢 在用 | `image` | `game` | **incubator-open.png**<br><sub>`incubator-open-png`</sub> | `public/virtual-lab/images/experiment1/incubator-open.png` | 1509.2 | [CDN 链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment1/incubator-open.avif) | 1 | Referenced in 1 location(s) |
 | 🟢 在用 | `image` | `game` | **incubator.png**<br><sub>`incubator-52ea-png`</sub> | `public/virtual-lab/images/experiment9/sidebar/incubator.png` | 1967.7 | [CDN 链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment9/processed/instruments/constant-temperature-incubator-95b44c20f7.avif) | 1 | Referenced in 1 location(s) |
 | 🟢 在用 | `image` | `game` | **incubator.png**<br><sub>`incubator-9cd2-png`</sub> | `public/virtual-lab/images/incubator.png` | 9.2 | [CDN 链接](https://static.igem.wiki/teams/6056/wiki/virtual-lab/common/incubator.avif) | 3 | Referenced in 3 location(s) |
@@ -1259,7 +1257,6 @@
 | 🟢 在用 | `image` | `game` | **nav-games.webp**<br><sub>`nav-games-webp`</sub> | `src/assets/nav-icons/nav-games.webp` | 16.5 | *待上传* | 1 | Referenced in 1 location(s) |
 | 🟢 在用 | `image` | `shared` | **nav-hardware.webp**<br><sub>`nav-hardware-webp`</sub> | `src/assets/nav-icons/nav-hardware.webp` | 13.5 | *待上传* | 1 | Referenced in 1 location(s) |
 | 🟢 在用 | `image` | `engagement` | **nav-human-practices.webp**<br><sub>`nav-human-practices-webp`</sub> | `src/assets/nav-icons/nav-human-practices.webp` | 14.7 | *待上传* | 1 | Referenced in 1 location(s) |
-| 🟢 在用 | `image` | `shared` | **nav-inclusivity.webp**<br><sub>`nav-inclusivity-webp`</sub> | `src/assets/nav-icons/nav-inclusivity.webp` | 17.7 | *待上传* | 1 | Referenced in 1 location(s) |
 | 🟢 在用 | `image` | `shared` | **nav-measurement.webp**<br><sub>`nav-measurement-webp`</sub> | `src/assets/nav-icons/nav-measurement.webp` | 20.4 | *待上传* | 1 | Referenced in 1 location(s) |
 | 🟢 在用 | `image` | `shared` | **nav-model.webp**<br><sub>`nav-model-webp`</sub> | `src/assets/nav-icons/nav-model.webp` | 19.8 | *待上传* | 1 | Referenced in 1 location(s) |
 | 🟢 在用 | `image` | `shared` | **nav-notebook.webp**<br><sub>`nav-notebook-webp`</sub> | `src/assets/nav-icons/nav-notebook.webp` | 20.1 | *待上传* | 1 | Referenced in 1 location(s) |
@@ -1692,7 +1689,6 @@
 | 🟡 备用 | `image` | `engagement` | **engagement-entrepreneurship-hero.webp**<br><sub>`engagement-entrepreneurship-hero-webp`</sub> | `src/assets/wiki/engagement-heroes/engagement-entrepreneurship-hero.webp` | 150.7 | [CDN 链接](https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/engagement-entrepreneurship-hero-v2.webp) | 0 | Standby/Mirrored asset with CDN URL |
 | 🟡 备用 | `image` | `engagement` | **engagement-hero.webp**<br><sub>`engagement-hero-webp`</sub> | `src/assets/wiki/engagement-heroes/engagement-hero.webp` | 90.9 | *待上传* | 0 | Standby/Unreferenced asset |
 | 🟡 备用 | `image` | `engagement` | **engagement-human-practices-hero.webp**<br><sub>`engagement-human-practices-hero-webp`</sub> | `src/assets/wiki/engagement-heroes/engagement-human-practices-hero.webp` | 123.1 | [CDN 链接](https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/engagement-human-practices-hero-v2.webp) | 0 | Standby/Mirrored asset with CDN URL |
-| 🟡 备用 | `image` | `engagement` | **engagement-inclusivity-hero.webp**<br><sub>`engagement-inclusivity-hero-webp`</sub> | `src/assets/wiki/engagement-heroes/engagement-inclusivity-hero.webp` | 168.5 | [CDN 链接](https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/engagement-inclusivity-hero-v2.webp) | 0 | Standby/Mirrored asset with CDN URL |
 | 🟡 备用 | `image` | `engagement` | **engagement-sustainability-hero.webp**<br><sub>`engagement-sustainability-hero-webp`</sub> | `src/assets/wiki/engagement-heroes/engagement-sustainability-hero.webp` | 145.6 | [CDN 链接](https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/engagement-sustainability-hero-v2.webp) | 0 | Standby/Mirrored asset with CDN URL |
 | 🟡 备用 | `image` | `shared` | **Entrepreneurship_hd.png**<br><sub>`entrepreneurship-hd-png`</sub> | `background/子界面psd2_已解压/Entrepreneurship_hd.png` | 1142.8 | *待上传* | 0 | Standby/Unreferenced asset |
 | 🟡 备用 | `image` | `game` | **ep tube  (2).png**<br><sub>`ep-tube-2-png`</sub> | `public/virtual-lab/experiment9-assets/processed/Shared Resources/ep tube  (2).png` | 5.2 | *待上传* | 0 | Standby/Unreferenced asset |
@@ -2129,7 +2125,6 @@
 | ⚪ 弃用 | `image` | `shared` | **HumanPractices_hd.png**<br><sub>`humanpractices-hd-png`</sub> | `background/子界面psd2_已解压/HumanPractices_hd.png` | 764.0 | *已弃用* | 0 | 文件已在本地删除 (File deleted from local disk) |
 | ⚪ 弃用 | `image` | `shared` | **ihp.png**<br><sub>`ihp-png`</sub> | `background/子界面2_已解压/ihp.png` | - | *已弃用* | 0 | 文件已在本地删除 (File deleted from local disk) |
 | ⚪ 弃用 | `image` | `shared` | **inclusisirity.png**<br><sub>`inclusisirity-png`</sub> | `background/子界面2_已解压/inclusisirity.png` | - | *已弃用* | 0 | 文件已在本地删除 (File deleted from local disk) |
-| ⚪ 弃用 | `image` | `shared` | **Inclusivity_hd.png**<br><sub>`inclusivity-hd-png`</sub> | `background/子界面psd2_已解压/Inclusivity_hd.png` | 1041.8 | *已弃用* | 0 | 文件已在本地删除 (File deleted from local disk) |
 | ⚪ 弃用 | `image` | `shared` | **measuerment_hero.jpg**<br><sub>`measuerment-hero-jpg`</sub> | `background/measuerment_hero.jpg` | - | *已弃用* | 0 | 文件已在本地删除 (File deleted from local disk) |
 | ⚪ 弃用 | `image` | `shared` | **model_hero.jpg**<br><sub>`model-hero-jpg`</sub> | `background/model_hero.jpg` | - | *已弃用* | 0 | 文件已在本地删除 (File deleted from local disk) |
 | ⚪ 弃用 | `image` | `shared` | **notebook.png**<br><sub>`notebook-png`</sub> | `background/子界面2_已解压/notebook.png` | - | *已弃用* | 0 | 文件已在本地删除 (File deleted from local disk) |
@@ -2301,3 +2296,49 @@
 | `public/assets/education/wp05-evidence-and-evaluation-in-education-cover.pdf` | [打开](https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/education/figures/wp05-evidence-and-evaluation-in-education-cover.pdf) | 已引用，未逐项核验 |
 | `public/assets/education/xinghua-festival.png` | [打开](https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/education/figures/xinghua-festival.avif) | 已引用，未逐项核验 |
 <!-- EDUCATION-10-13-UPLOAD-END -->
+
+<!-- EDUCATION-10-14-EMBEDDED-START -->
+
+## Education 内嵌图片迁移（2026-10-14）
+
+用户说明所有文件已上传至 `files/pages/engagement/education/games/`。以下 URL 按用户提供的示例及批次文件名生成；应用户要求未逐项在线核验，上传状态记为 `uploaded`。
+
+| 图片 | iGEM URL | SHA-256 前缀 |
+| --- | --- | --- |
+| `community-educational-function-map-909d7fd86037.svg` | [打开](https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/education/games/community-educational-function-map-909d7fd86037.svg) | `909d7fd86037` |
+| `community-educational-function-map-73642f08fbcc.webp` | [打开](https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/education/games/community-educational-function-map-73642f08fbcc.webp) | `73642f08fbcc` |
+| `community-educational-function-map-dddda3937679.webp` | [打开](https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/education/games/community-educational-function-map-dddda3937679.webp) | `dddda3937679` |
+| `community-educational-function-map-56b9eda954dc.webp` | [打开](https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/education/games/community-educational-function-map-56b9eda954dc.webp) | `56b9eda954dc` |
+| `community-educational-function-map-8a32853e6710.webp` | [打开](https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/education/games/community-educational-function-map-8a32853e6710.webp) | `8a32853e6710` |
+| `community-educational-function-map-ca3633703563.webp` | [打开](https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/education/games/community-educational-function-map-ca3633703563.webp) | `ca3633703563` |
+| `community-educational-function-map-ddc4e00d6411.webp` | [打开](https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/education/games/community-educational-function-map-ddc4e00d6411.webp) | `ddc4e00d6411` |
+| `community-educational-function-map-28a6f8bf3245.webp` | [打开](https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/education/games/community-educational-function-map-28a6f8bf3245.webp) | `28a6f8bf3245` |
+| `community-educational-function-map-e8b7f3625aed.webp` | [打开](https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/education/games/community-educational-function-map-e8b7f3625aed.webp) | `e8b7f3625aed` |
+| `community-educational-function-map-77bad1bf80bc.webp` | [打开](https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/education/games/community-educational-function-map-77bad1bf80bc.webp) | `77bad1bf80bc` |
+| `community-educational-function-map-f8ad55c603de.webp` | [打开](https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/education/games/community-educational-function-map-f8ad55c603de.webp) | `f8ad55c603de` |
+| `community-educational-function-map-3a47ef84ab63.webp` | [打开](https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/education/games/community-educational-function-map-3a47ef84ab63.webp) | `3a47ef84ab63` |
+| `education-design-board-441b2659626f.svg` | [打开](https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/education/games/education-design-board-441b2659626f.svg) | `441b2659626f` |
+| `education-design-board-492eaacf8eb6.webp` | [打开](https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/education/games/education-design-board-492eaacf8eb6.webp) | `492eaacf8eb6` |
+| `education-design-board-4c6daada8ca0.webp` | [打开](https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/education/games/education-design-board-4c6daada8ca0.webp) | `4c6daada8ca0` |
+| `education-design-board-99371d10bc0e.webp` | [打开](https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/education/games/education-design-board-99371d10bc0e.webp) | `99371d10bc0e` |
+| `education-design-board-b9f7909dee82.webp` | [打开](https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/education/games/education-design-board-b9f7909dee82.webp) | `b9f7909dee82` |
+| `education-design-board-25a6b89ad4d1.webp` | [打开](https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/education/games/education-design-board-25a6b89ad4d1.webp) | `25a6b89ad4d1` |
+| `education-design-board-a25043eecc2b.webp` | [打开](https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/education/games/education-design-board-a25043eecc2b.webp) | `a25043eecc2b` |
+| `education-design-board-8bc8d5746989.webp` | [打开](https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/education/games/education-design-board-8bc8d5746989.webp) | `8bc8d5746989` |
+| `education-design-board-e641edeba234.webp` | [打开](https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/education/games/education-design-board-e641edeba234.webp) | `e641edeba234` |
+| `education-design-board-38844737c0e9.webp` | [打开](https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/education/games/education-design-board-38844737c0e9.webp) | `38844737c0e9` |
+| `education-design-board-f094eac038db.webp` | [打开](https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/education/games/education-design-board-f094eac038db.webp) | `f094eac038db` |
+| `breast-guardian-evidence-room-0f7ba64532a9.svg` | [打开](https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/education/games/breast-guardian-evidence-room-0f7ba64532a9.svg) | `0f7ba64532a9` |
+| `breast-guardian-evidence-room-fa90c6f750f3.webp` | [打开](https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/education/games/breast-guardian-evidence-room-fa90c6f750f3.webp) | `fa90c6f750f3` |
+| `breast-guardian-evidence-room-3a168e28afe7.webp` | [打开](https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/education/games/breast-guardian-evidence-room-3a168e28afe7.webp) | `3a168e28afe7` |
+| `breast-guardian-evidence-room-ebb5ffc9f744.webp` | [打开](https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/education/games/breast-guardian-evidence-room-ebb5ffc9f744.webp) | `ebb5ffc9f744` |
+| `breast-guardian-evidence-room-1f5da91cba68.webp` | [打开](https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/education/games/breast-guardian-evidence-room-1f5da91cba68.webp) | `1f5da91cba68` |
+| `breast-guardian-evidence-room-13ec9112ede0.webp` | [打开](https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/education/games/breast-guardian-evidence-room-13ec9112ede0.webp) | `13ec9112ede0` |
+| `breast-guardian-evidence-room-35c7810bf429.webp` | [打开](https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/education/games/breast-guardian-evidence-room-35c7810bf429.webp) | `35c7810bf429` |
+| `breast-guardian-evidence-room-28701de5ce78.webp` | [打开](https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/education/games/breast-guardian-evidence-room-28701de5ce78.webp) | `28701de5ce78` |
+| `breast-guardian-evidence-room-f739af2b307f.webp` | [打开](https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/education/games/breast-guardian-evidence-room-f739af2b307f.webp) | `f739af2b307f` |
+| `breast-guardian-evidence-room-079379e90303.webp` | [打开](https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/education/games/breast-guardian-evidence-room-079379e90303.webp) | `079379e90303` |
+| `breast-guardian-evidence-room-7f69307291bd.webp` | [打开](https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/education/games/breast-guardian-evidence-room-7f69307291bd.webp) | `7f69307291bd` |
+| `breast-guardian-evidence-room-e1879b76e5f3.webp` | [打开](https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/education/games/breast-guardian-evidence-room-e1879b76e5f3.webp) | `e1879b76e5f3` |
+| `education-page-hero-01f9811aecb2.webp` | [打开](https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/education/games/education-page-hero-01f9811aecb2.webp) | `01f9811aecb2` |
+<!-- EDUCATION-10-14-EMBEDDED-END -->

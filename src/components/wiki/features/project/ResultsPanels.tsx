@@ -38,6 +38,7 @@ import {
   resultsAssets,
   type ResultsAssetKey,
 } from "../../../../data/project/resultsAssets";
+import { WikiFigurePlate } from "../../WikiFigurePlate";
 import { resultsPage } from "../../../../data/project/resultsPage";
 import { resultsReferences } from "../../../../data/project/resultsReferences";
 import { EpitopeStructuralValidationChart } from "./EpitopeStructuralValidationChart";
@@ -55,60 +56,32 @@ interface FigurePlateProps {
   columns?: 1 | 2 | 3;
   /** Caption text, straight from the manuscript. Only set on numbered plates. */
   caption?: string;
-  /**
-   * `true` renders the reader's `figure` block semantics, so the plate takes the
-   * next `FIG. nn` number and gets the manuscript's caption underneath.
-   */
+  /** Adds the reader's numbered-figure semantics and caption. */
   numbered?: boolean;
-  /**
-   * Keeps the counter where the previous numbered figure left it. Figure 18A and
-   * Figure 18B are two panels of one numbered figure, so 18B must not advance
-   * the counter — otherwise every later figure would disagree with the body text
-   * that cites it.
-   */
+  /** Shares the preceding figure number, as with Figure 18A/18B. */
   shareNumber?: boolean;
 }
 
-export function FigurePlate({
+function FigurePlate({
   keys,
   columns = 2,
   caption,
   numbered = false,
   shareNumber = false,
 }: FigurePlateProps) {
-  const images = keys.map((key) => ({
-    key,
-    src: getResultsImage(key),
-    alt: resultsAssets[key].alt,
-  }));
-
-  const grid = (
-    <div className={`results-plate__grid results-plate__grid--cols-${columns}`}>
-      {images.map((image) => (
-        <img
-          key={image.key}
-          src={image.src}
-          alt={image.alt}
-          loading="lazy"
-          decoding="async"
-        />
-      ))}
-    </div>
-  );
-
-  if (!numbered) {
-    return <div className="results-plate results-plate--bare">{grid}</div>;
-  }
-
   return (
-    <figure
-      className={`wiki-figure results-plate results-plate--numbered${
-        shareNumber ? " results-plate--share-number" : ""
-      }`}
-    >
-      {grid}
-      {caption ? <figcaption>{caption}</figcaption> : null}
-    </figure>
+    <WikiFigurePlate
+      className={`results-plate${numbered ? " results-plate--numbered" : ""}`}
+      images={keys.map((key) => ({
+        key,
+        src: getResultsImage(key),
+        alt: resultsAssets[key].alt,
+      }))}
+      columns={columns}
+      caption={caption}
+      numbered={numbered}
+      shareNumber={shareNumber}
+    />
   );
 }
 

@@ -437,30 +437,82 @@
   left: 50%;
   bottom: calc(100% + 10px);
   translate: -50% 0;
-  width: min(560px, 88vw);
-  max-height: min(420px, calc(var(--scene-height) - 90px));
+  width: min(620px, 88vw);
+  max-height: min(480px, calc(var(--scene-height) - 90px));
   overflow-y: auto;
   overscroll-behavior: contain;
-  padding: 16px 20px;
+  padding: 22px 24px;
   border: 1px solid #dfc9b8;
   border-radius: 8px;
   background: #fff8eb;
   box-shadow: 0 8px 25px #805b4720;
-  color: #8a7065;
+  color: #765e58;
   font-size: 16px;
-  line-height: 1.65;
+  line-height: 1.75;
+  text-align: left;
+  scrollbar-gutter: stable;
+}
+.home-antigen-switch__science-content section + section {
+  margin-top: 20px;
+  padding-top: 18px;
+  border-top: 1px solid #dfc9b880;
+}
+.home-antigen-switch__science-content h4 {
+  margin: 0 0 8px;
+  color: #694556;
+  font: 700 17px/1.4 var(--font-body);
+}
+.home-antigen-switch__science-content strong {
+  color: #694556;
+  font-weight: 700;
 }
 .home-antigen-switch__science p {
   margin: 0;
 }
 .home-antigen-switch__science p + p {
-  margin-top: 9px;
-  color: #765e58;
-  font-size: 15px;
+  margin-top: 10px;
+}
+.home-antigen-switch__science-content ul {
+  margin: 0;
+  padding-left: 20px;
+}
+.home-antigen-switch__science-content li + li {
+  margin-top: 10px;
+}
+.home-antigen-switch__science .home-antigen-switch__science-source {
+  margin-top: 20px;
+  padding-top: 14px;
+  border-top: 1px solid #dfc9b880;
+  font-size: 14px;
 }
 .home-antigen-switch__science a {
   color: inherit;
   text-underline-offset: 3px;
+}
+/* Flow layouts need the disclosure below its trigger so its top stays reachable. */
+@media (max-width: 800px) and (orientation: portrait),
+  (max-height: 650px) and (orientation: landscape) {
+  .home-antigen-switch__footer:has(.home-antigen-switch__science[open]) {
+    display: block;
+    width: 100%;
+  }
+  .home-antigen-switch__science[open] summary {
+    width: fit-content;
+  }
+  .home-antigen-switch__science-content {
+    position: static;
+    translate: none;
+    width: 100%;
+    max-height: min(480px, calc(100svh - var(--header-height) - 100px));
+    margin-top: 14px;
+    padding: 18px;
+  }
+  .home-antigen-switch__footer:has(.home-antigen-switch__science[open])
+    .home-antigen-switch__replay {
+    position: absolute;
+    top: 0;
+    right: 64px;
+  }
 }
 .home-antigen-switch__replay {
   border: 0;

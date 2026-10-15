@@ -11,9 +11,9 @@ import { WikiProtocolModal } from "../../WikiProtocolViewer";
 import "../../../../styles/features/experiments-protocol.css";
 
 const RING_CENTER = 560;
-const STAGE_RADIUS = 132;
-const LEAF_RADIUS = 252;
-const OUTER_RADIUS = 499.8;
+const STAGE_RADIUS = 204;
+const LEAF_RADIUS = 406;
+const OUTER_RADIUS = 505;
 
 function ringPoint(angle: number, radius: number) {
   const radians = (angle * Math.PI) / 180;

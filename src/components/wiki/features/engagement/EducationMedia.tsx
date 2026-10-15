@@ -1,4 +1,4 @@
-import { useState, type ReactNode, type SyntheticEvent, type TouchEvent } from "react";
+import { useEffect, useRef, useState, type ReactNode, type TouchEvent } from "react";
 import galleries from "../../../../data/engagement/educationGalleries.json";
 import mediaGroups from "../../../../data/engagement/educationMediaGroups.json";
 import { educationAssetUrl } from "../../../../data/engagement/educationRemoteAssets";
@@ -7,11 +7,21 @@ import "../../../../styles/features/education-media.css";
 type Gallery = (typeof galleries)[number];
 type MediaGroup = (typeof mediaGroups)[number];
 
-function useLocalImageOnError(event: SyntheticEvent<HTMLImageElement>, localPath: string) {
-  const image = event.currentTarget;
-  if (image.dataset.localFallback) return;
-  image.dataset.localFallback = "true";
-  image.src = `${import.meta.env.BASE_URL}${localPath}`;
+function useNearViewport<T extends HTMLElement>() {
+  const ref = useRef<T>(null);
+  const [near, setNear] = useState(false);
+  useEffect(() => {
+    const element = ref.current;
+    if (!element) return;
+    if (!("IntersectionObserver" in window)) {
+      setNear(true);
+      return;
+    }
+    const observer = new IntersectionObserver(([entry]) => setNear(entry.isIntersecting), { rootMargin: "400px 0px" });
+    observer.observe(element);
+    return () => observer.disconnect();
+  }, []);
+  return { ref, near };
 }
 
 function DocumentCover({ source, title }: { source: string; title: string }) {
@@ -76,8 +86,9 @@ function InteractivePage({ item }: { item: (typeof interactivePages)[keyof typeo
 
 function MediaGrid({ group }: { group: MediaGroup }) {
   const allPdf = group.items.every((item) => item.kind === "pdf");
+  const { ref, near } = useNearViewport<HTMLDivElement>();
   return (
-    <div className="education-media-grid" data-count={group.items.length} data-pdf={allPdf || undefined}>
+    <div className="education-media-grid" data-count={group.items.length} data-pdf={allPdf || undefined} ref={ref}>
       {group.items.map((item, index) => {
         const src = educationAssetUrl(item.src);
         if (item.kind === "pdf") {
@@ -86,15 +97,15 @@ function MediaGrid({ group }: { group: MediaGroup }) {
           return (
             <figure className="education-media-grid__pdf" key={`${src}-${index}`}>
               {hasCover
-                ? <a className="education-media-grid__pdf-cover" href={src} target="_blank" rel="noreferrer" aria-label={`Open ${title} PDF`}><DocumentCover source={item.src} title={title} /></a>
-                : <iframe src={`${src}#toolbar=0`} title={title} loading="lazy" />}
+                ? <a className="education-media-grid__pdf-cover" href={src} target="_blank" rel="noreferrer" aria-label={`Open ${title} PDF`}>{near ? <DocumentCover source={item.src} title={title} /> : <span className="education-media-grid__placeholder" />}</a>
+                : near ? <iframe src={`${src}#toolbar=0`} title={title} loading="lazy" /> : <span className="education-media-grid__placeholder" />}
               <figcaption><a href={src} target="_blank" rel="noreferrer">{title} ↗</a></figcaption>
             </figure>
           );
         }
         return (
           <figure className="education-media-grid__image" key={`${src}-${index}`}>
-            <img src={src} alt={"alt" in item ? item.alt : "Education illustration"} loading="lazy" decoding="async" onError={(event) => useLocalImageOnError(event, item.src.replace(/^__BASE__/, ""))} />
+            {near ? <img src={src} alt={"alt" in item ? item.alt : "Education illustration"} loading="lazy" decoding="async" /> : <span className="education-media-grid__placeholder education-media-grid__placeholder--image" />}
             {"caption" in item && item.caption ? <figcaption>{item.caption}</figcaption> : null}
           </figure>
         );
@@ -106,6 +117,7 @@ function MediaGrid({ group }: { group: MediaGroup }) {
 function PhotoGallery({ gallery }: { gallery: Gallery }) {
   const [index, setIndex] = useState(0);
   const [touchStart, setTouchStart] = useState<number | null>(null);
+  const { ref, near } = useNearViewport<HTMLElement>();
   const photos = gallery.images;
   const count = photos.length;
   const go = (step: number) => setIndex((current) => (current + step + count) % count);
@@ -122,6 +134,7 @@ function PhotoGallery({ gallery }: { gallery: Gallery }) {
   return (
     <figure
       className="education-gallery"
+      ref={ref}
       aria-label={`${gallery.title} photographs`}
       tabIndex={0}
       onKeyDown={(event) => {
@@ -141,7 +154,7 @@ function PhotoGallery({ gallery }: { gallery: Gallery }) {
             onClick={() => offset && go(offset)}
             aria-label={offset === 0 ? photo.caption : `${offset < 0 ? "Previous" : "Next"}: ${photo.caption}`}
             tabIndex={offset === 0 ? -1 : 0}
-          ><img src={educationAssetUrl(`galleries/${photo.file}`)} alt={photo.caption} loading="lazy" decoding="async" onError={(event) => useLocalImageOnError(event, `assets/education/galleries/${photo.file}`)} /></button>;
+          >{near ? <img src={educationAssetUrl(`galleries/${photo.file}`)} alt={photo.caption} loading="lazy" decoding="async" /> : null}</button>;
         })}
         <button type="button" className="education-gallery__arrow education-gallery__arrow--prev" onClick={() => go(-1)} aria-label={`Previous ${gallery.title} photograph`}>‹</button>
         <button type="button" className="education-gallery__arrow education-gallery__arrow--next" onClick={() => go(1)} aria-label={`Next ${gallery.title} photograph`}>›</button>

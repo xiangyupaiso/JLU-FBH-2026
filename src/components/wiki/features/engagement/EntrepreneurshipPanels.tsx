@@ -25,7 +25,6 @@ import {
   linkify,
   renderInlineFormatting as renderEmphasis,
 } from "../../proseInline";
-import { scrollReaderToId } from "../../../../utils/scrollReaderToTarget";
 import { DocumentViewer } from "../../documents/DocumentViewer";
 import { CirCureGoldenCircle } from "./CirCureGoldenCircle";
 import { StakeholderMatrix3D } from "./StakeholderMatrix3D";
@@ -260,50 +259,8 @@ const renderNumberedCitation = createCitationRenderer(
   ENTREPRENEURSHIP_CITATION_FLASH,
 );
 
-/**
- * Keep whole paragraphs in the shared citation index; section references are
- * rendered only in its text fallback, so they cannot break citation lookup.
- */
-export const renderEntrepreneurshipInline = (
-  text: string,
-  fallback: (t: string) => ReactNode,
-): ReactNode => {
-  return renderNumberedCitation(text, (plainText) => {
-    const parts = plainText.split(/(\[\[see:[^\]]+\]\])/g);
-    return parts.map((part, index) => {
-      const match = part.match(/^\[\[see:([^|\]]+)\|([^\]]+)\]\]$/);
-      if (!match) return fallback(part);
-      const [, label, target] = match;
-      return (
-        <a
-          key={`${target}-${index}`}
-          className="wiki-chapter-link wiki-chapter-link--inline"
-          href={`#${target}`}
-          onClick={(event) => {
-            if (
-              event.metaKey ||
-              event.ctrlKey ||
-              event.shiftKey ||
-              event.button !== 0
-            )
-              return;
-            event.preventDefault();
-            const reduceMotion = window.matchMedia(
-              "(prefers-reduced-motion: reduce)",
-            ).matches;
-            scrollReaderToId(
-              target,
-              event.currentTarget,
-              reduceMotion ? "instant" : "smooth",
-            );
-          }}
-        >
-          {label}
-        </a>
-      );
-    });
-  });
-};
+/** Shared numeric citations, previews and bibliography backlinks. */
+export const renderEntrepreneurshipInline = renderNumberedCitation;
 
 /**
  * Business Model Canvas: the canvas figure stays visible, while the nine

@@ -1,3 +1,5 @@
+import uploadedFiles from "./educationUploadedFiles.json";
+
 /** User-provided iGEM upload directory and the names of the converted slide PDFs. */
 const educationFiles = "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/education/figures/";
 
@@ -17,22 +19,15 @@ const convertedSlides: Record<string, string> = {
   "winter-outreach-igem-introduction.pptx": "winter-outreach-turin-italy.pdf",
 };
 
-const renamedDocuments: Record<string, string> = {
-  "letters-to-my-body-final.pdf": "letters-to-my-body.pdf",
-  "a-seed-planted-in-the-heart-final.pdf": "a-seed-planted-in-the-heart.pdf",
-};
-
 export function educationAssetUrl(value: string): string {
   const relative = value.replace(/^__BASE__assets\/education\//, "");
   const filename = relative.split("/").at(-1) ?? relative;
-  const slidePdf = convertedSlides[filename];
-  if (slidePdf) return educationFiles + slidePdf;
-  if (renamedDocuments[filename]) return educationFiles + renamedDocuments[filename];
-  if (/\.webp$/i.test(filename)) return educationFiles + filename;
-  if (/\.(?:png|jpe?g|webp)$/i.test(filename)) {
-    return educationFiles + filename.replace(/\.(?:png|jpe?g|webp)$/i, ".avif");
+  const remoteName = convertedSlides[filename] ?? (uploadedFiles as Record<string, string>)[filename];
+  if (!remoteName) {
+    console.warn(`Education upload URL missing for ${filename}`);
+    return "data:,";
   }
-  return educationFiles + filename;
+  return educationFiles + remoteName;
 }
 
 export function replaceEducationAssetLinks(text: string): string {

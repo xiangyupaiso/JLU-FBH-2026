@@ -57,7 +57,8 @@ const BEATS: readonly Beat[] = [
   { chapter: 6, progress: 0.38, label: "choices-visible", travel: 4, hold: 3 },
   { chapter: 6, progress: 0.88, label: "circ-selected", travel: 4, hold: 3 },
   { chapter: 7, progress: 0, travel: 5 },
-  { chapter: 7, progress: 0.2, travel: 5, hold: 3 },
+  { chapter: 7, progress: 0.2, label: "stability-readable", travel: 4, hold: 1 },
+  { chapter: 7, progress: 0.2, label: "why-readable", travel: 3, hold: 3 },
   { chapter: 8, progress: 0.47, travel: 5 },
   { chapter: 8, progress: 0.9, label: "advantages-readable", travel: 10, hold: 4 },
   { chapter: 9, progress: 0.12, travel: 3, hold: 2 },
@@ -284,9 +285,11 @@ export function useHomePlayback(root: RefObject<HTMLDivElement | null>) {
           ? "question-readable"
           : index === 6
             ? "choices-visible"
-            : index === 8
-              ? "advantages-readable"
-              : undefined,
+            : index === 7
+              ? "why-readable"
+              : index === 8
+                ? "advantages-readable"
+                : undefined,
     });
     const paint = () => {
       let chapterIndex = 0;

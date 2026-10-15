@@ -1,11 +1,12 @@
 import { WikiRoutePage } from "../components/wiki/WikiRoutePage";
 import { getWetLabHeroImage } from "../components/wiki/wetLabHeroAssets";
 import {
-  PlatformOrbit,
-  PlatformEvidenceMatrix,
-  PlatformWorkflow,
+  alternativePlatformFeatures,
+  renderAlternativePlatformCitedText,
 } from "../components/wiki/features/wet-lab/AlternativePlatformPanels";
 import { alternativePlatformPage } from "../data/wet-lab/alternativePlatformPage";
+
+const COLLAPSIBLE_SECTIONS = ["judging-criteria", "key-achievements"];
 
 export function AlternativePlatform() {
   return (
@@ -15,11 +16,9 @@ export function AlternativePlatform() {
       theme="wet-lab"
       pageClassName="wiki-page--wet-lab"
       hideHeroCopy
-      features={{
-        "platform-rationale": <PlatformOrbit />,
-        "platform-workflow": <PlatformWorkflow />,
-        "platform-evidence": <PlatformEvidenceMatrix />,
-      }}
+      collapsibleSubheadingSections={COLLAPSIBLE_SECTIONS}
+      features={alternativePlatformFeatures()}
+      inlineRenderer={renderAlternativePlatformCitedText}
     />
   );
 }

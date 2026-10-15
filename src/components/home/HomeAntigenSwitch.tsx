@@ -787,39 +787,81 @@ function AntigenView({
           <details className="home-antigen-switch__science">
             <summary>Mechanism notes</summary>
             <div className="home-antigen-switch__science-content">
-              <p>
-                Change the antigen-encoding sequence during construct design.
-                Inside a dendritic cell, circRNA is translated into antigen;
-                processing releases peptides for MHC-I presentation. The circRNA
-                is an enlarged view of translation inside the dendritic cell;
-                movement between views is schematic. Dendritic cells prime
-                antigen-specific CD8⁺ T cells, which can recognize matching
-                peptide–MHC-I on tumor cells with compatible HLA. The TCR
-                remains attached to the T cell during migration. Its open
-                outline represents a receptor pocket, not a carried antigen.
-                The peptide–MHC-I stays on the dendritic cell during priming;
-                it is not handed to the T cell. The dendritic cell and tumor
-                each present their own peptide–MHC-I. The colored aura marks
-                T-cell activation and follows the T cell; the dendritic-cell
-                presentation fades from view as attention shifts to the target.
-                Shapes on
-                the target show presented peptide identities, not a pre-existing
-                TCR match.
-              </p>
-              <p>
-                After recognition, an effector CD8⁺ T cell can release perforin
-                and granzymes toward the target, triggering apoptosis. Only the
-                matching target contracts and forms apoptotic bodies; the T cell
-                remains intact. Recognition alone does not guarantee killing.
-              </p>
-              <p>
-                A/B/C and the shapes are illustrative. One representative T cell
-                is followed; delivery, costimulation, expansion and migration
-                are simplified and time-compressed. This is a possible
-                mechanism, not evidence of efficacy for this construct.
-                Each new target requires its own validation.
-              </p>
-              <p>
+              <section>
+                <h4>Construct design &amp; antigen presentation</h4>
+                <p>
+                  Change the <strong>antigen-encoding sequence</strong> during
+                  construct design. Inside a dendritic cell, <strong>circRNA is
+                  translated into antigen</strong>; processing releases peptides
+                  for <strong>MHC-I presentation</strong>.
+                </p>
+              </section>
+              <section>
+                <h4>CD8⁺ T-cell priming</h4>
+                <p>
+                  Dendritic cells prime <strong>antigen-specific CD8⁺ T
+                  cells</strong>, which can recognize matching
+                  <strong> peptide–MHC-I</strong> on tumor cells with
+                  <strong> compatible HLA</strong>.
+                </p>
+                <p>
+                  The peptide–MHC-I <strong>stays on the dendritic cell</strong>
+                  {" "}during priming; it is not handed to the T cell. The
+                  dendritic cell and tumor each present their own peptide–MHC-I.
+                </p>
+              </section>
+              <section>
+                <h4>How to read the illustration</h4>
+                <ul>
+                  <li>
+                    <strong>Enlarged view.</strong> The circRNA is an enlarged
+                    view of translation inside the dendritic cell; movement
+                    between views is schematic.
+                  </li>
+                  <li>
+                    <strong>TCR outline.</strong> The TCR remains attached to
+                    the T cell during migration. Its open outline represents a
+                    receptor pocket, not a carried antigen.
+                  </li>
+                  <li>
+                    <strong>Colored aura.</strong> The colored aura marks
+                    T-cell activation and follows the T cell; the dendritic-cell
+                    presentation fades from view as attention shifts to the
+                    target.
+                  </li>
+                  <li>
+                    <strong>Target shapes.</strong> Shapes on the target show
+                    presented peptide identities, not a pre-existing TCR match.
+                  </li>
+                </ul>
+              </section>
+              <section>
+                <h4>Recognition &amp; target-cell killing</h4>
+                <p>
+                  After recognition, an effector CD8⁺ T cell can release
+                  <strong> perforin and granzymes</strong> toward the target,
+                  triggering <strong>apoptosis</strong>. Only the matching
+                  target contracts and forms apoptotic bodies; the T cell
+                  remains intact.
+                </p>
+                <p>
+                  <strong>Recognition alone does not guarantee killing.</strong>
+                </p>
+              </section>
+              <section>
+                <h4>Scope &amp; limitations</h4>
+                <p>
+                  A/B/C and the shapes are illustrative. One representative T
+                  cell is followed; delivery, costimulation, expansion and
+                  migration are simplified and time-compressed.
+                </p>
+                <p>
+                  This is a <strong>possible mechanism</strong>, not evidence
+                  of efficacy for this construct. <strong>Each new target
+                  requires its own validation.</strong>
+                </p>
+              </section>
+              <p className="home-antigen-switch__science-source">
                 <a
                   href="https://www.ncbi.nlm.nih.gov/books/NBK27101/"
                   target="_blank"

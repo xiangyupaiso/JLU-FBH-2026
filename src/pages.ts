@@ -16,7 +16,6 @@ import {
   Entrepreneurship,
   Games,
   Hardware,
-  Inclusivity,
   Measurement,
   Model,
   AlternativePlatform,
@@ -219,13 +218,6 @@ const Pages: (Page | Folder)[] = [
         path: "/education",
         component: Education,
         lead: "Innovative educational tools and outreach activities have the ability to establish a two-way dialogue with new communities by discussing public values and the science behind synthetic biology.",
-      },
-      {
-        name: "Inclusivity",
-        title: "Diversity and Inclusion",
-        path: "/inclusivity",
-        component: Inclusivity,
-        lead: "Every individual, regardless of background or experience, should have an equal opportunity to engage with scientific knowledge and technological development.",
       },
       {
         name: "Sustainability",

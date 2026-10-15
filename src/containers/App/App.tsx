@@ -59,7 +59,6 @@ const ENGAGEMENT_ROUTES = new Set([
   "/entrepreneurship",
   "/human-practices",
   "/education",
-  "/inclusivity",
   "/sustainability",
 ]);
 

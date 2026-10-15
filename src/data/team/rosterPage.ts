@@ -208,6 +208,20 @@ export const rosterCollections: RosterCollection[] = [
         quote:
           "“Be bold, believe in yourself, and never let fear hold you back.”",
       },
+      {
+        id: "jiayi-zhang",
+        name: "Jiayi Zhang",
+        image: "jiayi-zhang",
+        role: "Team Member",
+        tagline: "Jaye, 101st fighter against no-nap days",
+        bio: [
+          "I’m Jaye Zhang, whose aesthetic is shaped by both logic and art. I study clinical medicine, a discipline both admirable and intimidating. Within the team, I am a wet-lab member stepping across into art & design, in charge of visualizing experimental workflows.",
+          "When under immense pressure, my specialty is petting cats (mo-mao) rather than slacking off (mo-yu). I’m an old-school hands-on craftsperson who sticks to hand-made work, and I’m currently trying my best to tame AI.",
+          "I look forward to meeting every soul in this world — except paranormal creatures.",
+        ],
+        quote:
+          "“When you feel lost, confused, anxious or helpless, close your eyes, cover your ears, take three deep breaths, and give your body back to yourself.”",
+      },
     ],
     image: "wet-lab",
   },

@@ -1,10 +1,6 @@
 import { WikiRoutePage } from "../components/wiki/WikiRoutePage";
 import { getWetLabHeroImage } from "../components/wiki/wetLabHeroAssets";
-import {
-  MeasurementWindow,
-  MeasurementPublicationGate,
-  ReadoutMatrix,
-} from "../components/wiki/features/WetLabFeatures";
+import { measurementFeatures } from "../components/wiki/features/wet-lab/MeasurementPanels";
 import { measurementPage } from "../data/wet-lab/measurementPage";
 
 export function Measurement() {
@@ -15,11 +11,10 @@ export function Measurement() {
       theme="wet-lab"
       pageClassName="wiki-page--wet-lab"
       hideHeroCopy
-      features={{
-        "measurement-chain": <MeasurementWindow />,
-        "measurement-readouts": <ReadoutMatrix />,
-        "measurement-publication": <MeasurementPublicationGate />,
-      }}
+      collapsibleSubheadingSections={measurementPage.sections.map(
+        (section) => section.id,
+      )}
+      features={measurementFeatures()}
     />
   );
 }
