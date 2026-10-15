@@ -19,7 +19,8 @@
    - [4.7 页面加载与加载动画退出规则](#47-页面加载与加载动画退出规则)
 5. [尺寸与样式收口铁律](#五尺寸与样式收口铁律)
    - [铁律 8：重部件页面的滚动编排退出](#铁律-8重部件页面的滚动编排退出scroll-choreography-opt-out)
-6. [老旧代码识别与渐进式迁移 Checklist](#六老旧代码识别与渐进式迁移-checklist)
+6. [全站统一视觉风格规范：水墨淡彩](#六全站统一视觉风格规范水墨淡彩ink-wash-light-watercolor)
+7. [老旧代码识别与渐进式迁移 Checklist](#七老旧代码识别与渐进式迁移-checklist)
 
 ---
 
@@ -692,3 +693,4 @@ $$
 - [ ] 运行 `npx tsc --noEmit` 保证 TypeScript 严格类型校验通过
 - [ ] 若页面有文案稿件：跑对应忠实度探针（如 `scripts/verify-hardware-faithfulness.mjs`），确认正文与表格文字逐字存活
 - [ ] 若页面有交互部件：跑几何 / 渲染探针（如 `scripts/verify-design-construct.mjs` / `verify-design-render.mjs`）
+- [ ] 新增页面与组件符合全站统一视觉风格「水墨淡彩」（第六节）：淡彩面配同 tone 深墨字、纸面质感、复用水彩绘制组件、颜色走模块色板，未引入第二套视觉语言

@@ -15,6 +15,7 @@ import {
 } from "../../../../data/wet-lab/experimentProtocolPages";
 import { experimentRingStages } from "../../../../data/wet-lab/experimentProtocolRing";
 import { WikiProtocolModal } from "../../WikiProtocolViewer";
+import { WatercolorCircle } from "../../WatercolorCircle";
 import "../../../../styles/features/experiments-protocol.css";
 
 type Point = { x: number; y: number };
@@ -32,6 +33,25 @@ function spokePath(from: Point, to: Point) {
   const dx = (to.x - from.x) / distance;
   const dy = (to.y - from.y) / distance;
   return `M ${from.x + dx * 44} ${from.y + dy * 44} L ${to.x - dx * 28} ${to.y - dy * 28}`;
+}
+
+function AtlasWatercolor({ seed }: { seed: number }) {
+  return (
+    <svg
+      className="exp-atlas__wash"
+      viewBox="0 0 100 100"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <WatercolorCircle
+        cx={50}
+        cy={50}
+        radius={44}
+        seed={seed}
+        className="exp-atlas__pigment"
+      />
+    </svg>
+  );
 }
 
 /** Reveal one protocol branch at a time, reserving readable space for its labels. */
@@ -84,7 +104,9 @@ export function ExperimentProtocolAtlas() {
       (index - selectedIndex + experimentRingStages.length) %
       experimentRingStages.length;
     const angle = selectedStage
-      ? ((relativeIndex === 0 ? 0 : 52 + (relativeIndex - 1) * 51.2) * Math.PI) / 180
+      ? ((relativeIndex === 0 ? 0 : 52 + (relativeIndex - 1) * 51.2) *
+          Math.PI) /
+        180
       : -Math.PI / 2 + (index * Math.PI * 2) / experimentRingStages.length;
     return {
       x: centre.x + Math.cos(angle) * radiusX,
@@ -200,7 +222,8 @@ export function ExperimentProtocolAtlas() {
             onClick={toggleStages}
           >
             <span className="exp-atlas__centre-circle" aria-hidden="true">
-              C
+              <AtlasWatercolor seed={8} />
+              <span className="exp-atlas__ink">C</span>
               <span className="exp-atlas__toggle">
                 {showStages ? "−" : "+"}
               </span>
@@ -232,7 +255,8 @@ export function ExperimentProtocolAtlas() {
                   onClick={() => toggleStage(stage.number)}
                 >
                   <span className="exp-atlas__stage-circle" aria-hidden="true">
-                    {stage.number}
+                    <AtlasWatercolor seed={15 + index * 7} />
+                    <span className="exp-atlas__ink">{stage.number}</span>
                     <span className="exp-atlas__toggle">
                       {isSelected ? "−" : "+"}
                     </span>
@@ -265,7 +289,8 @@ export function ExperimentProtocolAtlas() {
                   onClick={() => setActiveKey(pair.key)}
                 >
                   <span className="exp-atlas__node-code" aria-hidden="true">
-                    {pair.code}
+                    <AtlasWatercolor seed={71 + index * 7} />
+                    <span className="exp-atlas__ink">{pair.code}</span>
                   </span>
                   <span className="exp-atlas__node-title">{label}</span>
                   <span className="exp-atlas__node-arrow" aria-hidden="true">
@@ -331,7 +356,7 @@ export function ExperimentProtocolSpread({
           target="_blank"
           rel="noreferrer"
         >
-          <span>P{pair.flowPage} · Workflow 流程图</span>
+          <span>P{pair.flowPage} · Workflow</span>
           <img
             src={experimentProtocolImage(pair.flowPage)}
             alt={`Workflow diagram for ${pair.title}`}
@@ -349,7 +374,7 @@ export function ExperimentProtocolSpread({
         </a>
         {typeof pair.inventoryPage === "number" ? (
           <details className="exp-protocol-spread__materials">
-            <summary>Materials &amp; equipment 物料清单</summary>
+            <summary>Materials &amp; equipment</summary>
             <a
               href={experimentProtocolImage(pair.inventoryPage)}
               target="_blank"
