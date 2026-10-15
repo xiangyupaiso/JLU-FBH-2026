@@ -11,6 +11,11 @@
 }
 
 .hp-waterfall-pinned-container {
+  --hp-map-ink: var(--route-heading-ink, #4a2c1d);
+  --hp-map-accent: var(--route-subheading-ink, #174a47);
+  --hp-map-paper: #fffdf7;
+  --hp-map-pigment: var(--route-marker-bg, #fde5a5);
+  --hp-map-rule: color-mix(in srgb, var(--hp-map-accent) 20%, transparent);
   position: relative;
   width: 100%;
   height: 180vh; /* Pinned scroll track */
@@ -154,7 +159,7 @@
   stroke-width: 4px;
   stroke-linejoin: round;
   stroke-linecap: round;
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: fill 180ms ease, stroke 180ms ease;
   pointer-events: auto;
   outline: none !important;
   -webkit-tap-highlight-color: transparent;
@@ -166,55 +171,33 @@
 }
 
 .hp-hotspot-shape:hover {
-  fill: rgba(255, 77, 109, 0.08);
-  stroke: rgba(255, 77, 109, 0.6);
-  filter: drop-shadow(0 0 8px rgba(255, 77, 109, 0.5));
+  fill: color-mix(in srgb, var(--hp-map-accent) 7%, transparent);
+  stroke: color-mix(in srgb, var(--hp-map-accent) 60%, transparent);
 }
 
 .hp-hotspot-shape.is-active {
-  fill: rgba(255, 77, 109, 0.12);
-  stroke: #ff4757;
-  stroke-width: 5px;
-  stroke-dasharray: 10 5;
-  animation: hpDashMarch 1.2s linear infinite;
-  filter: drop-shadow(0 0 12px rgba(255, 71, 87, 0.85)) drop-shadow(0 0 24px rgba(255, 71, 87, 0.4));
+  fill: color-mix(in srgb, var(--hp-map-accent) 11%, transparent);
+  stroke: color-mix(in srgb, var(--hp-map-accent) 82%, transparent);
+  stroke-width: 3px;
   outline: none !important;
 }
 
-@keyframes hpDashMarch {
-  to {
-    stroke-dashoffset: -15;
-  }
-}
-
-/* Pulsing Dots */
+/* A quiet ink centre and translucent wash mark the selected feature. */
 .hp-hotspot-dot {
   cursor: pointer;
   pointer-events: auto;
 }
 
 .hp-dot-core {
-  fill: #ff4757;
+  fill: var(--hp-map-accent);
   transition: transform 0.2s ease;
 }
 
 .hp-dot-ring {
-  fill: none;
-  stroke: #ff4757;
-  stroke-width: 2.5;
-  animation: hpPulseRing 2s infinite cubic-bezier(0.215, 0.61, 0.355, 1);
-  transform-origin: center;
-}
-
-@keyframes hpPulseRing {
-  0% {
-    r: 6px;
-    opacity: 0.9;
-  }
-  100% {
-    r: 22px;
-    opacity: 0;
-  }
+  r: 15px;
+  fill: color-mix(in srgb, var(--hp-map-accent) 10%, transparent);
+  stroke: color-mix(in srgb, var(--hp-map-accent) 40%, transparent);
+  stroke-width: 1.5;
 }
 
 /* Hotspot Callout Connector Lines */
@@ -223,30 +206,21 @@
 }
 
 .hp-connector-line {
-  stroke: #ff4757;
-  stroke-width: 2.5px;
-  stroke-dasharray: 6 4;
+  stroke: color-mix(in srgb, var(--hp-map-accent) 72%, transparent);
+  stroke-width: 1.8px;
   fill: none;
-  filter: drop-shadow(0 0 4px rgba(255, 71, 87, 0.5));
-  animation: hpLineMarch 1s linear infinite;
-}
-
-@keyframes hpLineMarch {
-  to {
-    stroke-dashoffset: -10;
-  }
 }
 
 .hp-connector-endpoint {
-  fill: #ff4757;
+  fill: var(--hp-map-accent);
 }
 
 .hp-connector-text {
   font-family: inherit;
   font-size: 26px;
-  font-weight: 800;
-  fill: #ff4757;
-  letter-spacing: 0.04em;
+  font-weight: 600;
+  fill: var(--hp-map-accent);
+  letter-spacing: 0;
   text-transform: lowercase;
   filter: drop-shadow(0 1px 3px rgba(255, 255, 255, 0.9));
 }
@@ -256,36 +230,37 @@
   position: absolute;
   z-index: 20;
   max-width: min(360px, 90vw);
-  background: rgba(255, 255, 255, 0.96);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 2px solid #ff4757;
-  border-radius: 20px;
+  background:
+    radial-gradient(ellipse at 0 0, color-mix(in srgb, var(--hp-map-accent) 7%, transparent), transparent 70%),
+    radial-gradient(ellipse at 100% 0, color-mix(in srgb, var(--hp-map-pigment) 32%, transparent), transparent 65%),
+    var(--hp-map-paper);
+  border: 1px solid var(--hp-map-rule);
+  border-radius: 9px;
   padding: 1.15rem 1.3rem;
   box-shadow:
-    0 16px 36px rgba(255, 71, 87, 0.18),
-    0 4px 12px rgba(74, 44, 29, 0.08);
-  animation: hpBubblePop 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    0 2px 5px color-mix(in srgb, var(--hp-map-ink) 3%, transparent),
+    0 8px 26px color-mix(in srgb, var(--hp-map-ink) 7%, transparent);
+  animation: hpBubblePop 160ms ease-out;
   pointer-events: auto;
 }
 
 @keyframes hpBubblePop {
   0% {
     opacity: 0;
-    transform: scale(0.92) translateY(8px);
+    transform: translateY(6px);
   }
   100% {
     opacity: 1;
-    transform: scale(1) translateY(0);
+    transform: translateY(0);
   }
 }
 
 .hp-bubble-kicker {
   font-size: 0.72rem;
-  font-weight: 800;
-  color: #ff4757;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--hp-map-accent);
+  letter-spacing: 0.02em;
+  text-transform: none;
   margin-bottom: 0.3rem;
   display: flex;
   align-items: center;
@@ -295,15 +270,15 @@
 .hp-bubble-title {
   font-size: 1.15rem;
   font-weight: 800;
-  color: #4a2c1d;
-  margin: 0 0 0.45rem;
+  color: var(--hp-map-ink);
+  margin: 0 24px 0.45rem 0;
   line-height: 1.25;
 }
 
 .hp-bubble-body {
   font-size: 0.88rem;
   line-height: 1.55;
-  color: #5c3826;
+  color: var(--route-ink, var(--hp-map-ink));
   margin: 0;
 }
 
@@ -313,7 +288,7 @@
   right: 12px;
   background: none;
   border: none;
-  color: #9c6c54;
+  color: var(--hp-map-ink);
   font-size: 1.2rem;
   cursor: pointer;
   padding: 4px;
@@ -322,12 +297,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.2s;
+  transition: background-color 160ms ease, color 160ms ease, transform 160ms ease;
 }
 
 .hp-bubble-close:hover {
-  color: #ff4757;
-  background: rgba(255, 71, 87, 0.1);
+  color: var(--hp-map-accent);
+  background: color-mix(in srgb, var(--hp-map-accent) 8%, transparent);
 }
 
 .hp-bubble-action-btn {
@@ -339,18 +314,17 @@
   font-family: inherit;
   font-size: 0.82rem;
   font-weight: 700;
-  color: #ffffff;
-  background: linear-gradient(135deg, #ff6b81 0%, #ff4757 100%);
-  border: none;
-  border-radius: 999px;
+  color: var(--hp-map-accent);
+  background: color-mix(in srgb, var(--hp-map-accent) 9%, var(--hp-map-paper));
+  border: 1px solid var(--hp-map-rule);
+  border-radius: 7px;
   cursor: pointer;
-  box-shadow: 0 4px 12px rgba(255, 71, 87, 0.3);
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: background-color 160ms ease, border-color 160ms ease, transform 160ms ease;
 }
 
 .hp-bubble-action-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 18px rgba(255, 71, 87, 0.45);
+  background: color-mix(in srgb, var(--hp-map-accent) 15%, var(--hp-map-paper));
+  border-color: color-mix(in srgb, var(--hp-map-accent) 38%, transparent);
 }
 
 /* Navigation Controls Bar */
@@ -381,28 +355,26 @@
   font-family: inherit;
   font-size: 0.92rem;
   font-weight: 700;
-  border-radius: 999px;
-  border: 1.5px solid rgba(230, 162, 114, 0.4);
-  background: #ffffff;
-  color: #5c3826;
+  border-radius: 9px;
+  border: 1px solid var(--hp-map-rule);
+  background: var(--hp-map-paper);
+  color: var(--hp-map-ink);
   cursor: pointer;
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-  box-shadow: 0 2px 6px rgba(74, 44, 29, 0.04);
+  transition: background-color 160ms ease, border-color 160ms ease, color 160ms ease, transform 160ms ease;
 }
 
 .hp-waterfall-tab-btn:hover {
-  border-color: #ff4757;
-  background: #fff8f8;
-  color: #ff4757;
-  transform: translateY(-1px);
+  border-color: color-mix(in srgb, var(--hp-map-accent) 38%, transparent);
+  background: color-mix(in srgb, var(--hp-map-pigment) 22%, var(--hp-map-paper));
+  color: var(--hp-map-accent);
 }
 
 .hp-waterfall-tab-btn.is-active {
-  background: linear-gradient(135deg, #ff6b81 0%, #ff4757 100%);
-  border-color: #ff4757;
-  color: #ffffff;
-  box-shadow: 0 4px 14px rgba(255, 71, 87, 0.35);
-  transform: translateY(-1px);
+  background:
+    radial-gradient(ellipse at 10% 0, color-mix(in srgb, var(--hp-map-accent) 16%, transparent), transparent 80%),
+    var(--hp-map-paper);
+  border-color: color-mix(in srgb, var(--hp-map-accent) 48%, transparent);
+  color: var(--hp-map-accent);
 }
 
 .hp-waterfall-tab-btn .hp-tab-badge {
@@ -410,12 +382,25 @@
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: #e6a272;
+  background: color-mix(in srgb, var(--hp-map-accent) 32%, var(--hp-map-paper));
   transition: background 0.2s;
 }
 
 .hp-waterfall-tab-btn.is-active .hp-tab-badge {
-  background: #ffffff;
+  background: var(--hp-map-accent);
+}
+
+.hp-bubble-close:focus-visible,
+.hp-bubble-action-btn:focus-visible,
+.hp-waterfall-tab-btn:focus-visible {
+  outline: 2px solid var(--hp-map-accent);
+  outline-offset: 3px;
+}
+
+.hp-bubble-close:active,
+.hp-bubble-action-btn:active,
+.hp-waterfall-tab-btn:active {
+  transform: scale(0.98);
 }
 
 /* Responsive Breakpoints */
@@ -454,5 +439,18 @@
 
   .hp-connector-text {
     font-size: 32px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hp-stage-bubble {
+    animation: none;
+  }
+
+  .hp-hotspot-shape,
+  .hp-bubble-close,
+  .hp-bubble-action-btn,
+  .hp-waterfall-tab-btn {
+    transition: none;
   }
 }
