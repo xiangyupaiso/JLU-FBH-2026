@@ -995,6 +995,16 @@ html.has-route-reader-scroll {
   line-height: 1.75;
 }
 
+.wiki-page--route .wiki-content-heading {
+  margin: var(--wiki-space-subhead-top, 28px) 0 var(--wiki-space-subhead-bottom, 14px);
+  font-family: var(--font-sans);
+  font-size: clamp(17px, 1.8vw, 20px);
+  font-weight: 700;
+  line-height: 1.35;
+  color: var(--route-subheading-ink);
+  border: 0;
+}
+
 /* 连续两个 prose 块相邻时，保持标准正文段落间距，消除 80px 异常大断层 */
 .wiki-page--route .wiki-prose + .wiki-prose {
   margin-top: var(--wiki-space-p, 16px) !important;

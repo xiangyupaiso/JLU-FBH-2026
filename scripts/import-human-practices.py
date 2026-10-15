@@ -53,7 +53,11 @@ def flush_heading() -> None:
     title, level = pending_heading
     pending_heading = None
     if title.lower() in {"context", "issue", "reframing", "cycle"}:
-        paragraphs.append(f"**{title}**")
+        if current["id"] == "hp-origin":
+            paragraphs.append(f"**{title}**")
+        else:
+            flush_paragraphs(current["blocks"], paragraphs)
+            current["blocks"].append({"type": "heading", "level": min(max(level, 4), 6), "title": title})
         return
     flush_paragraphs(current["blocks"], paragraphs)
     heading_count += 1
@@ -124,7 +128,12 @@ for raw in lines:
                 # An empty same-level heading in the draft carries no copy.
                 pending_heading = None
         if level >= 4 and not title.startswith("（"):
-            paragraphs.append(f"**{title}**")
+            if current["id"] == "hp-origin":
+                # The origin tree's transcript labels are rendered by its own cards.
+                paragraphs.append(f"**{title}**")
+            else:
+                flush_paragraphs(current["blocks"], paragraphs)
+                current["blocks"].append({"type": "heading", "level": min(level, 6), "title": title})
         else:
             pending_heading = (title, level)
         continue
