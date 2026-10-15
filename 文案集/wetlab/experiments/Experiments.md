@@ -10,11 +10,11 @@ A candidate epitope becomes a vaccine molecule in two steps, cloning and in vitr
 
 ### 1\.1 Epitope plasmid construction
 
-**Background**
+#### **Background**
 
 Producing circRNA at scale needs a DNA template that transcribes efficiently in vitro\. Restriction–ligation cloning gives the vector and the insert complementary sticky ends, and T4 ligase joins them directionally, placing the CTL epitope sequences selected in the dry lab into a prokaryotic plasmid that carries a T7 promoter\. The recombinant plasmid is amplified in *E\. coli* and, once sequence\-verified, becomes the in vitro transcription \(IVT\) template\. Every antigen downstream depends on this sequence being right\.
 
-**Materials \& Reagents**
+#### **Materials \& Reagents**
 
 |Component|Amount / Spec|
 |---|---|
@@ -26,11 +26,11 @@ Producing circRNA at scale needs a DNA template that transcribes efficiently in 
 |Ampicillin \(Amp, final 100 µg/mL\) LB plates and broth; gel extraction kit|As required|
 |Endotoxin\-free plasmid miniprep kit|TIANGEN \#DP123|
 
-**Equipment**
+#### **Equipment**
 
 Thermal cycler, agarose gel electrophoresis system, UV/long\-wave gel imager, shaking incubator, dry bath, centrifuge, biosafety cabinet\.
 
-**Step\-by\-Step Instructions**
+#### **Step\-by\-Step Instructions**
 
 **PCR Amplification** \[1\]
 
@@ -69,7 +69,7 @@ Thermal cycler, agarose gel electrophoresis system, UV/long\-wave gel imager, sh
 
 10. Inoculate a sequence\-verified culture into 2 mL Amp\-containing LB, shake at 37 ℃ for 12–16 h, extract the plasmid with the endotoxin\-free kit and store at −20 ℃\.
 
-**Notes**
+#### **Notes**
 
 1. BamHI and XhoI are compatible in rCutSmart Buffer and can be used in one reaction\. Because they leave non\-complementary overhangs, the cut vector cannot re\-close on itself, so no dephosphorylation step is needed\. Keep the digestion to the recommended time and enzyme amount: prolonged incubation or a large enzyme excess invites star activity, which produces cuts at near\-cognate sequences and raises the background of wrong clones\. \[5\]
 
@@ -77,11 +77,11 @@ Thermal cycler, agarose gel electrophoresis system, UV/long\-wave gel imager, sh
 
 ### 1\.2 circRNA synthesis and circularity verification
 
-**Background**
+#### **Background**
 
 circRNA is a covalently closed circle with no free 5′/3′ ends, so it resists exonuclease degradation better than a linear mRNA and expresses for longer\. That stability is what the platform rests on\. Here a linearised epitope plasmid is the template for T7 in vitro transcription \(IVT\) of a precursor RNA, which a permuted group I intron–exon \(PIE\) element then self\-splices into a closed circle\. RNase R removes the linear RNA that remains, and RT\-qPCR with divergent against convergent primers gives the circular fraction of the purified material\.
 
-**Materials \& Reagents**
+#### **Materials \& Reagents**
 
 |Component|Amount / Spec|
 |---|---|
@@ -96,7 +96,7 @@ circRNA is a covalently closed circle with no free 5′/3′ ends, so it resists
 |Reverse transcription \+ RT\-qPCR kits, divergent primers, convergent primers|Per kit|
 |Nuclease\-free water, 0\.1 mM EDTA|As required|
 
-**Equipment**
+#### **Equipment**
 
 Thermal cycler, real\-time PCR instrument, dry bath, micro\-volume spectrophotometer \(NanoDrop\), biosafety cabinet, centrifuge; nuclease\-free consumables throughout\.
 
@@ -108,7 +108,7 @@ Thermal cycler, real\-time PCR instrument, dry bath, micro\-volume spectrophotom
 
 **Replicates**: each primer set is run at 2, 4 and 6 µL in 3 technical replicate wells per loading volume, giving 9 Cq values per primer set for that construct\.
 
-**Step\-by\-Step Instructions**
+#### **Step\-by\-Step Instructions**
 
 **Template Linearisation \& Purification**
 
@@ -146,9 +146,9 @@ Thermal cycler, real\-time PCR instrument, dry bath, micro\-volume spectrophotom
 
 11. Measure A260/280 on the micro\-volume spectrophotometer to assess purity and concentration\.
 
-12. Reverse\-transcribe the digested product to cDNA and quantify by RT\-qPCR with divergent and convergent primers, loading 2/4/6 µL in 3 replicate wells per volume for each primer set, one row of 9 wells per primer set on the same plate\. Run 95 ℃ 3 min; 40 × \(95 ℃ 10 s and 60 ℃ 30 s\), record the Cq of every well, and calculate the ratio as Ratio = 2^\(−ΔCq\)\.
+12. Reverse\-transcribe the digested product to cDNA and quantify by RT\-qPCR with divergent and convergent primers, loading 2/4/6 µL in 3 replicate wells per volume for each primer set, one row of 9 wells per primer set on the same plate\. Run 95 ℃ 3 min; 40 × \(95 ℃ 10 s and 60 ℃ 30 s\), record the Cq of every well, and calculate the ratio as $\text{Ratio} = 2^{-\Delta C_q}, \quad \Delta C_q = C_q(\text{divergent}) - C_q(\text{convergent})$\.
 
-**Notes**
+#### **Notes**
 
 1. The quantity is measured on RNase R–purified material\. Purification removes linear precursor rather than converting it into circles, and a small amount of highly structured linear RNA can survive digestion, so the circular fraction describes the composition of the released material and is a close upper estimate\. Divergent primers also give some non\-specific amplification on uncircularised precursor\. Direct evidence of covalent closure comes from BSJ sequencing, performed on the Combined vaccine \(3\.2 step 10\)\.
 
@@ -162,11 +162,11 @@ With circRNA for the 13 single\-epitope constructs in hand, the task of round 1 
 
 ### 2\.1 DC preparation and circRNA delivery
 
-**Background**
+#### **Background**
 
 Dendritic cells are the professional antigen\-presenting cells that initiate a CTL response\. Human peripheral blood CD14⁺ monocytes differentiate into immature monocyte\-derived DCs \(moDC\) under GM\-CSF and IL\-4\. Here CD14⁺ monocytes are positively selected with magnetic beads from commercial HLA\-A\*02:01 PBMC and induced into moDCs, then circRNA is introduced by electroporation so that the epitope is translated inside the cell and presented on MHC\-I\. The circRNA\-loaded DC made at this step is the input to every immunological readout that follows\.
 
-**Materials \& Reagents**
+#### **Materials \& Reagents**
 
 |Component|Amount / Spec|
 |---|---|
@@ -180,11 +180,11 @@ Dendritic cells are the professional antigen\-presenting cells that initiate a C
 |Purified circRNA|5 µg / 1×10⁶ DC|
 |Nucleofector II electroporation buffer|Human DC program U\-002, 100 µL per reaction|
 
-**Equipment**
+#### **Equipment**
 
 Centrifuge with slow acceleration/deceleration, MACS separator \+ high\-gradient magnet, Nucleofector II electroporation system, CO₂ incubator, biosafety cabinet, haemocytometer\.
 
-**Step\-by\-Step Instructions**
+#### **Step\-by\-Step Instructions**
 
 **PBMC Isolation** \[11\]
 
@@ -214,7 +214,7 @@ Centrifuge with slow acceleration/deceleration, MACS separator \+ high\-gradient
 
 10. Immediately after electroporation, add about 500 µL pre\-equilibrated complete medium to the cuvette, transfer the sample gently into a 12\-well plate with the supplied pipette to a final volume of 1 mL per well, and return the cells to the incubator for 24 h of recovery\.
 
-**Notes**
+#### **Notes**
 
 1. Adjust cytokines by stage: during antigen loading and maturation, IL\-4 is usually reduced or removed while GM\-CSF is maintained or lowered; the DC–T co\-culture stage no longer depends on GM\-CSF/IL\-4\. Staged adjustment helps keep the DC phenotype stable\.
 
@@ -224,11 +224,11 @@ Centrifuge with slow acceleration/deceleration, MACS separator \+ high\-gradient
 
 ### 2\.2 T cell isolation and DC–T co\-culture
 
-**Background**
+#### **Background**
 
 Detecting a CTL response needs antigen\-specific T cells\. This step positively selects CD3⁺ T cells with magnetic beads from the CD14\-negative flow\-through and co\-cultures them with autologous circRNA\-loaded DCs, so that antigen presentation and T cell priming happen in vitro\. DC : T is fixed at 1 : 20\. Every functional readout in this project, ELISpot, activation flow cytometry and the killing assays, draws on this co\-culture\.
 
-**Materials \& Reagents**
+#### **Materials \& Reagents**
 
 |Component|Amount / Spec|
 |---|---|
@@ -239,11 +239,11 @@ Detecting a CTL response needs antigen\-specific T cells\. This step positively 
 |circRNA\-loaded DCs|From 2\.1|
 |30 µm pre\-separation filter|Prevents column clogging|
 
-**Equipment**
+#### **Equipment**
 
 MACS separator, centrifuge, CO₂ incubator\.
 
-**Step\-by\-Step Instructions**
+#### **Step\-by\-Step Instructions**
 
 **CD3⁺ MACS Sorting** \[15\]\[16\]
 
@@ -263,7 +263,7 @@ MACS separator, centrifuge, CO₂ incubator\.
 
 7. Short\-term culture \(24 h ELISpot / CD69 flow cytometry\): no exogenous IL\-2, to avoid background interference\. Long\-term priming \(7–10 days\): supplement low\-dose IL\-2 \(20–50 IU/mL\) every 3 days\.
 
-**Notes**
+#### **Notes**
 
 1. CD3⁺ T cells should be sorted from the flow\-through after CD14 depletion to avoid monocyte contamination; if necessary, residual monocytes can first be removed by adherence\.
 
@@ -271,11 +271,11 @@ MACS separator, centrifuge, CO₂ incubator\.
 
 ### 2\.3 ELISpot assay and spot counting
 
-**Background**
+#### **Background**
 
 ELISpot counts IFN\-γ–secreting antigen\-specific T cells one cell at a time, which makes it the primary immunogenicity readout of this project\. IFN\-γ released by an activated T cell is captured by the plate\-bound antibody and developed through biotin, streptavidin, HRP and AEC into an insoluble spot, and the spot count \(SFC\) tracks the frequency of responding T cells\. Round 1 used it to rank the 13 single\-epitope constructs, and was run as a ranking screen with no control wells, so its numbers are comparative only\. \[18\]
 
-**Materials \& Reagents**
+#### **Materials \& Reagents**
 
 |Component|Amount / Spec|
 |---|---|
@@ -285,7 +285,7 @@ ELISpot counts IFN\-γ–secreting antigen\-specific T cells one cell at a time,
 |Biotinylated detection antibody, streptavidin\-HRP, AEC substrate|Supplied in kit, 100 µL/well|
 |DC–T co\-culture cells \(from 2\.2\)|1×10⁵/well|
 
-**Equipment**
+#### **Equipment**
 
 ELISpot reader/analysis system, CO₂ incubator, biosafety cabinet, centrifuge\.
 
@@ -295,7 +295,7 @@ ELISpot reader/analysis system, CO₂ incubator, biosafety cabinet, centrifuge\.
 
 **Replicates**: no replicate\-well count is on record, so the values are single determinations and carry no statistical test\.
 
-**Step\-by\-Step Instructions**
+#### **Step\-by\-Step Instructions**
 
 **Cell Seeding** \[19\]
 
@@ -323,7 +323,7 @@ ELISpot reader/analysis system, CO₂ incubator, biosafety cabinet, centrifuge\.
 
 9. After air\-drying, count round spots with a halo on the reader and report SFC per 1×10⁵ cells, stating whether the count is raw or background\-subtracted\.
 
-**Notes**
+#### **Notes**
 
 1. High background usually results from insufficient washing or blocking; do not touch the coated area of the plate bottom, and AEC development must be kept dark and strictly timed to prevent spots from merging\.
 
@@ -333,11 +333,11 @@ ELISpot reader/analysis system, CO₂ incubator, biosafety cabinet, centrifuge\.
 
 ### 2\.4 Calcein\-AM killing assay \(K562\)
 
-**Background**
+#### **Background**
 
 A vaccine has to produce effector T cells that kill\. Calcein\-AM is a lipophilic, non\-fluorescent dye; inside a live cell, esterases hydrolyse it to charged fluorescent calcein, which an intact membrane retains\. When the target lyses, calcein escapes into the supernatant, and supernatant fluorescence rises with the extent of lysis\. In round 1 this assay reports the total cytotoxicity of the effector T cells, with K562 as the target\. \[20\]\[21\]
 
-**Materials \& Reagents**
+#### **Materials \& Reagents**
 
 |Component|Amount / Spec|
 |---|---|
@@ -347,7 +347,7 @@ A vaccine has to produce effector T cells that kill\. Calcein\-AM is a lipophili
 |4\.2% Triton X\-100|Maximum\-release wells, 10 µL/well|
 |96\-well flat plate / black 96\-well plate|3 replicate wells per condition|
 
-**Equipment**
+#### **Equipment**
 
 CO₂ incubator, microplate reader \(Ex 485 / Em 530 nm\), centrifuge, microscope\.
 
@@ -357,7 +357,7 @@ CO₂ incubator, microplate reader \(Ex 485 / Em 530 nm\), centrifuge, microscop
 
 **Replicates**: 3 wells per condition on a single plate\. These are technical replicates, with no biological replication across effector\-cell batches\. All 13 round\-1 single\-epitope constructs were assayed in parallel\.
 
-**Step\-by\-Step Instructions**
+#### **Step\-by\-Step Instructions**
 
 **Target Labeling**
 
@@ -381,9 +381,9 @@ CO₂ incubator, microplate reader \(Ex 485 / Em 530 nm\), centrifuge, microscop
 
 7. Calculate the killing rate as:
 
-Cytotoxicity \(%\) = \(F experimental − F spontaneous\) / \(F maximum − F spontaneous\) × 100%
+$\text{Cytotoxicity}\ (\%) = \frac{F_{\text{experimental}} - F_{\text{spontaneous}}}{F_{\text{maximum}} - F_{\text{spontaneous}}} \times 100\%$
 
-**Notes**
+#### **Notes**
 
 1. Use K562 only as a readout of overall \(including NK\-like\) cytotoxic activity: it is MHC\-I–negative and antigen\-negative, so it cannot report antigen specificity\. Validate antigen\-specific killing on an HLA\-matched, antigen\-positive target such as MDA\-MB\-231 \(see 4\.5\)\.
 
@@ -393,11 +393,11 @@ Cytotoxicity \(%\) = \(F experimental − F spontaneous\) / \(F maximum − F sp
 
 ### 2\.5 Flow validation of TROP2 epitopes
 
-**Background**
+#### **Background**
 
 CD69 is the earliest T cell activation marker, up within 2–4 h of TCR signalling, and it responds sensitively to whether antigen presentation has started a T cell response at all\. This step quantifies the CD8⁺CD69⁺ fraction by multicolour flow cytometry and compares the immediate activation induced by the TROP2\-CTL1 and CTL2 epitopes, giving epitope selection a functional readout independent of ELISpot\. \[22\]
 
-**Materials \& Reagents**
+#### **Materials \& Reagents**
 
 |Component|Amount / Spec|
 |---|---|
@@ -408,7 +408,7 @@ CD69 is the earliest T cell activation marker, up within 2–4 h of TCR signalli
 |PerCP anti\-human CD69 \(clone FN50\)|0\.3 µg/10⁶|
 |Flow staining buffer \(PBS \+ 2% FBS \+ 0\.1% sodium azide\); pre\-chilled PBS; single\-stain compensation beads|As required|
 
-**Equipment**
+#### **Equipment**
 
 Flow cytometer \(488 nm\), refrigerated centrifuge with slow acceleration/deceleration, vortex mixer, 200 µm nylon mesh, 5 mL light\-protected flow tubes\.
 
@@ -418,7 +418,7 @@ Flow cytometer \(488 nm\), refrigerated centrifuge with slow acceleration/decele
 
 **Replicates**: ≥2×10⁴ events are acquired per tube\.
 
-**Step\-by\-Step Instructions**
+#### **Step\-by\-Step Instructions**
 
 **Blocking \& Staining** \[23\]
 
@@ -440,7 +440,7 @@ Flow cytometer \(488 nm\), refrigerated centrifuge with slow acceleration/decele
 
 7. Gate on the live cell population and quantify the CD8⁺\(PE\) CD69⁺\(PerCP\) double\-positive fraction\.
 
-**Notes**
+#### **Notes**
 
 1. Multicolour staining requires single\-stain controls to build the compensation matrix; never auto\-compensate from a fully stained sample\.
 
@@ -452,11 +452,11 @@ This round brings together the epitopes that scored highest in the primary scree
 
 ### 3\.1 Combined plasmid construction
 
-**Background**
+#### **Background**
 
 A single\-epitope vaccine covers little and is easy for the tumour to escape, while several immunogenic epitopes in tandem broaden the response\. Using the round\-1 ELISpot ranking, this step takes the two strongest epitopes of each antigen from the 13 constructs and carries them as 8 tandem fragments\. One of the eight, Nectin4\-CTL1, is a merged fragment spanning two overlapping predicted epitopes \(see 1\.1\), and it is the only merged construct among those selected, so the cassette encodes 9 predicted epitopes in 8 fragments\. Flexible linkers join the fragments, and the cassette is rebuilt into the optimised vector, which retains T7, the circularisation intron, the translation enhancement element, the mC3dP28 adjuvant and the membrane\-localisation element\.
 
-**Materials \& Reagents**
+#### **Materials \& Reagents**
 
 |Component|Amount / Spec|
 |---|---|
@@ -466,11 +466,11 @@ A single\-epitope vaccine covers little and is easy for the tumour to escape, wh
 |Competent cells; Amp\-containing LB \(final 100 µg/mL\)|As required|
 |Endotoxin\-free plasmid miniprep kit|TIANGEN \#DP123|
 
-**Equipment**
+#### **Equipment**
 
 Thermal cycler, electrophoresis system, shaking incubator, centrifuge, biosafety cabinet\.
 
-**Step\-by\-Step Instructions**
+#### **Step\-by\-Step Instructions**
 
 **Epitope Selection \& Design**
 
@@ -488,7 +488,7 @@ Thermal cycler, electrophoresis system, shaking incubator, centrifuge, biosafety
 
 5. Transform and plate on Amp\-containing plates overnight at 37 ℃, then confirm clones by colony PCR, diagnostic digestion and full\-length Sanger sequencing before preparing endotoxin\-free plasmid and banking the strain\.
 
-**Notes**
+#### **Notes**
 
 1. Linkers must balance flexibility against accessibility of cleavage sites, so that neighbouring epitopes do not sterically hinder processing and presentation; proteasomal cleavage prediction can be used to optimise the order of the epitopes\.
 
@@ -496,11 +496,11 @@ Thermal cycler, electrophoresis system, shaking incubator, centrifuge, biosafety
 
 ### 3\.2 Combined circRNA synthesis and release testing
 
-**Background**
+#### **Background**
 
 As in 1\.2, the optimised Combined plasmid has to be turned into circRNA before round 2\. The chemistry is unchanged: the same circularisation condition \(55 ℃, 10–15 min\), the same RNase R purification and the same divergent/convergent RT\-qPCR readout\. What this step adds around that chemistry is a release framework, with a template QC gate before transcription, a stated circular\-fraction criterion before electroporation, and back\-splice junction Sanger sequencing of the Combined vaccine\. Each preparation is carried through RNase R purification and then quantified, so the figure that decides release describes the material that will actually be electroporated\. The batch is five preparations: empty vector \(the Blank material used throughout Section 4\), TROP2\-CTL1, TROP2\-CTL2, TROP2\-CTL1\+2 and Combined\.
 
-**Materials \& Reagents**
+#### **Materials \& Reagents**
 
 |Component|Amount / Spec|
 |---|---|
@@ -512,7 +512,7 @@ As in 1\.2, the optimised Combined plasmid has to be turned into circRNA before 
 |RNase R|2\.0 µg RNA \+ 2 µL 10× Buffer \+ 2 U RNase R \+ water to 20 µL, 37 ℃ for 15 min \(fixed for the whole batch; do not vary between preparations\)|
 |Reverse transcription \+ RT\-qPCR kits|Circularisation quantification|
 
-**Equipment**
+#### **Equipment**
 
 Thermal cycler / qPCR instrument, water bath, micro\-volume spectrophotometer, agarose electrophoresis system and gel imager, 96\-well plates, centrifuge\.
 
@@ -524,7 +524,7 @@ Thermal cycler / qPCR instrument, water bath, micro\-volume spectrophotometer, a
 
 **Release criterion**: a circular fraction ≥ 90%\. A preparation below the criterion is re\-prepared from the transcription step\.
 
-**Step\-by\-Step Instructions**
+#### **Step\-by\-Step Instructions**
 
 **Template Preparation**
 
@@ -548,7 +548,7 @@ Thermal cycler / qPCR instrument, water bath, micro\-volume spectrophotometer, a
 
 7. Reverse\-transcribe the digested product to cDNA\.
 
-8. Set up RT\-qPCR on the same plate for both primer sets, loading 4 µL into 3 replicate wells for each primer set\. Run 95 ℃ 3 min; 40 × \(95 ℃ 10 s and 60 ℃ 30 s\), record the Cq of every well, and calculate the circular fraction as 2^\(−ΔCq\), where ΔCq = Cq\(divergent primers\) − Cq\(convergent primers\)\. Report as mean ± SD with n = 3\.
+8. Set up RT\-qPCR on the same plate for both primer sets, loading 4 µL into 3 replicate wells for each primer set\. Run 95 ℃ 3 min; 40 × \(95 ℃ 10 s and 60 ℃ 30 s\), record the Cq of every well, and calculate the circular fraction as $\text{Circular fraction} = 2^{-\Delta C_q}, \quad \Delta C_q = C_q(\text{divergent}) - C_q(\text{convergent})$\. Report as mean ± SD with n = 3\.
 
 9. Release decision: compare the value against the ≥ 90% criterion\. A preparation below it does not go to electroporation; re\-prepare it and record the failed run alongside the released one\.
 
@@ -556,7 +556,7 @@ Thermal cycler / qPCR instrument, water bath, micro\-volume spectrophotometer, a
 
 10. For the Combined vaccine, amplify across the back\-splice junction \(BSJ\) by RT\-PCR with divergent primers and submit the product for Sanger sequencing\. Accept the trace only if it shows a flat baseline, single sharp peaks and no overlapping peaks on either side of the junction\.
 
-**Notes**
+#### **Notes**
 
 1. The 4 µL input is carried over from the loading series run in 1\.2, which established that this volume sits inside the linear range of the assay\. A single volume is sufficient only while the material and the primer sets are unchanged; if either changes, re\-run a 2, 4 and 6 µL series first and settle on a volume from that before quantifying with replicates at one point\.
 
@@ -574,11 +574,11 @@ Round 2 asks whether the Combined vaccine activates a complete anti\-tumour immu
 
 ### 4\.1 DC maturation
 
-**Background**
+#### **Background**
 
 A DC primes T cells only if it does two things: present antigen \(signal 1\) and upregulate the co\-stimulatory molecules CD80/CD86 \(signal 2\)\. This step measures the CD80⁺CD86⁺ mature fraction of DCs by flow cytometry after electroporation with each construct, which is how far each circRNA drives DC maturation and the precondition for anything downstream in the T cell response\. \[25\]
 
-**Materials \& Reagents**
+#### **Materials \& Reagents**
 
 |Component|Amount / Spec|
 |---|---|
@@ -587,7 +587,7 @@ A DC primes T cells only if it does two things: present antigen \(signal 1\) and
 |Fluorochrome\-conjugated anti\-CD80, anti\-CD86|Surface staining, 0\.2–0\.5 µg/10⁶ \(determined by titration\)|
 |Isotype control antibodies; flow staining buffer|Controls|
 
-**Equipment**
+#### **Equipment**
 
 Nucleofector II electroporation system, flow cytometer, CO₂ incubator, centrifuge, biosafety cabinet\.
 
@@ -597,7 +597,7 @@ Nucleofector II electroporation system, flow cytometer, CO₂ incubator, centrif
 
 **Replicates**: n = 3, three independently electroporated wells per group, each acquired as a separate flow tube and reported as mean ± SD of the three\. ≥2×10⁴ events are acquired per tube\.
 
-**Step\-by\-Step Instructions**
+#### **Step\-by\-Step Instructions**
 
 **Grouped Electroporation** \[14\]
 
@@ -617,7 +617,7 @@ Nucleofector II electroporation system, flow cytometer, CO₂ incubator, centrif
 
 6. Wash twice with 2 mL buffer, filter and acquire; gate on the DC population and quantify the CD80⁺CD86⁺ double\-positive fraction\.
 
-**Notes**
+#### **Notes**
 
 1. A more complete maturation assessment could add CD83, HLA\-DR and CCR7; this experiment uses CD80/CD86 as the core markers\.
 
@@ -625,11 +625,11 @@ Nucleofector II electroporation system, flow cytometer, CO₂ incubator, centrif
 
 ### 4\.2 Antigen translation by anti\-FLAG Western blot
 
-**Background**
+#### **Background**
 
 Before anything else can follow, the circRNA has to be translated into protein inside the DC\. A FLAG tag was fused downstream of the epitopes during construction, so Western blotting with an anti\-FLAG antibody detects the product in DC lysate, with β\-actin as the loading control\. A band at the expected size is the protein\-level evidence that the circRNA is translated\. \[26\]
 
-**Materials \& Reagents**
+#### **Materials \& Reagents**
 
 |Component|Amount / Spec|
 |---|---|
@@ -638,7 +638,7 @@ Before anything else can follow, the circRNA has to be translated into protein i
 |SDS\-PAGE gel kit; running/transfer buffer; PVDF membrane; methanol|Electrophoresis and transfer|
 |5% skimmed milk; anti\-FLAG primary antibody; HRP secondary antibody; TBST; ECL \(A/B\)|Immunoblotting/development|
 
-**Equipment**
+#### **Equipment**
 
 Protein electrophoresis unit, transfer apparatus, chemiluminescence gel imager, shaker, ice box, centrifuge\.
 
@@ -646,7 +646,7 @@ Protein electrophoresis unit, transfer apparatus, chemiluminescence gel imager, 
 
 **Controls**: Blank group DCs \(electroporated with empty\-vector circRNA\); β\-actin as the loading control\. Equal protein is loaded in every lane so that bands are comparable between groups\.
 
-**Step\-by\-Step Instructions**
+#### **Step\-by\-Step Instructions**
 
 **Protein Extraction** \[27\]
 
@@ -670,7 +670,7 @@ Protein electrophoresis unit, transfer apparatus, chemiluminescence gel imager, 
 
 7. Mix ECL solutions A and B in equal volumes and apply; react in the dark for 1 min and expose on the imager \(β\-actin as loading control\), judging the FLAG band against the marker\.
 
-**Notes**
+#### **Notes**
 
 1. An anti\-FLAG Western blot demonstrates translation/expression, not MHC\-I surface presentation directly; presentation is supported indirectly by the downstream ELISpot, activation and killing readouts\.
 
@@ -678,11 +678,11 @@ Protein electrophoresis unit, transfer apparatus, chemiluminescence gel imager, 
 
 ### 4\.3 T cell activation and memory differentiation
 
-**Background**
+#### **Background**
 
 Immediate activation, co\-stimulatory support and differentiation towards a memory phenotype are three separable properties of a CTL response, and a response can have one without the others\. This step measures all three by flow cytometry: CD69 for early activation, CD28 for co\-stimulation and effector survival, and CD45RO⁺CCR7⁻ for effector memory\. Together they describe the quality of the T cell response the Combined vaccine induces\. \[29\]\[30\]
 
-**Materials \& Reagents**
+#### **Materials \& Reagents**
 
 |Component|Amount / Spec|
 |---|---|
@@ -693,7 +693,7 @@ Immediate activation, co\-stimulatory support and differentiation towards a memo
 |Fixable viability dye \(e\.g\. Zombie Aqua\)|Per manufacturer; stain in protein\-free PBS|
 |Pre\-chilled PBS; cell fixation buffer; compensation beads|As required|
 
-**Equipment**
+#### **Equipment**
 
 Flow cytometer, CO₂ incubator, centrifuge, vortex mixer, 5 mL light\-protected flow tubes\.
 
@@ -703,7 +703,7 @@ Flow cytometer, CO₂ incubator, centrifuge, vortex mixer, 5 mL light\-protected
 
 **Replicates**: n = 3 per group for all three panels \(CD69, CD28, CD45RO/CCR7\), three independently electroporated and co\-cultured wells, each acquired as a separate tube and reported as mean ± SD of the three\.
 
-**Step\-by\-Step Instructions**
+#### **Step\-by\-Step Instructions**
 
 **Antibody Staining** \[23\]\[31\]
 
@@ -725,7 +725,7 @@ Flow cytometer, CO₂ incubator, centrifuge, vortex mixer, 5 mL light\-protected
 
 7. Within the CD8⁺ gate, quantify the positive fraction for each marker: CD69, CD28 and CD45RO⁺CCR7⁻\.
 
-**Notes**
+#### **Notes**
 
 1. CD28 can be downregulated with terminal effector differentiation, so the time point of detection matters; acquire promptly after staining, or fix and store at 4 ℃ in the dark \(noting that fixation may affect some epitopes\)\.
 
@@ -735,11 +735,11 @@ Flow cytometer, CO₂ incubator, centrifuge, vortex mixer, 5 mL light\-protected
 
 ### 4\.4 Round\-2 ELISpot
 
-**Background**
+#### **Background**
 
 Same assay as 2\.3, now on the four optimised constructs, and this time against a vector control\. It quantifies how many antigen\-specific IFN\-γ–secreting T cells each construct induces, which is what allows the Combined vaccine to be compared with the single\-epitope constructs\. \[18\]
 
-**Materials \& Reagents**
+#### **Materials \& Reagents**
 
 |Component|Amount / Spec|
 |---|---|
@@ -747,7 +747,7 @@ Same assay as 2\.3, now on the four optimised constructs, and this time against 
 |RPMI\-1640 \(plate activation\); wash buffer \(50× concentrate, diluted 1:50 in deionised water\); biotinylated detection antibody; streptavidin\-HRP; AEC\|Supplied in kit, 100 µL/well|Supplied in kit, 100 µL/well|
 |DCs electroporated with the four circRNA constructs \+ autologous T cells \(see 2\.1–2\.2\)|DC : T = 1 : 20, 1×10⁵/well; plus Blank \(empty\-vector circRNA\)|
 
-**Equipment**
+#### **Equipment**
 
 ELISpot reader/analysis system, CO₂ incubator, centrifuge, biosafety cabinet\.
 
@@ -757,7 +757,7 @@ ELISpot reader/analysis system, CO₂ incubator, centrifuge, biosafety cabinet\.
 
 **Replicates**: each group is a single well, so this assay yields no error bar and no statistical test, and every value is a single determination\. Replicate wells belong in any repeat of the experiment\.
 
-**Step\-by\-Step Instructions**
+#### **Step\-by\-Step Instructions**
 
 **Plate Activation \& Co\-culture** \[19\]
 
@@ -783,17 +783,17 @@ ELISpot reader/analysis system, CO₂ incubator, centrifuge, biosafety cabinet\.
 
 8. After air\-drying, count on the reader and report SFC per 1×10⁵ cells\.
 
-**Notes**
+#### **Notes**
 
 1. The T cell input must be identical across constructs for SFC to be comparable; report SFC per 10⁵ cells\.
 
 ### 4\.5 MDA\-MB\-231 specific killing
 
-**Background**
+#### **Background**
 
 Killing a real tumour cell is the functional endpoint of the in vitro work\. This step runs the Calcein\-AM release assay against the human triple\-negative breast cancer line MDA\-MB\-231 \(HLA\-A\*02:01⁺, TROP2⁺\), which carries both the matching HLA type and the target antigen that K562 in 2\.4 lacks, so lysis here can be read as antigen\-specific\. \[20\]\[21\]
 
-**Materials \& Reagents**
+#### **Materials \& Reagents**
 
 |Component|Amount / Spec|
 |---|---|
@@ -804,7 +804,7 @@ Killing a real tumour cell is the functional endpoint of the in vitro work\. Thi
 |Primed effector T cells of each group|E:T = 20:1 / 40:1 / 80:1|
 |Black light\-protected 96\-well plate|3 replicate wells|
 
-**Equipment**
+#### **Equipment**
 
 CO₂ incubator, fluorescence microplate reader \(Ex 485 / Em 530 nm\), centrifuge, microscope\.
 
@@ -814,7 +814,7 @@ CO₂ incubator, fluorescence microplate reader \(Ex 485 / Em 530 nm\), centrifu
 
 **Replicates**: 3 wells per condition at each of three effector\-to\-target ratios, 20:1, 40:1 and 80:1, which gives the dose dependence of killing\.
 
-**Step\-by\-Step Instructions**
+#### **Step\-by\-Step Instructions**
 
 **Target Labeling** \[33\]
 
@@ -834,9 +834,9 @@ CO₂ incubator, fluorescence microplate reader \(Ex 485 / Em 530 nm\), centrifu
 
 6. Measure fluorescence on the fluorescence plate reader \(Ex 485 / Em 530 nm\) and calculate the specific killing rate as:
 
-Specific lysis \(%\) = \(F experimental − F spontaneous\) / \(F maximum − F spontaneous\) × 100%
+$\text{Specific lysis}\ (\%) = \frac{F_{\text{experimental}} - F_{\text{spontaneous}}}{F_{\text{maximum}} - F_{\text{spontaneous}}} \times 100\%$
 
-**Notes**
+#### **Notes**
 
 1. Pair the tumour target with an HLA\-matched, antigen\-negative target, or with a normal line of the same tissue origin, so that the comparison separates antigen recognition from HLA recognition\.
 
@@ -850,11 +850,11 @@ These are cell\-based experiments, so their conclusions hold at the level of cel
 
 ### 5\.1 In vitro stability of circRNA versus linear RNA
 
-**Background**
+#### **Background**
 
 Having no free 5′/3′ ends, circRNA natively resists exonuclease degradation, which is what the platform's low dosing frequency and durable expression rest on\. It is also a safety argument: the more stable the molecule, the less nucleic acid and the fewer doses needed for the same antigen expression, and the smaller the exposure\. Here equal amounts of circRNA and its linear precursor are incubated in parallel, sampled at 0, 24, 48 and 72 h, and compared for residual band intensity by agarose gel electrophoresis\. \[7\]
 
-**Materials \& Reagents**
+#### **Materials \& Reagents**
 
 |Component|Amount / Spec|
 |---|---|
@@ -863,7 +863,7 @@ Having no free 5′/3′ ends, circRNA natively resists exonuclease degradation,
 |1% agarose, nucleic acid stain, RNA marker|Electrophoresis|
 |Micro\-volume spectrophotometer consumables; nuclease\-free consumables and water|Nuclease\-free throughout|
 
-**Equipment**
+#### **Equipment**
 
 Dry bath / incubator \(37 ℃\), agarose gel electrophoresis system, gel imager, micro\-volume spectrophotometer; nuclease\-free consumables throughout\.
 
@@ -877,7 +877,7 @@ Dry bath / incubator \(37 ℃\), agarose gel electrophoresis system, gel imager,
 
 **Replicates**: each time point is a single lane with no biological replicate, so the result is the relative residual amount at each time point; no decay is fitted and no half\-life or decay constant is reported\.
 
-**Step\-by\-Step Instructions**
+#### **Step\-by\-Step Instructions**
 
 **Sample Preparation \& Incubation**
 
@@ -893,7 +893,7 @@ Dry bath / incubator \(37 ℃\), agarose gel electrophoresis system, gel imager,
 
 5. After imaging, integrate the density of each band with image analysis software, normalise to the DNA ladder lane of the same panel, and calculate for each time point the residual fraction of each RNA relative to its own 0 h lane\.
 
-**Notes**
+#### **Notes**
 
 1. Circular RNA migrates anomalously in non\-denaturing gels \(usually more slowly than linear RNA of the same length\), so band position alone is not sufficient to establish circularisation, confirm circularisation by divergent\-primer RT\-qPCR \(1\.2/3\.2\) and BSJ sequencing \(3\.2 step 10\) instead\.
 
@@ -905,11 +905,11 @@ Dry bath / incubator \(37 ℃\), agarose gel electrophoresis system, gel imager,
 
 ### 5\.2 Off\-target cytotoxicity against normal cells
 
-**Background**
+#### **Background**
 
 The safety risk specific to a tumour vaccine is that the cytotoxic T cells it activates damage normal tissue expressing low levels of the same antigen while they kill the tumour \(on\-target/off\-tumour toxicity\)\. This step uses exactly the same Calcein\-AM release system as the efficacy experiment, co\-incubating Combined\-vaccine\-primed effector T cells with a panel of human normal cell lines, HCAEC \(coronary artery endothelium\), LX\-2 \(hepatic stellate cells\), BEAS\-2B \(bronchial epithelium\) and MCF12A \(normal mammary epithelium\), with MDA\-MB\-231 \(the TNBC target\) as a positive control, at two relatively high effector\-to\-target ratios\. The readout is the contrast between lysis of the tumour line and lysis of the normal lines under the same conditions\. \[20\]\[21\]
 
-**Materials \& Reagents**
+#### **Materials \& Reagents**
 
 |Component|Amount / Spec|
 |---|---|
@@ -920,7 +920,7 @@ The safety risk specific to a tumour vaccine is that the cytotoxic T cells it ac
 |4\.2% Triton X\-100 \(maximum release\); medium with 5% FBS; PBS|As required|
 |Black light\-protected 96\-well plate|3 replicate wells per condition|
 
-**Equipment**
+#### **Equipment**
 
 CO₂ incubator, fluorescence microplate reader \(Ex 485 / Em 530 nm\), centrifuge, biosafety cabinet, microscope\.
 
@@ -930,7 +930,7 @@ CO₂ incubator, fluorescence microplate reader \(Ex 485 / Em 530 nm\), centrifu
 
 **Replicates**: every condition is examined at two effector\-to\-target ratios, 80:1 and 100:1, with 3 technical replicate wells per condition on a single plate\. These wells give plate\-level precision, so a mean ± SD derived from them describes the plate and not biological variation across effector\-cell batches\.
 
-**Step\-by\-Step Instructions**
+#### **Step\-by\-Step Instructions**
 
 **Target Labeling**
 
@@ -954,9 +954,9 @@ CO₂ incubator, fluorescence microplate reader \(Ex 485 / Em 530 nm\), centrifu
 
 8. Measure fluorescence \(Ex 485 / Em 530 nm\) and calculate the killing percentage for each cell line for between\-group comparison:
 
-Killing \(%\) = \(F experimental − F spontaneous\) / \(F maximum − F spontaneous\) × 100%
+$\text{Killing}\ (\%) = \frac{F_{\text{experimental}} - F_{\text{spontaneous}}}{F_{\text{maximum}} - F_{\text{spontaneous}}} \times 100\%$
 
-**Notes**
+#### **Notes**
 
 1. Normal cells are mostly adherent; before labelling and plating they must be dissociated into a uniform single\-cell suspension and their viability confirmed, so that digestion damage does not raise spontaneous release and get misread as "off\-target killing"\.
 
@@ -966,11 +966,11 @@ Killing \(%\) = \(F experimental − F spontaneous\) / \(F maximum − F spontan
 
 ### 5\.3 Safe dose window of the LNP delivery system
 
-**Background**
+#### **Background**
 
 circRNA requires lipid nanoparticles \(LNP\) to enter cells efficiently, but cationic/ionisable lipids are themselves cytotoxic at high doses, so the interval in which delivery is effective and cells are undamaged must be defined first\. This step co\-cultures empty LNP, the carrier alone, with no circRNA cargo, with DCs across a dose gradient \(0, 50, 100, 200, 400 ng of LNP per well\) and measures cell viability by CCK\-8, determining the highest dose that causes no obvious toxicity as the safety ceiling for subsequent in vitro and in vivo dose selection\. The dose axis is therefore lipid mass, not RNA mass, and what is measured is the intrinsic toxicity of the delivery vehicle, isolated from any contribution of the nucleic\-acid cargo\.
 
-**Materials \& Reagents**
+#### **Materials \& Reagents**
 
 |Component|Amount / Spec|
 |---|---|
@@ -980,7 +980,7 @@ circRNA requires lipid nanoparticles \(LNP\) to enter cells efficiently, but cat
 |CCK\-8 reagent \(WST\-8\)|10 µL/well|
 |96\-well flat\-bottom plate|4 replicate wells per dose|
 
-**Equipment**
+#### **Equipment**
 
 CO₂ incubator, microplate reader \(450 nm\), biosafety cabinet, pipettes\.
 
@@ -992,7 +992,7 @@ CO₂ incubator, microplate reader \(450 nm\), biosafety cabinet, pipettes\.
 
 **Replicates**: 4 wells per dose\.
 
-**Step\-by\-Step Instructions**
+#### **Step\-by\-Step Instructions**
 
 **Cell Seeding**
 
@@ -1018,9 +1018,9 @@ CO₂ incubator, microplate reader \(450 nm\), biosafety cabinet, pipettes\.
 
 9. Calculate relative viability as below, plot the dose–viability curve and determine the safe dose window:
 
-Relative viability \(%\) = \(OD sample − OD blank\) / \(OD 0 ng − OD blank\) × 100%
+$\text{Relative viability}\ (\%) = \frac{\mathrm{OD}_{\text{sample}} - \mathrm{OD}_{\text{blank}}}{\mathrm{OD}_{0\ \text{ng}} - \mathrm{OD}_{\text{blank}}} \times 100\%$
 
-**Notes**
+#### **Notes**
 
 1. CCK\-8 is a colorimetric method and the development time must be determined for each cell type in a pilot run; over\-incubation saturates the OD and compresses between\-group differences\. Any bubbles after adding reagent must be popped, or the reading will be badly disturbed\.
 
@@ -1034,11 +1034,11 @@ For an in vivo experiment to be meaningful, the tumour cells must carry the targ
 
 ### 6\.1 Lentiviral transduction of 4T1
 
-**Background**
+#### **Background**
 
 To make 4T1 express TROP2 stably rather than transiently, the gene of interest must be integrated into the host genome by a lentivirus\. To keep the titre stable and batches consistent, and to avoid the quality variability and additional biosafety burden of in\-house packaging, this project ordered a ready\-made TROP2\-overexpressing lentiviral preparation \(carrying a GFP reporter for flow sorting and puromycin resistance for selection pressure\), and on arrival transduced 4T1 directly under BSL\-2 conditions, using GFP fluorescence for preliminary confirmation of successful transduction\. Stable integration is the basis for a tumour\-model cell line that can be passaged long\-term with a stable target\. The virus is produced by the supplier by co\-transfecting HEK293T with a second\-generation three\-plasmid system \(transfer vector \+ psPAX2, which provides both Gag/Pol and Rev, \+ pMD2\.G, the VSV\-G envelope\), as described in Chapter 6, “Lentiviral packaging”, of the plasmid manual shipped with the product \(Miaoling Bio\)\. In a second\-generation system *rev* sits on the same plasmid as *gag/pol*, which is the difference from a third\-generation vector and the reason this work was done under BSL\-2\. \[35\]\[36\]
 
-**Materials \& Reagents**
+#### **Materials \& Reagents**
 
 |Component|Amount / Spec|
 |---|---|
@@ -1048,7 +1048,7 @@ To make 4T1 express TROP2 stably rather than transiently, the gene of interest m
 |RPMI\-1640 complete medium \(10% FBS \+ 1% P/S\)|Medium change / culture|
 |Chlorine disinfectant \(available chlorine ≥5000 ppm\)|Inactivation of viral waste, ≥30 min contact|
 
-**Equipment**
+#### **Equipment**
 
 CO₂ incubator, Class II biosafety cabinet \(BSC\), fluorescence microscope, centrifuge, −80 ℃ freezer\.
 
@@ -1058,7 +1058,7 @@ CO₂ incubator, Class II biosafety cabinet \(BSC\), fluorescence microscope, ce
 
 **Volume of virus added**: the batch was supplied without a titre, so the volume added followed the instructions shipped with the product rather than a calculated MOI, and transduction was judged from GFP fluorescence\.
 
-**Step\-by\-Step Instructions**
+#### **Step\-by\-Step Instructions**
 
 **Storage**
 
@@ -1084,7 +1084,7 @@ CO₂ incubator, Class II biosafety cabinet \(BSC\), fluorescence microscope, ce
 
 7. Under an inverted fluorescence microscope, observe and capture bright\-field, GFP\-channel and merged images in turn\. Proceed to the sorting in 6\.2 only if the fluorescence is bright and dense and the cell morphology is normal; if the signal is weak, read again at 72–96 h\.
 
-**Notes**
+#### **Notes**
 
 1. Biosafety \(BSL\-2\): The lentivirus is VSV\-G pseudotyped with broad tropism; although replication\-defective, it can still infect human cells and integrate into the genome\. All open\-vessel handling must therefore be carried out in a Class II biosafety cabinet with double gloves, and sealed rotors must be used for centrifugation; tips, tubes and media that have contacted virus must be soaked in chlorine disinfectant \(available chlorine ≥5000 ppm\) for ≥30 min before autoclaving\. In the event of a spill, cover with absorbent paper, pour chlorine disinfectant from the outside inwards, leave for 30 min, then clean up and report\. Immunocompromised and pregnant personnel must not take part in these operations\.
 
@@ -1094,11 +1094,11 @@ CO₂ incubator, Class II biosafety cabinet \(BSC\), fluorescence microscope, ce
 
 ### 6\.2 Flow sorting of GFP⁺ cells
 
-**Background**
+#### **Background**
 
 After lentiviral transduction the culture is a mixture of positive and negative cells and must be enriched and purified to obtain a homogeneous overexpressing cell line\. Fluorescence\-activated cell sorting selects GFP⁺ cells after three gates that exclude debris and doublets, and continuous puromycin pressure then removes the negative cells that remain, leaving a stable TROP2\-overexpressing 4T1 population\.
 
-**Materials \& Reagents**
+#### **Materials \& Reagents**
 
 |Component|Amount / Spec|
 |---|---|
@@ -1107,7 +1107,7 @@ After lentiviral transduction the culture is a mixture of positive and negative 
 |Puromycin|Working concentration 2 µg/mL|
 |Collection tubes pre\-filled with 100% fetal bovine serum \(FBS\) or complete medium containing 50% FBS|Protection during sorting|
 
-**Equipment**
+#### **Equipment**
 
 Cell sorter, CO₂ incubator, biosafety cabinet, centrifuge, fluorescence microscope\.
 
@@ -1115,7 +1115,7 @@ Cell sorter, CO₂ incubator, biosafety cabinet, centrifuge, fluorescence micros
 
 **Controls**: untransduced 4T1 as the negative control for setting the FSC/SSC voltages and the GFP threshold; standard fluorescent beads for instrument calibration\. After sorting, an aliquot is re\-run on the flow cytometer and checked by fluorescence microscopy\. That re\-check is a pass or fail confirmation that the population is homogeneous; the quantitative check on the sorted line is the surface\-TROP2 measurement in 6\.4\.
 
-**Step\-by\-Step Instructions**
+#### **Step\-by\-Step Instructions**
 
 **Single\-Cell Preparation**
 
@@ -1139,7 +1139,7 @@ Cell sorter, CO₂ incubator, biosafety cabinet, centrifuge, fluorescence micros
 
 7. Re\-run an aliquot on the flow cytometer to measure the GFP⁺ percentage and check homogeneity under the fluorescence microscope to confirm purity\.
 
-**Notes**
+#### **Notes**
 
 1. Sorted cells are relatively fragile; collection tubes should be pre\-filled with complete medium \(which may contain a higher serum concentration\) for protection, and the cells should be seeded as soon as possible\.
 
@@ -1147,11 +1147,11 @@ Cell sorter, CO₂ incubator, biosafety cabinet, centrifuge, fluorescence micros
 
 ### 6\.3 RT\-PCR verification of TROP2 mRNA
 
-**Background**
+#### **Background**
 
 Overexpression must be confirmed at the transcript level\. This step extracts total RNA with TRIzol, reverse\-transcribes it to cDNA and amplifies TROP2 by PCR, comparing mRNA levels between wild\-type and overexpressing cells; the RNA is treated with DNase I before reverse transcription to remove genomic and residual plasmid DNA and so limit false positives\.
 
-**Materials \& Reagents**
+#### **Materials \& Reagents**
 
 |Component|Amount / Spec|
 |---|---|
@@ -1161,7 +1161,7 @@ Overexpression must be confirmed at the transcript level\. This step extracts to
 |TROP2 and reference \(GAPDH/β\-actin\) primers; 2× PCR Mix|20 µL reaction|
 |1\.5% agarose, DNA marker, 1× TAE|Electrophoresis|
 
-**Equipment**
+#### **Equipment**
 
 Thermal cycler, agarose electrophoresis unit, centrifuge, nucleic acid quantification instrument, gel imaging system; ImageJ, GraphPad Prism\.
 
@@ -1171,7 +1171,7 @@ Thermal cycler, agarose electrophoresis unit, centrifuge, nucleic acid quantific
 
 **Replicates**: n = 3, three independent RNA extractions and reverse\-transcription reactions per group, each with its own reference\-gene amplification, reported as mean ± SD of the three\.
 
-**Step\-by\-Step Instructions**
+#### **Step\-by\-Step Instructions**
 
 **RNA Extraction \& DNase** \[39\]
 
@@ -1193,7 +1193,7 @@ Thermal cycler, agarose electrophoresis unit, centrifuge, nucleic acid quantific
 
 7. Run on 1\.5% agarose at 100–120 V, perform densitometry in ImageJ \(TROP2/reference\) and analyse statistically in GraphPad\.
 
-**Notes**
+#### **Notes**
 
 1. Exogenous overexpression plasmid very readily causes DNA\-contamination false positives, so the DNase I step before reverse transcription must not be omitted\. A −RT \(no reverse transcriptase\) control alongside every batch closes this gap rigorously and should be run as standard\.
 
@@ -1201,11 +1201,11 @@ Thermal cycler, agarose electrophoresis unit, centrifuge, nucleic acid quantific
 
 ### 6\.4 Surface TROP2 by flow cytometry
 
-**Background**
+#### **Background**
 
 Elevated mRNA must still be verified at the protein level, because what T cells ultimately recognise is TROP2 protein on the cell membrane\. This step uses flow cytometry to detect surface TROP2 on 4T1, with wild\-type cells as the negative control and an isotype control to set the threshold, quantifying the TROP2\-positive rate and fluorescence intensity of the overexpressing group as a cross\-check with the RT\-PCR result\.
 
-**Materials \& Reagents**
+#### **Materials \& Reagents**
 
 |Component|Amount / Spec|
 |---|---|
@@ -1214,7 +1214,7 @@ Elevated mRNA must still be verified at the protein level, because what T cells 
 |Fluorochrome\-conjugated anti\-TROP2; isotype control antibody; unstained control \(PBS\)|Staining / gating|
 |Basal medium \(RPMI\-1640 \+ 10% FBS \+ antibiotics\), PBS; compensation beads|As required|
 
-**Equipment**
+#### **Equipment**
 
 Flow cytometer, CO₂ incubator, biosafety cabinet, centrifuge, light\-protected flow tubes\.
 
@@ -1224,7 +1224,7 @@ Flow cytometer, CO₂ incubator, biosafety cabinet, centrifuge, light\-protected
 
 **Replicates**: ≥2×10⁴ events are acquired per tube\.
 
-**Step\-by\-Step Instructions**
+#### **Step\-by\-Step Instructions**
 
 **Grouping \& Staining** \[23\]\[40\]
 
@@ -1244,7 +1244,7 @@ Flow cytometer, CO₂ incubator, biosafety cabinet, centrifuge, light\-protected
 
 6. Acquire ≥2×10⁴ events per tube and report the TROP2⁺ rate and mean fluorescence intensity\.
 
-**Notes**
+#### **Notes**
 
 1. Overexpressing lines may silence the transgene over long passage, so confirm before assay that the cells are in log phase and healthy\.
 
@@ -1256,11 +1256,11 @@ The last step is to test the in vitro conclusions in a living animal\. Using the
 
 ### 7\.1 Establishing the tumour\-bearing model
 
-**Background**
+#### **Background**
 
 In vitro conclusions need to be tested in a living animal\. This step uses 4T1 stably overexpressing TROP2 to establish a syngeneic tumour in the right axillary subcutaneous fat pad of immunocompetent BALB/c mice\. Syngeneic transplantation keeps the adaptive immune system intact and gives a defined target antigen, which is what a vaccine working through anti\-tumour immunity has to be tested in\. A standardised inoculation technique and proper randomisation are what make the between\-group comparison trustworthy\. \[41\]
 
-**Materials \& Reagents**
+#### **Materials \& Reagents**
 
 |Component|Amount / Spec|
 |---|---|
@@ -1270,7 +1270,7 @@ In vitro conclusions need to be tested in a living animal\. This step uses 4T1 s
 |Isoflurane; 75% ethanol, povidone\-iodine, 0\.5% peracetic acid|Anaesthesia / disinfection|
 |1 mL syringe \+ 4\-gauge needle; electric clipper|Inoculation; a fresh needle for each animal|
 
-**Equipment**
+#### **Equipment**
 
 Vernier caliper \(0\.02 mm\), CO₂ incubator, Class II biosafety cabinet, SPF barrier animal facility \(7th floor, Institute of Translational Medicine\)\.
 
@@ -1294,7 +1294,7 @@ Vernier caliper \(0\.02 mm\), CO₂ incubator, Class II biosafety cabinet, SPF b
 
 - **Other sources of variability** are controlled by standardisation rather than by blocking: a single supplier, a single batch, a single sex, a 2\-week age window and a 4 g weight window; all animals inoculated on the same day by the same operator from the same cell preparation; housing in a single room under identical conditions\. Cage is not used as a blocking factor because animals are housed by treatment group for husbandry reasons, so cage is confounded with treatment, this is stated openly as a limitation of the design\.
 
-**Step\-by\-Step Instructions**
+#### **Step\-by\-Step Instructions**
 
 **Acclimation \& Grouping**
 
@@ -1320,7 +1320,7 @@ Vernier caliper \(0\.02 mm\), CO₂ incubator, Class II biosafety cabinet, SPF b
 
 8. Give the first immunisation on the day of inoculation \(D0\), following the schedule in 7\.2; do not wait for the tumour to reach a predefined volume\.
 
-**Notes**
+#### **Notes**
 
 1. 4T1 is highly metastatic and forms tumours rapidly, so humane endpoints \(tumour volume/ulceration limits\) must be enforced strictly with daily inspection\.
 
@@ -1330,11 +1330,11 @@ Vernier caliper \(0\.02 mm\), CO₂ incubator, Class II biosafety cabinet, SPF b
 
 ### 7\.2 In vivo antitumour effect
 
-**Background**
+#### **Background**
 
 This is the core experiment for evaluating the efficacy of the vaccine\. From the day of tumour inoculation \(D0 being the day of implantation\), circRNA\-LNP vaccine is injected subcutaneously at the base of the tail of the tumour\-bearing mice according to the pre\-set immunisation schedule \(D0/7/14/21/28, once a week, five doses in total\)\. Tumour growth curves and endpoint tumour size are used to compare the PBS, empty\-vector and Combined groups, quantifying the in vivo antitumour activity of the vaccine directly; the empty\-vector control serves to subtract the non\-specific innate immune effect of the circRNA backbone and adjuvant themselves\.
 
-**Materials \& Reagents**
+#### **Materials \& Reagents**
 
 |Component|Amount / Spec|
 |---|---|
@@ -1343,7 +1343,7 @@ This is the core experiment for evaluating the efficacy of the vaccine\. From th
 |Vernier caliper \(0\.02 mm\), electronic balance|Measurement|
 |Surgical scissors / non\-toothed forceps, saline, 75% ethanol|Tumour excision|
 
-**Equipment**
+#### **Equipment**
 
 Mouse restrainer, vernier caliper, electronic balance, surgical instruments\.
 
@@ -1359,7 +1359,7 @@ Mouse restrainer, vernier caliper, electronic balance, surgical instruments\.
 
 - **Statistical methods**: the primary analysis uses a one\-way independent ANOVA with treatment as a 3\-level factor; normality is assessed by the Shapiro\-Wilk test and Q\-Q plots and homogeneity of variance by the Levene test and residual\-versus\-fitted plots\. If these are violated, endpoint volume is log\-transformed and the ANOVA repeated; if assumptions remain violated after transformation, a Kruskal\-Wallis test with Dunn post hoc is used\. Following the omnibus test, all three pairwise comparisons are made, all of them pre\-specified, Combined vaccine versus empty vector, Combined vaccine versus PBS, and empty vector versus PBS, with multiplicity controlled by the Holm procedure across the full set of three\. Each addresses a distinct question: the first isolates the epitope\-encoded contribution, the second gives the total effect of the administered product against vehicle, and the third quantifies how much of that total the backbone and adjuvant supply on their own\.
 
-**Step\-by\-Step Instructions**
+#### **Step\-by\-Step Instructions**
 
 **Immunization**
 
@@ -1371,9 +1371,7 @@ Mouse restrainer, vernier caliper, electronic balance, surgical instruments\.
 
 3. During the immunisation period, the same independent operator measures the long and short tumour diameters blind, in a randomised order, with a vernier caliper, and calculates the volume as follows before plotting the growth curve:
 
-V = 0\.5 × L × W²
-
-where L is the long diameter and W the short diameter \(mm\); volume is expressed in mm³\.
+$V = 0.5 \times L \times W^{2}$
 
 4. Record welfare observations such as activity and feeding status at the same time \(body weight is not recorded as an outcome measure\)\.
 
@@ -1387,7 +1385,7 @@ where L is the long diameter and W the short diameter \(mm\); volume is expresse
 
 8. Sample collection: the tumour is fixed and paraffin\-embedded for the immunofluorescence in 7\.3; the spleen is processed fresh into a single\-cell suspension for the flow cytometry in 7\.4–7\.5\.
 
-**Notes**
+#### **Notes**
 
 1. Caliper readings must be taken by the same operator throughout, blind to group allocation, with the animal gently restrained so that the tumour is not compressed; measure the long and short axes at the widest point and take the mean of repeated readings\.
 
@@ -1399,11 +1397,11 @@ where L is the long diameter and W the short diameter \(mm\); volume is expresse
 
 ### 7\.3 Intratumoural CD8 and Granzyme B
 
-**Background**
+#### **Background**
 
 The growth curves say whether the tumour was restrained; they do not say by what\. CD8⁺ T cells are the effector cells of anti\-tumour immunity and Granzyme B is the molecule they kill with, so dual\-label immunofluorescence of tumour sections shows whether both are present, and lets the local immune microenvironment of the three groups be compared side by side\.
 
-**Materials \& Reagents**
+#### **Materials \& Reagents**
 
 |Component|Amount / Spec|
 |---|---|
@@ -1412,7 +1410,7 @@ The growth curves say whether the tumour was restrained; they do not say by what
 |BSA blocking solution; CD8 and Granzyme B fluorescent primary antibodies; corresponding fluorescent secondary antibodies; DAPI|Staining|
 |Anti\-fade mounting medium; PBS|Mounting|
 
-**Equipment**
+#### **Equipment**
 
 Fluorescence microscope with image acquisition system, water bath, slide dryer, humidified chamber, slides and coverslips\.
 
@@ -1424,7 +1422,7 @@ Fluorescence microscope with image acquisition system, water bath, slide dryer, 
 
 **Blinding**: the group labels were coded throughout, as the EDA design report specifies for this section\. Field selection at the microscope was made without the operator knowing which group a section belonged to, and the images were reviewed with the labels still coded\. The judgement that remains is the selection criterion itself: with one field per animal, the field taken was the one judged most representative of the section, and that is a judgement made by eye even when the group is unknown\. Depositing all of the raw images is what lets a reader see the fields that were not printed\.
 
-**Step\-by\-Step Instructions**
+#### **Step\-by\-Step Instructions**
 
 **Dewaxing \& Antigen Retrieval** \[47\]\[48\]
 
@@ -1446,7 +1444,7 @@ Fluorescence microscope with image acquisition system, water bath, slide dryer, 
 
 6. Review the nine fields with the group labels coded, and select one field per group for the figure\. Deposit all 18 raw images \(3 groups × 3 animals × 2 channels\) alongside the page, so that the fields printed in the figure can be read against the full set\.
 
-**Notes**
+#### **Notes**
 
 1. Over\-retrieval destroys tissue morphology while insufficient retrieval gives a weak signal; the secondary antibody and DAPI steps must be kept dark throughout to prevent quenching\.
 
@@ -1456,11 +1454,11 @@ Fluorescence microscope with image acquisition system, water bath, slide dryer, 
 
 ### 7\.4 Splenocyte flow cytometry
 
-**Background**
+#### **Background**
 
 Immunofluorescence of the tumour reflects only the intratumoural microenvironment and cannot show whether the vaccine has activated anti\-tumour immunity systemically\. The spleen is the most important secondary lymphoid organ, and its immune cell composition directly reflects the systemic immune response\. At the study endpoint \(D35\), spleens are taken and made into single\-cell suspensions, and multicolour flow cytometry is used to assess the complete chain from antigen presentation through T cell activation and memory formation to effector molecule production: dendritic cell maturation \(CD80/CD86\), early CD8⁺ T cell activation \(CD69\), memory phenotype \(CD44/CD62L\) and intracellular effector molecules \(IFN\-γ, Granzyme B\)\. It assesses the immune activation capacity of the vaccine at the systemic level, and provides a systemic counterpart to the qualitative tumour immunofluorescence of 7\.3\. \[29\]
 
-**Materials \& Reagents**
+#### **Materials \& Reagents**
 
 |Component|Amount / Spec|
 |---|---|
@@ -1475,7 +1473,7 @@ Immunofluorescence of the tumour reflects only the intratumoural microenvironmen
 |**Panel ④ Intracellular effector molecules**: CD3 \+ CD8 \+ IFN\-γ \+ Granzyme B|Surface \+ intracellular \(see 7\.5\)|
 |Isotype controls, FMO controls, single\-stain compensation beads|Gating / compensation|
 
-**Equipment**
+#### **Equipment**
 
 Multicolour flow cytometer, CO₂ incubator, refrigerated centrifuge, biosafety cabinet, 70 µm strainers and grinder, 5 mL light\-protected flow tubes\.
 
@@ -1485,7 +1483,7 @@ Multicolour flow cytometer, CO₂ incubator, refrigerated centrifuge, biosafety 
 
 **Replicates**: n = 3 animals per group, 3 of the 5 tumour\-bearing mice in each group selected at random, the same animals that provided the tumour immunofluorescence material in 7\.3\. ≥2×10⁴ events are acquired per tube\.
 
-**Step\-by\-Step Instructions**
+#### **Step\-by\-Step Instructions**
 
 **Splenocyte Preparation**
 
@@ -1537,7 +1535,7 @@ Multicolour flow cytometer, CO₂ incubator, refrigerated centrifuge, biosafety 
 
 12. Perform between\-group statistics in GraphPad Prism \(one\-way ANOVA with post hoc testing\), with groups coded during analysis\.
 
-**Notes**
+#### **Notes**
 
 1. The interval from spleen collection to staining should be as short as possible and everything kept cold; red blood cell lysis should not be prolonged \(\> 5 min damages lymphocytes and raises the dead cell fraction\)\.
 
@@ -1547,25 +1545,25 @@ Multicolour flow cytometer, CO₂ incubator, refrigerated centrifuge, biosafety 
 
 ### 7\.5 Intracellular cytokine staining
 
-**Background**
+#### **Background**
 
 IFN\-γ and Granzyme B are the molecules CD8⁺ T cells kill with, and both sit inside the cell where ordinary surface staining cannot reach them\. Intracellular cytokine staining \(ICS\) restimulates the cells in the presence of a protein transport inhibitor so that newly made cytokine is retained rather than secreted, then fixes them in formaldehyde, permeabilises the membrane with saponin so that antibody can reach the inside of the cell, and stains the retained cytokine, which quantifies effector molecule expression one cell at a time\. This project uses the BD Cytofix/Cytoperm™ Plus Fixation/Permeabilization Kit with BD GolgiPlug™ \(Cat\. No\. 555028\), in which the active ingredient of GolgiPlug is brefeldin A, which blocks Golgi transport so that newly synthesised cytokines accumulate intracellularly and markedly improve the detection signal\. \[49\]
 
-**Materials \& Reagents**
+#### **Materials \& Reagents**
 
 |Component|Amount / Spec|
 |---|---|
 |BD Cytofix/Cytoperm™ Plus Kit \(with GolgiPlug\)|BD Cat\. No\. 555028|
-|├ Fixation/Permeabilization Solution \(contains 4\.2% formaldehyde\)|250 µL per tube \(flow tube\)|
-|├ BD Perm/Wash™ Buffer \(10× concentrate, contains FBS and saponin\)|Dilute 1:10 in distilled water before use|
-|└ BD GolgiPlug™ \(Brefeldin A\)|1 µL / 1 mL of cell culture|
+|Fixation/Permeabilization Solution \(contains 4\.2% formaldehyde\)|250 µL per tube \(flow tube\)|
+|BD Perm/Wash™ Buffer \(10× concentrate, contains FBS and saponin\)|Dilute 1:10 in distilled water before use|
+|BD GolgiPlug™ \(Brefeldin A\)|1 µL / 1 mL of cell culture|
 |Restimulation reagents: PMA \+ ionomycin|PMA 50 ng/mL; ionomycin 1 µg/mL|
 |Staining buffer \(DPBS \+ 1% heat\-inactivated FCS \+ 0\.09% NaN₃, pH 7\.4–7\.6, 0\.2 µm filtered\)|Surface staining / washing|
 |anti\-mouse CD16/32 \(2\.4G2\) Fc block|1 µg/10⁶ cells|
 |Surface antibodies: CD3, CD8; intracellular antibodies: anti\-IFN\-γ, anti\-Granzyme B|Titrated amounts|
 |Isotype control antibodies \(at the same concentration as the intracellular antibodies\)|Negative control|
 
-**Equipment**
+#### **Equipment**
 
 CO₂ incubator, multicolour flow cytometer, refrigerated centrifuge, vortex mixer, light\-protected flow tubes\.
 
@@ -1573,7 +1571,7 @@ CO₂ incubator, multicolour flow cytometer, refrigerated centrifuge, vortex mix
 
 **Controls**: each sample has a stimulated and an unstimulated group; the negative control is an isotype control \(stained in Perm/Wash buffer at the same concentration as the intracellular antibody\) combined with unstained cells; the positive control is splenocytes fully stimulated with PMA/ionomycin\. Granzyme B is constitutively stored in intracellular granules and can be stained without restimulation; IFN\-γ must be detected after restimulation\.
 
-**Step\-by\-Step Instructions**
+#### **Step\-by\-Step Instructions**
 
 **Stimulation \& Transport Block**
 
@@ -1615,7 +1613,7 @@ CO₂ incubator, multicolour flow cytometer, refrigerated centrifuge, vortex mix
 
 14. Within the CD3⁺CD8⁺ gate, report the proportions of IFN\-γ⁺ and Granzyme B⁺ cells and compare the PBS, empty\-vector and vaccine groups\.
 
-**Notes**
+#### **Notes**
 
 1. The fixation/permeabilisation solution contains 4\.2% formaldehyde, a suspected carcinogen/mutagen: work under ventilation, wear gloves and eye protection, and collect waste as hazardous chemical waste \(see the Warnings section of the kit\)\.
 

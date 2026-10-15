@@ -112,6 +112,8 @@ export function jumpToAnchor(id: string, tint?: CitationFlashTint): void {
   const reduceMotion = window.matchMedia(
     "(prefers-reduced-motion: reduce)",
   ).matches;
+  // Focus first: Chromium can cancel an ongoing smooth scroll when focus changes.
+  el.focus({ preventScroll: true });
   scrollReaderToTarget(
     el,
     el.closest<HTMLElement>(".route-frame__scroll"),
@@ -119,7 +121,6 @@ export function jumpToAnchor(id: string, tint?: CitationFlashTint): void {
   );
 
   window.history.replaceState(window.history.state, "", `#${id}`);
-  el.focus({ preventScroll: true });
   flashCitationTarget(el, tint);
 }
 
@@ -290,8 +291,8 @@ export function CitationPreview({
       {previewReferences.map((reference) => (
         <div className="wiki-cite-preview__entry" key={reference.id}>
           <span className="wiki-cite-preview__index">[{reference.id}]</span>{" "}
-          {reference.authors ? <span>{reference.authors} </span> : null}
-          <span>{reference.title} </span>
+          {reference.authors ? <span><CitationText text={reference.authors} /> </span> : null}
+          <span><CitationText text={reference.title} /> </span>
           {reference.journal ? <em>{reference.journal} </em> : null}
           <span>{reference.volumeYear}</span>
         </div>
@@ -364,8 +365,9 @@ export function createCitationRenderer(
   index: CitationIndex,
   tint?: CitationFlashTint,
 ): InlineRenderer {
-  return (text, fallback) => {
-    const entry = index.byParagraph.get(text);
+  return (text, fallback, sectionId) => {
+    const entry = (sectionId ? index.byScopedParagraph?.get(`${sectionId}\0${text}`) : undefined)
+      ?? index.byParagraph.get(text);
     if (!entry) return fallback(text);
 
     let occurrenceIndex = 0;
