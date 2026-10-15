@@ -1422,10 +1422,9 @@ export const entrepreneurshipPage: WikiPageContent = {
           ],
         },
         {
-          type: "prose",
-          paragraphs: [
-            "**Risks in Vaccine Candidate Identity and Functional Validation**",
-          ],
+          type: "heading",
+          level: 4,
+          title: "Risks in Vaccine Candidate Identity and Functional Validation",
         },
         {
           type: "list",
@@ -1437,8 +1436,9 @@ export const entrepreneurshipPage: WikiPageContent = {
           ],
         },
         {
-          type: "prose",
-          paragraphs: ["**Delivery, CMC, and Manufacturability Risks**"],
+          type: "heading",
+          level: 4,
+          title: "Delivery, CMC, and Manufacturability Risks",
         },
         {
           type: "list",
@@ -1450,10 +1450,9 @@ export const entrepreneurshipPage: WikiPageContent = {
           ],
         },
         {
-          type: "prose",
-          paragraphs: [
-            "**Risks in TAA/HLA Coverage and Multi-Epitope Combinations**",
-          ],
+          type: "heading",
+          level: 4,
+          title: "Risks in TAA/HLA Coverage and Multi-Epitope Combinations",
         },
         {
           type: "list",
@@ -1465,8 +1464,9 @@ export const entrepreneurshipPage: WikiPageContent = {
           ],
         },
         {
-          type: "prose",
-          paragraphs: ["**Safety and Potential Cross-Reactivity Risks**"],
+          type: "heading",
+          level: 4,
+          title: "Safety and Potential Cross-Reactivity Risks",
         },
         {
           type: "list",
@@ -1478,8 +1478,9 @@ export const entrepreneurshipPage: WikiPageContent = {
           ],
         },
         {
-          type: "prose",
-          paragraphs: ["**Funding Continuity and R&D Cost Risks**"],
+          type: "heading",
+          level: 4,
+          title: "Funding Continuity and R&D Cost Risks",
         },
         {
           type: "list",

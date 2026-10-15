@@ -3608,11 +3608,11 @@ export const modelDownloads = [
   },
   {
     "label": "PXD024322_TNBC_vs_Normal_limma_ALL_9088_proteins(1).csv",
-    "path": "assets/docs/model/pxd024322_tnbc_vs_normal_limma_all_9088_proteins-1.csv"
+    "path": "https://static.igem.wiki/teams/6056/wiki/files/pages/dry-lab/model/pxd024322-tnbc-vs-normal-limma-all-9088-proteins-1.csv"
   },
   {
     "label": "PXD028102_paired_limma_imputed_ALL.csv",
-    "path": "assets/docs/model/pxd028102_paired_limma_imputed_all.csv"
+    "path": "https://static.igem.wiki/teams/6056/wiki/files/pages/dry-lab/model/pxd028102-paired-limma-imputed-all.csv"
   }
 ];
 

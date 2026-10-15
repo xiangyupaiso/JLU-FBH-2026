@@ -97,7 +97,7 @@ export function CircRnaArtwork() {
                 </svg>
                 <svg
                   data-circrna-sketch="expression"
-                  y="228"
+                  y="260"
                   width="296"
                   height="156"
                   viewBox="0 190 296 156"

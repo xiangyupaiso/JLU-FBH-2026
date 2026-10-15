@@ -92,6 +92,7 @@ export function useRoutePageScroll() {
 export type InlineRenderer = (
   text: string,
   fallback: (t: string) => ReactNode,
+  sectionId?: string,
 ) => ReactNode;
 
 const InlineRendererContext = createContext<InlineRenderer | null>(null);
@@ -160,6 +161,8 @@ interface WikiRoutePageProps {
   }) => ReactNode;
   /** Optional interactive feature or section mounted right between hero and reader track. */
   leadSection?: ReactNode;
+  /** Content inside the reader, before the first section heading. */
+  articleLead?: ReactNode;
 }
 
 const STATUS_LABELS = {
@@ -339,6 +342,7 @@ function splitNoteContent(body: string): string[] {
 function renderProseParagraphs(
   paragraphs: string[],
   inline: InlineRenderer | null = null,
+  sectionId?: string,
 ): ReactNode[] {
   const elements: ReactNode[] = [];
   let stepBuffer: Array<{ num: string; text: string }> = [];
@@ -353,7 +357,7 @@ function renderProseParagraphs(
           <li key={step.num} className="wiki-protocol-step-item">
             <span className="wiki-protocol-step-badge">{step.num}</span>
             <div className="wiki-protocol-step-text">
-              {renderInlineFormatting(step.text)}
+              {prose(step.text)}
             </div>
           </li>
         ))}
@@ -368,7 +372,7 @@ function renderProseParagraphs(
    * inherits plain emphasis rendering and gains Markdown links for free.
    */
   const prose = (text: string): ReactNode =>
-    inline ? inline(text, linkify) : linkify(text);
+    inline ? inline(text, linkify, sectionId) : linkify(text);
 
   paragraphs.forEach((paragraph, idx) => {
     const stepMatch = paragraph.match(/^\s*(\d+)[.、]\s+(.*)$/s);
@@ -378,35 +382,6 @@ function renderProseParagraphs(
     }
 
     flushSteps(`flush-${idx}`);
-
-    const trimmed = paragraph.trim();
-    if (
-      trimmed === "**Step-by-Step Instructions**" ||
-      trimmed === "Step-by-Step Instructions"
-    ) {
-      elements.push(
-        <div
-          className="wiki-protocol-step-section-heading"
-          key={`step-main-${idx}`}
-        >
-          <span className="wiki-protocol-step-section-heading__badge">SOP</span>
-          <h4 className="wiki-protocol-step-section-heading__title">
-            Step-by-Step Instructions
-          </h4>
-        </div>,
-      );
-      return;
-    }
-
-    const subheadMatch = paragraph.match(/^\*\*(.+?)\*\*$/);
-    if (subheadMatch) {
-      elements.push(
-        <div className="wiki-protocol-step-subheading" key={`step-sub-${idx}`}>
-          {subheadMatch[1]}
-        </div>,
-      );
-      return;
-    }
 
     elements.push(<p key={`p-${idx}`}>{prose(paragraph)}</p>);
   });
@@ -526,10 +501,31 @@ function RouteBlock({
   };
 
   switch (block.type) {
+    case "protocol-steps":
+      return (
+        <ol className="wiki-protocol-step-list">
+          {block.steps.map((step) => (
+            <li key={step.number} className="wiki-protocol-step-item">
+              <span className="wiki-protocol-step-badge">{step.number}</span>
+              <div className="wiki-protocol-step-text">
+                <WikiContentBlocks blocks={step.blocks} features={features} sectionId={sectionId} />
+              </div>
+            </li>
+          ))}
+        </ol>
+      );
+    case "heading": {
+      const Heading = `h${block.level}` as "h4" | "h5" | "h6";
+      return (
+        <Heading className="wiki-content-heading">
+          {inline ? inline(block.title, linkify, sectionId) : linkify(block.title)}
+        </Heading>
+      );
+    }
     case "prose":
       return (
         <div className="wiki-prose" data-wiki-reveal>
-          {renderProseParagraphs(block.paragraphs, inline)}
+          {renderProseParagraphs(block.paragraphs, inline, sectionId)}
         </div>
       );
     case "quote":
@@ -544,7 +540,7 @@ function RouteBlock({
         <div className="wiki-prose" data-wiki-reveal>
           <List className="wiki-prose-list" start={block.ordered ? block.start : undefined}>
             {block.items.map((item, index) => (
-              <li key={index}>{inline ? inline(item, linkify) : linkify(item)}</li>
+              <li key={index}>{inline ? inline(item, linkify, sectionId) : linkify(item)}</li>
             ))}
           </List>
         </div>
@@ -998,25 +994,28 @@ function ProtocolSubheadingDrawer({
       data-wiki-outline-anchor
       data-wiki-outline-parent={sectionId}
     >
-      <button
-        type="button"
-        className="wiki-protocol-drawer__header"
-        aria-expanded={isOpen}
-        onClick={onToggle}
-      >
-        <div className="wiki-protocol-drawer__title-row">
-          <span className="wiki-protocol-drawer__index-pill">
-            {subheading.index}
+      <h3 className="wiki-protocol-drawer__heading">
+        <button
+          type="button"
+          className="wiki-protocol-drawer__header"
+          aria-expanded={isOpen}
+          aria-controls={`${subheading.id}-content`}
+          onClick={onToggle}
+        >
+          <span className="wiki-protocol-drawer__title-row">
+            <span className="wiki-protocol-drawer__index-pill">
+              {subheading.index}
+            </span>
+            <span className="wiki-protocol-drawer__title">{cleanTitle}</span>
           </span>
-          <span className="wiki-protocol-drawer__title">{cleanTitle}</span>
-        </div>
-        <span className="wiki-protocol-drawer__chevron" aria-hidden="true">
-          ▼
-        </span>
-      </button>
+          <span className="wiki-protocol-drawer__chevron" aria-hidden="true">
+            ▼
+          </span>
+        </button>
+      </h3>
 
       {isOpen && (
-        <div className="wiki-protocol-drawer__body">
+        <div className="wiki-protocol-drawer__body" id={`${subheading.id}-content`}>
           {blocks.map((block, idx) => (
             <RouteBlock
               key={`${subheading.id}-${block.type}-${idx}`}
@@ -1238,6 +1237,7 @@ export function WikiRoutePage({
   showAllOutlineHeadings = false,
   outlineSlot,
   leadSection,
+  articleLead,
 }: WikiRoutePageProps) {
   const imageSources = useMemo(
     () => [
@@ -1521,6 +1521,7 @@ export function WikiRoutePage({
                   <InlineRendererContext.Provider
                     value={inlineRenderer ?? null}
                   >
+                    {articleLead ? <div className="wiki-feature">{articleLead}</div> : null}
                     {content.sections.map((section) => (
                       <MemoRouteSection
                         key={section.id}

@@ -125,16 +125,6 @@
   text-wrap: pretty;
 }
 
-.story-hope-copy .story-hope-carry {
-  margin: 1.25em 0 0;
-  color: #6b5870;
-}
-
-.story-hope-carry strong {
-  color: #914f70;
-  font-weight: 600;
-}
-
 @media (max-width: 800px) and (orientation: portrait) {
   .home-story .story-chapter--hope-return {
     --scene-hold: 120svh;
@@ -184,10 +174,6 @@
     font-size: 16px;
     line-height: 1.55;
   }
-
-  .story-hope-copy .story-hope-carry {
-    margin-top: 0.8em;
-  }
 }
 
 @media (max-height: 650px) and (orientation: landscape) {
@@ -205,10 +191,6 @@
   .story-hope-copy p {
     font-size: 14px;
     line-height: 1.4;
-  }
-
-  .story-hope-copy .story-hope-carry {
-    margin-top: 0.7em;
   }
 }
 

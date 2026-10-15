@@ -123,7 +123,7 @@ function interviewFor(sectionId: string, headingId?: string) {
   if (heading.type !== "subheading") return null;
   const next = blocks.findIndex((block, index) => index > start && block.type === "subheading");
   const content = blocks.slice(start + 1, next < 0 ? undefined : next);
-  const paragraphs = content.flatMap((block: WikiContentBlock) => block.type === "prose" ? block.paragraphs : []);
+  const paragraphs = content.flatMap((block: WikiContentBlock) => block.type === "prose" ? block.paragraphs : block.type === "heading" ? [`**${block.title}**`] : []);
   return { title: heading.title, paragraphs: paragraphs.filter((paragraph) => paragraph !== "---") };
 }
 

@@ -74,6 +74,8 @@ export interface WikiReferenceEntry {
 export type WikiContentBlock =
   | { type: "prose"; paragraphs: string[] }
   | { type: "quote"; text: string }
+  | { type: "heading"; level: 4 | 5 | 6; title: string }
+  | { type: "protocol-steps"; steps: Array<{ number: string; blocks: WikiContentBlock[] }> }
   | { type: "list"; items: string[]; ordered?: boolean; start?: number }
   | { type: "code"; language?: string; code: string; label?: string }
   | {
