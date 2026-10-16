@@ -50,7 +50,7 @@ export const modelAssets = {
   "fileName": "model-figure-05.png",
   "localSourcePath": "文案集/drylab/model/图片和附件/image 1.png",
   "uploadUrl": "",
-  "alt": "Figure 15. AlphaFold 3 confidence scores and position-9 fill ratio for the 17 candidate peptides. Each point represents the mean across five models; diamonds mark the two candidates below the fill-ratio criterion. ipTM ranged from 0.932 to 0.970, with a rank correlation of +0.02 between ipTM and fill ratio. HILHVSFLA had an ipTM of 0.960 and an F-pocket fill ratio of 43%."
+  "alt": "Figure 15. AlphaFold 3 confidence scores and position-9 fill ratio for the 17 candidate peptides. Each point represents the mean across five models; diamonds mark the two candidates below the fill-ratio criterion. Mean ipTM ranged from 0.958 to 0.970, with a rank correlation of +0.19 between ipTM and fill ratio. HILHVSFLA had an ipTM of 0.960 and an F-pocket fill ratio of 43%."
 }, localSrc: image4 },
   "image 10.png": { ...{
   "fileName": "model-figure-06.png",

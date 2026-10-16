@@ -984,477 +984,8 @@ const manuscriptSections: WikiPageContent["sections"] = [
         ]
       },
       {
-        "type": "table",
-        "headers": [
-          "**Antigen**",
-          "**Peptide**",
-          "**Protein position**",
-          "**Predicted IC₅₀, nM**",
-          "**NetMHCpan EL percentile rank**",
-          "**IEDB immunogenicity score**",
-          "**Topology annotation and decision**"
-        ],
-        "rows": [
-          [
-            "TROP2",
-            "`GLAPPPLRL`",
-            "6–14",
-            "203.99",
-            "0.03",
-            "0.00118",
-            "Signal peptide"
-          ],
-          [
-            "TROP2",
-            "`LLLLVLAAV`",
-            "16–24",
-            "24.52",
-            "0.80",
-            "0.07088",
-            "Signal peptide"
-          ],
-          [
-            "TROP2",
-            "`SVCWCVNSV`",
-            "123–131",
-            "222.32",
-            "3.10",
-            "0.08963",
-            "Retained"
-          ],
-          [
-            "TROP2",
-            "`RLFRERYRL`",
-            "178–186",
-            "61.63",
-            "0.28",
-            "0.26342",
-            "Retained"
-          ],
-          [
-            "TROP2",
-            "`TLIYYLDEI`",
-            "256–264",
-            "12.55",
-            "0.34",
-            "0.10266",
-            "Retained"
-          ],
-          [
-            "TROP2",
-            "`YLDEIPPKF`",
-            "260–268",
-            "79.58",
-            "0.02",
-            "0.09175",
-            "Retained"
-          ],
-          [
-            "TROP2",
-            "`RLTAGLIAV`",
-            "272–280",
-            "10.02",
-            "0.07",
-            "0.20971",
-            "Transmembrane"
-          ],
-          [
-            "TROP2",
-            "`GLIAVIVVV`",
-            "276–284",
-            "41.76",
-            "0.19",
-            "0.30701",
-            "Transmembrane"
-          ],
-          [
-            "TROP2",
-            "`IVVVVVALV`",
-            "281–289",
-            "426.36",
-            "2.50",
-            "0.16054",
-            "Transmembrane"
-          ],
-          [
-            "B7-H4",
-            "`SLGQILFWS`",
-            "3–11",
-            "328.57",
-            "3.30",
-            "0.24182",
-            "Signal peptide"
-          ],
-          [
-            "B7-H4",
-            "`ILFWSIISI`",
-            "7–15",
-            "10.72",
-            "0.19",
-            "0.24073",
-            "Signal peptide"
-          ],
-          [
-            "B7-H4",
-            "`SIISIIIIL`",
-            "11–19",
-            "332.68",
-            "0.51",
-            "0.32169",
-            "Signal peptide"
-          ],
-          [
-            "B7-H4",
-            "`SIIIILAGA`",
-            "14–22",
-            "229.25",
-            "2.00",
-            "0.34910",
-            "Signal peptide"
-          ],
-          [
-            "B7-H4",
-            "`IILAGAIAL`",
-            "17–25",
-            "128.04",
-            "0.62",
-            "0.24078",
-            "Signal peptide"
-          ],
-          [
-            "B7-H4",
-            "`ILAGAIALI`",
-            "18–26",
-            "12.11",
-            "0.19",
-            "0.23672",
-            "Signal peptide"
-          ],
-          [
-            "B7-H4",
-            "`WLKEGVLGL`",
-            "71–79",
-            "31.58",
-            "0.11",
-            "0.11305",
-            "Retained"
-          ],
-          [
-            "B7-H4",
-            "`AVFADQVIV`",
-            "102–110",
-            "329.27",
-            "0.54",
-            "0.10253",
-            "Retained"
-          ],
-          [
-            "B7-H4",
-            "`SFFAISWAL`",
-            "264–272",
-            "331.79",
-            "2.20",
-            "0.26104",
-            "Transmembrane"
-          ],
-          [
-            "B7-H4",
-            "`AISWALLPL`",
-            "267–275",
-            "122.80",
-            "2.10",
-            "0.18101",
-            "Transmembrane"
-          ],
-          [
-            "Nectin-4",
-            "`FQARLRLRV`",
-            "137–145",
-            "439.99",
-            "1.30",
-            "0.12358",
-            "Retained"
-          ],
-          [
-            "Nectin-4",
-            "`RLRVLVPPL`",
-            "142–150",
-            "193.10",
-            "1.50",
-            "0.07056",
-            "Retained"
-          ],
-          [
-            "Nectin-4",
-            "`AVTSEFHLV`",
-            "203–211",
-            "357.45",
-            "0.44",
-            "0.07465",
-            "Retained"
-          ],
-          [
-            "Nectin-4",
-            "`HILHVSFLA`",
-            "238–246",
-            "190.78",
-            "1.90",
-            "0.00574",
-            "Retained"
-          ],
-          [
-            "Nectin-4",
-            "`FLAEASVRG`",
-            "244–252",
-            "460.73",
-            "1.90",
-            "0.06090",
-            "Retained"
-          ],
-          [
-            "Nectin-4",
-            "`VVVGVIAAL`",
-            "351–359",
-            "261.34",
-            "0.68",
-            "0.26886",
-            "Transmembrane"
-          ],
-          [
-            "Nectin-4",
-            "`VIAALLFCL`",
-            "355–363",
-            "64.24",
-            "1.50",
-            "0.09813",
-            "Transmembrane"
-          ],
-          [
-            "Nectin-4",
-            "`ALLFCLLVV`",
-            "358–366",
-            "46.65",
-            "1.30",
-            "0.06602",
-            "Transmembrane"
-          ],
-          [
-            "Nectin-4",
-            "`LLFCLLVVV`",
-            "359–367",
-            "37.44",
-            "1.50",
-            "0.02147",
-            "Transmembrane"
-          ],
-          [
-            "Nectin-4",
-            "`YINGRGHLV`",
-            "502–510",
-            "255.92",
-            "0.41",
-            "0.13512",
-            "Retained"
-          ],
-          [
-            "LIV-1",
-            "`KLSVILILT`",
-            "4–12",
-            "279.90",
-            "1.40",
-            "0.21284",
-            "Signal peptide"
-          ],
-          [
-            "LIV-1",
-            "`SVILILTFA`",
-            "6–14",
-            "358.45",
-            "1.60",
-            "0.25236",
-            "Signal peptide"
-          ],
-          [
-            "LIV-1",
-            "`VILILTFAL`",
-            "7–15",
-            "253.64",
-            "2.60",
-            "0.27772",
-            "Signal peptide"
-          ],
-          [
-            "LIV-1",
-            "`LILTFALSV`",
-            "9–17",
-            "20.75",
-            "0.58",
-            "0.08027",
-            "Signal peptide"
-          ],
-          [
-            "LIV-1",
-            "`TVSEGTHFL`",
-            "194–202",
-            "340.45",
-            "0.25",
-            "0.21229",
-            "Retained"
-          ],
-          [
-            "LIV-1",
-            "`FLSLLGVIL`",
-            "337–345",
-            "102.46",
-            "0.64",
-            "0.06884",
-            "Transmembrane"
-          ],
-          [
-            "LIV-1",
-            "`LLGVILVPL`",
-            "340–348",
-            "53.25",
-            "1.50",
-            "0.20006",
-            "Transmembrane"
-          ],
-          [
-            "LIV-1",
-            "`LLSFLVALA`",
-            "357–365",
-            "33.42",
-            "1.60",
-            "0.11870",
-            "Transmembrane"
-          ],
-          [
-            "LIV-1",
-            "`FLVALAVGT`",
-            "360–368",
-            "120.26",
-            "2.40",
-            "0.13344",
-            "Transmembrane"
-          ],
-          [
-            "LIV-1",
-            "`YFMFLVEHV`",
-            "432–440",
-            "136.19",
-            "1.80",
-            "0.19226",
-            "Transmembrane"
-          ],
-          [
-            "LIV-1",
-            "`FMFLVEHVL`",
-            "433–441",
-            "7.50",
-            "0.14",
-            "0.21271",
-            "Transmembrane"
-          ],
-          [
-            "LIV-1",
-            "`FLVEHVLTL`",
-            "435–443",
-            "3.38",
-            "0.01",
-            "0.19783",
-            "Transmembrane"
-          ],
-          [
-            "LIV-1",
-            "`GVATLAWMV`",
-            "591–599",
-            "54.75",
-            "0.67",
-            "0.16213",
-            "Retained"
-          ],
-          [
-            "LIV-1",
-            "`GLHNFSDGL`",
-            "604–612",
-            "110.36",
-            "0.47",
-            "0.00078",
-            "Retained"
-          ],
-          [
-            "LIV-1",
-            "`SVAVFCHEL`",
-            "629–637",
-            "436.04",
-            "1.20",
-            "0.20329",
-            "Retained"
-          ],
-          [
-            "LIV-1",
-            "`FIGHYAENV`",
-            "677–685",
-            "35.71",
-            "0.50",
-            "0.15750",
-            "Retained"
-          ],
-          [
-            "LIV-1",
-            "`NVSMWIFAL`",
-            "684–692",
-            "130.10",
-            "1.90",
-            "0.23224",
-            "Transmembrane"
-          ],
-          [
-            "LIV-1",
-            "`SMWIFALTA`",
-            "686–694",
-            "48.04",
-            "0.95",
-            "0.36997",
-            "Transmembrane"
-          ],
-          [
-            "LIV-1",
-            "`WIFALTAGL`",
-            "688–696",
-            "27.42",
-            "1.50",
-            "0.15593",
-            "Transmembrane"
-          ],
-          [
-            "LIV-1",
-            "`FMYVALVDM`",
-            "697–705",
-            "63.80",
-            "1.60",
-            "0.11580",
-            "Transmembrane"
-          ],
-          [
-            "LIV-1",
-            "`MLLGFGIML`",
-            "732–740",
-            "18.06",
-            "0.23",
-            "0.18612",
-            "Transmembrane"
-          ],
-          [
-            "LIV-1",
-            "`LLGFGIMLL`",
-            "733–741",
-            "33.39",
-            "0.41",
-            "0.13240",
-            "Transmembrane"
-          ]
-        ]
+        "type": "feature",
+        "key": "model-panel-7"
       },
       {
         "type": "prose",
@@ -1470,7 +1001,7 @@ const manuscriptSections: WikiPageContent["sections"] = [
       },
       {
         "type": "feature",
-        "key": "model-panel-7"
+        "key": "model-panel-8"
       },
       {
         "type": "prose",
@@ -1509,18 +1040,17 @@ const manuscriptSections: WikiPageContent["sections"] = [
       {
         "type": "prose",
         "paragraphs": [
-          "Confidence scores were high across all 85 models, with peptide-heavy-chain interface pTM values ranging from 0.932 to 0.970 (median 0.956), but they did not distinguish candidates that passed structural review from those that failed (Figure 15). The two rejected peptides had pTM scores of 0.933 and 0.960, both within the range of accepted candidates. AlphaFold3's own confidence metric reports whether a model is self-consistent, not whether the peptide fits the groove correctly. We therefore assessed binding geometry separately using structural measurements derived from the predicted coordinates."
+          "Confidence scores were high across all 85 models, with ipTM values ranging from 0.950 to 0.970 (median 0.970), but they did not distinguish candidates that passed structural review from those that failed (Figure 15). The two rejected peptides, FLAEASVRG and HILHVSFLA, had mean ipTM scores of 0.968 and 0.960, both within the range of accepted candidates. AlphaFold3's own confidence metric reports whether a model is self-consistent, not whether the peptide fits the groove correctly. We therefore assessed binding geometry separately using structural measurements derived from the predicted coordinates."
         ]
       },
       {
-        "type": "figure",
-        "src": getModelImage("image 1.png"),
-        "alt": "Figure 15. AlphaFold 3 confidence scores and position-9 fill ratio for the 17 candidate peptides. Each point represents the mean across five models; diamonds mark the two candidates below the fill-ratio criterion. ipTM ranged from 0.932 to 0.970, with a rank correlation of +0.02 between ipTM and fill ratio. HILHVSFLA had an ipTM of 0.960 and an F-pocket fill ratio of 43%."
+        "type": "feature",
+        "key": "model-panel-9"
       },
       {
         "type": "prose",
         "paragraphs": [
-          "**Figure 15. **AlphaFold 3 confidence scores and position-9 fill ratio for the 17 candidate peptides. Each point represents the mean across five models; diamonds mark the two candidates below the fill-ratio criterion. ipTM ranged from 0.932 to 0.970, with a rank correlation of +0.02 between ipTM and fill ratio. HILHVSFLA had an ipTM of 0.960 and an F-pocket fill ratio of 43%."
+          "Figure 15. AlphaFold 3 confidence scores and position-9 fill ratio for the 17 candidate peptides. Each point represents the mean across five models; diamonds mark the two candidates below the fill-ratio criterion. Mean ipTM ranged from 0.958 to 0.970, with a rank correlation of +0.19 between ipTM and fill ratio. HILHVSFLA had an ipTM of 0.960 and an F-pocket fill ratio of 43%."
         ]
       },
       {
@@ -1591,7 +1121,7 @@ const manuscriptSections: WikiPageContent["sections"] = [
       },
       {
         "type": "feature",
-        "key": "model-panel-8"
+        "key": "model-panel-10"
       },
       {
         "type": "prose",
@@ -1648,11 +1178,11 @@ const manuscriptSections: WikiPageContent["sections"] = [
       },
       {
         "type": "feature",
-        "key": "model-panel-9"
+        "key": "model-panel-11"
       },
       {
         "type": "feature",
-        "key": "model-panel-10"
+        "key": "model-panel-12"
       },
       {
         "type": "prose",
@@ -1929,7 +1459,7 @@ const manuscriptSections: WikiPageContent["sections"] = [
       },
       {
         "type": "feature",
-        "key": "model-panel-11"
+        "key": "model-panel-13"
       },
       {
         "type": "prose",
@@ -1939,7 +1469,7 @@ const manuscriptSections: WikiPageContent["sections"] = [
       },
       {
         "type": "feature",
-        "key": "model-panel-12"
+        "key": "model-panel-14"
       },
       {
         "type": "prose",
@@ -2440,6 +1970,482 @@ export const modelPanels: Record<string, ModelPanel> = {
     ]
   },
   "model-panel-7": {
+    "kind": "antigen-table",
+    "table": {
+      "type": "table",
+      "headers": [
+        "**Antigen**",
+        "**Peptide**",
+        "**Protein position**",
+        "**Predicted IC₅₀, nM**",
+        "**NetMHCpan EL percentile rank**",
+        "**IEDB immunogenicity score**",
+        "**Topology annotation and decision**"
+      ],
+      "rows": [
+        [
+          "TROP2",
+          "`GLAPPPLRL`",
+          "6–14",
+          "203.99",
+          "0.03",
+          "0.00118",
+          "Signal peptide"
+        ],
+        [
+          "TROP2",
+          "`LLLLVLAAV`",
+          "16–24",
+          "24.52",
+          "0.80",
+          "0.07088",
+          "Signal peptide"
+        ],
+        [
+          "TROP2",
+          "`SVCWCVNSV`",
+          "123–131",
+          "222.32",
+          "3.10",
+          "0.08963",
+          "Retained"
+        ],
+        [
+          "TROP2",
+          "`RLFRERYRL`",
+          "178–186",
+          "61.63",
+          "0.28",
+          "0.26342",
+          "Retained"
+        ],
+        [
+          "TROP2",
+          "`TLIYYLDEI`",
+          "256–264",
+          "12.55",
+          "0.34",
+          "0.10266",
+          "Retained"
+        ],
+        [
+          "TROP2",
+          "`YLDEIPPKF`",
+          "260–268",
+          "79.58",
+          "0.02",
+          "0.09175",
+          "Retained"
+        ],
+        [
+          "TROP2",
+          "`RLTAGLIAV`",
+          "272–280",
+          "10.02",
+          "0.07",
+          "0.20971",
+          "Transmembrane"
+        ],
+        [
+          "TROP2",
+          "`GLIAVIVVV`",
+          "276–284",
+          "41.76",
+          "0.19",
+          "0.30701",
+          "Transmembrane"
+        ],
+        [
+          "TROP2",
+          "`IVVVVVALV`",
+          "281–289",
+          "426.36",
+          "2.50",
+          "0.16054",
+          "Transmembrane"
+        ],
+        [
+          "B7-H4",
+          "`SLGQILFWS`",
+          "3–11",
+          "328.57",
+          "3.30",
+          "0.24182",
+          "Signal peptide"
+        ],
+        [
+          "B7-H4",
+          "`ILFWSIISI`",
+          "7–15",
+          "10.72",
+          "0.19",
+          "0.24073",
+          "Signal peptide"
+        ],
+        [
+          "B7-H4",
+          "`SIISIIIIL`",
+          "11–19",
+          "332.68",
+          "0.51",
+          "0.32169",
+          "Signal peptide"
+        ],
+        [
+          "B7-H4",
+          "`SIIIILAGA`",
+          "14–22",
+          "229.25",
+          "2.00",
+          "0.34910",
+          "Signal peptide"
+        ],
+        [
+          "B7-H4",
+          "`IILAGAIAL`",
+          "17–25",
+          "128.04",
+          "0.62",
+          "0.24078",
+          "Signal peptide"
+        ],
+        [
+          "B7-H4",
+          "`ILAGAIALI`",
+          "18–26",
+          "12.11",
+          "0.19",
+          "0.23672",
+          "Signal peptide"
+        ],
+        [
+          "B7-H4",
+          "`WLKEGVLGL`",
+          "71–79",
+          "31.58",
+          "0.11",
+          "0.11305",
+          "Retained"
+        ],
+        [
+          "B7-H4",
+          "`AVFADQVIV`",
+          "102–110",
+          "329.27",
+          "0.54",
+          "0.10253",
+          "Retained"
+        ],
+        [
+          "B7-H4",
+          "`SFFAISWAL`",
+          "264–272",
+          "331.79",
+          "2.20",
+          "0.26104",
+          "Transmembrane"
+        ],
+        [
+          "B7-H4",
+          "`AISWALLPL`",
+          "267–275",
+          "122.80",
+          "2.10",
+          "0.18101",
+          "Transmembrane"
+        ],
+        [
+          "Nectin-4",
+          "`FQARLRLRV`",
+          "137–145",
+          "439.99",
+          "1.30",
+          "0.12358",
+          "Retained"
+        ],
+        [
+          "Nectin-4",
+          "`RLRVLVPPL`",
+          "142–150",
+          "193.10",
+          "1.50",
+          "0.07056",
+          "Retained"
+        ],
+        [
+          "Nectin-4",
+          "`AVTSEFHLV`",
+          "203–211",
+          "357.45",
+          "0.44",
+          "0.07465",
+          "Retained"
+        ],
+        [
+          "Nectin-4",
+          "`HILHVSFLA`",
+          "238–246",
+          "190.78",
+          "1.90",
+          "0.00574",
+          "Retained"
+        ],
+        [
+          "Nectin-4",
+          "`FLAEASVRG`",
+          "244–252",
+          "460.73",
+          "1.90",
+          "0.06090",
+          "Retained"
+        ],
+        [
+          "Nectin-4",
+          "`VVVGVIAAL`",
+          "351–359",
+          "261.34",
+          "0.68",
+          "0.26886",
+          "Transmembrane"
+        ],
+        [
+          "Nectin-4",
+          "`VIAALLFCL`",
+          "355–363",
+          "64.24",
+          "1.50",
+          "0.09813",
+          "Transmembrane"
+        ],
+        [
+          "Nectin-4",
+          "`ALLFCLLVV`",
+          "358–366",
+          "46.65",
+          "1.30",
+          "0.06602",
+          "Transmembrane"
+        ],
+        [
+          "Nectin-4",
+          "`LLFCLLVVV`",
+          "359–367",
+          "37.44",
+          "1.50",
+          "0.02147",
+          "Transmembrane"
+        ],
+        [
+          "Nectin-4",
+          "`YINGRGHLV`",
+          "502–510",
+          "255.92",
+          "0.41",
+          "0.13512",
+          "Retained"
+        ],
+        [
+          "LIV-1",
+          "`KLSVILILT`",
+          "4–12",
+          "279.90",
+          "1.40",
+          "0.21284",
+          "Signal peptide"
+        ],
+        [
+          "LIV-1",
+          "`SVILILTFA`",
+          "6–14",
+          "358.45",
+          "1.60",
+          "0.25236",
+          "Signal peptide"
+        ],
+        [
+          "LIV-1",
+          "`VILILTFAL`",
+          "7–15",
+          "253.64",
+          "2.60",
+          "0.27772",
+          "Signal peptide"
+        ],
+        [
+          "LIV-1",
+          "`LILTFALSV`",
+          "9–17",
+          "20.75",
+          "0.58",
+          "0.08027",
+          "Signal peptide"
+        ],
+        [
+          "LIV-1",
+          "`TVSEGTHFL`",
+          "194–202",
+          "340.45",
+          "0.25",
+          "0.21229",
+          "Retained"
+        ],
+        [
+          "LIV-1",
+          "`FLSLLGVIL`",
+          "337–345",
+          "102.46",
+          "0.64",
+          "0.06884",
+          "Transmembrane"
+        ],
+        [
+          "LIV-1",
+          "`LLGVILVPL`",
+          "340–348",
+          "53.25",
+          "1.50",
+          "0.20006",
+          "Transmembrane"
+        ],
+        [
+          "LIV-1",
+          "`LLSFLVALA`",
+          "357–365",
+          "33.42",
+          "1.60",
+          "0.11870",
+          "Transmembrane"
+        ],
+        [
+          "LIV-1",
+          "`FLVALAVGT`",
+          "360–368",
+          "120.26",
+          "2.40",
+          "0.13344",
+          "Transmembrane"
+        ],
+        [
+          "LIV-1",
+          "`YFMFLVEHV`",
+          "432–440",
+          "136.19",
+          "1.80",
+          "0.19226",
+          "Transmembrane"
+        ],
+        [
+          "LIV-1",
+          "`FMFLVEHVL`",
+          "433–441",
+          "7.50",
+          "0.14",
+          "0.21271",
+          "Transmembrane"
+        ],
+        [
+          "LIV-1",
+          "`FLVEHVLTL`",
+          "435–443",
+          "3.38",
+          "0.01",
+          "0.19783",
+          "Transmembrane"
+        ],
+        [
+          "LIV-1",
+          "`GVATLAWMV`",
+          "591–599",
+          "54.75",
+          "0.67",
+          "0.16213",
+          "Retained"
+        ],
+        [
+          "LIV-1",
+          "`GLHNFSDGL`",
+          "604–612",
+          "110.36",
+          "0.47",
+          "0.00078",
+          "Retained"
+        ],
+        [
+          "LIV-1",
+          "`SVAVFCHEL`",
+          "629–637",
+          "436.04",
+          "1.20",
+          "0.20329",
+          "Retained"
+        ],
+        [
+          "LIV-1",
+          "`FIGHYAENV`",
+          "677–685",
+          "35.71",
+          "0.50",
+          "0.15750",
+          "Retained"
+        ],
+        [
+          "LIV-1",
+          "`NVSMWIFAL`",
+          "684–692",
+          "130.10",
+          "1.90",
+          "0.23224",
+          "Transmembrane"
+        ],
+        [
+          "LIV-1",
+          "`SMWIFALTA`",
+          "686–694",
+          "48.04",
+          "0.95",
+          "0.36997",
+          "Transmembrane"
+        ],
+        [
+          "LIV-1",
+          "`WIFALTAGL`",
+          "688–696",
+          "27.42",
+          "1.50",
+          "0.15593",
+          "Transmembrane"
+        ],
+        [
+          "LIV-1",
+          "`FMYVALVDM`",
+          "697–705",
+          "63.80",
+          "1.60",
+          "0.11580",
+          "Transmembrane"
+        ],
+        [
+          "LIV-1",
+          "`MLLGFGIML`",
+          "732–740",
+          "18.06",
+          "0.23",
+          "0.18612",
+          "Transmembrane"
+        ],
+        [
+          "LIV-1",
+          "`LLGFGIMLL`",
+          "733–741",
+          "33.39",
+          "0.41",
+          "0.13240",
+          "Transmembrane"
+        ]
+      ]
+    }
+  },
+  "model-panel-8": {
     "kind": "tabs",
     "title": "IEDB inputs, parameters, and filtering rules",
     "entries": [
@@ -2556,11 +2562,15 @@ export const modelPanels: Record<string, ModelPanel> = {
       }
     ]
   },
-  "model-panel-8": {
+  "model-panel-9": {
+    "kind": "chart",
+    "chart": "confidence-scatter"
+  },
+  "model-panel-10": {
     "kind": "chart",
     "chart": "burial-heatmap"
   },
-  "model-panel-9": {
+  "model-panel-11": {
     "kind": "fold",
     "title": "How the 60% bound was derived",
     "blocks": [
@@ -2637,11 +2647,11 @@ export const modelPanels: Record<string, ModelPanel> = {
       }
     ]
   },
-  "model-panel-10": {
+  "model-panel-12": {
     "kind": "chart",
     "chart": "p9-volume"
   },
-  "model-panel-11": {
+  "model-panel-13": {
     "kind": "tabs",
     "title": "Structural processing",
     "entries": [
@@ -2760,7 +2770,7 @@ export const modelPanels: Record<string, ModelPanel> = {
       }
     ]
   },
-  "model-panel-12": {
+  "model-panel-14": {
     "kind": "transpose",
     "table": {
       "type": "table",
@@ -3605,6 +3615,10 @@ export const modelDownloads = [
   {
     "label": "00_SYSTEMS.csv",
     "path": "assets/docs/model/00_systems.csv"
+  },
+  {
+    "label": "figure15_data.csv",
+    "path": "assets/docs/model/figure15_data.csv"
   },
   {
     "label": "PXD024322_TNBC_vs_Normal_limma_ALL_9088_proteins(1).csv",
