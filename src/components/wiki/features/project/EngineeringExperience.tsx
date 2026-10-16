@@ -253,6 +253,8 @@ function EngineeringBlock({ block }: { block: WikiContentBlock }) {
           <img
             src={block.src}
             alt={block.alt}
+            width={block.width}
+            height={block.height}
             loading="lazy"
             decoding="async"
           />

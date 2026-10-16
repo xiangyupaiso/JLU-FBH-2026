@@ -25,7 +25,6 @@ import { WikiLineSidebar, type WikiLineSidebarItem } from "./WikiLineSidebar";
 import { WikiNextRecord } from "./WikiNextRecord";
 import { WikiProtocolModal } from "./WikiProtocolViewer";
 import { PageImagePreloads } from "../common/PageImagePreloads";
-import { wikiPageImages } from "./wikiPageImages";
 import { experimentProtocolImage } from "../../data/wet-lab/experimentProtocolPages";
 import type { ExperimentProtocolPair } from "../../data/wet-lab/experimentProtocolPages";
 import "../../styles/wiki-rebuild.css";
@@ -54,9 +53,9 @@ import "../../styles/features/experiments-panels.css";
  * Wet Lab records use this component with their own three-token palette;
  * nothing in the route structure changes between modules.
  *
- * Image readiness is part of this template: hero and every content figure
- * preload before the shared loading cover leaves. Interaction-only images
- * use `preloadImages` or the shared `PageImagePreloads` in their Feature.
+ * Image readiness: only the hero, explicit `preloadImages` and protocol
+ * dialog pages preload behind the loading cover. Article figures load with
+ * the page; the loader only waits for the ones near the first screen.
  */
 
 type FeatureMap = Partial<Record<string, ReactNode>>;
@@ -108,8 +107,6 @@ interface WikiRoutePageProps {
    * figures are collected automatically; do not list PDF or game resources.
    */
   preloadImages?: readonly string[];
-  /** Let long articles load body figures as the reader reaches them. */
-  deferContentImages?: boolean;
   features?: FeatureMap;
   /** Module scope class that carries the palette, e.g. `wiki-page--project`. */
   pageClassName?: string;
@@ -588,7 +585,7 @@ function RouteBlock({
         >
           {block.src.includes("/engagement/education/figures/")
             ? <EducationViewportFigureImage src={block.src} alt={block.alt} />
-            : <img src={block.src} alt={block.alt} loading={block.src.includes("/assets/education/") ? "lazy" : "eager"} decoding="async" />}
+            : <img src={block.src} alt={block.alt} width={block.width} height={block.height} loading="lazy" decoding="async" />}
           {block.figureLabel ? (
             <figcaption>
               <span className="wiki-figure__label">{block.figureLabel}</span>
@@ -1222,7 +1219,6 @@ export function WikiRoutePage({
   heroImage,
   heroFallbackImage,
   preloadImages,
-  deferContentImages = false,
   features = {},
   pageClassName = "",
   theme,
@@ -1244,14 +1240,13 @@ export function WikiRoutePage({
     () => [
       heroImage,
       heroFallbackImage,
-      ...(deferContentImages ? [] : wikiPageImages(content)),
       ...(preloadImages ?? []),
       ...(protocolPairs ?? []).flatMap((pair) => [
         ...(typeof pair.flowPage === "number" ? [experimentProtocolImage(pair.flowPage)] : []),
         ...(typeof pair.inventoryPage === "number" ? [experimentProtocolImage(pair.inventoryPage)] : []),
       ]),
     ],
-    [content, heroImage, heroFallbackImage, preloadImages, protocolPairs, deferContentImages],
+    [heroImage, heroFallbackImage, preloadImages, protocolPairs],
   );
   const rootRef = useRef<HTMLElement>(null);
   const interfaceRef = useRef<HTMLDivElement>(null);

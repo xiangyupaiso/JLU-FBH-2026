@@ -14,7 +14,6 @@ export function Model() {
       theme="dry-lab"
       pageClassName="wiki-page--dry-lab wiki-page--model"
       hideHeroCopy
-      deferContentImages
       outlineDepth={3}
       features={modelFeatures()}
       inlineRenderer={renderModelCitedText}

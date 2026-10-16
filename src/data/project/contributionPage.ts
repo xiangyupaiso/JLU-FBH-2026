@@ -6,6 +6,7 @@ import type { CitationReference } from "../citations/citationTypes";
 import {
   contributionAssets,
   contributionImage,
+  type ContributionAssetEntry,
   type ContributionImageAssetKey,
 } from "./contributionAssets";
 import {
@@ -77,12 +78,17 @@ const learnMore = (label: string, url: string): string =>
 const fig = (
   key: ContributionImageAssetKey,
   caption: string,
-): WikiContentBlock => ({
-  type: "figure",
-  src: contributionImage(key),
-  alt: contributionAssets[key].alt,
-  caption,
-});
+): WikiContentBlock => {
+  const asset: ContributionAssetEntry = contributionAssets[key];
+  return {
+    type: "figure",
+    src: contributionImage(key),
+    alt: asset.alt,
+    caption,
+    width: asset.width,
+    height: asset.height,
+  };
+};
 
 /**
  * The manuscript is written in author–year style — `(Sahin et al. 2017)` — so

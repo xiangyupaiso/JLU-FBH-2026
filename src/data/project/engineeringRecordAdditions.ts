@@ -213,6 +213,8 @@ export const cycle2Section: WikiSection = {
         {
           type: "figure",
           src: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-c2-01.avif",
+          width: 3000,
+          height: 2100,
           alt: "Figure C2-01",
           caption: "Figure C2-01 · Binding-affinity and immunogenicity thresholds followed by source-protein context review reduced 1,838 overlapping nine-amino-acid peptides to 17 traceable candidate epitopes."
         }
@@ -284,6 +286,8 @@ export const cycle2Section: WikiSection = {
         {
           type: "figure",
           src: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-c2-02a.avif",
+          width: 3000,
+          height: 2100,
           alt: "Figure C2-02A",
           caption: "Figure C2-02A · Each candidate peptide was modelled with the HLA-A*02:01 heavy chain and β2-microglobulin. All five returned models were retained and assessed across five structural-review dimensions. `SVCWCVNSV` illustrated the PyMOL measurement and visualization workflow."
         }
@@ -340,6 +344,8 @@ export const cycle2Section: WikiSection = {
         {
           type: "figure",
           src: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-c2-02c.avif",
+          width: 1280,
+          height: 718,
           alt: "Figure C2-02C",
           caption: "Figure C2-02C · A representative PyMOL view illustrates the predicted placement of `SVCWCVNSV` within the HLA-A*02:01 binding groove, together with surrounding interface residues and predicted hydrogen bonds. Structural measurements included all five sampled models."
         }
@@ -641,6 +647,8 @@ export const cycle2Section: WikiSection = {
         {
           type: "figure",
           src: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-c2-03.avif",
+          width: 966,
+          height: 334,
           alt: "Figure C2-03",
           caption: "Figure C2-03 · First-round IFN-γ ELISpot compared 13 epitope-encoding circRNA preparations and selected two responsive modules from each of the four antigen sources."
         }
@@ -756,6 +764,8 @@ export const cycle2Section: WikiSection = {
         {
           type: "figure",
           src: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-c2-05a.avif",
+          width: 1702,
+          height: 1276,
           alt: "Figure C2-05A",
           caption: "Figure C2-05A · During the first activity at Hailun No. 1 High School, the teacher used the initial Virtual Laboratory with support from the development team. This activity revealed the need for clearer experimental purposes and more visible connections between consecutive steps."
         }
@@ -786,6 +796,8 @@ export const cycle2Section: WikiSection = {
         {
           type: "figure",
           src: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-c2-05b.avif",
+          width: 1706,
+          height: 1279,
           alt: "Figure C2-05B",
           caption: "Figure C2-05B · After revision, the same teacher independently organised the Virtual Laboratory and continued using it after the development team had left."
         }
@@ -863,6 +875,8 @@ export const cycle2Section: WikiSection = {
         {
           type: "figure",
           src: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-c2-06.avif",
+          width: 3000,
+          height: 2100,
           alt: "Figure C2-06",
           caption: "Figure C2-06 · **(A)** CD8/CD69 staining and flow cytometry assessed early T-cell activation under the TROP2 CTL1 and CTL2 conditions. **(B)** Calcein-AM release from K562 targets measured overall effector-cell cytotoxicity at an effector-to-target ratio of 80:1, with spontaneous- and maximum-release controls supporting normalisation."
         }
@@ -881,12 +895,16 @@ export const cycle2Section: WikiSection = {
         {
           type: "figure",
           src: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-c2-07a.avif",
+          width: 1340,
+          height: 612,
           alt: "Figure C2-07A",
           caption: "Figure C2-07A · CD8/CD69 flow cytometry following TROP2 CTL1 or CTL2 stimulation. Red ellipses identify the lymphocyte gate; green boxes identify CD8⁺CD69⁺ cells within that gate."
         },
         {
           type: "figure",
           src: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-c2-07b.avif",
+          width: 1745,
+          height: 1611,
           alt: "Figure C2-07B",
           caption: "Figure C2-07B · K562 killing was measured by Calcein-AM release at an effector-to-target ratio of 80:1 across the first-round constructs."
         }
@@ -953,6 +971,8 @@ export const cycle2Section: WikiSection = {
         {
           type: "figure",
           src: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-c2-08.avif",
+          width: 1844,
+          height: 1339,
           alt: "Figure C2-08",
           caption: "Figure C2-08 · Plasmid map of the Combined construct, designed to incorporate eight modules selected through the first-round ELISpot screen."
         }

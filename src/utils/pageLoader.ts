@@ -4,8 +4,9 @@
  * The loader is plain HTML/CSS so it paints before the app bundle arrives.
  * This module only decides WHEN it leaves: as soon as the current route is
  * actually presentable and the loader's entrance has finished. Readiness
- * includes the selected route's styles, fonts, all decoded images and the
- * first renderable frame of autoplay media used by its animations.
+ * includes the selected route's styles, fonts, decoded images around the
+ * first screen and the first renderable frame of autoplay media used by its
+ * animations. After the styles, these waits are capped by READY_DEADLINE_MS.
  */
 
 const LEAVE_MS = 380; // matches `.page-loader` opacity transition
@@ -13,6 +14,11 @@ const COMPLETE_HOLD_MS = 350; // let the finished illustration register
 // External apps may never send their readiness message when their service is
 // unavailable. This limit applies only to explicitly opted-in embeds.
 const EMBED_WAIT_MS = 12000;
+// A CDN request can stall with headers sent and a body that never finishes,
+// firing neither load nor error. Once the stylesheet applies, art, fonts and
+// scene preparation share this budget; then the page enters and the rest
+// keeps loading in place.
+const READY_DEADLINE_MS = 15000;
 
 let token = 0;
 let leaveTimer = 0;
@@ -198,6 +204,21 @@ async function pageReady(loader: HTMLElement, signal: AbortSignal) {
   reportStatus(loader, "styles", "Preparing the page…");
   await deferredStyles(signal);
   if (signal.aborted) return;
+  // Without its stylesheet the page is not presentable, so only the remaining
+  // stages run under the deadline. Its abort settles every wait below.
+  const budget = new AbortController();
+  const expire = () => budget.abort();
+  signal.addEventListener("abort", expire, { once: true });
+  const timer = window.setTimeout(expire, READY_DEADLINE_MS);
+  try {
+    await styledPageReady(loader, budget.signal);
+  } finally {
+    window.clearTimeout(timer);
+    signal.removeEventListener("abort", expire);
+  }
+}
+
+async function styledPageReady(loader: HTMLElement, signal: AbortSignal) {
   // Applying the non-blocking stylesheet can start new font requests. Do not
   // capture fonts.ready before the browser has laid out its styled content.
   await renderFrames();
@@ -211,10 +232,10 @@ async function pageReady(loader: HTMLElement, signal: AbortSignal) {
   await prepareArt();
   if (signal.aborted) return;
   reportStatus(loader, "fonts", "Preparing the text…");
-  await document.fonts?.ready;
+  await untilAborted(document.fonts?.ready, signal);
   if (signal.aborted) return;
   reportStatus(loader, "layout", "Preparing the scene…");
-  await Promise.all(Array.from(pagePreparations, (prepare) => prepare()));
+  await untilAborted(Promise.all(Array.from(pagePreparations, (prepare) => prepare())), signal);
   if (signal.aborted) return;
   // Font-dependent animation geometry and refreshed pins must paint before
   // HomeIntro is allowed to play, rather than settling during the reveal.
@@ -224,7 +245,7 @@ async function pageReady(loader: HTMLElement, signal: AbortSignal) {
   // own requests and decode must finish too, even when the source art is cached.
   await prepareArt();
   if (signal.aborted) return;
-  await document.fonts?.ready;
+  await untilAborted(document.fonts?.ready, signal);
   if (signal.aborted) return;
   reportStatus(loader, "layout", "Preparing the scene…");
   // Rebuilds can start new decode -> RAF -> pixel-sampling work. Drain the
@@ -234,6 +255,20 @@ async function pageReady(loader: HTMLElement, signal: AbortSignal) {
     if (signal.aborted) return;
     await renderFrames();
   } while (!signal.aborted && preparationTasks.size);
+}
+
+/** Settle with `task`, or quietly on abort. Rejections still pass through:
+ * a failed page preparation must surface as an error. */
+function untilAborted(task: Promise<unknown> | undefined, signal: AbortSignal) {
+  if (!task || signal.aborted) return Promise.resolve();
+  let stop = () => {};
+  return Promise.race([
+    task.then(() => {}),
+    new Promise<void>((resolve) => {
+      stop = resolve;
+      signal.addEventListener("abort", stop, { once: true });
+    }),
+  ]).finally(() => signal.removeEventListener("abort", stop));
 }
 
 /** The app stylesheet is loaded non-blocking (see vite.config.ts). */
@@ -393,9 +428,17 @@ async function pageImagesAndAnimations(
   const root = document.body;
   if (!root) return;
   const loader = loaderElement();
-  // Education has a long article with many remote figures. Its text is usable
-  // before those figures arrive, so only the shell and hero gate the loader.
-  const deferredArticle = root.querySelector(".wiki-page--education .wiki-article");
+  // Article text is usable before its figures arrive. Only figures around the
+  // first screen gate the loader; the rest stay lazy and load while reading.
+  const article = root.querySelector(".wiki-article");
+  const viewport = window.innerHeight;
+  const deferred = (element: Element) => {
+    if (!article?.contains(element)) return false;
+    const rect = element.getBoundingClientRect();
+    // Hidden tabs and closed drawers have no boxes.
+    if (!element.getClientRects().length) return true;
+    return rect.bottom < -viewport * 0.5 || rect.top > viewport * 1.5;
+  };
   const pending: Promise<void>[] = [];
   let complete = 0;
   let scanned = false;
@@ -442,7 +485,7 @@ async function pageImagesAndAnimations(
   for (const element of root.querySelectorAll<HTMLElement>("*:not([data-page-asset-preload], [data-page-asset-preload] *)")) {
     if (signal.aborted) return;
     if (element === loader || loader?.contains(element)) continue;
-    if (deferredArticle?.contains(element)) continue;
+    if (deferred(element)) continue;
     // Yield during large routes instead of blocking the loader's drawing.
     if (++count % 120 === 0) await new Promise(requestAnimationFrame);
     // Offscreen and initially transparent animation layers belong to this
