@@ -111,7 +111,7 @@ export const cycle2Section: WikiSection = {
   index: "02",
   kicker: "Cycle 2 — Integration",
   navLabel: "Cycle 2 — Integration",
-  title: "From epitope exploration to Combined",
+  title: "Cycle 2: From epitope exploration to Combined",
   summary: "TIME continues with **I—Integration**. Cycle 1 defined four antigen sources and a common human DC–T-cell context; this cycle connected those starting points to an experimentally selected multi-antigen...",
   blocks: [
         {
@@ -216,7 +216,7 @@ export const cycle2Section: WikiSection = {
           width: 3000,
           height: 2100,
           alt: "Figure C2-01",
-          caption: "Figure C2-01 · Binding-affinity and immunogenicity thresholds followed by source-protein context review reduced 1,838 overlapping nine-amino-acid peptides to 17 traceable candidate epitopes."
+          caption: "Binding-affinity and immunogenicity thresholds followed by source-protein context review reduced 1,838 overlapping nine-amino-acid peptides to 17 traceable candidate epitopes."
         }
           ]
         },
@@ -289,7 +289,7 @@ export const cycle2Section: WikiSection = {
           width: 3000,
           height: 2100,
           alt: "Figure C2-02A",
-          caption: "Figure C2-02A · Each candidate peptide was modelled with the HLA-A*02:01 heavy chain and β2-microglobulin. All five returned models were retained and assessed across five structural-review dimensions. `SVCWCVNSV` illustrated the PyMOL measurement and visualization workflow."
+          caption: "Each candidate peptide was modelled with the HLA-A*02:01 heavy chain and β2-microglobulin. All five returned models were retained and assessed across five structural-review dimensions. `SVCWCVNSV` illustrated the PyMOL measurement and visualization workflow."
         }
           ]
         },
@@ -305,7 +305,7 @@ export const cycle2Section: WikiSection = {
         },
         {
           type: "table",
-          caption: "Table C2-02B｜Structural measurements and first-round coding status of 17 candidate epitopes｜17条候选表位的结构测量与首轮编码状态",
+          caption: "Table C2-02B｜Structural measurements and first-round coding status of 17 candidate epitopes",
           headers: [
             "Antigen",
             "Peptide",
@@ -347,7 +347,7 @@ export const cycle2Section: WikiSection = {
           width: 1280,
           height: 718,
           alt: "Figure C2-02C",
-          caption: "Figure C2-02C · A representative PyMOL view illustrates the predicted placement of `SVCWCVNSV` within the HLA-A*02:01 binding groove, together with surrounding interface residues and predicted hydrogen bonds. Structural measurements included all five sampled models."
+          caption: "A representative PyMOL view illustrates the predicted placement of `SVCWCVNSV` within the HLA-A*02:01 binding groove, together with surrounding interface residues and predicted hydrogen bonds. Structural measurements included all five sampled models."
         }
           ]
         },
@@ -560,7 +560,7 @@ export const cycle2Section: WikiSection = {
         },
         {
           type: "table",
-          caption: "Table C2-01｜RT-qPCR assessment of the representative first-round preparation｜首轮代表性制备物的RT-qPCR评价",
+          caption: "Table C2-01｜RT-qPCR assessment of the representative first-round preparation",
           headers: ["Input volume", "Recorded circular-to-linear signal ratio", "Estimated circular fraction"],
           rows: [
             ["2 µL", "13.0:1", "92.85±0.08%"],
@@ -650,7 +650,7 @@ export const cycle2Section: WikiSection = {
           width: 966,
           height: 334,
           alt: "Figure C2-03",
-          caption: "Figure C2-03 · First-round IFN-γ ELISpot compared 13 epitope-encoding circRNA preparations and selected two responsive modules from each of the four antigen sources."
+          caption: "First-round IFN-γ ELISpot compared 13 epitope-encoding circRNA preparations and selected two responsive modules from each of the four antigen sources."
         }
           ]
         },
@@ -723,7 +723,7 @@ export const cycle2Section: WikiSection = {
                     "src": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-c2-04b.avif"
           }
 ],
-          caption: "**(A)** Approximate classroom recognition accuracy in the limited-clue and clear-clue rounds. **(B)** Classroom scene from the Vaccine Classroom activity at the Primary School Affiliated to Jilin University."
+          caption: "(A) Approximate classroom recognition accuracy in the limited-clue and clear-clue rounds. (B) Classroom scene from the Vaccine Classroom activity at the Primary School Affiliated to Jilin University."
         }
           ]
         },
@@ -767,7 +767,7 @@ export const cycle2Section: WikiSection = {
           width: 1702,
           height: 1276,
           alt: "Figure C2-05A",
-          caption: "Figure C2-05A · During the first activity at Hailun No. 1 High School, the teacher used the initial Virtual Laboratory with support from the development team. This activity revealed the need for clearer experimental purposes and more visible connections between consecutive steps."
+          caption: "During the first activity at Hailun No. 1 High School, the teacher used the initial Virtual Laboratory with support from the development team. This activity revealed the need for clearer experimental purposes and more visible connections between consecutive steps."
         }
           ]
         },
@@ -799,7 +799,7 @@ export const cycle2Section: WikiSection = {
           width: 1706,
           height: 1279,
           alt: "Figure C2-05B",
-          caption: "Figure C2-05B · After revision, the same teacher independently organised the Virtual Laboratory and continued using it after the development team had left."
+          caption: "After revision, the same teacher independently organised the Virtual Laboratory and continued using it after the development team had left."
         }
           ]
         },
@@ -878,7 +878,7 @@ export const cycle2Section: WikiSection = {
           width: 3000,
           height: 2100,
           alt: "Figure C2-06",
-          caption: "Figure C2-06 · **(A)** CD8/CD69 staining and flow cytometry assessed early T-cell activation under the TROP2 CTL1 and CTL2 conditions. **(B)** Calcein-AM release from K562 targets measured overall effector-cell cytotoxicity at an effector-to-target ratio of 80:1, with spontaneous- and maximum-release controls supporting normalisation."
+          caption: "(A) CD8/CD69 staining and flow cytometry assessed early T-cell activation under the TROP2 CTL1 and CTL2 conditions. (B) Calcein-AM release from K562 targets measured overall effector-cell cytotoxicity at an effector-to-target ratio of 80:1, with spontaneous- and maximum-release controls supporting normalisation."
         }
           ]
         },
@@ -898,7 +898,7 @@ export const cycle2Section: WikiSection = {
           width: 1340,
           height: 612,
           alt: "Figure C2-07A",
-          caption: "Figure C2-07A · CD8/CD69 flow cytometry following TROP2 CTL1 or CTL2 stimulation. Red ellipses identify the lymphocyte gate; green boxes identify CD8⁺CD69⁺ cells within that gate."
+          caption: "CD8/CD69 flow cytometry following TROP2 CTL1 or CTL2 stimulation. Red ellipses identify the lymphocyte gate; green boxes identify CD8⁺CD69⁺ cells within that gate."
         },
         {
           type: "figure",
@@ -906,7 +906,7 @@ export const cycle2Section: WikiSection = {
           width: 1745,
           height: 1611,
           alt: "Figure C2-07B",
-          caption: "Figure C2-07B · K562 killing was measured by Calcein-AM release at an effector-to-target ratio of 80:1 across the first-round constructs."
+          caption: "K562 killing was measured by Calcein-AM release at an effector-to-target ratio of 80:1 across the first-round constructs."
         }
           ]
         },
@@ -974,7 +974,7 @@ export const cycle2Section: WikiSection = {
           width: 1844,
           height: 1339,
           alt: "Figure C2-08",
-          caption: "Figure C2-08 · Plasmid map of the Combined construct, designed to incorporate eight modules selected through the first-round ELISpot screen."
+          caption: "Plasmid map of the Combined construct, designed to incorporate eight modules selected through the first-round ELISpot screen."
         }
           ]
         },
@@ -1053,7 +1053,7 @@ export const cycle2Section: WikiSection = {
                     "src": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-c2-09d.avif"
           }
 ],
-          caption: "CircuForge V2.0 interfaces illustrated using a hepatocellular carcinoma proteomics demo project. **(A)** The Design Cart, labelled “Design list”, displays saved targets and epitopes, project identifiers and project-saving controls. **(B)** The construct interface provides researcher review controls for the inferred mature circRNA boundary and backbone design, alongside a confirmation-record field. **(C)** The export interface displays construct-generation status, review guidance and file-download options. **(D)** The Evidence Card summarises candidate-target evidence while retaining the requirement for user confirmation."
+          caption: "CircuForge V2.0 interfaces illustrated using a hepatocellular carcinoma proteomics demo project. (A) The Design Cart, labelled “Design list”, displays saved targets and epitopes, project identifiers and project-saving controls. (B) The construct interface provides researcher review controls for the inferred mature circRNA boundary and backbone design, alongside a confirmation-record field. (C) The export interface displays construct-generation status, review guidance and file-download options. (D) The Evidence Card summarises candidate-target evidence while retaining the requirement for user confirmation."
         }
           ]
         },

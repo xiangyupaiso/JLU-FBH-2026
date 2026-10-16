@@ -68,7 +68,7 @@
 }
 
 .eng-gear-label {
-  font-family: var(--font-body);
+  font-family: "Times New Roman", Georgia, serif;
   font-weight: 700;
   text-anchor: middle;
   dominant-baseline: central;
@@ -77,27 +77,27 @@
 }
 
 .eng-gear-label--dry-lab {
-  font-size: 22px;
+  font-size: 28px;
 }
 
 .eng-gear-label--wet-lab {
-  font-size: 22px;
+  font-size: 28px;
 }
 
 .eng-gear-label--ihp {
-  font-size: 21px;
+  font-size: 27px;
 }
 
 .eng-gear-label--education {
-  font-size: 19px;
+  font-size: 25px;
 }
 
 .eng-gear-label--visual-design {
-  font-size: 18px;
+  font-size: 24px;
 }
 
 .eng-gear-label--entrepreneurship {
-  font-size: 14px;
+  font-size: 20px;
   letter-spacing: -0.015em;
 }
 

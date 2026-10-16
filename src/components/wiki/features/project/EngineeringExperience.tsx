@@ -298,29 +298,10 @@ function EngineeringBlock({ block }: { block: WikiContentBlock }) {
       return (
         <details
           className="eng-code-fold"
-          onToggle={(e) => {
-            const details = e.currentTarget;
-            if (details.open) {
-              const body = details.closest<HTMLElement>(".eng-stage-body");
-              if (body) {
-                const detailsRect = details.getBoundingClientRect();
-                const bodyRect = body.getBoundingClientRect();
-                if (detailsRect.bottom > bodyRect.bottom) {
-                  const diff = detailsRect.bottom - bodyRect.bottom + 16;
-                  const content = details.closest<HTMLElement>(".eng-stage-content");
-                  if (content) {
-                    const currentTransform = new DOMMatrixReadOnly(
-                      getComputedStyle(content).transform,
-                    );
-                    gsap.to(content, {
-                      y: currentTransform.m42 - diff,
-                      duration: 0.25,
-                      ease: "power2.out",
-                    });
-                  }
-                }
-              }
-            }
+          onToggle={() => {
+            // Re-measure the pinned reading timeline so the expanded code block
+            // stays reachable by continued scrolling (same treatment as reading tips).
+            ScrollTrigger.refresh();
           }}
         >
           <summary className="eng-code-fold__summary">

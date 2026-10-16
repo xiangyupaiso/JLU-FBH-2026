@@ -81,7 +81,7 @@ export const cycle4Section: WikiSection = {
   index: "04",
   kicker: "Cycle 4 — Evaluation",
   navLabel: "Cycle 4 — Evaluation",
-  title: "Extending molecular and cellular evidence to in vivo evaluation",
+  title: "Cycle 4: Extending molecular and cellular evidence to in vivo evaluation",
   summary: "TIME reaches **E—Evaluation**. Cycle 3 established in vitro molecular and cellular evidence for Combined; this cycle examined whether those responses could translate into tumour control in vivo. After...",
   blocks: [
         {
@@ -157,7 +157,7 @@ export const cycle4Section: WikiSection = {
           width: 748,
           height: 977,
           alt: "Figure C4-01A",
-          caption: "Figure C4-01A · Semi-quantitative RT-PCR compared TROP2 transcript signals between wild-type and TROP2-expressing 4T1 cells. Values are mean ± SD from three independent RNA extractions; **** denotes P \\< 0.0001. The relative signal supports markedly increased transcription."
+          caption: "Semi-quantitative RT-PCR compared TROP2 transcript signals between wild-type and TROP2-expressing 4T1 cells. Values are mean ± SD from three independent RNA extractions; **** denotes P < 0.0001. The relative signal supports markedly increased transcription."
         },
         {
           type: "figure",
@@ -165,7 +165,7 @@ export const cycle4Section: WikiSection = {
           width: 1340,
           height: 742,
           alt: "Figure C4-01B",
-          caption: "Figure C4-01B · Surface TROP2 staining compared wild-type 4T1 cells (left) with the sorted and puromycin-selected TROP2-expressing population (right). The recorded TROP2-positive fractions were 0% and 99.9%, respectively."
+          caption: "Surface TROP2 staining compared wild-type 4T1 cells (left) with the sorted and puromycin-selected TROP2-expressing population (right). The recorded TROP2-positive fractions were 0% and 99.9%, respectively."
         },
         {
           type: "figure",
@@ -173,7 +173,7 @@ export const cycle4Section: WikiSection = {
           width: 1340,
           height: 847,
           alt: "Figure C4-01C",
-          caption: "Figure C4-01C · Representative 4T1 cell fields 48–72 h after lentiviral transduction. Columns show bright-field, GFP-channel and merged images. GFP fluorescence was visible in the transduced cells. Scale bars: 200 µm."
+          caption: "Representative 4T1 cell fields 48–72 h after lentiviral transduction. Columns show bright-field, GFP-channel and merged images. GFP fluorescence was visible in the transduced cells. Scale bars: 200 µm."
         },
         {
           type: "figure",
@@ -181,7 +181,7 @@ export const cycle4Section: WikiSection = {
           width: 2323,
           height: 853,
           alt: "Figure C4-01D",
-          caption: "Figure C4-01D · Sequential gates identified the cell population using FSC-A/SSC-A, selected singlets using FSC-A/FSC-H and identified GFP-positive cells. The respective gates retained 68.8%, 89.3% and 84.1% of their parent populations; the final value represents GFP positivity within the singlet gate."
+          caption: "Sequential gates identified the cell population using FSC-A/SSC-A, selected singlets using FSC-A/FSC-H and identified GFP-positive cells. The respective gates retained 68.8%, 89.3% and 84.1% of their parent populations; the final value represents GFP positivity within the singlet gate."
         }
           ]
         },
@@ -283,7 +283,7 @@ export const cycle4Section: WikiSection = {
           width: 1280,
           height: 591,
           alt: "Figure C4-02",
-          caption: "Figure C4-02 · Three-group animal-study schedule. PBS, empty-vector circRNA–LNP and Combined circRNA–LNP groups each contained five mice, with administrations on D0, D7, D14, D21 and D28 and endpoint collection on D35."
+          caption: "Three-group animal-study schedule. PBS, empty-vector circRNA–LNP and Combined circRNA–LNP groups each contained five mice, with administrations on D0, D7, D14, D21 and D28 and endpoint collection on D35."
         }
           ]
         },
@@ -380,7 +380,7 @@ export const cycle4Section: WikiSection = {
           width: 2048,
           height: 1209,
           alt: "Figure C4-03A",
-          caption: "Figure C4-03A · Empty-LNP CCK-8 measurements were fitted to estimate the viability-response parameters `E50` and `h`. Orange points show observed measurements, the blue line shows the posterior median response, and shading indicates the 95% conditional mean interval. The red dashed line marks 80% of the median baseline."
+          caption: "Empty-LNP CCK-8 measurements were fitted to estimate the viability-response parameters `E50` and `h`. Orange points show observed measurements, the blue line shows the posterior median response, and shading indicates the 95% conditional mean interval. The red dashed line marks 80% of the median baseline."
         },
         {
           type: "figure",
@@ -388,7 +388,7 @@ export const cycle4Section: WikiSection = {
           width: 2048,
           height: 1209,
           alt: "Figure C4-03B",
-          caption: "Figure C4-03B · Blank-corrected Combined killing measurements were fitted to estimate the effector-to-target response parameter `K_ET`. Orange points show corrected means, with error bars representing propagated observation uncertainty. The blue line shows the posterior median response, and shading indicates the 95% conditional mean interval."
+          caption: "Blank-corrected Combined killing measurements were fitted to estimate the effector-to-target response parameter `K_ET`. Orange points show corrected means, with error bars representing propagated observation uncertainty. The blue line shows the posterior median response, and shading indicates the 95% conditional mean interval."
         },
         {
           type: "figure",
@@ -396,7 +396,7 @@ export const cycle4Section: WikiSection = {
           width: 2516,
           height: 1659,
           alt: "Figure C4-03C",
-          caption: "Figure C4-03C · The Cell2Dose architecture connects experimentally calibrated response functions with delivery, circRNA expression, immune responses and tumour control to support dose exploration."
+          caption: "The Cell2Dose architecture connects experimentally calibrated response functions with delivery, circRNA expression, immune responses and tumour control to support dose exploration."
         }
           ]
         },
@@ -470,7 +470,7 @@ export const cycle4Section: WikiSection = {
           width: 2064,
           height: 1462,
           alt: "Figure C4-04",
-          caption: "Figure C4-04 · Cell2Dose evaluated 301 doses from 0 to 30 µg per injection using 1,024 shared parameter sets. Blue shows the efficacy-criterion pass fraction; orange shows the fraction passing all three proxy screens for viability, systemic exposure and innate activation; green shows the fraction satisfying all four criteria simultaneously. The horizontal dashed line marks the 80% threshold, and the vertical line identifies the highest grid value at 10.2 µg, with a joint pass probability of 81.45%."
+          caption: "Cell2Dose evaluated 301 doses from 0 to 30 µg per injection using 1,024 shared parameter sets. Blue shows the efficacy-criterion pass fraction; orange shows the fraction passing all three proxy screens for viability, systemic exposure and innate activation; green shows the fraction satisfying all four criteria simultaneously. The horizontal dashed line marks the 80% threshold, and the vertical line identifies the highest grid value at 10.2 µg, with a joint pass probability of 81.45%."
         }
           ]
         },
@@ -535,7 +535,7 @@ export const cycle4Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "Endpoint tumour volumes were (233.64\\\\pm28.33) mm³ for PBS, (90.36\\\\pm13.51) mm³ for empty vector and (24.20\\\\pm9.72) mm³ for Combined ((n=5) animals per group). The overall difference was supported by one-way ANOVA ((F(2,12)=159.2), (P=2.3\\\\times10^\\{-9\\})). Combined produced 89.6% tumour-growth inhibition relative to PBS and 73.2% relative to empty vector, while empty vector produced 61.3% inhibition relative to PBS; all three pre-specified comparisons remained significant after Holm correction."
+          "Endpoint tumour volumes were 233.64±28.33 mm³ for PBS, 90.36±13.51 mm³ for empty vector and 24.20±9.72 mm³ for Combined (n=5 animals per group). The overall difference was supported by one-way ANOVA (F(2,12)=159.2, P=2.3×10⁻⁹). Combined produced 89.6% tumour-growth inhibition relative to PBS and 73.2% relative to empty vector, while empty vector produced 61.3% inhibition relative to PBS; all three pre-specified comparisons remained significant after Holm correction."
 ]
         },
         {
@@ -544,7 +544,7 @@ export const cycle4Section: WikiSection = {
           width: 1125,
           height: 610,
           alt: "Figure C4-05A",
-          caption: "Figure C4-05A · Group-mean tumour volumes across the six-week study, with five mice per group. Control denotes empty-vector circRNA–LNP, and circRNA vaccine denotes Combined circRNA–LNP. Week 1 corresponds to D0 and Week 6 to D35. Curves describe the growth trajectories; D35 tumour volume was the primary endpoint."
+          caption: "Group-mean tumour volumes across the six-week study, with five mice per group. Control denotes empty-vector circRNA–LNP, and circRNA vaccine denotes Combined circRNA–LNP. Week 1 corresponds to D0 and Week 6 to D35. Curves describe the growth trajectories; D35 tumour volume was the primary endpoint."
         },
         {
           type: "figure",
@@ -552,11 +552,21 @@ export const cycle4Section: WikiSection = {
           width: 520,
           height: 436,
           alt: "Figure C4-05B",
-          caption: "Figure C4-05B · Excised tumours collected at D35. Rows from top to bottom represent PBS, empty-vector circRNA–LNP and Combined circRNA–LNP, with five tumours per group. Background grid spacing: 1 cm."
+          caption: "Excised tumours collected at D35. Rows from top to bottom represent PBS, empty-vector circRNA–LNP and Combined circRNA–LNP, with five tumours per group. Background grid spacing: 1 cm."
+        },
+        {
+          type: "table",
+          caption: "Table C4-02｜D35 endpoint tumour volumes",
+          headers: ["Group", "Individual volumes (mm³)", "Mean±SD (mm³)"],
+          rows: [
+            ["PBS", "224.0、196.0、225.0、267.2、256.0", "233.64±28.33"],
+            ["Empty-vector circRNA–LNP", "100.0、75.0、87.5、81.3、108.0", "90.36±13.51"],
+            ["Combined circRNA–LNP", "32.0、22.5、18.0、12.5、36.0", "24.20±9.72"]
+          ]
         },
         {
           type: "note",
-          label: "Table C4-02｜D35 endpoint tumour volumes",
+          label: "Table C4-02 note",
           body: "Each value represents one animal; five animals were analysed per group."
         }
           ]
@@ -622,7 +632,7 @@ export const cycle4Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "The following five panels show representative splenic flow-cytometry plots and corresponding quantitative results. circRNA-vector/Vector denotes empty-vector circRNA–LNP, while circRNA-antigens/Antigens denotes Combined circRNA–LNP. Quantification shows mean ± SD from three animals per group; percentages within the flow plots refer to the displayed samples. For the indicated comparisons, ns denotes no significant difference, *** P \\< 0.001 and **** P \\< 0.0001."
+          "The following five panels show representative splenic flow-cytometry plots and corresponding quantitative results. circRNA-vector/Vector denotes empty-vector circRNA–LNP, while circRNA-antigens/Antigens denotes Combined circRNA–LNP. Quantification shows mean ± SD from three animals per group; percentages within the flow plots refer to the displayed samples. For the indicated comparisons, ns denotes no significant difference, *** P < 0.001 and **** P < 0.0001."
 ]
         },
         {
@@ -631,7 +641,7 @@ export const cycle4Section: WikiSection = {
           width: 1340,
           height: 495,
           alt: "Figure C4-06A",
-          caption: "Figure C4-06A · Representative CD80/CD86 flow plots (left) and quantification of CD80⁺CD86⁺ cells within the splenic dendritic-cell population (right), assessing the maturation-associated response at D35."
+          caption: "Representative CD80/CD86 flow plots (left) and quantification of CD80⁺CD86⁺ cells within the splenic dendritic-cell population (right), assessing the maturation-associated response at D35."
         },
         {
           type: "figure",
@@ -639,7 +649,7 @@ export const cycle4Section: WikiSection = {
           width: 1340,
           height: 502,
           alt: "Figure C4-06B",
-          caption: "Figure C4-06B · Representative CD69 flow plots (left) and quantification of CD69-positive cells within the splenic CD8 T-cell population (right), assessing early activation at D35."
+          caption: "Representative CD69 flow plots (left) and quantification of CD69-positive cells within the splenic CD8 T-cell population (right), assessing early activation at D35."
         },
         {
           type: "figure",
@@ -647,7 +657,7 @@ export const cycle4Section: WikiSection = {
           width: 1340,
           height: 476,
           alt: "Figure C4-06C",
-          caption: "Figure C4-06C · Representative CD44/CD62L flow plots (left) and quantification of the CD44⁺CD62L⁺ population within splenic CD8 T cells (right), assessing the central-memory-associated phenotype at D35."
+          caption: "Representative CD44/CD62L flow plots (left) and quantification of the CD44⁺CD62L⁺ population within splenic CD8 T cells (right), assessing the central-memory-associated phenotype at D35."
         },
         {
           type: "figure",
@@ -655,7 +665,7 @@ export const cycle4Section: WikiSection = {
           width: 1340,
           height: 493,
           alt: "Figure C4-06D",
-          caption: "Figure C4-06D · Representative intracellular IFN-γ flow plots (left) and quantification of IFN-γ-positive cells within the splenic CD8 T-cell population (right) at D35."
+          caption: "Representative intracellular IFN-γ flow plots (left) and quantification of IFN-γ-positive cells within the splenic CD8 T-cell population (right) at D35."
         },
         {
           type: "figure",
@@ -663,7 +673,7 @@ export const cycle4Section: WikiSection = {
           width: 1340,
           height: 531,
           alt: "Figure C4-06E",
-          caption: "Figure C4-06E · Representative intracellular Granzyme B flow plots (left) and quantification of Granzyme B-positive cells within the splenic CD8 T-cell population (right) at D35."
+          caption: "Representative intracellular Granzyme B flow plots (left) and quantification of Granzyme B-positive cells within the splenic CD8 T-cell population (right) at D35."
         }
           ]
         },
@@ -737,7 +747,7 @@ export const cycle4Section: WikiSection = {
           width: 954,
           height: 596,
           alt: "Figure C4-07",
-          caption: "Figure C4-07 · Representative tumour sections stained for CD8 and Granzyme B, with merged views. circRNA-vector denotes empty-vector circRNA–LNP, and circRNA-antigens denotes Combined circRNA–LNP. Combined showed stronger CD8-associated signals in the displayed fields; the images provide a qualitative comparison of local immune infiltration."
+          caption: "Representative tumour sections stained for CD8 and Granzyme B, with merged views. circRNA-vector denotes empty-vector circRNA–LNP, and circRNA-antigens denotes Combined circRNA–LNP. Combined showed stronger CD8-associated signals in the displayed fields; the images provide a qualitative comparison of local immune infiltration."
         }
           ]
         },
@@ -794,8 +804,20 @@ export const cycle4Section: WikiSection = {
 ]
         },
         {
+          type: "table",
+          caption: "Table C4-01｜Evidence supporting the final interpretation",
+          headers: ["Evidence object", "Direct record", "Supported conclusion", "Evidence scope"],
+          rows: [
+            ["4T1–TROP2 model cells", "Semi-quantitative transcript signal: 75.83±3.27-fold; surface-positive fraction: 99.9%", "The established cell population expressed human TROP2", "Antigen expression in the murine tumour-cell background"],
+            ["Tumour control", "D35 volumes: PBS 233.64±28.33, empty vector 90.36±13.51, Combined 24.20±9.72 mm³", "Combined achieved the strongest tumour control among the three groups", "The five-dose protocol in the 4T1–TROP2 BALB/c model"],
+            ["Splenic immune measurements", "Five readouts followed PBS＜empty vector＜Combined", "Combined was associated with stronger systemic immune activation and effector-associated responses", "Endpoint DC, CD8 activation, memory-associated phenotype, IFN-γ and Granzyme B measurements"],
+            ["Tumour immunofluorescence", "Combined showed stronger CD8-associated signals in the displayed fields", "Tumour sections supported increased local CD8-associated infiltration", "Qualitative comparison of representative tissue fields"],
+            ["Cell2Dose", "Cell-response calibration and dose scanning; 10.0 µg joint pass probability: 81.15%", "Mechanistic simulation supported dose exploration around 10 µg", "Conditional calculations with calibration inputs and held-out comparisons separately identified"]
+          ]
+        },
+        {
           type: "note",
-          label: "Table C4-01｜Evidence supporting the final interpretation",
+          label: "Table C4-01 note",
           body: "Tumour volumes are mean±SD for five animals per group. The semi-quantitative RT-PCR value describes the recorded transcript-signal increase; Cell2Dose probabilities describe sampled model scenarios."
         }
           ]
@@ -816,7 +838,7 @@ export const cycle4Section: WikiSection = {
           width: 3000,
           height: 2100,
           alt: "Figure C4-08",
-          caption: "Figure C4-08 · The evidence map connects Combined’s tumour-control and immune-response observations with model-cell verification and Cell2Dose calculations. Labelled links distinguish model calibration inputs from held-out comparisons."
+          caption: "The evidence map connects Combined’s tumour-control and immune-response observations with model-cell verification and Cell2Dose calculations. Labelled links distinguish model calibration inputs from held-out comparisons."
         }
           ]
         },
