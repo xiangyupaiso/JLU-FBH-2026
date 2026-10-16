@@ -1,4 +1,5 @@
 import type { WikiPageContent } from "../../components/wiki/wikiPageTypes";
+import type { CitationReference } from "../citations/citationTypes";
 import { getMeasurementImage } from "./measurementAssets";
 
 export interface MeasurementJudgingCriterion {
@@ -44,6 +45,497 @@ export const measurementJudgingCriteria: MeasurementJudgingCriterion[] = [
     ],
   },
 ];
+
+export const measurementReferences = [
+  {
+    id: 1,
+    authors: "Abe, B.T., Wesselhoeft, R.A., Chen, R., et al.",
+    title: "Circular RNA migration in agarose gel electrophoresis",
+    journal: "Molecular Cell",
+    volumeYear: "82(9), pp. 1768–1777.e3 (2022).",
+    links: [
+      {
+        href: "https://doi.org/10.1016/j.molcel.2022.03.008",
+        label: "doi:10.1016/j.molcel.2022.03.008",
+      },
+    ],
+  },
+  {
+    id: 2,
+    authors: "Abramson, J., Adler, J., Dunger, J., et al.",
+    title: "Accurate structure prediction of biomolecular interactions with AlphaFold 3",
+    journal: "Nature",
+    volumeYear: "630, pp. 493–500 (2024).",
+    links: [
+      {
+        href: "https://doi.org/10.1038/s41586-024-07487-w",
+        label: "doi:10.1038/s41586-024-07487-w",
+      },
+    ],
+  },
+  {
+    id: 3,
+    authors: "Abualrous, E.T., Saini, S.K., Ramnarayan, V.R., et al.",
+    title: "The carboxy terminus of the ligand peptide determines the stability of the MHC class I molecule H-2Kb: a combined molecular dynamics and experimental study",
+    journal: "PLoS ONE",
+    volumeYear: "10, e0135421 (2015).",
+    links: [
+      {
+        href: "https://doi.org/10.1371/journal.pone.0135421",
+        label: "doi:10.1371/journal.pone.0135421",
+      },
+    ],
+  },
+  {
+    id: 4,
+    authors: "Asleh, K., Negri, G.L., Spencer Miko, S.E., et al.",
+    title: "Proteomic analysis of archival breast cancer clinical specimens identifies biological subtypes with distinct survival outcomes",
+    journal: "Nature Communications",
+    volumeYear: "13, article 896 (2022).",
+    links: [
+      {
+        href: "https://doi.org/10.1038/s41467-022-28524-0",
+        label: "doi:10.1038/s41467-022-28524-0",
+      },
+    ],
+  },
+  {
+    id: 5,
+    authors: "Benjamini, Y. and Hochberg, Y.",
+    title: "Controlling the false discovery rate: a practical and powerful approach to multiple testing",
+    journal: "Journal of the Royal Statistical Society: Series B",
+    volumeYear: "57, pp. 289–300 (1995).",
+    links: [
+      {
+        href: "https://doi.org/10.1111/j.2517-6161.1995.tb02031.x",
+        label: "doi:10.1111/j.2517-6161.1995.tb02031.x",
+      },
+    ],
+  },
+  {
+    id: 6,
+    authors: "Bouvier, M. and Wiley, D.C.",
+    title: "Importance of peptide amino and carboxyl termini to the stability of MHC class I molecules",
+    journal: "Science",
+    volumeYear: "265, pp. 398–402 (1994).",
+    links: [
+      {
+        href: "https://doi.org/10.1126/science.8023162",
+        label: "doi:10.1126/science.8023162",
+      },
+    ],
+  },
+  {
+    id: 7,
+    authors: "Calis, J.J.A., Maybeno, M., Greenbaum, J.A., et al.",
+    title: "Properties of MHC class I presented peptides that enhance immunogenicity",
+    journal: "PLoS Computational Biology",
+    volumeYear: "9, e1003266 (2013).",
+    links: [
+      {
+        href: "https://doi.org/10.1371/journal.pcbi.1003266",
+        label: "doi:10.1371/journal.pcbi.1003266",
+      },
+    ],
+  },
+  {
+    id: 8,
+    authors: "Cerami, E., Gao, J., Dogrusoz, U., et al.",
+    title: "The cBio Cancer Genomics Portal: an open platform for exploring multidimensional cancer genomics data",
+    journal: "Cancer Discovery",
+    volumeYear: "2, pp. 401–404 (2012).",
+    links: [
+      {
+        href: "https://doi.org/10.1158/2159-8290.CD-12-0095",
+        label: "doi:10.1158/2159-8290.CD-12-0095",
+      },
+    ],
+  },
+  {
+    id: 9,
+    authors: "Cheever, M.A., Allison, J.P., Ferris, A.S., et al.",
+    title: "The prioritization of cancer antigens: a National Cancer Institute pilot project for the acceleration of translational research",
+    journal: "Clinical Cancer Research",
+    volumeYear: "15, pp. 5323–5337 (2009).",
+    links: [
+      {
+        href: "https://doi.org/10.1158/1078-0432.CCR-09-0737",
+        label: "doi:10.1158/1078-0432.CCR-09-0737",
+      },
+    ],
+  },
+  {
+    id: 10,
+    authors: "Chen, Y.G., Kim, M.V., Chen, X., et al.",
+    title: "Sensing self and foreign circular RNAs by intron identity",
+    journal: "Molecular Cell",
+    volumeYear: "67(2), pp. 228–238.e5 (2017).",
+    links: [
+      {
+        href: "https://doi.org/10.1016/j.molcel.2017.05.022",
+        label: "doi:10.1016/j.molcel.2017.05.022",
+      },
+    ],
+  },
+  {
+    id: 11,
+    authors: "Creary, L.E., Sacchi, N., Mazzocco, M., et al.",
+    title: "High-resolution HLA allele and haplotype frequencies in several unrelated populations determined by next generation sequencing",
+    journal: "Human Immunology",
+    volumeYear: "82, pp. 505–522 (2021).",
+    links: [
+      {
+        href: "https://doi.org/10.1016/j.humimm.2021.04.007",
+        label: "doi:10.1016/j.humimm.2021.04.007",
+      },
+    ],
+  },
+  {
+    id: 12,
+    authors: "Crowell, H.L., Soneson, C., Germain, P.L., et al.",
+    title: "muscat detects subpopulation-specific state transitions from multi-sample multi-condition single-cell transcriptomics data",
+    journal: "Nature Communications",
+    volumeYear: "11, article 6077 (2020).",
+    links: [
+      {
+        href: "https://doi.org/10.1038/s41467-020-19894-4",
+        label: "doi:10.1038/s41467-020-19894-4",
+      },
+    ],
+  },
+  {
+    id: 13,
+    authors: "Enuka, Y., Lauriola, M., Feldman, M.E., et al.",
+    title: "Circular RNAs are long-lived and display only minimal early alterations in response to a growth factor",
+    journal: "Nucleic Acids Research",
+    volumeYear: "44(3), pp. 1370–1383 (2016).",
+    links: [
+      {
+        href: "https://doi.org/10.1093/nar/gkv1367",
+        label: "doi:10.1093/nar/gkv1367",
+      },
+    ],
+  },
+  {
+    id: 14,
+    authors: "Falk, K., Rötzschke, O., Stevanović, S., et al.",
+    title: "Allele-specific motifs revealed by sequencing of self-peptides eluted from MHC molecules",
+    journal: "Nature",
+    volumeYear: "351(6324), pp. 290–296 (1991).",
+    links: [
+      {
+        href: "https://doi.org/10.1038/351290a0",
+        label: "doi:10.1038/351290a0",
+      },
+    ],
+  },
+  {
+    id: 15,
+    authors: "Gao, J., Aksoy, B.A., Dogrusoz, U., et al.",
+    title: "Integrative analysis of complex cancer genomics and clinical profiles using the cBioPortal",
+    journal: "Science Signaling",
+    volumeYear: "6, pl1 (2013).",
+    links: [
+      {
+        href: "https://doi.org/10.1126/scisignal.2004088",
+        label: "doi:10.1126/scisignal.2004088",
+      },
+    ],
+  },
+  {
+    id: 16,
+    authors: "Gong, Y., Ji, P., Yang, Y.S., et al.",
+    title: "Metabolic-pathway-based subtyping of triple-negative breast cancer reveals potential therapeutic targets",
+    journal: "Cell Reports",
+    volumeYear: "39, article 110460 (2022).",
+    links: [
+      {
+        href: "https://doi.org/10.1016/j.celrep.2022.110460",
+        label: "doi:10.1016/j.celrep.2022.110460",
+      },
+    ],
+  },
+  {
+    id: 17,
+    authors: "Gong, Z., Hu, W., Zhou, C., et al.",
+    title: "Recent advances and perspectives on the development of circular RNA cancer vaccines",
+    journal: "npj Vaccines",
+    volumeYear: "10, article 41 (2025).",
+    links: [
+      {
+        href: "https://doi.org/10.1038/s41541-025-01097-x",
+        label: "doi:10.1038/s41541-025-01097-x",
+      },
+    ],
+  },
+  {
+    id: 18,
+    authors: "Hafemeister, C. and Satija, R.",
+    title: "Normalization and variance stabilization of single-cell RNA-seq data using regularized negative binomial regression",
+    journal: "Genome Biology",
+    volumeYear: "20, article 296 (2019).",
+    links: [
+      {
+        href: "https://doi.org/10.1186/s13059-019-1874-1",
+        label: "doi:10.1186/s13059-019-1874-1",
+      },
+    ],
+  },
+  {
+    id: 19,
+    authors: "Harndahl, M., Rasmussen, M., Roder, G., et al.",
+    title: "Peptide-MHC class I stability is a better predictor than peptide affinity of CTL immunogenicity",
+    journal: "European Journal of Immunology",
+    volumeYear: "42, pp. 1405–1416 (2012).",
+    links: [
+      {
+        href: "https://doi.org/10.1002/eji.201141774",
+        label: "doi:10.1002/eji.201141774",
+      },
+    ],
+  },
+  {
+    id: 20,
+    authors: "Holm, S.",
+    title: "A simple sequentially rejective multiple test procedure",
+    journal: "Scandinavian Journal of Statistics",
+    volumeYear: "6, pp. 65–70 (1979).",
+  },
+  {
+    id: 21,
+    authors: "Hou, X., Zaks, T., Langer, R. and Dong, Y.",
+    title: "Lipid nanoparticles for mRNA delivery",
+    journal: "Nature Reviews Materials",
+    volumeYear: "6(12), pp. 1078–1094 (2021).",
+    links: [
+      {
+        href: "https://doi.org/10.1038/s41578-021-00358-0",
+        label: "doi:10.1038/s41578-021-00358-0",
+      },
+    ],
+  },
+  {
+    id: 22,
+    authors: "Jeck, W.R., Sorrentino, J.A., Wang, K., et al.",
+    title: "Circular RNAs are abundant, conserved, and associated with ALU repeats",
+    journal: "RNA",
+    volumeYear: "19(2), pp. 141–157 (2013).",
+    links: [
+      {
+        href: "https://doi.org/10.1261/rna.035667.112",
+        label: "doi:10.1261/rna.035667.112",
+      },
+    ],
+  },
+  {
+    id: 23,
+    authors: "Korsunsky, I., Millard, N., Fan, J., et al.",
+    title: "Fast, sensitive and accurate integration of single-cell data with Harmony",
+    journal: "Nature Methods",
+    volumeYear: "16, pp. 1289–1296 (2019).",
+    links: [
+      {
+        href: "https://doi.org/10.1038/s41592-019-0619-0",
+        label: "doi:10.1038/s41592-019-0619-0",
+      },
+    ],
+  },
+  {
+    id: 24,
+    authors: "Madden, D.R.",
+    title: "The three-dimensional structure of peptide-MHC complexes",
+    journal: "Annual Review of Immunology",
+    volumeYear: "13, pp. 587–622 (1995).",
+    links: [
+      {
+        href: "https://doi.org/10.1146/annurev.iy.13.040195.003103",
+        label: "doi:10.1146/annurev.iy.13.040195.003103",
+      },
+    ],
+  },
+  {
+    id: 25,
+    authors: "Motmaen, A., Dauparas, J., Baek, M., et al.",
+    title: "Peptide-binding specificity prediction using fine-tuned protein structure prediction networks",
+    journal: "Proceedings of the National Academy of Sciences of the United States of America",
+    volumeYear: "120, e2216697120 (2023).",
+    links: [
+      {
+        href: "https://doi.org/10.1073/pnas.2216697120",
+        label: "doi:10.1073/pnas.2216697120",
+      },
+    ],
+  },
+  {
+    id: 26,
+    authors: "Percie du Sert, N., Hurst, V., Ahluwalia, A., et al.",
+    title: "The ARRIVE guidelines 2.0: updated guidelines for reporting animal research",
+    journal: "PLoS Biology",
+    volumeYear: "18(7), e3000410 (2020).",
+    links: [
+      {
+        href: "https://doi.org/10.1371/journal.pbio.3000410",
+        label: "doi:10.1371/journal.pbio.3000410",
+      },
+    ],
+  },
+  {
+    id: 27,
+    authors: "Peters, B., Bulik, S., Tampé, R., et al.",
+    title: "Identifying MHC class I epitopes by predicting the TAP transport efficiency of epitope precursors",
+    journal: "Journal of Immunology",
+    volumeYear: "171, pp. 1741–1749 (2003).",
+    links: [
+      {
+        href: "https://doi.org/10.4049/jimmunol.171.4.1741",
+        label: "doi:10.4049/jimmunol.171.4.1741",
+      },
+    ],
+  },
+  {
+    id: 28,
+    authors: "Reynisson, B., Alvarez, B., Paul, S., et al.",
+    title: "NetMHCpan-4.1 and NetMHCIIpan-4.0: improved predictions of MHC antigen presentation by concurrent motif deconvolution and integration of MS MHC eluted ligand data",
+    journal: "Nucleic Acids Research",
+    volumeYear: "48(W1), pp. W449–W454 (2020).",
+    links: [
+      {
+        href: "https://doi.org/10.1093/nar/gkaa379",
+        label: "doi:10.1093/nar/gkaa379",
+      },
+    ],
+  },
+  {
+    id: 29,
+    authors: "Ritchie, M.E., Phipson, B., Wu, D., et al.",
+    title: "limma powers differential expression analyses for RNA-sequencing and microarray studies",
+    journal: "Nucleic Acids Research",
+    volumeYear: "43, e47 (2015).",
+    links: [
+      {
+        href: "https://doi.org/10.1093/nar/gkv007",
+        label: "doi:10.1093/nar/gkv007",
+      },
+    ],
+  },
+  {
+    id: 30,
+    authors: "Robinson, M.D., McCarthy, D.J. and Smyth, G.K.",
+    title: "edgeR: a Bioconductor package for differential expression analysis of digital gene expression data",
+    journal: "Bioinformatics",
+    volumeYear: "26, pp. 139–140 (2010).",
+    links: [
+      {
+        href: "https://doi.org/10.1093/bioinformatics/btp616",
+        label: "doi:10.1093/bioinformatics/btp616",
+      },
+    ],
+  },
+  {
+    id: 31,
+    authors: "Saper, M.A., Bjorkman, P.J. and Wiley, D.C.",
+    title: "Refined structure of the human histocompatibility antigen HLA-A2 at 2.6 Å resolution",
+    journal: "Journal of Molecular Biology",
+    volumeYear: "219, pp. 277–319 (1991).",
+    links: [
+      {
+        href: "https://doi.org/10.1016/0022-2836(91)90567-P",
+        label: "doi:10.1016/0022-2836(91)90567-P",
+      },
+    ],
+  },
+  {
+    id: 32,
+    authors: "Slieker, R.C., Warmerdam, D.O., Vermeer, M.H., et al.",
+    title: "Reassessing human MHC-I genetic diversity in T cell studies",
+    journal: "Scientific Reports",
+    volumeYear: "14, article 7966 (2024).",
+    links: [
+      {
+        href: "https://doi.org/10.1038/s41598-024-58777-2",
+        label: "doi:10.1038/s41598-024-58777-2",
+      },
+    ],
+  },
+  {
+    id: 33,
+    authors: "Tenzer, S., Peters, B., Bulik, S., et al.",
+    title: "Modeling the MHC class I pathway by combining predictions of proteasomal cleavage, TAP transport and MHC class I binding",
+    journal: "Cellular and Molecular Life Sciences",
+    volumeYear: "62, pp. 1025–1037 (2005).",
+    links: [
+      {
+        href: "https://doi.org/10.1007/s00018-005-4528-2",
+        label: "doi:10.1007/s00018-005-4528-2",
+      },
+    ],
+  },
+  {
+    id: 34,
+    authors: "Tremblay-McLean, A., Coenraads, S., Kiani, Z., et al.",
+    title: "Expression of ligands for activating natural killer cell receptors on cell lines commonly used to assess natural killer cell function",
+    journal: "BMC Immunology",
+    volumeYear: "20, article 8 (2019).",
+    links: [
+      {
+        href: "https://doi.org/10.1186/s12865-018-0272-x",
+        label: "doi:10.1186/s12865-018-0272-x",
+      },
+    ],
+  },
+  {
+    id: 35,
+    authors: "Wang, J., Ding, Y., Chong, K., et al.",
+    title: "Recent advances in lipid nanoparticles and their safety concerns for mRNA delivery",
+    journal: "Vaccines",
+    volumeYear: "12(10), article 1148 (2024).",
+    links: [
+      {
+        href: "https://doi.org/10.3390/vaccines12101148",
+        label: "doi:10.3390/vaccines12101148",
+      },
+    ],
+  },
+  {
+    id: 36,
+    authors: "Wu, S.Z., Al-Eryani, G., Roden, D.L., et al.",
+    title: "A single-cell and spatially resolved atlas of human breast cancers",
+    journal: "Nature Genetics",
+    volumeYear: "53(9), pp. 1334–1347 (2021).",
+    links: [
+      {
+        href: "https://doi.org/10.1038/s41588-021-00911-1",
+        label: "doi:10.1038/s41588-021-00911-1",
+      },
+    ],
+  },
+  {
+    id: 37,
+    authors: "Xiao, M.S. and Wilusz, J.E.",
+    title: "An improved method for circular RNA purification using RNase R that efficiently removes linear RNAs containing G-quadruplexes or structured 3′ ends",
+    journal: "Nucleic Acids Research",
+    volumeYear: "47(16), pp. 8755–8769 (2019).",
+    links: [
+      {
+        href: "https://doi.org/10.1093/nar/gkz576",
+        label: "doi:10.1093/nar/gkz576",
+      },
+    ],
+  },
+  {
+    id: 38,
+    authors: "Yan, Z., Dhanda, S.K., Paul, S., et al.",
+    title: "Next-generation IEDB tools: a platform for epitope prediction and analysis",
+    journal: "Nucleic Acids Research",
+    volumeYear: "52, pp. W526–W532 (2024).",
+    links: [
+      {
+        href: "https://doi.org/10.1093/nar/gkae407",
+        label: "doi:10.1093/nar/gkae407",
+      },
+    ],
+  },
+] satisfies readonly CitationReference[];
 
 export const measurementPage: WikiPageContent = {
   route: "/measurement",
@@ -2649,161 +3141,8 @@ export const measurementPage: WikiPageContent = {
       summary: "",
       blocks: [
         {
-          type: "references",
-          items: [
-            {
-              label: "1",
-              text: "Abe, B.T., Wesselhoeft, R.A., Chen, R., et al. (2022) 'Circular RNA migration in agarose gel electrophoresis', *Molecular Cell*, 82(9), pp. 1768–1777.e3. doi:10.1016/j.molcel.2022.03.008.",
-            },
-            {
-              label: "2",
-              text: "Abramson, J., Adler, J., Dunger, J., et al. (2024) 'Accurate structure prediction of biomolecular interactions with AlphaFold 3', *Nature*, 630, pp. 493–500. doi:10.1038/s41586-024-07487-w.",
-            },
-            {
-              label: "3",
-              text: "Abualrous, E.T., Saini, S.K., Ramnarayan, V.R., et al. (2015) 'The carboxy terminus of the ligand peptide determines the stability of the MHC class I molecule H-2Kb: a combined molecular dynamics and experimental study', *PLoS ONE*, 10, e0135421. doi:10.1371/journal.pone.0135421.",
-            },
-            {
-              label: "4",
-              text: "Asleh, K., Negri, G.L., Spencer Miko, S.E., et al. (2022) 'Proteomic analysis of archival breast cancer clinical specimens identifies biological subtypes with distinct survival outcomes', *Nature Communications*, 13, article 896. doi:10.1038/s41467-022-28524-0.",
-            },
-            {
-              label: "5",
-              text: "Benjamini, Y. and Hochberg, Y. (1995) 'Controlling the false discovery rate: a practical and powerful approach to multiple testing', *Journal of the Royal Statistical Society: Series B*, 57, pp. 289–300. doi:10.1111/j.2517-6161.1995.tb02031.x.",
-            },
-            {
-              label: "6",
-              text: "Bouvier, M. and Wiley, D.C. (1994) 'Importance of peptide amino and carboxyl termini to the stability of MHC class I molecules', *Science*, 265, pp. 398–402. doi:10.1126/science.8023162.",
-            },
-            {
-              label: "7",
-              text: "Calis, J.J.A., Maybeno, M., Greenbaum, J.A., et al. (2013) 'Properties of MHC class I presented peptides that enhance immunogenicity', *PLoS Computational Biology*, 9, e1003266. doi:10.1371/journal.pcbi.1003266.",
-            },
-            {
-              label: "8",
-              text: "Cerami, E., Gao, J., Dogrusoz, U., et al. (2012) 'The cBio Cancer Genomics Portal: an open platform for exploring multidimensional cancer genomics data', *Cancer Discovery*, 2, pp. 401–404. doi:10.1158/2159-8290.CD-12-0095.",
-            },
-            {
-              label: "9",
-              text: "Cheever, M.A., Allison, J.P., Ferris, A.S., et al. (2009) 'The prioritization of cancer antigens: a National Cancer Institute pilot project for the acceleration of translational research', *Clinical Cancer Research*, 15, pp. 5323–5337. doi:10.1158/1078-0432.CCR-09-0737.",
-            },
-            {
-              label: "10",
-              text: "Chen, Y.G., Kim, M.V., Chen, X., et al. (2017) 'Sensing self and foreign circular RNAs by intron identity', *Molecular Cell*, 67(2), pp. 228–238.e5. doi:10.1016/j.molcel.2017.05.022.",
-            },
-            {
-              label: "11",
-              text: "Creary, L.E., Sacchi, N., Mazzocco, M., et al. (2021) 'High-resolution HLA allele and haplotype frequencies in several unrelated populations determined by next generation sequencing', *Human Immunology*, 82, pp. 505–522. doi:10.1016/j.humimm.2021.04.007.",
-            },
-            {
-              label: "12",
-              text: "Crowell, H.L., Soneson, C., Germain, P.L., et al. (2020) 'muscat detects subpopulation-specific state transitions from multi-sample multi-condition single-cell transcriptomics data', *Nature Communications*, 11, article 6077. doi:10.1038/s41467-020-19894-4.",
-            },
-            {
-              label: "13",
-              text: "Enuka, Y., Lauriola, M., Feldman, M.E., et al. (2016) 'Circular RNAs are long-lived and display only minimal early alterations in response to a growth factor', *Nucleic Acids Research*, 44(3), pp. 1370–1383. doi:10.1093/nar/gkv1367.",
-            },
-            {
-              label: "14",
-              text: "Falk, K., Rötzschke, O., Stevanović, S., et al. (1991) 'Allele-specific motifs revealed by sequencing of self-peptides eluted from MHC molecules', *Nature*, 351(6324), pp. 290–296. doi:10.1038/351290a0.",
-            },
-            {
-              label: "15",
-              text: "Gao, J., Aksoy, B.A., Dogrusoz, U., et al. (2013) 'Integrative analysis of complex cancer genomics and clinical profiles using the cBioPortal', *Science Signaling*, 6, pl1. doi:10.1126/scisignal.2004088.",
-            },
-            {
-              label: "16",
-              text: "Gong, Y., Ji, P., Yang, Y.S., et al. (2022) 'Metabolic-pathway-based subtyping of triple-negative breast cancer reveals potential therapeutic targets', *Cell Reports*, 39, article 110460. doi:10.1016/j.celrep.2022.110460.",
-            },
-            {
-              label: "17",
-              text: "Gong, Z., Hu, W., Zhou, C., et al. (2025) 'Recent advances and perspectives on the development of circular RNA cancer vaccines', *npj Vaccines*, 10, article 41. doi:10.1038/s41541-025-01097-x.",
-            },
-            {
-              label: "18",
-              text: "Hafemeister, C. and Satija, R. (2019) 'Normalization and variance stabilization of single-cell RNA-seq data using regularized negative binomial regression', *Genome Biology*, 20, article 296. doi:10.1186/s13059-019-1874-1.",
-            },
-            {
-              label: "19",
-              text: "Harndahl, M., Rasmussen, M., Roder, G., et al. (2012) 'Peptide-MHC class I stability is a better predictor than peptide affinity of CTL immunogenicity', *European Journal of Immunology*, 42, pp. 1405–1416. doi:10.1002/eji.201141774.",
-            },
-            {
-              label: "20",
-              text: "Holm, S. (1979) 'A simple sequentially rejective multiple test procedure', *Scandinavian Journal of Statistics*, 6, pp. 65–70.",
-            },
-            {
-              label: "21",
-              text: "Hou, X., Zaks, T., Langer, R. and Dong, Y. (2021) 'Lipid nanoparticles for mRNA delivery', *Nature Reviews Materials*, 6(12), pp. 1078–1094. doi:10.1038/s41578-021-00358-0.",
-            },
-            {
-              label: "22",
-              text: "Jeck, W.R., Sorrentino, J.A., Wang, K., et al. (2013) 'Circular RNAs are abundant, conserved, and associated with ALU repeats', *RNA*, 19(2), pp. 141–157. doi:10.1261/rna.035667.112.",
-            },
-            {
-              label: "23",
-              text: "Korsunsky, I., Millard, N., Fan, J., et al. (2019) 'Fast, sensitive and accurate integration of single-cell data with Harmony', *Nature Methods*, 16, pp. 1289–1296. doi:10.1038/s41592-019-0619-0.",
-            },
-            {
-              label: "24",
-              text: "Madden, D.R. (1995) 'The three-dimensional structure of peptide-MHC complexes', *Annual Review of Immunology*, 13, pp. 587–622. doi:10.1146/annurev.iy.13.040195.003103.",
-            },
-            {
-              label: "25",
-              text: "Motmaen, A., Dauparas, J., Baek, M., et al. (2023) 'Peptide-binding specificity prediction using fine-tuned protein structure prediction networks', *Proceedings of the National Academy of Sciences of the United States of America*, 120, e2216697120. doi:10.1073/pnas.2216697120.",
-            },
-            {
-              label: "26",
-              text: "Percie du Sert, N., Hurst, V., Ahluwalia, A., et al. (2020) 'The ARRIVE guidelines 2.0: updated guidelines for reporting animal research', *PLoS Biology*, 18(7), e3000410. doi:10.1371/journal.pbio.3000410.",
-            },
-            {
-              label: "27",
-              text: "Peters, B., Bulik, S., Tampé, R., et al. (2003) 'Identifying MHC class I epitopes by predicting the TAP transport efficiency of epitope precursors', *Journal of Immunology*, 171, pp. 1741–1749. doi:10.4049/jimmunol.171.4.1741.",
-            },
-            {
-              label: "28",
-              text: "Reynisson, B., Alvarez, B., Paul, S., et al. (2020) 'NetMHCpan-4.1 and NetMHCIIpan-4.0: improved predictions of MHC antigen presentation by concurrent motif deconvolution and integration of MS MHC eluted ligand data', *Nucleic Acids Research*, 48(W1), pp. W449–W454. doi:10.1093/nar/gkaa379.",
-            },
-            {
-              label: "29",
-              text: "Ritchie, M.E., Phipson, B., Wu, D., et al. (2015) 'limma powers differential expression analyses for RNA-sequencing and microarray studies', *Nucleic Acids Research*, 43, e47. doi:10.1093/nar/gkv007.",
-            },
-            {
-              label: "30",
-              text: "Robinson, M.D., McCarthy, D.J. and Smyth, G.K. (2010) 'edgeR: a Bioconductor package for differential expression analysis of digital gene expression data', *Bioinformatics*, 26, pp. 139–140. doi:10.1093/bioinformatics/btp616.",
-            },
-            {
-              label: "31",
-              text: "Saper, M.A., Bjorkman, P.J. and Wiley, D.C. (1991) 'Refined structure of the human histocompatibility antigen HLA-A2 at 2.6 Å resolution', *Journal of Molecular Biology*, 219, pp. 277–319. doi:10.1016/0022-2836(91)90567-P.",
-            },
-            {
-              label: "32",
-              text: "Slieker, R.C., Warmerdam, D.O., Vermeer, M.H., et al. (2024) 'Reassessing human MHC-I genetic diversity in T cell studies', *Scientific Reports*, 14, article 7966. doi:10.1038/s41598-024-58777-2.",
-            },
-            {
-              label: "33",
-              text: "Tenzer, S., Peters, B., Bulik, S., et al. (2005) 'Modeling the MHC class I pathway by combining predictions of proteasomal cleavage, TAP transport and MHC class I binding', *Cellular and Molecular Life Sciences*, 62, pp. 1025–1037. doi:10.1007/s00018-005-4528-2.",
-            },
-            {
-              label: "34",
-              text: "Tremblay-McLean, A., Coenraads, S., Kiani, Z., et al. (2019) 'Expression of ligands for activating natural killer cell receptors on cell lines commonly used to assess natural killer cell function', *BMC Immunology*, 20, article 8. doi:10.1186/s12865-018-0272-x.",
-            },
-            {
-              label: "35",
-              text: "Wang, J., Ding, Y., Chong, K., et al. (2024) 'Recent advances in lipid nanoparticles and their safety concerns for mRNA delivery', *Vaccines*, 12(10), article 1148. doi:10.3390/vaccines12101148.",
-            },
-            {
-              label: "36",
-              text: "Wu, S.Z., Al-Eryani, G., Roden, D.L., et al. (2021) 'A single-cell and spatially resolved atlas of human breast cancers', *Nature Genetics*, 53(9), pp. 1334–1347. doi:10.1038/s41588-021-00911-1.",
-            },
-            {
-              label: "37",
-              text: "Xiao, M.S. and Wilusz, J.E. (2019) 'An improved method for circular RNA purification using RNase R that efficiently removes linear RNAs containing G-quadruplexes or structured 3′ ends', *Nucleic Acids Research*, 47(16), pp. 8755–8769. doi:10.1093/nar/gkz576.",
-            },
-            {
-              label: "38",
-              text: "Yan, Z., Dhanda, S.K., Paul, S., et al. (2024) 'Next-generation IEDB tools: a platform for epitope prediction and analysis', *Nucleic Acids Research*, 52, pp. W526–W532. doi:10.1093/nar/gkae407.",
-            },
-          ],
+          type: "feature",
+          key: "measurement-references",
         },
       ],
     },

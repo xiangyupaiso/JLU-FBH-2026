@@ -46,71 +46,7 @@ See Section 8\.
 
 ## Key Achievements
 
-### 1 · The backbone
-
-**pCirCure\-circMEV, 5,267 bp\.** Antigen identity occupies 336 bp, bases 1606–1941, cloned through the flanking BamHI \(1600\) and XhoI \(1957\) sites\. The other 4,931 bp never change\. Loading a different tumour's epitopes is one cloning reaction, and nothing downstream of it is modified: same in vitro transcription, same circularization, same release criterion, same characterisation pipeline\.
-
-The circularization chemistry has been public since 2018 \(Wesselhoeft et al\., 2018\) and circRNA vaccines have been demonstrated in both infectious disease and oncology \(Li et al\., 2022; Qu et al\., 2022\)\. What did not exist was a documented, release\-tested backbone with a defined interface for someone else's antigens\. That interface is what makes this a platform\.
-
-See the element\-by\-element map in Section 6 and the Parts page\.
-
-### 2 · Thirty Registry parts
-
-Thirty parts, deposited as one collection\. Eleven are backbone and translation elements, eight are the epitope fragments, three belong to the target model, and the rest are the assembled regions that put those together: the PIE precursor cassette, the payload\-free chassis, the antigen ORF, the epitope array, the two PIE halves and the complete plasmid\. All thirty are published, and all thirty sit in a single Part Collection so that a team takes the toolkit rather than hunting accessions one at a time\.
-
-The boundaries are exact\. The T7 promoter part is bases 402–434, the PIE 5′ half is 465–766, the PABP spacer is 767–816, through to the polyA25 spacer at 2947–2971\. The backbone can be rebuilt element by element from the Registry and checked against our map, which is what makes the coupling claim in Section 6 something a judge can verify rather than take on trust\.
-
-Three of the thirty are where a reusing team starts, depending on how much they want to keep\. BBa\_26DTP41G is the payload\-free chassis, the T7–PIE–IRES cassette with the antigen window empty: production chemistry, translation machinery and the cartridge interface, with no antigen commitment attached\. BBa\_26DQL85I is the 8\-slot TNBC epitope array, our payload for that chassis, as one unit\. BBa\_26QYL2YH is the complete plasmid, the construct every result on this page was produced from\. Take the empty platform, our worked example, or both\.
-
-Two further parts are worth knowing about before you build\. The PIE halves, BBa\_26T5SEQR and BBa\_26P7AUA8, reference each other and should be taken as one circularization unit rather than separately\. BBa\_26X4AOBB, the eIF4G aptamer, is deposited on its own although it is never used on its own here, so it can be grafted onto another IRES or UTR\.
-
-See the Parts page, the Part Collection and the Registry page for JLU\-FBH 2026\.
-
-### 3 · An encoded adjuvant
-
-An antigen sequence on its own is a protein, not a vaccine\. Three of the backbone's elements do the rest of the work, and all three translate from the same circle as the antigen, so they arrive in whatever cell the antigen arrives in\.
-
-The adjuvant is encoded\. Four tandem copies of C3d\-P28 sit in frame downstream of the cassette, so it is translated as part of the antigen fusion\. A co\-formulated adjuvant has to reach the same cell as the antigen; one translated from the same molecule reaches it by construction\. Potency scales with copy number \(Bergmann\-Leitner et al\., 2007; Bower and Ross, 2006; Wang et al\., 2004\), which is why there are four\.
-
-Two trafficking signals sit in series: a tPA leader at the N\-terminus entering the secretory pathway for cross\-presentation, and MITD at the C\-terminus entering the MHC\-I/II vesicular pathway \(Kreiter et al\., 2008\)\. A FLAG tag is placed last, so a positive blot reports translation of the entire fusion\.
-
-CR2/CD21, the ER–Golgi pathway and the MHC\-I trafficking machinery are all mammalian, so this design is inseparable from the platform\. Our CD8 read\-outs test whether the compensation worked\.
-
-See Section 5\.3 and the Results page\.
-
-### 4 · A documented production process
-
-Eighteen circRNA preparations were made by one route: template preparation, T7 transcription, DNase treatment, LiCl precipitation, PIE circularization, RNase R digestion\. Thirteen are the Round\-1 single\-epitope constructs and five are the Round\-2 batch\.
-
-Round 2 carries a numerical release criterion, ≥ 90% circular fraction after RNase R, with a gel check on the transcription templates beforehand and a failed preparation re\-made from the transcription step and recorded\. The Combined batch cleared it at 99\.30 ± 0\.17%, and the Round\-1 representative preparation measured 95\.35 ± 2\.01%\.
-
-Circularity of the final vaccine is then verified structurally, by Sanger sequencing across the back\-splice junction\. Both the framework and the structural check transfer as a standard, and both exist only because the product is a covalently closed molecule made in a tube\.
-
-See Experiments §1\.2 and §3\.2 and Section 7\.1\.
-
-### 5 · A human\-cell test rig
-
-The immunogenicity pipeline runs from HLA\-A\*02:01\-typed human PBMC through CD14⁺ monocyte isolation, GM\-CSF/IL\-4 differentiation to moDC, circRNA electroporation and autologous CD3⁺ T\-cell co\-culture, to IFN\-γ ELISpot, multicolour flow and Calcein\-AM killing\. It is written as step\-by\-step protocols and is reusable unchanged for any epitope set loaded into the cassette\.
-
-The target model is 4T1 engineered to over\-express human TROP2 by lentiviral transduction, GFP sorting, and verification at both mRNA and protein level\. Three of its components are deposited as parts\.
-
-Neither has a standard\-chassis version\. The pipeline's unit of success is a 9\-mer on HLA\-A\*02:01 read by an autologous human T cell\. No bacterial or yeast system can present it, and none can be the target of it\.
-
-See the Protocols page and Experiments Sections 2 and 6
-
-### 6 · The cassette\-design tool
-
-Our dry lab built **CircuForge**, a browser\-based workflow that shortlists targets, analyses epitopes, assembles a frame\-checked cassette into a supplied annotated backbone, exports the construct in six formats with a manifest and checksums, and annotates features against the iGEM Registry\. It is released under the Apache License 2\.0\. Section 9 describes what it does and what we validated it against; the Software page carries the methods and benchmarks\.
-
-Its coupling to this platform is uneven and we state it that way\. The compiler is backbone\-agnostic, because the user supplies the vector, so it is the least platform\-bound of our outputs\. What is platform\-shaped is the cartridge interface itself: once antigen identity is confined to one restriction\-bounded window, a general assembly tool becomes worth building\.
-
-The Registry client is written in R and calls the official iGEM Registry interface directly\. iGEM Munich 2025's `igem-registry-api`, MIT licence, is kept locally as the reference implementation and our rate\-limit handling follows it; it is not a runtime dependency\.
-
-### 7 · A record of what failed
-
-Five named failures with the reason and what we would do differently\. Four weaken our own conclusions: two Round\-1 read\-outs that ranked the same 13 constructs differently, a screening round run with no controls and no replicate wells, back\-splice\-junction sequencing on one construct only, and an empty vector that on its own achieved 61\.3% tumour growth inhibition in vivo\.
-
-See Section 8\.
+此处嵌入"C:\\Users\\香芋派\\Downloads\\Key achievements\.html"
 
 ---
 
@@ -136,7 +72,7 @@ Those four antigens are already known to be present, accessible and tolerable as
 
 ### 4\.2 Where each platform stops
 
-![Mea Fig 1\.png](图片和附件/Mea%20Fig%201.png)
+https://static\.igem\.wiki/teams/6056/wiki/files/pages/wet\-lab/five\-platforms\-against\-the\-problem\-s\-requirement\-with\-the\-failure\-point\-of\-each\-marked\.avif
 
 ***Five platforms against the problem's requirements, with the failure point of each marked\.***
 
@@ -176,7 +112,7 @@ Three problems sit at the intersection of that list and the TNBC problem\. **Mul
 
 ### 5\.1 The necessity chain
 
-![Create a publication\-quality BioRender scientific figure titled “The Necessity C\.png](图片和附件/Create%20a%20publication-quality%20BioRender%20scientific%20figure%20titled%20“The%20Necessity%20C.png)
+https://static\.igem\.wiki/teams/6056/wiki/files/pages/wet\-lab/host\-modality\-and\-production\-as\-three\-stacked\-layers\-with\-the\-forcing\-constraint\-on\-each\-arrow\.avif
 
 ***Host, modality and production as three stacked layers, with the forcing constraint on each arrow\.***
 
@@ -200,7 +136,7 @@ And the honest entry: of the five, circRNA is the least clinically proven\. No c
 
 ### 5\.3 What the backbone encodes besides the antigen
 
-![Create a publication\-quality BioRender mechanism figure titled “Engineering the\.png](图片和附件/Create%20a%20publication-quality%20BioRender%20mechanism%20figure%20titled%20“Engineering%20the.png)
+https://static\.igem\.wiki/teams/6056/wiki/files/pages/wet\-lab/the\-circrna\-in\-translation\-order\-with\-the\-four\-encoded\-elements\-highlighted\.avif
 
 `[Fig 3]` *The circRNA in translation order, with the four encoded elements highlighted\.*
 
@@ -228,7 +164,7 @@ The cassette interface came first, and the software exists because of it\. Once 
 
 ## Inside the backbone
 
-
+此处嵌入"C:\\Users\\香芋派\\xwechat\_files\\wxid\_5ebnlqbau8vc22\_50a2\\msg\\file\\2026\-10\\inside\-the\-backbone\.html"
 
 ---
 
@@ -236,7 +172,7 @@ The cassette interface came first, and the software exists because of it\. Once 
 
 Protocols are on the Experiments page and the reagent\-level detail is not repeated here\.
 
-![Create a publication\-ready BioRender\-style SCIENTIFIC DEPENDENCY MAP, \-CirCure \-\.png](图片和附件/Create%20a%20publication-ready%20BioRender-style%20SCIENTIFIC%20DEPENDENCY%20MAP,%20-CirCure%20-.png)
+https://static\.igem\.wiki/teams/6056/wiki/files/pages/wet\-lab/the\-evidence\-chain\-from\-dc\-maturation\-to\-tumour\-cell\-killing\-each\-link\-with\-its\-read\-out\-and\-its\-control\.avif
 
 ***The evidence chain from DC maturation to tumour\-cell killing, each link with its read\-out and its control\.***
 
@@ -260,17 +196,19 @@ The loading series did a second job besides measuring\. The 2 µL arm reads abou
 
 Round 2 added a release framework around the same chemistry: the transcription template is amplified by PCR with the SJ4435/SJ4436 primers across the T7\-containing region and checked on a gel before transcription, the released material has to clear ≥ 90% circular fraction, and a preparation that fails is re\-made from the transcription step with the failed run recorded alongside the released one\. The RNase R amount and digestion time are fixed for the whole batch, because extending digestion removes more linear RNA without producing more circles and degrades the circle itself\.
 
-![放行流程图\.png](图片和附件/放行流程图.png)
-
-
+https://static\.igem\.wiki/teams/6056/wiki/files/pages/wet\-lab/the\-cell\-free\-production\-route\-and\-the\-release\-gate\-that\-returns\-a\-failed\-preparation\-to\-transcription\.avif
 
 **The cell\-free production route and the release gate that returns a failed preparation to transcription\.**
 
 For the Combined vaccine we went past RNase R resistance to direct structural proof\. RT\-PCR across the back\-splice junction followed by Sanger sequencing returned
 
-> `AGCGGATGGGTACCCCACCAT | GACCATTTGTGTGGTAAAAA`
+> `CTCAGTAGATGTTTTCTTGGGT | CTACCGTTTAATATTGCGTCATAT`
 
-the precursor's 3′ sequence joined head to tail to its 5′ sequence, with a flat baseline and single sharp peaks on either side, indicating one homogeneous splice product\.
+https://static\.igem\.wiki/teams/6056/wiki/files/pages/wet\-lab/sanger\-trace\-across\-the\-backsplice\-junction\-bsj\-of\-the\-combined\-vaccine\.avif
+
+**The back\-splice junction of the Combined vaccine, read across the ligation site\.**
+
+the precursor’s 3′ sequence joined head to tail to its 5′ sequence, with a flat baseline and single sharp peaks on either side, indicating one homogeneous splice product\. Both halves are in the deposited map: the left is bases 2714–2735 and the right is bases 723–746, the two retained T4 *td* intron scars\.
 
 > **Scope\.** BSJ sequencing was performed on the Combined vaccine only\. For the other preparations, circularity rests on RNase R resistance together with the fact that they were made by the same T4 *td* self\-splicing chemistry from the same backbone, which is an inference and not a measurement, so we do not describe them as confirmed circular\. The molecule behind every headline claim on this page, the Combined vaccine carried into the animal study, is the one verified by two independent methods\.
 
@@ -286,13 +224,13 @@ The ordering is not an artefact of one assay\. A Calcein\-AM killing assay on K5
 
 The screen also exposed its own limit\. The two functional read\-outs do not agree with each other\. ELISpot spread 5\.8\-fold, K562 killing only 1\.41\-fold, from 31\.37% to 44\.15%, and the rank correlation between them was ρ = 0\.43, *P* = 0\.14, which is not significant\. Both assays are internally reproducible, so the disagreement is real\. A polyclonal killing assay on an HLA\-null target measures overall effector activity; ELISpot measures epitope\-specific cytokine release\. We selected on ELISpot\. Had we selected on killing, LIV\-1 would have contributed CTL5 and CTL4 instead of CTL2 and CTL3, discarding the panel's fourth\-strongest epitope at 118 SFC in favour of one at 58\. Decide before the screen which read\-out selects, and say so\.
 
-![image\.png](图片和附件/image%201.png)
+https://static\.igem\.wiki/teams/6056/wiki/files/pages/wet\-lab/round\-1\-killing\-of\-k562\-by\-t\-cells\-primed\-with\-each\-construct\.avif
 
 *Round\-1 ELISpot rank against K562 killing rank for all 13 constructs\.*
 
 What the screen produced is checkable from the sequence\. Per antigen, TROP2 gave 271, 217 and 52 SFC; B7\-H4 gave 143 and 82; Nectin\-4 gave 97, 74 and 51; LIV\-1 gave 118, 78, 73, 58 and 47\. The eight fragments in the cassette are in every case the two highest of their antigen\. Taking the eight highest regardless of antigen gives the same eight, and the equal\-representation rule would only have bitten one place further down, where LIV1\-CTL4 at 73 SFC sits one spot count below Nectin4\-CTL1 at 74\. Those two come from different antigens, so a one\-spot difference does not by itself show that a candidate was wrongly dropped\.
 
-![image\.png](图片和附件/image.png)
+https://static\.igem\.wiki/teams/6056/wiki/files/pages/wet\-lab/round\-1\-ifn\-elispot\-wells\-for\-all\-13\-single\-epitope\-constructs\.avif
 
 *Round\-1 IFN\-γ ELISpot wells for all 13 single\-epitope constructs\.*
 
@@ -341,13 +279,13 @@ The pre\-specified key comparison is vaccine against empty vector, and it is met
 
 Mechanism was examined by intratumoural CD8 and Granzyme B immunofluorescence and by splenic flow cytometry with intracellular cytokine staining\.
 
-![9458b226\-2e84\-44af\-bb78\-95b25d378d0c\.png](图片和附件/9458b226-2e84-44af-bb78-95b25d378d0c.png)
+https://static\.igem\.wiki/teams/6056/wiki/files/pages/wet\-lab/tumour\-growth\-curves\-for\-the\-three\-groups\.avif
 
 ***Tumour growth curves to day 35 and excised tumours at endpoint\.***
 
 ### 7\.6 Evidence strength
 
-![证据链\.png](图片和附件/证据链.png)
+https://static\.igem\.wiki/teams/6056/wiki/files/pages/wet\-lab/every\-claim\-on\-this\-page\-placed\-in\-one\-of\-six\-evidence\-tiers\-with\-the\-read\-out\-that\-supports\-it\.avif
 
 **Every claim on this page placed in one of six evidence tiers, with the read\-out that supports it\.**
 
@@ -399,6 +337,8 @@ Four things are needed to point the CirCure backbone at a different tumour, and 
 The studio below runs on the real plasmid\. Pick a window, empty it, and rebuild it from our parts or from sequences you type in; the map and the length readouts follow every change, and the bases outside the window stay where they are\. It reports lengths and reading frame for whatever you assemble\. Choosing and compiling a cassette is what CircuForge does, in point 4 below\.
 
 There are three windows and they sit inside one another\. The antigen window runs from BamHI 1600 to XhoI 1957 and holds the eight epitope fragments with the seven linkers between them, 336 bp in our version\. Opening at NcoI 1502 and ClaI 2587 instead hands over the whole fusion protein, 1,083 bp, which brings the signal peptide, the adjuvant repeats, the trafficking domain and the tag within reach\. Opening at KpnI 838 adds the IRES, where translation on the circle starts\. We have only ever built through the antigen window\.
+
+此处嵌入"C:\\Users\\香芋派\\xwechat\_files\\wxid\_5ebnlqbau8vc22\_50a2\\msg\\file\\2026\-10\\reuse\-studio\-v2\.html"
 
 **2 · The process, with its acceptance criterion\.** The cell\-free route, from template preparation through T7 transcription, DNase treatment, LiCl precipitation, PIE circularization and RNase R enrichment, is written step by step on the Experiments page\. It carries a numerical release criterion rather than a judgement call: ≥ 90% circular fraction after RNase R, a gel check on the transcription template beforehand, and a failed preparation re\-made and recorded\.
 

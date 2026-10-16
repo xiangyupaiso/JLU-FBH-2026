@@ -192,6 +192,59 @@ export const alternativePlatformReferences = [
   }
 ] as const;
 
+export interface AlternativePlatformJudgingCriterion {
+  id: string;
+  question: string;
+  paragraphs: string[];
+}
+
+export const alternativePlatformJudgingCriteria: AlternativePlatformJudgingCriterion[] = [
+  {
+    id: "q1",
+    question:
+      "How strong is the evidence that the team successfully engineered their biological system?",
+    paragraphs: [
+      "Sixteen plasmids were built on one backbone. The 13 single-epitope constructs and the Combined construct each cleared colony PCR, diagnostic double digestion and full-length Sanger sequencing at 100% sequence match before being prepared endotoxin-free and used as transcription templates.",
+      "Circularity of the final vaccine is verified structurally. RT-PCR across the back-splice junction followed by Sanger sequencing returned a single homogeneous splice product, with a flat baseline and single sharp peaks either side of the junction. The released material is 99.30 ± 0.17% circular, with the circular species roughly 146 times more abundant than the linear precursor.",
+      "Function was then validated link by link, in the order an immune response occurs: DC maturation, anti-FLAG translation, T-cell activation, effector-memory differentiation, IFN-γ ELISpot, MDA-MB-231 killing. From Round 2 onward every link is baselined against an empty-vector control carrying the complete backbone and adjuvant with no epitope encoded. In IVvo, with blinded calipers on coded animals and the analysis pre-specified in the NC3Rs Experimental Design Assistant, the pre-specified key comparison met its threshold: 73.2% tumour growth inhibition against the empty vector, Holm *P* = 2.0 × 10⁻⁵.",
+      "Six independent read-outs agree. Section 7.6 states what each one supports and what it does not.",
+      "See Section 7, the Results page and the Experiments page.",
+    ],
+  },
+  {
+    id: "q2",
+    question:
+      "Is the team's chosen platform meaningfully suited to the problem they are tackling?",
+    paragraphs: [
+      "The end point of our mechanism is a 9-mer displayed on HLA-A*02:01 at the surface of a human dendritic cell and recognised by an autologous human CD8⁺ T cell. Proteasomal processing, TAP transport, ER loading and a thymically selected TCR repertoire have no bacterial or yeast counterpart, and no standard chassis offers a simplified version of this experiment.",
+      "Having chosen circRNA, and Section 5.2 sets out why we rejected peptide, DNA, viral and linear-mRNA alternatives, production is forced as well. A covalently closed circle is made by self-splicing of a *permuted* intron–exon precursor, a template arrangement that exists only by design and that no cell can supply. *E. coli* appears in our workflow for one job, amplifying the plasmid before it is linearised and leaves the cell permanently. No *E. coli* measurement appears anywhere in our results.",
+      "See Sections 4 and 5.",
+    ],
+  },
+  {
+    id: "q3",
+    question:
+      "How tightly are the team's outputs coupled to the platform?",
+    paragraphs: [
+      "Our outputs are platform components: the backbone with its cartridge interface, a documented cell-free production process with a release criterion, a human primary DC/T-cell immunogenicity pipeline, a mammalian antigen-positive target model, and a cassette-design tool.",
+      "Section 6 tags every element of the plasmid individually as Platform-critical, Platform-specific or Generic, each with the counterfactual that justifies the tag. Five elements are tagged Generic, and one output, the dry-lab tool, is deliberately backbone-agnostic and so the least coupled thing we made. Those are labelled as such.",
+      "The coupling is machine-checkable. The 30 deposited parts have boundaries that match the plasmid annotation exactly. Seven of the eight GSGGS linker occurrences encode the same peptide from different codons, which is deliberate, so only the eighth matches the Registry record at DNA level; everything else is an exact sequence match., so the platform can be rebuilt element by element and verified against our map. We tested that with our own software: given the reference plasmid, the Registry matcher recovered all 21 team-defined basic parts present in it and returned no false hit on three negative-control sequences.",
+      "See Sections 5 and 6, and the Parts page.",
+    ],
+  },
+  {
+    id: "q4",
+    question:
+      "Has the team documented what didn't work, why, and what others should watch out for?",
+    paragraphs: [
+      "Five named failures with the reason and what we would do differently, in Section 8. Four of them weaken our own conclusions.",
+      "Our two Round-1 read-outs ranked the same 13 constructs differently, Spearman ρ = 0.43 and *P* = 0.14, and we state which one we selected on and what the other would have chosen. Round 1 ran with no controls and no replicate wells, so no Round-1 SFC may be read as an antigen-specific frequency. The empty vector alone achieved 61.3% tumour growth inhibition in vivo, which is why our pre-specified comparison is against it and not against PBS. And back-splice-junction sequencing exists for the Combined vaccine only, so the other preparations rest on an inference from shared chemistry.",
+      "Also reported: haplotype mismatch in the animal model. Section 7.6 names, claim by claim, the controls that would raise each one.",
+      "See Section 8.",
+    ],
+  },
+];
+
 const sections = [
   {
     "id": "judging-criteria",
@@ -202,68 +255,8 @@ const sections = [
     "summary": "",
     "blocks": [
       {
-        "type": "subheading",
-        "id": "judging-criteria-how-strong-is-the-evidence-that-the-team-successfully-engineered-their-biological-system",
-        "index": "",
-        "level": 3,
-        "title": "How strong is the evidence that the team successfully engineered their biological system?"
-      },
-      {
-        "type": "prose",
-        "paragraphs": [
-          "Sixteen plasmids were built on one backbone. The 13 single-epitope constructs and the Combined construct each cleared colony PCR, diagnostic double digestion and full-length Sanger sequencing at 100% sequence match before being prepared endotoxin-free and used as transcription templates.",
-          "Circularity of the final vaccine is verified structurally. RT-PCR across the back-splice junction followed by Sanger sequencing returned a single homogeneous splice product, with a flat baseline and single sharp peaks either side of the junction. The released material is 99.30 ± 0.17% circular, with the circular species roughly 146 times more abundant than the linear precursor.",
-          "Function was then validated link by link, in the order an immune response occurs: DC maturation, anti-FLAG translation, T-cell activation, effector-memory differentiation, IFN-γ ELISpot, MDA-MB-231 killing. From Round 2 onward every link is baselined against an empty-vector control carrying the complete backbone and adjuvant with no epitope encoded. In IVvo, with blinded calipers on coded animals and the analysis pre-specified in the NC3Rs Experimental Design Assistant, the pre-specified key comparison met its threshold: 73.2% tumour growth inhibition against the empty vector, Holm *P* = 2.0 × 10⁻⁵.",
-          "Six independent read-outs agree. Section 7.6 states what each one supports and what it does not.",
-          "See Section 7, the Results page and the Experiments page."
-        ]
-      },
-      {
-        "type": "subheading",
-        "id": "judging-criteria-is-the-team-s-chosen-platform-meaningfully-suited-to-the-problem-they-are-tackling",
-        "index": "",
-        "level": 3,
-        "title": "Is the team's chosen platform meaningfully suited to the problem they are tackling?"
-      },
-      {
-        "type": "prose",
-        "paragraphs": [
-          "The end point of our mechanism is a 9-mer displayed on HLA-A*02:01 at the surface of a human dendritic cell and recognised by an autologous human CD8⁺ T cell. Proteasomal processing, TAP transport, ER loading and a thymically selected TCR repertoire have no bacterial or yeast counterpart, and no standard chassis offers a simplified version of this experiment.",
-          "Having chosen circRNA, and Section 5.2 sets out why we rejected peptide, DNA, viral and linear-mRNA alternatives, production is forced as well. A covalently closed circle is made by self-splicing of a *permuted* intron–exon precursor, a template arrangement that exists only by design and that no cell can supply. *E. coli* appears in our workflow for one job, amplifying the plasmid before it is linearised and leaves the cell permanently. No *E. coli* measurement appears anywhere in our results.",
-          "See Sections 4 and 5."
-        ]
-      },
-      {
-        "type": "subheading",
-        "id": "judging-criteria-how-tightly-are-the-team-s-outputs-coupled-to-the-platform",
-        "index": "",
-        "level": 3,
-        "title": "How tightly are the team's outputs coupled to the platform?"
-      },
-      {
-        "type": "prose",
-        "paragraphs": [
-          "Our outputs are platform components: the backbone with its cartridge interface, a documented cell-free production process with a release criterion, a human primary DC/T-cell immunogenicity pipeline, a mammalian antigen-positive target model, and a cassette-design tool.",
-          "Section 6 tags every element of the plasmid individually as Platform-critical, Platform-specific or Generic, each with the counterfactual that justifies the tag. Five elements are tagged Generic, and one output, the dry-lab tool, is deliberately backbone-agnostic and so the least coupled thing we made. Those are labelled as such.",
-          "The coupling is machine-checkable. The 30 deposited parts have boundaries that match the plasmid annotation exactly. Seven of the eight GSGGS linker occurrences encode the same peptide from different codons, which is deliberate, so only the eighth matches the Registry record at DNA level; everything else is an exact sequence match., so the platform can be rebuilt element by element and verified against our map. We tested that with our own software: given the reference plasmid, the Registry matcher recovered all 21 team-defined basic parts present in it and returned no false hit on three negative-control sequences.",
-          "See Sections 5 and 6, and the Parts page."
-        ]
-      },
-      {
-        "type": "subheading",
-        "id": "judging-criteria-has-the-team-documented-what-didn-t-work-why-and-what-others-should-watch-out-for",
-        "index": "",
-        "level": 3,
-        "title": "Has the team documented what didn't work, why, and what others should watch out for?"
-      },
-      {
-        "type": "prose",
-        "paragraphs": [
-          "Five named failures with the reason and what we would do differently, in Section 8. Four of them weaken our own conclusions.",
-          "Our two Round-1 read-outs ranked the same 13 constructs differently, Spearman ρ = 0.43 and *P* = 0.14, and we state which one we selected on and what the other would have chosen. Round 1 ran with no controls and no replicate wells, so no Round-1 SFC may be read as an antigen-specific frequency. The empty vector alone achieved 61.3% tumour growth inhibition in vivo, which is why our pre-specified comparison is against it and not against PBS. And back-splice-junction sequencing exists for the Combined vaccine only, so the other preparations rest on an inference from shared chemistry.",
-          "Also reported: haplotype mismatch in the animal model. Section 7.6 names, claim by claim, the controls that would raise each one.",
-          "See Section 8."
-        ]
+        "type": "feature",
+        "key": "alternative-platform-judging-criteria"
       }
     ]
   },

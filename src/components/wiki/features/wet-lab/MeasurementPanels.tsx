@@ -6,9 +6,47 @@ import {
   getMeasurementImage,
   measurementAssets,
 } from "../../../../data/wet-lab/measurementAssets";
-import { measurementJudgingCriteria } from "../../../../data/wet-lab/measurementPage";
+import {
+  measurementJudgingCriteria,
+  measurementPage,
+  measurementReferences,
+} from "../../../../data/wet-lab/measurementPage";
 import { renderInlineFormatting } from "../../proseInline";
+import {
+  buildAuthorYearCitationIndex,
+  reportCitationIssues,
+} from "../../../../data/citations/citationIndex";
+import {
+  CitationReferenceList,
+  createCitationRenderer,
+} from "../../citations/CitationRegister";
 import "../../../../styles/features/measurement-panels.css";
+
+const WET_LAB_CITATION_FLASH = {
+  ramp: "rgba(20, 53, 76, 0.14)",
+  ring: "0 0 0 3px rgba(20, 53, 76, 0.32)",
+};
+
+const citationIndex = buildAuthorYearCitationIndex(
+  measurementPage.sections,
+  measurementReferences,
+);
+reportCitationIssues("measurement", citationIndex);
+
+export const renderMeasurementCitedText = createCitationRenderer(
+  citationIndex,
+  WET_LAB_CITATION_FLASH,
+);
+
+function MeasurementReferenceList() {
+  return (
+    <CitationReferenceList
+      references={measurementReferences}
+      index={citationIndex}
+      tint={WET_LAB_CITATION_FLASH}
+    />
+  );
+}
 
 export function MeasurementJudgingCriteria() {
   const [openId, setOpenId] = useState<string | null>(null);
@@ -44,7 +82,9 @@ export function MeasurementJudgingCriteria() {
               hidden={!open}
             >
               {item.paragraphs.map((paragraph, paragraphIndex) => (
-                <p key={paragraphIndex}>{renderInlineFormatting(paragraph)}</p>
+                <p key={paragraphIndex}>
+                  {renderMeasurementCitedText(paragraph, renderInlineFormatting)}
+                </p>
               ))}
             </div>
           </article>
@@ -104,6 +144,7 @@ const plateGroups = [
 export function measurementFeatures(): Record<string, ReactNode> {
   return {
     "measurement-judging-criteria": <MeasurementJudgingCriteria />,
+    "measurement-references": <MeasurementReferenceList />,
     "measurement-structural-validation": <EpitopeStructuralValidationChart />,
     "measurement-proteomics-volcanoes": (
       <div className="measurement-model-volcanoes">

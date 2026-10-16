@@ -753,10 +753,15 @@ function RouteBlock({
           <p>{inline ? inline(block.body, linkify) : linkify(block.body)}</p>
         </aside>
       );
-    case "subheading":
+    case "subheading": {
+      const HeadingTag = block.level === 4 ? "h4" : "h3";
+      const displayTitle =
+        block.level === 4 && block.index && !block.title.startsWith(block.index)
+          ? `${block.index} ${block.title}`
+          : block.title;
       return (
-        <h3
-          className="wiki-subheading"
+        <HeadingTag
+          className={`wiki-subheading${block.level === 4 ? " wiki-subheading--nested" : ""}`}
           id={block.id}
           data-wiki-outline-anchor
           data-wiki-outline-parent={sectionId}
@@ -766,10 +771,11 @@ function RouteBlock({
             <span className="wiki-anchor" id={anchorId} key={anchorId} />
           ))}
           <span className="wiki-subheading__title">
-            {renderSubheadingTitle(block.title)}
+            {renderSubheadingTitle(displayTitle)}
           </span>
-        </h3>
+        </HeadingTag>
       );
+    }
     case "feature":
       return (
         <div className="wiki-feature" data-wiki-reveal>
@@ -1061,6 +1067,22 @@ function RouteSection({
       firstSubIndex !== -1,
   );
 
+  const hasParentSubheadings = useMemo(() => {
+    if (!blocks) return false;
+    return (
+      blocks.some(
+        (b) =>
+          b.type === "subheading" &&
+          (b.level === 3 || (Boolean(b.index) && !b.index.includes("."))),
+      ) &&
+      blocks.some(
+        (b) =>
+          b.type === "subheading" &&
+          (b.level === 4 || (Boolean(b.index) && b.index.includes("."))),
+      )
+    );
+  }, [blocks]);
+
   const { overviewBlocks, subheadingGroups } = useMemo(() => {
     if (!shouldCollapseSubheadings || !blocks) {
       return { overviewBlocks: [], subheadingGroups: [] };
@@ -1079,8 +1101,17 @@ function RouteSection({
     for (let i = firstSubIndex; i < blocks.length; i++) {
       const block = blocks[i];
       if (block.type === "subheading") {
-        if (currentGroup) groups.push(currentGroup);
-        currentGroup = { subheading: block, blocks: [] };
+        const isDrawerTrigger =
+          !hasParentSubheadings ||
+          block.level === 3 ||
+          (Boolean(block.index) && !block.index.includes("."));
+
+        if (isDrawerTrigger) {
+          if (currentGroup) groups.push(currentGroup);
+          currentGroup = { subheading: block, blocks: [] };
+        } else if (currentGroup) {
+          currentGroup.blocks.push(block);
+        }
       } else if (currentGroup) {
         currentGroup.blocks.push(block);
       }
@@ -1088,7 +1119,7 @@ function RouteSection({
     if (currentGroup) groups.push(currentGroup);
 
     return { overviewBlocks: overview, subheadingGroups: groups };
-  }, [blocks, firstSubIndex, shouldCollapseSubheadings]);
+  }, [blocks, firstSubIndex, hasParentSubheadings, shouldCollapseSubheadings]);
 
   return (
     <section
@@ -1271,18 +1302,43 @@ export function WikiRoutePage({
   };
 
   const openSubheading = (id: string) => {
+    let targetParentId: string | null = null;
+    for (const section of content.sections) {
+      if (!section.blocks) continue;
+      const subheadings = section.blocks.filter(
+        (b): b is Extract<WikiContentBlock, { type: "subheading" }> =>
+          b.type === "subheading",
+      );
+      const subByIndex = new Map(subheadings.map((s) => [s.index, s]));
+      const targetSub = subheadings.find((s) => s.id === id);
+      if (targetSub && targetSub.index && targetSub.index.includes(".")) {
+        const parentIdx = targetSub.index.split(".").slice(0, -1).join(".");
+        const parentSub = subByIndex.get(parentIdx);
+        if (parentSub) {
+          targetParentId = parentSub.id;
+        }
+      }
+    }
+
     setOpenSubheadingIds((prev) => {
-      if (prev.has(id)) return prev;
       const next = new Set(prev);
-      next.add(id);
-      return next;
+      let changed = false;
+      if (!next.has(id)) {
+        next.add(id);
+        changed = true;
+      }
+      if (targetParentId && !next.has(targetParentId)) {
+        next.add(targetParentId);
+        changed = true;
+      }
+      return changed ? next : prev;
     });
   };
 
   useEffect(() => {
     const handleHash = () => {
       const hash = window.location.hash.replace(/^#/, "");
-      if (hash && hash.startsWith("exp-")) {
+      if (hash) {
         openSubheading(hash);
       }
     };
