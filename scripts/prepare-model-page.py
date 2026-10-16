@@ -8,6 +8,8 @@ import json
 import re
 import shutil
 import sys
+sys.dont_write_bytecode = True
+from model_figure15 import load_figure15, update_figure15_copy
 from pathlib import Path
 from urllib.parse import unquote
 
@@ -17,6 +19,8 @@ ARCHIVE = ROOT / '文案集/drylab/model'
 if SOURCE.resolve() != ARCHIVE.resolve():
     shutil.copytree(SOURCE, ARCHIVE, dirs_exist_ok=True)
 SOURCE = ARCHIVE
+figure15 = load_figure15()
+(ROOT / 'src/data/drylab/modelConfidenceData.json').write_text(json.dumps(figure15, ensure_ascii=False, indent=2), encoding='utf-8')
 text = next(SOURCE.glob('*.md')).read_text(encoding='utf-8')
 lines = text.splitlines()
 DATA = ROOT / 'src/data/drylab'
@@ -62,7 +66,7 @@ for i, path in enumerate(sorted((SOURCE / '图片和附件').glob('*'))):
     name = f'model-figure-{i + 1:02d}{path.suffix.lower()}'
     shutil.copy2(path, ASSETS / name)
     assets[path.name] = dict(fileName=name, localSourcePath=f'文案集/drylab/model/图片和附件/{path.name}',
-                             uploadUrl='', alt=english_label(asset_descriptions[path.name]))
+                             uploadUrl='', alt=update_figure15_copy(english_label(asset_descriptions[path.name]), figure15))
 imports = '\n'.join(f'import image{i} from "../../assets/wiki/model/{a["fileName"]}";' for i, a in enumerate(assets.values()))
 asset_code = imports + '\n\nexport const modelAssets = {\n'
 for i, (key, value) in enumerate(assets.items()):
@@ -149,7 +153,7 @@ def parse(part):
                 # Its steps and associated prose are rendered once in a tab panel.
                 i += 1
                 continue
-            replacement = {'image 12.png': 'volcano-024322', 'image 4.png': 'volcano-028102', 'image 10.png': 'burial-heatmap', 'image 9.png': 'p9-volume'}
+            replacement = {'image 12.png': 'volcano-024322', 'image 4.png': 'volcano-028102', 'image 10.png': 'burial-heatmap', 'image 9.png': 'p9-volume', 'image 1.png': 'confidence-scatter'}
             if name in replacement:
                 blocks.append(feature(dict(kind='chart', chart=replacement[name])))
             else:
@@ -166,6 +170,8 @@ def parse(part):
             block = dict(type='table', headers=table[0], rows=table[1:])
             if table[0][0] == '**Measurement**':
                 blocks.append(feature(dict(kind='transpose', table=block)))
+            elif [english_label(cell) for cell in table[0][:3]] == ['**Antigen**', '**Peptide**', '**Protein position**']:
+                blocks.append(feature(dict(kind='antigen-table', table=block)))
             else:
                 blocks.append(block)
             continue
@@ -190,7 +196,7 @@ def parse(part):
             i += 1
         value = clean(' '.join(paragraph))
         value = value.replace('（此图仅作示例使用，wiki在此处作可视化）', '').replace('（横纵切换）', '')
-        blocks.append(dict(type='prose', paragraphs=[value]))
+        blocks.append(dict(type='prose', paragraphs=[update_figure15_copy(value, figure15)]))
     return blocks
 
 headings = []
@@ -321,7 +327,7 @@ for panel in panels.values():
         for entry in panel['entries']:
             entry['title'] = english_label(entry['title'])
             entry['blocks'] = english_blocks(entry['blocks'])
-    elif panel['kind'] == 'transpose':
+    elif panel['kind'] in ('transpose', 'antigen-table'):
         panel['table'] = english_blocks([panel['table']])[0]
 
 # Keep the first existing chapter verbatim; only the unfilled manuscript changes.
