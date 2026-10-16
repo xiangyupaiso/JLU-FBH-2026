@@ -132,6 +132,8 @@ export const visualDesignPage: WikiPageContent = {
           type: "prose",
           paragraphs: [
             "Color is not merely decorative across the CirCure wiki; it acts as an **emotional compass and a cognitive scaffold** across five research dimensions. Rather than imposing a single monotonous corporate hue, we architected a bespoke **double-ink typography hierarchy (H2 deep ink + H3 warm accent ink)** and **soft parchment foundations** for each module.",
+            "Each module's chromatic identity is deliberately rooted in the biological and human narrative of its work. **Project** embraces **Leaf Green and Moss Forest**, evoking cellular vitality, regenerative growth, and the hope of cancer remission. **Wet Lab** draws upon **Ice Blue and Marine Navy**, reflecting aqueous buffers, benchtop precision, and the sterile clarity of molecular assays. In contrast, **Dry Lab** is guided by **Mint Green and Pine Slate**, embodying algorithmic lucidity, data matrices, and computational RNA biophysics.",
+            "Moving from bench to society, **Engagement** radiates with **Warm Ochre and Coffee Brown**, expressing empathy, open dialogue, and human warmth across patient interviews and public education. Finally, **Team** is anchored in **Bronze Gold and Burgundy**, celebrating academic camaraderie, institutional heritage, and the humanitarian medical legacy of Norman Bethune and the First Bethune Hospital.",
             "This cross-hue contract preserves **strict WCAG AAA contrast compliance** for long-form reading while giving each section a recognizable, immersive identity as the reader navigates through our scientific journey.",
           ],
         },
