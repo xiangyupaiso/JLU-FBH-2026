@@ -96,6 +96,12 @@
   transition: transform 300ms cubic-bezier(.22, 1, .36, 1), opacity 300ms ease;
 }
 .hp-stage-flow__node.is-milestone { width: clamp(108px, 11vw, 148px); height: 76px; }
+.hp-stage-flow--in-vitro .hp-stage-flow__node.is-milestone { width: min(38%, 215px); height: 104px; }
+.hp-stage-flow--in-vitro .hp-stage-flow__milestone-label { font-size: clamp(10px, .95vw, 13px); }
+.hp-stage-flow--in-vivo .hp-stage-flow__node { width: min(72px, 9vh); height: min(72px, 9vh); }
+.hp-stage-flow--return .hp-stage-flow__node { width: min(64px, 8vh); height: min(64px, 8vh); }
+.hp-stage-flow--return .hp-stage-flow__node.is-milestone { width: min(136px, 15vw); height: min(70px, 9vh); }
+.hp-stage-flow--return .hp-stage-flow__milestone-label { font-size: 10px; }
 .hp-stage-flow__node.is-future { opacity: .42; }
 .hp-stage-flow__node.is-active { z-index: 4; transform: translate(-50%, -50%) scale(1.11); }
 .hp-stage-flow__node:hover, .hp-stage-flow__node:focus-visible { z-index: 5; transform: translate(-50%, -50%) scale(1.08); outline: none; }
@@ -186,6 +192,11 @@
   .hp-stage-flow.is-overview .hp-stage-flow__tree { left: 13%; width: 74%; }
   .hp-stage-flow__node { width: 53px; height: 53px; }
   .hp-stage-flow__node.is-milestone { width: 79px; height: 64px; }
+  .hp-stage-flow--in-vitro .hp-stage-flow__node.is-milestone { width: min(43%, 120px); height: 84px; }
+  .hp-stage-flow--in-vitro .hp-stage-flow__milestone-label { font-size: 8px; }
+  .hp-stage-flow--return .hp-stage-flow__node { width: min(44px, 7vh); height: min(44px, 7vh); }
+  .hp-stage-flow--return .hp-stage-flow__node.is-milestone { width: min(94px, 26vw); height: 50px; }
+  .hp-stage-flow--return .hp-stage-flow__milestone-label { font-size: 8px; }
   .hp-stage-flow__node-front, .hp-stage-flow__node-back { border-radius: 12px; }
   .hp-stage-flow__portrait { border-radius: 8px; }
   .hp-stage-flow__portrait svg { width: 26px; height: 26px; }

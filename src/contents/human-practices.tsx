@@ -9,8 +9,9 @@ import { humanPracticesPage } from "../data/engagement/humanPracticesPage";
 
 const treeFeatureBySection: Record<string, string> = {
   "hp-plasmid-design": "hp-plasmid-tree",
-  "hp-in-vivo": "hp-in-vivo-tree",
-  "hp-in-vitro": "hp-in-vitro-tree",
+  "hp-in-vivo": "hp-in-vitro-tree",
+  "hp-in-vitro": "hp-in-vivo-tree",
+  "hp-return": "hp-return-tree",
 };
 
 const interactiveHumanPracticesPage: typeof humanPracticesPage = {
@@ -20,7 +21,14 @@ const interactiveHumanPracticesPage: typeof humanPracticesPage = {
       return { ...section, blocks: section.blocks?.filter((block) => block.type !== "feature" || block.key !== "hp-timeline-original") };
     }
     const key = treeFeatureBySection[section.id];
-  return key ? { ...section, blocks: [{ type: "feature" as const, key }] } : section;
+    if (!key) return section;
+    if (section.id === "hp-in-vivo") {
+      return { ...section, id: "hp-in-vitro", navLabel: "In Vitro", title: "In Vitro", blocks: [{ type: "feature" as const, key }] };
+    }
+    if (section.id === "hp-in-vitro") {
+      return { ...section, id: "hp-in-vivo", navLabel: "In Vivo", title: "In Vivo", blocks: [{ type: "feature" as const, key }] };
+    }
+    return { ...section, blocks: [{ type: "feature" as const, key }] };
   }),
 };
 
@@ -37,8 +45,9 @@ export function HumanPractices() {
       features={{
         "hp-origin-tree": <HumanPracticesOriginTree />,
         "hp-plasmid-tree": <HumanPracticesStageTree variant="plasmid" />,
-        "hp-in-vivo-tree": <HumanPracticesStageTree variant="in-vivo" />,
         "hp-in-vitro-tree": <HumanPracticesStageTree variant="in-vitro" />,
+        "hp-in-vivo-tree": <HumanPracticesStageTree variant="in-vivo" />,
+        "hp-return-tree": <HumanPracticesStageTree variant="return" />,
       }}
     />
   );
