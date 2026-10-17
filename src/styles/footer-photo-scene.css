@@ -1,152 +1,186 @@
-/* A rounded photographic window and its warm paper reverse share one scroll stage. */
+/* The reference uses a clipped window over a sticky image, with no scroll gate. */
 .finale-photo-window {
-  --scene-inset: clamp(12px, 1.1vw, 20px);
-  --scene-breath: clamp(36px, 7svh, 72px);
-  --card-radius: clamp(22px, 2.3vw, 34px);
   position: relative;
-  isolation: isolate;
-  container-type: inline-size;
-  background:
-    radial-gradient(ellipse at 50% 45%, #403037, transparent 72%), #241b24;
+  height: 100%;
   color: #f5f0e7;
 }
 .keepsake-scroll-stage {
-  --photo-width: calc(100cqw - var(--scene-inset) * 2);
-  --photo-height: clamp(
-    calc(var(--photo-width) * 1734 / 2600 * 0.85),
-    calc(100svh - var(--header-height, 78px) - var(--scene-inset) * 2),
-    calc(var(--photo-width) * 1734 / 2600)
-  );
-  --card-height: var(--photo-height);
-  --sticky-top: min(
-    calc(var(--header-height, 78px) + var(--scene-inset)),
-    calc(100svh - var(--card-height) - var(--scene-inset))
-  );
   position: relative;
-  height: calc(
-    var(--card-height) + 150svh + var(--scene-breath) + var(--scene-inset)
-  );
-  padding-top: var(--scene-breath);
-  padding-bottom: var(--scene-inset);
+  height: var(--photo-window-height);
+  /* Unlike overflow:hidden, clip-path preserves the viewport as the sticky root. */
+  clip-path: inset(0 round 16px 16px 0 0);
+}
+.keepsake-reveal-track {
+  position: relative;
+  top: -100dvh;
+  height: calc(100dvh + var(--photo-window-height));
 }
 .keepsake-pin {
   position: sticky;
-  top: var(--sticky-top);
-  height: var(--card-height);
-  margin-inline: var(--scene-inset);
-}
-.keepsake-perspective {
-  height: 100%;
-  perspective: 2400px;
-}
-.keepsake-card {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  transform-style: preserve-3d;
-  transform: rotateY(var(--keepsake-turn, 0deg))
-    scale(var(--keepsake-turn-scale, 1));
-}
-.keepsake-face {
-  position: absolute;
-  inset: 0;
-  margin: 0;
-  min-width: 0;
+  top: calc(100dvh - var(--photo-window-height));
+  height: var(--photo-window-height);
   overflow: hidden;
-  border: 1px solid rgb(255 244 230 / 18%);
-  border-radius: var(--card-radius);
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-  box-shadow: 0 28px 65px -24px rgb(8 4 8 / 65%);
-}
-.keepsake-face::after {
-  content: "";
-  position: absolute;
-  z-index: 2;
-  inset: 0;
-  border: 1px solid rgb(255 255 255 / 12%);
-  border-radius: inherit;
-  pointer-events: none;
 }
 .keepsake-front {
-  background: #292226;
-  transform: translateZ(1px);
-}
-.keepsake-photograph {
   position: relative;
-  width: 100%;
-  height: var(--photo-height);
-  overflow: hidden;
-  background: #292226;
-}
-.keepsake-photograph > img {
-  display: block;
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  object-position: center bottom;
-  /* Reference footer: the image settles from 1.3x to its full framing. */
-  transform: scale(var(--keepsake-image-scale, 1.3));
-  transform-origin: center center;
+  margin: 0;
+  background-position: center 80%;
+  background-size: cover;
 }
-/* The reverse is the story's quiet epilogue, with its original painted figure. */
-.keepsake-back {
-  --letter-hidden-top: max(
-    0px,
-    calc(
-      var(--card-height) -
-        (100svh - var(--header-height, 78px) - var(--scene-inset) * 2)
-    )
-  );
-  color: #563e49;
-  border-color: #e8d7cf;
-  transform: rotateY(180deg) translateZ(1px);
-  background: #fbf2e8;
-}
-.keepsake-back::before {
-  content: "";
+.keepsake-photograph {
   position: absolute;
   inset: 0;
-  background: url("https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-9-layer-1.webp") center / cover;
-  opacity: 0.44;
+  overflow: hidden;
+  transform: scale(1.3);
+  transform-origin: center center;
+  will-change: transform;
+}
+.keepsake-photograph > img {
+  position: absolute;
+  bottom: 0;
+  display: block;
+  width: 100%;
+  height: calc(100% * 1734 / 1084);
+  object-fit: cover;
+  object-position: center bottom;
+}
+.keepsake-photo-shade {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgb(20 17 23 / 6%) 0%,
+    rgb(20 17 23 / 9%) 46%,
+    rgb(20 17 23 / 23%) 82%,
+    rgb(20 17 23 / 12%) 100%
+  );
   pointer-events: none;
 }
-.keepsake-letter__sheet {
+.keepsake-brand {
   position: absolute;
-  inset: var(--letter-hidden-top) 0 0;
-  display: flex;
-  flex-direction: column;
-  padding: clamp(28px, 3vw, 46px) clamp(28px, 4vw, 64px) 76px;
-}
-.keepsake-letter__top {
-  position: relative;
+  z-index: 2;
+  left: 50%;
+  bottom: clamp(20px, 4cqw, 56px);
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 20px;
-  color: #826c67;
-  font: 400 10px/1.5 var(--font-body);
-  letter-spacing: 0.07em;
+  gap: clamp(14px, 2cqw, 28px);
+  width: max-content;
+  margin: 0;
+  color: #fffdf9;
+  font: 600 clamp(48px, 11.5cqw, 164px) / 1 var(--font-sans);
+  letter-spacing: -0.065em;
+  text-shadow:
+    0 2px 8px rgb(20 17 23 / 28%),
+    0 10px 28px rgb(20 17 23 / 16%);
+  transform: translateX(-50%);
+  pointer-events: none;
 }
-.keepsake-letter__body {
-  position: relative;
-  flex: 1;
-  min-height: 0;
+.keepsake-brand__emblem {
+  display: block;
+  flex: none;
+  width: 1.04em;
+  height: 1.04em;
+  object-fit: contain;
+  filter: brightness(0) invert(1) drop-shadow(0 3px 8px rgb(20 17 23 / 25%));
+}
+.keepsake-note-open,
+.keepsake-note-close {
+  position: absolute;
+  z-index: 3;
+  border: 1px solid rgb(255 255 255 / 65%);
+  border-radius: 999px;
+  padding: 10px 16px;
+  min-height: 44px;
+  font: 400 12px/1.4 var(--font-body);
+  cursor: pointer;
+}
+.keepsake-note-open {
+  right: clamp(12px, 2vw, 28px);
+  bottom: clamp(12px, 2vw, 28px);
+  background: #fbf2e8;
+  color: #513946;
+}
+.keepsake-note {
+  position: fixed;
+  inset: 0;
+  width: min(960px, calc(100% - 48px));
+  height: 560px;
+  max-height: calc(100dvh - 48px);
+  max-width: none;
+  margin: auto;
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid #e3d8ce;
+  border-radius: 20px;
+  color: #4e3c45;
+  background: #fcf9f3;
+  box-shadow: 0 24px 90px rgb(31 22 28 / 22%);
+  font-family: var(--font-body);
+}
+.keepsake-note[open] {
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) auto;
+}
+.keepsake-note::backdrop {
+  background: rgb(38 30 35 / 44%);
+}
+body:has(.keepsake-note[open]) {
+  overflow: hidden;
+}
+.keepsake-note__actions {
   display: flex;
-  flex-direction: column;
+  justify-content: flex-end;
+  padding: 16px 28px;
+  border-top: 1px solid #e9e0d6;
+  background: #f8f3eb;
+}
+.keepsake-note-close {
+  position: static;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: min(700px, 100%);
-  margin-inline: auto;
+  gap: 10px;
+  padding: 10px 16px;
+  border-color: #d2bfb7;
+  background: #fcf9f3;
+  color: #513946;
+}
+.keepsake-note-close:hover {
+  border-color: #a56b7b;
+  background: #f5e9e7;
+}
+.keepsake-note-close:focus-visible {
+  outline: 2px solid #96596c;
+  outline-offset: 3px;
+}
+.keepsake-letter__sheet {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  padding: 48px 52px;
+  overflow: auto;
+  overscroll-behavior: contain;
+}
+.keepsake-letter__body {
+  display: grid;
+  flex: none;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  align-items: center;
+  gap: 40px;
+  min-height: 340px;
+  margin-block: auto;
+}
+.keepsake-letter__intro {
   text-align: center;
-  padding-block: 18px;
 }
 .keepsake-letter__hope {
   position: relative;
-  flex: none;
   width: 174px;
   height: 138px;
-  margin-bottom: 22px;
+  margin: 0 auto 24px;
 }
 .keepsake-letter__patient {
   position: absolute;
@@ -164,85 +198,77 @@
   width: 100%;
   height: auto;
 }
-.keepsake-letter__greeting {
-  flex: none;
-}
 .keepsake-letter__body h3 {
-  margin: 0 0 26px;
-  color: #513946;
-  font: 500 clamp(42px, 4.8vw, 68px)/1.12 var(--font-heading);
+  margin: 0;
+  color: #45313d;
+  font: 500 clamp(34px, 4.8vw, 46px)/1.14 var(--font-heading);
   font-family: var(--font-heading) !important;
   letter-spacing: -0.045em;
+}
+.keepsake-letter__body h3:focus {
+  outline: none;
 }
 .keepsake-letter__body h3 span,
 .keepsake-letter__body h3 em {
   display: block;
 }
 .keepsake-letter__body h3 span {
-  font-size: 0.76em;
-  line-height: 1.2;
+  font-size: 0.7em;
+  line-height: 1.25;
   letter-spacing: -0.035em;
 }
 .keepsake-letter__body h3 em {
-  margin-top: 6px;
-  color: #a76576;
+  margin-top: 8px;
+  color: #935366;
   font-style: normal;
   font-weight: inherit;
 }
-.keepsake-letter__message {
-  width: min(560px, 100%);
+.keepsake-letter__copy {
+  padding-left: 36px;
+  border-left: 1px solid #e5d6d2;
+  text-align: left;
 }
 .keepsake-letter__body p {
   margin: 0;
   text-wrap: pretty;
 }
 .keepsake-letter__wish {
-  color: #65515a;
-  font: 400 16px/1.8 var(--font-body);
+  color: #4e3c45;
+  font: 400 16px/1.75 var(--font-body);
 }
 .keepsake-letter__promise {
-  margin-top: 18px !important;
-  color: #7b656d;
-  font: 400 13px/1.8 var(--font-body);
+  margin-top: 20px !important;
+  color: #67565c;
+  font: 400 14px/1.75 var(--font-body);
 }
 .keepsake-letter__farewell {
-  position: relative;
-  margin-top: 28px;
-  padding-top: 24px;
-}
-.keepsake-letter__farewell::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: calc(50% - 18px);
-  width: 36px;
-  height: 1px;
-  background: #c29c98;
+  margin-top: 24px;
+  padding-top: 22px;
+  border-top: 1px solid #e5d6d2;
 }
 .keepsake-letter__farewell > p {
-  color: #69535e;
-  font: 400 13px/1.75 var(--font-body);
+  color: #67565c;
+  font: 400 14px/1.75 var(--font-body);
 }
 .keepsake-letter__signature {
   display: flex;
-  align-items: baseline;
-  justify-content: center;
-  gap: 7px;
-  margin-top: 14px;
-  color: #80676d;
+  align-items: center;
+  gap: 12px;
+  margin-top: 22px;
+  color: #513946;
 }
-.keepsake-letter__signature span {
-  font: 400 12px/1.5 var(--font-body);
+.keepsake-letter__signature span,
+.keepsake-letter__signature strong {
+  display: block;
+  font: 400 13px/1.6 var(--font-body);
 }
 .keepsake-letter__signature strong {
-  font: 500 12px/1.5 var(--font-body);
+  font-weight: 500;
 }
 .keepsake-lamb {
-  position: absolute;
-  right: clamp(28px, 4vw, 64px);
-  bottom: 68px;
-  width: 50px;
-  height: 50px;
+  flex: none;
+  width: 42px;
+  height: 44px;
   overflow: hidden;
 }
 .keepsake-lamb img {
@@ -251,24 +277,15 @@
   width: 225%;
   max-width: none;
   height: auto;
-  opacity: 0;
-  transform: translate(-19%, 8px);
+  transform: translateX(-19%);
   mix-blend-mode: multiply;
 }
-.keepsake-card.is-flipped .keepsake-letter__hope {
-  animation: keepsake-letter-arrive 900ms var(--ease-out) 200ms both;
+/* Opacity alone keeps the letter text off moving, resampled transform layers. */
+.keepsake-note[open] .keepsake-letter__intro {
+  animation: keepsake-letter-arrive 320ms ease-out both;
 }
-.keepsake-card.is-flipped .keepsake-letter__greeting {
-  animation: keepsake-letter-arrive 900ms var(--ease-out) 320ms both;
-}
-.keepsake-card.is-flipped .keepsake-letter__message {
-  animation: keepsake-letter-arrive 900ms var(--ease-out) 460ms both;
-}
-.keepsake-card.is-flipped .keepsake-letter__farewell {
-  animation: keepsake-letter-arrive 900ms var(--ease-out) 650ms both;
-}
-.keepsake-card.is-flipped .keepsake-lamb img {
-  animation: keepsake-peek 600ms var(--ease-out) 1000ms both;
+.keepsake-note[open] .keepsake-letter__copy {
+  animation: keepsake-letter-arrive 380ms ease-out 40ms both;
 }
 .keepsake-photo-error {
   position: absolute;
@@ -282,53 +299,70 @@
   color: #f5f0e7;
   font: 400 14px/1.65 var(--font-body);
 }
-@keyframes keepsake-peek {
-  to {
-    opacity: 1;
-    transform: translate(-19%, 0);
-  }
-}
 @keyframes keepsake-letter-arrive {
   from {
     opacity: 0;
-    transform: translateY(8px);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+  }
+}
+/* Very wide, short windows retain the whole group over photographic edge fill. */
+@media (min-aspect-ratio: 11/5) {
+  .keepsake-front::before {
+    content: "";
+    position: absolute;
+    inset: -40px;
+    background-image: inherit;
+    background-position: center 80%;
+    background-size: cover;
+    filter: blur(32px);
+  }
+  .keepsake-photograph {
+    width: calc(var(--photo-window-height) * 2600 / 1084);
+    left: 50%;
+    right: auto;
+    margin-left: calc(var(--photo-window-height) * 2600 / 1084 / -2);
+    mask-image: linear-gradient(
+      to right,
+      transparent,
+      #000 24px,
+      #000 calc(100% - 24px),
+      transparent
+    );
   }
 }
 @media (max-width: 720px) {
-  .finale-photo-window {
-    --scene-breath: 36px;
-    --card-radius: 24px;
+  .keepsake-brand {
+    left: 14px;
+    bottom: 12px;
+    gap: 9px;
+    font-size: clamp(30px, 10.5cqw, 64px);
+    transform: none;
   }
-  .keepsake-scroll-stage {
-    --photo-height: calc(var(--photo-width) * 1734 / 2600);
-    --card-height: max(
-      560px,
-      calc(100svh - var(--header-height, 78px) - var(--scene-inset) * 2),
-      var(--photo-height)
-    );
+  .keepsake-brand__emblem {
+    filter: brightness(0) invert(1) drop-shadow(0 0 0.35px #fff)
+      drop-shadow(0 2px 3px rgb(20 17 23 / 35%));
   }
-  .keepsake-front {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+  .keepsake-note-open {
+    right: 8px;
+    bottom: 8px;
+    padding: 8px 10px;
+    font-size: 10px;
   }
-  .keepsake-photograph {
-    flex: none;
+  .keepsake-note {
+    width: calc(100% - 24px);
+    height: 720px;
+    max-height: calc(100dvh - 24px);
+    border-radius: 16px;
   }
   .keepsake-letter__sheet {
-    padding: 24px 22px 68px;
-  }
-  .keepsake-letter__top {
-    font-size: 8px;
-    letter-spacing: 0.025em;
-    gap: 10px;
+    padding: 28px 24px;
   }
   .keepsake-letter__body {
-    padding-block: 16px;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 28px;
+    min-height: 0;
   }
   .keepsake-letter__hope {
     width: 142px;
@@ -339,258 +373,88 @@
     height: 96px;
   }
   .keepsake-letter__body h3 {
-    font-size: clamp(30px, 9.8vw, 54px);
-    margin-bottom: 22px;
+    font-size: clamp(34px, 8.5vw, 46px);
+  }
+  .keepsake-letter__copy {
+    padding-left: 0;
+    border-left: 0;
   }
   .keepsake-letter__wish {
-    font-size: 13px;
-    line-height: 1.8;
+    font-size: 14px;
+    line-height: 1.7;
   }
   .keepsake-letter__promise {
-    font-size: 12px;
-    margin-top: 14px !important;
+    margin-top: 16px !important;
+    font-size: 13px;
+    line-height: 1.7;
   }
   .keepsake-letter__farewell {
-    margin-top: 22px;
+    margin-top: 20px;
     padding-top: 18px;
   }
   .keepsake-letter__farewell > p {
-    font-size: 12px;
-    max-width: 285px;
+    font-size: 13px;
+    line-height: 1.7;
   }
   .keepsake-letter__signature {
-    margin-top: 12px;
-    gap: 6px;
+    margin-top: 18px;
   }
-  .keepsake-letter__signature span {
-    font-size: 10px;
-  }
-  .keepsake-letter__signature strong {
-    font-size: 10px;
-  }
-  .keepsake-lamb {
-    right: 23px;
-    bottom: 63px;
-    width: 35px;
-    height: 35px;
+  .keepsake-note__actions {
+    padding: 12px 16px;
   }
 }
-/* Keep the entire epilogue readable when browser chrome leaves little height. */
 @media (max-height: 700px) {
   .keepsake-letter__sheet {
-    padding-block: 20px 64px;
+    padding-block: 28px;
   }
   .keepsake-letter__body {
-    padding-block: 10px;
+    min-height: 0;
+  }
+}
+/* Short landscape screens scroll the letter, without shrinking its text. */
+@media (min-width: 721px) and (max-height: 500px) {
+  .keepsake-note {
+    width: min(960px, calc(100% - 24px));
+    max-height: calc(100dvh - 24px);
+  }
+  .keepsake-letter__sheet {
+    padding: 24px 32px;
+  }
+  .keepsake-letter__body {
+    gap: 28px;
+    align-items: start;
   }
   .keepsake-letter__hope {
     width: 118px;
-    height: 92px;
-    margin-bottom: 10px;
+    height: 94px;
+    margin-bottom: 16px;
   }
   .keepsake-letter__patient {
     height: 78px;
   }
-  .keepsake-letter__body h3 {
-    font-size: clamp(30px, 4vw, 46px);
-    margin-bottom: 14px;
-  }
-  .keepsake-letter__wish {
-    font-size: 12px;
-    line-height: 1.7;
-  }
-  .keepsake-letter__promise {
-    font-size: 11px;
-    line-height: 1.6;
-    margin-top: 10px !important;
-  }
-  .keepsake-letter__farewell {
-    margin-top: 16px;
-    padding-top: 14px;
-  }
-  .keepsake-letter__farewell > p {
-    font-size: 11px;
-  }
-  .keepsake-letter__signature {
-    margin-top: 7px;
-  }
-  .keepsake-letter__signature span {
-    font-size: 10px;
-  }
-  .keepsake-letter__signature strong {
-    font-size: 10px;
-  }
-  .keepsake-lamb {
-    bottom: 66px;
-    width: 35px;
-    height: 35px;
-  }
-}
-@media (max-width: 720px) and (max-height: 700px) {
-  .keepsake-letter__body {
-    padding-block: 8px;
+  .keepsake-letter__copy {
+    padding-left: 28px;
   }
   .keepsake-letter__body h3 {
-    font-size: clamp(28px, 8.5vw, 38px);
-    margin-bottom: 12px;
+    font-size: 36px;
   }
-  .keepsake-letter__hope {
-    width: 100px;
-    height: 70px;
-    margin-bottom: 8px;
-  }
-  .keepsake-letter__patient {
-    height: 60px;
-  }
-  .keepsake-letter__farewell {
-    margin-top: 14px;
-    padding-top: 12px;
-  }
-  .keepsake-lamb {
-    top: 44px;
-    right: 20px;
-    bottom: auto;
-    width: 28px;
-    height: 28px;
-  }
-}
-@media (min-width: 721px) and (max-height: 500px) {
-  .keepsake-letter__sheet {
-    padding: 16px 36px 54px;
-  }
-  .keepsake-letter__body {
-    padding-block: 3px;
-    padding-left: 160px;
-    width: min(650px, 100%);
-  }
-  .keepsake-letter__hope {
-    position: absolute;
-    left: 0;
-    top: 50%;
-    width: 130px;
-    height: 102px;
-    margin: -51px 0 0;
-  }
-  .keepsake-letter__patient {
-    height: 86px;
-  }
-  .keepsake-letter__body h3 {
-    display: flex;
-    align-items: baseline;
-    justify-content: center;
-    gap: 0.28em;
-    font-size: 28px;
-    margin-bottom: 9px;
-  }
-  .keepsake-letter__body h3 span {
-    font-size: inherit;
-    line-height: inherit;
-  }
-  .keepsake-letter__body h3 em {
-    margin-top: 0;
-  }
-  .keepsake-letter__wish {
-    font-size: 11px;
-    line-height: 1.5;
-  }
-  .keepsake-letter__promise {
-    margin-top: 7px !important;
-    font-size: 11px;
-    line-height: 1.5;
-  }
-  .keepsake-letter__farewell {
-    margin-top: 8px;
-    padding-top: 8px;
-  }
-  .keepsake-letter__farewell > p {
-    font-size: 11px;
-    line-height: 1.5;
-  }
-  .keepsake-letter__signature {
-    margin-top: 5px;
-  }
-  .keepsake-letter__signature span {
-    font-size: 10px;
-  }
-  .keepsake-letter__signature strong {
-    font-size: 10px;
-  }
-  .keepsake-lamb {
-    width: 30px;
-    height: 30px;
-    bottom: 58px;
-  }
-}
-.finale-photo-window.is-static .keepsake-scroll-stage {
-  height: auto;
-}
-.finale-photo-window.is-static .keepsake-pin {
-  position: relative;
-  top: auto;
-  height: auto;
-}
-.finale-photo-window.is-static .keepsake-perspective {
-  perspective: none;
-}
-.finale-photo-window.is-static .keepsake-card {
-  display: grid;
-  gap: 24px;
-  height: auto;
-  transform: none;
-}
-.finale-photo-window.is-static .keepsake-face {
-  position: relative;
-  inset: auto;
-  transform: none;
-}
-.finale-photo-window.is-static .keepsake-front {
-  min-height: var(--card-height);
-}
-.finale-photo-window.is-static .keepsake-back {
-  min-height: min(680px, var(--card-height));
-}
-.finale-photo-window.is-static .keepsake-letter__sheet {
-  position: relative;
-  inset: auto;
-  min-height: inherit;
-}
-.finale-photo-window.is-static
-  :is(
-    .keepsake-letter__hope,
-    .keepsake-letter__greeting,
-    .keepsake-letter__message,
-    .keepsake-letter__farewell
-  ) {
-  opacity: 1;
-  transform: none;
-  animation: none;
-}
-.finale-photo-window.is-static .keepsake-photograph > img {
-  transform: none;
-}
-.finale-photo-window.is-static .keepsake-lamb img {
-  opacity: 1;
-  transform: translate(-19%, 0);
-  animation: none;
 }
 @media (prefers-reduced-motion: reduce) {
-  .keepsake-letter__body > *,
-  .keepsake-lamb img {
+  .keepsake-photograph {
+    transform: none !important;
+    will-change: auto;
+  }
+  .keepsake-letter__intro,
+  .keepsake-letter__copy {
     animation: none !important;
   }
 }
 @media (forced-colors: active) {
-  .keepsake-face {
+  .keepsake-note,
+  .keepsake-note__actions {
     background: Canvas;
     color: CanvasText;
     border-color: CanvasText;
-    box-shadow: none;
-  }
-  .keepsake-back::before {
-    display: none;
-  }
-  .keepsake-letter__farewell::before {
-    background: CanvasText;
   }
   .finale-photo-window :is(h3, p, span, strong, em) {
     color: CanvasText;
