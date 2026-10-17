@@ -257,11 +257,15 @@ export interface BusinessModelCanvasSection {
 
 export const businessModelCanvas: {
   image: string;
+  imageWidth: number;
+  imageHeight: number;
   imageAlt: string;
   prompt: string;
   sections: BusinessModelCanvasSection[];
 } = {
   image: entrepreneurshipAssets.illustrations.businessModel,
+  imageWidth: 1448,
+  imageHeight: 1086,
   imageAlt: "Business Model Canvas of CirCure",
   prompt:
     "Click below to learn more about each step of our business model.",
@@ -1549,10 +1553,14 @@ export const entrepreneurshipPage: WikiPageContent = {
             {
               src: entrepreneurshipAssets.illustrations.originalDocument1,
               alt: "Original patent acceptance document",
+              width: 853,
+              height: 1207,
             },
             {
               src: entrepreneurshipAssets.illustrations.originalDocument1EnTranslation,
               alt: "English translation of the patent acceptance document",
+              width: 904,
+              height: 1280,
             },
           ],
           caption: "Original Document & English Translation",
@@ -1576,10 +1584,14 @@ export const entrepreneurshipPage: WikiPageContent = {
             {
               src: entrepreneurshipAssets.illustrations.originalDocument2,
               alt: "Original software copyright registration document",
+              width: 863,
+              height: 1167,
             },
             {
               src: entrepreneurshipAssets.illustrations.originalDocument2EnTranslation,
               alt: "English translation of the software copyright registration document",
+              width: 945,
+              height: 1280,
             },
           ],
           caption: "Original Document & English Translation",
@@ -1733,30 +1745,44 @@ export const entrepreneurshipPage: WikiPageContent = {
             {
               src: entrepreneurshipAssets.illustrations.actionEastChina,
               alt: "2026 iGEM East China Regional Meeting",
+              width: 4000,
+              height: 3000,
             },
             {
               src: entrepreneurshipAssets.illustrations.actionCentralChina,
               alt: "2026 Central China iGEM Forum",
+              width: 1920,
+              height: 1280,
             },
             {
               src: entrepreneurshipAssets.illustrations.actionNorthChina,
               alt: "2026 North China iGEMer Meetup",
+              width: 2276,
+              height: 1280,
             },
             {
               src: entrepreneurshipAssets.illustrations.actionNortheastChina,
               alt: "Northeast China iGEM Co-creation Salon",
+              width: 2275,
+              height: 1280,
             },
             {
               src: entrepreneurshipAssets.illustrations.actionSouthChina,
               alt: "Southern China Retional Meeting",
+              width: 1920,
+              height: 1280,
             },
             {
               src: entrepreneurshipAssets.illustrations.actionSynbiopunk,
               alt: "Synbiopunk-CCiC 2026",
+              width: 4000,
+              height: 2251,
             },
             {
               src: entrepreneurshipAssets.illustrations.actionApic,
               alt: "The 1st Gramd APiC Conference for Asia-Pracific iGEMer Community",
+              width: 2568,
+              height: 1926,
             },
           ],
           caption:

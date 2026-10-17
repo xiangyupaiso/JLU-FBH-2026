@@ -275,6 +275,8 @@ export function BusinessModelCanvas() {
       <figure className="business-model-canvas__figure">
         <img
           src={businessModelCanvas.image}
+          width={businessModelCanvas.imageWidth}
+          height={businessModelCanvas.imageHeight}
           alt={businessModelCanvas.imageAlt}
           loading="lazy"
         />

@@ -94,7 +94,7 @@ export type WikiContentBlock =
     }
   | {
       type: "carousel";
-      images: Array<{ src: string; alt?: string }>;
+      images: Array<{ src: string; alt?: string; width?: number; height?: number }>;
       caption?: string;
       figureLabel?: string;
     }

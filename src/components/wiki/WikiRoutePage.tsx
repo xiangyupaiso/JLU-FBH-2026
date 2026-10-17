@@ -443,7 +443,7 @@ export function WikiContentBlocks({ blocks, features = {}, sectionId }: {
   ))}</>;
 }
 
-function EducationViewportFigureImage({ src, alt }: { src: string; alt: string }) {
+function EducationViewportFigureImage({ src, alt, width, height }: { src: string; alt: string; width?: number; height?: number }) {
   const containerRef = useRef<HTMLSpanElement>(null);
   const [near, setNear] = useState(false);
   useEffect(() => {
@@ -457,7 +457,7 @@ function EducationViewportFigureImage({ src, alt }: { src: string; alt: string }
     observer.observe(element);
     return () => observer.disconnect();
   }, []);
-  return <span className="education-figure-window" ref={containerRef}>{near ? <img src={src} alt={alt} loading="lazy" decoding="async" /> : null}</span>;
+  return <span className="education-figure-window" ref={containerRef}>{near ? <img src={src} alt={alt} width={width} height={height} loading="lazy" decoding="async" /> : null}</span>;
 }
 
 function RouteBlock({
@@ -585,7 +585,7 @@ function RouteBlock({
           data-wiki-reveal
         >
           {block.src.includes("/engagement/education/figures/")
-            ? <EducationViewportFigureImage src={block.src} alt={block.alt} />
+            ? <EducationViewportFigureImage src={block.src} alt={block.alt} width={block.width} height={block.height} />
             : <img src={block.src} alt={block.alt} width={block.width} height={block.height} loading="lazy" decoding="async" />}
           {block.figureLabel ? (
             <figcaption>
@@ -606,7 +606,7 @@ function RouteBlock({
         <figure className="wiki-figure wiki-figure--carousel" data-wiki-reveal>
           <div className="wiki-figure__row">
             {block.images.map((img) => (
-              <img key={img.src} src={img.src} alt={img.alt ?? ""} loading="lazy" decoding="async" />
+              <img key={img.src} src={img.src} width={img.width} height={img.height} alt={img.alt ?? ""} loading="lazy" decoding="async" />
             ))}
           </div>
           {block.caption ? <figcaption>{renderInlineFormatting(block.caption)}</figcaption> : null}

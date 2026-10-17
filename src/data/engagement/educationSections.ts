@@ -43,6 +43,8 @@ const rawSections: WikiSection[] = [
       {
         "type": "figure",
         "src": "__BASE__assets/education/education-overview-map.png",
+        "width": 1536,
+        "height": 1024,
         "alt": "Education overview map"
       },
       {
@@ -105,6 +107,8 @@ const rawSections: WikiSection[] = [
       {
         "type": "figure",
         "src": "__BASE__assets/education/recursive-care-spiral.png",
+        "width": 1536,
+        "height": 1024,
         "alt": "Recursive care spiral"
       },
       {
@@ -645,6 +649,8 @@ const rawSections: WikiSection[] = [
       {
         "type": "figure",
         "src": "__BASE__assets/education/virtual-laboratory-nine-experiments.png",
+        "width": 1536,
+        "height": 1024,
         "alt": "Virtual laboratory nine experiments"
       },
       {
@@ -734,6 +740,8 @@ const rawSections: WikiSection[] = [
       {
         "type": "figure",
         "src": "__BASE__assets/education/virtual-laboratory-interface.png",
+        "width": 1536,
+        "height": 1024,
         "alt": "Virtual laboratory interface"
       },
       {
@@ -1083,6 +1091,8 @@ const rawSections: WikiSection[] = [
       {
         "type": "figure",
         "src": "__BASE__assets/education/pilu-town-iteration.png",
+        "width": 1536,
+        "height": 1024,
         "alt": "Pilu town iteration"
       },
       {
@@ -1146,6 +1156,8 @@ const rawSections: WikiSection[] = [
       {
         "type": "figure",
         "src": "__BASE__assets/education/synbio-classroom.png",
+        "width": 1536,
+        "height": 1024,
         "alt": "Synbio classroom"
       },
       {
@@ -2679,6 +2691,8 @@ const rawSections: WikiSection[] = [
       {
         "type": "figure",
         "src": "__BASE__assets/education/xinghua-festival.png",
+        "width": 1536,
+        "height": 1024,
         "alt": "Xinghua festival"
       },
       {
@@ -2969,6 +2983,8 @@ const rawSections: WikiSection[] = [
       {
         "type": "figure",
         "src": "__BASE__assets/education/health-run.png",
+        "width": 1536,
+        "height": 1024,
         "alt": "Health run"
       },
       {
@@ -3337,6 +3353,8 @@ const rawSections: WikiSection[] = [
       {
         "type": "figure",
         "src": "__BASE__assets/education/molecular-rhythm.png",
+        "width": 1536,
+        "height": 1024,
         "alt": "Molecular rhythm"
       },
       {
@@ -3609,6 +3627,8 @@ const rawSections: WikiSection[] = [
       {
         "type": "figure",
         "src": "__BASE__assets/education/breast-guardian.png",
+        "width": 1536,
+        "height": 1024,
         "alt": "Breast guardian"
       },
       {
@@ -4334,6 +4354,8 @@ const rawSections: WikiSection[] = [
       {
         "type": "figure",
         "src": "__BASE__assets/education/ethics-debate.png",
+        "width": 1536,
+        "height": 1024,
         "alt": "Ethics debate"
       },
       {
@@ -4423,6 +4445,8 @@ const rawSections: WikiSection[] = [
       {
         "type": "figure",
         "src": "__BASE__assets/education/participation-dialogue-without-a-standard-position-photo-61.png",
+        "width": 1016,
+        "height": 1548,
         "alt": "Illustration for Dialogue Without a Standard Position"
       },
       {
@@ -4825,6 +4849,8 @@ const rawSections: WikiSection[] = [
       {
         "type": "figure",
         "src": "__BASE__assets/education/design-photo-65.png",
+        "width": 2400,
+        "height": 1855,
         "alt": "Illustration for Bio Memory Match"
       },
       {
@@ -5900,6 +5926,8 @@ const rawSections: WikiSection[] = [
       {
         "type": "figure",
         "src": "__BASE__assets/education/education-feedback-invitation.png",
+        "width": 1560,
+        "height": 1560,
         "alt": "Education feedback invitation"
       }
     ]
