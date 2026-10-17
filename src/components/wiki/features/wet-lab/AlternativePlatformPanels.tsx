@@ -98,9 +98,39 @@ function AlternativePlatformJudgingCriteria() {
   );
 }
 
+/**
+ * Sanger sequence across the back-splice junction (BSJ) of the Combined vaccine.
+ * Styled in CirCure's Chinese ink-wash watercolor aesthetic (水墨淡彩风),
+ * centered and proportioned to pair directly with the chromatogram peaks in FIG. 06 below.
+ */
+function BsjSequenceBanner() {
+  return (
+    <div
+      className="bsj-plate"
+      data-wiki-reveal
+      role="region"
+      aria-label="Sanger sequenced back-splice junction sequence"
+    >
+      <div className="bsj-plate__halo" aria-hidden="true" />
+      <div className="bsj-plate__segment bsj-plate__segment--3prime">
+        <code className="bsj-plate__seq">CTCAGTAGATGTTTTCTTGGGT</code>
+      </div>
+      <div className="bsj-plate__divider" aria-hidden="true">
+        <span className="bsj-plate__divider-stem" />
+        <span className="bsj-plate__divider-mark">|</span>
+        <span className="bsj-plate__divider-stem" />
+      </div>
+      <div className="bsj-plate__segment bsj-plate__segment--5prime">
+        <code className="bsj-plate__seq">CTACCGTTTAATATTGCGTCATAT</code>
+      </div>
+    </div>
+  );
+}
+
 export function alternativePlatformFeatures(): Record<string, ReactNode> {
   return {
     "alternative-platform-achievement-navigation": <KeyAchievements />,
+    "alternative-platform-bsj-sequence": <BsjSequenceBanner />,
     "alternative-platform-backbone": (
       <div className="platform-backbone">
         <InteractiveHtmlEmbed
@@ -121,3 +151,4 @@ export function alternativePlatformFeatures(): Record<string, ReactNode> {
     "alternative-platform-references": <AlternativePlatformReferenceList />,
   };
 }
+

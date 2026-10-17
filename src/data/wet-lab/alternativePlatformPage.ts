@@ -698,8 +698,8 @@ const sections = [
         ]
       },
       {
-        "type": "quote",
-        "text": "`CTCAGTAGATGTTTTCTTGGGT | CTACCGTTTAATATTGCGTCATAT`"
+        "type": "feature",
+        "key": "alternative-platform-bsj-sequence"
       },
       {
         "type": "figure",

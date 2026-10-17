@@ -467,3 +467,124 @@
     transition: none;
   }
 }
+
+/* ==========================================================================
+   BSJ Sequence Plate: Chinese Ink-wash Watercolor Aesthetic (水墨淡彩风)
+   Centered, wider spread, paired directly with FIG. 06 Sanger chromatogram
+   ========================================================================== */
+
+.wiki-page[data-wiki-route="/alternative-platform"] .bsj-plate {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  max-width: 860px;
+  margin: 28px auto 18px;
+  padding: 16px 28px;
+  border-radius: 999px;
+  box-sizing: border-box;
+  background:
+    radial-gradient(ellipse 70% 60% at 20% 45%, rgba(83, 111, 135, 0.08) 0%, transparent 68%),
+    radial-gradient(ellipse 70% 60% at 80% 55%, rgba(184, 93, 67, 0.07) 0%, transparent 68%),
+    linear-gradient(180deg, rgba(254, 252, 246, 0.95) 0%, rgba(246, 241, 230, 0.90) 100%);
+  border: 1px solid rgba(83, 111, 135, 0.16);
+  box-shadow:
+    0 8px 30px -6px rgba(45, 36, 28, 0.06),
+    0 1px 4px rgba(83, 111, 135, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(8px);
+  overflow: hidden;
+  text-align: center;
+}
+
+.wiki-page[data-wiki-route="/alternative-platform"] .bsj-plate__halo {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  background:
+    radial-gradient(circle at 50% -10%, rgba(255, 255, 255, 0.8) 0%, transparent 60%),
+    radial-gradient(circle at 50% 110%, rgba(197, 160, 88, 0.06) 0%, transparent 50%);
+}
+
+.wiki-page[data-wiki-route="/alternative-platform"] .bsj-plate__segment {
+  flex: 1 1 0;
+  min-width: 0;
+  position: relative;
+  z-index: 1;
+}
+
+.wiki-page[data-wiki-route="/alternative-platform"] .bsj-plate__segment--3prime {
+  text-align: right;
+}
+
+.wiki-page[data-wiki-route="/alternative-platform"] .bsj-plate__segment--5prime {
+  text-align: left;
+}
+
+.wiki-page[data-wiki-route="/alternative-platform"] .bsj-plate__seq {
+  display: inline-block;
+  font-family: var(--font-mono, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace);
+  font-size: clamp(13px, 1.35vw, 16.5px);
+  font-weight: 600;
+  letter-spacing: clamp(0.14em, 0.38vw, 0.32em);
+  white-space: nowrap;
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+.wiki-page[data-wiki-route="/alternative-platform"] .bsj-plate__segment--3prime .bsj-plate__seq {
+  color: #1F364B;
+}
+
+.wiki-page[data-wiki-route="/alternative-platform"] .bsj-plate__segment--5prime .bsj-plate__seq {
+  color: #3B2A1E;
+}
+
+.wiki-page[data-wiki-route="/alternative-platform"] .bsj-plate__divider {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0 6px;
+  color: #A6442E;
+  position: relative;
+  z-index: 1;
+}
+
+.wiki-page[data-wiki-route="/alternative-platform"] .bsj-plate__divider-stem {
+  width: 1px;
+  height: 6px;
+  background: rgba(166, 68, 46, 0.35);
+}
+
+.wiki-page[data-wiki-route="/alternative-platform"] .bsj-plate__divider-mark {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1;
+  color: #B84A32;
+  text-shadow: 0 0 6px rgba(184, 74, 50, 0.25);
+}
+
+@media (max-width: 680px) {
+  .wiki-page[data-wiki-route="/alternative-platform"] .bsj-plate {
+    padding: 12px 14px;
+    margin: 20px auto 14px;
+    border-radius: 16px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    justify-content: flex-start;
+  }
+  .wiki-page[data-wiki-route="/alternative-platform"] .bsj-plate__segment--3prime {
+    text-align: left;
+  }
+  .wiki-page[data-wiki-route="/alternative-platform"] .bsj-plate__segment {
+    flex: 0 0 auto;
+  }
+}
+
+

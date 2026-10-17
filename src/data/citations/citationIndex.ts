@@ -247,7 +247,8 @@ export function buildAuthorYearKeys(
         : "";
     const second = reference.authors.match(/(?:&|\band)\s+([^,.]+)(?:,|$)/)?.[1]
       .trim();
-    const year = reference.volumeYear.match(/\((\d{4})\)/)?.[1] ?? "";
+    // Four-digit issue numbers such as (5247) are not publication years.
+    const year = reference.volumeYear.match(/\(((?:19|20)\d{2})\)/)?.[1] ?? "";
     return {
       id: reference.id,
       surname: nfc(surname),
