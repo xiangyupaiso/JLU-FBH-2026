@@ -7,7 +7,7 @@ import "../../../../styles/features/education-media.css";
 type Gallery = (typeof galleries)[number];
 type MediaGroup = (typeof mediaGroups)[number];
 
-function useNearViewport<T extends HTMLElement>() {
+function useNearViewport<T extends HTMLElement>(rootMargin = "400px 0px") {
   const ref = useRef<T>(null);
   const [near, setNear] = useState(false);
   useEffect(() => {
@@ -17,10 +17,10 @@ function useNearViewport<T extends HTMLElement>() {
       setNear(true);
       return;
     }
-    const observer = new IntersectionObserver(([entry]) => setNear(entry.isIntersecting), { rootMargin: "400px 0px" });
+    const observer = new IntersectionObserver(([entry]) => setNear(entry.isIntersecting), { rootMargin });
     observer.observe(element);
     return () => observer.disconnect();
-  }, []);
+  }, [rootMargin]);
   return { ref, near };
 }
 
@@ -57,28 +57,32 @@ const interactivePages = {
 } as const;
 
 function InteractivePage({ item }: { item: (typeof interactivePages)[keyof typeof interactivePages] }) {
+  const { ref, near } = useNearViewport<HTMLElement>("1200px 0px");
+  const [started, setStarted] = useState(false);
   const [html, setHtml] = useState("");
   const [status, setStatus] = useState<"idle" | "loading" | "ready" | "error">("idle");
-  const load = async () => {
+  const [attempt, setAttempt] = useState(0);
+  useEffect(() => { if (near) setStarted(true); }, [near]);
+  useEffect(() => {
+    if (!started) return;
+    let active = true;
     setStatus("loading");
-    try {
-      setHtml(await item.load());
+    void item.load().then((content) => {
+      if (!active) return;
+      setHtml(content);
       setStatus("ready");
-    } catch {
-      setStatus("error");
-    }
-  };
+    }).catch(() => { if (active) setStatus("error"); });
+    return () => { active = false; };
+  }, [item, started, attempt]);
   return (
-    <section className="education-interactive" aria-label={item.title}>
+    <section className="education-interactive" aria-label={item.title} ref={ref}>
       <div className="education-interactive__head">
         <strong>{item.title}</strong>
       </div>
-      {status === "ready" && html ? <iframe srcDoc={html} title={item.title} loading="lazy" sandbox="allow-scripts allow-popups" style={{ height: item.height }} />
-        : <div className="education-interactive__launch">
-            <p>{status === "loading" ? "Loading activity…" : status === "error" ? "This activity could not load. Please try again." : "Explore this activity here on the Education page."}</p>
-            <button type="button" onClick={() => { void load(); }} disabled={status === "loading"}>
-              {status === "error" ? "Try again" : "Play here"}
-            </button>
+      {status === "ready" && html && near ? <iframe srcDoc={html} title={item.title} loading="lazy" sandbox="allow-scripts allow-popups" style={{ height: item.height }} />
+        : <div className="education-interactive__launch" style={{ minHeight: item.height }}>
+            <p>{status === "loading" ? "Loading activity…" : status === "error" ? "This activity could not load. Please try again." : started ? "Activity ready — scroll here to play." : "Activity loads automatically when you reach this section."}</p>
+            {status === "error" ? <button type="button" onClick={() => setAttempt((current) => current + 1)}>Try again</button> : null}
           </div>}
     </section>
   );
