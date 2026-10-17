@@ -64,6 +64,7 @@
 
 .education-interactive__launch {
   display: grid;
+  align-content: center;
   justify-items: center;
   gap: 12px;
   padding: 36px 20px 44px;
