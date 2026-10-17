@@ -1,8 +1,6 @@
 import type { WikiContentBlock } from "../../components/wiki/wikiPageTypes";
-import fig30 from "../../../文案集/project/results/图片和附件/dose_decision_figure.png";
 
-
-/** Source: latest Results manuscript. Empty upload URLs retain bundled originals. */
+/** Static figures use the official URLs from the current Results manuscript. */
 export interface ResultsAssetEntry {
   fileName: string;
   localSourcePath: string;
@@ -384,56 +382,43 @@ export const resultsAssets = {
     width: 1280,
     height: 754,
   },
-  fig30: {
-    fileName: "results-dose-decision-figure.png",
-    localSourcePath:
-      "文案集/project/results/图片和附件/dose_decision_figure.png",
-    localSrc: fig30,
-    uploadUrl: "",
-    alt: "Figure 30. Joint passage probability across tested doses. The 10.2 μg dose achieves peak conditional passage probability (0.8145) under the project's joint decision rule. The broad peak near 10 μg indicates robustness to small dosing variations.",
-    caption:
-      "Joint passage probability across tested doses. The 10.2 μg dose achieves peak conditional passage probability (0.8145) under the project's joint decision rule. The broad peak near 10 μg indicates robustness to small dosing variations.",
-    section: "Dose Optimization and Mechanistic Modeling",
-    width: 2064,
-    height: 1462,
-  },
   fig31: {
-    fileName: "results-31-effector-suppression-dynamics.avif",
+    fileName: "key-intermediate-states-at-10-2-g-dose.avif",
     localSourcePath:
       "文案集/project/results/图片和附件/31_effector_suppression_dynamics.png",
     uploadUrl:
-      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/results/results-31-effector-suppression-dynamics.avif",
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/results/key-intermediate-states-at-10-2-g-dose.avif",
     alt: "Figure 31. Key intermediate states at 10.2 μg dose. (A) Effector activity (blue) and suppression (red) over 35 days. (B) Cell-response interface showing equivalent effector-to-target ratio approaching saturation. (C) Per-capita tumor killing rate (effective rate after suppression, solid; before suppression, dashed). Five injection events create pulsed immune responses.",
     caption:
       "Key intermediate states at 10.2 μg dose. (A) Effector activity (blue) and suppression (red) over 35 days. (B) Cell-response interface showing equivalent effector-to-target ratio approaching saturation. (C) Per-capita tumor killing rate (effective rate after suppression, solid; before suppression, dashed). Five injection events create pulsed immune responses.",
     section: "Dose Optimization and Mechanistic Modeling",
-    width: 3274,
-    height: 1089,
+    width: 1280,
+    height: 425,
   },
   fig32: {
-    fileName: "results-29-immune-gain-components.avif",
+    fileName: "cell-inferred-immune-gains-and-composite-effector-score.avif",
     localSourcePath:
       "文案集/project/results/图片和附件/29_immune_gain_components.png",
     uploadUrl:
-      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/results/results-29-immune-gain-components.avif",
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/results/cell-inferred-immune-gains-and-composite-effector-score.avif",
     alt: "Figure 32. Cell-inferred immune gains and composite effector score. Relative gains from DC maturation (CD80/CD86), T-cell activation (CD8/CD69), IFN-γ secretion, and Granzyme B. The geometric effector composite (orange) integrates the three T-cell readouts with equal weighting, providing the calibration anchor for immune-activation parameters. CD44/CD62L ratio is shown descriptively but not used in the composite.",
     caption:
       "Cell-inferred immune gains and composite effector score. Relative gains from DC maturation (CD80/CD86), T-cell activation (CD8/CD69), IFN-γ secretion, and Granzyme B. The geometric effector composite (orange) integrates the three T-cell readouts with equal weighting, providing the calibration anchor for immune-activation parameters. CD44/CD62L ratio is shown descriptively but not used in the composite.",
     section: "Dose Optimization and Mechanistic Modeling",
-    width: 2469,
-    height: 1388,
+    width: 1280,
+    height: 719,
   },
   fig33: {
-    fileName: "results-animal-comparison.avif",
+    fileName: "model-prediction-versus-literature-scale-tumor-growth.avif",
     localSourcePath: "文案集/project/results/图片和附件/animal_comparison.png",
     uploadUrl:
-      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/results/results-animal-comparison.avif",
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/results/model-prediction-versus-literature-scale-tumor-growth.avif",
     alt: "Figure 33. Model prediction versus literature-scale tumor growth. Gray: external untreated scenario; Blue: conditional 10.2 μg treatment prediction with 95% uncertainty interval. The model predicts moderate tumor suppression; observed outcomes showed stronger efficacy (ratio 0.104) but fell within the conditional simulation envelope.",
     caption:
       "Model prediction versus literature-scale tumor growth. Gray: external untreated scenario; Blue: conditional 10.2 μg treatment prediction with 95% uncertainty interval. The model predicts moderate tumor suppression; observed outcomes showed stronger efficacy (ratio 0.104) but fell within the conditional simulation envelope.",
     section: "Dose Optimization and Mechanistic Modeling",
-    width: 2565,
-    height: 1007,
+    width: 1280,
+    height: 502,
   },
   fig34: {
     fileName:

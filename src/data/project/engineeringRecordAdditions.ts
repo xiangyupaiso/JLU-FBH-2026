@@ -166,7 +166,11 @@ export const cycle2Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "We built a staged prioritisation route using all overlapping nine-amino-acid windows from the four canonical protein sequences. Each peptide record linked its sequence and source coordinates to predicted HLA-A*02:01 binding affinity, sequence-based immunogenicity and processing-related outputs. The numerical screen applied two predefined criteria in sequence:"
+          "We built a staged prioritisation route using all overlapping nine-amino-acid windows from the four canonical protein sequences. Each peptide record linked its sequence and source coordinates to predicted HLA-A*02:01 binding affinity, sequence-based immunogenicity and processing-related outputs. The numerical screen applied two predefined criteria in sequence:",
+          "**1. Binding-affinity criterion:** Peptides with a predicted HLA-A*02:01 binding IC50 below 500 nM were retained, identifying sequences with stronger predicted binding.",
+          "**2. Immunogenicity criterion:** The retained peptides were further required to have an IEDB immunogenicity score above zero, prioritising sequences with favourable immunogenicity predictions.",
+          "Processing- and eluted-ligand-related outputs were retained as supporting fields for subsequent review rather than applied as additional independent cutoffs (Reynisson et al., 2020; Calis et al., 2013; Peters et al., 2003; Tenzer et al., 2005).",
+          "Peptides satisfying both criteria then entered a source-protein context review. Their start and end coordinates were mapped onto the corresponding UniProt canonical sequences and compared individually with signal-peptide and transmembrane-region annotations. We also recorded sequence overlaps and the representation of all four antigen sources to support later coding design. This route connected each peptide’s numerical prediction results with its biological position in the source protein and preserved the basis for every subsequent selection decision."
 ]
         },
         {
@@ -207,7 +211,8 @@ export const cycle2Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "The four canonical proteins generated 1,838 overlapping nine-amino-acid peptides: 315 from TROP2, 274 from B7-H4, 502 from Nectin-4 and 747 from LIV-1. The binding-affinity threshold retained 83 peptides—17, 13, 15 and 38 from the four respective sources. Applying the positive immunogenicity-score requirement retained 51 peptides: nine from TROP2, ten from B7-H4, ten from Nectin-4 and twenty-two from LIV-1."
+          "The four canonical proteins generated 1,838 overlapping nine-amino-acid peptides: 315 from TROP2, 274 from B7-H4, 502 from Nectin-4 and 747 from LIV-1. The binding-affinity threshold retained 83 peptides—17, 13, 15 and 38 from the four respective sources. Applying the positive immunogenicity-score requirement retained 51 peptides: nine from TROP2, ten from B7-H4, ten from Nectin-4 and twenty-two from LIV-1.",
+          "We then mapped these 51 peptides back to their source proteins and compared their coordinates with UniProt signal-peptide and transmembrane annotations. The source-protein review formed a 17-epitope shortlist comprising four TROP2, two B7-H4, six Nectin-4 and five LIV-1 sequences. Each shortlisted epitope retained its binding-affinity result, immunogenicity score, source coordinates and protein-context record, providing a traceable input for structural review."
 ]
         },
         {
@@ -280,7 +285,14 @@ export const cycle2Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "We established a unified AlphaFold 3 structural-review workflow for all 17 candidates. Each peptide was submitted with the HLA-A*02:01 heavy chain and β2-microglobulin, with structural templates enabled. Each task returned five sampled models; all 85 models and their confidence files were retained, and all five models per candidate were included in the structural measurements (Abramson et al., 2024)."
+          "We established a unified AlphaFold 3 structural-review workflow for all 17 candidates. Each peptide was submitted with the HLA-A*02:01 heavy chain and β2-microglobulin, with structural templates enabled. Each task returned five sampled models; all 85 models and their confidence files were retained, and all five models per candidate were included in the structural measurements (Abramson et al., 2024).",
+          "The review was organised into five dimensions:",
+          "**1. Groove placement:** the peptide’s position and orientation within the HLA binding groove.",
+          "**2. P2/P9 anchoring:** side-chain burial at positions 2 and 9 and their accommodation within the B and F pockets, respectively.",
+          "**3. Interface contacts:** peptide–HLA contacts and the conserved backbone hydrogen-bond network.",
+          "**4. Model consistency:** agreement in structural measurements and review outcomes across the five sampled models.",
+          "**5. Structural conflicts:** recurring steric clashes, distortion or displacement.",
+          "Each record remained linked to the source antigen, protein coordinates and IEDB prediction history. The representative TROP2 peptide `SVCWCVNSV` documented the PyMOL workflow for examining peptide placement, interface residues and predicted hydrogen bonds (Saper et al., 1991)."
 ]
         },
         {
@@ -290,6 +302,23 @@ export const cycle2Section: WikiSection = {
           height: 2100,
           alt: "Figure C2-02A",
           caption: "Each candidate peptide was modelled with the HLA-A*02:01 heavy chain and β2-microglobulin. All five returned models were retained and assessed across five structural-review dimensions. `SVCWCVNSV` illustrated the PyMOL measurement and visualization workflow."
+        },
+        {
+          type: "references",
+          items: [
+          {
+                    "label": "doi:10.1038/s41586-024-07487-w",
+                    "text": "Abramson J, Adler J, Dunger J, et al. Accurate structure prediction of biomolecular interactions with AlphaFold 3. *Nature*. 2024;630:493–500.",
+                    "href": "https://doi.org/10.1038/s41586-024-07487-w",
+                    "hrefLabel": "doi:10.1038/s41586-024-07487-w"
+          },
+          {
+                    "label": "doi:10.1016/0022-2836(91)90567-P",
+                    "text": "Saper MA, Bjorkman PJ, Wiley DC. Refined structure of the human histocompatibility antigen HLA-A2 at 2.6 Å resolution. *Journal of Molecular Biology*. 1991;219:277–319.",
+                    "href": "https://doi.org/10.1016/0022-2836%2891%2990567-P",
+                    "hrefLabel": "doi:10.1016/0022-2836(91)90567-P"
+          }
+]
         }
           ]
         },
@@ -340,6 +369,12 @@ export const cycle2Section: WikiSection = {
           type: "note",
           label: "Table C2-02B note",
           body: "Coding status records inclusion in the first-round experimental design; structural measurements provide accompanying computational descriptions. Numerical measurements are means across five models, while the conserved-network column counts hydrogen bonds present in all five. The P9 reference ratio uses 140 Å² as its denominator and may exceed 100%. “Undefined” denotes an undefined side-chain burial percentage."
+        },
+        {
+          type: "prose",
+          paragraphs: [
+          "Across the five models of the representative TROP2 peptide `SVCWCVNSV`, the P2 and P9 side chains were highly buried, the conserved hydrogen-bond network was maintained and no interface steric clashes were recorded. PyMOL views illustrated peptide placement within the HLA binding groove, surrounding interface residues and predicted hydrogen bonds. The archived models, measurement records and PyMOL session preserved these observations for subsequent review."
+]
         },
         {
           type: "figure",
@@ -878,7 +913,7 @@ export const cycle2Section: WikiSection = {
           width: 3000,
           height: 2100,
           alt: "Figure C2-06",
-          caption: "(A) CD8/CD69 staining and flow cytometry assessed early T-cell activation under the TROP2 CTL1 and CTL2 conditions. (B) Calcein-AM release from K562 targets measured overall effector-cell cytotoxicity at an effector-to-target ratio of 80:1, with spontaneous- and maximum-release controls supporting normalisation."
+          caption: "**(A)** CD8/CD69 staining and flow cytometry assessed early T-cell activation under the TROP2 CTL1 and CTL2 conditions. **(B)** Calcein-AM release from K562 targets measured overall effector-cell cytotoxicity at an effector-to-target ratio of 80:1, with spontaneous- and maximum-release controls supporting normalisation."
         }
           ]
         },

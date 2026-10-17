@@ -23,9 +23,12 @@ export function HomePlayback({ root }: HomePlaybackProps) {
     ended,
     chapters,
     reducedMotion,
+    artworkStatus,
+    artworkChapter,
     toggle,
     seekChapter,
     setRate,
+    retryArtwork,
   } = useHomePlayback(root);
   const [showScenes, setShowScenes] = useState(false);
   const playerRef = useRef<HTMLDivElement>(null);
@@ -99,6 +102,7 @@ export function HomePlayback({ root }: HomePlaybackProps) {
       data-home-player=""
       data-playback-mode={mode}
       data-playback-chapter={currentChapter.id}
+      data-artwork-status={artworkStatus}
       ref={playerRef}
       onBlur={(event) => {
         // Safari can clear focus on pointerdown before a scene receives click.
@@ -111,6 +115,20 @@ export function HomePlayback({ root }: HomePlaybackProps) {
           setShowScenes(false);
       }}
     >
+      {artworkStatus !== "ready" && (
+        <div className="home-playback-loading" role="status" aria-live="polite">
+          <p>{artworkStatus === "error"
+            ? "Some scene images could not load."
+            : "Loading scene images…"}</p>
+          <p className="home-playback-loading-scene">{artworkChapter}</p>
+          {artworkStatus === "error" && (
+            <div className="home-playback-loading-actions">
+              <button type="button" onClick={retryArtwork}>Retry images</button>
+              <button type="button" onClick={() => window.location.reload()}>Reload page</button>
+            </div>
+          )}
+        </div>
+      )}
       <div
         className="home-playback-scenes"
         data-open={showScenes}
@@ -240,7 +258,9 @@ export function HomePlayback({ root }: HomePlaybackProps) {
         </div>
       </div>
       <span className="home-playback-sr" role="status" aria-live="polite">
-        {reducedMotion
+        {artworkStatus !== "ready"
+          ? "Story waiting for scene images."
+          : reducedMotion
           ? "Reduced motion is on. Story playback is in static view."
           : ended
             ? "Story complete. Replay is available."

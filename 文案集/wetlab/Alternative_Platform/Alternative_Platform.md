@@ -4,9 +4,9 @@
 
 ### How strong is the evidence that the team successfully engineered their biological system?
 
-Sixteen plasmids were built on one backbone\. The 13 single\-epitope constructs and the Combined construct each cleared colony PCR, diagnostic double digestion and full\-length Sanger sequencing at 100% sequence match before being prepared endotoxin\-free and used as transcription templates\.
+Sixteen plasmids were designed on one backbone and ordered endotoxin\-free from a commercial gene\-synthesis supplier\. The plasmids were verified by plasmid\-target PCR and sequencing at 100% sequence match before linearisation and purification as transcription templates\.
 
-Circularity of the final vaccine is verified structurally\. RT\-PCR across the back\-splice junction followed by Sanger sequencing returned a single homogeneous splice product, with a flat baseline and single sharp peaks either side of the junction\. The released material is 99\.30 ± 0\.17% circular, with the circular species roughly 146 times more abundant than the linear precursor\.
+Circularity of the final Combined vaccine is verified structurally\. RT\-PCR across the back\-splice junction followed by Sanger sequencing returned a single homogeneous splice product, with a flat baseline and single sharp peaks either side of the junction\. The released material is 99\.30 ± 0\.17% circular, with the circular species roughly 146 times more abundant than the linear precursor\.
 
 Function was then validated link by link, in the order an immune response occurs: DC maturation, anti\-FLAG translation, T\-cell activation, effector\-memory differentiation, IFN\-γ ELISpot, MDA\-MB\-231 killing\. From Round 2 onward every link is baselined against an empty\-vector control carrying the complete backbone and adjuvant with no epitope encoded\. In vivo, with blinded calipers on coded animals and the analysis pre\-specified in the NC3Rs Experimental Design Assistant, the pre\-specified key comparison met its threshold: 73\.2% tumour growth inhibition against the empty vector, Holm *P* = 2\.0 × 10⁻⁵\.
 
@@ -18,7 +18,7 @@ See Section 7, the Results page and the Experiments page\.
 
 The end point of our mechanism is a 9\-mer displayed on HLA\-A\*02:01 at the surface of a human dendritic cell and recognised by an autologous human CD8⁺ T cell\. Proteasomal processing, TAP transport, ER loading and a thymically selected TCR repertoire have no bacterial or yeast counterpart, and no standard chassis offers a simplified version of this experiment\.
 
-Having chosen circRNA, and Section 5\.2 sets out why we rejected peptide, DNA, viral and linear\-mRNA alternatives, production is forced as well\. A covalently closed circle is made by self\-splicing of a *permuted* intron–exon precursor, a template arrangement that exists only by design and that no cell can supply\. *E\. coli* appears in our workflow for one job, amplifying the plasmid before it is linearised and leaves the cell permanently\. No *E\. coli* measurement appears anywhere in our results\.
+Having chosen circRNA, and Section 5\.2 sets out why we rejected peptide, DNA, viral and linear\-mRNA alternatives, production is forced as well\. A covalently closed circle is made by self\-splicing of a *permuted* intron–exon precursor, a template arrangement that exists only by design and that no cell can supply\. The vector backbone retains bacterial replication and selection elements as features of the supplied plasmid, but our laboratory workflow is completely cell\-free, starting directly with linearising commercially supplied DNA\. No *E\. coli* culturing or measurement appears anywhere in our workflow\.
 
 See Sections 4 and 5\.
 
@@ -34,9 +34,9 @@ See Sections 5 and 6, and the Parts page\.
 
 ### Has the team documented what didn't work, why, and what others should watch out for?
 
-Five named failures with the reason and what we would do differently, in Section 8\. Four of them weaken our own conclusions\.
+Five limitations are documented with their consequences and recommendations for future work, in Section 8\. Four of them weaken our own conclusions\.
 
-Our two Round\-1 read\-outs ranked the same 13 constructs differently, Spearman ρ = 0\.43 and *P* = 0\.14, and we state which one we selected on and what the other would have chosen\. Round 1 ran with no controls and no replicate wells, so no Round\-1 SFC may be read as an antigen\-specific frequency\. The empty vector alone achieved 61\.3% tumour growth inhibition in vivo, which is why our pre\-specified comparison is against it and not against PBS\. And back\-splice\-junction sequencing exists for the Combined vaccine only, so the other preparations rest on an inference from shared chemistry\.
+Our two Round\-1 read\-outs ranked the same 13 constructs differently, Spearman ρ = 0\.43 and *P* = 0\.14, and we state which one we selected on and what the other would have chosen\. Round\-1 ELISpot was run with no controls and no replicate wells, so no Round\-1 SFC may be read as an antigen\-specific frequency\. The empty vector alone achieved 61\.3% tumour growth inhibition in vivo relative to PBS, which is why our pre\-specified comparison is against it and not against PBS\. And back\-splice\-junction sequencing exists for the Combined vaccine only, so the other preparations rest on an inference from shared chemistry\.
 
 Also reported: haplotype mismatch in the animal model\. Section 7\.6 names, claim by claim, the controls that would raise each one\.
 
@@ -54,7 +54,7 @@ See Section 8\.
 
 The chemistry of covalent RNA circularization has been public since 2018 \(Wesselhoeft et al\., 2018\)\. circRNA works as a vaccine in both infectious disease and oncology \(Li et al\., 2022; Qu et al\., 2022\), and its advantages over linear mRNA have been measured head to head \(Lee et al\., 2026; Gong et al\., 2025\)\. What the field has not published is a standardised, release\-tested, documented backbone that another team can load its own antigens into, together with the protocols, acceptance criteria and failure record that make such a backbone usable\.
 
-CirCure is that backbone\. It is a 5,267 bp plasmid in which antigen identity occupies 336 bp, bases 1606–1941, and the remaining 4,931 bp never change\. We validated it through two design–build–test–learn cycles and then in tumour\-bearing mice, deposited it as 30 Registry parts whose boundaries match the plasmid annotation exactly, wrote the cell\-free production process down with a numerical release criterion, and built a tool that designs the next cassette for it\. Triple\-negative breast cancer is where we validated the platform\. It is not the limit of what the platform addresses\.
+CirCure is that backbone\. It is a 5,267 bp plasmid in which antigen identity occupies 336 bp, bases 1606–1941, and the remaining 4,931 bp are fixed in our design\. We validated it through two design–build–test–learn cycles and then in tumour\-bearing mice, deposited it as 30 Registry parts whose boundaries match the plasmid annotation exactly, wrote the cell\-free production process down with a numerical release criterion, and built a tool that designs the next cassette for it\. Triple\-negative breast cancer is where we validated the platform\. It is not the limit of what the platform addresses\.
 
 None of this work happens in a microbial chassis\. Production is cell\-free, T7 transcription followed by permuted\-intron self\-splicing, and the engineering and every read\-out happen in human primary immune cells and mammalian tumour cells\. A vaccine whose whole mechanism is a 9\-mer peptide reaching HLA\-A\*02:01 on a human dendritic cell cannot be built, expressed or even measured in *E\. coli*, *S\. cerevisiae* or *B\. subtilis*\.
 
@@ -124,7 +124,7 @@ The award covers work done in plant chassis, mammalian cells, cell\-free platfor
 
 **Production\.** Having chosen circRNA, production is forced\. A covalently closed circle is made by self\-splicing of a *permuted* intron–exon precursor \(Wesselhoeft et al\., 2018\), a template arrangement that exists only by design, in a reaction requiring T7 polymerase, a linear template, GTP and Mg²⁺\. A living cell cannot supply that precursor, and would degrade the product\. Cell\-free synthesis is the only route to the molecule\.
 
-So the read\-out forces mammalian and the molecule forces cell\-free\. *E\. coli* survives in our workflow for exactly one job, amplifying the plasmid before it is linearised and leaves the cell permanently\.
+So the read\-out forces mammalian and the molecule forces cell\-free\. Bacterial propagation elements remain on the plasmid backbone as features of the supplied vector, but our laboratory workflow is completely cell\-free, starting with linearising commercially supplied endotoxin\-free plasmid DNA\.
 
 ### 5\.2 Why circRNA
 
@@ -178,9 +178,9 @@ https://static\.igem\.wiki/teams/6056/wiki/files/pages/wet\-lab/the\-evidence\-c
 
 ### 7\.1 Construction and release
 
-Sixteen plasmids were built on one backbone\. The 13 single\-epitope constructs and the Combined construct each cleared colony PCR, diagnostic double digestion and full\-length Sanger sequencing at 100% sequence match before being prepared endotoxin\-free and used as transcription templates\.
+Sixteen plasmids were designed on one backbone and ordered endotoxin\-free from a commercial gene\-synthesis supplier\. The plasmids were verified by plasmid\-target PCR and sequencing at 100% sequence match before linearisation and purification as in vitro transcription templates\.
 
-Eighteen preparations were then carried through one route: template preparation, T7 transcription, DNase treatment, LiCl precipitation, PIE circularization at 55 °C, RNase R digestion\. Thirteen are the Round\-1 single\-epitope constructs, and five are the Round\-2 batch: empty vector, TROP2\-CTL1, TROP2\-CTL2, TROP2\-CTL1\+2 and Combined\. Eighteen preparations come from sixteen plasmids, because TROP2\-CTL1 and TROP2\-CTL2 were re\-transcribed for Round 2\.
+Eighteen RNA preparations followed one route: linearisation and purification of commercially supplied plasmids, T7 transcription, DNase treatment, LiCl precipitation, PIE circularisation at 55 °C and RNase R enrichment\. Thirteen were Round\-1 single\-epitope preparations, and five formed the Round\-2 batch: empty vector, TROP2\-CTL1, TROP2\-CTL2, TROP2\-CTL1\+2 and Combined\. Eighteen preparations come from sixteen plasmids, because TROP2\-CTL1 and TROP2\-CTL2 were re\-transcribed for Round 2\.
 
 Circularity is quantified on one representative preparation per round\. The thirteen Round\-1 constructs share one backbone, the same T4 *td* chemistry and the same workflow, and differ only in a short cassette of near\-identical length, so the round was quantified on TROP2\-CTL1 across a 2, 4 and 6 µL loading series in three replicate wells per volume\. Round 2 was quantified on the Combined vaccine, the construct that goes into every Round\-2 and in vivo experiment, at the 4 µL input the Round\-1 series established\.
 
@@ -194,7 +194,7 @@ Circularity is quantified on one representative preparation per round\. The thir
 
 The loading series did a second job besides measuring\. The 2 µL arm reads about four points lower than the other two, and at that input the circular\-channel Cq rose 2\.7 cycles for a two\-fold change in volume where one cycle is expected, which says the reaction was below its reliable input range\. The two higher volumes agree inside replicate scatter\. So 4 µL became the working input for every circularity measurement afterwards, including the Round\-2 release assay, where a backbone\-encoded GFP amplicon run alongside both primer channels read Cq 12\.74 in each, confirming the two channels received the same amount of RNA\.
 
-Round 2 added a release framework around the same chemistry: the transcription template is amplified by PCR with the SJ4435/SJ4436 primers across the T7\-containing region and checked on a gel before transcription, the released material has to clear ≥ 90% circular fraction, and a preparation that fails is re\-made from the transcription step with the failed run recorded alongside the released one\. The RNase R amount and digestion time are fixed for the whole batch, because extending digestion removes more linear RNA without producing more circles and degrades the circle itself\.
+Round 2 added a release framework around the same chemistry: the stated release criterion was at least 90% circular fraction after RNase R\. Plasmid\-target PCR with primers across the T7\-containing region was used for verification, with the transcription template prepared separately by plasmid linearisation and purification\. The reported RT\-qPCR measurements were 95\.35 ± 2\.01% for the representative Round\-1 TROP2\-CTL1 preparation and 99\.30 ± 0\.17% for Combined in Round 2\. Preparations below the criterion were to be remade from transcription and recorded\. The RNase R amount and digestion time are fixed for the whole batch, because extending digestion removes more linear RNA without producing more circles and degrades the circle itself\.
 
 https://static\.igem\.wiki/teams/6056/wiki/files/pages/wet\-lab/the\-cell\-free\-production\-route\-and\-the\-release\-gate\-that\-returns\-a\-failed\-preparation\-to\-transcription\.avif
 
@@ -263,7 +263,7 @@ Two in vitro results bound the working window\. Vaccine\-primed T cells killed a
 
 ### 7\.5 In vivo
 
-4T1 was engineered to over\-express human TROP2 by lentiviral transduction, GFP sorting, and verification at both mRNA and protein level\. Tumour\-bearing BALB/c mice received five weekly 10 µg doses of circRNA\-LNP on days 0, 7, 14, 21 and 28, with a day\-35 endpoint and n = 5 per group\.
+The target model was made by transducing 4T1 with a commercially supplied human\-TROP2 lentiviral preparation, sorting GFP\-positive cells and maintaining puromycin selection\. TROP2 was checked by RT\-PCR and surface flow cytometry\. Tumour\-bearing BALB/c mice received five weekly 10 µg doses of circRNA\-LNP on days 0, 7, 14, 21 and 28, with a day\-35 endpoint and n = 5 per group\.
 
 The design was fixed in advance, pre\-specified in the NC3Rs Experimental Design Assistant and reported to ARRIVE 2\.0 \(Percie du Sert et al\., 2020\), with caliper measurement blinded on coded animals in randomised order, the confirmatory analysis restricted to endpoint volume, and a minimum biologically important effect of TGI ≥ 50% set before the experiment\. Ethics approval JDYY20261369; animal use licence SYXK \(Ji\) 2023\-0011\.
 

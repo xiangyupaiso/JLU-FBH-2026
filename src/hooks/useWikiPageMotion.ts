@@ -281,7 +281,10 @@ export function useWikiPageMotion(
 
       if (currentSection) {
         const now = performance.now();
-        const measureSubsection = !lightweightRoute || now - lastSubsectionMeasure >= 120;
+        const measureSubsection =
+          currentSection !== lastActiveSection ||
+          !lightweightRoute ||
+          now - lastSubsectionMeasure >= 120;
         let currentSubsection = lastActiveSubsection;
         // Finish geometry reads before active-state attributes can invalidate layout.
         if (measureSubsection) {

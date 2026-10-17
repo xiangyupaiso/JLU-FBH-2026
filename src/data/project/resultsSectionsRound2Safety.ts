@@ -362,6 +362,7 @@ export const resultsSectionsRound2Safety: WikiSection[] = [
         type: "prose",
         paragraphs: [
           "**Interpretation** | The peak near 10 μg is **broad rather than sharp**, meaning small perturbations in dosing precision will **not qualitatively alter** the outcome. Higher doses raise both efficacy-passage rates and exposure costs; the 10.2-μg recommendation **balances the two** under the project-defined thresholds.",
+          "The in vivo study used **10.0 μg per injection** (§9.2). The passage-probability difference between 10.0 and 10.2 μg is 0.003, which sits **within the uncertainty** of unmeasured parameters such as lymph-node delivery fraction and in-vivo RNA half-life. Practical considerations—formulation precision and pipetting reproducibility—supported the round number, and the observed tumor-growth inhibition of **89.6%** (Combined vs PBS, §9.2) confirmed **efficacy at this dose**.",
           "Each dose level produces time courses of payload in lymph nodes, functional RNA expression, antigen presentation level, effector-cell activity, and tumor burden. These **intermediate states** allow us to ask which process limits efficacy at a given dose and where additional experimental measurements would reduce uncertainty most.",
         ],
       },
@@ -424,7 +425,7 @@ export const resultsSectionsRound2Safety: WikiSection[] = [
         type: "prose",
         paragraphs: [
           "**Aim** | Compare model predictions against independent pilot animal measurements to assess **directional validity**.",
-          "The observed day-35 mean tumor volume in the treated group was **24.20 mm³** (SD 8.45 mm³, n=10), compared to **233.64 mm³** (SD 63.12 mm³, n=10) in the untreated control. The observed ratio is **0.104**, falling **well below** the model's 0.70 efficacy threshold. The baseline model's central prediction was ~80 mm³ for treated and ~200 mm³ for control (ratio ~0.40), meaning the actual treatment effect was **stronger than the median prediction** but **within the 95% uncertainty interval**.",
+          "The observed day-35 mean tumour volume in the treated group was **24.20 ± 9.72 mm³** (n=5), compared to **233.64 ± 28.33 mm³** (n=5) in the untreated control (mean ± SD; §9.2, Table 27). The observed ratio is **0.104**, falling **well below** the model's 0.70 efficacy threshold. The baseline model's central prediction was ~80 mm³ for treated and ~200 mm³ for control (ratio ~0.40), meaning the actual treatment effect was **stronger than the median prediction** but **within the 95% uncertainty interval**.",
         ],
       },
       resultsFigure("fig33"),
@@ -495,7 +496,7 @@ export const resultsSectionsRound2Safety: WikiSection[] = [
         type: "prose",
         paragraphs: [
           "**Aim**｜Test the platform's core assumption — that circularity confers resistance to degradation — and inform **dosing frequency**: the longer the molecule persists, the lower the nucleic-acid dose and the fewer administrations needed for equivalent antigen expression, and the smaller the systemic exposure.",
-          "**Design & Readout**｜Equal masses of purified circRNA and its linear precursor incubated in parallel at 37 °C, sampled at **0, 24, 48 and 72 h**, run side by side on one gel and quantified by densitometry against each RNA's own 0 h lane (Experiments 5.1). **The material was the Combined batch** — the same preparation as the circRNA used throughout Sections 6–8 (§5.5) — so the conclusion is a platform-level claim measured on the vaccine itself, not carried over from a Round 1 construct.",
+          "**Design & Readout**｜Equal masses of purified circRNA and its linear precursor incubated in parallel at 37 °C, sampled at **0, 24, 48 and 72 h**, run side by side on one gel and quantified by densitometry against each RNA's own 0 h lane (Experiments 5.1). **The material was the Combined batch** — used in every experiment from Round 2 onwards (Sections 6, 8 and 9) — so the conclusion is a platform-level claim measured on the vaccine itself, not carried over from a Round 1 construct.",
           "**Result**",
         ],
       },

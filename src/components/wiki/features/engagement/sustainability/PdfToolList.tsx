@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import type {
   LegacyTool,
   LegacyToolPdf,
@@ -8,7 +9,7 @@ import { RichText } from "./RichText";
 import "../../../../../styles/wiki-pdf-folders.css";
 
 type ToolCard = Pick<LegacyTool, "title" | "pdfs"> &
-  Partial<Pick<LegacyTool, "why" | "whatItHelpsWith" | "bestFor">>;
+  Partial<Pick<LegacyTool, "why" | "whatItHelpsWith" | "bestFor" | "links">>;
 
 const ROWS = [
   ["why", "Why"],
@@ -141,6 +142,15 @@ export function PdfToolList({
             >
               {pdfLabel(pdf.label)}
             </a>
+          ))}
+          {active.links?.map((link) => (
+            <Link
+              className="sust-tool-card__btn"
+              key={link.href}
+              to={link.href}
+            >
+              {link.label}
+            </Link>
           ))}
         </div>
       </article>

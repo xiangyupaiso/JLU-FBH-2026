@@ -73,13 +73,17 @@ export const sdg4FeedbackQuestions: ReadonlyArray<Sdg4FeedbackQuestion> = [
   {
     sourceId: "Q8",
     title: "Main difficulty",
-    question: "What was the main difficulty you encountered during this activity?",
+    question:
+      "What was the main difficulty you encountered during this activity?",
     options: [
       { label: "No noticeable difficulty", count: 196 },
       { label: "Difficult content or terminology", count: 109 },
       { label: "The pace was too fast", count: 56 },
       { label: "Unclear steps or rules", count: 24 },
-      { label: "Equipment, internet, or materials were hard to use", count: 36 },
+      {
+        label: "Equipment, internet, or materials were hard to use",
+        count: 36,
+      },
       { label: "Difficulty asking questions or speaking up", count: 43 },
       { label: "Other", count: 16 },
     ],
@@ -131,7 +135,8 @@ const sdg4Educators: ReadonlyArray<StakeholderProfile> = [
           ],
         },
         {
-          heading: "01 Appropriate Learning Opportunities Start with What Learners Already Know",
+          heading:
+            "01 Appropriate Learning Opportunities Start with What Learners Already Know",
           blocks: [
             "Teachers explained that the same scientific content needs to be presented differently according to learners’ ages, prior knowledge, and levels of understanding. Too many unexplained terms, or complex mechanisms introduced before basic concepts are established, can make it difficult for students to stay engaged.",
             "Based on this feedback, we reorganized our materials along a progressive learning pathway, moving from intuitive explanations to scientific concepts and then to discussions of synthetic biology and its applications. By adjusting content depth, terminology, and pacing, we aimed to provide suitable starting points for students at different learning stages.",
@@ -145,14 +150,16 @@ const sdg4Educators: ReadonlyArray<StakeholderProfile> = [
           ],
         },
         {
-          heading: "03 Practical Activities and Documented Resources Support Participation and Reuse",
+          heading:
+            "03 Practical Activities and Documented Resources Support Participation and Reuse",
           blocks: [
             "These suggestions also shaped our activities. We incorporated experimental experiences, interactive tasks, virtual laboratories, and game-based learning so students could connect scientific concepts with practical actions by making choices, observing results, and discussing what happened. Learners without laboratory experience could begin exploring synthetic biology through investigation, discussion, and decision-making.",
             "Teachers also encouraged us to consider how others could reuse the activities. We began systematically documenting activity structures, teaching materials, interaction formats, and learning resources to support adoption and adaptation by other educators, students, and iGEM teams.",
           ],
         },
         {
-          heading: "04 What Changed | Placing Understanding and Participation at the Center of Educational Design",
+          heading:
+            "04 What Changed | Placing Understanding and Participation at the Center of Educational Design",
           blocks: [
             "These discussions established a guiding principle for CirCure’s work under SDG 4: Meaningful learning begins with opportunities to participate.",
             "We began using learners’ prior knowledge, responses, and practical experiences as key inputs to educational design. Content at different levels, two-way communication, and interactive activities supported participation, while documentation supported future reuse. Our educational goals consequently expanded to include developing resources that could remain useful and adapt to different learning needs.",
@@ -195,7 +202,8 @@ const sdg4Educators: ReadonlyArray<StakeholderProfile> = [
           ],
         },
         {
-          heading: "02 Accessible Explanations Must Preserve Scientific Qualifications",
+          heading:
+            "02 Accessible Explanations Must Preserve Scientific Qualifications",
           blocks: [
             "Science communicators emphasized that simplified explanations still need to retain information that affects interpretation. This includes the technology’s research stage, the conclusions supported by existing evidence, and applications that require further validation.",
             "As we revised language and visuals, we also considered whether readers might misunderstand the project’s progress. For technologies still under investigation, we retained research-stage qualifications and evidence boundaries, avoiding presenting research potential as a mature achievement. Clear explanations therefore remained grounded in accurate information.",
@@ -209,7 +217,8 @@ const sdg4Educators: ReadonlyArray<StakeholderProfile> = [
           ],
         },
         {
-          heading: "04 What Changed | Treating Understandable Content as Part of Public Learning Opportunities",
+          heading:
+            "04 What Changed | Treating Understandable Content as Part of Public Learning Opportunities",
           blocks: [
             "These discussions established another principle for CirCure’s work under SDG 4: Accessible science communication supports opportunities to learn. We treated online science communication as a way for the public to encounter and learn about synthetic biology. Clearer organization, accessible language, and explanations of research stages and evidence boundaries supported participation by people without specialist backgrounds. Public feedback also informed ongoing improvements, helping our communication respond to actual learning needs.",
           ],
@@ -266,7 +275,8 @@ const sdg4Educators: ReadonlyArray<StakeholderProfile> = [
           ],
         },
         {
-          heading: "04 What Changed | Including Practical Usability in Educational Resource Design",
+          heading:
+            "04 What Changed | Including Practical Usability in Educational Resource Design",
           blocks: [
             "**Our discussions with Weiweihan** established a third principle for CirCure’s work under SDG 4: Educational tools support participation when people can access and use them.",
             "We made practical usability a design priority, continually considering barriers related to equipment, materials, operation, and facilitation. Subsequent improvements to the virtual laboratory and games therefore focused on access, participation, and reuse under different conditions, supporting more learners in encountering synthetic biology.",
@@ -298,9 +308,10 @@ const sdg4Resources: ReadonlyArray<EducationResource> = [
     id: "bio-memory-match",
     title: "02-Bio Memory Match",
     figure: "sdg4BioMemoryMatch",
+    gamesLink: true,
     paragraphs: [
       "Bio Memory Match turns **18 life science and synthetic biology concepts**, including DNA, RNA, plasmids, and genetic circuits, into matching cards. Players turn over cards, remember their positions, and find identical images, then use a bilingual Chinese–English illustrated guide to explore the science behind them. The physical game supports 1–4 players, and its difficulty can be adjusted by reducing the number of card types.",
-      "We brought the physical cards to the **APiC meeting** and invited attendees to play. Participants responded positively to the game’s enjoyment value and suggested an online version so that people without physical cards could also participate. We subsequently developed an online game, which learners can access by **scanning the QR code included with the physical cards** or **clicking below to play directly**. This feedback expanded the resource from on-site use to online access and informed further interactive design and development.",
+      "At the APiC meeting, attendees played the physical version of Bio Memory Match and **suggested an online version** for people who did not have the cards. We responded by **developing an online game**, accessible through the QR code included with the physical cards or the link below. The suggestion identified a practical barrier to participation, and the online version made the activity available beyond on-site sessions. This provides a concrete example of **participant feedback shaping the development of our educational resources**.",
       "For the physical version, we produced **3 cards of each type, making 54 cards in total**: two for matching and one spare. If one card of a type is lost, the game can still be used. This design increased the initial material input but was intended to reduce the likelihood of remaking or discarding an entire set because of a missing card. It connects SDG 4’s emphasis on continued use of educational resources with resource responsibility under SDG 12.",
       "The physical cards support activities where digital devices are inconvenient to use, while the online version expands access. Bilingual rules and an illustrated concept guide help other teams organize, reuse, and adapt the activity.",
     ],
@@ -359,7 +370,8 @@ const sdg4Groups: ReadonlyArray<EducationActivityGroup> = [
         whatChanged:
           "Children participated in character identification, search tasks, and classroom discussions, gaining opportunities to encounter immunology through observation, comparison, and explanation. We also explained the analogy’s limitations and reminded them that vaccines do not provide universal protection.",
         whatChangedLabel: "Impact",
-        resourcesNote: "Teaching slides · Character cards · Game rules · Teacher instructions",
+        resourcesNote:
+          "Teaching slides · Character cards · Game rules · Teacher instructions",
         resourcesHint:
           "For teachers and other teams to use and adapt according to learners’ ages and prior knowledge.",
         resourcePdfs: [
@@ -368,7 +380,8 @@ const sdg4Groups: ReadonlyArray<EducationActivityGroup> = [
         ],
         sdgs: [4, 3],
         article: {
-          title: "Starting with a “Body City” to Explore Invisible Immune Processes",
+          title:
+            "Starting with a “Body City” to Explore Invisible Immune Processes",
           sections: [
             {
               blocks: [
@@ -384,7 +397,8 @@ const sdg4Groups: ReadonlyArray<EducationActivityGroup> = [
               ],
             },
             {
-              heading: "02 Two Game Rounds Created a Shared Experience for Discussion",
+              heading:
+                "02 Two Game Rounds Created a Shared Experience for Discussion",
               blocks: [
                 "After meeting different immune-cell characters, children played two rounds of “Wanted Poster: Catch the Intruder.” In the first round, they received no advance clues about the target. In the second, they saw a “wanted poster” before searching for the same target.",
                 "The two tasks provided a shared basis for discussion. We asked children to compare their searches: how did having clues beforehand change their decisions? Why was a familiar target easier to recognize again?",
@@ -392,15 +406,17 @@ const sdg4Groups: ReadonlyArray<EducationActivityGroup> = [
               ],
             },
             {
-              heading: "03 Recording Participation Separately from Conceptual Understanding",
+              heading:
+                "03 Recording Participation Separately from Conceptual Understanding",
               blocks: [
                 "Children observed, searched, and compared during the lesson, while character images gave them concrete objects for discussing abstract concepts. However, playing the game, finding a target, or enjoying the activity does not alone demonstrate understanding of immune memory.",
-                "Assessing learning therefore requires attention to what children actually say—for example, how they explain the value of prior recognition and whether they understand that vaccines do not provide universal protection. Classroom answers, task performance, and participant feedback from this activity: [Add actual records].",
+                "Assessing learning therefore requires attention to what children actually say—for example, how they explain the value of prior recognition and whether they understand that vaccines do not provide universal protection.",
                 "For future sessions, we plan to introduce brief questions before and after the lesson to document changes in understanding and inform revisions to the story, prompts, and explanations.",
               ],
             },
             {
-              heading: "04 Supporting Continued Learning While Addressing Misconceptions from Analogies",
+              heading:
+                "04 Supporting Continued Learning While Addressing Misconceptions from Analogies",
               blocks: [
                 "This activity addresses SDG 4 through age-appropriate explanations and active participation, offering children without an immunology background a starting point for scientific learning. We hope the lesson can support their future ability to understand health information, express questions, and seek help. These long-term effects still require follow-up feedback.",
                 "The activity also connects with SDG 3. Health topics bring science closer to everyday life, but oversimplification could lead children to believe that the immune system always recognizes danger correctly or that vaccination prevents all illness. We therefore explained the analogy’s limits to help distinguish the story from actual science.",
@@ -455,27 +471,31 @@ const sdg4Groups: ReadonlyArray<EducationActivityGroup> = [
               ],
             },
             {
-              heading: "01 Using Teaching Advice to Connect Existing and New Knowledge",
+              heading:
+                "01 Using Teaching Advice to Connect Existing and New Knowledge",
               blocks: [
                 "Teachers had advised us to organize content around learners’ prior knowledge and leave room for questions, discussion, and practice. This helped us establish the lesson’s focus: building a basic framework for understanding synthetic biology before introducing the project and its applications.",
                 "We compared biological parts to LEGO bricks to introduce their different functions and the idea of combining them in a design. We then introduced iGEM and circRNA research, connecting familiar biological knowledge with new research questions.",
               ],
             },
             {
-              heading: "02 Inviting Students to Design through an Open-Ended Task",
+              heading:
+                "02 Inviting Students to Design through an Open-Ended Task",
               blocks: [
                 "After the introduction, we offered a “Design Your Dream circRNA” task: if you could design an RNA, what real-world problem would you want it to help solve?",
                 "The task focused on identifying needs and expressing ideas, encouraging students to connect the technology with issues such as disease and health. Starting from questions they cared about, students could describe desired functions and find a starting point for exploring the relevant principles and research methods.",
               ],
             },
             {
-              heading: "03 Preserving Scientific Qualifications during Creative Exploration",
+              heading:
+                "03 Preserving Scientific Qualifications during Creative Exploration",
               blocks: [
                 "The open-ended task offered room for imagination while requiring a distinction between design aspirations and validated technology. LEGO bricks provide an intuitive analogy for combining components, but biological parts depend on their context. Whether a combination performs its intended function requires experimental testing and refinement. Students’ health-related ideas also provided an opportunity to discuss SDG 3: what need might a design address, and what else would we need to know to realize it? These questions encouraged students to connect creativity with scientific evidence and the conditions required for practical application.",
               ],
             },
             {
-              heading: "04 Providing a Starting Point for Continued Exploration",
+              heading:
+                "04 Providing a Starting Point for Continued Exploration",
               blocks: [
                 "This activity addresses SDG 4 by connecting existing knowledge with new concepts and encouraging active participation. Familiar analogies and an open-ended task gave students opportunities to encounter frontier science and express research interests. We hope students will continue asking how technologies work and how ideas can be tested step by step.",
                 "Teaching slides, task instructions, and an activity facilitation guide support students in reviewing the content and help other teachers and teams run the activity again. By adapting explanatory depth and task requirements to learners’ starting points, these resources can support further exploration in different classrooms and remain useful beyond a single introductory activity.",
@@ -493,7 +513,8 @@ const sdg4Groups: ReadonlyArray<EducationActivityGroup> = [
         location: "Yanbian No.1 High School, Jilin",
         participants: "96 Students",
         audience: "High School Students",
-        challenge: "How can we make pathways into student research easier to understand?",
+        challenge:
+          "How can we make pathways into student research easier to understand?",
         whatWeDid:
           "Using iGEM as an example, we introduced its mission, participation divisions, preparation timeline, judging requirements, topic selection principles, and team responsibilities. We broke a student research project down into an understandable workflow to help students recognize different roles and ways to prepare.",
         whatWeDidLabel: "Our Response",
@@ -532,7 +553,8 @@ const sdg4Groups: ReadonlyArray<EducationActivityGroup> = [
               ],
             },
             {
-              heading: "03 Lowering Information Barriers While Recognizing Practical Constraints",
+              heading:
+                "03 Lowering Information Barriers While Recognizing Practical Constraints",
               blocks: [
                 "This activity addressed SDG 4 through access to research information and learning opportunities. Clear explanations of project workflows and preparation helped students identify concrete questions to explore after developing an interest in research.",
                 "Access to information is only a starting point. Time, funding, laboratory conditions, and supervision still influence actual opportunities. We aimed to provide guidance that supported realistic expectations and avoided presenting any single competition as the only route into research.",
@@ -571,7 +593,8 @@ const sdg4Groups: ReadonlyArray<EducationActivityGroup> = [
         ],
         sdgs: [4, 9],
         article: {
-          title: "Understanding a Technology Also Means Understanding Why It Was Created",
+          title:
+            "Understanding a Technology Also Means Understanding Why It Was Created",
           sections: [
             {
               blocks: [
@@ -630,7 +653,8 @@ const sdg4Groups: ReadonlyArray<EducationActivityGroup> = [
         whatChanged:
           "The activity presented a range of roles in research collaboration, helping students connect personal interests with concrete tasks and encouraging them to explore skills beyond their existing strengths.",
         whatChangedLabel: "Impact",
-        resourcesNote: "Presentation slides · Team roles and responsibilities overview",
+        resourcesNote:
+          "Presentation slides · Team roles and responsibilities overview",
         resourcesHint:
           "For teachers and other teams to use and adapt according to students’ interests and prior knowledge.",
         resourcePdfs: [
@@ -654,7 +678,8 @@ const sdg4Groups: ReadonlyArray<EducationActivityGroup> = [
               ],
             },
             {
-              heading: "02 Understanding Research Collaboration through Concrete Work",
+              heading:
+                "02 Understanding Research Collaboration through Concrete Work",
               blocks: [
                 "Starting with an introduction to iGEM, we explained how different areas of work support a project:",
                 {
@@ -677,7 +702,8 @@ const sdg4Groups: ReadonlyArray<EducationActivityGroup> = [
               ],
             },
             {
-              heading: "04 Supporting Inclusive Participation and Further Learning",
+              heading:
+                "04 Supporting Inclusive Participation and Further Learning",
               blocks: [
                 "This activity addressed SDG 4 through the development of diverse abilities and inclusive learning opportunities, while connecting with SDG 10’s concern for reducing inequalities. We sought to broaden perceptions of research participation so that more students could see their interests contributing to collective problem-solving.",
                 "This broader understanding still requires guidance, time, and resources to become participation; it does not mean that practical barriers have been removed. Presentation slides and role descriptions support student review, follow-up classroom discussions, and adaptation by other teams, allowing one presentation to become a starting point for further exploration.",
@@ -694,7 +720,8 @@ const sdg4Groups: ReadonlyArray<EducationActivityGroup> = [
         date: "Mar. 4, 2026",
         location: "Technical Institute Avogadro, Turin, Italy",
         participants: "50 Students",
-        audience: "High school students participating in cross-cultural exchange",
+        audience:
+          "High school students participating in cross-cultural exchange",
         challenge:
           "How can students with different languages and curricular backgrounds participate in discussions about synthetic biology?",
         whatWeDid:
@@ -710,7 +737,8 @@ const sdg4Groups: ReadonlyArray<EducationActivityGroup> = [
         resourcePdfs: [pdf("English", "10-synbio-across-borders-en.pdf")],
         sdgs: [4, 17],
         article: {
-          title: "Opening Cross-Cultural Dialogue through Shared Scientific Questions",
+          title:
+            "Opening Cross-Cultural Dialogue through Shared Scientific Questions",
           sections: [
             {
               blocks: [
@@ -725,21 +753,24 @@ const sdg4Groups: ReadonlyArray<EducationActivityGroup> = [
               ],
             },
             {
-              heading: "02 Connecting Science with Real Needs through Research Examples",
+              heading:
+                "02 Connecting Science with Real Needs through Research Examples",
               blocks: [
                 "We used health research examples to explain how synthetic biology designs can develop from real-world problems and discussed these ideas directly with students.",
                 "Health provided a familiar context for considering what research aims to address, which approaches it uses, and what further validation is needed. The discussion also created space to explore differences in learning experiences and interests.",
               ],
             },
             {
-              heading: "03 Treating Language Adaptation as a Condition for Participation",
+              heading:
+                "03 Treating Language Adaptation as a Condition for Participation",
               blocks: [
                 "English provided a shared language for the exchange, but a shared language does not make specialized content equally easy for everyone to understand. Terminology density, explanations, and opportunities to speak all affect continued participation.",
                 "This experience clarified priorities for future cross-cultural education: explain essential background, avoid unexplained terminology, and leave space for clarification and questions. We aimed to support contributions from learners with different levels of language proficiency and avoid creating additional language barriers.",
               ],
             },
             {
-              heading: "04 Supporting Continued Learning through Exchange and Sharing",
+              heading:
+                "04 Supporting Continued Learning through Exchange and Sharing",
               blocks: [
                 "The activity addressed SDG 4 through learning across languages and scientific exchange, while connecting with SDG 17’s emphasis on collaboration and knowledge sharing. The face-to-face discussion provided a starting point for further educational cooperation, whose sustained value depends on continued use of the materials and further exchanges.",
                 "English slides, research examples, and discussion outlines provide a reference for other teachers and teams. Adapting them to local curricula and language settings can help scientific content remain understandable, open to discussion, and reusable across educational contexts.",
@@ -760,7 +791,8 @@ const sdg4Groups: ReadonlyArray<EducationActivityGroup> = [
         location: "Jilin University Affiliated Middle School",
         participants: "203 Students",
         audience: "Middle School Students",
-        challenge: "How can unfamiliar science become understandable through everyday experience?",
+        challenge:
+          "How can unfamiliar science become understandable through everyday experience?",
         whatWeDid:
           "Following earlier advice on connecting prior knowledge, intuitive explanations, and interactive learning, we began with the question, “Could we make bread without growing wheat?” Analogies such as “cell—micro factory,” “DNA—instruction manual,” and “metabolic pathway—production line” connected everyday food, basic biology, and synthetic biology.",
         whatWeDidLabel: "Our Response",
@@ -777,7 +809,8 @@ const sdg4Groups: ReadonlyArray<EducationActivityGroup> = [
         ],
         sdgs: [4, 9, 12],
         article: {
-          title: "Starting with Bread to Explore the Possibilities of Living Systems",
+          title:
+            "Starting with Bread to Explore the Possibilities of Living Systems",
           sections: [
             {
               blocks: [
@@ -792,7 +825,8 @@ const sdg4Groups: ReadonlyArray<EducationActivityGroup> = [
               ],
             },
             {
-              heading: "02 Connecting Abstract Processes with Everyday Analogies",
+              heading:
+                "02 Connecting Abstract Processes with Everyday Analogies",
               blocks: [
                 "We used three analogies to introduce activities within cells:",
                 {
@@ -846,9 +880,15 @@ const sdg4Groups: ReadonlyArray<EducationActivityGroup> = [
         resourcePdfs: [
           pdf("English", "12-01-synbio-classroom-opening-ceremony.pdf"),
           pdf("English", "12-02-synbio-classroom-pcr-en.pdf"),
-          pdf("English", "12-03-synbio-classroom-dna-extraction-identification-en.pdf"),
+          pdf(
+            "English",
+            "12-03-synbio-classroom-dna-extraction-identification-en.pdf",
+          ),
           pdf("English", "12-04-synbio-classroom-life-science-monopoly-en.pdf"),
-          pdf("English", "12-05-synbio-classroom-plasmids-and-biological-parts-en.pdf"),
+          pdf(
+            "English",
+            "12-05-synbio-classroom-plasmids-and-biological-parts-en.pdf",
+          ),
         ],
         sdgs: [4, 9],
         article: {
@@ -860,21 +900,24 @@ const sdg4Groups: ReadonlyArray<EducationActivityGroup> = [
               ],
             },
             {
-              heading: "01 Translating Teaching Advice into a Progressive Learning Pathway",
+              heading:
+                "01 Translating Teaching Advice into a Progressive Learning Pathway",
               blocks: [
                 "Teachers had reminded us that practical activities should build on existing knowledge and provide space for understanding, experimentation, and reflection. For students already familiar with DNA, complementary base pairing, and genetic information, we could focus on how this knowledge is applied.",
                 "We organized the day around **Know → Experiment → Analyze → Decide → Design**. Safety procedures and basic principles led into experiments, followed by result analysis, game-based decisions, and component design. Connected knowledge linked the stages and helped students understand the purpose of each step.",
               ],
             },
             {
-              heading: "02 Moving from Hands-On Procedures to Result Interpretation",
+              heading:
+                "02 Moving from Hands-On Procedures to Result Interpretation",
               blocks: [
                 "Students began the morning with laboratory safety training before undertaking experiments. During PCR, they connected complementary base pairing with amplification, practiced pipetting, and prepared reaction mixtures. During crude DNA extraction from onions, they used grinding, filtration, and alcohol precipitation to observe a crude DNA-containing extract, connecting an abstract concept with a visible phenomenon.",
                 "In the afternoon, students examined PCR results using agarose gel electrophoresis and considered how observations support judgments. The course thus extended from experimental procedures to evidence analysis, connecting performing an experiment with interpreting its results.",
               ],
             },
             {
-              heading: "03 Exploring Design through a Research Game and Component Combinations",
+              heading:
+                "03 Exploring Design through a Research Game and Component Combinations",
               blocks: [
                 "In “Life Science Monopoly,” students encountered research choices and collaboration through questions and event cards, applying their knowledge to specific tasks.",
                 "The course then introduced plasmids and biological component design. Students learned about promoters, RBSs, CDSs, and terminators and attempted to combine them under task constraints. This encouraged them to consider component functions, relationships between components, and intended outcomes, introducing engineering design in synthetic biology.",
@@ -920,7 +963,8 @@ const sdg4Groups: ReadonlyArray<EducationActivityGroup> = [
         whatChangedLabel: "Impact",
         sdgs: [4, 12],
         article: {
-          title: "Examining the Reasons for Choices Beyond Technological Possibility",
+          title:
+            "Examining the Reasons for Choices Beyond Technological Possibility",
           sections: [
             {
               blocks: [
@@ -928,7 +972,8 @@ const sdg4Groups: ReadonlyArray<EducationActivityGroup> = [
               ],
             },
             {
-              heading: "01 Extending Two-Way Communication to Technological Controversies",
+              heading:
+                "01 Extending Two-Way Communication to Technological Controversies",
               blocks: [
                 "Discussions with educators encouraged us to prioritize questions, responses, and active participation. For university students, we wanted to create further opportunities to examine complex issues, question technologies, and explain the basis of their judgments.",
                 "The debate focused on benefits, risks, and responsibilities in technological application. Different views could be expressed, questioned, and compared around a shared topic, providing a concrete setting for critical thinking.",
@@ -957,7 +1002,8 @@ const sdg4Groups: ReadonlyArray<EducationActivityGroup> = [
               ],
             },
             {
-              heading: "04 Supporting Responsible Participation through Open Discussion",
+              heading:
+                "04 Supporting Responsible Participation through Open Discussion",
               blocks: [
                 "The activity addressed SDG 4 through sustainability education and critical thinking, connecting with SDG 12 through discussion of resource use, environmental costs, and the allocation of responsibilities. Its educational aim was to offer methods for examining complex scientific and technological issues, while allowing participants to reach different conclusions.",
                 "Debate also has limitations. The contrast between “reshaping” and “working with” nature can generate discussion but may oversimplify real choices. Decisions usually require attention to specific applications, degrees of intervention, monitoring, and alternatives. Understanding the conditions behind arguments and the uncertainties involved therefore matters more than defending a fixed position.",
@@ -985,7 +1031,8 @@ const sdg4Groups: ReadonlyArray<EducationActivityGroup> = [
         location: "Jilin University Apricot Blossom Festival · Nanling Campus",
         participants: "3000 Participants",
         audience: "Campus Community & General Public",
-        challenge: "How can reliable health knowledge become accessible to people with different needs?",
+        challenge:
+          "How can reliable health knowledge become accessible to people with different needs?",
         whatWeDid:
           "Following advice on audience needs, intuitive explanations, and interactive participation, we combined physician consultations, AR/MR medical experiences, knowledge quizzes, science leaflets, games, and creative activities. Participants could choose learning formats suited to their needs.",
         whatWeDidLabel: "Our Response",
@@ -1010,28 +1057,32 @@ const sdg4Groups: ReadonlyArray<EducationActivityGroup> = [
               ],
             },
             {
-              heading: "01 Designing Different Starting Points around Public Needs",
+              heading:
+                "01 Designing Different Starting Points around Public Needs",
               blocks: [
                 "Discussions with teachers, science communicators, and interactive design professionals had encouraged us to pay closer attention to differences among learners. At an open event, some participants may want basic explanations, others may be interested in medical technology, and others may bring specific health questions.",
                 "We therefore offered several areas that participants could choose between. They could begin with their interests and decide whether to read further, try an experience, or seek a consultation, adjusting the pace and depth of participation to their needs.",
               ],
             },
             {
-              heading: "02 Supporting Understanding through Professional Exchange and Direct Experience",
+              heading:
+                "02 Supporting Understanding through Professional Exchange and Direct Experience",
               blocks: [
                 "Dr. Xin Guan from breast surgery and Dr. Lin Jia from the oncology center provided free health consultations, preventive health guidance, and advice on seeking medical care. This gave the public opportunities to ask professionals questions directly.",
                 "We also demonstrated a “Three-Stage Progressive Virtual Simulation Training System,” using AR/MR to present clinical scenarios such as history-taking, examinations, and simulated surgery. Breast health question cards and trifold science leaflets offered another route to learning: participants could engage on site or take materials away to read at their own pace.",
               ],
             },
             {
-              heading: "03 Incorporating Interaction and Expression into Public Education",
+              heading:
+                "03 Incorporating Interaction and Expression into Public Education",
               blocks: [
                 "A “Knock Down Cancer Cells” beanbag game and bookmark-making activity provided approachable ways to participate. More than 300 science leaflets were distributed, and participants completed more than 200 bookmarks, allowing materials from the event to accompany them afterward.",
                 "Two pink ribbon walls offered space for expression. Participants shared wishes for their families’ health, encouragement for people with breast cancer, and support for medicine and public service. This connected health topics with personal concerns and social support, creating further opportunities for exchange.",
               ],
             },
             {
-              heading: "04 Connecting Accessible Participation with Professional Explanations",
+              heading:
+                "04 Connecting Accessible Participation with Professional Explanations",
               blocks: [
                 "The activity addressed SDG 4 through public health literacy and informal learning opportunities, while connecting with SDG 3 through reliable information and professional exchange. Different formats allowed people from varied backgrounds to choose suitable starting points, while free consultations and take-home materials reduced some barriers to information.",
                 "Clear distinctions remained necessary. The beanbag game could not explain actual mechanisms of cancer treatment, and simulated clinical scenarios could not replace individual diagnosis. Activities needed to connect these experiences with professional explanations so participants would not mistake game rules or simulations for medical facts.",
@@ -1058,11 +1109,6 @@ const sdg4Groups: ReadonlyArray<EducationActivityGroup> = [
         whatChanged:
           "The activity offered different ways for people with varied interests and knowledge backgrounds to encounter life science. Participants joined simulated procedures, creative tasks, and questions and answers, contributing their own ideas and expressions.",
         whatChangedLabel: "Impact",
-        resourcesNote:
-          "Interactive station instructions · Rhythm challenge rules · Bookmark templates · Scientific explanations and question materials",
-        resourcesHint:
-          "For teachers, student associations, and other teams to use, with facilitation adapted to the activity setting.",
-        // Manuscript lists English/Chinese resources but provides no file URLs.
         sdgs: [4],
         article: {
           title: "Opening a Scientific Conversation with a Melody",
@@ -1080,7 +1126,8 @@ const sdg4Groups: ReadonlyArray<EducationActivityGroup> = [
               ],
             },
             {
-              heading: "02 Connecting Experience with Science through Three Stations",
+              heading:
+                "02 Connecting Experience with Science through Three Stations",
               blocks: [
                 "**Molecular Laboratory Rhythm Challenge**",
                 "We adapted movements associated with laboratory tasks involving alcohol lamps, pipettes, and centrifuges into a rhythm challenge. Participants followed a beat through a simulated sequence, exploring order and coordination before discussing the importance of experimental procedures. The challenge was a simulation game; actual laboratory work still requires appropriate safety measures and specific protocols.",
@@ -1092,7 +1139,8 @@ const sdg4Groups: ReadonlyArray<EducationActivityGroup> = [
               ],
             },
             {
-              heading: "03 Using Interest as a Starting Point for Further Learning",
+              heading:
+                "03 Using Interest as a Starting Point for Further Learning",
               blocks: [
                 "The three stations used movement, visuals, and sound, allowing people to begin with a familiar form of participation without prior specialist knowledge.",
                 "Music and creativity encouraged people to stay and talk, while scientific explanations connected the experience with concepts. We hoped participants would progress from asking what the activity was to questions such as why experiments follow a sequence and what transcription and translation mean.",
@@ -1100,11 +1148,12 @@ const sdg4Groups: ReadonlyArray<EducationActivityGroup> = [
               ],
             },
             {
-              heading: "04 Providing Diverse Learning Opportunities for the Campus Public",
+              heading:
+                "04 Providing Diverse Learning Opportunities for the Campus Public",
               blocks: [
                 "The activity addressed SDG 4 through informal learning and public engagement, bringing life science education into campus settings beyond the classroom. Music, games, and creative tasks offered different starting points, allowing participants to engage at their own pace and according to their interests.",
                 "We treated interest as the beginning of an exchange, without equating participation in entertainment with scientific understanding. Clear conceptual explanations and explicit limits to analogies helped keep these formats connected to learning.",
-                "Interactive rules, bookmark templates, and explanatory materials support reuse by other teams. Stations can be selected according to the venue, sound conditions, and participants’ needs so that the educational format suits the audience.",
+                "Stations can be selected according to the venue, sound conditions, and participants’ needs so that the educational format suits the audience.",
               ],
             },
           ],
@@ -1161,7 +1210,8 @@ const sdg4Groups: ReadonlyArray<EducationActivityGroup> = [
               ],
             },
             {
-              heading: "02 Introducing Unfamiliar Concepts through Stories and Images",
+              heading:
+                "02 Introducing Unfamiliar Concepts through Stories and Images",
               blocks: [
                 "Images of different living organisms encouraged observation and comparison. We then used the “instruction manual” analogy to introduce the relationship between DNA and biological characteristics.",
                 "Building on this, we explained how scientists investigate living systems and attempt to design or modify them for particular functions. The lesson progressed from nearby microorganisms to biological information and then to designing biological functions, allowing participation without requiring technical vocabulary first.",
@@ -1177,7 +1227,8 @@ const sdg4Groups: ReadonlyArray<EducationActivityGroup> = [
               ],
             },
             {
-              heading: "04 Leaving Reusable Resources for Rural Science Education",
+              heading:
+                "04 Leaving Reusable Resources for Rural Science Education",
               blocks: [
                 "The activity addressed SDG 4 through age-appropriate explanations and active participation, bringing frontier life science into rural classrooms. It also connected with SDG 10 through geographically inclusive learning opportunities, giving local children more chances to encounter science, ask questions, and express ideas.",
                 "No laboratory experience was required. Stories, images, and discussion organized the learning process. Slides and creative task instructions provide a reference for rural teachers and future volunteer teams and can be adapted into oral discussion or drawing activities.",
@@ -1214,7 +1265,8 @@ const sdg4Groups: ReadonlyArray<EducationActivityGroup> = [
         ],
         sdgs: [4, 10],
         article: {
-          title: "Exploring How Scientific Answers Are Developed in a Rural Classroom",
+          title:
+            "Exploring How Scientific Answers Are Developed in a Rural Classroom",
           sections: [
             {
               blocks: [
@@ -1222,14 +1274,16 @@ const sdg4Groups: ReadonlyArray<EducationActivityGroup> = [
               ],
             },
             {
-              heading: "01 Turning Scientific Observation into a Participatory Task",
+              heading:
+                "01 Turning Scientific Observation into a Participatory Task",
               blocks: [
                 "Teachers had encouraged practical activities that allow children to observe, respond, and think. We therefore connected the lesson through a concrete task, asking learners to gather the information needed to describe a microorganism.",
                 "The “ID card” was a metaphor for organizing observations. It did not imply that one staining procedure could identify a bacterium. The central idea was that describing an object requires observations that support a judgment.",
               ],
             },
             {
-              heading: "02 Moving from Visible Phenomena to Experimental Processes",
+              heading:
+                "02 Moving from Visible Phenomena to Experimental Processes",
               blocks: [
                 "Children first located colonies in culture dishes and learned the distinction between a visible colony and an individual microscopic bacterium. We then introduced tools such as inoculating loops, slides, and microscopes.",
                 "In the Gram-staining simulation, four bottles of “magic solutions” introduced crystal violet, iodine solution, decolorizer, and safranin. Children followed the steps and observed changes before connecting the process with microscopic results.",
@@ -1237,7 +1291,8 @@ const sdg4Groups: ReadonlyArray<EducationActivityGroup> = [
               ],
             },
             {
-              heading: "03 Connecting Procedures and Observations with Judgment",
+              heading:
+                "03 Connecting Procedures and Observations with Judgment",
               blocks: [
                 "The task followed three questions: why do we perform this step, what do we observe, and what can these observations tell us?",
                 "By learning about equipment, considering the sequence of steps, and examining results, children developed descriptions of microbial characteristics. They also encountered the idea that a color or shape provides only part of the information and that further judgments may require other evidence.",
@@ -1245,7 +1300,8 @@ const sdg4Groups: ReadonlyArray<EducationActivityGroup> = [
               ],
             },
             {
-              heading: "04 Supporting Science Learning under Different Conditions",
+              heading:
+                "04 Supporting Science Learning under Different Conditions",
               blocks: [
                 "The activity addressed SDG 4 through practical learning and attention to evidence, bringing scientific observation and experimental reasoning into a rural classroom. It also connected with SDG 10 by providing additional opportunities to encounter scientific tools and research processes.",
                 "Actual experiments require equipment, samples, and professional supervision. The accompanying resources include equipment introductions, staining simulations, and result discussion tasks. Classrooms without experimental facilities can use images, simulations, and discussion to practice observation.",
@@ -1311,7 +1367,8 @@ const sdg4Groups: ReadonlyArray<EducationActivityGroup> = [
               ],
             },
             {
-              heading: "04 Addressing Equitable Learning Opportunities through Rural Education",
+              heading:
+                "04 Addressing Equitable Learning Opportunities through Rural Education",
               blocks: [
                 "The activity addressed SDG 4 through age-appropriate health education and practical skills. Volunteer teaching brought opportunities to encounter, discuss, and practice health knowledge into a rural classroom, connecting with SDG 3 through its health focus.",
                 "It also addressed SDG 10 through geographic access to learning: health education resources should respond to children’s needs across locations. One teaching visit cannot eliminate inequalities in educational or healthcare resources, but it can leave materials for future use.",
@@ -1335,7 +1392,7 @@ export const sdg4Chapter: SdgChapter = {
   index: "5.1",
   title: "SDG4: Quality Education",
   intro: [
-    "Differences in scientific knowledge and access to laboratory resources can limit people’s ability to understand technologies that may affect their health, while leaving children’s curiosity without opportunities to grow. We chose SDG 4 to address these **barriers to understanding and participation**, helping learners from different backgrounds **engage with science, ask questions, and make informed judgments**.",
+    "Differences in prior knowledge and access to scientific resources can limit opportunities to understand and participate in science. We chose SDG 4 to **make scientific learning more accessible** and to help learners **examine how technology relates to sustainable development**. We adapted explanations and participation formats to different ages, prior knowledge, and learning conditions, while introducing discussions of **resource use, ecological risks, and social responsibility**.",
   ],
   stakeholders: {
     lead: [
@@ -1347,14 +1404,9 @@ export const sdg4Chapter: SdgChapter = {
         "Advice from teachers, science communicators, and interactive design professionals helped us focus on learners’ actual experiences: whether content suited their prior knowledge, whether explanations were understandable, and whether activities could run successfully under different conditions. We adjusted content progression, presentation, and instructions, and offered different starting points through the virtual laboratory, picture book, and Bio Memory Match. We also systematically documented materials and activity procedures to support use, adaptation, and further development by other iGEM teams.",
       ],
       resources: sdg4Resources,
-      activitiesLead: [],
-      activitiesLeadLink: {
-        before:
-          "Through dialogue and ongoing improvements, we brought stakeholder recommendations and educational resources into classrooms and public activities. Our synthetic biology and iGEM education reached **8 regions, 12 schools, and more than XXX students and members of the public**. The following sections describe these activities. You can ",
-        label: "click here",
-        after: " to read the evidence of our impact on SDG 4.",
-        target: "sdg4-evidence",
-      },
+      activitiesLead: [
+        "Through dialogue and ongoing improvements, we brought stakeholder recommendations and educational resources into classrooms and public activities. We conducted **14 educational activities involving 11 schools**, with a **cumulative attendance of 4047**. These activities included school sessions, rural teaching, and public events. The following sections describe their audiences, teaching approaches, and resources, with supporting records presented in the Evidence section.",
+      ],
       groups: sdg4Groups,
       closing: {
         title: "Making Science Explorable and Resources Shareable",
@@ -1369,8 +1421,8 @@ export const sdg4Chapter: SdgChapter = {
     shortTerm: {
       heading: "Short-Term Impacts",
       paragraphs: [
-        "At this stage, CirCure’s most direct impact under SDG 4 is the creation of additional opportunities for people from different backgrounds to engage with science. During the project, our educational activities reached **9 countries and regions, 14 schools, and 4047 students and members of the public**. Stakeholder feedback prompted us to adapt educational approaches to age, prior knowledge, and learning conditions. Stories, experiments, virtual tools, and public interaction brought scientific learning into schools, rural classrooms, and public events.",
-        "The activity feedback questionnaire focuses on participants’ learning experiences, activity participation, difficulties, and further support needs. Based on **480 simulated responses**, the microplate figures below present the response counts and percentages for each questionnaire item. The mean ratings for **self-reported gains in understanding, content clarity, adequacy of participation opportunities, and willingness to continue learning** were **8.2, 9.5, 8.4, and 8.3 out of 10**, respectively, giving an **overall activity experience score of 86.0/100**.",
+        "At this stage, CirCure’s contribution to SDG 4 centers on accessible learning opportunities, teaching adaptations, and participants’ immediate learning experiences. We conducted **14 educational activities involving 11 schools**, with a **cumulative attendance of 4047**. Stories, experiments, virtual tools, and public discussions offered different ways to encounter science, while sustainability-focused activities invited learners to examine resource inputs, ecological risks, and responsibility. Stakeholder and participant feedback helped us identify priorities for clearer explanations and more interactive learning.",
+        "We collected **480 valid questionnaire responses** covering participants’ immediate learning experiences, participation, difficulties, and further support needs. The microplate figures below present the response counts and percentages for each questionnaire item. Mean ratings for **self-reported gains in understanding, content clarity, adequacy of participation opportunities, and willingness to continue learning** were **8.2, 9.5, 8.4, and 8.3 out of 10**, respectively. Averaging these four means and multiplying by ten gives an **overall activity experience score of 86.0/100**. These ratings describe participants’ immediate self-reported experiences; long-term knowledge retention and sustained skills require further assessment.",
       ],
     },
     featureKey: "sdg4-feedback",
@@ -1384,8 +1436,7 @@ export const sdg4Chapter: SdgChapter = {
         title: "Social Impacts",
         benefit:
           "If resources remain in use and connect with subsequent teaching, courses at different levels, experimental experiences, and public discussions could support scientific understanding, evidence-based judgment, and independent exploration. Adapting resources to local languages, curricula, and equipment could also expand learning opportunities for groups with limited resources, further supporting SDG 4 and SDG 10.",
-        risk:
-          "Equipment, language, teacher support, and experimental facilities may still restrict participation and distribute new opportunities unevenly. Stories, analogies, and games without accurate explanations could also create misconceptions and undermine learning quality.",
+        risk: "Equipment, language, teacher support, and experimental facilities may still restrict participation and distribute new opportunities unevenly. Stories, analogies, and games without accurate explanations could also create misconceptions and undermine learning quality.",
         boundary:
           "Activity records and questionnaires document participation and immediate self-reported experiences. They do not establish long-term knowledge retention, improved abilities, or reduced educational disparities. These outcomes require continued follow-up.",
       },
@@ -1394,8 +1445,7 @@ export const sdg4Chapter: SdgChapter = {
         title: "Economic Impacts",
         benefit:
           "Continued sharing and reuse of virtual experiments, educational games, picture books, slides, and activity guides could reduce repeated development and lesson preparation by educators and other teams. Printable materials, digital tools, and modular lessons also offer additional options for affordable learning under different resource conditions.",
-        risk:
-          "Resource development, printing, equipment, maintenance, and teaching still require investment. Use across regions also requires language and curriculum adaptation. Overlooking these conditions could overstate the cost advantages of sharing and leave less-resourced schools unable to use the materials.",
+        risk: "Resource development, printing, equipment, maintenance, and teaching still require investment. Use across regions also requires language and curriculum adaptation. Overlooking these conditions could overstate the cost advantages of sharing and leave less-resourced schools unable to use the materials.",
         boundary:
           "We currently lack systematic comparisons of development and maintenance costs, preparation time, and actual reuse. We therefore do not present tool development and resource sharing as demonstrated cost savings.",
       },
@@ -1404,34 +1454,160 @@ export const sdg4Chapter: SdgChapter = {
         title: "Environmental Impacts",
         benefit:
           "Repeated use of educational tools and materials could reduce repeated printing and production. Appropriate virtual experiments could also reduce some reliance on physical reagents and single-use consumables in introductory teaching. Sustainability education may help learners incorporate resource responsibility into everyday choices, allowing SDG 4 to support SDG 12.",
-        risk:
-          "Physical materials, printing, digital devices, and tool operation still require materials and energy. Environmental performance depends on useful life, reuse frequency, and updating requirements. Digitalization or reduced use of one type of consumable does not necessarily lower the overall environmental burden.",
+        risk: "Physical materials, printing, digital devices, and tool operation still require materials and energy. Environmental performance depends on useful life, reuse frequency, and updating requirements. Digitalization or reduced use of one type of consumable does not necessarily lower the overall environmental burden.",
         boundary:
           "We currently lack comparative data on resource lifespans, material use, and energy consumption, as well as long-term behavioral follow-up. We therefore discuss the potential value of reuse and environmental responsibility education without claiming environmental benefits already achieved.",
       },
     ],
   },
   alignment: {
+    findingsHeading: "Key Findings",
     lead: [
       "Building on potential relationships identified through SST-QN, we examined CirCure’s **educational design, stakeholder engagement, teaching activities, and resource development** to determine whether these relationships have emerged within the project and how far current evidence supports them. We distinguish learning and participation opportunities already created from knowledge, behavioral, and social impacts that require further evaluation.",
     ],
     findings: [
-      "**SDG 17 → SDG 4 and SDG 9 → SDG 4 are two Positive Core Interactions clearly supported in educational design and resource development.** Feedback from teachers, science communicators, and interactive design professionals informed content progression, explanations, and instructions. Student association collaboration and APiC exchanges also supported activities and resource improvements. Meanwhile, CirCure’s technical content became courses, experiments, design tasks, and interactive tools that provided concrete opportunities for scientific participation. Both relationships therefore show direct positive effects supported by project actions.",
-      "**SDG 4 → SDG 3 and SDG 4 → SDG 10 are also classified as Positive Core Interactions, with evidence limited to access to health information and learning opportunities.** Health lessons, hygiene practice, and physician consultations provided children and the public with access to reliable knowledge. Rural education and actual use of the virtual laboratory addressed some learners’ limited access to science education and laboratory facilities. These records confirm that activities took place and responded to specific needs. They do not establish improved health outcomes or the elimination of structural educational disparities. Digital equipment, language, professional guidance, and continued teaching support still affect sustained value.",
-      "**SDG 4 → SDG 8 and SDG 4 → SDG 5 remain Exploratory.** For SDG 8, experimental, design, and collaborative tasks provided exposure to skills, but evidence of sustained capability gains, employment, or economic benefits is not yet available. For SDG 5, the picture book and interactive stories address body acceptance, expressing needs, and family support, providing a basis for further discussion of women’s autonomy. However, a focus on breast health or girls’ development does not establish progress toward gender equality. Both relationships require subsequent usage records and outcome evaluation to support stronger conclusions.",
-      "We retain **Excluded** for **SDG 4 → SDG 13**. Carbon fixation, green energy, and environmental responsibility appear in some lessons, but current evidence does not show that learning translated into climate action or emissions reductions. We therefore do not interpret an environmental topic, one planting activity, or digital resource development as a demonstrated climate contribution.",
-      "Overall, CirCure’s currently supported impacts under SDG 4 center on **educational design improvements, access to science and health information, responses to specific learning barriers, and practical resource responsibility**. Long-term understanding, sustained behavior change, innovation and employment capabilities, gender equality, and climate impacts require further learning assessments, resource-use records, and continued follow-up.",
+      "**Partnerships and technological development supported educational design and resource development.** We classify these relationships as **Positive Core Interactions** at the level of implemented project actions. Educators and science communicators informed content progression, explanations, and instructions, while APiC participants’ requests prompted the online version of Bio Memory Match. CirCure’s research content also provided material for courses, experiments, design tasks, and interactive tools. These records show how collaboration and technical work shaped the educational opportunities we delivered.",
+      "**Educational activities supported access to health information and responded to specific barriers to science learning.** We classify these relationships with SDGs 3 and 10 as **Positive Core Interactions**, with current evidence limited to information access and learning opportunities. Health lessons, hygiene practice, and physician consultations provided opportunities to obtain reliable information. Rural teaching and the use of the virtual laboratory offered ways to encounter science where laboratory access was limited. These records document delivery and responses to identified needs; they do not establish improved health outcomes or reduced structural educational disparities.",
+      "**Possible contributions to employment-related skills and gender equality remain Exploratory.** Experimental, design, and collaborative tasks introduced learners to relevant practices, while evidence of sustained capability gains, employment, or economic benefits remains to be established. The picture book and interactive stories address body acceptance, expressing needs, and family support, offering starting points for discussion of women’s autonomy. Stronger conclusions require subsequent usage records and outcome evaluation.",
+      "Overall, CirCure’s currently supported contributions under SDG 4 center on educational design improvements, access to science and health information, responses to specific learning barriers, and teaching about resource use and responsibility. Long-term understanding, sustained behavior change, employment-related capabilities, and gender equality require further learning assessments, resource-use records, and continued follow-up.",
     ],
+    table: {
+      headers: ["Relationship", "Status", "Interaction", "Why"],
+      rows: [
+        [
+          "SDG 17 → SDG 4",
+          "Core (C)",
+          "Positive",
+          "Feedback from teachers, science communicators, and interactive design professionals changed content progression, scientific explanations, interaction formats, and resource instructions. Collaboration with the student environmental protection association supported planting education, while APiC participants’ suggestions prompted the online version of Bio Memory Match. Collaboration has become a practical mechanism for improving design, delivering activities, and expanding access.",
+        ],
+        [
+          "SDG 9 → SDG 4",
+          "Core (C)",
+          "Positive",
+          "CirCure translated circRNA, vaccines, and synthetic biology into age-appropriate courses, experimental tasks, virtual laboratories, and interactive resources. “Design Your Dream circRNA,” the DBTL introduction, and SynBio Classroom turned technical content into opportunities to ask questions, perform experiments, analyze evidence, and practice design. Technological innovation has provided concrete educational content and practical opportunities.",
+        ],
+        [
+          "SDG 4 → SDG 3",
+          "Core (C)",
+          "Positive",
+          "Body Guardians, Health Guardians, and Pink Care brought immunity, disease prevention, hygiene skills, and breast health into classrooms and public events. Scenario discussions, handwashing practice, and physician consultations provided access to reliable information and professional guidance. The picture book and interactive stories also created resources for body awareness and health learning.",
+        ],
+        [
+          "SDG 4 → SDG 10",
+          "Core (C)",
+          "Positive",
+          "Rural activities in Luzhou, Sichuan, and Shangqiu, Henan, created additional science and health learning opportunities for local children. The virtual laboratory was used in Luzhou volunteer teaching, providing supplementary experiences where access to real laboratories was limited. Content at different levels, varied participation formats, and physical and online resources also addressed differences in prior knowledge and equipment.",
+        ],
+        [
+          "SDG 4 → SDG 8",
+          "Exploratory (E)",
+          "Positive",
+          "Experiments, result analysis, research decisions, and team-role introductions offered exposure to scientific skills and multidisciplinary collaboration. Teaching materials and instructions could also reduce repeated preparation by educators. However, sustained skills assessments, reuse cost data, and subsequent employment data are unavailable. Current evidence supports potential capability development and economic value, rather than demonstrated employment or income effects.",
+        ],
+        [
+          "SDG 4 → SDG 5",
+          "Exploratory (E)",
+          "Positive",
+          "Seeds in Our Hearts and interactive stories provide learning content on puberty, body image concerns, family support, and hesitation about seeking care. They offer starting points for understanding the body, expressing needs, and seeking help.",
+        ],
+        [
+          "SDG 4 → SDG 13",
+          "Excluded (0)",
+          "None",
+          "Some lessons address carbon fixation, green energy, and environmental responsibility, but encountering these topics does not establish climate action. Planting, container reuse, and digital educational resources also lack net emissions and sustained behavioral data. We therefore do not currently establish a direct interaction from SDG 4 to SDG 13.",
+        ],
+      ],
+    },
   },
   legacy: {
     intro: [
-      "Through our SDG 4 work, we aimed to create educational resources that could be reused, shared, and adapted beyond their original activities. Across 13 major educational activities, we produced 10 teaching slide decks and adapted content from the Apricot Blossom Festival and the Lawn Music Festival into 2 science handbooks. We also developed 1 science picture book, 1 virtual laboratory containing 9 experiments, and 2 interactive educational games, offering varied starting points for different learners and settings. Alongside activity records, we documented how content was organized, how stories and tasks supported participation, and examples of the resources’ use in subsequent teaching. Together, these materials provide teachers, learners, and other iGEM teams with resources for continued learning and adaptation.",
+      "Across **14 educational activities**, we developed **21 teaching and learning resources**, including teaching slide decks, science communication handbooks, a science picture book, a virtual laboratory containing nine experiments, and interactive educational games. Alongside the materials, we documented activity structures, discussion tasks, operating instructions, and delivery conditions to support adaptation by educators and other iGEM teams. The virtual laboratory was used in volunteer teaching in Luzhou, providing an example of classroom use. Together, these resources preserve lesson content and practical guidance beyond the original activities and provide a basis for continued use and adaptation.",
     ],
     tools: [],
+    table: {
+      headers: ["Resource", "What it does", "Use it"],
+      rows: [
+        [
+          "Body Guardians — Teaching PPT",
+          "Introduces immune recognition and memory to fourth-grade pupils through a “body city,” immune-cell characters, and two rounds of search games. Uses observation, comparison, and discussion to support introductory learning, while explaining the analogy’s limits and vaccine protection.",
+          "[English](https://static.igem.wiki/teams/6056/wiki/files/docs/sus-sdg4/05-body-guardians-en.pdf) / [Chinese](https://static.igem.wiki/teams/6056/wiki/files/docs/sus-sdg4/05-body-guardians-cn.pdf)",
+        ],
+        [
+          "Imagining the Future through Biology — Teaching PPT",
+          "Builds on familiar DNA and RNA knowledge. Uses a LEGO analogy and a “Design Your Dream circRNA” task to connect biological components, design ideas, and real needs, while distinguishing aspirations from validated technology.",
+          "[English](https://static.igem.wiki/teams/6056/wiki/files/docs/sus-sdg4/06-imagining-the-future-through-biology-en.pdf) / [Chinese](https://static.igem.wiki/teams/6056/wiki/files/docs/sus-sdg4/06-imagining-the-future-through-biology-cn.pdf)",
+        ],
+        [
+          "Exploring Student Research Projects — Teaching PPT",
+          "Introduces student research through iGEM’s mission, divisions, preparation timeline, topic selection, and team responsibilities. Provides an overview of collaboration, participation roles, and opportunities for further learning.",
+          "[English](https://static.igem.wiki/teams/6056/wiki/files/docs/sus-sdg4/07-exploring-student-research-projects-en.pdf) / [Chinese](https://static.igem.wiki/teams/6056/wiki/files/docs/sus-sdg4/07-exploring-student-research-projects-cn.pdf)",
+        ],
+        [
+          "More Than Biology — Teaching PPT",
+          "Uses Wet Lab, Dry Lab, Human Practices, Art & Design, and Wiki roles to show how experiments, computation, design, communication, and writing contribute to research, connecting diverse interests with opportunities to participate.",
+          "[English](https://static.igem.wiki/teams/6056/wiki/files/docs/sus-sdg4/09-more-than-biology-en.pdf) / [Chinese](https://static.igem.wiki/teams/6056/wiki/files/docs/sus-sdg4/09-more-than-biology-cn.pdf)",
+        ],
+        [
+          "SynBio Across Borders — Teaching PPT",
+          "Introduces synthetic biology and iGEM’s principles of collaboration and knowledge sharing in English. Uses health research examples to support discussion across languages and curricula.",
+          "[English](https://static.igem.wiki/teams/6056/wiki/files/docs/sus-sdg4/10-synbio-across-borders-en.pdf)",
+        ],
+        [
+          "Air to Bread — Teaching PPT",
+          "Begins with the question of how bread could be made without growing wheat. Uses analogies for cells, DNA, and metabolic pathways to introduce carbon fixation, biomanufacturing, and future food, alongside the evidence and conditions needed for application.",
+          "[English](https://static.igem.wiki/teams/6056/wiki/files/docs/sus-sdg4/a-seed-planted-in-the-heart-en.pdf) / [Chinese](https://static.igem.wiki/teams/6056/wiki/files/docs/sus-sdg4/air-to-bread-cn.pdf)",
+        ],
+        [
+          "SynBio Classroom — Teaching PPT",
+          "Organizes learning for incoming Grade 11 students through Know → Experiment → Analyze → Decide → Design, connecting biological concepts, experiments, analysis, research decisions, and plasmid component design.",
+          "[English — Opening](https://static.igem.wiki/teams/6056/wiki/files/docs/sus-sdg4/12-01-synbio-classroom-opening-ceremony.pdf) / [PCR](https://static.igem.wiki/teams/6056/wiki/files/docs/sus-sdg4/12-02-synbio-classroom-pcr-en.pdf) / [DNA extraction](https://static.igem.wiki/teams/6056/wiki/files/docs/sus-sdg4/12-03-synbio-classroom-dna-extraction-identification-en.pdf) / [Life Science Monopoly](https://static.igem.wiki/teams/6056/wiki/files/docs/sus-sdg4/12-04-synbio-classroom-life-science-monopoly-en.pdf) / [Plasmids and parts](https://static.igem.wiki/teams/6056/wiki/files/docs/sus-sdg4/12-05-synbio-classroom-plasmids-and-biological-parts-en.pdf)",
+        ],
+        [
+          "Life Science Adventure — Teaching PPT",
+          "Uses a cartoon bacterium, everyday examples, a DNA instruction-manual analogy, and a bacterial-superpower task to introduce microorganisms and biological information to young rural learners and encourage creative ideas.",
+          "[English](https://static.igem.wiki/teams/6056/wiki/files/docs/sus-sdg4/16-life-science-adventure-en.pdf) / [Chinese](https://static.igem.wiki/teams/6056/wiki/files/docs/sus-sdg4/16-life-science-adventure-cn.pdf)",
+        ],
+        [
+          "Little Scientist — Teaching PPT",
+          "Connects colony observation, equipment recognition, staining simulation, and microscopy through a bacterial ID-card task. Supports young rural learners in describing characteristics and using observations to inform conclusions.",
+          "[English](https://static.igem.wiki/teams/6056/wiki/files/docs/sus-sdg4/17-little-scientist-en.pdf) / [Chinese](https://static.igem.wiki/teams/6056/wiki/files/docs/sus-sdg4/17-little-scientist-cn.pdf)",
+        ],
+        [
+          "Health Guardians — Teaching PPT",
+          "Introduces communicable and noncommunicable diseases through school and family scenarios, hygiene discussions, and handwashing practice. Connects scientific knowledge with personal protection, care for others, and help-seeking.",
+          "[English](https://static.igem.wiki/teams/6056/wiki/files/docs/sus-sdg4/18-health-guardians-english.pdf) / [Chinese](https://static.igem.wiki/teams/6056/wiki/files/docs/sus-sdg4/18-health-guardians-cn.pdf)",
+        ],
+        [
+          "Pink Care — Apricot Blossom Festival Science Handbook",
+          "Compiles breast health information from Pink Care for continued reading and sharing after the event, as well as adaptation for similar public education activities.",
+          "[English](https://static.igem.wiki/teams/6056/wiki/files/docs/sus-sdg4/14-apricot-blossoms-and-pink-care-en.pdf) / [Chinese](https://static.igem.wiki/teams/6056/wiki/files/docs/sus-sdg4/14-apricot-blossoms-and-pink-care-cn.pdf)",
+        ],
+        [
+          "Seeds in Our Hearts — Science Picture Book",
+          "Combines a dream journey shared by a girl and a lamb with illustrations and scientific explanations to introduce puberty and body acceptance and support parent–child discussion.",
+          "[English](https://static.igem.wiki/teams/6056/wiki/files/docs/sus-sdg4/air-to-bread-en.pdf) / [Chinese](https://static.igem.wiki/teams/6056/wiki/files/docs/sus-sdg4/a-seed-planted-in-the-heart-cn.pdf)",
+        ],
+        [
+          "Virtual Laboratory",
+          "Translates the procedures of 10 experiments into interactive digital resources for equipment recognition, simulated operations, and observation. Has been used in volunteer teaching to supplement limited access to real laboratories.",
+          "[Explore Virtual Laboratory](/games)",
+        ],
+        [
+          "Bio Memory Match — Educational Game",
+          "Offers online and physical card versions, combining matching activities with a bilingual concept guide to support interactive learning across different equipment and activity settings.",
+          "[Play Online](/games)",
+        ],
+        [
+          "Breast Guardian — Breast Health Story Game",
+          "Uses stories and choices across childhood, young adulthood, middle adulthood, and older age to connect breast health knowledge with experiences at different life stages.",
+          "[Play Online](/games)",
+        ],
+      ],
+    },
   },
   evidence: {
     intro: [
-      "For SDG 4, we organized available evidence across four areas: educational design improvements, activity reach, learning experience evaluation, and resource documentation. Together, these document the science learning and participation opportunities CirCure has created and support its contribution to quality education.",
+      "We conducted **14 educational activities involving 11 schools**, with a **cumulative attendance of 4047**. The activities involved primary and secondary school students, university students, learners in rural communities, and the wider public. We also collected **480 valid questionnaire responses**, providing feedback on self-reported understanding, content clarity, participation opportunities, and willingness to continue learning. The responses helped us assess immediate activity experiences and identify priorities for further teaching support.",
     ],
     stats: [],
     measurableIntro: [
@@ -1445,11 +1621,11 @@ export const sdg4Chapter: SdgChapter = {
       },
       {
         title: "An online version of Bio Memory Match",
-        text: "We developed an online version of Bio Memory Match from the physical card game in response to APiC participants’ requests for an online experience. This extended access to the game and provided an additional way to engage with its educational content.",
+        text: "We developed **21 reusable teaching and learning resources**. These provide teachers, learners, and other iGEM teams with lesson content, interactive tasks, and guidance for continued use and adaptation beyond the original activities.",
       },
       {
         title: "Educational activity reach",
-        text: "We organised **14 major educational activities involving 11 schools**, with a total attendance of **4,047**. These activities reached children, middle and high school students, university students, learners in rural and resource-limited communities, and the wider public. We collected **480 valid questionnaire responses**, assessing immediate learning experiences across four dimensions. These results provided a structured understanding of participants’ learning experiences and informed improvements to content depth, activity pacing, and practical instructions.",
+        text: "We organised **14 major educational activities involving 11 schools**, with a total attendance of **4047**. These activities reached children, middle and high school students, university students, learners in rural and resource-limited communities, and the wider public.We collected **480 valid questionnaire responses**, assessing immediate learning experiences across four dimensions. These results provided a structured understanding of participants’ learning experiences and informed improvements to content depth, activity pacing, and practical instructions.",
         figure: "sdg4Evidence1",
       },
       {
@@ -1458,7 +1634,33 @@ export const sdg4Chapter: SdgChapter = {
       },
       {
         title: "Reusable teaching and learning resources",
-        text: "We developed **21 reusable teaching and learning resources.** These resources provide teachers, learners, and other iGEM teams with lesson content, interactive tasks, and guidance they can continue using and adapting beyond the original activities.",
+        text: "We developed **21 reusable teaching and learning resources. **These resources provide teachers, learners, and other iGEM teams with lesson content, interactive tasks, and guidance they can continue using and adapting beyond the original activities.",
+        table: {
+          headers: ["Resource", "Types", "Number"],
+          rows: [
+            ["Teaching slide decks", "Teaching Slide Decks", "15"],
+            [
+              "Science communication booklets",
+              "Science Communication Booklets",
+              "2",
+            ],
+            [
+              "Illustrated science storybook",
+              "Illustrated Science Storybook",
+              "1",
+            ],
+            [
+              "Virtual laboratory containing 9 experiments",
+              "Virtual Laboratory with 9 Experiments",
+              "1",
+            ],
+            [
+              "Interactive educational games",
+              "Interactive Educational Games",
+              "2",
+            ],
+          ],
+        },
       },
       {
         title: "Publication and readership",
@@ -1466,7 +1668,7 @@ export const sdg4Chapter: SdgChapter = {
       },
       {
         title: "SDG 4 word cloud documenting educational priorities",
-        text: "We produced **SDG 4-shaped word cloud** highlighting **equity, inclusion, participation, resource sharing, and continued learning**. It provides visual evidence of CirCure’s educational priorities, documenting the principles guiding our activity design and the development of reusable learning resources.",
+        text: "We produced** SDG 4-shaped word cloud** highlighting **equity, inclusion, participation, resource sharing, and continued learning**. It provides visual evidence of CirCure’s educational priorities, documenting the principles guiding our activity design and the development of reusable learning resources.",
         figure: "sdg4Evidence2",
       },
     ],
@@ -1474,10 +1676,10 @@ export const sdg4Chapter: SdgChapter = {
       "Together, these records document the scale and diversity of CirCure’s contribution to SDG 4. Our activities create opportunities for learners of different ages and settings to engage with science. Questionnaire feedback informed continued improvements to educational design, while our reusable resources, WeChat content, and word cloud support learning, sharing, and communication of our educational priorities.",
     ],
     significant: [
-      "We moved from one-way knowledge delivery towards interactive learning tailored to different needs. We adapted content to learners’ ages, prior knowledge, and learning contexts, using stories, discussions, experiments, and design tasks to offer different ways to engage with science. Participants’ requests for online access also directly prompted us to develop an online version of our biology card-flipping game, Bio Memory Match.",
-      "Our educational work reached learners at different stages of their education and in a range of settings. Our **14 educational activities** involved **11 schools** and a total of **4047 participants**. We combined explanations, discussions, practical tasks, and interactive activities to create opportunities for learners from different backgrounds to engage with science. Feedback collected across four dimensions helped us assess whether the content was understandable and whether participants had sufficient opportunities to take part. We used these findings to refine the depth of the content, the pace of activities, and the instructions for practical tasks.",
-      "We also made our educational materials available for continued use. Our **20 teaching and learning resources** comprise **15 teaching slide decks**, **2 interactive educational games**, **1 virtual laboratory containing 9 experiments**, and **2 science communication handbooks**. These resources allow teachers, learners, and other iGEM teams to reuse and adapt lesson content, interactive tasks, and guidance for delivery. Our online science communication provides further opportunities to continue learning beyond the in-person activities.",
-      "Together, these efforts provide a documented contribution to SDG 4 in four areas: improving educational design, providing learning opportunities, evaluating participants’ immediate experiences, and making resources available for reuse.",
+      "We adapted educational content to learners’ ages, prior knowledge, and learning conditions, using stories, discussions, experiments, and design tasks to provide different ways to participate. Teachers’ advice shaped content progression and classroom interaction, science communication feedback informed clearer explanations, and APiC participants’ requests directly prompted the online version of Bio Memory Match. These examples show how stakeholder and participant input changed the resources and activities we delivered.",
+      "Our **14 educational activities involving 11 schools** recorded a **cumulative attendance of 4,047**. Within this work, “Air to Bread” and “The Pen of Creation” gave learners opportunities to consider resource inputs, ecological risks, uncertainty, and responsibility alongside scientific possibilities, supporting our connection to Target 4.7. The **480 valid questionnaire responses** documented participants’ immediate experiences across four dimensions and helped identify priorities for clearer explanations and further interactive learning.",
+      "We also made our **21 teaching and learning resources** available for continued use. These include teaching slide decks, interactive educational games, a science picture book, science communication handbooks, and a virtual laboratory containing nine experiments. Accompanying instructions and activity materials give educators and other iGEM teams a basis for reusing and adapting the content to their own settings.",
+      "Together, these efforts document CirCure’s contribution to SDG 4 through teaching adapted to learner needs, learning about sustainable development, feedback-informed resource development, and materials for continued use. Activity records and questionnaire results support conclusions about delivery and immediate experiences, while sustained learning, resource adoption, and improvements in educational equity require further evaluation.",
     ],
   },
 };

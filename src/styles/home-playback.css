@@ -1,4 +1,37 @@
 /* The directory uses transitions so pausing the story keeps its controls responsive. */
+.home-redesign [data-home-artwork="loading"],
+.home-redesign [data-home-artwork="error"] {
+  visibility: hidden !important;
+}
+.home-playback-loading {
+  position: fixed;
+  right: var(--player-edge);
+  bottom: calc(112px + env(safe-area-inset-bottom));
+  width: min(300px, calc(100vw - 40px));
+  padding: 16px 18px;
+  border: 1px solid var(--player-line);
+  border-radius: 16px;
+  background: #fffaf5;
+  color: #102f59;
+  box-shadow: 0 5px 22px rgba(30, 20, 29, 0.07);
+  pointer-events: auto;
+  font-size: 13px;
+  line-height: 1.5;
+}
+.home-playback-loading p { margin: 0; }
+.home-playback-loading-scene { opacity: 0.7; }
+.home-playback-loading-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 18px;
+  margin-top: 10px;
+}
+.home-playback .home-playback-loading-actions button {
+  min-height: 36px;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
 @media (max-width: 800px) and (orientation: portrait),
   (max-height: 650px) and (orientation: landscape) {
   .home-story .home-antigen-switch__phase-label {

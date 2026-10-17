@@ -103,16 +103,9 @@ export function WikiLineSidebar({
   const [ribbonTargetId, setRibbonTargetId] = useState(
     activeChildId || activeId,
   );
-  const activeChildParentId = activeChildId
-    ? items.find((item) =>
-      item.children?.some(
-        (child) =>
-          child.id === activeChildId ||
-          child.id.startsWith(`${activeChildId.split("-")[0]}-`),
-      ),
-    )?.id
-    : undefined;
-  const expandedItemId = showAllChildren ? (activeChildParentId ?? activeId) : activeChildParentId;
+  // A section's introduction belongs to that section even before its first
+  // subsection reaches the reading line. Keep its full second level open.
+  const expandedItemId = activeId;
   const activeTopChildId = useMemo(() => {
     if (!activeChildId || !expandedItemId) return "";
     const parent = items.find((item) => item.id === expandedItemId);

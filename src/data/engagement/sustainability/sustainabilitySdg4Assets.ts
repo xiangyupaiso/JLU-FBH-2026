@@ -10,7 +10,8 @@ import type { StakeholderPhotoSet } from "./sustainabilityPhotos";
 
 const SDG4_PAGES =
   "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/sustainability/sdg4";
-const SDG4_DOCS = "https://static.igem.wiki/teams/6056/wiki/files/docs/sus-sdg4";
+const SDG4_DOCS =
+  "https://static.igem.wiki/teams/6056/wiki/files/docs/sus-sdg4";
 
 export const sdg4DocUrl = (fileName: string) => `${SDG4_DOCS}/${fileName}`;
 
@@ -33,7 +34,13 @@ export const sdg4PhotoSets = {
     "02-shuangcheng-yu-3.avif",
   ),
   // Manuscript lists this single (placeholder-named) source three times.
-  "sdg4-03": photoSet("Weiwei Han", "woshinailong.avif"),
+  "sdg4-03": [
+    {
+      src: "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/sustainability/woshinailong.avif",
+      alt: "Weiwei Han — photograph 1",
+      caption: "Weiwei Han",
+    },
+  ],
   "sdg4-05": photoSet(
     "Body Guardians",
     "05-body-guardians-1.avif",

@@ -136,7 +136,7 @@ export const cycle3Section: WikiSection = {
   kicker: "Cycle 3 — Measurement",
   navLabel: "Cycle 3 — Measurement",
   title: "Cycle 3: Building the molecular and cellular evidence chain",
-  summary: "TIME enters **M—Measurement**. Cycle 2 answered **what should be integrated** by establishing Combined and three TROP2 comparison constructs. Cycle 3 then asked **what evidence the integrated design c...",
+  summary: "TIME enters **M—Measurement**. Cycle 2 answered **what should be integrated** by establishing Combined and three TROP2 comparison constructs. Cycle 3 then asked **what evidence the integrated design could produce**. Four antigen-encoding circRNA preparations and an equal-input Blank control were examined in sequence from RNA preparation and persistence to protein translation, dendritic-cell activation, T-cell responses, IFN-γ secretion and target-cell killing. Once this molecule-to-function chain was established, its value was extended through three further levels: CircuForge turned experimental records into a transferable workflow, Education translated that workflow into procedures learners could follow, and Visual Design transformed the project’s specialised content into a shared visual language. Measurement therefore progressed from the molecule, to the cell, to the transfer of the knowledge produced.",
   blocks: [
         {
           type: "prose",
@@ -173,7 +173,8 @@ export const cycle3Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "Wet Lab prepared all five circRNA inputs through the same DNA-to-RNA workflow. PCR-derived transcription templates from the corresponding plasmids entered T7 in vitro transcription, DNA-template removal, RNA purification, self-splicing circularisation and RNase R purification. Agarose-gel electrophoresis documented the four antigen-encoding DNA templates."
+          "Wet Lab prepared all five circRNA inputs through the same DNA-to-RNA workflow. PCR-derived transcription templates from the corresponding plasmids entered T7 in vitro transcription, DNA-template removal, RNA purification, self-splicing circularisation and RNase R purification. Agarose-gel electrophoresis documented the four antigen-encoding DNA templates.",
+          "For the purified Combined preparation, divergent- and convergent-primer RT-qPCR used the 4 µL working input established in Iteration 2.5, with three technical wells. The recorded calculation estimated the circular fraction against the predefined ≥90% release criterion. Sanger sequencing of a junction-spanning amplification product then checked the expected head-to-tail connection. Group identifiers were retained throughout preparation and subsequent DC electroporation (Wesselhoeft et al., 2018; LGC Biosearch Technologies, n.d.)."
 ]
         },
         {
@@ -540,6 +541,12 @@ export const cycle3Section: WikiSection = {
           body: "Close contacts count P-atom pairs separated by at least three sequence positions and less than 3 Å in space. Terminal distance is measured between the first and last P atoms of the 200 nt fragment."
         },
         {
+          type: "prose",
+          paragraphs: [
+          "Alongside this fragment-level test, the retained full-length model represented all 2,013 nt of Combined and contained 42,831 atoms. It provided a computational view of the complete sequence’s spatial organisation. The quantitative refinement measurements above refer specifically to the 200 nt fragment."
+]
+        },
+        {
           type: "figure",
           src: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-c3-04b.avif",
           width: 480,
@@ -586,7 +593,7 @@ export const cycle3Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "Iteration 3.4 produced a refined structural model of Combined. We then returned to the cellular experiments to examine two connected steps in vaccine function: **(1)** translation of the delivered circRNA into protein and **(2)** maturation of the receiving dendritic cells, which supports subsequent T-cell activation. The five-group comparison assessed the DC response to Combined alongside its TROP2 components and the empty-vector background."
+          "The cell-validation route examined two connected steps in vaccine function: **(1)** translation of the delivered circRNA into protein and **(2)** maturation of the receiving dendritic cells, which supports subsequent T-cell activation. These experiments were conducted independently of the TorusFold structural calculations. The five-group comparison assessed the DC response to Combined alongside its TROP2 components and the empty-vector background."
 ]
         }
           ]
@@ -598,7 +605,8 @@ export const cycle3Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "Wet Lab established protein-expression and DC-maturation measurements. Anti-FLAG Western blotting compared circRNA-electroporated DCs with the negative control, using β-actin as the loading reference (Towbin et al., 1979)."
+          "Wet Lab established protein-expression and DC-maturation measurements. Anti-FLAG Western blotting compared circRNA-electroporated DCs with the negative control, using β-actin as the loading reference (Towbin et al., 1979).",
+          "For the five-group maturation comparison, Blank, TROP2 CTL1, TROP2 CTL2, TROP2 CTL1+2 and Combined each delivered 5 µg of circRNA to 1×10⁶ DCs in 100 µL using programme U-002. Blank received equal-input empty-vector circRNA. Flow cytometry measured DCs expressing both CD80 and CD86, two co-stimulatory molecules associated with their ability to activate T cells (Banchereau and Steinman, 1998)."
 ]
         },
         {
@@ -627,7 +635,8 @@ export const cycle3Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "Anti-FLAG blotting detected a distinct band near 50 kDa in the circRNA-electroporated lane, with little corresponding signal in the negative control and comparable β-actin signals. This supported translation of the circRNA-encoded protein in DCs."
+          "Anti-FLAG blotting detected a distinct band near 50 kDa in the circRNA-electroporated lane, with little corresponding signal in the negative control and comparable β-actin signals. This supported translation of the circRNA-encoded protein in DCs.",
+          "The maturation comparison showed a stronger response with Combined. CD80⁺CD86⁺ DCs increased from 10.33±0.55% in Blank to 15.57±0.35% and 15.80±0.36% in the two individual TROP2 groups, 17.50±0.30% in TROP2 CTL1+2 and 22.37±0.31% in Combined. Combined reached 2.16 times the Blank level and exceeded both Blank and the dual-module construct after Holm correction. These results connected protein expression with a measurable DC response and supported following the immune response into T cells."
 ]
         },
         {
@@ -1026,7 +1035,7 @@ export const cycle3Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "The comparison supported tumour-target preference within the tested cell panel. We then extended the assessment from effector-cell killing to the delivery material itself, using a separate CCK-8 assay to measure how increasing amounts of empty LNP affected DC viability."
+          "This comparison showed that tumour-cell killing and effects on non-tumour cells needed to remain separate evaluation dimensions. Strong activity against MDA-MB-231 alone could not establish target preference; that interpretation required comparison with non-tumour targets under matched conditions. We therefore retained both readouts in evaluating Combined, while limiting the low-killing conclusion to the tested cell panel and conditions. Carrier-related effects were assessed independently through the earlier empty-LNP CCK-8 assay described below."
 ]
         },
         {
@@ -1056,7 +1065,7 @@ export const cycle3Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "After examining non-tumour-cell killing in Iteration 3.9, we turned to the delivery carrier itself. To isolate its effect on DC viability, we tested empty LNP without circRNA cargo. A five-level input series and a common 24 h CCK-8 readout assessed how increasing carrier amounts affected cell viability (Dojindo Laboratories, 2026)."
+          "Alongside assessing effector-cell function, we needed to determine how the delivery carrier itself affected DC viability. We addressed this question in an earlier, independent experiment using empty LNP without circRNA cargo to isolate carrier-related effects. A five-level input series and a common 24 h CCK-8 readout assessed how increasing carrier amounts affected cell viability (Dojindo Laboratories, 2026)."
 ]
         },
         {
@@ -1177,7 +1186,7 @@ export const cycle3Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "The revision established three practical rules for transferable workflows: orientation should precede unfamiliar actions, intermediate states should remain visible and final acceptance should stay with the user. We carried these interaction rules into another project resource that also needed to work after handoff—the Virtual Laboratory."
+          "The revision established three practical rules for transferable workflows: orientation should precede unfamiliar actions, intermediate states should remain visible and final acceptance should stay with the user. This handoff challenge was also central to the Virtual Laboratory, which needed to remain understandable and usable after the team stepped away."
 ]
         },
         {
@@ -1207,7 +1216,8 @@ export const cycle3Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "Iteration 1.3 established layered education as a principle for adapting scientific content to learners with different ages and prior knowledge. Iteration 2.8 then showed at Hailun No. 1 High School that the revised Virtual Laboratory could continue to be used by a teacher after handoff. However, children in some economically disadvantaged and resource-limited communities still have few opportunities to enter a laboratory because their schools lack specialised instruments, consumables and trained experimental support. We hoped that the Virtual Laboratory could help narrow this gap, so that a child’s opportunity to experience experimental science would not be determined solely by geography or school resources."
+          "Iteration 1.3 established layered education as a principle for adapting scientific content to learners with different ages and prior knowledge. Iteration 2.8 then showed at Hailun No. 1 High School that the revised Virtual Laboratory could continue to be used by a teacher after handoff. However, children in some economically disadvantaged and resource-limited communities still have few opportunities to enter a laboratory because their schools lack specialised instruments, consumables and trained experimental support. We hoped that the Virtual Laboratory could help narrow this gap, so that a child’s opportunity to experience experimental science would not be determined solely by geography or school resources.",
+          "With this purpose, we brought the programme to Pilu Town and organised a Gram-staining activity for second- and fourth-grade pupils. Younger learners mainly followed colour and touch cues, while older pupils more often paused to ask about the experimental purpose and materials. These observations defined the next design target: provide essential orientation before the first virtual action and keep supporting information accessible throughout the procedure."
 ]
         }
           ]
@@ -1436,6 +1446,6 @@ export const cycle3Section: WikiSection = {
   ],
   note: {
     label: "Cycle 3 outcome",
-    body: "**M—Measurement** connected the Combined design to measurable molecular and cellular performance. Five comparison preparations followed a shared production route, with Combined’s RT-qPCR and junction sequencing supporting its circular identity and enriched composition. The time course demonstrated greater RNA persistence than the linear precursor, while TorusFold produced a structural hypothesis for the full-length sequence. Cellular measurements then connected circRNA translation with DC maturation, T-cell responses, IFN-γ secretion and tumour-cell killing. The non-tumour-cell comparison and empty-LNP assay complemented these functional results with target-selectivity and carrier-viability evidence. CircuForge improved the transfer of design records, layered educational activities brought experimental workflows to different learners, and the revised visual system made team roles recognisable. Together, these outcomes established the experimental basis for evaluating Combined in vivo and made the project’s methods and findings easier to use and communicate."
+    body: "**M—Measurement** connected the Combined design to measurable molecular and cellular performance. Five comparison preparations followed a shared production route, with DNA-template checks and Combined junction sequencing linking the design records to the experimental materials. The time course demonstrated greater RNA persistence than the linear precursor, while TorusFold produced a structural hypothesis for the full-length sequence. Cellular measurements connected circRNA translation with DC maturation, T-cell responses, IFN-γ secretion and tumour-cell killing. The non-tumour-cell comparison and empty-LNP assay complemented these functional results with target-selectivity and carrier-viability evidence. The non-tumour-cell comparison was conducted alongside the in vivo work described in Cycle 4, providing complementary in vitro risk-assessment evidence. CircuForge improved the transfer of design records, layered educational activities brought experimental workflows to different learners, and the revised visual system made team roles recognisable. Together, these outcomes contributed molecular, cellular and computational evidence to the evaluation of Combined and made the project’s methods and findings easier to use and communicate."
   }
 };

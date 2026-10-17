@@ -49,7 +49,9 @@ function ArticleBlockView({ block }: { block: ArticleBlock }) {
 function ArticleView({ article }: { article: StakeholderArticle }) {
   return (
     <article className="sust-stake-article">
-      <h4 className="sust-stake-article__title">{article.title}</h4>
+      {article.title ? (
+        <h4 className="sust-stake-article__title">{article.title}</h4>
+      ) : null}
       {article.sections.map((section, index) => (
         <section className="sust-stake-article__section" key={index}>
           {section.heading ? (
@@ -91,7 +93,9 @@ const profilePhotos = (profile: StakeholderProfile) => {
 
 /** SDG 4 activity card: date · venue · attendance line under the name. */
 function EventMeta({ profile }: { profile: StakeholderProfile }) {
-  const items = [profile.date, profile.location, profile.participants].filter(Boolean);
+  const items = [profile.date, profile.location, profile.participants].filter(
+    Boolean,
+  );
   if (!items.length) return null;
   return <p className="sust-stake-card__event">{items.join(" · ")}</p>;
 }
@@ -146,7 +150,7 @@ function StakeMeta({ profile }: { profile: StakeholderProfile }) {
         </div>
       ) : null}
       <div className="sust-stake-meta__item">
-        <dt>SDGs Addressed</dt>
+        <dt>{profile.sdgsLabel ?? "SDGs Addressed"}</dt>
         <dd>
           <ul className="sust-stake-card__sdgs">
             {profile.sdgs.map((sdg) => (
@@ -202,11 +206,15 @@ function StakeCardFace({
               profile[key] ? (
                 <div className="sust-stake-card__field" key={key}>
                   <dt>
-                    {key === "whatChanged"
-                      ? profile.whatChangedLabel ?? label
-                      : key === "whatWeDid"
-                        ? profile.whatWeDidLabel ?? label
-                        : label}
+                    {key === "partner"
+                      ? (profile.partnerLabel ?? label)
+                      : key === "challenge"
+                        ? (profile.challengeLabel ?? label)
+                        : key === "whatChanged"
+                          ? (profile.whatChangedLabel ?? label)
+                          : key === "whatWeDid"
+                            ? (profile.whatWeDidLabel ?? label)
+                            : label}
                   </dt>
                   <dd>
                     <RichText text={profile[key]} />
@@ -468,8 +476,8 @@ export function StakeholderDeck({
           element.dataset.scrollDeck = "true";
           const stage =
             element.querySelector<HTMLElement>(".sust-deck__stage")!;
-          const anchors = panels.map(
-            (panel) => panel.querySelector<HTMLElement>(".sust-deck__anchor")!,
+          const anchors = panels.map((panel) =>
+            panel.querySelector<HTMLElement>(".sust-deck__anchor")!,
           );
           const headerHeight = () =>
             Number.parseFloat(
@@ -713,7 +721,11 @@ export function StakeholderDeck({
                               className={`sust-deck__field${key === "challenge" ? " sust-deck__field--quote" : ""}${key === "relevantStakeholder" ? " sust-deck__field--lead" : ""}`}
                               key={key}
                             >
-                              <dt>{key === "whatChanged" ? profile.whatChangedLabel ?? label : label}</dt>
+                              <dt>
+                                {key === "whatChanged"
+                                  ? (profile.whatChangedLabel ?? label)
+                                  : label}
+                              </dt>
                               <dd>
                                 <RichText text={profile[key]} />
                               </dd>

@@ -435,17 +435,11 @@ export const resultsReferences: CitationReference[] = [
   },
   {
     id: 34,
-    authors: "Wesselhoeft RA, Kowalski PS, Anderson DG.",
+    authors: "Wesselhoeft RA, Kowalski PS, Parker-Hale FC, Huang Y, Bisaria N, Anderson DG.",
     title:
-      "Engineering circular RNA for potent and stable translation in eukaryotic cells.",
-    journal: "Nature Communications.",
-    volumeYear: "2018;9:2629.",
-    links: [
-      {
-        href: "https://pubmed.ncbi.nlm.nih.gov/29980667/",
-        label: "PMID: 29980667.",
-      },
-    ],
+      "RNA circularization diminishes immunogenicity and can extend translation duration in vivo.",
+    journal: "Mol Cell.",
+    volumeYear: "2019;74(3):508–520.e4.",
   },
   {
     id: 35,

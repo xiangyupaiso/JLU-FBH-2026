@@ -14,6 +14,7 @@ import {
   FOOTER_MARK_CLINICAL,
   FOOTER_MARK_TEACHING,
   FOOTER_MARK_UNIVERSITY,
+  FOOTER_SOCIAL_LINKS,
   type FooterMark,
 } from "../data/footer";
 import { useRouteModule } from "../hooks/useRouteModule";
@@ -130,7 +131,32 @@ export function Footer() {
           </ul>
 
           <div className="circure-footer__contact">
-            <h2>Keep in touch</h2>
+            <nav
+              className="circure-footer__social-links"
+              aria-label="Official team channels"
+            >
+              {FOOTER_SOCIAL_LINKS.map((link) => (
+                <a
+                  key={link.id}
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`circure-footer__social-link circure-footer__social-link--${link.id}`}
+                  title={link.alt}
+                  aria-label={link.alt}
+                >
+                  <img
+                    src={link.icon}
+                    alt={link.name}
+                    width={56}
+                    height={56}
+                    loading="lazy"
+                    decoding="async"
+                    draggable={false}
+                  />
+                </a>
+              ))}
+            </nav>
             <address>
               <a href={"mailto:" + FOOTER_EMAIL}>
                 <span>{FOOTER_EMAIL_LOCAL}</span>@{FOOTER_EMAIL_DOMAIN}

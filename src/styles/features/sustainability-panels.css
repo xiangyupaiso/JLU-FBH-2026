@@ -2831,3 +2831,44 @@ a.sust-sdg-pill:focus-visible {
     animation: none;
   }
 }
+.sust-partnerships__group + .sust-partnerships__group {
+  margin-top: var(--wiki-space-subhead-top, 28px);
+}
+
+.sust-partnerships .sust-stake-card {
+  grid-template-columns: max-content minmax(0, 1fr);
+}
+
+.sust-partnerships .sust-stake-card__tab {
+  padding-inline: 12px;
+  white-space: nowrap;
+}
+
+.sust-partnership-revisit {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 16px;
+  margin-top: var(--wiki-space-block, 24px);
+}
+
+.sust-partnership-revisit a {
+  display: grid;
+  gap: 8px;
+  color: var(--route-subheading-ink);
+  font-size: 0.875rem;
+  text-decoration: none;
+}
+
+.sust-partnership-revisit img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.sust-contribution-bubbles {
+  min-width: 0;
+  --sdg-font: var(--font-sans);
+  --sdg-ink: var(--route-heading-ink);
+  --sdg-rule: color-mix(in srgb, var(--route-heading-ink) 14%, transparent);
+}

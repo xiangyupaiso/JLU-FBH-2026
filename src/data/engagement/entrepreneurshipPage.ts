@@ -435,8 +435,6 @@ export type EntrepreneurshipDocumentKey =
   | "jienzhihe"
   | "scalability"
   | "businessPlan"
-  | "ccicPoster"
-  | "apicPoster"
   | "legalPlan";
 
 export interface EntrepreneurshipDocument {
@@ -463,14 +461,6 @@ export const entrepreneurshipDocuments: Record<
   businessPlan: {
     caption: "Business Plan",
     url: entrepreneurshipAssets.documents.businessPlan,
-  },
-  ccicPoster: {
-    caption: "CCiC Poster",
-    url: entrepreneurshipAssets.documents.ccicPoster,
-  },
-  apicPoster: {
-    caption: "APiC Poster",
-    url: entrepreneurshipAssets.documents.apicPoster,
   },
   legalPlan: {
     caption: "Legal Plan",
@@ -607,6 +597,8 @@ export const entrepreneurshipPage: WikiPageContent = {
         {
           type: "figure",
           src: entrepreneurshipAssets.illustrations.who,
+          width: 4000,
+          height: 3000,
           alt: "Diagram defining CirCure's target patient population",
           caption: "Defining CirCure's target patient population.",
         },
@@ -632,6 +624,8 @@ export const entrepreneurshipPage: WikiPageContent = {
         {
           type: "figure",
           src: entrepreneurshipAssets.illustrations.empathyMap,
+          width: 1536,
+          height: 1024,
           alt: "Empathy map of the target TNBC patients",
           caption: "The Empathy Map developed for the target TNBC patients.",
         },
@@ -650,6 +644,8 @@ export const entrepreneurshipPage: WikiPageContent = {
         {
           type: "figure",
           src: entrepreneurshipAssets.illustrations.valuePropositionCanvas,
+          width: 1448,
+          height: 1086,
           alt: "Value Proposition Canvas for CirCure",
           caption: "Value Proposition Canvas for CirCure.",
         },
@@ -750,6 +746,8 @@ export const entrepreneurshipPage: WikiPageContent = {
         {
           type: "figure",
           src: entrepreneurshipAssets.illustrations.pestel,
+          width: 1526,
+          height: 823,
           alt: "PESTEL analysis of factors influencing CirCure",
           caption: "PESTEL analysis of factors influencing CirCure.",
         },
@@ -762,6 +760,8 @@ export const entrepreneurshipPage: WikiPageContent = {
         {
           type: "figure",
           src: entrepreneurshipAssets.illustrations.tamSamSom,
+          width: 1448,
+          height: 1086,
           alt: "TAM, SAM and SOM market analysis for CirCure",
           caption: "TAM, SAM and SOM market analysis for CirCure.",
         },
@@ -877,6 +877,8 @@ export const entrepreneurshipPage: WikiPageContent = {
         {
           type: "figure",
           src: entrepreneurshipAssets.illustrations.technology,
+          width: 2117,
+          height: 743,
           alt: "Overview of CirCure's technical design decisions",
           caption: "Overview of CirCure's technical design decisions.",
         },
@@ -896,6 +898,8 @@ export const entrepreneurshipPage: WikiPageContent = {
         {
           type: "figure",
           src: entrepreneurshipAssets.illustrations.mvp,
+          width: 3000,
+          height: 1709,
           alt: "Mockup of the CirCure MVP (Minimum Viable Product)",
           caption: "Mockup of the CirCure MVP (Minimum Viable Product).",
         },
@@ -961,6 +965,8 @@ export const entrepreneurshipPage: WikiPageContent = {
         {
           type: "figure",
           src: entrepreneurshipAssets.illustrations.inventiveFocus,
+          width: 1448,
+          height: 274,
           alt: "Overview of CirCure's design focus",
           caption: "Overview of CirCure's design focus.",
         },
@@ -995,6 +1001,8 @@ export const entrepreneurshipPage: WikiPageContent = {
         {
           type: "figure",
           src: entrepreneurshipAssets.illustrations.inventiveSystem,
+          width: 1448,
+          height: 227,
           alt: "Capabilities of the CircRNA Vaccine Design System",
           caption: "Capabilities of the CircRNA Vaccine Design System.",
         },
@@ -1040,6 +1048,8 @@ export const entrepreneurshipPage: WikiPageContent = {
         {
           type: "figure",
           src: entrepreneurshipAssets.illustrations.swot,
+          width: 1448,
+          height: 922,
           alt: "SWOT analysis of CirCure",
           caption: "SWOT analysis of CirCure.",
         },
@@ -1076,6 +1086,8 @@ export const entrepreneurshipPage: WikiPageContent = {
         {
           type: "figure",
           src: entrepreneurshipAssets.illustrations.competitorImmunomicTherapeutics,
+          width: 581,
+          height: 184,
           alt: "Immunomic Therapeutics — ITI-5000",
           caption: "Immunomic Therapeutics — ITI-5000.",
         },
@@ -1088,6 +1100,8 @@ export const entrepreneurshipPage: WikiPageContent = {
         {
           type: "figure",
           src: entrepreneurshipAssets.illustrations.competitorUniversityOfWashingtonStemvac,
+          width: 3840,
+          height: 2160,
           alt: "University of Washington — STEMVAC",
           caption: "University of Washington — STEMVAC.",
         },
@@ -1100,6 +1114,8 @@ export const entrepreneurshipPage: WikiPageContent = {
         {
           type: "figure",
           src: entrepreneurshipAssets.illustrations.competitorClevelandClinic,
+          width: 3840,
+          height: 2160,
           alt: "Cleveland Clinic — α-Lactalbumin Vaccine",
           caption: "Cleveland Clinic — α-Lactalbumin Vaccine.",
         },
@@ -1130,12 +1146,16 @@ export const entrepreneurshipPage: WikiPageContent = {
         {
           type: "figure",
           src: entrepreneurshipAssets.illustrations.competitorMerck,
+          width: 3056,
+          height: 1380,
           alt: "Merck — KEYTRUDA (pembrolizumab)",
           caption: "Merck — KEYTRUDA (pembrolizumab).",
         },
         {
           type: "figure",
           src: entrepreneurshipAssets.illustrations.competitorAstraZeneca,
+          width: 4000,
+          height: 2250,
           alt: "AstraZeneca — LYNPARZA (olaparib)",
           caption: "AstraZeneca — LYNPARZA (olaparib).",
         },
@@ -1187,6 +1207,8 @@ export const entrepreneurshipPage: WikiPageContent = {
         {
           type: "figure",
           src: entrepreneurshipAssets.illustrations.b2bB2c,
+          width: 1947,
+          height: 1448,
           alt: "B2B and B2C customer segments of CirCure",
           caption: "B2B and B2C customer segments of CirCure.",
         },
@@ -1207,6 +1229,8 @@ export const entrepreneurshipPage: WikiPageContent = {
         {
           type: "figure",
           src: entrepreneurshipAssets.illustrations.beachheadStrategy,
+          width: 2584,
+          height: 1182,
           alt: "Beachhead strategy for market entry and expansion",
           caption: "Beachhead strategy for market entry and expansion.",
         },
@@ -1275,6 +1299,8 @@ export const entrepreneurshipPage: WikiPageContent = {
           type: "figure",
           className: "entrepreneurship-figure--portrait",
           src: entrepreneurshipAssets.illustrations.riskInterview,
+          width: 1279,
+          height: 1706,
           alt: "Risk interview with Yongli Jia of Hualan Biological Engineering",
           caption: "Risk interview with Yongli Jia of Hualan Biological Engineering.",
         },
@@ -1579,12 +1605,6 @@ export const entrepreneurshipPage: WikiPageContent = {
         },
         { type: "feature", key: "doc-business-plan" },
         {
-          type: "prose",
-          paragraphs: ["Publicity Material"],
-        },
-        { type: "feature", key: "doc-ccic-poster" },
-        { type: "feature", key: "doc-apic-poster" },
-        {
           type: "subheading",
           id: "legal-considerations",
           index: "5.12",
@@ -1617,6 +1637,8 @@ export const entrepreneurshipPage: WikiPageContent = {
         {
           type: "figure",
           src: entrepreneurshipAssets.illustrations.teamPhoto,
+          width: 4000,
+          height: 2667,
           alt: "Photo of the JLU-FBH team",
           caption: "The JLU-FBH team.",
         },
