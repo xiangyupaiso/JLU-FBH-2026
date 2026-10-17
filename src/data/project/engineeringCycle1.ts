@@ -99,7 +99,7 @@ export const cycle1Section: WikiSection = {
   index: "01",
   kicker: "Cycle 1 — Targeting",
   navLabel: "Cycle 1 — Targeting",
-  title: "From intended use to a four-antigen strategy",
+  title: "Cycle 1: From intended use to a four-antigen strategy",
   summary: "TIME begins with T—Targeting. This cycle moved from intended use to a four-antigen strategy prepared for epitope-level engineering.",
   blocks: [
         {
@@ -213,7 +213,7 @@ export const cycle1Section: WikiSection = {
         },
         {
           type: "table",
-          caption: "Table C1-01｜Platform decision matrix｜平台选择决策矩阵",
+          caption: "Table C1-01｜Platform decision matrix",
           headers: ["Design requirement","Linear mRNA","Engineered circRNA","Project check","Design implication"],
           rows: [
           [
@@ -297,7 +297,7 @@ export const cycle1Section: WikiSection = {
         },
         {
           type: "table",
-          caption: "Table C1-02｜Stage-by-stage feasibility check for the circRNA route｜circRNA路线的逐阶段可行性检查",
+          caption: "Table C1-02｜Stage-by-stage feasibility check for the circRNA route",
           headers: ["Stage","Material source or operation","Available project check","Observable output","Decision"],
           rows: [
           [
@@ -535,26 +535,34 @@ export const cycle1Section: WikiSection = {
         {
           type: "figure",
           src: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-c1-02a.avif",
+          width: 852,
+          height: 257,
           alt: "Figure C1-02A",
-          caption: "Figure C1-02A · Representative TROP2 immunohistochemistry in TNBC tissue, showing intermediate staining in the left and middle fields and high staining in the right field. Reproduced from Figure 2 of Izci et al. (2022), under CC BY 4.0; the tissue fields are retained and an external panel label has been added."
+          caption: "Representative TROP2 immunohistochemistry in TNBC tissue, showing intermediate staining in the left and middle fields and high staining in the right field. Reproduced from Figure 2 of Izci et al. (2022), under CC BY 4.0; the tissue fields are retained and an external panel label has been added."
         },
         {
           type: "figure",
           src: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-c1-02b.avif",
+          width: 412,
+          height: 420,
           alt: "Figure C1-02B",
-          caption: "Figure C1-02B · Representative B7-H4 immunostaining showing strong, moderate, weak and negative staining, as labelled in the source image. Cropped from Figure 1d of Wang et al. (2018), under CC BY 4.0; source labels and scale bars are retained, with an external panel label added."
+          caption: "Representative B7-H4 immunostaining showing strong, moderate, weak and negative staining, as labelled in the source image. Cropped from Figure 1d of Wang et al. (2018), under CC BY 4.0; source labels and scale bars are retained, with an external panel label added."
         },
         {
           type: "figure",
           src: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-c1-02c.avif",
+          width: 852,
+          height: 261,
           alt: "Figure C1-02C",
-          caption: "Figure C1-02C · Representative TNBC tissue showing strong, moderate and negative Nectin-4 staining in the original panels A, B and C, respectively (200× magnification). Reproduced from Figure 1 of Zeindler et al. (2019), under CC BY; original panel labels and scale bars are retained, with an external panel label added."
+          caption: "Representative TNBC tissue showing strong, moderate and negative Nectin-4 staining in the original panels A, B and C, respectively (200× magnification). Reproduced from Figure 1 of Zeindler et al. (2019), under CC BY; original panel labels and scale bars are retained, with an external panel label added."
         },
         {
           type: "figure",
           src: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-c1-02d.avif",
+          width: 852,
+          height: 465,
           alt: "Figure C1-02D",
-          caption: "Figure C1-02D · Representative positive and negative SLC39A6/LIV-1 immunostaining in breast-cancer tissue, corresponding to the original panels A and B. Reproduced from Figure 1 of Althobiti et al. (2021), under CC BY 4.0; an external panel label has been added. These images illustrate breast-cancer tissue staining rather than TNBC-specific prevalence."
+          caption: "Representative positive and negative SLC39A6/LIV-1 immunostaining in breast-cancer tissue, corresponding to the original panels A and B. Reproduced from Figure 1 of Althobiti et al. (2021), under CC BY 4.0; an external panel label has been added. These images illustrate breast-cancer tissue staining rather than TNBC-specific prevalence."
         }
           ]
         },
@@ -641,7 +649,7 @@ export const cycle1Section: WikiSection = {
         },
         {
           type: "table",
-          caption: "Table C1-03｜Four-dimensional antigen-evidence map｜四维抗原证据图谱",
+          caption: "Table C1-03｜Four-dimensional antigen-evidence map",
           headers: ["Evidence dimension", "Question", "Primary source", "Decision produced"],
           rows: [
             [
@@ -766,27 +774,35 @@ export const cycle1Section: WikiSection = {
         },
         {
           type: "figure",
-          src: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-c1-03a.avif",
+          src: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-c1-03a-new.avif",
+          width: 4000,
+          height: 2744,
           alt: "Figure C1-03A",
-          caption: "Figure C1-03A · Volcano plot comparing TNBC tumours with normal-breast samples in PXD024322 using a batch-adjusted limma model. Axes show the fitted log₂ fold change and −log₁₀ Benjamini–Hochberg-adjusted P value. TROP2, B7-H4, LIV-1 and Nectin-4 are highlighted against the quantified proteome."
+          caption: "Volcano plot comparing TNBC tumours with normal-breast samples in PXD024322 using a batch-adjusted limma model. Axes show the fitted log₂ fold change and −log₁₀ Benjamini–Hochberg-adjusted P value. Red and blue points indicate increased and decreased abundance, respectively, at adjusted P < 0.05 and |log₂FC| ≥ 0.15. Purple vertical reference lines mark log₂FC = ±0.5. TROP2, B7-H4, LIV-1 and Nectin-4 are highlighted."
         },
         {
           type: "figure",
-          src: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-c1-03b.avif",
+          src: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-c1-03b-new.avif",
+          width: 4000,
+          height: 1889,
           alt: "Figure C1-03B",
-          caption: "Figure C1-03B · Batch-adjusted log₂ protein-abundance distributions for TROP2, B7-H4, LIV-1 and Nectin-4 in PXD024322. Grey and orange points represent normal-breast and TNBC samples, respectively. Each panel reports the fitted log₂ fold change and Benjamini–Hochberg-adjusted P value."
+          caption: "Boxplots of batch-adjusted log₂ relative protein abundance for TROP2, B7-H4, LIV-1 and Nectin-4 in PXD024322. Grey and orange boxes represent normal-breast and TNBC samples, respectively. Each panel reports the model-estimated TNBC-to-normal fold change and Benjamini–Hochberg-adjusted P value."
         },
         {
           type: "figure",
-          src: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-c1-03c.avif",
+          src: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-c1-03c-new.avif",
+          width: 4000,
+          height: 2960,
           alt: "Figure C1-03C",
-          caption: "Figure C1-03C · Volcano plot from the patient-paired limma comparison of TNBC tumours and matched normal-adjacent tissue in PXD028102. Axes show the fitted log₂ fold change and −log₁₀ Benjamini–Hochberg-adjusted P value. TROP2, B7-H4 and Nectin-4 are highlighted."
+          caption: "Volcano plot from the patient-paired limma comparison of TNBC tumours and matched normal-adjacent tissue (NAT) in PXD028102. Axes show the fitted log₂ fold change and −log₁₀ Benjamini–Hochberg-adjusted P value. Red and blue points indicate increased and decreased abundance, respectively, at adjusted P < 0.01 and |log₂FC| ≥ 1. TROP2, B7-H4 and Nectin-4 are highlighted."
         },
         {
           type: "figure",
-          src: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-c1-03d.avif",
+          src: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-c1-03d-new.avif",
+          width: 4000,
+          height: 2099,
           alt: "Figure C1-03D",
-          caption: "Figure C1-03D · Target-centred log₂ abundance distributions for TROP2, B7-H4 and Nectin-4 in PXD028102. Grey and orange points represent normal-adjacent tissue (NAT) and TNBC samples, respectively. Diamonds and connecting lines indicate group means, while statistical estimates derive from the patient-paired model; the lines do not connect individual patient pairs."
+          caption: "Boxplots of log₂ protein abundance after the primary missing-value imputation for TROP2, B7-H4 and Nectin-4 in PXD028102. Grey and orange boxes represent normal-adjacent tissue (NAT) and TNBC samples, respectively. Each panel reports the TNBC-to-NAT fold change and Benjamini–Hochberg-adjusted P value from the patient-paired limma model."
         }
           ]
         },
@@ -884,7 +900,7 @@ export const cycle1Section: WikiSection = {
         },
         {
           type: "table",
-          caption: "Table C1-04｜Malignant-cell enrichment and compartment-specific detection of candidate genes｜候选基因的恶性细胞富集与细胞区室检出率",
+          caption: "Table C1-04｜Malignant-cell enrichment and compartment-specific detection of candidate genes",
           headers: [
             "Gene",
             "Antigen",
@@ -940,21 +956,27 @@ export const cycle1Section: WikiSection = {
         },
         {
           type: "figure",
-          src: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-c1-04a.avif",
+          src: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-c1-04a-new.avif",
+          width: 2499,
+          height: 2129,
           alt: "Figure C1-04A",
-          caption: "Figure C1-04A · Harmony-integrated UMAP of the 39,324 quality-controlled cells in the GSE176078 TNBC subset. Each point represents a cell, coloured by its annotated major lineage. The map locates malignant cells alongside epithelial, immune, stromal and endothelial populations."
+          caption: "Harmony-integrated UMAP of the 39,324 quality-controlled cells in the GSE176078 TNBC subset. Each point represents a cell, coloured by its annotated major lineage. The map shows malignant, normal epithelial, immune, stromal and endothelial cell populations."
         },
         {
           type: "figure",
-          src: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-c1-04b.avif",
+          src: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/enngineering-c1-04b-new.avif",
+          width: 3002,
+          height: 4000,
           alt: "Figure C1-04B",
-          caption: "Figure C1-04B · Candidate-gene expression on the Harmony UMAP (left) and expression distributions across cell compartments (right). Rows show TROP2/*TACSTD2*, B7-H4/*VTCN1*, LIV-1/*SLC39A6* and Nectin-4/*NECTIN4* (also labelled PVRL4). Expression is displayed as ln(CP10K + 1), calculated from raw counts. Cancer-associated fibroblasts (CAFs) are included in the stromal compartment and also shown separately."
+          caption: "Candidate-gene expression on the Harmony UMAP (left) and violin plots across cell compartments (right). Rows show TROP2/*TACSTD2*, B7-H4/*VTCN1*, LIV-1/*SLC39A6* and Nectin-4/*NECTIN4* (labelled PVRL4). Expression is displayed as ln(CP10K + 1), calculated from raw counts. Cancer-associated fibroblasts (CAFs) are included in the stromal compartment and also shown separately. The B7-H4 and Nectin-4 violin plots use broken y-axes."
         },
         {
           type: "figure",
           src: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-c1-04c.avif",
+          width: 2088,
+          height: 2126,
           alt: "Figure C1-04C",
-          caption: "Figure C1-04C · The pie chart represents 9,491 malignant cells from eight cases in the GSE176078 TNBC subset. Each case contributes a sector proportional to its malignant-cell count, divided into coloured portions with at least one candidate gene detected and grey portions with none detected. Labels report the case-specific detection fraction and malignant-cell number. The pooled detection fraction was 81.4% (7,727/9,491)."
+          caption: "The pie chart represents 9,491 malignant cells from eight cases in the GSE176078 TNBC subset. Each case contributes a sector proportional to its malignant-cell count, divided into coloured portions with at least one candidate gene detected and grey portions with none detected. Labels report the case-specific detection fraction and malignant-cell number. The pooled detection fraction was 81.4% (7,727/9,491)."
         }
           ]
         },
@@ -1042,8 +1064,10 @@ export const cycle1Section: WikiSection = {
         {
           type: "figure",
           src: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-c1-05.avif",
+          width: 2531,
+          height: 919,
           alt: "Figure C1-05",
-          caption: "Figure C1-05 · cBioPortal OncoPrint of 115 selected TCGA TNBC cases using the query `AMP EXP >= 0.5`, which identifies copy-number amplification or an mRNA expression Z-score of at least 0.5. The proportions meeting this rule were 38% for *TACSTD2*, 31% for *VTCN1*, 79% for *NECTIN4* and 4% for *SLC39A6*. At least one of the four genes met the rule in 101 of 115 cases (88%)."
+          caption: "cBioPortal OncoPrint of 115 selected TCGA TNBC cases using the query `AMP EXP >= 0.5`, which identifies copy-number amplification or an mRNA expression Z-score of at least 0.5. The proportions meeting this rule were 38% for *TACSTD2*, 31% for *VTCN1*, 79% for *NECTIN4* and 4% for *SLC39A6*. At least one of the four genes met the rule in 101 of 115 cases (88%)."
         }
           ]
         },
@@ -1107,7 +1131,7 @@ export const cycle1Section: WikiSection = {
                     "src": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-c1-06c.avif"
           }
 ],
-          caption: "CircuForge V1.0 module interfaces. **(A)** Data import and quality control, showing quantitative-data and sample-metadata upload, preprocessing controls and quality-control plots. **(B)** Candidate-target screening, showing Limma analysis settings and a volcano plot. **(C)** Epitope prediction, showing protein-sequence input, prediction-mode and HLA settings, and a candidate-peptide results table."
+          caption: "CircuForge V1.0 module interfaces. (A) Data import and quality control, showing quantitative-data and sample-metadata upload, preprocessing controls and quality-control plots. (B) Candidate-target screening, showing Limma analysis settings and a volcano plot. (C) Epitope prediction, showing protein-sequence input, prediction-mode and HLA settings, and a candidate-peptide results table."
         }
           ]
         },
@@ -1124,8 +1148,10 @@ export const cycle1Section: WikiSection = {
         {
           type: "figure",
           src: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-c1-07.avif",
+          width: 3033,
+          height: 2031,
           alt: "Figure C1-07",
-          caption: "Figure C1-07 · Group screenshot from a five-team online iGEM software exchange involving JLU-FBH, HUBU-WUHAN, AFMU-China, JLU-SPH and LZU-GANSU."
+          caption: "Group screenshot from a five-team online iGEM software exchange involving JLU-FBH, HUBU-WUHAN, AFMU-China, JLU-SPH and LZU-GANSU."
         }
           ]
         },

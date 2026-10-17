@@ -57,6 +57,90 @@
 .wiki-page--model .model-action {
   margin-bottom: 14px;
 }
+.wiki-page--model .model-antigen-filter {
+  width: min(100%, 380px);
+  min-width: 0;
+  box-sizing: border-box;
+  margin: 0 0 14px;
+  padding: 12px 14px 10px;
+  border: 1px solid #b8d5cb;
+  border-radius: 8px;
+  background: #f1f8f4;
+  color: var(--route-heading-ink, #153e34);
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+.wiki-page--model .model-antigen-filter legend {
+  padding: 0 6px;
+  font: inherit;
+}
+.wiki-page--model .model-antigen-filter input {
+  appearance: none;
+  display: block;
+  width: calc(100% - 44px);
+  height: 22px;
+  margin: 0 22px 6px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  accent-color: #207062;
+  cursor: pointer;
+}
+.wiki-page--model .model-antigen-filter input::-webkit-slider-runnable-track {
+  height: 4px;
+  border-radius: 2px;
+  background: #c5ddd2;
+}
+.wiki-page--model .model-antigen-filter input::-webkit-slider-thumb {
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  margin-top: -7px;
+  border: 3px solid #fff;
+  border-radius: 50%;
+  background: #207062;
+  box-shadow: 0 0 0 1px #739f8e;
+}
+.wiki-page--model .model-antigen-filter input::-moz-range-track {
+  height: 4px;
+  border-radius: 2px;
+  background: #c5ddd2;
+}
+.wiki-page--model .model-antigen-filter input::-moz-range-thumb {
+  width: 12px;
+  height: 12px;
+  border: 3px solid #fff;
+  border-radius: 50%;
+  background: #207062;
+  box-shadow: 0 0 0 1px #739f8e;
+}
+.wiki-page--model .model-antigen-filter input:focus-visible {
+  outline: 2px solid var(--route-subheading-ink, #633256);
+  outline-offset: 2px;
+}
+.wiki-page--model .model-antigen-options {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 4px;
+}
+.wiki-page--model .model-antigen-options button {
+  padding: 6px 2px;
+  border: 0;
+  border-radius: 5px;
+  background: transparent;
+  color: #526f62;
+  font: inherit;
+  cursor: pointer;
+}
+.wiki-page--model .model-antigen-options button:is(:hover, [aria-pressed="true"]) {
+  background: #dceee5;
+  color: #153e34;
+}
+.wiki-page--model .model-antigen-table tbody td:nth-child(2),
+.wiki-page--model .model-antigen-table tbody td:nth-child(2) code {
+  color: #000;
+  font-weight: 700;
+}
 .wiki-page--model .model-fold {
   border: 1px solid #d3ddd7;
   border-radius: 8px;

@@ -107,15 +107,14 @@ export const measurementAssets = {
   },
   "sanger-trace-across-the-back-splice-junction-bsj-of-the-combined-vaccine": {
     fileName:
-      "sanger-trace-across-the-back-splice-junction-bsj-of-the-combined-vaccine.avif",
+      "sanger-trace-across-the-backsplice-junction-bsj-of-the-combined-vaccine.avif",
     localSourcePath:
-      "文案集/wetlab/Measurment/measurete图片与附件/sanger-trace-across-the-back-splice-junction-bsj-of-the-combined-vaccine.avif",
+      "文案集/wetlab/Measurment/measurete图片与附件/sanger-trace-across-the-backsplice-junction-bsj-of-the-combined-vaccine.avif",
     localSrc: "",
     uploadUrl:
-      "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/sanger-trace-across-the-back-splice-junction-bsj-of-the-combined-vaccine.avif",
-    alt: "Sanger trace across the back-splice junction of the Combined vaccine",
-    caption:
-      "Sanger trace across the back-splice junction of the Combined vaccine",
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/sanger-trace-across-the-backsplice-junction-bsj-of-the-combined-vaccine.avif",
+    alt: "Sanger trace across the ligation site of the Combined vaccine",
+    caption: "Sanger trace across the ligation site of the Combined vaccine",
     section: "Measurement",
   },
   "in-vitro-stability-of-circrna-versus-linear-precursor-rna-at-37-c-gel": {

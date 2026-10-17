@@ -6,9 +6,9 @@ import { resultsSectionsInVivoDiscussion } from "./resultsSectionsInVivoDiscussi
 
 /**
  * Results — the project's evidence chain, migrated verbatim from
- * `文案集/project/results/3.3 Results.md` (Mode A, full rebuild).
+ * `文案集/project/results/3.3 Results.md` (updated manuscript).
  *
- * The manuscript's ten `#` headings become the page's ten sections; its `##`
+ * The manuscript's eleven `#` headings become the page's eleven sections; its `##`
  * headings become `subheading` blocks, so the reader's outline mirrors the
  * document rather than a re-authored summary. The copy is split across four
  * sibling files purely for reviewability — `engineeringPage.ts` /

@@ -2166,6 +2166,17 @@ html.has-route-reader-scroll {
   background-repeat: repeat-y;
 }
 
+/* Natural document flow keeps the shared desktop outline beside the article. */
+@media (min-width: 981px) {
+  .wiki-page.wiki-page--route.route--document-flow .wiki-outline.wiki-outline--marker {
+    position: sticky;
+    top: calc(var(--header-height) + var(--reader-pad));
+    align-self: start;
+    height: fit-content;
+    max-height: calc(100dvh - var(--header-height) - (var(--reader-pad) * 2));
+  }
+}
+
 @media (min-width: 1200px) and (min-height: 700px) {
   .wiki-page--route.route--wide-flow .wiki-reader-track {
     height: auto;

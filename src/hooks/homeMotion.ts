@@ -7,9 +7,9 @@ export const HOME_SCRUB = 0.22;
 // the literal.
 export const HOME_EASE = "sine.inOut";
 
-// Briefly settle the completed frame without a second screen of empty scroll.
-// Scaling the track by the same amount preserves the original reveal speed.
-export const HOME_REST_RATIO = 0.08;
+// Pinned reading pages hold their completed text still for a quarter of the
+// reveal distance. Scaling the track by the same amount preserves reveal speed.
+export const HOME_REST_RATIO = 0.25;
 
 // Desktop: every scrubbed scene stays perfectly still for this fraction of its
 // own reveal distance before the next scene, or the bridge into it, moves.

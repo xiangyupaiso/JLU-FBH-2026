@@ -318,8 +318,9 @@
         loader.addEventListener("wheel", block, { passive: false });
         loader.addEventListener("touchmove", block, { passive: false });
 
-        // Long waits explain what is happening and offer recovery. Elapsed
-        // time never counts as a successful page load or reveals unfinished art.
+        // Long waits explain what is happening and offer recovery. The app
+        // caps its art and font waits (pageLoader READY_DEADLINE_MS); these
+        // timers only cover a stylesheet or bundle that never arrives.
         var status = loader.querySelector("[data-loader-status]");
         var wait = loader.querySelector("[data-loader-wait]");
         var retry = loader.querySelector("[data-loader-retry]");

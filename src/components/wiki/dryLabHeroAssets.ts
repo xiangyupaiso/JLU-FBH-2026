@@ -1,8 +1,10 @@
 const gamesHero = "https://static.igem.wiki/teams/6056/wiki/files/pages/dry-lab/dry-lab-games-hero-v2-e0112cce797c.webp";
 const hardwareHero =
   "https://static.igem.wiki/teams/6056/wiki/files/pages/dry-lab/dry-lab-hardware-hero.webp";
-import modelHero from "../../assets/wiki/dry-lab-heroes/dry-lab-model-hero.webp";
-import softwareHero from "../../assets/wiki/dry-lab-heroes/dry-lab-software-hero.webp";
+const modelHero =
+  "https://static.igem.wiki/teams/6056/wiki/files/pages/dry-lab/dry-lab-model-hero.webp";
+const softwareHero =
+  "https://static.igem.wiki/teams/6056/wiki/files/pages/dry-lab/dry-lab-software-hero.webp";
 
 /**
  * Per-page hero art for the Dry Lab reader.

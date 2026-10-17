@@ -52,6 +52,18 @@ a.eng-dial__stage:focus-visible .eng-dial__stage-face {
   user-select: none;
   will-change: transform;
   filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.18));
+  /* Rotate around the pointer artwork's own centre (= dial centre, 366 366).
+     Declared in CSS so the origin is layout-guaranteed and cannot drift. */
+  transform-box: fill-box;
+  transform-origin: center;
+  transition: transform 420ms cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .eng-dial__hand-long,
+  .eng-dial__hand-short {
+    transition: none;
+  }
 }
 
 .eng-dial__cap {

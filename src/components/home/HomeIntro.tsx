@@ -151,7 +151,7 @@ export function HomeIntro({ scene }: HomeIntroProps) {
     };
   }, [playing]);
 
-  // Set before paint so the opening artwork and scroll cue do not flicker.
+  // Set before paint so the opening artwork does not flicker.
   useLayoutEffect(() => {
     const section = scene.current;
     const root = document.documentElement;

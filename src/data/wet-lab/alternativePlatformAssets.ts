@@ -24,7 +24,8 @@ export const alternativePlatformAssets = {
     localSourcePath:
       "文案集/wetlab/Alternative_Platform/图片和附件/Mea Fig 1.png",
     localSrc: platformComparison,
-    uploadUrl: "",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/five-platforms-against-the-problem-s-requirement-with-the-failure-point-of-each-marked.avif",
     alt: "Five platforms against the problem's requirements, with the failure point of each marked.",
     caption:
       "Five platforms against the problem's requirements, with the failure point of each marked.",
@@ -35,7 +36,8 @@ export const alternativePlatformAssets = {
     localSourcePath:
       "文案集/wetlab/Alternative_Platform/图片和附件/Create a publication-quality BioRender scientific figure titled “The Necessity C.png",
     localSrc: necessityChain,
-    uploadUrl: "",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/host-modality-and-production-as-three-stacked-layers-with-the-forcing-constraint-on-each-arrow.avif",
     alt: "Host, modality and production as three stacked layers, with the forcing constraint on each arrow.",
     caption:
       "Host, modality and production as three stacked layers, with the forcing constraint on each arrow.",
@@ -46,7 +48,8 @@ export const alternativePlatformAssets = {
     localSourcePath:
       "文案集/wetlab/Alternative_Platform/图片和附件/Create a publication-quality BioRender mechanism figure titled “Engineering the.png",
     localSrc: backboneArchitecture,
-    uploadUrl: "",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/the-circrna-in-translation-order-with-the-four-encoded-elements-highlighted.avif",
     alt: "The circRNA in translation order, with the four encoded elements highlighted.",
     caption:
       "The circRNA in translation order, with the four encoded elements highlighted.",
@@ -57,7 +60,8 @@ export const alternativePlatformAssets = {
     localSourcePath:
       "文案集/wetlab/Alternative_Platform/图片和附件/Create a publication-ready BioRender-style SCIENTIFIC DEPENDENCY MAP, -CirCure -.png",
     localSrc: evidenceDependencyMap,
-    uploadUrl: "",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/the-evidence-chain-from-dc-maturation-to-tumour-cell-killing-each-link-with-its-read-out-and-its-control.avif",
     alt: "The evidence chain from DC maturation to tumour-cell killing, each link with its read-out and its control.",
     caption:
       "The evidence chain from DC maturation to tumour-cell killing, each link with its read-out and its control.",
@@ -68,10 +72,23 @@ export const alternativePlatformAssets = {
     localSourcePath:
       "文案集/wetlab/Alternative_Platform/图片和附件/放行流程图.png",
     localSrc: releaseWorkflow,
-    uploadUrl: "",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/the-cell-free-production-route-and-the-release-gate-that-returns-a-failed-preparation-to-transcription.avif",
     alt: "The cell-free production route and the release gate that returns a failed preparation to transcription.",
     caption:
       "The cell-free production route and the release gate that returns a failed preparation to transcription.",
+    section: "Construction and release",
+  },
+  backSpliceJunction: {
+    fileName: "back-splice-junction.avif",
+    localSourcePath:
+      "文案集/wetlab/Alternative_Platform/Alternative_Platform.md",
+    localSrc: "",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/sanger-trace-across-the-backsplice-junction-bsj-of-the-combined-vaccine.avif",
+    alt: "Sanger trace across the back-splice junction of the Combined vaccine.",
+    caption:
+      "The back-splice junction of the Combined vaccine, read across the ligation site.",
     section: "Construction and release",
   },
   roundOneRanking: {
@@ -79,7 +96,8 @@ export const alternativePlatformAssets = {
     localSourcePath:
       "文案集/wetlab/Alternative_Platform/图片和附件/image 1.png",
     localSrc: roundOneRanking,
-    uploadUrl: "",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/round-1-killing-of-k562-by-t-cells-primed-with-each-construct.avif",
     alt: "Round-1 ELISpot rank against K562 killing rank for all 13 constructs.",
     caption:
       "Round-1 ELISpot rank against K562 killing rank for all 13 constructs.",
@@ -87,10 +105,10 @@ export const alternativePlatformAssets = {
   },
   roundOneElispot: {
     fileName: "round-one-elispot.webp",
-    localSourcePath:
-      "文案集/wetlab/Alternative_Platform/图片和附件/image.png",
+    localSourcePath: "文案集/wetlab/Alternative_Platform/图片和附件/image.png",
     localSrc: roundOneElispot,
-    uploadUrl: "",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/round-1-ifn-elispot-wells-for-all-13-single-epitope-constructs.avif",
     alt: "Round-1 IFN-γ ELISpot wells for all 13 single-epitope constructs.",
     caption:
       "Round-1 IFN-γ ELISpot wells for all 13 single-epitope constructs.",
@@ -101,17 +119,18 @@ export const alternativePlatformAssets = {
     localSourcePath:
       "文案集/wetlab/Alternative_Platform/图片和附件/9458b226-2e84-44af-bb78-95b25d378d0c.png",
     localSrc: inVivoResults,
-    uploadUrl: "",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/tumour-growth-curves-for-the-three-groups.avif",
     alt: "Tumour growth curves to day 35 and excised tumours at endpoint.",
     caption: "Tumour growth curves to day 35 and excised tumours at endpoint.",
     section: "In vivo",
   },
   evidenceTiers: {
     fileName: "evidence-tiers.webp",
-    localSourcePath:
-      "文案集/wetlab/Alternative_Platform/图片和附件/证据链.png",
+    localSourcePath: "文案集/wetlab/Alternative_Platform/图片和附件/证据链.png",
     localSrc: evidenceTiers,
-    uploadUrl: "",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/every-claim-on-this-page-placed-in-one-of-six-evidence-tiers-with-the-read-out-that-supports-it.avif",
     alt: "Every claim on this page placed in one of six evidence tiers, with the read-out that supports it.",
     caption:
       "Every claim on this page placed in one of six evidence tiers, with the read-out that supports it.",
@@ -125,6 +144,25 @@ export type AlternativePlatformAssetKey =
 export function getAlternativePlatformImage(
   key: AlternativePlatformAssetKey,
 ): string {
-  const asset = alternativePlatformAssets[key];
+  const asset: AlternativePlatformAssetEntry = alternativePlatformAssets[key];
   return asset.uploadUrl || asset.localSrc || "";
+}
+
+export const alternativePlatformEmbeds = {
+  backbone: {
+    fileName: "inside-the-backbone.html",
+    localSourcePath:
+      "C:/Users/香芋派/xwechat_files/wxid_5ebnlqbau8vc22_50a2/msg/file/2026-10/inside-the-backbone.html",
+  },
+  reuseStudio: {
+    fileName: "reuse-studio-v2.html",
+    localSourcePath:
+      "C:/Users/香芋派/xwechat_files/wxid_5ebnlqbau8vc22_50a2/msg/file/2026-10/reuse-studio-v2.html",
+  },
+} as const;
+
+export function getAlternativePlatformEmbed(
+  key: keyof typeof alternativePlatformEmbeds,
+): string {
+  return `${import.meta.env.BASE_URL}assets/interactive/alternative-platform/${alternativePlatformEmbeds[key].fileName}`;
 }

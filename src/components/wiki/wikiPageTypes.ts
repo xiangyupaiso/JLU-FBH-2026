@@ -82,7 +82,11 @@ export type WikiContentBlock =
       type: "figure";
       src: string;
       alt: string;
+      /** Intrinsic size; reserves the figure's space before the file arrives. */
+      width?: number;
+      height?: number;
       caption?: string;
+      className?: string;
       /** Manuscript-provided figure label, including subfigure suffixes such as 4A. */
       figureLabel?: string;
       /** Keep the shared FIG counter visible when the manuscript has no caption. */

@@ -6,8 +6,6 @@ import {
 } from "../components/wiki/features/wet-lab/AlternativePlatformPanels";
 import { alternativePlatformPage } from "../data/wet-lab/alternativePlatformPage";
 
-const COLLAPSIBLE_SECTIONS = ["judging-criteria", "key-achievements"];
-
 export function AlternativePlatform() {
   return (
     <WikiRoutePage
@@ -16,7 +14,7 @@ export function AlternativePlatform() {
       theme="wet-lab"
       pageClassName="wiki-page--wet-lab"
       hideHeroCopy
-      collapsibleSubheadingSections={COLLAPSIBLE_SECTIONS}
+      documentFlow
       features={alternativePlatformFeatures()}
       inlineRenderer={renderAlternativePlatformCitedText}
     />

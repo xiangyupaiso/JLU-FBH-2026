@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 import * as echarts from "echarts";
+import confidenceData from "../../../../data/drylab/modelConfidenceData.json";
 import heatmapData from "../../../../data/drylab/modelHeatmapData.json";
 import type { EpitopeHeatmapRow } from "../../../../data/project/epitopeStructuralData";
 import { createEpitopeHeatmapOption, createEpitopeVolumeOption } from "../project/EpitopeStructuralValidationChart";
@@ -167,4 +168,74 @@ const volumeOption = createEpitopeVolumeOption();
 
 export function ModelP9Volume() {
   return <ModelChart option={volumeOption} heatmap label="Position-9 buried surface area and fill ratio for 17 candidates. Hover a bar for the mean, standard deviation, fill ratio and pass status." />;
+}
+
+// eslint-disable-next-line react-refresh/only-export-components
+export function createModelConfidenceOption(): echarts.EChartsOption {
+  return {
+    animation: false,
+    grid: { left: 65, right: 24, top: 48, bottom: 85 },
+    legend: { top: 8, selectedMode: false },
+    tooltip: {
+      trigger: "item",
+      confine: true,
+      formatter: (params) => {
+        const row = (Array.isArray(params) ? params[0] : params).data as typeof confidenceData.rows[number];
+        if (!row?.peptide) return "";
+        return `<strong>${echarts.format.encodeHTML(row.peptide)}</strong><br/>Mean ipTM: ${row.iptm.toFixed(3)}<br/>P9 buried area: ${row.buriedArea.toFixed(2)} Å²<br/>P9 fill ratio: ${row.fill.toFixed(2)}%<br/>Status: ${row.passed ? "Pass" : "Rejected"}<br/>` +
+          row.models.map((score, i) => `Model ${i}: ${score.toFixed(3)}`).join("<br/>");
+      },
+    },
+    xAxis: {
+      type: "value", min: 0, max: 130,
+      name: "P9 fill ratio (% of leucine reference)", nameLocation: "middle", nameGap: 40,
+      nameTextStyle: { fontSize: 11 },
+      splitLine: { lineStyle: { color: "#edf1ef" } },
+    },
+    yAxis: {
+      type: "value", min: 0.8, max: 1, interval: 0.05,
+      name: "Mean ipTM", nameLocation: "middle", nameGap: 45,
+      nameTextStyle: { fontSize: 11 },
+      axisLabel: { formatter: (value: number) => value.toFixed(2) },
+      splitLine: { lineStyle: { color: "#edf1ef" } },
+    },
+    series: [true, false].map((passed) => ({
+      name: passed ? "Pass (15)" : "Rejected (2)",
+      type: "scatter",
+      symbol: passed ? "circle" : "diamond",
+      symbolSize: passed ? 11 : 15,
+      itemStyle: { color: passed ? "#207062" : "#b34d3f", borderColor: "#fff", borderWidth: 1.5 },
+      emphasis: { scale: 1.4 },
+      data: confidenceData.rows.filter((row) => row.passed === passed).map((row) => ({ ...row, name: row.peptide, value: [row.fill, row.iptm] })),
+      label: { show: !passed, formatter: "{b}", position: "bottom", color: "#b34d3f", fontSize: 10 },
+      labelLayout: { hideOverlap: true },
+      ...(passed ? {
+        markLine: {
+          silent: true, symbol: ["none", "none"],
+          lineStyle: { type: "dashed", color: "#6e7f79" },
+          label: { formatter: "60% threshold", position: "insideStartTop", fontSize: 10 },
+          data: [{ xAxis: 60 }],
+        },
+        markArea: { silent: true, itemStyle: { color: "rgba(32,112,98,0.06)" }, data: [[{ xAxis: 60 }, { xAxis: 130 }]] },
+      } : {}),
+    })),
+  };
+}
+
+const confidenceOption = createModelConfidenceOption();
+export function ModelConfidenceScatter() {
+  return (
+    <div className="model-chart-panel">
+      <ModelChart option={confidenceOption} label="Figure 15: mean ipTM versus P9 fill ratio for 17 candidates. Fifteen pass and two are rejected. Hover a point for all five model scores." />
+      <details className="model-chart-data">
+        <summary>View data</summary>
+        <div className="wiki-table-wrap">
+          <table className="wiki-table">
+            <thead><tr><th scope="col">Peptide</th><th scope="col">Mean ipTM</th><th scope="col">P9 fill (%)</th><th scope="col">Status</th>{Array.from({ length: 5 }, (_, i) => <th scope="col" key={i}>Model {i}</th>)}</tr></thead>
+            <tbody>{confidenceData.rows.map((row) => <tr key={row.peptide}><th scope="row">{row.peptide}</th><td>{row.iptm.toFixed(3)}</td><td>{row.fill.toFixed(2)}</td><td>{row.passed ? "Pass" : "Rejected"}</td>{row.models.map((score, i) => <td key={i}>{score.toFixed(3)}</td>)}</tr>)}</tbody>
+          </table>
+        </div>
+      </details>
+    </div>
+  );
 }

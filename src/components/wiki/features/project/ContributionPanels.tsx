@@ -120,6 +120,26 @@ function ContributionReferenceList() {
 
 export function contributionFeatures(): Record<string, ReactNode> {
   return {
+    /* The circularity fraction, typeset as a real equation instead of raw ASCII. */
+    "contribution-equation-fcirc": (
+      <div
+        className="contribution-equation"
+        role="math"
+        aria-label="f circ equals 2 to the power of minus Cq div, over 2 to the power of minus Cq div plus 2 to the power of minus Cq conv"
+      >
+        <var>f</var>
+        <sub>circ</sub>
+        <span aria-hidden="true">=</span>
+        <span className="contribution-equation__fraction" aria-hidden="true">
+          <span>
+            2<sup>−Cq<sub>div</sub></sup>
+          </span>
+          <span>
+            2<sup>−Cq<sub>div</sub></sup> + 2<sup>−Cq<sub>conv</sub></sup>
+          </span>
+        </span>
+      </div>
+    ),
     /* Photograph sets whose captions the manuscript writes as one Figure range. */
     "contribution-gallery-virtual-lab": (
       <ContributionFigureGallery keys={["virtualLab1", "virtualLab2"]} />

@@ -384,7 +384,7 @@ export const entrepreneurshipHighlights: EntrepreneurshipHighlight[] = [
     question:
       "Has the team discovered their first potential customers and identified any unmet needs not yet covered by other existing solutions?",
     paragraphs: [
-      "**Yes.** Our team discovered **Jilin Jika Biotechnology Co., Ltd.** and **Jilin Jien Zhihe Biotherapy Technology Co., Ltd.** as our first potential customers — both have signed a letter of intent with us — through a patient-first process: conversations with **Dr. Lei Wang** (Department of Oncology, the First Hospital of Jilin University) narrowed \"TNBC\" into one specific clinical decision point, and we then worked outward to the companies able to carry such a candidate forward. Research hospitals are our validation tier; the patients below are the end beneficiaries.",
+      "**Yes.** Our team discovered **Jilin Jika Biotechnology Co., Ltd.** and **Jilin Jien Zhihe Biotherapy Technology Co., Ltd.** as our first potential customers — both have signed a letter of intent with us — through a patient-first process: conversations with **Dr. Lei Wang** (Department of Oncology, the First Hospital of Jilin University) narrowed \"TNBC\" into one specific clinical decision point, and we then worked outward to the companies able to carry such a candidate forward. Research hospitals are our validation tier; the patients below are the end beneficiaries (see [Primary Customer Segment](#primary-customer-segment)).",
       "The unmet need is equally specific: TNBC patients still carrying **residual invasive disease after neoadjuvant therapy and surgery**, whose recurrence risk does not end when their treatment does. Pembrolizumab, capecitabine and olaparib each help part of this group, but eligibility stays gated by treatment stage and molecular features. Shared-antigen vaccines such as STEMVAC and ITI-5000 fix their antigens without patient-level HLA matching; personalised neoantigen vaccines buy that fit with per-patient manufacture. **In the programmes we could identify, none combines post-surgical risk stratification, TAA and HLA matching, and multi-epitope circRNA design to serve one defined population** — the gap CirCure occupies, as an addition to standard of care, not a replacement.",
     ],
   },
@@ -1273,6 +1273,7 @@ export const entrepreneurshipPage: WikiPageContent = {
         },
         {
           type: "figure",
+          className: "entrepreneurship-figure--portrait",
           src: entrepreneurshipAssets.illustrations.riskInterview,
           alt: "Risk interview with Yongli Jia of Hualan Biological Engineering",
           caption: "Risk interview with Yongli Jia of Hualan Biological Engineering.",

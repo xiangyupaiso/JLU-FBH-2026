@@ -1,26 +1,6 @@
-/**
- * Results page — Part I: Overview, Introduction and Target Discovery.
- *
- * Pure data (WIKI_ARCHITECTURE_SPEC.md §4.1): no React, no JSX. Body copy is
- * the manuscript's own text with its Markdown escapes resolved (`\-` → `-`,
- * `\*` → `*`, `\(` → `(`, …). Two manuscript conventions are preserved verbatim
- * because they are the document's, not ours:
- *
- * - `**Bold**`, including the run-in labels (`**Aim**｜`, `**Design & Readout**｜`,
- *   `**Result**`, `**Interpretation**｜`, `**Limitations and scope**`).
- * - `*italic*`, kept as written and rendered as `<em>` by this page's inline
- *   renderer. `HLA-A*02:01` is not italic: its `*` sits between word characters,
- *   which the renderer's pattern excludes.
- *
- * The fourteen unnumbered supplementary charts of §1 deliberately do not use the
- * reader's `figure` block: that block feeds the `FIG. nn` counter, and these
- * charts were never numbered, so they would push the manuscript's Figure 1–34
- * out of step with the body text that cites them. They are mounted through the
- * page's layout-only `figure-plate` slots instead.
- */
-
+/** Verbatim Results manuscript data; Markdown escapes and typography only are resolved. */
 import type { WikiSection } from "../../components/wiki/wikiPageTypes";
-
+import { resultsFigure } from "./resultsAssets";
 export const resultsSectionsTargetDiscovery: WikiSection[] = [
   {
     id: "results-overview",
@@ -51,7 +31,7 @@ export const resultsSectionsTargetDiscovery: WikiSection[] = [
       {
         type: "prose",
         paragraphs: [
-          "TNBC is characterised by substantial heterogeneity in tumour-antigen expression. This creates two related challenges for vaccine design: a single antigen may not be present on every tumour cell, and an epitope that appears promising computationally may not generate a measurable immune response experimentally. We therefore did not begin by selecting one apparently dominant target. Instead, we first asked whether a complementary antigen panel could cover distinct tumour-cell populations and whether short epitopes from these antigens could be reduced to a tractable set for wet-lab testing.",
+          "TNBC is characterised by substantial heterogeneity in tumour-antigen expression, as exemplified by mesothelin expression (Tchou et al., 2012). This creates two related challenges for vaccine design: a single antigen may not be present on every tumour cell, and an epitope that appears promising computationally may not generate a measurable immune response experimentally. We therefore did not begin by selecting one apparently dominant target. Instead, we first asked whether a complementary antigen panel could cover distinct tumour-cell populations and whether short epitopes from these antigens could be reduced to a tractable set for wet-lab testing.",
           "To address this question, we combined evidence from tissue-level expression, cell-type-resolved expression, patient-level coverage and intact-tissue localisation. We then applied allele-specific peptide prediction and structural filtering to the retained antigens. This sequence of analyses was intended to define a biologically relevant and experimentally manageable starting set, rather than to claim that computational scores alone could establish vaccine immunogenicity.",
         ],
       },
@@ -62,39 +42,59 @@ export const resultsSectionsTargetDiscovery: WikiSection[] = [
     index: "03",
     kicker: "",
     navLabel: "Target discovery",
-    title:
-      "I. Target Discovery: From Four Antigens to Fifteen Testable Epitopes",
+    title: "Target Discovery: From Four Antigens to Fifteen Testable Epitopes",
     summary: "",
     blocks: [
       {
         type: "prose",
         paragraphs: [
-          "The dry lab selected the antigens this vaccine targets and the epitopes carried in its cassette. Four candidate proteins were identified through preliminary clinical-data analysis, Integrated Human Practices consultation and literature review; each was then tested against four independent lines of evidence before being retained. Every overlapping 9-mer of the four canonical sequences was screened for HLA-A*02:01 presentation, and the survivors were checked for loading geometry against the peptide-binding groove. Fifteen peptide sequences left this stage for the wet lab. This section reports the evidence behind those two decisions — which antigens, and which epitopes from them.",
+          "The dry lab selected the antigens this vaccine targets and the epitopes carried in its cassette. Four candidate proteins were identified through a systematic scoring framework evaluating subcellular localization, tumor specificity, prognostic association, and TNBC therapeutic validation depth (§3.1.1), then tested against four independent lines of evidence before being retained. Every overlapping 9-mer of the four canonical sequences was screened for HLA-A*02:01 presentation, and the survivors were checked for loading geometry against the peptide-binding groove. Fifteen peptide sequences left this stage for the wet lab. This section reports the evidence behind those two decisions — which antigens, and which epitopes from them.",
           "Full datasets, parameters and per-model values are on the Model page.",
         ],
       },
-
-      /* ------------------------------------------------------ §1.1 */
       {
         type: "subheading",
         id: "results-1-1",
-        index: "1.1",
-        title: "1.1 Antigen selection",
+        index: "3.1",
+        title: "3.1 Antigen selection",
+        anchorIds: ["results-section-3-1"],
       },
       {
         type: "prose",
         paragraphs: [
-          "Four lines of evidence were applied to the same four candidates — TROP2 (TACSTD2), B7-H4 (VTCN1), Nectin-4 (NECTIN4) and LIV-1 (SLC39A6). Each addresses a different way an antigen choice can fail: a protein may not actually be abundant in TNBC tissue, it may be abundant in the wrong cell compartment, it may be present in too few patients to matter, or it may be mislocalised within the tissue. The four modules below answer those four questions in turn.",
+          "A systematic scoring framework prioritized four candidate proteins—TROP2 (TACSTD2), B7-H4 (VTCN1), Nectin-4 (NECTIN4) and LIV-1 (SLC39A6)—for multi-evidence validation (§3.1.1). Four lines of evidence were then applied to these candidates. Each addresses a different way an antigen choice can fail: a protein may not actually be abundant in TNBC tissue, it may be abundant in the wrong cell compartment, it may be present in too few patients to matter, or it may be mislocalised within the tissue. The four modules below answer those four questions in turn.",
         ],
       },
-
-      /* ---------------------------------------------------- §1.1.1 */
+      {
+        type: "subheading",
+        id: "results-antigen-prioritization",
+        index: "3.1.1",
+        title: "3.1.1 Systematic antigen prioritization",
+        level: 4,
+        anchorIds: ["results-section-3-1-1"],
+      },
+      {
+        type: "prose",
+        paragraphs: [
+          "**Aim:** Narrow a broad set of TNBC-associated antigens to four candidates for multi-evidence validation, using explicit criteria when transcript, protein, clinical, and therapeutic evidence do not align.",
+          '**Design & Readout:** We adopted a scoring framework from Zahraei et al. (2025), evaluating candidates across subcellular localization (L, 0–5 points), tumor specificity (S, 0–2 points), prognostic association (P, 0–1 point), and TNBC therapeutic validation depth (T, 0–2 points), maximum 10 points. The candidate list was compiled from TNBC-focused reviews, clinical trial databases, antibody-drug conjugate pipelines, and input from clinicians and industry partners through Integrated Human Practices. We refined the T dimension to distinguish regulatory approval in TNBC (2 points) from replicated clinical signals across independent cohorts or agents (1 point) versus exploratory trials without efficacy (0 points), recognizing that many antigens have been "targeted" without demonstrating benefit. The top four scoring candidates were selected for the four-tier validation in §3.1.2–3.1.5 (Model: Systematic antigen prioritization).',
+          "**Result:**",
+          "Table 1. Systematic scoring of the four selected antigens.",
+          "Full scoring criteria and complete evaluation table on the Model page.",
+          "**Interpretation:** TROP2 ranked first (score 9) with two FDA-approved antibody-drug conjugates (sacituzumab govitecan, datopotamab deruxtecan) for metastatic TNBC demonstrating survival benefit in randomized trials. B7-H4, Nectin-4, and LIV-1 each scored 8, supported by replicated anti-tumor activity across independent clinical studies or different agents targeting the same antigen. All four were membrane-localized (5 points), tumor-associated rather than tumor-specific (1 point), and linked to adverse survival outcomes in published TNBC cohorts (1 point). The scoring framework prioritized a four-antigen panel with membrane accessibility, favorable tumor-to-normal ratios, prognostic relevance, and clinical validation specifically in TNBC.",
+          "This was a prioritization step, not a validation step. It identified which antigens warranted intensive assessment; the subsequent four tiers determined whether they should be retained. A high-scoring antigen could still fail if its protein was undetectable in tissue (§3.1.2), if expression came mainly from stroma (§3.1.3), if too few patients carried it (§3.1.4), or if membrane localization could not be confirmed (§3.1.5).",
+          "**Limitations and scope:**",
+          "Equal-weight summation assumes that a membrane antigen with strong therapeutic validation (5+1+1+2=9) is preferable to a tumor-specific intracellular antigen without precedent (3+2+1+0=6), which is a design choice. The T score rewards precedent but not mechanism—antibody-drug conjugate success does not guarantee circRNA immunogenicity, addressed by the wet-lab screen in Section 5. P was binary: any statistically significant survival association in a published TNBC cohort scored 1 point, without re-analysis, effect-size weighting, or consistency requirement across datasets. The scoring was performed once, before proteomic and single-cell work began, so it operated as a fixed rule rather than an adaptive one.",
+        ],
+      },
       {
         type: "subheading",
         id: "results-1-1-1",
-        index: "1.1.1",
+        index: "3.1.2",
         title:
-          "1.1.1 Proteomic evidence: protein-level abundance in TNBC tissue",
+          "3.1.2 Proteomic evidence: protein-level abundance in TNBC tissue",
+        level: 4,
+        anchorIds: ["results-section-3-1-2"],
       },
       {
         type: "prose",
@@ -104,18 +104,27 @@ export const resultsSectionsTargetDiscovery: WikiSection[] = [
           "**Result :**",
         ],
       },
-      { type: "feature", key: "results-plate-proteomics" },
+      {
+        type: "feature",
+        key: "results-volcano-024322",
+      },
+      resultsFigure("fig02"),
+      {
+        type: "feature",
+        key: "results-volcano-028102",
+      },
+      resultsFigure("fig04"),
       {
         type: "table",
         caption:
-          "Table 1. Differential protein abundance of the four candidates across two proteomic datasets.",
+          "Table 2. Differential protein abundance of the four candidates across two proteomic datasets.",
         headers: [
-          "Antigen",
-          "Gene",
-          "PXD024322 FC",
-          "FDR",
-          "PXD028102 FC",
-          "FDR",
+          "**Antigen **",
+          "**Gene **",
+          "**PXD024322 FC**",
+          "**FDR**",
+          "**PXD028102 FC**",
+          "**FDR**",
         ],
         rows: [
           ["TROP2", "TACSTD2", "1.14×", "0.0370", "18.25×", "2.14 × 10⁻¹⁵"],
@@ -139,36 +148,36 @@ export const resultsSectionsTargetDiscovery: WikiSection[] = [
           "LIV-1 was not quantified in the paired dataset, so its protein-level support comes from the smaller unpaired effect alone and is the weakest of the four at this tier. Both datasets are re-analyses of public proteomic data rather than measurements we made ourselves, and the cohorts were assembled by their original authors for their own purposes. These are tissue-level measurements averaged over all cell types in a sample, which is what the next module addresses.",
         ],
       },
-
-      /* ---------------------------------------------------- §1.1.2 */
       {
         type: "subheading",
         id: "results-1-1-2",
-        index: "1.1.2",
+        index: "3.1.3",
         title:
-          "1.1.2 Single-cell transcriptomic evidence: expression resolved by cell type",
+          "3.1.3 Single-cell transcriptomic evidence: expression resolved by cell type",
+        level: 4,
+        anchorIds: ["results-section-3-1-3"],
       },
       {
         type: "prose",
         paragraphs: [
-          "**Aim : **Determine whether the tissue-level signal of §1.1.1 comes from malignant cells rather than from stromal or immune cells, and measure how much of the malignant compartment each candidate reaches. A tumour-associated protein expressed mainly on fibroblasts would be a poor vaccine target, however abundant it is in bulk tissue.",
+          "**Aim : **Determine whether the tissue-level signal of §3.1.1 comes from malignant cells rather than from stromal or immune cells, and measure how much of the malignant compartment each candidate reaches. A tumour-associated protein expressed mainly on fibroblasts would be a poor vaccine target, however abundant it is in bulk tissue.",
           "**Design & Readout : **The TNBC subset of GSE176078 was processed to 39,324 QC-passed cells across 10 patients. Differential expression compared the malignant compartment against pooled immune and stromal cells as pseudobulk libraries within each patient, on the 8 patients carrying both; detection rate is the proportion of cells with a raw count of at least 1, computed on pooled cells and reported descriptively (Model: Single-cell dataset, processing, and statistical methods).",
           "**Result :**",
         ],
       },
-      { type: "feature", key: "results-plate-singlecell-umap" },
+      resultsFigure("fig05"),
       {
         type: "table",
         caption:
-          "Table 2. Malignant-cell enrichment and detection rates for the four candidate genes.",
+          "Table 3. Malignant-cell enrichment and detection rates for the four candidate genes.",
         headers: [
-          "Gene",
-          "Antigen",
-          "Malignant vs non-malignant log₂FC",
-          "FDR",
-          "Malignant",
-          "Immune",
-          "CAF",
+          "**Gene **",
+          "**Antigen**",
+          "**Malignant vs non-malignant log₂FC **",
+          "**FDR**",
+          "**Malignant **",
+          "**Immune **",
+          "**CAF **",
         ],
         rows: [
           ["TACSTD2", "TROP2", "4.074", "8.37 × 10⁻⁵", "70.4%", "4.0%", "5.4%"],
@@ -185,29 +194,29 @@ export const resultsSectionsTargetDiscovery: WikiSection[] = [
           ["SLC39A6", "LIV-1", "0.853", "0.0196", "39.4%", "8.5%", "20.7%"],
         ],
       },
-      { type: "feature", key: "results-plate-singlecell-detection" },
+      resultsFigure("fig06"),
       {
         type: "prose",
         paragraphs: [
           "**Interpretation : **All four genes are enriched in malignant cells, and three of them — TACSTD2, NECTIN4, VTCN1 — are close to absent from the immune and stromal compartments, with detection rates at or below 5.4%. SLC39A6 is the exception: its malignant enrichment is real but an order of magnitude smaller (log₂FC 0.853), and it is the only candidate with appreciable stromal expression at 20.7% in CAFs.",
-          "The more consequential number is the overlap between the four. Across the dataset, 81.4% of malignant cells express at least one candidate gene (52.5–97.8% between patients), but only 7.3% express all four, and the pairwise Jaccard indices between gene-positive populations run 0.221–0.438. The four antigens therefore mark largely different malignant cells rather than the same ones: TACSTD2 has the broadest reach, while NECTIN4 and VTCN1 label additional populations that TACSTD2 misses. This is the measured basis for carrying more than one antigen — a single-antigen vaccine would leave a substantial fraction of the malignant compartment unaddressed — and it is the evidence behind the equal-representation rule applied in §3.4.",
+          "The more consequential number is the overlap between the four. Across the dataset, 81.4% of malignant cells express at least one candidate gene (52.5–97.8% between patients), but only 7.3% express all four, and the pairwise Jaccard indices between gene-positive populations run 0.221–0.438. The four antigens therefore mark largely different malignant cells rather than the same ones: TACSTD2 has the broadest reach, while NECTIN4 and VTCN1 label additional populations that TACSTD2 misses. This is the measured basis for carrying more than one antigen — a single-antigen vaccine would leave a substantial fraction of the malignant compartment unaddressed — and it is the evidence behind the equal-representation rule applied in §5.4.",
           "**Limitations and scope :**",
-          "Detection rate as measured here is a lower bound. Single-cell data are sparse, so a gene scored as undetected in a cell may simply have been missed at the achieved sequencing depth, and the detection rates are sensitive to depth and dropout in a way the fold changes are not. The differential test rests on 8 patients, which is a small pseudobulk sample, although the direction of enrichment held for all four genes under an alternative sample-label assignment and under treatment-status subsetting. These are transcripts, not protein — the correspondence to surface protein is addressed by the two modules that follow.",
+          "Detection rate as measured here is a lower bound. Single-cell data are sparse, so a gene scored as undetected in a cell may simply have been missed at the achieved sequencing depth, and the detection rates are sensitive to depth and dropout in a way the fold changes are not. The differential test rests on 8 patients, which is a small pseudobulk sample, although the direction of enrichment held for all four genes under an alternative sample-label assignment and under treatment-status subsetting. These are transcripts, not protein; protein-level abundance and intact-tissue localisation are addressed in §3.1.1 and §3.1.4, respectively.",
         ],
       },
-
-      /* ---------------------------------------------------- §1.1.3 */
       {
         type: "subheading",
         id: "results-1-1-3",
-        index: "1.1.3",
+        index: "3.1.4",
         title:
-          "1.1.3 cBioPortal: patient-level coverage of the four-antigen panel",
+          "3.1.4 cBioPortal: patient-level coverage of the four-antigen panel",
+        level: 4,
+        anchorIds: ["results-section-3-1-4"],
       },
       {
         type: "prose",
         paragraphs: [
-          "**Aim : **Count how many TNBC patients each antigen would be a candidate target in, and how much the four together add over the best single one. §1.1.2 asks which cells within a tumour; this module asks which patients across a cohort.",
+          "**Aim : **Count how many TNBC patients each antigen would be a candidate target in, and how much the four together add over the best single one. §3.1.2 asks which cells within a tumour; this module asks which patients across a cohort.",
           "**Design & Readout : **The TNBC cases of the TCGA Breast Invasive Carcinoma PanCancer Atlas cohort, 115 in total, were queried in cBioPortal under one predefined gene-level rule applied identically to all four genes: relatively elevated mRNA expression or high-level copy-number amplification (Model: TCGA patient-coverage analysis).",
           "**Result :**",
         ],
@@ -215,32 +224,32 @@ export const resultsSectionsTargetDiscovery: WikiSection[] = [
       {
         type: "table",
         caption:
-          "Table 3. Patient-level coverage under a single fixed gene-level rule, across 115 TNBC cases.",
-        headers: ["Antigen", "Gene", "Patients meeting the rule"],
+          "Table 4. Patient-level coverage under a single fixed gene-level rule, across 115 TNBC cases.",
+        headers: ["**Antigen**", "**Gene **", "**Patients meeting the rule **"],
         rows: [
           ["Nectin-4", "NECTIN4", "79%"],
           ["TROP2", "TACSTD2", "38%"],
           ["B7-H4", "VTCN1", "31%"],
           ["LIV-1", "SLC39A6", "4%"],
-          ["At least one of the four", "—", "101 / 115 (88%)"],
+          ["At least one of the four", "—", "101 / 115  (88%)"],
         ],
       },
       {
         type: "prose",
         paragraphs: [
-          "**Interpretation : **Nectin-4 alone meets the rule in 79% of cases; the union of all four reaches 88%, covering 10 additional patients under the same rule. Read together with the partially overlapping detection patterns of §1.1.2, the four antigens extend coverage both across cells within a tumour and across patients in a cohort. That combination is why all four were retained rather than narrowing to the single highest-coverage antigen.",
+          "**Interpretation : **Nectin-4 alone meets the rule in 79% of cases; the union of all four reaches 88%, covering 10 additional patients under the same rule. Read together with the partially overlapping detection patterns of §3.1.2, the four antigens extend coverage both across cells within a tumour and across patients in a cohort. That combination is why all four were retained rather than narrowing to the single highest-coverage antigen.",
           "**Limitations and scope :**",
-          "Two cautions on how these percentages may be read. First, this is a transcript-and-copy-number rule, not a protein measurement, and mRNA abundance does not fully predict protein abundance in breast tumours — the 38% recorded here for TACSTD2 is therefore not comparable with the far higher protein-positivity rates reported in clinical TNBC staining studies (§1.1.4), which measure a different quantity in a different cohort. LIV-1 meets this rule in only 4% of cases, so its retention rests on the single-cell and proteomic evidence rather than on this module.",
+          "Two cautions on how these percentages may be read. First, this is a transcript-and-copy-number rule, not a protein measurement, and mRNA abundance does not fully predict protein abundance in breast tumours — the 38% recorded here for TACSTD2 is therefore not comparable with the far higher protein-positivity rates reported in clinical TNBC staining studies (§3.1.4), which measure a different quantity in a different cohort. LIV-1 meets this rule in only 4% of cases, so its retention rests on the single-cell and proteomic evidence rather than on this module.",
           "The four-antigen panel achieves 88% patient-level coverage across 115 TNBC cases under the defined gene-level rule.",
         ],
       },
-
-      /* ---------------------------------------------------- §1.1.4 */
       {
         type: "subheading",
         id: "results-1-1-4",
-        index: "1.1.4",
-        title: "1.1.4 Immunohistochemistry: the candidates in intact tissue",
+        index: "3.1.5",
+        title: "3.1.5 Immunohistochemistry: the candidates in intact tissue",
+        level: 4,
+        anchorIds: ["results-section-3-1-5"],
       },
       {
         type: "prose",
@@ -253,8 +262,8 @@ export const resultsSectionsTargetDiscovery: WikiSection[] = [
       {
         type: "table",
         caption:
-          "Table 4. Published tissue-level evidence for the four candidates.",
-        headers: ["Antigen", "Reported pattern in TNBC tissue"],
+          "Table 5. Published tissue-level evidence for the four candidates.",
+        headers: ["**Antigen**", "**Reported pattern in TNBC tissue **"],
         rows: [
           [
             "TROP2",
@@ -274,35 +283,37 @@ export const resultsSectionsTargetDiscovery: WikiSection[] = [
           ],
         ],
       },
-      { type: "feature", key: "results-plate-ihc" },
+      resultsFigure("fig07"),
+      resultsFigure("fig08"),
+      resultsFigure("fig09"),
+      resultsFigure("fig10"),
       {
         type: "prose",
         paragraphs: [
-          "**Interpretation : **Tissue-level protein expression is documented for all four candidates, and the four patterns differ from one another: TROP2 broad but heterogeneous, B7-H4 concentrated in tumour epithelial regions, Nectin-4 with clear membrane localisation, LIV-1 associated with stronger staining in high-grade and residual disease. Four partially independent distributions, consistent with the partially overlapping single-cell detection of §1.1.2 and supporting the four antigens as a complementary set rather than four interchangeable options.",
-          "This module is a literature review, not a measurement of ours, and it is the only one of the four that is. The cited studies differ in cohort, antibody, scoring rule and positivity cut-off, so their positivity rates are not comparable with one another and not comparable with the percentages in §1.1.3 — Jeon et al. report 97.1% of TNBC cases positive for TROP2 under a >10%-of-tumour-cells criterion, which is a different measurement on a different cohort from the 38% recorded under the cBioPortal rule. Quoting the two side by side without that distinction would misrepresent both.",
+          "**Interpretation : **Tissue-level protein expression is documented for all four candidates, and the four patterns differ from one another: TROP2 broad but heterogeneous, B7-H4 concentrated in tumour epithelial regions, Nectin-4 with clear membrane localisation, LIV-1 associated with stronger staining in high-grade and residual disease. Four partially independent distributions, consistent with the partially overlapping single-cell detection of §3.1.2 and supporting the four antigens as a complementary set rather than four interchangeable options.",
+          "This module is a literature review, not a measurement of ours, and it is the only one of the four that is. The cited studies differ in cohort, antibody, scoring rule and positivity cut-off, so their positivity rates are not comparable with one another and not comparable with the percentages in §3.1.3 — Jeon et al. report 97.1% of TNBC cases positive for TROP2 under a >10%-of-tumour-cells criterion, which is a different measurement on a different cohort from the 38% recorded under the cBioPortal rule. Quoting the two side by side without that distinction would misrepresent both.",
         ],
       },
-
-      /* ---------------------------------------------------- §1.1.5 */
       {
         type: "subheading",
         id: "results-1-1-5",
-        index: "1.1.5",
-        title: "1.1.5 Four antigens retained",
+        index: "3.1.6",
+        title: "3.1.6 Four antigens retained",
+        level: 4,
+        anchorIds: ["results-section-3-1-6"],
       },
       {
         type: "prose",
         paragraphs: [
-          "Every candidate cleared every tier: detectable and elevated as protein in TNBC tissue (§1.1.1), enriched in malignant rather than stromal or immune cells (§1.1.2), present in a measurable share of patients under a fixed rule (§1.1.3), and documented in tissue with membrane-associated localisation (§1.1.4). The decision facing us was therefore not which antigen to choose but whether to narrow the panel at all, and two measurements argued against narrowing: the pairwise Jaccard indices of 0.221–0.438 between gene-positive malignant populations, and the rise in patient coverage from 79% for the best single antigen to 88% for the union. The four antigens address different cells and different patients, so all four canonical sequences were carried into epitope prediction.",
+          "Every candidate cleared every tier: detectable and elevated as protein in TNBC tissue (§3.1.1), enriched in malignant rather than stromal or immune cells (§3.1.2), present in a measurable share of patients under a fixed rule (§3.1.3), and documented in tissue with membrane-associated localisation (§3.1.4). The decision facing us was therefore not which antigen to choose but whether to narrow the panel at all, and two measurements argued against narrowing: the pairwise Jaccard indices of 0.221–0.438 between gene-positive malignant populations, and the rise in patient coverage from 79% for the best single antigen to 88% for the union. The four antigens address different cells and different patients, so all four canonical sequences were carried into epitope prediction.",
         ],
       },
-
-      /* ------------------------------------------------------ §1.2 */
       {
         type: "subheading",
         id: "results-1-2",
-        index: "1.2",
-        title: "1.2 Epitope screening",
+        index: "3.2",
+        title: "3.2 Epitope screening",
+        anchorIds: ["results-section-3-2"],
       },
       {
         type: "prose",
@@ -310,32 +321,32 @@ export const resultsSectionsTargetDiscovery: WikiSection[] = [
           "With four antigens retained, the question became which short peptides from them to put in the cassette. Two filters were applied in series: a sequence-based prediction of HLA-A*02:01 presentation, and a structural check that each surviving peptide can physically be loaded into the binding groove. The first reduces the candidate space; the second removes sequences that score well numerically but cannot be presented.",
         ],
       },
-
-      /* ---------------------------------------------------- §1.2.1 */
       {
         type: "subheading",
         id: "results-1-2-1",
-        index: "1.2.1",
-        title: "1.2.1 IEDB prediction: 1,838 peptides reduced to 17",
+        index: "3.2.1",
+        title: "3.2.1 IEDB prediction: 1,838 peptides reduced to 17",
+        level: 4,
+        anchorIds: ["results-section-3-2-1"],
       },
       {
         type: "prose",
         paragraphs: [
-          "**Aim : **mall enough to test, keeping those predicted both to bind HLA-A*02:01 and to be immunogenic once bound.",
+          "**Aim : **Enumerate every possible 9-mer epitope from the four antigens and reduce them to a set small enough to test, keeping those predicted both to bind HLA-A*02:01 and to be immunogenic once bound.",
           "**Design & Readout : **All overlapping 9-mers of the four UniProt canonical sequences were screened through the IEDB T Cell Epitope Prediction Class I suite against HLA-A*02:01, using NetMHCpan 4.1 EL for binding and elution and NetMHCpan 4.1 BA inside the processing model for predicted IC₅₀. Two numerical gates were applied in order — predicted IC₅₀ < 500 nM, then IEDB immunogenicity score > 0 — followed by a review of each survivor against its position in the source protein (Model: IEDB inputs, parameters, and filtering rules).",
           "**Result :**",
         ],
       },
       {
         type: "table",
-        caption: "Table 5. The staged epitope screen, by source antigen.",
+        caption: "Table 6. The staged epitope screen, by source antigen.",
         headers: [
-          "Screening stage",
-          "TROP2",
-          "B7-H4",
-          "Nectin-4",
-          "LIV-1",
-          "Total / 总计",
+          "**Screening stage**",
+          "**TROP2**",
+          "**B7-H4**",
+          "**Nectin-4**",
+          "**LIV-1**",
+          "**Total **",
         ],
         rows: [
           ["All overlapping 9-mers", "315", "274", "502", "747", "1,838"],
@@ -350,41 +361,44 @@ export const resultsSectionsTargetDiscovery: WikiSection[] = [
           "Topology review is the one stage that is not a numerical threshold, and it removed the largest proportion of candidates — 51 down to 17. Of the 51 peptides that passed both numerical gates, 34 were discarded because they derive from a signal peptide or a transmembrane segment of the source protein. Such peptides frequently score well: hydrophobic stretches fit the HLA-A*02:01 groove preferences, and the predictor has no information about where in the protein the sequence came from. But a signal peptide is cleaved before the mature protein is trafficked, and transmembrane segments are embedded in the lipid bilayer, so neither is reliably available to the cytosolic processing pathway that supplies MHC-I. The effect is severe for some antigens: of B7-H4's 10 numerically qualified peptides, 6 lie in the signal peptide and 2 in the transmembrane region, leaving only 2.",
           "**Interpretation : **The screen reduced the candidate space by two orders of magnitude and left 17 peptides distributed across all four antigens, so no antigen was lost at this stage. The uneven survival — 2 from B7-H4 against 6 from Nectin-4 — is a property of where the predicted binders sit in each protein rather than of how strongly they were predicted to bind, and it set the per-antigen ceiling that constrained cassette composition later.",
           "**Limitations and scope : **",
-          "These are predictions from sequence, and the whole of §1.2 rests on a single allele. HLA-A*02:01 was chosen as the first population-relevant allele for method development; it is the restriction of every epitope in this project, and it bounds the population this vaccine could address regardless of how many antigens are included. Extending the same workflow across additional alleles is the clearest next step for this stage. Within the chosen allele, peptide length was fixed at 9 amino acids, which is the canonical preference but excludes the 8-, 10- and 11-mers that HLA-A*02:01 also presents. The topology review is a binary call made from annotated protein features, not a measurement of processing — a peptide classified as transmembrane-derived is excluded on reasoning about its availability, not on evidence that it fails to be presented. The 34 peptides removed at this stage were never tested, so the rule has not itself been checked experimentally.",
+          "These are predictions from sequence, and the whole of §3.2 rests on a single allele. HLA-A*02:01 was chosen as the first population-relevant allele for method development; it is the restriction of every epitope in this project, and it bounds the population this vaccine could address regardless of how many antigens are included. Extending the same workflow across additional alleles is the clearest next step for this stage. Within the chosen allele, peptide length was fixed at 9 amino acids, which is the canonical preference but excludes the 8-, 10- and 11-mers that HLA-A*02:01 also presents. The topology review is a binary call made from annotated protein features, not a measurement of processing — a peptide classified as transmembrane-derived is excluded on reasoning about its availability, not on evidence that it fails to be presented. The 34 peptides removed at this stage were never tested, so the rule has not itself been checked experimentally.",
         ],
       },
-
-      /* ---------------------------------------------------- §1.2.2 */
       {
         type: "subheading",
         id: "results-1-2-2",
-        index: "1.2.2",
+        index: "3.2.2",
         title:
-          "1.2.2 Structural validation: loading geometry of the 17 candidates",
+          "3.2.2 Structural validation: loading geometry of the 17 candidates",
+        level: 4,
+        anchorIds: ["results-section-3-2-2"],
       },
       {
         type: "prose",
         paragraphs: [
           "**Aim : **Answer one question for each of the 17 survivors: can this peptide actually be loaded into the HLA-A*02:01 groove in the correct geometry? A predicted affinity is a number about a sequence; it does not show that the two anchor residues reach their pockets or that the conserved contacts holding the peptide in place are formed.",
-          "**Design & Readout : **Each of the 17 peptides was co-folded with HLA-A*02:01 in 5 independent models. Three measures were taken on every model and a verdict required to be identical across all five: side-chain burial at positions 2 and 9 (the B and F anchor pockets) at ≥ 90%; at least 10 of the 11 conserved hydrogen bonds present; and a position-9 side-chain fill ratio ≥ 60%, i.e. ≥ 84 Å², which is 60% of the packed volume of a leucine anchor. Interface steric clashes were checked and TCR-facing surface area recorded (Model: Structural validation of the 17 candidates).",
+          "**Design & Readout : **Each of the 17 peptides was co-folded with HLA-A*02:01 in 5 independent models. Three measures were taken on every model and a verdict required to be identical across all five: side-chain burial at positions 2 and 9 (the B and F anchor pockets) at ≥ 90%; at least 10 of the 11 conserved hydrogen bonds present; and a position-9 side-chain fill ratio ≥ 60%, i.e. ≥ 84 Å², which is 60% of the 140 Å² reference buried side-chain area for a leucine anchor. Interface steric clashes were checked and TCR-facing surface area recorded (Model: Structural validation of the 17 candidates).",
           "The fill-ratio criterion is the one that does work the burial percentage cannot. Burial is saturated — almost every peptide reads 99–100% at position 9, because the residue is enclosed whatever its size. Absolute buried volume is not: a glycine at position 9 contributes 0 Å², an alanine 60 Å², a valine ~114 Å², a leucine or isoleucine ~140 Å². A near-100% burial of a small residue means a groove pocket that is enclosed but not filled, which the percentage alone conceals.",
           "**Result : **",
           "Fifteen of the 17 candidates passed. The two rejections were both at position 9: FLAEASVRG ends in glycine, which has no side chain and leaves the F pocket empty (0 Å², fill ratio 0%), and HILHVSFLA ends in alanine, filling 43% of the reference volume against the 60% threshold. Both would have been passed by the burial criterion alone — FLAEASVRG's burial at position 9 is undefined for lack of a side chain, and HILHVSFLA reads 99.4%.",
         ],
       },
-      { type: "feature", key: "results-plate-structural" },
+      {
+        type: "feature",
+        key: "results-plate-structural",
+      },
       {
         type: "table",
         caption:
-          "Table 6. The 15 peptides delivered to the wet lab, grouped by source antigen, with their prediction and structural values.",
+          "Table 7. The 15 peptides delivered to the wet lab, grouped by source antigen, with their prediction and structural values.",
         headers: [
-          "Antigen",
-          "Peptide",
-          "Predicted IC₅₀ (nM)",
-          "EL percentile",
-          "Immunogenicity",
-          "P9 fill (Å² / %)",
-          "TCR face (Å²)",
+          "**Antigen**",
+          "**Peptide**",
+          "**Predicted IC₅₀ (nM)**",
+          "**EL percentile **",
+          "**Immunogenicity **",
+          "**P9 fill (Å² / %)**",
+          "**TCR face (Å²)**",
         ],
         rows: [
           [
@@ -527,12 +541,11 @@ export const resultsSectionsTargetDiscovery: WikiSection[] = [
       {
         type: "prose",
         paragraphs: [
-          "**Interpretation : **All 15 passing peptides formed the conserved hydrogen-bond network completely or near-completely and filled both anchor pockets, with the five models agreeing on the verdict in every case. The two rejections demonstrate the value of the tier: both cleared the numerical gates of §1.2.1 and would have entered testing on sequence evidence alone, and both fail for the same structural reason that no sequence-based score captures.",
+          "**Interpretation : **All 15 passing peptides formed the conserved hydrogen-bond network completely or near-completely and filled both anchor pockets, with the five models agreeing on the verdict in every case. The two rejections demonstrate the value of the tier: both cleared the numerical gates of §3.2.1 and would have entered testing on sequence evidence alone, and both fail for the same structural reason that no sequence-based score captures.",
           "The spread within the passing set is also worth recording. Predicted IC₅₀ ranges from 12.55 to 439.99 nM, a 35-fold span, and the TCR-facing surface from 147 to 424 Å², nearly threefold. These peptides are not equivalent, and nothing in this tier ranks them — the structural criteria are pass/fail gates on whether loading is geometrically correct, not a scale of expected immunogenicity.",
           "**Limitations and scope :**",
           "What this tier establishes is loading geometry, and only that. It does not show that a peptide is generated by the proteasome, transported by TAP, loaded in vivo, or recognised by any T-cell receptor; a peptide can be geometrically loadable and immunologically silent. The models are predictions, not structures — no crystallography or multimer binding was performed, and agreement across five models measures the reproducibility of the prediction rather than its accuracy.",
-          "The 60% fill threshold is a boundary we derived rather than one taken from a validated standard. Its basis is that the C-terminal anchor motif of HLA-A*02:01 is valine and leucine with isoleucine and methionine tolerated (Falk et al., 1991), and that leucine and isoleucine in this dataset pack 139.5–143.8 Å², giving the 140 Å² reference. It is a reasoned cut-off, not a calibrated one.",
-          "Most consequentially, the two rejected peptides were never tested. Because FLAEASVRG and HILHVSFLA did not go to the wet lab, this tier's central claim — that a peptide failing the fill criterion would not have worked — has no experimental support in either direction. The structural filter remains unvalidated against measurement.",
+          "The 60% fill threshold is a boundary we derived rather than one taken from a validated standard. Its basis is that the C-terminal anchor motif of HLA-A*02:01 is valine and leucine with isoleucine and methionine tolerated **(Falk et al., 1991)**, and that leucine and isoleucine in this dataset pack 139.5–143.8 Å², giving the 140 Å² reference. It is a reasoned cut-off, not a calibrated one.",
         ],
       },
     ],

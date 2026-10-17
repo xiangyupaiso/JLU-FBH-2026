@@ -3,34 +3,9 @@
    ----------------------------------------------------------------------------
    Shared by every page that embeds a PDF (see WIKI_ARCHITECTURE_SPEC.md §4.6).
 
-   Why a DEEP TINTED BAR and not a caption line
-     A document block sits in the same prose column as the figures, so it was
-     first built out of caption-sized grey type — caption, title, links, all
-     centred. On the Design page that block follows `FIG. 09 In vivo study
-     design.` and the team read it as *a second caption for the figure above it*.
-     A document is an object, not an illustration caption, so it now wears an
-     object's marks: the module's own deep ink as its surface, a hard edge and a
-     real control. Surface colour is the fastest way to say "this is a different
-     kind of thing", and it is the ONLY device allowed here.
-
-   Why so little on it
-     The card carries exactly one line of text: the caption the manuscript
-     already gives for this embed. No invented title, subtitle, file name or
-     "PDF" tile — the earlier version said the same thing three times in words
-     nobody wrote, and the bar read like a generated placeholder rather than a
-     piece of the manuscript.
-
-   Why no ornament at all
-     No icon, no file-type badge, no rail along the top edge, no endpoint dot.
-     The team's own rules ban AI eyebrows and mechanical small print (铁律 4) and
-     generative ornaments — top rules, dots, dashed underlines (铁律 3). The card
-     is a dark bar, one sentence and one control; anything else drawn on it is
-     noise, and readers recognise it as such immediately.
-
-   Colour comes from `--route-*` only, so Project / Wet Lab / Dry Lab /
-   Engagement each get their own tint with no rule per page:
-     --route-heading-ink   the deep ink each module already uses for H2
-     --route-main          the control's fill
+   A bounded paper surface and a real control distinguish a document from an
+   illustration caption. The light wash follows each route's existing palette;
+   the manuscript's caption remains the only label, without added ornaments.
 
    Specificity note (do not "simplify" these selectors)
      Every rule is scoped `.wiki-page .wiki-document .x` — three classes deep on
@@ -39,15 +14,17 @@
      and every <strong>, and `.wiki-prose figure` (0,1,1) forces
      `display:flex / align-items:center / text-align:center`. A two-class
      selector would leave the card's ink a coin flip on bundle order. The card is
-     a dark surface, so a wrong ink means white-on-white.
+     a reading surface, so both caption and control need explicit ink colours.
    ========================================================================== */
 
 /* 1. Card tokens + the figure shell ---------------------------------------- */
 
 .wiki-page .wiki-document {
   --doc-deep: var(--route-heading-ink, #14354c);
-  --doc-deep-2: color-mix(in srgb, var(--doc-deep) 72%, #000);
-  --doc-on: #ffffff;
+  --doc-paper: #fffdf7;
+  --doc-wash: color-mix(in srgb, var(--route-soft, #b4dff0) 30%, var(--doc-paper));
+  --doc-rule: color-mix(in srgb, var(--doc-deep) 18%, transparent);
+  --doc-on: var(--doc-deep);
   --doc-radius: 12px;
 
   /* Undo `.wiki-prose figure` (flex column, centred, centered text) and keep
@@ -72,15 +49,13 @@
   gap: 18px;
   padding: 20px 20px 18px;
   border-radius: var(--doc-radius);
-  background: linear-gradient(
-    135deg,
-    color-mix(in srgb, var(--doc-deep) 84%, #ffffff) 0%,
-    var(--doc-deep) 52%,
-    var(--doc-deep-2) 100%
-  );
+  border: 1px solid var(--doc-rule);
+  background:
+    radial-gradient(ellipse at 0 0, var(--doc-wash), transparent 78%),
+    var(--doc-paper);
   box-shadow:
-    0 2px 4px color-mix(in srgb, var(--doc-deep) 18%, transparent),
-    0 16px 38px color-mix(in srgb, var(--doc-deep) 22%, transparent);
+    0 1px 3px color-mix(in srgb, var(--doc-deep) 3%, transparent),
+    0 7px 20px color-mix(in srgb, var(--doc-deep) 5%, transparent);
   color: var(--doc-on);
   text-align: left;
 }
@@ -106,11 +81,10 @@
   align-items: center;
   gap: 8px;
   padding: 9px 16px;
-  border: 0;
-  border-radius: 999px;
-  background: var(--route-main, #b4dff0);
-  box-shadow: 0 8px 18px color-mix(in srgb, #000 24%, transparent);
-  color: var(--doc-deep-2);
+  border: 1px solid color-mix(in srgb, var(--doc-deep) 24%, transparent);
+  border-radius: 7px;
+  background: var(--doc-wash);
+  color: var(--doc-on);
   cursor: pointer;
   font-family: var(--font-body, inherit);
   font-size: 13.5px;
@@ -118,15 +92,21 @@
   line-height: 1.1;
   transition:
     background-color 160ms cubic-bezier(0.22, 1, 0.36, 1),
-    color 160ms cubic-bezier(0.22, 1, 0.36, 1);
+    border-color 160ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 160ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .wiki-page .wiki-document .wiki-document__toggle:hover {
-  background: color-mix(in srgb, var(--route-main, #b4dff0) 82%, #ffffff);
+  background: color-mix(in srgb, var(--route-soft, #b4dff0) 52%, var(--doc-paper));
+  border-color: color-mix(in srgb, var(--doc-deep) 40%, transparent);
+}
+
+.wiki-page .wiki-document .wiki-document__toggle:active {
+  transform: scale(0.98);
 }
 
 .wiki-page .wiki-document .wiki-document__toggle:focus-visible {
-  outline: 2px solid var(--doc-on);
+  outline: 2px solid var(--doc-deep);
   outline-offset: 2px;
 }
 
@@ -156,15 +136,17 @@
 .wiki-page .wiki-document .wiki-document__panel {
   padding: 12px;
   border-radius: 0 0 var(--doc-radius) var(--doc-radius);
-  background: var(--doc-deep-2);
-  box-shadow: 0 16px 38px color-mix(in srgb, var(--doc-deep) 22%, transparent);
+  border: 1px solid var(--doc-rule);
+  border-top: 0;
+  background: color-mix(in srgb, var(--route-soft, #b4dff0) 10%, var(--doc-paper));
+  box-shadow: 0 7px 20px color-mix(in srgb, var(--doc-deep) 5%, transparent);
 }
 
 .wiki-page .wiki-document .wiki-document__description,
 .wiki-page .wiki-document .wiki-document__actions,
 .wiki-page .wiki-document .wiki-document__fallback {
   margin: 0 4px 12px;
-  color: color-mix(in srgb, var(--doc-on) 88%, transparent);
+  color: color-mix(in srgb, var(--doc-on) 84%, var(--doc-paper));
   font-size: 14px;
   line-height: 1.55;
 }
@@ -174,7 +156,7 @@
 }
 
 .wiki-page .wiki-document .wiki-document__actions a {
-  color: var(--doc-on);
+  color: var(--route-subheading-ink, var(--doc-on));
   font-weight: 700;
   text-decoration: underline;
   text-underline-offset: 3px;
@@ -192,7 +174,7 @@
   display: block;
   width: 100%;
   height: clamp(420px, 82vh, 920px);
-  border: 0;
+  border: 1px solid var(--doc-rule);
   border-radius: 8px;
   background: #fff;
 }
@@ -233,17 +215,19 @@
   max-height: calc(100dvh - 40px);
   margin: auto;
   padding: 0;
-  border: 0;
+  border: 1px solid var(--doc-rule);
   border-radius: var(--doc-radius);
-  background: var(--doc-deep-2);
-  box-shadow: 0 24px 90px rgb(0 0 0 / 0.3);
+  background: var(--doc-paper);
+  box-shadow:
+    0 2px 6px color-mix(in srgb, var(--doc-deep) 4%, transparent),
+    0 14px 40px color-mix(in srgb, var(--doc-deep) 10%, transparent);
 }
 
 .wiki-page .wiki-document--modal:not([open]) {
   display: none;
 }
 .wiki-document--modal::backdrop {
-  background: rgb(12 22 16 / 0.72);
+  background: rgb(42 39 32 / 0.38);
 }
 .wiki-page .wiki-document--modal .wiki-document__card {
   border-radius: var(--doc-radius) var(--doc-radius) 0 0;

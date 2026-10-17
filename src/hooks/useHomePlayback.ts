@@ -91,7 +91,7 @@ const BEATS: readonly Beat[] = [
   { chapter: 12, progress: 0.98, travel: 7, hold: 3 },
 ];
 
-const DEFAULT_RATE = 1.2;
+const DEFAULT_RATE = 1.5;
 
 type View = {
   mode: HomePlaybackMode;

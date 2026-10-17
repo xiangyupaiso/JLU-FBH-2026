@@ -8,6 +8,14 @@ import {
 } from "react";
 import { createPortal } from "react-dom";
 import {
+  BookOpen,
+  ChevronLeft,
+  ChevronRight,
+  Expand,
+  Shrink,
+  X,
+} from "lucide-react";
+import {
   experimentProtocolImage,
   experimentProtocolLocalImage,
   type ExperimentProtocolPair,
@@ -57,7 +65,7 @@ export function WikiProtocolHoverCard({
   };
   const currentPage = activeTab === "flow" ? pair.flowPage : pair.inventoryPage;
   const currentLabel =
-    activeTab === "flow" ? "Workflow 流程图" : "Materials 物料设备清单";
+    activeTab === "flow" ? "Workflow" : "Materials & equipment";
 
   return createPortal(
     <div
@@ -85,7 +93,7 @@ export function WikiProtocolHoverCard({
           }}
           disabled={typeof pair.flowPage !== "number"}
         >
-          P{pair.flowPage ?? "—"} · 流程图
+          P{pair.flowPage ?? "—"} · Workflow
         </button>
         <button
           type="button"
@@ -96,7 +104,7 @@ export function WikiProtocolHoverCard({
           }}
           disabled={typeof pair.inventoryPage !== "number"}
         >
-          P{pair.inventoryPage ?? "—"} · 物料清单
+          P{pair.inventoryPage ?? "—"} · Materials
         </button>
       </div>
 
@@ -104,7 +112,8 @@ export function WikiProtocolHoverCard({
         type="button"
         className="wiki-protocol-popover__image-wrap"
         onClick={() => onOpenModal(pair, activeTab)}
-        title="点击打开高清大图"
+        title="Open full-size image"
+        aria-label={`Open ${pair.title}, ${currentLabel}`}
         disabled={typeof currentPage !== "number"}
       >
         {typeof currentPage === "number" ? (
@@ -119,10 +128,15 @@ export function WikiProtocolHoverCard({
             }}
           />
         ) : (
-          <span className="wiki-protocol-popover__placeholder">图谱补充中</span>
+          <span className="wiki-protocol-popover__placeholder">
+            Illustration pending
+          </span>
         )}
-        <span className="wiki-protocol-popover__overlay-hint">
-          点击查看完整高清大图
+        <span
+          className="wiki-protocol-popover__overlay-hint"
+          aria-hidden="true"
+        >
+          <Expand size={18} />
         </span>
       </button>
 
@@ -133,10 +147,12 @@ export function WikiProtocolHoverCard({
         <button
           type="button"
           className="wiki-protocol-popover__expand-btn"
+          aria-label="Open full-size image"
+          title="Open full-size image"
           onClick={() => onOpenModal(pair, activeTab)}
           disabled={typeof currentPage !== "number"}
         >
-          放大查看 ↗
+          <Expand size={18} aria-hidden="true" />
         </button>
       </div>
     </div>,
@@ -241,9 +257,7 @@ export function WikiProtocolModal({
 
   const currentPage = activeTab === "flow" ? pair.flowPage : pair.inventoryPage;
   const currentLabel =
-    activeTab === "flow"
-      ? "Workflow 流程图"
-      : "Materials & Equipment 物料与设备";
+    activeTab === "flow" ? "Workflow" : "Materials & equipment";
   const currentSize = activeTab === "flow" ? pair.flowSize : pair.inventorySize;
   const hasFlow = typeof pair.flowPage === "number";
   const hasInventory = typeof pair.inventoryPage === "number";
@@ -301,25 +315,29 @@ export function WikiProtocolModal({
             {onJumpToArticle ? (
               <button
                 type="button"
-                className="wiki-protocol-modal__jump"
+                className="wiki-protocol-modal__jump wiki-protocol-modal__icon-button"
+                aria-label="View in article"
+                title="View in article"
                 onClick={onJumpToArticle}
               >
-                查看正文 ↓
+                <BookOpen aria-hidden="true" />
               </button>
             ) : null}
             <button
               type="button"
-              className="wiki-protocol-modal__close"
+              className="wiki-protocol-modal__close wiki-protocol-modal__icon-button"
+              aria-label="Close protocol viewer"
+              title="Close"
               onClick={onClose}
             >
-              关闭 ×
+              <X aria-hidden="true" />
             </button>
           </div>
         </header>
 
         {pair.boundary ? (
           <p className="wiki-protocol-modal__boundary">
-            <strong>实验说明：</strong> {pair.boundary}
+            <strong>Protocol note:</strong> {pair.boundary}
           </p>
         ) : null}
 
@@ -336,7 +354,7 @@ export function WikiProtocolModal({
             onClick={() => switchTab("flow")}
             disabled={!hasFlow}
           >
-            Workflow 流程图
+            Workflow
           </button>
           <button
             type="button"
@@ -346,15 +364,22 @@ export function WikiProtocolModal({
             onClick={() => switchTab("inventory")}
             disabled={!hasInventory}
           >
-            Materials 物料图
+            Materials
           </button>
           <button
             type="button"
-            className="wiki-protocol-modal__size-toggle"
+            className="wiki-protocol-modal__size-toggle wiki-protocol-modal__icon-button"
+            aria-label={showActualSize ? "Fit to window" : "View actual size"}
+            title={showActualSize ? "Fit to window" : "View actual size"}
+            aria-pressed={showActualSize}
             onClick={() => setShowActualSize((visible) => !visible)}
             disabled={typeof currentPage !== "number"}
           >
-            {showActualSize ? "适应窗口" : "查看原始尺寸"}
+            {showActualSize ? (
+              <Shrink aria-hidden="true" />
+            ) : (
+              <Expand aria-hidden="true" />
+            )}
           </button>
         </div>
 
@@ -370,7 +395,7 @@ export function WikiProtocolModal({
             onClick={() => switchTab("flow")}
             disabled={activeTab === "flow" || !hasFlow}
           >
-            ‹
+            <ChevronLeft aria-hidden="true" />
           </button>
           <div className="wiki-protocol-modal__image-scroll">
             {typeof currentPage === "number" ? (
@@ -388,7 +413,7 @@ export function WikiProtocolModal({
               />
             ) : (
               <div className="wiki-protocol-modal__empty">
-                <strong>暂无配图</strong>
+                <strong>No illustration available</strong>
               </div>
             )}
           </div>
@@ -399,7 +424,7 @@ export function WikiProtocolModal({
             onClick={() => switchTab("inventory")}
             disabled={activeTab === "inventory" || !hasInventory}
           >
-            ›
+            <ChevronRight aria-hidden="true" />
           </button>
         </div>
       </div>

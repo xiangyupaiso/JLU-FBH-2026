@@ -3,7 +3,8 @@ import { HumanPracticesOriginTree } from "../components/wiki/features/HumanPract
 import { HumanPracticesStageTree } from "../components/wiki/features/HumanPracticesStageTree";
 import { HpInteractiveWaterfall } from "../components/wiki/features/engagement/HpInteractiveWaterfall";
 import { getEngagementHeroImage } from "../components/wiki/engagementHeroAssets";
-import humanPracticesHeroFallback from "../assets/wiki/engagement-heroes/engagement-human-practices-hero-v2.webp";
+const humanPracticesHeroFallback =
+  "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/engagement-human-practices-hero-v2-ce6ea8234186.webp";
 import { humanPracticesPage } from "../data/engagement/humanPracticesPage";
 
 const treeFeatureBySection: Record<string, string> = {

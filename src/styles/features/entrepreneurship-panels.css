@@ -925,3 +925,23 @@
 .wiki-page .thank-you-note__paper .thank-you-note__sign-off span {
   display: block;
 }
+
+/* Fig 18: Risk Interview (3:4 portrait photo) — scaled down to fit standard viewport height */
+.wiki-page--entrepreneurship .entrepreneurship-figure--portrait,
+.wiki-page--entrepreneurship .wiki-figure:has(img[src*="risk-interview"]) {
+  width: 100%;
+  max-width: 440px;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+.wiki-page--entrepreneurship .entrepreneurship-figure--portrait img,
+.wiki-page--entrepreneurship .wiki-figure:has(img[src*="risk-interview"]) img,
+.wiki-page--entrepreneurship img[src*="risk-interview"] {
+  width: 100%;
+  max-width: 440px;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 10px 28px -6px rgba(0, 0, 0, 0.12) !important;
+}
+

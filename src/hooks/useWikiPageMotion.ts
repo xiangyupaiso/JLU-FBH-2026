@@ -65,27 +65,50 @@ export function useWikiPageMotion(
         }
       });
 
-      if (!("IntersectionObserver" in window)) {
-        return () => cancelAnimationFrame(hashFrame);
-      }
-      const observer = new IntersectionObserver(
-        (entries) => {
-          const visible = entries
-            .filter((entry) => entry.isIntersecting)
-            .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
-          const current = visible[0]?.target as HTMLElement | undefined;
-          if (!current) return;
-          setActiveSection(current.id);
-          sections.forEach((section) =>
-            section.toggleAttribute("data-wiki-active", section === current),
-          );
-        },
-        { root: null, rootMargin: "-18% 0px -62% 0px", threshold: 0 },
+      const anchors = Array.from(
+        root.querySelectorAll<HTMLElement>("[data-wiki-outline-anchor]"),
       );
-      sections.forEach((section) => observer.observe(section));
+      let locationFrame = 0;
+      const updateLocation = () => {
+        locationFrame = 0;
+        const activationLine = Math.min(window.innerHeight * 0.25, 160);
+        let current = sections[0];
+        sections.forEach((section) => {
+          if (section.getBoundingClientRect().top <= activationLine) {
+            current = section;
+          }
+        });
+        if (!current) return;
+        let subsection = "";
+        anchors.forEach((anchor) => {
+          if (
+            current.contains(anchor) &&
+            anchor.getClientRects().length > 0 &&
+            anchor.getBoundingClientRect().top <= activationLine
+          ) {
+            subsection = anchor.id;
+          }
+        });
+        setActiveSection(current.id);
+        setActiveSubsection(subsection);
+        sections.forEach((section) =>
+          section.toggleAttribute("data-wiki-active", section === current),
+        );
+      };
+      const requestLocation = () => {
+        if (!locationFrame) locationFrame = requestAnimationFrame(updateLocation);
+      };
+      const observer = new ResizeObserver(requestLocation);
+      observer.observe(root);
+      window.addEventListener("scroll", requestLocation, { passive: true });
+      window.addEventListener("resize", requestLocation, { passive: true });
+      requestLocation();
       return () => {
         cancelAnimationFrame(hashFrame);
+        cancelAnimationFrame(locationFrame);
         observer.disconnect();
+        window.removeEventListener("scroll", requestLocation);
+        window.removeEventListener("resize", requestLocation);
         sections.forEach((section) => {
           section.removeAttribute("data-wiki-active");
           section.style.removeProperty("--wiki-section-reveal");

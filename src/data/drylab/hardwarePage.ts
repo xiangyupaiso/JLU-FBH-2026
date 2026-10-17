@@ -215,6 +215,8 @@ export const hardwarePage: WikiPageContent = {
           type: "figure",
           src: getHardwareImage("fig1"),
           alt: hardwareAssets.fig1.alt,
+          width: hardwareAssets.fig1.width,
+          height: hardwareAssets.fig1.height,
           caption: hardwareAssets.fig1.caption,
         },
         {
@@ -275,6 +277,8 @@ export const hardwarePage: WikiPageContent = {
           type: "figure",
           src: getHardwareImage("fig2"),
           alt: hardwareAssets.fig2.alt,
+          width: hardwareAssets.fig2.width,
+          height: hardwareAssets.fig2.height,
           caption: hardwareAssets.fig2.caption,
         },
         {
@@ -368,6 +372,8 @@ export const hardwarePage: WikiPageContent = {
           type: "figure",
           src: getHardwareImage("fig3"),
           alt: hardwareAssets.fig3.alt,
+          width: hardwareAssets.fig3.width,
+          height: hardwareAssets.fig3.height,
           caption: hardwareAssets.fig3.caption,
         },
         {
@@ -437,6 +443,8 @@ export const hardwarePage: WikiPageContent = {
           type: "figure",
           src: getHardwareImage("fig4"),
           alt: hardwareAssets.fig4.alt,
+          width: hardwareAssets.fig4.width,
+          height: hardwareAssets.fig4.height,
           caption: hardwareAssets.fig4.caption,
         },
         {
@@ -568,6 +576,8 @@ export const hardwarePage: WikiPageContent = {
           type: "figure",
           src: getHardwareImage("fig5"),
           alt: hardwareAssets.fig5.alt,
+          width: hardwareAssets.fig5.width,
+          height: hardwareAssets.fig5.height,
           caption: hardwareAssets.fig5.caption,
         },
         {
@@ -588,6 +598,8 @@ export const hardwarePage: WikiPageContent = {
           type: "figure",
           src: getHardwareImage("fig6"),
           alt: hardwareAssets.fig6.alt,
+          width: hardwareAssets.fig6.width,
+          height: hardwareAssets.fig6.height,
           caption: hardwareAssets.fig6.caption,
         },
         {

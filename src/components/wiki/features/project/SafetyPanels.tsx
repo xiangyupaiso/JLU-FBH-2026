@@ -153,7 +153,9 @@ function SafetyImages({ spec }: { spec: ImageSpec }) {
               <img
                 src={asset.uploadUrl}
                 alt={`${asset.alt}${language ? ` (${language.label})` : `, image ${index + 1}`}`}
-                loading="eager"
+                width={asset.width}
+                height={asset.height}
+                loading="lazy"
                 decoding="async"
               />
             </div>

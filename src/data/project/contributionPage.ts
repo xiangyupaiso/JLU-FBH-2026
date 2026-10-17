@@ -6,6 +6,7 @@ import type { CitationReference } from "../citations/citationTypes";
 import {
   contributionAssets,
   contributionImage,
+  type ContributionAssetEntry,
   type ContributionImageAssetKey,
 } from "./contributionAssets";
 import {
@@ -77,12 +78,17 @@ const learnMore = (label: string, url: string): string =>
 const fig = (
   key: ContributionImageAssetKey,
   caption: string,
-): WikiContentBlock => ({
-  type: "figure",
-  src: contributionImage(key),
-  alt: contributionAssets[key].alt,
-  caption,
-});
+): WikiContentBlock => {
+  const asset: ContributionAssetEntry = contributionAssets[key];
+  return {
+    type: "figure",
+    src: contributionImage(key),
+    alt: asset.alt,
+    caption,
+    width: asset.width,
+    height: asset.height,
+  };
+};
 
 /**
  * The manuscript is written in author–year style — `(Sahin et al. 2017)` — so
@@ -413,7 +419,9 @@ export const contributionPage: WikiPageContent = {
           "During the development of **CirCure**, we found that measuring circRNA was not simply a matter of reporting a single qPCR value or showing resistance to RNase R. Before a circRNA preparation could be used in downstream experiments, we had to answer several connected questions: Did the RNA form a covalently closed circle? What proportion of the purified product was circular rather than linear? Was the assay performed within a reliable input range? And could the resulting value be used to decide whether a batch was suitable for further experiments?",
           "For an iGEM team entering circRNA research for the first time, these questions are often addressed using different methods, while the criteria for interpreting the results remain unclear. Rather than keeping the measurement logic developed during our project within our own laboratory records, we consolidated it into a **reusable circRNA circularity measurement and release framework** for the iGEM community.",
           "The framework is based on a divergent–convergent RT-qPCR assay, but its main contribution is not the use of this assay itself. Instead, it defines how circularity should be measured, calibrated and interpreted. The divergent primer pair spans the back-splice junction and detects the circular RNA species, while the convergent primer pair is designed to detect the linear precursor. Under this primer convention, the circular fraction is calculated as:",
-          "f_circ = 2^(−Cq_div) / ( 2^(−Cq_div) + 2^(−Cq_conv) )",
+        ),
+        feature("contribution-equation-fcirc"),
+        prose(
           "The framework requires an input-volume series before any circularity ratio is calculated. In our workflow, both primer channels were tested using 2, 4 and 6 µL of cDNA input, with three technical replicates at each volume. A no-template control was included on every plate, and a backbone-encoded GFP amplicon was measured in both channels as an equal-input control. Because the 2 µL input did not meet the acceptance criteria, 4 µL was selected as the working input volume.",
           "A circRNA preparation was considered **release-grade** only when it satisfied several pre-defined conditions: a circular fraction of at least 90%, an approximately one-cycle Cq shift per two-fold increase in input in both channels, close agreement among technical replicates, matched GFP Cq values between the two primer channels, and an undetected no-template control. These criteria transform circularity measurement from an isolated numerical result into a reproducible decision-making process.",
           "Our contribution is therefore not the creation of a new circRNA detection technique. It is the documentation of an explicit and reusable measurement standard that connects primer design, input calibration, control selection, calculation and batch-release decisions. Other iGEM teams can adopt the complete framework or selectively reuse individual components, such as the input-volume series, the equal-input control, the primer-species convention or the release checklist.",

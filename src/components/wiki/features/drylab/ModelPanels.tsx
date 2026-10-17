@@ -8,7 +8,7 @@ import {
 import { linkify } from "../../proseInline";
 import { ManuscriptTabs } from "../shared/ManuscriptTabs";
 import { Trop2ComplexViewer } from "../Trop2ComplexViewer";
-import { ModelBurialHeatmap, ModelP9Volume, ModelVolcano } from "./ModelCharts";
+import { ModelBurialHeatmap, ModelConfidenceScatter, ModelP9Volume, ModelVolcano } from "./ModelCharts";
 import {
   modelDownloads,
   modelPanels,
@@ -125,6 +125,38 @@ function TransposableTable({
   );
 }
 
+function AntigenTable({ table }: {
+  table: Extract<ModelPanel, { kind: "antigen-table" }>["table"];
+}) {
+  const antigens = [...new Set(table.rows.map((row) => row[0]))];
+  const [selected, setSelected] = useState(antigens[0]);
+  const rows = table.rows.filter((row) => row[0] === selected);
+  return (
+    <div className="model-antigen-table">
+      <fieldset className="model-antigen-filter">
+        <legend>Antigen</legend>
+        <input
+          type="range"
+          min={0}
+          max={antigens.length - 1}
+          step={1}
+          value={antigens.indexOf(selected)}
+          aria-label="Antigen"
+          aria-valuetext={selected}
+          onChange={(event) => setSelected(antigens[Number(event.target.value)])}
+        />
+        <div className="model-antigen-options">
+          {antigens.map((antigen) => (
+            <button type="button" key={antigen} aria-pressed={selected === antigen}
+              onClick={() => setSelected(antigen)}>{antigen}</button>
+          ))}
+        </div>
+      </fieldset>
+      <WikiContentBlocks blocks={[{ ...table, rows }]} sectionId="model-antigen-table" />
+    </div>
+  );
+}
+
 function ModelPanelContent({
   panel,
   panelKey,
@@ -162,6 +194,9 @@ function ModelPanelContent({
     );
   if (panel.kind === "transpose")
     return <TransposableTable table={panel.table} />;
+  if (panel.kind === "antigen-table")
+    return <AntigenTable table={panel.table} />;
+  if (panel.chart === "confidence-scatter") return <ModelConfidenceScatter />;
   if (panel.chart === "p9-volume") return <ModelP9Volume />;
   if (panel.chart === "burial-heatmap") return <ModelBurialHeatmap />;
   return (

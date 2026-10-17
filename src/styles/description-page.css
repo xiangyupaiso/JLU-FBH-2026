@@ -325,7 +325,10 @@
 .wiki-page--project .wiki-figure img[src*="figure3"],
 .wiki-page--project .wiki-figure img[alt*="circRNA backbone"] {
   max-height: min(640px, 72vh);
-  width: auto;
+  /* The width `auto` used to resolve to, written out (1844 × 1339 is this
+     figure's size in descriptionAssets.ts) so the box keeps its height
+     before the file arrives. */
+  width: min(100%, calc(min(640px, 72vh) * 1844 / 1339));
   object-fit: contain;
 }
 

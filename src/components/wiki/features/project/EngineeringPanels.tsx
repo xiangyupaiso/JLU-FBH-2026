@@ -1,19 +1,15 @@
-import { useRef, type MouseEvent } from "react";
-import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
+import { useEffect, useRef, useState, type MouseEvent } from "react";
 import {
   ENGINEERING_ITERATIONS,
   TIME_CYCLES,
   type EngineeringIterationDatum,
 } from "../../../../data/project/engineeringPage";
 import type { WikiDbTLStageKey as DbTLStageKey } from "../../wikiPageTypes";
-import dialBaseSrc from "../../../../assets/wiki/engineering/engineering-dial-base.webp";
-import handLongSrc from "../../../../assets/wiki/engineering/engineering-dial-hand-long.webp";
-import handShortSrc from "../../../../assets/wiki/engineering/engineering-dial-hand-short.webp";
-import dialCapSrc from "../../../../assets/wiki/engineering/engineering-dial-cap.webp";
+const dialBaseSrc = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-dial-base.webp";
+const handLongSrc = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-dial-hand-long.webp";
+const handShortSrc = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-dial-hand-short.webp";
+const dialCapSrc = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-dial-cap.webp";
 import "../../../../styles/features/engineering-dial.css";
-
-gsap.registerPlugin(useGSAP);
 
 export interface EngineeringOutlineProps {
   activeIteration: EngineeringIterationDatum;
@@ -65,6 +61,12 @@ const STAGES: { key: DbTLStageKey; label: string; start: number }[] = [
 
 const cycleWord = (title: string) => title.split(":")[0];
 
+// Pointers render via declarative CSS transforms (see engineering-dial.css):
+// `transform-box: fill-box` pins the rotation origin to each image's own centre,
+// so the dial centre can never drift, and CSS transitions keep moves smooth.
+const normalizeDelta = (delta: number) =>
+  ((((delta % 360) + 540) % 360) - 180) as number;
+
 export function EngineeringOutline({
   activeIteration,
   activeStage,
@@ -73,42 +75,28 @@ export function EngineeringOutline({
   const activeCycle = activeIteration.cycle - 1;
   const shownStage = activeStage;
   const svgRef = useRef<SVGSVGElement>(null);
-  const shortAngle = useRef(315);
-  const longAngle = useRef(CYCLE_START[activeCycle] ?? 315);
 
-  useGSAP(
-    () => {
-      const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  // Accumulated angles so each move takes the shortest arc under CSS transition.
+  const [angles, setAngles] = useState(() => ({
+    short: 315,
+    long: (CYCLE_START[activeCycle] ?? 270) + 45,
+  }));
 
-      // Animate short needle to DBTL stage
-      const shown = STAGES.find((s) => s.key === shownStage) ?? STAGES[0];
-      const targetShort = shown.start + 45;
-      const deltaShort = ((((targetShort - shortAngle.current) % 360) + 540) % 360) - 180;
-      shortAngle.current += deltaShort;
-      gsap.to(svgRef.current?.querySelector(".eng-dial__hand-short") ?? [], {
-        rotation: shortAngle.current,
-        svgOrigin: `${C} ${C}`,
-        smoothOrigin: false,
-        duration: reducedMotion ? 0 : 0.35,
-        ease: "power2.out",
-        overwrite: true,
-      });
+  const shown = STAGES.find((s) => s.key === shownStage) ?? STAGES[0];
+  const targetShort = shown.start + 45;
+  const targetLong = (CYCLE_START[activeCycle] ?? 270) + 45;
 
-      // Animate long needle to TIME cycle
-      const targetLong = (CYCLE_START[activeCycle] ?? 270) + 45;
-      const deltaLong = ((((targetLong - longAngle.current) % 360) + 540) % 360) - 180;
-      longAngle.current += deltaLong;
-      gsap.to(svgRef.current?.querySelector(".eng-dial__hand-long") ?? [], {
-        rotation: longAngle.current,
-        svgOrigin: `${C} ${C}`,
-        smoothOrigin: false,
-        duration: reducedMotion ? 0 : 0.45,
-        ease: "power2.out",
-        overwrite: true,
-      });
-    },
-    { scope: svgRef, dependencies: [shownStage, activeCycle] },
-  );
+  useEffect(() => {
+    setAngles((prev) => {
+      const next = {
+        short: prev.short + normalizeDelta(targetShort - prev.short),
+        long: prev.long + normalizeDelta(targetLong - prev.long),
+      };
+      return next.short === prev.short && next.long === prev.long
+        ? prev
+        : next;
+    });
+  }, [targetShort, targetLong]);
 
   const jumpTo = (id: string, event: MouseEvent<Element>) => {
     event.preventDefault();
@@ -216,6 +204,7 @@ export function EngineeringOutline({
             y="0"
             width="732"
             height="732"
+            style={{ transform: `rotate(${angles.long}deg)` }}
           />
           <image
             className="eng-dial__hand-short"
@@ -224,6 +213,7 @@ export function EngineeringOutline({
             y="0"
             width="732"
             height="732"
+            style={{ transform: `rotate(${angles.short}deg)` }}
           />
           <image
             className="eng-dial__cap"

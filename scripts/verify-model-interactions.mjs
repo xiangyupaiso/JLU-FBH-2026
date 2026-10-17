@@ -4,6 +4,7 @@ import { build } from "esbuild";
 const result = await build({
   stdin: {
     contents: `export { buildModelCitationIndex, parseModelFigureCaption } from "./src/data/drylab/modelCitationIndex";
+      export { createModelConfidenceOption } from "./src/components/wiki/features/drylab/ModelCharts";
       export { loadModelVolcanoData } from "./src/data/drylab/modelVolcanoData";
       export { createEpitopeHeatmapOption } from "./src/components/wiki/features/project/EpitopeStructuralValidationChart";`,
     resolveDir: process.cwd(),
@@ -22,7 +23,7 @@ const path = new URL("../.model-verification.mjs", import.meta.url);
 const originalFetch = globalThis.fetch;
 try {
   await writeFile(path, result.outputFiles[0].text);
-  const { buildModelCitationIndex, parseModelFigureCaption, createEpitopeHeatmapOption, loadModelVolcanoData } = await import(
+  const { buildModelCitationIndex, parseModelFigureCaption, createEpitopeHeatmapOption, createModelConfidenceOption, loadModelVolcanoData } = await import(
     path.href
   );
   assert.deepEqual(parseModelFigureCaption("**Figure 5.** Caption with **emphasis**."), { label: "FIG. 05", text: "Caption with **emphasis**." });
@@ -76,6 +77,17 @@ try {
     option.tooltip.formatter({ seriesType: "heatmap", value: [2, 0, 20] }),
     /20%/,
   );
+  const confidence = createModelConfidenceOption();
+  assert.equal(confidence.series[0].data.length, 15);
+  assert.equal(confidence.series[1].data.length, 2);
+  const alanine = confidence.series[1].data.find((row) => row.peptide === "HILHVSFLA");
+  const glycine = confidence.series[1].data.find((row) => row.peptide === "FLAEASVRG");
+  assert(Math.abs(alanine.value[0] - 42.928571) < 0.000001);
+  assert.equal(alanine.value[1], 0.960);
+  assert.deepEqual(glycine.value, [0, 0.968]);
+  assert.match(confidence.tooltip.formatter({ data: alanine }), /42.93%/);
+  assert.match(confidence.tooltip.formatter({ data: alanine }), /Rejected/);
+  assert.match(confidence.tooltip.formatter({ data: glycine }), /Model 4: 0.960/);
   let requests = 0;
   globalThis.fetch = async () => {
     requests++;
