@@ -4,13 +4,11 @@
   --footer-ink: #261e23;
   --footer-muted: #6a5d62;
   --footer-line: rgba(38, 30, 35, 0.14);
-  --footer-give: 64px;
   position: relative;
   display: block;
   width: 100%;
   margin-top: 0;
-  /* Shows only while the panel gives way, hinting at the dark afterword. */
-  background: #292226;
+  background: var(--footer-paper);
   color: var(--footer-ink);
 }
 
@@ -26,11 +24,6 @@
   font-family: var(--font-body);
   font-size: 13px;
   line-height: 1.6;
-  /* Resistance eases off as the push builds: p * (2 - p). */
-  transform: translateY(
-    calc(var(--gate-p, 0) * (2 - var(--gate-p, 0)) * var(--footer-give) * -1)
-  );
-  transition: transform 320ms var(--ease-out, ease-out);
 }
 
 .circure-footer__inner {
@@ -319,47 +312,10 @@
   text-decoration-color: currentColor;
 }
 
-/* The seam sits under the panel's last strip and rises as the panel gives. */
-.circure-footer .finale-seam {
-  position: relative;
-  z-index: 0;
-  display: grid;
-  place-items: center;
-  width: 100%;
-  height: var(--footer-give);
-  margin-top: calc(var(--footer-give) * -1);
-  padding: 0;
-  border: 0;
-  overflow: hidden;
-  background: none;
-  cursor: pointer;
-}
-
-.circure-footer .finale-seam img {
-  width: 56px;
-  height: 48px;
-  object-fit: cover;
-  object-position: 21% 50%;
-  transform: translateY(calc((1 - var(--gate-p, 0)) * 16px));
-  transition: transform 320ms var(--ease-out, ease-out);
-}
-
-/* Keyboard users see the seam open fully; the hook's inline pressure sits on
-   the footer itself, so the override lands one level down. */
-.circure-footer:has(.finale-seam:focus-visible)
-  :is(.circure-footer__panel, .finale-seam) {
-  --gate-p: 1;
-}
-
 .circure-footer a:focus-visible,
 .circure-footer button:focus-visible {
   outline: 2px solid currentColor;
   outline-offset: 5px;
-}
-
-.circure-footer .finale-seam:focus-visible {
-  outline-color: #f5f0e7;
-  outline-offset: -8px;
 }
 
 @media (max-width: 680px) {
@@ -444,21 +400,9 @@
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .circure-footer__panel,
-  .circure-footer .finale-seam img {
-    transition: none;
-  }
-}
-
 /* Fixed controls must not cover the contact area and required links. */
 :root[data-footer-visible] .home-playback,
-:root[data-footer-visible] .circure-back-to-top {
+:root[data-footer-visible] .circure-back-to-top,
+:root[data-footer-visible] .wiki-toc-trigger {
   display: none;
-}
-
-@media (max-width: 700px) {
-  :root[data-footer-visible] .wiki-toc-trigger {
-    display: none;
-  }
 }
