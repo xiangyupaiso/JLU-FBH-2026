@@ -1,5 +1,8 @@
 """Check source-copy preservation, CSV classifications, assets and panel wiring."""
 import csv
+import sys
+sys.dont_write_bytecode = True
+from model_figure15 import load_figure15, update_figure15_copy
 import json
 import re
 from pathlib import Path
@@ -18,6 +21,10 @@ panels = section('export const modelPanels: Record<string, ModelPanel>')
 references = section('export const modelReferences: CitationReference[]')
 downloads = section('export const modelDownloads')
 all_text = json.dumps([sections, panels, references], ensure_ascii=False)
+figure15 = load_figure15()
+assert json.loads((ROOT/'src/data/drylab/modelConfidenceData.json').read_text()) == figure15
+assert sum(r['passed'] for r in figure15['rows']) == 15
+assert sum(p.get('chart') == 'confidence-scatter' for p in panels.values()) == 1
 
 def clean(text):
     text = re.sub(r'\\([!"#$%&\'()*+,\-./:;<=>?@\[\]^_`{|}~])', r'\1', text)
@@ -34,6 +41,7 @@ for paragraph in re.split(r'\n\s*\n', body_text):
     p = re.sub(r'\s*（?折叠结束）?$', '', p).strip()
     if re.search(r'[\u3400-\u9fff]', p):
         continue
+    p = update_figure15_copy(p, figure15)
     if json.dumps(p, ensure_ascii=False)[1:-1] not in all_text:
         missing.append(p[:100])
 assert not missing, 'Source paragraphs not preserved: ' + repr(missing)
@@ -97,6 +105,11 @@ assert '参照这个表格（' not in all_text
 assert len(references)==56
 assert sum(p['kind']=='tabs' for p in panels.values())==4
 assert sum(p['kind']=='transpose' for p in panels.values())==1
+antigen_tables = [p['table'] for p in panels.values() if p['kind']=='antigen-table']
+assert len(antigen_tables) == 1
+assert len(antigen_tables[0]['rows']) == 51
+assert {r[0] for r in antigen_tables[0]['rows']} == {'TROP2', 'B7-H4', 'Nectin-4', 'LIV-1'}
+blocks(antigen_tables)
 legacy = (ROOT/'src/data/modelPage.ts').read_text(encoding='utf-8')
 first = legacy[legacy.index('    {\n      id: "model-structural-confirmation"'):legacy.index('    {\n      id: "model-judge-brief"')].rstrip().rstrip(',')
 assert first in page, 'The original 3D chapter must remain unchanged and first'
