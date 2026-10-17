@@ -334,9 +334,7 @@ export function useHomePlayback(root: RefObject<HTMLDivElement | null>) {
       let progress = 0;
       // The opening owns the screen until its portal and GSAP context are
       // removed. Measuring the scroll story here competes with that animation.
-      // A manual jump can paint before React removes the skipped intro portal.
-      // Its destination still needs to appear immediately in the scene list.
-      if (introComplete() || (mode === "manual" && window.scrollY > 0)) {
+      if (introComplete()) {
         const y = window.scrollY;
         // Entries follow the story's document order. Stop at the next chapter
         // so the opening does not measure distant, complex scene interiors.
@@ -386,7 +384,7 @@ export function useHomePlayback(root: RefObject<HTMLDivElement | null>) {
         cancelAnimationFrame(frame);
         frame = 0;
         // Finish only the small scrub lag, retaining the scroll's current frame.
-        settleScrubs();
+        if (introComplete()) settleScrubs();
       }
       if (next === "manual") {
         beatIndex = -1;
@@ -605,7 +603,7 @@ export function useHomePlayback(root: RefObject<HTMLDivElement | null>) {
         requestTick();
       },
       seekChapter(index) {
-        if (index < 0 || index >= CHAPTERS.length) return;
+        if (!introComplete() || index < 0 || index >= CHAPTERS.length) return;
         changeMode("manual");
         section(9)?.style.removeProperty("--home-playback-phase-offset");
         beatIndex = -1;
@@ -638,10 +636,11 @@ export function useHomePlayback(root: RefObject<HTMLDivElement | null>) {
     const inPlayer = (target: EventTarget | null) =>
       target instanceof Element && !!target.closest("[data-home-player]");
     const manual = (event: Event) => {
-      if (inPlayer(event.target)) return;
+      if (!introComplete() || inPlayer(event.target)) return;
       if (mode !== "manual") changeMode("manual");
     };
     const scrollInput = (event: Event) => {
+      if (!introComplete()) return;
       // Scrolling the open list stays local; scrolling over the transport
       // itself still hands the document back to the reader.
       if (
@@ -688,14 +687,15 @@ export function useHomePlayback(root: RefObject<HTMLDivElement | null>) {
         manual(event);
     };
     const visibility = () => {
-      if (document.hidden && mode === "playing") changeMode("paused");
+      if (introComplete() && document.hidden && mode === "playing")
+        changeMode("paused");
     };
     const resize = () => {
       if (
         window.innerWidth !== measuredWidth ||
         Math.abs(window.innerHeight - measuredHeight) >= 80
       ) {
-        if (mode === "playing") changeMode("paused");
+        if (introComplete() && mode === "playing") changeMode("paused");
         beatIndex = -1;
         measuredWidth = window.innerWidth;
         measuredHeight = window.innerHeight;
@@ -713,7 +713,7 @@ export function useHomePlayback(root: RefObject<HTMLDivElement | null>) {
       paint();
     };
     const onReplay = () => {
-      if (ownReplay) return;
+      if (ownReplay || !introComplete()) return;
       ended = false;
       beatIndex = -1;
       changeMode("manual");

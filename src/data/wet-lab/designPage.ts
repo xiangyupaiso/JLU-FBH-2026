@@ -610,13 +610,15 @@ export const designPage: WikiPageContent = {
     },
   ],
   links: [
-    { path: "/measurement", label: "Measurement" },
-    { path: "/engineering", label: "Engineering" },
-    { path: "/experiments", label: "Experiments" },
+    { path: "/engineering", label: "Engineering DBTL Cycles" },
+    { path: "/experiments", label: "Step-by-Step Protocols" },
+    { path: "/measurement", label: "Circularity Measurement" },
+    { path: "/model", label: "Structural Biophysics" },
   ],
   next: {
     path: "/experiments",
     label: "Experiments",
-    title: "Take the construct to the bench.",
+    title: "Taking the Blueprint to the Bench",
+    description: "The in silico construct is mapped down to the base pair. Follow our standardized bench protocols to transcribe, circularize, and test the vaccine in vitro and in vivo.",
   },
 };

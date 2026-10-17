@@ -769,7 +769,7 @@ export const cycle2Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "We retained the four-part structure, two-round game and scientific return in a reusable Teaching Pack. The classroom also gave us a transferable design principle: understanding improved when learners could see what information entered a decision and how that information changed the next action. We next applied this principle to a longer educational problem—making a multi-step experimental workflow visible and repeatable in the Virtual Laboratory. Further details are provided in [Education: Vaccine Classroom](https://2026.igem.wiki/jlu-fbh/education)."
+          "We retained the four-part structure, two-round game and scientific return in a reusable Teaching Pack. The classroom also gave us a transferable design principle: understanding improved when learners could see what information entered a decision and how that information changed the next action. This principle also informed improvements to the existing Virtual Laboratory, particularly the visibility of experimental steps and their connections. Further details are provided in [Education: Vaccine Classroom](https://2026.igem.wiki/jlu-fbh/education)."
 ]
         }
           ]

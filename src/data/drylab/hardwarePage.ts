@@ -769,13 +769,15 @@ export const hardwarePage: WikiPageContent = {
     },
   ],
   links: [
-    { path: "/model", label: "Model" },
-    { path: "/software", label: "Software" },
-    { path: "/games", label: "Games" },
+    { path: "/software", label: "circForge Design Pipeline" },
+    { path: "/experiments", label: "Bench Protocols" },
+    { path: "/games", label: "Interactive Simulations" },
+    { path: "/contribution", label: "Hardware Schematics" },
   ],
   next: {
     path: "/games",
     label: "Games",
-    title: "How can interactive experiences make the work explorable?",
+    title: "Making Complex Synthetic Biology Playable",
+    description: "Precision engineering shouldn't stay locked inside the lab. Experience our interactive game suite that turns RNA circularization and cancer defense into intuitive play.",
   },
 };

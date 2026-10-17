@@ -254,6 +254,6 @@ export interface WikiPageContent {
   facts: WikiFact[];
   sections: WikiSection[];
   links: WikiLink[];
-  next: WikiLink & { title: string };
+  next: WikiLink & { title: string; description?: string };
   heroMinimal?: boolean;
 }

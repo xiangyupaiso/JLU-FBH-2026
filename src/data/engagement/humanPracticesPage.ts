@@ -15,13 +15,15 @@ export const humanPracticesPage: WikiPageContent = {
   facts: [],
   sections: humanPracticesSections,
   links: [
-    { path: "/description", label: "Project context" },
-    { path: "/engineering", label: "Design iterations" },
-    { path: "/education", label: "Public dialogue" },
+    { path: "/description", label: "Clinical Motivation" },
+    { path: "/engineering", label: "Feedback-Driven DBTL" },
+    { path: "/entrepreneurship", label: "Patient-Centric Strategy" },
+    { path: "/education", label: "Community Dialogue" },
   ],
   next: {
     path: "/education",
     label: "Education",
-    title: "How did dialogue change what everyone learned?",
+    title: "Inspiring the Next Generation of Bioengineers",
+    description: "Empathy in research naturally extends to community empowerment. See how patient conversations inspired interactive textbooks, science workshops, and inclusive education.",
   },
 };

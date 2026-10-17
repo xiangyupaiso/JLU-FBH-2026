@@ -1105,6 +1105,7 @@ export const measurementPage: WikiPageContent = {
         },
         {
           type: "figure",
+          className: "measurement-figure--compact measurement-figure--fig03",
           src: getMeasurementImage(
             "the-staged-epitope-screen-from-1-838-nine-mers-to-15-delivered-peptides",
           ),
@@ -1445,6 +1446,7 @@ export const measurementPage: WikiPageContent = {
         },
         {
           type: "figure",
+          className: "measurement-figure--compact measurement-figure--fig06",
           src: getMeasurementImage(
             "agarose-gel-verification-of-the-four-epitope-encoding-linearised-transcription-templates",
           ),
@@ -2041,6 +2043,7 @@ export const measurementPage: WikiPageContent = {
         },
         {
           type: "figure",
+          className: "measurement-figure--compact measurement-figure--fig12",
           src: getMeasurementImage(
             "dose-viability-curve-of-empty-lnp-on-dcs-after-24-h",
           ),
@@ -2438,6 +2441,7 @@ export const measurementPage: WikiPageContent = {
         },
         {
           type: "figure",
+          className: "measurement-figure--compact measurement-figure--fig16",
           src: getMeasurementImage(
             "round-1-killing-of-k562-by-t-cells-primed-with-each-construct",
           ),
@@ -2493,6 +2497,7 @@ export const measurementPage: WikiPageContent = {
         },
         {
           type: "figure",
+          className: "measurement-figure--compact measurement-figure--fig17",
           src: getMeasurementImage(
             "killing-of-mda-mb-231-by-t-cells-primed-with-each-construct-across-e-t-ratios",
           ),
@@ -3078,6 +3083,7 @@ export const measurementPage: WikiPageContent = {
         },
         {
           type: "figure",
+          className: "measurement-figure--compact measurement-figure--fig26",
           src: getMeasurementImage("tumour-growth-curves-for-the-three-groups"),
           width: 1065,
           height: 510,
@@ -3188,13 +3194,15 @@ export const measurementPage: WikiPageContent = {
     },
   ],
   links: [
-    { path: "/experiments", label: "Experimental route" },
-    { path: "/results", label: "Result standard" },
-    { path: "/model", label: "Model validation" },
+    { path: "/experiments", label: "Experimental Verification" },
+    { path: "/results", label: "Quantitative Results" },
+    { path: "/alternative-platform", label: "Alternative Chassis Exploration" },
+    { path: "/hardware", label: "CirCore Device Calibration" },
   ],
   next: {
     path: "/alternative-platform",
     label: "Alternative Platform",
-    title: "Which experimental context carries the system?",
+    title: "Beyond the Conventional Chassis",
+    description: "Now that analytical standards are established, can circRNA synthesis escape costly cell-free enzymes? Explore our evaluation of alternative cellular expression platforms.",
   },
 };

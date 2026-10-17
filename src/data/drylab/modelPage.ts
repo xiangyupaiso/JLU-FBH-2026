@@ -3654,6 +3654,17 @@ export const modelPage: WikiPageContent = {
       layout: "editorial",
     },
     ...manuscriptSections
- ],
- links: [{ path: "/software", label: "Software" }, { path: "/hardware", label: "Hardware" }, { path: "/games", label: "Games" }], next: { path: "/software", label: "Software", title: "Software" }
+  ],
+  links: [
+    { path: "/design", label: "Molecular Design" },
+    { path: "/results", label: "Model vs Bench Validation" },
+    { path: "/software", label: "circForge Software" },
+    { path: "/hardware", label: "CirCore Device Control" },
+  ],
+  next: {
+    path: "/software",
+    label: "Software",
+    title: "From Mathematical Models to Automated Tools",
+    description: "Differential equations and folding simulations become transformative when anyone can use them. Meet circForge—our open-source software suite automating circRNA design.",
+  },
 };

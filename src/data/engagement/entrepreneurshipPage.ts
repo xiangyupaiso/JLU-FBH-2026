@@ -1863,13 +1863,15 @@ export const entrepreneurshipPage: WikiPageContent = {
     },
   ],
   links: [
-    { path: "/human-practices", label: "Stakeholder decisions" },
-    { path: "/sustainability", label: "Access and impact" },
-    { path: "/safety-and-security", label: "Responsible limits" },
+    { path: "/human-practices", label: "Stakeholder Feedback" },
+    { path: "/sustainability", label: "SDG Healthcare Equity" },
+    { path: "/description", label: "Clinical Rationale" },
+    { path: "/results", label: "Efficacy Evidence" },
   ],
   next: {
     path: "/human-practices",
     label: "Human Practices",
-    title: "Who changed the project—and how?",
+    title: "Listening to the Voices That Matter Most",
+    description: "A commercial strategy is hollow without patient empathy. Discover how dialogues with oncologists, breast cancer patients, and ethicists continuously reshaped our research.",
   },
 };

@@ -1,13 +1,15 @@
-import { Fragment, type RefObject, useLayoutEffect, useRef, useState } from "react";
+import {
+  Fragment,
+  type ReactNode,
+  type RefObject,
+  useLayoutEffect,
+  useRef,
+  useState,
+} from "react";
 import { createPortal } from "react-dom";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { HOME_INTRO_REPLAY_EVENT } from "../../utils/homeIntro";
-import {
-  HOME_PLAYBACK_STATE_EVENT,
-  readHomePlaybackState,
-  type HomePlaybackState,
-} from "../../utils/homePlayback";
 import { whenPageLoaderLeaves } from "../../utils/pageLoader";
 import {
   INTRO_WORDMARK_GLYPHS,
@@ -54,13 +56,14 @@ function shouldPlayIntro() {
 
 interface HomeIntroProps {
   scene: RefObject<HTMLElement | null>;
+  children: (playing: boolean) => ReactNode;
 }
 
 /**
  * Plays on every page load: a sparkler writes CirCure on black, holds, and
  * a single flash reveals the patient. The wordmark
- * lands beneath the persistent header. Scroll or Skip completes
- * the intro immediately so the same gesture can move the opening scene.
+ * lands beneath the persistent header. Only Skip can interrupt its own clock;
+ * page input and story playback stay separate until the intro hands over.
  * Re-entering Home or explicitly returning to its title restarts the intro.
  * Reduced motion shows the finished title until the reader continues.
  *
@@ -69,9 +72,9 @@ interface HomeIntroProps {
  *   sets its data-intro ("playing" | "done"), read by home-scene-01.css.
  * - Sets <html data-home-intro> ("playing" | "landed" | "revealing") and
  *   measures .site-header .logo-word-full as the signature's landing point.
- *   The navigation stays visible above the intro layer throughout.
+ *   The navigation stays visible beneath the intro layer throughout.
  */
-export function HomeIntro({ scene }: HomeIntroProps) {
+export function HomeIntro({ scene, children }: HomeIntroProps) {
   const [mode, setMode] = useState<"opening" | "title" | null>(() =>
     shouldPlayIntro() ? "opening" : "title",
   );
@@ -84,6 +87,7 @@ export function HomeIntro({ scene }: HomeIntroProps) {
     // A responsive ScrollTrigger rebuild can temporarily move the page to 0.
     // Only an explicit replay request should restart a completed intro.
     const replay = () => {
+      if (layerRef.current) return;
       setMode(shouldPlayIntro() ? "opening" : "title");
       setReplayCount((count) => count + 1);
     };
@@ -171,71 +175,35 @@ export function HomeIntro({ scene }: HomeIntroProps) {
     }
     section.dataset.intro = "playing";
     root.dataset.homeIntro = "playing";
-    // Start a fresh reading once; native input must never be reset or consumed.
+    // The portal owns input, including the story's autoplay preference toggle.
+    // Keep the document at its opening pose until the intro finishes.
+    const app = document.getElementById("root");
+    const wasInert = app?.inert ?? false;
+    const previousFocus = document.activeElement;
+    if (app) app.inert = true;
+    layerRef.current?.focus({ preventScroll: true });
     window.scrollTo({ top: 0, left: 0, behavior: "instant" });
-    const skipOnInput = () => skipRef.current();
-    const onWheel = (event: WheelEvent) => {
-      // Upward inertia after returning to the top must not cancel the replay.
-      if (event.deltaY > 0) skipOnInput();
-    };
-    let touchY: number | undefined;
-    const onTouchStart = (event: TouchEvent) => {
-      touchY = event.touches[0]?.clientY;
-    };
-    const onTouchMove = (event: TouchEvent) => {
-      const nextY = event.touches[0]?.clientY;
-      if (touchY !== undefined && nextY !== undefined && nextY < touchY)
-        skipOnInput();
-      touchY = nextY;
-    };
+    const blockScroll = (event: Event) => event.preventDefault();
     const onScroll = () => {
-      if (window.scrollY > 0) skipOnInput();
-    };
-    const onKey = (event: KeyboardEvent) => {
-      if (
-        event.target instanceof HTMLElement &&
-        event.target.closest("[data-home-player]")
-      )
-        return;
-      if (
-        [
-          "ArrowDown",
-          "PageDown",
-          "End",
-          " ",
-          "Escape",
-        ].includes(event.key)
-      ) {
-        skipOnInput();
-      }
+      if (window.scrollY !== 0)
+        window.scrollTo({ top: 0, left: 0, behavior: "instant" });
     };
     window.addEventListener("scroll", onScroll, { passive: true });
-    // Capture the intent even when the page loader stops bubbling. The loader
-    // can still block scrolling until the page is ready, without replaying us.
-    window.addEventListener("wheel", onWheel, { passive: true, capture: true });
-    window.addEventListener("touchstart", onTouchStart, {
-      passive: true,
+    window.addEventListener("wheel", blockScroll, {
+      passive: false,
       capture: true,
     });
-    window.addEventListener("touchmove", onTouchMove, {
-      passive: true,
+    window.addEventListener("touchmove", blockScroll, {
+      passive: false,
       capture: true,
     });
-    window.addEventListener("keydown", onKey);
-    const motionPreference = window.matchMedia(
-      "(prefers-reduced-motion: reduce)",
-    );
-    const onMotionChange = () => {
-      if (mode === "opening" && motionPreference.matches) skipOnInput();
-    };
-    motionPreference.addEventListener("change", onMotionChange);
     return () => {
       window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("wheel", onWheel, true);
-      window.removeEventListener("touchstart", onTouchStart, true);
-      window.removeEventListener("touchmove", onTouchMove, true);
-      window.removeEventListener("keydown", onKey);
-      motionPreference.removeEventListener("change", onMotionChange);
+      window.removeEventListener("wheel", blockScroll, true);
+      window.removeEventListener("touchmove", blockScroll, true);
+      if (app) app.inert = wasInert;
+      if (previousFocus instanceof HTMLElement && previousFocus.isConnected)
+        previousFocus.focus({ preventScroll: true });
       delete root.dataset.homeIntro;
       section.dataset.intro = "done";
     };
@@ -303,7 +271,6 @@ export function HomeIntro({ scene }: HomeIntroProps) {
       }
 
       const context = canvas.getContext("2d");
-      let playback = readHomePlaybackState();
 
       // Embers live on a viewport canvas so they can fall past the wordmark.
       const embers: Ember[] = [];
@@ -345,10 +312,9 @@ export function HomeIntro({ scene }: HomeIntroProps) {
         startDrawing();
       };
       const drawEmbers = () => {
-        if (!context || playback.mode === "paused") return;
+        if (!context) return;
         // Fractional 60 Hz steps preserve the original trajectory at any refresh rate.
-        const rate = playback.mode === "playing" ? playback.rate : 1;
-        const step = Math.min(gsap.ticker.deltaRatio(60), 3) * rate;
+        const step = Math.min(gsap.ticker.deltaRatio(60), 3);
         const damping = 0.96 ** step;
         const distance = (0.96 * (1 - damping)) / (1 - 0.96);
         context.clearRect(0, 0, window.innerWidth, window.innerHeight);
@@ -427,26 +393,6 @@ export function HomeIntro({ scene }: HomeIntroProps) {
       });
       let disposed = false;
       let skipped = false;
-      let loaderReady = false;
-      const syncPlayback = (state: HomePlaybackState) => {
-        playback = state;
-        timeline.timeScale(state.mode === "playing" ? state.rate : 1);
-        if (state.mode === "paused" || !loaderReady) {
-          timeline.pause();
-          gsap.ticker.remove(drawEmbers);
-          drawing = false;
-          tipCore.style.animationPlayState = "paused";
-        } else if (!disposed && !skipped) {
-          timeline.resume();
-          startDrawing();
-          tipCore.style.animationPlayState =
-            emitting && timeline.time() >= START ? "running" : "paused";
-        }
-      };
-      const onPlaybackState = (event: Event) => {
-        syncPlayback((event as CustomEvent<HomePlaybackState>).detail);
-      };
-      window.addEventListener(HOME_PLAYBACK_STATE_EVENT, onPlaybackState);
       // App shows the route loader in its parent layout effect. Inspect it
       // after this commit so a returning Home never plays behind that loader.
       void Promise.resolve()
@@ -455,8 +401,7 @@ export function HomeIntro({ scene }: HomeIntroProps) {
           if (disposed || skipped) return;
           tipMatrix = svg.getScreenCTM();
           tipMatrixDirty = false;
-          loaderReady = true;
-          syncPlayback(readHomePlaybackState());
+          timeline.play();
         });
 
       // Write the signature on the dark stage before the original light burst.
@@ -685,7 +630,6 @@ export function HomeIntro({ scene }: HomeIntroProps) {
       return () => {
         disposed = true;
         timeline.kill();
-        window.removeEventListener(HOME_PLAYBACK_STATE_EVENT, onPlaybackState);
         skipRef.current = () => {};
         stopEffects();
       };
@@ -697,89 +641,100 @@ export function HomeIntro({ scene }: HomeIntroProps) {
     },
   );
 
-  if (!playing) return null;
-
+  // Keep the player mounted through hand-off so its autoplay choice survives.
   return createPortal(
-    <div className="home-intro" ref={layerRef}>
-      <div className="home-intro-flash" aria-hidden="true" />
-      <canvas className="home-intro-embers" aria-hidden="true" />
-      <div className="home-intro-title">
-        <div className="home-intro-flight">
-          <svg
-            className="home-intro-word"
-            viewBox={INTRO_WORDMARK_VIEWBOX}
-            role="img"
-            aria-label="CirCure"
-          >
-            <defs>
-              <linearGradient id="home-intro-ink" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0" stopColor="#fff7fb" />
-                <stop offset="0.55" stopColor="#f3c6df" />
-                <stop offset="1" stopColor="#d784b3" />
-              </linearGradient>
-              <radialGradient id="home-intro-spark">
-                <stop offset="0" stopColor="#ffffff" />
-                <stop offset="0.28" stopColor="#f6d9ea" stopOpacity="0.95" />
-                <stop offset="0.6" stopColor="#e8b5d6" stopOpacity="0.45" />
-                <stop offset="1" stopColor="#a25172" stopOpacity="0" />
-              </radialGradient>
-              <mask
-                id="home-intro-mask"
-                className="home-intro-mask"
-                maskUnits="userSpaceOnUse"
-                x="0"
-                y="0"
-                width="3100"
-                height="820"
+    <div
+      className={playing ? "home-intro" : undefined}
+      ref={playing ? layerRef : undefined}
+      role={playing ? "dialog" : undefined}
+      aria-modal={playing || undefined}
+      aria-label={playing ? "CirCure introduction" : undefined}
+      tabIndex={playing ? -1 : undefined}
+    >
+      {playing && (
+        <>
+          <div className="home-intro-flash" aria-hidden="true" />
+          <canvas className="home-intro-embers" aria-hidden="true" />
+          <div className="home-intro-title">
+            <div className="home-intro-flight">
+              <svg
+                className="home-intro-word"
+                viewBox={INTRO_WORDMARK_VIEWBOX}
+                role="img"
+                aria-label="CirCure"
               >
-                {INTRO_WORDMARK_STROKES.map((d) => (
-                  <path
-                    key={d}
-                    d={d}
-                    fill="none"
-                    stroke="#fff"
-                    strokeWidth="140"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                ))}
-              </mask>
-            </defs>
-            <g fill="url(#home-intro-ink)">
-              <g mask="url(#home-intro-mask)">
-                {INTRO_WORDMARK_GLYPHS.map((d) => (
-                  <path key={d} d={d} />
-                ))}
-              </g>
-              {/* Unmasked copy fills any hairline the brush mask missed. */}
-              <g className="home-intro-ink">
-                {INTRO_WORDMARK_GLYPHS.map((d) => (
-                  <path key={d} d={d} />
-                ))}
-              </g>
-            </g>
-            <g className="home-intro-tip">
-              <circle r="92" fill="url(#home-intro-spark)" />
-              <circle className="home-intro-tip-core" r="18" fill="#fff" />
-            </g>
-          </svg>
-        </div>
-        <p className="home-intro-subtitle">
-          {SUBTITLE_WORDS.map((word, index) => (
-            <Fragment key={word}>
-              <span className="home-intro-subtitle-word">{word}</span>
-              {index < SUBTITLE_WORDS.length - 1 ? " " : null}
-            </Fragment>
-          ))}
-        </p>
-      </div>
-      <button
-        type="button"
-        className="home-intro-skip"
-        onClick={() => skipRef.current()}
-      >
-        {mode === "title" ? "Continue" : "Skip intro"}
-      </button>
+                <defs>
+                  <linearGradient id="home-intro-ink" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0" stopColor="#fff7fb" />
+                    <stop offset="0.55" stopColor="#f3c6df" />
+                    <stop offset="1" stopColor="#d784b3" />
+                  </linearGradient>
+                  <radialGradient id="home-intro-spark">
+                    <stop offset="0" stopColor="#ffffff" />
+                    <stop offset="0.28" stopColor="#f6d9ea" stopOpacity="0.95" />
+                    <stop offset="0.6" stopColor="#e8b5d6" stopOpacity="0.45" />
+                    <stop offset="1" stopColor="#a25172" stopOpacity="0" />
+                  </radialGradient>
+                  <mask
+                    id="home-intro-mask"
+                    className="home-intro-mask"
+                    maskUnits="userSpaceOnUse"
+                    x="0"
+                    y="0"
+                    width="3100"
+                    height="820"
+                  >
+                    {INTRO_WORDMARK_STROKES.map((d) => (
+                      <path
+                        key={d}
+                        d={d}
+                        fill="none"
+                        stroke="#fff"
+                        strokeWidth="140"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    ))}
+                  </mask>
+                </defs>
+                <g fill="url(#home-intro-ink)">
+                  <g mask="url(#home-intro-mask)">
+                    {INTRO_WORDMARK_GLYPHS.map((d) => (
+                      <path key={d} d={d} />
+                    ))}
+                  </g>
+                  {/* Unmasked copy fills any hairline the brush mask missed. */}
+                  <g className="home-intro-ink">
+                    {INTRO_WORDMARK_GLYPHS.map((d) => (
+                      <path key={d} d={d} />
+                    ))}
+                  </g>
+                </g>
+                <g className="home-intro-tip">
+                  <circle r="92" fill="url(#home-intro-spark)" />
+                  <circle className="home-intro-tip-core" r="18" fill="#fff" />
+                </g>
+              </svg>
+            </div>
+            <p className="home-intro-subtitle">
+              {SUBTITLE_WORDS.map((word, index) => (
+                <Fragment key={word}>
+                  <span className="home-intro-subtitle-word">{word}</span>
+                  {index < SUBTITLE_WORDS.length - 1 ? " " : null}
+                </Fragment>
+              ))}
+            </p>
+          </div>
+          <button
+            type="button"
+            className="home-intro-skip"
+            onClick={() => skipRef.current()}
+          >
+            {mode === "title" ? "Continue" : "Skip intro"}
+          </button>
+        </>
+      )}
+      {children(playing)}
     </div>,
     document.body,
   );

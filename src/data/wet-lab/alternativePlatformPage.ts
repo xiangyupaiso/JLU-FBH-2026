@@ -1097,10 +1097,16 @@ export const alternativePlatformPage: WikiPageContent = {
         : block,
     ),
   })) as unknown as WikiPageContent["sections"],
-  links: [],
+  links: [
+    { path: "/measurement", label: "Measurement & Quality" },
+    { path: "/design", label: "Construct Design" },
+    { path: "/model", label: "Mathematical Modeling" },
+    { path: "/hardware", label: "CirCore Reaction Platform" },
+  ],
   next: {
     path: "/model",
     label: "Model",
-    title: "Which designs deserve the first experiment?",
+    title: "Predicting Biology Before the Pipette",
+    description: "Wet lab assays reveal empirical outputs, but computational models uncover the physical mechanisms. Explore our thermodynamic folding, translation kinetics, and tumor-immune ODEs.",
   },
 };

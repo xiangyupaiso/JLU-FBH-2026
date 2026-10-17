@@ -289,12 +289,15 @@ export const sustainabilityPage: WikiPageContent = {
     sustainabilityConclusionSection,
   ],
   links: [
-    { path: "/human-practices", label: "Human Practices" },
-    { path: "/education", label: "Education" },
+    { path: "/human-practices", label: "Human Practices & Ethics" },
+    { path: "/education", label: "Education & Outreach" },
+    { path: "/entrepreneurship", label: "Affordable Healthcare" },
+    { path: "/safety-and-security", label: "Environmental Safety" },
   ],
   next: {
     path: "/roster",
-    label: "Roster",
-    title: "Unite around a shared vision to turn the impossible.",
+    label: "Meet Our Team",
+    title: "United by a Shared Vision for Life",
+    description: "Global impact always begins with dedicated individuals. Return to our roster to meet the students and mentors whose collective passion brought CirCure to life.",
   },
 };

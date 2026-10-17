@@ -202,3 +202,28 @@
   }
 }
 
+/* Compact figure sizing: shrink Fig 03, 06, 12, 16, 17, 26 */
+.wiki-page[data-wiki-route="/measurement"] .measurement-figure--compact,
+.wiki-page[data-wiki-route="/measurement"] .wiki-figure:has(img[src*="the-staged-epitope-screen"]),
+.wiki-page[data-wiki-route="/measurement"] .wiki-figure:has(img[src*="agarose-gel-verification"]),
+.wiki-page[data-wiki-route="/measurement"] .wiki-figure:has(img[src*="dose-viability-curve"]),
+.wiki-page[data-wiki-route="/measurement"] .wiki-figure:has(img[src*="round-1-killing-of-k562"]),
+.wiki-page[data-wiki-route="/measurement"] .wiki-figure:has(img[src*="killing-of-mda-mb-231"]),
+.wiki-page[data-wiki-route="/measurement"] .wiki-figure:has(img[src*="tumour-growth-curves"]) {
+  max-width: 560px;
+  margin-inline: auto;
+}
+
+.wiki-page[data-wiki-route="/measurement"] .measurement-figure--compact img,
+.wiki-page[data-wiki-route="/measurement"] .wiki-figure:has(img[src*="the-staged-epitope-screen"]) img,
+.wiki-page[data-wiki-route="/measurement"] .wiki-figure:has(img[src*="agarose-gel-verification"]) img,
+.wiki-page[data-wiki-route="/measurement"] .wiki-figure:has(img[src*="dose-viability-curve"]) img,
+.wiki-page[data-wiki-route="/measurement"] .wiki-figure:has(img[src*="round-1-killing-of-k562"]) img,
+.wiki-page[data-wiki-route="/measurement"] .wiki-figure:has(img[src*="killing-of-mda-mb-231"]) img,
+.wiki-page[data-wiki-route="/measurement"] .wiki-figure:has(img[src*="tumour-growth-curves"]) img {
+  width: auto;
+  max-width: 100%;
+  max-height: min(72vh, 480px);
+  object-fit: contain;
+}
+

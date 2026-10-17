@@ -6123,19 +6123,16 @@ export const experimentsPage: WikiPageContent = {
     }
   ],
   "links": [
-    {
-      "path": "/measurement",
-      "label": "Measurement"
-    },
-    {
-      "path": "/alternative-platform",
-      "label": "Alternative Platform"
-    }
+    { "path": "/design", "label": "Construct Architecture" },
+    { "path": "/measurement", "label": "Circularity & Purity Metrics" },
+    { "path": "/results", "label": "Experimental Findings" },
+    { "path": "/safety-and-security", "label": "Biosafety Protocols" }
   ],
   "next": {
     "path": "/measurement",
     "label": "Measurement",
-    "title": "How will each readout remain comparable?"
+    "title": "How Does a Protocol Become a Reliable Metric?",
+    "description": "Executing experiments is only the start. Discover how we quantified circularity yields, calibrated degradation kinetics, and normalized flow cytometry across runs."
   }
 };
 

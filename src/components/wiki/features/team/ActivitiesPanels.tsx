@@ -7,6 +7,7 @@ import { ArrowDown, ArrowLeft, ArrowRight, Pause, Play, X } from "lucide-react";
 import { PageImagePreloads } from "../../../common/PageImagePreloads";
 import { DriftWall, type DriftWallPhoto } from "../../gallery/DriftWall";
 import type { ActivitiesPageContent } from "../../../../data/team/activitiesPage";
+import { WikiNextRecord } from "../../WikiNextRecord";
 import { whenPageLoaderLeaves } from "../../../../utils/pageLoader";
 import "../../../../styles/features/activities-panels.css";
 
@@ -217,6 +218,10 @@ export function ActivitiesExperience({
           </p>
         ))}
       </section>
+
+      {"next" in content && content.next ? (
+        <WikiNextRecord {...content.next} reveal={false} />
+      ) : null}
 
       <Dialog.Root
         open={browsing || selected !== null}

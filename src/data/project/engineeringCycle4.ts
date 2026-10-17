@@ -192,7 +192,7 @@ export const cycle4Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "We successfully established and verified a human TROP2-expressing 4T1 cell population, providing the tumour-cell material needed to establish a TROP2-bearing tumour model in immunocompetent BALB/c mice. In parallel with model-cell preparation and verification, Wet Lab developed the control groups, administration schedule, animal-welfare criteria and systemic and local immune measurements for evaluating Combined’s in vivo tumour-control effect."
+          "We successfully established and verified a human TROP2-expressing 4T1 cell population, providing the tumour-cell material needed to establish a TROP2-bearing tumour model in immunocompetent BALB/c mice. Wet Lab had begun animal-study planning earlier, considering control comparisons, administration arrangements, animal-welfare criteria and systemic and local immune measurements. Model-cell verification provided the defined cellular input needed to implement the evaluation of Combined’s in vivo tumour-control effect."
 ]
         },
         {
@@ -222,7 +222,7 @@ export const cycle4Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "Alongside model-cell preparation, we designed an evaluation that could distinguish tumour progression, carrier-associated effects and the contribution of the complete Combined preparation. Jiuwei Cui further advised that tumour control should be interpreted together with systemic and local immune evidence. We therefore defined three connected endpoints: longitudinal tumour growth, splenic immune phenotypes and intratumoural CD8/Granzyme B signals (Pulaski and Ostrand-Rosenberg, 2000)."
+          "During earlier animal-study planning, we developed an evaluation framework to distinguish tumour progression, carrier-associated effects and the contribution of an antigen-encoding preparation. This framework was subsequently applied to the complete Combined preparation. Jiuwei Cui advised that tumour control should be interpreted together with systemic and local immune evidence. We therefore defined three connected endpoints: longitudinal tumour growth, splenic immune phenotypes and intratumoural CD8/Granzyme B signals (Pulaski and Ostrand-Rosenberg, 2000)."
 ]
         },
         {
@@ -294,7 +294,7 @@ export const cycle4Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "The approved protocol specified the 4T1–TROP2 model, three comparison groups, dosing schedule and endpoint measurements before animal work began. Protocol development and the initial Cell2Dose work proceeded in parallel, with Dry Lab and Wet Lab aligning the model context, comparison groups and planned dosing conditions. This coordination connected experimental planning with quantitative exploration of molecular input, immune responses and tumour growth."
+          "The approved protocol specified the 4T1–TROP2 model, three comparison groups, dosing schedule and endpoint measurements before animal work began. During earlier planning, Dry Lab and Wet Lab aligned the experimental context and outlined the Cell2Dose framework and its data requirements. CCK-8 and three-ratio cytotoxicity measurements were subsequently incorporated as they became available, connecting the planned experimental conditions with quantitative cell-response calibration and vaccine-action simulation."
 ]
         },
         {
@@ -324,7 +324,7 @@ export const cycle4Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "Dry Lab developed the initial Cell2Dose framework alongside preparation of the animal-study protocol, using the planned model context, comparison groups and administration schedule together with the available CCK-8 and three-ratio cytotoxicity measurements. Cell2Dose: A Cell-Informed Mechanistic Model for Tumor Vaccine Dose Exploration was designed to examine four complementary aspects of Combined performance: **(1) antitumour efficacy**, assessing tumour suppression; **(2) cell viability**, assessing carrier-related effects on cell survival; **(3) systemic exposure**, estimating material entering the systemic compartment; and **(4) innate immune activation**, assessing stimulation against a predefined model criterion. By connecting delivery, circRNA expression and immune responses, Cell2Dose provided a quantitative framework for comparing candidate doses across these four aspects (Wesselhoeft et al., 2018; Chen et al., 2022; Benzekry et al., 2014)."
+          "Dry Lab first outlined the Cell2Dose framework and its data requirements using the planned animal-model context, comparison groups and administration schedule. Once the CCK-8 and three-ratio cytotoxicity measurements became available, we incorporated them to calibrate the core cell-response functions. Cell2Dose: A Cell-Informed Mechanistic Model for Tumor Vaccine Dose Exploration was designed to examine four complementary aspects of Combined performance: **(1) antitumour efficacy**, assessing tumour suppression; **(2) cell viability**, assessing carrier-related effects on cell survival; **(3) systemic exposure**, estimating material entering the systemic compartment; and **(4) innate immune activation**, assessing stimulation against a predefined model criterion. By connecting delivery, circRNA expression and immune responses, Cell2Dose provided a quantitative framework for comparing candidate doses across these four aspects (Wesselhoeft et al., 2018; Chen et al., 2022; Benzekry et al., 2014)."
 ]
         },
         {

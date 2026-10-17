@@ -203,7 +203,8 @@ export const cycle3Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "The gel showed prominent DNA bands for all four antigen-encoding transcription templates, supporting their progression to transcription. At the RNA stage, the purified Combined preparation gave a recorded circular-to-linear signal ratio of 145.7:1 and an estimated circular fraction of 99.30±0.17%, exceeding the ≥90% release criterion. This measurement described the composition after RNase R purification."
+          "The gel showed prominent DNA bands for all four antigen-encoding transcription templates, supporting their progression to transcription. At the RNA stage, the purified Combined preparation gave a recorded circular-to-linear signal ratio of 145.7:1 and an estimated circular fraction of 99.30±0.17%, exceeding the ≥90% release criterion. This measurement described the composition after RNase R purification.",
+          "Junction sequencing recovered the expected connection between the precursor’s 3′ and 5′ sequences. Together, the quantitative readout and junction sequence supported the preparation of circRNA-rich Combined material for the second-round comparison."
 ]
         },
         {
@@ -548,7 +549,7 @@ export const cycle3Section: WikiSection = {
         },
         {
           type: "figure",
-          src: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-c3-04b.avif",
+          src: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-c3-04b-new.avif",
           width: 480,
           height: 369,
           alt: "Figure C3-04B",
@@ -563,7 +564,7 @@ export const cycle3Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "TorusFold established a segmentation scheme for the experimental Combined sequence, demonstrated geometric refinement in a fragment-level test and supplied a full-length structural hypothesis. Together, these outputs added a computational perspective to the molecular measurements. We then returned to the prepared circRNA to examine whether it produced an encoded protein and elicited a maturation-associated response in dendritic cells."
+          "TorusFold established a segmentation scheme for the experimental Combined sequence, demonstrated geometric refinement in a fragment-level test and supplied a full-length structural hypothesis. This work established a sequence-preserving route for structural exploration while keeping fragment-level refinement results distinct from the full-length hypothesis. Translation and dendritic-cell maturation were evaluated through a separate experimental route, providing complementary functional evidence."
 ]
         },
         {

@@ -653,14 +653,15 @@ export const descriptionPage: WikiPageContent = {
   ],
   links: [
     { path: "/engineering", label: "Engineering Success" },
+    { path: "/design", label: "Molecular Design" },
     { path: "/results", label: "Results & Discussion" },
-    { path: "/contribution", label: "Team Contribution" },
-    { path: "/visual-design", label: "Visual Design" },
+    { path: "/human-practices", label: "Clinical & Human Context" },
   ],
   next: {
     path: "/engineering",
     label: "Engineering Success",
-    title: "How the design cycle refined each module into reproducible biological hardware.",
+    title: "Turning Molecular Rationale into Working Circuits",
+    description: "A powerful clinical concept demands rigorous engineering. Follow four iterative DBTL cycles that transformed theoretical circRNA into functional biological hardware.",
   },
 };
 
