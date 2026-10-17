@@ -1062,11 +1062,6 @@ const rawSections: WikiSection[] = [
         ]
       },
       {
-        "type": "note",
-        "label": "Video coming soon",
-        "body": "The instructional video will be added here."
-      },
-      {
         "type": "prose",
         "paragraphs": [
           "[Explore our games](/games)"
@@ -3847,11 +3842,6 @@ const rawSections: WikiSection[] = [
       {
         "type": "feature",
         "key": "education-media-group-10"
-      },
-      {
-        "type": "note",
-        "label": "Video coming soon",
-        "body": "The instructional video will be added here."
       },
       {
         "type": "prose",

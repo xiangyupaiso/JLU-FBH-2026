@@ -84,10 +84,6 @@
     "status": "archive-omitted"
   },
   {
-    "source": "Virtual Laboratory Instructional video.zip",
-    "status": "archive-omitted"
-  },
-  {
     "source": "合成生物课堂.png",
     "file": "synbio-classroom.png",
     "bytes": 2267763,
@@ -304,10 +300,6 @@
     "file": "g02-life-stage-narrative-serious-game-design-playbook-cover.pdf",
     "bytes": 2440522,
     "sha256": "5700014fc051e38d0a24f7958dd3196c80baf24a51ae4601f50463abf0704c42"
-  },
-  {
-    "source": "《Breast Guardian》Instructional video.mp4",
-    "status": "video-placeholder"
   },
   {
     "source": "Letters_to_My_Body.pdf",

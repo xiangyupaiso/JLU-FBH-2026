@@ -372,8 +372,6 @@ It still opens the same door: allowing those who cannot yet experience a complet
 
 Easy / Intermediate / Advanced
 
-[Virtual Laboratory Instructional video\.zip](Images_attachments/Virtual%20Laboratory%20Instructional%20video.zip)
-
 **→ Explore Our Games**
 
 【此处插入站内跳转：跳转至 `Dry Lab / Game` 页面；以最终 Wiki 实际路由为准】
@@ -1357,8 +1355,6 @@ When this knowledge moved beyond the screen into Xinghua Festival and Health Run
 [WP05\_Evidence\_and\_Evaluation\_in\_Education\.pdf](Images_attachments/WP05_Evidence_and_Evaluation_in_Education%201.pdf)
 
 [G02\_Life\_Stage\_Narrative\_Serious\_Game\_Design\_Playbook\.pdf](Images_attachments/G02_Life_Stage_Narrative_Serious_Game_Design_Playbook.pdf)
-
-[《Breast Guardian》Instructional video\.mp4](Images_attachments/《Breast%20Guardian》Instructional%20video.mp4)
 
 **→ Explore Our Games**
 
