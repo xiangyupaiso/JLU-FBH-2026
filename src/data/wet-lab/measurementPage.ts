@@ -712,6 +712,8 @@ export const measurementPage: WikiPageContent = {
           src: getMeasurementImage(
             "dependency-relations-between-the-measurements-in-the-project",
           ),
+          width: 1280,
+          height: 896,
           alt: "Dependency relations between the measurements in the project",
           caption:
             "Dependency relations between the measurements in the project",
@@ -934,6 +936,8 @@ export const measurementPage: WikiPageContent = {
           src: getMeasurementImage(
             "malignant-cell-enrichment-and-compartment-detection-rates-in-gse176078",
           ),
+          width: 1280,
+          height: 1090,
           alt: "Malignant-cell enrichment and compartment detection rates in GSE176078",
           caption:
             "Malignant-cell enrichment and compartment detection rates in GSE176078",
@@ -1104,6 +1108,8 @@ export const measurementPage: WikiPageContent = {
           src: getMeasurementImage(
             "the-staged-epitope-screen-from-1-838-nine-mers-to-15-delivered-peptides",
           ),
+          width: 1135,
+          height: 1280,
           alt: "The staged epitope screen, from 1,838 nine-mers to 15 delivered peptides.",
           caption:
             "The staged epitope screen, from 1,838 nine-mers to 15 delivered peptides.",
@@ -1222,6 +1228,8 @@ export const measurementPage: WikiPageContent = {
           src: getMeasurementImage(
             "alphafold-3-confidence-scores-against-position-9-fill-ratio",
           ),
+          width: 863,
+          height: 563,
           alt: "AlphaFold 3 confidence scores against position-9 fill ratio",
           caption:
             "AlphaFold 3 confidence scores against position-9 fill ratio",
@@ -1440,6 +1448,8 @@ export const measurementPage: WikiPageContent = {
           src: getMeasurementImage(
             "agarose-gel-verification-of-the-four-epitope-encoding-linearised-transcription-templates",
           ),
+          width: 1004,
+          height: 741,
           alt: "Agarose gel of the four linearised transcription templates",
           caption: "Agarose gel of the four linearised transcription templates",
         },
@@ -1566,6 +1576,8 @@ export const measurementPage: WikiPageContent = {
         {
           type: "figure",
           src: getMeasurementImage("workflow-of-the-circularity-release-assay"),
+          width: 1280,
+          height: 896,
           alt: "Workflow of the circularity release assay",
           caption: "Workflow of the circularity release assay",
         },
@@ -1770,6 +1782,8 @@ export const measurementPage: WikiPageContent = {
           src: getMeasurementImage(
             "in-vitro-stability-of-circrna-versus-linear-precursor-rna-at-37-c-gel",
           ),
+          width: 1280,
+          height: 440,
           alt: "Stability of circRNA and its linear precursor at 37 °C",
           caption: "Stability of circRNA and its linear precursor at 37 °C",
         },
@@ -1912,6 +1926,8 @@ export const measurementPage: WikiPageContent = {
           src: getMeasurementImage(
             "preparation-workflow-for-dendritic-cells-and-autologous-t-cells",
           ),
+          width: 1280,
+          height: 749,
           alt: "Preparation workflow for dendritic cells and autologous T cells",
           caption:
             "Preparation workflow for dendritic cells and autologous T cells",
@@ -2028,6 +2044,8 @@ export const measurementPage: WikiPageContent = {
           src: getMeasurementImage(
             "dose-viability-curve-of-empty-lnp-on-dcs-after-24-h",
           ),
+          width: 986,
+          height: 675,
           alt: "Dose–viability relationship for empty LNP on dendritic cells",
           caption:
             "Dose–viability relationship for empty LNP on dendritic cells",
@@ -2142,6 +2160,8 @@ export const measurementPage: WikiPageContent = {
           src: getMeasurementImage(
             "western-blot-of-flag-tagged-fusion-protein-in-dcs",
           ),
+          width: 1280,
+          height: 622,
           alt: "Anti-FLAG Western blot of electroporated dendritic cells",
           caption: "Anti-FLAG Western blot of electroporated dendritic cells",
         },
@@ -2259,6 +2279,8 @@ export const measurementPage: WikiPageContent = {
         {
           type: "figure",
           src: getMeasurementImage("round-1-elispot-wells-and-counts"),
+          width: 1280,
+          height: 434,
           alt: "Round 1 ELISpot wells",
           caption: "Round 1 ELISpot wells",
         },
@@ -2271,6 +2293,8 @@ export const measurementPage: WikiPageContent = {
         {
           type: "figure",
           src: getMeasurementImage("round-2-elispot-wells-and-counts"),
+          width: 1280,
+          height: 351,
           alt: "Round 2 ELISpot wells",
           caption: "Round 2 ELISpot wells",
         },
@@ -2417,6 +2441,8 @@ export const measurementPage: WikiPageContent = {
           src: getMeasurementImage(
             "round-1-killing-of-k562-by-t-cells-primed-with-each-construct",
           ),
+          width: 1280,
+          height: 1155,
           alt: "Round 1 killing of K562 by T cells primed with each construct",
           caption:
             "Round 1 killing of K562 by T cells primed with each construct",
@@ -2470,6 +2496,8 @@ export const measurementPage: WikiPageContent = {
           src: getMeasurementImage(
             "killing-of-mda-mb-231-by-t-cells-primed-with-each-construct-across-e-t-ratios",
           ),
+          width: 1280,
+          height: 754,
           alt: "Killing of MDA-MB-231 across three effector-to-target ratios",
           caption:
             "Killing of MDA-MB-231 across three effector-to-target ratios",
@@ -2659,6 +2687,8 @@ export const measurementPage: WikiPageContent = {
           src: getMeasurementImage(
             "three-step-gating-strategy-for-sorting-gfp-4t1-cells",
           ),
+          width: 4000,
+          height: 1285,
           alt: "Gating strategy for sorting GFP-positive 4T1",
           caption: "Gating strategy for sorting GFP-positive 4T1",
         },
@@ -2867,6 +2897,8 @@ export const measurementPage: WikiPageContent = {
           src: getMeasurementImage(
             "gfp-fluorescence-in-4t1-cells-48-72-h-after-lentiviral-transduction",
           ),
+          width: 1280,
+          height: 747,
           alt: "GFP fluorescence in transduced 4T1",
           caption: "GFP fluorescence in transduced 4T1",
         },
@@ -2881,6 +2913,8 @@ export const measurementPage: WikiPageContent = {
           src: getMeasurementImage(
             "cd8-granzyme-b-dual-immunofluorescence-of-tumour-tissue",
           ),
+          width: 954,
+          height: 596,
           alt: "CD8 and Granzyme B dual immunofluorescence of tumour tissue",
           caption:
             "CD8 and Granzyme B dual immunofluorescence of tumour tissue",
@@ -3002,6 +3036,8 @@ export const measurementPage: WikiPageContent = {
         {
           type: "figure",
           src: getMeasurementImage("immunisation-and-measurement-schedule"),
+          width: 1280,
+          height: 723,
           alt: "Immunisation and measurement schedule",
           caption: "Immunisation and measurement schedule",
         },
@@ -3043,12 +3079,16 @@ export const measurementPage: WikiPageContent = {
         {
           type: "figure",
           src: getMeasurementImage("tumour-growth-curves-for-the-three-groups"),
+          width: 1065,
+          height: 510,
           alt: "Tumour growth curves for the three groups",
           caption: "Tumour growth curves for the three groups",
         },
         {
           type: "figure",
           src: getMeasurementImage("excised-tumours-at-endpoint-d35"),
+          width: 460,
+          height: 336,
           alt: "Excised tumours at endpoint",
           caption: "Excised tumours at endpoint",
         },

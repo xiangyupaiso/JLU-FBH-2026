@@ -15,6 +15,7 @@
   .wiki-page[data-wiki-route="/alternative-platform"]
     .platform-figure--reduced img {
     width: 86%;
+    height: auto;
     margin-inline: auto;
   }
 }

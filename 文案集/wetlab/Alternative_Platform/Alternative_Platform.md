@@ -4,9 +4,9 @@
 
 ### How strong is the evidence that the team successfully engineered their biological system?
 
-Sixteen plasmids were built on one backbone\. The 13 single\-epitope constructs and the Combined construct each cleared colony PCR, diagnostic double digestion and full\-length Sanger sequencing at 100% sequence match before being prepared endotoxin\-free and used as transcription templates\.
+Sixteen plasmids were designed on one backbone and ordered endotoxin\-free from a commercial gene\-synthesis supplier\. The plasmids were verified by plasmid\-target PCR and sequencing at 100% sequence match before linearisation and purification as transcription templates\.
 
-Circularity of the final vaccine is verified structurally\. RT\-PCR across the back\-splice junction followed by Sanger sequencing returned a single homogeneous splice product, with a flat baseline and single sharp peaks either side of the junction\. The released material is 99\.30 ± 0\.17% circular, with the circular species roughly 146 times more abundant than the linear precursor\.
+Circularity of the final Combined vaccine is verified structurally\. RT\-PCR across the back\-splice junction followed by Sanger sequencing returned a single homogeneous splice product, with a flat baseline and single sharp peaks either side of the junction\. The released material is 99\.30 ± 0\.17% circular, with the circular species roughly 146 times more abundant than the linear precursor\.
 
 Function was then validated link by link, in the order an immune response occurs: DC maturation, anti\-FLAG translation, T\-cell activation, effector\-memory differentiation, IFN\-γ ELISpot, MDA\-MB\-231 killing\. From Round 2 onward every link is baselined against an empty\-vector control carrying the complete backbone and adjuvant with no epitope encoded\. In vivo, with blinded calipers on coded animals and the analysis pre\-specified in the NC3Rs Experimental Design Assistant, the pre\-specified key comparison met its threshold: 73\.2% tumour growth inhibition against the empty vector, Holm *P* = 2\.0 × 10⁻⁵\.
 
@@ -18,7 +18,7 @@ See Section 7, the Results page and the Experiments page\.
 
 The end point of our mechanism is a 9\-mer displayed on HLA\-A\*02:01 at the surface of a human dendritic cell and recognised by an autologous human CD8⁺ T cell\. Proteasomal processing, TAP transport, ER loading and a thymically selected TCR repertoire have no bacterial or yeast counterpart, and no standard chassis offers a simplified version of this experiment\.
 
-Having chosen circRNA, and Section 5\.2 sets out why we rejected peptide, DNA, viral and linear\-mRNA alternatives, production is forced as well\. A covalently closed circle is made by self\-splicing of a *permuted* intron–exon precursor, a template arrangement that exists only by design and that no cell can supply\. *E\. coli* appears in our workflow for one job, amplifying the plasmid before it is linearised and leaves the cell permanently\. No *E\. coli* measurement appears anywhere in our results\.
+Having chosen circRNA, and Section 5\.2 sets out why we rejected peptide, DNA, viral and linear\-mRNA alternatives, production is forced as well\. A covalently closed circle is made by self\-splicing of a *permuted* intron–exon precursor, a template arrangement that exists only by design and that no cell can supply\. The vector backbone retains bacterial replication and selection elements as features of the supplied plasmid, but our laboratory workflow is completely cell\-free, starting directly with linearising commercially supplied DNA\. No *E\. coli* culturing or measurement appears anywhere in our workflow\.
 
 See Sections 4 and 5\.
 
@@ -34,9 +34,9 @@ See Sections 5 and 6, and the Parts page\.
 
 ### Has the team documented what didn't work, why, and what others should watch out for?
 
-Five named failures with the reason and what we would do differently, in Section 8\. Four of them weaken our own conclusions\.
+Five limitations are documented with their consequences and recommendations for future work, in Section 8\. Four of them weaken our own conclusions\.
 
-Our two Round\-1 read\-outs ranked the same 13 constructs differently, Spearman ρ = 0\.43 and *P* = 0\.14, and we state which one we selected on and what the other would have chosen\. Round 1 ran with no controls and no replicate wells, so no Round\-1 SFC may be read as an antigen\-specific frequency\. The empty vector alone achieved 61\.3% tumour growth inhibition in vivo, which is why our pre\-specified comparison is against it and not against PBS\. And back\-splice\-junction sequencing exists for the Combined vaccine only, so the other preparations rest on an inference from shared chemistry\.
+Our two Round\-1 read\-outs ranked the same 13 constructs differently, Spearman ρ = 0\.43 and *P* = 0\.14, and we state which one we selected on and what the other would have chosen\. Round\-1 ELISpot was run with no controls and no replicate wells, so no Round\-1 SFC may be read as an antigen\-specific frequency\. The empty vector alone achieved 61\.3% tumour growth inhibition in vivo relative to PBS, which is why our pre\-specified comparison is against it and not against PBS\. And back\-splice\-junction sequencing exists for the Combined vaccine only, so the other preparations rest on an inference from shared chemistry\.
 
 Also reported: haplotype mismatch in the animal model\. Section 7\.6 names, claim by claim, the controls that would raise each one\.
 

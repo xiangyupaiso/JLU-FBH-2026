@@ -13,6 +13,9 @@ export interface AlternativePlatformAssetEntry {
   localSourcePath: string;
   localSrc?: string;
   uploadUrl: string;
+  /** Intrinsic size of the rendered source (CDN upload when present). */
+  width?: number;
+  height?: number;
   alt: string;
   caption: string;
   section: string;
@@ -26,6 +29,8 @@ export const alternativePlatformAssets = {
     localSrc: platformComparison,
     uploadUrl:
       "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/five-platforms-against-the-problem-s-requirement-with-the-failure-point-of-each-marked.avif",
+    width: 1280,
+    height: 694,
     alt: "Five platforms against the problem's requirements, with the failure point of each marked.",
     caption:
       "Five platforms against the problem's requirements, with the failure point of each marked.",
@@ -38,6 +43,8 @@ export const alternativePlatformAssets = {
     localSrc: necessityChain,
     uploadUrl:
       "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/host-modality-and-production-as-three-stacked-layers-with-the-forcing-constraint-on-each-arrow.avif",
+    width: 1280,
+    height: 735,
     alt: "Host, modality and production as three stacked layers, with the forcing constraint on each arrow.",
     caption:
       "Host, modality and production as three stacked layers, with the forcing constraint on each arrow.",
@@ -50,6 +57,8 @@ export const alternativePlatformAssets = {
     localSrc: backboneArchitecture,
     uploadUrl:
       "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/the-circrna-in-translation-order-with-the-four-encoded-elements-highlighted.avif",
+    width: 1280,
+    height: 896,
     alt: "The circRNA in translation order, with the four encoded elements highlighted.",
     caption:
       "The circRNA in translation order, with the four encoded elements highlighted.",
@@ -62,6 +71,8 @@ export const alternativePlatformAssets = {
     localSrc: evidenceDependencyMap,
     uploadUrl:
       "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/the-evidence-chain-from-dc-maturation-to-tumour-cell-killing-each-link-with-its-read-out-and-its-control.avif",
+    width: 1280,
+    height: 640,
     alt: "The evidence chain from DC maturation to tumour-cell killing, each link with its read-out and its control.",
     caption:
       "The evidence chain from DC maturation to tumour-cell killing, each link with its read-out and its control.",
@@ -74,6 +85,8 @@ export const alternativePlatformAssets = {
     localSrc: releaseWorkflow,
     uploadUrl:
       "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/the-cell-free-production-route-and-the-release-gate-that-returns-a-failed-preparation-to-transcription.avif",
+    width: 1280,
+    height: 795,
     alt: "The cell-free production route and the release gate that returns a failed preparation to transcription.",
     caption:
       "The cell-free production route and the release gate that returns a failed preparation to transcription.",
@@ -86,6 +99,8 @@ export const alternativePlatformAssets = {
     localSrc: "",
     uploadUrl:
       "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/sanger-trace-across-the-backsplice-junction-bsj-of-the-combined-vaccine.avif",
+    width: 1280,
+    height: 586,
     alt: "Sanger trace across the back-splice junction of the Combined vaccine.",
     caption:
       "The back-splice junction of the Combined vaccine, read across the ligation site.",
@@ -98,6 +113,8 @@ export const alternativePlatformAssets = {
     localSrc: roundOneRanking,
     uploadUrl:
       "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/round-1-killing-of-k562-by-t-cells-primed-with-each-construct.avif",
+    width: 1280,
+    height: 1155,
     alt: "Round-1 ELISpot rank against K562 killing rank for all 13 constructs.",
     caption:
       "Round-1 ELISpot rank against K562 killing rank for all 13 constructs.",
@@ -109,6 +126,8 @@ export const alternativePlatformAssets = {
     localSrc: roundOneElispot,
     uploadUrl:
       "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/round-1-ifn-elispot-wells-for-all-13-single-epitope-constructs.avif",
+    width: 1278,
+    height: 1280,
     alt: "Round-1 IFN-γ ELISpot wells for all 13 single-epitope constructs.",
     caption:
       "Round-1 IFN-γ ELISpot wells for all 13 single-epitope constructs.",
@@ -121,6 +140,8 @@ export const alternativePlatformAssets = {
     localSrc: inVivoResults,
     uploadUrl:
       "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/tumour-growth-curves-for-the-three-groups.avif",
+    width: 1065,
+    height: 510,
     alt: "Tumour growth curves to day 35 and excised tumours at endpoint.",
     caption: "Tumour growth curves to day 35 and excised tumours at endpoint.",
     section: "In vivo",
@@ -131,6 +152,8 @@ export const alternativePlatformAssets = {
     localSrc: evidenceTiers,
     uploadUrl:
       "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/every-claim-on-this-page-placed-in-one-of-six-evidence-tiers-with-the-read-out-that-supports-it.avif",
+    width: 1280,
+    height: 827,
     alt: "Every claim on this page placed in one of six evidence tiers, with the read-out that supports it.",
     caption:
       "Every claim on this page placed in one of six evidence tiers, with the read-out that supports it.",

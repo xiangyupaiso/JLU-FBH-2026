@@ -11,6 +11,9 @@ const jluWordmark = `${SHARED_CDN}/jlu-wordmark-bilingual.webp`;
 const teachingSeal = `${SHARED_CDN}/bethune-teaching-department.webp`;
 const coreFacility = `${SHARED_CDN}/sponsor-jlu-core-facility.webp`;
 const itm = `${SHARED_CDN}/sponsor-jlu-itm.webp`;
+const xiaohongshu = `${SHARED_CDN}/xiaohongshu.avif`;
+const youtube = `${SHARED_CDN}/youtube.avif`;
+const wechat = `${SHARED_CDN}/wechat.avif`;
 
 /**
  * Footer — single source of truth for the closing panel.
@@ -78,6 +81,38 @@ export const FOOTER_INSTITUTION_LINES: ReadonlyArray<string> = [
 export const FOOTER_EMAIL_LOCAL = "team";
 export const FOOTER_EMAIL_DOMAIN = "jlu-fbh.cn";
 export const FOOTER_EMAIL = `${FOOTER_EMAIL_LOCAL}@${FOOTER_EMAIL_DOMAIN}`;
+
+export interface FooterSocialLink {
+  id: string;
+  name: string;
+  href: string;
+  icon: string;
+  alt: string;
+}
+
+export const FOOTER_SOCIAL_LINKS: ReadonlyArray<FooterSocialLink> = [
+  {
+    id: "wechat",
+    name: "WeChat",
+    href: "https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=MzYyMzk1NjY2Mw==&scene=124#wechat_redirect",
+    icon: wechat,
+    alt: "微信公众号 (WeChat Official Account)",
+  },
+  {
+    id: "xhs",
+    name: "Xiaohongshu",
+    href: "https://xhslink.cn/o/7mSIM6djn5u",
+    icon: xiaohongshu,
+    alt: "小红书 (Xiaohongshu)",
+  },
+  {
+    id: "youtube",
+    name: "YouTube",
+    href: "https://www.youtube.com/@JLU-FBH-iGEM",
+    icon: youtube,
+    alt: "YouTube (@JLU-FBH-iGEM)",
+  },
+];
 
 /**
  * The CC BY 4.0 notice and the gitlab.igem.org repository link are required on

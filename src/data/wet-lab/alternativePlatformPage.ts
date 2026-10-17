@@ -1,5 +1,8 @@
 import type { WikiPageContent } from "../../components/wiki/wikiPageTypes";
-import { getAlternativePlatformImage } from "./alternativePlatformAssets";
+import {
+  alternativePlatformAssets,
+  getAlternativePlatformImage,
+} from "./alternativePlatformAssets";
 
 export const alternativePlatformReferences = [
   {
@@ -1085,6 +1088,8 @@ export const alternativePlatformPage: WikiPageContent = {
             type: "figure" as const,
             src: getAlternativePlatformImage(block.assetKey),
             alt: block.alt,
+            width: alternativePlatformAssets[block.assetKey].width,
+            height: alternativePlatformAssets[block.assetKey].height,
             ...(block.caption ? { caption: block.caption } : {}),
             ...("className" in block ? { className: block.className } : {}),
             ...("figureLabel" in block ? { figureLabel: block.figureLabel } : {}),

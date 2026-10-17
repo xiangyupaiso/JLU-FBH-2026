@@ -2,6 +2,7 @@ import { useEffect, useRef, useState, type ReactNode, type TouchEvent } from "re
 import galleries from "../../../../data/engagement/educationGalleries.json";
 import mediaGroups from "../../../../data/engagement/educationMediaGroups.json";
 import { educationAssetUrl } from "../../../../data/engagement/educationRemoteAssets";
+import { DocumentViewer } from "../../documents/DocumentViewer";
 import "../../../../styles/features/education-media.css";
 
 type Gallery = (typeof galleries)[number];
@@ -22,20 +23,6 @@ function useNearViewport<T extends HTMLElement>() {
     return () => observer.disconnect();
   }, []);
   return { ref, near };
-}
-
-function DocumentCover({ source, title }: { source: string; title: string }) {
-  const webp = educationAssetUrl(source.replace(/\.pdf$/i, ".webp"));
-  const candidates = [webp, webp.replace(/\.webp$/i, ".avif")];
-  const [candidate, setCandidate] = useState(0);
-  if (candidate >= candidates.length) return <span className="education-media-grid__pdf-missing">Cover unavailable · Open PDF</span>;
-  return <img
-    src={candidates[candidate]}
-    alt={`${title} cover`}
-    loading="lazy"
-    decoding="async"
-    onError={() => setCandidate((current) => current + 1)}
-  />;
 }
 
 const interactivePages = {
@@ -86,23 +73,33 @@ function InteractivePage({ item }: { item: (typeof interactivePages)[keyof typeo
 
 function MediaGrid({ group }: { group: MediaGroup }) {
   const allPdf = group.items.every((item) => item.kind === "pdf");
+  if (allPdf) {
+    return (
+      <div className="education-document-group">
+        {group.items.map((item, index) => {
+          const src = educationAssetUrl(item.src);
+          const title = "title" in item ? String(item.title) : "Education Document";
+          return (
+            <DocumentViewer
+              key={`${src}-${index}`}
+              document={{
+                caption: title,
+                url: src,
+                openUrl: src,
+                downloadUrl: src,
+              }}
+            />
+          );
+        })}
+      </div>
+    );
+  }
+
   const { ref, near } = useNearViewport<HTMLDivElement>();
   return (
-    <div className="education-media-grid" data-count={group.items.length} data-pdf={allPdf || undefined} ref={ref}>
+    <div className="education-media-grid" data-count={group.items.length} ref={ref}>
       {group.items.map((item, index) => {
         const src = educationAssetUrl(item.src);
-        if (item.kind === "pdf") {
-          const title = "title" in item ? String(item.title) : "Education PDF";
-          const hasCover = /\.pdf$/i.test(item.src);
-          return (
-            <figure className="education-media-grid__pdf" key={`${src}-${index}`}>
-              {hasCover
-                ? <a className="education-media-grid__pdf-cover" href={src} target="_blank" rel="noreferrer" aria-label={`Open ${title} PDF`}>{near ? <DocumentCover source={item.src} title={title} /> : <span className="education-media-grid__placeholder" />}</a>
-                : near ? <iframe src={`${src}#toolbar=0`} title={title} loading="lazy" /> : <span className="education-media-grid__placeholder" />}
-              <figcaption><a href={src} target="_blank" rel="noreferrer">{title} ↗</a></figcaption>
-            </figure>
-          );
-        }
         return (
           <figure className="education-media-grid__image" key={`${src}-${index}`}>
             {near ? <img src={src} alt={"alt" in item ? item.alt : "Education illustration"} loading="lazy" decoding="async" /> : <span className="education-media-grid__placeholder education-media-grid__placeholder--image" />}

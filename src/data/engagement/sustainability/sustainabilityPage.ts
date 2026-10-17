@@ -3,7 +3,7 @@
  *
  * Source: 文案集/engagement/sustainability/6.3 Sustainability wiki定稿.md
  * Scope: Overview → SDG 3 → Stakeholder Sustainability Tracker → SDG 9 →
- * SDG 12 (SET) → SDG 4 (DEVELOP).
+ * SDG 12 (SET) → SDG 4 / 17 (DEVELOP) → GROW → Contributions → Conclusion.
  * Pure data layer — zero React/JSX elements. SDG chapters are expanded from
  * the `SdgChapter` contract by `chapterBlocks`, so every chapter shares one
  * heading tree (4.x → 4.x.1–4.x.5) and one set of feature keys.
@@ -34,6 +34,11 @@ import {
   sustainabilityEpigraph,
   sustainabilityOverview,
 } from "./sustainabilityData";
+import {
+  sustainabilityConclusionSection,
+  sustainabilityContributionSection,
+  sustainabilityGrowSection,
+} from "./sustainabilityClosing";
 
 const prose = (...paragraphs: ReadonlyArray<string>): WikiContentBlock => ({
   type: "prose",
@@ -74,7 +79,7 @@ function chapterBlocks(chapter: SdgChapter): WikiContentBlock[] {
     subheading(
       scaleAnchorId(chapter, scaleSteps[i].key),
       `${chapter.index}.${i + 1}`,
-      `${scaleSteps[i].letter} — ${scaleSteps[i].name}`,
+      `${scaleSteps[i].letter} — ${i === 0 ? chapter.stakeholders.heading ?? scaleSteps[i].name : scaleSteps[i].name}`,
     );
 
   return [
@@ -103,15 +108,26 @@ function chapterBlocks(chapter: SdgChapter): WikiContentBlock[] {
           },
         ]
       : []),
-    { type: "note", label: "Key Findings", body: chapter.alignment.findings.join("\n") },
+    ...(chapter.alignment.findingsHeading !== undefined
+      ? [
+          ...(chapter.alignment.findingsHeading
+            ? [{ type: "heading" as const, level: 4 as const, title: chapter.alignment.findingsHeading }]
+            : []),
+          prose(...chapter.alignment.findings),
+        ]
+      : [{ type: "note" as const, label: "Key Findings", body: chapter.alignment.findings.join("\n") }]),
 
     step(3),
     prose(...chapter.legacy.intro),
     feature(keys.legacy),
+    ...(chapter.legacy.table
+      ? [{ type: "table" as const, headers: [...chapter.legacy.table.headers], rows: chapter.legacy.table.rows.map(row => [...row]) }]
+      : []),
+    ...(chapter.legacy.closing?.length ? [prose(...chapter.legacy.closing)] : []),
 
     step(4),
     prose(...chapter.evidence.intro),
-    feature(keys.evidence),
+    ...(chapter.evidence.measurable.length || chapter.evidence.significant.length ? [feature(keys.evidence)] : []),
   ];
 }
 
@@ -220,7 +236,7 @@ const setCoreChallenges: WikiSection = {
 };
 
 /* ----------------------------------------------------------------------------
- * 05 / DEVELOP — SDG 4 (further DEVELOP/GROW chapters join here later)
+ * 05 / DEVELOP — SDG 4 and SDG 17
  * -------------------------------------------------------------------------- */
 const developBroaderImpact: WikiSection = {
   id: "develop-broader-impact",
@@ -231,7 +247,7 @@ const developBroaderImpact: WikiSection = {
   summary: "",
   blocks: [
     prose(...developSection.paragraphs),
-    ...chapterBlocks(sustainabilityChapters[3]),
+    ...sustainabilityChapters.slice(3).flatMap(chapterBlocks),
   ],
 };
 
@@ -256,6 +272,9 @@ export const sustainabilityPage: WikiPageContent = {
     impactFramework,
     setCoreChallenges,
     developBroaderImpact,
+    sustainabilityGrowSection,
+    sustainabilityContributionSection,
+    sustainabilityConclusionSection,
   ],
   links: [
     { path: "/human-practices", label: "Human Practices" },

@@ -1,7 +1,7 @@
 /**
  * Compare the actual Results data and inline output against the current manuscript.
  * The only omissions are implementation instructions, image URLs, the document's
- * title, and Markdown presentation markers. Table 1 intentionally has no body.
+ * title, and Markdown presentation markers.
  */
 import assert from "node:assert/strict";
 import { mkdirSync, readFileSync, writeFileSync, existsSync } from "node:fs";
@@ -159,7 +159,7 @@ for (const section of resultsPage.sections) {
         "results-volcano-024322": ["fig01"],
         "results-volcano-028102": ["fig03"],
         "results-plate-structural": ["fig11", "fig12"],
-      "results-dose-scan": ["fig30"],
+        "results-dose-scan": ["fig30"],
       }[block.key];
       assert.ok(keys, "Unrecognized Results feature: " + block.key);
       actual.push(...keys.map((key) => normalize(resultsFigureCaptions[key])));
@@ -191,14 +191,10 @@ assert.deepEqual(
   Object.values(resultsFigureCaptions).map(normalize),
   sourceCaptions,
 );
-assert.equal(tables.length, 30);
+assert.equal(tables.length, 31);
 assert.ok(
-  textUnits.some((p) => /^Table 1\./.test(p)),
-  "Keep the author's pending Table 1 title",
-);
-assert.ok(
-  !tables.some((t) => /^Table 1\./.test(t.caption || "")),
-  "Do not invent Table 1 data",
+  tables.some((t) => /^Table 1\./.test(t.caption || "")),
+  "Render the author's supplied Table 1",
 );
 
 const referenceText = resultsReferences.map((r) =>
@@ -307,7 +303,6 @@ const citationIndex = buildAuthorYearCitationIndex(
 );
 const preservedCitationIssues = [
   "citation inside bold text: Falk et al., 1991",
-  "unresolved: Wesselhoeft et al., 2019",
 ];
 assert.deepEqual(
   citationIndex.issues,

@@ -61,8 +61,6 @@ export const entrepreneurshipAssets = {
     jienzhiheLetterOfIntent: `${DOC_ASSETS}/entrepreneurship/jienzhihe.pdf`,
     scalability: `${DOC_ASSETS}/scalability.pdf`,
     businessPlan: `${DOC_ASSETS}/entrepreneurship/bussines-plan.pdf`,
-    ccicPoster: `${DOC_ASSETS}/ccic-poster-compressed.pdf`,
-    apicPoster: `${DOC_ASSETS}/apic-poster-compressed.pdf`,
     legalPlan: `${DOC_ASSETS}/entrepreneurship/legal-plan.pdf`,
   },
 } as const;

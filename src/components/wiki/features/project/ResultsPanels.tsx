@@ -34,9 +34,7 @@ reportCitationIssues("results", {
   issues: resultsCitationIndex.issues.filter(
     (issue) =>
       /^(?:unresolved|ambiguous):/.test(issue) &&
-      /(?:et al\.,?|[A-Z][a-z-]+,?)\s+(?:19|20)\d{2}/.test(issue) &&
-      // The author requested verbatim copy; the 2019/2018 mismatch is in the review notes.
-      issue !== "unresolved: Wesselhoeft et al., 2019",
+      /(?:et al\.,?|[A-Z][a-z-]+,?)\s+(?:19|20)\d{2}/.test(issue),
   ),
 });
 const citedRenderer = createCitationRenderer(

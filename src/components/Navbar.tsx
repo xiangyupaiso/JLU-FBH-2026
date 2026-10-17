@@ -78,6 +78,9 @@ export function Navbar() {
   const homeActive = module.home;
   const currentDropdownKey =
     DROPDOWNS.find((d) => dropdownActive(pathname, d))?.key ?? null;
+  const [isBallMode, setIsBallMode] = useState(false);
+  const [isBallExpanded, setIsBallExpanded] = useState(false);
+  const scrollDeltaRef = useRef(0);
 
   const clearTimers = useCallback(() => {
     window.clearTimeout(openTimerRef.current);
@@ -153,10 +156,26 @@ export function Navbar() {
     )
       return;
     closeAll();
+    setIsBallExpanded(false);
     if (homeActive) {
       event.preventDefault();
       window.dispatchEvent(new Event(HOME_INTRO_REPLAY_EVENT));
     }
+  };
+
+  const handleCrestClick = (event: MouseEvent<HTMLAnchorElement>) => {
+    if (isBallMode && !isBallExpanded) {
+      event.preventDefault();
+      setIsBallExpanded(true);
+      return;
+    }
+    const target = event.target as HTMLElement | null;
+    if (isBallMode && isBallExpanded && target?.closest(".wordmark-crest")) {
+      event.preventDefault();
+      setIsBallExpanded(false);
+      return;
+    }
+    returnHome(event);
   };
 
   // Close on route change
@@ -184,12 +203,17 @@ export function Navbar() {
     }
     const root = document.documentElement;
     let frame = 0;
+    let lastY = window.scrollY;
 
     const paint = () => {
       frame = 0;
+      const currentY = window.scrollY;
+      const delta = currentY - lastY;
+      lastY = currentY;
+
       const max = root.scrollHeight - window.innerHeight;
       const progress =
-        max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)) : 0;
+        max > 0 ? Math.min(1, Math.max(0, currentY / max)) : 0;
       const progressValue = progress.toFixed(4);
       // CROSS-FILE: reads Home DOM every frame. .home-scene01 lives in
       // contents/home-scene-01.tsx and #home-finale in HomeFinale.tsx.
@@ -204,16 +228,19 @@ export function Navbar() {
       ) || 0;
       // Home loads lazily after the header. Keep its initial dark theme until
       // the opening scene mounts, then let scrolling determine the theme.
-      const homeOpening = String(
+      const isOpening =
         homeActive &&
-          (!opening || opening.getBoundingClientRect().bottom > headerHeight),
-      );
+        (!opening || opening.getBoundingClientRect().bottom > headerHeight);
+      const homeOpening = String(isOpening);
+
       const closing = homeActive
         ? document.getElementById("home-finale")?.getBoundingClientRect()
         : null;
-      const homeClosing = String(
-        !!closing && closing.top <= headerHeight + 1 && closing.bottom > headerHeight,
-      );
+      const isClosing =
+        homeActive &&
+        !!closing && closing.top <= headerHeight + 50;
+      const homeClosing = String(isClosing);
+
       // Finish layout reads before changing styles or header theme attributes.
       if (header.style.getPropertyValue("--scroll-p") !== progressValue) {
         header.style.setProperty("--scroll-p", progressValue);
@@ -223,6 +250,36 @@ export function Navbar() {
       }
       if (header.dataset.homeClosing !== homeClosing) {
         header.dataset.homeClosing = homeClosing;
+      }
+
+      if (homeActive) {
+        const nextBallMode = !isOpening && !isClosing;
+        setIsBallMode((prev) => (prev === nextBallMode ? prev : nextBallMode));
+
+        if (nextBallMode) {
+          if (delta > 0) {
+            if (scrollDeltaRef.current < 0) scrollDeltaRef.current = 0;
+            scrollDeltaRef.current += delta;
+            if (scrollDeltaRef.current > 18) {
+              setIsBallExpanded(false);
+              clearTimers();
+              setOpenKey(null);
+            }
+          } else if (delta < 0) {
+            if (scrollDeltaRef.current > 0) scrollDeltaRef.current = 0;
+            scrollDeltaRef.current += delta;
+            if (scrollDeltaRef.current < -18) {
+              setIsBallExpanded(true);
+            }
+          }
+        } else {
+          setIsBallExpanded(false);
+          scrollDeltaRef.current = 0;
+        }
+      } else {
+        setIsBallMode(false);
+        setIsBallExpanded(false);
+        scrollDeltaRef.current = 0;
       }
     };
 
@@ -239,24 +296,25 @@ export function Navbar() {
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", onResize);
     };
-  }, [pathname, homeActive]);
+  }, [pathname, homeActive, clearTimers]);
 
-  // Click-outside to close whichever menu is open (desktop and/or mobile)
+  // Click-outside to close whichever menu is open (desktop, mobile, or expanded ball)
   useEffect(() => {
-    if (!openKey && !mobileOpen) return;
+    if (!openKey && !mobileOpen && !isBallExpanded) return;
     const onPointerDown = (event: PointerEvent) => {
       if (!headerRef.current) return;
       if (headerRef.current.contains(event.target as Node)) return;
       closeAll();
+      if (isBallExpanded) setIsBallExpanded(false);
     };
     document.addEventListener("pointerdown", onPointerDown, true);
     return () =>
       document.removeEventListener("pointerdown", onPointerDown, true);
-  }, [openKey, mobileOpen, closeAll]);
+  }, [openKey, mobileOpen, isBallExpanded, closeAll]);
 
   // Escape closes whichever menu is open and restores focus to its toggle
   useEffect(() => {
-    if (!openKey && !mobileOpen) return;
+    if (!openKey && !mobileOpen && !isBallExpanded) return;
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key !== "Escape") return;
       event.preventDefault();
@@ -264,6 +322,9 @@ export function Navbar() {
         setMobileOpen(false);
         clearTimers();
         mobileToggleRef.current?.focus();
+      } else if (isBallExpanded) {
+        setIsBallExpanded(false);
+        clearTimers();
       } else {
         const toggle = shellRef.current?.querySelector<HTMLButtonElement>(
           `button[aria-controls="circure-nav-menu"][aria-expanded="true"]`,
@@ -319,6 +380,8 @@ export function Navbar() {
   const headerClassName = [
     "site-header",
     module.home ? "is-home-page" : "",
+    isBallMode ? "is-nav-ball" : "",
+    isBallMode && isBallExpanded ? "is-ball-expanded" : "",
     openKey ? "is-nav-open" : "",
     mobileOpen ? "is-mobile-open" : "",
     module.className,
@@ -348,6 +411,8 @@ export function Navbar() {
         className={headerClassName}
         data-header
         data-home-opening={homeActive ? "true" : undefined}
+        data-home-ball={isBallMode ? "true" : undefined}
+        data-ball-expanded={isBallMode && isBallExpanded ? "true" : undefined}
         data-nav-theme={openKey ?? undefined}
       >
         <div
@@ -359,9 +424,18 @@ export function Navbar() {
           <div className="circure-nav-head">
             <Link
               to="/"
-              className="wordmark"
-              aria-label="CirCure home"
-              onClick={returnHome}
+              className={`wordmark ${isBallMode ? "is-ball-target" : ""}`}
+              aria-label={
+                isBallMode && !isBallExpanded
+                  ? "Expand navigation menu"
+                  : "CirCure home"
+              }
+              title={
+                isBallMode && !isBallExpanded
+                  ? "Click to expand navigation"
+                  : undefined
+              }
+              onClick={handleCrestClick}
             >
               <span className="wordmark-stage" aria-hidden="true">
                 <span className="wordmark-crest">
@@ -370,6 +444,9 @@ export function Navbar() {
                     src={teamCrestUrl}
                     alt=""
                   />
+                  {isBallMode && !isBallExpanded && (
+                    <span className="ball-pulse-ring" aria-hidden="true" />
+                  )}
                 </span>
                 <span className="logo-word-full">CirCure</span>
                 <svg className="logo-symbol" viewBox="0 0 40 40">
@@ -438,6 +515,35 @@ export function Navbar() {
             </nav>
 
             <PageSearch onOpen={closeAll} menuOpen={!!openKey || mobileOpen} />
+
+            {isBallMode && isBallExpanded && (
+              <button
+                className="ball-collapse-btn"
+                type="button"
+                aria-label="Collapse navigation"
+                title="Collapse navigation"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  closeAll();
+                  setIsBallExpanded(false);
+                }}
+              >
+                <svg
+                  viewBox="0 0 20 20"
+                  width="16"
+                  height="16"
+                  aria-hidden="true"
+                  fill="none"
+                  stroke="currentColor"
+                >
+                  <path
+                    d="M5 5l10 10M15 5L5 15"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                  />
+                </svg>
+              </button>
+            )}
 
             <button
               className="mobile-menu-toggle"

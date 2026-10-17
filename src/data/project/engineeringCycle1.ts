@@ -100,7 +100,7 @@ export const cycle1Section: WikiSection = {
   kicker: "Cycle 1 — Targeting",
   navLabel: "Cycle 1 — Targeting",
   title: "Cycle 1: From intended use to a four-antigen strategy",
-  summary: "TIME begins with T—Targeting. This cycle moved from intended use to a four-antigen strategy prepared for epitope-level engineering.",
+  summary: "TIME begins with **T—Targeting**. This cycle moved from intended use to a four-antigen strategy ready for epitope-level engineering.",
   blocks: [
         {
           type: "prose",
@@ -303,7 +303,7 @@ export const cycle1Section: WikiSection = {
           [
                     "DNA template",
                     "Recombinant plasmids assembled by a commercial service provider",
-                    "Supplier plasmid map, sequence file and sample label were matched to the intended design before the delivered material entered the team's recorded template-processing and transcription route",
+                    "Supplier plasmid map, sequence file and sample label were matched to the intended design before the delivered material entered the team’s recorded template-processing and transcription route",
                     "DNA template corresponding to the intended construct",
                     "Executable"
           ],
@@ -644,7 +644,8 @@ export const cycle1Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "The framework converted the four-antigen starting set into an executable evidence sequence. We would first test protein-level support, then locate the expression signal at cellular resolution, extend the comparison across patients and finally integrate the quantitative results with clinical evidence. Quantitative proteomics therefore became the next design."
+          "The framework converted the four-antigen starting set into an executable evidence sequence. We would first test protein-level support, then locate the expression signal at cellular resolution, extend the comparison across patients and finally integrate the quantitative results with clinical evidence. Quantitative proteomics therefore became the next design.",
+          "The finalized evidence map is shown below. Further details are provided in [Bioinformatics: antigen-selection framework](https://2026.igem.wiki/jlu-fbh/bioinformatics) and [Integrated Human Practices: Dry Lab route](https://2026.igem.wiki/jlu-fbh/human-practices)."
 ]
         },
         {
@@ -732,18 +733,6 @@ export const cycle1Section: WikiSection = {
 ]
         },
         {
-          type: "code",
-          language: "R",
-          label: "Code snippet",
-          code: "# Original script: 08_pxd024322_limma_tnbc_vs_normal.R\n\nnormal_columns <- metadata$Condition == \"Normal\"\ntnbc_columns <- metadata$Condition == \"TNBC\"\n\nnormal_n <- rowSums(!is.na(expression[, normal_columns, drop = FALSE]))\ntnbc_n <- rowSums(!is.na(expression[, tnbc_columns, drop = FALSE]))\ntotal_n <- normal_n + tnbc_n\n\n# Test proteins with at least 2 nonmissing values in each group.\n# Retain all proteins in the complete results table.\ntestable <- normal_n >= 2 & tnbc_n >= 2\n\ndesign <- model.matrix(~ Batch + Condition, data = metadata)\nif (qr(design)$rank != ncol(design)) {\n  stop(\"Design matrix is not full rank: batch and condition are confounded.\")\n}\n\nfit <- lmFit(expression[testable, , drop = FALSE], design)\nfit <- eBayes(fit, trend = TRUE, robust = TRUE)\ntested_results <- topTable(\n  fit,\n  coef = \"ConditionTNBC\",\n  number = Inf,\n  sort.by = \"none\"\n)\n\n# After complete result-table assembly:\nfull_results$TNBC_coverage <- full_results$TNBC_n / full_results$TNBC_total\nfull_results$Normal_coverage <- full_results$Normal_n / full_results$Normal_total\nfull_results$Primary_high_coverage <- (\n  full_results$TNBC_coverage >= 0.70 &\n    full_results$Normal_coverage >= 0.70\n)\nfull_results$Meets_conservative_screen <- (\n  !is.na(full_results$adj.P.Val) &\n    full_results$adj.P.Val < 0.05 &\n    full_results$log2FC_TNBC_minus_Normal >= 0.5\n)\n\nwrite.csv(\n  full_results,\n  file.path(result_dir, \"PXD024322_TNBC_vs_Normal_limma_ALL_9088_proteins.csv\"),\n  row.names = FALSE,\n  na = \"\"\n)\n\nprimary_results <- subset(full_results, Primary_high_coverage & Testable)\nwrite.csv(\n  primary_results,\n  file.path(result_dir, \"PXD024322_TNBC_vs_Normal_limma_primary_high_coverage.csv\"),\n  row.names = FALSE,\n  na = \"\"\n)"
-        },
-        {
-          type: "code",
-          language: "R",
-          label: "Code snippet",
-          code: "# Original script: 12_pxd028102_missingness_sensitive_limma.R\n# subject represents the patient identifier (PatientID).\n\ntumor_columns <- grep(\"T_Prot$\", names(abundance), value = TRUE)\nnat_columns <- grep(\"P_Prot$\", names(abundance), value = TRUE)\ntumor_ids <- sub(\"T_Prot$\", \"\", tumor_columns)\nnat_ids <- sub(\"P_Prot$\", \"\", nat_columns)\npaired_ids <- intersect(tumor_ids, nat_ids)\n\nif (length(paired_ids) != 66L) {\n  stop(\"Expected 66 tumor-NAT patient pairs; found \", length(paired_ids))\n}\n\nsample_columns <- c(\n  paste0(paired_ids, \"P_Prot\"),\n  paste0(paired_ids, \"T_Prot\")\n)\ncondition <- factor(\n  c(rep(\"NAT\", length(paired_ids)), rep(\"TNBC\", length(paired_ids))),\n  levels = c(\"NAT\", \"TNBC\")\n)\nsubject <- factor(rep(paired_ids, 2))\ndesign <- model.matrix(~ subject + condition)\ncoefficient_name <- \"conditionTNBC\"\n\n# run_limma() performs left-censored imputation and then:\n# lmFit(imputed, design)\n# eBayes(fit, trend = TRUE, robust = TRUE)\n# topTable(fit, coef = coefficient_name, number = Inf, sort.by = \"none\")\n\nsensitivity_settings <- data.frame(\n  quantile_probability = c(0.005, 0.01, 0.01, 0.05),\n  offset = c(1.0, 0.5, 1.0, 1.0),\n  method = c(\n    \"q0.5pct_minus1.0\",\n    \"q1pct_minus0.5\",\n    \"q1pct_minus1.0_primary\",\n    \"q5pct_minus1.0\"\n  ),\n  stringsAsFactors = FALSE\n)\n\nall_results <- vector(\"list\", nrow(sensitivity_settings))\nfor (index in seq_len(nrow(sensitivity_settings))) {\n  setting <- sensitivity_settings[index, ]\n  all_results[[index]] <- run_limma(\n    quantile_probability = setting$quantile_probability,\n    offset = setting$offset,\n    method_name = setting$method\n  )\n}\n\nprimary <- all_results[[3]]\nwrite.csv(\n  primary,\n  file.path(result_dir, \"PXD028102_paired_limma_imputed_ALL.csv\"),\n  row.names = FALSE,\n  fileEncoding = \"UTF-8\"\n)"
-        },
-        {
           type: "references",
           items: [
           {
@@ -759,6 +748,23 @@ export const cycle1Section: WikiSection = {
                     "hrefLabel": "doi:10.1111/j.2517-6161.1995.tb02031.x"
           }
 ]
+        },
+        {
+          type: "note",
+          label: "Code C1-01｜Proteomic-analysis script excerpts",
+          body: "The excerpts retain the original model specifications, filtering rules, imputation settings and output filenames. Data loading, function definitions and complete result-table assembly are provided in the full script."
+        },
+        {
+          type: "code",
+          language: "R",
+          label: "PXD024322｜Batch-adjusted comparison",
+          code: "# Original script: 08_pxd024322_limma_tnbc_vs_normal.R\n\nnormal_columns <- metadata$Condition == \"Normal\"\ntnbc_columns <- metadata$Condition == \"TNBC\"\n\nnormal_n <- rowSums(!is.na(expression[, normal_columns, drop = FALSE]))\ntnbc_n <- rowSums(!is.na(expression[, tnbc_columns, drop = FALSE]))\ntotal_n <- normal_n + tnbc_n\n\n# Test proteins with at least 2 nonmissing values in each group.\n# Retain all proteins in the complete results table.\ntestable <- normal_n >= 2 & tnbc_n >= 2\n\ndesign <- model.matrix(~ Batch + Condition, data = metadata)\nif (qr(design)$rank != ncol(design)) {\n  stop(\"Design matrix is not full rank: batch and condition are confounded.\")\n}\n\nfit <- lmFit(expression[testable, , drop = FALSE], design)\nfit <- eBayes(fit, trend = TRUE, robust = TRUE)\ntested_results <- topTable(\n  fit,\n  coef = \"ConditionTNBC\",\n  number = Inf,\n  sort.by = \"none\"\n)\n\n# After complete result-table assembly:\nfull_results$TNBC_coverage <- full_results$TNBC_n / full_results$TNBC_total\nfull_results$Normal_coverage <- full_results$Normal_n / full_results$Normal_total\nfull_results$Primary_high_coverage <- (\n  full_results$TNBC_coverage >= 0.70 &\n    full_results$Normal_coverage >= 0.70\n)\nfull_results$Meets_conservative_screen <- (\n  !is.na(full_results$adj.P.Val) &\n    full_results$adj.P.Val < 0.05 &\n    full_results$log2FC_TNBC_minus_Normal >= 0.5\n)\n\nwrite.csv(\n  full_results,\n  file.path(result_dir, \"PXD024322_TNBC_vs_Normal_limma_ALL_9088_proteins.csv\"),\n  row.names = FALSE,\n  na = \"\"\n)\n\nprimary_results <- subset(full_results, Primary_high_coverage & Testable)\nwrite.csv(\n  primary_results,\n  file.path(result_dir, \"PXD024322_TNBC_vs_Normal_limma_primary_high_coverage.csv\"),\n  row.names = FALSE,\n  na = \"\"\n)"
+        },
+        {
+          type: "code",
+          language: "R",
+          label: "PXD028102｜Patient-paired comparison and missingness sensitivity",
+          code: "# Original script: 12_pxd028102_missingness_sensitive_limma.R\n# subject represents the patient identifier (PatientID).\n\ntumor_columns <- grep(\"T_Prot$\", names(abundance), value = TRUE)\nnat_columns <- grep(\"P_Prot$\", names(abundance), value = TRUE)\ntumor_ids <- sub(\"T_Prot$\", \"\", tumor_columns)\nnat_ids <- sub(\"P_Prot$\", \"\", nat_columns)\npaired_ids <- intersect(tumor_ids, nat_ids)\n\nif (length(paired_ids) != 66L) {\n  stop(\"Expected 66 tumor-NAT patient pairs; found \", length(paired_ids))\n}\n\nsample_columns <- c(\n  paste0(paired_ids, \"P_Prot\"),\n  paste0(paired_ids, \"T_Prot\")\n)\ncondition <- factor(\n  c(rep(\"NAT\", length(paired_ids)), rep(\"TNBC\", length(paired_ids))),\n  levels = c(\"NAT\", \"TNBC\")\n)\nsubject <- factor(rep(paired_ids, 2))\ndesign <- model.matrix(~ subject + condition)\ncoefficient_name <- \"conditionTNBC\"\n\n# run_limma() performs left-censored imputation and then:\n# lmFit(imputed, design)\n# eBayes(fit, trend = TRUE, robust = TRUE)\n# topTable(fit, coef = coefficient_name, number = Inf, sort.by = \"none\")\n\nsensitivity_settings <- data.frame(\n  quantile_probability = c(0.005, 0.01, 0.01, 0.05),\n  offset = c(1.0, 0.5, 1.0, 1.0),\n  method = c(\n    \"q0.5pct_minus1.0\",\n    \"q1pct_minus0.5\",\n    \"q1pct_minus1.0_primary\",\n    \"q5pct_minus1.0\"\n  ),\n  stringsAsFactors = FALSE\n)\n\nall_results <- vector(\"list\", nrow(sensitivity_settings))\nfor (index in seq_len(nrow(sensitivity_settings))) {\n  setting <- sensitivity_settings[index, ]\n  all_results[[index]] <- run_limma(\n    quantile_probability = setting$quantile_probability,\n    offset = setting$offset,\n    method_name = setting$method\n  )\n}\n\nprimary <- all_results[[3]]\nwrite.csv(\n  primary,\n  file.path(result_dir, \"PXD028102_paired_limma_imputed_ALL.csv\"),\n  row.names = FALSE,\n  fileEncoding = \"UTF-8\"\n)"
         }
           ]
         },

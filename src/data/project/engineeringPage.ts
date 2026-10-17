@@ -52,13 +52,13 @@ export const TIME_CYCLES: EngineeringCycleDatum[] = [
   {
     id: "engineering-cycle-1",
     letter: "T",
-    title: "Targeting: from intended use to a four-antigen strategy",
+    title: "Targeting: From intended use to a four-antigen strategy",
     status: "recorded",
   },
   {
     id: "engineering-cycle-2",
     letter: "I",
-    title: "Integration: from epitope exploration to Combined",
+    title: "Integration: From epitope exploration to Combined",
     status: "recorded",
   },
   {
@@ -70,7 +70,7 @@ export const TIME_CYCLES: EngineeringCycleDatum[] = [
   {
     id: "engineering-cycle-4",
     letter: "E",
-    title: "Evaluation: extending evidence across biological scales",
+    title: "Evaluation: Extending molecular and cellular evidence to in vivo evaluation",
     status: "recorded",
   },
 ];
@@ -106,7 +106,7 @@ const overviewSection: WikiSection = {
     {
       type: "prose",
       paragraphs: [
-        "**TIME** is the engineering framework JLU-FBH built to organise the evidence-driven development of CirCure. It represents four connected project-level cycles: **Targeting, Integration, Measurement, and Evaluation**. The system is embodied in the form of a mechanical stopwatch: TIME marks the outer scale of the central gear, Design–Build–Test–Learn (DBTL) runs along the inner scale, and dual hands locate the project within its current cycle and engineering stage. Yet TIME is more than an acronym—it reflects the urgency at the heart of CirCure: when recurrence remains a constant threat, every well-founded engineering decision must bring the next answer closer. Our stopwatch therefore records not only the progress of engineering, but also our effort to turn evidence into action without losing time.",
+        "**TIME** is the engineering system developed by JLU-FBH to organize the evidence-driven development of CirCure. **TIME** represents four connected project-level cycles: **Targeting, Integration, Measurement and Evaluation**. The system takes the form of a mechanical stopwatch: TIME is marked on the outer scale of the central gear, Design–Build–Test–Learn runs along the inner scale, and the two hands locate the project within its current cycle and engineering stage. Yet TIME is more than an acronym. It reflects the urgency at the heart of CirCure: when recurrence remains a possibility, every well-founded decision should bring the next answer closer. Our stopwatch therefore records how evidence from antigen selection, construct design and functional testing shapes each next engineering decision, while carrying our long-term hope that this progress can help patients at high risk of recurrence gain more time to recover, be with their families and return to everyday life.",
       ],
     },
     {
@@ -119,7 +119,7 @@ const overviewSection: WikiSection = {
     {
       type: "prose",
       paragraphs: [
-        "In TIME, **Dry Lab and Wet Lab act as the primary driving gears**. Dry Lab turns biological questions into traceable antigen and epitope decisions, structural hypotheses and quantitative predictions, supported by CircuForge, TorusFold, and mathematical modelling. Wet Lab translates these designs into physical constructs and quantitative molecular, cellular, and in vivo measurements, with experimental practice simultaneously giving rise to CirCore. **iHP, Education, Visual Design and Entrepreneurship operate as driven gears**, translating scientific progress into clinical and ethical refinements, transferable learning, coherent communication and development requirements. Their feedback then enters the next DBTL iteration, guiding and extending the main drive.",
+        "In TIME, **Dry Lab and Wet Lab act as the primary driving gears**. Dry Lab turns biological questions into traceable antigen and epitope decisions, structural hypotheses and quantitative predictions; Wet Lab converts these designs into physical constructs and molecular or cellular evidence. Their alternating motion drives the central mechanism and gives rise to CircuForge, TorusFold, mathematical modelling. **iHP, Education, Visual Design and Entrepreneurship operate as driven gears**, translating scientific progress into clinical and ethical refinements, transferable learning, coherent communication and development requirements. Their feedback then enters the next DBTL iteration, guiding and extending the main drive.",
       ],
     },
     {
@@ -162,7 +162,7 @@ export const engineeringPage: WikiPageContent = {
       label: "M",
       value: "Measurement — the molecular and cellular evidence chain",
     },
-    { label: "E", value: "Evaluation — evidence across biological scales" },
+    { label: "E", value: "Evaluation — molecular and cellular evidence to in vivo evaluation" },
   ],
   sections: [
     overviewSection,

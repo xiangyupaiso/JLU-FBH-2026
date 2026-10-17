@@ -1,7 +1,14 @@
 import type { WikiPageContent } from "../../components/wiki/wikiPageTypes";
 import type { ModelPanel } from "./modelPanelTypes";
 import type { CitationReference } from "../citations/citationTypes";
-import { getModelImage } from "./modelAssets";
+import { getModelImage, modelAssets, type ModelAssetKey } from "./modelAssets";
+
+/** Figure block fields for a model asset, including its intrinsic size. */
+const modelFigure = (key: ModelAssetKey) => ({
+  src: getModelImage(key),
+  width: modelAssets[key].width,
+  height: modelAssets[key].height,
+});
 
 const manuscriptSections: WikiPageContent["sections"] = [
   {
@@ -317,7 +324,7 @@ const manuscriptSections: WikiPageContent["sections"] = [
       },
       {
         "type": "figure",
-        "src": getModelImage("02_PXD024322_four_target_batch_adjusted_boxplots.png"),
+        ...modelFigure("02_PXD024322_four_target_batch_adjusted_boxplots.png"),
         "alt": "Figure 6. Abundance distributions of TROP2, B7-H4, Nectin-4, and LIV-1 in the PXD024322 TNBC and normal-breast samples."
       },
       {
@@ -396,7 +403,7 @@ const manuscriptSections: WikiPageContent["sections"] = [
       },
       {
         "type": "figure",
-        "src": getModelImage("image 14.png"),
+        ...modelFigure("image 14.png"),
         "alt": "Figure 8. Paired tumor and adjacent-normal abundance patterns for the three candidates quantified in PXD028102."
       },
       {
@@ -494,7 +501,7 @@ const manuscriptSections: WikiPageContent["sections"] = [
       },
       {
         "type": "figure",
-        "src": getModelImage("12_harmony_umap_major_lineage_no_panel_letter.png"),
+        ...modelFigure("12_harmony_umap_major_lineage_no_panel_letter.png"),
         "alt": "Figure 9. Patient-corrected Harmony UMAP of the GSE176078 TNBC subset after SCTransform normalization. Colors identify the deposited major lineages, and labels mark their principal regions. The analysis included 39,324 quality-controlled cells."
       },
       {
@@ -579,7 +586,7 @@ const manuscriptSections: WikiPageContent["sections"] = [
       },
       {
         "type": "figure",
-        "src": getModelImage("11_candidate_umap_violin_broken_axis_clean.png"),
+        ...modelFigure("11_candidate_umap_violin_broken_axis_clean.png"),
         "alt": "Figure 10. Candidate-gene expression in the GSE176078 TNBC single-cell dataset. From top to bottom, the left panels show TROP2 (*TACSTD2*), B7-H4 (*VTCN1*), LIV-1 (*SLC39A6*), and Nectin-4 (*NECTIN4*, formerly *PVRL4*) on a Harmony UMAP generated after SCTransform normalization and patient correction. The right panels compare raw-count-derived ln(CP10K + 1) expression in immune, malignant, stromal, and cancer-associated fibroblast (CAF) cells. CAFs are also included in the broader stromal group, so those two distributions overlap by design. *TACSTD2* had the broadest malignant-cell expression. *NECTIN4* and *VTCN1* were detected in smaller malignant-cell populations. *SLC39A6* was detected in CAFs as well as malignant cells."
       },
       {
@@ -642,7 +649,7 @@ const manuscriptSections: WikiPageContent["sections"] = [
       },
       {
         "type": "figure",
-        "src": getModelImage("Screenshot 2026-08-31 174114.png"),
+        ...modelFigure("Screenshot 2026-08-31 174114.png"),
         "alt": "At least one candidate met the gene-level rule in 88% of TNBC cases"
       },
       {
@@ -802,7 +809,7 @@ const manuscriptSections: WikiPageContent["sections"] = [
       },
       {
         "type": "figure",
-        "src": getModelImage("image 3.png"),
+        ...modelFigure("image 3.png"),
         "alt": "Figure 11. Published TROP2 immunohistochemistry in TNBC. The original figure shows intermediate and high TROP2 staining, with cytoplasmic, membranous, or combined localization and heterogeneity across tumor tissue. Reproduced from Izci et al. (Izci et al., 2022) under the article's Creative Commons Attribution 4.0 license."
       },
       {
@@ -813,7 +820,7 @@ const manuscriptSections: WikiPageContent["sections"] = [
       },
       {
         "type": "figure",
-        "src": getModelImage("image 5.png"),
+        ...modelFigure("image 5.png"),
         "alt": "Figure 12. Published B7-H4 immunohistochemistry in TNBC and normal breast tissue. Panel 1d of the original figure compares B7-H4 staining in TNBC tissue with normal breast tissue at 200× magnification. Reproduced from Wang et al. (Wang et al., 2018) under the article's Creative Commons Attribution 4.0 license."
       },
       {
@@ -824,7 +831,7 @@ const manuscriptSections: WikiPageContent["sections"] = [
       },
       {
         "type": "figure",
-        "src": getModelImage("image 2.png"),
+        ...modelFigure("image 2.png"),
         "alt": "Figure 13. Published Nectin-4 immunohistochemistry in TNBC. The three panels show strong, moderate, and negative Nectin-4 staining in TNBC tissue at 200× magnification. Reproduced from Zeindler et al. (Zeindler et al., 2019) under the article's Creative Commons Attribution license."
       },
       {
@@ -841,7 +848,7 @@ const manuscriptSections: WikiPageContent["sections"] = [
       },
       {
         "type": "figure",
-        "src": getModelImage("image 11.png"),
+        ...modelFigure("image 11.png"),
         "alt": "Figure 14. Open-access SLC39A6 immunohistochemistry. Panel A shows positive staining in the cytoplasm and nuclei of invasive breast-cancer epithelial cells, and panel B shows negative staining. Reproduced from source Figure 1 of Althobiti et al. (Althobiti et al., 2021), *Oestrogen-regulated protein SLC39A6: a biomarker of good prognosis in luminal breast cancer*, under the Creative Commons Attribution 4.0 license (https://creativecommons.org/licenses/by/4.0/). The image was resized for this Wiki; no other changes were made."
       },
       {
@@ -1149,7 +1156,7 @@ const manuscriptSections: WikiPageContent["sections"] = [
       },
       {
         "type": "figure",
-        "src": getModelImage("image 6.png"),
+        ...modelFigure("image 6.png"),
         "alt": "Figure 17. Across-model standard deviation of per-position side-chain burial. Each point corresponds to one candidate epitope and the horizontal line is the median. Glycine is excluded from the plot, so some positions have fewer than 17 points."
       },
       {
@@ -1702,7 +1709,7 @@ export const modelPanels: Record<string, ModelPanel> = {
           },
           {
             "type": "figure",
-            "src": getModelImage("image 8.png"),
+            ...modelFigure("image 8.png"),
             "alt": "Figure 1. Overall survival among 80 patients with TNBC, grouped by high or low TROP2 expression. High TROP2 expression was associated with significantly shorter overall survival (Li et al., 2025)."
           },
           {
@@ -1730,7 +1737,7 @@ export const modelPanels: Record<string, ModelPanel> = {
           },
           {
             "type": "figure",
-            "src": getModelImage("image.png"),
+            ...modelFigure("image.png"),
             "alt": "Figure 2. Overall survival of patients with high or low B7-H4 expression in a 65-patient TNBC cohort. High B7-H4 was associated with shorter survival and earlier recurrence (Wang et al., 2018)."
           },
           {
@@ -1758,7 +1765,7 @@ export const modelPanels: Record<string, ModelPanel> = {
           },
           {
             "type": "figure",
-            "src": getModelImage("image 15.png"),
+            ...modelFigure("image 15.png"),
             "alt": "Figure 3. Overall survival in 103 patients classified as basal-like 1 TNBC, grouped by Nectin-4 (*PVRL4*) expression. High Nectin-4 was associated with worse outcomes in this subtype (Son et al., 2025)."
           },
           {
@@ -1792,7 +1799,7 @@ export const modelPanels: Record<string, ModelPanel> = {
           },
           {
             "type": "figure",
-            "src": getModelImage("image 7.png"),
+            ...modelFigure("image 7.png"),
             "alt": "Figure 4. Survival of patients with TNBC stratified by LIV-1 staining intensity. Higher intensity (3+) was associated with shorter survival compared to moderate intensity (2+) (Xu et al., 2024)."
           },
           {

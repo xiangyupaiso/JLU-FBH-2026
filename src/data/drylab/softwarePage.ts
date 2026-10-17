@@ -13,6 +13,8 @@ const blocks = (value: unknown[]): WikiContentBlock[] => value.map((block) => {
       alt: asset.alt,
       caption: asset.caption.replace(/^Figure\s+[0-9]+[A-Z]?\.\s*/i, ""),
       figureLabel: figureMatch ? `FIG. ${figureMatch[1]}` : undefined,
+      width: asset.width,
+      height: asset.height,
     };
   }
   return block as WikiContentBlock;

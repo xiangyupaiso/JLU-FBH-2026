@@ -1,7 +1,7 @@
 /**
  * SDG chapter contract for the Sustainability page.
  *
- * Every SDG chapter (SDG 3 now; SDG 9 / 12 / 4 / 17 later) follows the same
+ * Every SET / DEVELOP chapter (SDG 3 / 9 / 12 / 4 / 17) follows the same
  * SCALE skeleton. Going live with another SDG = one more file exporting an
  * `SdgChapter`, pushed into `sustainabilityChapters`; the page builder and the
  * feature map derive their blocks and keys from it. Pure types + helpers.
@@ -57,7 +57,9 @@ export interface StakeholderProfile {
   relevantStakeholder?: string;
   activityType?: string;
   partner?: string;
+  partnerLabel?: string;
   challenge?: string;
+  challengeLabel?: string;
   /** Educator/interview cards carry Key Insight; SDG 4 activity cards omit it. */
   keyInsight?: string;
   whatWeDid?: string;
@@ -68,6 +70,7 @@ export interface StakeholderProfile {
   /** Some source cards intentionally omit a status line. */
   currentStatus?: string;
   sdgs: ReadonlyArray<number>;
+  sdgsLabel?: string;
   /** Prose that sits in the main flow right before this card. */
   leadIn?: ReadonlyArray<string>;
   article?: StakeholderArticle;
@@ -116,7 +119,12 @@ export interface EducationShowcase {
   /** Prose introducing the audience-grouped activities; last sentence links. */
   activitiesLead: ReadonlyArray<string>;
   /** The trailing "click here to read the evidence" sentence, split for linking. */
-  activitiesLeadLink?: { before: string; label: string; after: string; target: string };
+  activitiesLeadLink?: {
+    before: string;
+    label: string;
+    after: string;
+    target: string;
+  };
   groups: ReadonlyArray<EducationActivityGroup>;
   /** Final "Making Science Explorable and Resources Shareable" block. */
   closing: { title: string; paragraphs: ReadonlyArray<string> };
@@ -126,9 +134,11 @@ export interface ConsequenceDimension {
   id: "social" | "economic" | "environmental";
   title: string;
   intro?: string;
-  benefit: string;
-  risk: string;
-  boundary: string;
+  benefit?: string;
+  risk?: string;
+  boundary?: string;
+  /** Chapters whose source uses continuous prose keep that paragraph structure. */
+  paragraphs?: ReadonlyArray<string>;
 }
 
 export interface AlignmentTable {
@@ -151,6 +161,8 @@ export interface LegacyTool {
   /** One-line summary shown in the Evidence tool table. */
   whatItDoes: string;
   pdfs: ReadonlyArray<LegacyToolPdf>;
+  /** Existing page resources that are referenced without a downloadable file. */
+  links?: ReadonlyArray<{ label: string; href: string }>;
 }
 
 export interface EvidenceItem {
@@ -162,9 +174,11 @@ export interface EvidenceItem {
   figureCaption?: string;
   /** Follow the item with the chapter's Legacy tool table (Tool / What it does / Download). */
   toolTable?: true;
+  table?: AlignmentTable;
 }
 
-export type ScaleStepKey = "stakeholder" | "consequences" | "alignment" | "legacy" | "evidence";
+export type ScaleStepKey =
+  "stakeholder" | "consequences" | "alignment" | "legacy" | "evidence";
 
 export interface SdgChapter {
   /** Anchor prefix; SCALE anchors are `${id}-${ScaleStepKey}`. */
@@ -175,8 +189,17 @@ export interface SdgChapter {
   title: string;
   intro: ReadonlyArray<string>;
   stakeholders: {
+    heading?: string;
     lead: ReadonlyArray<string>;
     profiles: ReadonlyArray<StakeholderProfile>;
+    groups?: ReadonlyArray<{
+      id: string;
+      index?: string;
+      title?: string;
+      intro: ReadonlyArray<string>;
+      profiles: ReadonlyArray<StakeholderProfile>;
+    }>;
+    closing?: ReadonlyArray<string>;
     /** SDG 4 only: resource showcases and audience-grouped activities. */
     extras?: EducationShowcase;
   };
@@ -194,8 +217,15 @@ export interface SdgChapter {
     /** Optional because some chapters present alignment as prose findings only. */
     table?: AlignmentTable;
     findings: ReadonlyArray<string>;
+    /** Undefined preserves existing chapters; null keeps findings as plain prose. */
+    findingsHeading?: string | null;
   };
-  legacy: { intro: ReadonlyArray<string>; tools: ReadonlyArray<LegacyTool> };
+  legacy: {
+    intro: ReadonlyArray<string>;
+    tools: ReadonlyArray<LegacyTool>;
+    table?: AlignmentTable;
+    closing?: ReadonlyArray<string>;
+  };
   evidence: {
     intro: ReadonlyArray<string>;
     stats: ReadonlyArray<SustainabilityStat>;
@@ -208,7 +238,11 @@ export interface SdgChapter {
 }
 
 /** SCALE letters with the full names shown by the rail and subheadings. */
-export const scaleSteps: ReadonlyArray<{ key: ScaleStepKey; letter: string; name: string }> = [
+export const scaleSteps: ReadonlyArray<{
+  key: ScaleStepKey;
+  letter: string;
+  name: string;
+}> = [
   { key: "stakeholder", letter: "S", name: "Stakeholder Insights" },
   { key: "consequences", letter: "C", name: "Consequences" },
   { key: "alignment", letter: "A", name: "Alignment" },
@@ -216,9 +250,10 @@ export const scaleSteps: ReadonlyArray<{ key: ScaleStepKey; letter: string; name
   { key: "evidence", letter: "E", name: "Evidence" },
 ];
 
-export const scaleAnchorId = (chapter: Pick<SdgChapter, "id">, key: ScaleStepKey) =>
-  `${chapter.id}-${key}`;
-
+export const scaleAnchorId = (
+  chapter: Pick<SdgChapter, "id">,
+  key: ScaleStepKey,
+) => `${chapter.id}-${key}`;
 
 /** Chinese + English PDF pair hosted on iGEM docs. */
 export const pdfPair = (slug: string) => [

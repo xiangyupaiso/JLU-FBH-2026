@@ -10,14 +10,12 @@ const rawSections: WikiSection[] = [
     "kicker": "Education",
     "title": "Overview",
     "summary": "",
+    "masthead": {
+      "quote": "Education, therefore, is a process of living and not a preparation for future living.",
+      "attribution": "John Dewey",
+      "attributionRole": "My Pedagogic Creed, 1897"
+    },
     "blocks": [
-      {
-        "type": "epigraph",
-        "quote": "Education, therefore, is a process of living and not a preparation for future living.",
-        "translationZh": "",
-        "attribution": "John Dewey",
-        "attributionRole": "My Pedagogic Creed, 1897"
-      },
       {
         "type": "prose",
         "paragraphs": [
