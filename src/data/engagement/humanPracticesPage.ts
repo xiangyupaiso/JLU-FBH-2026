@@ -7,7 +7,7 @@ export const humanPracticesPage: WikiPageContent = {
   chapter: "Engagement / 02 of 04",
   eyebrow: "Integrated Human Practices",
   title: "Human Practices",
-  lede: "Our Human Practices revolve around one core conviction:** never‑ending love**.",
+  lede: "Our Human Practices revolve around one core conviction: **never‑ending love**.",
   boundary: "",
   visual: "human-thread",
   visualLabel: "Stakeholder dialogue and project iteration",

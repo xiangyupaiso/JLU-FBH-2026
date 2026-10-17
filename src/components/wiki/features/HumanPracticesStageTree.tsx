@@ -2,6 +2,7 @@ import { useCallback, useEffect, useRef, useState, type ReactNode } from "react"
 import { UserRound } from "lucide-react";
 import { humanPracticesTreeCopy } from "../../../data/engagement/humanPracticesTreeCopy";
 import { scrollReaderToTarget } from "../../../utils";
+import { HpFlowTooltip } from "./HpFlowTooltip";
 import "../../../styles/hp-stage-tree.css";
 
 type Variant = "plasmid" | "in-vitro" | "in-vivo" | "return";
@@ -35,8 +36,8 @@ const configs: Record<Variant, FlowConfig> = {
       { id: "wang-guan", path: "M 50 51 V 57" },
       { id: "guan-wu", path: "M 50 69 V 73 H 22 V 75" },
       { id: "guan-meng", path: "M 50 69 V 87" },
-      { id: "wu-hu", path: "M 33 81 H 98 V 8 H 61", return: true },
-      { id: "hu-guan", path: "M 39 8 H 5 V 63 H 39", return: true },
+      { id: "wu-guan", path: "M 11 81 H 5 V 63 H 39", return: true },
+      { id: "guan-hu", path: "M 61 63 H 95 V 8 H 61", return: true },
     ],
     steps: [
       { node: "hu", copyKey: "plasmid-1" },
@@ -45,8 +46,8 @@ const configs: Record<Variant, FlowConfig> = {
       { node: "wang", copyKey: "plasmid-4", edge: "niu-wang" },
       { node: "guan", copyKey: "plasmid-5", edge: "wang-guan" },
       { node: "wu", copyKey: "plasmid-6", edge: "guan-wu" },
-      { node: "hu", copyKey: "plasmid-7", edge: "wu-hu", followup: true },
-      { node: "guan", copyKey: "plasmid-8", edge: "hu-guan", followup: true },
+      { node: "guan", copyKey: "plasmid-8", edge: "wu-guan", followup: true },
+      { node: "hu", copyKey: "plasmid-7", edge: "guan-hu", followup: true },
       { node: "meng", copyKey: "plasmid-9", edge: "guan-meng" },
     ],
   },
@@ -83,23 +84,23 @@ const configs: Record<Variant, FlowConfig> = {
   "in-vivo": {
     label: "In Vivo",
     nodes: [
-      { id: "hu", name: "胡正", x: 50, y: 8 },
-      { id: "zhang", name: "张宇宁", x: 50, y: 21 },
-      { id: "song", name: "宋海明", x: 50, y: 34 },
-      { id: "tianmeng", name: "孙天盟", x: 24, y: 51 },
-      { id: "guangjie", name: "孙广杰", x: 76, y: 51 },
-      { id: "cui", name: "崔久嵬", x: 50, y: 68 },
-      { id: "zhao", name: "赵铁锁", x: 50, y: 85 },
+      { id: "hu", name: "胡正", x: 50, y: 6 },
+      { id: "zhang", name: "张宇宁", x: 50, y: 22 },
+      { id: "song", name: "宋海明", x: 50, y: 38 },
+      { id: "tianmeng", name: "孙天盟", x: 24, y: 56 },
+      { id: "guangjie", name: "孙广杰", x: 76, y: 56 },
+      { id: "cui", name: "崔久嵬", x: 50, y: 74 },
+      { id: "zhao", name: "赵铁锁", x: 50, y: 92 },
     ],
     edges: [
-      { id: "hu-zhang", path: "M 50 14 V 15" },
-      { id: "zhang-song", path: "M 50 27 V 28" },
-      { id: "song-tianmeng", path: "M 50 40 V 43 H 24 V 45" },
-      { id: "song-guangjie", path: "M 50 40 V 43 H 76 V 45" },
-      { id: "tianmeng-cui", path: "M 24 57 V 61 H 50 V 62" },
-      { id: "guangjie-cui", path: "M 76 57 V 61 H 50 V 62" },
-      { id: "cui-zhao", path: "M 50 74 V 79" },
-      { id: "zhao-cui", path: "M 61 85 H 96 V 68 H 61", return: true },
+      { id: "hu-zhang", path: "M 50 12 V 16" },
+      { id: "zhang-song", path: "M 50 28 V 32" },
+      { id: "song-tianmeng", path: "M 50 44 V 48 H 24 V 50" },
+      { id: "song-guangjie", path: "M 50 44 V 48 H 76 V 50" },
+      { id: "tianmeng-cui", path: "M 24 62 V 66 H 50 V 68" },
+      { id: "guangjie-cui", path: "M 76 62 V 66 H 50 V 68" },
+      { id: "cui-zhao", path: "M 50 80 V 86" },
+      { id: "zhao-cui", path: "M 61 92 H 96 V 74 H 61", return: true },
     ],
     steps: [
       { node: "hu", copyKey: "vivo-1" },
@@ -115,35 +116,38 @@ const configs: Record<Variant, FlowConfig> = {
   return: {
     label: "Return",
     nodes: [
-      { id: "survey", name: "质粒构建中的公众问卷调查", x: 50, y: 7, kind: "milestone" },
-      { id: "yang", name: "杨淑娟", x: 24, y: 20 },
-      { id: "hu", name: "胡远超", x: 76, y: 20 },
-      { id: "tian", name: "田润辉", x: 24, y: 34 },
-      { id: "patients", name: "患者", x: 76, y: 34 },
-      { id: "family", name: "患者家属", x: 24, y: 48 },
-      { id: "wang", name: "王建国", x: 76, y: 48 },
-      { id: "jing", name: "Jing Wen", x: 24, y: 62 },
-      { id: "jia", name: "贾永立", x: 76, y: 62 },
-      { id: "qiao", name: "乔君华", x: 24, y: 76 },
-      { id: "companies", name: "吉卡与吉恩致和", x: 76, y: 76 },
-      { id: "yu", name: "于双成", x: 50, y: 90 },
+      { id: "survey", name: "质粒构建中的公众问卷调查", x: 50, y: 6, kind: "milestone" },
+      { id: "yang", name: "杨淑娟", x: 25, y: 20 },
+      { id: "hu", name: "胡远超", x: 75, y: 20 },
+      { id: "tian", name: "田润辉", x: 75, y: 34 },
+      { id: "patients", name: "患者", x: 25, y: 34 },
+      { id: "family", name: "患者家属", x: 25, y: 48 },
+      { id: "wang", name: "王建国", x: 75, y: 48 },
+      { id: "jing", name: "Jing Wen", x: 75, y: 62 },
+      { id: "jia", name: "贾永立", x: 25, y: 62 },
+      { id: "qiao", name: "乔君华", x: 25, y: 76 },
+      { id: "companies", name: "吉卡与吉恩致和", x: 75, y: 76 },
+      { id: "yu", name: "于双成", x: 50, y: 91 },
     ],
     edges: [
-      { id: "survey-hu", path: "M 50 13 V 15 H 76 V 16" },
+      { id: "survey-hu", path: "M 50 12 V 14 H 75 V 15" },
       { id: "yang-hu", path: "M 35 20 H 65" },
-      { id: "hu-tian", path: "M 76 26 V 29 H 24 V 30" },
-      { id: "tian-patients", path: "M 35 34 H 65" },
-      { id: "patients-family", path: "M 76 40 V 43 H 24 V 44" },
+      { id: "hu-tian", path: "M 75 25 V 29" },
+      { id: "tian-patients", path: "M 65 34 H 35" },
+      { id: "patients-family", path: "M 25 39 V 43" },
       { id: "family-wang", path: "M 35 48 H 65" },
-      { id: "patients-wang", path: "M 76 40 V 42" },
-      { id: "wang-jing", path: "M 76 54 V 57 H 24 V 58" },
-      { id: "jing-jia", path: "M 35 62 H 65" },
-      { id: "jia-qiao", path: "M 76 68 V 71 H 24 V 72" },
+      { id: "patients-wang", path: "M 25 39 V 41 H 75 V 43" },
+      { id: "wang-jing", path: "M 75 53 V 57" },
+      { id: "jing-jia", path: "M 65 62 H 35" },
+      { id: "jia-qiao", path: "M 25 67 V 71" },
       { id: "qiao-companies", path: "M 35 76 H 65" },
-      { id: "companies-yu", path: "M 76 82 V 85 H 50 V 86" },
-      { id: "wang-yang", path: "M 87 48 H 96 V 3 H 24 V 14", return: true },
-      { id: "yu-yang", path: "M 61 90 H 99 V 1 H 24 V 14", return: true },
-      { id: "yu-hu", path: "M 61 90 H 93 V 5 H 76 V 14", return: true },
+      { id: "companies-yu", path: "M 75 81 V 85 H 50 V 86" },
+      { id: "yang-yu", path: "M 15 20 H 11 V 91 H 40" },
+      { id: "hu-yu", path: "M 85 20 H 92 V 91 H 60" },
+      { id: "hu-jia", path: "M 85 20 H 88 V 69 H 35 V 67" },
+      { id: "wang-yang", path: "M 85 48 H 94 V 13 H 25 V 15", return: true },
+      { id: "yu-yang", path: "M 40 91 H 5 V 20 H 15", return: true },
+      { id: "yu-hu", path: "M 60 91 H 99 V 20 H 85", return: true },
     ],
     steps: [
       { node: "survey", copyKey: "plasmid-2" },
@@ -181,6 +185,7 @@ export function HumanPracticesStageTree({ variant }: { variant: Variant }) {
   const config = configs[variant];
   const rootRef = useRef<HTMLDivElement>(null);
   const cardRef = useRef<HTMLDivElement>(null);
+  const nodeRefs = useRef<Record<string, HTMLButtonElement | null>>({});
   const activeRef = useRef(0);
   const navigationRef = useRef<{ index: number; expiresAt: number } | null>(null);
   const gestureRef = useRef<{ active: boolean; releaseAt: number; timer: ReturnType<typeof setTimeout> | null }>({ active: false, releaseAt: 0, timer: null });
@@ -331,6 +336,7 @@ export function HumanPracticesStageTree({ variant }: { variant: Variant }) {
             return (
               <button
                 key={item.id}
+                ref={(element) => { nodeRefs.current[item.id] = element; }}
                 type="button"
                 className={`hp-stage-flow__node${item.kind === "milestone" ? " is-milestone" : ""}${isActive ? " is-active" : ""}${isActive && displayedStep.followup ? " is-followup" : ""}${isReturned ? " has-followup" : ""}${!overview && !visited.has(item.id) ? " is-future" : ""}`}
                 style={{ left: `${item.x}%`, top: `${item.y}%` }}
@@ -350,11 +356,11 @@ export function HumanPracticesStageTree({ variant }: { variant: Variant }) {
               </button>
             );
           })}
-          {hoveredNode && <aside className={`hp-stage-flow__tooltip${hoveredNode.x > 50 ? " is-left" : ""}`} style={{ left: `${hoveredNode.x}%`, top: `${hoveredNode.y}%` }} onMouseEnter={stopHoverTimer} onMouseLeave={hideHoverSoon}>
+          {hoveredNode && <HpFlowTooltip anchor={nodeRefs.current[hoveredNode.id]} className={`hp-stage-flow__tooltip${overview ? " is-overview" : ""}`} onMouseEnter={stopHoverTimer} onMouseLeave={hideHoverSoon}>
             <strong>{hoveredNode.name}</strong>
             {hoveredInterview && <span>{hoveredInterview.title}</span>}
-            {hoverContext && <p>{inline(hoverContext)}</p>}
-          </aside>}
+            {overview && hoverContext && <p>{inline(hoverContext)}</p>}
+          </HpFlowTooltip>}
         </div>
         {!overview && <article className={`hp-stage-flow__card${displayedStep.followup ? " is-followup" : ""}`}>
           <div className="hp-stage-flow__card-head">

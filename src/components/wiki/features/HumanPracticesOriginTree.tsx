@@ -2,9 +2,10 @@ import { useCallback, useEffect, useRef, useState, type ReactNode } from "react"
 import { UserRound } from "lucide-react";
 import { originInterviewRecords } from "../../../data/engagement/humanPracticesCopy";
 import { scrollReaderToTarget } from "../../../utils";
+import { HpFlowTooltip } from "./HpFlowTooltip";
 import "../../../styles/hp-origin-tree.css";
 
-const names = ["药博会", "刘雅文", "公众", "贾琳", "王磊", "李成丽", "田润辉"];
+const names = ["药博会", "寇长贵", "公众", "贾琳", "王磊", "李成丽", "田润辉"];
 const basePoints = [
   { x: 50, y: 4 }, { x: 50, y: 22 }, { x: 50, y: 40 },
   { x: 50, y: 58 }, { x: 26, y: 76 }, { x: 74, y: 76 },
@@ -90,6 +91,8 @@ function interviewParagraphs(index: number, phase: "first" | "followup" | "revie
 export function HumanPracticesOriginTree() {
   const rootRef = useRef<HTMLDivElement>(null);
   const cardRef = useRef<HTMLDivElement>(null);
+  const introNodeRefs = useRef<Array<HTMLButtonElement | null>>([]);
+  const treeNodeRefs = useRef<Array<HTMLButtonElement | null>>([]);
   const hoverExitTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const activeRef = useRef(0);
   const navigationRef = useRef<{ index: number; expiresAt: number } | null>(null);
@@ -302,6 +305,7 @@ export function HumanPracticesOriginTree() {
           {originInterviewRecords.map((item, index) => (
             <button
               key={item.id}
+              ref={(element) => { introNodeRefs.current[index] = element; }}
               className={`hp-origin-flow__intro-node${hoveredProfile === index ? " is-hovered" : ""}${[1, 2, 3, 4].includes(index) ? " has-followup" : ""}`}
               type="button"
               style={{ left: `${introPoints[index].x}%`, top: `${introPoints[index].y}%` }}
@@ -316,10 +320,10 @@ export function HumanPracticesOriginTree() {
             </button>
           ))}
           {hoveredProfile !== null && (
-            <aside
-              className={`hp-origin-flow__intro-tooltip${introPoints[hoveredProfile].x > 68 ? " is-left" : " is-right"}`}
-              style={{ left: `${introPoints[hoveredProfile].x > 68 ? introPoints[hoveredProfile].x - 27 : introPoints[hoveredProfile].x + 6}%`, top: `${introPoints[hoveredProfile].y}%` }}
-              aria-label={`${names[hoveredProfile]} interview context`}
+            <HpFlowTooltip
+              anchor={introNodeRefs.current[hoveredProfile]}
+              className="hp-origin-flow__intro-tooltip"
+              ariaLabel={`${names[hoveredProfile]} interview context`}
               onMouseEnter={() => showProfile(hoveredProfile)}
               onMouseLeave={hideProfileSoon}
             >
@@ -329,7 +333,7 @@ export function HumanPracticesOriginTree() {
                 <strong>{originInterviewRecords[hoveredProfile].title}</strong>
                 <p>{interviewContext(hoveredProfile)}</p>
               </div>
-            </aside>
+            </HpFlowTooltip>
           )}
           </div>
         </div>
@@ -375,6 +379,7 @@ export function HumanPracticesOriginTree() {
             <button
               className={`hp-origin-flow__person${visitedPeople.has(index) ? " is-lit" : " is-locked"}${index === currentStep.person ? " is-active" : ""}${index === currentStep.person && displayedReturnFrom !== undefined ? " is-revisit" : ""}${returnedPeople.has(index) ? " has-followup" : ""}`}
               key={item.id}
+              ref={(element) => { treeNodeRefs.current[index] = element; }}
               type="button"
               aria-disabled={!visitedPeople.has(index)}
               aria-current={index === currentStep.person ? "step" : undefined}
@@ -393,14 +398,14 @@ export function HumanPracticesOriginTree() {
             </button>
           ))}
           {hoveredTreeProfile !== null && (
-            <aside
-              className={`hp-origin-flow__tree-tooltip${basePoints[hoveredTreeProfile].x > 50 ? " is-left" : " is-right"}`}
-              style={{ left: `${basePoints[hoveredTreeProfile].x}%`, top: `${basePoints[hoveredTreeProfile].y}%` }}
+            <HpFlowTooltip
+              anchor={treeNodeRefs.current[hoveredTreeProfile]}
+              className="hp-origin-flow__tree-tooltip"
               role="tooltip"
             >
               <strong>{names[hoveredTreeProfile]}</strong>
               <span>{originInterviewRecords[hoveredTreeProfile].title}</span>
-            </aside>
+            </HpFlowTooltip>
           )}
         </div>
 
