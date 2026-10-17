@@ -721,6 +721,18 @@ html.has-route-reader-scroll {
   padding: 0;
 }
 
+.wiki-page--route .wiki-masthead--quote-only {
+  margin: 0 0 clamp(32px, 4vw, 48px);
+  padding: clamp(8px, 1.5vw, 16px) 0 0;
+  background: transparent;
+}
+
+.wiki-page--route .wiki-masthead--quote-only .wiki-masthead__epigraph {
+  margin: 0 auto;
+  padding: 0 clamp(20px, 3vw, 40px);
+  animation: none;
+}
+
 .wiki-page--route .wiki-masthead__image {
   display: block;
   width: 100%;
@@ -858,6 +870,15 @@ html.has-route-reader-scroll {
     --masthead-bleed-x: 20px;
   }
 
+  .wiki-page--route .wiki-masthead--quote-only {
+    margin: 0 0 24px;
+    padding: 0;
+  }
+
+  .wiki-page--route .wiki-masthead--quote-only .wiki-masthead__epigraph {
+    margin-top: 0;
+  }
+
   .wiki-page--route .wiki-masthead__image {
     height: 200px;
   }
@@ -993,6 +1014,16 @@ html.has-route-reader-scroll {
 .wiki-page--route .wiki-prose p {
   margin: 0 !important;
   line-height: 1.75;
+}
+
+.wiki-page--route .wiki-content-heading {
+  margin: var(--wiki-space-subhead-top, 28px) 0 var(--wiki-space-subhead-bottom, 14px);
+  font-family: var(--font-sans);
+  font-size: clamp(17px, 1.8vw, 20px);
+  font-weight: 700;
+  line-height: 1.35;
+  color: var(--route-subheading-ink);
+  border: 0;
 }
 
 /* 连续两个 prose 块相邻时，保持标准正文段落间距，消除 80px 异常大断层 */
@@ -1595,17 +1626,17 @@ html.has-route-reader-scroll {
   max-width: 760px;
   color: var(--ink);
   font-family: var(--font-heading);
-  font-size: clamp(44px, 6vw, 76px);
+  font-size: clamp(26px, 2.8vw, 38px);
   font-weight: 600;
-  letter-spacing: -0.01em;
-  line-height: 0.96;
+  letter-spacing: -0.015em;
+  line-height: 1.18;
 }
 
 .wiki-page--route .wiki-next.wiki-next--record p:not(.wiki-kicker) {
-  margin: 24px 0 0;
+  margin: 16px 0 0;
   color: var(--muted);
   font-family: var(--font-body);
-  font-size: 18px;
+  font-size: 16px;
   line-height: 1.5;
 }
 
@@ -2092,7 +2123,8 @@ html.has-route-reader-scroll {
   }
 
   .wiki-page--route .wiki-next.wiki-next--record h2 {
-    font-size: clamp(44px, 13vw, 60px);
+    font-size: clamp(22px, 5.5vw, 28px);
+    line-height: 1.25;
   }
 
   .wiki-page--route
@@ -2154,6 +2186,17 @@ html.has-route-reader-scroll {
   background-size: 100% auto;
   background-position: top center;
   background-repeat: repeat-y;
+}
+
+/* Natural document flow keeps the shared desktop outline beside the article. */
+@media (min-width: 981px) {
+  .wiki-page.wiki-page--route.route--document-flow .wiki-outline.wiki-outline--marker {
+    position: sticky;
+    top: calc(var(--header-height) + var(--reader-pad));
+    align-self: start;
+    height: fit-content;
+    max-height: calc(100dvh - var(--header-height) - (var(--reader-pad) * 2));
+  }
 }
 
 @media (min-width: 1200px) and (min-height: 700px) {

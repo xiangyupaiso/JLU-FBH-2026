@@ -1,6 +1,7 @@
 import {
   createContext,
   memo,
+  useCallback,
   useContext,
   useEffect,
   useId,
@@ -25,7 +26,6 @@ import { WikiLineSidebar, type WikiLineSidebarItem } from "./WikiLineSidebar";
 import { WikiNextRecord } from "./WikiNextRecord";
 import { WikiProtocolModal } from "./WikiProtocolViewer";
 import { PageImagePreloads } from "../common/PageImagePreloads";
-import { wikiPageImages } from "./wikiPageImages";
 import { experimentProtocolImage } from "../../data/wet-lab/experimentProtocolPages";
 import type { ExperimentProtocolPair } from "../../data/wet-lab/experimentProtocolPages";
 import "../../styles/wiki-rebuild.css";
@@ -54,9 +54,9 @@ import "../../styles/features/experiments-panels.css";
  * Wet Lab records use this component with their own three-token palette;
  * nothing in the route structure changes between modules.
  *
- * Image readiness is part of this template: hero and every content figure
- * preload before the shared loading cover leaves. Interaction-only images
- * use `preloadImages` or the shared `PageImagePreloads` in their Feature.
+ * Image readiness: only the hero, explicit `preloadImages` and protocol
+ * dialog pages preload behind the loading cover. Article figures load with
+ * the page; the loader only waits for the ones near the first screen.
  */
 
 type FeatureMap = Partial<Record<string, ReactNode>>;
@@ -92,6 +92,7 @@ export function useRoutePageScroll() {
 export type InlineRenderer = (
   text: string,
   fallback: (t: string) => ReactNode,
+  sectionId?: string,
 ) => ReactNode;
 
 const InlineRendererContext = createContext<InlineRenderer | null>(null);
@@ -107,8 +108,6 @@ interface WikiRoutePageProps {
    * figures are collected automatically; do not list PDF or game resources.
    */
   preloadImages?: readonly string[];
-  /** Let long articles load body figures as the reader reaches them. */
-  deferContentImages?: boolean;
   features?: FeatureMap;
   /** Module scope class that carries the palette, e.g. `wiki-page--project`. */
   pageClassName?: string;
@@ -160,6 +159,8 @@ interface WikiRoutePageProps {
   }) => ReactNode;
   /** Optional interactive feature or section mounted right between hero and reader track. */
   leadSection?: ReactNode;
+  /** Content inside the reader, before the first section heading. */
+  articleLead?: ReactNode;
 }
 
 const STATUS_LABELS = {
@@ -339,6 +340,7 @@ function splitNoteContent(body: string): string[] {
 function renderProseParagraphs(
   paragraphs: string[],
   inline: InlineRenderer | null = null,
+  sectionId?: string,
 ): ReactNode[] {
   const elements: ReactNode[] = [];
   let stepBuffer: Array<{ num: string; text: string }> = [];
@@ -353,7 +355,7 @@ function renderProseParagraphs(
           <li key={step.num} className="wiki-protocol-step-item">
             <span className="wiki-protocol-step-badge">{step.num}</span>
             <div className="wiki-protocol-step-text">
-              {renderInlineFormatting(step.text)}
+              {prose(step.text)}
             </div>
           </li>
         ))}
@@ -368,7 +370,7 @@ function renderProseParagraphs(
    * inherits plain emphasis rendering and gains Markdown links for free.
    */
   const prose = (text: string): ReactNode =>
-    inline ? inline(text, linkify) : linkify(text);
+    inline ? inline(text, linkify, sectionId) : linkify(text);
 
   paragraphs.forEach((paragraph, idx) => {
     const stepMatch = paragraph.match(/^\s*(\d+)[.、]\s+(.*)$/s);
@@ -378,35 +380,6 @@ function renderProseParagraphs(
     }
 
     flushSteps(`flush-${idx}`);
-
-    const trimmed = paragraph.trim();
-    if (
-      trimmed === "**Step-by-Step Instructions**" ||
-      trimmed === "Step-by-Step Instructions"
-    ) {
-      elements.push(
-        <div
-          className="wiki-protocol-step-section-heading"
-          key={`step-main-${idx}`}
-        >
-          <span className="wiki-protocol-step-section-heading__badge">SOP</span>
-          <h4 className="wiki-protocol-step-section-heading__title">
-            Step-by-Step Instructions
-          </h4>
-        </div>,
-      );
-      return;
-    }
-
-    const subheadMatch = paragraph.match(/^\*\*(.+?)\*\*$/);
-    if (subheadMatch) {
-      elements.push(
-        <div className="wiki-protocol-step-subheading" key={`step-sub-${idx}`}>
-          {subheadMatch[1]}
-        </div>,
-      );
-      return;
-    }
 
     elements.push(<p key={`p-${idx}`}>{prose(paragraph)}</p>);
   });
@@ -470,7 +443,7 @@ export function WikiContentBlocks({ blocks, features = {}, sectionId }: {
   ))}</>;
 }
 
-function EducationViewportFigureImage({ src, alt }: { src: string; alt: string }) {
+function EducationViewportFigureImage({ src, alt, width, height }: { src: string; alt: string; width?: number; height?: number }) {
   const containerRef = useRef<HTMLSpanElement>(null);
   const [near, setNear] = useState(false);
   useEffect(() => {
@@ -484,7 +457,7 @@ function EducationViewportFigureImage({ src, alt }: { src: string; alt: string }
     observer.observe(element);
     return () => observer.disconnect();
   }, []);
-  return <span className="education-figure-window" ref={containerRef}>{near ? <img src={src} alt={alt} loading="lazy" decoding="async" /> : null}</span>;
+  return <span className="education-figure-window" ref={containerRef}>{near ? <img src={src} alt={alt} width={width} height={height} loading="lazy" decoding="async" /> : null}</span>;
 }
 
 function RouteBlock({
@@ -526,10 +499,31 @@ function RouteBlock({
   };
 
   switch (block.type) {
+    case "protocol-steps":
+      return (
+        <ol className="wiki-protocol-step-list">
+          {block.steps.map((step) => (
+            <li key={step.number} className="wiki-protocol-step-item">
+              <span className="wiki-protocol-step-badge">{step.number}</span>
+              <div className="wiki-protocol-step-text">
+                <WikiContentBlocks blocks={step.blocks} features={features} sectionId={sectionId} />
+              </div>
+            </li>
+          ))}
+        </ol>
+      );
+    case "heading": {
+      const Heading = `h${block.level}` as "h4" | "h5" | "h6";
+      return (
+        <Heading className="wiki-content-heading">
+          {inline ? inline(block.title, linkify, sectionId) : linkify(block.title)}
+        </Heading>
+      );
+    }
     case "prose":
       return (
-        <div className="wiki-prose" data-wiki-reveal>
-          {renderProseParagraphs(block.paragraphs, inline)}
+        <div id={block.id} className="wiki-prose" data-wiki-reveal>
+          {renderProseParagraphs(block.paragraphs, inline, sectionId)}
         </div>
       );
     case "quote":
@@ -544,7 +538,7 @@ function RouteBlock({
         <div className="wiki-prose" data-wiki-reveal>
           <List className="wiki-prose-list" start={block.ordered ? block.start : undefined}>
             {block.items.map((item, index) => (
-              <li key={index}>{inline ? inline(item, linkify) : linkify(item)}</li>
+              <li key={index}>{inline ? inline(item, linkify, sectionId) : linkify(item)}</li>
             ))}
           </List>
         </div>
@@ -587,12 +581,12 @@ function RouteBlock({
     case "figure":
       return (
         <figure
-          className={`wiki-figure${block.figureLabel ? " wiki-figure--labelled" : ""}${block.src.includes("education-feedback-invitation") ? " wiki-figure--education-feedback" : ""}`}
+          className={`wiki-figure${block.className ? ` ${block.className}` : ""}${block.figureLabel ? " wiki-figure--labelled" : ""}${block.src.includes("education-feedback-invitation") ? " wiki-figure--education-feedback" : ""}`}
           data-wiki-reveal
         >
           {block.src.includes("/engagement/education/figures/")
-            ? <EducationViewportFigureImage src={block.src} alt={block.alt} />
-            : <img src={block.src} alt={block.alt} loading={block.src.includes("/assets/education/") ? "lazy" : "eager"} decoding="async" />}
+            ? <EducationViewportFigureImage src={block.src} alt={block.alt} width={block.width} height={block.height} />
+            : <img src={block.src} alt={block.alt} width={block.width} height={block.height} loading="lazy" decoding="async" />}
           {block.figureLabel ? (
             <figcaption>
               <span className="wiki-figure__label">{block.figureLabel}</span>
@@ -612,7 +606,7 @@ function RouteBlock({
         <figure className="wiki-figure wiki-figure--carousel" data-wiki-reveal>
           <div className="wiki-figure__row">
             {block.images.map((img) => (
-              <img key={img.src} src={img.src} alt={img.alt ?? ""} loading="lazy" decoding="async" />
+              <img key={img.src} src={img.src} width={img.width} height={img.height} alt={img.alt ?? ""} loading="lazy" decoding="async" />
             ))}
           </div>
           {block.caption ? <figcaption>{renderInlineFormatting(block.caption)}</figcaption> : null}
@@ -651,8 +645,8 @@ function RouteBlock({
             ) : null}
             <thead>
               <tr>
-                {block.headers.map((header) => (
-                  <th scope="col" key={header}>
+                {block.headers.map((header, columnIndex) => (
+                  <th scope="col" key={`${columnIndex}-${header}`}>
                     {renderInlineFormatting(header)}
                   </th>
                 ))}
@@ -760,10 +754,15 @@ function RouteBlock({
           <p>{inline ? inline(block.body, linkify) : linkify(block.body)}</p>
         </aside>
       );
-    case "subheading":
+    case "subheading": {
+      const HeadingTag = block.level === 4 ? "h4" : "h3";
+      const displayTitle =
+        block.level === 4 && block.index && !block.title.startsWith(block.index)
+          ? `${block.index} ${block.title}`
+          : block.title;
       return (
-        <h3
-          className="wiki-subheading"
+        <HeadingTag
+          className={`wiki-subheading${block.level === 4 ? " wiki-subheading--nested" : ""}`}
           id={block.id}
           data-wiki-outline-anchor
           data-wiki-outline-parent={sectionId}
@@ -773,10 +772,11 @@ function RouteBlock({
             <span className="wiki-anchor" id={anchorId} key={anchorId} />
           ))}
           <span className="wiki-subheading__title">
-            {renderSubheadingTitle(block.title)}
+            {renderSubheadingTitle(displayTitle)}
           </span>
-        </h3>
+        </HeadingTag>
       );
+    }
     case "feature":
       return (
         <div className="wiki-feature" data-wiki-reveal>
@@ -988,7 +988,8 @@ function ProtocolSubheadingDrawer({
   scrollContainerRef?: RefObject<HTMLElement | null>;
 }) {
   const cleanTitle = subheading.title
-    .replace(new RegExp(`^${subheading.index}\\s*`), "")
+    .replace(new RegExp(`^${subheading.index.replace(/\./g, "\\.")}[.\\s]+`), "")
+    .replace(/^\.\s*/, "")
     .trim();
 
   return (
@@ -998,25 +999,28 @@ function ProtocolSubheadingDrawer({
       data-wiki-outline-anchor
       data-wiki-outline-parent={sectionId}
     >
-      <button
-        type="button"
-        className="wiki-protocol-drawer__header"
-        aria-expanded={isOpen}
-        onClick={onToggle}
-      >
-        <div className="wiki-protocol-drawer__title-row">
-          <span className="wiki-protocol-drawer__index-pill">
-            {subheading.index}
+      <h3 className="wiki-protocol-drawer__heading">
+        <button
+          type="button"
+          className="wiki-protocol-drawer__header"
+          aria-expanded={isOpen}
+          aria-controls={`${subheading.id}-content`}
+          onClick={onToggle}
+        >
+          <span className="wiki-protocol-drawer__title-row">
+            <span className="wiki-protocol-drawer__index-pill">
+              {subheading.index}
+            </span>
+            <span className="wiki-protocol-drawer__title">{cleanTitle}</span>
           </span>
-          <span className="wiki-protocol-drawer__title">{cleanTitle}</span>
-        </div>
-        <span className="wiki-protocol-drawer__chevron" aria-hidden="true">
-          ▼
-        </span>
-      </button>
+          <span className="wiki-protocol-drawer__chevron" aria-hidden="true">
+            ▼
+          </span>
+        </button>
+      </h3>
 
       {isOpen && (
-        <div className="wiki-protocol-drawer__body">
+        <div className="wiki-protocol-drawer__body" id={`${subheading.id}-content`}>
           {blocks.map((block, idx) => (
             <RouteBlock
               key={`${subheading.id}-${block.type}-${idx}`}
@@ -1064,6 +1068,22 @@ function RouteSection({
       firstSubIndex !== -1,
   );
 
+  const hasParentSubheadings = useMemo(() => {
+    if (!blocks) return false;
+    return (
+      blocks.some(
+        (b) =>
+          b.type === "subheading" &&
+          (b.level === 3 || (Boolean(b.index) && !b.index.includes("."))),
+      ) &&
+      blocks.some(
+        (b) =>
+          b.type === "subheading" &&
+          (b.level === 4 || (Boolean(b.index) && b.index.includes("."))),
+      )
+    );
+  }, [blocks]);
+
   const { overviewBlocks, subheadingGroups } = useMemo(() => {
     if (!shouldCollapseSubheadings || !blocks) {
       return { overviewBlocks: [], subheadingGroups: [] };
@@ -1082,8 +1102,17 @@ function RouteSection({
     for (let i = firstSubIndex; i < blocks.length; i++) {
       const block = blocks[i];
       if (block.type === "subheading") {
-        if (currentGroup) groups.push(currentGroup);
-        currentGroup = { subheading: block, blocks: [] };
+        const isDrawerTrigger =
+          !hasParentSubheadings ||
+          block.level === 3 ||
+          (Boolean(block.index) && !block.index.includes("."));
+
+        if (isDrawerTrigger) {
+          if (currentGroup) groups.push(currentGroup);
+          currentGroup = { subheading: block, blocks: [] };
+        } else if (currentGroup) {
+          currentGroup.blocks.push(block);
+        }
       } else if (currentGroup) {
         currentGroup.blocks.push(block);
       }
@@ -1091,7 +1120,7 @@ function RouteSection({
     if (currentGroup) groups.push(currentGroup);
 
     return { overviewBlocks: overview, subheadingGroups: groups };
-  }, [blocks, firstSubIndex, shouldCollapseSubheadings]);
+  }, [blocks, firstSubIndex, hasParentSubheadings, shouldCollapseSubheadings]);
 
   return (
     <section
@@ -1222,7 +1251,6 @@ export function WikiRoutePage({
   heroImage,
   heroFallbackImage,
   preloadImages,
-  deferContentImages = false,
   features = {},
   pageClassName = "",
   theme,
@@ -1238,19 +1266,19 @@ export function WikiRoutePage({
   showAllOutlineHeadings = false,
   outlineSlot,
   leadSection,
+  articleLead,
 }: WikiRoutePageProps) {
   const imageSources = useMemo(
     () => [
       heroImage,
       heroFallbackImage,
-      ...(deferContentImages ? [] : wikiPageImages(content)),
       ...(preloadImages ?? []),
       ...(protocolPairs ?? []).flatMap((pair) => [
         ...(typeof pair.flowPage === "number" ? [experimentProtocolImage(pair.flowPage)] : []),
         ...(typeof pair.inventoryPage === "number" ? [experimentProtocolImage(pair.inventoryPage)] : []),
       ]),
     ],
-    [content, heroImage, heroFallbackImage, preloadImages, protocolPairs, deferContentImages],
+    [heroImage, heroFallbackImage, preloadImages, protocolPairs],
   );
   const rootRef = useRef<HTMLElement>(null);
   const interfaceRef = useRef<HTMLDivElement>(null);
@@ -1265,35 +1293,60 @@ export function WikiRoutePage({
     () => new Set(),
   );
 
-  const toggleSubheading = (id: string) => {
+  const toggleSubheading = useCallback((id: string) => {
     setOpenSubheadingIds((prev) => {
       const next = new Set(prev);
       if (next.has(id)) next.delete(id);
       else next.add(id);
       return next;
     });
-  };
+  }, []);
 
-  const openSubheading = (id: string) => {
+  const openSubheading = useCallback((id: string) => {
+    let targetParentId: string | null = null;
+    for (const section of content.sections) {
+      if (!section.blocks) continue;
+      const subheadings = section.blocks.filter(
+        (b): b is Extract<WikiContentBlock, { type: "subheading" }> =>
+          b.type === "subheading",
+      );
+      const subByIndex = new Map(subheadings.map((s) => [s.index, s]));
+      const targetSub = subheadings.find((s) => s.id === id);
+      if (targetSub && targetSub.index && targetSub.index.includes(".")) {
+        const parentIdx = targetSub.index.split(".").slice(0, -1).join(".");
+        const parentSub = subByIndex.get(parentIdx);
+        if (parentSub) {
+          targetParentId = parentSub.id;
+        }
+      }
+    }
+
     setOpenSubheadingIds((prev) => {
-      if (prev.has(id)) return prev;
       const next = new Set(prev);
-      next.add(id);
-      return next;
+      let changed = false;
+      if (!next.has(id)) {
+        next.add(id);
+        changed = true;
+      }
+      if (targetParentId && !next.has(targetParentId)) {
+        next.add(targetParentId);
+        changed = true;
+      }
+      return changed ? next : prev;
     });
-  };
+  }, [content.sections]);
 
   useEffect(() => {
     const handleHash = () => {
       const hash = window.location.hash.replace(/^#/, "");
-      if (hash && hash.startsWith("exp-")) {
+      if (hash) {
         openSubheading(hash);
       }
     };
     handleHash();
     window.addEventListener("hashchange", handleHash);
     return () => window.removeEventListener("hashchange", handleHash);
-  }, []);
+  }, [openSubheading]);
 
   const wideFlow =
     enableWideFlow &&
@@ -1350,7 +1403,6 @@ export function WikiRoutePage({
     scrollRef,
     content.route,
     !documentFlow,
-    wideFlow,
   );
   useRouteReaderScroll(!documentFlow, interfaceRef, scrollRef);
 
@@ -1521,6 +1573,7 @@ export function WikiRoutePage({
                   <InlineRendererContext.Provider
                     value={inlineRenderer ?? null}
                   >
+                    {articleLead ? <div className="wiki-feature">{articleLead}</div> : null}
                     {content.sections.map((section) => (
                       <MemoRouteSection
                         key={section.id}

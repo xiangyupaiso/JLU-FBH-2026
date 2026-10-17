@@ -3366,32 +3366,16 @@ export const safetyPage: WikiPageContent = {
     },
   ],
   links: [
-    {
-      path: "/description",
-      label: "Project Rationale",
-    },
-    {
-      path: "/engineering",
-      label: "Engineering Success",
-    },
-    {
-      path: "/results",
-      label: "Results & Discussion",
-    },
-    {
-      path: "/notebook",
-      label: "Lab Notebook",
-    },
-    {
-      path: "/experiments",
-      label: "Wet Lab Experiments",
-    },
+    { path: "/notebook", label: "Laboratory Notebook" },
+    { path: "/experiments", label: "Wet Lab Protocols" },
+    { path: "/design", label: "Molecular Construct Design" },
+    { path: "/human-practices", label: "Ethical & Safety Dialogue" },
   ],
   next: {
     path: "/design",
     label: "Design",
-    title:
-      "Step into the wet lab construct design and engineering architecture.",
+    title: "Step Inside the Molecular Blueprint",
+    description: "With biosafety foundations secured, examine the molecular core: see how permuted introns, translation enhancers, and poly-epitope arrays form a single closed ring.",
   },
 };
 

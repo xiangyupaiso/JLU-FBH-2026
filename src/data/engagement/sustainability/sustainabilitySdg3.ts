@@ -107,7 +107,6 @@ const sdg3Profiles: ReadonlyArray<StakeholderProfile> = [
           blocks: [
             "Another important principle was to allow patients and family members to decide how much they wished to share. During later interviews, we used more open-ended and non-judgmental questions, avoided suggesting what the “right” answer should be, and made it clear that sensitive questions could be skipped.",
             "The goal was not to obtain the maximum amount of information, but to create a conversation in which participants could express what they considered important at their own pace.",
-            photo("sdg3-tian-runhui", 0),
           ],
         },
         {

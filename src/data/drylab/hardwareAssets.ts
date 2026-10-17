@@ -30,6 +30,9 @@ export interface HardwareAssetEntry {
   localSourcePath: string;
   localSrc?: string;
   uploadUrl: string;
+  /** Intrinsic size, so the figure keeps its space before the file arrives. */
+  width?: number;
+  height?: number;
   alt: string;
   caption?: string;
   section?: string;
@@ -44,6 +47,8 @@ export const hardwareAssets = {
     localSrc: fig1,
     uploadUrl:
       "https://static.igem.wiki/teams/6056/wiki/files/pages/dry-lab/dry-lab/hardware/hardware-fig1-gen1-overview.webp",
+    width: 1194,
+    height: 1348,
     alt: "Patent-style line drawing of the first-generation CirCore device: the sealed reaction chamber with its hinged lid and quick-release fasteners, the sliding support carriage, and the reaction tube held in the clamp",
     caption: "First-generation device, overall structure.",
     section: "Overview",
@@ -56,6 +61,8 @@ export const hardwareAssets = {
     localSrc: fig2,
     uploadUrl:
       "https://static.igem.wiki/teams/6056/wiki/files/pages/dry-lab/dry-lab/hardware/hardware-fig2-process-chain.webp",
+    width: 1916,
+    height: 821,
     alt: "Process chain from linearised plasmid through T7 in vitro transcription, DNase I treatment, LiCl precipitation, circularisation, RNase R enrichment and RT-qPCR, with every instrument change and open-tube operation marked",
     caption:
       "The circularisation process chain, with instrument changes and open-tube operations marked.",
@@ -69,6 +76,8 @@ export const hardwareAssets = {
     localSrc: fig3,
     uploadUrl:
       "https://static.igem.wiki/teams/6056/wiki/files/pages/dry-lab/dry-lab/hardware/hardware-fig3-gen1-exploded.webp",
+    width: 1524,
+    height: 1468,
     alt: "Exploded patent drawing of the first-generation device separating the chamber base, support carriage, push-pull clamp assembly, V-groove clamp blocks, heating plate, lid and UV source",
     caption: "Exploded view of the first-generation device",
     section: "First-generation design",
@@ -80,9 +89,10 @@ export const hardwareAssets = {
     localSrc: fig4,
     uploadUrl:
       "https://static.igem.wiki/teams/6056/wiki/files/pages/dry-lab/dry-lab/hardware/hardware-fig4-uv-interlock.webp",
+    width: 1536,
+    height: 1024,
     alt: "Block diagram of the UV safety interlock: the lid-closure detection switch in series with the UV supply circuit, so opening the lid removes power from the UV source",
-    caption:
-      "UV interlock logic. The lid-closure switch is wired in series with the UV supply circuit.",
+    caption: "UV interlock logic.",
     section: "First-generation design",
   },
   fig5: {
@@ -93,9 +103,11 @@ export const hardwareAssets = {
     localSrc: fig5,
     uploadUrl:
       "https://static.igem.wiki/teams/6056/wiki/files/pages/dry-lab/dry-lab/hardware/hardware-fig5-gen2-optical-electrical.webp",
+    width: 1672,
+    height: 941,
     alt: "Block diagram of the second-generation optical path and electrical connections: excitation source, filter assembly, photodetector and light shroud around the tube position, with the controller (90) as the central node",
     caption:
-      "Optical path and electrical connections of the second generation, with the controller (90) as the central node.",
+      "Optical path and electrical connections of the second generation.",
     section: "Design iteration",
   },
   fig6: {
@@ -106,9 +118,10 @@ export const hardwareAssets = {
     localSrc: fig6,
     uploadUrl:
       "https://static.igem.wiki/teams/6056/wiki/files/pages/dry-lab/dry-lab/hardware/hardware-fig6-gen2-process-coverage.webp",
+    width: 1860,
+    height: 846,
     alt: "Temperature programme of the second generation from 55 °C circularisation through cooling to 4 °C, 37 °C RNase R digestion, 65–70 °C inactivation and return to 4 °C, marking which part of the process chain each generation covers",
-    caption:
-      "Second-generation temperature programme and process coverage, to be read against Figure 2.",
+    caption: "Second-generation temperature programme and process coverage.",
     section: "Design iteration",
   },
 } as const satisfies Record<string, HardwareAssetEntry>;

@@ -1,5 +1,541 @@
 import type { WikiPageContent } from "../../components/wiki/wikiPageTypes";
+import type { CitationReference } from "../citations/citationTypes";
 import { getMeasurementImage } from "./measurementAssets";
+
+export interface MeasurementJudgingCriterion {
+  id: string;
+  question: string;
+  paragraphs: string[];
+}
+
+export const measurementJudgingCriteria: MeasurementJudgingCriterion[] = [
+  {
+    id: "q1",
+    question: "Could the measurement(s) be reproduced by other iGEM teams?",
+    paragraphs: [
+      "Fourteen methods are described on this page. Eleven of them run on equipment a standard wet lab already has: a thermal cycler, a real-time PCR instrument, a gel imager, a plate reader, a flow cytometer, a cell sorter, an ELISpot reader and a fluorescence microscope. Nothing depends on custom hardware or an instrument-specific calibrant. The other three are dry-lab analyses that need public data and a workstation. Another team reruns those and gets our numbers, because the accessions, software settings and thresholds are listed below, the single-cell input is identified by its SHA-256 checksum, and the 85 structural models are archived with their job requests, coordinates and confidence files. The circularity assay is the one we expect to be reproduced most often, because a team building circRNA cannot avoid the question it answers, and its formula, primer convention, input series and release threshold are all written out below.",
+      "One constraint limits reproduction. The human immunology used commercially sourced HLA-A*02:01 mononuclear cells from one donor, so another team would reproduce the method and get its own frequencies.",
+    ],
+  },
+  {
+    id: "q2",
+    question: "Are the methods or protocols described well?",
+    paragraphs: [
+      "Each method on this page carries its own Protocols section with reagents, volumes, concentrations, times, temperatures and instrument settings, and its Experimental workflow section names every experiment in the project that used it. The complete step lists are on our Experiments page, where every experiment follows one template: Background, Materials and Reagents, Equipment, Experimental Design, Step-by-Step Instructions, Notes.",
+      "The Experimental Design block states which controls were seeded and what each subtracts, whether replicates are technical or biological, how many there are, what the statistical unit is, and what the number may be cited as. Where an assay ran without a control, it says so and states the consequence. The Round 1 ELISpot block records that no negative and no positive well was seeded, that values are raw counts, and that no value from that round may be cited as an antigen-specific T-cell frequency.",
+      "The three dry-lab methods are written to the same standard, with dataset accessions, software settings, numerical thresholds, acceptance criteria and exclusion rules all stated, and with the stage-by-stage counts recorded so the screens can be audited. The full parameter sets and per-model values are on our Model page.",
+    ],
+  },
+  {
+    id: "q3",
+    question: "Could it be useful to other projects?",
+    paragraphs: [
+      "Circular RNA is unusual ground in iGEM. Searching the Registry by sequence role returns two group I introns and two autocatalytically spliced introns across more than 32,000 sequence features, and 64 human-host parts against 502 for *E. coli*. The main precedent is Team Gifu, who worked on circular RNA from 2014. A team starting a circRNA project inherits a large literature and almost no community measurement practice or Registry parts.",
+      "We deposited 30 parts covering the circularisation backbone, the adjuvant module, the trafficking and membrane-targeting elements and the epitope cassettes, grouped into a part collection, with the measurements reported here attached to the parts they characterise. The circularity assay below is described in enough detail to be adopted directly, including the input-volume series that establishes the working range before a ratio is taken. The empty-vector control design applies to any team delivering RNA or DNA into innate-immune-competent cells. And the structural epitope check below reports the absolute buried area of the anchor residue alongside the burial percentage that is normally quoted. The percentage saturates near 100% whatever the residue's size: in our own set, three peptides share a burial of 99.4% at buried areas of 60.1, 143.8 and 173.3 Å². The change is free for any team doing the same work.",
+    ],
+  },
+  {
+    id: "q4",
+    question:
+      "Did the team validate and calibrate their measurement process appropriately for their approach?",
+    paragraphs: [
+      "Calibration took five forms. The circularity assay was run at three input volumes before any release figure was taken; the 2 µL arm failed the acceptance rule, so 4 µL was fixed as the working input, and a backbone-encoded GFP amplicon confirmed equal template input across both primer channels. Every Calcein-AM figure is computed between two measured bounds on the same plate, spontaneous and maximum release. Every per-cell readout rests on a counted and viability-gated input, so SFC per 10⁵ cells and every effector-to-target ratio share a measured denominator. Flow cytometry used single-stain compensation beads at a CV below 5%, isotype and unstained tubes, FMO controls and a fixable viability dye. Immunofluorescence sections were imaged in one batch under uniform exposure and magnification against a secondary-only control section, so that signal could be separated from the autofluorescence of necrotic tumour tissue.",
+      "Three dry-lab checks belong here as well. The structural tier began by testing whether AlphaFold's own confidence score could serve as its criterion: ipTM across 85 models runs from 0.932 to 0.970 and its rank correlation with the position-9 fill ratio is +0.02, so a geometric criterion was built instead and confidence is reported as a record. Between-model dispersion then decided which measurements were allowed to carry a threshold, with anchor-position burial reproducible to 0.0 percentage points at the median and central-segment burial varying by several points. And the fill-ratio threshold was placed inside a measured gap, since alanine candidates reach 43.3% and the lowest passing candidate sits at 80.4%, so any cutoff between 44% and 80% classifies all 17 systems identically.",
+      "Three things were not validated, and the text says so where the numbers appear. The divergent and convergent primer pairs were not checked against standard curves for equal amplification efficiency. No microscopy field was counted manually. And neither of the two dry-lab exclusion rules has been tested against a measurement.",
+    ],
+  },
+];
+
+export const measurementReferences = [
+  {
+    id: 1,
+    authors: "Abe, B.T., Wesselhoeft, R.A., Chen, R., et al.",
+    title: "Circular RNA migration in agarose gel electrophoresis",
+    journal: "Molecular Cell",
+    volumeYear: "82(9), pp. 1768–1777.e3 (2022).",
+    links: [
+      {
+        href: "https://doi.org/10.1016/j.molcel.2022.03.008",
+        label: "doi:10.1016/j.molcel.2022.03.008",
+      },
+    ],
+  },
+  {
+    id: 2,
+    authors: "Abramson, J., Adler, J., Dunger, J., et al.",
+    title: "Accurate structure prediction of biomolecular interactions with AlphaFold 3",
+    journal: "Nature",
+    volumeYear: "630, pp. 493–500 (2024).",
+    links: [
+      {
+        href: "https://doi.org/10.1038/s41586-024-07487-w",
+        label: "doi:10.1038/s41586-024-07487-w",
+      },
+    ],
+  },
+  {
+    id: 3,
+    authors: "Abualrous, E.T., Saini, S.K., Ramnarayan, V.R., et al.",
+    title: "The carboxy terminus of the ligand peptide determines the stability of the MHC class I molecule H-2Kb: a combined molecular dynamics and experimental study",
+    journal: "PLoS ONE",
+    volumeYear: "10, e0135421 (2015).",
+    links: [
+      {
+        href: "https://doi.org/10.1371/journal.pone.0135421",
+        label: "doi:10.1371/journal.pone.0135421",
+      },
+    ],
+  },
+  {
+    id: 4,
+    authors: "Asleh, K., Negri, G.L., Spencer Miko, S.E., et al.",
+    title: "Proteomic analysis of archival breast cancer clinical specimens identifies biological subtypes with distinct survival outcomes",
+    journal: "Nature Communications",
+    volumeYear: "13, article 896 (2022).",
+    links: [
+      {
+        href: "https://doi.org/10.1038/s41467-022-28524-0",
+        label: "doi:10.1038/s41467-022-28524-0",
+      },
+    ],
+  },
+  {
+    id: 5,
+    authors: "Benjamini, Y. and Hochberg, Y.",
+    title: "Controlling the false discovery rate: a practical and powerful approach to multiple testing",
+    journal: "Journal of the Royal Statistical Society: Series B",
+    volumeYear: "57, pp. 289–300 (1995).",
+    links: [
+      {
+        href: "https://doi.org/10.1111/j.2517-6161.1995.tb02031.x",
+        label: "doi:10.1111/j.2517-6161.1995.tb02031.x",
+      },
+    ],
+  },
+  {
+    id: 6,
+    authors: "Bouvier, M. and Wiley, D.C.",
+    title: "Importance of peptide amino and carboxyl termini to the stability of MHC class I molecules",
+    journal: "Science",
+    volumeYear: "265, pp. 398–402 (1994).",
+    links: [
+      {
+        href: "https://doi.org/10.1126/science.8023162",
+        label: "doi:10.1126/science.8023162",
+      },
+    ],
+  },
+  {
+    id: 7,
+    authors: "Calis, J.J.A., Maybeno, M., Greenbaum, J.A., et al.",
+    title: "Properties of MHC class I presented peptides that enhance immunogenicity",
+    journal: "PLoS Computational Biology",
+    volumeYear: "9, e1003266 (2013).",
+    links: [
+      {
+        href: "https://doi.org/10.1371/journal.pcbi.1003266",
+        label: "doi:10.1371/journal.pcbi.1003266",
+      },
+    ],
+  },
+  {
+    id: 8,
+    authors: "Cerami, E., Gao, J., Dogrusoz, U., et al.",
+    title: "The cBio Cancer Genomics Portal: an open platform for exploring multidimensional cancer genomics data",
+    journal: "Cancer Discovery",
+    volumeYear: "2, pp. 401–404 (2012).",
+    links: [
+      {
+        href: "https://doi.org/10.1158/2159-8290.CD-12-0095",
+        label: "doi:10.1158/2159-8290.CD-12-0095",
+      },
+    ],
+  },
+  {
+    id: 9,
+    authors: "Cheever, M.A., Allison, J.P., Ferris, A.S., et al.",
+    title: "The prioritization of cancer antigens: a National Cancer Institute pilot project for the acceleration of translational research",
+    journal: "Clinical Cancer Research",
+    volumeYear: "15, pp. 5323–5337 (2009).",
+    links: [
+      {
+        href: "https://doi.org/10.1158/1078-0432.CCR-09-0737",
+        label: "doi:10.1158/1078-0432.CCR-09-0737",
+      },
+    ],
+  },
+  {
+    id: 10,
+    authors: "Chen, Y.G., Kim, M.V., Chen, X., et al.",
+    title: "Sensing self and foreign circular RNAs by intron identity",
+    journal: "Molecular Cell",
+    volumeYear: "67(2), pp. 228–238.e5 (2017).",
+    links: [
+      {
+        href: "https://doi.org/10.1016/j.molcel.2017.05.022",
+        label: "doi:10.1016/j.molcel.2017.05.022",
+      },
+    ],
+  },
+  {
+    id: 11,
+    authors: "Creary, L.E., Sacchi, N., Mazzocco, M., et al.",
+    title: "High-resolution HLA allele and haplotype frequencies in several unrelated populations determined by next generation sequencing",
+    journal: "Human Immunology",
+    volumeYear: "82, pp. 505–522 (2021).",
+    links: [
+      {
+        href: "https://doi.org/10.1016/j.humimm.2021.04.007",
+        label: "doi:10.1016/j.humimm.2021.04.007",
+      },
+    ],
+  },
+  {
+    id: 12,
+    authors: "Crowell, H.L., Soneson, C., Germain, P.L., et al.",
+    title: "muscat detects subpopulation-specific state transitions from multi-sample multi-condition single-cell transcriptomics data",
+    journal: "Nature Communications",
+    volumeYear: "11, article 6077 (2020).",
+    links: [
+      {
+        href: "https://doi.org/10.1038/s41467-020-19894-4",
+        label: "doi:10.1038/s41467-020-19894-4",
+      },
+    ],
+  },
+  {
+    id: 13,
+    authors: "Enuka, Y., Lauriola, M., Feldman, M.E., et al.",
+    title: "Circular RNAs are long-lived and display only minimal early alterations in response to a growth factor",
+    journal: "Nucleic Acids Research",
+    volumeYear: "44(3), pp. 1370–1383 (2016).",
+    links: [
+      {
+        href: "https://doi.org/10.1093/nar/gkv1367",
+        label: "doi:10.1093/nar/gkv1367",
+      },
+    ],
+  },
+  {
+    id: 14,
+    authors: "Falk, K., Rötzschke, O., Stevanović, S., et al.",
+    title: "Allele-specific motifs revealed by sequencing of self-peptides eluted from MHC molecules",
+    journal: "Nature",
+    volumeYear: "351(6324), pp. 290–296 (1991).",
+    links: [
+      {
+        href: "https://doi.org/10.1038/351290a0",
+        label: "doi:10.1038/351290a0",
+      },
+    ],
+  },
+  {
+    id: 15,
+    authors: "Gao, J., Aksoy, B.A., Dogrusoz, U., et al.",
+    title: "Integrative analysis of complex cancer genomics and clinical profiles using the cBioPortal",
+    journal: "Science Signaling",
+    volumeYear: "6, pl1 (2013).",
+    links: [
+      {
+        href: "https://doi.org/10.1126/scisignal.2004088",
+        label: "doi:10.1126/scisignal.2004088",
+      },
+    ],
+  },
+  {
+    id: 16,
+    authors: "Gong, Y., Ji, P., Yang, Y.S., et al.",
+    title: "Metabolic-pathway-based subtyping of triple-negative breast cancer reveals potential therapeutic targets",
+    journal: "Cell Reports",
+    volumeYear: "39, article 110460 (2022).",
+    links: [
+      {
+        href: "https://doi.org/10.1016/j.celrep.2022.110460",
+        label: "doi:10.1016/j.celrep.2022.110460",
+      },
+    ],
+  },
+  {
+    id: 17,
+    authors: "Gong, Z., Hu, W., Zhou, C., et al.",
+    title: "Recent advances and perspectives on the development of circular RNA cancer vaccines",
+    journal: "npj Vaccines",
+    volumeYear: "10, article 41 (2025).",
+    links: [
+      {
+        href: "https://doi.org/10.1038/s41541-025-01097-x",
+        label: "doi:10.1038/s41541-025-01097-x",
+      },
+    ],
+  },
+  {
+    id: 18,
+    authors: "Hafemeister, C. and Satija, R.",
+    title: "Normalization and variance stabilization of single-cell RNA-seq data using regularized negative binomial regression",
+    journal: "Genome Biology",
+    volumeYear: "20, article 296 (2019).",
+    links: [
+      {
+        href: "https://doi.org/10.1186/s13059-019-1874-1",
+        label: "doi:10.1186/s13059-019-1874-1",
+      },
+    ],
+  },
+  {
+    id: 19,
+    authors: "Harndahl, M., Rasmussen, M., Roder, G., et al.",
+    title: "Peptide-MHC class I stability is a better predictor than peptide affinity of CTL immunogenicity",
+    journal: "European Journal of Immunology",
+    volumeYear: "42, pp. 1405–1416 (2012).",
+    links: [
+      {
+        href: "https://doi.org/10.1002/eji.201141774",
+        label: "doi:10.1002/eji.201141774",
+      },
+    ],
+  },
+  {
+    id: 20,
+    authors: "Holm, S.",
+    title: "A simple sequentially rejective multiple test procedure",
+    journal: "Scandinavian Journal of Statistics",
+    volumeYear: "6, pp. 65–70 (1979).",
+  },
+  {
+    id: 21,
+    authors: "Hou, X., Zaks, T., Langer, R. and Dong, Y.",
+    title: "Lipid nanoparticles for mRNA delivery",
+    journal: "Nature Reviews Materials",
+    volumeYear: "6(12), pp. 1078–1094 (2021).",
+    links: [
+      {
+        href: "https://doi.org/10.1038/s41578-021-00358-0",
+        label: "doi:10.1038/s41578-021-00358-0",
+      },
+    ],
+  },
+  {
+    id: 22,
+    authors: "Jeck, W.R., Sorrentino, J.A., Wang, K., et al.",
+    title: "Circular RNAs are abundant, conserved, and associated with ALU repeats",
+    journal: "RNA",
+    volumeYear: "19(2), pp. 141–157 (2013).",
+    links: [
+      {
+        href: "https://doi.org/10.1261/rna.035667.112",
+        label: "doi:10.1261/rna.035667.112",
+      },
+    ],
+  },
+  {
+    id: 23,
+    authors: "Korsunsky, I., Millard, N., Fan, J., et al.",
+    title: "Fast, sensitive and accurate integration of single-cell data with Harmony",
+    journal: "Nature Methods",
+    volumeYear: "16, pp. 1289–1296 (2019).",
+    links: [
+      {
+        href: "https://doi.org/10.1038/s41592-019-0619-0",
+        label: "doi:10.1038/s41592-019-0619-0",
+      },
+    ],
+  },
+  {
+    id: 24,
+    authors: "Madden, D.R.",
+    title: "The three-dimensional structure of peptide-MHC complexes",
+    journal: "Annual Review of Immunology",
+    volumeYear: "13, pp. 587–622 (1995).",
+    links: [
+      {
+        href: "https://doi.org/10.1146/annurev.iy.13.040195.003103",
+        label: "doi:10.1146/annurev.iy.13.040195.003103",
+      },
+    ],
+  },
+  {
+    id: 25,
+    authors: "Motmaen, A., Dauparas, J., Baek, M., et al.",
+    title: "Peptide-binding specificity prediction using fine-tuned protein structure prediction networks",
+    journal: "Proceedings of the National Academy of Sciences of the United States of America",
+    volumeYear: "120, e2216697120 (2023).",
+    links: [
+      {
+        href: "https://doi.org/10.1073/pnas.2216697120",
+        label: "doi:10.1073/pnas.2216697120",
+      },
+    ],
+  },
+  {
+    id: 26,
+    authors: "Percie du Sert, N., Hurst, V., Ahluwalia, A., et al.",
+    title: "The ARRIVE guidelines 2.0: updated guidelines for reporting animal research",
+    journal: "PLoS Biology",
+    volumeYear: "18(7), e3000410 (2020).",
+    links: [
+      {
+        href: "https://doi.org/10.1371/journal.pbio.3000410",
+        label: "doi:10.1371/journal.pbio.3000410",
+      },
+    ],
+  },
+  {
+    id: 27,
+    authors: "Peters, B., Bulik, S., Tampé, R., et al.",
+    title: "Identifying MHC class I epitopes by predicting the TAP transport efficiency of epitope precursors",
+    journal: "Journal of Immunology",
+    volumeYear: "171, pp. 1741–1749 (2003).",
+    links: [
+      {
+        href: "https://doi.org/10.4049/jimmunol.171.4.1741",
+        label: "doi:10.4049/jimmunol.171.4.1741",
+      },
+    ],
+  },
+  {
+    id: 28,
+    authors: "Reynisson, B., Alvarez, B., Paul, S., et al.",
+    title: "NetMHCpan-4.1 and NetMHCIIpan-4.0: improved predictions of MHC antigen presentation by concurrent motif deconvolution and integration of MS MHC eluted ligand data",
+    journal: "Nucleic Acids Research",
+    volumeYear: "48(W1), pp. W449–W454 (2020).",
+    links: [
+      {
+        href: "https://doi.org/10.1093/nar/gkaa379",
+        label: "doi:10.1093/nar/gkaa379",
+      },
+    ],
+  },
+  {
+    id: 29,
+    authors: "Ritchie, M.E., Phipson, B., Wu, D., et al.",
+    title: "limma powers differential expression analyses for RNA-sequencing and microarray studies",
+    journal: "Nucleic Acids Research",
+    volumeYear: "43, e47 (2015).",
+    links: [
+      {
+        href: "https://doi.org/10.1093/nar/gkv007",
+        label: "doi:10.1093/nar/gkv007",
+      },
+    ],
+  },
+  {
+    id: 30,
+    authors: "Robinson, M.D., McCarthy, D.J. and Smyth, G.K.",
+    title: "edgeR: a Bioconductor package for differential expression analysis of digital gene expression data",
+    journal: "Bioinformatics",
+    volumeYear: "26, pp. 139–140 (2010).",
+    links: [
+      {
+        href: "https://doi.org/10.1093/bioinformatics/btp616",
+        label: "doi:10.1093/bioinformatics/btp616",
+      },
+    ],
+  },
+  {
+    id: 31,
+    authors: "Saper, M.A., Bjorkman, P.J. and Wiley, D.C.",
+    title: "Refined structure of the human histocompatibility antigen HLA-A2 at 2.6 Å resolution",
+    journal: "Journal of Molecular Biology",
+    volumeYear: "219, pp. 277–319 (1991).",
+    links: [
+      {
+        href: "https://doi.org/10.1016/0022-2836(91)90567-P",
+        label: "doi:10.1016/0022-2836(91)90567-P",
+      },
+    ],
+  },
+  {
+    id: 32,
+    authors: "Slieker, R.C., Warmerdam, D.O., Vermeer, M.H., et al.",
+    title: "Reassessing human MHC-I genetic diversity in T cell studies",
+    journal: "Scientific Reports",
+    volumeYear: "14, article 7966 (2024).",
+    links: [
+      {
+        href: "https://doi.org/10.1038/s41598-024-58777-2",
+        label: "doi:10.1038/s41598-024-58777-2",
+      },
+    ],
+  },
+  {
+    id: 33,
+    authors: "Tenzer, S., Peters, B., Bulik, S., et al.",
+    title: "Modeling the MHC class I pathway by combining predictions of proteasomal cleavage, TAP transport and MHC class I binding",
+    journal: "Cellular and Molecular Life Sciences",
+    volumeYear: "62, pp. 1025–1037 (2005).",
+    links: [
+      {
+        href: "https://doi.org/10.1007/s00018-005-4528-2",
+        label: "doi:10.1007/s00018-005-4528-2",
+      },
+    ],
+  },
+  {
+    id: 34,
+    authors: "Tremblay-McLean, A., Coenraads, S., Kiani, Z., et al.",
+    title: "Expression of ligands for activating natural killer cell receptors on cell lines commonly used to assess natural killer cell function",
+    journal: "BMC Immunology",
+    volumeYear: "20, article 8 (2019).",
+    links: [
+      {
+        href: "https://doi.org/10.1186/s12865-018-0272-x",
+        label: "doi:10.1186/s12865-018-0272-x",
+      },
+    ],
+  },
+  {
+    id: 35,
+    authors: "Wang, J., Ding, Y., Chong, K., et al.",
+    title: "Recent advances in lipid nanoparticles and their safety concerns for mRNA delivery",
+    journal: "Vaccines",
+    volumeYear: "12(10), article 1148 (2024).",
+    links: [
+      {
+        href: "https://doi.org/10.3390/vaccines12101148",
+        label: "doi:10.3390/vaccines12101148",
+      },
+    ],
+  },
+  {
+    id: 36,
+    authors: "Wu, S.Z., Al-Eryani, G., Roden, D.L., et al.",
+    title: "A single-cell and spatially resolved atlas of human breast cancers",
+    journal: "Nature Genetics",
+    volumeYear: "53(9), pp. 1334–1347 (2021).",
+    links: [
+      {
+        href: "https://doi.org/10.1038/s41588-021-00911-1",
+        label: "doi:10.1038/s41588-021-00911-1",
+      },
+    ],
+  },
+  {
+    id: 37,
+    authors: "Xiao, M.S. and Wilusz, J.E.",
+    title: "An improved method for circular RNA purification using RNase R that efficiently removes linear RNAs containing G-quadruplexes or structured 3′ ends",
+    journal: "Nucleic Acids Research",
+    volumeYear: "47(16), pp. 8755–8769 (2019).",
+    links: [
+      {
+        href: "https://doi.org/10.1093/nar/gkz576",
+        label: "doi:10.1093/nar/gkz576",
+      },
+    ],
+  },
+  {
+    id: 38,
+    authors: "Yan, Z., Dhanda, S.K., Paul, S., et al.",
+    title: "Next-generation IEDB tools: a platform for epitope prediction and analysis",
+    journal: "Nucleic Acids Research",
+    volumeYear: "52, pp. W526–W532 (2024).",
+    links: [
+      {
+        href: "https://doi.org/10.1093/nar/gkae407",
+        label: "doi:10.1093/nar/gkae407",
+      },
+    ],
+  },
+] satisfies readonly CitationReference[];
 
 export const measurementPage: WikiPageContent = {
   route: "/measurement",
@@ -22,94 +558,8 @@ export const measurementPage: WikiPageContent = {
       summary: "",
       blocks: [
         {
-          type: "subheading",
-          id: "01-judging-criteria-1-1-could-the-measurement-s-be-reproduced-by-other-igem-teams",
-          index: "1",
-          title:
-            "1. Could the measurement(s) be reproduced by other iGEM teams?",
-          level: 3,
-        },
-        {
-          type: "prose",
-          paragraphs: [
-            "Fourteen methods are described on this page. Eleven of them run on equipment a standard wet lab already has: a thermal cycler, a real-time PCR instrument, a gel imager, a plate reader, a flow cytometer, a cell sorter, an ELISpot reader and a fluorescence microscope. Nothing depends on custom hardware or an instrument-specific calibrant. The other three are dry-lab analyses that need public data and a workstation. Another team reruns those and gets our numbers, because the accessions, software settings and thresholds are listed below, the single-cell input is identified by its SHA-256 checksum, and the 85 structural models are archived with their job requests, coordinates and confidence files. The circularity assay is the one we expect to be reproduced most often, because a team building circRNA cannot avoid the question it answers, and its formula, primer convention, input series and release threshold are all written out below.",
-          ],
-        },
-        {
-          type: "prose",
-          paragraphs: [
-            "One constraint limits reproduction. The human immunology used commercially sourced HLA-A*02:01 mononuclear cells from one donor, so another team would reproduce the method and get its own frequencies.",
-          ],
-        },
-        {
-          type: "subheading",
-          id: "01-judging-criteria-2-2-are-the-methods-or-protocols-described-well",
-          index: "2",
-          title: "2. Are the methods or protocols described well?",
-          level: 3,
-        },
-        {
-          type: "prose",
-          paragraphs: [
-            "Each method on this page carries its own Protocols section with reagents, volumes, concentrations, times, temperatures and instrument settings, and its Experimental workflow section names every experiment in the project that used it. The complete step lists are on our Experiments page, where every experiment follows one template: Background, Materials and Reagents, Equipment, Experimental Design, Step-by-Step Instructions, Notes.",
-          ],
-        },
-        {
-          type: "prose",
-          paragraphs: [
-            "The Experimental Design block states which controls were seeded and what each subtracts, whether replicates are technical or biological, how many there are, what the statistical unit is, and what the number may be cited as. Where an assay ran without a control, it says so and states the consequence. The Round 1 ELISpot block records that no negative and no positive well was seeded, that values are raw counts, and that no value from that round may be cited as an antigen-specific T-cell frequency.",
-          ],
-        },
-        {
-          type: "prose",
-          paragraphs: [
-            "The three dry-lab methods are written to the same standard, with dataset accessions, software settings, numerical thresholds, acceptance criteria and exclusion rules all stated, and with the stage-by-stage counts recorded so the screens can be audited. The full parameter sets and per-model values are on our Model page.",
-          ],
-        },
-        {
-          type: "subheading",
-          id: "01-judging-criteria-3-3-could-it-be-useful-to-other-projects",
-          index: "3",
-          title: "3. Could it be useful to other projects?",
-          level: 3,
-        },
-        {
-          type: "prose",
-          paragraphs: [
-            "Circular RNA is unusual ground in iGEM. Searching the Registry by sequence role returns two group I introns and two autocatalytically spliced introns across more than 32,000 sequence features, and 64 human-host parts against 502 for *E. coli*. The main precedent is Team Gifu, who worked on circular RNA from 2014. A team starting a circRNA project inherits a large literature and almost no community measurement practice or Registry parts.",
-          ],
-        },
-        {
-          type: "prose",
-          paragraphs: [
-            "We deposited 30 parts covering the circularisation backbone, the adjuvant module, the trafficking and membrane-targeting elements and the epitope cassettes, grouped into a part collection, with the measurements reported here attached to the parts they characterise. The circularity assay below is described in enough detail to be adopted directly, including the input-volume series that establishes the working range before a ratio is taken. The empty-vector control design applies to any team delivering RNA or DNA into innate-immune-competent cells. And the structural epitope check below reports the absolute buried area of the anchor residue alongside the burial percentage that is normally quoted. The percentage saturates near 100% whatever the residue's size: in our own set, three peptides share a burial of 99.4% at buried areas of 60.1, 143.8 and 173.3 Å². The change is free for any team doing the same work.",
-          ],
-        },
-        {
-          type: "subheading",
-          id: "01-judging-criteria-4-4-did-the-team-validate-and-calibrate-their-measurement-process-appropriately-for-their-approach",
-          index: "4",
-          title:
-            "4. Did the team validate and calibrate their measurement process appropriately for their approach?",
-          level: 3,
-        },
-        {
-          type: "prose",
-          paragraphs: [
-            "Calibration took five forms. The circularity assay was run at three input volumes before any release figure was taken; the 2 µL arm failed the acceptance rule, so 4 µL was fixed as the working input, and a backbone-encoded GFP amplicon confirmed equal template input across both primer channels. Every Calcein-AM figure is computed between two measured bounds on the same plate, spontaneous and maximum release. Every per-cell readout rests on a counted and viability-gated input, so SFC per 10⁵ cells and every effector-to-target ratio share a measured denominator. Flow cytometry used single-stain compensation beads at a CV below 5%, isotype and unstained tubes, FMO controls and a fixable viability dye. Immunofluorescence sections were imaged in one batch under uniform exposure and magnification against a secondary-only control section, so that signal could be separated from the autofluorescence of necrotic tumour tissue.",
-          ],
-        },
-        {
-          type: "prose",
-          paragraphs: [
-            "Three dry-lab checks belong here as well. The structural tier began by testing whether AlphaFold's own confidence score could serve as its criterion: ipTM across 85 models runs from 0.932 to 0.970 and its rank correlation with the position-9 fill ratio is +0.02, so a geometric criterion was built instead and confidence is reported as a record. Between-model dispersion then decided which measurements were allowed to carry a threshold, with anchor-position burial reproducible to 0.0 percentage points at the median and central-segment burial varying by several points. And the fill-ratio threshold was placed inside a measured gap, since alanine candidates reach 43.3% and the lowest passing candidate sits at 80.4%, so any cutoff between 44% and 80% classifies all 17 systems identically.",
-          ],
-        },
-        {
-          type: "prose",
-          paragraphs: [
-            "Three things were not validated, and the text says so where the numbers appear. The divergent and convergent primer pairs were not checked against standard curves for equal amplification efficiency. No microscopy field was counted manually. And neither of the two dry-lab exclusion rules has been tested against a measurement.",
-          ],
+          type: "feature",
+          key: "measurement-judging-criteria",
         },
       ],
     },
@@ -131,7 +581,7 @@ export const measurementPage: WikiPageContent = {
           id: "02-contributions-to-measurement-1-1-a-circularity-assay-with-a-working-range-check-so-the-figure-is-comparable",
           index: "1",
           title:
-            "1. A circularity assay with a working-range check, so the figure is comparable.",
+            "A circularity assay with a working-range check, so the figure is comparable.",
           level: 3,
         },
         {
@@ -157,7 +607,7 @@ export const measurementPage: WikiPageContent = {
           id: "02-contributions-to-measurement-2-2-an-empty-vector-control-that-separates-the-antigen-from-its-carrier",
           index: "2",
           title:
-            "2. An empty-vector control that separates the antigen from its carrier.",
+            "An empty-vector control that separates the antigen from its carrier.",
           level: 3,
         },
         {
@@ -177,7 +627,7 @@ export const measurementPage: WikiPageContent = {
           id: "02-contributions-to-measurement-3-3-absolute-anchor-buried-area-reported-beside-the-burial-percentage",
           index: "3",
           title:
-            "3. Absolute anchor buried area reported beside the burial percentage.",
+            "Absolute anchor buried area reported beside the burial percentage.",
           level: 3,
         },
         {
@@ -202,7 +652,7 @@ export const measurementPage: WikiPageContent = {
           type: "subheading",
           id: "02-contributions-to-measurement-4-4-stated-denominators-and-labelled-replicates-throughout",
           index: "4",
-          title: "4. Stated denominators and labelled replicates throughout.",
+          title: "Stated denominators and labelled replicates throughout.",
           level: 3,
         },
         {
@@ -221,7 +671,7 @@ export const measurementPage: WikiPageContent = {
           type: "subheading",
           id: "02-contributions-to-measurement-5-5-thirty-registry-parts-grouped-as-a-collection",
           index: "5",
-          title: "5. Thirty Registry parts, grouped as a collection.",
+          title: "Thirty Registry parts, grouped as a collection.",
           level: 3,
         },
         {
@@ -262,6 +712,8 @@ export const measurementPage: WikiPageContent = {
           src: getMeasurementImage(
             "dependency-relations-between-the-measurements-in-the-project",
           ),
+          width: 1280,
+          height: 896,
           alt: "Dependency relations between the measurements in the project",
           caption:
             "Dependency relations between the measurements in the project",
@@ -484,6 +936,8 @@ export const measurementPage: WikiPageContent = {
           src: getMeasurementImage(
             "malignant-cell-enrichment-and-compartment-detection-rates-in-gse176078",
           ),
+          width: 1280,
+          height: 1090,
           alt: "Malignant-cell enrichment and compartment detection rates in GSE176078",
           caption:
             "Malignant-cell enrichment and compartment detection rates in GSE176078",
@@ -651,9 +1105,12 @@ export const measurementPage: WikiPageContent = {
         },
         {
           type: "figure",
+          className: "measurement-figure--compact measurement-figure--fig03",
           src: getMeasurementImage(
             "the-staged-epitope-screen-from-1-838-nine-mers-to-15-delivered-peptides",
           ),
+          width: 1135,
+          height: 1280,
           alt: "The staged epitope screen, from 1,838 nine-mers to 15 delivered peptides.",
           caption:
             "The staged epitope screen, from 1,838 nine-mers to 15 delivered peptides.",
@@ -726,7 +1183,7 @@ export const measurementPage: WikiPageContent = {
         {
           type: "prose",
           paragraphs: [
-            "The first thing measured was whether AlphaFold's own confidence could serve as the criterion. It could not. Across the 85 models ipTM ran from 0.932 to 0.970, and its rank correlation with the position-9 fill ratio was +0.02. HILHVSFLA, one of the two peptides this stage rejects, has an ipTM of 0.960. A separate geometric criterion was therefore built, and confidence is reported alongside it as a record.",
+            "The first thing measured was whether AlphaFold's own confidence could serve as the criterion. It could not, so a separate geometric criterion was built and confidence is reported alongside it as a record.",
           ],
         },
         {
@@ -772,6 +1229,8 @@ export const measurementPage: WikiPageContent = {
           src: getMeasurementImage(
             "alphafold-3-confidence-scores-against-position-9-fill-ratio",
           ),
+          width: 863,
+          height: 563,
           alt: "AlphaFold 3 confidence scores against position-9 fill ratio",
           caption:
             "AlphaFold 3 confidence scores against position-9 fill ratio",
@@ -987,9 +1446,12 @@ export const measurementPage: WikiPageContent = {
         },
         {
           type: "figure",
+          className: "measurement-figure--compact measurement-figure--fig06",
           src: getMeasurementImage(
             "agarose-gel-verification-of-the-four-epitope-encoding-linearised-transcription-templates",
           ),
+          width: 1004,
+          height: 741,
           alt: "Agarose gel of the four linearised transcription templates",
           caption: "Agarose gel of the four linearised transcription templates",
         },
@@ -1061,7 +1523,7 @@ export const measurementPage: WikiPageContent = {
         {
           type: "prose",
           paragraphs: [
-            "Several methods can address circularity and each answers a different question. RNase R resistance with a gel readout shows that something survives digestion, but highly structured linear RNA also survives (Xiao and Wilusz, 2019), and circRNA migrates anomalously in native gels (Abe et al., 2022), so band position cannot establish circularity at all. Northern blot resolves species without amplification bias, at a cost in material and throughput that a summer project cannot meet. Sequencing across the back-splice junction reads covalent closure directly and says nothing about what fraction of the preparation is circular. Divergent-primer RT-PCR, established in circRNA biology since Jeck et al. (2013), distinguishes circular from linear template by pointing primers outward from the junction, and it is quantitative.",
+            "Several methods can address circularity and each answers a different question. RNase R resistance with a gel readout shows that something survives digestion, but highly structured linear RNA also survives (Xiao and Wilusz, 2019), and circRNA migrates anomalously in native gels (Abe et al., 2022), so band position cannot establish circularity at all. Northern blot resolves species without amplification bias, at a cost in material and throughput that a summer project cannot meet. Sequencing across the ligation site reads covalent closure directly and says nothing about what fraction of the preparation is circular. Divergent-primer RT-PCR, established in circRNA biology since Jeck et al. (2013), distinguishes circular from linear template by pointing primers outward from the junction, and it is quantitative.",
           ],
         },
         {
@@ -1098,7 +1560,7 @@ export const measurementPage: WikiPageContent = {
         {
           type: "prose",
           paragraphs: [
-            "The channel convention belongs with the formula. Here the divergent pair spans the back-splice junction and reads the circular species only, and the convergent pair is positioned to read the linear precursor. A reader assuming that the convergent channel reads total RNA will read the denominator as double-counting, so any team adopting the assay should say which convention its primer placement implements.",
+            "The channel convention belongs with the formula. Here the divergent pair spans the ligation site and reads the circular species only, and the convergent pair is positioned to read the linear precursor. A reader assuming that the convergent channel reads total RNA will read the denominator as double-counting, so any team adopting the assay should say which convention its primer placement implements.",
           ],
         },
         {
@@ -1116,6 +1578,8 @@ export const measurementPage: WikiPageContent = {
         {
           type: "figure",
           src: getMeasurementImage("workflow-of-the-circularity-release-assay"),
+          width: 1280,
+          height: 896,
           alt: "Workflow of the circularity release assay",
           caption: "Workflow of the circularity release assay",
         },
@@ -1137,7 +1601,7 @@ export const measurementPage: WikiPageContent = {
             "6. Circularise in the kit reaction containing GTP and Mg²⁺ at 55 °C for 10 to 15 min.",
             "7. Digest residual linear RNA with RNase R, 2 U per 2.0 µg RNA in 20 µL at 37 °C.",
             "8. Read A260/280, reverse-transcribe, and run RT-qPCR with both primer sets at 2, 4 and 6 µL, three wells per volume. Cycling: 95 °C 3 min, then 40 cycles of 95 °C 10 s and 60 °C 30 s.",
-            "9. For release-grade material, sequence across the back-splice junction.",
+            "9. For release-grade material, sequence across the ligation site.",
           ],
         },
         {
@@ -1185,14 +1649,14 @@ export const measurementPage: WikiPageContent = {
           src: getMeasurementImage(
             "sanger-trace-across-the-back-splice-junction-bsj-of-the-combined-vaccine",
           ),
-          alt: "Sanger trace across the back-splice junction of the Combined vaccine",
+          alt: "Sanger trace across the ligation site of the Combined vaccine",
           caption:
-            "Sanger trace across the back-splice junction of the Combined vaccine",
+            "Sanger trace across the ligation site of the Combined vaccine",
         },
         {
           type: "prose",
           paragraphs: [
-            "Sequencing across the back-splice junction on the same batch reads `AGCGGATGGGTACCCCACCAT | GACCATTTGTGTGGTAAAAA`, the 3′ end of the precursor joined head to tail to its 5′ end, with a flat baseline and single sharp peaks either side.",
+            "Sequencing across the ligation site on the same batch reads `CTCAGTAGATGTTTTCTTGGGT | CTACCGTTTAATATTGCGTCATAT`, the 3′ end of the precursor running head to tail into its 5′ end, with single well-separated peaks on both sides and no overlapping signal at the join itself.",
           ],
         },
         {
@@ -1320,6 +1784,8 @@ export const measurementPage: WikiPageContent = {
           src: getMeasurementImage(
             "in-vitro-stability-of-circrna-versus-linear-precursor-rna-at-37-c-gel",
           ),
+          width: 1280,
+          height: 440,
           alt: "Stability of circRNA and its linear precursor at 37 °C",
           caption: "Stability of circRNA and its linear precursor at 37 °C",
         },
@@ -1462,6 +1928,8 @@ export const measurementPage: WikiPageContent = {
           src: getMeasurementImage(
             "preparation-workflow-for-dendritic-cells-and-autologous-t-cells",
           ),
+          width: 1280,
+          height: 749,
           alt: "Preparation workflow for dendritic cells and autologous T cells",
           caption:
             "Preparation workflow for dendritic cells and autologous T cells",
@@ -1575,9 +2043,12 @@ export const measurementPage: WikiPageContent = {
         },
         {
           type: "figure",
+          className: "measurement-figure--compact measurement-figure--fig12",
           src: getMeasurementImage(
             "dose-viability-curve-of-empty-lnp-on-dcs-after-24-h",
           ),
+          width: 986,
+          height: 675,
           alt: "Dose–viability relationship for empty LNP on dendritic cells",
           caption:
             "Dose–viability relationship for empty LNP on dendritic cells",
@@ -1692,6 +2163,8 @@ export const measurementPage: WikiPageContent = {
           src: getMeasurementImage(
             "western-blot-of-flag-tagged-fusion-protein-in-dcs",
           ),
+          width: 1280,
+          height: 622,
           alt: "Anti-FLAG Western blot of electroporated dendritic cells",
           caption: "Anti-FLAG Western blot of electroporated dendritic cells",
         },
@@ -1809,6 +2282,8 @@ export const measurementPage: WikiPageContent = {
         {
           type: "figure",
           src: getMeasurementImage("round-1-elispot-wells-and-counts"),
+          width: 1280,
+          height: 434,
           alt: "Round 1 ELISpot wells",
           caption: "Round 1 ELISpot wells",
         },
@@ -1821,6 +2296,8 @@ export const measurementPage: WikiPageContent = {
         {
           type: "figure",
           src: getMeasurementImage("round-2-elispot-wells-and-counts"),
+          width: 1280,
+          height: 351,
           alt: "Round 2 ELISpot wells",
           caption: "Round 2 ELISpot wells",
         },
@@ -1964,9 +2441,12 @@ export const measurementPage: WikiPageContent = {
         },
         {
           type: "figure",
+          className: "measurement-figure--compact measurement-figure--fig16",
           src: getMeasurementImage(
             "round-1-killing-of-k562-by-t-cells-primed-with-each-construct",
           ),
+          width: 1280,
+          height: 1155,
           alt: "Round 1 killing of K562 by T cells primed with each construct",
           caption:
             "Round 1 killing of K562 by T cells primed with each construct",
@@ -2017,9 +2497,12 @@ export const measurementPage: WikiPageContent = {
         },
         {
           type: "figure",
+          className: "measurement-figure--compact measurement-figure--fig17",
           src: getMeasurementImage(
             "killing-of-mda-mb-231-by-t-cells-primed-with-each-construct-across-e-t-ratios",
           ),
+          width: 1280,
+          height: 754,
           alt: "Killing of MDA-MB-231 across three effector-to-target ratios",
           caption:
             "Killing of MDA-MB-231 across three effector-to-target ratios",
@@ -2209,6 +2692,8 @@ export const measurementPage: WikiPageContent = {
           src: getMeasurementImage(
             "three-step-gating-strategy-for-sorting-gfp-4t1-cells",
           ),
+          width: 4000,
+          height: 1285,
           alt: "Gating strategy for sorting GFP-positive 4T1",
           caption: "Gating strategy for sorting GFP-positive 4T1",
         },
@@ -2417,6 +2902,8 @@ export const measurementPage: WikiPageContent = {
           src: getMeasurementImage(
             "gfp-fluorescence-in-4t1-cells-48-72-h-after-lentiviral-transduction",
           ),
+          width: 1280,
+          height: 747,
           alt: "GFP fluorescence in transduced 4T1",
           caption: "GFP fluorescence in transduced 4T1",
         },
@@ -2431,6 +2918,8 @@ export const measurementPage: WikiPageContent = {
           src: getMeasurementImage(
             "cd8-granzyme-b-dual-immunofluorescence-of-tumour-tissue",
           ),
+          width: 954,
+          height: 596,
           alt: "CD8 and Granzyme B dual immunofluorescence of tumour tissue",
           caption:
             "CD8 and Granzyme B dual immunofluorescence of tumour tissue",
@@ -2552,6 +3041,8 @@ export const measurementPage: WikiPageContent = {
         {
           type: "figure",
           src: getMeasurementImage("immunisation-and-measurement-schedule"),
+          width: 1280,
+          height: 723,
           alt: "Immunisation and measurement schedule",
           caption: "Immunisation and measurement schedule",
         },
@@ -2592,13 +3083,18 @@ export const measurementPage: WikiPageContent = {
         },
         {
           type: "figure",
+          className: "measurement-figure--compact measurement-figure--fig26",
           src: getMeasurementImage("tumour-growth-curves-for-the-three-groups"),
+          width: 1065,
+          height: 510,
           alt: "Tumour growth curves for the three groups",
           caption: "Tumour growth curves for the three groups",
         },
         {
           type: "figure",
           src: getMeasurementImage("excised-tumours-at-endpoint-d35"),
+          width: 460,
+          height: 336,
           alt: "Excised tumours at endpoint",
           caption: "Excised tumours at endpoint",
         },
@@ -2646,7 +3142,7 @@ export const measurementPage: WikiPageContent = {
           type: "subheading",
           id: "09-future-work-1-1-circularity-on-every-batch-with-calibrated-primer-pairs",
           index: "1",
-          title: "1. Circularity on every batch, with calibrated primer pairs.",
+          title: "Circularity on every batch, with calibrated primer pairs.",
           level: 3,
         },
         {
@@ -2659,7 +3155,7 @@ export const measurementPage: WikiPageContent = {
           type: "subheading",
           id: "09-future-work-2-2-more-hla-alleles-and-presentation-measured-on-cells",
           index: "2",
-          title: "2. More HLA alleles, and presentation measured on cells.",
+          title: "More HLA alleles, and presentation measured on cells.",
           level: 3,
         },
         {
@@ -2672,7 +3168,7 @@ export const measurementPage: WikiPageContent = {
           type: "subheading",
           id: "09-future-work-3-3-an-hla-matched-mouse-model-with-tetramer-staining",
           index: "3",
-          title: "3. An HLA-matched mouse model, with tetramer staining.",
+          title: "An HLA-matched mouse model, with tetramer staining.",
           level: 3,
         },
         {
@@ -2691,173 +3187,22 @@ export const measurementPage: WikiPageContent = {
       summary: "",
       blocks: [
         {
-          type: "references",
-          items: [
-            {
-              label: "1",
-              text: "Abe, B.T., Wesselhoeft, R.A., Chen, R., et al. (2022) 'Circular RNA migration in agarose gel electrophoresis', *Molecular Cell*, 82(9), pp. 1768–1777.e3. doi:10.1016/j.molcel.2022.03.008.",
-            },
-            {
-              label: "2",
-              text: "Abramson, J., Adler, J., Dunger, J., et al. (2024) 'Accurate structure prediction of biomolecular interactions with AlphaFold 3', *Nature*, 630, pp. 493–500. doi:10.1038/s41586-024-07487-w.",
-            },
-            {
-              label: "3",
-              text: "Abualrous, E.T., Saini, S.K., Ramnarayan, V.R., et al. (2015) 'The carboxy terminus of the ligand peptide determines the stability of the MHC class I molecule H-2Kb: a combined molecular dynamics and experimental study', *PLoS ONE*, 10, e0135421. doi:10.1371/journal.pone.0135421.",
-            },
-            {
-              label: "4",
-              text: "Asleh, K., Negri, G.L., Spencer Miko, S.E., et al. (2022) 'Proteomic analysis of archival breast cancer clinical specimens identifies biological subtypes with distinct survival outcomes', *Nature Communications*, 13, article 896. doi:10.1038/s41467-022-28524-0.",
-            },
-            {
-              label: "5",
-              text: "Benjamini, Y. and Hochberg, Y. (1995) 'Controlling the false discovery rate: a practical and powerful approach to multiple testing', *Journal of the Royal Statistical Society: Series B*, 57, pp. 289–300. doi:10.1111/j.2517-6161.1995.tb02031.x.",
-            },
-            {
-              label: "6",
-              text: "Bouvier, M. and Wiley, D.C. (1994) 'Importance of peptide amino and carboxyl termini to the stability of MHC class I molecules', *Science*, 265, pp. 398–402. doi:10.1126/science.8023162.",
-            },
-            {
-              label: "7",
-              text: "Calis, J.J.A., Maybeno, M., Greenbaum, J.A., et al. (2013) 'Properties of MHC class I presented peptides that enhance immunogenicity', *PLoS Computational Biology*, 9, e1003266. doi:10.1371/journal.pcbi.1003266.",
-            },
-            {
-              label: "8",
-              text: "Cerami, E., Gao, J., Dogrusoz, U., et al. (2012) 'The cBio Cancer Genomics Portal: an open platform for exploring multidimensional cancer genomics data', *Cancer Discovery*, 2, pp. 401–404. doi:10.1158/2159-8290.CD-12-0095.",
-            },
-            {
-              label: "9",
-              text: "Cheever, M.A., Allison, J.P., Ferris, A.S., et al. (2009) 'The prioritization of cancer antigens: a National Cancer Institute pilot project for the acceleration of translational research', *Clinical Cancer Research*, 15, pp. 5323–5337. doi:10.1158/1078-0432.CCR-09-0737.",
-            },
-            {
-              label: "10",
-              text: "Chen, Y.G., Kim, M.V., Chen, X., et al. (2017) 'Sensing self and foreign circular RNAs by intron identity', *Molecular Cell*, 67(2), pp. 228–238.e5. doi:10.1016/j.molcel.2017.05.022.",
-            },
-            {
-              label: "11",
-              text: "Creary, L.E., Sacchi, N., Mazzocco, M., et al. (2021) 'High-resolution HLA allele and haplotype frequencies in several unrelated populations determined by next generation sequencing', *Human Immunology*, 82, pp. 505–522. doi:10.1016/j.humimm.2021.04.007.",
-            },
-            {
-              label: "12",
-              text: "Crowell, H.L., Soneson, C., Germain, P.L., et al. (2020) 'muscat detects subpopulation-specific state transitions from multi-sample multi-condition single-cell transcriptomics data', *Nature Communications*, 11, article 6077. doi:10.1038/s41467-020-19894-4.",
-            },
-            {
-              label: "13",
-              text: "Enuka, Y., Lauriola, M., Feldman, M.E., et al. (2016) 'Circular RNAs are long-lived and display only minimal early alterations in response to a growth factor', *Nucleic Acids Research*, 44(3), pp. 1370–1383. doi:10.1093/nar/gkv1367.",
-            },
-            {
-              label: "14",
-              text: "Falk, K., Rötzschke, O., Stevanović, S., et al. (1991) 'Allele-specific motifs revealed by sequencing of self-peptides eluted from MHC molecules', *Nature*, 351(6324), pp. 290–296. doi:10.1038/351290a0.",
-            },
-            {
-              label: "15",
-              text: "Gao, J., Aksoy, B.A., Dogrusoz, U., et al. (2013) 'Integrative analysis of complex cancer genomics and clinical profiles using the cBioPortal', *Science Signaling*, 6, pl1. doi:10.1126/scisignal.2004088.",
-            },
-            {
-              label: "16",
-              text: "Gong, Y., Ji, P., Yang, Y.S., et al. (2022) 'Metabolic-pathway-based subtyping of triple-negative breast cancer reveals potential therapeutic targets', *Cell Reports*, 39, article 110460. doi:10.1016/j.celrep.2022.110460.",
-            },
-            {
-              label: "17",
-              text: "Gong, Z., Hu, W., Zhou, C., et al. (2025) 'Recent advances and perspectives on the development of circular RNA cancer vaccines', *npj Vaccines*, 10, article 41. doi:10.1038/s41541-025-01097-x.",
-            },
-            {
-              label: "18",
-              text: "Hafemeister, C. and Satija, R. (2019) 'Normalization and variance stabilization of single-cell RNA-seq data using regularized negative binomial regression', *Genome Biology*, 20, article 296. doi:10.1186/s13059-019-1874-1.",
-            },
-            {
-              label: "19",
-              text: "Harndahl, M., Rasmussen, M., Roder, G., et al. (2012) 'Peptide-MHC class I stability is a better predictor than peptide affinity of CTL immunogenicity', *European Journal of Immunology*, 42, pp. 1405–1416. doi:10.1002/eji.201141774.",
-            },
-            {
-              label: "20",
-              text: "Holm, S. (1979) 'A simple sequentially rejective multiple test procedure', *Scandinavian Journal of Statistics*, 6, pp. 65–70.",
-            },
-            {
-              label: "21",
-              text: "Hou, X., Zaks, T., Langer, R. and Dong, Y. (2021) 'Lipid nanoparticles for mRNA delivery', *Nature Reviews Materials*, 6(12), pp. 1078–1094. doi:10.1038/s41578-021-00358-0.",
-            },
-            {
-              label: "22",
-              text: "Jeck, W.R., Sorrentino, J.A., Wang, K., et al. (2013) 'Circular RNAs are abundant, conserved, and associated with ALU repeats', *RNA*, 19(2), pp. 141–157. doi:10.1261/rna.035667.112.",
-            },
-            {
-              label: "23",
-              text: "Korsunsky, I., Millard, N., Fan, J., et al. (2019) 'Fast, sensitive and accurate integration of single-cell data with Harmony', *Nature Methods*, 16, pp. 1289–1296. doi:10.1038/s41592-019-0619-0.",
-            },
-            {
-              label: "24",
-              text: "Madden, D.R. (1995) 'The three-dimensional structure of peptide-MHC complexes', *Annual Review of Immunology*, 13, pp. 587–622. doi:10.1146/annurev.iy.13.040195.003103.",
-            },
-            {
-              label: "25",
-              text: "Motmaen, A., Dauparas, J., Baek, M., et al. (2023) 'Peptide-binding specificity prediction using fine-tuned protein structure prediction networks', *Proceedings of the National Academy of Sciences of the United States of America*, 120, e2216697120. doi:10.1073/pnas.2216697120.",
-            },
-            {
-              label: "26",
-              text: "Percie du Sert, N., Hurst, V., Ahluwalia, A., et al. (2020) 'The ARRIVE guidelines 2.0: updated guidelines for reporting animal research', *PLoS Biology*, 18(7), e3000410. doi:10.1371/journal.pbio.3000410.",
-            },
-            {
-              label: "27",
-              text: "Peters, B., Bulik, S., Tampé, R., et al. (2003) 'Identifying MHC class I epitopes by predicting the TAP transport efficiency of epitope precursors', *Journal of Immunology*, 171, pp. 1741–1749. doi:10.4049/jimmunol.171.4.1741.",
-            },
-            {
-              label: "28",
-              text: "Reynisson, B., Alvarez, B., Paul, S., et al. (2020) 'NetMHCpan-4.1 and NetMHCIIpan-4.0: improved predictions of MHC antigen presentation by concurrent motif deconvolution and integration of MS MHC eluted ligand data', *Nucleic Acids Research*, 48(W1), pp. W449–W454. doi:10.1093/nar/gkaa379.",
-            },
-            {
-              label: "29",
-              text: "Ritchie, M.E., Phipson, B., Wu, D., et al. (2015) 'limma powers differential expression analyses for RNA-sequencing and microarray studies', *Nucleic Acids Research*, 43, e47. doi:10.1093/nar/gkv007.",
-            },
-            {
-              label: "30",
-              text: "Robinson, M.D., McCarthy, D.J. and Smyth, G.K. (2010) 'edgeR: a Bioconductor package for differential expression analysis of digital gene expression data', *Bioinformatics*, 26, pp. 139–140. doi:10.1093/bioinformatics/btp616.",
-            },
-            {
-              label: "31",
-              text: "Saper, M.A., Bjorkman, P.J. and Wiley, D.C. (1991) 'Refined structure of the human histocompatibility antigen HLA-A2 at 2.6 Å resolution', *Journal of Molecular Biology*, 219, pp. 277–319. doi:10.1016/0022-2836(91)90567-P.",
-            },
-            {
-              label: "32",
-              text: "Slieker, R.C., Warmerdam, D.O., Vermeer, M.H., et al. (2024) 'Reassessing human MHC-I genetic diversity in T cell studies', *Scientific Reports*, 14, article 7966. doi:10.1038/s41598-024-58777-2.",
-            },
-            {
-              label: "33",
-              text: "Tenzer, S., Peters, B., Bulik, S., et al. (2005) 'Modeling the MHC class I pathway by combining predictions of proteasomal cleavage, TAP transport and MHC class I binding', *Cellular and Molecular Life Sciences*, 62, pp. 1025–1037. doi:10.1007/s00018-005-4528-2.",
-            },
-            {
-              label: "34",
-              text: "Tremblay-McLean, A., Coenraads, S., Kiani, Z., et al. (2019) 'Expression of ligands for activating natural killer cell receptors on cell lines commonly used to assess natural killer cell function', *BMC Immunology*, 20, article 8. doi:10.1186/s12865-018-0272-x.",
-            },
-            {
-              label: "35",
-              text: "Wang, J., Ding, Y., Chong, K., et al. (2024) 'Recent advances in lipid nanoparticles and their safety concerns for mRNA delivery', *Vaccines*, 12(10), article 1148. doi:10.3390/vaccines12101148.",
-            },
-            {
-              label: "36",
-              text: "Wu, S.Z., Al-Eryani, G., Roden, D.L., et al. (2021) 'A single-cell and spatially resolved atlas of human breast cancers', *Nature Genetics*, 53(9), pp. 1334–1347. doi:10.1038/s41588-021-00911-1.",
-            },
-            {
-              label: "37",
-              text: "Xiao, M.S. and Wilusz, J.E. (2019) 'An improved method for circular RNA purification using RNase R that efficiently removes linear RNAs containing G-quadruplexes or structured 3′ ends', *Nucleic Acids Research*, 47(16), pp. 8755–8769. doi:10.1093/nar/gkz576.",
-            },
-            {
-              label: "38",
-              text: "Yan, Z., Dhanda, S.K., Paul, S., et al. (2024) 'Next-generation IEDB tools: a platform for epitope prediction and analysis', *Nucleic Acids Research*, 52, pp. W526–W532. doi:10.1093/nar/gkae407.",
-            },
-          ],
+          type: "feature",
+          key: "measurement-references",
         },
       ],
     },
   ],
   links: [
-    { path: "/experiments", label: "Experimental route" },
-    { path: "/results", label: "Result standard" },
-    { path: "/model", label: "Model validation" },
+    { path: "/experiments", label: "Experimental Verification" },
+    { path: "/results", label: "Quantitative Results" },
+    { path: "/alternative-platform", label: "Alternative Chassis Exploration" },
+    { path: "/hardware", label: "CirCore Device Calibration" },
   ],
   next: {
     path: "/alternative-platform",
     label: "Alternative Platform",
-    title: "Which experimental context carries the system?",
+    title: "Beyond the Conventional Chassis",
+    description: "Now that analytical standards are established, can circRNA synthesis escape costly cell-free enzymes? Explore our evaluation of alternative cellular expression platforms.",
   },
 };

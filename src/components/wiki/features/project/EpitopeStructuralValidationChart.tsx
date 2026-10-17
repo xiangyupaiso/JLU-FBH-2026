@@ -10,7 +10,12 @@ import "../../../../styles/features/epitope-structural-validation-chart.css";
 
 type ViewMode = "dual" | "heatmap" | "volume";
 
-export function EpitopeStructuralValidationChart() {
+export function EpitopeStructuralValidationChart({
+  captions,
+}: {
+  /** A host manuscript can supply its own two captions without the legacy notes. */
+  captions?: readonly [string, string];
+} = {}) {
   const [mode, setMode] = useState<ViewMode>("dual");
 
   const heatmapDomRef = useRef<HTMLDivElement | null>(null);
@@ -37,6 +42,7 @@ export function EpitopeStructuralValidationChart() {
     const option = createEpitopeHeatmapOption();
 
     chart.setOption(option, true);
+    chart.resize();
   }, [mode]);
 
   /* --------------------------------------------- Horizontal Bar Chart Setup */
@@ -57,6 +63,7 @@ export function EpitopeStructuralValidationChart() {
     const option = createEpitopeVolumeOption();
 
     chart.setOption(option, true);
+    chart.resize();
   }, [mode]);
 
   /* ------------------------------------------------ Responsive resize logic */
@@ -87,15 +94,25 @@ export function EpitopeStructuralValidationChart() {
   }, []);
 
   return (
-    <figure className="wiki-figure epitope-validation-panel">
+    <figure
+      className={`wiki-figure epitope-validation-panel${captions ? " epitope-validation-panel--manuscript" : ""}`}
+    >
       {/* Header with Mode Toggle */}
       <header className="epitope-validation-header">
-        <h3 className="epitope-validation-title">
-          <span>Structural Validation of 17 Candidate Epitopes</span>
-          <span className="epitope-validation-badge">HLA-A*02:01 Groove Loading</span>
-        </h3>
+        {!captions && (
+          <h3 className="epitope-validation-title">
+            <span>Structural Validation of 17 Candidate Epitopes</span>
+            <span className="epitope-validation-badge">
+              HLA-A*02:01 Groove Loading
+            </span>
+          </h3>
+        )}
 
-        <div className="epitope-validation-modes" role="tablist" aria-label="View selection">
+        <div
+          className="epitope-validation-modes"
+          role="tablist"
+          aria-label="View selection"
+        >
           <button
             type="button"
             className={`epitope-mode-btn ${mode === "dual" ? "is-active" : ""}`}
@@ -103,7 +120,7 @@ export function EpitopeStructuralValidationChart() {
             role="tab"
             aria-selected={mode === "dual"}
           >
-            Dual View (左右双栏)
+            {captions ? "Both charts" : "Dual View (左右双栏)"}
           </button>
           <button
             type="button"
@@ -112,7 +129,7 @@ export function EpitopeStructuralValidationChart() {
             role="tab"
             aria-selected={mode === "heatmap"}
           >
-            Fig 11 Burial Heatmap (位点包埋)
+            {captions ? "Burial heatmap" : "Fig 11 Burial Heatmap (位点包埋)"}
           </button>
           <button
             type="button"
@@ -121,74 +138,114 @@ export function EpitopeStructuralValidationChart() {
             role="tab"
             aria-selected={mode === "volume"}
           >
-            P9 Volume & Fill (填充容积)
+            {captions ? "P9 buried area" : "P9 Volume & Fill (填充容积)"}
           </button>
         </div>
       </header>
 
       {/* Charts Display Grid */}
-      <div className={`epitope-charts-container epitope-charts-container--${mode}`}>
+      <div
+        className={`epitope-charts-container epitope-charts-container--${mode}`}
+      >
         {(mode === "dual" || mode === "heatmap") && (
           <div className="epitope-chart-card">
-            <div className="epitope-chart-card__header">
-              <h4 className="epitope-chart-card__title">
-                Figure 11. Per-Position Side-Chain Burial Across Positions P1–P9
-              </h4>
-              <p className="epitope-chart-card__subtitle">
-                Mean across 5 independent co-folded models. Grouped by source antigen: TROP2, B7-H4, Nectin-4, LIV-1.
-              </p>
-            </div>
+            {!captions && (
+              <div className="epitope-chart-card__header">
+                <h4 className="epitope-chart-card__title">
+                  Figure 11. Per-Position Side-Chain Burial Across Positions
+                  P1–P9
+                </h4>
+                <p className="epitope-chart-card__subtitle">
+                  Mean across 5 independent co-folded models. Grouped by source
+                  antigen: TROP2, B7-H4, Nectin-4, LIV-1.
+                </p>
+              </div>
+            )}
             <div ref={heatmapDomRef} className="epitope-chart-instance" />
           </div>
         )}
 
         {(mode === "dual" || mode === "volume") && (
           <div className="epitope-chart-card">
-            <div className="epitope-chart-card__header">
-              <h4 className="epitope-chart-card__title">
-                Position-9 Buried Surface Area and Fill Ratio Relative to Leucine
-              </h4>
-              <p className="epitope-chart-card__subtitle">
-                Threshold: ≥ 84 Å² (60% of 140 Å² Leu anchor reference). Bars show mean ± 1 SD.
-              </p>
-            </div>
+            {!captions && (
+              <div className="epitope-chart-card__header">
+                <h4 className="epitope-chart-card__title">
+                  Position-9 Buried Surface Area and Fill Ratio Relative to
+                  Leucine
+                </h4>
+                <p className="epitope-chart-card__subtitle">
+                  Threshold: ≥ 84 Å² (60% of 140 Å² Leu anchor reference). Bars
+                  show mean ± 1 SD.
+                </p>
+              </div>
+            )}
             <div ref={barDomRef} className="epitope-chart-instance" />
           </div>
         )}
       </div>
 
       {/* Captions and Editorial Notes Underneath */}
-      <figcaption className="epitope-validation-caption">
-        <div className="epitope-caption-entry">
-          <strong>Figure 11. Per-position side-chain burial for the 17 candidate epitopes, averaged over five models.</strong>
-          <p>
-            Side-chain solvent-accessible surface area (SASA) burial percentage across peptide positions P1 through P9 in complex with HLA-A*02:01.
-            Cells with diagonal hatching denote glycine residues (P1 in GVATLAWMV and GLHNFSDGL; P3 in FIGHYAENV; P5 in WLKEGVLGL and TVSEGTHFL; P4/P6 in YINGRGHLV; P8 in WLKEGVLGL and GLHNFSDGL; P9 in FLAEASVRG), which possess no side chain.
-            Both primary anchor residues (P2 and P9) exhibit near-complete nominal burial (≥ 99%) across almost all candidates.
-          </p>
-        </div>
+      {captions ? (
+        <figcaption className="epitope-validation-caption">
+          {captions.map((caption) => (
+            <p className="epitope-caption-entry" key={caption}>
+              {caption}
+            </p>
+          ))}
+        </figcaption>
+      ) : (
+        <figcaption className="epitope-validation-caption">
+          <div className="epitope-caption-entry">
+            <strong>
+              Figure 11. Per-position side-chain burial for the 17 candidate
+              epitopes, averaged over five models.
+            </strong>
+            <p>
+              Side-chain solvent-accessible surface area (SASA) burial
+              percentage across peptide positions P1 through P9 in complex with
+              HLA-A*02:01. Cells with diagonal hatching denote glycine residues
+              (P1 in GVATLAWMV and GLHNFSDGL; P3 in FIGHYAENV; P5 in WLKEGVLGL
+              and TVSEGTHFL; P4/P6 in YINGRGHLV; P8 in WLKEGVLGL and GLHNFSDGL;
+              P9 in FLAEASVRG), which possess no side chain. Both primary anchor
+              residues (P2 and P9) exhibit near-complete nominal burial (≥ 99%)
+              across almost all candidates.
+            </p>
+          </div>
 
-        <div className="epitope-caption-entry">
-          <strong>Burial percentage saturates on small side chains; filling volume does not.</strong>
-          <p>
-            Mean position-9 buried side-chain surface area across five folded models with error bars representing ±1 SD.
-            Labels display the fill ratio relative to the canonical leucine anchor reference (140 Å²).
-            While nominal burial percentage saturates at ~100% due to pocket encapsulation, absolute buried volume differentiates geometric fit:
-            15 peptides clear the derived 60% fill-ratio criterion (≥ 84 Å²), while 2 peptides are rejected (
-            <span className="epitope-highlight-fail">FLAEASVRG</span> at 0% / 0 Å² and{" "}
-            <span className="epitope-highlight-fail">HILHVSFLA</span> at 43% / 60.1 Å²).
-          </p>
-        </div>
+          <div className="epitope-caption-entry">
+            <strong>
+              Burial percentage saturates on small side chains; filling volume
+              does not.
+            </strong>
+            <p>
+              Mean position-9 buried side-chain surface area across five folded
+              models with error bars representing ±1 SD. Labels display the fill
+              ratio relative to the canonical leucine anchor reference (140 Å²).
+              While nominal burial percentage saturates at ~100% due to pocket
+              encapsulation, absolute buried volume differentiates geometric
+              fit: 15 peptides clear the derived 60% fill-ratio criterion (≥ 84
+              Å²), while 2 peptides are rejected (
+              <span className="epitope-highlight-fail">FLAEASVRG</span> at 0% /
+              0 Å² and <span className="epitope-highlight-fail">HILHVSFLA</span>{" "}
+              at 43% / 60.1 Å²).
+            </p>
+          </div>
 
-        <div className="epitope-academic-note">
-          <h4>Academic & Structural Interpretation</h4>
-          <p>
-            The fill-ratio criterion performs critical discriminative work that burial percentage alone cannot.
-            In the HLA-A*02:01 binding groove, deep anchor pockets enclose small side chains entirely, yielding false-positive burial scores of 99–100% (e.g. HILHVSFLA at 99.4% burial).
-            By evaluating absolute volume against the 140 Å² reference anchor, under-filled pockets that fail to support stable hydrophobic anchoring are cleanly eliminated prior to wet-lab synthesis.
-          </p>
-        </div>
-      </figcaption>
+          <div className="epitope-academic-note">
+            <h4>Academic & Structural Interpretation</h4>
+            <p>
+              The fill-ratio criterion performs critical discriminative work
+              that burial percentage alone cannot. In the HLA-A*02:01 binding
+              groove, deep anchor pockets enclose small side chains entirely,
+              yielding false-positive burial scores of 99–100% (e.g. HILHVSFLA
+              at 99.4% burial). By evaluating absolute volume against the 140 Å²
+              reference anchor, under-filled pockets that fail to support stable
+              hydrophobic anchoring are cleanly eliminated prior to wet-lab
+              synthesis.
+            </p>
+          </div>
+        </figcaption>
+      )}
     </figure>
   );
 }

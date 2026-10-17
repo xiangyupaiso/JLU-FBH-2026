@@ -659,6 +659,104 @@
   box-shadow: 0 6px 20px rgba(136, 84, 30, 0.09);
 }
 
+.wiki-protocol-drawer__heading {
+  margin: 0;
+}
+
+.wiki-page--experiments .wiki-content-heading {
+  margin: 12px 0 0;
+  color: var(--route-subheading-ink, #88541e);
+  font-family: var(--font-sans);
+  font-size: clamp(18px, 1.6vw, 20px);
+  font-weight: 700;
+  line-height: 1.35;
+  padding: 0;
+  border: 0;
+}
+
+.wiki-page--experiments .wiki-content-heading::before {
+  content: none;
+}
+
+.wiki-page--experiments h5.wiki-content-heading {
+  font-size: clamp(17px, 1.5vw, 19px);
+}
+
+.wiki-page--experiments .wiki-protocol-drawer__title {
+  font-size: clamp(19px, 1.8vw, 22px);
+}
+
+.wiki-page--experiments .wiki-prose strong,
+.wiki-page--experiments .wiki-protocol-step-text strong {
+  color: var(--route-ink) !important;
+}
+
+.wiki-page--experiments {
+  --exp-body-font-size: 18px;
+}
+
+.wiki-page.wiki-page--route.wiki-page--experiments .wiki-prose,
+.wiki-page.wiki-page--route.wiki-page--experiments .wiki-prose p,
+.wiki-page.wiki-page--route.wiki-page--experiments .wiki-prose-list,
+.wiki-page.wiki-page--route.wiki-page--experiments .wiki-protocol-step-text,
+.wiki-page.wiki-page--route.wiki-page--experiments .wiki-table-wrap tbody th,
+.wiki-page.wiki-page--route.wiki-page--experiments .wiki-table-wrap tbody td {
+  font-size: var(--exp-body-font-size);
+  line-height: 1.75;
+}
+
+.wiki-page--experiments .wiki-protocol-step-text > .wiki-prose {
+  margin: 0;
+}
+
+.wiki-page--experiments .wiki-protocol-step-text .wiki-prose p:last-child {
+  margin-bottom: 0;
+}
+
+.wiki-page--experiments .wiki-prose-list:not(ol) {
+  list-style-type: disc;
+  padding-left: 1.4em;
+}
+
+.wiki-page--experiments .wiki-content-heading .wiki-cite {
+  font-size: 0.8em;
+  font-weight: 400;
+}
+
+.wiki-page--experiments .wiki-reference-item__link {
+  overflow-wrap: anywhere;
+}
+
+.wiki-page--experiments .wiki-content-heading:first-child {
+  margin-top: 0;
+}
+
+.exp-protocol-formula {
+  overflow-wrap: anywhere;
+}
+
+.exp-protocol-formula__fraction {
+  display: inline-flex;
+  flex-direction: column;
+  vertical-align: middle;
+  margin: 0 0.35em;
+  text-align: center;
+  max-width: 100%;
+}
+
+.exp-protocol-formula__fraction > span:first-child {
+  border-bottom: 1px solid currentColor;
+}
+
+.wiki-page--experiments .wiki-prose-link {
+  overflow-wrap: anywhere;
+}
+
+.wiki-page--experiments .wiki-protocol-drawer__title {
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
 .wiki-protocol-drawer__header {
   width: 100%;
   display: flex;

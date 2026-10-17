@@ -164,6 +164,8 @@ export const sdg12EvidenceAssets = {
       "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/sustainability/sdg12/evidence-1.avif",
     alt: "Feedback from five categories of stakeholders and industry practitioners, with corresponding project changes",
     section: "SDG 12 — Evidence",
+    width: 4000,
+    height: 1693,
   },
   sdg12Evidence2: {
     kind: "image",
@@ -173,5 +175,7 @@ export const sdg12EvidenceAssets = {
       "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/sustainability/sdg12/evidence-2.avif",
     alt: "Dorm planting activity with the Jilin University Student Environmental Protection Association",
     section: "SDG 12 — Evidence",
+    width: 1706,
+    height: 1279,
   },
 } as const satisfies Record<string, SustainabilityAssetEntry>;

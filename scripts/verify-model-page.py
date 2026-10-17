@@ -1,5 +1,8 @@
 """Check source-copy preservation, CSV classifications, assets and panel wiring."""
 import csv
+import sys
+sys.dont_write_bytecode = True
+from model_figure15 import load_figure15, update_figure15_copy
 import json
 import re
 from pathlib import Path
@@ -18,6 +21,10 @@ panels = section('export const modelPanels: Record<string, ModelPanel>')
 references = section('export const modelReferences: CitationReference[]')
 downloads = section('export const modelDownloads')
 all_text = json.dumps([sections, panels, references], ensure_ascii=False)
+figure15 = load_figure15()
+assert json.loads((ROOT/'src/data/drylab/modelConfidenceData.json').read_text()) == figure15
+assert sum(r['passed'] for r in figure15['rows']) == 15
+assert sum(p.get('chart') == 'confidence-scatter' for p in panels.values()) == 1
 
 def clean(text):
     text = re.sub(r'\\([!"#$%&\'()*+,\-./:;<=>?@\[\]^_`{|}~])', r'\1', text)
@@ -34,6 +41,7 @@ for paragraph in re.split(r'\n\s*\n', body_text):
     p = re.sub(r'\s*（?折叠结束）?$', '', p).strip()
     if re.search(r'[\u3400-\u9fff]', p):
         continue
+    p = update_figure15_copy(p, figure15)
     if json.dumps(p, ensure_ascii=False)[1:-1] not in all_text:
         missing.append(p[:100])
 assert not missing, 'Source paragraphs not preserved: ' + repr(missing)
@@ -41,7 +49,16 @@ assert not re.search(r'[\u3400-\u9fff]', all_text), 'Published Model content mus
 assert all(f'path: "/{route}"' in page for route in ('software','hardware','games'))
 
 for cohort, expected in [('024322',(5024,911,2799)), ('028102',(4495,158,2878))]:
-    rows = json.loads((ROOT/'src/data/drylab/modelVolcanoData.json').read_text())[cohort]
+    name = 'PXD024322_TNBC_vs_Normal_limma_ALL_9088_proteins(1).csv' if cohort == '024322' else 'PXD028102_paired_limma_imputed_ALL.csv'
+    rows = []
+    for row in csv.DictReader((source/name).open(encoding='utf-8-sig', newline='')):
+        try:
+            fc = float(row['log2FC_TNBC_minus_Normal' if cohort == '024322' else 'log2FC_TNBC_minus_NAT'])
+            p = float(row['adj.P.Val'])
+        except ValueError:
+            continue
+        assert 0 < p <= 1
+        rows.append([row['Symbol'], fc, p])
     threshold, fdr = (.15,.05) if cohort=='024322' else (1,.01)
     up = sum(r[1]>=threshold and r[2]<fdr for r in rows)
     down = sum(r[1]<=-threshold and r[2]<fdr for r in rows)
@@ -77,13 +94,22 @@ for p in panels.values():
         for e in p['entries']: blocks(e['blocks'])
     if p['kind']=='fold': blocks(p['blocks'])
 for download in downloads:
-    assert (ROOT/'public'/download['path']).is_file()
+    if download['path'].startswith('https://'):
+        assert download['path'].startswith('https://static.igem.wiki/teams/6056/wiki/files/pages/dry-lab/model/')
+        assert download['path'].endswith('.csv')
+    else:
+        assert (ROOT/'public'/download['path']).is_file()
 for file in re.findall(r'from "(../../assets/wiki/model/[^"]+)"', (ROOT/'src/data/drylab/modelAssets.ts').read_text(encoding='utf-8')):
     assert (ROOT/'src/data/drylab'/file).is_file()
 assert '参照这个表格（' not in all_text
 assert len(references)==56
 assert sum(p['kind']=='tabs' for p in panels.values())==4
 assert sum(p['kind']=='transpose' for p in panels.values())==1
+antigen_tables = [p['table'] for p in panels.values() if p['kind']=='antigen-table']
+assert len(antigen_tables) == 1
+assert len(antigen_tables[0]['rows']) == 51
+assert {r[0] for r in antigen_tables[0]['rows']} == {'TROP2', 'B7-H4', 'Nectin-4', 'LIV-1'}
+blocks(antigen_tables)
 legacy = (ROOT/'src/data/modelPage.ts').read_text(encoding='utf-8')
 first = legacy[legacy.index('    {\n      id: "model-structural-confirmation"'):legacy.index('    {\n      id: "model-judge-brief"')].rstrip().rstrip(',')
 assert first in page, 'The original 3D chapter must remain unchanged and first'

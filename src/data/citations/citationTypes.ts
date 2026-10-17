@@ -51,6 +51,8 @@ export interface CitationEntry {
 
 export interface CitationIndex {
   byParagraph: Map<string, CitationEntry>;
+  /** Resolve repeated passages in different chapters without duplicate anchor IDs. */
+  byScopedParagraph?: Map<string, CitationEntry>;
   byRef: Map<number, CitationOccurrence[]>;
   issues: string[];
 }

@@ -61,11 +61,6 @@ NAMES = {
     "Winter Outreach-Chongqing.pptx": "winter-outreach-chongqing-english",
 }
 
-VIDEO_PLACEHOLDERS = {
-    "Virtual Laboratory Instructional video.zip",
-    "《Breast Guardian》Instructional video.mp4",
-}
-
 INTERACTIVE_HTML = {
     "Community & Educational Function Map.html": "education-interactive-map",
     "index.html": "education-interactive-design-board",
@@ -159,9 +154,6 @@ def main() -> None:
         if original.lower().endswith(".zip"):
             manifest.append({"source": original, "status": "archive-omitted"})
             continue
-        if original in VIDEO_PLACEHOLDERS:
-            manifest.append({"source": original, "status": "video-placeholder"})
-            continue
         path = ATTACHMENTS / original
         if not path.is_file() or path.stat().st_size == 0:
             manifest.append({"source": original, "status": "missing-or-empty"})
@@ -245,10 +237,6 @@ def main() -> None:
                 flush()
                 current["blocks"].append({"type": "feature", "key": feature_key})
                 continue
-        if image and unquote(image.group(3).removeprefix("Images_attachments/")) in VIDEO_PLACEHOLDERS:
-            flush()
-            current["blocks"].append({"type": "note", "label": "Video coming soon", "body": "The instructional video will be added here."})
-            continue
         if image and unquote(image.group(3).removeprefix("Images_attachments/")).lower().endswith(".zip"):
             flush()
             continue
@@ -277,8 +265,6 @@ def main() -> None:
 
         def replace_link(match: re.Match) -> str:
             original = unquote(match.group(3).removeprefix("Images_attachments/"))
-            if original in VIDEO_PLACEHOLDERS:
-                return "Video coming soon"
             if original not in urls:
                 return clean(match.group(2))
             label = LINK_LABELS.get(original, clean(match.group(2)))

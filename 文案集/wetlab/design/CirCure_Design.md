@@ -10,7 +10,7 @@ We built and tested the platform in two rounds\. We screened thirteen single\-ep
 
 How each quantity was defined, controlled and calibrated, including the pre\-registered design of the animal study, is on **Measurement**\. Sequences and part documentation are on **Parts**; the smaller engineering cycles run on individual experimental details are on **Engineering**\.
 
-![Create a circular scientific workflow figure on a white background, flat vector\.png](图片和附件/Create%20a%20circular%20scientific%20workflow%20figure%20on%20a%20white%20background,%20flat%20vector.png)
+![Create a circular scientific workflow figure on a white background, flat vector<span data-type=](<图片和附件/Create%20a%20circular%20scientific%20workflow%20figure%20on%20a%20white%20background,%20flat%20vector.png>)\.png" />
 
 **Figure 1\. CirCure at a glance\.**
 
@@ -22,19 +22,19 @@ The instruction has to be carried by some molecule, and linear mRNA is the obvio
 
 The first is stability\. A linear mRNA has free 5′ and 3′ ends, and that is where exonucleases begin\. A covalently closed circle has neither, and circRNAs are correspondingly long\-lived in cells\[3\]\[4\]\. Longer expression per molecule delivered means less RNA per dose and fewer doses, so less carrier and less total exposure\. We did not take the property from the literature and leave it there; we measured it on the vaccine batch itself\.
 
-![Create a structured two\-column comparison grid figure on a white background, fla \(1\)\.png](图片和附件/Create%20a%20structured%20two-column%20comparison%20grid%20figure%20on%20a%20white%20background,%20fla%20%281%29.png)
+![Create a structured two<span data-type=](<图片和附件/Create%20a%20structured%20two-column%20comparison%20grid%20figure%20on%20a%20white%20background,%20fla%20%281%29.png>)\-column comparison grid figure on a white background, fla \(1\)\.png" />
 
 **Figure 2a\. Stability\.**
 
 The second is cap\-independent translation\. circRNA is read through an internal ribosome entry site, so the 5′ cap and, in practice, the modified nucleosides that linear mRNA depends on both drop out of the process\. That removes cost, removes manufacturing steps, and keeps the work clear of a crowded patent area\. It also puts the whole production chain within reach of a student team: a plasmid, T7 polymerase and a self\-splicing intron\.
 
-![Create a structured two\-column comparison grid figure on a white background, fla \(2\)\.png](图片和附件/Create%20a%20structured%20two-column%20comparison%20grid%20figure%20on%20a%20white%20background,%20fla%20%282%29.png)
+![Create a structured two<span data-type=](<图片和附件/Create%20a%20structured%20two-column%20comparison%20grid%20figure%20on%20a%20white%20background,%20fla%20%282%29.png>)\-column comparison grid figure on a white background, fla \(2\)\.png" />
 
 **Figure 2b\. Translation initiation\.**
 
 The third is that the circle is its own adjuvant\. Unmodified circRNA is sensed in the cytoplasm by RIG\-I and MDA5, which matures the dendritic cell and supplies the innate danger signal a therapeutic vaccine needs\. circRNA cancer vaccines exploit this actively\[5\], and it was one of our main reasons for choosing the chassis: the adjuvant travels with the molecule, and the innate stimulus lands in the same cell that presents the antigen\. It also fixes how the vaccine has to be read\. Since the backbone contributes to the response on its own, the contribution of the epitopes shows up only against an empty\-vector circRNA arm that carries the complete backbone and adjuvant with no epitope encoded\. Every functional comparison in the project uses that control\.
 
-![Create a structured two\-column comparison grid figure on a white background, fla \(3\)\.png](图片和附件/Create%20a%20structured%20two-column%20comparison%20grid%20figure%20on%20a%20white%20background,%20fla%20%283%29.png)
+![Create a structured two<span data-type=](<图片和附件/Create%20a%20structured%20two-column%20comparison%20grid%20figure%20on%20a%20white%20background,%20fla%20%283%29.png>)\-column comparison grid figure on a white background, fla \(3\)\.png" />
 
 **Figure 2c\. Innate sensing\.**
 
@@ -58,7 +58,7 @@ On that basis we set four criteria\. A candidate antigen had to be present on th
 
 **LIV\-1** \(SLC39A6 / ZIP6\) is a zinc transporter that drives epithelial–mesenchymal transition and associates with metastatic spread\. It is a clinical\-stage ADC target in TNBC\[6\]\.
 
-![Create four tall rounded\-rectangle card tiles in one row on a white background,\.png](图片和附件/Create%20four%20tall%20rounded-rectangle%20card%20tiles%20in%20one%20row%20on%20a%20white%20background,.png)
+![Create four tall rounded<span data-type=](<图片和附件/Create%20four%20tall%20rounded-rectangle%20card%20tiles%20in%20one%20row%20on%20a%20white%20background,.png>)\-rectangle card tiles in one row on a white background,\.png" />
 
 **Figure 3\. The four antigens of CirCure\.**
 
@@ -78,7 +78,7 @@ Which peptides, then\. Candidate 9\-mers from all four antigens were scored for 
 
 The fifth stage is the bench\. All thirteen constructs were built into one shared backbone, verified identically, and compared head to head by IFN\-γ ELISpot in a human dendritic\-cell and T\-cell co\-culture\. Across thirteen sequences that had all cleared the computational filter, the response spanned 47 to 271 spot\-forming cells, a 5\.8\-fold range that the prediction scores gave no hint of\. Without the wet\-lab screen, all thirteen would have entered the vaccine at equal weight\. How that screen was run, and what it changed, is section 7\.
 
-![Create an illustrated screening funnel figure on a white background, flat vector \(2\)\.png](图片和附件/Create%20an%20illustrated%20screening%20funnel%20figure%20on%20a%20white%20background,%20flat%20vector%20%282%29.png)
+![Create an illustrated screening funnel figure on a white background, flat vector <span data-type=](<图片和附件/Create%20an%20illustrated%20screening%20funnel%20figure%20on%20a%20white%20background,%20flat%20vector%20%282%29.png>)\(2\)\.png" />
 
 **Figure 4\. The screening funnel\.**
 
@@ -92,7 +92,7 @@ Two of those elements convert expression into presentation\. MITD is an MHC clas
 
 The mature, antigen\-loaded dendritic cell then meets a CD8⁺ T cell\. Peptide–MHC\-I engagement of the T\-cell receptor provides signal 1; CD80 and CD86 engaging CD28 provide signal 2\. The T cell activates, as read by CD69 within hours; it expands; and it commits to an effector\-memory phenotype, CD45RO⁺CCR7⁻, which is what separates a response that persists from one that fades with the dose\. Those primed cytotoxic T cells then recognise the same peptide–MHC\-I complexes displayed on TNBC cells and kill through the perforin and granzyme axis, releasing IFN\-γ and Granzyme B as they do so\.
 
-![环状RNA疫苗机制 recovered\.png](图片和附件/环状RNA疫苗机制%20recovered.png)
+![环状RNA疫苗机制 recovered<span data-type=](<图片和附件/环状RNA疫苗机制%20recovered.png>)\.png" />
 
 **Figure 5\. Mechanism of action\.**
 
@@ -146,7 +146,7 @@ Those three changes defined the construct described in section 5\. The eight sel
 
 This cycle tested the chain of section 4 link by link, with five readouts\. Flow cytometry for CD80⁺CD86⁺ asks whether the vaccine matures the dendritic cell as well as loading it\. Anti\-FLAG Western blot asks whether the circRNA is translated inside that cell at all; this is the experiment the FLAG tag was built into the construct for, and it turns translation from an inference into an observation\. Flow cytometry for CD69, CD28 and CD45RO⁺CCR7⁻ characterises the resulting T\-cell response across activation, co\-stimulation and effector\-memory commitment\. A second ELISpot asks whether eight epitopes outperform two and one\. Calcein\-AM release against MDA\-MB\-231 asks whether the primed T cells kill real TNBC cells, at three effector\-to\-target ratios of 20:1, 40:1 and 80:1 so that killing could be shown to scale with effector dose\.
 
-![Create a diagram of two Design\-Build\-Test\-Learn cycles side by side on a white b\.png](图片和附件/Create%20a%20diagram%20of%20two%20Design-Build-Test-Learn%20cycles%20side%20by%20side%20on%20a%20white%20b.png)
+![Create a diagram of two Design<span data-type=](<图片和附件/Create%20a%20diagram%20of%20two%20Design-Build-Test-Learn%20cycles%20side%20by%20side%20on%20a%20white%20b.png>)\-Build\-Test\-Learn cycles side by side on a white b\.png" />
 
 **Figure 7\. Two design cycles\.**
 
@@ -158,11 +158,9 @@ That line went into immunocompetent BALB/c mice\. The host keeps the complete ad
 
 The design of that study was built in the **NC3Rs Experimental Design Assistant** before any animal was ordered, producing an Experimental Design Report conforming to the ARRIVE 2\.0 Essential 10\[15\]\. Sample size, the minimum biologically important effect, randomisation, blinding, inclusion and exclusion criteria, the primary outcome and the full statistical plan including the two pre\-specified pairwise contrasts were all fixed in advance\. The report is embedded below, and the reasoning behind each entry is on **Measurement**\.
 
-![Create a horizontal study\-timeline diagram for a mouse tumour experiment\. One ho\.png](图片和附件/Create%20a%20horizontal%20study-timeline%20diagram%20for%20a%20mouse%20tumour%20experiment.%20One%20ho.png)
+![Create a horizontal study<span data-type=](<图片和附件/Create%20a%20horizontal%20study-timeline%20diagram%20for%20a%20mouse%20tumour%20experiment.%20One%20ho.png>)\-timeline diagram for a mouse tumour experiment\. One ho\.png" />
 
 **Figure 8\. In vivo study design\.**
-
-
 
 **Figure 9\. Experimental Design Report, NC3Rs EDA\.**
 
@@ -187,32 +185,17 @@ CirCure as it stands is a platform proof of concept\. Five pieces of work would 
 ## References
 
 1. Gao G, Wang Z, Qu X, Zhang Z\. Prognostic value of tumor\-infiltrating lymphocytes in patients with triple\-negative breast cancer: a systematic review and meta\-analysis\. *BMC Cancer\.* 2020;20:179\. doi:10\.1186/s12885\-020\-6668\-z
-
 2. Individualized mRNA vaccines evoke durable T cell immunity in adjuvant TNBC\. *Nature\.* doi:10\.1038/s41586\-025\-10004\-2\. PMID: 41708868
-
 3. Jeck WR, Sorrentino JA, Wang K, et al\. Circular RNAs are abundant, conserved, and associated with ALU repeats\. *RNA\.* 2013;19\(2\):141–157\. PMID: 23249763
-
 4. Enuka Y, Lauriola M, Feldman ME, Sas\-Chen A, Ulitsky I, Yarden Y\. Circular RNAs are long\-lived and display only minimal early alterations in response to a growth factor\. *Nucleic Acids Res\.* 2016;44\(3\):1370–1383\. PMID: 26657629
-
 5. Gong Z, Hu W, Zhou C, Guo J, Yang L, Wang B\. Recent advances and perspectives on the development of circular RNA cancer vaccines\. *npj Vaccines\.* 2025;10:41\. doi:10\.1038/s41541\-025\-01097\-x
-
 6. Future potential targets of antibody–drug conjugates in breast cancer\. PMC10063401
-
 7. Trop2\-based antibody–drug conjugates: emerging strategy and progress in triple\-negative breast cancer therapy\. *Curr Oncol\.* doi:10\.3390/curroncol33020092\. PMID: 41744856
-
 8. TROP2\-targeting antibody–drug conjugates in breast cancer and ovarian carcinoma: therapeutic advances and resistance mechanisms\. PMID: 42040770; PMC13103265
-
 9. IEDB Population Coverage tool\. https://tools\.iedb\.org/population/
-
 10. Nielsen M, Lundegaard C, Lund O, Keşmir C\. The role of the proteasome in generating cytotoxic T cell epitopes: insights obtained from improved predictions of proteasomal cleavage\. *Immunogenetics\.* 2005;57:33–41\. PMID: 15744535
-
 11. Kreiter S, Selmi A, Diken M, et al\. Increased antigen presentation efficiency by coupling antigens to MHC class I trafficking signals\. *J Immunol\.* 2008;180\(1\):309–318\. PMID: 18097032
-
 12. Bergmann\-Leitner ES, Duncan EH, Leitner WW, et al\. C3d\-defined complement receptor\-binding peptide p28 conjugated to circumsporozoite protein provides protection against *Plasmodium berghei*\. *Vaccine\.* 2007;25\(45\):7732–7736\. PMID: 17931754
-
 13. In silico design and in vitro validation of a multi\-epitope peptide vaccine targeting triple\-negative breast cancer\. *Front Oncol\.* 2025;15:1611991\. PMID: 40626008
-
 14. Hou X, Zaks T, Langer R, Dong Y\. Lipid nanoparticles for mRNA delivery\. *Nat Rev Mater\.* 2021;6\(12\):1078–1094\. PMID: 34394960
-
 15. Percie du Sert N, Hurst V, Ahluwalia A, et al\. The ARRIVE guidelines 2\.0: updated guidelines for reporting animal research\. *PLoS Biol\.* 2020;18\(7\):e3000410\. PMID: 32663219
-

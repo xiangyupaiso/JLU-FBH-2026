@@ -13,7 +13,6 @@ export function Education() {
       hideHeroCopy
       outlineDepth={4}
       showAllOutlineHeadings
-      deferContentImages
       features={educationFeatures()}
       inlineRenderer={renderEducationInline}
     />

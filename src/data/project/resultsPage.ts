@@ -6,9 +6,9 @@ import { resultsSectionsInVivoDiscussion } from "./resultsSectionsInVivoDiscussi
 
 /**
  * Results — the project's evidence chain, migrated verbatim from
- * `文案集/project/results/3.3 Results.md` (Mode A, full rebuild).
+ * `文案集/project/results/3.3 Results.md` (updated manuscript).
  *
- * The manuscript's ten `#` headings become the page's ten sections; its `##`
+ * The manuscript's eleven `#` headings become the page's eleven sections; its `##`
  * headings become `subheading` blocks, so the reader's outline mirrors the
  * document rather than a re-authored summary. The copy is split across four
  * sibling files purely for reviewability — `engineeringPage.ts` /
@@ -70,18 +70,15 @@ export const resultsPage: WikiPageContent = {
     ...resultsSectionsInVivoDiscussion,
   ],
   links: [
-    {
-      path: "/model",
-      label: "Model: full datasets, parameters and per-model values",
-    },
-    {
-      path: "/experiments",
-      label: "Experiments: the protocols cited as Experiments 1.1–7.5",
-    },
+    { path: "/experiments", label: "Experimental Protocols" },
+    { path: "/measurement", label: "Measurement Standards" },
+    { path: "/model", label: "Biophysical Models" },
+    { path: "/contribution", label: "Reusable Contributions" },
   ],
   next: {
     path: "/contribution",
     label: "Contribution",
-    title: "What can another team reuse?",
+    title: "What Can the SynBio Community Build Next?",
+    description: "Our experimental evidence validates the circular RNA platform. Discover the thirty deposited BioBrick parts, verified protocols, and software tools packaged for future teams.",
   },
 };

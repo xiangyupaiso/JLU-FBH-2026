@@ -135,8 +135,8 @@ export const cycle3Section: WikiSection = {
   index: "03",
   kicker: "Cycle 3 — Measurement",
   navLabel: "Cycle 3 — Measurement",
-  title: "Building the molecular and cellular evidence chain",
-  summary: "TIME enters **M—Measurement**. Cycle 2 answered **what should be integrated** by establishing Combined and three TROP2 comparison constructs. Cycle 3 then asked **what evidence the integrated design c...",
+  title: "Cycle 3: Building the molecular and cellular evidence chain",
+  summary: "TIME enters **M—Measurement**. Cycle 2 answered **what should be integrated** by establishing Combined and three TROP2 comparison constructs. Cycle 3 then asked **what evidence the integrated design could produce**. Four antigen-encoding circRNA preparations and an equal-input Blank control were examined in sequence from RNA preparation and persistence to protein translation, dendritic-cell activation, T-cell responses, IFN-γ secretion and target-cell killing. Once this molecule-to-function chain was established, its value was extended through three further levels: CircuForge turned experimental records into a transferable workflow, Education translated that workflow into procedures learners could follow, and Visual Design transformed the project’s specialised content into a shared visual language. Measurement therefore progressed from the molecule, to the cell, to the transfer of the knowledge produced.",
   blocks: [
         {
           type: "prose",
@@ -173,7 +173,8 @@ export const cycle3Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "Wet Lab prepared all five circRNA inputs through the same DNA-to-RNA workflow. PCR-derived transcription templates from the corresponding plasmids entered T7 in vitro transcription, DNA-template removal, RNA purification, self-splicing circularisation and RNase R purification. Agarose-gel electrophoresis documented the four antigen-encoding DNA templates."
+          "Wet Lab prepared all five circRNA inputs through the same DNA-to-RNA workflow. PCR-derived transcription templates from the corresponding plasmids entered T7 in vitro transcription, DNA-template removal, RNA purification, self-splicing circularisation and RNase R purification. Agarose-gel electrophoresis documented the four antigen-encoding DNA templates.",
+          "For the purified Combined preparation, divergent- and convergent-primer RT-qPCR used the 4 µL working input established in Iteration 2.5, with three technical wells. The recorded calculation estimated the circular fraction against the predefined ≥90% release criterion. Sanger sequencing of a junction-spanning amplification product then checked the expected head-to-tail connection. Group identifiers were retained throughout preparation and subsequent DC electroporation (Wesselhoeft et al., 2018; LGC Biosearch Technologies, n.d.)."
 ]
         },
         {
@@ -202,18 +203,21 @@ export const cycle3Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "The gel showed prominent DNA bands for all four antigen-encoding transcription templates, supporting their progression to transcription. At the RNA stage, the purified Combined preparation gave a recorded circular-to-linear signal ratio of 145.7:1 and an estimated circular fraction of 99.30±0.17%, exceeding the ≥90% release criterion. This measurement described the composition after RNase R purification."
+          "The gel showed prominent DNA bands for all four antigen-encoding transcription templates, supporting their progression to transcription. At the RNA stage, the purified Combined preparation gave a recorded circular-to-linear signal ratio of 145.7:1 and an estimated circular fraction of 99.30±0.17%, exceeding the ≥90% release criterion. This measurement described the composition after RNase R purification.",
+          "Junction sequencing recovered the expected connection between the precursor’s 3′ and 5′ sequences. Together, the quantitative readout and junction sequence supported the preparation of circRNA-rich Combined material for the second-round comparison."
 ]
         },
         {
           type: "figure",
           src: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-c3-01a.avif",
+          width: 733,
+          height: 549,
           alt: "Figure C3-01A",
-          caption: "Figure C3-01A · Agarose-gel electrophoresis documented the four antigen-encoding DNA transcription templates before T7 transcription."
+          caption: "Agarose-gel electrophoresis documented the four antigen-encoding DNA transcription templates before T7 transcription."
         },
         {
           type: "table",
-          caption: "Table C3-01｜RT-qPCR assessment of purified Combined｜纯化Combined的RT-qPCR评价",
+          caption: "Table C3-01｜RT-qPCR assessment of purified Combined",
           headers: ["Measure", "Recorded result"],
           rows: [
             ["Working input", "4 µL"],
@@ -231,9 +235,11 @@ export const cycle3Section: WikiSection = {
         },
         {
           type: "figure",
-          src: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-c3-01b.avif",
+          src: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-c3-01b-new.avif",
+          width: 1585,
+          height: 726,
           alt: "Figure C3-01B",
-          caption: "Figure C3-01B · Sanger sequencing of the junction-spanning amplification product identified the expected head-to-tail connection in Combined."
+          caption: "Sanger chromatogram of the Combined junction-spanning amplification product. The marked junction connects the expected 3′- and 5′-side sequences."
         }
           ]
         },
@@ -315,14 +321,18 @@ export const cycle3Section: WikiSection = {
         {
           type: "figure",
           src: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-c3-02a.avif",
+          width: 1297,
+          height: 537,
           alt: "Figure C3-02A",
-          caption: "Figure C3-02A · Combined circRNA and its linear precursor were compared by electrophoresis after incubation at 37 °C for 0, 24, 48 and 72 h."
+          caption: "Combined circRNA and its linear precursor were compared by electrophoresis after incubation at 37 °C for 0, 24, 48 and 72 h."
         },
         {
           type: "figure",
           src: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-c3-02b.avif",
+          width: 1302,
+          height: 730,
           alt: "Figure C3-02B",
-          caption: "Figure C3-02B · Relative band intensities were normalised to each RNA’s own 0 h value. Lines connect the measured time points."
+          caption: "Relative band intensities were normalised to each RNA’s own 0 h value. Lines connect the measured time points."
         }
           ]
         },
@@ -398,8 +408,10 @@ export const cycle3Section: WikiSection = {
         {
           type: "figure",
           src: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-c3-03.avif",
+          width: 1854,
+          height: 610,
           alt: "Figure C3-03",
-          caption: "Figure C3-03 · The 2,013 nt Combined sequence was divided into ten overlapping fragments. Hatched regions indicate shared sequence between neighbouring fragments. The diagram uses 0-based half-open coordinates; Table C3-02 lists the corresponding 1-based inclusive positions."
+          caption: "The 2,013 nt Combined sequence was divided into ten overlapping fragments. Hatched regions indicate shared sequence between neighbouring fragments. The diagram uses 0-based half-open coordinates; Table C3-02 lists the corresponding 1-based inclusive positions."
         }
           ]
         },
@@ -415,7 +427,7 @@ export const cycle3Section: WikiSection = {
         },
         {
           type: "table",
-          caption: "Table C3-02｜Fragment coordinates and overlaps for Combined RNA｜Combined RNA片段坐标与重叠记录",
+          caption: "Table C3-02｜Fragment coordinates and overlaps for Combined RNA",
           headers: ["Fragment", "Sequence positions", "Length (nt)", "Overlap with previous fragment (nt)"],
           rows: [
             ["C1", "1–195", "195", "—"],
@@ -509,12 +521,14 @@ export const cycle3Section: WikiSection = {
         {
           type: "figure",
           src: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-c3-04a.avif",
+          width: 1018,
+          height: 369,
           alt: "Figure C3-04A",
-          caption: "Figure C3-04A · P-atom views of the same 200 nt Combined fragment before refinement (left) and after final Amber refinement (right). Both views originate from all-atom models of the same run."
+          caption: "P-atom views of the same 200 nt Combined fragment before refinement (left) and after final Amber refinement (right). Both views originate from all-atom models of the same run."
         },
         {
           type: "table",
-          caption: "Table C3-03｜Geometric diagnostics during refinement of the 200 nt fragment｜200 nt片段精修过程的几何诊断",
+          caption: "Table C3-03｜Geometric diagnostics during refinement of the 200 nt fragment",
           headers: ["Stage", "Non-adjacent P-atom close-contact pairs", "Fragment terminal P–P distance (Å)"],
           rows: [
             ["Raw reconstruction", "8", "6.751"],
@@ -528,10 +542,18 @@ export const cycle3Section: WikiSection = {
           body: "Close contacts count P-atom pairs separated by at least three sequence positions and less than 3 Å in space. Terminal distance is measured between the first and last P atoms of the 200 nt fragment."
         },
         {
+          type: "prose",
+          paragraphs: [
+          "Alongside this fragment-level test, the retained full-length model represented all 2,013 nt of Combined and contained 42,831 atoms. It provided a computational view of the complete sequence’s spatial organisation. The quantitative refinement measurements above refer specifically to the 200 nt fragment."
+]
+        },
+        {
           type: "figure",
-          src: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-c3-04b.avif",
+          src: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-c3-04b-new.avif",
+          width: 480,
+          height: 369,
           alt: "Figure C3-04B",
-          caption: "Figure C3-04B · The separately retained full-length Combined model represents 2,013 nt and contains 42,831 atoms. It is presented as a sequence-specific structural hypothesis."
+          caption: "The separately retained full-length Combined model represents 2,013 nt and contains 42,831 atoms. It is presented as a sequence-specific structural hypothesis."
         }
           ]
         },
@@ -542,7 +564,7 @@ export const cycle3Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "TorusFold established a segmentation scheme for the experimental Combined sequence, demonstrated geometric refinement in a fragment-level test and supplied a full-length structural hypothesis. Together, these outputs added a computational perspective to the molecular measurements. We then returned to the prepared circRNA to examine whether it produced an encoded protein and elicited a maturation-associated response in dendritic cells."
+          "TorusFold established a segmentation scheme for the experimental Combined sequence, demonstrated geometric refinement in a fragment-level test and supplied a full-length structural hypothesis. This work established a sequence-preserving route for structural exploration while keeping fragment-level refinement results distinct from the full-length hypothesis. Translation and dendritic-cell maturation were evaluated through a separate experimental route, providing complementary functional evidence."
 ]
         },
         {
@@ -572,7 +594,7 @@ export const cycle3Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "Iteration 3.4 produced a refined structural model of Combined. We then returned to the cellular experiments to examine two connected steps in vaccine function: **(1)** translation of the delivered circRNA into protein and **(2)** maturation of the receiving dendritic cells, which supports subsequent T-cell activation. The five-group comparison assessed the DC response to Combined alongside its TROP2 components and the empty-vector background."
+          "The cell-validation route examined two connected steps in vaccine function: **(1)** translation of the delivered circRNA into protein and **(2)** maturation of the receiving dendritic cells, which supports subsequent T-cell activation. These experiments were conducted independently of the TorusFold structural calculations. The five-group comparison assessed the DC response to Combined alongside its TROP2 components and the empty-vector background."
 ]
         }
           ]
@@ -584,7 +606,8 @@ export const cycle3Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "Wet Lab established protein-expression and DC-maturation measurements. Anti-FLAG Western blotting compared circRNA-electroporated DCs with the negative control, using β-actin as the loading reference (Towbin et al., 1979)."
+          "Wet Lab established protein-expression and DC-maturation measurements. Anti-FLAG Western blotting compared circRNA-electroporated DCs with the negative control, using β-actin as the loading reference (Towbin et al., 1979).",
+          "For the five-group maturation comparison, Blank, TROP2 CTL1, TROP2 CTL2, TROP2 CTL1+2 and Combined each delivered 5 µg of circRNA to 1×10⁶ DCs in 100 µL using programme U-002. Blank received equal-input empty-vector circRNA. Flow cytometry measured DCs expressing both CD80 and CD86, two co-stimulatory molecules associated with their ability to activate T cells (Banchereau and Steinman, 1998)."
 ]
         },
         {
@@ -613,26 +636,33 @@ export const cycle3Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "Anti-FLAG blotting detected a distinct band near 50 kDa in the circRNA-electroporated lane, with little corresponding signal in the negative control and comparable β-actin signals. This supported translation of the circRNA-encoded protein in DCs."
+          "Anti-FLAG blotting detected a distinct band near 50 kDa in the circRNA-electroporated lane, with little corresponding signal in the negative control and comparable β-actin signals. This supported translation of the circRNA-encoded protein in DCs.",
+          "The maturation comparison showed a stronger response with Combined. CD80⁺CD86⁺ DCs increased from 10.33±0.55% in Blank to 15.57±0.35% and 15.80±0.36% in the two individual TROP2 groups, 17.50±0.30% in TROP2 CTL1+2 and 22.37±0.31% in Combined. Combined reached 2.16 times the Blank level and exceeded both Blank and the dual-module construct after Holm correction. These results connected protein expression with a measurable DC response and supported following the immune response into T cells."
 ]
         },
         {
           type: "figure",
           src: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-c3-05a.avif",
+          width: 1480,
+          height: 812,
           alt: "Figure C3-05A",
-          caption: "Figure C3-05A · Anti-FLAG Western blot with β-actin as the loading reference. The original circRNA and Blank lane labels are retained."
+          caption: "Anti-FLAG Western blot with β-actin as the loading reference. The original circRNA and Blank lane labels are retained."
         },
         {
           type: "figure",
           src: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-c3-05b.avif",
+          width: 1340,
+          height: 441,
           alt: "Figure C3-05B",
-          caption: "Figure C3-05B · Representative flow-cytometry plots show CD80⁺CD86⁺ DCs across the five circRNA groups."
+          caption: "Representative flow-cytometry plots show CD80⁺CD86⁺ DCs across the five circRNA groups."
         },
         {
           type: "figure",
           src: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-c3-05c.avif",
+          width: 828,
+          height: 766,
           alt: "Figure C3-05C",
-          caption: "Figure C3-05C · CD80⁺CD86⁺ DC frequencies are shown as mean ± SD; *** denotes P \\< 0.001 for Blank versus Combined."
+          caption: "CD80⁺CD86⁺ DC frequencies are shown as mean ± SD; *** denotes P < 0.001 for Blank versus Combined."
         }
           ]
         },
@@ -726,20 +756,26 @@ export const cycle3Section: WikiSection = {
         {
           type: "figure",
           src: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-c3-06a.avif",
+          width: 1360,
+          height: 1250,
           alt: "Figure C3-06A",
-          caption: "Figure C3-06A · Representative flow-cytometry plots (top) and quantitative comparison (bottom) of CD8⁺CD69⁺ cells across the five circRNA groups, assessing the activation-associated T-cell response."
+          caption: "Representative flow-cytometry plots (top) and quantitative comparison (bottom) of CD8⁺CD69⁺ cells across the five circRNA groups, assessing the activation-associated T-cell response."
         },
         {
           type: "figure",
           src: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-c3-06b.avif",
+          width: 1360,
+          height: 1250,
           alt: "Figure C3-06B",
-          caption: "Figure C3-06B · Representative flow-cytometry plots (top) and quantitative comparison (bottom) of CD8⁺CD28⁺ cells across the five circRNA groups, assessing the co-stimulation-associated phenotype."
+          caption: "Representative flow-cytometry plots (top) and quantitative comparison (bottom) of CD8⁺CD28⁺ cells across the five circRNA groups, assessing the co-stimulation-associated phenotype."
         },
         {
           type: "figure",
           src: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-c3-06c.avif",
+          width: 1360,
+          height: 1250,
           alt: "Figure C3-06C",
-          caption: "Figure C3-06C · Representative flow-cytometry plots (top) and quantitative comparison (bottom) of the CD45RO⁺CCR7⁻ population across the five circRNA groups, assessing the effector-memory-associated phenotype."
+          caption: "Representative flow-cytometry plots (top) and quantitative comparison (bottom) of the CD45RO⁺CCR7⁻ population across the five circRNA groups, assessing the effector-memory-associated phenotype."
         }
           ]
         },
@@ -821,8 +857,10 @@ export const cycle3Section: WikiSection = {
         {
           type: "figure",
           src: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-c3-07.avif",
+          width: 736,
+          height: 214,
           alt: "Figure C3-07",
-          caption: "Figure C3-07 · IFN-γ ELISpot comparison across the five second-round circRNA groups. Combined produced the highest recorded spot count, followed by the paired TROP2 CTL1+2 design."
+          caption: "IFN-γ ELISpot comparison across the five second-round circRNA groups. Combined produced the highest recorded spot count, followed by the paired TROP2 CTL1+2 design."
         }
           ]
         },
@@ -910,8 +948,10 @@ export const cycle3Section: WikiSection = {
         {
           type: "figure",
           src: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-c3-08.avif",
+          width: 756,
+          height: 451,
           alt: "Figure C3-08",
-          caption: "Figure C3-08 · Killing of MDA-MB-231 TNBC cells by T cells stimulated through DCs receiving Blank, TROP2 CTL1, TROP2 CTL2, TROP2 CTL1+2 or Combined circRNA, at effector-to-target ratios of 20:1, 40:1 and 80:1. Killing increased with the effector-to-target ratio, with Combined showing the highest recorded activity at all three ratios."
+          caption: "Killing of MDA-MB-231 TNBC cells by T cells stimulated through DCs receiving Blank, TROP2 CTL1, TROP2 CTL2, TROP2 CTL1+2 or Combined circRNA, at effector-to-target ratios of 20:1, 40:1 and 80:1. Killing increased with the effector-to-target ratio, with Combined showing the highest recorded activity at all three ratios."
         }
           ]
         },
@@ -982,8 +1022,10 @@ export const cycle3Section: WikiSection = {
         {
           type: "figure",
           src: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-c3-09.avif",
+          width: 694,
+          height: 450,
           alt: "Figure C3-09",
-          caption: "Figure C3-09 · Combined-primed T cells showed substantially higher killing of MDA-MB-231 than of four HLA-A*02:01-positive non-tumour cell lines at both tested ratios. Values are mean±SD across three technical replicate wells per condition."
+          caption: "Combined-primed T cells showed substantially higher killing of MDA-MB-231 than of four HLA-A*02:01-positive non-tumour cell lines at both tested ratios. Values are mean±SD across three technical replicate wells per condition."
         }
           ]
         },
@@ -994,7 +1036,7 @@ export const cycle3Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "The comparison supported tumour-target preference within the tested cell panel. We then extended the assessment from effector-cell killing to the delivery material itself, using a separate CCK-8 assay to measure how increasing amounts of empty LNP affected DC viability."
+          "This comparison showed that tumour-cell killing and effects on non-tumour cells needed to remain separate evaluation dimensions. Strong activity against MDA-MB-231 alone could not establish target preference; that interpretation required comparison with non-tumour targets under matched conditions. We therefore retained both readouts in evaluating Combined, while limiting the low-killing conclusion to the tested cell panel and conditions. Carrier-related effects were assessed independently through the earlier empty-LNP CCK-8 assay described below."
 ]
         },
         {
@@ -1024,7 +1066,7 @@ export const cycle3Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "After examining non-tumour-cell killing in Iteration 3.9, we turned to the delivery carrier itself. To isolate its effect on DC viability, we tested empty LNP without circRNA cargo. A five-level input series and a common 24 h CCK-8 readout assessed how increasing carrier amounts affected cell viability (Dojindo Laboratories, 2026)."
+          "Alongside assessing effector-cell function, we needed to determine how the delivery carrier itself affected DC viability. We addressed this question in an earlier, independent experiment using empty LNP without circRNA cargo to isolate carrier-related effects. A five-level input series and a common 24 h CCK-8 readout assessed how increasing carrier amounts affected cell viability (Dojindo Laboratories, 2026)."
 ]
         },
         {
@@ -1065,8 +1107,10 @@ export const cycle3Section: WikiSection = {
         {
           type: "figure",
           src: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-c3-10.avif",
+          width: 699,
+          height: 486,
           alt: "Figure C3-10",
-          caption: "Figure C3-10 · Immature monocyte-derived DCs received empty LNP without circRNA cargo for 24 h. Relative viability remained near baseline at 50–200 ng per well and decreased at 400 ng. Values are mean±SD across four replicate wells, normalised to the 0 ng control."
+          caption: "Immature monocyte-derived DCs received empty LNP without circRNA cargo for 24 h. Relative viability remained near baseline at 50–200 ng per well and decreased at 400 ng. Values are mean±SD across four replicate wells, normalised to the 0 ng control."
         }
           ]
         },
@@ -1143,7 +1187,7 @@ export const cycle3Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "The revision established three practical rules for transferable workflows: orientation should precede unfamiliar actions, intermediate states should remain visible and final acceptance should stay with the user. We carried these interaction rules into another project resource that also needed to work after handoff—the Virtual Laboratory."
+          "The revision established three practical rules for transferable workflows: orientation should precede unfamiliar actions, intermediate states should remain visible and final acceptance should stay with the user. This handoff challenge was also central to the Virtual Laboratory, which needed to remain understandable and usable after the team stepped away."
 ]
         },
         {
@@ -1173,7 +1217,8 @@ export const cycle3Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "Iteration 1.3 established layered education as a principle for adapting scientific content to learners with different ages and prior knowledge. Iteration 2.8 then showed at Hailun No. 1 High School that the revised Virtual Laboratory could continue to be used by a teacher after handoff. However, children in some economically disadvantaged and resource-limited communities still have few opportunities to enter a laboratory because their schools lack specialised instruments, consumables and trained experimental support. We hoped that the Virtual Laboratory could help narrow this gap, so that a child’s opportunity to experience experimental science would not be determined solely by geography or school resources."
+          "Iteration 1.3 established layered education as a principle for adapting scientific content to learners with different ages and prior knowledge. Iteration 2.8 then showed at Hailun No. 1 High School that the revised Virtual Laboratory could continue to be used by a teacher after handoff. However, children in some economically disadvantaged and resource-limited communities still have few opportunities to enter a laboratory because their schools lack specialised instruments, consumables and trained experimental support. We hoped that the Virtual Laboratory could help narrow this gap, so that a child’s opportunity to experience experimental science would not be determined solely by geography or school resources.",
+          "With this purpose, we brought the programme to Pilu Town and organised a Gram-staining activity for second- and fourth-grade pupils. Younger learners mainly followed colour and touch cues, while older pupils more often paused to ask about the experimental purpose and materials. These observations defined the next design target: provide essential orientation before the first virtual action and keep supporting information accessible throughout the procedure."
 ]
         }
           ]
@@ -1402,6 +1447,6 @@ export const cycle3Section: WikiSection = {
   ],
   note: {
     label: "Cycle 3 outcome",
-    body: "**M—Measurement** connected the Combined design to measurable molecular and cellular performance. Five comparison preparations followed a shared production route, with Combined’s RT-qPCR and junction sequencing supporting its circular identity and enriched composition. The time course demonstrated greater RNA persistence than the linear precursor, while TorusFold produced a structural hypothesis for the full-length sequence. Cellular measurements then connected circRNA translation with DC maturation, T-cell responses, IFN-γ secretion and tumour-cell killing. The non-tumour-cell comparison and empty-LNP assay complemented these functional results with target-selectivity and carrier-viability evidence. CircuForge improved the transfer of design records, layered educational activities brought experimental workflows to different learners, and the revised visual system made team roles recognisable. Together, these outcomes established the experimental basis for evaluating Combined in vivo and made the project’s methods and findings easier to use and communicate."
+    body: "**M—Measurement** connected the Combined design to measurable molecular and cellular performance. Five comparison preparations followed a shared production route, with DNA-template checks and Combined junction sequencing linking the design records to the experimental materials. The time course demonstrated greater RNA persistence than the linear precursor, while TorusFold produced a structural hypothesis for the full-length sequence. Cellular measurements connected circRNA translation with DC maturation, T-cell responses, IFN-γ secretion and tumour-cell killing. The non-tumour-cell comparison and empty-LNP assay complemented these functional results with target-selectivity and carrier-viability evidence. The non-tumour-cell comparison was conducted alongside the in vivo work described in Cycle 4, providing complementary in vitro risk-assessment evidence. CircuForge improved the transfer of design records, layered educational activities brought experimental workflows to different learners, and the revised visual system made team roles recognisable. Together, these outcomes contributed molecular, cellular and computational evidence to the evaluation of Combined and made the project’s methods and findings easier to use and communicate."
   }
 };

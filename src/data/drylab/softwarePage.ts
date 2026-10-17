@@ -13,6 +13,8 @@ const blocks = (value: unknown[]): WikiContentBlock[] => value.map((block) => {
       alt: asset.alt,
       caption: asset.caption.replace(/^Figure\s+[0-9]+[A-Z]?\.\s*/i, ""),
       figureLabel: figureMatch ? `FIG. ${figureMatch[1]}` : undefined,
+      width: asset.width,
+      height: asset.height,
     };
   }
   return block as WikiContentBlock;
@@ -1328,13 +1330,15 @@ export const softwarePage: WikiPageContent =
     }
   ],
   "links": [
-    { "path": "/model", "label": "Model" },
-    { "path": "/hardware", "label": "Hardware" },
-    { "path": "/games", "label": "Games" }
+    { "path": "/model", "label": "Computational Biophysics" },
+    { "path": "/hardware", "label": "CirCore Hardware Device" },
+    { "path": "/design", "label": "Construct Architecture" },
+    { "path": "/contribution", "label": "Open-Source Repository" }
   ],
   "next": {
     "path": "/hardware",
     "label": "Hardware",
-    "title": "Hardware"
+    "title": "When In Silico Code Meets Physical Matter",
+    "description": "Software designs the sequence, but bench manufacturing demands precise physical control. Discover CirCore: our custom automated microfluidic reactor for circRNA synthesis."
   }
 };

@@ -7,6 +7,7 @@ import {
 } from "../utils/homePlayback";
 import { HOME_INTRO_REPLAY_EVENT } from "../utils/homeIntro";
 import { ANTIGEN_PLAYBACK_HOLD } from "./antigenMechanismTiming";
+import { createHomeArtworkLoader, type HomeArtworkStatus } from "../utils/homeArtwork";
 
 const CHAPTERS = [
   { id: "top", title: "Behind the diagnosis" },
@@ -91,7 +92,7 @@ const BEATS: readonly Beat[] = [
   { chapter: 12, progress: 0.98, travel: 7, hold: 3 },
 ];
 
-const DEFAULT_RATE = 1.2;
+const DEFAULT_RATE = 1.5;
 
 type View = {
   mode: HomePlaybackMode;
@@ -100,11 +101,14 @@ type View = {
   progress: number;
   ended: boolean;
   reducedMotion: boolean;
+  artworkStatus: HomeArtworkStatus;
+  artworkChapter: string;
 };
 type Controls = {
   toggle: () => void;
   seekChapter: (index: number) => void;
   setRate: (rate: number) => void;
+  retryArtwork: () => void;
 };
 
 export function useHomePlayback(root: RefObject<HTMLDivElement | null>) {
@@ -115,11 +119,14 @@ export function useHomePlayback(root: RefObject<HTMLDivElement | null>) {
     progress: 0,
     ended: false,
     reducedMotion: false,
+    artworkStatus: "ready",
+    artworkChapter: "",
   });
   const controls = useRef<Controls>({
     toggle: () => {},
     seekChapter: () => {},
     setRate: () => {},
+    retryArtwork: () => {},
   });
 
   useEffect(() => {
@@ -141,6 +148,10 @@ export function useHomePlayback(root: RefObject<HTMLDivElement | null>) {
     let ownReplay = false;
     let measuredWidth = window.innerWidth;
     let measuredHeight = window.innerHeight;
+    let waitingChapter: number | null = 0;
+    let pendingSeek: number | null = null;
+    let artworkFrame = 0;
+    let paintedChapter = 0;
 
     const clamp = (value: number) => Math.max(0, Math.min(1, value));
     const maxScroll = () =>
@@ -152,6 +163,33 @@ export function useHomePlayback(root: RefObject<HTMLDivElement | null>) {
     const introComplete = () =>
       section(0)?.dataset.intro === "done" &&
       !document.querySelector(".home-intro");
+    const artwork = createHomeArtworkLoader(page, () => {
+      if (artworkFrame) return;
+      artworkFrame = requestAnimationFrame(() => {
+        artworkFrame = 0;
+        if (waitingChapter === null && mode === "playing") {
+          const current = introComplete() && beatIndex >= 0 ? BEATS[beatIndex].chapter : 0;
+          if (artwork.status(section(current)) !== "ready") waitingChapter = current;
+        }
+        if (waitingChapter !== null && artwork.status(section(waitingChapter)) === "ready") {
+          waitingChapter = null;
+          if (pendingSeek !== null) {
+            finishSeek(pendingSeek);
+            pendingSeek = null;
+          }
+        }
+        publishPlayback();
+        paint();
+        if (mode === "playing") requestTick();
+      });
+    });
+    const publishPlayback = () => {
+      publishHomePlaybackState({
+        mode: waitingChapter !== null && artwork.status(section(waitingChapter)) !== "ready"
+          ? "paused" : mode,
+        rate,
+      });
+    };
     const findTrigger = (anchor: Anchor) => {
       if (anchor.kind === "bridge") {
         return ScrollTrigger.getById(anchor.chapter === 5
@@ -296,9 +334,7 @@ export function useHomePlayback(root: RefObject<HTMLDivElement | null>) {
       let progress = 0;
       // The opening owns the screen until its portal and GSAP context are
       // removed. Measuring the scroll story here competes with that animation.
-      // A manual jump can paint before React removes the skipped intro portal.
-      // Its destination still needs to appear immediately in the scene list.
-      if (introComplete() || (mode === "manual" && window.scrollY > 0)) {
+      if (introComplete()) {
         const y = window.scrollY;
         // Entries follow the story's document order. Stop at the next chapter
         // so the opening does not measure distant, complex scene interiors.
@@ -311,6 +347,7 @@ export function useHomePlayback(root: RefObject<HTMLDivElement | null>) {
         const end = position({ chapter: 12, progress: 0.98 });
         progress = clamp(y / Math.max(1, end));
       }
+      paintedChapter = chapterIndex;
       setView({
         mode,
         rate,
@@ -318,6 +355,8 @@ export function useHomePlayback(root: RefObject<HTMLDivElement | null>) {
         progress,
         ended,
         reducedMotion: preference.matches,
+        artworkStatus: artwork.status(section(waitingChapter ?? chapterIndex)),
+        artworkChapter: CHAPTERS[waitingChapter ?? chapterIndex].title,
       });
     };
     const settleScrubs = () => {
@@ -336,12 +375,16 @@ export function useHomePlayback(root: RefObject<HTMLDivElement | null>) {
     const changeMode = (next: HomePlaybackMode) => {
       mode = next;
       lastTime = 0;
-      publishHomePlaybackState({ mode, rate });
+      if (next === "manual") {
+        waitingChapter = null;
+        pendingSeek = null;
+      }
+      publishPlayback();
       if (next !== "playing") {
         cancelAnimationFrame(frame);
         frame = 0;
         // Finish only the small scrub lag, retaining the scroll's current frame.
-        settleScrubs();
+        if (introComplete()) settleScrubs();
       }
       if (next === "manual") {
         beatIndex = -1;
@@ -422,11 +465,8 @@ export function useHomePlayback(root: RefObject<HTMLDivElement | null>) {
     const preload = (chapter: number) => {
       [chapter, chapter + 1].forEach((index) => {
         if (index >= CHAPTERS.length) return;
-        section(index)
-          ?.querySelectorAll("img")
-          .forEach((image) => {
-            image.loading = "eager";
-          });
+        const scene = section(index);
+        if (scene) artwork.warm(scene);
       });
     };
     const beginBeat = (index: number) => {
@@ -467,6 +507,12 @@ export function useHomePlayback(root: RefObject<HTMLDivElement | null>) {
     const tick = (time: number) => {
       frame = 0;
       if (mode !== "playing") return;
+      if (waitingChapter !== null && artwork.status(section(waitingChapter)) !== "ready") {
+        lastTime = 0;
+        publishPlayback();
+        paint();
+        return;
+      }
       const delta = lastTime
         ? Math.min(0.1, (time - lastTime) / 1000) * rate
         : 0;
@@ -479,6 +525,13 @@ export function useHomePlayback(root: RefObject<HTMLDivElement | null>) {
       }
       if (introDone && beatIndex >= 0) {
         const beat = BEATS[beatIndex];
+        if (artwork.status(section(beat.chapter)) !== "ready") {
+          waitingChapter = beat.chapter;
+          lastTime = 0;
+          publishPlayback();
+          paint();
+          return;
+        }
         if (!holding) {
           elapsed += delta;
           const fraction = travel > 0 ? clamp(elapsed / travel) : 1;
@@ -528,6 +581,11 @@ export function useHomePlayback(root: RefObject<HTMLDivElement | null>) {
       window.dispatchEvent(new Event(HOME_INTRO_REPLAY_EVENT));
       ownReplay = false;
     };
+    const finishSeek = (index: number) => {
+      scrollTo(position(seekAnchor(index)) + 1);
+      settleScrubs();
+      paint();
+    };
     controls.current = {
       toggle() {
         if (preference.matches) return;
@@ -545,7 +603,7 @@ export function useHomePlayback(root: RefObject<HTMLDivElement | null>) {
         requestTick();
       },
       seekChapter(index) {
-        if (index < 0 || index >= CHAPTERS.length) return;
+        if (!introComplete() || index < 0 || index >= CHAPTERS.length) return;
         changeMode("manual");
         section(9)?.style.removeProperty("--home-playback-phase-offset");
         beatIndex = -1;
@@ -553,25 +611,36 @@ export function useHomePlayback(root: RefObject<HTMLDivElement | null>) {
         preload(index);
         // Trigger boundaries already include all pin spacers; fragments would
         // misalign shared clinical/RNA scenes and replay the intro on refresh.
-        scrollTo(position(seekAnchor(index)) + 1);
+        if (artwork.status(section(index)) !== "ready") {
+          waitingChapter = index;
+          pendingSeek = index;
+          publishPlayback();
+          paint();
+          return;
+        }
         // A chapter jump is instantaneous, so paint every affected timeline
         // at its destination frame before the previous scene can flash.
-        settleScrubs();
-        paint();
+        finishSeek(index);
       },
       setRate(next) {
         rate = Math.max(0.5, Math.min(2, next));
-        publishHomePlaybackState({ mode, rate });
+        publishPlayback();
+        paint();
+      },
+      retryArtwork() {
+        const index = waitingChapter ?? paintedChapter;
+        artwork.retry(section(index));
         paint();
       },
     };
     const inPlayer = (target: EventTarget | null) =>
       target instanceof Element && !!target.closest("[data-home-player]");
     const manual = (event: Event) => {
-      if (inPlayer(event.target)) return;
+      if (!introComplete() || inPlayer(event.target)) return;
       if (mode !== "manual") changeMode("manual");
     };
     const scrollInput = (event: Event) => {
+      if (!introComplete()) return;
       // Scrolling the open list stays local; scrolling over the transport
       // itself still hands the document back to the reader.
       if (
@@ -618,14 +687,15 @@ export function useHomePlayback(root: RefObject<HTMLDivElement | null>) {
         manual(event);
     };
     const visibility = () => {
-      if (document.hidden && mode === "playing") changeMode("paused");
+      if (introComplete() && document.hidden && mode === "playing")
+        changeMode("paused");
     };
     const resize = () => {
       if (
         window.innerWidth !== measuredWidth ||
         Math.abs(window.innerHeight - measuredHeight) >= 80
       ) {
-        if (mode === "playing") changeMode("paused");
+        if (introComplete() && mode === "playing") changeMode("paused");
         beatIndex = -1;
         measuredWidth = window.innerWidth;
         measuredHeight = window.innerHeight;
@@ -643,7 +713,7 @@ export function useHomePlayback(root: RefObject<HTMLDivElement | null>) {
       paint();
     };
     const onReplay = () => {
-      if (ownReplay) return;
+      if (ownReplay || !introComplete()) return;
       ended = false;
       beatIndex = -1;
       changeMode("manual");
@@ -672,11 +742,20 @@ export function useHomePlayback(root: RefObject<HTMLDivElement | null>) {
     document.addEventListener("visibilitychange", visibility);
     preference.addEventListener("change", onPreference);
     ScrollTrigger.addEventListener("refresh", refresh);
-    publishHomePlaybackState({ mode, rate });
+    // Preserve the existing page loader; Home adds its own success gate.
+    artwork.warm(page);
+    CHAPTERS.forEach((_, index) => {
+      const scene = section(index);
+      if (scene) artwork.warm(scene);
+    });
+    if (artwork.status(section(0)) === "ready") waitingChapter = null;
+    publishPlayback();
     paint();
     if (mode === "playing") requestTick();
     return () => {
       cancelAnimationFrame(frame);
+      cancelAnimationFrame(artworkFrame);
+      artwork.dispose();
       section(9)?.style.removeProperty("--home-playback-phase-offset");
       window.removeEventListener("wheel", scrollInput, true);
       window.removeEventListener("touchmove", scrollInput, true);
@@ -701,5 +780,6 @@ export function useHomePlayback(root: RefObject<HTMLDivElement | null>) {
     toggle: () => controls.current.toggle(),
     seekChapter: (index: number) => controls.current.seekChapter(index),
     setRate: (rate: number) => controls.current.setRate(rate),
+    retryArtwork: () => controls.current.retryArtwork(),
   };
 }

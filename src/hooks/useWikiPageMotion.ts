@@ -10,13 +10,13 @@ function findSections(root: HTMLElement, sectionIds: string[]) {
     );
 }
 
+/** Track reading position without animating the article on scroll. */
 export function useWikiPageMotion(
   rootRef: RefObject<HTMLElement | null>,
   sectionIds: string[],
   scrollContainerRef: RefObject<HTMLElement | null>,
   route: string,
-  enabled = true,
-  wideFlow = false,
+  projectedReader = true,
 ) {
   const [activeSection, setActiveSection] = useState(() => {
     const hash = window.location.hash.slice(1);
@@ -30,377 +30,132 @@ export function useWikiPageMotion(
   useLayoutEffect(() => {
     const root = rootRef.current;
     const scrollContainer = scrollContainerRef.current;
-    if (!root) return;
+    if (!root || !scrollContainer) return;
 
-    if (!enabled) {
-      const sections = findSections(root, sectionIds);
-      const revealElements = Array.from(
-        root.querySelectorAll<HTMLElement>("[data-wiki-reveal]"),
-      );
-      revealElements.forEach((element) => element.classList.add("is-visible"));
-      sections.forEach((section) => {
-        section.style.setProperty("--wiki-section-reveal", "1");
-        section.style.setProperty("--wiki-section-focus", "1");
-        section.style.setProperty("--wiki-section-shift", "0px");
-        section.style.setProperty("--wiki-section-drift", "0px");
-      });
-
-      const routeHash = window.location.hash.slice(1);
-      const hashFrame = requestAnimationFrame(() => {
-        const routeTarget = routeHash ? document.getElementById(routeHash) : null;
-        if (!routeTarget || !root.contains(routeTarget)) return;
-
-        scrollReaderToTarget(routeTarget, null, "instant");
-        const section = sections.find(
-          (candidate) => candidate === routeTarget || candidate.contains(routeTarget),
-        );
-        if (section) setActiveSection(section.id);
-        if (sectionIds.includes(routeHash)) {
-          setActiveSubsection("");
-        } else {
-          const outlineAnchor = routeTarget.closest<HTMLElement>(
-            "[data-wiki-outline-anchor]",
-          );
-          setActiveSubsection(outlineAnchor?.id ?? routeHash);
-        }
-      });
-
-      if (!("IntersectionObserver" in window)) {
-        return () => cancelAnimationFrame(hashFrame);
-      }
-      const observer = new IntersectionObserver(
-        (entries) => {
-          const visible = entries
-            .filter((entry) => entry.isIntersecting)
-            .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
-          const current = visible[0]?.target as HTMLElement | undefined;
-          if (!current) return;
-          setActiveSection(current.id);
-          sections.forEach((section) =>
-            section.toggleAttribute("data-wiki-active", section === current),
-          );
-        },
-        { root: null, rootMargin: "-18% 0px -62% 0px", threshold: 0 },
-      );
-      sections.forEach((section) => observer.observe(section));
-      return () => {
-        cancelAnimationFrame(hashFrame);
-        observer.disconnect();
-        sections.forEach((section) => {
-          section.removeAttribute("data-wiki-active");
-          section.style.removeProperty("--wiki-section-reveal");
-          section.style.removeProperty("--wiki-section-focus");
-          section.style.removeProperty("--wiki-section-shift");
-          section.style.removeProperty("--wiki-section-drift");
-        });
-      };
-    }
-
-    if (!scrollContainer) return;
-
-    const record = root.querySelector<HTMLElement>(".wiki-record");
-    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const revealElements = Array.from(
-      root.querySelectorAll<HTMLElement>("[data-wiki-reveal]"),
-    );
     const sections = findSections(root, sectionIds);
+    const progressBar = root.querySelector<HTMLElement>(".wiki-page-progress");
+    const article = root.querySelector<HTMLElement>(".wiki-article");
     const outlineAnchors = Array.from(
       root.querySelectorAll<HTMLElement>("[data-wiki-outline-anchor]"),
     );
-    const routeHash = window.location.hash.slice(1);
-    // Sustainability's sticky reading windows need stable ancestors at every
-    // desktop width, including the narrower reader with its visible TOC.
-    const lightweightRoute =
-      wideFlow || route === "/experiments" || route === "/sustainability";
-    const canObserve = "IntersectionObserver" in window;
+    const anchorsBySection = new Map(
+      sections.map((section) => [
+        section.id,
+        outlineAnchors.filter((anchor) => section.contains(anchor)),
+      ]),
+    );
 
-    if (reducedMotion.matches || !canObserve || lightweightRoute) {
-      revealElements.forEach((element) => element.classList.add("is-visible"));
-    }
-
-    // The article scrolls inside the pinned reader frame, but the hero and
-    // page chrome live OUTSIDE that container. An IntersectionObserver root
-    // never reports targets outside its own subtree, so elements outside the
-    // frame must be observed against the viewport instead.
-    const revealObservers: IntersectionObserver[] = [];
-
-    if (!reducedMotion.matches && canObserve && !lightweightRoute) {
-      const onReveal = (entries: IntersectionObserverEntry[]) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) return;
-          entry.target.classList.add("is-visible");
-          revealObservers.forEach((observer) =>
-            observer.unobserve(entry.target),
-          );
-        });
-      };
-      const revealOptions = { rootMargin: "0px 0px -8%", threshold: 0.08 };
-
-      revealObservers.push(
-        new IntersectionObserver(onReveal, {
-          ...revealOptions,
-          root: scrollContainer,
-        }),
-      );
-      revealObservers.push(
-        new IntersectionObserver(onReveal, { ...revealOptions, root: null }),
-      );
-    }
-
-    revealElements.forEach((element) => {
-      const observer = scrollContainer.contains(element)
-        ? revealObservers[0]
-        : revealObservers[1];
-      observer?.observe(element);
+    // Some feature components also use this class for their initial state.
+    // All reading content is ready immediately; no reveal observers are needed.
+    root.querySelectorAll("[data-wiki-reveal]").forEach((element) => {
+      element.classList.add("is-visible");
     });
 
-    const sectionMotion = (lightweightRoute ? [] : sections).map((section) => ({
-      section,
-      reveal: reducedMotion.matches ? 1 : 0,
-      focus: reducedMotion.matches ? 1 : 0,
-      drift: 0,
-      targetReveal: reducedMotion.matches ? 1 : 0,
-      targetFocus: reducedMotion.matches ? 1 : 0,
-      targetDrift: 0,
-    }));
-    if (lightweightRoute) {
-      sections.forEach((section) => {
-        section.style.setProperty("--wiki-section-reveal", "1");
-        section.style.setProperty("--wiki-section-focus", "1");
-        section.style.setProperty("--wiki-section-shift", "0px");
-        section.style.setProperty("--wiki-section-drift", "0px");
-      });
-    }
     let frame = 0;
-    let needsMeasure = true;
-    let previousFrameTime = 0;
-    let pageProgress = 0;
-    let outlineProgress = 0;
-    let targetPageProgress = 0;
-    let targetOutlineProgress = 0;
-    let lastActiveSection = "";
-    let lastActiveSubsection = "";
-    let lastSubsectionMeasure = 0;
+    let lastProgress = "";
+    let locationInitialized = false;
+    let previousSection: HTMLElement | undefined;
+    let previousAnchor: HTMLElement | undefined;
 
-    // Inline reads do not trigger layout. Avoid invalidating inherited custom
-    // properties throughout an article when the rounded visual value is unchanged.
-    const setMotionStyle = (element: HTMLElement, name: string, value: string) => {
-      if (element.style.getPropertyValue(name) !== value) {
-        element.style.setProperty(name, value);
-      }
-    };
-    const motionBySection = new Map(sectionMotion.map(motion => [motion.section, motion]));
-
-    const measureProgress = () => {
-      needsMeasure = false;
+    const updateReadingPosition = () => {
+      frame = 0;
       const containerBounds = scrollContainer.getBoundingClientRect();
-      const viewportTop = containerBounds.top;
-      const viewportHeight = scrollContainer.clientHeight;
-      const activationLine =
-        viewportTop + Math.min(112, viewportHeight * 0.22);
-
-      // The document timeline projects window scroll onto the inner frame, so
-      // its scrollTop IS the single reading progress — the outline vine and
-      // the page hairline share one value.
+      const viewportHeight = projectedReader
+        ? scrollContainer.clientHeight
+        : window.innerHeight;
+      const activationLine = projectedReader
+        ? containerBounds.top + Math.min(112, viewportHeight * 0.22)
+        : Math.min(viewportHeight * 0.25, 160);
       const scrollable = Math.max(
         1,
-        scrollContainer.scrollHeight - scrollContainer.clientHeight,
+        scrollContainer.scrollHeight - viewportHeight,
       );
-      targetPageProgress = clamp(scrollContainer.scrollTop / scrollable);
-      targetOutlineProgress = targetPageProgress;
+      const progress = clamp(
+        (projectedReader ? scrollContainer.scrollTop : -containerBounds.top) /
+          scrollable,
+      ).toFixed(4);
 
-      let currentSection = sections[0]?.id ?? "";
-      const motions = lightweightRoute
-        ? sections.map((section) => ({ section }))
-        : sectionMotion;
-      motions.forEach((entry) => {
-        const motion = motionBySection.get(entry.section);
-        const section = entry.section;
-        const sectionBounds = section.getBoundingClientRect();
-        const sectionTop = sectionBounds.top - viewportTop;
-        const sectionBottom = sectionBounds.bottom - viewportTop;
-
-        if (!motion) {
-          if (sectionBounds.top <= activationLine) currentSection = section.id;
-          return;
-        }
-        const revealStart = viewportHeight * 0.9;
-        const revealDistance = Math.max(280, viewportHeight * 0.58);
-        const sectionTravel = Math.max(
-          viewportHeight * 0.72,
-          sectionBounds.height + viewportHeight * 0.4,
-        );
-        const sectionProgress = clamp(
-          (viewportHeight * 0.84 - sectionTop) / sectionTravel,
-        );
-
-        motion.targetReveal = reducedMotion.matches
-          ? 1
-          : clamp((revealStart - sectionTop) / revealDistance);
-        motion.targetFocus = reducedMotion.matches
-          ? 1
-          : clamp(
-              Math.min(
-                (viewportHeight - sectionTop) /
-                  Math.max(1, viewportHeight * 0.48),
-                (sectionBottom - (activationLine - viewportTop)) /
-                  Math.max(1, viewportHeight * 0.52),
-              ),
-            );
-        motion.targetDrift = reducedMotion.matches
-          ? 0
-          : 12 - sectionProgress * 24;
-
-        if (sectionBounds.top <= activationLine) {
-          currentSection = section.id;
+      let currentSection = sections[0];
+      sections.forEach((section) => {
+        if (section.getBoundingClientRect().top <= activationLine) {
+          currentSection = section;
         }
       });
 
-      if (currentSection) {
-        const now = performance.now();
-        const measureSubsection = !lightweightRoute || now - lastSubsectionMeasure >= 120;
-        let currentSubsection = lastActiveSubsection;
-        // Finish geometry reads before active-state attributes can invalidate layout.
-        if (measureSubsection) {
-          lastSubsectionMeasure = now;
-          const currentAnchors = outlineAnchors.filter(
-            anchor => anchor.dataset.wikiOutlineParent === currentSection,
-          );
-          currentSubsection = "";
-          currentAnchors.forEach(anchor => {
-            if (anchor.getBoundingClientRect().top <= activationLine + 18) {
-              currentSubsection = anchor.id;
-            }
-          });
-          const pageBottomReached =
-            scrollContainer.scrollTop + viewportHeight >= scrollContainer.scrollHeight - 4;
-          if (pageBottomReached && currentAnchors.length) {
-            const lastAnchor = currentAnchors[currentAnchors.length - 1];
-            if (lastAnchor && lastAnchor.getBoundingClientRect().bottom >= 0) {
-              currentSubsection = lastAnchor.id;
-            }
-          }
+      let currentAnchor: HTMLElement | undefined;
+      const currentAnchors = currentSection
+        ? (anchorsBySection.get(currentSection.id) ?? [])
+        : [];
+      currentAnchors.forEach((anchor) => {
+        if (
+          anchor.getClientRects().length &&
+          anchor.getBoundingClientRect().top <=
+            activationLine + (projectedReader ? 18 : 0)
+        ) {
+          currentAnchor = anchor;
         }
-        if (currentSection !== lastActiveSection) {
-          lastActiveSection = currentSection;
-          setActiveSection(currentSection);
-          sections.forEach(section => {
-            section.toggleAttribute("data-wiki-active", section.id === currentSection);
-          });
-        }
-        if (currentSubsection !== lastActiveSubsection) {
-          lastActiveSubsection = currentSubsection;
-          setActiveSubsection(currentSubsection);
-          outlineAnchors.forEach(anchor => {
-            anchor.toggleAttribute("data-wiki-outline-active", anchor.id === currentSubsection);
-          });
-        }
-      }
-    };
-
-    const paintProgress = (time: number) => {
-      frame = 0;
-      if (needsMeasure) measureProgress();
-
-      // Sustainability's desktop reader has many large canvas/SVG panels.
-      // Continuous eased animation keeps reading layout hot even when the
-      // reader is only being projected from document scroll. Apply the values
-      // once per scroll frame and leave the existing visual defaults intact.
-      if (lightweightRoute) {
-        pageProgress = targetPageProgress;
-        outlineProgress = targetOutlineProgress;
-        setMotionStyle(root, "--wiki-page-progress", pageProgress.toFixed(4));
-        setMotionStyle(root,
-          "--wiki-outline-progress",
-          outlineProgress.toFixed(4),
-        );
-        previousFrameTime = 0;
-        return;
-      }
-
-      const elapsed = previousFrameTime
-        ? Math.min(64, Math.max(1, time - previousFrameTime))
-        : 16;
-      previousFrameTime = time;
-      const easing = reducedMotion.matches
-        ? 1
-        : 1 - Math.exp(-elapsed / 86);
-      let unsettled = false;
-
-      const easeValue = (current: number, target: number) => {
-        if (Math.abs(target - current) < 0.0005) return target;
-        unsettled = true;
-        return current + (target - current) * easing;
-      };
-
-      pageProgress = easeValue(pageProgress, targetPageProgress);
-      outlineProgress = easeValue(outlineProgress, targetOutlineProgress);
-      setMotionStyle(root, "--wiki-page-progress", pageProgress.toFixed(4));
-      setMotionStyle(root,
-        "--wiki-outline-progress",
-        outlineProgress.toFixed(4),
-      );
-
-      sectionMotion.forEach((motion) => {
-        motion.reveal = easeValue(motion.reveal, motion.targetReveal);
-        motion.focus = easeValue(motion.focus, motion.targetFocus);
-        motion.drift = easeValue(motion.drift, motion.targetDrift);
-        setMotionStyle(motion.section,
-          "--wiki-section-reveal",
-          motion.reveal.toFixed(4),
-        );
-        setMotionStyle(motion.section,
-          "--wiki-section-focus",
-          motion.focus.toFixed(4),
-        );
-        setMotionStyle(motion.section,
-          "--wiki-section-shift",
-          `${((1 - motion.reveal) * 36).toFixed(2)}px`,
-        );
-        setMotionStyle(motion.section,
-          "--wiki-section-drift",
-          `${motion.drift.toFixed(2)}px`,
-        );
       });
-
-      if (needsMeasure || unsettled) {
-        frame = requestAnimationFrame(paintProgress);
-      } else {
-        previousFrameTime = 0;
+      if (
+        projectedReader &&
+        scrollContainer.scrollTop + viewportHeight >=
+          scrollContainer.scrollHeight - 4
+      ) {
+        const lastAnchor = currentAnchors[currentAnchors.length - 1];
+        if (
+          lastAnchor?.getClientRects().length &&
+          lastAnchor.getBoundingClientRect().bottom >= 0
+        ) {
+          currentAnchor = lastAnchor;
+        }
       }
+
+      // Complete geometry reads before changing active styles. Only the
+      // progress bar inherits the changing value, never the article subtree.
+      if (progressBar && progress !== lastProgress) {
+        lastProgress = progress;
+        progressBar.style.setProperty("--wiki-page-progress", progress);
+      }
+      if (!locationInitialized || currentSection !== previousSection) {
+        previousSection?.removeAttribute("data-wiki-active");
+        currentSection?.setAttribute("data-wiki-active", "");
+        previousSection = currentSection;
+        setActiveSection(currentSection?.id ?? "");
+      }
+      if (!locationInitialized || currentAnchor !== previousAnchor) {
+        previousAnchor?.removeAttribute("data-wiki-outline-active");
+        currentAnchor?.setAttribute("data-wiki-outline-active", "");
+        previousAnchor = currentAnchor;
+        setActiveSubsection(currentAnchor?.id ?? "");
+      }
+      locationInitialized = true;
     };
 
-    const requestProgress = () => {
-      needsMeasure = true;
-      if (!frame) frame = requestAnimationFrame(paintProgress);
+    // At most one update per scroll frame, with no eased animation tail.
+    const requestUpdate = () => {
+      if (!frame) frame = requestAnimationFrame(updateReadingPosition);
     };
-    const recordResizeObserver =
-      "ResizeObserver" in window
-        ? new ResizeObserver(requestProgress)
-        : null;
+    const scrollTarget: HTMLElement | Window = projectedReader
+      ? scrollContainer
+      : window;
+    const resizeObserver = new ResizeObserver(requestUpdate);
+    resizeObserver.observe(scrollContainer);
+    if (article) resizeObserver.observe(article);
+    sections.forEach((section) => resizeObserver.observe(section));
+    scrollTarget.addEventListener("scroll", requestUpdate, { passive: true });
+    window.addEventListener("resize", requestUpdate, { passive: true });
+    requestUpdate();
 
-    scrollContainer.addEventListener("scroll", requestProgress, {
-      passive: true,
-    });
-    window.addEventListener("resize", requestProgress, { passive: true });
-    if (record) recordResizeObserver?.observe(record);
-    recordResizeObserver?.observe(scrollContainer);
-    sections.forEach((section) => recordResizeObserver?.observe(section));
-    requestProgress();
-
+    const routeHash = window.location.hash.slice(1);
     const hashFrame = requestAnimationFrame(() => {
-      const routeTarget = routeHash
-        ? document.getElementById(routeHash)
-        : null;
+      const routeTarget = routeHash ? document.getElementById(routeHash) : null;
       if (routeTarget && root.contains(routeTarget)) {
-        scrollReaderToTarget(routeTarget, scrollContainer, "instant");
-        if (sectionIds.includes(routeHash)) {
-          setActiveSection(routeHash);
-        } else {
-          setActiveSubsection(routeHash);
-        }
-        requestProgress();
-      } else {
+        scrollReaderToTarget(
+          routeTarget,
+          projectedReader ? scrollContainer : null,
+          "instant",
+        );
+        requestUpdate();
+      } else if (projectedReader) {
         window.scrollTo({ top: 0, behavior: "auto" });
       }
     });
@@ -408,22 +163,14 @@ export function useWikiPageMotion(
     return () => {
       if (frame) cancelAnimationFrame(frame);
       cancelAnimationFrame(hashFrame);
-      revealObservers.forEach((observer) => observer.disconnect());
-      recordResizeObserver?.disconnect();
-      scrollContainer.removeEventListener("scroll", requestProgress);
-      window.removeEventListener("resize", requestProgress);
-      sections.forEach((section) => {
-        section.removeAttribute("data-wiki-active");
-        section.style.removeProperty("--wiki-section-reveal");
-        section.style.removeProperty("--wiki-section-focus");
-        section.style.removeProperty("--wiki-section-shift");
-        section.style.removeProperty("--wiki-section-drift");
-      });
-      outlineAnchors.forEach((anchor) => {
-        anchor.removeAttribute("data-wiki-outline-active");
-      });
+      resizeObserver.disconnect();
+      scrollTarget.removeEventListener("scroll", requestUpdate);
+      window.removeEventListener("resize", requestUpdate);
+      previousSection?.removeAttribute("data-wiki-active");
+      previousAnchor?.removeAttribute("data-wiki-outline-active");
+      progressBar?.style.removeProperty("--wiki-page-progress");
     };
-  }, [enabled, rootRef, route, scrollContainerRef, sectionIds, wideFlow]);
+  }, [projectedReader, rootRef, route, scrollContainerRef, sectionIds]);
 
   return { activeSection, activeSubsection };
 }

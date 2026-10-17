@@ -130,16 +130,16 @@ export function Home() {
                 It began with a question <span aria-hidden="true">↓</span>
               </button>
             </div>
-            <p className="scene01-scroll-cue" aria-hidden="true">
-              <i />
-            </p>
           </div>
         </section>
         {/* A sibling, so the section ref is attached before its effects run. */}
-        <HomeIntro scene={sceneRef} />
+        <HomeIntro scene={sceneRef}>
+          {(introPlaying) => (
+            <HomePlayback root={rootRef} introPlaying={introPlaying} />
+          )}
+        </HomeIntro>
         <HomeStory />
       </main>
-      <HomePlayback root={rootRef} />
     </div>
   );
 }

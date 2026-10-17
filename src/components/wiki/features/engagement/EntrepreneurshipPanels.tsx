@@ -275,6 +275,8 @@ export function BusinessModelCanvas() {
       <figure className="business-model-canvas__figure">
         <img
           src={businessModelCanvas.image}
+          width={businessModelCanvas.imageWidth}
+          height={businessModelCanvas.imageHeight}
           alt={businessModelCanvas.imageAlt}
           loading="lazy"
         />
@@ -435,8 +437,6 @@ export function entrepreneurshipFeatures(): Record<string, ReactNode> {
     "doc-jienzhihe": <EntrepreneurshipDocumentCard docKey="jienzhihe" />,
     "doc-scalability": <EntrepreneurshipDocumentCard docKey="scalability" />,
     "doc-business-plan": <EntrepreneurshipDocumentCard docKey="businessPlan" />,
-    "doc-ccic-poster": <EntrepreneurshipDocumentCard docKey="ccicPoster" />,
-    "doc-apic-poster": <EntrepreneurshipDocumentCard docKey="apicPoster" />,
     "doc-legal-plan": <EntrepreneurshipDocumentCard docKey="legalPlan" />,
   };
 }

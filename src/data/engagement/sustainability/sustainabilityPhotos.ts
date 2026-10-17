@@ -33,7 +33,6 @@ import liChengli1 from "../../../assets/wiki/sustainability/sustainability-sdg3-
 import liChengli2 from "../../../assets/wiki/sustainability/sustainability-sdg3-li-chengli-2.webp";
 import liChengli3 from "../../../assets/wiki/sustainability/sustainability-sdg3-li-chengli-3.webp";
 import liChengli4 from "../../../assets/wiki/sustainability/sustainability-sdg3-li-chengli-4.webp";
-import tianRunhui1 from "../../../assets/wiki/sustainability/sustainability-sdg3-tian-runhui-1.webp";
 import tnbcPatients1 from "../../../assets/wiki/sustainability/sustainability-sdg3-tnbc-patients-1.webp";
 import tnbcPatients2 from "../../../assets/wiki/sustainability/sustainability-sdg3-tnbc-patients-2.webp";
 import tnbcPatients3 from "../../../assets/wiki/sustainability/sustainability-sdg3-tnbc-patients-3.webp";
@@ -88,13 +87,7 @@ const liChengli: StakeholderPhotoSet = [
   },
 ];
 
-const tianRunhui: StakeholderPhotoSet = [
-  {
-    src: tianRunhui1,
-    alt: "Chat sticker sent by Runhui Tian during the discussion on patient communication",
-    caption: "How to approach the conversation",
-  },
-];
+const tianRunhui: StakeholderPhotoSet = [];
 
 const tnbcPatients: StakeholderPhotoSet = [
   {

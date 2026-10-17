@@ -1,661 +1,669 @@
-/**
- * Results page — asset registry.
- *
- * Double-track contract (see WIKI_ARCHITECTURE_SPEC.md §4.2): every entry
- * carries the local source path it was prepared from, the bundled preview
- * import, and the iGEM static URL it will be served from once uploaded.
- * `uploadUrl` stays an empty string until the asset owner confirms the upload —
- * the resolver then falls back to the bundled file, so nothing here has to
- * change when the CDN copies go live. The pending batch is listed in
- * `upload-ready/results-upload-list.json`.
- *
- * Preparation (PNG/JPEG -> flattened WebP q82, long edge capped at 2200 px) is
- * recorded in `scripts/prepare-results-assets.py`.
- *
- * Keys follow the manuscript, not the file system:
- *
- * - `fig01` … `fig34` — the manuscript's own numbered figures. `caption` is the
- *   manuscript's italic caption with its `Figure N.` label removed, because the
- *   reader stamps `FIG. nn` from a CSS counter (wiki-rebuild.css). Keeping the
- *   label out of the copy is what makes the stamp and the manuscript agree.
- *   `fig18a`/`fig18b` share number 18 and `fig23a/b/c` are the three panels of
- *   Figure 23, so the counter and the manuscript stay aligned.
- * - `pxd…`, `singleCell…`, `ihc…`, `structural…` — the fourteen unnumbered
- *   supplementary charts of §1. They carry no caption and deliberately do not
- *   enter the figure counter, because the manuscript never numbered them.
- */
+import type { WikiContentBlock } from "../../components/wiki/wikiPageTypes";
 
-const fig01 = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/results/results-fig01-round1-elispot-wells-83c1c922addf.webp";
-const fig02 = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/results/results-fig02-round1-k562-killing-ebe3e83131e7.webp";
-const fig03 = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/results/results-fig03-round1-cd8-cd69-flow-da78604c08cb.webp";
-const fig04 = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/results/results-fig04-combined-plasmid-map-2d940f4c0e33.webp";
-const fig05 = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/results/results-fig05-template-linearisation-gel-72917729b4d1.webp";
-const fig06 = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/results/results-fig06-back-splice-junction-sanger-67bc10b3c002.webp";
-const fig07 = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/results/results-fig07-dc-maturation-flow-a593789c3511.webp";
-const fig08 = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/results/results-fig08-dc-maturation-quantification-eb3442a427a1.webp";
-const fig09 = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/results/results-fig09-anti-flag-western-blot-d1ae19c681b2.webp";
-const fig10 = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/results/results-fig10-cd8-cd69-flow-3ab0b91dcd36.webp";
-const fig11 = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/results/results-fig11-cd8-cd69-quantification-d2fb1a8cf2f2.webp";
-const fig12 = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/results/results-fig12-cd8-cd28-flow-98f30913e128.webp";
-const fig13 = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/results/results-fig13-cd8-cd28-quantification-b86f5f931f87.webp";
-const fig14 = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/results/results-fig14-effector-memory-flow-36be520d3f70.webp";
-const fig15 = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/results/results-fig15-effector-memory-quantification-c65ae7edf22c.webp";
-const fig16 = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/results/results-fig16-round2-elispot-wells-eb12c20a07f3.webp";
-const fig17 = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/results/results-fig17-mda-mb-231-killing-bb31d49e2dcb.webp";
-const fig18a = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/results/results-fig18a-stability-gel-1ec8018bad99.webp";
-const fig18b = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/results/results-fig18b-rna-remaining-curve-ee0f8d8319e3.webp";
-const fig19 = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/results/results-fig19-off-target-cytotoxicity-45f537789549.webp";
-const fig20 = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/results/results-fig20-lnp-dose-viability-f697e90497df.webp";
-const fig21 = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/results/results-fig21-lentiviral-plasmid-map-4957638e1cd0.webp";
-const fig22 = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/results/results-fig22-gfp-transduction-microscopy-87f75a7a4539.webp";
-const fig23a = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/results/results-fig23a-sort-gate-fsc-ssc-ea1d26c3b39a.webp";
-const fig23b = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/results/results-fig23b-sort-gate-singlets-f7df73d16ac8.webp";
-const fig23c = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/results/results-fig23c-sort-gate-gfp-2cb124b0a513.webp";
-const fig24 = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/results/results-fig24-trop2-mrna-rt-pcr-629acb765595.webp";
-const fig25 = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/results/results-fig25-surface-trop2-flow-4919115ca0d1.webp";
-const fig26 = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/results/results-fig26-excised-tumours-95674e1829c8.webp";
-const fig27 = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/results/results-fig27-immunisation-scheme-672e60660c74.webp";
-const fig28 = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/results/results-fig28-tumour-growth-curves-6b91f6ac7322.webp";
-const fig29 = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/results/results-fig29-cd8-granzyme-b-immunofluorescence-c9844bdf173c.webp";
-const fig30 = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/results/results-fig30-splenic-dc-maturation-68c5fff6bf66.webp";
-const fig31 = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/results/results-fig31-splenic-cd69-activation-6fe2eefa7c6e.webp";
-const fig32 = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/results/results-fig32-splenic-central-memory-4c40089c22cf.webp";
-const fig33 = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/results/results-fig33-splenic-ifn-gamma-f3d7ee74932a.webp";
-const fig34 = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/results/results-fig34-splenic-granzyme-b-25e78a196546.webp";
-
-const proteomicsPxd024322Volcano = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/results/results-proteomics-pxd024322-volcano-be7308c0c5df.webp";
-const proteomicsPxd024322Abundance = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/results/results-proteomics-pxd024322-abundance-71daf7a2517e.webp";
-const proteomicsPxd028102Volcano = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/results/results-proteomics-pxd028102-volcano-4393b47cfd33.webp";
-const proteomicsPxd028102Abundance = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/results/results-proteomics-pxd028102-abundance-822dc2fb198a.webp";
-
-const singleCellUmap = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/results/results-singlecell-celltype-umap-e331296d36c5.webp";
-const singleCellDetection = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/results/results-singlecell-malignant-detection-6b4a0e1bbcee.webp";
-
-const ihcPanel1 = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/results/results-ihc-panel-1-ecff9d465696.webp";
-const ihcPanel2 = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/results/results-ihc-panel-2-8df2da9033bf.webp";
-const ihcPanel3 = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/results/results-ihc-panel-3-072359efd635.webp";
-const ihcPanel4 = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/results/results-ihc-panel-4-226cc07ccd8e.webp";
-
-const structuralBurialVsFill = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/results/results-structural-burial-vs-fill-scatter-752578260b0e.webp";
-const structuralBurialHeatmap = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/results/results-structural-p2-p9-burial-heatmap-8419592e0f01.webp";
-const structuralAnchorBurial = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/results/results-structural-anchor-burial-by-peptide-550960558323.webp";
-const structuralBurialFill = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/results/results-structural-burial-fill-by-peptide-4f8aab0149c6.webp";
-
+/** Static figures use the official URLs from the current Results manuscript. */
 export interface ResultsAssetEntry {
-  kind: "image";
   fileName: string;
   localSourcePath: string;
-  localSrc: string;
+  localSrc?: string;
   uploadUrl: string;
   alt: string;
-  caption?: string;
+  caption: string;
   section: string;
+  width: number;
+  height: number;
 }
-
+export const resultsFigureCaptions = {
+  fig01: "Differential protein abundance in PXD024322.",
+  fig02: "Abundance distributions of the four candidates in PXD024322.",
+  fig03: "Paired differential abundance analysis in PXD028102.",
+  fig04: "Paired abundance patterns for the three candidates in PXD028102.",
+  fig05: "UMAP projection of 39,324 single cells from 10 TNBC patients.",
+  fig06: "Candidate-gene expression in the GSE176078 TNBC single-cell dataset.",
+  fig07: "Published TROP2 immunohistochemistry in TNBC.",
+  fig08:
+    "Published B7-H4 immunohistochemistry in TNBC and normal breast tissue.",
+  fig09: "Published Nectin-4 immunohistochemistry in TNBC.",
+  fig10: "Open-access SLC39A6 immunohistochemistry.",
+  fig11:
+    "Per-position side-chain burial for the 17 candidate epitopes, averaged over five models.",
+  fig12:
+    "Absolute buried area of the position-9 side chain for the 17 systems.",
+  fig13: "Round 1 ELISpot wells and counts",
+  fig14: "Round 1 killing of K562 by T cells primed with each construct.",
+  fig15: "CD8/CD69 flow cytometry of T cells primed with TROP2-CTL1 and CTL2",
+  fig16: "Map of the Combined vaccine plasmid pCirCure-circMEV (5267 bp)",
+  fig17: "Agarose gel QC of the four epitope-encoding transcription templates",
+  fig18:
+    "Sanger trace across the back-splice junction (BSJ) of the Combined vaccine",
+  fig19: "CD80⁺CD86⁺ double-positive DC frequencies for each group",
+  fig20: "Quantification of DC maturation across groups",
+  fig21: "Western blot of FLAG-tagged fusion protein in DCs",
+  fig22: "CD8⁺CD69⁺ T-cell frequencies after DC–T co-culture",
+  fig23: "Quantification of CD8⁺CD69⁺ frequencies across groups",
+  fig24: "CD8⁺CD28⁺ T-cell frequencies after DC–T co-culture",
+  fig25: "Quantification of CD8⁺CD28⁺ frequencies across groups",
+  fig26: "CD45RO⁺CCR7⁻ effector-memory frequencies within CD8⁺ T cells",
+  fig27: "Quantification of CD45RO⁺CCR7⁻ frequencies across groups",
+  fig28: "Round 2 ELISpot wells and counts",
+  fig29:
+    "Killing of MDA-MB-231 by T cells primed with each construct, across E:T ratios",
+  fig30:
+    "Joint passage probability across tested doses. The 10.2 μg dose achieves peak conditional passage probability (0.8145) under the project's joint decision rule. The broad peak near 10 μg indicates robustness to small dosing variations.",
+  fig31:
+    "Key intermediate states at 10.2 μg dose. (A) Effector activity (blue) and suppression (red) over 35 days. (B) Cell-response interface showing equivalent effector-to-target ratio approaching saturation. (C) Per-capita tumor killing rate (effective rate after suppression, solid; before suppression, dashed). Five injection events create pulsed immune responses.",
+  fig32:
+    "Cell-inferred immune gains and composite effector score. Relative gains from DC maturation (CD80/CD86), T-cell activation (CD8/CD69), IFN-γ secretion, and Granzyme B. The geometric effector composite (orange) integrates the three T-cell readouts with equal weighting, providing the calibration anchor for immune-activation parameters. CD44/CD62L ratio is shown descriptively but not used in the composite.",
+  fig33:
+    "Model prediction versus literature-scale tumor growth. Gray: external untreated scenario; Blue: conditional 10.2 μg treatment prediction with 95% uncertainty interval. The model predicts moderate tumor suppression; observed outcomes showed stronger efficacy (ratio 0.104) but fell within the conditional simulation envelope.",
+  fig34:
+    "In vitro stability of circRNA versus linear precursor RNA at 37 °C — gel",
+  fig35: "Relative remaining RNA over time",
+  fig36:
+    "Killing of four normal cell lines and MDA-MB-231 by vaccine-primed T cells",
+  fig37: "Dose–viability curve of empty LNP on DCs after 24 h",
+  fig38:
+    "Map of the TROP2 overexpression lentiviral transfer plasmid (pLV3-CMV-TACSTD2-3×FLAG-CopGFP-Puro, 9259 bp)",
+  fig39: "GFP fluorescence in 4T1 cells 48–72 h after lentiviral transduction",
+  fig40: "Three-step gating strategy for sorting GFP⁺ 4T1 cells",
+  fig41: "RT-PCR quantification of TROP2 mRNA in 4T1 cells",
+  fig42: "Flow cytometric detection of surface TROP2 on 4T1 cells",
+  fig43: "Excised tumours at endpoint (D35)",
+  fig44: "Immunisation scheme for the three groups",
+  fig45: "Tumour growth curves for the three groups",
+  fig46: "CD8 / Granzyme B dual immunofluorescence of tumour tissue",
+  fig47: "Splenic DC CD80⁺CD86⁺ maturation",
+  fig48: "Splenic CD8⁺ T-cell CD69⁺ early activation",
+  fig49: "CD44⁺CD62L⁺ central-memory frequencies within splenic CD8⁺ T cells",
+  fig50: "IFN-γ⁺ frequencies within splenic CD8⁺ T cells",
+  fig51: "Granzyme B⁺ frequencies within splenic CD8⁺ T cells",
+} as const;
 export const resultsAssets = {
-  /* ---------------------------------------- §1.1.1 proteomic evidence */
-  proteomicsPxd024322Volcano: {
-    kind: "image",
-    fileName: "results-proteomics-pxd024322-volcano.webp",
-    localSourcePath:
-      "src/assets/wiki/results/results-proteomics-pxd024322-volcano.webp",
-    localSrc: proteomicsPxd024322Volcano,
-    uploadUrl: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/results/results-proteomics-pxd024322-volcano-be7308c0c5df.webp",
-    alt: "Volcano plot of differential protein abundance in the PXD024322 triple-negative breast cancer versus normal breast cohort, with the four candidate antigens highlighted",
-    section: "Antigen selection",
-  },
-  proteomicsPxd024322Abundance: {
-    kind: "image",
-    fileName: "results-proteomics-pxd024322-abundance.webp",
-    localSourcePath:
-      "src/assets/wiki/results/results-proteomics-pxd024322-abundance.webp",
-    localSrc: proteomicsPxd024322Abundance,
-    uploadUrl: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/results/results-proteomics-pxd024322-abundance-71daf7a2517e.webp",
-    alt: "Box plots of TROP2, B7-H4, Nectin-4 and LIV-1 protein abundance in the unpaired PXD024322 cohort comparison",
-    section: "Antigen selection",
-  },
-  proteomicsPxd028102Volcano: {
-    kind: "image",
-    fileName: "results-proteomics-pxd028102-volcano.webp",
-    localSourcePath:
-      "src/assets/wiki/results/results-proteomics-pxd028102-volcano.webp",
-    localSrc: proteomicsPxd028102Volcano,
-    uploadUrl: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/results/results-proteomics-pxd028102-volcano-4393b47cfd33.webp",
-    alt: "Volcano plot of differential protein abundance in the paired tumour versus adjacent-normal PXD028102 design, with the analysed candidates highlighted",
-    section: "Antigen selection",
-  },
-  proteomicsPxd028102Abundance: {
-    kind: "image",
-    fileName: "results-proteomics-pxd028102-abundance.webp",
-    localSourcePath:
-      "src/assets/wiki/results/results-proteomics-pxd028102-abundance.webp",
-    localSrc: proteomicsPxd028102Abundance,
-    uploadUrl: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/results/results-proteomics-pxd028102-abundance-822dc2fb198a.webp",
-    alt: "Box plots of candidate protein abundance in the paired tumour versus adjacent-normal PXD028102 design",
-    section: "Antigen selection",
-  },
-
-  /* -------------------------------- §1.1.2 single-cell transcriptomics */
-  singleCellUmap: {
-    kind: "image",
-    fileName: "results-singlecell-celltype-umap.webp",
-    localSourcePath:
-      "src/assets/wiki/results/results-singlecell-celltype-umap.webp",
-    localSrc: singleCellUmap,
-    uploadUrl: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/results/results-singlecell-celltype-umap-e331296d36c5.webp",
-    alt: "UMAP embedding of the 39,324 quality-passed cells of the GSE176078 triple-negative breast cancer subset, coloured by annotated cell type",
-    section: "Antigen selection",
-  },
-  singleCellDetection: {
-    kind: "image",
-    fileName: "results-singlecell-malignant-detection.webp",
-    localSourcePath:
-      "src/assets/wiki/results/results-singlecell-malignant-detection.webp",
-    localSrc: singleCellDetection,
-    uploadUrl: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/results/results-singlecell-malignant-detection-6b4a0e1bbcee.webp",
-    alt: "Per-cell-type expression of TACSTD2, NECTIN4, VTCN1 and SLC39A6 across the malignant, immune and stromal compartments, showing malignant-cell enrichment for the four candidate genes",
-    section: "Antigen selection",
-  },
-
-  /* ----------------------------- §1.1.4 immunohistochemistry panels */
-  ihcPanel1: {
-    kind: "image",
-    fileName: "results-ihc-panel-1.webp",
-    localSourcePath: "src/assets/wiki/results/results-ihc-panel-1.webp",
-    localSrc: ihcPanel1,
-    uploadUrl: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/results/results-ihc-panel-1-ecff9d465696.webp",
-    alt: "Published immunohistochemistry panels of candidate antigen staining in triple-negative breast cancer tissue, first of four reviewed antigens",
-    section: "Antigen selection",
-  },
-  ihcPanel2: {
-    kind: "image",
-    fileName: "results-ihc-panel-2.webp",
-    localSourcePath: "src/assets/wiki/results/results-ihc-panel-2.webp",
-    localSrc: ihcPanel2,
-    uploadUrl: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/results/results-ihc-panel-2-8df2da9033bf.webp",
-    alt: "Published immunohistochemistry staining panels and their quantification for a candidate antigen in triple-negative breast cancer tissue, second of four reviewed antigens",
-    section: "Antigen selection",
-  },
-  ihcPanel3: {
-    kind: "image",
-    fileName: "results-ihc-panel-3.webp",
-    localSourcePath: "src/assets/wiki/results/results-ihc-panel-3.webp",
-    localSrc: ihcPanel3,
-    uploadUrl: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/results/results-ihc-panel-3-072359efd635.webp",
-    alt: "Published immunohistochemistry tissue cores of candidate antigen staining in triple-negative breast cancer, third of four reviewed antigens",
-    section: "Antigen selection",
-  },
-  ihcPanel4: {
-    kind: "image",
-    fileName: "results-ihc-panel-4.webp",
-    localSourcePath: "src/assets/wiki/results/results-ihc-panel-4.webp",
-    localSrc: ihcPanel4,
-    uploadUrl: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/results/results-ihc-panel-4-226cc07ccd8e.webp",
-    alt: "Published immunohistochemistry tissue sections of candidate antigen staining in triple-negative breast cancer, fourth of four reviewed antigens",
-    section: "Antigen selection",
-  },
-
-  /* ---------------------------- §1.2.2 structural validation charts */
-  structuralBurialVsFill: {
-    kind: "image",
-    fileName: "results-structural-burial-vs-fill-scatter.webp",
-    localSourcePath:
-      "src/assets/wiki/results/results-structural-burial-vs-fill-scatter.webp",
-    localSrc: structuralBurialVsFill,
-    uploadUrl: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/results/results-structural-burial-vs-fill-scatter-752578260b0e.webp",
-    alt: "Scatter plot of position-9 side-chain burial against position-9 fill ratio for the seventeen candidate peptides, showing that burial alone does not separate the geometry classes",
-    section: "Epitope screening",
-  },
-  structuralBurialHeatmap: {
-    kind: "image",
-    fileName: "results-structural-p2-p9-burial-heatmap.webp",
-    localSourcePath:
-      "src/assets/wiki/results/results-structural-p2-p9-burial-heatmap.webp",
-    localSrc: structuralBurialHeatmap,
-    uploadUrl: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/results/results-structural-p2-p9-burial-heatmap-8419592e0f01.webp",
-    alt: "Heat map of position-2 and position-9 side-chain burial across the seventeen candidate peptides, showing that both anchor residues read near-complete burial in most models",
-    section: "Epitope screening",
-  },
-  structuralAnchorBurial: {
-    kind: "image",
-    fileName: "results-structural-anchor-burial-by-peptide.webp",
-    localSourcePath:
-      "src/assets/wiki/results/results-structural-anchor-burial-by-peptide.webp",
-    localSrc: structuralAnchorBurial,
-    uploadUrl: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/results/results-structural-anchor-burial-by-peptide-550960558323.webp",
-    alt: "Position-2 anchor burial of each candidate peptide across the five folded models, with the two rejected peptides annotated",
-    section: "Epitope screening",
-  },
-  structuralBurialFill: {
-    kind: "image",
-    fileName: "results-structural-burial-fill-by-peptide.webp",
-    localSourcePath:
-      "src/assets/wiki/results/results-structural-burial-fill-by-peptide.webp",
-    localSrc: structuralBurialFill,
-    uploadUrl: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/results/results-structural-burial-fill-by-peptide-4f8aab0149c6.webp",
-    alt: "Position-9 buried side-chain volume of each candidate peptide against the 60 per cent fill-ratio threshold, showing the two peptides that fail the criterion",
-    section: "Epitope screening",
-  },
-
-  /* -------------------------------------------- manuscript figures */
-  fig01: {
-    kind: "image",
-    fileName: "results-fig01-round1-elispot-wells.webp",
-    localSourcePath:
-      "src/assets/wiki/results/results-fig01-round1-elispot-wells.webp",
-    localSrc: fig01,
-    uploadUrl: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/results/results-fig01-round1-elispot-wells-83c1c922addf.webp",
-    alt: "Photograph of the Round 1 IFN-γ ELISpot membrane with the raw spot-forming-cell count printed above each well for all thirteen single-epitope constructs",
-    caption: "Round 1 ELISpot wells and counts.",
-    section: "Round 1",
-  },
   fig02: {
-    kind: "image",
-    fileName: "results-fig02-round1-k562-killing.webp",
+    fileName:
+      "figure2-abundance-distributions-of-the-four-candidates-in-pxd024322.avif",
     localSourcePath:
-      "src/assets/wiki/results/results-fig02-round1-k562-killing.webp",
-    localSrc: fig02,
-    uploadUrl: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/results/results-fig02-round1-k562-killing-ebe3e83131e7.webp",
-    alt: "Bar chart of Calcein-AM release from K562 targets at an effector-to-target ratio of 80 to 1 for all thirteen Round 1 constructs",
-    caption: "Round 1 killing of K562 by T cells primed with each construct.",
-    section: "Round 1",
-  },
-  fig03: {
-    kind: "image",
-    fileName: "results-fig03-round1-cd8-cd69-flow.webp",
-    localSourcePath:
-      "src/assets/wiki/results/results-fig03-round1-cd8-cd69-flow.webp",
-    localSrc: fig03,
-    uploadUrl: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/results/results-fig03-round1-cd8-cd69-flow-da78604c08cb.webp",
-    alt: "Two-level nested gating for CD8 and CD69 flow cytometry of T cells primed with TROP2-CTL1 and TROP2-CTL2, showing the lymphocyte gate and the double-positive population within it",
-    caption:
-      "CD8/CD69 flow cytometry of T cells primed with TROP2-CTL1 and CTL2.",
-    section: "Round 1",
+      "文案集/project/results/图片和附件/02_PXD024322_four_target_batch_adjusted_log2_relative_boxplots_no_points.png",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/results/figure2-abundance-distributions-of-the-four-candidates-in-pxd024322.avif",
+    alt: "Figure 2. Abundance distributions of the four candidates in PXD024322.",
+    caption: "Abundance distributions of the four candidates in PXD024322.",
+    section:
+      "Target Discovery: From Four Antigens to Fifteen Testable Epitopes",
+    width: 1280,
+    height: 604,
   },
   fig04: {
-    kind: "image",
-    fileName: "results-fig04-combined-plasmid-map.webp",
+    fileName:
+      "figure4-paired-abundance-patterns-for-the-three-candidates-in-pxd028102.avif",
     localSourcePath:
-      "src/assets/wiki/results/results-fig04-combined-plasmid-map.webp",
-    localSrc: fig04,
-    uploadUrl: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/results/results-fig04-combined-plasmid-map-2d940f4c0e33.webp",
-    alt: "Circular map of the Combined multi-epitope vaccine plasmid pCirCure-circMEV at 5267 bp, annotating the BamHI-XhoI epitope cassette, the tPA signal sequence, the human rhinovirus IRES, the 4xmC3dP28 adjuvant, the MITD membrane-targeting signal, the FLAG tag, the HBA1 3-prime UTR, the polyA25 spacer and the T4 td permuted intron",
-    caption: "Map of the Combined vaccine plasmid pCirCure-circMEV (5267 bp).",
-    section: "Round 1 to Round 2",
+      "文案集/project/results/图片和附件/PXD028102_imputed_log2_boxplots_no_points.png",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/results/figure4-paired-abundance-patterns-for-the-three-candidates-in-pxd028102.avif",
+    alt: "Figure 4. Paired abundance patterns for the three candidates in PXD028102.",
+    caption: "Paired abundance patterns for the three candidates in PXD028102.",
+    section:
+      "Target Discovery: From Four Antigens to Fifteen Testable Epitopes",
+    width: 1280,
+    height: 671,
   },
   fig05: {
-    kind: "image",
-    fileName: "results-fig05-template-linearisation-gel.webp",
+    fileName:
+      "figure5-umap-projection-of-39-324-single-cells-from-10-tnbc-patients.avif",
     localSourcePath:
-      "src/assets/wiki/results/results-fig05-template-linearisation-gel.webp",
-    localSrc: fig05,
-    uploadUrl: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/results/results-fig05-template-linearisation-gel-72917729b4d1.webp",
-    alt: "Agarose gel of the four linearised epitope-encoding transcription templates with a size marker, showing a single major species in each lane",
-    caption:
-      "Agarose gel verification of the four epitope-encoding linearised transcription templates.",
-    section: "Combined batch release",
+      "文案集/project/results/图片和附件/12_harmony_umap_major_lineage_no_panel_letter.png",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/results/figure5-umap-projection-of-39-324-single-cells-from-10-tnbc-patients.avif",
+    alt: "Figure 5. UMAP projection of 39,324 single cells from 10 TNBC patients.",
+    caption: "UMAP projection of 39,324 single cells from 10 TNBC patients.",
+    section:
+      "Target Discovery: From Four Antigens to Fifteen Testable Epitopes",
+    width: 1280,
+    height: 1090,
   },
   fig06: {
-    kind: "image",
-    fileName: "results-fig06-back-splice-junction-sanger.webp",
+    fileName:
+      "figure6-candidate-gene-expression-in-the-gse176078-tnbc-single-cell-dataset.avif",
     localSourcePath:
-      "src/assets/wiki/results/results-fig06-back-splice-junction-sanger.webp",
-    localSrc: fig06,
-    uploadUrl: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/results/results-fig06-back-splice-junction-sanger-67bc10b3c002.webp",
-    alt: "Sanger sequencing chromatogram across the back-splice junction of the Combined vaccine, showing single sharp peaks on a flat baseline across the ligation site",
+      "文案集/project/results/图片和附件/11_candidate_umap_violin_broken_axis_clean.png",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/results/figure6-candidate-gene-expression-in-the-gse176078-tnbc-single-cell-dataset.avif",
+    alt: "Figure 6. Candidate-gene expression in the GSE176078 TNBC single-cell dataset.",
     caption:
-      "Sanger trace across the back-splice junction (BSJ) of the Combined vaccine.",
-    section: "Combined batch release",
+      "Candidate-gene expression in the GSE176078 TNBC single-cell dataset.",
+    section:
+      "Target Discovery: From Four Antigens to Fifteen Testable Epitopes",
+    width: 960,
+    height: 1280,
   },
   fig07: {
-    kind: "image",
-    fileName: "results-fig07-dc-maturation-flow.webp",
-    localSourcePath:
-      "src/assets/wiki/results/results-fig07-dc-maturation-flow.webp",
-    localSrc: fig07,
-    uploadUrl: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/results/results-fig07-dc-maturation-flow-a593789c3511.webp",
-    alt: "Representative CD80 against CD86 flow cytometry plots for the Blank, TROP2-1, TROP2-2, TROP2-1+2 and Combined groups, with the double-positive percentage boxed in each panel",
-    caption: "CD80⁺CD86⁺ double-positive DC frequencies for each group.",
-    section: "Round 2",
+    fileName: "figure7-published-trop2-immunohistochemistry-in-tnbc.avif",
+    localSourcePath: "文案集/project/results/3.3 Results.md",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/results/figure7-published-trop2-immunohistochemistry-in-tnbc.avif",
+    alt: "Figure 7. Published TROP2 immunohistochemistry in TNBC.",
+    caption: "Published TROP2 immunohistochemistry in TNBC.",
+    section:
+      "Target Discovery: From Four Antigens to Fifteen Testable Epitopes",
+    width: 828,
+    height: 203,
   },
   fig08: {
-    kind: "image",
-    fileName: "results-fig08-dc-maturation-quantification.webp",
-    localSourcePath:
-      "src/assets/wiki/results/results-fig08-dc-maturation-quantification.webp",
-    localSrc: fig08,
-    uploadUrl: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/results/results-fig08-dc-maturation-quantification-eb3442a427a1.webp",
-    alt: "Bar chart quantifying CD80⁺CD86⁺ dendritic-cell frequencies across the five groups with SD error bars and significance markers",
-    caption: "Quantification of DC maturation across groups.",
-    section: "Round 2",
+    fileName:
+      "figure8-published-b7-h4-immunohistochemistry-in-tnbc-and-normal-breast-tissue.avif",
+    localSourcePath: "文案集/project/results/3.3 Results.md",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/results/figure8-published-b7-h4-immunohistochemistry-in-tnbc-and-normal-breast-tissue.avif",
+    alt: "Figure 8. Published B7-H4 immunohistochemistry in TNBC and normal breast tissue.",
+    caption:
+      "Published B7-H4 immunohistochemistry in TNBC and normal breast tissue.",
+    section:
+      "Target Discovery: From Four Antigens to Fifteen Testable Epitopes",
+    width: 828,
+    height: 366,
   },
   fig09: {
-    kind: "image",
-    fileName: "results-fig09-anti-flag-western-blot.webp",
-    localSourcePath:
-      "src/assets/wiki/results/results-fig09-anti-flag-western-blot.webp",
-    localSrc: fig09,
-    uploadUrl: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/results/results-fig09-anti-flag-western-blot-d1ae19c681b2.webp",
-    alt: "Anti-FLAG Western blot of electroporated dendritic cells with a beta-actin loading control, showing a FLAG-specific band at approximately 50 kDa",
-    caption: "Western blot of FLAG-tagged fusion protein in DCs.",
-    section: "Round 2",
+    fileName: "figure9-published-nectin-4-immunohistochemistry-in-tnbc.avif",
+    localSourcePath: "文案集/project/results/3.3 Results.md",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/results/figure9-published-nectin-4-immunohistochemistry-in-tnbc.avif",
+    alt: "Figure 9. Published Nectin-4 immunohistochemistry in TNBC.",
+    caption: "Published Nectin-4 immunohistochemistry in TNBC.",
+    section:
+      "Target Discovery: From Four Antigens to Fifteen Testable Epitopes",
+    width: 828,
+    height: 207,
   },
   fig10: {
-    kind: "image",
-    fileName: "results-fig10-cd8-cd69-flow.webp",
-    localSourcePath: "src/assets/wiki/results/results-fig10-cd8-cd69-flow.webp",
-    localSrc: fig10,
-    uploadUrl: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/results/results-fig10-cd8-cd69-flow-3ab0b91dcd36.webp",
-    alt: "Representative CD8 against CD69 flow cytometry plots after dendritic-cell and T-cell co-culture for the five groups",
-    caption: "CD8⁺CD69⁺ T-cell frequencies after DC–T co-culture.",
-    section: "Round 2",
-  },
-  fig11: {
-    kind: "image",
-    fileName: "results-fig11-cd8-cd69-quantification.webp",
-    localSourcePath:
-      "src/assets/wiki/results/results-fig11-cd8-cd69-quantification.webp",
-    localSrc: fig11,
-    uploadUrl: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/results/results-fig11-cd8-cd69-quantification-d2fb1a8cf2f2.webp",
-    alt: "Bar chart quantifying CD8⁺CD69⁺ T-cell frequencies across the five groups with SD error bars",
-    caption: "Quantification of CD8⁺CD69⁺ frequencies across groups.",
-    section: "Round 2",
-  },
-  fig12: {
-    kind: "image",
-    fileName: "results-fig12-cd8-cd28-flow.webp",
-    localSourcePath: "src/assets/wiki/results/results-fig12-cd8-cd28-flow.webp",
-    localSrc: fig12,
-    uploadUrl: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/results/results-fig12-cd8-cd28-flow-98f30913e128.webp",
-    alt: "Representative CD8 against CD28 flow cytometry plots after dendritic-cell and T-cell co-culture for the five groups",
-    caption: "CD8⁺CD28⁺ T-cell frequencies after DC–T co-culture.",
-    section: "Round 2",
+    fileName: "figure10-open-access-slc39a6-immunohistochemistry.avif",
+    localSourcePath: "文案集/project/results/3.3 Results.md",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/results/figure10-open-access-slc39a6-immunohistochemistry.avif",
+    alt: "Figure 10. Open-access SLC39A6 immunohistochemistry.",
+    caption: "Open-access SLC39A6 immunohistochemistry.",
+    section:
+      "Target Discovery: From Four Antigens to Fifteen Testable Epitopes",
+    width: 828,
+    height: 411,
   },
   fig13: {
-    kind: "image",
-    fileName: "results-fig13-cd8-cd28-quantification.webp",
-    localSourcePath:
-      "src/assets/wiki/results/results-fig13-cd8-cd28-quantification.webp",
-    localSrc: fig13,
-    uploadUrl: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/results/results-fig13-cd8-cd28-quantification-b86f5f931f87.webp",
-    alt: "Bar chart quantifying CD8⁺CD28⁺ T-cell frequencies across the five groups with SD error bars and significance markers",
-    caption: "Quantification of CD8⁺CD28⁺ frequencies across groups.",
-    section: "Round 2",
+    fileName: "round-1-elispot-wells-and-counts.avif",
+    localSourcePath: "文案集/project/results/3.3 Results.md",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/round-1-elispot-wells-and-counts.avif",
+    alt: "Figure 13. Round 1 ELISpot wells and counts",
+    caption: "Round 1 ELISpot wells and counts",
+    section: "Round 1: Screening Single-Epitope Immunogenicity",
+    width: 1280,
+    height: 434,
   },
   fig14: {
-    kind: "image",
-    fileName: "results-fig14-effector-memory-flow.webp",
-    localSourcePath:
-      "src/assets/wiki/results/results-fig14-effector-memory-flow.webp",
-    localSrc: fig14,
-    uploadUrl: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/results/results-fig14-effector-memory-flow-36be520d3f70.webp",
-    alt: "Representative CD45RO against CCR7 flow cytometry plots within the CD8⁺ gate for Blank, TROP2-1, TROP2-2, TROP2-1+2 and Combined",
-    caption: "CD45RO⁺CCR7⁻ effector-memory frequencies within CD8⁺ T cells.",
-    section: "Round 2",
+    fileName:
+      "round-1-killing-of-k562-by-t-cells-primed-with-each-construct.avif",
+    localSourcePath: "文案集/project/results/3.3 Results.md",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/round-1-killing-of-k562-by-t-cells-primed-with-each-construct.avif",
+    alt: "Figure 14. Round 1 killing of K562 by T cells primed with each construct.",
+    caption: "Round 1 killing of K562 by T cells primed with each construct.",
+    section: "Round 1: Screening Single-Epitope Immunogenicity",
+    width: 1280,
+    height: 1155,
   },
   fig15: {
-    kind: "image",
-    fileName: "results-fig15-effector-memory-quantification.webp",
-    localSourcePath:
-      "src/assets/wiki/results/results-fig15-effector-memory-quantification.webp",
-    localSrc: fig15,
-    uploadUrl: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/results/results-fig15-effector-memory-quantification-c65ae7edf22c.webp",
-    alt: "Bar chart quantifying CD45RO⁺CCR7⁻ effector-memory frequencies across the five groups with SD error bars",
-    caption: "Quantification of CD45RO⁺CCR7⁻ frequencies across groups.",
-    section: "Round 2",
+    fileName:
+      "cd8-cd69-flow-cytometry-of-t-cells-primed-with-trop2-ctl1-and-ctl2.avif",
+    localSourcePath: "文案集/project/results/3.3 Results.md",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/cd8-cd69-flow-cytometry-of-t-cells-primed-with-trop2-ctl1-and-ctl2.avif",
+    alt: "Figure 15. CD8/CD69 flow cytometry of T cells primed with TROP2-CTL1 and CTL2",
+    caption:
+      "CD8/CD69 flow cytometry of T cells primed with TROP2-CTL1 and CTL2",
+    section: "Round 1: Screening Single-Epitope Immunogenicity",
+    width: 1280,
+    height: 519,
   },
   fig16: {
-    kind: "image",
-    fileName: "results-fig16-round2-elispot-wells.webp",
-    localSourcePath:
-      "src/assets/wiki/results/results-fig16-round2-elispot-wells.webp",
-    localSrc: fig16,
-    uploadUrl: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/results/results-fig16-round2-elispot-wells-eb12c20a07f3.webp",
-    alt: "Photograph of the Round 2 IFN-γ ELISpot membrane with the spot-forming-cell count printed above each well for the five groups",
-    caption: "Round 2 ELISpot wells and counts.",
-    section: "Round 2",
+    fileName:
+      "map-of-the-combined-vaccine-plasmid-pcircure-circmev-5267bp.avif",
+    localSourcePath: "文案集/project/results/3.3 Results.md",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/map-of-the-combined-vaccine-plasmid-pcircure-circmev-5267bp.avif",
+    alt: "Figure 16. Map of the Combined vaccine plasmid pCirCure-circMEV (5267 bp)",
+    caption: "Map of the Combined vaccine plasmid pCirCure-circMEV (5267 bp)",
+    section: "Round 1: Screening Single-Epitope Immunogenicity",
+    width: 1280,
+    height: 929,
   },
   fig17: {
-    kind: "image",
-    fileName: "results-fig17-mda-mb-231-killing.webp",
-    localSourcePath:
-      "src/assets/wiki/results/results-fig17-mda-mb-231-killing.webp",
-    localSrc: fig17,
-    uploadUrl: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/results/results-fig17-mda-mb-231-killing-bb31d49e2dcb.webp",
-    alt: "Line plot of Calcein-AM killing of MDA-MB-231 at effector-to-target ratios of 20 to 1, 40 to 1 and 80 to 1 for the five groups, with each point one replicate well",
+    fileName:
+      "agarose-gel-verification-of-the-four-epitope-encoding-linearised-transcription-templates.avif",
+    localSourcePath: "文案集/project/results/3.3 Results.md",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/agarose-gel-verification-of-the-four-epitope-encoding-linearised-transcription-templates.avif",
+    alt: "Figure 17. Agarose gel QC of the four epitope-encoding transcription templates",
     caption:
-      "Killing of MDA-MB-231 by T cells primed with each construct, across E:T ratios.",
-    section: "Round 2",
+      "Agarose gel QC of the four epitope-encoding transcription templates",
+    section: "Round 1: Screening Single-Epitope Immunogenicity",
+    width: 1004,
+    height: 741,
   },
-  fig18a: {
-    kind: "image",
-    fileName: "results-fig18a-stability-gel.webp",
-    localSourcePath:
-      "src/assets/wiki/results/results-fig18a-stability-gel.webp",
-    localSrc: fig18a,
-    uploadUrl: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/results/results-fig18a-stability-gel-1ec8018bad99.webp",
-    alt: "Agarose gel of circRNA and its linear precursor incubated at 37 degrees Celsius and sampled at 0, 24, 48 and 72 hours, with the 2000 nucleotide marker position indicated",
+  fig18: {
+    fileName:
+      "sanger-trace-across-the-backsplice-junction-bsj-of-the-combined-vaccine.avif",
+    localSourcePath: "文案集/project/results/3.3 Results.md",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/sanger-trace-across-the-backsplice-junction-bsj-of-the-combined-vaccine.avif",
+    alt: "Figure 18. Sanger trace across the back-splice junction (BSJ) of the Combined vaccine",
     caption:
-      "In vitro stability of circRNA versus linear precursor RNA at 37 °C — gel.",
-    section: "Safety",
-  },
-  fig18b: {
-    kind: "image",
-    fileName: "results-fig18b-rna-remaining-curve.webp",
-    localSourcePath:
-      "src/assets/wiki/results/results-fig18b-rna-remaining-curve.webp",
-    localSrc: fig18b,
-    uploadUrl: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/results/results-fig18b-rna-remaining-curve-ee0f8d8319e3.webp",
-    alt: "Line chart of the fraction of circRNA and linear RNA remaining against incubation time, each normalised to its own zero-hour lane",
-    caption: "Relative remaining RNA over time.",
-    section: "Safety",
+      "Sanger trace across the back-splice junction (BSJ) of the Combined vaccine",
+    section: "Round 1: Screening Single-Epitope Immunogenicity",
+    width: 1280,
+    height: 586,
   },
   fig19: {
-    kind: "image",
-    fileName: "results-fig19-off-target-cytotoxicity.webp",
-    localSourcePath:
-      "src/assets/wiki/results/results-fig19-off-target-cytotoxicity.webp",
-    localSrc: fig19,
-    uploadUrl: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/results/results-fig19-off-target-cytotoxicity-45f537789549.webp",
-    alt: "Bar chart of vaccine-primed T-cell killing of four normal human cell lines against the MDA-MB-231 positive control, at effector-to-target ratios of 80 to 1 and 100 to 1, drawn on a broken y-axis",
-    caption:
-      "Killing of four normal cell lines and MDA-MB-231 by vaccine-primed T cells.",
-    section: "Safety",
+    fileName: "cd80-cd86-double-positive-dc-frequencies-for-each-group.avif",
+    localSourcePath: "文案集/project/results/3.3 Results.md",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/cd80-cd86-double-positive-dc-frequencies-for-each-group.avif",
+    alt: "Figure 19. CD80⁺CD86⁺ double-positive DC frequencies for each group",
+    caption: "CD80⁺CD86⁺ double-positive DC frequencies for each group",
+    section: "Round 2: Functional Validation of the Combined Vaccine",
+    width: 1280,
+    height: 341,
   },
   fig20: {
-    kind: "image",
-    fileName: "results-fig20-lnp-dose-viability.webp",
-    localSourcePath:
-      "src/assets/wiki/results/results-fig20-lnp-dose-viability.webp",
-    localSrc: fig20,
-    uploadUrl: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/results/results-fig20-lnp-dose-viability-f697e90497df.webp",
-    alt: "Dose-viability curve of empty lipid nanoparticles on dendritic cells after 24 hours, showing a plateau from 0 to 200 nanograms and a sharp fall at 400 nanograms",
-    caption: "Dose–viability curve of empty LNP on DCs after 24 h.",
-    section: "Safety",
+    fileName: "quantification-of-dc-maturation-across-groups.avif",
+    localSourcePath: "文案集/project/results/3.3 Results.md",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/quantification-of-dc-maturation-across-groups.avif",
+    alt: "Figure 20. Quantification of DC maturation across groups",
+    caption: "Quantification of DC maturation across groups",
+    section: "Round 2: Functional Validation of the Combined Vaccine",
+    width: 777,
+    height: 669,
   },
   fig21: {
-    kind: "image",
-    fileName: "results-fig21-lentiviral-plasmid-map.webp",
-    localSourcePath:
-      "src/assets/wiki/results/results-fig21-lentiviral-plasmid-map.webp",
-    localSrc: fig21,
-    uploadUrl: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/results/results-fig21-lentiviral-plasmid-map-4957638e1cd0.webp",
-    alt: "Circular map of the TROP2 overexpression lentiviral transfer plasmid pLV3-CMV-TACSTD2-3xFLAG-CopGFP-Puro at 9259 bp",
-    caption:
-      "Map of the TROP2 overexpression lentiviral transfer plasmid (pLV3-CMV-TACSTD2-3×FLAG-CopGFP-Puro, 9259 bp).",
-    section: "In vivo",
+    fileName: "western-blot-of-flag-tagged-fusion-protein-in-dcs.avif",
+    localSourcePath: "文案集/project/results/3.3 Results.md",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/western-blot-of-flag-tagged-fusion-protein-in-dcs.avif",
+    alt: "Figure 21. Western blot of FLAG-tagged fusion protein in DCs",
+    caption: "Western blot of FLAG-tagged fusion protein in DCs",
+    section: "Round 2: Functional Validation of the Combined Vaccine",
+    width: 1280,
+    height: 622,
   },
   fig22: {
-    kind: "image",
-    fileName: "results-fig22-gfp-transduction-microscopy.webp",
-    localSourcePath:
-      "src/assets/wiki/results/results-fig22-gfp-transduction-microscopy.webp",
-    localSrc: fig22,
-    uploadUrl: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/results/results-fig22-gfp-transduction-microscopy-87f75a7a4539.webp",
-    alt: "Bright-field, GFP-channel and merged fluorescence microscopy of 4T1 cells 48 to 72 hours after lentiviral transduction, with untransduced cells imaged under identical settings",
-    caption:
-      "GFP fluorescence in 4T1 cells 48–72 h after lentiviral transduction.",
-    section: "In vivo",
+    fileName: "cd8-cd69-t-cell-frequencies-after-dc-t-co-culture.avif",
+    localSourcePath: "文案集/project/results/3.3 Results.md",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/cd8-cd69-t-cell-frequencies-after-dc-t-co-culture.avif",
+    alt: "Figure 22. CD8⁺CD69⁺ T-cell frequencies after DC–T co-culture",
+    caption: "CD8⁺CD69⁺ T-cell frequencies after DC–T co-culture",
+    section: "Round 2: Functional Validation of the Combined Vaccine",
+    width: 1280,
+    height: 336,
   },
-  fig23a: {
-    kind: "image",
-    fileName: "results-fig23a-sort-gate-fsc-ssc.webp",
-    localSourcePath:
-      "src/assets/wiki/results/results-fig23a-sort-gate-fsc-ssc.webp",
-    localSrc: fig23a,
-    uploadUrl: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/results/results-fig23a-sort-gate-fsc-ssc-ea1d26c3b39a.webp",
-    alt: "First sorting gate: forward scatter against side scatter, excluding debris and retaining 68.8 per cent of acquired events",
-    caption: "Three-step gating strategy for sorting GFP⁺ 4T1 cells.",
-    section: "In vivo",
-  },
-  fig23b: {
-    kind: "image",
-    fileName: "results-fig23b-sort-gate-singlets.webp",
-    localSourcePath:
-      "src/assets/wiki/results/results-fig23b-sort-gate-singlets.webp",
-    localSrc: fig23b,
-    uploadUrl: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/results/results-fig23b-sort-gate-singlets-f7df73d16ac8.webp",
-    alt: "Second sorting gate: forward scatter area against height, excluding doublets and retaining 89.3 per cent of the debris-excluded events",
-    section: "In vivo",
-  },
-  fig23c: {
-    kind: "image",
-    fileName: "results-fig23c-sort-gate-gfp.webp",
-    localSourcePath:
-      "src/assets/wiki/results/results-fig23c-sort-gate-gfp.webp",
-    localSrc: fig23c,
-    uploadUrl: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/results/results-fig23c-sort-gate-gfp-2cb124b0a513.webp",
-    alt: "Third sorting gate: GFP fluorescence against a threshold set on untransduced 4T1, capturing 84.1 per cent of the singlets as GFP-positive",
-    section: "In vivo",
+  fig23: {
+    fileName: "quantification-of-cd8-cd69-frequencies-across-groups.avif",
+    localSourcePath: "文案集/project/results/3.3 Results.md",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/quantification-of-cd8-cd69-frequencies-across-groups.avif",
+    alt: "Figure 23. Quantification of CD8⁺CD69⁺ frequencies across groups",
+    caption: "Quantification of CD8⁺CD69⁺ frequencies across groups",
+    section: "Round 2: Functional Validation of the Combined Vaccine",
+    width: 775,
+    height: 670,
   },
   fig24: {
-    kind: "image",
-    fileName: "results-fig24-trop2-mrna-rt-pcr.webp",
-    localSourcePath:
-      "src/assets/wiki/results/results-fig24-trop2-mrna-rt-pcr.webp",
-    localSrc: fig24,
-    uploadUrl: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/results/results-fig24-trop2-mrna-rt-pcr-629acb765595.webp",
-    alt: "Bar chart of relative TROP2 mRNA expression by RT-PCR in wild-type 4T1 and the TROP2-overexpressing line, with SD error bars",
-    caption: "RT-PCR quantification of TROP2 mRNA in 4T1 cells.",
-    section: "In vivo",
+    fileName: "cd8-cd28-t-cell-frequencies-after-dc-t-co-culture.avif",
+    localSourcePath: "文案集/project/results/3.3 Results.md",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/cd8-cd28-t-cell-frequencies-after-dc-t-co-culture.avif",
+    alt: "Figure 24. CD8⁺CD28⁺ T-cell frequencies after DC–T co-culture",
+    caption: "CD8⁺CD28⁺ T-cell frequencies after DC–T co-culture",
+    section: "Round 2: Functional Validation of the Combined Vaccine",
+    width: 1280,
+    height: 334,
   },
   fig25: {
-    kind: "image",
-    fileName: "results-fig25-surface-trop2-flow.webp",
-    localSourcePath:
-      "src/assets/wiki/results/results-fig25-surface-trop2-flow.webp",
-    localSrc: fig25,
-    uploadUrl: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/results/results-fig25-surface-trop2-flow-4919115ca0d1.webp",
-    alt: "Flow cytometric surface TROP2 detection in wild-type 4T1 on the left and the TROP2-overexpressing line on the right",
-    caption: "Flow cytometric detection of surface TROP2 on 4T1 cells.",
-    section: "In vivo",
+    fileName: "quantification-of-cd8-cd28-frequencies-across-groups.avif",
+    localSourcePath: "文案集/project/results/3.3 Results.md",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/quantification-of-cd8-cd28-frequencies-across-groups.avif",
+    alt: "Figure 25. Quantification of CD8⁺CD28⁺ frequencies across groups",
+    caption: "Quantification of CD8⁺CD28⁺ frequencies across groups",
+    section: "Round 2: Functional Validation of the Combined Vaccine",
+    width: 778,
+    height: 679,
   },
   fig26: {
-    kind: "image",
-    fileName: "results-fig26-excised-tumours.webp",
-    localSourcePath:
-      "src/assets/wiki/results/results-fig26-excised-tumours.webp",
-    localSrc: fig26,
-    uploadUrl: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/results/results-fig26-excised-tumours-95674e1829c8.webp",
-    alt: "Photograph of excised endpoint tumours from the PBS, empty-vector and vaccine groups on a one-centimetre background grid",
-    caption: "Excised tumours at endpoint (D35).",
-    section: "In vivo",
+    fileName: "cd45ro-ccr7-effector-memory-frequencies-within-cd8-t-cells.avif",
+    localSourcePath: "文案集/project/results/3.3 Results.md",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/cd45ro-ccr7-effector-memory-frequencies-within-cd8-t-cells.avif",
+    alt: "Figure 26. CD45RO⁺CCR7⁻ effector-memory frequencies within CD8⁺ T cells",
+    caption: "CD45RO⁺CCR7⁻ effector-memory frequencies within CD8⁺ T cells",
+    section: "Round 2: Functional Validation of the Combined Vaccine",
+    width: 1280,
+    height: 274,
   },
   fig27: {
-    kind: "image",
-    fileName: "results-fig27-immunisation-scheme.webp",
-    localSourcePath:
-      "src/assets/wiki/results/results-fig27-immunisation-scheme.webp",
-    localSrc: fig27,
-    uploadUrl: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/results/results-fig27-immunisation-scheme-672e60660c74.webp",
-    alt: "Immunisation scheme for the PBS control, empty-vector control and Combined circRNA vaccine groups, showing tumour inoculation on day 0, five weekly doses and the day 35 endpoint",
-    caption: "Immunisation scheme for the three groups.",
-    section: "In vivo",
+    fileName: "quantification-of-cd45ro-ccr7-frequencies-across-groups.avif",
+    localSourcePath: "文案集/project/results/3.3 Results.md",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/quantification-of-cd45ro-ccr7-frequencies-across-groups.avif",
+    alt: "Figure 27. Quantification of CD45RO⁺CCR7⁻ frequencies across groups",
+    caption: "Quantification of CD45RO⁺CCR7⁻ frequencies across groups",
+    section: "Round 2: Functional Validation of the Combined Vaccine",
+    width: 1042,
+    height: 901,
   },
   fig28: {
-    kind: "image",
-    fileName: "results-fig28-tumour-growth-curves.webp",
-    localSourcePath:
-      "src/assets/wiki/results/results-fig28-tumour-growth-curves.webp",
-    localSrc: fig28,
-    uploadUrl: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/results/results-fig28-tumour-growth-curves-6b91f6ac7322.webp",
-    alt: "Tumour growth curves in cubic millimetres against study week for the PBS, empty-vector and vaccine groups, each trace one mouse",
-    caption: "Tumour growth curves for the three groups.",
-    section: "In vivo",
+    fileName: "round-2-elispot-wells-and-counts.avif",
+    localSourcePath: "文案集/project/results/3.3 Results.md",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/round-2-elispot-wells-and-counts.avif",
+    alt: "Figure 28. Round 2 ELISpot wells and counts",
+    caption: "Round 2 ELISpot wells and counts",
+    section: "Round 2: Functional Validation of the Combined Vaccine",
+    width: 1280,
+    height: 351,
   },
   fig29: {
-    kind: "image",
-    fileName: "results-fig29-cd8-granzyme-b-immunofluorescence.webp",
-    localSourcePath:
-      "src/assets/wiki/results/results-fig29-cd8-granzyme-b-immunofluorescence.webp",
-    localSrc: fig29,
-    uploadUrl: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/results/results-fig29-cd8-granzyme-b-immunofluorescence-c9844bdf173c.webp",
-    alt: "CD8 and Granzyme B dual immunofluorescence of tumour sections from the PBS, empty-vector and vaccine groups, with CD8 in green, Granzyme B in red and merged panels with DAPI",
-    caption: "CD8 / Granzyme B dual immunofluorescence of tumour tissue.",
-    section: "In vivo",
-  },
-  fig30: {
-    kind: "image",
-    fileName: "results-fig30-splenic-dc-maturation.webp",
-    localSourcePath:
-      "src/assets/wiki/results/results-fig30-splenic-dc-maturation.webp",
-    localSrc: fig30,
-    uploadUrl: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/results/results-fig30-splenic-dc-maturation-68c5fff6bf66.webp",
-    alt: "Representative splenic dendritic-cell CD80 and CD86 flow plots for the three groups beside the corresponding quantification bar chart",
-    caption: "Splenic DC CD80⁺CD86⁺ maturation.",
-    section: "In vivo",
+    fileName:
+      "killing-of-mda-mb-231-by-t-cells-primed-with-each-construct-across-e-t-ratios.avif",
+    localSourcePath: "文案集/project/results/3.3 Results.md",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/killing-of-mda-mb-231-by-t-cells-primed-with-each-construct-across-e-t-ratios.avif",
+    alt: "Figure 29. Killing of MDA-MB-231 by T cells primed with each construct, across E:T ratios",
+    caption:
+      "Killing of MDA-MB-231 by T cells primed with each construct, across E:T ratios",
+    section: "Round 2: Functional Validation of the Combined Vaccine",
+    width: 1280,
+    height: 754,
   },
   fig31: {
-    kind: "image",
-    fileName: "results-fig31-splenic-cd69-activation.webp",
+    fileName: "key-intermediate-states-at-10-2-g-dose.avif",
     localSourcePath:
-      "src/assets/wiki/results/results-fig31-splenic-cd69-activation.webp",
-    localSrc: fig31,
-    uploadUrl: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/results/results-fig31-splenic-cd69-activation-6fe2eefa7c6e.webp",
-    alt: "Representative splenic CD8⁺ T-cell CD69 flow plots for the three groups beside the corresponding quantification bar chart",
-    caption: "Splenic CD8⁺ T-cell CD69⁺ early activation.",
-    section: "In vivo",
+      "文案集/project/results/图片和附件/31_effector_suppression_dynamics.png",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/results/key-intermediate-states-at-10-2-g-dose.avif",
+    alt: "Figure 31. Key intermediate states at 10.2 μg dose. (A) Effector activity (blue) and suppression (red) over 35 days. (B) Cell-response interface showing equivalent effector-to-target ratio approaching saturation. (C) Per-capita tumor killing rate (effective rate after suppression, solid; before suppression, dashed). Five injection events create pulsed immune responses.",
+    caption:
+      "Key intermediate states at 10.2 μg dose. (A) Effector activity (blue) and suppression (red) over 35 days. (B) Cell-response interface showing equivalent effector-to-target ratio approaching saturation. (C) Per-capita tumor killing rate (effective rate after suppression, solid; before suppression, dashed). Five injection events create pulsed immune responses.",
+    section: "Dose Optimization and Mechanistic Modeling",
+    width: 1280,
+    height: 425,
   },
   fig32: {
-    kind: "image",
-    fileName: "results-fig32-splenic-central-memory.webp",
+    fileName: "cell-inferred-immune-gains-and-composite-effector-score.avif",
     localSourcePath:
-      "src/assets/wiki/results/results-fig32-splenic-central-memory.webp",
-    localSrc: fig32,
-    uploadUrl: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/results/results-fig32-splenic-central-memory-4c40089c22cf.webp",
-    alt: "Representative splenic CD44⁺CD62L⁺ central-memory flow plots within the CD8⁺ gate for the three groups beside the corresponding quantification bar chart",
+      "文案集/project/results/图片和附件/29_immune_gain_components.png",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/results/cell-inferred-immune-gains-and-composite-effector-score.avif",
+    alt: "Figure 32. Cell-inferred immune gains and composite effector score. Relative gains from DC maturation (CD80/CD86), T-cell activation (CD8/CD69), IFN-γ secretion, and Granzyme B. The geometric effector composite (orange) integrates the three T-cell readouts with equal weighting, providing the calibration anchor for immune-activation parameters. CD44/CD62L ratio is shown descriptively but not used in the composite.",
     caption:
-      "CD44⁺CD62L⁺ central-memory frequencies within splenic CD8⁺ T cells.",
-    section: "In vivo",
+      "Cell-inferred immune gains and composite effector score. Relative gains from DC maturation (CD80/CD86), T-cell activation (CD8/CD69), IFN-γ secretion, and Granzyme B. The geometric effector composite (orange) integrates the three T-cell readouts with equal weighting, providing the calibration anchor for immune-activation parameters. CD44/CD62L ratio is shown descriptively but not used in the composite.",
+    section: "Dose Optimization and Mechanistic Modeling",
+    width: 1280,
+    height: 719,
   },
   fig33: {
-    kind: "image",
-    fileName: "results-fig33-splenic-ifn-gamma.webp",
-    localSourcePath:
-      "src/assets/wiki/results/results-fig33-splenic-ifn-gamma.webp",
-    localSrc: fig33,
-    uploadUrl: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/results/results-fig33-splenic-ifn-gamma-f3d7ee74932a.webp",
-    alt: "Representative splenic IFN-γ⁺ flow plots within the CD8⁺ gate for the three groups beside the corresponding quantification bar chart",
-    caption: "IFN-γ⁺ frequencies within splenic CD8⁺ T cells.",
-    section: "In vivo",
+    fileName: "model-prediction-versus-literature-scale-tumor-growth.avif",
+    localSourcePath: "文案集/project/results/图片和附件/animal_comparison.png",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/results/model-prediction-versus-literature-scale-tumor-growth.avif",
+    alt: "Figure 33. Model prediction versus literature-scale tumor growth. Gray: external untreated scenario; Blue: conditional 10.2 μg treatment prediction with 95% uncertainty interval. The model predicts moderate tumor suppression; observed outcomes showed stronger efficacy (ratio 0.104) but fell within the conditional simulation envelope.",
+    caption:
+      "Model prediction versus literature-scale tumor growth. Gray: external untreated scenario; Blue: conditional 10.2 μg treatment prediction with 95% uncertainty interval. The model predicts moderate tumor suppression; observed outcomes showed stronger efficacy (ratio 0.104) but fell within the conditional simulation envelope.",
+    section: "Dose Optimization and Mechanistic Modeling",
+    width: 1280,
+    height: 502,
   },
   fig34: {
-    kind: "image",
-    fileName: "results-fig34-splenic-granzyme-b.webp",
-    localSourcePath:
-      "src/assets/wiki/results/results-fig34-splenic-granzyme-b.webp",
-    localSrc: fig34,
-    uploadUrl: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/results/results-fig34-splenic-granzyme-b-25e78a196546.webp",
-    alt: "Representative splenic Granzyme B⁺ flow plots within the CD8⁺ gate for the three groups beside the corresponding quantification bar chart",
-    caption: "Granzyme B⁺ frequencies within splenic CD8⁺ T cells.",
-    section: "In vivo",
+    fileName:
+      "in-vitro-stability-of-circrna-versus-linear-precursor-rna-at-37-c-gel.avif",
+    localSourcePath: "文案集/project/results/3.3 Results.md",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/in-vitro-stability-of-circrna-versus-linear-precursor-rna-at-37-c-gel.avif",
+    alt: "Figure 34. In vitro stability of circRNA versus linear precursor RNA at 37 °C — gel",
+    caption:
+      "In vitro stability of circRNA versus linear precursor RNA at 37 °C — gel",
+    section: "Safety: Defining the Boundaries",
+    width: 1280,
+    height: 440,
+  },
+  fig35: {
+    fileName: "relative-remaining-rna-over-time.avif",
+    localSourcePath: "文案集/project/results/3.3 Results.md",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/relative-remaining-rna-over-time.avif",
+    alt: "Figure 35. Relative remaining RNA over time",
+    caption: "Relative remaining RNA over time",
+    section: "Safety: Defining the Boundaries",
+    width: 1280,
+    height: 663,
+  },
+  fig36: {
+    fileName:
+      "killing-of-four-normal-cell-lines-and-mda-mb-231-by-vaccine-primed-tcells.avif",
+    localSourcePath: "文案集/project/results/3.3 Results.md",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/killing-of-four-normal-cell-lines-and-mda-mb-231-by-vaccine-primed-tcells.avif",
+    alt: "Figure 36. Killing of four normal cell lines and MDA-MB-231 by vaccine-primed T cells",
+    caption:
+      "Killing of four normal cell lines and MDA-MB-231 by vaccine-primed T cells",
+    section: "Safety: Defining the Boundaries",
+    width: 694,
+    height: 450,
+  },
+  fig37: {
+    fileName: "dose-viability-curve-of-empty-lnp-on-dcs-after-24-h.avif",
+    localSourcePath: "文案集/project/results/3.3 Results.md",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/dose-viability-curve-of-empty-lnp-on-dcs-after-24-h.avif",
+    alt: "Figure 37. Dose–viability curve of empty LNP on DCs after 24 h",
+    caption: "Dose–viability curve of empty LNP on DCs after 24 h",
+    section: "Safety: Defining the Boundaries",
+    width: 986,
+    height: 675,
+  },
+  fig38: {
+    fileName:
+      "map-of-the-trop2-overexpression-lentiviral-transfer-plasmid-plv3-cmv-tacstd2-3-flag-copgfp-puro-9259-bp.avif",
+    localSourcePath: "文案集/project/results/3.3 Results.md",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/map-of-the-trop2-overexpression-lentiviral-transfer-plasmid-plv3-cmv-tacstd2-3-flag-copgfp-puro-9259-bp.avif",
+    alt: "Figure 38. Map of the TROP2 overexpression lentiviral transfer plasmid (pLV3-CMV-TACSTD2-3×FLAG-CopGFP-Puro, 9259 bp)",
+    caption:
+      "Map of the TROP2 overexpression lentiviral transfer plasmid (pLV3-CMV-TACSTD2-3×FLAG-CopGFP-Puro, 9259 bp)",
+    section: "In Vivo: Efficacy and Immune Mechanism",
+    width: 1280,
+    height: 1041,
+  },
+  fig39: {
+    fileName:
+      "gfp-fluorescence-in-4t1-cells-48-72-h-after-lentiviral-transduction.avif",
+    localSourcePath: "文案集/project/results/3.3 Results.md",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/gfp-fluorescence-in-4t1-cells-48-72-h-after-lentiviral-transduction.avif",
+    alt: "Figure 39. GFP fluorescence in 4T1 cells 48–72 h after lentiviral transduction",
+    caption:
+      "GFP fluorescence in 4T1 cells 48–72 h after lentiviral transduction",
+    section: "In Vivo: Efficacy and Immune Mechanism",
+    width: 1280,
+    height: 747,
+  },
+  fig40: {
+    fileName: "three-step-gating-strategy-for-sorting-gfp-4t1-cells.avif",
+    localSourcePath: "文案集/project/results/3.3 Results.md",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/three-step-gating-strategy-for-sorting-gfp-4t1-cells.avif",
+    alt: "Figure 40. Three-step gating strategy for sorting GFP⁺ 4T1 cells",
+    caption: "Three-step gating strategy for sorting GFP⁺ 4T1 cells",
+    section: "In Vivo: Efficacy and Immune Mechanism",
+    width: 4000,
+    height: 1285,
+  },
+  fig41: {
+    fileName: "rt-pcr-quantification-of-trop2-mrna-in-4t1-cells.avif",
+    localSourcePath: "文案集/project/results/3.3 Results.md",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/rt-pcr-quantification-of-trop2-mrna-in-4t1-cells.avif",
+    alt: "Figure 41. RT-PCR quantification of TROP2 mRNA in 4T1 cells",
+    caption: "RT-PCR quantification of TROP2 mRNA in 4T1 cells",
+    section: "In Vivo: Efficacy and Immune Mechanism",
+    width: 688,
+    height: 877,
+  },
+  fig42: {
+    fileName: "flow-cytometric-detection-of-surface-trop2-on-4t1-cells.avif",
+    localSourcePath: "文案集/project/results/3.3 Results.md",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/flow-cytometric-detection-of-surface-trop2-on-4t1-cells.avif",
+    alt: "Figure 42. Flow cytometric detection of surface TROP2 on 4T1 cells",
+    caption: "Flow cytometric detection of surface TROP2 on 4T1 cells",
+    section: "In Vivo: Efficacy and Immune Mechanism",
+    width: 1280,
+    height: 602,
+  },
+  fig43: {
+    fileName: "excised-tumours-at-endpoint-d35.avif",
+    localSourcePath: "文案集/project/results/3.3 Results.md",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/excised-tumours-at-endpoint-d35.avif",
+    alt: "Figure 43. Excised tumours at endpoint (D35)",
+    caption: "Excised tumours at endpoint (D35)",
+    section: "In Vivo: Efficacy and Immune Mechanism",
+    width: 460,
+    height: 336,
+  },
+  fig44: {
+    fileName: "immunisation-scheme-for-the-three-groups.avif",
+    localSourcePath: "文案集/project/results/3.3 Results.md",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/immunisation-scheme-for-the-three-groups.avif",
+    alt: "Figure 44. Immunisation scheme for the three groups",
+    caption: "Immunisation scheme for the three groups",
+    section: "In Vivo: Efficacy and Immune Mechanism",
+    width: 1280,
+    height: 591,
+  },
+  fig45: {
+    fileName: "tumour-growth-curves-for-the-three-groups.avif",
+    localSourcePath: "文案集/project/results/3.3 Results.md",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/tumour-growth-curves-for-the-three-groups.avif",
+    alt: "Figure 45. Tumour growth curves for the three groups",
+    caption: "Tumour growth curves for the three groups",
+    section: "In Vivo: Efficacy and Immune Mechanism",
+    width: 1065,
+    height: 510,
+  },
+  fig46: {
+    fileName: "cd8-granzyme-b-dual-immunofluorescence-of-tumour-tissue.avif",
+    localSourcePath: "文案集/project/results/3.3 Results.md",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/cd8-granzyme-b-dual-immunofluorescence-of-tumour-tissue.avif",
+    alt: "Figure 46. CD8 / Granzyme B dual immunofluorescence of tumour tissue",
+    caption: "CD8 / Granzyme B dual immunofluorescence of tumour tissue",
+    section: "In Vivo: Efficacy and Immune Mechanism",
+    width: 954,
+    height: 596,
+  },
+  fig47: {
+    fileName: "splenic-dc-cd80-cd86-maturation.avif",
+    localSourcePath: "文案集/project/results/3.3 Results.md",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/splenic-dc-cd80-cd86-maturation.avif",
+    alt: "Figure 47. Splenic DC CD80⁺CD86⁺ maturation",
+    caption: "Splenic DC CD80⁺CD86⁺ maturation",
+    section: "In Vivo: Efficacy and Immune Mechanism",
+    width: 1280,
+    height: 395,
+  },
+  fig48: {
+    fileName: "splenic-cd8-t-cell-cd69-early-activation.avif",
+    localSourcePath: "文案集/project/results/3.3 Results.md",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/splenic-cd8-t-cell-cd69-early-activation.avif",
+    alt: "Figure 48. Splenic CD8⁺ T-cell CD69⁺ early activation",
+    caption: "Splenic CD8⁺ T-cell CD69⁺ early activation",
+    section: "In Vivo: Efficacy and Immune Mechanism",
+    width: 1280,
+    height: 402,
+  },
+  fig49: {
+    fileName:
+      "cd44-cd62l-central-memory-frequencies-within-splenic-cd8-t-cells.avif",
+    localSourcePath: "文案集/project/results/3.3 Results.md",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/cd44-cd62l-central-memory-frequencies-within-splenic-cd8-t-cells.avif",
+    alt: "Figure 49. CD44⁺CD62L⁺ central-memory frequencies within splenic CD8⁺ T cells",
+    caption:
+      "CD44⁺CD62L⁺ central-memory frequencies within splenic CD8⁺ T cells",
+    section: "In Vivo: Efficacy and Immune Mechanism",
+    width: 1280,
+    height: 376,
+  },
+  fig50: {
+    fileName: "ifn-frequencies-within-splenic-cd8-t-cells.avif",
+    localSourcePath: "文案集/project/results/3.3 Results.md",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/ifn-frequencies-within-splenic-cd8-t-cells.avif",
+    alt: "Figure 50. IFN-γ⁺ frequencies within splenic CD8⁺ T cells",
+    caption: "IFN-γ⁺ frequencies within splenic CD8⁺ T cells",
+    section: "In Vivo: Efficacy and Immune Mechanism",
+    width: 1280,
+    height: 393,
+  },
+  fig51: {
+    fileName: "granzyme-b-frequencies-within-splenic-cd8-t-cells.avif",
+    localSourcePath: "文案集/project/results/3.3 Results.md",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/granzyme-b-frequencies-within-splenic-cd8-t-cells.avif",
+    alt: "Figure 51. Granzyme B⁺ frequencies within splenic CD8⁺ T cells",
+    caption: "Granzyme B⁺ frequencies within splenic CD8⁺ T cells",
+    section: "In Vivo: Efficacy and Immune Mechanism",
+    width: 1280,
+    height: 431,
   },
 } as const satisfies Record<string, ResultsAssetEntry>;
-
 export type ResultsAssetKey = keyof typeof resultsAssets;
-
-/** Registered image URL: iGEM CDN once uploaded, bundled preview until then. */
 export const getResultsImage = (key: ResultsAssetKey): string => {
   const entry: ResultsAssetEntry = resultsAssets[key];
-  return entry?.uploadUrl || entry?.localSrc || "";
+  return entry.uploadUrl || entry.localSrc || "";
 };
+const compactFigures = new Set<ResultsAssetKey>([
+  "fig14",
+  "fig20",
+  "fig21",
+  "fig23",
+  "fig25",
+  "fig27",
+  "fig29",
+  "fig35",
+  "fig36",
+  "fig37",
+  "fig41",
+  "fig45",
+]);
+export function resultsFigure(
+  key: ResultsAssetKey,
+): Extract<WikiContentBlock, { type: "figure" }> {
+  const entry = resultsAssets[key];
+  return {
+    type: "figure",
+    src: getResultsImage(key),
+    alt: entry.alt,
+    caption: entry.caption,
+    width: entry.width,
+    height: entry.height,
+    className: [
+      compactFigures.has(key) ? "results-figure--compact" : "",
+      `results-figure--${key}`,
+    ]
+      .filter(Boolean)
+      .join(" ") || undefined,
+  };
+}

@@ -2,7 +2,8 @@
  * Structured content for the Sustainability page (Engagement route).
  *
  * Source: 文案集/engagement/sustainability/6.3 Sustainability wiki定稿.md
- * Scope: Overview → SDG 3 → Stakeholder Sustainability Tracker → SDG 9 → SDG 12.
+ * Core and DEVELOP chapters share the SCALE contract; closing sections are
+ * assembled separately by sustainabilityPage.ts.
  * Pure data layer — zero React/JSX elements. Copy is verbatim from the source;
  * `**bold**` markers are rendered by the shared inline formatter.
  *
@@ -17,6 +18,7 @@ import { sdg3Chapter } from "./sustainabilitySdg3";
 import { sdg9Chapter } from "./sustainabilitySdg9";
 import { sdg12Chapter } from "./sustainabilitySdg12";
 import { sdg4Chapter } from "./sustainabilitySdg4";
+import { sdg17Chapter } from "./sustainabilitySdg17";
 
 /* ----------------------------------------------------------------------------
  * Epigraph
@@ -42,6 +44,8 @@ export interface CoreSdg {
   summary: string;
   /** Anchor the card jumps to. */
   target: string;
+  /** Official UN SDG logo image. */
+  logoUrl?: string;
 }
 
 export interface ImpactTier {
@@ -63,34 +67,35 @@ export const sustainabilityOverview = {
   sstqn:
     "To further support the assessment of **cross-SDG** relationships within the **Alignment component of the SCALE Model**, we proposed the **SDG Synergy–Trade-off Quantification Network (SST-QN)** to systematically analyze potential **positive and negative interactions** among SDGs. We structured this process as a reusable analytical workflow and assessment framework to **help future iGEM teams reduce duplicated effort** when designing evaluation criteria, assessing interactions, and organizing results.",
   toolkit:
-    "Beyond project evaluation, we also **documented** our actions, data, and impact, ultimately forming **26 reusable methods and tools** that make our SDG contributions more **measurable, verifiable, and reusable** for future iGEM teams.",
+    "Beyond project evaluation, we also **documented** our actions, data, and impact, ultimately forming **34 reusable methods and tools** that make our SDG contributions more **measurable, verifiable, and reusable** for future iGEM teams.",
 };
 
-/** Three core SDGs (Overview graphic, rebuilt as cards). SDG 12 remains queued
- * for a later chapter; SDG 9 links to its live chapter below. */
+/** The three core goals link to their completed SET chapters. */
 export const coreSdgs: ReadonlyArray<CoreSdg> = [
   {
     number: 3,
     title: "Good Health and Well-being",
     summary: "Addressing the health needs of patients with TNBC.",
     target: "sdg3-health",
+    logoUrl: "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/sustainability/overview/sdg3.avif",
   },
   {
     number: 9,
     title: "Industry, Innovation and Infrastructure",
     summary: "Translating biomedical innovations into practice.",
     target: "sdg9-industry",
+    logoUrl: "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/sustainability/overview/sdg9.avif",
   },
   {
     number: 12,
     title: "Responsible Consumption and Production",
     summary: "Supporting the responsible development of medical technologies.",
-    target: "set-core-challenges",
+    target: "sdg12-responsible-consumption",
+    logoUrl: "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/sustainability/overview/sdg12.avif",
   },
 ];
 
-/** SET / DEVELOP / GROW (Overview graphic). SDGs without a `target` have no
- * section on the page yet and are not shown as jump pills. */
+/** Overview navigation for all ten SET / DEVELOP / GROW goals. */
 export const impactTiers: ReadonlyArray<ImpactTier> = [
   {
     layer: "SET",
@@ -99,27 +104,33 @@ export const impactTiers: ReadonlyArray<ImpactTier> = [
     sdgs: [
       { number: 3, target: "sdg3-health" },
       { number: 9, target: "sdg9-industry" },
-      { number: 12, target: "set-core-challenges" },
+      { number: 12, target: "sdg12-responsible-consumption" },
     ],
   },
   {
     layer: "DEVELOP",
     title: "Build knowledge and partnerships",
     description: "Extends our work to additional goals.",
-    sdgs: [{ number: 4, target: "sdg4-quality-education" }, { number: 17 }],
+    sdgs: [{ number: 4, target: "sdg4-quality-education" }, { number: 17, target: "sdg17-partnerships" }],
   },
   {
     layer: "GROW",
     title: "Assess long-term possibilities",
     description: "Explores potential long-term impacts of CirCure.",
-    sdgs: [{ number: 1 }, { number: 5 }, { number: 8 }, { number: 10 }, { number: 13 }],
+    sdgs: [
+      { number: 1, target: "grow-sdg1" },
+      { number: 5, target: "grow-sdg5" },
+      { number: 8, target: "grow-sdg8" },
+      { number: 10, target: "grow-sdg10" },
+      { number: 13, target: "grow-sdg13" },
+    ],
   },
 ];
 
 export const sustainabilityStats: ReadonlyArray<SustainabilityStat> = [
   { id: "stakeholders", value: 94, label: "Stakeholders" },
   { id: "fields", value: 7, label: "Fields" },
-  { id: "tools", value: 26, label: "Reusable methods and tools" },
+  { id: "tools", value: 34, label: "Reusable methods and tools" },
   { id: "core-sdgs", value: 3, label: "Core SDGs" },
 ];
 
@@ -229,12 +240,13 @@ export const developSection = {
 };
 
 /** SDG chapters live on the page, in reading order. SET chapters (3/9/12) sit
- * in section 04; DEVELOP chapters (4) in section 05 — order follows reading. */
+ * in section 04; DEVELOP chapters (4/17) in section 05 — order follows reading. */
 export const sustainabilityChapters: ReadonlyArray<SdgChapter> = [
   sdg3Chapter,
   sdg9Chapter,
   sdg12Chapter,
   sdg4Chapter,
+  sdg17Chapter,
 ];
 
 /* ----------------------------------------------------------------------------

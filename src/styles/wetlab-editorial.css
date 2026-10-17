@@ -1718,10 +1718,10 @@
   max-width: 820px;
   color: var(--wet-ink);
   font-family: var(--font-editorial);
-  font-size: clamp(44px, 6vw, 76px);
-  font-weight: 400;
-  letter-spacing: -0.05em;
-  line-height: 0.96;
+  font-size: clamp(26px, 2.8vw, 38px);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.18;
 }
 
 .wiki-page.wiki-page--manuscript .wiki-next p:not(.wiki-kicker) {
@@ -1925,10 +1925,6 @@
 }
 
 .wiki-page.wiki-page--manuscript .wiki-section {
-  --wiki-section-reveal: 0;
-  --wiki-section-focus: 0;
-  --wiki-section-shift: 36px;
-  --wiki-section-drift: 0px;
   position: relative;
   isolation: isolate;
 }
@@ -1947,10 +1943,8 @@
     transparent 66%
   );
   content: "";
-  opacity: var(--wiki-section-focus);
+  opacity: 1;
   pointer-events: none;
-  transform: translate3d(0, var(--wiki-section-drift), 0);
-  will-change: opacity, transform;
 }
 
 .wiki-page.wiki-page--manuscript .wiki-section__heading {
@@ -1963,21 +1957,10 @@
   content: none !important;
 }
 
-.wiki-page.wiki-page--manuscript .wiki-section__heading > span,
-.wiki-page.wiki-page--manuscript .wiki-section__heading > div {
-  transform: translate3d(0, var(--wiki-section-shift), 0);
-  will-change: transform;
-}
-
 .wiki-page.wiki-page--manuscript
   .wiki-section[data-wiki-active]
   .wiki-section-number {
   color: var(--wet-accent);
-}
-
-.wiki-page.wiki-page--manuscript .wiki-feature {
-  transform: translate3d(0, var(--wiki-section-drift), 0);
-  will-change: transform;
 }
 
 .wiki-page.wiki-page--manuscript .wiki-manuscript-list article {

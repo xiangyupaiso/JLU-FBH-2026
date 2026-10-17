@@ -6,6 +6,7 @@ interface WikiNextRecordProps {
   path: string;
   label: string;
   title: string;
+  description?: string;
   reveal?: boolean;
 }
 
@@ -13,6 +14,7 @@ export const WikiNextRecord = memo(function WikiNextRecord({
   path,
   label,
   title,
+  description,
   reveal = true,
 }: WikiNextRecordProps) {
   return (
@@ -24,7 +26,13 @@ export const WikiNextRecord = memo(function WikiNextRecord({
         <div className="wiki-next__copy">
           <h2>{title}</h2>
           <p>
-            Continue to <strong>{label}</strong>.
+            {description ? (
+              description
+            ) : (
+              <>
+                Continue to <strong>{label}</strong>.
+              </>
+            )}
           </p>
         </div>
 

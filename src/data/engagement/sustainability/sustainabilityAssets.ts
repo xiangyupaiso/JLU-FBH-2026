@@ -39,6 +39,9 @@ export interface SustainabilityAssetEntry {
   alt: string;
   section: string;
   pdfPages?: number;
+  /** Intrinsic pixel size of the rendered source; reserves layout space. */
+  width?: number;
+  height?: number;
 }
 
 const IMG = "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement";
@@ -62,6 +65,8 @@ export const sustainabilityAssets = {
     uploadUrl: `${IMG}/sustainability-overview-map-of-stakeholders.avif`,
     alt: "Map of stakeholders",
     section: "Overview",
+    width: 4000,
+    height: 1913,
   },
   overviewScaleModel: {
     kind: "image",
@@ -71,6 +76,8 @@ export const sustainabilityAssets = {
     uploadUrl: `${IMG}/sustainability-overview-scale-model.avif`,
     alt: "SCALE Model",
     section: "Overview",
+    width: 1800,
+    height: 1007,
   },
   overviewSstQnNetwork: {
     kind: "image",
@@ -80,6 +87,8 @@ export const sustainabilityAssets = {
     uploadUrl: `${IMG}/sustainability-overview-sst-qn-network.avif`,
     alt: "SDG Synergy–Trade-off Quantification Network (SST-QN)",
     section: "Overview",
+    width: 1800,
+    height: 1020,
   },
   overviewReusableToolkit: {
     kind: "image",
@@ -89,6 +98,8 @@ export const sustainabilityAssets = {
     uploadUrl: `${IMG}/sustainability-overview-reusable-toolkit.avif`,
     alt: "Reusable Sustainability Toolkit",
     section: "Overview",
+    width: 1800,
+    height: 1020,
   },
   sstQnStatusClassification: {
     kind: "image",
@@ -98,6 +109,8 @@ export const sustainabilityAssets = {
     uploadUrl: `${IMG}/sustainability-sst-qn-status-classification.avif`,
     alt: "SST-QN Interaction Status Classification",
     section: "SST-QN",
+    width: 1800,
+    height: 550,
   },
   frameworkSetDevelopGrow: {
     kind: "image",
@@ -107,6 +120,8 @@ export const sustainabilityAssets = {
     uploadUrl: `${IMG}/sustainability-framework-set-develop-grow.avif`,
     alt: "SET-DEVELOP-GROW Impact Framework (SDG Impact Framework)",
     section: "SDG Impact Framework",
+    width: 7181,
+    height: 7197,
   },
   sdg3StakeholdersDistribution: {
     kind: "image",
@@ -116,6 +131,8 @@ export const sustainabilityAssets = {
     uploadUrl: `${IMG}/sustainability-sdg3-stakeholders-distribution.avif`,
     alt: "49 stakeholders across five groups",
     section: "SDG 3 — Evidence",
+    width: 1800,
+    height: 855,
   },
   sdg3TraceableImprovements: {
     kind: "image",
@@ -125,6 +142,8 @@ export const sustainabilityAssets = {
     uploadUrl: `${IMG}/sustainability-sdg3-traceable-improvements.avif`,
     alt: "Eight traceable project improvements",
     section: "SDG 3 — Evidence",
+    width: 1800,
+    height: 1041,
   },
   sdg3DcMaturationFlow: {
     kind: "image",
@@ -134,6 +153,8 @@ export const sustainabilityAssets = {
     uploadUrl: `${IMG}/sustainability-sdg3-dc-maturation-flow.avif`,
     alt: "In vitro flow cytometry of dendritic-cell maturation and CD8⁺ T-cell subsets",
     section: "SDG 3 — Evidence",
+    width: 1800,
+    height: 1304,
   },
   sdg3SplenocyteFlow: {
     kind: "image",
@@ -143,6 +164,8 @@ export const sustainabilityAssets = {
     uploadUrl: `${IMG}/sustainability-sdg3-splenocyte-flow.avif`,
     alt: "In vivo splenocyte flow cytometry of IFN-γ⁺CD8⁺ and GzmB⁺CD8⁺ subsets",
     section: "SDG 3 — Evidence",
+    width: 1800,
+    height: 1173,
   },
   sdg3TumorGrowth: {
     kind: "image",
@@ -152,6 +175,8 @@ export const sustainabilityAssets = {
     uploadUrl: `${IMG}/sustainability-sdg3-tumor-growth.avif`,
     alt: "Excised tumors and endpoint tumor volume across PBS, control and circRNA vaccine groups",
     section: "SDG 3 — Evidence",
+    width: 1800,
+    height: 684,
   },
   sdg9TraceableExpertFeedback: {
     kind: "image",
@@ -161,6 +186,8 @@ export const sustainabilityAssets = {
     uploadUrl: `${IMG}/sustainability/sdg9/evidence-1.avif`,
     alt: "Seven traceable SDG 9 expert feedback records",
     section: "SDG 9 — Evidence",
+    width: 2080,
+    height: 1023,
   },
   sdg9Evidence2: {
     kind: "image",
@@ -169,6 +196,8 @@ export const sustainabilityAssets = {
     uploadUrl: `${IMG}/sustainability/sdg9/evidence-2.avif`,
     alt: "Vaccine constructs and comparative immune responses",
     section: "SDG 9 — Evidence",
+    width: 4000,
+    height: 1775,
   },
   sdg9BatchProjection: {
     kind: "image",
@@ -185,6 +214,8 @@ export const sustainabilityAssets = {
     uploadUrl: `${IMG}/sustainability/sdg9/evidence-3.avif`,
     alt: "Circularization and antigen translation evidence",
     section: "SDG 9 — Evidence",
+    width: 1575,
+    height: 744,
   },
   sdg9Evidence: {
     kind: "image",
@@ -201,6 +232,8 @@ export const sustainabilityAssets = {
     uploadUrl: `${IMG}/sustainability/sdg9/evidence-4.avif`,
     alt: "CTL selectivity assessment",
     section: "SDG 9 — Evidence",
+    width: 2784,
+    height: 1686,
   },
   sdg9Evidence5: {
     kind: "image",
@@ -209,6 +242,8 @@ export const sustainabilityAssets = {
     uploadUrl: `${IMG}/sustainability/sdg9/evidence-5.avif`,
     alt: "Three-module vaccine design system",
     section: "SDG 9 — Evidence",
+    width: 4000,
+    height: 2252,
   },
   ...sdg12EvidenceAssets,
   ...sdg4ImageAssets,
@@ -236,6 +271,11 @@ export const sustainabilityImage = (key: SustainabilityImageAssetKey): string =>
   const entry = sustainabilityAssets[key] as SustainabilityAssetEntry;
   return entry.localSrc || entry.uploadUrl;
 };
+
+/** Full registry entry of a registered image (alt + intrinsic size). */
+export const sustainabilityImageEntry = (
+  key: SustainabilityImageAssetKey,
+): SustainabilityAssetEntry => sustainabilityAssets[key] as SustainabilityAssetEntry;
 
 /** iGEM docs URL of a hosted PDF/HTML file name, with local dev fallback. */
 export const sustainabilityDocUrl = (fileName: string) =>

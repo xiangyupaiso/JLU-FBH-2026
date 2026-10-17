@@ -72,15 +72,21 @@ export interface WikiReferenceEntry {
  * callout interleaving while still running through the shared renderer.
  */
 export type WikiContentBlock =
-  | { type: "prose"; paragraphs: string[] }
+  | { type: "prose"; paragraphs: string[]; id?: string }
   | { type: "quote"; text: string }
+  | { type: "heading"; level: 4 | 5 | 6; title: string }
+  | { type: "protocol-steps"; steps: Array<{ number: string; blocks: WikiContentBlock[] }> }
   | { type: "list"; items: string[]; ordered?: boolean; start?: number }
   | { type: "code"; language?: string; code: string; label?: string }
   | {
       type: "figure";
       src: string;
       alt: string;
+      /** Intrinsic size; reserves the figure's space before the file arrives. */
+      width?: number;
+      height?: number;
       caption?: string;
+      className?: string;
       /** Manuscript-provided figure label, including subfigure suffixes such as 4A. */
       figureLabel?: string;
       /** Keep the shared FIG counter visible when the manuscript has no caption. */
@@ -88,7 +94,7 @@ export type WikiContentBlock =
     }
   | {
       type: "carousel";
-      images: Array<{ src: string; alt?: string }>;
+      images: Array<{ src: string; alt?: string; width?: number; height?: number }>;
       caption?: string;
       figureLabel?: string;
     }
@@ -248,6 +254,6 @@ export interface WikiPageContent {
   facts: WikiFact[];
   sections: WikiSection[];
   links: WikiLink[];
-  next: WikiLink & { title: string };
+  next: WikiLink & { title: string; description?: string };
   heroMinimal?: boolean;
 }

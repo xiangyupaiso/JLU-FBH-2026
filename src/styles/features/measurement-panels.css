@@ -1,92 +1,25 @@
-/* Measurement page: reuse the manuscript drawer and Results-style figure plates. */
+/* Measurement page: reuse the experiments protocol drawer and Results-style figure plates. */
+@import "./experiments-panels.css";
 
-.wiki-page[data-wiki-route="/measurement"] .wiki-protocol-drawer--page-fold {
-  margin: 0;
-  overflow: hidden;
-  border: 1px solid var(--route-line-strong);
-  border-radius: 3px;
-  background: var(--route-paper);
-  box-shadow: none;
-  transition: border-color 180ms ease;
-}
-
-.wiki-page[data-wiki-route="/measurement"]
-  .wiki-protocol-drawer--page-fold.is-open {
-  border-color: var(--route-subheading-ink);
-}
-
-.wiki-page[data-wiki-route="/measurement"]
-  .wiki-protocol-drawer--page-fold
-  .wiki-protocol-drawer__header {
-  display: grid;
-  min-height: 78px;
-  grid-template-columns: minmax(0, 1fr) 24px;
-  gap: 16px;
-  align-items: end;
-  padding: 15px 18px 12px;
-  background: transparent;
-}
-
-.wiki-page[data-wiki-route="/measurement"]
-  .wiki-protocol-drawer--page-fold.is-open
-  .wiki-protocol-drawer__header {
-  border-bottom: 1px solid var(--route-line);
-  background: color-mix(in srgb, var(--route-base) 22%, var(--route-paper));
-}
-
-.wiki-page[data-wiki-route="/measurement"]
-  .wiki-protocol-drawer--page-fold
-  .wiki-protocol-drawer__header:hover {
-  background: color-mix(in srgb, var(--route-base) 34%, var(--route-paper));
-}
-
-.wiki-page[data-wiki-route="/measurement"]
-  .wiki-protocol-drawer--page-fold
-  .wiki-protocol-drawer__header:focus-visible {
-  outline: 2px solid var(--route-subheading-ink);
-  outline-offset: -3px;
-}
-
-.wiki-page[data-wiki-route="/measurement"]
-  .wiki-protocol-drawer--page-fold
-  .wiki-protocol-drawer__title-row {
-  display: block;
-  width: 100%;
-}
-
-.wiki-page[data-wiki-route="/measurement"]
-  .wiki-protocol-drawer--page-fold
-  .wiki-protocol-drawer__title {
-  overflow: visible;
-  color: var(--route-subheading-ink) !important;
-  font-family: var(--font-sans), sans-serif !important;
-  font-size: 17px;
-  font-weight: 650;
-  letter-spacing: 0;
-  line-height: 1.42;
-  text-overflow: clip;
+.wiki-page[data-wiki-route="/measurement"] .wiki-protocol-drawer__title {
   white-space: normal;
-}
-
-.wiki-page[data-wiki-route="/measurement"]
-  .wiki-protocol-drawer--page-fold
-  .wiki-protocol-drawer__chevron {
-  align-self: end;
-  width: 22px;
-  height: 22px;
-  border-radius: 2px;
-}
-
-.wiki-page[data-wiki-route="/measurement"]
-  .wiki-protocol-drawer--page-fold
-  .wiki-protocol-drawer__body {
-  gap: 16px;
-  padding: 18px 20px 20px;
-  background: var(--route-paper);
+  overflow: visible;
+  text-overflow: clip;
 }
 
 .wiki-page[data-wiki-route="/measurement"] .wiki-subheading--nested {
-  margin: 4px 0 0 !important;
+  margin: 24px 0 8px !important;
+}
+
+.wiki-page[data-wiki-route="/measurement"]
+  .wiki-subheading--nested
+  .wiki-subheading__title {
+  color: var(--route-subheading-ink, #88541e) !important;
+  font-family: var(--font-sans), sans-serif !important;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1.35;
 }
 
 .wiki-page[data-wiki-route="/measurement"] .measurement-model-volcanoes {
@@ -149,16 +82,148 @@
   }
 }
 
-.wiki-page[data-wiki-route="/measurement"]
-  .wiki-subheading--nested
-  .wiki-subheading__title {
-  color: var(--route-subheading-ink) !important;
-  font-size: 16px;
-  letter-spacing: 0;
+
+/* Highlights record (reused from entrepreneurship Our highlight component) */
+.wiki-page .highlights-record {
+  margin: 0;
+}
+
+.wiki-page .highlights-record__item {
+  border: 1px solid rgb(74 44 29 / 14%);
+  border-radius: 12px;
+  background: rgb(255 253 247 / 72%);
+  transition: background-color 180ms ease, border-color 180ms ease;
+}
+
+.wiki-page .highlights-record__item.is-open {
+  border-color: color-mix(in srgb, var(--route-subheading-ink) 32%, transparent);
+  background: rgb(255 253 247 / 95%);
+}
+
+.wiki-page .highlights-record__item + .highlights-record__item {
+  margin-top: 12px;
+}
+
+.wiki-page .highlights-record__toggle {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  width: 100%;
+  min-height: 56px;
+  padding: 18px 20px;
+  border: 0;
+  border-radius: 11px;
+  background: none;
+  color: inherit;
+  font-family: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 180ms ease, color 180ms ease;
+}
+
+.wiki-page .highlights-record__toggle:hover {
+  background: color-mix(in srgb, var(--route-subheading-ink) 5%, transparent);
+}
+
+.wiki-page .highlights-record__toggle:focus-visible {
+  outline: 2px solid var(--route-subheading-ink);
+  outline-offset: 3px;
+}
+
+.wiki-page .highlights-record__toggle:active {
+  background: color-mix(in srgb, var(--route-subheading-ink) 9%, transparent);
+}
+
+.wiki-page .highlights-record__question {
+  flex: 1;
+  min-width: 0;
+  color: var(--route-heading-ink);
+  font-size: 15.5px;
+  font-weight: 600;
+  line-height: 1.55;
+}
+
+.wiki-page .highlights-record__toggle svg {
+  flex: none;
+  align-self: center;
+  box-sizing: content-box;
+  width: 16px;
+  height: 16px;
+  padding: 7px;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--route-subheading-ink) 7%, transparent);
+  fill: none;
+  stroke: var(--route-subheading-ink);
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: transform 180ms ease;
+}
+
+.wiki-page .highlights-record__item.is-open .highlights-record__toggle svg {
+  transform: rotate(180deg);
+}
+
+.wiki-page .highlights-record__answer {
+  padding: 0 20px 20px;
+}
+
+.wiki-page .highlights-record__answer p {
+  margin: 0 0 12px;
+  font-size: 15.5px;
+  line-height: 1.75;
+}
+
+.wiki-page .highlights-record__answer p:last-child {
+  margin-bottom: 0;
+}
+
+@media (max-width: 640px) {
+  .wiki-page .highlights-record__toggle {
+    align-items: flex-start;
+    gap: 12px;
+    padding: 16px;
+  }
+
+  .wiki-page .highlights-record__toggle svg {
+    align-self: flex-start;
+  }
+
+  .wiki-page .highlights-record__answer {
+    padding: 0 16px 16px;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .wiki-page[data-wiki-route="/measurement"] .wiki-protocol-drawer--page-fold {
+  .wiki-page .highlights-record__item,
+  .wiki-page .highlights-record__toggle,
+  .wiki-page .highlights-record__toggle svg {
     transition: none;
   }
 }
+
+/* Compact figure sizing: shrink Fig 03, 06, 12, 16, 17, 26 */
+.wiki-page[data-wiki-route="/measurement"] .measurement-figure--compact,
+.wiki-page[data-wiki-route="/measurement"] .wiki-figure:has(img[src*="the-staged-epitope-screen"]),
+.wiki-page[data-wiki-route="/measurement"] .wiki-figure:has(img[src*="agarose-gel-verification"]),
+.wiki-page[data-wiki-route="/measurement"] .wiki-figure:has(img[src*="dose-viability-curve"]),
+.wiki-page[data-wiki-route="/measurement"] .wiki-figure:has(img[src*="round-1-killing-of-k562"]),
+.wiki-page[data-wiki-route="/measurement"] .wiki-figure:has(img[src*="killing-of-mda-mb-231"]),
+.wiki-page[data-wiki-route="/measurement"] .wiki-figure:has(img[src*="tumour-growth-curves"]) {
+  max-width: 560px;
+  margin-inline: auto;
+}
+
+.wiki-page[data-wiki-route="/measurement"] .measurement-figure--compact img,
+.wiki-page[data-wiki-route="/measurement"] .wiki-figure:has(img[src*="the-staged-epitope-screen"]) img,
+.wiki-page[data-wiki-route="/measurement"] .wiki-figure:has(img[src*="agarose-gel-verification"]) img,
+.wiki-page[data-wiki-route="/measurement"] .wiki-figure:has(img[src*="dose-viability-curve"]) img,
+.wiki-page[data-wiki-route="/measurement"] .wiki-figure:has(img[src*="round-1-killing-of-k562"]) img,
+.wiki-page[data-wiki-route="/measurement"] .wiki-figure:has(img[src*="killing-of-mda-mb-231"]) img,
+.wiki-page[data-wiki-route="/measurement"] .wiki-figure:has(img[src*="tumour-growth-curves"]) img {
+  width: auto;
+  max-width: 100%;
+  max-height: min(72vh, 480px);
+  object-fit: contain;
+}
+

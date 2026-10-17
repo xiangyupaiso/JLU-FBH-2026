@@ -148,16 +148,15 @@ export const notebookPage: WikiPageContent = {
     },
   ],
   links: [
-    { path: "/description", label: "Project rationale" },
-    { path: "/engineering", label: "Engineering success" },
-    { path: "/results", label: "Results & discussion" },
-    { path: "/contribution", label: "Contribution" },
-    { path: "/visual-design", label: "Visual design" },
-    { path: "/safety-and-security", label: "Safety and security" },
+    { path: "/experiments", label: "Protocol Library" },
+    { path: "/results", label: "Experimental Evidence" },
+    { path: "/safety-and-security", label: "Biosafety Guardrails" },
+    { path: "/engineering", label: "DBTL Iteration Log" },
   ],
   next: {
     path: "/safety-and-security",
     label: "Safety and Security",
-    title: "Where must the project establish safety boundaries?",
+    title: "Where Must Innovation Draw the Line?",
+    description: "Exhaustive lab notes prove that powerful synthetic biology demands vigilant containment. Review our BSL-2 protocols, animal ethics, and dual-use risk assessments.",
   },
 };

@@ -257,11 +257,15 @@ export interface BusinessModelCanvasSection {
 
 export const businessModelCanvas: {
   image: string;
+  imageWidth: number;
+  imageHeight: number;
   imageAlt: string;
   prompt: string;
   sections: BusinessModelCanvasSection[];
 } = {
   image: entrepreneurshipAssets.illustrations.businessModel,
+  imageWidth: 1448,
+  imageHeight: 1086,
   imageAlt: "Business Model Canvas of CirCure",
   prompt:
     "Click below to learn more about each step of our business model.",
@@ -384,7 +388,7 @@ export const entrepreneurshipHighlights: EntrepreneurshipHighlight[] = [
     question:
       "Has the team discovered their first potential customers and identified any unmet needs not yet covered by other existing solutions?",
     paragraphs: [
-      "**Yes.** Our team discovered **Jilin Jika Biotechnology Co., Ltd.** and **Jilin Jien Zhihe Biotherapy Technology Co., Ltd.** as our first potential customers — both have signed a letter of intent with us — through a patient-first process: conversations with **Dr. Lei Wang** (Department of Oncology, the First Hospital of Jilin University) narrowed \"TNBC\" into one specific clinical decision point, and we then worked outward to the companies able to carry such a candidate forward. Research hospitals are our validation tier; the patients below are the end beneficiaries.",
+      "**Yes.** Our team discovered **Jilin Jika Biotechnology Co., Ltd.** and **Jilin Jien Zhihe Biotherapy Technology Co., Ltd.** as our first potential customers — both have signed a letter of intent with us — through a patient-first process: conversations with **Dr. Lei Wang** (Department of Oncology, the First Hospital of Jilin University) narrowed \"TNBC\" into one specific clinical decision point, and we then worked outward to the companies able to carry such a candidate forward. Research hospitals are our validation tier; the patients below are the end beneficiaries (see [Primary Customer Segment](#primary-customer-segment)).",
       "The unmet need is equally specific: TNBC patients still carrying **residual invasive disease after neoadjuvant therapy and surgery**, whose recurrence risk does not end when their treatment does. Pembrolizumab, capecitabine and olaparib each help part of this group, but eligibility stays gated by treatment stage and molecular features. Shared-antigen vaccines such as STEMVAC and ITI-5000 fix their antigens without patient-level HLA matching; personalised neoantigen vaccines buy that fit with per-patient manufacture. **In the programmes we could identify, none combines post-surgical risk stratification, TAA and HLA matching, and multi-epitope circRNA design to serve one defined population** — the gap CirCure occupies, as an addition to standard of care, not a replacement.",
     ],
   },
@@ -435,8 +439,6 @@ export type EntrepreneurshipDocumentKey =
   | "jienzhihe"
   | "scalability"
   | "businessPlan"
-  | "ccicPoster"
-  | "apicPoster"
   | "legalPlan";
 
 export interface EntrepreneurshipDocument {
@@ -463,14 +465,6 @@ export const entrepreneurshipDocuments: Record<
   businessPlan: {
     caption: "Business Plan",
     url: entrepreneurshipAssets.documents.businessPlan,
-  },
-  ccicPoster: {
-    caption: "CCiC Poster",
-    url: entrepreneurshipAssets.documents.ccicPoster,
-  },
-  apicPoster: {
-    caption: "APiC Poster",
-    url: entrepreneurshipAssets.documents.apicPoster,
   },
   legalPlan: {
     caption: "Legal Plan",
@@ -607,6 +601,8 @@ export const entrepreneurshipPage: WikiPageContent = {
         {
           type: "figure",
           src: entrepreneurshipAssets.illustrations.who,
+          width: 4000,
+          height: 3000,
           alt: "Diagram defining CirCure's target patient population",
           caption: "Defining CirCure's target patient population.",
         },
@@ -632,6 +628,8 @@ export const entrepreneurshipPage: WikiPageContent = {
         {
           type: "figure",
           src: entrepreneurshipAssets.illustrations.empathyMap,
+          width: 1536,
+          height: 1024,
           alt: "Empathy map of the target TNBC patients",
           caption: "The Empathy Map developed for the target TNBC patients.",
         },
@@ -650,6 +648,8 @@ export const entrepreneurshipPage: WikiPageContent = {
         {
           type: "figure",
           src: entrepreneurshipAssets.illustrations.valuePropositionCanvas,
+          width: 1448,
+          height: 1086,
           alt: "Value Proposition Canvas for CirCure",
           caption: "Value Proposition Canvas for CirCure.",
         },
@@ -750,6 +750,8 @@ export const entrepreneurshipPage: WikiPageContent = {
         {
           type: "figure",
           src: entrepreneurshipAssets.illustrations.pestel,
+          width: 1526,
+          height: 823,
           alt: "PESTEL analysis of factors influencing CirCure",
           caption: "PESTEL analysis of factors influencing CirCure.",
         },
@@ -762,6 +764,8 @@ export const entrepreneurshipPage: WikiPageContent = {
         {
           type: "figure",
           src: entrepreneurshipAssets.illustrations.tamSamSom,
+          width: 1448,
+          height: 1086,
           alt: "TAM, SAM and SOM market analysis for CirCure",
           caption: "TAM, SAM and SOM market analysis for CirCure.",
         },
@@ -877,6 +881,8 @@ export const entrepreneurshipPage: WikiPageContent = {
         {
           type: "figure",
           src: entrepreneurshipAssets.illustrations.technology,
+          width: 2117,
+          height: 743,
           alt: "Overview of CirCure's technical design decisions",
           caption: "Overview of CirCure's technical design decisions.",
         },
@@ -896,6 +902,8 @@ export const entrepreneurshipPage: WikiPageContent = {
         {
           type: "figure",
           src: entrepreneurshipAssets.illustrations.mvp,
+          width: 3000,
+          height: 1709,
           alt: "Mockup of the CirCure MVP (Minimum Viable Product)",
           caption: "Mockup of the CirCure MVP (Minimum Viable Product).",
         },
@@ -961,6 +969,8 @@ export const entrepreneurshipPage: WikiPageContent = {
         {
           type: "figure",
           src: entrepreneurshipAssets.illustrations.inventiveFocus,
+          width: 1448,
+          height: 274,
           alt: "Overview of CirCure's design focus",
           caption: "Overview of CirCure's design focus.",
         },
@@ -995,6 +1005,8 @@ export const entrepreneurshipPage: WikiPageContent = {
         {
           type: "figure",
           src: entrepreneurshipAssets.illustrations.inventiveSystem,
+          width: 1448,
+          height: 227,
           alt: "Capabilities of the CircRNA Vaccine Design System",
           caption: "Capabilities of the CircRNA Vaccine Design System.",
         },
@@ -1040,6 +1052,8 @@ export const entrepreneurshipPage: WikiPageContent = {
         {
           type: "figure",
           src: entrepreneurshipAssets.illustrations.swot,
+          width: 1448,
+          height: 922,
           alt: "SWOT analysis of CirCure",
           caption: "SWOT analysis of CirCure.",
         },
@@ -1076,6 +1090,8 @@ export const entrepreneurshipPage: WikiPageContent = {
         {
           type: "figure",
           src: entrepreneurshipAssets.illustrations.competitorImmunomicTherapeutics,
+          width: 581,
+          height: 184,
           alt: "Immunomic Therapeutics — ITI-5000",
           caption: "Immunomic Therapeutics — ITI-5000.",
         },
@@ -1088,6 +1104,8 @@ export const entrepreneurshipPage: WikiPageContent = {
         {
           type: "figure",
           src: entrepreneurshipAssets.illustrations.competitorUniversityOfWashingtonStemvac,
+          width: 3840,
+          height: 2160,
           alt: "University of Washington — STEMVAC",
           caption: "University of Washington — STEMVAC.",
         },
@@ -1100,6 +1118,8 @@ export const entrepreneurshipPage: WikiPageContent = {
         {
           type: "figure",
           src: entrepreneurshipAssets.illustrations.competitorClevelandClinic,
+          width: 3840,
+          height: 2160,
           alt: "Cleveland Clinic — α-Lactalbumin Vaccine",
           caption: "Cleveland Clinic — α-Lactalbumin Vaccine.",
         },
@@ -1130,12 +1150,16 @@ export const entrepreneurshipPage: WikiPageContent = {
         {
           type: "figure",
           src: entrepreneurshipAssets.illustrations.competitorMerck,
+          width: 3056,
+          height: 1380,
           alt: "Merck — KEYTRUDA (pembrolizumab)",
           caption: "Merck — KEYTRUDA (pembrolizumab).",
         },
         {
           type: "figure",
           src: entrepreneurshipAssets.illustrations.competitorAstraZeneca,
+          width: 4000,
+          height: 2250,
           alt: "AstraZeneca — LYNPARZA (olaparib)",
           caption: "AstraZeneca — LYNPARZA (olaparib).",
         },
@@ -1187,6 +1211,8 @@ export const entrepreneurshipPage: WikiPageContent = {
         {
           type: "figure",
           src: entrepreneurshipAssets.illustrations.b2bB2c,
+          width: 1947,
+          height: 1448,
           alt: "B2B and B2C customer segments of CirCure",
           caption: "B2B and B2C customer segments of CirCure.",
         },
@@ -1207,6 +1233,8 @@ export const entrepreneurshipPage: WikiPageContent = {
         {
           type: "figure",
           src: entrepreneurshipAssets.illustrations.beachheadStrategy,
+          width: 2584,
+          height: 1182,
           alt: "Beachhead strategy for market entry and expansion",
           caption: "Beachhead strategy for market entry and expansion.",
         },
@@ -1273,7 +1301,10 @@ export const entrepreneurshipPage: WikiPageContent = {
         },
         {
           type: "figure",
+          className: "entrepreneurship-figure--portrait",
           src: entrepreneurshipAssets.illustrations.riskInterview,
+          width: 1279,
+          height: 1706,
           alt: "Risk interview with Yongli Jia of Hualan Biological Engineering",
           caption: "Risk interview with Yongli Jia of Hualan Biological Engineering.",
         },
@@ -1421,10 +1452,9 @@ export const entrepreneurshipPage: WikiPageContent = {
           ],
         },
         {
-          type: "prose",
-          paragraphs: [
-            "**Risks in Vaccine Candidate Identity and Functional Validation**",
-          ],
+          type: "heading",
+          level: 4,
+          title: "Risks in Vaccine Candidate Identity and Functional Validation",
         },
         {
           type: "list",
@@ -1436,8 +1466,9 @@ export const entrepreneurshipPage: WikiPageContent = {
           ],
         },
         {
-          type: "prose",
-          paragraphs: ["**Delivery, CMC, and Manufacturability Risks**"],
+          type: "heading",
+          level: 4,
+          title: "Delivery, CMC, and Manufacturability Risks",
         },
         {
           type: "list",
@@ -1449,10 +1480,9 @@ export const entrepreneurshipPage: WikiPageContent = {
           ],
         },
         {
-          type: "prose",
-          paragraphs: [
-            "**Risks in TAA/HLA Coverage and Multi-Epitope Combinations**",
-          ],
+          type: "heading",
+          level: 4,
+          title: "Risks in TAA/HLA Coverage and Multi-Epitope Combinations",
         },
         {
           type: "list",
@@ -1464,8 +1494,9 @@ export const entrepreneurshipPage: WikiPageContent = {
           ],
         },
         {
-          type: "prose",
-          paragraphs: ["**Safety and Potential Cross-Reactivity Risks**"],
+          type: "heading",
+          level: 4,
+          title: "Safety and Potential Cross-Reactivity Risks",
         },
         {
           type: "list",
@@ -1477,8 +1508,9 @@ export const entrepreneurshipPage: WikiPageContent = {
           ],
         },
         {
-          type: "prose",
-          paragraphs: ["**Funding Continuity and R&D Cost Risks**"],
+          type: "heading",
+          level: 4,
+          title: "Funding Continuity and R&D Cost Risks",
         },
         {
           type: "list",
@@ -1521,10 +1553,14 @@ export const entrepreneurshipPage: WikiPageContent = {
             {
               src: entrepreneurshipAssets.illustrations.originalDocument1,
               alt: "Original patent acceptance document",
+              width: 853,
+              height: 1207,
             },
             {
               src: entrepreneurshipAssets.illustrations.originalDocument1EnTranslation,
               alt: "English translation of the patent acceptance document",
+              width: 904,
+              height: 1280,
             },
           ],
           caption: "Original Document & English Translation",
@@ -1548,10 +1584,14 @@ export const entrepreneurshipPage: WikiPageContent = {
             {
               src: entrepreneurshipAssets.illustrations.originalDocument2,
               alt: "Original software copyright registration document",
+              width: 863,
+              height: 1167,
             },
             {
               src: entrepreneurshipAssets.illustrations.originalDocument2EnTranslation,
               alt: "English translation of the software copyright registration document",
+              width: 945,
+              height: 1280,
             },
           ],
           caption: "Original Document & English Translation",
@@ -1576,12 +1616,6 @@ export const entrepreneurshipPage: WikiPageContent = {
           title: "Business documents",
         },
         { type: "feature", key: "doc-business-plan" },
-        {
-          type: "prose",
-          paragraphs: ["Publicity Material"],
-        },
-        { type: "feature", key: "doc-ccic-poster" },
-        { type: "feature", key: "doc-apic-poster" },
         {
           type: "subheading",
           id: "legal-considerations",
@@ -1615,6 +1649,8 @@ export const entrepreneurshipPage: WikiPageContent = {
         {
           type: "figure",
           src: entrepreneurshipAssets.illustrations.teamPhoto,
+          width: 4000,
+          height: 2667,
           alt: "Photo of the JLU-FBH team",
           caption: "The JLU-FBH team.",
         },
@@ -1709,30 +1745,44 @@ export const entrepreneurshipPage: WikiPageContent = {
             {
               src: entrepreneurshipAssets.illustrations.actionEastChina,
               alt: "2026 iGEM East China Regional Meeting",
+              width: 4000,
+              height: 3000,
             },
             {
               src: entrepreneurshipAssets.illustrations.actionCentralChina,
               alt: "2026 Central China iGEM Forum",
+              width: 1920,
+              height: 1280,
             },
             {
               src: entrepreneurshipAssets.illustrations.actionNorthChina,
               alt: "2026 North China iGEMer Meetup",
+              width: 2276,
+              height: 1280,
             },
             {
               src: entrepreneurshipAssets.illustrations.actionNortheastChina,
               alt: "Northeast China iGEM Co-creation Salon",
+              width: 2275,
+              height: 1280,
             },
             {
               src: entrepreneurshipAssets.illustrations.actionSouthChina,
               alt: "Southern China Retional Meeting",
+              width: 1920,
+              height: 1280,
             },
             {
               src: entrepreneurshipAssets.illustrations.actionSynbiopunk,
               alt: "Synbiopunk-CCiC 2026",
+              width: 4000,
+              height: 2251,
             },
             {
               src: entrepreneurshipAssets.illustrations.actionApic,
               alt: "The 1st Gramd APiC Conference for Asia-Pracific iGEMer Community",
+              width: 2568,
+              height: 1926,
             },
           ],
           caption:
@@ -1813,13 +1863,15 @@ export const entrepreneurshipPage: WikiPageContent = {
     },
   ],
   links: [
-    { path: "/human-practices", label: "Stakeholder decisions" },
-    { path: "/sustainability", label: "Access and impact" },
-    { path: "/safety-and-security", label: "Responsible limits" },
+    { path: "/human-practices", label: "Stakeholder Feedback" },
+    { path: "/sustainability", label: "SDG Healthcare Equity" },
+    { path: "/description", label: "Clinical Rationale" },
+    { path: "/results", label: "Efficacy Evidence" },
   ],
   next: {
     path: "/human-practices",
     label: "Human Practices",
-    title: "Who changed the project—and how?",
+    title: "Listening to the Voices That Matter Most",
+    description: "A commercial strategy is hollow without patient empathy. Discover how dialogues with oncologists, breast cancer patients, and ethicists continuously reshaped our research.",
   },
 };

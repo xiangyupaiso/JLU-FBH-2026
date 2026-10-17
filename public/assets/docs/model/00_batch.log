@@ -1,0 +1,339 @@
+
+##########################################################################
+# STAGE batch
+# log file      : E:/库库学/比赛/分子对接/9_peptide_HLA_A0201/batch_results/00_batch.log
+# PyMOL         : 3.1.6.1
+# platform      : win32
+# cwd           : E:/库库学/比赛/分子对接/9_peptide_HLA_A0201
+##########################################################################
+# root         : E:/库库学/比赛/分子对接/9_peptide_HLA_A0201
+# output       : E:/库库学/比赛/分子对接/9_peptide_HLA_A0201/batch_results
+# resume       : on
+# cutoff / pH  : 3.6 A / 7.4
+
+Folders with no *_model_*.cif (ignored):
+   PSE
+   PSE_processed
+   batch_results
+
+==========================================================================
+INVENTORY  (17 system(s))
+==========================================================================
+system                             target     peptide      models
+--------------------------------------------------------------------------
+b7h4_ctl1_AVFADQVIV                b7h4       AVFADQVIV    5
+b7h4_ctl3_WLKEGVLGL                b7h4       WLKEGVLGL    5
+liv1_ctl1_TVSEGTHFL                liv1       TVSEGTHFL    5
+liv1_ctl2_GVATLAWMV                liv1       GVATLAWMV    5
+liv1_ctl3_GLHNFSDGL                liv1       GLHNFSDGL    5
+liv1_ctl4_SVAVFCHEL                liv1       SVAVFCHEL    5
+liv1_ctl5_FIGHYAENV                liv1       FIGHYAENV    5
+nectin4_ctl1_HILHVSFLA             nectin4    HILHVSFLA    5
+nectin4_ctl2_RLRVLVPPL             nectin4    RLRVLVPPL    5
+nectin4_ctl3_FQARLRLRV             nectin4    FQARLRLRV    5
+nectin4_ctl4_AVTSEFHLV             nectin4    AVTSEFHLV    5
+nectin4_ctl5_FLAEASVRG             nectin4    FLAEASVRG    5
+nectin4_ctl6_YINGRGHLV             nectin4    YINGRGHLV    5
+trop2_ctl1_SVCWCVNSV               trop2      SVCWCVNSV    5
+trop2_ctl2_RLFRERYRL               trop2      RLFRERYRL    5
+trop2_ctl3_1_TLIYYLDEI             trop2      TLIYYLDEI    5
+trop2_ctl3_2_YLDEIPPKF             trop2      YLDEIPPKF    5
+--------------------------------------------------------------------------
+total models: 85
+
+##########################################################################
+# [1/17] b7h4_ctl1_AVFADQVIV
+##########################################################################
+    [seed 0] already prepped -- skipped
+    [seed 0] PASS  P2=99.8  PC=100.0  net=11/11  hb=15(bb 13 / sc 2)
+    [seed 1] already prepped -- skipped
+    [seed 1] WARN  P2=99.8  PC=100.0  net=11/11  hb=13(bb 13 / sc 0)
+    [seed 2] already prepped -- skipped
+    [seed 2] PASS  P2=100.0  PC=99.9  net=11/11  hb=13(bb 11 / sc 2)
+    [seed 3] already prepped -- skipped
+    [seed 3] PASS  P2=99.8  PC=100.0  net=11/11  hb=13(bb 12 / sc 1)
+    [seed 4] already prepped -- skipped
+    [seed 4] PASS  P2=99.7  PC=100.0  net=11/11  hb=12(bb 11 / sc 1)
+
+##########################################################################
+# [2/17] b7h4_ctl3_WLKEGVLGL
+##########################################################################
+    [seed 0] already prepped -- skipped
+    [seed 0] PASS  P2=99.9  PC=99.9  net=11/11  hb=16(bb 13 / sc 3)
+    [seed 1] already prepped -- skipped
+    [seed 1] PASS  P2=99.8  PC=100.0  net=11/11  hb=16(bb 13 / sc 3)
+    [seed 2] already prepped -- skipped
+    [seed 2] PASS  P2=99.8  PC=99.8  net=11/11  hb=15(bb 13 / sc 2)
+    [seed 3] already prepped -- skipped
+    [seed 3] PASS  P2=99.8  PC=100.0  net=11/11  hb=16(bb 13 / sc 3)
+    [seed 4] already prepped -- skipped
+    [seed 4] PASS  P2=99.8  PC=100.0  net=11/11  hb=17(bb 14 / sc 3)
+
+##########################################################################
+# [3/17] liv1_ctl1_TVSEGTHFL
+##########################################################################
+    [seed 0] already prepped -- skipped
+    [seed 0] PASS  P2=99.8  PC=99.5  net=11/11  hb=19(bb 14 / sc 5)
+    [seed 1] already prepped -- skipped
+    [seed 1] PASS  P2=99.8  PC=100.0  net=11/11  hb=22(bb 14 / sc 8)
+    [seed 2] already prepped -- skipped
+    [seed 2] PASS  P2=99.9  PC=100.0  net=11/11  hb=21(bb 13 / sc 8)
+    [seed 3] already prepped -- skipped
+    [seed 3] PASS  P2=99.8  PC=99.1  net=11/11  hb=20(bb 13 / sc 7)
+    [seed 4] already prepped -- skipped
+    [seed 4] PASS  P2=99.9  PC=100.0  net=11/11  hb=19(bb 12 / sc 7)
+
+##########################################################################
+# [4/17] liv1_ctl2_GVATLAWMV
+##########################################################################
+    [seed 0] already prepped -- skipped
+    [seed 0] PASS  P2=99.8  PC=100.0  net=11/11  hb=15(bb 15 / sc 0)
+    [seed 1] already prepped -- skipped
+    [seed 1] PASS  P2=99.9  PC=100.0  net=11/11  hb=14(bb 14 / sc 0)
+    [seed 2] already prepped -- skipped
+    [seed 2] PASS  P2=99.7  PC=100.0  net=11/11  hb=16(bb 15 / sc 1)
+    [seed 3] already prepped -- skipped
+    [seed 3] PASS  P2=99.8  PC=100.0  net=10/11  hb=13(bb 13 / sc 0)
+    [seed 4] already prepped -- skipped
+    [seed 4] PASS  P2=99.7  PC=100.0  net=11/11  hb=14(bb 14 / sc 0)
+
+##########################################################################
+# [5/17] liv1_ctl3_GLHNFSDGL
+##########################################################################
+    [seed 0] already prepped -- skipped
+    [seed 0] PASS  P2=99.7  PC=99.3  net=11/11  hb=15(bb 13 / sc 2)
+    [seed 1] already prepped -- skipped
+    [seed 1] PASS  P2=99.8  PC=100.0  net=11/11  hb=15(bb 12 / sc 3)
+    [seed 2] already prepped -- skipped
+    [seed 2] PASS  P2=99.7  PC=100.0  net=11/11  hb=15(bb 14 / sc 1)
+    [seed 3] already prepped -- skipped
+    [seed 3] PASS  P2=99.7  PC=100.0  net=11/11  hb=16(bb 13 / sc 3)
+    [seed 4] already prepped -- skipped
+    [seed 4] PASS  P2=99.8  PC=99.4  net=10/11  hb=16(bb 12 / sc 4)
+
+##########################################################################
+# [6/17] liv1_ctl4_SVAVFCHEL
+##########################################################################
+    [seed 0] already prepped -- skipped
+    [seed 0] PASS  P2=99.9  PC=100.0  net=11/11  hb=17(bb 13 / sc 4)
+    [seed 1] already prepped -- skipped
+    [seed 1] PASS  P2=99.8  PC=100.0  net=11/11  hb=17(bb 14 / sc 3)
+    [seed 2] already prepped -- skipped
+    [seed 2] PASS  P2=99.8  PC=99.4  net=11/11  hb=16(bb 14 / sc 2)
+    [seed 3] already prepped -- skipped
+    [seed 3] PASS  P2=99.9  PC=100.0  net=11/11  hb=16(bb 13 / sc 3)
+    [seed 4] already prepped -- skipped
+    [seed 4] PASS  P2=99.7  PC=99.2  net=11/11  hb=15(bb 13 / sc 2)
+
+##########################################################################
+# [7/17] liv1_ctl5_FIGHYAENV
+##########################################################################
+    [seed 0] already prepped -- skipped
+    [seed 0] PASS  P2=99.9  PC=100.0  net=11/11  hb=16(bb 14 / sc 2)
+    [seed 1] already prepped -- skipped
+    [seed 1] PASS  P2=99.9  PC=100.0  net=11/11  hb=17(bb 15 / sc 2)
+    [seed 2] already prepped -- skipped
+    [seed 2] PASS  P2=99.9  PC=100.0  net=11/11  hb=17(bb 14 / sc 3)
+    [seed 3] already prepped -- skipped
+    [seed 3] PASS  P2=99.9  PC=100.0  net=11/11  hb=16(bb 14 / sc 2)
+    [seed 4] already prepped -- skipped
+    [seed 4] PASS  P2=99.8  PC=100.0  net=11/11  hb=17(bb 15 / sc 2)
+
+##########################################################################
+# [8/17] nectin4_ctl1_HILHVSFLA
+##########################################################################
+    [seed 0] already prepped -- skipped
+    [seed 0] PASS  P2=99.9  PC=100.0  net=11/11  hb=15(bb 12 / sc 3)
+    [seed 1] already prepped -- skipped
+    [seed 1] PASS  P2=99.8  PC=98.8  net=11/11  hb=16(bb 13 / sc 3)
+    [seed 2] already prepped -- skipped
+    [seed 2] PASS  P2=99.9  PC=100.0  net=11/11  hb=15(bb 12 / sc 3)
+    [seed 3] already prepped -- skipped
+    [seed 3] PASS  P2=99.9  PC=99.4  net=11/11  hb=15(bb 12 / sc 3)
+    [seed 4] already prepped -- skipped
+    [seed 4] PASS  P2=99.9  PC=99.0  net=11/11  hb=14(bb 11 / sc 3)
+
+##########################################################################
+# [9/17] nectin4_ctl2_RLRVLVPPL
+##########################################################################
+    [seed 0] already prepped -- skipped
+    [seed 0] PASS  P2=99.8  PC=100.0  net=11/11  hb=14(bb 13 / sc 1)
+    [seed 1] already prepped -- skipped
+    [seed 1] PASS  P2=99.8  PC=100.0  net=11/11  hb=14(bb 13 / sc 1)
+    [seed 2] already prepped -- skipped
+    [seed 2] PASS  P2=99.8  PC=100.0  net=11/11  hb=12(bb 12 / sc 0)
+    [seed 3] already prepped -- skipped
+    [seed 3] PASS  P2=99.8  PC=100.0  net=11/11  hb=15(bb 15 / sc 0)
+    [seed 4] already prepped -- skipped
+    [seed 4] PASS  P2=99.8  PC=100.0  net=11/11  hb=13(bb 12 / sc 1)
+
+##########################################################################
+# [10/17] nectin4_ctl3_FQARLRLRV
+##########################################################################
+    [seed 0] already prepped -- skipped
+    [seed 0] PASS  P2=99.0  PC=100.0  net=11/11  hb=15(bb 12 / sc 3)
+    [seed 1] already prepped -- skipped
+    [seed 1] PASS  P2=99.0  PC=100.0  net=11/11  hb=17(bb 15 / sc 2)
+    [seed 2] already prepped -- skipped
+    [seed 2] PASS  P2=99.1  PC=100.0  net=11/11  hb=15(bb 13 / sc 2)
+    [seed 3] already prepped -- skipped
+    [seed 3] PASS  P2=98.9  PC=100.0  net=11/11  hb=16(bb 12 / sc 4)
+    [seed 4] already prepped -- skipped
+    [seed 4] PASS  P2=98.8  PC=100.0  net=11/11  hb=14(bb 12 / sc 2)
+
+##########################################################################
+# [11/17] nectin4_ctl4_AVTSEFHLV
+##########################################################################
+    [seed 0] already prepped -- skipped
+    [seed 0] WARN  P2=99.9  PC=99.9  net=11/11  hb=14(bb 12 / sc 2)
+    [seed 1] already prepped -- skipped
+    [seed 1] WARN  P2=99.9  PC=99.9  net=11/11  hb=14(bb 13 / sc 1)
+    [seed 2] already prepped -- skipped
+    [seed 2] WARN  P2=99.9  PC=100.0  net=11/11  hb=12(bb 12 / sc 0)
+    [seed 3] already prepped -- skipped
+    [seed 3] WARN  P2=99.9  PC=100.0  net=11/11  hb=13(bb 12 / sc 1)
+    [seed 4] already prepped -- skipped
+    [seed 4] WARN  P2=99.9  PC=100.0  net=11/11  hb=15(bb 13 / sc 2)
+
+##########################################################################
+# [12/17] nectin4_ctl5_FLAEASVRG
+##########################################################################
+    [seed 0] already prepped -- skipped
+    [seed 0] FAIL  P2=99.8  PC=None  net=10/11  hb=15(bb 12 / sc 3)
+    [seed 1] already prepped -- skipped
+    [seed 1] FAIL  P2=99.8  PC=None  net=11/11  hb=17(bb 13 / sc 4)
+    [seed 2] already prepped -- skipped
+    [seed 2] FAIL  P2=99.8  PC=None  net=11/11  hb=17(bb 13 / sc 4)
+    [seed 3] already prepped -- skipped
+    [seed 3] FAIL  P2=99.9  PC=None  net=11/11  hb=17(bb 13 / sc 4)
+    [seed 4] already prepped -- skipped
+    [seed 4] FAIL  P2=99.8  PC=None  net=11/11  hb=17(bb 15 / sc 2)
+
+##########################################################################
+# [13/17] nectin4_ctl6_YINGRGHLV
+##########################################################################
+  peptide YINGRGHLV (9-mer)  chains: hc=A -> A, b2m=B -> B, pep=C -> C
+  wrote E:/库库学/比赛/分子对接/9_peptide_HLA_A0201/batch_results\nectin4_ctl6_YINGRGHLV\prepped\fold_nectin4_ctl6_yingrghlv_beta2mp_3utq_model_0_clean.pdb
+  running (in-process): pdb2pqr --ff=AMBER --with-ph=7.4 --titration-state-method=propka --keep-chain --pdb-output E:/库库学/比赛/分子对接/9_peptide_HLA_A0201/batch_results\nectin4_ctl6_YINGRGHLV\prepped\fold_nectin4_ctl6_yingrghlv_beta2mp_3utq_model_0_prepped.pdb E:/库库学/比赛/分子对接/9_peptide_HLA_A0201/batch_results\nectin4_ctl6_YINGRGHLV\prepped\fold_nectin4_ctl6_yingrghlv_beta2mp_3utq_model_0_clean.pdb E:/库库学/比赛/分子对接/9_peptide_HLA_A0201/batch_results\nectin4_ctl6_YINGRGHLV\prepped\fold_nectin4_ctl6_yingrghlv_beta2mp_3utq_model_0_prepped.pqr
+      | WARNING Ignoring 466 header lines in output.
+      | WARNING Ignoring 466 header lines in output.
+  wrote E:/库库学/比赛/分子对接/9_peptide_HLA_A0201/batch_results/nectin4_ctl6_YINGRGHLV/prepped/fold_nectin4_ctl6_yingrghlv_beta2mp_3utq_model_0_prepped.pdb
+    [seed 0] PASS  P2=99.9  PC=100.0  net=11/11  hb=13(bb 13 / sc 0)
+  peptide YINGRGHLV (9-mer)  chains: hc=A -> A, b2m=B -> B, pep=C -> C
+  wrote E:/库库学/比赛/分子对接/9_peptide_HLA_A0201/batch_results\nectin4_ctl6_YINGRGHLV\prepped\fold_nectin4_ctl6_yingrghlv_beta2mp_3utq_model_1_clean.pdb
+  running (in-process): pdb2pqr --ff=AMBER --with-ph=7.4 --titration-state-method=propka --keep-chain --pdb-output E:/库库学/比赛/分子对接/9_peptide_HLA_A0201/batch_results\nectin4_ctl6_YINGRGHLV\prepped\fold_nectin4_ctl6_yingrghlv_beta2mp_3utq_model_1_prepped.pdb E:/库库学/比赛/分子对接/9_peptide_HLA_A0201/batch_results\nectin4_ctl6_YINGRGHLV\prepped\fold_nectin4_ctl6_yingrghlv_beta2mp_3utq_model_1_clean.pdb E:/库库学/比赛/分子对接/9_peptide_HLA_A0201/batch_results\nectin4_ctl6_YINGRGHLV\prepped\fold_nectin4_ctl6_yingrghlv_beta2mp_3utq_model_1_prepped.pqr
+      | WARNING Ignoring 466 header lines in output.
+      | WARNING Ignoring 466 header lines in output.
+  wrote E:/库库学/比赛/分子对接/9_peptide_HLA_A0201/batch_results/nectin4_ctl6_YINGRGHLV/prepped/fold_nectin4_ctl6_yingrghlv_beta2mp_3utq_model_1_prepped.pdb
+    [seed 1] WARN  P2=99.9  PC=100.0  net=11/11  hb=14(bb 13 / sc 1)
+  peptide YINGRGHLV (9-mer)  chains: hc=A -> A, b2m=B -> B, pep=C -> C
+  wrote E:/库库学/比赛/分子对接/9_peptide_HLA_A0201/batch_results\nectin4_ctl6_YINGRGHLV\prepped\fold_nectin4_ctl6_yingrghlv_beta2mp_3utq_model_2_clean.pdb
+  running (in-process): pdb2pqr --ff=AMBER --with-ph=7.4 --titration-state-method=propka --keep-chain --pdb-output E:/库库学/比赛/分子对接/9_peptide_HLA_A0201/batch_results\nectin4_ctl6_YINGRGHLV\prepped\fold_nectin4_ctl6_yingrghlv_beta2mp_3utq_model_2_prepped.pdb E:/库库学/比赛/分子对接/9_peptide_HLA_A0201/batch_results\nectin4_ctl6_YINGRGHLV\prepped\fold_nectin4_ctl6_yingrghlv_beta2mp_3utq_model_2_clean.pdb E:/库库学/比赛/分子对接/9_peptide_HLA_A0201/batch_results\nectin4_ctl6_YINGRGHLV\prepped\fold_nectin4_ctl6_yingrghlv_beta2mp_3utq_model_2_prepped.pqr
+      | WARNING Ignoring 466 header lines in output.
+      | WARNING Ignoring 466 header lines in output.
+  wrote E:/库库学/比赛/分子对接/9_peptide_HLA_A0201/batch_results/nectin4_ctl6_YINGRGHLV/prepped/fold_nectin4_ctl6_yingrghlv_beta2mp_3utq_model_2_prepped.pdb
+    [seed 2] WARN  P2=100.0  PC=100.0  net=11/11  hb=16(bb 13 / sc 3)
+  peptide YINGRGHLV (9-mer)  chains: hc=A -> A, b2m=B -> B, pep=C -> C
+  wrote E:/库库学/比赛/分子对接/9_peptide_HLA_A0201/batch_results\nectin4_ctl6_YINGRGHLV\prepped\fold_nectin4_ctl6_yingrghlv_beta2mp_3utq_model_3_clean.pdb
+  running (in-process): pdb2pqr --ff=AMBER --with-ph=7.4 --titration-state-method=propka --keep-chain --pdb-output E:/库库学/比赛/分子对接/9_peptide_HLA_A0201/batch_results\nectin4_ctl6_YINGRGHLV\prepped\fold_nectin4_ctl6_yingrghlv_beta2mp_3utq_model_3_prepped.pdb E:/库库学/比赛/分子对接/9_peptide_HLA_A0201/batch_results\nectin4_ctl6_YINGRGHLV\prepped\fold_nectin4_ctl6_yingrghlv_beta2mp_3utq_model_3_clean.pdb E:/库库学/比赛/分子对接/9_peptide_HLA_A0201/batch_results\nectin4_ctl6_YINGRGHLV\prepped\fold_nectin4_ctl6_yingrghlv_beta2mp_3utq_model_3_prepped.pqr
+      | WARNING Ignoring 466 header lines in output.
+      | WARNING Ignoring 466 header lines in output.
+  wrote E:/库库学/比赛/分子对接/9_peptide_HLA_A0201/batch_results/nectin4_ctl6_YINGRGHLV/prepped/fold_nectin4_ctl6_yingrghlv_beta2mp_3utq_model_3_prepped.pdb
+    [seed 3] PASS  P2=99.9  PC=100.0  net=11/11  hb=16(bb 13 / sc 3)
+  peptide YINGRGHLV (9-mer)  chains: hc=A -> A, b2m=B -> B, pep=C -> C
+  wrote E:/库库学/比赛/分子对接/9_peptide_HLA_A0201/batch_results\nectin4_ctl6_YINGRGHLV\prepped\fold_nectin4_ctl6_yingrghlv_beta2mp_3utq_model_4_clean.pdb
+  running (in-process): pdb2pqr --ff=AMBER --with-ph=7.4 --titration-state-method=propka --keep-chain --pdb-output E:/库库学/比赛/分子对接/9_peptide_HLA_A0201/batch_results\nectin4_ctl6_YINGRGHLV\prepped\fold_nectin4_ctl6_yingrghlv_beta2mp_3utq_model_4_prepped.pdb E:/库库学/比赛/分子对接/9_peptide_HLA_A0201/batch_results\nectin4_ctl6_YINGRGHLV\prepped\fold_nectin4_ctl6_yingrghlv_beta2mp_3utq_model_4_clean.pdb E:/库库学/比赛/分子对接/9_peptide_HLA_A0201/batch_results\nectin4_ctl6_YINGRGHLV\prepped\fold_nectin4_ctl6_yingrghlv_beta2mp_3utq_model_4_prepped.pqr
+      | WARNING Ignoring 466 header lines in output.
+      | WARNING Ignoring 466 header lines in output.
+  wrote E:/库库学/比赛/分子对接/9_peptide_HLA_A0201/batch_results/nectin4_ctl6_YINGRGHLV/prepped/fold_nectin4_ctl6_yingrghlv_beta2mp_3utq_model_4_prepped.pdb
+    [seed 4] PASS  P2=99.9  PC=100.0  net=11/11  hb=15(bb 13 / sc 2)
+
+##########################################################################
+# [14/17] trop2_ctl1_SVCWCVNSV
+##########################################################################
+    [seed 0] already prepped -- skipped
+    [seed 0] PASS  P2=99.9  PC=100.0  net=11/11  hb=16(bb 12 / sc 4)
+    [seed 1] already prepped -- skipped
+    [seed 1] PASS  P2=99.8  PC=100.0  net=11/11  hb=19(bb 14 / sc 5)
+    [seed 2] already prepped -- skipped
+    [seed 2] PASS  P2=99.7  PC=100.0  net=11/11  hb=16(bb 13 / sc 3)
+    [seed 3] already prepped -- skipped
+    [seed 3] PASS  P2=99.7  PC=100.0  net=11/11  hb=16(bb 13 / sc 3)
+    [seed 4] already prepped -- skipped
+    [seed 4] PASS  P2=99.9  PC=100.0  net=11/11  hb=16(bb 13 / sc 3)
+
+##########################################################################
+# [15/17] trop2_ctl2_RLFRERYRL
+##########################################################################
+    [seed 0] already prepped -- skipped
+    [seed 0] PASS  P2=99.8  PC=99.5  net=11/11  hb=17(bb 13 / sc 4)
+    [seed 1] already prepped -- skipped
+    [seed 1] PASS  P2=99.8  PC=99.7  net=11/11  hb=17(bb 14 / sc 3)
+    [seed 2] already prepped -- skipped
+    [seed 2] PASS  P2=99.8  PC=99.4  net=11/11  hb=17(bb 13 / sc 4)
+    [seed 3] already prepped -- skipped
+    [seed 3] WARN  P2=99.8  PC=99.9  net=11/11  hb=17(bb 13 / sc 4)
+    [seed 4] already prepped -- skipped
+    [seed 4] PASS  P2=99.8  PC=99.8  net=11/11  hb=17(bb 13 / sc 4)
+
+##########################################################################
+# [16/17] trop2_ctl3_1_TLIYYLDEI
+##########################################################################
+    [seed 0] already prepped -- skipped
+    [seed 0] PASS  P2=99.8  PC=100.0  net=11/11  hb=18(bb 14 / sc 4)
+    [seed 1] already prepped -- skipped
+    [seed 1] WARN  P2=99.8  PC=100.0  net=11/11  hb=18(bb 14 / sc 4)
+    [seed 2] already prepped -- skipped
+    [seed 2] WARN  P2=99.8  PC=100.0  net=11/11  hb=17(bb 14 / sc 3)
+    [seed 3] already prepped -- skipped
+    [seed 3] PASS  P2=99.8  PC=100.0  net=11/11  hb=17(bb 14 / sc 3)
+    [seed 4] already prepped -- skipped
+    [seed 4] PASS  P2=99.9  PC=100.0  net=11/11  hb=17(bb 13 / sc 4)
+
+##########################################################################
+# [17/17] trop2_ctl3_2_YLDEIPPKF
+##########################################################################
+    [seed 0] already prepped -- skipped
+    [seed 0] PASS  P2=99.8  PC=99.4  net=11/11  hb=15(bb 14 / sc 1)
+    [seed 1] already prepped -- skipped
+    [seed 1] PASS  P2=99.7  PC=99.5  net=11/11  hb=17(bb 15 / sc 2)
+    [seed 2] already prepped -- skipped
+    [seed 2] PASS  P2=99.8  PC=99.4  net=11/11  hb=13(bb 12 / sc 1)
+    [seed 3] already prepped -- skipped
+    [seed 3] PASS  P2=99.8  PC=99.5  net=11/11  hb=14(bb 13 / sc 1)
+    [seed 4] already prepped -- skipped
+    [seed 4] PASS  P2=99.8  PC=99.4  net=11/11  hb=15(bb 13 / sc 2)
+
+================================================================================================
+SYSTEM SUMMARY  (17 systems, 85 models)
+================================================================================================
+system                         peptide       P2%    PC%     net     TCRa    midSD  P/W/F/E
+------------------------------------------------------------------------------------------------
+liv1_ctl5_FIGHYAENV            FIGHYAENV    99.9  100.0   11/11    249.1   7.5@P5  5/0/0/0
+b7h4_ctl3_WLKEGVLGL            WLKEGVLGL    99.8   99.9   11/11    146.9   5.2@P7  5/0/0/0
+nectin4_ctl2_RLRVLVPPL         RLRVLVPPL    99.8  100.0   11/11    259.2   7.6@P7  5/0/0/0
+trop2_ctl1_SVCWCVNSV           SVCWCVNSV    99.8  100.0   11/11    245.1  27.1@P6  5/0/0/0
+liv1_ctl1_TVSEGTHFL            TVSEGTHFL    99.8   99.7   11/11    234.4  11.3@P6  5/0/0/0
+liv1_ctl4_SVAVFCHEL            SVAVFCHEL    99.8   99.7   11/11    276.6  32.4@P6  5/0/0/0
+nectin4_ctl1_HILHVSFLA         HILHVSFLA    99.9   99.4   11/11    269.1   9.0@P4  5/0/0/0
+trop2_ctl3_2_YLDEIPPKF         YLDEIPPKF    99.8   99.4   11/11    269.5   2.6@P8  5/0/0/0
+nectin4_ctl3_FQARLRLRV         FQARLRLRV    99.0  100.0   11/11    423.8  10.9@P6  5/0/0/0
+liv1_ctl2_GVATLAWMV            GVATLAWMV    99.8  100.0   10/11    280.4   6.1@P7  5/0/0/0
+liv1_ctl3_GLHNFSDGL            GLHNFSDGL    99.7   99.7   10/11    222.3  13.9@P6  5/0/0/0
+b7h4_ctl1_AVFADQVIV            AVFADQVIV    99.8  100.0   11/11    251.9  23.7@P5  4/1/0/0
+trop2_ctl2_RLFRERYRL           RLFRERYRL    99.8   99.7   11/11    374.1  10.7@P7  4/1/0/0
+nectin4_ctl6_YINGRGHLV         YINGRGHLV    99.9  100.0   11/11    225.7  10.3@P7  3/2/0/0
+trop2_ctl3_1_TLIYYLDEI         TLIYYLDEI    99.8  100.0   11/11    361.3   7.6@P5  3/2/0/0
+nectin4_ctl4_AVTSEFHLV         AVTSEFHLV    99.9  100.0   11/11    240.3   3.1@P5  0/5/0/0
+nectin4_ctl5_FLAEASVRG         FLAEASVRG    99.8   None   10/11    292.9  14.5@P5  0/0/5/0
+
+==========================================================================
+BATCH DONE
+==========================================================================
+  start here          : E:/库库学/比赛/分子对接/9_peptide_HLA_A0201/batch_results/00_SYSTEMS.csv
+  per-model detail    : E:/库库学/比赛/分子对接/9_peptide_HLA_A0201/batch_results/00_MODELS.csv
+  which bond is lost  : E:/库库学/比赛/分子对接/9_peptide_HLA_A0201/batch_results/00_NETWORK_PIVOT.csv
+  burial per position : E:/库库学/比赛/分子对接/9_peptide_HLA_A0201/batch_results/00_SASA_PIVOT.csv
+  long-form tables    : 00_NETWORK.csv, 00_SASA.csv
+  LOG (send me this)  : E:/库库学/比赛/分子对接/9_peptide_HLA_A0201/batch_results/00_batch.log
+

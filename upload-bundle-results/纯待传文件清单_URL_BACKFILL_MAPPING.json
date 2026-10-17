@@ -1,0 +1,63 @@
+{
+  "__description__": "仅包含 Results 正文此前引用本地路径的三张静态图片。Figure 30 已由 CSV 交互图替代。三张图片已探活 200 OK 并成功回填到 src/data/project/resultsAssets.ts。",
+  "status": "verified_and_backfilled",
+  "upload_page": "https://teams.igem.org/6056/deliverables/wiki/uploads",
+  "verified_at": "2026-10-17T00:06:00.000Z",
+  "results": {
+    "target_folder": "files/pages/project/results/",
+    "files": {
+      "results-31-effector-suppression-dynamics.png": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/results/results-31-effector-suppression-dynamics.avif",
+      "results-29-immune-gain-components.png": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/results/results-29-immune-gain-components.avif",
+      "results-animal-comparison.png": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/results/results-animal-comparison.avif"
+    }
+  },
+  "assets": [
+    {
+      "key": "fig31",
+      "figure": 31,
+      "description": "效应活性与免疫抑制动态",
+      "source": "文案集/project/results/图片和附件/31_effector_suppression_dynamics.png",
+      "fileName": "results-31-effector-suppression-dynamics.png",
+      "width": 3274,
+      "height": 1089,
+      "bytes": 282429,
+      "sha256": "260143aba6a1a2b940bc9557731fdc9e94f3cee7c6aac7cfeeeb98a20c4bed8b",
+      "expectedUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/results/results-31-effector-suppression-dynamics.avif"
+    },
+    {
+      "key": "fig32",
+      "figure": 32,
+      "description": "免疫增益与综合效应评分",
+      "source": "文案集/project/results/图片和附件/29_immune_gain_components.png",
+      "fileName": "results-29-immune-gain-components.png",
+      "width": 2469,
+      "height": 1388,
+      "bytes": 102953,
+      "sha256": "36a104cea9e44e5409c5f3c8870e2344d8f7384b83e54f4a24fa685c793f6cf5",
+      "expectedUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/results/results-29-immune-gain-components.avif"
+    },
+    {
+      "key": "fig33",
+      "figure": 33,
+      "description": "模型预测与动物肿瘤生长对照",
+      "source": "文案集/project/results/图片和附件/animal_comparison.png",
+      "fileName": "results-animal-comparison.png",
+      "width": 2565,
+      "height": 1007,
+      "bytes": 185282,
+      "sha256": "105d65ee414bcabb37a12ccd834be9f9beb2fdb4140f447b764e1bea85ca3ebd",
+      "expectedUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/results/results-animal-comparison.avif"
+    }
+  ],
+  "already_hosted": {
+    "static_images": 43,
+    "http_200_count": 43,
+    "checked_at": "2026-10-16T15:39:58.349Z"
+  },
+  "excluded": [
+    {
+      "figure": 30,
+      "reason": "已替换为基于 dose_scan.csv 的交互折线图，页面不再渲染该原图。"
+    }
+  ]
+}

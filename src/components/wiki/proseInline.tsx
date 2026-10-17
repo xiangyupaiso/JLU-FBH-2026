@@ -1,6 +1,8 @@
 import type { ReactNode } from "react";
 import { Link } from "react-router-dom";
 import { scrollReaderToId } from "../../utils/scrollReaderToTarget";
+import { WikiMath, splitMathSegments } from "./mathText";
+import "../../styles/wiki-math.css";
 
 /**
  * Inline prose formatting for the shared reader.
@@ -104,7 +106,7 @@ const INLINE_FORMATTING_RE =
   /(`[^`]+`|\*\*[\s\S]+?\*\*|(?<![\w*])\*(?!\*)(?:[^*\n]|\*(?!\*))+?\*(?!\*))/g;
 
 /** Render Markdown bold and italic markers without mistaking scientific `*` tokens for emphasis. */
-export function renderInlineFormatting(text: string): ReactNode {
+function renderEmphasisAndCode(text: string): ReactNode {
   if (!text || (!text.includes("*") && !text.includes("`"))) {
     return text;
   }
@@ -121,4 +123,31 @@ export function renderInlineFormatting(text: string): ReactNode {
     }
     return part;
   });
+}
+
+/**
+ * Render bold/italic/code plus any `$…$` LaTeX segments (parsed by the shared
+ * `WikiMath` subset renderer). A paragraph consisting of a single formula is
+ * displayed as a centred equation line; otherwise math stays inline.
+ */
+export function renderInlineFormatting(text: string): ReactNode {
+  if (!text) return text;
+  if (text.includes("$")) {
+    const trimmed = text.trim();
+    const soleFormula = trimmed.match(/^\$([^$\n]+)\$/);
+    if (soleFormula && soleFormula[0].length === trimmed.length) {
+      return <WikiMath latex={soleFormula[1]} display />;
+    }
+    const segments = splitMathSegments(text);
+    if (segments.length > 1 || segments[0]?.math) {
+      return segments.map((segment, index) =>
+        segment.math ? (
+          <WikiMath key={`m-${index}`} latex={segment.text} />
+        ) : (
+          <span key={`t-${index}`}>{renderEmphasisAndCode(segment.text)}</span>
+        ),
+      );
+    }
+  }
+  return renderEmphasisAndCode(text);
 }

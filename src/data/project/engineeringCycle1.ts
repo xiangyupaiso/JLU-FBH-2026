@@ -99,8 +99,8 @@ export const cycle1Section: WikiSection = {
   index: "01",
   kicker: "Cycle 1 — Targeting",
   navLabel: "Cycle 1 — Targeting",
-  title: "From intended use to a four-antigen strategy",
-  summary: "TIME begins with T—Targeting. This cycle moved from intended use to a four-antigen strategy prepared for epitope-level engineering.",
+  title: "Cycle 1: From intended use to a four-antigen strategy",
+  summary: "TIME begins with **T—Targeting**. This cycle moved from intended use to a four-antigen strategy ready for epitope-level engineering.",
   blocks: [
         {
           type: "prose",
@@ -213,7 +213,7 @@ export const cycle1Section: WikiSection = {
         },
         {
           type: "table",
-          caption: "Table C1-01｜Platform decision matrix｜平台选择决策矩阵",
+          caption: "Table C1-01｜Platform decision matrix",
           headers: ["Design requirement","Linear mRNA","Engineered circRNA","Project check","Design implication"],
           rows: [
           [
@@ -297,13 +297,13 @@ export const cycle1Section: WikiSection = {
         },
         {
           type: "table",
-          caption: "Table C1-02｜Stage-by-stage feasibility check for the circRNA route｜circRNA路线的逐阶段可行性检查",
+          caption: "Table C1-02｜Stage-by-stage feasibility check for the circRNA route",
           headers: ["Stage","Material source or operation","Available project check","Observable output","Decision"],
           rows: [
           [
                     "DNA template",
                     "Recombinant plasmids assembled by a commercial service provider",
-                    "Supplier plasmid map, sequence file and sample label were matched to the intended design before the delivered material entered the team's recorded template-processing and transcription route",
+                    "Supplier plasmid map, sequence file and sample label were matched to the intended design before the delivered material entered the team’s recorded template-processing and transcription route",
                     "DNA template corresponding to the intended construct",
                     "Executable"
           ],
@@ -335,6 +335,12 @@ export const cycle1Section: WikiSection = {
                     "IFN-γ-associated, activation and effector readouts",
                     "Executable"
           ]
+]
+        },
+        {
+          type: "prose",
+          paragraphs: [
+          "All five stages therefore had a defined source or procedure, an accessible measurement and an observable output. This established the testability of the circRNA route; the resulting RNA, protein and immune-response evidence is presented in the later cycles."
 ]
         }
           ]
@@ -535,26 +541,34 @@ export const cycle1Section: WikiSection = {
         {
           type: "figure",
           src: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-c1-02a.avif",
+          width: 852,
+          height: 257,
           alt: "Figure C1-02A",
-          caption: "Figure C1-02A · Representative TROP2 immunohistochemistry in TNBC tissue, showing intermediate staining in the left and middle fields and high staining in the right field. Reproduced from Figure 2 of Izci et al. (2022), under CC BY 4.0; the tissue fields are retained and an external panel label has been added."
+          caption: "Representative TROP2 immunohistochemistry in TNBC tissue, showing intermediate staining in the left and middle fields and high staining in the right field. Reproduced from Figure 2 of Izci et al. (2022), under CC BY 4.0; the tissue fields are retained and an external panel label has been added."
         },
         {
           type: "figure",
           src: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-c1-02b.avif",
+          width: 412,
+          height: 420,
           alt: "Figure C1-02B",
-          caption: "Figure C1-02B · Representative B7-H4 immunostaining showing strong, moderate, weak and negative staining, as labelled in the source image. Cropped from Figure 1d of Wang et al. (2018), under CC BY 4.0; source labels and scale bars are retained, with an external panel label added."
+          caption: "Representative B7-H4 immunostaining showing strong, moderate, weak and negative staining, as labelled in the source image. Cropped from Figure 1d of Wang et al. (2018), under CC BY 4.0; source labels and scale bars are retained, with an external panel label added."
         },
         {
           type: "figure",
           src: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-c1-02c.avif",
+          width: 852,
+          height: 261,
           alt: "Figure C1-02C",
-          caption: "Figure C1-02C · Representative TNBC tissue showing strong, moderate and negative Nectin-4 staining in the original panels A, B and C, respectively (200× magnification). Reproduced from Figure 1 of Zeindler et al. (2019), under CC BY; original panel labels and scale bars are retained, with an external panel label added."
+          caption: "Representative TNBC tissue showing strong, moderate and negative Nectin-4 staining in the original panels A, B and C, respectively (200× magnification). Reproduced from Figure 1 of Zeindler et al. (2019), under CC BY; original panel labels and scale bars are retained, with an external panel label added."
         },
         {
           type: "figure",
           src: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-c1-02d.avif",
+          width: 852,
+          height: 465,
           alt: "Figure C1-02D",
-          caption: "Figure C1-02D · Representative positive and negative SLC39A6/LIV-1 immunostaining in breast-cancer tissue, corresponding to the original panels A and B. Reproduced from Figure 1 of Althobiti et al. (2021), under CC BY 4.0; an external panel label has been added. These images illustrate breast-cancer tissue staining rather than TNBC-specific prevalence."
+          caption: "Representative positive and negative SLC39A6/LIV-1 immunostaining in breast-cancer tissue, corresponding to the original panels A and B. Reproduced from Figure 1 of Althobiti et al. (2021), under CC BY 4.0; an external panel label has been added. These images illustrate breast-cancer tissue staining rather than TNBC-specific prevalence."
         }
           ]
         },
@@ -636,12 +650,13 @@ export const cycle1Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "The framework converted the four-antigen starting set into an executable evidence sequence. We would first test protein-level support, then locate the expression signal at cellular resolution, extend the comparison across patients and finally integrate the quantitative results with clinical evidence. Quantitative proteomics therefore became the next design."
+          "The framework converted the four-antigen starting set into an executable evidence sequence. We would first test protein-level support, then locate the expression signal at cellular resolution, extend the comparison across patients and finally integrate the quantitative results with clinical evidence. Quantitative proteomics therefore became the next design.",
+          "The finalized evidence map is shown below. Further details are provided in [Bioinformatics: antigen-selection framework](https://2026.igem.wiki/jlu-fbh/bioinformatics) and [Integrated Human Practices: Dry Lab route](https://2026.igem.wiki/jlu-fbh/human-practices)."
 ]
         },
         {
           type: "table",
-          caption: "Table C1-03｜Four-dimensional antigen-evidence map｜四维抗原证据图谱",
+          caption: "Table C1-03｜Four-dimensional antigen-evidence map",
           headers: ["Evidence dimension", "Question", "Primary source", "Decision produced"],
           rows: [
             [
@@ -724,18 +739,6 @@ export const cycle1Section: WikiSection = {
 ]
         },
         {
-          type: "code",
-          language: "R",
-          label: "Code snippet",
-          code: "# Original script: 08_pxd024322_limma_tnbc_vs_normal.R\n\nnormal_columns <- metadata$Condition == \"Normal\"\ntnbc_columns <- metadata$Condition == \"TNBC\"\n\nnormal_n <- rowSums(!is.na(expression[, normal_columns, drop = FALSE]))\ntnbc_n <- rowSums(!is.na(expression[, tnbc_columns, drop = FALSE]))\ntotal_n <- normal_n + tnbc_n\n\n# Test proteins with at least 2 nonmissing values in each group.\n# Retain all proteins in the complete results table.\ntestable <- normal_n >= 2 & tnbc_n >= 2\n\ndesign <- model.matrix(~ Batch + Condition, data = metadata)\nif (qr(design)$rank != ncol(design)) {\n  stop(\"Design matrix is not full rank: batch and condition are confounded.\")\n}\n\nfit <- lmFit(expression[testable, , drop = FALSE], design)\nfit <- eBayes(fit, trend = TRUE, robust = TRUE)\ntested_results <- topTable(\n  fit,\n  coef = \"ConditionTNBC\",\n  number = Inf,\n  sort.by = \"none\"\n)\n\n# After complete result-table assembly:\nfull_results$TNBC_coverage <- full_results$TNBC_n / full_results$TNBC_total\nfull_results$Normal_coverage <- full_results$Normal_n / full_results$Normal_total\nfull_results$Primary_high_coverage <- (\n  full_results$TNBC_coverage >= 0.70 &\n    full_results$Normal_coverage >= 0.70\n)\nfull_results$Meets_conservative_screen <- (\n  !is.na(full_results$adj.P.Val) &\n    full_results$adj.P.Val < 0.05 &\n    full_results$log2FC_TNBC_minus_Normal >= 0.5\n)\n\nwrite.csv(\n  full_results,\n  file.path(result_dir, \"PXD024322_TNBC_vs_Normal_limma_ALL_9088_proteins.csv\"),\n  row.names = FALSE,\n  na = \"\"\n)\n\nprimary_results <- subset(full_results, Primary_high_coverage & Testable)\nwrite.csv(\n  primary_results,\n  file.path(result_dir, \"PXD024322_TNBC_vs_Normal_limma_primary_high_coverage.csv\"),\n  row.names = FALSE,\n  na = \"\"\n)"
-        },
-        {
-          type: "code",
-          language: "R",
-          label: "Code snippet",
-          code: "# Original script: 12_pxd028102_missingness_sensitive_limma.R\n# subject represents the patient identifier (PatientID).\n\ntumor_columns <- grep(\"T_Prot$\", names(abundance), value = TRUE)\nnat_columns <- grep(\"P_Prot$\", names(abundance), value = TRUE)\ntumor_ids <- sub(\"T_Prot$\", \"\", tumor_columns)\nnat_ids <- sub(\"P_Prot$\", \"\", nat_columns)\npaired_ids <- intersect(tumor_ids, nat_ids)\n\nif (length(paired_ids) != 66L) {\n  stop(\"Expected 66 tumor-NAT patient pairs; found \", length(paired_ids))\n}\n\nsample_columns <- c(\n  paste0(paired_ids, \"P_Prot\"),\n  paste0(paired_ids, \"T_Prot\")\n)\ncondition <- factor(\n  c(rep(\"NAT\", length(paired_ids)), rep(\"TNBC\", length(paired_ids))),\n  levels = c(\"NAT\", \"TNBC\")\n)\nsubject <- factor(rep(paired_ids, 2))\ndesign <- model.matrix(~ subject + condition)\ncoefficient_name <- \"conditionTNBC\"\n\n# run_limma() performs left-censored imputation and then:\n# lmFit(imputed, design)\n# eBayes(fit, trend = TRUE, robust = TRUE)\n# topTable(fit, coef = coefficient_name, number = Inf, sort.by = \"none\")\n\nsensitivity_settings <- data.frame(\n  quantile_probability = c(0.005, 0.01, 0.01, 0.05),\n  offset = c(1.0, 0.5, 1.0, 1.0),\n  method = c(\n    \"q0.5pct_minus1.0\",\n    \"q1pct_minus0.5\",\n    \"q1pct_minus1.0_primary\",\n    \"q5pct_minus1.0\"\n  ),\n  stringsAsFactors = FALSE\n)\n\nall_results <- vector(\"list\", nrow(sensitivity_settings))\nfor (index in seq_len(nrow(sensitivity_settings))) {\n  setting <- sensitivity_settings[index, ]\n  all_results[[index]] <- run_limma(\n    quantile_probability = setting$quantile_probability,\n    offset = setting$offset,\n    method_name = setting$method\n  )\n}\n\nprimary <- all_results[[3]]\nwrite.csv(\n  primary,\n  file.path(result_dir, \"PXD028102_paired_limma_imputed_ALL.csv\"),\n  row.names = FALSE,\n  fileEncoding = \"UTF-8\"\n)"
-        },
-        {
           type: "references",
           items: [
           {
@@ -751,6 +754,23 @@ export const cycle1Section: WikiSection = {
                     "hrefLabel": "doi:10.1111/j.2517-6161.1995.tb02031.x"
           }
 ]
+        },
+        {
+          type: "note",
+          label: "Code C1-01｜Proteomic-analysis script excerpts",
+          body: "The excerpts retain the original model specifications, filtering rules, imputation settings and output filenames. Data loading, function definitions and complete result-table assembly are provided in the full script."
+        },
+        {
+          type: "code",
+          language: "R",
+          label: "PXD024322｜Batch-adjusted comparison",
+          code: "# Original script: 08_pxd024322_limma_tnbc_vs_normal.R\n\nnormal_columns <- metadata$Condition == \"Normal\"\ntnbc_columns <- metadata$Condition == \"TNBC\"\n\nnormal_n <- rowSums(!is.na(expression[, normal_columns, drop = FALSE]))\ntnbc_n <- rowSums(!is.na(expression[, tnbc_columns, drop = FALSE]))\ntotal_n <- normal_n + tnbc_n\n\n# Test proteins with at least 2 nonmissing values in each group.\n# Retain all proteins in the complete results table.\ntestable <- normal_n >= 2 & tnbc_n >= 2\n\ndesign <- model.matrix(~ Batch + Condition, data = metadata)\nif (qr(design)$rank != ncol(design)) {\n  stop(\"Design matrix is not full rank: batch and condition are confounded.\")\n}\n\nfit <- lmFit(expression[testable, , drop = FALSE], design)\nfit <- eBayes(fit, trend = TRUE, robust = TRUE)\ntested_results <- topTable(\n  fit,\n  coef = \"ConditionTNBC\",\n  number = Inf,\n  sort.by = \"none\"\n)\n\n# After complete result-table assembly:\nfull_results$TNBC_coverage <- full_results$TNBC_n / full_results$TNBC_total\nfull_results$Normal_coverage <- full_results$Normal_n / full_results$Normal_total\nfull_results$Primary_high_coverage <- (\n  full_results$TNBC_coverage >= 0.70 &\n    full_results$Normal_coverage >= 0.70\n)\nfull_results$Meets_conservative_screen <- (\n  !is.na(full_results$adj.P.Val) &\n    full_results$adj.P.Val < 0.05 &\n    full_results$log2FC_TNBC_minus_Normal >= 0.5\n)\n\nwrite.csv(\n  full_results,\n  file.path(result_dir, \"PXD024322_TNBC_vs_Normal_limma_ALL_9088_proteins.csv\"),\n  row.names = FALSE,\n  na = \"\"\n)\n\nprimary_results <- subset(full_results, Primary_high_coverage & Testable)\nwrite.csv(\n  primary_results,\n  file.path(result_dir, \"PXD024322_TNBC_vs_Normal_limma_primary_high_coverage.csv\"),\n  row.names = FALSE,\n  na = \"\"\n)"
+        },
+        {
+          type: "code",
+          language: "R",
+          label: "PXD028102｜Patient-paired comparison and missingness sensitivity",
+          code: "# Original script: 12_pxd028102_missingness_sensitive_limma.R\n# subject represents the patient identifier (PatientID).\n\ntumor_columns <- grep(\"T_Prot$\", names(abundance), value = TRUE)\nnat_columns <- grep(\"P_Prot$\", names(abundance), value = TRUE)\ntumor_ids <- sub(\"T_Prot$\", \"\", tumor_columns)\nnat_ids <- sub(\"P_Prot$\", \"\", nat_columns)\npaired_ids <- intersect(tumor_ids, nat_ids)\n\nif (length(paired_ids) != 66L) {\n  stop(\"Expected 66 tumor-NAT patient pairs; found \", length(paired_ids))\n}\n\nsample_columns <- c(\n  paste0(paired_ids, \"P_Prot\"),\n  paste0(paired_ids, \"T_Prot\")\n)\ncondition <- factor(\n  c(rep(\"NAT\", length(paired_ids)), rep(\"TNBC\", length(paired_ids))),\n  levels = c(\"NAT\", \"TNBC\")\n)\nsubject <- factor(rep(paired_ids, 2))\ndesign <- model.matrix(~ subject + condition)\ncoefficient_name <- \"conditionTNBC\"\n\n# run_limma() performs left-censored imputation and then:\n# lmFit(imputed, design)\n# eBayes(fit, trend = TRUE, robust = TRUE)\n# topTable(fit, coef = coefficient_name, number = Inf, sort.by = \"none\")\n\nsensitivity_settings <- data.frame(\n  quantile_probability = c(0.005, 0.01, 0.01, 0.05),\n  offset = c(1.0, 0.5, 1.0, 1.0),\n  method = c(\n    \"q0.5pct_minus1.0\",\n    \"q1pct_minus0.5\",\n    \"q1pct_minus1.0_primary\",\n    \"q5pct_minus1.0\"\n  ),\n  stringsAsFactors = FALSE\n)\n\nall_results <- vector(\"list\", nrow(sensitivity_settings))\nfor (index in seq_len(nrow(sensitivity_settings))) {\n  setting <- sensitivity_settings[index, ]\n  all_results[[index]] <- run_limma(\n    quantile_probability = setting$quantile_probability,\n    offset = setting$offset,\n    method_name = setting$method\n  )\n}\n\nprimary <- all_results[[3]]\nwrite.csv(\n  primary,\n  file.path(result_dir, \"PXD028102_paired_limma_imputed_ALL.csv\"),\n  row.names = FALSE,\n  fileEncoding = \"UTF-8\"\n)"
         }
           ]
         },
@@ -766,27 +786,35 @@ export const cycle1Section: WikiSection = {
         },
         {
           type: "figure",
-          src: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-c1-03a.avif",
+          src: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-c1-03a-new.avif",
+          width: 4000,
+          height: 2744,
           alt: "Figure C1-03A",
-          caption: "Figure C1-03A · Volcano plot comparing TNBC tumours with normal-breast samples in PXD024322 using a batch-adjusted limma model. Axes show the fitted log₂ fold change and −log₁₀ Benjamini–Hochberg-adjusted P value. TROP2, B7-H4, LIV-1 and Nectin-4 are highlighted against the quantified proteome."
+          caption: "Volcano plot comparing TNBC tumours with normal-breast samples in PXD024322 using a batch-adjusted limma model. Axes show the fitted log₂ fold change and −log₁₀ Benjamini–Hochberg-adjusted P value. Red and blue points indicate increased and decreased abundance, respectively, at adjusted P < 0.05 and |log₂FC| ≥ 0.15. Purple vertical reference lines mark log₂FC = ±0.5. TROP2, B7-H4, LIV-1 and Nectin-4 are highlighted."
         },
         {
           type: "figure",
-          src: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-c1-03b.avif",
+          src: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-c1-03b-new.avif",
+          width: 4000,
+          height: 1889,
           alt: "Figure C1-03B",
-          caption: "Figure C1-03B · Batch-adjusted log₂ protein-abundance distributions for TROP2, B7-H4, LIV-1 and Nectin-4 in PXD024322. Grey and orange points represent normal-breast and TNBC samples, respectively. Each panel reports the fitted log₂ fold change and Benjamini–Hochberg-adjusted P value."
+          caption: "Boxplots of batch-adjusted log₂ relative protein abundance for TROP2, B7-H4, LIV-1 and Nectin-4 in PXD024322. Grey and orange boxes represent normal-breast and TNBC samples, respectively. Each panel reports the model-estimated TNBC-to-normal fold change and Benjamini–Hochberg-adjusted P value."
         },
         {
           type: "figure",
-          src: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-c1-03c.avif",
+          src: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-c1-03c-new.avif",
+          width: 4000,
+          height: 2960,
           alt: "Figure C1-03C",
-          caption: "Figure C1-03C · Volcano plot from the patient-paired limma comparison of TNBC tumours and matched normal-adjacent tissue in PXD028102. Axes show the fitted log₂ fold change and −log₁₀ Benjamini–Hochberg-adjusted P value. TROP2, B7-H4 and Nectin-4 are highlighted."
+          caption: "Volcano plot from the patient-paired limma comparison of TNBC tumours and matched normal-adjacent tissue (NAT) in PXD028102. Axes show the fitted log₂ fold change and −log₁₀ Benjamini–Hochberg-adjusted P value. Red and blue points indicate increased and decreased abundance, respectively, at adjusted P < 0.01 and |log₂FC| ≥ 1. TROP2, B7-H4 and Nectin-4 are highlighted."
         },
         {
           type: "figure",
-          src: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-c1-03d.avif",
+          src: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-c1-03d-new.avif",
+          width: 4000,
+          height: 2099,
           alt: "Figure C1-03D",
-          caption: "Figure C1-03D · Target-centred log₂ abundance distributions for TROP2, B7-H4 and Nectin-4 in PXD028102. Grey and orange points represent normal-adjacent tissue (NAT) and TNBC samples, respectively. Diamonds and connecting lines indicate group means, while statistical estimates derive from the patient-paired model; the lines do not connect individual patient pairs."
+          caption: "Boxplots of log₂ protein abundance after the primary missing-value imputation for TROP2, B7-H4 and Nectin-4 in PXD028102. Grey and orange boxes represent normal-adjacent tissue (NAT) and TNBC samples, respectively. Each panel reports the TNBC-to-NAT fold change and Benjamini–Hochberg-adjusted P value from the patient-paired limma model."
         }
           ]
         },
@@ -884,7 +912,7 @@ export const cycle1Section: WikiSection = {
         },
         {
           type: "table",
-          caption: "Table C1-04｜Malignant-cell enrichment and compartment-specific detection of candidate genes｜候选基因的恶性细胞富集与细胞区室检出率",
+          caption: "Table C1-04｜Malignant-cell enrichment and compartment-specific detection of candidate genes",
           headers: [
             "Gene",
             "Antigen",
@@ -940,21 +968,27 @@ export const cycle1Section: WikiSection = {
         },
         {
           type: "figure",
-          src: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-c1-04a.avif",
+          src: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-c1-04a-new.avif",
+          width: 2499,
+          height: 2129,
           alt: "Figure C1-04A",
-          caption: "Figure C1-04A · Harmony-integrated UMAP of the 39,324 quality-controlled cells in the GSE176078 TNBC subset. Each point represents a cell, coloured by its annotated major lineage. The map locates malignant cells alongside epithelial, immune, stromal and endothelial populations."
+          caption: "Harmony-integrated UMAP of the 39,324 quality-controlled cells in the GSE176078 TNBC subset. Each point represents a cell, coloured by its annotated major lineage. The map shows malignant, normal epithelial, immune, stromal and endothelial cell populations."
         },
         {
           type: "figure",
-          src: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-c1-04b.avif",
+          src: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/enngineering-c1-04b-new.avif",
+          width: 3002,
+          height: 4000,
           alt: "Figure C1-04B",
-          caption: "Figure C1-04B · Candidate-gene expression on the Harmony UMAP (left) and expression distributions across cell compartments (right). Rows show TROP2/*TACSTD2*, B7-H4/*VTCN1*, LIV-1/*SLC39A6* and Nectin-4/*NECTIN4* (also labelled PVRL4). Expression is displayed as ln(CP10K + 1), calculated from raw counts. Cancer-associated fibroblasts (CAFs) are included in the stromal compartment and also shown separately."
+          caption: "Candidate-gene expression on the Harmony UMAP (left) and violin plots across cell compartments (right). Rows show TROP2/*TACSTD2*, B7-H4/*VTCN1*, LIV-1/*SLC39A6* and Nectin-4/*NECTIN4* (labelled PVRL4). Expression is displayed as ln(CP10K + 1), calculated from raw counts. Cancer-associated fibroblasts (CAFs) are included in the stromal compartment and also shown separately. The B7-H4 and Nectin-4 violin plots use broken y-axes."
         },
         {
           type: "figure",
           src: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-c1-04c.avif",
+          width: 2088,
+          height: 2126,
           alt: "Figure C1-04C",
-          caption: "Figure C1-04C · The pie chart represents 9,491 malignant cells from eight cases in the GSE176078 TNBC subset. Each case contributes a sector proportional to its malignant-cell count, divided into coloured portions with at least one candidate gene detected and grey portions with none detected. Labels report the case-specific detection fraction and malignant-cell number. The pooled detection fraction was 81.4% (7,727/9,491)."
+          caption: "The pie chart represents 9,491 malignant cells from eight cases in the GSE176078 TNBC subset. Each case contributes a sector proportional to its malignant-cell count, divided into coloured portions with at least one candidate gene detected and grey portions with none detected. Labels report the case-specific detection fraction and malignant-cell number. The pooled detection fraction was 81.4% (7,727/9,491)."
         }
           ]
         },
@@ -1042,8 +1076,10 @@ export const cycle1Section: WikiSection = {
         {
           type: "figure",
           src: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-c1-05.avif",
+          width: 2531,
+          height: 919,
           alt: "Figure C1-05",
-          caption: "Figure C1-05 · cBioPortal OncoPrint of 115 selected TCGA TNBC cases using the query `AMP EXP >= 0.5`, which identifies copy-number amplification or an mRNA expression Z-score of at least 0.5. The proportions meeting this rule were 38% for *TACSTD2*, 31% for *VTCN1*, 79% for *NECTIN4* and 4% for *SLC39A6*. At least one of the four genes met the rule in 101 of 115 cases (88%)."
+          caption: "cBioPortal OncoPrint of 115 selected TCGA TNBC cases using the query `AMP EXP >= 0.5`, which identifies copy-number amplification or an mRNA expression Z-score of at least 0.5. The proportions meeting this rule were 38% for *TACSTD2*, 31% for *VTCN1*, 79% for *NECTIN4* and 4% for *SLC39A6*. At least one of the four genes met the rule in 101 of 115 cases (88%)."
         }
           ]
         },
@@ -1107,7 +1143,7 @@ export const cycle1Section: WikiSection = {
                     "src": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-c1-06c.avif"
           }
 ],
-          caption: "CircuForge V1.0 module interfaces. **(A)** Data import and quality control, showing quantitative-data and sample-metadata upload, preprocessing controls and quality-control plots. **(B)** Candidate-target screening, showing Limma analysis settings and a volcano plot. **(C)** Epitope prediction, showing protein-sequence input, prediction-mode and HLA settings, and a candidate-peptide results table."
+          caption: "CircuForge V1.0 module interfaces. (A) Data import and quality control, showing quantitative-data and sample-metadata upload, preprocessing controls and quality-control plots. (B) Candidate-target screening, showing Limma analysis settings and a volcano plot. (C) Epitope prediction, showing protein-sequence input, prediction-mode and HLA settings, and a candidate-peptide results table."
         }
           ]
         },
@@ -1124,8 +1160,10 @@ export const cycle1Section: WikiSection = {
         {
           type: "figure",
           src: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-c1-07.avif",
+          width: 3033,
+          height: 2031,
           alt: "Figure C1-07",
-          caption: "Figure C1-07 · Group screenshot from a five-team online iGEM software exchange involving JLU-FBH, HUBU-WUHAN, AFMU-China, JLU-SPH and LZU-GANSU."
+          caption: "Group screenshot from a five-team online iGEM software exchange involving JLU-FBH, HUBU-WUHAN, AFMU-China, JLU-SPH and LZU-GANSU."
         }
           ]
         },
