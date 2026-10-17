@@ -644,8 +644,8 @@ function RouteBlock({
             ) : null}
             <thead>
               <tr>
-                {block.headers.map((header) => (
-                  <th scope="col" key={header}>
+                {block.headers.map((header, columnIndex) => (
+                  <th scope="col" key={`${columnIndex}-${header}`}>
                     {renderInlineFormatting(header)}
                   </th>
                 ))}

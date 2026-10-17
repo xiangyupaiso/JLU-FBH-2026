@@ -206,7 +206,7 @@ export const alternativePlatformJudgingCriteria: AlternativePlatformJudgingCrite
     paragraphs: [
       "Sixteen plasmids were built on one backbone. The 13 single-epitope constructs and the Combined construct each cleared colony PCR, diagnostic double digestion and full-length Sanger sequencing at 100% sequence match before being prepared endotoxin-free and used as transcription templates.",
       "Circularity of the final vaccine is verified structurally. RT-PCR across the back-splice junction followed by Sanger sequencing returned a single homogeneous splice product, with a flat baseline and single sharp peaks either side of the junction. The released material is 99.30 ± 0.17% circular, with the circular species roughly 146 times more abundant than the linear precursor.",
-      "Function was then validated link by link, in the order an immune response occurs: DC maturation, anti-FLAG translation, T-cell activation, effector-memory differentiation, IFN-γ ELISpot, MDA-MB-231 killing. From Round 2 onward every link is baselined against an empty-vector control carrying the complete backbone and adjuvant with no epitope encoded. In IVvo, with blinded calipers on coded animals and the analysis pre-specified in the NC3Rs Experimental Design Assistant, the pre-specified key comparison met its threshold: 73.2% tumour growth inhibition against the empty vector, Holm *P* = 2.0 × 10⁻⁵.",
+      "Function was then validated link by link, in the order an immune response occurs: DC maturation, anti-FLAG translation, T-cell activation, effector-memory differentiation, IFN-γ ELISpot, MDA-MB-231 killing. From Round 2 onward every link is baselined against an empty-vector control carrying the complete backbone and adjuvant with no epitope encoded. In vivo, with blinded calipers on coded animals and the analysis pre-specified in the NC3Rs Experimental Design Assistant, the pre-specified key comparison met its threshold: 73.2% tumour growth inhibition against the empty vector, Holm *P* = 2.0 × 10⁻⁵.",
       "Six independent read-outs agree. Section 7.6 states what each one supports and what it does not.",
       "See Section 7, the Results page and the Experiments page.",
     ],
@@ -228,7 +228,7 @@ export const alternativePlatformJudgingCriteria: AlternativePlatformJudgingCrite
     paragraphs: [
       "Our outputs are platform components: the backbone with its cartridge interface, a documented cell-free production process with a release criterion, a human primary DC/T-cell immunogenicity pipeline, a mammalian antigen-positive target model, and a cassette-design tool.",
       "Section 6 tags every element of the plasmid individually as Platform-critical, Platform-specific or Generic, each with the counterfactual that justifies the tag. Five elements are tagged Generic, and one output, the dry-lab tool, is deliberately backbone-agnostic and so the least coupled thing we made. Those are labelled as such.",
-      "The coupling is machine-checkable. The 30 deposited parts have boundaries that match the plasmid annotation exactly. Seven of the eight GSGGS linker occurrences encode the same peptide from different codons, which is deliberate, so only the eighth matches the Registry record at DNA level; everything else is an exact sequence match., so the platform can be rebuilt element by element and verified against our map. We tested that with our own software: given the reference plasmid, the Registry matcher recovered all 21 team-defined basic parts present in it and returned no false hit on three negative-control sequences.",
+      "The coupling is machine-checkable. The 30 deposited parts have boundaries that match the plasmid annotation exactly. Seven of the eight GSGGS linker occurrences encode the same peptide from different codons, which is deliberate, so only the eighth matches the Registry record at DNA level; everything else is an exact sequence match, so the platform can be rebuilt element by element and verified against our map. We tested that with our own software: given the reference plasmid, the Registry matcher recovered all 21 team-defined basic parts present in it and returned no false hit on three negative-control sequences.",
       "See Sections 5 and 6, and the Parts page.",
     ],
   },
@@ -268,6 +268,7 @@ const sections = [
     "title": "Key Achievements",
     "summary": "",
     "blocks": [
+      { "type": "feature", "key": "alternative-platform-achievement-navigation" },
       {
         "type": "subheading",
         "id": "key-achievements-the-backbone",
@@ -448,7 +449,7 @@ const sections = [
           "DNA vaccines face a nuclear-entry step. A plasmid must reach the nucleus to be transcribed, which is the step that limits potency in humans, and genomic integration remains a regulatory concern for a product intended for repeated dosing.",
           "Viral vectors are potent, but the vector itself is immunogenic. Anti-vector immunity rises with each dose, which is the wrong property for a vaccine on a five-dose schedule.",
           "Linear mRNA is the platform we had to argue against most carefully, because mRNA is not speculative in this disease. A first-in-human trial of individualised neoantigen mRNA vaccines in adjuvant TNBC induced vaccine-specific T-cell responses in all 14 evaluable patients, with neoantigen-specific CD8⁺ T cells persisting for one to six years without boosters and 10 of 14 patients recurrence-free at a median 62 months (Sahin et al., 2026). That is the benchmark, and two of its constraints define the space we work in.",
-          "The first is manufacturing. Encoding up to 20 patient-spec、ific mutations means a separate product per patient, the same burden that kept autologous dendritic-cell vaccines from generalising. CirCure trades neoantigen specificity for four shared, ADC-validated antigens, which buys an off-the-shelf cassette at the cost of individualisation. That is a real trade and we state it as one.",
+          "The first is manufacturing. Encoding up to 20 patient-specific mutations means a separate product per patient, the same burden that kept autologous dendritic-cell vaccines from generalising. CirCure trades neoantigen specificity for four shared, ADC-validated antigens, which buys an off-the-shelf cassette at the cost of individualisation. That is a real trade and we state it as one.",
           "The second is structural. A linear transcript needs a 5′ cap and, to avoid innate sensing, nucleoside modification with N¹-methylpseudouridine, which are two costly synthesis inputs. Its half-life is reported at under 20 hours against sustained circRNA expression of up to 168 hours (Gong et al., 2025). Short expression means more doses for the same integrated antigen exposure, and more doses means more cumulative exposure to the carrier."
         ]
       },
@@ -464,7 +465,7 @@ const sections = [
         "paragraphs": [
           "Our platform choice is not novel in itself, and the page should say so plainly. Three results define the ground we build on.",
           "The chemistry is solved and public. Engineering a covalently closed circRNA that translates in eukaryotic cells was established with the permuted intron–exon system (Wesselhoeft et al., 2018): a precursor whose group I intron halves are placed at the two ends splices itself shut, joining the flanking exons head to tail. This is the reaction our backbone uses.",
-          "circularization changes the molecule's immune behaviour as well as its stability. It reduces innate immunogenicity and extends translation duration in vivo (Wesselhoeft et al., 2019), which are the two properties that make circRNA a vaccine platform.",
+          "Circularization changes the molecule's immune behaviour as well as its stability. It reduces innate immunogenicity and extends translation duration in vivo (Wesselhoeft et al., 2019), which are the two properties that make circRNA a vaccine platform.",
           "It has been shown to work as a vaccine in both directions of the field. A circRNA vaccine raised protective responses against SARS-CoV-2 and its variants (Qu et al., 2022), and circRNA cancer vaccines have driven immunity in hard-to-treat malignancies (Li et al., 2022)."
         ]
       },
@@ -510,7 +511,7 @@ const sections = [
         "paragraphs": [
           "The award covers work done in plant chassis, mammalian cells, cell-free platforms and non-model organisms. Our platform is two of those at once, cell-free production and mammalian primary cells, and neither was chosen. Both fall out of the problem in a fixed order.",
           "**Host.** The end point of the mechanism is a 9-mer peptide displayed on HLA-A*02:01 at the surface of a human dendritic cell and recognised by an autologous human CD8⁺ T cell. Everything in that sentence is mammalian: proteasomal processing, TAP transport, ER loading onto MHC class I, and a T-cell receptor repertoire thymically selected against human self. *E. coli*, *S. cerevisiae* and *B. subtilis* possess none of it. This is not a question of efficiency; there is no bacterial or yeast version of the read-out.",
-          "**Modality.** Within nucleic-acid vaccines, the choice of circRNA is argued in IV.2.",
+          "**Modality.** Within nucleic-acid vaccines, the choice of circRNA is argued in Section 4.2.",
           "**Production.** Having chosen circRNA, production is forced. A covalently closed circle is made by self-splicing of a *permuted* intron–exon precursor (Wesselhoeft et al., 2018), a template arrangement that exists only by design, in a reaction requiring T7 polymerase, a linear template, GTP and Mg²⁺. A living cell cannot supply that precursor, and would degrade the product. Cell-free synthesis is the only route to the molecule.",
           "So the read-out forces mammalian and the molecule forces cell-free. *E. coli* survives in our workflow for exactly one job, amplifying the plasmid before it is linearised and leaves the cell permanently."
         ]
@@ -577,8 +578,8 @@ const sections = [
       {
         "type": "prose",
         "paragraphs": [
-          "**HLA restriction narrows the eligible population.** Our epitopes are HLA-A*02:01-restricted. That allele has an allele frequency of roughly 0.15–0.16 in Chinese Han populations and 0.26–0.29 in European populations (Gonzalez-Galarza et al., 2020; He et al., 2016), so on the order of a quarter to a half of patients carry it, depending on ancestry. A vaccine configured as ours is addresses those patients only. The cassette interface is what makes this tractable rather than fatal: the pipeline's HLA allele is user-selectable, so covering a second allele is a cassette redesign on an unchanged backbone.",
-          "**The one-step performance of the ****circularization**** chemistry is outside what we measured.** The field names limited circularization efficiency as an open problem, particularly for longer constructs (Gong et al., 2025). Our assay quantifies the composition of the released material, which is what the release decision needs, and it is measured on RNase R–purified product. Separating the yield of the circularization reaction itself from the contribution of the purification step requires quantifying the undigested reaction alongside it, which is a different measurement and process work for a future preparation."
+          "**HLA restriction narrows the eligible population.** Our epitopes are HLA-A*02:01-restricted. That allele has an allele frequency of roughly 0.15–0.16 in Chinese Han populations and 0.26–0.29 in European populations (Gonzalez-Galarza et al., 2020; He et al., 2016), so on the order of a quarter to a half of patients carry it, depending on ancestry. A vaccine configured as ours addresses those patients only. The cassette interface is what makes this tractable rather than fatal: the pipeline's HLA allele is user-selectable, so covering a second allele is a cassette redesign on an unchanged backbone.",
+          "**The one-step performance of the circularization chemistry is outside what we measured.** The field names limited circularization efficiency as an open problem, particularly for longer constructs (Gong et al., 2025). Our assay quantifies the composition of the released material, which is what the release decision needs, and it is measured on RNase R–purified product. Separating the yield of the circularization reaction itself from the contribution of the purification step requires quantifying the undigested reaction alongside it, which is a different measurement and process work for a future preparation."
         ]
       }
     ]
@@ -590,7 +591,7 @@ const sections = [
     "navLabel": "Inside the backbone",
     "title": "Inside the backbone",
     "summary": "",
-    "blocks": []
+    "blocks": [{ "type": "feature", "key": "alternative-platform-backbone" }]
   },
   {
     "id": "evidence",
@@ -695,12 +696,18 @@ const sections = [
       },
       {
         "type": "quote",
-        "text": "`AGCGGATGGGTACCCCACCAT | GACCATTTGTGTGGTAAAAA`"
+        "text": "`CTCAGTAGATGTTTTCTTGGGT | CTACCGTTTAATATTGCGTCATAT`"
+      },
+      {
+        "type": "figure",
+        "assetKey": "backSpliceJunction",
+        "alt": "Sanger trace across the back-splice junction of the Combined vaccine.",
+        "caption": "The back-splice junction of the Combined vaccine, read across the ligation site."
       },
       {
         "type": "prose",
         "paragraphs": [
-          "the precursor's 3′ sequence joined head to tail to its 5′ sequence, with a flat baseline and single sharp peaks on either side, indicating one homogeneous splice product."
+          "the precursor’s 3′ sequence joined head to tail to its 5′ sequence, with a flat baseline and single sharp peaks on either side, indicating one homogeneous splice product. Both halves are in the deposited map: the left is bases 2714–2735 and the right is bases 723–746, the two retained T4 *td* intron scars."
         ]
       },
       {
@@ -732,6 +739,7 @@ const sections = [
       {
         "type": "figure",
         "assetKey": "roundOneRanking",
+        "className": "platform-figure--reduced",
         "alt": "Round-1 ELISpot rank against K562 killing rank for all 13 constructs.",
         "caption": "Round-1 ELISpot rank against K562 killing rank for all 13 constructs."
       },
@@ -744,6 +752,7 @@ const sections = [
       {
         "type": "figure",
         "assetKey": "roundOneElispot",
+        "className": "platform-figure--reduced",
         "alt": "Round-1 IFN-γ ELISpot wells for all 13 single-epitope constructs.",
         "caption": "Round-1 IFN-γ ELISpot wells for all 13 single-epitope constructs."
       },
@@ -904,6 +913,7 @@ const sections = [
       {
         "type": "figure",
         "assetKey": "inVivoResults",
+        "className": "platform-figure--reduced",
         "alt": "Tumour growth curves to day 35 and excised tumours at endpoint.",
         "caption": "Tumour growth curves to day 35 and excised tumours at endpoint."
       },
@@ -1004,10 +1014,16 @@ const sections = [
           "**1 · The parts.** Thirty parts are deposited in the [iGEM Registry](https://registry.igem.org/organisations/d1b6aa0f-bfc0-4f6b-9c69-33347e7ea510): thirteen backbone elements, eight epitope fragments, three target-model parts and six composites. The one to start from is `BBa_26DTP41G`, the payload-free chassis, which is the T7–PIE–IRES cassette with the antigen window empty. `BBa_26DQL85I` is our TNBC payload for that chassis and `BBa_26QYL2YH` is the assembled plasmid, so a team can take the empty platform, our worked example, or both. Element boundaries match the plasmid annotation exactly, so any single element can be lifted on its own: the PIE halves as a matched circularization unit, or Apt-eIF4G for grafting onto another IRES.",
           "The studio below runs on the real plasmid. Pick a window, empty it, and rebuild it from our parts or from sequences you type in; the map and the length readouts follow every change, and the bases outside the window stay where they are. It reports lengths and reading frame for whatever you assemble. Choosing and compiling a cassette is what CircuForge does, in point 4 below.",
           "There are three windows and they sit inside one another. The antigen window runs from BamHI 1600 to XhoI 1957 and holds the eight epitope fragments with the seven linkers between them, 336 bp in our version. Opening at NcoI 1502 and ClaI 2587 instead hands over the whole fusion protein, 1,083 bp, which brings the signal peptide, the adjuvant repeats, the trafficking domain and the tag within reach. Opening at KpnI 838 adds the IRES, where translation on the circle starts. We have only ever built through the antigen window.",
+        ]
+      },
+      { "type": "feature", "key": "alternative-platform-reuse-studio" },
+      {
+        "type": "prose",
+        "paragraphs": [
           "**2 · The process, with its acceptance criterion.** The cell-free route, from template preparation through T7 transcription, DNase treatment, LiCl precipitation, PIE circularization and RNase R enrichment, is written step by step on the Experiments page. It carries a numerical release criterion rather than a judgement call: ≥ 90% circular fraction after RNase R, a gel check on the transcription template beforehand, and a failed preparation re-made and recorded.",
           "**3 · The test rig.** The immunogenicity pipeline is written against the backbone rather than against our antigens, so a new cassette inherits it unchanged: HLA-typed human PBMC, CD14⁺ monocyte isolation, GM-CSF/IL-4 differentiation to moDC, circRNA electroporation, autologous CD3⁺ T-cell co-culture, then IFN-γ ELISpot, multicolour flow and Calcein-AM killing. The anti-FLAG translation check works for any insert, because the tag sits downstream of everything. Protocols are on the Protocols page.",
           "**4 · CircuForge, the tool that designs the next cassette.** Our dry lab built CircuForge, a browser-based workflow that carries an antigen choice from evidence through to a compiled construct.",
-          "*It starts wherever the team already is.* An expression matrix with sample metadata, a UniProt identifier or protein sequence, a set of peptides already supported by evidence, or an annotated backbone file are each valid entry points. Differential expression uses limma 3.66.0, with edgeR 4.8.2 low-count filtering and TMM normalisation followed by limma-voom when the input is raw RNA-seq counts.Target screening draws on GTEx and UniProt; epitope analysis runs through NetMHCpan 4.1 EL/BA and NetMHCIIpan EL/BA on the IEDB Next-Generation Tools MHC-I and MHC-II routes, with the HLA allele user-selectable and HLA-A*02:01 as the default. Binding evidence and immunogenicity evidence are held as separate layers, and versioned quality-control rules label each candidate KEEP, REVIEW or REJECT for the researcher to confirm. --The binding filter applies class-specific disjunctions (MHC-I: percentile rank ≤ 1% or IC50 ≤ 500 nM; MHC-II: percentile rank ≤ 10% or IC50 ≤ 1000 nM), and the immunogenicity check is optional and disabled by default.The epitopes in our own cassette were selected earlier, on a NetMHCpan 4.1 BA predicted IC50 below 500 nM together with an IEDB pMHC immunogenicity score above 0, with EL percentile rank and processing score kept as supporting evidence. Ranking uses a fixed-weight composite of best percentile rank, number of supporting HLA alleles, allele coverage within the candidate pool, and whether both MHC classes are represented",
+          "*It starts wherever the team already is.* An expression matrix with sample metadata, a UniProt identifier or protein sequence, a set of peptides already supported by evidence, or an annotated backbone file are each valid entry points. Differential expression uses limma 3.66.0, with edgeR 4.8.2 low-count filtering and TMM normalisation followed by limma-voom when the input is raw RNA-seq counts. Target screening draws on GTEx and UniProt; epitope analysis runs through NetMHCpan 4.1 EL/BA and NetMHCIIpan EL/BA on the IEDB Next-Generation Tools MHC-I and MHC-II routes, with the HLA allele user-selectable and HLA-A*02:01 as the default. Binding evidence and immunogenicity evidence are held as separate layers, and versioned quality-control rules label each candidate KEEP, REVIEW or REJECT for the researcher to confirm. The binding filter applies class-specific disjunctions (MHC-I: percentile rank ≤ 1% or IC50 ≤ 500 nM; MHC-II: percentile rank ≤ 10% or IC50 ≤ 1000 nM), and the immunogenicity check is optional and disabled by default. The epitopes in our own cassette were selected earlier, on a NetMHCpan 4.1 BA predicted IC50 below 500 nM together with an IEDB pMHC immunogenicity score above 0, with EL percentile rank and processing score kept as supporting evidence. Ranking uses a fixed-weight composite of best percentile rank, number of supporting HLA alleles, allele coverage within the candidate pool, and whether both MHC classes are represented",
           "*It compiles against a real backbone and blocks a failing construct.* The cassette is placed into a supplied SnapGene `.dna` or GenBank record in one of four ways: replacing an annotated feature, replacing the region between two features, inserting adjacent to a feature, or by explicit coordinates. For our plasmid the operation replaces bases 1606–1941. The compiler checks that the backbone has been confirmed by the user, that the target region is valid and in range, strand orientation, reading-frame continuity, that the translation matches the selected peptides, that protected features survive, that the DNA contains no illegal characters, GC content and homopolymer runs, and whether any user-listed restriction site has been newly created. Critical failures stop the compile; items needing judgement are labelled REVIEW with the reason. If an edit invalidates a primer binding site, the tool marks that site invalid. Codon generation uses a fixed human codon-preference table and is not a general multi-host optimiser. On our plasmid the compile additionally verified the full fusion coding region, bases 1504–2586, confirming the translation matched the reference with no internal stop codons and that the BamHI, XhoI, NotI and PmeI counts stayed at 1, 1, 1 and 0. The slot count is a parameter, so a cassette is not limited to eight fragments.",
           "*It hands over a package, and we checked the package.* Each compiled design receives a deterministic construct identity and a manifest recording the payload, backbone identity, sequence features, quality-control results, software versions and file hashes. Exports are GenBank, SBOL3, native SnapGene `.dna`, FASTA, JSON and a Workbook, with a validation archive. The formats do not carry identical information: FASTA holds sequence without the map annotations, which is a property of the format. Re-reading the exported files and comparing them against the source object returned matching sequence and matching feature attributes; the native SnapGene file's DNA, eight fragment annotations and seven linker annotations all passed read-back; and the eleven packaged files passed SHA-256 verification. That confirms the content we tested survived the round trip.",
           "*It annotates against the Registry.* Construct features are compared against iGEM Registry records and separated into exact matches, similar evidence and records not found, writing `db_xref=\"iGEM:BBa_...\"` into the GenBank file only on a confirmed exact DNA match, alongside the accession, URL, match type, identity and coverage. Multiple exact matches are kept for the user to choose between, because an identical sequence can legitimately correspond to several accessions. Local similarity matching defaults to 90% identity over 80% of the query, with a minimum of 8 bp for direct DNA input; the separate path that imports official Registry BLAST results defaults to 95% identity and full subject coverage. A 15 bp linker will match many records, and the tool does not treat that as evidence of a single origin.",
@@ -1070,6 +1086,7 @@ export const alternativePlatformPage: WikiPageContent = {
             src: getAlternativePlatformImage(block.assetKey),
             alt: block.alt,
             ...(block.caption ? { caption: block.caption } : {}),
+            ...("className" in block ? { className: block.className } : {}),
             ...("figureLabel" in block ? { figureLabel: block.figureLabel } : {}),
           }
         : block,

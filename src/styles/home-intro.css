@@ -132,14 +132,6 @@
   }
 }
 
-/* The scroll cue waits for the intro to hand over. */
-.scene01-scroll-cue i {
-  transition: opacity 500ms var(--ease-out);
-}
-.home-scene01[data-intro="playing"] .scene01-scroll-cue i {
-  opacity: 0;
-}
-
 @media (max-width: 800px) {
   .home-intro-title {
     width: 86vw;

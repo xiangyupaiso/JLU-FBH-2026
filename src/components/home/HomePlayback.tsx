@@ -12,7 +12,7 @@ import "../../styles/home-playback.css";
 
 type HomePlaybackProps = { root: RefObject<HTMLDivElement | null> };
 
-const PLAYBACK_RATES = [0.75, 1, 1.2, 1.5];
+const PLAYBACK_RATES = [1, 1.5, 2];
 
 export function HomePlayback({ root }: HomePlaybackProps) {
   const {

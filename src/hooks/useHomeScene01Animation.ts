@@ -2,7 +2,7 @@ import { type RefObject } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { HOME_EASE, settleHomeScrubEndpoint } from "./homeMotion";
+import { HOME_EASE, HOME_REST_RATIO, settleHomeScrubEndpoint } from "./homeMotion";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
@@ -21,9 +21,9 @@ const DEPTHS = [
   { key: "death-rate", x: 58, y: 50, at: 0.16 },
 ] as const;
 
-// Keep the opening responsive without changing later chapters' reading time.
+// Keep the opening responsive; the prologue text shares the reading hold.
 const SCENE01_SCRUB = 0.2;
-const SCENE01_REST_RATIO = 0.04;
+const SCENE01_REST_RATIO = HOME_REST_RATIO;
 // Keep the paper, labels and ribbon fixed behind the approaching person.
 // Fit a verified solid-ink rectangle inside the original 4000 × 2250 drawing.
 // The head's outer bounds still contain purple contours at close-up scale.
@@ -58,7 +58,6 @@ export function useHomeScene01Animation({
       const buildTimeline = (compact: boolean) => {
         const select = gsap.utils.selector(section);
         const distance = compact ? 0.58 : 1;
-        // Keep only a brief completed-frame rest before native scrolling exits.
         const restRatio = SCENE01_REST_RATIO;
         section.classList.add("has-scene01-motion");
         // Layout offsets remain valid during refresh even when the current
@@ -120,19 +119,6 @@ export function useHomeScene01Animation({
             at + 0.18,
           );
         });
-
-        timeline.fromTo(
-          select(".scene01-scroll-cue i"),
-          { scaleY: 1, transformOrigin: "top" },
-          { scaleY: 0, duration: 0.16 },
-          0,
-        );
-        timeline.fromTo(
-          select(".scene01-scroll-cue"),
-          { autoAlpha: 1 },
-          { autoAlpha: 0, duration: 0.12 },
-          0.04,
-        );
 
         timeline.addLabel("portrait-approach", APPROACH_START);
         timeline.addLabel("portrait-closeup", APPROACH_END);

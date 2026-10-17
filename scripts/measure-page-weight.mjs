@@ -99,6 +99,8 @@ execFileSync(
     "--loader:.jpg=text",
     "--loader:.avif=text",
     "--loader:.gif=text",
+    "--loader:.html=text",
+    "--loader:.pdb=text",
     "--loader:.mp4=empty",
     "--loader:.webm=empty",
     "--loader:.woff=empty",
