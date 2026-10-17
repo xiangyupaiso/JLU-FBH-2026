@@ -289,11 +289,11 @@ https://static\.igem\.wiki/teams/6056/wiki/files/pages/wet\-lab/every\-claim\-on
 
 **Every claim on this page placed in one of six evidence tiers, with the read\-out that supports it\.**
 
-Two claims rest on **structural** evidence, which is the highest class available to us\. The final vaccine is a covalently closed circle, shown by BSJ RT\-PCR and Sanger sequencing returning a single homogeneous product\. And the constructs carry the designed sequence, shown by colony PCR, diagnostic double digestion and full\-length Sanger at 100% match on all fourteen\.
+Two claims rest on **structural** evidence, which is the highest class available to us\. The final vaccine is a covalently closed circle, shown by BSJ RT\-PCR and Sanger sequencing on Combined returning a single homogeneous product\. And the constructs carry the designed sequence, shown by supplier verification and plasmid\-target PCR with Sanger sequencing at 100% sequence match\.
 
 Five claims are **quantitative and controlled**\. The released material is predominantly circular, 95\.35% in Round 1 and 99\.30% in Round 2 by divergent\-against\-convergent RT\-qPCR, with an equal\-input GFP control in Round 2; quantifying every preparation rather than one per round would raise it\. The circRNA is translated inside human DCs, shown by the anti\-FLAG band at about 50 kDa against a mock\-electroporated negative with a β\-actin loading control; surface MHC\-I detection by tetramer or anti\-HLA/peptide staining would raise it\. The vaccine activates and differentiates CD8⁺ T cells, shown by four flow read\-outs and ELISpot, all empty\-vector baselined at n = 3 with ANOVA and Holm correction; an irrelevant\-epitope arm would raise it, by controlling for the act of encoding a peptide at all\. Killing of TNBC cells is vaccine\-driven, 83\.57% against 26\.20% empty vector at 80 : 1 across three E:T ratios with a dose\-dependent gap; a matched antigen\-negative target line would raise it\. And the vaccine inhibits tumour growth in vivo, 73\.2% TGI against empty vector with blinded calipers, an EDA\-pre\-specified analysis and passing assumption checks, which is already at the highest class this design can reach\.
 
-Two claims are weaker and we mark them\. The Round\-1 epitope ranking is **quantitative but uncontrolled**: raw SFC with the direction corroborated by two independent read\-outs, which vector and antigen\-free controls plus replicate wells would raise\. That the Round\-1 constructs are circular is an **inference**, from RNase R resistance plus shared chemistry, which per\-construct BSJ sequencing would raise\.
+Two claims are weaker and we mark them\. The Round\-1 epitope ranking is **quantitative but uncontrolled**: raw SFC in Round\-1 ELISpot with no controls and no documented replicate wells, with the direction corroborated by two independent read\-outs, which vector and antigen\-free controls plus replicate wells would raise\. That the Round\-1 constructs are circular is an **inference**, from RNase R resistance plus shared chemistry, which per\-construct BSJ sequencing would raise\.
 
 One claim is **descriptive**: intratumoural CD8 and Granzyme B infiltration, from n = 3 animals at one field each, coded at analysis\. Multi\-field sampling, blinded acquisition and recorded segmentation would raise it\.
 
@@ -315,7 +315,7 @@ On an alternative platform the knowledge that is hardest to obtain is what goes 
 **2 · Two Round\-1 read\-outs ranked the same constructs differently**, ρ = 0\.43 and *P* = 0\.14, set out with the data in Section 7\.2\.
 *Decide before the screen which read\-out selects, and say so\.*
 
-**3 · Round 1 ran with no controls and no replicate wells\.** No empty\-vector well, no antigen\-free well, and the kit's PHA positive control was not run\. No replicate count is on record\.
+**3 · Round\-1 ELISpot was run with no controls and no replicate wells\.** No empty\-vector well, no antigen\-free well, and the kit's PHA positive control was not run\. No replicate count is on record\.
 *Seed the vector control on the first plate\. It costs a few wells and it is the difference between a ranking and a frequency\. No Round\-1 SFC value may be cited as an antigen\-specific T\-cell frequency\.*
 
 ### 8\.3 In vivo and scope
@@ -332,7 +332,7 @@ On an alternative platform the knowledge that is hardest to obtain is what goes 
 
 Four things are needed to point the CirCure backbone at a different tumour, and all four exist\.
 
-**1 · The parts\.** Thirty parts are deposited in the [iGEM Registry](https://registry.igem.org/organisations/d1b6aa0f-bfc0-4f6b-9c69-33347e7ea510): thirteen backbone elements, eight epitope fragments, three target\-model parts and six composites\. The one to start from is `BBa_26DTP41G`, the payload\-free chassis, which is the T7–PIE–IRES cassette with the antigen window empty\. `BBa_26DQL85I` is our TNBC payload for that chassis and `BBa_26QYL2YH` is the assembled plasmid, so a team can take the empty platform, our worked example, or both\. Element boundaries match the plasmid annotation exactly, so any single element can be lifted on its own: the PIE halves as a matched circularization unit, or Apt\-eIF4G for grafting onto another IRES\.
+**1 · The parts\.** Thirty parts are deposited in the [iGEM Registry](https://registry.igem.org/organisations/d1b6aa0f-bfc0-4f6b-9c69-33347e7ea510), covering backbone elements, eight epitope fragments, three target\-model parts and assembled regions\. Three parts provide starting points for reuse\. `BBa_26DTP41G` is the payload\-free chassis, with the antigen window empty\. `BBa_26DQL85I` is the eight\-fragment TNBC epitope array, and `BBa_26QYL2YH` is the complete Combined plasmid\. The single\-epitope and comparator preparations used related designs on the same backbone\. Element boundaries match the plasmid annotation exactly, so any single element can be lifted on its own: the PIE halves as a matched circularization unit, or Apt\-eIF4G for grafting onto another IRES\.
 
 The studio below runs on the real plasmid\. Pick a window, empty it, and rebuild it from our parts or from sequences you type in; the map and the length readouts follow every change, and the bases outside the window stay where they are\. It reports lengths and reading frame for whatever you assemble\. Choosing and compiling a cassette is what CircuForge does, in point 4 below\.
 
@@ -340,7 +340,7 @@ There are three windows and they sit inside one another\. The antigen window run
 
 此处嵌入"C:\\Users\\香芋派\\xwechat\_files\\wxid\_5ebnlqbau8vc22\_50a2\\msg\\file\\2026\-10\\reuse\-studio\-v2\.html"
 
-**2 · The process, with its acceptance criterion\.** The cell\-free route, from template preparation through T7 transcription, DNase treatment, LiCl precipitation, PIE circularization and RNase R enrichment, is written step by step on the Experiments page\. It carries a numerical release criterion rather than a judgement call: ≥ 90% circular fraction after RNase R, a gel check on the transcription template beforehand, and a failed preparation re\-made and recorded\.
+**2 · The process, with its acceptance criterion\.** The cell\-free route, from plasmid linearisation and purification through T7 transcription, DNase treatment, LiCl precipitation, PIE circularisation and RNase R enrichment, is written step by step on the Experiments page\. It carries a numerical release criterion rather than a judgement call: ≥ 90% circular fraction after RNase R, plasmid\-target PCR verification of templates, and a failed preparation re\-made and recorded\.
 
 **3 · The test rig\.** The immunogenicity pipeline is written against the backbone rather than against our antigens, so a new cassette inherits it unchanged: HLA\-typed human PBMC, CD14⁺ monocyte isolation, GM\-CSF/IL\-4 differentiation to moDC, circRNA electroporation, autologous CD3⁺ T\-cell co\-culture, then IFN\-γ ELISpot, multicolour flow and Calcein\-AM killing\. The anti\-FLAG translation check works for any insert, because the tag sits downstream of everything\. Protocols are on the Protocols page\.
 
@@ -364,7 +364,7 @@ CircuForge is released under the Apache License 2\.0 in the team's iGEM GitLab r
 
 ### Start here
 
-A team building a multi\-epitope circRNA vaccine against a different tumour would, in order: run the tool on their indication to get a candidate shortlist and an epitope set, treating the expression output as evidence to check a literature\-driven choice against; assemble the cassette into the backbone through the BamHI–XhoI window; order the construct and verify it by colony PCR, diagnostic digestion and full\-length sequencing; transcribe, circularise and release\-test against the ≥ 90% criterion; electroporate into HLA\-matched moDCs and confirm translation by anti\-FLAG blot before spending any immunology; then screen with ELISpot against an empty\-vector control from the first plate, which is the mistake we made and the one most worth not repeating\.
+A team building a multi\-epitope circRNA vaccine against a different tumour would, in order: run the tool on their indication to get a candidate shortlist and an epitope set, treating the expression output as evidence to check a literature\-driven choice against; assemble the cassette into the backbone design in the BamHI–XhoI window; order the complete endotoxin\-free construct from a commercial supplier and verify it by plasmid\-target PCR; linearise and purify the template; transcribe, circularise and release\-test against the ≥ 90% criterion; electroporate into HLA\-matched moDCs and confirm translation by anti\-FLAG blot before spending any immunology; then screen with ELISpot against an empty\-vector control from the first plate, which is the mistake we made and the one most worth not repeating\.
 
 Sections 8\.1 and 8\.2 are the two to read first\.
 

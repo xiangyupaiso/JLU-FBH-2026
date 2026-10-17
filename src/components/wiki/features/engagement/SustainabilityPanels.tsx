@@ -19,6 +19,7 @@ import {
   StakeholderDeck,
   StakeholderProfileCard,
   StatsGrid,
+  SustainabilityInteractiveCity,
   SustainabilityPdfPreview,
   ToolTable,
 } from "./sustainability";
@@ -29,6 +30,7 @@ import type {
 import {
   sustainabilityAssets,
   sustainabilityImage,
+  sustainabilityImageEntry,
 } from "../../../../data/engagement/sustainability/sustainabilityAssets";
 import {
   coreSdgs,
@@ -274,6 +276,8 @@ function ResourceShowcase({ resource }: { resource: EducationResource }) {
           <img
             src={sustainabilityImage(resource.figure)}
             alt={sustainabilityAssets[resource.figure].alt}
+            width={sustainabilityImageEntry(resource.figure).width}
+            height={sustainabilityImageEntry(resource.figure).height}
             loading="lazy"
             decoding="async"
           />
@@ -439,6 +443,8 @@ function EvidencePanel({ chapter }: { chapter: SdgChapter }) {
                 <img
                   src={sustainabilityImage(item.figure)}
                   alt={sustainabilityAssets[item.figure].alt}
+                  width={sustainabilityImageEntry(item.figure).width}
+                  height={sustainabilityImageEntry(item.figure).height}
                   loading="lazy"
                   decoding="async"
                 />
@@ -562,5 +568,6 @@ export function sustainabilityFeatures(): FeatureMap {
     "stakeholder-tracker-tools": (
       <PdfToolList tools={stakeholderTracker.files} instance="tracker" />
     ),
+    "sustainability-interactive-city": <SustainabilityInteractiveCity />,
   };
 }

@@ -637,6 +637,7 @@ export const getResultsImage = (key: ResultsAssetKey): string => {
 const compactFigures = new Set<ResultsAssetKey>([
   "fig14",
   "fig20",
+  "fig21",
   "fig23",
   "fig25",
   "fig27",
@@ -658,8 +659,11 @@ export function resultsFigure(
     caption: entry.caption,
     width: entry.width,
     height: entry.height,
-    ...(compactFigures.has(key)
-      ? { className: "results-figure--compact" }
-      : {}),
+    className: [
+      compactFigures.has(key) ? "results-figure--compact" : "",
+      `results-figure--${key}`,
+    ]
+      .filter(Boolean)
+      .join(" ") || undefined,
   };
 }

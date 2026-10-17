@@ -113,7 +113,10 @@
 .sust-sdg-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 14px;
+  gap: 16px;
+  max-width: 520px;
+  width: 100%;
+  margin: 20px auto;
 }
 
 .sust-sdg-card {
@@ -166,6 +169,100 @@ a.sust-sdg-card:focus-visible {
   color: var(--route-muted);
   font-size: 13px;
   line-height: 1.5;
+}
+
+/* Logo-based Core SDG Card with slide-up summary drawer */
+.sust-sdg-card--logo {
+  padding: 0;
+  border: none;
+  border-radius: 12px;
+  overflow: hidden;
+  background: transparent;
+  display: block;
+  position: relative;
+  aspect-ratio: 1 / 1;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+  transition:
+    transform var(--duration-fast, 0.25s) var(--ease-out, ease),
+    box-shadow var(--duration-fast, 0.25s) var(--ease-out, ease);
+}
+
+a.sust-sdg-card--logo:hover,
+a.sust-sdg-card--logo:focus-visible {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.16);
+  outline: none;
+}
+
+.sust-sdg-card__media {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.sust-sdg-card__logo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.35s ease;
+}
+
+a.sust-sdg-card--logo:hover .sust-sdg-card__logo,
+a.sust-sdg-card--logo:focus-visible .sust-sdg-card__logo {
+  transform: scale(1.02);
+}
+
+.sust-sdg-card__drawer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 8px 10px;
+  background: color-mix(in srgb, var(--sdg) 94%, #000 6%);
+  box-shadow: 0 -3px 12px rgba(0, 0, 0, 0.15);
+  transform: translateY(100%);
+  opacity: 0;
+  transition:
+    transform 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 0.22s ease;
+  pointer-events: none;
+}
+
+a.sust-sdg-card--logo:hover .sust-sdg-card__drawer,
+a.sust-sdg-card--logo:focus-visible .sust-sdg-card__drawer,
+.sust-sdg-card--logo:focus-within .sust-sdg-card__drawer {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.sust-sdg-card--logo .sust-sdg-card__summary {
+  margin: 0;
+  color: #ffffff;
+  font-family: var(--font-sans, system-ui, sans-serif);
+  font-size: 11.5px;
+  font-weight: 600;
+  line-height: 1.35;
+  text-align: center;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+}
+
+@media (max-width: 640px) {
+  .sust-sdg-grid {
+    gap: 10px;
+    margin: 14px auto;
+  }
+  .sust-sdg-card--logo {
+    border-radius: 10px;
+  }
+  .sust-sdg-card__drawer {
+    padding: 6px 8px;
+  }
+  .sust-sdg-card--logo .sust-sdg-card__summary {
+    font-size: 10px;
+    line-height: 1.25;
+  }
 }
 
 /* Overview · SET / DEVELOP / GROW tiers ---------------------------------- */
@@ -236,6 +333,25 @@ a.sust-sdg-card:focus-visible {
   gap: 4px;
 }
 
+.sust-tier-card__header-link {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  text-decoration: none;
+  color: inherit;
+  border-radius: 6px;
+  transition: opacity 0.15s ease;
+}
+
+.sust-tier-card__header-link:hover {
+  opacity: 0.85;
+}
+
+.sust-tier-card__header-link:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+
 .sust-tier-card__layer {
   display: block;
   font-family: var(--font-sans);
@@ -281,10 +397,17 @@ a.sust-sdg-card:focus-visible {
   font-weight: 700;
   line-height: 1.5;
   text-decoration: none;
+  transition: transform 0.15s ease, filter 0.15s ease, box-shadow 0.15s ease;
+}
+
+a.sust-sdg-pill {
+  cursor: pointer;
 }
 
 a.sust-sdg-pill:hover {
-  filter: brightness(1.08);
+  filter: brightness(1.12);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.18);
 }
 
 a.sust-sdg-pill:focus-visible {
@@ -2871,4 +2994,209 @@ a.sust-sdg-pill:focus-visible {
   --sdg-font: var(--font-sans);
   --sdg-ink: var(--route-heading-ink);
   --sdg-rule: color-mix(in srgb, var(--route-heading-ink) 14%, transparent);
+}
+
+/* ----------------------------------------------------------------------------
+ * Interactive City Map Component (Section 08 / 8.5)
+ * -------------------------------------------------------------------------- */
+.sust-city-figure {
+  margin: var(--wiki-space-block, 24px) 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.sust-city-container {
+  --city-accent: var(--route-subheading-ink, #174a47);
+  position: relative;
+  container-type: inline-size;
+  width: 100%;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  border: 1px solid var(--route-line, rgba(0, 0, 0, 0.1));
+  background: #fbf7ee;
+  user-select: none;
+}
+
+.sust-city-img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.sust-city-hotspots {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.sust-city-hotspot {
+  position: absolute;
+  pointer-events: auto;
+  background: transparent;
+  border: 2px solid transparent;
+  border-radius: 12px;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+  transition:
+    background-color 160ms ease,
+    border-color 160ms ease,
+    box-shadow 160ms ease;
+  outline: none;
+}
+
+.sust-city-hotspot:hover,
+.sust-city-hotspot:focus-visible,
+.sust-city-hotspot.is-active {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: color-mix(in srgb, var(--city-accent) 60%, #fff);
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.3);
+}
+
+.sust-city-hotspot:focus-visible {
+  outline: 2px solid var(--city-accent);
+  outline-offset: 3px;
+}
+
+.sust-city-hotspot__dot {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--city-accent);
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.8);
+  opacity: 0;
+  transform: scale(0.6);
+  transition: opacity 160ms ease, transform 160ms ease;
+}
+
+.sust-city-hotspot:hover .sust-city-hotspot__dot,
+.sust-city-hotspot:focus-visible .sust-city-hotspot__dot,
+.sust-city-hotspot.is-active .sust-city-hotspot__dot {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.sust-city-tooltip {
+  position: absolute;
+  left: clamp(min(172px, 50%), var(--city-tooltip-x), max(calc(100% - 172px), 50%));
+  top: clamp(88px, var(--city-tooltip-y), calc(100% - 88px));
+  transform: translate(-50%, -50%);
+  z-index: 20;
+  pointer-events: none;
+  display: grid;
+  gap: 8px;
+  width: min(320px, calc(100% - 24px));
+  box-sizing: border-box;
+  padding: 16px 18px 12px;
+  border: 1px solid rgba(74, 44, 29, 0.1);
+  border-radius: 16px;
+  background: #fff;
+  color: var(--route-heading-ink, #4a2c1d);
+  font-family: var(--font-sans, system-ui, sans-serif);
+  text-align: left;
+  line-height: 1.5;
+  box-shadow:
+    0 2px 4px rgba(57, 43, 35, 0.06),
+    0 12px 32px rgba(57, 43, 35, 0.13);
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+.sust-city-tooltip__badge {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 11.5px;
+  font-weight: 400;
+  color: var(--city-accent);
+  letter-spacing: 0;
+}
+
+.sust-city-tooltip__badge::before {
+  content: "";
+  flex: 0 0 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.sust-city-tooltip__title {
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.45;
+  letter-spacing: -0.02em;
+  text-wrap: pretty;
+}
+
+.sust-city-tooltip__hint {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 3px;
+  font-size: 11.5px;
+  color: #6c7168;
+}
+
+.sust-city-tooltip__arrow {
+  display: grid;
+  place-items: center;
+  flex: 0 0 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: #eef4f1;
+  color: var(--city-accent);
+}
+
+.sust-city-tooltip__arrow svg {
+  width: 14px;
+  height: 14px;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.sust-city-caption {
+  font-size: 13.5px;
+  color: var(--route-caption-ink, var(--route-ink));
+  text-align: center;
+}
+
+.sust-city-caption__bar {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 16px;
+  border-radius: 20px;
+  background: color-mix(in srgb, var(--route-line, #e2e8f0) 40%, transparent);
+}
+
+.sust-city-caption__prompt strong {
+  color: var(--route-accent, #2b72ba);
+}
+
+@container (max-width: 400px) {
+  .sust-city-tooltip {
+    top: 50%;
+    gap: 6px;
+    padding: 12px 14px 10px;
+  }
+
+  .sust-city-tooltip__title {
+    font-size: 14px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sust-city-hotspot,
+  .sust-city-hotspot__dot {
+    transition: none;
+  }
 }

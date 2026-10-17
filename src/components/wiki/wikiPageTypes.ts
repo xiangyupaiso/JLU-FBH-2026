@@ -72,7 +72,7 @@ export interface WikiReferenceEntry {
  * callout interleaving while still running through the shared renderer.
  */
 export type WikiContentBlock =
-  | { type: "prose"; paragraphs: string[] }
+  | { type: "prose"; paragraphs: string[]; id?: string }
   | { type: "quote"; text: string }
   | { type: "heading"; level: 4 | 5 | 6; title: string }
   | { type: "protocol-steps"; steps: Array<{ number: string; blocks: WikiContentBlock[] }> }

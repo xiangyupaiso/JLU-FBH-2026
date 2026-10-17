@@ -22,6 +22,7 @@ import {
 import {
   sustainabilityAssets,
   sustainabilityImage,
+  sustainabilityImageEntry,
   type SustainabilityImageAssetKey,
 } from "./sustainabilityAssets";
 import {
@@ -45,15 +46,26 @@ const prose = (...paragraphs: ReadonlyArray<string>): WikiContentBlock => ({
   paragraphs: [...paragraphs],
 });
 
+const proseWithId = (id: string, ...paragraphs: ReadonlyArray<string>): WikiContentBlock => ({
+  type: "prose",
+  id,
+  paragraphs: [...paragraphs],
+});
+
 const feature = (key: string): WikiContentBlock => ({ type: "feature", key });
 
 /** Figure block carrying the registered asset; its alt doubles as caption. */
-const fig = (key: SustainabilityImageAssetKey): WikiContentBlock => ({
-  type: "figure",
-  src: sustainabilityImage(key),
-  alt: sustainabilityAssets[key].alt,
-  caption: sustainabilityAssets[key].alt,
-});
+const fig = (key: SustainabilityImageAssetKey): WikiContentBlock => {
+  const entry = sustainabilityImageEntry(key);
+  return {
+    type: "figure",
+    src: sustainabilityImage(key),
+    alt: entry.alt,
+    caption: entry.alt,
+    width: entry.width,
+    height: entry.height,
+  };
+};
 
 /** Feature keys of one SDG chapter, derived from its id. */
 export const chapterFeatureKeys = (chapter: Pick<SdgChapter, "id">) => ({
@@ -155,7 +167,7 @@ const overviewSection: WikiSection = {
     feature("overview-set-develop-grow"),
     prose(sustainabilityOverview.stakeholders),
     fig("overviewMapOfStakeholders"),
-    prose(sustainabilityOverview.scaleModel),
+    proseWithId("overview-scale-model", sustainabilityOverview.scaleModel),
     fig("overviewScaleModel"),
     prose(sustainabilityOverview.sstqn),
     fig("overviewSstQnNetwork"),

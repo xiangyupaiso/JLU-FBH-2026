@@ -103,6 +103,10 @@
 .wiki-page[data-wiki-route="/results"] .results-figure--compact img {
   max-height: min(76vh, 420px);
 }
+.wiki-page[data-wiki-route="/results"] .results-figure--fig21 {
+  max-width: 460px;
+  margin-inline: auto;
+}
 
 /* Native Model volcano renderer, themed only within this Results host. */
 .wiki-page[data-wiki-route="/results"] .model-chart-panel {

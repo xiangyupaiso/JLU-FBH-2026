@@ -207,8 +207,8 @@ export const alternativePlatformJudgingCriteria: AlternativePlatformJudgingCrite
     question:
       "How strong is the evidence that the team successfully engineered their biological system?",
     paragraphs: [
-      "Sixteen plasmids were built on one backbone. The 13 single-epitope constructs and the Combined construct each cleared colony PCR, diagnostic double digestion and full-length Sanger sequencing at 100% sequence match before being prepared endotoxin-free and used as transcription templates.",
-      "Circularity of the final vaccine is verified structurally. RT-PCR across the back-splice junction followed by Sanger sequencing returned a single homogeneous splice product, with a flat baseline and single sharp peaks either side of the junction. The released material is 99.30 ± 0.17% circular, with the circular species roughly 146 times more abundant than the linear precursor.",
+      "Sixteen plasmids were designed on one backbone and ordered endotoxin-free from a commercial gene-synthesis supplier. The plasmids were verified by plasmid-target PCR and sequencing at 100% sequence match before linearisation and purification as transcription templates.",
+      "Circularity of the final Combined vaccine is verified structurally. RT-PCR across the back-splice junction followed by Sanger sequencing returned a single homogeneous splice product, with a flat baseline and single sharp peaks either side of the junction. The released material is 99.30 ± 0.17% circular, with the circular species roughly 146 times more abundant than the linear precursor.",
       "Function was then validated link by link, in the order an immune response occurs: DC maturation, anti-FLAG translation, T-cell activation, effector-memory differentiation, IFN-γ ELISpot, MDA-MB-231 killing. From Round 2 onward every link is baselined against an empty-vector control carrying the complete backbone and adjuvant with no epitope encoded. In vivo, with blinded calipers on coded animals and the analysis pre-specified in the NC3Rs Experimental Design Assistant, the pre-specified key comparison met its threshold: 73.2% tumour growth inhibition against the empty vector, Holm *P* = 2.0 × 10⁻⁵.",
       "Six independent read-outs agree. Section 7.6 states what each one supports and what it does not.",
       "See Section 7, the Results page and the Experiments page.",
@@ -220,7 +220,7 @@ export const alternativePlatformJudgingCriteria: AlternativePlatformJudgingCrite
       "Is the team's chosen platform meaningfully suited to the problem they are tackling?",
     paragraphs: [
       "The end point of our mechanism is a 9-mer displayed on HLA-A*02:01 at the surface of a human dendritic cell and recognised by an autologous human CD8⁺ T cell. Proteasomal processing, TAP transport, ER loading and a thymically selected TCR repertoire have no bacterial or yeast counterpart, and no standard chassis offers a simplified version of this experiment.",
-      "Having chosen circRNA, and Section 5.2 sets out why we rejected peptide, DNA, viral and linear-mRNA alternatives, production is forced as well. A covalently closed circle is made by self-splicing of a *permuted* intron–exon precursor, a template arrangement that exists only by design and that no cell can supply. *E. coli* appears in our workflow for one job, amplifying the plasmid before it is linearised and leaves the cell permanently. No *E. coli* measurement appears anywhere in our results.",
+      "Having chosen circRNA, and Section 5.2 sets out why we rejected peptide, DNA, viral and linear-mRNA alternatives, production is forced as well. A covalently closed circle is made by self-splicing of a *permuted* intron–exon precursor, a template arrangement that exists only by design and that no cell can supply. The vector backbone retains bacterial replication and selection elements as features of the supplied plasmid, but our laboratory workflow is completely cell-free, starting directly with linearising commercially supplied DNA. No *E. coli* culturing or measurement appears anywhere in our workflow.",
       "See Sections 4 and 5.",
     ],
   },
@@ -240,8 +240,8 @@ export const alternativePlatformJudgingCriteria: AlternativePlatformJudgingCrite
     question:
       "Has the team documented what didn't work, why, and what others should watch out for?",
     paragraphs: [
-      "Five named failures with the reason and what we would do differently, in Section 8. Four of them weaken our own conclusions.",
-      "Our two Round-1 read-outs ranked the same 13 constructs differently, Spearman ρ = 0.43 and *P* = 0.14, and we state which one we selected on and what the other would have chosen. Round 1 ran with no controls and no replicate wells, so no Round-1 SFC may be read as an antigen-specific frequency. The empty vector alone achieved 61.3% tumour growth inhibition in vivo, which is why our pre-specified comparison is against it and not against PBS. And back-splice-junction sequencing exists for the Combined vaccine only, so the other preparations rest on an inference from shared chemistry.",
+      "Five limitations are documented with their consequences and recommendations for future work, in Section 8. Four of them weaken our own conclusions.",
+      "Our two Round-1 read-outs ranked the same 13 constructs differently, Spearman ρ = 0.43 and *P* = 0.14, and we state which one we selected on and what the other would have chosen. Round-1 ELISpot was run with no controls and no replicate wells, so no Round-1 SFC may be read as an antigen-specific frequency. The empty vector alone achieved 61.3% tumour growth inhibition in vivo relative to PBS, which is why our pre-specified comparison is against it and not against PBS. And back-splice-junction sequencing exists for the Combined vaccine only, so the other preparations rest on an inference from shared chemistry.",
       "Also reported: haplotype mismatch in the animal model. Section 7.6 names, claim by claim, the controls that would raise each one.",
       "See Section 8.",
     ],
@@ -277,13 +277,13 @@ const sections = [
         "id": "key-achievements-the-backbone",
         "index": "1",
         "level": 3,
-        "title": "1 · The backbone"
+        "title": "The backbone"
       },
       {
         "type": "prose",
         "paragraphs": [
-          "**pCirCure-circMEV, 5,267 bp.** Antigen identity occupies 336 bp, bases 1606–1941, cloned through the flanking BamHI (1600) and XhoI (1957) sites. The other 4,931 bp never change. Loading a different tumour's epitopes is one cloning reaction, and nothing downstream of it is modified: same in vitro transcription, same circularization, same release criterion, same characterisation pipeline.",
-          "The circularization chemistry has been public since 2018 (Wesselhoeft et al., 2018) and circRNA vaccines have been demonstrated in both infectious disease and oncology (Li et al., 2022; Qu et al., 2022). What did not exist was a documented, release-tested backbone with a defined interface for someone else's antigens. That interface is what makes this a platform.",
+          "**pCirCure-circMEV** is a 5,267 bp plasmid with a 336 bp antigen cassette at bases 1606–1941, between the BamHI and XhoI sites. The remaining 4,931 bp are fixed in our design. To use a different antigen set, replace the cassette in the design file and order the complete plasmid from a commercial supplier. The supplied plasmid is then linearised and purified for the documented cell-free production workflow.",
+          "The circularisation chemistry has been public since 2018 (Wesselhoeft et al., 2018) and circRNA vaccines have been demonstrated in both infectious disease and oncology (Li et al., 2022; Qu et al., 2022). What did not exist was a documented, release-tested backbone with a defined interface for someone else's antigens. That interface is what makes this a platform.",
           "See the element-by-element map in Section 6 and the Parts page."
         ]
       },
@@ -292,15 +292,15 @@ const sections = [
         "id": "key-achievements-thirty-registry-parts",
         "index": "2",
         "level": 3,
-        "title": "2 · Thirty Registry parts"
+        "title": "Thirty Registry parts"
       },
       {
         "type": "prose",
         "paragraphs": [
-          "Thirty parts, deposited as one collection. Eleven are backbone and translation elements, eight are the epitope fragments, three belong to the target model, and the rest are the assembled regions that put those together: the PIE precursor cassette, the payload-free chassis, the antigen ORF, the epitope array, the two PIE halves and the complete plasmid. All thirty are published, and all thirty sit in a single Part Collection so that a team takes the toolkit rather than hunting accessions one at a time.",
+          "Thirty parts are deposited as one collection, covering backbone elements, eight epitope fragments, three target-model parts and assembled regions. The collection provides the components and assembled designs used to describe the platform.",
           "The boundaries are exact. The T7 promoter part is bases 402–434, the PIE 5′ half is 465–766, the PABP spacer is 767–816, through to the polyA25 spacer at 2947–2971. The backbone can be rebuilt element by element from the Registry and checked against our map, which is what makes the coupling claim in Section 6 something a judge can verify rather than take on trust.",
-          "Three of the thirty are where a reusing team starts, depending on how much they want to keep. BBa_26DTP41G is the payload-free chassis, the T7–PIE–IRES cassette with the antigen window empty: production chemistry, translation machinery and the cartridge interface, with no antigen commitment attached. BBa_26DQL85I is the 8-slot TNBC epitope array, our payload for that chassis, as one unit. BBa_26QYL2YH is the complete plasmid, the construct every result on this page was produced from. Take the empty platform, our worked example, or both.",
-          "Two further parts are worth knowing about before you build. The PIE halves, BBa_26T5SEQR and BBa_26P7AUA8, reference each other and should be taken as one circularization unit rather than separately. BBa_26X4AOBB, the eIF4G aptamer, is deposited on its own although it is never used on its own here, so it can be grafted onto another IRES or UTR.",
+          "Three parts provide starting points for reuse. BBa_26DTP41G is the payload-free chassis, with the antigen window empty. BBa_26DQL85I is the eight-fragment TNBC epitope array, and BBa_26QYL2YH is the complete Combined plasmid. The single-epitope and comparator preparations used related designs on the same backbone.",
+          "Two further parts are worth knowing about before you build. The PIE halves, BBa_26T5SEQR and BBa_26P7AUA8, reference each other and should be taken as one circularisation unit rather than separately. BBa_26X4AOBB, the eIF4G aptamer, is deposited on its own although it is never used on its own here, so it can be grafted onto another IRES or UTR.",
           "See the Parts page, the Part Collection and the Registry page for JLU-FBH 2026."
         ]
       },
@@ -309,7 +309,7 @@ const sections = [
         "id": "key-achievements-an-encoded-adjuvant",
         "index": "3",
         "level": 3,
-        "title": "3 · An encoded adjuvant"
+        "title": "An encoded adjuvant"
       },
       {
         "type": "prose",
@@ -326,15 +326,15 @@ const sections = [
         "id": "key-achievements-a-documented-production-process",
         "index": "4",
         "level": 3,
-        "title": "4 · A documented production process"
+        "title": "A documented production process"
       },
       {
         "type": "prose",
         "paragraphs": [
-          "Eighteen circRNA preparations were made by one route: template preparation, T7 transcription, DNase treatment, LiCl precipitation, PIE circularization, RNase R digestion. Thirteen are the Round-1 single-epitope constructs and five are the Round-2 batch.",
-          "Round 2 carries a numerical release criterion, ≥ 90% circular fraction after RNase R, with a gel check on the transcription templates beforehand and a failed preparation re-made from the transcription step and recorded. The Combined batch cleared it at 99.30 ± 0.17%, and the Round-1 representative preparation measured 95.35 ± 2.01%.",
-          "Circularity of the final vaccine is then verified structurally, by Sanger sequencing across the back-splice junction. Both the framework and the structural check transfer as a standard, and both exist only because the product is a covalently closed molecule made in a tube.",
-          "See Experiments §1.2 and §3.2 and Section 7.1."
+          "Eighteen RNA preparations followed one route: linearisation and purification of commercially supplied plasmids, T7 transcription, DNase treatment, LiCl precipitation, PIE circularisation and RNase R enrichment. Thirteen were Round-1 single-epitope preparations and five formed the Round-2 batch.",
+          "The stated release criterion was at least 90% circular fraction after RNase R. Plasmid-target PCR was used for verification, with the IVT template prepared separately by plasmid linearisation and purification. The reported RT-qPCR measurements were 95.35 ± 2.01% for the representative Round-1 TROP2-CTL1 preparation and 99.30 ± 0.17% for Combined in Round 2. Preparations below the criterion were to be remade from transcription and recorded.",
+          "Combined also underwent RT-PCR across the back-splice junction followed by Sanger sequencing. This junction check was performed on Combined only.",
+          "See Experiments Sections 1.1 and 3.1 and Section 7.1 of this page."
         ]
       },
       {
@@ -342,15 +342,15 @@ const sections = [
         "id": "key-achievements-a-human-cell-test-rig",
         "index": "5",
         "level": 3,
-        "title": "5 · A human-cell test rig"
+        "title": "A human-cell test rig"
       },
       {
         "type": "prose",
         "paragraphs": [
           "The immunogenicity pipeline runs from HLA-A*02:01-typed human PBMC through CD14⁺ monocyte isolation, GM-CSF/IL-4 differentiation to moDC, circRNA electroporation and autologous CD3⁺ T-cell co-culture, to IFN-γ ELISpot, multicolour flow and Calcein-AM killing. It is written as step-by-step protocols and is reusable unchanged for any epitope set loaded into the cassette.",
-          "The target model is 4T1 engineered to over-express human TROP2 by lentiviral transduction, GFP sorting, and verification at both mRNA and protein level. Three of its components are deposited as parts.",
+          "The target model was made by transducing 4T1 with a commercially supplied human-TROP2 lentiviral preparation, sorting GFP-positive cells and maintaining puromycin selection. TROP2 was checked by RT-PCR and surface flow cytometry. Three target-model components are deposited as parts.",
           "Neither has a standard-chassis version. The pipeline's unit of success is a 9-mer on HLA-A*02:01 read by an autologous human T cell. No bacterial or yeast system can present it, and none can be the target of it.",
-          "See the Protocols page and Experiments Sections 2 and 6"
+          "See Experiments Sections 2, 4 and 6."
         ]
       },
       {
@@ -358,7 +358,7 @@ const sections = [
         "id": "key-achievements-the-cassette-design-tool",
         "index": "6",
         "level": 3,
-        "title": "6 · The cassette-design tool"
+        "title": "The cassette-design tool"
       },
       {
         "type": "prose",
@@ -373,12 +373,12 @@ const sections = [
         "id": "key-achievements-a-record-of-what-failed",
         "index": "7",
         "level": 3,
-        "title": "7 · A record of what failed"
+        "title": "A record of what failed"
       },
       {
         "type": "prose",
         "paragraphs": [
-          "Five named failures with the reason and what we would do differently. Four weaken our own conclusions: two Round-1 read-outs that ranked the same 13 constructs differently, a screening round run with no controls and no replicate wells, back-splice-junction sequencing on one construct only, and an empty vector that on its own achieved 61.3% tumour growth inhibition in vivo.",
+          "Five limitations are documented with their consequences and recommendations for future work. They include disagreement between the Round-1 ELISpot and K562 rankings, missing controls and documented replication in Round-1 ELISpot, BSJ sequencing on Combined only, the 61.3% TGI of empty-vector circRNA-LNP relative to PBS, and the HLA mismatch in the mouse model.",
           "See Section 8."
         ]
       }
@@ -395,8 +395,8 @@ const sections = [
       {
         "type": "prose",
         "paragraphs": [
-          "The chemistry of covalent RNA circularization has been public since 2018 (Wesselhoeft et al., 2018). circRNA works as a vaccine in both infectious disease and oncology (Li et al., 2022; Qu et al., 2022), and its advantages over linear mRNA have been measured head to head (Lee et al., 2026; Gong et al., 2025). What the field has not published is a standardised, release-tested, documented backbone that another team can load its own antigens into, together with the protocols, acceptance criteria and failure record that make such a backbone usable.",
-          "CirCure is that backbone. It is a 5,267 bp plasmid in which antigen identity occupies 336 bp, bases 1606–1941, and the remaining 4,931 bp never change. We validated it through two design–build–test–learn cycles and then in tumour-bearing mice, deposited it as 30 Registry parts whose boundaries match the plasmid annotation exactly, wrote the cell-free production process down with a numerical release criterion, and built a tool that designs the next cassette for it. Triple-negative breast cancer is where we validated the platform. It is not the limit of what the platform addresses.",
+          "The chemistry of covalent RNA circularisation has been public since 2018 (Wesselhoeft et al., 2018). circRNA works as a vaccine in both infectious disease and oncology (Li et al., 2022; Qu et al., 2022), and its advantages over linear mRNA have been measured head to head (Lee et al., 2026; Gong et al., 2025). What the field has not published is a standardised, release-tested, documented backbone that another team can load its own antigens into, together with the protocols, acceptance criteria and failure record that make such a backbone usable.",
+          "CirCure is that backbone. It is a 5,267 bp plasmid in which antigen identity occupies 336 bp, bases 1606–1941, and the remaining 4,931 bp are fixed in our design. We validated it through two design–build–test–learn cycles and then in tumour-bearing mice, deposited it as 30 Registry parts whose boundaries match the plasmid annotation exactly, wrote the cell-free production process down with a numerical release criterion, and built a tool that designs the next cassette for it. Triple-negative breast cancer is where we validated the platform. It is not the limit of what the platform addresses.",
           "None of this work happens in a microbial chassis. Production is cell-free, T7 transcription followed by permuted-intron self-splicing, and the engineering and every read-out happen in human primary immune cells and mammalian tumour cells. A vaccine whose whole mechanism is a 9-mer peptide reaching HLA-A*02:01 on a human dendritic cell cannot be built, expressed or even measured in *E. coli*, *S. cerevisiae* or *B. subtilis*."
         ]
       }
@@ -422,7 +422,7 @@ const sections = [
         "id": "the-gap-the-clinical-opening",
         "index": "4.1",
         "level": 3,
-        "title": "4.1 The clinical opening"
+        "title": "The clinical opening"
       },
       {
         "type": "prose",
@@ -436,7 +436,7 @@ const sections = [
         "id": "the-gap-where-each-platform-stops",
         "index": "4.2",
         "level": 3,
-        "title": "4.2 Where each platform stops"
+        "title": "Where each platform stops"
       },
       {
         "type": "figure",
@@ -461,7 +461,7 @@ const sections = [
         "id": "the-gap-what-circrna-already-does",
         "index": "4.3",
         "level": 3,
-        "title": "4.3 What circRNA already does"
+        "title": "What circRNA already does"
       },
       {
         "type": "prose",
@@ -477,7 +477,7 @@ const sections = [
         "id": "the-gap-the-gap-we-took",
         "index": "4.4",
         "level": 3,
-        "title": "4.4 The gap we took"
+        "title": "The gap we took"
       },
       {
         "type": "prose",
@@ -501,7 +501,7 @@ const sections = [
         "id": "why-this-platform-the-necessity-chain",
         "index": "5.1",
         "level": 3,
-        "title": "5.1 The necessity chain"
+        "title": "The necessity chain"
       },
       {
         "type": "figure",
@@ -516,7 +516,7 @@ const sections = [
           "**Host.** The end point of the mechanism is a 9-mer peptide displayed on HLA-A*02:01 at the surface of a human dendritic cell and recognised by an autologous human CD8⁺ T cell. Everything in that sentence is mammalian: proteasomal processing, TAP transport, ER loading onto MHC class I, and a T-cell receptor repertoire thymically selected against human self. *E. coli*, *S. cerevisiae* and *B. subtilis* possess none of it. This is not a question of efficiency; there is no bacterial or yeast version of the read-out.",
           "**Modality.** Within nucleic-acid vaccines, the choice of circRNA is argued in Section 4.2.",
           "**Production.** Having chosen circRNA, production is forced. A covalently closed circle is made by self-splicing of a *permuted* intron–exon precursor (Wesselhoeft et al., 2018), a template arrangement that exists only by design, in a reaction requiring T7 polymerase, a linear template, GTP and Mg²⁺. A living cell cannot supply that precursor, and would degrade the product. Cell-free synthesis is the only route to the molecule.",
-          "So the read-out forces mammalian and the molecule forces cell-free. *E. coli* survives in our workflow for exactly one job, amplifying the plasmid before it is linearised and leaves the cell permanently."
+          "So the read-out forces mammalian and the molecule forces cell-free. Bacterial propagation elements remain on the plasmid backbone as features of the supplied vector, but our laboratory workflow is completely cell-free, starting with linearising commercially supplied endotoxin-free plasmid DNA."
         ]
       },
       {
@@ -524,7 +524,7 @@ const sections = [
         "id": "why-this-platform-why-circrna",
         "index": "5.2",
         "level": 3,
-        "title": "5.2 Why circRNA"
+        "title": "Why circRNA"
       },
       {
         "type": "prose",
@@ -539,7 +539,7 @@ const sections = [
         "id": "why-this-platform-what-the-backbone-encodes-besides-the-antigen",
         "index": "5.3",
         "level": 3,
-        "title": "5.3 What the backbone encodes besides the antigen"
+        "title": "What the backbone encodes besides the antigen"
       },
       {
         "type": "figure",
@@ -563,7 +563,7 @@ const sections = [
         "id": "why-this-platform-backbone-and-software",
         "index": "5.4",
         "level": 3,
-        "title": "5.4 Backbone and software"
+        "title": "Backbone and software"
       },
       {
         "type": "prose",
@@ -576,7 +576,7 @@ const sections = [
         "id": "why-this-platform-what-it-costs-us",
         "index": "5.5",
         "level": 3,
-        "title": "5.5 What it costs us"
+        "title": "What it costs us"
       },
       {
         "type": "prose",
@@ -621,13 +621,13 @@ const sections = [
         "id": "evidence-construction-and-release",
         "index": "7.1",
         "level": 3,
-        "title": "7.1 Construction and release"
+        "title": "Construction and release"
       },
       {
         "type": "prose",
         "paragraphs": [
-          "Sixteen plasmids were built on one backbone. The 13 single-epitope constructs and the Combined construct each cleared colony PCR, diagnostic double digestion and full-length Sanger sequencing at 100% sequence match before being prepared endotoxin-free and used as transcription templates.",
-          "Eighteen preparations were then carried through one route: template preparation, T7 transcription, DNase treatment, LiCl precipitation, PIE circularization at 55 °C, RNase R digestion. Thirteen are the Round-1 single-epitope constructs, and five are the Round-2 batch: empty vector, TROP2-CTL1, TROP2-CTL2, TROP2-CTL1+2 and Combined. Eighteen preparations come from sixteen plasmids, because TROP2-CTL1 and TROP2-CTL2 were re-transcribed for Round 2.",
+          "Sixteen plasmids were designed on one backbone and ordered endotoxin-free from a commercial gene-synthesis supplier. The plasmids were verified by plasmid-target PCR and sequencing at 100% sequence match before linearisation and purification as in vitro transcription templates.",
+          "Eighteen RNA preparations followed one route: linearisation and purification of commercially supplied plasmids, T7 transcription, DNase treatment, LiCl precipitation, PIE circularisation at 55 °C and RNase R enrichment. Thirteen were Round-1 single-epitope preparations, and five formed the Round-2 batch: empty vector, TROP2-CTL1, TROP2-CTL2, TROP2-CTL1+2 and Combined. Eighteen preparations come from sixteen plasmids, because TROP2-CTL1 and TROP2-CTL2 were re-transcribed for Round 2.",
           "Circularity is quantified on one representative preparation per round. The thirteen Round-1 constructs share one backbone, the same T4 *td* chemistry and the same workflow, and differ only in a short cassette of near-identical length, so the round was quantified on TROP2-CTL1 across a 2, 4 and 6 µL loading series in three replicate wells per volume. Round 2 was quantified on the Combined vaccine, the construct that goes into every Round-2 and in vivo experiment, at the 4 µL input the Round-1 series established."
         ]
       },
@@ -682,7 +682,7 @@ const sections = [
         "type": "prose",
         "paragraphs": [
           "The loading series did a second job besides measuring. The 2 µL arm reads about four points lower than the other two, and at that input the circular-channel Cq rose 2.7 cycles for a two-fold change in volume where one cycle is expected, which says the reaction was below its reliable input range. The two higher volumes agree inside replicate scatter. So 4 µL became the working input for every circularity measurement afterwards, including the Round-2 release assay, where a backbone-encoded GFP amplicon run alongside both primer channels read Cq 12.74 in each, confirming the two channels received the same amount of RNA.",
-          "Round 2 added a release framework around the same chemistry: the transcription template is amplified by PCR with the SJ4435/SJ4436 primers across the T7-containing region and checked on a gel before transcription, the released material has to clear ≥ 90% circular fraction, and a preparation that fails is re-made from the transcription step with the failed run recorded alongside the released one. The RNase R amount and digestion time are fixed for the whole batch, because extending digestion removes more linear RNA without producing more circles and degrades the circle itself."
+          "Round 2 added a release framework around the same chemistry: the stated release criterion was at least 90% circular fraction after RNase R. Plasmid-target PCR with primers across the T7-containing region was used for verification, with the transcription template prepared separately by plasmid linearisation and purification. The reported RT-qPCR measurements were 95.35 ± 2.01% for the representative Round-1 TROP2-CTL1 preparation and 99.30 ± 0.17% for Combined in Round 2. Preparations below the criterion were to be remade from transcription and recorded. The RNase R amount and digestion time are fixed for the whole batch, because extending digestion removes more linear RNA without producing more circles and degrades the circle itself."
         ]
       },
       {
@@ -720,7 +720,7 @@ const sections = [
       {
         "type": "prose",
         "paragraphs": [
-          "The post-digestion fraction describes the composition of the released material, which is the quantity the release decision needs. It is not a circularization efficiency, because the enzyme removes molecules that failed to circularise without rescuing them. A small amount of highly structured linear RNA can also survive digestion, and the divergent primers give some non-specific amplification on uncircularised precursor, so the figure reads as a close upper estimate."
+          "The post-digestion fraction describes the composition of the released material, which is the quantity the release decision needs. It is not a circularisation efficiency, because the enzyme removes molecules that failed to circularise without rescuing them. A small amount of highly structured linear RNA can also survive digestion, and the divergent primers give some non-specific amplification on uncircularised precursor, so the figure reads as a close upper estimate."
         ]
       },
       {
@@ -728,7 +728,7 @@ const sections = [
         "id": "evidence-why-the-platform-includes-a-wet-screen",
         "index": "7.2",
         "level": 3,
-        "title": "7.2 Why the platform includes a wet screen"
+        "title": "Why the platform includes a wet screen"
       },
       {
         "type": "prose",
@@ -742,7 +742,7 @@ const sections = [
       {
         "type": "figure",
         "assetKey": "roundOneRanking",
-        "className": "platform-figure--reduced",
+        "className": "platform-figure--reduced platform-figure--fig07",
         "alt": "Round-1 ELISpot rank against K562 killing rank for all 13 constructs.",
         "caption": "Round-1 ELISpot rank against K562 killing rank for all 13 constructs."
       },
@@ -768,7 +768,7 @@ const sections = [
         "id": "evidence-round-2-the-chain",
         "index": "7.3",
         "level": 3,
-        "title": "7.3 Round 2: the chain"
+        "title": "Round 2: the chain"
       },
       {
         "type": "prose",
@@ -850,7 +850,7 @@ const sections = [
         "id": "evidence-safety-bounded",
         "index": "7.4",
         "level": 3,
-        "title": "7.4 Safety, bounded"
+        "title": "Safety, bounded"
       },
       {
         "type": "prose",
@@ -867,12 +867,12 @@ const sections = [
         "id": "evidence-in-vivo",
         "index": "7.5",
         "level": 3,
-        "title": "7.5 In vivo"
+        "title": "In vivo"
       },
       {
         "type": "prose",
         "paragraphs": [
-          "4T1 was engineered to over-express human TROP2 by lentiviral transduction, GFP sorting, and verification at both mRNA and protein level. Tumour-bearing BALB/c mice received five weekly 10 µg doses of circRNA-LNP on days 0, 7, 14, 21 and 28, with a day-35 endpoint and n = 5 per group.",
+          "The target model was made by transducing 4T1 with a commercially supplied human-TROP2 lentiviral preparation, sorting GFP-positive cells and maintaining puromycin selection. TROP2 was checked by RT-PCR and surface flow cytometry. Tumour-bearing BALB/c mice received five weekly 10 µg doses of circRNA-LNP on days 0, 7, 14, 21 and 28, with a day-35 endpoint and n = 5 per group.",
           "The design was fixed in advance, pre-specified in the NC3Rs Experimental Design Assistant and reported to ARRIVE 2.0 (Percie du Sert et al., 2020), with caliper measurement blinded on coded animals in randomised order, the confirmatory analysis restricted to endpoint volume, and a minimum biologically important effect of TGI ≥ 50% set before the experiment. Ethics approval JDYY20261369; animal use licence SYXK (Ji) 2023-0011."
         ]
       },
@@ -916,7 +916,7 @@ const sections = [
       {
         "type": "figure",
         "assetKey": "inVivoResults",
-        "className": "platform-figure--reduced",
+        "className": "platform-figure--reduced platform-figure--fig09",
         "alt": "Tumour growth curves to day 35 and excised tumours at endpoint.",
         "caption": "Tumour growth curves to day 35 and excised tumours at endpoint."
       },
@@ -925,7 +925,7 @@ const sections = [
         "id": "evidence-evidence-strength",
         "index": "7.6",
         "level": 3,
-        "title": "7.6 Evidence strength"
+        "title": "Evidence strength"
       },
       {
         "type": "figure",
@@ -936,9 +936,9 @@ const sections = [
       {
         "type": "prose",
         "paragraphs": [
-          "Two claims rest on **structural** evidence, which is the highest class available to us. The final vaccine is a covalently closed circle, shown by BSJ RT-PCR and Sanger sequencing returning a single homogeneous product. And the constructs carry the designed sequence, shown by colony PCR, diagnostic double digestion and full-length Sanger at 100% match on all fourteen.",
+          "Two claims rest on **structural** evidence, which is the highest class available to us. The final vaccine is a covalently closed circle, shown by BSJ RT-PCR and Sanger sequencing on Combined returning a single homogeneous product. And the constructs carry the designed sequence, shown by supplier verification and plasmid-target PCR with Sanger sequencing at 100% sequence match.",
           "Five claims are **quantitative and controlled**. The released material is predominantly circular, 95.35% in Round 1 and 99.30% in Round 2 by divergent-against-convergent RT-qPCR, with an equal-input GFP control in Round 2; quantifying every preparation rather than one per round would raise it. The circRNA is translated inside human DCs, shown by the anti-FLAG band at about 50 kDa against a mock-electroporated negative with a β-actin loading control; surface MHC-I detection by tetramer or anti-HLA/peptide staining would raise it. The vaccine activates and differentiates CD8⁺ T cells, shown by four flow read-outs and ELISpot, all empty-vector baselined at n = 3 with ANOVA and Holm correction; an irrelevant-epitope arm would raise it, by controlling for the act of encoding a peptide at all. Killing of TNBC cells is vaccine-driven, 83.57% against 26.20% empty vector at 80 : 1 across three E:T ratios with a dose-dependent gap; a matched antigen-negative target line would raise it. And the vaccine inhibits tumour growth in vivo, 73.2% TGI against empty vector with blinded calipers, an EDA-pre-specified analysis and passing assumption checks, which is already at the highest class this design can reach.",
-          "Two claims are weaker and we mark them. The Round-1 epitope ranking is **quantitative but uncontrolled**: raw SFC with the direction corroborated by two independent read-outs, which vector and antigen-free controls plus replicate wells would raise. That the Round-1 constructs are circular is an **inference**, from RNase R resistance plus shared chemistry, which per-construct BSJ sequencing would raise.",
+          "Two claims are weaker and we mark them. The Round-1 epitope ranking is **quantitative but uncontrolled**: raw SFC in Round-1 ELISpot with no controls and no documented replicate wells, with the direction corroborated by two independent read-outs, which vector and antigen-free controls plus replicate wells would raise. That the Round-1 constructs are circular is an **inference**, from RNase R resistance plus shared chemistry, which per-construct BSJ sequencing would raise.",
           "One claim is **descriptive**: intratumoural CD8 and Granzyme B infiltration, from n = 3 animals at one field each, coded at analysis. Multi-field sampling, blinded acquisition and recorded segmentation would raise it.",
           "Two claims are **not established** and we do not make them. That the in vivo inhibition is antigen-specific would need an HLA-A*02:01 transgenic or humanised model, tetramer staining, peptide-restimulated ELISpot and a mock arm. That CirCure is safe would need a repeat-dose in vivo toxicity study with organ histopathology; what we have is in vitro boundary-setting."
         ]
@@ -964,7 +964,7 @@ const sections = [
         "id": "what-didn-t-work-production",
         "index": "8.1",
         "level": 3,
-        "title": "8.1 Production"
+        "title": "Production"
       },
       {
         "type": "prose",
@@ -977,13 +977,13 @@ const sections = [
         "id": "what-didn-t-work-screening-design",
         "index": "8.2",
         "level": 3,
-        "title": "8.2 Screening design"
+        "title": "Screening design"
       },
       {
         "type": "prose",
         "paragraphs": [
           "**2 · Two Round-1 read-outs ranked the same constructs differently**, ρ = 0.43 and *P* = 0.14, set out with the data in Section 7.2. *Decide before the screen which read-out selects, and say so.*",
-          "**3 · Round 1 ran with no controls and no replicate wells.** No empty-vector well, no antigen-free well, and the kit's PHA positive control was not run. No replicate count is on record. *Seed the vector control on the first plate. It costs a few wells and it is the difference between a ranking and a frequency. No Round-1 SFC value may be cited as an antigen-specific T-cell frequency.*"
+          "**3 · Round-1 ELISpot was run with no controls and no replicate wells.** No empty-vector well, no antigen-free well, and the kit's PHA positive control was not run. No replicate count is on record. *Seed the vector control on the first plate. It costs a few wells and it is the difference between a ranking and a frequency. No Round-1 SFC value may be cited as an antigen-specific T-cell frequency.*"
         ]
       },
       {
@@ -991,7 +991,7 @@ const sections = [
         "id": "what-didn-t-work-in-vivo-and-scope",
         "index": "8.3",
         "level": 3,
-        "title": "8.3 In vivo and scope"
+        "title": "In vivo and scope"
       },
       {
         "type": "prose",
@@ -1014,7 +1014,7 @@ const sections = [
         "type": "prose",
         "paragraphs": [
           "Four things are needed to point the CirCure backbone at a different tumour, and all four exist.",
-          "**1 · The parts.** Thirty parts are deposited in the [iGEM Registry](https://registry.igem.org/organisations/d1b6aa0f-bfc0-4f6b-9c69-33347e7ea510): thirteen backbone elements, eight epitope fragments, three target-model parts and six composites. The one to start from is `BBa_26DTP41G`, the payload-free chassis, which is the T7–PIE–IRES cassette with the antigen window empty. `BBa_26DQL85I` is our TNBC payload for that chassis and `BBa_26QYL2YH` is the assembled plasmid, so a team can take the empty platform, our worked example, or both. Element boundaries match the plasmid annotation exactly, so any single element can be lifted on its own: the PIE halves as a matched circularization unit, or Apt-eIF4G for grafting onto another IRES.",
+          "**1 · The parts.** Thirty parts are deposited in the [iGEM Registry](https://registry.igem.org/organisations/d1b6aa0f-bfc0-4f6b-9c69-33347e7ea510), covering backbone elements, eight epitope fragments, three target-model parts and assembled regions. Three parts provide starting points for reuse. `BBa_26DTP41G` is the payload-free chassis, with the antigen window empty. `BBa_26DQL85I` is the eight-fragment TNBC epitope array, and `BBa_26QYL2YH` is the complete Combined plasmid. The single-epitope and comparator preparations used related designs on the same backbone. Element boundaries match the plasmid annotation exactly, so any single element can be lifted on its own: the PIE halves as a matched circularization unit, or Apt-eIF4G for grafting onto another IRES.",
           "The studio below runs on the real plasmid. Pick a window, empty it, and rebuild it from our parts or from sequences you type in; the map and the length readouts follow every change, and the bases outside the window stay where they are. It reports lengths and reading frame for whatever you assemble. Choosing and compiling a cassette is what CircuForge does, in point 4 below.",
           "There are three windows and they sit inside one another. The antigen window runs from BamHI 1600 to XhoI 1957 and holds the eight epitope fragments with the seven linkers between them, 336 bp in our version. Opening at NcoI 1502 and ClaI 2587 instead hands over the whole fusion protein, 1,083 bp, which brings the signal peptide, the adjuvant repeats, the trafficking domain and the tag within reach. Opening at KpnI 838 adds the IRES, where translation on the circle starts. We have only ever built through the antigen window.",
         ]
@@ -1023,7 +1023,7 @@ const sections = [
       {
         "type": "prose",
         "paragraphs": [
-          "**2 · The process, with its acceptance criterion.** The cell-free route, from template preparation through T7 transcription, DNase treatment, LiCl precipitation, PIE circularization and RNase R enrichment, is written step by step on the Experiments page. It carries a numerical release criterion rather than a judgement call: ≥ 90% circular fraction after RNase R, a gel check on the transcription template beforehand, and a failed preparation re-made and recorded.",
+          "**2 · The process, with its acceptance criterion.** The cell-free route, from plasmid linearisation and purification through T7 transcription, DNase treatment, LiCl precipitation, PIE circularisation and RNase R enrichment, is written step by step on the Experiments page. It carries a numerical release criterion rather than a judgement call: ≥ 90% circular fraction after RNase R, plasmid-target PCR verification of templates, and a failed preparation re-made and recorded.",
           "**3 · The test rig.** The immunogenicity pipeline is written against the backbone rather than against our antigens, so a new cassette inherits it unchanged: HLA-typed human PBMC, CD14⁺ monocyte isolation, GM-CSF/IL-4 differentiation to moDC, circRNA electroporation, autologous CD3⁺ T-cell co-culture, then IFN-γ ELISpot, multicolour flow and Calcein-AM killing. The anti-FLAG translation check works for any insert, because the tag sits downstream of everything. Protocols are on the Protocols page.",
           "**4 · CircuForge, the tool that designs the next cassette.** Our dry lab built CircuForge, a browser-based workflow that carries an antigen choice from evidence through to a compiled construct.",
           "*It starts wherever the team already is.* An expression matrix with sample metadata, a UniProt identifier or protein sequence, a set of peptides already supported by evidence, or an annotated backbone file are each valid entry points. Differential expression uses limma 3.66.0, with edgeR 4.8.2 low-count filtering and TMM normalisation followed by limma-voom when the input is raw RNA-seq counts. Target screening draws on GTEx and UniProt; epitope analysis runs through NetMHCpan 4.1 EL/BA and NetMHCIIpan EL/BA on the IEDB Next-Generation Tools MHC-I and MHC-II routes, with the HLA allele user-selectable and HLA-A*02:01 as the default. Binding evidence and immunogenicity evidence are held as separate layers, and versioned quality-control rules label each candidate KEEP, REVIEW or REJECT for the researcher to confirm. The binding filter applies class-specific disjunctions (MHC-I: percentile rank ≤ 1% or IC50 ≤ 500 nM; MHC-II: percentile rank ≤ 10% or IC50 ≤ 1000 nM), and the immunogenicity check is optional and disabled by default. The epitopes in our own cassette were selected earlier, on a NetMHCpan 4.1 BA predicted IC50 below 500 nM together with an IEDB pMHC immunogenicity score above 0, with EL percentile rank and processing score kept as supporting evidence. Ranking uses a fixed-weight composite of best percentile rank, number of supporting HLA alleles, allele coverage within the candidate pool, and whether both MHC classes are represented",
@@ -1046,7 +1046,7 @@ const sections = [
       {
         "type": "prose",
         "paragraphs": [
-          "A team building a multi-epitope circRNA vaccine against a different tumour would, in order: run the tool on their indication to get a candidate shortlist and an epitope set, treating the expression output as evidence to check a literature-driven choice against; assemble the cassette into the backbone through the BamHI–XhoI window; order the construct and verify it by colony PCR, diagnostic digestion and full-length sequencing; transcribe, circularise and release-test against the ≥ 90% criterion; electroporate into HLA-matched moDCs and confirm translation by anti-FLAG blot before spending any immunology; then screen with ELISpot against an empty-vector control from the first plate, which is the mistake we made and the one most worth not repeating.",
+          "A team building a multi-epitope circRNA vaccine against a different tumour would, in order: run the tool on their indication to get a candidate shortlist and an epitope set, treating the expression output as evidence to check a literature-driven choice against; assemble the cassette into the backbone design in the BamHI–XhoI window; order the complete endotoxin-free construct from a commercial supplier and verify it by plasmid-target PCR; linearise and purify the template; transcribe, circularise and release-test against the ≥ 90% criterion; electroporate into HLA-matched moDCs and confirm translation by anti-FLAG blot before spending any immunology; then screen with ELISpot against an empty-vector control from the first plate, which is the mistake we made and the one most worth not repeating.",
           "Sections 8.1 and 8.2 are the two to read first."
         ]
       }

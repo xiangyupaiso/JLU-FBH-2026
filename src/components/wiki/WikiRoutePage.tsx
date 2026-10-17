@@ -1,6 +1,7 @@
 import {
   createContext,
   memo,
+  useCallback,
   useContext,
   useEffect,
   useId,
@@ -521,7 +522,7 @@ function RouteBlock({
     }
     case "prose":
       return (
-        <div className="wiki-prose" data-wiki-reveal>
+        <div id={block.id} className="wiki-prose" data-wiki-reveal>
           {renderProseParagraphs(block.paragraphs, inline, sectionId)}
         </div>
       );
@@ -1292,16 +1293,16 @@ export function WikiRoutePage({
     () => new Set(),
   );
 
-  const toggleSubheading = (id: string) => {
+  const toggleSubheading = useCallback((id: string) => {
     setOpenSubheadingIds((prev) => {
       const next = new Set(prev);
       if (next.has(id)) next.delete(id);
       else next.add(id);
       return next;
     });
-  };
+  }, []);
 
-  const openSubheading = (id: string) => {
+  const openSubheading = useCallback((id: string) => {
     let targetParentId: string | null = null;
     for (const section of content.sections) {
       if (!section.blocks) continue;
@@ -1333,7 +1334,7 @@ export function WikiRoutePage({
       }
       return changed ? next : prev;
     });
-  };
+  }, [content.sections]);
 
   useEffect(() => {
     const handleHash = () => {
@@ -1345,7 +1346,7 @@ export function WikiRoutePage({
     handleHash();
     window.addEventListener("hashchange", handleHash);
     return () => window.removeEventListener("hashchange", handleHash);
-  }, []);
+  }, [openSubheading]);
 
   const wideFlow =
     enableWideFlow &&
@@ -1402,7 +1403,6 @@ export function WikiRoutePage({
     scrollRef,
     content.route,
     !documentFlow,
-    wideFlow,
   );
   useRouteReaderScroll(!documentFlow, interfaceRef, scrollRef);
 

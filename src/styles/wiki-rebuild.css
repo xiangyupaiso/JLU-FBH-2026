@@ -1,7 +1,8 @@
 /* CirCure formal Wiki pages — clean editorial canvas + category systems. */
 
 .wiki-page {
-  --wiki-page-progress: 0;
+  /* Decorative signatures stay complete; the hairline owns live progress. */
+  --wiki-page-progress: 1;
   --wiki-outline-progress: 0;
   --wiki-accent: var(--care);
   --wiki-structure: var(--brand-navy);
@@ -39,6 +40,7 @@
 }
 
 .wiki-page-progress {
+  --wiki-page-progress: 0;
   position: fixed;
   z-index: 98;
   top: var(--header-height);
@@ -714,17 +716,12 @@
   transform: scale(0.96);
 }
 
-[data-wiki-reveal] {
-  opacity: 0;
-  transform: translateY(20px);
-  transition-property: opacity, transform;
-  transition-duration: 680ms;
-  transition-timing-function: var(--ease-out);
-}
-
+/* Reading content is static; scrolling only updates navigation and progress. */
+[data-wiki-reveal],
 [data-wiki-reveal].is-visible {
   opacity: 1;
   transform: none;
+  transition: none;
 }
 
 @media (max-width: 1080px) {

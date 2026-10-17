@@ -13,7 +13,7 @@
 }
 .manuscript-tabs__layout {
   display: grid;
-  grid-template-columns: minmax(170px, 29%) minmax(0, 1fr);
+  grid-template-columns: fit-content(240px) minmax(0, 1fr);
   align-items: stretch;
 }
 .manuscript-tabs__list {

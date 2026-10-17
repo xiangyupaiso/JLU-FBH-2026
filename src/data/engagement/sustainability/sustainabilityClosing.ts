@@ -419,6 +419,15 @@ export const sustainabilityConclusionSection: WikiSection = {
       type: "prose",
       paragraphs: [
         "Our **14 educational activities recorded a cumulative attendance of 4047**. Across **480 valid questionnaire responses**, the mean self-reported scores for gains in understanding and willingness to continue learning were **8.2 and 8.3 out of 10**, respectively. These responses reflect participants’ perceived learning gains and interest in further exploration, while providing a basis for continued improvement. Together with feedback-driven project adjustments and shared outputs, they document changes we can currently substantiate. We hope the curiosity sparked during an activity can continue long after it ends.",
+      ],
+    },
+    {
+      type: "feature",
+      key: "sustainability-interactive-city",
+    },
+    {
+      type: "prose",
+      paragraphs: [
         "CirCure’s long-term value still requires further validation. We have given this year’s efforts—and our hopes for what may follow—the shape of a city. Here, laboratories, classrooms, and community spaces live side by side, connected by streets and bridges. The foreground holds the work we have done; the distance leaves room for what may still grow. We hope these efforts can one day help lay the foundation for more reliable, accessible treatment options, so that people facing disease can care for their families, make plans for their lives, and look toward tomorrow with hope.",
         "Click on a scene to revisit the records behind it: the discussions that shaped an idea, the conversations that changed our perspective, and the people who shared their insights and worked alongside us. Stay a little longer. Follow the paths that catch your eye, and discover the people and stories that gave this city its warmth.",
       ],

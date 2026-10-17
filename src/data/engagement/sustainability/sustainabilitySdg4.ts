@@ -231,7 +231,6 @@ const sdg4Educators: ReadonlyArray<StakeholderProfile> = [
     index: "03",
     name: "Weiwei Han",
     role: "Game Development & Interactive Learning",
-    photos: sdg4PhotoSets["sdg4-03"],
     leadIn: [
       "Building on these insights, we identified two areas for further development: making specialized scientific content easier for the public to understand, and ensuring that interactive educational tools work in real settings. We explored these questions with science communicators and professionals in game development and interactive design.",
     ],

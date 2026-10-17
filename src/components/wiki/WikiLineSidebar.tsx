@@ -243,7 +243,12 @@ export function WikiLineSidebar({
       );
       const nearest = travel < 0.5 ? current : next;
 
-      outline.style.setProperty("--wiki-outline-progress", progress.toFixed(4));
+      // The ribbon alone consumes progress; keep its changing value out of
+      // the navigation labels' inherited styles.
+      const progressValue = progress.toFixed(4);
+      if (ribbon.style.getPropertyValue("--wiki-outline-progress") !== progressValue) {
+        ribbon.style.setProperty("--wiki-outline-progress", progressValue);
+      }
       setRibbonTargetId((previous) =>
         previous === nearest.id ? previous : nearest.id,
       );
@@ -338,7 +343,7 @@ export function WikiLineSidebar({
         (clientY - ribbonBounds.top) / Math.max(1, ribbonBounds.height),
       ),
     );
-    outline.style.setProperty("--wiki-outline-progress", progress.toFixed(4));
+    ribbon.style.setProperty("--wiki-outline-progress", progress.toFixed(4));
     document.documentElement.classList.add("is-thread-directing");
 
     // Scrub through the document timeline; the pinned frame's scrollTop is
@@ -503,13 +508,13 @@ export function WikiLineSidebar({
                       ? child.label
                           .replace(
                             new RegExp(
-                              `^${child.index.replace(/\./g, "\\.")}[.\\s]+`,
+                              `^${child.index.replace(/\./g, "\\.")}[.\\s·•]+`,
                             ),
                             "",
                           )
-                          .replace(/^\.\s*/, "")
+                          .replace(/^[.·•\s]+/, "")
                           .trim()
-                      : child.label.replace(/^\.\s*/, "").trim();
+                      : child.label.replace(/^[.·•\s]+/, "").trim();
                     return (
                       <a
                         className={`wiki-outline__secondary wiki-outline__secondary--depth-${Math.min(child.index.split(".").length, 4)}${

@@ -44,6 +44,8 @@ export interface CoreSdg {
   summary: string;
   /** Anchor the card jumps to. */
   target: string;
+  /** Official UN SDG logo image. */
+  logoUrl?: string;
 }
 
 export interface ImpactTier {
@@ -75,18 +77,21 @@ export const coreSdgs: ReadonlyArray<CoreSdg> = [
     title: "Good Health and Well-being",
     summary: "Addressing the health needs of patients with TNBC.",
     target: "sdg3-health",
+    logoUrl: "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/sustainability/overview/sdg3.avif",
   },
   {
     number: 9,
     title: "Industry, Innovation and Infrastructure",
     summary: "Translating biomedical innovations into practice.",
     target: "sdg9-industry",
+    logoUrl: "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/sustainability/overview/sdg9.avif",
   },
   {
     number: 12,
     title: "Responsible Consumption and Production",
     summary: "Supporting the responsible development of medical technologies.",
     target: "sdg12-responsible-consumption",
+    logoUrl: "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/sustainability/overview/sdg12.avif",
   },
 ];
 

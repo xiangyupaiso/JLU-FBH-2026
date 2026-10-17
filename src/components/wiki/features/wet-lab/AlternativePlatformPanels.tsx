@@ -1,5 +1,5 @@
 /* eslint-disable react-refresh/only-export-components */
-import { useRef, useState, type ReactNode } from "react";
+import { useState, type ReactNode } from "react";
 import {
   alternativePlatformJudgingCriteria,
   alternativePlatformPage,
@@ -16,8 +16,7 @@ import {
 } from "../../citations/CitationRegister";
 import { InteractiveHtmlEmbed } from "../../embeds/InteractiveHtmlEmbed";
 import { getAlternativePlatformEmbed } from "../../../../data/wet-lab/alternativePlatformAssets";
-import { scrollReaderToId } from "../../../../utils/scrollReaderToTarget";
-import { useRoutePageScroll } from "../../WikiRoutePage";
+import { KeyAchievements } from "./key-achievements";
 import "../../../../styles/features/alternative-platform-panels.css";
 
 const WET_LAB_CITATION_FLASH = {
@@ -43,64 +42,6 @@ function AlternativePlatformReferenceList() {
       index={citationIndex}
       tint={WET_LAB_CITATION_FLASH}
     />
-  );
-}
-
-function AlternativePlatformAchievementNavigation() {
-  const rotorRef = useRef<HTMLDivElement>(null);
-  const rotationRef = useRef(0);
-  const { activeSubsection } = useRoutePageScroll();
-  const achievements =
-    alternativePlatformPage.sections
-      .find((section) => section.id === "key-achievements")
-      ?.blocks?.flatMap((block) =>
-        block.type === "subheading"
-          ? [{ id: block.id, title: block.title.replace(/^\d+\s*·\s*/, "") }]
-          : [],
-      ) ?? [];
-
-  return (
-    <nav className="platform-achievement-nav" aria-label="Key achievements">
-      <div className="platform-achievement-nav__orbit">
-        <div className="platform-achievement-nav__rotor" ref={rotorRef}>
-          {achievements.map((achievement, index) => (
-            <a
-              key={achievement.id}
-              href={`#${achievement.id}`}
-              className="platform-achievement-nav__node"
-              aria-current={
-                activeSubsection === achievement.id ? "location" : undefined
-              }
-              onClick={(event) => {
-                event.preventDefault();
-                const target = (-index * 360) / achievements.length;
-                const delta =
-                  ((((target - rotationRef.current + 180) % 360) + 360) % 360) -
-                  180;
-                rotationRef.current += delta;
-                rotorRef.current?.style.setProperty(
-                  "--achievement-rotation",
-                  `${rotationRef.current}deg`,
-                );
-                scrollReaderToId(achievement.id, event.currentTarget);
-              }}
-            >
-              <span>{achievement.title}</span>
-            </a>
-          ))}
-        </div>
-        <a
-          className="platform-achievement-nav__centre"
-          href="#key-achievements"
-          onClick={(event) => {
-            event.preventDefault();
-            scrollReaderToId("key-achievements", event.currentTarget);
-          }}
-        >
-          CirCure
-        </a>
-      </div>
-    </nav>
   );
 }
 
@@ -159,14 +100,14 @@ function AlternativePlatformJudgingCriteria() {
 
 export function alternativePlatformFeatures(): Record<string, ReactNode> {
   return {
-    "alternative-platform-achievement-navigation": (
-      <AlternativePlatformAchievementNavigation />
-    ),
+    "alternative-platform-achievement-navigation": <KeyAchievements />,
     "alternative-platform-backbone": (
-      <InteractiveHtmlEmbed
-        src={getAlternativePlatformEmbed("backbone")}
-        title="CirCure interactive plasmid map"
-      />
+      <div className="platform-backbone">
+        <InteractiveHtmlEmbed
+          src={getAlternativePlatformEmbed("backbone")}
+          title="CirCure interactive plasmid map"
+        />
+      </div>
     ),
     "alternative-platform-reuse-studio": (
       <InteractiveHtmlEmbed
