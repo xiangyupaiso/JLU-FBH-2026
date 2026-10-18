@@ -2,7 +2,6 @@ import { useRef, useCallback, type MouseEvent } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 
-const bgSrc = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-overview-bg.webp";
 const sheepSrc = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-overview-sheep.webp";
 const gearDryLabSrc = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-overview-gear-dry-lab.webp";
 const gearWetLabSrc = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-overview-gear-wet-lab.webp";
@@ -201,8 +200,7 @@ export function EngineeringSystemOverview() {
           role="img"
           aria-label="The CirCure TIME Engineering System interactive mechanical illustration"
         >
-          {/* 1. Background Canvas */}
-          <image href={bgSrc} x="0" y="0" width="1673" height="940" preserveAspectRatio="none" />
+          {/* 1. Background Canvas - removed to blend seamlessly into page background */}
 
           {/* 2. Six Satellite Gears (continuous rotation around their own centers) */}
           {/* Dry Lab: center (361.5, 230.0), size 360 */}

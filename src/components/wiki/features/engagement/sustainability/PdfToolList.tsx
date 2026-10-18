@@ -108,7 +108,9 @@ export function PdfToolList({
                 ) : null}
                 <span className="sust-folder__title">{tool.title}</span>
                 <span className="sust-folder__meta">
-                  {tool.pdfs.map((pdf) => pdfLabel(pdf.label)).join(" · ")}
+                  {tool.pdfs.length > 3
+                    ? `${tool.pdfs.length} PDFs`
+                    : tool.pdfs.map((pdf) => pdfLabel(pdf.label)).join(" · ")}
                 </span>
               </span>
             </button>

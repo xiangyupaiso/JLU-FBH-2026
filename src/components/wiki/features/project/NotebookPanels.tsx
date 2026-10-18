@@ -1,10 +1,13 @@
 /* eslint-disable react-refresh/only-export-components */
 import { useEffect, useRef, useState, type ReactNode } from "react";
+import { createPortal } from "react-dom";
 import { ArrowDown } from "lucide-react";
 import {
-  wetLabEntries,
+  notebookGroups,
   type NotebookBlock,
   type NotebookEntry,
+  type NotebookGroup,
+  type NotebookGroupId,
 } from "../../../../data/project/notebookPage";
 import {
   getNotebookImage,
@@ -19,32 +22,36 @@ import {
 import { renderInlineFormatting } from "../../proseInline";
 import "../../../../styles/features/notebook-panels.css";
 
-// Phase labels come only from the manuscript; unlabelled work stays unlabelled.
-const phaseLabels = [
-  ...new Set(
-    wetLabEntries.flatMap((entry) =>
-      entry.blocks
-        .filter((block) => block.type === "discussion")
-        .map((block) => block.label),
-    ),
-  ),
-];
+// The same source tag keeps its colour across every notebook group.
 const phaseTones = new Map(
-  phaseLabels.map((label, index) => [label, index % 4]),
+  [
+    "Brainstorming",
+    "Preparation",
+    "Pause",
+    "Review & Handoff",
+    "Approval",
+    "Construction",
+    "Validation",
+    "Experiments",
+    "Analysis",
+    "Design",
+    "Development",
+    "Learning",
+  ].map((label, index) => [label, index]),
 );
-const timelineEntries = wetLabEntries.map((entry) => {
-  const phase = entry.blocks.find(
-    (block) => block.type === "discussion",
-  )?.label;
-  return {
+const timelines = notebookGroups.map((group) => {
+  const entries = group.entries.map((entry) => ({
     ...entry,
-    phase,
-    phaseTone: phase ? phaseTones.get(phase) : undefined,
+    phase: entry.tags[0],
+    phaseTone: phaseTones.get(entry.tags[0]),
+    phases: entry.tags.map((label) => ({ label, tone: phaseTones.get(label) })),
+  }));
+  return {
+    id: group.id,
+    entries,
+    months: ganttMonthGroups(entries).flatMap((connected) => connected.months),
   };
 });
-const months = ganttMonthGroups(timelineEntries).flatMap(
-  (group) => group.months,
-);
 function RecordBlock({ block }: { block: NotebookBlock }) {
   if (block.type === "prose")
     return <p>{renderInlineFormatting(block.text)}</p>;
@@ -74,7 +81,7 @@ function RecordBlock({ block }: { block: NotebookBlock }) {
             <tr>
               {block.headers.map((header) => (
                 <th scope="col" key={header}>
-                  {header}
+                  {renderInlineFormatting(header)}
                 </th>
               ))}
             </tr>
@@ -85,10 +92,10 @@ function RecordBlock({ block }: { block: NotebookBlock }) {
                 {row.map((cell, index) =>
                   index === 0 ? (
                     <th scope="row" key={index}>
-                      {cell}
+                      {renderInlineFormatting(cell)}
                     </th>
                   ) : (
-                    <td key={index}>{cell}</td>
+                    <td key={index}>{renderInlineFormatting(cell)}</td>
                   ),
                 )}
               </tr>
@@ -145,12 +152,16 @@ function NotebookRecord({ entry }: { entry: NotebookEntry }) {
   );
 }
 
-export function WetLabNotebook() {
+function NotebookTimeline({ group }: { group: NotebookGroup }) {
+  const { entries: timelineEntries, months } = timelines.find(
+    (timeline) => timeline.id === group.id,
+  )!;
   const [month, setMonth] = useState(months[0]);
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const timelineRef = useRef<HTMLDivElement>(null);
   const navigationRef = useRef<HTMLElement>(null);
-  const selectedEntry = wetLabEntries.find((entry) => entry.id === selectedId);
+  const selectedEntry = group.entries.find((entry) => entry.id === selectedId);
+  const monthAnchorPrefix = `notebook-${group.id}-month`;
 
   useEffect(() => {
     const headings = [
@@ -204,16 +215,19 @@ export function WetLabNotebook() {
   }
 
   return (
-    <div className="notebook-workspace">
+    <div className="notebook-workspace" id={`notebook-group-${group.id}`}>
       <header className="notebook-workspace__heading">
         <div>
           <h2>
-            <span className="wiki-heading-marker">Wet Lab</span>
+            <span className="wiki-heading-marker">{group.label}</span>
           </h2>
           <p>
             {formatGanttRange({
-              start: wetLabEntries[0].start,
-              end: wetLabEntries[wetLabEntries.length - 1].end,
+              start: group.entries[0].start,
+              end: group.entries.reduce(
+                (last, entry) => (entry.end > last ? entry.end : last),
+                group.entries[0].end,
+              ),
             })}
           </p>
         </div>
@@ -222,21 +236,26 @@ export function WetLabNotebook() {
           Follow the dates downward. Select an entry to expand or collapse it.
         </p>
       </header>
+      {group.intro.map((paragraph) => (
+        <p className="notebook-workspace__intro" key={paragraph}>
+          {renderInlineFormatting(paragraph)}
+        </p>
+      ))}
       <nav
         ref={navigationRef}
         className="notebook-months"
-        aria-label="Notebook months"
+        aria-label={`${group.label} notebook months`}
       >
         {months.map((value) => {
           const date = new Date(`${value}-01T00:00:00Z`);
-          const count = layoutGanttMonth(wetLabEntries, value).periods.length;
+          const count = layoutGanttMonth(group.entries, value).periods.length;
           const label = new Intl.DateTimeFormat("en-GB", {
             month: "short",
             timeZone: "UTC",
           }).format(date);
           return (
             <a
-              href={`#notebook-month-${value}`}
+              href={`#${monthAnchorPrefix}-${value}`}
               key={value}
               aria-current={month === value ? "date" : undefined}
               aria-label={`${label} ${date.getUTCFullYear()}, ${count} ${count === 1 ? "entry" : "entries"}`}
@@ -258,10 +277,10 @@ export function WetLabNotebook() {
       <div ref={timelineRef} className="notebook-workspace__timeline">
         <VerticalGantt
           entries={timelineEntries}
-          monthAnchorPrefix="notebook-month"
+          monthAnchorPrefix={monthAnchorPrefix}
           selectedId={selectedId}
           onSelect={selectEntry}
-          detailId="notebook-selected-record"
+          detailId={`notebook-${group.id}-selected-record`}
           renderDetail={() =>
             selectedEntry ? <NotebookRecord entry={selectedEntry} /> : null
           }
@@ -271,6 +290,70 @@ export function WetLabNotebook() {
   );
 }
 
+function groupFromHash(): NotebookGroupId {
+  const hash = window.location.hash;
+  return (
+    notebookGroups.find(
+      (group) =>
+        hash === `#notebook-group-${group.id}` ||
+        hash.startsWith(`#notebook-${group.id}-month-`),
+    )?.id ?? "wet-lab"
+  );
+}
+
+export function NotebookWorkspace() {
+  const [groupId, setGroupId] = useState<NotebookGroupId>(groupFromHash);
+  const shellRef = useRef<HTMLDivElement>(null);
+  const group = notebookGroups.find((item) => item.id === groupId)!;
+
+  useEffect(() => {
+    const syncGroup = () => setGroupId(groupFromHash());
+    window.addEventListener("hashchange", syncGroup);
+    return () => window.removeEventListener("hashchange", syncGroup);
+  }, []);
+
+  function switchGroup(id: NotebookGroupId) {
+    setGroupId(id);
+    window.history.pushState(window.history.state, "", `#notebook-group-${id}`);
+    requestAnimationFrame(() => {
+      shellRef.current?.scrollIntoView({ block: "start" });
+    });
+  }
+
+  return (
+    <div className="notebook-shell" ref={shellRef}>
+      {createPortal(
+        <nav className="notebook-group-nav" aria-label="Notebook groups">
+          {notebookGroups.map((item) => (
+            <a
+              href={`#notebook-group-${item.id}`}
+              key={item.id}
+              aria-current={item.id === groupId ? "true" : undefined}
+              onClick={(event) => {
+                // Keep modified clicks available for opening a group in another tab.
+                if (
+                  event.metaKey ||
+                  event.ctrlKey ||
+                  event.shiftKey ||
+                  event.altKey
+                )
+                  return;
+                event.preventDefault();
+                switchGroup(item.id);
+              }}
+            >
+              <span className="notebook-group-nav__dot" aria-hidden="true" />
+              {item.label}
+            </a>
+          ))}
+        </nav>,
+        document.body,
+      )}
+      <NotebookTimeline group={group} key={group.id} />
+    </div>
+  );
+}
+
 export function notebookFeatures(): Record<string, ReactNode> {
-  return { "wet-lab-notebook": <WetLabNotebook /> };
+  return { "notebook-workspace": <NotebookWorkspace /> };
 }

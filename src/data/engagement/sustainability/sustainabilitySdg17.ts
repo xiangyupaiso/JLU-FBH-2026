@@ -1,6 +1,6 @@
 /** SDG 17 — finalized manuscript, in source order. Pure data, no JSX. */
 import type { SdgChapter } from "./sdgChapterContract";
-import { sdg17PhotoSets } from "./sustainabilitySdg17Assets";
+import { sdg17PhotoSets, sdg17RoundtablePdfs } from "./sustainabilitySdg17Assets";
 
 export const sdg17Chapter: SdgChapter = {
   id: "sdg17",
@@ -553,8 +553,7 @@ export const sdg17Chapter: SdgChapter = {
         bestFor:
           "**Regional team exchanges, finding collaborators, safety education**, and facilitated discussions about **engineered-organism release and research responsibility**.",
         whatItDoes: "",
-        // Awaiting the team's roundtable PDFs; supplied files use the shared document viewer.
-        pdfs: [],
+        pdfs: sdg17RoundtablePdfs,
       },
       {
         title:

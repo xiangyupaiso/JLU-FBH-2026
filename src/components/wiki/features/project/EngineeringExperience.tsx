@@ -183,9 +183,25 @@ function EngineeringBlock({ block }: { block: WikiContentBlock }) {
               </svg>
             </summary>
             <div className="eng-reading-tips__body">
+              <h4 className="eng-reading-tips__subtitle">
+                Navigation &amp; Stage Switching
+              </h4>
               <p>
                 <InlineCopy text={block.body} />
               </p>
+              <div className="eng-reading-tips__stages" aria-hidden="true">
+                <span className="eng-reading-tips__hint">Stage Controls:</span>
+                {(["Design", "Build", "Test", "Learn"] as const).map((stage) => (
+                  <span
+                    key={stage}
+                    className={`eng-reading-tips__pill eng-reading-tips__pill--${stage.toLowerCase()}`}
+                  >
+                    <span className="eng-reading-tips__arrow">‹</span>
+                    {stage}
+                    <span className="eng-reading-tips__arrow">›</span>
+                  </span>
+                ))}
+              </div>
             </div>
           </details>
         );
@@ -299,11 +315,6 @@ function EngineeringBlock({ block }: { block: WikiContentBlock }) {
       return (
         <details
           className="eng-code-fold"
-          onToggle={() => {
-            // Re-measure the pinned reading timeline so the expanded code block
-            // stays reachable by continued scrolling (same treatment as reading tips).
-            ScrollTrigger.refresh();
-          }}
         >
           <summary className="eng-code-fold__summary">
             <span className="eng-code-fold__label">

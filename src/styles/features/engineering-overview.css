@@ -13,13 +13,18 @@
   position: relative;
   width: 100%;
   aspect-ratio: 1673 / 940;
-  background-color: #f3f7e0;
-  border-radius: 14px;
-  overflow: hidden;
-  box-shadow:
-    0 4px 20px rgba(45, 68, 54, 0.08),
-    0 1px 3px rgba(45, 68, 54, 0.05);
+  background-color: transparent;
+  border-radius: 0;
+  overflow: visible;
+  box-shadow: none;
   border: none;
+}
+
+.wiki-page--engineering .eng-introduction .wiki-figure,
+.wiki-page--engineering .eng-introduction .wiki-figure img {
+  background: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
 }
 
 .eng-overview-mech__svg {

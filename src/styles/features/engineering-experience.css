@@ -97,8 +97,63 @@
   font-size: 14px;
   line-height: 1.65;
 }
+.wiki-page--engineering .eng-reading-tips__subtitle {
+  margin: 0 0 10px;
+  font-family: var(--font-sans);
+  font-size: 14.5px;
+  font-weight: 700;
+  color: var(--route-subheading-ink);
+  letter-spacing: -0.01em;
+}
 .wiki-page--engineering .eng-reading-tips__body p {
   margin: 0;
+}
+.wiki-page--engineering .eng-reading-tips__stages {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 12px;
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px dashed var(--route-line);
+}
+.wiki-page--engineering .eng-reading-tips__hint {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--route-subheading-ink);
+}
+.wiki-page--engineering .eng-reading-tips__pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  background: color-mix(in srgb, var(--route-paper) 70%, #ffffff);
+  box-shadow: 0 0 0 1px var(--route-line);
+}
+.wiki-page--engineering .eng-reading-tips__pill--design {
+  color: var(--eng-design);
+  border-left: 2px solid var(--eng-design);
+}
+.wiki-page--engineering .eng-reading-tips__pill--build {
+  color: var(--eng-build);
+  border-left: 2px solid var(--eng-build);
+}
+.wiki-page--engineering .eng-reading-tips__pill--test {
+  color: var(--eng-test);
+  border-left: 2px solid var(--eng-test);
+}
+.wiki-page--engineering .eng-reading-tips__pill--learn {
+  color: var(--eng-learn);
+  border-left: 2px solid var(--eng-learn);
+}
+.wiki-page--engineering .eng-reading-tips__arrow {
+  font-size: 13px;
+  font-weight: 900;
+  opacity: 0.7;
 }
 .wiki-page--engineering .eng-introduction .wiki-blocks {
   display: grid;
@@ -265,6 +320,23 @@
 }
 .wiki-page--engineering .eng-stage-content .wiki-figure figcaption {
   margin-top: 10px;
+}
+.wiki-page--engineering .eng-stage .wiki-figure:has(img[src*="engineering-c2-01"]),
+.wiki-page--engineering .eng-stage .wiki-figure:has(img[src*="engineering-c2-02a"]),
+.wiki-page--engineering .eng-stage .wiki-figure:has(img[src*="engineering-c2-06"]) {
+  margin-top: 4px;
+}
+.wiki-page--engineering .eng-stage .wiki-figure img[src*="engineering-c2-01"],
+.wiki-page--engineering .eng-stage .wiki-figure img[src*="engineering-c2-02a"],
+.wiki-page--engineering .eng-stage .wiki-figure img[src*="engineering-c2-06"] {
+  aspect-ratio: 3000 / 1780;
+  object-fit: cover;
+  object-position: 50% 52%;
+}
+.wiki-page--engineering .eng-stage .wiki-figure:has(img[src*="engineering-c2-01"]) figcaption,
+.wiki-page--engineering .eng-stage .wiki-figure:has(img[src*="engineering-c2-02a"]) figcaption,
+.wiki-page--engineering .eng-stage .wiki-figure:has(img[src*="engineering-c2-06"]) figcaption {
+  margin-top: 6px;
 }
 .wiki-page--engineering .eng-stage .wiki-prose p {
   font-size: clamp(15px, 1.2vw, 17px);
@@ -825,12 +897,12 @@
 
 /* Collapsible Code Blocks */
 .wiki-page--engineering .eng-code-fold {
-  margin: 20px 0;
+  margin: 16px 0;
   border-radius: 10px;
   border: 1px solid var(--route-line);
   background: color-mix(in srgb, var(--route-paper) 60%, transparent);
   overflow: hidden;
-  transition: background-color 160ms ease;
+  contain: paint;
 }
 .wiki-page--engineering .eng-code-fold[open] {
   background: var(--route-paper);

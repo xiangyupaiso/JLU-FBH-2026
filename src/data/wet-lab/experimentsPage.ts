@@ -68,7 +68,7 @@ export const experimentsPage: WikiPageContent = {
         {
           "type": "prose",
           "paragraphs": [
-            "A candidate epitope becomes a vaccine molecule in two steps, plasmid sourcing and in vitro synthesis. The CTL epitope coding sequences predicted by the dry lab were designed into expression plasmids carrying a T7 promoter and the circularisation elements. The constructs were ordered from a commercial gene-synthesis supplier, linearised and purified before use as templates for T7 in vitro transcription. Each of the 13 cassettes sits between a BamHI site and an XhoI site, immediately downstream of the tPA signal sequence and immediately upstream of the 4×mC3dP28 adjuvant block; one of them, Nectin4-CTL1, merges two overlapping predicted epitopes into a single 14-mer and is the only merged design in the set. Having the constructs synthesised keeps all 13 plasmids identical to the design file, so the round-1 comparison between them rests on the epitope sequence alone. T7 RNA polymerase transcribed a linear precursor RNA, the DNA template was digested away and the RNA purified, and a self-splicing intron closed the precursor into a covalent circle. Having no free ends, the circle survives exonuclease attack better than a linear mRNA and keeps expressing antigen inside the DC for longer, which is the reason the platform is built on circRNA. After circularisation and RNase R treatment, the estimated circular fraction was measured on the representative preparation using the circular channel (SJ3910F + SJ3909R) and residual-linear channel (SJ3911F + SJ3909R)."
+            "A candidate epitope becomes a vaccine molecule in two steps, plasmid sourcing and in vitro synthesis. The CTL epitope coding sequences predicted by the dry lab were designed into expression plasmids carrying a T7 promoter and the circularisation elements. The constructs were ordered from a commercial gene-synthesis supplier, linearised and purified before use as templates for T7 in vitro transcription. Each of the 13 cassettes sits between a BamHI site and an XhoI site, immediately downstream of the tPA signal sequence and immediately upstream of the 4×mC3dP28 adjuvant block; two of them, Trop2-CTL3 and Nectin4-CTL1, merges two overlapping predicted epitopes into a single 14-mer. Having the constructs synthesised keeps all 13 plasmids identical to the design file, so the round-1 comparison between them rests on the epitope sequence alone. T7 RNA polymerase transcribed a linear precursor RNA, the DNA template was digested away and the RNA purified, and a self-splicing intron closed the precursor into a covalent circle. Having no free ends, the circle survives exonuclease attack better than a linear mRNA and keeps expressing antigen inside the DC for longer, which is the reason the platform is built on circRNA. After circularisation and RNase R treatment, the estimated circular fraction was measured on the representative preparation using the circular channel (SJ3910F + SJ3909R) and residual-linear channel (SJ3911F + SJ3909R)."
           ]
         },
         {
@@ -222,7 +222,7 @@ export const experimentsPage: WikiPageContent = {
                 {
                   "type": "prose",
                   "paragraphs": [
-                    "Purify by extracting twice with phenol:chloroform and once with chloroform."
+                    "Purify by extracting twice with phenol: chloroform and once with chloroform."
                   ]
                 }
               ]
@@ -430,7 +430,7 @@ export const experimentsPage: WikiPageContent = {
         {
           "type": "prose",
           "paragraphs": [
-            "With circRNA for the 13 single-epitope constructs in hand, the task of round 1 was to identify which of them are genuinely immunogenic. Starting from commercially sourced human PBMC of defined HLA-A*02:01 type, we sorted monocytes and induced them into dendritic cells while also sorting autologous T cells; each single-epitope circRNA was electroporated separately into DCs, which were then co-cultured with autologous T cells so that the translated epitope could be presented on MHC-I. ELISpot quantification of antigen-specific IFN-γ secretion was the main criterion, with cytotoxicity and flow-cytometric activation assays alongside it, and the constructs were compared one against another. The round selects, from each of the four antigens TROP2, B7-H4, Nectin-4 and LIV-1, the two most immunogenic epitopes to carry into the combined construct. The per-antigen ceiling of two is set by B7-H4, which entered round 1 with only two constructs; taking two from every antigen is what keeps the four antigens equally represented in the cassette."
+            "With circRNA for the 13 single-epitope constructs in hand, the task of round 1 was to identify which of them are genuinely immunogenic. Starting from commercially sourced human PBMC of defined HLA-A*02:01 type, we sorted monocytes and induced them into dendritic cells while also sorting autologous T cells; each single-epitope circRNA was electroporated separately into DCs, which were then co-cultured with autologous T cells so that the translated epitope could be presented on MHC-I. ELISpot quantification of IFN-γ secretion was the main criterion, with cytotoxicity and flow-cytometric activation assays alongside it, and the constructs were compared one against another. The round selects, from each of the four antigens TROP2, B7-H4, Nectin-4 and LIV-1, the two most immunogenic epitopes to carry into the combined construct. The per-antigen ceiling of two is set by B7-H4, which entered round 1 with only two constructs; taking two from every antigen is what keeps the four antigens equally represented in the cassette."
           ]
         },
         {
@@ -630,7 +630,7 @@ export const experimentsPage: WikiPageContent = {
                 {
                   "type": "prose",
                   "paragraphs": [
-                    "Culture at 37 ℃, 5% CO₂ for 7 days to induce immature DCs, performing a half-volume medium change with fresh cytokines every 3 days."
+                    "Culture at 37 ℃, 5% CO₂ for 3 days to induce immature DCs, performing a half-volume medium change with fresh cytokines every 3 days."
                   ]
                 }
               ]
@@ -866,7 +866,7 @@ export const experimentsPage: WikiPageContent = {
           "start": 1,
           "items": [
             "CD3⁺ T cells should be sorted from the flow-through after CD14 depletion to avoid monocyte contamination; if necessary, residual monocytes can first be removed by adherence.",
-            "Primary antigen sensitisation usually requires 7–10 days and can be repeated to expand antigen-specific T cells; a single 24 h co-culture is relatively short and may underestimate the frequency, so priming can be extended if sensitivity is a priority."
+            "Primary antigen sensitisation usually requires 3–7 days and can be repeated to expand antigen-specific T cells; a single 24 h co-culture is relatively short and may underestimate the frequency, so priming can be extended if sensitivity is a priority."
           ]
         },
         {
@@ -883,7 +883,7 @@ export const experimentsPage: WikiPageContent = {
         {
           "type": "prose",
           "paragraphs": [
-            "ELISpot counts IFN-γ–secreting antigen-specific T cells one cell at a time, which makes it the primary immunogenicity readout of this project. IFN-γ released by an activated T cell is captured by the plate-bound antibody and developed through biotin, streptavidin, HRP and AEC into an insoluble spot, and the spot count (SFC) tracks the frequency of responding T cells. Round 1 used it to rank the 13 single-epitope constructs, and was run as a ranking screen with no control wells, so its numbers are comparative only. [13]"
+            "ELISpot counts IFN-γ–secreting T cells one cell at a time, which makes it the primary immunogenicity readout of this project. IFN-γ released by an activated T cell is captured by the plate-bound antibody and developed through biotin, streptavidin, HRP and AEC into an insoluble spot, and the spot count (SFC) tracks the frequency of responding T cells. Round 1 used it to rank the 13 single-epitope constructs, and was run as a ranking screen with no control wells, so its numbers are comparative only. [13]"
           ]
         },
         {
@@ -2494,7 +2494,7 @@ export const experimentsPage: WikiPageContent = {
         {
           "type": "prose",
           "paragraphs": [
-            "Same assay as 2.3, now on the four optimised constructs, and this time against a vector control. It quantifies how many antigen-specific IFN-γ–secreting T cells each construct induces, which is what allows the Combined vaccine to be compared with the single-epitope constructs. [13]"
+            "Same assay as 2.3, now on the four optimised constructs, and this time against a vector control. It quantifies how many IFN-γ–secreting T cells each construct induces, which is what allows the Combined vaccine to be compared with the single-epitope constructs. [13]"
           ]
         },
         {

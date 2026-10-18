@@ -1,4 +1,89 @@
 /* The shared hideOutline/documentFlow shell owns the full reader geometry. */
+.wiki-page.wiki-page--route.wiki-page--notebook.route--document-flow
+  .route-frame {
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-position: center bottom;
+  background-size: 100% calc(100dvh - var(--header-height));
+}
+
+.notebook-shell,
+.notebook-workspace {
+  scroll-margin-top: calc(var(--header-height) + 24px);
+}
+
+.notebook-group-nav {
+  position: fixed;
+  z-index: 30;
+  top: 50%;
+  left: max(2px, env(safe-area-inset-left));
+  transform: translateY(-50%);
+  display: grid;
+  width: 100px;
+  gap: 10px;
+  color: #314b34;
+  font: 500 12px / 1.5 var(--font-sans, sans-serif);
+}
+.notebook-group-nav a {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 7px;
+  width: 100%;
+  min-height: 44px;
+  padding: 10px 8px;
+  color: inherit;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color 160ms;
+}
+.notebook-group-nav a::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 1px 0;
+  background: linear-gradient(100deg, #b8c99a40, #b8c99a14 85%), #fafcf3f5;
+  clip-path: polygon(
+    2% 14%,
+    28% 5%,
+    62% 9%,
+    98% 3%,
+    100% 82%,
+    78% 96%,
+    40% 91%,
+    0 97%
+  );
+  transition: background-color 160ms;
+}
+.notebook-group-nav a:hover::before {
+  background-color: #e6edd9;
+}
+.notebook-group-nav a[aria-current="true"]::before {
+  background:
+    linear-gradient(100deg, #93ad6d78, #b1c68b50 75%, #c4d4a832), #f8faef;
+}
+.notebook-group-nav a[aria-current="true"] {
+  color: #253e28;
+  font-weight: 650;
+}
+.notebook-group-nav a:focus-visible {
+  outline: 2px solid #536c3e;
+  outline-offset: 2px;
+}
+.notebook-group-nav__dot {
+  width: 5px;
+  height: 5px;
+  flex: none;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: 0.24;
+}
+.notebook-group-nav [aria-current="true"] .notebook-group-nav__dot {
+  opacity: 1;
+}
+
 .notebook-workspace {
   --notebook-nav-h: 90px;
   --font-heading: var(--font-body);
@@ -30,6 +115,38 @@
 .notebook-workspace [data-phase-tone="3"] {
   --phase-pigment: #75965b;
   --phase-ink: #3c542e;
+}
+.notebook-workspace [data-phase-tone="4"] {
+  --phase-pigment: #b57362;
+  --phase-ink: #804638;
+}
+.notebook-workspace [data-phase-tone="5"] {
+  --phase-pigment: #609c92;
+  --phase-ink: #2e625b;
+}
+.notebook-workspace [data-phase-tone="6"] {
+  --phase-pigment: #7b8fb9;
+  --phase-ink: #42547e;
+}
+.notebook-workspace [data-phase-tone="7"] {
+  --phase-pigment: #b48098;
+  --phase-ink: #7b4660;
+}
+.notebook-workspace [data-phase-tone="8"] {
+  --phase-pigment: #788b8e;
+  --phase-ink: #445d62;
+}
+.notebook-workspace [data-phase-tone="9"] {
+  --phase-pigment: #ae9d4c;
+  --phase-ink: #6c5c22;
+}
+.notebook-workspace [data-phase-tone="10"] {
+  --phase-pigment: #bb8d62;
+  --phase-ink: #7e512e;
+}
+.notebook-workspace [data-phase-tone="11"] {
+  --phase-pigment: #8e9a66;
+  --phase-ink: #4f5f30;
 }
 
 .notebook-workspace :is(h2, h3, h4, button, a) {
@@ -68,13 +185,20 @@
   flex: none;
   margin-top: 2px;
 }
+.notebook-workspace .notebook-workspace__intro {
+  margin: 20px 0 0;
+  color: #354337;
+  font-size: 14px;
+  line-height: 1.85;
+}
 
 .notebook-months {
   position: sticky;
   top: var(--header-height);
   z-index: 5;
   display: grid;
-  grid-template-columns: repeat(10, minmax(0, 1fr));
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(0, 1fr);
   gap: 4px;
   margin: 28px 0 32px;
   padding: 10px 0;
@@ -328,11 +452,27 @@
   }
   .notebook-months {
     position: static;
+    grid-auto-flow: row;
     grid-template-columns: repeat(6, minmax(0, 1fr));
     gap: 6px;
   }
   .notebook-months a {
     min-height: 60px;
+  }
+}
+
+@media (max-width: 1023px) {
+  .notebook-group-nav {
+    top: auto;
+    left: 16px;
+    bottom: max(18px, env(safe-area-inset-bottom));
+    transform: none;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    width: min(330px, calc(100vw - 32px));
+    gap: 8px;
+  }
+  .notebook-shell {
+    padding-bottom: 80px;
   }
 }
 
@@ -352,7 +492,9 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .notebook-months a::before {
+  .notebook-months a::before,
+  .notebook-group-nav a,
+  .notebook-group-nav a::before {
     transition: none;
   }
 }
