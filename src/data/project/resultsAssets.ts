@@ -383,11 +383,11 @@ export const resultsAssets = {
     height: 754,
   },
   fig31: {
-    fileName: "key-intermediate-states-at-10-2-g-dose.avif",
+    fileName: "results-31-effector-suppression-dynamics.avif",
     localSourcePath:
       "文案集/project/results/图片和附件/31_effector_suppression_dynamics.png",
     uploadUrl:
-      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/results/key-intermediate-states-at-10-2-g-dose.avif",
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/results/results/results-31-effector-suppression-dynamics.avif",
     alt: "Figure 31. Key intermediate states at 10.2 μg dose. (A) Effector activity (blue) and suppression (red) over 35 days. (B) Cell-response interface showing equivalent effector-to-target ratio approaching saturation. (C) Per-capita tumor killing rate (effective rate after suppression, solid; before suppression, dashed). Five injection events create pulsed immune responses.",
     caption:
       "Key intermediate states at 10.2 μg dose. (A) Effector activity (blue) and suppression (red) over 35 days. (B) Cell-response interface showing equivalent effector-to-target ratio approaching saturation. (C) Per-capita tumor killing rate (effective rate after suppression, solid; before suppression, dashed). Five injection events create pulsed immune responses.",
@@ -396,11 +396,11 @@ export const resultsAssets = {
     height: 425,
   },
   fig32: {
-    fileName: "cell-inferred-immune-gains-and-composite-effector-score.avif",
+    fileName: "results-29-immune-gain-components.avif",
     localSourcePath:
       "文案集/project/results/图片和附件/29_immune_gain_components.png",
     uploadUrl:
-      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/results/cell-inferred-immune-gains-and-composite-effector-score.avif",
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/results/results/results-29-immune-gain-components.avif",
     alt: "Figure 32. Cell-inferred immune gains and composite effector score. Relative gains from DC maturation (CD80/CD86), T-cell activation (CD8/CD69), IFN-γ secretion, and Granzyme B. The geometric effector composite (orange) integrates the three T-cell readouts with equal weighting, providing the calibration anchor for immune-activation parameters. CD44/CD62L ratio is shown descriptively but not used in the composite.",
     caption:
       "Cell-inferred immune gains and composite effector score. Relative gains from DC maturation (CD80/CD86), T-cell activation (CD8/CD69), IFN-γ secretion, and Granzyme B. The geometric effector composite (orange) integrates the three T-cell readouts with equal weighting, providing the calibration anchor for immune-activation parameters. CD44/CD62L ratio is shown descriptively but not used in the composite.",
@@ -409,10 +409,10 @@ export const resultsAssets = {
     height: 719,
   },
   fig33: {
-    fileName: "model-prediction-versus-literature-scale-tumor-growth.avif",
+    fileName: "results-animal-comparison.avif",
     localSourcePath: "文案集/project/results/图片和附件/animal_comparison.png",
     uploadUrl:
-      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/results/model-prediction-versus-literature-scale-tumor-growth.avif",
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/results/results/results-animal-comparison.avif",
     alt: "Figure 33. Model prediction versus literature-scale tumor growth. Gray: external untreated scenario; Blue: conditional 10.2 μg treatment prediction with 95% uncertainty interval. The model predicts moderate tumor suppression; observed outcomes showed stronger efficacy (ratio 0.104) but fell within the conditional simulation envelope.",
     caption:
       "Model prediction versus literature-scale tumor growth. Gray: external untreated scenario; Blue: conditional 10.2 μg treatment prediction with 95% uncertainty interval. The model predicts moderate tumor suppression; observed outcomes showed stronger efficacy (ratio 0.104) but fell within the conditional simulation envelope.",

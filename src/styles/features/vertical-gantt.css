@@ -66,14 +66,20 @@
 
 .vertical-gantt__calendar {
   --gantt-first-track: 3;
+  --gantt-date-width: 108px;
+  --gantt-track-width: 26px;
+  --gantt-column-gap: 4px;
+  --gantt-label-gap: 20px;
+  --gantt-track-step: calc(var(--gantt-track-width) + var(--gantt-column-gap));
   position: relative;
   isolation: isolate;
   display: grid;
   grid-template-columns:
-    minmax(0, 1fr) 88px repeat(var(--gantt-lanes), 18px)
+    minmax(0, 1fr) var(--gantt-date-width)
+    repeat(var(--gantt-lanes), var(--gantt-track-width))
     minmax(0, 1fr);
   grid-template-rows: repeat(var(--gantt-rows), minmax(48px, auto));
-  column-gap: 3px;
+  column-gap: var(--gantt-column-gap);
   align-items: stretch;
 }
 
@@ -159,14 +165,22 @@
 }
 .vertical-gantt__event[data-side="left"] .vertical-gantt__lead {
   left: 100%;
-  width: calc(123px + var(--gantt-lane) * 21px);
+  width: calc(
+    var(--gantt-label-gap) + var(--gantt-date-width) + 2 *
+      var(--gantt-column-gap) + var(--gantt-track-width) / 2 +
+      var(--gantt-lane) * var(--gantt-track-step)
+  );
 }
 .vertical-gantt__event[data-side="left"] .vertical-gantt__lead::after {
   right: -3px;
 }
 .vertical-gantt__event[data-side="right"] .vertical-gantt__lead {
   right: 100%;
-  width: calc(32px + (var(--gantt-lanes) - 1 - var(--gantt-lane)) * 21px);
+  width: calc(
+    var(--gantt-label-gap) + var(--gantt-column-gap) +
+      var(--gantt-track-width) / 2 +
+      (var(--gantt-lanes) - 1 - var(--gantt-lane)) * var(--gantt-track-step)
+  );
 }
 .vertical-gantt__event[data-side="right"] .vertical-gantt__lead::after {
   left: -3px;
@@ -197,11 +211,11 @@
 }
 .vertical-gantt__entries[data-side="left"] {
   grid-column: 1;
-  padding-right: 20px;
+  padding-right: var(--gantt-label-gap);
 }
 .vertical-gantt__entries[data-side="right"] {
   grid-column: -2;
-  padding-left: 20px;
+  padding-left: var(--gantt-label-gap);
 }
 
 .vertical-gantt__entry {
@@ -411,8 +425,13 @@
 @container vertical-gantt (max-width: 720px) {
   .vertical-gantt__calendar {
     --gantt-first-track: 2;
-    grid-template-columns: 58px repeat(var(--gantt-lanes), 12px) minmax(0, 1fr);
-    column-gap: 1px;
+    --gantt-date-width: 62px;
+    --gantt-track-width: 14px;
+    --gantt-column-gap: 1px;
+    --gantt-label-gap: 8px;
+    grid-template-columns:
+      var(--gantt-date-width)
+      repeat(var(--gantt-lanes), var(--gantt-track-width)) minmax(0, 1fr);
   }
   .vertical-gantt__calendar::before {
     grid-column: 1 / -2;
@@ -423,7 +442,7 @@
   }
   .vertical-gantt__entries[data-side] {
     grid-column: -2;
-    padding: 0 0 16px 8px;
+    padding: 0 0 16px var(--gantt-label-gap);
   }
   .vertical-gantt .vertical-gantt__heading {
     grid-column: 1;
@@ -464,7 +483,11 @@
   .vertical-gantt__event[data-side] .vertical-gantt__lead {
     left: auto;
     right: 100%;
-    width: calc(15px + (var(--gantt-lanes) - 1 - var(--gantt-lane)) * 13px);
+    width: calc(
+      var(--gantt-label-gap) + var(--gantt-column-gap) +
+        var(--gantt-track-width) / 2 +
+        (var(--gantt-lanes) - 1 - var(--gantt-lane)) * var(--gantt-track-step)
+    );
   }
   .vertical-gantt__event[data-side] .vertical-gantt__lead::after {
     left: -3px;

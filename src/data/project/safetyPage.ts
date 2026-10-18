@@ -59,7 +59,7 @@ export const safetyPage: WikiPageContent = {
             "Within the **SAFE ON** framework, **System** establishes the organizational structure and operational mechanisms for safety management; **Assessment** identifies and evaluates Biosafety and Biosecurity risks associated with the project and incorporates assessment outcomes into project decision-making; **Facility** ensures a safe experimental environment through the configuration, maintenance, and proper use of safety equipment; **Experiment** implements safety requirements throughout Dry Lab, Wet Lab, and specific experimental procedures, while utilizing Virtual Laboratory to shift risk prevention earlier in the workflow; **Orientation** ensures that participants acquire safety competencies corresponding to their responsibilities through tiered training, assessments, and emergency drills; **Network** extends safety concepts beyond the laboratory to the scientific community, campus, and society, addressing safety, ethical considerations, and social responsibility as synthetic biology advances toward real-world applications.",
           ],
         },
-        getSafetyFigure("safe-on-framework.avif"),
+        getSafetyFigure("0-0safe-on.avif"),
         {
           type: "prose",
           paragraphs: [
