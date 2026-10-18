@@ -440,17 +440,7 @@
   line-height: 1.28;
 }
 
-/* Manuscript + complete sticky contents */
-.wiki-page.wiki-page--manuscript .wiki-record {
-  display: grid;
-  width: var(--wet-page);
-  grid-template-columns: 210px minmax(0, var(--wet-article));
-  gap: 80px;
-  align-items: start;
-  margin: 0 auto;
-  padding: 0 0 130px;
-}
-
+/* Manuscript contents; the reader shell belongs to wiki-route-skin.css. */
 .wiki-page.wiki-page--manuscript .wiki-outline {
   position: sticky;
   top: calc(var(--header-height) + 22px);
@@ -1752,12 +1742,6 @@
 
 /* Scroll choreography — the Home page's ribbon language, translated for a
    scientific manuscript. Motion clarifies reading order without cardifying it. */
-.wiki-page.wiki-page--manuscript .wiki-record {
-  width: min(1280px, calc(100% - 48px));
-  grid-template-columns: 220px minmax(0, 1fr);
-  gap: 56px;
-}
-
 .wiki-page.wiki-page--manuscript .wiki-outline nav {
   position: relative;
   padding-left: 34px;
@@ -2313,11 +2297,6 @@
     min-height: 560px;
   }
 
-  .wiki-page.wiki-page--manuscript .wiki-record {
-    grid-template-columns: 1fr;
-    gap: 34px;
-  }
-
   .wiki-page.wiki-page--manuscript .wiki-outline {
     position: relative;
     z-index: 1;
@@ -2425,10 +2404,6 @@
 
   .wiki-page.wiki-page--manuscript .wiki-facts article {
     border-top: 1px solid var(--wet-line);
-  }
-
-  .wiki-page.wiki-page--manuscript .wiki-record {
-    width: var(--wet-page);
   }
 
   .wiki-page.wiki-page--manuscript .wiki-outline nav {

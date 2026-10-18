@@ -304,7 +304,9 @@ html.has-route-reader-scroll {
 }
 
 /* 5. Work surface (mat) ---------------------------------------------------- */
-/* Contract: --reader-h is the ONLY viewport height here; the TOC card and the
+/* This file alone owns .wiki-record geometry, including responsive rules.
+   Lazy route CSS can load in any order, so legacy skins must not size it.
+   Contract: --reader-h is the ONLY viewport height here; the TOC card and the
    frame are grid children stretched to the mat's content box (mat height minus
    --reader-pad on both edges). The frame's border colour is this mat's own
    padding, not a body inset. */

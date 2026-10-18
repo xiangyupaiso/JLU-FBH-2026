@@ -21,6 +21,8 @@ import "../../styles/route-palette-engagement.css";
 import { Navigate, Route, Routes, useLocation } from "react-router-dom";
 import { getPathMapping, stringToSlug } from "../../utils";
 import { Suspense, useEffect, useLayoutEffect, type ReactNode } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Navbar } from "../../components/Navbar";
 import { Header } from "../../components/Header";
 import { NotFound } from "../../components/NotFound";
@@ -31,6 +33,8 @@ import {
   hidePageLoaderWhenReady,
   showPageLoader,
 } from "../../utils/pageLoader";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const TEAM_ROUTES = new Set(["/roster", "/attributions", "/activities"]);
 
@@ -81,6 +85,14 @@ const ROUTE_READER_ROUTES = new Set([
 // This effect commits only after the selected lazy page has mounted. Measuring
 // readiness from App itself could inspect the Suspense fallback or the old page.
 function PageReady({ children }: { children: ReactNode }) {
+  useLayoutEffect(() => {
+    // The lazy page has now committed, including its pinned scenes. Clear the
+    // previous route's GSAP scroll record before any layout refresh restores it.
+    // Page hooks resolve deep links after this reset, using the new geometry.
+    window.history.scrollRestoration = "manual";
+    window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+    ScrollTrigger.clearScrollMemory("manual");
+  }, []);
   useEffect(() => {
     hidePageLoaderWhenReady();
   }, []);
@@ -161,15 +173,6 @@ const App = () => {
   useEffect(() => {
     document.title = `${title || ""} | ${import.meta.env.VITE_TEAM_NAME} - iGEM ${import.meta.env.VITE_TEAM_YEAR}`;
   }, [title]);
-
-  // Route changes start a fresh page timeline. Keep hash navigation intact: the
-  // page motion hooks resolve the hash after the new content has mounted.
-  useEffect(() => {
-    if ("scrollRestoration" in window.history) {
-      window.history.scrollRestoration = "manual";
-    }
-    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
-  }, [pathname]);
 
   useEffect(() => {
     const body = document.body;

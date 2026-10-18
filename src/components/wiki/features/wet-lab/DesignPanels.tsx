@@ -9,7 +9,7 @@ import {
   designReferences,
 } from "../../../../data/wet-lab/designPage";
 import {
-  buildNumericCitationIndex,
+  buildAuthorYearCitationIndex,
   reportCitationIssues,
 } from "../../../../data/citations/citationIndex";
 import {
@@ -39,7 +39,7 @@ const WET_LAB_CITATION_FLASH: CitationFlashTint = {
   ring: "0 0 0 3px rgba(20, 53, 76, 0.32)",
 };
 
-const designCitationIndex = buildNumericCitationIndex(
+const designCitationIndex = buildAuthorYearCitationIndex(
   designPage.sections,
   designReferences,
 );

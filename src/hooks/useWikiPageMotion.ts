@@ -1,5 +1,6 @@
-import { useLayoutEffect, useState, type RefObject } from "react";
+import { useEffect, useLayoutEffect, useState, type RefObject } from "react";
 import { clamp, scrollReaderToTarget } from "../utils";
+import { whenPageLoaderLeaves } from "../utils/pageLoader";
 
 function findSections(root: HTMLElement, sectionIds: string[]) {
   return sectionIds
@@ -145,24 +146,8 @@ export function useWikiPageMotion(
     window.addEventListener("resize", requestUpdate, { passive: true });
     requestUpdate();
 
-    const routeHash = window.location.hash.slice(1);
-    const hashFrame = requestAnimationFrame(() => {
-      const routeTarget = routeHash ? document.getElementById(routeHash) : null;
-      if (routeTarget && root.contains(routeTarget)) {
-        scrollReaderToTarget(
-          routeTarget,
-          projectedReader ? scrollContainer : null,
-          "instant",
-        );
-        requestUpdate();
-      } else if (projectedReader) {
-        window.scrollTo({ top: 0, behavior: "auto" });
-      }
-    });
-
     return () => {
       if (frame) cancelAnimationFrame(frame);
-      cancelAnimationFrame(hashFrame);
       resizeObserver.disconnect();
       scrollTarget.removeEventListener("scroll", requestUpdate);
       window.removeEventListener("resize", requestUpdate);
@@ -171,6 +156,32 @@ export function useWikiPageMotion(
       progressBar?.style.removeProperty("--wiki-page-progress");
     };
   }, [projectedReader, rootRef, route, scrollContainerRef, sectionIds]);
+
+  useEffect(() => {
+    // Entry anchors need the styled article and its final reader-track height.
+    // The leave signal also runs when an optional asset exceeds the loader's
+    // deadline, so a slow CDN cannot skip the initial navigation.
+    let mounted = true;
+    const scrollToHash = () => {
+      const root = rootRef.current;
+      if (!mounted || !root) return;
+      const hash = window.location.hash.slice(1);
+      const target = hash ? document.getElementById(hash) : null;
+      if (target && root.contains(target)) {
+        scrollReaderToTarget(
+          target,
+          projectedReader ? scrollContainerRef.current : null,
+          "instant",
+        );
+      }
+    };
+    void whenPageLoaderLeaves().then(scrollToHash);
+    window.addEventListener("hashchange", scrollToHash);
+    return () => {
+      mounted = false;
+      window.removeEventListener("hashchange", scrollToHash);
+    };
+  }, [projectedReader, rootRef, route, scrollContainerRef]);
 
   return { activeSection, activeSubsection };
 }

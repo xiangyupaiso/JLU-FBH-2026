@@ -28,6 +28,7 @@ import "../../../../styles/features/sustainability-panels.css";
 import { engineeringOutcome } from "../../../../data/project/engineeringOutcome";
 import { EngineeringOutline } from "./EngineeringPanels";
 import { EngineeringSystemOverview } from "./EngineeringSystemOverview";
+import { whenPageLoaderLeaves } from "../../../../utils/pageLoader";
 const gearTSrc = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-gear-t.webp";
 const gearTActiveSrc = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-gear-t-active.webp";
 const gearISrc = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-gear-i.webp";
@@ -1090,13 +1091,17 @@ export function EngineeringJourney({
         onChange({ id: iteration.id, stage });
       }
     };
-    const frame = requestAnimationFrame(() => {
+    // Deferred CSS, fonts and artwork can change pin lengths after mount.
+    // Resolve the entry anchor only after the loader has prepared that layout.
+    let mounted = true;
+    void whenPageLoaderLeaves().then(() => {
+      if (!mounted) return;
       ScrollTrigger.refresh();
       handleHash();
     });
     window.addEventListener("hashchange", handleHash);
     return () => {
-      cancelAnimationFrame(frame);
+      mounted = false;
       sceneObserver.disconnect();
       clearTimeout(resizeTimer);
       resizeTarget.current = null;
