@@ -206,7 +206,7 @@ export const sstqnScoringSteps: ReadonlyArray<SstqnScoringStep> = [
  * -------------------------------------------------------------------------- */
 
 export const impactFrameworkSection = {
-  title: "SET-DEVELOP-GROW Impact Framework (SDG Impact Framework)",
+  title: "SET-DEVELOP-GROW Impact Framework",
   intro:
     "The SDG Impact Framework describes how CirCure’s sustainable development impacts evolve as the project develops—from **directly addressing core challenges** to **broader sustainable development impacts**, and ultimately to the systemic value it may generate over the long term. **SET** represents the core SDGs that CirCure directly addresses in response to its project objectives and stakeholder needs. **DEVELOP** captures the broader impacts and connections with additional SDGs that emerge as research and development, translation, and societal engagement progress. **GROW** represents the SDGs that CirCure could further advance through long-term research and development, clinical translation, and implementation at scale.",
   pathway:

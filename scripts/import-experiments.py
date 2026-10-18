@@ -14,7 +14,11 @@ TARGET = ROOT / "src/data/wet-lab/experimentsPage.ts"
 
 def unescape(text):
     # Markdown punctuation escapes only; preserve LaTeX commands inside $…$.
-    return re.sub(r"\\([\\`*_{}\[\]()#+\-.!&<>%~|])", r"\1", text)
+    return "".join(
+        part if part.startswith("$") else
+        re.sub(r"\\([\\`*_{}\[\]()#+\-.!&<>%~|])", r"\1", part)
+        for part in re.split(r"(\$\$.*?\$\$|\$[^$\n]+\$)", text, flags=re.S)
+    )
 
 
 def import_page():
@@ -32,6 +36,9 @@ def import_page():
     minor_title = ""
     reference_items = []
     lines = SOURCE.read_text(encoding="utf-8").splitlines()
+    minor_titles = {"Background", "Materials & Reagents", "Materials and Reagents",
+                    "Equipment", "Experimental Design (controls and replicates)",
+                    "Step-by-Step Instructions", "Notes"}
 
     def content_blocks():
         blocks = section["blocks"]
@@ -68,6 +75,10 @@ def import_page():
                         if b["type"] == "subheading" and b["title"].split(" ", 1)[0].rstrip(".") == code), None)
             assert old, f"Missing existing anchor: {title}"
             heading = {**old, "title": title}
+            heading["index"] = code
+            # Keep links to the former synthesis subsection numbers working.
+            if code in {"1.1", "3.1"}:
+                heading["anchorIds"] = ["exp-" + code[0] + "-2"]
             if code.startswith("O"):
                 heading["index"] = code + "."
             section["blocks"].append(heading)
@@ -76,6 +87,19 @@ def import_page():
         if line.startswith("#### "):
             minor_title = line[5:].removeprefix("**").removesuffix("**")
             section["blocks"].append({"type": "heading", "level": 4, "title": minor_title})
+            continue
+        if line.removeprefix("**").removesuffix("**") in minor_titles:
+            minor_title = line.removeprefix("**").removesuffix("**")
+            section["blocks"].append({"type": "heading", "level": 4, "title": minor_title})
+            continue
+        if line.startswith("$$"):
+            formula = [line]
+            while not "".join(formula)[2:].endswith("$$"):
+                formula.append(lines[i].strip())
+                i += 1
+            content_blocks().append({"type": "prose", "paragraphs": [
+                "$" + " ".join(formula)[2:-2].strip() + "$"
+            ]})
             continue
         if line.startswith("|"):
             rows = [lines[i - 1].strip()]
@@ -88,7 +112,9 @@ def import_page():
                                       "rows": [cells(row) for row in rows[2:]]})
             continue
         paragraph = [line]
-        while i < len(lines) and lines[i].strip() and not re.match(r"^(#{1,4} |\||- )", lines[i].strip()):
+        while i < len(lines) and lines[i].strip() and not re.match(
+            r"^(#{1,4} |\||- |\d+\. |\$\$|\*\*.+?\*\*(?:\s*\[\d+\])*$)", lines[i].strip()
+        ):
             paragraph.append(unescape(lines[i].strip()))
             i += 1
         text = " ".join(paragraph)
@@ -102,7 +128,8 @@ def import_page():
             continue
         numbered_item = re.match(r"(\d+)\. (.*)", text, re.S)
         if minor_title == "Step-by-Step Instructions" and numbered_item:
-            if not blocks or blocks[-1]["type"] != "protocol-steps":
+            if (not blocks or blocks[-1]["type"] != "protocol-steps" or
+                    int(numbered_item[1]) <= int(blocks[-1]["steps"][-1]["number"])):
                 blocks.append({"type": "protocol-steps", "steps": []})
             blocks[-1]["steps"].append({"number": numbered_item[1], "blocks": [
                 {"type": "prose", "paragraphs": [numbered_item[2]]}]})
@@ -143,9 +170,10 @@ def import_page():
                            "links": [{"href": url, "label": url}]})
     page["sections"] = sections
     page["lede"] = sections[0]["blocks"][0]["paragraphs"][0]
-    assert len(reference_items) == 49
-    assert sum(b["type"] == "subheading" for s in sections for b in s["blocks"]) == 29
-    assert sum(b["type"] == "heading" and b["level"] == 4 for s in sections for b in s["blocks"]) >= 130
+    assert len(reference_items) == 43
+    assert sum(b["type"] == "subheading" for s in sections for b in s["blocks"]) == 27
+    assert sum(b["type"] == "heading" and b.get("title") == "Step-by-Step Instructions"
+               for s in sections for b in s["blocks"]) == 24
     return page, current, references
 
 
@@ -158,7 +186,7 @@ if __name__ == "__main__":
     if "--check" in sys.argv:
         assert json.JSONDecoder().raw_decode(current[current.index("= {") + 2:].lstrip())[0] == page, "Page differs from manuscript"
         assert json.loads(current.split("export const experimentsReferences: CitationReference[] = ")[1].strip().removesuffix(";")) == references
-        print("Experiments copy verified: 26 protocols, consistent heading levels, 3 outlooks, 49 references.")
+        print("Experiments copy verified: 24 protocols, consistent heading levels, 3 outlooks, 43 references.")
     else:
         TARGET.write_text(output, encoding="utf-8")
         print("Imported Experiments manuscript.")

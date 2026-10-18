@@ -36,7 +36,7 @@ type Beat = Anchor & { travel: number; hold?: number; antigen?: number };
 // Seconds are editorial pacing. Positions always come from live ScrollTriggers,
 // so the same sequence follows the existing desktop and mobile choreography.
 const BEATS: readonly Beat[] = [
-  { chapter: 0, progress: 0.24, travel: 4, hold: 2 },
+  { chapter: 0, progress: 0.24, travel: 4 },
   { chapter: 0, progress: 0.66, label: "portrait-closeup", travel: 3 },
   { chapter: 0, progress: 0.98, travel: 2, hold: 3 },
   { chapter: 1, progress: 0, travel: 2 },

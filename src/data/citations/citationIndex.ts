@@ -265,7 +265,8 @@ function matchAuthorYear(
   item: string,
   keys: readonly AuthorYearKey[],
 ): MatchResult {
-  const match = ITEM_RE.exec(nfc(item.trim()));
+  // Manuscripts may include a space before the year comma; preserve display text.
+  const match = ITEM_RE.exec(nfc(item.trim().replace(/\s+,/g, ",")));
   if (!match?.groups) return { reason: "unresolved" };
   const { sur, year, init, second } = match.groups as Record<
     string,

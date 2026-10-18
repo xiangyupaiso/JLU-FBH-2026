@@ -352,7 +352,7 @@ export const resultsSectionsRound2Safety: WikiSection[] = [
         type: "prose",
         paragraphs: [
           "**Aim** | Identify which dose balances tumor control against exposure burden when both efficacy and viability must pass thresholds **simultaneously**.",
-          "**Design & Readout** | Scan 301 dose levels from 0 to 30 μg per injection. For each dose, simulate the five-injection protocol under 1,000 parameter draws and count how many satisfy **all three criteria**: tumor ratio ≤ 0.70, viability ≥ 0.80 at all time points, and joint passage across the uncertainty distribution.",
+          "**Design & Readout** | Scan 301 dose levels from 0 to 30 μg per injection. For each dose, simulate the five-injection protocol under 1,024 parameter draws and count how many satisfy **all three criteria**: tumor ratio ≤ 0.70, viability ≥ 0.80 at all time points, and joint passage across the uncertainty distribution.",
           "**Result**",
           "**10.2 μg per injection** achieved the **highest** passage probability of **0.8145**; 10.0 μg scored 0.8115, a difference **smaller than parameter uncertainty**. The interval [9.4, 12.0] μg ∪ [12.2, 12.4] μg ∪ \\{12.6\\} μg passed all three criteria. Doses **below 9 μg** failed the tumor-control threshold; doses **above 13 μg** violated the viability floor with increasing frequency as exposure burden accumulated across five injections.",
         ],
@@ -496,7 +496,7 @@ export const resultsSectionsRound2Safety: WikiSection[] = [
         type: "prose",
         paragraphs: [
           "**Aim**｜Test the platform's core assumption — that circularity confers resistance to degradation — and inform **dosing frequency**: the longer the molecule persists, the lower the nucleic-acid dose and the fewer administrations needed for equivalent antigen expression, and the smaller the systemic exposure.",
-          "**Design & Readout**｜Equal masses of purified circRNA and its linear precursor incubated in parallel at 37 °C, sampled at **0, 24, 48 and 72 h**, run side by side on one gel and quantified by densitometry against each RNA's own 0 h lane (Experiments 5.1). **The material was the Combined batch** — used in every experiment from Round 2 onwards (Sections 6, 8 and 9) — so the conclusion is a platform-level claim measured on the vaccine itself, not carried over from a Round 1 construct.",
+          "**Design & Readout**｜Equal masses of purified circRNA and its linear precursor incubated in parallel at 37 °C, sampled at **0, 24, 48 and 72 h**, run side by side on one gel and quantified by densitometry against each RNA's own 0 h lane (Experiments 5.1). **The material was the Combined batch** prepared in §5.5, which also supplied circRNA for the Round 2 functional assays (Section 6) and the in vivo study (Section 9). The stability measurement therefore applies to the vaccine preparation used downstream.",
           "**Result**",
         ],
       },

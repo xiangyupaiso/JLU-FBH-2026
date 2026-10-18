@@ -254,6 +254,19 @@
   --folder-tint: color-mix(in srgb, var(--route-main) 26%, #f6ead6);
 }
 
+.sust-archive__panels {
+  display: grid;
+  min-width: 0;
+}
+
+.sust-archive__panels > .sust-tool-card {
+  grid-area: 1 / 1;
+}
+
+.sust-archive__panels > .sust-tool-card[aria-hidden="true"] {
+  visibility: hidden;
+}
+
 .sust-tool-card {
   display: flex;
   flex-direction: column;
@@ -263,6 +276,9 @@
   border-top: 3px solid var(--route-main);
   border-radius: 10px;
   background: #fff;
+  min-height: 410px;
+  height: 100%;
+  box-sizing: border-box;
 }
 
 .sust-tool-card:focus-visible {

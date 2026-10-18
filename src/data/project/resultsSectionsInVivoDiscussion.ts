@@ -53,10 +53,6 @@ export const resultsSectionsInVivoDiscussion: WikiSection[] = [
         ],
       },
       resultsFigure("fig41"),
-      {
-        type: "prose",
-        paragraphs: ["Error bars are SD; **** denotes P < 0.0001."],
-      },
       resultsFigure("fig42"),
       {
         type: "prose",
@@ -75,14 +71,14 @@ export const resultsSectionsInVivoDiscussion: WikiSection[] = [
         ],
         rows: [
           ["4T1 WT (Control)", "1 (baseline)", "0%"],
-          ["4T1-TROP2 (OE)", "**75.83 ± 3.27-fold** (P < 0.0001)", "**99.9%**"],
+          ["4T1-TROP2 (OE)", "**75.83 ± 3.27-fold**", "**99.9%**"],
         ],
       },
       {
         type: "prose",
         paragraphs: [
           "**Interpretation**｜The two levels of validation agree: a **75.8 ± 3.3-fold increase in TROP2 mRNA** (P < 0.0001) and **99.9% surface positivity**, against 0% in wild-type. The transcriptional increase therefore converts into surface protein, so the transgene is transcribed, processed and trafficked to the membrane — and membrane TROP2 is what a T cell can recognise. Sorting followed by drug selection produced a homogeneous overexpression line, so in the downstream efficacy study the presence or absence of the target antigen is a controlled variable rather than a source of variation.",
-          "**What the enrichment can be read from.** GFP positivity within the singlet gate at the moment of sorting was **84.1%** (Figure 40); surface TROP2 positivity in the expanded, puromycin-selected line was **99.9%** (Figure 42). These are two different measurements — a reporter scored at the sort, and the target protein scored after selection and expansion — and what the pair shows is that the two enrichment pressures, sorting and drug selection, acted in the same direction and left no detectable negative subpopulation behind. The post-sort re-check on the cytometer and by fluorescence microscopy confirmed that the population was homogeneous; the quantitative check on the sorted line is the surface-TROP2 measurement in Figure 42 (Experiments 6.2).",
+          "**What the enrichment can be read from.** GFP positivity within the singlet gate at the moment of sorting was **84.1%** (Figure 40); surface TROP2 positivity in the expanded, puromycin-selected line was **99.9%** (Figure 42). These are two different measurements — a reporter scored at the sort, and the target protein scored after selection and expansion — and what the pair shows is that the two enrichment pressures, sorting and drug selection, acted in the same direction and left no detectable negative subpopulation behind. The post-sort re-check on the cytometer and by fluorescence microscopy confirmed that the population was homogeneous; the descriptive check on the sorted line is the surface-TROP2 measurement in Figure 42.",
           "**Limitations.** GFP reports successful integration of the construct rather than TROP2 itself, which is why the verification rests on the two measurements made on TROP2 directly, RT-PCR at the transcript level and flow cytometry at the cell surface. The model also uses **forced overexpression of human TROP2 on a mouse cell**, at 75.8-fold over wild-type, far above physiological expression in clinical TNBC, so in vivo efficacy measured on it is likely to be an overestimate.",
         ],
       },

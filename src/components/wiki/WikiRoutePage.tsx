@@ -1000,6 +1000,9 @@ function ProtocolSubheadingDrawer({
       data-wiki-outline-parent={sectionId}
     >
       <h3 className="wiki-protocol-drawer__heading">
+        {subheading.anchorIds?.map((anchorId) => (
+          <span className="wiki-anchor" id={anchorId} key={anchorId} />
+        ))}
         <button
           type="button"
           className="wiki-protocol-drawer__header"
@@ -1303,6 +1306,7 @@ export function WikiRoutePage({
   }, []);
 
   const openSubheading = useCallback((id: string) => {
+    let targetId = id;
     let targetParentId: string | null = null;
     for (const section of content.sections) {
       if (!section.blocks) continue;
@@ -1311,21 +1315,26 @@ export function WikiRoutePage({
           b.type === "subheading",
       );
       const subByIndex = new Map(subheadings.map((s) => [s.index, s]));
-      const targetSub = subheadings.find((s) => s.id === id);
-      if (targetSub && targetSub.index && targetSub.index.includes(".")) {
+      const targetSub = subheadings.find(
+        (s) => s.id === id || s.anchorIds?.includes(id),
+      );
+      if (!targetSub) continue;
+      targetId = targetSub.id;
+      if (targetSub.index && targetSub.index.includes(".")) {
         const parentIdx = targetSub.index.split(".").slice(0, -1).join(".");
         const parentSub = subByIndex.get(parentIdx);
         if (parentSub) {
           targetParentId = parentSub.id;
         }
       }
+      break;
     }
 
     setOpenSubheadingIds((prev) => {
       const next = new Set(prev);
       let changed = false;
-      if (!next.has(id)) {
-        next.add(id);
+      if (!next.has(targetId)) {
+        next.add(targetId);
         changed = true;
       }
       if (targetParentId && !next.has(targetParentId)) {

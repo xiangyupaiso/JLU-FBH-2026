@@ -1,6 +1,8 @@
+const humanPracticesHero =
+  "https://static.igem.wiki/teams/6056/wiki/files/pages/hero/engagement-human-practices-hero.webp";
+
 const educationHero = "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/education/games/education-page-hero-01f9811aecb2.webp";
 const entrepreneurshipHero = "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/engagement-entrepreneurship-hero-v2-efb0a019ee72.webp";
-const humanPracticesHero = "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/engagement-human-practices-hero-v2-ce6ea8234186.webp";
 const sustainabilityHero = "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/engagement-sustainability-hero-v2-af187053f50d.webp";
 
 /**

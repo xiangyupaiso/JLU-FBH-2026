@@ -196,6 +196,8 @@ export interface SdgChapter {
       id: string;
       index?: string;
       title?: string;
+      /** Present the complete manuscript in the reading flow, without a summary card. */
+      layout?: "prose";
       intro: ReadonlyArray<string>;
       profiles: ReadonlyArray<StakeholderProfile>;
     }>;

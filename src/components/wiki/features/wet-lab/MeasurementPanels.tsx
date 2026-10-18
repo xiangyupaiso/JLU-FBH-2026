@@ -83,7 +83,10 @@ export function MeasurementJudgingCriteria() {
             >
               {item.paragraphs.map((paragraph, paragraphIndex) => (
                 <p key={paragraphIndex}>
-                  {renderMeasurementCitedText(paragraph, renderInlineFormatting)}
+                  {renderMeasurementCitedText(
+                    paragraph,
+                    renderInlineFormatting,
+                  )}
                 </p>
               ))}
             </div>
@@ -96,32 +99,12 @@ export function MeasurementJudgingCriteria() {
 
 const plateGroups = [
   {
-    featureKey: "measurement-plate-1",
-    keys: [
-      "rt-pcr-quantification-of-trop2-mrna-in-4t1-cells",
-      "flow-cytometric-detection-of-surface-trop2-on-4t1-cells",
-    ],
-    caption: "TROP2 message in wild-type and TROP2-overexpressing 4T1",
-  },
-  {
-    featureKey: "measurement-plate-2",
-    keys: [
-      "flow-cytometric-detection-of-surface-trop2-on-4t1-cells",
-      "rt-pcr-quantification-of-trop2-mrna-in-4t1-cells",
-    ],
-    caption: "Surface TROP2 on wild-type and TROP2-overexpressing 4T1",
-  },
-  {
     featureKey: "measurement-plate-3",
     keys: [
-      "cd80-cd86-double-positive-dc-frequencies-for-each-group",
-      "quantification-of-dc-maturation-across-groups",
-      "cd8-cd69-t-cell-frequencies-after-dc-t-co-culture",
-      "quantification-of-cd8-cd69-frequencies-across-groups",
-      "cd8-cd28-t-cell-frequencies-after-dc-t-co-culture",
-      "quantification-of-cd8-cd28-frequencies-across-groups",
-      "cd45ro-ccr7-effector-memory-frequencies-within-cd8-t-cells",
-      "quantification-of-cd45ro-ccr7-frequencies-across-groups",
+      "human-dc-maturation-flow-and-quantification",
+      "human-cd8-cd69-flow-and-quantification",
+      "human-cd8-cd28-flow-and-quantification",
+      "human-effector-memory-flow-and-quantification",
     ],
     caption: "Representative flow plots for the human immune response chain",
   },
@@ -169,7 +152,7 @@ export function measurementFeatures(): Record<string, ReactNode> {
             alt: measurementAssets[key].alt,
           }))}
           caption={group.caption}
-          columns={group.keys.length >= 5 ? 3 : 2}
+          columns={group.featureKey === "measurement-plate-3" ? 1 : 3}
           numbered
         />,
       ]),

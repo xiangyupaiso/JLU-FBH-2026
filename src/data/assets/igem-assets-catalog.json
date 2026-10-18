@@ -3,14 +3,14 @@
     "teamId": "6056",
     "teamName": "JLU-FBH",
     "year": 2026,
-    "lastUpdated": "2026-10-14",
+    "lastUpdated": "2026-10-18",
     "stats": {
-      "total": 2247,
-      "inUse": 1726,
-      "standby": 490,
-      "deprecated": 31,
+      "total": 2347,
+      "inUse": 1817,
+      "standby": 459,
+      "deprecated": 71,
       "byKind": {
-        "image": 2145,
+        "image": 2245,
         "font": 28,
         "structure": 3,
         "pdf": 65,
@@ -5225,14 +5225,14 @@
       "md5": "59466299c5dd3e91a0683c5628836c27",
       "fileSize": 209956,
       "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/protocol/protocol-01.webp",
-      "status": "standby",
+      "status": "deprecated",
       "description": "",
       "keywords": [
         "protocol-01",
         "image"
       ],
       "references": [],
-      "notes": "Standby/Mirrored asset with CDN URL"
+      "notes": "Superseded by the October Experiments manuscript and illustrations; removed from local disk."
     },
     "protocol-02-webp": {
       "id": "protocol-02-webp",
@@ -5243,14 +5243,14 @@
       "md5": "132281d10676713d371fd9909448060b",
       "fileSize": 126160,
       "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/protocol/protocol-02.webp",
-      "status": "standby",
+      "status": "deprecated",
       "description": "",
       "keywords": [
         "protocol-02",
         "image"
       ],
       "references": [],
-      "notes": "Standby/Mirrored asset with CDN URL"
+      "notes": "Superseded by the October Experiments manuscript and illustrations; removed from local disk."
     },
     "protocol-03-webp": {
       "id": "protocol-03-webp",
@@ -5261,14 +5261,14 @@
       "md5": "84fc0b85d2554c8ca82ace1bc452f86f",
       "fileSize": 214596,
       "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/protocol/protocol-03.webp",
-      "status": "standby",
+      "status": "deprecated",
       "description": "",
       "keywords": [
         "protocol-03",
         "image"
       ],
       "references": [],
-      "notes": "Standby/Mirrored asset with CDN URL"
+      "notes": "Superseded by the October Experiments manuscript and illustrations; removed from local disk."
     },
     "protocol-04-webp": {
       "id": "protocol-04-webp",
@@ -5279,14 +5279,14 @@
       "md5": "a7b734744ab1a43265adaf573769385f",
       "fileSize": 115402,
       "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/protocol/protocol-04.webp",
-      "status": "standby",
+      "status": "deprecated",
       "description": "",
       "keywords": [
         "protocol-04",
         "image"
       ],
       "references": [],
-      "notes": "Standby/Mirrored asset with CDN URL"
+      "notes": "Superseded by the October Experiments manuscript and illustrations; removed from local disk."
     },
     "protocol-05-webp": {
       "id": "protocol-05-webp",
@@ -5297,14 +5297,14 @@
       "md5": "9d53bbadfc09504ed4fac1b0a3bae52f",
       "fileSize": 224334,
       "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/protocol/protocol-05.webp",
-      "status": "standby",
+      "status": "deprecated",
       "description": "",
       "keywords": [
         "protocol-05",
         "image"
       ],
       "references": [],
-      "notes": "Standby/Mirrored asset with CDN URL"
+      "notes": "Superseded by the October Experiments manuscript and illustrations; removed from local disk."
     },
     "protocol-06-webp": {
       "id": "protocol-06-webp",
@@ -5315,14 +5315,14 @@
       "md5": "1d3ec2ecc2f91b44e3dc96503a76026f",
       "fileSize": 121756,
       "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/protocol/protocol-06.webp",
-      "status": "standby",
+      "status": "deprecated",
       "description": "",
       "keywords": [
         "protocol-06",
         "image"
       ],
       "references": [],
-      "notes": "Standby/Mirrored asset with CDN URL"
+      "notes": "Superseded by the October Experiments manuscript and illustrations; removed from local disk."
     },
     "protocol-07-webp": {
       "id": "protocol-07-webp",
@@ -5333,14 +5333,14 @@
       "md5": "910f117ca9fad758c5f328827b3f590a",
       "fileSize": 159868,
       "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/protocol/protocol-07.webp",
-      "status": "standby",
+      "status": "deprecated",
       "description": "",
       "keywords": [
         "protocol-07",
         "image"
       ],
       "references": [],
-      "notes": "Standby/Mirrored asset with CDN URL"
+      "notes": "Superseded by the October Experiments manuscript and illustrations; removed from local disk."
     },
     "protocol-08-webp": {
       "id": "protocol-08-webp",
@@ -5351,14 +5351,14 @@
       "md5": "7103c2ed4ccc434bfd7a42c5ab5f8c73",
       "fileSize": 82478,
       "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/protocol/protocol-08.webp",
-      "status": "standby",
+      "status": "deprecated",
       "description": "",
       "keywords": [
         "protocol-08",
         "image"
       ],
       "references": [],
-      "notes": "Standby/Mirrored asset with CDN URL"
+      "notes": "Superseded by the October Experiments manuscript and illustrations; removed from local disk."
     },
     "protocol-09-webp": {
       "id": "protocol-09-webp",
@@ -5369,14 +5369,14 @@
       "md5": "b8d523c14e9142bab6139c12d5659fb3",
       "fileSize": 240766,
       "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/protocol/protocol-09.webp",
-      "status": "standby",
+      "status": "deprecated",
       "description": "",
       "keywords": [
         "protocol-09",
         "image"
       ],
       "references": [],
-      "notes": "Standby/Mirrored asset with CDN URL"
+      "notes": "Superseded by the October Experiments manuscript and illustrations; removed from local disk."
     },
     "protocol-10-webp": {
       "id": "protocol-10-webp",
@@ -5387,14 +5387,14 @@
       "md5": "0ea80e998096c90d02a8d0a8d71a149e",
       "fileSize": 97528,
       "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/protocol/protocol-10.webp",
-      "status": "standby",
+      "status": "deprecated",
       "description": "",
       "keywords": [
         "protocol-10",
         "image"
       ],
       "references": [],
-      "notes": "Standby/Mirrored asset with CDN URL"
+      "notes": "Superseded by the October Experiments manuscript and illustrations; removed from local disk."
     },
     "protocol-11-webp": {
       "id": "protocol-11-webp",
@@ -5405,14 +5405,14 @@
       "md5": "ea0cacf549988337234f4b803d362a87",
       "fileSize": 259786,
       "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/protocol/protocol-11.webp",
-      "status": "standby",
+      "status": "deprecated",
       "description": "",
       "keywords": [
         "protocol-11",
         "image"
       ],
       "references": [],
-      "notes": "Standby/Mirrored asset with CDN URL"
+      "notes": "Superseded by the October Experiments manuscript and illustrations; removed from local disk."
     },
     "protocol-12-webp": {
       "id": "protocol-12-webp",
@@ -5423,14 +5423,14 @@
       "md5": "77f11227d70760f63fa6aba607d8fbc8",
       "fileSize": 88764,
       "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/protocol/protocol-12.webp",
-      "status": "standby",
+      "status": "deprecated",
       "description": "",
       "keywords": [
         "protocol-12",
         "image"
       ],
       "references": [],
-      "notes": "Standby/Mirrored asset with CDN URL"
+      "notes": "Superseded by the October Experiments manuscript and illustrations; removed from local disk."
     },
     "protocol-13-webp": {
       "id": "protocol-13-webp",
@@ -5441,14 +5441,14 @@
       "md5": "78a107363dfa7c1958b270d29689f478",
       "fileSize": 277048,
       "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/protocol/protocol-13.webp",
-      "status": "standby",
+      "status": "deprecated",
       "description": "",
       "keywords": [
         "protocol-13",
         "image"
       ],
       "references": [],
-      "notes": "Standby/Mirrored asset with CDN URL"
+      "notes": "Superseded by the October Experiments manuscript and illustrations; removed from local disk."
     },
     "protocol-14-webp": {
       "id": "protocol-14-webp",
@@ -5459,14 +5459,14 @@
       "md5": "edd4eb40dc84055c7ae25d1b13c86291",
       "fileSize": 124818,
       "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/protocol/protocol-14.webp",
-      "status": "standby",
+      "status": "deprecated",
       "description": "",
       "keywords": [
         "protocol-14",
         "image"
       ],
       "references": [],
-      "notes": "Standby/Mirrored asset with CDN URL"
+      "notes": "Superseded by the October Experiments manuscript and illustrations; removed from local disk."
     },
     "protocol-15-webp": {
       "id": "protocol-15-webp",
@@ -5477,14 +5477,14 @@
       "md5": "522dd05560c863b2539092a051571423",
       "fileSize": 269216,
       "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/protocol/protocol-15.webp",
-      "status": "standby",
+      "status": "deprecated",
       "description": "",
       "keywords": [
         "protocol-15",
         "image"
       ],
       "references": [],
-      "notes": "Standby/Mirrored asset with CDN URL"
+      "notes": "Superseded by the October Experiments manuscript and illustrations; removed from local disk."
     },
     "protocol-16-webp": {
       "id": "protocol-16-webp",
@@ -5495,14 +5495,14 @@
       "md5": "2eaea837b9e5de906c3c0f8840db6ca7",
       "fileSize": 131356,
       "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/protocol/protocol-16.webp",
-      "status": "standby",
+      "status": "deprecated",
       "description": "",
       "keywords": [
         "protocol-16",
         "image"
       ],
       "references": [],
-      "notes": "Standby/Mirrored asset with CDN URL"
+      "notes": "Superseded by the October Experiments manuscript and illustrations; removed from local disk."
     },
     "protocol-17-webp": {
       "id": "protocol-17-webp",
@@ -5513,14 +5513,14 @@
       "md5": "d912def337645a529ec6f6e04727f564",
       "fileSize": 234762,
       "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/protocol/protocol-17.webp",
-      "status": "standby",
+      "status": "deprecated",
       "description": "",
       "keywords": [
         "protocol-17",
         "image"
       ],
       "references": [],
-      "notes": "Standby/Mirrored asset with CDN URL"
+      "notes": "Superseded by the October Experiments manuscript and illustrations; removed from local disk."
     },
     "protocol-18-webp": {
       "id": "protocol-18-webp",
@@ -5531,14 +5531,14 @@
       "md5": "517f0e9ecb81d38f9da58c7ff32b7b6c",
       "fileSize": 112554,
       "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/protocol/protocol-18.webp",
-      "status": "standby",
+      "status": "deprecated",
       "description": "",
       "keywords": [
         "protocol-18",
         "image"
       ],
       "references": [],
-      "notes": "Standby/Mirrored asset with CDN URL"
+      "notes": "Superseded by the October Experiments manuscript and illustrations; removed from local disk."
     },
     "protocol-19-webp": {
       "id": "protocol-19-webp",
@@ -5549,14 +5549,14 @@
       "md5": "851ee40b855173d7f7236582c79c7991",
       "fileSize": 267598,
       "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/protocol/protocol-19.webp",
-      "status": "standby",
+      "status": "deprecated",
       "description": "",
       "keywords": [
         "protocol-19",
         "image"
       ],
       "references": [],
-      "notes": "Standby/Mirrored asset with CDN URL"
+      "notes": "Superseded by the October Experiments manuscript and illustrations; removed from local disk."
     },
     "protocol-20-webp": {
       "id": "protocol-20-webp",
@@ -5567,14 +5567,14 @@
       "md5": "b144c8fdfd345e4e0a37b6cb0016b292",
       "fileSize": 135126,
       "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/protocol/protocol-20.webp",
-      "status": "standby",
+      "status": "deprecated",
       "description": "",
       "keywords": [
         "protocol-20",
         "image"
       ],
       "references": [],
-      "notes": "Standby/Mirrored asset with CDN URL"
+      "notes": "Superseded by the October Experiments manuscript and illustrations; removed from local disk."
     },
     "protocol-21-webp": {
       "id": "protocol-21-webp",
@@ -5585,14 +5585,14 @@
       "md5": "b7aba1c3c128eecc914241822712952b",
       "fileSize": 181794,
       "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/protocol/protocol-21.webp",
-      "status": "standby",
+      "status": "deprecated",
       "description": "",
       "keywords": [
         "protocol-21",
         "image"
       ],
       "references": [],
-      "notes": "Standby/Mirrored asset with CDN URL"
+      "notes": "Superseded by the October Experiments manuscript and illustrations; removed from local disk."
     },
     "protocol-22-webp": {
       "id": "protocol-22-webp",
@@ -5603,14 +5603,14 @@
       "md5": "d57e2687fed3be93d13ba93541b5f158",
       "fileSize": 105586,
       "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/protocol/protocol-22.webp",
-      "status": "standby",
+      "status": "deprecated",
       "description": "",
       "keywords": [
         "protocol-22",
         "image"
       ],
       "references": [],
-      "notes": "Standby/Mirrored asset with CDN URL"
+      "notes": "Superseded by the October Experiments manuscript and illustrations; removed from local disk."
     },
     "protocol-23-webp": {
       "id": "protocol-23-webp",
@@ -5621,14 +5621,20 @@
       "md5": "1b9d72108957d2c65bf3dcc453782d93",
       "fileSize": 225568,
       "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/protocol/protocol-23.webp",
-      "status": "standby",
+      "status": "in-use",
       "description": "",
       "keywords": [
         "protocol-23",
         "image"
       ],
-      "references": [],
-      "notes": "Standby/Mirrored asset with CDN URL"
+      "references": [
+        {
+          "file": "src/data/wet-lab/experimentProtocolAssets.ts",
+          "type": "asset-registry",
+          "text": "protocol-23.webp"
+        }
+      ],
+      "notes": "Retained illustration matching the current protocol."
     },
     "protocol-24-webp": {
       "id": "protocol-24-webp",
@@ -5639,14 +5645,20 @@
       "md5": "ea090db26f9d56387d67b07d4b998bf3",
       "fileSize": 85718,
       "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/protocol/protocol-24.webp",
-      "status": "standby",
+      "status": "in-use",
       "description": "",
       "keywords": [
         "protocol-24",
         "image"
       ],
-      "references": [],
-      "notes": "Standby/Mirrored asset with CDN URL"
+      "references": [
+        {
+          "file": "src/data/wet-lab/experimentProtocolAssets.ts",
+          "type": "asset-registry",
+          "text": "protocol-24.webp"
+        }
+      ],
+      "notes": "Retained illustration matching the current protocol."
     },
     "protocol-25-webp": {
       "id": "protocol-25-webp",
@@ -5657,14 +5669,14 @@
       "md5": "9490368d9d436cfe28fa0b9107371d07",
       "fileSize": 227792,
       "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/protocol/protocol-25.webp",
-      "status": "standby",
+      "status": "deprecated",
       "description": "",
       "keywords": [
         "protocol-25",
         "image"
       ],
       "references": [],
-      "notes": "Standby/Mirrored asset with CDN URL"
+      "notes": "Superseded by the October Experiments manuscript and illustrations; removed from local disk."
     },
     "protocol-26-webp": {
       "id": "protocol-26-webp",
@@ -5675,14 +5687,14 @@
       "md5": "36ba995c4c28dc2c708458ae43a0fdc6",
       "fileSize": 85694,
       "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/protocol/protocol-26.webp",
-      "status": "standby",
+      "status": "deprecated",
       "description": "",
       "keywords": [
         "protocol-26",
         "image"
       ],
       "references": [],
-      "notes": "Standby/Mirrored asset with CDN URL"
+      "notes": "Superseded by the October Experiments manuscript and illustrations; removed from local disk."
     },
     "protocol-27-webp": {
       "id": "protocol-27-webp",
@@ -5693,14 +5705,14 @@
       "md5": "e93c28ab6976d14b3d4fb8966a83c9c5",
       "fileSize": 164130,
       "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/protocol/protocol-27.webp",
-      "status": "standby",
+      "status": "deprecated",
       "description": "",
       "keywords": [
         "protocol-27",
         "image"
       ],
       "references": [],
-      "notes": "Standby/Mirrored asset with CDN URL"
+      "notes": "Superseded by the October Experiments manuscript and illustrations; removed from local disk."
     },
     "protocol-28-webp": {
       "id": "protocol-28-webp",
@@ -5711,14 +5723,14 @@
       "md5": "9ac996dceb89915fe6dbd1f07dc5d038",
       "fileSize": 137298,
       "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/protocol/protocol-28.webp",
-      "status": "standby",
+      "status": "deprecated",
       "description": "",
       "keywords": [
         "protocol-28",
         "image"
       ],
       "references": [],
-      "notes": "Standby/Mirrored asset with CDN URL"
+      "notes": "Superseded by the October Experiments manuscript and illustrations; removed from local disk."
     },
     "protocol-29-webp": {
       "id": "protocol-29-webp",
@@ -5729,14 +5741,14 @@
       "md5": "90723a14e382a82af022e414b03e21fc",
       "fileSize": 337640,
       "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/protocol/protocol-29.webp",
-      "status": "standby",
+      "status": "deprecated",
       "description": "",
       "keywords": [
         "protocol-29",
         "image"
       ],
       "references": [],
-      "notes": "Standby/Mirrored asset with CDN URL"
+      "notes": "Superseded by the October Experiments manuscript and illustrations; removed from local disk."
     },
     "protocol-30-webp": {
       "id": "protocol-30-webp",
@@ -5747,14 +5759,14 @@
       "md5": "b5d7c4777b481a81da4dfcab0eb70f1d",
       "fileSize": 123424,
       "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/protocol/protocol-30.webp",
-      "status": "standby",
+      "status": "deprecated",
       "description": "",
       "keywords": [
         "protocol-30",
         "image"
       ],
       "references": [],
-      "notes": "Standby/Mirrored asset with CDN URL"
+      "notes": "Superseded by the October Experiments manuscript and illustrations; removed from local disk."
     },
     "trop2-ctl1-pse": {
       "id": "trop2-ctl1-pse",
@@ -112099,6 +112111,1494 @@
         "verifiedAt": null,
         "verificationNote": "User asked to skip remote URL checks; URL inferred from provided example and filename."
       }
+    },
+    "experiments-protocol-31-webp": {
+      "id": "experiments-protocol-31-webp",
+      "kind": "image",
+      "fileName": "protocol-31.webp",
+      "category": "wet-lab",
+      "localPath": "public/assets/experiments/protocol/protocol-31.webp",
+      "md5": "23e8ccf1b8f9774cd2ecf2d4e9912fbb",
+      "fileSize": 433766,
+      "uploadUrl": null,
+      "status": "deprecated",
+      "description": "",
+      "keywords": [
+        "experiments",
+        "protocol"
+      ],
+      "references": [],
+      "notes": "Superseded by the October Experiments manuscript and illustrations; removed from local disk."
+    },
+    "experiments-protocol-32-webp": {
+      "id": "experiments-protocol-32-webp",
+      "kind": "image",
+      "fileName": "protocol-32.webp",
+      "category": "wet-lab",
+      "localPath": "public/assets/experiments/protocol/protocol-32.webp",
+      "md5": "a3676a0384595c056899415317cdab23",
+      "fileSize": 152228,
+      "uploadUrl": null,
+      "status": "deprecated",
+      "description": "",
+      "keywords": [
+        "experiments",
+        "protocol"
+      ],
+      "references": [],
+      "notes": "Superseded by the October Experiments manuscript and illustrations; removed from local disk."
+    },
+    "experiments-protocol-33-webp": {
+      "id": "experiments-protocol-33-webp",
+      "kind": "image",
+      "fileName": "protocol-33.webp",
+      "category": "wet-lab",
+      "localPath": "public/assets/experiments/protocol/protocol-33.webp",
+      "md5": "d2d593607b3b68ed527e2e517fc7d0ef",
+      "fileSize": 370026,
+      "uploadUrl": null,
+      "status": "deprecated",
+      "description": "",
+      "keywords": [
+        "experiments",
+        "protocol"
+      ],
+      "references": [],
+      "notes": "Superseded by the October Experiments manuscript and illustrations; removed from local disk."
+    },
+    "experiments-protocol-34-webp": {
+      "id": "experiments-protocol-34-webp",
+      "kind": "image",
+      "fileName": "protocol-34.webp",
+      "category": "wet-lab",
+      "localPath": "public/assets/experiments/protocol/protocol-34.webp",
+      "md5": "d03f38e2224ef3792c79666a3b498de9",
+      "fileSize": 183982,
+      "uploadUrl": null,
+      "status": "deprecated",
+      "description": "",
+      "keywords": [
+        "experiments",
+        "protocol"
+      ],
+      "references": [],
+      "notes": "Superseded by the October Experiments manuscript and illustrations; removed from local disk."
+    },
+    "experiments-protocol-37-webp": {
+      "id": "experiments-protocol-37-webp",
+      "kind": "image",
+      "fileName": "protocol-37.webp",
+      "category": "wet-lab",
+      "localPath": "public/assets/experiments/protocol/protocol-37.webp",
+      "md5": "5106f9d0c7a59a6c8e8825ae146f9070",
+      "fileSize": 264460,
+      "uploadUrl": null,
+      "status": "deprecated",
+      "description": "",
+      "keywords": [
+        "experiments",
+        "protocol"
+      ],
+      "references": [],
+      "notes": "Superseded by the October Experiments manuscript and illustrations; removed from local disk."
+    },
+    "experiments-protocol-38-webp": {
+      "id": "experiments-protocol-38-webp",
+      "kind": "image",
+      "fileName": "protocol-38.webp",
+      "category": "wet-lab",
+      "localPath": "public/assets/experiments/protocol/protocol-38.webp",
+      "md5": "6cfe3e9426605aa3c407ffa1513f0623",
+      "fileSize": 156480,
+      "uploadUrl": null,
+      "status": "deprecated",
+      "description": "",
+      "keywords": [
+        "experiments",
+        "protocol"
+      ],
+      "references": [],
+      "notes": "Superseded by the October Experiments manuscript and illustrations; removed from local disk."
+    },
+    "experiments-protocol-39-webp": {
+      "id": "experiments-protocol-39-webp",
+      "kind": "image",
+      "fileName": "protocol-39.webp",
+      "category": "wet-lab",
+      "localPath": "public/assets/experiments/protocol/protocol-39.webp",
+      "md5": "93899fc03faf459d4a700810749a2c00",
+      "fileSize": 321700,
+      "uploadUrl": null,
+      "status": "deprecated",
+      "description": "",
+      "keywords": [
+        "experiments",
+        "protocol"
+      ],
+      "references": [],
+      "notes": "Superseded by the October Experiments manuscript and illustrations; removed from local disk."
+    },
+    "experiments-protocol-40-webp": {
+      "id": "experiments-protocol-40-webp",
+      "kind": "image",
+      "fileName": "protocol-40.webp",
+      "category": "wet-lab",
+      "localPath": "public/assets/experiments/protocol/protocol-40.webp",
+      "md5": "82b59d8b011b6b479490ae001d8daaae",
+      "fileSize": 136420,
+      "uploadUrl": null,
+      "status": "deprecated",
+      "description": "",
+      "keywords": [
+        "experiments",
+        "protocol"
+      ],
+      "references": [],
+      "notes": "Superseded by the October Experiments manuscript and illustrations; removed from local disk."
+    },
+    "experiments-protocol-41-webp": {
+      "id": "experiments-protocol-41-webp",
+      "kind": "image",
+      "fileName": "protocol-41.webp",
+      "category": "wet-lab",
+      "localPath": "public/assets/experiments/protocol/protocol-41.webp",
+      "md5": "806f0444ec8b27d3caac51f75a0bdc3c",
+      "fileSize": 391622,
+      "uploadUrl": null,
+      "status": "deprecated",
+      "description": "",
+      "keywords": [
+        "experiments",
+        "protocol"
+      ],
+      "references": [],
+      "notes": "Superseded by the October Experiments manuscript and illustrations; removed from local disk."
+    },
+    "experiments-protocol-42-webp": {
+      "id": "experiments-protocol-42-webp",
+      "kind": "image",
+      "fileName": "protocol-42.webp",
+      "category": "wet-lab",
+      "localPath": "public/assets/experiments/protocol/protocol-42.webp",
+      "md5": "328d99b89117b08ce64be3bc8cd3b121",
+      "fileSize": 189066,
+      "uploadUrl": null,
+      "status": "deprecated",
+      "description": "",
+      "keywords": [
+        "experiments",
+        "protocol"
+      ],
+      "references": [],
+      "notes": "Superseded by the October Experiments manuscript and illustrations; removed from local disk."
+    },
+    "experiments-protocol-43-webp": {
+      "id": "experiments-protocol-43-webp",
+      "kind": "image",
+      "fileName": "protocol-43.webp",
+      "category": "wet-lab",
+      "localPath": "public/assets/experiments/protocol/protocol-43.webp",
+      "md5": "662bb14fc6a21b05ccd55a69c8373ad5",
+      "fileSize": 455580,
+      "uploadUrl": null,
+      "status": "deprecated",
+      "description": "",
+      "keywords": [
+        "experiments",
+        "protocol"
+      ],
+      "references": [],
+      "notes": "Superseded by the October Experiments manuscript and illustrations; removed from local disk."
+    },
+    "experiments-protocol-44-webp": {
+      "id": "experiments-protocol-44-webp",
+      "kind": "image",
+      "fileName": "protocol-44.webp",
+      "category": "wet-lab",
+      "localPath": "public/assets/experiments/protocol/protocol-44.webp",
+      "md5": "e24afec58d449419d09b297f445f9345",
+      "fileSize": 219464,
+      "uploadUrl": null,
+      "status": "deprecated",
+      "description": "",
+      "keywords": [
+        "experiments",
+        "protocol"
+      ],
+      "references": [],
+      "notes": "Superseded by the October Experiments manuscript and illustrations; removed from local disk."
+    },
+    "experiments-1-1-workflow-webp": {
+      "id": "experiments-1-1-workflow-webp",
+      "kind": "image",
+      "fileName": "1-1-workflow.webp",
+      "category": "wet-lab",
+      "localPath": "public/assets/experiments/protocol/1-1-workflow.webp",
+      "md5": "7fe5c59e6a3eab3db4547645d9fabd27",
+      "fileSize": 415470,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "Source archive: 1.1 (3).zip",
+      "keywords": [
+        "experiments",
+        "protocol"
+      ],
+      "references": [
+        {
+          "file": "src/data/wet-lab/experimentProtocolAssets.ts",
+          "type": "asset-registry",
+          "text": "1-1-workflow.webp"
+        }
+      ],
+      "notes": "October Experiments illustration; bundled locally."
+    },
+    "experiments-1-1-materials-webp": {
+      "id": "experiments-1-1-materials-webp",
+      "kind": "image",
+      "fileName": "1-1-materials.webp",
+      "category": "wet-lab",
+      "localPath": "public/assets/experiments/protocol/1-1-materials.webp",
+      "md5": "6c7b71768e44a19eb5b35c16328ea237",
+      "fileSize": 212980,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "Source archive: 1.1 (3).zip",
+      "keywords": [
+        "experiments",
+        "protocol"
+      ],
+      "references": [
+        {
+          "file": "src/data/wet-lab/experimentProtocolAssets.ts",
+          "type": "asset-registry",
+          "text": "1-1-materials.webp"
+        }
+      ],
+      "notes": "October Experiments illustration; bundled locally."
+    },
+    "experiments-2-1-workflow-webp": {
+      "id": "experiments-2-1-workflow-webp",
+      "kind": "image",
+      "fileName": "2-1-workflow.webp",
+      "category": "wet-lab",
+      "localPath": "public/assets/experiments/protocol/2-1-workflow.webp",
+      "md5": "b0c2fcf3b46e84204adaac24a398cf91",
+      "fileSize": 393372,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "Source archive: 2.1DC细胞制备与circRNA递送(1).zip",
+      "keywords": [
+        "experiments",
+        "protocol"
+      ],
+      "references": [
+        {
+          "file": "src/data/wet-lab/experimentProtocolAssets.ts",
+          "type": "asset-registry",
+          "text": "2-1-workflow.webp"
+        }
+      ],
+      "notes": "October Experiments illustration; bundled locally."
+    },
+    "experiments-2-1-materials-webp": {
+      "id": "experiments-2-1-materials-webp",
+      "kind": "image",
+      "fileName": "2-1-materials.webp",
+      "category": "wet-lab",
+      "localPath": "public/assets/experiments/protocol/2-1-materials.webp",
+      "md5": "da5b7843da3c755b2b020cdfcdabc0b6",
+      "fileSize": 218734,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "Source archive: 2.1DC细胞制备与circRNA递送(1).zip",
+      "keywords": [
+        "experiments",
+        "protocol"
+      ],
+      "references": [
+        {
+          "file": "src/data/wet-lab/experimentProtocolAssets.ts",
+          "type": "asset-registry",
+          "text": "2-1-materials.webp"
+        }
+      ],
+      "notes": "October Experiments illustration; bundled locally."
+    },
+    "experiments-2-2-workflow-webp": {
+      "id": "experiments-2-2-workflow-webp",
+      "kind": "image",
+      "fileName": "2-2-workflow.webp",
+      "category": "wet-lab",
+      "localPath": "public/assets/experiments/protocol/2-2-workflow.webp",
+      "md5": "0bc20f53aa4af76c064a06d2ccddad22",
+      "fileSize": 283906,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "Source archive: 2.2T细胞分离与DC–T共培养(1).zip",
+      "keywords": [
+        "experiments",
+        "protocol"
+      ],
+      "references": [
+        {
+          "file": "src/data/wet-lab/experimentProtocolAssets.ts",
+          "type": "asset-registry",
+          "text": "2-2-workflow.webp"
+        }
+      ],
+      "notes": "October Experiments illustration; bundled locally."
+    },
+    "experiments-2-2-materials-webp": {
+      "id": "experiments-2-2-materials-webp",
+      "kind": "image",
+      "fileName": "2-2-materials.webp",
+      "category": "wet-lab",
+      "localPath": "public/assets/experiments/protocol/2-2-materials.webp",
+      "md5": "cb14e3cc8aa6f8165db1263f4abfb409",
+      "fileSize": 147466,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "Source archive: 2.2T细胞分离与DC–T共培养(1).zip",
+      "keywords": [
+        "experiments",
+        "protocol"
+      ],
+      "references": [
+        {
+          "file": "src/data/wet-lab/experimentProtocolAssets.ts",
+          "type": "asset-registry",
+          "text": "2-2-materials.webp"
+        }
+      ],
+      "notes": "October Experiments illustration; bundled locally."
+    },
+    "experiments-2-3-workflow-webp": {
+      "id": "experiments-2-3-workflow-webp",
+      "kind": "image",
+      "fileName": "2-3-workflow.webp",
+      "category": "wet-lab",
+      "localPath": "public/assets/experiments/protocol/2-3-workflow.webp",
+      "md5": "dcebcd994032ad2990bf40beb36cd9d0",
+      "fileSize": 354114,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "Source archive: 2.3ELISpot 检测与斑点计数(1).zip",
+      "keywords": [
+        "experiments",
+        "protocol"
+      ],
+      "references": [
+        {
+          "file": "src/data/wet-lab/experimentProtocolAssets.ts",
+          "type": "asset-registry",
+          "text": "2-3-workflow.webp"
+        }
+      ],
+      "notes": "October Experiments illustration; bundled locally."
+    },
+    "experiments-2-3-materials-webp": {
+      "id": "experiments-2-3-materials-webp",
+      "kind": "image",
+      "fileName": "2-3-materials.webp",
+      "category": "wet-lab",
+      "localPath": "public/assets/experiments/protocol/2-3-materials.webp",
+      "md5": "1e6458f4a98cdd27804c893cb5e07054",
+      "fileSize": 157694,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "Source archive: 2.3ELISpot 检测与斑点计数(1).zip",
+      "keywords": [
+        "experiments",
+        "protocol"
+      ],
+      "references": [
+        {
+          "file": "src/data/wet-lab/experimentProtocolAssets.ts",
+          "type": "asset-registry",
+          "text": "2-3-materials.webp"
+        }
+      ],
+      "notes": "October Experiments illustration; bundled locally."
+    },
+    "experiments-2-4-workflow-webp": {
+      "id": "experiments-2-4-workflow-webp",
+      "kind": "image",
+      "fileName": "2-4-workflow.webp",
+      "category": "wet-lab",
+      "localPath": "public/assets/experiments/protocol/2-4-workflow.webp",
+      "md5": "9f16e993542e7258b54c4c417124d7f8",
+      "fileSize": 447944,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "Source archive: 2.4Calcein-AM杀伤(1).zip",
+      "keywords": [
+        "experiments",
+        "protocol"
+      ],
+      "references": [
+        {
+          "file": "src/data/wet-lab/experimentProtocolAssets.ts",
+          "type": "asset-registry",
+          "text": "2-4-workflow.webp"
+        }
+      ],
+      "notes": "October Experiments illustration; bundled locally."
+    },
+    "experiments-2-4-materials-webp": {
+      "id": "experiments-2-4-materials-webp",
+      "kind": "image",
+      "fileName": "2-4-materials.webp",
+      "category": "wet-lab",
+      "localPath": "public/assets/experiments/protocol/2-4-materials.webp",
+      "md5": "a8062d6fd8a9bb9138a2386ec6f9e2cd",
+      "fileSize": 157768,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "Source archive: 2.4Calcein-AM杀伤(1).zip",
+      "keywords": [
+        "experiments",
+        "protocol"
+      ],
+      "references": [
+        {
+          "file": "src/data/wet-lab/experimentProtocolAssets.ts",
+          "type": "asset-registry",
+          "text": "2-4-materials.webp"
+        }
+      ],
+      "notes": "October Experiments illustration; bundled locally."
+    },
+    "experiments-2-5-workflow-webp": {
+      "id": "experiments-2-5-workflow-webp",
+      "kind": "image",
+      "fileName": "2-5-workflow.webp",
+      "category": "wet-lab",
+      "localPath": "public/assets/experiments/protocol/2-5-workflow.webp",
+      "md5": "dc6b41ad91b9e11b6cbba168d14658a2",
+      "fileSize": 284356,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "Source archive: 2.5 TROP2抗原表位的流式验证(1).zip",
+      "keywords": [
+        "experiments",
+        "protocol"
+      ],
+      "references": [
+        {
+          "file": "src/data/wet-lab/experimentProtocolAssets.ts",
+          "type": "asset-registry",
+          "text": "2-5-workflow.webp"
+        }
+      ],
+      "notes": "October Experiments illustration; bundled locally."
+    },
+    "experiments-2-5-materials-webp": {
+      "id": "experiments-2-5-materials-webp",
+      "kind": "image",
+      "fileName": "2-5-materials.webp",
+      "category": "wet-lab",
+      "localPath": "public/assets/experiments/protocol/2-5-materials.webp",
+      "md5": "daf78920d5421a0459ddfe08898d8b0e",
+      "fileSize": 203638,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "Source archive: 2.5 TROP2抗原表位的流式验证(1).zip",
+      "keywords": [
+        "experiments",
+        "protocol"
+      ],
+      "references": [
+        {
+          "file": "src/data/wet-lab/experimentProtocolAssets.ts",
+          "type": "asset-registry",
+          "text": "2-5-materials.webp"
+        }
+      ],
+      "notes": "October Experiments illustration; bundled locally."
+    },
+    "experiments-3-1-workflow-webp": {
+      "id": "experiments-3-1-workflow-webp",
+      "kind": "image",
+      "fileName": "3-1-workflow.webp",
+      "category": "wet-lab",
+      "localPath": "public/assets/experiments/protocol/3-1-workflow.webp",
+      "md5": "c3f985d82353a621528c9cdd3c94636a",
+      "fileSize": 577640,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "Source archive: 3.1 (2).zip",
+      "keywords": [
+        "experiments",
+        "protocol"
+      ],
+      "references": [
+        {
+          "file": "src/data/wet-lab/experimentProtocolAssets.ts",
+          "type": "asset-registry",
+          "text": "3-1-workflow.webp"
+        }
+      ],
+      "notes": "October Experiments illustration; bundled locally."
+    },
+    "experiments-3-1-materials-webp": {
+      "id": "experiments-3-1-materials-webp",
+      "kind": "image",
+      "fileName": "3-1-materials.webp",
+      "category": "wet-lab",
+      "localPath": "public/assets/experiments/protocol/3-1-materials.webp",
+      "md5": "3efc0d581b187c46ea1644874ad60026",
+      "fileSize": 256240,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "Source archive: 3.1 (2).zip",
+      "keywords": [
+        "experiments",
+        "protocol"
+      ],
+      "references": [
+        {
+          "file": "src/data/wet-lab/experimentProtocolAssets.ts",
+          "type": "asset-registry",
+          "text": "3-1-materials.webp"
+        }
+      ],
+      "notes": "October Experiments illustration; bundled locally."
+    },
+    "experiments-4-1-workflow-webp": {
+      "id": "experiments-4-1-workflow-webp",
+      "kind": "image",
+      "fileName": "4-1-workflow.webp",
+      "category": "wet-lab",
+      "localPath": "public/assets/experiments/protocol/4-1-workflow.webp",
+      "md5": "8d9da9b51bda9ccaa4a3fae1b3061ed0",
+      "fileSize": 393232,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "Source archive: 4.1 流式检测DC成熟(1).zip",
+      "keywords": [
+        "experiments",
+        "protocol"
+      ],
+      "references": [
+        {
+          "file": "src/data/wet-lab/experimentProtocolAssets.ts",
+          "type": "asset-registry",
+          "text": "4-1-workflow.webp"
+        }
+      ],
+      "notes": "October Experiments illustration; bundled locally."
+    },
+    "experiments-4-1-materials-webp": {
+      "id": "experiments-4-1-materials-webp",
+      "kind": "image",
+      "fileName": "4-1-materials.webp",
+      "category": "wet-lab",
+      "localPath": "public/assets/experiments/protocol/4-1-materials.webp",
+      "md5": "1e29562dc2949b4ab499a04a28cdba2c",
+      "fileSize": 193730,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "Source archive: 4.1 流式检测DC成熟(1).zip",
+      "keywords": [
+        "experiments",
+        "protocol"
+      ],
+      "references": [
+        {
+          "file": "src/data/wet-lab/experimentProtocolAssets.ts",
+          "type": "asset-registry",
+          "text": "4-1-materials.webp"
+        }
+      ],
+      "notes": "October Experiments illustration; bundled locally."
+    },
+    "experiments-4-2-workflow-webp": {
+      "id": "experiments-4-2-workflow-webp",
+      "kind": "image",
+      "fileName": "4-2-workflow.webp",
+      "category": "wet-lab",
+      "localPath": "public/assets/experiments/protocol/4-2-workflow.webp",
+      "md5": "e41227a635034c82fb9ce0f8d269b8d4",
+      "fileSize": 445438,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "Source archive: 4.2 抗原翻译验证 WB-FLAG(1).zip",
+      "keywords": [
+        "experiments",
+        "protocol"
+      ],
+      "references": [
+        {
+          "file": "src/data/wet-lab/experimentProtocolAssets.ts",
+          "type": "asset-registry",
+          "text": "4-2-workflow.webp"
+        }
+      ],
+      "notes": "October Experiments illustration; bundled locally."
+    },
+    "experiments-4-2-materials-webp": {
+      "id": "experiments-4-2-materials-webp",
+      "kind": "image",
+      "fileName": "4-2-materials.webp",
+      "category": "wet-lab",
+      "localPath": "public/assets/experiments/protocol/4-2-materials.webp",
+      "md5": "9880341d252c3d45c1399c18b4cba43c",
+      "fileSize": 243660,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "Source archive: 4.2 抗原翻译验证 WB-FLAG(1).zip",
+      "keywords": [
+        "experiments",
+        "protocol"
+      ],
+      "references": [
+        {
+          "file": "src/data/wet-lab/experimentProtocolAssets.ts",
+          "type": "asset-registry",
+          "text": "4-2-materials.webp"
+        }
+      ],
+      "notes": "October Experiments illustration; bundled locally."
+    },
+    "experiments-4-3-workflow-webp": {
+      "id": "experiments-4-3-workflow-webp",
+      "kind": "image",
+      "fileName": "4-3-workflow.webp",
+      "category": "wet-lab",
+      "localPath": "public/assets/experiments/protocol/4-3-workflow.webp",
+      "md5": "62e172c4c701cf3be84af1bc7035ee1a",
+      "fileSize": 314100,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "Source archive: 4.3 T细胞活化与记忆分化流式(1).zip",
+      "keywords": [
+        "experiments",
+        "protocol"
+      ],
+      "references": [
+        {
+          "file": "src/data/wet-lab/experimentProtocolAssets.ts",
+          "type": "asset-registry",
+          "text": "4-3-workflow.webp"
+        }
+      ],
+      "notes": "October Experiments illustration; bundled locally."
+    },
+    "experiments-4-3-materials-webp": {
+      "id": "experiments-4-3-materials-webp",
+      "kind": "image",
+      "fileName": "4-3-materials.webp",
+      "category": "wet-lab",
+      "localPath": "public/assets/experiments/protocol/4-3-materials.webp",
+      "md5": "d0d3db327f8812f3b03b7c4e087ede5d",
+      "fileSize": 204144,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "Source archive: 4.3 T细胞活化与记忆分化流式(1).zip",
+      "keywords": [
+        "experiments",
+        "protocol"
+      ],
+      "references": [
+        {
+          "file": "src/data/wet-lab/experimentProtocolAssets.ts",
+          "type": "asset-registry",
+          "text": "4-3-materials.webp"
+        }
+      ],
+      "notes": "October Experiments illustration; bundled locally."
+    },
+    "experiments-4-4-workflow-webp": {
+      "id": "experiments-4-4-workflow-webp",
+      "kind": "image",
+      "fileName": "4-4-workflow.webp",
+      "category": "wet-lab",
+      "localPath": "public/assets/experiments/protocol/4-4-workflow.webp",
+      "md5": "c6a49e2caf77799268ebb70659822112",
+      "fileSize": 363684,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "Source archive: 4.4 二轮 ELISpot (1)(1).zip",
+      "keywords": [
+        "experiments",
+        "protocol"
+      ],
+      "references": [
+        {
+          "file": "src/data/wet-lab/experimentProtocolAssets.ts",
+          "type": "asset-registry",
+          "text": "4-4-workflow.webp"
+        }
+      ],
+      "notes": "October Experiments illustration; bundled locally."
+    },
+    "experiments-4-4-materials-webp": {
+      "id": "experiments-4-4-materials-webp",
+      "kind": "image",
+      "fileName": "4-4-materials.webp",
+      "category": "wet-lab",
+      "localPath": "public/assets/experiments/protocol/4-4-materials.webp",
+      "md5": "cfec432f5161595bc52d870215927330",
+      "fileSize": 155032,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "Source archive: 4.4 二轮 ELISpot (1)(1).zip",
+      "keywords": [
+        "experiments",
+        "protocol"
+      ],
+      "references": [
+        {
+          "file": "src/data/wet-lab/experimentProtocolAssets.ts",
+          "type": "asset-registry",
+          "text": "4-4-materials.webp"
+        }
+      ],
+      "notes": "October Experiments illustration; bundled locally."
+    },
+    "experiments-5-1-workflow-webp": {
+      "id": "experiments-5-1-workflow-webp",
+      "kind": "image",
+      "fileName": "5-1-workflow.webp",
+      "category": "wet-lab",
+      "localPath": "public/assets/experiments/protocol/5-1-workflow.webp",
+      "md5": "5b765c265f7983cea9687990da416f3e",
+      "fileSize": 367928,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "Source archive: Experiment 5.1.zip",
+      "keywords": [
+        "experiments",
+        "protocol"
+      ],
+      "references": [
+        {
+          "file": "src/data/wet-lab/experimentProtocolAssets.ts",
+          "type": "asset-registry",
+          "text": "5-1-workflow.webp"
+        }
+      ],
+      "notes": "October Experiments illustration; bundled locally."
+    },
+    "experiments-5-1-materials-webp": {
+      "id": "experiments-5-1-materials-webp",
+      "kind": "image",
+      "fileName": "5-1-materials.webp",
+      "category": "wet-lab",
+      "localPath": "public/assets/experiments/protocol/5-1-materials.webp",
+      "md5": "eada16bbd9e11cc6c0a53707851d350b",
+      "fileSize": 136156,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "Source archive: Experiment 5.1.zip",
+      "keywords": [
+        "experiments",
+        "protocol"
+      ],
+      "references": [
+        {
+          "file": "src/data/wet-lab/experimentProtocolAssets.ts",
+          "type": "asset-registry",
+          "text": "5-1-materials.webp"
+        }
+      ],
+      "notes": "October Experiments illustration; bundled locally."
+    },
+    "experiments-5-2-workflow-webp": {
+      "id": "experiments-5-2-workflow-webp",
+      "kind": "image",
+      "fileName": "5-2-workflow.webp",
+      "category": "wet-lab",
+      "localPath": "public/assets/experiments/protocol/5-2-workflow.webp",
+      "md5": "b7967a1c1015650749637aa1aef53398",
+      "fileSize": 410782,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "Source archive: 5.2+5.3.zip",
+      "keywords": [
+        "experiments",
+        "protocol"
+      ],
+      "references": [
+        {
+          "file": "src/data/wet-lab/experimentProtocolAssets.ts",
+          "type": "asset-registry",
+          "text": "5-2-workflow.webp"
+        }
+      ],
+      "notes": "October Experiments illustration; bundled locally."
+    },
+    "experiments-5-2-materials-webp": {
+      "id": "experiments-5-2-materials-webp",
+      "kind": "image",
+      "fileName": "5-2-materials.webp",
+      "category": "wet-lab",
+      "localPath": "public/assets/experiments/protocol/5-2-materials.webp",
+      "md5": "ed2638701d769debb7d9045beb617da5",
+      "fileSize": 279670,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "Source archive: 5.2+5.3.zip",
+      "keywords": [
+        "experiments",
+        "protocol"
+      ],
+      "references": [
+        {
+          "file": "src/data/wet-lab/experimentProtocolAssets.ts",
+          "type": "asset-registry",
+          "text": "5-2-materials.webp"
+        }
+      ],
+      "notes": "October Experiments illustration; bundled locally."
+    },
+    "experiments-5-3-workflow-webp": {
+      "id": "experiments-5-3-workflow-webp",
+      "kind": "image",
+      "fileName": "5-3-workflow.webp",
+      "category": "wet-lab",
+      "localPath": "public/assets/experiments/protocol/5-3-workflow.webp",
+      "md5": "0c3c9c3a69a0a80890cc28773ac0d9d6",
+      "fileSize": 447682,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "Source archive: 5.2+5.3.zip",
+      "keywords": [
+        "experiments",
+        "protocol"
+      ],
+      "references": [
+        {
+          "file": "src/data/wet-lab/experimentProtocolAssets.ts",
+          "type": "asset-registry",
+          "text": "5-3-workflow.webp"
+        }
+      ],
+      "notes": "October Experiments illustration; bundled locally."
+    },
+    "experiments-5-3-materials-webp": {
+      "id": "experiments-5-3-materials-webp",
+      "kind": "image",
+      "fileName": "5-3-materials.webp",
+      "category": "wet-lab",
+      "localPath": "public/assets/experiments/protocol/5-3-materials.webp",
+      "md5": "9b75cb5a02f6a0be5ddda4d741a5f881",
+      "fileSize": 175506,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "Source archive: 5.2+5.3.zip",
+      "keywords": [
+        "experiments",
+        "protocol"
+      ],
+      "references": [
+        {
+          "file": "src/data/wet-lab/experimentProtocolAssets.ts",
+          "type": "asset-registry",
+          "text": "5-3-materials.webp"
+        }
+      ],
+      "notes": "October Experiments illustration; bundled locally."
+    },
+    "experiments-6-1-workflow-webp": {
+      "id": "experiments-6-1-workflow-webp",
+      "kind": "image",
+      "fileName": "6-1-workflow.webp",
+      "category": "wet-lab",
+      "localPath": "public/assets/experiments/protocol/6-1-workflow.webp",
+      "md5": "e3c365f7dea47e56eadd5f46cb33ad9e",
+      "fileSize": 435530,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "Source archive: 6.1.zip",
+      "keywords": [
+        "experiments",
+        "protocol"
+      ],
+      "references": [
+        {
+          "file": "src/data/wet-lab/experimentProtocolAssets.ts",
+          "type": "asset-registry",
+          "text": "6-1-workflow.webp"
+        }
+      ],
+      "notes": "October Experiments illustration; bundled locally."
+    },
+    "experiments-6-1-materials-webp": {
+      "id": "experiments-6-1-materials-webp",
+      "kind": "image",
+      "fileName": "6-1-materials.webp",
+      "category": "wet-lab",
+      "localPath": "public/assets/experiments/protocol/6-1-materials.webp",
+      "md5": "f867bec2d640cc67fa84869e47131ee9",
+      "fileSize": 184884,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "Source archive: 6.1.zip",
+      "keywords": [
+        "experiments",
+        "protocol"
+      ],
+      "references": [
+        {
+          "file": "src/data/wet-lab/experimentProtocolAssets.ts",
+          "type": "asset-registry",
+          "text": "6-1-materials.webp"
+        }
+      ],
+      "notes": "October Experiments illustration; bundled locally."
+    },
+    "experiments-6-2-workflow-webp": {
+      "id": "experiments-6-2-workflow-webp",
+      "kind": "image",
+      "fileName": "6-2-workflow.webp",
+      "category": "wet-lab",
+      "localPath": "public/assets/experiments/protocol/6-2-workflow.webp",
+      "md5": "4aea10ce458e0009d3083ba528e40b99",
+      "fileSize": 499364,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "Source archive: 6.2.zip",
+      "keywords": [
+        "experiments",
+        "protocol"
+      ],
+      "references": [
+        {
+          "file": "src/data/wet-lab/experimentProtocolAssets.ts",
+          "type": "asset-registry",
+          "text": "6-2-workflow.webp"
+        }
+      ],
+      "notes": "October Experiments illustration; bundled locally."
+    },
+    "experiments-6-2-materials-webp": {
+      "id": "experiments-6-2-materials-webp",
+      "kind": "image",
+      "fileName": "6-2-materials.webp",
+      "category": "wet-lab",
+      "localPath": "public/assets/experiments/protocol/6-2-materials.webp",
+      "md5": "b33f0b1569b922ec90c5cb5499d3af1d",
+      "fileSize": 177174,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "Source archive: 6.2.zip",
+      "keywords": [
+        "experiments",
+        "protocol"
+      ],
+      "references": [
+        {
+          "file": "src/data/wet-lab/experimentProtocolAssets.ts",
+          "type": "asset-registry",
+          "text": "6-2-materials.webp"
+        }
+      ],
+      "notes": "October Experiments illustration; bundled locally."
+    },
+    "experiments-7-1-workflow-webp": {
+      "id": "experiments-7-1-workflow-webp",
+      "kind": "image",
+      "fileName": "7-1-workflow.webp",
+      "category": "wet-lab",
+      "localPath": "public/assets/experiments/protocol/7-1-workflow.webp",
+      "md5": "f070f21327e961fdf2dc20a50a1b11b4",
+      "fileSize": 314736,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "Source archive: 7.1 荷瘤模型建立 (1).zip",
+      "keywords": [
+        "experiments",
+        "protocol"
+      ],
+      "references": [
+        {
+          "file": "src/data/wet-lab/experimentProtocolAssets.ts",
+          "type": "asset-registry",
+          "text": "7-1-workflow.webp"
+        }
+      ],
+      "notes": "October Experiments illustration; bundled locally."
+    },
+    "experiments-7-1-materials-webp": {
+      "id": "experiments-7-1-materials-webp",
+      "kind": "image",
+      "fileName": "7-1-materials.webp",
+      "category": "wet-lab",
+      "localPath": "public/assets/experiments/protocol/7-1-materials.webp",
+      "md5": "3860bf5073c3e219cb5906b58044ea3a",
+      "fileSize": 201458,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "Source archive: 7.1 荷瘤模型建立 (1).zip",
+      "keywords": [
+        "experiments",
+        "protocol"
+      ],
+      "references": [
+        {
+          "file": "src/data/wet-lab/experimentProtocolAssets.ts",
+          "type": "asset-registry",
+          "text": "7-1-materials.webp"
+        }
+      ],
+      "notes": "October Experiments illustration; bundled locally."
+    },
+    "experiments-7-2-workflow-webp": {
+      "id": "experiments-7-2-workflow-webp",
+      "kind": "image",
+      "fileName": "7-2-workflow.webp",
+      "category": "wet-lab",
+      "localPath": "public/assets/experiments/protocol/7-2-workflow.webp",
+      "md5": "21b290a4b3ff8c8dbeab109ae1561b0b",
+      "fileSize": 328410,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "Source archive: 7.2 体内抑瘤效果（免疫 + 测量 + 剥瘤） (2).zip",
+      "keywords": [
+        "experiments",
+        "protocol"
+      ],
+      "references": [
+        {
+          "file": "src/data/wet-lab/experimentProtocolAssets.ts",
+          "type": "asset-registry",
+          "text": "7-2-workflow.webp"
+        }
+      ],
+      "notes": "October Experiments illustration; bundled locally."
+    },
+    "experiments-7-2-materials-webp": {
+      "id": "experiments-7-2-materials-webp",
+      "kind": "image",
+      "fileName": "7-2-materials.webp",
+      "category": "wet-lab",
+      "localPath": "public/assets/experiments/protocol/7-2-materials.webp",
+      "md5": "69739d1360c1f8168c2aaba764463f62",
+      "fileSize": 153506,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "Source archive: 7.2 体内抑瘤效果（免疫 + 测量 + 剥瘤） (2).zip",
+      "keywords": [
+        "experiments",
+        "protocol"
+      ],
+      "references": [
+        {
+          "file": "src/data/wet-lab/experimentProtocolAssets.ts",
+          "type": "asset-registry",
+          "text": "7-2-materials.webp"
+        }
+      ],
+      "notes": "October Experiments illustration; bundled locally."
+    },
+    "experiments-7-3-workflow-webp": {
+      "id": "experiments-7-3-workflow-webp",
+      "kind": "image",
+      "fileName": "7-3-workflow.webp",
+      "category": "wet-lab",
+      "localPath": "public/assets/experiments/protocol/7-3-workflow.webp",
+      "md5": "99c9dccfc7d32296a5925356952e85a3",
+      "fileSize": 440738,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "Source archive: 7.3 肿瘤免疫微环境（免疫荧光 CD8_Granzyme B） (1).zip",
+      "keywords": [
+        "experiments",
+        "protocol"
+      ],
+      "references": [
+        {
+          "file": "src/data/wet-lab/experimentProtocolAssets.ts",
+          "type": "asset-registry",
+          "text": "7-3-workflow.webp"
+        }
+      ],
+      "notes": "October Experiments illustration; bundled locally."
+    },
+    "experiments-7-3-materials-webp": {
+      "id": "experiments-7-3-materials-webp",
+      "kind": "image",
+      "fileName": "7-3-materials.webp",
+      "category": "wet-lab",
+      "localPath": "public/assets/experiments/protocol/7-3-materials.webp",
+      "md5": "e34f2ef0df4b8433b4e5f0f9dbd48586",
+      "fileSize": 215546,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "Source archive: 7.3 肿瘤免疫微环境（免疫荧光 CD8_Granzyme B） (1).zip",
+      "keywords": [
+        "experiments",
+        "protocol"
+      ],
+      "references": [
+        {
+          "file": "src/data/wet-lab/experimentProtocolAssets.ts",
+          "type": "asset-registry",
+          "text": "7-3-materials.webp"
+        }
+      ],
+      "notes": "October Experiments illustration; bundled locally."
+    },
+    "experiments-7-4-workflow-webp": {
+      "id": "experiments-7-4-workflow-webp",
+      "kind": "image",
+      "fileName": "7-4-workflow.webp",
+      "category": "wet-lab",
+      "localPath": "public/assets/experiments/protocol/7-4-workflow.webp",
+      "md5": "f20fd6b0cca38788e46cd9045ad114ab",
+      "fileSize": 512544,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "Source archive: 7.4 脾脏免疫细胞流式分析.zip",
+      "keywords": [
+        "experiments",
+        "protocol"
+      ],
+      "references": [
+        {
+          "file": "src/data/wet-lab/experimentProtocolAssets.ts",
+          "type": "asset-registry",
+          "text": "7-4-workflow.webp"
+        }
+      ],
+      "notes": "October Experiments illustration; bundled locally."
+    },
+    "experiments-7-4-materials-webp": {
+      "id": "experiments-7-4-materials-webp",
+      "kind": "image",
+      "fileName": "7-4-materials.webp",
+      "category": "wet-lab",
+      "localPath": "public/assets/experiments/protocol/7-4-materials.webp",
+      "md5": "c73850eec2b021b8cc625ecf1cf4e19c",
+      "fileSize": 261756,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "Source archive: 7.4 脾脏免疫细胞流式分析.zip",
+      "keywords": [
+        "experiments",
+        "protocol"
+      ],
+      "references": [
+        {
+          "file": "src/data/wet-lab/experimentProtocolAssets.ts",
+          "type": "asset-registry",
+          "text": "7-4-materials.webp"
+        }
+      ],
+      "notes": "October Experiments illustration; bundled locally."
+    },
+    "experiments-protocol-35-webp": {
+      "id": "experiments-protocol-35-webp",
+      "kind": "image",
+      "fileName": "protocol-35.webp",
+      "category": "wet-lab",
+      "localPath": "public/assets/experiments/protocol/protocol-35.webp",
+      "md5": "afbc12b9592d0fdfb0b3d05a69644103",
+      "fileSize": 251710,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "experiments",
+        "protocol"
+      ],
+      "references": [
+        {
+          "file": "src/data/wet-lab/experimentProtocolAssets.ts",
+          "type": "asset-registry",
+          "text": "protocol-35.webp"
+        }
+      ],
+      "notes": "Retained illustration matching the current protocol."
+    },
+    "experiments-protocol-36-webp": {
+      "id": "experiments-protocol-36-webp",
+      "kind": "image",
+      "fileName": "protocol-36.webp",
+      "category": "wet-lab",
+      "localPath": "public/assets/experiments/protocol/protocol-36.webp",
+      "md5": "715f671aab9df4552f8295c8839c4136",
+      "fileSize": 123444,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "",
+      "keywords": [
+        "experiments",
+        "protocol"
+      ],
+      "references": [
+        {
+          "file": "src/data/wet-lab/experimentProtocolAssets.ts",
+          "type": "asset-registry",
+          "text": "protocol-36.webp"
+        }
+      ],
+      "notes": "Retained illustration matching the current protocol."
+    },
+    "measurement-sanger-trace-across-the-backsplice-junction-bsj-of-the-combined-vaccine-avif": {
+      "id": "measurement-sanger-trace-across-the-backsplice-junction-bsj-of-the-combined-vaccine-avif",
+      "kind": "image",
+      "fileName": "sanger-trace-across-the-backsplice-junction-bsj-of-the-combined-vaccine.avif",
+      "category": "wet-lab",
+      "localPath": "文案集/wetlab/Measurment/measurete图片与附件/sanger-trace-across-the-backsplice-junction-bsj-of-the-combined-vaccine.avif",
+      "md5": "9b7f26af2e3efeae8cc40f6451fad384",
+      "fileSize": 47286,
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/sanger-trace-across-the-backsplice-junction-bsj-of-the-combined-vaccine.avif",
+      "status": "in-use",
+      "description": "Sanger trace of the BSJ-spanning RT-PCR product from the Combined vaccine",
+      "keywords": [
+        "experiments",
+        "protocol"
+      ],
+      "references": [
+        {
+          "file": "src/data/wet-lab/measurementAssets.ts",
+          "type": "asset-registry",
+          "text": "sanger-trace-across-the-backsplice-junction-bsj-of-the-combined-vaccine.avif"
+        }
+      ],
+      "notes": "Updated Measurement figure; official iGEM URL verified."
+    },
+    "measurement-wet-image2-avif": {
+      "id": "measurement-wet-image2-avif",
+      "kind": "image",
+      "fileName": "wet-image2.avif",
+      "category": "wet-lab",
+      "localPath": "文案集/wetlab/Measurment/measurete图片与附件/wet-image2.avif",
+      "md5": "8760e74950e68a4d7cc8fda112e9af15",
+      "fileSize": 12254,
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/wet-image2.avif",
+      "status": "in-use",
+      "description": "Relative TROP2 expression in wild-type and transduced 4T1 cells. Values are mean ± SD across three RNA-extraction replicates from one cell sample per group (biological n = 1 per group). The result is reported descriptively, without a between-group P value.",
+      "keywords": [
+        "experiments",
+        "protocol"
+      ],
+      "references": [
+        {
+          "file": "src/data/wet-lab/measurementAssets.ts",
+          "type": "asset-registry",
+          "text": "wet-image2.avif"
+        }
+      ],
+      "notes": "Updated Measurement figure; official iGEM URL verified."
+    },
+    "measurement-wet-image-avif": {
+      "id": "measurement-wet-image-avif",
+      "kind": "image",
+      "fileName": "wet-image.avif",
+      "category": "wet-lab",
+      "localPath": "文案集/wetlab/Measurment/measurete图片与附件/wet-image.avif",
+      "md5": "ee8781200743c1fa9ed8a140a23471e2",
+      "fileSize": 15363,
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/wet-image.avif",
+      "status": "in-use",
+      "description": "Dose–viability relationship for empty LNP on dendritic cells",
+      "keywords": [
+        "experiments",
+        "protocol"
+      ],
+      "references": [
+        {
+          "file": "src/data/wet-lab/measurementAssets.ts",
+          "type": "asset-registry",
+          "text": "wet-image.avif"
+        }
+      ],
+      "notes": "Updated Measurement figure; official iGEM URL verified."
+    },
+    "measurement-wet-image3-avif": {
+      "id": "measurement-wet-image3-avif",
+      "kind": "image",
+      "fileName": "wet-image3.avif",
+      "category": "wet-lab",
+      "localPath": "文案集/wetlab/Measurment/measurete图片与附件/wet-image3.avif",
+      "md5": "bd3fdbaa311b0e4bb0b5ad2d00c92b6c",
+      "fileSize": 84631,
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/wet-image3.avif",
+      "status": "in-use",
+      "description": "Round 1 ELISpot wells",
+      "keywords": [
+        "experiments",
+        "protocol"
+      ],
+      "references": [
+        {
+          "file": "src/data/wet-lab/measurementAssets.ts",
+          "type": "asset-registry",
+          "text": "wet-image3.avif"
+        }
+      ],
+      "notes": "Updated Measurement figure; official iGEM URL verified."
+    },
+    "measurement-wet-image4-avif": {
+      "id": "measurement-wet-image4-avif",
+      "kind": "image",
+      "fileName": "wet-image4.avif",
+      "category": "wet-lab",
+      "localPath": "文案集/wetlab/Measurment/measurete图片与附件/wet-image4.avif",
+      "md5": "586bf22aa196ff022ee36d697dab8dc9",
+      "fileSize": 38488,
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/wet-image4.avif",
+      "status": "in-use",
+      "description": "Killing of MDA-MB-231 across three effector-to-target ratios",
+      "keywords": [
+        "experiments",
+        "protocol"
+      ],
+      "references": [
+        {
+          "file": "src/data/wet-lab/measurementAssets.ts",
+          "type": "asset-registry",
+          "text": "wet-image4.avif"
+        }
+      ],
+      "notes": "Updated Measurement figure; official iGEM URL verified."
+    },
+    "measurement-wet-image5-avif": {
+      "id": "measurement-wet-image5-avif",
+      "kind": "image",
+      "fileName": "wet-image5.avif",
+      "category": "wet-lab",
+      "localPath": "文案集/wetlab/Measurment/measurete图片与附件/wet-image5.avif",
+      "md5": "c0c82388ad941214ceb49498b1522d42",
+      "fileSize": 12295,
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/wet-image5.avif",
+      "status": "in-use",
+      "description": "Killing of four normal cell lines and MDA-MB-231",
+      "keywords": [
+        "experiments",
+        "protocol"
+      ],
+      "references": [
+        {
+          "file": "src/data/wet-lab/measurementAssets.ts",
+          "type": "asset-registry",
+          "text": "wet-image5.avif"
+        }
+      ],
+      "notes": "Updated Measurement figure; official iGEM URL verified."
+    },
+    "measurement-wet-image6-avif": {
+      "id": "measurement-wet-image6-avif",
+      "kind": "image",
+      "fileName": "wet-image6.avif",
+      "category": "wet-lab",
+      "localPath": "文案集/wetlab/Measurment/measurete图片与附件/wet-image6.avif",
+      "md5": "05efddab068a859b46b1250641686006",
+      "fileSize": 54050,
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/wet-image6.avif",
+      "status": "in-use",
+      "description": "Surface TROP2 on wild-type and TROP2-overexpressing 4T1",
+      "keywords": [
+        "experiments",
+        "protocol"
+      ],
+      "references": [
+        {
+          "file": "src/data/wet-lab/measurementAssets.ts",
+          "type": "asset-registry",
+          "text": "wet-image6.avif"
+        }
+      ],
+      "notes": "Updated Measurement figure; official iGEM URL verified."
+    },
+    "measurement-wet-image7-avif": {
+      "id": "measurement-wet-image7-avif",
+      "kind": "image",
+      "fileName": "wet-image7.avif",
+      "category": "wet-lab",
+      "localPath": "文案集/wetlab/Measurment/measurete图片与附件/wet-image7.avif",
+      "md5": "d57f298ccb8699fec0c63b1c1c28c417",
+      "fileSize": 48987,
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/wet-image7.avif",
+      "status": "in-use",
+      "description": "human dc maturation flow and quantification",
+      "keywords": [
+        "experiments",
+        "protocol"
+      ],
+      "references": [
+        {
+          "file": "src/data/wet-lab/measurementAssets.ts",
+          "type": "asset-registry",
+          "text": "wet-image7.avif"
+        }
+      ],
+      "notes": "Updated Measurement figure; official iGEM URL verified."
+    },
+    "measurement-wet-image8-avif": {
+      "id": "measurement-wet-image8-avif",
+      "kind": "image",
+      "fileName": "wet-image8.avif",
+      "category": "wet-lab",
+      "localPath": "文案集/wetlab/Measurment/measurete图片与附件/wet-image8.avif",
+      "md5": "147c405e5acf9240fbff1535e29f58a9",
+      "fileSize": 80096,
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/wet-image8.avif",
+      "status": "in-use",
+      "description": "human cd8 cd69 flow and quantification",
+      "keywords": [
+        "experiments",
+        "protocol"
+      ],
+      "references": [
+        {
+          "file": "src/data/wet-lab/measurementAssets.ts",
+          "type": "asset-registry",
+          "text": "wet-image8.avif"
+        }
+      ],
+      "notes": "Updated Measurement figure; official iGEM URL verified."
+    },
+    "measurement-wet-image9-avif": {
+      "id": "measurement-wet-image9-avif",
+      "kind": "image",
+      "fileName": "wet-image9.avif",
+      "category": "wet-lab",
+      "localPath": "文案集/wetlab/Measurment/measurete图片与附件/wet-image9.avif",
+      "md5": "51084fff0ba219407a878c1109bf7290",
+      "fileSize": 135453,
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/wet-image9.avif",
+      "status": "in-use",
+      "description": "human cd8 cd28 flow and quantification",
+      "keywords": [
+        "experiments",
+        "protocol"
+      ],
+      "references": [
+        {
+          "file": "src/data/wet-lab/measurementAssets.ts",
+          "type": "asset-registry",
+          "text": "wet-image9.avif"
+        }
+      ],
+      "notes": "Updated Measurement figure; official iGEM URL verified."
+    },
+    "measurement-wet-image10-avif": {
+      "id": "measurement-wet-image10-avif",
+      "kind": "image",
+      "fileName": "wet-image10.avif",
+      "category": "wet-lab",
+      "localPath": "文案集/wetlab/Measurment/measurete图片与附件/wet-image10.avif",
+      "md5": "075b26dbc1e980ea0919221f4ccdc3b8",
+      "fileSize": 61882,
+      "uploadUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/wet-image10.avif",
+      "status": "in-use",
+      "description": "human effector memory flow and quantification",
+      "keywords": [
+        "experiments",
+        "protocol"
+      ],
+      "references": [
+        {
+          "file": "src/data/wet-lab/measurementAssets.ts",
+          "type": "asset-registry",
+          "text": "wet-image10.avif"
+        }
+      ],
+      "notes": "Updated Measurement figure; official iGEM URL verified."
     }
   }
 }

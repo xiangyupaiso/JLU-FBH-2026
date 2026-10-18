@@ -335,7 +335,7 @@ const sdg4Resources: ReadonlyArray<EducationResource> = [
     ],
     pdfs: [
       pdf("Chinese", "a-seed-planted-in-the-heart-cn.pdf"),
-      pdf("English", "air-to-bread-en.pdf"),
+      pdf("English", "a-seed-planted-in-the-heart-en.pdf"),
     ],
   },
 ];
@@ -803,7 +803,7 @@ const sdg4Groups: ReadonlyArray<EducationActivityGroup> = [
         resourcesHint:
           "For teachers and other teams to use, with explanatory depth adapted to students’ prior knowledge.",
         resourcePdfs: [
-          pdf("English", "a-seed-planted-in-the-heart-en.pdf"),
+          pdf("English", "air-to-bread-en.pdf"),
           pdf("Chinese", "air-to-bread-cn.pdf"),
         ],
         sdgs: [4, 9, 12],
@@ -877,15 +877,21 @@ const sdg4Groups: ReadonlyArray<EducationActivityGroup> = [
         resourcesHint:
           "For teachers and other teams to use as a reference. Experimental modules require suitable facilities, safety arrangements, and professional supervision.",
         resourcePdfs: [
-          pdf("English", "12-01-synbio-classroom-opening-ceremony.pdf"),
-          pdf("English", "12-02-synbio-classroom-pcr-en.pdf"),
           pdf(
-            "English",
+            "English resource 1",
+            "12-01-synbio-classroom-opening-ceremony.pdf",
+          ),
+          pdf("English resource 2", "12-02-synbio-classroom-pcr-en.pdf"),
+          pdf(
+            "English resource 3",
             "12-03-synbio-classroom-dna-extraction-identification-en.pdf",
           ),
-          pdf("English", "12-04-synbio-classroom-life-science-monopoly-en.pdf"),
           pdf(
-            "English",
+            "English resource 4",
+            "12-04-synbio-classroom-life-science-monopoly-en.pdf",
+          ),
+          pdf(
+            "English resource 5",
             "12-05-synbio-classroom-plasmids-and-biological-parts-en.pdf",
           ),
         ],
@@ -1460,7 +1466,6 @@ export const sdg4Chapter: SdgChapter = {
     ],
   },
   alignment: {
-    findingsHeading: "Key Findings",
     lead: [
       "Building on potential relationships identified through SST-QN, we examined CirCure’s **educational design, stakeholder engagement, teaching activities, and resource development** to determine whether these relationships have emerged within the project and how far current evidence supports them. We distinguish learning and participation opportunities already created from knowledge, behavioral, and social impacts that require further evaluation.",
     ],
@@ -1554,7 +1559,7 @@ export const sdg4Chapter: SdgChapter = {
         [
           "Air to Bread — Teaching PPT",
           "Begins with the question of how bread could be made without growing wheat. Uses analogies for cells, DNA, and metabolic pathways to introduce carbon fixation, biomanufacturing, and future food, alongside the evidence and conditions needed for application.",
-          "[English](https://static.igem.wiki/teams/6056/wiki/files/docs/sus-sdg4/a-seed-planted-in-the-heart-en.pdf) / [Chinese](https://static.igem.wiki/teams/6056/wiki/files/docs/sus-sdg4/air-to-bread-cn.pdf)",
+          "[English](https://static.igem.wiki/teams/6056/wiki/files/docs/sus-sdg4/air-to-bread-en.pdf) / [Chinese](https://static.igem.wiki/teams/6056/wiki/files/docs/sus-sdg4/air-to-bread-cn.pdf)",
         ],
         [
           "SynBio Classroom — Teaching PPT",
@@ -1584,7 +1589,7 @@ export const sdg4Chapter: SdgChapter = {
         [
           "Seeds in Our Hearts — Science Picture Book",
           "Combines a dream journey shared by a girl and a lamb with illustrations and scientific explanations to introduce puberty and body acceptance and support parent–child discussion.",
-          "[English](https://static.igem.wiki/teams/6056/wiki/files/docs/sus-sdg4/air-to-bread-en.pdf) / [Chinese](https://static.igem.wiki/teams/6056/wiki/files/docs/sus-sdg4/a-seed-planted-in-the-heart-cn.pdf)",
+          "[English](https://static.igem.wiki/teams/6056/wiki/files/docs/sus-sdg4/a-seed-planted-in-the-heart-en.pdf) / [Chinese](https://static.igem.wiki/teams/6056/wiki/files/docs/sus-sdg4/a-seed-planted-in-the-heart-cn.pdf)",
         ],
         [
           "Virtual Laboratory",

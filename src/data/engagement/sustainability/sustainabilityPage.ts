@@ -215,8 +215,8 @@ const sstQnSection: WikiSection = {
 const impactFramework: WikiSection = {
   id: "sdg-impact-framework",
   index: "03",
-  kicker: "03 / SDG Impact Framework",
-  navLabel: "SDG Impact Framework",
+  kicker: "03 / SET-DEVELOP-GROW",
+  navLabel: "SET-DEVELOP-GROW Impact Framework",
   title: impactFrameworkSection.title,
   summary: "",
   blocks: [

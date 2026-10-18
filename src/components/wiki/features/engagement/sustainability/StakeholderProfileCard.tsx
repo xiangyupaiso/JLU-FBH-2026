@@ -46,7 +46,11 @@ function ArticleBlockView({ block }: { block: ArticleBlock }) {
   );
 }
 
-function ArticleView({ article }: { article: StakeholderArticle }) {
+export function StakeholderArticleView({
+  article,
+}: {
+  article: StakeholderArticle;
+}) {
   return (
     <article className="sust-stake-article">
       {article.title ? (
@@ -126,7 +130,9 @@ function ResourceDownloads({ profile }: { profile: StakeholderProfile }) {
               target="_blank"
               rel="noopener noreferrer"
             >
-              {pdf.label} resource
+              {/resource/i.test(pdf.label)
+                ? pdf.label
+                : `${pdf.label} resource`}
             </a>
           ))}
         </dd>
@@ -352,7 +358,7 @@ export function StakeholderProfileCard({
                     </div>
                   ) : null}
                   <div className="sust-stake-modal__body">
-                    <ArticleView article={profile.article} />
+                    <StakeholderArticleView article={profile.article} />
                   </div>
                 </div>
               </div>
@@ -659,7 +665,6 @@ export function StakeholderDeck({
       />
       <div className="sust-deck__viewport">
         <nav className="sust-deck__rail" aria-label="Choose a stakeholder">
-          <p className="sust-deck__label">Stakeholder voices</p>
           <div role="tablist" aria-orientation="vertical" onKeyDown={onRailKey}>
             {profiles.map((p, index) => (
               <button

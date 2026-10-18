@@ -73,6 +73,12 @@ const updatedSections = data.sustainabilityPage.sections.slice(5);
 const copyStrings = strings([...updatedChapters, ...updatedSections]);
 const corpus = copyStrings.map(normalize).join("\n");
 const omissions = [];
+// Review PDF item 21 explicitly removes this sentence and its portrait navigation.
+const approvedDeletions = new Set([
+  normalize(
+    "Details about these stakeholders are provided in the preceding SDG sections. Click their corresponding profile images to revisit their backgrounds, feedback, and contributions to CirCure.",
+  ),
+]);
 let verifiedParagraphs = 0;
 for (let line of source.split(/\r?\n/)) {
   line = line.trim();
@@ -106,6 +112,7 @@ for (let line of source.split(/\r?\n/)) {
       "17 teams working across 11 iGEM Villages completed 43 explanations",
     );
   const text = normalize(line);
+  if (approvedDeletions.has(text)) continue;
   if (text.length <= 65) continue;
   verifiedParagraphs++;
   if (!corpus.includes(text)) omissions.push(text);
@@ -181,7 +188,10 @@ console.log(
       verifiedParagraphs,
       sections: 8,
       resourceRows: 15,
-      partnershipCards: 8,
+      partnershipProfiles: 8,
+      partnershipCards: 5,
+      partnershipProseGroups: 3,
+      approvedDeletions: approvedDeletions.size,
       contributionRows: 12,
       anchors: anchors.size,
       omissions: 0,

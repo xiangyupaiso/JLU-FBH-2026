@@ -8,7 +8,7 @@ export const experimentsPage: WikiPageContent = {
   "chapter": "Wet Lab / 02 of 04",
   "eyebrow": "CirCure · Wet Lab Protocol & Verification",
   "title": "Experiments",
-  "lede": "This page records how the CirCure multi-epitope circRNA vaccine was built and tested. The work falls into five stages: constructing the single-epitope circRNAs, screening them for immunogenicity, combining the strongest epitopes into one vaccine, validating that vaccine along the immune chain in vitro, and testing it in tumour-bearing mice. Each stage asks a narrower question than the one before. The in vitro experiments establish that the circRNA is translated inside dendritic cells and that the antigen reaches MHC-I, then that CD8⁺ T cells are activated, differentiate towards an effector-memory phenotype, and kill TNBC target cells. The in vivo experiments ask whether the same vaccine restrains tumour growth in an immunocompetent animal, and what the immune response inside the tumour and in the spleen looks like at the endpoint. Data for every experiment are on the Results page.",
+  "lede": "This page records how the CirCure multi-epitope circRNA vaccine was built and tested. The work falls into five stages: constructing the single-epitope circRNAs, screening them for immunogenicity, combining the strongest epitopes into one vaccine, validating that vaccine along the immune chain in vitro, and testing it in tumour-bearing mice. Each stage asks a narrower question than the one before. The in vitro experiments supports antigen translation and downstream immune function, then that CD8⁺ T cells are activated, differentiate towards an effector-memory phenotype, and kill TNBC target cells. The in vivo experiments ask whether the same vaccine restrains tumour growth in an immunocompetent animal, and what the immune response inside the tumour and in the spleen looks like at the endpoint. Data for every experiment are on the Results page.",
   "boundary": "This page records the laboratory blueprint, step-by-step protocols, quality gates, and evidence boundaries established for the CirCure project.",
   "visual": "experiment-gates",
   "visualLabel": "Seven-stage CirCure experimental route",
@@ -52,7 +52,7 @@ export const experimentsPage: WikiPageContent = {
         {
           "type": "prose",
           "paragraphs": [
-            "This page records how the CirCure multi-epitope circRNA vaccine was built and tested. The work falls into five stages: constructing the single-epitope circRNAs, screening them for immunogenicity, combining the strongest epitopes into one vaccine, validating that vaccine along the immune chain in vitro, and testing it in tumour-bearing mice. Each stage asks a narrower question than the one before. The in vitro experiments establish that the circRNA is translated inside dendritic cells and that the antigen reaches MHC-I, then that CD8⁺ T cells are activated, differentiate towards an effector-memory phenotype, and kill TNBC target cells. The in vivo experiments ask whether the same vaccine restrains tumour growth in an immunocompetent animal, and what the immune response inside the tumour and in the spleen looks like at the endpoint. Data for every experiment are on the Results page."
+            "This page records how the CirCure multi-epitope circRNA vaccine was built and tested. The work falls into five stages: constructing the single-epitope circRNAs, screening them for immunogenicity, combining the strongest epitopes into one vaccine, validating that vaccine along the immune chain in vitro, and testing it in tumour-bearing mice. Each stage asks a narrower question than the one before. The in vitro experiments supports antigen translation and downstream immune function, then that CD8⁺ T cells are activated, differentiate towards an effector-memory phenotype, and kill TNBC target cells. The in vivo experiments ask whether the same vaccine restrains tumour growth in an immunocompetent animal, and what the immune response inside the tumour and in the spleen looks like at the endpoint. Data for every experiment are on the Results page."
           ]
         }
       ]
@@ -68,14 +68,17 @@ export const experimentsPage: WikiPageContent = {
         {
           "type": "prose",
           "paragraphs": [
-            "A candidate epitope becomes a vaccine molecule in two steps, cloning and in vitro synthesis. We inserted the CTL epitope coding sequences predicted by the dry lab into an expression plasmid carrying a T7 promoter and the circularisation elements, checked the construct by digestion and Sanger sequencing, and used it as the in vitro transcription template. T7 RNA polymerase transcribed a linear precursor RNA, the DNA template was digested away and the RNA purified, and a self-splicing intron closed the precursor into a covalent circle. Having no free ends, the circle survives exonuclease attack better than a linear mRNA and keeps expressing antigen inside the DC for longer, which is the reason the platform is built on circRNA. RNase R then removed the linear material, and RT-qPCR with divergent and convergent primers measured the circular fraction of what was left."
+            "A candidate epitope becomes a vaccine molecule in two steps, plasmid sourcing and in vitro synthesis. The CTL epitope coding sequences predicted by the dry lab were designed into expression plasmids carrying a T7 promoter and the circularisation elements. The constructs were ordered from a commercial gene-synthesis supplier, linearised and purified before use as templates for T7 in vitro transcription. Each of the 13 cassettes sits between a BamHI site and an XhoI site, immediately downstream of the tPA signal sequence and immediately upstream of the 4×mC3dP28 adjuvant block; one of them, Nectin4-CTL1, merges two overlapping predicted epitopes into a single 14-mer and is the only merged design in the set. Having the constructs synthesised keeps all 13 plasmids identical to the design file, so the round-1 comparison between them rests on the epitope sequence alone. T7 RNA polymerase transcribed a linear precursor RNA, the DNA template was digested away and the RNA purified, and a self-splicing intron closed the precursor into a covalent circle. Having no free ends, the circle survives exonuclease attack better than a linear mRNA and keeps expressing antigen inside the DC for longer, which is the reason the platform is built on circRNA. After circularisation and RNase R treatment, the estimated circular fraction was measured on the representative preparation using the circular channel (SJ3910F + SJ3909R) and residual-linear channel (SJ3911F + SJ3909R)."
           ]
         },
         {
           "type": "subheading",
           "id": "exp-1-1",
           "index": "1.1",
-          "title": "1.1 Epitope plasmid construction"
+          "title": "1.1 circRNA synthesis and circularity verification",
+          "anchorIds": [
+            "exp-1-2"
+          ]
         },
         {
           "type": "heading",
@@ -85,7 +88,7 @@ export const experimentsPage: WikiPageContent = {
         {
           "type": "prose",
           "paragraphs": [
-            "Producing circRNA at scale needs a DNA template that transcribes efficiently in vitro. Restriction–ligation cloning gives the vector and the insert complementary sticky ends, and T4 ligase joins them directionally, placing the CTL epitope sequences selected in the dry lab into a prokaryotic plasmid that carries a T7 promoter. The recombinant plasmid is amplified in *E. coli* and, once sequence-verified, becomes the in vitro transcription (IVT) template. Every antigen downstream depends on this sequence being right."
+            "circRNA is a covalently closed circle with no free 5′/3′ ends, so it resists exonuclease degradation better than a linear mRNA and expresses for longer. That stability is what the platform rests on. Here a linearised epitope plasmid is the template for T7 in vitro transcription (IVT) of a precursor RNA, which a permuted group I intron–exon (PIE) element then self-splices into a closed circle. The preparation is then treated with RNase R. RT-qPCR with the circular channel (SJ3910F + SJ3909R) and residual-linear channel (SJ3911F + SJ3909R) estimates the circular fraction of the treated material."
           ]
         },
         {
@@ -101,283 +104,7 @@ export const experimentsPage: WikiPageContent = {
           ],
           "rows": [
             [
-              "Epitope template DNA; forward/reverse primers carrying BamHI/XhoI sites",
-              "Primer working solution 10 µM"
-            ],
-            [
-              "2× Taq PCR StartMix; ddH₂O",
-              "Per reaction below"
-            ],
-            [
-              "BamHI, XhoI; 10× rCutSmart Buffer; BSA",
-              "2 µL of each enzyme"
-            ],
-            [
-              "T4 DNA ligase + ligase buffer; PEG-4000 (optional ligation enhancer)",
-              "1 µL each"
-            ],
-            [
-              "Competent *E. coli* (e.g. DH5α); SOC medium",
-              "25 µL / 200 µL"
-            ],
-            [
-              "Ampicillin (Amp, final 100 µg/mL) LB plates and broth; gel extraction kit",
-              "As required"
-            ],
-            [
-              "Endotoxin-free plasmid miniprep kit",
-              "TIANGEN #DP123"
-            ]
-          ]
-        },
-        {
-          "type": "heading",
-          "level": 4,
-          "title": "Equipment"
-        },
-        {
-          "type": "prose",
-          "paragraphs": [
-            "Thermal cycler, agarose gel electrophoresis system, UV/long-wave gel imager, shaking incubator, dry bath, centrifuge, biosafety cabinet."
-          ]
-        },
-        {
-          "type": "heading",
-          "level": 4,
-          "title": "Step-by-Step Instructions"
-        },
-        {
-          "type": "prose",
-          "paragraphs": [
-            "**PCR Amplification** [1]"
-          ]
-        },
-        {
-          "type": "protocol-steps",
-          "steps": [
-            {
-              "number": "1",
-              "blocks": [
-                {
-                  "type": "prose",
-                  "paragraphs": [
-                    "Assemble a 20 µL PCR reaction containing 2 µL template, 10 µL 2× Taq StartMix, 0.4 µL each of the forward and reverse primers, and 7.2 µL ddH₂O."
-                  ]
-                }
-              ]
-            },
-            {
-              "number": "2",
-              "blocks": [
-                {
-                  "type": "prose",
-                  "paragraphs": [
-                    "Amplify on the thermal cycler with initial denaturation at 94 ℃ for 2 min, then 25–30 cycles of (94 ℃ 30 s, 55–65 ℃ 30 s and 72 ℃ 60 s/kb), and a final extension at 72 ℃ for 5–10 min."
-                  ]
-                }
-              ]
-            },
-            {
-              "number": "3",
-              "blocks": [
-                {
-                  "type": "prose",
-                  "paragraphs": [
-                    "Run the PCR product on a 1% agarose gel to confirm the band size, then excise and recover the target fragment."
-                  ]
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "type": "prose",
-          "paragraphs": [
-            "**Digestion & Ligation** [2][3]"
-          ]
-        },
-        {
-          "type": "protocol-steps",
-          "steps": [
-            {
-              "number": "4",
-              "blocks": [
-                {
-                  "type": "prose",
-                  "paragraphs": [
-                    "Digest the insert (25 µL product + 3 µL 10× Buffer + 2 µL of each enzyme) and the vector (20 µL reaction, see below) with BamHI and XhoI, which cut the vector once each, immediately downstream of the tPA signal sequence and immediately upstream of the mC3dP28 adjuvant block."
-                  ]
-                },
-                {
-                  "type": "table",
-                  "headers": [
-                    "Material",
-                    "Amount"
-                  ],
-                  "rows": [
-                    [
-                      "Backbone plasmid",
-                      "1 µg"
-                    ],
-                    [
-                      "10× rCutSmart Buffer",
-                      "2 µL"
-                    ],
-                    [
-                      "100× BSA",
-                      "0.2 µL"
-                    ],
-                    [
-                      "BamHI",
-                      "2 µL"
-                    ],
-                    [
-                      "XhoI",
-                      "2 µL"
-                    ],
-                    [
-                      "ddH₂O",
-                      "up to 20 µL"
-                    ]
-                  ]
-                }
-              ]
-            },
-            {
-              "number": "5",
-              "blocks": [
-                {
-                  "type": "prose",
-                  "paragraphs": [
-                    "Digest at 37 ℃ for 30 min, then recover after electrophoresis."
-                  ]
-                }
-              ]
-            },
-            {
-              "number": "6",
-              "blocks": [
-                {
-                  "type": "prose",
-                  "paragraphs": [
-                    "Set up the ligation at a vector : insert molar ratio of 1 : (3–5): 7.5 µL DNA mix + 1 µL 10× T4 Buffer + 1 µL T4 ligase (about 10 µL total), and ligate at 22 ℃ for 10–20 min."
-                  ]
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "type": "prose",
-          "paragraphs": [
-            "**Transformation & Screening** [4]"
-          ]
-        },
-        {
-          "type": "protocol-steps",
-          "steps": [
-            {
-              "number": "7",
-              "blocks": [
-                {
-                  "type": "prose",
-                  "paragraphs": [
-                    "Add 3 µL of ligation product to 25 µL competent cells, hold on ice for 15 min, heat-shock at 42 ℃ for 45 s, then immediately return to ice for 5 min."
-                  ]
-                }
-              ]
-            },
-            {
-              "number": "8",
-              "blocks": [
-                {
-                  "type": "prose",
-                  "paragraphs": [
-                    "Add 200 µL SOC medium and recover at 37 ℃ with shaking for 1 h."
-                  ]
-                }
-              ]
-            },
-            {
-              "number": "9",
-              "blocks": [
-                {
-                  "type": "prose",
-                  "paragraphs": [
-                    "Spread the culture on Amp-containing LB plates, incubate overnight at 37 ℃, and the next day pick single colonies for Sanger sequencing."
-                  ]
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "type": "prose",
-          "paragraphs": [
-            "**Miniprep**"
-          ]
-        },
-        {
-          "type": "protocol-steps",
-          "steps": [
-            {
-              "number": "10",
-              "blocks": [
-                {
-                  "type": "prose",
-                  "paragraphs": [
-                    "Inoculate a sequence-verified culture into 2 mL Amp-containing LB, shake at 37 ℃ for 12–16 h, extract the plasmid with the endotoxin-free kit and store at −20 ℃."
-                  ]
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "type": "heading",
-          "level": 4,
-          "title": "Notes"
-        },
-        {
-          "type": "list",
-          "ordered": true,
-          "start": 1,
-          "items": [
-            "BamHI and XhoI are compatible in rCutSmart Buffer and can be used in one reaction. Because they leave non-complementary overhangs, the cut vector cannot re-close on itself, so no dephosphorylation step is needed. Keep the digestion to the recommended time and enzyme amount: prolonged incubation or a large enzyme excess invites star activity, which produces cuts at near-cognate sequences and raises the background of wrong clones. [5]",
-            "Very short epitope fragments can also be obtained directly as double-stranded inserts by annealing complementary oligonucleotides instead of by PCR, which avoids mutations introduced during amplification."
-          ]
-        },
-        {
-          "type": "subheading",
-          "id": "exp-1-2",
-          "index": "1.2",
-          "title": "1.2 circRNA synthesis and circularity verification"
-        },
-        {
-          "type": "heading",
-          "level": 4,
-          "title": "Background"
-        },
-        {
-          "type": "prose",
-          "paragraphs": [
-            "circRNA is a covalently closed circle with no free 5′/3′ ends, so it resists exonuclease degradation better than a linear mRNA and expresses for longer. That stability is what the platform rests on. Here a linearised epitope plasmid is the template for T7 in vitro transcription (IVT) of a precursor RNA, which a permuted group I intron–exon (PIE) element then self-splices into a closed circle. RNase R removes the linear RNA that remains, and RT-qPCR with divergent against convergent primers gives the circular fraction of the purified material."
-          ]
-        },
-        {
-          "type": "heading",
-          "level": 4,
-          "title": "Materials & Reagents"
-        },
-        {
-          "type": "table",
-          "headers": [
-            "Component",
-            "Amount / Spec"
-          ],
-          "rows": [
-            [
-              "Recombinant epitope plasmid (template)",
+              "Synthesised epitope plasmid (template)",
               "1 µg, linearised by digestion"
             ],
             [
@@ -409,7 +136,7 @@ export const experimentsPage: WikiPageContent = {
               "2.0 µg RNA + 2 µL 10× Buffer + 2 U RNase R + water to 20 µL, 37 ℃ for 15 min (1 U per µg RNA)"
             ],
             [
-              "Reverse transcription + RT-qPCR kits, divergent primers, convergent primers",
+              "Reverse transcription and RT-qPCR kits; circular-channel primers SJ3910F + SJ3909R; residual-linear-channel primers SJ3911F + SJ3909R",
               "Per kit"
             ],
             [
@@ -426,7 +153,7 @@ export const experimentsPage: WikiPageContent = {
         {
           "type": "prose",
           "paragraphs": [
-            "Thermal cycler, real-time PCR instrument, dry bath, micro-volume spectrophotometer (NanoDrop), biosafety cabinet, centrifuge; nuclease-free consumables throughout."
+            "Thermal cycler, real-time PCR instrument, dry bath, biosafety cabinet, centrifuge; nuclease-free consumables throughout."
           ]
         },
         {
@@ -437,15 +164,37 @@ export const experimentsPage: WikiPageContent = {
         {
           "type": "prose",
           "paragraphs": [
-            "**Controls**: divergent primers (circular) and convergent primers (linear) act as reciprocal controls, distinguishing circular from linear template. Both sets are assayed side by side on the same cDNA and the ratio comes from the ΔCq between them. A no-template control (NTC) is included on every plate.",
-            "**Scope of the measurement**: every construct was carried through the same preparation route, RNase R purification included, and the thirteen share one backbone and differ only in a short epitope cassette of near-identical length. The quantification was therefore designed as a representative measurement, run on TROP2-CTL1, whose circular fraction stands for the round. Covalent closure itself is read by back-splice junction sequencing, which this project ran on the Combined vaccine (3.2 step 10), the construct that goes into every round-2 and in vivo experiment; for the round-1 constructs, circularity rests on the divergent/convergent RT-qPCR described here.",
-            "**Replicates**: each primer set is run at 2, 4 and 6 µL in 3 technical replicate wells per loading volume, giving 9 Cq values per primer set for that construct."
+            "**Assays and controls**: the circular channel (C) uses SJ3910F + SJ3909R, and the residual-linear channel (L) uses SJ3911F + SJ3909R. Both target assays are run on cDNA from the same RNase R-treated preparation. The residual-linear assay detects the assayed precursor-associated interval. Include a no-template control on each plate. Cross-assay quantitative response has not been calibrated with suitable standards, so the base-2 calculation is reported as an estimate.",
+            "**Scope of the measurement**: all thirteen constructs followed the same preparation route, including circularisation and RNase R treatment. TROP2-CTL1 was quantified as the Round 1 representative; the other twelve preparations were not quantified individually. The shared backbone and preparation chemistry suggest that the other constructs may have similar circular fractions. BSJ-spanning RT-PCR followed by Sanger sequencing was performed on the Combined preparation (§3.1, step 11) as a separate junction sequence check.",
+            "**Replicates**: each target assay is measured at 2, 4 and 6 µL cDNA input, with three technical wells per input. This gives nine wells per target assay and eighteen target-assay wells in total. Calculate fractions from the corresponding Cq records and report mean ± sample SD separately for each input (three technical comparisons per input). These wells are not independent RNA preparations."
           ]
         },
         {
           "type": "heading",
           "level": 4,
           "title": "Step-by-Step Instructions"
+        },
+        {
+          "type": "prose",
+          "paragraphs": [
+            "**Plasmid Thawing**"
+          ]
+        },
+        {
+          "type": "protocol-steps",
+          "steps": [
+            {
+              "number": "1",
+              "blocks": [
+                {
+                  "type": "prose",
+                  "paragraphs": [
+                    "Thaw a single-use aliquot of the synthesised epitope plasmid on ice and mix gently. The plasmid is supplied endotoxin-free and kept at −20 ℃ in single-use aliquots, so that no aliquot is thawed twice."
+                  ]
+                }
+              ]
+            }
+          ]
         },
         {
           "type": "prose",
@@ -473,7 +222,7 @@ export const experimentsPage: WikiPageContent = {
                 {
                   "type": "prose",
                   "paragraphs": [
-                    "Run the digestion product on a 1% agarose gel to confirm that no supercoiled plasmid remains, then purify by extracting twice with phenol:chloroform and once with chloroform."
+                    "Purify by extracting twice with phenol:chloroform and once with chloroform."
                   ]
                 }
               ]
@@ -505,14 +254,14 @@ export const experimentsPage: WikiPageContent = {
         {
           "type": "prose",
           "paragraphs": [
-            "**In Vitro Transcription** [6]"
+            "**In Vitro Transcription** [1]"
           ]
         },
         {
           "type": "protocol-steps",
           "steps": [
             {
-              "number": "5",
+              "number": "1",
               "blocks": [
                 {
                   "type": "prose",
@@ -534,7 +283,7 @@ export const experimentsPage: WikiPageContent = {
           "type": "protocol-steps",
           "steps": [
             {
-              "number": "6",
+              "number": "1",
               "blocks": [
                 {
                   "type": "prose",
@@ -556,7 +305,7 @@ export const experimentsPage: WikiPageContent = {
           "type": "protocol-steps",
           "steps": [
             {
-              "number": "7",
+              "number": "1",
               "blocks": [
                 {
                   "type": "prose",
@@ -567,7 +316,7 @@ export const experimentsPage: WikiPageContent = {
               ]
             },
             {
-              "number": "8",
+              "number": "2",
               "blocks": [
                 {
                   "type": "prose",
@@ -582,14 +331,14 @@ export const experimentsPage: WikiPageContent = {
         {
           "type": "prose",
           "paragraphs": [
-            "**Circularisation** [7]"
+            "**Circularisation** [2]"
           ]
         },
         {
           "type": "protocol-steps",
           "steps": [
             {
-              "number": "9",
+              "number": "1",
               "blocks": [
                 {
                   "type": "prose",
@@ -604,19 +353,19 @@ export const experimentsPage: WikiPageContent = {
         {
           "type": "prose",
           "paragraphs": [
-            "**RNase R Digestion** [8][9]"
+            "**RNase R Digestion** [3][4]"
           ]
         },
         {
           "type": "protocol-steps",
           "steps": [
             {
-              "number": "10",
+              "number": "1",
               "blocks": [
                 {
                   "type": "prose",
                   "paragraphs": [
-                    "Digest the linear RNA in the circularisation product with RNase R at 1 U per µg RNA (2 U for 2.0 µg in a 20 µL reaction) at 37 ℃ for 15 min. [10]"
+                    "Digest the linear RNA in the circularisation product with RNase R at 1 U per µg RNA (2 U for 2.0 µg in a 20 µL reaction) at 37 ℃ for 15 min. [5]"
                   ]
                 }
               ]
@@ -633,23 +382,19 @@ export const experimentsPage: WikiPageContent = {
           "type": "protocol-steps",
           "steps": [
             {
-              "number": "11",
+              "number": "1",
               "blocks": [
                 {
                   "type": "prose",
                   "paragraphs": [
-                    "Measure A260/280 on the micro-volume spectrophotometer to assess purity and concentration."
+                    "Reverse-transcribe the RNase R-treated preparation to cDNA. Measure the circular channel (SJ3910F + SJ3909R) and residual-linear channel (SJ3911F + SJ3909R) at cDNA inputs of 2, 4 and 6 µL, with three technical wells per input and target assay. Run 95 °C for 3 min, followed by 40 cycles of 95 °C for 10 s and 60 °C for 30 s. Retain the plate layout and Cq of every well. For each recorded comparison, define"
                   ]
-                }
-              ]
-            },
-            {
-              "number": "12",
-              "blocks": [
+                },
                 {
                   "type": "prose",
                   "paragraphs": [
-                    "Reverse-transcribe the digested product to cDNA and quantify by RT-qPCR with divergent and convergent primers, loading 2/4/6 µL in 3 replicate wells per volume for each primer set, one row of 9 wells per primer set on the same plate. Run 95 ℃ 3 min; 40 × (95 ℃ 10 s and 60 ℃ 30 s), record the Cq of every well, and calculate the ratio as $\\text{Ratio} = 2^{-\\Delta C_q}, \\quad \\Delta C_q = C_q(\\text{divergent}) - C_q(\\text{convergent})$."
+                    "$\\Delta Cq_i=Cq_{L,i}-Cq_{C,i},\\qquad F_i(\\%)=\\frac{100}{1+2^{-\\Delta Cq_i}}.$",
+                    "Here C and L denote the circular and residual-linear channels. Calculate each fraction before calculating the arithmetic mean and sample SD (n − 1) across the three technical comparisons at that input. Use unrounded intermediate values. No GFP normalisation is used in the reported fractions. The model assumes doubling per cycle and comparable quantitative response between the target assays, including reverse transcription."
                   ]
                 }
               ]
@@ -666,9 +411,10 @@ export const experimentsPage: WikiPageContent = {
           "ordered": true,
           "start": 1,
           "items": [
-            "The quantity is measured on RNase R–purified material. Purification removes linear precursor rather than converting it into circles, and a small amount of highly structured linear RNA can survive digestion, so the circular fraction describes the composition of the released material and is a close upper estimate. Divergent primers also give some non-specific amplification on uncircularised precursor. Direct evidence of covalent closure comes from BSJ sequencing, performed on the Combined vaccine (3.2 step 10).",
-            "Circularisation is sensitive to Mg²⁺ concentration and temperature: excess Mg²⁺ promotes non-specific folding and gel smearing, while too low a temperature leaves self-splicing incomplete. Optimise conditions for each sequence, aliquot circRNA at −80 ℃, and avoid repeated freeze–thaw.",
-            "Across the 2, 4 and 6 µL inputs the Cq should fall by roughly 1 cycle per doubling of input for both primer sets; a series that flattens indicates saturation, and one that scatters indicates pipetting error. Take the ratio only from a loading series that behaves this way, and check that the three replicate wells at each volume agree before using their mean."
+            "Use RNase-free water and consumables, and keep RNA samples on ice during handling.",
+            "Maintain the Mg²⁺ concentration, temperature and incubation time specified for circularisation. Keep the RNase R amount and digestion time consistent between preparations.",
+            "Store circRNA in aliquots at −80 °C and avoid repeated freeze–thaw cycles.",
+            "Check the primer identities, cDNA input volumes and replicate-well labels against the plate layout before running qPCR. Retain the plate layout and the Cq record for every well."
           ]
         }
       ]
@@ -773,7 +519,7 @@ export const experimentsPage: WikiPageContent = {
         {
           "type": "prose",
           "paragraphs": [
-            "**PBMC Isolation** [11]"
+            "**PBMC Isolation** [6]"
           ]
         },
         {
@@ -817,14 +563,14 @@ export const experimentsPage: WikiPageContent = {
         {
           "type": "prose",
           "paragraphs": [
-            "**CD14⁺ MACS Sorting** [12]"
+            "**CD14⁺ MACS Sorting** [7]"
           ]
         },
         {
           "type": "protocol-steps",
           "steps": [
             {
-              "number": "4",
+              "number": "1",
               "blocks": [
                 {
                   "type": "prose",
@@ -835,7 +581,7 @@ export const experimentsPage: WikiPageContent = {
               ]
             },
             {
-              "number": "5",
+              "number": "2",
               "blocks": [
                 {
                   "type": "prose",
@@ -846,7 +592,7 @@ export const experimentsPage: WikiPageContent = {
               ]
             },
             {
-              "number": "6",
+              "number": "3",
               "blocks": [
                 {
                   "type": "prose",
@@ -861,14 +607,14 @@ export const experimentsPage: WikiPageContent = {
         {
           "type": "prose",
           "paragraphs": [
-            "**DC Differentiation** [13]"
+            "**DC Differentiation** [8]"
           ]
         },
         {
           "type": "protocol-steps",
           "steps": [
             {
-              "number": "7",
+              "number": "1",
               "blocks": [
                 {
                   "type": "prose",
@@ -879,7 +625,7 @@ export const experimentsPage: WikiPageContent = {
               ]
             },
             {
-              "number": "8",
+              "number": "2",
               "blocks": [
                 {
                   "type": "prose",
@@ -894,14 +640,14 @@ export const experimentsPage: WikiPageContent = {
         {
           "type": "prose",
           "paragraphs": [
-            "**circRNA Electroporation** [14]"
+            "**circRNA Electroporation** [9]"
           ]
         },
         {
           "type": "protocol-steps",
           "steps": [
             {
-              "number": "9",
+              "number": "1",
               "blocks": [
                 {
                   "type": "prose",
@@ -912,7 +658,7 @@ export const experimentsPage: WikiPageContent = {
               ]
             },
             {
-              "number": "10",
+              "number": "2",
               "blocks": [
                 {
                   "type": "prose",
@@ -936,7 +682,7 @@ export const experimentsPage: WikiPageContent = {
           "items": [
             "Adjust cytokines by stage: during antigen loading and maturation, IL-4 is usually reduced or removed while GM-CSF is maintained or lowered; the DC–T co-culture stage no longer depends on GM-CSF/IL-4. Staged adjustment helps keep the DC phenotype stable.",
             "Confirm DC viability > 90% before electroporation to avoid non-specific fluorescence from dead cells in downstream flow cytometry; if the monocyte fraction is low, a brief plastic-adherence step can enrich it first.",
-            "The electroporation follows Lonza's Optimized Protocol for Human Dendritic Cells, which specifies 0.5–2×10⁶ cells per sample resuspended in 100 µL Nucleofector® Solution, combined with 1–5 µg DNA or an appropriate amount of another substrate, on programme U-002 (U-02 on the Nucleofector I). The 1×10⁶ cells used here sit in the middle of that range and the 5 µg at the top of it; Lonza quantifies only the DNA substrate, so the circRNA input was set at the upper end of the DNA range. [14]"
+            "The electroporation follows Lonza's Optimized Protocol for Human Dendritic Cells, which specifies 0.5–2×10⁶ cells per sample resuspended in 100 µL Nucleofector® Solution, combined with 1–5 µg DNA or an appropriate amount of another substrate, on programme U-002 (U-02 on the Nucleofector I). The 1×10⁶ cells used here sit in the middle of that range and the 5 µg at the top of it; Lonza quantifies only the DNA substrate, so the circRNA input was set at the upper end of the DNA range. [9]"
           ]
         },
         {
@@ -1013,7 +759,7 @@ export const experimentsPage: WikiPageContent = {
         {
           "type": "prose",
           "paragraphs": [
-            "**CD3⁺ MACS Sorting** [15][16]"
+            "**CD3⁺ MACS Sorting** [10][11]"
           ]
         },
         {
@@ -1068,14 +814,14 @@ export const experimentsPage: WikiPageContent = {
         {
           "type": "prose",
           "paragraphs": [
-            "**DC–T Co-culture** [17]"
+            "**DC–T Co-culture** [12]"
           ]
         },
         {
           "type": "protocol-steps",
           "steps": [
             {
-              "number": "5",
+              "number": "1",
               "blocks": [
                 {
                   "type": "prose",
@@ -1086,7 +832,7 @@ export const experimentsPage: WikiPageContent = {
               ]
             },
             {
-              "number": "6",
+              "number": "2",
               "blocks": [
                 {
                   "type": "prose",
@@ -1097,7 +843,7 @@ export const experimentsPage: WikiPageContent = {
               ]
             },
             {
-              "number": "7",
+              "number": "3",
               "blocks": [
                 {
                   "type": "prose",
@@ -1137,7 +883,7 @@ export const experimentsPage: WikiPageContent = {
         {
           "type": "prose",
           "paragraphs": [
-            "ELISpot counts IFN-γ–secreting antigen-specific T cells one cell at a time, which makes it the primary immunogenicity readout of this project. IFN-γ released by an activated T cell is captured by the plate-bound antibody and developed through biotin, streptavidin, HRP and AEC into an insoluble spot, and the spot count (SFC) tracks the frequency of responding T cells. Round 1 used it to rank the 13 single-epitope constructs, and was run as a ranking screen with no control wells, so its numbers are comparative only. [18]"
+            "ELISpot counts IFN-γ–secreting antigen-specific T cells one cell at a time, which makes it the primary immunogenicity readout of this project. IFN-γ released by an activated T cell is captured by the plate-bound antibody and developed through biotin, streptavidin, HRP and AEC into an insoluble spot, and the spot count (SFC) tracks the frequency of responding T cells. Round 1 used it to rank the 13 single-epitope constructs, and was run as a ranking screen with no control wells, so its numbers are comparative only. [13]"
           ]
         },
         {
@@ -1205,7 +951,7 @@ export const experimentsPage: WikiPageContent = {
         {
           "type": "prose",
           "paragraphs": [
-            "**Cell Seeding** [19]"
+            "**Cell Seeding** [14]"
           ]
         },
         {
@@ -1256,7 +1002,7 @@ export const experimentsPage: WikiPageContent = {
           "type": "protocol-steps",
           "steps": [
             {
-              "number": "4",
+              "number": "1",
               "blocks": [
                 {
                   "type": "prose",
@@ -1267,7 +1013,7 @@ export const experimentsPage: WikiPageContent = {
               ]
             },
             {
-              "number": "5",
+              "number": "2",
               "blocks": [
                 {
                   "type": "prose",
@@ -1282,14 +1028,14 @@ export const experimentsPage: WikiPageContent = {
         {
           "type": "prose",
           "paragraphs": [
-            "**Detection & Development** [19]"
+            "**Detection & Development** [14]"
           ]
         },
         {
           "type": "protocol-steps",
           "steps": [
             {
-              "number": "6",
+              "number": "1",
               "blocks": [
                 {
                   "type": "prose",
@@ -1300,7 +1046,7 @@ export const experimentsPage: WikiPageContent = {
               ]
             },
             {
-              "number": "7",
+              "number": "2",
               "blocks": [
                 {
                   "type": "prose",
@@ -1311,12 +1057,12 @@ export const experimentsPage: WikiPageContent = {
               ]
             },
             {
-              "number": "8",
+              "number": "3",
               "blocks": [
                 {
                   "type": "prose",
                   "paragraphs": [
-                    "Add 100 µL AEC substrate per well and develop at room temperature in the dark for 5–30 min, stopping once spots are clearly visible; stop by rinsing 3–5 times with deionised water, then unclip the plate bottom and rinse the back of the membrane."
+                    "Add 100 µL AEC substrate per well and develop at room temperature in the dark for 5–30 min, stopping once spots are clearly visible; stop by rinsing 3–5 times with deionised water, then unclip the plate bottom and rinse the back of the membrane. Mabtech & Abcam ELISpot Guides"
                   ]
                 }
               ]
@@ -1333,7 +1079,7 @@ export const experimentsPage: WikiPageContent = {
           "type": "protocol-steps",
           "steps": [
             {
-              "number": "9",
+              "number": "1",
               "blocks": [
                 {
                   "type": "prose",
@@ -1356,8 +1102,7 @@ export const experimentsPage: WikiPageContent = {
           "start": 1,
           "items": [
             "High background usually results from insufficient washing or blocking; do not touch the coated area of the plate bottom, and AEC development must be kept dark and strictly timed to prevent spots from merging.",
-            "Plan the control wells before seeding: include the kit PHA positive well, and an antigen-free or empty-vector negative well. Subtract the negative well before reporting any count as an antigen-specific frequency.",
-            "Seed the same T-cell input into every well. SFC is comparable between constructs only if the denominator is identical, so report it per 1×10⁵ cells and verify the count rather than assuming it."
+            "Plan the control wells before seeding: include the kit PHA positive well, and an antigen-free or empty-vector negative well. Subtract the negative well before reporting any count as an antigen-specific frequency."
           ]
         },
         {
@@ -1374,7 +1119,7 @@ export const experimentsPage: WikiPageContent = {
         {
           "type": "prose",
           "paragraphs": [
-            "A vaccine has to produce effector T cells that kill. Calcein-AM is a lipophilic, non-fluorescent dye; inside a live cell, esterases hydrolyse it to charged fluorescent calcein, which an intact membrane retains. When the target lyses, calcein escapes into the supernatant, and supernatant fluorescence rises with the extent of lysis. In round 1 this assay reports the total cytotoxicity of the effector T cells, with K562 as the target. [20][21]"
+            "A vaccine has to produce effector T cells that kill. Calcein-AM is a lipophilic, non-fluorescent dye; inside a live cell, esterases hydrolyse it to charged fluorescent calcein, which an intact membrane retains. When the target lyses, calcein escapes into the supernatant, and supernatant fluorescence rises with the extent of lysis. In round 1 this assay reports the total cytotoxicity of the effector T cells, with K562 as the target. [15][16]"
           ]
         },
         {
@@ -1419,7 +1164,7 @@ export const experimentsPage: WikiPageContent = {
         {
           "type": "prose",
           "paragraphs": [
-            "CO₂ incubator, microplate reader (Ex 485 / Em 530 nm), centrifuge, microscope."
+            "CO₂ incubator, microplate reader (Ex 485 / Em 528 nm), centrifuge, microscope."
           ]
         },
         {
@@ -1482,7 +1227,7 @@ export const experimentsPage: WikiPageContent = {
           "type": "protocol-steps",
           "steps": [
             {
-              "number": "3",
+              "number": "1",
               "blocks": [
                 {
                   "type": "prose",
@@ -1504,7 +1249,7 @@ export const experimentsPage: WikiPageContent = {
           "type": "protocol-steps",
           "steps": [
             {
-              "number": "4",
+              "number": "1",
               "blocks": [
                 {
                   "type": "prose",
@@ -1515,7 +1260,7 @@ export const experimentsPage: WikiPageContent = {
               ]
             },
             {
-              "number": "5",
+              "number": "2",
               "blocks": [
                 {
                   "type": "prose",
@@ -1537,23 +1282,24 @@ export const experimentsPage: WikiPageContent = {
           "type": "protocol-steps",
           "steps": [
             {
-              "number": "6",
+              "number": "1",
               "blocks": [
                 {
                   "type": "prose",
                   "paragraphs": [
-                    "After the 4 h co-incubation, the 96-well plate must first be centrifuged at 200 × g for 5 min at room temperature; then transfer 100 µL supernatant per well to a black plate and measure fluorescence on the plate reader (Ex 485 / Em 530 nm)."
+                    "After the 4 h co-incubation, the 96-well plate must first be centrifuged at 200 × g for 5 min at room temperature; then transfer 100 µL supernatant per well to a black plate and measure fluorescence on the plate reader (Ex 485 / Em 528 nm)."
                   ]
                 }
               ]
             },
             {
-              "number": "7",
+              "number": "2",
               "blocks": [
                 {
                   "type": "prose",
                   "paragraphs": [
-                    "Calculate the killing rate as: $\\text{Cytotoxicity}\\ (%) = \\frac{F_{\\text{experimental}} - F_{\\text{spontaneous}}}{F_{\\text{maximum}} - F_{\\text{spontaneous}}} \\times 100%$"
+                    "Calculate the killing rate as:",
+                    "Cytotoxicity (%) = (F experimental − F spontaneous) / (F maximum − F spontaneous) × 100%"
                   ]
                 }
               ]
@@ -1589,7 +1335,7 @@ export const experimentsPage: WikiPageContent = {
         {
           "type": "prose",
           "paragraphs": [
-            "CD69 is the earliest T cell activation marker, up within 2–4 h of TCR signalling, and it responds sensitively to whether antigen presentation has started a T cell response at all. This step quantifies the CD8⁺CD69⁺ fraction by multicolour flow cytometry and compares the immediate activation induced by the TROP2-CTL1 and CTL2 epitopes, giving epitope selection a functional readout independent of ELISpot. [22]"
+            "CD69 is the earliest T cell activation marker, up within 2–4 h of TCR signalling, and it responds sensitively to whether antigen presentation has started a T cell response at all. This step quantifies the CD8⁺CD69⁺ fraction by multicolour flow cytometry and compares the immediate activation induced by the TROP2-CTL1 and CTL2 epitopes, giving epitope selection a functional readout independent of ELISpot. [17]"
           ]
         },
         {
@@ -1661,7 +1407,7 @@ export const experimentsPage: WikiPageContent = {
         {
           "type": "prose",
           "paragraphs": [
-            "**Blocking & Staining** [23]"
+            "**Blocking & Staining** [18]"
           ]
         },
         {
@@ -1712,7 +1458,7 @@ export const experimentsPage: WikiPageContent = {
           "type": "protocol-steps",
           "steps": [
             {
-              "number": "4",
+              "number": "1",
               "blocks": [
                 {
                   "type": "prose",
@@ -1723,7 +1469,7 @@ export const experimentsPage: WikiPageContent = {
               ]
             },
             {
-              "number": "5",
+              "number": "2",
               "blocks": [
                 {
                   "type": "prose",
@@ -1745,7 +1491,7 @@ export const experimentsPage: WikiPageContent = {
           "type": "protocol-steps",
           "steps": [
             {
-              "number": "6",
+              "number": "1",
               "blocks": [
                 {
                   "type": "prose",
@@ -1756,7 +1502,7 @@ export const experimentsPage: WikiPageContent = {
               ]
             },
             {
-              "number": "7",
+              "number": "2",
               "blocks": [
                 {
                   "type": "prose",
@@ -1795,14 +1541,17 @@ export const experimentsPage: WikiPageContent = {
         {
           "type": "prose",
           "paragraphs": [
-            "This round brings together the epitopes that scored highest in the primary screen. Guided by the ELISpot ranking we took the two highest-SFC epitopes of each of the four antigens, 8 out of the 13, joined them with flexible linkers and rebuilt them into an optimised vector that retains the T7 promoter, the T4 *td* circularisation intron, the translation enhancement element, the 4×mC3dP28 adjuvant and the membrane-localisation signal. The resulting multi-epitope Combined plasmid was transcribed, circularised and RNase R–purified to give a new batch of circRNA, which is the material used for the whole of rounds 2 and the in vivo work."
+            "This round brings together the epitopes that scored highest in the primary screen. Guided by the ELISpot ranking we took the two highest-SFC epitopes of each of the four antigens, 8 out of the 13, joined them with flexible linkers and had the cassette synthesised into an optimised vector that retains the T7 promoter, the T4 *td* circularisation intron, the translation enhancement element, the 4×mC3dP28 adjuvant and the membrane-localisation signal. The eight are TROP2-CTL1/CTL2, B7H4-CTL1/CTL2, Nectin4-CTL1/CTL2 and LIV1-CTL2/CTL3; Nectin4-CTL1 is the merged 14-mer designed in round 1 and is carried across unchanged, so the cassette encodes 9 predicted epitopes in 8 fragments. The reading frame was verified across every junction and the linkers were checked with bioinformatic tools to confirm that they introduce no new immunogenic epitopes. The Combined plasmid was linearised and purified before T7 in vitro transcription. The precursor RNA was then circularised and treated with RNase R to produce the circRNA used throughout round 2 and the in vivo experiments."
           ]
         },
         {
           "type": "subheading",
           "id": "exp-3-1",
           "index": "3.1",
-          "title": "3.1 Combined plasmid construction"
+          "title": "3.1 Combined circRNA synthesis and release testing",
+          "anchorIds": [
+            "exp-3-2"
+          ]
         },
         {
           "type": "heading",
@@ -1812,176 +1561,7 @@ export const experimentsPage: WikiPageContent = {
         {
           "type": "prose",
           "paragraphs": [
-            "A single-epitope vaccine covers little and is easy for the tumour to escape, while several immunogenic epitopes in tandem broaden the response. Using the round-1 ELISpot ranking, this step takes the two strongest epitopes of each antigen from the 13 constructs and carries them as 8 tandem fragments. One of the eight, Nectin4-CTL1, is a merged fragment spanning two overlapping predicted epitopes (see 1.1), and it is the only merged construct among those selected, so the cassette encodes 9 predicted epitopes in 8 fragments. Flexible linkers join the fragments, and the cassette is rebuilt into the optimised vector, which retains T7, the circularisation intron, the translation enhancement element, the mC3dP28 adjuvant and the membrane-localisation element."
-          ]
-        },
-        {
-          "type": "heading",
-          "level": 4,
-          "title": "Materials & Reagents"
-        },
-        {
-          "type": "table",
-          "headers": [
-            "Component",
-            "Amount / Spec"
-          ],
-          "rows": [
-            [
-              "ELISpot SFC data; bioinformatic tools",
-              "Linker/epitope design"
-            ],
-            [
-              "Optimised backbone YRH pUC57-ALL4-4×mC3dP28",
-              "Contains AmpR, T7, T4 *td* intron, synIRES-RC25, 4×mC3dP28, MITD, FLAG"
-            ],
-            [
-              "BamHI/XhoI + Buffer; T4 ligase",
-              "2 µL each / 1 µL"
-            ],
-            [
-              "Competent cells; Amp-containing LB (final 100 µg/mL)",
-              "As required"
-            ],
-            [
-              "Endotoxin-free plasmid miniprep kit",
-              "TIANGEN #DP123"
-            ]
-          ]
-        },
-        {
-          "type": "heading",
-          "level": 4,
-          "title": "Equipment"
-        },
-        {
-          "type": "prose",
-          "paragraphs": [
-            "Thermal cycler, electrophoresis system, shaking incubator, centrifuge, biosafety cabinet."
-          ]
-        },
-        {
-          "type": "heading",
-          "level": 4,
-          "title": "Step-by-Step Instructions"
-        },
-        {
-          "type": "prose",
-          "paragraphs": [
-            "**Epitope Selection & Design**"
-          ]
-        },
-        {
-          "type": "protocol-steps",
-          "steps": [
-            {
-              "number": "1",
-              "blocks": [
-                {
-                  "type": "prose",
-                  "paragraphs": [
-                    "Rank the 13 single-epitope constructs by IFN-γ SFC and select the two most immunogenic epitopes of each antigen (8 in total): TROP2-CTL1/CTL2, B7H4-CTL1/CTL2, Nectin4-CTL1/CTL2 and LIV1-CTL2/CTL3. Each selected construct contributes one tandem fragment; Nectin4-CTL1 is already a merged 14-mer built at Round 1 (§1.1) and is carried across unchanged."
-                  ]
-                }
-              ]
-            },
-            {
-              "number": "2",
-              "blocks": [
-                {
-                  "type": "prose",
-                  "paragraphs": [
-                    "Insert flexible linkers between the epitopes, verify the reading frame throughout, and use bioinformatic tools to confirm that the linkers do not introduce new immunogenic epitopes."
-                  ]
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "type": "prose",
-          "paragraphs": [
-            "**Amplification & Assembly** [24]"
-          ]
-        },
-        {
-          "type": "protocol-steps",
-          "steps": [
-            {
-              "number": "3",
-              "blocks": [
-                {
-                  "type": "prose",
-                  "paragraphs": [
-                    "Amplify the optimised tandem epitope fragment by PCR (reaction and program as in 1.1)."
-                  ]
-                }
-              ]
-            },
-            {
-              "number": "4",
-              "blocks": [
-                {
-                  "type": "prose",
-                  "paragraphs": [
-                    "Use double digestion / homologous recombination to replace the original epitope sequence in the backbone seamlessly at a vector : insert molar ratio of 1 : 3."
-                  ]
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "type": "prose",
-          "paragraphs": [
-            "**Transformation & Validation**"
-          ]
-        },
-        {
-          "type": "protocol-steps",
-          "steps": [
-            {
-              "number": "5",
-              "blocks": [
-                {
-                  "type": "prose",
-                  "paragraphs": [
-                    "Transform and plate on Amp-containing plates overnight at 37 ℃, then confirm clones by colony PCR, diagnostic digestion and full-length Sanger sequencing before preparing endotoxin-free plasmid and banking the strain."
-                  ]
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "type": "heading",
-          "level": 4,
-          "title": "Notes"
-        },
-        {
-          "type": "list",
-          "ordered": true,
-          "start": 1,
-          "items": [
-            "Linkers must balance flexibility against accessibility of cleavage sites, so that neighbouring epitopes do not sterically hinder processing and presentation; proteasomal cleavage prediction can be used to optimise the order of the epitopes.",
-            "The longer the tandem sequence, the harder the cloning; it can be synthesised/assembled in segments and then joined, with the junctions sequenced particularly carefully."
-          ]
-        },
-        {
-          "type": "subheading",
-          "id": "exp-3-2",
-          "index": "3.2",
-          "title": "3.2 Combined circRNA synthesis and release testing"
-        },
-        {
-          "type": "heading",
-          "level": 4,
-          "title": "Background"
-        },
-        {
-          "type": "prose",
-          "paragraphs": [
-            "As in 1.2, the optimised Combined plasmid has to be turned into circRNA before round 2. The chemistry is unchanged: the same circularisation condition (55 ℃, 10–15 min), the same RNase R purification and the same divergent/convergent RT-qPCR readout. What this step adds around that chemistry is a release framework, with a template QC gate before transcription, a stated circular-fraction criterion before electroporation, and back-splice junction Sanger sequencing of the Combined vaccine. Each preparation is carried through RNase R purification and then quantified, so the figure that decides release describes the material that will actually be electroporated. The batch is five preparations: empty vector (the Blank material used throughout Section 4), TROP2-CTL1, TROP2-CTL2, TROP2-CTL1+2 and Combined."
+            "PCR and agarose gel electrophoresis check the plasmid target region. The PCR product is used only for verification; the transcription template is prepared separately by plasmid linearisation and purification, as in §1.1. The precursor RNA is circularised at 55 °C for 10–15 min and treated with RNase R. The post-treatment circular fraction is estimated using the circular channel (SJ3910F + SJ3909R) and residual-linear channel (SJ3911F + SJ3909R). The Round 2 batch contains five preparations: empty vector, TROP2-CTL1, TROP2-CTL2, TROP2-CTL1+2 and Combined. All followed the preparation route, but Combined alone was quantified as the representative release measurement and submitted for BSJ Sanger sequencing. The other four preparations were not quantified individually."
           ]
         },
         {
@@ -1998,15 +1578,23 @@ export const experimentsPage: WikiPageContent = {
           "rows": [
             [
               "Optimised plasmids (5 groups, including the empty vector)",
-              "Template"
+              "Linearised and purified before IVT"
             ],
             [
-              "SJ4435 / SJ4436 primers",
-              "Amplify the T7-containing target region (primer span ~402–3193 on the Combined plasmid, ≈ 2.8 kb)"
+              "Target-region PCR primers and PCR reagents",
+              "Plasmid verification (step 2)"
+            ],
+            [
+              "Restriction enzyme and compatible buffer",
+              "Plasmid linearisation"
+            ],
+            [
+              "DNA purification reagents",
+              "Removal of restriction enzyme and salts after digestion"
             ],
             [
               "Agarose (1%), 1× TAE, DNA ladder, nucleic-acid stain",
-              "Template QC (step 3)"
+              "Plasmid PCR verification (step 2)"
             ],
             [
               "HiScribe® T7 Quick Kit",
@@ -2014,14 +1602,14 @@ export const experimentsPage: WikiPageContent = {
             ],
             [
               "DNase I; 7.5 M LiCl; 0.1 mM EDTA; circularisation kit",
-              "As in 1.2"
+              "As in 1.1"
             ],
             [
               "RNase R",
               "2.0 µg RNA + 2 µL 10× Buffer + 2 U RNase R + water to 20 µL, 37 ℃ for 15 min (fixed for the whole batch; do not vary between preparations)"
             ],
             [
-              "Reverse transcription + RT-qPCR kits",
+              "Reverse transcription and RT-qPCR kits; circular-channel primers SJ3910F + SJ3909R; residual-linear-channel primers SJ3911F + SJ3909R",
               "Circularisation quantification"
             ]
           ]
@@ -2045,8 +1633,8 @@ export const experimentsPage: WikiPageContent = {
         {
           "type": "prose",
           "paragraphs": [
-            "**Controls**: divergent primers (circular) and convergent primers (linear) act as reciprocal controls. Both sets are assayed on the same cDNA and the same plate, so the two Cq series are directly comparable, and a no-template control (NTC) is included on every plate.",
-            "**Scope of the measurement**: the quantification is designed as one representative preparation per round, TROP2-CTL1 in round 1 (1.2) and the Combined vaccine here, run in 3 technical replicate wells at the 4 µL input established in 1.2. The three TROP2 preparations and the empty vector of this batch were made by the same route, and the Combined figure stands for the batch. Back-splice junction sequencing is likewise run on the Combined vaccine, the construct that goes into every round-2 and in vivo experiment.",
+            "**Assays and controls**: run the circular channel (SJ3910F + SJ3909R) and residual-linear channel (SJ3911F + SJ3909R) on cDNA from the same RNase R-treated preparation and include a no-template control. The reported calculation uses target Cq values without GFP normalisation. The recorded GFP measurements are retained separately. Running the assays on the same plate does not establish a common quantitative scale; the base-2 calculation retains the assumptions stated in §1.1, step 12.",
+            "**Scope of the measurement**: Combined was measured at the 4 µL cDNA input selected from the Round 1 comparison (§1.1, note 4), with three technical wells per target assay. Mean ± sample SD describes technical variation within this preparation. The TROP2-CTL1, TROP2-CTL2, TROP2-CTL1+2 and empty-vector preparations followed the same route but were not quantified individually. BSJ Sanger sequencing was performed on Combined as a separate sequence check.",
             "**Release criterion**: a circular fraction ≥ 90%. A preparation below the criterion is re-prepared from the transcription step."
           ]
         },
@@ -2058,7 +1646,7 @@ export const experimentsPage: WikiPageContent = {
         {
           "type": "prose",
           "paragraphs": [
-            "**Template Preparation**"
+            "**Plasmid Thawing**"
           ]
         },
         {
@@ -2070,7 +1658,51 @@ export const experimentsPage: WikiPageContent = {
                 {
                   "type": "prose",
                   "paragraphs": [
-                    "Using the optimised plasmid as template, PCR-amplify the T7 promoter–containing target region with the SJ4435/SJ4436 primers and purify it as the transcription template."
+                    "For each of the five preparations, thaw a single-use aliquot of the corresponding synthesised plasmid on ice and mix gently. The plasmid is supplied endotoxin-free and kept at −20 ℃ in single-use aliquots."
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "prose",
+          "paragraphs": [
+            "**Plasmid Verification by PCR**"
+          ]
+        },
+        {
+          "type": "protocol-steps",
+          "steps": [
+            {
+              "number": "1",
+              "blocks": [
+                {
+                  "type": "prose",
+                  "paragraphs": [
+                    "Amplify the target region from a plasmid aliquot by PCR and analyse the product by agarose gel electrophoresis alongside a DNA ladder. Check for a band at the expected size. The PCR product is used only for plasmid verification; the IVT template is prepared separately by linearising and purifying the plasmid."
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "prose",
+          "paragraphs": [
+            "**Template Linearisation & Purification** [1]"
+          ]
+        },
+        {
+          "type": "protocol-steps",
+          "steps": [
+            {
+              "number": "1",
+              "blocks": [
+                {
+                  "type": "prose",
+                  "paragraphs": [
+                    "Completely linearise each plasmid by restriction digestion downstream of the transcription cassette."
                   ]
                 }
               ]
@@ -2081,18 +1713,7 @@ export const experimentsPage: WikiPageContent = {
                 {
                   "type": "prose",
                   "paragraphs": [
-                    "Purify by column to remove residual primers, dNTPs and salts."
-                  ]
-                }
-              ]
-            },
-            {
-              "number": "3",
-              "blocks": [
-                {
-                  "type": "prose",
-                  "paragraphs": [
-                    "Template QC: run an aliquot of each of the five purified templates side by side on one 1% agarose gel against a DNA ladder. Accept a template only if its lane shows a single sharp band with no smearing and no secondary bands; judge each lane on band singularity. Re-prepare any template whose lane smears or carries extra bands before proceeding to transcription."
+                    "Purify the linearised plasmid DNA to remove the restriction enzyme and salts, then resuspend it in nuclease-free water for transcription."
                   ]
                 }
               ]
@@ -2102,19 +1723,19 @@ export const experimentsPage: WikiPageContent = {
         {
           "type": "prose",
           "paragraphs": [
-            "**IVT & Template Removal** [6]"
+            "**IVT & Template Removal** [1]"
           ]
         },
         {
           "type": "protocol-steps",
           "steps": [
             {
-              "number": "4",
+              "number": "1",
               "blocks": [
                 {
                   "type": "prose",
                   "paragraphs": [
-                    "Transcribe in vitro with the HiScribe® T7 system at 37 ℃ for 2 h, then add DNase I and incubate at 37 ℃ for 20 min to remove the template."
+                    "Transcribe the purified linearised plasmid DNA with the HiScribe® T7 system at 37 ℃ for 2 h. Add DNase I and incubate at 37 ℃ for 20 min to remove the DNA template."
                   ]
                 }
               ]
@@ -2124,25 +1745,25 @@ export const experimentsPage: WikiPageContent = {
         {
           "type": "prose",
           "paragraphs": [
-            "**Purification & Circularisation** [7][8]"
+            "**Purification & Circularisation** [2][3]"
           ]
         },
         {
           "type": "protocol-steps",
           "steps": [
             {
-              "number": "5",
+              "number": "1",
               "blocks": [
                 {
                   "type": "prose",
                   "paragraphs": [
-                    "Purify the RNA by LiCl precipitation (as in 1.2), then circularise at 55 ℃ for 10–15 min (the same condition as 1.2)."
+                    "Purify the RNA by LiCl precipitation (as in 1.1), then circularise at 55 ℃ for 10–15 min (the same condition as 1.1)."
                   ]
                 }
               ]
             },
             {
-              "number": "6",
+              "number": "2",
               "blocks": [
                 {
                   "type": "prose",
@@ -2164,7 +1785,7 @@ export const experimentsPage: WikiPageContent = {
           "type": "protocol-steps",
           "steps": [
             {
-              "number": "7",
+              "number": "1",
               "blocks": [
                 {
                   "type": "prose",
@@ -2175,18 +1796,18 @@ export const experimentsPage: WikiPageContent = {
               ]
             },
             {
-              "number": "8",
+              "number": "2",
               "blocks": [
                 {
                   "type": "prose",
                   "paragraphs": [
-                    "Set up RT-qPCR on the same plate for both primer sets, loading 4 µL into 3 replicate wells for each primer set. Run 95 ℃ 3 min; 40 × (95 ℃ 10 s and 60 ℃ 30 s), record the Cq of every well, and calculate the circular fraction as $\\text{Circular fraction} = 2^{-\\Delta C_q}, \\quad \\Delta C_q = C_q(\\text{divergent}) - C_q(\\text{convergent})$. Report as mean ± SD with n = 3."
+                    "Measure the circular channel (SJ3910F + SJ3909R) and residual-linear channel (SJ3911F + SJ3909R) on the same plate, loading 4 µL cDNA into three technical wells per target assay. Run 95 °C for 3 min, followed by 40 cycles of 95 °C for 10 s and 60 °C for 30 s. Define ΔCq_i = Cq_L,i − Cq_C,i and calculate F_i (%) = 100 / (1 + 2^(−ΔCq_i)) for each recorded comparison. Use unrounded intermediate values and report the arithmetic mean ± sample SD across the three technical comparisons. No GFP normalisation is used. This follows the same base-2 model as §1.1, step 12."
                   ]
                 }
               ]
             },
             {
-              "number": "9",
+              "number": "3",
               "blocks": [
                 {
                   "type": "prose",
@@ -2208,12 +1829,12 @@ export const experimentsPage: WikiPageContent = {
           "type": "protocol-steps",
           "steps": [
             {
-              "number": "10",
+              "number": "1",
               "blocks": [
                 {
                   "type": "prose",
                   "paragraphs": [
-                    "For the Combined vaccine, amplify across the back-splice junction (BSJ) by RT-PCR with divergent primers and submit the product for Sanger sequencing. Accept the trace only if it shows a flat baseline, single sharp peaks and no overlapping peaks on either side of the junction."
+                    "For the Combined vaccine, amplify an RT-PCR product spanning the back-splice junction (BSJ) and submit it for Sanger sequencing. Check the sequence against the expected junction and assess the baseline, peak separation and overlapping signal on both flanks. Record the RT-PCR primer identities separately from the two qPCR assay names."
                   ]
                 }
               ]
@@ -2230,7 +1851,8 @@ export const experimentsPage: WikiPageContent = {
           "ordered": true,
           "start": 1,
           "items": [
-            "The 4 µL input is carried over from the loading series run in 1.2, which established that this volume sits inside the linear range of the assay. A single volume is sufficient only while the material and the primer sets are unchanged; if either changes, re-run a 2, 4 and 6 µL series first and settle on a volume from that before quantifying with replicates at one point.",
+            "Linkers must balance flexibility against accessibility of cleavage sites, so that neighbouring epitopes do not sterically hinder processing and presentation; proteasomal cleavage prediction can be used to optimise the order of the epitopes.",
+            "The 4 µL input is carried over from the loading series run in 1.1, which established that this volume sits inside the linear range of the assay. A single volume is sufficient only while the material and the primer sets are unchanged; if either changes, re-run a 2, 4 and 6 µL series first and settle on a volume from that before quantifying with replicates at one point.",
             "Mg²⁺ concentration (excess promotes non-specific folding, with gel smearing and secondary bands) and reaction temperature (too low leaves self-splicing incomplete) should be titrated as a gradient before a condition is described as optimised, and the RNase R amount and digestion time likewise; excess enzyme or over-long digestion can partly degrade loosely structured circular RNA.",
             "Work RNase-free throughout: dedicated pipettes and filter tips, gloves changed frequently, nuclease-free water and tubes, samples kept on ice, and circRNA aliquoted and stored at −80 ℃ to avoid repeated freeze–thaw.",
             "Release criterion and what to do when it is not met. A preparation whose circular fraction reaches ≥ 90% may proceed; one that does not is re-prepared from the transcription step. Extending the digestion time removes more linear RNA without producing more circles, and degrades the circle; the digestion time is fixed for the whole batch.",
@@ -2267,7 +1889,7 @@ export const experimentsPage: WikiPageContent = {
         {
           "type": "prose",
           "paragraphs": [
-            "A DC primes T cells only if it does two things: present antigen (signal 1) and upregulate the co-stimulatory molecules CD80/CD86 (signal 2). This step measures the CD80⁺CD86⁺ mature fraction of DCs by flow cytometry after electroporation with each construct, which is how far each circRNA drives DC maturation and the precondition for anything downstream in the T cell response. [25]"
+            "A DC primes T cells only if it does two things: present antigen (signal 1) and upregulate the co-stimulatory molecules CD80/CD86 (signal 2). This step measures the CD80⁺CD86⁺ mature fraction of DCs by flow cytometry after electroporation with each construct, which is how far each circRNA drives DC maturation and the precondition for anything downstream in the T cell response. [19]"
           ]
         },
         {
@@ -2331,7 +1953,7 @@ export const experimentsPage: WikiPageContent = {
         {
           "type": "prose",
           "paragraphs": [
-            "**Grouped Electroporation** [14]"
+            "**Grouped Electroporation** [9]"
           ]
         },
         {
@@ -2365,7 +1987,7 @@ export const experimentsPage: WikiPageContent = {
                 {
                   "type": "prose",
                   "paragraphs": [
-                    "Transfer the sample into a 12-well plate to a final volume of 1 mL per well and culture at 37 ℃, 5% CO₂ for 24 h to induce maturation."
+                    "Transfer to a 6-well plate and culture at 37 ℃, 5% CO₂ for 24–48 h to induce maturation."
                   ]
                 }
               ]
@@ -2375,14 +1997,14 @@ export const experimentsPage: WikiPageContent = {
         {
           "type": "prose",
           "paragraphs": [
-            "**Flow Staining** [23]"
+            "**Flow Staining** [18]"
           ]
         },
         {
           "type": "protocol-steps",
           "steps": [
             {
-              "number": "4",
+              "number": "1",
               "blocks": [
                 {
                   "type": "prose",
@@ -2393,7 +2015,7 @@ export const experimentsPage: WikiPageContent = {
               ]
             },
             {
-              "number": "5",
+              "number": "2",
               "blocks": [
                 {
                   "type": "prose",
@@ -2415,7 +2037,7 @@ export const experimentsPage: WikiPageContent = {
           "type": "protocol-steps",
           "steps": [
             {
-              "number": "6",
+              "number": "1",
               "blocks": [
                 {
                   "type": "prose",
@@ -2455,7 +2077,7 @@ export const experimentsPage: WikiPageContent = {
         {
           "type": "prose",
           "paragraphs": [
-            "Before anything else can follow, the circRNA has to be translated into protein inside the DC. A FLAG tag was fused downstream of the epitopes during construction, so Western blotting with an anti-FLAG antibody detects the product in DC lysate, with β-actin as the loading control. A band at the expected size is the protein-level evidence that the circRNA is translated. [26]"
+            "Before anything else can follow, the circRNA has to be translated into protein inside the DC. A FLAG tag was fused downstream of the epitopes during construction, so Western blotting with an anti-FLAG antibody detects the product in DC lysate, with β-actin as the loading control. A band at the expected size is the protein-level evidence that the circRNA is translated. [20]"
           ]
         },
         {
@@ -2507,7 +2129,7 @@ export const experimentsPage: WikiPageContent = {
         {
           "type": "prose",
           "paragraphs": [
-            "**Controls**: Blank group DCs (electroporated with empty-vector circRNA); β-actin as the loading control. Equal protein is loaded in every lane so that bands are comparable between groups."
+            "**Controls**: The blank control consisted of DCs processed in the same way as the RNA-treated groups, including electroporation, but without added RNA. β-actin served as the loading control, and equal amounts of total protein were loaded in each lane."
           ]
         },
         {
@@ -2518,7 +2140,7 @@ export const experimentsPage: WikiPageContent = {
         {
           "type": "prose",
           "paragraphs": [
-            "**Protein Extraction** [27]"
+            "**Protein Extraction** [21]"
           ]
         },
         {
@@ -2551,14 +2173,14 @@ export const experimentsPage: WikiPageContent = {
         {
           "type": "prose",
           "paragraphs": [
-            "**SDS-PAGE & Transfer** [28]"
+            "**SDS-PAGE & Transfer** [22]"
           ]
         },
         {
           "type": "protocol-steps",
           "steps": [
             {
-              "number": "3",
+              "number": "1",
               "blocks": [
                 {
                   "type": "prose",
@@ -2569,7 +2191,7 @@ export const experimentsPage: WikiPageContent = {
               ]
             },
             {
-              "number": "4",
+              "number": "2",
               "blocks": [
                 {
                   "type": "prose",
@@ -2591,7 +2213,7 @@ export const experimentsPage: WikiPageContent = {
           "type": "protocol-steps",
           "steps": [
             {
-              "number": "5",
+              "number": "1",
               "blocks": [
                 {
                   "type": "prose",
@@ -2602,7 +2224,7 @@ export const experimentsPage: WikiPageContent = {
               ]
             },
             {
-              "number": "6",
+              "number": "2",
               "blocks": [
                 {
                   "type": "prose",
@@ -2624,7 +2246,7 @@ export const experimentsPage: WikiPageContent = {
           "type": "protocol-steps",
           "steps": [
             {
-              "number": "7",
+              "number": "1",
               "blocks": [
                 {
                   "type": "prose",
@@ -2664,7 +2286,7 @@ export const experimentsPage: WikiPageContent = {
         {
           "type": "prose",
           "paragraphs": [
-            "Immediate activation, co-stimulatory support and differentiation towards a memory phenotype are three separable properties of a CTL response, and a response can have one without the others. This step measures all three by flow cytometry: CD69 for early activation, CD28 for co-stimulation and effector survival, and CD45RO⁺CCR7⁻ for effector memory. Together they describe the quality of the T cell response the Combined vaccine induces. [29][30]"
+            "Immediate activation, co-stimulatory support and differentiation towards a memory phenotype are three separable properties of a CTL response, and a response can have one without the others. This step measures all three by flow cytometry: CD69 for early activation, CD28 for co-stimulation and effector survival, and CD45RO⁺CCR7⁻ for effector memory. Together they describe the quality of the T cell response the Combined vaccine induces. [23][24]"
           ]
         },
         {
@@ -2736,7 +2358,7 @@ export const experimentsPage: WikiPageContent = {
         {
           "type": "prose",
           "paragraphs": [
-            "**Antibody Staining** [23][31]"
+            "**Antibody Staining** [18][25]"
           ]
         },
         {
@@ -2776,7 +2398,7 @@ export const experimentsPage: WikiPageContent = {
           "type": "protocol-steps",
           "steps": [
             {
-              "number": "3",
+              "number": "1",
               "blocks": [
                 {
                   "type": "prose",
@@ -2787,7 +2409,7 @@ export const experimentsPage: WikiPageContent = {
               ]
             },
             {
-              "number": "4",
+              "number": "2",
               "blocks": [
                 {
                   "type": "prose",
@@ -2802,14 +2424,14 @@ export const experimentsPage: WikiPageContent = {
         {
           "type": "prose",
           "paragraphs": [
-            "**Acquisition & Analysis** [32]"
+            "**Acquisition & Analysis** [26]"
           ]
         },
         {
           "type": "protocol-steps",
           "steps": [
             {
-              "number": "5",
+              "number": "1",
               "blocks": [
                 {
                   "type": "prose",
@@ -2820,7 +2442,7 @@ export const experimentsPage: WikiPageContent = {
               ]
             },
             {
-              "number": "6",
+              "number": "2",
               "blocks": [
                 {
                   "type": "prose",
@@ -2831,7 +2453,7 @@ export const experimentsPage: WikiPageContent = {
               ]
             },
             {
-              "number": "7",
+              "number": "3",
               "blocks": [
                 {
                   "type": "prose",
@@ -2872,7 +2494,7 @@ export const experimentsPage: WikiPageContent = {
         {
           "type": "prose",
           "paragraphs": [
-            "Same assay as 2.3, now on the four optimised constructs, and this time against a vector control. It quantifies how many antigen-specific IFN-γ–secreting T cells each construct induces, which is what allows the Combined vaccine to be compared with the single-epitope constructs. [18]"
+            "Same assay as 2.3, now on the four optimised constructs, and this time against a vector control. It quantifies how many antigen-specific IFN-γ–secreting T cells each construct induces, which is what allows the Combined vaccine to be compared with the single-epitope constructs. [13]"
           ]
         },
         {
@@ -2892,7 +2514,7 @@ export const experimentsPage: WikiPageContent = {
               "Dakewe #2110005"
             ],
             [
-              "RPMI-1640 (plate activation); wash buffer (50× concentrate, diluted 1:50 in deionised water); biotinylated detection antibody; streptavidin-HRP; AEC|Supplied in kit, 100 µL/well",
+              "Blocking solution; wash buffer; biotinylated detection antibody; HRP-streptavidin; AEC",
               "Supplied in kit, 100 µL/well"
             ],
             [
@@ -2932,7 +2554,7 @@ export const experimentsPage: WikiPageContent = {
         {
           "type": "prose",
           "paragraphs": [
-            "**Plate Activation & Co-culture** [19]"
+            "**Blocking & Co-culture** [14]"
           ]
         },
         {
@@ -2944,7 +2566,7 @@ export const experimentsPage: WikiPageContent = {
                 {
                   "type": "prose",
                   "paragraphs": [
-                    "Add 200 µL RPMI-1640 per well to the pre-coated plate, activate at room temperature for 5–10 min, then discard."
+                    "Equilibrate the ELISpot plate to room temperature, add blocking solution and block at room temperature, then discard."
                   ]
                 }
               ]
@@ -2955,7 +2577,7 @@ export const experimentsPage: WikiPageContent = {
                 {
                   "type": "prose",
                   "paragraphs": [
-                    "Add DCs and autologous T cells for each group at DC : T = 1 : 20, 1×10⁵ cells per well, together with a Blank (empty-vector circRNA group), and incubate at 37 ℃, 5% CO₂ for 20 h to stimulate IFN-γ secretion; do not shake the plate during the incubation."
+                    "Add DCs and autologous T cells for each group at DC : T = 1 : 20, 1×10⁵ cells per well, together with a Blank (empty-vector circRNA group), and incubate at 37 ℃ in the CO₂ incubator for 20 h to stimulate IFN-γ secretion."
                   ]
                 }
               ]
@@ -2965,74 +2587,41 @@ export const experimentsPage: WikiPageContent = {
         {
           "type": "prose",
           "paragraphs": [
-            "**Lysis & Washing**"
+            "**Detection & Development** [14]"
           ]
         },
         {
           "type": "protocol-steps",
           "steps": [
+            {
+              "number": "1",
+              "blocks": [
+                {
+                  "type": "prose",
+                  "paragraphs": [
+                    "Discard the cells and wash the plate 5 times with wash buffer, then add the biotinylated detection antibody and incubate at room temperature."
+                  ]
+                }
+              ]
+            },
+            {
+              "number": "2",
+              "blocks": [
+                {
+                  "type": "prose",
+                  "paragraphs": [
+                    "Wash and add HRP-streptavidin; incubate at room temperature."
+                  ]
+                }
+              ]
+            },
             {
               "number": "3",
               "blocks": [
                 {
                   "type": "prose",
                   "paragraphs": [
-                    "Discard the cells and add 200 µL pre-chilled deionised water per well to lyse at 4 ℃ for 10 min."
-                  ]
-                }
-              ]
-            },
-            {
-              "number": "4",
-              "blocks": [
-                {
-                  "type": "prose",
-                  "paragraphs": [
-                    "Wash the plate 6 times with 260 µL wash buffer per well, leaving the buffer in the well for 1 min each time, and blot dry on absorbent paper after the final wash. Never allow the PVDF membrane to dry out between washes."
-                  ]
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "type": "prose",
-          "paragraphs": [
-            "**Detection & Development** [19]"
-          ]
-        },
-        {
-          "type": "protocol-steps",
-          "steps": [
-            {
-              "number": "5",
-              "blocks": [
-                {
-                  "type": "prose",
-                  "paragraphs": [
-                    "Add 100 µL biotinylated detection antibody per well, incubate at 37 ℃ for 1 h, then wash 6 times as in step 4."
-                  ]
-                }
-              ]
-            },
-            {
-              "number": "6",
-              "blocks": [
-                {
-                  "type": "prose",
-                  "paragraphs": [
-                    "Add 100 µL streptavidin-HRP per well, incubate at 37 ℃ for 1 h, wash 5 times in the same way and blot dry."
-                  ]
-                }
-              ]
-            },
-            {
-              "number": "7",
-              "blocks": [
-                {
-                  "type": "prose",
-                  "paragraphs": [
-                    "Add 100 µL AEC substrate per well and develop at room temperature in the dark for 5–30 min, stopping once spots are clearly visible; stop by rinsing 3–5 times with deionised water, then unclip the plate bottom and rinse the back of the membrane."
+                    "Wash and add AEC substrate, developing in the dark until spots are clearly visible, then stop with deionised water."
                   ]
                 }
               ]
@@ -3049,12 +2638,12 @@ export const experimentsPage: WikiPageContent = {
           "type": "protocol-steps",
           "steps": [
             {
-              "number": "8",
+              "number": "1",
               "blocks": [
                 {
                   "type": "prose",
                   "paragraphs": [
-                    "After air-drying, count on the reader and report SFC per 1×10⁵ cells."
+                    "Air-dry and count on the reader."
                   ]
                 }
               ]
@@ -3088,7 +2677,7 @@ export const experimentsPage: WikiPageContent = {
         {
           "type": "prose",
           "paragraphs": [
-            "Killing a real tumour cell is the functional endpoint of the in vitro work. This step runs the Calcein-AM release assay against the human triple-negative breast cancer line MDA-MB-231 (HLA-A*02:01⁺, TROP2⁺), which carries both the matching HLA type and the target antigen that K562 in 2.4 lacks, so lysis here can be read as antigen-specific. [20][21]"
+            "Killing a real tumour cell is the functional endpoint of the in vitro work. This step runs the Calcein-AM release assay against the human triple-negative breast cancer line MDA-MB-231 (HLA-A*02:01⁺, TROP2⁺), which carries both the matching HLA type and the target antigen that K562 in 2.4 lacks, so lysis here can be read as antigen-specific. [15][16]"
           ]
         },
         {
@@ -3160,7 +2749,7 @@ export const experimentsPage: WikiPageContent = {
         {
           "type": "prose",
           "paragraphs": [
-            "**Target Labeling** [33]"
+            "**Target Labeling** [27]"
           ]
         },
         {
@@ -3200,7 +2789,7 @@ export const experimentsPage: WikiPageContent = {
           "type": "protocol-steps",
           "steps": [
             {
-              "number": "3",
+              "number": "1",
               "blocks": [
                 {
                   "type": "prose",
@@ -3211,7 +2800,7 @@ export const experimentsPage: WikiPageContent = {
               ]
             },
             {
-              "number": "4",
+              "number": "2",
               "blocks": [
                 {
                   "type": "prose",
@@ -3233,7 +2822,7 @@ export const experimentsPage: WikiPageContent = {
           "type": "protocol-steps",
           "steps": [
             {
-              "number": "5",
+              "number": "1",
               "blocks": [
                 {
                   "type": "prose",
@@ -3244,12 +2833,13 @@ export const experimentsPage: WikiPageContent = {
               ]
             },
             {
-              "number": "6",
+              "number": "2",
               "blocks": [
                 {
                   "type": "prose",
                   "paragraphs": [
-                    "Measure fluorescence on the fluorescence plate reader (Ex 485 / Em 530 nm) and calculate the specific killing rate as: $\\text{Specific lysis}\\ (%) = \\frac{F_{\\text{experimental}} - F_{\\text{spontaneous}}}{F_{\\text{maximum}} - F_{\\text{spontaneous}}} \\times 100%$"
+                    "Measure fluorescence on the fluorescence plate reader (Ex 485 / Em 530 nm) and calculate the specific killing rate as:",
+                    "Specific lysis (%) = (F experimental − F spontaneous) / (F maximum − F spontaneous) × 100%"
                   ]
                 }
               ]
@@ -3283,7 +2873,7 @@ export const experimentsPage: WikiPageContent = {
         {
           "type": "prose",
           "paragraphs": [
-            "This block measures three quantities in cell culture: how well circRNA resists degradation compared with its linear precursor, whether the T cells the vaccine activates also kill normal cells, and how much LNP carrier cells tolerate. Each corresponds to a distinct way the platform could go wrong. A molecule that needs large and frequent doses makes exposure itself the problem (5.1); a response that cannot tell tumour from healthy tissue is dangerous whatever its potency (5.2); and the carrier can be toxic on its own account (5.3). Taken together they give a working envelope, how much, how often and against what, before any animal is used, which is also the 3Rs argument for running this stage first, since the first stability figure already lowered the dose and dosing frequency the animal study had to use.",
+            "This block measures three quantities in cell culture: how well circRNA resists degradation compared with its linear precursor, whether the T cells the vaccine activates also kill normal cells, and how much LNP carrier cells tolerate. Each corresponds to a distinct way the platform could go wrong. A molecule that needs large and frequent doses makes exposure itself the problem (5.1); a response that cannot tell tumour from healthy tissue is dangerous whatever its potency (5.2); and the carrier can be toxic on its own account (5.3). Taken together they give a working envelope, how much, how often and against what, which is also the 3Rs argument for doing this work in cells first, since the first stability figure already lowered the dose and dosing frequency the animal study had to use. The stability and LNP dose experiments were completed before any animal was used. The off-target experiment in 5.2 was added during the animal work, after our Human Practices activities raised on-target/off-tumour toxicity as the risk to address directly.",
             "These are cell-based experiments, so their conclusions hold at the level of cells: a discrimination ratio, a dose ceiling, a persistence profile. The tissue-level questions that complete a safety case, repeat-dose tolerance, organ histopathology, haematology and serum chemistry, immunotoxicity and biodistribution, need an animal, and the study designed to answer them is set out in Outlook O3. The two stages are one programme: the numbers obtained here parameterised the Dry Lab model, and that model proposed the dose and schedule carried into Section 7."
           ]
         },
@@ -3301,7 +2891,7 @@ export const experimentsPage: WikiPageContent = {
         {
           "type": "prose",
           "paragraphs": [
-            "Having no free 5′/3′ ends, circRNA natively resists exonuclease degradation, which is what the platform's low dosing frequency and durable expression rest on. It is also a safety argument: the more stable the molecule, the less nucleic acid and the fewer doses needed for the same antigen expression, and the smaller the exposure. Here equal amounts of circRNA and its linear precursor are incubated in parallel, sampled at 0, 24, 48 and 72 h, and compared for residual band intensity by agarose gel electrophoresis. [7]"
+            "Having no free 5′/3′ ends, circRNA natively resists exonuclease degradation, which is what the platform's low dosing frequency and durable expression rest on. It is also a safety argument: the more stable the molecule, the less nucleic acid and the fewer doses needed for the same antigen expression, and the smaller the exposure. Here equal amounts of circRNA and its linear precursor are incubated in parallel, sampled at 0, 24, 48 and 72 h, and compared for residual band intensity by agarose gel electrophoresis. [2]"
           ]
         },
         {
@@ -3318,7 +2908,7 @@ export const experimentsPage: WikiPageContent = {
           "rows": [
             [
               "Purified circRNA / an equal amount of linear precursor RNA",
-              "Two groups in parallel at equal mass; from the Combined batch (3.2); specific preparation: the Combined circRNA"
+              "Two groups in parallel at equal mass; from the Combined batch (3.1); specific preparation: the Combined circRNA"
             ],
             [
               "Incubation matrix",
@@ -3353,7 +2943,7 @@ export const experimentsPage: WikiPageContent = {
         {
           "type": "prose",
           "paragraphs": [
-            "**Material**: the Combined circRNA of the 3.2 batch, the same preparation run, circularisation condition and RNase R enrichment as the material used from round 2 onwards. The stability figure therefore applies to the vaccine itself rather than to a round-1 construct, which is what lets it be carried into the dosing rationale.",
+            "**Material**: the Combined circRNA of the 3.1 batch, the same preparation run, circularisation condition and RNase R enrichment as the material used from round 2 onwards. The stability figure therefore applies to the vaccine itself rather than to a round-1 construct, which is what lets it be carried into the dosing rationale.",
             "**Control**: an equal mass of the linear precursor RNA, incubated in the same matrix at the same temperature. The 0 h lane of each group is its own baseline, and all time points run side by side on one gel so that both RNAs share electrophoresis and imaging conditions.",
             "**Readout**: band intensities are integrated densitometrically, normalised to the integrated signal of the DNA ladder lane on the same panel, and expressed relative to each RNA's own 0 h lane (set to 1.0).",
             "**Replicates**: each time point is a single lane with no biological replicate, so the result is the relative residual amount at each time point; no decay is fitted and no half-life or decay constant is reported."
@@ -3418,7 +3008,7 @@ export const experimentsPage: WikiPageContent = {
           "type": "protocol-steps",
           "steps": [
             {
-              "number": "4",
+              "number": "1",
               "blocks": [
                 {
                   "type": "prose",
@@ -3429,7 +3019,7 @@ export const experimentsPage: WikiPageContent = {
               ]
             },
             {
-              "number": "5",
+              "number": "2",
               "blocks": [
                 {
                   "type": "prose",
@@ -3451,7 +3041,7 @@ export const experimentsPage: WikiPageContent = {
           "ordered": true,
           "start": 1,
           "items": [
-            "Circular RNA migrates anomalously in non-denaturing gels (usually more slowly than linear RNA of the same length), so band position alone is not sufficient to establish circularisation, confirm circularisation by divergent-primer RT-qPCR (1.2/3.2) and BSJ sequencing (3.2 step 10) instead.",
+            "Circular RNA migrates anomalously in non-denaturing gels (usually more slowly than linear RNA of the same length), so band position alone is not sufficient to establish circularisation, confirm circularisation by divergent-primer RT-qPCR (1.1/3.1) and BSJ sequencing (3.1 step 11) instead.",
             "Report densitometry as a relative residual amount, not as a kinetic parameter. Report a half-life or decay constant only from a time course with replicated points and enough points to fit and test a decay model, preferably quantified by divergent-primer RT-qPCR against an internal reference rather than by gel, and preferably inside cells.",
             "The incubation matrix must be specified when interpreting the biological meaning: degradation in nuclease-free buffer, in serum-containing medium and inside a cell are three different questions.",
             "Densitometry in the low-signal range is noise-prone: once a band approaches background, integration error is greatly amplified and a later time point can read higher than an earlier one. Report raw integrated values without smoothing or exclusion, and read any point near the detection limit only as \"at or below the detection limit\" rather than interpreting it individually."
@@ -3471,7 +3061,7 @@ export const experimentsPage: WikiPageContent = {
         {
           "type": "prose",
           "paragraphs": [
-            "The safety risk specific to a tumour vaccine is that the cytotoxic T cells it activates damage normal tissue expressing low levels of the same antigen while they kill the tumour (on-target/off-tumour toxicity). This step uses exactly the same Calcein-AM release system as the efficacy experiment, co-incubating Combined-vaccine-primed effector T cells with a panel of human normal cell lines, HCAEC (coronary artery endothelium), LX-2 (hepatic stellate cells), BEAS-2B (bronchial epithelium) and MCF12A (normal mammary epithelium), with MDA-MB-231 (the TNBC target) as a positive control, at two relatively high effector-to-target ratios. The readout is the contrast between lysis of the tumour line and lysis of the normal lines under the same conditions. [20][21]"
+            "The safety risk specific to a tumour vaccine is that the cytotoxic T cells it activates damage normal tissue expressing low levels of the same antigen while they kill the tumour (on-target/off-tumour toxicity). This step uses exactly the same Calcein-AM release system as the efficacy experiment, co-incubating Combined-vaccine-primed effector T cells with a panel of human normal cell lines, HCAEC (coronary artery endothelium), LX-2 (hepatic stellate cells), BEAS-2B (bronchial epithelium) and MCF12A (normal mammary epithelium), with MDA-MB-231 (the TNBC target) as a positive control, at two relatively high effector-to-target ratios. The readout is the contrast between lysis of the tumour line and lysis of the normal lines under the same conditions. [15][16]"
           ]
         },
         {
@@ -3594,7 +3184,7 @@ export const experimentsPage: WikiPageContent = {
           "type": "protocol-steps",
           "steps": [
             {
-              "number": "4",
+              "number": "1",
               "blocks": [
                 {
                   "type": "prose",
@@ -3605,7 +3195,7 @@ export const experimentsPage: WikiPageContent = {
               ]
             },
             {
-              "number": "5",
+              "number": "2",
               "blocks": [
                 {
                   "type": "prose",
@@ -3627,7 +3217,7 @@ export const experimentsPage: WikiPageContent = {
           "type": "protocol-steps",
           "steps": [
             {
-              "number": "6",
+              "number": "1",
               "blocks": [
                 {
                   "type": "prose",
@@ -3638,7 +3228,7 @@ export const experimentsPage: WikiPageContent = {
               ]
             },
             {
-              "number": "7",
+              "number": "2",
               "blocks": [
                 {
                   "type": "prose",
@@ -3649,12 +3239,13 @@ export const experimentsPage: WikiPageContent = {
               ]
             },
             {
-              "number": "8",
+              "number": "3",
               "blocks": [
                 {
                   "type": "prose",
                   "paragraphs": [
-                    "Measure fluorescence (Ex 485 / Em 530 nm) and calculate the killing percentage for each cell line for between-group comparison: $\\text{Killing}\\ (%) = \\frac{F_{\\text{experimental}} - F_{\\text{spontaneous}}}{F_{\\text{maximum}} - F_{\\text{spontaneous}}} \\times 100%$"
+                    "Measure fluorescence (Ex 485 / Em 530 nm) and calculate the killing percentage for each cell line for between-group comparison:",
+                    "Killing (%) = (F experimental − F spontaneous) / (F maximum − F spontaneous) × 100%"
                   ]
                 }
               ]
@@ -3673,7 +3264,8 @@ export const experimentsPage: WikiPageContent = {
           "items": [
             "Normal cells are mostly adherent; before labelling and plating they must be dissociated into a uniform single-cell suspension and their viability confirmed, so that digestion damage does not raise spontaneous release and get misread as \"off-target killing\".",
             "Confirm the HLA type of every normal line before the assay, and match the panel to the restriction element of the epitopes; an unmatched panel cannot test antigen discrimination.",
-            "Measure target-antigen expression on the normal panel as well (flow cytometry suffices). Until it is measured, call the panel an HLA-matched normal cell panel and not an antigen-negative control."
+            "Measure target-antigen expression on the normal panel as well (flow cytometry suffices). Until it is measured, call the panel an HLA-matched normal cell panel and not an antigen-negative control.",
+            "This experiment was added after the in vivo work had begun: Human Practices discussions during that stage identified on-target/off-tumour toxicity as the first safety question a clinical reader asks, and the normal-cell panel was assembled in response."
           ]
         },
         {
@@ -3799,7 +3391,7 @@ export const experimentsPage: WikiPageContent = {
           "type": "protocol-steps",
           "steps": [
             {
-              "number": "3",
+              "number": "1",
               "blocks": [
                 {
                   "type": "prose",
@@ -3810,7 +3402,7 @@ export const experimentsPage: WikiPageContent = {
               ]
             },
             {
-              "number": "4",
+              "number": "2",
               "blocks": [
                 {
                   "type": "prose",
@@ -3821,7 +3413,7 @@ export const experimentsPage: WikiPageContent = {
               ]
             },
             {
-              "number": "5",
+              "number": "3",
               "blocks": [
                 {
                   "type": "prose",
@@ -3836,14 +3428,14 @@ export const experimentsPage: WikiPageContent = {
         {
           "type": "prose",
           "paragraphs": [
-            "**CCK-8 Assay** [34]"
+            "**CCK-8 Assay** [28]"
           ]
         },
         {
           "type": "protocol-steps",
           "steps": [
             {
-              "number": "6",
+              "number": "1",
               "blocks": [
                 {
                   "type": "prose",
@@ -3854,7 +3446,7 @@ export const experimentsPage: WikiPageContent = {
               ]
             },
             {
-              "number": "7",
+              "number": "2",
               "blocks": [
                 {
                   "type": "prose",
@@ -3865,7 +3457,7 @@ export const experimentsPage: WikiPageContent = {
               ]
             },
             {
-              "number": "8",
+              "number": "3",
               "blocks": [
                 {
                   "type": "prose",
@@ -3876,12 +3468,13 @@ export const experimentsPage: WikiPageContent = {
               ]
             },
             {
-              "number": "9",
+              "number": "4",
               "blocks": [
                 {
                   "type": "prose",
                   "paragraphs": [
-                    "Calculate relative viability as below, plot the dose–viability curve and determine the safe dose window: $\\text{Relative viability}\\ (%) = \\frac{\\mathrm{OD}_{\\text{sample}} - \\mathrm{OD}_{\\text{blank}}}{\\mathrm{OD}_{0\\ \\text{ng}} - \\mathrm{OD}_{\\text{blank}}} \\times 100%$"
+                    "Calculate relative viability as below, plot the dose–viability curve and determine the safe dose window:",
+                    "Relative viability (%) = (OD sample − OD blank) / (OD 0 ng − OD blank) × 100%"
                   ]
                 }
               ]
@@ -3916,7 +3509,7 @@ export const experimentsPage: WikiPageContent = {
         {
           "type": "prose",
           "paragraphs": [
-            "For an in vivo experiment to be meaningful, the tumour cells must carry the target antigen that the vaccine is directed against so that T cells can recognise them. Wild-type 4T1 barely expresses TROP2, so we needed a 4T1 line stably overexpressing TROP2 as a target-matched, standardised tool. To ensure vector quality and batch consistency and to avoid the biosafety burden and titre variability of in-house packaging, this project ordered a ready-made TROP2-overexpressing lentiviral preparation directly from a commercial supplier (carrying a GFP reporter gene and puromycin resistance), and did not carry out molecular cloning or virus packaging itself. On arrival the virus was used to transduce 4T1 directly; GFP⁺ cells were then sorted by flow cytometry and maintained under puromycin selection, and TROP2 expression was finally verified at both the mRNA (RT-PCR) and membrane protein (flow cytometry) levels, so that this cell line can reliably support the subsequent in vivo efficacy evaluation."
+            "For an in vivo experiment to be meaningful, the tumour cells must carry the target antigen that the vaccine is directed against so that T cells can recognise them. Wild-type 4T1 barely expresses TROP2, so we needed a 4T1 line stably overexpressing TROP2 as a target-matched, standardised tool. To ensure vector quality and batch consistency and to avoid the biosafety burden and titre variability of in-house packaging, this project ordered a ready-made TROP2-overexpressing lentiviral preparation directly from a commercial supplier (carrying a GFP reporter gene and puromycin resistance), and did not carry out molecular cloning or virus packaging itself. On arrival the virus was used to transduce 4T1 directly; GFP⁺ cells were then sorted by flow cytometry and maintained under puromycin selection, and surface TROP2 expression was verified by flow cytometry before the cell line was used for the subsequent in vivo efficacy evaluation."
           ]
         },
         {
@@ -3933,7 +3526,7 @@ export const experimentsPage: WikiPageContent = {
         {
           "type": "prose",
           "paragraphs": [
-            "To make 4T1 express TROP2 stably rather than transiently, the gene of interest must be integrated into the host genome by a lentivirus. To keep the titre stable and batches consistent, and to avoid the quality variability and additional biosafety burden of in-house packaging, this project ordered a ready-made TROP2-overexpressing lentiviral preparation (carrying a GFP reporter for flow sorting and puromycin resistance for selection pressure), and on arrival transduced 4T1 directly under BSL-2 conditions, using GFP fluorescence for preliminary confirmation of successful transduction. Stable integration is the basis for a tumour-model cell line that can be passaged long-term with a stable target. The virus is produced by the supplier by co-transfecting HEK293T with a second-generation three-plasmid system (transfer vector + psPAX2, which provides both Gag/Pol and Rev, + pMD2.G, the VSV-G envelope), as described in Chapter 6, “Lentiviral packaging”, of the plasmid manual shipped with the product (Miaoling Bio). In a second-generation system *rev* sits on the same plasmid as *gag/pol*, which is the difference from a third-generation vector and the reason this work was done under BSL-2. [35][36]"
+            "To make 4T1 express TROP2 stably rather than transiently, the gene of interest must be integrated into the host genome by a lentivirus. To keep the titre stable and batches consistent, and to avoid the quality variability and additional biosafety burden of in-house packaging, this project ordered a ready-made TROP2-overexpressing lentiviral preparation (carrying a GFP reporter for flow sorting and puromycin resistance for selection pressure), and on arrival transduced 4T1 directly under BSL-2 conditions, using GFP fluorescence for preliminary confirmation of successful transduction. Stable integration is the basis for a tumour-model cell line that can be passaged long-term with a stable target. The virus is produced by the supplier by co-transfecting HEK293T with a second-generation three-plasmid system (transfer vector + psPAX2, which provides both Gag/Pol and Rev, + pMD2.G, the VSV-G envelope), as described in Chapter 6, “Lentiviral packaging”, of the plasmid manual shipped with the product (Miaoling Bio). In a second-generation system *rev* sits on the same plasmid as *gag/pol*, which is the difference from a third-generation vector and the reason this work was done under BSL-2. [29][30]"
           ]
         },
         {
@@ -4030,7 +3623,7 @@ export const experimentsPage: WikiPageContent = {
           "type": "protocol-steps",
           "steps": [
             {
-              "number": "2",
+              "number": "1",
               "blocks": [
                 {
                   "type": "prose",
@@ -4052,7 +3645,7 @@ export const experimentsPage: WikiPageContent = {
           "type": "protocol-steps",
           "steps": [
             {
-              "number": "3",
+              "number": "1",
               "blocks": [
                 {
                   "type": "prose",
@@ -4063,7 +3656,7 @@ export const experimentsPage: WikiPageContent = {
               ]
             },
             {
-              "number": "4",
+              "number": "2",
               "blocks": [
                 {
                   "type": "prose",
@@ -4085,7 +3678,7 @@ export const experimentsPage: WikiPageContent = {
           "type": "protocol-steps",
           "steps": [
             {
-              "number": "5",
+              "number": "1",
               "blocks": [
                 {
                   "type": "prose",
@@ -4096,7 +3689,7 @@ export const experimentsPage: WikiPageContent = {
               ]
             },
             {
-              "number": "6",
+              "number": "2",
               "blocks": [
                 {
                   "type": "prose",
@@ -4118,7 +3711,7 @@ export const experimentsPage: WikiPageContent = {
           "type": "protocol-steps",
           "steps": [
             {
-              "number": "7",
+              "number": "1",
               "blocks": [
                 {
                   "type": "prose",
@@ -4262,7 +3855,7 @@ export const experimentsPage: WikiPageContent = {
           "type": "protocol-steps",
           "steps": [
             {
-              "number": "3",
+              "number": "1",
               "blocks": [
                 {
                   "type": "prose",
@@ -4273,7 +3866,7 @@ export const experimentsPage: WikiPageContent = {
               ]
             },
             {
-              "number": "4",
+              "number": "2",
               "blocks": [
                 {
                   "type": "prose",
@@ -4288,14 +3881,14 @@ export const experimentsPage: WikiPageContent = {
         {
           "type": "prose",
           "paragraphs": [
-            "**Sorting & Selection** [37][38]"
+            "**Sorting & Selection** [31][32]"
           ]
         },
         {
           "type": "protocol-steps",
           "steps": [
             {
-              "number": "5",
+              "number": "1",
               "blocks": [
                 {
                   "type": "prose",
@@ -4306,7 +3899,7 @@ export const experimentsPage: WikiPageContent = {
               ]
             },
             {
-              "number": "6",
+              "number": "2",
               "blocks": [
                 {
                   "type": "prose",
@@ -4328,7 +3921,7 @@ export const experimentsPage: WikiPageContent = {
           "type": "protocol-steps",
           "steps": [
             {
-              "number": "7",
+              "number": "1",
               "blocks": [
                 {
                   "type": "prose",
@@ -4358,7 +3951,7 @@ export const experimentsPage: WikiPageContent = {
           "type": "subheading",
           "id": "exp-6-3",
           "index": "6.3",
-          "title": "6.3 RT-PCR verification of TROP2 mRNA"
+          "title": "6.3 RNA preparation and RT-PCR for TROP2"
         },
         {
           "type": "heading",
@@ -4368,7 +3961,7 @@ export const experimentsPage: WikiPageContent = {
         {
           "type": "prose",
           "paragraphs": [
-            "Overexpression must be confirmed at the transcript level. This step extracts total RNA with TRIzol, reverse-transcribes it to cDNA and amplifies TROP2 by PCR, comparing mRNA levels between wild-type and overexpressing cells; the RNA is treated with DNase I before reverse transcription to remove genomic and residual plasmid DNA and so limit false positives."
+            "Total RNA from wild-type and TROP2-overexpressing 4T1 cells is extracted with TRIzol, reverse-transcribed to cDNA and used for TROP2 PCR amplification. DNase I treatment before reverse transcription removes genomic and residual plasmid DNA to limit false positives."
           ]
         },
         {
@@ -4398,10 +3991,6 @@ export const experimentsPage: WikiPageContent = {
             [
               "TROP2 and reference (GAPDH/β-actin) primers; 2× PCR Mix",
               "20 µL reaction"
-            ],
-            [
-              "1.5% agarose, DNA marker, 1× TAE",
-              "Electrophoresis"
             ]
           ]
         },
@@ -4413,7 +4002,7 @@ export const experimentsPage: WikiPageContent = {
         {
           "type": "prose",
           "paragraphs": [
-            "Thermal cycler, agarose electrophoresis unit, centrifuge, nucleic acid quantification instrument, gel imaging system; ImageJ, GraphPad Prism."
+            "Thermal cycler, centrifuge, nucleic acid quantification instrument."
           ]
         },
         {
@@ -4424,8 +4013,8 @@ export const experimentsPage: WikiPageContent = {
         {
           "type": "prose",
           "paragraphs": [
-            "**Control**: wild-type 4T1 (WT) as the control group, run in parallel with the overexpressing cells through the same RNA extraction, DNase I treatment, reverse transcription and PCR, with a reference gene (GAPDH/β-actin) for normalisation. A no-reverse-transcriptase (−RT) control and a no-template control (NTC) are run alongside every batch.",
-            "**Replicates**: n = 3, three independent RNA extractions and reverse-transcription reactions per group, each with its own reference-gene amplification, reported as mean ± SD of the three."
+            "**Control**: wild-type 4T1 (WT) as the control group, run in parallel with the overexpressing cells through the same RNA extraction, DNase I treatment, reverse transcription and PCR, with parallel reference-gene amplification (GAPDH/β-actin). A no-reverse-transcriptase (−RT) control and a no-template control (NTC) are run alongside every batch.",
+            "**Replicates**: n = 3, three independent RNA extractions and reverse-transcription reactions per group, each with its own reference-gene amplification."
           ]
         },
         {
@@ -4436,7 +4025,7 @@ export const experimentsPage: WikiPageContent = {
         {
           "type": "prose",
           "paragraphs": [
-            "**RNA Extraction & DNase** [39]"
+            "**RNA Extraction & DNase** [33]"
           ]
         },
         {
@@ -4487,7 +4076,7 @@ export const experimentsPage: WikiPageContent = {
           "type": "protocol-steps",
           "steps": [
             {
-              "number": "4",
+              "number": "1",
               "blocks": [
                 {
                   "type": "prose",
@@ -4498,7 +4087,7 @@ export const experimentsPage: WikiPageContent = {
               ]
             },
             {
-              "number": "5",
+              "number": "2",
               "blocks": [
                 {
                   "type": "prose",
@@ -4513,30 +4102,19 @@ export const experimentsPage: WikiPageContent = {
         {
           "type": "prose",
           "paragraphs": [
-            "**PCR & Analysis**"
+            "**PCR**"
           ]
         },
         {
           "type": "protocol-steps",
           "steps": [
             {
-              "number": "6",
+              "number": "1",
               "blocks": [
                 {
                   "type": "prose",
                   "paragraphs": [
                     "Assemble 20 µL PCR reactions (2× Mix, primers, cDNA, water) for the WT and overexpressing groups in parallel, and amplify with 95 ℃ for 5 min, then 28–35 cycles of 95 ℃ 30 s, 55–60 ℃ 30 s and 72 ℃ 30–60 s, and a final 72 ℃ for 5–10 min."
-                  ]
-                }
-              ]
-            },
-            {
-              "number": "7",
-              "blocks": [
-                {
-                  "type": "prose",
-                  "paragraphs": [
-                    "Run on 1.5% agarose at 100–120 V, perform densitometry in ImageJ (TROP2/reference) and analyse statistically in GraphPad."
                   ]
                 }
               ]
@@ -4553,8 +4131,7 @@ export const experimentsPage: WikiPageContent = {
           "ordered": true,
           "start": 1,
           "items": [
-            "Exogenous overexpression plasmid very readily causes DNA-contamination false positives, so the DNase I step before reverse transcription must not be omitted. A −RT (no reverse transcriptase) control alongside every batch closes this gap rigorously and should be run as standard.",
-            "Semi-quantitative RT-PCR has limited precision; for accurate quantification, RT-qPCR (ΔΔCt relative quantification) is recommended."
+            "Exogenous overexpression plasmid very readily causes DNA-contamination false positives, so the DNase I step before reverse transcription must not be omitted. A −RT (no reverse transcriptase) control alongside every batch closes this gap rigorously and should be run as standard."
           ]
         },
         {
@@ -4571,7 +4148,7 @@ export const experimentsPage: WikiPageContent = {
         {
           "type": "prose",
           "paragraphs": [
-            "Elevated mRNA must still be verified at the protein level, because what T cells ultimately recognise is TROP2 protein on the cell membrane. This step uses flow cytometry to detect surface TROP2 on 4T1, with wild-type cells as the negative control and an isotype control to set the threshold, quantifying the TROP2-positive rate and fluorescence intensity of the overexpressing group as a cross-check with the RT-PCR result."
+            "This step uses flow cytometry to detect surface TROP2 on 4T1, with wild-type cells as the negative control and an isotype control to set the threshold. The TROP2-positive rate and fluorescence intensity are used to assess surface expression in the overexpressing cells."
           ]
         },
         {
@@ -4635,7 +4212,7 @@ export const experimentsPage: WikiPageContent = {
         {
           "type": "prose",
           "paragraphs": [
-            "**Grouping & Staining** [23][40]"
+            "**Grouping & Staining** [18][34]"
           ]
         },
         {
@@ -4686,7 +4263,7 @@ export const experimentsPage: WikiPageContent = {
           "type": "protocol-steps",
           "steps": [
             {
-              "number": "4",
+              "number": "1",
               "blocks": [
                 {
                   "type": "prose",
@@ -4708,7 +4285,7 @@ export const experimentsPage: WikiPageContent = {
           "type": "protocol-steps",
           "steps": [
             {
-              "number": "5",
+              "number": "1",
               "blocks": [
                 {
                   "type": "prose",
@@ -4719,7 +4296,7 @@ export const experimentsPage: WikiPageContent = {
               ]
             },
             {
-              "number": "6",
+              "number": "2",
               "blocks": [
                 {
                   "type": "prose",
@@ -4775,7 +4352,7 @@ export const experimentsPage: WikiPageContent = {
         {
           "type": "prose",
           "paragraphs": [
-            "In vitro conclusions need to be tested in a living animal. This step uses 4T1 stably overexpressing TROP2 to establish a syngeneic tumour in the right axillary subcutaneous fat pad of immunocompetent BALB/c mice. Syngeneic transplantation keeps the adaptive immune system intact and gives a defined target antigen, which is what a vaccine working through anti-tumour immunity has to be tested in. A standardised inoculation technique and proper randomisation are what make the between-group comparison trustworthy. [41]"
+            "In vitro conclusions need to be tested in a living animal. This step uses 4T1 stably overexpressing TROP2 to establish a syngeneic tumour in the right axillary subcutaneous fat pad of immunocompetent BALB/c mice. Syngeneic transplantation keeps the adaptive immune system intact and gives a defined target antigen, which is what a vaccine working through anti-tumour immunity has to be tested in. A standardised inoculation technique and proper randomisation are what make the between-group comparison trustworthy. [35]"
           ]
         },
         {
@@ -4831,7 +4408,7 @@ export const experimentsPage: WikiPageContent = {
         {
           "type": "list",
           "items": [
-            "**Groups and sample size**: Randomly divided into 3 groups (PBS vehicle / empty vector / Combined vaccine), n = 5 per group, 15 experimental units in total, plus 3 reserve mice to replace animals lost at inoculation, giving 18 animals overall; the experimental unit is the individual mouse. [42][43]",
+            "**Groups and sample size**: Randomly divided into 3 groups (PBS vehicle / empty vector / Combined vaccine), n = 5 per group, 15 experimental units in total, plus 3 reserve mice to replace animals lost at inoculation, giving 18 animals overall; the experimental unit is the individual mouse. [36][37]",
             "**Sample size justification**: The minimum biologically important effect is a ≥50% reduction in mean endpoint tumour volume (TGI ≥ 50%), which at the variability commonly reported for subcutaneous 4T1 models (CV ≈ 30%) corresponds to Cohen d ≈ 1.7. With n = 5, a two-sample t-test (α = 0.05, two-sided) has approximately 80% power to detect d ≈ 2.0 (about 60% TGI) and approximately 65% power at the minimum important effect itself. The resource equation gives E = N − k = 15 − 3 = 12, within the recommended range of 10–20. n = 5 is the smallest group size, within the approved animal allocation, that keeps the resource equation in range while retaining ~80% power for a large antitumour effect (3Rs, Reduction). A non-significant result at the 50% TGI level will be interpreted as inconclusive rather than as evidence of no effect.",
             "**Randomisation**: Complete randomisation using a randomisation table on the day of inoculation (Day 0), with individual ear-tag coding.",
             "**Inclusion criteria**: SPF female BALB/cAnNCrl mice, 6–8 weeks old, supplied at 18–22 g and verified against the supplier's certificate on arrival; healthy after a 7-day acclimatisation period (normal activity, feeding and drinking, glossy coat, body condition score 3/5, no clinical signs); technically successful tumour cell inoculation.",
@@ -4890,7 +4467,7 @@ export const experimentsPage: WikiPageContent = {
           "type": "protocol-steps",
           "steps": [
             {
-              "number": "3",
+              "number": "1",
               "blocks": [
                 {
                   "type": "prose",
@@ -4912,7 +4489,7 @@ export const experimentsPage: WikiPageContent = {
           "type": "protocol-steps",
           "steps": [
             {
-              "number": "4",
+              "number": "1",
               "blocks": [
                 {
                   "type": "prose",
@@ -4923,7 +4500,7 @@ export const experimentsPage: WikiPageContent = {
               ]
             },
             {
-              "number": "5",
+              "number": "2",
               "blocks": [
                 {
                   "type": "prose",
@@ -4934,7 +4511,7 @@ export const experimentsPage: WikiPageContent = {
               ]
             },
             {
-              "number": "6",
+              "number": "3",
               "blocks": [
                 {
                   "type": "prose",
@@ -4949,14 +4526,14 @@ export const experimentsPage: WikiPageContent = {
         {
           "type": "prose",
           "paragraphs": [
-            "**Monitoring** [44][45]"
+            "**Monitoring** [38][39]"
           ]
         },
         {
           "type": "protocol-steps",
           "steps": [
             {
-              "number": "7",
+              "number": "1",
               "blocks": [
                 {
                   "type": "prose",
@@ -4967,7 +4544,7 @@ export const experimentsPage: WikiPageContent = {
               ]
             },
             {
-              "number": "8",
+              "number": "2",
               "blocks": [
                 {
                   "type": "prose",
@@ -5060,7 +4637,7 @@ export const experimentsPage: WikiPageContent = {
         {
           "type": "list",
           "items": [
-            "**Controls**: a PBS vehicle control group and an empty-vector circRNA-LNP control group. The empty-vector group serves to subtract any non-specific innate immune background contributed by the circRNA backbone/adjuvant, so that the vaccine-versus-vector contrast isolates the contribution of the epitope-encoding sequence. All three pairwise comparisons are pre-specified, Combined versus empty vector, Combined versus PBS, and empty vector versus PBS, because each answers a different question and none is treated as subordinate to the others. [42][43]",
+            "**Controls**: a PBS vehicle control group and an empty-vector circRNA-LNP control group. The empty-vector group serves to subtract any non-specific innate immune background contributed by the circRNA backbone/adjuvant, so that the vaccine-versus-vector contrast isolates the contribution of the epitope-encoding sequence. All three pairwise comparisons are pre-specified, Combined versus empty vector, Combined versus PBS, and empty vector versus PBS, because each answers a different question and none is treated as subordinate to the others. [36][37]",
             "**Replicates**: n = 5 per group (the experimental unit is the individual mouse), with complete randomisation on Day 0.",
             "**Primary outcome**: endpoint tumour volume (mm³, continuous). Growth curves are presented descriptively only; confirmatory inference is based on the endpoint volume alone.",
             "**Blinding**: the person administering treatment is aware of the group allocation (the three preparations look different and the administering operator cannot be blinded). To reduce bias, tumour measurement (the primary outcome) is performed blind by a single independent operator, animals are individually coded, and the measurement order is randomised at each time point from a random-number table so that operator drift cannot become confounded with treatment group; ex vivo samples (immunofluorescence and splenic flow cytometry) from all three groups are processed in one batch in a randomised order, with identical antibody panels, instrument settings and gating templates; groups are coded from acquisition through to data analysis, so that immunofluorescence field selection and image review are both performed without knowledge of allocation.",
@@ -5108,25 +4685,32 @@ export const experimentsPage: WikiPageContent = {
         {
           "type": "prose",
           "paragraphs": [
-            "**Measurement** [41][46]"
+            "**Measurement** [35][40]"
           ]
         },
         {
           "type": "protocol-steps",
           "steps": [
             {
-              "number": "3",
+              "number": "1",
               "blocks": [
                 {
                   "type": "prose",
                   "paragraphs": [
-                    "During the immunisation period, the same independent operator measures the long and short tumour diameters blind, in a randomised order, with a vernier caliper, and calculates the volume as follows before plotting the growth curve: $V = 0.5 \\times L \\times W^{2}$"
+                    "During the immunisation period, the same independent operator measures the long and short tumour diameters blind, in a randomised order, with a vernier caliper, and calculates the volume as follows before plotting the growth curve:",
+                    "V = 0.5 × L × W²",
+                    "where L is the long diameter and W the short diameter (mm); volume is expressed in mm³."
                   ]
                 }
               ]
-            },
+            }
+          ]
+        },
+        {
+          "type": "protocol-steps",
+          "steps": [
             {
-              "number": "4",
+              "number": "1",
               "blocks": [
                 {
                   "type": "prose",
@@ -5148,7 +4732,7 @@ export const experimentsPage: WikiPageContent = {
           "type": "protocol-steps",
           "steps": [
             {
-              "number": "5",
+              "number": "1",
               "blocks": [
                 {
                   "type": "prose",
@@ -5159,7 +4743,7 @@ export const experimentsPage: WikiPageContent = {
               ]
             },
             {
-              "number": "6",
+              "number": "2",
               "blocks": [
                 {
                   "type": "prose",
@@ -5170,7 +4754,7 @@ export const experimentsPage: WikiPageContent = {
               ]
             },
             {
-              "number": "7",
+              "number": "3",
               "blocks": [
                 {
                   "type": "prose",
@@ -5181,7 +4765,7 @@ export const experimentsPage: WikiPageContent = {
               ]
             },
             {
-              "number": "8",
+              "number": "4",
               "blocks": [
                 {
                   "type": "prose",
@@ -5288,7 +4872,7 @@ export const experimentsPage: WikiPageContent = {
         {
           "type": "prose",
           "paragraphs": [
-            "**Dewaxing & Antigen Retrieval** [47][48]"
+            "**Dewaxing & Antigen Retrieval** [41][42]"
           ]
         },
         {
@@ -5328,7 +4912,7 @@ export const experimentsPage: WikiPageContent = {
           "type": "protocol-steps",
           "steps": [
             {
-              "number": "3",
+              "number": "1",
               "blocks": [
                 {
                   "type": "prose",
@@ -5350,7 +4934,7 @@ export const experimentsPage: WikiPageContent = {
           "type": "protocol-steps",
           "steps": [
             {
-              "number": "4",
+              "number": "1",
               "blocks": [
                 {
                   "type": "prose",
@@ -5372,7 +4956,7 @@ export const experimentsPage: WikiPageContent = {
           "type": "protocol-steps",
           "steps": [
             {
-              "number": "5",
+              "number": "1",
               "blocks": [
                 {
                   "type": "prose",
@@ -5383,7 +4967,7 @@ export const experimentsPage: WikiPageContent = {
               ]
             },
             {
-              "number": "6",
+              "number": "2",
               "blocks": [
                 {
                   "type": "prose",
@@ -5424,7 +5008,7 @@ export const experimentsPage: WikiPageContent = {
         {
           "type": "prose",
           "paragraphs": [
-            "Immunofluorescence of the tumour reflects only the intratumoural microenvironment and cannot show whether the vaccine has activated anti-tumour immunity systemically. The spleen is the most important secondary lymphoid organ, and its immune cell composition directly reflects the systemic immune response. At the study endpoint (D35), spleens are taken and made into single-cell suspensions, and multicolour flow cytometry is used to assess the complete chain from antigen presentation through T cell activation and memory formation to effector molecule production: dendritic cell maturation (CD80/CD86), early CD8⁺ T cell activation (CD69), memory phenotype (CD44/CD62L) and intracellular effector molecules (IFN-γ, Granzyme B). It assesses the immune activation capacity of the vaccine at the systemic level, and provides a systemic counterpart to the qualitative tumour immunofluorescence of 7.3. [29]"
+            "Immunofluorescence of the tumour reflects only the intratumoural microenvironment and cannot show whether the vaccine has activated anti-tumour immunity systemically. The spleen is the most important secondary lymphoid organ, and its immune cell composition directly reflects the systemic immune response. At the study endpoint (D35), spleens are taken and made into single-cell suspensions, and multicolour flow cytometry is used to assess the complete chain from antigen presentation through T cell activation and memory formation to effector molecule production: dendritic cell maturation (CD80/CD86), early CD8⁺ T cell activation (CD69), memory phenotype (CD44/CD62L) and intracellular effector molecules (IFN-γ, Granzyme B). It assesses the immune activation capacity of the vaccine at the systemic level, and provides a systemic counterpart to the qualitative tumour immunofluorescence of 7.3. [23]"
           ]
         },
         {
@@ -5567,14 +5151,14 @@ export const experimentsPage: WikiPageContent = {
         {
           "type": "prose",
           "paragraphs": [
-            "**Fc Blocking** [40]"
+            "**Fc Blocking** [34]"
           ]
         },
         {
           "type": "protocol-steps",
           "steps": [
             {
-              "number": "5",
+              "number": "1",
               "blocks": [
                 {
                   "type": "prose",
@@ -5589,14 +5173,14 @@ export const experimentsPage: WikiPageContent = {
         {
           "type": "prose",
           "paragraphs": [
-            "**Viability & Surface Staining** [23]"
+            "**Viability & Surface Staining** [18]"
           ]
         },
         {
           "type": "protocol-steps",
           "steps": [
             {
-              "number": "6",
+              "number": "1",
               "blocks": [
                 {
                   "type": "prose",
@@ -5607,7 +5191,7 @@ export const experimentsPage: WikiPageContent = {
               ]
             },
             {
-              "number": "7",
+              "number": "2",
               "blocks": [
                 {
                   "type": "prose",
@@ -5627,7 +5211,7 @@ export const experimentsPage: WikiPageContent = {
               ]
             },
             {
-              "number": "8",
+              "number": "3",
               "blocks": [
                 {
                   "type": "prose",
@@ -5649,7 +5233,7 @@ export const experimentsPage: WikiPageContent = {
           "type": "protocol-steps",
           "steps": [
             {
-              "number": "9",
+              "number": "1",
               "blocks": [
                 {
                   "type": "prose",
@@ -5671,7 +5255,7 @@ export const experimentsPage: WikiPageContent = {
           "type": "protocol-steps",
           "steps": [
             {
-              "number": "10",
+              "number": "1",
               "blocks": [
                 {
                   "type": "prose",
@@ -5682,7 +5266,7 @@ export const experimentsPage: WikiPageContent = {
               ]
             },
             {
-              "number": "11",
+              "number": "2",
               "blocks": [
                 {
                   "type": "prose",
@@ -5700,9 +5284,14 @@ export const experimentsPage: WikiPageContent = {
                   ]
                 }
               ]
-            },
+            }
+          ]
+        },
+        {
+          "type": "protocol-steps",
+          "steps": [
             {
-              "number": "12",
+              "number": "1",
               "blocks": [
                 {
                   "type": "prose",
@@ -5743,7 +5332,7 @@ export const experimentsPage: WikiPageContent = {
         {
           "type": "prose",
           "paragraphs": [
-            "IFN-γ and Granzyme B are the molecules CD8⁺ T cells kill with, and both sit inside the cell where ordinary surface staining cannot reach them. Intracellular cytokine staining (ICS) restimulates the cells in the presence of a protein transport inhibitor so that newly made cytokine is retained rather than secreted, then fixes them in formaldehyde, permeabilises the membrane with saponin so that antibody can reach the inside of the cell, and stains the retained cytokine, which quantifies effector molecule expression one cell at a time. This project uses the BD Cytofix/Cytoperm™ Plus Fixation/Permeabilization Kit with BD GolgiPlug™ (Cat. No. 555028), in which the active ingredient of GolgiPlug is brefeldin A, which blocks Golgi transport so that newly synthesised cytokines accumulate intracellularly and markedly improve the detection signal. [49]"
+            "IFN-γ and Granzyme B are the molecules CD8⁺ T cells kill with, and both sit inside the cell where ordinary surface staining cannot reach them. Intracellular cytokine staining (ICS) restimulates the cells in the presence of a protein transport inhibitor so that newly made cytokine is retained rather than secreted, then fixes them in formaldehyde, permeabilises the membrane with saponin so that antibody can reach the inside of the cell, and stains the retained cytokine, which quantifies effector molecule expression one cell at a time. This project uses the BD Cytofix/Cytoperm™ Plus Fixation/Permeabilization Kit with BD GolgiPlug™ (Cat. No. 555028), in which the active ingredient of GolgiPlug is brefeldin A, which blocks Golgi transport so that newly synthesised cytokines accumulate intracellularly and markedly improve the detection signal. [43]"
           ]
         },
         {
@@ -5877,7 +5466,7 @@ export const experimentsPage: WikiPageContent = {
           "type": "protocol-steps",
           "steps": [
             {
-              "number": "4",
+              "number": "1",
               "blocks": [
                 {
                   "type": "prose",
@@ -5888,7 +5477,7 @@ export const experimentsPage: WikiPageContent = {
               ]
             },
             {
-              "number": "5",
+              "number": "2",
               "blocks": [
                 {
                   "type": "prose",
@@ -5910,7 +5499,7 @@ export const experimentsPage: WikiPageContent = {
           "type": "protocol-steps",
           "steps": [
             {
-              "number": "6",
+              "number": "1",
               "blocks": [
                 {
                   "type": "prose",
@@ -5921,7 +5510,7 @@ export const experimentsPage: WikiPageContent = {
               ]
             },
             {
-              "number": "7",
+              "number": "2",
               "blocks": [
                 {
                   "type": "prose",
@@ -5936,14 +5525,14 @@ export const experimentsPage: WikiPageContent = {
         {
           "type": "prose",
           "paragraphs": [
-            "**Fixation & Permeabilization** [49]"
+            "**Fixation & Permeabilization** [43]"
           ]
         },
         {
           "type": "protocol-steps",
           "steps": [
             {
-              "number": "8",
+              "number": "1",
               "blocks": [
                 {
                   "type": "prose",
@@ -5954,7 +5543,7 @@ export const experimentsPage: WikiPageContent = {
               ]
             },
             {
-              "number": "9",
+              "number": "2",
               "blocks": [
                 {
                   "type": "prose",
@@ -5976,7 +5565,7 @@ export const experimentsPage: WikiPageContent = {
           "type": "protocol-steps",
           "steps": [
             {
-              "number": "10",
+              "number": "1",
               "blocks": [
                 {
                   "type": "prose",
@@ -5987,7 +5576,7 @@ export const experimentsPage: WikiPageContent = {
               ]
             },
             {
-              "number": "11",
+              "number": "2",
               "blocks": [
                 {
                   "type": "prose",
@@ -5998,7 +5587,7 @@ export const experimentsPage: WikiPageContent = {
               ]
             },
             {
-              "number": "12",
+              "number": "3",
               "blocks": [
                 {
                   "type": "prose",
@@ -6020,7 +5609,7 @@ export const experimentsPage: WikiPageContent = {
           "type": "protocol-steps",
           "steps": [
             {
-              "number": "13",
+              "number": "1",
               "blocks": [
                 {
                   "type": "prose",
@@ -6031,7 +5620,7 @@ export const experimentsPage: WikiPageContent = {
               ]
             },
             {
-              "number": "14",
+              "number": "2",
               "blocks": [
                 {
                   "type": "prose",
@@ -6123,10 +5712,22 @@ export const experimentsPage: WikiPageContent = {
     }
   ],
   "links": [
-    { "path": "/design", "label": "Construct Architecture" },
-    { "path": "/measurement", "label": "Circularity & Purity Metrics" },
-    { "path": "/results", "label": "Experimental Findings" },
-    { "path": "/safety-and-security", "label": "Biosafety Protocols" }
+    {
+      "path": "/design",
+      "label": "Construct Architecture"
+    },
+    {
+      "path": "/measurement",
+      "label": "Circularity & Purity Metrics"
+    },
+    {
+      "path": "/results",
+      "label": "Experimental Findings"
+    },
+    {
+      "path": "/safety-and-security",
+      "label": "Biosafety Protocols"
+    }
   ],
   "next": {
     "path": "/measurement",
@@ -6140,83 +5741,18 @@ export const experimentsReferences: CitationReference[] = [
   {
     "id": 1,
     "authors": "New England Biolabs (NEB).",
-    "title": "*Guidelines for PCR Optimization with Taq DNA Polymerase*.",
+    "title": "*HiScribe® T7 Quick High Yield RNA Synthesis Kit (NEB #E2050S/L): Instruction Manual*. Sections \"DNA Template Preparation: Plasmid Templates\" and \"Standard RNA Synthesis\".",
     "journal": "",
     "volumeYear": "",
     "links": [
       {
-        "href": "https://www.neb.com/en/tools-and-resources/usage-guidelines/guidelines-for-pcr-optimization-with-taq-dna-polymerase",
-        "label": "https://www.neb.com/en/tools-and-resources/usage-guidelines/guidelines-for-pcr-optimization-with-taq-dna-polymerase"
+        "href": "https://www.neb.com/en/-/media/nebus/files/manuals/manuale2050.pdf",
+        "label": "https://www.neb.com/en/-/media/nebus/files/manuals/manuale2050.pdf"
       }
     ]
   },
   {
     "id": 2,
-    "authors": "New England Biolabs (NEB).",
-    "title": "*Double Digests* (restriction enzyme usage guidelines).",
-    "journal": "",
-    "volumeYear": "",
-    "links": [
-      {
-        "href": "https://www.neb.com/en/tools-and-resources/usage-guidelines/double-digests",
-        "label": "https://www.neb.com/en/tools-and-resources/usage-guidelines/double-digests"
-      }
-    ]
-  },
-  {
-    "id": 3,
-    "authors": "New England Biolabs (NEB).",
-    "title": "*Ligation Protocol with T4 DNA Ligase (NEB #M0202)*.",
-    "journal": "",
-    "volumeYear": "",
-    "links": [
-      {
-        "href": "https://www.neb.com/en/protocols/dna-ligation-with-t4-dna-ligase-m0202",
-        "label": "https://www.neb.com/en/protocols/dna-ligation-with-t4-dna-ligase-m0202"
-      }
-    ]
-  },
-  {
-    "id": 4,
-    "authors": "New England Biolabs (NEB).",
-    "title": "*High Efficiency Transformation Protocol (NEB #C2987H/#C2987I)*.",
-    "journal": "",
-    "volumeYear": "",
-    "links": [
-      {
-        "href": "https://www.neb.com/en/protocols/0001/01/01/high-efficiency-transformation-protocol-c2987",
-        "label": "https://www.neb.com/en/protocols/0001/01/01/high-efficiency-transformation-protocol-c2987"
-      }
-    ]
-  },
-  {
-    "id": 5,
-    "authors": "New England Biolabs (NEB).",
-    "title": "*Star Activity* (usage guidelines).",
-    "journal": "",
-    "volumeYear": "",
-    "links": [
-      {
-        "href": "https://www.neb.com/en/tools-and-resources/usage-guidelines/star-activity",
-        "label": "https://www.neb.com/en/tools-and-resources/usage-guidelines/star-activity"
-      }
-    ]
-  },
-  {
-    "id": 6,
-    "authors": "New England Biolabs (NEB).",
-    "title": "*Standard RNA Synthesis with HiScribe® T7 Quick High Yield RNA Synthesis Kit (NEB #E2050)*.",
-    "journal": "",
-    "volumeYear": "",
-    "links": [
-      {
-        "href": "https://www.neb.com/en/protocols/standard-rna-synthesis-with-hiscribe-t7-quick-high-yield-rna-synthesis-kit-neb-e2050",
-        "label": "https://www.neb.com/en/protocols/standard-rna-synthesis-with-hiscribe-t7-quick-high-yield-rna-synthesis-kit-neb-e2050"
-      }
-    ]
-  },
-  {
-    "id": 7,
     "authors": "Wesselhoeft RA, Kowalski PS, Anderson DG.",
     "title": "Engineering circular RNA for potent and stable translation in eukaryotic cells. *Nat Commun.* 2018;9:2629. PMID: 29980667.",
     "journal": "",
@@ -6229,7 +5765,7 @@ export const experimentsReferences: CitationReference[] = [
     ]
   },
   {
-    "id": 8,
+    "id": 3,
     "authors": "LGC Biosearch Technologies (Epicentre/Lucigen).",
     "title": "*Ribonuclease R (RNase R) Manual* (NRR07250).",
     "journal": "",
@@ -6242,7 +5778,7 @@ export const experimentsReferences: CitationReference[] = [
     ]
   },
   {
-    "id": 9,
+    "id": 4,
     "authors": "Xiao MS, Wilusz JE.",
     "title": "An improved method for circular RNA purification using RNase R that efficiently removes linear RNAs containing G-quadruplexes or structured 3′ ends. *Nucleic Acids Res.* 2019;47:8755-8769. PMID: 31269210.",
     "journal": "",
@@ -6255,7 +5791,7 @@ export const experimentsReferences: CitationReference[] = [
     ]
   },
   {
-    "id": 10,
+    "id": 5,
     "authors": "New England Biolabs (NEB).",
     "title": "*RNase R* (NEB #M0100), product page and recommended digestion (1 unit per µg RNA, 37 ℃).",
     "journal": "",
@@ -6268,7 +5804,7 @@ export const experimentsReferences: CitationReference[] = [
     ]
   },
   {
-    "id": 11,
+    "id": 6,
     "authors": "Cytiva.",
     "title": "*Ficoll-Paque PLUS, Cell Preparation, Instructions for Use* (71716700).",
     "journal": "",
@@ -6281,7 +5817,7 @@ export const experimentsReferences: CitationReference[] = [
     ]
   },
   {
-    "id": 12,
+    "id": 7,
     "authors": "Miltenyi Biotec.",
     "title": "*CD14 MicroBeads, human* data sheet (#130-050-201).",
     "journal": "",
@@ -6294,7 +5830,7 @@ export const experimentsReferences: CitationReference[] = [
     ]
   },
   {
-    "id": 13,
+    "id": 8,
     "authors": "Sallusto F, Lanzavecchia A.",
     "title": "Efficient presentation of soluble antigen by cultured human dendritic cells is maintained by granulocyte/macrophage colony-stimulating factor plus interleukin 4 and downregulated by tumor necrosis factor alpha. *J Exp Med.* 1994;179:1109-1118. PMID: 8145033.",
     "journal": "",
@@ -6307,7 +5843,7 @@ export const experimentsReferences: CitationReference[] = [
     ]
   },
   {
-    "id": 14,
+    "id": 9,
     "authors": "Lonza.",
     "title": "*Amaxa® Human Dendritic Cell Nucleofector® Kit (VPA-1004), Optimized Protocol for Human Dendritic Cells*.",
     "journal": "",
@@ -6320,7 +5856,7 @@ export const experimentsReferences: CitationReference[] = [
     ]
   },
   {
-    "id": 15,
+    "id": 10,
     "authors": "Miltenyi Biotec.",
     "title": "*CD3 MicroBeads, human* data sheet (#130-050-101).",
     "journal": "",
@@ -6333,7 +5869,7 @@ export const experimentsReferences: CitationReference[] = [
     ]
   },
   {
-    "id": 16,
+    "id": 11,
     "authors": "Miltenyi Biotec.",
     "title": "*Pre-Separation Filters* data sheet (30 µm, #130-041-407).",
     "journal": "",
@@ -6346,7 +5882,7 @@ export const experimentsReferences: CitationReference[] = [
     ]
   },
   {
-    "id": 17,
+    "id": 12,
     "authors": "Schuler-Thurner B, Schultz ES, Berger TG, et al.",
     "title": "Rapid induction of tumor-specific type 1 T helper cells in metastatic melanoma patients by vaccination with mature, cryopreserved, peptide-loaded monocyte-derived dendritic cells. *J Exp Med.* 2002;195:1279-1288. PMID: 12021308.",
     "journal": "",
@@ -6359,7 +5895,7 @@ export const experimentsReferences: CitationReference[] = [
     ]
   },
   {
-    "id": 18,
+    "id": 13,
     "authors": "Czerkinsky CC, Nilsson LÅ, Nygren H, Ouchterlony Ö, Tarkowski A.",
     "title": "A solid-phase enzyme-linked immunospot (ELISPOT) assay for enumeration of specific antibody-secreting cells. *J Immunol Methods.* 1983;65:109-121. PMID: 6361139.",
     "journal": "",
@@ -6372,7 +5908,7 @@ export const experimentsReferences: CitationReference[] = [
     ]
   },
   {
-    "id": 19,
+    "id": 14,
     "authors": "Dakewe Biotech.",
     "title": "*Human IFN-γ Precoated ELISPOT Kit (strips)* instruction manual, Cat. 2110005.",
     "journal": "",
@@ -6385,7 +5921,7 @@ export const experimentsReferences: CitationReference[] = [
     ]
   },
   {
-    "id": 20,
+    "id": 15,
     "authors": "Lichtenfels R, Biddison WE, Schulz H, Vogt AB, Martin R.",
     "title": "CARE-LASS (calcein-release-assay), an improved fluorescence-based test system to measure cytotoxic T lymphocyte activity. *J Immunol Methods.* 1994;172:227-239. PMID: 7518485.",
     "journal": "",
@@ -6398,7 +5934,7 @@ export const experimentsReferences: CitationReference[] = [
     ]
   },
   {
-    "id": 21,
+    "id": 16,
     "authors": "Neri S, Mariani E, Meneghetti A, Cattini L, Facchini A.",
     "title": "Calcein-acetyoxymethyl cytotoxicity assay: standardization of a method allowing additional analyses on recovered effector cells and supernatants. *Clin Diagn Lab Immunol.* 2001;8:1131-1135. PMID: 11687452.",
     "journal": "",
@@ -6411,7 +5947,7 @@ export const experimentsReferences: CitationReference[] = [
     ]
   },
   {
-    "id": 22,
+    "id": 17,
     "authors": "Cibrián D, Sánchez-Madrid F.",
     "title": "CD69: from activation marker to metabolic gatekeeper. *Eur J Immunol.* 2017;47:946-953. PMID: 28475283.",
     "journal": "",
@@ -6424,7 +5960,7 @@ export const experimentsReferences: CitationReference[] = [
     ]
   },
   {
-    "id": 23,
+    "id": 18,
     "authors": "BioLegend.",
     "title": "*Cell Surface Flow Cytometry Staining Protocol*.",
     "journal": "",
@@ -6437,20 +5973,7 @@ export const experimentsReferences: CitationReference[] = [
     ]
   },
   {
-    "id": 24,
-    "authors": "New England Biolabs (NEB).",
-    "title": "*NEBuilder® HiFi DNA Assembly Reaction Protocol* (NEB #E2621, #E5520, #E2623).",
-    "journal": "",
-    "volumeYear": "",
-    "links": [
-      {
-        "href": "https://www.neb.com/en/protocols/2014/11/26/nebuilder-hifi-dna-assembly-reaction-protocol",
-        "label": "https://www.neb.com/en/protocols/2014/11/26/nebuilder-hifi-dna-assembly-reaction-protocol"
-      }
-    ]
-  },
-  {
-    "id": 25,
+    "id": 19,
     "authors": "Banchereau J, Steinman RM.",
     "title": "Dendritic cells and the control of immunity. *Nature.* 1998;392:245-252. PMID: 9521319.",
     "journal": "",
@@ -6463,7 +5986,7 @@ export const experimentsReferences: CitationReference[] = [
     ]
   },
   {
-    "id": 26,
+    "id": 20,
     "authors": "Towbin H, Staehelin T, Gordon J.",
     "title": "Electrophoretic transfer of proteins from polyacrylamide gels to nitrocellulose sheets: procedure and some applications. *Proc Natl Acad Sci USA.* 1979;76:4350-4354. PMID: 388439.",
     "journal": "",
@@ -6476,7 +5999,7 @@ export const experimentsReferences: CitationReference[] = [
     ]
   },
   {
-    "id": 27,
+    "id": 21,
     "authors": "Thermo Fisher Scientific.",
     "title": "*RIPA Lysis and Extraction Buffer* product information sheet (Cat. 89900/89901).",
     "journal": "",
@@ -6489,7 +6012,7 @@ export const experimentsReferences: CitationReference[] = [
     ]
   },
   {
-    "id": 28,
+    "id": 22,
     "authors": "Bio-Rad.",
     "title": "*Protein Blotting Guide: A Guide to Transfer and Detection* (Bulletin 2895).",
     "journal": "",
@@ -6502,7 +6025,7 @@ export const experimentsReferences: CitationReference[] = [
     ]
   },
   {
-    "id": 29,
+    "id": 23,
     "authors": "Sallusto F, Lenig D, Förster R, Lipp M, Lanzavecchia A.",
     "title": "Two subsets of memory T lymphocytes with distinct homing potentials and effector functions. *Nature.* 1999;401:708-712. PMID: 10537110.",
     "journal": "",
@@ -6515,7 +6038,7 @@ export const experimentsReferences: CitationReference[] = [
     ]
   },
   {
-    "id": 30,
+    "id": 24,
     "authors": "Lenschow DJ, Walunas TL, Bluestone JA.",
     "title": "CD28/B7 system of T cell costimulation. *Annu Rev Immunol.* 1996;14:233-258. PMID: 8717514.",
     "journal": "",
@@ -6528,7 +6051,7 @@ export const experimentsReferences: CitationReference[] = [
     ]
   },
   {
-    "id": 31,
+    "id": 25,
     "authors": "BioLegend.",
     "title": "*PE anti-human CD197 (CCR7) Antibody, clone G043H7*, product data sheet (staining recommended at 37 ℃).",
     "journal": "",
@@ -6541,7 +6064,7 @@ export const experimentsReferences: CitationReference[] = [
     ]
   },
   {
-    "id": 32,
+    "id": 26,
     "authors": "BD Biosciences.",
     "title": "*Multicolor Flow Cytometry Panel Design* (marker selection, fluorochrome assignment, controls and gating).",
     "journal": "",
@@ -6554,7 +6077,7 @@ export const experimentsReferences: CitationReference[] = [
     ]
   },
   {
-    "id": 33,
+    "id": 27,
     "authors": "Thermo Fisher Scientific.",
     "title": "*Enzymatic and Non-Enzymatic Cell Dissociation Protocols* (Gibco Cell Culture Basics).",
     "journal": "",
@@ -6567,7 +6090,7 @@ export const experimentsReferences: CitationReference[] = [
     ]
   },
   {
-    "id": 34,
+    "id": 28,
     "authors": "Dojindo.",
     "title": "*Cell Counting Kit-8 (CCK-8) Technical Manual*, Cat. CK04.",
     "journal": "",
@@ -6580,7 +6103,7 @@ export const experimentsReferences: CitationReference[] = [
     ]
   },
   {
-    "id": 35,
+    "id": 29,
     "authors": "Naldini L, Blömer U, Gallay P, et al.",
     "title": "In vivo gene delivery and stable transduction of nondividing cells by a lentiviral vector. *Science.* 1996;272:263-267. PMID: 8602510.",
     "journal": "",
@@ -6593,7 +6116,7 @@ export const experimentsReferences: CitationReference[] = [
     ]
   },
   {
-    "id": 36,
+    "id": 30,
     "authors": "Zufferey R, Nagy D, Mandel RJ, Naldini L, Trono D.",
     "title": "Multiply attenuated lentiviral vector achieves efficient gene delivery in vivo. *Nat Biotechnol.* 1997;15:871-875. PMID: 9306402.",
     "journal": "",
@@ -6606,7 +6129,7 @@ export const experimentsReferences: CitationReference[] = [
     ]
   },
   {
-    "id": 37,
+    "id": 31,
     "authors": "BD Biosciences.",
     "title": "*Protocols*, flow cytometry sample preparation, staining and sorting.",
     "journal": "",
@@ -6619,7 +6142,7 @@ export const experimentsReferences: CitationReference[] = [
     ]
   },
   {
-    "id": 38,
+    "id": 32,
     "authors": "Thermo Fisher Scientific.",
     "title": "*Selection Antibiotics*, puromycin kill curve and stable cell line selection.",
     "journal": "",
@@ -6632,7 +6155,7 @@ export const experimentsReferences: CitationReference[] = [
     ]
   },
   {
-    "id": 39,
+    "id": 33,
     "authors": "Chomczynski P, Sacchi N.",
     "title": "Single-step method of RNA isolation by acid guanidinium thiocyanate-phenol-chloroform extraction. *Anal Biochem.* 1987;162:156-159. PMID: 2440339.",
     "journal": "",
@@ -6645,7 +6168,7 @@ export const experimentsReferences: CitationReference[] = [
     ]
   },
   {
-    "id": 40,
+    "id": 34,
     "authors": "BD Biosciences.",
     "title": "*Purified Rat Anti-Mouse CD16/CD32 (Mouse BD Fc Block™), clone 2.4G2*, Cat. 553142.",
     "journal": "",
@@ -6658,7 +6181,7 @@ export const experimentsReferences: CitationReference[] = [
     ]
   },
   {
-    "id": 41,
+    "id": 35,
     "authors": "Pulaski BA, Ostrand-Rosenberg S.",
     "title": "Mouse 4T1 breast tumor model. *Curr Protoc Immunol.* 2000;Chapter 20:Unit 20.2. PMID: 18432775.",
     "journal": "",
@@ -6671,7 +6194,7 @@ export const experimentsReferences: CitationReference[] = [
     ]
   },
   {
-    "id": 42,
+    "id": 36,
     "authors": "",
     "title": "The ARRIVE guidelines 2.0, the Essential 10 (NC3Rs).",
     "journal": "",
@@ -6684,7 +6207,7 @@ export const experimentsReferences: CitationReference[] = [
     ]
   },
   {
-    "id": 43,
+    "id": 37,
     "authors": "NC3Rs.",
     "title": "*Experimental Design Assistant (EDA)*.",
     "journal": "",
@@ -6697,7 +6220,7 @@ export const experimentsReferences: CitationReference[] = [
     ]
   },
   {
-    "id": 44,
+    "id": 38,
     "authors": "Workman P, Aboagye EO, Balkwill F, et al.",
     "title": "Guidelines for the welfare and use of animals in cancer research (UKCCCR/NCRI). *Br J Cancer.* 2010;102:1555-1577.",
     "journal": "",
@@ -6710,7 +6233,7 @@ export const experimentsReferences: CitationReference[] = [
     ]
   },
   {
-    "id": 45,
+    "id": 39,
     "authors": "Ullman-Cullere MH, Foltz CJ.",
     "title": "Body condition scoring: a rapid and accurate method for assessing health status in mice. *Lab Anim Sci.* 1999;49:319-323. PMID: 10403450.",
     "journal": "",
@@ -6723,7 +6246,7 @@ export const experimentsReferences: CitationReference[] = [
     ]
   },
   {
-    "id": 46,
+    "id": 40,
     "authors": "Tomayko MM, Reynolds CP.",
     "title": "Determination of subcutaneous tumor size in athymic (nude) mice. *Cancer Chemother Pharmacol.* 1989;24:148-154. PMID: 2544306.",
     "journal": "",
@@ -6736,7 +6259,7 @@ export const experimentsReferences: CitationReference[] = [
     ]
   },
   {
-    "id": 47,
+    "id": 41,
     "authors": "Abcam.",
     "title": "*IHC with samples in paraffin (IHC-P) protocol*.",
     "journal": "",
@@ -6749,7 +6272,7 @@ export const experimentsReferences: CitationReference[] = [
     ]
   },
   {
-    "id": 48,
+    "id": 42,
     "authors": "Abcam.",
     "title": "*IHC antigen retrieval protocol* (heat-induced citrate retrieval).",
     "journal": "",
@@ -6762,7 +6285,7 @@ export const experimentsReferences: CitationReference[] = [
     ]
   },
   {
-    "id": 49,
+    "id": 43,
     "authors": "BD Biosciences.",
     "title": "*BD Cytofix/Cytoperm™ Plus Fixation/Permeabilization Solution Kit with BD GolgiPlug™*, Cat. 555028, kit manual.",
     "journal": "",

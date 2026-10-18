@@ -32,7 +32,7 @@ export const resultsFigureCaptions = {
   fig14: "Round 1 killing of K562 by T cells primed with each construct.",
   fig15: "CD8/CD69 flow cytometry of T cells primed with TROP2-CTL1 and CTL2",
   fig16: "Map of the Combined vaccine plasmid pCirCure-circMEV (5267 bp)",
-  fig17: "Agarose gel QC of the four epitope-encoding transcription templates",
+  fig17: "Agarose gel of target-fragment PCR products from the four epitope-encoding constructs",
   fig18:
     "Sanger trace across the back-splice junction (BSJ) of the Combined vaccine",
   fig19: "CD80⁺CD86⁺ double-positive DC frequencies for each group",
@@ -239,9 +239,9 @@ export const resultsAssets = {
     localSourcePath: "文案集/project/results/3.3 Results.md",
     uploadUrl:
       "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/agarose-gel-verification-of-the-four-epitope-encoding-linearised-transcription-templates.avif",
-    alt: "Figure 17. Agarose gel QC of the four epitope-encoding transcription templates",
+    alt: "Figure 17. Agarose gel of target-fragment PCR products from the four epitope-encoding constructs",
     caption:
-      "Agarose gel QC of the four epitope-encoding transcription templates",
+      "Agarose gel of target-fragment PCR products from the four epitope-encoding constructs",
     section: "Round 1: Screening Single-Epitope Immunogenicity",
     width: 1004,
     height: 741,
@@ -506,15 +506,15 @@ export const resultsAssets = {
     height: 1285,
   },
   fig41: {
-    fileName: "rt-pcr-quantification-of-trop2-mrna-in-4t1-cells.avif",
+    fileName: "trop2-transcript-assessment-in-4t1-cells.avif",
     localSourcePath: "文案集/project/results/3.3 Results.md",
     uploadUrl:
-      "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/rt-pcr-quantification-of-trop2-mrna-in-4t1-cells.avif",
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/trop2-transcript-assessment-in-4t1-cells.avif",
     alt: "Figure 41. RT-PCR quantification of TROP2 mRNA in 4T1 cells",
     caption: "RT-PCR quantification of TROP2 mRNA in 4T1 cells",
     section: "In Vivo: Efficacy and Immune Mechanism",
-    width: 688,
-    height: 877,
+    width: 872,
+    height: 1134,
   },
   fig42: {
     fileName: "flow-cytometric-detection-of-surface-trop2-on-4t1-cells.avif",
@@ -561,15 +561,15 @@ export const resultsAssets = {
     height: 510,
   },
   fig46: {
-    fileName: "cd8-granzyme-b-dual-immunofluorescence-of-tumour-tissue.avif",
+    fileName: "cd8-granzyme-b-dual-immunofluorescence-of-tumour-tissue-actual.avif",
     localSourcePath: "文案集/project/results/3.3 Results.md",
     uploadUrl:
-      "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/cd8-granzyme-b-dual-immunofluorescence-of-tumour-tissue.avif",
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/cd8-granzyme-b-dual-immunofluorescence-of-tumour-tissue-actual.avif",
     alt: "Figure 46. CD8 / Granzyme B dual immunofluorescence of tumour tissue",
     caption: "CD8 / Granzyme B dual immunofluorescence of tumour tissue",
     section: "In Vivo: Efficacy and Immune Mechanism",
-    width: 954,
-    height: 596,
+    width: 1602,
+    height: 1028,
   },
   fig47: {
     fileName: "splenic-dc-cd80-cd86-maturation.avif",

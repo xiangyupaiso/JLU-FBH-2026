@@ -1,5 +1,4 @@
-import { useMemo, type ReactNode } from "react";
-import { Link } from "react-router-dom";
+import { useMemo, useState, type ReactNode } from "react";
 /* eslint-disable react-refresh/only-export-components --
    This module exports the feature-map builder next to its small layout
    helpers; it is not a fast-refresh boundary. */
@@ -29,6 +28,7 @@ import type {
 } from "../../../../data/engagement/sustainability/sdgChapterContract";
 import {
   sustainabilityAssets,
+  sustainabilityDocUrl,
   sustainabilityImage,
   sustainabilityImageEntry,
 } from "../../../../data/engagement/sustainability/sustainabilityAssets";
@@ -48,8 +48,9 @@ import { useRoutePageScroll, WikiContentBlocks } from "../../WikiRoutePage";
 import type { WikiContentBlock } from "../../wikiPageTypes";
 import type { ScaleRailStep } from "./sustainability/SCALEProgressChain";
 import { SdgContributionBubbles } from "./sustainability/SdgContributionBubbles";
-import { stakeholderPhotos } from "../../../../data/engagement/sustainability/sustainabilityPhotos";
-import { scrollReaderToId } from "../../../../utils/scrollReaderToTarget";
+import { DocumentViewer, type WikiDocument } from "../../documents/DocumentViewer";
+import { GameShowcaseLink } from "../GamesShowcase";
+import { StakeholderArticleView } from "./sustainability/StakeholderProfileCard";
 import "../../../../styles/features/sustainability-panels.css";
 
 /**
@@ -204,11 +205,28 @@ function PartnershipStakeholders({ chapter }: { chapter: SdgChapter }) {
               blocks={[{ type: "prose", paragraphs: [...group.intro] }]}
             />
           ) : null}
-          <div className="sust-stake-grid">
-            {group.profiles.map((profile) => (
-              <StakeholderProfileCard key={profile.id} profile={profile} />
-            ))}
-          </div>
+          {group.layout === "prose" ? (
+            group.profiles.map((profile) => (
+              <div
+                className="sust-partnerships__prose"
+                key={profile.id}
+                id={profile.id}
+              >
+                <h4 className="sust-minor-heading">
+                  {profile.index} — {profile.name}
+                </h4>
+                {profile.article ? (
+                  <StakeholderArticleView article={profile.article} />
+                ) : null}
+              </div>
+            ))
+          ) : (
+            <div className="sust-stake-grid">
+              {group.profiles.map((profile) => (
+                <StakeholderProfileCard key={profile.id} profile={profile} />
+              ))}
+            </div>
+          )}
         </section>
       ))}
       {chapter.stakeholders.closing?.length ? (
@@ -219,59 +237,33 @@ function PartnershipStakeholders({ chapter }: { chapter: SdgChapter }) {
           ]}
         />
       ) : null}
-      <nav
-        className="sust-partnership-revisit"
-        aria-label="Revisit stakeholder profiles"
-      >
-        {sustainabilityChapters
-          .filter((item) => item.id !== chapter.id)
-          .map((item) => {
-            const profile = item.stakeholders.profiles[0];
-            const photo = (profile.photos ?? stakeholderPhotos(profile.id))[0];
-            if (!photo) return null;
-            return (
-              <a
-                key={profile.id}
-                href={`#${profile.id}`}
-                onClick={(event) => {
-                  event.preventDefault();
-                  scrollReaderToId(profile.id, event.currentTarget);
-                }}
-              >
-                <img
-                  src={photo.src}
-                  alt={profile.name}
-                  loading="lazy"
-                  decoding="async"
-                />
-                <span>{profile.name}</span>
-              </a>
-            );
-          })}
-      </nav>
     </div>
   );
 }
 
 /** One reusable educational resource (virtual lab, game, picture book …). */
 function ResourceShowcase({ resource }: { resource: EducationResource }) {
+  const game =
+    resource.id === "virtual-laboratory"
+      ? "virtual-lab"
+      : resource.id === "bio-memory-match"
+        ? "bio-memory"
+        : resource.id === "breast-guardian-rpg"
+          ? "breast-guardian"
+          : undefined;
   return (
-    <article className="sust-edu-resource">
+    <article className="sust-edu-resource" id={resource.id}>
       <h5 className="sust-edu-resource__title">{resource.title}</h5>
       <div className="wiki-prose">
         {resource.paragraphs.map((paragraph) => (
           <p key={paragraph}>
-            {resource.gamesLink && paragraph.includes("Games page") ? (
-              <Link className="sust-edu-inline-link" to="/games">
-                <RichText text={paragraph} />
-              </Link>
-            ) : (
-              <RichText text={paragraph} />
-            )}
+            <RichText text={paragraph} />
           </p>
         ))}
       </div>
-      {resource.figure ? (
+      {resource.gamesLink && game ? (
+        <GameShowcaseLink game={game} />
+      ) : resource.figure ? (
         <figure className="wiki-figure sust-edu-resource__figure">
           <img
             src={sustainabilityImage(resource.figure)}
@@ -283,26 +275,18 @@ function ResourceShowcase({ resource }: { resource: EducationResource }) {
           />
         </figure>
       ) : null}
-      {resource.gamesLink &&
-      !resource.paragraphs.some((paragraph) =>
-        paragraph.includes("Games page"),
-      ) ? (
-        <Link className="sust-edu-resource__games" to="/games">
-          Play Online
-        </Link>
-      ) : null}
       {resource.pdfs?.length ? (
         <div className="sust-edu-resource__pdfs">
           {resource.pdfs.map((pdf) => (
-            <a
+            <DocumentViewer
               key={pdf.fileName}
-              className="sust-stake-card__resource-btn"
-              href={pdf.url}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {pdf.label}
-            </a>
+              document={{
+                caption: pdf.label,
+                url: pdf.url ?? sustainabilityDocUrl(pdf.fileName),
+                openUrl: pdf.url ?? sustainabilityDocUrl(pdf.fileName),
+              }}
+              defaultOpen
+            />
           ))}
         </div>
       ) : null}
@@ -482,6 +466,36 @@ const chapterConsequenceSlots: Record<string, ReactNode> = {
   "sdg4-feedback": <EduFeedbackCards />,
 };
 
+/** Folder documents use the same modal reader as Safety. */
+function ChapterToolArchive({ chapter }: { chapter: SdgChapter }) {
+  const [selected, setSelected] = useState<WikiDocument | null>(null);
+  return (
+    <>
+      <PdfToolList
+        tools={chapter.legacy.tools}
+        instance={`${chapter.id}-legacy`}
+        onPdfSelect={(pdf, title) =>
+          setSelected({
+            caption: `${title} — ${pdf.label}`,
+            url: pdf.url ?? sustainabilityDocUrl(pdf.fileName),
+            openUrl: pdf.url ?? sustainabilityDocUrl(pdf.fileName),
+          })
+        }
+      />
+      {selected ? (
+        <DocumentViewer
+          variant="modal"
+          document={selected}
+          open
+          onOpenChange={(open) => {
+            if (!open) setSelected(null);
+          }}
+        />
+      ) : null}
+    </>
+  );
+}
+
 function chapterFeatures(chapter: SdgChapter): FeatureMap {
   const keys = chapterFeatureKeys(chapter);
   return {
@@ -515,12 +529,7 @@ function chapterFeatures(chapter: SdgChapter): FeatureMap {
         </div>
       </div>
     ),
-    [keys.legacy]: (
-      <PdfToolList
-        tools={chapter.legacy.tools}
-        instance={`${chapter.id}-legacy`}
-      />
-    ),
+    [keys.legacy]: <ChapterToolArchive chapter={chapter} />,
     [keys.evidence]: <EvidencePanel chapter={chapter} />,
   };
 }

@@ -35,7 +35,7 @@ const CITY_HOTSPOTS: CityHotspot[] = [
   // 1. 广场前方穿白衣练功的人物 -> 01-04-Collaborative Baduanjin Video
   {
     id: "baduanjin-person",
-    name: "01-04-Collaborative Baduanjin Video",
+    name: "D-Collaborative Baduanjin Video",
     badge: "Health Communication",
     targetId: "sdg17-01-04",
     left: 50.0,
