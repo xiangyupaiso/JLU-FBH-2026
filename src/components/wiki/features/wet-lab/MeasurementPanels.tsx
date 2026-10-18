@@ -150,6 +150,8 @@ export function measurementFeatures(): Record<string, ReactNode> {
             key,
             src: getMeasurementImage(key),
             alt: measurementAssets[key].alt,
+            width: measurementAssets[key].width,
+            height: measurementAssets[key].height,
           }))}
           caption={group.caption}
           columns={group.featureKey === "measurement-plate-3" ? 1 : 3}

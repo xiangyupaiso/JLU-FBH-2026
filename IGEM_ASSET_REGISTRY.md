@@ -7,8 +7,8 @@
 
 - **队伍编号 (Team ID)**: 6056 (JLU-FBH)
 - **统计时间戳**: 2026-10-18
-- **总资产数量**: 2180
-- **🟢 在用资产 (in-use)**: 1649 *(代码/文案中正被引用)*
+- **总资产数量**: 2182
+- **🟢 在用资产 (in-use)**: 1651 *(代码/文案中正被引用)*
 - **🟡 备用资产 (standby)**: 460 *(已就绪或已上传，保留供后续页面选用)*
 - **⚪ 弃用资产 (deprecated)**: 71 *(已从本地删除或已弃用)*
 
@@ -16,7 +16,7 @@
 
 | 类型 | 标识 | 说明 | 数量 |
 | :--- | :---: | :--- | :---: |
-| `image` | 🖼️ 图片/图表 (PNG, JPG, WebP, SVG) | 静态资源 | 2097 |
+| `image` | 🖼️ 图片/图表 (PNG, JPG, WebP, SVG) | 静态资源 | 2099 |
 | `font` | 🔤 Web 字体 (woff2, woff, ttf) | 静态资源 | 28 |
 | `structure` | 🧬 3D 分子/生物结构 (pdb, cif, pse) | 静态资源 | 3 |
 | `pdf` | 📄 PDF 文档/手册/报告 | 静态资源 | 46 |
@@ -2385,6 +2385,8 @@
 | 🟢 在用 | `image` | `wet-lab` | **6-1-materials.webp**<br><sub>`experiments-6-1-materials-webp`</sub> | `public/assets/experiments/protocol/6-1-materials.webp` | 180.6 | *待上传* | 1 | October Experiments illustration; bundled locally. |
 | 🟢 在用 | `image` | `wet-lab` | **6-2-workflow.webp**<br><sub>`experiments-6-2-workflow-webp`</sub> | `public/assets/experiments/protocol/6-2-workflow.webp` | 487.7 | *待上传* | 1 | October Experiments illustration; bundled locally. |
 | 🟢 在用 | `image` | `wet-lab` | **6-2-materials.webp**<br><sub>`experiments-6-2-materials-webp`</sub> | `public/assets/experiments/protocol/6-2-materials.webp` | 173.0 | *待上传* | 1 | October Experiments illustration; bundled locally. |
+| 🟢 在用 | `image` | `wet-lab` | **6-3-workflow.webp**<br><sub>`experiments-6-3-workflow-webp`</sub> | `public/assets/experiments/protocol/6-3-workflow.webp` | 417.6 | *待上传* | 1 | October Experiments illustration from 6.3.zip; bundled locally. |
+| 🟢 在用 | `image` | `wet-lab` | **6-3-materials.webp**<br><sub>`experiments-6-3-materials-webp`</sub> | `public/assets/experiments/protocol/6-3-materials.webp` | 214.9 | *待上传* | 1 | October Experiments illustration from 6.3.zip; bundled locally. |
 | 🟢 在用 | `image` | `wet-lab` | **7-1-workflow.webp**<br><sub>`experiments-7-1-workflow-webp`</sub> | `public/assets/experiments/protocol/7-1-workflow.webp` | 307.4 | *待上传* | 1 | October Experiments illustration; bundled locally. |
 | 🟢 在用 | `image` | `wet-lab` | **7-1-materials.webp**<br><sub>`experiments-7-1-materials-webp`</sub> | `public/assets/experiments/protocol/7-1-materials.webp` | 196.7 | *待上传* | 1 | October Experiments illustration; bundled locally. |
 | 🟢 在用 | `image` | `wet-lab` | **7-2-workflow.webp**<br><sub>`experiments-7-2-workflow-webp`</sub> | `public/assets/experiments/protocol/7-2-workflow.webp` | 320.7 | *待上传* | 1 | October Experiments illustration; bundled locally. |

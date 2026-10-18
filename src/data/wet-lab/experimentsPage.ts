@@ -5661,7 +5661,7 @@ export const experimentsPage: WikiPageContent = {
           "type": "subheading",
           "id": "exp-o1",
           "index": "O1.",
-          "title": "O1. Antigen specificity in a humanised model"
+          "title": "Antigen specificity in a humanised model"
         },
         {
           "type": "prose",
@@ -5673,7 +5673,7 @@ export const experimentsPage: WikiPageContent = {
           "type": "subheading",
           "id": "exp-o2",
           "index": "O2.",
-          "title": "O2. In vivo validation of the remaining antigens"
+          "title": "In vivo validation of the remaining antigens"
         },
         {
           "type": "prose",
@@ -5686,7 +5686,7 @@ export const experimentsPage: WikiPageContent = {
           "type": "subheading",
           "id": "exp-o3",
           "index": "O3.",
-          "title": "O3. In vivo safety and toxicology"
+          "title": "In vivo safety and toxicology"
         },
         {
           "type": "prose",

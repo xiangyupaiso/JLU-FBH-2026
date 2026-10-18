@@ -72,7 +72,7 @@ def import_page():
             title = line[4:]
             code = title.split(" ", 1)[0].rstrip(".")
             old = next((b for s in page["sections"] for b in s.get("blocks", [])
-                        if b["type"] == "subheading" and b["title"].split(" ", 1)[0].rstrip(".") == code), None)
+                        if b["type"] == "subheading" and b["index"].rstrip(".") == code), None)
             assert old, f"Missing existing anchor: {title}"
             heading = {**old, "title": title}
             heading["index"] = code
@@ -81,6 +81,7 @@ def import_page():
                 heading["anchorIds"] = ["exp-" + code[0] + "-2"]
             if code.startswith("O"):
                 heading["index"] = code + "."
+                heading["title"] = title.split(" ", 1)[1]
             section["blocks"].append(heading)
             minor_title = ""
             continue

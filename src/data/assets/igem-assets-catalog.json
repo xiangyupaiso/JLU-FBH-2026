@@ -5,12 +5,12 @@
     "year": 2026,
     "lastUpdated": "2026-10-18",
     "stats": {
-      "total": 2347,
-      "inUse": 1817,
+      "total": 2349,
+      "inUse": 1819,
       "standby": 459,
       "deprecated": 71,
       "byKind": {
-        "image": 2245,
+        "image": 2247,
         "font": 28,
         "structure": 3,
         "pdf": 65,
@@ -113599,6 +113599,54 @@
         }
       ],
       "notes": "Updated Measurement figure; official iGEM URL verified."
+    },
+    "experiments-6-3-workflow-webp": {
+      "id": "experiments-6-3-workflow-webp",
+      "kind": "image",
+      "fileName": "6-3-workflow.webp",
+      "category": "wet-lab",
+      "localPath": "public/assets/experiments/protocol/6-3-workflow.webp",
+      "md5": "396e19f50e560539be464ab7abe635c1",
+      "fileSize": 427614,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "Source archive: 6.3.zip",
+      "keywords": [
+        "experiments",
+        "protocol"
+      ],
+      "references": [
+        {
+          "file": "src/data/wet-lab/experimentProtocolAssets.ts",
+          "type": "asset-registry",
+          "text": "6-3-workflow.webp"
+        }
+      ],
+      "notes": "October Experiments illustration from 6.3.zip; bundled locally."
+    },
+    "experiments-6-3-materials-webp": {
+      "id": "experiments-6-3-materials-webp",
+      "kind": "image",
+      "fileName": "6-3-materials.webp",
+      "category": "wet-lab",
+      "localPath": "public/assets/experiments/protocol/6-3-materials.webp",
+      "md5": "0f258263cda14228c70dbffab034c71e",
+      "fileSize": 220056,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "Source archive: 6.3.zip",
+      "keywords": [
+        "experiments",
+        "protocol"
+      ],
+      "references": [
+        {
+          "file": "src/data/wet-lab/experimentProtocolAssets.ts",
+          "type": "asset-registry",
+          "text": "6-3-materials.webp"
+        }
+      ],
+      "notes": "October Experiments illustration from 6.3.zip; bundled locally."
     }
   }
 }

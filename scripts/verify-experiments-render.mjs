@@ -150,12 +150,6 @@ try {
   );
   for (const pair of experimentProtocolPairs) {
     assert(headings.some(heading => heading.id === pair.targetId), `Missing protocol target: ${pair.key}`);
-    if (pair.key === "6-3") {
-      assert.equal(pair.hasFigure, false);
-      assert.equal(pair.flowPage, undefined);
-      assert.equal(pair.inventoryPage, undefined);
-      continue;
-    }
     assert(pair.hasFigure, `Missing illustration: ${pair.key}`);
     for (const [page, size] of [[pair.flowPage, pair.flowSize], [pair.inventoryPage, pair.inventorySize]]) {
       const asset = experimentProtocolAssets[page];
@@ -167,7 +161,7 @@ try {
     assert(headings.find(h => h.id === `exp-${code}-1`).anchorIds.includes(`exp-${code}-2`));
   }
   console.log(
-    `Experiments render verified: 1 equation, 43 references, ${ids.size} linked citations; 24 atlas targets, illustrations pending only for 6.3.`,
+    `Experiments render verified: 1 equation, 43 references, ${ids.size} linked citations; all 24 atlas targets have illustrations.`,
   );
 } finally {
   await unlink(temporary).catch(() => {});

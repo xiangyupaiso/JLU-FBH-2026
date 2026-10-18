@@ -345,8 +345,11 @@ export const experimentProtocolPairs: ExperimentProtocolPair[] = [
     title: "RNA preparation and RT-PCR for TROP2",
     shortTitle: "6.3",
     targetId: "exp-6-3",
-    boundary: "Illustrations for this protocol are pending.",
-    hasFigure: false,
+    flowPage: 33,
+    inventoryPage: 34,
+    flowSize: experimentProtocolSize(33),
+    inventorySize: experimentProtocolSize(34),
+    hasFigure: true,
   },
   {
     key: "6-4",

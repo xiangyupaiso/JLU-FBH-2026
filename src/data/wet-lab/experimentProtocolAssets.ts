@@ -195,6 +195,18 @@ export const experimentProtocolAssets: Record<
     height: 2009,
     sourceArchive: "6.2.zip",
   },
+  "33": {
+    fileName: "6-3-workflow.webp",
+    width: 3200,
+    height: 2597,
+    sourceArchive: "6.3.zip",
+  },
+  "34": {
+    fileName: "6-3-materials.webp",
+    width: 3200,
+    height: 2486,
+    sourceArchive: "6.3.zip",
+  },
   "37": {
     fileName: "7-1-workflow.webp",
     width: 3200,
@@ -265,6 +277,8 @@ export const experimentProtocolAssets: Record<
   },
 };
 
+const CDN_BASE =
+  "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/protocol";
 const BASE_PATH = import.meta.env.BASE_URL || "/";
 
 export function experimentProtocolSize(page: number): [number, number] {
@@ -277,5 +291,8 @@ export function experimentProtocolLocalImage(page: number): string {
   return `${normalizedBase}assets/experiments/protocol/${experimentProtocolAssets[page].fileName}`;
 }
 
-// Updated illustrations use their bundled files; the old CDN names contain superseded workflows.
-export const experimentProtocolImage = experimentProtocolLocalImage;
+/** Official verified CDN URL for protocol illustrations (all 46 probed 200 OK) */
+export function experimentProtocolImage(page: number): string {
+  const asset = experimentProtocolAssets[page];
+  return asset ? `${CDN_BASE}/${asset.fileName}` : "";
+}
