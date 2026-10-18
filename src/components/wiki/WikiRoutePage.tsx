@@ -28,8 +28,6 @@ import { WikiProtocolModal } from "./WikiProtocolViewer";
 import { PageImagePreloads } from "../common/PageImagePreloads";
 import { experimentProtocolImage } from "../../data/wet-lab/experimentProtocolPages";
 import type { ExperimentProtocolPair } from "../../data/wet-lab/experimentProtocolPages";
-import "../../styles/wiki-rebuild.css";
-import "../../styles/wetlab-editorial.css";
 import "../../styles/wiki-route-skin.css";
 import "../../styles/features/experiments-panels.css";
 

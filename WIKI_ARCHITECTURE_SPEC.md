@@ -462,7 +462,7 @@ export function pageFeatures(): Record<string, ReactNode> {
 **七条铁律**
 
 1. **默认收起，点击才展开。** 收起态不加载 PDF.js 文档；首次展开后保持挂载，避免每次开合重新请求文档、丢失阅读页位。展开后由 `PdfDocumentSurface` 在页面内绘制 PDF，保留原生文本选择和页面滚动，并提供页码跳转与缩放。PDF 页面的鼠标事件留在主页面，因此全站虚拟光标可连续跟随，无需访问者安装浏览器插件。
-2. **绝不加 `.wiki-figure` 类。** 蓝色 `FIG. nn` 徽标挂在 `.wiki-figure figcaption::before`（`wiki-rebuild.css` 的 CSS 计数器）上；**文档不是插图**，套上就会出现「FIG. 10」与正文引用的「Figure 9」互相打架——Design 页踩过这个坑。稿件那句话由 `.wiki-document__caption` 承载（15px、卡片内左对齐、白色），它是卡片的一部分，不再单独漂在正文里。
+2. **绝不加 `.wiki-figure` 类。** 蓝色 `FIG. nn` 徽标挂在 `.wiki-figure figcaption::before`（`wiki-route-skin.css` 的 CSS 计数器）上；**文档不是插图**，套上就会出现「FIG. 10」与正文引用的「Figure 9」互相打架——Design 页踩过这个坑。稿件那句话由 `.wiki-document__caption` 承载（15px、卡片内左对齐、白色），它是卡片的一部分，不再单独漂在正文里。
 3. **文档放 `public/assets/docs/`，URL 必须走解析函数**：`get[Page]Document(key) => uploadUrl || ${import.meta.env.BASE_URL}assets/docs/<fileName>`。这样 dev 与生产同源可用；资产字典里 `uploadUrl` 在官方上传前**严格留空**（与 4.2 图片双轨规范一致）。
 4. **不写行内尺寸**：卡片宽度与阅读面高度收敛在共享皮肤里（铁律 2）。
 5. **卡片上的文字只能来自稿件，一个字都不许自己加。** 卡片只显示资产字典里的 `caption`——稿件为这个内嵌物写的那句话（Design 是 `Figure 9. Experimental Design Report, NC3Rs EDA.`，去掉 `Figure N` 前缀），**不带手写编号**。**禁止**在卡片上补 `title` / `meta` / 文件名 / `PDF` 徽标 / 图标：这些字都是团队没写过的话，会让同一个东西在正文里被说三遍（正文一句 + 卡片标题 + 卡片副标题），一眼就是「生成味」。正文的引入句由 `designPage.ts` 的段落承担，那是数据层的事，不要搬到卡片上。
@@ -623,7 +623,7 @@ $$
 - `--wiki-page-progress` 的动态值只写在 `.wiki-page-progress` 元素上；侧栏进度由侧栏维护，只写在 `.wiki-outline__ribbon` 上。禁止把连续变化的进度变量写到整页或整个侧栏的根节点，让正文和导航文字继承并重新计算样式。
 - 滚动监听使用 passive listener，并通过单个 `requestAnimationFrame` 合并同一帧的更新。先完成几何读取，再写进度和发生变化的当前章节属性；小节测量只覆盖当前章节。
 - 图片尺寸预留、目录跟随、阅读进度和锚点跳转继续保留。桌面阅读器仍由 `useWetLabScrollRoute` 将文档位置投影到固定阅读框；这是正文可达性所需的滚动机制，不能作为多余动画删除。
-- `wiki-rebuild.css` 与 `wetlab-editorial.css` 提供静态正文基准。已有页面的局部退出样式可继续兼容，后续页面无需逐页添加退出规则，也不要恢复通用正文上浮效果。
+- `wiki-route-skin.css` 是阅读器结构、正文、图注与折叠条目的唯一共享样式入口。旧的两套全局阅读样式已删除，不得重新引入或复制旧的版式覆盖规则；页面专属样式只管理该页的组件。
 - 页面专属的其它性能手段仍就近收口在该页 `[page]-panels.css`；不得为了性能改动擅自删减正文或组件交互。
 
 **自查工具**：`node scripts/measure-page-weight.mjs` 可检查 feature 子树节点数和最重元素。复杂页面应在生产构建中验证滚动帧率及样式计算开销。
