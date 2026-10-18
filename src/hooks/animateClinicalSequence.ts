@@ -4,6 +4,15 @@ import { HOME_EASE, HOME_SCRUB, stillHold, settleHomeScrubEndpoint } from "./hom
 import { createClinicalParticleMorph } from "./createClinicalParticleMorph";
 import { resetTnbcCopyOpacity, setTnbcCopyOpacity } from "./tnbcCopyOpacity";
 
+// Reserve scroll distance for reading the original nurse illustration.
+export const CLINICAL_ILLUSTRATION_HOLD = 0.8;
+export const CLINICAL_QUESTION_HOLD = 0.35;
+const SUMMARY_HOLD = 0.55;
+
+// The completed doctor's reading span must precede this incoming overlap.
+export const clinicalGalleryLead = (compact: boolean) =>
+  window.innerHeight * (compact ? 0.32 : 0.48);
+
 /** Keep both clinical scenes in one viewport while the nurse hands the
  * narrative to the doctor. The parent GSAP context owns every tween. */
 export function animateClinicalSequence(
@@ -57,14 +66,19 @@ export function animateClinicalSequence(
   const beforeBackdrop = copyBackdrop(sourceBackdrop);
   const afterBackdrop = copyBackdrop(targetBackdrop);
   stage.prepend(beforeBackdrop, afterBackdrop);
+  const entryWash = document.createElement("div");
+  entryWash.className = "story-clinical-entry-wash";
+  entryWash.setAttribute("aria-hidden", "true");
+  sequence.prepend(entryWash);
   const boards = [
     board,
     ...vaccine.querySelectorAll(".story-vaccine-mobile-frame"),
   ];
 
   const challengeAt = 0.8;
+  const nurseVisibleAt = challengeAt + challengeArt.labels["nurse-visible"];
   const challengeEnd = challengeAt + challengeArt.duration();
-  const transitionAt = challengeEnd + 0.12;
+  const transitionAt = challengeEnd + SUMMARY_HOLD;
   const transitionDuration = 1.15;
   const vaccineAt = transitionAt + transitionDuration;
   const vaccineEnd = vaccineAt + vaccineArt.duration();
@@ -95,26 +109,45 @@ export function animateClinicalSequence(
     return trigger.start + (trigger.end - trigger.start) * complete;
   };
 
-  // The reading and the next scene crossfade over the same entry span.
+  // Cover the section boundary before revealing artwork, so upstream copy
+  // never competes with a partly visible clinic across two backgrounds.
+  const syncEntry = (trigger: ScrollTrigger) => {
+    sequence.classList.toggle(
+      "is-clinical-entry",
+      trigger.progress > 0 && trigger.progress < 1,
+    );
+    settleHomeScrubEndpoint(trigger);
+  };
+  const entry = gsap.timeline({
+    scrollTrigger: {
+      id: "home-tnbc-clinical-exit",
+      trigger: sequence,
+      start: entryStart,
+      end: "top top",
+      scrub: HOME_SCRUB,
+      invalidateOnRefresh: true,
+      onUpdate: syncEntry,
+      onRefresh: syncEntry,
+    },
+  });
+  entry.fromTo(entryWash, { opacity: 0 }, {
+    opacity: 1, duration: 0.38, ease: "sine.inOut",
+  }, 0);
+  entry.fromTo(stage, { opacity: 0 }, {
+    opacity: 1, duration: 0.62, ease: HOME_EASE,
+  }, 0.38);
   if (reading) {
     const exit = { opacity: 1 };
-    gsap.fromTo(
+    entry.fromTo(
       exit,
       { opacity: 1 },
       {
         opacity: 0,
+        duration: 0.65,
         ease: "sine.inOut",
         onUpdate: () => setTnbcCopyOpacity(reading, "clinical", exit.opacity),
-        scrollTrigger: {
-          id: "home-tnbc-clinical-exit",
-          trigger: sequence,
-          start: entryStart,
-          end: "top top",
-          scrub: HOME_SCRUB,
-          invalidateOnRefresh: true,
-          onUpdate: settleHomeScrubEndpoint,
-        },
       },
+      0,
     );
   }
   timeline.fromTo(
@@ -134,6 +167,16 @@ export function animateClinicalSequence(
     0.12,
   );
   timeline.add(challengeArt, challengeAt);
+  timeline.addLabel(
+    "treatment-illustration-readable",
+    challengeAt + CLINICAL_ILLUSTRATION_HOLD * 0.75,
+  );
+  timeline.addLabel("treatment-summary-readable", challengeEnd + SUMMARY_HOLD * 0.25);
+  timeline.addLabel(
+    "vaccine-question-readable",
+    vaccineAt + vaccineArt.labels["vaccine-question-readable"],
+  );
+  timeline.addLabel("vaccine-answer-readable", vaccineEnd + 0.1);
   timeline.to(
     challenge.querySelectorAll(".story-challenge-heading, .story-morph"),
     { opacity: 0, duration: 0.24, stagger: 0.014, ease: HOME_EASE },
@@ -179,11 +222,25 @@ export function animateClinicalSequence(
   timeline.to(challenge, { autoAlpha: 0, duration: 0.1 }, transitionAt + 1.02);
   timeline.add(vaccineArt, vaccineAt);
   let rest = 0.65;
-  if (!compact) {
-    // Keep the completed clinical illustration in view before the next chapter.
+  const addedReading = CLINICAL_ILLUSTRATION_HOLD +
+    (SUMMARY_HOLD - 0.12) + Math.max(0, vaccineArt.duration() - 1);
+  const originalScale =
+    Number.parseFloat(
+      getComputedStyle(sequence).getPropertyValue("--home-scroll-scale"),
+    ) || 1;
+  // Give the new hold its own track so the remaining animation keeps its pace.
+  gsap.set(sequence, {
+    "--home-scroll-scale": originalScale *
+      (vaccineEnd + rest) / (vaccineEnd + rest - addedReading),
+  });
+  {
+    // Reserve the actual gallery overlap plus a readable completed frame on
+    // both layouts. An end-only hold otherwise gets consumed by that overlap.
     const hold = stillHold(
       sequence.offsetHeight - stage.offsetHeight,
       rest / vaccineEnd,
+      clinicalGalleryLead(compact) + window.innerHeight * 0.45,
+      0,
     );
     rest = vaccineEnd * hold.rest;
     const scale =
@@ -196,7 +253,9 @@ export function animateClinicalSequence(
 
   const update = () => {
     const time = timeline.time();
-    particles.draw(pigment.progress, time >= challengeEnd);
+    // Restore the nurse when returning from the doctor, including the new
+    // illustration hold after her entrance tween has stopped writing opacity.
+    particles.draw(pigment.progress, time >= nurseVisibleAt);
     sequence.dataset.progress = timeline.progress().toFixed(3);
     sequence.dataset.phase =
       time < challengeEnd
@@ -236,12 +295,14 @@ export function animateClinicalSequence(
       timeline.eventCallback("onUpdate", null);
       particles.cleanup();
       sequence.classList.remove("is-current");
+      sequence.classList.remove("is-clinical-entry");
       delete sequence.dataset.progress;
       delete sequence.dataset.phase;
       delete sequence.dataset.scrollStart;
       delete sequence.dataset.scrollEnd;
       beforeBackdrop.remove();
       afterBackdrop.remove();
+      entryWash.remove();
       if (reading) resetTnbcCopyOpacity(reading, "clinical");
     },
   };

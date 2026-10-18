@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 const restingSheep = "https://static.igem.wiki/teams/6056/wiki/files/pages/shared/cursor-default.avif";
 const happySheep = "https://static.igem.wiki/teams/6056/wiki/files/pages/shared/cursor-active.avif";
@@ -96,8 +96,15 @@ function resolveSparkPalette(target: Element | null): SparkPalette {
 /** Keep the hotspot exact; only the illustration's attitude has inertia. */
 export function SheepCursor() {
   const layerRef = useRef<HTMLDivElement>(null);
+  // Keep one portal tree while its host moves into an opted-in top-layer dialog.
+  const [portalHost] = useState(() => {
+    const host = document.createElement("div");
+    host.style.display = "contents";
+    return host;
+  });
 
   useEffect(() => {
+    document.body.append(portalHost);
     const layer = layerRef.current!;
     const follower = layer.querySelector<HTMLElement>(
       ".sheep-cursor__follower",
@@ -251,17 +258,21 @@ export function SheepCursor() {
 
     function updateTarget(target: EventTarget | null) {
       const element = target instanceof Element ? target : null;
-      // Native controls, selection and top-layer dialogs retain their own cursor.
+      const modal = element?.closest(":modal");
+      // Native controls and dialogs without explicit opt-in retain their cursor.
       if (
         !element ||
         element.closest(NATIVE) ||
         element.closest('.games-experience') ||
-        element.closest(":modal") ||
+        (modal && !modal.hasAttribute("data-sheep-cursor")) ||
         document.body.classList.contains("is-thread-dragging")
       ) {
         hide();
         return false;
       }
+      // A body-level z-index cannot paint above the browser's modal top layer.
+      const surface = modal ?? document.body;
+      if (portalHost.parentElement !== surface) surface.append(portalHost);
       const next = element.closest(INTERACTIVE);
       const enabled =
         next && !next.matches('[disabled], [aria-disabled="true"]')
@@ -366,6 +377,16 @@ export function SheepCursor() {
       if (visible) updateTarget(document.elementFromPoint(x, y));
     }
 
+    function syncDialog(event: Event) {
+      const dialog = event.target;
+      if (!(dialog instanceof HTMLDialogElement)) return;
+      if (!dialog.open && dialog.contains(portalHost)) {
+        document.body.append(portalHost);
+      }
+      // Opening or closing a dialog can change the target under a still mouse.
+      if (visible) updateTarget(document.elementFromPoint(x, y));
+    }
+
     function key(event: KeyboardEvent) {
       if (event.key === "Tab" || event.key === "Escape") hide();
     }
@@ -398,6 +419,8 @@ export function SheepCursor() {
     window.addEventListener("keydown", key);
     window.addEventListener("scroll", scroll, { passive: true, capture: true });
     document.addEventListener("visibilitychange", hide);
+    document.addEventListener("toggle", syncDialog, true);
+    document.addEventListener("close", syncDialog, true);
     media.addEventListener("change", hide);
     return () => {
       disposed = true;
@@ -414,9 +437,12 @@ export function SheepCursor() {
       window.removeEventListener("keydown", key);
       window.removeEventListener("scroll", scroll, true);
       document.removeEventListener("visibilitychange", hide);
+      document.removeEventListener("toggle", syncDialog, true);
+      document.removeEventListener("close", syncDialog, true);
       media.removeEventListener("change", hide);
+      portalHost.remove();
     };
-  }, []);
+  }, [portalHost]);
 
   return createPortal(
     <div
@@ -458,6 +484,6 @@ export function SheepCursor() {
         <i key={index} className="sheep-cursor__spark" />
       ))}
     </div>,
-    document.body,
+    portalHost,
   );
 }

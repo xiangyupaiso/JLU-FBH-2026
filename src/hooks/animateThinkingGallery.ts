@@ -1,20 +1,24 @@
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { isHomeMotionRefreshing, settleHomeScrubEndpoint } from "./homeMotion";
 import {
-  createThinkingGalleryInk,
+  HOME_EASE,
+  createHomeScrubBoundaryGuard,
+  isHomeMotionRefreshing,
+  settleHomeScrubEndpoint,
+} from "./homeMotion";
+import {
+  createThinkingGalleryMagnifier,
   THINKING_MAGNIFIER_CROP,
-  type InkBounds,
 } from "./createThinkingGalleryInk";
 import "../styles/home-thinking-gallery.css";
+import { clinicalGalleryLead } from "./animateClinicalSequence";
 
 const smooth = (start: number, end: number, value: number) => {
   const t = gsap.utils.clamp(0, 1, (value - start) / (end - start));
   return t * t * (3 - 2 * t);
 };
 
-/** Carry the painted magnifier into the next chapter's choices.
- * Local opacity overrides leave the chapter timelines intact for reverse scrolling. */
+/** Carry the intact magnifier to the choices title, in either scroll direction. */
 export function animateThinkingGallery(
   root: HTMLElement,
   intro: gsap.core.Timeline,
@@ -24,27 +28,39 @@ export function animateThinkingGallery(
   const destination = root.querySelector<HTMLElement>(
     ".home-molecule-gallery__stage",
   );
-  const thinking = root.querySelector<HTMLElement>("#a-new-direction");
-  const magnifier =
-    thinking?.querySelector<HTMLImageElement>('[data-layer="4"]');
-  const cards = Array.from(
-    root.querySelectorAll<HTMLElement>("[data-gallery-card]"),
+  const artwork = destination?.querySelector<HTMLElement>(
+    ".home-molecule-gallery__artwork",
+  );
+  const magnifier = root.querySelector<HTMLImageElement>(
+    '#a-new-direction [data-layer="4"]',
   );
   const clinical = ScrollTrigger.getById("home-clinical-sequence");
   if (
     !source ||
     !destination ||
+    !artwork ||
     !magnifier ||
     !clinical ||
     !intro.scrollTrigger
-  ) {
+  )
     return () => {};
-  }
+
   const wash = document.createElement("div");
   wash.className = "home-thinking-gallery-wash";
   wash.setAttribute("aria-hidden", "true");
   document.body.append(wash);
-  // The canvas carries the magnifier; only the medical tools remain in this sheet.
+  const landed = createThinkingGalleryMagnifier(magnifier);
+  artwork.prepend(landed);
+  const travelling = landed.cloneNode(true) as SVGSVGElement;
+  travelling.classList.add("home-thinking-gallery-mark--travelling");
+  document.body.append(travelling);
+  // This native copy scrolls with the gallery and fades with its title.
+  intro.fromTo(
+    landed,
+    { opacity: 1 },
+    { opacity: 0, duration: 0.36, ease: HOME_EASE },
+    0.96,
+  );
   magnifier.style.setProperty(
     "--thinking-magnifier-cutoff",
     `${(THINKING_MAGNIFIER_CROP.top + THINKING_MAGNIFIER_CROP.height) * 100}%`,
@@ -52,90 +68,21 @@ export function animateThinkingGallery(
   const state = { progress: 0 };
   let disposed = false;
   let carried = false;
-  let passActive = false;
-  let useParticles = false;
-  let sourceBounds: InkBounds[] = [];
-  let targetBounds: InkBounds[] = [];
-  const bounds = (element: Element): InkBounds => {
-    const { left, top, width, height } = element.getBoundingClientRect();
-    return { left, top, width, height };
-  };
-  const measure = (progress: number) => {
-    const stageBounds = bounds(source);
-    // Keep the magnifier in its settled viewport position while the source
-    // chapter scrolls away. The same coordinates apply when returning to it.
-    const nextSources = [magnifier].map((image) => {
-      const box = bounds(image);
-      // Isolate the existing painted magnifier from the medical-tools sheet.
-      // Preserve its aspect ratio as it moves into the centre of the viewport.
-      const crop = THINKING_MAGNIFIER_CROP;
-      let settled = { ...box, top: box.top - stageBounds.top };
-      if (box.width === 0 || box.height === 0) {
-        // Phone layouts hide the medical-tools sheet. Introduce its magnifier
-        // directly at the centre instead of measuring that hidden image.
-        const width = 88 / crop.width;
-        const height = width * (image.naturalHeight / image.naturalWidth);
-        settled = {
-          left: window.innerWidth / 2 - (crop.left + crop.width / 2) * width,
-          top: window.innerHeight / 2 - (crop.top + crop.height / 2) * height,
-          width,
-          height,
-        };
-      }
-      const amount = smooth(0.015, 0.24, progress);
-      const scale = (compact ? 112 : 156) / (settled.width * crop.width);
-      const width = gsap.utils.interpolate(
-        settled.width,
-        settled.width * scale,
-        amount,
-      );
-      const height = gsap.utils.interpolate(
-        settled.height,
-        settled.height * scale,
-        amount,
-      );
-      const left = window.innerWidth / 2 - (crop.left + crop.width / 2) * width;
-      const top =
-        window.innerHeight / 2 - (crop.top + crop.height / 2) * height;
-      return {
-        left: gsap.utils.interpolate(settled.left, left, amount),
-        top: gsap.utils.interpolate(settled.top, top, amount),
-        width,
-        height,
-      };
-    });
-    // Read the SVG viewport; an image's bounding box includes the whole sheet.
-    const nextTargets = cards.map((card) => bounds(card.querySelector("svg")!));
-    if (
-      ![...nextSources, ...nextTargets].every(
-        ({ width, height }) =>
-          Number.isFinite(width) &&
-          Number.isFinite(height) &&
-          width > 0 &&
-          height > 0,
-      )
-    )
-      return false;
-    sourceBounds = nextSources;
-    targetBounds = nextTargets;
-    return true;
-  };
+  const boundary = createHomeScrubBoundaryGuard(
+    () => ScrollTrigger.getById("home-thinking-gallery-carry"),
+    () => draw(),
+  );
   const carry = (active: boolean) => {
     if (carried === active) return;
     carried = active;
     source.classList.toggle("is-thinking-gallery-source", active);
     destination.classList.toggle("is-thinking-gallery-target", active);
-    if (active) {
-      clinical.getTween()?.progress(1);
-    }
+    if (active) clinical.getTween()?.progress(1);
   };
-  const ink = createThinkingGalleryInk(magnifier, cards, compact, () => {
-    if (!disposed && !carried) draw();
-  });
   const draw = () => {
     if (disposed || isHomeMotionRefreshing()) return;
     const trigger = ScrollTrigger.getById("home-thinking-gallery-carry");
-    // A chapter jump must release the ink even during the trailing scrub.
+    // Release the overlay immediately when the chapter picker skips this pass.
     if (
       trigger &&
       state.progress > 0 &&
@@ -148,101 +95,60 @@ export function animateThinkingGallery(
       return;
     }
     const p = state.progress;
-    // Give the centred magnifier a still hold. One shared progress
-    // keeps the background, ink and destination reveal in the same rhythm.
-    const phaseProgress =
-      p <= 0.18
-        ? p
-        : p <= 0.44
-          ? gsap.utils.mapRange(0.18, 0.44, 0.18, 0.34, p)
-          : gsap.utils.mapRange(0.44, 1, 0.34, 1, p);
     const active = p > 0 && p < 1;
-    const entering = active && !passActive;
-    passActive = active;
-    carry(active && (entering || useParticles));
+    boundary.setActive(active);
+    carry(active);
+    landed.style.visibility = p >= 1 ? "visible" : "hidden";
+    travelling.style.visibility = active ? "visible" : "hidden";
     wash.style.visibility = active ? "visible" : "hidden";
     wash.dataset.progress = p.toFixed(4);
-    wash.dataset.phase =
-      phaseProgress < 0.18
-        ? "scene-exit"
-        : phaseProgress < 0.34
-          ? "magnifier"
-          : phaseProgress < 0.62
-            ? "disperse"
-            : phaseProgress < 0.9
-              ? "gather"
-              : "choices";
-    if (!active) {
-      ink.render(phaseProgress, sourceBounds, targetBounds, false);
-      return;
-    }
-    // The target stage covers the viewport during the carry, then rejoins its
-    // sticky layout at the same position. Measure again after every resize.
-    if (!measure(p)) {
-      carry(false);
-      wash.style.visibility = "hidden";
-      ink.render(phaseProgress, sourceBounds, targetBounds, false);
-      return;
-    }
-    const ready = ink.render(
-      phaseProgress,
-      sourceBounds,
-      targetBounds,
-      entering || useParticles,
-    );
-    // Decode arriving halfway through a pass keeps the image dissolve intact.
-    if (entering) useParticles = ready;
-    if (!useParticles) {
-      // Keep the native chapter reveal when image sampling is unavailable;
-      // an opaque wash would otherwise cover the original magnifier.
-      carry(false);
-      wash.style.visibility = "hidden";
-      ink.render(phaseProgress, sourceBounds, targetBounds, false);
-      return;
-    }
-    const sceneExit = smooth(0, 0.18, p);
-    const color = smooth(0.34, 0.78, phaseProgress);
+    wash.dataset.phase = p < 0.75 ? "carry" : "choices";
+    if (!active) return;
+
+    const box = magnifier.getBoundingClientRect();
+    const stage = source.getBoundingClientRect();
+    const crop = THINKING_MAGNIFIER_CROP;
+    const width = box.width * crop.width || 88;
+    const height = (width * 216) / 207;
+    const fromLeft = box.width
+      ? box.left + crop.left * box.width
+      : (window.innerWidth - width) / 2;
+    const fromTop = box.height
+      ? box.top - stage.top + crop.top * box.height
+      : (window.innerHeight - height) / 2;
+    const target = landed.getBoundingClientRect();
+    const travel = smooth(0.02, 0.75, p);
+    gsap.set(travelling, {
+      // Resize the SVG viewport so small paintings retain their soft edges.
+      autoRound: false,
+      x: gsap.utils.interpolate(fromLeft, target.left, travel),
+      y: gsap.utils.interpolate(fromTop, target.top, travel),
+      width: gsap.utils.interpolate(width, target.width, travel),
+      height: gsap.utils.interpolate(height, target.height, travel),
+      opacity: box.width ? 1 : smooth(0, 0.16, p),
+    });
+    const sceneExit = smooth(0, 0.34, p);
     wash.style.opacity = String(sceneExit);
     wash.style.backgroundColor = gsap.utils.interpolate(
       "#f0f3fd",
       "#fff4e2",
-      color,
+      smooth(0.18, 0.72, p),
     );
     source.style.setProperty("--thinking-scene-opacity", String(1 - sceneExit));
     source.style.setProperty(
       "--thinking-cloud-opacity",
-      String(1 - smooth(0, 0.08, p)),
+      String(1 - smooth(0, 0.12, p)),
     );
     destination.style.setProperty(
       "--thinking-title-opacity",
-      String(smooth(0.86, 0.98, phaseProgress)),
+      String(smooth(0.18, 0.36, p)),
     );
-    cards.forEach((card, index) => {
-      card.style.setProperty(
-        "--thinking-card-opacity",
-        String(
-          smooth(0.62 + index * 0.025, 0.84 + index * 0.025, phaseProgress),
-        ),
-      );
-      card.style.setProperty(
-        "--thinking-symbol-opacity",
-        String(
-          smooth(0.84 + index * 0.018, 0.95 + index * 0.012, phaseProgress),
-        ),
-      );
-      card.style.setProperty(
-        "--thinking-label-opacity",
-        String(
-          smooth(0.89 + index * 0.015, 0.97 + index * 0.01, phaseProgress),
-        ),
-      );
-    });
   };
   const bridge = gsap.timeline({
     scrollTrigger: {
       id: "home-thinking-gallery-carry",
       trigger: destination.parentElement!,
-      start: () => clinical.end - window.innerHeight * (compact ? 0.32 : 0.48),
+      start: () => clinical.end - clinicalGalleryLead(compact),
       end: () => {
         const trigger = intro.scrollTrigger!;
         return (
@@ -255,9 +161,10 @@ export function animateThinkingGallery(
       invalidateOnRefresh: true,
       onUpdate: settleHomeScrubEndpoint,
       onRefreshInit: () => {
+        boundary.setActive(false);
         carry(false);
         wash.style.visibility = "hidden";
-        ink.render(state.progress, sourceBounds, targetBounds, false);
+        travelling.style.visibility = "hidden";
       },
     },
   });
@@ -271,12 +178,11 @@ export function animateThinkingGallery(
       onUpdate: draw,
     },
   );
-  // Per-trigger refresh callbacks run while all pins are temporarily reverted.
-  // Read geometry after the global refresh has restored the normal layout.
   ScrollTrigger.addEventListener("refresh", draw);
   draw();
   return () => {
     disposed = true;
+    boundary.dispose();
     ScrollTrigger.removeEventListener("refresh", draw);
     bridge.scrollTrigger?.kill();
     bridge.kill();
@@ -285,14 +191,8 @@ export function animateThinkingGallery(
     source.style.removeProperty("--thinking-cloud-opacity");
     destination.style.removeProperty("--thinking-title-opacity");
     magnifier.style.removeProperty("--thinking-magnifier-cutoff");
-    cards.forEach((card) => {
-      [
-        "--thinking-card-opacity",
-        "--thinking-symbol-opacity",
-        "--thinking-label-opacity",
-      ].forEach((property) => card.style.removeProperty(property));
-    });
-    ink.dispose();
+    landed.remove();
+    travelling.remove();
     wash.remove();
   };
 }

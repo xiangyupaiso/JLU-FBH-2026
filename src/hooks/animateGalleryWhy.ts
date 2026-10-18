@@ -73,7 +73,9 @@ export function animateGalleryWhy(root: HTMLElement, compact: boolean) {
   gsap.set(detailLayers, { opacity: 0 });
   gsap.set(source, { opacity: 0, filter: GALLERY_RING_TONE });
   gsap.set(decision, { opacity: 0 });
-  const title = gallery.querySelector<HTMLElement>(".home-molecule-gallery__title")!;
+  const title = gallery.querySelector<HTMLElement>(
+    ".home-molecule-gallery__title",
+  )!;
   gsap.set(title, { autoAlpha: 0 });
 
   const intro = gsap.timeline({
@@ -93,33 +95,33 @@ export function animateGalleryWhy(root: HTMLElement, compact: boolean) {
     { backgroundColor: "#fff4e2", duration: 0.48, ease: HOME_EASE },
     0,
   );
-  intro.to(
-    cards,
-    { autoAlpha: 1, y: 0, stagger: 0.09, duration: 0.26, ease: HOME_EASE },
-    0.08,
-  );
+  intro.addLabel("choices-enter", 0.14);
   cards.forEach((card, index) => {
-    // circRNA uses its own carried ring, so it has no separate symbol layer.
-    const symbols = card.querySelector('[data-gallery-layer="symbols"]');
+    // Finish each complete card before the next starts, including during the
+    // incoming fixed-stage carry. Keep all four ready at choices-visible.
+    const at = intro.labels["choices-enter"] + index * 0.16;
+    intro.to(card, { autoAlpha: 1, y: 0, duration: 0.14, ease: HOME_EASE }, at);
+    const symbols = card.querySelector(
+      '[data-gallery-layer="symbols"], [data-gallery-ring]',
+    );
     if (symbols) {
       intro.to(
         symbols,
-        { opacity: 1, duration: 0.2, ease: HOME_EASE },
-        0.18 + index * 0.09,
+        {
+          opacity: card === chosen ? GALLERY_RING_OPACITY : 1,
+          duration: 0.12,
+          ease: HOME_EASE,
+        },
+        at + 0.02,
       );
     }
     intro.to(
       card.querySelectorAll('[data-gallery-layer="labels"]'),
-      { opacity: 1, duration: 0.2, ease: HOME_EASE },
-      0.24 + index * 0.09,
+      { opacity: 1, duration: 0.12, ease: HOME_EASE },
+      at + 0.02,
     );
   });
-  intro.to(title, { autoAlpha: 1, duration: 0.26, ease: HOME_EASE }, 0.08);
-  intro.to(
-    source,
-    { opacity: GALLERY_RING_OPACITY, duration: 0.24, ease: HOME_EASE },
-    0.38,
-  );
+  intro.to(title, { autoAlpha: 1, duration: 0.12, ease: HOME_EASE }, 0.02);
   intro.addLabel("choices-visible", 0.76);
   intro.to(
     alternatives,
@@ -226,12 +228,14 @@ export function animateGalleryWhy(root: HTMLElement, compact: boolean) {
       toHeight: to.height,
     };
     gsap.set(cardCopy, {
+      autoRound: false,
       x: card.left,
       y: card.top + sourceShift,
       width: card.width,
       height: card.height,
     });
     gsap.set(ghost, {
+      autoRound: false,
       width: from.width,
       height: from.height,
     });
@@ -265,7 +269,10 @@ export function animateGalleryWhy(root: HTMLElement, compact: boolean) {
     // Removing the override gives each chapter's timeline its background back.
     root.classList.toggle("is-gallery-why-carry", travelling);
     if (travelling) {
-      root.style.setProperty("--gallery-why-surface", bridgeSurface(smooth(0, 1, p)));
+      root.style.setProperty(
+        "--gallery-why-surface",
+        bridgeSurface(smooth(0, 1, p)),
+      );
     } else {
       root.style.removeProperty("--gallery-why-surface");
     }
@@ -294,8 +301,12 @@ export function animateGalleryWhy(root: HTMLElement, compact: boolean) {
       gsap.set(cardCopy, { opacity: 1 - smooth(0.08, 0.5, p) });
       // The Why timeline takes ownership when its ring morph starts.
       // Before then, a direct chapter jump must show the finished native ring.
-      const whyTimeline = whyTrigger?.animation as gsap.core.Timeline | undefined;
-      if ((whyTimeline?.time() ?? 0) < (whyTimeline?.labels["ring-to-platform"] ?? 1.25)) {
+      const whyTimeline = whyTrigger?.animation as
+        gsap.core.Timeline | undefined;
+      if (
+        (whyTimeline?.time() ?? 0) <
+        (whyTimeline?.labels["ring-to-platform"] ?? 1.25)
+      ) {
         gsap.set(target, { opacity: arrived ? 1 : 0 });
       }
     }
@@ -325,11 +336,12 @@ export function animateGalleryWhy(root: HTMLElement, compact: boolean) {
     gsap.set(incomingPaint, { opacity: texture });
     const { fromX, fromY, fromWidth, fromHeight, toX, toY, toWidth, toHeight } =
       geometry;
+    const travel = ease(p);
     gsap.set(ghost, {
-      x: gsap.utils.interpolate(fromX, toX, p),
-      y: gsap.utils.interpolate(fromY, toY, p),
-      scaleX: gsap.utils.interpolate(1, toWidth / fromWidth, p),
-      scaleY: gsap.utils.interpolate(1, toHeight / fromHeight, p),
+      x: gsap.utils.interpolate(fromX, toX, travel),
+      y: gsap.utils.interpolate(fromY, toY, travel),
+      scaleX: gsap.utils.interpolate(1, toWidth / fromWidth, travel),
+      scaleY: gsap.utils.interpolate(1, toHeight / fromHeight, travel),
       opacity: GALLERY_RING_OPACITY + (1 - GALLERY_RING_OPACITY) * pigment,
     });
   };

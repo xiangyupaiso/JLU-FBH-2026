@@ -13,7 +13,11 @@ const targetImage = "https://static.igem.wiki/teams/6056/wiki/files/pages/home/s
 const immuneImage = "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-2-layer-5.webp";
 import { useAntigenDrag } from "../../hooks/useAntigenDrag";
 import { useAntigenMechanism } from "../../hooks/useAntigenMechanism";
-import { HOME_EASE } from "../../hooks/homeMotion";
+import {
+  HOME_EASE,
+  HOME_SCRUB,
+  settleHomeScrubEndpoint,
+} from "../../hooks/homeMotion";
 import { HOME_PLAYBACK_ANTIGEN_EVENT } from "../../utils/homePlayback";
 import "../../styles/home-antigen-switch.css";
 
@@ -962,6 +966,7 @@ export function HomeAntigenSwitch() {
     );
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
     let triggers: ScrollTrigger[] = [];
+    let carryTween: gsap.core.Tween | null = null;
     let advanceTween: gsap.core.Tween | null = null;
     const cancelAdvance = () => {
       advanceTween?.kill();
@@ -1027,9 +1032,31 @@ export function HomeAntigenSwitch() {
       const p = Math.max(0, Math.min(1, value));
       return p * p * (3 - 2 * p);
     };
-    let carryGeometry = { dx: 0, dy: 0, sx: 1, sy: 1 };
+    const overviewName = overviewRing.querySelector<HTMLElement>(
+      ".home-antigen-switch__center",
+    );
+    const mechanismName = mechanismRing.querySelector<HTMLElement>(
+      ".home-antigen-switch__center",
+    );
+    const optionCarries = Array.from(overviewOptions.children, (element, index) => ({
+      element: element as HTMLElement,
+      target: mechanismOptions.children[index] as HTMLElement,
+      dx: 0,
+      dy: 0,
+      sx: 1,
+      sy: 1,
+    }));
+    const resetOptionCarry = () => {
+      optionCarries.forEach(({ element }) => {
+        element.style.removeProperty("transform");
+        element.style.removeProperty("transform-origin");
+      });
+    };
+    let carryGeometry = { dx: 0, dy: 0, sx: 1, sy: 1, fromFont: 46, toFont: 46 };
     const measureCarry = () => {
       overviewRing.style.removeProperty("transform");
+      overviewName?.style.removeProperty("font-size");
+      resetOptionCarry();
       const from = overviewRing.getBoundingClientRect();
       const to = mechanismRing.getBoundingClientRect();
       carryGeometry = {
@@ -1037,10 +1064,23 @@ export function HomeAntigenSwitch() {
         dy: to.top - from.top,
         sx: to.width / from.width,
         sy: to.height / from.height,
+        fromFont: overviewName ? parseFloat(getComputedStyle(overviewName).fontSize) : 46,
+        toFont: mechanismName ? parseFloat(getComputedStyle(mechanismName).fontSize) : 46,
       };
+      optionCarries.forEach((item) => {
+        const start = item.element.getBoundingClientRect();
+        const end = item.target.getBoundingClientRect();
+        item.dx = end.left - start.left;
+        item.dy = end.top - start.top;
+        item.sx = end.width / start.width;
+        item.sy = end.height / start.height;
+        item.element.style.transformOrigin = "top left";
+      });
     };
     const build = () => {
       cancelAdvance();
+      carryTween?.kill();
+      carryTween = null;
       triggers.forEach((trigger) => trigger.kill());
       triggers = [];
       setFlowLayout(flow.matches);
@@ -1049,8 +1089,11 @@ export function HomeAntigenSwitch() {
         alpha(mechanism, 1);
         mechanism.style.removeProperty("background-color");
         overviewRing.style.removeProperty("transform");
+        overviewRing.style.removeProperty("opacity");
+        overviewName?.style.removeProperty("font-size");
         overviewOptions.style.removeProperty("opacity");
         overviewOptions.inert = false;
+        resetOptionCarry();
         mechanismRing.style.removeProperty("opacity");
         mechanismOptions.style.removeProperty("opacity");
         setMechanismActive(false);
@@ -1081,39 +1124,60 @@ export function HomeAntigenSwitch() {
         return;
       }
 
-      // Carry the construct into the mechanism layout while the copy fades.
-      // Choices change location after the old labels have disappeared.
+      // Carry the construct and each choice to their measured destinations.
+      // Change ownership only when the corresponding painted elements align.
       mechanism.style.backgroundColor = "transparent";
       overviewRing.style.transformOrigin = "top left";
       measureCarry();
       const render = (progress: number) => {
         const travel = smooth((progress - 0.4) / 0.44);
         const handoff = smooth((progress - 0.84) / 0.12);
-        const oldOptions = 1 - smooth((progress - 0.48) / 0.2);
         copy.style.opacity = String(1 - smooth((progress - 0.18) / 0.4));
-        const { dx, dy, sx, sy } = carryGeometry;
+        const { dx, dy, sx, sy, fromFont, toFont } = carryGeometry;
+        const scaleX = 1 + (sx - 1) * travel;
         overviewRing.style.transform =
           `translate(${dx * travel}px, ${dy * travel}px) ` +
-          `scale(${1 + (sx - 1) * travel}, ${1 + (sy - 1) * travel})`;
-        overviewOptions.style.opacity = String(oldOptions);
-        overviewOptions.inert = oldOptions < 0.05;
+          `scale(${scaleX}, ${1 + (sy - 1) * travel})`;
+        if (overviewName) {
+          overviewName.style.fontSize = `${gsap.utils.interpolate(fromFont, toFont, travel) / scaleX}px`;
+        }
+        optionCarries.forEach(({ element, dx, dy, sx, sy }) => {
+          element.style.transform =
+            `translate(${dx * travel}px, ${dy * travel}px) ` +
+            `scale(${1 + (sx - 1) * travel}, ${1 + (sy - 1) * travel})`;
+        });
         alpha(overview, 1 - handoff);
         alpha(mechanism, smooth((progress - 0.45) / 0.27));
-        mechanismRing.style.opacity = String(handoff);
-        mechanismOptions.style.opacity = String(
-          smooth((progress - 0.63) / 0.2),
-        );
+        // Crossfading translucent watercolour loses pigment and doubles text.
+        // Both boxes and label sizes match here, so ownership can change at once.
+        const arrived = progress >= 0.84;
+        overviewRing.style.opacity = arrived ? "0" : "1";
+        mechanismRing.style.opacity = arrived ? "1" : "0";
+        overviewOptions.style.opacity = arrived ? "0" : "1";
+        overviewOptions.inert = arrived;
+        mechanismOptions.style.opacity = arrived ? "1" : "0";
         setMechanismActive(progress >= 0.9);
       };
+      const motion = { progress: 0 };
+      carryTween = gsap.to(motion, {
+        progress: 1,
+        duration: 1,
+        ease: "none",
+        paused: true,
+        onUpdate: () => render(motion.progress),
+      });
       const trigger = ScrollTrigger.create({
         id: "home-antigen-overview-transition",
         trigger: chapter,
         start: "top top",
         end: () => `+=${Math.round(window.innerHeight * 0.95)}`,
         refreshPriority: -2,
-        onUpdate: ({ progress }) => render(progress),
+        animation: carryTween,
+        scrub: HOME_SCRUB,
+        onUpdate: settleHomeScrubEndpoint,
         onRefresh: ({ progress }) => {
           measureCarry();
+          carryTween?.progress(progress);
           render(progress);
         },
       });
@@ -1131,6 +1195,7 @@ export function HomeAntigenSwitch() {
     return () => {
       advance.current = null;
       cancelAdvance();
+      carryTween?.kill();
       window.removeEventListener("wheel", cancelAdvance);
       window.removeEventListener("touchstart", cancelAdvance);
       window.removeEventListener("pointerdown", cancelAdvance, true);
@@ -1146,8 +1211,11 @@ export function HomeAntigenSwitch() {
       mechanism.style.removeProperty("background-color");
       overviewRing.style.removeProperty("transform");
       overviewRing.style.removeProperty("transform-origin");
+      overviewRing.style.removeProperty("opacity");
+      overviewName?.style.removeProperty("font-size");
       overviewOptions.style.removeProperty("opacity");
       overviewOptions.inert = false;
+      resetOptionCarry();
       mechanismRing.style.removeProperty("opacity");
       mechanismOptions.style.removeProperty("opacity");
       copy.style.removeProperty("opacity");

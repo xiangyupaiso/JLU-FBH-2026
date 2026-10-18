@@ -273,11 +273,11 @@ body:has(.keepsake-note[open]) {
 }
 .keepsake-lamb img {
   display: block;
-  /* The supplied artwork includes empty space to the right of the character. */
-  width: 225%;
+  /* Frame the character within the wide artwork, leaving its edges visible. */
+  width: 210%;
   max-width: none;
   height: auto;
-  transform: translateX(-19%);
+  transform: translateX(-12%);
   mix-blend-mode: multiply;
 }
 /* Opacity alone keeps the letter text off moving, resampled transform layers. */
