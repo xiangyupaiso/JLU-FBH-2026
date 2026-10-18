@@ -649,7 +649,8 @@
   grid-column: 1;
   grid-row: 2;
   gap: clamp(12px, 2vw, 30px);
-  margin: 0;
+  /* Reserve breathing room above the floating drag hint. */
+  margin: clamp(32px, 5svh, 48px) 0 0;
 }
 .home-antigen-switch[data-mechanism-expanded="false"] .home-antigen-switch__footer {
   display: none;

@@ -4,6 +4,7 @@ import test from "node:test";
 import vm from "node:vm";
 import ts from "typescript";
 import { renderToStaticMarkup } from "react-dom/server";
+import { gsap } from "gsap";
 
 const compile = (path, module = ts.ModuleKind.ES2022) => ts.transpileModule(
   readFileSync(new URL(`../${path}`, import.meta.url), "utf8"),
@@ -224,6 +225,7 @@ function rnaMorphEnvironment() {
     cancelAnimationFrame: (id) => { frames.delete(id); },
     require: (name) => {
       if (name === "gsap") return { default: {
+        parseEase: gsap.parseEase,
         utils: { clamp: (low, high) => (value) => Math.max(low, Math.min(high, value)) },
         getProperty: (_target, name) => name.startsWith("scale") ? 1 : 0,
       } };
@@ -231,6 +233,14 @@ function rnaMorphEnvironment() {
         addEventListener() {}, removeEventListener() {},
       } };
       if (name === "../utils/pageLoader") return { trackPagePreparation: env.context.trackPagePreparation };
+      if (name === "./homeMotion") {
+        const dependency = { exports: {} };
+        vm.runInNewContext(compile("src/hooks/homeMotion.ts", ts.ModuleKind.CommonJS), {
+          module: dependency, exports: dependency.exports,
+          require: () => ({ ScrollTrigger: {} }),
+        });
+        return dependency.exports;
+      }
       throw new Error(`Unexpected RNA morph dependency: ${name}`);
     },
   });
@@ -247,28 +257,31 @@ function rnaMorphEnvironment() {
   };
 }
 
-function galleryInkEnvironment() {
+function galleryMagnifierEnvironment() {
   const env = environment();
+  env.holdNativeProbes();
   const module = { exports: {} };
-  let prepared = 0;
+  let paintedImage;
   const context = vm.createContext({
-    module, exports: module.exports, Image: env.Image, queueMicrotask,
+    module, exports: module.exports,
     document: {
-      body: { append() {} },
-      createElement: () => ({
-        style: {}, dataset: {}, setAttribute() {}, remove() {},
-        getContext: () => ({ drawImage: () => { throw new Error("Canvas sampling unavailable"); } }),
-      }),
+      createElementNS: (namespace, name) => {
+        const element = env.context.document.createElementNS(namespace, name);
+        if (name === "svg") {
+          element.classList = { add() {} };
+          element.append = (image) => { paintedImage = image; };
+        }
+        return element;
+      },
     },
-    require: () => ({ trackPagePreparation: env.context.trackPagePreparation }),
   });
   vm.runInContext(compile("src/hooks/createThinkingGalleryInk.ts", ts.ModuleKind.CommonJS), context);
-  const sources = [new env.Image("thought-left.webp"), new env.Image("thought-right.webp")];
-  const cards = Array.from({ length: 4 }, () => ({
-    querySelector: () => ({ getAttribute: () => "shared-symbols.png" }),
-  }));
-  const ink = module.exports.createThinkingGalleryInk(sources, cards, true, () => { prepared++; });
-  return { ...env, ink, prepared: () => prepared };
+  module.exports.createThinkingGalleryMagnifier({
+    src: "thinking-4.webp",
+    currentSrc: "thinking-4-decoded.webp",
+  });
+  env.page([paintedImage]);
+  return { ...env, paintedImage };
 }
 
 function inlineLoaderEnvironment() {
@@ -715,37 +728,39 @@ test("disposing the actual RNA morph settles its captured wait and suppresses la
   assert.equal(env.prepared(), 0);
 });
 
-test("the actual gallery waits for its anonymous detached image request even after the SVG URL was prepared", async () => {
-  const env = galleryInkEnvironment();
-  env.page([new env.SvgImage("shared-symbols.png")]);
+test("the carried magnifier waits for the reused SVG painting without a canvas sampling request", async () => {
+  const env = galleryMagnifierEnvironment();
   env.ready();
   await tick();
-  const lateImage = env.requests.find((image) => image.src === "shared-symbols.png" && image.crossOrigin === "anonymous");
-  const svgProbe = env.requests.find((image) => image.src === "shared-symbols.png" && image.crossOrigin === null);
-  assert.ok(lateImage);
-  assert.ok(svgProbe);
-  env.requests.filter((image) => image !== lateImage).forEach((image) => image.finish());
+  assert.equal(env.requests.length, 1, "only the ordinary SVG decode probe is needed");
+  assert.equal(env.requests[0].src, "thinking-4-decoded.webp", "reuse the displayed source");
+  assert.equal(env.requests[0].crossOrigin, null, "no detached anonymous canvas request");
+  assert.equal(env.loader.hidden, false);
+  env.requests[0].finish();
   await tick();
-  assert.equal(env.loader.hidden, false, "the gallery request cannot inherit the different SVG probe's completion");
-  assert.equal(env.prepared(), 0);
-  lateImage.finish();
+  assert.equal(env.loader.hidden, false, "the SVG's native load still gates the cover");
+  env.nativeSvgProbes.forEach((probe) => probe.finish());
   await tick();
-  assert.equal(env.prepared(), 1, "the effect completed its existing sampling fallback");
   assert.equal(env.loader.hidden, true);
-  env.ink.dispose();
 });
 
-test("disposing the actual gallery settles its unfinished decode wait and suppresses late initialization", async () => {
-  const env = galleryInkEnvironment();
+test("leaving the gallery cancels its pending native SVG wait without blocking the next route", async () => {
+  const env = galleryMagnifierEnvironment();
   env.ready();
   await tick();
+  const oldProbe = env.nativeSvgProbes.at(-1);
+  const oldLayer = env.nativeSvgLayers.at(-1);
   assert.equal(env.loader.hidden, false);
-  env.ink.dispose();
+  env.context.showPageLoader();
+  env.page([]);
+  env.ready();
   await tick();
+  assert.equal(oldLayer.removed, true);
   assert.equal(env.loader.hidden, true);
+  oldProbe.finish();
   env.requests.forEach((image) => image.finish());
   await tick();
-  assert.equal(env.prepared(), 0);
+  assert.equal(env.loaderEvents.filter((name) => name === "loaderready").length, 1);
 });
 
 test("images and background art added by scene preparation must load and decode before leaving", async () => {

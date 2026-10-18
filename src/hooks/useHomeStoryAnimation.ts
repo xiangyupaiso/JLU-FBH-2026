@@ -17,7 +17,11 @@ import { animateTear } from "./animateHomeSupplements";
 import { animateWardTear, WARD_TEAR_LEAD } from "./animateWardTear";
 import { animateTearCloud, TEAR_CLOUD_LEAD } from "./animateTearCloud";
 import { animateFinaleExplore } from "./animateFinaleExplore";
-import { animateClinicalSequence } from "./animateClinicalSequence";
+import {
+  animateClinicalSequence,
+  CLINICAL_ILLUSTRATION_HOLD,
+  CLINICAL_QUESTION_HOLD,
+} from "./animateClinicalSequence";
 import { animateGalleryWhy } from "./animateGalleryWhy";
 import { animateTnbcBridge } from "./animateTnbcBridge";
 import { animateHopeHandoff } from "./animateHopeHandoff";
@@ -28,6 +32,9 @@ gsap.registerPlugin(useGSAP, ScrollTrigger, SplitText);
 
 const ART_REVEAL_DURATION = 0.28;
 const ARTWORK_START = 0.06;
+// Timeline units covered by the map's unscaled scroll track. Keep this fixed
+// when extending its gathering phase so the earlier entrances keep their pace.
+const MAP_SCROLL_UNITS = 1.52;
 const ART_REST_RATIO = HOME_STILL_RATIO;
 // Chapters whose outgoing bridge starts while the chapter is still sticky.
 const BRIDGE_LEADS: Record<string, number> = {
@@ -184,11 +191,18 @@ function choreographArt(
       break;
     }
     case "why-tnbc": {
+      const gatherStart = 0.76;
+      const gatherDuration = 0.7;
+      // Let the upper cards clear the headline before asking readers to follow it.
+      const headlineStart = gatherStart + gatherDuration * 0.58;
+      timeline.addLabel("map-gather-start", gatherStart);
+      timeline.addLabel("map-gathered", gatherStart + gatherDuration);
       camera({ scale: 1.018 }, { scale: 1.006 });
       const visual = section.querySelector<HTMLElement>(".story-visual")!;
       const illustration = section.querySelector(".tnbc-map-illustration");
       const mapCopy = section.querySelector(".tnbc-map-copy");
-      gsap.set(mapCopy, { autoAlpha: 0 });
+      // The carry reveal owns opacity; keep this timeline's gate independent.
+      gsap.set(mapCopy, { visibility: "hidden" });
       section.querySelectorAll("[data-map-marker]").forEach((marker, index) => {
         timeline.fromTo(
           marker,
@@ -205,6 +219,40 @@ function choreographArt(
       });
       const notes = section.querySelectorAll<HTMLElement>("[data-map-note]");
       if (notes.length) {
+        let noteTargets: { x: number; y: number; scale: number }[] = [];
+        const measureNotes = () => {
+          const portrait = window.matchMedia(
+            "(max-width: 800px) and (orientation: portrait)",
+          ).matches;
+          const width = visual.clientWidth;
+          const height = visual.clientHeight;
+          const boxes = Array.from(notes, (note) => ({
+            left: note.offsetLeft,
+            top: note.offsetTop,
+            width: note.offsetWidth,
+            height: note.offsetHeight,
+          }));
+          const scale = portrait
+            ? Math.min(1.06, (width / 2 - 24) / boxes[0].width)
+            : Math.min(1.18, (width * 0.92 - 48) / (boxes[0].width * 4));
+          noteTargets = boxes.map((box, index) => ({
+            x: (portrait
+              ? width * (index % 2 ? 0.75 : 0.25)
+              : width / 2 + (index - 1.5) * (box.width * scale + 16)) -
+              box.left - box.width / 2,
+            y: height * (portrait ? 0.53 + Math.floor(index / 2) * 0.23 : 0.67) -
+              box.top - box.height / 2,
+            scale,
+          }));
+        };
+        // Read layout together before rendering, never between card writes.
+        // Refresh keeps the cached destinations current after fonts or resize.
+        measureNotes();
+        ScrollTrigger.addEventListener("refreshInit", measureNotes);
+        cleanups.push(() =>
+          ScrollTrigger.removeEventListener("refreshInit", measureNotes),
+        );
+        gsap.set(notes, { force3D: true });
         timeline.fromTo(
           notes,
           { opacity: 0, scale: 0.82, y: -14 * distance, rotate: -2 },
@@ -219,54 +267,31 @@ function choreographArt(
           },
           0.16,
         );
-        const portrait = () =>
-          window.matchMedia("(max-width: 800px) and (orientation: portrait)")
-            .matches;
-        const noteScale = () =>
-          portrait()
-            ? Math.min(
-                1.06,
-                (visual.clientWidth / 2 - 24) / notes[0].offsetWidth,
-              )
-            : Math.min(
-                1.18,
-                (visual.clientWidth * 0.92 - 48) / (notes[0].offsetWidth * 4),
-              );
         notes.forEach((note, index) => {
           timeline.to(
             note,
             {
-              x: () => {
-                const center = portrait()
-                  ? visual.clientWidth * (index % 2 ? 0.75 : 0.25)
-                  : visual.clientWidth / 2 +
-                    (index - 1.5) * (note.offsetWidth * noteScale() + 16);
-                return center - note.offsetLeft - note.offsetWidth / 2;
-              },
-              y: () =>
-                visual.clientHeight *
-                  (portrait() ? 0.53 + Math.floor(index / 2) * 0.23 : 0.67) -
-                note.offsetTop -
-                note.offsetHeight / 2,
-              scale: noteScale,
-              duration: 0.28,
+              x: () => noteTargets[index].x,
+              y: () => noteTargets[index].y,
+              scale: () => noteTargets[index].scale,
+              duration: gatherDuration,
               ease: HOME_EASE,
             },
-            0.76,
+            gatherStart,
           );
         });
         timeline.to(
           section.querySelectorAll(".tnbc-map-note-val"),
-          { scale: 1.1, duration: 0.24, ease: HOME_EASE },
-          0.79,
+          { scale: 1.1, duration: 0.6, ease: HOME_EASE },
+          gatherStart + 0.075,
         );
       }
       timeline.to(
         illustration,
-        { opacity: 0.14, duration: 0.26, ease: HOME_EASE },
-        0.76,
+        { opacity: 0.14, duration: 0.66, ease: HOME_EASE },
+        gatherStart,
       );
-      timeline.to(mapCopy, { autoAlpha: 1, duration: 0.12 }, 0.79);
+      timeline.set(mapCopy, { visibility: "inherit" }, gatherStart);
       section
         .querySelectorAll<HTMLElement>("[data-map-copy]")
         .forEach((element, index) => {
@@ -274,7 +299,7 @@ function choreographArt(
             element,
             { opacity: 0, y: 16 * distance },
             { opacity: 1, y: 0, duration: 0.2, ease: HOME_EASE },
-            0.79 + index * 0.055,
+            headlineStart + index * 0.045,
           );
         });
       break;
@@ -297,8 +322,16 @@ function choreographArt(
         0.22,
         HOME_EASE,
       );
-      cleanups.push(animateChallengeMorph(section, timeline, compact));
-      arrive(3, 0.82, { scale: 0.9, opacity: 0 }, 0.13);
+      timeline.addLabel("nurse-visible", 0.22);
+      const morph = gsap.timeline();
+      cleanups.push(animateChallengeMorph(section, morph, compact));
+      timeline.add(morph, CLINICAL_ILLUSTRATION_HOLD);
+      arrive(
+        3,
+        CLINICAL_ILLUSTRATION_HOLD + 0.82,
+        { scale: 0.9, opacity: 0 },
+        0.13,
+      );
       break;
     }
     case "a-new-direction": {
@@ -306,7 +339,7 @@ function choreographArt(
       // explanation intact while the surrounding illustrations settle in.
       arrive(4, 0.08, { x: -8, opacity: 0 }, 0.3);
       arrive(9, 0.04, { opacity: 0 }, 0.2);
-      arrive(10, 0.52, { opacity: 0 }, 0.2);
+      arrive(10, 0.52 + CLINICAL_QUESTION_HOLD, { opacity: 0 }, 0.2);
       const question = section.querySelector<HTMLElement>(
         '[data-vaccine-copy="question"] h3',
       )!;
@@ -319,16 +352,17 @@ function choreographArt(
         { autoAlpha: 1, duration: 0.26, ease: HOME_EASE },
         0.04,
       );
+      timeline.addLabel("vaccine-question-readable", 0.3 + CLINICAL_QUESTION_HOLD * 0.5);
       arrive(8, 0.18, { y: 8, scale: 0.88, opacity: 0 }, 0.2);
-      arrive(6, 0.34, { opacity: 0 }, 0.12);
-      paint("arrow", 0.36, 0.24);
-      arrive(3, 0.52, { x: 8, scale: 0.98, opacity: 0 }, 0.26);
-      arrive(7, 0.56, { y: 8, scale: 0.86, opacity: 0 }, 0.18);
+      arrive(6, 0.34 + CLINICAL_QUESTION_HOLD, { opacity: 0 }, 0.12);
+      paint("arrow", 0.36 + CLINICAL_QUESTION_HOLD, 0.24);
+      arrive(3, 0.52 + CLINICAL_QUESTION_HOLD, { x: 8, scale: 0.98, opacity: 0 }, 0.26);
+      arrive(7, 0.56 + CLINICAL_QUESTION_HOLD, { y: 8, scale: 0.86, opacity: 0 }, 0.18);
       timeline.fromTo(
         answer,
         { autoAlpha: 0 },
         { autoAlpha: 1, duration: 0.3, ease: HOME_EASE },
-        0.6,
+        0.6 + CLINICAL_QUESTION_HOLD,
       );
       break;
     }
@@ -339,9 +373,20 @@ function choreographArt(
       camera({ scale: 1.025 }, { scale: 1.005 });
       arrive(2, 0.02, { x: -12, y: 8, opacity: 0 }, 0.32);
       arrive(3, 0.1, { x: -8, y: 6, opacity: 0 }, 0.32);
-      const copyStart = 0.4;
+      const copyStart = 0.68;
       const copyInterval = 0.18;
       const copyDuration = 0.24;
+      const copy = section.querySelector<HTMLElement>(".story-hope-copy");
+      if (copy) {
+        // Reveal the reading wash and question with the same timing and ease.
+        timeline.fromTo(
+          copy,
+          { "--hope-wash-opacity": 0 },
+          { "--hope-wash-opacity": 1, duration: copyDuration, ease: HOME_EASE },
+          copyStart,
+        );
+        timeline.addLabel("hope-wash-visible", copyStart + copyDuration);
+      }
       const copyParts = section.querySelectorAll<HTMLElement>("[data-hope-copy]");
       copyParts.forEach((part, index) => {
         timeline.fromTo(
@@ -351,17 +396,9 @@ function choreographArt(
           copyStart + index * copyInterval,
         );
       });
-      const copy = section.querySelector<HTMLElement>(".story-hope-copy");
       if (copy && copyParts.length) {
         const copyComplete = copyStart + (copyParts.length - 1) * copyInterval + copyDuration;
         timeline.addLabel("hope-copy-visible", copyComplete);
-        // Reveal the reading wash only after every line is fully visible.
-        timeline.fromTo(
-          copy,
-          { "--hope-wash-opacity": 0 },
-          { "--hope-wash-opacity": 1, duration: 0.24, ease: HOME_EASE },
-          "hope-copy-visible+=0.04",
-        );
       }
       break;
     }
@@ -462,6 +499,16 @@ export function useHomeStoryAnimation(root: RefObject<HTMLDivElement | null>) {
       const capturePosition = (trigger = activeTrigger()): ResizePosition | undefined => {
         const id = trigger?.vars.id;
         if (!trigger || !id) return;
+        if (id === "home-thinking-gallery-carry") {
+          const gallery = ScrollTrigger.getById("home-molecule-gallery-intro");
+          const intro = gallery?.animation as gsap.core.Timeline | undefined;
+          const enter = intro?.labels["choices-enter"];
+          // The carry's lead changes on compact layouts. Once cards enter,
+          // preserve their own timeline so resizing keeps the same reveal.
+          if (gallery && intro && enter !== undefined && intro.time() >= enter) {
+            return capturePosition(gallery);
+          }
+        }
         const position: ResizePosition = { id, progress: trigger.progress };
         if (id === "home-plug-and-play-art" || id.startsWith("home-antigen-")) {
           const entry = ScrollTrigger.getById("home-antigen-mechanism-entry");
@@ -619,13 +666,14 @@ export function useHomeStoryAnimation(root: RefObject<HTMLDivElement | null>) {
               );
               // The cloud bridge already masks the arriving map. Start its
               // marks immediately instead of reserving a second empty lead-in.
-              // Shorten the track by the removed lead to retain reveal speed.
+              // Scale with the artwork duration so a longer gathering phase
+              // gains scroll distance without speeding up the earlier marks.
               if (section.id === "why-tnbc") {
                 const artDuration = artworkTimeline.duration();
                 gsap.set(section, {
                   "--home-scroll-scale":
                     (1 + restRatio) * (artDuration + ARTWORK_START) /
-                    (artDuration + 0.42),
+                    MAP_SCROLL_UNITS,
                 });
               }
               timeline.add(
@@ -761,7 +809,6 @@ export function useHomeStoryAnimation(root: RefObject<HTMLDivElement | null>) {
           const fold = pick("fold");
           const name = pick("name");
           const accent = pick("accent");
-          const possibilities = pick("possibilities");
           const stroke = ring?.querySelector(".story-paint-stroke");
           const complete = ring?.querySelector(".story-paint-complete");
           const copy = (part: string) =>
@@ -872,24 +919,27 @@ export function useHomeStoryAnimation(root: RefObject<HTMLDivElement | null>) {
               0.3,
             );
           }
-          if (possibilities) {
-            evolve.fromTo(
-              possibilities,
-              { "--underline": 0 },
-              { "--underline": 1, duration: 0.14, ease: HOME_EASE },
-              0.74,
-            );
-          }
           // Let the closing words rest before the circle opens into patient care.
           evolve.to({}, { duration: 0.24 }, 0.96);
           cleanups.push(animateFinaleExplore(finale, evolve, compact));
+          // Let the complete question settle after entering from the doctor.
+          // Move the whole sequence together so its later handoffs stay aligned.
+          const questionHold = 0.36;
+          const answerHold = 0.18;
+          const revealDuration = evolve.duration();
+          // Give the merged answer its own reading beat before the title/ring.
+          evolve.shiftChildren(answerHold, true, 0.3);
+          evolve.shiftChildren(questionHold, true);
+          evolve.addLabel("question-readable", questionHold / 2);
+          evolve.addLabel("answer-readable", questionHold + 0.24 + answerHold / 2);
           // Desktop: hold the settled care links still for the shared ratio.
-          let finaleScale = 1;
+          // Add scroll for the new hold instead of speeding up the existing art.
+          let finaleScale = evolve.duration() / revealDuration;
           const settled = evolve.labels["care-complete"];
           if (!compact && settled) {
             const rest = evolve.duration() - settled;
             const hold = stillHold(1, rest / settled);
-            finaleScale = hold.scale;
+            finaleScale *= hold.scale;
             evolve.to({}, { duration: settled * hold.rest - rest });
           }
 

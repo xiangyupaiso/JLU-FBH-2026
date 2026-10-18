@@ -4,6 +4,7 @@
   --clinical-hold: 420svh;
   position: relative;
   height: calc(100svh + var(--clinical-hold) * var(--home-scroll-scale, 1));
+  background: #f9e8e8;
 }
 
 .has-clinical-transition .story-clinical-stage {
@@ -13,6 +14,22 @@
   overflow: hidden;
   isolation: isolate;
   background: #f9e8e8;
+}
+.has-clinical-transition.is-clinical-entry .story-clinical-stage {
+  position: fixed;
+  inset: 0;
+  z-index: 30;
+}
+.story-clinical-entry-wash {
+  position: fixed;
+  inset: 0;
+  z-index: 29;
+  background: #f9e8e8;
+  visibility: hidden;
+  pointer-events: none;
+}
+.is-clinical-entry > .story-clinical-entry-wash {
+  visibility: visible;
 }
 .has-story-motion #why-tnbc::after {
   height: 0;

@@ -12,6 +12,13 @@ export function animateTnbcBridge(section: HTMLElement) {
   const sourceLine = source.closest<HTMLElement>("[data-map-copy]");
   const sourceHeading = source.closest<HTMLElement>(".tnbc-map-intro")!;
   const target = copy.querySelector<HTMLElement>("[data-tnbc-title-shared]")!;
+  const departing = [...section.querySelectorAll<HTMLElement>(
+    ".tnbc-map-notes, .tnbc-map-source",
+  )].map((element) => ({
+    element,
+    opacity: element.style.opacity,
+    visibility: element.style.visibility,
+  }));
   const wash = document.createElement("div");
   wash.className = "tnbc-reading-bridge-wash";
   wash.setAttribute("aria-hidden", "true");
@@ -132,6 +139,13 @@ export function animateTnbcBridge(section: HTMLElement) {
       progress > 0
         ? String(1 - fade(0, 0.16, progress))
         : original.sourceHeadingOpacity;
+    // Clear the statistics before the shared word crosses their outgoing row.
+    departing.forEach(({ element, opacity, visibility }) => {
+      element.style.opacity = progress > 0
+        ? String(1 - fade(0, 0.2, progress))
+        : opacity;
+      element.style.visibility = progress >= 0.2 ? "hidden" : visibility;
+    });
     copy.style.pointerEvents =
       progress < 1 ? "none" : original.copyPointerEvents;
     copy.style.zIndex = visible ? "62" : original.copyZIndex;
@@ -192,6 +206,10 @@ export function animateTnbcBridge(section: HTMLElement) {
       source.style.visibility = original.sourceVisibility;
       sourceHeading.style.opacity = original.sourceHeadingOpacity;
       target.style.opacity = original.targetOpacity;
+      departing.forEach(({ element, opacity, visibility }) => {
+        element.style.opacity = opacity;
+        element.style.visibility = visibility;
+      });
       wash.remove();
       word.remove();
     },
