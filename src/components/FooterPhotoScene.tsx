@@ -84,6 +84,7 @@ export default function FooterPhotoScene() {
       <dialog
         ref={noteRef}
         className="keepsake-note"
+        data-sheep-cursor
         aria-labelledby="keepsake-note-title"
       >
         <div ref={noteSheetRef} className="keepsake-letter__sheet">

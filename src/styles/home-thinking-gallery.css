@@ -19,6 +19,7 @@
 
 .is-thinking-gallery-target .home-molecule-gallery__title {
   opacity: var(--thinking-title-opacity, 0) !important;
+  visibility: visible !important;
 }
 
 .is-thinking-gallery-source .story-clinical-backdrop,
@@ -42,35 +43,39 @@
   opacity: var(--thinking-cloud-opacity, 1) !important;
 }
 
-.is-thinking-gallery-target .home-molecule-gallery__card {
-  opacity: var(--thinking-card-opacity, 0) !important;
-  transform: none !important;
+.home-molecule-gallery__artwork {
+  position: relative;
 }
 
-.is-thinking-gallery-target [data-gallery-layer="symbols"] {
-  opacity: var(--thinking-symbol-opacity, 0) !important;
-}
-
-.is-thinking-gallery-target [data-gallery-ring] {
-  opacity: calc(var(--thinking-symbol-opacity, 0) * 0.64) !important;
-}
-
-.is-thinking-gallery-target [data-gallery-layer="labels"] {
-  opacity: var(--thinking-label-opacity, 0) !important;
-}
-
-.home-thinking-gallery-ink {
-  position: fixed;
-  inset: 0;
-  z-index: 32;
-  width: 100%;
-  height: 100svh;
+.home-thinking-gallery-mark {
+  position: absolute;
+  top: 0;
+  left: 1%;
+  width: 7.5%;
+  height: auto;
+  aspect-ratio: 207 / 216;
+  overflow: hidden;
+  visibility: hidden;
   pointer-events: none;
+}
+
+.home-thinking-gallery-mark--travelling {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 32;
+  will-change: transform;
+}
+
+@media (max-width: 800px) and (max-aspect-ratio: 4/5) {
+  .home-molecule-gallery__artwork > .home-thinking-gallery-mark {
+    width: 9%;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .home-thinking-gallery-wash,
-  .home-thinking-gallery-ink {
+  .home-thinking-gallery-mark {
     display: none;
   }
 }

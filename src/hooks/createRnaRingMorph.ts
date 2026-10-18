@@ -1,6 +1,7 @@
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { trackPagePreparation } from "../utils/pageLoader";
+import { HOME_EASE } from "./homeMotion";
 
 const clamp = gsap.utils.clamp(0, 1);
 const smooth = (from: number, to: number, value: number) => {
@@ -17,6 +18,12 @@ const curve = (from: number, a: number, b: number, to: number, p: number) =>
 const PAINT_STEPS = 16;
 const PAINT_PADDING = 0.015;
 const PAINT_EXTENT = 1 + PAINT_PADDING * 2;
+const travelEase = gsap.parseEase(HOME_EASE);
+
+// Carry the complete circle before handing it to the cropped platform plate.
+// Mixing that crop during the flight makes the lower arc dissolve in midair.
+const LANDING_START = 0.78;
+const TRAVEL_END = 0.9;
 
 // Cache closely spaced radial deformations once. Interpolating adjacent
 // plates avoids the double edge of dissolving directly between thick/thin
@@ -35,7 +42,7 @@ function preparePaint(image: HTMLImageElement, compact: boolean) {
   for (let step = 1; step <= PAINT_STEPS; step++) {
     const progress = step / PAINT_STEPS;
     const tone = smooth(0.03, 0.72, progress);
-    const thickness = mix(1, 0.72, smooth(0.18, 0.82, progress));
+    const thickness = mix(1, 0.72, smooth(LANDING_START, 1, progress));
     const tint = [mix(1, 0.961, tone), mix(1, 0.79, tone), mix(1, 0.774, tone)];
     const plate = document.createElement("canvas");
     plate.width = sample.width;
@@ -166,9 +173,11 @@ export function createRnaRingMorph(
   let frame = 0;
   let lastProgress = 0;
   let resolvePreparation!: () => void;
-  const stopTrackingPreparation = trackPagePreparation(new Promise<void>((resolve) => {
-    resolvePreparation = resolve;
-  }));
+  const stopTrackingPreparation = trackPagePreparation(
+    new Promise<void>((resolve) => {
+      resolvePreparation = resolve;
+    }),
+  );
   const finishPreparation = () => {
     resolvePreparation();
     stopTrackingPreparation();
@@ -213,16 +222,19 @@ export function createRnaRingMorph(
   function draw(progress: number, painted = true) {
     lastProgress = clamp(progress);
     const tone = smooth(0.03, 0.72, lastProgress);
-    const incoming = smooth(0.3, 0.94, lastProgress);
+    const incoming = smooth(LANDING_START, 1, lastProgress);
     canvas.dataset.progress = String(lastProgress);
     canvas.dataset.tone = String(tone);
     canvas.dataset.shape = String(incoming);
     const available = ready && painted && !disposed;
     const visible = available && lastProgress > 0 && lastProgress < 1;
-    canvas.style.visibility = visible ? "visible" : "hidden";
-    if (disposed || !geometry) return available;
+    if (!visible) canvas.style.visibility = "hidden";
+    if (disposed || !geometry) return false;
     const g = geometry;
-    const p = smooth(0, 1, lastProgress);
+    // One easing curve starts the carry promptly and leaves a short landing
+    // beat. The previous quintic ease followed by the curve barely moved the
+    // ring during the opening scroll while its texture was already fading.
+    const p = travelEase(clamp(lastProgress / TRAVEL_END));
     const x = curve(
       g.x,
       g.x + g.dx * 0.18 + g.bend,
@@ -243,7 +255,7 @@ export function createRnaRingMorph(
       scaleX: width / g.width,
       scaleY: height / g.height,
     });
-    if (!visible || !context || !paint || !fan) return available;
+    if (!available || !context || !paint || !fan) return false;
     const rotation = Math.sin(Math.PI * p) * (compact ? 3 : 5);
     canvas.style.transform = `translate3d(${x - (g.width * PAINT_EXTENT) / 2}px, ${y - (g.height * PAINT_EXTENT) / 2}px, 0) rotate(${rotation}deg) scale(${width / g.width}, ${height / g.height})`;
     context.clearRect(0, 0, canvas.width, canvas.height);
@@ -276,10 +288,13 @@ export function createRnaRingMorph(
       );
     };
     fanPlate(fan.ring, incoming);
-    fanPlate(fan.lettering, smooth(0.64, 0.98, lastProgress));
+    fanPlate(fan.lettering, incoming);
     context.globalAlpha = 1;
     context.globalCompositeOperation = "source-over";
-    return available;
+    // Paint endpoint frames too. Only release the native artwork after the
+    // carrier has an actual frame, including after a canvas resize/refresh.
+    canvas.style.visibility = visible ? "visible" : "hidden";
+    return true;
   }
 
   const refresh = () => {

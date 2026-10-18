@@ -18,15 +18,3 @@
   height: 100%;
   background: var(--footer-paper, #f8f4ee);
 }
-@media (hover: hover) and (pointer: fine) {
-  body:has(.circure-photo-afterword:hover) .sheep-cursor {
-    opacity: 0;
-  }
-  html:root.has-sheep-cursor .circure-photo-afterword,
-  html:root.has-sheep-cursor .circure-photo-afterword * {
-    cursor: auto !important;
-  }
-  html:root.has-sheep-cursor .circure-photo-afterword :is(button, a) {
-    cursor: pointer !important;
-  }
-}

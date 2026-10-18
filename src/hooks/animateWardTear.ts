@@ -6,6 +6,7 @@ import {
   settleHomeScrubEndpoint,
 } from "./homeMotion";
 import { updateWardInfusionTube } from "./wardInfusionGeometry";
+import { trackPagePreparation } from "../utils/pageLoader";
 const patientTeardrop = "https://static.igem.wiki/teams/6056/wiki/files/pages/home/patient-teardrop-20261004-765c97bc4482.webp";
 
 // The portrait and detached drop share the artist's 2752 × 2064 canvas.
@@ -14,6 +15,9 @@ const DROP = { left: 681, top: 1144, width: 74, height: 103 };
 // Viewports the bridge starts before the ward track ends, while it is sticky.
 export const WARD_TEAR_LEAD = 0.36;
 const BRIDGE_SCRUB = 0.2;
+// Timeline rebuilds reuse the same artwork. Preserve successful preparation
+// for that live outline, while a changed source still needs a fresh decode.
+const decodedArtwork = new WeakMap<HTMLImageElement, string>();
 
 const clamp = gsap.utils.clamp(0, 1);
 const smooth = (from: number, to: number, value: number) => {
@@ -113,7 +117,14 @@ export function animateWardTear(
   root.append(frame);
 
   let disposed = false;
-  let artworkReady = false;
+  const artwork = [
+    patient as HTMLImageElement,
+    bead,
+    outline,
+    ...sprite.querySelectorAll<HTMLImageElement>("img"),
+  ];
+  const artworkKey = JSON.stringify(artwork.map((image) => image.src));
+  let artworkReady = decodedArtwork.get(outline) === artworkKey;
   let paintedPass: boolean | undefined;
   const state = { progress: 0 };
   const measure = () => {
@@ -163,9 +174,11 @@ export function animateWardTear(
             ? "gather"
             : p < 0.44
               ? "cheek"
-              : p < 0.59
+              : p < 0.52
                 ? "release"
-                : "settle";
+                : p < 0.94
+                  ? "enlarge"
+                  : "settle";
     frame.style.visibility = active ? "visible" : "hidden";
     images.forEach((image, index) => {
       image.style.visibility =
@@ -207,12 +220,16 @@ export function animateWardTear(
     const startY = sy + cheekOffsetY + beadHeight / 2;
     const x = curve(startX, startX, dx, dx);
     const lower = startY + releaseDistance;
-    const y = curve(startY, lower, Math.max(lower, dy + 72), dy);
+    // Rise toward the final center as growth starts, keeping the enlarged
+    // contour inside the viewport after the initial downward release.
+    const y = curve(startY, lower, dy, dy);
     const small = beadHeight / Math.max(1, spriteHeight);
-    const scale = gsap.utils.interpolate(small, 1, smooth(0.67, 0.94, p));
+    // Give growth most of the detached drop's travel, so a wheel gesture can
+    // show intermediate sizes instead of jumping from the bead to the full tear.
+    const scale = gsap.utils.interpolate(small, 1, smooth(0.52, 0.94, p));
     // Keep one silhouette through release. The painted drop takes over only
     // after leaving the face, with both shapes sharing a center and height.
-    const painted = smooth(0.63, 0.74, p);
+    const painted = smooth(0.5, 0.62, p);
     const beadX = p < 0.44 ? cheekX : x;
     const beadY = p < 0.44 ? cheekY : y;
     const visibleHeight = p < 0.44 ? gatheredHeight : spriteHeight * scale;
@@ -235,9 +252,9 @@ export function animateWardTear(
       transform: `translate(${x - spriteWidth / 2}px, ${y - spriteHeight / 2}px) scale(${scale})`,
     });
     // A quiet fallback must respond from entry, even before the drop decodes.
-    const roomFade = smooth(paintedPass ? 0.48 : 0, 0.8, p);
+    const roomFade = smooth(paintedPass ? 0.56 : 0, 0.9, p);
     frame.style.backgroundColor = backgroundColor(
-      smooth(paintedPass ? 0.46 : 0, 0.8, p),
+      smooth(paintedPass ? 0.54 : 0, 0.9, p),
     );
     frame.style.opacity = String(1 - smooth(paintedPass ? 0.94 : 0.8, 1, p));
     room.style.opacity = String(1 - roomFade);
@@ -278,24 +295,22 @@ export function animateWardTear(
   // A clone created after page load still needs its own image-load measurement.
   roomBackdrop.addEventListener("load", refresh);
   // Newly cloned/cropped artwork may finish decoding after the first refresh.
-  Promise.all([
-    (patient as HTMLImageElement).decode(),
-    bead.decode(),
-    outline.decode(),
-    ...Array.from(sprite.querySelectorAll("img"), (image) => image.decode()),
-  ])
+  const preparation = Promise.all(artwork.map((image) => image.decode()))
     .then(() => {
       if (!disposed) {
+        decodedArtwork.set(outline, artworkKey);
         artworkReady = true;
         refresh();
       }
     })
     .catch(() => {});
+  const releasePreparation = trackPagePreparation(preparation);
   ScrollTrigger.addEventListener("refresh", refresh);
   refresh();
   draw();
   return () => {
     disposed = true;
+    releasePreparation();
     boundaryGuard.dispose();
     roomBackdrop.removeEventListener("load", refresh);
     ScrollTrigger.removeEventListener("refresh", refresh);

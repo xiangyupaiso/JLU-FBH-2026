@@ -189,34 +189,23 @@
   }
 }
 .home-story .story-final-statement__tagline {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: baseline;
+  gap: 0.2em 0.4em;
   margin: clamp(22px, 4svh, 40px) 0 0;
   color: var(--story-ink);
   font: 400 clamp(17px, 1.6vw, 23px)/1.5 var(--font-body);
   text-wrap: balance;
 }
+.story-final-statement__tagline > span,
+.story-final-statement__tagline > strong {
+  white-space: nowrap;
+}
 .story-final-statement__tagline strong {
-  position: relative;
-  display: inline-block;
   color: var(--story-accent);
   font-weight: var(--weight-label);
-}
-/* Drawn from the centre as the ring closes (--underline: 0 → 1). */
-.story-final-statement__tagline strong::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: -5px;
-  height: 2px;
-  border-radius: 2px;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    var(--story-accent) 20% 80%,
-    transparent
-  );
-  opacity: 0.55;
-  transform: scaleX(var(--underline, 1));
 }
 @media (max-width: 800px) {
   .story-finale > .story-final-statement {
@@ -235,7 +224,7 @@
     height: 56px;
   }
   .home-story .story-final-statement__kicker {
-    font-size: clamp(17px, 5vw, 24px);
+    font-size: clamp(15px, 4.4vw, 24px);
   }
   /* Too narrow for one line: "with the tumor." takes the second. */
   .story-final-statement h2 {

@@ -54,15 +54,20 @@
 #why-tnbc .is-tear-cloud-carried .story-visual {
   opacity: 1 !important;
 }
+#why-tnbc .is-tear-cloud-carried .tnbc-map-marker > image,
+#why-tnbc .is-tear-cloud-carried .tnbc-map-copy {
+  /* A separate child preserves marker entrance opacity without a filter. */
+  opacity: var(--tear-cloud-map-reveal, 0);
+}
+/* Static map pieces and these containers have no entrance-opacity tween.
+   Fade them directly to avoid large filter surfaces around the arriving cards. */
 #why-tnbc
   .is-tear-cloud-carried
   .story-art--3
-  > :not([data-map-piece="cloud-northwest"]),
-#why-tnbc .is-tear-cloud-carried .tnbc-map-copy,
+  > :not(.tnbc-map-marker):not([data-map-piece="cloud-northwest"]),
 #why-tnbc .is-tear-cloud-carried .tnbc-map-notes,
-#why-tnbc .is-tear-cloud-carried .tnbc-map-source,
-#why-tnbc .is-tear-cloud-carried .story-copy {
-  filter: opacity(var(--tear-cloud-map-reveal, 0));
+#why-tnbc .is-tear-cloud-carried .tnbc-map-source {
+  opacity: var(--tear-cloud-map-reveal, 0);
 }
 .story-tear-cloud-grains {
   position: fixed;
