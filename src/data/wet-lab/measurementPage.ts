@@ -1687,16 +1687,16 @@ export const measurementPage: WikiPageContent = {
           src: getMeasurementImage(
             "rt-pcr-quantification-of-trop2-mrna-in-4t1-cells",
           ),
-          alt: "Relative TROP2 expression in wild-type and transduced 4T1 cells. Values are mean ± SD across three RNA-extraction replicates from one cell sample per group (biological n = 1 per group). The result is reported descriptively, without a between-group P value.",
+          alt: "Relative TROP2 expression in wild-type and transduced 4T1 cells. Values are mean ± SD across three RNA-extraction replicates from one cell sample per group (biological n = 1 per group). The result is reported descriptively.",
           caption:
-            "Relative TROP2 expression in wild-type and transduced 4T1 cells. Values are mean ± SD across three RNA-extraction replicates from one cell sample per group (biological n = 1 per group). The result is reported descriptively, without a between-group P value.",
+            "Relative TROP2 expression in wild-type and transduced 4T1 cells. Values are mean ± SD across three RNA-extraction replicates from one cell sample per group (biological n = 1 per group). The result is reported descriptively.",
           width: 1518,
           height: 916,
         },
         {
           type: "prose",
           paragraphs: [
-            "The recorded relative-expression values were 72.40, 78.90 and 76.20 for the transduced line, with all three control entries set to 1. The transduced values have a mean of 75.83 ± 3.27 (mean ± SD across three extraction replicates). The replicates came from the same cell sample and describe variation within that sampled material. With one biological sample per group, biological between-group variability could not be estimated, and no inferential P value is reported.",
+            "The recorded relative-expression values were 72.40, 78.90 and 76.20 for the transduced line, with all three control entries set to 1. The transduced values have a mean of 75.83 ± 3.27 (mean ± SD across three extraction replicates). The replicates came from the same cell sample and describe variation within that sampled material.",
           ],
         },
         {
