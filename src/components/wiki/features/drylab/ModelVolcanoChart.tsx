@@ -1,8 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import * as echarts from "echarts";
-import volcanoData from "../../../../data/drylab/modelVolcanoData.json";
+import { loadModelVolcanoData, type VolcanoPoint } from "../../../../data/drylab/modelVolcanoData";
 
-type VolcanoPoint = [string, number, number, string];
 const categories = ["Up", "Down", "Other"];
 const colors = ["#c74d55", "#4c79a7", "#cbd0d4"];
 const targets: Record<string, { label: string; color: string }> = {
@@ -39,10 +38,38 @@ function VolcanoCanvas({
 }
 
 export function ModelVolcanoChart({ cohort }: { cohort: "024322" | "028102" }) {
+  const [data, setData] = useState<Awaited<ReturnType<typeof loadModelVolcanoData>>>();
+  const [failed, setFailed] = useState(false);
+  const [attempt, setAttempt] = useState(0);
+  useEffect(() => {
+    let active = true;
+    loadModelVolcanoData().then(
+      (result) => { if (active) setData(result); },
+      () => { if (active) setFailed(true); },
+    );
+    return () => { active = false; };
+  }, [attempt]);
+  if (data) return <VolcanoChart cohort={cohort} rows={data[cohort]} />;
+  return (
+    <div className="model-chart-panel model-chart-loading" role="status">
+      {failed ? (
+        <>
+          <p>Unable to load volcano plot data.</p>
+          <button className="model-action" type="button" onClick={() => {
+            setFailed(false);
+            setAttempt((value) => value + 1);
+          }}>Retry</button>
+        </>
+      ) : <p>Loading volcano plot data…</p>}
+    </div>
+  );
+}
+
+
+function VolcanoChart({ cohort, rows }: { cohort: "024322" | "028102"; rows: VolcanoPoint[] }) {
   const [visible, setVisible] = useState([true, true, true]);
   const threshold = cohort === "024322" ? 0.15 : 1;
   const fdr = cohort === "024322" ? 0.05 : 0.01;
-  const rows = volcanoData[cohort] as VolcanoPoint[];
   const grouped = useMemo(() => {
     const result: VolcanoPoint[][] = [[], [], []];
     for (const point of rows) {

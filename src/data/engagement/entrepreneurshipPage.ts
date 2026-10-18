@@ -257,11 +257,15 @@ export interface BusinessModelCanvasSection {
 
 export const businessModelCanvas: {
   image: string;
+  imageWidth: number;
+  imageHeight: number;
   imageAlt: string;
   prompt: string;
   sections: BusinessModelCanvasSection[];
 } = {
   image: entrepreneurshipAssets.illustrations.businessModel,
+  imageWidth: 1448,
+  imageHeight: 1086,
   imageAlt: "Business Model Canvas of CirCure",
   prompt:
     "Click below to learn more about each step of our business model.",
@@ -384,8 +388,8 @@ export const entrepreneurshipHighlights: EntrepreneurshipHighlight[] = [
     question:
       "Has the team discovered their first potential customers and identified any unmet needs not yet covered by other existing solutions?",
     paragraphs: [
-      "**Yes.** Our team discovered **Jilin Jika Biotechnology Co., Ltd.** and **Jilin Jien Zhihe Biotherapy Technology Co., Ltd.** as our first potential customers — both have signed a letter of intent with us — through a patient-first process: conversations with **Dr. Lei Wang** (Department of Oncology, the First Hospital of Jilin University) narrowed \"TNBC\" into one specific clinical decision point, and we then worked outward to the companies able to carry such a candidate forward. Research hospitals are our validation tier; the patients below are the end beneficiaries.",
-      "The unmet need is equally specific: TNBC patients still carrying **residual invasive disease after neoadjuvant therapy and surgery**, whose recurrence risk does not end when their treatment does. Pembrolizumab, capecitabine and olaparib each help part of this group, but eligibility stays gated by treatment stage and molecular features. Shared-antigen vaccines such as STEMVAC and ITI-5000 fix their antigens without patient-level HLA matching; personalised neoantigen vaccines buy that fit with per-patient manufacture. **In the programmes we could identify, none combines post-surgical risk stratification, TAA and HLA matching, and multi-epitope circRNA design to serve one defined population** — the gap CirCure occupies, as an addition to standard of care, not a replacement.",
+      "**Yes.** Our team discovered **Jilin Jika Biotechnology Co., Ltd.** and **Jilin Jien Zhihe Biotherapy Technology Co., Ltd.** as our first potential customers — both have signed a letter of intent with us — through a patient-first process: conversations with **Dr. Lei Wang** (Department of Oncology, the First Hospital of Jilin University) narrowed \"TNBC\" into one specific clinical decision point, and we then worked outward to the companies able to carry such a candidate forward. Research hospitals are our validation tier; the patients below are the end beneficiaries (see [Primary Customer Segment](#primary-customer-segment)).",
+      "The unmet need is equally specific: TNBC patients still carrying **residual invasive disease after neoadjuvant therapy and surgery**, whose recurrence risk does not end when their treatment does. Pembrolizumab, capecitabine and olaparib each help part of this group, but eligibility stays gated by treatment stage and molecular features. Shared-antigen vaccines such as STEMVAC and ITI-5000 fix their antigens without patient-level HLA matching; personalised neoantigen vaccines buy that fit with per-patient manufacture. **In the programmes we could identify, none combines post-surgical risk stratification, TAA and HLA matching, and multi-epitope circRNA design to serve one defined population** — the gap CirCure occupies, as an addition to standard of care, not a replacement (see [Unmet Needs](#unmet-needs-first-customers)).",
     ],
   },
   {
@@ -394,9 +398,9 @@ export const entrepreneurshipHighlights: EntrepreneurshipHighlight[] = [
       "Has the team shown that their solution is possible, scalable and inventive?",
     paragraphs: [
       "**Yes.** We have considered all three in full: feasibility tested against experimental evidence and clinical judgement, scalability across production, technology, demand, opportunity, risk and finance, and originality that runs through the whole development path.",
-      "**Possible:** CirCure exists as a tested construct, not a proposal. Circularisation is confirmed three independent ways — RNase R resistance, divergent- versus convergent-primer RT-qPCR, and sequencing across the back-splice junction — and all 15 candidate epitopes were ranked by measured IFN-γ ELISpot response rather than by prediction. Clinical and industry advisers, among them **Prof. Jiuwei Cui** and **Prof. Fei Ma**, have reviewed the route, and the clinical entry point CirCure targets already exist in post-surgical care, using tests a breast centre can already run.",
-      "**Scalable:** We tested this on every axis scalability has. Production: the circularisation reaction is enzyme-free and runs in a device we designed to keep it consistent as batch size grows. Technology: design, TAA/HLA matching and epitope selection are standardised, so a new antigen set does not mean a new platform. Demand: the high-risk post-surgical TNBC population is defined, and it is reached through tests breast centres already run. Opportunity: those same capabilities transfer to further candidates and indications once the first is validated. Risk: TAA/HLA coverage and CMC maturity are the binding limits, and we set out how each is verified and controlled. Finance: licensing and co-development revenue arrives at milestones long before any product revenue.",
-      "**Inventive:** The original idea in CirCure is not circRNA but an inversion: pathology, recurrence risk, TAA expression and HLA background do not filter patients after a vaccine is designed — they define the product before it exists. That places us deliberately between fixed shared-antigen vaccines and per-patient neoantigen vaccines, on a route neither school occupies. The skill is in restraint: \"multi-epitope\" means curated, not accumulated, and an epitope that adds construct, analysis and quality-control burden without adding patient coverage is cut. The imagination is refusing to stop at the molecule —The invention extends into the **CircRNA Vaccine Design System**, which records why a candidate was chosen and why it later changed, and into a **circularisation device** that turns a bench reaction into a repeatable one.",
+      "**Possible:** CirCure exists as a tested construct, not a proposal. Circularisation is confirmed three independent ways — RNase R resistance, divergent- versus convergent-primer RT-qPCR, and sequencing across the back-splice junction — and all 15 candidate epitopes were ranked by measured IFN-γ ELISpot response rather than by prediction. Clinical and industry advisers, among them **Prof. Jiuwei Cui** and **Prof. Fei Ma**, have reviewed the route, and the clinical entry point CirCure targets already exist in post-surgical care, using tests a breast centre can already run (see [Technology](#technology)).",
+      "**Scalable:** We tested this on every axis scalability has. Production: the circularisation reaction is enzyme-free and runs in a device we designed to keep it consistent as batch size grows. Technology: design, TAA/HLA matching and epitope selection are standardised, so a new antigen set does not mean a new platform. Demand: the high-risk post-surgical TNBC population is defined, and it is reached through tests breast centres already run. Opportunity: those same capabilities transfer to further candidates and indications once the first is validated. Risk: TAA/HLA coverage and CMC maturity are the binding limits, and we set out how each is verified and controlled. Finance: licensing and co-development revenue arrives at milestones long before any product revenue (see [Scalability](#scalability)).",
+      "**Inventive:** The original idea in CirCure is not circRNA but an inversion: pathology, recurrence risk, TAA expression and HLA background do not filter patients after a vaccine is designed — they define the product before it exists. That places us deliberately between fixed shared-antigen vaccines and per-patient neoantigen vaccines, on a route neither school occupies. The skill is in restraint: \"multi-epitope\" means curated, not accumulated, and an epitope that adds construct, analysis and quality-control burden without adding patient coverage is cut. The imagination is refusing to stop at the molecule —The invention extends into the **CircRNA Vaccine Design System**, which records why a candidate was chosen and why it later changed, and into a **circularisation device** that turns a bench reaction into a repeatable one (see [Inventive](#inventive)).",
     ],
   },
   {
@@ -406,7 +410,7 @@ export const entrepreneurshipHighlights: EntrepreneurshipHighlight[] = [
     paragraphs: [
       "Yes. We have set out a **five-year development path**.The roadmap runs from late 2025 to 2030 in six parallel streams, so entrepreneurship and partnership work advances alongside the science rather than after it — from platform construction through candidate validation and IND preparation to early clinical exploration.",
       "The First Hospital of Jilin University supplies the early site, funding and clinical platform; specialist laboratories, CRO/CDMO and industry partners enter as delivery, CMC, quality and regulatory work begins, with funding released against technical progress rather than committed in advance.",
-      "**Risks** are scored by impact and likelihood across five domains — candidate identity, manufacturability, TAA/HLA coverage, safety and funding continuity — and each carries both a mitigation and a decision rule.",
+      "**Risks** are scored by impact and likelihood across five domains — candidate identity, manufacturability, TAA/HLA coverage, safety and funding continuity — and each carries both a mitigation and a decision rule (see [Milestone](#milestone), [Risk Analysis](#risk-analysis), [Key Resources](#key-resources)).",
     ],
   },
   {
@@ -415,7 +419,7 @@ export const entrepreneurshipHighlights: EntrepreneurshipHighlight[] = [
       "Has the team outlined the skills, capabilities, and stakeholders required to be credible in developing their solution further?",
     paragraphs: [
       "We investigated the capabilities needed to develop CirCure from an early-stage candidate into a real product and compared them with our team’s existing capabilities. This helped us identify gaps and prompted us to actively gain experience in product development and entrepreneurship. With support from Bethune First Hospital of Jilin University, participation in the iGEM Entrepreneurship Workshop, and ongoing discussions with clinical and industry professionals, we have gradually built a professional network to support CirCure’s continued development.",
-      "We also identified and contacted external stakeholders needed for the project’s development, enabling CirCure to access support beyond our team’s existing capabilities, from specialized validation to industrial translation and business development.",
+      "We also identified and contacted external stakeholders needed for the project’s development, enabling CirCure to access support beyond our team’s existing capabilities, from specialized validation to industrial translation and business development (see [Skills, Capabilities & Stakeholders](#skills-capabilities-stakeholders)).",
     ],
   },
   {
@@ -424,7 +428,7 @@ export const entrepreneurshipHighlights: EntrepreneurshipHighlight[] = [
       "Has the team considered the positive and negative long-term impacts of their fully developed solution?",
     paragraphs: [
       "Yes. We assessed what a fully developed CirCure could contribute. For high-risk TNBC patients meeting the screening conditions, it would add an antigen-specific option alongside standard care and make patient–candidate matching explicit rather than assumed; the approach itself is reusable, and the clinic–laboratory–industry collaboration behind it is an outcome in its own right (SDG 3, 9 and 17).",
-      "However, like any new therapeutic technology, it raises scientific and social challenges — cross-reactivity, the long-term safety of circRNA and its delivery, and the manufacturing complexity of a multi-epitope construct; then the testing burden screening creates, the patients it may exclude, the sensitivity of the data, and the trust an early-stage vaccine must earn. Each has a defined response built into our development decisions.",
+      "However, like any new therapeutic technology, it raises scientific and social challenges — cross-reactivity, the long-term safety of circRNA and its delivery, and the manufacturing complexity of a multi-epitope construct; then the testing burden screening creates, the patients it may exclude, the sensitivity of the data, and the trust an early-stage vaccine must earn. Each has a defined response built into our development decisions (see [Long-Term Impacts](#long-term-impacts), [Potential Problems & Their Solutions](#potential-problems-and-solutions)).",
     ],
   },
 ];
@@ -435,8 +439,6 @@ export type EntrepreneurshipDocumentKey =
   | "jienzhihe"
   | "scalability"
   | "businessPlan"
-  | "ccicPoster"
-  | "apicPoster"
   | "legalPlan";
 
 export interface EntrepreneurshipDocument {
@@ -463,14 +465,6 @@ export const entrepreneurshipDocuments: Record<
   businessPlan: {
     caption: "Business Plan",
     url: entrepreneurshipAssets.documents.businessPlan,
-  },
-  ccicPoster: {
-    caption: "CCiC Poster",
-    url: entrepreneurshipAssets.documents.ccicPoster,
-  },
-  apicPoster: {
-    caption: "APiC Poster",
-    url: entrepreneurshipAssets.documents.apicPoster,
   },
   legalPlan: {
     caption: "Legal Plan",
@@ -535,6 +529,7 @@ export const entrepreneurshipPage: WikiPageContent = {
     },
     {
       id: "unmet-needs-first-customers",
+      anchorIds: ["unmet-needs"],
       index: "03",
       kicker: "",
       title: "Unmet Needs & First Potential Customers",
@@ -607,6 +602,8 @@ export const entrepreneurshipPage: WikiPageContent = {
         {
           type: "figure",
           src: entrepreneurshipAssets.illustrations.who,
+          width: 4000,
+          height: 3000,
           alt: "Diagram defining CirCure's target patient population",
           caption: "Defining CirCure's target patient population.",
         },
@@ -632,6 +629,8 @@ export const entrepreneurshipPage: WikiPageContent = {
         {
           type: "figure",
           src: entrepreneurshipAssets.illustrations.empathyMap,
+          width: 1536,
+          height: 1024,
           alt: "Empathy map of the target TNBC patients",
           caption: "The Empathy Map developed for the target TNBC patients.",
         },
@@ -650,6 +649,8 @@ export const entrepreneurshipPage: WikiPageContent = {
         {
           type: "figure",
           src: entrepreneurshipAssets.illustrations.valuePropositionCanvas,
+          width: 1448,
+          height: 1086,
           alt: "Value Proposition Canvas for CirCure",
           caption: "Value Proposition Canvas for CirCure.",
         },
@@ -667,8 +668,8 @@ export const entrepreneurshipPage: WikiPageContent = {
             "Changchun therefore serves not only as the starting point for CirCure’s research and development, but also as a practical foundation for connecting with biopharmaceutical companies with capabilities in cancer immunotherapy, RNA therapeutics, or vaccine development; identifying our first potential customers; and exploring collaborations in candidate evaluation, joint validation, and subsequent development.",
           ],
         },
-        { type: "feature", key: "doc-jika" },
         { type: "feature", key: "doc-jienzhihe" },
+        { type: "feature", key: "doc-jika" },
         {
           type: "subheading",
           id: "comparison-of-existing-solutions",
@@ -750,6 +751,8 @@ export const entrepreneurshipPage: WikiPageContent = {
         {
           type: "figure",
           src: entrepreneurshipAssets.illustrations.pestel,
+          width: 1526,
+          height: 823,
           alt: "PESTEL analysis of factors influencing CirCure",
           caption: "PESTEL analysis of factors influencing CirCure.",
         },
@@ -762,6 +765,8 @@ export const entrepreneurshipPage: WikiPageContent = {
         {
           type: "figure",
           src: entrepreneurshipAssets.illustrations.tamSamSom,
+          width: 1448,
+          height: 1086,
           alt: "TAM, SAM and SOM market analysis for CirCure",
           caption: "TAM, SAM and SOM market analysis for CirCure.",
         },
@@ -877,6 +882,8 @@ export const entrepreneurshipPage: WikiPageContent = {
         {
           type: "figure",
           src: entrepreneurshipAssets.illustrations.technology,
+          width: 2117,
+          height: 743,
           alt: "Overview of CirCure's technical design decisions",
           caption: "Overview of CirCure's technical design decisions.",
         },
@@ -896,6 +903,8 @@ export const entrepreneurshipPage: WikiPageContent = {
         {
           type: "figure",
           src: entrepreneurshipAssets.illustrations.mvp,
+          width: 3000,
+          height: 1709,
           alt: "Mockup of the CirCure MVP (Minimum Viable Product)",
           caption: "Mockup of the CirCure MVP (Minimum Viable Product).",
         },
@@ -961,6 +970,8 @@ export const entrepreneurshipPage: WikiPageContent = {
         {
           type: "figure",
           src: entrepreneurshipAssets.illustrations.inventiveFocus,
+          width: 1448,
+          height: 274,
           alt: "Overview of CirCure's design focus",
           caption: "Overview of CirCure's design focus.",
         },
@@ -995,6 +1006,8 @@ export const entrepreneurshipPage: WikiPageContent = {
         {
           type: "figure",
           src: entrepreneurshipAssets.illustrations.inventiveSystem,
+          width: 1448,
+          height: 227,
           alt: "Capabilities of the CircRNA Vaccine Design System",
           caption: "Capabilities of the CircRNA Vaccine Design System.",
         },
@@ -1040,6 +1053,8 @@ export const entrepreneurshipPage: WikiPageContent = {
         {
           type: "figure",
           src: entrepreneurshipAssets.illustrations.swot,
+          width: 1448,
+          height: 922,
           alt: "SWOT analysis of CirCure",
           caption: "SWOT analysis of CirCure.",
         },
@@ -1076,6 +1091,8 @@ export const entrepreneurshipPage: WikiPageContent = {
         {
           type: "figure",
           src: entrepreneurshipAssets.illustrations.competitorImmunomicTherapeutics,
+          width: 581,
+          height: 184,
           alt: "Immunomic Therapeutics — ITI-5000",
           caption: "Immunomic Therapeutics — ITI-5000.",
         },
@@ -1088,6 +1105,8 @@ export const entrepreneurshipPage: WikiPageContent = {
         {
           type: "figure",
           src: entrepreneurshipAssets.illustrations.competitorUniversityOfWashingtonStemvac,
+          width: 3840,
+          height: 2160,
           alt: "University of Washington — STEMVAC",
           caption: "University of Washington — STEMVAC.",
         },
@@ -1100,6 +1119,8 @@ export const entrepreneurshipPage: WikiPageContent = {
         {
           type: "figure",
           src: entrepreneurshipAssets.illustrations.competitorClevelandClinic,
+          width: 3840,
+          height: 2160,
           alt: "Cleveland Clinic — α-Lactalbumin Vaccine",
           caption: "Cleveland Clinic — α-Lactalbumin Vaccine.",
         },
@@ -1130,12 +1151,16 @@ export const entrepreneurshipPage: WikiPageContent = {
         {
           type: "figure",
           src: entrepreneurshipAssets.illustrations.competitorMerck,
+          width: 3056,
+          height: 1380,
           alt: "Merck — KEYTRUDA (pembrolizumab)",
           caption: "Merck — KEYTRUDA (pembrolizumab).",
         },
         {
           type: "figure",
           src: entrepreneurshipAssets.illustrations.competitorAstraZeneca,
+          width: 4000,
+          height: 2250,
           alt: "AstraZeneca — LYNPARZA (olaparib)",
           caption: "AstraZeneca — LYNPARZA (olaparib).",
         },
@@ -1160,6 +1185,7 @@ export const entrepreneurshipPage: WikiPageContent = {
         {
           type: "subheading",
           id: "business-model",
+          anchorIds: ["key-resources"],
           index: "5.3",
           title: "Business Model",
         },
@@ -1187,6 +1213,8 @@ export const entrepreneurshipPage: WikiPageContent = {
         {
           type: "figure",
           src: entrepreneurshipAssets.illustrations.b2bB2c,
+          width: 1947,
+          height: 1448,
           alt: "B2B and B2C customer segments of CirCure",
           caption: "B2B and B2C customer segments of CirCure.",
         },
@@ -1207,6 +1235,8 @@ export const entrepreneurshipPage: WikiPageContent = {
         {
           type: "figure",
           src: entrepreneurshipAssets.illustrations.beachheadStrategy,
+          width: 2584,
+          height: 1182,
           alt: "Beachhead strategy for market entry and expansion",
           caption: "Beachhead strategy for market entry and expansion.",
         },
@@ -1273,7 +1303,10 @@ export const entrepreneurshipPage: WikiPageContent = {
         },
         {
           type: "figure",
+          className: "entrepreneurship-figure--portrait",
           src: entrepreneurshipAssets.illustrations.riskInterview,
+          width: 1279,
+          height: 1706,
           alt: "Risk interview with Yongli Jia of Hualan Biological Engineering",
           caption: "Risk interview with Yongli Jia of Hualan Biological Engineering.",
         },
@@ -1421,10 +1454,9 @@ export const entrepreneurshipPage: WikiPageContent = {
           ],
         },
         {
-          type: "prose",
-          paragraphs: [
-            "**Risks in Vaccine Candidate Identity and Functional Validation**",
-          ],
+          type: "heading",
+          level: 4,
+          title: "Risks in Vaccine Candidate Identity and Functional Validation",
         },
         {
           type: "list",
@@ -1436,8 +1468,9 @@ export const entrepreneurshipPage: WikiPageContent = {
           ],
         },
         {
-          type: "prose",
-          paragraphs: ["**Delivery, CMC, and Manufacturability Risks**"],
+          type: "heading",
+          level: 4,
+          title: "Delivery, CMC, and Manufacturability Risks",
         },
         {
           type: "list",
@@ -1449,10 +1482,9 @@ export const entrepreneurshipPage: WikiPageContent = {
           ],
         },
         {
-          type: "prose",
-          paragraphs: [
-            "**Risks in TAA/HLA Coverage and Multi-Epitope Combinations**",
-          ],
+          type: "heading",
+          level: 4,
+          title: "Risks in TAA/HLA Coverage and Multi-Epitope Combinations",
         },
         {
           type: "list",
@@ -1464,8 +1496,9 @@ export const entrepreneurshipPage: WikiPageContent = {
           ],
         },
         {
-          type: "prose",
-          paragraphs: ["**Safety and Potential Cross-Reactivity Risks**"],
+          type: "heading",
+          level: 4,
+          title: "Safety and Potential Cross-Reactivity Risks",
         },
         {
           type: "list",
@@ -1477,8 +1510,9 @@ export const entrepreneurshipPage: WikiPageContent = {
           ],
         },
         {
-          type: "prose",
-          paragraphs: ["**Funding Continuity and R&D Cost Risks**"],
+          type: "heading",
+          level: 4,
+          title: "Funding Continuity and R&D Cost Risks",
         },
         {
           type: "list",
@@ -1521,10 +1555,14 @@ export const entrepreneurshipPage: WikiPageContent = {
             {
               src: entrepreneurshipAssets.illustrations.originalDocument1,
               alt: "Original patent acceptance document",
+              width: 853,
+              height: 1207,
             },
             {
               src: entrepreneurshipAssets.illustrations.originalDocument1EnTranslation,
               alt: "English translation of the patent acceptance document",
+              width: 904,
+              height: 1280,
             },
           ],
           caption: "Original Document & English Translation",
@@ -1548,10 +1586,14 @@ export const entrepreneurshipPage: WikiPageContent = {
             {
               src: entrepreneurshipAssets.illustrations.originalDocument2,
               alt: "Original software copyright registration document",
+              width: 863,
+              height: 1167,
             },
             {
               src: entrepreneurshipAssets.illustrations.originalDocument2EnTranslation,
               alt: "English translation of the software copyright registration document",
+              width: 945,
+              height: 1280,
             },
           ],
           caption: "Original Document & English Translation",
@@ -1576,12 +1618,6 @@ export const entrepreneurshipPage: WikiPageContent = {
           title: "Business documents",
         },
         { type: "feature", key: "doc-business-plan" },
-        {
-          type: "prose",
-          paragraphs: ["Publicity Material"],
-        },
-        { type: "feature", key: "doc-ccic-poster" },
-        { type: "feature", key: "doc-apic-poster" },
         {
           type: "subheading",
           id: "legal-considerations",
@@ -1615,6 +1651,8 @@ export const entrepreneurshipPage: WikiPageContent = {
         {
           type: "figure",
           src: entrepreneurshipAssets.illustrations.teamPhoto,
+          width: 4000,
+          height: 2667,
           alt: "Photo of the JLU-FBH team",
           caption: "The JLU-FBH team.",
         },
@@ -1709,30 +1747,44 @@ export const entrepreneurshipPage: WikiPageContent = {
             {
               src: entrepreneurshipAssets.illustrations.actionEastChina,
               alt: "2026 iGEM East China Regional Meeting",
+              width: 4000,
+              height: 3000,
             },
             {
               src: entrepreneurshipAssets.illustrations.actionCentralChina,
               alt: "2026 Central China iGEM Forum",
+              width: 1920,
+              height: 1280,
             },
             {
               src: entrepreneurshipAssets.illustrations.actionNorthChina,
               alt: "2026 North China iGEMer Meetup",
+              width: 2276,
+              height: 1280,
             },
             {
               src: entrepreneurshipAssets.illustrations.actionNortheastChina,
               alt: "Northeast China iGEM Co-creation Salon",
+              width: 2275,
+              height: 1280,
             },
             {
               src: entrepreneurshipAssets.illustrations.actionSouthChina,
               alt: "Southern China Retional Meeting",
+              width: 1920,
+              height: 1280,
             },
             {
               src: entrepreneurshipAssets.illustrations.actionSynbiopunk,
               alt: "Synbiopunk-CCiC 2026",
+              width: 4000,
+              height: 2251,
             },
             {
               src: entrepreneurshipAssets.illustrations.actionApic,
               alt: "The 1st Gramd APiC Conference for Asia-Pracific iGEMer Community",
+              width: 2568,
+              height: 1926,
             },
           ],
           caption:
@@ -1813,13 +1865,15 @@ export const entrepreneurshipPage: WikiPageContent = {
     },
   ],
   links: [
-    { path: "/human-practices", label: "Stakeholder decisions" },
-    { path: "/sustainability", label: "Access and impact" },
-    { path: "/safety-and-security", label: "Responsible limits" },
+    { path: "/human-practices", label: "Stakeholder Feedback" },
+    { path: "/sustainability", label: "SDG Healthcare Equity" },
+    { path: "/description", label: "Clinical Rationale" },
+    { path: "/results", label: "Efficacy Evidence" },
   ],
   next: {
     path: "/human-practices",
     label: "Human Practices",
-    title: "Who changed the project—and how?",
+    title: "Listening to the Voices That Matter Most",
+    description: "A commercial strategy is hollow without patient empathy. Discover how dialogues with oncologists, breast cancer patients, and ethicists continuously reshaped our research.",
   },
 };

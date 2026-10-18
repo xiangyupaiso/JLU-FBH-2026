@@ -10,14 +10,12 @@ const rawSections: WikiSection[] = [
     "kicker": "Education",
     "title": "Overview",
     "summary": "",
+    "masthead": {
+      "quote": "Education, therefore, is a process of living and not a preparation for future living.",
+      "attribution": "John Dewey",
+      "attributionRole": "My Pedagogic Creed, 1897"
+    },
     "blocks": [
-      {
-        "type": "epigraph",
-        "quote": "Education, therefore, is a process of living and not a preparation for future living.",
-        "translationZh": "",
-        "attribution": "John Dewey",
-        "attributionRole": "My Pedagogic Creed, 1897"
-      },
       {
         "type": "prose",
         "paragraphs": [
@@ -45,6 +43,8 @@ const rawSections: WikiSection[] = [
       {
         "type": "figure",
         "src": "__BASE__assets/education/education-overview-map.png",
+        "width": 1536,
+        "height": 1024,
         "alt": "Education overview map"
       },
       {
@@ -107,6 +107,8 @@ const rawSections: WikiSection[] = [
       {
         "type": "figure",
         "src": "__BASE__assets/education/recursive-care-spiral.png",
+        "width": 1536,
+        "height": 1024,
         "alt": "Recursive care spiral"
       },
       {
@@ -647,6 +649,8 @@ const rawSections: WikiSection[] = [
       {
         "type": "figure",
         "src": "__BASE__assets/education/virtual-laboratory-nine-experiments.png",
+        "width": 1536,
+        "height": 1024,
         "alt": "Virtual laboratory nine experiments"
       },
       {
@@ -736,6 +740,8 @@ const rawSections: WikiSection[] = [
       {
         "type": "figure",
         "src": "__BASE__assets/education/virtual-laboratory-interface.png",
+        "width": 1536,
+        "height": 1024,
         "alt": "Virtual laboratory interface"
       },
       {
@@ -800,44 +806,80 @@ const rawSections: WikiSection[] = [
       },
       {
         "type": "subheading",
-        "id": "hailun",
+        "id": "hailun-first-engagement-introducing-an-early-experiment",
         "index": "3.2.1.3.1",
-        "title": "Hailun"
+        "title": "Hailun-First Engagement: Introducing an Early Experiment"
       },
       {
         "type": "prose",
         "paragraphs": [
-          "Several months after Winter Outreach, the Virtual Laboratory returned to Hailun No. 1 Senior High School."
+          "Our connection with Hailun No. 1 Senior High School began during Winter Outreach. Alongside the introductory activities on synthetic biology and iGEM, we brought an early version of the Virtual Laboratory to the school, introducing students to the first experiment available at that stage of development."
         ]
       },
       {
         "type": "prose",
         "paragraphs": [
-          "On May 21, without any team members present, a teacher projected the program onto a large classroom screen, guided students through shared viewing and operation, and continued using the resource and collecting feedback during subsequent self-study periods."
+          "This initial experience marked an early opportunity to bring the digital laboratory into a real educational setting. Although the platform had not yet developed into its complete nine-experiment course, the activity allowed the Virtual Laboratory to become part of an existing school community rather than remaining solely a resource developed within our team."
+        ]
+      },
+      {
+        "type": "subheading",
+        "id": "hailun-second-engagement-returning-with-a-developed-resource",
+        "index": "3.2.1.3.2",
+        "title": "Hailun-Second Engagement: Returning with a Developed Resource"
+      },
+      {
+        "type": "prose",
+        "paragraphs": [
+          "Several months later, the Virtual Laboratory returned to Hailun in a more developed form."
         ]
       },
       {
         "type": "prose",
         "paragraphs": [
-          "This experience allowed us to observe, for the first time, what happened when the product was used independently of its developers."
+          "After reconnecting with the school on May 20, our team provided the updated resource for further classroom use. On May 21, without team members present, a teacher projected the program onto a large classroom screen and guided students through shared viewing and operation. The teacher continued using the resource and collecting feedback during subsequent self-study periods."
         ]
       },
       {
         "type": "prose",
         "paragraphs": [
-          "Making a digital resource available is only the most basic requirement."
+          "This second engagement revealed something that the initial demonstration alone could not establish: the educational resource could be taken up and used independently by a teacher within the school's own learning environment."
         ]
       },
       {
         "type": "prose",
         "paragraphs": [
-          "When a teacher can understand its structure, integrate it into an existing classroom, and continue organizing learning without the team being present, Access moves beyond the mere provision of resources toward the community's actual ability to use them."
+          "Making a digital tool available is only the first step. When teachers can understand its structure, integrate it into their lessons, and sustain its use without the developers being present, **Access** moves beyond resource provision toward genuine educational use."
+        ]
+      },
+      {
+        "type": "subheading",
+        "id": "a-relationship-that-developed-across-two-stages",
+        "index": "3.2.1.3.3",
+        "title": "A Relationship That Developed Across Two Stages"
+      },
+      {
+        "type": "prose",
+        "paragraphs": [
+          "The two engagements with Hailun represent different stages in the relationship between our Virtual Laboratory and a real learning community."
         ]
       },
       {
         "type": "prose",
         "paragraphs": [
-          "Hailun therefore connected Winter Outreach with digital experimental learning in May, forming a clear example of Continuity within our Education Lineage."
+          "The first introduced an early experimental resource. The second returned with a more developed tool and created an opportunity for independent classroom use."
+        ]
+      },
+      {
+        "type": "prose",
+        "paragraphs": [
+          "We do not treat these two engagements alone as evidence of two completed product-iteration cycles. Instead, they demonstrate how the development of an educational resource and its use within a community can progress together."
+        ]
+      },
+      {
+        "type": "prose",
+        "paragraphs": [
+          "Within our **Education Lineage**, Hailun therefore represents **Continuity**: an initial connection established through Winter Outreach became a pathway for later digital learning, while the teacher gained an active role in sustaining that learning beyond our team's direct involvement."
         ]
       },
       {
@@ -1049,6 +1091,8 @@ const rawSections: WikiSection[] = [
       {
         "type": "figure",
         "src": "__BASE__assets/education/pilu-town-iteration.png",
+        "width": 1536,
+        "height": 1024,
         "alt": "Pilu town iteration"
       },
       {
@@ -1060,11 +1104,6 @@ const rawSections: WikiSection[] = [
         "paragraphs": [
           "Easy / Intermediate / Advanced"
         ]
-      },
-      {
-        "type": "note",
-        "label": "Video coming soon",
-        "body": "The instructional video will be added here."
       },
       {
         "type": "prose",
@@ -1117,6 +1156,8 @@ const rawSections: WikiSection[] = [
       {
         "type": "figure",
         "src": "__BASE__assets/education/synbio-classroom.png",
+        "width": 1536,
+        "height": 1024,
         "alt": "Synbio classroom"
       },
       {
@@ -2650,6 +2691,8 @@ const rawSections: WikiSection[] = [
       {
         "type": "figure",
         "src": "__BASE__assets/education/xinghua-festival.png",
+        "width": 1536,
+        "height": 1024,
         "alt": "Xinghua festival"
       },
       {
@@ -2940,6 +2983,8 @@ const rawSections: WikiSection[] = [
       {
         "type": "figure",
         "src": "__BASE__assets/education/health-run.png",
+        "width": 1536,
+        "height": 1024,
         "alt": "Health run"
       },
       {
@@ -3308,6 +3353,8 @@ const rawSections: WikiSection[] = [
       {
         "type": "figure",
         "src": "__BASE__assets/education/molecular-rhythm.png",
+        "width": 1536,
+        "height": 1024,
         "alt": "Molecular rhythm"
       },
       {
@@ -3580,6 +3627,8 @@ const rawSections: WikiSection[] = [
       {
         "type": "figure",
         "src": "__BASE__assets/education/breast-guardian.png",
+        "width": 1536,
+        "height": 1024,
         "alt": "Breast guardian"
       },
       {
@@ -3847,11 +3896,6 @@ const rawSections: WikiSection[] = [
       {
         "type": "feature",
         "key": "education-media-group-10"
-      },
-      {
-        "type": "note",
-        "label": "Video coming soon",
-        "body": "The instructional video will be added here."
       },
       {
         "type": "prose",
@@ -4310,6 +4354,8 @@ const rawSections: WikiSection[] = [
       {
         "type": "figure",
         "src": "__BASE__assets/education/ethics-debate.png",
+        "width": 1536,
+        "height": 1024,
         "alt": "Ethics debate"
       },
       {
@@ -4399,6 +4445,8 @@ const rawSections: WikiSection[] = [
       {
         "type": "figure",
         "src": "__BASE__assets/education/participation-dialogue-without-a-standard-position-photo-61.png",
+        "width": 1016,
+        "height": 1548,
         "alt": "Illustration for Dialogue Without a Standard Position"
       },
       {
@@ -4801,6 +4849,8 @@ const rawSections: WikiSection[] = [
       {
         "type": "figure",
         "src": "__BASE__assets/education/design-photo-65.png",
+        "width": 2400,
+        "height": 1855,
         "alt": "Illustration for Bio Memory Match"
       },
       {
@@ -5876,6 +5926,8 @@ const rawSections: WikiSection[] = [
       {
         "type": "figure",
         "src": "__BASE__assets/education/education-feedback-invitation.png",
+        "width": 1560,
+        "height": 1560,
         "alt": "Education feedback invitation"
       }
     ]

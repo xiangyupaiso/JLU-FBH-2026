@@ -310,7 +310,6 @@ export const computationalToolsData = {
       "To account for these properties, we developed an advanced computational tool for **circRNA structure and immune-context analysis**. Rather than treating circRNA as a conventional linear RNA sequence, our framework incorporates the circular topology of the molecule into structural prediction.",
       "The software uses **circular-aware positional encoding and structural constraints** to preserve the topological connection between the beginning and end of the sequence. This allows us to evaluate the predicted structural characteristics and stability of candidate circRNAs before experimental synthesis.",
       "However, structural stability alone does not determine whether a circRNA is suitable for therapeutic use. We therefore incorporated several innate immune sensing pathways, including **RIG-I, TLR7, TLR8, and PKR**, into the same framework (G. Liu and Gack 2020). This enables different candidates to be evaluated from both structural and immunological perspectives.",
-      "The resulting workflow can be summarized as: **circRNA sequence → circular structure → structural stability → immune sensing**",
       "This provides CirCure with a computational layer for comparing candidate circRNAs before they enter experimental validation, helping us select designs with a more appropriate combination of structural and immunological properties.",
     ],
   },
@@ -589,15 +588,11 @@ export const descriptionPage: WikiPageContent = {
       blocks: [
         {
           type: "prose",
-          paragraphs: oncologyImpactData.paragraphs.slice(0, 2),
+          paragraphs: [...oncologyImpactData.paragraphs],
         },
         {
           type: "figure",
           ...descriptionFigures.fig6,
-        },
-        {
-          type: "prose",
-          paragraphs: oncologyImpactData.paragraphs.slice(2),
         },
       ],
     },
@@ -658,14 +653,15 @@ export const descriptionPage: WikiPageContent = {
   ],
   links: [
     { path: "/engineering", label: "Engineering Success" },
+    { path: "/design", label: "Molecular Design" },
     { path: "/results", label: "Results & Discussion" },
-    { path: "/contribution", label: "Team Contribution" },
-    { path: "/visual-design", label: "Visual Design" },
+    { path: "/human-practices", label: "Clinical & Human Context" },
   ],
   next: {
     path: "/engineering",
     label: "Engineering Success",
-    title: "How the design cycle refined each module into reproducible biological hardware.",
+    title: "Turning Molecular Rationale into Working Circuits",
+    description: "A powerful clinical concept demands rigorous engineering. Follow four iterative DBTL cycles that transformed theoretical circRNA into functional biological hardware.",
   },
 };
 

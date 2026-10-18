@@ -1,11 +1,19 @@
 /* Home opening intro: sparkler signature, strobe and hand-off to the header. */
+:root:has(.home-intro) {
+  overflow: hidden;
+  overscroll-behavior: none;
+  scrollbar-gutter: stable;
+}
+
 .home-intro {
   position: fixed;
   inset: 0;
-  z-index: 99;
+  z-index: 102;
   display: grid;
   place-items: center;
-  pointer-events: none;
+  pointer-events: auto;
+  touch-action: none;
+  outline: none;
 }
 .home-intro-flash,
 .home-intro-embers {
@@ -130,14 +138,6 @@
   to {
     text-shadow: none;
   }
-}
-
-/* The scroll cue waits for the intro to hand over. */
-.scene01-scroll-cue i {
-  transition: opacity 500ms var(--ease-out);
-}
-.home-scene01[data-intro="playing"] .scene01-scroll-cue i {
-  opacity: 0;
 }
 
 @media (max-width: 800px) {

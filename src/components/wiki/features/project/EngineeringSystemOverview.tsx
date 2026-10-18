@@ -2,20 +2,20 @@ import { useRef, useCallback, type MouseEvent } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 
-import bgSrc from "../../../../assets/wiki/engineering/engineering-overview-bg.webp";
-import sheepSrc from "../../../../assets/wiki/engineering/engineering-overview-sheep.webp";
-import gearDryLabSrc from "../../../../assets/wiki/engineering/engineering-overview-gear-dry-lab.webp";
-import gearWetLabSrc from "../../../../assets/wiki/engineering/engineering-overview-gear-wet-lab.webp";
-import gearIhpSrc from "../../../../assets/wiki/engineering/engineering-overview-gear-ihp.webp";
-import gearEducationSrc from "../../../../assets/wiki/engineering/engineering-overview-gear-education.webp";
-import gearVisualDesignSrc from "../../../../assets/wiki/engineering/engineering-overview-gear-visual-design.webp";
-import gearEntrepreneurshipSrc from "../../../../assets/wiki/engineering/engineering-overview-gear-entrepreneurship.webp";
+const bgSrc = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-overview-bg.webp";
+const sheepSrc = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-overview-sheep.webp";
+const gearDryLabSrc = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-overview-gear-dry-lab.webp";
+const gearWetLabSrc = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-overview-gear-wet-lab.webp";
+const gearIhpSrc = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-overview-gear-ihp.webp";
+const gearEducationSrc = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-overview-gear-education.webp";
+const gearVisualDesignSrc = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-overview-gear-visual-design.webp";
+const gearEntrepreneurshipSrc = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-overview-gear-entrepreneurship.webp";
 
-import dialOuterGearSrc from "../../../../assets/wiki/engineering/engineering-dial-outer-gear.webp";
-import dialInnerFaceSrc from "../../../../assets/wiki/engineering/engineering-dial-inner-face.webp";
-import handLongSrc from "../../../../assets/wiki/engineering/engineering-dial-hand-long.webp";
-import handShortSrc from "../../../../assets/wiki/engineering/engineering-dial-hand-short.webp";
-import dialCapSrc from "../../../../assets/wiki/engineering/engineering-dial-cap.webp";
+const dialOuterGearSrc = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-dial-outer-gear.webp";
+const dialInnerFaceSrc = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-dial-inner-face.webp";
+const handLongSrc = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-dial-hand-long.webp";
+const handShortSrc = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-dial-hand-short.webp";
+const dialCapSrc = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-dial-cap.webp";
 
 import "../../../../styles/features/engineering-overview.css";
 

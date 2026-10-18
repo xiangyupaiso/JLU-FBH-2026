@@ -69,7 +69,7 @@ const STOPS = [
   "#96c8ba", "#7dbcb1", "#61aea7", "#4a9d9d", "#3c8595", "#2d6d8d", "#1f5785",
 ];
 
-const FONT = "'DejaVu Sans', 'Helvetica Neue', Arial, sans-serif";
+const FONT = "Lexend, 'Helvetica Neue', Arial, sans-serif";
 
 /** Keep a wrapped tooltip inside the chart and away from the 80px sheep cursor. */
 // eslint-disable-next-line react-refresh/only-export-components

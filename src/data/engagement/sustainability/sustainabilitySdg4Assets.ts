@@ -10,7 +10,8 @@ import type { StakeholderPhotoSet } from "./sustainabilityPhotos";
 
 const SDG4_PAGES =
   "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/sustainability/sdg4";
-const SDG4_DOCS = "https://static.igem.wiki/teams/6056/wiki/files/docs/sus-sdg4";
+const SDG4_DOCS =
+  "https://static.igem.wiki/teams/6056/wiki/files/docs/sus-sdg4";
 
 export const sdg4DocUrl = (fileName: string) => `${SDG4_DOCS}/${fileName}`;
 
@@ -32,8 +33,7 @@ export const sdg4PhotoSets = {
     "02-shuangcheng-yu-2.avif",
     "02-shuangcheng-yu-3.avif",
   ),
-  // Manuscript lists this single (placeholder-named) source three times.
-  "sdg4-03": photoSet("Weiwei Han", "woshinailong.avif"),
+  "sdg4-03": [],
   "sdg4-05": photoSet(
     "Body Guardians",
     "05-body-guardians-1.avif",
@@ -161,6 +161,8 @@ export const sdg4ImageAssets = {
     uploadUrl: `${SDG4_PAGES}/01-virtual-laboratory.avif`,
     alt: "Virtual laboratory with nine experiments across three difficulty levels",
     section: "SDG 4 — Educational Resources",
+    width: 1600,
+    height: 900,
   },
   sdg4BioMemoryMatch: {
     kind: "image",
@@ -169,6 +171,8 @@ export const sdg4ImageAssets = {
     uploadUrl: `${SDG4_PAGES}/02-bio-memory-match.avif`,
     alt: "Bio Memory Match physical cards and bilingual concept guide",
     section: "SDG 4 — Educational Resources",
+    width: 1600,
+    height: 900,
   },
   sdg4BreastGuardianRpg: {
     kind: "image",
@@ -177,6 +181,8 @@ export const sdg4ImageAssets = {
     uploadUrl: `${SDG4_PAGES}/03-breast-guardian-rpg.avif`,
     alt: "Breast Guardian RPG interactive story game",
     section: "SDG 4 — Educational Resources",
+    width: 2560,
+    height: 1440,
   },
   sdg4Evidence0: {
     kind: "image",
@@ -185,6 +191,8 @@ export const sdg4ImageAssets = {
     uploadUrl: `${SDG4_PAGES}/evidence-0.avif`,
     alt: "Feedback from three stakeholder groups informing educational design",
     section: "SDG 4 — Evidence",
+    width: 2807,
+    height: 1025,
   },
   sdg4Evidence1: {
     kind: "image",
@@ -193,6 +201,8 @@ export const sdg4ImageAssets = {
     uploadUrl: `${SDG4_PAGES}/evidence-1.avif`,
     alt: "Reach of the 14 educational activities across schools and audiences",
     section: "SDG 4 — Evidence",
+    width: 3599,
+    height: 2070,
   },
   sdg4Evidence2: {
     kind: "image",
@@ -201,5 +211,7 @@ export const sdg4ImageAssets = {
     uploadUrl: `${SDG4_PAGES}/evidence-2.avif`,
     alt: "SDG 4-shaped word cloud of educational priorities",
     section: "SDG 4 — Evidence",
+    width: 2010,
+    height: 694,
   },
 } as const satisfies Record<string, SustainabilityAssetEntry>;

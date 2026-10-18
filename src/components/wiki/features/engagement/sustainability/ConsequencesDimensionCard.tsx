@@ -78,22 +78,36 @@ export function ConsequencesDimensionCard({
 
       <ul className="sust-consequence-grid">
         {consequences.dimensions.map((dimension) => (
-          <li className="sust-consequence-card" data-dimension={dimension.id} key={dimension.id}>
+          <li
+            className="sust-consequence-card"
+            data-dimension={dimension.id}
+            key={dimension.id}
+          >
             <header className="sust-consequence-card__header">
-              <span className="sust-consequence-card__icon">{DIMENSION_ICONS[dimension.id]}</span>
-              <h5 className="sust-consequence-card__title">{dimension.title}</h5>
+              <span className="sust-consequence-card__icon">
+                {DIMENSION_ICONS[dimension.id]}
+              </span>
+              <h5 className="sust-consequence-card__title">
+                {dimension.title}
+              </h5>
             </header>
             {dimension.intro ? (
               <p className="sust-consequence-card__intro">
                 <RichText text={dimension.intro} />
               </p>
             ) : null}
+            {dimension.paragraphs ? (
+              <Paragraphs items={dimension.paragraphs} />
+            ) : null}
             <dl className="sust-consequence-card__rows">
-              {ROWS.map(([key, label]) => (
-                <div className={`sust-consequence-card__row sust-consequence-card__row--${key}`} key={key}>
+              {ROWS.filter(([key]) => dimension[key]).map(([key, label]) => (
+                <div
+                  className={`sust-consequence-card__row sust-consequence-card__row--${key}`}
+                  key={key}
+                >
                   <dt>{label}</dt>
                   <dd>
-                    <RichText text={dimension[key]} />
+                    <RichText text={dimension[key] ?? ""} />
                   </dd>
                 </div>
               ))}

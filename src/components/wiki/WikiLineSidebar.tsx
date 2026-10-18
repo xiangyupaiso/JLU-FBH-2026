@@ -103,16 +103,9 @@ export function WikiLineSidebar({
   const [ribbonTargetId, setRibbonTargetId] = useState(
     activeChildId || activeId,
   );
-  const activeChildParentId = activeChildId
-    ? items.find((item) =>
-      item.children?.some(
-        (child) =>
-          child.id === activeChildId ||
-          child.id.startsWith(`${activeChildId.split("-")[0]}-`),
-      ),
-    )?.id
-    : undefined;
-  const expandedItemId = showAllChildren ? (activeChildParentId ?? activeId) : activeChildParentId;
+  // A section's introduction belongs to that section even before its first
+  // subsection reaches the reading line. Keep its full second level open.
+  const expandedItemId = activeId;
   const activeTopChildId = useMemo(() => {
     if (!activeChildId || !expandedItemId) return "";
     const parent = items.find((item) => item.id === expandedItemId);
@@ -250,7 +243,12 @@ export function WikiLineSidebar({
       );
       const nearest = travel < 0.5 ? current : next;
 
-      outline.style.setProperty("--wiki-outline-progress", progress.toFixed(4));
+      // The ribbon alone consumes progress; keep its changing value out of
+      // the navigation labels' inherited styles.
+      const progressValue = progress.toFixed(4);
+      if (ribbon.style.getPropertyValue("--wiki-outline-progress") !== progressValue) {
+        ribbon.style.setProperty("--wiki-outline-progress", progressValue);
+      }
       setRibbonTargetId((previous) =>
         previous === nearest.id ? previous : nearest.id,
       );
@@ -345,7 +343,7 @@ export function WikiLineSidebar({
         (clientY - ribbonBounds.top) / Math.max(1, ribbonBounds.height),
       ),
     );
-    outline.style.setProperty("--wiki-outline-progress", progress.toFixed(4));
+    ribbon.style.setProperty("--wiki-outline-progress", progress.toFixed(4));
     document.documentElement.classList.add("is-thread-directing");
 
     // Scrub through the document timeline; the pinned frame's scrollTop is
@@ -506,9 +504,17 @@ export function WikiLineSidebar({
                     const childIndex = /^\d+$/.test(item.index)
                       ? child.index.replace(/^\d+(?=\.)/, String(Number(item.index)))
                       : child.index;
-                    const childLabel = child.index && child.label.startsWith(`${child.index} `)
-                      ? child.label.slice(child.index.length).trimStart()
-                      : child.label;
+                    const childLabel = child.index
+                      ? child.label
+                          .replace(
+                            new RegExp(
+                              `^${child.index.replace(/\./g, "\\.")}[.\\s·•]+`,
+                            ),
+                            "",
+                          )
+                          .replace(/^[.·•\s]+/, "")
+                          .trim()
+                      : child.label.replace(/^[.·•\s]+/, "").trim();
                     return (
                       <a
                         className={`wiki-outline__secondary wiki-outline__secondary--depth-${Math.min(child.index.split(".").length, 4)}${

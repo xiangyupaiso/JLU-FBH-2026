@@ -172,7 +172,7 @@ export function animateTnbcReading(
       id: "home-why-tnbc-reading",
       trigger: copy,
       start: () => `top top+=${headerHeight}`,
-      end: () => `+=${Math.round(window.innerHeight * 1.6)}`,
+      end: () => `+=${Math.round(window.innerHeight * 1.48 * (1 + HOME_REST_RATIO))}`,
       pin: true,
       scrub: 0.22,
       invalidateOnRefresh: true,

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import type {
   LegacyTool,
   LegacyToolPdf,
@@ -8,7 +9,7 @@ import { RichText } from "./RichText";
 import "../../../../../styles/wiki-pdf-folders.css";
 
 type ToolCard = Pick<LegacyTool, "title" | "pdfs"> &
-  Partial<Pick<LegacyTool, "why" | "whatItHelpsWith" | "bestFor">>;
+  Partial<Pick<LegacyTool, "why" | "whatItHelpsWith" | "bestFor" | "links">>;
 
 const ROWS = [
   ["why", "Why"],
@@ -54,7 +55,7 @@ export function PdfToolList({
   if (!active) return null;
 
   const tabId = (index: number) => `${uid}-archive-tab-${index}`;
-  const panelId = `${uid}-archive-panel`;
+  const panelId = (index: number) => `${uid}-archive-panel-${index}`;
   /** 2×2 while there is more than one tool; a single folder when there is one. */
   const grid =
     tools.length > 1 ? (tools.length <= 4 ? "2x2" : "3up") : "single";
@@ -71,10 +72,27 @@ export function PdfToolList({
               role="tab"
               id={tabId(index)}
               aria-selected={index === open}
-              aria-controls={panelId}
+              aria-controls={panelId(index)}
+              tabIndex={index === open ? 0 : -1}
               className="sust-folder"
               data-tint={TINTS[index % TINTS.length]}
               onClick={() => setOpen(index)}
+              onKeyDown={(event) => {
+                const next =
+                  event.key === "Home"
+                    ? 0
+                    : event.key === "End"
+                      ? tools.length - 1
+                      : event.key === "ArrowRight"
+                        ? (index + 1) % tools.length
+                        : event.key === "ArrowLeft"
+                          ? (index + tools.length - 1) % tools.length
+                          : null;
+                if (next === null) return;
+                event.preventDefault();
+                setOpen(next);
+                document.getElementById(tabId(next))?.focus();
+              }}
             >
               {/* Folder back plate: keeps physical back support when cover swings open in 3D */}
               <span className="sust-folder__back" aria-hidden="true" />
@@ -99,51 +117,68 @@ export function PdfToolList({
         <p className="sust-archive__hint">Click the document to learn.</p>
       </div>
 
-      <article
-        className="sust-tool-card"
-        role="tabpanel"
-        id={panelId}
-        aria-labelledby={tabId(open)}
-        tabIndex={0}
-      >
-        <h4 className="sust-tool-card__title">{active.title}</h4>
-        {ROWS.some(([key]) => active[key]) ? (
-          <dl className="sust-tool-card__rows">
-            {ROWS.map(([key, label]) =>
-              active[key] ? (
-                <div className="sust-tool-card__row" key={key}>
-                  <dt>{label}</dt>
-                  <dd>
-                    <RichText text={active[key]} />
-                  </dd>
-                </div>
-              ) : null,
-            )}
-          </dl>
-        ) : null}
-        <div className="sust-tool-card__actions">
-          {active.pdfs.map((pdf) => (
-            <a
-              key={pdf.fileName}
-              className="sust-tool-card__btn"
-              href={pdf.url ?? sustainabilityDocUrl(pdf.fileName)}
-              target={onPdfSelect ? undefined : "_blank"}
-              rel="noopener noreferrer"
-              aria-label={`${active.title} (${pdf.label}), opens in ${onPdfSelect ? "a dialog" : "a new tab"}`}
-              onClick={
-                onPdfSelect
-                  ? (event) => {
-                      event.preventDefault();
-                      onPdfSelect(pdf, active.title);
-                    }
-                  : undefined
-              }
-            >
-              {pdfLabel(pdf.label)}
-            </a>
-          ))}
-        </div>
-      </article>
+      {/* All panels share one grid cell, reserving the longest tool's height. */}
+      <div className="sust-archive__panels">
+        {tools.map((tool, index) => (
+          <article
+            key={tool.title}
+            className="sust-tool-card"
+            role="tabpanel"
+            id={panelId(index)}
+            aria-labelledby={tabId(index)}
+            aria-hidden={index !== open}
+            inert={index !== open}
+            tabIndex={index === open ? 0 : -1}
+          >
+            <h4 className="sust-tool-card__title">{tool.title}</h4>
+            {ROWS.some(([key]) => tool[key]) ? (
+              <dl className="sust-tool-card__rows">
+                {ROWS.map(([key, label]) =>
+                  tool[key] ? (
+                    <div className="sust-tool-card__row" key={key}>
+                      <dt>{label}</dt>
+                      <dd>
+                        <RichText text={tool[key]} />
+                      </dd>
+                    </div>
+                  ) : null,
+                )}
+              </dl>
+            ) : null}
+            <div className="sust-tool-card__actions">
+              {tool.pdfs.map((pdf) => (
+                <a
+                  key={pdf.fileName}
+                  className="sust-tool-card__btn"
+                  href={pdf.url ?? sustainabilityDocUrl(pdf.fileName)}
+                  target={onPdfSelect ? undefined : "_blank"}
+                  rel="noopener noreferrer"
+                  aria-label={`${tool.title} (${pdf.label}), opens in ${onPdfSelect ? "a dialog" : "a new tab"}`}
+                  onClick={
+                    onPdfSelect
+                      ? (event) => {
+                          event.preventDefault();
+                          onPdfSelect(pdf, tool.title);
+                        }
+                      : undefined
+                  }
+                >
+                  {pdfLabel(pdf.label)}
+                </a>
+              ))}
+              {tool.links?.map((link) => (
+                <Link
+                  className="sust-tool-card__btn"
+                  key={link.href}
+                  to={link.href}
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </div>
+          </article>
+        ))}
+      </div>
     </div>
   );
 }

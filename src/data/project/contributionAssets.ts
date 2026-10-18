@@ -99,8 +99,11 @@ export interface ContributionAssetEntry {
   localSourcePath: string;
   /** Bundled local URL (images only — Vite emits a hashed asset URL). */
   localSrc?: string;
-  /** Official CDN URL; empty until the file is uploaded. */
+  /** iGEM CDN URL; empty until the file is uploaded. */
   uploadUrl: string;
+  /** Intrinsic pixel size of the CDN file, for layout reservation. */
+  width?: number;
+  height?: number;
   /** Figure caption / document label. Also the accessible name. */
   alt: string;
   /** Section the asset belongs to, for the registry export. */
@@ -132,6 +135,8 @@ export const contributionAssets = {
     localSourcePath: `${assetDir}/contribution-responsible-ddl-crisis-poster.webp`,
     localSrc: ddlCrisisPosterImg,
     uploadUrl: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/contribution/contribution-responsible-ddl-crisis-poster-1947ba1bf803.webp",
+    width: 1086,
+    height: 1448,
     alt: "Poster of DDL Crisis murder mystery game",
     section: "Responsible Research in Practice",
   },
@@ -163,6 +168,8 @@ export const contributionAssets = {
     localSourcePath: `${assetDir}/contribution-hardware-circore-device.webp`,
     localSrc: circoreDeviceImg,
     uploadUrl: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/contribution/contribution-hardware-circore-device-cce193f20a95.webp",
+    width: 597,
+    height: 674,
     alt: "Schematic diagram of the CirCore circRNA vaccine expression device",
     section: "Modular Hardware Platform",
   },
@@ -174,6 +181,8 @@ export const contributionAssets = {
     localSourcePath: `${assetDir}/contribution-sdg-set-develop-grow-framework.webp`,
     localSrc: sdgFrameworkImg,
     uploadUrl: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/contribution/contribution-sdg-set-develop-grow-framework-2a21c9b3895c.webp",
+    width: 1796,
+    height: 1800,
     alt: "SET-DEVELOP-GROW Impact Framework (SDG Impact Framework)",
     section: "Sustainable Innovation Framework",
   },
@@ -185,6 +194,8 @@ export const contributionAssets = {
     localSourcePath: `${assetDir}/contribution-entrepreneurship-tam-sam-som.webp`,
     localSrc: tamSamSomImg,
     uploadUrl: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/contribution/contribution-entrepreneurship-tam-sam-som-15c258abe6a7.webp",
+    width: 1280,
+    height: 960,
     alt: "TAM-SAM-SOM market size estimation",
     section: "Translation Pathway",
   },
@@ -250,6 +261,8 @@ export const contributionAssets = {
     localSourcePath: `${assetDir}/contribution-education-bio-memory-cover.webp`,
     localSrc: bioMemoryCoverImg,
     uploadUrl: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/contribution/contribution-education-bio-memory-cover-c9e5096f1b79.webp",
+    width: 1024,
+    height: 1535,
     alt: "Cover design of the Bio Memory Match game",
     section: "Education",
   },

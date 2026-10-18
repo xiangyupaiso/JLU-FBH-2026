@@ -1,12 +1,12 @@
 .hp-local-page {
-  --hp-paper: var(--wet-paper);
-  --hp-paper-soft: var(--wet-paper-light);
-  --hp-ink: var(--wet-ink);
-  --hp-ink-soft: var(--wet-muted);
-  --hp-teal: var(--wet-teal);
-  --hp-wine: var(--wet-accent);
+  --hp-paper: var(--route-paper);
+  --hp-paper-soft: var(--route-paper);
+  --hp-ink: var(--route-ink);
+  --hp-ink-soft: var(--route-muted);
+  --hp-teal: var(--route-accent);
+  --hp-wine: var(--route-accent);
   --hp-coral: #d784b3;
-  --hp-line: var(--wet-line);
+  --hp-line: var(--route-line);
   overflow: clip;
   background: var(--hp-paper);
   color: var(--hp-ink);
@@ -193,13 +193,6 @@
   text-transform: uppercase;
 }
 
-.hp-local-layout.wiki-record {
-  display: block;
-  width: min(1320px, calc(100% - 48px));
-  margin: 0 auto;
-  padding: 40px 0 0;
-}
-
 .hp-local-content {
   min-width: 0;
 }
@@ -236,7 +229,7 @@
   gap: 16px;
   margin: 0;
   padding-bottom: 10px;
-  border-bottom: 1px solid var(--wet-line-strong);
+  border-bottom: 1px solid var(--route-line-strong);
 }
 
 .hp-impact-caption .hp-kicker {
@@ -255,7 +248,7 @@
 
 .hp-impact-caption > span {
   margin-left: auto;
-  color: var(--wet-faint);
+  color: var(--route-muted);
   font-size: 10px;
   font-weight: 720;
   letter-spacing: 0.04em;
@@ -1428,11 +1421,6 @@
 }
 
 @media (max-width: 1180px) {
-  .hp-local-layout.wiki-record {
-    grid-template-columns: 200px minmax(0, 1fr);
-    gap: 34px;
-  }
-
   .hp-section-head {
     grid-template-columns: 1fr;
     gap: 18px;
@@ -1472,12 +1460,6 @@
     padding: 20px 0 0;
     border-top: 1px solid var(--hp-line);
     border-left: 0;
-  }
-
-  .hp-local-layout.wiki-record {
-    width: calc(100% - 32px);
-    grid-template-columns: 1fr;
-    gap: 52px;
   }
 
   .hp-local-layout > .wiki-outline {
@@ -1867,7 +1849,7 @@
 }
 
 .hp-local-page .hp-kicker {
-  color: var(--wet-accent);
+  color: var(--route-accent);
   font-family: var(--font-mono);
   font-size: 10px;
   font-weight: 800;
@@ -1875,7 +1857,7 @@
 }
 
 .hp-local-page .hp-judge-view {
-  width: var(--wet-page);
+  width: 100%;
   padding: 0 0 clamp(96px, 10vw, 128px);
 }
 
@@ -1889,7 +1871,7 @@
   gap: clamp(32px, 5vw, 64px);
   margin-bottom: 36px;
   padding-top: 42px;
-  border-top: 1px solid var(--wet-line-strong);
+  border-top: 1px solid var(--route-line-strong);
 }
 
 .hp-local-page .hp-section-head h2,
@@ -1898,7 +1880,7 @@
 .hp-local-page .hp-loop-grid h3,
 .hp-local-page .hp-method-grid h3,
 .hp-local-page .hp-method-audit h3 {
-  color: var(--wet-ink);
+  color: var(--route-ink);
   font-family: var(--font-editorial);
   font-weight: 400;
 }
@@ -1912,15 +1894,15 @@
 
 .hp-local-page .hp-section-head > p,
 .hp-local-page .hp-dossier-head > p:last-child {
-  color: var(--wet-muted);
+  color: var(--route-muted);
   font-family: var(--font-editorial);
   font-size: 19px;
   line-height: 1.62;
 }
 
 .hp-local-page .hp-proof-grid {
-  border-top-color: var(--wet-line-strong);
-  border-bottom-color: var(--wet-line);
+  border-top-color: var(--route-line-strong);
+  border-bottom-color: var(--route-line);
 }
 
 .hp-local-page .hp-proof-grid strong {
@@ -1929,19 +1911,10 @@
 }
 
 .hp-local-page .hp-proof-grid span {
-  color: var(--wet-accent);
+  color: var(--route-accent);
   font-family: var(--font-mono);
   font-size: 10px;
   letter-spacing: 0.04em;
-}
-
-.wiki-page.wiki-page--manuscript .hp-local-layout.wiki-record {
-  display: grid;
-  width: min(1280px, calc(100% - 48px));
-  grid-template-columns: 220px minmax(0, 1fr);
-  gap: 56px;
-  align-items: start;
-  padding: 0 0 130px;
 }
 
 .hp-local-page .hp-impact-scroll {
@@ -1960,7 +1933,7 @@
 
 .hp-local-page .hp-dossier-head {
   gap: 12px clamp(32px, 5vw, 64px);
-  border-top-color: var(--wet-line-strong);
+  border-top-color: var(--route-line-strong);
 }
 
 .hp-local-page .hp-dossier-layout {
@@ -1968,7 +1941,7 @@
 }
 
 .hp-local-page .hp-dossier-section {
-  border-top-color: var(--wet-line);
+  border-top-color: var(--route-line);
 }
 
 .hp-local-page .hp-dossier-section h3 {
@@ -1976,22 +1949,15 @@
 }
 
 .hp-local-page .hp-dossier-text-grid > div {
-  border-top-color: var(--wet-line-strong);
-  background: color-mix(in srgb, var(--wet-paper-light) 64%, transparent);
+  border-top-color: var(--route-line-strong);
+  background: color-mix(in srgb, var(--route-paper) 64%, transparent);
 }
 
 .hp-local-page .hp-dossier-text-grid h4,
 .hp-local-page .hp-loop-grid article > span,
 .hp-local-page .hp-method-grid article > span {
-  color: var(--wet-accent);
+  color: var(--route-accent);
   font-family: var(--font-mono);
-}
-
-@media (max-width: 1100px) {
-  .wiki-page.wiki-page--manuscript .hp-local-layout.wiki-record {
-    grid-template-columns: 1fr;
-    gap: 34px;
-  }
 }
 
 @media (max-width: 900px) {
@@ -2007,10 +1973,6 @@
   }
 
   .hp-local-page .hp-judge-view {
-    width: calc(100% - 40px);
-  }
-
-  .wiki-page.wiki-page--manuscript .hp-local-layout.wiki-record {
     width: calc(100% - 40px);
   }
 

@@ -1,6 +1,6 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import * as echarts from "echarts";
-import volcanoData from "../../../../data/drylab/modelVolcanoData.json";
+import confidenceData from "../../../../data/drylab/modelConfidenceData.json";
 import heatmapData from "../../../../data/drylab/modelHeatmapData.json";
 import type { EpitopeHeatmapRow } from "../../../../data/project/epitopeStructuralData";
 import { createEpitopeHeatmapOption, createEpitopeVolumeOption } from "../project/EpitopeStructuralValidationChart";
@@ -162,178 +162,80 @@ export function ModelBurialHeatmap() {
   );
 }
 
-type VolcanoPoint = [string, number, number, string];
-const categories = ["Up", "Down", "Other"];
-const colors = ["#c74d55", "#4c79a7", "#cbd0d4"];
-const targets: Record<string, { label: string; color: string }> = {
-  TACSTD2: { label: "TROP2 / TACSTD2", color: "#d56a16" },
-  VTCN1: { label: "B7-H4 / VTCN1", color: "#c875a5" },
-  NECTIN4: { label: "Nectin-4 / NECTIN4", color: "#0878b2" },
-  PVRL4: { label: "Nectin-4 / PVRL4", color: "#0878b2" },
-  SLC39A6: { label: "LIV-1 / SLC39A6", color: "#209d87" },
-};
-
-export function ModelVolcano({ cohort }: { cohort: "024322" | "028102" }) {
-  const [visible, setVisible] = useState([true, true, true]);
-  const threshold = cohort === "024322" ? 0.15 : 1;
-  const fdr = cohort === "024322" ? 0.05 : 0.01;
-  const rows = volcanoData[cohort] as VolcanoPoint[];
-  const grouped = useMemo(() => {
-    const result: VolcanoPoint[][] = [[], [], []];
-    for (const point of rows) {
-      const category =
-        point[2] < fdr && Math.abs(point[1]) >= threshold
-          ? point[1] > 0
-            ? 0
-            : 1
-          : 2;
-      result[category].push(point);
-    }
-    return result;
-  }, [rows, threshold, fdr]);
-  const option = useMemo<echarts.EChartsOption>(() => {
-    const xs = rows.map((row) => row[1]);
-    const yMax =
-      Math.ceil(Math.max(...rows.map((row) => -Math.log10(row[2]))) / 5) * 5;
-    const series: echarts.ScatterSeriesOption[] = grouped.map(
-      (points, index) => ({
-        name: categories[index],
-        type: "scatter",
-        symbolSize: 4,
-        animation: false,
-        data: visible[index]
-          ? points.map((row) => ({
-              value: [row[1], -Math.log10(row[2])],
-              source: row,
-            }))
-          : [],
-        itemStyle: { color: colors[index], opacity: 0.52 },
-        emphasis: { scale: 2, itemStyle: { opacity: 1 } },
-      }),
-    );
-    // Highlighted antigens obey the same category filter as their source points.
-    const markers = grouped.flatMap((points, i) =>
-      visible[i] ? points.filter((point) => targets[point[0]]) : [],
-    );
-    series.push({
-      name: "Candidate antigens",
-      type: "scatter",
-      symbol: "diamond",
-      symbolSize: 14,
-      data: markers.map((row) => ({
-        value: [row[1], -Math.log10(row[2])],
-        source: row,
-        itemStyle: {
-          color: targets[row[0]].color,
-          borderColor: "white",
-          borderWidth: 1.5,
-        },
-        label: {
-          show: true,
-          formatter: targets[row[0]].label,
-          position: row[0] === "VTCN1" ? "bottom" : "top",
-          color: "#20332d",
-          fontSize: 10,
-        },
-      })),
-      labelLayout: { hideOverlap: true, moveOverlap: "shiftY" },
-      z: 5,
-    });
-    // A separate transparent series keeps guides visible even when all categories are hidden.
-    series.push({
-      type: "scatter",
-      data: [],
-      markLine: {
-        silent: true,
-        symbol: "none",
-        lineStyle: { color: "#7f8184", type: "dashed" },
-        label: { position: "insideEndTop", fontSize: 10, formatter: "{b}" },
-        data: [
-          { xAxis: -threshold, name: `log₂FC = −${threshold}` },
-          { xAxis: threshold, name: `log₂FC = +${threshold}` },
-          { yAxis: -Math.log10(fdr), name: `BH-adjusted P = ${fdr}` },
-        ],
-      },
-    });
-    return {
-      animation: false,
-      grid: { left: 62, right: 24, top: 24, bottom: 72 },
-      tooltip: {
-        trigger: "item",
-        confine: true,
-        formatter: (params) => {
-          const item = (Array.isArray(params) ? params[0] : params).data as {
-            source?: VolcanoPoint;
-          };
-          if (!item.source) return "";
-          const [gene, fc, p, id] = item.source;
-          return `${echarts.format.encodeHTML(targets[gene]?.label ?? gene)}<br/>ID: ${echarts.format.encodeHTML(id)}<br/>log₂FC: ${fc.toFixed(4)}<br/>BH-adjusted P: ${p.toExponential(3)}`;
-        },
-      },
-      xAxis: {
-        type: "value",
-        name:
-          cohort === "024322"
-            ? "log₂ fold change (TNBC − healthy normal)"
-            : "log₂ fold change (TNBC − NAT)",
-        nameLocation: "middle",
-        nameGap: 38,
-        nameTextStyle: { fontSize: 11 },
-        min: Math.floor(Math.min(...xs)),
-        max: Math.ceil(Math.max(...xs)),
-        splitLine: { show: false },
-      },
-      yAxis: {
-        type: "value",
-        name: "−log₁₀ (BH-adjusted P)",
-        nameLocation: "middle",
-        nameGap: 43,
-        min: 0,
-        max: yMax,
-        splitLine: { lineStyle: { color: "#edf1ef" } },
-      },
-      series,
-    };
-  }, [cohort, rows, grouped, visible, threshold, fdr]);
-  return (
-    <div className="model-chart-panel" data-cohort={cohort}>
-      <div
-        className="model-chart-filters"
-        role="group"
-        aria-label={`PXD${cohort} protein categories`}
-      >
-        {categories.map((label, i) => (
-          <button
-            key={label}
-            type="button"
-            data-category={i}
-            aria-pressed={visible[i]}
-            onClick={() =>
-              setVisible((current) =>
-                current.map((on, j) => (j === i ? !on : on)),
-              )
-            }
-          >
-            {label} ({grouped[i].length.toLocaleString()})
-          </button>
-        ))}
-        <button type="button" onClick={() => setVisible([true, true, true])}>
-          Show all
-        </button>
-      </div>
-      <p className="model-chart-rule">
-        BH-adjusted P &lt; {fdr}; |log₂FC| ≥ {threshold}
-      </p>
-      <ModelChart
-        option={option}
-        label={`PXD${cohort} volcano plot. ${grouped[0].length} upregulated, ${grouped[1].length} downregulated and ${grouped[2].length} other proteins. Use the category buttons to filter.`}
-      />
-    </div>
-  );
-}
+export { ModelVolcanoChart as ModelVolcano } from "./ModelVolcanoChart";
 
 const volumeOption = createEpitopeVolumeOption();
 
 export function ModelP9Volume() {
   return <ModelChart option={volumeOption} heatmap label="Position-9 buried surface area and fill ratio for 17 candidates. Hover a bar for the mean, standard deviation, fill ratio and pass status." />;
+}
+
+// eslint-disable-next-line react-refresh/only-export-components
+export function createModelConfidenceOption(): echarts.EChartsOption {
+  return {
+    animation: false,
+    grid: { left: 65, right: 24, top: 48, bottom: 85 },
+    legend: { top: 8, selectedMode: false },
+    tooltip: {
+      trigger: "item",
+      confine: true,
+      formatter: (params) => {
+        const row = (Array.isArray(params) ? params[0] : params).data as typeof confidenceData.rows[number];
+        if (!row?.peptide) return "";
+        return `<strong>${echarts.format.encodeHTML(row.peptide)}</strong><br/>Mean ipTM: ${row.iptm.toFixed(3)}<br/>P9 buried area: ${row.buriedArea.toFixed(2)} Å²<br/>P9 fill ratio: ${row.fill.toFixed(2)}%<br/>Status: ${row.passed ? "Pass" : "Rejected"}<br/>` +
+          row.models.map((score, i) => `Model ${i}: ${score.toFixed(3)}`).join("<br/>");
+      },
+    },
+    xAxis: {
+      type: "value", min: 0, max: 130,
+      name: "P9 fill ratio (% of leucine reference)", nameLocation: "middle", nameGap: 40,
+      nameTextStyle: { fontSize: 11 },
+      splitLine: { lineStyle: { color: "#edf1ef" } },
+    },
+    yAxis: {
+      type: "value", min: 0.8, max: 1, interval: 0.05,
+      name: "Mean ipTM", nameLocation: "middle", nameGap: 45,
+      nameTextStyle: { fontSize: 11 },
+      axisLabel: { formatter: (value: number) => value.toFixed(2) },
+      splitLine: { lineStyle: { color: "#edf1ef" } },
+    },
+    series: [true, false].map((passed) => ({
+      name: passed ? "Pass (15)" : "Rejected (2)",
+      type: "scatter",
+      symbol: passed ? "circle" : "diamond",
+      symbolSize: passed ? 11 : 15,
+      itemStyle: { color: passed ? "#207062" : "#b34d3f", borderColor: "#fff", borderWidth: 1.5 },
+      emphasis: { scale: 1.4 },
+      data: confidenceData.rows.filter((row) => row.passed === passed).map((row) => ({ ...row, name: row.peptide, value: [row.fill, row.iptm] })),
+      label: { show: !passed, formatter: "{b}", position: "bottom", color: "#b34d3f", fontSize: 10 },
+      labelLayout: { hideOverlap: true },
+      ...(passed ? {
+        markLine: {
+          silent: true, symbol: ["none", "none"],
+          lineStyle: { type: "dashed", color: "#6e7f79" },
+          label: { formatter: "60% threshold", position: "insideStartTop", fontSize: 10 },
+          data: [{ xAxis: 60 }],
+        },
+        markArea: { silent: true, itemStyle: { color: "rgba(32,112,98,0.06)" }, data: [[{ xAxis: 60 }, { xAxis: 130 }]] },
+      } : {}),
+    })),
+  };
+}
+
+const confidenceOption = createModelConfidenceOption();
+export function ModelConfidenceScatter() {
+  return (
+    <div className="model-chart-panel">
+      <ModelChart option={confidenceOption} label="Figure 15: mean ipTM versus P9 fill ratio for 17 candidates. Fifteen pass and two are rejected. Hover a point for all five model scores." />
+      <details className="model-chart-data">
+        <summary>View data</summary>
+        <div className="wiki-table-wrap">
+          <table className="wiki-table">
+            <thead><tr><th scope="col">Peptide</th><th scope="col">Mean ipTM</th><th scope="col">P9 fill (%)</th><th scope="col">Status</th>{Array.from({ length: 5 }, (_, i) => <th scope="col" key={i}>Model {i}</th>)}</tr></thead>
+            <tbody>{confidenceData.rows.map((row) => <tr key={row.peptide}><th scope="row">{row.peptide}</th><td>{row.iptm.toFixed(3)}</td><td>{row.fill.toFixed(2)}</td><td>{row.passed ? "Pass" : "Rejected"}</td>{row.models.map((score, i) => <td key={i}>{score.toFixed(3)}</td>)}</tr>)}</tbody>
+          </table>
+        </div>
+      </details>
+    </div>
+  );
 }

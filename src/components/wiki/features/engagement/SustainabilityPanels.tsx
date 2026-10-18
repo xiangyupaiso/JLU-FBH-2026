@@ -1,5 +1,4 @@
-import { useMemo, type ReactNode } from "react";
-import { Link } from "react-router-dom";
+import { useMemo, useState, type ReactNode } from "react";
 /* eslint-disable react-refresh/only-export-components --
    This module exports the feature-map builder next to its small layout
    helpers; it is not a fast-refresh boundary. */
@@ -19,6 +18,7 @@ import {
   StakeholderDeck,
   StakeholderProfileCard,
   StatsGrid,
+  SustainabilityInteractiveCity,
   SustainabilityPdfPreview,
   ToolTable,
 } from "./sustainability";
@@ -28,7 +28,9 @@ import type {
 } from "../../../../data/engagement/sustainability/sdgChapterContract";
 import {
   sustainabilityAssets,
+  sustainabilityDocUrl,
   sustainabilityImage,
+  sustainabilityImageEntry,
 } from "../../../../data/engagement/sustainability/sustainabilityAssets";
 import {
   coreSdgs,
@@ -42,9 +44,13 @@ import {
   chapterFeatureKeys,
   sustainabilityPage,
 } from "../../../../data/engagement/sustainability/sustainabilityPage";
-import { useRoutePageScroll } from "../../WikiRoutePage";
+import { useRoutePageScroll, WikiContentBlocks } from "../../WikiRoutePage";
 import type { WikiContentBlock } from "../../wikiPageTypes";
 import type { ScaleRailStep } from "./sustainability/SCALEProgressChain";
+import { SdgContributionBubbles } from "./sustainability/SdgContributionBubbles";
+import { DocumentViewer, type WikiDocument } from "../../documents/DocumentViewer";
+import { GameShowcaseLink } from "../GamesShowcase";
+import { StakeholderArticleView } from "./sustainability/StakeholderProfileCard";
 import "../../../../styles/features/sustainability-panels.css";
 
 /**
@@ -59,7 +65,13 @@ type FeatureMap = Record<string, ReactNode>;
 
 const sstqnPdf = sustainabilityAssets.sstQnModelConstruction;
 
-function ChartFigure({ caption, children }: { caption: string; children: ReactNode }) {
+function ChartFigure({
+  caption,
+  children,
+}: {
+  caption: string;
+  children: ReactNode;
+}) {
   return (
     <figure className="wiki-figure sust-chart">
       {children}
@@ -96,20 +108,26 @@ function chapterRailSteps(chapter: SdgChapter): ScaleRailStep[] {
 function ScaleRail({ chapter }: { chapter: SdgChapter }) {
   const { activeSubsection } = useRoutePageScroll();
   const steps = useMemo(() => chapterRailSteps(chapter), [chapter]);
-  const allSubheadings = sustainabilityPage.sections
-    .flatMap((section) => section.blocks ?? [])
-    .filter(
-      (block): block is Extract<WikiContentBlock, { type: "subheading" }> =>
-        block.type === "subheading",
-    );
-  const chapterIndex = allSubheadings.findIndex((block) => block.id === chapter.headingId);
+  const sectionIndex = sustainabilityPage.sections.findIndex((section) =>
+    section.blocks?.some(
+      (block) => block.type === "subheading" && block.id === chapter.headingId,
+    ),
+  );
+  const allSubheadings = (
+    sustainabilityPage.sections[sectionIndex]?.blocks ?? []
+  ).filter(
+    (block): block is Extract<WikiContentBlock, { type: "subheading" }> =>
+      block.type === "subheading",
+  );
+  const chapterIndex = allSubheadings.findIndex(
+    (block) => block.id === chapter.headingId,
+  );
   const chapterDepth = chapter.index.split(".").length;
   const nextChapter = allSubheadings
     .slice(chapterIndex + 1)
     .find((block) => block.index.split(".").length === chapterDepth);
-  // A chapter ends at the next same-level heading. For the final chapter,
-  // SCALEProgressChain falls back to the containing SET section's bottom.
-  const endId = nextChapter?.id ?? "";
+  const endId =
+    nextChapter?.id ?? sustainabilityPage.sections[sectionIndex + 1]?.id ?? "";
   return (
     <SCALEProgressChain
       steps={steps}
@@ -127,7 +145,8 @@ function stakeholderRuns(profiles: ReadonlyArray<StakeProfile>) {
   const runs: StakeProfile[][] = [];
   profiles.forEach((profile, index) => {
     const previous = profiles[index - 1];
-    if (!profile.article && previous && !previous.article) runs[runs.length - 1].push(profile);
+    if (!profile.article && previous && !previous.article)
+      runs[runs.length - 1].push(profile);
     else runs.push([profile]);
   });
   return runs;
@@ -164,10 +183,76 @@ function StakeholderGrid({ chapter }: { chapter: SdgChapter }) {
   );
 }
 
+/** SDG 17 follows the manuscript's four partnership groups. */
+function PartnershipStakeholders({ chapter }: { chapter: SdgChapter }) {
+  return (
+    <div className="sust-partnerships">
+      {chapter.stakeholders.groups?.map((group) => (
+        <section
+          className="sust-partnerships__group"
+          key={group.id}
+          id={group.id}
+        >
+          {group.title ? (
+            <h4 className="sust-minor-heading">
+              {group.index ? `${group.index} — ` : ""}
+              {group.title}
+            </h4>
+          ) : null}
+          {group.intro.length ? (
+            <WikiContentBlocks
+              sectionId={group.id}
+              blocks={[{ type: "prose", paragraphs: [...group.intro] }]}
+            />
+          ) : null}
+          {group.layout === "prose" ? (
+            group.profiles.map((profile) => (
+              <div
+                className="sust-partnerships__prose"
+                key={profile.id}
+                id={profile.id}
+              >
+                <h4 className="sust-minor-heading">
+                  {profile.index} — {profile.name}
+                </h4>
+                {profile.article ? (
+                  <StakeholderArticleView article={profile.article} />
+                ) : null}
+              </div>
+            ))
+          ) : (
+            <div className="sust-stake-grid">
+              {group.profiles.map((profile) => (
+                <StakeholderProfileCard key={profile.id} profile={profile} />
+              ))}
+            </div>
+          )}
+        </section>
+      ))}
+      {chapter.stakeholders.closing?.length ? (
+        <WikiContentBlocks
+          sectionId={chapter.id}
+          blocks={[
+            { type: "prose", paragraphs: [...chapter.stakeholders.closing] },
+          ]}
+        />
+      ) : null}
+    </div>
+  );
+}
+
 /** One reusable educational resource (virtual lab, game, picture book …). */
 function ResourceShowcase({ resource }: { resource: EducationResource }) {
+  const game =
+    resource.id === "virtual-laboratory"
+      ? "virtual-lab"
+      : resource.id === "bio-memory-match"
+        ? "bio-memory"
+        : resource.id === "breast-guardian-rpg"
+          ? "breast-guardian"
+          : undefined;
   return (
-    <article className="sust-edu-resource">
+    <article className="sust-edu-resource" id={resource.id}>
       <h5 className="sust-edu-resource__title">{resource.title}</h5>
       <div className="wiki-prose">
         {resource.paragraphs.map((paragraph) => (
@@ -176,34 +261,32 @@ function ResourceShowcase({ resource }: { resource: EducationResource }) {
           </p>
         ))}
       </div>
-      {resource.figure ? (
+      {resource.gamesLink && game ? (
+        <GameShowcaseLink game={game} />
+      ) : resource.figure ? (
         <figure className="wiki-figure sust-edu-resource__figure">
           <img
             src={sustainabilityImage(resource.figure)}
             alt={sustainabilityAssets[resource.figure].alt}
+            width={sustainabilityImageEntry(resource.figure).width}
+            height={sustainabilityImageEntry(resource.figure).height}
             loading="lazy"
             decoding="async"
           />
         </figure>
       ) : null}
-      {resource.gamesLink ? (
-        <Link className="sust-edu-resource__games" to="/games">
-          Visit the Games page
-          <span aria-hidden="true"> →</span>
-        </Link>
-      ) : null}
       {resource.pdfs?.length ? (
         <div className="sust-edu-resource__pdfs">
           {resource.pdfs.map((pdf) => (
-            <a
+            <DocumentViewer
               key={pdf.fileName}
-              className="sust-stake-card__resource-btn"
-              href={pdf.url}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {pdf.label}
-            </a>
+              document={{
+                caption: pdf.label,
+                url: pdf.url ?? sustainabilityDocUrl(pdf.fileName),
+                openUrl: pdf.url ?? sustainabilityDocUrl(pdf.fileName),
+              }}
+              defaultOpen
+            />
           ))}
         </div>
       ) : null}
@@ -302,7 +385,8 @@ function Sdg4StakeholderPanel({ chapter }: { chapter: SdgChapter }) {
 
 /** E — Evidence: numbered Measurable items with figures, Significant prose. */
 function EvidencePanel({ chapter }: { chapter: SdgChapter }) {
-  const { measurableIntro, measurable, measurableClosing, significant } = chapter.evidence;
+  const { measurableIntro, measurable, measurableClosing, significant } =
+    chapter.evidence;
   return (
     <div className="sust-evidence">
       <h4 className="sust-minor-heading">Measurable</h4>
@@ -325,16 +409,32 @@ function EvidencePanel({ chapter }: { chapter: SdgChapter }) {
               <RichText text={item.text} />
             </p>
             {item.toolTable ? <ToolTable tools={chapter.legacy.tools} /> : null}
+            {item.table ? (
+              <WikiContentBlocks
+                sectionId={`${chapter.id}-evidence`}
+                blocks={[
+                  {
+                    type: "table",
+                    headers: [...item.table.headers],
+                    rows: item.table.rows.map((row) => [...row]),
+                  },
+                ]}
+              />
+            ) : null}
             {item.figure ? (
               // Keep the caption as the source text; figure labels are not added here.
               <figure className="wiki-figure">
                 <img
                   src={sustainabilityImage(item.figure)}
                   alt={sustainabilityAssets[item.figure].alt}
+                  width={sustainabilityImageEntry(item.figure).width}
+                  height={sustainabilityImageEntry(item.figure).height}
                   loading="lazy"
                   decoding="async"
                 />
-                <figcaption>{item.figureCaption ?? sustainabilityAssets[item.figure].alt}</figcaption>
+                <figcaption>
+                  {item.figureCaption ?? sustainabilityAssets[item.figure].alt}
+                </figcaption>
               </figure>
             ) : null}
           </li>
@@ -366,11 +466,43 @@ const chapterConsequenceSlots: Record<string, ReactNode> = {
   "sdg4-feedback": <EduFeedbackCards />,
 };
 
+/** Folder documents use the same modal reader as Safety. */
+function ChapterToolArchive({ chapter }: { chapter: SdgChapter }) {
+  const [selected, setSelected] = useState<WikiDocument | null>(null);
+  return (
+    <>
+      <PdfToolList
+        tools={chapter.legacy.tools}
+        instance={`${chapter.id}-legacy`}
+        onPdfSelect={(pdf, title) =>
+          setSelected({
+            caption: `${title} — ${pdf.label}`,
+            url: pdf.url ?? sustainabilityDocUrl(pdf.fileName),
+            openUrl: pdf.url ?? sustainabilityDocUrl(pdf.fileName),
+          })
+        }
+      />
+      {selected ? (
+        <DocumentViewer
+          variant="modal"
+          document={selected}
+          open
+          onOpenChange={(open) => {
+            if (!open) setSelected(null);
+          }}
+        />
+      ) : null}
+    </>
+  );
+}
+
 function chapterFeatures(chapter: SdgChapter): FeatureMap {
   const keys = chapterFeatureKeys(chapter);
   return {
     [keys.rail]: <ScaleRail chapter={chapter} />,
-    [keys.stakeholders]: chapter.stakeholders.extras ? (
+    [keys.stakeholders]: chapter.stakeholders.groups ? (
+      <PartnershipStakeholders chapter={chapter} />
+    ) : chapter.stakeholders.extras ? (
       <Sdg4StakeholderPanel chapter={chapter} />
     ) : (
       <StakeholderGrid chapter={chapter} />
@@ -397,7 +529,7 @@ function chapterFeatures(chapter: SdgChapter): FeatureMap {
         </div>
       </div>
     ),
-    [keys.legacy]: <PdfToolList tools={chapter.legacy.tools} instance={`${chapter.id}-legacy`} />,
+    [keys.legacy]: <ChapterToolArchive chapter={chapter} />,
     [keys.evidence]: <EvidencePanel chapter={chapter} />,
   };
 }
@@ -411,9 +543,14 @@ export function sustainabilityFeatures(): FeatureMap {
         ))}
       </div>
     ),
-    "overview-set-develop-grow": <OverviewSetDevelopGrowCards tiers={impactTiers} />,
+    "overview-set-develop-grow": (
+      <OverviewSetDevelopGrowCards tiers={impactTiers} />
+    ),
+    "sdg-contribution-bubbles": <SdgContributionBubbles />,
     stats: <StatsGrid stats={sustainabilityStats} />,
-    "sstqn-matrix": <SSTQNClassificationMatrix caption={sstqnSection.statusCaption} />,
+    "sstqn-matrix": (
+      <SSTQNClassificationMatrix caption={sstqnSection.statusCaption} />
+    ),
     "sdg-boundary-matrix": (
       <ChartFigure caption={sstqnSection.boundaryCaption}>
         <SdgBoundaryMatrix />
@@ -440,5 +577,6 @@ export function sustainabilityFeatures(): FeatureMap {
     "stakeholder-tracker-tools": (
       <PdfToolList tools={stakeholderTracker.files} instance="tracker" />
     ),
+    "sustainability-interactive-city": <SustainabilityInteractiveCity />,
   };
 }

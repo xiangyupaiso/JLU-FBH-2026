@@ -28,14 +28,15 @@ import "../../../../styles/features/sustainability-panels.css";
 import { engineeringOutcome } from "../../../../data/project/engineeringOutcome";
 import { EngineeringOutline } from "./EngineeringPanels";
 import { EngineeringSystemOverview } from "./EngineeringSystemOverview";
-import gearTSrc from "../../../../assets/wiki/engineering/engineering-gear-t.webp";
-import gearTActiveSrc from "../../../../assets/wiki/engineering/engineering-gear-t-active.webp";
-import gearISrc from "../../../../assets/wiki/engineering/engineering-gear-i.webp";
-import gearIActiveSrc from "../../../../assets/wiki/engineering/engineering-gear-i-active.webp";
-import gearMSrc from "../../../../assets/wiki/engineering/engineering-gear-m.webp";
-import gearMActiveSrc from "../../../../assets/wiki/engineering/engineering-gear-m-active.webp";
-import gearESrc from "../../../../assets/wiki/engineering/engineering-gear-e.webp";
-import gearEActiveSrc from "../../../../assets/wiki/engineering/engineering-gear-e-active.webp";
+import { whenPageLoaderLeaves } from "../../../../utils/pageLoader";
+const gearTSrc = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-gear-t.webp";
+const gearTActiveSrc = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-gear-t-active.webp";
+const gearISrc = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-gear-i.webp";
+const gearIActiveSrc = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-gear-i-active.webp";
+const gearMSrc = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-gear-m.webp";
+const gearMActiveSrc = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-gear-m-active.webp";
+const gearESrc = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-gear-e.webp";
+const gearEActiveSrc = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-gear-e-active.webp";
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
@@ -253,6 +254,8 @@ function EngineeringBlock({ block }: { block: WikiContentBlock }) {
           <img
             src={block.src}
             alt={block.alt}
+            width={block.width}
+            height={block.height}
             loading="lazy"
             decoding="async"
           />
@@ -296,29 +299,10 @@ function EngineeringBlock({ block }: { block: WikiContentBlock }) {
       return (
         <details
           className="eng-code-fold"
-          onToggle={(e) => {
-            const details = e.currentTarget;
-            if (details.open) {
-              const body = details.closest<HTMLElement>(".eng-stage-body");
-              if (body) {
-                const detailsRect = details.getBoundingClientRect();
-                const bodyRect = body.getBoundingClientRect();
-                if (detailsRect.bottom > bodyRect.bottom) {
-                  const diff = detailsRect.bottom - bodyRect.bottom + 16;
-                  const content = details.closest<HTMLElement>(".eng-stage-content");
-                  if (content) {
-                    const currentTransform = new DOMMatrixReadOnly(
-                      getComputedStyle(content).transform,
-                    );
-                    gsap.to(content, {
-                      y: currentTransform.m42 - diff,
-                      duration: 0.25,
-                      ease: "power2.out",
-                    });
-                  }
-                }
-              }
-            }
+          onToggle={() => {
+            // Re-measure the pinned reading timeline so the expanded code block
+            // stays reachable by continued scrolling (same treatment as reading tips).
+            ScrollTrigger.refresh();
           }}
         >
           <summary className="eng-code-fold__summary">
@@ -1107,13 +1091,17 @@ export function EngineeringJourney({
         onChange({ id: iteration.id, stage });
       }
     };
-    const frame = requestAnimationFrame(() => {
+    // Deferred CSS, fonts and artwork can change pin lengths after mount.
+    // Resolve the entry anchor only after the loader has prepared that layout.
+    let mounted = true;
+    void whenPageLoaderLeaves().then(() => {
+      if (!mounted) return;
       ScrollTrigger.refresh();
       handleHash();
     });
     window.addEventListener("hashchange", handleHash);
     return () => {
-      cancelAnimationFrame(frame);
+      mounted = false;
       sceneObserver.disconnect();
       clearTimeout(resizeTimer);
       resizeTarget.current = null;

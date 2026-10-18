@@ -1,7 +1,8 @@
+const attributionHero =
+  "https://static.igem.wiki/teams/6056/wiki/files/pages/hero/team-attributions-hero.webp";
+
 const rosterHero =
   "https://static.igem.wiki/teams/6056/wiki/files/pages/team/team-roster-hero.webp";
-const attributionHero =
-  "https://static.igem.wiki/teams/6056/wiki/files/pages/team/team-attributions-hero-c4b886a5d4d5.webp";
 const activitiesHero =
   "https://static.igem.wiki/teams/6056/wiki/files/pages/team/team-activities-hero.webp";
 

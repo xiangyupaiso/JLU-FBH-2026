@@ -46,10 +46,16 @@ function ArticleBlockView({ block }: { block: ArticleBlock }) {
   );
 }
 
-function ArticleView({ article }: { article: StakeholderArticle }) {
+export function StakeholderArticleView({
+  article,
+}: {
+  article: StakeholderArticle;
+}) {
   return (
     <article className="sust-stake-article">
-      <h4 className="sust-stake-article__title">{article.title}</h4>
+      {article.title ? (
+        <h4 className="sust-stake-article__title">{article.title}</h4>
+      ) : null}
       {article.sections.map((section, index) => (
         <section className="sust-stake-article__section" key={index}>
           {section.heading ? (
@@ -91,7 +97,9 @@ const profilePhotos = (profile: StakeholderProfile) => {
 
 /** SDG 4 activity card: date · venue · attendance line under the name. */
 function EventMeta({ profile }: { profile: StakeholderProfile }) {
-  const items = [profile.date, profile.location, profile.participants].filter(Boolean);
+  const items = [profile.date, profile.location, profile.participants].filter(
+    Boolean,
+  );
   if (!items.length) return null;
   return <p className="sust-stake-card__event">{items.join(" · ")}</p>;
 }
@@ -122,7 +130,9 @@ function ResourceDownloads({ profile }: { profile: StakeholderProfile }) {
               target="_blank"
               rel="noopener noreferrer"
             >
-              {pdf.label} resource
+              {/resource/i.test(pdf.label)
+                ? pdf.label
+                : `${pdf.label} resource`}
             </a>
           ))}
         </dd>
@@ -146,7 +156,7 @@ function StakeMeta({ profile }: { profile: StakeholderProfile }) {
         </div>
       ) : null}
       <div className="sust-stake-meta__item">
-        <dt>SDGs Addressed</dt>
+        <dt>{profile.sdgsLabel ?? "SDGs Addressed"}</dt>
         <dd>
           <ul className="sust-stake-card__sdgs">
             {profile.sdgs.map((sdg) => (
@@ -202,11 +212,15 @@ function StakeCardFace({
               profile[key] ? (
                 <div className="sust-stake-card__field" key={key}>
                   <dt>
-                    {key === "whatChanged"
-                      ? profile.whatChangedLabel ?? label
-                      : key === "whatWeDid"
-                        ? profile.whatWeDidLabel ?? label
-                        : label}
+                    {key === "partner"
+                      ? (profile.partnerLabel ?? label)
+                      : key === "challenge"
+                        ? (profile.challengeLabel ?? label)
+                        : key === "whatChanged"
+                          ? (profile.whatChangedLabel ?? label)
+                          : key === "whatWeDid"
+                            ? (profile.whatWeDidLabel ?? label)
+                            : label}
                   </dt>
                   <dd>
                     <RichText text={profile[key]} />
@@ -344,7 +358,7 @@ export function StakeholderProfileCard({
                     </div>
                   ) : null}
                   <div className="sust-stake-modal__body">
-                    <ArticleView article={profile.article} />
+                    <StakeholderArticleView article={profile.article} />
                   </div>
                 </div>
               </div>
@@ -468,8 +482,8 @@ export function StakeholderDeck({
           element.dataset.scrollDeck = "true";
           const stage =
             element.querySelector<HTMLElement>(".sust-deck__stage")!;
-          const anchors = panels.map(
-            (panel) => panel.querySelector<HTMLElement>(".sust-deck__anchor")!,
+          const anchors = panels.map((panel) =>
+            panel.querySelector<HTMLElement>(".sust-deck__anchor")!,
           );
           const headerHeight = () =>
             Number.parseFloat(
@@ -651,7 +665,6 @@ export function StakeholderDeck({
       />
       <div className="sust-deck__viewport">
         <nav className="sust-deck__rail" aria-label="Choose a stakeholder">
-          <p className="sust-deck__label">Stakeholder voices</p>
           <div role="tablist" aria-orientation="vertical" onKeyDown={onRailKey}>
             {profiles.map((p, index) => (
               <button
@@ -713,7 +726,11 @@ export function StakeholderDeck({
                               className={`sust-deck__field${key === "challenge" ? " sust-deck__field--quote" : ""}${key === "relevantStakeholder" ? " sust-deck__field--lead" : ""}`}
                               key={key}
                             >
-                              <dt>{key === "whatChanged" ? profile.whatChangedLabel ?? label : label}</dt>
+                              <dt>
+                                {key === "whatChanged"
+                                  ? (profile.whatChangedLabel ?? label)
+                                  : label}
+                              </dt>
                               <dd>
                                 <RichText text={profile[key]} />
                               </dd>

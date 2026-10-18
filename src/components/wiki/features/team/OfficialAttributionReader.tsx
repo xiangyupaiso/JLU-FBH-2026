@@ -13,8 +13,6 @@ import { attributionPage } from "../../../../data/team/attributionPage";
 import { getAttributionBookmarks } from "../../../../data/team/attributionBookmarks";
 import { useRouteReaderScroll } from "../../../../hooks/useRouteReaderScroll";
 import { scrollReaderToTarget } from "../../../../utils";
-import "../../../../styles/wiki-rebuild.css";
-import "../../../../styles/wetlab-editorial.css";
 import "../../../../styles/wiki-route-skin.css";
 import "../../../../styles/official-attributions.css";
 

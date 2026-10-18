@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect, useCallback } from "react";
 import waterfallFullWebpLocal from "../../../../assets/wiki/hp/hp-waterfall-loop.webp";
 import waterfallCoreWebpLocal from "../../../../assets/wiki/hp/hp-waterfall-core.webp";
+import waterfallStreamWebpLocal from "../../../../assets/wiki/hp/hp-waterfall-stream.webp";
 import {
   RETURN_CONTOUR,
   PROJECT_CONTOUR,
@@ -12,8 +13,8 @@ import "../../../../styles/features/hp-waterfall-interactive.css";
 
 const WATERFALL_LOOP_CDN =
   "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/ihp/hp-waterfall-loop.webp";
-const WATERFALL_CORE_CDN =
-  "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/ihp/hp-waterfall-core.webp";
+const WATERFALL_STREAM_CDN =
+  "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/ihp/hp-waterfall-stream.webp";
 
 type HotspotKey = "overview" | "human" | "origin" | "project" | "return";
 
@@ -126,6 +127,8 @@ const HOTSPOTS: Record<HotspotKey, HotspotData> = {
   },
 };
 
+const isDev = import.meta.env.DEV;
+
 export function HpInteractiveWaterfall() {
   const containerRef = useRef<HTMLElement>(null);
 
@@ -139,7 +142,18 @@ export function HpInteractiveWaterfall() {
   const isCore =
     manualFocus !== null
       ? manualFocus
-      : scrollProgress >= 0.32;
+      : scrollProgress >= 0.26;
+
+  // Stage 3: Water stream emerges from top to bottom behind the house
+  // Flows smoothly along path from scrollProgress 0.50 to 0.92
+  const streamProgress =
+    manualFocus === false
+      ? 0
+      : manualFocus === true
+      ? 1
+      : scrollProgress >= 0.50
+      ? Math.max(0, Math.min(1, (scrollProgress - 0.50) / 0.40))
+      : 0;
 
   // Pinned scroll listener: card stays frozen in viewport while mouse wheel scrolls from 0 to 1
   useEffect(() => {
@@ -163,7 +177,7 @@ export function HpInteractiveWaterfall() {
         const scrolled = topOffset - rect.top;
         const progress = Math.max(0, Math.min(1, scrolled / pinDistance));
         setScrollProgress(progress);
-        if (progress < 0.22 && manualFocus === null) {
+        if (progress < 0.20 && manualFocus === null) {
           setActiveKey("overview");
         }
       }
@@ -202,31 +216,69 @@ export function HpInteractiveWaterfall() {
           {/* Visual Stage */}
           <div className="hp-waterfall-stage-wrapper">
             <div className="hp-waterfall-stage">
-              {/* 1. Base Layer: Full Landscape Animated WebP (Continuous loop) */}
+              {/* 1. Opening Layer: Full Landscape Animated WebP (Continuous loop, ONLY visible in Stage 1 / Overview) */}
               <img
-                src={WATERFALL_LOOP_CDN}
+                src={isDev ? waterfallFullWebpLocal : WATERFALL_LOOP_CDN}
                 onError={(e) => {
                   e.currentTarget.src = waterfallFullWebpLocal;
                 }}
                 alt="Human Practices Waterfall Overview"
-                className="hp-waterfall-media hp-media-full"
+                className={`hp-waterfall-media hp-media-full ${isCore ? "is-hidden" : ""}`}
+                aria-hidden={isCore}
               />
 
-              {/* 2. Soft Gradient Vignette Veil Mask (Dissolves outer scenery into clean white) */}
-              <div
-                className={`hp-waterfall-mask-veil ${isCore ? "is-active" : ""}`}
+              {/* 2. Middle Layer: Winding River Stream Animated Reveal (Behind Core Building) */}
+              <svg
+                className="hp-waterfall-media hp-media-stream"
+                viewBox="0 0 1920 1080"
+                preserveAspectRatio="xMidYMid meet"
                 aria-hidden="true"
-              />
+              >
+                <defs>
+                  <mask id="hpStreamRevealMask">
+                    <path
+                      d="M 1700 100 Q 1550 95 1475.0 107.5 Q 1400 120 1325.0 150.0 Q 1250 180 1175.0 205.0 Q 1100 230 1030.0 235.0 Q 960 240 880.0 230.0 Q 800 220 725.0 200.0 Q 650 180 575.0 162.5 Q 500 145 425.0 145.0 Q 350 145 295.0 157.5 Q 240 170 200.0 200.0 Q 160 230 165.0 270.0 Q 170 310 205.0 350.0 Q 240 390 310.0 430.0 Q 380 470 405.0 510.0 Q 430 550 415.0 595.0 Q 400 640 370.0 680.0 Q 340 720 305.0 760.0 Q 270 800 240.0 835.0 Q 210 870 225.0 895.0 Q 240 920 295.0 945.0 Q 350 970 415.0 1000.0 Q 480 1030 565.0 1037.5 L 650 1045"
+                      fill="none"
+                      stroke="white"
+                      strokeWidth="300"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      pathLength="100"
+                      strokeDasharray="100"
+                      strokeDashoffset={100 * (1 - streamProgress)}
+                      style={{
+                        transition:
+                          manualFocus !== null
+                            ? "stroke-dashoffset 0.6s ease-in-out"
+                            : "none",
+                      }}
+                    />
+                  </mask>
+                </defs>
+                <image
+                  href={isDev ? waterfallStreamWebpLocal : WATERFALL_STREAM_CDN}
+                  onError={(e) => {
+                    e.currentTarget.setAttribute(
+                      "href",
+                      waterfallStreamWebpLocal
+                    );
+                  }}
+                  width="1920"
+                  height="1080"
+                  mask="url(#hpStreamRevealMask)"
+                  style={{
+                    opacity: isCore && streamProgress > 0.01 ? 1 : 0,
+                    transition: "opacity 0.25s ease",
+                  }}
+                />
+              </svg>
 
-              {/* 3. Top Layer: Focused Core Building Animated WebP (Solid White Background) */}
+              {/* Use the bundled animation with corrected frame replacement flags. */}
               <img
-                src={WATERFALL_CORE_CDN}
-                onError={(e) => {
-                  e.currentTarget.src = waterfallCoreWebpLocal;
-                }}
+                src={waterfallCoreWebpLocal}
                 alt="Human Practices Core Framework"
                 className={`hp-waterfall-media hp-media-core ${isCore ? "is-active" : ""}`}
-                aria-hidden="true"
+                aria-hidden={!isCore}
               />
 
               {/* 3. SVG Interactive Hotspots Layer */}

@@ -16,13 +16,15 @@ export const educationPage: WikiPageContent = {
   facts: [],
   sections: educationSections,
   links: [
-    { path: "/human-practices", label: "Human Practices" },
-    { path: "/games", label: "Educational games" },
-    { path: "/contribution", label: "Reusable materials" },
+    { path: "/human-practices", label: "Integrated Human Practices" },
+    { path: "/games", label: "Educational Games" },
+    { path: "/sustainability", label: "SDG Sustainability Matrix" },
+    { path: "/contribution", label: "Open Educational Assets" },
   ],
   next: {
     path: "/sustainability",
     label: "Sustainability",
-    title: "Which impacts persist beyond the project year?",
+    title: "Anchoring Local Action to Global Goals",
+    description: "Education plants the seeds of change; sustainability ensures longevity. Explore how our vaccine roadmap directly advances United Nations Sustainable Development Goals.",
   },
 };

@@ -51,6 +51,10 @@ function assemble(
     number,
     import("./citationTypes").CitationOccurrence[]
   >();
+  const byScopedParagraph = new Map<
+    string,
+    import("./citationTypes").CitationEntry
+  >();
   const issues: string[] = [];
 
   const addOccurrence = (refId: number, sectionId: string) => {
@@ -67,7 +71,8 @@ function assemble(
   };
 
   const visitParagraph = (paragraph: string, sectionId: string) => {
-    if (byParagraph.has(paragraph)) {
+    const scopedKey = `${sectionId}\0${paragraph}`;
+    if (byScopedParagraph.has(scopedKey)) {
       issues.push(`duplicate paragraph: ${paragraph.slice(0, 60)}`);
       return;
     }
@@ -93,7 +98,24 @@ function assemble(
         ),
       );
 
-    byParagraph.set(paragraph, { segments, occs });
+    const entry = { segments, occs };
+    if (!byParagraph.has(paragraph)) byParagraph.set(paragraph, entry);
+    byScopedParagraph.set(scopedKey, entry);
+    // Protocol steps render their number separately from the cited text.
+    const stepPrefix = paragraph.match(/^\s*\d+[.、]\s+/)?.[0];
+    if (stepPrefix) {
+      byScopedParagraph.set(
+        `${sectionId}\0${paragraph.slice(stepPrefix.length)}`,
+        {
+          occs,
+          segments: segments.map((segment, index) =>
+            index === 0 && segment.kind === "text"
+              ? { ...segment, text: segment.text.slice(stepPrefix.length) }
+              : segment,
+          ),
+        },
+      );
+    }
   };
 
   const visitBlock = (block: WikiContentBlock, sectionId: string) => {
@@ -107,6 +129,12 @@ function assemble(
       block.prose.forEach((nested) => visitBlock(nested, sectionId));
     } else if (block.type === "callout") {
       visitParagraph(block.body, sectionId);
+    } else if (block.type === "heading") {
+      visitParagraph(block.title, sectionId);
+    } else if (block.type === "list") {
+      block.items.forEach((item) => visitParagraph(item, sectionId));
+    } else if (block.type === "protocol-steps") {
+      block.steps.forEach((step) => step.blocks.forEach((nested) => visitBlock(nested, sectionId)));
     }
   };
 
@@ -114,7 +142,7 @@ function assemble(
     section.blocks?.forEach((block) => visitBlock(block, section.id));
   });
 
-  return { byParagraph, byRef, issues };
+  return { byParagraph, byScopedParagraph, byRef, issues };
 }
 
 /* ----------------------------------------------------------- numeric style */
@@ -219,7 +247,8 @@ export function buildAuthorYearKeys(
         : "";
     const second = reference.authors.match(/(?:&|\band)\s+([^,.]+)(?:,|$)/)?.[1]
       .trim();
-    const year = reference.volumeYear.match(/\((\d{4})\)/)?.[1] ?? "";
+    // Four-digit issue numbers such as (5247) are not publication years.
+    const year = reference.volumeYear.match(/\(((?:19|20)\d{2})\)/)?.[1] ?? "";
     return {
       id: reference.id,
       surname: nfc(surname),
@@ -236,7 +265,8 @@ function matchAuthorYear(
   item: string,
   keys: readonly AuthorYearKey[],
 ): MatchResult {
-  const match = ITEM_RE.exec(nfc(item.trim()));
+  // Manuscripts may include a space before the year comma; preserve display text.
+  const match = ITEM_RE.exec(nfc(item.trim().replace(/\s+,/g, ",")));
   if (!match?.groups) return { reason: "unresolved" };
   const { sur, year, init, second } = match.groups as Record<
     string,

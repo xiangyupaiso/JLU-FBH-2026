@@ -280,19 +280,31 @@ Digital learning expands opportunities to engage with the experimental process w
 
 #### CONTINUATION：
 
-##### Hailun
+##### Hailun-**First Engagement: Introducing an Early Experiment**
 
-Several months after Winter Outreach, the Virtual Laboratory returned to Hailun No\. 1 Senior High School\.
+Our connection with Hailun No. 1 Senior High School began during Winter Outreach. Alongside the introductory activities on synthetic biology and iGEM, we brought an early version of the Virtual Laboratory to the school, introducing students to the first experiment available at that stage of development.
 
-On May 21, without any team members present, a teacher projected the program onto a large classroom screen, guided students through shared viewing and operation, and continued using the resource and collecting feedback during subsequent self\-study periods\.
+This initial experience marked an early opportunity to bring the digital laboratory into a real educational setting. Although the platform had not yet developed into its complete nine-experiment course, the activity allowed the Virtual Laboratory to become part of an existing school community rather than remaining solely a resource developed within our team.
 
-This experience allowed us to observe, for the first time, what happened when the product was used independently of its developers\.
+##### **Hailun-Second Engagement: Returning with a Developed Resource**
 
-Making a digital resource available is only the most basic requirement\.
+Several months later, the Virtual Laboratory returned to Hailun in a more developed form.
 
-When a teacher can understand its structure, integrate it into an existing classroom, and continue organizing learning without the team being present, Access moves beyond the mere provision of resources toward the community's actual ability to use them\.
+After reconnecting with the school on May 20, our team provided the updated resource for further classroom use. On May 21, without team members present, a teacher projected the program onto a large classroom screen and guided students through shared viewing and operation. The teacher continued using the resource and collecting feedback during subsequent self-study periods.
 
-Hailun therefore connected Winter Outreach with digital experimental learning in May, forming a clear example of Continuity within our Education Lineage\.
+This second engagement revealed something that the initial demonstration alone could not establish: the educational resource could be taken up and used independently by a teacher within the school's own learning environment.
+
+Making a digital tool available is only the first step. When teachers can understand its structure, integrate it into their lessons, and sustain its use without the developers being present, **Access** moves beyond resource provision toward genuine educational use.
+
+##### **A Relationship That Developed Across Two Stages**
+
+The two engagements with Hailun represent different stages in the relationship between our Virtual Laboratory and a real learning community.
+
+The first introduced an early experimental resource. The second returned with a more developed tool and created an opportunity for independent classroom use.
+
+We do not treat these two engagements alone as evidence of two completed product-iteration cycles. Instead, they demonstrate how the development of an educational resource and its use within a community can progress together.
+
+Within our **Education Lineage**, Hailun therefore represents **Continuity**: an initial connection established through Winter Outreach became a pathway for later digital learning, while the teacher gained an active role in sustaining that learning beyond our team's direct involvement.
 
 #### EVIDENCE：
 
@@ -371,8 +383,6 @@ It still opens the same door: allowing those who cannot yet experience a complet
 [Hailun Pilu Virtual Laboratory \(1\)\.zip](Images_attachments/Hailun%20Pilu%20Virtual%20Laboratory%20%281%29.zip)
 
 Easy / Intermediate / Advanced
-
-[Virtual Laboratory Instructional video\.zip](Images_attachments/Virtual%20Laboratory%20Instructional%20video.zip)
 
 **→ Explore Our Games**
 
@@ -1357,8 +1367,6 @@ When this knowledge moved beyond the screen into Xinghua Festival and Health Run
 [WP05\_Evidence\_and\_Evaluation\_in\_Education\.pdf](Images_attachments/WP05_Evidence_and_Evaluation_in_Education%201.pdf)
 
 [G02\_Life\_Stage\_Narrative\_Serious\_Game\_Design\_Playbook\.pdf](Images_attachments/G02_Life_Stage_Narrative_Serious_Game_Design_Playbook.pdf)
-
-[《Breast Guardian》Instructional video\.mp4](Images_attachments/《Breast%20Guardian》Instructional%20video.mp4)
 
 **→ Explore Our Games**
 

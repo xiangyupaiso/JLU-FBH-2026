@@ -25,6 +25,7 @@ function deferred() {
 function environment() {
   const requests = [];
   const embedTimers = new Set();
+  const deadlineTimers = new Set();
   class Image extends EventTarget {
     #src = "";
     srcset = "";
@@ -154,11 +155,12 @@ function environment() {
     }),
     window: {
       setTimeout: (fn, ms) => {
-        if (ms >= 12000) { embedTimers.add(fn); return fn; }
+        if (ms === 12000) { embedTimers.add(fn); return fn; }
+        if (ms > 12000) { deadlineTimers.add(fn); return fn; }
         return setImmediate(fn);
       },
       clearTimeout: (id) => {
-        if (typeof id === "function") embedTimers.delete(id);
+        if (typeof id === "function") { embedTimers.delete(id); deadlineTimers.delete(id); }
         else clearImmediate(id);
       },
       matchMedia: () => ({ matches: true }),
@@ -175,9 +177,10 @@ function environment() {
   });
   vm.runInContext(loaderSource, context);
   return {
-    context, loader, requests, Image, SvgImage, Video, Frame, embedTimers, loaderEvents, nativeSvgProbes, nativeSvgLayers,
+    context, loader, requests, Image, SvgImage, Video, Frame, embedTimers, deadlineTimers, loaderEvents, nativeSvgProbes, nativeSvgLayers,
     holdNativeProbes: () => { holdNativeProbes = true; },
     expireEmbeds: () => [...embedTimers].forEach((fn) => fn()),
+    expireDeadline: () => [...deadlineTimers].forEach((fn) => fn()),
     page: (nextElements, nextHints = []) => { elements = nextElements; hints = nextHints; },
     portals: (nextPortals) => { portals = nextPortals; },
     styles: (nextStyles) => { styles = nextStyles; },
@@ -431,6 +434,52 @@ test("a new SVG clone created by preparation gets its own decode gate even when 
   assert.equal(env.loader.hidden, false);
   assert.equal(env.requests[0].decodeCalls, 1, "the unchanged original is not probed again");
   env.requests[1].finish();
+  await tick();
+  assert.equal(env.loader.hidden, true);
+});
+
+test("a stalled image that never loads or errors cannot hold the loader past the deadline", async () => {
+  const env = environment();
+  const stalled = new env.Image("stalled-body.avif");
+  env.page([stalled]);
+  env.ready();
+  await tick();
+  assert.equal(env.loader.hidden, false);
+  assert.equal(env.deadlineTimers.size, 1);
+  env.expireDeadline();
+  await tick();
+  assert.equal(env.loader.hidden, true);
+  assert.equal(env.deadlineTimers.size, 0);
+});
+
+test("stalled fonts and page preparation also release at the deadline", async () => {
+  const env = environment();
+  env.fonts(new Promise(() => {}));
+  env.context.registerPagePreparation(() => new Promise(() => {}));
+  env.page([]);
+  env.ready();
+  await tick();
+  assert.equal(env.loader.hidden, false);
+  env.expireDeadline();
+  await tick();
+  assert.equal(env.loader.hidden, true);
+});
+
+test("the deadline starts only after the stylesheet applies", async () => {
+  const env = environment();
+  const style = Object.assign(new EventTarget(), {
+    dataset: { styleState: "loading" }, href: "app.css", media: "print", sheet: null,
+  });
+  env.styles([style]);
+  env.page([]);
+  env.ready();
+  await tick();
+  assert.equal(env.deadlineTimers.size, 0, "an unstyled page is never released by time");
+  assert.equal(env.loader.hidden, false);
+  style.media = "all";
+  style.dataset.styleState = "loaded";
+  style.sheet = {};
+  style.dispatchEvent(new Event("load"));
   await tick();
   assert.equal(env.loader.hidden, true);
 });

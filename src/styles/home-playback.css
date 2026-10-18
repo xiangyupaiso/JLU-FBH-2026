@@ -1,4 +1,37 @@
 /* The directory uses transitions so pausing the story keeps its controls responsive. */
+.home-redesign [data-home-artwork="loading"],
+.home-redesign [data-home-artwork="error"] {
+  visibility: hidden !important;
+}
+.home-playback-loading {
+  position: fixed;
+  right: var(--player-edge);
+  bottom: calc(112px + env(safe-area-inset-bottom));
+  width: min(300px, calc(100vw - 40px));
+  padding: 16px 18px;
+  border: 1px solid var(--player-line);
+  border-radius: 16px;
+  background: #fffaf5;
+  color: #102f59;
+  box-shadow: 0 5px 22px rgba(30, 20, 29, 0.07);
+  pointer-events: auto;
+  font-size: 13px;
+  line-height: 1.5;
+}
+.home-playback-loading p { margin: 0; }
+.home-playback-loading-scene { opacity: 0.7; }
+.home-playback-loading-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 18px;
+  margin-top: 10px;
+}
+.home-playback .home-playback-loading-actions button {
+  min-height: 36px;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
 @media (max-width: 800px) and (orientation: portrait),
   (max-height: 650px) and (orientation: landscape) {
   .home-story .home-antigen-switch__phase-label {
@@ -69,6 +102,10 @@ body:has(.site-header.is-mobile-open) .home-playback-scenes {
   outline: 2px solid currentColor;
   outline-offset: -2px;
 }
+.home-playback button:disabled {
+  cursor: default;
+  opacity: 0.35;
+}
 
 .home-playback-bar {
   position: relative;
@@ -93,8 +130,8 @@ body:has(.site-header.is-mobile-open) .home-playback-scenes {
   height: 44px;
   border-radius: 50%;
 }
-.home-playback-toggle:hover,
-.home-playback-scenes-toggle:hover {
+.home-playback-toggle:hover:not(:disabled),
+.home-playback-scenes-toggle:hover:not(:disabled) {
   background: var(--player-hover);
 }
 .home-playback-scenes-toggle::before {
@@ -176,7 +213,7 @@ body:has(.site-header.is-mobile-open) .home-playback-scenes {
   gap: 4px;
   padding: 0 4px 12px 12px;
 }
-.home-redesign .home-playback-scenes-heading h2 {
+.home-playback .home-playback-scenes-heading h2 {
   flex: 1;
   margin: 0;
   color: inherit;
@@ -368,7 +405,7 @@ body:has(.site-header.is-mobile-open) .home-playback-scenes {
   .home-playback-scenes-heading {
     padding-bottom: 4px;
   }
-  .home-redesign .home-playback-scenes-heading h2 {
+  .home-playback .home-playback-scenes-heading h2 {
     font-size: 20px;
   }
 }
@@ -384,7 +421,6 @@ body:has(.site-header.is-mobile-open) .home-playback-scenes {
   }
 }
 :root[data-home-playback="paused"] .home-redesign *,
-:root[data-home-playback="paused"] .home-intro *,
-:root[data-home-playback="paused"] .site-header.is-home-page .logo-word-full {
+:root[data-home-playback="paused"]:not([data-home-intro]) .site-header.is-home-page .logo-word-full {
   animation-play-state: paused !important;
 }

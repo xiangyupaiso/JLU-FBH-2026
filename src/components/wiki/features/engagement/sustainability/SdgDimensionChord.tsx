@@ -31,7 +31,7 @@ interface ChordRecord {
 }
 
 /**
- * SDG-NEXUS 17 Chord — 17 SDGs (left arc) ↔ Social / Economic / Ecological
+ * SDG-NEXUS 17 Chord — 17 SDGs (left arc) ↔ Social / Economic / Environmental
  * dimensions (right arc), with synergy (solid) vs trade-off (hatched) ribbons.
  *
  * This is a direct port of `Qwen_html_20260815_x7bv4g4hn.html`, which replaces

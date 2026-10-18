@@ -275,6 +275,8 @@ export function BusinessModelCanvas() {
       <figure className="business-model-canvas__figure">
         <img
           src={businessModelCanvas.image}
+          width={businessModelCanvas.imageWidth}
+          height={businessModelCanvas.imageHeight}
           alt={businessModelCanvas.imageAlt}
           loading="lazy"
         />
@@ -297,7 +299,11 @@ export function BusinessModelCanvas() {
         hidden={!open}
       >
         {businessModelCanvas.sections.map((section) => (
-          <section key={section.id} className="business-model-canvas__section">
+          <section
+            key={section.id}
+            id={section.id}
+            className="business-model-canvas__section"
+          >
             <h4>{section.title}</h4>
             {section.paragraphs.map((paragraph, index) => (
               <p key={index}>{renderEmphasis(paragraph)}</p>
@@ -435,8 +441,6 @@ export function entrepreneurshipFeatures(): Record<string, ReactNode> {
     "doc-jienzhihe": <EntrepreneurshipDocumentCard docKey="jienzhihe" />,
     "doc-scalability": <EntrepreneurshipDocumentCard docKey="scalability" />,
     "doc-business-plan": <EntrepreneurshipDocumentCard docKey="businessPlan" />,
-    "doc-ccic-poster": <EntrepreneurshipDocumentCard docKey="ccicPoster" />,
-    "doc-apic-poster": <EntrepreneurshipDocumentCard docKey="apicPoster" />,
     "doc-legal-plan": <EntrepreneurshipDocumentCard docKey="legalPlan" />,
   };
 }

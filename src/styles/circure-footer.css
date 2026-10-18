@@ -150,15 +150,58 @@
   margin-top: 88px;
 }
 
-.circure-footer__contact h2 {
-  /* Global headings force var(--font-heading); keep this in body type. */
-  --font-heading: var(--font-body);
+.circure-footer__social-links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(16px, 2vw, 24px);
+}
+
+.circure-footer__social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: clamp(54px, 5.2vw, 68px);
+  height: clamp(54px, 5.2vw, 68px);
+  padding: 0;
   margin: 0;
-  color: var(--footer-ink);
-  font-size: clamp(44px, 5vw, 72px);
-  font-weight: 500;
-  letter-spacing: -0.03em;
-  line-height: 1;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #ffffff;
+  box-shadow: 0 4px 14px rgba(38, 30, 35, 0.08);
+  transition: transform 240ms cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 240ms cubic-bezier(0.16, 1, 0.3, 1),
+              filter 240ms cubic-bezier(0.16, 1, 0.3, 1);
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.circure-footer__social-link:hover {
+  transform: translateY(-4px) scale(1.06);
+  box-shadow: 0 10px 24px rgba(38, 30, 35, 0.16);
+  filter: brightness(1.03);
+}
+
+.circure-footer__social-link:active {
+  transform: translateY(-1px) scale(0.98);
+}
+
+.circure-footer__social-link img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+  user-select: none;
+}
+
+.circure-footer__social-link--youtube {
+  background: #ffffff;
+}
+
+.circure-footer__social-link--youtube img {
+  object-fit: contain;
+  padding: 7px;
 }
 
 .circure-footer__contact address {
@@ -170,7 +213,7 @@
   text-align: left;
 }
 
-.circure-footer__contact a {
+.circure-footer__contact address a {
   margin-bottom: 8px;
   color: var(--footer-ink);
   font-size: clamp(26px, 2.6vw, 36px);
@@ -181,14 +224,14 @@
 }
 
 /* Underline the local part alone so `jlu-fbh.cn` is not read as a domain. */
-.circure-footer__contact a span {
+.circure-footer__contact address a span {
   text-decoration: underline;
   text-decoration-color: var(--footer-line);
   text-decoration-thickness: 2px;
   text-underline-offset: 6px;
 }
 
-.circure-footer__contact a:hover span {
+.circure-footer__contact address a:hover span {
   text-decoration-color: currentColor;
 }
 

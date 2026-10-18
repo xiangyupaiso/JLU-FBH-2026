@@ -4,6 +4,20 @@
    the module; only the official UN SDG colours are fixed (via `data-sdg`).
    ========================================================================== */
 
+/* Match the reader's Lexend typography inside panels, including numeric labels.
+   Keep this below the hero, and repeat it on portalled interview dialogs. */
+.wiki-page--sustainability .wiki-record,
+.sust-stake-modal {
+  --font-heading: var(--font-sans);
+  --font-display: var(--font-sans);
+  --font-editorial: var(--font-sans);
+  --font-mono: var(--font-sans);
+}
+
+.sust-stake-modal {
+  font-family: var(--font-sans);
+}
+
 /* SDG colour lookup — `--sdg` is read by cards, pills and tags. */
 [data-sdg="1"] { --sdg: #e5243b; }
 [data-sdg="2"] { --sdg: #dda63a; }
@@ -43,10 +57,11 @@
 .sust-minor-heading {
   margin: 28px 0 10px;
   color: var(--route-heading-ink, var(--route-ink));
-  font-family: var(--font-sans);
-  font-size: 19px;
+  font-family: var(--font-heading);
+  font-size: 20px;
   font-weight: 700;
-  line-height: 1.4;
+  letter-spacing: -0.015em;
+  line-height: 1.35;
 }
 
 .sust-minor-heading:first-child {
@@ -113,7 +128,10 @@
 .sust-sdg-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 14px;
+  gap: 16px;
+  max-width: 520px;
+  width: 100%;
+  margin: 20px auto;
 }
 
 .sust-sdg-card {
@@ -166,6 +184,100 @@ a.sust-sdg-card:focus-visible {
   color: var(--route-muted);
   font-size: 13px;
   line-height: 1.5;
+}
+
+/* Logo-based Core SDG Card with slide-up summary drawer */
+.sust-sdg-card--logo {
+  padding: 0;
+  border: none;
+  border-radius: 12px;
+  overflow: hidden;
+  background: transparent;
+  display: block;
+  position: relative;
+  aspect-ratio: 1 / 1;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+  transition:
+    transform var(--duration-fast, 0.25s) var(--ease-out, ease),
+    box-shadow var(--duration-fast, 0.25s) var(--ease-out, ease);
+}
+
+a.sust-sdg-card--logo:hover,
+a.sust-sdg-card--logo:focus-visible {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.16);
+  outline: none;
+}
+
+.sust-sdg-card__media {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.sust-sdg-card__logo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.35s ease;
+}
+
+a.sust-sdg-card--logo:hover .sust-sdg-card__logo,
+a.sust-sdg-card--logo:focus-visible .sust-sdg-card__logo {
+  transform: scale(1.02);
+}
+
+.sust-sdg-card__drawer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 8px 10px;
+  background: color-mix(in srgb, var(--sdg) 94%, #000 6%);
+  box-shadow: 0 -3px 12px rgba(0, 0, 0, 0.15);
+  transform: translateY(100%);
+  opacity: 0;
+  transition:
+    transform 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 0.22s ease;
+  pointer-events: none;
+}
+
+a.sust-sdg-card--logo:hover .sust-sdg-card__drawer,
+a.sust-sdg-card--logo:focus-visible .sust-sdg-card__drawer,
+.sust-sdg-card--logo:focus-within .sust-sdg-card__drawer {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.sust-sdg-card--logo .sust-sdg-card__summary {
+  margin: 0;
+  color: #ffffff;
+  font-family: var(--font-sans, system-ui, sans-serif);
+  font-size: 11.5px;
+  font-weight: 600;
+  line-height: 1.35;
+  text-align: center;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+}
+
+@media (max-width: 640px) {
+  .sust-sdg-grid {
+    gap: 10px;
+    margin: 14px auto;
+  }
+  .sust-sdg-card--logo {
+    border-radius: 10px;
+  }
+  .sust-sdg-card__drawer {
+    padding: 6px 8px;
+  }
+  .sust-sdg-card--logo .sust-sdg-card__summary {
+    font-size: 10px;
+    line-height: 1.25;
+  }
 }
 
 /* Overview · SET / DEVELOP / GROW tiers ---------------------------------- */
@@ -236,6 +348,25 @@ a.sust-sdg-card:focus-visible {
   gap: 4px;
 }
 
+.sust-tier-card__header-link {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  text-decoration: none;
+  color: inherit;
+  border-radius: 6px;
+  transition: opacity 0.15s ease;
+}
+
+.sust-tier-card__header-link:hover {
+  opacity: 0.85;
+}
+
+.sust-tier-card__header-link:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+
 .sust-tier-card__layer {
   display: block;
   font-family: var(--font-sans);
@@ -281,10 +412,17 @@ a.sust-sdg-card:focus-visible {
   font-weight: 700;
   line-height: 1.5;
   text-decoration: none;
+  transition: transform 0.15s ease, filter 0.15s ease, box-shadow 0.15s ease;
+}
+
+a.sust-sdg-pill {
+  cursor: pointer;
 }
 
 a.sust-sdg-pill:hover {
-  filter: brightness(1.08);
+  filter: brightness(1.12);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.18);
 }
 
 a.sust-sdg-pill:focus-visible {
@@ -559,30 +697,71 @@ a.sust-sdg-pill:focus-visible {
 }
 
 /* Card = index tab on the left + main column (header, copy | photos, status
-   row), after the Marburg HP cards. */
+   row), after the Marburg HP cards. 水墨淡彩：宣纸底 + 淡彩晕染 + 笔触顶线。 */
 .sust-stake-card {
+  position: relative;
   display: grid;
-  grid-template-columns: 44px minmax(0, 1fr);
-  border: 1px solid var(--route-line);
-  border-top: 3px solid var(--route-main);
-  border-radius: 10px;
-  background: #fff;
+  grid-template-columns: 44px minmax(0, 1fr); /* 保持左侧编号竖条 + 右侧内容布局 */
+  border-radius: 12px;
+
+  /* 柔和外框：弱化机械实线，改用温润的半透明墨线 + 宣纸内高光 + 极浅暖调浮起阴影 */
+  border: 1px solid color-mix(in srgb, var(--route-line) 65%, transparent);
+  box-shadow:
+    0 6px 22px -6px color-mix(in srgb, var(--route-main) 10%, rgba(120, 90, 50, 0.06)),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.75);
+
+  /* 水墨淡彩多层背景：右上淡粉紫晕染（呼应照片区）、右下暖杏黄晕染、
+     左上衔接编号条的极淡主色晕染；底层温润宣纸暖白底，保证正文区纯净可读 */
+  background:
+    radial-gradient(circle at 88% 22%, rgba(235, 205, 220, 0.32) 0%, rgba(235, 205, 220, 0.08) 32%, transparent 60%),
+    radial-gradient(circle at 82% 88%, color-mix(in srgb, var(--route-main) 14%, transparent) 0%, transparent 55%),
+    radial-gradient(circle at 0% 0%, color-mix(in srgb, var(--route-main) 10%, transparent) 0%, transparent 40%),
+    color-mix(in srgb, var(--route-main) 2.5%, #fffdf8);
+
   overflow: hidden;
   scroll-margin-top: calc(var(--header-height) + 24px);
 }
 
+/* 顶部水墨笔触线：替代生硬的 3px 纯色 border-top，左浓右淡的水彩扫笔效果 */
+.sust-stake-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(
+    90deg,
+    var(--route-main) 0%,
+    color-mix(in srgb, var(--route-main) 65%, #e5b8c8) 45%,
+    color-mix(in srgb, var(--route-main) 15%, transparent) 100%
+  );
+  pointer-events: none;
+  z-index: 2;
+}
+
 .sust-stake-card__tab {
+  /* 左侧编号竖条：自上而下自然消散的水墨淡彩竖笺 */
   display: flex;
   justify-content: center;
   padding-top: 20px;
-  background: color-mix(in srgb, var(--route-main) 18%, #fff);
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--route-main) 16%, #fffdf8) 0%,
+    color-mix(in srgb, var(--route-main) 7%, #fffdf8) 65%,
+    color-mix(in srgb, var(--route-main) 3%, #fffdf8) 100%
+  );
+  border-right: 1px solid color-mix(in srgb, var(--route-main) 14%, transparent);
   color: var(--route-accent);
-  font-family: var(--font-mono);
-  font-size: 15px;
+  font-family: var(--font-heading), var(--font-sans), sans-serif;
+  font-feature-settings: "zero" 0;
+  font-variant-numeric: normal;
+  font-size: 16px;
   font-weight: 700;
 }
 
 .sust-stake-card__main {
+  /* 内容区：保持原有排版与尺寸，字号与行高不受影响 */
   container-type: inline-size;
   min-width: 0;
   padding: 20px clamp(16px, 2.4vw, 26px) 18px;
@@ -1046,11 +1225,19 @@ a.sust-sdg-pill:focus-visible {
 }
 
 .sust-evidence__item .wiki-figure {
-  margin: 12px auto 0 !important;
+  margin: 16px auto 0 !important;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
+}
+
+.sust-evidence__item .wiki-figure img {
+  max-width: min(560px, 100%) !important;
+  height: auto !important;
+  max-height: 420px !important;
+  object-fit: contain !important;
+  border-radius: 10px;
 }
 
 /* Chapter subsection rail ---------------------------------------------------
@@ -1414,6 +1601,15 @@ a.sust-sdg-pill:focus-visible {
 
 .wiki-page--sustainability .wiki-section__heading h2 {
   display: block !important;
+  max-width: 960px !important;
+  width: 100% !important;
+  font-family: var(--font-heading) !important;
+  font-size: clamp(24px, 2.4vw, 32px) !important;
+  line-height: 1.3 !important;
+  word-break: normal !important;
+  overflow-wrap: break-word !important;
+  hyphens: none !important;
+  -webkit-hyphens: none !important;
 }
 
 .wiki-page--sustainability .wiki-section__heading h2 .wiki-heading-line {
@@ -1425,48 +1621,103 @@ a.sust-sdg-pill:focus-visible {
 }
 
 .wiki-page--sustainability .wiki-section__heading h2 .wiki-heading-marker--sub {
+  font-family: var(--font-heading) !important;
   font-size: clamp(21px, 2.2vw, 25px) !important;
   font-weight: 750 !important;
   line-height: inherit !important;
+}
+
+.wiki-page--sustainability .wiki-subheading__title {
+  font-family: var(--font-heading) !important;
 }
 
 /* ============================================================================
    SDG Chapter & SCALE Subsection Headings: Official SDG & FIG02 Colors
    ============================================================================ */
 
-/* SDG3: Good Health and Well-being (Official UN SDG Green #4c9f38) */
+/* SDG 1: No Poverty (#e5243b) */
+.wiki-page--sustainability #grow-sdg1 .wiki-subheading__title,
+.wiki-page--sustainability [id$="-grow-sdg1"] .wiki-subheading__title {
+  color: #e5243b !important;
+}
+
+/* SDG 3: Good Health and Well-being (#4c9f38) */
 .wiki-page--sustainability #sdg3-health .wiki-subheading__title,
 .wiki-page--sustainability [id$="-health"] .wiki-subheading__title {
   color: #4c9f38 !important;
 }
 
+/* SDG 4: Quality Education (#c5192d) */
+.wiki-page--sustainability #sdg4-quality-education .wiki-subheading__title,
+.wiki-page--sustainability [id$="-quality-education"] .wiki-subheading__title {
+  color: #c5192d !important;
+}
+
+/* SDG 5: Gender Equality (#ff3a21) */
+.wiki-page--sustainability #grow-sdg5 .wiki-subheading__title,
+.wiki-page--sustainability [id$="-grow-sdg5"] .wiki-subheading__title {
+  color: #ff3a21 !important;
+}
+
+/* SDG 8: Decent Work and Economic Growth (#a21942) */
+.wiki-page--sustainability #grow-sdg8 .wiki-subheading__title,
+.wiki-page--sustainability [id$="-grow-sdg8"] .wiki-subheading__title {
+  color: #a21942 !important;
+}
+
+/* SDG 9: Industry, Innovation and Infrastructure (#fd6925) */
+.wiki-page--sustainability #sdg9-industry .wiki-subheading__title,
+.wiki-page--sustainability [id$="-industry"] .wiki-subheading__title {
+  color: #fd6925 !important;
+}
+
+/* SDG 10: Reduced Inequalities (#dd1367) */
+.wiki-page--sustainability #grow-sdg10 .wiki-subheading__title,
+.wiki-page--sustainability [id$="-grow-sdg10"] .wiki-subheading__title {
+  color: #dd1367 !important;
+}
+
+/* SDG 12: Responsible Consumption and Production (#bf8b2e) */
+.wiki-page--sustainability #sdg12-responsible-consumption .wiki-subheading__title,
+.wiki-page--sustainability [id$="-responsible-consumption"] .wiki-subheading__title {
+  color: #bf8b2e !important;
+}
+
+/* SDG 13: Climate Action (#3f7e44) */
+.wiki-page--sustainability #grow-sdg13 .wiki-subheading__title,
+.wiki-page--sustainability [id$="-grow-sdg13"] .wiki-subheading__title {
+  color: #3f7e44 !important;
+}
+
+/* SDG 17: Partnerships for the Goals (#19486a) */
+.wiki-page--sustainability #sdg17-partnerships .wiki-subheading__title,
+.wiki-page--sustainability [id$="-partnerships"] .wiki-subheading__title {
+  color: #19486a !important;
+}
+
 /* S — Stakeholder Insights (FIG02 Leaf Green #96c85b) */
-.wiki-page--sustainability #sdg3-stakeholders .wiki-subheading__title,
-.wiki-page--sustainability [id$="-stakeholders"] .wiki-subheading__title {
+.wiki-page--sustainability [id*="-stakeholder"] .wiki-subheading__title,
+.wiki-page--sustainability [id*="-stakeholders"] .wiki-subheading__title {
   color: #96c85b !important;
 }
 
 /* C — Consequences & Interactions (FIG02 Sky Blue #8cdafe) */
-.wiki-page--sustainability #sdg3-consequences .wiki-subheading__title,
-.wiki-page--sustainability [id$="-consequences"] .wiki-subheading__title {
+.wiki-page--sustainability [id*="-consequences"] .wiki-subheading__title {
   color: #8cdafe !important;
 }
 
 /* A — Alignment with CirCure (FIG02 Peach Orange #fead58) */
-.wiki-page--sustainability #sdg3-alignment .wiki-subheading__title,
-.wiki-page--sustainability [id$="-alignment"] .wiki-subheading__title {
+.wiki-page--sustainability [id*="-alignment"] .wiki-subheading__title {
   color: #fead58 !important;
 }
 
 /* L — Legacy Tools (FIG02 Yellow/Gold #fed240) */
-.wiki-page--sustainability #sdg3-legacy .wiki-subheading__title,
-.wiki-page--sustainability [id$="-legacy"] .wiki-subheading__title {
+.wiki-page--sustainability [id*="-legacy"] .wiki-subheading__title {
   color: #fed240 !important;
 }
 
 /* E — Evidence & Continual Review (FIG02 Purple #7030a0) */
-.wiki-page--sustainability #sdg3-evidence .wiki-subheading__title,
-.wiki-page--sustainability [id$="-evidence"] .wiki-subheading__title {
+.wiki-page--sustainability [id*="-evidence"] .wiki-subheading__title {
   color: #7030a0 !important;
 }
 
@@ -1488,11 +1739,11 @@ a.sust-sdg-pill:focus-visible {
   display: block !important;
   margin-bottom: 14px !important;
   color: var(--route-accent, #c5192d) !important;
-  font-family: var(--font-sans) !important;
+  font-family: var(--font-heading) !important;
   font-size: clamp(20px, 1.8vw, 22px) !important;
-  font-weight: 800 !important;
-  letter-spacing: 0.03em !important;
-  text-transform: uppercase !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.015em !important;
+  text-transform: none !important;
   line-height: 1.25 !important;
 }
 
@@ -1530,25 +1781,32 @@ a.sust-sdg-pill:focus-visible {
   align-items: center;
   justify-content: center;
   padding: 24px 16px;
-  background: rgba(20, 15, 12, 0.48);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
+  background: color-mix(in srgb, var(--route-heading-ink, #4a2c1d) 34%, transparent);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
   animation: sustFadeIn 200ms ease-out;
 }
 
 .sust-stake-modal {
+  /* The portal sits outside the route; keep its paper and ink fallbacks local. */
+  --stake-paper: #fffdf7;
+  --stake-ink: var(--route-heading-ink, #4a2c1d);
+  --stake-accent: var(--route-subheading-ink, #174a47);
+  --stake-pigment: var(--route-marker-bg, #fde5a5);
   position: relative;
   width: 100%;
   max-width: 1120px;
   max-height: 90vh;
   display: flex;
   flex-direction: column;
-  background: #ffffff;
-  border-radius: 18px;
-  border: 1px solid rgba(27, 23, 25, 0.08);
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.24);
+  background: var(--stake-paper);
+  border-radius: 12px;
+  border: 1px solid color-mix(in srgb, var(--stake-ink) 16%, transparent);
+  box-shadow:
+    0 2px 6px color-mix(in srgb, var(--stake-ink) 4%, transparent),
+    0 14px 40px color-mix(in srgb, var(--stake-ink) 10%, transparent);
   overflow: hidden;
-  animation: sustModalScaleIn 240ms cubic-bezier(0.16, 1, 0.3, 1);
+  animation: sustModalScaleIn 180ms ease-out;
 }
 
 .sust-stake-modal__close {
@@ -1562,19 +1820,27 @@ a.sust-sdg-pill:focus-visible {
   width: 36px;
   height: 36px;
   border-radius: 50%;
-  border: 1px solid var(--route-line, rgba(27, 23, 25, 0.12));
-  background: #ffffff;
-  color: var(--route-ink, #2c2523);
+  border: 1px solid color-mix(in srgb, var(--stake-ink) 14%, transparent);
+  background: var(--stake-paper);
+  color: var(--stake-ink);
   font-size: 20px;
   line-height: 1;
   cursor: pointer;
-  transition: all 180ms ease;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+  transition: background-color 160ms ease, border-color 160ms ease, transform 160ms ease;
 }
 
 .sust-stake-modal__close:hover {
-  background: #f5f2ed;
-  transform: rotate(90deg);
+  background: color-mix(in srgb, var(--stake-pigment) 32%, var(--stake-paper));
+  border-color: color-mix(in srgb, var(--stake-ink) 32%, transparent);
+}
+
+.sust-stake-modal__close:active {
+  transform: scale(0.96);
+}
+
+.sust-stake-modal__close:focus-visible {
+  outline: 2px solid var(--stake-accent);
+  outline-offset: 3px;
 }
 
 /* Large centered gallery followed by the interview text; close stays visible. */
@@ -1582,10 +1848,15 @@ a.sust-sdg-pill:focus-visible {
   flex: 1;
   min-height: 0;
   overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: color-mix(in srgb, var(--stake-ink) 24%, var(--stake-paper)) transparent;
 }
 
 .sust-stake-modal__header {
   padding: 24px 76px 16px 28px;
+  background:
+    radial-gradient(ellipse at 0 0, color-mix(in srgb, var(--stake-pigment) 35%, transparent), transparent 70%),
+    radial-gradient(ellipse at 100% 0, color-mix(in srgb, var(--stake-accent) 6%, transparent), transparent 60%);
 }
 
 /* Room for the close button beside the name. */
@@ -1609,7 +1880,7 @@ a.sust-sdg-pill:focus-visible {
 .sust-stake-modal__body {
   margin: 0 28px;
   padding: 22px 0 32px;
-  border-top: 2px dashed var(--route-line-strong, var(--route-line));
+  border-top: 1px solid color-mix(in srgb, var(--stake-ink) 15%, transparent);
   font-size: 15px;
   line-height: 1.7;
   color: var(--route-ink, #2c2523);
@@ -1641,11 +1912,22 @@ a.sust-sdg-pill:focus-visible {
 @keyframes sustModalScaleIn {
   from {
     opacity: 0;
-    transform: scale(0.95) translateY(10px);
+    transform: translateY(6px);
   }
   to {
     opacity: 1;
-    transform: scale(1) translateY(0);
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sust-stake-modal-backdrop,
+  .sust-stake-modal {
+    animation: none;
+  }
+
+  .sust-stake-modal__close {
+    transition: none;
   }
 }
 
@@ -1680,12 +1962,13 @@ a.sust-sdg-pill:focus-visible {
   display: grid;
   grid-template-columns: 220px minmax(0, 1fr);
   gap: 22px;
-  align-items: start;
+  align-items: center;
 }
 
 .sust-deck__rail {
   position: sticky;
   top: 24px;
+  align-self: center;
 }
 
 .sust-deck__stage {
@@ -1707,12 +1990,13 @@ a.sust-sdg-pill:focus-visible {
 .sust-deck[data-scroll-deck] .sust-deck__viewport {
   position: sticky;
   top: var(--deck-top);
+  align-items: center;
 }
 
 .sust-deck[data-scroll-deck] .sust-deck__rail {
   position: relative;
   top: auto;
-  align-self: start;
+  align-self: center;
   max-height: var(--deck-height);
   overflow-y: auto;
 }
@@ -1755,6 +2039,7 @@ a.sust-sdg-pill:focus-visible {
 }
 
 .sust-deck__label {
+  display: none !important;
   margin: 0 0 10px 4px;
   color: var(--route-muted);
   font-family: var(--font-mono);
@@ -1817,9 +2102,12 @@ a.sust-sdg-pill:focus-visible {
 
 .sust-deck__num {
   color: color-mix(in srgb, var(--route-accent) 45%, var(--route-muted));
-  font-family: var(--font-editorial);
-  font-size: 28px;
-  font-style: italic;
+  font-family: var(--font-heading), var(--font-sans), sans-serif;
+  font-feature-settings: "zero" 0;
+  font-variant-numeric: normal;
+  font-size: 24px;
+  font-weight: 600;
+  font-style: normal;
   line-height: 1;
 }
 
@@ -2076,10 +2364,8 @@ a.sust-sdg-pill:focus-visible {
 }
 @media (min-width: 981px) {
   .sust-deck__field--lead {
-    /* Keep the lead stakeholder copy in the existing grid row while letting it
-       use the open space above the visual panel on wider screens. */
-    width: calc(190% + clamp(20px, 3vw, 36px));
-    min-block-size: 4.3rem;
+    width: 100%;
+    min-block-size: auto;
   }
 
   .sust-deck__field--lead dd {
@@ -2095,7 +2381,7 @@ a.sust-sdg-pill:focus-visible {
   flex-basis: 100%;
   margin: 5px 0 0;
   color: var(--route-muted);
-  font-size: 12.5px;
+  font-size: 15px;
   line-height: 1.5;
 }
 
@@ -2156,11 +2442,7 @@ a.sust-sdg-pill:focus-visible {
 }
 
 .sust-edu-resource {
-  padding: clamp(18px, 2.4vw, 26px);
-  border: 1px solid var(--route-line);
-  border-top: 3px solid var(--route-main);
-  border-radius: 12px;
-  background: #fff;
+  min-width: 0;
 }
 
 .sust-edu-resource__title {
@@ -2176,6 +2458,31 @@ a.sust-sdg-pill:focus-visible {
   margin: 0;
 }
 
+.wiki-page--sustainability .games-showcase-preview {
+  margin-top: 16px;
+}
+
+.wiki-page--sustainability .games-showcase-preview .games-showcase__launch {
+  min-height: 360px;
+  height: clamp(360px, 36vw, 480px);
+  text-decoration: none;
+}
+
+.wiki-page--sustainability .games-showcase-preview .games-showcase__dock {
+  flex-wrap: wrap;
+  padding: 14px 18px;
+}
+
+.wiki-page--sustainability .games-showcase-preview .games-showcase__dock-action {
+  margin-left: auto;
+}
+
+.wiki-page--sustainability .games-showcase-preview .games-showcase__cta-btn {
+  padding: 10px 16px;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
 .sust-edu-resource__figure {
   margin: 14px 0 0;
 }
@@ -2184,34 +2491,53 @@ a.sust-sdg-pill:focus-visible {
   border-radius: 10px;
 }
 
-.sust-edu-resource__games {
-  display: inline-flex;
-  margin-top: 14px;
-  padding: 8px 18px;
-  border: 1px solid color-mix(in srgb, var(--route-accent) 45%, var(--route-line));
-  border-radius: var(--radius-control, 8px);
-  background: #fff;
-  color: var(--route-accent);
-  font-size: 14px;
-  font-weight: 700;
-  text-decoration: none;
-}
-
-.sust-edu-resource__games:hover {
-  background: var(--route-panel);
-}
-
-.sust-edu-resource__games:focus-visible {
-  outline: 2px solid var(--route-accent);
-  outline-offset: 2px;
-}
-
 /* Picture book CN/EN PDFs side by side (manuscript instruction). */
 .sust-edu-resource__pdfs {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: start;
+  gap: 16px;
   margin-top: 14px;
+}
+
+.sust-edu-resource__pdfs > * {
+  min-width: 0;
+  margin: 0;
+}
+
+@media (max-width: 640px) {
+  .sust-edu-resource__pdfs {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .wiki-page--sustainability .games-showcase-preview .games-showcase__launch {
+    min-height: 340px;
+    height: 380px;
+    padding: 14px;
+  }
+
+  .wiki-page--sustainability .games-showcase-preview .games-showcase__hud {
+    align-items: start;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+}
+
+.sust-partnerships__prose .sust-stake-article p {
+  margin-bottom: 16px;
+  font-size: 17px;
+  line-height: 1.8;
+}
+
+.wiki-page--sustainability #grow-sustainable-futures h4,
+.wiki-page--sustainability #grow-sustainable-futures .wiki-prose p,
+.wiki-page--sustainability #grow-sustainable-futures .wiki-prose li {
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+.wiki-page--sustainability #grow-sustainable-futures h4 {
+  font-weight: 600;
 }
 
 .sust-edu-group {
@@ -2221,8 +2547,6 @@ a.sust-sdg-pill:focus-visible {
 
 .sust-edu-group__title {
   margin: 12px 0 0;
-  padding-bottom: 8px;
-  border-bottom: 1px solid var(--route-line);
   color: var(--route-subheading-ink, var(--route-accent));
   font-family: var(--font-sans);
   font-size: 20px;
@@ -2258,8 +2582,8 @@ a.sust-sdg-pill:focus-visible {
 
 /* ==========================================================================
    SDG 4 — five-bookmark feedback microplate cards
-   Ported from 五书签卡片组件_修复版.html; palette retuned to the official SDG 4
-   red family. All selectors stay scoped under .edu-feedback.
+   Paper bookmarks frame the original SDG 4 microplate and its red data ramp.
+   All selectors stay scoped under .edu-feedback.
    ========================================================================== */
 
 .sust-consequences .edu-feedback {
@@ -2267,12 +2591,12 @@ a.sust-sdg-pill:focus-visible {
 }
 
 .edu-feedback {
-  --ef-accent: #c5192d;
-  --ef-rail: #fdf1f0;
-  --ef-paper: #ffffff;
-  --ef-ink: #5f3d3d;
-  --ef-muted: #8a6f68;
-  --ef-rule: #eed8d4;
+  --ef-accent: color-mix(in srgb, #c5192d 60%, var(--route-heading-ink, #4a2c1d));
+  --ef-paper: #fffdf7;
+  --ef-rail: color-mix(in srgb, var(--route-marker-bg, #fde5a5) 16%, var(--ef-paper));
+  --ef-ink: var(--route-ink, #4a3d30);
+  --ef-muted: color-mix(in srgb, var(--ef-ink) 72%, var(--ef-paper));
+  --ef-rule: color-mix(in srgb, var(--ef-ink) 13%, transparent);
   color: var(--ef-ink);
   font-size: 16px;
   line-height: 1.6;
@@ -2310,17 +2634,19 @@ a.sust-sdg-pill:focus-visible {
   min-width: 0;
   min-height: 620px;
   border: 1px solid var(--ef-rule);
-  border-top: 3px solid var(--ef-accent);
   border-radius: 12px;
   background: var(--ef-paper);
-  box-shadow: 0 5px 18px rgb(120 45 45 / 5%);
+  box-shadow: 0 4px 16px color-mix(in srgb, var(--ef-ink) 5%, transparent);
   isolation: isolate;
 }
 
 .edu-feedback .ef-rail {
   min-width: 0;
-  background: var(--ef-rail);
-  border-radius: 9px 0 0 11px;
+  background:
+    radial-gradient(ellipse at 0 0, rgb(248 196 187 / 20%), transparent 65%),
+    var(--ef-rail);
+  border-right: 1px solid var(--ef-rule);
+  border-radius: 11px 0 0 11px;
   padding: 24px 17px;
 }
 
@@ -2333,7 +2659,7 @@ a.sust-sdg-pill:focus-visible {
   padding: 13px 17px 23px;
   border: 0;
   background: transparent;
-  color: #5c2a2a;
+  color: var(--ef-ink);
   font-family: inherit;
   font-size: 17px;
   line-height: 1.28;
@@ -2341,8 +2667,7 @@ a.sust-sdg-pill:focus-visible {
   text-align: left;
   cursor: pointer;
   touch-action: manipulation;
-  filter: drop-shadow(0 3px 3px rgb(169 54 34 / 7%));
-  transition: transform 140ms ease;
+  transition: color 160ms ease, transform 160ms ease;
 }
 
 .edu-feedback .ef-tab::before {
@@ -2350,20 +2675,24 @@ a.sust-sdg-pill:focus-visible {
   position: absolute;
   inset: 0;
   z-index: -1;
-  background: linear-gradient(145deg, #fffdfc, #fdeceb);
-  border: 1px solid #f1d3cf;
+  background:
+    radial-gradient(ellipse at 15% 0, rgb(248 196 187 / 22%), transparent 75%),
+    var(--ef-paper);
+  border: 1px solid var(--ef-rule);
   border-radius: 7px 7px 0 0;
   clip-path: polygon(0 0, 100% 0, 100% 100%, 50% calc(100% - 13px), 0 100%);
 }
 
 .edu-feedback .ef-tab[aria-selected="true"]::before {
-  background: linear-gradient(145deg, #ffdcd6, #f9bdb4);
-  border-left: 3px solid var(--ef-accent);
-  border-right-color: #e7a39a;
-  border-top-color: #e7a39a;
+  background:
+    radial-gradient(ellipse at 10% 10%, rgb(248 196 187 / 65%), transparent 80%),
+    var(--ef-paper);
+  border-color: color-mix(in srgb, var(--ef-accent) 32%, transparent);
+  border-left: 2px solid color-mix(in srgb, var(--ef-accent) 70%, transparent);
 }
 
 .edu-feedback .ef-tab[aria-selected="true"] {
+  color: var(--ef-accent);
   font-weight: 700;
 }
 
@@ -2374,14 +2703,14 @@ a.sust-sdg-pill:focus-visible {
   right: 1px;
   width: 12px;
   height: 12px;
-  background: #f3d2cc;
+  background: color-mix(in srgb, var(--ef-accent) 14%, var(--ef-paper));
   clip-path: polygon(0 0, 100% 100%, 0 100%);
   border-radius: 0 5px 0 2px;
   pointer-events: none;
 }
 
 .edu-feedback .ef-tab[aria-selected="true"]::after {
-  background: #e29a90;
+  background: color-mix(in srgb, var(--ef-accent) 34%, var(--ef-paper));
 }
 
 .edu-feedback .ef-tab:hover {
@@ -2389,11 +2718,11 @@ a.sust-sdg-pill:focus-visible {
 }
 
 .edu-feedback .ef-tab:not([aria-selected="true"]):hover::before {
-  background: #ffe2de;
+  background: color-mix(in srgb, #f8c4bb 32%, var(--ef-paper));
 }
 
 .edu-feedback .ef-tab:focus-visible {
-  outline: 2px solid #8c3b3b;
+  outline: 2px solid var(--ef-accent);
   outline-offset: 3px;
   border-radius: 5px;
 }
@@ -2401,7 +2730,7 @@ a.sust-sdg-pill:focus-visible {
 .edu-feedback .ef-tab-number {
   display: block;
   margin-bottom: 6px;
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--font-sans);
   font-size: 24px;
   line-height: 1;
   font-weight: 700;
@@ -2444,7 +2773,7 @@ a.sust-sdg-pill:focus-visible {
 }
 
 .edu-feedback .ef-panel:focus-visible {
-  outline: 2px solid #8c3b3b;
+  outline: 2px solid var(--ef-accent);
   outline-offset: -6px;
 }
 
@@ -2456,7 +2785,7 @@ a.sust-sdg-pill:focus-visible {
 .edu-feedback .ef-title {
   margin: 0 0 12px;
   color: var(--ef-ink);
-  font: 700 clamp(28px, 2.7vw, 36px) / 1.25 Georgia, "Times New Roman", serif;
+  font: 700 clamp(28px, 2.7vw, 36px) / 1.25 var(--font-sans);
   overflow-wrap: anywhere;
 }
 
@@ -2754,5 +3083,229 @@ a.sust-sdg-pill:focus-visible {
 
   .edu-feedback .ef-panel[data-active] {
     animation: none;
+  }
+}
+.sust-partnerships__group + .sust-partnerships__group {
+  margin-top: var(--wiki-space-subhead-top, 28px);
+}
+
+.sust-partnerships .sust-stake-card {
+  grid-template-columns: max-content minmax(0, 1fr);
+}
+
+.sust-partnerships .sust-stake-card__tab {
+  padding-inline: 12px;
+  white-space: nowrap;
+}
+
+.sust-contribution-bubbles {
+  min-width: 0;
+  --sdg-font: var(--font-sans);
+  --sdg-ink: var(--route-heading-ink);
+  --sdg-rule: color-mix(in srgb, var(--route-heading-ink) 14%, transparent);
+}
+
+/* ----------------------------------------------------------------------------
+ * Interactive City Map Component (Section 08 / 8.5)
+ * -------------------------------------------------------------------------- */
+.sust-city-figure {
+  margin: var(--wiki-space-block, 24px) 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.sust-city-container {
+  --city-accent: var(--route-subheading-ink, #174a47);
+  position: relative;
+  container-type: inline-size;
+  width: 100%;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  border: 1px solid var(--route-line, rgba(0, 0, 0, 0.1));
+  background: #fbf7ee;
+  user-select: none;
+}
+
+.sust-city-img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.sust-city-hotspots {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.sust-city-hotspot {
+  position: absolute;
+  pointer-events: auto;
+  background: transparent;
+  border: 2px solid transparent;
+  border-radius: 12px;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+  transition:
+    background-color 160ms ease,
+    border-color 160ms ease,
+    box-shadow 160ms ease;
+  outline: none;
+}
+
+.sust-city-hotspot:hover,
+.sust-city-hotspot:focus-visible,
+.sust-city-hotspot.is-active {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: color-mix(in srgb, var(--city-accent) 60%, #fff);
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.3);
+}
+
+.sust-city-hotspot:focus-visible {
+  outline: 2px solid var(--city-accent);
+  outline-offset: 3px;
+}
+
+.sust-city-hotspot__dot {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--city-accent);
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.8);
+  opacity: 0;
+  transform: scale(0.6);
+  transition: opacity 160ms ease, transform 160ms ease;
+}
+
+.sust-city-hotspot:hover .sust-city-hotspot__dot,
+.sust-city-hotspot:focus-visible .sust-city-hotspot__dot,
+.sust-city-hotspot.is-active .sust-city-hotspot__dot {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.sust-city-tooltip {
+  position: absolute;
+  left: clamp(min(172px, 50%), var(--city-tooltip-x), max(calc(100% - 172px), 50%));
+  top: clamp(88px, var(--city-tooltip-y), calc(100% - 88px));
+  transform: translate(-50%, -50%);
+  z-index: 20;
+  pointer-events: none;
+  display: grid;
+  gap: 8px;
+  width: min(320px, calc(100% - 24px));
+  box-sizing: border-box;
+  padding: 16px 18px 12px;
+  border: 1px solid rgba(74, 44, 29, 0.1);
+  border-radius: 16px;
+  background: #fff;
+  color: var(--route-heading-ink, #4a2c1d);
+  font-family: var(--font-sans, system-ui, sans-serif);
+  text-align: left;
+  line-height: 1.5;
+  box-shadow:
+    0 2px 4px rgba(57, 43, 35, 0.06),
+    0 12px 32px rgba(57, 43, 35, 0.13);
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+.sust-city-tooltip__badge {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 11.5px;
+  font-weight: 400;
+  color: var(--city-accent);
+  letter-spacing: 0;
+}
+
+.sust-city-tooltip__badge::before {
+  content: "";
+  flex: 0 0 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.sust-city-tooltip__title {
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.45;
+  letter-spacing: -0.02em;
+  text-wrap: pretty;
+}
+
+.sust-city-tooltip__hint {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 3px;
+  font-size: 11.5px;
+  color: #6c7168;
+}
+
+.sust-city-tooltip__arrow {
+  display: grid;
+  place-items: center;
+  flex: 0 0 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: #eef4f1;
+  color: var(--city-accent);
+}
+
+.sust-city-tooltip__arrow svg {
+  width: 14px;
+  height: 14px;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.sust-city-caption {
+  font-size: 13.5px;
+  color: var(--route-caption-ink, var(--route-ink));
+  text-align: center;
+}
+
+.sust-city-caption__bar {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 16px;
+  border-radius: 20px;
+  background: color-mix(in srgb, var(--route-line, #e2e8f0) 40%, transparent);
+}
+
+.sust-city-caption__prompt strong {
+  color: var(--route-accent, #2b72ba);
+}
+
+@container (max-width: 400px) {
+  .sust-city-tooltip {
+    top: 50%;
+    gap: 6px;
+    padding: 12px 14px 10px;
+  }
+
+  .sust-city-tooltip__title {
+    font-size: 14px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sust-city-hotspot,
+  .sust-city-hotspot__dot {
+    transition: none;
   }
 }

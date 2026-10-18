@@ -32,8 +32,8 @@
 .dry-panel.dry-panel--unified-disclosures {
   --disclosure-accent: #5f9f87;
   --disclosure-on-accent: #f7faf7;
-  --disclosure-ink: var(--wet-ink, #35222b);
-  --disclosure-line: var(--wet-line-strong, rgba(53, 34, 43, 0.24));
+  --disclosure-ink: var(--route-ink, #35222b);
+  --disclosure-line: var(--route-line-strong, rgba(53, 34, 43, 0.24));
 }
 
 .dry-panel.dry-panel--unified-disclosures.dry-panel--wet-lab {

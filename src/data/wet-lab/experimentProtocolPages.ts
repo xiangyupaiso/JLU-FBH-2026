@@ -1,3 +1,9 @@
+import { experimentProtocolSize } from "./experimentProtocolAssets";
+export {
+  experimentProtocolImage,
+  experimentProtocolLocalImage,
+} from "./experimentProtocolAssets";
+
 export interface ExperimentProtocolPair {
   key: string;
   section: string;
@@ -26,7 +32,7 @@ export const experimentProtocolSections: ExperimentProtocolSection[] = [
     index: "01",
     name: "Construct",
     subtitle: "In Vitro Synthesis",
-    nodeKeys: ["1-1", "1-2"],
+    nodeKeys: ["1-1"],
   },
   {
     index: "02",
@@ -38,7 +44,7 @@ export const experimentProtocolSections: ExperimentProtocolSection[] = [
     index: "03",
     name: "Optimise",
     subtitle: "Combined Vaccine",
-    nodeKeys: ["3-1", "3-2"],
+    nodeKeys: ["3-1"],
   },
   {
     index: "04",
@@ -56,7 +62,7 @@ export const experimentProtocolSections: ExperimentProtocolSection[] = [
     index: "06",
     name: "Target model",
     subtitle: "Cell Engineering",
-    nodeKeys: ["6-1-vector", "6-1-transduction", "6-2", "6-3", "6-4"],
+    nodeKeys: ["6-1", "6-2", "6-3", "6-4"],
   },
   {
     index: "07",
@@ -70,32 +76,19 @@ export const experimentProtocolPairs: ExperimentProtocolPair[] = [
   // -------------------------------------------------------------------------
   // 01 Construct
   // -------------------------------------------------------------------------
+
   {
     key: "1-1",
     section: "Construct",
     sectionNumber: "01",
     code: "1.1",
-    title: "Epitope plasmid construction",
+    title: "circRNA synthesis and circularity verification",
     shortTitle: "1.1",
     targetId: "exp-1-1",
-    flowPage: 1,
-    inventoryPage: 2,
-    flowSize: [2100, 1981],
-    inventorySize: [1792, 2100],
-    hasFigure: true,
-  },
-  {
-    key: "1-2",
-    section: "Construct",
-    sectionNumber: "01",
-    code: "1.2",
-    title: "circRNA synthesis and circularity verification",
-    shortTitle: "1.2",
-    targetId: "exp-1-2",
     flowPage: 3,
     inventoryPage: 4,
-    flowSize: [1141, 2100],
-    inventorySize: [1482, 2100],
+    flowSize: experimentProtocolSize(3),
+    inventorySize: experimentProtocolSize(4),
     hasFigure: true,
   },
 
@@ -112,8 +105,8 @@ export const experimentProtocolPairs: ExperimentProtocolPair[] = [
     targetId: "exp-2-1",
     flowPage: 5,
     inventoryPage: 6,
-    flowSize: [2100, 1682],
-    inventorySize: [1779, 2100],
+    flowSize: experimentProtocolSize(5),
+    inventorySize: experimentProtocolSize(6),
     hasFigure: true,
   },
   {
@@ -126,8 +119,8 @@ export const experimentProtocolPairs: ExperimentProtocolPair[] = [
     targetId: "exp-2-2",
     flowPage: 7,
     inventoryPage: 8,
-    flowSize: [2100, 1099],
-    inventorySize: [2100, 1578],
+    flowSize: experimentProtocolSize(7),
+    inventorySize: experimentProtocolSize(8),
     hasFigure: true,
   },
   {
@@ -140,8 +133,8 @@ export const experimentProtocolPairs: ExperimentProtocolPair[] = [
     targetId: "exp-2-3",
     flowPage: 9,
     inventoryPage: 10,
-    flowSize: [2100, 1501],
-    inventorySize: [2100, 1752],
+    flowSize: experimentProtocolSize(9),
+    inventorySize: experimentProtocolSize(10),
     hasFigure: true,
   },
   {
@@ -154,8 +147,8 @@ export const experimentProtocolPairs: ExperimentProtocolPair[] = [
     targetId: "exp-2-4",
     flowPage: 11,
     inventoryPage: 12,
-    flowSize: [2100, 1539],
-    inventorySize: [2100, 1436],
+    flowSize: experimentProtocolSize(11),
+    inventorySize: experimentProtocolSize(12),
     hasFigure: true,
   },
   {
@@ -166,40 +159,29 @@ export const experimentProtocolPairs: ExperimentProtocolPair[] = [
     title: "Flow validation of TROP2 epitopes",
     shortTitle: "2.5",
     targetId: "exp-2-5",
-    boundary:
-      "Flow validation of TROP2 epitopes is comprehensively covered in the protocol text below; illustrations are pending for this assay.",
-    hasFigure: false,
+    flowPage: 45,
+    inventoryPage: 46,
+    flowSize: experimentProtocolSize(45),
+    inventorySize: experimentProtocolSize(46),
+    hasFigure: true,
   },
 
   // -------------------------------------------------------------------------
   // 03 Optimise
   // -------------------------------------------------------------------------
+
   {
     key: "3-1",
     section: "Optimise",
     sectionNumber: "03",
     code: "3.1",
-    title: "Combined plasmid construction",
+    title: "Combined circRNA synthesis and release testing",
     shortTitle: "3.1",
     targetId: "exp-3-1",
-    flowPage: 13,
-    inventoryPage: 14,
-    flowSize: [1940, 2100],
-    inventorySize: [1752, 2100],
-    hasFigure: true,
-  },
-  {
-    key: "3-2",
-    section: "Optimise",
-    sectionNumber: "03",
-    code: "3.2",
-    title: "Combined circRNA synthesis and release testing",
-    shortTitle: "3.2",
-    targetId: "exp-3-2",
     flowPage: 15,
     inventoryPage: 16,
-    flowSize: [2100, 1685],
-    inventorySize: [2047, 2100],
+    flowSize: experimentProtocolSize(15),
+    inventorySize: experimentProtocolSize(16),
     hasFigure: true,
   },
 
@@ -216,8 +198,8 @@ export const experimentProtocolPairs: ExperimentProtocolPair[] = [
     targetId: "exp-4-1",
     flowPage: 17,
     inventoryPage: 18,
-    flowSize: [2100, 1564],
-    inventorySize: [2100, 1464],
+    flowSize: experimentProtocolSize(17),
+    inventorySize: experimentProtocolSize(18),
     hasFigure: true,
   },
   {
@@ -230,8 +212,8 @@ export const experimentProtocolPairs: ExperimentProtocolPair[] = [
     targetId: "exp-4-2",
     flowPage: 19,
     inventoryPage: 20,
-    flowSize: [1831, 2100],
-    inventorySize: [2100, 1701],
+    flowSize: experimentProtocolSize(19),
+    inventorySize: experimentProtocolSize(20),
     hasFigure: true,
   },
   {
@@ -244,8 +226,8 @@ export const experimentProtocolPairs: ExperimentProtocolPair[] = [
     targetId: "exp-4-3",
     flowPage: 21,
     inventoryPage: 22,
-    flowSize: [2100, 1080],
-    inventorySize: [2100, 1567],
+    flowSize: experimentProtocolSize(21),
+    inventorySize: experimentProtocolSize(22),
     hasFigure: true,
   },
   {
@@ -258,8 +240,8 @@ export const experimentProtocolPairs: ExperimentProtocolPair[] = [
     targetId: "exp-4-4",
     flowPage: 25,
     inventoryPage: 26,
-    flowSize: [2100, 1443],
-    inventorySize: [2100, 1229],
+    flowSize: experimentProtocolSize(25),
+    inventorySize: experimentProtocolSize(26),
     hasFigure: true,
   },
   {
@@ -272,8 +254,8 @@ export const experimentProtocolPairs: ExperimentProtocolPair[] = [
     targetId: "exp-4-5",
     flowPage: 23,
     inventoryPage: 24,
-    flowSize: [2100, 1508],
-    inventorySize: [2100, 1360],
+    flowSize: experimentProtocolSize(23),
+    inventorySize: experimentProtocolSize(24),
     hasFigure: true,
   },
 
@@ -288,9 +270,11 @@ export const experimentProtocolPairs: ExperimentProtocolPair[] = [
     title: "In vitro stability of circRNA versus linear RNA",
     shortTitle: "5.1",
     targetId: "exp-5-1",
-    boundary:
-      "Gel electrophoretic persistence assay across 0, 24, 48, 72 h. Detailed step instructions are documented in Section 5.1 below.",
-    hasFigure: false,
+    flowPage: 47,
+    inventoryPage: 48,
+    flowSize: experimentProtocolSize(47),
+    inventorySize: experimentProtocolSize(48),
+    hasFigure: true,
   },
   {
     key: "5-2",
@@ -300,9 +284,11 @@ export const experimentProtocolPairs: ExperimentProtocolPair[] = [
     title: "Off-target cytotoxicity against normal cells",
     shortTitle: "5.2",
     targetId: "exp-5-2",
-    boundary:
-      "Calcein-AM release cytotoxicity against HCAEC, LX-2, BEAS-2B, MCF12A normal cell panel. Detailed protocol steps are in Section 5.2 below.",
-    hasFigure: false,
+    flowPage: 49,
+    inventoryPage: 50,
+    flowSize: experimentProtocolSize(49),
+    inventorySize: experimentProtocolSize(50),
+    hasFigure: true,
   },
   {
     key: "5-3",
@@ -312,44 +298,29 @@ export const experimentProtocolPairs: ExperimentProtocolPair[] = [
     title: "Safe dose window of the LNP delivery system",
     shortTitle: "5.3",
     targetId: "exp-5-3",
-    boundary:
-      "CCK-8 viability assay titration (0–400 ng/well) evaluating empty LNP carrier toxicity. Detailed protocol steps are in Section 5.3 below.",
-    hasFigure: false,
+    flowPage: 51,
+    inventoryPage: 52,
+    flowSize: experimentProtocolSize(51),
+    inventorySize: experimentProtocolSize(52),
+    hasFigure: true,
   },
 
   // -------------------------------------------------------------------------
   // 06 Target Model
   // -------------------------------------------------------------------------
+
   {
-    key: "6-1-vector",
+    key: "6-1",
     section: "Target model",
     sectionNumber: "06",
-    code: "6.1a",
-    title: "TROP2 lentiviral vector construction",
-    shortTitle: "6.1a",
-    targetId: "exp-6-1",
-    flowPage: 27,
-    inventoryPage: 28,
-    flowSize: [2100, 1153],
-    inventorySize: [2100, 1943],
-    boundary:
-      "Supplier-side vector construction shown for context. The team utilized a ready-made commercial lentiviral preparation for subsequent cell transduction.",
-    hasFigure: true,
-  },
-  {
-    key: "6-1-transduction",
-    section: "Target model",
-    sectionNumber: "06",
-    code: "6.1b",
-    title: "Lentiviral packaging and 4T1 transduction",
-    shortTitle: "6.1b",
+    code: "6.1",
+    title: "TROP2-overexpressing 4T1 cells using supplied lentivirus",
+    shortTitle: "6.1",
     targetId: "exp-6-1",
     flowPage: 29,
     inventoryPage: 30,
-    flowSize: [1852, 2100],
-    inventorySize: [2100, 1920],
-    boundary:
-      "Packaging stages illustrate supplier production. The team's active laboratory workflow begins with spin-infection and transduction of 4T1 cells using the supplied virus.",
+    flowSize: experimentProtocolSize(29),
+    inventorySize: experimentProtocolSize(30),
     hasFigure: true,
   },
   {
@@ -362,8 +333,8 @@ export const experimentProtocolPairs: ExperimentProtocolPair[] = [
     targetId: "exp-6-2",
     flowPage: 31,
     inventoryPage: 32,
-    flowSize: [2400, 1732],
-    inventorySize: [2400, 1506],
+    flowSize: experimentProtocolSize(31),
+    inventorySize: experimentProtocolSize(32),
     hasFigure: true,
   },
   {
@@ -371,13 +342,13 @@ export const experimentProtocolPairs: ExperimentProtocolPair[] = [
     section: "Target model",
     sectionNumber: "06",
     code: "6.3",
-    title: "RT-PCR verification of TROP2 mRNA",
+    title: "RNA preparation and RT-PCR for TROP2",
     shortTitle: "6.3",
     targetId: "exp-6-3",
     flowPage: 33,
     inventoryPage: 34,
-    flowSize: [2400, 1948],
-    inventorySize: [2400, 1865],
+    flowSize: experimentProtocolSize(33),
+    inventorySize: experimentProtocolSize(34),
     hasFigure: true,
   },
   {
@@ -390,8 +361,8 @@ export const experimentProtocolPairs: ExperimentProtocolPair[] = [
     targetId: "exp-6-4",
     flowPage: 35,
     inventoryPage: 36,
-    flowSize: [2400, 1170],
-    inventorySize: [2400, 1240],
+    flowSize: experimentProtocolSize(35),
+    inventorySize: experimentProtocolSize(36),
     hasFigure: true,
   },
 
@@ -408,8 +379,8 @@ export const experimentProtocolPairs: ExperimentProtocolPair[] = [
     targetId: "exp-7-1",
     flowPage: 37,
     inventoryPage: 38,
-    flowSize: [2400, 1168],
-    inventorySize: [2400, 1686],
+    flowSize: experimentProtocolSize(37),
+    inventorySize: experimentProtocolSize(38),
     hasFigure: true,
   },
   {
@@ -422,8 +393,8 @@ export const experimentProtocolPairs: ExperimentProtocolPair[] = [
     targetId: "exp-7-2",
     flowPage: 39,
     inventoryPage: 40,
-    flowSize: [2400, 1533],
-    inventorySize: [2400, 1564],
+    flowSize: experimentProtocolSize(39),
+    inventorySize: experimentProtocolSize(40),
     hasFigure: true,
   },
   {
@@ -436,8 +407,8 @@ export const experimentProtocolPairs: ExperimentProtocolPair[] = [
     targetId: "exp-7-3",
     flowPage: 41,
     inventoryPage: 42,
-    flowSize: [2400, 1940],
-    inventorySize: [2400, 1772],
+    flowSize: experimentProtocolSize(41),
+    inventorySize: experimentProtocolSize(42),
     hasFigure: true,
   },
   {
@@ -450,10 +421,8 @@ export const experimentProtocolPairs: ExperimentProtocolPair[] = [
     targetId: "exp-7-4",
     flowPage: 43,
     inventoryPage: 44,
-    flowSize: [2400, 2137],
-    inventorySize: [2400, 2035],
-    boundary:
-      "P43 (Workflow) and P44 (Materials) detail the dual splenocyte flow profiling and intracellular cytokine staining (ICS) pipeline across Sections 7.4 and 7.5.",
+    flowSize: experimentProtocolSize(43),
+    inventorySize: experimentProtocolSize(44),
     hasFigure: true,
   },
   {
@@ -466,30 +435,8 @@ export const experimentProtocolPairs: ExperimentProtocolPair[] = [
     targetId: "exp-7-5",
     flowPage: 43,
     inventoryPage: 44,
-    flowSize: [2400, 2137],
-    inventorySize: [2400, 2035],
-    boundary:
-      "P43 (Workflow) and P44 (Materials) detail the dual splenocyte flow profiling and intracellular cytokine staining (ICS) pipeline across Sections 7.4 and 7.5.",
+    flowSize: experimentProtocolSize(43),
+    inventorySize: experimentProtocolSize(44),
     hasFigure: true,
   },
 ];
-
-const BASE_PATH = import.meta.env.BASE_URL || "/";
-
-export function experimentProtocolLocalImage(page: number): string {
-  const pad = String(page).padStart(2, "0");
-  const normalizedBase = BASE_PATH.endsWith("/") ? BASE_PATH : `${BASE_PATH}/`;
-  return `${normalizedBase}assets/experiments/protocol/protocol-${pad}.webp`;
-}
-
-export function experimentProtocolCdnImage(page: number): string {
-  const pad = String(page).padStart(2, "0");
-  return `https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/protocol/protocol-${pad}.webp`;
-}
-
-export function experimentProtocolImage(page: number): string {
-  if (page <= 30) {
-    return experimentProtocolCdnImage(page);
-  }
-  return experimentProtocolLocalImage(page);
-}

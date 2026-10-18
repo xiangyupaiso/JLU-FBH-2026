@@ -354,7 +354,7 @@ export const constructElements: readonly ConstructElement[] = [
     category: "epitope",
     partBba: "BBa_262M4VRL",
     description:
-      'Extended HLA-A*02:01-restricted epitope from PVRL4 / Nectin-4 (<span class="cc-aa">FQARLRLRVLVPPL</span>, 14 aa). Nectin-4 is the target of enfortumab vedotin and is re-expressed in TNBC. This is the one extended insert in the array: two predicted 9-mers overlap by four residues in the native Nectin-4 sequence, so they are carried as a single peptide rather than cloned separately with a duplicated <span class="cc-aa">RLRV</span> and an extra linker.',
+      'Extended HLA-A*02:01-restricted epitope from PVRL4 / Nectin-4 (<span class="cc-aa">FQARLRLRVLVPPL</span>, 14 aa). Nectin-4 is the target of enfortumab vedotin and is re-expressed in TNBC. This is the one extended insert in the array: two predicted 9-mers overlap by four residues in the native Nectin-4 sequence, so they are carried as a single peptide rather than synthesised separately with a duplicated <span class="cc-aa">RLRV</span> and an extra linker.',
   },
   {
     id: "l5",
@@ -438,7 +438,7 @@ export const constructElements: readonly ConstructElement[] = [
     category: "linker",
     partBba: "BBa_26B8OJKK",
     description:
-      '<span class="cc-aa">GSGGS</span> joining the epitope array in frame to the 4× mC3d-P28 adjuvant, so the two domains fold independently. The XhoI site immediately downstream (<span class="cc-aa">CTCGAG</span>, 1,957–1,962, encoding Leu-Glu) was the cloning junction used to swap adjuvant modules.',
+      '<span class="cc-aa">GSGGS</span> joining the epitope array in frame to the 4× mC3d-P28 adjuvant, so the two domains fold independently. The XhoI site immediately downstream (<span class="cc-aa">CTCGAG</span>, 1,957–1,962, encoding Leu-Glu) marks the design boundary between the exchangeable antigen cassette and the adjuvant module.',
   },
   {
     id: "mc3d",
@@ -556,7 +556,7 @@ export const constructElements: readonly ConstructElement[] = [
     category: "backbone",
     partBba: null,
     description:
-      "Terminator for T7 RNA polymerase, sitting downstream of the NotI linearisation site. It acts when the plasmid is transcribed inside <em>E. coli</em>; in the in vitro reaction the NotI cut has already defined the transcript end before the polymerase reaches it.",
+      "Terminator for T7 RNA polymerase, sitting downstream of the NotI linearisation site in the bacterial backbone. In a circular-plasmid context it can terminate T7 RNA polymerase; for run-off preparation, linearisation at NotI instead defines the template end.",
   },
   {
     id: "ori",
@@ -568,7 +568,7 @@ export const constructElements: readonly ConstructElement[] = [
     category: "backbone",
     partBba: null,
     description:
-      "pUC / pMB1 origin of replication, high copy number in <em>E. coli</em>. It supports plasmid propagation in bacteria; the vaccine itself is the circular RNA transcribed from this template.",
+      "pUC / pMB1 origin of replication, high copy number in bacteria. It is a feature of the commercial vector backbone, providing high-copy replication during bacterial propagation by the gene-synthesis vendor. Our team did not perform bacterial culturing, transformation or plasmid amplification; the complete plasmid was ordered endotoxin-free ready for template linearisation.",
   },
   {
     id: "ampr",
@@ -580,7 +580,7 @@ export const constructElements: readonly ConstructElement[] = [
     category: "backbone",
     partBba: null,
     description:
-      "β-lactamase, giving ampicillin / carbenicillin selection during cloning and plasmid preparation.",
+      "β-lactamase, conferring ampicillin resistance as a selectable marker in the commercial vector backbone. Because all plasmids were ordered directly from a commercial gene-synthesis vendor, bacterial selection, transformation and overnight culture were not performed by our team.",
   },
   {
     id: "amprp",

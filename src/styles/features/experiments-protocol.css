@@ -1,5 +1,6 @@
-/* Single-ring experiment map and its shared image viewer. */
+/* Watercolor experiment map; protocol content and viewer keep their own skin. */
 .exp-atlas {
+  container: experiment-atlas / inline-size;
   min-width: 0;
   margin: 0;
   color: var(--route-ink, #263c44);
@@ -7,32 +8,36 @@
 
 .exp-atlas__map {
   position: relative;
-  width: 100%;
-  margin: 0;
-  padding: 0;
-  overflow-x: auto;
-  overflow-y: hidden;
-  scrollbar-width: none;
-  background: transparent;
+  min-width: 0;
+  height: 280px;
+  isolation: isolate;
 }
 
-.exp-atlas__map::-webkit-scrollbar {
-  display: none;
+.exp-atlas.is-expanded .exp-atlas__map {
+  height: 500px;
 }
 
-.exp-atlas__ring {
-  display: block;
+.exp-atlas__connections {
+  position: absolute;
+  inset: 0;
   width: 100%;
-  min-width: 680px;
-  height: auto;
+  height: 100%;
   overflow: visible;
+  pointer-events: none;
 }
 
-/* Use the full article width; the reader handles the map's vertical progress. */
-@media (min-width: 861px) {
-  .exp-atlas__ring {
-    min-width: 0;
-  }
+.exp-atlas__orbit {
+  fill: none;
+  stroke: #8ba3a6;
+  stroke-width: 0.8;
+  stroke-dasharray: 1 9;
+  stroke-linecap: round;
+  opacity: 0.28;
+  transition:
+    cx 340ms cubic-bezier(0.2, 0, 0, 1),
+    cy 340ms cubic-bezier(0.2, 0, 0, 1),
+    rx 340ms cubic-bezier(0.2, 0, 0, 1),
+    ry 340ms cubic-bezier(0.2, 0, 0, 1);
 }
 
 .exp-atlas__spoke,
@@ -40,109 +45,340 @@
   fill: none;
   stroke: currentColor;
   stroke-linecap: round;
-  stroke-linejoin: round;
-  pointer-events: none;
-}
-
-.exp-atlas__spoke {
-  stroke-width: 2;
-  opacity: 0.45;
-}
-
-.exp-atlas__branch {
-  stroke-width: 1.4;
-  opacity: 0.4;
-}
-
-.exp-atlas__outer-arc {
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 6.5;
+  stroke-width: 1.25;
   opacity: 0.3;
+  transition: d 340ms cubic-bezier(0.2, 0, 0, 1);
 }
 
-.exp-atlas__stage-title,
-.exp-atlas__node-title {
-  fill: #434a52;
-  font-family: var(--font-body, "Helvetica Neue", Helvetica, Arial, sans-serif);
-  font-weight: 400;
+.exp-atlas__spoke.is-selected,
+.exp-atlas__branch {
+  opacity: 0.58;
+}
+
+.exp-atlas__centre-position,
+.exp-atlas__stage-position,
+.exp-atlas__leaf-position {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  transform: translate(var(--node-x), var(--node-y));
+  transition: transform 340ms cubic-bezier(0.2, 0, 0, 1);
+}
+
+.exp-atlas__stages[hidden] {
+  display: none;
+}
+
+.exp-atlas__centre,
+.exp-atlas__stage,
+.exp-atlas__node {
+  --watercolor-color: var(--node-color, #72a4a5);
+  -webkit-appearance: none;
+  appearance: none;
+  margin: 0;
+  border: 0;
+  background: transparent;
+  color: color-mix(in srgb, var(--node-color, #527f8a) 76%, #263c44);
+  font-family: var(--font-body, sans-serif);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.exp-atlas__centre,
+.exp-atlas__stage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 0;
+}
+
+.exp-atlas__centre {
+  width: 88px;
+  transform: translate(-50%, -44px);
+}
+
+.exp-atlas__stage {
+  width: 92px;
+  transform: translate(-50%, -28px);
+}
+
+.exp-atlas__centre-circle,
+.exp-atlas__stage-circle,
+.exp-atlas__node-code {
+  position: relative;
+  display: grid;
+  flex: 0 0 auto;
+  place-items: center;
+  isolation: isolate;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  font-weight: 600;
+  transition: transform 180ms ease;
+}
+
+.exp-atlas__wash {
+  position: absolute;
+  z-index: -1;
+  inset: -14%;
+  display: block;
+  width: 128%;
+  height: 128%;
+  overflow: visible;
   pointer-events: none;
+}
+
+.exp-atlas__pigment {
+  opacity: 0.85;
+  transition: opacity 180ms ease;
+}
+
+.exp-atlas__pigment__edge {
+  fill: none;
+  stroke: var(--watercolor-color);
+  stroke-width: 1.35;
+  opacity: 0.28;
+}
+
+.exp-atlas__ink {
+  position: relative;
+}
+
+.exp-atlas__centre-circle {
+  width: 88px;
+  height: 88px;
+  font: 500 38px/1 var(--font-heading, serif);
+}
+
+.exp-atlas__stage-circle {
+  width: 56px;
+  height: 56px;
+  font: 500 26px/1 var(--font-heading, serif);
 }
 
 .exp-atlas__stage-title {
-  fill: currentColor;
-  font-size: 14px;
-  font-weight: 600;
-  opacity: 0.95;
-}
-
-.exp-atlas__node-title {
-  font-size: 12.6px;
-}
-
-.exp-atlas__node {
-  color: currentColor;
-  cursor: pointer;
-}
-
-.exp-atlas__node-hit {
-  fill: transparent;
-  stroke: transparent;
-}
-
-.exp-atlas__node-dot {
-  fill: #fbfbfa;
-  stroke: currentColor;
-  stroke-width: 2;
-  transition:
-    fill 160ms ease,
-    stroke-width 160ms ease;
-}
-
-.exp-atlas__node:hover .exp-atlas__node-dot,
-.exp-atlas__node:focus-visible .exp-atlas__node-dot,
-.exp-atlas__node.is-active .exp-atlas__node-dot {
-  fill: color-mix(in srgb, currentColor 16%, #fbfbfa);
-  stroke-width: 2.6;
-}
-
-.exp-atlas__node-code {
-  fill: currentColor;
-  font-family: var(--font-body, "Helvetica Neue", Helvetica, Arial, sans-serif);
+  max-width: 92px;
+  color: color-mix(in srgb, var(--node-color, #527f8a) 30%, #263c44);
   font-size: 13px;
-  font-weight: 600;
-  pointer-events: none;
+  font-weight: 550;
+  line-height: 1.35;
+  text-align: center;
+  text-wrap: balance;
 }
 
+.exp-atlas__toggle {
+  position: absolute;
+  z-index: 1;
+  right: -3px;
+  bottom: -3px;
+  display: grid;
+  width: 18px;
+  height: 18px;
+  place-items: center;
+  border: 1px solid color-mix(in srgb, currentColor 42%, transparent);
+  border-radius: 48% 52% 45% 55% / 53% 46% 54% 47%;
+  background: #fffefb;
+  font: 500 14px/1 var(--font-body, sans-serif);
+}
+
+.exp-atlas__centre .exp-atlas__toggle {
+  right: 1px;
+  bottom: 1px;
+  width: 23px;
+  height: 23px;
+  font-size: 17px;
+}
+
+.exp-atlas__centre:hover .exp-atlas__centre-circle,
+.exp-atlas__stage:hover .exp-atlas__stage-circle,
+.exp-atlas__stage.is-selected .exp-atlas__stage-circle,
+.exp-atlas__node:hover .exp-atlas__node-code,
+.exp-atlas__node.is-active .exp-atlas__node-code {
+  transform: scale(1.06);
+}
+
+.exp-atlas__centre:hover .exp-atlas__pigment,
+.exp-atlas__centre:focus-visible .exp-atlas__pigment,
+.exp-atlas__stage:hover .exp-atlas__pigment,
+.exp-atlas__stage:focus-visible .exp-atlas__pigment,
+.exp-atlas__stage.is-selected .exp-atlas__pigment,
+.exp-atlas__node:hover .exp-atlas__pigment,
+.exp-atlas__node:focus-visible .exp-atlas__pigment,
+.exp-atlas__node.is-active .exp-atlas__pigment {
+  opacity: 1;
+}
+
+.exp-atlas__centre:active .exp-atlas__centre-circle,
+.exp-atlas__stage:active .exp-atlas__stage-circle,
+.exp-atlas__node:active .exp-atlas__node-code {
+  transform: scale(0.96);
+}
+
+.exp-atlas__centre:focus-visible,
+.exp-atlas__stage:focus-visible,
 .exp-atlas__node:focus-visible {
+  border-radius: 10px;
   outline: 2px solid currentColor;
   outline-offset: 6px;
 }
 
-.exp-atlas__hub circle {
-  fill: #fbfbfa;
-  stroke: currentColor;
-  stroke-width: 2.4;
+.exp-atlas__node {
+  display: flex;
+  width: 100%;
+  min-height: 54px;
+  align-items: center;
+  gap: 12px;
+  padding: 0;
+  text-align: left;
 }
 
-.exp-atlas__hub text,
-.exp-atlas__center text {
-  fill: currentColor;
-  font-family: var(--font-body, "Helvetica Neue", Helvetica, Arial, sans-serif);
-  font-size: 17px;
-  font-weight: 700;
+.exp-atlas__leaf-position {
+  width: calc(39cqw - 24px);
+  margin-top: -27px;
 }
 
-.exp-atlas__center circle {
-  fill: #fbfbfa;
-  stroke: #6e777e;
-  stroke-width: 2.4;
+.exp-atlas__node-code {
+  width: 50px;
+  height: 50px;
+  font: 600 15px/1 var(--font-heading, serif);
+  font-variant-numeric: tabular-nums;
 }
 
-.exp-atlas__center text {
-  fill: #6e777e;
-  font-size: 15px;
-  font-weight: 600;
+.exp-atlas__node-title {
+  flex: 1;
+  color: var(--route-ink, #263c44);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.exp-atlas__node-arrow {
+  flex: 0 0 auto;
+  padding-right: 3px;
+  font-size: 16px;
+  opacity: 0.55;
+  transition: opacity 180ms ease;
+}
+
+.exp-atlas__node:hover .exp-atlas__node-arrow {
+  opacity: 1;
+}
+
+.exp-atlas .exp-atlas__instruction {
+  margin: 0;
+  padding: 10px 12px 16px;
+  color: var(--route-muted, #587977);
+  font: 400 12px/1.5 var(--font-body, sans-serif);
+  text-align: center;
+}
+
+/* Use document flow when the actual article column cannot fit the radial map. */
+@container experiment-atlas (max-width: 749px) {
+  .exp-atlas__map,
+  .exp-atlas.is-expanded .exp-atlas__map {
+    display: flex;
+    height: auto;
+    min-height: 230px;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    padding: 28px 12px 18px;
+  }
+
+  .exp-atlas__connections {
+    display: none;
+  }
+
+  .exp-atlas__centre-position,
+  .exp-atlas__stage-position,
+  .exp-atlas__leaf-position {
+    position: relative;
+    width: auto;
+    height: auto;
+    margin: 0;
+    transform: none;
+    transition: none;
+  }
+
+  .exp-atlas__centre,
+  .exp-atlas__stage {
+    transform: none;
+  }
+
+  .exp-atlas__centre-circle {
+    width: 76px;
+    height: 76px;
+  }
+
+  .exp-atlas__centre {
+    width: 76px;
+  }
+
+  .exp-atlas__stages:not([hidden]) {
+    display: grid;
+    width: 100%;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 20px 8px;
+    align-items: start;
+  }
+
+  .exp-atlas__stage {
+    width: 100%;
+    gap: 8px;
+  }
+
+  .exp-atlas__stage-title {
+    font-size: 12px;
+  }
+
+  .exp-atlas__leaves {
+    display: grid;
+    width: 100%;
+    gap: 14px;
+    padding-top: 20px;
+    border-top: 1px solid
+      color-mix(in srgb, var(--route-ink, #263c44) 12%, transparent);
+  }
+
+  .exp-atlas__node {
+    min-height: 56px;
+    gap: 14px;
+  }
+
+  .exp-atlas__node-title {
+    font-size: 14px;
+  }
+}
+
+@container experiment-atlas (max-width: 390px) {
+  .exp-atlas__stages:not([hidden]) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .exp-atlas__orbit,
+  .exp-atlas__spoke,
+  .exp-atlas__branch,
+  .exp-atlas__centre-position,
+  .exp-atlas__stage-position,
+  .exp-atlas__leaf-position,
+  .exp-atlas__centre-circle,
+  .exp-atlas__stage-circle,
+  .exp-atlas__node-code,
+  .exp-atlas__pigment,
+  .exp-atlas__node-arrow {
+    transition: none;
+  }
+
+  .exp-atlas__centre-circle,
+  .exp-atlas__stage-circle,
+  .exp-atlas__node-code {
+    transform: none !important;
+  }
 }
 
 /* Top-layer protocol viewer */
@@ -171,10 +407,11 @@
   outline: none;
 }
 
-.wiki-protocol-modal__header {
+.wiki-protocol-modal .wiki-protocol-modal__header {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: nowrap;
   gap: 16px;
   padding: 16px 20px;
   border-bottom: 1px solid #d0e1e1;
@@ -210,6 +447,11 @@
   flex-wrap: wrap;
 }
 
+.wiki-protocol-modal__header-actions {
+  flex: 0 0 auto;
+  flex-wrap: nowrap;
+}
+
 .wiki-protocol-modal__header-actions button,
 .wiki-protocol-modal__tabs button {
   min-height: 36px;
@@ -238,6 +480,26 @@
   border-color: #173f52 !important;
   background: #173f52 !important;
   color: #fff !important;
+}
+
+.wiki-protocol-modal button.wiki-protocol-modal__icon-button {
+  display: inline-grid;
+  width: 38px;
+  min-width: 38px;
+  height: 38px;
+  padding: 8px;
+  place-items: center;
+}
+
+.wiki-protocol-modal__icon-button svg {
+  width: 19px;
+  height: 19px;
+  stroke-width: 1.8;
+}
+
+.wiki-protocol-modal button:focus-visible {
+  outline: 2px solid #267b84;
+  outline-offset: 3px;
 }
 
 .wiki-protocol-modal__boundary {
@@ -452,15 +714,8 @@
     width: 98vw;
     height: 94vh;
   }
-  .wiki-protocol-modal__header {
+  .wiki-protocol-modal .wiki-protocol-modal__header {
     align-items: flex-start;
-    flex-direction: column;
-  }
-  .wiki-protocol-modal__header-actions {
-    width: 100%;
-  }
-  .wiki-protocol-modal__size-toggle {
-    margin-left: 0;
   }
 }
 
@@ -473,9 +728,14 @@
     height: 100vh;
     border-radius: 0;
   }
-  .wiki-protocol-modal__header,
+  .wiki-protocol-modal .wiki-protocol-modal__header,
   .wiki-protocol-modal__tabs {
     padding-inline: 14px;
+  }
+  .wiki-protocol-modal button.wiki-protocol-modal__icon-button {
+    width: 44px;
+    min-width: 44px;
+    height: 44px;
   }
   .wiki-protocol-modal__stage {
     padding: 12px 48px 24px;

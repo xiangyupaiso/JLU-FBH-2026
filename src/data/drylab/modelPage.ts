@@ -1,7 +1,14 @@
 import type { WikiPageContent } from "../../components/wiki/wikiPageTypes";
 import type { ModelPanel } from "./modelPanelTypes";
 import type { CitationReference } from "../citations/citationTypes";
-import { getModelImage } from "./modelAssets";
+import { getModelImage, modelAssets, type ModelAssetKey } from "./modelAssets";
+
+/** Figure block fields for a model asset, including its intrinsic size. */
+const modelFigure = (key: ModelAssetKey) => ({
+  src: getModelImage(key),
+  width: modelAssets[key].width,
+  height: modelAssets[key].height,
+});
 
 const manuscriptSections: WikiPageContent["sections"] = [
   {
@@ -317,7 +324,7 @@ const manuscriptSections: WikiPageContent["sections"] = [
       },
       {
         "type": "figure",
-        "src": getModelImage("02_PXD024322_four_target_batch_adjusted_boxplots.png"),
+        ...modelFigure("02_PXD024322_four_target_batch_adjusted_boxplots.png"),
         "alt": "Figure 6. Abundance distributions of TROP2, B7-H4, Nectin-4, and LIV-1 in the PXD024322 TNBC and normal-breast samples."
       },
       {
@@ -396,7 +403,7 @@ const manuscriptSections: WikiPageContent["sections"] = [
       },
       {
         "type": "figure",
-        "src": getModelImage("image 14.png"),
+        ...modelFigure("image 14.png"),
         "alt": "Figure 8. Paired tumor and adjacent-normal abundance patterns for the three candidates quantified in PXD028102."
       },
       {
@@ -494,7 +501,7 @@ const manuscriptSections: WikiPageContent["sections"] = [
       },
       {
         "type": "figure",
-        "src": getModelImage("12_harmony_umap_major_lineage_no_panel_letter.png"),
+        ...modelFigure("12_harmony_umap_major_lineage_no_panel_letter.png"),
         "alt": "Figure 9. Patient-corrected Harmony UMAP of the GSE176078 TNBC subset after SCTransform normalization. Colors identify the deposited major lineages, and labels mark their principal regions. The analysis included 39,324 quality-controlled cells."
       },
       {
@@ -579,7 +586,7 @@ const manuscriptSections: WikiPageContent["sections"] = [
       },
       {
         "type": "figure",
-        "src": getModelImage("11_candidate_umap_violin_broken_axis_clean.png"),
+        ...modelFigure("11_candidate_umap_violin_broken_axis_clean.png"),
         "alt": "Figure 10. Candidate-gene expression in the GSE176078 TNBC single-cell dataset. From top to bottom, the left panels show TROP2 (*TACSTD2*), B7-H4 (*VTCN1*), LIV-1 (*SLC39A6*), and Nectin-4 (*NECTIN4*, formerly *PVRL4*) on a Harmony UMAP generated after SCTransform normalization and patient correction. The right panels compare raw-count-derived ln(CP10K + 1) expression in immune, malignant, stromal, and cancer-associated fibroblast (CAF) cells. CAFs are also included in the broader stromal group, so those two distributions overlap by design. *TACSTD2* had the broadest malignant-cell expression. *NECTIN4* and *VTCN1* were detected in smaller malignant-cell populations. *SLC39A6* was detected in CAFs as well as malignant cells."
       },
       {
@@ -642,7 +649,7 @@ const manuscriptSections: WikiPageContent["sections"] = [
       },
       {
         "type": "figure",
-        "src": getModelImage("Screenshot 2026-08-31 174114.png"),
+        ...modelFigure("Screenshot 2026-08-31 174114.png"),
         "alt": "At least one candidate met the gene-level rule in 88% of TNBC cases"
       },
       {
@@ -802,7 +809,7 @@ const manuscriptSections: WikiPageContent["sections"] = [
       },
       {
         "type": "figure",
-        "src": getModelImage("image 3.png"),
+        ...modelFigure("image 3.png"),
         "alt": "Figure 11. Published TROP2 immunohistochemistry in TNBC. The original figure shows intermediate and high TROP2 staining, with cytoplasmic, membranous, or combined localization and heterogeneity across tumor tissue. Reproduced from Izci et al. (Izci et al., 2022) under the article's Creative Commons Attribution 4.0 license."
       },
       {
@@ -813,7 +820,7 @@ const manuscriptSections: WikiPageContent["sections"] = [
       },
       {
         "type": "figure",
-        "src": getModelImage("image 5.png"),
+        ...modelFigure("image 5.png"),
         "alt": "Figure 12. Published B7-H4 immunohistochemistry in TNBC and normal breast tissue. Panel 1d of the original figure compares B7-H4 staining in TNBC tissue with normal breast tissue at 200× magnification. Reproduced from Wang et al. (Wang et al., 2018) under the article's Creative Commons Attribution 4.0 license."
       },
       {
@@ -824,7 +831,7 @@ const manuscriptSections: WikiPageContent["sections"] = [
       },
       {
         "type": "figure",
-        "src": getModelImage("image 2.png"),
+        ...modelFigure("image 2.png"),
         "alt": "Figure 13. Published Nectin-4 immunohistochemistry in TNBC. The three panels show strong, moderate, and negative Nectin-4 staining in TNBC tissue at 200× magnification. Reproduced from Zeindler et al. (Zeindler et al., 2019) under the article's Creative Commons Attribution license."
       },
       {
@@ -841,7 +848,7 @@ const manuscriptSections: WikiPageContent["sections"] = [
       },
       {
         "type": "figure",
-        "src": getModelImage("image 11.png"),
+        ...modelFigure("image 11.png"),
         "alt": "Figure 14. Open-access SLC39A6 immunohistochemistry. Panel A shows positive staining in the cytoplasm and nuclei of invasive breast-cancer epithelial cells, and panel B shows negative staining. Reproduced from source Figure 1 of Althobiti et al. (Althobiti et al., 2021), *Oestrogen-regulated protein SLC39A6: a biomarker of good prognosis in luminal breast cancer*, under the Creative Commons Attribution 4.0 license (https://creativecommons.org/licenses/by/4.0/). The image was resized for this Wiki; no other changes were made."
       },
       {
@@ -984,477 +991,8 @@ const manuscriptSections: WikiPageContent["sections"] = [
         ]
       },
       {
-        "type": "table",
-        "headers": [
-          "**Antigen**",
-          "**Peptide**",
-          "**Protein position**",
-          "**Predicted IC₅₀, nM**",
-          "**NetMHCpan EL percentile rank**",
-          "**IEDB immunogenicity score**",
-          "**Topology annotation and decision**"
-        ],
-        "rows": [
-          [
-            "TROP2",
-            "`GLAPPPLRL`",
-            "6–14",
-            "203.99",
-            "0.03",
-            "0.00118",
-            "Signal peptide"
-          ],
-          [
-            "TROP2",
-            "`LLLLVLAAV`",
-            "16–24",
-            "24.52",
-            "0.80",
-            "0.07088",
-            "Signal peptide"
-          ],
-          [
-            "TROP2",
-            "`SVCWCVNSV`",
-            "123–131",
-            "222.32",
-            "3.10",
-            "0.08963",
-            "Retained"
-          ],
-          [
-            "TROP2",
-            "`RLFRERYRL`",
-            "178–186",
-            "61.63",
-            "0.28",
-            "0.26342",
-            "Retained"
-          ],
-          [
-            "TROP2",
-            "`TLIYYLDEI`",
-            "256–264",
-            "12.55",
-            "0.34",
-            "0.10266",
-            "Retained"
-          ],
-          [
-            "TROP2",
-            "`YLDEIPPKF`",
-            "260–268",
-            "79.58",
-            "0.02",
-            "0.09175",
-            "Retained"
-          ],
-          [
-            "TROP2",
-            "`RLTAGLIAV`",
-            "272–280",
-            "10.02",
-            "0.07",
-            "0.20971",
-            "Transmembrane"
-          ],
-          [
-            "TROP2",
-            "`GLIAVIVVV`",
-            "276–284",
-            "41.76",
-            "0.19",
-            "0.30701",
-            "Transmembrane"
-          ],
-          [
-            "TROP2",
-            "`IVVVVVALV`",
-            "281–289",
-            "426.36",
-            "2.50",
-            "0.16054",
-            "Transmembrane"
-          ],
-          [
-            "B7-H4",
-            "`SLGQILFWS`",
-            "3–11",
-            "328.57",
-            "3.30",
-            "0.24182",
-            "Signal peptide"
-          ],
-          [
-            "B7-H4",
-            "`ILFWSIISI`",
-            "7–15",
-            "10.72",
-            "0.19",
-            "0.24073",
-            "Signal peptide"
-          ],
-          [
-            "B7-H4",
-            "`SIISIIIIL`",
-            "11–19",
-            "332.68",
-            "0.51",
-            "0.32169",
-            "Signal peptide"
-          ],
-          [
-            "B7-H4",
-            "`SIIIILAGA`",
-            "14–22",
-            "229.25",
-            "2.00",
-            "0.34910",
-            "Signal peptide"
-          ],
-          [
-            "B7-H4",
-            "`IILAGAIAL`",
-            "17–25",
-            "128.04",
-            "0.62",
-            "0.24078",
-            "Signal peptide"
-          ],
-          [
-            "B7-H4",
-            "`ILAGAIALI`",
-            "18–26",
-            "12.11",
-            "0.19",
-            "0.23672",
-            "Signal peptide"
-          ],
-          [
-            "B7-H4",
-            "`WLKEGVLGL`",
-            "71–79",
-            "31.58",
-            "0.11",
-            "0.11305",
-            "Retained"
-          ],
-          [
-            "B7-H4",
-            "`AVFADQVIV`",
-            "102–110",
-            "329.27",
-            "0.54",
-            "0.10253",
-            "Retained"
-          ],
-          [
-            "B7-H4",
-            "`SFFAISWAL`",
-            "264–272",
-            "331.79",
-            "2.20",
-            "0.26104",
-            "Transmembrane"
-          ],
-          [
-            "B7-H4",
-            "`AISWALLPL`",
-            "267–275",
-            "122.80",
-            "2.10",
-            "0.18101",
-            "Transmembrane"
-          ],
-          [
-            "Nectin-4",
-            "`FQARLRLRV`",
-            "137–145",
-            "439.99",
-            "1.30",
-            "0.12358",
-            "Retained"
-          ],
-          [
-            "Nectin-4",
-            "`RLRVLVPPL`",
-            "142–150",
-            "193.10",
-            "1.50",
-            "0.07056",
-            "Retained"
-          ],
-          [
-            "Nectin-4",
-            "`AVTSEFHLV`",
-            "203–211",
-            "357.45",
-            "0.44",
-            "0.07465",
-            "Retained"
-          ],
-          [
-            "Nectin-4",
-            "`HILHVSFLA`",
-            "238–246",
-            "190.78",
-            "1.90",
-            "0.00574",
-            "Retained"
-          ],
-          [
-            "Nectin-4",
-            "`FLAEASVRG`",
-            "244–252",
-            "460.73",
-            "1.90",
-            "0.06090",
-            "Retained"
-          ],
-          [
-            "Nectin-4",
-            "`VVVGVIAAL`",
-            "351–359",
-            "261.34",
-            "0.68",
-            "0.26886",
-            "Transmembrane"
-          ],
-          [
-            "Nectin-4",
-            "`VIAALLFCL`",
-            "355–363",
-            "64.24",
-            "1.50",
-            "0.09813",
-            "Transmembrane"
-          ],
-          [
-            "Nectin-4",
-            "`ALLFCLLVV`",
-            "358–366",
-            "46.65",
-            "1.30",
-            "0.06602",
-            "Transmembrane"
-          ],
-          [
-            "Nectin-4",
-            "`LLFCLLVVV`",
-            "359–367",
-            "37.44",
-            "1.50",
-            "0.02147",
-            "Transmembrane"
-          ],
-          [
-            "Nectin-4",
-            "`YINGRGHLV`",
-            "502–510",
-            "255.92",
-            "0.41",
-            "0.13512",
-            "Retained"
-          ],
-          [
-            "LIV-1",
-            "`KLSVILILT`",
-            "4–12",
-            "279.90",
-            "1.40",
-            "0.21284",
-            "Signal peptide"
-          ],
-          [
-            "LIV-1",
-            "`SVILILTFA`",
-            "6–14",
-            "358.45",
-            "1.60",
-            "0.25236",
-            "Signal peptide"
-          ],
-          [
-            "LIV-1",
-            "`VILILTFAL`",
-            "7–15",
-            "253.64",
-            "2.60",
-            "0.27772",
-            "Signal peptide"
-          ],
-          [
-            "LIV-1",
-            "`LILTFALSV`",
-            "9–17",
-            "20.75",
-            "0.58",
-            "0.08027",
-            "Signal peptide"
-          ],
-          [
-            "LIV-1",
-            "`TVSEGTHFL`",
-            "194–202",
-            "340.45",
-            "0.25",
-            "0.21229",
-            "Retained"
-          ],
-          [
-            "LIV-1",
-            "`FLSLLGVIL`",
-            "337–345",
-            "102.46",
-            "0.64",
-            "0.06884",
-            "Transmembrane"
-          ],
-          [
-            "LIV-1",
-            "`LLGVILVPL`",
-            "340–348",
-            "53.25",
-            "1.50",
-            "0.20006",
-            "Transmembrane"
-          ],
-          [
-            "LIV-1",
-            "`LLSFLVALA`",
-            "357–365",
-            "33.42",
-            "1.60",
-            "0.11870",
-            "Transmembrane"
-          ],
-          [
-            "LIV-1",
-            "`FLVALAVGT`",
-            "360–368",
-            "120.26",
-            "2.40",
-            "0.13344",
-            "Transmembrane"
-          ],
-          [
-            "LIV-1",
-            "`YFMFLVEHV`",
-            "432–440",
-            "136.19",
-            "1.80",
-            "0.19226",
-            "Transmembrane"
-          ],
-          [
-            "LIV-1",
-            "`FMFLVEHVL`",
-            "433–441",
-            "7.50",
-            "0.14",
-            "0.21271",
-            "Transmembrane"
-          ],
-          [
-            "LIV-1",
-            "`FLVEHVLTL`",
-            "435–443",
-            "3.38",
-            "0.01",
-            "0.19783",
-            "Transmembrane"
-          ],
-          [
-            "LIV-1",
-            "`GVATLAWMV`",
-            "591–599",
-            "54.75",
-            "0.67",
-            "0.16213",
-            "Retained"
-          ],
-          [
-            "LIV-1",
-            "`GLHNFSDGL`",
-            "604–612",
-            "110.36",
-            "0.47",
-            "0.00078",
-            "Retained"
-          ],
-          [
-            "LIV-1",
-            "`SVAVFCHEL`",
-            "629–637",
-            "436.04",
-            "1.20",
-            "0.20329",
-            "Retained"
-          ],
-          [
-            "LIV-1",
-            "`FIGHYAENV`",
-            "677–685",
-            "35.71",
-            "0.50",
-            "0.15750",
-            "Retained"
-          ],
-          [
-            "LIV-1",
-            "`NVSMWIFAL`",
-            "684–692",
-            "130.10",
-            "1.90",
-            "0.23224",
-            "Transmembrane"
-          ],
-          [
-            "LIV-1",
-            "`SMWIFALTA`",
-            "686–694",
-            "48.04",
-            "0.95",
-            "0.36997",
-            "Transmembrane"
-          ],
-          [
-            "LIV-1",
-            "`WIFALTAGL`",
-            "688–696",
-            "27.42",
-            "1.50",
-            "0.15593",
-            "Transmembrane"
-          ],
-          [
-            "LIV-1",
-            "`FMYVALVDM`",
-            "697–705",
-            "63.80",
-            "1.60",
-            "0.11580",
-            "Transmembrane"
-          ],
-          [
-            "LIV-1",
-            "`MLLGFGIML`",
-            "732–740",
-            "18.06",
-            "0.23",
-            "0.18612",
-            "Transmembrane"
-          ],
-          [
-            "LIV-1",
-            "`LLGFGIMLL`",
-            "733–741",
-            "33.39",
-            "0.41",
-            "0.13240",
-            "Transmembrane"
-          ]
-        ]
+        "type": "feature",
+        "key": "model-panel-7"
       },
       {
         "type": "prose",
@@ -1470,7 +1008,7 @@ const manuscriptSections: WikiPageContent["sections"] = [
       },
       {
         "type": "feature",
-        "key": "model-panel-7"
+        "key": "model-panel-8"
       },
       {
         "type": "prose",
@@ -1509,18 +1047,17 @@ const manuscriptSections: WikiPageContent["sections"] = [
       {
         "type": "prose",
         "paragraphs": [
-          "Confidence scores were high across all 85 models, with peptide-heavy-chain interface pTM values ranging from 0.932 to 0.970 (median 0.956), but they did not distinguish candidates that passed structural review from those that failed (Figure 15). The two rejected peptides had pTM scores of 0.933 and 0.960, both within the range of accepted candidates. AlphaFold3's own confidence metric reports whether a model is self-consistent, not whether the peptide fits the groove correctly. We therefore assessed binding geometry separately using structural measurements derived from the predicted coordinates."
+          "Confidence scores were high across all 85 models, with ipTM values ranging from 0.950 to 0.970 (median 0.970), but they did not distinguish candidates that passed structural review from those that failed (Figure 15). The two rejected peptides, FLAEASVRG and HILHVSFLA, had mean ipTM scores of 0.968 and 0.960, both within the range of accepted candidates. AlphaFold3's own confidence metric reports whether a model is self-consistent, not whether the peptide fits the groove correctly. We therefore assessed binding geometry separately using structural measurements derived from the predicted coordinates."
         ]
       },
       {
-        "type": "figure",
-        "src": getModelImage("image 1.png"),
-        "alt": "Figure 15. AlphaFold 3 confidence scores and position-9 fill ratio for the 17 candidate peptides. Each point represents the mean across five models; diamonds mark the two candidates below the fill-ratio criterion. ipTM ranged from 0.932 to 0.970, with a rank correlation of +0.02 between ipTM and fill ratio. HILHVSFLA had an ipTM of 0.960 and an F-pocket fill ratio of 43%."
+        "type": "feature",
+        "key": "model-panel-9"
       },
       {
         "type": "prose",
         "paragraphs": [
-          "**Figure 15. **AlphaFold 3 confidence scores and position-9 fill ratio for the 17 candidate peptides. Each point represents the mean across five models; diamonds mark the two candidates below the fill-ratio criterion. ipTM ranged from 0.932 to 0.970, with a rank correlation of +0.02 between ipTM and fill ratio. HILHVSFLA had an ipTM of 0.960 and an F-pocket fill ratio of 43%."
+          "Figure 15. AlphaFold 3 confidence scores and position-9 fill ratio for the 17 candidate peptides. Each point represents the mean across five models; diamonds mark the two candidates below the fill-ratio criterion. Mean ipTM ranged from 0.958 to 0.970, with a rank correlation of +0.19 between ipTM and fill ratio. HILHVSFLA had an ipTM of 0.960 and an F-pocket fill ratio of 43%."
         ]
       },
       {
@@ -1591,7 +1128,7 @@ const manuscriptSections: WikiPageContent["sections"] = [
       },
       {
         "type": "feature",
-        "key": "model-panel-8"
+        "key": "model-panel-10"
       },
       {
         "type": "prose",
@@ -1619,7 +1156,7 @@ const manuscriptSections: WikiPageContent["sections"] = [
       },
       {
         "type": "figure",
-        "src": getModelImage("image 6.png"),
+        ...modelFigure("image 6.png"),
         "alt": "Figure 17. Across-model standard deviation of per-position side-chain burial. Each point corresponds to one candidate epitope and the horizontal line is the median. Glycine is excluded from the plot, so some positions have fewer than 17 points."
       },
       {
@@ -1648,11 +1185,11 @@ const manuscriptSections: WikiPageContent["sections"] = [
       },
       {
         "type": "feature",
-        "key": "model-panel-9"
+        "key": "model-panel-11"
       },
       {
         "type": "feature",
-        "key": "model-panel-10"
+        "key": "model-panel-12"
       },
       {
         "type": "prose",
@@ -1929,7 +1466,7 @@ const manuscriptSections: WikiPageContent["sections"] = [
       },
       {
         "type": "feature",
-        "key": "model-panel-11"
+        "key": "model-panel-13"
       },
       {
         "type": "prose",
@@ -1939,7 +1476,7 @@ const manuscriptSections: WikiPageContent["sections"] = [
       },
       {
         "type": "feature",
-        "key": "model-panel-12"
+        "key": "model-panel-14"
       },
       {
         "type": "prose",
@@ -2172,7 +1709,7 @@ export const modelPanels: Record<string, ModelPanel> = {
           },
           {
             "type": "figure",
-            "src": getModelImage("image 8.png"),
+            ...modelFigure("image 8.png"),
             "alt": "Figure 1. Overall survival among 80 patients with TNBC, grouped by high or low TROP2 expression. High TROP2 expression was associated with significantly shorter overall survival (Li et al., 2025)."
           },
           {
@@ -2200,7 +1737,7 @@ export const modelPanels: Record<string, ModelPanel> = {
           },
           {
             "type": "figure",
-            "src": getModelImage("image.png"),
+            ...modelFigure("image.png"),
             "alt": "Figure 2. Overall survival of patients with high or low B7-H4 expression in a 65-patient TNBC cohort. High B7-H4 was associated with shorter survival and earlier recurrence (Wang et al., 2018)."
           },
           {
@@ -2228,7 +1765,7 @@ export const modelPanels: Record<string, ModelPanel> = {
           },
           {
             "type": "figure",
-            "src": getModelImage("image 15.png"),
+            ...modelFigure("image 15.png"),
             "alt": "Figure 3. Overall survival in 103 patients classified as basal-like 1 TNBC, grouped by Nectin-4 (*PVRL4*) expression. High Nectin-4 was associated with worse outcomes in this subtype (Son et al., 2025)."
           },
           {
@@ -2262,7 +1799,7 @@ export const modelPanels: Record<string, ModelPanel> = {
           },
           {
             "type": "figure",
-            "src": getModelImage("image 7.png"),
+            ...modelFigure("image 7.png"),
             "alt": "Figure 4. Survival of patients with TNBC stratified by LIV-1 staining intensity. Higher intensity (3+) was associated with shorter survival compared to moderate intensity (2+) (Xu et al., 2024)."
           },
           {
@@ -2440,6 +1977,482 @@ export const modelPanels: Record<string, ModelPanel> = {
     ]
   },
   "model-panel-7": {
+    "kind": "antigen-table",
+    "table": {
+      "type": "table",
+      "headers": [
+        "**Antigen**",
+        "**Peptide**",
+        "**Protein position**",
+        "**Predicted IC₅₀, nM**",
+        "**NetMHCpan EL percentile rank**",
+        "**IEDB immunogenicity score**",
+        "**Topology annotation and decision**"
+      ],
+      "rows": [
+        [
+          "TROP2",
+          "`GLAPPPLRL`",
+          "6–14",
+          "203.99",
+          "0.03",
+          "0.00118",
+          "Signal peptide"
+        ],
+        [
+          "TROP2",
+          "`LLLLVLAAV`",
+          "16–24",
+          "24.52",
+          "0.80",
+          "0.07088",
+          "Signal peptide"
+        ],
+        [
+          "TROP2",
+          "`SVCWCVNSV`",
+          "123–131",
+          "222.32",
+          "3.10",
+          "0.08963",
+          "Retained"
+        ],
+        [
+          "TROP2",
+          "`RLFRERYRL`",
+          "178–186",
+          "61.63",
+          "0.28",
+          "0.26342",
+          "Retained"
+        ],
+        [
+          "TROP2",
+          "`TLIYYLDEI`",
+          "256–264",
+          "12.55",
+          "0.34",
+          "0.10266",
+          "Retained"
+        ],
+        [
+          "TROP2",
+          "`YLDEIPPKF`",
+          "260–268",
+          "79.58",
+          "0.02",
+          "0.09175",
+          "Retained"
+        ],
+        [
+          "TROP2",
+          "`RLTAGLIAV`",
+          "272–280",
+          "10.02",
+          "0.07",
+          "0.20971",
+          "Transmembrane"
+        ],
+        [
+          "TROP2",
+          "`GLIAVIVVV`",
+          "276–284",
+          "41.76",
+          "0.19",
+          "0.30701",
+          "Transmembrane"
+        ],
+        [
+          "TROP2",
+          "`IVVVVVALV`",
+          "281–289",
+          "426.36",
+          "2.50",
+          "0.16054",
+          "Transmembrane"
+        ],
+        [
+          "B7-H4",
+          "`SLGQILFWS`",
+          "3–11",
+          "328.57",
+          "3.30",
+          "0.24182",
+          "Signal peptide"
+        ],
+        [
+          "B7-H4",
+          "`ILFWSIISI`",
+          "7–15",
+          "10.72",
+          "0.19",
+          "0.24073",
+          "Signal peptide"
+        ],
+        [
+          "B7-H4",
+          "`SIISIIIIL`",
+          "11–19",
+          "332.68",
+          "0.51",
+          "0.32169",
+          "Signal peptide"
+        ],
+        [
+          "B7-H4",
+          "`SIIIILAGA`",
+          "14–22",
+          "229.25",
+          "2.00",
+          "0.34910",
+          "Signal peptide"
+        ],
+        [
+          "B7-H4",
+          "`IILAGAIAL`",
+          "17–25",
+          "128.04",
+          "0.62",
+          "0.24078",
+          "Signal peptide"
+        ],
+        [
+          "B7-H4",
+          "`ILAGAIALI`",
+          "18–26",
+          "12.11",
+          "0.19",
+          "0.23672",
+          "Signal peptide"
+        ],
+        [
+          "B7-H4",
+          "`WLKEGVLGL`",
+          "71–79",
+          "31.58",
+          "0.11",
+          "0.11305",
+          "Retained"
+        ],
+        [
+          "B7-H4",
+          "`AVFADQVIV`",
+          "102–110",
+          "329.27",
+          "0.54",
+          "0.10253",
+          "Retained"
+        ],
+        [
+          "B7-H4",
+          "`SFFAISWAL`",
+          "264–272",
+          "331.79",
+          "2.20",
+          "0.26104",
+          "Transmembrane"
+        ],
+        [
+          "B7-H4",
+          "`AISWALLPL`",
+          "267–275",
+          "122.80",
+          "2.10",
+          "0.18101",
+          "Transmembrane"
+        ],
+        [
+          "Nectin-4",
+          "`FQARLRLRV`",
+          "137–145",
+          "439.99",
+          "1.30",
+          "0.12358",
+          "Retained"
+        ],
+        [
+          "Nectin-4",
+          "`RLRVLVPPL`",
+          "142–150",
+          "193.10",
+          "1.50",
+          "0.07056",
+          "Retained"
+        ],
+        [
+          "Nectin-4",
+          "`AVTSEFHLV`",
+          "203–211",
+          "357.45",
+          "0.44",
+          "0.07465",
+          "Retained"
+        ],
+        [
+          "Nectin-4",
+          "`HILHVSFLA`",
+          "238–246",
+          "190.78",
+          "1.90",
+          "0.00574",
+          "Retained"
+        ],
+        [
+          "Nectin-4",
+          "`FLAEASVRG`",
+          "244–252",
+          "460.73",
+          "1.90",
+          "0.06090",
+          "Retained"
+        ],
+        [
+          "Nectin-4",
+          "`VVVGVIAAL`",
+          "351–359",
+          "261.34",
+          "0.68",
+          "0.26886",
+          "Transmembrane"
+        ],
+        [
+          "Nectin-4",
+          "`VIAALLFCL`",
+          "355–363",
+          "64.24",
+          "1.50",
+          "0.09813",
+          "Transmembrane"
+        ],
+        [
+          "Nectin-4",
+          "`ALLFCLLVV`",
+          "358–366",
+          "46.65",
+          "1.30",
+          "0.06602",
+          "Transmembrane"
+        ],
+        [
+          "Nectin-4",
+          "`LLFCLLVVV`",
+          "359–367",
+          "37.44",
+          "1.50",
+          "0.02147",
+          "Transmembrane"
+        ],
+        [
+          "Nectin-4",
+          "`YINGRGHLV`",
+          "502–510",
+          "255.92",
+          "0.41",
+          "0.13512",
+          "Retained"
+        ],
+        [
+          "LIV-1",
+          "`KLSVILILT`",
+          "4–12",
+          "279.90",
+          "1.40",
+          "0.21284",
+          "Signal peptide"
+        ],
+        [
+          "LIV-1",
+          "`SVILILTFA`",
+          "6–14",
+          "358.45",
+          "1.60",
+          "0.25236",
+          "Signal peptide"
+        ],
+        [
+          "LIV-1",
+          "`VILILTFAL`",
+          "7–15",
+          "253.64",
+          "2.60",
+          "0.27772",
+          "Signal peptide"
+        ],
+        [
+          "LIV-1",
+          "`LILTFALSV`",
+          "9–17",
+          "20.75",
+          "0.58",
+          "0.08027",
+          "Signal peptide"
+        ],
+        [
+          "LIV-1",
+          "`TVSEGTHFL`",
+          "194–202",
+          "340.45",
+          "0.25",
+          "0.21229",
+          "Retained"
+        ],
+        [
+          "LIV-1",
+          "`FLSLLGVIL`",
+          "337–345",
+          "102.46",
+          "0.64",
+          "0.06884",
+          "Transmembrane"
+        ],
+        [
+          "LIV-1",
+          "`LLGVILVPL`",
+          "340–348",
+          "53.25",
+          "1.50",
+          "0.20006",
+          "Transmembrane"
+        ],
+        [
+          "LIV-1",
+          "`LLSFLVALA`",
+          "357–365",
+          "33.42",
+          "1.60",
+          "0.11870",
+          "Transmembrane"
+        ],
+        [
+          "LIV-1",
+          "`FLVALAVGT`",
+          "360–368",
+          "120.26",
+          "2.40",
+          "0.13344",
+          "Transmembrane"
+        ],
+        [
+          "LIV-1",
+          "`YFMFLVEHV`",
+          "432–440",
+          "136.19",
+          "1.80",
+          "0.19226",
+          "Transmembrane"
+        ],
+        [
+          "LIV-1",
+          "`FMFLVEHVL`",
+          "433–441",
+          "7.50",
+          "0.14",
+          "0.21271",
+          "Transmembrane"
+        ],
+        [
+          "LIV-1",
+          "`FLVEHVLTL`",
+          "435–443",
+          "3.38",
+          "0.01",
+          "0.19783",
+          "Transmembrane"
+        ],
+        [
+          "LIV-1",
+          "`GVATLAWMV`",
+          "591–599",
+          "54.75",
+          "0.67",
+          "0.16213",
+          "Retained"
+        ],
+        [
+          "LIV-1",
+          "`GLHNFSDGL`",
+          "604–612",
+          "110.36",
+          "0.47",
+          "0.00078",
+          "Retained"
+        ],
+        [
+          "LIV-1",
+          "`SVAVFCHEL`",
+          "629–637",
+          "436.04",
+          "1.20",
+          "0.20329",
+          "Retained"
+        ],
+        [
+          "LIV-1",
+          "`FIGHYAENV`",
+          "677–685",
+          "35.71",
+          "0.50",
+          "0.15750",
+          "Retained"
+        ],
+        [
+          "LIV-1",
+          "`NVSMWIFAL`",
+          "684–692",
+          "130.10",
+          "1.90",
+          "0.23224",
+          "Transmembrane"
+        ],
+        [
+          "LIV-1",
+          "`SMWIFALTA`",
+          "686–694",
+          "48.04",
+          "0.95",
+          "0.36997",
+          "Transmembrane"
+        ],
+        [
+          "LIV-1",
+          "`WIFALTAGL`",
+          "688–696",
+          "27.42",
+          "1.50",
+          "0.15593",
+          "Transmembrane"
+        ],
+        [
+          "LIV-1",
+          "`FMYVALVDM`",
+          "697–705",
+          "63.80",
+          "1.60",
+          "0.11580",
+          "Transmembrane"
+        ],
+        [
+          "LIV-1",
+          "`MLLGFGIML`",
+          "732–740",
+          "18.06",
+          "0.23",
+          "0.18612",
+          "Transmembrane"
+        ],
+        [
+          "LIV-1",
+          "`LLGFGIMLL`",
+          "733–741",
+          "33.39",
+          "0.41",
+          "0.13240",
+          "Transmembrane"
+        ]
+      ]
+    }
+  },
+  "model-panel-8": {
     "kind": "tabs",
     "title": "IEDB inputs, parameters, and filtering rules",
     "entries": [
@@ -2556,11 +2569,15 @@ export const modelPanels: Record<string, ModelPanel> = {
       }
     ]
   },
-  "model-panel-8": {
+  "model-panel-9": {
+    "kind": "chart",
+    "chart": "confidence-scatter"
+  },
+  "model-panel-10": {
     "kind": "chart",
     "chart": "burial-heatmap"
   },
-  "model-panel-9": {
+  "model-panel-11": {
     "kind": "fold",
     "title": "How the 60% bound was derived",
     "blocks": [
@@ -2637,11 +2654,11 @@ export const modelPanels: Record<string, ModelPanel> = {
       }
     ]
   },
-  "model-panel-10": {
+  "model-panel-12": {
     "kind": "chart",
     "chart": "p9-volume"
   },
-  "model-panel-11": {
+  "model-panel-13": {
     "kind": "tabs",
     "title": "Structural processing",
     "entries": [
@@ -2760,7 +2777,7 @@ export const modelPanels: Record<string, ModelPanel> = {
       }
     ]
   },
-  "model-panel-12": {
+  "model-panel-14": {
     "kind": "transpose",
     "table": {
       "type": "table",
@@ -3607,12 +3624,16 @@ export const modelDownloads = [
     "path": "assets/docs/model/00_systems.csv"
   },
   {
+    "label": "figure15_data.csv",
+    "path": "assets/docs/model/figure15_data.csv"
+  },
+  {
     "label": "PXD024322_TNBC_vs_Normal_limma_ALL_9088_proteins(1).csv",
-    "path": "assets/docs/model/pxd024322_tnbc_vs_normal_limma_all_9088_proteins-1.csv"
+    "path": "https://static.igem.wiki/teams/6056/wiki/files/pages/dry-lab/model/pxd024322-tnbc-vs-normal-limma-all-9088-proteins-1.csv"
   },
   {
     "label": "PXD028102_paired_limma_imputed_ALL.csv",
-    "path": "assets/docs/model/pxd028102_paired_limma_imputed_all.csv"
+    "path": "https://static.igem.wiki/teams/6056/wiki/files/pages/dry-lab/model/pxd028102-paired-limma-imputed-all.csv"
   }
 ];
 
@@ -3626,13 +3647,24 @@ export const modelPage: WikiPageContent = {
       navLabel: "3D Structure",
       title: "Structural Confirmation of Trop2-CTL1 (SVCWCVNSV) in HLA-A*02:01 / B2M",
       summary:
-        "AlphaFold/docking-derived all-atom conformation and polar contact network of the Trop2-CTL1 epitope complexed with human MHC-I (HLA-A*02:01) and β2-microglobulin, reconstituted directly from the high-resolution PyMOL session.",
+        "All-atom conformation and polar contact network of the Trop2-CTL1 epitope complexed with human MHC-I (HLA-A*02:01) and β2-microglobulin.",
       body: [
-        "To characterize the immunogenic presentation and binding stability of our engineered Trop2 target candidates, we performed high-resolution structural modeling of the Trop2-CTL1 core epitope (SVCWCVNSV) complexed with the human leukocyte antigen HLA-A*02:01 and β2-microglobulin (B2M). All-atom spatial coordinates, anchoring residues within the MHC peptide-binding cleft, and key polar interaction networks were resolved and validated.",
+        "High-resolution all-atom structural confirmation of the Trop2-CTL1 core epitope (SVCWCVNSV) complexed with HLA-A*02:01 and β2-microglobulin (B2M), resolving 13 key anchoring residues and 17 stabilizing polar interactions across the peptide-binding cleft.",
       ],
       layout: "editorial",
     },
     ...manuscriptSections
- ],
- links: [{ path: "/software", label: "Software" }, { path: "/hardware", label: "Hardware" }, { path: "/games", label: "Games" }], next: { path: "/software", label: "Software", title: "Software" }
+  ],
+  links: [
+    { path: "/design", label: "Molecular Design" },
+    { path: "/results", label: "Model vs Bench Validation" },
+    { path: "/software", label: "circForge Software" },
+    { path: "/hardware", label: "CirCore Device Control" },
+  ],
+  next: {
+    path: "/software",
+    label: "Software",
+    title: "From Mathematical Models to Automated Tools",
+    description: "Differential equations and folding simulations become transformative when anyone can use them. Meet circForge—our open-source software suite automating circRNA design.",
+  },
 };

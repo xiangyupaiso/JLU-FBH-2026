@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState, useCallback } from "react";
+import { RotateCcw, Maximize2, Minimize2 } from "lucide-react";
 // Type-only imports: erased at build time, Mol* itself comes from window.molstar
 import type { Viewer } from "molstar/lib/apps/viewer/app";
 import type { Vec3, Vec4 } from "molstar/lib/mol-math/linear-algebra";
@@ -9,7 +10,7 @@ import trop2Pdb from "../../../assets/structures/trop2-ctl1.pdb?raw";
 import { TROP2_COMPLEX_DATA } from "../../../data/trop2ComplexData";
 import "../../../styles/trop2-complex-viewer.css";
 
-type ActiveSegment = "all" | "epitope" | "alpha1" | "alpha2" | "pocket";
+type ActiveSegment = "all" | "epitope" | "pocket";
 type MolstarGlobal = NonNullable<Window["molstar"]>;
 type ComponentSelector = StateObjectSelector<PluginStateObject.Molecule.Structure>;
 type ReprSelector = StateObjectSelector<PluginStateObject.Molecule.Structure.Representation3D>;
@@ -73,8 +74,6 @@ export function Trop2ComplexViewer() {
   const structureRef = useRef<StateObjectSelector<PluginStateObject.Molecule.Structure> | null>(null);
   const epitopeCompRef = useRef<ComponentSelector | undefined>(undefined);
   const pocketCompRef = useRef<ComponentSelector | undefined>(undefined);
-  const alpha1CompRef = useRef<ComponentSelector | undefined>(undefined);
-  const alpha2CompRef = useRef<ComponentSelector | undefined>(undefined);
   const surfaceReprRef = useRef<ReprSelector | null>(null);
   const isSurfaceUpdatingRef = useRef(false);
   const rafIdRef = useRef<number | null>(null);
@@ -86,7 +85,6 @@ export function Trop2ComplexViewer() {
   const [error, setError] = useState<string | null>(null);
   const [showPolarContacts, setShowPolarContacts] = useState(true);
   const [showSurface, setShowSurface] = useState(false);
-  const [isDarkMode, setIsDarkMode] = useState(true);
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [activeSegment, setActiveSegment] = useState<ActiveSegment>("all");
 
@@ -200,7 +198,7 @@ export function Trop2ComplexViewer() {
           viewportShowSelectionMode: false,
           viewportShowAnimation: false,
           viewportShowTrajectoryControls: false,
-          viewportBackgroundColor: isDarkMode ? "#0b0f19" : "#f8fafc",
+          viewportBackgroundColor: "#0b0f19",
         });
 
         if (!isMounted) {
@@ -258,7 +256,7 @@ export function Trop2ComplexViewer() {
               },
             },
             renderer: {
-              backgroundColor: color(isDarkMode ? 0x0b0f19 : 0xf8fafc),
+              backgroundColor: color(0x0b0f19),
             },
           });
         }
@@ -339,34 +337,6 @@ export function Trop2ComplexViewer() {
             typeParams: { sizeFactor: 0.22 },
           });
         }
-
-        // 4. α1 Helix (Chain A, residues 50-85)
-        const a1Comp = await plugin.builders.structure.tryCreateComponent(
-          structure,
-          {
-            type: {
-              name: "script",
-              params: { language: "pymol", expression: "chain A and resi 50-85" },
-            },
-            label: "MHC α1-Helix",
-          },
-          "alpha1-helix"
-        );
-        alpha1CompRef.current = a1Comp;
-
-        // 5. α2 Helix (Chain A, residues 138-175)
-        const a2Comp = await plugin.builders.structure.tryCreateComponent(
-          structure,
-          {
-            type: {
-              name: "script",
-              params: { language: "pymol", expression: "chain A and resi 138-175" },
-            },
-            label: "MHC α2-Helix",
-          },
-          "alpha2-helix"
-        );
-        alpha2CompRef.current = a2Comp;
 
         // Reset camera to focus on epitope cleft
         if (plugin.canvas3d) {
@@ -457,21 +427,6 @@ export function Trop2ComplexViewer() {
     }
   }, [showSurface]);
 
-  // Handle Theme Toggle
-  const handleToggleTheme = useCallback(() => {
-    const viewer = viewerRef.current;
-    const nextDark = !isDarkMode;
-    setIsDarkMode(nextDark);
-    if (viewer?.plugin?.canvas3d) {
-      viewer.plugin.canvas3d.setProps({
-        renderer: {
-          backgroundColor: color(nextDark ? 0x0b0f19 : 0xf8fafc),
-        },
-      });
-      scheduleUpdateProjections();
-    }
-  }, [isDarkMode, scheduleUpdateProjections]);
-
   // Handle Fullscreen Toggle
   const handleToggleFullscreen = useCallback(() => {
     if (!figureRef.current) return;
@@ -495,12 +450,7 @@ export function Trop2ComplexViewer() {
         return;
       }
 
-      let compCell: ComponentSelector | undefined;
-      if (target === "epitope") compCell = epitopeCompRef.current;
-      else if (target === "pocket") compCell = pocketCompRef.current;
-      else if (target === "alpha1") compCell = alpha1CompRef.current;
-      else if (target === "alpha2") compCell = alpha2CompRef.current;
-
+      const compCell = target === "epitope" ? epitopeCompRef.current : pocketCompRef.current;
       const sphere = compCell?.cell?.obj?.data?.boundary?.sphere;
       if (sphere && plugin.managers.camera.focusSphere) {
         plugin.managers.camera.focusSphere(sphere, { durationMs: 600 });
@@ -512,134 +462,12 @@ export function Trop2ComplexViewer() {
   );
 
   return (
-    <figure ref={figureRef} className="trop2-viewer-card" aria-labelledby="trop2-viewer-title">
-      <header className="trop2-viewer-header">
-        <div className="trop2-viewer-header__titles">
-          <span className="trop2-viewer-header__badge">
-            Fig. M-01 / Interactive 3D Complex
-          </span>
-          <h3 className="trop2-viewer-header__title" id="trop2-viewer-title">
-            Structural Confirmation of Trop2-CTL1 (SVCWCVNSV) in HLA-A*02:01 / B2M
-          </h3>
-        </div>
-      </header>
-
-      {/* Segment Quick-Focus Pill Strip */}
-      <div className="trop2-viewer-pills" role="navigation" aria-label="Segment Focus Bar">
-        <span className="trop2-viewer-toolbar__label">Segment Focus:</span>
-        <div className="trop2-viewer-pills__group">
-          <button
-            type="button"
-            className={`trop2-viewer-pill ${activeSegment === "all" ? "is-active" : ""}`}
-            onClick={() => handleFocusSegment("all")}
-          >
-            Full Complex
-          </button>
-          <button
-            type="button"
-            className={`trop2-viewer-pill trop2-viewer-pill--cyan ${
-              activeSegment === "epitope" ? "is-active" : ""
-            }`}
-            onClick={() => handleFocusSegment("epitope")}
-          >
-            Trop2-CTL1 (Epitope)
-          </button>
-          <button
-            type="button"
-            className={`trop2-viewer-pill ${activeSegment === "alpha1" ? "is-active" : ""}`}
-            onClick={() => handleFocusSegment("alpha1")}
-          >
-            MHC α1-Helix
-          </button>
-          <button
-            type="button"
-            className={`trop2-viewer-pill ${activeSegment === "alpha2" ? "is-active" : ""}`}
-            onClick={() => handleFocusSegment("alpha2")}
-          >
-            MHC α2-Helix
-          </button>
-          <button
-            type="button"
-            className={`trop2-viewer-pill trop2-viewer-pill--blue ${
-              activeSegment === "pocket" ? "is-active" : ""
-            }`}
-            onClick={() => handleFocusSegment("pocket")}
-          >
-            13 Pocket Anchors
-          </button>
-        </div>
-      </div>
-
-      {/* Dedicated Academic Control Strip */}
-      <div className="trop2-viewer-toolbar" role="toolbar" aria-label="3D Visualization Controls">
-        <div className="trop2-viewer-toolbar__section">
-          <span className="trop2-viewer-toolbar__label">Navigation</span>
-          <div className="trop2-viewer-toolbar__group">
-            <button
-              type="button"
-              className="trop2-viewer-btn"
-              onClick={handleResetView}
-              title="Reset to default camera orientation"
-            >
-              Reset View
-            </button>
-          </div>
-        </div>
-
-        <div className="trop2-viewer-toolbar__section">
-          <span className="trop2-viewer-toolbar__label">Display Layers</span>
-          <div className="trop2-viewer-toolbar__group">
-            <button
-              type="button"
-              className={`trop2-viewer-btn ${showPolarContacts ? "is-active" : ""}`}
-              onClick={() => setShowPolarContacts((prev) => !prev)}
-              title="Toggle 17 polar contact pairs (yellow dashed lines)"
-            >
-              <i className="trop2-viewer-btn__dot" aria-hidden="true" />
-              Polar Contacts ({TROP2_COMPLEX_DATA.statistics.polarContactsCount})
-            </button>
-            <button
-              type="button"
-              className={`trop2-viewer-btn ${showSurface ? "is-active" : ""}`}
-              onClick={handleToggleSurface}
-              title="Toggle peptide solvent-accessible surface"
-            >
-              <i className="trop2-viewer-btn__dot" aria-hidden="true" />
-              Peptide Surface
-            </button>
-          </div>
-        </div>
-
-        <div className="trop2-viewer-toolbar__section">
-          <span className="trop2-viewer-toolbar__label">Viewport</span>
-          <div className="trop2-viewer-toolbar__group">
-            <button
-              type="button"
-              className="trop2-viewer-btn"
-              onClick={handleToggleTheme}
-              title="Toggle viewport background between dark slate and light paper"
-            >
-              Theme: {isDarkMode ? "Dark" : "Light"}
-            </button>
-            <button
-              type="button"
-              className={`trop2-viewer-btn ${isFullscreen ? "is-active" : ""}`}
-              onClick={handleToggleFullscreen}
-              title="Toggle fullscreen view"
-            >
-              {isFullscreen ? "Exit Fullscreen" : "Fullscreen"}
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <div
-        className={`trop2-viewer-stage ${!isDarkMode ? "trop2-viewer-stage--light" : ""}`}
-      >
+    <figure ref={figureRef} className="trop2-viewer-container" aria-label="3D Molecular Complex">
+      <div className="trop2-viewer-stage">
         {isLoading && (
           <div className="trop2-viewer-loading">
             <div className="trop2-viewer-spinner" />
-            <span>Loading Mol* 3D complex (6,098 atoms)...</span>
+            <span>Loading 3D structure...</span>
           </div>
         )}
 
@@ -649,11 +477,10 @@ export function Trop2ComplexViewer() {
           </div>
         )}
 
-        {/* Mol* Target Canvas (native cursor: keeps the global sheep cursor off the WebGL stage) */}
+        {/* Mol* Target Canvas */}
         <div ref={containerRef} className="trop2-viewer-canvas" data-native-cursor />
 
-        {/* 2D Vector Projection Overlay for Polar Contacts. Line coordinates are
-            written by updateProjections; React only mounts the elements. */}
+        {/* 2D Vector Projection Overlay for Polar Contacts */}
         <svg
           ref={overlayRef}
           className="trop2-viewer-svg-overlay"
@@ -669,7 +496,6 @@ export function Trop2ComplexViewer() {
                 }}
                 visibility="hidden"
               >
-                {/* Wide faint stroke stands in for a per-frame drop-shadow filter */}
                 <line
                   stroke="rgba(250, 204, 21, 0.25)"
                   strokeWidth="5"
@@ -688,62 +514,106 @@ export function Trop2ComplexViewer() {
             ))}
         </svg>
 
-        <div className="trop2-viewer-hint">
-          <span>Left-click: Rotate • Right-click: Pan • Scroll: Zoom • Click residue: Focus & highlight</span>
+        {/* Floating Top Controls Bar */}
+        <div className="trop2-viewer-floating-top" role="toolbar" aria-label="3D Controls">
+          {/* Segment Focus Group */}
+          <div className="trop2-floating-group">
+            <button
+              type="button"
+              className={`trop2-floating-pill ${activeSegment === "all" ? "is-active" : ""}`}
+              onClick={() => handleFocusSegment("all")}
+            >
+              Full Complex
+            </button>
+            <button
+              type="button"
+              className={`trop2-floating-pill trop2-floating-pill--cyan ${
+                activeSegment === "epitope" ? "is-active" : ""
+              }`}
+              onClick={() => handleFocusSegment("epitope")}
+            >
+              Trop2-CTL1 (Epitope)
+            </button>
+            <button
+              type="button"
+              className={`trop2-floating-pill trop2-floating-pill--blue ${
+                activeSegment === "pocket" ? "is-active" : ""
+              }`}
+              onClick={() => handleFocusSegment("pocket")}
+            >
+              Pocket Anchors
+            </button>
+          </div>
+
+          {/* Action / Layer Toggles */}
+          <div className="trop2-floating-group">
+            <button
+              type="button"
+              className={`trop2-floating-btn ${showPolarContacts ? "is-active-yellow" : ""}`}
+              onClick={() => setShowPolarContacts((prev) => !prev)}
+              title="Toggle polar contacts"
+            >
+              <span className="trop2-btn-dot trop2-btn-dot--yellow" />
+              Contacts (17)
+            </button>
+            <button
+              type="button"
+              className={`trop2-floating-btn ${showSurface ? "is-active-cyan" : ""}`}
+              onClick={handleToggleSurface}
+              title="Toggle peptide surface"
+            >
+              <span className="trop2-btn-dot trop2-btn-dot--cyan" />
+              Surface
+            </button>
+            <button
+              type="button"
+              className="trop2-floating-icon-btn"
+              onClick={handleResetView}
+              title="Reset View"
+              aria-label="Reset View"
+            >
+              <RotateCcw size={14} />
+            </button>
+            <button
+              type="button"
+              className="trop2-floating-icon-btn"
+              onClick={handleToggleFullscreen}
+              title={isFullscreen ? "Exit Fullscreen" : "Fullscreen"}
+              aria-label={isFullscreen ? "Exit Fullscreen" : "Fullscreen"}
+            >
+              {isFullscreen ? <Minimize2 size={14} /> : <Maximize2 size={14} />}
+            </button>
+          </div>
+        </div>
+
+        {/* Floating Bottom Bar: Minimal Legend & Interaction Hint */}
+        <div className="trop2-viewer-floating-bottom">
+          <div className="trop2-floating-legend">
+            <span className="trop2-legend-item">
+              <span className="trop2-legend-dot trop2-legend-dot--cyan" />
+              Trop2-CTL1
+            </span>
+            <span className="trop2-legend-item">
+              <span className="trop2-legend-dot trop2-legend-dot--blue" />
+              Pocket Anchors
+            </span>
+            <span className="trop2-legend-item">
+              <span className="trop2-legend-dot trop2-legend-dot--lavender" />
+              HLA-A*02:01 / β2M
+            </span>
+            <span className="trop2-legend-item">
+              <span className="trop2-legend-dot trop2-legend-dot--yellow" />
+              Polar Contacts
+            </span>
+          </div>
+          <div className="trop2-floating-hint">
+            <span>Left-drag: Rotate • Scroll: Zoom • Right-drag: Pan</span>
+          </div>
         </div>
       </div>
 
-      <figcaption className="trop2-viewer-footer">
-        <p className="trop2-viewer-caption">
-          <span className="wiki-figure-caption-label">FIG. M-01</span>Mol* rotatable 3D model of target-epitope complex. Reconstructed
-          from PyMOL source session (<code>Trop2-CTL1.pse</code>). The HLA-A*02:01 heavy chain (Chain A)
-          and β2-microglobulin (Chain B) are rendered in lavender cartoon ribbons.
-          The Trop2-derived 9-mer CTL1 epitope (<strong>{TROP2_COMPLEX_DATA.epitopeSequence}</strong>, Chain C) is
-          anchored in the MHC groove and displayed as prominent cyan sticks. Royal blue sticks
-          delineate the 13 essential pocket anchoring residues (Tyr7, Glu63, Lys66, His70, Asp77, Tyr84,
-          Tyr99, Thr143, Lys146, Trp147, Gln155, Tyr159, Tyr171). Yellow dashed lines trace the 17
-          polar interaction contacts that stabilize the core epitope within the cleft.
-        </p>
-
-        {/* Visual Legend */}
-        <div className="trop2-viewer-legend">
-          <div className="trop2-viewer-legend__item">
-            <span className="trop2-viewer-legend__dot trop2-viewer-legend__dot--cyan" />
-            <span>Trop2-CTL1 Peptide (<code>{TROP2_COMPLEX_DATA.epitopeSequence}</code>)</span>
-          </div>
-          <div className="trop2-viewer-legend__item">
-            <span className="trop2-viewer-legend__dot trop2-viewer-legend__dot--blue" />
-            <span>13 MHC Pocket Contact Residues (Sticks)</span>
-          </div>
-          <div className="trop2-viewer-legend__item">
-            <span className="trop2-viewer-legend__dot trop2-viewer-legend__dot--lavender" />
-            <span>HLA-A*02:01 &amp; β2M Backbone (Cartoon)</span>
-          </div>
-          <div className="trop2-viewer-legend__item">
-            <span className="trop2-viewer-legend__dot trop2-viewer-legend__dot--yellow" />
-            <span>17 Polar Interactions (Dashed Lines)</span>
-          </div>
-        </div>
-
-        {/* Numeric Statistics Chips */}
-        <div className="trop2-viewer-stats">
-          <div className="trop2-viewer-stat">
-            <span className="trop2-viewer-stat__label">Target Epitope</span>
-            <span className="trop2-viewer-stat__val">SVCWCVNSV</span>
-          </div>
-          <div className="trop2-viewer-stat">
-            <span className="trop2-viewer-stat__label">Pocket Anchor Residues</span>
-            <span className="trop2-viewer-stat__val">13 Residues</span>
-          </div>
-          <div className="trop2-viewer-stat">
-            <span className="trop2-viewer-stat__label">Polar Contacts / H-Bonds</span>
-            <span className="trop2-viewer-stat__val">17 Pairs</span>
-          </div>
-          <div className="trop2-viewer-stat">
-            <span className="trop2-viewer-stat__label">Atomic Coordinate Set</span>
-            <span className="trop2-viewer-stat__val">6,098 Atoms</span>
-          </div>
-        </div>
+      <figcaption className="trop2-viewer-caption">
+        <strong>Fig. M-01 · </strong>Structural conformation of Trop2-CTL1 (<code>{TROP2_COMPLEX_DATA.epitopeSequence}</code>) complexed within the HLA-A*02:01 / β2M binding groove, stabilized by 17 polar interaction contacts.
       </figcaption>
     </figure>
   );

@@ -8,6 +8,8 @@ import json
 import re
 import shutil
 import sys
+sys.dont_write_bytecode = True
+from model_figure15 import load_figure15, update_figure15_copy
 from pathlib import Path
 from urllib.parse import unquote
 
@@ -17,6 +19,8 @@ ARCHIVE = ROOT / '文案集/drylab/model'
 if SOURCE.resolve() != ARCHIVE.resolve():
     shutil.copytree(SOURCE, ARCHIVE, dirs_exist_ok=True)
 SOURCE = ARCHIVE
+figure15 = load_figure15()
+(ROOT / 'src/data/drylab/modelConfidenceData.json').write_text(json.dumps(figure15, ensure_ascii=False, indent=2), encoding='utf-8')
 text = next(SOURCE.glob('*.md')).read_text(encoding='utf-8')
 lines = text.splitlines()
 DATA = ROOT / 'src/data/drylab'
@@ -62,7 +66,7 @@ for i, path in enumerate(sorted((SOURCE / '图片和附件').glob('*'))):
     name = f'model-figure-{i + 1:02d}{path.suffix.lower()}'
     shutil.copy2(path, ASSETS / name)
     assets[path.name] = dict(fileName=name, localSourcePath=f'文案集/drylab/model/图片和附件/{path.name}',
-                             uploadUrl='', alt=english_label(asset_descriptions[path.name]))
+                             uploadUrl='', alt=update_figure15_copy(english_label(asset_descriptions[path.name]), figure15))
 imports = '\n'.join(f'import image{i} from "../../assets/wiki/model/{a["fileName"]}";' for i, a in enumerate(assets.values()))
 asset_code = imports + '\n\nexport const modelAssets = {\n'
 for i, (key, value) in enumerate(assets.items()):
@@ -71,8 +75,15 @@ asset_code += '} as const;\nexport type ModelAssetKey = keyof typeof modelAssets
 (DATA / 'modelAssets.ts').write_text(asset_code, encoding='utf-8')
 
 downloads = []
+remote_downloads = {
+    'PXD024322_TNBC_vs_Normal_limma_ALL_9088_proteins(1).csv': 'https://static.igem.wiki/teams/6056/wiki/files/pages/dry-lab/model/pxd024322-tnbc-vs-normal-limma-all-9088-proteins-1.csv',
+    'PXD028102_paired_limma_imputed_ALL.csv': 'https://static.igem.wiki/teams/6056/wiki/files/pages/dry-lab/model/pxd028102-paired-limma-imputed-all.csv',
+}
 for i, path in enumerate(sorted(SOURCE.rglob('*'))):
     if path.suffix not in ('.csv', '.log'):
+        continue
+    if path.name in remote_downloads:
+        downloads.append(dict(label=path.name, path=remote_downloads[path.name]))
         continue
     name = re.sub(r'[^a-z0-9._-]+', '-', path.stem.lower()).strip('-') + path.suffix
     shutil.copy2(path, DOWNLOADS / name)
@@ -142,7 +153,7 @@ def parse(part):
                 # Its steps and associated prose are rendered once in a tab panel.
                 i += 1
                 continue
-            replacement = {'image 12.png': 'volcano-024322', 'image 4.png': 'volcano-028102', 'image 10.png': 'burial-heatmap', 'image 9.png': 'p9-volume'}
+            replacement = {'image 12.png': 'volcano-024322', 'image 4.png': 'volcano-028102', 'image 10.png': 'burial-heatmap', 'image 9.png': 'p9-volume', 'image 1.png': 'confidence-scatter'}
             if name in replacement:
                 blocks.append(feature(dict(kind='chart', chart=replacement[name])))
             else:
@@ -159,6 +170,8 @@ def parse(part):
             block = dict(type='table', headers=table[0], rows=table[1:])
             if table[0][0] == '**Measurement**':
                 blocks.append(feature(dict(kind='transpose', table=block)))
+            elif [english_label(cell) for cell in table[0][:3]] == ['**Antigen**', '**Peptide**', '**Protein position**']:
+                blocks.append(feature(dict(kind='antigen-table', table=block)))
             else:
                 blocks.append(block)
             continue
@@ -183,7 +196,7 @@ def parse(part):
             i += 1
         value = clean(' '.join(paragraph))
         value = value.replace('（此图仅作示例使用，wiki在此处作可视化）', '').replace('（横纵切换）', '')
-        blocks.append(dict(type='prose', paragraphs=[value]))
+        blocks.append(dict(type='prose', paragraphs=[update_figure15_copy(value, figure15)]))
     return blocks
 
 headings = []
@@ -314,7 +327,7 @@ for panel in panels.values():
         for entry in panel['entries']:
             entry['title'] = english_label(entry['title'])
             entry['blocks'] = english_blocks(entry['blocks'])
-    elif panel['kind'] == 'transpose':
+    elif panel['kind'] in ('transpose', 'antigen-table'):
         panel['table'] = english_blocks([panel['table']])[0]
 
 # Keep the first existing chapter verbatim; only the unfilled manuscript changes.
@@ -335,22 +348,6 @@ data += '\nexport const modelDownloads = ' + dump(downloads) + ';\n'
 data += '\nexport const modelPage: WikiPageContent = {\n route: "/model", category: "dry-lab", chapter: "Dry Lab / 01 of 04", eyebrow: "Model", title: "Model", lede: "", boundary: "", visual: "model-manuscript", visualLabel: "Model", visualSteps: [], facts: [],\n sections: [\n' + first + ',\n    ...manuscriptSections\n ],\n links: [{ path: "/software", label: "Software" }, { path: "/hardware", label: "Hardware" }, { path: "/games", label: "Games" }], next: { path: "/software", label: "Software", title: "Software" }\n};\n'
 (DATA/'modelPage.ts').write_text(data, encoding='utf-8')
 
-volcano = {}
-for cohort, name in [('024322','PXD024322_TNBC_vs_Normal_limma_ALL_9088_proteins(1).csv'),('028102','PXD028102_paired_limma_imputed_ALL.csv')]:
-    rows = list(csv.DictReader((SOURCE/name).open(encoding='utf-8-sig', newline='')))
-    points = []
-    for row in rows:
-        try:
-            fc = float(row['log2FC_TNBC_minus_Normal' if cohort=='024322' else 'log2FC_TNBC_minus_NAT'])
-            p = float(row['adj.P.Val'])
-        except ValueError:
-            continue
-        if not (p > 0 and p <= 1):
-            raise ValueError(f'Invalid adjusted P: {p}')
-        points.append([row['Symbol'], fc, p, row.get('Accession',row.get('Gene_ID',''))])
-    volcano[cohort] = points
-(DATA/'modelVolcanoData.json').write_text(dump(volcano),encoding='utf-8')
-
 sasa = list(csv.DictReader((SOURCE/'17个表位相关原始数据(2)/00_SASA_PIVOT.csv').open(encoding='utf-8-sig')))
 groups = {'trop2':'TROP2','b7h4':'B7-H4','nectin4':'Nectin-4','liv1':'LIV-1'}
 order = ['RLFRERYRL','SVCWCVNSV','TLIYYLDEI','YLDEIPPKF','AVFADQVIV','WLKEGVLGL','AVTSEFHLV','FLAEASVRG','FQARLRLRV','HILHVSFLA','RLRVLV PPL'.replace(' ',''),'YINGRGHLV','FIGHYAENV','GLHNFSDGL','GVATLAWMV','SVAVFCHEL','TVSEGTHFL']
@@ -360,4 +357,4 @@ for pep in order:
     heatmap.append(dict(peptide=pep, target=groups[r['target']], values=[float(r[f'P{i}']) if r[f'P{i}'] else None for i in range(1,10)]))
 assert len(heatmap)==17 and all(len(r['values'])==9 for r in heatmap)
 (DATA/'modelHeatmapData.json').write_text(dump(heatmap),encoding='utf-8')
-print(f'Imported {len(sections)} manuscript chapters, {len(panels)} panels, {len(assets)} images, {len(references)} references; volcano points: ' + str({k:len(v) for k,v in volcano.items()}))
+print(f'Imported {len(sections)} manuscript chapters, {len(panels)} panels, {len(assets)} images, {len(references)} references; volcano data is hosted remotely')

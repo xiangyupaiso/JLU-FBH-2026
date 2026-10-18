@@ -602,10 +602,16 @@ export const rosterPage: WikiPageContent = {
       blocks: [{ type: "feature", key: "roster" }],
     },
   ],
-  links: [],
+  links: [
+    { path: "/attributions", label: "Project Attributions" },
+    { path: "/activities", label: "Team Activities" },
+    { path: "/description", label: "Project Description" },
+    { path: "/contribution", label: "Team Contributions" },
+  ],
   next: {
     path: "/attributions",
     label: "Attributions",
-    title: "Attributions",
+    title: "From Shared Vision to Formal Accountability",
+    description: "Meet the individuals behind CirCure, then inspect the verified, auditable record of roles, institutional support, and resource attribution.",
   },
 };

@@ -4,6 +4,9 @@ export interface WikiFigurePlateImage {
   key: string;
   src: string;
   alt: string;
+  /** Intrinsic size, so the browser reserves space before the file arrives. */
+  width?: number;
+  height?: number;
 }
 
 interface WikiFigurePlateProps {
@@ -32,6 +35,8 @@ export function WikiFigurePlate({
           key={image.key}
           src={image.src}
           alt={image.alt}
+          width={image.width}
+          height={image.height}
           loading="lazy"
           decoding="async"
         />
