@@ -182,20 +182,6 @@
   --nav-card-sheen: rgba(217, 145, 164, 0.18);
 }
 
-/* Reader menus share the page's existing palette, regardless of which
-   category is open. Keep the motion independent from colour selection. */
-.site-header.is-route-page {
-  --nav-surface: var(--route-panel);
-  --nav-surface-end: var(--route-soft);
-  --nav-surface-accent: color-mix(
-    in srgb,
-    var(--route-accent) 14%,
-    transparent
-  );
-  --nav-theme-accent: var(--route-accent);
-  --nav-card-sheen: transparent;
-}
-
 .circure-nav-shell {
   --nav-menu-width: 304px;
   position: relative;

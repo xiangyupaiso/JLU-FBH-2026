@@ -45,7 +45,10 @@ const loadedElements = new WeakMap<Element, string>();
 // Home lookahead never overtakes a newly requested first screen.
 const pendingDownloads: { priority: "high" | "low"; start: () => Promise<void> }[] = [];
 let downloading = false;
-const inFlightDownloads = new Map<string, Promise<DecodedSource>>();
+const inFlightDownloads = new Map<
+  string,
+  { promise: Promise<DecodedSource>; signal: AbortSignal }
+>();
 
 function pumpDownloads() {
   if (downloading || !pendingDownloads.length) return;
@@ -204,8 +207,12 @@ async function download(source: Source, fallback: string, signal: AbortSignal) {
 
 function downloadSerial(source: Source, fallback: string, signal: AbortSignal, priority: "high" | "low" = "high") {
   const key = sourceKey(source);
+  if (signal.aborted) return Promise.reject(new PageImageQueueError(source.url, "cancelled"));
   const existing = inFlightDownloads.get(key);
-  if (existing) return existing;
+  // A request's AbortSignal belongs to the queue that started it. Sharing it
+  // with another queue lets a route teardown cancel that queue's still-needed
+  // image. StrictMode's setup/cleanup replay exposed this on the Home opening.
+  if (existing && existing.signal === signal && !existing.signal.aborted) return existing.promise;
   const promise = new Promise<DecodedSource>((resolve, reject) => {
     const cancelled = () => {
       const index = pendingDownloads.indexOf(request);
@@ -232,10 +239,13 @@ function downloadSerial(source: Source, fallback: string, signal: AbortSignal, p
     if (signal.aborted) cancelled();
     queueMicrotask(pumpDownloads);
   });
-  inFlightDownloads.set(key, promise);
+  inFlightDownloads.set(key, { promise, signal });
+  const forget = () => {
+    if (inFlightDownloads.get(key)?.promise === promise) inFlightDownloads.delete(key);
+  };
   void promise.then(
-    () => inFlightDownloads.delete(key),
-    () => inFlightDownloads.delete(key),
+    forget,
+    forget,
   );
   return promise;
 }
