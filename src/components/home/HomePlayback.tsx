@@ -129,13 +129,12 @@ export function HomePlayback({ root, introPlaying }: HomePlaybackProps) {
       {!introPlaying && artworkStatus !== "ready" && (
         <div className="home-playback-loading" role="status" aria-live="polite">
           <p>{artworkStatus === "error"
-            ? "Some scene images could not load."
+            ? "Some scene images are unavailable. You can keep exploring or retry them."
             : "Loading scene images…"}</p>
           <p className="home-playback-loading-scene">{artworkChapter}</p>
           {artworkStatus === "error" && (
             <div className="home-playback-loading-actions">
               <button type="button" onClick={retryArtwork}>Retry images</button>
-              <button type="button" onClick={() => window.location.reload()}>Reload page</button>
             </div>
           )}
         </div>

@@ -1,3 +1,4 @@
+import { decodeHomeArtwork } from "../utils/homeArtworkSource";
 import { isHomeMotionRefreshing } from "./homeMotion";
 
 export type InkCue = {
@@ -41,6 +42,7 @@ export function createReadingInk(stage: HTMLElement, cues: InkCue[], transfers: 
   const originalMasks = new Map<HTMLElement, string>();
   const opacity = new Map<InkCue, number>();
   let disposed = false;
+  const artworkPreparation = new AbortController();
   let width = 0;
   let height = 0;
   let ratio = 1;
@@ -426,10 +428,11 @@ export function createReadingInk(stage: HTMLElement, cues: InkCue[], transfers: 
     render();
     scheduleArtworkPreparation();
   };
-  artworkTransfers.forEach(({ target }) => { void target.decode().then(invalidate).catch(() => {}); });
+  artworkTransfers.forEach(({ target }) => { void decodeHomeArtwork(target, artworkPreparation.signal).then(invalidate).catch(() => {}); });
   scheduleArtworkPreparation();
   return { render, invalidate, dispose: () => {
     disposed = true;
+    artworkPreparation.abort();
     if (prepareFrame) cancelAnimationFrame(prepareFrame);
     canvas.remove();
     plates.clear();

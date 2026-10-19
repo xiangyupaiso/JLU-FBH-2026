@@ -577,10 +577,29 @@ const manuscriptSections: WikiPageContent["sections"] = [
         "level": 4
       },
       {
-        "type": "prose",
-        "paragraphs": [
-          "Proteomics measured the abundance of the candidate proteins in TNBC tissue, which contains malignant cells alongside immune and stromal cells. For antigen selection, **we also wanted to know which cell populations expressed the genes encoding those proteins**. High expression of a candidate gene in immune, stromal, or normal epithelial cells would weaken the case for prioritizing it as a tumor-directed antigen. We therefore analyzed GSE176078 as a separate, cell-resolved source of evidence (**Wu et al., 2021**). This breast-cancer atlas provides patient identities, author-assigned cell lineages, and raw unique molecular identifier (UMI) counts, allowing us to examine malignant epithelial, immune, stromal, and normal epithelial cells within the same study, with cancer-associated fibroblasts (CAFs) examined separately as a subset of stromal cells. We selected the samples labelled TNBC in the authors' integration configuration, reprocessed their counts with SCTransform and patient-corrected Harmony, and compared the four candidate genes across these compartments. We then measured the proportion of malignant cells in which at least one candidate gene was detected. Together, the two analyses described both candidate protein abundance in tumor tissue and the distribution of the corresponding transcripts among its cell populations."
-        ]
+        "type": "split",
+        "id": "model-single-cell-workflow",
+        "prose": [
+          {
+            "type": "prose",
+            "paragraphs": [
+              "Proteomics measured the abundance of the candidate proteins in TNBC tissue, which contains malignant cells alongside immune and stromal cells. For antigen selection, **we also wanted to know which cell populations expressed the genes encoding those proteins**. High expression of a candidate gene in immune, stromal, or normal epithelial cells would weaken the case for prioritizing it as a tumor-directed antigen.",
+              "We therefore analyzed GSE176078 as a separate, cell-resolved source of evidence (**Wu et al., 2021**). This breast-cancer atlas provides patient identities, author-assigned cell lineages, and raw unique molecular identifier (UMI) counts, allowing us to examine malignant epithelial, immune, stromal, and normal epithelial cells within the same study, with cancer-associated fibroblasts (CAFs) examined separately as a subset of stromal cells.",
+              "We selected the samples labelled TNBC in the authors' integration configuration, reprocessed their counts with SCTransform and patient-corrected Harmony, and compared the four candidate genes across these compartments. We then measured the proportion of malignant cells in which at least one candidate gene was detected.",
+              "Together, the two analyses described both candidate protein abundance in tumor tissue and the distribution of the corresponding transcripts among its cell populations."
+            ]
+          }
+        ],
+        "aside": {
+          "type": "figure",
+          "src": getModelImage("pipeline Sc (1).png"),
+          "width": 1055,
+          "height": 1884,
+          "alt": "Single-cell RNA sequencing workflow across TNBC samples",
+          "caption": "Single-cell RNA sequencing workflow across 10 TNBC samples, identifying candidate gene expression in 81.4% of malignant cells.",
+          "figureLabel": "FIG. 10",
+          "className": "model-figure--workflow-aside model-figure--single-cell-workflow"
+        }
       },
       {
         "type": "subheading",
@@ -882,10 +901,28 @@ const manuscriptSections: WikiPageContent["sections"] = [
         "level": 4
       },
       {
-        "type": "prose",
-        "paragraphs": [
-          "We extracted the canonical protein sequences of TROP2, B7-H4, Nectin-4, and LIV-1, submitted them to the IEDB MHC-I binding prediction tool, and specified HLA-A*02:01 as the restriction allele, which generated 1,838 overlapping 9-mer peptides for evaluation. A two-stage screening strategy then filtered these candidates: IEDB-based computational prediction assessed binding affinity (IC₅₀ < 500 nM), immunogenicity score, and source-protein topology, reducing the set to 17 peptides, followed by AlphaFold3 structural modeling of peptide-MHC complexes to confirm stable presentation geometry, which yielded 15 final epitopes for experimental validation. The sections below describe the filtering criteria, structural assessments, and the rationale that defined this testable set."
-        ]
+        "type": "split",
+        "id": "model-iedb-workflow",
+        "prose": [
+          {
+            "type": "prose",
+            "paragraphs": [
+              "We extracted the canonical protein sequences of TROP2, B7-H4, Nectin-4, and LIV-1, submitted them to the IEDB MHC-I binding prediction tool, and specified HLA-A*02:01 as the restriction allele, which generated 1,838 overlapping 9-mer peptides for evaluation.",
+              "A two-stage screening strategy then filtered these candidates: IEDB-based computational prediction assessed binding affinity (IC₅₀ < 500 nM), immunogenicity score, and source-protein topology, reducing the set to 17 peptides, followed by AlphaFold3 structural modeling of peptide-MHC complexes to confirm stable presentation geometry, which yielded 15 final epitopes for experimental validation.",
+              "The sections below describe the filtering criteria, structural assessments, and the rationale that defined this testable set."
+            ]
+          }
+        ],
+        "aside": {
+          "type": "figure",
+          "src": getModelImage("IEDB pipeline (1).png"),
+          "width": 1538,
+          "height": 1791,
+          "alt": "IEDB inputs, parameters, and filtering rules",
+          "caption": "IEDB inputs, parameters, and filtering rules for candidate epitope prediction and topological screening.",
+          "figureLabel": "FIG. 16",
+          "className": "model-figure--workflow-aside model-figure--iedb-workflow"
+        }
       },
       {
         "type": "subheading",
@@ -1016,16 +1053,6 @@ const manuscriptSections: WikiPageContent["sections"] = [
         "paragraphs": [
           "The complete IEDB outputs remain available in the full screening dataset."
         ]
-      },
-      {
-        "type": "figure",
-        "src": getModelImage("IEDB pipeline (1).png"),
-        "width": 680,
-        "height": 792,
-        "alt": "IEDB inputs, parameters, and filtering rules",
-        "caption": "IEDB inputs, parameters, and filtering rules for candidate epitope prediction and topological screening.",
-        "figureLabel": "FIG. 16",
-        "className": "model-figure--workflow"
       },
       {
         "type": "feature",

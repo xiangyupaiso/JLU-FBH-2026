@@ -1,3 +1,4 @@
+import { QueuedImage } from "./common/QueuedImage";
 import { type MouseEvent, useCallback, useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 const teamCrestUrl = "https://static.igem.wiki/teams/6056/wiki/files/pages/shared/jlu-fbh-crest.avif";
@@ -439,7 +440,7 @@ export function Navbar() {
             >
               <span className="wordmark-stage" aria-hidden="true">
                 <span className="wordmark-crest">
-                  <img
+                  <QueuedImage
                     className="team-crest logo--dark"
                     src={teamCrestUrl}
                     alt=""
@@ -610,7 +611,7 @@ export function Navbar() {
                       onClick={closeAll}
                     >
                       <span className="nav-card-thumb" aria-hidden="true">
-                        <img src={c.icon} alt="" loading="eager" />
+                        <QueuedImage src={c.icon} alt="" loading="eager" />
                       </span>
                       <span className="nav-card-info">
                         <strong>{c.name}</strong>
@@ -683,7 +684,7 @@ export function Navbar() {
                           onClick={closeAll}
                         >
                           {c.icon ? (
-                            <img
+                            <QueuedImage
                               src={c.icon}
                               alt=""
                               className="circure-mobile-group__icon"

@@ -1,3 +1,4 @@
+import { QueuedImage } from "../../common/QueuedImage";
 import { useEffect, useRef, useState } from "react";
 import { useGSAP } from "@gsap/react";
 import { gsap } from "gsap";
@@ -240,7 +241,7 @@ export function DriftWall({
                       onClick={() => onSelect(photo.index)}
                     >
                       <span className="drift-wall__image">
-                        <img
+                        <QueuedImage
                           src={photo.src}
                           alt={photo.alt}
                           decoding="async"

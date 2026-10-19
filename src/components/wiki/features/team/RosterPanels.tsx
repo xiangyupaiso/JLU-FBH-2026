@@ -1,3 +1,4 @@
+import { QueuedImage } from "../../../common/QueuedImage";
 /* eslint-disable react-refresh/only-export-components */
 import {
   useId,
@@ -44,7 +45,7 @@ export function RosterOpening() {
   return (
     <figure className="roster-opening">
       <div className="roster-opening__photo">
-        <img
+        <QueuedImage
           src={rosterAssets["team-photo"]}
           alt="The CirCure team together"
           fetchPriority="high"
@@ -68,7 +69,7 @@ function PersonCard({
   const content = (
     <>
       <span className="roster-person__photo">
-        <img
+        <QueuedImage
           src={rosterAssets[member.image]}
           alt={member.name}
           loading="lazy"
@@ -303,7 +304,7 @@ function GroupGallery({
           >
             <span className="roster-gallery__frame">
               <span className="roster-gallery__media">
-                <img
+                <QueuedImage
                   src={rosterAssets[item.image!]}
                   alt={`${item.title} group photo`}
                   loading="lazy"
@@ -887,7 +888,7 @@ function RosterPanels() {
                 data-anim="visual-stage"
                 className="roster-dialog__visual"
               >
-                <img
+                <QueuedImage
                   data-anim="photo"
                   className="roster-dialog__photo"
                   src={rosterAssets[active.image]}

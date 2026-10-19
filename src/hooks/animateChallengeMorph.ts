@@ -1,3 +1,4 @@
+import { bindHomeArtwork, homeArtworkSource, onHomeArtworkActive } from "../utils/homeArtworkSource";
 import type gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { createChallengeParticleRenderer } from "./challengeParticleRenderer";
@@ -52,7 +53,7 @@ export function animateChallengeMorph(
     const word = section.querySelector<HTMLElement>(`[data-morph-word="${key}"]`);
     const thumbnail = section.querySelector<SVGSVGElement>(`[data-morph-thumbnail="${key}"]`);
     const crop = icon.querySelector("clipPath rect");
-    const href = icon.querySelector("image")?.getAttribute("href");
+    const href = homeArtworkSource(icon.querySelector("image"));
     const art = icon.closest<HTMLElement>(".story-art");
     if (!word || !crop || !href || !art) return;
 
@@ -82,7 +83,9 @@ export function animateChallengeMorph(
     const originalThumbnailStyle = thumbnail?.getAttribute("style");
     const state = { progress: 0 };
     const image = new Image();
+  image.fetchPriority = "low";
     image.crossOrigin = "anonymous";
+    image.dataset.homeSrc = href;
     let disposed = false;
     let ready = false;
     let width = 1;
@@ -341,14 +344,12 @@ export function animateChallengeMorph(
     image.onerror = () => { ready = false; draw(); };
     // Sampling text and compiling WebGL must not compete with the page loader.
     // Prepare only when this chapter is approaching the viewport.
-    const proximity = new IntersectionObserver((entries) => {
-      if (disposed || !entries.some((entry) => entry.isIntersecting)) return;
+    const stopActivation = onHomeArtworkActive(section, () => {
+      if (disposed) return;
       activated = true;
-      proximity.disconnect();
-      image.src = href;
       scheduleRebuild();
-    }, { rootMargin: "100% 0px" });
-    proximity.observe(section);
+    });
+    const stopImageArtwork = bindHomeArtwork(icon, image);
     void document.fonts.ready.then(() => { if (!disposed) scheduleRebuild(); });
     timeline.fromTo(state, { progress: 0 }, {
       progress: 1, duration: 0.46, ease: "none", onUpdate: draw,
@@ -356,7 +357,8 @@ export function animateChallengeMorph(
     cleanups.push(() => {
       disposed = true;
       observer.disconnect();
-      proximity.disconnect();
+      stopActivation();
+      stopImageArtwork();
       ScrollTrigger.removeEventListener("refresh", scheduleRebuild);
       pending.delete(icon);
       image.onload = null;

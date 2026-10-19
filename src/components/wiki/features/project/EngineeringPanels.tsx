@@ -1,3 +1,4 @@
+import { QueuedSvgImage } from "../../../common/QueuedImage";
 import { useEffect, useRef, useState, type MouseEvent } from "react";
 import {
   ENGINEERING_ITERATIONS,
@@ -123,7 +124,7 @@ export function EngineeringOutline({
           aria-label="TIME cycles and Design–Build–Test–Learn stages"
         >
           {/* Base artwork: outer gear teeth, colored quadrants, dividing rings, and serif text */}
-          <image
+          <QueuedSvgImage
             href={dialBaseSrc}
             x="0"
             y="0"
@@ -197,7 +198,7 @@ export function EngineeringOutline({
           })}
 
           {/* Pointers and hub cap */}
-          <image
+          <QueuedSvgImage
             className="eng-dial__hand-long"
             href={handLongSrc}
             x="0"
@@ -206,7 +207,7 @@ export function EngineeringOutline({
             height="732"
             style={{ transform: `rotate(${angles.long}deg)` }}
           />
-          <image
+          <QueuedSvgImage
             className="eng-dial__hand-short"
             href={handShortSrc}
             x="0"
@@ -215,7 +216,7 @@ export function EngineeringOutline({
             height="732"
             style={{ transform: `rotate(${angles.short}deg)` }}
           />
-          <image
+          <QueuedSvgImage
             className="eng-dial__cap"
             href={dialCapSrc}
             x="0"

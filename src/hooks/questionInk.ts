@@ -1,3 +1,4 @@
+import { activateHomeArtwork, bindHomeArtwork, decodeHomeArtwork, homeArtworkSource, onHomeArtworkActive } from "../utils/homeArtworkSource";
 export const THOUGHT_INK_PATH =
   "M65 85 L65 61 Q75 36 107 39 Q142 40 143 70 Q144 86 126 99 L124 118 L98 120 L94 101 L105 84 Q123 70 109 61 Q93 59 88 85 Z M96 122 Q113 116 125 127 L128 144 L111 150 L96 144 Z";
 export const QUESTION_HEADING_PARTS = [
@@ -54,10 +55,13 @@ export function createQuestionInk(
   root.append(canvas);
   const context = canvas.getContext("2d");
   const target = new Image();
+  target.fetchPriority = "low";
   target.crossOrigin = "anonymous";
-  target.src = targetUrl;
+  target.dataset.homeSrc = targetUrl;
   let disposed = false;
+  const artworkPreparation = new AbortController();
   let requested = false;
+  let artworkActive = false;
   let pairs: Pair[] = [];
   let width = 0;
   let height = 0;
@@ -97,9 +101,9 @@ export function createQuestionInk(
     return grains;
   };
   const prepare = () => {
-    if (requested || !context) return;
+    if (requested || !context || !artworkActive) return;
     requested = true;
-    void Promise.all([source.decode(), target.decode()])
+    void Promise.all([decodeHomeArtwork(source, artworkPreparation.signal), decodeHomeArtwork(target, artworkPreparation.signal)])
       .then(() => {
         if (disposed) return;
         const origins = sample(source, true);
@@ -152,6 +156,15 @@ export function createQuestionInk(
         /* Keep the original artwork handoff if sampling is unavailable. */
       });
   };
+  const targetSource = [...root.querySelectorAll("img[data-home-src], image[data-home-src]")]
+    .find((image) => homeArtworkSource(image) === targetUrl);
+  const stopTargetArtwork = targetSource
+    ? bindHomeArtwork(targetSource, target)
+    : onHomeArtworkActive(source, () => activateHomeArtwork(target));
+  const stopActivation = onHomeArtworkActive(source, () => {
+    artworkActive = true;
+    prepare();
+  });
   // Warm the sampled grains one viewport before the thought enters view.
   const observer = new IntersectionObserver(
     ([entry]) => {
@@ -260,6 +273,9 @@ export function createQuestionInk(
     render,
     dispose: () => {
       disposed = true;
+      artworkPreparation.abort();
+      stopActivation();
+      stopTargetArtwork();
       observer.disconnect();
       pairs = [];
       canvas.remove();

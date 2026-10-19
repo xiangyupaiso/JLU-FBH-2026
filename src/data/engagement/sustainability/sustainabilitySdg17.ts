@@ -1,6 +1,10 @@
 /** SDG 17 — finalized manuscript, in source order. Pure data, no JSX. */
 import type { SdgChapter } from "./sdgChapterContract";
-import { sdg17PhotoSets, sdg17RoundtablePdfs } from "./sustainabilitySdg17Assets";
+import {
+  sdg17BaduanjinVideo,
+  sdg17PhotoSets,
+  sdg17RoundtablePdfs,
+} from "./sustainabilitySdg17Assets";
 
 export const sdg17Chapter: SdgChapter = {
   id: "sdg17",
@@ -586,6 +590,7 @@ export const sdg17Chapter: SdgChapter = {
           "**Participatory outreach, campus and community activities, team events**, and educational activities connecting **physical activity with traditional culture**.",
         whatItDoes: "",
         pdfs: [],
+        video: sdg17BaduanjinVideo,
       },
       {
         title: "From Teams, For Teams: iGEM New Team Growth Guide",

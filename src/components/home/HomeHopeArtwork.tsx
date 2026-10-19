@@ -1,3 +1,4 @@
+import { HomeImage } from "./HomeArtwork";
 import { type CSSProperties } from "react";
 const clinic = "https://static.igem.wiki/teams/6056/wiki/files/pages/home/hope-return-clinic.webp";
 const doctor = "https://static.igem.wiki/teams/6056/wiki/files/pages/home/hope-return-doctor.webp";
@@ -7,7 +8,7 @@ import "../../styles/home-hope.css";
 export function HomeHopeArtwork() {
   return (
     <>
-      <img
+      <HomeImage
         className="story-backdrop story-hope-backdrop"
         src={clinic}
         alt=""
@@ -27,7 +28,7 @@ export function HomeHopeArtwork() {
           aria-label="A smiling doctor and patient meet again in a softly painted hospital room."
         >
           {/* Cropped layers retain their positions on the original 2560 × 1440 canvas. */}
-          <img
+          <HomeImage
             className="story-layer story-hope-doctor"
             data-layer="2"
             src={doctor}
@@ -38,7 +39,7 @@ export function HomeHopeArtwork() {
             width={860}
             height={1192}
           />
-          <img
+          <HomeImage
             className="story-layer story-hope-patient"
             data-layer="3"
             src={patient}

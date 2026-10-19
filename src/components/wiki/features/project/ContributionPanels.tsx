@@ -1,3 +1,4 @@
+import { QueuedImage } from "../../../common/QueuedImage";
 /* eslint-disable react-refresh/only-export-components */
 import type { ReactNode } from "react";
 import {
@@ -67,7 +68,7 @@ function ContributionFigureGallery({
         const asset = contributionAssets[key];
         return (
           <figure className="wiki-figure contribution-gallery__item" key={key}>
-            <img
+            <QueuedImage
               src={contributionImage(key)}
               alt={asset.alt}
               loading="lazy"

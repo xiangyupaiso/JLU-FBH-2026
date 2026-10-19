@@ -1,3 +1,4 @@
+import { HomeImage, HomeSvgImage } from "./HomeArtwork";
 const dnaBoard = "https://static.igem.wiki/teams/6056/wiki/files/pages/home/vaccine-candidates-dna-board.webp";
 const mrnaBoard = "https://static.igem.wiki/teams/6056/wiki/files/pages/home/vaccine-candidates-mrna-board.webp";
 const circRnaBoard = "https://static.igem.wiki/teams/6056/wiki/files/pages/home/vaccine-candidates-circrna-board.webp";
@@ -46,7 +47,7 @@ const candidates = [
 export function HomeVaccineCandidates() {
   return (
     <div className="home-molecule-gallery__artwork">
-      <img
+      <HomeImage
         className="home-molecule-gallery__title"
         src={title}
         alt=""
@@ -65,13 +66,13 @@ export function HomeVaccineCandidates() {
               viewBox="0 0 574 1186"
               aria-hidden="true"
             >
-              <image
+              <HomeSvgImage
                 href={candidate.board}
                 width="574"
                 height="1186"
                 data-gallery-ink=""
               />
-              <image
+              <HomeSvgImage
                 href={candidate.label}
                 x="11%"
                 y="14%"
@@ -80,7 +81,7 @@ export function HomeVaccineCandidates() {
                 data-gallery-layer="labels"
               />
               {candidate.illustration && (
-                <image
+                <HomeSvgImage
                   href={candidate.illustration}
                   x={index === 3 ? "11%" : "17%"}
                   y="39%"
@@ -113,7 +114,7 @@ export function HomeVaccineCandidates() {
                 }}
                 aria-hidden="true"
               >
-                <image href={ring} width="436" height="436" />
+                <HomeSvgImage href={ring} width="436" height="436" />
               </svg>
             )}
           </div>

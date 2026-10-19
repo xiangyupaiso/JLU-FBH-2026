@@ -326,12 +326,18 @@
         var retry = loader.querySelector("[data-loader-retry]");
         var slowTimer = 0;
         var retryTimer = 0;
+        var deadlineTimer = 0;
+        var timedOut = false;
         var stopWait = function () {
           clearTimeout(slowTimer);
           clearTimeout(retryTimer);
+          clearTimeout(deadlineTimer);
         };
         var watchWait = function () {
           stopWait();
+          timedOut = false;
+          loader.dataset.waitStart = String(Date.now());
+          delete loader.dataset.deadline;
           status.textContent = "Preparing your page…";
           wait.hidden = true;
           retry.hidden = true;
@@ -341,25 +347,61 @@
           retryTimer = setTimeout(function () {
             if (!loader.hidden) retry.hidden = false;
           }, 30000);
+          // A missing bundle or stylesheet must also stop the entrance after
+          // two minutes. Keep a clear recovery action if no usable app arrived.
+          deadlineTimer = setTimeout(function () {
+            if (loader.hidden) return;
+            timedOut = true;
+            cancelAnimationFrame(frame);
+            loader.dataset.deadline = "true";
+            status.textContent = "Loading has taken two minutes. Please try again.";
+            wait.hidden = true;
+            retry.hidden = false;
+            loader.getAnimations({ subtree: true }).forEach(function (animation) {
+              animation.pause();
+            });
+            loader.dispatchEvent(new Event("loaderdeadline"));
+          }, 120000);
         };
         var failed = function () {
           if (loader.hidden) return;
           stopWait();
+          timedOut = true;
+          cancelAnimationFrame(frame);
           status.textContent = "The page could not load. Please try again.";
           wait.hidden = true;
           retry.hidden = false;
+          loader.getAnimations({ subtree: true }).forEach(function (animation) {
+            animation.pause();
+          });
         };
-        retry.addEventListener("click", function () { window.location.reload(); });
+        retry.addEventListener("click", function () {
+          if (loader.dataset.retryable === "images") {
+            loader.classList.remove("is-playing");
+            loader.getAnimations({ subtree: true }).forEach(function (animation) {
+              animation.currentTime = 0;
+              animation.play();
+            });
+            watchWait();
+            play();
+            loader.dispatchEvent(new Event("loaderretry"));
+          } else {
+            window.location.reload();
+          }
+        });
         loader.addEventListener("loaderstart", watchWait);
         loader.addEventListener("loaderstatus", function () {
-          status.textContent = loader.dataset.message;
+          if (!timedOut) status.textContent = loader.dataset.message;
         });
         loader.addEventListener("loaderready", function () {
           stopWait();
           wait.hidden = true;
           retry.hidden = true;
         });
-        loader.addEventListener("loadererror", failed);
+        loader.addEventListener("loadererror", function () {
+          failed();
+          retry.textContent = loader.dataset.retryable === "images" ? "Retry images" : "Reload page";
+        });
         window.addEventListener("vite:preloadError", failed);
         window.addEventListener("unhandledrejection", failed);
         window.addEventListener("error", function (event) {
@@ -374,7 +416,7 @@
 
         var frame = 0;
         var play = function () {
-          if (loader.classList.contains("is-playing") || loader.hidden) return;
+          if (timedOut || loader.classList.contains("is-playing") || loader.hidden) return;
           cancelAnimationFrame(frame);
           loader.dataset.start = String(performance.now());
           loader.classList.add("is-playing");
@@ -395,7 +437,7 @@
           var previous = null;
           var advance = function (now) {
             frame = 0;
-            if (loader.hidden || !loader.classList.contains("is-playing")) return;
+            if (timedOut || loader.hidden || !loader.classList.contains("is-playing")) return;
             if (document.hidden) {
               previous = null;
             } else {

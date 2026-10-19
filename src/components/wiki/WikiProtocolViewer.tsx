@@ -1,3 +1,4 @@
+import { QueuedImage } from "../common/QueuedImage";
 import {
   useEffect,
   useId,
@@ -117,15 +118,12 @@ export function WikiProtocolHoverCard({
         disabled={typeof currentPage !== "number"}
       >
         {typeof currentPage === "number" ? (
-          <img
+          <QueuedImage
             src={experimentProtocolImage(currentPage)}
             alt={`${pair.title} - ${currentLabel}`}
             className="wiki-protocol-popover__thumb"
             loading="eager"
-            onError={(event) => {
-              event.currentTarget.src =
-                experimentProtocolLocalImage(currentPage);
-            }}
+            data-page-fallback-src={experimentProtocolLocalImage(currentPage)}
           />
         ) : (
           <span className="wiki-protocol-popover__placeholder">
@@ -399,17 +397,14 @@ export function WikiProtocolModal({
           </button>
           <div className="wiki-protocol-modal__image-scroll">
             {typeof currentPage === "number" ? (
-              <img
+              <QueuedImage
                 className={showActualSize ? "is-actual" : ""}
                 src={experimentProtocolImage(currentPage)}
                 alt={`${pair.title}, ${currentLabel}, page ${currentPage}`}
                 width={currentSize?.[0] ?? 2400}
                 height={currentSize?.[1] ?? 1800}
                 decoding="async"
-                onError={(event) => {
-                  event.currentTarget.src =
-                    experimentProtocolLocalImage(currentPage);
-                }}
+                data-page-fallback-src={experimentProtocolLocalImage(currentPage)}
               />
             ) : (
               <div className="wiki-protocol-modal__empty">

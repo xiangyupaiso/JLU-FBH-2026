@@ -1,3 +1,4 @@
+import { QueuedImage } from "../../common/QueuedImage";
 import {
   useCallback,
   useEffect,
@@ -764,7 +765,7 @@ export function HumanPracticesImpactWall() {
                 className={`hp-impact-card ${index === 0 ? "hp-impact-card--feature" : ""}`}
                 key={`${record.stakeholder}-${record.title}`}
               >
-                <img
+                <QueuedImage
                   className="hp-impact-card__image"
                   src={record.image}
                   alt={`${record.stakeholder}: ${record.lens}`}
@@ -968,7 +969,7 @@ export function HumanPracticesTimeline() {
                 <div className="hp-timeline-card__front">
                   <div className="hp-timeline-card__top">
                     <div className="hp-timeline-person">
-                      <img
+                      <QueuedImage
                         className="hp-timeline-avatar"
                         src={record.portrait}
                         alt=""
@@ -1030,7 +1031,7 @@ export function HumanPracticesTimeline() {
           </header>
           <div className="hp-timeline-dialog__body">
             <figure className="hp-timeline-dialog__media">
-              <img
+              <QueuedImage
                 src={dialogRecord.image}
                 alt={`Representative ${dialogRecord.role} review`}
                 decoding="async"
@@ -1117,7 +1118,7 @@ export function HumanPracticesDossier() {
                 </div>
               </div>
               <figure className="hp-dossier-image">
-                <img
+                <QueuedImage
                   src={record.image}
                   alt=""
                   loading="lazy"

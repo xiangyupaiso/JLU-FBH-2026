@@ -505,10 +505,50 @@ export const sdg12Chapter: SdgChapter = {
     ],
   },
   alignment: {
-    leadHeading: "SDG Interaction Analysis",
     lead: [
       "Using SST-QN as an initial screening framework, we assessed potential interactions against stakeholder feedback, current experimental practices, and future production scenarios. For each relationship, we considered the mechanism, supporting evidence, and conditions that could produce a synergy or trade-off. **Evidence of a change in project decisions was distinguished from evidence of an environmental or societal outcome.**",
     ],
+    table: {
+      headers: ["Relationship", "Status", "Interaction", "Assessment"],
+      rows: [
+        [
+          "SDG 17 → SDG 12",
+          "Core (C)",
+          "Positive",
+          "Stakeholders in EHS, CMC, carbon accounting, green manufacturing, and data governance helped CirCure broaden its assessment of resource responsibilities and define the scope of future evaluations. Cross-disciplinary collaboration has directly changed project analysis and decision-making.",
+        ],
+        [
+          "SDG 9 ↔ SDG 12",
+          "Conditional (±)",
+          "Synergy and trade-off",
+          "Better experimental design, standardized processes, and greater batch consistency could reduce failures and repeated inputs. However, circRNA/LNP production, quality testing, and temperature-controlled transport also require materials and energy. Resource efficiency gains depend on future process performance and production data.",
+        ],
+        [
+          "SDG 3 ↔ SDG 12",
+          "Conditional (±)",
+          "Synergy and trade-off",
+          "Reducing repetition caused by poor experimental design could prevent waste, but adequate replication, aseptic practices, and quality control remain essential to evaluating safety and efficacy. Resource efficiency must not compromise research reliability or product quality.",
+        ],
+        [
+          "SDG 12 → SDG 13",
+          "Conditional (±)",
+          "Synergy and trade-off",
+          "Fewer failed batches and less repeated production could reduce associated emissions, while production at scale, storage, and transport may increase energy demand. Local resource savings do not establish an overall climate benefit without data across the full life cycle.",
+        ],
+        [
+          "SDG 12 → SDG 8",
+          "Exploratory (E)",
+          "Potentially positive",
+          "Resource tracking and process optimization could reduce wasted inputs and support cost management. However, CirCure lacks manufacturing-scale production and cost data, so economic benefits and job creation remain unproven.",
+        ],
+        [
+          "SDG 12 → SDG 10",
+          "Excluded (0)",
+          "Not established",
+          "Greater production efficiency does not automatically lead to lower prices or better access to care; pricing, insurance coverage, and healthcare resource allocation also matter. Current evidence is insufficient to establish a direct relationship.",
+        ],
+      ],
+    },
     findings: [
       "**SDG 17 → SDG 12 is the positive interaction most clearly supported by current evidence.** Cross-disciplinary feedback changed how we identify resource concerns, define assessment boundaries, and plan future data collection. This relationship is supported at the level of project decisions and assessment practices.",
       "**The relationships between SDG 12 and SDGs 9, 3, and 13 remain conditional.** Technical improvements under SDG 9 may reduce wasted inputs, but manufacturing and quality control also require resources. Resource-saving measures must preserve the research reliability and safety needed to pursue health benefits under SDG 3. Likewise, lower material or energy use at one stage supports SDG 13 only if emissions are not increased elsewhere. These relationships therefore require evaluation across the full life cycle.",

@@ -1,12 +1,15 @@
+import { createPageImageQueue } from "./pageImageQueue";
+
 /**
  * Runtime control for the static page loader in `index.html`.
  *
  * The loader is plain HTML/CSS so it paints before the app bundle arrives.
  * This module only decides WHEN it leaves: as soon as the current route is
- * actually presentable and the loader's entrance has finished. Readiness
- * includes the selected route's styles, fonts, decoded images around the
- * first screen and the first renderable frame of autoplay media used by its
- * animations. After the styles, these waits are capped by READY_DEADLINE_MS.
+ * actually presentable. Managed reader routes gate the Hero and first six
+ * distinct body images through the serial image queue; after that succeeds,
+ * fonts, layout and optional artwork have at most 25 seconds. Home gates its
+ * opening scene separately with a two-minute ceiling. Legacy routes retain
+ * the original entrance, media and first-screen scan under READY_DEADLINE_MS.
  */
 
 const LEAVE_MS = 380; // matches `.page-loader` opacity transition
@@ -17,13 +20,17 @@ const EMBED_WAIT_MS = 12000;
 // A CDN request can stall with headers sent and a body that never finishes,
 // firing neither load nor error. Once the stylesheet applies, art, fonts and
 // scene preparation share this budget; then the page enters and the rest
-// keeps loading in place.
+// keeps loading in place. Home waits only for its opening and may use up to
+// two minutes on a slow first visit, entering sooner as soon as it is ready.
 const READY_DEADLINE_MS = 15000;
+const HOME_READY_DEADLINE_MS = 120000;
+const READER_OPTIONAL_DEADLINE_MS = 25000;
 
 let token = 0;
 let leaveTimer = 0;
 let leaving = false;
 let readiness: AbortController | undefined;
+let imageQueue: ReturnType<typeof createPageImageQueue> | undefined;
 const leaveListeners = new Set<() => void>();
 const pagePreparations = new Set<() => void | Promise<void>>();
 const preparationTasks = new Set<Promise<void>>();
@@ -119,6 +126,8 @@ export function showPageLoader() {
   if (!loader) return;
   ++token;
   readiness?.abort();
+  imageQueue?.dispose();
+  imageQueue = undefined;
   nativeSvgPreloads.forEach((svg) => svg.remove());
   nativeSvgPreloads.clear();
   nativeSvgTasks.clear();
@@ -170,11 +179,18 @@ export function hidePageLoaderWhenReady() {
   if (!loader) return;
   const current = ++token;
   readiness?.abort();
+  imageQueue?.dispose();
+  imageQueue = undefined;
+  delete loader.dataset.retryable;
   readiness = new AbortController();
   const { signal } = readiness;
+  // Inspect the mounted route, rather than the URL: a navigation can update
+  // its address before React has replaced the previous page.
+  const opening = document.getElementById("root")
+    ?.querySelector<HTMLElement>(".home-scene01") ?? null;
   const ready = Promise.all([
-    openingComplete(loader, signal),
-    pageReady(loader, signal),
+    opening ? Promise.resolve() : openingComplete(loader, signal),
+    pageReady(loader, signal, opening),
   ]);
 
   void ready.then(() => {
@@ -197,37 +213,190 @@ export function hidePageLoaderWhenReady() {
   });
 }
 
-async function pageReady(loader: HTMLElement, signal: AbortSignal) {
+async function pageReady(
+  loader: HTMLElement,
+  signal: AbortSignal,
+  opening: HTMLElement | null,
+) {
   // Let the selected route's effects initialize its animation DOM first.
   await renderFrames();
   if (signal.aborted) return;
   reportStatus(loader, "styles", "Preparing the page…");
   await deferredStyles(signal);
   if (signal.aborted) return;
+  const managed = document.getElementById("root")
+    ?.querySelector("[data-page-src], [data-page-background-src]");
+  const reader = document.getElementById("root")
+    ?.querySelector("main.wiki-page--route");
+  if (managed && reader && !opening && document.body) {
+    await readerPageReady(loader, signal);
+    return;
+  }
+  if (managed && document.body) {
+    // Shared artwork also uses the queue outside reader routes. Home story
+    // images remain under its own chapter activation controller.
+    imageQueue = createPageImageQueue(document.body);
+    void imageQueue.criticalReady.catch(() => {});
+  }
+  if (opening?.querySelector("[data-home-src]")) {
+    reportStatus(loader, "assets", "Preparing the opening artwork…");
+    const artwork = new AbortController();
+    const cancel = () => artwork.abort();
+    signal.addEventListener("abort", cancel, { once: true });
+    try {
+      await criticalArtworkReady(
+        Promise.all(Array.from(opening.querySelectorAll<HTMLImageElement | SVGImageElement>("img, image"),
+          (image) => requiredHomeArtwork(image, artwork.signal))).then(() => {}),
+        loader,
+        signal,
+      );
+    } finally {
+      cancel();
+      signal.removeEventListener("abort", cancel);
+    }
+    if (signal.aborted) return;
+  }
   // Without its stylesheet the page is not presentable, so only the remaining
   // stages run under the deadline. Its abort settles every wait below.
   const budget = new AbortController();
   const expire = () => budget.abort();
   signal.addEventListener("abort", expire, { once: true });
-  const timer = window.setTimeout(expire, READY_DEADLINE_MS);
+  if (opening) loader.addEventListener("loaderdeadline", expire, { once: true });
+  const elapsed = opening && loader.dataset.waitStart
+    ? Math.max(0, Date.now() - Number(loader.dataset.waitStart)) : 0;
+  const timer = window.setTimeout(
+    expire,
+    opening ? Math.max(0, HOME_READY_DEADLINE_MS - elapsed) : READY_DEADLINE_MS,
+  );
+  if (opening && loader.dataset.deadline === "true") expire();
   try {
-    await styledPageReady(loader, budget.signal);
+    await styledPageReady(loader, budget.signal, opening);
   } finally {
     window.clearTimeout(timer);
     signal.removeEventListener("abort", expire);
+    loader.removeEventListener("loaderdeadline", expire);
   }
 }
 
-async function styledPageReady(loader: HTMLElement, signal: AbortSignal) {
+async function readerPageReady(loader: HTMLElement, signal: AbortSignal) {
+  const queue = createPageImageQueue(document.body);
+  imageQueue = queue;
+  reportStatus(loader, "assets", "Preparing the opening artwork…");
+  try {
+    // The hero and first six distinct body images must really decode. Neither
+    // the optional budget nor the static loader watchdog can release this gate.
+    await criticalArtworkReady(queue.criticalReady, loader, signal);
+  } catch (error) {
+    if (imageQueue === queue) {
+      queue.dispose();
+      imageQueue = undefined;
+    }
+    throw error;
+  }
+  if (signal.aborted) return;
+
+  const budget = new AbortController();
+  const expire = () => budget.abort();
+  signal.addEventListener("abort", expire, { once: true });
+  const timer = window.setTimeout(expire, READER_OPTIONAL_DEADLINE_MS);
+  loader.addEventListener("loaderdeadline", expire, { once: true });
+  if (loader.dataset.deadline === "true") expire();
+  try {
+    await renderFrames();
+    if (budget.signal.aborted) return;
+    reportStatus(loader, "fonts", "Preparing the text…");
+    await untilAborted(document.fonts?.ready, budget.signal);
+    if (budget.signal.aborted) return;
+    reportStatus(loader, "layout", "Preparing the page…");
+    await untilAborted(Promise.all(Array.from(pagePreparations, (prepare) => prepare())), budget.signal);
+    if (budget.signal.aborted) return;
+    await renderFrames();
+    await untilAborted(queue.remainingReady(), budget.signal);
+    if (budget.signal.aborted) return;
+    await finishPagePreparations(budget.signal);
+    if (budget.signal.aborted) return;
+    await renderFrames();
+  } finally {
+    window.clearTimeout(timer);
+    signal.removeEventListener("abort", expire);
+    loader.removeEventListener("loaderdeadline", expire);
+  }
+}
+
+async function criticalArtworkReady(task: Promise<void>, loader: HTMLElement, signal: AbortSignal) {
+  let rejectDeadline!: (error: Error) => void;
+  const deadline = new Promise<void>((_resolve, reject) => { rejectDeadline = reject; });
+  const fail = () => rejectDeadline(new Error("Opening artwork did not finish within two minutes"));
+  const elapsed = loader.dataset.waitStart
+    ? Math.max(0, Date.now() - Number(loader.dataset.waitStart)) : 0;
+  const timer = window.setTimeout(fail, Math.max(0, HOME_READY_DEADLINE_MS - elapsed));
+  loader.addEventListener("loaderdeadline", fail, { once: true });
+  if (loader.dataset.deadline === "true") fail();
+  try {
+    await untilAborted(Promise.race([task, deadline]), signal);
+  } catch (error) {
+    if (!signal.aborted) loader.dataset.retryable = "images";
+    throw error;
+  } finally {
+    window.clearTimeout(timer);
+    loader.removeEventListener("loaderdeadline", fail);
+  }
+}
+
+function requiredHomeArtwork(image: HTMLImageElement | SVGImageElement, signal: AbortSignal) {
+  return new Promise<void>((resolve, reject) => {
+    let decoding = false;
+    let finished = false;
+    const finish = (error?: Error) => {
+      if (finished) return;
+      finished = true;
+      observer.disconnect();
+      image.removeEventListener("load", check);
+      image.removeEventListener("error", failed);
+      signal.removeEventListener("abort", cancelled);
+      if (error) reject(error);
+      else resolve();
+    };
+    const failed = () => finish(new Error("Opening artwork could not decode"));
+    const cancelled = () => finish();
+    const check = () => {
+      if (finished || decoding) return;
+      if (image instanceof HTMLImageElement && image.complete && image.naturalWidth > 0) {
+        decoding = true;
+        void image.decode().then(() => finish(), failed);
+      } else if (!(image instanceof HTMLImageElement) && image.href.baseVal && image.dataset.homeArtwork === "ready") {
+        finish();
+      } else if (image.dataset.homeArtwork === "error") failed();
+    };
+    const observer = new MutationObserver(check);
+    observer.observe(image, { attributes: true, attributeFilter: ["src", "href", "data-home-artwork"] });
+    image.addEventListener("load", check);
+    image.addEventListener("error", failed);
+    signal.addEventListener("abort", cancelled, { once: true });
+    if (signal.aborted) cancelled();
+    else check();
+  });
+}
+
+async function styledPageReady(
+  loader: HTMLElement,
+  signal: AbortSignal,
+  opening: HTMLElement | null,
+) {
   // Applying the non-blocking stylesheet can start new font requests. Do not
   // capture fonts.ready before the browser has laid out its styled content.
   await renderFrames();
   if (signal.aborted) return;
   const seenArt = new Set<string>();
   const preparedElements = new WeakMap<Element, string>();
-  const prepareArt = () => pageImagesAndAnimations(signal, (complete, total) => {
-    reportStatus(loader, "assets", `Preparing artwork · ${complete} of ${total} ready`);
-  }, seenArt, preparedElements);
+  const prepareArt = () => {
+    const task = pageImagesAndAnimations(signal, (complete, total) => {
+      reportStatus(loader, "assets", `Preparing artwork · ${complete} of ${total} ready`);
+    }, seenArt, preparedElements, opening);
+    // A decode promise can remain pending after its download has completed.
+    // The opening budget also releases that wait without cancelling the art.
+    return opening ? untilAborted(task, signal) : task;
+  };
   reportStatus(loader, "assets", "Preparing the artwork…");
   await prepareArt();
   if (signal.aborted) return;
@@ -247,6 +416,12 @@ async function styledPageReady(loader: HTMLElement, signal: AbortSignal) {
   if (signal.aborted) return;
   await untilAborted(document.fonts?.ready, signal);
   if (signal.aborted) return;
+  if (opening) {
+    // Later Home scenes prepare their own effects while the visitor reads.
+    // Only the layout rebuilds above belong to the opening cover.
+    await renderFrames();
+    return;
+  }
   reportStatus(loader, "layout", "Preparing the scene…");
   // Rebuilds can start new decode -> RAF -> pixel-sampling work. Drain the
   // current tasks, including tasks added while waiting or during final paint.
@@ -423,9 +598,10 @@ async function pageImagesAndAnimations(
   onProgress: (complete: number, total: number) => void,
   seen: Set<string>,
   preparedElements: WeakMap<Element, string>,
+  opening: HTMLElement | null = null,
 ): Promise<void> {
   // Home transfer layers and other React portals mount alongside #root.
-  const root = document.body;
+  const root = opening ?? document.body;
   if (!root) return;
   const loader = loaderElement();
   // Article text is usable before its figures arrive. Only figures around the
@@ -475,14 +651,19 @@ async function pageImagesAndAnimations(
 
   // React hoists these resource hints into <head>. They include figures in
   // closed drawers, inactive tabs and dialogs that are not in the route DOM.
-  for (const link of document.querySelectorAll<HTMLLinkElement>(
-    'link[rel="preload"][as="image"]',
-  )) {
-    preload(link.href, link.crossOrigin);
+  if (!opening) {
+    for (const link of document.querySelectorAll<HTMLLinkElement>(
+      'link[rel="preload"][as="image"]',
+    )) {
+      preload(link.href, link.crossOrigin);
+    }
   }
 
   // Route heroes and home scenes paint their art as CSS backgrounds.
-  for (const element of root.querySelectorAll<HTMLElement>("*:not([data-page-asset-preload], [data-page-asset-preload] *)")) {
+  const selector = opening
+    ? "img, image"
+    : "*:not([data-page-asset-preload], [data-page-asset-preload] *)";
+  for (const element of root.querySelectorAll<HTMLElement>(selector)) {
     if (signal.aborted) return;
     if (element === loader || loader?.contains(element)) continue;
     if (deferred(element)) continue;
@@ -503,6 +684,7 @@ async function pageImagesAndAnimations(
     if (element instanceof SVGImageElement) {
       preload(element.href.baseVal, element.getAttribute("crossorigin"), element);
     }
+    if (opening) continue;
     if (element instanceof HTMLVideoElement) {
       preload(element.poster);
       if (element.autoplay) track(waitForAnimation(element, signal));
@@ -533,3 +715,7 @@ async function pageImagesAndAnimations(
   if (!signal.aborted && pending.length) onProgress(complete, pending.length);
   await Promise.all(pending);
 }
+
+// The static loader dispatches this for recoverable image failures. Rebuild
+// the route queue while its module cache preserves images already decoded.
+loaderElement()?.addEventListener("loaderretry", hidePageLoaderWhenReady);

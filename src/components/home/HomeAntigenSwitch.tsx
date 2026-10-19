@@ -1,3 +1,4 @@
+import { HomeSvgImage } from "./HomeArtwork";
 import {
   useCallback,
   useEffect,
@@ -280,7 +281,7 @@ function AntigenView({
                   />
                 </filter>
                 <symbol id={id + "-painted-tcell"} viewBox="90 153 115 106">
-                  <image
+                  <HomeSvgImage
                     href={immuneImage}
                     width="516"
                     height="259"
@@ -289,7 +290,7 @@ function AntigenView({
                   />
                 </symbol>
                 <symbol id={id + "-painted-mhc"} viewBox="94 56 43 42">
-                  <image
+                  <HomeSvgImage
                     href={immuneImage}
                     width="516"
                     height="259"
@@ -298,7 +299,7 @@ function AntigenView({
                   />
                 </symbol>
                 <symbol id={id + "-painted-tcr"} viewBox="137 56 47 42">
-                  <image
+                  <HomeSvgImage
                     href={immuneImage}
                     width="516"
                     height="259"
@@ -354,7 +355,7 @@ function AntigenView({
                 ))}
               </defs>
               <g className="home-antigen-switch__assembly">
-                <image
+                <HomeSvgImage
                   href={ringImage}
                   width="300"
                   height="300"
@@ -362,7 +363,7 @@ function AntigenView({
                   mask={"url(#" + backboneId + ")"}
                 />
                 <g data-antigen-installed>
-                  <image
+                  <HomeSvgImage
                     href={ringImage}
                     width="300"
                     height="300"
@@ -482,7 +483,7 @@ function AntigenView({
                     />
                   </filter>
                 </defs>
-                <image
+                <HomeSvgImage
                   href={immuneImage}
                   width="516"
                   height="259"
@@ -645,7 +646,7 @@ function AntigenView({
                   <circle cx="125" cy="307" r="17" />
                 </clipPath>
                 <symbol id={id + "-apoptotic-body"} viewBox="108 290 34 34">
-                  <image
+                  <HomeSvgImage
                     href={targetImage}
                     width="450"
                     height="402"
@@ -675,7 +676,7 @@ function AntigenView({
                     className="home-antigen-switch__cell-response"
                     data-cell-response
                   >
-                    <image
+                    <HomeSvgImage
                       href={targetImage}
                       width="450"
                       height="402"
@@ -774,7 +775,7 @@ function AntigenView({
               style={{ "--option-color": item.color } as CSSProperties}
             >
               <svg viewBox="80 0 140 65" aria-hidden="true">
-                <image
+                <HomeSvgImage
                   href={ringImage}
                   width="300"
                   height="300"
@@ -893,7 +894,7 @@ function AntigenView({
         aria-hidden="true"
       >
         <svg viewBox="80 0 140 65">
-          <image
+          <HomeSvgImage
             href={ringImage}
             width="300"
             height="300"

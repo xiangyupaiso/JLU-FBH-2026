@@ -1,3 +1,4 @@
+import { QueuedImage } from "./common/QueuedImage";
 import { useEffect, useRef, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { HOME_INTRO_REPLAY_EVENT } from "../utils/homeIntro";
@@ -179,7 +180,7 @@ export function BackToTop() {
         aria-hidden="true"
       >
         <span className="circure-back-to-top__artwork">
-          <img src={backToTopImage} alt="" draggable={false} />
+          <QueuedImage src={backToTopImage} alt="" draggable={false} />
         </span>
       </span>
     </button>

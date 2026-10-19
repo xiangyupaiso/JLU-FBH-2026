@@ -1,3 +1,4 @@
+import { QueuedImage, QueuedSvgImage } from "../../../common/QueuedImage";
 import { useState, useRef, useEffect, useCallback } from "react";
 import waterfallFullWebpLocal from "../../../../assets/wiki/hp/hp-waterfall-loop.webp";
 import waterfallCoreWebpLocal from "../../../../assets/wiki/hp/hp-waterfall-core.webp";
@@ -217,11 +218,9 @@ export function HpInteractiveWaterfall() {
           <div className="hp-waterfall-stage-wrapper">
             <div className="hp-waterfall-stage">
               {/* 1. Opening Layer: Full Landscape Animated WebP (Continuous loop, ONLY visible in Stage 1 / Overview) */}
-              <img
+              <QueuedImage
                 src={isDev ? waterfallFullWebpLocal : WATERFALL_LOOP_CDN}
-                onError={(e) => {
-                  e.currentTarget.src = waterfallFullWebpLocal;
-                }}
+                data-page-fallback-src={waterfallFullWebpLocal}
                 alt="Human Practices Waterfall Overview"
                 className={`hp-waterfall-media hp-media-full ${isCore ? "is-hidden" : ""}`}
                 aria-hidden={isCore}
@@ -255,14 +254,9 @@ export function HpInteractiveWaterfall() {
                     />
                   </mask>
                 </defs>
-                <image
+                <QueuedSvgImage
                   href={isDev ? waterfallStreamWebpLocal : WATERFALL_STREAM_CDN}
-                  onError={(e) => {
-                    e.currentTarget.setAttribute(
-                      "href",
-                      waterfallStreamWebpLocal
-                    );
-                  }}
+                  data-page-fallback-src={waterfallStreamWebpLocal}
                   width="1920"
                   height="1080"
                   mask="url(#hpStreamRevealMask)"
@@ -274,7 +268,7 @@ export function HpInteractiveWaterfall() {
               </svg>
 
               {/* Use the bundled animation with corrected frame replacement flags. */}
-              <img
+              <QueuedImage
                 src={waterfallCoreWebpLocal}
                 alt="Human Practices Core Framework"
                 className={`hp-waterfall-media hp-media-core ${isCore ? "is-active" : ""}`}

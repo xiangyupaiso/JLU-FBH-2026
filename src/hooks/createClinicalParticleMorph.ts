@@ -1,3 +1,4 @@
+import { decodeHomeArtwork } from "../utils/homeArtworkSource";
 import { createChallengeParticleRenderer } from "./challengeParticleRenderer";
 
 type Pigment = { x: number; y: number; rgba: number[] };
@@ -41,6 +42,7 @@ export function createClinicalParticleMorph(
   let initialized = false;
   let gpuAvailable = true;
   let disposed = false;
+  const artworkPreparation = new AbortController();
   let ready = false;
   let preparationAttempted = false;
   let prepareFrame = 0;
@@ -344,13 +346,14 @@ export function createClinicalParticleMorph(
     draw(progress, ownsSource);
   };
   canvas.addEventListener("webglcontextlost", onContextLost);
-  Promise.all([source.decode(), target.decode()]).then(refresh).catch(refresh);
+  Promise.all([decodeHomeArtwork(source, artworkPreparation.signal), decodeHomeArtwork(target, artworkPreparation.signal)]).then(refresh).catch(refresh);
 
   return {
     draw,
     refresh,
     cleanup: () => {
       disposed = true;
+      artworkPreparation.abort();
       cancelAnimationFrame(prepareFrame);
       cancelAnimationFrame(resizeFrame);
       observer.disconnect();

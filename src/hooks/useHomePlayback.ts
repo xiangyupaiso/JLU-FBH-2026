@@ -8,6 +8,7 @@ import {
 import { HOME_INTRO_REPLAY_EVENT } from "../utils/homeIntro";
 import { ANTIGEN_PLAYBACK_HOLD } from "./antigenMechanismTiming";
 import { createHomeArtworkLoader, type HomeArtworkStatus } from "../utils/homeArtwork";
+import { whenPageLoaderLeaves } from "../utils/pageLoader";
 
 const CHAPTERS = [
   { id: "top", title: "Behind the diagnosis" },
@@ -163,6 +164,9 @@ export function useHomePlayback(root: RefObject<HTMLDivElement | null>) {
     let pendingSeek: number | null = null;
     let artworkFrame = 0;
     let paintedChapter = 0;
+    let disposed = false;
+    let preloadedChapter = -1;
+    let visitorActive = false;
 
     const clamp = (value: number) => Math.max(0, Math.min(1, value));
     const maxScroll = () =>
@@ -370,6 +374,9 @@ export function useHomePlayback(root: RefObject<HTMLDivElement | null>) {
         progress = clamp(y / Math.max(1, end));
       }
       paintedChapter = chapterIndex;
+      // Manual scrolling and instant chapter jumps use the same small window
+      // of requests as autoplay. Keep distant chapters off the network.
+      if (visitorActive && introComplete()) preload(chapterIndex);
       setView({
         mode,
         rate,
@@ -485,10 +492,12 @@ export function useHomePlayback(root: RefObject<HTMLDivElement | null>) {
       }
     };
     const preload = (chapter: number) => {
-      [chapter, chapter + 1].forEach((index) => {
+      if (preloadedChapter === chapter) return;
+      preloadedChapter = chapter;
+      [chapter, chapter + 1, chapter + 2].forEach((index) => {
         if (index >= CHAPTERS.length) return;
         const scene = section(index);
-        if (scene) artwork.warm(scene);
+        if (scene) artwork.warm(scene, index === chapter ? "high" : "low");
       });
     };
     const beginBeat = (index: number) => {
@@ -547,6 +556,12 @@ export function useHomePlayback(root: RefObject<HTMLDivElement | null>) {
         : 0;
       lastTime = time;
       const introDone = introComplete();
+      // An idle page (including a script-rendering crawler) should not walk
+      // through the entire story and download every chapter on its own.
+      if (introDone && !visitorActive) {
+        lastTime = 0;
+        return;
+      }
       if (introDone && beatIndex < 0 && !chooseBeat()) {
         ended = true;
         changeMode("paused");
@@ -750,6 +765,16 @@ export function useHomePlayback(root: RefObject<HTMLDivElement | null>) {
     const onScroll = () => {
       if (mode !== "playing") paint();
     };
+    const intentEvents = ["pointermove", "pointerdown", "touchstart", "keydown", "wheel"] as const;
+    const activateVisitor = () => {
+      if (visitorActive) return;
+      visitorActive = true;
+      document.documentElement.dataset.homeVisitorActive = "true";
+      intentEvents.forEach((event) => window.removeEventListener(event, activateVisitor, true));
+      if (document.getElementById("page-loader")?.hidden) preload(paintedChapter);
+      paint();
+      if (mode === "playing") requestTick();
+    };
     const onPreference = () => {
       changeMode("manual");
       paint();
@@ -771,20 +796,28 @@ export function useHomePlayback(root: RefObject<HTMLDivElement | null>) {
     document.addEventListener("visibilitychange", visibility);
     preference.addEventListener("change", onPreference);
     ScrollTrigger.addEventListener("refresh", refresh);
-    // Preserve the existing page loader; Home adds its own success gate.
-    artwork.warm(page);
-    CHAPTERS.forEach((_, index) => {
-      const scene = section(index);
-      if (scene) artwork.warm(scene);
+    intentEvents.forEach((event) => window.addEventListener(event, activateVisitor, {
+      capture: true,
+      passive: true,
+    }));
+    // Give the opening its own bandwidth. While the inline signature plays,
+    // fetch the next two chapters, then advance that window while reading.
+    const opening = section(0);
+    if (opening) artwork.warm(opening);
+    void Promise.resolve().then(() => whenPageLoaderLeaves()).then(() => {
+      if (!disposed && visitorActive) preload(0);
     });
     if (artwork.status(section(0)) === "ready") waitingChapter = null;
     publishPlayback();
     paint();
     if (mode === "playing") requestTick();
     return () => {
+      disposed = true;
       cancelAnimationFrame(frame);
       cancelAnimationFrame(artworkFrame);
       artwork.dispose();
+      intentEvents.forEach((event) => window.removeEventListener(event, activateVisitor, true));
+      delete document.documentElement.dataset.homeVisitorActive;
       section(9)?.style.removeProperty("--home-playback-phase-offset");
       window.removeEventListener("wheel", scrollInput, true);
       window.removeEventListener("touchmove", scrollInput, true);

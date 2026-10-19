@@ -1,3 +1,5 @@
+import { loadPageImageSerial } from "./pageImageQueue";
+
 type ArtworkElement = HTMLImageElement | SVGImageElement;
 export type HomeArtworkStatus = "ready" | "loading" | "error";
 
@@ -9,237 +11,186 @@ type Artwork = {
   retries: number;
   revision: number;
   url: string;
+  priority: "high" | "low";
   cancel: () => void;
 };
 
-const REQUEST_TIMEOUT = 8000;
-const MAX_RETRIES = 2;
+const MAX_NATIVE_RETRIES = 2;
 const RETRY_PARAMETER = "home-image-retry";
 
-/** Home alone owns these requests. A shared URL gets one retry sequence,
- * including artwork reused in several cards or SVG layers. */
-export function createHomeArtworkLoader(
-  root: HTMLElement,
-  onChange: () => void,
-) {
+/** Home shares the site's one transfer slot while keeping scene-local recovery. */
+export function createHomeArtworkLoader(root: HTMLElement, onChange: () => void) {
   const artwork = new Map<string, Artwork>();
   const elements = new WeakMap<Element, Artwork>();
+  const scenes = new Map<Element, "high" | "low">();
   let disposed = false;
 
   const mark = (art: Artwork, status: HomeArtworkStatus) => {
     art.status = status;
     art.elements.forEach((element) => {
-      element.dataset.homeArtwork = status;
+      // Retain already decoded pixels if a different copy needs recovery.
+      element.dataset.homeArtwork =
+        element instanceof HTMLImageElement && element.complete && element.naturalWidth > 0
+          ? "ready" : element instanceof SVGImageElement && element.dataset.homeArtwork === "ready" && element.href.baseVal
+            ? "ready" : status;
     });
   };
-  const applyRetry = (art: Artwork, element: ArtworkElement) => {
-    if (!art.revision) return;
+  const apply = (art: Artwork, element: ArtworkElement) => {
     if (element instanceof HTMLImageElement) {
-      // Keep successful copies and their decoded pixels in place.
       if (element.complete && element.naturalWidth > 0) return;
-      if (element.src !== art.url) element.src = art.url;
-    } else if (element.href.baseVal !== art.url) {
-      element.setAttribute("href", art.url);
+      element.loading = "eager";
+      element.fetchPriority = art.priority;
+      if (element.getAttribute("src") !== art.url) element.src = art.url;
+    } else {
+      if (element.dataset.homeArtwork === "ready" && element.href.baseVal) return;
+      if (element.href.baseVal !== art.url) element.setAttribute("href", art.url);
     }
   };
-  const start = (art: Artwork, retry = false) => {
+  const sourcesIn = (scene: Element | null | undefined) => new Set(
+    Array.from(scene?.querySelectorAll("img, image") ?? [], (element) => elements.get(element))
+      .filter((art): art is Artwork => !!art),
+  );
+  const activateScenes = () => {
+    for (const scene of scenes.keys()) {
+      if (!(scene instanceof HTMLElement) || !root.contains(scene) || scene.dataset.homeArtworkActive === "true") continue;
+      const images = [...scene.querySelectorAll<ArtworkElement>("img, image")];
+      if (images.some((element) => element.dataset.homeSrc && !elements.has(element))) continue;
+      if ([...sourcesIn(scene)].some((art) => art.status !== "ready")) continue;
+      // Pixel-reading helpers and transfer clones may now safely reuse these URLs.
+      scene.dataset.homeArtworkActive = "true";
+      scene.dispatchEvent(new Event("circure:home-artwork-activate"));
+    }
+  };
+  const start = (art: Artwork, nativeRetry = false) => {
     art.cancel();
     if (disposed) return;
-    if (retry) {
-      const url = new URL(art.source, document.baseURI);
-      url.searchParams.set(RETRY_PARAMETER, String(++art.revision));
-      art.url = url.href;
+    if (nativeRetry) {
+      const retry = new URL(art.source, document.baseURI);
+      retry.searchParams.set(RETRY_PARAMETER, String(++art.revision));
+      art.url = retry.href;
     }
+    const request = new AbortController();
+    art.cancel = () => request.abort();
     mark(art, "loading");
-    const image = new Image();
-    if (art.crossOrigin !== null) image.crossOrigin = art.crossOrigin;
-    let active = true;
-    let timer = 0;
-    const cleanup = () => {
-      active = false;
-      window.clearTimeout(timer);
-      image.removeEventListener("load", loaded);
-      image.removeEventListener("error", failed);
-    };
-    const finish = (success: boolean) => {
-      if (!active || disposed) return;
-      cleanup();
-      if (!success) image.src = "";
-      if (success) {
-        if (
-          !art.revision &&
-          [...art.elements].some(
-            (element) =>
-              element instanceof HTMLImageElement &&
-              element.complete &&
-              !element.naturalWidth,
-          )
-        ) {
-          ++art.retries;
-          start(art, true);
-          onChange();
-          return;
-        }
-        art.elements.forEach((element) => applyRetry(art, element));
-        mark(art, "ready");
-        // A native image can stall independently of its decoded cache probe.
-        const nativeTimer = window.setTimeout(() => {
-          if (disposed || nativeReady()) return;
-          if (art.retries < MAX_RETRIES) {
-            ++art.retries;
-            start(art, true);
-          } else mark(art, "error");
-          onChange();
-        }, REQUEST_TIMEOUT);
-        art.cancel = () => window.clearTimeout(nativeTimer);
-      } else if (art.retries < MAX_RETRIES) {
-        const delay = 750 * 2 ** art.retries++;
-        const backoff = window.setTimeout(() => start(art, true), delay);
-        art.cancel = () => window.clearTimeout(backoff);
-      } else {
-        mark(art, "error");
-        art.cancel = () => {};
-      }
+    void loadPageImageSerial(art.url, {
+      crossOrigin: art.crossOrigin,
+      signal: request.signal,
+      priority: art.priority,
+    }).then((url) => {
+      if (disposed || request.signal.aborted) return;
+      art.url = url;
+      art.elements.forEach((element) => apply(art, element));
+      mark(art, "ready");
+      activateScenes();
       onChange();
-    };
-    const failed = () => finish(false);
-    const nativeReady = () =>
-      [...art.elements].every(
-        (element) =>
-          !root.contains(element) ||
-          !(element instanceof HTMLImageElement) ||
-          (element.complete && element.naturalWidth > 0),
-      );
-    const loaded = () => {
-      if (!image.naturalWidth) {
-        failed();
-        return;
-      }
-      // Download completion alone does not mean the browser can paint it.
-      void image.decode().then(() => finish(true), failed);
-    };
-    art.cancel = () => {
-      cleanup();
-      image.src = "";
-    };
-    image.addEventListener("load", loaded, { once: true });
-    image.addEventListener("error", failed, { once: true });
-    timer = window.setTimeout(failed, REQUEST_TIMEOUT);
-    image.src = art.url;
+    }, () => {
+      if (disposed || request.signal.aborted) return;
+      mark(art, "error");
+      onChange();
+    });
   };
 
-  const warm = (scene: Element) => {
+  const warm = (scene: Element, priority: "high" | "low" = "high") => {
+    if (scenes.get(scene) === "high") priority = "high";
+    scenes.set(scene, priority);
     const added: Artwork[] = [];
     scene.querySelectorAll<ArtworkElement>("img, image").forEach((element) => {
-      const raw =
-        element instanceof HTMLImageElement
-          ? element.currentSrc || element.src
-          : element.href.baseVal;
+      const raw = element.dataset.homeSrc || element.getAttribute(element instanceof HTMLImageElement ? "src" : "href") || "";
       if (!raw || raw.startsWith("#") || raw.startsWith("data:")) return;
       const source = new URL(raw, document.baseURI);
       source.searchParams.delete(RETRY_PARAMETER);
+      source.searchParams.delete("circure_image_retry");
       const crossOrigin = element.getAttribute("crossorigin");
       const key = JSON.stringify([source.href, crossOrigin]);
       let art = artwork.get(key);
       if (!art) {
-        art = {
-          source: source.href,
-          url: source.href,
-          crossOrigin,
-          elements: new Set(),
-          status: "loading",
-          retries: 0,
-          revision: 0,
-          cancel: () => {},
-        };
+        art = { source: source.href, url: source.href, priority, crossOrigin, elements: new Set(), status: "loading", retries: 0, revision: 0, cancel: () => {} };
         artwork.set(key, art);
         added.push(art);
       }
       art.elements.add(element);
       elements.set(element, art);
-      element.dataset.homeArtwork = art.status;
-      if (element instanceof HTMLImageElement) element.loading = "eager";
-      if (art.status === "ready") applyRetry(art, element);
+      if (priority === "high") art.priority = "high";
+      if (art.status === "ready") apply(art, element);
+      element.dataset.homeArtwork = element instanceof HTMLImageElement && element.complete && element.naturalWidth > 0
+        ? "ready" : art.status;
     });
+    // Assigning native sources before these probes finished would bypass serialization.
     added.forEach((art) => start(art));
+    activateScenes();
   };
-  const sourcesIn = (scene: Element | null | undefined) =>
-    new Set(
-      Array.from(scene?.querySelectorAll("img, image") ?? [], (element) =>
-        elements.get(element),
-      ).filter((art): art is Artwork => !!art),
-    );
   const status = (scene: Element | null | undefined): HomeArtworkStatus => {
     const sources = [...sourcesIn(scene)];
-    if (sources.some((art) => art.status === "error")) return "error";
-    return sources.some(
-      (art) =>
-        art.status === "loading" ||
-        [...art.elements].some(
-          (element) =>
-            scene?.contains(element) &&
-            element instanceof HTMLImageElement &&
-            (!element.complete || !element.naturalWidth),
-        ),
-    )
-      ? "loading"
-      : "ready";
+    const missing = (art: Artwork) => [...art.elements].some((element) =>
+      scene?.contains(element) && (!(element instanceof HTMLImageElement) || !element.complete || !element.naturalWidth));
+    if (sources.some((art) => art.status === "error" && missing(art))) return "error";
+    if (Array.from(scene?.querySelectorAll<ArtworkElement>("img, image") ?? [])
+      .some((element) => element.dataset.homeSrc && !elements.has(element))) return "loading";
+    return sources.some((art) =>
+      (art.status === "loading" && missing(art)) || [...art.elements].some((element) =>
+        scene?.contains(element) && element instanceof HTMLImageElement && (!element.complete || !element.naturalWidth)))
+      ? "loading" : "ready";
+  };
+  const retry = (scene: Element | null | undefined) => {
+    if (!scene) return;
+    for (const art of sourcesIn(scene)) {
+      if (art.status !== "error") continue;
+      art.retries = 0;
+      start(art, true);
+    }
+    onChange();
   };
   const onError = (event: Event) => {
-    const art =
-      event.target instanceof Element ? elements.get(event.target) : undefined;
-    // An actual DOM image can fail after its cached preload succeeded.
-    if (art?.status === "ready") {
-      if (art.retries < MAX_RETRIES) {
-        ++art.retries;
-        start(art, true);
-      } else mark(art, "error");
-      onChange();
-    }
+    const art = event.target instanceof Element ? elements.get(event.target) : undefined;
+    if (art?.status !== "ready") return;
+    if (art.retries++ < MAX_NATIVE_RETRIES) start(art, true);
+    else mark(art, "error");
+    onChange();
   };
-  const onLoad = () => onChange();
+  const onLoad = (event: Event) => {
+    if (event.target instanceof HTMLImageElement && event.target.naturalWidth > 0)
+      event.target.dataset.homeArtwork = "ready";
+    onChange();
+  };
+  const loader = document.getElementById("page-loader");
+  const retryOpening = () => retry(root.querySelector(".home-scene01"));
+  const stopOpening = () => {
+    for (const art of sourcesIn(root.querySelector(".home-scene01"))) {
+      if (art.status !== "loading") continue;
+      art.cancel();
+      mark(art, "error");
+    }
+    onChange();
+  };
+  loader?.addEventListener("loaderretry", retryOpening);
+  loader?.addEventListener("loaderdeadline", stopOpening);
+  loader?.addEventListener("loadererror", stopOpening);
   root.addEventListener("error", onError, true);
   root.addEventListener("load", onLoad, true);
   const observer = new MutationObserver((records) => {
-    if (
-      records.some((record) =>
-        [...record.addedNodes].some(
-          (node) =>
-            node instanceof Element &&
-            (node.matches("img, image") || node.querySelector("img, image")),
-        ),
-      )
-    ) {
-      // Scene rebuilds and interaction-mounted SVG layers share the same cache.
-      warm(root);
-      onChange();
-    }
+    if (!records.some((record) => [...record.addedNodes].some((node) =>
+      node instanceof Element && (node.matches("img, image") || node.querySelector("img, image"))))) return;
+    for (const [scene, priority] of scenes) if (root.contains(scene)) warm(scene, priority);
+    onChange();
   });
   observer.observe(root, { childList: true, subtree: true });
 
   return {
-    warm,
-    status,
-    retry(scene: Element | null | undefined) {
-      if (!scene) return;
-      for (const art of sourcesIn(scene)) {
-        if (art.status !== "error") continue;
-        art.retries = 0;
-        start(art, true);
-      }
-      onChange();
-    },
+    warm, status, retry,
     dispose() {
       disposed = true;
       observer.disconnect();
+      loader?.removeEventListener("loaderretry", retryOpening);
+      loader?.removeEventListener("loaderdeadline", stopOpening);
+      loader?.removeEventListener("loadererror", stopOpening);
       root.removeEventListener("error", onError, true);
       root.removeEventListener("load", onLoad, true);
       artwork.forEach((art) => {
         art.cancel();
-        art.elements.forEach((element) => {
-          delete element.dataset.homeArtwork;
-        });
+        art.elements.forEach((element) => { delete element.dataset.homeArtwork; });
       });
+      scenes.forEach((_, scene) => { if (scene instanceof HTMLElement) delete scene.dataset.homeArtworkActive; });
+      scenes.clear();
     },
   };
 }

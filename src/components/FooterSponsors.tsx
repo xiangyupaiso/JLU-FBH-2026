@@ -1,3 +1,4 @@
+import { QueuedImage } from "./common/QueuedImage";
 import { useEffect, useRef, type CSSProperties } from "react";
 import { FOOTER_SPONSORS, FOOTER_SUPPORTERS } from "../data/footer";
 
@@ -41,7 +42,7 @@ export function FooterSponsors() {
         {FOOTER_SUPPORTERS.map((organisation) => (
           <li className="circure-footer__supporter" key={organisation.name}>
             {organisation.marks.map((mark) => (
-              <img
+              <QueuedImage
                 key={mark.src}
                 src={mark.src}
                 alt={mark.alt}
@@ -78,7 +79,7 @@ export function FooterSponsors() {
                   }
                 >
                   {organisation.marks.map((mark) => (
-                    <img
+                    <QueuedImage
                       key={mark.src}
                       src={mark.src}
                       alt={mark.alt}

@@ -1,0 +1,42 @@
+.wiki-video {
+  display: grid;
+  gap: 8px;
+  min-inline-size: 0;
+  margin: 0;
+}
+
+.wiki-video__frame {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: 6px;
+  background: var(--route-panel);
+}
+
+.wiki-video__frame iframe {
+  display: block;
+  inline-size: 100%;
+  block-size: 100%;
+  border: 0;
+}
+
+.wiki-video__loading {
+  display: grid;
+  place-items: center;
+  block-size: 100%;
+  margin: 0;
+  color: var(--route-muted);
+  font-size: 14px;
+}
+
+.wiki-video__caption {
+  min-block-size: 2.8em;
+  color: var(--route-muted);
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.wiki-video__caption a {
+  color: inherit;
+  text-underline-offset: 3px;
+}

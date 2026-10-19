@@ -1,3 +1,4 @@
+import { bindHomeArtwork, decodeHomeArtwork, homeArtworkSource, onHomeArtworkActive } from "../utils/homeArtworkSource";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { trackPagePreparation } from "../utils/pageLoader";
@@ -162,22 +163,21 @@ export function createRnaRingMorph(
   stage.append(canvas);
   const context = canvas.getContext("2d");
   const image = new Image();
+  image.fetchPriority = "low";
   image.crossOrigin = "anonymous";
-  const href = source.querySelector<SVGImageElement>("image")?.href.baseVal;
+  const href = homeArtworkSource(source.querySelector("image"));
+  image.dataset.homeSrc = href;
   const originalLoading = target.getAttribute("loading");
   let paint: ReturnType<typeof preparePaint> = null;
   let fan: ReturnType<typeof separateFanPaint> = null;
   let geometry: ReturnType<typeof measure> | null = null;
   let disposed = false;
+  const artworkPreparation = new AbortController();
   let ready = false;
   let frame = 0;
   let lastProgress = 0;
-  let resolvePreparation!: () => void;
-  const stopTrackingPreparation = trackPagePreparation(
-    new Promise<void>((resolve) => {
-      resolvePreparation = resolve;
-    }),
-  );
+  let resolvePreparation = () => {};
+  let stopTrackingPreparation = () => {};
   const finishPreparation = () => {
     resolvePreparation();
     stopTrackingPreparation();
@@ -358,17 +358,24 @@ export function createRnaRingMorph(
   image.addEventListener("error", finishPreparation);
   target.addEventListener("error", finishPreparation);
   ScrollTrigger.addEventListener("refresh", schedule);
-  target.loading = "eager";
-  if (href) image.src = href;
-  if (!context || !href) finishPreparation();
-  void Promise.all([image.decode(), target.decode()])
-    .then(schedule)
-    .catch(schedule);
+  const stopImageArtwork = bindHomeArtwork(source, image);
+  const stopActivation = onHomeArtworkActive(source, () => {
+    stopTrackingPreparation = trackPagePreparation(new Promise<void>((resolve) => {
+      resolvePreparation = resolve;
+    }));
+    if (!context || !href) finishPreparation();
+    void Promise.all([decodeHomeArtwork(image, artworkPreparation.signal), decodeHomeArtwork(target, artworkPreparation.signal)])
+      .then(schedule)
+      .catch(schedule);
+  });
 
   return {
     render: draw,
     dispose() {
       disposed = true;
+      artworkPreparation.abort();
+      stopActivation();
+      stopImageArtwork();
       finishPreparation();
       observer.disconnect();
       cancelAnimationFrame(frame);

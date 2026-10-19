@@ -1,3 +1,4 @@
+import { QueuedImage } from "../../../common/QueuedImage";
 /* eslint-disable react-refresh/only-export-components */
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import { createPortal } from "react-dom";
@@ -150,7 +151,7 @@ function RecordBlock({ block }: { block: NotebookBlock }) {
               key={key}
               aria-label={`Open image: ${notebookAssets[key].alt}`}
             >
-              <img
+              <QueuedImage
                 src={getNotebookImage(key)}
                 alt={notebookAssets[key].alt}
                 width={notebookAssets[key].width}

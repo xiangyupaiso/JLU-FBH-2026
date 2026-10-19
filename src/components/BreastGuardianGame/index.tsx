@@ -1,4 +1,5 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { QueuedImage } from "../common/QueuedImage";
+import { useEffect, useRef, useState } from "react";
 import { initializeBreastGuardianGame } from "./gameEngine";
 import "./index.css";
 
@@ -30,15 +31,11 @@ export default function BreastGuardianGame({
   const onQuizAnswerRef = useRef(onQuizAnswer);
   const onRequestCloseRef = useRef(onRequestClose);
 
-  const [loading, setLoading] = useState(true);
+  const [loadState, setLoadState] = useState<"loading" | "ready" | "error">(
+    "loading",
+  );
+  const [loadAttempt, setLoadAttempt] = useState(0);
   const [spriteIndex, setSpriteIndex] = useState(0);
-  const dismissedRef = useRef(false);
-
-  const dismiss = useCallback(() => {
-    if (dismissedRef.current) return;
-    dismissedRef.current = true;
-    setLoading(false);
-  }, []);
 
   useEffect(() => {
     onGameCompleteRef.current = onGameComplete;
@@ -50,6 +47,7 @@ export default function BreastGuardianGame({
     const host = hostRef.current;
     if (!host) return;
 
+    setLoadState("loading");
     const gameUrl = `${import.meta.env.BASE_URL}game-assets/index.html`;
 
     const cleanup = initializeBreastGuardianGame(host, {
@@ -63,48 +61,40 @@ export default function BreastGuardianGame({
 
     const frame = host.querySelector("iframe");
 
-    // Signal 1: iframe document finished loading — give the game a beat to
-    // paint its first frame before we lift the overlay.
-    let dismissTimer = 0;
-    const onFrameLoad = () => {
-      dismissTimer = window.setTimeout(dismiss, 600);
-    };
-    frame?.addEventListener("load", onFrameLoad);
-
-    // Signal 2: the game posts an explicit "ready" message after init — more
-    // accurate than load, so dismiss immediately when it arrives.
+    // An iframe's load event also fires when its game scripts fail. Only the
+    // game's own mount signal confirms there is a rendered game to reveal.
     const onMessage = (event: MessageEvent) => {
-      if (frame && event.source !== frame.contentWindow) return;
+      if (event.origin !== window.location.origin) return;
+      if (!frame || event.source !== frame.contentWindow) return;
       if (
         event.data?.source === "breast-guardian-game" &&
         event.data?.type === "breast-guardian:ready"
       ) {
-        dismiss();
+        window.clearTimeout(fallback);
+        setLoadState("ready");
       }
     };
     window.addEventListener("message", onMessage);
 
-    // Safety net: never trap the user behind a stuck loading overlay.
-    const fallback = window.setTimeout(dismiss, 15000);
+    // Keep a recoverable UI if startup fails; a late ready signal still works.
+    const fallback = window.setTimeout(() => setLoadState("error"), 15000);
 
     return () => {
-      frame?.removeEventListener("load", onFrameLoad);
       window.removeEventListener("message", onMessage);
-      window.clearTimeout(dismissTimer);
       window.clearTimeout(fallback);
       cleanup();
     };
-  }, [initialChapter, dismiss]);
+  }, [initialChapter, loadAttempt]);
 
   // Rotate pixel-art portraits while the overlay is visible.
   useEffect(() => {
-    if (!loading) return;
+    if (loadState !== "loading") return;
     const id = window.setInterval(
       () => setSpriteIndex((i) => (i + 1) % SPRITES.length),
       1800,
     );
     return () => window.clearInterval(id);
-  }, [loading]);
+  }, [loadState]);
 
   const rootClassName = ["breast-guardian-game-root", className]
     .filter(Boolean)
@@ -114,24 +104,37 @@ export default function BreastGuardianGame({
     <div className={rootClassName} data-breast-guardian-game="">
       <div ref={hostRef} className="breast-guardian-game-host" />
       <div
-        className={`bg-loading${loading ? "" : " is-hidden"}`}
+        className={`bg-loading${loadState === "ready" ? " is-hidden" : ""}`}
         role="status"
         aria-live="polite"
       >
-        <img
+        <QueuedImage
           key={spriteIndex}
           className="bg-loading__sprite"
           src={SPRITES[spriteIndex]}
           alt=""
         />
         <span className="bg-loading__text">
-          Loading
-          <span className="bg-loading__dots" aria-hidden="true">
-            <i />
-            <i />
-            <i />
-          </span>
+          {loadState === "error"
+            ? "The game is taking longer than expected."
+            : "Loading"}
+          {loadState === "loading" && (
+            <span className="bg-loading__dots" aria-hidden="true">
+              <i />
+              <i />
+              <i />
+            </span>
+          )}
         </span>
+        {loadState === "error" && (
+          <button
+            type="button"
+            className="bg-loading__retry"
+            onClick={() => setLoadAttempt((attempt) => attempt + 1)}
+          >
+            Retry loading
+          </button>
+        )}
       </div>
     </div>
   );

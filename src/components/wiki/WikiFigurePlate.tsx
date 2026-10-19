@@ -1,3 +1,4 @@
+import { QueuedImage } from "../common/QueuedImage";
 import "../../styles/wiki-figure-plate.css";
 
 export interface WikiFigurePlateImage {
@@ -31,7 +32,7 @@ export function WikiFigurePlate({
       className={`wiki-figure-plate__grid wiki-figure-plate__grid--cols-${columns}`}
     >
       {images.map((image) => (
-        <img
+        <QueuedImage
           key={image.key}
           src={image.src}
           alt={image.alt}

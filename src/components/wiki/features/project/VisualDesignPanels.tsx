@@ -1,3 +1,4 @@
+import { QueuedImage } from "../../../common/QueuedImage";
 import type { ReactNode } from "react";
 import "../../../../styles/features/visual-design-panels.css";
 
@@ -264,7 +265,7 @@ export function LumiCursorShowcase() {
         {CURSOR_STATES.map((state) => (
           <div key={state.id} className="wiki-cursor-showcase__card">
             <div className="wiki-cursor-showcase__preview">
-              <img
+              <QueuedImage
                 src={state.src}
                 alt={state.alt}
                 className="wiki-cursor-showcase__sprite"

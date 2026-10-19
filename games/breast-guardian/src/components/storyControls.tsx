@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import { useGame } from '@/hooks/gameState';
 import {
   ChevronLeft,
@@ -25,22 +25,24 @@ export interface StoryLine {
 
 // 打字机渲染：逐字显示当前台词
 export function useTypewriter(text: string, charMs = 30) {
-  const [count, setCount] = useState(0);
+  const characters = useMemo(() => Array.from(text), [text]);
+  const [progress, setProgress] = useState({ text, count: 0 });
+  // Reset in the rendered result immediately, before the next effect runs.
+  if (progress.text !== text) {
+    setProgress({ text, count: 0 });
+  }
+  const count = progress.text === text ? progress.count : 0;
 
   useEffect(() => {
-    setCount(0);
-  }, [text]);
-
-  useEffect(() => {
-    if (count >= text.length) return;
-    const timer = setTimeout(() => setCount((c) => c + 1), charMs);
+    if (count >= characters.length) return;
+    const timer = setTimeout(() => setProgress({ text, count: count + 1 }), charMs);
     return () => clearTimeout(timer);
-  }, [count, text, charMs]);
+  }, [count, text, charMs, characters.length]);
 
   return {
-    displayed: text.slice(0, count),
-    isComplete: count >= text.length,
-    showAll: () => setCount(text.length)
+    displayed: characters.slice(0, count).join(''),
+    isComplete: count >= characters.length,
+    showAll: () => setProgress({ text, count: characters.length })
   };
 }
 
@@ -164,12 +166,8 @@ export function StoryControlBar({
   onSettings,
   lang
 }: StoryControlBarProps) {
-  const { openExitMenu } = useGame();
-  const isZh = lang
-    ? lang === 'zh'
-    : typeof window !== 'undefined'
-      ? localStorage.getItem('breast_guardian_lang') === 'zh'
-      : false;
+  const { state, openExitMenu } = useGame();
+  const isZh = (lang ?? state.language) === 'zh';
 
   const handleExit = onExit || openExitMenu;
 
@@ -240,11 +238,8 @@ export function StoryLogDrawer({
   lang?: 'zh' | 'en';
 }) {
   const [shown, setShown] = useState(false);
-  const isZh = lang
-    ? lang === 'zh'
-    : typeof window !== 'undefined'
-      ? localStorage.getItem('breast_guardian_lang') === 'zh'
-      : false;
+  const { state } = useGame();
+  const isZh = (lang ?? state.language) === 'zh';
 
   useEffect(() => {
     if (open) {

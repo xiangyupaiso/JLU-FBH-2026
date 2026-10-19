@@ -1,3 +1,4 @@
+import { QueuedImage } from "../../../common/QueuedImage";
 import {
   useCallback,
   useEffect,
@@ -270,7 +271,7 @@ function EngineeringBlock({ block }: { block: WikiContentBlock }) {
     case "figure":
       return (
         <figure className="wiki-figure">
-          <img
+          <QueuedImage
             src={block.src}
             alt={block.alt}
             width={block.width}
@@ -871,7 +872,7 @@ function SmallGear({
   const assets = GEAR_ASSETS[letter.toLowerCase()] ?? GEAR_ASSETS.t;
   const src = isActive ? assets.active : assets.normal;
   return (
-    <img
+    <QueuedImage
       src={src}
       alt=""
       aria-hidden="true"

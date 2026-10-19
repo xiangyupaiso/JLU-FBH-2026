@@ -1,3 +1,4 @@
+import { QueuedImage } from "../../../common/QueuedImage";
 import { useId, useRef, useState, type KeyboardEvent } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { renderInlineFormatting } from "../../proseInline";
@@ -118,7 +119,7 @@ export function ManuscriptFigureGallery({
                 rel="noreferrer"
                 aria-label={`Open ${figure.figureLabel}`}
               >
-                <img
+                <QueuedImage
                   src={figure.src}
                   alt={figure.alt}
                   width={figure.width}

@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { QueuedImage } from "./common/QueuedImage";
 import { createPortal } from "react-dom";
 const restingSheep = "https://static.igem.wiki/teams/6056/wiki/files/pages/shared/cursor-default.avif";
 const happySheep = "https://static.igem.wiki/teams/6056/wiki/files/pages/shared/cursor-active.avif";
@@ -125,7 +126,6 @@ export function SheepCursor() {
       "(hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)",
     );
     const root = document.documentElement;
-    let disposed = false;
     let ready = false;
     let visible = false;
     let pressed = false;
@@ -391,18 +391,14 @@ export function SheepCursor() {
       if (event.key === "Tab" || event.key === "Escape") hide();
     }
 
-    // Decode both poses before hiding the platform cursor, including after HMR.
-    Promise.all(
-      [restingSheep, happySheep].map((src) => {
-        const image = new Image();
-        image.src = src;
-        return image.decode();
-      }),
-    )
-      .then(() => {
-        if (!disposed) ready = true;
-      })
-      .catch(() => {});
+    // The page queue decodes both poses before assigning their native URLs.
+    // Keep the platform cursor available until both queued copies can paint.
+    const syncArtwork = () => {
+      ready = [...layer.querySelectorAll<HTMLImageElement>(".sheep-cursor__sprite > img")]
+        .every((image) => image.complete && image.naturalWidth > 0);
+    };
+    syncArtwork();
+    layer.addEventListener("load", syncArtwork, true);
 
     window.addEventListener("pointermove", move, { passive: true });
     window.addEventListener("sheep-cursor-hide", hide);
@@ -423,7 +419,7 @@ export function SheepCursor() {
     document.addEventListener("close", syncDialog, true);
     media.addEventListener("change", hide);
     return () => {
-      disposed = true;
+      layer.removeEventListener("load", syncArtwork, true);
       hide();
       window.removeEventListener("pointermove", move);
       window.removeEventListener("sheep-cursor-hide", hide);
@@ -455,13 +451,13 @@ export function SheepCursor() {
         <div className="sheep-cursor__tilt">
           <span className="sheep-cursor__halo" />
           <div className="sheep-cursor__sprite">
-            <img
+            <QueuedImage
               className="sheep-cursor__rest"
               src={restingSheep}
               alt=""
               draggable={false}
             />
-            <img
+            <QueuedImage
               className="sheep-cursor__happy"
               src={happySheep}
               alt=""

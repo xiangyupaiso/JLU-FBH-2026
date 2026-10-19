@@ -10,6 +10,7 @@ import type {
   Playthrough
 } from '@/types';
 import { BOSSES_BY_PLAYTHROUGH } from '@/data/bossProgression';
+import { readSavedLanguage, saveLanguage } from '@/lib/languageStorage';
 // 初始技能
 const INITIAL_SKILLS = ['cellRepair', 'hormoneBalance', 'immuneBoost', 'detox'];
 
@@ -41,7 +42,7 @@ const initialState: GameState = {
   playthrough: 1,
   skipStory: false,
   hasCompletedTutorial: false,
-  language: (typeof window !== 'undefined' && (localStorage.getItem('breast_guardian_lang') as Language)) || 'en',
+  language: readSavedLanguage(),
 
   battleState: null,
   // 记录战斗中使用的负面技能来源（用于BE结局跳转）
@@ -87,9 +88,7 @@ function gameReducer(state: GameState, action: GameAction): GameState {
       return { ...state, isExitMenuOpen: action.payload };
 
     case 'SET_LANGUAGE':
-      if (typeof window !== 'undefined') {
-        localStorage.setItem('breast_guardian_lang', action.payload);
-      }
+      saveLanguage(action.payload);
       return { ...state, language: action.payload };
 
     case 'SET_PERSPECTIVE':

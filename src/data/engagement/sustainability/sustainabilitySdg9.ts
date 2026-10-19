@@ -510,6 +510,53 @@ export const sdg9Chapter: SdgChapter = {
     lead: [
       "Building on the potential relationships identified through SST-QN, we examined CirCure’s **technical design, stakeholder engagement, experimental validation, and commercialization analysis** to assess whether these relationships have emerged within the project and how far the current evidence supports them.",
     ],
+    table: {
+      headers: ["Relationship", "Status", "Interaction", "Why"],
+      rows: [
+        [
+          "SDG 3 ↔ SDG 9",
+          "Core (C)",
+          "Positive",
+          "The need to control recurrence and metastasis in patients with TNBC after surgery defined the technical challenges CirCure needed to address. It also prompted us to expand candidate antigen evaluation beyond RNA expression to include protein expression, tissue localization, tumor specificity, and patient heterogeneity. Meanwhile, the project progressively built functional evidence through antigen expression, DC maturation, T-cell responses, and cell co-culture experiments. Reliable technical validation, in turn, determines whether there is a foundation for achieving this health objective.",
+        ],
+        [
+          "SDG 17 → SDG 9",
+          "Core (C)",
+          "Positive",
+          "Stakeholders in pathology, computational immunology, RNA vaccines, nanodelivery, cancer immunology, preclinical evaluation, and industrial translation directly contributed to project iterations. Their input changed antigen and epitope evaluation, the interpretation of RNA-induced immune effects, LNP development priorities, experimental controls, evidence boundaries, and commercialization analysis. Collaboration across disciplines has become a practical driver of CirCure’s technological innovation.",
+        ],
+        [
+          "SDG 9 → SDG 4",
+          "Core (C)",
+          "Positive",
+          "CirCure translated technical content on circRNA, cancer vaccines, and synthetic biology into courses, teaching slides, illustrated science books, virtual laboratories, educational games, and public engagement activities. We delivered these educational activities to audiences of different ages and knowledge backgrounds. Technological innovation has therefore generated concrete educational resources and activities. Their implementation and outcomes are discussed under SDG 4.",
+        ],
+        [
+          "SDG 9 → SDG 8",
+          "Exploratory (E)",
+          "Positive",
+          "Discussions with Hualan Biological prompted further analysis of product positioning, markets and competition, costs, industry collaboration, intellectual property, and risk management in our Entrepreneurship work. This provides a commercialization perspective for future product development. However, CirCure has not yet generated production at scale, employment opportunities, or actual economic returns from industrial activity, so this relationship does not yet qualify as Core.",
+        ],
+        [
+          "SDG 9 ↔ SDG 10",
+          "Conditional (±)",
+          "Context-dependent",
+          "Multi-antigen, multi-epitope design, together with HLA binding and potential population coverage assessments, may broaden the range of tumor characteristics and immune backgrounds the vaccine could address. However, circRNA/LNP manufacturing, quality control, low-temperature storage and transport, treatment prices, ability to pay, and disparities in healthcare resources could mean that the technology initially reaches better-resourced populations. The final direction depends on coverage, costs, payment arrangements, and healthcare accessibility.",
+        ],
+        [
+          "SDG 9 ↔ SDG 12",
+          "Conditional (±)",
+          "Context-dependent",
+          "Appropriate controls and experimental replication, established commercial LNPs, process standardization, and improved batch consistency may reduce failed experiments, repeated production, and unnecessary resource use. However, RNA preparation, LNP production, single-use consumables, quality testing, and cold-chain transport could also increase material and energy demands. The final relationship depends on actual process efficiency and resource management across the full production and delivery process.",
+        ],
+        [
+          "SDG 9 → SDG 5",
+          "Excluded (0)",
+          "None",
+          "CirCure focuses on TNBC and could improve women’s health through SDG 3. However, vaccine innovation itself does not directly address structural gender disparities in resource allocation, decision-making opportunities, employment, or social participation. We therefore do not currently establish a direct interaction from SDG 9 to SDG 5.",
+        ],
+      ],
+    },
     findings: [
       "**SDG 3 ↔ SDG 9, SDG 17 → SDG 9, and SDG 9 → SDG 4 are supported as Positive Core Interactions.** Clinical needs have shaped antigen selection, multi-epitope design, and functional validation. Cross-disciplinary feedback has refined experimental interpretation, delivery priorities, and development planning, while technical knowledge has informed educational resources used with different audiences. These links are supported by project decisions and activities, rather than demonstrated patient health benefits.",
       "**SDG 9 → SDG 8 remains Exploratory.** Feedback from Hualan Biological informed our analysis of product positioning, markets, costs, partnerships, and risks. This supports future development planning, but CirCure has not yet demonstrated production at scale, job creation, or economic returns.",

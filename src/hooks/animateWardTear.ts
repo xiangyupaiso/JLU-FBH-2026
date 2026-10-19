@@ -1,3 +1,4 @@
+import { bindHomeArtwork, decodeHomeArtwork, homeArtworkSource, onHomeArtworkActive } from "../utils/homeArtworkSource";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import {
@@ -91,14 +92,14 @@ export function animateWardTear(
   const patient = room.querySelector<HTMLElement>('[data-ward="patient"]')!;
   const wash = document.createElement("img");
   wash.className = "story-tear-wash";
-  wash.src = tear.querySelector<HTMLImageElement>(".story-backdrop")!.src;
+  wash.dataset.homeSrc = homeArtworkSource(tear.querySelector(".story-backdrop"));
   const sprite = document.createElement("div");
   sprite.className = "story-tear-sprite";
   const bounds = ["left", "top", "width", "height"] as const;
   const outlineBounds = bounds.map((key) => parseFloat(outline.style[key]));
   images.forEach((image) => {
     const copy = document.createElement("img");
-    copy.src = image.src;
+    copy.dataset.homeSrc = homeArtworkSource(image);
     const b = bounds.map((key) => parseFloat(image.style[key]));
     Object.assign(copy.style, {
       left: `${((b[0] - outlineBounds[0]) / outlineBounds[2]) * 100}%`,
@@ -109,21 +110,26 @@ export function animateWardTear(
     sprite.append(copy);
   });
   const bead = document.createElement("img");
-  bead.src = patientTeardrop;
+  bead.dataset.homeSrc = patientTeardrop;
   bead.alt = "";
   bead.decoding = "async";
   bead.classList.add("story-tear-bead");
   frame.append(room, wash, bead, sprite);
   root.append(frame);
+  const stopRoomArtwork = bindHomeArtwork(ward, room);
+  const stopWashArtwork = bindHomeArtwork(tear, wash);
+  const stopSpriteArtwork = bindHomeArtwork(tear, sprite);
+  const stopBeadArtwork = bindHomeArtwork(ward, bead);
 
   let disposed = false;
+  const artworkPreparation = new AbortController();
   const artwork = [
     patient as HTMLImageElement,
     bead,
     outline,
     ...sprite.querySelectorAll<HTMLImageElement>("img"),
   ];
-  const artworkKey = JSON.stringify(artwork.map((image) => image.src));
+  const artworkKey = JSON.stringify(artwork.map(homeArtworkSource));
   let artworkReady = decodedArtwork.get(outline) === artworkKey;
   let paintedPass: boolean | undefined;
   const state = { progress: 0 };
@@ -295,22 +301,31 @@ export function animateWardTear(
   // A clone created after page load still needs its own image-load measurement.
   roomBackdrop.addEventListener("load", refresh);
   // Newly cloned/cropped artwork may finish decoding after the first refresh.
-  const preparation = Promise.all(artwork.map((image) => image.decode()))
-    .then(() => {
-      if (!disposed) {
-        decodedArtwork.set(outline, artworkKey);
-        artworkReady = true;
-        refresh();
-      }
-    })
-    .catch(() => {});
-  const releasePreparation = trackPagePreparation(preparation);
+  let releasePreparation = () => {};
+  const stopActivation = onHomeArtworkActive(ward, () => {
+    const preparation = Promise.all(artwork.map((image) => decodeHomeArtwork(image, artworkPreparation.signal)))
+      .then(() => {
+        if (!disposed) {
+          decodedArtwork.set(outline, artworkKey);
+          artworkReady = true;
+          refresh();
+        }
+      })
+      .catch(() => {});
+    releasePreparation = trackPagePreparation(preparation);
+  });
   ScrollTrigger.addEventListener("refresh", refresh);
   refresh();
   draw();
   return () => {
     disposed = true;
+    artworkPreparation.abort();
     releasePreparation();
+    stopActivation();
+    stopRoomArtwork();
+    stopWashArtwork();
+    stopSpriteArtwork();
+    stopBeadArtwork();
     boundaryGuard.dispose();
     roomBackdrop.removeEventListener("load", refresh);
     ScrollTrigger.removeEventListener("refresh", refresh);

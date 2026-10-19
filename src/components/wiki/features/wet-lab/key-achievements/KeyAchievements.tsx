@@ -1,3 +1,4 @@
+import { QueuedSvgImage } from "../../../../common/QueuedImage";
 import { useId, useLayoutEffect, useRef } from "react";
 import { keyAchievements } from "../../../../../data/wet-lab/keyAchievementsData";
 import { keyAchievementsAssets } from "../../../../../data/wet-lab/keyAchievementsAssets";
@@ -49,7 +50,7 @@ export function KeyAchievements({
     >
       <svg className="cc-image-definitions" aria-hidden="true">
         <defs>
-          <image id={imageId} width="1394" height="2097" href={overviewSrc} />
+          <QueuedSvgImage id={imageId} width="1394" height="2097" href={overviewSrc} />
         </defs>
       </svg>
       <div className="cc-responsive">

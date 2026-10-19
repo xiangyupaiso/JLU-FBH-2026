@@ -1,3 +1,4 @@
+import { QueuedImage } from "../../../../common/QueuedImage";
 import type { CoreSdg } from "../../../../../data/engagement/sustainability/sustainabilityData";
 
 /**
@@ -11,7 +12,7 @@ export function SDGInteractiveCard({ sdg }: { sdg: CoreSdg }) {
     <article className="sust-sdg-card sust-sdg-card--logo" data-sdg={sdg.number}>
       <div className="sust-sdg-card__media">
         {sdg.logoUrl ? (
-          <img
+          <QueuedImage
             src={sdg.logoUrl}
             alt={`SDG ${sdg.number}: ${sdg.title}`}
             className="sust-sdg-card__logo"

@@ -1787,6 +1787,7 @@ html.has-route-reader-scroll {
   letter-spacing: 0.06em;
   text-transform: uppercase;
   text-align: center;
+  white-space: nowrap;
 }
 
 .wiki-page--route .wiki-table tbody th {
@@ -1796,7 +1797,7 @@ html.has-route-reader-scroll {
   text-align: center;
 }
 
-.wiki-page--route .wiki-prose:has(+ .wiki-table-wrap) p {
+.wiki-page--route .wiki-prose:has(+ .wiki-table-wrap) p.wiki-table-title:last-child {
   text-align: center;
 }
 

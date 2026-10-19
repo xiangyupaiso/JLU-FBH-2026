@@ -1,3 +1,4 @@
+import { HomeImage, HomeSvgImage } from "./HomeArtwork";
 import { type CSSProperties } from "react";
 import { PaintedReveal } from "./PaintedReveal";
 import manifest from "../../assets/home/story/manifest.json";
@@ -17,7 +18,7 @@ const sources = [paper, heading, annotation, ring, benefits];
 export function CircRnaArtwork() {
   return (
     <>
-      <img className="story-backdrop" src={paper} alt="" aria-hidden="true" />
+      <HomeImage className="story-backdrop" src={paper} alt="" aria-hidden="true" />
       <figure
         className="story-art circrna-illustration"
         style={{ "--art-aspect": manifest["1"].aspect } as CSSProperties}
@@ -49,7 +50,7 @@ export function CircRnaArtwork() {
                   viewBox="0 0 760 136"
                   overflow="hidden"
                 >
-                  <image href={heading} width="824" height="136" />
+                  <HomeSvgImage href={heading} width="824" height="136" />
                 </svg>
                 <svg
                   data-circrna-heading="question"
@@ -59,7 +60,7 @@ export function CircRnaArtwork() {
                   viewBox="760 0 64 136"
                   overflow="hidden"
                 >
-                  <image href={heading} width="824" height="136" />
+                  <HomeSvgImage href={heading} width="824" height="136" />
                 </svg>
               </svg>
             );
@@ -93,7 +94,7 @@ export function CircRnaArtwork() {
                   viewBox="0 0 296 190"
                   overflow="hidden"
                 >
-                  <image href={benefits} width="296" height="346" />
+                  <HomeSvgImage href={benefits} width="296" height="346" />
                 </svg>
                 <svg
                   data-circrna-sketch="expression"
@@ -103,13 +104,13 @@ export function CircRnaArtwork() {
                   viewBox="0 190 296 156"
                   overflow="hidden"
                 >
-                  <image href={benefits} width="296" height="346" />
+                  <HomeSvgImage href={benefits} width="296" height="346" />
                 </svg>
               </svg>
             );
           }
           return (
-            <img
+            <HomeImage
               key={layer.number}
               className="story-layer"
               data-layer={layer.number}

@@ -30,9 +30,9 @@ const SUBTITLE_WORD_STAGGER = 0.14;
 // and the pause as it lifts between strokes.
 const WRITE_DURATION = 2.4;
 const LIFT = 0.08;
-// Seconds of pure black before the first stroke, and how long the finished
+// Seconds before the first stroke, and how long the finished
 // subtitle holds after its final word appears, before the flash.
-const START = 0.6;
+const START = 0.08;
 const HOLD = 1.8;
 // The mask's round cap runs slightly ahead of the dash length.
 const CAP_LEAD = 40;
@@ -407,6 +407,12 @@ export function HomeIntro({ scene, children }: HomeIntroProps) {
         .then(() => whenPageLoaderLeaves())
         .then(() => {
           if (disposed || skipped) return;
+          // The two-minute loading ceiling includes the opening hand-off.
+          // After a timeout, go straight to the page and its local recovery UI.
+          if (document.getElementById("page-loader")?.dataset.deadline === "true") {
+            skipRef.current();
+            return;
+          }
           tipMatrix = svg.getScreenCTM();
           tipMatrixDirty = false;
           timeline.play();
@@ -416,9 +422,9 @@ export function HomeIntro({ scene, children }: HomeIntroProps) {
       timeline.set(darkness, { opacity: 1 }, 0);
       timeline.fromTo(
         select(".home-intro-skip"),
-        { autoAlpha: 0 },
+        { autoAlpha: 1 },
         { autoAlpha: 1, duration: 0.3 },
-        0.3,
+        0,
       );
       timeline.set(tip, { autoAlpha: 0 }, 0);
       timeline.set(tip, { autoAlpha: 1 }, START);

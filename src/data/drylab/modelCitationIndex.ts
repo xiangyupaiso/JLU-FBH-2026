@@ -109,6 +109,10 @@ export function buildModelCitationIndex(): CitationIndex {
         [...block.headers, ...block.rows.flat()].forEach((text) =>
           visit(text, sectionId),
         );
+      if (block.type === "split") {
+        blocks(block.prose, sectionId);
+        blocks([block.aside], sectionId);
+      }
       if (block.type === "feature") {
         const panel = modelPanels[block.key];
         if (panel?.kind === "fold") blocks(panel.blocks, block.key);

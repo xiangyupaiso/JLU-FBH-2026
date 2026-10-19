@@ -1,3 +1,4 @@
+import { bindHomeArtwork, decodeHomeArtwork, homeArtworkSource, onHomeArtworkActive } from "../utils/homeArtworkSource";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { createChallengeParticleRenderer } from "./challengeParticleRenderer";
@@ -33,12 +34,16 @@ export function createRnaRingParticles(
   const sample = document.createElement("canvas");
   const ink = sample.getContext("2d", { willReadFrequently: true });
   const image = new Image();
-  const href = source.querySelector<SVGImageElement>("image")?.href.baseVal;
+  image.fetchPriority = "low";
+  const href = homeArtworkSource(source.querySelector("image"));
+  image.dataset.homeSrc = href;
   const originalLoading = target.getAttribute("loading");
   let gpu: ReturnType<typeof createChallengeParticleRenderer> = null;
   let rendererInitialized = false;
   let disposed = false;
+  const artworkPreparation = new AbortController();
   let activated = false;
+  let artworkActive = false;
   let ready = false;
   let dirty = true;
   let frame = 0;
@@ -219,16 +224,19 @@ export function createRnaRingParticles(
     });
   };
   const activate = () => {
-    if (disposed || activated) return;
+    if (disposed || activated || !artworkActive) return;
     activated = true;
     target.loading = "eager";
-    if (href) image.src = href;
-    void Promise.all([image.decode(), target.decode()])
+    void Promise.all([decodeHomeArtwork(image, artworkPreparation.signal), decodeHomeArtwork(target, artworkPreparation.signal)])
       .then(() => {
         if (!disposed) schedule();
       })
       .catch(() => {});
   };
+  const stopActivation = onHomeArtworkActive(source, () => {
+    artworkActive = true;
+    activate();
+  });
   const onError = () => {
     const wasReady = ready;
     ready = false;
@@ -253,6 +261,7 @@ export function createRnaRingParticles(
   target.addEventListener("error", onError);
   canvas.addEventListener("webglcontextlost", draw);
   ScrollTrigger.addEventListener("refresh", schedule);
+  const stopImageArtwork = bindHomeArtwork(source, image);
 
   return {
     render(progress: number) {
@@ -265,6 +274,9 @@ export function createRnaRingParticles(
     },
     dispose() {
       disposed = true;
+      artworkPreparation.abort();
+      stopActivation();
+      stopImageArtwork();
       observer.disconnect();
       proximity.disconnect();
       cancelAnimationFrame(frame);

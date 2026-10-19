@@ -1,8 +1,23 @@
 /** Manuscript-provided SDG 17 assets; no generated upload targets. */
 import type { StakeholderPhotoSet } from "./sustainabilityPhotos";
 import type { LegacyToolPdf } from "./sdgChapterContract";
+import type { PeerTubeVideoConfig } from "../../wikiVideo";
 
 const SDG17_DOCS = "https://static.igem.wiki/teams/6056/wiki/files/docs/sdg17";
+
+export const sdg17BaduanjinVideo: PeerTubeVideoConfig = {
+  primary: {
+    title: "JLU-FBH: Baduanjin Collaboration (2026) [English]",
+    embedUrl: "https://video.igem.org/videos/embed/njcsbDyUGvFSCCtXuRoLsa",
+    hostedBy: "JLU-FBH",
+  },
+  fallback: {
+    title: "ZJUT-China: Baduanjin (2026)",
+    embedUrl: "https://video.igem.org/videos/embed/eNWgqQpxvwGY7q7HBPngtb",
+    hostedBy: "ZJUT-China",
+  },
+  credit: "Collaboration led by JLU-FBH.",
+};
 
 /** Roundtable files supplied by the team; shared modal reader opens each PDF. */
 export const sdg17RoundtablePdfs: ReadonlyArray<LegacyToolPdf> = [

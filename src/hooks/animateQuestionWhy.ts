@@ -1,3 +1,4 @@
+import { bindHomeArtwork, homeArtworkSource } from "../utils/homeArtworkSource";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { HOME_SCRUB } from "./homeMotion";
@@ -74,12 +75,12 @@ export function animateQuestionWhy(
   clip.append(silhouette);
   defs.append(clip);
   const image = document.createElementNS(svgNamespace, "image");
-  image.setAttribute("href", bubble.src);
+  image.setAttribute("data-home-src", homeArtworkSource(bubble));
   image.setAttribute("width", "208");
   image.setAttribute("height", "253");
   image.setAttribute("clip-path", `url(#${clipId})`);
   sourceGlyph.append(defs, image);
-  const targetUrl = heading.querySelector("image")!.href.baseVal;
+  const targetUrl = homeArtworkSource(heading.querySelector("image"));
   const targetGlyph = document.createElementNS(svgNamespace, "svg");
   targetGlyph.setAttribute("viewBox", "0 0 824 136");
   targetGlyph.setAttribute("preserveAspectRatio", "none");
@@ -92,7 +93,7 @@ export function animateQuestionWhy(
     part.setAttribute("viewBox", `${start} 0 ${end - start} 136`);
     part.setAttribute("overflow", "hidden");
     const artwork = document.createElementNS(svgNamespace, "image");
-    artwork.setAttribute("href", targetUrl);
+    artwork.setAttribute("data-home-src", targetUrl);
     artwork.setAttribute("width", "824");
     artwork.setAttribute("height", "136");
     part.append(artwork);
@@ -101,6 +102,8 @@ export function animateQuestionWhy(
   });
   sprite.append(sourceGlyph, targetGlyph);
   root.append(frame, sprite);
+  const stopSourceArtwork = bindHomeArtwork(bubble, sourceGlyph);
+  const stopTargetArtwork = bindHomeArtwork(heading, targetGlyph);
 
   const stages = [source, destination];
   const originalOpacity = stages.map((stage) => stage.style.opacity);
@@ -273,6 +276,8 @@ export function animateQuestionWhy(
   refresh();
   return () => {
     disposed = true;
+    stopSourceArtwork();
+    stopTargetArtwork();
     ScrollTrigger.removeEventListener("refreshInit", beforeRefresh);
     ScrollTrigger.removeEventListener("refresh", refresh);
     mediaEvents.removeEventListener("matchMediaInit", rememberMediaPosition);

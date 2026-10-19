@@ -1,3 +1,4 @@
+import { QueuedImage } from "../../../common/QueuedImage";
 import type { ReactNode } from "react";
 import { DocumentViewer } from "../../documents/DocumentViewer";
 import { WikiContentBlocks } from "../../WikiRoutePage";
@@ -120,7 +121,7 @@ function SoftwareRegistryVideo() {
     softwareVideo.uploadUrl || getSoftwareResource(softwareVideo.fileName);
   return (
     <figure className="wiki-figure wiki-figure--labelled software-registry-video">
-      <img
+      <QueuedImage
         src={url}
         alt={softwareVideo.alt}
         loading="lazy"
