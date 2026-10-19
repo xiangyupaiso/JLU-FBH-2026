@@ -1,3 +1,27 @@
+/* Finale navigation owns its layout here, independently of the story artwork. */
+/* Clip the pinned scene without letting native focus scroll its contents. */
+.home-story.has-story-motion .story-finale:has(.story-hope-links) {
+  overflow: clip;
+}
+.story-hope-links {
+  --sheep-size: clamp(76px, 6.6vw, 106px);
+  position: absolute;
+  z-index: 10;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5% 6.5%;
+  pointer-events: none;
+}
+.story-hope-group {
+  position: relative;
+  display: grid;
+  align-content: center;
+  gap: clamp(18px, 3svh, 34px);
+  width: clamp(250px, 25vw, 380px);
+  pointer-events: auto;
+}
 .story-hope-entry {
   position: relative;
   z-index: 1;
@@ -6,61 +30,145 @@
 .story-hope-entry.is-previewing {
   z-index: 3;
 }
-/* Base layout lives in home-story.css; keep the finale's existing geometry. */
 .story-hope-entry .story-hope-card {
-  font-family: var(--font-editorial) !important;
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) var(--sheep-size);
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+  min-height: clamp(90px, 12svh, 118px);
+  padding: 8px 4px 8px 12px;
   border: 0;
-  border-radius: 6px;
   background: transparent;
+  color: #694753;
+  font-family: var(--font-editorial) !important;
+  text-align: left;
+  text-decoration: none;
   cursor: pointer;
+  transition: color 240ms var(--ease-out);
+}
+.story-hope-group--left .story-hope-card {
+  grid-template-columns: var(--sheep-size) minmax(0, 1fr);
+  padding-inline: 4px 12px;
+}
+.home-explore-copy {
+  position: relative;
+  display: grid;
+  grid-row: 1;
+  min-width: 0;
+}
+.story-hope-group--left .home-explore-copy {
+  grid-column: 2;
+  justify-items: end;
+  text-align: right;
+}
+.home-explore-label {
+  position: relative;
+  width: fit-content;
+  font: 400 clamp(23px, 2.05vw, 32px)/1.18 var(--font-editorial);
+  letter-spacing: -0.025em;
+}
+.home-explore-arrow {
+  position: absolute;
+  top: 0.2em;
+  left: calc(100% + 8px);
+  opacity: 0;
+  transform: translate(-3px, 3px);
   transition:
-    color 220ms var(--ease-out),
-    transform 220ms var(--ease-out),
-    scale 180ms var(--ease-out);
+    opacity 180ms var(--ease-out),
+    transform 280ms var(--ease-out);
+}
+.home-explore-mascot {
+  --sheep-greeting: home-sheep-nod;
+  --sheep-lean: -3deg;
+  position: relative;
+  display: block;
+  grid-row: 1;
+  grid-column: 2;
+  justify-self: start;
+  width: var(--sheep-size);
+  aspect-ratio: 1;
+}
+.story-hope-group--left .home-explore-mascot {
+  grid-column: 1;
+  justify-self: end;
+}
+.home-explore-mascot img {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 4px #82455512);
+  transform-origin: 50% 86%;
+  /* Optical framing is independent of the greeting's animated transform. */
+  translate: var(--mascot-x, 0%) var(--mascot-y, 0%);
+  scale: var(--mascot-scale, 1);
+}
+/* Ground the painted cutouts without putting a surface behind the whole row. */
+.home-explore-mascot::before {
+  content: "";
+  position: absolute;
+  inset: auto 22% 2%;
+  height: 7%;
+  border-radius: 50%;
+  background: radial-gradient(ellipse, #82455524, #82455500 72%);
+  opacity: 0;
+  transform: scaleX(0.8);
+  transition:
+    opacity 260ms var(--ease-out),
+    transform 400ms var(--ease-out);
 }
 .story-hope-entry.is-previewing .story-hope-card,
 .story-hope-entry .story-hope-card:focus-visible {
-  transform: translateY(-2px);
+  color: #873d58;
 }
+.story-hope-entry.is-previewing .home-explore-arrow {
+  opacity: 0.7;
+  transform: none;
+}
+.story-hope-entry.is-previewing .home-explore-mascot::before {
+  opacity: 1;
+  transform: none;
+}
+.story-hope-entry.is-previewing .home-explore-mascot img {
+  animation: var(--sheep-greeting) 780ms cubic-bezier(0.25, 0.6, 0.3, 1) both;
+}
+/* Keep the keyboard cue local to the title, matching the frameless pointer state. */
 .story-hope-entry .story-hope-card:focus-visible {
-  outline: 2px solid #9c5871;
-  outline-offset: 4px;
+  outline: none;
 }
-.story-hope-entry .story-hope-card:active {
-  scale: 0.98;
+.story-hope-card:focus-visible .home-explore-label {
+  outline: 2px solid #9c5871;
+  outline-offset: 6px;
+  border-radius: 3px;
+}
+.story-hope-entry .story-hope-card:active .home-explore-label {
+  opacity: 0.7;
 }
 .home-explore-preview {
   position: absolute;
-  top: 50%;
-  left: calc(100% + 20px);
-  width: clamp(240px, 21vw, 300px);
-  padding: 18px 20px;
-  border: 1px solid #e7d2d8;
-  border-radius: 12px;
-  background: #fff9f5;
-  color: #694753;
-  box-shadow: 0 8px 24px #69475312;
-  isolation: isolate;
-  translate: 0 -50%;
+  top: calc(100% + 10px);
+  right: 0;
+  width: min(260px, 100%);
+  color: #73515b;
+  font: 400 12px/1.55 var(--font-sans);
+  letter-spacing: 0;
+  text-wrap: pretty;
   opacity: 0;
   visibility: hidden;
-  transform: translateY(6px);
+  transform: translateY(4px);
   pointer-events: none;
   transition:
-    opacity 200ms var(--ease-out),
-    transform 220ms var(--ease-out),
-    visibility 200ms;
+    opacity 180ms var(--ease-out),
+    transform 280ms var(--ease-out),
+    visibility 180ms;
 }
 .story-hope-group--right .home-explore-preview {
-  left: auto;
-  right: calc(100% + 20px);
-}
-/* The transparent bridge keeps a hovered description open across the gap. */
-.home-explore-preview::after {
-  content: "";
-  position: absolute;
-  inset: 0 -22px;
-  z-index: -1;
+  left: 0;
+  right: auto;
 }
 .story-hope-entry.is-previewing .home-explore-preview {
   opacity: 1;
@@ -68,37 +176,266 @@
   transform: none;
   pointer-events: auto;
 }
-.story-hope-entry .home-explore-preview p {
-  margin: 0;
-  font: 400 15px/1.65 var(--font-sans);
+.home-explore-topic {
+  display: block;
+}
+/* The visible hint stays concise; assistive technology gets the full summary. */
+.home-explore-summary {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+}
+.story-hope-links[inert] .home-explore-preview {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+.story-hope-links[inert] .home-explore-mascot img {
+  animation: none;
+}
+/* One greeting per entry; the original flat illustrations stay intact. */
+[data-hope-card="engineering"] .home-explore-mascot {
+  --sheep-greeting: home-sheep-peek;
+  --mascot-scale: 1.055;
+  --mascot-x: 8.4%;
+  --mascot-y: -0.4%;
+}
+/* The isolated export speck sits beyond x=650; the artwork ends at x=521. */
+[data-hope-card="engineering"] .home-explore-mascot img {
+  clip-path: inset(0 18% 0 0);
+}
+[data-hope-card="sustainability"] .home-explore-mascot {
+  --sheep-greeting: home-sheep-hop;
+}
+[data-hope-card="contribution"] .home-explore-mascot {
+  --sheep-greeting: home-sheep-bow;
+  --mascot-scale: 0.98;
+  --mascot-x: -0.8%;
+  --mascot-y: 0.3%;
+}
+[data-hope-card="model"] .home-explore-mascot {
+  --sheep-lean: 3deg;
+  --mascot-scale: 1.06;
+  --mascot-x: 3.7%;
+  --mascot-y: 2.3%;
+}
+[data-hope-card="software"] .home-explore-mascot {
+  --sheep-greeting: home-sheep-peek;
+  --sheep-lean: 2deg;
+  --mascot-scale: 1.035;
+  --mascot-x: -0.8%;
+  --mascot-y: -0.3%;
+}
+@keyframes home-sheep-nod {
+  0%,
+  100% {
+    transform: none;
+  }
+  30% {
+    transform: translateY(2px) rotate(var(--sheep-lean));
+  }
+  62% {
+    transform: translateY(-2px) rotate(1deg);
+  }
+  82% {
+    transform: translateY(1px);
+  }
+}
+@keyframes home-sheep-peek {
+  0%,
+  100% {
+    transform: none;
+  }
+  32% {
+    transform: translateY(-3px) rotate(var(--sheep-lean));
+  }
+  66% {
+    transform: translateY(-1px) rotate(1deg);
+  }
+}
+@keyframes home-sheep-hop {
+  0%,
+  100% {
+    transform: none;
+  }
+  18% {
+    transform: translateY(2px) scale(1.015, 0.98);
+  }
+  43% {
+    transform: translateY(-6px) rotate(-2deg);
+  }
+  70% {
+    transform: translateY(1px) scale(1.01, 0.99);
+  }
+  86% {
+    transform: translateY(-1px);
+  }
+}
+@keyframes home-sheep-bow {
+  0%,
+  100% {
+    transform: none;
+  }
+  36% {
+    transform: translateY(2px) rotate(3deg) scaleY(0.98);
+  }
+  72% {
+    transform: translateY(-1px) rotate(-1deg);
+  }
+}
+/* Keep the existing player outside the mascot column on smaller viewports. */
+@media (max-width: 1100px) {
+  .home-explore-preview {
+    top: calc(100% + 7px);
+    font-size: 11px;
+  }
+  body:has(.story-finale-explore[data-explore-in-view="true"]) .home-playback {
+    top: calc(var(--header-height) + 10px);
+    bottom: auto;
+    align-items: start;
+    width: auto;
+  }
+  body:has(.story-finale-explore[data-explore-in-view="true"])
+    .home-playback-bar {
+    flex-direction: row;
+    width: auto;
+    padding: 3px 6px;
+  }
+  body:has(.story-finale-explore[data-explore-in-view="true"])
+    .home-playback-scenes-toggle::before {
+    top: 14px;
+    left: -3px;
+    width: 1px;
+    height: 16px;
+  }
+}
+@media (max-width: 1100px) and (min-width: 801px) {
+  .story-hope-links {
+    --sheep-size: 68px;
+    padding-inline: 4%;
+  }
+  .story-hope-group {
+    width: 28%;
+  }
+  .home-explore-label {
+    font-size: clamp(20px, 2.4vw, 26px);
+  }
 }
 @media (max-width: 800px) {
-  .story-hope-group .home-explore-preview {
-    top: auto;
-    bottom: calc(100% + 12px);
-    left: 0;
+  body:has(.story-finale-explore[data-explore-in-view="true"])
+    .circure-back-to-top {
+    left: 14px;
     right: auto;
-    width: min(280px, 80vw);
-    padding: 16px;
-    translate: none;
   }
-  .story-hope-group--right .home-explore-preview {
-    left: auto;
-    right: 0;
+  .story-hope-links {
+    --sheep-size: clamp(42px, 11vw, 66px);
+    align-items: end;
+    gap: 14px;
+    padding: 0 5% max(24px, 4svh);
+  }
+  .story-hope-group {
+    width: calc(50% - 7px);
+    gap: 12px;
+  }
+  .story-hope-entry .story-hope-card {
+    min-height: clamp(66px, 9svh, 86px);
+    padding: 6px 0 6px 5px;
+    gap: 4px;
+  }
+  .story-hope-group--left .story-hope-card {
+    padding-inline: 0 5px;
+  }
+  .home-explore-label {
+    font-size: clamp(15px, 3.9vw, 26px);
+    letter-spacing: -0.035em;
+  }
+  .home-explore-preview {
+    top: calc(100% + 6px);
+    font-size: 10px;
+    line-height: 1.4;
+  }
+  .home-explore-arrow {
+    left: calc(100% + 3px);
+    width: 11px;
+    height: 11px;
+  }
+}
+@media (max-height: 500px) and (min-width: 801px) {
+  .story-hope-links {
+    --sheep-size: 62px;
+  }
+  .story-hope-group {
+    gap: 4px;
+  }
+  .story-hope-entry .story-hope-card {
+    min-height: 74px;
+  }
+}
+@media (max-height: 500px) and (orientation: landscape) {
+  body:has(.story-finale-explore[data-explore-in-view="true"]) .home-playback {
+    top: calc(var(--header-height) + 4px);
+    left: 50%;
+    right: auto;
+    translate: -50% 0;
+  }
+  body:has(.story-finale-explore[data-explore-in-view="true"])
+    .circure-back-to-top {
+    top: calc(var(--header-height) + 8px);
+    left: 14px;
+    right: auto;
+    bottom: auto;
+    width: 44px;
+    height: 44px;
+  }
+}
+@media (max-width: 800px) and (max-height: 500px) and (orientation: landscape) {
+  .story-finale-explore .story-art {
+    top: 50%;
+    width: 46%;
+  }
+  .story-hope-links {
+    --sheep-size: 44px;
+    align-items: center;
+    padding: 12px 4%;
+  }
+  .story-hope-group {
+    width: 29%;
+  }
+  .home-explore-label {
+    font-size: clamp(15px, 2.5vw, 20px);
+  }
+}
+@media (max-width: 360px) {
+  .story-hope-links {
+    --sheep-size: 36px;
+  }
+  .story-hope-entry .story-hope-card {
+    padding-inline: 2px 0;
+    gap: 3px;
+  }
+  .story-hope-group--left .story-hope-card {
+    padding-inline: 0 2px;
+  }
+  .home-explore-label {
+    font-size: 14px;
   }
 }
 @media (prefers-reduced-motion: reduce) {
   .home-explore-preview,
-  .story-hope-entry .story-hope-card,
-  .story-hope-entry .story-hope-card span {
-    transform: none;
+  .home-explore-mascot,
+  .home-explore-mascot::before,
+  .home-explore-mascot img,
+  .home-explore-arrow,
+  .story-hope-entry .story-hope-card {
     transition: none;
   }
-  .story-hope-entry .story-hope-card:active {
-    scale: none;
-  }
-  .story-hope-entry.is-previewing .story-hope-card,
-  .story-hope-entry .story-hope-card:focus-visible {
+  .home-explore-arrow,
+  .home-explore-preview {
     transform: none;
+  }
+  .story-hope-entry.is-previewing .home-explore-mascot img {
+    animation: none;
   }
 }

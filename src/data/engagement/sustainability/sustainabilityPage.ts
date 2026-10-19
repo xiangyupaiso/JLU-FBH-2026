@@ -301,8 +301,8 @@ export const sustainabilityPage: WikiPageContent = {
   ],
   next: {
     path: "/roster",
-    label: "Meet Our Team",
-    title: "United by a Shared Vision for Life",
-    description: "Global impact always begins with dedicated individuals. Return to our roster to meet the students and mentors whose collective passion brought CirCure to life.",
+    label: "Roster",
+    title: "Meet the People Behind CirCure",
+    description: "The work described here depends on people across research, education and engagement. Meet the students, advisors and mentors who brought their different skills to CirCure.",
   },
 };

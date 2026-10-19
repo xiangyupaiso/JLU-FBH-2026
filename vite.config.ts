@@ -125,6 +125,7 @@ export default () => {
       rollupOptions: {
         input: {
           wiki: resolve("index.html"),
+          visualDesignStudy: resolve("visual-design-study.html"),
         },
       },
     },

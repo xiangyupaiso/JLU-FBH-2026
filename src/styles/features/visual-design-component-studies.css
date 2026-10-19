@@ -1,0 +1,223 @@
+* {
+  box-sizing: border-box;
+}
+html,
+body {
+  margin: 0;
+  min-width: 0;
+  background: #fcfaf4;
+  color: #243d2c;
+}
+.component-study {
+  max-width: 1120px;
+  margin: auto;
+  padding: 28px;
+  font-family: var(--font-sans);
+}
+.component-study__header {
+  max-width: 70ch;
+  margin-bottom: 28px;
+}
+.component-study__header h1 {
+  font: 500 24px/1.4 var(--font-sans);
+  margin: 8px 0 14px;
+}
+.component-study__header p {
+  font: 400 12px/1.8 var(--font-sans);
+  margin: 0;
+}
+.component-study__header p:first-child {
+  color: #84382b;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+.component-study__footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+  font-size: 11px;
+  margin-top: 24px;
+}
+.component-study__footer a {
+  color: inherit;
+}
+.component-canvas {
+  position: relative;
+  min-height: 300px;
+  isolation: isolate;
+}
+/* Preserve each component's own text, focus and artwork; remove page positioning. */
+.component-study--explore .component-canvas {
+  min-height: 480px;
+}
+.component-study--explore .story-hope-links {
+  position: relative;
+  min-height: 460px;
+  padding: 30px;
+  gap: 42px;
+}
+.component-study--explore .story-hope-group {
+  flex: 1;
+  width: auto;
+  max-width: 400px;
+}
+.component-study--ribbon .component-canvas {
+  padding-top: 60px;
+}
+.component-study--navigation .component-canvas {
+  height: 260px;
+}
+.component-study--navigation .site-header {
+  position: absolute;
+  inset: 0 auto auto 0;
+  width: 100%;
+}
+body[data-state="compact"] .site-header {
+  --home-handoff: 1 !important;
+  --home-bar-opacity: 0 !important;
+  --home-label-opacity: 0 !important;
+  --home-float-opacity: 1 !important;
+  --home-float-label-opacity: 1 !important;
+}
+.component-study--controller .component-canvas {
+  min-height: 570px;
+}
+.component-study--controller .home-playback {
+  position: absolute;
+  inset: 0 10px 0 auto;
+}
+.component-study--controller .home-playback-scenes {
+  max-height: 480px;
+}
+.is-embedded .component-study {
+  padding: 22px;
+}
+.is-raw .component-study {
+  padding: 0;
+  max-width: none;
+}
+.is-raw[data-study="explore"] .component-canvas {
+  min-height: 210px;
+}
+.is-raw[data-study="explore"] .story-hope-links {
+  padding: 24px;
+  min-height: 200px;
+  align-items: center;
+  --sheep-size: 90px;
+}
+.is-raw[data-study="explore"] .story-hope-group--right,
+.is-raw[data-study="explore"] .story-hope-entry:not(:first-child) {
+  display: none;
+}
+.is-raw[data-study="explore"] .story-hope-group--left {
+  max-width: none;
+}
+.is-raw[data-study="explore"] .story-hope-card {
+  min-height: 130px;
+  gap: 16px;
+}
+.is-raw[data-study="explore"] .home-explore-label {
+  font-size: 30px;
+}
+.is-raw[data-study="explore"] .home-explore-preview {
+  font-size: 12px;
+}
+.is-raw[data-study="ribbon"] .component-canvas {
+  padding-top: 60px;
+  min-height: 540px;
+}
+.is-raw[data-study="navigation"] .component-canvas {
+  height: 220px;
+}
+.is-raw[data-study="navigation"][data-state="compact"] .component-canvas {
+  height: 170px;
+}
+.is-capture .component-study {
+  max-width: none;
+  padding: 0;
+  margin: 0;
+}
+.is-capture {
+  width: 1200px;
+  overflow: visible;
+}
+.is-capture[data-study="ribbon"] {
+  width: 2240px;
+}
+.is-capture[data-study="navigation"][data-state="full"] {
+  width: 2400px;
+}
+.is-capture .component-study {
+  width: 100%;
+}
+.is-capture .component-canvas {
+  zoom: 3;
+  width: 400px;
+}
+.is-capture[data-study="explore"] .component-canvas {
+  width: 400px;
+  min-height: 200px;
+}
+.is-capture[data-study="explore"] .story-hope-links {
+  padding: 26px;
+  min-height: 200px;
+}
+.is-capture[data-study="explore"] .story-hope-links {
+  align-items: center;
+  --sheep-size: 90px;
+}
+.is-capture[data-study="explore"] .story-hope-card {
+  min-height: 130px;
+  gap: 16px;
+}
+.is-capture[data-study="explore"] .home-explore-label {
+  font-size: 30px;
+}
+.is-capture[data-study="explore"] .home-explore-preview {
+  font-size: 12px;
+}
+.is-capture[data-study="explore"] .story-hope-group--right,
+.is-capture[data-study="explore"] .story-hope-entry:not(:first-child) {
+  display: none;
+}
+.is-capture[data-study="explore"] .story-hope-group--left {
+  max-width: none;
+}
+.is-capture[data-study="ribbon"] .component-canvas {
+  zoom: 2;
+  width: 1120px;
+  min-height: 400px;
+  padding: 36px 0 0;
+}
+.is-capture[data-study="navigation"] .component-canvas {
+  zoom: 2;
+  width: 1200px;
+  height: 200px;
+}
+.is-capture[data-study="navigation"][data-state="compact"] .component-canvas {
+  zoom: 3;
+  width: 400px;
+  height: 180px;
+}
+.is-capture[data-study="controller"] .component-canvas {
+  width: 400px;
+  min-height: 570px;
+}
+@media (max-width: 640px) {
+  body:not(.is-capture):not(.is-raw) .component-study {
+    padding: 20px;
+  }
+  body:not(.is-capture):not(.is-raw) .story-hope-links {
+    flex-direction: column;
+    padding: 12px;
+    gap: 20px;
+  }
+  body:not(.is-capture):not(.is-raw) .story-hope-group {
+    width: 100%;
+    max-width: none;
+  }
+  body:not(.is-capture):not(.is-raw) .story-hope-card {
+    min-height: 100px;
+  }
+}

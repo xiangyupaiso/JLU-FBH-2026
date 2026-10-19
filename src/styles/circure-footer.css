@@ -36,11 +36,14 @@
   text-align: center;
 }
 
-/* Home alone carries the painted pink into paper; the finale stays untouched. */
-.circure-footer.is-home-page > .circure-footer__panel {
+/* Carry each page into paper with the same entry spacing. */
+.circure-footer:is(.is-home-page, .is-route-page) > .circure-footer__panel {
   --footer-entry-height: clamp(220px, 25vw, 360px);
   padding-top: clamp(156px, 17vw, 248px);
   border-top: 0;
+}
+
+.circure-footer.is-home-page > .circure-footer__panel {
   /* Ease the pigment into paper at both ends to avoid a visible tonal shelf. */
   background:
     linear-gradient(
@@ -63,7 +66,45 @@
     var(--footer-paper);
 }
 
-/* The original soft upper arc stays entirely inside the Home footer. */
+/* Match the closing section exactly, then ease its module colour into cream.
+   Sample Home's smoothstep easing every 4% so both ends flatten gently.
+   The palette remains the single source of truth for all five modules. */
+.circure-footer.is-route-page > .circure-footer__panel {
+  background:
+    linear-gradient(
+        to bottom,
+        var(--route-base) 0%,
+        color-mix(in srgb, var(--route-base), var(--footer-paper) 0.467%) 4%,
+        color-mix(in srgb, var(--route-base), var(--footer-paper) 1.818%) 8%,
+        color-mix(in srgb, var(--route-base), var(--footer-paper) 3.974%) 12%,
+        color-mix(in srgb, var(--route-base), var(--footer-paper) 6.861%) 16%,
+        color-mix(in srgb, var(--route-base), var(--footer-paper) 10.4%) 20%,
+        color-mix(in srgb, var(--route-base), var(--footer-paper) 14.515%) 24%,
+        color-mix(in srgb, var(--route-base), var(--footer-paper) 19.13%) 28%,
+        color-mix(in srgb, var(--route-base), var(--footer-paper) 24.166%) 32%,
+        color-mix(in srgb, var(--route-base), var(--footer-paper) 29.549%) 36%,
+        color-mix(in srgb, var(--route-base), var(--footer-paper) 35.2%) 40%,
+        color-mix(in srgb, var(--route-base), var(--footer-paper) 41.043%) 44%,
+        color-mix(in srgb, var(--route-base), var(--footer-paper) 47.002%) 48%,
+        color-mix(in srgb, var(--route-base), var(--footer-paper) 52.998%) 52%,
+        color-mix(in srgb, var(--route-base), var(--footer-paper) 58.957%) 56%,
+        color-mix(in srgb, var(--route-base), var(--footer-paper) 64.8%) 60%,
+        color-mix(in srgb, var(--route-base), var(--footer-paper) 70.451%) 64%,
+        color-mix(in srgb, var(--route-base), var(--footer-paper) 75.834%) 68%,
+        color-mix(in srgb, var(--route-base), var(--footer-paper) 80.87%) 72%,
+        color-mix(in srgb, var(--route-base), var(--footer-paper) 85.485%) 76%,
+        color-mix(in srgb, var(--route-base), var(--footer-paper) 89.6%) 80%,
+        color-mix(in srgb, var(--route-base), var(--footer-paper) 93.139%) 84%,
+        color-mix(in srgb, var(--route-base), var(--footer-paper) 96.026%) 88%,
+        color-mix(in srgb, var(--route-base), var(--footer-paper) 98.182%) 92%,
+        color-mix(in srgb, var(--route-base), var(--footer-paper) 99.533%) 96%,
+        var(--footer-paper) 100%
+      )
+      top / 100% var(--footer-entry-height) no-repeat,
+    var(--footer-paper);
+}
+
+/* Home keeps its original arc; the five reader modules use only the fade. */
 .circure-footer.is-home-page > .circure-footer__panel::before {
   content: "";
   position: absolute;
@@ -420,12 +461,13 @@
 }
 
 @media (max-width: 680px) {
-  .circure-footer.is-home-page .circure-footer__marks--row,
-  .circure-footer.is-home-page .circure-footer__mark-row[data-mark="clinical"] {
+  .circure-footer:is(.is-home-page, .is-route-page) .circure-footer__marks--row,
+  .circure-footer:is(.is-home-page, .is-route-page)
+    .circure-footer__mark-row[data-mark="clinical"] {
     max-width: 100%;
   }
 
-  .circure-footer.is-home-page
+  .circure-footer:is(.is-home-page, .is-route-page)
     .circure-footer__mark-row[data-mark="clinical"]
     img:last-child {
     min-width: 0;

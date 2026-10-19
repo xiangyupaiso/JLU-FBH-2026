@@ -1,6 +1,9 @@
-/* Section 06 stays an illustration, using the original artwork positions. */
+/* Keep the original illustration, with more air between the title and ring. */
 #why-circrna {
   --scene-hold: 100svh;
+}
+#why-circrna .circrna-heading-art {
+  top: 3.4% !important;
 }
 #why-circrna .circrna-caption {
   position: absolute;

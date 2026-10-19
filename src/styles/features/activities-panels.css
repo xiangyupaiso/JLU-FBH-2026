@@ -1,9 +1,23 @@
+/* This standalone page and its sibling footer share one warm paper surface. */
+.activities-page.wiki-page--route,
+.circure-footer.is-route-page[data-route="/activities"] {
+  --activities-paper: #f8f1e2;
+  --route-base: var(--activities-paper);
+}
+
+/* Warm paper already suits the footer; no module-colour wash is needed. */
+.circure-footer.is-route-page[data-route="/activities"] {
+  --footer-paper: var(--activities-paper);
+}
+
 /* The requested full-screen layout uses document scrolling, bypassing the
    shared pinned reader without changing its global dimensions. */
 .activities-page.wiki-page--route {
-  --activities-paper: #f8f1e2;
   --activities-muted: #706557;
   --activities-ink: #3e2d14;
+  /* Standalone routes also supply the shared closing prompt's palette. */
+  --route-main: #f5cf6f;
+  --route-soft: #fee9b5;
   color: var(--activities-ink);
   background: var(--activities-paper);
   margin-top: calc(-1 * var(--header-height));
