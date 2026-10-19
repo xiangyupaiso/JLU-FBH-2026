@@ -256,7 +256,7 @@ export const cycle3Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "[Further details: Experiments — circRNA preparation and characterisation](https://2026.igem.wiki/jlu-fbh/experiments)"
+          "[Further details: Experiments — circRNA preparation and characterisation](https://2026.igem.wiki/jlu-fbh/experiments#exp-3-1)"
 ]
         }
           ]
@@ -349,7 +349,7 @@ export const cycle3Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "[Further details: Results — RNA persistence](https://2026.igem.wiki/jlu-fbh/results)"
+          "[Further details: Results — RNA persistence](https://2026.igem.wiki/jlu-fbh/results#results-5-1)"
 ]
         }
           ]
@@ -570,7 +570,7 @@ export const cycle3Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "[Further details: Software — TorusFold outputs](https://2026.igem.wiki/jlu-fbh/software)"
+          "[Further details: Software — TorusFold outputs](https://2026.igem.wiki/jlu-fbh/software#software-validation-torusfold-refinement-and-delivered-model-verification)"
 ]
         }
           ]
@@ -679,7 +679,7 @@ export const cycle3Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "[Further details: Results — translation and DC maturation](https://2026.igem.wiki/jlu-fbh/results)"
+          "[Further details: Results — translation and DC maturation](https://2026.igem.wiki/jlu-fbh/results#results-round2)"
 ]
         }
           ]
@@ -792,7 +792,7 @@ export const cycle3Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "[Further details: Results — T-cell phenotypes](https://2026.igem.wiki/jlu-fbh/results)"
+          "[Further details: Results — T-cell phenotypes](https://2026.igem.wiki/jlu-fbh/results#results-4-3)"
 ]
         }
           ]
@@ -877,7 +877,7 @@ export const cycle3Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "[Further details: Results — second-round ELISpot](https://2026.igem.wiki/jlu-fbh/results)"
+          "[Further details: Results — second-round ELISpot](https://2026.igem.wiki/jlu-fbh/results#results-4-5)"
 ]
         }
           ]
@@ -968,7 +968,7 @@ export const cycle3Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "[Further details: Results — MDA-MB-231 cytotoxicity](https://2026.igem.wiki/jlu-fbh/results)"
+          "[Further details: Results — MDA-MB-231 cytotoxicity](https://2026.igem.wiki/jlu-fbh/results#results-4-6)"
 ]
         }
           ]
@@ -1042,7 +1042,7 @@ export const cycle3Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "[Further details: Experiments — target-cell comparison](https://2026.igem.wiki/jlu-fbh/experiments)"
+          "[Further details: Experiments — target-cell comparison](https://2026.igem.wiki/jlu-fbh/experiments#exp-5-2)"
 ]
         }
           ]
@@ -1127,7 +1127,7 @@ export const cycle3Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "[Further details: Results — empty-LNP viability](https://2026.igem.wiki/jlu-fbh/results)"
+          "[Further details: Results — empty-LNP viability](https://2026.igem.wiki/jlu-fbh/results#results-5-3)"
 ]
         }
           ]
@@ -1193,7 +1193,7 @@ export const cycle3Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "[Further details: Software — CircuForge](https://2026.igem.wiki/jlu-fbh/software)"
+          "[Further details: Software — CircuForge](https://2026.igem.wiki/jlu-fbh/software#software-user-testing-and-community-reuse-circuforge-user-testing)"
 ]
         }
           ]
@@ -1273,7 +1273,7 @@ export const cycle3Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "[Further details: Education — Virtual Laboratory and the Pilu Town activity](https://2026.igem.wiki/jlu-fbh/education)"
+          "[Further details: Education — Virtual Laboratory and the Pilu Town activity](https://2026.igem.wiki/jlu-fbh/education#pilu-town)"
 ]
         }
           ]
@@ -1355,7 +1355,7 @@ export const cycle3Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "[Further details: Education — Synbio Classroom](https://2026.igem.wiki/jlu-fbh/education)"
+          "[Further details: Education — Synbio Classroom](https://2026.igem.wiki/jlu-fbh/education#synbio-classroom)"
 ]
         }
           ]

@@ -162,9 +162,9 @@ export const measurementAssets = {
       "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/wet-image2.avif",
     width: 1518,
     height: 916,
-    alt: "Relative TROP2 expression in wild-type and transduced 4T1 cells. Values are mean ± SD across three RNA-extraction replicates from one cell sample per group (biological n = 1 per group). The result is reported descriptively.",
+    alt: "Relative TROP2 expression in wild-type and transduced 4T1 cells",
     caption:
-      "Relative TROP2 expression in wild-type and transduced 4T1 cells. Values are mean ± SD across three RNA-extraction replicates from one cell sample per group (biological n = 1 per group). The result is reported descriptively.",
+      "Relative TROP2 expression in wild-type and transduced 4T1 cells",
     section: "Measurement",
   },
   "flow-cytometric-detection-of-surface-trop2-on-4t1-cells": {

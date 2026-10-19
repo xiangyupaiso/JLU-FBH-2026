@@ -12,6 +12,10 @@ import { DosePredictionExplorer } from "../shared/DosePredictionExplorer";
 import { ImageAnchorMap } from "../shared/ImageAnchorMap";
 import { scrollReaderToId } from "../../../../utils/scrollReaderToTarget";
 import { Trop2ComplexViewer } from "../Trop2ComplexViewer";
+import { SdgBoundaryMatrix } from "../engagement/sustainability/SdgBoundaryMatrix";
+import { SdgInteractionHeatmap } from "../engagement/sustainability/SdgInteractionHeatmap";
+import { SdgDimensionChord } from "../engagement/sustainability/SdgDimensionChord";
+import { SdgContributionBubbles } from "../engagement/sustainability/SdgContributionBubbles";
 import {
   ModelBurialHeatmap,
   ModelConfidenceScatter,
@@ -38,6 +42,7 @@ import {
   parseModelFigureCaption,
 } from "../../../../data/drylab/modelCitationIndex";
 import "../../../../styles/features/model-panels.css";
+import "../../../../styles/features/sustainability-panels.css";
 
 const citationIndex = buildModelCitationIndex();
 const tint = {
@@ -54,7 +59,6 @@ export function renderModelCitedText(
   if (!caption) return renderCitedText(text, fallback, sectionId);
   return (
     <span className="model-figure-caption">
-      <span className="wiki-figure-caption-label">{caption.label}</span>
       {renderCitedText(caption.text, fallback, sectionId)}
     </span>
   );
@@ -202,6 +206,42 @@ function ModelPanelContent({
   panelKey: string;
   features: Record<string, ReactNode>;
 }) {
+  if (panel.kind === "sdg-chart") {
+    const caption = parseModelFigureCaption(panel.caption)?.text ?? panel.caption;
+    if (panel.chart === "dimensions")
+      return <SdgDimensionChord numbered={false} scrollable caption={caption} />;
+    const matrix = panel.chart === "boundary" || panel.chart === "interactions";
+    return (
+      <figure className={`model-sdg-chart${matrix ? " model-sdg-chart--matrix" : ""}`}>
+        {matrix ? (
+          <div className="model-sdg-chart__scroll" tabIndex={0} role="region" aria-label={caption}>
+            <div className="model-sdg-chart__matrix">
+              {panel.chart === "boundary" ? <SdgBoundaryMatrix /> : <SdgInteractionHeatmap />}
+            </div>
+          </div>
+        ) : (
+          <SdgContributionBubbles />
+        )}
+        <figcaption className="sust-chart-caption">{caption}</figcaption>
+      </figure>
+    );
+  }
+  if (panel.kind === "numbered-reasons")
+    return (
+      <ol className="model-numbered-reasons">
+        {panel.items.map((item) => (
+          <li key={item.title}>
+            <p className="model-numbered-reasons__title">
+              {renderModelCitedText(item.title, linkify, panelKey)}
+            </p>
+            <WikiContentBlocks
+              blocks={[{ type: "prose", paragraphs: item.paragraphs }]}
+              sectionId={panelKey}
+            />
+          </li>
+        ))}
+      </ol>
+    );
   if (panel.kind === "fold")
     return (
       <ModelFold title={panel.title}>
@@ -212,7 +252,84 @@ function ModelPanelContent({
         />
       </ModelFold>
     );
-  if (panel.kind === "tabs")
+  if (panel.kind === "tabs") {
+    if (panelKey === "model-panel-7") {
+      return (
+        <div className="model-sc-pipeline-split">
+          <figure className="wiki-figure model-sc-pipeline-split__figure" data-wiki-reveal>
+            <img
+              src={getModelImage("pipeline Sc (1).png")}
+              width={800}
+              height={560}
+              alt="Single-cell RNA sequencing workflow across TNBC samples"
+              loading="lazy"
+            />
+            <figcaption>
+              <span className="wiki-figure__label">FIG. 10</span>
+              Single-cell RNA sequencing workflow across 10 TNBC samples, identifying candidate gene expression in 81.4% of malignant cells.
+            </figcaption>
+          </figure>
+          <div className="model-sc-pipeline-split__tabs">
+            <ManuscriptTabs
+              title={panel.title}
+              entries={panel.entries.map((entry) => ({
+                title: entry.title,
+                content: (
+                  <WikiContentBlocks
+                    blocks={entry.blocks}
+                    features={features}
+                    sectionId={panelKey}
+                  />
+                ),
+              }))}
+            />
+          </div>
+        </div>
+      );
+    }
+    if (panelKey === "model-panel-8") {
+      return (
+        <ManuscriptTabs
+          title={panel.title}
+          orientation="horizontal"
+          entries={panel.entries.map((entry) => {
+            const figureBlock = entry.blocks.find((b) => b.type === "figure");
+            const otherBlocks = entry.blocks.filter(
+              (b) =>
+                b.type !== "figure" &&
+                !(
+                  b.type === "subheading" &&
+                  b.title.includes("Representative Published Tissue Images")
+                ),
+            );
+            return {
+              title: entry.title,
+              content: (
+                <div className="model-ihc-layout">
+                  {figureBlock ? (
+                    <div className="model-ihc-layout__left">
+                      <WikiContentBlocks
+                        blocks={[figureBlock]}
+                        features={features}
+                        sectionId={panelKey}
+                      />
+                    </div>
+                  ) : null}
+                  <div className="model-ihc-layout__right">
+                    <h4 className="model-ihc-layout__antigen-title">{entry.title}</h4>
+                    <WikiContentBlocks
+                      blocks={otherBlocks}
+                      features={features}
+                      sectionId={panelKey}
+                    />
+                  </div>
+                </div>
+              ),
+            };
+          })}
+        />
+      );
+    }
     return (
       <ManuscriptTabs
         title={panel.title}
@@ -228,6 +345,7 @@ function ModelPanelContent({
         }))}
       />
     );
+  }
   if (panel.kind === "transpose")
     return <TransposableTable table={panel.table} />;
   if (panel.kind === "antigen-table")
@@ -244,6 +362,46 @@ function ModelPanelContent({
 
 export function modelFeatures(): Record<string, ReactNode> {
   const features: Record<string, ReactNode> = {
+    "model-figure-1-navigation": (
+      <figure className="wiki-figure" data-wiki-reveal>
+        <ImageAnchorMap
+          src={getModelImage("AEIP structure.png")}
+          alt="Overview of the Antigen-Epitope Integration Pipeline (AEIP) workflow."
+          width={3191}
+          height={1855}
+          regions={[
+            {
+              target: "model-antigen-selection",
+              label: "Antigen Selection",
+              x: 125,
+              y: 216,
+              width: 889,
+              height: 1522,
+            },
+            {
+              target: "model-heading-3",
+              label: "Four-Layer Validation (3.1.3)",
+              x: 1132,
+              y: 216,
+              width: 965,
+              height: 1522,
+            },
+            {
+              target: "model-epitope-screening",
+              label: "Epitope Screening",
+              x: 2223,
+              y: 216,
+              width: 855,
+              height: 1522,
+            },
+          ]}
+        />
+        <figcaption>
+          <span className="wiki-figure__label">FIG. 01</span>
+          Overview of the Antigen-Epitope Integration Pipeline (AEIP) workflow.
+        </figcaption>
+      </figure>
+    ),
     "model-module-navigation": (
       <ImageAnchorMap
         src={getModelImage("Model_structure (2).png")}

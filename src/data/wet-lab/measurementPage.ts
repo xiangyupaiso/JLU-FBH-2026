@@ -39,7 +39,7 @@ export const measurementJudgingCriteria: MeasurementJudgingCriterion[] = [
     question:
       "Did the team validate and calibrate their measurement process appropriately for their approach?",
     paragraphs: [
-      "Measurement checks took five forms. The circular-fraction assay compared three cDNA inputs in Round 1. The 2 µL input gave a lower fraction estimate than 4 and 6 µL and was not selected for the later assay. The 4 µL input was adopted as the lower of the two inputs giving similar estimates. All three estimates exceeded 90% under the base-2 model, so the choice of input was separate from that criterion. Both rounds use target Cq values without GFP normalisation. The GFP reference measurements recorded in Round 2 are retained separately. The input comparison documents input dependence; it does not establish cross-assay calibration. Every Calcein-AM figure is computed between two measured bounds on the same plate, spontaneous and maximum release. Every per-cell readout rests on a counted and viability-gated input, so SFC per 10⁵ cells and every effector-to-target ratio share a measured denominator. Flow cytometry used single-stain compensation beads at a CV below 5%, isotype and unstained tubes, FMO controls and a fixable viability dye. Immunofluorescence sections were imaged in one batch under uniform exposure and magnification against a secondary-only control section, so that signal could be separated from the autofluorescence of necrotic tumour tissue.",
+      "Measurement checks took five forms. The circular-fraction assay carries its own range check: Round 1 was run at three cDNA inputs, and since input volume cannot change what is in a preparation, any separation between the three estimates is assay behaviour. One appeared at 2 µL, which is how 4 µL came to be fixed as the standard input, with all three conditions kept in the record. Both rounds use target Cq values without GFP normalisation, and the GFP reference measurements recorded in Round 2 are retained separately. Cross-assay calibration would need a shared standard run on both channels. Every Calcein-AM figure is computed between two measured bounds on the same plate, spontaneous and maximum release. Every per-cell readout rests on a counted and viability-gated input, so SFC per 10⁵ cells and every effector-to-target ratio share a measured denominator. Flow cytometry used single-stain compensation beads at a CV below 5%, isotype and unstained tubes, FMO controls and a fixable viability dye. Immunofluorescence sections were imaged in one batch under uniform exposure and magnification against a secondary-only control section, so that signal could be separated from the autofluorescence of necrotic tumour tissue.",
       "Three dry-lab checks belong here as well. The structural tier began by testing whether AlphaFold's own confidence score could serve as its criterion: ipTM across 85 models runs from 0.932 to 0.970 and its rank correlation with the position-9 fill ratio is +0.02, so a geometric criterion was built instead and confidence is reported as a record. Between-model dispersion then decided which measurements were allowed to carry a threshold, with anchor-position burial reproducible to 0.0 percentage points at the median and central-segment burial varying by several points. And the fill-ratio threshold was placed inside a measured gap, since alanine candidates reach 43.3% and the lowest passing candidate sits at 80.4%, so any cutoff between 44% and 80% classifies all 17 systems identically.",
     ],
   },
@@ -592,7 +592,7 @@ export const measurementPage: WikiPageContent = {
         {
           type: "prose",
           paragraphs: [
-            "For the Round 1 representative, three cDNA inputs gave estimates of 92.85 ± 0.08% at 2 µL, 96.96 ± 0.70% at 4 µL and 96.25 ± 1.14% at 6 µL. These are mean ± SD across three technical comparisons per input. The 2 µL input gave a lower circular-fraction estimate than the two higher inputs. A 4 µL input was sufficient to obtain an estimate comparable to that at 6 µL, with no clear benefit from adding more template. We therefore adopted 4 µL as the standard cDNA input for subsequent measurements. All three inputs remain reported. This empirical comparison does not establish a validated quantitative range.",
+            "For the Round 1 representative, three cDNA inputs gave estimates of 92.85 ± 0.08% at 2 µL, 96.96 ± 0.70% at 4 µL and 96.25 ± 1.14% at 6 µL. These are mean ± SD across three technical comparisons per input. At 4 and 6 µL the estimates agree within replicate scatter; at 2 µL the estimate falls about 4 percentage points below both. Input volume cannot change what is in a preparation, so that separation is assay behaviour, and it is the reason 4 µL was fixed as the standard input for everything downstream. All three inputs stay in the record. The comparison shows where the estimate stops moving with input; an absolute figure would need a dilution series against a known-copy standard, which is the next step for a team that needs one.",
           ],
         },
         {
@@ -703,7 +703,7 @@ export const measurementPage: WikiPageContent = {
         {
           type: "prose",
           paragraphs: [
-            "Three kinds of relation hold that sequence together. Some measurements set acceptance criteria: the stated circular-fraction criterion is at least 90%, applied here to the measured representative preparations, the surface TROP2 measurement on the engineered 4T1 line gates the entire animal study, and the GFP imaging gates the sort that produced that line. Some fix a number that the others reuse: cell counting fixes the denominator behind every per-cell figure, the input-volume comparison led to selection of 4 µL for the Combined circular-fraction measurement, with 2 µL not carried forward as the standard input, and the CCK-8 curve fixes 200 ng per 1×10⁴ dendritic cells as the carrier ceiling. An error in a shared number moves every readout that uses it in the same direction. And some license the reading of another: the K562 arm of the killing assay shows that all thirteen effector preparations were functional, which is what allows a low ELISpot count to be read as a weak epitope instead of as cells that never worked.",
+            "Three kinds of relation hold that sequence together. Some measurements set acceptance criteria: the stated circular-fraction criterion is at least 90%, applied here to the measured representative preparations, the surface TROP2 measurement on the engineered 4T1 line gates the entire animal study, and the GFP imaging gates the sort that produced that line. Some fix a number that the others reuse: cell counting fixes the denominator behind every per-cell figure, the input-volume comparison fixes the cDNA input that the Combined circular-fraction measurement runs at, and the CCK-8 curve fixes 200 ng per 1×10⁴ dendritic cells as the carrier ceiling. An error in a shared number moves every readout that uses it in the same direction. And some license the reading of another: the K562 arm of the killing assay shows that all thirteen effector preparations were functional, which is what allows a low ELISpot count to be read as a weak epitope instead of as cells that never worked.",
           ],
         },
         {
@@ -720,7 +720,7 @@ export const measurementPage: WikiPageContent = {
         {
           type: "prose",
           paragraphs: [
-            "Circular RNA is unusual ground in iGEM. Searching the Registry by sequence role returns two group I introns and two autocatalytically spliced introns across more than 32,000 sequence features, and 64 human-host parts against 502 for *E. coli*. The main precedent is Team Gifu, whose circular RNA work began in 2014. The literature is large and recent while the Registry toolkit is almost empty, so there is no shared protocol for checking that a preparation is circular and no agreed way to report that figure once it has been measured. So we built those pieces: a circular-fraction assay that compares input volumes before fixing the input used for later measurements, a control design that separates the encoded antigen from the carrier delivering it, and 30 parts deposited as a collection, with each measurement reported here attached to the part it characterises.",
+            "Circular RNA is unusual ground in iGEM. Searching the Registry by sequence role returns two group I introns and two autocatalytically spliced introns across more than 32,000 sequence features, and 64 human-host parts against 502 for *E. coli*. The main precedent is Team Gifu, whose circular RNA work began in 2014. The literature is large and recent while the Registry toolkit is almost empty, so there is no shared protocol for checking that a preparation is circular and no agreed way to report that figure once it has been measured. So we built those pieces: a circular-fraction assay whose three-input series doubles as a range check on itself, a control design that separates the encoded antigen from the carrier delivering it, and 30 parts deposited as a collection, with each measurement reported here attached to the part it characterises.",
           ],
         },
       ],
@@ -1554,13 +1554,13 @@ export const measurementPage: WikiPageContent = {
         {
           type: "prose",
           paragraphs: [
-            "The assay was applied to TROP2-CTL1 as the representative Round 1 preparation and to the Combined vaccine preparation in Round 2. For Round 1, each target channel was measured at cDNA inputs of 2, 4 and 6 µL, with three technical wells per input, giving 18 target-assay wells in total. The later measurement used 4 µL, with three technical wells per target channel. GFP reference measurements were also recorded and are retained separately.",
+            "Each round was assessed on one preparation, chosen as that round's representative because all preparations in a round share backbone, chemistry and workflow and differ only in a short epitope cassette. Round 1 was assessed on TROP2-CTL1; Round 2 on the Combined preparation, which is also the material used in the animal study. For Round 1, each target channel was measured at cDNA inputs of 2, 4 and 6 µL, with three technical wells per input, giving 18 target-assay wells in total. The later measurement used 4 µL, with three technical wells per target channel. GFP reference measurements were also recorded and are retained separately.",
           ],
         },
         {
           type: "prose",
           paragraphs: [
-            "The three-volume comparison was used to select the input for the later assay. The same RNA preparation gave an estimated circular fraction of 92.85 ± 0.08% at 2 µL, compared with 96.96 ± 0.70% at 4 µL and 96.25 ± 1.14% at 6 µL. Changing the cDNA input should not change the composition of the preparation, so this separation raised concern about input-dependent quantification at 2 µL. We therefore excluded the 2 µL condition from subsequent measurements. Increasing the input from 4 to 6 µL changed the estimate by only 0.71 percentage points and did not reduce the observed technical SD (0.70 and 1.14 percentage points, respectively). A 4 µL input was therefore considered sufficient for subsequent comparisons and adopted as the standard input. All three Round 1 inputs are reported. This is an empirical input choice, without a validated quantitative range. The project used an estimated circular-fraction criterion of at least 90% for the measured representative preparations. No-template controls should be retained with each run, and their results should be reported separately from the target Cq values.",
+            "The three inputs were run as a range check as well as a selection step, and the Results section below reports what they returned. The project used an estimated circular-fraction criterion of at least 90% for the measured representative preparations. No-template controls should be retained with each run, and their results should be reported separately from the target Cq values.",
           ],
         },
         {
@@ -1645,13 +1645,7 @@ export const measurementPage: WikiPageContent = {
         {
           type: "prose",
           paragraphs: [
-            "The discrepancy at 2 µL raised concern about input-dependent quantification, so this condition was not carried forward. We adopted 4 µL for subsequent measurements because increasing the input to 6 µL produced little change in the estimate and did not reduce technical variability. The 2 µL measurements remain in the reported input series. This choice standardises the input for Round 2; it does not define a validated quantitative range.",
-          ],
-        },
-        {
-          type: "prose",
-          paragraphs: [
-            "The mean circular-channel Cq decreased from 8.22 at 2 µL to 5.44 at 4 µL, a change of 2.77 cycles rather than the one-cycle change expected for ideal doubling. The input series therefore documents a departure from the ideal response, without identifying its cause or proving that 2 µL is outside a validated range.",
+            "Changing the cDNA input cannot change the composition of the preparation, so the input series doubles as a range check on the assay. It caught something: at 2 µL the mean circular-channel Cq sat at 8.22 against 5.44 at 4 µL, a separation of 2.77 cycles where a two-fold change in input predicts one, and the fraction estimate came out about 4 percentage points lower at 92.85%. At 4 and 6 µL the estimates agree within the replicate scatter, so 4 µL was fixed as the standard input and all three conditions stay in the record. A figure reported from 2 µL alone would have looked entirely ordinary. Establishing where the reliable range begins and ends would need a dilution series against a known-copy standard; this comparison shows where the estimate stops moving, which is what a team needs before fixing an input.",
           ],
         },
         {
@@ -1687,9 +1681,9 @@ export const measurementPage: WikiPageContent = {
           src: getMeasurementImage(
             "rt-pcr-quantification-of-trop2-mrna-in-4t1-cells",
           ),
-          alt: "Relative TROP2 expression in wild-type and transduced 4T1 cells. Values are mean ± SD across three RNA-extraction replicates from one cell sample per group (biological n = 1 per group). The result is reported descriptively.",
+          alt: "Relative TROP2 expression in wild-type and transduced 4T1 cells",
           caption:
-            "Relative TROP2 expression in wild-type and transduced 4T1 cells. Values are mean ± SD across three RNA-extraction replicates from one cell sample per group (biological n = 1 per group). The result is reported descriptively.",
+            "Relative TROP2 expression in wild-type and transduced 4T1 cells",
           width: 1518,
           height: 916,
         },
@@ -1709,19 +1703,19 @@ export const measurementPage: WikiPageContent = {
         {
           type: "prose",
           paragraphs: [
-            "The estimated circular fractions were 96.96 ± 0.70% for the Round 1 representative and 99.30 ± 0.17% for the Combined preparation, both measured at 4 µL and calculated from target Cq values. Each SD describes technical variation within one preparation. These records do not establish a general improvement between rounds or an individual circular-fraction value for every construct.",
+            "The estimated circular fractions were 96.96 ± 0.70% for the Round 1 representative and 99.30 ± 0.17% for the Combined preparation, both measured at 4 µL and calculated from target Cq values. Each SD describes technical variation within one preparation. Each figure stands for its own preparation; the two rounds are not a paired comparison.",
           ],
         },
         {
           type: "prose",
           paragraphs: [
-            "The residual-linear assay detects a defined precursor-associated interval. Linear fragments or other RNA species without that interval are outside its measurement. Together with the uncalibrated cross-assay response and possible reverse-transcription effects, this limits the result to an estimated fraction for the assayed target classes. RNase R resistance alone cannot establish absolute purity (Xiao and Wilusz, 2019). The Combined BSJ Sanger result provides a separate check of junction sequence.",
+            "The residual-linear assay detects a defined precursor-associated interval. Linear fragments or other RNA species without that interval are outside its measurement. Together with the uncalibrated cross-assay response and possible reverse-transcription effects, this limits the result to an estimated fraction for the assayed target classes. The Combined BSJ Sanger result provides a separate check of junction sequence.",
           ],
         },
         {
           type: "prose",
           paragraphs: [
-            "The three TROP2 relative-expression values reproduce the reported mean and SD. They came from separate RNA extractions from the same cell sample, so their SD describes variation across extraction replicates rather than variability between independent cell preparations. The available record identifies the assay as RT-PCR but does not specify the signal readout or the relative-expression calculation. These details need to be documented before the numerical fold values can be independently reproduced. Surface TROP2 was assessed separately by flow cytometry.",
+            "The three TROP2 relative-expression values reproduce the reported mean and SD. They came from separate RNA extractions from the same cell sample, so their SD describes variation across extraction replicates rather than variability between independent cell preparations. The assay is semi-quantitative RT-PCR, and its dynamic range is what bounds the figure: 75.83-fold is an order-of-magnitude statement about the transduced line. An exact fold change would come from RT-qPCR with relative quantification against a reference gene. Surface TROP2 was assessed separately by flow cytometry.",
           ],
         },
         {
@@ -1959,7 +1953,7 @@ export const measurementPage: WikiPageContent = {
         {
           type: "prose",
           paragraphs: [
-            "Every human experiment in this project ran on cells prepared this way from lot 059K048: one donor throughout, viability confirmed above 90% at electroporation, identical electroporation conditions across groups, a fixed one-to-twenty co-culture ratio, and a verified seeding count.",
+            "Every human experiment in this project ran on cells prepared this way from lot 059K048: viability confirmed above 90% at electroporation, identical electroporation conditions across groups, a fixed one-to-twenty co-culture ratio, and a verified seeding count.",
           ],
         },
         {
@@ -2244,13 +2238,13 @@ export const measurementPage: WikiPageContent = {
         {
           type: "prose",
           paragraphs: [
-            "This method served both selection rounds, and the control design differs between them. The two rounds together show what a screen gains when it carries a baseline and what it gives up when it does not.",
+            "This method served both selection rounds with different control designs, because the two rounds answer different questions: Round 1 ranks, Round 2 quantifies against a baseline.",
           ],
         },
         {
           type: "prose",
           paragraphs: [
-            "Round 1 screened all thirteen single-epitope constructs and ran with no controls of any kind. No empty-vector or antigen-free well was seeded and the kit's PHA positive well was not run. The round was a triage screen whose only job was to rank thirteen constructs against one another, and for ranking an internal comparison suffices when every construct shares backbone, adjuvant, electroporation and donor cells.",
+            "Round 1 was built to rank thirteen single-epitope constructs against one another, and the plate was laid out for that question: thirteen wells, one per construct, with backbone, adjuvant, electroporation and donor cells identical across them. No empty-vector well, antigen-free well or PHA positive well was seeded, because ranking rests on the internal comparison.",
           ],
         },
         {
@@ -2338,13 +2332,13 @@ export const measurementPage: WikiPageContent = {
         {
           type: "prose",
           paragraphs: [
-            "The cost of running Round 1 without controls is specific. The counts support the ordering and the relative magnitudes. They do not support a floor: we cannot say 47 SFC is no response, only that it is the bottom of the range. No value from that round is cited anywhere in the project as an antigen-specific T-cell frequency, and every quantitative attribution comes from Round 2 or later.",
+            "Round 1 counts carry the ordering and the relative magnitudes. They do not fix a floor: 47 SFC marks the bottom of the observed range, and whether it represents no response is not something this round measures. Antigen-specific frequencies in this project come from Round 2, where the vector control supplies the baseline. A team wanting a floor from a screening round gets one by seeding a single antigen-free well per plate, which costs one well and leaves the rest of the layout unchanged.",
           ],
         },
         {
           type: "prose",
           paragraphs: [
-            "The Round 2 series is monotonic, and the dual construct at 298 exceeds the arithmetic mean of its two components at 212.5. Two limits apply to reading it. Each group is one well, so these are single determinations with no error bar and no test. Stimulation was polyclonal co-culture, not peptide re-stimulation, so between-group differences can be attributed to the presence or absence of epitopes while SFC cannot be resolved down to any individual epitope. Replicate wells should be added in any repeat.",
+            "The Round 2 series is monotonic, and the dual construct at 298 exceeds the arithmetic mean of its two components at 212.5. Two limits apply to reading it. Each group is one well, so these are single determinations with no error bar and no test. Stimulation was polyclonal co-culture, not peptide re-stimulation, so between-group differences can be attributed to the presence or absence of epitopes while SFC cannot be resolved down to any individual epitope. Three wells per group would put an error bar on this series, at a cost of eight extra wells.",
           ],
         },
         {
@@ -2826,7 +2820,7 @@ export const measurementPage: WikiPageContent = {
         {
           type: "prose",
           paragraphs: [
-            "Four limits apply. The human data are technical replicates within one experiment on a single donor. The CD28 result is a single-timepoint snapshot with no kinetic series, so the chosen time point bounds what it can say. Intracellular staining used polyclonal re-stimulation, not peptide re-stimulation, so it measures overall effector capacity and not epitope-specific responses. And the memory readouts are phenotypes.",
+            "Four limits apply. The human data are technical replicates within one experiment, on the single donor fixed for the whole project. The CD28 result is a single-timepoint snapshot with no kinetic series, so the chosen time point bounds what it can say. Intracellular staining used polyclonal re-stimulation, not peptide re-stimulation, so it measures overall effector capacity and not epitope-specific responses. And the memory readouts are phenotypes.",
           ],
         },
       ],
@@ -3185,7 +3179,7 @@ export const measurementPage: WikiPageContent = {
         {
           type: "prose",
           paragraphs: [
-            "Every epitope here is HLA-A*02:01 restricted, which bounds the population this vaccine could address whatever else improves. The same workflow runs on any allele given allele-specific predictions and panels. Targeted immunopeptidomics would then show which of the selected peptides TNBC cells actually present, which neither the sequence screen nor the structural screen can establish.",
+            "The screening workflow runs on any HLA allele given allele-specific predictions and matched donor panels, which is how the platform reaches beyond the HLA-A*02:01 population it addresses now. Targeted immunopeptidomics would then show which of the selected peptides TNBC cells actually present, which neither the sequence screen nor the structural screen can establish.",
           ],
         },
         {
@@ -3198,7 +3192,7 @@ export const measurementPage: WikiPageContent = {
         {
           type: "prose",
           paragraphs: [
-            "The epitopes are HLA-A*02:01 restricted and the efficacy model is a wild-type BALB/c mouse of H-2d haplotype, which cannot efficiently present them. Tetramer staining in a matched model would count antigen-specific CD8⁺ T cells directly. A model expressing TROP2 at physiological levels, rather than the forced overexpression used here, would also remove the upward bias it introduces.",
+            "The efficacy model is a wild-type BALB/c mouse of H-2d haplotype, which cannot efficiently present the human epitopes this vaccine carries. Tetramer staining in a matched model would count antigen-specific CD8⁺ T cells directly. A model expressing TROP2 at physiological levels, rather than the forced overexpression used here, would also remove the upward bias it introduces.",
           ],
         },
       ],

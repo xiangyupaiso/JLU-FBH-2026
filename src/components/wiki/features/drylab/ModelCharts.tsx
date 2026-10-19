@@ -93,7 +93,7 @@ heatmapOption.yAxis = {
   inverse: true,
   axisLine: { lineStyle: { color: "#d2dcd7" } },
   axisLabel: {
-    fontSize: 10,
+    fontSize: 11,
     formatter: (_value: string, index: number) => {
       const row = heatmapRows[index];
       return `{${GROUP_STYLES[row.target]}|${row.target}} {${row.passed ? "pass" : "fail"}|${row.peptide}}`;
@@ -102,11 +102,11 @@ heatmapOption.yAxis = {
       ...Object.fromEntries(
         Object.entries(GROUP_COLORS).map(([name, color]) => [
           GROUP_STYLES[name],
-          { color, fontSize: 9, fontWeight: 700, width: 47 },
+          { color, fontSize: 10, fontWeight: 700, width: 52 },
         ]),
       ),
-      pass: { color: "#20332d", fontFamily: "monospace", fontSize: 10 },
-      fail: { color: "#b34d3f", fontFamily: "monospace", fontSize: 10 },
+      pass: { color: "#20332d", fontFamily: "monospace", fontSize: 11 },
+      fail: { color: "#b34d3f", fontFamily: "monospace", fontSize: 11 },
     },
   },
 };
@@ -120,16 +120,12 @@ export function ModelBurialHeatmap() {
         label="Per-position side-chain burial: 17 candidates by P1–P9. Hover a cell for its measured percentage; hatched cells have no side chain."
       />
       <div
-        className="model-heatmap-legend"
-        aria-label="Side-chain burial: light 0%, dark 100% in each antigen group"
+        className="model-heatmap-legend model-heatmap-legend--single"
+        aria-label="Side-chain burial: 0% to 100%"
       >
-        {Object.keys(GROUP_COLORS).map((target) => (
-          <div key={target} data-target={target}>
-            <span>{target}</span>
-            <i aria-hidden="true" />
-            <small>0–100%</small>
-          </div>
-        ))}
+        <span className="model-heatmap-legend__val">0%</span>
+        <i aria-hidden="true" className="model-heatmap-legend__bar" />
+        <span className="model-heatmap-legend__val">100%</span>
       </div>
       <details className="model-chart-data">
         <summary>View data</summary>
@@ -226,7 +222,7 @@ const confidenceOption = createModelConfidenceOption();
 export function ModelConfidenceScatter() {
   return (
     <div className="model-chart-panel">
-      <ModelChart option={confidenceOption} label="Figure 15: mean ipTM versus P9 fill ratio for 17 candidates. Fifteen pass and two are rejected. Hover a point for all five model scores." />
+      <ModelChart option={confidenceOption} label="Mean ipTM versus P9 fill ratio for 17 candidates. Fifteen pass and two are rejected. Hover a point for all five model scores." />
       <details className="model-chart-data">
         <summary>View data</summary>
         <div className="wiki-table-wrap">

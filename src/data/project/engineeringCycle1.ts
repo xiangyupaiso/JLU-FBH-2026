@@ -172,7 +172,7 @@ export const cycle1Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "Literature and clinical consultation showed that recurrence risk may remain after surgery and systemic treatment, establishing a clear complementary position for an antigen-directed immune approach. We therefore retained the post-treatment, higher-risk TNBC setting as the project's intended use and translated it into three requirements for platform selection: the ability to encode tumour-antigen sequences, support sustained expression and remain measurable from molecular preparation to immune function. These requirements formed the Design of Iteration 1.2. Further details are provided in [Integrated Human Practices: clinical positioning](https://2026.igem.wiki/jlu-fbh/human-practices)."
+          "Literature and clinical consultation showed that recurrence risk may remain after surgery and systemic treatment, establishing a clear complementary position for an antigen-directed immune approach. We therefore retained the post-treatment, higher-risk TNBC setting as the project's intended use and translated it into three requirements for platform selection: the ability to encode tumour-antigen sequences, support sustained expression and remain measurable from molecular preparation to immune function. These requirements formed the Design of Iteration 1.2. Further details are provided in [Integrated Human Practices: clinical positioning](https://2026.igem.wiki/jlu-fbh/human-practices#hp-origin-1)."
 ]
         }
           ]
@@ -352,7 +352,7 @@ export const cycle1Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "We selected circRNA as the project's working expression platform. Its closed topology provided a clear stability rationale, published work supported prolonged expression, and its preparation-dependent innate sensing defined an additional experimental question. With the platform established, the next decision concerned its antigen payload. That content question became the scientific thread carried into antigen selection. Further details are provided in [Integrated Human Practices: platform selection](https://2026.igem.wiki/jlu-fbh/human-practices) and [Experiments: circRNA preparation and validation](https://2026.igem.wiki/jlu-fbh/experiments)."
+          "We selected circRNA as the project's working expression platform. Its closed topology provided a clear stability rationale, published work supported prolonged expression, and its preparation-dependent innate sensing defined an additional experimental question. With the platform established, the next decision concerned its antigen payload. That content question became the scientific thread carried into antigen selection. Further details are provided in [Integrated Human Practices: platform selection](https://2026.igem.wiki/jlu-fbh/human-practices#hp-plasmid-design-1) and [Experiments: circRNA preparation and validation](https://2026.igem.wiki/jlu-fbh/experiments#exp-1-1)."
 ]
         }
           ]
@@ -458,7 +458,7 @@ export const cycle1Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "We retained the first visual identity and adopted a **layered education approach** for later activities. The scientific core remained consistent, while the depth of content, language, interaction and teaching materials were adjusted to learners’ ages, prior knowledge, learning settings and educational goals. Vaccine Classroom, Virtual Laboratory and Synbio Classroom later applied this principle to different audiences and forms of learning. Along the main scientific route, Iteration 1.2 had also defined the next content question: which TNBC antigens should the circRNA encode? Further details are provided in [Education: Winter Outreach](https://2026.igem.wiki/jlu-fbh/education)."
+          "We retained the first visual identity and adopted a **layered education approach** for later activities. The scientific core remained consistent, while the depth of content, language, interaction and teaching materials were adjusted to learners’ ages, prior knowledge, learning settings and educational goals. Vaccine Classroom, Virtual Laboratory and Synbio Classroom later applied this principle to different audiences and forms of learning. Along the main scientific route, Iteration 1.2 had also defined the next content question: which TNBC antigens should the circRNA encode? Further details are provided in [Education: Winter Outreach](https://2026.igem.wiki/jlu-fbh/education#winter-outreach)."
 ]
         }
           ]
@@ -579,7 +579,7 @@ export const cycle1Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "The four-antigen starting set answered what the project should evaluate, while also clarifying that literature findings obtained from different cohorts and measurements could not by themselves determine final retention. We therefore needed a common framework that examined protein abundance, malignant-cell localization, patient representation and clinical evidence as distinct but connected dimensions. Building that framework became the next design. Further details are provided in [Bioinformatics: clinical starting evidence](https://2026.igem.wiki/jlu-fbh/bioinformatics) and [Integrated Human Practices: antigen-selection route](https://2026.igem.wiki/jlu-fbh/human-practices)."
+          "The four-antigen starting set answered what the project should evaluate, while also clarifying that literature findings obtained from different cohorts and measurements could not by themselves determine final retention. We therefore needed a common framework that examined protein abundance, malignant-cell localization, patient representation and clinical evidence as distinct but connected dimensions. Building that framework became the next design. Further details are provided in [Bioinformatics: clinical starting evidence](https://2026.igem.wiki/jlu-fbh/model#model-heading-1) and [Integrated Human Practices: antigen-selection route](https://2026.igem.wiki/jlu-fbh/human-practices#hp-plasmid-design-1)."
 ]
         }
           ]
@@ -651,7 +651,7 @@ export const cycle1Section: WikiSection = {
           type: "prose",
           paragraphs: [
           "The framework converted the four-antigen starting set into an executable evidence sequence. We would first test protein-level support, then locate the expression signal at cellular resolution, extend the comparison across patients and finally integrate the quantitative results with clinical evidence. Quantitative proteomics therefore became the next design.",
-          "The finalized evidence map is shown below. Further details are provided in [Bioinformatics: antigen-selection framework](https://2026.igem.wiki/jlu-fbh/bioinformatics) and [Integrated Human Practices: Dry Lab route](https://2026.igem.wiki/jlu-fbh/human-practices)."
+          "The finalized evidence map is shown below. Further details are provided in [Bioinformatics: antigen-selection framework](https://2026.igem.wiki/jlu-fbh/model#model-heading-1) and [Integrated Human Practices: Dry Lab route](https://2026.igem.wiki/jlu-fbh/human-practices#hp-plasmid-design-1)."
 ]
         },
         {
@@ -825,7 +825,7 @@ export const cycle1Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "Quantitative proteomics established protein-level support for all four antigen sources: PXD024322 measured all four candidates, while the matched design of PXD028102 independently reinforced TROP2, B7-H4 and Nectin-4. We therefore retained the complete four-antigen starting set. The next question concerned cellular origin: tumour tissue contains malignant, immune and stromal compartments, so a cell-resolved analysis was required to determine where the corresponding expression signals arose. This became the next design. Further details are provided in [Bioinformatics: proteomic evidence](https://2026.igem.wiki/jlu-fbh/bioinformatics)."
+          "Quantitative proteomics established protein-level support for all four antigen sources: PXD024322 measured all four candidates, while the matched design of PXD028102 independently reinforced TROP2, B7-H4 and Nectin-4. We therefore retained the complete four-antigen starting set. The next question concerned cellular origin: tumour tissue contains malignant, immune and stromal compartments, so a cell-resolved analysis was required to determine where the corresponding expression signals arose. This became the next design. Further details are provided in [Bioinformatics: proteomic evidence](https://2026.igem.wiki/jlu-fbh/model#model-heading-3)."
 ]
         }
           ]
@@ -999,7 +999,7 @@ export const cycle1Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "The cell-resolved analysis gave the multi-antigen strategy a cellular rationale: the four sources represented partly overlapping but non-identical malignant-cell populations, while the case-wise summaries showed their combined detection within individual tumours. We retained all four sources to broaden the cellular expression patterns represented in the design. The next iteration used an independent TCGA TNBC cohort to evaluate representation at the patient level. Further details are provided in [Bioinformatics: single-cell analysis](https://2026.igem.wiki/jlu-fbh/bioinformatics)."
+          "The cell-resolved analysis gave the multi-antigen strategy a cellular rationale: the four sources represented partly overlapping but non-identical malignant-cell populations, while the case-wise summaries showed their combined detection within individual tumours. We retained all four sources to broaden the cellular expression patterns represented in the design. The next iteration used an independent TCGA TNBC cohort to evaluate representation at the patient level. Further details are provided in [Bioinformatics: single-cell analysis](https://2026.igem.wiki/jlu-fbh/model#model-heading-11)."
 ]
         }
           ]
@@ -1090,7 +1090,7 @@ export const cycle1Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "The four-antigen strategy now had three connected quantitative evidence levels. Iteration 1.6 established protein-level support in TNBC tissue; Iteration 1.7 located the four genes within partly overlapping malignant-cell populations; and this iteration showed that combining the four sources increased patient representation beyond the broadest individual antigen. Together with the clinical starting evidence from Iteration 1.4, these results supported retaining TROP2, B7-H4, Nectin-4 and LIV-1. The next task was to preserve their data, literature and selection reasons as the four antigen sources moved into epitope design. Further details are provided in [Bioinformatics: patient-level evidence](https://2026.igem.wiki/jlu-fbh/bioinformatics)."
+          "The four-antigen strategy now had three connected quantitative evidence levels. Iteration 1.6 established protein-level support in TNBC tissue; Iteration 1.7 located the four genes within partly overlapping malignant-cell populations; and this iteration showed that combining the four sources increased patient representation beyond the broadest individual antigen. Together with the clinical starting evidence from Iteration 1.4, these results supported retaining TROP2, B7-H4, Nectin-4 and LIV-1. The next task was to preserve their data, literature and selection reasons as the four antigen sources moved into epitope design. Further details are provided in [Bioinformatics: patient-level evidence](https://2026.igem.wiki/jlu-fbh/model#model-heading-16)."
 ]
         }
           ]
@@ -1174,7 +1174,7 @@ export const cycle1Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "V1.0 connected the first three Dry Lab stages and gave the next software iteration three precise directions: **separate judgement, preserve evidence and clarify handoff**. Stage-specific candidate keys, Evidence Cards, visible software states and an independent confirmation step would later answer the problems identified here. Along the scientific route, the four selected antigen sources also needed a common human-cell framework before their epitopes could be compared experimentally.  [See Software: CircuForge iterations](https://2026.igem.wiki/jlu-fbh/software)."
+          "V1.0 connected the first three Dry Lab stages and gave the next software iteration three precise directions: **separate judgement, preserve evidence and clarify handoff**. Stage-specific candidate keys, Evidence Cards, visible software states and an independent confirmation step would later answer the problems identified here. Along the scientific route, the four selected antigen sources also needed a common human-cell framework before their epitopes could be compared experimentally.  [See Software: CircuForge iterations](https://2026.igem.wiki/jlu-fbh/software#software-engineering-iterations-circuforge-carrying-project-decisions-into-construct-design)."
 ]
         }
           ]
@@ -1257,7 +1257,7 @@ export const cycle1Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "The common DC–T-cell framework made a controlled first comparison possible: different epitope designs could later enter the same cell-preparation and culture route, while cell source and construct identity remained visible during interpretation. The four antigen sources were therefore ready to move from antigen-level evidence to peptide prediction and experimental construct design. Further details are provided in [Experiments: human-cell preparation](https://2026.igem.wiki/jlu-fbh/experiments) and [Integrated Human Practices: human-material ethics](https://2026.igem.wiki/jlu-fbh/human-practices)."
+          "The common DC–T-cell framework made a controlled first comparison possible: different epitope designs could later enter the same cell-preparation and culture route, while cell source and construct identity remained visible during interpretation. The four antigen sources were therefore ready to move from antigen-level evidence to peptide prediction and experimental construct design. Further details are provided in [Experiments: human-cell preparation](https://2026.igem.wiki/jlu-fbh/experiments#exp-2-1) and [Integrated Human Practices: human-material ethics](https://2026.igem.wiki/jlu-fbh/human-practices#hp-in-vitro-1)."
 ]
         }
           ]

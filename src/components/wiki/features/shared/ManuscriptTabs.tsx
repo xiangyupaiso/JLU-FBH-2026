@@ -7,9 +7,11 @@ import "../../../../styles/features/manuscript-tabs.css";
 export function ManuscriptTabs({
   title,
   entries,
+  orientation = "vertical",
 }: {
   title: string;
   entries: { title: string; content: ReactNode }[];
+  orientation?: "vertical" | "horizontal";
 }) {
   const [value, setValue] = useState("0");
   const root = useRef<HTMLDivElement>(null);
@@ -37,8 +39,12 @@ export function ManuscriptTabs({
       <Tabs.Root
         value={value}
         onValueChange={setValue}
-        orientation="vertical"
-        className="manuscript-tabs__layout"
+        orientation={orientation}
+        className={`manuscript-tabs__layout${
+          orientation === "horizontal"
+            ? " manuscript-tabs__layout--horizontal"
+            : ""
+        }`}
       >
         <Tabs.List className="manuscript-tabs__list" aria-label={title}>
           {entries.map((entry, i) => (

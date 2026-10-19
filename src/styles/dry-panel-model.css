@@ -216,13 +216,14 @@
 .dry-panel--model .model-table-scroll td {
   padding: 15px 14px;
   border-bottom: 1px solid var(--model-line);
-  text-align: left;
-  vertical-align: top;
+  text-align: center;
+  vertical-align: middle;
 }
 
 .dry-panel--model .model-table-scroll th {
   color: var(--model-navy-deep);
   font-weight: 760;
+  text-align: center;
 }
 
 .dry-panel--model .model-table-scroll thead th {
@@ -231,6 +232,7 @@
   font-size: 9px;
   letter-spacing: 0.07em;
   text-transform: uppercase;
+  text-align: center;
 }
 
 .dry-panel--model .model-data-state {

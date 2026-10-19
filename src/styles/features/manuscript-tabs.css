@@ -99,3 +99,29 @@
   color: var(--tab-ink);
   background: color-mix(in srgb, var(--route-soft, #c4f0de) 40%, white);
 }
+
+.manuscript-tabs__layout--horizontal {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.manuscript-tabs__layout--horizontal .manuscript-tabs__list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding-block: 0;
+  align-self: flex-start;
+}
+.wiki-page .manuscript-tabs .manuscript-tabs__layout--horizontal .manuscript-tabs__tab {
+  border-radius: 8px;
+  border-right: 1px solid var(--tab-line);
+  padding: 10px 22px;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+.wiki-page .manuscript-tabs .manuscript-tabs__layout--horizontal .manuscript-tabs__tab[data-state="active"] {
+  background: #fff;
+  border-color: var(--route-main, #207062);
+  box-shadow: 0 2px 8px rgba(21, 62, 52, 0.12), inset 0 -3px var(--route-main, #207062);
+}

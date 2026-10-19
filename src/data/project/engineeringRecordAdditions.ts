@@ -232,7 +232,7 @@ export const cycle2Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "The staged route connected numerical prediction with source-protein context and produced 17 candidate epitopes carrying explicit selection records. The next decision concerned their predicted peptide–HLA arrangements, so the 17-sequence shortlist entered a shared structural-review route before the experimental handoff. Natural presentation was assigned to a dedicated subsequent evidence layer. Further details are provided in [Bioinformatics: epitope prediction](https://2026.igem.wiki/jlu-fbh/bioinformatics) and [Integrated Human Practices: Dry Lab route](https://2026.igem.wiki/jlu-fbh/human-practices)."
+          "The staged route connected numerical prediction with source-protein context and produced 17 candidate epitopes carrying explicit selection records. The next decision concerned their predicted peptide–HLA arrangements, so the 17-sequence shortlist entered a shared structural-review route before the experimental handoff. Natural presentation was assigned to a dedicated subsequent evidence layer. Further details are provided in [Bioinformatics: epitope prediction](https://2026.igem.wiki/jlu-fbh/model#model-heading-34) and [Integrated Human Practices: Dry Lab route](https://2026.igem.wiki/jlu-fbh/human-practices#hp-plasmid-design-1)."
 ]
         }
           ]
@@ -393,7 +393,7 @@ export const cycle2Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "Structural review accompanied a defined 15-sequence Dry Lab handoff, with prediction and structural records retained for each candidate. The source-protein coordinates also allowed Wet Lab to identify two overlapping pairs: `TLIYYLDEI` with `YLDEIPPKF` in TROP2, and `FQARLRLRV` with `RLRVLVPPL` in Nectin-4. This defined the next engineering decision: encode each pair as one continuous segment while preserving both source epitopes. Further details are provided in [Bioinformatics: AlphaFold structural review](https://2026.igem.wiki/jlu-fbh/bioinformatics)."
+          "Structural review accompanied a defined 15-sequence Dry Lab handoff, with prediction and structural records retained for each candidate. The source-protein coordinates also allowed Wet Lab to identify two overlapping pairs: `TLIYYLDEI` with `YLDEIPPKF` in TROP2, and `FQARLRLRV` with `RLRVLVPPL` in Nectin-4. This defined the next engineering decision: encode each pair as one continuous segment while preserving both source epitopes. Further details are provided in [Bioinformatics: AlphaFold structural review](https://2026.igem.wiki/jlu-fbh/model#model-structural-validation)."
 ]
         }
           ]
@@ -453,7 +453,7 @@ export const cycle2Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "The overlap decision established 13 first-round coding designs representing all 15 retained candidate epitopes. The next requirement was to connect these sequence-level designs to identifiable DNA materials while preserving the correspondence among insert sequence, supplier-assembled recombinant plasmid and Wet Lab sample label. This requirement led the engineering route from coding design to the DNA-template handoff used for transcription. Further details are provided in [Experiments: first-round coding designs](https://2026.igem.wiki/jlu-fbh/experiments) and [Parts: epitope-encoding sequences](https://2026.igem.wiki/jlu-fbh/parts)."
+          "The overlap decision established 13 first-round coding designs representing all 15 retained candidate epitopes. The next requirement was to connect these sequence-level designs to identifiable DNA materials while preserving the correspondence among insert sequence, supplier-assembled recombinant plasmid and Wet Lab sample label. This requirement led the engineering route from coding design to the DNA-template handoff used for transcription. Further details are provided in [Experiments: first-round coding designs](https://2026.igem.wiki/jlu-fbh/experiments#exp-1-1) and [Parts: epitope-encoding sequences](https://2026.igem.wiki/jlu-fbh/contribution#contribution-parts)."
 ]
         }
           ]
@@ -617,7 +617,7 @@ export const cycle2Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "The shared preparation route produced 13 traceable circRNA inputs under matched molecular and cellular conditions. This made a within-run immune-response comparison possible. The next Design therefore fixed the selection rule before examining the ELISpot results: retain two responsive modules from each antigen source so that the four-antigen strategy established in Cycle 1 remained represented in Combined. Further details are provided in [Experiments: circRNA preparation and DC–T-cell culture](https://2026.igem.wiki/jlu-fbh/experiments) and [Integrated Human Practices: circRNA preparation](https://2026.igem.wiki/jlu-fbh/human-practices)."
+          "The shared preparation route produced 13 traceable circRNA inputs under matched molecular and cellular conditions. This made a within-run immune-response comparison possible. The next Design therefore fixed the selection rule before examining the ELISpot results: retain two responsive modules from each antigen source so that the four-antigen strategy established in Cycle 1 remained represented in Combined. Further details are provided in [Experiments: circRNA preparation and DC–T-cell culture](https://2026.igem.wiki/jlu-fbh/experiments#exp-2-1) and [Integrated Human Practices: circRNA preparation](https://2026.igem.wiki/jlu-fbh/human-practices#hp-in-vitro-1)."
 ]
         }
           ]
@@ -696,7 +696,7 @@ export const cycle2Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "ELISpot supplied the eight modules required for Combined and also clarified the next evidence step. IFN-γ secretion recorded a recognition-associated cellular response; the project still needed to observe early CD8 T-cell activation and overall effector activity before assembling the first-round evidence. We retained that scientific requirement. The idea of recognition also served as a shared scientific theme for our age-appropriate educational activities. Further details are provided in [Results: first-round ELISpot](https://2026.igem.wiki/jlu-fbh/results) and [Integrated Human Practices: extending the ELISpot evidence](https://2026.igem.wiki/jlu-fbh/human-practices)."
+          "ELISpot supplied the eight modules required for Combined and also clarified the next evidence step. IFN-γ secretion recorded a recognition-associated cellular response; the project still needed to observe early CD8 T-cell activation and overall effector activity before assembling the first-round evidence. We retained that scientific requirement. The idea of recognition also served as a shared scientific theme for our age-appropriate educational activities. Further details are provided in [Results: first-round ELISpot](https://2026.igem.wiki/jlu-fbh/results#results-3-1) and [Integrated Human Practices: extending the ELISpot evidence](https://2026.igem.wiki/jlu-fbh/human-practices#hp-in-vitro-4)."
 ]
         }
           ]
@@ -769,7 +769,7 @@ export const cycle2Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "We retained the four-part structure, two-round game and scientific return in a reusable Teaching Pack. The classroom also gave us a transferable design principle: understanding improved when learners could see what information entered a decision and how that information changed the next action. This principle also informed improvements to the existing Virtual Laboratory, particularly the visibility of experimental steps and their connections. Further details are provided in [Education: Vaccine Classroom](https://2026.igem.wiki/jlu-fbh/education)."
+          "We retained the four-part structure, two-round game and scientific return in a reusable Teaching Pack. The classroom also gave us a transferable design principle: understanding improved when learners could see what information entered a decision and how that information changed the next action. This principle also informed improvements to the existing Virtual Laboratory, particularly the visibility of experimental steps and their connections. Further details are provided in [Education: Vaccine Classroom](https://2026.igem.wiki/jlu-fbh/education#vaccine-classroom)."
 ]
         }
           ]
@@ -845,7 +845,7 @@ export const cycle2Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "The two activities showed that digital access alone was not sufficient; a transferable learning resource also needed to explain its sequence and retain its supporting information after handoff. Hailun No. 1 High School therefore became not only a user of the Virtual Laboratory but also a contributor to its refinement. This experience encouraged us to introduce the resource to more schools with different equipment conditions, teaching schedules and learner backgrounds. With this Education branch completed, the scientific route returned to the first-round screen from Iteration 2.6 and extended IFN-γ secretion evidence to cellular activation and effector activity. Further details are provided in [Education: Virtual Laboratory](https://2026.igem.wiki/jlu-fbh/education)."
+          "The two activities showed that digital access alone was not sufficient; a transferable learning resource also needed to explain its sequence and retain its supporting information after handoff. Hailun No. 1 High School therefore became not only a user of the Virtual Laboratory but also a contributor to its refinement. This experience encouraged us to introduce the resource to more schools with different equipment conditions, teaching schedules and learner backgrounds. With this Education branch completed, the scientific route returned to the first-round screen from Iteration 2.6 and extended IFN-γ secretion evidence to cellular activation and effector activity. Further details are provided in [Education: Virtual Laboratory](https://2026.igem.wiki/jlu-fbh/education#virtual-laboratory)."
 ]
         }
           ]
@@ -952,7 +952,7 @@ export const cycle2Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "ELISpot established the eight selected modules, while CD8/CD69 and K562 extended the evidence from cytokine secretion to cellular activation and overall effector action. The four antigen sources remained represented, and TROP2 CTL1 and CTL2 supplied the strongest single-antigen reference pair. These decisions defined the next Build: assemble the eight selected modules into Combined and create a five-group comparison that could distinguish vector background, single TROP2 modules, their within-antigen combination and the complete multi-antigen design. Further details are provided in [Results: first-round flow cytometry and K562 assay](https://2026.igem.wiki/jlu-fbh/results) and [Integrated Human Practices: defining the K562 evidence boundary](https://2026.igem.wiki/jlu-fbh/human-practices)."
+          "ELISpot established the eight selected modules, while CD8/CD69 and K562 extended the evidence from cytokine secretion to cellular activation and overall effector action. The four antigen sources remained represented, and TROP2 CTL1 and CTL2 supplied the strongest single-antigen reference pair. These decisions defined the next Build: assemble the eight selected modules into Combined and create a five-group comparison that could distinguish vector background, single TROP2 modules, their within-antigen combination and the complete multi-antigen design. Further details are provided in [Results: first-round flow cytometry and K562 assay](https://2026.igem.wiki/jlu-fbh/results#results-round1) and [Integrated Human Practices: defining the K562 evidence boundary](https://2026.igem.wiki/jlu-fbh/human-practices#hp-in-vitro-4)."
 ]
         }
           ]
@@ -1020,7 +1020,7 @@ export const cycle2Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "Integration now had a physical endpoint: Combined and four comparison preparations whose roles were defined before testing. The next cycle could therefore measure the molecules that had actually been prepared, beginning with their RNA-level properties and continuing through translation, DC activation, T-cell phenotype, cytokine secretion and TNBC target-cell activity. Before entering that Measurement cycle, we used the completed integration route to refine how such decisions could be recorded and handed to another researcher. Further details are provided in [Experiments: Combined construction](https://2026.igem.wiki/jlu-fbh/experiments) and [Parts: Combined design](https://2026.igem.wiki/jlu-fbh/parts)."
+          "Integration now had a physical endpoint: Combined and four comparison preparations whose roles were defined before testing. The next cycle could therefore measure the molecules that had actually been prepared, beginning with their RNA-level properties and continuing through translation, DC activation, T-cell phenotype, cytokine secretion and TNBC target-cell activity. Before entering that Measurement cycle, we used the completed integration route to refine how such decisions could be recorded and handed to another researcher. Further details are provided in [Experiments: Combined construction](https://2026.igem.wiki/jlu-fbh/experiments#exp-3-1) and [Parts: Combined design](https://2026.igem.wiki/jlu-fbh/design#construct-architecture)."
 ]
         }
           ]
@@ -1099,7 +1099,7 @@ export const cycle2Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "CircuForge converted the lessons of Integration into a reusable design workflow: later users could preserve source evidence, review state and researcher decisions without rebuilding the process across separate scripts. The software retained and transferred the biological decisions made by Dry Lab and Wet Lab. With Combined and its four comparison preparations already defined experimentally, the engineering story could now enter **M—Measurement** and test their molecular and cellular performance. Further details are provided in [Software: CircuForge](https://2026.igem.wiki/jlu-fbh/software) and [Integrated Human Practices: software workflow reviews](https://2026.igem.wiki/jlu-fbh/human-practices)."
+          "CircuForge converted the lessons of Integration into a reusable design workflow: later users could preserve source evidence, review state and researcher decisions without rebuilding the process across separate scripts. The software retained and transferred the biological decisions made by Dry Lab and Wet Lab. With Combined and its four comparison preparations already defined experimentally, the engineering story could now enter **M—Measurement** and test their molecular and cellular performance. Further details are provided in [Software: CircuForge](https://2026.igem.wiki/jlu-fbh/software#software-engineering-iterations-iteration-2-preserving-confirmed-selections-in-the-design-cart) and [Integrated Human Practices: software workflow reviews](https://2026.igem.wiki/jlu-fbh/human-practices#hp-plasmid-design-4)."
 ]
         }
           ]
