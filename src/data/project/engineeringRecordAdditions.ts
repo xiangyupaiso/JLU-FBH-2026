@@ -137,7 +137,7 @@ export const cycle2Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "The four antigen sources retained in Cycle 1 established the protein space for epitope exploration. We next moved from source proteins to experimentally comparable short sequences under a defined HLA context. The Dry Lab consultation with Associate Professor Qingtian Guan that shaped Iteration 1.5 helped us distinguish two connected decisions: antigen selection identified the proteins to examine, while epitope prediction prioritised peptide sequences within those proteins. We selected HLA-A*02:01 as a well-characterised starting allele and required every predicted peptide to retain its source antigen, protein coordinates, HLA context, prediction outputs and selection status. Canonical UniProt sequences provided a common protein reference, while the IEDB environment supplied the prediction tools (The UniProt Consortium, 2025; Yan et al., 2024)."
+          "The four antigen sources retained in Cycle 1 established the protein space for epitope exploration. We next moved from source proteins to experimentally comparable short sequences under a defined HLA context. The Dry Lab consultation with Associate Professor Qingtian Guan that shaped Iteration 1.5 helped us distinguish two connected decisions: antigen selection identified the proteins to examine, while epitope prediction prioritized peptide sequences within those proteins. We selected HLA-A*02:01 as a well-characterized starting allele and required every predicted peptide to retain its source antigen, protein coordinates, HLA context, prediction outputs and selection status. Canonical UniProt sequences provided a common protein reference, while the IEDB environment supplied the prediction tools (The UniProt Consortium, 2025; Yan et al., 2024)."
 ]
         },
         {
@@ -166,9 +166,9 @@ export const cycle2Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "We built a staged prioritisation route using all overlapping nine-amino-acid windows from the four canonical protein sequences. Each peptide record linked its sequence and source coordinates to predicted HLA-A*02:01 binding affinity, sequence-based immunogenicity and processing-related outputs. The numerical screen applied two predefined criteria in sequence:",
+          "We built a staged prioritization route using all overlapping nine-amino-acid windows from the four canonical protein sequences. Each peptide record linked its sequence and source coordinates to predicted HLA-A*02:01 binding affinity, sequence-based immunogenicity and processing-related outputs. The numerical screen applied two predefined criteria in sequence:",
           "**1. Binding-affinity criterion:** Peptides with a predicted HLA-A*02:01 binding IC50 below 500 nM were retained, identifying sequences with stronger predicted binding.",
-          "**2. Immunogenicity criterion:** The retained peptides were further required to have an IEDB immunogenicity score above zero, prioritising sequences with favourable immunogenicity predictions.",
+          "**2. Immunogenicity criterion:** The retained peptides were further required to have an IEDB immunogenicity score above zero, prioritizing sequences with favorable immunogenicity predictions.",
           "Processing- and eluted-ligand-related outputs were retained as supporting fields for subsequent review rather than applied as additional independent cutoffs (Reynisson et al., 2020; Calis et al., 2013; Peters et al., 2003; Tenzer et al., 2005).",
           "Peptides satisfying both criteria then entered a source-protein context review. Their start and end coordinates were mapped onto the corresponding UniProt canonical sequences and compared individually with signal-peptide and transmembrane-region annotations. We also recorded sequence overlaps and the representation of all four antigen sources to support later coding design. This route connected each peptide’s numerical prediction results with its biological position in the source protein and preserved the basis for every subsequent selection decision."
 ]
@@ -211,7 +211,7 @@ export const cycle2Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "The four canonical proteins generated 1,838 overlapping nine-amino-acid peptides: 315 from TROP2, 274 from B7-H4, 502 from Nectin-4 and 747 from LIV-1. The binding-affinity threshold retained 83 peptides—17, 13, 15 and 38 from the four respective sources. Applying the positive immunogenicity-score requirement retained 51 peptides: nine from TROP2, ten from B7-H4, ten from Nectin-4 and twenty-two from LIV-1.",
+          "The four canonical proteins generated 1,838 overlapping nine-amino-acid peptides: 315 from TROP2, 274 from B7-H4, 502 from Nectin-4 and 747 from LIV-1. The binding-affinity threshold retained 83 peptides: 17, 13, 15, and 38 from the four respective sources. Applying the positive immunogenicity-score requirement retained 51 peptides: nine from TROP2, ten from B7-H4, ten from Nectin-4 and twenty-two from LIV-1.",
           "We then mapped these 51 peptides back to their source proteins and compared their coordinates with UniProt signal-peptide and transmembrane annotations. The source-protein review formed a 17-epitope shortlist comprising four TROP2, two B7-H4, six Nectin-4 and five LIV-1 sequences. Each shortlisted epitope retained its binding-affinity result, immunogenicity score, source coordinates and protein-context record, providing a traceable input for structural review."
 ]
         },
@@ -256,7 +256,7 @@ export const cycle2Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "Iteration 2.1 produced 17 traceable candidate epitopes through sequence prediction and source-protein context review. Dry Lab then introduced a unified structural assessment to support the Wet Lab handoff. We examined peptide placement within the HLA-A*02:01 binding groove, P2/P9 anchoring, interface contacts, consistency across sampled models and structural conflicts. These observations supported computational prioritisation, while subsequent cell-based experiments would evaluate immune responses (Bouvier and Wiley, 1994; Saper et al., 1991)."
+          "Iteration 2.1 produced 17 traceable candidate epitopes through sequence prediction and source-protein context review. Dry Lab then introduced a unified structural assessment to support the Wet Lab handoff. We examined peptide placement within the HLA-A*02:01 binding groove, P2/P9 anchoring, interface contacts, consistency across sampled models and structural conflicts. These observations supported computational prioritization, while subsequent cell-based experiments would evaluate immune responses (Bouvier and Wiley, 1994; Saper et al., 1991)."
 ]
         },
         {
@@ -286,7 +286,7 @@ export const cycle2Section: WikiSection = {
           type: "prose",
           paragraphs: [
           "We established a unified AlphaFold 3 structural-review workflow for all 17 candidates. Each peptide was submitted with the HLA-A*02:01 heavy chain and β2-microglobulin, with structural templates enabled. Each task returned five sampled models; all 85 models and their confidence files were retained, and all five models per candidate were included in the structural measurements (Abramson et al., 2024).",
-          "The review was organised into five dimensions:",
+          "The review was organized into five dimensions:",
           "**1. Groove placement:** the peptide’s position and orientation within the HLA binding groove.",
           "**2. P2/P9 anchoring:** side-chain burial at positions 2 and 9 and their accommodation within the B and F pockets, respectively.",
           "**3. Interface contacts:** peptide–HLA contacts and the conserved backbone hydrogen-bond network.",
@@ -329,7 +329,7 @@ export const cycle2Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "The first-round handoff retained 15 of the 17 candidate epitopes: four TROP2, two B7-H4, four Nectin-4 and five LIV-1 sequences. `HILHVSFLA` and `FLAEASVRG` were not included in the first-round coding set. The table summarises structural measurements alongside coding status, while the retained sequences remained linked to their IEDB results and source-protein coordinates for Wet Lab preparation."
+          "The first-round handoff retained 15 of the 17 candidate epitopes: four TROP2, two B7-H4, four Nectin-4 and five LIV-1 sequences. `HILHVSFLA` and `FLAEASVRG` were not included in the first-round coding set. The table summarizes structural measurements alongside coding status, while the retained sequences remained linked to their IEDB results and source-protein coordinates for Wet Lab preparation."
 ]
         },
         {
@@ -537,7 +537,7 @@ export const cycle2Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "A meaningful first-round comparison required the encoded epitope segment to be the principal difference among the 13 inputs. We therefore fixed a shared route from DNA template to circRNA preparation, DC electroporation and DC–T-cell co-culture. The RNA measurements were reported at their actual scale, with RNase R-related and primer-based results describing preparation composition and consistency."
+          "A meaningful first-round comparison required the encoded epitope segment to be the principal difference among the 13 inputs. We therefore fixed a shared route from DNA template to circRNA preparation, DC electroporation and DC–T-cell co-culture. RNA measurements were reported at the scale actually assessed, with RNase R-related and primer-based results describing preparation composition and consistency."
 ]
         }
           ]
@@ -549,7 +549,7 @@ export const cycle2Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "Wet Lab established a unified plasmid-to-circRNA-to-DC–T-cell workflow for the 13 coding designs, allowing each preparation to enter the first experimental comparison under consistent conditions. Starting from the delivered plasmids, we prepared transcription templates, generated precursor RNA by T7 in vitro transcription, removed the DNA templates and purified the RNA (New England Biolabs, n.d.). The precursors then underwent self-splicing and circularisation (Wesselhoeft et al., 2018), followed by RNA purification and the recorded RNase R-related check (LGC Biosearch Technologies, n.d.). Discussion with Ruohan Yang helped standardise the preparation sequence and the terminology used for the RNA readouts. Finally, each circRNA preparation was introduced into immature DCs using the same Nucleofector II programme and RNA input (Lonza, n.d.), after which the DCs were co-cultured with autologous T cells at the common ratio established in Cycle 1."
+          "Wet Lab established a unified plasmid-to-circRNA-to-DC–T-cell workflow for the 13 coding designs, allowing each preparation to enter the first experimental comparison under consistent conditions. Starting from the delivered plasmids, we prepared transcription templates, generated precursor RNA by T7 in vitro transcription, removed the DNA templates and purified the RNA (New England Biolabs, n.d.). The precursors then underwent self-splicing and circularization (Wesselhoeft et al., 2018), followed by RNA purification and the recorded RNase R-related check (LGC Biosearch Technologies, n.d.). Discussion with Ruohan Yang helped standardize the preparation sequence and the terminology used for the RNA readouts. Finally, each circRNA preparation was introduced into immature DCs using the same Nucleofector II program and RNA input (Lonza, n.d.), after which the DCs were co-cultured with autologous T cells at the common ratio established in Cycle 1."
 ]
         },
         {
@@ -590,7 +590,7 @@ export const cycle2Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "RT-qPCR assessment of the RNase R-purified TROP2-CTL1 preparation supported 4 µL as the working input. Divergent primers targeted the circularisation junction, while convergent primers supplied the comparison signal used in the recorded calculation. At 4 µL, the recorded circular-to-linear signal ratio was 32.5:1, with an estimated circular fraction of 96.96±0.70% across three technical wells, consistent with the 6 µL result. These measurements supported a circRNA-rich representative preparation. The 13 preparations produced through the shared route subsequently entered the first DC–T-cell screen under matched electroporation and culture conditions."
+          "RT-qPCR assessment of the RNase R-purified TROP2-CTL1 preparation supported 4 µL as the working input. Divergent primers targeted the circularization junction, while convergent primers supplied the comparison signal used in the recorded calculation. At 4 µL, the recorded circular-to-linear signal ratio was 32.5:1, with an estimated circular fraction of 96.96±0.70% across three technical wells, consistent with the 6 µL result. These measurements supported a circRNA-rich representative preparation. The 13 preparations produced through the shared route subsequently entered the first DC–T-cell screen under matched electroporation and culture conditions."
 ]
         },
         {
@@ -696,7 +696,7 @@ export const cycle2Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "ELISpot supplied the eight modules required for Combined and also clarified the next evidence step. IFN-γ secretion recorded a recognition-associated cellular response; the project still needed to observe early CD8 T-cell activation and overall effector activity before assembling the first-round evidence. We retained that scientific requirement. The idea of recognition also served as a shared scientific theme for our age-appropriate educational activities. Further details are provided in [Results: first-round ELISpot](https://2026.igem.wiki/jlu-fbh/results#results-3-1) and [Integrated Human Practices: extending the ELISpot evidence](https://2026.igem.wiki/jlu-fbh/human-practices#hp-in-vitro-4)."
+          "ELISpot identified the eight modules required for Combined and clarified the next step in gathering evidence. IFN-γ secretion recorded a recognition-associated cellular response; the project still needed to observe early CD8 T-cell activation and overall effector activity before assembling the first-round evidence. We retained that scientific requirement. The idea of recognition also served as a shared scientific theme for our age-appropriate educational activities. Further details are provided in [Results: first-round ELISpot](https://2026.igem.wiki/jlu-fbh/results#results-3-1) and [Integrated Human Practices: extending the ELISpot evidence](https://2026.igem.wiki/jlu-fbh/human-practices#hp-in-vitro-4)."
 ]
         }
           ]
@@ -732,7 +732,7 @@ export const cycle2Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "Education and Visual Design developed an interactive vaccine-science lesson for approximately 50 students at the Primary School Affiliated to Jilin University. Beginning with the students’ own vaccination experiences, the lesson introduced the basic idea that the immune system recognises targets through biological information. Students then completed two rounds of a “wanted-poster” game: the first provided only limited information, while the second added clear identifying clues. By comparing their group decisions across the two rounds, students could experience how more specific information improves recognition before returning to the scientific explanation of immune recognition."
+          "Education and Visual Design developed an interactive vaccine-science lesson for approximately 50 students at the Primary School Affiliated to Jilin University. Beginning with the students’ own vaccination experiences, the lesson introduced the basic idea that the immune system recognizes targets through biological information. Students then completed two rounds of a “wanted-poster” game: the first provided only limited information, while the second added clear identifying clues. By comparing their group decisions across the two rounds, students could experience how more specific information improves recognition before returning to the scientific explanation of immune recognition."
 ]
         }
           ]
@@ -744,7 +744,7 @@ export const cycle2Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "A rough classroom tally showed that recognition accuracy increased from approximately **40%** in the limited-clue round to approximately **87%** after clear identifying clues were provided—an improvement of about **47 percentage points**. In the second round, students also explained which clues supported their choices more actively during group discussion. The class then connected this experience to how biological information supports immune recognition and how vaccination prepares the immune system to respond."
+          "A rough classroom tally showed that recognition accuracy increased from approximately **40%** with limited clues to approximately **87%** with clear identifying clues. This represented an improvement of about **47 percentage points**. In the second round, students also explained which clues supported their choices more actively during group discussion. The class then connected this experience to how biological information supports immune recognition and how vaccination prepares the immune system to respond."
 ]
         },
         {
@@ -813,7 +813,7 @@ export const cycle2Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "Education and the Wiki team reorganised the Virtual Laboratory into a continuous nine-experiment GFP cloning and verification route. Approximately 160 experimental illustrations supported direct mouse-based operation. Step navigation displayed the learner’s current position, yellow prompts identified the next action and the Theory, Safety, Instruments and Reagents modules remained accessible throughout the procedure. Together, these changes allowed the programme itself to explain where the learner was, what should be done and how the result connected to the next experiment."
+          "Education and the Wiki team reorganized the Virtual Laboratory into a continuous nine-experiment GFP cloning and verification route. Approximately 160 experimental illustrations supported direct mouse-based operation. Step navigation displayed the learner’s current position, yellow prompts identified the next action and the Theory, Safety, Instruments and Reagents modules remained accessible throughout the procedure. Together, these changes allowed the program itself to explain where the learner was, what should be done and how the result connected to the next experiment."
 ]
         }
           ]
@@ -825,7 +825,7 @@ export const cycle2Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "We returned to Hailun No. 1 High School with the revised programme and invited the same teacher to organise a second activity. The teacher introduced the workflow through the classroom display and later continued using it during self-study periods without the development team present. Her feedback highlighted two improvements: the visible route made the experimental sequence easier to organise, and the supporting modules allowed key explanations to be revisited whenever students encountered difficulty. The second activity therefore demonstrated a transition from team-guided presentation to continued teacher-led use."
+          "We returned to Hailun No. 1 High School with the revised program and invited the same teacher to organize a second activity. The teacher introduced the workflow through the classroom display and later continued using it during self-study periods without the development team present. Her feedback highlighted two improvements: the visible route made the experimental sequence easier to organize, and the supporting modules allowed key explanations to be revisited whenever students encountered difficulty. The second activity therefore demonstrated a transition from team-guided presentation to continued teacher-led use."
 ]
         },
         {
@@ -845,7 +845,7 @@ export const cycle2Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "The two activities showed that digital access alone was not sufficient; a transferable learning resource also needed to explain its sequence and retain its supporting information after handoff. Hailun No. 1 High School therefore became not only a user of the Virtual Laboratory but also a contributor to its refinement. This experience encouraged us to introduce the resource to more schools with different equipment conditions, teaching schedules and learner backgrounds. With this Education branch completed, the scientific route returned to the first-round screen from Iteration 2.6 and extended IFN-γ secretion evidence to cellular activation and effector activity. Further details are provided in [Education: Virtual Laboratory](https://2026.igem.wiki/jlu-fbh/education#virtual-laboratory)."
+          "The two activities showed that digital access alone was not sufficient; a transferable learning resource also needed to explain its sequence and retain its supporting information after handoff. Hailun No. 1 High School therefore served as both a user of the Virtual Laboratory and a contributor to its refinement. This experience encouraged us to introduce the resource to more schools with different equipment conditions, teaching schedules and learner backgrounds. With this Education branch completed, the scientific route returned to the first-round screen from Iteration 2.6 and extended IFN-γ secretion evidence to cellular activation and effector activity. Further details are provided in [Education: Virtual Laboratory](https://2026.igem.wiki/jlu-fbh/education#virtual-laboratory)."
 ]
         }
           ]
@@ -904,7 +904,7 @@ export const cycle2Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "We built two parallel functional assays to complement the IFN-γ secretion measured by ELISpot. The first used flow cytometry to quantify the CD8⁺CD69⁺ cell fraction under the TROP2 CTL1 and CTL2 conditions, providing an early T-cell activation readout. The second used Calcein-AM-labelled K562 targets to measure the overall cytotoxic activity of the first-round effector preparations at an effector-to-target ratio of 80:1. Spontaneous- and maximum-release controls provided the fluorescence references for calculating normalised cytotoxicity. Together, these assays supplemented the secretion measurement with complementary evidence of early activation and effector-cell killing activity."
+          "We built two parallel functional assays to complement the IFN-γ secretion measured by ELISpot. The first used flow cytometry to quantify the CD8⁺CD69⁺ cell fraction under the TROP2 CTL1 and CTL2 conditions, providing an early T-cell activation readout. The second used Calcein-AM-labeled K562 targets to measure the overall cytotoxic activity of the first-round effector preparations at an effector-to-target ratio of 80:1. Spontaneous- and maximum-release controls provided the fluorescence references for calculating normalized cytotoxicity. Together, these assays supplemented the secretion measurement with complementary evidence of early activation and effector-cell killing activity."
 ]
         },
         {
@@ -976,7 +976,7 @@ export const cycle2Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "The eight-module endpoint was predetermined by the stratified ELISpot rule: two modules from each of the four antigen sources. Wet Lab now designed their order and linker arrangement within one multi-antigen coding sequence. To evaluate what the complete design added, the second-round comparison was organised as Blank, TROP2 CTL1, TROP2 CTL2, TROP2 CTL1+2 and Combined. This hierarchy separated vector background, the two strongest TROP2 modules, their within-antigen combination and the complete four-antigen design."
+          "The eight-module endpoint was predetermined by the stratified ELISpot rule: two modules from each of the four antigen sources. Wet Lab now designed their order and linker arrangement within one multi-antigen coding sequence. To evaluate what the complete design added, the second-round comparison was organized as Blank, TROP2 CTL1, TROP2 CTL2, TROP2 CTL1+2 and Combined. This hierarchy separated vector background, the two strongest TROP2 modules, their within-antigen combination and the complete four-antigen design."
 ]
         }
           ]
@@ -988,7 +988,7 @@ export const cycle2Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "Wet Lab built a five-group comparison centred on Combined. The eight selected modules from four antigen sources were arranged with defined linkers to form the Combined coding sequence. Blank, TROP2 CTL1, TROP2 CTL2 and TROP2 CTL1+2 provided stepwise references for the shared background, individual modules and their within-antigen combination. A commercial service provider assembled the corresponding recombinant plasmids, and the delivered DNA templates entered the same transcription, circularisation and purification workflow to produce comparable circRNA preparations for the second-round experiments."
+          "Wet Lab built a five-group comparison centered on Combined. The eight selected modules from four antigen sources were arranged with defined linkers to form the Combined coding sequence. Blank, TROP2 CTL1, TROP2 CTL2 and TROP2 CTL1+2 provided stepwise references for the shared background, individual modules and their within-antigen combination. A commercial service provider assembled the corresponding recombinant plasmids, and the delivered DNA templates entered the same transcription, circularization and purification workflow to produce comparable circRNA preparations for the second-round experiments."
 ]
         }
           ]
@@ -1056,7 +1056,7 @@ export const cycle2Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "CircuForge V2.0 reorganised these requirements into a guided browser workflow. Stage-specific identifiers and Evidence Cards preserved source information; KEEP, REVIEW and REJECT represented software review states, while researcher confirmation determined whether an entry entered the Design Cart. Stable Cart IDs, deduplication and retained order supported later assembly. External resources were connected through adapters, longer tasks displayed visible progress states, and reviewed designs could be exported together with their sequences and evidence records. In this way, decisions about sequence overlap, module selection and Combined arrangement remained traceable as confirmed researcher choices throughout the workflow."
+          "CircuForge V2.0 reorganized these requirements into a guided browser workflow. Stage-specific identifiers and Evidence Cards preserved source information; KEEP, REVIEW and REJECT represented software review states, while researcher confirmation determined whether an entry entered the Design Cart. Stable Cart IDs, deduplication and retained order supported later assembly. External resources were connected through adapters, longer tasks displayed visible progress states, and reviewed designs could be exported together with their sequences and evidence records. In this way, decisions about sequence overlap, module selection and Combined arrangement remained traceable as confirmed researcher choices throughout the workflow."
 ]
         }
           ]
@@ -1068,7 +1068,7 @@ export const cycle2Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "Automated tests examined identifiers, review states, Cart behaviour, task progression, external-response parsing and export readback. Task-based user testing then followed the workflow from data import and target or epitope review to junction inspection and export. Early sessions identified unclear task-status messages and export guidance. Follow-up sessions revisited the revised task-status and export guidance, focusing on whether users could continue the workflow, inspect returned results and locate exported files."
+          "Automated tests examined identifiers, review states, Cart behavior, task progression, external-response parsing and export readback. Task-based user testing then followed the workflow from data import and target or epitope review to junction inspection and export. Early sessions identified unclear task-status messages and export guidance. Follow-up sessions revisited the revised task-status and export guidance, focusing on whether users could continue the workflow, inspect returned results and locate exported files."
 ]
         },
         {
@@ -1099,7 +1099,7 @@ export const cycle2Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "CircuForge converted the lessons of Integration into a reusable design workflow: later users could preserve source evidence, review state and researcher decisions without rebuilding the process across separate scripts. The software retained and transferred the biological decisions made by Dry Lab and Wet Lab. With Combined and its four comparison preparations already defined experimentally, the engineering story could now enter **M—Measurement** and test their molecular and cellular performance. Further details are provided in [Software: CircuForge](https://2026.igem.wiki/jlu-fbh/software#software-engineering-iterations-iteration-2-preserving-confirmed-selections-in-the-design-cart) and [Integrated Human Practices: software workflow reviews](https://2026.igem.wiki/jlu-fbh/human-practices#hp-plasmid-design-4)."
+          "CircuForge translated the lessons of Integration into a reusable design workflow. Later users could preserve source evidence, review state, and researcher decisions without reconstructing the process across separate scripts. The software retained and transferred the biological decisions made by Dry Lab and Wet Lab. With Combined and its four comparison preparations already defined experimentally, the engineering story could now enter **M—Measurement** and test their molecular and cellular performance. Further details are provided in [Software: CircuForge](https://2026.igem.wiki/jlu-fbh/software#software-engineering-iterations-iteration-2-preserving-confirmed-selections-in-the-design-cart) and [Integrated Human Practices: software workflow reviews](https://2026.igem.wiki/jlu-fbh/human-practices#hp-plasmid-design-4)."
 ]
         }
           ]

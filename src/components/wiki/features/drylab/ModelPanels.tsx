@@ -1,3 +1,4 @@
+import { QueuedImage } from "../../../common/QueuedImage";
 /* eslint-disable react-refresh/only-export-components */
 import { useEffect, useState, type ReactNode } from "react";
 import { WikiContentBlocks } from "../../WikiRoutePage";
@@ -253,40 +254,6 @@ function ModelPanelContent({
       </ModelFold>
     );
   if (panel.kind === "tabs") {
-    if (panelKey === "model-panel-7") {
-      return (
-        <div className="model-sc-pipeline-split">
-          <figure className="wiki-figure model-sc-pipeline-split__figure" data-wiki-reveal>
-            <img
-              src={getModelImage("pipeline Sc (1).png")}
-              width={800}
-              height={560}
-              alt="Single-cell RNA sequencing workflow across TNBC samples"
-              loading="lazy"
-            />
-            <figcaption>
-              <span className="wiki-figure__label">FIG. 10</span>
-              Single-cell RNA sequencing workflow across 10 TNBC samples, identifying candidate gene expression in 81.4% of malignant cells.
-            </figcaption>
-          </figure>
-          <div className="model-sc-pipeline-split__tabs">
-            <ManuscriptTabs
-              title={panel.title}
-              entries={panel.entries.map((entry) => ({
-                title: entry.title,
-                content: (
-                  <WikiContentBlocks
-                    blocks={entry.blocks}
-                    features={features}
-                    sectionId={panelKey}
-                  />
-                ),
-              }))}
-            />
-          </div>
-        </div>
-      );
-    }
     if (panelKey === "model-panel-8") {
       return (
         <ManuscriptTabs
@@ -467,7 +434,7 @@ export function modelFeatures(): Record<string, ReactNode> {
               scrollReaderToId(target, event.currentTarget);
             }}
           >
-            <img
+            <QueuedImage
               src={getModelImage(image)}
               width={modelAssets[image].width}
               height={modelAssets[image].height}

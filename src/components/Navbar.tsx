@@ -6,6 +6,7 @@ import {
   useRef,
   useState,
 } from "react";
+import { QueuedImage } from "./common/QueuedImage";
 import { Link, useLocation } from "react-router-dom";
 import gsap from "gsap";
 const teamCrestUrl =
@@ -919,7 +920,7 @@ export function Navbar() {
             >
               <span className="wordmark-stage" aria-hidden="true">
                 <span className="wordmark-crest">
-                  <img
+                  <QueuedImage
                     className="team-crest logo--dark"
                     src={teamCrestUrl}
                     alt=""
@@ -1114,7 +1115,7 @@ export function Navbar() {
                         onClick={closeAll}
                       >
                         <span className="nav-card-thumb" aria-hidden="true">
-                          <img src={c.icon} alt="" loading="eager" />
+                          <QueuedImage src={c.icon} alt="" loading="eager" />
                         </span>
                         <span className="nav-card-info">
                           <strong>{c.name}</strong>
@@ -1188,7 +1189,7 @@ export function Navbar() {
                           onClick={closeAll}
                         >
                           {c.icon ? (
-                            <img
+                            <QueuedImage
                               src={c.icon}
                               alt=""
                               className="circure-mobile-group__icon"

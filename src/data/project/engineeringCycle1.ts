@@ -148,7 +148,7 @@ export const cycle1Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "We combined this direction with literature research and clinical discussions with Lei Wang and Chengli Li, both oncology doctors, and **built an intended-use specification with three defined elements.** First, the clinical setting was the period after neoadjuvant treatment and surgery, when some patients remain at higher risk of recurrence. Second, the proposed role was an antigen-directed immune approach that could complement standard treatment. Third, later development would require a documented antigen rationale, molecular eligibility criteria and measurable molecular and immune-response evidence. Tumour-antigen expression and HLA compatibility were recorded as questions for the subsequent Dry Lab and epitope analyses."
+          "We combined this direction with literature research and clinical discussions with Lei Wang and Chengli Li, both oncology doctors, and **built an intended-use specification with three defined elements.** First, the clinical setting was the period after neoadjuvant treatment and surgery, when some patients remain at higher risk of recurrence. Second, the proposed role was an antigen-directed immune approach that could complement standard treatment. Third, later development would require a documented antigen rationale, molecular eligibility criteria and measurable molecular and immune-response evidence. Tumor-antigen expression and HLA compatibility were recorded as questions for the subsequent Dry Lab and epitope analyses."
 ]
         }
           ]
@@ -160,7 +160,7 @@ export const cycle1Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "We placed the intended use after neoadjuvant treatment and surgery, focusing on TNBC patients with residual invasive disease and a high risk of recurrence. This clinical setting defined four questions for subsequent evaluation: whether the selected antigens were expressed in the tumour, whether their epitopes matched the patient’s HLA type, whether the circRNA preparation could be reliably identified and whether it could induce measurable responses in the DC–T-cell system. The review therefore fixed the timing and initial patient population, while leaving the antigen- and HLA-based eligibility criteria to later analysis."
+          "We placed the intended use after neoadjuvant treatment and surgery, focusing on TNBC patients with residual invasive disease and a high risk of recurrence. This clinical setting defined four questions for subsequent evaluation: whether the selected antigens were expressed in the tumor, whether their epitopes matched the patient’s HLA type, whether the circRNA preparation could be reliably identified and whether it could induce measurable responses in the DC–T-cell system. The review therefore fixed the timing and initial patient population, while leaving the antigen- and HLA-based eligibility criteria to later analysis."
 ]
         }
           ]
@@ -172,7 +172,7 @@ export const cycle1Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "Literature and clinical consultation showed that recurrence risk may remain after surgery and systemic treatment, establishing a clear complementary position for an antigen-directed immune approach. We therefore retained the post-treatment, higher-risk TNBC setting as the project's intended use and translated it into three requirements for platform selection: the ability to encode tumour-antigen sequences, support sustained expression and remain measurable from molecular preparation to immune function. These requirements formed the Design of Iteration 1.2. Further details are provided in [Integrated Human Practices: clinical positioning](https://2026.igem.wiki/jlu-fbh/human-practices#hp-origin-1)."
+          "Literature and clinical consultation showed that recurrence risk may persist after surgery and systemic treatment. This established a clear complementary role for an antigen-directed immune approach. We therefore retained the post-treatment, higher-risk TNBC setting as the project's intended use and translated it into three requirements for platform selection: the ability to encode tumor-antigen sequences, support sustained expression and remain measurable from molecular preparation to immune function. These requirements formed the Design of Iteration 1.2. Further details are provided in [Integrated Human Practices: clinical positioning](https://2026.igem.wiki/jlu-fbh/human-practices#hp-origin-1)."
 ]
         }
           ]
@@ -388,7 +388,7 @@ export const cycle1Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "We planned and delivered Winter Outreach across five schools, reaching approximately 308 students. Five school-adapted teaching decks introduced synthetic biology, linear and circular RNA and possible biomedical applications. Dream circRNA used circular cardboard and coloured segments as a participatory activity after the scientific explanation. The first sheep character and project emblem gave the materials a consistent identity."
+          "We planned and delivered Winter Outreach across five schools, reaching approximately 308 students. Five school-adapted teaching decks introduced synthetic biology, linear and circular RNA and possible biomedical applications. Dream circRNA used circular cardboard and colored segments as a participatory activity after the scientific explanation. The first sheep character and project emblem gave the materials a consistent identity."
 ]
         }
           ]
@@ -535,7 +535,7 @@ export const cycle1Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "We reviewed each antigen against three starting questions: whether it had been studied in human TNBC samples, whether tumour-associated expression had been reported and what clinical relevance the published evidence supported. Studies documented TROP2 expression in TNBC tissue and its association with selected clinicopathological features; B7-H4 expression associated with poor prognosis and drug resistance; Nectin-4 expression in primary and metastatic TNBC with prognostic relevance; and LIV-1 expression associated with aggressive features and therapy failure. These findings provided a clinical basis for retaining all four antigen sources for systematic quantitative evaluation. The following published tissue images illustrate their protein-expression patterns, with the study population and source identified in each caption."
+          "We reviewed each antigen against three starting questions: whether it had been studied in human TNBC samples, whether tumor-associated expression had been reported and what clinical relevance the published evidence supported. Studies documented TROP2 expression in TNBC tissue and its association with selected clinicopathological features; B7-H4 expression associated with poor prognosis and drug resistance; Nectin-4 expression in primary and metastatic TNBC with prognostic relevance; and LIV-1 expression associated with aggressive features and therapy failure. These findings provided a clinical basis for retaining all four antigen sources for systematic quantitative evaluation. The following published tissue images illustrate their protein-expression patterns, with the study population and source identified in each caption."
 ]
         },
         {
@@ -615,7 +615,7 @@ export const cycle1Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "We built a four-dimensional antigen-evidence framework. **Protein abundance** evaluated whether each antigen was present and increased at the protein level in TNBC tissue. **Malignant-cell enrichment** located the corresponding expression signal within malignant and non-malignant cellular compartments. **Patient representation** measured the individual and combined reach of the four genes across TNBC cases. **Clinical evidence** integrated published histopathological, prognostic and translational findings. Normal-tissue expression was retained as a parallel safety consideration. This structure followed established principles for tumour-antigen prioritization (Cheever et al., 2009)."
+          "We built a four-dimensional antigen-evidence framework. **Protein abundance** evaluated whether each antigen was present and increased at the protein level in TNBC tissue. **Malignant-cell enrichment** located the corresponding expression signal within malignant and non-malignant cellular compartments. **Patient representation** measured the individual and combined reach of the four genes across TNBC cases. **Clinical evidence** integrated published histopathological, prognostic and translational findings. Normal-tissue expression was retained as a parallel safety consideration. This structure followed established principles for tumor-antigen prioritization (Cheever et al., 2009)."
 ]
         },
         {
@@ -706,7 +706,7 @@ export const cycle1Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "Following the evidence order established in Iteration 1.5, we first asked whether the four antigen candidates were supported by quantitative protein measurements in TNBC tissue and whether their abundance was higher in tumours than in normal or adjacent-normal tissue. PXD024322 and PXD028102 are ProteomeXchange accessions for two public quantitative-proteomics cohorts with complementary designs. PXD024322 provided 88 TNBC tumours and 38 normal-breast samples; PXD028102 included 82 TNBC tumours, of which 66 had matched adjacent-normal tissue (Asleh et al., 2022; Gong et al., 2022)."
+          "Following the evidence order established in Iteration 1.5, we first asked whether the four antigen candidates were supported by quantitative protein measurements in TNBC tissue and whether their abundance was higher in tumors than in normal or adjacent-normal tissue. PXD024322 and PXD028102 are ProteomeXchange accessions for two public quantitative-proteomics cohorts with complementary designs. PXD024322 provided 88 TNBC tumors and 38 normal-breast samples; PXD028102 included 82 TNBC tumors, of which 66 had matched adjacent-normal tissue (Asleh et al., 2022; Gong et al., 2022)."
 ]
         },
         {
@@ -735,7 +735,7 @@ export const cycle1Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "We built a reproducible proteomic-analysis workflow that retained sample, batch and patient identities. PXD024322 used a `Batch + Condition` model to compare TNBC tumours with normal-breast samples while accounting for TMT batches; proteins required at least two non-missing measurements in each group to enter statistical testing. PXD028102 used a paired `subject + condition` model, with `subject` identifying the 66 tumour–adjacent-normal patient pairs. Four left-censored imputation settings assessed sensitivity to missing-value handling. Both analyses used limma empirical-Bayes moderation and Benjamini–Hochberg correction across the proteins entering each analysis (Ritchie et al., 2015; Benjamini and Hochberg, 1995)."
+          "We built a reproducible proteomic-analysis workflow that retained sample, batch and patient identities. PXD024322 used a `Batch + Condition` model to compare TNBC tumors with normal-breast samples while accounting for TMT batches; proteins required at least two non-missing measurements in each group to enter statistical testing. PXD028102 used a paired `subject + condition` model, with `subject` identifying the 66 tumor–adjacent-normal patient pairs. Four left-censored imputation settings assessed sensitivity to missing-value handling. Both analyses used limma empirical-Bayes moderation and Benjamini–Hochberg correction across the proteins entering each analysis (Ritchie et al., 2015; Benjamini and Hochberg, 1995)."
 ]
         },
         {
@@ -781,7 +781,7 @@ export const cycle1Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "PXD024322 provided quantitative protein evidence for all four candidates. Compared with normal-breast samples, average abundance was higher in TNBC tumours for TROP2 (1.14-fold, FDR = 0.0370), B7-H4 (1.20-fold, FDR = 0.0446), Nectin-4 (1.35-fold, FDR = 7.14 × 10⁻⁹) and LIV-1 (1.34-fold, FDR = 1.88 × 10⁻⁵). In the paired PXD028102 analysis, TROP2, B7-H4 and Nectin-4 were respectively 18.25-, 3.72- and 7.12-fold more abundant in tumours than in matched adjacent-normal tissue, with FDR values of 2.14 × 10⁻¹⁵, 7.15 × 10⁻⁶ and 2.13 × 10⁻¹¹. LIV-1 was not quantified in this cohort and retained its protein-level support from PXD024322. Together, the two cohorts supported carrying all four antigen sources forward."
+          "PXD024322 provided quantitative protein evidence for all four candidates. Compared with normal-breast samples, average abundance was higher in TNBC tumors for TROP2 (1.14-fold, FDR = 0.0370), B7-H4 (1.20-fold, FDR = 0.0446), Nectin-4 (1.35-fold, FDR = 7.14 × 10⁻⁹) and LIV-1 (1.34-fold, FDR = 1.88 × 10⁻⁵). In the paired PXD028102 analysis, TROP2, B7-H4 and Nectin-4 were respectively 18.25-, 3.72- and 7.12-fold more abundant in tumors than in matched adjacent-normal tissue, with FDR values of 2.14 × 10⁻¹⁵, 7.15 × 10⁻⁶ and 2.13 × 10⁻¹¹. LIV-1 was not quantified in this cohort and retained its protein-level support from PXD024322. Together, the two cohorts supported carrying all four antigen sources forward."
 ]
         },
         {
@@ -825,7 +825,7 @@ export const cycle1Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "Quantitative proteomics established protein-level support for all four antigen sources: PXD024322 measured all four candidates, while the matched design of PXD028102 independently reinforced TROP2, B7-H4 and Nectin-4. We therefore retained the complete four-antigen starting set. The next question concerned cellular origin: tumour tissue contains malignant, immune and stromal compartments, so a cell-resolved analysis was required to determine where the corresponding expression signals arose. This became the next design. Further details are provided in [Bioinformatics: proteomic evidence](https://2026.igem.wiki/jlu-fbh/model#model-heading-3)."
+          "Quantitative proteomics established protein-level support for all four antigen sources: PXD024322 measured all four candidates, while the matched design of PXD028102 independently reinforced TROP2, B7-H4 and Nectin-4. We therefore retained the complete four-antigen starting set. The next question concerned cellular origin. Because tumor tissue contains malignant, immune, and stromal compartments, a cell-resolved analysis was required to locate the corresponding expression signals. This became the next design. Further details are provided in [Bioinformatics: proteomic evidence](https://2026.igem.wiki/jlu-fbh/model#model-heading-3)."
 ]
         }
           ]
@@ -849,7 +849,7 @@ export const cycle1Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "The proteomic results supported all four antigen sources in TNBC tissue, but tumour samples also contain immune, stromal and endothelial cells. We therefore asked whether the corresponding genes were enriched in malignant cells and whether they marked the same or complementary malignant-cell populations. GSE176078—the accession number of a public single-cell and spatial atlas of human breast cancer in the Gene Expression Omnibus—retained the patient and cell-type identities required for this analysis (Wu et al., 2021)."
+          "The proteomic results supported all four antigen sources in TNBC tissue, but tumor samples also contain immune, stromal and endothelial cells. We therefore asked whether the corresponding genes were enriched in malignant cells and whether they marked the same or complementary malignant-cell populations. GSE176078 is the Gene Expression Omnibus accession for a public single-cell and spatial atlas of human breast cancer. The dataset retained the patient and cell-type identities required for this analysis (Wu et al., 2021)."
 ]
         },
         {
@@ -999,7 +999,7 @@ export const cycle1Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "The cell-resolved analysis gave the multi-antigen strategy a cellular rationale: the four sources represented partly overlapping but non-identical malignant-cell populations, while the case-wise summaries showed their combined detection within individual tumours. We retained all four sources to broaden the cellular expression patterns represented in the design. The next iteration used an independent TCGA TNBC cohort to evaluate representation at the patient level. Further details are provided in [Bioinformatics: single-cell analysis](https://2026.igem.wiki/jlu-fbh/model#model-heading-11)."
+          "The cell-resolved analysis gave the multi-antigen strategy a cellular rationale: the four sources represented partly overlapping but non-identical malignant-cell populations, while the case-wise summaries showed their combined detection within individual tumors. We retained all four sources to broaden the cellular expression patterns represented in the design. The next iteration used an independent TCGA TNBC cohort to evaluate representation at the patient level. Further details are provided in [Bioinformatics: single-cell analysis](https://2026.igem.wiki/jlu-fbh/model#model-heading-11)."
 ]
         }
           ]
@@ -1090,7 +1090,7 @@ export const cycle1Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "The four-antigen strategy now had three connected quantitative evidence levels. Iteration 1.6 established protein-level support in TNBC tissue; Iteration 1.7 located the four genes within partly overlapping malignant-cell populations; and this iteration showed that combining the four sources increased patient representation beyond the broadest individual antigen. Together with the clinical starting evidence from Iteration 1.4, these results supported retaining TROP2, B7-H4, Nectin-4 and LIV-1. The next task was to preserve their data, literature and selection reasons as the four antigen sources moved into epitope design. Further details are provided in [Bioinformatics: patient-level evidence](https://2026.igem.wiki/jlu-fbh/model#model-heading-16)."
+          "The four-antigen strategy now had three connected quantitative evidence levels. Iteration 1.6 established protein-level support in TNBC tissue, and Iteration 1.7 located the four genes within partly overlapping malignant-cell populations. This iteration showed that combining the four sources increased patient representation beyond the broadest individual antigen. Together with the clinical starting evidence from Iteration 1.4, these results supported retaining TROP2, B7-H4, Nectin-4 and LIV-1. The next task was to preserve their data, literature and selection reasons as the four antigen sources moved into epitope design. Further details are provided in [Bioinformatics: patient-level evidence](https://2026.igem.wiki/jlu-fbh/model#model-heading-16)."
 ]
         }
           ]
@@ -1114,7 +1114,7 @@ export const cycle1Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "During our own Dry Lab work, quantitative results first had to be reorganized for target review, and selected target names, accessions, protein sequences and supporting evidence then had to be transferred into epitope prediction. Moving between R, Python, command-line scripts and web tools repeatedly changed the required input format and made selection reasons difficult to retain. This was especially demanding for new users. We therefore designed CircuForge to connect the steps in one guided environment and preserve the context needed for the next decision."
+          "During our own Dry Lab work, quantitative results first had to be reorganized for target review, and selected target names, accessions, protein sequences and supporting evidence then had to be transferred into epitope prediction. Moving between R, Python, command-line scripts, and web tools required repeated input-format changes and made selection reasons difficult to retain. This was especially demanding for new users. We therefore designed CircuForge to connect the steps in one guided environment and preserve the context needed for the next decision."
 ]
         }
           ]
@@ -1174,7 +1174,7 @@ export const cycle1Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "V1.0 connected the first three Dry Lab stages and gave the next software iteration three precise directions: **separate judgement, preserve evidence and clarify handoff**. Stage-specific candidate keys, Evidence Cards, visible software states and an independent confirmation step would later answer the problems identified here. Along the scientific route, the four selected antigen sources also needed a common human-cell framework before their epitopes could be compared experimentally.  [See Software: CircuForge iterations](https://2026.igem.wiki/jlu-fbh/software#software-engineering-iterations-circuforge-carrying-project-decisions-into-construct-design)."
+          "V1.0 connected the first three Dry Lab stages and gave the next software iteration three precise directions: **separate judgment, preserve evidence and clarify handoff**. Stage-specific candidate keys, Evidence Cards, visible software states and an independent confirmation step would later answer the problems identified here. Along the scientific route, the four selected antigen sources also needed a common human-cell framework before their epitopes could be compared experimentally. [See Software: CircuForge iterations](https://2026.igem.wiki/jlu-fbh/software#software-engineering-iterations-circuforge-carrying-project-decisions-into-construct-design)."
 ]
         }
           ]

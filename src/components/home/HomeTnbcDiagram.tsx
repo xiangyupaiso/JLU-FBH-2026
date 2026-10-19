@@ -1,3 +1,4 @@
+import { HomeImage } from "./HomeArtwork";
 const outline = "https://static.igem.wiki/teams/6056/wiki/files/pages/home/tnbc-cell-outline.webp";
 const cytoplasm = "https://static.igem.wiki/teams/6056/wiki/files/pages/home/tnbc-cell-cytoplasm.webp";
 const nucleus = "https://static.igem.wiki/teams/6056/wiki/files/pages/home/tnbc-cell-nucleus.webp";
@@ -25,7 +26,7 @@ export function HomeTnbcDiagram() {
     >
       <div className="tnbc-diagram__art">
         {layers.map(({ name, src }) => (
-          <img
+          <HomeImage
             key={name}
             src={src}
             className="tnbc-diagram__layer"

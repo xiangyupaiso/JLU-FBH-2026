@@ -1,3 +1,4 @@
+import { QueuedImage } from "../../../common/QueuedImage";
 import { useEffect, useRef, useState } from "react";
 import * as Dialog from "@radix-ui/react-dialog";
 import { useGSAP } from "@gsap/react";
@@ -147,7 +148,7 @@ export function ActivitiesExperience({
         <h1 id="activities-title" className="activities-sr-only">
           {content.title}
         </h1>
-        <img src={heroImage} alt="" fetchPriority="high" />
+        <QueuedImage src={heroImage} alt="" fetchPriority="high" data-page-critical="true" />
       </header>
       <section
         className="activities-opening"
@@ -284,7 +285,7 @@ export function ActivitiesExperience({
                     aria-label={`View photograph ${index + 1}`}
                     onClick={() => openPhoto(index)}
                   >
-                    <img src={item.src} alt={item.alt} decoding="async" />
+                    <QueuedImage src={item.src} alt={item.alt} decoding="async" />
                   </button>
                 ))}
               </div>
@@ -302,7 +303,7 @@ export function ActivitiesExperience({
               </button>
             )}
             {photo && !browsing && (
-              <img
+              <QueuedImage
                 className="activities-lightbox__photo"
                 key={photo.id}
                 src={photo.src}

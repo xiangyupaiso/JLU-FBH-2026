@@ -6,10 +6,13 @@ import type {
 } from "../../../../../data/engagement/sustainability/sdgChapterContract";
 import { sustainabilityDocUrl } from "../../../../../data/engagement/sustainability/sustainabilityAssets";
 import { RichText } from "./RichText";
+import { PeerTubeVideo } from "../../shared/PeerTubeVideo";
 import "../../../../../styles/wiki-pdf-folders.css";
 
 type ToolCard = Pick<LegacyTool, "title" | "pdfs"> &
-  Partial<Pick<LegacyTool, "why" | "whatItHelpsWith" | "bestFor" | "links">>;
+  Partial<
+    Pick<LegacyTool, "why" | "whatItHelpsWith" | "bestFor" | "links" | "video">
+  >;
 
 const ROWS = [
   ["why", "Why"],
@@ -108,9 +111,11 @@ export function PdfToolList({
                 ) : null}
                 <span className="sust-folder__title">{tool.title}</span>
                 <span className="sust-folder__meta">
-                  {tool.pdfs.length > 3
-                    ? `${tool.pdfs.length} PDFs`
-                    : tool.pdfs.map((pdf) => pdfLabel(pdf.label)).join(" · ")}
+                  {tool.video
+                    ? "Video"
+                    : tool.pdfs.length > 3
+                      ? `${tool.pdfs.length} PDFs`
+                      : tool.pdfs.map((pdf) => pdfLabel(pdf.label)).join(" · ")}
                 </span>
               </span>
             </button>
@@ -146,6 +151,11 @@ export function PdfToolList({
                   ) : null,
                 )}
               </dl>
+            ) : null}
+            {tool.video ? (
+              <div className="sust-tool-card__video">
+                {index === open ? <PeerTubeVideo video={tool.video} /> : null}
+              </div>
             ) : null}
             <div className="sust-tool-card__actions">
               {tool.pdfs.map((pdf) => (

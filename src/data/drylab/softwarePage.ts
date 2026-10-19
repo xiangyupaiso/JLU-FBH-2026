@@ -48,14 +48,14 @@ export type SoftwarePanel =
 export const softwareReferences: CitationReference[] = [
   {
     id: 1,
-    authors: "Chen CK, Cheng R, Demeter J, et al.",
-    title: "Structured elements drive extensive circular RNA translation.",
-    journal: "Molecular Cell.",
-    volumeYear: "2021;81(20):4300–4318.e13.",
+    authors: "iGEM Foundation.",
+    title: "iGEM Registry of Standard Biological Parts.",
+    journal: "",
+    volumeYear: "n.d. Accessed 19 October 2026.",
     links: [
       {
-        href: "https://doi.org/10.1016/j.molcel.2021.07.042",
-        label: "doi:10.1016/j.molcel.2021.07.042",
+        href: "https://registry.igem.org/",
+        label: "Official website",
       },
     ],
   },
@@ -74,6 +74,45 @@ export const softwareReferences: CitationReference[] = [
   },
   {
     id: 3,
+    authors: "",
+    title: "IEDB. Immune Epitope Database.",
+    journal: "",
+    volumeYear: "",
+    links: [
+      {
+        href: "https://www.iedb.org/",
+        label: "Official website",
+      },
+    ],
+  },
+  {
+    id: 4,
+    authors: "",
+    title: "UniProt.",
+    journal: "",
+    volumeYear: "",
+    links: [
+      {
+        href: "https://www.uniprot.org/",
+        label: "Official website",
+      },
+    ],
+  },
+  {
+    id: 5,
+    authors: "The UniProt Consortium.",
+    title: "UniProt: the Universal Protein Knowledgebase in 2025.",
+    journal: "Nucleic Acids Research.",
+    volumeYear: "2025;53(D1):D609–D617.",
+    links: [
+      {
+        href: "https://doi.org/10.1093/nar/gkae1010",
+        label: "doi:10.1093/nar/gkae1010",
+      },
+    ],
+  },
+  {
+    id: 6,
     authors: "Vita R, Mahajan S, Overton JA, et al.",
     title: "The Immune Epitope Database (IEDB): 2018 update.",
     journal: "Nucleic Acids Research.",
@@ -86,7 +125,20 @@ export const softwareReferences: CitationReference[] = [
     ],
   },
   {
-    id: 4,
+    id: 7,
+    authors: "",
+    title: "ViennaRNA.",
+    journal: "",
+    volumeYear: "",
+    links: [
+      {
+        href: "https://www.tbi.univie.ac.at/RNA/",
+        label: "Official website",
+      },
+    ],
+  },
+  {
+    id: 8,
     authors: "Lorenz R, Bernhart SH, Höner zu Siederdissen C, et al.",
     title: "ViennaRNA Package 2.0.",
     journal: "Algorithms for Molecular Biology.",
@@ -99,7 +151,46 @@ export const softwareReferences: CitationReference[] = [
     ],
   },
   {
-    id: 5,
+    id: 9,
+    authors: "",
+    title: "RhoFold+.",
+    journal: "",
+    volumeYear: "",
+    links: [
+      {
+        href: "https://github.com/ml4bio/RhoFold",
+        label: "Source code",
+      },
+    ],
+  },
+  {
+    id: 10,
+    authors: "",
+    title: "trRosettaRNA2.",
+    journal: "",
+    volumeYear: "",
+    links: [
+      {
+        href: "https://yanglab.qd.sdu.edu.cn/trRosettaRNA/download/",
+        label: "Official website",
+      },
+    ],
+  },
+  {
+    id: 11,
+    authors: "",
+    title: "RNAbpFlow.",
+    journal: "",
+    volumeYear: "",
+    links: [
+      {
+        href: "https://github.com/Bhattacharya-Lab/RNAbpFlow",
+        label: "Source code",
+      },
+    ],
+  },
+  {
+    id: 12,
     authors: "Shen T, Hu Z, Sun S, et al.",
     title:
       "Accurate RNA 3D structure prediction using a language model-based deep learning approach.",
@@ -113,7 +204,7 @@ export const softwareReferences: CitationReference[] = [
     ],
   },
   {
-    id: 6,
+    id: 13,
     authors: "Wang W, Peng Z, Yang J.",
     title:
       "Predicting RNA 3D structure and conformers using a pre-trained secondary structure model and structure-aware attention.",
@@ -127,7 +218,7 @@ export const softwareReferences: CitationReference[] = [
     ],
   },
   {
-    id: 7,
+    id: 14,
     authors: "Tarafder S, Bhattacharya D.",
     title:
       "RNAbpFlow: base pair-augmented SE(3) flow matching for conditional RNA 3D structure generation.",
@@ -141,118 +232,34 @@ export const softwareReferences: CitationReference[] = [
     ],
   },
   {
-    id: 8,
-    authors: "Posit Software, PBC.",
-    title: "Welcome to Shiny.",
-    journal: "Shiny for R documentation.",
-    volumeYear: "Accessed 19 October 2026.",
-    links: [
-      {
-        href: "https://shiny.posit.co/r/getstarted/shiny-basics/lesson1/",
-        label: "Official documentation",
-      },
-    ],
-  },
-  {
-    id: 9,
-    authors: "Ritchie ME, Phipson B, Wu D, et al.",
-    title:
-      "limma powers differential expression analyses for RNA-sequencing and microarray studies.",
-    journal: "Nucleic Acids Research.",
-    volumeYear: "2015;43(7):e47.",
-    links: [
-      {
-        href: "https://doi.org/10.1093/nar/gkv007",
-        label: "doi:10.1093/nar/gkv007",
-      },
-    ],
-  },
-  {
-    id: 10,
-    authors: "Chen Y, Chen L, Lun ATL, Baldoni PL, Smyth GK.",
-    title:
-      "edgeR v4: powerful differential analysis of sequencing data with expanded functionality and improved support for small counts and larger datasets.",
-    journal: "Nucleic Acids Research.",
-    volumeYear: "2025;53(2):gkaf018.",
-    links: [
-      {
-        href: "https://doi.org/10.1093/nar/gkaf018",
-        label: "doi:10.1093/nar/gkaf018",
-      },
-    ],
-  },
-  {
-    id: 11,
-    authors: "Omnes L, Angel E, Tahi F.",
-    title:
-      "DivideFold+: an AI-based tool for RNA secondary structure prediction with subdomains identification and visualization and data augmentation.",
-    journal: "Journal of Molecular Biology.",
-    volumeYear: "2026;438(18):169865.",
-    links: [
-      {
-        href: "https://doi.org/10.1016/j.jmb.2026.169865",
-        label: "doi:10.1016/j.jmb.2026.169865",
-      },
-    ],
-  },
-  {
-    id: 12,
-    authors: "Eastman P, Galvelis R, Peláez RP, et al.",
-    title:
-      "OpenMM 8: Molecular Dynamics Simulation with Machine Learning Potentials.",
-    journal: "The Journal of Physical Chemistry B.",
-    volumeYear: "2024;128(1):109–116.",
-    links: [
-      {
-        href: "https://doi.org/10.1021/acs.jpcb.3c06662",
-        label: "doi:10.1021/acs.jpcb.3c06662",
-      },
-    ],
-  },
-  {
-    id: 13,
-    authors: "Calis JJA, Maybeno M, Greenbaum JA, et al.",
-    title:
-      "Properties of MHC Class I Presented Peptides That Enhance Immunogenicity.",
-    journal: "PLoS Computational Biology.",
-    volumeYear: "2013;9(10):e1003266.",
-    links: [
-      {
-        href: "https://doi.org/10.1371/journal.pcbi.1003266",
-        label: "doi:10.1371/journal.pcbi.1003266",
-      },
-    ],
-  },
-  {
-    id: 14,
-    authors: "Abramson J, Adler J, Dunger J, et al.",
-    title:
-      "Accurate structure prediction of biomolecular interactions with AlphaFold 3.",
-    journal: "Nature.",
-    volumeYear: "2024;630:493–500.",
-    links: [
-      {
-        href: "https://doi.org/10.1038/s41586-024-07487-w",
-        label: "doi:10.1038/s41586-024-07487-w",
-      },
-    ],
-  },
-  {
     id: 15,
-    authors: "Sehnal D, Bittrich S, Deshpande M, et al.",
-    title:
-      "Mol* Viewer: modern web app for 3D visualization and analysis of large biomolecular structures.",
-    journal: "Nucleic Acids Research.",
-    volumeYear: "2021;49(W1):W431–W437.",
+    authors: "Chen CK, Cheng R, Demeter J, et al.",
+    title: "Structured elements drive extensive circular RNA translation.",
+    journal: "Molecular Cell.",
+    volumeYear: "2021;81(20):4300–4318.e13.",
     links: [
       {
-        href: "https://doi.org/10.1093/nar/gkab314",
-        label: "doi:10.1093/nar/gkab314",
+        href: "https://doi.org/10.1016/j.molcel.2021.07.042",
+        label: "doi:10.1016/j.molcel.2021.07.042",
       },
     ],
   },
   {
     id: 16,
+    authors: "Ng CKY, Dazert E, Boldanova T, et al.",
+    title:
+      "Integrative proteogenomic characterization of hepatocellular carcinoma across etiologies and stages.",
+    journal: "Nature Communications.",
+    volumeYear: "2022;13:2436.",
+    links: [
+      {
+        href: "https://doi.org/10.1038/s41467-022-29960-8",
+        label: "doi:10.1038/s41467-022-29960-8",
+      },
+    ],
+  },
+  {
+    id: 17,
     authors: "GTEx Consortium.",
     title:
       "The GTEx Consortium atlas of genetic regulatory effects across human tissues.",
@@ -266,46 +273,170 @@ export const softwareReferences: CitationReference[] = [
     ],
   },
   {
-    id: 17,
-    authors: "The UniProt Consortium.",
-    title: "UniProt: the Universal Protein Knowledgebase in 2025.",
-    journal: "Nucleic Acids Research.",
-    volumeYear: "2025;53(D1):D609–D617.",
-    links: [
-      {
-        href: "https://doi.org/10.1093/nar/gkae1010",
-        label: "doi:10.1093/nar/gkae1010",
-      },
-    ],
-  },
-  {
     id: 18,
-    authors: "",
-    title: "PXD025705 dataset.",
-    journal: "PRIDE Archive.",
-    volumeYear: "",
+    authors: "Sehnal D, Bittrich S, Deshpande M, et al.",
+    title:
+      "Mol* Viewer: modern web app for 3D visualization and analysis of large biomolecular structures.",
+    journal: "Nucleic Acids Research.",
+    volumeYear: "2021;49(W1):W431–W437.",
     links: [
       {
-        href: "https://www.ebi.ac.uk/pride/archive/projects/PXD025705",
-        label: "PXD025705 dataset",
+        href: "https://doi.org/10.1093/nar/gkab314",
+        label: "doi:10.1093/nar/gkab314",
       },
     ],
   },
   {
     id: 19,
-    authors: "iGEM Foundation.",
-    title: "iGEM Registry of Standard Biological Parts.",
-    journal: "",
-    volumeYear: "n.d. Accessed 19 October 2026.",
+    authors: "Posit Software, PBC.",
+    title: "Welcome to Shiny.",
+    journal: "Shiny for R documentation.",
+    volumeYear: "Accessed 19 October 2026.",
     links: [
       {
-        href: "https://registry.igem.org/",
-        label: "Official website",
+        href: "https://shiny.posit.co/r/getstarted/shiny-basics/lesson1/",
+        label: "Official documentation",
       },
     ],
   },
   {
     id: 20,
+    authors: "Ritchie ME, Phipson B, Wu D, et al.",
+    title:
+      "limma powers differential expression analyses for RNA-sequencing and microarray studies.",
+    journal: "Nucleic Acids Research.",
+    volumeYear: "2015;43(7):e47.",
+    links: [
+      {
+        href: "https://doi.org/10.1093/nar/gkv007",
+        label: "doi:10.1093/nar/gkv007",
+      },
+    ],
+  },
+  {
+    id: 21,
+    authors: "Chen Y, Chen L, Lun ATL, Baldoni PL, Smyth GK.",
+    title:
+      "edgeR v4: powerful differential analysis of sequencing data with expanded functionality and improved support for small counts and larger datasets.",
+    journal: "Nucleic Acids Research.",
+    volumeYear: "2025;53(2):gkaf018.",
+    links: [
+      {
+        href: "https://doi.org/10.1093/nar/gkaf018",
+        label: "doi:10.1093/nar/gkaf018",
+      },
+    ],
+  },
+  {
+    id: 22,
+    authors: "Omnes L, Angel E, Tahi F.",
+    title:
+      "DivideFold+: an AI-based tool for RNA secondary structure prediction with subdomains identification and visualization and data augmentation.",
+    journal: "Journal of Molecular Biology.",
+    volumeYear: "2026;438(18):169865.",
+    links: [
+      {
+        href: "https://doi.org/10.1016/j.jmb.2026.169865",
+        label: "doi:10.1016/j.jmb.2026.169865",
+      },
+    ],
+  },
+  {
+    id: 23,
+    authors: "Calis JJA, Maybeno M, Greenbaum JA, et al.",
+    title:
+      "Properties of MHC Class I Presented Peptides That Enhance Immunogenicity.",
+    journal: "PLoS Computational Biology.",
+    volumeYear: "2013;9(10):e1003266.",
+    links: [
+      {
+        href: "https://doi.org/10.1371/journal.pcbi.1003266",
+        label: "doi:10.1371/journal.pcbi.1003266",
+      },
+    ],
+  },
+  {
+    id: 24,
+    authors: "Abramson J, Adler J, Dunger J, et al.",
+    title:
+      "Accurate structure prediction of biomolecular interactions with AlphaFold 3.",
+    journal: "Nature.",
+    volumeYear: "2024;630:493–500.",
+    links: [
+      {
+        href: "https://doi.org/10.1038/s41586-024-07487-w",
+        label: "doi:10.1038/s41586-024-07487-w",
+      },
+    ],
+  },
+  {
+    id: 25,
+    authors: "",
+    title: "OpenMM.",
+    journal: "",
+    volumeYear: "",
+    links: [
+      {
+        href: "https://openmm.org/",
+        label: "Official website",
+      },
+    ],
+  },
+  {
+    id: 26,
+    authors: "Eastman P, Galvelis R, Peláez RP, et al.",
+    title:
+      "OpenMM 8: Molecular Dynamics Simulation with Machine Learning Potentials.",
+    journal: "The Journal of Physical Chemistry B.",
+    volumeYear: "2024;128(1):109–116.",
+    links: [
+      {
+        href: "https://doi.org/10.1021/acs.jpcb.3c06662",
+        label: "doi:10.1021/acs.jpcb.3c06662",
+      },
+    ],
+  },
+  {
+    id: 27,
+    authors: "",
+    title: "PyRosetta.",
+    journal: "",
+    volumeYear: "",
+    links: [
+      {
+        href: "https://www.pyrosetta.org/",
+        label: "Official website",
+      },
+    ],
+  },
+  {
+    id: 28,
+    authors: "",
+    title: "3Dmol.js.",
+    journal: "",
+    volumeYear: "",
+    links: [
+      {
+        href: "https://3dmol.org/",
+        label: "Official website",
+      },
+    ],
+  },
+  {
+    id: 29,
+    authors: "",
+    title: "pako.",
+    journal: "",
+    volumeYear: "",
+    links: [
+      {
+        href: "https://github.com/nodeca/pako",
+        label: "Source code",
+      },
+    ],
+  },
+  {
+    id: 30,
     authors: "iGEM Munich.",
     title:
       "igem_registry_api: A high-level Python interface for the new iGEM Registry REST API (2025 Beta).",
@@ -876,7 +1007,7 @@ export const softwarePage: WikiPageContent = {
         {
           type: "prose",
           paragraphs: [
-            "This walkthrough uses the built-in **hepatocellular carcinoma proteomics demo**, a small processed subset of the public PXD025705 dataset (PXD025705 dataset) prepared for a lightweight demonstration. The sidebar has six steps: Prepare data, Screen targets, Select epitopes, Assemble peptides, Build construct, and Download files. Selected targets and epitopes are saved in the **Design list** for use in later steps.",
+            "This walkthrough uses the built-in **hepatocellular carcinoma proteomics demo**, a small processed subset of the public proteomics dataset (**Ng et al., 2022**) prepared for a lightweight demonstration. The sidebar has six steps: Prepare data, Screen targets, Select epitopes, Assemble peptides, Build construct, and Download files. Selected targets and epitopes are saved in the **Design list** for use in later steps.",
             "If you already have a target protein or candidate peptides, choose the **Target protein or Candidate peptides** entry point on Overview. The walkthrough below starts from expression data and completes a design workflow.",
           ],
         },
@@ -1697,7 +1828,7 @@ export const softwarePage: WikiPageContent = {
           type: "prose",
           paragraphs: [
             "The official iGEM GitLab repositories provide source code, installation instructions, example inputs, and test materials for [CircuForge](https://gitlab.igem.org/2026/software/jlu-fbh/circuforge) and [TorusFold](https://gitlab.igem.org/2026/software/jlu-fbh/torusfold-hybrid). The [Usage guide](#usage) illustrates the browser workflows, and [Installation and API](#installation) provides the execution paths and programmatic interfaces.",
-            "Teams can begin CircuForge with compatible expression data, a known protein, or reviewed peptides, then supply their own backbone for construct design. TorusFold’s [saved-model viewer](图片和附件/torusfold-example-viewer.html) provides an immediate starting point for structure inspection; teams can then configure the prediction environment for their own mature RNA sequences.",
+            "Teams can begin CircuForge with compatible expression data, a known protein, or reviewed peptides, then supply their own backbone for construct design. TorusFold’s [saved-model viewer](#software-torusfold-model) provides an immediate starting point for structure inspection; teams can then configure the prediction environment for their own mature RNA sequences.",
             "Both tools can be used independently or connected through the mature RNA file. Keeping the construct ID, software version, parameters, and sequence hash with the outputs preserves the link between the reviewed design and the subsequent analysis. Standard-format exports, diagnostic files, and the [reference-case materials](#reference-case) support continued inspection, transfer, and adaptation by other researchers.",
           ],
         },
@@ -2391,7 +2522,7 @@ export const softwarePage: WikiPageContent = {
           type: "prose",
           paragraphs: [
             "**Adapt the workflow to another biological project.** Researchers can begin CircuForge with the built-in example, then work with their own candidate proteins, reviewed peptides, and construct backbones. Teams extending the code can add another biological resource, change candidate-selection rules, or introduce another export format. The separate candidate-review, assembly, and export modules provide clear places to make those changes.",
-            "**Build on the RNA-modeling workflow.** TorusFold connects fragment predictions, full-length reconstruction, refinement, and result inspection through separate stages. Teams can configure supported predictors, examine intermediate structures, and modify the stages relevant to their research question. The [saved-model viewer](图片和附件/torusfold-example-viewer.html) offers an immediate starting point for structure inspection; the [installation guide](#installation) describes the tools and computing setup for running new sequences.",
+            "**Build on the RNA-modeling workflow.** TorusFold connects fragment predictions, full-length reconstruction, refinement, and result inspection through separate stages. Teams can configure supported predictors, examine intermediate structures, and modify the stages relevant to their research question. The [saved-model viewer](#software-torusfold-model) offers an immediate starting point for structure inspection; the [installation guide](#installation) describes the tools and computing setup for running new sequences.",
           ],
         },
         {
@@ -2420,7 +2551,7 @@ export const softwarePage: WikiPageContent = {
           ],
           rows: [
             [
-              "IEDB, UniProt and [iGEM Registry](https://registry.igem.org/)",
+              "**IEDB, UniProt and iGEM Registry**",
               "Epitope predictions, source-protein annotations, and Part records",
               "Follow each resource’s data and service terms; retain available source identifiers and search settings",
             ],
@@ -2483,29 +2614,6 @@ export const softwarePage: WikiPageContent = {
         {
           type: "feature",
           key: "software-references",
-        },
-        {
-          type: "subheading",
-          level: 3,
-          id: "software-references-additional-links",
-          index: "",
-          title: "Additional links",
-          anchorIds: ["additional-links"],
-        },
-        {
-          type: "list",
-          items: [
-            "[IEDB](https://www.iedb.org/)",
-            "[UniProt](https://www.uniprot.org/)",
-            "[ViennaRNA](https://www.tbi.univie.ac.at/RNA/)",
-            "[OpenMM](https://openmm.org/)",
-            "[RhoFold+](https://github.com/ml4bio/RhoFold)",
-            "[trRosettaRNA2](https://yanglab.qd.sdu.edu.cn/trRosettaRNA/download/)",
-            "[RNAbpFlow](https://github.com/Bhattacharya-Lab/RNAbpFlow)",
-            "[PyRosetta](https://www.pyrosetta.org/)",
-            "[3Dmol.js](https://3dmol.org/)",
-            "[pako](https://github.com/nodeca/pako)",
-          ],
         },
       ]),
       anchorIds: ["references"],

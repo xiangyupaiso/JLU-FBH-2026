@@ -20,7 +20,7 @@ import "../../styles/route-palette-drylab.css";
 import "../../styles/route-palette-engagement.css";
 import { Navigate, Route, Routes, useLocation } from "react-router-dom";
 import { getPathMapping, stringToSlug } from "../../utils";
-import { Suspense, useEffect, useLayoutEffect, type ReactNode } from "react";
+import { Suspense, useEffect, useLayoutEffect, useRef, type ReactNode } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Navbar } from "../../components/Navbar";
@@ -101,6 +101,7 @@ function PageReady({ children }: { children: ReactNode }) {
 
 const App = () => {
   const { pathname } = useLocation();
+  const previousPath = useRef(pathname);
   const pathMapping = getPathMapping();
   const currentPath =
     pathname.split(`${stringToSlug(import.meta.env.VITE_TEAM_NAME)}`).pop() ||
@@ -110,6 +111,10 @@ const App = () => {
   // by the static loader from index.html until that route is presentable.
   // Layout effect: the loader must be up before the new page's first paint.
   useLayoutEffect(() => {
+    // index.html already started the first-visit cover and its absolute
+    // deadline before React mounts. Only replay it for an actual route change.
+    if (previousPath.current === pathname) return;
+    previousPath.current = pathname;
     showPageLoader();
   }, [pathname]);
 

@@ -510,6 +510,53 @@ export const sdg9Chapter: SdgChapter = {
     lead: [
       "Building on the potential relationships identified through SST-QN, we examined CirCure’s **technical design, stakeholder engagement, experimental validation, and commercialization analysis** to assess whether these relationships have emerged within the project and how far the current evidence supports them.",
     ],
+    table: {
+      headers: ["Relationship", "Status", "Interaction", "Why"],
+      rows: [
+        [
+          "SDG 3 ↔ SDG 9",
+          "Core (C)",
+          "Positive",
+          "The need to control recurrence and metastasis in patients with TNBC after surgery defined the technical challenges CirCure needed to address. It also prompted us to expand candidate antigen evaluation beyond RNA expression to include protein expression, tissue localization, tumor specificity, and patient heterogeneity. Meanwhile, the project progressively built functional evidence through antigen expression, DC maturation, T-cell responses, and cell co-culture experiments. Reliable technical validation, in turn, determines whether there is a foundation for achieving this health objective.",
+        ],
+        [
+          "SDG 17 → SDG 9",
+          "Core (C)",
+          "Positive",
+          "Stakeholders in pathology, computational immunology, RNA vaccines, nanodelivery, cancer immunology, preclinical evaluation, and industrial translation directly contributed to project iterations. Their input changed antigen and epitope evaluation, the interpretation of RNA-induced immune effects, LNP development priorities, experimental controls, evidence boundaries, and commercialization analysis. Collaboration across disciplines has become a practical driver of CirCure’s technological innovation.",
+        ],
+        [
+          "SDG 9 → SDG 4",
+          "Core (C)",
+          "Positive",
+          "CirCure translated technical content on circRNA, cancer vaccines, and synthetic biology into courses, teaching slides, illustrated science books, virtual laboratories, educational games, and public engagement activities. We delivered these educational activities to audiences of different ages and knowledge backgrounds. Technological innovation has therefore generated concrete educational resources and activities. Their implementation and outcomes are discussed under SDG 4.",
+        ],
+        [
+          "SDG 9 → SDG 8",
+          "Exploratory (E)",
+          "Positive",
+          "Discussions with Hualan Biological prompted further analysis of product positioning, markets and competition, costs, industry collaboration, intellectual property, and risk management in our Entrepreneurship work. This provides a commercialization perspective for future product development. However, CirCure has not yet generated production at scale, employment opportunities, or actual economic returns from industrial activity, so this relationship does not yet qualify as Core.",
+        ],
+        [
+          "SDG 9 ↔ SDG 10",
+          "Conditional (±)",
+          "Context-dependent",
+          "Multi-antigen, multi-epitope design, together with HLA binding and potential population coverage assessments, may broaden the range of tumor characteristics and immune backgrounds the vaccine could address. However, circRNA/LNP manufacturing, quality control, low-temperature storage and transport, treatment prices, ability to pay, and disparities in healthcare resources could mean that the technology initially reaches better-resourced populations. The final direction depends on coverage, costs, payment arrangements, and healthcare accessibility.",
+        ],
+        [
+          "SDG 9 ↔ SDG 12",
+          "Conditional (±)",
+          "Context-dependent",
+          "Appropriate controls and experimental replication, established commercial LNPs, process standardization, and improved batch consistency may reduce failed experiments, repeated production, and unnecessary resource use. However, RNA preparation, LNP production, single-use consumables, quality testing, and cold-chain transport could also increase material and energy demands. The final relationship depends on actual process efficiency and resource management across the full production and delivery process.",
+        ],
+        [
+          "SDG 9 → SDG 5",
+          "Excluded (0)",
+          "None",
+          "CirCure focuses on TNBC and could improve women’s health through SDG 3. However, vaccine innovation itself does not directly address structural gender disparities in resource allocation, decision-making opportunities, employment, or social participation. We therefore do not currently establish a direct interaction from SDG 9 to SDG 5.",
+        ],
+      ],
+    },
     findings: [
       "**SDG 3 ↔ SDG 9, SDG 17 → SDG 9, and SDG 9 → SDG 4 are supported as Positive Core Interactions.** Clinical needs have shaped antigen selection, multi-epitope design, and functional validation. Cross-disciplinary feedback has refined experimental interpretation, delivery priorities, and development planning, while technical knowledge has informed educational resources used with different audiences. These links are supported by project decisions and activities, rather than demonstrated patient health benefits.",
       "**SDG 9 → SDG 8 remains Exploratory.** Feedback from Hualan Biological informed our analysis of product positioning, markets, costs, partnerships, and risks. This supports future development planning, but CirCure has not yet demonstrated production at scale, job creation, or economic returns.",
@@ -522,9 +569,39 @@ export const sdg9Chapter: SdgChapter = {
       "To help other teams build on our SDG 9 work, we distilled CirCure’s decision-making process into **three reusable toolkits** for synthetic biology and research-driven projects. They help teams define core questions, assess stakeholder feedback, document decisions, and update project actions while maintaining research priorities. Each decision record captures **the rationale, relevance to the project’s current stage, action taken, and need for reassessment**. Together, these tools offer a practical, traceable way to turn stakeholder input into project decisions that others can review and adapt.",
     ],
     tools: [
-      { title: "Core Question Anchor", why: "Projects can gradually drift from the problem they set out to solve as new ideas, experiments, and stakeholder suggestions are added.", whatItHelpsWith: "Clarify the **core problem, success criteria, priorities, and scope** for the current phase, and check whether proposed additions truly support the project’s main direction.", bestFor: "**Project kick-offs, changes in research direction, phase reviews**, and times when the team needs to reset its priorities.", whatItDoes: "Anchors the core problem, success criteria, priorities, and scope for the current phase.", pdfs: pdfPair("core-question-anchor") },
-      { title: "Stakeholder Feedback Decision Protocol", why: "Stakeholders may have different priorities, and their suggestions may face practical constraints or conflict with one another. The team can’t accept every suggestion, but simply recording feedback without explaining how it was handled isn’t enough.", whatItHelpsWith: "Assess feedback based on its **relevance to the problem, supporting evidence, feasibility, and fit with the project’s current stage**. Classify each suggestion as **Incorporated**, **Partially Incorporated**, **Future Consideration**, or **Not Incorporated**, and document the **rationale and follow-up actions**. Assess feedback based on the same criteria when a suggestion needs to be reviewed again.", bestFor: "Organizing feedback after **expert interviews, patient and public engagement, or industry discussions**, and supporting team discussions about project changes.", whatItDoes: "Records how stakeholder feedback was assessed, classified, and followed up.", pdfs: pdfPair("stakeholder-feedback-decision-protocol") },
-      { title: "Anchor & Decide Toolkit", why: "When the core problem, stakeholder feedback, team decisions, and project actions are recorded separately, the project’s evolution can become fragmented. External audiences may also find it difficult to see **how feedback actually shaped the research work**.", whatItHelpsWith: "Bring the **core problem, feedback, team discussions, and follow-up actions** together so the team can see how each suggestion affects the project and adjust its next steps accordingly.", bestFor: "Managing the **full cycle**, documenting **Integrated Human Practices and SDG 9** work, and supporting **team handovers, phase reviews, and external presentations**.", whatItDoes: "Connects the core problem, feedback, decisions, and actions across the full project cycle.", pdfs: pdfPair("anchor-decide-toolkit") },
+      {
+        title: "Core Question Anchor",
+        why: "Projects can gradually drift from the problem they set out to solve as new ideas, experiments, and stakeholder suggestions are added.",
+        whatItHelpsWith:
+          "Clarify the **core problem, success criteria, priorities, and scope** for the current phase, and check whether proposed additions truly support the project’s main direction.",
+        bestFor:
+          "**Project kick-offs, changes in research direction, phase reviews**, and times when the team needs to reset its priorities.",
+        whatItDoes:
+          "Help the team clarify the key problem to solve, the criteria for success, and the project’s scope when it launches or moves into a new phase. This helps keep new ideas and external suggestions from expanding the work and pulling R&D off course.",
+        pdfs: pdfPair("core-question-anchor"),
+      },
+      {
+        title: "Stakeholder Feedback Decision Protocol",
+        why: "Stakeholders may have different priorities, and their suggestions may face practical constraints or conflict with one another. The team can’t accept every suggestion, but simply recording feedback without explaining how it was handled isn’t enough.",
+        whatItHelpsWith:
+          "Assess feedback based on its **relevance to the problem, supporting evidence, feasibility, and fit with the project’s current stage**. Classify each suggestion as **Incorporated**, **Partially Incorporated**, **Future Consideration**, or **Not Incorporated**, and document the **rationale and follow-up actions**. Assess feedback based on the same criteria when a suggestion needs to be reviewed again.",
+        bestFor:
+          "Organizing feedback after **expert interviews, patient and public engagement, or industry discussions**, and supporting team discussions about project changes.",
+        whatItDoes:
+          "Provides structured questions to help the team assess feedback from researchers, clinicians, and industry partners; identify how recommendations align with project goals, constraints, and current scope; and decide whether, how, and when to act.",
+        pdfs: pdfPair("stakeholder-feedback-decision-protocol"),
+      },
+      {
+        title: "Anchor & Decide Toolkit",
+        why: "When the core problem, stakeholder feedback, team decisions, and project actions are recorded separately, the project’s evolution can become fragmented. External audiences may also find it difficult to see **how feedback actually shaped the research work**.",
+        whatItHelpsWith:
+          "Bring the **core problem, feedback, team discussions, and follow-up actions** together so the team can see how each suggestion affects the project and adjust its next steps accordingly.",
+        bestFor:
+          "Managing the **full cycle**, documenting **Integrated Human Practices and SDG 9** work, and supporting **team handovers, phase reviews, and external presentations**.",
+        whatItDoes:
+          "Combines the Core Question Anchor and the Stakeholder Feedback Decision Protocol to help the team identify priorities, avoid scope creep, and coordinate technical choices with project objectives.",
+        pdfs: pdfPair("anchor-decide-toolkit"),
+      },
     ],
   },
   evidence: {

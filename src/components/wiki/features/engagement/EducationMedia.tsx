@@ -1,3 +1,4 @@
+import { QueuedImage } from "../../../common/QueuedImage";
 import { useEffect, useRef, useState, type ReactNode, type TouchEvent } from "react";
 import galleries from "../../../../data/engagement/educationGalleries.json";
 import mediaGroups from "../../../../data/engagement/educationMediaGroups.json";
@@ -99,14 +100,13 @@ function MediaGrid({ group }: { group: MediaGroup }) {
     );
   }
 
-  const { ref, near } = useNearViewport<HTMLDivElement>();
   return (
-    <div className="education-media-grid" data-count={group.items.length} ref={ref}>
+    <div className="education-media-grid" data-count={group.items.length}>
       {group.items.map((item, index) => {
         const src = educationAssetUrl(item.src);
         return (
           <figure className="education-media-grid__image" key={`${src}-${index}`}>
-            {near ? <img src={src} alt={"alt" in item ? item.alt : "Education illustration"} loading="lazy" decoding="async" /> : <span className="education-media-grid__placeholder education-media-grid__placeholder--image" />}
+            <QueuedImage src={src} alt={"alt" in item ? item.alt : "Education illustration"} loading="lazy" decoding="async" />
             {"caption" in item && item.caption ? <figcaption>{item.caption}</figcaption> : null}
           </figure>
         );
@@ -118,7 +118,6 @@ function MediaGrid({ group }: { group: MediaGroup }) {
 function PhotoGallery({ gallery }: { gallery: Gallery }) {
   const [index, setIndex] = useState(0);
   const [touchStart, setTouchStart] = useState<number | null>(null);
-  const { ref, near } = useNearViewport<HTMLElement>();
   const photos = gallery.images;
   const count = photos.length;
   const go = (step: number) => setIndex((current) => (current + step + count) % count);
@@ -135,7 +134,6 @@ function PhotoGallery({ gallery }: { gallery: Gallery }) {
   return (
     <figure
       className="education-gallery"
-      ref={ref}
       aria-label={`${gallery.title} photographs`}
       tabIndex={0}
       onKeyDown={(event) => {
@@ -155,7 +153,7 @@ function PhotoGallery({ gallery }: { gallery: Gallery }) {
             onClick={() => offset && go(offset)}
             aria-label={offset === 0 ? photo.caption : `${offset < 0 ? "Previous" : "Next"}: ${photo.caption}`}
             tabIndex={offset === 0 ? -1 : 0}
-          >{near ? <img src={educationAssetUrl(`galleries/${photo.file}`)} alt={photo.caption} loading="lazy" decoding="async" /> : null}</button>;
+          ><QueuedImage src={educationAssetUrl(`galleries/${photo.file}`)} alt={photo.caption} loading="lazy" decoding="async" /></button>;
         })}
         <button type="button" className="education-gallery__arrow education-gallery__arrow--prev" onClick={() => go(-1)} aria-label={`Previous ${gallery.title} photograph`}>‹</button>
         <button type="button" className="education-gallery__arrow education-gallery__arrow--next" onClick={() => go(1)} aria-label={`Next ${gallery.title} photograph`}>›</button>

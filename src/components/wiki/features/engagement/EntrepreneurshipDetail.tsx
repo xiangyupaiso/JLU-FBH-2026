@@ -1,3 +1,4 @@
+import { QueuedImage } from "../../../common/QueuedImage";
 /* eslint-disable react-refresh/only-export-components */
 import {
   useEffect,
@@ -157,7 +158,7 @@ export function EntrepreneurshipDetail({
       </button>
       {group ? <p className="entrepreneurship-detail__group">{group}</p> : null}
       {image ? (
-        <img
+        <QueuedImage
           className="entrepreneurship-detail__image"
           src={image}
           alt={title}

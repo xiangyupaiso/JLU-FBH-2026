@@ -1,4 +1,5 @@
 import { useId } from "react";
+import { QueuedSvgImage } from "./common/QueuedImage";
 import "../styles/glass-sheen.css";
 
 /** Refract the illustration itself through a narrow moving facet. */
@@ -53,11 +54,12 @@ export function GlassSheen({
             <feBlend in="redEdge" in2="cyan" mode="screen" />
           </filter>
         </defs>
-        <image href={src} width="100" height="100" filter={`url(#${id})`} />
+        <QueuedSvgImage href={src} width="100" height="100" filter={`url(#${id})`} />
       </svg>
       <span
         className="glass-sheen__light"
-        style={{ maskImage: `url(${src})`, WebkitMaskImage: `url(${src})` }}
+        data-page-background-src={src}
+        data-page-background-property="mask-image"
       />
     </span>
   );

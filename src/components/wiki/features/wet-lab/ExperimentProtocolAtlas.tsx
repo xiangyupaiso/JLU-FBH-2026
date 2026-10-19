@@ -1,3 +1,4 @@
+import { QueuedImage } from "../../../common/QueuedImage";
 import {
   useEffect,
   useId,
@@ -361,18 +362,14 @@ export function ExperimentProtocolSpread({
           rel="noreferrer"
         >
           <span>P{pair.flowPage} · Workflow</span>
-          <img
+          <QueuedImage
             src={experimentProtocolImage(pair.flowPage)}
             alt={`Workflow diagram for ${pair.title}`}
             width={flowSize[0]}
             height={flowSize[1]}
             loading="lazy"
             decoding="async"
-            onError={(event) => {
-              event.currentTarget.src = experimentProtocolLocalImage(
-                pair.flowPage!,
-              );
-            }}
+            data-page-fallback-src={experimentProtocolLocalImage(pair.flowPage!)}
           />
           <small>View full image ↗</small>
         </a>
@@ -385,18 +382,14 @@ export function ExperimentProtocolSpread({
               rel="noreferrer"
             >
               <span>P{pair.inventoryPage} · Materials &amp; equipment</span>
-              <img
+              <QueuedImage
                 src={experimentProtocolImage(pair.inventoryPage)}
                 alt={`Illustrated materials and equipment for ${pair.title}`}
                 width={inventorySize[0]}
                 height={inventorySize[1]}
                 loading="lazy"
                 decoding="async"
-                onError={(event) => {
-                  event.currentTarget.src = experimentProtocolLocalImage(
-                    pair.inventoryPage!,
-                  );
-                }}
+                data-page-fallback-src={experimentProtocolLocalImage(pair.inventoryPage!)}
               />
               <small>View full image ↗</small>
             </a>

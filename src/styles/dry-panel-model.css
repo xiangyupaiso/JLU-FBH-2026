@@ -62,7 +62,7 @@
       rgba(252, 248, 241, 0.18) 58%,
       rgba(252, 248, 241, 0.04) 100%
     ),
-    url("https://static.igem.wiki/teams/6056/wiki/files/pages/dry-lab/dry-lab-model-hero.webp") center / cover no-repeat;
+    var(--route-hero-image) center / cover no-repeat;
 }
 
 .dry-panel.dry-panel--model .wiki-hero::before,
@@ -1223,7 +1223,7 @@
         rgba(252, 248, 241, 0.68) 48%,
         rgba(252, 248, 241, 0.86) 100%
       ),
-      url("https://static.igem.wiki/teams/6056/wiki/files/pages/dry-lab/dry-lab-model-hero.webp") 54% center / cover
+      var(--route-hero-image) 54% center / cover
         no-repeat;
   }
 
@@ -1292,7 +1292,7 @@
         rgba(252, 248, 241, 0.7) 50%,
         rgba(252, 248, 241, 0.9) 100%
       ),
-      url("https://static.igem.wiki/teams/6056/wiki/files/pages/dry-lab/dry-lab-model-hero.webp") 58% center / cover
+      var(--route-hero-image) 58% center / cover
         no-repeat;
   }
 
@@ -1413,7 +1413,7 @@
       rgba(252, 248, 241, 0.74) 86%,
       rgba(252, 248, 241, 0.94) 100%
     ),
-    url("https://static.igem.wiki/teams/6056/wiki/files/pages/dry-lab/dry-lab-model-hero.webp");
+    var(--route-hero-image);
   background-position: center, center;
   background-repeat: no-repeat;
   background-size: cover, contain;
@@ -1501,7 +1501,7 @@
         rgba(252, 248, 241, 0.88) 82%,
         rgba(252, 248, 241, 0.97) 100%
       ),
-    url("https://static.igem.wiki/teams/6056/wiki/files/pages/dry-lab/dry-lab-model-hero.webp");
+    var(--route-hero-image);
     background-position: center, center;
     background-repeat: no-repeat;
     background-size: cover, contain;

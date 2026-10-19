@@ -1,3 +1,4 @@
+import { QueuedImage } from "../../common/QueuedImage";
 import {
   useId,
   useLayoutEffect,
@@ -100,7 +101,7 @@ function ImageReader({
         className="wiki-long-gallery__canvas"
         style={{ "--long-gallery-zoom": `${zoom}%` } as CSSProperties}
       >
-        <img
+        <QueuedImage
           ref={imageRef}
           key={attempt}
           className="wiki-long-gallery__image"
@@ -150,7 +151,7 @@ function Thumbnail({ image }: { image: LongImageGalleryImage }) {
   return failed ? (
     <span className="wiki-long-gallery__thumbnail-fallback">No preview</span>
   ) : (
-    <img
+    <QueuedImage
       src={image.thumbnailSrc || image.src}
       alt=""
       decoding="async"

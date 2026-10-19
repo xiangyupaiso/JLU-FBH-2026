@@ -96,7 +96,7 @@
   text-align: left;
 }
 
-/* SDG Impact Framework (SET / DEVELOP / GROW) figure, shown a size smaller. */
+/* Keep this limit on the framework illustration, outside the chart figures. */
 .wiki-page--sustainability #sdg-impact-framework .wiki-figure img {
   max-width: min(100%, 720px);
 }
@@ -1234,34 +1234,44 @@ a.sust-sdg-pill:focus-visible {
   max-width: 960px !important;
 }
 
+.sust-evidence__item .wiki-figure .wiki-figure__frame {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
 .sust-evidence__item .wiki-figure img {
+  display: block;
   width: 100% !important;
   max-width: 960px !important;
   height: auto !important;
   max-height: none !important;
   object-fit: contain !important;
   border-radius: 10px;
+  margin: 0 auto;
 }
 
 /* Keep the dormitory planting photo at the size requested in the first review. */
-.sust-evidence__item .wiki-figure:has(img[src*="/sdg12/evidence-2.avif"]) {
+.sust-evidence__item .wiki-figure:has(img:is([src*="/sdg12/evidence-2.avif"], [data-page-src*="/sdg12/evidence-2.avif"])) {
   max-width: 560px !important;
 }
 
-.sust-evidence__item .wiki-figure img[src*="/sdg12/evidence-2.avif"] {
+.sust-evidence__item .wiki-figure img:is([src*="/sdg12/evidence-2.avif"], [data-page-src*="/sdg12/evidence-2.avif"]) {
   max-width: 560px !important;
   max-height: 420px !important;
 }
 
 /* Fig 4: Reusable Sustainability Toolkit enlargement */
 .wiki-page--sustainability #overview .wiki-figure:has(img[src*="reusable-toolkit"]),
-.wiki-page--sustainability #overview .wiki-figure:has(img[src*="sustainability-overview-reusable-toolkit"]) {
+.wiki-page--sustainability #overview .wiki-figure:has(img[data-page-src*="reusable-sustainability-toolkit"]),
+.wiki-page--sustainability #overview .wiki-figure:has(img[data-page-src*="sustainability-overview-reusable-toolkit"]) {
   width: 100% !important;
   max-width: 960px !important;
 }
 
 .wiki-page--sustainability #overview .wiki-figure:has(img[src*="reusable-toolkit"]) img,
-.wiki-page--sustainability #overview .wiki-figure:has(img[src*="sustainability-overview-reusable-toolkit"]) img {
+.wiki-page--sustainability #overview .wiki-figure:has(img[data-page-src*="reusable-sustainability-toolkit"]) img,
+.wiki-page--sustainability #overview .wiki-figure:has(img[data-page-src*="sustainability-overview-reusable-toolkit"]) img {
   width: 100% !important;
   max-width: 960px !important;
 }
@@ -2076,6 +2086,7 @@ a.sust-sdg-pill:focus-visible {
 }
 
 .sust-deck__stage {
+  container-type: inline-size;
   min-width: 0;
 }
 
@@ -2291,7 +2302,7 @@ a.sust-sdg-pill:focus-visible {
 /* Copy | larger photo plate. */
 .sust-deck__grid {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr);
+  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
   gap: clamp(20px, 3vw, 36px);
   align-items: center;
   padding: 16px 0 4px;
@@ -2336,8 +2347,25 @@ a.sust-sdg-pill:focus-visible {
 /* Centered photo plate with a restrained paper border. */
 .sust-deck__visual {
   position: relative;
+  min-width: 0;
   padding: 14px;
   animation: sustFadeIn 400ms ease-out;
+}
+
+.sust-deck__visual:has(.sust-stake-reel) {
+  padding: 0;
+}
+
+/* Stack the photograph at card width when the rail leaves a narrow stage. */
+@container (max-width: 680px) {
+  .sust-deck__grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .sust-deck__visual {
+    order: -1;
+    width: 100%;
+  }
 }
 
 .sust-deck__frame {
@@ -2458,7 +2486,7 @@ a.sust-sdg-pill:focus-visible {
 
   .sust-deck__visual {
     order: -1;
-    max-inline-size: 440px;
+    max-inline-size: 100%;
     justify-self: center;
     width: 100%;
   }
@@ -2647,17 +2675,6 @@ a.sust-sdg-pill:focus-visible {
   margin-bottom: 16px;
   font-size: 17px;
   line-height: 1.8;
-}
-
-.wiki-page--sustainability #grow-sustainable-futures h4,
-.wiki-page--sustainability #grow-sustainable-futures .wiki-prose p,
-.wiki-page--sustainability #grow-sustainable-futures .wiki-prose li {
-  font-size: 16px;
-  line-height: 1.7;
-}
-
-.wiki-page--sustainability #grow-sustainable-futures h4 {
-  font-weight: 600;
 }
 
 .sust-edu-group {

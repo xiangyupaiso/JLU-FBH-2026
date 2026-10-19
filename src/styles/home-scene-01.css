@@ -163,8 +163,9 @@ body:has(.home-redesign) {
 }
 .scene01-frame-layer {
   z-index: 4;
-  -webkit-mask-image: url("https://static.igem.wiki/teams/6056/wiki/files/pages/home/frame-mask-120c57e35eaf.svg");
-  mask-image: url("https://static.igem.wiki/teams/6056/wiki/files/pages/home/frame-mask-120c57e35eaf.svg");
+  --scene01-frame-mask: none;
+  -webkit-mask-image: var(--scene01-frame-mask);
+  mask-image: var(--scene01-frame-mask);
   -webkit-mask-size: 100% 100%;
   mask-size: 100% 100%;
 }

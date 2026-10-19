@@ -1,3 +1,4 @@
+import { QueuedSvgImage } from "./common/QueuedImage";
 import { useEffect, useId, useRef, useState } from "react";
 import "../styles/footer-photo-glass.css";
 
@@ -256,14 +257,14 @@ export function FooterPhotoGlass({ src }: { src: string }) {
               <feComposite in="refracted" in2="edge" operator="in" />
             </filter>
           </defs>
-          <image
+          <QueuedSvgImage
             href={src}
             width={maps.width}
             height={maps.height}
             preserveAspectRatio="none"
             filter={"url(#" + id + ")"}
           />
-          <image
+          <QueuedSvgImage
             className="footer-photo-glass__reflection"
             href={maps.reflection}
             width={maps.width}

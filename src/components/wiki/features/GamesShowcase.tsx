@@ -1,3 +1,4 @@
+import { QueuedImage } from "../../common/QueuedImage";
 import {
   createContext,
   useCallback,
@@ -306,7 +307,7 @@ export function GamesStationMap() {
       </div>
       <p className="games-project-map__source-note">
         <span className="games-project-map__source-mascot" aria-hidden="true">
-          <img
+          <QueuedImage
             src="https://static.igem.wiki/teams/6056/wiki/files/pages/shared/lamb.avif"
             alt=""
             loading="lazy"
@@ -375,11 +376,8 @@ function GameShowcaseVisual({
       <div className="games-showcase__canvas-stage" aria-hidden="true">
         <div
           className="games-showcase__art"
-          style={
-            config.coverImage
-              ? { backgroundImage: `url(${config.coverImage})` }
-              : undefined
-          }
+          data-page-background-src={config.coverImage}
+          data-page-background-property="background-image"
         />
         <div className="games-showcase__vignette" />
       </div>

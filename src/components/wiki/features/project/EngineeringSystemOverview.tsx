@@ -1,3 +1,4 @@
+import { QueuedSvgImage } from "../../../common/QueuedImage";
 import { useRef, useCallback, type MouseEvent } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
@@ -204,7 +205,7 @@ export function EngineeringSystemOverview() {
 
           {/* 2. Six Satellite Gears (continuous rotation around their own centers) */}
           {/* Dry Lab: center (361.5, 230.0), size 360 */}
-          <image
+          <QueuedSvgImage
             href={gearDryLabSrc}
             x={361.5 - 180}
             y={230.0 - 180}
@@ -214,7 +215,7 @@ export function EngineeringSystemOverview() {
           />
 
           {/* Wet Lab: center (326.5, 567.0), size 330 */}
-          <image
+          <QueuedSvgImage
             href={gearWetLabSrc}
             x={326.5 - 165}
             y={567.0 - 165}
@@ -224,7 +225,7 @@ export function EngineeringSystemOverview() {
           />
 
           {/* iHP: center (1232.5, 188.0), size 250 */}
-          <image
+          <QueuedSvgImage
             href={gearIhpSrc}
             x={1232.5 - 125}
             y={188.0 - 125}
@@ -234,7 +235,7 @@ export function EngineeringSystemOverview() {
           />
 
           {/* Education: center (1320.5, 405.5), size 250 */}
-          <image
+          <QueuedSvgImage
             href={gearEducationSrc}
             x={1320.5 - 125}
             y={405.5 - 125}
@@ -244,7 +245,7 @@ export function EngineeringSystemOverview() {
           />
 
           {/* Visual Design: center (1323.0, 644.5), size 260 */}
-          <image
+          <QueuedSvgImage
             href={gearVisualDesignSrc}
             x={1323.0 - 130}
             y={644.5 - 130}
@@ -254,7 +255,7 @@ export function EngineeringSystemOverview() {
           />
 
           {/* Entrepreneurship: center (1152.5, 820.0), size 250 */}
-          <image
+          <QueuedSvgImage
             href={gearEntrepreneurshipSrc}
             x={1152.5 - 125}
             y={820.0 - 125}
@@ -264,7 +265,7 @@ export function EngineeringSystemOverview() {
           />
 
           {/* 3. Central Dial Outer Gear Teeth (slow continuous gear rotation around 836, 462) */}
-          <image
+          <QueuedSvgImage
             href={dialOuterGearSrc}
             x="470"
             y="96"
@@ -274,7 +275,7 @@ export function EngineeringSystemOverview() {
           />
 
           {/* 4. Central Dial Inner Face (Static face with TIME & DBTL scales and text) */}
-          <image
+          <QueuedSvgImage
             href={dialInnerFaceSrc}
             x="470"
             y="96"
@@ -335,7 +336,7 @@ export function EngineeringSystemOverview() {
 
           {/* 6. Central Pointers (pivoting precisely around 836, 462) */}
           {/* Long Gold Hand */}
-          <image
+          <QueuedSvgImage
             href={handLongSrc}
             x="470"
             y="96"
@@ -345,7 +346,7 @@ export function EngineeringSystemOverview() {
           />
 
           {/* Short Blue Hand */}
-          <image
+          <QueuedSvgImage
             href={handShortSrc}
             x="470"
             y="96"
@@ -355,7 +356,7 @@ export function EngineeringSystemOverview() {
           />
 
           {/* Hub Cap */}
-          <image
+          <QueuedSvgImage
             href={dialCapSrc}
             x="470"
             y="96"
@@ -365,7 +366,7 @@ export function EngineeringSystemOverview() {
           />
 
           {/* 7. Mascot Sheep Layer (foreground, non-blocking) */}
-          <image
+          <QueuedSvgImage
             href={sheepSrc}
             x="0"
             y="0"

@@ -1,3 +1,4 @@
+import { QueuedImage } from "../../../../common/QueuedImage";
 import { useId, useState, type CSSProperties, type MouseEvent } from "react";
 import { scrollReaderToId } from "../../../../../utils/scrollReaderToTarget";
 
@@ -219,7 +220,7 @@ export function SustainabilityInteractiveCity() {
   return (
     <figure className="sust-city-figure" data-wiki-reveal>
       <div className="sust-city-container">
-        <img
+        <QueuedImage
           src={cityWebp}
           alt="CirCure Sustainable Development City Map"
           className="sust-city-img"

@@ -1,3 +1,4 @@
+import { QueuedImage } from "../../../../common/QueuedImage";
 import { useEffect, useRef, useState, type CSSProperties } from "react";
 import type { StakeholderPhoto } from "../../../../../data/engagement/sustainability/sustainabilityPhotos";
 
@@ -81,7 +82,7 @@ export function StakeholderPhotoReel({
         ) : null}
         <div className="sust-stake-reel__frame">
           {photos.map((photo, i) => (
-            <img
+            <QueuedImage
               key={photo.src}
               src={photo.src}
               alt={i === index ? photo.alt : ""}

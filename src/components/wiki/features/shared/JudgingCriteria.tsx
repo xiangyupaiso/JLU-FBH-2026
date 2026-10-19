@@ -11,12 +11,21 @@ export function JudgingCriteria({
   items: readonly WikiJudgingCriterion[];
   renderParagraph?: (paragraph: string) => ReactNode;
 }) {
-  const [openId, setOpenId] = useState<string | null>(null);
+  const [openIds, setOpenIds] = useState<Set<string>>(() => new Set());
+
+  const toggle = (id: string) => {
+    setOpenIds((current) => {
+      const next = new Set(current);
+      if (next.has(id)) next.delete(id);
+      else next.add(id);
+      return next;
+    });
+  };
 
   return (
     <div className="highlights-record judging-criteria" data-wiki-reveal>
       {items.map((item) => {
-        const open = openId === item.id;
+        const open = openIds.has(item.id);
         return (
           <article
             key={item.id}
@@ -32,7 +41,7 @@ export function JudgingCriteria({
               className="highlights-record__toggle"
               aria-expanded={open}
               aria-controls={`${item.id}-answer`}
-              onClick={() => setOpenId(open ? null : item.id)}
+              onClick={() => toggle(item.id)}
             >
               <span className="highlights-record__question">
                 {item.question}

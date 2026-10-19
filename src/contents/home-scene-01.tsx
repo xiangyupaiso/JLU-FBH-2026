@@ -1,4 +1,5 @@
 import { useRef } from "react";
+import { HomeImage } from "../components/home/HomeArtwork";
 const anxietyLabelUrl = "https://static.igem.wiki/teams/6056/wiki/files/pages/home/anxiety-label.webp";
 const anxietyUrl = "https://static.igem.wiki/teams/6056/wiki/files/pages/home/anxiety.webp";
 const chemotherapyLabelUrl = "https://static.igem.wiki/teams/6056/wiki/files/pages/home/chemotherapy-label.webp";
@@ -76,13 +77,13 @@ export function Home() {
                   className={`scene01-orbit scene01-orbit--${key}`}
                   key={key}
                 >
-                  <img
+                  <HomeImage
                     className="scene01-visual"
                     src={visual}
                     alt=""
                     decoding="async"
                   />
-                  <img
+                  <HomeImage
                     className={`scene01-label scene01-label--${key}`}
                     src={label}
                     alt=""
@@ -94,12 +95,18 @@ export function Home() {
                   </figcaption>
                 </figure>
               ))}
-              <div className="scene01-frame-layer" aria-hidden="true">
-                <img src={womanFrameUrl} alt="" />
+              <div
+                className="scene01-frame-layer"
+                aria-hidden="true"
+                data-page-background-src="https://static.igem.wiki/teams/6056/wiki/files/pages/home/frame-mask-120c57e35eaf.svg"
+                data-page-background-property="--scene01-frame-mask"
+                data-page-critical="true"
+              >
+                <HomeImage src={womanFrameUrl} alt="" />
               </div>
               <div className="scene01-portrait">
                 <div className="scene01-person">
-                  <img
+                  <HomeImage
                     className="scene01-person-image"
                     src={womanPortraitUrl}
                     alt="A woman in profile at the center of the surrounding burdens"

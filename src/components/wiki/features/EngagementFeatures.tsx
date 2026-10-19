@@ -1,3 +1,4 @@
+import { QueuedImage } from "../../common/QueuedImage";
 import { useState, type CSSProperties } from "react";
 const communityImage = "https://static.igem.wiki/teams/6056/wiki/files/pages/shared/hp-community-workshop-v2.avif";
 import "../../../styles/wiki-features.css";
@@ -53,7 +54,7 @@ export function DialogueLoop({ compact = false }: { compact?: boolean }) {
   return (
     <figure className={`signature-panel signature-panel--engagement engagement-dialogue ${compact ? "is-compact" : ""}`}>
       <figcaption><span>Learning dialogue</span><strong>Explain → listen → revise</strong></figcaption>
-      <img src={communityImage} alt="Community workshop scene" />
+      <QueuedImage src={communityImage} alt="Community workshop scene" />
       <div>
         <article><span>Before</span><strong>Mechanism-first explanation</strong></article>
         <article><span>Question</span><strong>What does uncertainty mean?</strong></article>

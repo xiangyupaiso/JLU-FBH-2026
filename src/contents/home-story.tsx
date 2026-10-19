@@ -1,3 +1,4 @@
+import { HomeImage, HomeSvgImage } from "../components/home/HomeArtwork";
 import {
   useEffect,
   useId,
@@ -213,7 +214,7 @@ function StoryArtwork({
   )!;
   return (
     <>
-      <img
+      <HomeImage
         className="story-backdrop"
         src={artworkUrl(background.file)}
         alt=""
@@ -255,7 +256,7 @@ function StoryArtwork({
               style={style}
             />
           ) : (
-            <img
+            <HomeImage
               key={layer.file}
               crossOrigin="anonymous"
               src={src}
@@ -280,7 +281,7 @@ function WardArtwork() {
   const patient = base[1];
   return (
     <>
-      <img
+      <HomeImage
         className="story-backdrop"
         src={imageUrls[`../assets/home/story/${base[0].file}`]}
         alt=""
@@ -295,7 +296,7 @@ function WardArtwork() {
         style={{ "--art-aspect": 16 / 9 } as CSSProperties}
       >
         {base.slice(2).map((item) => (
-          <img
+          <HomeImage
             key={item.file}
             className={`story-layer story-ward-original story-ward-original--${item.number}`}
             data-ward={`original-${item.number}`}
@@ -316,7 +317,7 @@ function WardArtwork() {
           ["clinician", clinicianConcerned],
           ["ellipsis", clinicianEllipsis],
         ].map(([name, src]) => (
-          <img
+          <HomeImage
             key={name}
             className={`story-layer story-ward-change story-ward-change--${name}`}
             data-ward={name}
@@ -333,7 +334,7 @@ function WardArtwork() {
         aria-hidden="true"
         style={{ "--art-aspect": 16 / 9 } as CSSProperties}
       >
-        <img
+        <HomeImage
           className="story-layer story-ward-original story-ward-original--2"
           data-ward="original-2"
           src={imageUrls[`../assets/home/story/${patient.file}`]}
@@ -347,7 +348,7 @@ function WardArtwork() {
             height: `${patient.height}%`,
           }}
         />
-        <img
+        <HomeImage
           className="story-layer story-ward-change story-ward-change--patient"
           data-ward="patient"
           src={patientConcerned}
@@ -355,7 +356,7 @@ function WardArtwork() {
           loading="eager"
           decoding="async"
         />
-        <img
+        <HomeImage
           className="story-layer story-ward-change story-ward-change--question"
           data-ward="question"
           src={patientQuestion}
@@ -613,7 +614,7 @@ function MapArtwork() {
                 <path d="M42 70 H48.7 V70.56 H55.2 V79 H42 Z" />
               </clipPath>
             </defs>
-            <image
+            <HomeSvgImage
               href={src}
               mask={`url(#${mainlandMaskId})`}
               width="100"
@@ -621,7 +622,7 @@ function MapArtwork() {
               preserveAspectRatio="none"
             />
             <g transform={`translate(0 ${mapSouthIslandOffsetY})`}>
-              <image
+              <HomeSvgImage
                 href={src}
                 clipPath={`url(#${islandClipId})`}
                 width="100"
@@ -660,7 +661,7 @@ function MapArtwork() {
                 preserveAspectRatio="none"
                 aria-hidden="true"
               >
-                <image
+                <HomeSvgImage
                   href={
                     crop?.src ??
                     (part.name === "cloud-northwest"
@@ -694,7 +695,7 @@ function MapArtwork() {
                 height: `${(markerLayer.height * marker.height) / 100}%`,
               }}
             >
-              <image
+              <HomeSvgImage
                 href={markerSrc}
                 width="100"
                 height="100"
@@ -732,7 +733,7 @@ function MapArtwork() {
             role="group"
             aria-label={statistic.description}
           >
-            <img
+            <HomeImage
               src={mapDataNoteUrl}
               alt=""
               className="tnbc-map-note-img"
@@ -851,7 +852,7 @@ function ChallengeArtwork() {
                 />
               </clipPath>
             </defs>
-            <image
+            <HomeSvgImage
               href={src}
               width="100"
               height="100"
@@ -871,7 +872,7 @@ function ChallengeArtwork() {
             }}
             aria-hidden="true"
           >
-            <image
+            <HomeSvgImage
               href={src}
               width="100"
               height="100"
@@ -900,7 +901,7 @@ function VaccineArtwork() {
       preserveAspectRatio="none"
       aria-hidden="true"
     >
-      <image
+      <HomeSvgImage
         href={boardSrc}
         width="100"
         height="100"
@@ -1037,7 +1038,7 @@ function BeyondArtwork() {
         aria-hidden="true"
         style={{ "--art-aspect": manifest["6"].aspect } as CSSProperties}
       >
-        <img
+        <HomeImage
           className="story-layer"
           data-layer="2"
           src={imageUrls[`../assets/home/story/${family.file}`]}

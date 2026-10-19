@@ -1,3 +1,4 @@
+import { bindHomeArtwork, decodeHomeArtwork, onHomeArtworkActive } from "../utils/homeArtworkSource";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { getRnaRingGeometry, separateFanPaint } from "./createRnaRingMorph";
@@ -90,6 +91,7 @@ export function animatePlatformAntigen(
   name.textContent = "circRNA";
   ghost.append(paint, lettering, incoming, name);
   root.append(ghost);
+  const stopIncomingArtwork = bindHomeArtwork(targetSvg, incoming);
   const sourceVisibility = source.style.visibility;
   const targetVisibility = target.style.visibility;
   const platformLayout = sequence.querySelector<HTMLElement>(
@@ -98,6 +100,7 @@ export function animatePlatformAntigen(
   const platformOpacity = platformLayout?.style.opacity ?? "";
   let fan: ReturnType<typeof separateFanPaint> = null;
   let disposed = false;
+  const artworkPreparation = new AbortController();
   let start = 0;
   let end = 0;
   let settleEnd = 0;
@@ -374,19 +377,24 @@ export function animatePlatformAntigen(
   // Refresh can temporarily reset scroll and rewind scrubbed timelines. Draw
   // only after all chapters have restored their real geometry and progress.
   ScrollTrigger.addEventListener("refresh", render);
-  const preparation = source
-    .decode()
-    .then(() => {
-      preparePaint();
-      render();
-    })
-    .catch(() => {});
-  const stopTrackingPreparation = trackPagePreparation(preparation);
+  let stopTrackingPreparation = () => {};
+  const stopActivation = onHomeArtworkActive(source, () => {
+    const preparation = decodeHomeArtwork(source, artworkPreparation.signal)
+      .then(() => {
+        preparePaint();
+        render();
+      })
+      .catch(() => {});
+    stopTrackingPreparation = trackPagePreparation(preparation);
+  });
 
   return () => {
     disposed = true;
+    artworkPreparation.abort();
     boundaryGuard.dispose();
     stopTrackingPreparation();
+    stopActivation();
+    stopIncomingArtwork();
     ScrollTrigger.removeEventListener("refresh", render);
     mechanismObserver.disconnect();
     timeline.scrollTrigger?.kill();

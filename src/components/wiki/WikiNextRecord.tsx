@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { NAV_ICONS } from "../navIcons";
 import { useWikiNextCompanion } from "../../hooks/useWikiNextCompanion";
 import { wikiDestinationPreviews } from "../../data/wikiDestinationPreviews";
+import { QueuedImage } from "../common/QueuedImage";
 import lambUrl from "../../assets/loading/lamb.webp";
 import ribbonUrl from "../../assets/wiki/next-record-ribbon-watercolor.png";
 import "./WikiNextRecord.css";
@@ -58,7 +59,7 @@ export const WikiNextRecord = memo(function WikiNextRecord({
       className="wiki-next wiki-next--record"
       data-wiki-reveal={reveal ? "" : undefined}
     >
-      <img
+      <QueuedImage
         ref={ribbonRef}
         className="wiki-next__ribbon"
         src={ribbonUrl}
@@ -76,7 +77,7 @@ export const WikiNextRecord = memo(function WikiNextRecord({
           className="wiki-next__companion"
           aria-hidden="true"
         >
-          <img
+          <QueuedImage
             src={lambUrl}
             alt=""
             width="813"
@@ -130,7 +131,7 @@ export const WikiNextRecord = memo(function WikiNextRecord({
           <span className="wiki-next__destination">
             <span className="wiki-next__eyebrow">
               {icon && (
-                <img
+                <QueuedImage
                   className="wiki-next__icon"
                   src={icon}
                   alt=""

@@ -681,7 +681,7 @@ export const sdg3Chapter: SdgChapter = {
         bestFor:
           "Organizing large volumes of stakeholder feedback and laying a clear foundation for alignment assessment and analysis across SDGs.",
         whatItDoes:
-          "Identify the primary SDG and related SDGs based on stakeholder feedback, and document the rationale for each link to support subsequent analysis across SDGs.",
+          "Connect stakeholder perspectives with corresponding SDGs and cross-SDG interactions, clarifying the scope of each goal, supporting evidence, and evaluation boundaries.",
         pdfs: pdfPair("stakeholder-sdg-mapping-guide"),
       },
       {
@@ -692,7 +692,7 @@ export const sdg3Chapter: SdgChapter = {
         bestFor:
           "Showing how stakeholder feedback led to concrete changes in project design, evaluation, or communication.",
         whatItDoes:
-          "Track how stakeholder feedback is assessed, adopted, or held for further consideration, and how it translates into specific changes in project design, evaluation, or communication.",
+          "Record stakeholder input, team discussions, resulting decisions, action items, and implementation status, keeping project changes traceable.",
         pdfs: pdfPair("feedback-to-action-record"),
       },
       {
@@ -703,7 +703,7 @@ export const sdg3Chapter: SdgChapter = {
         bestFor:
           "Preparing the Consequences, Evidence, and Sustainability summaries while keeping claims within the limits of available evidence.",
         whatItDoes:
-          "Document changes already made, potential long-term impacts, and the limits of available evidence, distinguishing supported findings from conditional inferences and future possibilities.",
+          "Provide structured templates for documenting project background, implementation context, actions taken, outcomes, and supporting evidence, supporting more standardized reporting.",
         pdfs: pdfPair("sdg-impact-documentation-template"),
       },
     ],

@@ -1,3 +1,4 @@
+import { QueuedImage } from "../../../common/QueuedImage";
 import { useMemo, useState, type ReactNode } from "react";
 /* eslint-disable react-refresh/only-export-components --
    This module exports the feature-map builder next to its small layout
@@ -273,7 +274,7 @@ function ResourceShowcase({ resource }: { resource: EducationResource }) {
         <GameShowcaseLink game={game} />
       ) : resource.figure ? (
         <figure className="wiki-figure sust-edu-resource__figure">
-          <img
+          <QueuedImage
             src={sustainabilityImage(resource.figure)}
             alt={sustainabilityAssets[resource.figure].alt}
             width={sustainabilityImageEntry(resource.figure).width}
@@ -442,7 +443,7 @@ function EvidencePanel({ chapter }: { chapter: SdgChapter }) {
             {item.figure ? (
               // Keep the caption as the source text; figure labels are not added here.
               <figure className="wiki-figure">
-                <img
+                <QueuedImage
                   src={sustainabilityImage(item.figure)}
                   alt={sustainabilityAssets[item.figure].alt}
                   width={sustainabilityImageEntry(item.figure).width}

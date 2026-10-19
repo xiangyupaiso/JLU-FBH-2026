@@ -1,14 +1,14 @@
-/** Declare small page images whose UI is mounted only after an interaction. */
+/** Queue artwork for UI that mounts later, without issuing browser preloads. */
 export function PageImagePreloads({
   sources,
 }: {
   sources: readonly (string | undefined)[];
 }) {
   return (
-    <>
-      {[...new Set(sources)].map((src) =>
-        src ? <link key={src} rel="preload" as="image" href={src} /> : null,
-      )}
-    </>
+    <span
+      hidden
+      aria-hidden="true"
+      data-page-image-hints={JSON.stringify([...new Set(sources.filter(Boolean))])}
+    />
   );
 }

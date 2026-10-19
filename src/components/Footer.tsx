@@ -1,3 +1,4 @@
+import { QueuedImage } from "./common/QueuedImage";
 import { useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { FooterEasterEgg } from "./FooterEasterEgg";
@@ -38,7 +39,7 @@ function MarkRow({
       aria-label={label}
     >
       {marks.map((mark) => (
-        <img
+        <QueuedImage
           key={mark.src}
           src={mark.src}
           alt=""
@@ -146,7 +147,7 @@ export function Footer() {
                   title={link.alt}
                   aria-label={link.alt}
                 >
-                  <img
+                  <QueuedImage
                     src={link.icon}
                     alt={link.name}
                     width={56}

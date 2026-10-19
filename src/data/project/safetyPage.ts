@@ -201,7 +201,7 @@ export const safetyPage: WikiPageContent = {
         {
           type: "list",
           items: [
-            "**Policy Maker**",
+            "**Policy makers**",
             "**Policy Implementers**",
             "**Specialists from the Logistics/Equipment  Department**",
             "**External Safety Experts (Consultants)**",
@@ -210,8 +210,8 @@ export const safetyPage: WikiPageContent = {
         {
           type: "prose",
           paragraphs: [
-            "The **Policy Maker** of the Laboratory Safety Management Committee are primarily responsible for the **Plan** and **Act** stages of the PDCA cycle. They regularly organize quarterly meetings and conduct emergency meetings when necessary to collect information regarding laboratory operations and safety conditions. Based on the feedback received, they update and improve laboratory safety policies in a timely manner. After approval by the committee, revised policies are publicly displayed on the official website and at laboratory entrances.",
-            "Each version of the laboratory safety policy clearly specifies its implementation standards, version number, and effective date. Previous versions are formally withdrawn to prevent unintended use of outdated documents. Policy Makers also participated in the development of the **Laboratory Safety Standards White Paper**, thereby ensuring the continuous improvement and effective implementation of laboratory safety management.",
+            "The **policy makers** of the Laboratory Safety Management Committee are primarily responsible for the **Plan** and **Act** stages of the PDCA cycle. They regularly organize quarterly meetings and conduct emergency meetings when necessary to collect information regarding laboratory operations and safety conditions. Based on the feedback received, they update and improve laboratory safety policies in a timely manner. After approval by the committee, revised policies are publicly displayed on the official website and at laboratory entrances.",
+            "Each version of the laboratory safety policy clearly specifies its implementation standards, version number, and effective date. Previous versions are formally withdrawn to prevent unintended use of outdated documents. Policy makers also participated in the development of the **Laboratory Safety Standards White Paper**, thereby ensuring the continuous improvement and effective implementation of laboratory safety management.",
           ],
         },
         {
@@ -1925,7 +1925,7 @@ export const safetyPage: WikiPageContent = {
           type: "subheading",
           id: "safety-4-1-2-2",
           index: "4.1.2.2",
-          title: "Safety by Design in animal experiment",
+          title: "Safety by Design in animal experiments",
         },
         {
           type: "subheading",
@@ -2170,7 +2170,7 @@ export const safetyPage: WikiPageContent = {
           paragraphs: [
             "CirCure aims not only to demonstrate the potential efficacy of the combined circRNA vaccine in a laboratory setting. The data generated from animal experiments will also influence our evaluation of vaccine efficacy, immune responses, and future research directions.",
             "Therefore, we consider that the safety and scientific rigor of animal experiments themselves are essential components in the transition of future biomedical products toward real-world applications.",
-            "By incorporating EDA, ARRIVE Essential 10, the 3R principles, randomisation, blinding, and humane endpoints before the initiation of animal experiments, we aimed to establish an **traceable, interpretable, and verifiable in vivo research workflow**.",
+            "By incorporating EDA, ARRIVE Essential 10, the 3R principles, randomisation, blinding, and humane endpoints before the initiation of animal experiments, we aimed to establish a **traceable, interpretable, and verifiable in vivo research workflow**.",
             "This approach enables CirCure’s safety design to focus not only on “whether the experiment can be completed”, but also on:",
             "**“Why was the experiment designed in this way, why were animals used in this manner, how were risks controlled in advance, and whether the experimental results can reliably support subsequent decisions.”**",
             "Through this process, we transformed animal experiment safety from a single requirement focused on animal welfare into a comprehensive design principle that connects **scientific validity, risk management, animal ethics, and real-world translation**.",
@@ -2212,7 +2212,7 @@ export const safetyPage: WikiPageContent = {
           type: "prose",
           paragraphs: [
             "The purpose of CirCure is not only to verify whether the vaccine can induce immune responses in vitro, but also to determine whether it can **generate systemic anti-tumor immunity and inhibit tumor growth within an intact immune system**. This process involves multiple biological events, including dendritic cell uptake, lymph node migration, CD8⁺ T cell activation and expansion, tumor infiltration, and cytotoxic effects within the tumor microenvironment, which cannot be fully reproduced by in vitro or computational models.",
-            "Therefore, the team designed animal experiments as the **final validation step** of the entire project. Dry Lab analysis and human-derived in vitro experiments were completed first, and only the best-performing **Combined circRNA vaccine** candidate was selected for subsequent animal evaluation.",
+            "Therefore, the team designed animal experiments as the **final validation step** of the entire project. Dry Lab analysis and human-derived in vitro experiments were completed first, and only the best-performing **combined circRNA vaccine** candidate was selected for subsequent animal evaluation.",
           ],
         },
         {
@@ -2564,7 +2564,7 @@ export const safetyPage: WikiPageContent = {
           paragraphs: [
             "In addition to actual experimental operations, we established a **Virtual Laboratory** to do experimental training before the initiation of real laboratory work. For personnel who are unfamiliar with specific experiments or have limited operational experience, we transformed experimental procedures and key operations into virtual training modules. This allows participants to become familiar with experimental steps, operation sequences, and standardized requirements without direct exposure to biological materials or laboratory equipment.",
             "The Virtual Laboratory is not simply a simulation of real experiments, but a **risk prevention tool **designed based on actual experimental workflows and operational safety requirements. Through this platform, we identify and control risks caused by insufficient operational experience before personnel enter the real experimental environment. This enables researchers to develop fundamental safety awareness and procedural understanding before conducting practical experiments.",
-            "This design also reflects our broader understanding of experimental risk management: **safety does not only mean controlling risks after they occur, but also preventing risks before experiments begin.** Therefore, the Virtual Laboratory is integrated with personnel training, standardized operation procedures, and risk assessment in real experiments, together forming a continuous safety assurance chain from pre-experimental preparation to practical implementation.",
+            "This design also reflects our broader understanding of experimental risk management: **safety does not only mean controlling risks after they occur, but also preventing risks before experiments begin.** Therefore, the Virtual Laboratory is integrated with personnel training, standardized operating procedures, and risk assessment in real experiments, together forming a continuous safety assurance chain from pre-experimental preparation to practical implementation.",
             "Through this tool, we aim to preserve the practical value of hands-on laboratory training while providing experimental personnel with a safer learning and practice environment.",
           ],
         },

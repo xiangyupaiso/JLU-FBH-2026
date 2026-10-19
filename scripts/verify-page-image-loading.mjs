@@ -10,7 +10,9 @@ const compile = (path, module = ts.ModuleKind.ES2022) => ts.transpileModule(
   readFileSync(new URL(`../${path}`, import.meta.url), "utf8"),
   { compilerOptions: { module, target: ts.ScriptTarget.ES2022, jsx: ts.JsxEmit.ReactJSX } },
 ).outputText;
-const loaderSource = compile("src/utils/pageLoader.ts").replace(/^export /gm, "");
+const loaderSource = compile("src/utils/pageLoader.ts")
+  .replace(/^import .* from ["']\.\/pageImageQueue["'];?\r?$/gm, "")
+  .replace(/^export /gm, "");
 const tick = async () => {
   for (let i = 0; i < 16; i++) await new Promise(setImmediate);
 };
@@ -26,8 +28,16 @@ function environment() {
   const requests = [];
   const embedTimers = new Set();
   const deadlineTimers = new Set();
+  const homeDeadlineTimers = new Set();
+  const optionalTimers = new Set();
+  const queuePlan = [];
+  const queues = [];
+  const observers = new Set();
+  const serialDownloads = [];
+  let activeSerialDownload = null;
   class Image extends EventTarget {
     #src = "";
+    dataset = {};
     srcset = "";
     complete = false;
     naturalWidth = 0;
@@ -46,6 +56,22 @@ function environment() {
       this.complete = false;
       this.naturalWidth = 0;
     }
+    getAttribute(name) {
+      if (name === "src") return this.#src || null;
+      if (name === "data-home-src") return this.dataset.homeSrc ?? null;
+      if (name === "loading") return this.loading;
+      if (name === "crossorigin") return this.crossOrigin;
+      return null;
+    }
+    setAttribute(name, value) {
+      if (name === "src") this.src = value;
+      if (name === "data-home-src") this.dataset.homeSrc = value;
+      if (name === "loading") this.loading = value;
+    }
+    removeAttribute(name) { if (name === "loading") this.loading = "auto"; }
+    matches() { return true; }
+    querySelectorAll() { return []; }
+    closest() { return null; }
     decode() {
       this.decodeCalls++;
       return this.complete && this.naturalWidth > 0
@@ -62,6 +88,7 @@ function environment() {
     }
   }
   class SvgImage extends EventTarget {
+    dataset = {};
     holdNative = false;
     constructor(src) {
       super();
@@ -78,7 +105,18 @@ function environment() {
         removeProperty: (name) => properties.delete(name),
       };
     }
-    getAttribute() { return null; }
+    getAttribute(name) {
+      if (name === "href") return this.href.baseVal || null;
+      if (name === "data-home-src") return this.dataset.homeSrc ?? null;
+      return null;
+    }
+    setAttribute(name, value) {
+      if (name === "href") this.href.baseVal = value;
+      if (name === "data-home-src") this.dataset.homeSrc = value;
+    }
+    matches() { return true; }
+    querySelectorAll() { return []; }
+    closest() { return null; }
     finish(success = true) {
       const type = success ? "load" : "error";
       const capture = new Event(type);
@@ -105,6 +143,53 @@ function environment() {
       this.dispatchEvent(new Event("wiki-embed-ready"));
     }
   }
+  const pumpSerialDownloads = () => {
+    if (activeSerialDownload || !serialDownloads.length) return;
+    const request = serialDownloads.shift();
+    if (request.signal?.aborted) {
+      request.reject(new Error("Image request cancelled"));
+      pumpSerialDownloads();
+      return;
+    }
+    const image = new Image();
+    activeSerialDownload = request;
+    let settled = false;
+    const finish = (success) => {
+      if (settled) return;
+      settled = true;
+      image.removeEventListener("load", loaded);
+      image.removeEventListener("error", failed);
+      request.signal?.removeEventListener("abort", cancelled);
+      activeSerialDownload = null;
+      if (success) request.resolve(request.url);
+      else request.reject(new Error(`Image request failed: ${request.url}`));
+      pumpSerialDownloads();
+    };
+    const loaded = () => finish(true);
+    const failed = () => finish(false);
+    const cancelled = () => finish(false);
+    request.finish = finish;
+    image.addEventListener("load", loaded, { once: true });
+    image.addEventListener("error", failed, { once: true });
+    request.signal?.addEventListener("abort", cancelled, { once: true });
+    image.src = request.url;
+    if (request.signal?.aborted) cancelled();
+  };
+  const loadPageImageSerial = (url, { signal } = {}) => new Promise((resolve, reject) => {
+    const request = { url, signal, resolve, reject, finish: null };
+    const cancelled = () => {
+      const index = serialDownloads.indexOf(request);
+      if (index >= 0) {
+        serialDownloads.splice(index, 1);
+        signal.removeEventListener("abort", cancelled);
+        reject(new Error(`Image request cancelled: ${url}`));
+      } else request.finish?.(false);
+    };
+    request.cancelled = cancelled;
+    signal?.addEventListener("abort", cancelled, { once: true });
+    serialDownloads.push(request);
+    pumpSerialDownloads();
+  });
   const loader = Object.assign(new EventTarget(), {
     hidden: false,
     dataset: {},
@@ -123,6 +208,14 @@ function environment() {
   let portals = [];
   let hints = [];
   let styles = [];
+  let homeOpening = null;
+  let managedReader = false;
+  const root = {
+    querySelector: (selector) => selector === ".home-scene01"
+      ? homeOpening
+      : (selector.includes("[data-page-src]") || selector === "main.wiki-page--route") && managedReader ? {} : null,
+    querySelectorAll: () => elements,
+  };
   const nativeSvgProbes = [];
   const nativeSvgLayers = [];
   let holdNativeProbes = false;
@@ -131,36 +224,53 @@ function environment() {
     loader.addEventListener(name, () => loaderEvents.push(name));
   }
   const context = vm.createContext({
+    createPageImageQueue: (body) => {
+      assert.equal(body, context.document.body);
+      const queue = queuePlan.shift();
+      assert.ok(queue, "the reader creates exactly one queue for each readiness attempt");
+      queues.push(queue);
+      return queue;
+    },
+    loadPageImageSerial,
     document: Object.assign(new EventTarget(), {
       body: { querySelector: () => null, querySelectorAll: () => [...elements, ...portals], append() {} },
       createElementNS: (_namespace, name) => {
         if (name === "svg") {
-          const svg = { style: {}, removed: false, setAttribute() {}, append() {}, remove() { this.removed = true; } };
+          const svg = {
+            style: {}, removed: false, members: [], setAttribute() {},
+            matches: () => false,
+            querySelectorAll() { return this.members; },
+            append(...members) { this.members.push(...members); },
+            remove() { this.removed = true; },
+          };
           nativeSvgLayers.push(svg);
           return svg;
         }
         const probe = new SvgImage("");
         probe.holdNative = holdNativeProbes;
+        const setAttribute = probe.setAttribute.bind(probe);
         probe.setAttribute = (attribute, value) => {
+          setAttribute(attribute, value);
           if (attribute !== "href") return;
-          probe.href.baseVal = value;
           if (!probe.holdNative) setImmediate(() => probe.finish());
         };
         nativeSvgProbes.push(probe);
         return probe;
       },
-      getElementById: (id) => id === "page-loader" ? loader : { querySelectorAll: () => elements },
+      getElementById: (id) => id === "page-loader" ? loader : root,
       querySelectorAll: (selector) => selector.includes('as="image"') ? hints : styles,
       fonts: { ready: Promise.resolve() },
     }),
     window: {
       setTimeout: (fn, ms) => {
+        if (ms === 25000) { optionalTimers.add(fn); return fn; }
+        if (ms >= 119000 && ms <= 120000) { homeDeadlineTimers.add(fn); return fn; }
         if (ms === 12000) { embedTimers.add(fn); return fn; }
         if (ms > 12000) { deadlineTimers.add(fn); return fn; }
         return setImmediate(fn);
       },
       clearTimeout: (id) => {
-        if (typeof id === "function") { embedTimers.delete(id); deadlineTimers.delete(id); }
+        if (typeof id === "function") { embedTimers.delete(id); deadlineTimers.delete(id); homeDeadlineTimers.delete(id); optionalTimers.delete(id); }
         else clearImmediate(id);
       },
       matchMedia: () => ({ matches: true }),
@@ -174,14 +284,41 @@ function environment() {
     HTMLImageElement: Image, SVGImageElement: SvgImage,
     HTMLVideoElement: Video, HTMLMediaElement: Video,
     HTMLIFrameElement: Frame,
+    MutationObserver: class {
+      constructor(callback) { this.callback = callback; }
+      observe(target) { this.target = target; observers.add(this); }
+      disconnect() { observers.delete(this); }
+    },
   });
   vm.runInContext(loaderSource, context);
   return {
-    context, loader, requests, Image, SvgImage, Video, Frame, embedTimers, deadlineTimers, loaderEvents, nativeSvgProbes, nativeSvgLayers,
+    context, loader, requests, Image, SvgImage, Video, Frame, embedTimers, deadlineTimers, homeDeadlineTimers, optionalTimers, queues, loaderEvents, nativeSvgProbes, nativeSvgLayers,
     holdNativeProbes: () => { holdNativeProbes = true; },
     expireEmbeds: () => [...embedTimers].forEach((fn) => fn()),
     expireDeadline: () => [...deadlineTimers].forEach((fn) => fn()),
-    page: (nextElements, nextHints = []) => { elements = nextElements; hints = nextHints; },
+    expireHomeDeadline: () => [...homeDeadlineTimers].forEach((fn) => fn()),
+    expireOptional: () => [...optionalTimers].forEach((fn) => fn()),
+    page: (nextElements, nextHints = []) => { elements = nextElements; hints = nextHints; homeOpening = null; managedReader = false; },
+    reader: (criticalReady, remaining = Promise.resolve()) => {
+      managedReader = true;
+      const queue = {
+        criticalReady,
+        remainingCalls: 0,
+        disposeCount: 0,
+        remainingReady() { this.remainingCalls++; return remaining; },
+        dispose() { this.disposeCount++; },
+      };
+      queuePlan.push(queue);
+      return queue;
+    },
+    home: (images) => {
+      homeOpening = {
+        querySelector: (selector) => selector === "[data-home-src]"
+          ? images.find((image) => image.dataset.homeSrc) ?? null : null,
+        querySelectorAll: () => images,
+      };
+    },
+    mutate: (target) => [...observers].filter((observer) => observer.target === target).forEach((observer) => observer.callback([])),
     portals: (nextPortals) => { portals = nextPortals; },
     styles: (nextStyles) => { styles = nextStyles; },
     fonts: (ready) => { context.document.fonts.ready = ready; },
@@ -189,14 +326,30 @@ function environment() {
   };
 }
 
-function rnaMorphEnvironment() {
+function artworkSourceModule(env) {
+  const module = { exports: {} };
+  vm.runInNewContext(compile("src/utils/homeArtworkSource.ts", ts.ModuleKind.CommonJS), {
+    module, exports: module.exports,
+    Element: EventTarget, HTMLImageElement: env.Image, SVGImageElement: env.SvgImage, AbortController,
+    require: (name) => {
+      assert.equal(name, "./pageImageQueue");
+      return { loadPageImageSerial: (url) => Promise.resolve(url) };
+    },
+  });
+  return module.exports;
+}
+
+function rnaMorphEnvironment({ active = true } = {}) {
   const env = environment();
+  const artwork = artworkSourceModule(env);
+  const chapter = Object.assign(new EventTarget(), { dataset: { homeArtworkActive: active ? "true" : "false" } });
   const frames = new Map();
   let frameId = 0;
   let samples = 0;
   let prepared = 0;
-  const element = () => ({
+  const element = () => Object.assign(new EventTarget(), {
     style: {}, dataset: {}, clientWidth: 10,
+    matches: () => false, querySelectorAll: () => [], closest: () => null,
     append() {}, setAttribute() {}, remove() {},
     getBoundingClientRect: () => ({ left: 0, top: 0, width: 10, height: 10 }),
     getContext() {
@@ -211,16 +364,19 @@ function rnaMorphEnvironment() {
     },
   });
   const target = Object.assign(new env.Image("fan.webp"), element(), {
-    getAttribute: () => "lazy", removeAttribute() {}, naturalHeight: 1,
+    naturalHeight: 1,
   });
   target.finish();
   target.naturalWidth = 1;
+  const ring = new env.SvgImage("ring.webp");
   const source = Object.assign(element(), {
-    querySelector: () => ({ href: { baseVal: "ring.webp" } }),
+    querySelector: () => ring,
+    querySelectorAll: () => [ring],
+    closest: () => chapter,
   });
   const module = { exports: {} };
   const context = vm.createContext({
-    module, exports: module.exports, Image: env.Image, Uint8ClampedArray,
+    module, exports: module.exports, Image: env.Image, Uint8ClampedArray, AbortController,
     document: { createElement: element },
     window: { devicePixelRatio: 1 },
     ResizeObserver: class { observe() {} disconnect() {} },
@@ -236,6 +392,7 @@ function rnaMorphEnvironment() {
         addEventListener() {}, removeEventListener() {},
       } };
       if (name === "../utils/pageLoader") return { trackPagePreparation: env.context.trackPagePreparation };
+      if (name === "../utils/homeArtworkSource") return artwork;
       if (name === "./homeMotion") {
         const dependency = { exports: {} };
         vm.runInNewContext(compile("src/hooks/homeMotion.ts", ts.ModuleKind.CommonJS), {
@@ -249,9 +406,13 @@ function rnaMorphEnvironment() {
   });
   vm.runInContext(compile("src/hooks/createRnaRingMorph.ts", ts.ModuleKind.CommonJS), context);
   const morph = module.exports.createRnaRingMorph(element(), source, target, true, () => { prepared++; });
-  const image = env.requests.find((request) => request.src === "ring.webp");
+  const image = env.requests.at(-1);
   return {
     ...env, morph, image, samples: () => samples, prepared: () => prepared,
+    activate: () => {
+      chapter.dataset.homeArtworkActive = "true";
+      chapter.dispatchEvent(new Event("circure:home-artwork-activate"));
+    },
     flushMorphFrames: () => {
       const pending = [...frames.values()];
       frames.clear();
@@ -262,6 +423,7 @@ function rnaMorphEnvironment() {
 
 function galleryMagnifierEnvironment() {
   const env = environment();
+  const artwork = artworkSourceModule(env);
   env.holdNativeProbes();
   const module = { exports: {} };
   let paintedImage;
@@ -272,17 +434,22 @@ function galleryMagnifierEnvironment() {
         const element = env.context.document.createElementNS(namespace, name);
         if (name === "svg") {
           element.classList = { add() {} };
-          element.append = (image) => { paintedImage = image; };
+          const append = element.append.bind(element);
+          element.append = (image) => { append(image); paintedImage = image; };
         }
         return element;
       },
     },
+    require: (name) => {
+      assert.equal(name, "../utils/homeArtworkSource");
+      return artwork;
+    },
   });
   vm.runInContext(compile("src/hooks/createThinkingGalleryInk.ts", ts.ModuleKind.CommonJS), context);
-  module.exports.createThinkingGalleryMagnifier({
-    src: "thinking-4.webp",
-    currentSrc: "thinking-4-decoded.webp",
-  });
+  const source = new env.Image("thinking-4.webp");
+  const mark = module.exports.createThinkingGalleryMagnifier(source);
+  assert.equal(paintedImage.href.baseVal, "", "the carried painting starts with a deferred URL");
+  artwork.activateHomeArtwork(mark);
   env.page([paintedImage]);
   return { ...env, paintedImage };
 }
@@ -314,12 +481,14 @@ function inlineLoaderEnvironment() {
     setTimeout: schedule,
     clearTimeout: unschedule,
     location: { reload: () => { reloads++; } },
+    matchMedia: env.context.window.matchMedia,
   });
   Object.assign(env.context, {
     window: browser,
     setTimeout: schedule,
     clearTimeout: unschedule,
     performance: { now: () => now },
+    Date: class extends Date { static now() { return 1700000000000 + now; } },
     CSSAnimation: class {},
     requestAnimationFrame: (fn) => schedule(() => fn(now), 16),
     cancelAnimationFrame: unschedule,
@@ -348,6 +517,388 @@ function inlineLoaderEnvironment() {
     },
   };
 }
+
+test("managed readers cannot pass their first-six and hero gate through the optional deadline", async () => {
+  const env = environment();
+  const critical = deferred();
+  const footer = new env.Image("footer-must-not-start-concurrently.webp");
+  env.page([footer], [{ href: "metadata-must-not-start-concurrently.webp", crossOrigin: null }]);
+  const queue = env.reader(critical.promise);
+  env.ready();
+  await tick();
+  assert.equal(env.queues.length, 1);
+  assert.equal(env.loader.hidden, false);
+  assert.equal(env.optionalTimers.size, 0, "25 seconds start only after mandatory image decoding succeeds");
+  env.expireOptional();
+  env.expireDeadline();
+  await tick();
+  assert.equal(env.loader.hidden, false);
+  assert.equal(queue.remainingCalls, 0);
+  assert.equal(env.requests.length, 0, "managed pages bypass legacy metadata and CSS image probes");
+  assert.equal(footer.loading, "lazy");
+  critical.resolve();
+  await tick();
+  assert.equal(queue.remainingCalls, 1);
+  assert.equal(env.loader.hidden, true);
+  assert.equal(queue.disposeCount, 0, "the live queue survives entry to serve subsequent interactions");
+});
+
+test("a failed managed hero settles its slot and lets the rest of the page enter", async () => {
+  const env = environment();
+  const critical = deferred();
+  const first = env.reader(critical.promise);
+  env.ready();
+  await tick();
+  critical.reject(new Error("Hero decode failed"));
+  await tick();
+  assert.equal(env.loader.hidden, true);
+  assert.equal(env.loader.dataset.retryable, undefined);
+  assert.ok(!env.loaderEvents.includes("loadererror"));
+  assert.equal(first.disposeCount, 0);
+  assert.equal(first.remainingCalls, 1);
+  assert.equal(env.optionalTimers.size, 0);
+  assert.equal(env.loader.hidden, true);
+});
+
+test("a static loader deadline releases a reader with unfinished critical images", async () => {
+  const env = inlineLoaderEnvironment();
+  env.reader(new Promise(() => {}));
+  env.ready();
+  await env.advance(120000);
+  assert.equal(env.retry.hidden, true);
+  assert.match(env.status.textContent, /opening the page with the resources available/i);
+  await env.advance(400);
+  assert.equal(env.loader.hidden, true);
+});
+
+test("a managed reader's two-minute ceiling enters without disposing its active queue", async () => {
+  const env = environment();
+  const critical = deferred();
+  const queue = env.reader(critical.promise);
+  env.ready();
+  await tick();
+  env.expireHomeDeadline();
+  await tick();
+  assert.equal(env.loader.hidden, true);
+  assert.equal(env.loader.dataset.retryable, undefined);
+  assert.equal(queue.disposeCount, 0);
+  critical.resolve();
+  await tick();
+  assert.equal(env.loader.hidden, true, "a late result cannot affect the already-entered page");
+});
+
+test("the static loader deadline releases pending managed critical images", async () => {
+  const env = environment();
+  const queue = env.reader(new Promise(() => {}));
+  env.ready();
+  await tick();
+  env.expireHomeDeadline();
+  await tick();
+  assert.equal(env.loader.hidden, true);
+  assert.equal(env.loader.dataset.retryable, undefined);
+  assert.equal(queue.disposeCount, 0);
+  assert.ok(!env.loaderEvents.includes("loadererror"));
+});
+
+test("managed reader optional images receive at most 25 seconds after critical success", async () => {
+  const env = environment();
+  const critical = deferred();
+  const remaining = deferred();
+  const queue = env.reader(critical.promise, remaining.promise);
+  env.ready();
+  await tick();
+  assert.equal(env.optionalTimers.size, 0);
+  critical.resolve();
+  await tick();
+  assert.equal(queue.remainingCalls, 1);
+  assert.equal(env.optionalTimers.size, 1);
+  assert.equal(env.loader.hidden, false);
+  env.expireOptional();
+  await tick();
+  assert.equal(env.loader.hidden, true);
+  assert.equal(queue.disposeCount, 0);
+  assert.equal(env.optionalTimers.size, 0);
+});
+
+test("the static deadline can finish optional reader work after its required artwork is ready", async () => {
+  const env = environment();
+  const queue = env.reader(Promise.resolve(), new Promise(() => {}));
+  env.ready();
+  await tick();
+  assert.equal(env.optionalTimers.size, 1);
+  assert.equal(env.loader.hidden, false);
+  env.loader.dataset.deadline = "true";
+  env.loader.dispatchEvent(new Event("loaderdeadline"));
+  await tick();
+  assert.equal(env.loader.hidden, true, "the shared release path completes the cover fade");
+  assert.ok(env.loaderEvents.includes("loaderready"), "deadline release notifies route animations");
+  assert.equal(env.optionalTimers.size, 0, "the deadline releases optional readiness work");
+  assert.equal(queue.disposeCount, 0);
+});
+
+test("managed reader queues start only after CSS succeeds and route changes dispose the previous queue", async () => {
+  const env = environment();
+  const style = Object.assign(new EventTarget(), {
+    dataset: { styleState: "loading" }, href: "reader.css", media: "print", sheet: null,
+  });
+  const critical = deferred();
+  env.styles([style]);
+  const queue = env.reader(critical.promise);
+  env.ready();
+  await tick();
+  assert.equal(env.queues.length, 0);
+  style.media = "all";
+  style.dataset.styleState = "loaded";
+  style.dispatchEvent(new Event("load"));
+  await tick();
+  assert.equal(env.queues.length, 1);
+  env.context.showPageLoader();
+  assert.equal(queue.disposeCount, 1, "navigation immediately cancels the previous route's queued work");
+  const nextImage = new env.Image("next-legacy-page.webp");
+  env.page([nextImage]);
+  env.ready();
+  await tick();
+  assert.equal(queue.disposeCount, 1);
+  critical.resolve();
+  await tick();
+  assert.equal(env.loader.hidden, false);
+  assert.equal(queue.remainingCalls, 0);
+  nextImage.finish();
+  await tick();
+  assert.equal(env.loader.hidden, true);
+});
+
+test("Home starts the shared managed queue without letting it block the story opening", async () => {
+  const env = environment();
+  const queue = env.reader(new Promise(() => {}));
+  env.home([]);
+  env.ready();
+  await tick();
+  assert.equal(env.queues.length, 1);
+  assert.equal(env.loader.hidden, true);
+  assert.equal(queue.disposeCount, 0);
+  assert.equal(queue.remainingCalls, 0);
+});
+
+test("deferred Home opening images must all receive native pixels and decode before entry", async () => {
+  const env = environment();
+  const images = ["portrait.webp", "frame.webp", "opening-note.webp"].map((url) => {
+    const image = new env.Image(url);
+    image.src = "";
+    image.dataset.homeSrc = url;
+    return image;
+  });
+  const decoded = deferred();
+  images[2].decode = () => decoded.promise;
+  env.home(images);
+  env.ready();
+  await tick();
+  assert.equal(env.loader.hidden, false, "a missing src is deferred artwork rather than readiness");
+  for (const image of images.slice(0, 2)) { image.src = image.dataset.homeSrc; image.finish(); }
+  await tick();
+  assert.equal(env.loader.hidden, false, "the third required image still has no pixels");
+  images[2].src = images[2].dataset.homeSrc;
+  images[2].finish();
+  await tick();
+  assert.equal(env.loader.hidden, false, "a completed download still waits for decode");
+  decoded.resolve();
+  await tick();
+  assert.equal(env.loader.hidden, true);
+  assert.equal(env.requests.length, 0, "Home's serial controller owns the actual source requests");
+});
+
+test("a deferred Home opening releases at the two-minute cover deadline", async () => {
+  const env = environment();
+  const image = new env.Image("opening.webp");
+  image.src = "";
+  image.dataset.homeSrc = "opening.webp";
+  env.home([image]);
+  env.ready();
+  await tick();
+  env.expireHomeDeadline();
+  await tick();
+  assert.equal(env.loader.hidden, true);
+  assert.equal(env.loader.dataset.retryable, undefined);
+  assert.ok(!env.loaderEvents.includes("loadererror"));
+  image.src = "opening.webp";
+  image.finish();
+  await tick();
+  assert.equal(env.loader.hidden, true, "a late image cannot restore the expired cover");
+});
+
+test("a final Home source failure is observed even before any real src was assigned", async () => {
+  const env = environment();
+  const image = new env.Image("opening.webp");
+  image.src = "";
+  image.dataset.homeSrc = "opening.webp";
+  env.home([image]);
+  env.ready();
+  await tick();
+  image.dataset.homeArtwork = "error";
+  env.mutate(image);
+  await tick();
+  assert.equal(env.loader.hidden, true);
+  assert.equal(env.loader.dataset.retryable, undefined);
+  assert.ok(!env.loaderEvents.includes("loadererror"));
+});
+
+test("Home waits for its opening images and layout while later scenes, portals and hints stay on demand", async () => {
+  const env = environment();
+  const portrait = new env.Image("opening-portrait.webp");
+  const ring = new env.SvgImage("opening-ring.webp");
+  const later = new env.Image("later-story.webp");
+  const navigation = new env.Image("navigation-mark.webp");
+  const footer = new env.Image("footer-mark.webp");
+  const portal = new env.Image("later-canvas-source.webp");
+  const layout = deferred();
+  let prepared = 0;
+  env.page([portrait, ring, later, navigation, footer], [{ href: "closed-drawer.webp", crossOrigin: null }]);
+  env.portals([portal]);
+  env.home([portrait, ring]);
+  env.context.registerPagePreparation(() => { prepared++; return layout.promise; });
+  env.context.trackPagePreparation(new Promise(() => {}));
+  env.ready();
+  await tick();
+  assert.equal(env.loader.hidden, false);
+  assert.equal(portrait.loading, "eager");
+  assert.deepEqual(env.requests.map((image) => image.src), ["opening-ring.webp"]);
+  assert.ok(env.homeDeadlineTimers.size >= 1, "the two-minute ceiling is active while the opening is prepared");
+  portrait.finish();
+  env.requests[0].finish();
+  await tick();
+  assert.equal(prepared, 1);
+  assert.equal(env.loader.hidden, false, "the opening still waits for its layout rebuild");
+  layout.resolve();
+  await tick();
+  assert.equal(env.loader.hidden, true, "a later scene's CPU preparation cannot block Home");
+  assert.ok([later, navigation, footer, portal].every((image) => image.loading === "lazy"));
+  assert.equal(env.homeDeadlineTimers.size, 0);
+});
+
+test("Home's two-minute ceiling releases stalled downloads, decode, fonts and layout without rewriting image URLs", async (t) => {
+  for (const stage of ["download", "decode", "fonts", "layout"]) {
+    await t.test(stage, async () => {
+      const env = environment();
+      const portrait = new env.Image("slow-opening.webp");
+      if (stage !== "download") portrait.finish();
+      if (stage === "decode") portrait.decode = () => new Promise(() => {});
+      if (stage === "fonts") env.fonts(new Promise(() => {}));
+      if (stage === "layout") env.context.registerPagePreparation(() => new Promise(() => {}));
+      env.home([portrait]);
+      env.ready();
+      await tick();
+      assert.equal(env.loader.hidden, false);
+      assert.ok(env.homeDeadlineTimers.size >= 1, "an absolute Home deadline is armed");
+      assert.equal(env.deadlineTimers.size, 0);
+      env.expireHomeDeadline();
+      await tick();
+      assert.equal(env.loader.hidden, true);
+      assert.equal(portrait.src, "slow-opening.webp");
+      assert.equal(env.homeDeadlineTimers.size, 0);
+      assert.ok(!env.loaderEvents.includes("loadererror"));
+    });
+  }
+});
+
+test("Home does not wait for a missing loaderplay event or an unfinished loader entrance", async () => {
+  for (const playing of [false, true]) {
+    const env = environment();
+    if (!playing) env.loader.classList.remove("is-playing");
+    let inspectedAnimations = false;
+    env.loader.getAnimations = () => {
+      inspectedAnimations = true;
+      return [{ effect: { getTiming: () => ({ iterations: 1 }) }, finished: new Promise(() => {}) }];
+    };
+    env.home([]);
+    env.ready();
+    await tick();
+    assert.equal(env.loader.hidden, true);
+    assert.equal(inspectedAnimations, false);
+  }
+});
+
+test("other routes still wait for the loader entrance after their artwork is ready", async () => {
+  const env = environment();
+  const entrance = deferred();
+  env.loader.getAnimations = () => [{ effect: { getTiming: () => ({ iterations: 1 }) }, finished: entrance.promise }];
+  env.ready();
+  await tick();
+  assert.equal(env.loader.hidden, false);
+  entrance.resolve();
+  await tick();
+  assert.equal(env.loader.hidden, true);
+});
+
+test("Home's absolute readiness deadline starts before its stylesheet applies", async () => {
+  const env = environment();
+  const style = Object.assign(new EventTarget(), {
+    dataset: { styleState: "loading" }, href: "home.css", media: "print", sheet: null,
+  });
+  env.styles([style]);
+  env.home([new env.Image("opening.webp")]);
+  env.ready();
+  await tick();
+  assert.equal(env.homeDeadlineTimers.size, 1, "the cover limit already includes CSS loading time");
+  assert.equal(env.loader.hidden, false);
+  style.media = "all";
+  style.dataset.styleState = "loaded";
+  style.dispatchEvent(new Event("load"));
+  await tick();
+  assert.ok(env.homeDeadlineTimers.size >= 1, "the deadline remains active after CSS applies");
+  env.expireHomeDeadline();
+  await tick();
+  assert.equal(env.loader.hidden, true);
+});
+
+test("a failed Home stylesheet falls through to the rendered page", async () => {
+  const env = environment();
+  const style = Object.assign(new EventTarget(), {
+    dataset: { styleState: "error" }, href: "home.css", media: "print", sheet: null,
+  });
+  env.styles([style]);
+  env.home([]);
+  env.ready();
+  await tick();
+  assert.equal(env.loader.hidden, true);
+  assert.equal(env.homeDeadlineTimers.size, 0);
+  assert.ok(!env.loaderEvents.includes("loadererror"));
+});
+
+test("a failed opening image settles Home without becoming a whole-page error", async () => {
+  const env = environment();
+  const portrait = new env.Image("broken-opening.webp");
+  env.home([portrait]);
+  env.ready();
+  await tick();
+  portrait.finish(false);
+  await tick();
+  assert.equal(env.loader.hidden, true);
+  assert.ok(!env.loaderEvents.includes("loadererror"));
+});
+
+test("leaving Home cancels its budget and its late image cannot release the next route", async () => {
+  const env = environment();
+  const portrait = new env.Image("old-opening.webp");
+  const nextImage = new env.Image("next-page.webp");
+  env.home([portrait]);
+  env.ready();
+  await tick();
+  assert.ok(env.homeDeadlineTimers.size >= 1, "the total deadline is active for the Home route");
+  const homeDeadline = [...env.homeDeadlineTimers][0];
+  env.context.showPageLoader();
+  env.page([nextImage]);
+  env.ready();
+  await tick();
+  assert.equal(env.homeDeadlineTimers.has(homeDeadline), false, "the previous Home timer is cancelled on navigation");
+  assert.equal(env.homeDeadlineTimers.size, 1, "the next route owns a fresh hard ceiling");
+  assert.equal(env.deadlineTimers.size, 1);
+  portrait.finish();
+  await tick();
+  assert.equal(env.loader.hidden, false);
+  nextImage.finish();
+  await tick();
+  assert.equal(env.loader.hidden, true);
+});
 
 test("loader covers a cold page until hidden navigation, all body images and hero art are ready", async () => {
   const env = environment();
@@ -382,7 +933,7 @@ test("image decode rejecting before loading cannot dismiss the cover", async () 
   assert.equal(env.loader.hidden, true);
 });
 
-test("closed dialogs, SVG art and pseudo-element masks are ready before the intro is released", async () => {
+test("closed dialogs, SVG art and pseudo-element masks load serially before the intro is released", async () => {
   const env = environment();
   env.page([
     new env.SvgImage("home-ring.webp"),
@@ -392,9 +943,16 @@ test("closed dialogs, SVG art and pseudo-element masks are ready before the intr
   void env.context.whenPageLoaderLeaves().then(() => { introReleased = true; });
   env.ready();
   await tick();
-  assert.deepEqual(env.requests.map((image) => image.src).sort(), ["home-mask.webp", "home-ring.webp", "interview-dialog.webp"]);
-  for (const image of env.requests) image.finish();
+  const pending = new Set(["home-mask.webp", "home-ring.webp", "interview-dialog.webp"]);
+  while (pending.size) {
+    const image = env.requests.at(-1);
+    assert.ok(image, "the serial queue starts its next resource after the prior one settles");
+    assert.ok(pending.delete(image.src), `unexpected or duplicate image request: ${image.src}`);
+    image.finish();
+    await tick();
+  }
   await tick();
+  assert.equal(env.requests.length, 3);
   assert.equal(introReleased, true);
   assert.equal(env.loader.hidden, true);
 });
@@ -432,9 +990,10 @@ test("a new SVG clone created by preparation gets its own decode gate even when 
   await tick();
   assert.equal(env.requests.length, 2, "the new SVG element does not inherit the old node's completion");
   assert.equal(env.loader.hidden, false);
-  assert.equal(env.requests[0].decodeCalls, 1, "the unchanged original is not probed again");
+  assert.equal(env.nativeSvgProbes.length, 1, "the next SVG probe waits for its serial download slot");
   env.requests[1].finish();
   await tick();
+  assert.equal(env.nativeSvgProbes.length, 2, "each SVG element receives its own native paint readiness probe");
   assert.equal(env.loader.hidden, true);
 });
 
@@ -465,7 +1024,7 @@ test("stalled fonts and page preparation also release at the deadline", async ()
   assert.equal(env.loader.hidden, true);
 });
 
-test("the deadline starts only after the stylesheet applies", async () => {
+test("the total deadline starts before the stylesheet applies", async () => {
   const env = environment();
   const style = Object.assign(new EventTarget(), {
     dataset: { styleState: "loading" }, href: "app.css", media: "print", sheet: null,
@@ -474,7 +1033,7 @@ test("the deadline starts only after the stylesheet applies", async () => {
   env.page([]);
   env.ready();
   await tick();
-  assert.equal(env.deadlineTimers.size, 0, "an unstyled page is never released by time");
+  assert.equal(env.homeDeadlineTimers.size, 1, "a stylesheet wait is covered by the total deadline");
   assert.equal(env.loader.hidden, false);
   style.media = "all";
   style.dataset.styleState = "loaded";
@@ -761,6 +1320,22 @@ test("the actual RNA morph waits for its pixel preparation frame after image dec
   env.morph.dispose();
 });
 
+test("the actual RNA morph defers its detached image until its source chapter activates", async () => {
+  const env = rnaMorphEnvironment({ active: false });
+  assert.equal(env.image.src, "", "creating geometry does not start a detached image request");
+  assert.equal(env.samples(), 0);
+  env.activate();
+  await tick();
+  assert.equal(env.image.src, "ring.webp");
+  env.image.finish();
+  env.image.naturalWidth = env.image.naturalHeight = 1;
+  await tick();
+  env.flushMorphFrames();
+  assert.ok(env.samples() > 0);
+  assert.equal(env.prepared(), 1);
+  env.morph.dispose();
+});
+
 test("disposing the actual RNA morph settles its captured wait and suppresses late decode work", async () => {
   const env = rnaMorphEnvironment();
   env.ready();
@@ -782,7 +1357,7 @@ test("the carried magnifier waits for the reused SVG painting without a canvas s
   env.ready();
   await tick();
   assert.equal(env.requests.length, 1, "only the ordinary SVG decode probe is needed");
-  assert.equal(env.requests[0].src, "thinking-4-decoded.webp", "reuse the displayed source");
+  assert.equal(env.requests[0].src, "thinking-4.webp", "reuse the source painting after its deferred copy activates");
   assert.equal(env.requests[0].crossOrigin, null, "no detached anonymous canvas request");
   assert.equal(env.loader.hidden, false);
   env.requests[0].finish();
@@ -795,18 +1370,16 @@ test("the carried magnifier waits for the reused SVG painting without a canvas s
 
 test("leaving the gallery cancels its pending native SVG wait without blocking the next route", async () => {
   const env = galleryMagnifierEnvironment();
+  const galleryProbeCount = env.nativeSvgProbes.length;
   env.ready();
   await tick();
-  const oldProbe = env.nativeSvgProbes.at(-1);
-  const oldLayer = env.nativeSvgLayers.at(-1);
+  assert.equal(env.nativeSvgProbes.length, galleryProbeCount, "page readiness does not start a duplicate SVG probe");
   assert.equal(env.loader.hidden, false);
   env.context.showPageLoader();
   env.page([]);
   env.ready();
   await tick();
-  assert.equal(oldLayer.removed, true);
   assert.equal(env.loader.hidden, true);
-  oldProbe.finish();
   env.requests.forEach((image) => image.finish());
   await tick();
   assert.equal(env.loaderEvents.filter((name) => name === "loaderready").length, 1);
@@ -932,7 +1505,7 @@ test("fonts requested during image scanning are awaited before preparing layout"
   assert.equal(env.loader.hidden, true);
 });
 
-test("CSS that failed before readiness starts reports failure without waiting for another event", async () => {
+test("CSS that failed before readiness does not keep the visitor behind the cover", async () => {
   const env = environment();
   const style = Object.assign(new EventTarget(), {
     dataset: { styleState: "error" },
@@ -944,10 +1517,9 @@ test("CSS that failed before readiness starts reports failure without waiting fo
   env.styles([style]);
   env.ready();
   await tick();
-  assert.equal(env.loader.hidden, false);
-  assert.equal(env.loader.classList.contains("is-leaving"), false);
-  assert.equal(env.loaderEvents.filter((name) => name === "loadererror").length, 1);
-  assert.equal(env.loaderEvents.includes("loaderready"), false);
+  assert.equal(env.loader.hidden, true);
+  assert.ok(!env.loaderEvents.includes("loadererror"));
+  assert.ok(env.loaderEvents.includes("loaderready"));
 });
 
 test("a CSS sheet object does not mean print-media styles have applied to the page", async () => {
@@ -999,9 +1571,101 @@ test("successful readiness clears the HTML waiting timers and feedback", async (
   assert.equal(env.wait.hidden, true);
   assert.equal(env.retry.hidden, true);
   assert.equal(env.timers.size, 0);
-  await env.advance(30000);
+  await env.advance(120000);
   assert.equal(env.wait.hidden, true);
   assert.equal(env.retry.hidden, true);
+  assert.equal(env.loader.dataset.deadline, undefined, "successful readiness cancels the two-minute watchdog");
+});
+
+test("the HTML loader stops its animations and leaves the cover at two minutes", async () => {
+  const env = inlineLoaderEnvironment();
+  let paused = 0;
+  let deadlines = 0;
+  env.loader.getAnimations = () => [{ pause: () => paused++ }, { pause: () => paused++ }];
+  env.loader.addEventListener("loaderdeadline", () => deadlines++);
+  await env.advance(119599);
+  assert.equal(env.loader.dataset.deadline, undefined);
+  assert.equal(paused, 0);
+  await env.advance(1);
+  assert.equal(env.loader.hidden, false, "the static fallback fades the cover after the deadline");
+  assert.equal(env.loader.dataset.deadline, "true");
+  assert.equal(paused, 2);
+  assert.equal(deadlines, 1);
+  assert.equal(env.wait.hidden, true);
+  assert.equal(env.retry.hidden, true);
+  assert.match(env.status.textContent, /opening the page with the resources available/i);
+  env.loader.dataset.message = "Preparing artwork";
+  env.loader.dispatchEvent(new Event("loaderstatus"));
+  assert.match(env.status.textContent, /opening the page with the resources available/i, "late status cannot erase the deadline state");
+  await env.advance(400);
+  assert.equal(env.loader.hidden, true);
+  await env.advance(120000);
+  assert.equal(deadlines, 1);
+});
+
+test("the two-minute watchdog also stops the loader's manually advanced entrance clock", async () => {
+  const env = inlineLoaderEnvironment();
+  const animation = Object.assign(new env.context.CSSAnimation(), {
+    currentTime: 0,
+    playState: "paused",
+    effect: {
+      getTiming: () => ({ iterations: 1 }),
+      getComputedTiming: () => ({ endTime: 180000 }),
+    },
+    pause() { this.playState = "paused"; },
+    finish() { this.playState = "finished"; },
+  });
+  env.loader.getAnimations = () => [animation];
+  await env.advance(120000);
+  assert.equal(env.loader.dataset.deadline, "true");
+  const stoppedAt = animation.currentTime;
+  await env.advance(1000);
+  assert.equal(animation.currentTime, stoppedAt, "a paused animation cannot keep advancing through the JavaScript frame clock");
+});
+
+test("Home's two-minute ceiling includes time already spent waiting for CSS", async () => {
+  const env = inlineLoaderEnvironment();
+  const style = Object.assign(new EventTarget(), {
+    dataset: { styleState: "loading" }, href: "home.css", media: "print", sheet: null,
+  });
+  env.styles([style]);
+  env.home([new env.Image("still-downloading.webp")]);
+  env.ready();
+  assert.ok([...env.timers.values()].some((timer) => timer.due === 119600), "the static two-minute watchdog starts before CSS settles");
+  await env.advance(90000);
+  assert.equal(env.loader.hidden, false);
+  style.media = "all";
+  style.dataset.styleState = "loaded";
+  style.dispatchEvent(new Event("load"));
+  await tick();
+  const deadlines = [...env.timers.values()].map((timer) => timer.due);
+  assert.ok(deadlines.includes(119600), "the total deadline remains at its original start time, including its fade");
+  assert.ok(!deadlines.includes(210000), "CSS readiness cannot start another two-minute wait");
+  await env.advance(29599);
+  assert.equal(env.loader.classList.contains("is-leaving"), false);
+  await env.advance(1);
+  assert.ok(env.loaderEvents.includes("loaderready"), "the mounted Home enters at the original deadline");
+  assert.equal(env.loader.classList.contains("is-leaving"), true);
+  await env.advance(380);
+  assert.equal(env.loader.hidden, true);
+});
+
+test("a Home whose stylesheet is still missing at two minutes releases the cover", async () => {
+  const env = inlineLoaderEnvironment();
+  const style = Object.assign(new EventTarget(), {
+    dataset: { styleState: "loading" }, href: "late-home.css", media: "print", sheet: null,
+  });
+  env.styles([style]);
+  env.home([new env.Image("late-opening.webp")]);
+  env.ready();
+  await env.advance(120000);
+  await env.advance(400);
+  assert.equal(env.loader.hidden, true);
+  style.media = "all";
+  style.dataset.styleState = "loaded";
+  style.dispatchEvent(new Event("load"));
+  await env.advance(500);
+  assert.equal(env.loader.hidden, true, "late CSS cannot reinstate an expired cover");
 });
 
 test("a route replay starts its own waiting timers without inheriting the previous route's clock", async () => {
@@ -1021,6 +1685,15 @@ test("a route replay starts its own waiting timers without inheriting the previo
   assert.equal(env.loader.hidden, false);
 });
 
+test("an overlapping route transition refreshes the watchdog while the cover stays visible", async () => {
+  const env = inlineLoaderEnvironment();
+  await env.advance(60000);
+  assert.ok([...env.timers.values()].some((timer) => timer.due === 119600));
+  env.context.showPageLoader();
+  assert.ok([...env.timers.values()].some((timer) => timer.due === 179600), "the new route receives a full two-minute window");
+  assert.ok(![...env.timers.values()].some((timer) => timer.due === 119600), "the old route watchdog is removed");
+});
+
 test("a failed app module exposes retry without revealing the incomplete page", async () => {
   const env = inlineLoaderEnvironment();
   await env.advance(1000);
@@ -1032,7 +1705,16 @@ test("a failed app module exposes retry without revealing the incomplete page", 
   assert.equal(env.retry.hidden, false);
   assert.equal(env.wait.hidden, true);
   assert.match(env.status.textContent, /could not load/i);
-  assert.equal(env.timers.size, 0);
+  assert.equal(env.timers.size, 1, "the two-minute escape hatch remains active after a script error");
+});
+
+test("a benign window-level ResizeObserver warning does not freeze route entry", () => {
+  const env = inlineLoaderEnvironment();
+  const warning = new Event("error");
+  Object.defineProperty(warning, "message", { value: "ResizeObserver loop completed with undelivered notifications." });
+  env.browser.dispatchEvent(warning);
+  assert.equal(env.retry.hidden, true);
+  assert.doesNotMatch(env.status.textContent, /could not load/i);
 });
 
 test("page image metadata includes nested DBTL and split figures and excludes document links", () => {
@@ -1048,7 +1730,7 @@ test("page image metadata includes nested DBTL and split figures and excludes do
   assert.deepEqual(Array.from(sources), ["body.webp", "inactive-stage.webp", "aside.webp"]);
 });
 
-test("React puts interaction-only page image declarations in the head as resource hints", async () => {
+test("interaction-only image metadata stays deferred in the body without browser preload hints", async () => {
   const source = compile("src/components/common/PageImagePreloads.tsx", ts.ModuleKind.CommonJS);
   const jsx = await import("react/jsx-runtime");
   const module = { exports: {} };
@@ -1060,11 +1742,9 @@ test("React puts interaction-only page image declarations in the head as resourc
       }),
     }, "body")],
   }));
-  assert.equal((markup.match(/rel="preload"/g) ?? []).length, 1);
-  assert.match(markup, /as="image"/);
-  assert.match(markup, /href="dialog.webp"/);
-  assert.match(markup, /<head>.*href="dialog.webp".*<\/head>/);
-  assert.doesNotMatch(markup.match(/<body>.*<\/body>/)[0], /rel="preload"/);
+  assert.doesNotMatch(markup, /rel="preload"|(?:src|href)=/);
+  assert.match(markup, /data-page-image-hints="\[&quot;dialog\.webp&quot;\]"/);
+  assert.match(markup.match(/<body>.*<\/body>/)[0], /<span hidden="" aria-hidden="true" data-page-image-hints=/);
 });
 
 test("a transparent SVG waits for its own native load after its decode probe is ready", async () => {
@@ -1121,8 +1801,9 @@ test("restarting readiness without showing the loader again creates a fresh nati
   env.ready();
   await tick();
   assert.equal(env.nativeSvgLayers[0].removed, true, "abort removes the old route preloader client");
-  assert.equal(env.nativeSvgProbes.length, 2, "the aborted task cannot supply a resolved readiness result");
   env.requests.forEach((image) => image.finish());
+  await tick();
+  assert.equal(env.nativeSvgProbes.length, 2, "the aborted task cannot supply a resolved readiness result");
   env.nativeSvgProbes[0].finish();
   await tick();
   assert.equal(env.loader.hidden, false, "a late load from the aborted probe cannot release its replacement");

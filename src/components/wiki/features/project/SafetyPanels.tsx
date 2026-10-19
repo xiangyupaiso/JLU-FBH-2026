@@ -1,3 +1,4 @@
+import { QueuedImage } from "../../../common/QueuedImage";
 /* eslint-disable react-refresh/only-export-components -- Feature registry follows the shared page assembly contract. */
 import { useState, type ReactNode } from "react";
 import {
@@ -157,7 +158,7 @@ function SafetyImages({
             spec.layout === "trilingual" ? safetyLanguages[index] : undefined;
           return (
             <div className="safety-image-group__item" key={key}>
-              <img
+              <QueuedImage
                 src={asset.uploadUrl}
                 alt={`${asset.alt}${language ? ` (${language.label})` : `, image ${index + 1}`}`}
                 width={asset.width}

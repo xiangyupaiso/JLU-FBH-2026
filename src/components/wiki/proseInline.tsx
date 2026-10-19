@@ -66,7 +66,7 @@ export function linkify(text: string): ReactNode {
             scrollReaderToId(href.slice(1), event.currentTarget);
           }}
         >
-          {match[1]}
+          {renderInlineFormatting(match[1])}
         </a>
       ) : href.startsWith("/") && !isAsset ? (
         <Link
@@ -74,7 +74,7 @@ export function linkify(text: string): ReactNode {
           key={`l-${match.index}`}
           to={href}
         >
-          {match[1]}
+          {renderInlineFormatting(match[1])}
         </Link>
       ) : (
         <a
@@ -84,7 +84,7 @@ export function linkify(text: string): ReactNode {
           rel="noreferrer"
           target="_blank"
         >
-          {match[1]}
+          {renderInlineFormatting(match[1])}
         </a>
       ),
     );

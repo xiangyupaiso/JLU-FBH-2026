@@ -60,9 +60,6 @@ export function OfficialAttributionReader() {
   const [tocOpen, setTocOpen] = useState(false);
   const outlineId = useId();
   const heroImage = getTeamHeroImage(attributionPage.route);
-  const heroStyle = {
-    "--route-hero-image": `url(${heroImage})`,
-  } as CSSProperties;
   const bookmarks = getAttributionBookmarks(formWidth, reportedHeight);
   const formStyle = {
     "--attribution-form-height": `${reportedHeight ?? bookmarks.contentHeight + 100}px`,
@@ -242,7 +239,7 @@ export function OfficialAttributionReader() {
       <PageImagePreloads sources={[heroImage]} />
       <link rel="preconnect" href={FORM_ORIGIN} />
       <link rel="dns-prefetch" href={FORM_ORIGIN} />
-      <header className="wiki-hero" style={heroStyle}>
+      <header className="wiki-hero" data-page-background-src={heroImage} data-page-critical="true">
         <h1 className="wiki-hero__sr-only">{attributionPage.title}</h1>
       </header>
       <div className="wiki-reader-track">
@@ -329,7 +326,11 @@ export function OfficialAttributionReader() {
               />
             </>
           ) : null}
-          <div className="route-frame">
+          <div
+            className="route-frame"
+            data-page-background-src="https://static.igem.wiki/teams/6056/wiki/files/pages/team/team.avif"
+            data-page-background-property="--route-frame-image-ready"
+          >
             <div
               ref={scrollRef}
               className="route-frame__scroll"

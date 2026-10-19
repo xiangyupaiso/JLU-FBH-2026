@@ -1,3 +1,4 @@
+import { bindHomeArtwork, decodeHomeArtwork, homeArtworkSource, onHomeArtworkActive } from "../utils/homeArtworkSource";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { createChallengeParticleRenderer } from "./challengeParticleRenderer";
@@ -51,9 +52,12 @@ export function animateTearCloud(
   const frame = document.createElement("div");
   frame.className = "story-tear-cloud-transition";
   frame.setAttribute("aria-hidden", "true");
+  const stopWashArtwork: (() => void)[] = [];
   const wash = stages.map((stage) => {
     const image = document.createElement("img");
-    image.src = stage.querySelector<HTMLImageElement>(".story-backdrop")!.src;
+    const backdrop = stage.querySelector<HTMLImageElement>(".story-backdrop")!;
+    image.dataset.homeSrc = homeArtworkSource(backdrop);
+    stopWashArtwork.push(bindHomeArtwork(backdrop, image));
     image.className = "story-tear-wash";
     image.alt = "";
     frame.append(image);
@@ -69,13 +73,15 @@ export function animateTearCloud(
   root.append(frame, canvas, fallback);
   const context = fallback.getContext("2d");
   const cloudImage = new Image();
+  cloudImage.fetchPriority = "low";
   cloudImage.crossOrigin = "anonymous";
-  cloudImage.src = cloud.querySelector<SVGImageElement>("image")!.href.baseVal;
+  cloudImage.dataset.homeSrc = homeArtworkSource(cloud.querySelector("image"));
   const tearImages = [3, 4, 5].map((number) =>
     tear.querySelector<HTMLImageElement>(`[data-layer="${number}"]`)!,
   );
   const state = { progress: 0 };
   let disposed = false;
+  const artworkPreparation = new AbortController();
   let ready = false;
   let particlePass: boolean | undefined;
   let prepareFrame = 0;
@@ -437,20 +443,27 @@ export function animateTearCloud(
     if (prewarm.isActive) schedulePrepare();
   };
   ScrollTrigger.addEventListener("refresh", refresh);
-  Promise.all([
-    ...tearImages.map((image) => image.decode()),
-    cloudImage.decode(),
-  ])
-    .then(() => {
-      if (!disposed) {
-        draw();
-        if (prewarm.isActive) schedulePrepare();
-      }
-    })
-    .catch(() => {});
+  const stopCloudArtwork = bindHomeArtwork(cloud, cloudImage);
+  const stopActivation = onHomeArtworkActive(cloud, () => {
+    void Promise.all([
+      ...tearImages.map((image) => decodeHomeArtwork(image, artworkPreparation.signal)),
+      decodeHomeArtwork(cloudImage, artworkPreparation.signal),
+    ])
+      .then(() => {
+        if (!disposed) {
+          draw();
+          if (prewarm.isActive) schedulePrepare();
+        }
+      })
+      .catch(() => {});
+  });
   refresh();
   return () => {
     disposed = true;
+    artworkPreparation.abort();
+    stopActivation();
+    stopCloudArtwork();
+    stopWashArtwork.forEach((stop) => stop());
     boundaryGuard.dispose();
     cancelAnimationFrame(prepareFrame);
     prewarm.kill();

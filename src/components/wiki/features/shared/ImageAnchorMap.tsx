@@ -1,3 +1,4 @@
+import { QueuedImage } from "../../../common/QueuedImage";
 import {
   scrollReaderToId,
   scrollReaderToTarget,
@@ -29,7 +30,7 @@ export function ImageAnchorMap({
 }) {
   return (
     <div className="image-anchor-map">
-      <img src={src} alt={alt} width={width} height={height} />
+      <QueuedImage src={src} alt={alt} width={width} height={height} />
       <svg
         viewBox={`0 0 ${width} ${height}`}
         className="image-anchor-map__links"

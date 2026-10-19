@@ -1,3 +1,4 @@
+import { QueuedImage } from "../common/QueuedImage";
 import {
   createContext,
   memo,
@@ -8,7 +9,6 @@ import {
   useMemo,
   useRef,
   useState,
-  type CSSProperties,
   type RefObject,
   type ReactNode,
 } from "react";
@@ -54,12 +54,19 @@ import "../../styles/features/experiments-panels.css";
  * Wet Lab records use this component with their own three-token palette;
  * nothing in the route structure changes between modules.
  *
- * Image readiness: only the hero, explicit `preloadImages` and protocol
- * dialog pages preload behind the loading cover. Article figures load with
- * the page; the loader only waits for the ones near the first screen.
+ * Image readiness: the Hero and first six content sources decode before
+ * revealing the page. Other artwork shares the interaction-gated queue.
  */
 
 type FeatureMap = Partial<Record<string, ReactNode>>;
+
+const ROUTE_FRAME_IMAGES: Record<string, string> = {
+  team: "https://static.igem.wiki/teams/6056/wiki/files/pages/team/team.avif",
+  project: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/project.avif",
+  "wet-lab": "https://static.igem.wiki/teams/6056/wiki/files/pages/shared/wet.avif",
+  "dry-lab": "https://static.igem.wiki/teams/6056/wiki/files/pages/shared/dry.avif",
+  engagement: "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/engagement.avif",
+};
 
 /** Mobile breakpoint; must match the `@media (max-width: 980px)` skin block. */
 const COMPACT_QUERY = "(max-width: 980px)";
@@ -387,7 +394,12 @@ function renderProseParagraphs(
 
     flushSteps(`flush-${idx}`);
 
-    elements.push(<p key={`p-${idx}`}>{prose(paragraph)}</p>);
+    const isTableTitle = /^\s*(?:\*\*)?Table\b/i.test(paragraph);
+    elements.push(
+      <p key={`p-${idx}`} className={isTableTitle ? "wiki-table-title" : undefined}>
+        {prose(paragraph)}
+      </p>,
+    );
   });
 
   flushSteps("flush-end");
@@ -459,20 +471,7 @@ export function WikiContentBlocks({ blocks, features = {}, sectionId }: {
 }
 
 function EducationViewportFigureImage({ src, alt, width, height }: { src: string; alt: string; width?: number; height?: number }) {
-  const containerRef = useRef<HTMLSpanElement>(null);
-  const [near, setNear] = useState(false);
-  useEffect(() => {
-    const element = containerRef.current;
-    if (!element) return;
-    if (!("IntersectionObserver" in window)) {
-      setNear(true);
-      return;
-    }
-    const observer = new IntersectionObserver(([entry]) => setNear(entry.isIntersecting), { rootMargin: "400px 0px" });
-    observer.observe(element);
-    return () => observer.disconnect();
-  }, []);
-  return <span className="education-figure-window" ref={containerRef}>{near ? <img src={src} alt={alt} width={width} height={height} loading="lazy" decoding="async" /> : null}</span>;
+  return <span className="education-figure-window"><QueuedImage src={src} alt={alt} width={width} height={height} loading="lazy" decoding="async" /></span>;
 }
 
 function RouteBlock({
@@ -601,7 +600,7 @@ function RouteBlock({
         >
           {block.src.includes("/engagement/education/figures/")
             ? <EducationViewportFigureImage src={block.src} alt={block.alt} width={block.width} height={block.height} />
-            : <img src={block.src} alt={block.alt} width={block.width} height={block.height} loading="lazy" decoding="async" />}
+            : <QueuedImage src={block.src} alt={block.alt} width={block.width} height={block.height} loading="lazy" decoding="async" />}
           {block.figureLabel ? (
             <figcaption>
               <span className="wiki-figure__label">{block.figureLabel}</span>
@@ -623,7 +622,7 @@ function RouteBlock({
         <figure className="wiki-figure wiki-figure--carousel" data-wiki-reveal>
           <div className="wiki-figure__row">
             {block.images.map((img) => (
-              <img key={img.src} src={img.src} width={img.width} height={img.height} alt={img.alt ?? ""} loading="lazy" decoding="async" />
+              <QueuedImage key={img.src} src={img.src} width={img.width} height={img.height} alt={img.alt ?? ""} loading="lazy" decoding="async" />
             ))}
           </div>
           {block.caption ? <figcaption>{renderInlineFormatting(block.caption)}</figcaption> : null}
@@ -885,7 +884,7 @@ function RouteBlock({
             scrollToTarget(block.target);
           }}
         >
-          {block.imageSrc ? <img src={block.imageSrc} alt={block.imageAlt ?? ""} loading="lazy" /> : null}
+          {block.imageSrc ? <QueuedImage src={block.imageSrc} alt={block.imageAlt ?? ""} loading="lazy" /> : null}
           <span>{block.label}</span>
           <b aria-hidden="true">↘</b>
         </a>
@@ -1157,7 +1156,7 @@ function RouteSection({
     >
       {section.masthead ? (
         <figure className={`wiki-masthead${section.masthead.image ? "" : " wiki-masthead--quote-only"}`}>
-          {section.masthead.image ? <img
+          {section.masthead.image ? <QueuedImage
             className="wiki-masthead__image"
             src={section.masthead.image}
             alt={section.masthead.imageAlt}
@@ -1301,15 +1300,13 @@ export function WikiRoutePage({
   );
   const imageSources = useMemo(
     () => [
-      heroImage,
-      heroFallbackImage,
       ...(preloadImages ?? []),
       ...(protocolPairs ?? []).flatMap((pair) => [
         ...(typeof pair.flowPage === "number" ? [experimentProtocolImage(pair.flowPage)] : []),
         ...(typeof pair.inventoryPage === "number" ? [experimentProtocolImage(pair.inventoryPage)] : []),
       ]),
     ],
-    [heroImage, heroFallbackImage, preloadImages, protocolPairs],
+    [preloadImages, protocolPairs],
   );
   const rootRef = useRef<HTMLElement>(null);
   const interfaceRef = useRef<HTMLDivElement>(null);
@@ -1473,10 +1470,6 @@ export function WikiRoutePage({
       children: subheadings?.length ? subheadings : undefined,
     };
   });
-  const heroStyle = heroImage
-    ? ({ "--route-hero-image": `url("${heroImage}")${heroFallbackImage ? `, url("${heroFallbackImage}")` : ""}` } as CSSProperties)
-    : undefined;
-
   return (
     <main
       ref={rootRef}
@@ -1485,6 +1478,9 @@ export function WikiRoutePage({
       } ${forceDocumentFlow ? "route--document-flow" : ""} ${drawerOpen ? "is-toc-open" : ""} ${pageClassName}`}
       data-wiki-route={content.route}
       data-route-theme={theme}
+      data-page-background-src={theme === "dry-lab" ? heroImage : undefined}
+      data-page-background-property="--dry-lab-art"
+      data-page-priority={theme === "dry-lab" ? "critical" : undefined}
       data-active-section={activeSection}
     >
       <PageImagePreloads sources={imageSources} />
@@ -1492,7 +1488,13 @@ export function WikiRoutePage({
         <span />
       </div>
 
-      <header className="wiki-hero" style={heroStyle}>
+      <header
+        className="wiki-hero"
+        data-page-background-src={heroImage}
+        data-page-fallback-src={heroFallbackImage}
+        data-page-background-property="--route-hero-image"
+        data-page-critical="true"
+      >
         {!hideHeroCopy ? (
           <div className="wiki-hero__copy" data-wiki-reveal>
             <h1>{content.title}</h1>
@@ -1582,7 +1584,11 @@ export function WikiRoutePage({
           ) : null}
 
           <WikiPageScrollContext.Provider value={scrollContextValue}>
-            <div className="route-frame">
+            <div
+              className="route-frame"
+              data-page-background-src={theme ? ROUTE_FRAME_IMAGES[theme] : undefined}
+              data-page-background-property="--route-frame-image-ready"
+            >
               <div
                 ref={scrollRef}
                 className="route-frame__scroll"

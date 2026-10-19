@@ -1,3 +1,4 @@
+import { bindHomeArtwork } from "../utils/homeArtworkSource";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 const whyRingTexture = "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-1-layer-4.webp";
@@ -190,7 +191,7 @@ export function animateGalleryWhy(root: HTMLElement, compact: boolean) {
     "image",
   );
   const crop = source.viewBox.baseVal;
-  incomingPaint.setAttribute("href", whyRingTexture);
+  incomingPaint.setAttribute("data-home-src", whyRingTexture);
   incomingPaint.setAttribute("x", String(crop.x));
   incomingPaint.setAttribute("y", String(crop.y));
   incomingPaint.setAttribute("width", String(crop.width));
@@ -213,6 +214,8 @@ export function animateGalleryWhy(root: HTMLElement, compact: boolean) {
   cardCopy.classList.add("home-gallery-card-transfer");
   cardCopy.setAttribute("aria-hidden", "true");
   document.body.append(cardCopy);
+  const stopGhostArtwork = bindHomeArtwork(source, ghost);
+  const stopCardArtwork = bindHomeArtwork(chosen, cardCopy);
 
   const decisionCopy = decision.cloneNode(true) as HTMLElement;
   decisionCopy.removeAttribute("style");
@@ -436,6 +439,8 @@ export function animateGalleryWhy(root: HTMLElement, compact: boolean) {
 
   return () => {
     cleanupThinking();
+    stopGhostArtwork();
+    stopCardArtwork();
     window.removeEventListener("scroll", onScroll);
     ScrollTrigger.removeEventListener("scrollEnd", refreshAnchor);
     ScrollTrigger.removeEventListener("refresh", onRefresh);

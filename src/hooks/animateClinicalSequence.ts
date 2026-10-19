@@ -1,3 +1,4 @@
+import { bindHomeArtwork } from "../utils/homeArtworkSource";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { HOME_EASE, HOME_SCRUB, stillHold, settleHomeScrubEndpoint } from "./homeMotion";
@@ -66,6 +67,8 @@ export function animateClinicalSequence(
   const beforeBackdrop = copyBackdrop(sourceBackdrop);
   const afterBackdrop = copyBackdrop(targetBackdrop);
   stage.prepend(beforeBackdrop, afterBackdrop);
+  const stopBeforeArtwork = bindHomeArtwork(sourceBackdrop, beforeBackdrop);
+  const stopAfterArtwork = bindHomeArtwork(targetBackdrop, afterBackdrop);
   const entryWash = document.createElement("div");
   entryWash.className = "story-clinical-entry-wash";
   entryWash.setAttribute("aria-hidden", "true");
@@ -294,6 +297,8 @@ export function animateClinicalSequence(
     cleanup: () => {
       timeline.eventCallback("onUpdate", null);
       particles.cleanup();
+      stopBeforeArtwork();
+      stopAfterArtwork();
       sequence.classList.remove("is-current");
       sequence.classList.remove("is-clinical-entry");
       delete sequence.dataset.progress;

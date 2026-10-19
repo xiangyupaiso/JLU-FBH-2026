@@ -24,7 +24,7 @@
    ========================================================================== */
 
 .wiki-page--games {
-  --dry-lab-art: url("https://static.igem.wiki/teams/6056/wiki/files/pages/dry-lab/dry-lab-games-hero-v2.avif");
+  --dry-lab-art: var(--route-hero-image);
   --games-ribbon: var(--route-accent);
   --games-ribbon-soft: color-mix(in srgb, var(--route-main) 62%, #ffffff);
 }

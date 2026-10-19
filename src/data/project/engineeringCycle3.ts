@@ -136,12 +136,12 @@ export const cycle3Section: WikiSection = {
   kicker: "Cycle 3 — Measurement",
   navLabel: "Cycle 3 — Measurement",
   title: "Cycle 3: Building the molecular and cellular evidence chain",
-  summary: "TIME enters **M—Measurement**. Cycle 2 answered **what should be integrated** by establishing Combined and three TROP2 comparison constructs. Cycle 3 then asked **what evidence the integrated design could produce**. Four antigen-encoding circRNA preparations and an equal-input Blank control were examined in sequence from RNA preparation and persistence to protein translation, dendritic-cell activation, T-cell responses, IFN-γ secretion and target-cell killing. Once this molecule-to-function chain was established, its value was extended through three further levels: CircuForge turned experimental records into a transferable workflow, Education translated that workflow into procedures learners could follow, and Visual Design transformed the project’s specialised content into a shared visual language. Measurement therefore progressed from the molecule, to the cell, to the transfer of the knowledge produced.",
+  summary: "TIME enters **M—Measurement**. Cycle 2 answered **what should be integrated** by establishing Combined and three TROP2 comparison constructs. Cycle 3 then asked **what evidence the integrated design could produce**. Four antigen-encoding circRNA preparations and an equal-input Blank control were examined in sequence from RNA preparation and persistence to protein translation, dendritic-cell activation, T-cell responses, IFN-γ secretion and target-cell killing. Once this molecule-to-function chain was established, its value was extended through three further levels: CircuForge turned experimental records into a transferable workflow, Education translated that workflow into procedures learners could follow, and Visual Design transformed the project’s specialized content into a shared visual language. Measurement therefore progressed from the molecule, to the cell, to the transfer of the knowledge produced.",
   blocks: [
         {
           type: "prose",
           paragraphs: [
-          "TIME enters **M—Measurement**. Cycle 2 answered **what should be integrated** by establishing Combined and three TROP2 comparison constructs. Cycle 3 then asked **what evidence the integrated design could produce**. Four antigen-encoding circRNA preparations and an equal-input Blank control were examined in sequence from RNA preparation and persistence to protein translation, dendritic-cell activation, T-cell responses, IFN-γ secretion and target-cell killing. Once this molecule-to-function chain was established, its value was extended through three further levels: CircuForge turned experimental records into a transferable workflow, Education translated that workflow into procedures learners could follow, and Visual Design transformed the project’s specialised content into a shared visual language. Measurement therefore progressed from the molecule, to the cell, to the transfer of the knowledge produced."
+          "TIME enters **M—Measurement**. Cycle 2 answered **what should be integrated** by establishing Combined and three TROP2 comparison constructs. Cycle 3 then asked **what evidence the integrated design could produce**. Four antigen-encoding circRNA preparations and an equal-input Blank control were examined in sequence from RNA preparation and persistence to protein translation, dendritic-cell activation, T-cell responses, IFN-γ secretion and target-cell killing. Once this molecule-to-function chain was established, its value was extended through three further levels: CircuForge turned experimental records into a transferable workflow, Education translated that workflow into procedures learners could follow, and Visual Design transformed the project’s specialized content into a shared visual language. Measurement therefore progressed from the molecule, to the cell, to the transfer of the knowledge produced."
 ]
         },
     {
@@ -173,7 +173,7 @@ export const cycle3Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "Wet Lab prepared all five circRNA inputs through a shared DNA-to-RNA workflow. PCR and agarose-gel electrophoresis were used to verify the plasmid target regions. The corresponding plasmids were separately linearised and purified as templates for T7 in vitro transcription, followed by DNA-template removal, RNA purification, self-splicing circularisation and RNase R treatment.",
+          "Wet Lab prepared all five circRNA inputs through a shared DNA-to-RNA workflow. PCR and agarose-gel electrophoresis were used to verify the plasmid target regions. The corresponding plasmids were separately linearised and purified as templates for T7 in vitro transcription, followed by DNA-template removal, RNA purification, self-splicing circularization and RNase R treatment.",
           "For the purified Combined preparation, divergent- and convergent-primer RT-qPCR used the 4 µL working input established in Iteration 2.5, with three technical wells. The recorded calculation estimated the circular fraction against the predefined ≥90% release criterion. Sanger sequencing of a junction-spanning amplification product then checked the expected head-to-tail connection. Group identifiers were retained throughout preparation and subsequent DC electroporation (Wesselhoeft et al., 2018; LGC Biosearch Technologies, n.d.)."
 ]
         },
@@ -250,7 +250,7 @@ export const cycle3Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "The shared preparation route supplied the five second-round inputs, while Combined’s quantitative assessment and junction sequence established the molecular evidence for the complete multi-antigen design. We next compared Combined circRNA with its corresponding linear precursor over time to examine whether circularisation improved RNA persistence."
+          "The shared preparation workflow supplied the five second-round inputs. Combined’s quantitative assessment and junction sequence established the molecular evidence for the complete multi-antigen design. We next compared Combined circRNA with its corresponding linear precursor over time to examine whether circularization improved RNA persistence."
 ]
         },
         {
@@ -280,7 +280,7 @@ export const cycle3Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "After characterising the Combined circRNA preparation, we compared its in vitro persistence with that of its corresponding linear precursor—an important experimental question underlying our choice of the circRNA platform. Equal RNA masses from the same preparation batch were incubated at 37 °C and sampled at 0, 24, 48 and 72 h. This assay compared the persistence of the mature circRNA preparation and its linear precursor under the defined incubation conditions (Wesselhoeft et al., 2018)."
+          "After characterizing the Combined circRNA preparation, we compared its in vitro persistence with that of the corresponding linear precursor. This comparison addressed an important experimental question underlying our choice of the circRNA platform. Equal RNA masses from the same preparation batch were incubated at 37 °C and sampled at 0, 24, 48 and 72 h. This assay compared the persistence of the mature circRNA preparation and its linear precursor under the defined incubation conditions (Wesselhoeft et al., 2018)."
 ]
         },
         {
@@ -303,7 +303,7 @@ export const cycle3Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "Wet Lab established a four-point electrophoretic persistence assay. Equal-mass aliquots were incubated in parallel, frozen after collection and later loaded together on the same 1% agarose gel. Band intensity was normalised within the same image and then to each RNA form's own 0 h lane, producing a relative residual-signal record. With one lane representing each time point, relative band retention served as the defined descriptive endpoint."
+          "Wet Lab established a four-point electrophoretic persistence assay. Equal-mass aliquots were incubated in parallel, frozen after collection and later loaded together on the same 1% agarose gel. Band intensity was normalized within the same image and then to each RNA form's own 0 h lane, producing a relative residual-signal record. With one lane representing each time point, relative band retention served as the defined descriptive endpoint."
 ]
         }
           ]
@@ -402,7 +402,7 @@ export const cycle3Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "We organised TorusFold into four steps: **(1)** use predicted base-pairing information to guide segment boundaries; **(2)** divide the 2,013 nt sequence into overlapping fragments with a target length of approximately 200 nt; **(3)** retain each fragment’s original coordinates during local three-dimensional prediction; and **(4)** align neighbouring models through their shared nucleotides, using prediction confidence to weight their contribution to the assembly."
+          "We organized TorusFold into four steps: **(1)** use predicted base-pairing information to guide segment boundaries; **(2)** divide the 2,013 nt sequence into overlapping fragments with a target length of approximately 200 nt; **(3)** retain each fragment’s original coordinates during local three-dimensional prediction; and **(4)** align neighbouring models through their shared nucleotides, using prediction confidence to weight their contribution to the assembly."
 ]
         },
         {
@@ -544,7 +544,7 @@ export const cycle3Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "Alongside this fragment-level test, the retained full-length model represented all 2,013 nt of Combined and contained 42,831 atoms. It provided a computational view of the complete sequence’s spatial organisation. The quantitative refinement measurements above refer specifically to the 200 nt fragment."
+          "Alongside this fragment-level test, the retained full-length model represented all 2,013 nt of Combined and contained 42,831 atoms. It provided a computational view of the complete sequence’s spatial organization. The quantitative refinement measurements above refer specifically to the 200 nt fragment."
 ]
         },
         {
@@ -564,7 +564,7 @@ export const cycle3Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "TorusFold established a segmentation scheme for the experimental Combined sequence, demonstrated geometric refinement in a fragment-level test and supplied a full-length structural hypothesis. This work established a sequence-preserving route for structural exploration while keeping fragment-level refinement results distinct from the full-length hypothesis. Translation and dendritic-cell maturation were evaluated through a separate experimental route, providing complementary functional evidence."
+          "TorusFold established a segmentation scheme for the experimental Combined sequence, demonstrated geometric refinement in a fragment-level test and supplied a full-length structural hypothesis. This work established a sequence-preserving workflow for structural exploration while distinguishing fragment-level refinement results from the full-length hypothesis. Translation and dendritic-cell maturation were evaluated through a separate experimental route, providing complementary functional evidence."
 ]
         },
         {
@@ -607,7 +607,7 @@ export const cycle3Section: WikiSection = {
           type: "prose",
           paragraphs: [
           "Wet Lab established protein-expression and DC-maturation measurements. Anti-FLAG Western blotting compared circRNA-electroporated DCs with the negative control, using β-actin as the loading reference (Towbin et al., 1979).",
-          "For the five-group maturation comparison, Blank, TROP2 CTL1, TROP2 CTL2, TROP2 CTL1+2 and Combined each delivered 5 µg of circRNA to 1×10⁶ DCs in 100 µL using programme U-002. Blank received equal-input empty-vector circRNA. Flow cytometry measured DCs expressing both CD80 and CD86, two co-stimulatory molecules associated with their ability to activate T cells (Banchereau and Steinman, 1998)."
+          "For the five-group maturation comparison, Blank, TROP2 CTL1, TROP2 CTL2, TROP2 CTL1+2 and Combined each delivered 5 µg of circRNA to 1×10⁶ DCs in 100 µL using program U-002. Blank received equal-input empty-vector circRNA. Flow cytometry measured DCs expressing both CD80 and CD86, two co-stimulatory molecules associated with their ability to activate T cells (Banchereau and Steinman, 1998)."
 ]
         },
         {
@@ -673,7 +673,7 @@ export const cycle3Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "The protein-expression measurement supported circRNA translation in DCs, while the five-group comparison identified Combined as the strongest DC-maturation condition. We therefore retained the same comparison groups and next examined T-cell activation, co-stimulation and effector-memory-associated phenotypes after DC–T-cell co-culture."
+          "The protein-expression measurement supported circRNA translation in DCs. The five-group comparison identified Combined as the condition with the strongest DC-maturation response. We therefore retained the same comparison groups and next examined T-cell activation, co-stimulation and effector-memory-associated phenotypes after DC–T-cell co-culture."
 ]
         },
         {
@@ -703,7 +703,7 @@ export const cycle3Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "After examining whether circRNA-loaded DCs entered a maturation-associated state, we next asked how the T cells receiving their signals responded. Three complementary phenotype axes were selected to describe different parts of this response: **(1) CD8⁺CD69⁺** captured early T-cell activation, **(2) CD8⁺CD28⁺** indicated retention of the co-stimulatory receptor associated with continued responsiveness and **(3) CD45RO⁺CCR7⁻** identified the effector-memory-associated population used in our analysis. Together, these measurements followed the response from initial activation to continued responsiveness and memory-associated differentiation, while each axis was analysed separately to preserve its distinct biological meaning (Cibrián and Sánchez-Madrid, 2017; Lenschow et al., 1996; Sallusto et al., 1999)."
+          "After examining whether circRNA-loaded DCs entered a maturation-associated state, we next asked how the T cells receiving their signals responded. Three complementary phenotype axes were selected to describe different parts of this response: **(1) CD8⁺CD69⁺** captured early T-cell activation, **(2) CD8⁺CD28⁺** indicated retention of the co-stimulatory receptor associated with continued responsiveness and **(3) CD45RO⁺CCR7⁻** identified the effector-memory-associated population used in our analysis. Together, these measurements followed the response from initial activation to continued responsiveness and memory-associated differentiation, while each axis was analyzed separately to preserve its distinct biological meaning (Cibrián and Sánchez-Madrid, 2017; Lenschow et al., 1996; Sallusto et al., 1999)."
 ]
         },
         {
@@ -839,7 +839,7 @@ export const cycle3Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "Wet Lab established a five-group second-round IFN-γ ELISpot. DCs carrying Blank, TROP2 CTL1, TROP2 CTL2, TROP2 CTL1+2 or Combined were co-cultured with autologous T cells at a DC:T ratio of 1:20, with 1×10⁵ cells placed in each well for 20 h. Plate handling, washing, colour development and spot counting followed one procedure across all five conditions."
+          "Wet Lab established a five-group second-round IFN-γ ELISpot. DCs carrying Blank, TROP2 CTL1, TROP2 CTL2, TROP2 CTL1+2 or Combined were co-cultured with autologous T cells at a DC:T ratio of 1:20, with 1×10⁵ cells placed in each well for 20 h. Plate handling, washing, color development and spot counting followed one procedure across all five conditions."
 ]
         }
           ]
@@ -901,7 +901,7 @@ export const cycle3Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "We extended the cellular evidence chain from IFN-γ secretion to target-cell function. Blank-, TROP2 CTL1-, TROP2 CTL2-, TROP2 CTL1+2- and Combined-derived effector preparations were compared against MDA-MB-231 at increasing effector-to-target ratios. Calcein-AM release retained spontaneous- and maximum-release controls, allowing every condition to be normalised to its own target-cell background (Lichtenfels et al., 1994; Neri et al., 2001)."
+          "We extended the cellular evidence chain from IFN-γ secretion to target-cell function. Blank-, TROP2 CTL1-, TROP2 CTL2-, TROP2 CTL1+2- and Combined-derived effector preparations were compared against MDA-MB-231 at increasing effector-to-target ratios. Calcein-AM release retained spontaneous- and maximum-release controls, allowing every condition to be normalized to its own target-cell background (Lichtenfels et al., 1994; Neri et al., 2001)."
 ]
         },
         {
@@ -930,7 +930,7 @@ export const cycle3Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "Wet Lab established a three-ratio target-cell assay. Calcein-AM-labelled MDA-MB-231 cells were combined with the five effector preparations at 20:1, 40:1 and 80:1 and co-incubated for 4–6 h. Every condition included three replicate wells together with spontaneous-, maximum- and medium-background controls. Target-cell input and release calculations were kept consistent, leaving the priming circRNA and effector-to-target ratio as the comparison variables."
+          "Wet Lab established a three-ratio target-cell assay. Calcein-AM-labeled MDA-MB-231 cells were combined with the five effector preparations at 20:1, 40:1 and 80:1 and co-incubated for 4–6 h. Every condition included three replicate wells together with spontaneous-, maximum- and medium-background controls. Target-cell input and release calculations were kept consistent, leaving the priming circRNA and effector-to-target ratio as the comparison variables."
 ]
         }
           ]
@@ -942,7 +942,7 @@ export const cycle3Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "Cytotoxicity increased with the effector-to-target ratio, and Combined produced the highest recorded killing across the three tested ratios. This result extended the evidence chain from translation, activation and IFN-γ secretion to direct function against an HLA- and target-matched TNBC cell line. MDA-MB-231 then served as the tumour reference for a broader target-cell comparison."
+          "Cytotoxicity increased with the effector-to-target ratio, and Combined produced the highest recorded killing across the three tested ratios. This result extended the evidence chain from translation, activation and IFN-γ secretion to direct function against an HLA- and target-matched TNBC cell line. MDA-MB-231 then served as the tumor reference for a broader target-cell comparison."
 ]
         },
         {
@@ -962,7 +962,7 @@ export const cycle3Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "Combined led the five-group comparison in the MDA-MB-231 context. An iHP safety review then refined the next question from efficacy ranking to target context: how would the same Combined-derived effectors behave against HLA-A*02:01-positive non-tumour cell lines? We fixed the effector preparation and varied the target cells in the next assay."
+          "Combined led the five-group comparison in the MDA-MB-231 context. An iHP safety review then refined the next question from efficacy ranking to target context: how would the same Combined-derived effectors behave against HLA-A*02:01-positive non-tumor cell lines? We fixed the effector preparation and varied the target cells in the next assay."
 ]
         },
         {
@@ -992,7 +992,7 @@ export const cycle3Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "Iteration 3.8 established Combined-associated killing of TNBC target cells. We next examined whether these effectors also damaged non-tumour cells. Using the same Combined-primed T-cell preparation, we compared MDA-MB-231 with four HLA-A*02:01-positive non-tumour cell lines from different tissues. This matched-HLA comparison assessed tumour-target preference alongside potential effects on non-tumour cells."
+          "Iteration 3.8 established Combined-associated killing of TNBC target cells. We next examined whether these effectors also damaged non-tumor cells. Using the same Combined-primed T-cell preparation, we compared MDA-MB-231 with four HLA-A*02:01-positive non-tumor cell lines from different tissues. This matched-HLA comparison assessed tumor-target preference alongside potential effects on non-tumor cells."
 ]
         }
           ]
@@ -1004,7 +1004,7 @@ export const cycle3Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "Wet Lab used the Calcein-AM release assay at effector-to-target ratios of 80:1 and 100:1. Targets included MDA-MB-231 and four non-tumour cell lines: HCAEC from coronary artery endothelium, LX-2 from hepatic stellate cells, BEAS-2B from bronchial epithelium and MCF12A from mammary epithelium. Each target had its own spontaneous- and maximum-release controls. Experimental and control conditions each contained three technical replicate wells on the same plate."
+          "Wet Lab used the Calcein-AM release assay at effector-to-target ratios of 80:1 and 100:1. Targets included MDA-MB-231 and four non-tumor cell lines: HCAEC from coronary artery endothelium, LX-2 from hepatic stellate cells, BEAS-2B from bronchial epithelium and MCF12A from mammary epithelium. Each target had its own spontaneous- and maximum-release controls. Experimental and control conditions each contained three technical replicate wells on the same plate."
 ]
         }
           ]
@@ -1016,7 +1016,7 @@ export const cycle3Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "At 80:1, mean killing of the four non-tumour cell lines ranged from 0.78% to 2.77%, compared with 59.24±2.10% for MDA-MB-231. At 100:1, the corresponding range was 1.31–3.47%, while tumour-cell killing reached 62.07±3.58%. MCF12A, which shared a mammary epithelial origin with the tumour target, showed only 1.86% and 2.26% killing at the two ratios. The consistent separation supported preferential activity against the tumour target while retaining low non-tumour-cell killing within the tested panel."
+          "At 80:1, mean killing of the four non-tumor cell lines ranged from 0.78% to 2.77%, compared with 59.24±2.10% for MDA-MB-231. At 100:1, the corresponding range was 1.31–3.47%, while tumor-cell killing reached 62.07±3.58%. MCF12A, which shared a mammary epithelial origin with the tumor target, showed only 1.86% and 2.26% killing at the two ratios. The consistent separation supported preferential activity against the tumor target while retaining low non-tumor-cell killing within the tested panel."
 ]
         },
         {
@@ -1036,7 +1036,7 @@ export const cycle3Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "This comparison showed that tumour-cell killing and effects on non-tumour cells needed to remain separate evaluation dimensions. Strong activity against MDA-MB-231 alone could not establish target preference; that interpretation required comparison with non-tumour targets under matched conditions. We therefore retained both readouts in evaluating Combined, while limiting the low-killing conclusion to the tested cell panel and conditions. Carrier-related effects were assessed independently through the earlier empty-LNP CCK-8 assay described below."
+          "This comparison showed that tumor-cell killing and effects on non-tumor cells needed to remain separate evaluation dimensions. Strong activity against MDA-MB-231 alone could not establish target preference; that interpretation required comparison with non-tumor targets under matched conditions. We therefore retained both readouts in evaluating Combined, while limiting the low-killing conclusion to the tested cell panel and conditions. Carrier-related effects were assessed independently through the earlier empty-LNP CCK-8 assay described below."
 ]
         },
         {
@@ -1089,7 +1089,7 @@ export const cycle3Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "Wet Lab seeded 1×10⁴ immature monocyte-derived DCs per well and added empty LNP at 0, 50, 100, 200 or 400 ng per well. Each level contained four replicate wells. After 24 h, CCK-8 absorbance was corrected using cell-free reagent wells and normalised to the 0 ng control, producing a comparable relative-viability series."
+          "Wet Lab seeded 1×10⁴ immature monocyte-derived DCs per well and added empty LNP at 0, 50, 100, 200 or 400 ng per well. Each level contained four replicate wells. After 24 h, CCK-8 absorbance was corrected using cell-free reagent wells and normalized to the 0 ng control, producing a comparable relative-viability series."
 ]
         }
           ]
@@ -1163,7 +1163,7 @@ export const cycle3Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "Building on CircuForge V2.0, we refined the transfer workflow around stable identifiers, Evidence Cards, the Design Cart, visible task states, run manifests and reloadable Project Bundles. External services remained connected through adapters, while PENDING, RUNNING, COMPLETED and FAILED made task progress visible. KEEP, REVIEW and REJECT recorded the review state, and a separate confirmation action determined whether an entry entered the Design Cart. Together, these functions kept researcher judgement and supporting evidence connected throughout the handoff."
+          "Building on CircuForge V2.0, we refined the transfer workflow around stable identifiers, Evidence Cards, the Design Cart, visible task states, run manifests and reloadable Project Bundles. External services remained connected through adapters, while PENDING, RUNNING, COMPLETED and FAILED made task progress visible. KEEP, REVIEW and REJECT recorded the review state, and a separate confirmation action determined whether an entry entered the Design Cart. Together, these functions kept researcher judgment and supporting evidence connected throughout the handoff."
 ]
         }
           ]
@@ -1175,7 +1175,7 @@ export const cycle3Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "Automated tests covered identifier stability, review-state assignment, Cart deduplication, task creation and status changes, and export readback. Task walkthroughs highlighted the BLASTP transition as a priority for workflow refinement. Users needed a clearer connection between task submission, returned alignment evidence and researcher confirmation. We translated this finding into a three-stage interface requirement—submit, monitor and review—with emphasis on visible task progress, accessible evidence and an explicit confirmation step."
+          "Automated tests covered identifier stability, review-state assignment, Cart deduplication, task creation and status changes, and export readback. Task walkthroughs highlighted the BLASTP transition as a priority for workflow refinement. Users needed a clearer connection between task submission, returned alignment evidence and researcher confirmation. We translated this finding into a three-stage interface requirement: submit, monitor, and review. The requirement emphasized visible task progress, accessible evidence, and an explicit confirmation step."
 ]
         }
           ]
@@ -1217,8 +1217,8 @@ export const cycle3Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "Iteration 1.3 established layered education as a principle for adapting scientific content to learners with different ages and prior knowledge. Iteration 2.8 then showed at Hailun No. 1 High School that the revised Virtual Laboratory could continue to be used by a teacher after handoff. However, children in some economically disadvantaged and resource-limited communities still have few opportunities to enter a laboratory because their schools lack specialised instruments, consumables and trained experimental support. We hoped that the Virtual Laboratory could help narrow this gap, so that a child’s opportunity to experience experimental science would not be determined solely by geography or school resources.",
-          "With this purpose, we brought the programme to Pilu Town and organised a Gram-staining activity for second- and fourth-grade pupils. Younger learners mainly followed colour and touch cues, while older pupils more often paused to ask about the experimental purpose and materials. These observations defined the next design target: provide essential orientation before the first virtual action and keep supporting information accessible throughout the procedure."
+          "Iteration 1.3 established layered education as a principle for adapting scientific content to learners with different ages and prior knowledge. Iteration 2.8 then showed at Hailun No. 1 High School that the revised Virtual Laboratory could continue to be used by a teacher after handoff. However, children in some economically disadvantaged and resource-limited communities still have few opportunities to enter a laboratory because their schools lack specialized instruments, consumables and trained experimental support. We hoped that the Virtual Laboratory could help narrow this gap. Our aim was to reduce the influence of geography and school resources on children’s opportunities to experience experimental science.",
+          "With this purpose, we brought the program to Pilu Town and organized a Gram-staining activity for second- and fourth-grade pupils. Younger learners mainly followed color and touch cues, while older pupils more often paused to ask about the experimental purpose and materials. These observations defined the next design target: provide essential orientation before the first virtual action and keep supporting information accessible throughout the procedure."
 ]
         }
           ]
@@ -1230,7 +1230,7 @@ export const cycle3Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "Education and the development team reorganised the learning entry into four concise orientation cards: Theory introduced the purpose and principle of Gram staining, Safety highlighted operational precautions, Instruments identified the required equipment and Reagents explained the materials used in the procedure. All four cards appeared before the first operation and remained accessible from the procedure screen, providing different levels of support within one continuous activity route."
+          "Education and the development team reorganized the learning entry into four concise orientation cards: Theory introduced the purpose and principle of Gram staining, Safety highlighted operational precautions, Instruments identified the required equipment and Reagents explained the materials used in the procedure. All four cards appeared before the first operation and remained accessible from the procedure screen, providing different levels of support within one continuous activity route."
 ]
         }
           ]
@@ -1242,7 +1242,7 @@ export const cycle3Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "During first use in Pilu Town, Sichuan Province, China, second-grade learners tended to follow colour and touch cues, while fourth-grade learners more often paused to ask about the purpose, instruments and reagents involved in Gram staining. These behaviours defined two requirements for the revised interface: establish the experimental context before action and keep supporting information accessible during operation. A complete walkthrough confirmed that Safety, Theory, Instruments and Reagents all appeared before the first operation and could be reopened from the procedure screen."
+          "During first use in Pilu Town, Sichuan Province, China, second-grade learners tended to follow color and touch cues, while fourth-grade learners more often paused to ask about the purpose, instruments and reagents involved in Gram staining. These behaviors defined two requirements for the revised interface: establish the experimental context before action and keep supporting information accessible during operation. A complete walkthrough confirmed that Safety, Theory, Instruments and Reagents all appeared before the first operation and could be reopened from the procedure screen."
 ]
         },
         {
@@ -1297,7 +1297,7 @@ export const cycle3Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "Iteration 3.12 established how orientation could support learners entering a single unfamiliar virtual procedure. For students about to enter Grade 11, the next educational need was to connect procedures that they had previously encountered as separate concepts. Many already recognised terms such as DNA, PCR and plasmids, but had limited opportunities to follow how preparation, operation, verification, interpretation and design form one research process. We therefore designed Synbio Classroom for 16 rising Grade 11 students as a connected learning route, extending layered education from interface guidance to research-process understanding."
+          "Iteration 3.12 established how orientation could support learners entering a single unfamiliar virtual procedure. For students about to enter Grade 11, the next educational need was to connect procedures that they had previously encountered as separate concepts. Many already recognized terms such as DNA, PCR and plasmids, but had limited opportunities to follow how preparation, operation, verification, interpretation and design form one research process. We therefore designed Synbio Classroom for 16 rising Grade 11 students as a connected learning route, extending layered education from interface guidance to research-process understanding."
 ]
         }
           ]
@@ -1321,7 +1321,7 @@ export const cycle3Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "Activity records documented 16 learners participating in physical operations, the process game and plasmid-component design. Their clearest qualitative feedback emerged after the design activity, when they continued asking how a plasmid design would proceed through amplification, digestion, ligation, transformation and verification. The originally planned Virtual Laboratory component covered one PCR- and electrophoresis-related exercise. In response to these questions, the teaching team expanded it during the session into a guided walkthrough of the platform’s existing nine-experiment route. The change from one virtual exercise to a nine-experiment walkthrough provided a measurable revision of the teaching scope, while the learners’ questions identified the need for stronger continuity between design and verification."
+          "Activity records documented 16 learners participating in physical operations, the process game and plasmid-component design. Their clearest qualitative feedback emerged after the design activity, when they continued asking how a plasmid design would proceed through amplification, digestion, ligation, transformation and verification. The originally planned Virtual Laboratory component covered one PCR- and electrophoresis-related exercise. In response to these questions, the teaching team expanded it during the session into a guided walkthrough of the platform’s existing nine-experiment route. Expanding one virtual exercise into a nine-experiment walkthrough provided a measurable revision of the teaching scope. The learners’ questions identified the need for stronger continuity between design and verification."
 ]
         },
         {
@@ -1349,7 +1349,7 @@ export const cycle3Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "The layered Virtual Laboratory route produced three progressive outcomes: **(1)** at Hailun No. 1 High School, it became a resource that a teacher could continue using independently; **(2)** in Pilu Town, it gained a four-module orientation structure adapted to younger learners; and **(3)** in Synbio Classroom, it connected virtual preparation, physical experiments, result interpretation and molecular design for 16 high-school learners. These outcomes showed that the same scientific workflow could retain its core while changing its entry point and depth for different audiences. As Wet Lab, Education, software and communication roles increasingly appeared together in these materials, a new visual requirement emerged: the shared project character needed to preserve one identity while making each contribution recognisable."
+          "The layered Virtual Laboratory route produced three progressive outcomes: **(1)** at Hailun No. 1 High School, it became a resource that a teacher could continue using independently; **(2)** in Pilu Town, it gained a four-module orientation structure adapted to younger learners; and **(3)** in Synbio Classroom, it connected virtual preparation, physical experiments, result interpretation and molecular design for 16 high-school learners. These outcomes showed that the same scientific workflow could retain its core while changing its entry point and depth for different audiences. As Wet Lab, Education, software and communication roles increasingly appeared together in these materials, a new visual requirement emerged: the shared project character needed to preserve one identity while making each contribution recognizable."
 ]
         },
         {
@@ -1379,7 +1379,7 @@ export const cycle3Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "Iteration 1.3 established CirCure’s first sheep-based visual identity, which later appeared in presentation materials, keychains and fridge magnets at China iGEM exchanges. Participants recognised the shared character and suggested that it could also represent the different work behind the project, including Dry Lab, Wet Lab and Engineering. We therefore asked how the original sheep could evolve into distinct project roles while remaining recognisably part of CirCure."
+          "Iteration 1.3 established CirCure’s first sheep-based visual identity, which later appeared in presentation materials, keychains and fridge magnets at China iGEM exchanges. Participants recognized the shared character and suggested that it could also represent the different work behind the project, including Dry Lab, Wet Lab and Engineering. We therefore asked how the original sheep could evolve into distinct project roles while remaining recognizably part of CirCure."
 ]
         }
           ]
@@ -1391,7 +1391,7 @@ export const cycle3Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "In response to this feedback, Visual Design developed a role-based sheep family by translating each team’s characteristic work into clothing, tools and actions. Laboratory instruments identified Wet Lab, computers and computational elements represented Dry Lab and Software, and teaching materials distinguished Education. The original silhouette, facial features and colour palette remained consistent across the variants, which were then applied to revised presentation materials, keychains and fridge magnets."
+          "In response to this feedback, Visual Design developed a role-based sheep family by translating each team’s characteristic work into clothing, tools and actions. Laboratory instruments identified Wet Lab, computers and computational elements represented Dry Lab and Software, and teaching materials distinguished Education. The original silhouette, facial features and color palette remained consistent across the variants, which were then applied to revised presentation materials, keychains and fridge magnets."
 ]
         }
           ]
@@ -1403,7 +1403,7 @@ export const cycle3Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "The revised character family and its corresponding merchandise were taken to subsequent iGEM exchange activities. Qualitative feedback focused on two outcomes: the variants remained recognisable as members of the same CirCure character family, and their clothing, tools and actions made the represented roles easier to distinguish. The same role cues also remained visible when transferred from presentation graphics to the smaller surfaces of keychains and fridge magnets. These exchanges therefore tested both project-level consistency and role-level clarity across digital and physical formats."
+          "The revised character family and its corresponding merchandise were taken to subsequent iGEM exchange activities. Qualitative feedback focused on two outcomes: the variants remained recognizable as members of the same CirCure character family, and their clothing, tools and actions made the represented roles easier to distinguish. The same role cues also remained visible when transferred from presentation graphics to the smaller surfaces of keychains and fridge magnets. These exchanges therefore tested both project-level consistency and role-level clarity across digital and physical formats."
 ]
         },
         {
@@ -1437,7 +1437,7 @@ export const cycle3Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "The two rounds of exchange established a reusable visual rule: the sheep’s silhouette, face and colour palette should remain fixed as the project identity, while clothing, tools and actions could vary to express different roles. We retained this “shared identity plus role-specific cues” system for later Wiki and presentation materials. It also provided the visual basis for representing the project teams as distinguishable but connected gears within the CirCure TIME overview."
+          "The two rounds of exchange established a reusable visual rule: the sheep’s silhouette, face and color palette should remain fixed as the project identity, while clothing, tools and actions could vary to express different roles. We retained this “shared identity plus role-specific cues” system for later Wiki and presentation materials. It also provided the visual basis for representing the project teams as distinguishable but connected gears within the CirCure TIME overview."
 ]
         }
           ]
@@ -1447,6 +1447,6 @@ export const cycle3Section: WikiSection = {
   ],
   note: {
     label: "Cycle 3 outcome",
-    body: "**M—Measurement** connected the Combined design to measurable molecular and cellular performance. Five comparison preparations followed a shared production route, with DNA-template checks and Combined junction sequencing linking the design records to the experimental materials. The time course demonstrated greater RNA persistence than the linear precursor, while TorusFold produced a structural hypothesis for the full-length sequence. Cellular measurements connected circRNA translation with DC maturation, T-cell responses, IFN-γ secretion and tumour-cell killing. The non-tumour-cell comparison and empty-LNP assay complemented these functional results with target-selectivity and carrier-viability evidence. The non-tumour-cell comparison was conducted alongside the in vivo work described in Cycle 4, providing complementary in vitro risk-assessment evidence. CircuForge improved the transfer of design records, layered educational activities brought experimental workflows to different learners, and the revised visual system made team roles recognisable. Together, these outcomes contributed molecular, cellular and computational evidence to the evaluation of Combined and made the project’s methods and findings easier to use and communicate."
+    body: "**M—Measurement** connected the Combined design to measurable molecular and cellular performance. Five comparison preparations followed a shared production route, with DNA-template checks and Combined junction sequencing linking the design records to the experimental materials. The time course demonstrated greater RNA persistence than the linear precursor, while TorusFold produced a structural hypothesis for the full-length sequence. Cellular measurements connected circRNA translation with DC maturation, T-cell responses, IFN-γ secretion and tumor-cell killing. The non-tumor-cell comparison and empty-LNP assay complemented these functional results with target-selectivity and carrier-viability evidence. The non-tumor-cell comparison was conducted alongside the in vivo work described in Cycle 4, providing complementary in vitro risk-assessment evidence. CircuForge improved the transfer of design records, layered educational activities brought experimental workflows to different learners, and the revised visual system made team roles recognizable. Together, these outcomes contributed molecular, cellular and computational evidence to the evaluation of Combined and made the project’s methods and findings easier to use and communicate."
   }
 };

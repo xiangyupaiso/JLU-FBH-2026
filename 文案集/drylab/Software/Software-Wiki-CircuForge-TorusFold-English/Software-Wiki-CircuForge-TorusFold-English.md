@@ -88,7 +88,7 @@ Source code: [CircuForge](https://gitlab.igem.org/2026/software/jlu-fbh/circufor
 <p>If the preview is unavailable, use the links above.</p>
 </details>
 
-This walkthrough uses the built-in **hepatocellular carcinoma proteomics demo**. The sidebar has six steps: Prepare data, Screen targets, Select epitopes, Assemble peptides, Build construct, and Download files. Selected targets and epitopes are saved in the **Design list** for use in later steps.
+This walkthrough uses the built-in **hepatocellular carcinoma proteomics demo**, a small processed subset of the public proteomics dataset (**Ng et al., 2022**) prepared for a lightweight demonstration. The sidebar has six steps: Prepare data, Screen targets, Select epitopes, Assemble peptides, Build construct, and Download files. Selected targets and epitopes are saved in the **Design list** for use in later steps.
 
 If you already have a target protein or candidate peptides, choose the **Target protein or Candidate peptides** entry point on Overview. The walkthrough below starts from expression data and completes a design workflow.
 
@@ -203,7 +203,7 @@ To save your current work, open **Design list** and click **Save project**. To r
 
 For a first look, open the **example viewer**. Drag to rotate the saved model, change its colors and display style, and use the BSJ marking control to inspect the circular junction. Clear the marker to return to the whole-model view.
 
-<div data-software-model></div>
+<div id="software-torusfold-model" data-software-model></div>
 
 **FIG. 9** *Users rotate the saved model, adjust its display, and mark the circular junction.*
 
@@ -637,7 +637,7 @@ Follow-up testing focused on finding the final model, identifying the structures
 
 The official iGEM GitLab repositories provide source code, installation instructions, example inputs, and test materials for [CircuForge](https://gitlab.igem.org/2026/software/jlu-fbh/circuforge) and [TorusFold](https://gitlab.igem.org/2026/software/jlu-fbh/torusfold-hybrid). The [Usage guide](#usage) illustrates the browser workflows, and [Installation and API](#installation) provides the execution paths and programmatic interfaces.
 
-Teams can begin CircuForge with compatible expression data, a known protein, or reviewed peptides, then supply their own backbone for construct design. TorusFold’s [saved-model viewer](../../../../public/assets/docs/software/torusfold-example-viewer.html) provides an immediate starting point for structure inspection; teams can then configure the prediction environment for their own mature RNA sequences.
+Teams can begin CircuForge with compatible expression data, a known protein, or reviewed peptides, then supply their own backbone for construct design. TorusFold’s [saved-model viewer](#software-torusfold-model) provides an immediate starting point for structure inspection; teams can then configure the prediction environment for their own mature RNA sequences.
 
 Both tools can be used independently or connected through the mature RNA file. Keeping the construct ID, software version, parameters, and sequence hash with the outputs preserves the link between the reviewed design and the subsequent analysis. Standard-format exports, diagnostic files, and the [reference-case materials](#reference-case) support continued inspection, transfer, and adaptation by other researchers.
 
@@ -948,7 +948,7 @@ CircuForge and TorusFold are released under **Apache License 2.0**, making their
 
 **Adapt the workflow to another biological project.** Researchers can begin CircuForge with the built-in example, then work with their own candidate proteins, reviewed peptides, and construct backbones. Teams extending the code can add another biological resource, change candidate-selection rules, or introduce another export format. The separate candidate-review, assembly, and export modules provide clear places to make those changes.
 
-**Build on the RNA-modeling workflow.** TorusFold connects fragment predictions, full-length reconstruction, refinement, and result inspection through separate stages. Teams can configure supported predictors, examine intermediate structures, and modify the stages relevant to their research question. The [saved-model viewer](../../../../public/assets/docs/software/torusfold-example-viewer.html) offers an immediate starting point for structure inspection; the [installation guide](#installation) describes the tools and computing setup for running new sequences.
+**Build on the RNA-modeling workflow.** TorusFold connects fragment predictions, full-length reconstruction, refinement, and result inspection through separate stages. Teams can configure supported predictors, examine intermediate structures, and modify the stages relevant to their research question. The [saved-model viewer](#software-torusfold-model) offers an immediate starting point for structure inspection; the [installation guide](#installation) describes the tools and computing setup for running new sequences.
 
 <a id="external-models"></a>
 
@@ -958,7 +958,7 @@ Our software connects established biological resources and prediction tools with
 
 | Resource | Contribution to the workflow | Source and reuse information |
 |---|---|---|
-| [IEDB](https://www.iedb.org/), [UniProt](https://www.uniprot.org/) and [iGEM Registry](https://registry.igem.org/) | Epitope predictions, source-protein annotations, and Part records | Follow each resource’s data and service terms; retain available source identifiers and search settings |
+| **IEDB, UniProt and iGEM Registry** | Epitope predictions, source-protein annotations, and Part records | Follow each resource’s data and service terms; retain available source identifiers and search settings |
 | [ViennaRNA](https://www.tbi.univie.ac.at/RNA/) | Proposes RNA base-pairing information | Reference environment: 2.7.2; distributed under its upstream terms |
 | [OpenMM](https://openmm.org/) | Relaxes structures using physical restraints | Reference environment: 8.5.2; keep the computing platform and settings with each run |
 | [RhoFold+](https://github.com/ml4bio/RhoFold) | Predicts structures for RNA fragments | Code and pretrained model files are obtained from the upstream project |
@@ -975,14 +975,62 @@ We welcome other teams to test the examples, adapt the tools to their own projec
 
 ## References
 
-1. McLaughlin JA, Beal J, Mısırlı G, et al. The Synthetic Biology Open Language (SBOL) Version 3: Simplified Data Exchange for Bioengineering. *Frontiers in Bioengineering and Biotechnology*. 2020;8:1009. [doi:10.3389/fbioe.2020.01009](https://doi.org/10.3389/fbioe.2020.01009).
-2. Chen CK, Cheng R, Demeter J, et al. Structured elements drive extensive circular RNA translation. *Molecular Cell*. 2021;81:4300–4318.e13. [doi:10.1016/j.molcel.2021.07.042](https://doi.org/10.1016/j.molcel.2021.07.042).
-3. Robertson MP, Scott WG. The structural basis of ribozyme-catalyzed RNA assembly. *Science*. 2007;315:1549–1553. [doi:10.1126/science.1136231](https://doi.org/10.1126/science.1136231).
-4. Vita R, Mahajan S, Overton JA, et al. The Immune Epitope Database (IEDB): 2018 update. *Nucleic Acids Research*. 2019;47:D339–D343. [doi:10.1093/nar/gky1006](https://doi.org/10.1093/nar/gky1006).
-5. Hofacker IL. Vienna RNA secondary structure server. *Nucleic Acids Research*. 2003;31:3429–3431. [doi:10.1093/nar/gkg599](https://doi.org/10.1093/nar/gkg599).
-6. Shen T, Hu Z, Sun S, et al. Accurate RNA 3D structure prediction using a language model-based deep learning approach. *Nature Methods*. 2024;21:2287–2298. [doi:10.1038/s41592-024-02487-0](https://doi.org/10.1038/s41592-024-02487-0).
-7. Wang W, Peng Z, Yang J. Predicting RNA 3D structure and conformers using a pre-trained secondary structure model and structure-aware attention. *Nature Machine Intelligence*. 2026;8:722–734. [doi:10.1038/s42256-026-01223-x](https://doi.org/10.1038/s42256-026-01223-x).
-8. Tarafder S, Bhattacharya D. RNAbpFlow: base pair-augmented SE(3) flow matching for conditional RNA 3D structure generation. *Nature Methods*. 2026;23:1349–1358. [doi:10.1038/s41592-026-03128-4](https://doi.org/10.1038/s41592-026-03128-4).
-9. Chang W, Cheng J, Allaire JJ, et al. *shiny: Web Application Framework for R*. [Package documentation](https://shiny.posit.co/r/getstarted/shiny-basics/lesson1/).
-10. Ritchie ME, Phipson B, Wu D, et al. limma powers differential expression analyses for RNA-sequencing and microarray studies. *Nucleic Acids Research*. 2015;43:e47. [doi:10.1093/nar/gkv007](https://doi.org/10.1093/nar/gkv007).
-11. Chen Y, Chen L, Lun ATL, Baldoni PL, Smyth GK. edgeR v4: powerful differential analysis of sequencing data with expanded functionality and improved support for small counts and larger datasets. *Nucleic Acids Research*. 2025;53:gkaf018. [doi:10.1093/nar/gkaf018](https://doi.org/10.1093/nar/gkaf018).
+**[1]** iGEM Foundation. iGEM Registry of Standard Biological Parts. n.d. Accessed 19 October 2026. [Official website](https://registry.igem.org/).
+
+**[2]** Robertson MP, Scott WG. The structural basis of ribozyme-catalyzed RNA assembly. *Science*. 2007;315(5818):1549–1553. [doi:10.1126/science.1136231](https://doi.org/10.1126/science.1136231).
+
+**[3]** IEDB. Immune Epitope Database. [Official website](https://www.iedb.org/).
+
+**[4]** UniProt. [Official website](https://www.uniprot.org/).
+
+**[5]** The UniProt Consortium. UniProt: the Universal Protein Knowledgebase in 2025. *Nucleic Acids Research*. 2025;53(D1):D609–D617. [doi:10.1093/nar/gkae1010](https://doi.org/10.1093/nar/gkae1010).
+
+**[6]** Vita R, Mahajan S, Overton JA, et al. The Immune Epitope Database (IEDB): 2018 update. *Nucleic Acids Research*. 2019;47(D1):D339–D343. [doi:10.1093/nar/gky1006](https://doi.org/10.1093/nar/gky1006).
+
+**[7]** ViennaRNA. [Official website](https://www.tbi.univie.ac.at/RNA/).
+
+**[8]** Lorenz R, Bernhart SH, Höner zu Siederdissen C, et al. ViennaRNA Package 2.0. *Algorithms for Molecular Biology*. 2011;6:26. [doi:10.1186/1748-7188-6-26](https://doi.org/10.1186/1748-7188-6-26).
+
+**[9]** RhoFold+. [Source code](https://github.com/ml4bio/RhoFold).
+
+**[10]** trRosettaRNA2. [Official website](https://yanglab.qd.sdu.edu.cn/trRosettaRNA/download/).
+
+**[11]** RNAbpFlow. [Source code](https://github.com/Bhattacharya-Lab/RNAbpFlow).
+
+**[12]** Shen T, Hu Z, Sun S, et al. Accurate RNA 3D structure prediction using a language model-based deep learning approach. *Nature Methods*. 2024;21:2287–2298. [doi:10.1038/s41592-024-02487-0](https://doi.org/10.1038/s41592-024-02487-0).
+
+**[13]** Wang W, Peng Z, Yang J. Predicting RNA 3D structure and conformers using a pre-trained secondary structure model and structure-aware attention. *Nature Machine Intelligence*. 2026;8:722–734. [doi:10.1038/s42256-026-01223-x](https://doi.org/10.1038/s42256-026-01223-x).
+
+**[14]** Tarafder S, Bhattacharya D. RNAbpFlow: base pair-augmented SE(3) flow matching for conditional RNA 3D structure generation. *Nature Methods*. 2026;23(7):1349–1358. [doi:10.1038/s41592-026-03128-4](https://doi.org/10.1038/s41592-026-03128-4).
+
+**[15]** Chen CK, Cheng R, Demeter J, et al. Structured elements drive extensive circular RNA translation. *Molecular Cell*. 2021;81(20):4300–4318.e13. [doi:10.1016/j.molcel.2021.07.042](https://doi.org/10.1016/j.molcel.2021.07.042).
+
+**[16]** Ng CKY, Dazert E, Boldanova T, et al. Integrative proteogenomic characterization of hepatocellular carcinoma across etiologies and stages. *Nature Communications*. 2022;13:2436. [doi:10.1038/s41467-022-29960-8](https://doi.org/10.1038/s41467-022-29960-8).
+
+**[17]** GTEx Consortium. The GTEx Consortium atlas of genetic regulatory effects across human tissues. *Science*. 2020;369(6509):1318–1330. [doi:10.1126/science.aaz1776](https://doi.org/10.1126/science.aaz1776).
+
+**[18]** Sehnal D, Bittrich S, Deshpande M, et al. Mol* Viewer: modern web app for 3D visualization and analysis of large biomolecular structures. *Nucleic Acids Research*. 2021;49(W1):W431–W437. [doi:10.1093/nar/gkab314](https://doi.org/10.1093/nar/gkab314).
+
+**[19]** Posit Software, PBC. Welcome to Shiny. *Shiny for R documentation*. Accessed 19 October 2026. [Official documentation](https://shiny.posit.co/r/getstarted/shiny-basics/lesson1/).
+
+**[20]** Ritchie ME, Phipson B, Wu D, et al. limma powers differential expression analyses for RNA-sequencing and microarray studies. *Nucleic Acids Research*. 2015;43(7):e47. [doi:10.1093/nar/gkv007](https://doi.org/10.1093/nar/gkv007).
+
+**[21]** Chen Y, Chen L, Lun ATL, Baldoni PL, Smyth GK. edgeR v4: powerful differential analysis of sequencing data with expanded functionality and improved support for small counts and larger datasets. *Nucleic Acids Research*. 2025;53(2):gkaf018. [doi:10.1093/nar/gkaf018](https://doi.org/10.1093/nar/gkaf018).
+
+**[22]** Omnes L, Angel E, Tahi F. DivideFold+: an AI-based tool for RNA secondary structure prediction with subdomains identification and visualization and data augmentation. *Journal of Molecular Biology*. 2026;438(18):169865. [doi:10.1016/j.jmb.2026.169865](https://doi.org/10.1016/j.jmb.2026.169865).
+
+**[23]** Calis JJA, Maybeno M, Greenbaum JA, et al. Properties of MHC Class I Presented Peptides That Enhance Immunogenicity. *PLoS Computational Biology*. 2013;9(10):e1003266. [doi:10.1371/journal.pcbi.1003266](https://doi.org/10.1371/journal.pcbi.1003266).
+
+**[24]** Abramson J, Adler J, Dunger J, et al. Accurate structure prediction of biomolecular interactions with AlphaFold 3. *Nature*. 2024;630:493–500. [doi:10.1038/s41586-024-07487-w](https://doi.org/10.1038/s41586-024-07487-w).
+
+**[25]** OpenMM. [Official website](https://openmm.org/).
+
+**[26]** Eastman P, Galvelis R, Peláez RP, et al. OpenMM 8: Molecular Dynamics Simulation with Machine Learning Potentials. *The Journal of Physical Chemistry B*. 2024;128(1):109–116. [doi:10.1021/acs.jpcb.3c06662](https://doi.org/10.1021/acs.jpcb.3c06662).
+
+**[27]** PyRosetta. [Official website](https://www.pyrosetta.org/).
+
+**[28]** 3Dmol.js. [Official website](https://3dmol.org/).
+
+**[29]** pako. [Source code](https://github.com/nodeca/pako).
+
+**[30]** iGEM Munich. igem_registry_api: A high-level Python interface for the new iGEM Registry REST API (2025 Beta). 2025. GitHub repository. Accessed 19 October 2026. [Source code](https://github.com/igem-munich/igem_registry_api).

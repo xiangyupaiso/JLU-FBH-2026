@@ -1,3 +1,4 @@
+import { bindHomeArtwork } from "../utils/homeArtworkSource";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import {
@@ -54,6 +55,8 @@ export function animateThinkingGallery(
   const travelling = landed.cloneNode(true) as SVGSVGElement;
   travelling.classList.add("home-thinking-gallery-mark--travelling");
   document.body.append(travelling);
+  const stopLandedArtwork = bindHomeArtwork(magnifier, landed);
+  const stopTravellingArtwork = bindHomeArtwork(magnifier, travelling);
   // This native copy scrolls with the gallery and fades with its title.
   intro.fromTo(
     landed,
@@ -182,6 +185,8 @@ export function animateThinkingGallery(
   draw();
   return () => {
     disposed = true;
+    stopLandedArtwork();
+    stopTravellingArtwork();
     boundary.dispose();
     ScrollTrigger.removeEventListener("refresh", draw);
     bridge.scrollTrigger?.kill();

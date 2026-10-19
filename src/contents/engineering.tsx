@@ -1,4 +1,4 @@
-import { useRef, type CSSProperties } from "react";
+import { useRef } from "react";
 import {
   EngineeringIntroduction,
   EngineeringJourney,
@@ -24,11 +24,8 @@ export function Engineering() {
       <header
         ref={heroRef}
         className="wiki-hero"
-        style={
-          {
-            "--route-hero-image": `url(${getProjectHeroImage(engineeringPage.route)})`,
-          } as CSSProperties
-        }
+        data-page-background-src={getProjectHeroImage(engineeringPage.route)}
+        data-page-critical="true"
       >
         <h1 className="wiki-hero__sr-only">{engineeringPage.title}</h1>
       </header>

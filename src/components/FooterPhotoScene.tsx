@@ -1,4 +1,5 @@
 import { useEffect, useId, useRef, useState } from "react";
+import { QueuedImage } from "./common/QueuedImage";
 import { useFooterPhotoReveal } from "../hooks/useFooterPhotoReveal";
 import { useKeepsakeNote } from "../hooks/useKeepsakeNote";
 import teamPhotoUrl from "../assets/footer/team-keepsake.webp";
@@ -32,7 +33,8 @@ export default function FooterPhotoScene({
 
   useEffect(() => {
     const image = imageRef.current;
-    if (image?.complete && image.naturalWidth === 0) setPhotoFailed(true);
+    if (image?.getAttribute("src") && image.complete && image.naturalWidth === 0)
+      setPhotoFailed(true);
   }, []);
 
   return (
@@ -45,10 +47,11 @@ export default function FooterPhotoScene({
           <div className="keepsake-pin">
             <figure
               className="keepsake-front"
-              style={{ backgroundImage: `url("${teamPhotoUrl}")` }}
+              data-page-background-src={teamPhotoUrl}
+              data-page-background-property="background-image"
             >
               <div ref={cardRef} className="keepsake-photograph">
-                <img
+                <QueuedImage
                   ref={imageRef}
                   src={teamPhotoUrl}
                   width="2600"
@@ -61,7 +64,7 @@ export default function FooterPhotoScene({
               </div>
               <div className="keepsake-photo-shade" aria-hidden="true" />
               <figcaption className="keepsake-brand">
-                <img
+                <QueuedImage
                   className="keepsake-brand__emblem"
                   src={circureEmblemUrl}
                   alt=""
@@ -105,7 +108,7 @@ export default function FooterPhotoScene({
             <div className="keepsake-letter__body">
               <div className="keepsake-letter__intro">
                 <div className="keepsake-letter__hope" aria-hidden="true">
-                  <img
+                  <QueuedImage
                     className="keepsake-letter__patient"
                     src={hopePatientUrl}
                     alt=""
@@ -114,7 +117,7 @@ export default function FooterPhotoScene({
                     loading="lazy"
                     decoding="async"
                   />
-                  <img
+                  <QueuedImage
                     className="keepsake-letter__hands"
                     src={hopeHandsUrl}
                     alt=""
@@ -151,7 +154,7 @@ export default function FooterPhotoScene({
                   </p>
                   <div className="keepsake-letter__signature">
                     <div className="keepsake-lamb" aria-hidden="true">
-                      <img
+                      <QueuedImage
                         src={lambUrl}
                         alt=""
                         width="815"

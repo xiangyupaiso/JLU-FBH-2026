@@ -1,3 +1,4 @@
+import { HomeSvgImage } from "./HomeArtwork";
 import { useId, type CSSProperties } from "react";
 
 type PaintedRevealProps = {
@@ -110,7 +111,7 @@ export function PaintedReveal({
           />
         </mask>
       </defs>
-      <image
+      <HomeSvgImage
         href={src}
         width="100"
         height="100"

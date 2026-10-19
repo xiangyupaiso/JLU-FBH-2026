@@ -1,3 +1,4 @@
+import { QueuedImage } from "../../../common/QueuedImage";
 import { Fragment, useEffect, useId, useRef } from "react";
 import circRnaRing from "../../../../assets/home/story/scene-1-layer-4.webp";
 import tearOutline from "../../../../assets/home/supplements/tear-4.webp";
@@ -148,7 +149,7 @@ export function MotionScoreStudy() {
               <span className="supplement-motion-study__context">
                 {state.context}
               </span>
-              <img
+              <QueuedImage
                 className="supplement-motion-study__ring"
                 src={circRnaRing}
                 width="459"
@@ -237,7 +238,7 @@ function ArtworkRatioStudy() {
               className={`artwork-ratio-study__frame artwork-ratio-study__frame--${item.variant}`}
             >
               <div className="artwork-ratio-study__canvas">
-                <img
+                <QueuedImage
                   src={mediaByPath.get(
                     "plates/panels/01-patient-question-a.png",
                   )}
@@ -290,7 +291,7 @@ function DesignRevision({
                   href={mediaByPath.get(image.path)}
                   aria-label={`Inspect: ${image.label}`}
                 >
-                  <img
+                  <QueuedImage
                     src={mediaByPath.get(image.path)}
                     width={image.width}
                     height={image.height}

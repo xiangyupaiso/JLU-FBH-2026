@@ -1,3 +1,4 @@
+import { homeArtworkSource } from "../utils/homeArtworkSource";
 // The upper-right magnifier in thinking-4.webp, clear of the medical tools below.
 export const THINKING_MAGNIFIER_CROP = {
   left: 485 / 692,
@@ -13,7 +14,7 @@ export function createThinkingGalleryMagnifier(source: HTMLImageElement) {
   mark.setAttribute("aria-hidden", "true");
   mark.classList.add("home-thinking-gallery-mark");
   const image = document.createElementNS("http://www.w3.org/2000/svg", "image");
-  image.setAttribute("href", source.currentSrc || source.src);
+  image.setAttribute("data-home-src", homeArtworkSource(source));
   image.setAttribute("width", "692");
   image.setAttribute("height", "778");
   mark.append(image);

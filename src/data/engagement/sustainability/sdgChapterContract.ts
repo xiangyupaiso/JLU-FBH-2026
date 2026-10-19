@@ -9,6 +9,7 @@
 
 import type { SustainabilityImageAssetKey } from "./sustainabilityAssets";
 import type { StakeholderPhoto } from "./sustainabilityPhotos";
+import type { PeerTubeVideoConfig } from "../../wikiVideo";
 
 export interface SustainabilityStat {
   id: string;
@@ -163,6 +164,8 @@ export interface LegacyTool {
   pdfs: ReadonlyArray<LegacyToolPdf>;
   /** Existing page resources that are referenced without a downloadable file. */
   links?: ReadonlyArray<{ label: string; href: string }>;
+  /** Click-loaded player with a preferred public upload and a partner copy. */
+  video?: PeerTubeVideoConfig;
 }
 
 export interface EvidenceItem {

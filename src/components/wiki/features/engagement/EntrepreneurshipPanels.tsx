@@ -1,5 +1,6 @@
+import { QueuedImage } from "../../../common/QueuedImage";
 /* eslint-disable react-refresh/only-export-components */
-import { useId, useState, type CSSProperties, type ReactNode } from "react";
+import { useId, useState, type ReactNode } from "react";
 import {
   businessModelCanvas,
   entrepreneurshipConcerns,
@@ -273,7 +274,7 @@ export function BusinessModelCanvas() {
   return (
     <div className="business-model-canvas" data-wiki-reveal>
       <figure className="business-model-canvas__figure">
-        <img
+        <QueuedImage
           src={businessModelCanvas.image}
           width={businessModelCanvas.imageWidth}
           height={businessModelCanvas.imageHeight}
@@ -321,11 +322,8 @@ export function ThankYouNote() {
     <div
       className="thank-you-note"
       data-wiki-reveal
-      style={
-        {
-          "--thanks-bg": `url(${entrepreneurshipThankYouNote.background})`,
-        } as CSSProperties
-      }
+      data-page-background-src={entrepreneurshipThankYouNote.background}
+      data-page-background-property="--thanks-bg"
     >
       <div className="thank-you-note__paper">
         <h3>{entrepreneurshipThankYouNote.title}</h3>
@@ -344,15 +342,22 @@ export function ThankYouNote() {
 
 /**
  * Our Highlights, in judging format: the record shows one question per row and
- * keeps the team's answer folded until the reader asks for it — one row open
- * at a time, like a judgeship Q&A sheet.
+ * lets readers open and close each answer independently.
  */
 export function OurHighlights() {
-  const [openId, setOpenId] = useState<string | null>(null);
+  const [openIds, setOpenIds] = useState<Set<string>>(() => new Set());
+  const toggle = (id: string) => {
+    setOpenIds((current) => {
+      const next = new Set(current);
+      if (next.has(id)) next.delete(id);
+      else next.add(id);
+      return next;
+    });
+  };
   return (
     <div className="highlights-record" data-wiki-reveal>
       {entrepreneurshipHighlights.map((item) => {
-        const open = openId === item.id;
+        const open = openIds.has(item.id);
         return (
           <article
             key={item.id}
@@ -364,7 +369,7 @@ export function OurHighlights() {
               className="highlights-record__toggle"
               aria-expanded={open}
               aria-controls={`${item.id}-answer`}
-              onClick={() => setOpenId(open ? null : item.id)}
+              onClick={() => toggle(item.id)}
             >
               <span className="highlights-record__question">
                 {item.question}
