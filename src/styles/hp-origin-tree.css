@@ -58,14 +58,14 @@
   position: absolute;
   z-index: 2;
   display: flex;
-  width: clamp(98px, 10vw, 148px);
-  height: clamp(76px, 8vw, 110px);
+  width: clamp(78px, 7.2vw, 100px);
+  height: clamp(78px, 7.2vw, 100px);
   align-items: center;
   justify-content: space-between;
   gap: 4px;
   padding: 7px;
   border: 2px solid #b8692d;
-  border-radius: 24px 24px 19px 19px;
+  border-radius: 19px;
   background: var(--hp-flow-first);
   color: var(--hp-flow-ink);
   box-shadow: 5px 5px 0 #e8a361;
@@ -75,15 +75,15 @@
 }
 .hp-origin-flow__intro-node:not(.has-followup) { box-shadow: 0 8px 18px rgb(104 61 27 / 10%); }
 .hp-origin-flow__intro-node:hover, .hp-origin-flow__intro-node.is-hovered, .hp-origin-flow__intro-node:focus-visible { z-index: 4; background: #ffe8ad; box-shadow: 6px 6px 0 #e9a15b, 0 0 0 5px rgb(224 151 85 / 20%); transform: translate(-50%, -50%) scale(1.08); outline: none; }
-.hp-origin-flow__intro-node-name { flex: 1; font-family: var(--font-sans); font-size: clamp(11px, 1.1vw, 15px); font-weight: 700; line-height: 1.15; text-align: center; }
+.hp-origin-flow__intro-node-name { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; }
 .hp-origin-flow__intro-node-photo {
   display: grid;
-  width: 42%;
+  width: 100%;
   height: 100%;
-  flex: 0 0 42%;
+  flex: 1 1 auto;
   place-items: center;
   border: 1px solid rgb(106 65 31 / 24%);
-  border-radius: 7px;
+  border-radius: 13px;
   background: #fff9e9;
   color: #a2642f;
   font-family: var(--font-mono);
@@ -152,8 +152,8 @@
 .hp-origin-flow__person {
   position: absolute;
   z-index: 2;
-  width: clamp(74px, 7.2vw, 100px);
-  height: clamp(58px, 5.4vw, 68px);
+  width: clamp(66px, 7vw, 86px);
+  height: clamp(66px, 7vw, 86px);
   padding: 0;
   border: 0;
   background: transparent;
@@ -247,11 +247,11 @@
   .hp-origin-flow__intro-network { overflow-x: auto; overflow-y: hidden; }
   .hp-origin-flow__intro-network { transform: none; }
   .hp-origin-flow__intro-canvas { min-width: 850px; }
-  .hp-origin-flow__intro-node { width: 84px; height: 66px; }
+  .hp-origin-flow__intro-node { width: 62px; height: 62px; }
   .hp-origin-flow__intro-tooltip { width: 23%; }
   .hp-origin-flow__intro-prompt { left: 4%; right: 4%; bottom: 1%; font-size: 10px; text-align: center; }
   .hp-origin-flow__tree { top: 15%; bottom: 3%; left: 2%; width: 38%; }
-  .hp-origin-flow__person { width: 62px; height: 52px; }
+  .hp-origin-flow__person { width: 53px; height: 53px; }
   .hp-origin-flow__person-front, .hp-origin-flow__person-back { border-radius: 9px; }
   .hp-origin-flow__person-front { padding: 3px; }
   .hp-origin-flow__portrait { border-radius: 6px; font-size: 8px; }
