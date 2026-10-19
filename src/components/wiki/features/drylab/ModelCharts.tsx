@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import * as echarts from "echarts";
+import * as echarts from "../shared/echartsRuntime";
 import confidenceData from "../../../../data/drylab/modelConfidenceData.json";
 import heatmapData from "../../../../data/drylab/modelHeatmapData.json";
 import type { EpitopeHeatmapRow } from "../../../../data/project/epitopeStructuralData";

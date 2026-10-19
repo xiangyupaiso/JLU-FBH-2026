@@ -11,16 +11,15 @@
 | 领域 | 选型 | 版本 | 说明 |
 | :----------------------- | :------------------------------------------------------------------------ | :--------- | :------------------------------------------------- |
 | **构建工具** | [Vite](https://vitejs.dev/) | 7.x | 极速冷启动与 HMR 热重载，原生 ES 模块支持 |
-| **多页面打包架构** | Vite Multi-Page App (MPA) | 7.x | 双入口打包 (`index.html` 主站 + `virtual-lab/index.html` 虚拟实验室) |
+| **独立构建架构** | Vite + 官方 iGEM Pages iframe | 7.x | 根目录只构建 Wiki；虚拟实验室独立构建和部署，保留完整可重建源码 |
 | **前端框架** | [React](https://react.dev/) + [TypeScript](https://www.typescriptlang.org/) | 19.x + 5.9 | 现代组件化架构与严格类型系统保障（覆盖主站与实验子系统） |
 | **路由与状态管理** | [React Router](https://reactrouter.com/) | 7.x | 扁平化路由分流与多级导航映射，支持重定向与锚点复位 |
 | **复杂动画编排** | [GSAP](https://gsap.com/) + [@gsap/react](https://www.npmjs.com/package/@gsap/react) | 3.15.x | 工业级补间动画、时间轴编排、SVG 笔触路径与粒子物理流 |
-| **分子结构可视化** | [Mol* (Molstar)](https://molstar.org/) | 5.x | 高性能 WebGL 3D 生物大分子与蛋白复合物交互查看器 |
-| **数据科学可视化** | [Apache ECharts](https://echarts.apache.org/) | 6.x | 实验拟合曲线、动态数据图表与多维统计看板 |
+| **分子结构可视化** | [Mol* (Molstar)](https://molstar.org/) | 5.x | 按需加载分子渲染运行时，独立编译；页面保留现有查看器控制 |
+| **数据科学可视化** | [Apache ECharts](https://echarts.apache.org/) | 6.x | 按需注册图表和组件，保留区间高亮、标记、图例与提示框 |
 | **主站 UI 与设计系统** | 原生 CSS Variables (Design Tokens) + Bootstrap | 5.3 | 语义化设计 Token，兼顾通用栅格与沉浸式阅读器排版 |
 | **实验仿真 UI 系统** | Tailwind CSS (沙箱作用域隔离) + Lucide Icons | 3.4 + 1.x | 虚拟实验室专属原子化排版系统，完全隔离不污染主站 |
 | **无障碍交互原语** | [Radix UI](https://www.radix-ui.com/primitives) | 1.x | Headless Dialog / Tabs / ScrollArea 组件，保障键盘导航与 a11y 合规 |
-| **矢量动画补充** | [lottie-web](https://airbnb.io/lottie/) | 5.x | AE 导出矢量动画播放，与 GSAP 主时间轴协同编排 |
 
 ---
 
@@ -112,7 +111,7 @@ CirCure Wiki
 * **独立三色主题体系**：Team（暖茶金）、Project（青翠竹绿）、Wet Lab（晴天水蓝）、Dry Lab（数理薄荷绿）、Engagement（柔粉珊瑚），仅需定义 3 个颜色 Token 即可自动推导全套衍生色。
 
 ### 4. 虚拟分子生物学仿真实验室 (Virtual Laboratory · 9 大全流程交互实训平台)
-* **工程架构**：虚拟实验室作为独立子工程构建在 `virtual-lab/` 目录下，主站 Vite 通过 Rollup 多入口直接纳管。主站与实验子应用通过带有 `loading="lazy"` 的专用 iframe 容器隔离，彻底规避 Tailwind CSS Reset 样式对 Wiki 全局样式的侵染。
+* **工程架构**：`virtual-lab/` 保留完整源码、课程播放器和独立依赖锁文件，主站不再打包实验室。Games 通过带有 `loading="lazy"` 的 iframe 嵌入官方 iGEM Pages 部署 `https://virtual-lab-208fd4.igem.wiki/`，实验室样式与主站隔离。源码仓库位于 `https://gitlab.igem.org/2026/software/jlu-fbh/virtual-lab`；关闭消息同时验证来源域名和 iframe 窗口。
 * **三大梯度能力成长曲线 (3 Tiers Progression)**：
   * **01 初级入门 (Beginner · 基础无菌操作与细胞形态观察)**：
     * **实验 1：大肠杆菌 DH5α 复苏与活化培养**（-80°C 冻存管冰上复苏、酒精灯旁无菌划线与恒温倒置培养）；
@@ -149,13 +148,9 @@ CirCure Wiki
 ```text
 Official-wiki/
 ├── public/                                  # 静态资源根目录（图标、字体与不受构建影响的文件）
-│   ├── virtual-lab/                         # 虚拟实验室离线多媒体、PPT 播放器与高精器材切片
-│   │   ├── experiment4_html/                # 实验 4 交互动效与初始帧
-│   │   ├── experiment4_lab/                 # 实验器材高清素材包（PPT 素材库）
-│   │   ├── experiment6-assets/              # 实验 6 双酶切器材与反应体系切片
-│   │   ├── experiment9-assets/              # 实验 9 交互流程播放器与诱导检测切片
-│   │   └── images/                          # 基础实验通用仪器试剂贴图
-│   └── vendor/                              # 第三方离线 WebGL / Molstar 离线引擎
+│   ├── assets/                              # 开发预览所需的本地资源
+│   ├── game-assets/                         # 其他游戏资源
+│   └── vendor/                              # D3 本地运行库
 ├── src/                                     # 主站源代码
 │   ├── assets/                              # 静态图片资产（分模块管理，包含 WebP、JPG、PNG）
 │   │   ├── home/                            # 首页专属动画与图解资产
@@ -182,6 +177,9 @@ Official-wiki/
 │   └── pages.ts                             # 全局页面路由字典与层级映射源
 ├── virtual-lab/                             # 虚拟分子生物学仿真实验室独立子工程
 │   ├── index.html                           # 虚拟实验室独立 HTML 挂载入口
+│   ├── public/                              # 课程播放器代码；不复制进主站 public/
+│   ├── package.json / package-lock.json      # 独立依赖与固定版本
+│   ├── vite.config.ts / tsconfig.json        # 独立构建和类型检查
 │   ├── tailwind.config.cjs                  # 实验室专属 Tailwind 作用域配置
 │   ├── README.md                            # 虚拟实验室工程与架构专用说明
 │   └── src/                                 # 实验应用源码
@@ -201,8 +199,8 @@ Official-wiki/
 ├── .gitlab-ci.yml                           # iGEM 官方 GitLab CI/CD 自动化构建发布管道
 ├── eslint.config.js                         # ESLint 9 平面语法配置
 ├── package.json                             # 依赖清单与脚本定义
-├── tsconfig.json                            # TypeScript 编译配置（覆盖主站与 virtual-lab/src）
-└── vite.config.ts                           # Vite 配置文件（多入口构建、PostCSS 作用域隔离与 Base 路径注入）
+├── tsconfig.json                            # 主站 TypeScript 编译配置（实验室单独检查）
+└── vite.config.ts                           # Wiki 单入口、分子运行时独立编译与 Base 路径注入
 ```
 
 ---
@@ -231,10 +229,10 @@ yarn dev
 
 启动后终端将输出本地访问地址：
 * **Wiki 主站**：`http://localhost:5173/jlu-fbh/`
-* **虚拟分子生物学实验室（独立沙箱直达）**：`http://localhost:5173/jlu-fbh/virtual-lab/index.html`
+* **虚拟分子生物学实验室（官方部署）**：`https://virtual-lab-208fd4.igem.wiki/`
 
 > [!NOTE]
-> 在主站的 `/games` 聚合门户中点击 **Virtual Laboratory** 展位，即可在主站全屏对话框内通过 Iframe 安全沙箱直接调出运行虚拟实验室，两者支持实时热重载（HMR）。
+> 在主站 `/games` 中点击 **Virtual Laboratory**，会打开官方实验室部署。开发实验室本身时，请另开终端执行 `cd virtual-lab`、`npm ci`、`npm run dev`，使用终端给出的独立地址。根目录开发服务器只负责 Wiki。
 
 ### 3. 类型安全检查与生产构建
 
@@ -245,19 +243,18 @@ yarn build
 ```
 
 执行过程包含：
-1. `tsc`：TypeScript 全量严格类型检查（严格覆盖 `src/` 与 `virtual-lab/src/`，零报错通过）；
-2. `vite build`：Rollup 自动执行多入口并行构建：
-   * 构建 `dist/index.html`（Wiki 主应用）；
-   * 构建 `dist/virtual-lab/index.html`（虚拟实验室独立应用）；
-   * 自动对虚拟实验室 9 大实验执行路由分包（On-Demand Code-Splitting），输出独立的懒加载 chunk；
-   * CSS 深度压缩与资产 Hash 命名，静态产物完整输出至 `dist/` 目录。
+1. `tsc`：严格检查主站 `src/`；
+2. `vite build`：只构建 Wiki，按需加载图表和分子渲染运行时；
+3. `postbuild-slug.mjs`：保留 Cloudflare 预览所需路径映射。
+
+实验室在 `virtual-lab/` 内单独执行 `npm ci && npm run build`，产物写入其自身忽略的 `dist/`。不要将该产物或旧的 `public/virtual-lab/`、`public/vendor/molstar/` 复制回主站；实验室 HTML、课程代码和完整源码已保留在独立子目录中。
 
 ### 4. 代码规范化检测与预览
 
 ```bash
 npm run lint      # 执行 ESLint 严格语法检查
 npm run format    # 执行 Prettier 统一代码美化与对齐
-npm run preview   # 在本地启动生产包静态服务，验证双入口打包产物完整性
+npm run preview   # 在本地启动 Wiki 生产包静态服务
 ```
 
 ---

@@ -443,7 +443,7 @@ export function analyzeFolder(targetFolder = "src/assets") {
 
 export function scanAllProjectAssets() {
   console.log("\n--- Comprehensive Scanning of All Project Assets ---");
-  const scanDirs = ["src/assets", "public/assets", "文案集", "public/game-assets", "public/virtual-lab", "background", "loading"];
+  const scanDirs = ["src/assets", "public/assets", "文案集", "public/game-assets", "virtual-lab/public", "background", "loading"];
   return analyzeFolders(scanDirs);
 }
 

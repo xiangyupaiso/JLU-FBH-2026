@@ -1,6 +1,6 @@
 /* eslint-disable react-refresh/only-export-components */
 import { useEffect, useId, useMemo, useRef, useState } from "react";
-import * as echarts from "echarts";
+import * as echarts from "./echartsRuntime";
 import "../../../../styles/features/dose-prediction-explorer.css";
 
 export interface DosePredictionRow {

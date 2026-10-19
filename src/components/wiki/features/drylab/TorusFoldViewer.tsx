@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Maximize2, Minimize2, RotateCcw } from "lucide-react";
-import type { Viewer } from "molstar/lib/apps/viewer/app";
+import type { Viewer } from "../shared/molstarRuntime";
 import type { PluginStateObject } from "molstar/lib/mol-plugin-state/objects";
 import type { StateObjectSelector } from "molstar/lib/mol-state";
 import type { Color } from "molstar/lib/mol-util/color";
@@ -77,24 +77,7 @@ export function TorusFoldViewer() {
       ]);
       if (disposed || !canvas.current) return;
       instance = await molstar.Viewer.create(canvas.current, {
-        layoutIsExpanded: false,
-        layoutShowControls: false,
-        layoutShowRemoteState: false,
-        layoutShowSequence: false,
-        layoutShowLog: false,
-        layoutShowLeftPanel: false,
-        collapseLeftPanel: true,
-        collapseRightPanel: true,
         pixelScale: 1,
-        viewportShowReset: false,
-        viewportShowScreenshotControls: false,
-        viewportShowControls: false,
-        viewportShowExpand: false,
-        viewportShowToggleFullscreen: false,
-        viewportShowSettings: false,
-        viewportShowSelectionMode: false,
-        viewportShowAnimation: false,
-        viewportShowTrajectoryControls: false,
         viewportBackgroundColor: "#0b0f19",
       });
       if (disposed) {
@@ -103,10 +86,6 @@ export function TorusFoldViewer() {
       }
       viewer.current = instance;
       const plugin = instance.plugin;
-      // Hide extra controls exposed by newer Mol* runtimes as well.
-      const controls = molstar.lib.plugin.PluginConfig.Viewport;
-      plugin.config.set(controls.ShowIllumination, false);
-      plugin.config.set(controls.ShowXR, "never");
       const data = await plugin.builders.data.rawData({
         data: pdb,
         label: "TorusFold · saved PPR-repaired model",

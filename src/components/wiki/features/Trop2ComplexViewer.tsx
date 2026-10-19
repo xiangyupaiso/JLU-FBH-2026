@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState, useCallback } from "react";
 import { RotateCcw, Maximize2, Minimize2 } from "lucide-react";
-// Type-only imports: erased at build time, Mol* itself comes from window.molstar
-import type { Viewer } from "molstar/lib/apps/viewer/app";
+import type { Viewer } from "./shared/molstarRuntime";
 import type { Vec3, Vec4 } from "molstar/lib/mol-math/linear-algebra";
 import type { PluginStateObject } from "molstar/lib/mol-plugin-state/objects";
 import type { StateObjectSelector } from "molstar/lib/mol-state";
@@ -127,28 +126,10 @@ export function Trop2ComplexViewer() {
           }
         }
 
-        // Initialize high-fidelity Mol* viewer with internal debug controls completely disabled
+        // The manuscript provides the controls; mount only the molecular canvas.
         const viewer = await molstar.Viewer.create(containerRef.current, {
-          layoutIsExpanded: false,
-          layoutShowControls: false,
-          layoutShowRemoteState: false,
-          layoutShowSequence: false,
-          layoutShowLog: false,
-          layoutShowLeftPanel: false,
-          collapseLeftPanel: true,
-          collapseRightPanel: true,
-          disableAntialiasing: false,
-          // Mol* multiplies pixelScale by devicePixelRatio; 1 already renders at native DPR.
+          // Mol* multiplies pixelScale by devicePixelRatio; 1 renders at native DPR.
           pixelScale: 1,
-          viewportShowReset: false,
-          viewportShowScreenshotControls: false,
-          viewportShowControls: false,
-          viewportShowExpand: false,
-          viewportShowToggleFullscreen: false,
-          viewportShowSettings: false,
-          viewportShowSelectionMode: false,
-          viewportShowAnimation: false,
-          viewportShowTrajectoryControls: false,
           viewportBackgroundColor: "#0b0f19",
         });
 
@@ -159,23 +140,6 @@ export function Trop2ComplexViewer() {
 
         viewerRef.current = viewer;
         const plugin = viewer.plugin;
-
-        // Ensure internal config turns off all default buttons that cause heavy panel mounts.
-        // The viewer bundle exposes PluginConfig under lib.plugin, not at the top level.
-        const V = molstar.lib?.plugin?.PluginConfig?.Viewport;
-        if (plugin?.config && V) {
-          plugin.config.set(V.ShowReset, false);
-          plugin.config.set(V.ShowControls, false);
-          plugin.config.set(V.ShowSettings, false);
-          plugin.config.set(V.ShowScreenshotControls, false);
-          plugin.config.set(V.ShowExpand, false);
-          plugin.config.set(V.ShowToggleFullscreen, false);
-          plugin.config.set(V.ShowSelectionMode, false);
-          plugin.config.set(V.ShowAnimation, false);
-          plugin.config.set(V.ShowTrajectoryControls, false);
-          if (V.ShowIllumination) plugin.config.set(V.ShowIllumination, false);
-          if (V.ShowXR) plugin.config.set(V.ShowXR, "never");
-        }
 
         // SSAO, ambient contact shadows, and silhouette outline (opaque geometry only,
         // so the transparent surface does not pay for extra depth passes)

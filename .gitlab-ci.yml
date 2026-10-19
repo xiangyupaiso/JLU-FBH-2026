@@ -2,6 +2,10 @@ image: node:22
 
 pages:
   stage: build
+  variables:
+    FF_USE_FASTZIP: "true"
+    ARTIFACT_COMPRESSION_LEVEL: "slowest"
+    NODE_OPTIONS: "--max-old-space-size=1024"
   cache:
     - key:
         files:

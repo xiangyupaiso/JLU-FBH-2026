@@ -1272,6 +1272,12 @@ a.sust-sdg-pill:focus-visible {
 }
 
 /* Tracker tools remain in their own document so their UI styles stay local. */
+.wiki-page--sustainability .sust-grow-explorer {
+  font-family: var(--font-body);
+  font-size: 18px;
+  line-height: 1.75;
+}
+
 .sust-grow-anchor {
   display: block;
   height: 0;

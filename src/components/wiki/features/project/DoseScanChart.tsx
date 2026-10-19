@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import * as echarts from "echarts";
+import * as echarts from "../shared/echartsRuntime";
 import {
   DOSE_SCAN_DEFAULT_INDEX,
   DOSE_SCAN_DRAW_COUNT,

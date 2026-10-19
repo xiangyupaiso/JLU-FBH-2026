@@ -396,7 +396,7 @@ export const wetLabEntries: NotebookEntry[] = [
       },
       {
         type: "prose",
-        text: "We checked second-round DNA templates, RNA circularisation and the Combined junction alongside preparation for the functional comparisons. Junction sequencing identified the expected head-to-tail connection. Purified Combined had a circular-to-linear-associated signal ratio of 145.7:1 and an estimated circular fraction of 99.30±0.17%.",
+        text: "We verified plasmid target regions by PCR and gel electrophoresis and prepared the transcription templates separately by plasmid linearisation and purification. We assessed RNA circularisation and the Combined junction alongside preparation for the functional comparisons. Junction sequencing identified the expected head-to-tail connection. Purified Combined had a circular-to-linear-associated signal ratio of 145.7:1 and an estimated circular fraction of 99.30±0.17%.",
       },
       {
         type: "prose",
@@ -405,10 +405,10 @@ export const wetLabEntries: NotebookEntry[] = [
       {
         type: "figure",
         label: "Figure Wet-Figure6",
-        title: "Second-round DNA templates",
+        title: "Plasmid verification by PCR",
         assets: ["wet_f6"],
         caption:
-          "Gel electrophoresis of four antigen-encoding DNA transcription templates.",
+          "Agarose-gel electrophoresis of target-region PCR products used to verify the four antigen-encoding plasmids.",
       },
       {
         type: "figure",

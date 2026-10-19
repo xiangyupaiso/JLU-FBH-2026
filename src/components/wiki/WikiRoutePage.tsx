@@ -528,7 +528,7 @@ function RouteBlock({
         </ol>
       );
     case "heading": {
-      const Heading = `h${block.level}` as "h4" | "h5" | "h6";
+      const Heading = `h${block.level}` as "h3" | "h4" | "h5" | "h6";
       return (
         <Heading className="wiki-content-heading">
           {inline ? inline(block.title, linkify, sectionId) : linkify(block.title)}

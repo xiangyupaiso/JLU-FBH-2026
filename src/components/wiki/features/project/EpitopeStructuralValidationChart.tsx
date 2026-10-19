@@ -1,6 +1,6 @@
 /* eslint-disable react-refresh/only-export-components */
 import { useEffect, useRef, useState } from "react";
-import * as echarts from "echarts";
+import * as echarts from "../shared/echartsRuntime";
 import {
   EPITOPE_HEATMAP_DATA,
   EPITOPE_VOLUME_DATA,

@@ -2,10 +2,47 @@ import { defineConfig, loadEnv, type Plugin } from "vite";
 import react from "@vitejs/plugin-react";
 import { stringToSlug } from "./src/utils/stringToSlug";
 import { resolve } from "node:path";
-import { readFile, rm, writeFile } from "node:fs/promises";
-import { inflateSync } from "node:zlib";
 import tailwindcss from "tailwindcss";
 import autoprefixer from "autoprefixer";
+import { build as bundleModule } from "esbuild";
+
+/** Compile Mol* separately so Rollup does not retain its full module graph. */
+function molecularRuntime(): Plugin {
+  const moduleId = "virtual:molecular-runtime";
+  const resolvedId = `\0${moduleId}`;
+  let root = process.cwd();
+  let production = false;
+  return {
+    name: "molecular-runtime",
+    configResolved(config) {
+      root = config.root;
+      production = config.command === "build";
+    },
+    resolveId(id) {
+      if (id === moduleId) return resolvedId;
+    },
+    async load(id) {
+      if (id !== resolvedId) return;
+      const source = "/src/components/wiki/features/shared/molstarRuntime.ts";
+      if (!production) return `export { Viewer } from ${JSON.stringify(source)};`;
+      const result = await bundleModule({
+        entryPoints: [resolve(root, source.slice(1))],
+        bundle: true,
+        format: "esm",
+        platform: "browser",
+        target: "esnext",
+        minify: true,
+        write: false,
+      });
+      const asset = this.emitFile({
+        type: "asset",
+        name: "molstar-runtime.js",
+        source: result.outputFiles[0].contents,
+      });
+      return `const runtime = await import(/* @vite-ignore */ import.meta.ROLLUP_FILE_URL_${asset});\nexport const Viewer = runtime.Viewer;`;
+    },
+  };
+}
 
 /**
  * The app stylesheet (~700 kB) would otherwise block the first paint, and with
@@ -67,88 +104,13 @@ function autoTrailingSlashPlugin(slug: string): Plugin {
   };
 }
 
-/** Deduplicate iSpring picture comparison data without changing the player metadata. */
-async function compactCoursePresentation(outDir: string) {
-  const courseDir = resolve(outDir, "virtual-lab/experiment9-assets/ispring");
-  const entryPath = resolve(courseDir, "index.html");
-  const html = await readFile(entryPath, "utf8");
-  const metadata = html.match(/var presInfo = "([^"]+)";/);
-  if (!metadata) throw new Error("Experiment 9 presentation metadata is missing");
-  const presentation: unknown = JSON.parse(
-    inflateSync(Buffer.from(metadata[1], "base64")).toString("utf8"),
-  );
-  const pictures: unknown[][] = [];
-  const indices = new Map<string, number>();
-  function compact(value: unknown) {
-    if (Array.isArray(value)) value.forEach(compact);
-    else if (value && typeof value === "object") {
-      for (const [key, child] of Object.entries(value)) {
-        if (key === "normalizedPic" && Array.isArray(child)) {
-          const serialized = JSON.stringify(child);
-          let index = indices.get(serialized);
-          if (index === undefined) {
-            index = pictures.length;
-            indices.set(serialized, index);
-            pictures.push(child);
-          }
-          (value as Record<string, unknown>)[key] = index;
-        } else compact(child);
-      }
-    }
-  }
-  compact(presentation);
-  const runtime = `(function () {
-var presentation = ${JSON.stringify(presentation)};
-var pictures = ${JSON.stringify(pictures)};
-function restore(value) {
-  if (Array.isArray(value)) value.forEach(restore);
-  else if (value && typeof value === "object") {
-    Object.keys(value).forEach(function (key) {
-      if (key === "normalizedPic" && Number.isInteger(value[key])) {
-        value[key] = pictures[value[key]].slice();
-      } else restore(value[key]);
-    });
-  }
-}
-restore(presentation);
-window.__experiment9Presentation = presentation;
-})();
-`;
-  await writeFile(resolve(courseDir, "data/presentation.js"), runtime);
-  await writeFile(
-    entryPath,
-    html
-      .replace(metadata[0], "var presInfo = window.__experiment9Presentation;")
-      .replace("</head>", '<script src="data/presentation.js"></script>\n</head>'),
-  );
-}
-
-/** Keep unused iSpring backup slides in the repository, but out of the published site. */
-function excludeLocalOnlyCourseBackups(): Plugin {
-  let outDir = resolve("dist");
-  return {
-    name: "exclude-local-only-course-backups",
-    apply: "build",
-    configResolved(config) {
-      outDir = resolve(config.root, config.build.outDir);
-    },
-    async closeBundle() {
-      await compactCoursePresentation(outDir);
-      await rm(
-        resolve(outDir, "virtual-lab/experiment9-assets/ispring/data.local-only"),
-        { recursive: true, force: true },
-      );
-    },
-  };
-}
-
 // https://vitejs.dev/config/
 export default () => {
   const env = loadEnv("dev", process.cwd());
   const slug = stringToSlug(env.VITE_TEAM_NAME || "jlu-fbh");
   return defineConfig({
     base: `/${slug}/`,
-    plugins: [react(), nonBlockingAppCss(), autoTrailingSlashPlugin(slug), excludeLocalOnlyCourseBackups()],
+    plugins: [react(), molecularRuntime(), nonBlockingAppCss(), autoTrailingSlashPlugin(slug)],
     css: {
       postcss: {
         plugins: [
@@ -163,14 +125,12 @@ export default () => {
       rollupOptions: {
         input: {
           wiki: resolve("index.html"),
-          laboratory: resolve("virtual-lab/index.html"),
         },
       },
     },
     optimizeDeps: {
       entries: [
         "index.html",
-        "virtual-lab/index.html",
         "src/**/*.{ts,tsx,js,jsx}",
       ],
     },

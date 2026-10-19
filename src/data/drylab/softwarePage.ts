@@ -48,24 +48,10 @@ export type SoftwarePanel =
 export const softwareReferences: CitationReference[] = [
   {
     id: 1,
-    authors: "McLaughlin JA, Beal J, Mısırlı G, et al.",
-    title:
-      "The Synthetic Biology Open Language (SBOL) Version 3: Simplified Data Exchange for Bioengineering.",
-    journal: "Frontiers in Bioengineering and Biotechnology.",
-    volumeYear: "2020;8:1009.",
-    links: [
-      {
-        href: "https://doi.org/10.3389/fbioe.2020.01009",
-        label: "doi:10.3389/fbioe.2020.01009",
-      },
-    ],
-  },
-  {
-    id: 2,
     authors: "Chen CK, Cheng R, Demeter J, et al.",
     title: "Structured elements drive extensive circular RNA translation.",
     journal: "Molecular Cell.",
-    volumeYear: "2021;81:4300–4318.e13.",
+    volumeYear: "2021;81(20):4300–4318.e13.",
     links: [
       {
         href: "https://doi.org/10.1016/j.molcel.2021.07.042",
@@ -74,11 +60,11 @@ export const softwareReferences: CitationReference[] = [
     ],
   },
   {
-    id: 3,
+    id: 2,
     authors: "Robertson MP, Scott WG.",
     title: "The structural basis of ribozyme-catalyzed RNA assembly.",
     journal: "Science.",
-    volumeYear: "2007;315:1549–1553.",
+    volumeYear: "2007;315(5818):1549–1553.",
     links: [
       {
         href: "https://doi.org/10.1126/science.1136231",
@@ -87,11 +73,11 @@ export const softwareReferences: CitationReference[] = [
     ],
   },
   {
-    id: 4,
+    id: 3,
     authors: "Vita R, Mahajan S, Overton JA, et al.",
     title: "The Immune Epitope Database (IEDB): 2018 update.",
     journal: "Nucleic Acids Research.",
-    volumeYear: "2019;47:D339–D343.",
+    volumeYear: "2019;47(D1):D339–D343.",
     links: [
       {
         href: "https://doi.org/10.1093/nar/gky1006",
@@ -100,20 +86,20 @@ export const softwareReferences: CitationReference[] = [
     ],
   },
   {
-    id: 5,
-    authors: "Hofacker IL.",
-    title: "Vienna RNA secondary structure server.",
-    journal: "Nucleic Acids Research.",
-    volumeYear: "2003;31:3429–3431.",
+    id: 4,
+    authors: "Lorenz R, Bernhart SH, Höner zu Siederdissen C, et al.",
+    title: "ViennaRNA Package 2.0.",
+    journal: "Algorithms for Molecular Biology.",
+    volumeYear: "2011;6:26.",
     links: [
       {
-        href: "https://doi.org/10.1093/nar/gkg599",
-        label: "doi:10.1093/nar/gkg599",
+        href: "https://doi.org/10.1186/1748-7188-6-26",
+        label: "doi:10.1186/1748-7188-6-26",
       },
     ],
   },
   {
-    id: 6,
+    id: 5,
     authors: "Shen T, Hu Z, Sun S, et al.",
     title:
       "Accurate RNA 3D structure prediction using a language model-based deep learning approach.",
@@ -127,7 +113,7 @@ export const softwareReferences: CitationReference[] = [
     ],
   },
   {
-    id: 7,
+    id: 6,
     authors: "Wang W, Peng Z, Yang J.",
     title:
       "Predicting RNA 3D structure and conformers using a pre-trained secondary structure model and structure-aware attention.",
@@ -141,12 +127,12 @@ export const softwareReferences: CitationReference[] = [
     ],
   },
   {
-    id: 8,
+    id: 7,
     authors: "Tarafder S, Bhattacharya D.",
     title:
       "RNAbpFlow: base pair-augmented SE(3) flow matching for conditional RNA 3D structure generation.",
     journal: "Nature Methods.",
-    volumeYear: "2026;23:1349–1358.",
+    volumeYear: "2026;23(7):1349–1358.",
     links: [
       {
         href: "https://doi.org/10.1038/s41592-026-03128-4",
@@ -155,25 +141,25 @@ export const softwareReferences: CitationReference[] = [
     ],
   },
   {
-    id: 9,
-    authors: "Chang W, Cheng J, Allaire JJ, et al.",
-    title: "",
-    journal: "shiny: Web Application Framework for R.",
-    volumeYear: "",
+    id: 8,
+    authors: "Posit Software, PBC.",
+    title: "Welcome to Shiny.",
+    journal: "Shiny for R documentation.",
+    volumeYear: "Accessed 19 October 2026.",
     links: [
       {
         href: "https://shiny.posit.co/r/getstarted/shiny-basics/lesson1/",
-        label: "Package documentation",
+        label: "Official documentation",
       },
     ],
   },
   {
-    id: 10,
+    id: 9,
     authors: "Ritchie ME, Phipson B, Wu D, et al.",
     title:
       "limma powers differential expression analyses for RNA-sequencing and microarray studies.",
     journal: "Nucleic Acids Research.",
-    volumeYear: "2015;43:e47.",
+    volumeYear: "2015;43(7):e47.",
     links: [
       {
         href: "https://doi.org/10.1093/nar/gkv007",
@@ -182,16 +168,153 @@ export const softwareReferences: CitationReference[] = [
     ],
   },
   {
-    id: 11,
+    id: 10,
     authors: "Chen Y, Chen L, Lun ATL, Baldoni PL, Smyth GK.",
     title:
       "edgeR v4: powerful differential analysis of sequencing data with expanded functionality and improved support for small counts and larger datasets.",
     journal: "Nucleic Acids Research.",
-    volumeYear: "2025;53:gkaf018.",
+    volumeYear: "2025;53(2):gkaf018.",
     links: [
       {
         href: "https://doi.org/10.1093/nar/gkaf018",
         label: "doi:10.1093/nar/gkaf018",
+      },
+    ],
+  },
+  {
+    id: 11,
+    authors: "Omnes L, Angel E, Tahi F.",
+    title:
+      "DivideFold+: an AI-based tool for RNA secondary structure prediction with subdomains identification and visualization and data augmentation.",
+    journal: "Journal of Molecular Biology.",
+    volumeYear: "2026;438(18):169865.",
+    links: [
+      {
+        href: "https://doi.org/10.1016/j.jmb.2026.169865",
+        label: "doi:10.1016/j.jmb.2026.169865",
+      },
+    ],
+  },
+  {
+    id: 12,
+    authors: "Eastman P, Galvelis R, Peláez RP, et al.",
+    title:
+      "OpenMM 8: Molecular Dynamics Simulation with Machine Learning Potentials.",
+    journal: "The Journal of Physical Chemistry B.",
+    volumeYear: "2024;128(1):109–116.",
+    links: [
+      {
+        href: "https://doi.org/10.1021/acs.jpcb.3c06662",
+        label: "doi:10.1021/acs.jpcb.3c06662",
+      },
+    ],
+  },
+  {
+    id: 13,
+    authors: "Calis JJA, Maybeno M, Greenbaum JA, et al.",
+    title:
+      "Properties of MHC Class I Presented Peptides That Enhance Immunogenicity.",
+    journal: "PLoS Computational Biology.",
+    volumeYear: "2013;9(10):e1003266.",
+    links: [
+      {
+        href: "https://doi.org/10.1371/journal.pcbi.1003266",
+        label: "doi:10.1371/journal.pcbi.1003266",
+      },
+    ],
+  },
+  {
+    id: 14,
+    authors: "Abramson J, Adler J, Dunger J, et al.",
+    title:
+      "Accurate structure prediction of biomolecular interactions with AlphaFold 3.",
+    journal: "Nature.",
+    volumeYear: "2024;630:493–500.",
+    links: [
+      {
+        href: "https://doi.org/10.1038/s41586-024-07487-w",
+        label: "doi:10.1038/s41586-024-07487-w",
+      },
+    ],
+  },
+  {
+    id: 15,
+    authors: "Sehnal D, Bittrich S, Deshpande M, et al.",
+    title:
+      "Mol* Viewer: modern web app for 3D visualization and analysis of large biomolecular structures.",
+    journal: "Nucleic Acids Research.",
+    volumeYear: "2021;49(W1):W431–W437.",
+    links: [
+      {
+        href: "https://doi.org/10.1093/nar/gkab314",
+        label: "doi:10.1093/nar/gkab314",
+      },
+    ],
+  },
+  {
+    id: 16,
+    authors: "GTEx Consortium.",
+    title:
+      "The GTEx Consortium atlas of genetic regulatory effects across human tissues.",
+    journal: "Science.",
+    volumeYear: "2020;369(6509):1318–1330.",
+    links: [
+      {
+        href: "https://doi.org/10.1126/science.aaz1776",
+        label: "doi:10.1126/science.aaz1776",
+      },
+    ],
+  },
+  {
+    id: 17,
+    authors: "The UniProt Consortium.",
+    title: "UniProt: the Universal Protein Knowledgebase in 2025.",
+    journal: "Nucleic Acids Research.",
+    volumeYear: "2025;53(D1):D609–D617.",
+    links: [
+      {
+        href: "https://doi.org/10.1093/nar/gkae1010",
+        label: "doi:10.1093/nar/gkae1010",
+      },
+    ],
+  },
+  {
+    id: 18,
+    authors: "",
+    title: "PXD025705 dataset.",
+    journal: "PRIDE Archive.",
+    volumeYear: "",
+    links: [
+      {
+        href: "https://www.ebi.ac.uk/pride/archive/projects/PXD025705",
+        label: "PXD025705 dataset",
+      },
+    ],
+  },
+  {
+    id: 19,
+    authors: "iGEM Foundation.",
+    title: "iGEM Registry of Standard Biological Parts.",
+    journal: "",
+    volumeYear: "n.d. Accessed 19 October 2026.",
+    links: [
+      {
+        href: "https://registry.igem.org/",
+        label: "Official website",
+      },
+    ],
+  },
+  {
+    id: 20,
+    authors: "iGEM Munich.",
+    title:
+      "igem_registry_api: A high-level Python interface for the new iGEM Registry REST API (2025 Beta).",
+    journal: "GitHub repository.",
+    volumeYear: "2025. Accessed 19 October 2026.",
+    links: [
+      {
+        href: "https://github.com/igem-munich/igem_registry_api",
+        label: "Source code",
       },
     ],
   },
@@ -213,23 +336,33 @@ export const softwarePanels: Record<string, SoftwarePanel> = {
       {
         type: "code",
         language: "r",
-        code: 'design_cart_epitope_id <- function(peptide, mode, allele, target_symbol, target_accession) {\n  paste(\n    "EPITOPE", toupper(trimws(peptide)), toupper(trimws(mode)),\n    toupper(trimws(allele)), toupper(trimws(target_accession)),\n    toupper(trimws(target_symbol)), sep = ":"\n  )\n}',
-      },
-      {
-        type: "code",
-        language: "r",
-        code: 'chosen$QCRecommendation <- chosen$FinalDecision %||% chosen$DisplayDecision\nchosen$UserDecision <- "SELECTED_FOR_ORF_REVIEW"\nchosen$ConfirmedAt <- format(Sys.time(), "%Y-%m-%d %H:%M:%S")',
-      },
-      {
-        type: "code",
-        language: "r",
-        code: 'chosen$EvidenceJSON <- vapply(seq_len(nrow(chosen)), function(i) {\n  as.character(jsonlite::toJSON(\n    as.list(chosen[i, , drop = FALSE]), auto_unbox = TRUE, null = "null", na = "null"\n  ))\n}, character(1))\nchosen$Source <- paste0("IEDB ", toupper(input$pred_mode))\ndesign_cart$add_epitopes(chosen)',
-      },
-      {
-        type: "prose",
-        paragraphs: [
-          "*Source: `utils/utils_design_cart.R` · `adf4013c` · lines 54–60; `modules/mod_epitope.R` · `adf4013c` · lines 2304–2306; `modules/mod_epitope.R` · `adf4013c` · lines 2313–2319.*",
-        ],
+        code: `# ID helper: combine the peptide, prediction mode, HLA allele, and target identity.
+# Normalize case and surrounding whitespace in each identifying field.
+design_cart_epitope_id <- function(peptide, mode, allele, target_symbol, target_accession) {
+  paste(
+    "EPITOPE", toupper(trimws(peptide)), toupper(trimws(mode)),
+    toupper(trimws(allele)), toupper(trimws(target_accession)),
+    toupper(trimws(target_symbol)), sep = ":"
+  )
+}
+
+# Selection-handler excerpt: chosen contains the selected candidate rows.
+# Save the QC recommendation, the user's selection, and its confirmation time.
+chosen$QCRecommendation <- chosen$FinalDecision %||% chosen$DisplayDecision
+chosen$UserDecision <- "SELECTED_FOR_ORF_REVIEW"
+chosen$ConfirmedAt <- format(Sys.time(), "%Y-%m-%d %H:%M:%S")
+
+# Serialize each selected row, including its evidence and recorded decisions.
+chosen$EvidenceJSON <- vapply(seq_len(nrow(chosen)), function(i) {
+  as.character(jsonlite::toJSON(
+    as.list(chosen[i, , drop = FALSE]),
+    auto_unbox = TRUE, null = "null", na = "null"
+  ))
+}, character(1))
+
+# Record the prediction source and save the selected entries in the Design Cart.
+chosen$Source <- paste0("IEDB ", toupper(input$pred_mode))
+design_cart$add_epitopes(chosen)`,
       },
     ]),
   },
@@ -248,18 +381,26 @@ export const softwarePanels: Record<string, SoftwarePanel> = {
       {
         type: "code",
         language: "r",
-        code: "merge_rows <- function(old, incoming) {\n  if (!nrow(incoming)) return(old)\n  combined <- rbind(old[!old$CartID %in% incoming$CartID, , drop = FALSE], incoming)\n  rownames(combined) <- NULL\n  combined\n}",
-      },
-      {
-        type: "code",
-        language: "r",
-        code: 'project_bundle_write_csv(record$targets, file.path(bundle_dir, "targets.csv"))\nproject_bundle_write_csv(record$epitopes, file.path(bundle_dir, "epitopes.csv"))\nproject_bundle_write_json(record$epitope_review %||% list(), file.path(bundle_dir, "epitope_review.json"))',
-      },
-      {
-        type: "prose",
-        paragraphs: [
-          "*Source: `utils/utils_design_cart.R` · `adf4013c` · lines 68–73; `utils/utils_project_bundle.R` · `adf4013c` · lines 253–255.*",
-        ],
+        code: `# Cart merge helper: keep the existing records when no new rows are supplied.
+merge_rows <- function(old, incoming) {
+  if (!nrow(incoming)) return(old)
+
+  # Replace matching CartIDs and append incoming rows in their supplied order.
+  combined <- rbind(
+    old[!old$CartID %in% incoming$CartID, , drop = FALSE], incoming
+  )
+  rownames(combined) <- NULL
+  combined
+}
+
+# Project Bundle export excerpt: record and bundle_dir are supplied by the caller.
+# Save target and epitope selections as CSV files, and the review state as JSON.
+project_bundle_write_csv(record$targets, file.path(bundle_dir, "targets.csv"))
+project_bundle_write_csv(record$epitopes, file.path(bundle_dir, "epitopes.csv"))
+project_bundle_write_json(
+  record$epitope_review %||% list(),
+  file.path(bundle_dir, "epitope_review.json")
+)`,
       },
     ]),
   },
@@ -277,13 +418,24 @@ export const softwarePanels: Record<string, SoftwarePanel> = {
       {
         type: "code",
         language: "r",
-        code: 'testthat::test_that("SBOL3 RDF/XML round-trip preserves component and DNA sequence", {\n  manifest <- build_construct_manifest(make_export_construct(), make_export_registry_hits())\n  path <- tempfile(fileext = ".rdf")\n  on.exit(unlink(path), add = TRUE)\n  write_construct_sbol3(manifest, path)\n  restored <- read_construct_sbol3(path)\n  testthat::expect_equal(restored$component_id, manifest$construct_id)\n  testthat::expect_equal(restored$sequence, manifest$dna_template$sequence)\n})',
-      },
-      {
-        type: "prose",
-        paragraphs: [
-          "*Source: `tests/testthat/test-construct-exports.R` · `cd4d2b35` · lines 88–96.*",
-        ],
+        code: `testthat::test_that("SBOL3 RDF/XML round-trip preserves component and DNA sequence", {
+  # Build the source manifest using helpers from the existing test suite.
+  manifest <- build_construct_manifest(
+    make_export_construct(), make_export_registry_hits()
+  )
+
+  # Choose an RDF/XML output path and register cleanup after the test.
+  path <- tempfile(fileext = ".rdf")
+  on.exit(unlink(path), add = TRUE)
+
+  # Export the manifest and read the same file back into a structured record.
+  write_construct_sbol3(manifest, path)
+  restored <- read_construct_sbol3(path)
+
+  # Check the component identity and DNA sequence against the source manifest.
+  testthat::expect_equal(restored$component_id, manifest$construct_id)
+  testthat::expect_equal(restored$sequence, manifest$dna_template$sequence)
+})`,
       },
     ]),
   },
@@ -301,13 +453,18 @@ export const softwarePanels: Record<string, SoftwarePanel> = {
       {
         type: "code",
         language: "python",
-        code: "c1_dst = p_coords[i] + b * _C1_ALONG + r * _C1_PERP\nc4_dst = p_coords[i] + b * _C4_ALONG + r * _C4_PERP\no3_dst = nxt - b * 1.6  # O3'[i] consistent with the geometry of P[i+1]\ndst_anchors = np.stack([p_coords[i], c1_dst, c4_dst, o3_dst])\n\n# Kabsch superposition (4-point least squares; one more O3' constraint than the 3-point version)\naligned = _kabsch_align(src_anchors, dst_anchors, tcoords)",
-      },
-      {
-        type: "prose",
-        paragraphs: [
-          "*Source: `src/torusfold/scheme2/aform_from_template.py` · `4f55c167` · lines 178–184.*",
-        ],
+        code: `# Reconstruction excerpt: p_coords[i] is the current phosphate position.
+# The surrounding code supplies local directions b and r and next phosphate nxt.
+# Position the C1' and C4' sugar anchors using the template offsets.
+c1_dst = p_coords[i] + b * _C1_ALONG + r * _C1_PERP
+c4_dst = p_coords[i] + b * _C4_ALONG + r * _C4_PERP
+
+# Position O3' relative to the next phosphate, then collect the four anchors.
+o3_dst = nxt - b * 1.6
+dst_anchors = np.stack([p_coords[i], c1_dst, c4_dst, o3_dst])
+
+# Fit the source anchors to the target anchors and transform the template atoms.
+aligned = _kabsch_align(src_anchors, dst_anchors, tcoords)`,
       },
     ]),
   },
@@ -325,13 +482,21 @@ export const softwarePanels: Record<string, SoftwarePanel> = {
       {
         type: "code",
         language: "python",
-        code: "n_axis = np.cross(b, r)  # r is already orthogonal to b and unit\n_o1, _o4 = _ANCHOR_OFFSETS[\"C1'\"], _ANCHOR_OFFSETS[\"C4'\"]\nc1_dst = p_coords[i] + b * _o1[0] + r * _o1[1] + n_axis * _o1[2]\nc4_dst = p_coords[i] + b * _o4[0] + r * _o4[1] + n_axis * _o4[2]\no3_dst = nxt - b * 1.6  # O3'[i] consistent with the geometry of P[i+1]\ndst_anchors = np.stack([p_coords[i], c1_dst, c4_dst, o3_dst])\n\n# Kabsch superposition (4-point least squares; one more O3' constraint than the 3-point version)\naligned = _kabsch_align(src_anchors, dst_anchors, tcoords)",
-      },
-      {
-        type: "prose",
-        paragraphs: [
-          "*Source: `src/torusfold/scheme2/aform_from_template.py` · `c0ed20f0` · lines 188–196.*",
-        ],
+        code: `# Reconstruction excerpt: the surrounding code supplies local directions b and r.
+# With r already normalized and perpendicular to b, form the third direction.
+n_axis = np.cross(b, r)
+
+# Apply the stored C1' and C4' offsets along all three local directions.
+_o1, _o4 = _ANCHOR_OFFSETS["C1'"], _ANCHOR_OFFSETS["C4'"]
+c1_dst = p_coords[i] + b * _o1[0] + r * _o1[1] + n_axis * _o1[2]
+c4_dst = p_coords[i] + b * _o4[0] + r * _o4[1] + n_axis * _o4[2]
+
+# Position O3' relative to the next phosphate and collect the four anchors.
+o3_dst = nxt - b * 1.6
+dst_anchors = np.stack([p_coords[i], c1_dst, c4_dst, o3_dst])
+
+# Align the template anchors and transform its atom coordinates into this frame.
+aligned = _kabsch_align(src_anchors, dst_anchors, tcoords)`,
       },
     ]),
   },
@@ -350,13 +515,16 @@ export const softwarePanels: Record<string, SoftwarePanel> = {
       {
         type: "code",
         language: "python",
-        code: "_structure_5 = reconstruct_all_atom(best_coords, sequence, pairs=pairs)\n# amber_refine: C1'-C1' pair restraints (K=100 kJ/mol/nm²) + A-form torsions\n_refined_coords_5, _e0_5, _e1_5, _info_5 = _amber_refine_full(\n    _structure_5, pairs,\n    platform_name=\"CPU\",\n    max_iterations=3000,\n)",
-      },
-      {
-        type: "prose",
-        paragraphs: [
-          "*Source: `src/torusfold/scheme2/isrnaclong.py` · `ea423897` · lines 2117–2123.*",
-        ],
+        code: `# Reconstruct all atoms from the coarse coordinates, sequence, and base-pair list.
+_structure_5 = reconstruct_all_atom(best_coords, sequence, pairs=pairs)
+
+# Pass the reconstructed structure and the same pair list to Amber refinement.
+# Run on the CPU with a maximum of 3000 minimization iterations.
+_refined_coords_5, _e0_5, _e1_5, _info_5 = _amber_refine_full(
+    _structure_5, pairs,
+    platform_name="CPU",
+    max_iterations=3000,
+)`,
       },
     ]),
   },
@@ -374,18 +542,20 @@ export const softwarePanels: Record<string, SoftwarePanel> = {
       {
         type: "code",
         language: "python",
-        code: 'nn = np.array(nn)\nsigma = float(nn.std())\ncrit = 0.6 * B.KBT / sigma\nprint(f"{len(structs)} structures, {len(nn)} pairs")\nprint(f"observed N-N distance: mean {nn.mean():.3f} nm, sd {sigma:.3f}")\nprint(f"criterion: K_BPP = 0.6 * kBT / sigma = 0.6 * {B.KBT} / {sigma:.3f} = {crit:.1f}")',
-      },
-      {
-        type: "code",
-        language: "python",
-        code: "K_BPP = 13.4        # BPP soft constraint (0.6 * kBT / sigma_NN; was 600.0)",
-      },
-      {
-        type: "prose",
-        paragraphs: [
-          "*Source: `scripts/calibrate_bpp.py` · `99ab8508` · lines 52–57; `src/torusfold/scheme2/torch_cgsim.py` · `99ab8508` · lines 147–147.*",
-        ],
+        code: `# Calibration-script excerpt: nn contains the observed base-pair N-N distances.
+# Compute their standard deviation and the corresponding force-scale criterion.
+nn = np.array(nn)
+sigma = float(nn.std())
+crit = 0.6 * B.KBT / sigma
+
+# Report the sample counts, distance statistics, and calculated criterion.
+print(f"{len(structs)} structures, {len(nn)} pairs")
+print(f"observed N-N distance: mean {nn.mean():.3f} nm, sd {sigma:.3f}")
+print(f"criterion: K_BPP = 0.6 * kBT / sigma = 0.6 * {B.KBT} / {sigma:.3f} = {crit:.1f}")
+
+# Separate simulation-configuration excerpt: set the calibrated BPP coefficient.
+# This assignment records the selected value; the script above reports crit.
+K_BPP = 13.4`,
       },
     ]),
   },
@@ -403,13 +573,20 @@ export const softwarePanels: Record<string, SoftwarePanel> = {
       {
         type: "code",
         language: "python",
-        code: 'service = request.app.state.epitope_service\njob = service.enqueue(payload)\nbackground_tasks.add_task(service.run, job["job_id"])\nreturn {\n    "job_id": job["job_id"],\n    "status": job["status"],\n    "status_url": f"/v1/jobs/{job[\'job_id\']}",\n}',
-      },
-      {
-        type: "prose",
-        paragraphs: [
-          "*Source: `api/app/routers/epitopes.py` · `ed398cf0` · lines 19–26.*",
-        ],
+        code: `# API-route excerpt: request, payload, and background_tasks come from the route.
+# Retrieve the configured service and enqueue the submitted prediction payload.
+service = request.app.state.epitope_service
+job = service.enqueue(payload)
+
+# Register the job for execution as a background task.
+background_tasks.add_task(service.run, job["job_id"])
+
+# Return the job identifier, current state, and endpoint for checking its status.
+return {
+    "job_id": job["job_id"],
+    "status": job["status"],
+    "status_url": f"/v1/jobs/{job['job_id']}",
+}`,
       },
     ]),
   },
@@ -428,13 +605,19 @@ export const softwarePanels: Record<string, SoftwarePanel> = {
       {
         type: "code",
         language: "r",
-        code: 'write_construct_json(manifest, json_path)\nwrite_construct_fasta(manifest, fasta_path)\nwrite_construct_genbank(manifest, gbk_path)\nwrite_construct_sbol3(manifest, sbol_path)\nchecks <- verify_construct_roundtrip(manifest, json_path, fasta_path, gbk_path, sbol_path)\nwrite.csv(checks, file.path(bundle_dir, "roundtrip_checks.csv"), row.names = FALSE)',
-      },
-      {
-        type: "prose",
-        paragraphs: [
-          "*Source: `utils/utils_construct_exports.R` · `cd4d2b35` · lines 265–270.*",
-        ],
+        code: `# Export the same construct manifest in JSON, FASTA, GenBank, and SBOL3 formats.
+write_construct_json(manifest, json_path)
+write_construct_fasta(manifest, fasta_path)
+write_construct_genbank(manifest, gbk_path)
+write_construct_sbol3(manifest, sbol_path)
+
+# Read back the exports and check them against the source manifest.
+checks <- verify_construct_roundtrip(
+  manifest, json_path, fasta_path, gbk_path, sbol_path
+)
+
+# Include the verification table in the bundle alongside the exported files.
+write.csv(checks, file.path(bundle_dir, "roundtrip_checks.csv"), row.names = FALSE)`,
       },
     ]),
   },
@@ -452,13 +635,18 @@ export const softwarePanels: Record<string, SoftwarePanel> = {
       {
         type: "code",
         language: "javascript",
-        code: "var key = stage.name + '|' + stage.mtime;\nif (key === shownStructure) return;\nshownStructure = key;\n\nif (labelEl) {\n  labelEl.hidden = false;\n  if (levelEl) levelEl.textContent = 'Level ' + stage.level;\n  if (descEl) descEl.textContent = stage.desc || stage.name;\n}",
-      },
-      {
-        type: "prose",
-        paragraphs: [
-          "*Source: `src/torusfold/web/app.js` · `52ecff7a` · lines 617–625.*",
-        ],
+        code: `// Viewer-update excerpt: stage and the label elements come from the handler.
+// Identify the stage file by its name and modification time; skip a repeated key.
+var key = stage.name + '|' + stage.mtime;
+if (key === shownStructure) return;
+shownStructure = key;
+
+// Show the selected stage's level and description, using its name if needed.
+if (labelEl) {
+  labelEl.hidden = false;
+  if (levelEl) levelEl.textContent = 'Level ' + stage.level;
+  if (descEl) descEl.textContent = stage.desc || stage.name;
+}`,
       },
     ]),
   },
@@ -476,13 +664,13 @@ export const softwarePanels: Record<string, SoftwarePanel> = {
       {
         type: "code",
         language: "javascript",
-        code: "EventBus.on('sse:heartbeat', function (data) {\n  applyRunState(data);\n  if (data.current_level != null) updateProgress(levelNameAt(data.current_level), 'running');\n});",
-      },
-      {
-        type: "prose",
-        paragraphs: [
-          "*Source: `src/torusfold/web/app.js` · `94582d03` · lines 1286–1289.*",
-        ],
+        code: `// Receive a server heartbeat and refresh the displayed run state.
+EventBus.on('sse:heartbeat', function (data) {
+  applyRunState(data);
+
+  // Mark the reported level as running when the heartbeat includes its index.
+  if (data.current_level != null) updateProgress(levelNameAt(data.current_level), 'running');
+});`,
       },
     ]),
   },
@@ -537,29 +725,30 @@ export const softwareJudgingCriteria: WikiJudgingCriterion[] = [
   {
     id: "software-judging-how-compatible-is-the-software-with-existing-synthetic-biology-standards-such-as-sbol-other-rfcs-and-data-formats-does-it-make-full-use-of-these-standards",
     question:
-      "How compatible is the software with existing synthetic biology standards, such as SBOL, other RFCs, and data formats? Does it make full use of these standards?",
+      "How well is the software compatible with, and does it leverage, existing synthetic biology standards? (e.g. SBOL, other RFCs, data formats, etc.)",
     anchorIds: [
       "how-compatible-is-the-software-with-existing-synthetic-biology-standards-such-as-sbol-other-rfcs-and-data-formats-does-it-make-full-use-of-these-standards",
     ],
     paragraphs: [
-      "CircuForge supports **SBOL3, GenBank, FASTA, and JSON** for saving and transferring reviewed construct designs. SBOL3 records components, sequences, and their relationships; GenBank carries sequence features for downstream design tools; FASTA provides sequence input for further analysis; and JSON retains the application's design record. For formats that support annotations, CircuForge can also include researcher-confirmed iGEM Registry Part IDs. Format-specific readback checks compare the exported sequences and supported annotations with the source design before users continue their work.",
+      "CircuForge supports **SBOL3, GenBank, FASTA, and JSON** for saving and transferring reviewed construct designs. SBOL3 records components, sequences, and their relationships; GenBank carries sequence features for downstream design tools; FASTA provides sequence input for further analysis; and JSON retains the application's design record. For formats that support annotations, CircuForge can also include researcher-confirmed iGEM Registry Part IDs ([**iGEM Foundation, n.d.**](https://registry.igem.org/)). Format-specific readback checks compare the exported sequences and supported annotations with the source design before users continue their work.",
       "TorusFold accepts mature RNA sequences and outputs **PDB models and JSON diagnostics**. Molecular viewers and analysis scripts can read these files, allowing researchers to inspect the structures, compare modeling stages, and continue analysis in their preferred tools.",
       "See [Verifiable design exports](#cf-verified-export) and [Integration and API](#integration-api).",
     ],
   },
   {
     id: "software-judging-has-the-software-been-validated-experimentally",
-    question: "Has the software been validated experimentally?",
+    question:
+      "How well was the software validated (e.g., through experimental work, test data, or benchmarking)?",
     anchorIds: ["has-the-software-been-validated-experimentally"],
     paragraphs: [
       "CircuForge was evaluated against the experimentally tested Combined design from our TNBC project. Project screening narrowed 17 reviewed candidates to 15 retained epitopes. Wet Lab merged two overlapping pairs into continuous sequences, producing 13 coding designs that covered all 15 epitopes. IFN-γ ELISpot results guided the selection of two coding segments from each antigen source for Combined. CircuForge turned the eight experimentally selected coding segments into **a sequence-checked Combined construct design**. It assembled the segments in the researcher-confirmed order with GSGGS linkers, generated the corresponding DNA, and replaced the antigen cassette within the supplied backbone while preserving the surrounding backbone sequence. It then verified the encoded payload and checked the exported files against the generated design. This demonstrated CircuForge's ability to carry experimentally informed selections through sequence assembly, backbone integration, and verified export.",
-      "We checked TorusFold's refinement settings against the L1 ribozyme structure determined by X-ray crystallography, PDB 2OIU ([Robertson and Scott, 2007](https://doi.org/10.1126/science.1136231)). After **refinement starting from the crystal coordinates**, the model had an RMSD of 1.83 Å relative to the experimental structure. This comparison checked how well the refinement procedure preserved the known crystal structure.",
+      "We checked TorusFold's refinement settings against the L1 ribozyme structure determined by X-ray crystallography, PDB 2OIU (**Robertson and Scott, 2007**). After **refinement starting from the crystal coordinates**, the model had an RMSD of 1.83 Å relative to the experimental structure. This comparison checked how well the refinement procedure preserved the known crystal structure.",
       "See [Validation](#validation) for the experimental selection, reference reconstruction, and structure checks.",
     ],
   },
   {
     id: "software-judging-can-the-software-be-applied-to-other-projects",
-    question: "Can the software be applied to other projects?",
+    question: "Can the software be useful to other projects?",
     anchorIds: ["can-the-software-be-applied-to-other-projects"],
     paragraphs: [
       "Other teams can use **their own expression data, antigens, HLA settings, and backbones** in CircuForge. They can begin with expression-based target screening, a known protein, or reviewed peptides, then retain candidate sources and confirmed choices through assembly and export. For their own peptide combinations, they can inspect junction-spanning windows and request binding predictions through the configured IEDB service.",
@@ -570,23 +759,23 @@ export const softwareJudgingCriteria: WikiJudgingCriterion[] = [
   {
     id: "software-judging-how-well-does-the-software-integrate-with-external-tools-or-software-applications-including-apis-and-packages",
     question:
-      "How well does the software integrate with external tools or software applications, including APIs and packages?",
+      "How well can the software be integrated with external tools/software applications? (APIs, packages, etc.)",
     anchorIds: [
       "how-well-does-the-software-integrate-with-external-tools-or-software-applications-including-apis-and-packages",
     ],
     paragraphs: [
-      "CircuForge connects **UniProt, IEDB, and the iGEM Registry** to candidate and construct review. UniProt supplies protein sequences and source records; IEDB supplies epitope predictions; and Registry review compares construct DNA with Part records and writes researcher-confirmed IDs into construct annotations. These connections carry source information into the design rather than leaving it in separate search results.",
-      "TorusFold uses ViennaRNA pairing information to guide later modeling stages. It can call configured **RhoFold+, trRosettaRNA2, and RNAbpFlow** predictors to generate structures for overlapping fragments. TorusFold then aligns shared regions, reconstructs the full-length circular model, and applies physical relaxation and refinement to address fragment joins and steric clashes.",
+      "CircuForge connects **UniProt** (**The UniProt Consortium, 2025**), IEDB, and the iGEM Registry to candidate and construct review. UniProt supplies protein sequences and source records; IEDB supplies epitope predictions (**Vita et al., 2019**); and Registry review compares construct DNA with Part records and writes researcher-confirmed IDs into construct annotations. These connections carry source information into the design rather than leaving it in separate search results.",
+      "TorusFold uses ViennaRNA pairing information to guide later modeling stages (**Lorenz et al., 2011**). It can call configured **RhoFold+, trRosettaRNA2, and RNAbpFlow** predictors to generate structures for overlapping fragments (**Shen et al., 2024**; **Wang et al., 2026**; **Tarafder & Bhattacharya, 2026**). TorusFold then aligns shared regions, reconstructs the full-length circular model, and applies physical relaxation and refinement to address fragment joins and steric clashes.",
       "Users can export mature RNA from CircuForge and provide that sequence as TorusFold input. Local APIs also expose construct compilation, junction-window enumeration, prediction submission, and job status, while standard files connect both tools to downstream applications.",
       "See [Architecture and design choices](#architecture), [External tools and models](#external-models), and [Integration and API](#integration-api).",
     ],
   },
   {
     id: "software-judging-is-the-software-easy-to-use",
-    question: "Is the software easy to use?",
+    question: "Is the software user-friendly?",
     anchorIds: ["is-the-software-easy-to-use"],
     paragraphs: [
-      "CircuForge provides a built-in example and **a six-step browser workflow** from data preparation to downloads. Researchers can review candidates, confirm their Design Cart, assemble a payload, and generate and export a construct without writing analysis scripts. Source records, user confirmations, and task status remain visible throughout the workflow. Saved project files allow users to keep their selections and return to the design later.",
+      "CircuForge provides a built-in example and **a six-step browser workflow** from data preparation to downloads. Researchers can review candidates, confirm their Design Cart, assemble a payload, and generate and export a construct without writing analysis scripts. Source records, user confirmations, and task status remain visible throughout the workflow. Saved project files allow users to keep their selections and return to the design later. Users can also switch between light and dark modes and between English and Chinese.",
       "TorusFold's example viewer lets users rotate a saved model, change its display, and mark the circular junction without installing the prediction environment. For a new calculation, the usage guide explains sequence preparation, configuration, and run controls. Logs, stage outputs, and checkpoint information help users follow the calculation and inspect its progress.",
       "See [Usage guide](#usage) and [User guidance and community reuse](#community-reuse).",
     ],
@@ -594,7 +783,7 @@ export const softwareJudgingCriteria: WikiJudgingCriterion[] = [
   {
     id: "software-judging-how-well-is-the-software-written-and-documented-so-future-teams-can-extend-and-improve-it",
     question:
-      "How well is the software written and documented so future teams can extend and improve it?",
+      "How well is the software written and documented for future groups to extend and improve? (Code documentation, comments in the code, performance evaluation, architecture diagrams, installation and execution scripts, etc.)",
     anchorIds: [
       "how-well-is-the-software-written-and-documented-so-future-teams-can-extend-and-improve-it",
     ],

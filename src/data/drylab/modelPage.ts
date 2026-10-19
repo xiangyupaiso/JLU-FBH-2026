@@ -3646,7 +3646,7 @@ const manuscriptSections: WikiPageContent["sections"] = [
       {
         "type": "prose",
         "paragraphs": [
-          "T = A + α A² + α² A³ + ... = Σ (k=1 to K) αᵏ Aᵏ"
+          "$$T = \\sum_{k=1}^{K} \\alpha^{k-1} A^k = A + \\alpha A^2 + \\alpha^2 A^3 + ⋯$$"
         ]
       },
       {

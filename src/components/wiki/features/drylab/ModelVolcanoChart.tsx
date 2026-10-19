@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import * as echarts from "echarts";
+import * as echarts from "../shared/echartsRuntime";
 import { loadModelVolcanoData, type VolcanoPoint } from "../../../../data/drylab/modelVolcanoData";
 
 const categories = ["Up", "Down", "Other"];

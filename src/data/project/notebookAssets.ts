@@ -79,7 +79,7 @@ export const notebookAssets = {
     fileName: "wet-f6.avif",
     uploadUrl:
       "https://static.igem.wiki/teams/6056/wiki/files/pages/project/notebook/wet-f6.avif",
-    alt: "Second-round DNA templates",
+    alt: "Target-region PCR verification of the four antigen-encoding plasmids.",
     width: 733,
     height: 549,
   },

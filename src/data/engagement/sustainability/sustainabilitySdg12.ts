@@ -528,7 +528,7 @@ export const sdg12Chapter: SdgChapter = {
           "Map **resource inputs and potential waste** across the stages of **R&D, manufacturing, storage, transportation, and eventual disposal**. Distinguish between **problems that have already occurred, potential future risks, and issues that cannot yet be assessed**, helping the team identify which areas require priority attention or further information.",
         bestFor:
           "**Project kick-offs, comparing R&D plans, phase reviews**, and discussions about **resource responsibility in future manufacturing, storage, transportation, and disposal**.",
-        whatItDoes: "",
+        whatItDoes: "Helps teams identify resource inputs and potential waste across research and development, manufacturing, storage and transport, and end-of-life treatment and disposal. It distinguishes issues already occurring, those that may arise in the future, and those that cannot yet be assessed, helping teams prioritize attention and further information gathering.",
         pdfs: [
           {
             label: "Chinese",
@@ -549,7 +549,7 @@ export const sdg12Chapter: SdgChapter = {
           "Review the **evidence base and scope** of sustainability claims. Distinguish between **results supported by existing data, scenario projections based on specific assumptions, and impacts that still require future validation**. This helps ensure that each claim matches the available evidence and prevents **overstating sustainability benefits**.",
         bestFor:
           "**Phase summaries, SDG 12 documentation, project presentations**, and situations where the team needs to draft or review claims about **resource savings, waste reduction, or other sustainability outcomes**.",
-        whatItDoes: "",
+        whatItDoes: "Helps teams examine the evidence supporting sustainability conclusions and the limits of their applicability. It distinguishes results already supported by data, scenario-based projections, and impacts that still require future validation, helping teams avoid presenting improvements at individual stages as overall environmental achievements.",
         pdfs: [
           {
             label: "Chinese",
@@ -572,7 +572,7 @@ export const sdg12Chapter: SdgChapter = {
           "Bring together practical guidance for **plant selection, reusing discarded containers, materials preparation, hands-on planting instruction, and event organization** in dormitory planting activities. This helps teams design and run **participatory activities** that allow participants to understand **resource reuse and responsible consumption through direct experience**.",
         bestFor:
           "**Campus or dormitory planting activities, public education on resource reuse**, and other iGEM teams preparing similar **SDG 12 participatory activities**.",
-        whatItDoes: "",
+        whatItDoes: "Combines plant selection, reuse of discarded containers, hands-on planting instruction, material preparation, and activity organization into a practical guide based on the dormitory planting activity. It helps other teams deliver similar SDG 12 public education activities, allowing participants to learn about resource reuse and responsible consumption through planting.",
         pdfs: [
           {
             label: "Chinese",
@@ -613,6 +613,7 @@ export const sdg12Chapter: SdgChapter = {
       },
       {
         text: "**Three reusable resources** documenting the project’s evaluation methods and public engagement experience, made available for future teams to download and use.",
+        toolTable: true,
       },
     ],
     significant: [

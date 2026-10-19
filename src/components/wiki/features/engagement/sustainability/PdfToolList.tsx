@@ -189,7 +189,7 @@ export function PdfToolList({
 const byEnglishFirst = (a: { label: string }, b: { label: string }) =>
   Number(b.label === "English") - Number(a.label === "English");
 
-/** Evidence summary of the Legacy tools: Tool / What it does / Download. */
+/** Evidence summary of the Legacy tools: Tool / What it does / Use it. */
 export function ToolTable({ tools }: { tools: ReadonlyArray<LegacyTool> }) {
   return (
     <div
@@ -202,7 +202,7 @@ export function ToolTable({ tools }: { tools: ReadonlyArray<LegacyTool> }) {
           <tr>
             <th scope="col">Tool</th>
             <th scope="col">What it does</th>
-            <th scope="col">Download</th>
+            <th scope="col">Use it</th>
           </tr>
         </thead>
         <tbody>

@@ -242,17 +242,13 @@ export function EduFeedbackCards({
           element.dataset.scrollDeck = "true";
           const stepSpan = 360;
           const totalTravel = (questions.length - 1) * stepSpan;
-          let cardHeight = 0;
 
           const measure = () => {
             const top = projected ? 24 : headerHeight() + 24;
-            const nextHeight = card.offsetHeight || 620;
-            const changed = Math.abs(cardHeight - nextHeight) > 0.5;
-            cardHeight = nextHeight;
+            const cardHeight = card.offsetHeight || 620;
             element.style.setProperty("--ef-top", `${top}px`);
             element.style.setProperty("--ef-height", `${cardHeight}px`);
             element.style.setProperty("--ef-travel", `${totalTravel}px`);
-            return changed;
           };
 
           measure();
@@ -286,6 +282,10 @@ export function EduFeedbackCards({
           update(trigger);
 
           navigateRef.current = (index: number) => {
+            // Documents and other expandable content earlier in the article
+            // can shift the questionnaire while its card size stays the same.
+            measure();
+            trigger.refresh();
             const targetPos = trigger.start + index * stepSpan;
             const track = inner?.closest<HTMLElement>(".wiki-reader-track");
             if (projected && inner && track) {
@@ -306,13 +306,16 @@ export function EduFeedbackCards({
             if (frame || !alive) return;
             frame = requestAnimationFrame(() => {
               frame = 0;
-              if (measure()) trigger.refresh();
+              measure();
+              trigger.refresh();
             });
           };
 
           const observer = new ResizeObserver(requestMeasure);
           observer.observe(card);
           if (projected && inner) observer.observe(inner);
+          const article = element.closest(".wiki-article");
+          if (article) observer.observe(article);
           window.addEventListener("resize", requestMeasure, { passive: true });
           whenPageLoaderLeaves().then(() => {
             if (!alive) return;

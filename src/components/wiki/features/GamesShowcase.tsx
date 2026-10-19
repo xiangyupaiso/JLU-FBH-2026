@@ -188,10 +188,14 @@ export function GamesProvider({ children }: { children: ReactNode }) {
 
   const closeGame = useCallback(() => {
     setActiveGame(null);
-    window.requestAnimationFrame(() =>
-      triggerRef.current?.focus({ preventScroll: true }),
-    );
   }, []);
+
+  // Message-based closes may commit after the next animation frame. Restore
+  // focus after the dialog cleanup has removed the background's inert state.
+  useEffect(() => {
+    if (activeGame === null)
+      triggerRef.current?.focus({ preventScroll: true });
+  }, [activeGame]);
 
   const scrollToShowcase = useCallback(
     (game: GameKey, triggerEl?: Element | null) => {
