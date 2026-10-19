@@ -338,6 +338,19 @@ const sectionContents: SectionContent[] = [
         "paragraphs": [
           "Figure 1. Tree diagram of the plasmid design phase"
         ]
+      },
+      {
+        "type": "subheading",
+        "id": "hp-plasmid-design-4",
+        "index": "5.4",
+        "title": "Summary"
+      },
+      {
+        "type": "prose",
+        "paragraphs": [
+          "The end point of the plasmid design phase was not the determination of a single sequence, but a traceable, reviewable molecular design decision system with clearly defined boundaries. We shifted from “which platform should be used to express the antigen” to “circRNA as a systems-engineering optimization platform,” establishing circRNA as the core expression platform through Professor Hu Jifan; from “does the public understand the technology” to “public cognition map and responsible communication,” obtaining genuine feedback on technology cognition through the public questionnaire and pushing Education from advantage promotion toward a three-level explanation framework of “what it is, how it differs from gene editing, and what we currently know and do not know”; from “which target is best” to “what combination of targets can cover more tumor cells,” establishing a multi-target antigen design framework through Professor Wang Yishu; from “which HLA is best” to “an informed trade-off among global coverage, population suitability, and experimental feasibility,” completing the clear positioning of HLA-A*02:01 through Professor Wu Di; from “can AlphaFold 3 rank epitopes” to “what role structure prediction should play in the evidence chain,” positioning pMHC structure analysis as a quality control layer between sequence prediction and experimental validation through two interviews with Professor Guan Qingtian; and through Professor Meng Xiangyu, restructuring CircuForge from a collection of tools into a guided design workflow. The ethical boundaries of safety statements were delineated by Professor Niu Junqi, and the immunological constraints of ADC target reuse were confirmed in the follow-up visit with Professor Hu Jifan.",
+          "Plasmid design provided inputs with consistent background, compliant sources, and clear boundaries for the in vitro experiments, and once again confirmed the principle of responsible innovation: “questions that can be answered with evidence are not answered with slogans; questions without evidence for now are acknowledged as boundaries; and questions that cannot be concluded are not promised in advance.”"
+        ]
       }
     ]
   },
@@ -456,6 +469,19 @@ const sectionContents: SectionContent[] = [
           "Figure 2. Tree diagram of the in vitro phase",
           "Legend: Nodes on the same horizontal line indicate a parallel relationship; solid arrows indicate a progression relationship—from one interview we obtained something, on the basis of which the next interview indicated by the arrow was conducted; a follow-up visit is indicated by an arrow pointing back, meaning that we returned to the same interviewee with new experimental results or new questions for a second round of validation; dashed arrows indicate the continuation of evidence and principles across phases or nodes (for example, the principle established in the plasmid design phase—“questions that can be answered with evidence are not answered with slogans”—continues into the ethical review of the in vitro experiments) and do not change the progression relationships between nodes; Outlook nodes, shown in dashed boxes, indicate validation directions not yet completed in the current phase. Each edge relationship in the figure has a corresponding textual description in “4. Stakeholder Interviews Under the CIRC Framework.”"
         ]
+      },
+      {
+        "type": "subheading",
+        "id": "hp-in-vitro-4",
+        "index": "6.4",
+        "title": "Summary"
+      },
+      {
+        "type": "prose",
+        "paragraphs": [
+          "The end point of the in vitro experiments was not to produce a definitive ranking of candidate epitopes based on a single assay, but an experimental system that turns “molecular design” into “reviewable evidence.” Through two interviews with Yang Ruohan, we established the orthogonal circularization verification system of “RNase R-resistant fraction + cross-BSJ detection + Sanger sequencing” ; through the cross-phase follow-up visit with Professor Niu Junqi, we abandoned volunteer blood collection and switched to commercially available PBMCs with defined HLA-A*02:01 typing, making ethical constraints and experimental variable control hold simultaneously; through two interviews with the academic mentor and researcher Jia Lin, we positioned ELISpot as the first-layer functional screening and K562 as a supplementary readout of overall killing potential. Because the K562 results showed limited and statistically non-significant differences between groups, we did not use them for candidate ranking or antigen-specific killing claims, but retained them as supplementary evidence that the stimulated effector cells possessed cytotoxic potential; through Professor Miao Lei, we established an off-target safety window evaluation with HLA matching, multiple tissue origins, and multiple effector ratios.",
+          "We defined four non-interchangeable evidence layers for the functional evaluation—immune response, killing function, correct killing, and not harming normal tissue. Among them, the immune-response readouts (ELISpot), the overall killing capacity (K562), and the off-target safety screening (HLA-matched normal cells of multiple tissue origins) were experimentally completed. For the “correct killing” layer, we selected the four highest-performing candidates from the ELISpot results to construct the Combined vaccine, and compared it with TROP2, the most prominent single-candidate comparator, in the MDA-MB-231 killing assay. The Combined vaccine showed stronger killing than TROP2, supporting the validity of our selection strategy. However, this comparison does not establish the individual antigen-specific contribution of every epitope, so broader candidate-by-candidate validation remains an Outlook direction. The in vitro experiments provided inputs with consistent background, compliant sources, clear quality control, and defined boundaries for the in vivo proof of concept, and once again confirmed the principle: “questions that can be answered with evidence are not answered with slogans; questions without evidence for now are acknowledged as boundaries; and questions that cannot be concluded are not promised in advance”—every candidate epitope entering the next stage has a clear boundary of what can and cannot be proven about it."
+        ]
       }
     ]
   },
@@ -572,6 +598,19 @@ const sectionContents: SectionContent[] = [
         "type": "prose",
         "paragraphs": [
           "Figure 3. Tree diagram of the in vivo phase"
+        ]
+      },
+      {
+        "type": "subheading",
+        "id": "hp-in-vivo-4",
+        "index": "7.4",
+        "title": "Summary"
+      },
+      {
+        "type": "prose",
+        "paragraphs": [
+          "The end point of the in vivo experiments was not a series of impressive TGI numbers, but an evidence logic in which the strength of the conclusions matches the capacity of the model. We shifted from “which model is closest to real breast cancer” to “which model is most suitable for answering the question we truly need to solve now,” establishing the subcutaneous tumor model; from “which vector has the highest transfection efficiency” to “which is most suitable as CirCure's long-term delivery platform,” defining circRNA + LNP; through Professor Song Haiming, the animal experiments were placed in the strict information flow of “in vitro calibration—prediction lock—in vivo validation”; through Professor Sun Tianmeng, the key comparison and efficacy criterion were locked in advance; through Mr. Li Zhiman, the sample size, humane endpoints, and bias control were justified with the 3R principles and the EDA, and ethics approval was obtained (JDYY20261369); through Dean Cui Jiuwei, the three-layer readout of “tumor phenotype—systemic immunity—tumor-local immunity” was established; and finally, on the HLA breakpoint raised by Professor Zhao Tiesuo, the existing results were clearly positioned as the in vivo proof of concept of the multi-epitope circRNA-LNP platform—platform-level effects truthfully reported, mechanism-level conclusions with boundaries retained, and the antigen-specific validation with HLA-A*02:01 transgenic and humanized mice entered the Outlook.",
+          "“Animal experiments” thereby shifted from outcome-oriented efficacy demonstration to an evidence step that accepts tests against pre-frozen predictions and makes every animal's data effectively answer the pre-defined questions, continuing the responsible innovation principle of “questions that can be answered with evidence are not answered with slogans; questions without evidence for now are acknowledged as boundaries; and questions that cannot be concluded are not promised in advance.”"
         ]
       }
     ]

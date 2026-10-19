@@ -139,9 +139,14 @@ function InlineCopy({ text }: { text: string }) {
           if (part.startsWith("*") && part.endsWith("*"))
             return <em key={index}>{part.slice(1, -1)}</em>;
           const link = part.match(/^\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)$/);
-          return link ? (
+          if (!link) return part;
+          const url = new URL(link[2]);
+          const isDetailLink =
+            ["2026.igem.wiki", "wiki.dayquay.com"].includes(url.hostname) &&
+            url.pathname.startsWith("/jlu-fbh/");
+          return (
             <a
-              className="wiki-prose-link"
+              className={`wiki-prose-link${isDetailLink ? " eng-detail-link" : ""}`}
               key={index}
               href={link[2]}
               target="_blank"
@@ -149,8 +154,6 @@ function InlineCopy({ text }: { text: string }) {
             >
               {link[1]}
             </a>
-          ) : (
-            part
           );
         })}
     </>

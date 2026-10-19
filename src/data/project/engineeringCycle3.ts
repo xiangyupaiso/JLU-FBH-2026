@@ -280,7 +280,7 @@ export const cycle3Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "After confirming the identity of the Combined circRNA preparation, we next asked whether its circular structure provided greater persistence than the corresponding linear precursor—an important reason for selecting circRNA as the project platform. We therefore established a matched time-course comparison using equal masses of both RNA forms from the same preparation batch, incubated at 37 °C and sampled at 0, 24, 48 and 72 h. By aligning their sequence background, starting mass and incubation conditions, the experiment focused on the effect of RNA topology on persistence (Wesselhoeft et al., 2018)."
+          "After characterising the Combined circRNA preparation, we compared its in vitro persistence with that of its corresponding linear precursor—an important experimental question underlying our choice of the circRNA platform. Equal RNA masses from the same preparation batch were incubated at 37 °C and sampled at 0, 24, 48 and 72 h. This assay compared the persistence of the mature circRNA preparation and its linear precursor under the defined incubation conditions (Wesselhoeft et al., 2018)."
 ]
         },
         {
@@ -1267,7 +1267,7 @@ export const cycle3Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "The Pilu Town observation and interface walkthrough showed that first-time learners benefited from receiving the experimental purpose, safety information, instruments and reagents before beginning an unfamiliar virtual procedure, with the same information remaining available during operation. We therefore retained the four-card entry as the standard orientation structure for the Virtual Laboratory. This decision also extended layered education from a single interface to a complete teaching route: the next iteration would connect virtual orientation, physical experimentation, result interpretation and molecular design for high-school learners in Synbio Classroom."
+          "The Pilu Town observations identified the need to provide the experimental purpose, safety information, instruments and reagents before the first virtual operation. A walkthrough of the revised interface confirmed that these materials appeared before the first operation and remained accessible during the procedure. We therefore retained the four-card entry as the standard orientation structure for the Virtual Laboratory. This decision also extended layered education from a single interface to a complete teaching route: the next iteration would connect virtual orientation, physical experimentation, result interpretation and molecular design for high-school learners in Synbio Classroom."
 ]
         },
         {

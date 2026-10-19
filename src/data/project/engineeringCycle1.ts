@@ -849,7 +849,7 @@ export const cycle1Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "The proteomic results supported all four antigen sources in TNBC tissue, but tumour samples also contain immune, stromal and endothelial cells.We therefore asked whether the corresponding genes were enriched in malignant cells and whether they marked the same or complementary malignant-cell populations. GSE176078—the accession number of a public single-cell and spatial atlas of human breast cancer in the Gene Expression Omnibus—retained the patient and cell-type identities required for this analysis (Wu et al., 2021)."
+          "The proteomic results supported all four antigen sources in TNBC tissue, but tumour samples also contain immune, stromal and endothelial cells. We therefore asked whether the corresponding genes were enriched in malignant cells and whether they marked the same or complementary malignant-cell populations. GSE176078—the accession number of a public single-cell and spatial atlas of human breast cancer in the Gene Expression Omnibus—retained the patient and cell-type identities required for this analysis (Wu et al., 2021)."
 ]
         },
         {
@@ -1198,7 +1198,7 @@ export const cycle1Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "Before the four antigen sources could enter epitope screening, their later RNA designs needed a common human-cell context. We therefore required a defined cell source, a consistent route for preparing antigen-presenting and responder cells, and records that would keep biological inputs comparable across constructs."
+          "For the later experimental comparison of epitope-encoding RNA constructs, we needed a common human-cell context. We therefore required a defined cell source, a consistent route for preparing antigen-presenting and responder cells, and records that would keep biological inputs comparable across constructs."
 ]
         }
           ]
@@ -1257,7 +1257,7 @@ export const cycle1Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "The common DC–T-cell framework made a controlled first comparison possible: different epitope designs could later enter the same cell-preparation and culture route, while cell source and construct identity remained visible during interpretation. The four antigen sources were therefore ready to move from antigen-level evidence to peptide prediction and experimental construct design. Further details are provided in [Experiments: human-cell preparation](https://2026.igem.wiki/jlu-fbh/experiments#exp-2-1) and [Integrated Human Practices: human-material ethics](https://2026.igem.wiki/jlu-fbh/human-practices#hp-in-vitro-1)."
+          "The common DC–T-cell framework defined the cell source, preparation route and culture conditions for the later construct comparison. Together with the antigen and epitope records, it provided a shared experimental context for evaluating different RNA designs. Further details are provided in [Experiments: human-cell preparation](https://2026.igem.wiki/jlu-fbh/experiments#exp-2-1) and [Integrated Human Practices: human-material ethics](https://2026.igem.wiki/jlu-fbh/human-practices#hp-in-vitro-1)."
 ]
         }
           ]
@@ -1267,6 +1267,6 @@ export const cycle1Section: WikiSection = {
   ],
   note: {
     label: "Cycle 1 outcome",
-    body: "Cycle 1 completed the **T—Targeting** stage of TIME, moving from intended use to a four-antigen strategy ready for epitope-level engineering. We selected a measurable circRNA platform, established a clinically grounded four-antigen starting set and retained TROP2, B7-H4, Nectin-4 and LIV-1 through clinical, protein-level, malignant-cell and patient-level evidence.Education and Visual Design established an adaptable first language for circRNA; CircuForge V1.0 began to connect the computational handoff; and the common DC–T-cell workflow prepared a shared experimental setting. Cycle 2 could now ask a narrower engineering question: which epitopes from the four antigen sources should be encoded, built and compared?"
+    body: "Cycle 1 completed the **T—Targeting** stage of TIME, moving from intended use to a four-antigen strategy ready for epitope-level engineering. We selected a measurable circRNA platform, established a clinically grounded four-antigen starting set and retained TROP2, B7-H4, Nectin-4 and LIV-1 through clinical, protein-level, malignant-cell and patient-level evidence. Education and Visual Design established an adaptable first language for circRNA; CircuForge V1.0 began to connect the computational handoff; and the common DC–T-cell workflow prepared a shared experimental setting. Cycle 2 could now ask a narrower engineering question: which epitopes from the four antigen sources should be encoded, built and compared?"
   }
 };

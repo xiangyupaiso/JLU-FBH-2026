@@ -22,6 +22,7 @@ export function StakeholderTrackerEmbed({
       <iframe
         className="sust-tracker-embed__frame"
         src={tool.url}
+        srcDoc={tool.html}
         title={tool.title}
         loading="lazy"
       />

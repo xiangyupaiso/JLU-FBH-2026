@@ -1,5 +1,5 @@
 /* This narrative layout is confined to Engineering; shared route skin is unchanged. */
-.wiki-page--engineering {
+.wiki-page.wiki-page--engineering {
   --route-frame-image: none;
   --eng-ink: #243d2c;
   --eng-t: #2d6898;
@@ -10,9 +10,9 @@
   --eng-build: #2f6f4e;
   --eng-test: #c84b3e;
   --eng-learn: #9c6818;
-  --wiki-h2-size: clamp(25px, 2.1vw, 30px);
-  --wiki-h3-size: clamp(21px, 1.8vw, 26px);
-  --wiki-h4-size: clamp(19px, 1.55vw, 22px);
+  --wiki-h2-size: clamp(30px, 3vw, 40px);
+  --wiki-h3-size: clamp(26px, 2.6vw, 34px);
+  --wiki-h4-size: clamp(22px, 2vw, 26px);
 }
 .wiki-page--engineering [data-wiki-reveal] {
   opacity: 1;
@@ -175,6 +175,29 @@
 .wiki-page--engineering .wiki-prose p + p {
   margin-top: 16px !important;
 }
+.wiki-page--engineering a.eng-detail-link,
+.wiki-page--engineering a.eng-detail-link:visited {
+  color: #174f78;
+  background: #eaf2f8;
+  font-weight: 650;
+  text-decoration-line: underline;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 3px;
+  padding: 0.08em 0.22em;
+  border-radius: 4px;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+.wiki-page--engineering a.eng-detail-link:hover {
+  color: #103b5c;
+  background: #dcebf6;
+}
+.wiki-page--engineering a.eng-detail-link:focus-visible {
+  outline: 2px solid #174f78;
+  outline-offset: 3px;
+}
 .wiki-page--engineering .eng-outcome {
   border-top: 1px solid var(--route-line);
   padding-bottom: 96px;
@@ -266,9 +289,11 @@
   color: var(--route-heading-ink);
   font-family: var(--font-sans), sans-serif !important;
   font-size: var(--wiki-h3-size);
-  font-weight: 700;
-  line-height: 1.35;
+  font-weight: 750;
+  line-height: 1.28;
   text-wrap: balance;
+  white-space: normal;
+  overflow-wrap: anywhere;
 }
 .wiki-page--engineering .eng-scene-heading .eng-iteration-index {
   margin-right: 12px;
@@ -386,8 +411,8 @@
   color: inherit;
   font-family: var(--font-sans);
   font-size: var(--wiki-h4-size);
-  font-weight: 650;
-  line-height: 1.4;
+  font-weight: 700;
+  line-height: 1.3;
 }
 .wiki-page--engineering .eng-stage-arrow {
   display: inline-flex;
@@ -719,7 +744,7 @@
   }
   .wiki-page--engineering .eng-slides-clip {
     height: 100%;
-    overflow: hidden;
+    overflow: clip;
   }
   .wiki-page--engineering .eng-slides {
     display: flex;

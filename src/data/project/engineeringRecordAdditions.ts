@@ -1068,7 +1068,7 @@ export const cycle2Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "Automated tests examined identifiers, review states, Cart behaviour, task progression, external-response parsing and export readback. Task-based user testing then followed the workflow from data import and target or epitope review to junction inspection and export. Early sessions identified unclear task-status messages and export guidance. After these elements were revised, participants completed the workflow more independently and efficiently, supporting the usability and transferability of CircuForge V2.0."
+          "Automated tests examined identifiers, review states, Cart behaviour, task progression, external-response parsing and export readback. Task-based user testing then followed the workflow from data import and target or epitope review to junction inspection and export. Early sessions identified unclear task-status messages and export guidance. Follow-up sessions revisited the revised task-status and export guidance, focusing on whether users could continue the workflow, inspect returned results and locate exported files."
 ]
         },
         {

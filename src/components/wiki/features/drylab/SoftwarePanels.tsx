@@ -170,6 +170,19 @@ export function softwareFeatures(): Record<string, ReactNode> {
     "software-circuforge-guide": (
       <SoftwareGuide guide={softwareGuides.circuforge} />
     ),
+    "software-torusfold-video": (
+      <div className="software-usage-video">
+        <iframe
+          title="JLU-FBH: TorusFold-Hybrid Introduction (2026) [English]"
+          src="https://video.igem.org/videos/embed/fGFi6rAF2bQkpYTjDoxc7X?subtitle=en"
+          allow="fullscreen"
+          sandbox="allow-same-origin allow-scripts allow-popups allow-forms"
+          loading="lazy"
+          allowFullScreen
+          style={{ border: 0 }}
+        />
+      </div>
+    ),
     "software-torusfold-guide": (
       <SoftwareGuide guide={softwareGuides.torusfold} />
     ),
