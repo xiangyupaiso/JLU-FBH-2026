@@ -24,42 +24,8 @@ export interface StakeholderPhoto {
 
 export type StakeholderPhotoSet = ReadonlyArray<StakeholderPhoto>;
 
-/* ----------------------------------------------------------------------------
- * Local sources — Vite emits a hashed URL per import, so these are referenced
- * through the module graph rather than by path string.
- * -------------------------------------------------------------------------- */
-
-import liChengli1 from "../../../assets/wiki/sustainability/sustainability-sdg3-li-chengli-1.webp";
-import liChengli2 from "../../../assets/wiki/sustainability/sustainability-sdg3-li-chengli-2.webp";
-import liChengli3 from "../../../assets/wiki/sustainability/sustainability-sdg3-li-chengli-3.webp";
-import liChengli4 from "../../../assets/wiki/sustainability/sustainability-sdg3-li-chengli-4.webp";
-import tianRunhui1 from "../../../assets/wiki/sustainability/sustainability-sdg3-tian-runhui-1.webp";
-import tnbcPatients1 from "../../../assets/wiki/sustainability/sustainability-sdg3-tnbc-patients-1.webp";
-import tnbcPatients2 from "../../../assets/wiki/sustainability/sustainability-sdg3-tnbc-patients-2.webp";
-import tnbcPatients3 from "../../../assets/wiki/sustainability/sustainability-sdg3-tnbc-patients-3.webp";
-import wenJing1 from "../../../assets/wiki/sustainability/sustainability-sdg3-wen-jing-1.webp";
-import wenJing2 from "../../../assets/wiki/sustainability/sustainability-sdg3-wen-jing-2.webp";
-import yangShujuan1 from "../../../assets/wiki/sustainability/sustainability-sdg3-yang-shujuan-1.webp";
-import yangShujuan2 from "../../../assets/wiki/sustainability/sustainability-sdg3-yang-shujuan-2.webp";
-import yangShujuan3 from "../../../assets/wiki/sustainability/sustainability-sdg3-yang-shujuan-3.webp";
-import yangShujuan4 from "../../../assets/wiki/sustainability/sustainability-sdg3-yang-shujuan-4.webp";
-import yangShujuan5 from "../../../assets/wiki/sustainability/sustainability-sdg3-yang-shujuan-5.webp";
-import jiaLin1 from "../../../assets/wiki/sustainability/sustainability-sdg3-jia-lin-1.webp";
-import jiaLin2 from "../../../assets/wiki/sustainability/sustainability-sdg3-jia-lin-2.webp";
-import jiaLin3 from "../../../assets/wiki/sustainability/sustainability-sdg3-jia-lin-3.webp";
-import jiaLin4 from "../../../assets/wiki/sustainability/sustainability-sdg3-jia-lin-4.webp";
-import jiaLin5 from "../../../assets/wiki/sustainability/sustainability-sdg3-jia-lin-5.webp";
-import zhaoGang1 from "../../../assets/wiki/sustainability/sustainability-sdg3-zhao-gang-1.webp";
-import zhaoGang2 from "../../../assets/wiki/sustainability/sustainability-sdg3-zhao-gang-2.webp";
-import zhaoGang3 from "../../../assets/wiki/sustainability/sustainability-sdg3-zhao-gang-3.webp";
-import zhaoGang4 from "../../../assets/wiki/sustainability/sustainability-sdg3-zhao-gang-4.webp";
-import zhaoGang5 from "../../../assets/wiki/sustainability/sustainability-sdg3-zhao-gang-5.webp";
-import globalYouth1 from "../../../assets/wiki/sustainability/sustainability-sdg3-global-youth-1.webp";
-import globalYouth2 from "../../../assets/wiki/sustainability/sustainability-sdg3-global-youth-2.webp";
-import globalYouth3 from "../../../assets/wiki/sustainability/sustainability-sdg3-global-youth-3.webp";
-import globalYouth4 from "../../../assets/wiki/sustainability/sustainability-sdg3-global-youth-4.webp";
-import globalYouth5 from "../../../assets/wiki/sustainability/sustainability-sdg3-global-youth-5.webp";
-import globalYouth6 from "../../../assets/wiki/sustainability/sustainability-sdg3-global-youth-6.webp";
+const CDN = "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/sustainability";
+const photoUrl = (slug: string) => `${CDN}/sustainability-sdg3-${slug}.webp`;
 
 /* ----------------------------------------------------------------------------
  * Per-person photo sets
@@ -67,22 +33,22 @@ import globalYouth6 from "../../../assets/wiki/sustainability/sustainability-sdg
 
 const liChengli: StakeholderPhotoSet = [
   {
-    src: liChengli1,
+    src: photoUrl("li-chengli-1"),
     alt: "Project pitch shared on screen during the video consultation with Dr. Chengli Li",
     caption: "Presenting the CirCure concept",
   },
   {
-    src: liChengli2,
+    src: photoUrl("li-chengli-2"),
     alt: "Video consultation gallery view with our team and Dr. Chengli Li",
     caption: "Video consultation",
   },
   {
-    src: liChengli3,
+    src: photoUrl("li-chengli-3"),
     alt: "Team members joining the consultation from their own rooms",
     caption: "Joining from Jilin",
   },
   {
-    src: liChengli4,
+    src: photoUrl("li-chengli-4"),
     alt: "Later stage of the video consultation with Dr. Chengli Li",
     caption: "Reordering our priorities",
   },
@@ -90,94 +56,150 @@ const liChengli: StakeholderPhotoSet = [
 
 const tianRunhui: StakeholderPhotoSet = [
   {
-    src: tianRunhui1,
-    alt: "Chat sticker sent by Runhui Tian during the discussion on patient communication",
-    caption: "How to approach the conversation",
+    src: "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/sustainability/sdg3/02-runhui-tian-1.avif",
+    alt: "Interview with Runhui Tian — photograph 1",
+    caption: "Runhui Tian",
+  },
+  {
+    src: "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/sustainability/sdg3/02-runhui-tian-2.avif",
+    alt: "Interview with Runhui Tian — photograph 2",
+    caption: "Runhui Tian",
+  },
+  {
+    src: "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/sustainability/sdg3/02-runhui-tian-3.avif",
+    alt: "Interview with Runhui Tian — photograph 3",
+    caption: "Runhui Tian",
+  },
+  {
+    src: "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/sustainability/sdg3/02-runhui-tian-4.avif",
+    alt: "Interview with Runhui Tian — photograph 4",
+    caption: "Runhui Tian",
   },
 ];
 
 const tnbcPatients: StakeholderPhotoSet = [
   {
-    src: tnbcPatients1,
-    alt: "Ward visit at the Cancer Center of the First Bethune Hospital of Jilin University",
-    caption: "Ward visit",
+    src: "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/sustainability/sdg3/03-tnbc-patients-1.avif",
+    alt: "TNBC Patients — photograph 1",
+    caption: "TNBC Patients",
   },
   {
-    src: tnbcPatients2,
-    alt: "Talking with a patient at her bedside while a team member takes notes",
-    caption: "Listening at the bedside",
+    src: "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/sustainability/sdg3/03-tnbc-patients-2.avif",
+    alt: "TNBC Patients — photograph 2",
+    caption: "TNBC Patients",
   },
   {
-    src: tnbcPatients3,
-    alt: "Interview continuing with two patients seated on adjacent beds",
-    caption: "Recurrence, cost, trust",
+    src: "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/sustainability/sdg3/03-tnbc-patients-3.avif",
+    alt: "TNBC Patients — photograph 3",
+    caption: "TNBC Patients",
+  },
+];
+
+const wangJianguo: StakeholderPhotoSet = [
+  {
+    src: "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/sustainability/sdg3/05-jianguo-wang-1.avif",
+    alt: "Jianguo Wang — photograph 1",
+    caption: "Jianguo Wang",
+  },
+  {
+    src: "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/sustainability/sdg3/05-jianguo-wang-2.avif",
+    alt: "Jianguo Wang — photograph 2",
+    caption: "Jianguo Wang",
+  },
+  {
+    src: "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/sustainability/sdg3/05-jianguo-wang-3.avif",
+    alt: "Jianguo Wang — photograph 3",
+    caption: "Jianguo Wang",
+  },
+  {
+    src: "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/sustainability/sdg3/05-jianguo-wang-4.avif",
+    alt: "Jianguo Wang — photograph 4",
+    caption: "Jianguo Wang",
   },
 ];
 
 const wenJing: StakeholderPhotoSet = [
   {
-    src: wenJing1,
-    alt: "Voice call with Jing Wen, commercial health insurance specialist",
-    caption: "Voice consultation",
+    src: "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/sustainability/sdg3/06-jing-wen-1.avif",
+    alt: "Jing Wen — photograph 1",
+    caption: "Jing Wen",
   },
   {
-    src: wenJing2,
-    alt: "Team member with Jing Wen at a youth podcast dialogue event",
-    caption: "Meeting in person",
+    src: "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/sustainability/sdg3/06-jing-wen-2.avif",
+    alt: "Jing Wen — photograph 2",
+    caption: "Jing Wen",
+  },
+];
+
+const wangLei: StakeholderPhotoSet = [
+  {
+    src: "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/sustainability/sdg3/07-lei-wang-1.avif",
+    alt: "Lei Wang — photograph 1",
+    caption: "Lei Wang",
+  },
+  {
+    src: "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/sustainability/sdg3/07-lei-wang-2.avif",
+    alt: "Lei Wang — photograph 2",
+    caption: "Lei Wang",
+  },
+  {
+    src: "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/sustainability/sdg3/07-lei-wang-3.avif",
+    alt: "Lei Wang — photograph 3",
+    caption: "Lei Wang",
   },
 ];
 
 const yangShujuan: StakeholderPhotoSet = [
   {
-    src: yangShujuan1,
-    alt: "Team members with Yang Shujuan holding the team banner in her office",
+    src: photoUrl("yang-shujuan-1"),
+    alt: "Team members with Shujuan Yang holding the team banner in her office",
     caption: "First Bethune Hospital",
   },
   {
-    src: yangShujuan2,
-    alt: "Yang Shujuan in conversation with three team members at her desk",
+    src: photoUrl("yang-shujuan-2"),
+    alt: "Shujuan Yang in conversation with three team members at her desk",
     caption: "Discussing prevention and screening",
   },
   {
-    src: yangShujuan3,
-    alt: "Yang Shujuan reading her notes during the discussion",
+    src: photoUrl("yang-shujuan-3"),
+    alt: "Shujuan Yang reading her notes during the discussion",
     caption: "Beyond treatment alone",
   },
   {
-    src: yangShujuan4,
-    alt: "Yang Shujuan holding up printed materials for the visiting team",
+    src: photoUrl("yang-shujuan-4"),
+    alt: "Shujuan Yang holding up printed materials for the visiting team",
     caption: "Reviewing our printed records",
   },
   {
-    src: yangShujuan5,
-    alt: "Yang Shujuan smiling at her desk as the team takes notes",
+    src: photoUrl("yang-shujuan-5"),
+    alt: "Shujuan Yang smiling at her desk as the team takes notes",
     caption: "Closing the discussion",
   },
 ];
 
 const jiaLin: StakeholderPhotoSet = [
   {
-    src: jiaLin1,
+    src: photoUrl("jia-lin-1"),
     alt: "Team members reviewing project material with Lin Jia in the laboratory",
     caption: "Laboratory discussion",
   },
   {
-    src: jiaLin2,
+    src: photoUrl("jia-lin-2"),
     alt: "Six people in the laboratory seated around a laptop",
     caption: "Clinical needs review",
   },
   {
-    src: jiaLin3,
+    src: photoUrl("jia-lin-3"),
     alt: "Lin Jia in a white coat seated with team members taking notes",
     caption: "From pathology to design",
   },
   {
-    src: jiaLin4,
+    src: photoUrl("jia-lin-4"),
     alt: "Lin Jia addressing five team members gathered in the laboratory",
     caption: "What problem should we solve?",
   },
   {
-    src: jiaLin5,
+    src: photoUrl("jia-lin-5"),
     alt: "Wider view of the laboratory discussion with Lin Jia gesturing",
     caption: "Clarifying the unmet need",
   },
@@ -185,62 +207,75 @@ const jiaLin: StakeholderPhotoSet = [
 
 const zhaoGang: StakeholderPhotoSet = [
   {
-    src: zhaoGang1,
-    alt: "Zhao Gang speaking with the team in a clinical office",
+    src: photoUrl("zhao-gang-1"),
+    alt: "Gang Zhao speaking with the team in a clinical office",
     caption: "Clinical management",
   },
   {
-    src: zhaoGang2,
-    alt: "Zhao Gang talking across his desk to a team member taking notes",
+    src: photoUrl("zhao-gang-2"),
+    alt: "Gang Zhao talking across his desk to a team member taking notes",
     caption: "Fitting into the care pathway",
   },
   {
-    src: zhaoGang3,
-    alt: "Team members holding iGEM and JLU-FBH emblems beside Zhao Gang",
+    src: photoUrl("zhao-gang-3"),
+    alt: "Team members holding iGEM and JLU-FBH emblems beside Gang Zhao",
     caption: "A shared goal",
   },
   {
-    src: zhaoGang4,
+    src: photoUrl("zhao-gang-4"),
     alt: "Five team members listening while one takes notes on a tablet",
     caption: "From lab bench to ward",
   },
   {
-    src: zhaoGang5,
-    alt: "Full team group photo with Zhao Gang and the team banner",
+    src: photoUrl("zhao-gang-5"),
+    alt: "Full team group photo with Gang Zhao and the team banner",
     caption: "Visit complete",
   },
 ];
 
 const globalYouth: StakeholderPhotoSet = [
   {
-    src: globalYouth1,
+    src: photoUrl("global-youth-1"),
     alt: "Opening ceremony of the 2026 Acceleration Week for Global Youth Development Programs",
     caption: "Acceleration Week, June 2026",
   },
   {
-    src: globalYouth2,
+    src: photoUrl("global-youth-2"),
     alt: "Team members with fellow participants at the Lin-Gang reception",
     caption: "Meeting peers from other regions",
   },
   {
-    src: globalYouth3,
+    src: photoUrl("global-youth-3"),
     alt: "Two team members during a workshop session at Acceleration Week",
     caption: "Workshop session",
   },
   {
-    src: globalYouth4,
+    src: photoUrl("global-youth-4"),
     alt: "Young practitioners from different countries seated in the session audience",
     caption: "Health and Well-being group",
   },
   {
-    src: globalYouth5,
+    src: photoUrl("global-youth-5"),
     alt: "Team member presenting the project at the Good Health and Well-being forum",
     caption: "Project pitch",
   },
   {
-    src: globalYouth6,
+    src: photoUrl("global-youth-6"),
     alt: "Team member in front of the Acceleration Week backdrop",
     caption: "Shenzhen and Wuhan",
+  },
+];
+
+const cuiJiuwei: StakeholderPhotoSet = [
+  {
+    src: "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/sustainability/sdg3/10-jiuwei-cui-1.avif",
+    alt: "Jiuwei Cui — photograph 1",
+    caption: "Jiuwei Cui",
+  },
+  {
+    src: "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/sustainability/sdg3/10-jiuwei-cui-2.avif",
+    alt: "Jiuwei Cui — photograph 2",
+    caption: "Jiuwei Cui",
   },
 ];
 
@@ -252,17 +287,18 @@ export const sdg3PhotoSets = {
   "sdg3-li-chengli": liChengli,
   "sdg3-tian-runhui": tianRunhui,
   "sdg3-tnbc-patients": tnbcPatients,
+  "sdg3-wang-jianguo": wangJianguo,
   "sdg3-wen-jing": wenJing,
+  "sdg3-wang-lei": wangLei,
   "sdg3-yang-shujuan": yangShujuan,
   "sdg3-jia-lin": jiaLin,
+  "sdg3-cui-jiuwei": cuiJiuwei,
   "sdg3-zhao-gang": zhaoGang,
   "sdg3-global-youth": globalYouth,
 } as const satisfies Record<string, StakeholderPhotoSet>;
 
 /**
- * `StakeholderProfile.id` → photos. Only the seven profiles with field
- * documentation appear; 04 / 05 / 07 / 10 have no images on file and therefore
- * render no photo layer at all.
+ * `StakeholderProfile.id` → photos.
  */
 export const sdg3StakeholderPhotos: Readonly<Record<string, StakeholderPhotoSet>> =
   sdg3PhotoSets;
@@ -272,9 +308,12 @@ export const sdg3AllPhotos: ReadonlyArray<StakeholderPhoto> = [
   ...liChengli,
   ...tianRunhui,
   ...tnbcPatients,
+  ...wangJianguo,
   ...wenJing,
+  ...wangLei,
   ...yangShujuan,
   ...jiaLin,
+  ...cuiJiuwei,
   ...zhaoGang,
   ...globalYouth,
 ];
@@ -303,16 +342,26 @@ export const sdg9PhotoSets = {
   "sdg9-01": hostedSdg9PhotoSet("01-yishu-wang", 5, "Interview with Professor Yishu Wang"),
   "sdg9-02": [
     {
-      src: "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/sustainability/sdg9/02-qingtian-guan.avif",
-      alt: "Interview with Mr. Guan Qingtian interview photo 1",
-      caption: "Interview with Mr. Guan Qingtian",
+      src: "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/sustainability/sdg9/02-qingtian-guan-1.avif",
+      alt: "Interview with Mr. Qingtian Guan interview photo 1",
+      caption: "Interview with Mr. Qingtian Guan",
+    },
+    {
+      src: "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/sustainability/sdg9/02-qingtian-guan-2.avif",
+      alt: "Interview with Mr. Qingtian Guan interview photo 2",
+      caption: "Interview with Mr. Qingtian Guan",
+    },
+    {
+      src: "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/sustainability/sdg9/02-qingtian-guan-3.avif",
+      alt: "Interview with Mr. Qingtian Guan interview photo 3",
+      caption: "Interview with Mr. Qingtian Guan",
     },
   ],
   "sdg9-03": hostedSdg9PhotoSet("03-jifan-hu", 6, "Interview with Professor Jifan Hu"),
   "sdg9-04": hostedSdg9PhotoSet("04-tiesuo-zhao", 5, "Interview with Professor Tiesuo Zhao"),
   "sdg9-05": hostedSdg9PhotoSet("05-junqi-niu", 6, "Interview with Professor Junqi Niu"),
   "sdg9-06": hostedSdg9PhotoSet("06-yuning-zhang", 7, "Interview with Professor Yuning Zhang"),
-  "sdg9-07": hostedSdg9PhotoSet("07-di-wu", 6, "Interview with Professor Wu Di"),
+  "sdg9-07": hostedSdg9PhotoSet("07-di-wu", 6, "Interview with Professor Di Wu"),
   "sdg9-08": hostedSdg9PhotoSet(
     "08-shanghai-lin-gang-research-center-for-medical-equipment",
     6,

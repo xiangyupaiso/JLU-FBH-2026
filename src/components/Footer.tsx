@@ -173,8 +173,8 @@ export function Footer() {
             className="circure-footer__navigation"
             aria-label="Footer navigation"
           >
-            <Link to="/description">Project</Link>
-            <Link to="/roster">Team</Link>
+            <Link to="/description">Description</Link>
+            <Link to="/roster">Rooster</Link>
             <Link to="/attributions">Attributions</Link>
           </nav>
           <div className="circure-footer__colophon">

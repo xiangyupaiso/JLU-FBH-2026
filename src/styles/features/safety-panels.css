@@ -128,6 +128,17 @@
   width: 75%;
   justify-self: center;
 }
+.safety-image-group--safety-images-19 .safety-image-group__item img,
+.safety-image-group--safety-images-25 .safety-image-group__item img,
+.safety-image-group--safety-images-27 .safety-image-group__item img {
+  aspect-ratio: 1080 / 721;
+  object-fit: cover;
+}
+.safety-image-group--safety-images-25.safety-image-group--grid .safety-image-group__item:last-child:nth-child(odd),
+.safety-image-group--safety-images-27.safety-image-group--grid .safety-image-group__item:last-child:nth-child(odd) {
+  width: calc(50% - 4px);
+  justify-self: center;
+}
 .wiki-page .safety-image-group figcaption {
   margin: 12px 0 0;
   color: var(--route-muted);
@@ -144,6 +155,10 @@
   }
   .safety-image-group__grid {
     gap: 5px;
+  }
+  .safety-image-group--safety-images-25.safety-image-group--grid .safety-image-group__item:last-child:nth-child(odd),
+  .safety-image-group--safety-images-27.safety-image-group--grid .safety-image-group__item:last-child:nth-child(odd) {
+    width: calc(50% - 2.5px);
   }
   .safety-folders .sust-archive--2x2 .sust-archive__cabinet {
     grid-template-columns: minmax(0, 1fr);

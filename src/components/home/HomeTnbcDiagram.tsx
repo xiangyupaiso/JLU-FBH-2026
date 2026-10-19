@@ -1,10 +1,10 @@
-import outline from "../../assets/home/tnbc-cell/outline.webp";
-import cytoplasm from "../../assets/home/tnbc-cell/cytoplasm.webp";
-import nucleus from "../../assets/home/tnbc-cell/nucleus.webp";
-import markers from "../../assets/home/tnbc-cell/markers.webp";
-import negativeUpper from "../../assets/home/tnbc-cell/negative-upper.webp";
-import negativeMiddle from "../../assets/home/tnbc-cell/negative-middle.webp";
-import negativeLower from "../../assets/home/tnbc-cell/negative-lower.webp";
+const outline = "https://static.igem.wiki/teams/6056/wiki/files/pages/home/tnbc-cell-outline.webp";
+const cytoplasm = "https://static.igem.wiki/teams/6056/wiki/files/pages/home/tnbc-cell-cytoplasm.webp";
+const nucleus = "https://static.igem.wiki/teams/6056/wiki/files/pages/home/tnbc-cell-nucleus.webp";
+const markers = "https://static.igem.wiki/teams/6056/wiki/files/pages/home/tnbc-cell-markers.webp";
+const negativeUpper = "https://static.igem.wiki/teams/6056/wiki/files/pages/home/tnbc-cell-negative-upper.webp";
+const negativeMiddle = "https://static.igem.wiki/teams/6056/wiki/files/pages/home/tnbc-cell-negative-middle.webp";
+const negativeLower = "https://static.igem.wiki/teams/6056/wiki/files/pages/home/tnbc-cell-negative-lower.webp";
 
 const layers = [
   { name: "outline", src: outline },

@@ -13,7 +13,7 @@
  * blocks and keys from the chapter, with no panel code to touch.
  */
 
-import { pdfPair, type LegacyTool, type SdgChapter, type SustainabilityStat } from "./sdgChapterContract";
+import { type LegacyToolPdf, type SdgChapter, type SustainabilityStat } from "./sdgChapterContract";
 import { sdg3Chapter } from "./sustainabilitySdg3";
 import { sdg9Chapter } from "./sustainabilitySdg9";
 import { sdg12Chapter } from "./sustainabilitySdg12";
@@ -44,6 +44,8 @@ export interface CoreSdg {
   summary: string;
   /** Anchor the card jumps to. */
   target: string;
+  /** Official UN SDG logo image. */
+  logoUrl?: string;
 }
 
 export interface ImpactTier {
@@ -75,18 +77,21 @@ export const coreSdgs: ReadonlyArray<CoreSdg> = [
     title: "Good Health and Well-being",
     summary: "Addressing the health needs of patients with TNBC.",
     target: "sdg3-health",
+    logoUrl: "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/sustainability/overview/sdg3.avif",
   },
   {
     number: 9,
     title: "Industry, Innovation and Infrastructure",
     summary: "Translating biomedical innovations into practice.",
     target: "sdg9-industry",
+    logoUrl: "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/sustainability/overview/sdg9.avif",
   },
   {
     number: 12,
     title: "Responsible Consumption and Production",
     summary: "Supporting the responsible development of medical technologies.",
     target: "sdg12-responsible-consumption",
+    logoUrl: "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/sustainability/overview/sdg12.avif",
   },
 ];
 
@@ -201,7 +206,7 @@ export const sstqnScoringSteps: ReadonlyArray<SstqnScoringStep> = [
  * -------------------------------------------------------------------------- */
 
 export const impactFrameworkSection = {
-  title: "SET-DEVELOP-GROW Impact Framework (SDG Impact Framework)",
+  title: "SET-DEVELOP-GROW Impact Framework",
   intro:
     "The SDG Impact Framework describes how CirCure’s sustainable development impacts evolve as the project develops—from **directly addressing core challenges** to **broader sustainable development impacts**, and ultimately to the systemic value it may generate over the long term. **SET** represents the core SDGs that CirCure directly addresses in response to its project objectives and stakeholder needs. **DEVELOP** captures the broader impacts and connections with additional SDGs that emerge as research and development, translation, and societal engagement progress. **GROW** represents the SDGs that CirCure could further advance through long-term research and development, clinical translation, and implementation at scale.",
   pathway:
@@ -257,19 +262,16 @@ export const stakeholderTracker = {
     "We also share **the actual records compiled throughout CirCure’s development** to demonstrate the tool’s use in practice. These records show how we documented stakeholder feedback, our responses, and implementation outcomes over time. The Tracker’s Chinese–English language switch changes the interface only; it does not automatically translate user-entered content. We therefore provide corresponding **Chinese and English versions of the records** so readers can review the full content in either language. An accompanying **User Manual**, also available in Chinese and English, explains the basic functions, field completion, and use of the tool to help other teams get started.",
     "To assess the Tracker’s usability and analytical value in real projects, we invited an iGEM team and a teacher experienced in project sustainability analysis to try the tool and provide feedback.",
   ],
-  /** Download cards; files are hosted on iGEM docs under these names. */
-  files: [
+  manuals: [
     {
-      title: "Stakeholder Sustainability Tracker — Blank Template",
-      pdfs: [{ label: "Template", fileName: "sustainability-stakeholder-tracker-template.pdf" }],
+      label: "User Manual — English",
+      fileName: "sustainability-stakeholder-sustainability-tracker-user-manual-en.pdf",
+      url: "https://static.igem.wiki/teams/6056/wiki/files/docs/sustainability-stakeholder-sustainability-tracker-user-manual-en.pdf",
     },
     {
-      title: "CirCure Tracker Records",
-      pdfs: pdfPair("stakeholder-tracker-records"),
+      label: "User Manual — Chinese",
+      fileName: "sustainability-stakeholder-sustainability-tracker-user-manual-cn.pdf",
+      url: "https://static.igem.wiki/teams/6056/wiki/files/docs/sustainability-stakeholder-sustainability-tracker-user-manual-cn.pdf",
     },
-    {
-      title: "User Manual",
-      pdfs: pdfPair("stakeholder-tracker-user-manual"),
-    },
-  ] satisfies ReadonlyArray<Pick<LegacyTool, "title" | "pdfs">>,
+  ] satisfies ReadonlyArray<LegacyToolPdf>,
 };

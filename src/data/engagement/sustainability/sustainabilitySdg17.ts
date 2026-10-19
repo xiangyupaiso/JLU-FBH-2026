@@ -1,6 +1,6 @@
 /** SDG 17 — finalized manuscript, in source order. Pure data, no JSX. */
 import type { SdgChapter } from "./sdgChapterContract";
-import { sdg17PhotoSets } from "./sustainabilitySdg17Assets";
+import { sdg17PhotoSets, sdg17RoundtablePdfs } from "./sustainabilitySdg17Assets";
 
 export const sdg17Chapter: SdgChapter = {
   id: "sdg17",
@@ -31,14 +31,14 @@ export const sdg17Chapter: SdgChapter = {
           {
             id: "sdg17-01-01",
             photos: sdg17PhotoSets["sdg17-01-01"],
-            index: "01-01",
+            index: "A",
             name: "Northeast China iGEM Meetup",
             whatChanged:
               "The event established a regional peer network and made Safety a shared topic for discussion and judgment across teams. It also provided a foundation for subsequent collaboration.",
             sdgs: [17, 4],
             sdgsLabel: "SDGs",
             partnerLabel: "Partners / Reach",
-            partner: "Regional iGEM Teams · [11 Teams]",
+            partner: "Regional iGEM Teams · 11 Teams",
             challengeLabel: "What Connected Us",
             challenge:
               "Teams in the region needed a face-to-face platform to present their projects, exchange experience, and identify opportunities for collaboration.",
@@ -90,7 +90,7 @@ export const sdg17Chapter: SdgChapter = {
           {
             id: "sdg17-01-02",
             photos: sdg17PhotoSets["sdg17-01-02"],
-            index: "01-02",
+            index: "B",
             name: "China-wide iGEM Exchange",
             whatChanged:
               "We expanded our regional connections into a broader national peer network and identified opportunities for knowledge sharing and joint content development.",
@@ -151,14 +151,14 @@ export const sdg17Chapter: SdgChapter = {
           },
           {
             id: "sdg17-01-03",
-            index: "01-03",
+            index: "C",
             name: "Together With iGEM",
             whatChanged:
               "Together, we corrected 43 scientific misconceptions and produced a collection covering multiple fields of synthetic biology application.",
             sdgs: [17, 4],
             sdgsLabel: "SDGs",
             partnerLabel: "Partners / Reach",
-            partner: "[17 Teams] · [11 Villages]",
+            partner: "17 Teams · 11 Villages",
             challenge:
               "Different iGEM Villages encounter different scientific misconceptions, and each team has expertise closely connected to its own research area.",
             challengeLabel: "",
@@ -195,7 +195,7 @@ export const sdg17Chapter: SdgChapter = {
                 {
                   heading: "03 Shared Outcome",
                   blocks: [
-                    "17 teams working across 11 iGEM Villages completed 43 explanations addressing scientific misconceptions.",
+                    "17 teams working across 11 iGEM Villages completed 47 explanations addressing scientific misconceptions.",
                     "These contributions were compiled into a resource covering several synthetic biology application areas for continued use in public communication and education.",
                   ],
                 },
@@ -210,14 +210,14 @@ export const sdg17Chapter: SdgChapter = {
           },
           {
             id: "sdg17-01-04",
-            index: "01-04",
+            index: "D",
             name: "Collaborative Baduanjin Video",
             whatChanged:
               "We produced a complete joint Baduanjin health promotion video, connecting youth collaboration, health communication, and traditional culture.",
             sdgs: [17, 3, 4],
             sdgsLabel: "SDGs",
             partnerLabel: "Partners / Reach",
-            partner: "[5 iGEM Teams]",
+            partner: "5 iGEM Teams",
             challengeLabel: "What Connected Us",
             challenge:
               "We wanted inter-team collaboration to extend into health activities in which the public could participate directly.",
@@ -270,14 +270,14 @@ export const sdg17Chapter: SdgChapter = {
           },
           {
             id: "sdg17-01-05",
-            index: "01-05",
+            index: "E",
             name: "From Teams, For Teams",
             whatChanged:
               "We developed Handbook + Micro-videos + FAQ Resources to provide guidance that future iGEM teams can continue using and expanding.",
             sdgs: [17, 4],
             sdgsLabel: "SDGs",
             partnerLabel: "Partners / Reach",
-            partner: "[5 iGEM Teams]",
+            partner: "5 iGEM Teams",
             challengeLabel: "What Connected Us",
             challenge:
               "New teams often need to work out project design, experimental progress, Human Practices, Wiki development, and team management from the beginning, even though relevant experience already exists across the community.",
@@ -353,6 +353,7 @@ export const sdg17Chapter: SdgChapter = {
       },
       {
         id: "sdg17-partner-group-2",
+        layout: "prose",
         intro: [],
         profiles: [
           {
@@ -385,6 +386,7 @@ export const sdg17Chapter: SdgChapter = {
       },
       {
         id: "sdg17-partner-group-3",
+        layout: "prose",
         intro: [],
         profiles: [
           {
@@ -417,6 +419,7 @@ export const sdg17Chapter: SdgChapter = {
       },
       {
         id: "sdg17-partner-group-4",
+        layout: "prose",
         intro: [],
         profiles: [
           {
@@ -447,9 +450,6 @@ export const sdg17Chapter: SdgChapter = {
           },
         ],
       },
-    ],
-    closing: [
-      "**Details about these stakeholders are provided in the preceding SDG sections. Click their corresponding profile images to revisit their backgrounds, feedback, and contributions to CirCure.**",
     ],
   },
   consequences: {
@@ -504,7 +504,6 @@ export const sdg17Chapter: SdgChapter = {
       "**We classify the relationship between SDG 17 and SDG 3 as an Exploratory Synergy.** Patients, clinicians, and other professional participants improved our understanding of efficacy, safety, accessibility, and health needs and informed changes to project evaluation. However, current evidence primarily supports improvements in project decisions. It does not yet demonstrate that these partnerships directly produce distinct, consistent health outcomes.",
       "The clearest current effects of SDG 17 are therefore evident in technological innovation, resource responsibility, and educational practice. Further evidence is needed to establish whether these effects translate into long-term health outcomes.",
     ],
-    findingsHeading: null,
     table: {
       headers: [
         "Relationship",
@@ -554,13 +553,7 @@ export const sdg17Chapter: SdgChapter = {
         bestFor:
           "**Regional team exchanges, finding collaborators, safety education**, and facilitated discussions about **engineered-organism release and research responsibility**.",
         whatItDoes: "",
-        pdfs: [],
-        links: [
-          {
-            label: "Northeast China iGEM Meetup & Immersive Safety Roundtable",
-            href: "/safety-and-security#safety-6-2-1",
-          },
-        ],
+        pdfs: sdg17RoundtablePdfs,
       },
       {
         title:

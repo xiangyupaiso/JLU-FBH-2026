@@ -1,35 +1,36 @@
-import type { MouseEvent } from "react";
 import type { CoreSdg } from "../../../../../data/engagement/sustainability/sustainabilityData";
 
-const jump = (event: MouseEvent<HTMLAnchorElement>, target: string) => {
-  event.preventDefault();
-  document.getElementById(target)?.scrollIntoView({ behavior: "smooth", block: "start" });
-};
-
 /**
- * Overview core-SDG card: SDG colour top bar, goal number and title, one-line
- * focus. Links to the goal's chapter when that chapter is on the page.
+ * Overview core-SDG card:
+ * Displays official UN SDG logo image.
+ * On hover, a bottom bar slides up showing the third line of text (the summary),
+ * without covering the whole logo (matching the requested drawer effect).
  */
 export function SDGInteractiveCard({ sdg }: { sdg: CoreSdg }) {
-  const body = (
-    <>
-      <span className="sust-sdg-card__number">SDG {sdg.number}</span>
-      <h4 className="sust-sdg-card__title">{sdg.title}</h4>
-      <p className="sust-sdg-card__summary">{sdg.summary}</p>
-    </>
-  );
-  return sdg.target ? (
-    <a
-      className="sust-sdg-card"
-      data-sdg={sdg.number}
-      href={`#${sdg.target}`}
-      onClick={(event) => jump(event, sdg.target!)}
-    >
-      {body}
-    </a>
-  ) : (
-    <article className="sust-sdg-card" data-sdg={sdg.number}>
-      {body}
+  return (
+    <article className="sust-sdg-card sust-sdg-card--logo" data-sdg={sdg.number}>
+      <div className="sust-sdg-card__media">
+        {sdg.logoUrl ? (
+          <img
+            src={sdg.logoUrl}
+            alt={`SDG ${sdg.number}: ${sdg.title}`}
+            className="sust-sdg-card__logo"
+            loading="lazy"
+            decoding="async"
+            width={600}
+            height={600}
+          />
+        ) : (
+          <div className="sust-sdg-card__fallback">
+            <span className="sust-sdg-card__number">SDG {sdg.number}</span>
+            <h4 className="sust-sdg-card__title">{sdg.title}</h4>
+          </div>
+        )}
+        <div className="sust-sdg-card__drawer">
+          <p className="sust-sdg-card__summary">{sdg.summary}</p>
+        </div>
+      </div>
     </article>
   );
 }
+

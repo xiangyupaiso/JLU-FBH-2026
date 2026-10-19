@@ -336,6 +336,12 @@ export const cycle1Section: WikiSection = {
                     "Executable"
           ]
 ]
+        },
+        {
+          type: "prose",
+          paragraphs: [
+          "All five stages therefore had a defined source or procedure, an accessible measurement and an observable output. This established the testability of the circRNA route; the resulting RNA, protein and immune-response evidence is presented in the later cycles."
+]
         }
           ]
         },

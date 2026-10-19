@@ -248,7 +248,7 @@ export const solutionData = {
       "We therefore established an experimental workflow for circRNA production using **self-splicing intron-mediated circularization**, followed by purification and structural validation. RNase R treatment and other purification procedures were used to remove residual linear RNA, while complementary molecular assays were established to verify successful circularization.",
       "Our validation strategy combines **RNA purification, circularization analysis, RT-qPCR, and back-splice junction (BSJ) sequencing**, allowing us to distinguish successfully circularized RNA from linear products before proceeding to downstream functional studies.",
       "These experiments provide the first quality-control checkpoint for CirCure: **before asking whether the vaccine can activate an immune response, we first need to establish that the intended circRNA molecule has been successfully produced and sufficiently characterized.**",
-      "Our experimental characterization showed that the resulting circRNA achieved a **circularization rate and purity above 90%**, providing a quality-control foundation for subsequent functional experiments. RT-qPCR and **back-splice junction (BSJ) sequencing** were used to verify successful circularization and distinguish circular products from linear RNA.",
+      "Our experimental characterization showed that the resulting circRNA achieved a **circularization rate and purity above 90%**, providing a quality-control foundation for subsequent functional experiments. RT-qPCR and **BSJ sequencing** were used to verify successful circularization and distinguish circular products from linear RNA.",
     ],
   },
   deliveryModule: {
@@ -653,14 +653,15 @@ export const descriptionPage: WikiPageContent = {
   ],
   links: [
     { path: "/engineering", label: "Engineering Success" },
+    { path: "/design", label: "Molecular Design" },
     { path: "/results", label: "Results & Discussion" },
-    { path: "/contribution", label: "Team Contribution" },
-    { path: "/visual-design", label: "Visual Design" },
+    { path: "/human-practices", label: "Clinical & Human Context" },
   ],
   next: {
     path: "/engineering",
     label: "Engineering Success",
-    title: "How the design cycle refined each module into reproducible biological hardware.",
+    title: "Turning Molecular Rationale into Working Circuits",
+    description: "A powerful clinical concept demands rigorous engineering. Follow four iterative DBTL cycles that transformed theoretical circRNA into functional biological hardware.",
   },
 };
 

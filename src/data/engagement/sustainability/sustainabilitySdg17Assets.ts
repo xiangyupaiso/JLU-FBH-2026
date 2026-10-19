@@ -1,5 +1,24 @@
 /** Manuscript-provided SDG 17 assets; no generated upload targets. */
 import type { StakeholderPhotoSet } from "./sustainabilityPhotos";
+import type { LegacyToolPdf } from "./sdgChapterContract";
+
+const SDG17_DOCS = "https://static.igem.wiki/teams/6056/wiki/files/docs/sdg17";
+
+/** Roundtable files supplied by the team; shared modal reader opens each PDF. */
+export const sdg17RoundtablePdfs: ReadonlyArray<LegacyToolPdf> = [
+  { label: "DM", fileName: "dm.pdf" },
+  { label: "Group 01", fileName: "group-01.pdf" },
+  { label: "Group 02", fileName: "group-02.pdf" },
+  { label: "Group 03", fileName: "group-03.pdf" },
+  { label: "Group 04", fileName: "group-04.pdf" },
+  { label: "Group 05", fileName: "group-05.pdf" },
+  { label: "Group 06", fileName: "group-06.pdf" },
+  { label: "Group 07", fileName: "group-07.pdf" },
+  { label: "Group 08", fileName: "group-08.pdf" },
+  { label: "Other Materials", fileName: "others.pdf" },
+  { label: "Round 1 Clues", fileName: "round-1-clues.pdf" },
+  { label: "Round 2 Clues", fileName: "round-2-clues.pdf" },
+].map((pdf) => ({ ...pdf, url: `${SDG17_DOCS}/${pdf.fileName}` }));
 
 export const sdg17PhotoSets: Record<string, StakeholderPhotoSet> = {
   "sdg17-01-01": [

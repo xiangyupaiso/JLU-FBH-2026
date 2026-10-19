@@ -1,4 +1,5 @@
-const gamesHero = "https://static.igem.wiki/teams/6056/wiki/files/pages/dry-lab/dry-lab-games-hero-v2-e0112cce797c.webp";
+const gamesHero =
+  "https://static.igem.wiki/teams/6056/wiki/files/pages/hero/dry-lab-games-hero.webp";
 const hardwareHero =
   "https://static.igem.wiki/teams/6056/wiki/files/pages/dry-lab/dry-lab-hardware-hero.webp";
 const modelHero =

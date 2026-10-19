@@ -70,9 +70,28 @@ const updatedChapters = data.sustainabilityChapters.filter((chapter) =>
   ["sdg4", "sdg17"].includes(chapter.id),
 );
 const updatedSections = data.sustainabilityPage.sections.slice(5);
-const copyStrings = strings([...updatedChapters, ...updatedSections]);
+// GROW's five complete narratives now live in the review-supplied explorer.
+const explorerSource = readFileSync(
+  resolve(root, "src/assets/wiki/sustainability/circure-sdg.js"),
+  "utf8",
+);
+const explorerGoals = JSON.parse(
+  explorerSource.match(/const GOALS = (\[[\s\S]*?\n\s*\]);/)[1],
+);
+assert.deepEqual(explorerGoals.map((goal) => goal.id), [1, 5, 8, 10, 13]);
+const copyStrings = strings([
+  ...updatedChapters,
+  ...updatedSections,
+  ...explorerGoals.map((goal) => goal.original),
+]);
 const corpus = copyStrings.map(normalize).join("\n");
 const omissions = [];
+// Review PDF item 21 explicitly removes this sentence and its portrait navigation.
+const approvedDeletions = new Set([
+  normalize(
+    "Details about these stakeholders are provided in the preceding SDG sections. Click their corresponding profile images to revisit their backgrounds, feedback, and contributions to CirCure.",
+  ),
+]);
 let verifiedParagraphs = 0;
 for (let line of source.split(/\r?\n/)) {
   line = line.trim();
@@ -103,9 +122,10 @@ for (let line of source.split(/\r?\n/)) {
     )
     .replace(
       "XX teams working across XX iGEM Villages completed XX explanations",
-      "17 teams working across 11 iGEM Villages completed 43 explanations",
+      "17 teams working across 11 iGEM Villages completed 47 explanations",
     );
   const text = normalize(line);
+  if (approvedDeletions.has(text)) continue;
   if (text.length <= 65) continue;
   verifiedParagraphs++;
   if (!corpus.includes(text)) omissions.push(text);
@@ -117,7 +137,7 @@ assert.deepEqual(
 );
 assert(!/\bXX\b|XXX|Add actual records|This progression from/.test(corpus));
 assert.equal(data.sustainabilityPage.sections.length, 8);
-assert.equal(updatedChapters[0].legacy.table.rows.length, 15);
+assert.equal(updatedChapters[0].legacy.table.rows.length, 16);
 assert.equal(updatedChapters[0].alignment.table.rows.length, 7);
 assert.equal(
   updatedChapters[0].evidence.measurable.find((item) => item.table)?.table.rows
@@ -131,23 +151,30 @@ assert.equal(
 );
 
 const anchors = new Set(
-  data.sustainabilityPage.sections.flatMap((section) => [
-    section.id,
-    ...section.blocks
-      .filter((block) => block.type === "subheading")
-      .map((block) => block.id),
-  ]),
+  [
+    ...data.sustainabilityPage.sections.flatMap((section) => [
+      section.id,
+      ...section.blocks
+        .filter((block) => block.type === "subheading")
+        .map((block) => block.id),
+    ]),
+    // SdgExplorer renders these compatibility anchors around the five goals.
+    ...explorerGoals.map((goal) => `grow-sdg${goal.id}`),
+  ],
 );
 for (const tier of data.impactTiers)
   for (const goal of tier.sdgs)
     assert(anchors.has(goal.target), `Missing SDG ${goal.number} target`);
 for (const goal of data.coreSdgs) assert(anchors.has(goal.target));
-const allAnchors = data.sustainabilityPage.sections.flatMap((section) => [
-  section.id,
-  ...section.blocks
-    .filter((block) => block.type === "subheading")
-    .map((block) => block.id),
-]);
+const allAnchors = [
+  ...data.sustainabilityPage.sections.flatMap((section) => [
+    section.id,
+    ...section.blocks
+      .filter((block) => block.type === "subheading")
+      .map((block) => block.id),
+  ]),
+  ...explorerGoals.map((goal) => `grow-sdg${goal.id}`),
+];
 assert.equal(
   new Set(allAnchors).size,
   allAnchors.length,
@@ -180,8 +207,11 @@ console.log(
     {
       verifiedParagraphs,
       sections: 8,
-      resourceRows: 15,
-      partnershipCards: 8,
+      resourceRows: 16,
+      partnershipProfiles: 8,
+      partnershipCards: 5,
+      partnershipProseGroups: 3,
+      approvedDeletions: approvedDeletions.size,
       contributionRows: 12,
       anchors: anchors.size,
       omissions: 0,

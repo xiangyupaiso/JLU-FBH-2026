@@ -103,6 +103,10 @@
 .wiki-page[data-wiki-route="/results"] .results-figure--compact img {
   max-height: min(76vh, 420px);
 }
+.wiki-page[data-wiki-route="/results"] .results-figure--fig21 {
+  max-width: 460px;
+  margin-inline: auto;
+}
 
 /* Native Model volcano renderer, themed only within this Results host. */
 .wiki-page[data-wiki-route="/results"] .model-chart-panel {
@@ -169,9 +173,10 @@
   font-size: 13px;
 }
 
-/* The shared structural chart represents two manuscript figures (11 and 12). */
+/* The shared structural chart hosts two manuscript figures (FIG. 10 / FIG. 11)
+   and consumes exactly one counter slot so later figures shift down by one. */
 .wiki-page[data-wiki-route="/results"] .epitope-validation-panel--manuscript {
-  counter-increment: none;
+  counter-increment: wiki-figure 1;
   padding: 0;
   border: 0;
   box-shadow: none;
@@ -193,15 +198,16 @@
   content: none;
   display: none;
 }
-.wiki-page[data-wiki-route="/results"] .epitope-caption-entry {
-  counter-increment: wiki-figure;
-  margin: 12px 0 0;
+/* Manuscript captions live inside each chart card with an explicit FIG badge. */
+.wiki-page[data-wiki-route="/results"] .epitope-card-caption {
+  display: flex;
+  align-items: flex-start;
+  margin: 12px 4px 0;
 }
-.wiki-page[data-wiki-route="/results"] .epitope-caption-entry::before {
-  content: "FIG. " counter(wiki-figure, decimal-leading-zero);
-  display: inline-flex;
-  padding: 2.5px 8px;
+.wiki-page[data-wiki-route="/results"] .epitope-card-caption__badge {
+  flex: 0 0 auto;
   margin-right: 10px;
+  padding: 2.5px 8px;
   font-family: var(--font-mono);
   font-size: 11px;
   font-weight: 700;
@@ -211,7 +217,12 @@
   background: var(--brand-navy, #162b4c);
   border: 1px solid rgba(22, 43, 76, 0.25);
   border-radius: 4px;
-  vertical-align: 1.5px;
+}
+.wiki-page[data-wiki-route="/results"] .epitope-card-caption p {
+  margin: 0;
+  font-size: 0.82rem;
+  line-height: 1.55;
+  color: #435b54;
 }
 
 /* Canvas charts and the longer bibliography opt out of per-frame slot drift (rule 8). */

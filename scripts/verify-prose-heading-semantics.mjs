@@ -13,6 +13,7 @@ const result = await build({
   stdin: { contents: `import { linkify } from './src/components/wiki/proseInline';\nexport ${renderer.getText(ast)}`,
     loader: "tsx", resolveDir: process.cwd() },
   bundle: true, write: false, format: "esm", platform: "node", packages: "external", jsx: "automatic",
+  loader: { ".css": "empty" },
 });
 const temporary = new URL("../.prose-heading-verification.mjs", import.meta.url);
 try {

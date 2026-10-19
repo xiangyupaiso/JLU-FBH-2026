@@ -518,14 +518,15 @@ export const visualDesignPage: WikiPageContent = {
     },
   ],
   links: [
-    { path: "/description", label: "Project Rationale" },
-    { path: "/engineering", label: "Engineering Success" },
-    { path: "/results", label: "Results & Discussion" },
-    { path: "/contribution", label: "Team Contribution" },
+    { path: "/description", label: "Project Narrative" },
+    { path: "/games", label: "Interactive Experience" },
+    { path: "/contribution", label: "Scientific Contributions" },
+    { path: "/notebook", label: "Laboratory Notebook" },
   ],
   next: {
     path: "/notebook",
     label: "Notebook",
-    title: "Trace the chronological progress and laboratory records.",
+    title: "Every Polished Result Has a Day-One Entry",
+    description: "Behind elegant diagrams and clean layouts lie months of benchside persistence. Trace our raw daily logs, protocol adjustments, and troubleshooting chronicles.",
   },
 };

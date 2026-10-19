@@ -8,8 +8,6 @@ import { getProjectHeroImage } from "../components/wiki/projectHeroAssets";
 import { engineeringPage } from "../data/project/engineeringPage";
 import { PageImagePreloads } from "../components/common/PageImagePreloads";
 import { wikiPageImages } from "../components/wiki/wikiPageImages";
-import "../styles/wiki-rebuild.css";
-import "../styles/wetlab-editorial.css";
 import "../styles/wiki-route-skin.css";
 import "../styles/features/engineering-experience.css";
 

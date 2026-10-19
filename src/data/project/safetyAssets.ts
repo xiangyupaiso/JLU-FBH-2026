@@ -13,15 +13,27 @@ export interface SafetyAsset {
   caption?: string;
 }
 export const safetyAssets = {
-  "safe-on-framework.avif": {
-    fileName: "safe-on-framework.avif",
+  "0-0safe-on.avif": {
+    fileName: "0-0safe-on.avif",
     localSourcePath: null,
     sourceReference: "文案集/project/safe/3.4 Safety and Security.md:21",
     uploadUrl:
-      "https://static.igem.wiki/teams/6056/wiki/files/pages/safety-and-security/safe-on-framework.avif",
-    width: 1536,
-    height: 1024,
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/safety-and-security/0-0safe-on.avif",
+    width: 1027,
+    height: 626,
     alt: "Safe on framework",
+    caption: "SAFE ON Overview",
+  },
+  "safe-on-framework.avif": {
+    fileName: "0-0safe-on.avif",
+    localSourcePath: null,
+    sourceReference: "文案集/project/safe/3.4 Safety and Security.md:21",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/safety-and-security/0-0safe-on.avif",
+    width: 1027,
+    height: 626,
+    alt: "Safe on framework",
+    caption: "SAFE ON Overview",
   },
   "1-1-three-level-laboratory-safety-management-system.avif": {
     fileName: "1-1-three-level-laboratory-safety-management-system.avif",
@@ -1074,6 +1086,18 @@ export const safetyAssets = {
       height: 720,
       alt: "Photos of changchun international medical and health industry expo",
     },
+  "6-1-1-4-photos-of-changchun-international-medical-and-health-industry-expo.avif":
+    {
+      fileName:
+        "6-1-1-4-photos-of-changchun-international-medical-and-health-industry-expo.avif",
+      localSourcePath: null,
+      sourceReference: "文案集/project/safe/3.4 Safety and Security.md:1618",
+      uploadUrl:
+        "https://static.igem.wiki/teams/6056/wiki/files/pages/safety-and-security/6-1-1-4-photos-of-changchun-international-medical-and-health-industry-expo.avif",
+      width: 1280,
+      height: 720,
+      alt: "Photos of changchun international medical and health industry expo",
+    },
   "6-1-2-1-photos-of-endocrine-health-seminar-professor-guo-weiying.avif": {
     fileName:
       "6-1-2-1-photos-of-endocrine-health-seminar-professor-guo-weiying.avif",
@@ -1081,8 +1105,8 @@ export const safetyAssets = {
     sourceReference: "文案集/project/safe/3.4 Safety and Security.md:1636",
     uploadUrl:
       "https://static.igem.wiki/teams/6056/wiki/files/pages/safety-and-security/6-1-2-1-photos-of-endocrine-health-seminar-professor-guo-weiying.avif",
-    width: 777,
-    height: 558,
+    width: 1080,
+    height: 721,
     alt: "Photos of endocrine health seminar professor guo weiying",
   },
   "6-1-2-photos-of-endocrine-health-seminar-professor-guo-weiying.avif": {
@@ -1092,8 +1116,8 @@ export const safetyAssets = {
     sourceReference: "文案集/project/safe/3.4 Safety and Security.md:1638",
     uploadUrl:
       "https://static.igem.wiki/teams/6056/wiki/files/pages/safety-and-security/6-1-2-photos-of-endocrine-health-seminar-professor-guo-weiying.avif",
-    width: 1280,
-    height: 960,
+    width: 1080,
+    height: 721,
     alt: "Photos of endocrine health seminar professor guo weiying",
   },
   "6-1-3-1-photos-of-health-run.avif": {
@@ -1287,8 +1311,8 @@ export const safetyAssets = {
     sourceReference: "文案集/project/safe/3.4 Safety and Security.md:1837",
     uploadUrl:
       "https://static.igem.wiki/teams/6056/wiki/files/pages/safety-and-security/6-2-3-1-photos-of-xinghua-festival.avif",
-    width: 1280,
-    height: 960,
+    width: 1080,
+    height: 721,
     alt: "Photos of xinghua festival",
   },
   "6-2-3-2-photos-of-xinghua-festival.avif": {
@@ -1297,8 +1321,8 @@ export const safetyAssets = {
     sourceReference: "文案集/project/safe/3.4 Safety and Security.md:1839",
     uploadUrl:
       "https://static.igem.wiki/teams/6056/wiki/files/pages/safety-and-security/6-2-3-2-photos-of-xinghua-festival.avif",
-    width: 1280,
-    height: 853,
+    width: 1080,
+    height: 721,
     alt: "Photos of xinghua festival",
   },
   "6-2-3-3-photos-of-xinghua-festival.avif": {
@@ -1307,8 +1331,8 @@ export const safetyAssets = {
     sourceReference: "文案集/project/safe/3.4 Safety and Security.md:1841",
     uploadUrl:
       "https://static.igem.wiki/teams/6056/wiki/files/pages/safety-and-security/6-2-3-3-photos-of-xinghua-festival.avif",
-    width: 1280,
-    height: 960,
+    width: 1080,
+    height: 721,
     alt: "Photos of xinghua festival",
   },
   "6-2-3-4-photos-of-xinghua-festival.avif": {
@@ -1318,7 +1342,7 @@ export const safetyAssets = {
     uploadUrl:
       "https://static.igem.wiki/teams/6056/wiki/files/pages/safety-and-security/6-2-3-4-photos-of-xinghua-festival.avif",
     width: 1080,
-    height: 607,
+    height: 721,
     alt: "Photos of xinghua festival",
   },
   "6-2-3-photos-of-xinghua-festival.avif": {
@@ -1327,8 +1351,8 @@ export const safetyAssets = {
     sourceReference: "文案集/project/safe/3.4 Safety and Security.md:1845",
     uploadUrl:
       "https://static.igem.wiki/teams/6056/wiki/files/pages/safety-and-security/6-2-3-photos-of-xinghua-festival.avif",
-    width: 993,
-    height: 557,
+    width: 1080,
+    height: 721,
     alt: "Photos of xinghua festival",
   },
   "6-2-4-1-photos-of-grassland-music-festival.avif": {
@@ -1398,7 +1422,7 @@ export const safetyAssets = {
     uploadUrl:
       "https://static.igem.wiki/teams/6056/wiki/files/pages/safety-and-security/6-2-5-4-photos-of-synbio-classroom.avif",
     width: 1080,
-    height: 809,
+    height: 721,
     alt: "Photos of synbio classroom",
   },
   "6-2-5-photos-of-synbio-classroom.avif": {

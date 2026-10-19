@@ -98,7 +98,7 @@ function MixedWell({ parts }: { parts: WellPart[] }) {
         y={50 + Math.sin(angle) * radius}
         textAnchor="middle"
         dominantBaseline="central"
-        fontFamily="Segoe UI, sans-serif"
+        fontFamily="Lexend, sans-serif"
         fontSize="25"
         fontWeight="700"
         fill={inkFor(COLORS[part.index % COLORS.length])}

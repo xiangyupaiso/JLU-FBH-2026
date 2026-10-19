@@ -443,10 +443,11 @@ export const rosterCollections: RosterCollection[] = [
         name: "Jianyuan Li",
         image: "jianyuan-li",
         role: "Team Member",
-        tagline: "Jianyuan, powered by curiosity",
+        tagline: "Jason, powered by curiosity.",
         bio: [
-          "Hey, I'm Jianyuan! I'm a physics undergrad at Jilin University, though I spend a suspicious amount of time writing code and digging through research papers. I'm into physics, AI, and materials science, especially when they come together to solve an interesting problem. I like building things from scratch, finding patterns in messy data, and asking questions that somehow lead to even more questions.",
-          'I have a bad habit of saying "just one more question" and then disappearing down a rabbit hole for hours. I genuinely enjoy figuring things out, even when it takes a few failed attempts (and way too many browser tabs). Away from my laptop, I like exploring new places, meeting people with different perspectives, and having conversations that go completely off topic. I\'m a big fan of good questions, unexpected ideas, and that little "aha!" moment when something finally makes sense. If you\'ve got a weird idea worth discussing, I\'m all ears.',
+          "Hey, I'm Jianyuan! I'm a physics undergraduate at Jilin University. My main role on the 2026 JLU-FBH iGEM team is designing and developing our Wiki homepage, bringing together its scientific content, visuals, animations, and interactive elements. I've spent plenty of time tweaking small details along the way, and it's taught me how much thought goes into making complicated ideas easy to understand.",
+          "Outside of iGEM, I'm interested in computational physics, AI, and materials science. I spend a fair amount of time reading papers, writing code, and trying to make sense of things I'm still learning about. I tend to ask a lot of questions—that's usually how I learn.",
+          'When I\'m away from my laptop, I enjoy exploring new places, meeting people from different backgrounds, and having conversations that take unexpected turns. And if you hear me say, "Wait, one more question," there\'s a good chance it won\'t be the last.',
         ],
         quote: "“Stay hungry. Stay foolish.”",
       },
@@ -601,10 +602,16 @@ export const rosterPage: WikiPageContent = {
       blocks: [{ type: "feature", key: "roster" }],
     },
   ],
-  links: [],
+  links: [
+    { path: "/attributions", label: "Project Attributions" },
+    { path: "/activities", label: "Team Activities" },
+    { path: "/description", label: "Project Description" },
+    { path: "/contribution", label: "Team Contributions" },
+  ],
   next: {
     path: "/attributions",
     label: "Attributions",
-    title: "Attributions",
+    title: "From Shared Vision to Formal Accountability",
+    description: "Meet the individuals behind CirCure, then inspect the verified, auditable record of roles, institutional support, and resource attribution.",
   },
 };

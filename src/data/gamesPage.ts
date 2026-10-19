@@ -79,10 +79,16 @@ export const gamesPage: WikiPageContent = {
       blocks: [{ type: "feature", key: "game-bio-memory" }],
     },
   ],
-  links: [],
+  links: [
+    { path: "/education", label: "Educational Outreach" },
+    { path: "/software", label: "circForge Bio-Suite" },
+    { path: "/hardware", label: "CirCore Reactor" },
+    { path: "/visual-design", label: "Visual & UI Design" },
+  ],
   next: {
     path: "/entrepreneurship",
     label: "Entrepreneurship",
-    title: "How would the project fit a real workflow?",
+    title: "From Interactive Concept to Clinical Reality",
+    description: "Playful tools demystify immunology, but curing patients requires clinical translation. Explore our business model, target product profile, and commercialization roadmap.",
   },
 };

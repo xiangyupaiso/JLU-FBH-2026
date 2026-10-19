@@ -274,31 +274,35 @@ export function ExperimentProtocolAtlas() {
             className="exp-atlas__leaves"
             aria-label={`Stage ${selectedStage.number} protocols`}
           >
-            {leaves.map(({ pair, label }, index) => (
-              <div
-                className="exp-atlas__leaf-position"
-                key={pair.key}
-                style={pointStyle(leafPoints[index], selectedStage.color)}
-              >
-                <button
-                  type="button"
-                  className={`exp-atlas__node${activeKey === pair.key ? " is-active" : ""}`}
-                  aria-haspopup="dialog"
-                  aria-label={`${pair.code} ${pair.title}`}
-                  data-protocol-key={pair.key}
-                  onClick={() => setActiveKey(pair.key)}
+            {leaves.map(({ pair, label }, index) => {
+              const leafCode =
+                leaves.length === 1 ? selectedStage.number : pair.code;
+              return (
+                <div
+                  className="exp-atlas__leaf-position"
+                  key={pair.key}
+                  style={pointStyle(leafPoints[index], selectedStage.color)}
                 >
-                  <span className="exp-atlas__node-code" aria-hidden="true">
-                    <AtlasWatercolor seed={71 + index * 7} />
-                    <span className="exp-atlas__ink">{pair.code}</span>
-                  </span>
-                  <span className="exp-atlas__node-title">{label}</span>
-                  <span className="exp-atlas__node-arrow" aria-hidden="true">
-                    ↗
-                  </span>
-                </button>
-              </div>
-            ))}
+                  <button
+                    type="button"
+                    className={`exp-atlas__node${activeKey === pair.key ? " is-active" : ""}`}
+                    aria-haspopup="dialog"
+                    aria-label={`${leafCode} ${pair.title}`}
+                    data-protocol-key={pair.key}
+                    onClick={() => setActiveKey(pair.key)}
+                  >
+                    <span className="exp-atlas__node-code" aria-hidden="true">
+                      <AtlasWatercolor seed={71 + index * 7} />
+                      <span className="exp-atlas__ink">{leafCode}</span>
+                    </span>
+                    <span className="exp-atlas__node-title">{label}</span>
+                    <span className="exp-atlas__node-arrow" aria-hidden="true">
+                      ↗
+                    </span>
+                  </button>
+                </div>
+              );
+            })}
           </div>
         ) : null}
       </div>

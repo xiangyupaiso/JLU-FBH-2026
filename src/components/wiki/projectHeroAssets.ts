@@ -1,16 +1,18 @@
 const contributionHero =
-  "https://static.igem.wiki/teams/6056/wiki/files/pages/project/project-contribution-hero.webp";
+  "https://static.igem.wiki/teams/6056/wiki/files/pages/hero/project-contribution-hero.webp";
+const visualDesignHero =
+  "https://static.igem.wiki/teams/6056/wiki/files/pages/hero/project-visual-design-hero.webp";
+const safetyHero =
+  "https://static.igem.wiki/teams/6056/wiki/files/pages/hero/project-safety-hero.webp";
+
 const descriptionHero =
   "https://static.igem.wiki/teams/6056/wiki/files/pages/project/project-description-hero.webp";
 const engineeringHero = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/project-engineering-hero.webp";
 const resultsHero =
   "https://static.igem.wiki/teams/6056/wiki/files/pages/project/results/project-results-hero.webp";
-const artHero = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/heroes/art-hero-ef55f5540bcf.webp";
 
 const notebookHero =
   "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/wet-lab-notebook-hero-v3.webp";
-const safetyHero =
-  "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/wet-lab-safety-hero-v3.webp";
 
 /**
  * Per-page hero art for the Project reader.
@@ -46,7 +48,7 @@ const HERO_BY_VARIANT: Record<ProjectHeroVariant, string> = {
   engineering: engineeringHero,
   results: resultsHero,
   contribution: contributionHero,
-  "visual-design": artHero,
+  "visual-design": visualDesignHero,
   notebook: notebookHero,
   safety: safetyHero,
 };

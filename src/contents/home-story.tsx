@@ -10,8 +10,13 @@ import { CircRnaArtwork } from "../components/home/CircRnaArtwork";
 import { HomeRnaSequence } from "../components/home/HomeRnaSequence";
 import { WardInfusionTube } from "../components/home/WardInfusionTube";
 import originalManifest from "../assets/home/story/manifest.json";
+const mapCloudWest = "https://static.igem.wiki/teams/6056/wiki/files/pages/home/map-detail-baked-cloud-west.webp";
+const mapCloudEast = "https://static.igem.wiki/teams/6056/wiki/files/pages/home/map-detail-baked-cloud-east.webp";
+const mapWaveWestOne = "https://static.igem.wiki/teams/6056/wiki/files/pages/home/map-detail-baked-wave-west-1.webp";
+const mapWaveWestTwo = "https://static.igem.wiki/teams/6056/wiki/files/pages/home/map-detail-baked-wave-west-2.webp";
+const mapWaveEastFour = "https://static.igem.wiki/teams/6056/wiki/files/pages/home/map-detail-baked-wave-east-4.webp";
 import supplements from "../assets/home/supplements/manifest.json";
-import projectAdvantages from "../assets/home/supplements/project-advantages.png";
+const projectAdvantages = "https://static.igem.wiki/teams/6056/wiki/files/pages/home/project-advantages.avif";
 const patientConcerned =
   "https://static.igem.wiki/teams/6056/wiki/files/pages/home/patient-teary-20261004-467cbc4b5db7.webp";
 const clinicianConcerned =
@@ -491,6 +496,26 @@ const mapMotionPieces = [
   },
 ] as const;
 
+type MapDetailCrop = {
+  src: string;
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+};
+
+// Source-pixel crops keep the original 1470 x 900 grid, with one pixel of padding.
+// Rebuild these five frame-cleaned details with scripts/prepare-map-detail-crops.py.
+const mapDetailCrops: Partial<
+  Record<(typeof mapMotionPieces)[number]["name"], MapDetailCrop>
+> = {
+  "cloud-west": { src: mapCloudWest, x: 0, y: 269, width: 119, height: 83 },
+  "cloud-east": { src: mapCloudEast, x: 1366, y: 224, width: 104, height: 83 },
+  "wave-west-1": { src: mapWaveWestOne, x: 0, y: 575, width: 119, height: 38 },
+  "wave-west-2": { src: mapWaveWestTwo, x: 0, y: 620, width: 119, height: 38 },
+  "wave-east-4": { src: mapWaveEastFour, x: 1336, y: 728, width: 134, height: 47 },
+};
+
 const mapStatistics = [
   {
     key: "incidence-countries",
@@ -523,12 +548,10 @@ const mapStatistics = [
 ] as const;
 
 function MapArtwork() {
-  const detailMaskId = useId();
-  const detailInkId = `${detailMaskId}-ink`;
-  const detailFrameId = `${detailMaskId}-frame`;
-  const boatClipId = `${detailMaskId}-boat`;
-  const islandClipId = `${detailMaskId}-south-island`;
-  const mainlandMaskId = `${detailMaskId}-mainland`;
+  const mapId = useId();
+  const boatClipId = `${mapId}-boat`;
+  const islandClipId = `${mapId}-south-island`;
+  const mainlandMaskId = `${mapId}-mainland`;
   const mapLayer = { left: 0, top: 0, width: 100, height: 100 };
   const detailLayer = manifest["3"].layers[1];
   const detailSrc = imageUrls[`../assets/home/story/${detailLayer.file}`];
@@ -582,38 +605,10 @@ function MapArtwork() {
                 <rect width="100" height="100" fill="white" />
                 <rect x="44" y="70" width="27" height="28" fill="black" />
               </mask>
-              {/* Remove the old pink frame only where it crosses blue details. */}
-              <filter id={detailInkId} colorInterpolationFilters="sRGB">
-                <feColorMatrix values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  -100 0 100 0 0" />
-              </filter>
-              <clipPath id={detailFrameId}>
-                <rect x="5.44" width="0.55" height="100" />
-                <rect x="95.24" width="0.55" height="100" />
-              </clipPath>
               <clipPath id={boatClipId}>
                 {/* Keep the smoke edge out of the independently rocking boat. */}
                 <path d="M42 70 H48.7 V70.56 H55.2 V79 H42 Z" />
               </clipPath>
-              <mask
-                id={detailMaskId}
-                maskUnits="userSpaceOnUse"
-                x="0"
-                y="0"
-                width="100"
-                height="100"
-              >
-                <rect width="100" height="100" fill="white" />
-                <rect x="5.44" width="0.55" height="100" fill="black" />
-                <rect x="95.24" width="0.55" height="100" fill="black" />
-                <image
-                  href={detailSrc}
-                  width="100"
-                  height="100"
-                  preserveAspectRatio="none"
-                  clipPath={`url(#${detailFrameId})`}
-                  filter={`url(#${detailInkId})`}
-                />
-              </mask>
             </defs>
             <image
               href={src}
@@ -632,54 +627,55 @@ function MapArtwork() {
               />
             </g>
           </svg>
-          {mapMotionPieces.map((part, index) => (
-            <svg
-              key={part.name}
-              className={`story-layer story-map-piece story-map-piece--${part.kind}`}
-              data-map-piece={part.name}
-              style={
-                {
-                  left:
-                    "left" in part
-                      ? `${part.left}%`
-                      : `${detailLayer.left + (detailLayer.width * part.x) / 100}%`,
-                  top:
-                    "top" in part
-                      ? `${part.top}%`
-                      : `${detailLayer.top + (detailLayer.height * part.y) / 100}%`,
-                  width: `${(detailLayer.width * part.width) / 100}%`,
-                  height: `${(detailLayer.height * part.height) / 100}%`,
-                  "--piece-index": index,
-                } as CSSProperties
-              }
-              viewBox={
-                part.name === "cloud-northwest"
-                  ? "0 0 100 100"
-                  : `${part.x} ${part.y} ${part.width} ${part.height}`
-              }
-              preserveAspectRatio="none"
-              aria-hidden="true"
-            >
-              <image
-                href={
+          {mapMotionPieces.map((part, index) => {
+            const crop = mapDetailCrops[part.name];
+            return (
+              <svg
+                key={part.name}
+                className={`story-layer story-map-piece story-map-piece--${part.kind}`}
+                data-map-piece={part.name}
+                style={
+                  {
+                    left:
+                      "left" in part
+                        ? `${part.left}%`
+                        : `${detailLayer.left + (detailLayer.width * part.x) / 100}%`,
+                    top:
+                      "top" in part
+                        ? `${part.top}%`
+                        : `${detailLayer.top + (detailLayer.height * part.y) / 100}%`,
+                    width: `${(detailLayer.width * part.width) / 100}%`,
+                    height: `${(detailLayer.height * part.height) / 100}%`,
+                    "--piece-index": index,
+                  } as CSSProperties
+                }
+                viewBox={
                   part.name === "cloud-northwest"
-                    ? mapCloudNorthwestUrl
-                    : detailSrc
+                    ? "0 0 100 100"
+                    : `${part.x} ${part.y} ${part.width} ${part.height}`
                 }
-                mask={
-                  part.x < 5.99 || part.x + part.width > 95.24
-                    ? `url(#${detailMaskId})`
-                    : undefined
-                }
-                clipPath={
-                  part.name === "boat" ? `url(#${boatClipId})` : undefined
-                }
-                width="100"
-                height="100"
                 preserveAspectRatio="none"
-              />
-            </svg>
-          ))}
+                aria-hidden="true"
+              >
+                <image
+                  href={
+                    crop?.src ??
+                    (part.name === "cloud-northwest"
+                      ? mapCloudNorthwestUrl
+                      : detailSrc)
+                  }
+                  clipPath={
+                    part.name === "boat" ? `url(#${boatClipId})` : undefined
+                  }
+                  x={crop ? (crop.x / 1470) * 100 : undefined}
+                  y={crop ? (crop.y / 900) * 100 : undefined}
+                  width={crop ? (crop.width / 1470) * 100 : 100}
+                  height={crop ? (crop.height / 900) * 100 : 100}
+                  preserveAspectRatio="none"
+                />
+              </svg>
+            );
+          })}
           {markers.map((marker, index) => (
             <svg
               key={index}

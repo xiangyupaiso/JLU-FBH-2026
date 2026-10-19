@@ -14,7 +14,6 @@ export function AlternativePlatform() {
       theme="wet-lab"
       pageClassName="wiki-page--wet-lab"
       hideHeroCopy
-      documentFlow
       features={alternativePlatformFeatures()}
       inlineRenderer={renderAlternativePlatformCitedText}
     />

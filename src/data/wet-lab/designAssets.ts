@@ -1,12 +1,12 @@
-import fig1Local from "../../assets/wiki/design/design-fig1-circular-workflow.webp";
-import fig2aLocal from "../../assets/wiki/design/design-fig2a-stability.webp";
-import fig2bLocal from "../../assets/wiki/design/design-fig2b-translation-initiation.webp";
-import fig2cLocal from "../../assets/wiki/design/design-fig2c-innate-sensing.webp";
-import fig3Local from "../../assets/wiki/design/design-fig3-four-antigens.webp";
-import fig4Local from "../../assets/wiki/design/design-fig4-screening-funnel.webp";
-import fig5Local from "../../assets/wiki/design/design-fig5-mechanism-of-action.webp";
-import fig7Local from "../../assets/wiki/design/design-fig7-two-design-cycles.webp";
-import fig8Local from "../../assets/wiki/design/design-fig8-in-vivo-study-design.webp";
+const fig1Local = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/design/design-fig1-circular-workflow-b43ee238217d.webp";
+const fig2aLocal = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/design/design-fig2a-stability-faca8e585172.webp";
+const fig2bLocal = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/design/design-fig2b-translation-initiation-7d08e5879945.webp";
+const fig2cLocal = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/design/design-fig2c-innate-sensing-92bd3023e4d4.webp";
+const fig3Local = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/design/design-fig3-four-antigens-498138625bea.webp";
+const fig4Local = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/design/design-fig4-screening-funnel-5818c7ba45a8.webp";
+const fig5Local = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/design/design-fig5-mechanism-of-action-00e4cad47990.webp";
+const fig7Local = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/design/design-fig7-two-design-cycles-2345ab5f1c11.webp";
+const fig8Local = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/design/design-fig8-in-vivo-study-design-b23d8f4ca06f.webp";
 
 /**
  * Design page asset registry.

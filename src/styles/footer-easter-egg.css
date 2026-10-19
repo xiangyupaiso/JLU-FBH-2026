@@ -2,32 +2,19 @@
 .circure-photo-afterword {
   --font-body: var(--font-sans);
   --font-heading: var(--font-sans);
+  --photo-window-height: min(80svh, calc(100cqw * 1084 / 2600));
   position: relative;
   width: 100%;
+  aspect-ratio: 2600 / 1084;
+  max-height: 80svh;
+  container-type: inline-size;
   overflow: visible;
-  background: #292226;
+  background: var(--footer-paper, #f8f4ee);
   color: #f5f0e7;
   font-family: var(--font-body);
 }
-/* Focus moves here on reveal so Escape works; the photograph is its own cue. */
-.circure-photo-afterword:focus {
-  outline: none;
-}
 .finale-photo-loading {
   width: 100%;
-  aspect-ratio: 2600 / 1734;
-  max-height: calc(100svh - var(--header-height, 78px));
-  background: #292226;
-}
-@media (hover: hover) and (pointer: fine) {
-  body:has(.circure-photo-afterword:hover) .sheep-cursor {
-    opacity: 0;
-  }
-  html:root.has-sheep-cursor .circure-photo-afterword,
-  html:root.has-sheep-cursor .circure-photo-afterword * {
-    cursor: auto !important;
-  }
-  html:root.has-sheep-cursor .circure-photo-afterword :is(button, a) {
-    cursor: pointer !important;
-  }
+  height: 100%;
+  background: var(--footer-paper, #f8f4ee);
 }

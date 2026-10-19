@@ -169,6 +169,8 @@ export interface EvidenceItem {
   /** Bold manuscript lead, e.g. "Educational activity reach" (number from the list). */
   title?: string;
   text: string;
+  /** Questionnaire or supporting document displayed before the evidence figure. */
+  document?: LegacyToolPdf;
   figure?: SustainabilityImageAssetKey;
   /** Caption under `figure`; defaults to the asset's alt text. */
   figureCaption?: string;
@@ -196,6 +198,8 @@ export interface SdgChapter {
       id: string;
       index?: string;
       title?: string;
+      /** Present the complete manuscript in the reading flow, without a summary card. */
+      layout?: "prose";
       intro: ReadonlyArray<string>;
       profiles: ReadonlyArray<StakeholderProfile>;
     }>;

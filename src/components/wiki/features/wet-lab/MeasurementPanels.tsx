@@ -1,4 +1,5 @@
-import { useState, type ReactNode } from "react";
+import type { ReactNode } from "react";
+import { JudgingCriteria } from "../shared/JudgingCriteria";
 import { EpitopeStructuralValidationChart } from "../project/EpitopeStructuralValidationChart";
 import { ModelVolcanoChart } from "../drylab/ModelVolcanoChart";
 import { WikiFigurePlate } from "../../WikiFigurePlate";
@@ -49,79 +50,24 @@ function MeasurementReferenceList() {
 }
 
 export function MeasurementJudgingCriteria() {
-  const [openId, setOpenId] = useState<string | null>(null);
   return (
-    <div className="highlights-record" data-wiki-reveal>
-      {measurementJudgingCriteria.map((item) => {
-        const open = openId === item.id;
-        return (
-          <article
-            key={item.id}
-            className={`highlights-record__item${open ? " is-open" : ""}`}
-          >
-            <button
-              type="button"
-              id={`${item.id}-toggle`}
-              className="highlights-record__toggle"
-              aria-expanded={open}
-              aria-controls={`${item.id}-answer`}
-              onClick={() => setOpenId(open ? null : item.id)}
-            >
-              <span className="highlights-record__question">
-                {item.question}
-              </span>
-              <svg viewBox="0 0 16 16" aria-hidden="true">
-                <path d="m4 6 4 4 4-4" />
-              </svg>
-            </button>
-            <div
-              id={`${item.id}-answer`}
-              role="region"
-              aria-labelledby={`${item.id}-toggle`}
-              className="highlights-record__answer"
-              hidden={!open}
-            >
-              {item.paragraphs.map((paragraph, paragraphIndex) => (
-                <p key={paragraphIndex}>
-                  {renderMeasurementCitedText(paragraph, renderInlineFormatting)}
-                </p>
-              ))}
-            </div>
-          </article>
-        );
-      })}
-    </div>
+    <JudgingCriteria
+      items={measurementJudgingCriteria}
+      renderParagraph={(paragraph) =>
+        renderMeasurementCitedText(paragraph, renderInlineFormatting)
+      }
+    />
   );
 }
 
 const plateGroups = [
   {
-    featureKey: "measurement-plate-1",
-    keys: [
-      "rt-pcr-quantification-of-trop2-mrna-in-4t1-cells",
-      "flow-cytometric-detection-of-surface-trop2-on-4t1-cells",
-    ],
-    caption: "TROP2 message in wild-type and TROP2-overexpressing 4T1",
-  },
-  {
-    featureKey: "measurement-plate-2",
-    keys: [
-      "flow-cytometric-detection-of-surface-trop2-on-4t1-cells",
-      "rt-pcr-quantification-of-trop2-mrna-in-4t1-cells",
-    ],
-    caption: "Surface TROP2 on wild-type and TROP2-overexpressing 4T1",
-  },
-  {
     featureKey: "measurement-plate-3",
     keys: [
-      "cd80-cd86-double-positive-dc-frequencies-for-each-group",
-      "quantification-of-dc-maturation-across-groups",
-      "cd8-cd69-t-cell-frequencies-after-dc-t-co-culture",
-      "quantification-of-cd8-cd69-frequencies-across-groups",
-      "cd8-cd28-t-cell-frequencies-after-dc-t-co-culture",
-      "quantification-of-cd8-cd28-frequencies-across-groups",
-      "cd45ro-ccr7-effector-memory-frequencies-within-cd8-t-cells",
-      "quantification-of-cd45ro-ccr7-frequencies-across-groups",
+      "human-dc-maturation-flow-and-quantification",
+      "human-cd8-cd69-flow-and-quantification",
+      "human-cd8-cd28-flow-and-quantification",
+      "human-effector-memory-flow-and-quantification",
     ],
     caption: "Representative flow plots for the human immune response chain",
   },
@@ -167,9 +113,11 @@ export function measurementFeatures(): Record<string, ReactNode> {
             key,
             src: getMeasurementImage(key),
             alt: measurementAssets[key].alt,
+            width: measurementAssets[key].width,
+            height: measurementAssets[key].height,
           }))}
           caption={group.caption}
-          columns={group.keys.length >= 5 ? 3 : 2}
+          columns={group.featureKey === "measurement-plate-3" ? 1 : 3}
           numbered
         />,
       ]),

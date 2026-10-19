@@ -247,7 +247,8 @@ export function buildAuthorYearKeys(
         : "";
     const second = reference.authors.match(/(?:&|\band)\s+([^,.]+)(?:,|$)/)?.[1]
       .trim();
-    const year = reference.volumeYear.match(/\((\d{4})\)/)?.[1] ?? "";
+    // Four-digit issue numbers such as (5247) are not publication years.
+    const year = reference.volumeYear.match(/\(((?:19|20)\d{2})\)/)?.[1] ?? "";
     return {
       id: reference.id,
       surname: nfc(surname),
@@ -264,7 +265,8 @@ function matchAuthorYear(
   item: string,
   keys: readonly AuthorYearKey[],
 ): MatchResult {
-  const match = ITEM_RE.exec(nfc(item.trim()));
+  // Manuscripts may include a space before the year comma; preserve display text.
+  const match = ITEM_RE.exec(nfc(item.trim().replace(/\s+,/g, ",")));
   if (!match?.groups) return { reason: "unresolved" };
   const { sur, year, init, second } = match.groups as Record<
     string,

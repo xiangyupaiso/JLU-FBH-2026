@@ -62,7 +62,7 @@ export function HomeFinale({ art }: { art: ReactNode }) {
         </h2>
         <p className="story-final-statement__tagline" data-final-copy="tagline">
           <span>One Platform.</span>{" "}
-          <strong data-finale="possibilities">More Possibilities.</strong>
+          <strong>More Possibilities.</strong>
         </p>
       </div>
       <div

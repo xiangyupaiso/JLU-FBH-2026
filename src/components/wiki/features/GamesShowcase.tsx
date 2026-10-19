@@ -12,12 +12,17 @@ import {
   type ReactNode,
 } from "react";
 import { createPortal } from "react-dom";
+import { Link } from "react-router-dom";
 import { scrollReaderToTarget } from "../../../utils";
 import "../../../styles/games-page.css";
-const bombCatArt = "https://static.igem.wiki/teams/6056/wiki/files/pages/games/bomb-cat/cover-9a800b8be673.webp";
-const breastGuardianArt = "https://static.igem.wiki/teams/6056/wiki/files/pages/shared/breast-guardian-showcase-86cd548b1ac0.webp";
-const bioMemoryArt = "https://static.igem.wiki/teams/6056/wiki/files/pages/shared/bio-memory-showcase-e198853d2fb5.webp";
-const virtualLabArt = "https://static.igem.wiki/teams/6056/wiki/files/pages/shared/virtual-lab-showcase-4b03b6f1bbbb.webp";
+const bombCatArt =
+  "https://static.igem.wiki/teams/6056/wiki/files/pages/games/bomb-cat/cover-9a800b8be673.webp";
+const breastGuardianArt =
+  "https://static.igem.wiki/teams/6056/wiki/files/pages/shared/breast-guardian-showcase-86cd548b1ac0.webp";
+const bioMemoryArt =
+  "https://static.igem.wiki/teams/6056/wiki/files/pages/shared/bio-memory-showcase-e198853d2fb5.webp";
+const virtualLabArt =
+  "https://static.igem.wiki/teams/6056/wiki/files/pages/shared/virtual-lab-showcase-4b03b6f1bbbb.webp";
 
 /**
  * Games — interactive station map + four playable projects.
@@ -195,16 +200,15 @@ export function GamesProvider({ children }: { children: ReactNode }) {
       if (!target) return;
       const inner =
         target.closest<HTMLElement>(".route-frame__scroll") ??
-        (triggerEl as HTMLElement)?.closest<HTMLElement>(".route-frame__scroll");
+        (triggerEl as HTMLElement)?.closest<HTMLElement>(
+          ".route-frame__scroll",
+        );
       const reduceMotion = window.matchMedia(
         "(prefers-reduced-motion: reduce)",
       ).matches;
-      scrollReaderToTarget(
-        target,
-        inner,
-        reduceMotion ? "instant" : "smooth",
-        { block: "start" },
-      );
+      scrollReaderToTarget(target, inner, reduceMotion ? "instant" : "smooth", {
+        block: "start",
+      });
     },
     [],
   );
@@ -251,7 +255,9 @@ export function GamesStationMap() {
           <li id="breast-guardian-rpg" className="is-available">
             <button
               type="button"
-              onClick={(e) => scrollToShowcase("breast-guardian", e.currentTarget)}
+              onClick={(e) =>
+                scrollToShowcase("breast-guardian", e.currentTarget)
+              }
               aria-controls="game-breast-guardian"
             >
               <span className="games-project-map__node" aria-hidden="true">
@@ -304,7 +310,8 @@ export function GamesStationMap() {
         </span>
         <span className="games-project-map__source-copy">
           <span>Open source</span>
-          The source code for these games is openly available in our iGEM GitLab repository.
+          The source code for these games is openly available in our iGEM GitLab
+          repository.
         </span>
       </p>
     </div>
@@ -350,11 +357,64 @@ const GAME_LAUNCH_CONFIG: Record<GameKey, GameLaunchConfig> = {
   },
 };
 
+/** Shared artwork and action dock for game launchers and page links. */
+function GameShowcaseVisual({
+  game,
+  actionLabel,
+}: {
+  game: GameKey;
+  actionLabel: string;
+}) {
+  const config = GAME_LAUNCH_CONFIG[game];
+  return (
+    <>
+      <div className="games-showcase__canvas-stage" aria-hidden="true">
+        <div
+          className="games-showcase__art"
+          style={
+            config.coverImage
+              ? { backgroundImage: `url(${config.coverImage})` }
+              : undefined
+          }
+        />
+        <div className="games-showcase__vignette" />
+      </div>
+
+      <div className="games-showcase__hud">
+        <span className="games-showcase__station-badge">
+          <svg
+            className="games-showcase__knot-mark"
+            viewBox="0 0 32 46"
+            aria-hidden="true"
+          >
+            <use href="#circure-ribbon-knot" />
+          </svg>
+          <strong>{config.station}</strong>
+        </span>
+        <span className="games-showcase__mode-pill">{config.badge}</span>
+      </div>
+
+      <div className="games-showcase__dock">
+        <div className="games-showcase__dock-meta">
+          <strong className="games-showcase__title">{config.title}</strong>
+          <span className="games-showcase__subtitle">{config.subtitle}</span>
+        </div>
+        <div className="games-showcase__dock-action">
+          <span className="games-showcase__cta-btn">
+            <b className="games-showcase__cta-play" aria-hidden="true">
+              ▶
+            </b>
+            <span>{actionLabel}</span>
+          </span>
+        </div>
+      </div>
+    </>
+  );
+}
+
 /** One showcase launch card; clicking anywhere opens the game surface. */
 export function GameLaunchCard({ game }: { game: GameKey }) {
   const { openGame } = useGames();
-  const config = GAME_LAUNCH_CONFIG[game];
-
   return (
     <div className={`games-showcase games-showcase--${game}`}>
       <button
@@ -363,47 +423,24 @@ export function GameLaunchCard({ game }: { game: GameKey }) {
         onClick={(event) => openGame(game, event.currentTarget)}
         aria-haspopup="dialog"
       >
-        <div className="games-showcase__canvas-stage" aria-hidden="true">
-          <div
-            className="games-showcase__art"
-            style={
-              config.coverImage
-                ? { backgroundImage: `url(${config.coverImage})` }
-                : undefined
-            }
-          />
-          <div className="games-showcase__vignette" />
-        </div>
-
-        <div className="games-showcase__hud">
-          <span className="games-showcase__station-badge">
-            <svg
-              className="games-showcase__knot-mark"
-              viewBox="0 0 32 46"
-              aria-hidden="true"
-            >
-              <use href="#circure-ribbon-knot" />
-            </svg>
-            <strong>{config.station}</strong>
-          </span>
-          <span className="games-showcase__mode-pill">{config.badge}</span>
-        </div>
-
-        <div className="games-showcase__dock">
-          <div className="games-showcase__dock-meta">
-            <strong className="games-showcase__title">{config.title}</strong>
-            <span className="games-showcase__subtitle">{config.subtitle}</span>
-          </div>
-          <div className="games-showcase__dock-action">
-            <span className="games-showcase__cta-btn">
-              <b className="games-showcase__cta-play" aria-hidden="true">
-                ▶
-              </b>
-              <span>Play</span>
-            </span>
-          </div>
-        </div>
+        <GameShowcaseVisual game={game} actionLabel="Play" />
       </button>
+    </div>
+  );
+}
+
+/** Reuse the Games artwork and skin when another chapter links to a game. */
+export function GameShowcaseLink({ game }: { game: GameKey }) {
+  return (
+    <div className="wiki-page--games games-showcase-preview">
+      <div className={`games-showcase games-showcase--${game}`}>
+        <Link
+          className="games-showcase__launch"
+          to={`/games#${SECTION_ID[game]}`}
+        >
+          <GameShowcaseVisual game={game} actionLabel="Turn to Games Page." />
+        </Link>
+      </div>
     </div>
   );
 }

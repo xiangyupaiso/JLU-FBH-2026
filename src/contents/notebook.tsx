@@ -1,10 +1,7 @@
 import { WikiRoutePage } from "../components/wiki/WikiRoutePage";
 import { getProjectHeroImage } from "../components/wiki/projectHeroAssets";
-import {
-  NotebookRecordSchema,
-  NotebookTrace,
-  NotebookTraceability,
-} from "../components/wiki/features/WetLabFeatures";
+import { notebookFeatures } from "../components/wiki/features/project/NotebookPanels";
+import { notebookPreloadImages } from "../data/project/notebookAssets";
 import { notebookPage } from "../data/project/notebookPage";
 
 export function Notebook() {
@@ -13,13 +10,12 @@ export function Notebook() {
       content={notebookPage}
       heroImage={getProjectHeroImage(notebookPage.route)}
       theme="project"
-      pageClassName="wiki-page--project"
+      pageClassName="wiki-page--project wiki-page--notebook"
+      documentFlow
+      hideOutline
       hideHeroCopy
-      features={{
-        "notebook-schema": <NotebookRecordSchema />,
-        "notebook-timeline": <NotebookTrace />,
-        "notebook-index": <NotebookTraceability />,
-      }}
+      preloadImages={notebookPreloadImages}
+      features={notebookFeatures()}
     />
   );
 }

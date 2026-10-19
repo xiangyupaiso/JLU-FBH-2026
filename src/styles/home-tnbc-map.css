@@ -134,6 +134,10 @@
 .home-story.has-story-motion .tnbc-map-note {
   opacity: 0;
 }
+.home-story.has-story-motion #why-tnbc.is-visible .tnbc-map-note {
+  /* Keep the four small surfaces ready through entrance and gathering. */
+  will-change: transform, opacity;
+}
 .home-story:not(.has-story-motion) .tnbc-map-notes {
   grid-template-columns: repeat(4, minmax(0, 1fr));
   grid-template-rows: auto;
@@ -334,6 +338,7 @@
   .tnbc-map-note {
     opacity: 1 !important;
     transform: none !important;
+    will-change: auto !important;
   }
   .tnbc-map-copy {
     opacity: 1 !important;

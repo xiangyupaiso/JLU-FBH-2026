@@ -663,27 +663,8 @@
   margin: 0;
 }
 
-.wiki-page--experiments .wiki-content-heading {
-  margin: 12px 0 0;
-  color: var(--route-subheading-ink, #88541e);
-  font-family: var(--font-sans);
-  font-size: clamp(18px, 1.6vw, 20px);
-  font-weight: 700;
-  line-height: 1.35;
-  padding: 0;
-  border: 0;
-}
-
 .wiki-page--experiments .wiki-content-heading::before {
   content: none;
-}
-
-.wiki-page--experiments h5.wiki-content-heading {
-  font-size: clamp(17px, 1.5vw, 19px);
-}
-
-.wiki-page--experiments .wiki-protocol-drawer__title {
-  font-size: clamp(19px, 1.8vw, 22px);
 }
 
 .wiki-page--experiments .wiki-prose strong,

@@ -15,6 +15,7 @@ export const attributionPage = {
   next: {
     path: "/activities",
     label: "Team Activities",
-    title: "Explore our team building, outreach, and milestones.",
+    title: "Beyond the Protocol: Our Journey Together",
+    description: "Attribution matrices document the tasks, but not the memories. Step behind the scenes to see the camaraderie, trials, and triumphs of our season.",
   },
 } as const;

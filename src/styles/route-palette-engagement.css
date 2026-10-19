@@ -33,6 +33,7 @@
   --route-heading-ink: #4a2c1d;      /* 大标题 H2：深沉暖焦糖咖褐，阅读对比度极高，沉稳清晰 */
   --route-marker-bg: #fde5a5;        /* 大标题马克笔：阳光淡金黄底涂，温润高雅 */
   --route-subheading-ink: #174a47;   /* 小标题 H3：深孔雀墨黛青，金黄暖调与冷翠黛青相映成趣 */
+  --route-tertiary-ink: #78442c;     /* 次级小标题 H4：暖焦糖栗褐，温润沉稳，多层标题层次井然 */
   --route-watermark: rgba(74, 44, 29, 0.12);
 }
 

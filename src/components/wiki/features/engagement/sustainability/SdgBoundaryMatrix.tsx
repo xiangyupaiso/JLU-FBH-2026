@@ -33,7 +33,7 @@ const LEGEND = [
   { sw: 803.2, tx: 832.7, i: 0, desc: "Diagonal / not defined" },
 ];
 
-const FONT = "'DejaVu Sans', 'Helvetica Neue', Arial, sans-serif";
+const FONT = "Lexend, 'Helvetica Neue', Arial, sans-serif";
 
 const cells = M.flatMap((row, r) => row.map((v, c) => ({ value: [c, r, v] })));
 

@@ -1,11 +1,23 @@
 /* Home opening intro: sparkler signature, strobe and hand-off to the header. */
+:root:has(.home-intro) {
+  overflow: hidden;
+  overscroll-behavior: none;
+  scrollbar-gutter: stable;
+}
+
 .home-intro {
   position: fixed;
   inset: 0;
-  z-index: 99;
+  z-index: 102;
   display: grid;
   place-items: center;
-  pointer-events: none;
+  pointer-events: auto;
+  touch-action: none;
+  outline: none;
+}
+/* Keep header controls and their dropdowns above the opening animation. */
+:root[data-home-intro] .site-header.is-home-page {
+  z-index: 103;
 }
 .home-intro-flash,
 .home-intro-embers {

@@ -22,6 +22,7 @@ import {
 import {
   sustainabilityAssets,
   sustainabilityImage,
+  sustainabilityImageEntry,
   type SustainabilityImageAssetKey,
 } from "./sustainabilityAssets";
 import {
@@ -45,15 +46,26 @@ const prose = (...paragraphs: ReadonlyArray<string>): WikiContentBlock => ({
   paragraphs: [...paragraphs],
 });
 
+const proseWithId = (id: string, ...paragraphs: ReadonlyArray<string>): WikiContentBlock => ({
+  type: "prose",
+  id,
+  paragraphs: [...paragraphs],
+});
+
 const feature = (key: string): WikiContentBlock => ({ type: "feature", key });
 
 /** Figure block carrying the registered asset; its alt doubles as caption. */
-const fig = (key: SustainabilityImageAssetKey): WikiContentBlock => ({
-  type: "figure",
-  src: sustainabilityImage(key),
-  alt: sustainabilityAssets[key].alt,
-  caption: sustainabilityAssets[key].alt,
-});
+const fig = (key: SustainabilityImageAssetKey): WikiContentBlock => {
+  const entry = sustainabilityImageEntry(key);
+  return {
+    type: "figure",
+    src: sustainabilityImage(key),
+    alt: entry.alt,
+    caption: entry.alt,
+    width: entry.width,
+    height: entry.height,
+  };
+};
 
 /** Feature keys of one SDG chapter, derived from its id. */
 export const chapterFeatureKeys = (chapter: Pick<SdgChapter, "id">) => ({
@@ -155,7 +167,7 @@ const overviewSection: WikiSection = {
     feature("overview-set-develop-grow"),
     prose(sustainabilityOverview.stakeholders),
     fig("overviewMapOfStakeholders"),
-    prose(sustainabilityOverview.scaleModel),
+    proseWithId("overview-scale-model", sustainabilityOverview.scaleModel),
     fig("overviewScaleModel"),
     prose(sustainabilityOverview.sstqn),
     fig("overviewSstQnNetwork"),
@@ -203,8 +215,8 @@ const sstQnSection: WikiSection = {
 const impactFramework: WikiSection = {
   id: "sdg-impact-framework",
   index: "03",
-  kicker: "03 / SDG Impact Framework",
-  navLabel: "SDG Impact Framework",
+  kicker: "03 / SET-DEVELOP-GROW",
+  navLabel: "SET-DEVELOP-GROW Impact Framework",
   title: impactFrameworkSection.title,
   summary: "",
   blocks: [
@@ -228,8 +240,12 @@ const setCoreChallenges: WikiSection = {
     prose(...setCoreChallengesSection.paragraphs),
     ...chapterBlocks(sustainabilityChapters[0]),
     subheading(stakeholderTracker.id, stakeholderTracker.index, stakeholderTracker.title),
-    prose(...stakeholderTracker.paragraphs),
-    feature("stakeholder-tracker-tools"),
+    prose(stakeholderTracker.paragraphs[0]),
+    feature("stakeholder-tracker-blank"),
+    prose(stakeholderTracker.paragraphs[1]),
+    feature("stakeholder-tracker-example"),
+    feature("stakeholder-tracker-manuals"),
+    prose(...stakeholderTracker.paragraphs.slice(2)),
     // SET chapters: SDG 9 / 12 only; DEVELOP chapters live in section 05.
     ...sustainabilityChapters.slice(1, 3).flatMap(chapterBlocks),
   ],
@@ -277,12 +293,15 @@ export const sustainabilityPage: WikiPageContent = {
     sustainabilityConclusionSection,
   ],
   links: [
-    { path: "/human-practices", label: "Human Practices" },
-    { path: "/education", label: "Education" },
+    { path: "/human-practices", label: "Human Practices & Ethics" },
+    { path: "/education", label: "Education & Outreach" },
+    { path: "/entrepreneurship", label: "Affordable Healthcare" },
+    { path: "/safety-and-security", label: "Environmental Safety" },
   ],
   next: {
     path: "/roster",
-    label: "Roster",
-    title: "Unite around a shared vision to turn the impossible.",
+    label: "Meet Our Team",
+    title: "United by a Shared Vision for Life",
+    description: "Global impact always begins with dedicated individuals. Return to our roster to meet the students and mentors whose collective passion brought CirCure to life.",
   },
 };

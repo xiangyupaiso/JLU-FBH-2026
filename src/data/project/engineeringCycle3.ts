@@ -173,7 +173,7 @@ export const cycle3Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "Wet Lab prepared all five circRNA inputs through the same DNA-to-RNA workflow. PCR-derived transcription templates from the corresponding plasmids entered T7 in vitro transcription, DNA-template removal, RNA purification, self-splicing circularisation and RNase R purification. Agarose-gel electrophoresis documented the four antigen-encoding DNA templates.",
+          "Wet Lab prepared all five circRNA inputs through a shared DNA-to-RNA workflow. PCR and agarose-gel electrophoresis were used to verify the plasmid target regions. The corresponding plasmids were separately linearised and purified as templates for T7 in vitro transcription, followed by DNA-template removal, RNA purification, self-splicing circularisation and RNase R treatment.",
           "For the purified Combined preparation, divergent- and convergent-primer RT-qPCR used the 4 µL working input established in Iteration 2.5, with three technical wells. The recorded calculation estimated the circular fraction against the predefined ≥90% release criterion. Sanger sequencing of a junction-spanning amplification product then checked the expected head-to-tail connection. Group identifiers were retained throughout preparation and subsequent DC electroporation (Wesselhoeft et al., 2018; LGC Biosearch Technologies, n.d.)."
 ]
         },
@@ -189,7 +189,7 @@ export const cycle3Section: WikiSection = {
           {
                     "label": "LGC Biosearch Technologies (n.d.)",
                     "text": "LGC Biosearch Technologies (n.d.) *Ribonuclease R Manual*. Cat. RNR07250.",
-                    "href": "https://biosearchtech.a.bigcontent.io/v1/static/manual_RNR07250_RNase-R?utm_source=chatgpt.com",
+                    "href": "https://biosearchtech.a.bigcontent.io/v1/static/manual_RNR07250_RNase-R",
                     "hrefLabel": "Official manual"
           }
 ]
@@ -203,7 +203,8 @@ export const cycle3Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "The gel showed prominent DNA bands for all four antigen-encoding transcription templates, supporting their progression to transcription. At the RNA stage, the purified Combined preparation gave a recorded circular-to-linear signal ratio of 145.7:1 and an estimated circular fraction of 99.30±0.17%, exceeding the ≥90% release criterion. This measurement described the composition after RNase R purification."
+          "The gel documented target-region PCR products from the four antigen-encoding plasmids, supporting the plasmid-verification step. At the RNA stage, the purified Combined preparation gave a recorded circular-to-linear signal ratio of 145.7:1 and an estimated circular fraction of 99.30±0.17%, exceeding the ≥90% release criterion. This measurement described the composition after RNase R purification.",
+          "Junction sequencing recovered the expected connection between the precursor’s 3′ and 5′ sequences. Together, the quantitative readout and junction sequence supported the preparation of circRNA-rich Combined material for the second-round comparison."
 ]
         },
         {
@@ -211,8 +212,8 @@ export const cycle3Section: WikiSection = {
           src: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-c3-01a.avif",
           width: 733,
           height: 549,
-          alt: "Figure C3-01A",
-          caption: "Agarose-gel electrophoresis documented the four antigen-encoding DNA transcription templates before T7 transcription."
+          alt: "Figure C3-01A｜Plasmid verification by PCR｜质粒PCR核验",
+          caption: "Agarose-gel electrophoresis of target-region PCR products used to verify the four antigen-encoding plasmids."
         },
         {
           type: "table",
@@ -548,7 +549,7 @@ export const cycle3Section: WikiSection = {
         },
         {
           type: "figure",
-          src: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-c3-04b.avif",
+          src: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-c3-04b-new.avif",
           width: 480,
           height: 369,
           alt: "Figure C3-04B",
@@ -563,7 +564,7 @@ export const cycle3Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "TorusFold established a segmentation scheme for the experimental Combined sequence, demonstrated geometric refinement in a fragment-level test and supplied a full-length structural hypothesis. Together, these outputs added a computational perspective to the molecular measurements. We then returned to the prepared circRNA to examine whether it produced an encoded protein and elicited a maturation-associated response in dendritic cells."
+          "TorusFold established a segmentation scheme for the experimental Combined sequence, demonstrated geometric refinement in a fragment-level test and supplied a full-length structural hypothesis. This work established a sequence-preserving route for structural exploration while keeping fragment-level refinement results distinct from the full-length hypothesis. Translation and dendritic-cell maturation were evaluated through a separate experimental route, providing complementary functional evidence."
 ]
         },
         {
@@ -824,7 +825,7 @@ export const cycle3Section: WikiSection = {
           {
                     "label": "Dakewe Biotech (n.d.)",
                     "text": "Dakewe Biotech (n.d.) *Human IFN-γ Precoated ELISPOT Kit (strips): instruction manual*. Cat. 2110005, Rev. C/2.",
-                    "href": "https://files.dakewe.cn/crm/instruction/dy/2110005.pdf?utm_source=chatgpt.com",
+                    "href": "https://files.dakewe.cn/crm/instruction/dy/2110005.pdf",
                     "hrefLabel": "Instruction manual"
           }
 ]

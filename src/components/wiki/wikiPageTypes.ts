@@ -36,6 +36,13 @@ export interface WikiFact {
   value: string;
 }
 
+export interface WikiJudgingCriterion {
+  id: string;
+  question: string;
+  paragraphs: readonly string[];
+  anchorIds?: readonly string[];
+}
+
 export interface WikiItem {
   label: string;
   navLabel?: string;
@@ -72,7 +79,7 @@ export interface WikiReferenceEntry {
  * callout interleaving while still running through the shared renderer.
  */
 export type WikiContentBlock =
-  | { type: "prose"; paragraphs: string[] }
+  | { type: "prose"; paragraphs: string[]; id?: string }
   | { type: "quote"; text: string }
   | { type: "heading"; level: 4 | 5 | 6; title: string }
   | { type: "protocol-steps"; steps: Array<{ number: string; blocks: WikiContentBlock[] }> }
@@ -94,7 +101,7 @@ export type WikiContentBlock =
     }
   | {
       type: "carousel";
-      images: Array<{ src: string; alt?: string }>;
+      images: Array<{ src: string; alt?: string; width?: number; height?: number }>;
       caption?: string;
       figureLabel?: string;
     }
@@ -204,11 +211,9 @@ export interface WikiSection {
    */
   showKicker?: boolean;
   /**
-   * Drops the section number from the heading. Used for blocks that are not
-   * numbered chapters — e.g. the Games station map, which is a route diagram,
-   * so the numbered record starts with the first playable project below it.
-   * Honoured by the reader-route template (`WikiRoutePage`); the Wet Lab
-   * manuscript template ignores it, and no Wet Lab section sets it.
+   * Excludes the section from the reader's chapter numbering, in both the
+   * heading and the outline. Overview and preceding sections are automatically
+   * excluded by `numberWikiSections`; this flag covers other unnumbered content.
    */
   hideSectionNumber?: boolean;
   /**
@@ -254,6 +259,6 @@ export interface WikiPageContent {
   facts: WikiFact[];
   sections: WikiSection[];
   links: WikiLink[];
-  next: WikiLink & { title: string };
+  next: WikiLink & { title: string; description?: string };
   heroMinimal?: boolean;
 }

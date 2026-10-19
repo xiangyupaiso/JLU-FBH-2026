@@ -280,7 +280,7 @@ export const contributionPage: WikiPageContent = {
         "CirCure combines four TNBC-associated antigens into a single modular circular RNA vaccine for postoperative adjuvant immunotherapy.",
       blocks: [
         prose(
-          "The central contribution of our project is CirCure, a multi-antigen circular RNA vaccine designed as a possible postoperative adjuvant treatment for triple-negative breast cancer (TNBC). Although surgery can remove the primary tumour, residual tumour cells may remain and later contribute to recurrence or metastasis. This challenge is particularly important in TNBC because tumour cells can differ substantially in their antigen expression, allowing cells with low or absent expression of one target to escape immune recognition.",
+          "The central contribution of our project is CirCure, a multi-antigen circular RNA vaccine designed as a possible postoperative adjuvant treatment for triple-negative breast cancer. Although surgery can remove the primary tumour, residual tumour cells may remain and later contribute to recurrence or metastasis. This challenge is particularly important in TNBC because tumour cells can differ substantially in their antigen expression, allowing cells with low or absent expression of one target to escape immune recognition.",
           "CirCure addresses this problem by combining epitopes from four TNBC-associated antigens: TROP2, B7-H4, Nectin-4 and LIV-1. These targets were selected through our dry-lab validation and incorporated into a single circular RNA construct. By presenting multiple tumour-associated targets at the same time, CirCure is designed to broaden immune recognition across heterogeneous tumour-cell populations and reduce dependence on any single antigen.",
           "The circular RNA architecture also provides a flexible way to combine several antigenic sequences within one vaccine. Its covalently closed structure can improve resistance to degradation and support sustained antigen expression. CirCure therefore connects multi-antigen recognition with a programmable RNA platform that can be further adapted according to different tumour antigen profiles.",
           "Our experimental results provided initial support for the feasibility of this approach. The purified Combined vaccine reached a circular fraction of 99.30 ± 0.17%. In functional assays, it increased dendritic-cell maturation, CD8⁺ T-cell activation, effector-memory differentiation and IFN-γ secretion. Combined-primed T cells achieved 83.57 ± 1.68% killing of MDA-MB-231 tumour cells at an E ratio of 80:1, while the tested normal cell lines showed substantially lower killing.",
@@ -990,11 +990,11 @@ export const contributionPage: WikiPageContent = {
         subheading(
           "contribution-collab-reusable",
           "10.8",
-          "A Reusable Collaboration Network",
+          "A Collaboration Network",
         ),
         prose(
           "Together, these activities form a collaboration framework rather than a list of independent events. The Northeast Regional Exchange created a regional communication platform; “Letters Across iGEM” provided a low-barrier form of personal connection; “For iGEM Peers” transformed team knowledge into shared science communication material; the New Team Handbook supported long-term knowledge inheritance; and the Baduanjin project explored a practical and creative form of public health collaboration.",
-          "Our participation in CCiC, APIC, iGBA, and regional exchanges further connected these resources with a broader iGEM network. Through CirCure, JLU-FBH contributed not only project ideas, but also reusable ways for teams to exchange experience, support one another, and build shared community resources.",
+          "Our participation in CCiC, APIC, and regional exchanges further connected these resources with a broader iGEM network. Through CirCure, JLU-FBH contributed not only project ideas, but also reusable ways for teams to exchange experience, support one another, and build shared community resources.",
           "These activities cannot solve every challenge faced by iGEM teams. Their value lies in their adaptability: future teams can reuse the platforms, formats, and resources according to their own region, project, experience, and community needs. In this sense, our collaboration contribution is not limited to what happened during one competition season. It is an attempt to help knowledge continue moving between teams, generations, and regions.",
         ),
         feature("contribution-gallery-regional-exchanges"),
@@ -1020,18 +1020,15 @@ export const contributionPage: WikiPageContent = {
     },
   ],
   links: [
-    { path: "/experiments", label: "circRNA protocol" },
-    { path: "/measurement", label: "Circularity measurement" },
-    { path: "/software", label: "circForge" },
-    { path: "/model", label: "Modelling framework" },
-    { path: "/hardware", label: "CirCore" },
-    { path: "/sustainability", label: "SDG framework" },
-    { path: "/education", label: "Education portfolio" },
-    { path: "/human-practices", label: "Human Practices" },
+    { path: "/design", label: "BioBrick Construct Design" },
+    { path: "/software", label: "circForge Design Suite" },
+    { path: "/hardware", label: "CirCore Reaction Device" },
+    { path: "/measurement", label: "Standardized Measurement" },
   ],
   next: {
     path: "/visual-design",
     label: "Visual Design",
-    title: "Explore CirCure's visual identity and scientific design system.",
+    title: "Translating Complexity into Visual Clarity",
+    description: "Standardized biology reaches its full potential when communicated clearly. Explore the aesthetic philosophy, color logic, and visual systems that give CirCure its voice.",
   },
 };

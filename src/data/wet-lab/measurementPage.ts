@@ -13,7 +13,7 @@ export const measurementJudgingCriteria: MeasurementJudgingCriterion[] = [
     id: "q1",
     question: "Could the measurement(s) be reproduced by other iGEM teams?",
     paragraphs: [
-      "Fourteen methods are described on this page. Eleven of them run on equipment a standard wet lab already has: a thermal cycler, a real-time PCR instrument, a gel imager, a plate reader, a flow cytometer, a cell sorter, an ELISpot reader and a fluorescence microscope. Nothing depends on custom hardware or an instrument-specific calibrant. The other three are dry-lab analyses that need public data and a workstation. Another team reruns those and gets our numbers, because the accessions, software settings and thresholds are listed below, the single-cell input is identified by its SHA-256 checksum, and the 85 structural models are archived with their job requests, coordinates and confidence files. The circularity assay is the one we expect to be reproduced most often, because a team building circRNA cannot avoid the question it answers, and its formula, primer convention, input series and release threshold are all written out below.",
+      "Fourteen methods are described on this page. Eleven of them run on equipment a standard wet lab already has: a thermal cycler, a real-time PCR instrument, a gel imager, a plate reader, a flow cytometer, a cell sorter, an ELISpot reader and a fluorescence microscope. Nothing depends on custom hardware or an instrument-specific calibrant. The other three are dry-lab analyses that need public data and a workstation. Another team reruns those and gets our numbers, because the accessions, software settings and thresholds are listed below, the single-cell input is identified by its SHA-256 checksum, and the 85 structural models are archived with their job requests, coordinates and confidence files. The circular-fraction calculation reports the sample stage, the two named primer pairs, the input series and the stated 90% criterion, so another team can reproduce the calculation and assess its assumptions.",
       "One constraint limits reproduction. The human immunology used commercially sourced HLA-A*02:01 mononuclear cells from one donor, so another team would reproduce the method and get its own frequencies.",
     ],
   },
@@ -31,7 +31,7 @@ export const measurementJudgingCriteria: MeasurementJudgingCriterion[] = [
     question: "Could it be useful to other projects?",
     paragraphs: [
       "Circular RNA is unusual ground in iGEM. Searching the Registry by sequence role returns two group I introns and two autocatalytically spliced introns across more than 32,000 sequence features, and 64 human-host parts against 502 for *E. coli*. The main precedent is Team Gifu, who worked on circular RNA from 2014. A team starting a circRNA project inherits a large literature and almost no community measurement practice or Registry parts.",
-      "We deposited 30 parts covering the circularisation backbone, the adjuvant module, the trafficking and membrane-targeting elements and the epitope cassettes, grouped into a part collection, with the measurements reported here attached to the parts they characterise. The circularity assay below is described in enough detail to be adopted directly, including the input-volume series that establishes the working range before a ratio is taken. The empty-vector control design applies to any team delivering RNA or DNA into innate-immune-competent cells. And the structural epitope check below reports the absolute buried area of the anchor residue alongside the burial percentage that is normally quoted. The percentage saturates near 100% whatever the residue's size: in our own set, three peptides share a burial of 99.4% at buried areas of 60.1, 143.8 and 173.3 Å². The change is free for any team doing the same work.",
+      "We deposited 30 parts covering the circularisation backbone, the adjuvant module, the trafficking and membrane-targeting elements and the epitope cassettes, grouped into a part collection, with the measurements reported here attached to the parts they characterise. The circularity assay below is described in enough detail to be adopted directly, including a three-volume comparison that shows whether the estimated fraction changes with input. The empty-vector control design applies to any team delivering RNA or DNA into innate-immune-competent cells. And the structural epitope check below reports the absolute buried area of the anchor residue alongside the burial percentage that is normally quoted. The percentage saturates near 100% whatever the residue's size: in our own set, three peptides share a burial of 99.4% at buried areas of 60.1, 143.8 and 173.3 Å². The change is free for any team doing the same work.",
     ],
   },
   {
@@ -39,9 +39,8 @@ export const measurementJudgingCriteria: MeasurementJudgingCriterion[] = [
     question:
       "Did the team validate and calibrate their measurement process appropriately for their approach?",
     paragraphs: [
-      "Calibration took five forms. The circularity assay was run at three input volumes before any release figure was taken; the 2 µL arm failed the acceptance rule, so 4 µL was fixed as the working input, and a backbone-encoded GFP amplicon confirmed equal template input across both primer channels. Every Calcein-AM figure is computed between two measured bounds on the same plate, spontaneous and maximum release. Every per-cell readout rests on a counted and viability-gated input, so SFC per 10⁵ cells and every effector-to-target ratio share a measured denominator. Flow cytometry used single-stain compensation beads at a CV below 5%, isotype and unstained tubes, FMO controls and a fixable viability dye. Immunofluorescence sections were imaged in one batch under uniform exposure and magnification against a secondary-only control section, so that signal could be separated from the autofluorescence of necrotic tumour tissue.",
+      "Measurement checks took five forms. The circular-fraction assay compared three cDNA inputs in Round 1. The 2 µL input gave a lower fraction estimate than 4 and 6 µL and was not selected for the later assay. The 4 µL input was adopted as the lower of the two inputs giving similar estimates. All three estimates exceeded 90% under the base-2 model, so the choice of input was separate from that criterion. Both rounds use target Cq values without GFP normalisation. The GFP reference measurements recorded in Round 2 are retained separately. The input comparison documents input dependence; it does not establish cross-assay calibration. Every Calcein-AM figure is computed between two measured bounds on the same plate, spontaneous and maximum release. Every per-cell readout rests on a counted and viability-gated input, so SFC per 10⁵ cells and every effector-to-target ratio share a measured denominator. Flow cytometry used single-stain compensation beads at a CV below 5%, isotype and unstained tubes, FMO controls and a fixable viability dye. Immunofluorescence sections were imaged in one batch under uniform exposure and magnification against a secondary-only control section, so that signal could be separated from the autofluorescence of necrotic tumour tissue.",
       "Three dry-lab checks belong here as well. The structural tier began by testing whether AlphaFold's own confidence score could serve as its criterion: ipTM across 85 models runs from 0.932 to 0.970 and its rank correlation with the position-9 fill ratio is +0.02, so a geometric criterion was built instead and confidence is reported as a record. Between-model dispersion then decided which measurements were allowed to carry a threshold, with anchor-position burial reproducible to 0.0 percentage points at the median and central-segment burial varying by several points. And the fill-ratio threshold was placed inside a measured gap, since alanine candidates reach 43.3% and the lowest passing candidate sits at 80.4%, so any cutoff between 44% and 80% classifies all 17 systems identically.",
-      "Three things were not validated, and the text says so where the numbers appear. The divergent and convergent primer pairs were not checked against standard curves for equal amplification efficiency. No microscopy field was counted manually. And neither of the two dry-lab exclusion rules has been tested against a measurement.",
     ],
   },
 ];
@@ -581,25 +580,25 @@ export const measurementPage: WikiPageContent = {
           id: "02-contributions-to-measurement-1-1-a-circularity-assay-with-a-working-range-check-so-the-figure-is-comparable",
           index: "1",
           title:
-            "A circularity assay with a working-range check, so the figure is comparable.",
+            "A circular-fraction estimate with named assays and an input-volume comparison.",
           level: 3,
         },
         {
           type: "prose",
           paragraphs: [
-            "Any team that makes circRNA has to report how circular its product is. Those numbers are hard to compare between laboratories, for three reasons. The figure may describe the purified product or the crude reaction. The qPCR may be running outside its reliable input range. And nothing confirms that the two primer channels received the same amount of template.",
+            "We estimate the circular fraction in the RNA preparation after RNase R treatment. The circular channel uses SJ3910F + SJ3909R, and the residual-linear channel uses SJ3911F + SJ3909R. Stating the sample stage and primer pairs makes the denominator clear.",
           ],
         },
         {
           type: "prose",
           paragraphs: [
-            "Our version adds a step for each. An input-volume series establishes the working range before a ratio is taken. A backbone amplicon run on both channels confirms equal input. And the text says which species each primer pair reads, since the same ΔCq gives a different answer under the two conventions in use.",
+            "For the Round 1 representative, three cDNA inputs gave estimates of 92.85 ± 0.08% at 2 µL, 96.96 ± 0.70% at 4 µL and 96.25 ± 1.14% at 6 µL. These are mean ± SD across three technical comparisons per input. The 2 µL input gave a lower circular-fraction estimate than the two higher inputs. A 4 µL input was sufficient to obtain an estimate comparable to that at 6 µL, with no clear benefit from adding more template. We therefore adopted 4 µL as the standard cDNA input for subsequent measurements. All three inputs remain reported. This empirical comparison does not establish a validated quantitative range.",
           ],
         },
         {
           type: "prose",
           paragraphs: [
-            "Adopting it costs one extra row of nine wells on a plate a team is already running. It caught a real failure in our own hands: at 2 µL input the assay was out of range, and the figure it returned looked entirely ordinary.",
+            "Other teams can reuse the plate layout and calculation. Round 1 uses nine wells per target assay, or 18 target-assay wells in total. Both rounds use the same target-Cq calculation without GFP normalisation. The Combined record also contains GFP measurements, which are retained separately. Reporting the raw Cq values allows other teams to reproduce the estimates. Cross-assay calibration remains necessary to establish a quantitative scale for the two targets.",
           ],
         },
         {
@@ -698,13 +697,13 @@ export const measurementPage: WikiPageContent = {
         {
           type: "prose",
           paragraphs: [
-            "Accurate and reproducible measurement is the foundation of any vaccine project.CirCure is a multi-epitope circular RNA vaccine against triple-negative breast cancer, built on a T4 *td* permuted-intron backbone carrying eight CTL epitopes drawn from four tumour-associated antigens: TROP2, B7-H4, Nectin-4 and LIV-1. Building it meant answering a sequence of questions in which each answer was the next question's precondition. Four candidate antigens were tested against four independent lines of public evidence, and the overlap between them settled how many to carry. Those four sequences yielded 1,838 candidate peptides, which two numerical gates and a topology review cut to 17 and a structural screen cut to 15. Thirteen became plasmids, and each had to be shown to carry its designed cassette, and each preparation to reach a release standard for circularity, before any immunological reading of it meant anything. Only then was it worth asking whether a dendritic cell translated the antigen, how the epitopes ranked by IFN-γ release, whether the primed T cells killed tumour cells while sparing normal ones, and whether a tumour in a living animal was restrained.",
+            "CirCure is a multi-epitope circular RNA vaccine against triple-negative breast cancer, built on a T4 *td* permuted-intron backbone carrying eight selected epitope fragments from TROP2, B7-H4, Nectin-4 and LIV-1. Four candidate antigens were assessed against four lines of public evidence. Their sequences yielded 1,838 candidate peptides, reduced to 17 by sequence screening and topology review, then to 15 by structural screening. Thirteen single-epitope constructs were ordered as synthesised plasmids, with sequence identity documented by the supplier. The plasmids were linearised for T7 in vitro transcription, followed by circularisation and RNase R treatment. The post-RNase R circular fraction was estimated on TROP2-CTL1 as the Round 1 representative and on the Combined preparation in Round 2. The Combined vaccine also underwent Sanger sequencing of an RT-PCR product spanning the back-splice junction (BSJ). The functional experiments then asked whether dendritic cells translated the antigen, how the constructs ranked by IFN-γ release, whether primed T cells killed tumour cells while sparing normal cells, and whether the vaccine restrained tumour growth in vivo.",
           ],
         },
         {
           type: "prose",
           paragraphs: [
-            "Three kinds of relation hold that sequence together. Some measurements are gates: a batch below 90% circular never enters a functional experiment, the surface TROP2 measurement on the engineered 4T1 line gates the entire animal study, and the GFP imaging gates the sort that produced that line. Some fix a number that the others reuse: cell counting fixes the denominator behind every per-cell figure, the input-volume series fixes 4 µL for every circularity measurement taken afterwards, and the CCK-8 curve fixes 200 ng per 1×10⁴ dendritic cells as the carrier ceiling. An error in a shared number moves every readout that uses it in the same direction. And some license the reading of another: the K562 arm of the killing assay shows that all thirteen effector preparations were functional, which is what allows a low ELISpot count to be read as a weak epitope instead of as cells that never worked.",
+            "Three kinds of relation hold that sequence together. Some measurements set acceptance criteria: the stated circular-fraction criterion is at least 90%, applied here to the measured representative preparations, the surface TROP2 measurement on the engineered 4T1 line gates the entire animal study, and the GFP imaging gates the sort that produced that line. Some fix a number that the others reuse: cell counting fixes the denominator behind every per-cell figure, the input-volume comparison led to selection of 4 µL for the Combined circular-fraction measurement, with 2 µL not carried forward as the standard input, and the CCK-8 curve fixes 200 ng per 1×10⁴ dendritic cells as the carrier ceiling. An error in a shared number moves every readout that uses it in the same direction. And some license the reading of another: the K562 arm of the killing assay shows that all thirteen effector preparations were functional, which is what allows a low ELISpot count to be read as a weak epitope instead of as cells that never worked.",
           ],
         },
         {
@@ -721,7 +720,7 @@ export const measurementPage: WikiPageContent = {
         {
           type: "prose",
           paragraphs: [
-            "Circular RNA is unusual ground in iGEM. Searching the Registry by sequence role returns two group I introns and two autocatalytically spliced introns across more than 32,000 sequence features, and 64 human-host parts against 502 for *E. coli*. The main precedent is Team Gifu, whose circular RNA work began in 2014. The literature is large and recent while the Registry toolkit is almost empty, so there is no shared protocol for checking that a preparation is circular and no agreed way to report that figure once it has been measured. So we built those pieces: a circularity assay whose working range is established before any ratio is taken, a control design that separates the encoded antigen from the carrier delivering it, and 30 parts deposited as a collection, with each measurement reported here attached to the part it characterises.",
+            "Circular RNA is unusual ground in iGEM. Searching the Registry by sequence role returns two group I introns and two autocatalytically spliced introns across more than 32,000 sequence features, and 64 human-host parts against 502 for *E. coli*. The main precedent is Team Gifu, whose circular RNA work began in 2014. The literature is large and recent while the Registry toolkit is almost empty, so there is no shared protocol for checking that a preparation is circular and no agreed way to report that figure once it has been measured. So we built those pieces: a circular-fraction assay that compares input volumes before fixing the input used for later measurements, a control design that separates the encoded antigen from the carrier delivering it, and 30 parts deposited as a collection, with each measurement reported here attached to the part it characterises.",
           ],
         },
       ],
@@ -839,10 +838,6 @@ export const measurementPage: WikiPageContent = {
           ],
         },
         {
-          type: "feature",
-          key: "measurement-proteomics-volcanoes",
-        },
-        {
           type: "subheading",
           id: "04-choosing-what-to-build-1-4-results",
           index: "1.4",
@@ -906,6 +901,10 @@ export const measurementPage: WikiPageContent = {
           paragraphs: [
             "All four candidates were quantified and reached significance in at least one proteomic dataset. The effect sizes differ by about an order of magnitude between the two, and the design explains it: the paired dataset removes between-patient variation. TROP2 is the clearest case, lowest in the unpaired cohort at 1.14× and largest in the paired design at 18.25×.",
           ],
+        },
+        {
+          type: "feature",
+          key: "measurement-proteomics-volcanoes",
         },
         {
           type: "prose",
@@ -1105,6 +1104,7 @@ export const measurementPage: WikiPageContent = {
         },
         {
           type: "figure",
+          className: "measurement-figure--compact measurement-figure--fig03",
           src: getMeasurementImage(
             "the-staged-epitope-screen-from-1-838-nine-mers-to-15-delivered-peptides",
           ),
@@ -1182,7 +1182,7 @@ export const measurementPage: WikiPageContent = {
         {
           type: "prose",
           paragraphs: [
-            "The first thing measured was whether AlphaFold's own confidence could serve as the criterion. It could not, so a separate geometric criterion was built and confidence is reported alongside it as a record.",
+            "The first thing measured was whether AlphaFold’s own confidence could serve as the criterion. It could not, so a separate geometric criterion was built and confidence is reported alongside it as a record. A separate geometric criterion was therefore built, and confidence is reported alongside it as a record.",
           ],
         },
         {
@@ -1224,6 +1224,19 @@ export const measurementPage: WikiPageContent = {
           ],
         },
         {
+          type: "subheading",
+          id: "04-choosing-what-to-build-3-4-results",
+          index: "3.4",
+          title: "Results",
+          level: 4,
+        },
+        {
+          type: "prose",
+          paragraphs: [
+            "Across the 85 models ipTM ran from 0.932 to 0.970, and its rank correlation with the position-9 fill ratio was +0.02. HILHVSFLA, one of the two peptides this stage rejects, has an ipTM of 0.960.",
+          ],
+        },
+        {
           type: "figure",
           src: getMeasurementImage(
             "alphafold-3-confidence-scores-against-position-9-fill-ratio",
@@ -1233,13 +1246,6 @@ export const measurementPage: WikiPageContent = {
           alt: "AlphaFold 3 confidence scores against position-9 fill ratio",
           caption:
             "AlphaFold 3 confidence scores against position-9 fill ratio",
-        },
-        {
-          type: "subheading",
-          id: "04-choosing-what-to-build-3-4-results",
-          index: "3.4",
-          title: "Results",
-          level: 4,
         },
         {
           type: "prose",
@@ -1360,7 +1366,7 @@ export const measurementPage: WikiPageContent = {
         {
           type: "prose",
           paragraphs: [
-            "Thirteen plasmids and their transcription products arrive here. What these methods establish is that the material is what the design says it is, since every later number is read on that assumption. Two of them also set the release rule that decides which batches get used at all.",
+            "The wet-lab workflow starts with commercially synthesised plasmids and the supplier's sequencing reports. In Round 1, the supplied plasmids were linearised and purified for in vitro transcription; no agarose gel electrophoresis was performed. In Round 2, target-region PCR and agarose gel electrophoresis checked aliquots of the supplied plasmids, while the transcription templates were prepared separately by plasmid linearisation and purification. After transcription, circularisation and RNase R treatment, RT-qPCR estimated the circular fraction in one representative preparation from each round. BSJ Sanger sequencing was performed on the Combined vaccine. RT-PCR was also performed to assess TROP2 transcripts in the engineered target line, without agarose gel electrophoresis. Gel densitometry was used separately for the Combined circRNA stability comparison.",
           ],
         },
         {
@@ -1368,7 +1374,7 @@ export const measurementPage: WikiPageContent = {
           id: "05-releasing-the-material-1-restriction-digestion-and-sanger-sequencing-a-method-to-verify-construct-identity",
           index: "1",
           title:
-            "Restriction digestion and Sanger sequencing: A method to verify construct identity",
+            "Plasmid target-region PCR and agarose gel electrophoresis: A method to check the supplied constructs",
           level: 3,
         },
         {
@@ -1381,13 +1387,13 @@ export const measurementPage: WikiPageContent = {
         {
           type: "prose",
           paragraphs: [
-            "Nothing downstream of cloning can be interpreted until the plasmid is known to carry the designed sequence. A frameshift or a silent mismatch in an epitope cassette would turn a low ELISpot count into a report of a cloning error, with no way to tell it apart from weak immunogenicity. The same applies to the transcription template: an incompletely linearised plasmid produces run-on transcripts and a circularisation reaction that cannot be interpreted.",
+            "The vaccine plasmids were ordered from a commercial gene-synthesis supplier, with their sequence identity documented in the supplier's sequencing reports. Target-region PCR and agarose gel electrophoresis were performed in Round 2. An aliquot of a Round 2 plasmid was used for PCR, and the amplified product was checked against the expected amplicon size defined by the primer positions. No agarose gel electrophoresis was performed in Round 1.",
           ],
         },
         {
           type: "prose",
           paragraphs: [
-            "Three checks were used in series because each catches a different failure. Colony PCR catches the absence of an insert. Double digestion catches an insert in the wrong orientation or of the wrong length. Full-length Sanger sequencing catches point mutations that neither of the first two can see. A construct was accepted only after clearing all three at a 100% sequence match.",
+            "The PCR product was used only for verification. The DNA template for T7 in vitro transcription was prepared separately by restriction linearisation and purification of the supplied plasmid.",
           ],
         },
         {
@@ -1399,24 +1405,14 @@ export const measurementPage: WikiPageContent = {
         },
         {
           type: "prose",
-          paragraphs: ["This method served three points in the project."],
-        },
-        {
-          type: "prose",
           paragraphs: [
-            "For the Round 1 epitope plasmids, candidate colonies were screened by colony PCR, then by BamHI and PmeI double digestion, then by full-length Sanger sequencing against the designed sequence.",
+            "Round 2 comprised five preparations: empty vector, TROP2-CTL1, TROP2-CTL2, TROP2-CTL1+2 and Combined. Target regions were amplified from plasmid aliquots and the PCR products were run alongside a DNA ladder. The band position was compared with the expected amplicon size for the corresponding construct.",
           ],
         },
         {
           type: "prose",
           paragraphs: [
-            "For the Combined vaccine plasmid pCirCure-circMEV at 5267 bp, the eight epitope fragments were seamlessly assembled into the optimised backbone with the reading frame verified throughout, then the construct cleared double digestion and full-length Sanger sequencing at a 100% match.",
-          ],
-        },
-        {
-          type: "prose",
-          paragraphs: [
-            "For the transcription templates, each plasmid was linearised completely and run on a gel to confirm that no supercoiled species remained before it entered in vitro transcription. The four Round 2 templates were run side by side so their relative mobility could be read against the designed insert lengths.",
+            "A separate plasmid aliquot was linearised downstream of the transcription cassette and purified for T7 in vitro transcription. The RNA precursor was then purified, circularised and treated with RNase R before circularity was assessed. For the Combined vaccine, a BSJ-spanning RT-PCR product was also submitted for Sanger sequencing.",
           ],
         },
         {
@@ -1429,29 +1425,12 @@ export const measurementPage: WikiPageContent = {
         {
           type: "prose",
           paragraphs: [
-            "1. Assemble a 20 µL colony PCR containing 2 µL template, 10 µL 2× Taq StartMix, 0.4 µL of each primer and 7.2 µL ddH₂O.",
-            "2. Cycle at 94 °C for 2 min, then 25 to 30 cycles of 94 °C 30 s, 55 to 65 °C 30 s and 72 °C 60 s per kb, with a final extension at 72 °C for 5 to 10 min.",
-            "3. Run the product on a 1% agarose gel and confirm the band size against the designed amplicon.",
-            "4. Digest with BamHI and PmeI, 25 µL product with 3 µL 10× buffer and 2 µL of each enzyme, at 37 °C for 30 min, and recover after electrophoresis.",
-            "5. Submit a culture that has cleared colony PCR and double digestion for full-length Sanger sequencing, and accept only a 100% match to the designed sequence.",
-            "6. For transcription templates, digest 1 µg plasmid in 50 µL with 10 µL 5× buffer and 2 µL of each enzyme at 37 °C for 3 h, then confirm on a 1% gel that no supercoiled plasmid remains.",
+            "1. Thaw an aliquot of the supplied plasmid on ice and mix gently. Retain the design file and supplier's sequencing report for the construct.",
+            "2. Amplify the intended plasmid region with target-region primers. Use the primer positions to determine the expected amplicon length for each construct.",
+            "3. Analyse the PCR product on a 1% agarose gel alongside a DNA ladder and compare the band position with the expected amplicon size. Keep this product for verification only.",
+            "4. Prepare the transcription template from a separate plasmid aliquot by restriction digestion downstream of the transcription cassette, then purify the linearised DNA to remove enzyme and salts. The PCR product from step 2 is not the IVT template.",
+            "5. Carry the purified linearised plasmid into the T7 transcription and RNA preparation workflow described in the following section.",
           ],
-        },
-        {
-          type: "prose",
-          paragraphs: [
-            "If the two enzymes have incompatible buffers, digest sequentially or move to a universal buffer. The vector can be dephosphorylated to lower the self-ligation background. Very short epitope fragments can be obtained by annealing complementary oligonucleotides instead of amplifying them, which removes PCR-introduced mutations as a failure mode.",
-          ],
-        },
-        {
-          type: "figure",
-          src: getMeasurementImage(
-            "agarose-gel-verification-of-the-four-epitope-encoding-linearised-transcription-templates",
-          ),
-          width: 1004,
-          height: 741,
-          alt: "Agarose gel of the four linearised transcription templates",
-          caption: "Agarose gel of the four linearised transcription templates",
         },
         {
           type: "subheading",
@@ -1463,14 +1442,20 @@ export const measurementPage: WikiPageContent = {
         {
           type: "prose",
           paragraphs: [
-            "TROP2-CTL1 and pCirCure-circMEV both cleared all three checks with a 100% sequence match.",
+            "The displayed panel contains four PCR-product lanes labelled TROP2-CTL1, TROP2-CTL2, TROP2-CTL1+2 and Combined. Each lane contains a prominent signal, with broad bright bands and vertical trailing that limit precise size assignment. The bands should be compared with the expected amplicon lengths defined by the primer positions. The full plasmid length is not the expected band size in this assay.",
           ],
         },
         {
-          type: "prose",
-          paragraphs: [
-            "On the template gel each lane carries a single major species and their mobility orders with insert length, following the designed sizes from TROP2-CTL1 and TROP2-CTL2 through TROP2-CTL1+2 to Combined.",
-          ],
+          type: "figure",
+          className: "measurement-figure--compact measurement-figure--fig06",
+          src: getMeasurementImage(
+            "agarose-gel-verification-of-the-four-epitope-encoding-linearised-transcription-templates",
+          ),
+          width: 1004,
+          height: 741,
+          alt: "Round 2 agarose gel of PCR products amplified from the plasmid target regions",
+          caption:
+            "Round 2 agarose gel of PCR products amplified from the plasmid target regions",
         },
         {
           type: "subheading",
@@ -1482,19 +1467,7 @@ export const measurementPage: WikiPageContent = {
         {
           type: "prose",
           paragraphs: [
-            "Two limits bound what the template gel establishes. The marker resolves only up to 1000 bp, below the expected size of these templates, so the gel supports the relative ordering and the absence of additional discrete species without fixing an exact size. The lanes are also loaded above the linear range of the stain. The bands are saturated, each lane trails vertically, and the two larger templates leave material in the well, which fits a large template entering the gel incompletely. On this basis the batch proceeded to transcription; a re-run at lower load with a marker spanning the expected size range would be needed to call template homogeneity outright.",
-          ],
-        },
-        {
-          type: "prose",
-          paragraphs: [
-            "The same two restriction sites accepted thirteen different single-epitope cassettes and the eight-fragment Combined cassette, so the insertion site behaves as a component boundary that another construct can reuse.",
-          ],
-        },
-        {
-          type: "prose",
-          paragraphs: [
-            "The three checks run in that order because the order is also the order of cost. A colony with no insert is removed before any digestion is set up, and a construct with the wrong insert is removed before sequencing is paid for.",
+            "A band at the expected size is consistent with amplification of the intended plasmid region. The target-region PCR gel and the separately prepared IVT template answer different questions.Expected amplicon sizes should be reported with the primer sequences and lane assignments so that the band positions can be assessed. RNA circularity is measured separately after preparation, using RT-qPCR and, for Combined, BSJ amplicon sequencing.",
           ],
         },
         {
@@ -1502,7 +1475,7 @@ export const measurementPage: WikiPageContent = {
           id: "05-releasing-the-material-2-divergent-convergent-rt-qpcr-a-method-to-quantify-circrna-circularity",
           index: "2",
           title:
-            "Divergent–convergent RT-qPCR: A method to quantify circRNA circularity",
+            "RT-qPCR: estimating the circular fraction after RNase R treatment",
           level: 3,
         },
         {
@@ -1515,19 +1488,13 @@ export const measurementPage: WikiPageContent = {
         {
           type: "prose",
           paragraphs: [
-            "A circRNA vaccine only works if the product is actually circular (Gong et al., 2025). The covalently closed form resists exonucleases and persists long enough to sustain antigen expression (Enuka et al., 2016); the linear precursor does neither. Every batch therefore needs a release figure before it enters any functional experiment.",
+            "The RNA preparation was assessed after circularisation and RNase R treatment, because this is the material used in the downstream experiments (Gong et al., 2025). Covalently closed RNA can resist exonuclease degradation and persist longer than linear transcripts (Enuka et al., 2016). We report the estimated circular fraction of the treated preparation.",
           ],
         },
         {
           type: "prose",
           paragraphs: [
-            "Several methods can address circularity and each answers a different question. RNase R resistance with a gel readout shows that something survives digestion, but highly structured linear RNA also survives (Xiao and Wilusz, 2019), and circRNA migrates anomalously in native gels (Abe et al., 2022), so band position cannot establish circularity at all. Northern blot resolves species without amplification bias, at a cost in material and throughput that a summer project cannot meet. Sequencing across the ligation site reads covalent closure directly and says nothing about what fraction of the preparation is circular. Divergent-primer RT-PCR, established in circRNA biology since Jeck et al. (2013), distinguishes circular from linear template by pointing primers outward from the junction, and it is quantitative.",
-          ],
-        },
-        {
-          type: "prose",
-          paragraphs: [
-            "We use the divergent-primer approach and add three things that are commonly left out. An input-volume series establishes the assay's working range before a ratio is taken. An equal-input control runs on both primer channels. And the text says which species each primer pair reads.",
+            "Several measurements contribute different evidence. RNase R resistance alone does not establish circularity because some structured linear RNAs also survive digestion (Xiao and Wilusz, 2019). Native-gel migration is affected by RNA topology (Abe et al., 2022), so band position alone cannot identify a circle. Junction-targeted RT-PCR has been used to identify circular transcripts (Jeck et al., 2013). In this project, two named RT-qPCR channels estimated the circular fraction, and Sanger sequencing of the Combined BSJ-spanning RT-PCR product checked the junction sequence. No agarose gel electrophoresis was performed in Round 1.",
           ],
         },
         {
@@ -1540,37 +1507,71 @@ export const measurementPage: WikiPageContent = {
         {
           type: "prose",
           paragraphs: [
-            "The quantity is the circular fraction of the purified preparation:",
+            "Both channels measure cDNA prepared from the same RNase R-treated preparation. The circular channel, denoted C, uses SJ3910F + SJ3909R. The residual-linear channel, denoted L, uses SJ3911F + SJ3909R. The latter detects the assayed precursor-associated interval. These assay names are used throughout this page.",
           ],
         },
         {
           type: "prose",
           paragraphs: [
-            "$f_{\\mathrm{circ}}=\\frac{2^{-Cq_{\\mathrm{div}}}}{2^{-Cq_{\\mathrm{div}}}+2^{-Cq_{\\mathrm{conv}}}}$",
+            "For target quantities on a common scale, the estimated circular fraction is",
           ],
         },
         {
           type: "prose",
           paragraphs: [
-            "$\\frac{[,\\mathrm{circular},]}{[,\\mathrm{linear},]}=2^{\\Delta Cq},\\qquad\\Delta Cq = Cq_{\\mathrm{conv}}-Cq_{\\mathrm{div}}$",
+            "$F_i(\\%)=100\\times\\frac{Q_{C,i}}{Q_{C,i}+Q_{L,i}}.$",
           ],
         },
         {
           type: "prose",
           paragraphs: [
-            "The channel convention belongs with the formula. Here the divergent pair spans the ligation site and reads the circular species only, and the convergent pair is positioned to read the linear precursor. A reader assuming that the convergent channel reads total RNA will read the denominator as double-counting, so any team adopting the assay should say which convention its primer placement implements.",
+            "Both rounds use the target Cq values without GFP normalisation. Under the base-2 model,",
           ],
         },
         {
           type: "prose",
           paragraphs: [
-            "The denominator is the purified product after RNase R treatment, so the figure describes the composition of the released material.",
+            "$\\Delta Cq_i=Cq_{L,i}-Cq_{C,i},\\qquad F_i(\\%)=\\frac{100}{1+2^{-\\Delta Cq_i}}.$",
           ],
         },
         {
           type: "prose",
           paragraphs: [
-            "The method was applied twice: to TROP2-CTL1 as the representative Round 1 preparation, and to the Combined vaccine batch as the release test for the material used in every experiment from Round 2 onward. Both primer sets are run on the same cDNA at three input volumes, 2, 4 and 6 µL, in three technical wells each, giving nine Cq values per channel. A no-template control is on every plate, and a backbone-encoded GFP amplicon is run on both channels as an equal-input control. Release requires a circular fraction of at least 90%, Cq falling by roughly one cycle per doubling of input in both channels, close agreement between the three wells at each volume, matched GFP Cq across channels, and an undetected no-template control.",
+            "The calculation assumes doubling per cycle and comparable quantitative response between the circular and residual-linear assays, including reverse transcription.",
+          ],
+        },
+        {
+          type: "prose",
+          paragraphs: [
+            "Calculate each fraction from its recorded Cq comparison before calculating the arithmetic mean and sample SD (n − 1). Keep the three input volumes separate. The denominator describes the treated preparation at the time of measurement. The amount of precursor initially placed into the circularisation reaction was not measured by this comparison.",
+          ],
+        },
+        {
+          type: "heading",
+          level: 5,
+          title: "RT-qPCR for the estimated circular fraction",
+        },
+        {
+          type: "prose",
+          paragraphs: [
+            "The assay was applied to TROP2-CTL1 as the representative Round 1 preparation and to the Combined vaccine preparation in Round 2. For Round 1, each target channel was measured at cDNA inputs of 2, 4 and 6 µL, with three technical wells per input, giving 18 target-assay wells in total. The later measurement used 4 µL, with three technical wells per target channel. GFP reference measurements were also recorded and are retained separately.",
+          ],
+        },
+        {
+          type: "prose",
+          paragraphs: [
+            "The three-volume comparison was used to select the input for the later assay. The same RNA preparation gave an estimated circular fraction of 92.85 ± 0.08% at 2 µL, compared with 96.96 ± 0.70% at 4 µL and 96.25 ± 1.14% at 6 µL. Changing the cDNA input should not change the composition of the preparation, so this separation raised concern about input-dependent quantification at 2 µL. We therefore excluded the 2 µL condition from subsequent measurements. Increasing the input from 4 to 6 µL changed the estimate by only 0.71 percentage points and did not reduce the observed technical SD (0.70 and 1.14 percentage points, respectively). A 4 µL input was therefore considered sufficient for subsequent comparisons and adopted as the standard input. All three Round 1 inputs are reported. This is an empirical input choice, without a validated quantitative range. The project used an estimated circular-fraction criterion of at least 90% for the measured representative preparations. No-template controls should be retained with each run, and their results should be reported separately from the target Cq values.",
+          ],
+        },
+        {
+          type: "heading",
+          level: 5,
+          title: "RT-PCR assessment of TROP2 transcripts",
+        },
+        {
+          type: "prose",
+          paragraphs: [
+            "Wild-type and transduced 4T1 cells were processed in parallel through RNA extraction, DNase I treatment, reverse transcription and TROP2 PCR amplification. The three recorded values per group came from three RNA extractions from the same cell sample. These were extraction replicates from one biological source per group. No agarose gel electrophoresis was performed for this transcript readout.",
           ],
         },
         {
@@ -1578,8 +1579,9 @@ export const measurementPage: WikiPageContent = {
           src: getMeasurementImage("workflow-of-the-circularity-release-assay"),
           width: 1280,
           height: 896,
-          alt: "Workflow of the circularity release assay",
-          caption: "Workflow of the circularity release assay",
+          alt: "Workflow for estimating the circular fraction after RNase R treatment",
+          caption:
+            "Workflow for estimating the circular fraction after RNase R treatment",
         },
         {
           type: "subheading",
@@ -1589,23 +1591,31 @@ export const measurementPage: WikiPageContent = {
           level: 4,
         },
         {
-          type: "prose",
-          paragraphs: [
-            "1. Linearise the plasmid with BamHI and PmeI in a 50 µL reaction containing 1 µg plasmid, 10 µL 5× buffer and 2 µL of each enzyme, at 37 °C for 3 h. Confirm on a 1% agarose gel that no supercoiled species remains.",
-            "2. Purify by extracting twice with phenol:chloroform and once with chloroform, precipitate with 1/10 volume 3 M NaOAc and 2 volumes ethanol at −20 °C for 30 min, wash with 70% ethanol and dissolve in nuclease-free water at 0.5 to 1 µg/µL.",
-            "3. Transcribe in a 20 µL HiScribe T7 reaction at 37 °C for 2 h.",
-            "4. Add 30 µL nuclease-free water and 2 µL DNase I, 37 °C for 15 min.",
-            "5. Bring to 50 µL, add 25 µL 7.5 M LiCl, stand at −20 °C for 30 min, pellet at 16,000 × g and 4 °C for 15 min, wash with 500 µL cold 70% ethanol and resuspend in 50 µL 0.1 mM EDTA.",
-            "6. Circularise in the kit reaction containing GTP and Mg²⁺ at 55 °C for 10 to 15 min.",
-            "7. Digest residual linear RNA with RNase R, 2 U per 2.0 µg RNA in 20 µL at 37 °C.",
-            "8. Read A260/280, reverse-transcribe, and run RT-qPCR with both primer sets at 2, 4 and 6 µL, three wells per volume. Cycling: 95 °C 3 min, then 40 cycles of 95 °C 10 s and 60 °C 30 s.",
-            "9. For release-grade material, sequence across the ligation site.",
-          ],
+          type: "heading",
+          level: 5,
+          title: "RT-qPCR for the estimated circular fraction",
         },
         {
           type: "prose",
           paragraphs: [
-            "Circularisation is sensitive to Mg²⁺ and temperature. Excess Mg²⁺ promotes non-specific folding and gel smearing, and too low a temperature leaves self-splicing incomplete. Aliquot circRNA at −80 °C and avoid repeated freeze-thaw.",
+            "1. Start with the commercially synthesised plasmid. In Round 1, linearise the supplied plasmid with NotI-HF and purify the template; no agarose gel electrophoresis was performed. In Round 2, target-region PCR and agarose gel electrophoresis check an aliquot of the supplied plasmid. Prepare the IVT template separately by plasmid linearisation and purification, as described in Experiments Section 3.1.",
+            "2. Transcribe the purified linearised plasmid with T7 RNA polymerase, remove the DNA template with RNase-free DNase I, and purify the precursor RNA using the round-specific procedure in Experiments Sections 1.1 and 3.1.",
+            "3. Circularise the precursor in the Mg²⁺-containing reaction at 55 °C for 10 to 15 min.",
+            "4. Treat the reaction product with RNase R at 2 U per 2.0 µg RNA in a 20 µL reaction at 37 °C for 15 min, then prepare cDNA from the treated material.",
+            "5. Run the circular channel with SJ3910F + SJ3909R and the residual-linear channel with SJ3911F + SJ3909R. Use 2, 4 and 6 µL cDNA for the Round 1 input comparison, with three technical wells per input and assay. For the Combined preparation, use 4 µL with three technical wells per assay. Cycling is 95 °C for 3 min, followed by 40 cycles of 95 °C for 10 s and 60 °C for 30 s. Include no-template controls.",
+            "6. Calculate each estimated circular fraction using the target-Cq equation above, then report mean ± SD across the three technical comparisons. Retain the raw Cq values and input-volume labels.",
+            "7. For the Combined vaccine, submit a BSJ-spanning RT-PCR amplicon for Sanger sequencing and compare the trace with the expected junction. This sequence check is separate from the circular-fraction calculation.",
+          ],
+        },
+        {
+          type: "heading",
+          level: 5,
+          title: "RT-PCR assessment of TROP2 transcripts",
+        },
+        {
+          type: "prose",
+          paragraphs: [
+            "The recorded workflow comprised RNA extraction, DNase I treatment, reverse transcription and TROP2 PCR amplification, as described in Experiments Section 6.3, steps 1 to 6. Three RNA extractions were performed on the same cell sample in each group. Summarise the resulting relative-expression values as mean ± SD across extraction replicates, with one biological sample per group. This comparison is descriptive. No agarose gel electrophoresis or band densitometry was performed for this readout. Record the signal readout, reference gene and normalisation calculation alongside the data.",
           ],
         },
         {
@@ -1617,29 +1627,37 @@ export const measurementPage: WikiPageContent = {
         },
         {
           type: "table",
-          caption: "Table 4. Circular fraction across three input volumes.",
-          headers: [
-            "Input volume",
-            "ΔCq",
-            "Circular : linear",
-            "Circular fraction",
-          ],
+          caption:
+            "Table 4. Estimated circular fraction of RNase R-treated TROP2-CTL1 at three cDNA inputs.",
+          headers: ["cDNA input", "Estimated circular fraction, mean ± SD"],
           rows: [
-            ["2 µL", "3.70 ± 0.02", "13.0 : 1", "92.85 ± 0.08%"],
-            ["4 µL", "5.02 ± 0.37", "32.5 : 1", "96.96 ± 0.70%"],
-            ["6 µL", "4.72 ± 0.45", "26.4 : 1", "96.25 ± 1.14%"],
+            ["2 µL", "92.85 ± 0.08%"],
+            ["4 µL", "96.96 ± 0.70%"],
+            ["6 µL", "96.25 ± 1.14%"],
           ],
         },
         {
           type: "prose",
           paragraphs: [
-            "Values are mean ± SD of three technical wells per volume, measured on TROP2-CTL1. The two higher volumes agree at 96.96% and 96.25%, a difference well inside replicate scatter. The 2 µL arm sits about four percentage points lower, and the Cq series shows why. At that input the circular-channel Cq rose 2.7 cycles when the volume doubled, where one cycle is expected. The reaction was below its reliable input range. Four microlitres became the working input for every later circularity measurement.",
+            "Each input was measured in three technical wells per target channel. Fractions were calculated from the corresponding Cq records before averaging, with unrounded intermediate values. All three estimates exceeded the project's stated 90% criterion under the working model.",
           ],
         },
         {
           type: "prose",
           paragraphs: [
-            "On the Combined vaccine batch at 4 µL in three technical wells, ΔCq is 7.19 ± 0.39, the circular to linear ratio 145.7 : 1 and the circular fraction 99.30 ± 0.17%. The GFP amplicon read Cq 12.74 in both channels.",
+            "The discrepancy at 2 µL raised concern about input-dependent quantification, so this condition was not carried forward. We adopted 4 µL for subsequent measurements because increasing the input to 6 µL produced little change in the estimate and did not reduce technical variability. The 2 µL measurements remain in the reported input series. This choice standardises the input for Round 2; it does not define a validated quantitative range.",
+          ],
+        },
+        {
+          type: "prose",
+          paragraphs: [
+            "The mean circular-channel Cq decreased from 8.22 at 2 µL to 5.44 at 4 µL, a change of 2.77 cycles rather than the one-cycle change expected for ideal doubling. The input series therefore documents a departure from the ideal response, without identifying its cause or proving that 2 µL is outside a validated range.",
+          ],
+        },
+        {
+          type: "prose",
+          paragraphs: [
+            "For the Combined preparation at 4 µL, the estimated circular fraction was 99.30 ± 0.17% across three technical comparisons. The target Cq differences were 6.93, 7.00 and 7.63 cycles, giving individual fractions of 99.1866%, 99.2248% and 99.4977%. The mean and SD were calculated from these individual fractions before rounding.",
           ],
         },
         {
@@ -1647,14 +1665,38 @@ export const measurementPage: WikiPageContent = {
           src: getMeasurementImage(
             "sanger-trace-across-the-back-splice-junction-bsj-of-the-combined-vaccine",
           ),
-          alt: "Sanger trace across the ligation site of the Combined vaccine",
+          alt: "Sanger trace of the BSJ-spanning RT-PCR product from the Combined vaccine",
           caption:
-            "Sanger trace across the ligation site of the Combined vaccine",
+            "Sanger trace of the BSJ-spanning RT-PCR product from the Combined vaccine",
+          width: 1280,
+          height: 586,
         },
         {
           type: "prose",
           paragraphs: [
-            "Sequencing across the ligation site on the same batch reads `CTCAGTAGATGTTTTCTTGGGT | CTACCGTTTAATATTGCGTCATAT`, the 3′ end of the precursor running head to tail into its 5′ end, with single well-separated peaks on both sides and no overlapping signal at the join itself.",
+            "Sanger sequencing of the BSJ-spanning RT-PCR product from the Combined preparation recovered the BSJ sequence `CTCAGTAGATGTTTTCTTGGGT | CTACCGTTTAATATTGCGTCATAT`. The sequence joins the expected downstream and upstream boundaries of the circularised RNA, with single well-separated peaks on both sides and no overlapping signal at the junction.",
+          ],
+        },
+        {
+          type: "heading",
+          level: 5,
+          title: "TROP2 transcript assessment in 4T1 cells",
+        },
+        {
+          type: "figure",
+          src: getMeasurementImage(
+            "rt-pcr-quantification-of-trop2-mrna-in-4t1-cells",
+          ),
+          alt: "Relative TROP2 expression in wild-type and transduced 4T1 cells. Values are mean ± SD across three RNA-extraction replicates from one cell sample per group (biological n = 1 per group). The result is reported descriptively.",
+          caption:
+            "Relative TROP2 expression in wild-type and transduced 4T1 cells. Values are mean ± SD across three RNA-extraction replicates from one cell sample per group (biological n = 1 per group). The result is reported descriptively.",
+          width: 1518,
+          height: 916,
+        },
+        {
+          type: "prose",
+          paragraphs: [
+            "The recorded relative-expression values were 72.40, 78.90 and 76.20 for the transduced line, with all three control entries set to 1. The transduced values have a mean of 75.83 ± 3.27 (mean ± SD across three extraction replicates). The replicates came from the same cell sample and describe variation within that sampled material.",
           ],
         },
         {
@@ -1667,19 +1709,19 @@ export const measurementPage: WikiPageContent = {
         {
           type: "prose",
           paragraphs: [
-            "The input series earns its place. Pooling all nine wells without it gives 95.35 ± 2.01%, a reasonable-looking figure carrying a standard deviation nearly three times larger than it needs to be, because it averages a calibrated measurement with an uncalibrated one. The failure it caught leaves no trace in the output: a ratio computed below the reliable input range looks like an ordinary number, which is why an assay that produces one should be range-checked before it is trusted.",
+            "The estimated circular fractions were 96.96 ± 0.70% for the Round 1 representative and 99.30 ± 0.17% for the Combined preparation, both measured at 4 µL and calculated from target Cq values. Each SD describes technical variation within one preparation. These records do not establish a general improvement between rounds or an individual circular-fraction value for every construct.",
           ],
         },
         {
           type: "prose",
           paragraphs: [
-            "The assay ran on two preparations made months apart, which is the only cross-batch repeat on this page. The Round 1 representative preparation reached 96.96 ± 0.70% circular and the Round 2 Combined batch 99.30 ± 0.17%, both at the calibrated input volume, against a release criterion of at least 90% circular that was fixed before either batch was made. The same circularisation chemistry therefore produced release-grade material for a short single-epitope cassette and for the eight-fragment Combined cassette at 5267 bp.",
+            "The residual-linear assay detects a defined precursor-associated interval. Linear fragments or other RNA species without that interval are outside its measurement. Together with the uncalibrated cross-assay response and possible reverse-transcription effects, this limits the result to an estimated fraction for the assayed target classes. RNase R resistance alone cannot establish absolute purity (Xiao and Wilusz, 2019). The Combined BSJ Sanger result provides a separate check of junction sequence.",
           ],
         },
         {
           type: "prose",
           paragraphs: [
-            "Two boundaries travel with every figure this assay produces. Highly structured linear RNA can survive RNase R digestion (Xiao and Wilusz, 2019), so the value is a close upper estimate. The calculation also assumes that the two primer pairs amplify with equal efficiency.",
+            "The three TROP2 relative-expression values reproduce the reported mean and SD. They came from separate RNA extractions from the same cell sample, so their SD describes variation across extraction replicates rather than variability between independent cell preparations. The available record identifies the assay as RT-PCR but does not specify the signal readout or the relative-expression calculation. These details need to be documented before the numerical fold values can be independently reproduced. Surface TROP2 was assessed separately by flow cytometry.",
           ],
         },
         {
@@ -1687,7 +1729,7 @@ export const measurementPage: WikiPageContent = {
           id: "05-releasing-the-material-3-gel-densitometry-a-method-to-quantify-relative-band-intensity",
           index: "3",
           title:
-            "Gel densitometry: A method to quantify relative band intensity",
+            "Gel densitometry: A method to compare circRNA and linear RNA persistence",
           level: 3,
         },
         {
@@ -1700,13 +1742,13 @@ export const measurementPage: WikiPageContent = {
         {
           type: "prose",
           paragraphs: [
-            "Two questions in this project come down to comparing one band against another on the same gel. How fast does circRNA degrade next to its linear precursor, and how much more TROP2 message does a transduced 4T1 line carry than its wild-type parent. Both arrive here from somewhere else. The degradation comparison means something only because the circularity assay has already established which species is circular, and the TROP2 comparison is the first of three measurements on the engineered line that the animal study rests on. Densitometry suits both because the comparison is internal to a single image, which removes gel-to-gel and exposure-to-exposure variation from the answer.",
+            "The stability experiment compared how much circRNA and linear precursor RNA remained after incubation at 37 °C. Densitometry converts the intensity of each RNA band into a relative signal, with each RNA's own 0 h lane as its baseline. The comparison depends on the RNA identity established by the circularity measurements.",
           ],
         },
         {
           type: "prose",
           paragraphs: [
-            "It also has a well-known failure mode, and both of our applications run into part of it. Integration error grows sharply once a band approaches background, and saturation compresses differences at the bright end, so the method is reliable across a middle range and unreliable outside it.",
+            "Band intensity is reliable only within the detector's working range. Saturation compresses differences between bright bands, while integration becomes uncertain as a band approaches background.",
           ],
         },
         {
@@ -1719,13 +1761,7 @@ export const measurementPage: WikiPageContent = {
         {
           type: "prose",
           paragraphs: [
-            "For circRNA stability, equal masses of purified circRNA and its linear precursor were incubated in parallel at 37 °C and sampled at 0, 24, 48 and 72 h. Both RNAs were run side by side on one gel so that electrophoresis and imaging conditions are identical, and each RNA's own 0 h lane serves as its baseline. The material was the Combined batch, the same preparation used throughout the functional work, so the stability claim belongs to the vaccine itself. Each timepoint is a single lane with no biological replicate.",
-          ],
-        },
-        {
-          type: "prose",
-          paragraphs: [
-            "For TROP2 overexpression, wild-type and transduced 4T1 were carried in parallel through the same RNA extraction, DNase I treatment, reverse transcription and PCR, with a reference gene for normalisation. Replication is n = 3 independent RNA extractions and reverse-transcription reactions per group, each with its own reference-gene amplification. A no-reverse-transcriptase control and a no-template control were run alongside every batch, which matters here because an exogenous overexpression plasmid readily produces DNA-contamination false positives.",
+            "Equal masses of purified Combined circRNA and its linear precursor were incubated in parallel at 37 °C and sampled at 0, 24, 48 and 72 h. Both RNAs were run side by side under the same electrophoresis and imaging conditions. Each time point was represented by one lane, without biological replication. The readout is the relative amount remaining at each time point.",
           ],
         },
         {
@@ -1738,19 +1774,16 @@ export const measurementPage: WikiPageContent = {
         {
           type: "prose",
           paragraphs: [
-            "1. For stability, split equal masses of circRNA and linear precursor into parallel tubes in the same matrix at 37 °C, withdraw aliquots at each timepoint and hold at −80 °C until all are collected.",
-            "2. For expression, lyse in TRIzol, add 200 µL chloroform per 1 mL, centrifuge at 12,000 g and 4 °C for 15 min and take the aqueous phase; precipitate with an equal volume of isopropanol, wash twice with 75% ethanol and dissolve in DEPC water.",
-            "3. Treat with DNase I at 37 °C for 30 min and inactivate with EDTA at 65 °C for 10 min.",
-            "4. Reverse-transcribe 1 µg RNA: 65 °C 5 min, chill, then 25 °C 5 to 10 min, 42 °C 30 to 60 min, 85 °C 5 min.",
-            "5. Amplify at 95 °C 5 min, then 28 to 35 cycles of 95 °C 30 s, 55 to 60 °C 30 s and 72 °C 30 to 60 s, with a final extension at 72 °C for 5 to 10 min.",
-            "6. Run on 1.5% agarose at 100 to 120 V and image inside the linear range of the detector.",
-            "7. Integrate band intensities in ImageJ, normalising expression bands to the reference gene and stability bands to the ladder lane of the same panel.",
+            "1. Normalise the purified circRNA and linear precursor to the same mass concentration and aliquot equal amounts into parallel tubes for each time point.",
+            "2. Incubate at 37 °C and collect the corresponding tubes at 0, 24, 48 and 72 h. Freeze each sample immediately at −80 °C until all time points are collected.",
+            "3. Thaw the samples together and run equal volumes on a 1% agarose gel at 100 V alongside a marker. Image all lanes under the same settings, within the detector's linear range.",
+            "4. Integrate band intensities in ImageJ, normalise to the reference lane on the same panel, and express each RNA's signal relative to its own 0 h lane, set to 1.0.",
           ],
         },
         {
           type: "prose",
           paragraphs: [
-            "Report a relative residual amount. A half-life or decay constant needs a time course with replicated points and enough points to fit and test a decay model.",
+            "Report the relative residual amount. A half-life or decay constant requires a time course with replicated points sufficient to fit and assess a decay model.",
           ],
         },
         {
@@ -1788,16 +1821,6 @@ export const measurementPage: WikiPageContent = {
           caption: "Stability of circRNA and its linear precursor at 37 °C",
         },
         {
-          type: "feature",
-          key: "measurement-plate-1",
-        },
-        {
-          type: "prose",
-          paragraphs: [
-            "The transduced line carries 75.83 ± 3.27-fold more TROP2 message than wild type, with P < 0.0001, mean ± SD of n = 3 independent extractions.",
-          ],
-        },
-        {
           type: "subheading",
           id: "05-releasing-the-material-3-5-discussion",
           index: "3.5",
@@ -1807,13 +1830,7 @@ export const measurementPage: WikiPageContent = {
         {
           type: "prose",
           paragraphs: [
-            "Three boundaries apply to the stability data. We report the fraction remaining and no kinetic parameter, because four single-lane points cannot support fitting a decay model, and turning 39.5% at 72 h into a half-life would be an extrapolation the data do not carry. The linear value at 48 h exceeds that at 24 h, which real degradation cannot do; the band is near background there, where integration error is amplified, so the linear values after 24 h should be read as at or below the detection limit. We report the raw integrations without smoothing or exclusion. And circular RNA migrates anomalously in native gels, usually slower than linear RNA of the same length (Abe et al., 2022), so band position in this experiment cannot establish circularity. That question is answered by the RT-qPCR assay above.",
-          ],
-        },
-        {
-          type: "prose",
-          paragraphs: [
-            "For the expression data, semi-quantitative RT-PCR has limited dynamic range, so a 75.83-fold difference measured this way carries more uncertainty than the standard deviation alone suggests. The claim it supports is that the transduced line carries far more TROP2 message than wild type, and the figure is best read as an order-of-magnitude statement. If the exact fold change mattered, RT-qPCR with relative quantification would be the method to use. The result the animal study actually depends on is the surface-protein measurement in the flow cytometry section.",
+            "Three boundaries apply to the stability data. We report the fraction remaining and no kinetic parameter, because four single-lane points cannot support fitting a decay model, and turning 39.5% at 72 h into a half-life would be an extrapolation the data do not carry. The linear value at 48 h exceeds that at 24 h, which real degradation cannot do; the band is near background there, where integration error is amplified, so the linear values after 24 h should be read as at or below the detection limit. We report the raw integrations without smoothing or exclusion. And circular RNA migrates anomalously in native gels, usually slower than linear RNA of the same length (Abe et al., 2022), so band position in this experiment cannot establish circularity. For the Combined material used here, the circularity assessment combines the RT-qPCR estimate with Sanger sequencing of the BSJ-spanning RT-PCR product.",
           ],
         },
       ],
@@ -2041,11 +2058,12 @@ export const measurementPage: WikiPageContent = {
         },
         {
           type: "figure",
+          className: "measurement-figure--compact measurement-figure--fig12",
           src: getMeasurementImage(
             "dose-viability-curve-of-empty-lnp-on-dcs-after-24-h",
           ),
-          width: 986,
-          height: 675,
+          width: 1342,
+          height: 852,
           alt: "Dose–viability relationship for empty LNP on dendritic cells",
           caption:
             "Dose–viability relationship for empty LNP on dendritic cells",
@@ -2279,8 +2297,8 @@ export const measurementPage: WikiPageContent = {
         {
           type: "figure",
           src: getMeasurementImage("round-1-elispot-wells-and-counts"),
-          width: 1280,
-          height: 434,
+          width: 1098,
+          height: 1090,
           alt: "Round 1 ELISpot wells",
           caption: "Round 1 ELISpot wells",
         },
@@ -2438,6 +2456,7 @@ export const measurementPage: WikiPageContent = {
         },
         {
           type: "figure",
+          className: "measurement-figure--compact measurement-figure--fig16",
           src: getMeasurementImage(
             "round-1-killing-of-k562-by-t-cells-primed-with-each-construct",
           ),
@@ -2493,11 +2512,12 @@ export const measurementPage: WikiPageContent = {
         },
         {
           type: "figure",
+          className: "measurement-figure--compact measurement-figure--fig17",
           src: getMeasurementImage(
             "killing-of-mda-mb-231-by-t-cells-primed-with-each-construct-across-e-t-ratios",
           ),
-          width: 1280,
-          height: 754,
+          width: 1480,
+          height: 832,
           alt: "Killing of MDA-MB-231 across three effector-to-target ratios",
           caption:
             "Killing of MDA-MB-231 across three effector-to-target ratios",
@@ -2542,6 +2562,8 @@ export const measurementPage: WikiPageContent = {
           ),
           alt: "Killing of four normal cell lines and MDA-MB-231",
           caption: "Killing of four normal cell lines and MDA-MB-231",
+          width: 694,
+          height: 450,
         },
         {
           type: "subheading",
@@ -2699,8 +2721,14 @@ export const measurementPage: WikiPageContent = {
           ],
         },
         {
-          type: "feature",
-          key: "measurement-plate-2",
+          type: "figure",
+          src: getMeasurementImage(
+            "flow-cytometric-detection-of-surface-trop2-on-4t1-cells",
+          ),
+          alt: "Surface TROP2 on wild-type and TROP2-overexpressing 4T1",
+          caption: "Surface TROP2 on wild-type and TROP2-overexpressing 4T1",
+          width: 1682,
+          height: 952,
         },
         {
           type: "prose",
@@ -2935,13 +2963,13 @@ export const measurementPage: WikiPageContent = {
         {
           type: "prose",
           paragraphs: [
-            "The transduction check is reported qualitatively because that is what it supports. Even illumination across the field and localisation inside cell outlines rule out the two common artefacts at this step: a few bright outliers read as a transduced population, and extracellular debris read as signal. What it leaves open is TROP2 expression, since GFP is a surrogate for successful integration and a cell could carry and express the reporter without presenting functional TROP2. That is why TROP2 itself was measured separately at message and surface-protein level.",
+            "The transduction check is reported qualitatively because that is what it supports. Even illumination across the field and localisation inside cell outlines rule out the two common artefacts at this step: a few bright outliers read as a transduced population, and extracellular debris read as signal. What it leaves open is TROP2 expression, since GFP is a surrogate for successful integration and a cell could carry and express the reporter without presenting functional TROP2. TROP2 was therefore assessed separately by RT-PCR and surface staining. The transcript-level relative-expression values are reported in the reverse transcription PCR section, while surface staining provides the direct readout of TROP2 expression on the target cells.",
           ],
         },
         {
           type: "prose",
           paragraphs: [
-            "The tumour sections are reported as representative images, and the design is the reason. One field was acquired per animal from three animals per group, and immune infiltration is patchy within a tumour, so a single field cannot stand for the tumour it was taken from. The field was chosen blind to group allocation, which removes the most obvious source of bias. Choosing the most representative field is still a judgement by eye, and no number can be built on one. What the images support is that CD8⁺ T cells are present inside the vaccine-treated tumours and sparse in the PBS tumours; they do not support a density, a fold change or a test between the adjacent groups. The decomposition of what the carrier contributes and what the antigen adds rests on the caliper and splenic data, where the design supports it.",
+            "The tumour sections are reported as representative images, and the design is the reason. One field was acquired per animal from three animals per group, and immune infiltration is patchy within a tumour, so a single field cannot stand for the tumour it was taken from. The field was chosen blind to group allocation, which removes the most obvious source of bias. Choosing the most representative field is still a judgement by eye, and no number can be built on one. What the images support is that CD8⁺ T cells are present inside the vaccine-treated tumours and sparse in the PBS tumours. The decomposition of what the carrier contributes and what the antigen adds rests on the caliper and splenic data, where the design supports it.",
           ],
         },
         {
@@ -2993,7 +3021,7 @@ export const measurementPage: WikiPageContent = {
         {
           type: "prose",
           paragraphs: [
-            "The design was drafted in the NC3Rs Experimental Design Assistant[6] and an Experimental Design Report was generated before the study began, fixing sample size, randomisation, blinding, inclusion and exclusion criteria, the primary outcome and the statistical method in advance. Reporting follows ARRIVE 2.0 (Percie du Sert et al., 2020). The study was approved by the Animal Ethics Committee of the First Hospital of Jilin University, approval JDYY20261369 of 27 July 2026, under animal use licence SYXK (Ji) 2023-0011.",
+            "The design was drafted in the NC3Rs Experimental Design Assistant and an Experimental Design Report was generated before the study began, fixing sample size, randomisation, blinding, inclusion and exclusion criteria, the primary outcome and the statistical method in advance. Reporting follows ARRIVE 2.0 (Percie du Sert et al., 2020). The study was approved by the Animal Ethics Committee of the First Hospital of Jilin University, approval JDYY20261369 of 27 July 2026, under animal use licence SYXK (Ji) 2023-0011.",
           ],
         },
         {
@@ -3078,6 +3106,7 @@ export const measurementPage: WikiPageContent = {
         },
         {
           type: "figure",
+          className: "measurement-figure--compact measurement-figure--fig26",
           src: getMeasurementImage("tumour-growth-curves-for-the-three-groups"),
           width: 1065,
           height: 510,
@@ -3136,13 +3165,14 @@ export const measurementPage: WikiPageContent = {
           type: "subheading",
           id: "09-future-work-1-1-circularity-on-every-batch-with-calibrated-primer-pairs",
           index: "1",
-          title: "Circularity on every batch, with calibrated primer pairs.",
+          title:
+            "Estimated circular fractions on every batch, with calibrated assays.",
           level: 3,
         },
         {
           type: "prose",
           paragraphs: [
-            "Circularity was measured on a representative Round 1 construct and on the Combined batch, so the other preparations rest on shared backbone and shared chemistry rather than on their own figures. The calculation also assumes the two primer pairs amplify with equal efficiency, which no standard curve has tested. And the 75.83-fold TROP2 difference comes from semi-quantitative RT-PCR, whose narrow dynamic range is what keeps it an order-of-magnitude statement.",
+            "The circular fraction was estimated for the Round 1 representative and the Combined preparation. Other constructs need their own measurements. The next analytical step is to calibrate SJ3910F + SJ3909R and SJ3911F + SJ3909R using suitable RNA standards, establish amplification and reverse-transcription responses, and test the input range. Defined circular/linear reference mixtures would test whether the model recovers known compositions. Raw target and reference Cq values should be retained with every batch. The TROP2 transcript comparison used three RNA-extraction replicates from one cell sample per group. Independent cell preparations, together with a documented signal readout and normalisation calculation, are needed to assess biological reproducibility.",
           ],
         },
         {
@@ -3188,13 +3218,28 @@ export const measurementPage: WikiPageContent = {
     },
   ],
   links: [
-    { path: "/experiments", label: "Experimental route" },
-    { path: "/results", label: "Result standard" },
-    { path: "/model", label: "Model validation" },
+    {
+      path: "/experiments",
+      label: "Experimental Verification",
+    },
+    {
+      path: "/results",
+      label: "Quantitative Results",
+    },
+    {
+      path: "/alternative-platform",
+      label: "Alternative Chassis Exploration",
+    },
+    {
+      path: "/hardware",
+      label: "CirCore Device Calibration",
+    },
   ],
   next: {
     path: "/alternative-platform",
     label: "Alternative Platform",
-    title: "Which experimental context carries the system?",
+    title: "Beyond the Conventional Chassis",
+    description:
+      "Now that analytical standards are established, can circRNA synthesis escape costly cell-free enzymes? Explore our evaluation of alternative cellular expression platforms.",
   },
 };

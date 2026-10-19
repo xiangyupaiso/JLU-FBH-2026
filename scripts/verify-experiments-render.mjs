@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { readFile, writeFile, unlink } from "node:fs/promises";
+import { readFile, writeFile, unlink, access } from "node:fs/promises";
 import { build } from "esbuild";
 import { renderToStaticMarkup } from "react-dom/server";
 
@@ -7,7 +7,10 @@ const bundle = await build({
   stdin: {
     contents: `export { experimentsPage, experimentsReferences } from './src/data/wet-lab/experimentsPage';
       export { renderExperimentText, experimentsCitationIndex, experimentsFeatures } from './src/components/wiki/features/wet-lab/ExperimentsPanels';
-      export { renderInlineFormatting } from './src/components/wiki/proseInline';`,
+      export { renderInlineFormatting } from './src/components/wiki/proseInline';
+      export { experimentProtocolPairs } from './src/data/wet-lab/experimentProtocolPages';
+      export { experimentProtocolAssets } from './src/data/wet-lab/experimentProtocolAssets';
+      export { experimentRingStages } from './src/data/wet-lab/experimentProtocolRing';`,
     loader: "tsx",
     resolveDir: process.cwd(),
   },
@@ -24,7 +27,7 @@ const bundle = await build({
     ".jpg": "empty",
     ".avif": "empty",
   },
-  define: { "import.meta.env.DEV": "false" },
+  define: { "import.meta.env.DEV": "false", "import.meta.env.BASE_URL": '"/"' },
   // The interactive atlas needs a browser; this check covers prose and references.
   plugins: [
     {
@@ -51,6 +54,9 @@ try {
     experimentsFeatures,
     renderExperimentText,
     renderInlineFormatting,
+    experimentProtocolPairs,
+    experimentProtocolAssets,
+    experimentRingStages,
   } = await import(temporary.href);
   const flatten = (blocks) => blocks.flatMap(block => block.type === "protocol-steps"
     ? [block, ...block.steps.flatMap(step => flatten(step.blocks))] : [block]);
@@ -58,21 +64,22 @@ try {
   const formulas = blocks.flatMap((block) =>
     (block.paragraphs ?? []).flatMap((text) => text.match(/\$[^$]+\$/g) ?? []),
   );
-  assert.equal(formulas.length, 7);
+  assert.equal(formulas.length, 1);
   for (const formula of formulas) {
     const html = renderToStaticMarkup(
       renderExperimentText(formula, renderInlineFormatting),
     );
     assert(!html.includes("\\"), `Unrendered LaTeX: ${formula}`);
     assert(!html.includes("$"));
-    assert(html.includes("exp-protocol-formula"));
+    assert(html.includes('role="math"'));
     if (formula.includes("\\frac"))
-      assert(html.includes("exp-protocol-formula__fraction"));
-    if (formula.includes("\\Delta"))
-      assert(html.includes("<sup>−ΔC<sub>q</sub></sup>"));
+      assert(html.includes("wiki-math__frac"));
+    assert(formula.includes("Cq_{L,i}-Cq_{C,i}"));
+    assert(formula.includes("\\frac{100}{1+2^{-\\Delta Cq_i}}"));
+    assert(html.includes("<sup>") && html.includes("Δ"));
   }
   const references = experimentsReferences;
-  assert.equal(references.length, 49);
+  assert.equal(references.length, 43);
   const bibliography = renderToStaticMarkup(
     experimentsFeatures()["exp-references"],
   );
@@ -94,7 +101,6 @@ try {
               : [];
       for (const text of textItems) {
         assert(!text.startsWith("- "), `Unparsed bullet: ${text}`);
-        assert(!/^\$[^$]+\$$/.test(text), "Formula should belong to its preceding step");
         const html = renderToStaticMarkup(
           renderExperimentText(text, renderInlineFormatting, section.id),
         );
@@ -117,7 +123,7 @@ try {
   );
   const panelStep = blocks.filter(block => block.type === "protocol-steps")
     .flatMap(block => block.steps).find(step => step.blocks.some(block => block.type === "list" && block.items[0].startsWith("Panel ①")));
-  assert.equal(panelStep.number, "7");
+  assert.equal(panelStep.number, "2");
   assert.equal(panelStep.blocks.find(block => block.type === "list").items.length, 4);
   assert(
     blocks.filter((block) => block.type === "heading" && block.level === 4)
@@ -136,8 +142,26 @@ try {
       'articleLead={experimentsFeatures()["exp-protocol-map"]}',
     ),
   );
+  const headings = blocks.filter(block => block.type === "subheading");
+  assert.equal(experimentProtocolPairs.length, 24);
+  assert.deepEqual(
+    experimentRingStages.flatMap(stage => stage.nodes.map(node => node.key)).sort(),
+    experimentProtocolPairs.map(pair => pair.key).sort(),
+  );
+  for (const pair of experimentProtocolPairs) {
+    assert(headings.some(heading => heading.id === pair.targetId), `Missing protocol target: ${pair.key}`);
+    assert(pair.hasFigure, `Missing illustration: ${pair.key}`);
+    for (const [page, size] of [[pair.flowPage, pair.flowSize], [pair.inventoryPage, pair.inventorySize]]) {
+      const asset = experimentProtocolAssets[page];
+      assert.deepEqual(size, [asset.width, asset.height]);
+      await access(`public/assets/experiments/protocol/${asset.fileName}`);
+    }
+  }
+  for (const code of ["1", "3"]) {
+    assert(headings.find(h => h.id === `exp-${code}-1`).anchorIds.includes(`exp-${code}-2`));
+  }
   console.log(
-    `Experiments render verified: 7 equations, 49 references, ${ids.size} linked citations with unique anchors; atlas precedes Overview.`,
+    `Experiments render verified: 1 equation, 43 references, ${ids.size} linked citations; all 24 atlas targets have illustrations.`,
   );
 } finally {
   await unlink(temporary).catch(() => {});

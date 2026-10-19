@@ -71,10 +71,10 @@ export const SDG_META: ReadonlyArray<SdgNetworkMeta> = [
 export const SDG_DIMENSIONS: ReadonlyArray<SdgNetworkDimension> = [
   { name: "Social Dimension", color: "#64748b" },
   { name: "Economic Dimension", color: "#475569" },
-  { name: "Ecological Dimension", color: "#334155" },
+  { name: "Environmental Dimension", color: "#334155" },
 ];
 
-/** 0 = Social, 1 = Economic, 2 = Ecological (keyed by SDG id 1..17). */
+/** 0 = Social, 1 = Economic, 2 = Environmental (keyed by SDG id 1..17). */
 export const SDG_DIMENSION_OF: Readonly<Record<number, number>> = {
   1: 1, 2: 1, 8: 1, 9: 1, 17: 1,
   3: 0, 4: 0, 5: 0, 10: 0, 11: 0, 16: 0,

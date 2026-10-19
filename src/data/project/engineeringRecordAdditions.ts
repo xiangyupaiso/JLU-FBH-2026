@@ -219,7 +219,7 @@ export const cycle2Section: WikiSection = {
           type: "figure",
           src: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-c2-01.avif",
           width: 3000,
-          height: 2100,
+          height: 1780,
           alt: "Figure C2-01",
           caption: "Binding-affinity and immunogenicity thresholds followed by source-protein context review reduced 1,838 overlapping nine-amino-acid peptides to 17 traceable candidate epitopes."
         }
@@ -299,7 +299,7 @@ export const cycle2Section: WikiSection = {
           type: "figure",
           src: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-c2-02a.avif",
           width: 3000,
-          height: 2100,
+          height: 1780,
           alt: "Figure C2-02A",
           caption: "Each candidate peptide was modelled with the HLA-A*02:01 heavy chain and β2-microglobulin. All five returned models were retained and assessed across five structural-review dimensions. `SVCWCVNSV` illustrated the PyMOL measurement and visualization workflow."
         },
@@ -558,7 +558,7 @@ export const cycle2Section: WikiSection = {
           {
                     "label": "New England Biolabs (n.d.)",
                     "text": "New England Biolabs (n.d.) *Standard RNA synthesis with HiScribe T7 Quick High Yield RNA Synthesis Kit, E2050*.",
-                    "href": "https://www.neb.com/en/protocols/standard-rna-synthesis-with-hiscribe-t7-quick-high-yield-rna-synthesis-kit-neb-e2050?utm_source=chatgpt.com",
+                    "href": "https://www.neb.com/en/protocols/standard-rna-synthesis-with-hiscribe-t7-quick-high-yield-rna-synthesis-kit-neb-e2050",
                     "hrefLabel": "Source"
           },
           {
@@ -570,13 +570,13 @@ export const cycle2Section: WikiSection = {
           {
                     "label": "LGC Biosearch Technologies (n.d.)",
                     "text": "LGC Biosearch Technologies (n.d.) *Ribonuclease R Manual*. Cat. RNR07250.",
-                    "href": "https://biosearchtech.a.bigcontent.io/v1/static/manual_RNR07250_RNase-R?utm_source=chatgpt.com",
+                    "href": "https://biosearchtech.a.bigcontent.io/v1/static/manual_RNR07250_RNase-R",
                     "hrefLabel": "Source"
           },
           {
                     "label": "Lonza (n.d.)",
                     "text": "Lonza (n.d.) *Human Dendritic Cell Nucleofector Kit*. VPA-1004, Optimized Protocol U-002.",
-                    "href": "https://bioscience.lonza.com/lonza_bs/US/en/Transfection/p/000000000000191773/Human-Dendritic-Cell-Nucleofector-Kit?utm_source=chatgpt.com",
+                    "href": "https://bioscience.lonza.com/lonza_bs/US/en/Transfection/p/000000000000191773/Human-Dendritic-Cell-Nucleofector-Kit",
                     "hrefLabel": "Source"
           }
 ]
@@ -662,7 +662,7 @@ export const cycle2Section: WikiSection = {
           {
                     "label": "Dakewe Biotech (n.d.)",
                     "text": "Dakewe Biotech (n.d.) *Human IFN-γ Precoated ELISPOT Kit (strips): instruction manual*. Cat. 2110005, Rev. C/2.",
-                    "href": "https://files.dakewe.cn/crm/instruction/dy/2110005.pdf?utm_source=chatgpt.com",
+                    "href": "https://files.dakewe.cn/crm/instruction/dy/2110005.pdf",
                     "hrefLabel": "Instruction manual"
           }
 ]
@@ -696,7 +696,7 @@ export const cycle2Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "ELISpot supplied the eight modules required for Combined and also clarified the next evidence step. IFN-γ secretion recorded a recognition-associated cellular response; the project still needed to observe early CD8 T-cell activation and overall effector activity before assembling the first-round evidence. We retained that scientific requirement and first translated the idea of recognition into an age-appropriate educational experience. Further details are provided in [Results: first-round ELISpot](https://2026.igem.wiki/jlu-fbh/results) and [Integrated Human Practices: extending the ELISpot evidence](https://2026.igem.wiki/jlu-fbh/human-practices)."
+          "ELISpot supplied the eight modules required for Combined and also clarified the next evidence step. IFN-γ secretion recorded a recognition-associated cellular response; the project still needed to observe early CD8 T-cell activation and overall effector activity before assembling the first-round evidence. We retained that scientific requirement. The idea of recognition also served as a shared scientific theme for our age-appropriate educational activities. Further details are provided in [Results: first-round ELISpot](https://2026.igem.wiki/jlu-fbh/results) and [Integrated Human Practices: extending the ELISpot evidence](https://2026.igem.wiki/jlu-fbh/human-practices)."
 ]
         }
           ]
@@ -720,7 +720,7 @@ export const cycle2Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "The ELISpot screen gave the project a concrete example of how biological information can guide recognition. For primary-school learners, we began with experiences already familiar to them: receiving an injection, feeling pain or fever and hearing that vaccination helps the body prepare. These everyday memories became a bridge to the idea of advance recognition, allowing immunological concepts to unfold through situations that children could readily understand."
+          "The principle that biological information guides immune recognition provided the scientific basis for Vaccine Classroom. For primary-school learners, we began with experiences already familiar to them: receiving an injection, feeling pain or fever and hearing that vaccination helps the body prepare. These everyday memories became a bridge to the idea of advance recognition, allowing immunological concepts to unfold through situations that children could readily understand."
 ]
         }
           ]
@@ -769,7 +769,7 @@ export const cycle2Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "We retained the four-part structure, two-round game and scientific return in a reusable Teaching Pack. The classroom also gave us a transferable design principle: understanding improved when learners could see what information entered a decision and how that information changed the next action. We next applied this principle to a longer educational problem—making a multi-step experimental workflow visible and repeatable in the Virtual Laboratory. Further details are provided in [Education: Vaccine Classroom](https://2026.igem.wiki/jlu-fbh/education)."
+          "We retained the four-part structure, two-round game and scientific return in a reusable Teaching Pack. The classroom also gave us a transferable design principle: understanding improved when learners could see what information entered a decision and how that information changed the next action. This principle also informed improvements to the existing Virtual Laboratory, particularly the visibility of experimental steps and their connections. Further details are provided in [Education: Vaccine Classroom](https://2026.igem.wiki/jlu-fbh/education)."
 ]
         }
           ]
@@ -911,7 +911,7 @@ export const cycle2Section: WikiSection = {
           type: "figure",
           src: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-c2-06.avif",
           width: 3000,
-          height: 2100,
+          height: 1780,
           alt: "Figure C2-06",
           caption: "**(A)** CD8/CD69 staining and flow cytometry assessed early T-cell activation under the TROP2 CTL1 and CTL2 conditions. **(B)** Calcein-AM release from K562 targets measured overall effector-cell cytotoxicity at an effector-to-target ratio of 80:1, with spontaneous- and maximum-release controls supporting normalisation."
         }

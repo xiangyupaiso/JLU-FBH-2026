@@ -133,10 +133,13 @@ export function Home() {
           </div>
         </section>
         {/* A sibling, so the section ref is attached before its effects run. */}
-        <HomeIntro scene={sceneRef} />
+        <HomeIntro scene={sceneRef}>
+          {(introPlaying) => (
+            <HomePlayback root={rootRef} introPlaying={introPlaying} />
+          )}
+        </HomeIntro>
         <HomeStory />
       </main>
-      <HomePlayback root={rootRef} />
     </div>
   );
 }

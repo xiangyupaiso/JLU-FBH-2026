@@ -18,7 +18,7 @@
    - [4.6 跨页共享模式：正文内嵌文档块（PDF / 报告）](#46-跨页共享模式正文内嵌文档块pdf--报告)
    - [4.7 页面加载与加载动画退出规则](#47-页面加载与加载动画退出规则)
 5. [尺寸与样式收口铁律](#五尺寸与样式收口铁律)
-   - [铁律 8：重部件页面的滚动编排退出](#铁律-8重部件页面的滚动编排退出scroll-choreography-opt-out)
+   - [铁律 8：阅读正文静态显示与滚动计算收口](#铁律-8阅读正文静态显示与滚动计算收口)
 6. [全站统一视觉风格规范：水墨淡彩](#六全站统一视觉风格规范水墨淡彩ink-wash-light-watercolor)
 7. [老旧代码识别与渐进式迁移 Checklist](#七老旧代码识别与渐进式迁移-checklist)
 
@@ -462,7 +462,7 @@ export function pageFeatures(): Record<string, ReactNode> {
 **七条铁律**
 
 1. **默认收起，点击才展开。** 收起态不加载 PDF.js 文档；首次展开后保持挂载，避免每次开合重新请求文档、丢失阅读页位。展开后由 `PdfDocumentSurface` 在页面内绘制 PDF，保留原生文本选择和页面滚动，并提供页码跳转与缩放。PDF 页面的鼠标事件留在主页面，因此全站虚拟光标可连续跟随，无需访问者安装浏览器插件。
-2. **绝不加 `.wiki-figure` 类。** 蓝色 `FIG. nn` 徽标挂在 `.wiki-figure figcaption::before`（`wiki-rebuild.css` 的 CSS 计数器）上；**文档不是插图**，套上就会出现「FIG. 10」与正文引用的「Figure 9」互相打架——Design 页踩过这个坑。稿件那句话由 `.wiki-document__caption` 承载（15px、卡片内左对齐、白色），它是卡片的一部分，不再单独漂在正文里。
+2. **绝不加 `.wiki-figure` 类。** 蓝色 `FIG. nn` 徽标挂在 `.wiki-figure figcaption::before`（`wiki-route-skin.css` 的 CSS 计数器）上；**文档不是插图**，套上就会出现「FIG. 10」与正文引用的「Figure 9」互相打架——Design 页踩过这个坑。稿件那句话由 `.wiki-document__caption` 承载（15px、卡片内左对齐、白色），它是卡片的一部分，不再单独漂在正文里。
 3. **文档放 `public/assets/docs/`，URL 必须走解析函数**：`get[Page]Document(key) => uploadUrl || ${import.meta.env.BASE_URL}assets/docs/<fileName>`。这样 dev 与生产同源可用；资产字典里 `uploadUrl` 在官方上传前**严格留空**（与 4.2 图片双轨规范一致）。
 4. **不写行内尺寸**：卡片宽度与阅读面高度收敛在共享皮肤里（铁律 2）。
 5. **卡片上的文字只能来自稿件，一个字都不许自己加。** 卡片只显示资产字典里的 `caption`——稿件为这个内嵌物写的那句话（Design 是 `Figure 9. Experimental Design Report, NC3Rs EDA.`，去掉 `Figure N` 前缀），**不带手写编号**。**禁止**在卡片上补 `title` / `meta` / 文件名 / `PDF` 徽标 / 图标：这些字都是团队没写过的话，会让同一个东西在正文里被说三遍（正文一句 + 卡片标题 + 卡片副标题），一眼就是「生成味」。正文的引入句由 `designPage.ts` 的段落承担，那是数据层的事，不要搬到卡片上。
@@ -525,7 +525,7 @@ export function pageFeatures(): Record<string, ReactNode> {
 
 ## 五、尺寸与样式收口铁律
 
-严禁再出现“到处写尺寸、到处相互覆盖、找不到改动点”的混乱状况，所有开发必须遵循以下八条铁律（铁律 1–7 管尺寸与排版，铁律 8 管重部件页面的滚动性能）：
+严禁再出现“到处写尺寸、到处相互覆盖、找不到改动点”的混乱状况，所有开发必须遵循以下八条铁律（铁律 1–7 管尺寸与排版，铁律 8 管阅读页的静态显示与滚动性能）：
 
 ### 铁律 1：宏观外壳尺寸（禁止在页面 CSS 里擅自篡改）
 
@@ -562,10 +562,23 @@ export function pageFeatures(): Record<string, ReactNode> {
     3. **实体药理/属性分类**（如靶点的 `Epithelial glycoprotein`）：作为主标题旁的微型优雅药理 pill 标签展示，不搞黑框与大写。
     4. **描述性段落/临床依据**（如 `High expression in >85% of TNBC tumors...`）：直接作为卡片正文或带左侧微装饰细线的自然说明呈现，严禁用 `CLINICAL RATIONALE` 字段名机械顶格。
 - **清除 AI 模板装饰符号**：
-  - 彻底去除小节标题左侧的彩色竖线（`.wiki-subheading::before`）。
+  - 彻底去除小节标题左侧的彩色竖线（`.wiki-subheading::before`）；H3、H4 及更深标题全部保持正文平齐，不添加边框或专属内缩。
   - 彻底去除卡片多余的货号式编号（如 `TARGET 01`、`CARD 02`），还原真实科研展示的高级感与人文阅读体验。
 
 ### 铁律 5：大标题与小标题双色层级设计规范（Dual-Tone Heading Hierarchy）
+
+- **正文标题统一层级**：H2 为 `clamp(21px, 2.2vw, 25px)` / 750 / 1.35，H3 为 `clamp(17px, 1.8vw, 20px)` / 700 / 1.35，H4 为 `clamp(15.5px, 1.6vw, 17px)` / 650 / 1.40；H5、H6 再依次收敛至 16px、15px，禁止子标题比父标题大。所有尺寸由 `wiki-route-skin.css` 中 `--wiki-h2-size` 至 `--wiki-h6-size` 管理，折叠小节标题遵循同一规则。H3 与 H4 纯净平齐，无装饰竖线或专属缩进。
+- **层级与配色**：`wikiSubheadingDepth` 同时驱动正文 H3–H6 标签和目录缩进，显式 `level: 4` 的无编号 Step / Choice 仍为三级小标题，不能当作二级父级。H3 使用 `--route-subheading-ink`，H4 及更深使用 `--route-tertiary-ink`；模块保留各自配色。H3 顶部/底部间距为 28px/14px，H4 为 22px/10px。
+
+| 模块 | H2 | 马克笔涂刷 | H3 | H4 及更深 |
+| :--- | :--- | :--- | :--- | :--- |
+| Project | `#243d2c` | `#c4c7be` | `#84382b` | `#345443` |
+| Wet Lab | `#14354c` | `#c6e5f2` | `#88541e` | `#275a52` |
+| Dry Lab | `#153e34` | `#c2ebe0` | `#633256` | `#275661` |
+| Engagement | `#4a2c1d` | `#fde5a5` | `#174a47` | `#78442c` |
+| Team | `#3e2d14` | `#f8ecbe` | `#762338` | `#5c4323` |
+
+模块归属以路由装配的 `theme`、`pageClassName` 及导航分组为准，不能因为页面名称而换用其他模块的配色。普通页面专属 CSS 不得覆写正文标题的字号、字重或颜色。**Sustainability 为明确保留的例外**：维持现有 SDG / SCALE 标题配色和页面专属标题样式，不纳入本次标题样式统一；正文与目录仍共用统一编号。**Engineering 保留独立配色**：正文和 DBTL 阶段的现有颜色不改为 Project 通用色，字号层级复用全局变量。
 
 - **杜绝单色沉闷、同时杜绝同色系近色混淆**：
   - 严禁小标题（`h3`）与大标题（`h2`）复用同一种颜色或同一种色系深浅变体（如绿配绿、蓝配蓝，极易导致视觉疲劳且层级区分度不足）。
@@ -608,6 +621,7 @@ $$
    - 全局垂直节奏阶梯（铁律 6 规定的 16px / 24px / 28px / 44px 及容器重置）。
    - 标题马克笔折行与双色系统契约。
    - 侧边栏目录（`WikiLineSidebar`，`wiki-route-skin.css` §6 marker outline）：全站唯一一套样式，无卡片外壳，当前项用正文同款马克笔底纹标记，颜色取 `--route-heading-ink / --route-subheading-ink / --route-marker-bg`。层级契约：一级 = Fraunces 旧式数字 + 15px；二级 = 13.5px 缩进、不显示编号；三级（如 `1.1.1`）= 12.5px 再缩进并带细竖线，仅在正在阅读的二级标题下展开。标题一律换行显示，禁止省略号截断。页面不得再为目录写专属覆盖样式。
+   - 章节编号由 `wikiPageNumbering.ts` 的 `numberWikiSections` 统一生成，`WikiRoutePage` 将同一份结果用于正文标题、折叠小节与桌面/移动目录。Overview 及其之前的评审、亮点等引导章节不参与编号，之后正文从 1 连续计数；`hideSectionNumber` 指定的其他无编号章节也不占号。子标题按实际父子层级连续编号为 `1.1`、`1.1.1` 等，正文标题中已有的编号同步替换，禁止侧边栏单独重算。原有锚点、文献序号、图表序号、日期与步骤名称保留；无 Overview 的页面从首个未显式排除的章节开始编号。
    - 凡是约束**“全站正文基本面貌一致性”**的基础规则，必须统一收敛在全局。
 2. **严禁写在总体的特例（页面独有资产，收敛在 `[page]-panels.css`）**：
    - 某个页面特有的自定义可视化（如 Description 的 8 步机制链 CSS、四抗原卡片网格；Sustainability 的 3D 旋转立体卡片；Experiments 的专属 Protocol 步骤抽屉）。
@@ -615,40 +629,18 @@ $$
    - 组件内部容器的外部外边距一律 `margin: 0`，由全局 `.wiki-feature` 统一提供 24px 外间距。
    - **复用原则**：后续其他页面若需要使用相同的交互模式（如其他页面也要用机制链或四卡片），直接复制或抽取通用组件，**绝不允许为了适配某个页面的特殊形状，在全局基础样式里打 `if` 特判或写死例外类名**。
 
-### 铁律 8：重部件页面的滚动编排退出（Scroll Choreography Opt-out）
+### 铁律 8：阅读正文静态显示与滚动计算收口
 
-**先记住骨架机制（这是判断依据）**：阅读器的滚动由主线程投影驱动（`useWetLabScrollRoute`：文档持有滚动条，每帧把位置投影回被钉住的文章容器，`inner.scrollTop = next`）；同时 `useWikiPageMotion` 在**每一帧**重写 `--wiki-section-reveal / focus / shift / drift`，而 `wetlab-editorial.css` 把它消费成：
+**统一行为**：所有通用 Wiki 阅读页的正文、标题、图片和 feature 外层都直接显示，不再做滚动渐显、上浮或视差漂移。组件内部原有的点击、悬停及专属交互保持各自实现，不在阅读器层统一禁用。
 
-```css
-.wiki-page.wiki-page--manuscript .wiki-feature {
-  transform: translate3d(0, var(--wiki-section-drift), 0);
-  will-change: transform;
-}
-```
+- `useWikiPageMotion` 只负责阅读位置、当前章节和小节的识别，不再逐帧写入 `--wiki-section-reveal / focus / shift / drift`，不再创建正文 reveal observer，也不运行停止滚动后的插值动画。
+- `--wiki-page-progress` 的动态值只写在 `.wiki-page-progress` 元素上；侧栏进度由侧栏维护，只写在 `.wiki-outline__ribbon` 上。禁止把连续变化的进度变量写到整页或整个侧栏的根节点，让正文和导航文字继承并重新计算样式。
+- 滚动监听使用 passive listener，并通过单个 `requestAnimationFrame` 合并同一帧的更新。先完成几何读取，再写进度和发生变化的当前章节属性；小节测量只覆盖当前章节。
+- 图片尺寸预留、目录跟随、阅读进度和锚点跳转继续保留。桌面阅读器仍由 `useWetLabScrollRoute` 将文档位置投影到固定阅读框；这是正文可达性所需的滚动机制，不能作为多余动画删除。
+- `wiki-route-skin.css` 是阅读器结构、正文、图注与折叠条目的唯一共享样式入口。旧的两套全局阅读样式已删除，不得重新引入或复制旧的版式覆盖规则；页面专属样式只管理该页的组件。
+- 页面专属的其它性能手段仍就近收口在该页 `[page]-panels.css`；不得为了性能改动擅自删减正文或组件交互。
 
-`--wiki-section-drift` 是**带小数的连续值**（`12 − progress × 24`），再叠加 `wiki-rebuild.css` 给每个 `[data-wiki-reveal]` 的 680ms opacity + translate 过渡——等于每个 feature 图层**每帧都被重新定位**。
-
-**结论**：每帧代价 **∝ 该 feature 图层内内容的绘制复杂度**。小卡片免费；当一个 feature 里放进几千节点（矢量 SVG、`clip-path`、长列表、内嵌插件面）时，每帧的小数偏移都让主线程重栅格化整层 → 掉帧。**这与页面文案长度无关**，所以「文字更长的页面反而更流畅」是正常现象。
-
-**规范**：当某页 feature 插槽偏重（节点数量级达数百，或含 SVG 图谱 / `clip-path` / 长列表 / `iframe`）时，**必须**为该页声明编排退出：
-
-```css
-/* 作用域优先取 slot 级：正文、图表、标题的入场与视差全部保留 */
-.wiki-page[data-wiki-route="/<route>"] .wiki-feature,
-.wiki-page[data-wiki-route="/<route>"] .wiki-feature[data-wiki-reveal] {
-  opacity: 1 !important;
-  transform: none !important;
-  transition: none !important;
-  will-change: auto !important;
-}
-```
-
-- **作用域升级规则**：先试 slot 级；只有整页都重时才升级到 route 级并顺带关掉 section `::before` 的视差。既有先例：`/experiments`（route 级，见 `experiments-panels.css` 的 "Pre-rendered Full Paint & Performance Overrides"）、`/engineering`（page 级，见 `engineering-experience.css`）。
-- **视觉代价（已知且接受）**：这些插槽不做入场淡入、不做视差浮动，内容一开始就在那里、滚动时不浮动。这是**取舍**，换来可用帧率——不要再花力气把它「加回来」。
-- **禁止**为了绕过它去改全局 `wetlab-editorial.css` / `wiki-rebuild.css`：编排是阅读器的全局设计语言，退出必须由页面自己声明（铁律 7）。
-- 页面专属的其它性能手段同理就近收口在该页 `[page]-panels.css`（如给静态重部件 `contain: layout paint` / `will-change: transform` 一次性纹理、给长列表的每一行加 `contain`、把重复刻度改成一条 CSS 渐变）。
-
-**自查工具**：`node scripts/measure-page-weight.mjs` —— 打印每个路由 feature 子树的节点数（含只在浏览器渲染的列表行）与最重元素统计。**新页面合入前跑一次**；数字明显高于同级页面时，先考虑减少节点 / 列表虚拟化，再考虑退出编排。
+**自查工具**：`node scripts/measure-page-weight.mjs` 可检查 feature 子树节点数和最重元素。复杂页面应在生产构建中验证滚动帧率及样式计算开销。
 
 ---
 
@@ -661,7 +653,7 @@ $$
 3. ❌ **全局打补丁反模式**：在全局 `wiki-route-skin.css` 或 `WikiRoutePage.tsx` 里写 `if (route === '/xxx')` 特判代码。
 4. ❌ **多层嵌套重导反模式**：类似 `descriptionData.ts` → `descriptionPage.ts` → `projectPages.ts` 无意义的三层包装。
 5. ❌ **第二套引用系统反模式**：页面自建 tooltip / 文献列表 / 跳转逻辑，导致锚点、回链、配色全站分叉（见 4.5）。
-6. ❌ **重部件裸挂反模式**：把数千节点的交互部件直接放进 feature 插槽却不声明编排退出，页面滚动掉帧（见铁律 8）。
+6. ❌ **整页滚动样式传播反模式**：向整页根节点逐帧写进度变量，或让正文和重部件随滚动连续漂移，导致大量后代重新计算样式、页面掉帧（见铁律 8）。
 7. ❌ **文档冒充插图反模式**：给内嵌 PDF 的文档块套上 `.wiki-figure`，于是蓝色 `FIG. nn` 徽标与正文的「Figure N」编号打架；或绕开共享 `DocumentViewer` 自写 iframe（见 4.6）。
 8. ❌ **文档冒充图注反模式**：把内嵌文档块做成「图注字号 + 居中 + 灰字 + 下划线链接」，读者会当成上面那张图的第二段图注（Design 页 Figure 9 的真实反馈）；深色条面与真按钮必须都在（见 4.6 铁律 7）。
 9. ❌ **卡片自己加话反模式**：在文档卡片上补稿件里没有的标题 / 副标题 / 文件名 / `PDF` 徽标 / 图标，把同一件事说三遍，读者一眼看出是生成的装饰（见 4.6 铁律 5）。

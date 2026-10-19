@@ -1,0 +1,243 @@
+{
+  "date": "2026-10-17",
+  "source_commits": {
+    "circuforge": "adf4013c28d9be36d854367f1ae3469fad3b7cd9",
+    "torusfold": "b6c4171ee2a4d68ff69954eee90144542e5f0569"
+  },
+  "circuforge_api_suite": {
+    "passed": 32,
+    "failed": 0,
+    "warnings": 1,
+    "warning": "TestClient deprecation notice",
+    "python": "3.13.7",
+    "scope": "Isolated public API source; offline fixtures and test doubles, not remote prediction or Docker startup",
+    "pytest": "8.4.2",
+    "fastapi": "0.139.0",
+    "elapsed_seconds": 2.77
+  },
+  "archived_reference_files": {
+    "scope": "Existing-file consistency only; no compiler rerun, prediction or wet experiment",
+    "checks": {
+      "reference_length_5267": true,
+      "generated_length_5267": true,
+      "eight_input_segments": true,
+      "payload_length_336_nt": true,
+      "payload_length_112_aa": true,
+      "reference_payload_order_and_linkers": true,
+      "generated_payload_order_and_linkers": true,
+      "outside_region_unchanged": true,
+      "outside_region_length_4931": true,
+      "changed_codons_54": true,
+      "changed_bases_67": true,
+      "all_changed_codons_synonymous": true,
+      "full_fusion_translation_preserved": true,
+      "no_internal_stop_in_fusion": true,
+      "bundle_zip_integrity": true,
+      "eleven_recorded_files_match_hashes": true,
+      "documented_reference_region_matches_saved_model_input": true
+    },
+    "passed": 17,
+    "total": 17,
+    "all_pass": true
+  },
+  "torusfold_headline": {
+    "numpy": "2.3.5",
+    "original_LF": {
+      "passed": 20,
+      "total": 32,
+      "failed": 12,
+      "exit_code": 1
+    },
+    "Windows_CRLF": {
+      "passed": 19,
+      "total": 32,
+      "failed": 13,
+      "exit_code": 1
+    },
+    "scope": "Existing artifact and histogram verification, not a new structural prediction"
+  },
+  "torusfold_api": {
+    "date": "2026-10-17",
+    "source_commit": "b6c4171ee2a4d68ff69954eee90144542e5f0569",
+    "scope": "schema, idle status and empty-sequence rejection only; no prediction submitted",
+    "schema": {
+      "http_status": 200,
+      "response_keys": [
+        "groups",
+        "open_by_default",
+        "path",
+        "knob_count",
+        "pipeline_option_count"
+      ]
+    },
+    "idle_status": {
+      "http_status": 200,
+      "response_keys": [
+        "job_id",
+        "status",
+        "progress",
+        "current_level",
+        "level_name",
+        "stage_label",
+        "message",
+        "error",
+        "elapsed",
+        "eta",
+        "stages",
+        "levels",
+        "started_at",
+        "finished_at",
+        "sequence_length",
+        "result_ready",
+        "server_generation",
+        "fraction",
+        "weights",
+        "plan",
+        "log_path",
+        "stage_progress",
+        "stage_index",
+        "stage_total",
+        "log_count",
+        "structure",
+        "metrics"
+      ]
+    },
+    "empty_request": {
+      "http_status": 400,
+      "response": {
+        "error": "No sequence provided"
+      }
+    }
+  },
+  "not_executed": [
+    "Docker startup",
+    "Complete R regression suite",
+    "Fresh long-RNA prediction",
+    "2OIU refinement benchmark",
+    "Wet-lab assay",
+    "Independent participant timing study"
+  ],
+  "browser": {
+    "desktop": {
+      "title": "CircuForge and TorusFold — Software Wiki review",
+      "images": [
+        {
+          "src": "图片和附件/figure-01-integration-overview.png",
+          "loaded": true
+        },
+        {
+          "src": "图片和附件/figure-02-candidate-workflow.png",
+          "loaded": true
+        },
+        {
+          "src": "图片和附件/figure-03-prepare-data.png",
+          "loaded": true
+        },
+        {
+          "src": "图片和附件/figure-04a-comparison-design.png",
+          "loaded": true
+        },
+        {
+          "src": "图片和附件/figure-04b-evidence-card.png",
+          "loaded": true
+        },
+        {
+          "src": "图片和附件/figure-05a-epitope-prediction.png",
+          "loaded": true
+        },
+        {
+          "src": "图片和附件/figure-05b-candidate-epitopes.png",
+          "loaded": true
+        },
+        {
+          "src": "图片和附件/figure-06a-assembly.png",
+          "loaded": true
+        },
+        {
+          "src": "图片和附件/figure-06b-junction-review.png",
+          "loaded": true
+        },
+        {
+          "src": "图片和附件/figure-07-boundary-confirmation.png",
+          "loaded": true
+        },
+        {
+          "src": "图片和附件/figure-08-downloads.png",
+          "loaded": true
+        },
+        {
+          "src": "图片和附件/figure-09-viewer-overview.png",
+          "loaded": true
+        },
+        {
+          "src": "图片和附件/figure-10-one-click-setup.png",
+          "loaded": true
+        },
+        {
+          "src": "图片和附件/figure-11-run-console.png",
+          "loaded": true
+        },
+        {
+          "src": "图片和附件/figure-12-status-panel.png",
+          "loaded": true
+        },
+        {
+          "src": "图片和附件/figure-13-circuforge-modules.png",
+          "loaded": true
+        },
+        {
+          "src": "图片和附件/figure-14-torusfold-stages.png",
+          "loaded": true
+        },
+        {
+          "src": "图片和附件/figure-15-workflow-evolution.png",
+          "loaded": true
+        },
+        {
+          "src": "图片和附件/figure-16-software-exchange.png",
+          "loaded": true
+        },
+        {
+          "src": "图片和附件/figure-17-consultation.jpg",
+          "loaded": true
+        },
+        {
+          "src": "图片和附件/figure-18-team-discussion.png",
+          "loaded": true
+        },
+        {
+          "src": "图片和附件/figure-19-circuforge-user-testing.png",
+          "loaded": true
+        },
+        {
+          "src": "图片和附件/figure-20-torusfold-user-testing.png",
+          "loaded": true
+        }
+      ],
+      "width": 1440,
+      "scrollWidth": 1425,
+      "headings": 12
+    },
+    "mobile": {
+      "width": 390,
+      "scrollWidth": 390,
+      "imagesLoaded": 23
+    },
+    "viewer": {
+      "title": "Prebuilt TorusFold Model — 2,013 nt",
+      "modelLoaded": true,
+      "hasUnsupportedStatRows": false,
+      "contextPresent": true
+    }
+  },
+  "document": {
+    "local_missing_references": [],
+    "duplicate_ids": [],
+    "images": 30,
+    "images_without_alt": 0,
+    "forbidden_publication_phrases": [],
+    "markdown_bytes": 84284,
+    "markdown_words": 9813,
+    "markdown_sha256": "875bd36349b1c030b734b7dee2f307f87ceef7c976776643664156be6c93af4c"
+  }
+}

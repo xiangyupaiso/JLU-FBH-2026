@@ -3,6 +3,33 @@ import type { SustainabilityAssetEntry } from "./sustainabilityAssets";
 import type { StakeholderPhotoSet } from "./sustainabilityPhotos";
 
 export const sdg12PhotoSets = {
+  "sdg12-01": [
+    {
+      src: "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/sustainability/sdg12/01-yang-liu-1.avif",
+      alt: "Yang Liu — photograph 1",
+      caption: "Yang Liu",
+    },
+    {
+      src: "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/sustainability/sdg12/01-yang-liu-2.avif",
+      alt: "Yang Liu — photograph 2",
+      caption: "Yang Liu",
+    },
+    {
+      src: "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/sustainability/sdg12/01-yang-liu-3.avif",
+      alt: "Yang Liu — photograph 3",
+      caption: "Yang Liu",
+    },
+    {
+      src: "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/sustainability/sdg12/01-yang-liu-4.avif",
+      alt: "Yang Liu — photograph 4",
+      caption: "Yang Liu",
+    },
+    {
+      src: "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/sustainability/sdg12/01-yang-liu-5.avif",
+      alt: "Yang Liu — photograph 5",
+      caption: "Yang Liu",
+    },
+  ],
   "sdg12-02": [
     {
       src: "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/sustainability/sdg12/02-junhua-qiao-1.avif",
@@ -164,6 +191,8 @@ export const sdg12EvidenceAssets = {
       "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/sustainability/sdg12/evidence-1.avif",
     alt: "Feedback from five categories of stakeholders and industry practitioners, with corresponding project changes",
     section: "SDG 12 — Evidence",
+    width: 4000,
+    height: 1693,
   },
   sdg12Evidence2: {
     kind: "image",
@@ -173,5 +202,7 @@ export const sdg12EvidenceAssets = {
       "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/sustainability/sdg12/evidence-2.avif",
     alt: "Dorm planting activity with the Jilin University Student Environmental Protection Association",
     section: "SDG 12 — Evidence",
+    width: 1706,
+    height: 1279,
   },
 } as const satisfies Record<string, SustainabilityAssetEntry>;

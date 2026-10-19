@@ -1,0 +1,28 @@
+{
+  "run_timestamp": "2026-10-01T18:29:52+0800",
+  "git_commit": "2e30a3899aea37aae977869ca5155decc9ba7fd9",
+  "source_files": [
+    {
+      "frozen_file": "reference_original.gb",
+      "sha256": "ae9bf29311ed87a47fc6052a070bae6731e21d226db9b5484564776f6966bd3f"
+    },
+    {
+      "frozen_file": "reference_original.dna",
+      "sha256": "8f3d0f3824461c8e1780cd9730ed416ea5a88bdee5ef8cf64a90441985fc88f0"
+    }
+  ],
+  "reference_sequence_sha256": "922ef5ddcef57ed1a8b6f6d171fb510d8875c83b3d80864d7d1cef83525148ef",
+  "construct_id": "CON-5264bacf19ceb8d04eff1e5c",
+  "output_sequence_sha256": "3674caf6623469e3b27690c17604c5dfe5ab74e8f28bdb426bf5d70d5c686a38",
+  "compiler_version": "CIRCURE-CONSTRUCT-2.3.0",
+  "exporter_version": "CIRCURE-EXPORT-2.2.0",
+  "R_version": "R version 4.5.3 (2026-03-11 ucrt)",
+  "compile_seconds": 1.61,
+  "timing_scope": "Single local compiler call, excluding import, remote prediction, Registry access, export and UI; not a speedup benchmark",
+  "payload_nt_differences": 67,
+  "changed_synonymous_codons": 54,
+  "all_checks_pass": true,
+  "mature_RNA_boundaries": "Not independently supplied; DNA-only case",
+  "remote_prediction_called": false,
+  "SnapGene_desktop_opened": false
+}

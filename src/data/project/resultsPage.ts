@@ -70,18 +70,15 @@ export const resultsPage: WikiPageContent = {
     ...resultsSectionsInVivoDiscussion,
   ],
   links: [
-    {
-      path: "/model",
-      label: "Model: full datasets, parameters and per-model values",
-    },
-    {
-      path: "/experiments",
-      label: "Experiments: the protocols cited as Experiments 1.1–7.5",
-    },
+    { path: "/experiments", label: "Experimental Protocols" },
+    { path: "/measurement", label: "Measurement Standards" },
+    { path: "/model", label: "Biophysical Models" },
+    { path: "/contribution", label: "Reusable Contributions" },
   ],
   next: {
     path: "/contribution",
     label: "Contribution",
-    title: "What can another team reuse?",
+    title: "What Can the SynBio Community Build Next?",
+    description: "Our experimental evidence validates the circular RNA platform. Discover the thirty deposited BioBrick parts, verified protocols, and software tools packaged for future teams.",
   },
 };

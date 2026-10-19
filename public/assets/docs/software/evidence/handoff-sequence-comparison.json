@@ -1,0 +1,13 @@
+{
+  "scope": "Documentation-time sequence comparison; not proof of a historical software export or experimentally approved boundary",
+  "reference_region_1based_inclusive": [
+    723,
+    2735
+  ],
+  "reference_length": 2013,
+  "torusfold_sequence_length": 2013,
+  "reference_rna_sha256": "c7836a9fbef98d66e97d72286b6b788055679e06fe6c23bbd18c51f94ab73753",
+  "torusfold_rna_sha256": "c7836a9fbef98d66e97d72286b6b788055679e06fe6c23bbd18c51f94ab73753",
+  "exact_match": true,
+  "equal_length_position_differences": 0
+}

@@ -12,7 +12,9 @@ export function Experiments() {
       theme="wet-lab"
       pageClassName="wiki-page--wet-lab wiki-page--experiments"
       hideHeroCopy
-      collapsibleSubheadings
+      collapsibleSubheadingSections={experimentsPage.sections
+        .filter((section) => section.id !== "sec-outlook")
+        .map((section) => section.id)}
       protocolPairs={experimentProtocolPairs}
       features={experimentsFeatures()}
       articleLead={experimentsFeatures()["exp-protocol-map"]}

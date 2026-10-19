@@ -10,11 +10,14 @@ import { ArrowRight, List, Pause, Play, RotateCcw, X } from "lucide-react";
 import { useHomePlayback } from "../../hooks/useHomePlayback";
 import "../../styles/home-playback.css";
 
-type HomePlaybackProps = { root: RefObject<HTMLDivElement | null> };
+type HomePlaybackProps = {
+  root: RefObject<HTMLDivElement | null>;
+  introPlaying: boolean;
+};
 
 const PLAYBACK_RATES = [1, 1.5, 2];
 
-export function HomePlayback({ root }: HomePlaybackProps) {
+export function HomePlayback({ root, introPlaying }: HomePlaybackProps) {
   const {
     mode,
     rate,
@@ -37,19 +40,27 @@ export function HomePlayback({ root }: HomePlaybackProps) {
   const scenesButtonRef = useRef<HTMLButtonElement>(null);
   const id = useId();
   const currentChapter = chapters[chapterIndex] ?? chapters[0];
-  const playLabel = ended
-    ? "Replay story"
-    : mode === "playing"
-      ? "Pause story"
-      : mode === "paused"
-        ? "Resume story"
-        : "Play story";
+  const playLabel = introPlaying
+    ? mode === "playing"
+      ? "Turn off automatic story playback"
+      : "Turn on automatic story playback"
+    : ended
+      ? "Replay story"
+      : mode === "playing"
+        ? "Pause story"
+        : mode === "paused"
+          ? "Resume story"
+          : "Play story";
   const percent = Math.round(Math.min(1, Math.max(0, progress)) * 100);
   const nextRate =
     PLAYBACK_RATES[(PLAYBACK_RATES.indexOf(rate) + 1) % PLAYBACK_RATES.length];
 
   useEffect(() => {
-    if (!showScenes) return;
+    if (introPlaying) setShowScenes(false);
+  }, [introPlaying]);
+
+  useEffect(() => {
+    if (!showScenes || introPlaying) return;
 
     const centerCurrent = () => {
       const list = listRef.current;
@@ -89,7 +100,7 @@ export function HomePlayback({ root }: HomePlaybackProps) {
       document.removeEventListener("keydown", dismissEscape);
       window.removeEventListener("resize", centerCurrent);
     };
-  }, [showScenes]);
+  }, [showScenes, introPlaying]);
 
   const closeScenes = () => {
     setShowScenes(false);
@@ -115,7 +126,7 @@ export function HomePlayback({ root }: HomePlaybackProps) {
           setShowScenes(false);
       }}
     >
-      {artworkStatus !== "ready" && (
+      {!introPlaying && artworkStatus !== "ready" && (
         <div className="home-playback-loading" role="status" aria-live="polite">
           <p>{artworkStatus === "error"
             ? "Some scene images could not load."
@@ -131,9 +142,9 @@ export function HomePlayback({ root }: HomePlaybackProps) {
       )}
       <div
         className="home-playback-scenes"
-        data-open={showScenes}
-        inert={!showScenes}
-        aria-hidden={!showScenes}
+        data-open={showScenes && !introPlaying}
+        inert={!showScenes || introPlaying}
+        aria-hidden={!showScenes || introPlaying}
         id={`${id}-scenes`}
         ref={panelRef}
         role="dialog"
@@ -233,6 +244,7 @@ export function HomePlayback({ root }: HomePlaybackProps) {
           className="home-playback-scenes-toggle"
           type="button"
           ref={scenesButtonRef}
+          disabled={introPlaying}
           onClick={() => {
             if (!showScenes && mode === "playing") toggle();
             setShowScenes((visible) => !visible);
@@ -258,17 +270,21 @@ export function HomePlayback({ root }: HomePlaybackProps) {
         </div>
       </div>
       <span className="home-playback-sr" role="status" aria-live="polite">
-        {artworkStatus !== "ready"
-          ? "Story waiting for scene images."
-          : reducedMotion
-          ? "Reduced motion is on. Story playback is in static view."
-          : ended
-            ? "Story complete. Replay is available."
-            : mode === "playing"
-              ? "Story playing. Scroll or use the arrow keys to pause."
-              : mode === "paused"
-                ? "Story paused."
-                : "Automatic story playback is available."}
+        {introPlaying
+          ? mode === "playing"
+            ? "Automatic story playback will start after the introduction."
+            : "Automatic story playback is off. The introduction will continue."
+          : artworkStatus !== "ready"
+            ? "Story waiting for scene images."
+            : reducedMotion
+              ? "Reduced motion is on. Story playback is in static view."
+              : ended
+                ? "Story complete. Replay is available."
+                : mode === "playing"
+                  ? "Story playing. Scroll or use the arrow keys to pause."
+                  : mode === "paused"
+                    ? "Story paused."
+                    : "Automatic story playback is available."}
       </span>
     </div>
   );

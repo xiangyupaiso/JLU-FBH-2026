@@ -20,13 +20,8 @@ export const experimentRingStages: ExperimentRingStage[] = [
     nodes: [
       {
         key: "1-1",
-        label: "Plasmid Construction",
-        angle: -92.4791,
-      },
-      {
-        key: "1-2",
         label: "circRNA Synthesis",
-        angle: -72.4423,
+        angle: -82.4604,
       },
     ],
   },
@@ -75,13 +70,8 @@ export const experimentRingStages: ExperimentRingStage[] = [
     nodes: [
       {
         key: "3-1",
-        label: "Combined Plasmid",
-        angle: 2.2902,
-      },
-      {
-        key: "3-2",
         label: "Combined circRNA & Release",
-        angle: 22.3262,
+        angle: 12.3085,
       },
     ],
   },
@@ -154,12 +144,7 @@ export const experimentRingStages: ExperimentRingStage[] = [
     end: 187.008,
     nodes: [
       {
-        key: "6-1-vector",
-        label: "Lentiviral Vector",
-        angle: 141.1935,
-      },
-      {
-        key: "6-1-transduction",
+        key: "6-1",
         label: "Lentiviral Transduction",
         angle: 151.2123,
       },

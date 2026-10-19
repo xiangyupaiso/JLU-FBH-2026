@@ -15,31 +15,8 @@
    Citations live in the shared register (`styles/wiki-citations.css`).
    ========================================================================== */
 
-/* ============================================================================
-   Choreography opt-out for this page's feature slots
-   ----------------------------------------------------------------------------
-   The reader animates every section and every feature on each scroll frame:
-   `useWikiPageMotion` re-writes `--wiki-section-drift` continuously, and
-   `wetlab-editorial.css` consumes it as
-   `.wiki-feature { transform: translate3d(0, var(--wiki-section-drift), 0);
-   will-change: transform; }`, while `wiki-rebuild.css` additionally gives every
-   `[data-wiki-reveal]` block a 680 ms opacity + translate transition.
-
-   On a small card that is free. On this page's slots — `design-eda-report`
-   (a PDF plugin surface once opened) and above all `construct-architecture-viewer`,
-   at 82 SVG paths + 39 clip-path bars + 106 sequence rows inside one promoted
-   layer —
-   each new fractional offset invalidates that layer, so the main thread
-   re-rasterises the whole widget while the reader is trying to scroll. That is
-   the dropped frames, and it is why the page feels heavier than its neighbours
-   even though its copy is the same length.
-
-   Two precedents already take this trade: `/experiments` at route scope and
-   `/engineering` at page scope (see experiments-panels.css, "Pre-rendered Full
-   Paint & Performance Overrides", and engineering-experience.css). This page
-   opts out at slot scope only, so the prose, figures and headings keep the
-   reader's choreography exactly as the neighbouring pages do.
-   ========================================================================== */
+/* Keep embedded documents and the construct viewer on static layers.
+   Shared reader content is static; only component interactions animate. */
 
 .wiki-page[data-wiki-route="/design"] .wiki-feature,
 .wiki-page[data-wiki-route="/design"] .wiki-feature[data-wiki-reveal] {

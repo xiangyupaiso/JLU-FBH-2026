@@ -46,13 +46,17 @@ export const homeDestinations = [
     action: "Explore the models",
   },
   {
-    key: "team",
-    label: "Team",
-    path: "/roster",
+    key: "software",
+    label: "Software",
+    path: "/software",
     summary:
-      "Get to know the students, instructors and advisors bringing different disciplines together around CirCure.",
-    topics: ["Student researchers", "Instructors and advisors", "Our laboratory and inspirations"],
-    action: "Meet our team",
+      "Explore CircuForge and TorusFold, our open-source tools for traceable circRNA vaccine design and full-length RNA structure modeling. Together, they connect candidate review, sequence-checked construct assembly, circular RNA reconstruction, and inspectable structural evidence.",
+    topics: [
+      "Candidate review and construct design",
+      "Full-length circular RNA modeling",
+      "Traceable, reusable workflows",
+    ],
+    action: "Explore our software",
   },
 ] as const;
 

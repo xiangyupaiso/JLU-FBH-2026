@@ -11,22 +11,6 @@
   --route-heading-ink: #14354c;      /* 大标题 H2：深邃实验海蓝，严谨厚重 */
   --route-marker-bg: #c6e5f2;        /* 大标题马克笔：冰川淡海泡蓝底涂 */
   --route-subheading-ink: #88541e;   /* 小标题 H3：暖琥珀金棕，冷海蓝与暖金棕互补，一眼即分且庄重大气 */
+  --route-tertiary-ink: #275a52;
   --route-watermark: rgba(20, 53, 76, 0.12);
-}
-
-/* Existing manuscript feature components consume these semantic aliases.
-   Derive them from the shared palette so there is only one colour source.
-   The selector outranks wetlab-editorial.css's `.wiki-page.wiki-page--manuscript`
-   defaults, so the palette wins whatever order the route stylesheets load in. */
-.wiki-page.wiki-page--manuscript.wiki-page--wet-lab {
-  --wet-paper: var(--route-paper);
-  --wet-paper-light: var(--route-paper);
-  --wet-paper-deep: var(--route-panel);
-  --wet-ink: var(--route-ink);
-  --wet-muted: var(--route-muted);
-  --wet-faint: var(--route-muted);
-  --wet-accent: var(--route-accent);
-  --wet-teal: var(--route-accent);
-  --wet-line: var(--route-line);
-  --wet-line-strong: var(--route-line-strong);
 }

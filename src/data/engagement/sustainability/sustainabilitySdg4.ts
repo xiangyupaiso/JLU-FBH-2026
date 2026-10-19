@@ -229,20 +229,20 @@ const sdg4Educators: ReadonlyArray<StakeholderProfile> = [
   {
     id: "sdg4-03",
     index: "03",
-    name: "Weiwei Han",
+    name: "Xiang Cao",
     role: "Game Development & Interactive Learning",
-    photos: sdg4PhotoSets["sdg4-03"],
     leadIn: [
       "Building on these insights, we identified two areas for further development: making specialized scientific content easier for the public to understand, and ensuring that interactive educational tools work in real settings. We explored these questions with science communicators and professionals in game development and interactive design.",
     ],
     relevantStakeholder:
-      "Weiweihan is a teacher who helped us assess whether our virtual laboratory and educational games could be accessible and usable in real learning settings, considering intended users, equipment, operating steps, and activity organization. Her feedback also helped us consider whether other teachers, learners, and teams could use these resources independently.",
+      "Xiang Cao is a teacher who helped us assess whether our virtual laboratory and educational games could be accessible and usable in real learning settings, considering intended users, equipment, operating steps, and activity organization. Her feedback also helped us consider whether other teachers, learners, and teams could use these resources independently.",
     challenge: "Does “we built it” mean “others can actually use it”?",
     keyInsight:
       "The usability of interactive educational tools depends on the full set of conditions required to use them. Intended audiences, settings, equipment and materials, rules, and facilitation can all affect participation. Incorporating these conditions into the design and providing complete instructions makes independent use and reuse more feasible for learners and educators.",
     whatChanged:
-      "We incorporated SDG 4’s emphasis on inclusive learning opportunities into the conditions for using interactive resources. **Based on Weiweihan’s feedback,** we refined equipment requirements, resource access, rules, operating steps, and facilitation for our virtual laboratory and games to lower barriers to access, participation, and running the activities again.",
+      "We incorporated SDG 4’s emphasis on inclusive learning opportunities into the conditions for using interactive resources. Based on Xiang Cao’s feedback, we refined equipment requirements, resource access, rules, operating steps, and facilitation for our virtual laboratory and games to lower barriers to access, participation, and running the activities again.",
     currentStatus: "Incorporated",
+    photos: sdg4PhotoSets["sdg4-03"],
     sdgs: [4],
     article: {
       title: "Making Educational Tools Usable in Real Settings",
@@ -250,35 +250,35 @@ const sdg4Educators: ReadonlyArray<StakeholderProfile> = [
         {
           blocks: [
             "Virtual laboratories and game-based activities provide additional ways to engage with synthetic biology. Their use in different classrooms and learning settings depends on whether users can obtain the required equipment, understand the rules, and complete activities without the development team’s on-site guidance.",
-            "We discussed these conditions with **Weiweihan, a teacher, drawing on her perspective as an educator to review** how our resources could address SDG 4 through access, operation, and reuse.",
+            "We discussed these conditions with Xiang Cao, a teacher, drawing on her perspective as an educator to review how our resources could address SDG 4 through access, operation, and reuse.",
           ],
         },
         {
           heading: "01 Intended Users and Settings Should Guide Design",
           blocks: [
-            "**Weiweihan explained** that a student exploring independently and a teacher facilitating a class have different requirements. Individual online use and group participation in person also need different rules and guidance. The setting directly affects controls, rule complexity, the amount of guidance, and activity duration.",
-            "We therefore reviewed our virtual laboratory and game-based activities by asking who would use them, where they would be used, and who would organize them. **Her feedback helped us align** content and interaction design with **the needs of learners and educators in different settings**.",
+            "Xiang Cao explained that a student exploring independently and a teacher facilitating a class have different requirements. Individual online use and group participation in person also need different rules and guidance. The setting directly affects controls, rule complexity, the amount of guidance, and activity duration.",
+            "We therefore reviewed our virtual laboratory and game-based activities by asking who would use them, where they would be used, and who would organize them. Her feedback helped us align content and interaction design with the needs of learners and educators in different settings.",
           ],
         },
         {
           heading: "02 Equipment and Materials Directly Affect Participation",
           blocks: [
-            "**She** drew our attention to resource constraints **that could affect participation and classroom use**. A virtual laboratory with demanding hardware, network, or software installation requirements can be difficult to use. An in-person game requiring specialized materials, extensive preparation, or continuous explanation by team members can also make adoption harder for other schools and teams.",
+            "She drew our attention to resource constraints that could affect participation and classroom use. A virtual laboratory with demanding hardware, network, or software installation requirements can be difficult to use. An in-person game requiring specialized materials, extensive preparation, or continuous explanation by team members can also make adoption harder for other schools and teams.",
             "We therefore reviewed equipment requirements, material availability, preparation, and the ease of reproducing and distributing resources. Considering these conditions helped us identify barriers from users’ perspectives and prioritize reducing them in subsequent improvements.",
           ],
         },
         {
           heading: "03 Complete Instructions Support Independent Use and Reuse",
           blocks: [
-            "**Weiweihan emphasized that first-time participants need coherent guidance on task objectives, game rules, operating steps, and feedback.** Users should understand what to do, why they are doing it, and what feedback to expect. Teachers and organizers also need clear activity plans and instructions to reduce preparation and facilitation demands.",
-            "Based on **her** suggestions, we refined rules, operating steps, and facilitation guidance, and reviewed the required equipment and materials. By making the start, progression, and completion of each activity clearer, we aimed to support independent exploration and help other educators run the activities again.",
+            "Xiang Cao emphasized that first-time participants need coherent guidance on task objectives, game rules, operating steps, and feedback. Users should understand what to do, why they are doing it, and what feedback to expect. Teachers and organizers also need clear activity plans and instructions to reduce preparation and facilitation demands.",
+            "Based on her suggestions, we refined rules, operating steps, and facilitation guidance, and reviewed the required equipment and materials. By making the start, progression, and completion of each activity clearer, we aimed to support independent exploration and help other educators run the activities again.",
           ],
         },
         {
           heading:
             "04 What Changed | Including Practical Usability in Educational Resource Design",
           blocks: [
-            "**Our discussions with Weiweihan** established a third principle for CirCure’s work under SDG 4: Educational tools support participation when people can access and use them.",
+            "Our discussions with Xiang Cao established a third principle for CirCure’s work under SDG 4: Educational tools support participation when people can access and use them.",
             "We made practical usability a design priority, continually considering barriers related to equipment, materials, operation, and facilitation. Subsequent improvements to the virtual laboratory and games therefore focused on access, participation, and reuse under different conditions, supporting more learners in encountering synthetic biology.",
           ],
         },
@@ -336,7 +336,7 @@ const sdg4Resources: ReadonlyArray<EducationResource> = [
     ],
     pdfs: [
       pdf("Chinese", "a-seed-planted-in-the-heart-cn.pdf"),
-      pdf("English", "air-to-bread-en.pdf"),
+      pdf("English", "a-seed-planted-in-the-heart-en.pdf"),
     ],
   },
 ];
@@ -804,7 +804,7 @@ const sdg4Groups: ReadonlyArray<EducationActivityGroup> = [
         resourcesHint:
           "For teachers and other teams to use, with explanatory depth adapted to students’ prior knowledge.",
         resourcePdfs: [
-          pdf("English", "a-seed-planted-in-the-heart-en.pdf"),
+          pdf("English", "air-to-bread-en.pdf"),
           pdf("Chinese", "air-to-bread-cn.pdf"),
         ],
         sdgs: [4, 9, 12],
@@ -878,15 +878,21 @@ const sdg4Groups: ReadonlyArray<EducationActivityGroup> = [
         resourcesHint:
           "For teachers and other teams to use as a reference. Experimental modules require suitable facilities, safety arrangements, and professional supervision.",
         resourcePdfs: [
-          pdf("English", "12-01-synbio-classroom-opening-ceremony.pdf"),
-          pdf("English", "12-02-synbio-classroom-pcr-en.pdf"),
           pdf(
-            "English",
+            "English resource 1",
+            "12-01-synbio-classroom-opening-ceremony.pdf",
+          ),
+          pdf("English resource 2", "12-02-synbio-classroom-pcr-en.pdf"),
+          pdf(
+            "English resource 3",
             "12-03-synbio-classroom-dna-extraction-identification-en.pdf",
           ),
-          pdf("English", "12-04-synbio-classroom-life-science-monopoly-en.pdf"),
           pdf(
-            "English",
+            "English resource 4",
+            "12-04-synbio-classroom-life-science-monopoly-en.pdf",
+          ),
+          pdf(
+            "English resource 5",
             "12-05-synbio-classroom-plasmids-and-biological-parts-en.pdf",
           ),
         ],
@@ -1109,6 +1115,10 @@ const sdg4Groups: ReadonlyArray<EducationActivityGroup> = [
         whatChanged:
           "The activity offered different ways for people with varied interests and knowledge backgrounds to encounter life science. Participants joined simulated procedures, creative tasks, and questions and answers, contributing their own ideas and expressions.",
         whatChangedLabel: "Impact",
+        resourcesNote:
+          "Interactive station instructions · Rhythm challenge rules · Bookmark templates · Scientific explanations and question materials",
+        resourcesHint:
+          "For teachers, student associations, and other teams to use, with facilitation adapted to the activity setting.",
         sdgs: [4],
         article: {
           title: "Opening a Scientific Conversation with a Melody",
@@ -1153,7 +1163,7 @@ const sdg4Groups: ReadonlyArray<EducationActivityGroup> = [
               blocks: [
                 "The activity addressed SDG 4 through informal learning and public engagement, bringing life science education into campus settings beyond the classroom. Music, games, and creative tasks offered different starting points, allowing participants to engage at their own pace and according to their interests.",
                 "We treated interest as the beginning of an exchange, without equating participation in entertainment with scientific understanding. Clear conceptual explanations and explicit limits to analogies helped keep these formats connected to learning.",
-                "Stations can be selected according to the venue, sound conditions, and participants’ needs so that the educational format suits the audience.",
+                "Interactive rules, bookmark templates, and explanatory materials support reuse by other teams. Stations can be selected according to the venue, sound conditions, and participants’ needs so that the educational format suits the audience.",
               ],
             },
           ],
@@ -1461,7 +1471,6 @@ export const sdg4Chapter: SdgChapter = {
     ],
   },
   alignment: {
-    findingsHeading: "Key Findings",
     lead: [
       "Building on potential relationships identified through SST-QN, we examined CirCure’s **educational design, stakeholder engagement, teaching activities, and resource development** to determine whether these relationships have emerged within the project and how far current evidence supports them. We distinguish learning and participation opportunities already created from knowledge, behavioral, and social impacts that require further evaluation.",
     ],
@@ -1555,7 +1564,7 @@ export const sdg4Chapter: SdgChapter = {
         [
           "Air to Bread — Teaching PPT",
           "Begins with the question of how bread could be made without growing wheat. Uses analogies for cells, DNA, and metabolic pathways to introduce carbon fixation, biomanufacturing, and future food, alongside the evidence and conditions needed for application.",
-          "[English](https://static.igem.wiki/teams/6056/wiki/files/docs/sus-sdg4/a-seed-planted-in-the-heart-en.pdf) / [Chinese](https://static.igem.wiki/teams/6056/wiki/files/docs/sus-sdg4/air-to-bread-cn.pdf)",
+          "[English](https://static.igem.wiki/teams/6056/wiki/files/docs/sus-sdg4/air-to-bread-en.pdf) / [Chinese](https://static.igem.wiki/teams/6056/wiki/files/docs/sus-sdg4/air-to-bread-cn.pdf)",
         ],
         [
           "SynBio Classroom — Teaching PPT",
@@ -1583,9 +1592,14 @@ export const sdg4Chapter: SdgChapter = {
           "[English](https://static.igem.wiki/teams/6056/wiki/files/docs/sus-sdg4/14-apricot-blossoms-and-pink-care-en.pdf) / [Chinese](https://static.igem.wiki/teams/6056/wiki/files/docs/sus-sdg4/14-apricot-blossoms-and-pink-care-cn.pdf)",
         ],
         [
+          "Love, Music & Us — Lawn Music Festival Science Handbook",
+          "Explains the science connected with rhythm challenges, bookmark creation, and shared melodies. Supports further learning after music and creative activities and provides material that other teams can adapt.",
+          "English / Chinese",
+        ],
+        [
           "Seeds in Our Hearts — Science Picture Book",
           "Combines a dream journey shared by a girl and a lamb with illustrations and scientific explanations to introduce puberty and body acceptance and support parent–child discussion.",
-          "[English](https://static.igem.wiki/teams/6056/wiki/files/docs/sus-sdg4/air-to-bread-en.pdf) / [Chinese](https://static.igem.wiki/teams/6056/wiki/files/docs/sus-sdg4/a-seed-planted-in-the-heart-cn.pdf)",
+          "[English](https://static.igem.wiki/teams/6056/wiki/files/docs/sus-sdg4/a-seed-planted-in-the-heart-en.pdf) / [Chinese](https://static.igem.wiki/teams/6056/wiki/files/docs/sus-sdg4/a-seed-planted-in-the-heart-cn.pdf)",
         ],
         [
           "Virtual Laboratory",
@@ -1626,6 +1640,11 @@ export const sdg4Chapter: SdgChapter = {
       {
         title: "Educational activity reach",
         text: "We organised **14 major educational activities involving 11 schools**, with a total attendance of **4047**. These activities reached children, middle and high school students, university students, learners in rural and resource-limited communities, and the wider public.We collected **480 valid questionnaire responses**, assessing immediate learning experiences across four dimensions. These results provided a structured understanding of participants’ learning experiences and informed improvements to content depth, activity pacing, and practical instructions.",
+        document: {
+          label: "Education Feedback Questionnaire — English",
+          fileName: "education-feedback-questionnaire-english.pdf",
+          url: "https://static.igem.wiki/teams/6056/wiki/files/docs/sus-sdg4/education-feedback-questionnaire-english.pdf",
+        },
         figure: "sdg4Evidence1",
       },
       {

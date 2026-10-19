@@ -14,6 +14,7 @@ import {
   WikiProtocolHoverCard,
 } from "./WikiProtocolViewer";
 import type { ExperimentProtocolPair } from "../../data/wet-lab/experimentProtocolPages";
+import { stripWikiHeadingIndex } from "./wikiPageNumbering";
 
 export interface WikiLineSidebarItem {
   id: string;
@@ -24,6 +25,7 @@ export interface WikiLineSidebarItem {
     id: string;
     index: string;
     label: string;
+    depth?: number;
   }>;
 }
 
@@ -34,11 +36,11 @@ type WikiLineSidebarChild = NonNullable<WikiLineSidebarItem["children"]>[number]
  * read, so long records stay short. Education opts into the full outline.
  */
 function outlineRows(children: WikiLineSidebarChild[], activeChildId: string, showAllChildren = false) {
-  const depthOf = (index: string) => index.split(".").length;
-  const baseDepth = Math.min(...children.map((child) => depthOf(child.index)));
+  const depthOf = (child: WikiLineSidebarChild) => child.depth ?? Math.max(2, child.index.split(".").length);
+  const baseDepth = Math.min(...children.map(depthOf));
   let groupId = "";
   const rows = children.map((child) => {
-    const tertiary = depthOf(child.index) > baseDepth;
+    const tertiary = depthOf(child) > baseDepth;
     if (!tertiary) groupId = child.id;
     return { child, tertiary, groupId };
   });
@@ -113,8 +115,7 @@ export function WikiLineSidebar({
     if (!children?.length) return "";
     const exact = children.find((child) => child.id === activeChildId);
     if (exact) return exact.id;
-    const prefix = `${activeChildId.split("-")[0]}-`;
-    return children.find((child) => child.id.startsWith(prefix))?.id ?? "";
+    return children.find((child) => activeChildId.startsWith(child.id))?.id ?? "";
   }, [activeChildId, expandedItemId, items]);
   const drawerMode = Boolean(onRequestClose);
 
@@ -243,7 +244,12 @@ export function WikiLineSidebar({
       );
       const nearest = travel < 0.5 ? current : next;
 
-      outline.style.setProperty("--wiki-outline-progress", progress.toFixed(4));
+      // The ribbon alone consumes progress; keep its changing value out of
+      // the navigation labels' inherited styles.
+      const progressValue = progress.toFixed(4);
+      if (ribbon.style.getPropertyValue("--wiki-outline-progress") !== progressValue) {
+        ribbon.style.setProperty("--wiki-outline-progress", progressValue);
+      }
       setRibbonTargetId((previous) =>
         previous === nearest.id ? previous : nearest.id,
       );
@@ -338,7 +344,7 @@ export function WikiLineSidebar({
         (clientY - ribbonBounds.top) / Math.max(1, ribbonBounds.height),
       ),
     );
-    outline.style.setProperty("--wiki-outline-progress", progress.toFixed(4));
+    ribbon.style.setProperty("--wiki-outline-progress", progress.toFixed(4));
     document.documentElement.classList.add("is-thread-directing");
 
     // Scrub through the document timeline; the pinned frame's scrollTop is
@@ -494,25 +500,11 @@ export function WikiLineSidebar({
                   {outlineRows(item.children, activeTopChildId || activeChildId, showAllChildren).map(({ child, tertiary, isTrail }) => {
                     const childPair = protocolMap.get(child.id);
                     const isActive = (activeTopChildId || ribbonTargetId) === child.id;
-                    // Manuscript numbering can omit introductory sections.
-                    // The outline must use its displayed parent chapter instead.
-                    const childIndex = /^\d+$/.test(item.index)
-                      ? child.index.replace(/^\d+(?=\.)/, String(Number(item.index)))
-                      : child.index;
-                    const childLabel = child.index
-                      ? child.label
-                          .replace(
-                            new RegExp(
-                              `^${child.index.replace(/\./g, "\\.")}[.\\s]+`,
-                            ),
-                            "",
-                          )
-                          .replace(/^\.\s*/, "")
-                          .trim()
-                      : child.label.replace(/^\.\s*/, "").trim();
+                    const childIndex = child.index;
+                    const childLabel = stripWikiHeadingIndex(child.label, child.index).trim();
                     return (
                       <a
-                        className={`wiki-outline__secondary wiki-outline__secondary--depth-${Math.min(child.index.split(".").length, 4)}${
+                        className={`wiki-outline__secondary wiki-outline__secondary--depth-${Math.min(child.depth ?? child.index.split(".").length, 4)}${
                           tertiary ? " is-tertiary" : ""
                         }${isActive ? " is-active" : ""}${
                           isTrail && !isActive ? " is-trail" : ""

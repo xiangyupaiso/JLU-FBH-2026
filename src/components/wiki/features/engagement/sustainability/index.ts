@@ -18,3 +18,5 @@ export {
   SustainabilityPdfPreview,
   type SustainabilityPdfManual,
 } from "./SustainabilityPdfPreview";
+export { SustainabilityInteractiveCity } from "./SustainabilityInteractiveCity";
+export { SdgExplorer } from "./SdgExplorer";

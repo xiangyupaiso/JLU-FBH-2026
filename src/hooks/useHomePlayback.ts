@@ -36,24 +36,34 @@ type Beat = Anchor & { travel: number; hold?: number; antigen?: number };
 // Seconds are editorial pacing. Positions always come from live ScrollTriggers,
 // so the same sequence follows the existing desktop and mobile choreography.
 const BEATS: readonly Beat[] = [
-  { chapter: 0, progress: 0.24, travel: 4, hold: 2 },
+  { chapter: 0, progress: 0.24, travel: 4 },
   { chapter: 0, progress: 0.66, label: "portrait-closeup", travel: 3 },
   { chapter: 0, progress: 0.98, travel: 2, hold: 3 },
   { chapter: 1, progress: 0, travel: 2 },
-  { chapter: 1, progress: 0.42, travel: 4, hold: 2 },
-  { chapter: 1, progress: 0.9, travel: 4, hold: 3 },
-  { chapter: 2, progress: 0.29, label: "wish-readable", travel: 4, hold: 2 },
+  { chapter: 1, progress: 0.42, travel: 4 },
+  // Hold the patient's question before moisture starts gathering. A chapter
+  // percentage can already overlap the bridge and freeze the drop mid-growth.
+  { chapter: 2, kind: "bridge", progress: 0, travel: 4, hold: 3 },
+  // Resolve the tear's own bridge rather than racing through it on the way
+  // to the first reading cue. Growth gets a visible beat at every viewport.
+  { chapter: 2, kind: "bridge", progress: 0.52, travel: 3 },
+  { chapter: 2, kind: "bridge", progress: 0.94, travel: 5, hold: 0.8 },
+  { chapter: 2, progress: 0.29, label: "wish-readable", travel: 2.5, hold: 2 },
   { chapter: 2, progress: 0.5, label: "question-readable", travel: 3, hold: 3 },
   { chapter: 2, progress: 0.84, travel: 5, hold: 2 },
   { chapter: 3, progress: 0, travel: 5 },
-  { chapter: 3, kind: "bridge", progress: 0, travel: 7, hold: 3 },
+  { chapter: 3, progress: 0, label: "map-gather-start", travel: 7, hold: 2 },
+  { chapter: 3, progress: 0, label: "map-gathered", travel: 4, hold: 2 },
+  { chapter: 3, kind: "bridge", progress: 0, travel: 1 },
   { chapter: 3, kind: "bridge", progress: 1, travel: 3, hold: 1 },
   { chapter: 3, kind: "reading", progress: 0.2, label: "cell-visible", travel: 2, hold: 1 },
   { chapter: 3, kind: "reading", progress: 0.5, label: "markers-visible", travel: 4, hold: 1 },
   { chapter: 3, kind: "reading", progress: 0.94, label: "reading-complete", travel: 5, hold: 4 },
   { chapter: 4, progress: 0.08, travel: 2 },
-  { chapter: 4, progress: 0.27, travel: 5, hold: 3 },
-  { chapter: 5, progress: 0.72, travel: 7, hold: 3 },
+  { chapter: 4, progress: 0.27, label: "treatment-illustration-readable", travel: 3, hold: 3 },
+  { chapter: 4, progress: 0.4, label: "treatment-summary-readable", travel: 3, hold: 3 },
+  { chapter: 5, progress: 0.72, label: "vaccine-question-readable", travel: 5, hold: 3 },
+  { chapter: 5, progress: 0.88, label: "vaccine-answer-readable", travel: 4, hold: 4 },
   { chapter: 5, kind: "bridge", progress: 0, travel: 4, hold: 2 },
   { chapter: 6, progress: 0.38, label: "choices-visible", travel: 4, hold: 3 },
   { chapter: 6, progress: 0.88, label: "circ-selected", travel: 4, hold: 3 },
@@ -87,7 +97,8 @@ const BEATS: readonly Beat[] = [
   { chapter: 9, progress: 0.96, travel: 4, hold: 2 },
   { chapter: 10, progress: 0.88, travel: 5, hold: 3 },
   { chapter: 11, progress: 0.82, label: "hope-readable", travel: 5, hold: 4 },
-  { chapter: 12, progress: 0, travel: 4 },
+  { chapter: 12, progress: 0, label: "question-readable", travel: 4, hold: 2 },
+  { chapter: 12, progress: 0.15, label: "answer-readable", travel: 2, hold: 1.5 },
   { chapter: 12, progress: 0.4, label: "circle-to-care", travel: 5, hold: 3 },
   { chapter: 12, progress: 0.98, travel: 7, hold: 3 },
 ];
@@ -192,9 +203,13 @@ export function useHomePlayback(root: RefObject<HTMLDivElement | null>) {
     };
     const findTrigger = (anchor: Anchor) => {
       if (anchor.kind === "bridge") {
-        return ScrollTrigger.getById(anchor.chapter === 5
-          ? "home-thinking-gallery-carry"
-          : "home-tnbc-copy-bridge");
+        return ScrollTrigger.getById(
+          anchor.chapter === 2
+            ? "home-ward-tear-carry"
+            : anchor.chapter === 5
+              ? "home-thinking-gallery-carry"
+              : "home-tnbc-copy-bridge",
+        );
       }
       if (anchor.kind === "reading") {
         return ScrollTrigger.getById(
@@ -311,6 +326,7 @@ export function useHomePlayback(root: RefObject<HTMLDivElement | null>) {
     const entry = (index: number): Anchor => ({
       chapter: index,
       progress: index === 4 ? 0.08 : index === 5 ? 0.55 : index === 8 ? 0.47 : 0,
+      label: index === 5 ? "vaccine-question-readable" : undefined,
     });
     const seekAnchor = (index: number): Anchor => ({
       ...entry(index),
@@ -321,22 +337,26 @@ export function useHomePlayback(root: RefObject<HTMLDivElement | null>) {
       label:
         index === 2
           ? "question-readable"
-          : index === 6
-            ? "choices-visible"
-            : index === 7
-              ? "why-readable"
-              : index === 8
-                ? "advantages-readable"
-                : undefined,
+          : index === 4
+            ? "treatment-illustration-readable"
+            : index === 5
+              ? "vaccine-answer-readable"
+              : index === 6
+                ? "choices-visible"
+                : index === 7
+                  ? "why-readable"
+                  : index === 8
+                    ? "advantages-readable"
+                    : index === 12
+                      ? "question-readable"
+                      : undefined,
     });
     const paint = () => {
       let chapterIndex = 0;
       let progress = 0;
       // The opening owns the screen until its portal and GSAP context are
       // removed. Measuring the scroll story here competes with that animation.
-      // A manual jump can paint before React removes the skipped intro portal.
-      // Its destination still needs to appear immediately in the scene list.
-      if (introComplete() || (mode === "manual" && window.scrollY > 0)) {
+      if (introComplete()) {
         const y = window.scrollY;
         // Entries follow the story's document order. Stop at the next chapter
         // so the opening does not measure distant, complex scene interiors.
@@ -386,7 +406,7 @@ export function useHomePlayback(root: RefObject<HTMLDivElement | null>) {
         cancelAnimationFrame(frame);
         frame = 0;
         // Finish only the small scrub lag, retaining the scroll's current frame.
-        settleScrubs();
+        if (introComplete()) settleScrubs();
       }
       if (next === "manual") {
         beatIndex = -1;
@@ -504,6 +524,13 @@ export function useHomePlayback(root: RefObject<HTMLDivElement | null>) {
       }
       if (index < 0) return false;
       beginBeat(index);
+      // Resuming inside the tear bridge should keep its original scroll speed.
+      // Replaying the full beat's time for a short remaining distance stalls it.
+      if (index > 0 && BEATS[index].chapter === 2 && BEATS[index].kind === "bridge") {
+        const start = position(BEATS[index - 1]);
+        const end = position(BEATS[index]);
+        if (end > start) travel *= clamp((end - origin) / (end - start));
+      }
       return true;
     };
     const tick = (time: number) => {
@@ -605,7 +632,7 @@ export function useHomePlayback(root: RefObject<HTMLDivElement | null>) {
         requestTick();
       },
       seekChapter(index) {
-        if (index < 0 || index >= CHAPTERS.length) return;
+        if (!introComplete() || index < 0 || index >= CHAPTERS.length) return;
         changeMode("manual");
         section(9)?.style.removeProperty("--home-playback-phase-offset");
         beatIndex = -1;
@@ -638,10 +665,11 @@ export function useHomePlayback(root: RefObject<HTMLDivElement | null>) {
     const inPlayer = (target: EventTarget | null) =>
       target instanceof Element && !!target.closest("[data-home-player]");
     const manual = (event: Event) => {
-      if (inPlayer(event.target)) return;
+      if (!introComplete() || inPlayer(event.target)) return;
       if (mode !== "manual") changeMode("manual");
     };
     const scrollInput = (event: Event) => {
+      if (!introComplete()) return;
       // Scrolling the open list stays local; scrolling over the transport
       // itself still hands the document back to the reader.
       if (
@@ -688,14 +716,15 @@ export function useHomePlayback(root: RefObject<HTMLDivElement | null>) {
         manual(event);
     };
     const visibility = () => {
-      if (document.hidden && mode === "playing") changeMode("paused");
+      if (introComplete() && document.hidden && mode === "playing")
+        changeMode("paused");
     };
     const resize = () => {
       if (
         window.innerWidth !== measuredWidth ||
         Math.abs(window.innerHeight - measuredHeight) >= 80
       ) {
-        if (mode === "playing") changeMode("paused");
+        if (introComplete() && mode === "playing") changeMode("paused");
         beatIndex = -1;
         measuredWidth = window.innerWidth;
         measuredHeight = window.innerHeight;
@@ -713,7 +742,7 @@ export function useHomePlayback(root: RefObject<HTMLDivElement | null>) {
       paint();
     };
     const onReplay = () => {
-      if (ownReplay) return;
+      if (ownReplay || !introComplete()) return;
       ended = false;
       beatIndex = -1;
       changeMode("manual");
