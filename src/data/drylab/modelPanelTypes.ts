@@ -1,6 +1,15 @@
 import type { WikiContentBlock } from "../../components/wiki/wikiPageTypes";
 
 export type ModelPanel =
+  | {
+      kind: "sdg-chart";
+      chart: "boundary" | "interactions" | "dimensions" | "contributions";
+      caption: string;
+    }
+  | {
+      kind: "numbered-reasons";
+      items: { title: string; paragraphs: string[] }[];
+    }
   | { kind: "fold"; title: string; blocks: WikiContentBlock[] }
   | {
       kind: "tabs";

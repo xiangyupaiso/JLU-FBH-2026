@@ -1,7 +1,7 @@
 import { type CSSProperties } from "react";
-import clinic from "../../assets/home/hope-return/clinic.webp";
-import doctor from "../../assets/home/hope-return/doctor.webp";
-import patient from "../../assets/home/hope-return/patient.webp";
+const clinic = "https://static.igem.wiki/teams/6056/wiki/files/pages/home/hope-return-clinic.webp";
+const doctor = "https://static.igem.wiki/teams/6056/wiki/files/pages/home/hope-return-doctor.webp";
+const patient = "https://static.igem.wiki/teams/6056/wiki/files/pages/home/hope-return-patient.webp";
 import "../../styles/home-hope.css";
 
 export function HomeHopeArtwork() {

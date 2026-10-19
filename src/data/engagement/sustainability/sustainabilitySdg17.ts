@@ -1,6 +1,6 @@
 /** SDG 17 — finalized manuscript, in source order. Pure data, no JSX. */
 import type { SdgChapter } from "./sdgChapterContract";
-import { sdg17PhotoSets } from "./sustainabilitySdg17Assets";
+import { sdg17PhotoSets, sdg17RoundtablePdfs } from "./sustainabilitySdg17Assets";
 
 export const sdg17Chapter: SdgChapter = {
   id: "sdg17",
@@ -38,7 +38,7 @@ export const sdg17Chapter: SdgChapter = {
             sdgs: [17, 4],
             sdgsLabel: "SDGs",
             partnerLabel: "Partners / Reach",
-            partner: "Regional iGEM Teams · [11 Teams]",
+            partner: "Regional iGEM Teams · 11 Teams",
             challengeLabel: "What Connected Us",
             challenge:
               "Teams in the region needed a face-to-face platform to present their projects, exchange experience, and identify opportunities for collaboration.",
@@ -158,7 +158,7 @@ export const sdg17Chapter: SdgChapter = {
             sdgs: [17, 4],
             sdgsLabel: "SDGs",
             partnerLabel: "Partners / Reach",
-            partner: "[17 Teams] · [11 Villages]",
+            partner: "17 Teams · 11 Villages",
             challenge:
               "Different iGEM Villages encounter different scientific misconceptions, and each team has expertise closely connected to its own research area.",
             challengeLabel: "",
@@ -195,7 +195,7 @@ export const sdg17Chapter: SdgChapter = {
                 {
                   heading: "03 Shared Outcome",
                   blocks: [
-                    "17 teams working across 11 iGEM Villages completed 43 explanations addressing scientific misconceptions.",
+                    "17 teams working across 11 iGEM Villages completed 47 explanations addressing scientific misconceptions.",
                     "These contributions were compiled into a resource covering several synthetic biology application areas for continued use in public communication and education.",
                   ],
                 },
@@ -217,7 +217,7 @@ export const sdg17Chapter: SdgChapter = {
             sdgs: [17, 3, 4],
             sdgsLabel: "SDGs",
             partnerLabel: "Partners / Reach",
-            partner: "[5 iGEM Teams]",
+            partner: "5 iGEM Teams",
             challengeLabel: "What Connected Us",
             challenge:
               "We wanted inter-team collaboration to extend into health activities in which the public could participate directly.",
@@ -277,7 +277,7 @@ export const sdg17Chapter: SdgChapter = {
             sdgs: [17, 4],
             sdgsLabel: "SDGs",
             partnerLabel: "Partners / Reach",
-            partner: "[5 iGEM Teams]",
+            partner: "5 iGEM Teams",
             challengeLabel: "What Connected Us",
             challenge:
               "New teams often need to work out project design, experimental progress, Human Practices, Wiki development, and team management from the beginning, even though relevant experience already exists across the community.",
@@ -553,8 +553,7 @@ export const sdg17Chapter: SdgChapter = {
         bestFor:
           "**Regional team exchanges, finding collaborators, safety education**, and facilitated discussions about **engineered-organism release and research responsibility**.",
         whatItDoes: "",
-        // Awaiting the team's roundtable PDFs; supplied files use the shared document viewer.
-        pdfs: [],
+        pdfs: sdg17RoundtablePdfs,
       },
       {
         title:

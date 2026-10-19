@@ -36,6 +36,13 @@ export interface WikiFact {
   value: string;
 }
 
+export interface WikiJudgingCriterion {
+  id: string;
+  question: string;
+  paragraphs: readonly string[];
+  anchorIds?: readonly string[];
+}
+
 export interface WikiItem {
   label: string;
   navLabel?: string;
@@ -74,7 +81,7 @@ export interface WikiReferenceEntry {
 export type WikiContentBlock =
   | { type: "prose"; paragraphs: string[]; id?: string }
   | { type: "quote"; text: string }
-  | { type: "heading"; level: 4 | 5 | 6; title: string }
+  | { type: "heading"; level: 3 | 4 | 5 | 6; title: string }
   | { type: "protocol-steps"; steps: Array<{ number: string; blocks: WikiContentBlock[] }> }
   | { type: "list"; items: string[]; ordered?: boolean; start?: number }
   | { type: "code"; language?: string; code: string; label?: string }
@@ -204,11 +211,9 @@ export interface WikiSection {
    */
   showKicker?: boolean;
   /**
-   * Drops the section number from the heading. Used for blocks that are not
-   * numbered chapters — e.g. the Games station map, which is a route diagram,
-   * so the numbered record starts with the first playable project below it.
-   * Honoured by the reader-route template (`WikiRoutePage`); the Wet Lab
-   * manuscript template ignores it, and no Wet Lab section sets it.
+   * Excludes the section from the reader's chapter numbering, in both the
+   * heading and the outline. Overview and preceding sections are automatically
+   * excluded by `numberWikiSections`; this flag covers other unnumbered content.
    */
   hideSectionNumber?: boolean;
   /**

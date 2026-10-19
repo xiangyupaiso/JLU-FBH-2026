@@ -33,7 +33,14 @@ def paragraphs(body: str) -> list[str]:
     result = []
     for chunk in chunks:
         lines = [unescape(line) for line in chunk.splitlines() if line.strip()]
+        lines = [line for line in lines if not line.startswith("![") and not (line.startswith("https://") and line.lower().endswith((".avif", ".webp")))]
         if not lines:
+            continue
+        if len(lines) == 1 and lines[0].startswith("https://"):
+            if lines[0].lower().endswith(".pdf"):
+                result.append(f"[View document]({lines[0]})")
+            elif lines[0].startswith("https://video.igem.org/"):
+                result.append(f"[Watch video]({lines[0]})")
             continue
         heading = re.fullmatch(r"#{3,4} \*?(Context|Issue|Reframing|Cycle)\*?", lines[0]) if len(lines) == 1 else None
         if heading:

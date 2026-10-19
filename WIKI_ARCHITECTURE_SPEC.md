@@ -562,10 +562,23 @@ export function pageFeatures(): Record<string, ReactNode> {
     3. **实体药理/属性分类**（如靶点的 `Epithelial glycoprotein`）：作为主标题旁的微型优雅药理 pill 标签展示，不搞黑框与大写。
     4. **描述性段落/临床依据**（如 `High expression in >85% of TNBC tumors...`）：直接作为卡片正文或带左侧微装饰细线的自然说明呈现，严禁用 `CLINICAL RATIONALE` 字段名机械顶格。
 - **清除 AI 模板装饰符号**：
-  - 彻底去除小节标题左侧的彩色竖线（`.wiki-subheading::before`）。
+  - 彻底去除小节标题左侧的彩色竖线（`.wiki-subheading::before`）；H3、H4 及更深标题全部保持正文平齐，不添加边框或专属内缩。
   - 彻底去除卡片多余的货号式编号（如 `TARGET 01`、`CARD 02`），还原真实科研展示的高级感与人文阅读体验。
 
 ### 铁律 5：大标题与小标题双色层级设计规范（Dual-Tone Heading Hierarchy）
+
+- **正文标题统一层级**：H2 为 `clamp(21px, 2.2vw, 25px)` / 750 / 1.35，H3 为 `clamp(17px, 1.8vw, 20px)` / 700 / 1.35，H4 为 `clamp(15.5px, 1.6vw, 17px)` / 650 / 1.40；H5、H6 再依次收敛至 16px、15px，禁止子标题比父标题大。所有尺寸由 `wiki-route-skin.css` 中 `--wiki-h2-size` 至 `--wiki-h6-size` 管理，折叠小节标题遵循同一规则。H3 与 H4 纯净平齐，无装饰竖线或专属缩进。
+- **层级与配色**：`wikiSubheadingDepth` 同时驱动正文 H3–H6 标签和目录缩进，显式 `level: 4` 的无编号 Step / Choice 仍为三级小标题，不能当作二级父级。H3 使用 `--route-subheading-ink`，H4 及更深使用 `--route-tertiary-ink`；模块保留各自配色。H3 顶部/底部间距为 28px/14px，H4 为 22px/10px。
+
+| 模块 | H2 | 马克笔涂刷 | H3 | H4 及更深 |
+| :--- | :--- | :--- | :--- | :--- |
+| Project | `#243d2c` | `#c4c7be` | `#84382b` | `#345443` |
+| Wet Lab | `#14354c` | `#c6e5f2` | `#88541e` | `#275a52` |
+| Dry Lab | `#153e34` | `#c2ebe0` | `#633256` | `#275661` |
+| Engagement | `#4a2c1d` | `#fde5a5` | `#174a47` | `#78442c` |
+| Team | `#3e2d14` | `#f8ecbe` | `#762338` | `#5c4323` |
+
+模块归属以路由装配的 `theme`、`pageClassName` 及导航分组为准，不能因为页面名称而换用其他模块的配色。普通页面专属 CSS 不得覆写正文标题的字号、字重或颜色。**Sustainability 为明确保留的例外**：维持现有 SDG / SCALE 标题配色和页面专属标题样式，不纳入本次标题样式统一；正文与目录仍共用统一编号。**Engineering 保留独立配色**：正文和 DBTL 阶段的现有颜色不改为 Project 通用色，字号层级复用全局变量。
 
 - **杜绝单色沉闷、同时杜绝同色系近色混淆**：
   - 严禁小标题（`h3`）与大标题（`h2`）复用同一种颜色或同一种色系深浅变体（如绿配绿、蓝配蓝，极易导致视觉疲劳且层级区分度不足）。
@@ -608,6 +621,7 @@ $$
    - 全局垂直节奏阶梯（铁律 6 规定的 16px / 24px / 28px / 44px 及容器重置）。
    - 标题马克笔折行与双色系统契约。
    - 侧边栏目录（`WikiLineSidebar`，`wiki-route-skin.css` §6 marker outline）：全站唯一一套样式，无卡片外壳，当前项用正文同款马克笔底纹标记，颜色取 `--route-heading-ink / --route-subheading-ink / --route-marker-bg`。层级契约：一级 = Fraunces 旧式数字 + 15px；二级 = 13.5px 缩进、不显示编号；三级（如 `1.1.1`）= 12.5px 再缩进并带细竖线，仅在正在阅读的二级标题下展开。标题一律换行显示，禁止省略号截断。页面不得再为目录写专属覆盖样式。
+   - 章节编号由 `wikiPageNumbering.ts` 的 `numberWikiSections` 统一生成，`WikiRoutePage` 将同一份结果用于正文标题、折叠小节与桌面/移动目录。Overview 及其之前的评审、亮点等引导章节不参与编号，之后正文从 1 连续计数；`hideSectionNumber` 指定的其他无编号章节也不占号。子标题按实际父子层级连续编号为 `1.1`、`1.1.1` 等，正文标题中已有的编号同步替换，禁止侧边栏单独重算。原有锚点、文献序号、图表序号、日期与步骤名称保留；无 Overview 的页面从首个未显式排除的章节开始编号。
    - 凡是约束**“全站正文基本面貌一致性”**的基础规则，必须统一收敛在全局。
 2. **严禁写在总体的特例（页面独有资产，收敛在 `[page]-panels.css`）**：
    - 某个页面特有的自定义可视化（如 Description 的 8 步机制链 CSS、四抗原卡片网格；Sustainability 的 3D 旋转立体卡片；Experiments 的专属 Protocol 步骤抽屉）。

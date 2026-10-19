@@ -1,6 +1,8 @@
 import { useEffect, useRef, type CSSProperties } from "react";
 import { FOOTER_SPONSORS, FOOTER_SUPPORTERS } from "../data/footer";
 
+const SPONSOR_SCROLL_SPEED = 54;
+
 /** Colour supporters lead; a single grey ribbon loops beneath them. */
 export function FooterSponsors() {
   const trackRef = useRef<HTMLDivElement>(null);
@@ -10,14 +12,17 @@ export function FooterSponsors() {
     const group = track?.querySelector("ul");
     if (!track || !group) return;
 
-    // Keep an even 18px/s drift as responsive logo widths and gaps change.
+    // Keep a steady speed as responsive logo widths and gaps change.
     const updateLoop = (entries?: ResizeObserverEntry[]) => {
       // Measure the layout box, preserving subpixels and ignoring story transforms.
       const width =
         entries?.[0]?.borderBoxSize[0]?.inlineSize ?? group.offsetWidth;
       if (width <= 0) return;
       track.style.setProperty("--sponsor-loop-offset", `${-width}px`);
-      track.style.setProperty("--sponsor-loop-duration", `${width / 18}s`);
+      track.style.setProperty(
+        "--sponsor-loop-duration",
+        `${width / SPONSOR_SCROLL_SPEED}s`,
+      );
     };
 
     updateLoop();

@@ -2223,7 +2223,7 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "**[Explore the Air-to-Bread sustainability analysis in the Sustainability section →]**"
+          "[Explore the Air-to-Bread sustainability analysis in the Sustainability section →](/sustainability)"
         ]
       },
       {

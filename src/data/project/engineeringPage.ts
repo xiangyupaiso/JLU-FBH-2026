@@ -119,14 +119,14 @@ const overviewSection: WikiSection = {
     {
       type: "prose",
       paragraphs: [
-        "In TIME, **Dry Lab and Wet Lab act as the primary driving gears**. Dry Lab turns biological questions into traceable antigen and epitope decisions, structural hypotheses and quantitative predictions; Wet Lab converts these designs into physical constructs and molecular or cellular evidence. Their alternating motion drives the central mechanism and gives rise to [CircuForge](https://2026.igem.wiki/jlu-fbh/software), [TorusFold](https://2026.igem.wiki/jlu-fbh/software), mathematical modelling. **iHP, Education, Visual Design and Entrepreneurship operate as driven gears**, translating scientific progress into clinical and ethical refinements, transferable learning, coherent communication and development requirements. Their feedback then enters the next DBTL iteration, guiding and extending the main drive.",
+        "In TIME, **Dry Lab and Wet Lab act as the primary driving gears**. Dry Lab turns biological questions into traceable antigen and epitope decisions, structural hypotheses and quantitative predictions; Wet Lab converts these designs into physical constructs and molecular or cellular evidence. Their alternating motion drives the central mechanism and gives rise to [CircuForge](https://2026.igem.wiki/jlu-fbh/software#software-usage-guide-circuforge), [TorusFold](https://2026.igem.wiki/jlu-fbh/software#software-usage-guide-torusfold), and mathematical modelling. **iHP, Education, Visual Design and Entrepreneurship operate as driven gears**, translating scientific progress into clinical and ethical refinements, transferable learning, coherent communication and development requirements. Their feedback then enters the next DBTL iteration, guiding and extending the main drive.",
       ],
     },
     {
       type: "figure",
-      src: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-overviewcycle.avif",
+      src: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-overviewcycle-2.avif",
       width: 3000,
-      height: 2100,
+      height: 1169,
       alt: "CirCure TIME Four Connected Cycles Overview",
       caption:
         "Four connected cycles record how CirCure progressed through TIME: Targeting (Cycle 1), Integration (Cycle 2), Measurement (Cycle 3), and Evaluation (Cycle 4).",
@@ -135,7 +135,7 @@ const overviewSection: WikiSection = {
       type: "callout",
       tone: "navy",
       label: "How to read this page",
-      body: "The dial's outer ring selects a TIME cycle, and its inner ring tracks the Design–Build–Test–Learn stage you are reading. The heading identifies the current iteration. Scroll to follow the engineering story, or open a TIME letter below and click a small gear to jump directly to an iteration.",
+      body: "The dial's outer ring selects a TIME cycle, and its inner ring tracks the Design–Build–Test–Learn stage you are reading. The heading identifies the current iteration. Use the side arrows (‹ and ›) alongside the iteration title to move between iterations, or alongside Design, Build, Test, or Learn to switch between stages. You can also scroll to follow the engineering story, or open a TIME letter below and click a small gear to jump directly to an iteration. The Introduction and Outcome gears at the beginning and end of each cycle's menu jump to its opening context and closing summary.",
     },
   ],
 };

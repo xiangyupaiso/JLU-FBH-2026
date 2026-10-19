@@ -19,6 +19,12 @@ export function OverviewSetDevelopGrowCards({
 }) {
   const handleJump = (event: MouseEvent<HTMLElement>, target: string) => {
     event.preventDefault();
+    const goal = /^grow-sdg(1|5|8|10|13)$/.exec(target);
+    if (goal)
+      event.currentTarget
+        .closest(".wiki-page")
+        ?.querySelector("circure-sdg-explorer")
+        ?.setAttribute("default-goal", goal[1]);
     scrollReaderToId(target, event.currentTarget, "instant");
   };
 

@@ -1,6 +1,8 @@
 import { useId, useState, type CSSProperties, type MouseEvent } from "react";
-import cityWebp from "../../../../../assets/wiki/sustainability/sustainability-interactive-city.webp";
 import { scrollReaderToId } from "../../../../../utils/scrollReaderToTarget";
+
+const cityWebp =
+  "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/sustainability/sustainability-interactive-city.webp";
 
 export interface CityHotspot {
   id: string;
@@ -205,6 +207,12 @@ export function SustainabilityInteractiveCity() {
 
   const handleClick = (e: MouseEvent<HTMLButtonElement>, targetId: string) => {
     e.preventDefault();
+    const goal = /^grow-sdg(1|5|8|10|13)$/.exec(targetId);
+    if (goal)
+      e.currentTarget
+        .closest(".wiki-page")
+        ?.querySelector("circure-sdg-explorer")
+        ?.setAttribute("default-goal", goal[1]);
     scrollReaderToId(targetId, e.currentTarget, "instant");
   };
 

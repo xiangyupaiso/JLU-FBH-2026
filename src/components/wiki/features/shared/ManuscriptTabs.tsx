@@ -7,9 +7,11 @@ import "../../../../styles/features/manuscript-tabs.css";
 export function ManuscriptTabs({
   title,
   entries,
+  orientation = "vertical",
 }: {
   title: string;
   entries: { title: string; content: ReactNode }[];
+  orientation?: "vertical" | "horizontal";
 }) {
   const [value, setValue] = useState("0");
   const root = useRef<HTMLDivElement>(null);
@@ -18,11 +20,11 @@ export function ManuscriptTabs({
     // Citation backlinks must reveal the destination before the shared jump
     // handler measures it. Keep inactive prose mounted for stable anchor IDs.
     const reveal = (event: MouseEvent) => {
-      const link = (event.target as Element).closest<HTMLAnchorElement>(
+      const link = (event.target as Element).closest(
         'a[href^="#"]',
       );
       if (!link) return;
-      const target = document.getElementById(link.hash.slice(1));
+      const target = document.getElementById(link.getAttribute("href")!.slice(1));
       const panel = target?.closest<HTMLElement>("[data-manuscript-tab]");
       if (!panel || !root.current?.contains(panel)) return;
       flushSync(() => setValue(panel.dataset.manuscriptTab!));
@@ -37,8 +39,12 @@ export function ManuscriptTabs({
       <Tabs.Root
         value={value}
         onValueChange={setValue}
-        orientation="vertical"
-        className="manuscript-tabs__layout"
+        orientation={orientation}
+        className={`manuscript-tabs__layout${
+          orientation === "horizontal"
+            ? " manuscript-tabs__layout--horizontal"
+            : ""
+        }`}
       >
         <Tabs.List className="manuscript-tabs__list" aria-label={title}>
           {entries.map((entry, i) => (

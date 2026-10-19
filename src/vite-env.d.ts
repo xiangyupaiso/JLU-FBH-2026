@@ -15,11 +15,6 @@ declare module "*.pdb?raw" {
   export default content;
 }
 
-// Mol* is loaded at runtime from public/vendor/molstar/molstar.js (window.molstar).
-// The npm package of the same version supplies the types only; nothing is bundled.
-interface Window {
-  molstar?: {
-    Viewer: typeof import("molstar/lib/apps/viewer/app").Viewer;
-    lib: typeof import("molstar/lib/apps/viewer/lib").lib;
-  };
+declare module "virtual:molecular-runtime" {
+  export const Viewer: typeof import("./components/wiki/features/shared/molstarRuntime").Viewer;
 }

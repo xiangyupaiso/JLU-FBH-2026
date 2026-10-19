@@ -15,6 +15,7 @@ import {
   SdgInteractionHeatmap,
   SSTQNClassificationMatrix,
   SSTQNScoreProcess,
+  SdgExplorer,
   StakeholderDeck,
   StakeholderProfileCard,
   StatsGrid,
@@ -46,11 +47,13 @@ import {
 } from "../../../../data/engagement/sustainability/sustainabilityPage";
 import { useRoutePageScroll, WikiContentBlocks } from "../../WikiRoutePage";
 import type { WikiContentBlock } from "../../wikiPageTypes";
+import { numberWikiSections } from "../../wikiPageNumbering";
 import type { ScaleRailStep } from "./sustainability/SCALEProgressChain";
 import { SdgContributionBubbles } from "./sustainability/SdgContributionBubbles";
 import { DocumentViewer, type WikiDocument } from "../../documents/DocumentViewer";
 import { GameShowcaseLink } from "../GamesShowcase";
 import { StakeholderArticleView } from "./sustainability/StakeholderProfileCard";
+import { StakeholderTrackerEmbed } from "./sustainability/StakeholderTrackerEmbed";
 import "../../../../styles/features/sustainability-panels.css";
 
 /**
@@ -64,6 +67,7 @@ import "../../../../styles/features/sustainability-panels.css";
 type FeatureMap = Record<string, ReactNode>;
 
 const sstqnPdf = sustainabilityAssets.sstQnModelConstruction;
+const numberedSections = numberWikiSections(sustainabilityPage.sections);
 
 function ChartFigure({
   caption,
@@ -86,9 +90,13 @@ function ChartFigure({
  * titles ("S — Stakeholder Insights") give their letter; the Tracker is "T".
  */
 function chapterRailSteps(chapter: SdgChapter): ScaleRailStep[] {
-  const prefix = `${chapter.index}.`;
-  return sustainabilityPage.sections
-    .flatMap((section) => section.blocks ?? [])
+  const headings = numberedSections.flatMap((section) => section.blocks ?? []);
+  const heading = headings.find(
+    (block) => block.type === "subheading" && block.id === chapter.headingId,
+  );
+  if (!heading || heading.type !== "subheading") return [];
+  const prefix = `${heading.index}.`;
+  return headings
     .filter(
       (block): block is Extract<WikiContentBlock, { type: "subheading" }> =>
         block.type === "subheading" && block.index.startsWith(prefix),
@@ -108,13 +116,13 @@ function chapterRailSteps(chapter: SdgChapter): ScaleRailStep[] {
 function ScaleRail({ chapter }: { chapter: SdgChapter }) {
   const { activeSubsection } = useRoutePageScroll();
   const steps = useMemo(() => chapterRailSteps(chapter), [chapter]);
-  const sectionIndex = sustainabilityPage.sections.findIndex((section) =>
+  const sectionIndex = numberedSections.findIndex((section) =>
     section.blocks?.some(
       (block) => block.type === "subheading" && block.id === chapter.headingId,
     ),
   );
   const allSubheadings = (
-    sustainabilityPage.sections[sectionIndex]?.blocks ?? []
+    numberedSections[sectionIndex]?.blocks ?? []
   ).filter(
     (block): block is Extract<WikiContentBlock, { type: "subheading" }> =>
       block.type === "subheading",
@@ -122,12 +130,12 @@ function ScaleRail({ chapter }: { chapter: SdgChapter }) {
   const chapterIndex = allSubheadings.findIndex(
     (block) => block.id === chapter.headingId,
   );
-  const chapterDepth = chapter.index.split(".").length;
+  const chapterDepth = allSubheadings[chapterIndex]?.index.split(".").length;
   const nextChapter = allSubheadings
     .slice(chapterIndex + 1)
     .find((block) => block.index.split(".").length === chapterDepth);
   const endId =
-    nextChapter?.id ?? sustainabilityPage.sections[sectionIndex + 1]?.id ?? "";
+    nextChapter?.id ?? numberedSections[sectionIndex + 1]?.id ?? "";
   return (
     <SCALEProgressChain
       steps={steps}
@@ -421,6 +429,16 @@ function EvidencePanel({ chapter }: { chapter: SdgChapter }) {
                 ]}
               />
             ) : null}
+            {item.document ? (
+              <DocumentViewer
+                document={{
+                  caption: item.document.label,
+                  url: item.document.url ?? sustainabilityDocUrl(item.document.fileName),
+                  openUrl: item.document.url ?? sustainabilityDocUrl(item.document.fileName),
+                  downloadUrl: item.document.url ?? sustainabilityDocUrl(item.document.fileName),
+                }}
+              />
+            ) : null}
             {item.figure ? (
               // Keep the caption as the source text; figure labels are not added here.
               <figure className="wiki-figure">
@@ -547,6 +565,7 @@ export function sustainabilityFeatures(): FeatureMap {
       <OverviewSetDevelopGrowCards tiers={impactTiers} />
     ),
     "sdg-contribution-bubbles": <SdgContributionBubbles />,
+    "sdg-explorer": <SdgExplorer />,
     stats: <StatsGrid stats={sustainabilityStats} />,
     "sstqn-matrix": (
       <SSTQNClassificationMatrix caption={sstqnSection.statusCaption} />
@@ -574,8 +593,22 @@ export function sustainabilityFeatures(): FeatureMap {
       />
     ),
     ...Object.assign({}, ...sustainabilityChapters.map(chapterFeatures)),
-    "stakeholder-tracker-tools": (
-      <PdfToolList tools={stakeholderTracker.files} instance="tracker" />
+    "stakeholder-tracker-blank": <StakeholderTrackerEmbed variant="blank" />,
+    "stakeholder-tracker-example": <StakeholderTrackerEmbed variant="example" />,
+    "stakeholder-tracker-manuals": (
+      <div className="sust-tracker-manuals">
+        {stakeholderTracker.manuals.map((manual) => (
+          <DocumentViewer
+            key={manual.fileName}
+            document={{
+              caption: manual.label,
+              url: manual.url,
+              openUrl: manual.url,
+              downloadUrl: manual.url,
+            }}
+          />
+        ))}
+      </div>
     ),
     "sustainability-interactive-city": <SustainabilityInteractiveCity />,
   };

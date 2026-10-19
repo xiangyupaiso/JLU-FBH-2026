@@ -173,7 +173,7 @@ export const cycle3Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "Wet Lab prepared all five circRNA inputs through the same DNA-to-RNA workflow. PCR-derived transcription templates from the corresponding plasmids entered T7 in vitro transcription, DNA-template removal, RNA purification, self-splicing circularisation and RNase R purification. Agarose-gel electrophoresis documented the four antigen-encoding DNA templates.",
+          "Wet Lab prepared all five circRNA inputs through a shared DNA-to-RNA workflow. PCR and agarose-gel electrophoresis were used to verify the plasmid target regions. The corresponding plasmids were separately linearised and purified as templates for T7 in vitro transcription, followed by DNA-template removal, RNA purification, self-splicing circularisation and RNase R treatment.",
           "For the purified Combined preparation, divergent- and convergent-primer RT-qPCR used the 4 µL working input established in Iteration 2.5, with three technical wells. The recorded calculation estimated the circular fraction against the predefined ≥90% release criterion. Sanger sequencing of a junction-spanning amplification product then checked the expected head-to-tail connection. Group identifiers were retained throughout preparation and subsequent DC electroporation (Wesselhoeft et al., 2018; LGC Biosearch Technologies, n.d.)."
 ]
         },
@@ -189,7 +189,7 @@ export const cycle3Section: WikiSection = {
           {
                     "label": "LGC Biosearch Technologies (n.d.)",
                     "text": "LGC Biosearch Technologies (n.d.) *Ribonuclease R Manual*. Cat. RNR07250.",
-                    "href": "https://biosearchtech.a.bigcontent.io/v1/static/manual_RNR07250_RNase-R?utm_source=chatgpt.com",
+                    "href": "https://biosearchtech.a.bigcontent.io/v1/static/manual_RNR07250_RNase-R",
                     "hrefLabel": "Official manual"
           }
 ]
@@ -203,7 +203,7 @@ export const cycle3Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "The gel showed prominent DNA bands for all four antigen-encoding transcription templates, supporting their progression to transcription. At the RNA stage, the purified Combined preparation gave a recorded circular-to-linear signal ratio of 145.7:1 and an estimated circular fraction of 99.30±0.17%, exceeding the ≥90% release criterion. This measurement described the composition after RNase R purification.",
+          "The gel documented target-region PCR products from the four antigen-encoding plasmids, supporting the plasmid-verification step. At the RNA stage, the purified Combined preparation gave a recorded circular-to-linear signal ratio of 145.7:1 and an estimated circular fraction of 99.30±0.17%, exceeding the ≥90% release criterion. This measurement described the composition after RNase R purification.",
           "Junction sequencing recovered the expected connection between the precursor’s 3′ and 5′ sequences. Together, the quantitative readout and junction sequence supported the preparation of circRNA-rich Combined material for the second-round comparison."
 ]
         },
@@ -212,8 +212,8 @@ export const cycle3Section: WikiSection = {
           src: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-c3-01a.avif",
           width: 733,
           height: 549,
-          alt: "Figure C3-01A",
-          caption: "Agarose-gel electrophoresis documented the four antigen-encoding DNA transcription templates before T7 transcription."
+          alt: "Figure C3-01A｜Plasmid verification by PCR｜质粒PCR核验",
+          caption: "Agarose-gel electrophoresis of target-region PCR products used to verify the four antigen-encoding plasmids."
         },
         {
           type: "table",
@@ -256,7 +256,7 @@ export const cycle3Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "[Further details: Experiments — circRNA preparation and characterisation](https://2026.igem.wiki/jlu-fbh/experiments)"
+          "[Further details: Experiments — circRNA preparation and characterisation](https://2026.igem.wiki/jlu-fbh/experiments#exp-3-1)"
 ]
         }
           ]
@@ -280,7 +280,7 @@ export const cycle3Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "After confirming the identity of the Combined circRNA preparation, we next asked whether its circular structure provided greater persistence than the corresponding linear precursor—an important reason for selecting circRNA as the project platform. We therefore established a matched time-course comparison using equal masses of both RNA forms from the same preparation batch, incubated at 37 °C and sampled at 0, 24, 48 and 72 h. By aligning their sequence background, starting mass and incubation conditions, the experiment focused on the effect of RNA topology on persistence (Wesselhoeft et al., 2018)."
+          "After characterising the Combined circRNA preparation, we compared its in vitro persistence with that of its corresponding linear precursor—an important experimental question underlying our choice of the circRNA platform. Equal RNA masses from the same preparation batch were incubated at 37 °C and sampled at 0, 24, 48 and 72 h. This assay compared the persistence of the mature circRNA preparation and its linear precursor under the defined incubation conditions (Wesselhoeft et al., 2018)."
 ]
         },
         {
@@ -349,7 +349,7 @@ export const cycle3Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "[Further details: Results — RNA persistence](https://2026.igem.wiki/jlu-fbh/results)"
+          "[Further details: Results — RNA persistence](https://2026.igem.wiki/jlu-fbh/results#results-5-1)"
 ]
         }
           ]
@@ -570,7 +570,7 @@ export const cycle3Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "[Further details: Software — TorusFold outputs](https://2026.igem.wiki/jlu-fbh/software)"
+          "[Further details: Software — TorusFold outputs](https://2026.igem.wiki/jlu-fbh/software#software-validation-torusfold-refinement-and-delivered-model-verification)"
 ]
         }
           ]
@@ -679,7 +679,7 @@ export const cycle3Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "[Further details: Results — translation and DC maturation](https://2026.igem.wiki/jlu-fbh/results)"
+          "[Further details: Results — translation and DC maturation](https://2026.igem.wiki/jlu-fbh/results#results-round2)"
 ]
         }
           ]
@@ -792,7 +792,7 @@ export const cycle3Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "[Further details: Results — T-cell phenotypes](https://2026.igem.wiki/jlu-fbh/results)"
+          "[Further details: Results — T-cell phenotypes](https://2026.igem.wiki/jlu-fbh/results#results-4-3)"
 ]
         }
           ]
@@ -825,7 +825,7 @@ export const cycle3Section: WikiSection = {
           {
                     "label": "Dakewe Biotech (n.d.)",
                     "text": "Dakewe Biotech (n.d.) *Human IFN-γ Precoated ELISPOT Kit (strips): instruction manual*. Cat. 2110005, Rev. C/2.",
-                    "href": "https://files.dakewe.cn/crm/instruction/dy/2110005.pdf?utm_source=chatgpt.com",
+                    "href": "https://files.dakewe.cn/crm/instruction/dy/2110005.pdf",
                     "hrefLabel": "Instruction manual"
           }
 ]
@@ -877,7 +877,7 @@ export const cycle3Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "[Further details: Results — second-round ELISpot](https://2026.igem.wiki/jlu-fbh/results)"
+          "[Further details: Results — second-round ELISpot](https://2026.igem.wiki/jlu-fbh/results#results-4-5)"
 ]
         }
           ]
@@ -968,7 +968,7 @@ export const cycle3Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "[Further details: Results — MDA-MB-231 cytotoxicity](https://2026.igem.wiki/jlu-fbh/results)"
+          "[Further details: Results — MDA-MB-231 cytotoxicity](https://2026.igem.wiki/jlu-fbh/results#results-4-6)"
 ]
         }
           ]
@@ -1042,7 +1042,7 @@ export const cycle3Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "[Further details: Experiments — target-cell comparison](https://2026.igem.wiki/jlu-fbh/experiments)"
+          "[Further details: Experiments — target-cell comparison](https://2026.igem.wiki/jlu-fbh/experiments#exp-5-2)"
 ]
         }
           ]
@@ -1127,7 +1127,7 @@ export const cycle3Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "[Further details: Results — empty-LNP viability](https://2026.igem.wiki/jlu-fbh/results)"
+          "[Further details: Results — empty-LNP viability](https://2026.igem.wiki/jlu-fbh/results#results-5-3)"
 ]
         }
           ]
@@ -1193,7 +1193,7 @@ export const cycle3Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "[Further details: Software — CircuForge](https://2026.igem.wiki/jlu-fbh/software)"
+          "[Further details: Software — CircuForge](https://2026.igem.wiki/jlu-fbh/software#software-user-testing-and-community-reuse-circuforge-user-testing)"
 ]
         }
           ]
@@ -1267,13 +1267,13 @@ export const cycle3Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "The Pilu Town observation and interface walkthrough showed that first-time learners benefited from receiving the experimental purpose, safety information, instruments and reagents before beginning an unfamiliar virtual procedure, with the same information remaining available during operation. We therefore retained the four-card entry as the standard orientation structure for the Virtual Laboratory. This decision also extended layered education from a single interface to a complete teaching route: the next iteration would connect virtual orientation, physical experimentation, result interpretation and molecular design for high-school learners in Synbio Classroom."
+          "The Pilu Town observations identified the need to provide the experimental purpose, safety information, instruments and reagents before the first virtual operation. A walkthrough of the revised interface confirmed that these materials appeared before the first operation and remained accessible during the procedure. We therefore retained the four-card entry as the standard orientation structure for the Virtual Laboratory. This decision also extended layered education from a single interface to a complete teaching route: the next iteration would connect virtual orientation, physical experimentation, result interpretation and molecular design for high-school learners in Synbio Classroom."
 ]
         },
         {
           type: "prose",
           paragraphs: [
-          "[Further details: Education — Virtual Laboratory and the Pilu Town activity](https://2026.igem.wiki/jlu-fbh/education)"
+          "[Further details: Education — Virtual Laboratory and the Pilu Town activity](https://2026.igem.wiki/jlu-fbh/education#pilu-town)"
 ]
         }
           ]
@@ -1355,7 +1355,7 @@ export const cycle3Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "[Further details: Education — Synbio Classroom](https://2026.igem.wiki/jlu-fbh/education)"
+          "[Further details: Education — Synbio Classroom](https://2026.igem.wiki/jlu-fbh/education#synbio-classroom)"
 ]
         }
           ]

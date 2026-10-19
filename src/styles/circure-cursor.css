@@ -173,6 +173,14 @@
   html body :is([draggable="true"], [data-native-cursor]) * {
     cursor: auto !important;
   }
+  /* Native scrollbar drags suspend pointer events. Let the browser move the
+     sheep image on those surfaces while the animated follower yields. */
+  html:root body [data-native-cursor="sheep"],
+  html:root body [data-native-cursor="sheep"] * {
+    cursor:
+      url("https://static.igem.wiki/teams/6056/wiki/files/pages/shared/cursor-default.avif") 13 12,
+      auto !important;
+  }
   html body.is-thread-dragging,
   html body.is-thread-dragging * {
     cursor: grabbing !important;

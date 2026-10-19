@@ -59,7 +59,7 @@ const HOTSPOTS: Record<HotspotKey, HotspotData> = {
     badge: "01 / Foundation & Demand",
     title: "Human: The Public Pool as Reservoir",
     subtitle: "Inspiration Originating from Grassroots Community Demands",
-    body: "Within this loop, the pool stands for the public. At the project's inception, we reached out to clinical doctors, breast cancer patients, and community advocates. Through interviews and surveys, real-world demands filled our reservoir of inspiration, defining our project direction.",
+    body: "Using the 3i framework across six stakeholder categories, we used CIRC to drive iterative dialogues and re-engagement, building a tree-like network that replaces linear communication with a responsive, bidirectional Human Practices approach and embeds societal feedback into project evolution.",
     targetSectionId: "hp-human",
     targetSectionLabel: "02 Human: Stakeholder Matrix",
     bubbleStyle: {
@@ -77,7 +77,7 @@ const HOTSPOTS: Record<HotspotKey, HotspotData> = {
     badge: "02 / Initiation & Motivation",
     title: "Origin: The Waterwheel of Initiation",
     subtitle: "Public Needs Setting Engineering in Motion",
-    body: "The waterwheel symbolizes the project initiation phase—public demands set our project in motion. Energy from public participation drives the initial wheels of exploration, giving our team the momentum to innovate with rigorous protective care.",
+    body: "We conducted iterative stakeholder interviews and follow‑up re‑interviews guided by the 3i/CIRC framework, progressively narrowing our focus to recurrence prevention for postoperative residual lesions in triple‑negative breast cancer (TNBC). We selected therapeutic tumour vaccines as our candidate intervention and reoriented educational outreach towards subtype‑specific disease awareness and patient‑centered risk communication.",
     targetSectionId: "hp-origin",
     targetSectionLabel: "03 Origin: Project Motivation",
     bubbleStyle: {
@@ -95,7 +95,7 @@ const HOTSPOTS: Record<HotspotKey, HotspotData> = {
     badge: "03 / Iterative Aqueducts",
     title: "Project: Rising Aqueducts of Iteration",
     subtitle: "Continuous Feedback-Driven Design Refinements",
-    body: "As the waterwheel spins, water flows forward along ascending aqueducts. These rising aqueducts represent our continuously iterating and advancing project. Throughout development, we repeatedly engaged stakeholders and experts to adjust and mature our delivery system.",
+    body: "This project develops a circRNA-based prophylactic therapy for residual postoperative triple-negative breast cancer lesions. It converts clinical needs into molecular plasmid design. With expert guidance, the team adopted multi-target antigens and built a dry-lab analysis pipeline. Public perception surveys and ethical reviews were carried out. The study includes plasmid design, in vitro and in vivo tests, balancing scientific evidence and practical constraints for preclinical research.",
     targetSectionId: "hp-project",
     targetSectionLabel: "04 Project: Iterative Design Cycles",
     bubbleStyle: {
@@ -113,7 +113,7 @@ const HOTSPOTS: Record<HotspotKey, HotspotData> = {
     badge: "04 / Benefiting Society",
     title: "Return: Waterfall Stepping Out of the Lab",
     subtitle: "Closing the Loop: Knowledge and Solutions for Society",
-    body: "Eventually, water plunges as a waterfall. The waterfall signifies the project stepping out of the laboratory to benefit the public. Through open educational kits, accessible clinical translation, and social advocacy, we return value to those who inspired us.",
+    body: "Guided by the 3i/CIRC framework across six stakeholder categories, we shifted the question from whether CirCure was technically feasible to what evidence, safeguards, and institutional conditions responsible implementation would require. Dialogue with patients and families, experts, public and safety stakeholders, and four industry partners clarified patient priorities, research and communication boundaries, affordability concerns, and translation challenges. The Return phase established an evidence-aligned pathway that now guides our Wiki, education, and public communication.",
     targetSectionId: "hp-overview",
     targetSectionLabel: "01 Overview: Closing the Cycle",
     bubbleStyle: {

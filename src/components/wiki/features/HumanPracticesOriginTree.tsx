@@ -1,11 +1,13 @@
-import { useCallback, useEffect, useRef, useState, type ReactNode } from "react";
-import { UserRound } from "lucide-react";
+import { Fragment, useCallback, useEffect, useRef, useState } from "react";
 import { originInterviewRecords } from "../../../data/engagement/humanPracticesCopy";
+import { originMedia } from "../../../data/engagement/humanPracticesAssets";
 import { scrollReaderToTarget } from "../../../utils";
 import { HpFlowTooltip } from "./HpFlowTooltip";
+import { HpInterviewPhoto, HpPortrait } from "./HpStakeholderMedia";
+import { linkify } from "../proseInline";
 import "../../../styles/hp-origin-tree.css";
 
-const names = ["药博会", "寇长贵", "公众", "贾琳", "王磊", "李成丽", "田润辉"];
+const names = ["Pharmaceutical Expo", "Kou Changgui", "Public", "Jia Lin", "Wang Lei", "Li Chengli", "Tian Runhui"];
 const basePoints = [
   { x: 50, y: 4 }, { x: 50, y: 22 }, { x: 50, y: 40 },
   { x: 50, y: 58 }, { x: 26, y: 76 }, { x: 74, y: 76 },
@@ -51,18 +53,10 @@ const introReturnPaths = [
 type Point = { x: number; y: number };
 
 function connector(a: Point, b: Point) {
-  const startY = a.y + 5.8;
-  const endY = b.y - 6.4;
+  const startY = a.y + 7.2;
+  const endY = b.y - 7.2;
   const mid = (startY + endY) / 2;
   return `M ${a.x} ${startY} C ${a.x} ${mid}, ${b.x} ${mid}, ${b.x} ${endY}`;
-}
-
-function inline(text: string): ReactNode {
-  return text.split(/(\*\*[^*]+?\*\*)/g).map((part, index) =>
-    part.startsWith("**") && part.endsWith("**")
-      ? <strong key={index}>{part.slice(2, -2)}</strong>
-      : part,
-  );
 }
 
 function interviewContext(index: number) {
@@ -277,6 +271,9 @@ export function HumanPracticesOriginTree() {
   const firstRoundLabel = storySteps.find((step) => step.person === currentStep.person && step.phase === "first")?.label ?? "First interview";
   const displayedLabel = showingFirst ? firstRoundLabel : currentStep.label;
   const visibleParagraphs = interviewParagraphs(currentStep.person, displayedPhase);
+  const currentMedia = originMedia[currentStep.person];
+  const interviewPhotos = displayedPhase === "followup" ? currentMedia?.followup ?? [] : currentMedia?.interview ?? [];
+  const firstProseIndex = visibleParagraphs.findIndex((paragraph) => !paragraph.startsWith("**"));
   const visitedPeople = new Set(storySteps.slice(0, unlocked + 1).map((step) => step.person));
   const returnedPeople = new Set(storySteps.slice(0, unlocked + 1).filter((step) => step.phase === "followup").map((step) => step.person));
   const activeTracePaths = displayedReturnFrom !== undefined
@@ -316,7 +313,7 @@ export function HumanPracticesOriginTree() {
               onBlur={hideProfileSoon}
             >
               <span className="hp-origin-flow__intro-node-name">{names[index]}</span>
-              <span className="hp-origin-flow__intro-node-photo" aria-hidden="true">{index === 0 ? "EXPO" : <UserRound size={26} strokeWidth={1.6} />}</span>
+              <span className="hp-origin-flow__intro-node-photo" aria-hidden="true"><HpPortrait src={originMedia[index]?.portrait} name={names[index]} /></span>
             </button>
           ))}
           {hoveredProfile !== null && (
@@ -393,7 +390,7 @@ export function HumanPracticesOriginTree() {
             >
               <span className="hp-origin-flow__person-back" aria-hidden="true" />
               <span className="hp-origin-flow__person-front">
-                <span className="hp-origin-flow__portrait" aria-hidden="true">{index === 0 ? "EXPO" : <UserRound size={25} strokeWidth={1.6} />}</span>
+                <span className="hp-origin-flow__portrait" aria-hidden="true"><HpPortrait src={originMedia[index]?.portrait} name={names[index]} /></span>
               </span>
             </button>
           ))}
@@ -435,9 +432,10 @@ export function HumanPracticesOriginTree() {
           <div className="hp-origin-flow__card-body">
             {visibleParagraphs.map((paragraph, paragraphIndex) => {
               const label = paragraph.match(/^\*\*(.+)\*\*$/);
-              return label
-                ? <h4 key={paragraphIndex}>{label[1]}</h4>
-                : <p key={paragraphIndex}>{inline(paragraph)}</p>;
+              return <Fragment key={paragraphIndex}>
+                {label ? <h4>{label[1]}</h4> : <p>{linkify(paragraph)}</p>}
+                {paragraphIndex === firstProseIndex && interviewPhotos.map((src) => <HpInterviewPhoto key={src} src={src} name={names[currentStep.person]} />)}
+              </Fragment>;
             })}
           </div>
         </div>

@@ -228,7 +228,20 @@ export function VerticalGantt({
                                     <span className="vertical-gantt__entry-title">
                                       {entry.title}
                                     </span>
-                                    {entry.phase ? (
+                                    {entry.phases?.length ? (
+                                      <span className="vertical-gantt__phases">
+                                        {entry.phases.map(({ label, tone }) => (
+                                          <span
+                                            className="vertical-gantt__phase"
+                                            data-phase={label}
+                                            data-phase-tone={tone}
+                                            key={label}
+                                          >
+                                            {label}
+                                          </span>
+                                        ))}
+                                      </span>
+                                    ) : entry.phase ? (
                                       <span className="vertical-gantt__phase">
                                         {entry.phase}
                                       </span>

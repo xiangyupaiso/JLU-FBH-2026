@@ -23,12 +23,14 @@ import type {
 } from "./wikiPageTypes";
 import { linkify, renderInlineFormatting } from "./proseInline";
 import { WikiLineSidebar, type WikiLineSidebarItem } from "./WikiLineSidebar";
+import { numberWikiSections, stripWikiHeadingIndex, wikiSubheadingDepth } from "./wikiPageNumbering";
 import { WikiNextRecord } from "./WikiNextRecord";
 import { WikiProtocolModal } from "./WikiProtocolViewer";
 import { PageImagePreloads } from "../common/PageImagePreloads";
 import { experimentProtocolImage } from "../../data/wet-lab/experimentProtocolPages";
 import type { ExperimentProtocolPair } from "../../data/wet-lab/experimentProtocolPages";
 import "../../styles/wiki-route-skin.css";
+import "../../styles/wiki-code.css";
 import "../../styles/features/experiments-panels.css";
 
 /**
@@ -307,12 +309,18 @@ function renderSubheadingTitle(title: string) {
  * Both table blocks use this — `table` as well as `parts-table`. Rendering both
  * through the same helper keeps links and emphasis consistent in every table.
  */
-function renderTableCell(cell: string): ReactNode {
-  if (!cell.includes("<br")) return linkify(cell);
+function renderTableCell(
+  cell: string,
+  inline: InlineRenderer | null,
+  sectionId: string,
+): ReactNode {
+  const render = (text: string) =>
+    inline ? inline(text, linkify, sectionId) : linkify(text);
+  if (!cell.includes("<br")) return render(cell);
   const lines = cell.split(/<br\s*\/?>/);
   return lines.map((line, index) => (
     <span key={index}>
-      {linkify(line)}
+      {render(line)}
       {index < lines.length - 1 ? <br /> : null}
     </span>
   ));
@@ -396,14 +404,23 @@ function CodeBlock({
   onCopy: (code: string) => Promise<boolean>;
 }) {
   const [copied, setCopied] = useState(false);
-  const displayLanguage = language?.trim() || "text";
-  const languageClass = displayLanguage.toLowerCase().replace(/[^a-z0-9]+/g, "-");
+  const languageId = language?.trim().toLowerCase() || "text";
+  const languageLabels: Record<string, string> = {
+    powershell: "PowerShell",
+    bash: "Bash",
+    python: "Python",
+    r: "R",
+    json: "JSON",
+    text: "Plain text",
+  };
+  const displayLanguage = languageLabels[languageId] ?? languageId;
+  const languageClass = languageId.replace(/[^a-z0-9]+/g, "-");
 
   return (
     <div
       className={`wiki-code wiki-code--${languageClass}`}
       data-wiki-reveal
-      data-language={displayLanguage}
+      data-language={languageId}
     >
       <div className="wiki-code__bar">
         <span className="wiki-code__language">{displayLanguage}</span>
@@ -422,7 +439,7 @@ function CodeBlock({
           {copied ? "Copied" : "Copy"}
         </button>
       </div>
-      <pre className="wiki-code__body">
+      <pre className="wiki-code__body" data-native-cursor="sheep">
         <code>{code}</code>
       </pre>
     </div>
@@ -511,7 +528,7 @@ function RouteBlock({
         </ol>
       );
     case "heading": {
-      const Heading = `h${block.level}` as "h4" | "h5" | "h6";
+      const Heading = `h${block.level}` as "h3" | "h4" | "h5" | "h6";
       return (
         <Heading className="wiki-content-heading">
           {inline ? inline(block.title, linkify, sectionId) : linkify(block.title)}
@@ -590,7 +607,9 @@ function RouteBlock({
               <span className="wiki-figure__label">{block.figureLabel}</span>
               {block.caption ? (
                 <span className="wiki-figure__caption">
-                  {renderInlineFormatting(block.caption)}
+                  {inline
+                    ? inline(block.caption, renderInlineFormatting, sectionId)
+                    : renderInlineFormatting(block.caption)}
                 </span>
               ) : null}
             </figcaption>
@@ -656,11 +675,11 @@ function RouteBlock({
                   {row.map((cell, cellIndex) =>
                     cellIndex === 0 ? (
                       <th scope="row" key={`${rowIndex}-${cellIndex}`}>
-                        {renderTableCell(cell)}
+                        {renderTableCell(cell, inline, sectionId)}
                       </th>
                     ) : (
                       <td key={`${rowIndex}-${cellIndex}`}>
-                        {renderTableCell(cell)}
+                        {renderTableCell(cell, inline, sectionId)}
                       </td>
                     ),
                   )}
@@ -713,7 +732,7 @@ function RouteBlock({
                   </th>
                   {row.cells.map((cell, cellIndex) => (
                     <td key={`${row.name}-${cellIndex}`}>
-                      {renderTableCell(cell)}
+                      {renderTableCell(cell, inline, sectionId)}
                     </td>
                   ))}
                 </tr>
@@ -753,17 +772,23 @@ function RouteBlock({
         </aside>
       );
     case "subheading": {
-      const HeadingTag = block.level === 4 ? "h4" : "h3";
+      const depth = wikiSubheadingDepth(block);
+      const isNested = depth > 2;
+      const HeadingTag = `h${Math.min(depth + 1, 6)}` as "h3" | "h4" | "h5" | "h6";
       const displayTitle =
-        block.level === 4 && block.index && !block.title.startsWith(block.index)
+        block.level === 4 &&
+        block.index &&
+        !block.title.startsWith(block.index) &&
+        block.index.split(".").length < 3
           ? `${block.index} ${block.title}`
           : block.title;
       return (
         <HeadingTag
-          className={`wiki-subheading${block.level === 4 ? " wiki-subheading--nested" : ""}`}
+          className={`wiki-subheading${isNested ? " wiki-subheading--nested" : ""}`}
           id={block.id}
           data-wiki-outline-anchor
           data-wiki-outline-parent={sectionId}
+          data-wiki-heading-depth={depth}
           data-wiki-reveal
         >
           {block.anchorIds?.map((anchorId) => (
@@ -976,6 +1001,7 @@ function ProtocolSubheadingDrawer({
   features,
   sectionId,
   scrollContainerRef,
+  hideIndexPill = false,
 }: {
   subheading: Extract<WikiContentBlock, { type: "subheading" }>;
   blocks: WikiContentBlock[];
@@ -984,11 +1010,9 @@ function ProtocolSubheadingDrawer({
   features: FeatureMap;
   sectionId: string;
   scrollContainerRef?: RefObject<HTMLElement | null>;
+  hideIndexPill?: boolean;
 }) {
-  const cleanTitle = subheading.title
-    .replace(new RegExp(`^${subheading.index.replace(/\./g, "\\.")}[.\\s]+`), "")
-    .replace(/^\.\s*/, "")
-    .trim();
+  const cleanTitle = stripWikiHeadingIndex(subheading.title, subheading.index);
 
   return (
     <div
@@ -1009,9 +1033,11 @@ function ProtocolSubheadingDrawer({
           onClick={onToggle}
         >
           <span className="wiki-protocol-drawer__title-row">
-            <span className="wiki-protocol-drawer__index-pill">
-              {subheading.index}
-            </span>
+            {!hideIndexPill && subheading.index ? (
+              <span className="wiki-protocol-drawer__index-pill">
+                {subheading.index}
+              </span>
+            ) : null}
             <span className="wiki-protocol-drawer__title">{cleanTitle}</span>
           </span>
           <span className="wiki-protocol-drawer__chevron" aria-hidden="true">
@@ -1075,12 +1101,12 @@ function RouteSection({
       blocks.some(
         (b) =>
           b.type === "subheading" &&
-          (b.level === 3 || (Boolean(b.index) && !b.index.includes("."))),
+          wikiSubheadingDepth(b) === 2,
       ) &&
       blocks.some(
         (b) =>
           b.type === "subheading" &&
-          (b.level === 4 || (Boolean(b.index) && b.index.includes("."))),
+          wikiSubheadingDepth(b) > 2,
       )
     );
   }, [blocks]);
@@ -1105,8 +1131,7 @@ function RouteSection({
       if (block.type === "subheading") {
         const isDrawerTrigger =
           !hasParentSubheadings ||
-          block.level === 3 ||
-          (Boolean(block.index) && !block.index.includes("."));
+          wikiSubheadingDepth(block) === 2;
 
         if (isDrawerTrigger) {
           if (currentGroup) groups.push(currentGroup);
@@ -1191,6 +1216,7 @@ function RouteSection({
                 features={features}
                 sectionId={section.id}
                 scrollContainerRef={scrollContainerRef}
+                hideIndexPill={subheadingGroups.length === 1}
               />
             ))}
           </div>
@@ -1269,6 +1295,10 @@ export function WikiRoutePage({
   leadSection,
   articleLead,
 }: WikiRoutePageProps) {
+  const sections = useMemo(
+    () => hideOutline ? content.sections : numberWikiSections(content.sections),
+    [content.sections, hideOutline],
+  );
   const imageSources = useMemo(
     () => [
       heroImage,
@@ -1306,7 +1336,7 @@ export function WikiRoutePage({
   const openSubheading = useCallback((id: string) => {
     let targetId = id;
     let targetParentId: string | null = null;
-    for (const section of content.sections) {
+    for (const section of sections) {
       if (!section.blocks) continue;
       const subheadings = section.blocks.filter(
         (b): b is Extract<WikiContentBlock, { type: "subheading" }> =>
@@ -1324,6 +1354,11 @@ export function WikiRoutePage({
         if (parentSub) {
           targetParentId = parentSub.id;
         }
+      } else if (wikiSubheadingDepth(targetSub) > 2) {
+        const targetPosition = subheadings.indexOf(targetSub);
+        targetParentId = subheadings.slice(0, targetPosition).reverse().find(
+          (heading) => wikiSubheadingDepth(heading) === 2,
+        )?.id ?? null;
       }
       break;
     }
@@ -1341,7 +1376,7 @@ export function WikiRoutePage({
       }
       return changed ? next : prev;
     });
-  }, [content.sections]);
+  }, [sections]);
 
   useEffect(() => {
     const handleHash = () => {
@@ -1401,8 +1436,8 @@ export function WikiRoutePage({
     ? "instant"
     : "smooth";
   const sectionIds = useMemo(
-    () => content.sections.map((section) => section.id),
-    [content.sections],
+    () => sections.map((section) => section.id),
+    [sections],
   );
   const { activeSection, activeSubsection } = useWikiPageMotion(
     rootRef,
@@ -1417,47 +1452,25 @@ export function WikiRoutePage({
     () => ({ activeSection, activeSubsection }),
     [activeSection, activeSubsection],
   );
-  const sidebarItems: WikiLineSidebarItem[] = content.sections.map((section) => {
+  const sidebarItems: WikiLineSidebarItem[] = sections.map((section) => {
     const subheadings = section.blocks
       ?.filter(
         (block): block is Extract<WikiContentBlock, { type: "subheading" }> =>
           block.type === "subheading" &&
-          (!outlineDepth || block.index.split(".").length <= outlineDepth),
+          (!outlineDepth || wikiSubheadingDepth(block) <= outlineDepth),
       )
       .map((block) => ({
         id: block.id,
         index: block.index,
+        depth: wikiSubheadingDepth(block),
         label: block.title.replace(/\*\*/g, ""),
-        children: [] as WikiLineSidebarItem[],
       }));
-    const subheadingByIndex = new Map(
-      subheadings?.map((subheading) => [subheading.index, subheading]) ?? [],
-    );
-    const nestedSubheadings: WikiLineSidebarItem[] = [];
-    const subheadingById = new Map<string, WikiLineSidebarItem>();
-    (subheadings ?? []).forEach((subheading) => {
-      const child = {
-        id: subheading.id,
-        index: subheading.index,
-        label: subheading.label,
-        children: [] as WikiLineSidebarItem[],
-      };
-      const parentIndex = child.index.split(".").slice(0, -1).join(".");
-      const parent = subheadingByIndex.get(parentIndex);
-      subheadingById.set(child.id, child);
-      if (parent) {
-        subheadingById.get(parent.id)?.children?.push(child);
-      } else {
-        nestedSubheadings.push(child);
-      }
-    });
     return {
       id: section.id,
-      // Unnumbered sections (e.g. a "00" station map) stay unnumbered here too.
-      index: section.hideSectionNumber ? "" : section.index,
+      index: section.index,
       label: section.navLabel ?? section.title,
       meta: section.kicker,
-      children: nestedSubheadings.length ? nestedSubheadings : undefined,
+      children: subheadings?.length ? subheadings : undefined,
     };
   });
   const heroStyle = heroImage
@@ -1581,7 +1594,7 @@ export function WikiRoutePage({
                     value={inlineRenderer ?? null}
                   >
                     {articleLead ? <div className="wiki-feature">{articleLead}</div> : null}
-                    {content.sections.map((section) => (
+                    {sections.map((section) => (
                       <MemoRouteSection
                         key={section.id}
                         section={section}

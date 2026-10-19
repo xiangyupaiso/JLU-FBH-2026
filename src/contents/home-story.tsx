@@ -19,7 +19,7 @@ import mapWaveWestOne from "../assets/home/story/map-detail-baked-wave-west-1.we
 import mapWaveWestTwo from "../assets/home/story/map-detail-baked-wave-west-2.webp";
 import mapWaveEastFour from "../assets/home/story/map-detail-baked-wave-east-4.webp";
 import supplements from "../assets/home/supplements/manifest.json";
-import projectAdvantages from "../assets/home/supplements/project-advantages.png";
+const projectAdvantages = "https://static.igem.wiki/teams/6056/wiki/files/pages/home/project-advantages.avif";
 const patientConcerned =
   "https://static.igem.wiki/teams/6056/wiki/files/pages/home/patient-teary-20261004-467cbc4b5db7.webp";
 const clinicianConcerned =

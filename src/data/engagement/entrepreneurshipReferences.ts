@@ -90,7 +90,7 @@ export const entrepreneurshipReferences: CitationReference[] = [
     links: [
       {
         href: "https://www.ccxq.gov.cn/xqyw/xqdt/202607/t20260727_3651935.html",
-        label: "Source",
+        label: "https://www.ccxq.gov.cn/xqyw/xqdt/202607/t20260727_3651935.html",
       },
     ],
   },
@@ -103,7 +103,7 @@ export const entrepreneurshipReferences: CitationReference[] = [
     links: [
       {
         href: "https://www.ccxq.gov.cn/zjxq/xqgk/",
-        label: "Source",
+        label: "https://www.ccxq.gov.cn/zjxq/xqgk/",
       },
     ],
   },
@@ -118,7 +118,8 @@ export const entrepreneurshipReferences: CitationReference[] = [
       {
         href:
           "https://www.changchun.gov.cn/zw_33994/yw/zwdt_74/jjdt/202511/t20251118_3441196.html",
-        label: "Source",
+        label:
+          "https://www.changchun.gov.cn/zw_33994/yw/zwdt_74/jjdt/202511/t20251118_3441196.html",
       },
     ],
   },
@@ -132,7 +133,7 @@ export const entrepreneurshipReferences: CitationReference[] = [
     links: [
       {
         href: "https://www.ccxq.gov.cn/syld/202307/t20230725_2450849.html",
-        label: "Source",
+        label: "https://www.ccxq.gov.cn/syld/202307/t20230725_2450849.html",
       },
     ],
   },
@@ -144,8 +145,8 @@ export const entrepreneurshipReferences: CitationReference[] = [
     volumeYear: "2024;391:1981–1991. DOI: 10.1056/NEJMoa2409932.",
     links: [
       {
-        href: "https://www.nejm.org/doi/full/10.1056/NEJMoa2409932?utm_source=chatgpt.com",
-        label: "NEJM 原文",
+        href: "https://www.nejm.org/doi/full/10.1056/NEJMoa2409932?utm_source",
+        label: "https://www.nejm.org/doi/full/10.1056/NEJMoa2409932?utm_source",
       },
     ],
   },
@@ -157,8 +158,8 @@ export const entrepreneurshipReferences: CitationReference[] = [
     volumeYear: "2017;376:2147–2159. DOI: 10.1056/NEJMoa1612645.",
     links: [
       {
-        href: "https://www.nejm.org/doi/full/10.1056/NEJMoa1612645?utm_source=chatgpt.com",
-        label: "NEJM 原文",
+        href: "https://www.nejm.org/doi/full/10.1056/NEJMoa1612645?utm_source",
+        label: "https://www.nejm.org/doi/full/10.1056/NEJMoa1612645?utm_source",
       },
     ],
   },
@@ -170,8 +171,8 @@ export const entrepreneurshipReferences: CitationReference[] = [
     volumeYear: "2021;384:2394–2405. DOI: 10.1056/NEJMoa2105215.",
     links: [
       {
-        href: "https://www.nejm.org/doi/full/10.1056/NEJMoa2105215?utm_source=chatgpt.com",
-        label: "NEJM 原文",
+        href: "https://www.nejm.org/doi/full/10.1056/NEJMoa2105215?utm_source",
+        label: "https://www.nejm.org/doi/full/10.1056/NEJMoa2105215?utm_source",
       },
     ],
   },
@@ -180,11 +181,11 @@ export const entrepreneurshipReferences: CitationReference[] = [
     authors: "ClinicalTrials.gov.",
     title: "STEMVAC in Patients With Early Stage Triple Negative Breast Cancer",
     journal: "",
-    volumeYear: "NCT05455658.",
+    volumeYear: "NCT05455658. ClinicalTrials.gov — NCT05455658.",
     links: [
       {
-        href: "https://clinicaltrials.gov/study/NCT05455658?utm_source=chatgpt.com",
-        label: "ClinicalTrials.gov — NCT05455658",
+        href: "https://clinicaltrials.gov/study/NCT05455658?utm_source",
+        label: "https://clinicaltrials.gov/study/NCT05455658?utm_source",
       },
     ],
   },
@@ -194,11 +195,11 @@ export const entrepreneurshipReferences: CitationReference[] = [
     title:
       "First-in-human, Phase 1 Study of a Self-amplifying RNA Vaccine (ITI-5000) Alone or in Combination With Pembrolizumab in Stage II–III Triple Negative Breast Cancer Following Standard Therapy (VITAL-TNBC)",
     journal: "",
-    volumeYear: "NCT07652242.",
+    volumeYear: "NCT07652242. ClinicalTrials.gov — NCT07652242.",
     links: [
       {
-        href: "https://clinicaltrials.gov/study/NCT07652242?utm_source=chatgpt.com",
-        label: "ClinicalTrials.gov — NCT07652242",
+        href: "https://clinicaltrials.gov/study/NCT07652242?utm_source",
+        label: "https://clinicaltrials.gov/study/NCT07652242?utm_source",
       },
     ],
   },
@@ -208,15 +209,11 @@ export const entrepreneurshipReferences: CitationReference[] = [
     title:
       "Safety and Immunogenicity of a Personalized Polyepitope DNA Vaccine Strategy in Breast Cancer Patients With Persistent Triple-Negative Disease Following Neoadjuvant Chemotherapy",
     journal: "",
-    volumeYear: "NCT02348320.",
+    volumeYear: "NCT02348320. ClinicalTrials.gov — NCT02348320.",
     links: [
       {
-        href: "https://clinicaltrials.gov/study/NCT02348320?utm_source=chatgpt.com",
-        label: "ClinicalTrials.gov — NCT02348320",
-      },
-      {
-        href: "https://link.springer.com/article/10.1186/s13073-024-01388-3",
-        label: "Genome Medicine 研究结果",
+        href: "https://clinicaltrials.gov/study/NCT02348320?utm_source",
+        label: "https://clinicaltrials.gov/study/NCT02348320?utm_source",
       },
     ],
   },

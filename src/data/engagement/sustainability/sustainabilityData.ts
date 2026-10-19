@@ -13,7 +13,7 @@
  * blocks and keys from the chapter, with no panel code to touch.
  */
 
-import { pdfPair, type LegacyTool, type SdgChapter, type SustainabilityStat } from "./sdgChapterContract";
+import { type LegacyToolPdf, type SdgChapter, type SustainabilityStat } from "./sdgChapterContract";
 import { sdg3Chapter } from "./sustainabilitySdg3";
 import { sdg9Chapter } from "./sustainabilitySdg9";
 import { sdg12Chapter } from "./sustainabilitySdg12";
@@ -68,6 +68,8 @@ export const sustainabilityOverview = {
     "To further support the assessment of **cross-SDG** relationships within the **Alignment component of the SCALE Model**, we proposed the **SDG Synergy–Trade-off Quantification Network (SST-QN)** to systematically analyze potential **positive and negative interactions** among SDGs. We structured this process as a reusable analytical workflow and assessment framework to **help future iGEM teams reduce duplicated effort** when designing evaluation criteria, assessing interactions, and organizing results.",
   toolkit:
     "Beyond project evaluation, we also **documented** our actions, data, and impact, ultimately forming **34 reusable methods and tools** that make our SDG contributions more **measurable, verifiable, and reusable** for future iGEM teams.",
+  contributions:
+    "Finally, we quantified CirCure’s contributions to each SDG using SST-QN, presenting the results as direct, first-order indirect, and higher-order indirect contribution scores.",
 };
 
 /** The three core goals link to their completed SET chapters. */
@@ -260,21 +262,17 @@ export const stakeholderTracker = {
   paragraphs: [
     "As CirCure progressed, we accumulated stakeholder feedback, team responses, implementation outcomes, and supporting evidence. We developed the **Stakeholder Sustainability Tracker** to organize this information in one place and make stakeholder engagement easier to update and review over time. The tool records stakeholder information, key feedback, project responses, implementation status, relevant SDGs, and supporting evidence. To help other iGEM teams use it directly, we provide a **blank version containing no CirCure project data**. Click here to view and download the template, then build and maintain stakeholder records tailored to your project.",
     "We also share **the actual records compiled throughout CirCure’s development** to demonstrate the tool’s use in practice. These records show how we documented stakeholder feedback, our responses, and implementation outcomes over time. The Tracker’s Chinese–English language switch changes the interface only; it does not automatically translate user-entered content. We therefore provide corresponding **Chinese and English versions of the records** so readers can review the full content in either language. An accompanying **User Manual**, also available in Chinese and English, explains the basic functions, field completion, and use of the tool to help other teams get started.",
-    "To assess the Tracker’s usability and analytical value in real projects, we invited an iGEM team and a teacher experienced in project sustainability analysis to try the tool and provide feedback.",
   ],
-  /** Download cards; files are hosted on iGEM docs under these names. */
-  files: [
+  manuals: [
     {
-      title: "Stakeholder Sustainability Tracker — Blank Template",
-      pdfs: [{ label: "Template", fileName: "sustainability-stakeholder-tracker-template.pdf" }],
+      label: "User Manual — English",
+      fileName: "sustainability-stakeholder-sustainability-tracker-user-manual-en.pdf",
+      url: "https://static.igem.wiki/teams/6056/wiki/files/docs/sustainability-stakeholder-sustainability-tracker-user-manual-en.pdf",
     },
     {
-      title: "CirCure Tracker Records",
-      pdfs: pdfPair("stakeholder-tracker-records"),
+      label: "User Manual — Chinese",
+      fileName: "sustainability-stakeholder-sustainability-tracker-user-manual-cn.pdf",
+      url: "https://static.igem.wiki/teams/6056/wiki/files/docs/sustainability-stakeholder-sustainability-tracker-user-manual-cn.pdf",
     },
-    {
-      title: "User Manual",
-      pdfs: pdfPair("stakeholder-tracker-user-manual"),
-    },
-  ] satisfies ReadonlyArray<Pick<LegacyTool, "title" | "pdfs">>,
+  ] satisfies ReadonlyArray<LegacyToolPdf>,
 };

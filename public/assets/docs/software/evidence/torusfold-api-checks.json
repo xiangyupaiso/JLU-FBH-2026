@@ -1,0 +1,53 @@
+{
+  "date": "2026-10-17",
+  "source_commit": "b6c4171ee2a4d68ff69954eee90144542e5f0569",
+  "scope": "schema, idle status and empty-sequence rejection only; no prediction submitted",
+  "schema": {
+    "http_status": 200,
+    "response_keys": [
+      "groups",
+      "open_by_default",
+      "path",
+      "knob_count",
+      "pipeline_option_count"
+    ]
+  },
+  "idle_status": {
+    "http_status": 200,
+    "response_keys": [
+      "job_id",
+      "status",
+      "progress",
+      "current_level",
+      "level_name",
+      "stage_label",
+      "message",
+      "error",
+      "elapsed",
+      "eta",
+      "stages",
+      "levels",
+      "started_at",
+      "finished_at",
+      "sequence_length",
+      "result_ready",
+      "server_generation",
+      "fraction",
+      "weights",
+      "plan",
+      "log_path",
+      "stage_progress",
+      "stage_index",
+      "stage_total",
+      "log_count",
+      "structure",
+      "metrics"
+    ]
+  },
+  "empty_request": {
+    "http_status": 400,
+    "response": {
+      "error": "No sequence provided"
+    }
+  }
+}

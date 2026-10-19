@@ -173,6 +173,8 @@ const overviewSection: WikiSection = {
     fig("overviewSstQnNetwork"),
     prose(sustainabilityOverview.toolkit),
     fig("overviewReusableToolkit"),
+    prose(sustainabilityOverview.contributions),
+    fig("overviewContributionPathways"),
   ],
 };
 
@@ -240,8 +242,11 @@ const setCoreChallenges: WikiSection = {
     prose(...setCoreChallengesSection.paragraphs),
     ...chapterBlocks(sustainabilityChapters[0]),
     subheading(stakeholderTracker.id, stakeholderTracker.index, stakeholderTracker.title),
-    prose(...stakeholderTracker.paragraphs),
-    feature("stakeholder-tracker-tools"),
+    prose(stakeholderTracker.paragraphs[0]),
+    feature("stakeholder-tracker-blank"),
+    prose(stakeholderTracker.paragraphs[1]),
+    feature("stakeholder-tracker-example"),
+    feature("stakeholder-tracker-manuals"),
     // SET chapters: SDG 9 / 12 only; DEVELOP chapters live in section 05.
     ...sustainabilityChapters.slice(1, 3).flatMap(chapterBlocks),
   ],

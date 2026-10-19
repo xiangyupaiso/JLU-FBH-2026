@@ -1,390 +1,772 @@
-import wetFigure01 from "../../../文案集/project/notebook/图片和附件/633b9db82718050d2e34c336ae055ed4.png";
-import wetFigure02 from "../../../文案集/project/notebook/图片和附件/cf0c1034027fec5eac53f6ec57953118.png";
-import wetFigure03 from "../../../文案集/project/notebook/图片和附件/85ac3fec37e662a9e01452709e0a6b66.png";
-import wetFigure04 from "../../../文案集/project/notebook/图片和附件/0d086bb98159e8146000c9fca5733773.png";
-import wetFigure05 from "../../../文案集/project/notebook/图片和附件/Engineering C2-03.png";
-import wetFigure06 from "../../../文案集/project/notebook/图片和附件/Engineering C2-07A .png";
-import wetFigure07 from "../../../文案集/project/notebook/图片和附件/Engineering C2-07B.png";
-import wetFigure08 from "../../../文案集/project/notebook/图片和附件/Engineering C2-08.png";
-import wetFigure09 from "../../../文案集/project/notebook/图片和附件/Engineering C3-01A.png";
-import wetFigure10 from "../../../文案集/project/notebook/图片和附件/Engineering C3-01B new.png";
-import wetFigure11 from "../../../文案集/project/notebook/图片和附件/Engineering C3-10.png";
-import wetFigure12 from "../../../文案集/project/notebook/图片和附件/Engineering C3-02A .png";
-import wetFigure13 from "../../../文案集/project/notebook/图片和附件/Engineering C3-02B .png";
-import wetFigure14 from "../../../文案集/project/notebook/图片和附件/Engineering C3-05A.png";
-import wetFigure15 from "../../../文案集/project/notebook/图片和附件/Engineering C3-05B.png";
-import wetFigure16 from "../../../文案集/project/notebook/图片和附件/Engineering C3-05C.png";
-import wetFigure17 from "../../../文案集/project/notebook/图片和附件/Engineering C3-06A.png";
-import wetFigure18 from "../../../文案集/project/notebook/图片和附件/Engineering C3-06B.png";
-import wetFigure19 from "../../../文案集/project/notebook/图片和附件/Engineering C3-06C.png";
-import wetFigure20 from "../../../文案集/project/notebook/图片和附件/Engineering C3-07.png";
-import wetFigure21 from "../../../文案集/project/notebook/图片和附件/Engineering C3-08.png";
-import wetFigure22 from "../../../文案集/project/notebook/图片和附件/Engineering C4-01A.png";
-import wetFigure23 from "../../../文案集/project/notebook/图片和附件/Engineering C4-01B.png";
-import wetFigure24 from "../../../文案集/project/notebook/图片和附件/Engineering C4-01C.png";
-import wetFigure25 from "../../../文案集/project/notebook/图片和附件/Engineering C4-01D.png";
-import wetFigure26 from "../../../文案集/project/notebook/图片和附件/Engineering C3-09.png";
-import wetFigure27 from "../../../文案集/project/notebook/图片和附件/Engineering C4-05A.png";
-import wetFigure28 from "../../../文案集/project/notebook/图片和附件/Engineering C4-05B.png";
-import wetFigure29 from "../../../文案集/project/notebook/图片和附件/Engineering C4-06A .png";
-import wetFigure30 from "../../../文案集/project/notebook/图片和附件/Engineering C4-06B.png";
-import wetFigure31 from "../../../文案集/project/notebook/图片和附件/Engineering C4-06C .png";
-import wetFigure32 from "../../../文案集/project/notebook/图片和附件/Engineering C4-06D .png";
-import wetFigure33 from "../../../文案集/project/notebook/图片和附件/Engineering C4-06E.png";
-import wetFigure34 from "../../../文案集/project/notebook/图片和附件/Engineering C4-07.png";
-
-interface NotebookAsset {
+export interface NotebookAsset {
   fileName: string;
-  localSourcePath: string;
-  localSrc: string;
   uploadUrl: string;
   alt: string;
   width: number;
   height: number;
+  title?: string;
+  thumbnailUrl?: string;
+  caption?: string;
 }
 
+/** Official URLs supplied with the manuscript; dimensions checked at import. */
 export const notebookAssets = {
-  wetFigure01: {
-    localSrc: wetFigure01,
-    fileName: "notebook-wet-01.png",
-    localSourcePath:
-      "文案集/project/notebook/图片和附件/633b9db82718050d2e34c336ae055ed4.png",
-    uploadUrl: "",
+  wet_f1_a: {
+    fileName: "wet-f1-a.avif",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/notebook/wet-f1-a.avif",
     alt: "Selected slides from early project discussions",
     width: 1966,
     height: 1111,
   },
-  wetFigure02: {
-    localSrc: wetFigure02,
-    fileName: "notebook-wet-02.png",
-    localSourcePath:
-      "文案集/project/notebook/图片和附件/cf0c1034027fec5eac53f6ec57953118.png",
-    uploadUrl: "",
+  wet_f1_b: {
+    fileName: "wet-f1-b.avif",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/notebook/wet-f1-b.avif",
     alt: "Selected slides from early project discussions",
     width: 2557,
     height: 1435,
   },
-  wetFigure03: {
-    localSrc: wetFigure03,
-    fileName: "notebook-wet-03.png",
-    localSourcePath:
-      "文案集/project/notebook/图片和附件/85ac3fec37e662a9e01452709e0a6b66.png",
-    uploadUrl: "",
+  wet_f1_c: {
+    fileName: "wet-f1-c.avif",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/notebook/wet-f1-c.avif",
     alt: "Selected slides from early project discussions",
     width: 2559,
     height: 1441,
   },
-  wetFigure04: {
-    localSrc: wetFigure04,
-    fileName: "notebook-wet-04.png",
-    localSourcePath:
-      "文案集/project/notebook/图片和附件/0d086bb98159e8146000c9fca5733773.png",
-    uploadUrl: "",
+  wet_f1_d: {
+    fileName: "wet-f1-d.avif",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/notebook/wet-f1-d.avif",
     alt: "Selected slides from early project discussions",
     width: 2559,
     height: 1441,
   },
-  wetFigure05: {
-    localSrc: wetFigure05,
-    fileName: "notebook-wet-05.png",
-    localSourcePath: "文案集/project/notebook/图片和附件/Engineering C2-03.png",
-    uploadUrl: "",
+  wet_f2: {
+    fileName: "wet-f2.avif",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/notebook/wet-f2.avif",
     alt: "First-round ELISpot",
     width: 966,
     height: 334,
   },
-  wetFigure06: {
-    localSrc: wetFigure06,
-    fileName: "notebook-wet-06.png",
-    localSourcePath:
-      "文案集/project/notebook/图片和附件/Engineering C2-07A .png",
-    uploadUrl: "",
+  wet_f3: {
+    fileName: "wet-f3.avif",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/notebook/wet-f3.avif",
     alt: "First-round CD8/CD69",
-    width: 1340,
-    height: 612,
+    width: 1273,
+    height: 523,
   },
-  wetFigure07: {
-    localSrc: wetFigure07,
-    fileName: "notebook-wet-07.png",
-    localSourcePath:
-      "文案集/project/notebook/图片和附件/Engineering C2-07B.png",
-    uploadUrl: "",
+  wet_f4: {
+    fileName: "wet-f4.avif",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/notebook/wet-f4.avif",
     alt: "First-round K562 killing",
-    width: 1745,
-    height: 1611,
+    width: 1280,
+    height: 1132,
   },
-  wetFigure08: {
-    localSrc: wetFigure08,
-    fileName: "notebook-wet-08.png",
-    localSourcePath: "文案集/project/notebook/图片和附件/Engineering C2-08.png",
-    uploadUrl: "",
+  wet_f5: {
+    fileName: "wet-f5.avif",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/notebook/wet-f5.avif",
     alt: "Combined plasmid map",
-    width: 1844,
-    height: 1339,
+    width: 1280,
+    height: 929,
   },
-  wetFigure09: {
-    localSrc: wetFigure09,
-    fileName: "notebook-wet-09.png",
-    localSourcePath:
-      "文案集/project/notebook/图片和附件/Engineering C3-01A.png",
-    uploadUrl: "",
-    alt: "Second-round DNA templates",
+  wet_f6: {
+    fileName: "wet-f6.avif",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/notebook/wet-f6.avif",
+    alt: "Target-region PCR verification of the four antigen-encoding plasmids.",
     width: 733,
     height: 549,
   },
-  wetFigure10: {
-    localSrc: wetFigure10,
-    fileName: "notebook-wet-10.png",
-    localSourcePath:
-      "文案集/project/notebook/图片和附件/Engineering C3-01B new.png",
-    uploadUrl: "",
+  wet_f7: {
+    fileName: "wet-f7.avif",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/notebook/wet-f7.avif",
     alt: "Combined junction sequencing",
-    width: 1585,
-    height: 726,
+    width: 1280,
+    height: 586,
   },
-  wetFigure11: {
-    localSrc: wetFigure11,
-    fileName: "notebook-wet-11.png",
-    localSourcePath: "文案集/project/notebook/图片和附件/Engineering C3-10.png",
-    uploadUrl: "",
+  wet_f8: {
+    fileName: "wet-f8.avif",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/notebook/wet-f8.avif",
     alt: "Empty-LNP DC viability",
     width: 699,
     height: 486,
   },
-  wetFigure12: {
-    localSrc: wetFigure12,
-    fileName: "notebook-wet-12.png",
-    localSourcePath:
-      "文案集/project/notebook/图片和附件/Engineering C3-02A .png",
-    uploadUrl: "",
+  wet_f9: {
+    fileName: "wet-f9-1.avif",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/notebook/wet-f9-1.avif",
     alt: "RNA persistence gel",
-    width: 1297,
-    height: 537,
+    width: 1280,
+    height: 471,
   },
-  wetFigure13: {
-    localSrc: wetFigure13,
-    fileName: "notebook-wet-13.png",
-    localSourcePath:
-      "文案集/project/notebook/图片和附件/Engineering C3-02B .png",
-    uploadUrl: "",
+  wet_f10: {
+    fileName: "wet-f10.avif",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/notebook/wet-f10.avif",
     alt: "Relative RNA band intensity",
-    width: 1302,
-    height: 730,
+    width: 1280,
+    height: 655,
   },
-  wetFigure14: {
-    localSrc: wetFigure14,
-    fileName: "notebook-wet-14.png",
-    localSourcePath:
-      "文案集/project/notebook/图片和附件/Engineering C3-05A.png",
-    uploadUrl: "",
+  wet_f11: {
+    fileName: "wet-f11.avif",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/notebook/wet-f11.avif",
     alt: "Anti-FLAG Western blot",
-    width: 1480,
-    height: 812,
+    width: 1280,
+    height: 648,
   },
-  wetFigure15: {
-    localSrc: wetFigure15,
-    fileName: "notebook-wet-15.png",
-    localSourcePath:
-      "文案集/project/notebook/图片和附件/Engineering C3-05B.png",
-    uploadUrl: "",
+  wet_f12: {
+    fileName: "wet-f12.avif",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/notebook/wet-f12.avif",
     alt: "DC maturation flow cytometry",
-    width: 1340,
-    height: 441,
+    width: 1280,
+    height: 359,
   },
-  wetFigure16: {
-    localSrc: wetFigure16,
-    fileName: "notebook-wet-16.png",
-    localSourcePath:
-      "文案集/project/notebook/图片和附件/Engineering C3-05C.png",
-    uploadUrl: "",
+  wet_f13: {
+    fileName: "wet-f13.avif",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/notebook/wet-f13.avif",
     alt: "DC maturation quantification",
     width: 828,
-    height: 766,
+    height: 692,
   },
-  wetFigure17: {
-    localSrc: wetFigure17,
-    fileName: "notebook-wet-17.png",
-    localSourcePath:
-      "文案集/project/notebook/图片和附件/Engineering C3-06A.png",
-    uploadUrl: "",
+  wet_f14: {
+    fileName: "wet-f14.avif",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/notebook/wet-f14.avif",
     alt: "T-cell activation phenotype",
-    width: 1360,
-    height: 1250,
+    width: 1280,
+    height: 1115,
   },
-  wetFigure18: {
-    localSrc: wetFigure18,
-    fileName: "notebook-wet-18.png",
-    localSourcePath:
-      "文案集/project/notebook/图片和附件/Engineering C3-06B.png",
-    uploadUrl: "",
+  wet_f15: {
+    fileName: "wet-f15.avif",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/notebook/wet-f15.avif",
     alt: "T-cell co-stimulation phenotype",
-    width: 1360,
-    height: 1250,
+    width: 1280,
+    height: 1115,
   },
-  wetFigure19: {
-    localSrc: wetFigure19,
-    fileName: "notebook-wet-19.png",
-    localSourcePath:
-      "文案集/project/notebook/图片和附件/Engineering C3-06C.png",
-    uploadUrl: "",
+  wet_f16: {
+    fileName: "wet-f16.avif",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/notebook/wet-f16.avif",
     alt: "Effector-memory-associated phenotype",
-    width: 1360,
-    height: 1250,
+    width: 1280,
+    height: 1120,
   },
-  wetFigure20: {
-    localSrc: wetFigure20,
-    fileName: "notebook-wet-20.png",
-    localSourcePath: "文案集/project/notebook/图片和附件/Engineering C3-07.png",
-    uploadUrl: "",
+  wet_f17: {
+    fileName: "wet-f17.avif",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/notebook/wet-f17.avif",
     alt: "Second-round ELISpot",
     width: 736,
     height: 214,
   },
-  wetFigure21: {
-    localSrc: wetFigure21,
-    fileName: "notebook-wet-21.png",
-    localSourcePath: "文案集/project/notebook/图片和附件/Engineering C3-08.png",
-    uploadUrl: "",
+  wet_f18: {
+    fileName: "wet-f18.avif",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/notebook/wet-f18.avif",
     alt: "MDA-MB-231 killing",
     width: 756,
     height: 451,
   },
-  wetFigure22: {
-    localSrc: wetFigure22,
-    fileName: "notebook-wet-22.png",
-    localSourcePath:
-      "文案集/project/notebook/图片和附件/Engineering C4-01A.png",
-    uploadUrl: "",
+  wet_f19: {
+    fileName: "wet-f19.avif",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/notebook/wet-f19.avif",
     alt: "TROP2 transcript detection",
     width: 748,
-    height: 977,
+    height: 920,
   },
-  wetFigure23: {
-    localSrc: wetFigure23,
-    fileName: "notebook-wet-23.png",
-    localSourcePath:
-      "文案集/project/notebook/图片和附件/Engineering C4-01B.png",
-    uploadUrl: "",
+  wet_f20: {
+    fileName: "wet-f20.avif",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/notebook/wet-f20.avif",
     alt: "Surface TROP2 expression",
-    width: 1340,
-    height: 742,
+    width: 1280,
+    height: 657,
   },
-  wetFigure24: {
-    localSrc: wetFigure24,
-    fileName: "notebook-wet-24.png",
-    localSourcePath:
-      "文案集/project/notebook/图片和附件/Engineering C4-01C.png",
-    uploadUrl: "",
+  wet_f21: {
+    fileName: "wet-f21.avif",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/notebook/wet-f21.avif",
     alt: "GFP fluorescence",
-    width: 1340,
-    height: 847,
+    width: 1280,
+    height: 747,
   },
-  wetFigure25: {
-    localSrc: wetFigure25,
-    fileName: "notebook-wet-25.png",
-    localSourcePath:
-      "文案集/project/notebook/图片和附件/Engineering C4-01D.png",
-    uploadUrl: "",
+  wet_f22: {
+    fileName: "wet-f22.avif",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/notebook/wet-f22.avif",
     alt: "GFP sorting gates",
-    width: 2323,
-    height: 853,
+    width: 1280,
+    height: 439,
   },
-  wetFigure26: {
-    localSrc: wetFigure26,
-    fileName: "notebook-wet-26.png",
-    localSourcePath: "文案集/project/notebook/图片和附件/Engineering C3-09.png",
-    uploadUrl: "",
+  wet_f23: {
+    fileName: "wet-f23.avif",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/notebook/wet-f23.avif",
     alt: "Tumour and non-tumour targets",
     width: 694,
     height: 450,
   },
-  wetFigure27: {
-    localSrc: wetFigure27,
-    fileName: "notebook-wet-27.png",
-    localSourcePath:
-      "文案集/project/notebook/图片和附件/Engineering C4-05A.png",
-    uploadUrl: "",
+  wet_f24: {
+    fileName: "wet-f24.avif",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/notebook/wet-f24.avif",
     alt: "Tumour growth curves",
     width: 1125,
-    height: 610,
+    height: 554,
   },
-  wetFigure28: {
-    localSrc: wetFigure28,
-    fileName: "notebook-wet-28.png",
-    localSourcePath:
-      "文案集/project/notebook/图片和附件/Engineering C4-05B.png",
-    uploadUrl: "",
+  wet_f25: {
+    fileName: "wet-f25.avif",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/notebook/wet-f25.avif",
     alt: "Excised tumours at the endpoint",
     width: 520,
-    height: 436,
+    height: 379,
   },
-  wetFigure29: {
-    localSrc: wetFigure29,
-    fileName: "notebook-wet-29.png",
-    localSourcePath:
-      "文案集/project/notebook/图片和附件/Engineering C4-06A .png",
-    uploadUrl: "",
+  wet_f26: {
+    fileName: "wet-f26.avif",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/notebook/wet-f26.avif",
     alt: "Splenic DC maturation",
-    width: 1340,
-    height: 495,
+    width: 1280,
+    height: 422,
   },
-  wetFigure30: {
-    localSrc: wetFigure30,
-    fileName: "notebook-wet-30.png",
-    localSourcePath:
-      "文案集/project/notebook/图片和附件/Engineering C4-06B.png",
-    uploadUrl: "",
+  wet_f27: {
+    fileName: "wet-f27.avif",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/notebook/wet-f27.avif",
     alt: "Splenic CD8 activation",
-    width: 1340,
-    height: 502,
+    width: 1280,
+    height: 435,
   },
-  wetFigure31: {
-    localSrc: wetFigure31,
-    fileName: "notebook-wet-31.png",
-    localSourcePath:
-      "文案集/project/notebook/图片和附件/Engineering C4-06C .png",
-    uploadUrl: "",
+  wet_f28: {
+    fileName: "wet-f28.avif",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/notebook/wet-f28.avif",
     alt: "Splenic memory-associated phenotype",
-    width: 1340,
-    height: 476,
+    width: 1280,
+    height: 409,
   },
-  wetFigure32: {
-    localSrc: wetFigure32,
-    fileName: "notebook-wet-32.png",
-    localSourcePath:
-      "文案集/project/notebook/图片和附件/Engineering C4-06D .png",
-    uploadUrl: "",
+  wet_f29: {
+    fileName: "wet-f29.avif",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/notebook/wet-f29.avif",
     alt: "Splenic intracellular IFN-γ",
-    width: 1340,
-    height: 493,
+    width: 1280,
+    height: 398,
   },
-  wetFigure33: {
-    localSrc: wetFigure33,
-    fileName: "notebook-wet-33.png",
-    localSourcePath:
-      "文案集/project/notebook/图片和附件/Engineering C4-06E.png",
-    uploadUrl: "",
+  wet_f30: {
+    fileName: "wet-f30.avif",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/notebook/wet-f30.avif",
     alt: "Splenic intracellular Granzyme B",
-    width: 1340,
-    height: 531,
+    width: 1280,
+    height: 455,
   },
-  wetFigure34: {
-    localSrc: wetFigure34,
-    fileName: "notebook-wet-34.png",
-    localSourcePath: "文案集/project/notebook/图片和附件/Engineering C4-07.png",
-    uploadUrl: "",
+  wet_f31: {
+    fileName: "wet-f31.avif",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/notebook/wet-f31.avif",
     alt: "Tumour immune-signal imaging",
     width: 954,
     height: 596,
+  },
+  dry_f1: {
+    fileName: "dry-f1.avif",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/notebook/dry-f1.avif",
+    alt: "PXD024322 differential proteins",
+    width: 1280,
+    height: 878,
+  },
+  dry_f2: {
+    fileName: "dry-f2.avif",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/notebook/dry-f2.avif",
+    alt: "PXD024322 candidate abundance",
+    width: 1280,
+    height: 604,
+  },
+  dry_f3: {
+    fileName: "dry-f3.avif",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/notebook/dry-f3.avif",
+    alt: "PXD028102 paired analysis",
+    width: 1280,
+    height: 947,
+  },
+  dry_f4: {
+    fileName: "dry-f4.avif",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/notebook/dry-f4.avif",
+    alt: "PXD028102 candidate abundance",
+    width: 1280,
+    height: 671,
+  },
+  dry_f5: {
+    fileName: "dry-f5.avif",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/notebook/dry-f5.avif",
+    alt: "Single-cell lineages",
+    width: 1280,
+    height: 1090,
+  },
+  dry_f6: {
+    fileName: "dry-f6.avif",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/notebook/dry-f6.avif",
+    alt: "Candidate-gene localisation",
+    width: 960,
+    height: 1280,
+  },
+  dry_f7: {
+    fileName: "dry-f7.avif",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/notebook/dry-f7.avif",
+    alt: "Malignant-cell panel detection",
+    width: 1257,
+    height: 1280,
+  },
+  dry_f8: {
+    fileName: "dry-f8.avif",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/notebook/dry-f8.avif",
+    alt: "Patient-level representation",
+    width: 1280,
+    height: 464,
+  },
+  dry_f9: {
+    fileName: "dry-f9.avif",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/notebook/dry-f9.avif",
+    alt: "Epitope prioritisation",
+    width: 1280,
+    height: 896,
+  },
+  dry_f10: {
+    fileName: "dry-f10.avif",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/notebook/dry-f10.avif",
+    alt: "Peptide–HLA structural model",
+    width: 1280,
+    height: 718,
+  },
+  dry_f11: {
+    fileName: "dry-f11.avif",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/notebook/dry-f11.avif",
+    alt: "V1.0 import and quality control",
+    width: 1280,
+    height: 889,
+  },
+  dry_f12: {
+    fileName: "dry-f12.avif",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/notebook/dry-f12.avif",
+    alt: "V1.0 target screening",
+    width: 1280,
+    height: 806,
+  },
+  dry_f13: {
+    fileName: "dry-f13.avif",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/notebook/dry-f13.avif",
+    alt: "V1.0 epitope prediction",
+    width: 1280,
+    height: 1052,
+  },
+  dry_f14: {
+    fileName: "dry-f14.avif",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/notebook/dry-f14.avif",
+    alt: "Viability-response calibration",
+    width: 1280,
+    height: 755,
+  },
+  dry_f15: {
+    fileName: "dry-f15.avif",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/notebook/dry-f15.avif",
+    alt: "Killing-response calibration",
+    width: 1280,
+    height: 755,
+  },
+  dry_f16: {
+    fileName: "dry-f16.avif",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/notebook/dry-f16.avif",
+    alt: "Combined RNA segmentation",
+    width: 1280,
+    height: 421,
+  },
+  dry_f17: {
+    fileName: "dry-f17.avif",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/notebook/dry-f17.avif",
+    alt: "Fragment refinement",
+    width: 1018,
+    height: 369,
+  },
+  dry_f18: {
+    fileName: "dry-f18.avif",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/notebook/dry-f18.avif",
+    alt: "Full-length RNA model",
+    width: 480,
+    height: 369,
+  },
+  dry_f19: {
+    fileName: "dry-f19.avif",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/notebook/dry-f19.avif",
+    alt: "V2.0 Design Cart",
+    width: 1280,
+    height: 719,
+  },
+  dry_f20: {
+    fileName: "dry-f20.avif",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/notebook/dry-f20.avif",
+    alt: "V2.0 construct review",
+    width: 1280,
+    height: 720,
+  },
+  dry_f21: {
+    fileName: "dry-f21.avif",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/notebook/dry-f21.avif",
+    alt: "V2.0 export",
+    width: 1280,
+    height: 719,
+  },
+  dry_f22: {
+    fileName: "dry-f22.avif",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/notebook/dry-f22.avif",
+    alt: "V2.0 Evidence Card",
+    width: 1280,
+    height: 719,
+  },
+  en_f1a: {
+    fileName: "en-f1a.avif",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/notebook/en-f1a.avif",
+    alt: "Winter outreach across five schools",
+    width: 4000,
+    height: 3000,
+  },
+  en_f1b: {
+    fileName: "en-f1b.avif",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/notebook/en-f1b.avif",
+    alt: "Winter outreach across five schools",
+    width: 4000,
+    height: 3000,
+  },
+  en_f1c: {
+    fileName: "en-f1c.avif",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/notebook/en-f1c.avif",
+    alt: "Winter outreach across five schools",
+    width: 1707,
+    height: 1280,
+  },
+  en_f1d: {
+    fileName: "en-f1d.avif",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/notebook/en-f1d.avif",
+    alt: "Winter outreach across five schools",
+    width: 4000,
+    height: 3000,
+  },
+  en_f1e: {
+    fileName: "en-f1e.avif",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/notebook/en-f1e.avif",
+    alt: "Winter outreach across five schools",
+    width: 2275,
+    height: 1279,
+  },
+  en_f2: {
+    fileName: "en-f2.avif",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/notebook/en-f2.avif",
+    alt: "Community Day participation",
+    width: 2473,
+    height: 1885,
+  },
+  en_f3: {
+    fileName: "en-f3.avif",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/notebook/en-f3.avif",
+    alt: "Plants and environmental awareness",
+    width: 4000,
+    height: 3000,
+  },
+  en_f4: {
+    fileName: "en-f4.avif",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/notebook/en-f4.avif",
+    alt: "Endocrine health lecture",
+    width: 4000,
+    height: 3000,
+  },
+  en_f5: {
+    fileName: "en-f5.avif",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/notebook/en-f5.avif",
+    alt: "Digital participation: Learn",
+    width: 1290,
+    height: 2796,
+  },
+  en_f5_b: {
+    fileName: "en-f5-b.avif",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/notebook/en-f5-b.avif",
+    alt: "Digital participation: Learn",
+    width: 1290,
+    height: 2796,
+  },
+  en_f5c: {
+    fileName: "en-f5c.avif",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/notebook/en-f5c.avif",
+    alt: "Digital participation: Learn",
+    width: 1290,
+    height: 2796,
+  },
+  en_f5d: {
+    fileName: "en-f5d.avif",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/notebook/en-f5d.avif",
+    alt: "Digital participation: Learn",
+    width: 1290,
+    height: 2796,
+  },
+  en_f6: {
+    fileName: "en-f6.avif",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/notebook/en-f6.avif",
+    alt: "Campus bioethics debate",
+    width: 1920,
+    height: 1080,
+  },
+  en_f7: {
+    fileName: "en-f7.avif",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/notebook/en-f7.avif",
+    alt: "Letters across universities",
+    width: 1920,
+    height: 1080,
+  },
+  en_f8a_1: {
+    fileName: "en-f8a-1.avif",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/notebook/en-f8a-1.avif",
+    alt: "Xinghua Festival: breast-health outreach",
+    width: 4000,
+    height: 3000,
+  },
+  en_f8b_1: {
+    fileName: "en-f8b-1.avif",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/notebook/en-f8b-1.avif",
+    alt: "Xinghua Festival: breast-health outreach",
+    width: 4000,
+    height: 3000,
+  },
+  en_f8c_1: {
+    fileName: "en-f8c-1.avif",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/notebook/en-f8c-1.avif",
+    alt: "Xinghua Festival: breast-health outreach",
+    width: 4000,
+    height: 3000,
+  },
+  en_f8d_1: {
+    fileName: "en-f8d-1.avif",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/notebook/en-f8d-1.avif",
+    alt: "Xinghua Festival: breast-health outreach",
+    width: 4000,
+    height: 3000,
+  },
+  en_f9: {
+    fileName: "en-f9.avif",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/notebook/en-f9.avif",
+    alt: "Air-to-Bread Classroom",
+    width: 4000,
+    height: 3000,
+  },
+  en_f10a: {
+    fileName: "en-f10a.avif",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/notebook/en-f10a.avif",
+    alt: "Digital participation: Design",
+    width: 1290,
+    height: 2796,
+  },
+  en_f10b: {
+    fileName: "en-f10b.avif",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/notebook/en-f10b.avif",
+    alt: "Digital participation: Design",
+    width: 1290,
+    height: 2796,
+  },
+  en_f10c: {
+    fileName: "en-f10c.avif",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/notebook/en-f10c.avif",
+    alt: "Digital participation: Design",
+    width: 1290,
+    height: 2796,
+  },
+  en_f10d: {
+    fileName: "en-f10d.avif",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/notebook/en-f10d.avif",
+    alt: "Digital participation: Design",
+    width: 1290,
+    height: 2796,
+  },
+  en_f11: {
+    fileName: "en-f11.avif",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/notebook/en-f11.avif",
+    alt: "Health Run",
+    width: 4000,
+    height: 3000,
+  },
+  northeast: {
+    fileName: "northeast.avif",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/entrepreneurship/northeast.avif",
+    alt: "Northeast China iGEM Co-creation Salon",
+    width: 2275,
+    height: 1280,
+  },
+  en_f13: {
+    fileName: "en-f13.avif",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/notebook/en-f13.avif",
+    alt: "iGEM Human Practices live class",
+    width: 1706,
+    height: 1279,
+  },
+  en_f14: {
+    fileName: "en-f14.avif",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/notebook/en-f14.avif",
+    alt: "Vaccine Classroom",
+    width: 1100,
+    height: 825,
+  },
+  en_f15_1: {
+    fileName: "en-f15-1.avif",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/notebook/en-f15-1.avif",
+    alt: "Music Festival and Molecular Rhythm",
+    width: 4000,
+    height: 3000,
+  },
+  en_f16: {
+    fileName: "en-f16.avif",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/notebook/en-f16.avif",
+    alt: "Hailun follow-up and teacher-led use",
+    width: 1702,
+    height: 1276,
+  },
+  south: {
+    fileName: "south.avif",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/entrepreneurship/south.avif",
+    alt: "2026 Southern China Regional Meeting",
+    width: 1920,
+    height: 1280,
+  },
+  east_china: {
+    fileName: "east-china.avif",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/entrepreneurship/east-china.avif",
+    alt: "2026 iGEM East China Regional Meeting",
+    width: 4000,
+    height: 3000,
+  },
+  north: {
+    fileName: "north.avif",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/entrepreneurship/north.avif",
+    alt: "2026 North China iGEMer Meetup",
+    width: 2276,
+    height: 1280,
+  },
+  central: {
+    fileName: "central.avif",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/entrepreneurship/central.avif",
+    alt: "2026 Central China iGEM Forum",
+    width: 1920,
+    height: 1280,
+  },
+  en_f21: {
+    fileName: "en-f21.avif",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/notebook/en-f21.avif",
+    alt: "Pilu Town Virtual Laboratory activities",
+    width: 3248,
+    height: 2436,
+  },
+  synbiopunk: {
+    fileName: "synbiopunk.avif",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/entrepreneurship/synbiopunk.avif",
+    alt: "Synbiopunk-CCiC 2026",
+    width: 4000,
+    height: 2251,
+  },
+  en_f23: {
+    fileName: "en-f23.avif",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/notebook/en-f23.avif",
+    alt: "Synbio Classroom",
+    width: 1707,
+    height: 1280,
+  },
+  apic: {
+    fileName: "apic.avif",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/entrepreneurship/apic.avif",
+    alt: "The 1st Grand APiC Conference for Asia-Pacific iGEMer Community",
+    width: 2568,
+    height: 1926,
   },
 } as const satisfies Record<string, NotebookAsset>;
 
 export type NotebookAssetKey = keyof typeof notebookAssets;
 
 export function getNotebookImage(key: NotebookAssetKey): string {
-  return notebookAssets[key].uploadUrl || notebookAssets[key].localSrc;
+  return notebookAssets[key].uploadUrl;
 }
 
-export const notebookPreloadImages = Object.keys(notebookAssets).map((key) =>
-  getNotebookImage(key as NotebookAssetKey),
+// Include figures in collapsed entries and other groups in the shared loader.
+export const notebookPreloadImages = Object.values(notebookAssets).flatMap(
+  (asset: NotebookAsset) =>
+    asset.thumbnailUrl
+      ? [asset.uploadUrl, asset.thumbnailUrl]
+      : [asset.uploadUrl],
 );

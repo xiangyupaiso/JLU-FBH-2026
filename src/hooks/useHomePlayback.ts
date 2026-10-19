@@ -40,7 +40,7 @@ const BEATS: readonly Beat[] = [
   { chapter: 0, progress: 0.66, label: "portrait-closeup", travel: 3 },
   { chapter: 0, progress: 0.98, travel: 2, hold: 3 },
   { chapter: 1, progress: 0, travel: 2 },
-  { chapter: 1, progress: 0.42, travel: 4, hold: 2 },
+  { chapter: 1, progress: 0.42, travel: 4 },
   // Hold the patient's question before moisture starts gathering. A chapter
   // percentage can already overlap the bridge and freeze the drop mid-growth.
   { chapter: 2, kind: "bridge", progress: 0, travel: 4, hold: 3 },

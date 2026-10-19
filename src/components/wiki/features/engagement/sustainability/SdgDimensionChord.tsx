@@ -58,7 +58,16 @@ function loadD3(): Promise<unknown> {
   return d3Loader;
 }
 
-export function SdgDimensionChord() {
+export function SdgDimensionChord({
+  numbered = true,
+  scrollable = false,
+  caption = "Weighted mapping of the 17 SDGs across social, economic, and environmental dimensions.",
+}: {
+  numbered?: boolean;
+  scrollable?: boolean;
+  caption?: string;
+} = {}) {
+  const figureRef = useRef<HTMLElement | null>(null);
   const hostRef = useRef<HTMLDivElement | null>(null);
   const tipRef = useRef<HTMLDivElement | null>(null);
   const [d3, setD3] = useState<D3 | null>(() => window.d3 ?? null);
@@ -378,14 +387,15 @@ export function SdgDimensionChord() {
         );
     })
       .on("mousemove", (e) => {
-        const hostRect = host.getBoundingClientRect();
+        const figureRect = figureRef.current!.getBoundingClientRect();
         const tipEl = tipRef.current;
         const tipW = tipEl ? tipEl.offsetWidth || 250 : 250;
         const tipH = tipEl ? tipEl.offsetHeight || 65 : 65;
-        let posX = e.clientX - hostRect.left - 16;
-        let posY = e.clientY - hostRect.top - 16;
-        if (posX - tipW < 8) posX = tipW + 8;
-        if (posY - tipH < 8) posY = tipH + 8;
+        const posX = Math.min(
+          figureRect.width - 8,
+          Math.max(tipW + 8, e.clientX - figureRect.left - 16),
+        );
+        const posY = Math.max(tipH + 8, e.clientY - figureRect.top - 16);
         tipNode
           .style("left", `${posX}px`)
           .style("top", `${posY}px`);
@@ -395,7 +405,7 @@ export function SdgDimensionChord() {
         tipNode.style("opacity", 0);
       });
     g.selectAll("path.goal")
-      .on("mouseenter", (_e, d) => focus((x) => x.goal === d.id))
+      .on("mouseenter", (_e, d) => focus((x) => x.goal + 1 === d.id))
       .on("mouseleave", () => rib.attr("opacity", 1));
     g.selectAll("path.dim")
       .on("mouseenter", (_e, d) => focus((x) => x.dim === d.d))
@@ -408,18 +418,24 @@ export function SdgDimensionChord() {
   }, [d3]);
 
   return (
-    // `wiki-figure` puts the chord in the page's FIG. nn caption sequence.
-    <figure className="wiki-figure sust-chord">
-      <div className="sust-chord__host" ref={hostRef}>
-        {missing ? (
-          <p className="sust-chord__missing">
-            The chord diagram needs d3 (public/vendor/d3.min.js is not loaded).
-          </p>
-        ) : null}
+    <figure ref={figureRef} className={`${numbered ? "wiki-figure " : ""}sust-chord`}>
+      <div
+        className={scrollable ? "sust-chord__scroll" : undefined}
+        tabIndex={scrollable ? 0 : undefined}
+        role={scrollable ? "region" : undefined}
+        aria-label={scrollable ? caption : undefined}
+      >
+        <div className="sust-chord__host" ref={hostRef}>
+          {missing ? (
+            <p className="sust-chord__missing">
+              The chord diagram needs d3 (public/vendor/d3.min.js is not loaded).
+            </p>
+          ) : null}
+        </div>
       </div>
       <div className="sust-chord__tooltip" ref={tipRef} />
       <figcaption className="sust-chart-caption">
-        Weighted mapping of the 17 SDGs across social, economic, and environmental dimensions.
+        {caption}
       </figcaption>
     </figure>
   );

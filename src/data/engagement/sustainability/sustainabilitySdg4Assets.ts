@@ -2,8 +2,7 @@
  * SDG 4 hosted assets, copied verbatim from their positions in the manuscript.
  *
  * Photographs use the team's remote `static.igem.wiki` URLs (same convention as
- * the SDG 12 chapter). The Weiwei Han entry repeats one placeholder URL three
- * times in the manuscript; identical sources are de-duplicated by the card.
+ * the SDG 12 chapter).
  */
 import type { SustainabilityAssetEntry } from "./sustainabilityAssets";
 import type { StakeholderPhotoSet } from "./sustainabilityPhotos";
@@ -33,7 +32,11 @@ export const sdg4PhotoSets = {
     "02-shuangcheng-yu-2.avif",
     "02-shuangcheng-yu-3.avif",
   ),
-  "sdg4-03": [],
+  "sdg4-03": photoSet(
+    "Xiang Cao",
+    "03-xiang-cao-1.avif",
+    "03-xiang-cao-2.avif",
+  ),
   "sdg4-05": photoSet(
     "Body Guardians",
     "05-body-guardians-1.avif",
@@ -186,23 +189,25 @@ export const sdg4ImageAssets = {
   },
   sdg4Evidence0: {
     kind: "image",
-    fileName: "evidence-0.avif",
+    fileName: "evidence-0-1.avif",
     localSourcePath: "",
-    uploadUrl: `${SDG4_PAGES}/evidence-0.avif`,
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/sustainability/sdg4/evidence-0-1.avif",
     alt: "Feedback from three stakeholder groups informing educational design",
     section: "SDG 4 — Evidence",
-    width: 2807,
-    height: 1025,
+    width: 3106,
+    height: 1029,
   },
   sdg4Evidence1: {
     kind: "image",
-    fileName: "evidence-1.avif",
+    fileName: "evidence-1-2.avif",
     localSourcePath: "",
-    uploadUrl: `${SDG4_PAGES}/evidence-1.avif`,
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/sustainability/sdg4/evidence-1-2.avif",
     alt: "Reach of the 14 educational activities across schools and audiences",
     section: "SDG 4 — Evidence",
-    width: 3599,
-    height: 2070,
+    width: 3604,
+    height: 1997,
   },
   sdg4Evidence2: {
     kind: "image",

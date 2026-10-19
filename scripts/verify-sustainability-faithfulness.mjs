@@ -1,4 +1,4 @@
-/** Validate the finalized SDG 4 onward copy and the page's chapter/asset links. */
+/** Validate finalized copy, review restorations, and chapter/asset links. */
 import assert from "node:assert/strict";
 import { readFileSync, mkdirSync, writeFileSync } from "node:fs";
 import { createRequire } from "node:module";
@@ -11,7 +11,7 @@ mkdirSync(temporary, { recursive: true });
 const bundle = await build({
   stdin: {
     contents: `export { sustainabilityPage } from './src/data/engagement/sustainability/sustainabilityPage';
-      export { sustainabilityChapters, coreSdgs, impactTiers } from './src/data/engagement/sustainability/sustainabilityData';
+      export { sustainabilityChapters, coreSdgs, impactTiers, sustainabilityOverview } from './src/data/engagement/sustainability/sustainabilityData';
       export { sustainabilityContributionScores } from './src/data/engagement/sustainability/sustainabilityContributionData';`,
     resolveDir: root,
   },
@@ -65,12 +65,52 @@ const manuscript = readFileSync(
   ),
   "utf8",
 );
+// Repeated review omissions: verify the restored paragraph is actually rendered
+// between the toolkit figure and the contribution pathways, and preserve every
+// SDG 12 table description from the manuscript.
+const overview = data.sustainabilityPage.sections[0].blocks;
+const contributionIndex = overview.findIndex(
+  (block) => block.type === "prose" &&
+    block.paragraphs.includes(data.sustainabilityOverview.contributions),
+);
+assert(contributionIndex > 0, "Missing Overview contribution paragraph");
+assert(normalize(manuscript).includes(normalize(data.sustainabilityOverview.contributions)));
+assert.match(overview[contributionIndex - 1].src, /04-reusable-sustainability-toolkit\.avif$/);
+assert.match(overview[contributionIndex + 1].src, /05-circure-s-sdg-contribution-pathways\.avif$/);
+const sdg12 = data.sustainabilityChapters.find((chapter) => chapter.id === "sdg12");
+const sdg12Table = manuscript.split(/\r?\n/).filter((line) =>
+  /^\|(?:Resource Responsibility Map|Sustainability Claim Boundary Protocol|Sustainable Planting Education Guide)\|/.test(line),
+);
+assert.equal(sdg12Table.length, 3);
+assert(sdg12.evidence.measurable.some((item) => item.toolTable));
+for (const row of sdg12Table) {
+  const [title, description] = row.slice(1).split("|");
+  const tool = sdg12.legacy.tools.find((entry) => entry.title === title);
+  assert.equal(normalize(tool?.whatItDoes ?? ""), normalize(description), title);
+  assert.deepEqual(tool.pdfs.map((pdf) => pdf.label).sort(), ["Chinese", "English"]);
+}
+assert(!strings(data.sustainabilityPage).join("\n").includes(
+  "To assess the Tracker’s usability and analytical value in real projects",
+));
 const source = manuscript.slice(manuscript.indexOf("### SDG4"));
 const updatedChapters = data.sustainabilityChapters.filter((chapter) =>
   ["sdg4", "sdg17"].includes(chapter.id),
 );
 const updatedSections = data.sustainabilityPage.sections.slice(5);
-const copyStrings = strings([...updatedChapters, ...updatedSections]);
+// GROW's five complete narratives now live in the review-supplied explorer.
+const explorerSource = readFileSync(
+  resolve(root, "src/assets/wiki/sustainability/circure-sdg.js"),
+  "utf8",
+);
+const explorerGoals = JSON.parse(
+  explorerSource.match(/const GOALS = (\[[\s\S]*?\n\s*\]);/)[1],
+);
+assert.deepEqual(explorerGoals.map((goal) => goal.id), [1, 5, 8, 10, 13]);
+const copyStrings = strings([
+  ...updatedChapters,
+  ...updatedSections,
+  ...explorerGoals.map((goal) => goal.original),
+]);
 const corpus = copyStrings.map(normalize).join("\n");
 const omissions = [];
 // Review PDF item 21 explicitly removes this sentence and its portrait navigation.
@@ -109,7 +149,7 @@ for (let line of source.split(/\r?\n/)) {
     )
     .replace(
       "XX teams working across XX iGEM Villages completed XX explanations",
-      "17 teams working across 11 iGEM Villages completed 43 explanations",
+      "17 teams working across 11 iGEM Villages completed 47 explanations",
     );
   const text = normalize(line);
   if (approvedDeletions.has(text)) continue;
@@ -124,7 +164,7 @@ assert.deepEqual(
 );
 assert(!/\bXX\b|XXX|Add actual records|This progression from/.test(corpus));
 assert.equal(data.sustainabilityPage.sections.length, 8);
-assert.equal(updatedChapters[0].legacy.table.rows.length, 15);
+assert.equal(updatedChapters[0].legacy.table.rows.length, 16);
 assert.equal(updatedChapters[0].alignment.table.rows.length, 7);
 assert.equal(
   updatedChapters[0].evidence.measurable.find((item) => item.table)?.table.rows
@@ -138,23 +178,30 @@ assert.equal(
 );
 
 const anchors = new Set(
-  data.sustainabilityPage.sections.flatMap((section) => [
-    section.id,
-    ...section.blocks
-      .filter((block) => block.type === "subheading")
-      .map((block) => block.id),
-  ]),
+  [
+    ...data.sustainabilityPage.sections.flatMap((section) => [
+      section.id,
+      ...section.blocks
+        .filter((block) => block.type === "subheading")
+        .map((block) => block.id),
+    ]),
+    // SdgExplorer renders these compatibility anchors around the five goals.
+    ...explorerGoals.map((goal) => `grow-sdg${goal.id}`),
+  ],
 );
 for (const tier of data.impactTiers)
   for (const goal of tier.sdgs)
     assert(anchors.has(goal.target), `Missing SDG ${goal.number} target`);
 for (const goal of data.coreSdgs) assert(anchors.has(goal.target));
-const allAnchors = data.sustainabilityPage.sections.flatMap((section) => [
-  section.id,
-  ...section.blocks
-    .filter((block) => block.type === "subheading")
-    .map((block) => block.id),
-]);
+const allAnchors = [
+  ...data.sustainabilityPage.sections.flatMap((section) => [
+    section.id,
+    ...section.blocks
+      .filter((block) => block.type === "subheading")
+      .map((block) => block.id),
+  ]),
+  ...explorerGoals.map((goal) => `grow-sdg${goal.id}`),
+];
 assert.equal(
   new Set(allAnchors).size,
   allAnchors.length,
@@ -186,8 +233,10 @@ console.log(
   JSON.stringify(
     {
       verifiedParagraphs,
+      restoredOverviewParagraphs: 1,
+      sdg12ToolRows: sdg12Table.length,
       sections: 8,
-      resourceRows: 15,
+      resourceRows: 16,
       partnershipProfiles: 8,
       partnershipCards: 5,
       partnershipProseGroups: 3,

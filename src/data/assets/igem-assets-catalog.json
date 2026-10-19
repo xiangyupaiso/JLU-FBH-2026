@@ -2856,39 +2856,9 @@
           "line": 181,
           "text": "--dry-lab-art: url(\"https://static.igem.wiki/teams/6056/wiki/files/pages/dry-lab/dry-lab-software-hero.webp\");",
           "type": "css-url"
-        },
-        {
-          "file": "src/styles/dry-panel-software.css",
-          "line": 65,
-          "text": "url(\"https://static.igem.wiki/teams/6056/wiki/files/pages/dry-lab/dry-lab-software-hero.webp\") center / cover",
-          "type": "css-url"
-        },
-        {
-          "file": "src/styles/dry-panel-software.css",
-          "line": 1496,
-          "text": "url(\"https://static.igem.wiki/teams/6056/wiki/files/pages/dry-lab/dry-lab-software-hero.webp\") 57% center / cover",
-          "type": "css-url"
-        },
-        {
-          "file": "src/styles/dry-panel-software.css",
-          "line": 1562,
-          "text": "url(\"https://static.igem.wiki/teams/6056/wiki/files/pages/dry-lab/dry-lab-software-hero.webp\") 60% center / cover",
-          "type": "css-url"
-        },
-        {
-          "file": "src/styles/dry-panel-software.css",
-          "line": 1769,
-          "text": "url(\"https://static.igem.wiki/teams/6056/wiki/files/pages/dry-lab/dry-lab-software-hero.webp\");",
-          "type": "css-url"
-        },
-        {
-          "file": "src/styles/dry-panel-software.css",
-          "line": 1857,
-          "text": "url(\"https://static.igem.wiki/teams/6056/wiki/files/pages/dry-lab/dry-lab-software-hero.webp\");",
-          "type": "css-url"
         }
       ],
-      "notes": "Referenced in 7 location(s)",
+      "notes": "Referenced in 2 location(s)",
       "kind": "image"
     },
     "dry-png": {
@@ -96234,39 +96204,9 @@
           "line": 181,
           "text": "--dry-lab-art: url(\"https://static.igem.wiki/teams/6056/wiki/files/pages/dry-lab/dry-lab-software-hero.webp\");",
           "type": "css-url"
-        },
-        {
-          "file": "src/styles/dry-panel-software.css",
-          "line": 65,
-          "text": "url(\"https://static.igem.wiki/teams/6056/wiki/files/pages/dry-lab/dry-lab-software-hero.webp\") center / cover",
-          "type": "css-url"
-        },
-        {
-          "file": "src/styles/dry-panel-software.css",
-          "line": 1496,
-          "text": "url(\"https://static.igem.wiki/teams/6056/wiki/files/pages/dry-lab/dry-lab-software-hero.webp\") 57% center / cover",
-          "type": "css-url"
-        },
-        {
-          "file": "src/styles/dry-panel-software.css",
-          "line": 1562,
-          "text": "url(\"https://static.igem.wiki/teams/6056/wiki/files/pages/dry-lab/dry-lab-software-hero.webp\") 60% center / cover",
-          "type": "css-url"
-        },
-        {
-          "file": "src/styles/dry-panel-software.css",
-          "line": 1769,
-          "text": "url(\"https://static.igem.wiki/teams/6056/wiki/files/pages/dry-lab/dry-lab-software-hero.webp\");",
-          "type": "css-url"
-        },
-        {
-          "file": "src/styles/dry-panel-software.css",
-          "line": 1857,
-          "text": "url(\"https://static.igem.wiki/teams/6056/wiki/files/pages/dry-lab/dry-lab-software-hero.webp\");",
-          "type": "css-url"
         }
       ],
-      "notes": "Referenced in 6 location(s)"
+      "notes": "Referenced in 1 location(s)"
     },
     "sustainability-hd-png": {
       "id": "sustainability-hd-png",

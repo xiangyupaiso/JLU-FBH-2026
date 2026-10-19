@@ -108,7 +108,9 @@ export function PdfToolList({
                 ) : null}
                 <span className="sust-folder__title">{tool.title}</span>
                 <span className="sust-folder__meta">
-                  {tool.pdfs.map((pdf) => pdfLabel(pdf.label)).join(" · ")}
+                  {tool.pdfs.length > 3
+                    ? `${tool.pdfs.length} PDFs`
+                    : tool.pdfs.map((pdf) => pdfLabel(pdf.label)).join(" · ")}
                 </span>
               </span>
             </button>
@@ -187,7 +189,7 @@ export function PdfToolList({
 const byEnglishFirst = (a: { label: string }, b: { label: string }) =>
   Number(b.label === "English") - Number(a.label === "English");
 
-/** Evidence summary of the Legacy tools: Tool / What it does / Download. */
+/** Evidence summary of the Legacy tools: Tool / What it does / Use it. */
 export function ToolTable({ tools }: { tools: ReadonlyArray<LegacyTool> }) {
   return (
     <div
@@ -200,7 +202,7 @@ export function ToolTable({ tools }: { tools: ReadonlyArray<LegacyTool> }) {
           <tr>
             <th scope="col">Tool</th>
             <th scope="col">What it does</th>
-            <th scope="col">Download</th>
+            <th scope="col">Use it</th>
           </tr>
         </thead>
         <tbody>

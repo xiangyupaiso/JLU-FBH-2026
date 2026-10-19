@@ -1,4 +1,5 @@
-import { useState, type ReactNode } from "react";
+import type { ReactNode } from "react";
+import { JudgingCriteria } from "../shared/JudgingCriteria";
 import { EpitopeStructuralValidationChart } from "../project/EpitopeStructuralValidationChart";
 import { ModelVolcanoChart } from "../drylab/ModelVolcanoChart";
 import { WikiFigurePlate } from "../../WikiFigurePlate";
@@ -49,51 +50,13 @@ function MeasurementReferenceList() {
 }
 
 export function MeasurementJudgingCriteria() {
-  const [openId, setOpenId] = useState<string | null>(null);
   return (
-    <div className="highlights-record" data-wiki-reveal>
-      {measurementJudgingCriteria.map((item) => {
-        const open = openId === item.id;
-        return (
-          <article
-            key={item.id}
-            className={`highlights-record__item${open ? " is-open" : ""}`}
-          >
-            <button
-              type="button"
-              id={`${item.id}-toggle`}
-              className="highlights-record__toggle"
-              aria-expanded={open}
-              aria-controls={`${item.id}-answer`}
-              onClick={() => setOpenId(open ? null : item.id)}
-            >
-              <span className="highlights-record__question">
-                {item.question}
-              </span>
-              <svg viewBox="0 0 16 16" aria-hidden="true">
-                <path d="m4 6 4 4 4-4" />
-              </svg>
-            </button>
-            <div
-              id={`${item.id}-answer`}
-              role="region"
-              aria-labelledby={`${item.id}-toggle`}
-              className="highlights-record__answer"
-              hidden={!open}
-            >
-              {item.paragraphs.map((paragraph, paragraphIndex) => (
-                <p key={paragraphIndex}>
-                  {renderMeasurementCitedText(
-                    paragraph,
-                    renderInlineFormatting,
-                  )}
-                </p>
-              ))}
-            </div>
-          </article>
-        );
-      })}
-    </div>
+    <JudgingCriteria
+      items={measurementJudgingCriteria}
+      renderParagraph={(paragraph) =>
+        renderMeasurementCitedText(paragraph, renderInlineFormatting)
+      }
+    />
   );
 }
 

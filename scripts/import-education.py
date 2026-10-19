@@ -293,8 +293,8 @@ def main() -> None:
                     continue
                 if "Unlock Reusable Resources" in paragraph_text:
                     continue
-                if paragraph_text.startswith("【点击查看 Sustainability"):
-                    block["paragraphs"] = ["[Explore the Air-to-Bread sustainability analysis](/sustainability)"]
+                if "Explore the Air-to-Bread sustainability analysis" in paragraph_text:
+                    block["paragraphs"] = ["[Explore the Air-to-Bread sustainability analysis in the Sustainability section →](/sustainability)"]
                 if paragraph_text == "**→ Explore Our Games**":
                     block["paragraphs"] = ["[Explore our games](/games)"]
             revised.append(block)

@@ -198,7 +198,7 @@ export const cycle4Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "[Further details: Experiments — TROP2-expressing 4T1 construction](https://2026.igem.wiki/jlu-fbh/experiments)"
+          "[Further details: Experiments — TROP2-expressing 4T1 construction](https://2026.igem.wiki/jlu-fbh/experiments#sec-trop2-model)"
 ]
         }
           ]
@@ -245,7 +245,7 @@ export const cycle4Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "Wet Lab built the protocol around three groups of immunocompetent BALB/c mice: PBS, empty-vector circRNA–LNP and Combined circRNA–LNP, with five animals per group. TROP2-expressing 4T1 cells were inoculated on D0, which also marked the first administration. The study comprised five administrations, longitudinal tumour measurements and endpoint tissue collection. The protocol specified animal coding, group allocation, consistent inoculation and administration routes, humane endpoints and coordinated tissue collection. Consultation with Guangjie Sun on animal ethics and the 3Rs was translated into an Experimental Design Assistant record and an Animal Use Form, with approval obtained before the animal work began (Percie du Sert et al., 2020; NC3Rs, n.d.)."
+          "Wet Lab built the protocol around three groups of immunocompetent BALB/c mice: PBS, empty-vector circRNA–LNP and Combined circRNA–LNP, with five animals per group. TROP2-expressing 4T1 cells were inoculated on D0, which also marked the first administration. The study comprised five administrations, longitudinal tumour measurements and endpoint tissue collection. The protocol specified animal coding, group allocation, consistent inoculation and administration routes, humane endpoints and coordinated tissue collection. Consultation with Zhiman Li on animal ethics and the 3Rs was translated into an Experimental Design Assistant record and an Animal Use Form, with approval obtained before the animal work began (Percie du Sert et al., 2020; NC3Rs, n.d.)."
 ]
         },
         {
@@ -300,7 +300,7 @@ export const cycle4Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "[Further details: Integrated Human Practices — animal model, readout and ethics consultations](https://2026.igem.wiki/jlu-fbh/human-practices)"
+          "[Further details: Integrated Human Practices — animal model, readout and ethics consultations](https://2026.igem.wiki/jlu-fbh/human-practices#hp-in-vivo-1)"
 ]
         }
           ]
@@ -415,7 +415,7 @@ export const cycle4Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "[Further details: Model — parameter calibration and vaccine-action simulation](https://2026.igem.wiki/jlu-fbh/model)"
+          "[Further details: Model — parameter calibration and vaccine-action simulation](https://2026.igem.wiki/jlu-fbh/model#model-heading-49)"
 ]
         }
           ]
@@ -489,7 +489,7 @@ export const cycle4Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "[Further details: Model — Cell2Dose dose evaluation](https://2026.igem.wiki/jlu-fbh/model)"
+          "[Further details: Model — Cell2Dose dose evaluation](https://2026.igem.wiki/jlu-fbh/model#model-heading-75)"
 ]
         }
           ]
@@ -586,7 +586,7 @@ export const cycle4Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "[Further details: Results — in vivo tumour control](https://2026.igem.wiki/jlu-fbh/results)"
+          "[Further details: Results — in vivo tumour control](https://2026.igem.wiki/jlu-fbh/results#results-6-2)"
 ]
         }
           ]
@@ -703,7 +703,7 @@ export const cycle4Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "[Further details: Results — systemic immune response](https://2026.igem.wiki/jlu-fbh/results)"
+          "[Further details: Results — systemic immune response](https://2026.igem.wiki/jlu-fbh/results#results-6-4)"
 ]
         }
           ]
@@ -777,7 +777,7 @@ export const cycle4Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "[Further details: Results — tumour immunofluorescence](https://2026.igem.wiki/jlu-fbh/results) and [Integrated Human Practices — interpretation of local signals](https://2026.igem.wiki/jlu-fbh/human-practices)"
+          "[Further details: Results — tumour immunofluorescence](https://2026.igem.wiki/jlu-fbh/results#results-6-3) and [Integrated Human Practices — interpretation of local signals](https://2026.igem.wiki/jlu-fbh/human-practices#hp-in-vivo-4)"
 ]
         }
           ]
@@ -868,7 +868,7 @@ export const cycle4Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "[Further details: Integrated Human Practices — evidence review](https://2026.igem.wiki/jlu-fbh/human-practices), [Model — Cell2Dose](https://2026.igem.wiki/jlu-fbh/model), [Results — in vivo proof of concept](https://2026.igem.wiki/jlu-fbh/results) and [Entrepreneurship — development pathway](https://2026.igem.wiki/jlu-fbh/entrepreneurship)"
+          "[Further details: Integrated Human Practices — evidence review](https://2026.igem.wiki/jlu-fbh/human-practices#hp-in-vivo-4), [Model — Cell2Dose](https://2026.igem.wiki/jlu-fbh/model#model-heading-98), [Results — in vivo proof of concept](https://2026.igem.wiki/jlu-fbh/results#results-in-vivo) and [Entrepreneurship — development pathway](https://2026.igem.wiki/jlu-fbh/entrepreneurship#planning-and-outlook)"
 ]
         }
           ]

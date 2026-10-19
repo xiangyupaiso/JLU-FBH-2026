@@ -305,7 +305,7 @@
 }
 
 .circure-footer__marquee {
-  --sponsor-gap: 72px;
+  --sponsor-gap: 36px;
   --sponsor-logo-scale: 1.12;
   --sponsor-fade: clamp(12px, 2vw, 28px);
   width: 100%;
@@ -325,9 +325,14 @@
 .circure-footer__marquee-track {
   display: flex;
   width: max-content;
-  animation: footer-sponsor-loop var(--sponsor-loop-duration, 78s) linear
+  animation: footer-sponsor-loop var(--sponsor-loop-duration, 24s) linear
     infinite;
   will-change: transform;
+}
+
+.circure-footer__marquee:hover .circure-footer__marquee-track,
+.circure-footer__marquee:focus-within .circure-footer__marquee-track {
+  animation-play-state: paused;
 }
 
 /* Each complete set includes its trailing gap, keeping the loop seam even. */
@@ -525,7 +530,7 @@
   }
 
   .circure-footer__marquee {
-    --sponsor-gap: 40px;
+    --sponsor-gap: 28px;
     margin-top: 20px;
   }
 

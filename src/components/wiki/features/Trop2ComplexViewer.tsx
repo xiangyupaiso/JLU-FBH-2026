@@ -1,71 +1,21 @@
 import { useEffect, useRef, useState, useCallback } from "react";
 import { RotateCcw, Maximize2, Minimize2 } from "lucide-react";
-// Type-only imports: erased at build time, Mol* itself comes from window.molstar
-import type { Viewer } from "molstar/lib/apps/viewer/app";
+import type { Viewer } from "./shared/molstarRuntime";
 import type { Vec3, Vec4 } from "molstar/lib/mol-math/linear-algebra";
 import type { PluginStateObject } from "molstar/lib/mol-plugin-state/objects";
 import type { StateObjectSelector } from "molstar/lib/mol-state";
 import type { Color } from "molstar/lib/mol-util/color";
 import trop2Pdb from "../../../assets/structures/trop2-ctl1.pdb?raw";
 import { TROP2_COMPLEX_DATA } from "../../../data/trop2ComplexData";
-import "../../../styles/trop2-complex-viewer.css";
+import { loadLocalMolstar } from "./shared/localMolstar";
+import { MolecularViewerFrame } from "./shared/MolecularViewerFrame";
 
 type ActiveSegment = "all" | "epitope" | "pocket";
-type MolstarGlobal = NonNullable<Window["molstar"]>;
 type ComponentSelector = StateObjectSelector<PluginStateObject.Molecule.Structure>;
 type ReprSelector = StateObjectSelector<PluginStateObject.Molecule.Structure.Representation3D>;
 
 // Mol* colors are branded numbers; Color(hex) is an identity function at runtime.
 const color = (hex: number) => hex as Color;
-
-/**
- * 100% Local & iGEM-Compliant Loader for Mol* Viewer
- * Guarantees zero external network requests and offline closed loop.
- */
-function loadLocalMolstar(): Promise<MolstarGlobal> {
-  if (typeof window !== "undefined" && window.molstar) {
-    return Promise.resolve(window.molstar);
-  }
-  return new Promise((resolve, reject) => {
-    const baseUrl = import.meta.env.BASE_URL || "/";
-    const prefix = baseUrl.endsWith("/") ? baseUrl : baseUrl + "/";
-
-    if (!document.querySelector("link[data-molstar-css]")) {
-      const link = document.createElement("link");
-      link.rel = "stylesheet";
-      link.href = `${prefix}vendor/molstar/molstar.css`;
-      link.setAttribute("data-molstar-css", "true");
-      document.head.appendChild(link);
-    }
-
-    const existingScript = document.querySelector<HTMLScriptElement>(
-      "script[data-molstar-js]"
-    );
-    if (existingScript) {
-      if (window.molstar) resolve(window.molstar);
-      else {
-        existingScript.addEventListener("load", () => {
-          if (window.molstar) resolve(window.molstar);
-          else reject(new Error("Mol* script loaded but window.molstar is undefined"));
-        });
-        existingScript.addEventListener("error", reject);
-      }
-      return;
-    }
-
-    const script = document.createElement("script");
-    script.src = `${prefix}vendor/molstar/molstar.js`;
-    script.setAttribute("data-molstar-js", "true");
-    script.async = true;
-    script.onload = () => {
-      if (window.molstar) resolve(window.molstar);
-      else reject(new Error("Mol* script loaded but window.molstar is undefined"));
-    };
-    script.onerror = () =>
-      reject(new Error(`Failed to load local Mol* script from ${script.src}`));
-    document.head.appendChild(script);
-  });
-}
 
 export function Trop2ComplexViewer() {
   const figureRef = useRef<HTMLElement>(null);
@@ -176,28 +126,10 @@ export function Trop2ComplexViewer() {
           }
         }
 
-        // Initialize high-fidelity Mol* viewer with internal debug controls completely disabled
+        // The manuscript provides the controls; mount only the molecular canvas.
         const viewer = await molstar.Viewer.create(containerRef.current, {
-          layoutIsExpanded: false,
-          layoutShowControls: false,
-          layoutShowRemoteState: false,
-          layoutShowSequence: false,
-          layoutShowLog: false,
-          layoutShowLeftPanel: false,
-          collapseLeftPanel: true,
-          collapseRightPanel: true,
-          disableAntialiasing: false,
-          // Mol* multiplies pixelScale by devicePixelRatio; 1 already renders at native DPR.
+          // Mol* multiplies pixelScale by devicePixelRatio; 1 renders at native DPR.
           pixelScale: 1,
-          viewportShowReset: false,
-          viewportShowScreenshotControls: false,
-          viewportShowControls: false,
-          viewportShowExpand: false,
-          viewportShowToggleFullscreen: false,
-          viewportShowSettings: false,
-          viewportShowSelectionMode: false,
-          viewportShowAnimation: false,
-          viewportShowTrajectoryControls: false,
           viewportBackgroundColor: "#0b0f19",
         });
 
@@ -208,23 +140,6 @@ export function Trop2ComplexViewer() {
 
         viewerRef.current = viewer;
         const plugin = viewer.plugin;
-
-        // Ensure internal config turns off all default buttons that cause heavy panel mounts.
-        // The viewer bundle exposes PluginConfig under lib.plugin, not at the top level.
-        const V = molstar.lib?.plugin?.PluginConfig?.Viewport;
-        if (plugin?.config && V) {
-          plugin.config.set(V.ShowReset, false);
-          plugin.config.set(V.ShowControls, false);
-          plugin.config.set(V.ShowSettings, false);
-          plugin.config.set(V.ShowScreenshotControls, false);
-          plugin.config.set(V.ShowExpand, false);
-          plugin.config.set(V.ShowToggleFullscreen, false);
-          plugin.config.set(V.ShowSelectionMode, false);
-          plugin.config.set(V.ShowAnimation, false);
-          plugin.config.set(V.ShowTrajectoryControls, false);
-          if (V.ShowIllumination) plugin.config.set(V.ShowIllumination, false);
-          if (V.ShowXR) plugin.config.set(V.ShowXR, "never");
-        }
 
         // SSAO, ambient contact shadows, and silhouette outline (opaque geometry only,
         // so the transparent surface does not pay for extra depth passes)
@@ -462,24 +377,14 @@ export function Trop2ComplexViewer() {
   );
 
   return (
-    <figure ref={figureRef} className="trop2-viewer-container" aria-label="3D Molecular Complex">
-      <div className="trop2-viewer-stage">
-        {isLoading && (
-          <div className="trop2-viewer-loading">
-            <div className="trop2-viewer-spinner" />
-            <span>Loading 3D structure...</span>
-          </div>
-        )}
-
-        {error && (
-          <div className="trop2-viewer-loading">
-            <span style={{ color: "#ef4444" }}>Error: {error}</span>
-          </div>
-        )}
-
-        {/* Mol* Target Canvas */}
-        <div ref={containerRef} className="trop2-viewer-canvas" data-native-cursor />
-
+    <MolecularViewerFrame
+      figureRef={figureRef}
+      containerRef={containerRef}
+      label="3D Molecular Complex"
+      loading={isLoading}
+      error={error ? `Error: ${error}` : undefined}
+      caption={<><strong>Fig. M-01 · </strong>Structural conformation of Trop2-CTL1 (<code>{TROP2_COMPLEX_DATA.epitopeSequence}</code>) complexed within the HLA-A*02:01 / β2M binding groove, stabilized by 17 polar interaction contacts.</>}
+    >
         {/* 2D Vector Projection Overlay for Polar Contacts */}
         <svg
           ref={overlayRef}
@@ -610,11 +515,6 @@ export function Trop2ComplexViewer() {
             <span>Left-drag: Rotate • Scroll: Zoom • Right-drag: Pan</span>
           </div>
         </div>
-      </div>
-
-      <figcaption className="trop2-viewer-caption">
-        <strong>Fig. M-01 · </strong>Structural conformation of Trop2-CTL1 (<code>{TROP2_COMPLEX_DATA.epitopeSequence}</code>) complexed within the HLA-A*02:01 / β2M binding groove, stabilized by 17 polar interaction contacts.
-      </figcaption>
-    </figure>
+    </MolecularViewerFrame>
   );
 }

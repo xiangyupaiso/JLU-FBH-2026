@@ -503,7 +503,6 @@ export function StakeholderDeck({
                 : window.innerHeight - headerHeight()) - 48,
             );
             const top = projected ? 24 : headerHeight() + 24;
-            const previousHeight = stage.clientHeight;
             element.style.setProperty("--deck-height", `${height}px`);
             element.style.setProperty("--deck-top", `${top}px`);
             const nextOverflows = panels.map((panel) =>
@@ -517,14 +516,9 @@ export function StakeholderDeck({
               nextTravel += overflow + hold;
               return start;
             });
-            const changed =
-              Math.abs(travel - nextTravel) > 0.5 ||
-              previousHeight !== stage.clientHeight ||
-              nextOverflows.some((value, index) => value !== overflows[index]);
             travel = nextTravel;
             overflows = nextOverflows;
             element.style.setProperty("--deck-travel", `${travel}px`);
-            return changed;
           };
           measure();
           const move = panels.map((panel) =>
@@ -578,6 +572,10 @@ export function StakeholderDeck({
           });
           update(trigger);
           navigate.current = (index) => {
+            // An expanded document above the deck can move it without resizing
+            // any card. Recalibrate before using its stored reading markers.
+            measure();
+            trigger.refresh();
             scrollReaderToTarget(anchors[index], inner, "instant");
             trigger.update();
           };
@@ -587,12 +585,15 @@ export function StakeholderDeck({
             if (frame || !alive) return;
             frame = requestAnimationFrame(() => {
               frame = 0;
-              if (measure()) trigger.refresh();
+              measure();
+              trigger.refresh();
             });
           };
           const observer = new ResizeObserver(requestMeasure);
           panels.forEach((panel) => observer.observe(panel));
           if (projected) observer.observe(inner);
+          const article = element.closest(".wiki-article");
+          if (article) observer.observe(article);
           window.addEventListener("resize", requestMeasure, { passive: true });
           document.fonts.ready.then(() => {
             if (!alive) return;

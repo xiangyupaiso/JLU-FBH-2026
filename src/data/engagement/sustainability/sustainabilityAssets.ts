@@ -12,19 +12,6 @@
  * image entry here. Engagement photographs live in `sustainabilityPhotos.ts`.
  */
 
-const overviewMastheadImg = "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/sustainability-overview-masthead-96e3e6da2d09.avif";
-const overviewMapOfStakeholdersImg = "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/sustainability-overview-map-of-stakeholders-c62c0fdbb594.avif";
-import overviewScaleModelImg from "../../../assets/wiki/sustainability/sustainability-overview-scale-model.png";
-import overviewSstQnNetworkImg from "../../../assets/wiki/sustainability/sustainability-overview-sst-qn-network.png";
-import overviewReusableToolkitImg from "../../../assets/wiki/sustainability/sustainability-overview-reusable-toolkit.png";
-import overviewSetDevelopGrowImg from "../../../assets/wiki/sustainability/sustainability-overview-set-develop-grow.png";
-import sstQnStatusClassificationImg from "../../../assets/wiki/sustainability/sustainability-sst-qn-status-classification.png";
-import sdg3StakeholdersDistributionImg from "../../../assets/wiki/sustainability/sustainability-sdg3-stakeholders-distribution.png";
-import sdg3TraceableImprovementsImg from "../../../assets/wiki/sustainability/sustainability-sdg3-traceable-improvements.png";
-import sdg3DcMaturationFlowImg from "../../../assets/wiki/sustainability/sustainability-sdg3-dc-maturation-flow.png";
-import sdg3SplenocyteFlowImg from "../../../assets/wiki/sustainability/sustainability-sdg3-splenocyte-flow.png";
-import sdg3TumorGrowthImg from "../../../assets/wiki/sustainability/sustainability-sdg3-tumor-growth.png";
-import sdg9TraceableExpertFeedbackImg from "../../../assets/wiki/sustainability/sustainability-sdg9-traceable-expert-feedback.png";
 import { sdg12EvidenceAssets } from "./sustainabilitySdg12Assets";
 import { sdg4ImageAssets } from "./sustainabilitySdg4Assets";
 
@@ -44,7 +31,7 @@ export interface SustainabilityAssetEntry {
   height?: number;
 }
 
-const IMG = "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement";
+const IMG = "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/sustainability";
 const DOCS = "https://static.igem.wiki/teams/6056/wiki/files/docs";
 
 export const sustainabilityAssets = {
@@ -52,8 +39,7 @@ export const sustainabilityAssets = {
     kind: "image",
     fileName: "sustainability-overview-masthead.avif",
     localSourcePath: "src/assets/wiki/sustainability/sustainability-overview-masthead.avif",
-    localSrc: overviewMastheadImg,
-    uploadUrl: `${IMG}/sustainability-overview-masthead.avif`,
+    uploadUrl: "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/sustainability-overview-masthead-96e3e6da2d09.avif",
     alt: "Children holding up the 17 UN Sustainable Development Goal icons",
     section: "Overview",
   },
@@ -61,8 +47,7 @@ export const sustainabilityAssets = {
     kind: "image",
     fileName: "sustainability-overview-map-of-stakeholders.png",
     localSourcePath: "src/assets/wiki/sustainability/sustainability-overview-map-of-stakeholders.png",
-    localSrc: overviewMapOfStakeholdersImg,
-    uploadUrl: `${IMG}/sustainability-overview-map-of-stakeholders.avif`,
+    uploadUrl: "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/sustainability/overview/01-map-of-stakeholders-2.avif",
     alt: "Map of stakeholders",
     section: "Overview",
     width: 4000,
@@ -72,7 +57,6 @@ export const sustainabilityAssets = {
     kind: "image",
     fileName: "sustainability-overview-scale-model.png",
     localSourcePath: "src/assets/wiki/sustainability/sustainability-overview-scale-model.png",
-    localSrc: overviewScaleModelImg,
     uploadUrl: `${IMG}/sustainability-overview-scale-model.avif`,
     alt: "SCALE Model",
     section: "Overview",
@@ -83,7 +67,6 @@ export const sustainabilityAssets = {
     kind: "image",
     fileName: "sustainability-overview-sst-qn-network.png",
     localSourcePath: "src/assets/wiki/sustainability/sustainability-overview-sst-qn-network.png",
-    localSrc: overviewSstQnNetworkImg,
     uploadUrl: `${IMG}/sustainability-overview-sst-qn-network.avif`,
     alt: "SDG Synergy–Trade-off Quantification Network (SST-QN)",
     section: "Overview",
@@ -94,18 +77,26 @@ export const sustainabilityAssets = {
     kind: "image",
     fileName: "sustainability-overview-reusable-toolkit.png",
     localSourcePath: "src/assets/wiki/sustainability/sustainability-overview-reusable-toolkit.png",
-    localSrc: overviewReusableToolkitImg,
-    uploadUrl: `${IMG}/sustainability-overview-reusable-toolkit.avif`,
+    uploadUrl: `${IMG}/overview/04-reusable-sustainability-toolkit.avif`,
     alt: "Reusable Sustainability Toolkit",
     section: "Overview",
-    width: 1800,
-    height: 1020,
+    width: 4426,
+    height: 2507,
+  },
+  overviewContributionPathways: {
+    kind: "image",
+    fileName: "sustainability-overview-contribution-pathways.avif",
+    localSourcePath: "src/assets/wiki/sustainability/sustainability-overview-contribution-pathways.avif",
+    uploadUrl: `${IMG}/overview/05-circure-s-sdg-contribution-pathways.avif`,
+    alt: "Circure's SDG Contribution Pathways",
+    section: "Overview",
+    width: 1672,
+    height: 731,
   },
   sstQnStatusClassification: {
     kind: "image",
     fileName: "sustainability-sst-qn-status-classification.png",
     localSourcePath: "src/assets/wiki/sustainability/sustainability-sst-qn-status-classification.png",
-    localSrc: sstQnStatusClassificationImg,
     uploadUrl: `${IMG}/sustainability-sst-qn-status-classification.avif`,
     alt: "SST-QN Interaction Status Classification",
     section: "SST-QN",
@@ -114,20 +105,18 @@ export const sustainabilityAssets = {
   },
   frameworkSetDevelopGrow: {
     kind: "image",
-    fileName: "sustainability-overview-set-develop-grow.png",
-    localSourcePath: "src/assets/wiki/sustainability/sustainability-overview-set-develop-grow.png",
-    localSrc: overviewSetDevelopGrowImg,
-    uploadUrl: `${IMG}/sustainability-framework-set-develop-grow.avif`,
+    fileName: "sustainability-framework-set-develop-grow.png",
+    localSourcePath: "src/assets/wiki/sustainability/sustainability-framework-set-develop-grow.png",
+    uploadUrl: `${IMG}/00-figure-8-set-develop-grow-impact-framework-sdg-impact-framework.avif`,
     alt: "SET-DEVELOP-GROW Impact Framework (SDG Impact Framework)",
     section: "SDG Impact Framework",
-    width: 7181,
-    height: 7197,
+    width: 3991,
+    height: 4000,
   },
   sdg3StakeholdersDistribution: {
     kind: "image",
     fileName: "sustainability-sdg3-stakeholders-distribution.png",
     localSourcePath: "src/assets/wiki/sustainability/sustainability-sdg3-stakeholders-distribution.png",
-    localSrc: sdg3StakeholdersDistributionImg,
     uploadUrl: `${IMG}/sustainability-sdg3-stakeholders-distribution.avif`,
     alt: "49 stakeholders across five groups",
     section: "SDG 3 — Evidence",
@@ -138,7 +127,6 @@ export const sustainabilityAssets = {
     kind: "image",
     fileName: "sustainability-sdg3-traceable-improvements.png",
     localSourcePath: "src/assets/wiki/sustainability/sustainability-sdg3-traceable-improvements.png",
-    localSrc: sdg3TraceableImprovementsImg,
     uploadUrl: `${IMG}/sustainability-sdg3-traceable-improvements.avif`,
     alt: "Eight traceable project improvements",
     section: "SDG 3 — Evidence",
@@ -149,7 +137,6 @@ export const sustainabilityAssets = {
     kind: "image",
     fileName: "sustainability-sdg3-dc-maturation-flow.png",
     localSourcePath: "src/assets/wiki/sustainability/sustainability-sdg3-dc-maturation-flow.png",
-    localSrc: sdg3DcMaturationFlowImg,
     uploadUrl: `${IMG}/sustainability-sdg3-dc-maturation-flow.avif`,
     alt: "In vitro flow cytometry of dendritic-cell maturation and CD8⁺ T-cell subsets",
     section: "SDG 3 — Evidence",
@@ -160,7 +147,6 @@ export const sustainabilityAssets = {
     kind: "image",
     fileName: "sustainability-sdg3-splenocyte-flow.png",
     localSourcePath: "src/assets/wiki/sustainability/sustainability-sdg3-splenocyte-flow.png",
-    localSrc: sdg3SplenocyteFlowImg,
     uploadUrl: `${IMG}/sustainability-sdg3-splenocyte-flow.avif`,
     alt: "In vivo splenocyte flow cytometry of IFN-γ⁺CD8⁺ and GzmB⁺CD8⁺ subsets",
     section: "SDG 3 — Evidence",
@@ -171,7 +157,6 @@ export const sustainabilityAssets = {
     kind: "image",
     fileName: "sustainability-sdg3-tumor-growth.png",
     localSourcePath: "src/assets/wiki/sustainability/sustainability-sdg3-tumor-growth.png",
-    localSrc: sdg3TumorGrowthImg,
     uploadUrl: `${IMG}/sustainability-sdg3-tumor-growth.avif`,
     alt: "Excised tumors and endpoint tumor volume across PBS, control and circRNA vaccine groups",
     section: "SDG 3 — Evidence",
@@ -182,8 +167,7 @@ export const sustainabilityAssets = {
     kind: "image",
     fileName: "sustainability-sdg9-traceable-expert-feedback.png",
     localSourcePath: "src/assets/wiki/sustainability/sustainability-sdg9-traceable-expert-feedback.png",
-    localSrc: sdg9TraceableExpertFeedbackImg,
-    uploadUrl: `${IMG}/sustainability/sdg9/evidence-1.avif`,
+    uploadUrl: `${IMG}/sustainability-sdg9-traceable-expert-feedback.avif`,
     alt: "Seven traceable SDG 9 expert feedback records",
     section: "SDG 9 — Evidence",
     width: 2080,
@@ -193,7 +177,7 @@ export const sustainabilityAssets = {
     kind: "image",
     fileName: "evidence-2.avif",
     localSourcePath: "",
-    uploadUrl: `${IMG}/sustainability/sdg9/evidence-2.avif`,
+    uploadUrl: `${IMG}/sdg9/evidence-2.avif`,
     alt: "Vaccine constructs and comparative immune responses",
     section: "SDG 9 — Evidence",
     width: 4000,
@@ -203,7 +187,7 @@ export const sustainabilityAssets = {
     kind: "image",
     fileName: "evidence-2.avif",
     localSourcePath: "",
-    uploadUrl: `${IMG}/sustainability/sdg9/evidence-2.avif`,
+    uploadUrl: `${IMG}/sdg9/evidence-2.avif`,
     alt: "Vaccine constructs and comparative immune responses",
     section: "SDG 9 — Evidence",
   },
@@ -211,7 +195,7 @@ export const sustainabilityAssets = {
     kind: "image",
     fileName: "evidence-3.avif",
     localSourcePath: "",
-    uploadUrl: `${IMG}/sustainability/sdg9/evidence-3.avif`,
+    uploadUrl: `${IMG}/sdg9/evidence-3.avif`,
     alt: "Circularization and antigen translation evidence",
     section: "SDG 9 — Evidence",
     width: 1575,
@@ -221,7 +205,7 @@ export const sustainabilityAssets = {
     kind: "image",
     fileName: "evidence-3.avif",
     localSourcePath: "",
-    uploadUrl: `${IMG}/sustainability/sdg9/evidence-3.avif`,
+    uploadUrl: `${IMG}/sdg9/evidence-3.avif`,
     alt: "Circularization and antigen translation evidence",
     section: "SDG 9 — Evidence",
   },
@@ -229,7 +213,7 @@ export const sustainabilityAssets = {
     kind: "image",
     fileName: "evidence-4.avif",
     localSourcePath: "",
-    uploadUrl: `${IMG}/sustainability/sdg9/evidence-4.avif`,
+    uploadUrl: `${IMG}/sdg9/evidence-4.avif`,
     alt: "CTL selectivity assessment",
     section: "SDG 9 — Evidence",
     width: 2784,
@@ -239,7 +223,7 @@ export const sustainabilityAssets = {
     kind: "image",
     fileName: "evidence-5.avif",
     localSourcePath: "",
-    uploadUrl: `${IMG}/sustainability/sdg9/evidence-5.avif`,
+    uploadUrl: `${IMG}/sdg9/evidence-5.avif`,
     alt: "Three-module vaccine design system",
     section: "SDG 9 — Evidence",
     width: 4000,

@@ -5,6 +5,7 @@ export interface GanttEntry {
   end: string;
   phase?: string;
   phaseTone?: number;
+  phases?: readonly { label: string; tone?: number }[];
 }
 
 const dateFormat = new Intl.DateTimeFormat("en-GB", {

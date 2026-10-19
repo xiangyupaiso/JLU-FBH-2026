@@ -138,10 +138,17 @@ function SafetyFolders({
   );
 }
 
-function SafetyImages({ spec }: { spec: ImageSpec }) {
+function SafetyImages({
+  spec,
+  instance,
+}: {
+  spec: ImageSpec;
+  instance?: string;
+}) {
   return (
     <figure
-      className={`wiki-figure safety-image-group safety-image-group--${spec.layout}`}
+      className={`wiki-figure safety-image-group safety-image-group--${spec.layout}${instance ? ` safety-image-group--${instance}` : ""}`}
+      data-safety-feature={instance}
     >
       <div className="safety-image-group__grid">
         {spec.images.map((key, index) => {
@@ -186,7 +193,7 @@ export function safetyFeatures(): Record<string, ReactNode> {
             />,
           ];
         case "images":
-          return [key, <SafetyImages spec={spec} key={key} />];
+          return [key, <SafetyImages spec={spec} instance={key} key={key} />];
       }
     }),
   );

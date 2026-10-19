@@ -1,6 +1,7 @@
 # Logs
 logs
 *.log
+!public/assets/docs/software/evidence/torusfold-headline-LF.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
@@ -25,8 +26,6 @@ dist-ssr
 upload-ready/
 outputs/
 
-# iSpring's unused, image-inlined slide backups. The live player loads data/.
-public/virtual-lab/experiment9-assets/ispring/data.local-only/
 
 # Scratch space for the scripts/ verification harnesses and for builds that
 # must keep esbuild's temp files inside the workspace.

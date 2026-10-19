@@ -1,6 +1,6 @@
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import whyRingTexture from "../assets/home/story/scene-1-layer-4.webp";
+const whyRingTexture = "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-1-layer-4.webp";
 import {
   HOME_EASE,
   HOME_SCRUB,
