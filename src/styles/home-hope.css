@@ -155,7 +155,7 @@
 
 .story-hope-copy h3 {
   margin: 0 0 0.65em;
-  font: 400 clamp(28px, 3.1cqw, 48px)/1.16 var(--font-editorial);
+  font: 700 clamp(28px, 3.1cqw, 48px)/1.16 var(--font-editorial);
   letter-spacing: -0.025em;
   text-wrap: balance;
 }

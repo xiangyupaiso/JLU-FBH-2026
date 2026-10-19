@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>CirCure · Pink thread and expanding emblem</title>
+    <link
+      rel="stylesheet"
+      href="/src/components/wiki/features/project/visual-design-studies/archive-recognition/style.css"
+    />
+  </head>
+  <body>
+    <svg class="icon-sprite" aria-hidden="true">
+      <symbol id="circure-ribbon-knot" viewBox="0 0 32 46">
+        <path
+          d="M8.2 41C10.8 32.6 19.8 24.7 21.4 15.9C22.6 9.2 18.4 5.1 14.3 6.6C9.7 8.2 9.6 13.3 12.4 18.3C15.7 24.2 21.8 31.3 24.2 41"
+        />
+      </symbol>
+    </svg>
+
+    <nav class="study-controls" aria-label="Explore the preserved chapters">
+      <span>Scroll to explore ↓</span><a href="#person">03 / Person</a
+      ><a href="#approach">04 / Design</a
+      ><button type="button" data-replay>Replay ↺</button>
+    </nav>
+    <aside
+      class="thread-guide"
+      aria-label="Drag the pink ribbon to navigate the page"
+      role="slider"
+      tabindex="0"
+      aria-orientation="vertical"
+      aria-valuemin="0"
+      aria-valuemax="100"
+      aria-valuenow="0"
+      aria-valuetext="Person, original chapter 3 of 9"
+    >
+      <span class="thread-guide-index" aria-hidden="true">03 / 09</span>
+      <span class="thread-guide-name" aria-hidden="true">Person</span>
+      <span class="thread-guide-track" aria-hidden="true">
+        <i></i>
+        <span class="thread-guide-knot">
+          <svg class="ribbon-mark" viewBox="0 0 32 46">
+            <use href="#circure-ribbon-knot" />
+          </svg>
+        </span>
+      </span>
+    </aside>
+
+    <main>
+      <section class="human-chapter" id="person" aria-labelledby="person-title">
+        <div class="human-sticky">
+          <header class="human-opening">
+            <h2 id="person-title">No invented face.<br />No borrowed voice.</h2>
+            <p>
+              Until someone chooses to speak with us, the person at the center
+              of this project will not be reduced to a stock photograph or a
+              convenient quotation.
+            </p>
+          </header>
+
+          <div class="unfilled-portrait" aria-hidden="true">
+            <svg viewBox="0 0 520 680" role="presentation">
+              <path
+                class="portrait-outline"
+                pathLength="1"
+                d="M270 28C399 35 486 145 478 320C468 529 384 648 244 652C111 656 37 543 42 348C47 143 131 20 270 28Z"
+              />
+              <path
+                class="portrait-thread"
+                pathLength="1"
+                d="M64 463C146 414 180 349 201 271C222 194 258 154 305 163C353 172 365 216 337 257C306 303 253 344 245 412C238 476 279 521 337 567"
+              />
+            </svg>
+            <span>Reserved for a consented voice.</span>
+          </div>
+
+          <div class="human-questions" aria-hidden="true">
+            <p>What matters<br />beyond the diagnosis?</p>
+            <p>What burden<br />would be unacceptable?</p>
+            <p>What should<br />research return?</p>
+          </div>
+
+          <p class="human-coda">
+            This is not an empty portrait.<br />It is consent made visible.
+          </p>
+        </div>
+      </section>
+
+      <section class="expansion" id="approach" aria-labelledby="approach-title">
+        <div class="expansion-sticky">
+          <div class="expansion-backdrop" aria-hidden="true"></div>
+          <div class="expansion-surface">
+            <div class="ambient-grid" aria-hidden="true"></div>
+
+            <div class="brand-emblem" aria-hidden="true">
+              <div class="brand-emblem-disc">
+                <img
+                  class="brand-emblem-base"
+                  src="/src/components/wiki/features/project/visual-design-studies/archive-recognition/assets/circure-emblem.png"
+                  alt=""
+                />
+                <img
+                  class="brand-emblem-ribbon"
+                  src="/src/components/wiki/features/project/visual-design-studies/archive-recognition/assets/circure-ribbon.png"
+                  alt=""
+                />
+              </div>
+              <svg
+                class="brand-emblem-orbit"
+                viewBox="0 0 640 640"
+                role="presentation"
+              >
+                <circle class="brand-orbit-track" cx="320" cy="320" r="300" />
+                <path
+                  class="brand-orbit-active"
+                  pathLength="1"
+                  d="M320 20a300 300 0 1 1-.1 0"
+                />
+                <circle
+                  class="brand-orbit-node node-one"
+                  cx="116"
+                  cy="100"
+                  r="5"
+                />
+                <circle
+                  class="brand-orbit-node node-two"
+                  cx="570"
+                  cy="486"
+                  r="5"
+                />
+              </svg>
+            </div>
+
+            <div class="expansion-copy">
+              <h2 id="approach-title">
+                Recognition becomes<br />the design question.
+              </h2>
+              <p class="expansion-lede">
+                Can one circular transcript carry several candidate epitopes—and
+                can every step toward an immune response be demonstrated?
+              </p>
+              <a class="surface-cta" href="#study-end">
+                <span>Follow the evidence</span>
+                <svg viewBox="0 0 16 16" aria-hidden="true">
+                  <path d="M3 8h9M8.5 4.5 12 8l-3.5 3.5" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer id="study-end" class="study-end">
+        <p>Person → Design / July 2026</p>
+        <h2>A pink thread through the story.</h2>
+        <p>
+          These two chapters retain the original portrait paths, emblem layers
+          and scroll phases. The ribbon guide navigates this excerpt; chapter
+          numbers refer to the nine-chapter original.
+        </p>
+        <button type="button" data-replay>Explore again ↑</button>
+      </footer>
+    </main>
+    <script
+      type="module"
+      src="/src/components/wiki/features/project/visual-design-studies/archive-recognition/script.js"
+    ></script>
+  </body>
+</html>

@@ -1,0 +1,95 @@
+.wiki-page--visual-design .footer-reveal-study {
+  margin-block: 32px;
+  color: #243d2c;
+}
+.wiki-page--visual-design .footer-reveal-study__header {
+  margin-bottom: 18px;
+}
+.wiki-page--visual-design .footer-reveal-study__eyebrow {
+  margin: 0 0 6px;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #84382b;
+}
+.wiki-page--visual-design .footer-reveal-study__header h4 {
+  margin: 0;
+  font-size: clamp(18px, 2vw, 24px);
+  font-weight: 500;
+  line-height: 1.5;
+}
+.wiki-page--visual-design .footer-reveal-study__scroll-hint {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin: 10px 0 0;
+  color: #66705b;
+  font-size: 11px;
+  line-height: 1.7;
+}
+.wiki-page--visual-design .footer-reveal-study__scroll-hint svg {
+  flex: none;
+}
+.wiki-page--visual-design .footer-reveal-study__scene {
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+.wiki-page--visual-design .footer-reveal-study__scene .keepsake-scroll-stage {
+  clip-path: inset(0);
+}
+/* Preserve the production photograph inside the article’s figure styles. */
+.wiki-page--visual-design .footer-reveal-study__scene .keepsake-front {
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+.wiki-page--visual-design .footer-reveal-study__scene .keepsake-brand {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  color: #fffdf9;
+  font: 600 clamp(48px, 11.5cqw, 164px) / 1 var(--font-sans);
+}
+.wiki-page--visual-design .footer-reveal-study__scene .keepsake-brand::before,
+.wiki-page--visual-design .footer-reveal-study__scene .keepsake-brand::after {
+  content: none;
+}
+.wiki-page--visual-design .footer-reveal-study__archive {
+  margin-top: 22px;
+  border-block: 1px solid #d8ddcd;
+}
+.wiki-page--visual-design .footer-reveal-study__archive > summary {
+  padding: 16px 0;
+  cursor: pointer;
+  font-size: 12px;
+  line-height: 1.8;
+}
+.wiki-page--visual-design .footer-reveal-study__archive > summary span {
+  margin-left: 12px;
+  color: #68715d;
+  font-size: 10px;
+}
+.wiki-page--visual-design .footer-reveal-study summary:focus-visible {
+  outline: 2px solid #84382b;
+  outline-offset: 4px;
+}
+@media (max-width: 720px) {
+  .wiki-page--visual-design .footer-reveal-study__scene .keepsake-brand {
+    font-size: clamp(30px, 10.5cqw, 64px);
+  }
+}
+@container (max-width: 320px) {
+  .wiki-page--visual-design .footer-reveal-study__scene .keepsake-brand {
+    left: 10px;
+    gap: 6px;
+    font-size: 9cqw;
+  }
+}

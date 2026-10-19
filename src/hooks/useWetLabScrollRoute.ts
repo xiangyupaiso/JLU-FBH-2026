@@ -47,6 +47,8 @@ export function useWetLabScrollRoute(
     };
 
     const onKeyDown = (event: KeyboardEvent) => {
+      // Native disclosures use Space to toggle instead of scrolling the reader.
+      if (event.target instanceof Element && event.target.closest("summary")) return;
       const keys = new Set(["ArrowDown", "ArrowUp", "PageDown", "PageUp", " ", "Home", "End"]);
       if (!keys.has(event.key)) return;
       // The inner viewport is intentionally non-scrollable. Route keyboard

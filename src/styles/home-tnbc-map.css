@@ -207,7 +207,7 @@
 }
 .tnbc-map-note-val {
   color: #874052;
-  font: 600 var(--note-value-size)/1 var(--font-heading);
+  font: 600 var(--note-value-size)/1 "Fraunces", "Newsreader", "Times New Roman", Georgia, serif;
   font-variant-numeric: lining-nums tabular-nums;
   letter-spacing: 0;
   white-space: nowrap;

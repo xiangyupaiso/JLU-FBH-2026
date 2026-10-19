@@ -1,4 +1,5 @@
 .design-plate {
+  container: design-plate / inline-size;
   margin: 30px 0;
   font-family: var(--font-sans, Lexend, sans-serif);
   color: var(--route-heading-ink, #243d2c);
@@ -8,21 +9,26 @@
   box-sizing: border-box;
 }
 .design-plate .design-plate__heading {
+  width: 100%;
   border-top: 1px solid #aebd9c;
   padding-top: 18px;
   margin: 0 0 26px;
-  max-width: 70ch;
+  max-width: none;
+  text-align: left;
   font: 500 19px/1.55 var(--font-sans, Lexend, sans-serif);
   text-wrap: balance;
 }
 .design-plate .design-plate__panels {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 22px 18px;
+  width: 100%;
+  min-width: 0;
+  gap: 28px 24px;
   align-items: start;
 }
 .design-plate .design-panel {
   min-width: 0;
+  text-align: left;
 }
 .design-plate .design-panel__heading {
   display: flex;
@@ -44,19 +50,30 @@
   aspect-ratio: 16/10;
   background: #fcfaf4;
   border: 1px solid #d9ddce;
+  border-radius: var(--visual-design-image-radius, 16px);
   overflow: hidden;
   cursor: zoom-in;
 }
-.design-plate .design-panel img {
+.wiki-page--visual-design .design-plate .design-panel img {
   display: block;
-  width: 100%;
-  height: 100%;
+  width: auto;
+  height: auto;
+  max-width: 100%;
   max-height: 100%;
   object-fit: contain;
-  border-radius: 0;
+  margin: 0;
+  border-radius: var(--visual-design-image-radius, 16px);
+}
+/* Match this composition to its companion frames; the viewer keeps the full original. */
+.wiki-page--visual-design
+  .design-plate__panels--01-patient-question
+  .design-panel[data-panel="a"] img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 .design-plate .design-panel__heading {
-  min-height: 30px;
+  min-height: 3.2em;
 }
 .design-plate .design-plate__panels--02-visual-continuity {
   grid-template-columns: repeat(6, minmax(0, 1fr));
@@ -71,6 +88,13 @@
 }
 .design-plate .design-plate__panels--05-opening-sequence {
   grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+.design-plate .design-plate__panels--05-opening-sequence .design-panel__image,
+.design-plate
+  .design-plate__panels--07-footer-reveal
+  .design-panel:not(:last-child)
+  .design-panel__image {
+  aspect-ratio: 1440 / 980;
 }
 .design-plate .design-plate__panels--06-navigation-states {
   grid-template-columns: repeat(12, minmax(0, 1fr));
@@ -182,18 +206,59 @@
 }
 .design-plate .design-plate__panels--exploration {
   grid-template-columns: minmax(0, 1fr);
-  max-width: 740px;
+  max-width: 880px;
   margin-inline: auto;
 }
 .design-plate .design-plate__panels--exploration .design-panel__image {
-  aspect-ratio: 2.35/1;
+  aspect-ratio: 1600/1020;
 }
 .design-plate .design-plate__panels--ribbon {
-  grid-template-columns: minmax(0, 3fr) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 2.75fr) minmax(0, 1fr);
 }
 .design-plate .design-plate__panels--ribbon .design-panel__image {
-  height: 250px;
+  height: clamp(180px, 26cqi, 260px);
   aspect-ratio: auto;
+}
+/* Show the complete reading hierarchy before comparing the travel states. */
+.design-plate .design-plate__panels--ribbon-sequence .design-panel:first-child {
+  grid-column: 1 / -1;
+}
+.design-plate .design-plate__panels--ribbon-sequence .design-panel__image {
+  aspect-ratio: 1120 / 430;
+}
+.design-plate
+  .design-plate__panels--ribbon-sequence
+  .design-panel:first-child
+  .design-panel__image {
+  aspect-ratio: 1425 / 792;
+}
+.design-plate .design-plate__panels--on-demand-hints .design-panel__image {
+  aspect-ratio: 1.8;
+  padding: 12px;
+}
+/* The regrouped navigation plate contains two strips and one compact crest. */
+.design-plate .design-plate__panels--navigation {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 4fr);
+}
+.design-plate .design-plate__panels--navigation .design-panel:nth-child(n) {
+  grid-column: auto;
+}
+.design-plate .design-plate__panels--navigation .design-panel:first-child {
+  grid-column: 1 / -1;
+}
+.design-plate
+  .design-plate__panels--navigation
+  .design-panel:first-child
+  .design-panel__image {
+  aspect-ratio: 2400 / 165;
+}
+.design-plate
+  .design-plate__panels--navigation
+  .design-panel:not(:first-child)
+  .design-panel__image {
+  aspect-ratio: auto;
+  height: clamp(130px, 18cqi, 180px);
+  padding: 12px;
 }
 .design-technical-note {
   margin-block: 24px 36px;
@@ -219,7 +284,7 @@
   background: #f7f8ee;
   font-size: 0.85em;
 }
-@media (max-width: 640px) {
+@container design-plate (max-width: 680px) {
   .design-plate .design-plate__panels--story-controls,
   .design-plate .design-plate__panels--ribbon {
     grid-template-columns: minmax(0, 1fr);
@@ -229,10 +294,12 @@
     .design-panel:first-child {
     width: min(100%, 220px);
     justify-self: center;
+    align-self: center;
   }
   .design-plate .design-plate__panels--ribbon .design-panel:last-child {
     width: min(100%, 300px);
     justify-self: center;
+    align-self: center;
   }
   .design-plate .design-plate__panels--story-controls .design-panel__image,
   .design-plate .design-plate__panels--ribbon .design-panel__image {
@@ -260,8 +327,14 @@
 }
 .design-plate .design-plate__panels--07-footer-reveal .design-panel:last-child {
   grid-column: span 3;
-  max-width: 75%;
-  margin: auto;
+  width: min(100%, 760px);
+  justify-self: center;
+}
+.design-plate
+  .design-plate__panels--07-footer-reveal
+  .design-panel:last-child
+  .design-panel__image {
+  aspect-ratio: 960 / 560;
 }
 .design-plate figcaption,
 .wiki-page--route .wiki-figure.design-plate figcaption {
@@ -318,12 +391,21 @@
   width: 100%;
   height: 650px;
   border: 1px solid #d4dcc5;
+  border-radius: var(--visual-design-image-radius, 16px);
   margin-top: 18px;
   background: #fcfaf4;
 }
 .design-live-study p {
   font-size: 12px;
   margin-top: 12px;
+}
+.design-live-study#live-ribbon iframe {
+  height: 540px;
+}
+@media (max-width: 980px) {
+  .design-live-study#live-ribbon iframe {
+    height: 600px;
+  }
 }
 .figure-inspector {
   position: fixed;
@@ -424,6 +506,7 @@ body:has(> .figure-inspector[open]) {
   max-height: 100%;
   object-fit: contain;
   background: #fcfaf4;
+  border-radius: 16px;
 }
 .figure-inspector footer {
   display: flex;
@@ -518,7 +601,7 @@ img[data-figure-zoom]:focus-visible {
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
 }
-@media (max-width: 680px) {
+@container design-plate (max-width: 680px) {
   .design-plate .design-plate__panels {
     display: flex;
     flex-direction: column;
@@ -534,6 +617,7 @@ img[data-figure-zoom]:focus-visible {
   }
   .design-plate .design-panel__heading {
     font-size: 13px;
+    min-height: 0;
   }
   .design-plate .design-plate__legend,
   .design-plate .design-plate__live {
@@ -600,6 +684,28 @@ img[data-figure-zoom]:focus-visible {
     height: auto;
     aspect-ratio: 370/330;
   }
+  .design-plate
+    .design-plate__panels--navigation
+    .design-panel:first-child
+    .design-panel__image {
+    aspect-ratio: auto;
+    min-height: 64px;
+    padding: 8px;
+  }
+  .design-plate .design-plate__panels--navigation .design-panel:nth-child(2) {
+    width: min(100%, 180px);
+    align-self: center;
+  }
+  .design-plate
+    .design-plate__panels--navigation
+    .design-panel:nth-child(3)
+    .design-panel__image {
+    height: auto;
+    min-height: 80px;
+    aspect-ratio: auto;
+  }
+}
+@media (max-width: 680px) {
   .figure-index {
     grid-template-columns: minmax(0, 1fr);
   }

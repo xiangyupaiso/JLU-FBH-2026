@@ -37,11 +37,18 @@ function contactHeight(x: number) {
   );
 }
 
-export function useWikiNextCompanion(path: string) {
+export function useWikiNextCompanion(path: string, studyProgress?: number) {
   const sectionRef = useRef<HTMLElement>(null);
   const companionRef = useRef<HTMLSpanElement>(null);
   const ribbonRef = useRef<HTMLImageElement>(null);
   const actionRef = useRef<HTMLAnchorElement>(null);
+  const studyProgressRef = useRef(studyProgress);
+  const repaintRef = useRef<(() => void) | null>(null);
+
+  useLayoutEffect(() => {
+    studyProgressRef.current = studyProgress;
+    repaintRef.current?.();
+  }, [studyProgress]);
 
   useLayoutEffect(() => {
     const section = sectionRef.current;
@@ -142,6 +149,12 @@ export function useWikiNextCompanion(path: string) {
         readPosition = false;
         companion!.dataset.slideTarget = targetProgress.toFixed(4);
       }
+      // Isolated studies can scrub the same artwork geometry explicitly.
+      if (studyProgressRef.current !== undefined) {
+        targetProgress = clamp(studyProgressRef.current);
+        companion!.dataset.slideTarget = targetProgress.toFixed(4);
+        snap = true;
+      }
       const elapsed = time - lastTime;
       const step =
         elapsed > 120 || elapsed <= 0 ? 1000 / 60 : Math.min(elapsed, 48);
@@ -187,6 +200,7 @@ export function useWikiNextCompanion(path: string) {
       readPosition = true;
       schedule();
     };
+    repaintRef.current = () => schedule(true);
     const remeasure = () => {
       dirty = true;
       schedule();
@@ -221,6 +235,7 @@ export function useWikiNextCompanion(path: string) {
     });
     paint(performance.now());
     return () => {
+      repaintRef.current = null;
       mounted = false;
       cancelAnimationFrame(frame);
       visibility.disconnect();

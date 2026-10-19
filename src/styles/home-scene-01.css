@@ -1,3 +1,52 @@
+/* Home shares the Lexend face used by the vaccine question. Route-scoped
+   tokens also cover the shared header and footer, and reset on navigation. */
+body:has(.home-redesign) {
+  --font-home:
+    "Lexend", -apple-system, BlinkMacSystemFont, "PingFang SC",
+    "Microsoft YaHei", sans-serif;
+  --font-heading: var(--font-home);
+  --font-display: var(--font-home);
+  --font-editorial: var(--font-home);
+  --font-sans: var(--font-home);
+  --font-body: var(--font-home);
+  --font-mono: var(--font-home);
+}
+
+.circure-footer.is-home-page .circure-footer__panel {
+  --font-body: var(--font-home);
+}
+
+/* These controls otherwise explicitly select their own typefaces. */
+body:has(.home-redesign) .home-playback,
+body:has(.home-redesign) .home-playback .home-playback-scenes-heading h2,
+.site-header.is-home-page .wordmark-folio,
+.site-header.is-home-page .nav-card-info strong,
+.site-header.is-home-page .circure-mobile-menu .circure-mobile-group__link {
+  font-family: var(--font-home) !important;
+}
+
+/* Keep long-form reading light; use modest weight for narrative headings. */
+.home-redesign .story-copy h2,
+.home-redesign .story-artwork-title,
+.home-redesign .home-antigen-switch h3 {
+  font-weight: 500;
+}
+
+.home-redesign em,
+.home-redesign blockquote,
+.home-redesign .home-intro-subtitle {
+  font-style: normal;
+}
+
+.home-redesign .home-explore-label {
+  --home-explore-weight: 600;
+}
+
+/* Keep the closing title inside its reading column with the wider face. */
+.home-redesign .story-finale > .story-final-statement {
+  grid-template-columns: minmax(0, 1fr);
+}
+
 .home-redesign {
   background: #21141f;
 }

@@ -4,6 +4,7 @@ import { MemoryRouter } from "react-router-dom";
 import { Navbar } from "../components/wiki/features/project/visual-design-studies/NavigationStudy";
 import { HomeExploreLinks } from "../components/home/HomeExploreLinks";
 import { WikiNextRecord } from "../components/wiki/WikiNextRecord";
+import { RibbonStudy } from "../components/wiki/features/project/visual-design-studies/RibbonStudy";
 import { HomePlayback } from "../components/wiki/features/project/visual-design-studies/PlaybackStudy";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../styles/circure-tokens.css";
@@ -41,6 +42,8 @@ export function Study() {
                 ? "Open the scene list, change the selection, then return with Escape."
                 : kind === "navigation"
                   ? "Select the crest to expand or collapse the menu. Explore its category controls."
+                  : kind === "ribbon"
+                    ? "Hover over or focus Notebook to reveal its hint."
                   : "Use Tab to focus the destination and reveal its local hint. Press Escape to dismiss the hint."}
             </p>
           </header>
@@ -49,7 +52,8 @@ export function Study() {
           {kind === "navigation" && <Navbar />}
           {kind === "explore" && <HomeExploreLinks />}
           {kind === "controller" && <HomePlayback introPlaying={false} />}
-          {kind === "ribbon" && (
+          {kind === "ribbon" && !capture && <RibbonStudy />}
+          {kind === "ribbon" && capture && (
             <div className="wiki-page wiki-page--project-preview">
               <WikiNextRecord
                 path="/notebook"

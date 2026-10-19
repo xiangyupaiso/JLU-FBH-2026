@@ -1,0 +1,47 @@
+[
+  {
+    "route": "model",
+    "title": "Model",
+    "file": "model.png"
+  },
+  {
+    "route": "description",
+    "title": "Description",
+    "file": "description.png"
+  },
+  {
+    "route": "experiments",
+    "title": "Experiments",
+    "file": "experiments.png"
+  },
+  {
+    "route": "safety-and-security",
+    "title": "Safety and Security",
+    "file": "safety-and-security.png"
+  },
+  {
+    "route": "education",
+    "title": "Education",
+    "file": "education.png"
+  },
+  {
+    "route": "entrepreneurship",
+    "title": "Entrepreneurship",
+    "file": "entrepreneurship.png"
+  },
+  {
+    "route": "model",
+    "state": "reading",
+    "file": "model-reading.png"
+  },
+  {
+    "route": "description",
+    "state": "reading",
+    "file": "description-reading.png"
+  },
+  {
+    "route": "experiments",
+    "state": "reading",
+    "file": "experiments-reading.png"
+  }
+]

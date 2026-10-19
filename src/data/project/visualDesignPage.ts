@@ -249,7 +249,7 @@ export const visualDesignPage: WikiPageContent = {
           type: "prose",
           paragraphs: [
             "Honoring scientific attribution, our citation architecture provides an academic reading experience inspired by premier journals. Hovering over any in-text citation marker (**`[1]`, `[2]`**) immediately summons an **interactive preview card** displaying authors, title, journal, volume, and year. Clicking the marker initiates smooth inertial scrolling directly to the bibliography with a glowing pulse, while **backlink pills** allow readers to jump effortlessly back to the exact paragraph where the paper was referenced.",
-            "To guarantee rapid global loading for iGEM judges, all visual artworks are delivered via the official iGEM static CDN in **next-generation AVIF format**, saving over 60% bandwidth. Coupled with automated **200 OK link health probing** and **pure CSS dynamic figure counter badges (`[FIG. XX]`)**, the wiki achieves absolute link integrity and pristine visual fidelity.",
+            "To guarantee rapid global loading for iGEM judges, all visual artworks are delivered via the official iGEM static CDN in **next-generation AVIF format**, saving over 60% bandwidth. Coupled with automated **200 OK link health probing** and **automatically ordered figure badges (`FIG. XX`)**, the wiki achieves absolute link integrity and pristine visual fidelity.",
           ],
         },
       ],

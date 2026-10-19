@@ -1,5 +1,6 @@
 import { QueuedImage } from "../../../common/QueuedImage";
 import type { ReactNode } from "react";
+import { visualDesignFigures } from "../../../../data/project/visualDesignAssets";
 import "../../../../styles/features/visual-design-panels.css";
 
 /* -------------------------------------------------------------------------- */
@@ -90,6 +91,12 @@ export function PaletteSwatches() {
               </h5>
             </div>
 
+            <div className="palette-swatches__preview" aria-hidden="true">
+              {item.colors.map((color) => (
+                <span key={color.role} style={{ backgroundColor: color.hex }} />
+              ))}
+            </div>
+
             <div className="palette-swatches__chips-row">
               {item.colors.map((c) => (
                 <div key={c.role} className="palette-swatches__chip-item">
@@ -157,7 +164,7 @@ const ARCHITECTURE_LAYERS: ArchitectureLayer[] = [
     highlights: [
       "**WikiRoutePage.tsx** assembles content, reading progress, and the mobile contents drawer.",
       "**wiki-route-skin.css** sets shared layout dimensions.",
-      "CSS numbers figures automatically.",
+      "Article order determines figure numbers automatically.",
     ],
   },
 ];
@@ -226,6 +233,7 @@ interface CursorStateItem {
   src: string;
   alt: string;
   description: string;
+  detail: string;
 }
 
 const CURSOR_STATES: CursorStateItem[] = [
@@ -233,48 +241,96 @@ const CURSOR_STATES: CursorStateItem[] = [
     id: "rest",
     badge: "State A · Rest",
     title: "Alert Resting State",
-    src: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/lumi-cursor-rest.avif",
+    src: visualDesignFigures.lumiCursorRest.src,
     alt: "Lumi Cursor Resting Posture",
     description:
       "Default watchful posture accompanying general desktop navigation and long-form reading.",
+    detail: "Open eyes · Watchful companion",
   },
   {
     id: "active",
     badge: "State B · Hover",
     title: "Joyful Active Reaction",
-    src: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/lumi-cursor-active.avif",
+    src: visualDesignFigures.lumiCursorActive.src,
     alt: "Lumi Cursor Active Hover Posture",
     description:
-      "Joyful wink and delicate glass specular sheen triggered upon interactive links and controls.",
+      "A joyful closed-eye expression and a delicate glass sheen greet interactive links and controls.",
+    detail: "Happy eyes · Glass sheen",
   },
   {
     id: "spark",
     badge: "State C · Click",
     title: "Dynamic Spark Burst",
-    src: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/lumi-cursor-spark.avif",
+    src: visualDesignFigures.lumiCursorSpark.src,
     alt: "Lumi Cursor Click Spark Burst",
     description:
       "Inertia spring recoil emitting an 18-particle burst tinted dynamically to the active section's palette.",
+    detail: "18 sparks · Twin ripples",
   },
 ];
 
 export function LumiCursorShowcase() {
   return (
-    <figure className="wiki-figure wiki-cursor-showcase" data-wiki-reveal>
+    <figure
+      id="lumi-cursor-states"
+      className="wiki-figure wiki-cursor-showcase"
+      data-wiki-reveal
+    >
       <div className="wiki-cursor-showcase__grid">
         {CURSOR_STATES.map((state) => (
-          <div key={state.id} className="wiki-cursor-showcase__card">
+          <div
+            key={state.id}
+            className={`wiki-cursor-showcase__card wiki-cursor-showcase__card--${state.id}`}
+          >
+            <span className="wiki-cursor-showcase__badge">{state.badge}</span>
             <div className="wiki-cursor-showcase__preview">
-              <QueuedImage
-                src={state.src}
-                alt={state.alt}
-                className="wiki-cursor-showcase__sprite"
-                loading="lazy"
-                decoding="async"
-              />
+              {state.id === "spark" && (
+                <svg
+                  className="wiki-cursor-showcase__burst"
+                  viewBox="0 0 320 280"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <circle
+                    className="wiki-cursor-showcase__ripple"
+                    cx="160"
+                    cy="140"
+                    r="82"
+                  />
+                  <circle
+                    className="wiki-cursor-showcase__ripple"
+                    cx="160"
+                    cy="140"
+                    r="104"
+                  />
+                  {Array.from({ length: 18 }, (_, index) => {
+                    const angle = (index / 18) * Math.PI * 2;
+                    const radius = index % 2 === 0 ? 1 : 0.86;
+                    const x = 160 + Math.cos(angle) * 139 * radius;
+                    const y = 140 + Math.sin(angle) * 113 * radius;
+                    return (
+                      <path
+                        key={index}
+                        d="M0-7 Q1-1 7 0 Q1 1 0 7 Q-1 1-7 0 Q-1-1 0-7Z"
+                        transform={`translate(${x} ${y}) rotate(${index * 23}) scale(${index % 3 === 0 ? 1 : 0.65})`}
+                        className="wiki-cursor-showcase__spark"
+                      />
+                    );
+                  })}
+                </svg>
+              )}
+              <div className="wiki-cursor-showcase__art">
+                <QueuedImage
+                  src={state.src}
+                  alt={state.alt}
+                  className="wiki-cursor-showcase__sprite"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+              <span className="wiki-cursor-showcase__detail">{state.detail}</span>
             </div>
             <div className="wiki-cursor-showcase__meta">
-              <span className="wiki-cursor-showcase__badge">{state.badge}</span>
               <strong className="wiki-cursor-showcase__card-title">
                 {state.title}
               </strong>
@@ -284,7 +340,7 @@ export function LumiCursorShowcase() {
         ))}
       </div>
       <figcaption>
-        Lumi mascot cursor interaction lifecycle: (A) Alert resting state during general desktop navigation; (B) Joyful hover reaction with glass specular sheen over interactive controls; (C) Inertia spring recoil emitting dynamic theme-aware spark particle bursts upon click.
+        Lumi mascot cursor interaction lifecycle: (A) Alert resting state during general desktop navigation; (B) Joyful closed-eye reaction with glass specular sheen over interactive controls; (C) Inertia spring recoil emitting dynamic theme-aware spark particle bursts upon click.
       </figcaption>
     </figure>
   );

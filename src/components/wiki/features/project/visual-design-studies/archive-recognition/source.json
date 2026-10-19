@@ -1,0 +1,14 @@
+{
+  "origin": "/Users/lijy/Desktop/CodeX Project/2026-07-01-iGEM-wiki-v1-framer/anthropic-circure-story-nav-local",
+  "retained": "Original Person and Design markup, SVG paths, emblem layers, CSS progress formulas, progress smoothing and ribbon spring constants.",
+  "adaptations": "Two-chapter isolated excerpt; original 03/09 and 04/09 labels retained. Page progress normalized to excerpt. Added chapter links, replay, responsive and reduced-motion presentation.",
+  "sourceSha256": {
+    "index.html": "af9b155f94513b749f43d0e01101b6e7a9de4c45b30a3619ada3ddf979409ac9",
+    "styles.css": "4a72e519fe7ef374fa6d42505c498df1d987fa4ec17c57c77ebfc948efd3e960",
+    "script.js": "a429c98f0155c2aea4658a2640f1b085fed556542fa0fe431648879c139c06ca"
+  },
+  "assetSha256": {
+    "circure-emblem.png": "341451f1da99f93e2d913ed094977522fb943b2ab07f80bf61ffc90d7d45ab68",
+    "circure-ribbon.png": "aee90d44f1343a9636031f65bcc91e68e4c8b200653e3f0a89732c243aeb94cf"
+  }
+}

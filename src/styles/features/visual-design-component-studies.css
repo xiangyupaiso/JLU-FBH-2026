@@ -65,6 +65,53 @@ body {
 .component-study--ribbon .component-canvas {
   padding-top: 60px;
 }
+body:not(.is-capture):not(.is-raw) .component-study--ribbon .component-canvas {
+  padding-top: 0;
+  min-height: 0;
+}
+.ribbon-study__controls {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  font: 400 12px/1.6 var(--font-sans);
+}
+.ribbon-study__controls button {
+  min-width: 110px;
+  padding: 8px 14px;
+  border: 1px solid #bcc9ab;
+  border-radius: 8px;
+  background: #f3f7e0;
+  color: inherit;
+}
+.ribbon-study__controls label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+  max-width: 360px;
+}
+.ribbon-study__controls input {
+  min-width: 0;
+  width: 100%;
+  accent-color: #84382b;
+}
+.ribbon-study__controls :is(button, input):focus-visible {
+  outline: 2px solid #84382b;
+  outline-offset: 4px;
+}
+body.is-embedded[data-study="ribbon"] .component-study__header h1,
+body.is-embedded[data-study="ribbon"] .component-study__header p:first-child,
+body.is-embedded[data-study="ribbon"] .component-study__footer {
+  display: none;
+}
+body.is-embedded[data-study="ribbon"] .component-study__header {
+  margin-bottom: 14px;
+}
+@media (max-width: 760px) {
+  .ribbon-study__controls {
+    display: none;
+  }
+}
 .component-study--navigation .component-canvas {
   height: 260px;
 }

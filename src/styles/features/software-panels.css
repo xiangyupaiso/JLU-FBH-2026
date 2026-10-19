@@ -38,7 +38,7 @@
   background: var(--brand-navy, #162b4c);
   color: #ffffff;
   box-shadow: 0 1px 3px rgba(22, 43, 76, 0.12);
-  font-family: var(--font-mono);
+  font-family: var(--font-figure-label);
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.1em;

@@ -1,4 +1,36 @@
+import { installRingStudy } from "./visual-design-studies/installRingStudy";
+
 export function installVisualDesignFigures() {
+  // Number independent article figures in DOM order, including closed notes.
+  // Lettered panels and archive objects retain their local group labels.
+  const numberedCaptions = new Set<HTMLElement>();
+  function updateFigureNumbers() {
+    let index = 0;
+    document
+      .querySelectorAll<HTMLElement>(
+        ".wiki-page--visual-design .wiki-article figure > figcaption",
+      )
+      .forEach((caption) => {
+        if (
+          caption.parentElement?.matches(".design-panel, .ms-cover__object") ||
+          caption.closest(
+            '[aria-hidden="true"], .ms-print-originals, .footer-reveal-study__scene',
+          )
+        )
+          return;
+        caption.dataset.designFigureLabel =
+          `FIG. ${String(++index).padStart(2, "0")}`;
+        numberedCaptions.add(caption);
+      });
+    for (const caption of numberedCaptions) {
+      if (!caption.isConnected) {
+        delete caption.dataset.designFigureLabel;
+        numberedCaptions.delete(caption);
+      }
+    }
+  }
+  updateFigureNumbers();
+
   // One delegated viewer serves the Visual Design article, case figures and archive.
   const imageSelector =
     ".wiki-page--visual-design .wiki-article img, .design-plate img, .manuscript img, .design-archive img";
@@ -72,7 +104,8 @@ export function installVisualDesignFigures() {
       group.querySelectorAll<HTMLImageElement>("img"),
     ).filter(
       (item) =>
-        item.matches(imageSelector) && !item.closest(".ms-print-originals"),
+        item.matches(imageSelector) &&
+        !item.closest('.ms-print-originals, [aria-hidden="true"]'),
     );
     const index = originals.indexOf(original);
     photos = (index < 0 ? [original] : originals).map(describeImage);
@@ -120,7 +153,11 @@ export function installVisualDesignFigures() {
     Map<string, string | null>
   >();
   function prepareImage(original: HTMLImageElement) {
-    if (enhancedImages.has(original)) return;
+    if (
+      enhancedImages.has(original) ||
+      original.closest('[aria-hidden="true"]')
+    )
+      return;
     const attributes: Record<string, string> = { "data-figure-zoom": "" };
     if (!original.closest("a, button")) {
       Object.assign(attributes, {
@@ -140,7 +177,25 @@ export function installVisualDesignFigures() {
   document
     .querySelectorAll<HTMLImageElement>(imageSelector)
     .forEach(prepareImage);
+  const ringStudies = new Map<HTMLElement, () => void>();
+  function prepareRingStudies() {
+    for (const [root, dispose] of ringStudies) {
+      if (!root.isConnected) {
+        dispose();
+        ringStudies.delete(root);
+      }
+    }
+    document
+      .querySelectorAll<HTMLElement>("[data-ring-study]")
+      .forEach((root) => {
+        if (!ringStudies.has(root))
+          ringStudies.set(root, installRingStudy(root));
+      });
+  }
+  prepareRingStudies();
   const imageObserver = new MutationObserver((records) => {
+    updateFigureNumbers();
+    prepareRingStudies();
     for (const record of records) {
       for (const node of record.addedNodes) {
         if (!(node instanceof Element)) continue;
@@ -208,53 +263,17 @@ export function installVisualDesignFigures() {
   };
   document.addEventListener("toggle", loadStudy, true);
 
-  // Both the standalone folios and the embedded archive share these controls.
-  function reveal(comparison: HTMLElement, value: string) {
-    const amount = Math.max(0, Math.min(100, Number(value)));
-    const range = comparison.querySelector<HTMLInputElement>(
-      'input[type="range"]',
-    )!;
-    range.value = String(amount);
-    range.setAttribute("aria-valuetext", `${amount}%`);
-    comparison
-      .querySelector<HTMLElement>(".ms-comparison__stage")!
-      .style.setProperty("--split", `${amount}%`);
-    comparison.querySelector<HTMLElement>(".ms-comparison__tag--left")!.hidden =
-      amount === 0;
-    comparison.querySelector<HTMLElement>(
-      ".ms-comparison__tag--right",
-    )!.hidden = amount === 100;
-    comparison
-      .querySelectorAll<HTMLButtonElement>("button[data-reveal]")
-      .forEach((button) => {
-        button.setAttribute(
-          "aria-pressed",
-          String(Number(button.dataset.reveal) === amount),
-        );
-      });
-  }
-  const moveComparison = (event: Event) => {
-    const target = event.target;
-    if (!(target instanceof HTMLInputElement) || target.type !== "range")
-      return;
-    const comparison = target.closest<HTMLElement>("[data-comparison]");
-    if (comparison) reveal(comparison, target.value);
-  };
-  const selectComparison = (event: MouseEvent) => {
-    if (!(event.target instanceof Element)) return;
-    const button = event.target.closest<HTMLButtonElement>(
-      "button[data-reveal]",
-    );
-    const comparison = button?.closest<HTMLElement>("[data-comparison]");
-    if (comparison && button) reveal(comparison, button.dataset.reveal!);
-  };
-  document.addEventListener("input", moveComparison);
-  document.addEventListener("click", selectComparison);
   let disposed = false;
   function disposeViewer() {
     if (disposed) return;
     disposed = true;
     imageObserver.disconnect();
+    numberedCaptions.forEach((caption) => {
+      delete caption.dataset.designFigureLabel;
+    });
+    numberedCaptions.clear();
+    ringStudies.forEach((dispose) => dispose());
+    ringStudies.clear();
     document
       .querySelectorAll<HTMLImageElement>(imageSelector)
       .forEach((original) => {
@@ -268,8 +287,6 @@ export function installVisualDesignFigures() {
     document.removeEventListener("click", inspectFigure);
     document.removeEventListener("keydown", inspectWithKeyboard);
     document.removeEventListener("toggle", loadStudy, true);
-    document.removeEventListener("input", moveComparison);
-    document.removeEventListener("click", selectComparison);
     dialog.remove();
   }
 

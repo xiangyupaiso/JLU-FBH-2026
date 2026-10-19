@@ -126,6 +126,8 @@ export default () => {
         input: {
           wiki: resolve("index.html"),
           visualDesignStudy: resolve("visual-design-study.html"),
+          archiveNavigationStudy: resolve("archive-navigation-study.html"),
+          archiveRecognitionStudy: resolve("archive-recognition-study.html"),
         },
       },
     },
