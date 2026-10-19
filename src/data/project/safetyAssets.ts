@@ -1084,6 +1084,18 @@ export const safetyAssets = {
       height: 720,
       alt: "Photos of changchun international medical and health industry expo",
     },
+  "6-1-1-4-photos-of-changchun-international-medical-and-health-industry-expo.avif":
+    {
+      fileName:
+        "6-1-1-4-photos-of-changchun-international-medical-and-health-industry-expo.avif",
+      localSourcePath: null,
+      sourceReference: "文案集/project/safe/3.4 Safety and Security.md:1618",
+      uploadUrl:
+        "https://static.igem.wiki/teams/6056/wiki/files/pages/safety-and-security/6-1-1-4-photos-of-changchun-international-medical-and-health-industry-expo.avif",
+      width: 1280,
+      height: 720,
+      alt: "Photos of changchun international medical and health industry expo",
+    },
   "6-1-2-1-photos-of-endocrine-health-seminar-professor-guo-weiying.avif": {
     fileName:
       "6-1-2-1-photos-of-endocrine-health-seminar-professor-guo-weiying.avif",

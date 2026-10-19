@@ -59,7 +59,7 @@ const heatmapOption = createEpitopeHeatmapOption(heatmapRows, true);
 heatmapOption.title = { show: false };
 heatmapOption.animation = false;
 heatmapOption.grid = { top: 12, left: 156, right: 12, bottom: 40 };
-// Each antigen has its own hue; all four share the same 0–100% intensity scale.
+// All antigens use TROP2's green ramp on the same 0–100% scale.
 const originalSeries = heatmapOption.series as echarts.SeriesOption[];
 const burialSeries = originalSeries[0] as echarts.HeatmapSeriesOption;
 heatmapOption.series = [
@@ -77,14 +77,14 @@ heatmapOption.series = [
   originalSeries[1],
 ];
 heatmapOption.visualMap = Object.values(GROUP_COLORS).map(
-  (color, seriesIndex) => ({
+  (_color, seriesIndex) => ({
     type: "continuous",
     show: false,
     min: 0,
     max: 100,
     dimension: 2,
     seriesIndex,
-    inRange: { color: ["#ffffff", color] },
+    inRange: { color: ["#ffffff", GROUP_COLORS.TROP2] },
   }),
 );
 heatmapOption.yAxis = {
@@ -150,7 +150,7 @@ export function ModelBurialHeatmap() {
                 <tr key={row.peptide}>
                   <th scope="row">{row.peptide}</th>
                   {row.values.map((value, i) => (
-                    <td key={i}>{value ? `${value.toFixed(1)}%` : "—"}</td>
+                    <td key={i}>{value !== null ? `${value.toFixed(1)}%` : "—"}</td>
                   ))}
                 </tr>
               ))}

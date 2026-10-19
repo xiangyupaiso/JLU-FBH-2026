@@ -23,6 +23,7 @@ const sdg12Profiles: ReadonlyArray<StakeholderProfile> = [
     whatChanged:
       "We expanded our understanding of SDG 12 to include **resource use in our current experiments**. We used pilot experiments to select conditions, refined experimental design, planned appropriate replication, and followed laboratory waste management procedures to reduce avoidable resource use.",
     currentStatus: "Incorporated",
+    photos: sdg12PhotoSets["sdg12-01"],
     sdgs: [12, 9],
     article: {
       title: "Responsible Production Begins Before Scale-Up",
@@ -70,7 +71,7 @@ const sdg12Profiles: ReadonlyArray<StakeholderProfile> = [
     name: "Junhua Qiao",
     role: "Chief Technology Officer (CTO), GeneScience Pharmaceuticals",
     relevantStakeholder:
-      "As Chief Technology Officer at GeneScience Pharmaceuticals, Qiao Junhua has extensive experience in biopharmaceutical CMC, process development, technology transfer, and industrialization. He can help us understand the manufacturability, process control, batch consistency, and quality management requirements CirCure would need to address after completing early-stage research validation.",
+      "As Chief Technology Officer at GeneScience Pharmaceuticals, Junhua Qiao has extensive experience in biopharmaceutical CMC, process development, technology transfer, and industrialization. He can help us understand the manufacturability, process control, batch consistency, and quality management requirements CirCure would need to address after completing early-stage research validation.",
     challenge:
       "When a laboratory vaccine moves into product development, the evaluation criteria shift from “Can it be achieved?” to “Can it be manufactured consistently, controlled effectively, and applied at scale?” Early-stage work should focus on research validation while documenting later requirements for process development, quality control, and scale-up, so that the project does not lose sight of its current priorities.",
     keyInsight:
@@ -87,7 +88,7 @@ const sdg12Profiles: ReadonlyArray<StakeholderProfile> = [
         {
           blocks: [
             "Following our earlier work on experimental design and discussions with experts, we had developed a clearer account of how CirCure aims to achieve antigen expression, induce an immune response, and further evaluate functional effects. However, we had not yet established a clear framework for assessing the technology’s next stage if these early results were supported.",
-            "In our discussion with Qia Junhua, Chief Technology Officer at GeneScience Pharmaceuticals, we therefore did not ask broadly whether CirCure “could be industrialized.” Instead, we introduced the project’s current technical approach, development stage, and validation strategy. We explained that we currently use a mature, commercially available LNP platform and focus on evaluating antigen expression, immune activation, and functional effects at the cellular level. We then asked three specific questions:",
+            "In our discussion with Junhua Qiao, Chief Technology Officer at GeneScience Pharmaceuticals, we therefore did not ask broadly whether CirCure “could be industrialized.” Instead, we introduced the project’s current technical approach, development stage, and validation strategy. We explained that we currently use a mature, commercially available LNP platform and focus on evaluating antigen expression, immune activation, and functional effects at the cellular level. We then asked three specific questions:",
             {
               bullets: [
                 "During early-stage research, which product development requirements should we understand in advance, and which should be evaluated systematically only after preliminary efficacy has been demonstrated?",

@@ -72,7 +72,7 @@ const sdg9Profiles: ReadonlyArray<StakeholderProfile> = [
   {
     id: "sdg9-02",
     index: "02",
-    name: "Mr. Guan Qingtian",
+    name: "Mr. Qingtian Guan",
     role: "Computational Immunology & Antigen Design",
     relevantStakeholder: "Mr. Guan can assess whether our multi-epitope design is well founded from the perspectives of immunogenicity, HLA binding, and population coverage, and help us determine whether candidate epitopes form a complementary combination.",
     challenge: "**Does adding more epitopes necessarily improve coverage?**",
@@ -89,7 +89,7 @@ const sdg9Profiles: ReadonlyArray<StakeholderProfile> = [
       sections: [
         {
           blocks: [
-            "After improving our criteria for evaluating candidate antigens, we needed to address a more specific question: which epitopes should we select, and how should they be combined? Because TNBC is highly heterogeneous, we hoped a multi-epitope design could broaden the vaccine’s potential coverage. Early in the project, we naturally wondered whether adding more candidate epitopes would cover more tumor features and immune backgrounds. We consulted Mr. Guan Qingtian about epitope selection, multi-epitope combinations, and HLA prediction."
+            "After improving our criteria for evaluating candidate antigens, we needed to address a more specific question: which epitopes should we select, and how should they be combined? Because TNBC is highly heterogeneous, we hoped a multi-epitope design could broaden the vaccine’s potential coverage. Early in the project, we naturally wondered whether adding more candidate epitopes would cover more tumor features and immune backgrounds. We consulted Mr. Qingtian Guan about epitope selection, multi-epitope combinations, and HLA prediction."
           ]
         },
         {
@@ -145,7 +145,7 @@ const sdg9Profiles: ReadonlyArray<StakeholderProfile> = [
         {
           heading: "01 Sustained Expression Is a Foundation, Not the Final Outcome",
           blocks: [
-            "Professor Yan Dongmei first pointed out that **“longer expression” cannot be equated directly with “a more effective vaccine.”** The stability of circRNA can provide a basis for antigen expression, but the vaccine’s effects also depend on whether the expressed antigen can be recognized and whether it subsequently initiates the intended immune response. **Sustained expression may indicate a technical advantage of the carrier, but it cannot by itself establish vaccine efficacy.**"
+            "Professor Jifan Hu first pointed out that **“longer expression” cannot be equated directly with “a more effective vaccine.”** The stability of circRNA can provide a basis for antigen expression, but the vaccine’s effects also depend on whether the expressed antigen can be recognized and whether it subsequently initiates the intended immune response. **Sustained expression may indicate a technical advantage of the carrier, but it cannot by itself establish vaccine efficacy.**"
           ]
         },
         {
@@ -163,7 +163,7 @@ const sdg9Profiles: ReadonlyArray<StakeholderProfile> = [
         {
           heading: "04 What Changed | Looking Beyond Expression to Functional Value",
           blocks: [
-            "We incorporated Professor Yan Dongmei’s recommendation. While continuing to assess circRNA stability and expression, **we strengthened our evaluation of immune activation and functional antitumor effects**. We now ask not only “Can circRNA support stable expression?” but also **“Can this expression produce an immune response with functional significance?”** This shifts CirCure’s assessment of circRNA beyond the technical properties of the carrier and toward the function the vaccine is intended to achieve."
+            "We incorporated Professor Jifan Hu’s recommendation. While continuing to assess circRNA stability and expression, **we strengthened our evaluation of immune activation and functional antitumor effects**. We now ask not only “Can circRNA support stable expression?” but also **“Can this expression produce an immune response with functional significance?”** This shifts CirCure’s assessment of circRNA beyond the technical properties of the carrier and toward the function the vaccine is intended to achieve."
           ]
         }
       ]
@@ -185,7 +185,7 @@ const sdg9Profiles: ReadonlyArray<StakeholderProfile> = [
       3
     ],
     leadIn: [
-      "Professor Jifan Hu's recommendation led us to ask whether circRNA expression could truly translate into immune function. During discussions at a regional meeting in Northeast China, a further question arose: if we observed strong immune activation, was it entirely due to antigen expression, or could circRNA itself also contribute? This discussion drew our attention to RNA immune recognition and prompted us to ask Professor Yang Wei about the potential self-adjuvant effect of circRNA."
+      "Professor Jifan Hu's recommendation led us to ask whether circRNA expression could truly translate into immune function. During discussions at a regional meeting in Northeast China, a further question arose: if we observed strong immune activation, was it entirely due to antigen expression, or could circRNA itself also contribute? This discussion drew our attention to RNA immune recognition and prompted us to ask Professor Tiesuo Zhao about the potential self-adjuvant effect of circRNA."
     ],
     article: {
       title: "Could circRNA Itself Be Participating in the Immune Response?",
@@ -242,7 +242,7 @@ const sdg9Profiles: ReadonlyArray<StakeholderProfile> = [
       sections: [
         {
           blocks: [
-            "When evaluating CTL-mediated tumor killing, we also needed to determine whether the CTLs might attack normal tissues. Initially, we planned to select one normal cell line and test it alongside MDA-MB-231. If the CTLs killed the tumor cells but not the normal cells, we thought this might provide preliminary evidence of tumor specificity. Our discussion with Professor Niu Junqi revealed a critical flaw in this design."
+            "When evaluating CTL-mediated tumor killing, we also needed to determine whether the CTLs might attack normal tissues. Initially, we planned to select one normal cell line and test it alongside MDA-MB-231. If the CTLs killed the tumor cells but not the normal cells, we thought this might provide preliminary evidence of tumor specificity. Our discussion with Professor Junqi Niu revealed a critical flaw in this design."
           ]
         },
         {
@@ -309,7 +309,7 @@ const sdg9Profiles: ReadonlyArray<StakeholderProfile> = [
   {
     id: "sdg9-07",
     index: "07",
-    name: "Professor Wu Di",
+    name: "Professor Di Wu",
     role: "Tumor Immunology",
     keyInsight: "The transition from a “cold” tumor to a “hot” tumor does not hinge on an increase in any single immune marker. It depends on whether a complete immune response can be established, from **antigen presentation and T-cell recruitment and activation to effective tumor killing**.",
     whatChanged: "We reorganized the evidence logic for how CirCure might promote a “cold-to-hot” transition in TNBC. We first examine whether **antigen presentation and DC maturation initiate an immune response**, then assess **T-cell activation**, and finally use cell co-culture experiments to validate **functional killing**. **We no longer use one immune marker to claim that a tumor has become “hot.”** Instead, we treat these results as connected evidence that indicates the potential to improve the tumor immune state in our current system.",

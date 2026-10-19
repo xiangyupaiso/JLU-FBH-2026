@@ -69,7 +69,7 @@ export const resultsSectionsRound2Safety: WikiSection[] = [
         type: "prose",
         paragraphs: [
           "Values are mean ± SD, n = 3.",
-          "One-way ANOVA F(4,10) = 378.2, P < 0.0001. **Combined vs TROP2-1+2 also reaches significance** (Holm-corrected（Holm, 1979） P = 1.5 × 10⁻⁴), so eight epitopes still add over two. The representative flow values in Figure 19 (10.9 / 15.6 / 15.9 / 17.2 / 22.1) differ slightly from these means, as expected — the former is a single representative sample, the latter the mean of three replicates.",
+          "One-way ANOVA F(4,10) = 378.2, P < 0.0001. **Combined vs TROP2-1+2 also reaches significance** (Holm-corrected（Holm, 1979） P = 1.5 × 10⁻⁴), so eight epitopes still add over two. The representative flow values in Figure 18 (10.9 / 15.6 / 15.9 / 17.2 / 22.1) differ slightly from these means, as expected — the former is a single representative sample, the latter the mean of three replicates.",
           "**Interpretation**｜All epitope-encoding groups exceeded the empty-vector Blank, following a clear **epitope-complexity gradient**: single-epitope < dual-epitope < Combined, with Combined at **2.16× Blank** (Holm-corrected P = 2.5 × 10⁻⁵).",
           "**The attribution here is clean.** Because the Blank group already carries the complete circRNA backbone and the 4×mC3dP28 adjuvant, backbone innate stimulation and adjuvant activity are **identical across all four groups** and are subtracted at baseline. The rise from 10.33% to 22.37% can therefore **only come from the epitope-encoding sequence** — the translated antigenic peptides themselves promote DC maturation. This is consistent with the classical mechanism whereby increased antigen load drives uptake and processing of more exogenous protein and upregulation of co-stimulatory molecules.",
         ],
@@ -511,7 +511,7 @@ export const resultsSectionsRound2Safety: WikiSection[] = [
       {
         type: "prose",
         paragraphs: [
-          "X-axis: incubation time (h). Y-axis: fraction remaining (each RNA's 0 h = 1.0), from densitometric integration of Figure 34. **Each timepoint is a single lane measured once, so there are no error bars; the lines simply join consecutive data points and are not a fitted curve.**",
+          "X-axis: incubation time (h). Y-axis: fraction remaining (each RNA's 0 h = 1.0), from densitometric integration of Figure 33. **Each timepoint is a single lane measured once, so there are no error bars; the lines simply join consecutive data points and are not a fitted curve.**",
         ],
       },
       {
@@ -545,8 +545,8 @@ export const resultsSectionsRound2Safety: WikiSection[] = [
         ordered: true,
         start: 1,
         items: [
-          '**We report only the fraction remaining at each timepoint — no half-life, decay constant or any other kinetic parameter.** Each timepoint is **a single lane with no biological replicate**, and four points are not enough to fit and test a kinetic model. Turning "39.5% remaining at 72 h" into "a half-life of X hours" would be an **extrapolation the data do not support**, so we do not make it. The lines in Figure 35 join consecutive data points and **do not represent the real trajectory between measurements**.',
-          '**The linear RNA value at 48 h (0.091) exceeds that at 24 h (0.059) — it is non-monotonic**, visible in Figure 35 as a distinct upward kink. Real degradation cannot rebound, so this must be **densitometric noise in the low-signal regime**: the band is near background and integration error is substantially amplified. We report the raw values without smoothing or exclusion, but accordingly **the three linear-RNA values after 24 h should be read only as "degraded to near the limit of detection" and not interpreted point by point**.',
+          '**We report only the fraction remaining at each timepoint — no half-life, decay constant or any other kinetic parameter.** Each timepoint is **a single lane with no biological replicate**, and four points are not enough to fit and test a kinetic model. Turning "39.5% remaining at 72 h" into "a half-life of X hours" would be an **extrapolation the data do not support**, so we do not make it. The lines in Figure 34 join consecutive data points and **do not represent the real trajectory between measurements**.',
+          '**The linear RNA value at 48 h (0.091) exceeds that at 24 h (0.059) — it is non-monotonic**, visible in Figure 34 as a distinct upward kink. Real degradation cannot rebound, so this must be **densitometric noise in the low-signal regime**: the band is near background and integration error is substantially amplified. We report the raw values without smoothing or exclusion, but accordingly **the three linear-RNA values after 24 h should be read only as "degraded to near the limit of detection" and not interpreted point by point**.',
           '**Circular RNA migrates anomalously in native gels** (usually slower than linear RNA of the same length), so **band position cannot be used to establish circularity**; circular identity is established in §4.2 and §5.5, and this experiment answers only "how much is left".',
         ],
       },

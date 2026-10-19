@@ -128,10 +128,10 @@
 .sust-sdg-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 16px;
-  max-width: 520px;
+  gap: 32px;
+  max-width: 720px;
   width: 100%;
-  margin: 20px auto;
+  margin: 32px auto;
 }
 
 .sust-sdg-card {
@@ -202,8 +202,8 @@ a.sust-sdg-card:focus-visible {
     box-shadow var(--duration-fast, 0.25s) var(--ease-out, ease);
 }
 
-a.sust-sdg-card--logo:hover,
-a.sust-sdg-card--logo:focus-visible {
+.sust-sdg-card--logo:hover,
+.sust-sdg-card--logo:focus-visible {
   transform: translateY(-4px);
   box-shadow: 0 10px 24px rgba(0, 0, 0, 0.16);
   outline: none;
@@ -224,8 +224,8 @@ a.sust-sdg-card--logo:focus-visible {
   transition: transform 0.35s ease;
 }
 
-a.sust-sdg-card--logo:hover .sust-sdg-card__logo,
-a.sust-sdg-card--logo:focus-visible .sust-sdg-card__logo {
+.sust-sdg-card--logo:hover .sust-sdg-card__logo,
+.sust-sdg-card--logo:focus-visible .sust-sdg-card__logo {
   transform: scale(1.02);
 }
 
@@ -245,8 +245,8 @@ a.sust-sdg-card--logo:focus-visible .sust-sdg-card__logo {
   pointer-events: none;
 }
 
-a.sust-sdg-card--logo:hover .sust-sdg-card__drawer,
-a.sust-sdg-card--logo:focus-visible .sust-sdg-card__drawer,
+.sust-sdg-card--logo:hover .sust-sdg-card__drawer,
+.sust-sdg-card--logo:focus-visible .sust-sdg-card__drawer,
 .sust-sdg-card--logo:focus-within .sust-sdg-card__drawer {
   transform: translateY(0);
   opacity: 1;
@@ -1225,19 +1225,117 @@ a.sust-sdg-pill:focus-visible {
 }
 
 .sust-evidence__item .wiki-figure {
-  margin: 16px auto 0 !important;
+  margin: 20px auto 0 !important;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
+  width: 100% !important;
+  max-width: 960px !important;
 }
 
 .sust-evidence__item .wiki-figure img {
-  max-width: min(560px, 100%) !important;
+  width: 100% !important;
+  max-width: 960px !important;
   height: auto !important;
-  max-height: 420px !important;
+  max-height: none !important;
   object-fit: contain !important;
   border-radius: 10px;
+}
+
+/* Keep the dormitory planting photo at the size requested in the first review. */
+.sust-evidence__item .wiki-figure:has(img[src*="/sdg12/evidence-2.avif"]) {
+  max-width: 560px !important;
+}
+
+.sust-evidence__item .wiki-figure img[src*="/sdg12/evidence-2.avif"] {
+  max-width: 560px !important;
+  max-height: 420px !important;
+}
+
+/* Fig 4: Reusable Sustainability Toolkit enlargement */
+.wiki-page--sustainability #overview .wiki-figure:has(img[src*="reusable-toolkit"]),
+.wiki-page--sustainability #overview .wiki-figure:has(img[src*="sustainability-overview-reusable-toolkit"]) {
+  width: 100% !important;
+  max-width: 960px !important;
+}
+
+.wiki-page--sustainability #overview .wiki-figure:has(img[src*="reusable-toolkit"]) img,
+.wiki-page--sustainability #overview .wiki-figure:has(img[src*="sustainability-overview-reusable-toolkit"]) img {
+  width: 100% !important;
+  max-width: 960px !important;
+}
+
+/* Rich tool descriptions need this space only on Sustainability. */
+.wiki-page--sustainability .sust-tool-card {
+  min-height: 410px;
+}
+
+/* Tracker tools remain in their own document so their UI styles stay local. */
+.sust-grow-anchor {
+  display: block;
+  height: 0;
+  overflow: hidden;
+}
+
+.sust-tracker-embed {
+  min-width: 0;
+}
+
+.sust-tracker-embed__header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px 20px;
+  margin-bottom: 14px;
+}
+
+.sust-tracker-embed__header .sust-minor-heading {
+  margin: 0;
+}
+
+.sust-tracker-embed__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  font-size: 14px;
+}
+
+.sust-tracker-embed__actions a {
+  color: var(--route-heading-ink);
+  text-underline-offset: 3px;
+}
+
+.sust-tracker-embed__frame {
+  display: block;
+  width: 100%;
+  height: 760px;
+  border: 1px solid var(--route-line);
+  border-radius: 12px;
+  background: #f5f7f4;
+}
+
+.sust-tracker-manuals {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: start;
+  gap: 20px;
+}
+
+.sust-tracker-manuals .wiki-document {
+  min-width: 0;
+  margin: 0;
+}
+
+@media (max-width: 640px) {
+  .sust-tracker-embed__frame {
+    height: 680px;
+  }
+
+  .sust-tracker-manuals {
+    grid-template-columns: minmax(0, 1fr);
+  }
 }
 
 /* Chapter subsection rail ---------------------------------------------------
@@ -1999,6 +2097,14 @@ a.sust-sdg-pill:focus-visible {
   align-self: center;
   max-height: var(--deck-height);
   overflow-y: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.sust-deck[data-scroll-deck] .sust-deck__rail::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
 }
 
 .sust-deck[data-scroll-deck] .sust-deck__tab:is(:hover, [aria-selected="true"]) {
@@ -2314,6 +2420,14 @@ a.sust-sdg-pill:focus-visible {
     gap: 8px;
     overflow-x: auto;
     padding: 2px 2px 12px;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .sust-deck__rail [role="tablist"]::-webkit-scrollbar {
+    display: none;
+    width: 0;
+    height: 0;
   }
 
   .sust-deck__tab {

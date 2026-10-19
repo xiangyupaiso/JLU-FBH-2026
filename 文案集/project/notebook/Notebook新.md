@@ -315,7 +315,7 @@
 
 **Figure Wet\-Figure9｜RNA persistence gel｜RNA持续性电泳**
 
-[https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/notebook/wet\-f9\.avif](https://static.igem.wiki/teams/6056/wiki/files/pages/project/notebook/wet-f9.avif)
+https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/notebook/wet\-f9\-1\.avif
 
 **English caption\.** circRNA and linear precursor signals at 0, 24, 48 and 72 h at 37 ℃\.
 
@@ -1495,15 +1495,15 @@
 
 **Figure Engagement\-Figure1｜Winter outreach across five schools｜五校寒假宣讲**
 
-![Image](https://internal-api-drive-stream.feishu.cn/space/api/box/stream/download/authcode/?code=NGIyNmYwM2VmMTZmNGVkOTEyNTYwZGNjOWU0MTUzZTVfNDM2MDJiODYyYzJmMjk0ZjdmNmZjYzAzYTFiM2JlY2ZfSUQ6NzY5NzkxMjIxMjE3NTI5MzQ0MV8xNzkyMzExMzY4OjE3OTIzOTc3NjhfVjM)
+https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/notebook/en-f1a\.avif
 
-![Image](https://internal-api-drive-stream.feishu.cn/space/api/box/stream/download/authcode/?code=NjI4ZDkwYWMzNjU5ZmE2NjU2MTVlOGUzOTQ0YzFiNTNfYjQzYmQ2MGM3MDdmYTE0ZjUzNzhjYWY5NjdiNjJlNjNfSUQ6NzY5NzkxMjIxMjIxNTY0NzE2NF8xNzkyMzExMzY4OjE3OTIzOTc3NjhfVjM)
+https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/notebook/en-f1b\.avif
 
-![Image](https://internal-api-drive-stream.feishu.cn/space/api/box/stream/download/authcode/?code=ZGM5ZmE1ZGMzNTAyNDY1YmM5M2JjNzU1MWU3NmU5OWVfOWNjMWU5NTFiZmZjNDNlY2YwNzhmZjZiZWZlOWVjMjFfSUQ6NzY5NzkxMjIxMjE2MTIzNTk4OF8xNzkyMzExMzY4OjE3OTIzOTc3NjhfVjM)
+https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/notebook/en-f1c\.avif
 
-![Image](https://internal-api-drive-stream.feishu.cn/space/api/box/stream/download/authcode/?code=YzIzYzQ2YjEwZDY3NDRmZGExODIwNjk4MzgxYTllOWVfNmQ1MmRhZDNiYWFkYTI5OWMwNjZiMDNmM2Q5NGFmNWNfSUQ6NzY5NzkxMjIwODE1MTY3Nzk3OV8xNzkyMzExMzY4OjE3OTIzOTc3NjhfVjM)
+https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/notebook/en-f1d\.avif
 
-![Image](https://internal-api-drive-stream.feishu.cn/space/api/box/stream/download/authcode/?code=NTcwOTU2ZTBhMjE4YWY5YWZjODgwNDk2ZDA3ZDBjNzdfZmI4NjIyYzE4NTI4M2YxMGU0ZDU4Yzk3MzUyN2U3NTlfSUQ6NzY5NzkxMjIxMDQ3NTE3NDkyMV8xNzkyMzExMzY4OjE3OTIzOTc3NjhfVjM)
+https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/notebook/en-f1e\.avif
 
 用滚动播放插件放置图片
 
@@ -1521,7 +1521,7 @@
 
 **Figure Engagement\-Figure2｜Community Day participation｜Community Day交流**
 
-![Image](https://internal-api-drive-stream.feishu.cn/space/api/box/stream/download/authcode/?code=YjE4NTdlZWUyYjQyYTQyNzkxZTgyZTRlNWMxZmE0NjNfNGIyNTVmMjNlMGQxYzAxZGJkZjVhMzE5M2I4MDNiZmJfSUQ6NzY5NzkxMjY3NTY1NzA0MzE5M18xNzkyMzExMzY3OjE3OTIzOTc3NjdfVjM)
+https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/notebook/en-f2\.avif
 
 **English caption\.** Community Day participation\.
 
@@ -1545,7 +1545,7 @@
 
 **Figure Engagement\-Figure3｜Plants and environmental awareness｜植物与环保科普活动**
 
-![Image](https://internal-api-drive-stream.feishu.cn/space/api/box/stream/download/authcode/?code=MDYwNzhjOTBjMzVlMjFlMjQ4OGEyOTNiMTk5YjBhNzBfNDBmMDVmNjUyZTUwOTNlODZmYzVjODRiMWZlNGQ5MDBfSUQ6NzY5NzkxMzIzNTQzMjk4MzgyMF8xNzkyMzExMzY4OjE3OTIzOTc3NjhfVjM)
+https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/notebook/en-f3\.avif
 
 **English caption\.** Plants and environmental awareness\.
 
@@ -1561,7 +1561,7 @@
 
 **Figure Engagement\-Figure4｜Endocrine health lecture｜内分泌健康专题讲座**
 
-![Image](https://internal-api-drive-stream.feishu.cn/space/api/box/stream/download/authcode/?code=MDNjOGVhOGM5NGIwZmY2MThiNmExMmZhZWQ2NGZlN2NfODJkMmE0YjM2ZmJjMDFmY2IxZjU2ZTdjNzhjNDgwMjRfSUQ6NzY5NzkxMzU0MDQ4ODc5MzMyOV8xNzkyMzExMzY4OjE3OTIzOTc3NjhfVjM)
+https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/notebook/en-f4\.avif
 
 **English caption\.** Endocrine health lecture\.
 
@@ -1591,7 +1591,15 @@
 
 **Figure Engagement\-Figure5｜Digital participation: Learn｜线上持续参与：Learn**
 
-附图
+https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/notebook/en-f5\.avif
+
+https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/notebook/en-f5\-b\.avif
+
+https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/notebook/en-f5c\.avif
+
+https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/notebook/en-f5d\.avif
+
+此处放一个插件(看长图）
 
 **English caption\.** Selected content from the digital participation programme\.
 **中文图注。** 线上持续参与项目的部分内容。
@@ -1606,7 +1614,7 @@
 
 **Figure Engagement\-Figure6｜Campus bioethics debate｜校园生物伦理辩论赛**
 
-
+https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/notebook/en-f6\.avif
 
 **English caption\.** Campus bioethics debate\.
 
@@ -1620,11 +1628,9 @@
 
 **中文。** 向其他高校寄出书信并陆续收到回信，通过书面交流连接不同校园中的科学兴趣与思考。
 
-\<\!\-\- 附图位置 / Figure placement：Engagement\-Figure7 \-\-\>  
-
 **Figure Engagement\-Figure7｜Letters across universities｜文寄四海**
 
-\[在此插入图像 / Insert image here: Engagement\-Figure7\]
+https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/notebook/en-f7\.avif
 
 **English caption\.** Letters across universities\.
 
@@ -1638,11 +1644,17 @@
 
 **中文。** 在校园杏花节开展乳腺健康科普，通过易于理解的讲解及参与式活动，与公共场景中的访客展开交流。
 
-\<\!\-\- 附图位置 / Figure placement：Engagement\-Figure8 \-\-\>  
-
 **Figure Engagement\-Figure8｜Xinghua Festival: breast\-health outreach｜杏花节：杏花有约，粉色守护**
 
-\[在此插入图像 / Insert image here: Engagement\-Figure8\]
+https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/notebook/en-f8a\-1\.avif
+
+https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/notebook/en-f8b\-1\.avif
+
+https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/notebook/en-f8c\-1\.avif
+
+https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/notebook/en-f8d\-1\.avif
+
+用滚动播放插件放置图片
 
 **English caption\.** Xinghua Festival: breast\-health outreach\.
 
@@ -1656,11 +1668,9 @@
 
 **中文。** 在吉林大学附属中学开展“空气变面包”科普课堂，从熟悉的食物话题出发，介绍合成生物学及生物系统设计。
 
-\<\!\-\- 附图位置 / Figure placement：Engagement\-Figure9 \-\-\>  
-
 **Figure Engagement\-Figure9｜Air\-to\-Bread Classroom｜空气变面包科普课堂**
 
-\[在此插入图像 / Insert image here: Engagement\-Figure9\]
+https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/notebook/en-f9\.avif
 
 **English caption\.** Air\-to\-Bread Classroom\.
 
@@ -1674,11 +1684,17 @@
 
 **中文。** 线上第二阶段围绕质粒、启动子、限制性内切酶及连接酶展开，帮助读者将生物元件与设计选择联系起来。
 
-\<\!\-\- 附图位置 / Figure placement：Engagement\-Figure10 \-\-\>  
-
 **Figure Engagement\-Figure10｜Digital participation: Design｜线上持续参与：Design**
 
-\[在此插入图像 / Insert image here: Engagement\-Figure10\]
+https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/notebook/en-f10a\.avif
+
+https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/notebook/en-f10b\.avif
+
+https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/notebook/en-f10c\.avif
+
+https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/notebook/en-f10d\.avif
+
+用长图浏览播放插件
 
 **English caption\.** Digital participation: Design\.
 
@@ -1692,11 +1708,9 @@
 
 **中文。** 将杏花节使用的乳腺健康内容调整后用于校园青春健康跑，使科普材料进入流动的公共健康活动场景。
 
-\<\!\-\- 附图位置 / Figure placement：Engagement\-Figure11 \-\-\>  
-
 **Figure Engagement\-Figure11｜Health Run｜青春健康跑**
 
-\[在此插入图像 / Insert image here: Engagement\-Figure11\]
+https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/notebook/en-f11\.avif
 
 **English caption\.** Health Run\.
 
@@ -1709,8 +1723,6 @@
 **English\.** We participated in Northeast China iGEM Co\-creation Salon, shared our project and exchanged ideas about iGEM project development and engagement with other teams\.
 
 **中文。** 参加东北地区iGEM共创交流会，分享项目，并与其他队伍交流iGEM项目推进及公众参与相关思路。
-
-\<\!\-\- 附图位置 / Figure placement：Engagement\-Figure12 \-\-\>  
 
 **Figure Engagement\-Figure12｜Northeast China iGEM Co\-creation Salon｜东北地区iGEM共创交流会**
 
@@ -1728,11 +1740,9 @@
 
 **中文。** 参加iGEM Human Practices官方直播课，学习负责任的项目推进及公众参与相关指导。
 
-\<\!\-\- 附图位置 / Figure placement：Engagement\-Figure13 \-\-\>  
-
 **Figure Engagement\-Figure13｜iGEM Human Practices live class｜iGEM Human Practices官方直播课**
 
-\[在此插入图像 / Insert image here: Engagement\-Figure13\]
+https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/notebook/en-f13\.avif
 
 **English caption\.** iGEM Human Practices live class\.
 
@@ -1746,11 +1756,9 @@
 
 **中文。** 在吉林大学附属小学，以儿童熟悉的接种经历和课堂活动介绍提前识别与身体防御，通过适龄表达帮助理解相关科学概念。
 
-\<\!\-\- 附图位置 / Figure placement：Engagement\-Figure14 \-\-\>  
-
 **Figure Engagement\-Figure14｜Vaccine Classroom｜吉大附小疫苗课堂**
 
-\[在此插入图像 / Insert image here: Engagement\-Figure14\]
+https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/notebook/en-f14\.avif
 
 **English caption\.** Vaccine Classroom\.
 
@@ -1764,11 +1772,9 @@
 
 **中文。** 在校园草地音乐节中，以节奏、颜色及声音提供接触科学的入口；其中Molecular Rhythm交互机制后续在Synbiopunk\-CCiC再次使用。
 
-\<\!\-\- 附图位置 / Figure placement：Engagement\-Figure15 \-\-\>  
-
 **Figure Engagement\-Figure15｜Music Festival and Molecular Rhythm｜草地音乐节与Molecular Rhythm**
 
-\[在此插入图像 / Insert image here: Engagement\-Figure15\]
+https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/notebook/en-f15\-1\.avif
 
 **English caption\.** Music Festival and Molecular Rhythm\.
 
@@ -1788,11 +1794,9 @@
 
 **中文。** 与海伦市第一中学重新沟通并提供更新后的Virtual Laboratory，随后由教师在团队成员不在场的情况下带入课堂使用，支持教育资源在交接后继续应用。
 
-\<\!\-\- 附图位置 / Figure placement：Engagement\-Figure16 \-\-\>  
-
 **Figure Engagement\-Figure16｜Hailun follow\-up and teacher\-led use｜海伦回访与教师独立使用**
 
-\[在此插入图像 / Insert image here: Engagement\-Figure16\]
+https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/notebook/en-f16\.avif
 
 **English caption\.** Hailun follow\-up and teacher\-led use\.
 
@@ -1805,8 +1809,6 @@
 **English\.** We participated in 2026 Southern China Regional Meeting, shared our project and exchanged ideas about iGEM project development and engagement with other teams\.
 
 **中文。** 参加2026华南地区iGEM交流会，分享项目，并与其他队伍交流iGEM项目推进及公众参与相关思路。
-
-\<\!\-\- 附图位置 / Figure placement：Engagement\-Figure17 \-\-\>  
 
 **Figure Engagement\-Figure17｜2026 Southern China Regional Meeting｜2026华南地区iGEM交流会**
 
@@ -1824,16 +1826,6 @@
 
 **中文。** 在线上学习项目中呈现实验电泳失败、实验问题及反复尝试，将排查问题纳入讨论。
 
-\<\!\-\- 附图位置 / Figure placement：Engagement\-Figure18 \-\-\>  
-
-**Figure Engagement\-Figure18｜Digital participation: Fail \& Retry｜线上持续参与：Fail \& Retry**
-
-\[在此插入图像 / Insert image here: Engagement\-Figure18\]
-
-**English caption\.** Digital participation: Fail \& Retry\.
-
-**中文图注。** 线上持续参与：Fail \& Retry。
-
 ### 2026\-06\-01—2026\-10\-17｜Educational resource improvement and organisation｜教育资源持续完善与整理
 
 **Tags｜标签：** `Education｜教育` · `Brainstorming｜头脑风暴` · `Review & Handoff｜核对与交付`
@@ -1848,16 +1840,6 @@
 
 **中文。** 持续整理教学材料、活动指南、游戏及创作资源，包括Bio\-Heroes、Breast Guardian及Letters to My Body等，结合Virtual Laboratory与其他教育活动，完善复用材料及Wiki展示内容。
 
-\<\!\-\- 附图位置 / Figure placement：Engagement\-Figure19 \-\-\>  
-
-**Figure Engagement\-Figure19｜Educational resource improvement and organisation｜教育资源持续完善与整理**
-
-\[在此插入图像 / Insert image here: Engagement\-Figure19\]
-
-**English caption\.** Educational resource improvement and organisation\.
-
-**中文图注。** 教育资源持续完善与整理。
-
 ### 2026\-06\-22—2026\-07\-12｜Digital participation: co\-creation｜线上持续参与：共同创作
 
 **Tags｜标签：** `Education｜教育`
@@ -1865,16 +1847,6 @@
 **English\.** The digital programme opened opportunities for credited contributions, voting and collaborative page creation, allowing readers to take part in shaping the shared content\.
 
 **中文。** 线上项目开放署名贡献、投票及协作页面创作机会，让读者参与共同内容的形成。
-
-\<\!\-\- 附图位置 / Figure placement：Engagement\-Figure20 \-\-\>  
-
-**Figure Engagement\-Figure20｜Digital participation: co\-creation｜线上持续参与：共同创作**
-
-\[在此插入图像 / Insert image here: Engagement\-Figure20\]
-
-**English caption\.** Digital participation: co\-creation\.
-
-**中文图注。** 线上持续参与：共同创作。
 
 ### 2026\-06\-24—2026\-07\-31｜RNA preparation, quality evidence and animal\-study planning｜RNA制备、质量证据与动物方案规划
 
@@ -1892,9 +1864,7 @@
 
 **中文。** 参加2026华东地区iGEM交流会，分享项目，并与其他队伍交流iGEM项目推进及公众参与相关思路。
 
-\<\!\-\- 附图位置 / Figure placement：Engagement\-Figure21 \-\-\>  
-
-**Figure Engagement\-Figure21｜2026 iGEM East China Regional Meeting｜2026华东地区iGEM交流会**
+**Figure Engagement\-Figure18｜2026 iGEM East China Regional Meeting｜2026华东地区iGEM交流会**
 
 [https://static\.igem\.wiki/teams/6056/wiki/files/pages/engagement/entrepreneurship/east\-china\.avif](https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/entrepreneurship/east-china.avif)
 
@@ -1910,9 +1880,7 @@
 
 **中文。** 参加2026华北地区iGEM交流会，分享项目，并与其他队伍交流iGEM项目推进及公众参与相关思路。
 
-\<\!\-\- 附图位置 / Figure placement：Engagement\-Figure22 \-\-\>  
-
-**Figure Engagement\-Figure22｜2026 North China iGEMer Meetup｜2026华北地区iGEM交流会**
+**Figure Engagement\-Figure19｜2026 North China iGEMer Meetup｜2026华北地区iGEM交流会**
 
 [https://static\.igem\.wiki/teams/6056/wiki/files/pages/engagement/entrepreneurship/north\.avif](https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/entrepreneurship/north.avif)
 
@@ -1928,9 +1896,7 @@
 
 **中文。** 参加华中地区iGEM论坛，分享项目，并围绕教育实践及参与者意见如何进入后续设计展开交流。
 
-\<\!\-\- 附图位置 / Figure placement：Engagement\-Figure23 \-\-\>  
-
-**Figure Engagement\-Figure23｜2026 Central China iGEM Forum｜2026华中地区iGEM论坛**
+**Figure Engagement\-Figure20｜2026 Central China iGEM Forum｜2026华中地区iGEM论坛**
 
 [https://static\.igem\.wiki/teams/6056/wiki/files/pages/engagement/entrepreneurship/central\.avif](https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/entrepreneurship/central.avif)
 
@@ -1952,11 +1918,9 @@
 
 **中文。** 面向毗卢镇二年级及四年级学生开展Virtual Laboratory革兰氏染色体验，根据学生跟随提示和寻找解释的不同表现，调整首次虚拟操作前的必要导入。
 
-\<\!\-\- 附图位置 / Figure placement：Engagement\-Figure24 \-\-\>  
+**Figure Engagement\-Figure21｜Pilu Town Virtual Laboratory activities｜毗卢镇虚拟实验室活动**
 
-**Figure Engagement\-Figure24｜Pilu Town Virtual Laboratory activities｜毗卢镇虚拟实验室活动**
-
-\[在此插入图像 / Insert image here: Engagement\-Figure24\]
+https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/notebook/en-f21\.avif
 
 **English caption\.** Pilu Town Virtual Laboratory activities\.
 
@@ -1970,9 +1934,7 @@
 
 **中文。** 参加Synbiopunk\-CCiC 2026，分享项目进展并与其他队伍交流，同时将Molecular Rhythm交互机制应用于新的活动场景。
 
-\<\!\-\- 附图位置 / Figure placement：Engagement\-Figure25 \-\-\>  
-
-**Figure Engagement\-Figure25｜Synbiopunk\-CCiC 2026｜Synbiopunk\-CCiC 2026交流会**
+**Figure Engagement\-Figure22｜Synbiopunk\-CCiC 2026｜Synbiopunk\-CCiC 2026交流会**
 
 [https://static\.igem\.wiki/teams/6056/wiki/files/pages/engagement/entrepreneurship/synbiopunk\.avif](https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/entrepreneurship/synbiopunk.avif)
 
@@ -1996,16 +1958,6 @@
 
 **中文。** 汇集年度活动中的思考，鼓励参与者将学习过程传递给更多人，使线上参与延续至单次内容之外。
 
-\<\!\-\- 附图位置 / Figure placement：Engagement\-Figure26 \-\-\>  
-
-**Figure Engagement\-Figure26｜Digital participation: Pass It On｜线上持续参与：Pass It On**
-
-\[在此插入图像 / Insert image here: Engagement\-Figure26\]
-
-**English caption\.** Digital participation: Pass It On\.
-
-**中文图注。** 线上持续参与：Pass It On。
-
 ### 2026\-08\-09｜Synbio Classroom｜Synbio Classroom合成生物学课堂
 
 **Tags｜标签：** `Education｜教育` · `Brainstorming｜头脑风暴` · `Design｜设计`
@@ -2020,11 +1972,9 @@
 
 **中文。** 结合实验室安全、移液、PCR、DNA提取及凝胶电泳，开展研究流程游戏与质粒设计；根据学生提问，加强元件选择与后续实验步骤之间的联系。
 
-\<\!\-\- 附图位置 / Figure placement：Engagement\-Figure27 \-\-\>  
+**Figure Engagement\-Figure23｜Synbio Classroom｜Synbio Classroom合成生物学课堂**
 
-**Figure Engagement\-Figure27｜Synbio Classroom｜Synbio Classroom合成生物学课堂**
-
-\[在此插入图像 / Insert image here: Engagement\-Figure27\]
+https://static\.igem\.wiki/teams/6056/wiki/files/pages/project/notebook/en-f23\.avif
 
 **English caption\.** Synbio Classroom\.
 
@@ -2038,9 +1988,7 @@
 
 **中文。** 参加首届亚太iGEM社群Grand APiC交流会，分享项目，并与其他队伍交流iGEM项目推进及公众参与相关思路。
 
-\<\!\-\- 附图位置 / Figure placement：Engagement\-Figure28 \-\-\>  
-
-**Figure Engagement\-Figure28｜The 1st Grand APiC Conference for Asia\-Pacific iGEMer Community｜首届亚太iGEM社群Grand APiC交流会**
+**Figure Engagement\-Figure24｜The 1st Grand APiC Conference for Asia\-Pacific iGEMer Community｜首届亚太iGEM社群Grand APiC交流会**
 
 [https://static\.igem\.wiki/teams/6056/wiki/files/pages/engagement/entrepreneurship/apic\.avif](https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/entrepreneurship/apic.avif)
 

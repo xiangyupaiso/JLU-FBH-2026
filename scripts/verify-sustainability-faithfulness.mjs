@@ -70,7 +70,20 @@ const updatedChapters = data.sustainabilityChapters.filter((chapter) =>
   ["sdg4", "sdg17"].includes(chapter.id),
 );
 const updatedSections = data.sustainabilityPage.sections.slice(5);
-const copyStrings = strings([...updatedChapters, ...updatedSections]);
+// GROW's five complete narratives now live in the review-supplied explorer.
+const explorerSource = readFileSync(
+  resolve(root, "src/assets/wiki/sustainability/circure-sdg.js"),
+  "utf8",
+);
+const explorerGoals = JSON.parse(
+  explorerSource.match(/const GOALS = (\[[\s\S]*?\n\s*\]);/)[1],
+);
+assert.deepEqual(explorerGoals.map((goal) => goal.id), [1, 5, 8, 10, 13]);
+const copyStrings = strings([
+  ...updatedChapters,
+  ...updatedSections,
+  ...explorerGoals.map((goal) => goal.original),
+]);
 const corpus = copyStrings.map(normalize).join("\n");
 const omissions = [];
 // Review PDF item 21 explicitly removes this sentence and its portrait navigation.
@@ -109,7 +122,7 @@ for (let line of source.split(/\r?\n/)) {
     )
     .replace(
       "XX teams working across XX iGEM Villages completed XX explanations",
-      "17 teams working across 11 iGEM Villages completed 43 explanations",
+      "17 teams working across 11 iGEM Villages completed 47 explanations",
     );
   const text = normalize(line);
   if (approvedDeletions.has(text)) continue;
@@ -124,7 +137,7 @@ assert.deepEqual(
 );
 assert(!/\bXX\b|XXX|Add actual records|This progression from/.test(corpus));
 assert.equal(data.sustainabilityPage.sections.length, 8);
-assert.equal(updatedChapters[0].legacy.table.rows.length, 15);
+assert.equal(updatedChapters[0].legacy.table.rows.length, 16);
 assert.equal(updatedChapters[0].alignment.table.rows.length, 7);
 assert.equal(
   updatedChapters[0].evidence.measurable.find((item) => item.table)?.table.rows
@@ -187,7 +200,7 @@ console.log(
     {
       verifiedParagraphs,
       sections: 8,
-      resourceRows: 15,
+      resourceRows: 16,
       partnershipProfiles: 8,
       partnershipCards: 5,
       partnershipProseGroups: 3,

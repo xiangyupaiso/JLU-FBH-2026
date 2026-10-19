@@ -12,7 +12,9 @@ import {
 import {
   getNotebookImage,
   notebookAssets,
+  type NotebookAsset,
 } from "../../../../data/project/notebookAssets";
+import { LongImageGallery } from "../../gallery/LongImageGallery";
 import { VerticalGantt } from "../../timeline/VerticalGantt";
 import {
   formatGanttRange,
@@ -37,6 +39,9 @@ const phaseTones = new Map(
     "Design",
     "Development",
     "Learning",
+    "Consultation",
+    "Education",
+    "Exchange",
   ].map((label, index) => [label, index]),
 );
 const timelines = notebookGroups.map((group) => {
@@ -107,32 +112,55 @@ function RecordBlock({ block }: { block: NotebookBlock }) {
     );
   }
   return (
-    <figure className="notebook-record__figure">
+    <figure
+      className="notebook-record__figure"
+      data-gallery-kind={block.gallery?.kind}
+    >
       <figcaption>
         <span>
           <span className="notebook-record__figure-label">{block.label}</span>
           {block.title}
         </span>
       </figcaption>
-      <div className="notebook-record__images">
-        {block.assets.map((key) => (
-          <a
-            href={getNotebookImage(key)}
-            target="_blank"
-            rel="noreferrer"
-            key={key}
-            aria-label={`Open image: ${notebookAssets[key].alt}`}
-          >
-            <img
-              src={getNotebookImage(key)}
-              alt={notebookAssets[key].alt}
-              width={notebookAssets[key].width}
-              height={notebookAssets[key].height}
-              decoding="async"
-            />
-          </a>
-        ))}
-      </div>
+      {block.gallery ? (
+        <LongImageGallery
+          title={
+            block.gallery.kind === "photos" ? "Photo gallery" : "Image gallery"
+          }
+          images={block.assets.map((key) => {
+            const asset: NotebookAsset = notebookAssets[key];
+            return {
+              src: getNotebookImage(key),
+              title: asset.title,
+              alt: asset.alt,
+              caption: asset.caption,
+              thumbnailSrc: asset.thumbnailUrl,
+              width: asset.width,
+              height: asset.height,
+            };
+          })}
+        />
+      ) : (
+        <div className="notebook-record__images">
+          {block.assets.map((key) => (
+            <a
+              href={getNotebookImage(key)}
+              target="_blank"
+              rel="noreferrer"
+              key={key}
+              aria-label={`Open image: ${notebookAssets[key].alt}`}
+            >
+              <img
+                src={getNotebookImage(key)}
+                alt={notebookAssets[key].alt}
+                width={notebookAssets[key].width}
+                height={notebookAssets[key].height}
+                decoding="async"
+              />
+            </a>
+          ))}
+        </div>
+      )}
       <p className="notebook-record__caption">{block.caption}</p>
     </figure>
   );

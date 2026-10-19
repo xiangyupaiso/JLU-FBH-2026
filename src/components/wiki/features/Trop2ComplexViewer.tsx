@@ -8,64 +8,15 @@ import type { StateObjectSelector } from "molstar/lib/mol-state";
 import type { Color } from "molstar/lib/mol-util/color";
 import trop2Pdb from "../../../assets/structures/trop2-ctl1.pdb?raw";
 import { TROP2_COMPLEX_DATA } from "../../../data/trop2ComplexData";
-import "../../../styles/trop2-complex-viewer.css";
+import { loadLocalMolstar } from "./shared/localMolstar";
+import { MolecularViewerFrame } from "./shared/MolecularViewerFrame";
 
 type ActiveSegment = "all" | "epitope" | "pocket";
-type MolstarGlobal = NonNullable<Window["molstar"]>;
 type ComponentSelector = StateObjectSelector<PluginStateObject.Molecule.Structure>;
 type ReprSelector = StateObjectSelector<PluginStateObject.Molecule.Structure.Representation3D>;
 
 // Mol* colors are branded numbers; Color(hex) is an identity function at runtime.
 const color = (hex: number) => hex as Color;
-
-/**
- * 100% Local & iGEM-Compliant Loader for Mol* Viewer
- * Guarantees zero external network requests and offline closed loop.
- */
-function loadLocalMolstar(): Promise<MolstarGlobal> {
-  if (typeof window !== "undefined" && window.molstar) {
-    return Promise.resolve(window.molstar);
-  }
-  return new Promise((resolve, reject) => {
-    const baseUrl = import.meta.env.BASE_URL || "/";
-    const prefix = baseUrl.endsWith("/") ? baseUrl : baseUrl + "/";
-
-    if (!document.querySelector("link[data-molstar-css]")) {
-      const link = document.createElement("link");
-      link.rel = "stylesheet";
-      link.href = `${prefix}vendor/molstar/molstar.css`;
-      link.setAttribute("data-molstar-css", "true");
-      document.head.appendChild(link);
-    }
-
-    const existingScript = document.querySelector<HTMLScriptElement>(
-      "script[data-molstar-js]"
-    );
-    if (existingScript) {
-      if (window.molstar) resolve(window.molstar);
-      else {
-        existingScript.addEventListener("load", () => {
-          if (window.molstar) resolve(window.molstar);
-          else reject(new Error("Mol* script loaded but window.molstar is undefined"));
-        });
-        existingScript.addEventListener("error", reject);
-      }
-      return;
-    }
-
-    const script = document.createElement("script");
-    script.src = `${prefix}vendor/molstar/molstar.js`;
-    script.setAttribute("data-molstar-js", "true");
-    script.async = true;
-    script.onload = () => {
-      if (window.molstar) resolve(window.molstar);
-      else reject(new Error("Mol* script loaded but window.molstar is undefined"));
-    };
-    script.onerror = () =>
-      reject(new Error(`Failed to load local Mol* script from ${script.src}`));
-    document.head.appendChild(script);
-  });
-}
 
 export function Trop2ComplexViewer() {
   const figureRef = useRef<HTMLElement>(null);
@@ -462,24 +413,14 @@ export function Trop2ComplexViewer() {
   );
 
   return (
-    <figure ref={figureRef} className="trop2-viewer-container" aria-label="3D Molecular Complex">
-      <div className="trop2-viewer-stage">
-        {isLoading && (
-          <div className="trop2-viewer-loading">
-            <div className="trop2-viewer-spinner" />
-            <span>Loading 3D structure...</span>
-          </div>
-        )}
-
-        {error && (
-          <div className="trop2-viewer-loading">
-            <span style={{ color: "#ef4444" }}>Error: {error}</span>
-          </div>
-        )}
-
-        {/* Mol* Target Canvas */}
-        <div ref={containerRef} className="trop2-viewer-canvas" data-native-cursor />
-
+    <MolecularViewerFrame
+      figureRef={figureRef}
+      containerRef={containerRef}
+      label="3D Molecular Complex"
+      loading={isLoading}
+      error={error ? `Error: ${error}` : undefined}
+      caption={<><strong>Fig. M-01 · </strong>Structural conformation of Trop2-CTL1 (<code>{TROP2_COMPLEX_DATA.epitopeSequence}</code>) complexed within the HLA-A*02:01 / β2M binding groove, stabilized by 17 polar interaction contacts.</>}
+    >
         {/* 2D Vector Projection Overlay for Polar Contacts */}
         <svg
           ref={overlayRef}
@@ -610,11 +551,6 @@ export function Trop2ComplexViewer() {
             <span>Left-drag: Rotate • Scroll: Zoom • Right-drag: Pan</span>
           </div>
         </div>
-      </div>
-
-      <figcaption className="trop2-viewer-caption">
-        <strong>Fig. M-01 · </strong>Structural conformation of Trop2-CTL1 (<code>{TROP2_COMPLEX_DATA.epitopeSequence}</code>) complexed within the HLA-A*02:01 / β2M binding groove, stabilized by 17 polar interaction contacts.
-      </figcaption>
-    </figure>
+    </MolecularViewerFrame>
   );
 }

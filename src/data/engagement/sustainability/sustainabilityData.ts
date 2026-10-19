@@ -13,7 +13,7 @@
  * blocks and keys from the chapter, with no panel code to touch.
  */
 
-import { pdfPair, type LegacyTool, type SdgChapter, type SustainabilityStat } from "./sdgChapterContract";
+import { type LegacyToolPdf, type SdgChapter, type SustainabilityStat } from "./sdgChapterContract";
 import { sdg3Chapter } from "./sustainabilitySdg3";
 import { sdg9Chapter } from "./sustainabilitySdg9";
 import { sdg12Chapter } from "./sustainabilitySdg12";
@@ -262,19 +262,16 @@ export const stakeholderTracker = {
     "We also share **the actual records compiled throughout CirCure’s development** to demonstrate the tool’s use in practice. These records show how we documented stakeholder feedback, our responses, and implementation outcomes over time. The Tracker’s Chinese–English language switch changes the interface only; it does not automatically translate user-entered content. We therefore provide corresponding **Chinese and English versions of the records** so readers can review the full content in either language. An accompanying **User Manual**, also available in Chinese and English, explains the basic functions, field completion, and use of the tool to help other teams get started.",
     "To assess the Tracker’s usability and analytical value in real projects, we invited an iGEM team and a teacher experienced in project sustainability analysis to try the tool and provide feedback.",
   ],
-  /** Download cards; files are hosted on iGEM docs under these names. */
-  files: [
+  manuals: [
     {
-      title: "Stakeholder Sustainability Tracker — Blank Template",
-      pdfs: [{ label: "Template", fileName: "sustainability-stakeholder-tracker-template.pdf" }],
+      label: "User Manual — English",
+      fileName: "sustainability-stakeholder-sustainability-tracker-user-manual-en.pdf",
+      url: "https://static.igem.wiki/teams/6056/wiki/files/docs/sustainability-stakeholder-sustainability-tracker-user-manual-en.pdf",
     },
     {
-      title: "CirCure Tracker Records",
-      pdfs: pdfPair("stakeholder-tracker-records"),
+      label: "User Manual — Chinese",
+      fileName: "sustainability-stakeholder-sustainability-tracker-user-manual-cn.pdf",
+      url: "https://static.igem.wiki/teams/6056/wiki/files/docs/sustainability-stakeholder-sustainability-tracker-user-manual-cn.pdf",
     },
-    {
-      title: "User Manual",
-      pdfs: pdfPair("stakeholder-tracker-user-manual"),
-    },
-  ] satisfies ReadonlyArray<Pick<LegacyTool, "title" | "pdfs">>,
+  ] satisfies ReadonlyArray<LegacyToolPdf>,
 };

@@ -12,9 +12,15 @@ type ViewMode = "dual" | "heatmap" | "volume";
 
 export function EpitopeStructuralValidationChart({
   captions,
+  badges,
+  heatmapFigureTitle,
 }: {
   /** A host manuscript can supply its own two captions without the legacy notes. */
   captions?: readonly [string, string];
+  /** Explicit FIG badges rendered next to each per-card caption. */
+  badges?: readonly [string, string];
+  /** Overrides the in-canvas heatmap title prefix (e.g. "Figure 10."). */
+  heatmapFigureTitle?: string;
 } = {}) {
   const [mode, setMode] = useState<ViewMode>("dual");
 
@@ -39,7 +45,11 @@ export function EpitopeStructuralValidationChart({
     }
     const chart = heatmapChartRef.current;
 
-    const option = createEpitopeHeatmapOption();
+    const option = createEpitopeHeatmapOption(
+      EPITOPE_HEATMAP_DATA,
+      false,
+      heatmapFigureTitle ?? "Figure 11.",
+    );
 
     chart.setOption(option, true);
     chart.resize();
@@ -162,6 +172,14 @@ export function EpitopeStructuralValidationChart({
               </div>
             )}
             <div ref={heatmapDomRef} className="epitope-chart-instance" />
+            {captions && (
+              <div className="epitope-card-caption">
+                {badges?.[0] && (
+                  <span className="epitope-card-caption__badge">{badges[0]}</span>
+                )}
+                <p>{captions[0]}</p>
+              </div>
+            )}
           </div>
         )}
 
@@ -180,20 +198,20 @@ export function EpitopeStructuralValidationChart({
               </div>
             )}
             <div ref={barDomRef} className="epitope-chart-instance" />
+            {captions && (
+              <div className="epitope-card-caption">
+                {badges?.[1] && (
+                  <span className="epitope-card-caption__badge">{badges[1]}</span>
+                )}
+                <p>{captions[1]}</p>
+              </div>
+            )}
           </div>
         )}
       </div>
 
       {/* Captions and Editorial Notes Underneath */}
-      {captions ? (
-        <figcaption className="epitope-validation-caption">
-          {captions.map((caption) => (
-            <p className="epitope-caption-entry" key={caption}>
-              {caption}
-            </p>
-          ))}
-        </figcaption>
-      ) : (
+      {!captions && (
         <figcaption className="epitope-validation-caption">
           <div className="epitope-caption-entry">
             <strong>
@@ -251,7 +269,11 @@ export function EpitopeStructuralValidationChart({
 }
 
 /** Shared ECharts option used by Results and Model; no second heatmap renderer. */
-export function createEpitopeHeatmapOption(rows: typeof EPITOPE_HEATMAP_DATA = EPITOPE_HEATMAP_DATA, hideEmptyValues = false): echarts.EChartsOption {
+export function createEpitopeHeatmapOption(
+  rows: typeof EPITOPE_HEATMAP_DATA = EPITOPE_HEATMAP_DATA,
+  hideEmptyValues = false,
+  figureTitle = "Figure 11.",
+): echarts.EChartsOption {
     const yCategories = rows.map((d) => d.peptide);
 
     // Format valid data cells: [xIndex, yIndex, value]
@@ -271,7 +293,7 @@ export function createEpitopeHeatmapOption(rows: typeof EPITOPE_HEATMAP_DATA = E
 
     const option: echarts.EChartsOption = {
       title: {
-        text: "Figure 11. Per-position side-chain burial across 17 candidates",
+        text: `${figureTitle} Per-position side-chain burial across 17 candidates`,
         subtext: "Mean of five independent models · hatched = glycine (no side chain)",
         left: "left",
         top: 4,

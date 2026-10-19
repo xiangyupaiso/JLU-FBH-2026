@@ -1705,6 +1705,8 @@ html.has-route-reader-scroll {
   letter-spacing: 0.06em;
   text-align: center;
   text-transform: uppercase;
+  /* Override Bootstrap reboot's global `table { caption-side: bottom }`. */
+  caption-side: top;
 }
 
 .wiki-page--route .wiki-table th,

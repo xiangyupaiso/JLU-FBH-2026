@@ -15,6 +15,7 @@ import {
   SdgInteractionHeatmap,
   SSTQNClassificationMatrix,
   SSTQNScoreProcess,
+  SdgExplorer,
   StakeholderDeck,
   StakeholderProfileCard,
   StatsGrid,
@@ -51,6 +52,7 @@ import { SdgContributionBubbles } from "./sustainability/SdgContributionBubbles"
 import { DocumentViewer, type WikiDocument } from "../../documents/DocumentViewer";
 import { GameShowcaseLink } from "../GamesShowcase";
 import { StakeholderArticleView } from "./sustainability/StakeholderProfileCard";
+import { StakeholderTrackerEmbed } from "./sustainability/StakeholderTrackerEmbed";
 import "../../../../styles/features/sustainability-panels.css";
 
 /**
@@ -421,6 +423,16 @@ function EvidencePanel({ chapter }: { chapter: SdgChapter }) {
                 ]}
               />
             ) : null}
+            {item.document ? (
+              <DocumentViewer
+                document={{
+                  caption: item.document.label,
+                  url: item.document.url ?? sustainabilityDocUrl(item.document.fileName),
+                  openUrl: item.document.url ?? sustainabilityDocUrl(item.document.fileName),
+                  downloadUrl: item.document.url ?? sustainabilityDocUrl(item.document.fileName),
+                }}
+              />
+            ) : null}
             {item.figure ? (
               // Keep the caption as the source text; figure labels are not added here.
               <figure className="wiki-figure">
@@ -547,6 +559,7 @@ export function sustainabilityFeatures(): FeatureMap {
       <OverviewSetDevelopGrowCards tiers={impactTiers} />
     ),
     "sdg-contribution-bubbles": <SdgContributionBubbles />,
+    "sdg-explorer": <SdgExplorer />,
     stats: <StatsGrid stats={sustainabilityStats} />,
     "sstqn-matrix": (
       <SSTQNClassificationMatrix caption={sstqnSection.statusCaption} />
@@ -574,8 +587,22 @@ export function sustainabilityFeatures(): FeatureMap {
       />
     ),
     ...Object.assign({}, ...sustainabilityChapters.map(chapterFeatures)),
-    "stakeholder-tracker-tools": (
-      <PdfToolList tools={stakeholderTracker.files} instance="tracker" />
+    "stakeholder-tracker-blank": <StakeholderTrackerEmbed variant="blank" />,
+    "stakeholder-tracker-example": <StakeholderTrackerEmbed variant="example" />,
+    "stakeholder-tracker-manuals": (
+      <div className="sust-tracker-manuals">
+        {stakeholderTracker.manuals.map((manual) => (
+          <DocumentViewer
+            key={manual.fileName}
+            document={{
+              caption: manual.label,
+              url: manual.url,
+              openUrl: manual.url,
+              downloadUrl: manual.url,
+            }}
+          />
+        ))}
+      </div>
     ),
     "sustainability-interactive-city": <SustainabilityInteractiveCity />,
   };

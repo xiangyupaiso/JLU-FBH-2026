@@ -34,8 +34,7 @@ export const entrepreneurshipAssets = {
     originalDocument1EnTranslation: `${PAGE_ASSETS}/original-document-en-translation.avif`,
     originalDocument2: `${PAGE_ASSETS}/original-document2.avif`,
     originalDocument2EnTranslation: `${PAGE_ASSETS}/original-document2-en-translation.avif`,
-    teamPhoto:
-      "https://static.igem.wiki/teams/6056/wiki/files/pages/team/team-heying-1.avif",
+    teamPhoto: `${PAGE_ASSETS}/team-photo.avif`,
     actionEastChina: `${PAGE_ASSETS}/east-china.avif`,
     actionCentralChina: `${PAGE_ASSETS}/central.avif`,
     actionNorthChina: `${PAGE_ASSETS}/north.avif`,
@@ -60,7 +59,7 @@ export const entrepreneurshipAssets = {
     jikaLetterOfIntent: `${DOC_ASSETS}/entrepreneurship/jika.pdf`,
     jienzhiheLetterOfIntent: `${DOC_ASSETS}/entrepreneurship/jienzhihe.pdf`,
     scalability: `${DOC_ASSETS}/scalability.pdf`,
-    businessPlan: `${DOC_ASSETS}/entrepreneurship/business-plan-jlu-fbh.pdf`,
+    businessPlan: `${DOC_ASSETS}/entrepreneurship/bussines-plan.pdf`,
     legalPlan: `${DOC_ASSETS}/entrepreneurship/legal-plan.pdf`,
   },
 } as const;

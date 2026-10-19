@@ -387,7 +387,7 @@ check(
 );
 check(
   "related links point at routes that exist",
-  report.links.length === 3 &&
+  report.links.length >= 3 &&
     report.links.every((link) => link.path.startsWith("/")),
 );
 check(

@@ -245,7 +245,7 @@ export const cycle4Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "Wet Lab built the protocol around three groups of immunocompetent BALB/c mice: PBS, empty-vector circRNA–LNP and Combined circRNA–LNP, with five animals per group. TROP2-expressing 4T1 cells were inoculated on D0, which also marked the first administration. The study comprised five administrations, longitudinal tumour measurements and endpoint tissue collection. The protocol specified animal coding, group allocation, consistent inoculation and administration routes, humane endpoints and coordinated tissue collection. Consultation with Guangjie Sun on animal ethics and the 3Rs was translated into an Experimental Design Assistant record and an Animal Use Form, with approval obtained before the animal work began (Percie du Sert et al., 2020; NC3Rs, n.d.)."
+          "Wet Lab built the protocol around three groups of immunocompetent BALB/c mice: PBS, empty-vector circRNA–LNP and Combined circRNA–LNP, with five animals per group. TROP2-expressing 4T1 cells were inoculated on D0, which also marked the first administration. The study comprised five administrations, longitudinal tumour measurements and endpoint tissue collection. The protocol specified animal coding, group allocation, consistent inoculation and administration routes, humane endpoints and coordinated tissue collection. Consultation with Zhiman Li on animal ethics and the 3Rs was translated into an Experimental Design Assistant record and an Animal Use Form, with approval obtained before the animal work began (Percie du Sert et al., 2020; NC3Rs, n.d.)."
 ]
         },
         {

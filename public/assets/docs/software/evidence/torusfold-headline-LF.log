@@ -1,0 +1,109 @@
+==============================================================================
+verify_headline -- every published number, re-derived from committed files
+==============================================================================
+repo : public TorusFold b6c4171 (isolated verification copy)
+numpy: 2.3.5   (nothing else is imported for the checks)
+
+1. artifacts are the viewer's own bytes
+  [PASS] pdb == decoded viewer payload      3469391 chars, sha256 88b226ad0b3fee87
+  [PASS] provenance records the payload     8001177b7fafe9d1
+  [PASS] provenance records the pdb         88b226ad0b3fee87
+  [PASS] provenance records the sequence    e1ade50e496e8486
+
+2. the viewer's stat panel, recomputed from the committed structure
+  [PASS] atoms                              panel 42831 -> rebuilt 42831.0000 (tol 0)
+  [PASS] sequence_length                    panel 2013 -> rebuilt 2013.0000 (tol 0)
+  [PASS] bsj_closure                        panel 5.898 -> rebuilt 5.8975 (tol 0.001)
+  [PASS] bond_rmsd                          panel 0.0082 -> rebuilt 0.0080 (tol 0.0005)
+  [info] pair_satisfaction                  panel 100.0 -> rebuilt 47.2000  [NOT reproduced]
+  [info]                                      recorded measurement 47.2  (matches)
+  [ -- ] 3drna_score                        panel 27.18 -- no local recipe
+         recorded as: not recomputable here
+  [ -- ] global_rmsd                        panel 1.23 -- no local recipe
+         recorded as: not recomputable here
+  [ -- ] runtime                            panel '~7 h (CPU)' -- no local recipe
+         recorded as: historical, not reproducible from this checkout
+
+3. the IBI joint residual, rebuilt from the committed histograms
+  [FAIL] ibi_chainA_r1                      intra_pc recorded 1.068427 -> rebuilt 3.638399 (+240.5%)
+         n=691200, n_outside=6765, binw=0.00109, sigma_ref=0.01096
+         all coords: bb_bond +0.10%  intra_pc +240.54%  intra_cn +1.49%  angle -0.18%  dihedral +0.01%  stack +0.34%
+  [PASS] ibi_chainA_r1 joint_J self-consistent 0.201105 == mean|ln sim/ref| over 6 coords
+  [FAIL] ibi_chainA_r2                      intra_pc recorded 1.087782 -> rebuilt 3.788527 (+248.3%)
+         n=691200, n_outside=7377, binw=0.00109, sigma_ref=0.01096
+         all coords: bb_bond +0.09%  intra_pc +248.28%  intra_cn +2.11%  angle -0.16%  dihedral +0.01%  stack +0.24%
+  [PASS] ibi_chainA_r2 joint_J self-consistent 0.178957 == mean|ln sim/ref| over 6 coords
+  [FAIL] ibi_chainA_r3                      intra_pc recorded 1.089157 -> rebuilt 3.792678 (+248.2%)
+         n=691200, n_outside=7394, binw=0.00109, sigma_ref=0.01096
+         all coords: bb_bond +0.16%  intra_pc +248.22%  intra_cn +1.94%  angle -0.12%  dihedral +0.01%  stack +0.29%
+  [PASS] ibi_chainA_r3 joint_J self-consistent 0.159297 == mean|ln sim/ref| over 6 coords
+  [FAIL] ibi_chainB_r1                      intra_pc recorded 1.051374 -> rebuilt 3.501076 (+233.0%)
+         n=665600, n_outside=5995, binw=0.00109, sigma_ref=0.01096
+         all coords: bb_bond +0.06%  intra_pc +233.00%  intra_cn +1.64%  angle -0.03%  dihedral +0.02%  stack +0.11%
+  [PASS] ibi_chainB_r1 joint_J self-consistent 0.083979 == mean|ln sim/ref| over 6 coords
+  [FAIL] ibi_chainB_r2                      intra_pc recorded 1.079160 -> rebuilt 3.802248 (+252.3%)
+         n=665600, n_outside=7165, binw=0.00109, sigma_ref=0.01096
+         all coords: bb_bond +0.04%  intra_pc +252.33%  intra_cn +2.97%  angle -0.02%  dihedral +0.01%  stack +0.06%
+  [PASS] ibi_chainB_r2 joint_J self-consistent 0.100682 == mean|ln sim/ref| over 6 coords
+  [FAIL] ibi_chainB_r3                      intra_pc recorded 1.097703 -> rebuilt 3.994548 (+263.9%)
+         n=665600, n_outside=7965, binw=0.00109, sigma_ref=0.01096
+         all coords: bb_bond +0.05%  intra_pc +263.90%  intra_cn +6.06%  angle -0.49%  dihedral +0.01%  stack +0.51%
+  [PASS] ibi_chainB_r3 joint_J self-consistent 0.136954 == mean|ln sim/ref| over 6 coords
+  [FAIL] ibi_r0                             intra_pc recorded 1.039962 -> rebuilt 3.331510 (+220.3%)
+         n=691200, n_outside=5588, binw=0.00109, sigma_ref=0.01096
+         all coords: bb_bond +0.03%  intra_pc +220.35%  intra_cn +1.12%  angle -0.28%  dihedral +0.02%  stack +0.43%
+  [PASS] ibi_r0 joint_J self-consistent     0.201054 == mean|ln sim/ref| over 6 coords
+  [FAIL] ibi_r0_table                       intra_pc recorded 1.862960 -> rebuilt 9.586219 (+414.6%)
+         n=20736, n_outside=1636, binw=0.00109, sigma_ref=0.01096
+         all coords: bb_bond +15.34%  intra_pc +414.57%  intra_cn +222.07%  angle -0.41%  dihedral +0.00%  stack +1.34%
+  [PASS] ibi_r0_table joint_J self-consistent 0.507222 == mean|ln sim/ref| over 6 coords
+  [FAIL] ibi_r0_test                        intra_pc recorded 1.260124 -> rebuilt 5.312049 (+321.5%)
+         n=20736, n_outside=455, binw=0.00109, sigma_ref=0.01096
+         all coords: bb_bond +2.65%  intra_pc +321.55%  intra_cn +7.97%  angle -0.56%  dihedral +0.00%  stack +0.92%
+  [PASS] ibi_r0_test joint_J self-consistent 0.312584 == mean|ln sim/ref| over 6 coords
+  [FAIL] ibi_r1                             intra_pc recorded 1.068427 -> rebuilt 3.638399 (+240.5%)
+         n=691200, n_outside=6765, binw=0.00109, sigma_ref=0.01096
+         all coords: bb_bond +0.10%  intra_pc +240.54%  intra_cn +1.49%  angle -0.18%  dihedral +0.01%  stack +0.34%
+  [PASS] ibi_r1 joint_J self-consistent     0.201105 == mean|ln sim/ref| over 6 coords
+  [FAIL] ibi_r2_table                       intra_pc recorded 1.908434 -> rebuilt 9.852427 (+416.3%)
+         n=20736, n_outside=1744, binw=0.00109, sigma_ref=0.01096
+         all coords: bb_bond +12.18%  intra_pc +416.26%  intra_cn +217.92%  angle -0.46%  dihedral +0.00%  stack +0.78%
+  [PASS] ibi_r2_table joint_J self-consistent 0.507423 == mean|ln sim/ref| over 6 coords
+  [FAIL] ibi_test                           intra_pc recorded 1.789283 -> rebuilt 9.264876 (+417.8%)
+         n=20736, n_outside=1519, binw=0.00109, sigma_ref=0.01096
+         all coords: bb_bond +13.10%  intra_pc +417.80%  intra_cn +215.94%  angle -0.57%  dihedral -0.01%  stack +0.45%
+  [PASS] ibi_test joint_J self-consistent   0.421331 == mean|ln sim/ref| over 6 coords
+
+  systematic, not a one-off -- the same coordinate is off in every committed run:
+    bb_bond     4 run(s), +3% to +15%
+    intra_cn    7 run(s), +2% to +222%
+    intra_pc   12 run(s), +220% to +418%
+    The run's moments (sum / sumsq) are not written to the round npz, so the
+    histogram is the only route to its sigma; for this coordinate the two
+    disagree by 2-4x. Either the moments behind the recorded J came from a
+    different sample set than the histogram, or the histogram is not the one
+    that was scored. `results/pooled_sim_*.npz` DO carry sum/sumsq/n -- a round
+    npz written with the same three keys per coordinate would settle it here.
+    sharpest clue, ibi_chainA_r1, intra_pc: the histogram's own sigma is 0.03989, and
+    the recorded sim/ref times the stored sigma is 0.01171. Same run, same
+    file, two numbers for one quantity -- so it is a definition that changed
+    between the two writes, not floating point.
+
+==============================================================================
+20/32 checks reproduce, 0 known-and-excluded, 12 failing
+  does not reproduce: ibi_chainA_r1
+  does not reproduce: ibi_chainA_r2
+  does not reproduce: ibi_chainA_r3
+  does not reproduce: ibi_chainB_r1
+  does not reproduce: ibi_chainB_r2
+  does not reproduce: ibi_chainB_r3
+  does not reproduce: ibi_r0
+  does not reproduce: ibi_r0_table
+  does not reproduce: ibi_r0_test
+  does not reproduce: ibi_r1
+  does not reproduce: ibi_r2_table
+  does not reproduce: ibi_test
+  every failure above is the same coordinate (intra_pc) in a different run;
+  see the note under section 3. --allow-known separates it from the exit code
+  without removing it from this report.
+==============================================================================

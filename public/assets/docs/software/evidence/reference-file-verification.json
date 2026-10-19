@@ -1,0 +1,25 @@
+{
+  "scope": "Existing-file consistency only; no compiler rerun, prediction or wet experiment",
+  "checks": {
+    "reference_length_5267": true,
+    "generated_length_5267": true,
+    "eight_input_segments": true,
+    "payload_length_336_nt": true,
+    "payload_length_112_aa": true,
+    "reference_payload_order_and_linkers": true,
+    "generated_payload_order_and_linkers": true,
+    "outside_region_unchanged": true,
+    "outside_region_length_4931": true,
+    "changed_codons_54": true,
+    "changed_bases_67": true,
+    "all_changed_codons_synonymous": true,
+    "full_fusion_translation_preserved": true,
+    "no_internal_stop_in_fusion": true,
+    "bundle_zip_integrity": true,
+    "eleven_recorded_files_match_hashes": true,
+    "documented_reference_region_matches_saved_model_input": true
+  },
+  "passed": 17,
+  "total": 17,
+  "all_pass": true
+}

@@ -18,11 +18,11 @@ export function ManuscriptTabs({
     // Citation backlinks must reveal the destination before the shared jump
     // handler measures it. Keep inactive prose mounted for stable anchor IDs.
     const reveal = (event: MouseEvent) => {
-      const link = (event.target as Element).closest<HTMLAnchorElement>(
+      const link = (event.target as Element).closest(
         'a[href^="#"]',
       );
       if (!link) return;
-      const target = document.getElementById(link.hash.slice(1));
+      const target = document.getElementById(link.getAttribute("href")!.slice(1));
       const panel = target?.closest<HTMLElement>("[data-manuscript-tab]");
       if (!panel || !root.current?.contains(panel)) return;
       flushSync(() => setValue(panel.dataset.manuscriptTab!));

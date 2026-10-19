@@ -86,6 +86,7 @@ const sdg3Profiles: ReadonlyArray<StakeholderProfile> = [
     whatChanged:
       "Before interviewing patients and their families, we adjusted our communication approach by using open, non-judgmental questions and incorporating humanistic care into our engagement principles.",
     currentStatus: "Incorporated",
+    photos: sdg3PhotoSets["sdg3-tian-runhui"],
     sdgs: [3],
     article: {
       title: "Before Asking Patients, We First Learned How to Listen",
@@ -133,6 +134,7 @@ const sdg3Profiles: ReadonlyArray<StakeholderProfile> = [
     whatChanged:
       "We recognized that efficacy is a prerequisite for patients to consider additional treatment after surgery, but **“effective” does not automatically mean “worth accepting.”** Patients also weigh the expected benefits against the **physical, practical, and financial burdens** of treatment.",
     currentStatus: "Incorporated",
+    photos: sdg3PhotoSets["sdg3-tnbc-patients"],
     sdgs: [3, 9, 10],
     article: {
       title: "What Makes a Treatment Worthwhile for Patients?",
@@ -302,7 +304,7 @@ const sdg3Profiles: ReadonlyArray<StakeholderProfile> = [
   {
     id: "sdg3-wang-jianguo",
     index: "05",
-    name: "王建国",
+    name: "Jianguo Wang",
     role: "Healthcare Payment & Reimbursement",
     relevantStakeholder:
       "With expertise in health insurance policy, medical billing, and reimbursement, he helped us understand how treatment prices translate into actual costs for patients.",
@@ -311,6 +313,7 @@ const sdg3Profiles: ReadonlyArray<StakeholderProfile> = [
     whatChanged:
       "We shifted from assessing affordability by treatment price alone to considering **patients’ actual out-of-pocket costs after insurance reimbursement**. Until CirCure’s pricing and insurance coverage are clear, we cannot assume it will be affordable for patients.",
     currentStatus: "Incorporated",
+    photos: sdg3PhotoSets["sdg3-wang-jianguo"],
     sdgs: [3, 10],
     article: {
       title: "What Treatment Costs Is Not What Patients Pay",
@@ -358,6 +361,7 @@ const sdg3Profiles: ReadonlyArray<StakeholderProfile> = [
     whatChanged:
       "We refined our understanding of private insurance: **it may make treatment more affordable for eligible patients, but it is not a universal solution to treatment costs.**",
     currentStatus: "Incorporated",
+    photos: sdg3PhotoSets["sdg3-wen-jing"],
     sdgs: [3, 10],
     article: {
       title: "An Insurance Industry Perspective | What Support Exists Beyond Basic Medical Insurance?",
@@ -406,6 +410,7 @@ const sdg3Profiles: ReadonlyArray<StakeholderProfile> = [
     whatChanged:
       "We expanded our understanding of accessibility from whether patients can afford treatment to whether they can realistically obtain it, incorporating healthcare resources and health equity into CirCure’s long-term evaluation.",
     currentStatus: "Incorporated",
+    photos: sdg3PhotoSets["sdg3-wang-lei"],
     sdgs: [3, 10],
     // Sits in the main flow between card 06 and this card: affordability turned
     // out to be only half the question, so the next round of interviews moved
@@ -457,6 +462,7 @@ const sdg3Profiles: ReadonlyArray<StakeholderProfile> = [
     whatChanged:
       "We separated immune activation, functional antitumor effects, and ultimate patient benefit as different levels of evidence, avoiding overinterpretation of individual immunological results.",
     currentStatus: "Incorporated",
+    photos: sdg3PhotoSets["sdg3-cui-jiuwei"],
     sdgs: [3, 9],
   },
   {

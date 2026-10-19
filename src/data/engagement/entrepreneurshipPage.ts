@@ -1651,8 +1651,8 @@ export const entrepreneurshipPage: WikiPageContent = {
         {
           type: "figure",
           src: entrepreneurshipAssets.illustrations.teamPhoto,
-          width: 4000,
-          height: 2667,
+          width: 1280,
+          height: 853,
           alt: "Photo of the JLU-FBH team",
           caption: "The JLU-FBH team.",
         },

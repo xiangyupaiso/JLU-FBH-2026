@@ -29,6 +29,7 @@ import { PageImagePreloads } from "../common/PageImagePreloads";
 import { experimentProtocolImage } from "../../data/wet-lab/experimentProtocolPages";
 import type { ExperimentProtocolPair } from "../../data/wet-lab/experimentProtocolPages";
 import "../../styles/wiki-route-skin.css";
+import "../../styles/wiki-code.css";
 import "../../styles/features/experiments-panels.css";
 
 /**
@@ -307,12 +308,18 @@ function renderSubheadingTitle(title: string) {
  * Both table blocks use this — `table` as well as `parts-table`. Rendering both
  * through the same helper keeps links and emphasis consistent in every table.
  */
-function renderTableCell(cell: string): ReactNode {
-  if (!cell.includes("<br")) return linkify(cell);
+function renderTableCell(
+  cell: string,
+  inline: InlineRenderer | null,
+  sectionId: string,
+): ReactNode {
+  const render = (text: string) =>
+    inline ? inline(text, linkify, sectionId) : linkify(text);
+  if (!cell.includes("<br")) return render(cell);
   const lines = cell.split(/<br\s*\/?>/);
   return lines.map((line, index) => (
     <span key={index}>
-      {linkify(line)}
+      {render(line)}
       {index < lines.length - 1 ? <br /> : null}
     </span>
   ));
@@ -396,14 +403,23 @@ function CodeBlock({
   onCopy: (code: string) => Promise<boolean>;
 }) {
   const [copied, setCopied] = useState(false);
-  const displayLanguage = language?.trim() || "text";
-  const languageClass = displayLanguage.toLowerCase().replace(/[^a-z0-9]+/g, "-");
+  const languageId = language?.trim().toLowerCase() || "text";
+  const languageLabels: Record<string, string> = {
+    powershell: "PowerShell",
+    bash: "Bash",
+    python: "Python",
+    r: "R",
+    json: "JSON",
+    text: "Plain text",
+  };
+  const displayLanguage = languageLabels[languageId] ?? languageId;
+  const languageClass = languageId.replace(/[^a-z0-9]+/g, "-");
 
   return (
     <div
       className={`wiki-code wiki-code--${languageClass}`}
       data-wiki-reveal
-      data-language={displayLanguage}
+      data-language={languageId}
     >
       <div className="wiki-code__bar">
         <span className="wiki-code__language">{displayLanguage}</span>
@@ -422,7 +438,7 @@ function CodeBlock({
           {copied ? "Copied" : "Copy"}
         </button>
       </div>
-      <pre className="wiki-code__body">
+      <pre className="wiki-code__body" data-native-cursor="sheep">
         <code>{code}</code>
       </pre>
     </div>
@@ -656,11 +672,11 @@ function RouteBlock({
                   {row.map((cell, cellIndex) =>
                     cellIndex === 0 ? (
                       <th scope="row" key={`${rowIndex}-${cellIndex}`}>
-                        {renderTableCell(cell)}
+                        {renderTableCell(cell, inline, sectionId)}
                       </th>
                     ) : (
                       <td key={`${rowIndex}-${cellIndex}`}>
-                        {renderTableCell(cell)}
+                        {renderTableCell(cell, inline, sectionId)}
                       </td>
                     ),
                   )}
@@ -713,7 +729,7 @@ function RouteBlock({
                   </th>
                   {row.cells.map((cell, cellIndex) => (
                     <td key={`${row.name}-${cellIndex}`}>
-                      {renderTableCell(cell)}
+                      {renderTableCell(cell, inline, sectionId)}
                     </td>
                   ))}
                 </tr>

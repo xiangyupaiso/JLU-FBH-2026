@@ -7,15 +7,36 @@ import {
 } from "../../citations/CitationRegister";
 import { linkify } from "../../proseInline";
 import { ManuscriptTabs } from "../shared/ManuscriptTabs";
+import { JudgingCriteria } from "../shared/JudgingCriteria";
+import { DosePredictionExplorer } from "../shared/DosePredictionExplorer";
+import { ImageAnchorMap } from "../shared/ImageAnchorMap";
+import { scrollReaderToId } from "../../../../utils/scrollReaderToTarget";
 import { Trop2ComplexViewer } from "../Trop2ComplexViewer";
-import { ModelBurialHeatmap, ModelConfidenceScatter, ModelP9Volume, ModelVolcano } from "./ModelCharts";
+import {
+  ModelBurialHeatmap,
+  ModelConfidenceScatter,
+  ModelP9Volume,
+  ModelVolcano,
+} from "./ModelCharts";
 import {
   modelDownloads,
   modelPanels,
   modelReferences,
+  modelJudging,
+  modelStructuralConfirmation,
+  modelModuleLinks,
 } from "../../../../data/drylab/modelPage";
+import {
+  getModelImage,
+  getModelDoseScanDownload,
+  modelAssets,
+} from "../../../../data/drylab/modelAssets";
+import modelDoseScan from "../../../../data/drylab/modelDoseScanData.json";
 import type { ModelPanel } from "../../../../data/drylab/modelPanelTypes";
-import { buildModelCitationIndex, parseModelFigureCaption } from "../../../../data/drylab/modelCitationIndex";
+import {
+  buildModelCitationIndex,
+  parseModelFigureCaption,
+} from "../../../../data/drylab/modelCitationIndex";
 import "../../../../styles/features/model-panels.css";
 
 const citationIndex = buildModelCitationIndex();
@@ -24,13 +45,17 @@ const tint = {
   ring: "0 0 0 3px rgba(21,62,52,0.32)",
 };
 const renderCitedText = createCitationRenderer(citationIndex, tint);
-export function renderModelCitedText(text: string, fallback: (text: string) => ReactNode) {
+export function renderModelCitedText(
+  text: string,
+  fallback: (text: string) => ReactNode,
+  sectionId?: string,
+) {
   const caption = parseModelFigureCaption(text);
-  if (!caption) return renderCitedText(text, fallback);
+  if (!caption) return renderCitedText(text, fallback, sectionId);
   return (
     <span className="model-figure-caption">
       <span className="wiki-figure-caption-label">{caption.label}</span>
-      {renderCitedText(caption.text, fallback)}
+      {renderCitedText(caption.text, fallback, sectionId)}
     </span>
   );
 }
@@ -44,11 +69,11 @@ function ModelFold({
 }) {
   useEffect(() => {
     const reveal = (event: MouseEvent) => {
-      const link = (event.target as Element).closest<HTMLAnchorElement>(
+      const link = (event.target as Element).closest(
         'a[href^="#"]',
       );
       if (!link) return;
-      const target = document.getElementById(link.hash.slice(1));
+      const target = document.getElementById(link.getAttribute("href")!.slice(1));
       let parent = target?.parentElement;
       while (parent) {
         if (parent instanceof HTMLDetailsElement) parent.open = true;
@@ -84,9 +109,7 @@ function TransposableTable({
         aria-pressed={transposed}
         onClick={() => setTransposed((value) => !value)}
       >
-        {transposed
-          ? "Models as columns"
-          : "Models as rows"}
+        {transposed ? "Models as columns" : "Models as rows"}
       </button>
       <div
         className="wiki-table-wrap"
@@ -125,7 +148,9 @@ function TransposableTable({
   );
 }
 
-function AntigenTable({ table }: {
+function AntigenTable({
+  table,
+}: {
   table: Extract<ModelPanel, { kind: "antigen-table" }>["table"];
 }) {
   const antigens = [...new Set(table.rows.map((row) => row[0]))];
@@ -143,16 +168,27 @@ function AntigenTable({ table }: {
           value={antigens.indexOf(selected)}
           aria-label="Antigen"
           aria-valuetext={selected}
-          onChange={(event) => setSelected(antigens[Number(event.target.value)])}
+          onChange={(event) =>
+            setSelected(antigens[Number(event.target.value)])
+          }
         />
         <div className="model-antigen-options">
           {antigens.map((antigen) => (
-            <button type="button" key={antigen} aria-pressed={selected === antigen}
-              onClick={() => setSelected(antigen)}>{antigen}</button>
+            <button
+              type="button"
+              key={antigen}
+              aria-pressed={selected === antigen}
+              onClick={() => setSelected(antigen)}
+            >
+              {antigen}
+            </button>
           ))}
         </div>
       </fieldset>
-      <WikiContentBlocks blocks={[{ ...table, rows }]} sectionId="model-antigen-table" />
+      <WikiContentBlocks
+        blocks={[{ ...table, rows }]}
+        sectionId="model-antigen-table"
+      />
     </div>
   );
 }
@@ -208,7 +244,83 @@ function ModelPanelContent({
 
 export function modelFeatures(): Record<string, ReactNode> {
   const features: Record<string, ReactNode> = {
-    "model-structural-confirmation": <Trop2ComplexViewer />,
+    "model-module-navigation": (
+      <ImageAnchorMap
+        src={getModelImage("Model_structure (2).png")}
+        alt={modelAssets["Model_structure (2).png"].alt.replace(/\*\*/g, "")}
+        width={modelAssets["Model_structure (2).png"].width}
+        height={modelAssets["Model_structure (2).png"].height}
+        regions={modelModuleLinks}
+      />
+    ),
+    "model-structural-confirmation": (
+      <div className="model-structural-viewer">
+        <h5 id="model-structural-confirmation" className="model-structural-viewer__title">
+          {modelStructuralConfirmation.title} in{" "}
+          <span>{modelStructuralConfirmation.complex}</span>
+        </h5>
+        <Trop2ComplexViewer />
+      </div>
+    ),
+    "model-judging": (
+      <JudgingCriteria
+        items={modelJudging}
+        renderParagraph={(text) =>
+          renderModelCitedText(text, linkify, "model-judging")
+        }
+      />
+    ),
+    "model-dose-explorer": (
+      <DosePredictionExplorer
+        rows={modelDoseScan.rows}
+        draws={modelDoseScan.draws}
+        downloadUrl={getModelDoseScanDownload()}
+      />
+    ),
+    "model-graphical-abstracts": (
+      <nav
+        className="model-graphical-abstracts"
+        aria-label="Explore the three models"
+      >
+        {(
+          [
+            [
+              "AEIP",
+              "model-aeip",
+              "CirCure_icon_screening_funnel_transparent.png",
+            ],
+            [
+              "Cell2Dose",
+              "model-cell2dose",
+              "CirCure_icon_dose_response_model_transparent.png",
+            ],
+            [
+              "SST-QN",
+              "model-sst-qn",
+              "CirCure_icon_correlation_heatmap_transparent.png",
+            ],
+          ] as const
+        ).map(([label, target, image]) => (
+          <a
+            href={`#${target}`}
+            key={target}
+            onClick={(event) => {
+              event.preventDefault();
+              scrollReaderToId(target, event.currentTarget);
+            }}
+          >
+            <img
+              src={getModelImage(image)}
+              width={modelAssets[image].width}
+              height={modelAssets[image].height}
+              alt=""
+              loading="lazy"
+            />
+            <span>{label}</span>
+          </a>
+        ))}
+      </nav>
+    ),
     "model-references": (
       <CitationReferenceList
         references={modelReferences}
@@ -221,7 +333,11 @@ export function modelFeatures(): Record<string, ReactNode> {
         {modelDownloads.map((file) => (
           <li key={file.path}>
             <a
-              href={file.path.startsWith("https://") ? file.path : `${import.meta.env.BASE_URL}${file.path}`}
+              href={
+                file.path.startsWith("https://")
+                  ? file.path
+                  : `${import.meta.env.BASE_URL}${file.path}`
+              }
               download
             >
               {file.label}

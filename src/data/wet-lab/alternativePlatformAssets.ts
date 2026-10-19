@@ -1,12 +1,12 @@
-import platformComparison from "../../assets/wiki/alternative-platform/platform-comparison.webp";
-import necessityChain from "../../assets/wiki/alternative-platform/necessity-chain.webp";
-import backboneArchitecture from "../../assets/wiki/alternative-platform/backbone-architecture.webp";
-import evidenceDependencyMap from "../../assets/wiki/alternative-platform/evidence-dependency-map.webp";
-import releaseWorkflow from "../../assets/wiki/alternative-platform/release-workflow.webp";
-import roundOneRanking from "../../assets/wiki/alternative-platform/round-one-ranking.webp";
-import roundOneElispot from "../../assets/wiki/alternative-platform/round-one-elispot.webp";
-import inVivoResults from "../../assets/wiki/alternative-platform/in-vivo-results.webp";
-import evidenceTiers from "../../assets/wiki/alternative-platform/evidence-tiers.webp";
+const platformComparison = "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/five-platforms-against-the-problem-s-requirement-with-the-failure-point-of-each-marked.avif";
+const necessityChain = "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/host-modality-and-production-as-three-stacked-layers-with-the-forcing-constraint-on-each-arrow.avif";
+const backboneArchitecture = "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/the-circrna-in-translation-order-with-the-four-encoded-elements-highlighted.avif";
+const evidenceDependencyMap = "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/the-evidence-chain-from-dc-maturation-to-tumour-cell-killing-each-link-with-its-read-out-and-its-control.avif";
+const releaseWorkflow = "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/the-cell-free-production-route-and-the-release-gate-that-returns-a-failed-preparation-to-transcription.avif";
+const roundOneRanking = "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/round-1-killing-of-k562-by-t-cells-primed-with-each-construct.avif";
+const roundOneElispot = "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/round-1-ifn-elispot-wells-for-all-13-single-epitope-constructs.avif";
+const inVivoResults = "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/tumour-growth-curves-for-the-three-groups.avif";
+const evidenceTiers = "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/every-claim-on-this-page-placed-in-one-of-six-evidence-tiers-with-the-read-out-that-supports-it.avif";
 
 export interface AlternativePlatformAssetEntry {
   fileName: string;

@@ -10,13 +10,13 @@ import { CircRnaArtwork } from "../components/home/CircRnaArtwork";
 import { HomeRnaSequence } from "../components/home/HomeRnaSequence";
 import { WardInfusionTube } from "../components/home/WardInfusionTube";
 import originalManifest from "../assets/home/story/manifest.json";
-import mapCloudWest from "../assets/home/story/map-detail-baked-cloud-west.webp";
-import mapCloudEast from "../assets/home/story/map-detail-baked-cloud-east.webp";
-import mapWaveWestOne from "../assets/home/story/map-detail-baked-wave-west-1.webp";
-import mapWaveWestTwo from "../assets/home/story/map-detail-baked-wave-west-2.webp";
-import mapWaveEastFour from "../assets/home/story/map-detail-baked-wave-east-4.webp";
+const mapCloudWest = "https://static.igem.wiki/teams/6056/wiki/files/pages/home/map-detail-baked-cloud-west.webp";
+const mapCloudEast = "https://static.igem.wiki/teams/6056/wiki/files/pages/home/map-detail-baked-cloud-east.webp";
+const mapWaveWestOne = "https://static.igem.wiki/teams/6056/wiki/files/pages/home/map-detail-baked-wave-west-1.webp";
+const mapWaveWestTwo = "https://static.igem.wiki/teams/6056/wiki/files/pages/home/map-detail-baked-wave-west-2.webp";
+const mapWaveEastFour = "https://static.igem.wiki/teams/6056/wiki/files/pages/home/map-detail-baked-wave-east-4.webp";
 import supplements from "../assets/home/supplements/manifest.json";
-import projectAdvantages from "../assets/home/supplements/project-advantages.png";
+const projectAdvantages = "https://static.igem.wiki/teams/6056/wiki/files/pages/home/project-advantages.avif";
 const patientConcerned =
   "https://static.igem.wiki/teams/6056/wiki/files/pages/home/patient-teary-20261004-467cbc4b5db7.webp";
 const clinicianConcerned =

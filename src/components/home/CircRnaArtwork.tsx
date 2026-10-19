@@ -1,7 +1,7 @@
 import { type CSSProperties } from "react";
 import { PaintedReveal } from "./PaintedReveal";
 import manifest from "../../assets/home/story/manifest.json";
-import ring from "../../assets/home/story/scene-1-layer-4.webp";
+const ring = "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-1-layer-4.webp";
 const paper =
   "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-1-layer-1.webp";
 const heading =

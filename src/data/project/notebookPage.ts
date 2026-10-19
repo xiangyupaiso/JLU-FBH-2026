@@ -1,5 +1,6 @@
 import type { WikiPageContent } from "../../components/wiki/wikiPageTypes";
 import type { NotebookAssetKey } from "./notebookAssets";
+import { engagementEntries } from "./notebookEngagement";
 
 export type NotebookBlock =
   | { type: "prose"; text: string }
@@ -10,6 +11,7 @@ export type NotebookBlock =
       title: string;
       assets: NotebookAssetKey[];
       caption: string;
+      gallery?: { kind: "long-image" | "photos" };
     }
   | {
       type: "table";
@@ -29,7 +31,7 @@ export interface NotebookEntry {
   blocks: NotebookBlock[];
 }
 
-export type NotebookGroupId = "wet-lab" | "dry-lab" | "wiki";
+export type NotebookGroupId = "wet-lab" | "dry-lab" | "wiki" | "engagement";
 export interface NotebookGroup {
   id: NotebookGroupId;
   label: string;
@@ -1930,6 +1932,12 @@ export const notebookGroups: NotebookGroup[] = [
     ],
     entries: wikiEntries,
   },
+  {
+    id: "engagement",
+    label: "Engagement",
+    intro: [],
+    entries: engagementEntries,
+  },
 ];
 
 export const notebookPage: WikiPageContent = {
@@ -1955,10 +1963,16 @@ export const notebookPage: WikiPageContent = {
       blocks: [{ type: "feature", key: "notebook-workspace" }],
     },
   ],
-  links: [],
+  links: [
+    { path: "/experiments", label: "Protocol Library" },
+    { path: "/results", label: "Experimental Evidence" },
+    { path: "/safety-and-security", label: "Biosafety Guardrails" },
+    { path: "/engineering", label: "DBTL Iteration Log" },
+  ],
   next: {
     path: "/safety-and-security",
     label: "Safety and Security",
     title: "Where Must Innovation Draw the Line?",
+    description: "Exhaustive lab notes prove that powerful synthetic biology demands vigilant containment. Review our BSL-2 protocols, animal ethics, and dual-use risk assessments.",
   },
 };

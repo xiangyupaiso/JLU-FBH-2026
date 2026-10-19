@@ -1,9 +1,12 @@
-interface NotebookAsset {
+export interface NotebookAsset {
   fileName: string;
   uploadUrl: string;
   alt: string;
   width: number;
   height: number;
+  title?: string;
+  thumbnailUrl?: string;
+  caption?: string;
 }
 
 /** Official URLs supplied with the manuscript; dimensions checked at import. */
@@ -97,12 +100,12 @@ export const notebookAssets = {
     height: 486,
   },
   wet_f9: {
-    fileName: "wet-f9.avif",
+    fileName: "wet-f9-1.avif",
     uploadUrl:
-      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/notebook/wet-f9.avif",
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/notebook/wet-f9-1.avif",
     alt: "RNA persistence gel",
     width: 1280,
-    height: 529,
+    height: 471,
   },
   wet_f10: {
     fileName: "wet-f10.avif",
@@ -456,6 +459,302 @@ export const notebookAssets = {
     width: 1280,
     height: 719,
   },
+  en_f1a: {
+    fileName: "en-f1a.avif",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/notebook/en-f1a.avif",
+    alt: "Winter outreach across five schools",
+    width: 4000,
+    height: 3000,
+  },
+  en_f1b: {
+    fileName: "en-f1b.avif",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/notebook/en-f1b.avif",
+    alt: "Winter outreach across five schools",
+    width: 4000,
+    height: 3000,
+  },
+  en_f1c: {
+    fileName: "en-f1c.avif",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/notebook/en-f1c.avif",
+    alt: "Winter outreach across five schools",
+    width: 1707,
+    height: 1280,
+  },
+  en_f1d: {
+    fileName: "en-f1d.avif",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/notebook/en-f1d.avif",
+    alt: "Winter outreach across five schools",
+    width: 4000,
+    height: 3000,
+  },
+  en_f1e: {
+    fileName: "en-f1e.avif",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/notebook/en-f1e.avif",
+    alt: "Winter outreach across five schools",
+    width: 2275,
+    height: 1279,
+  },
+  en_f2: {
+    fileName: "en-f2.avif",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/notebook/en-f2.avif",
+    alt: "Community Day participation",
+    width: 2473,
+    height: 1885,
+  },
+  en_f3: {
+    fileName: "en-f3.avif",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/notebook/en-f3.avif",
+    alt: "Plants and environmental awareness",
+    width: 4000,
+    height: 3000,
+  },
+  en_f4: {
+    fileName: "en-f4.avif",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/notebook/en-f4.avif",
+    alt: "Endocrine health lecture",
+    width: 4000,
+    height: 3000,
+  },
+  en_f5: {
+    fileName: "en-f5.avif",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/notebook/en-f5.avif",
+    alt: "Digital participation: Learn",
+    width: 1290,
+    height: 2796,
+  },
+  en_f5_b: {
+    fileName: "en-f5-b.avif",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/notebook/en-f5-b.avif",
+    alt: "Digital participation: Learn",
+    width: 1290,
+    height: 2796,
+  },
+  en_f5c: {
+    fileName: "en-f5c.avif",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/notebook/en-f5c.avif",
+    alt: "Digital participation: Learn",
+    width: 1290,
+    height: 2796,
+  },
+  en_f5d: {
+    fileName: "en-f5d.avif",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/notebook/en-f5d.avif",
+    alt: "Digital participation: Learn",
+    width: 1290,
+    height: 2796,
+  },
+  en_f6: {
+    fileName: "en-f6.avif",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/notebook/en-f6.avif",
+    alt: "Campus bioethics debate",
+    width: 1920,
+    height: 1080,
+  },
+  en_f7: {
+    fileName: "en-f7.avif",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/notebook/en-f7.avif",
+    alt: "Letters across universities",
+    width: 1920,
+    height: 1080,
+  },
+  en_f8a_1: {
+    fileName: "en-f8a-1.avif",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/notebook/en-f8a-1.avif",
+    alt: "Xinghua Festival: breast-health outreach",
+    width: 4000,
+    height: 3000,
+  },
+  en_f8b_1: {
+    fileName: "en-f8b-1.avif",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/notebook/en-f8b-1.avif",
+    alt: "Xinghua Festival: breast-health outreach",
+    width: 4000,
+    height: 3000,
+  },
+  en_f8c_1: {
+    fileName: "en-f8c-1.avif",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/notebook/en-f8c-1.avif",
+    alt: "Xinghua Festival: breast-health outreach",
+    width: 4000,
+    height: 3000,
+  },
+  en_f8d_1: {
+    fileName: "en-f8d-1.avif",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/notebook/en-f8d-1.avif",
+    alt: "Xinghua Festival: breast-health outreach",
+    width: 4000,
+    height: 3000,
+  },
+  en_f9: {
+    fileName: "en-f9.avif",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/notebook/en-f9.avif",
+    alt: "Air-to-Bread Classroom",
+    width: 4000,
+    height: 3000,
+  },
+  en_f10a: {
+    fileName: "en-f10a.avif",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/notebook/en-f10a.avif",
+    alt: "Digital participation: Design",
+    width: 1290,
+    height: 2796,
+  },
+  en_f10b: {
+    fileName: "en-f10b.avif",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/notebook/en-f10b.avif",
+    alt: "Digital participation: Design",
+    width: 1290,
+    height: 2796,
+  },
+  en_f10c: {
+    fileName: "en-f10c.avif",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/notebook/en-f10c.avif",
+    alt: "Digital participation: Design",
+    width: 1290,
+    height: 2796,
+  },
+  en_f10d: {
+    fileName: "en-f10d.avif",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/notebook/en-f10d.avif",
+    alt: "Digital participation: Design",
+    width: 1290,
+    height: 2796,
+  },
+  en_f11: {
+    fileName: "en-f11.avif",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/notebook/en-f11.avif",
+    alt: "Health Run",
+    width: 4000,
+    height: 3000,
+  },
+  northeast: {
+    fileName: "northeast.avif",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/entrepreneurship/northeast.avif",
+    alt: "Northeast China iGEM Co-creation Salon",
+    width: 2275,
+    height: 1280,
+  },
+  en_f13: {
+    fileName: "en-f13.avif",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/notebook/en-f13.avif",
+    alt: "iGEM Human Practices live class",
+    width: 1706,
+    height: 1279,
+  },
+  en_f14: {
+    fileName: "en-f14.avif",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/notebook/en-f14.avif",
+    alt: "Vaccine Classroom",
+    width: 1100,
+    height: 825,
+  },
+  en_f15_1: {
+    fileName: "en-f15-1.avif",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/notebook/en-f15-1.avif",
+    alt: "Music Festival and Molecular Rhythm",
+    width: 4000,
+    height: 3000,
+  },
+  en_f16: {
+    fileName: "en-f16.avif",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/notebook/en-f16.avif",
+    alt: "Hailun follow-up and teacher-led use",
+    width: 1702,
+    height: 1276,
+  },
+  south: {
+    fileName: "south.avif",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/entrepreneurship/south.avif",
+    alt: "2026 Southern China Regional Meeting",
+    width: 1920,
+    height: 1280,
+  },
+  east_china: {
+    fileName: "east-china.avif",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/entrepreneurship/east-china.avif",
+    alt: "2026 iGEM East China Regional Meeting",
+    width: 4000,
+    height: 3000,
+  },
+  north: {
+    fileName: "north.avif",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/entrepreneurship/north.avif",
+    alt: "2026 North China iGEMer Meetup",
+    width: 2276,
+    height: 1280,
+  },
+  central: {
+    fileName: "central.avif",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/entrepreneurship/central.avif",
+    alt: "2026 Central China iGEM Forum",
+    width: 1920,
+    height: 1280,
+  },
+  en_f21: {
+    fileName: "en-f21.avif",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/notebook/en-f21.avif",
+    alt: "Pilu Town Virtual Laboratory activities",
+    width: 3248,
+    height: 2436,
+  },
+  synbiopunk: {
+    fileName: "synbiopunk.avif",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/entrepreneurship/synbiopunk.avif",
+    alt: "Synbiopunk-CCiC 2026",
+    width: 4000,
+    height: 2251,
+  },
+  en_f23: {
+    fileName: "en-f23.avif",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/notebook/en-f23.avif",
+    alt: "Synbio Classroom",
+    width: 1707,
+    height: 1280,
+  },
+  apic: {
+    fileName: "apic.avif",
+    uploadUrl:
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/entrepreneurship/apic.avif",
+    alt: "The 1st Grand APiC Conference for Asia-Pacific iGEMer Community",
+    width: 2568,
+    height: 1926,
+  },
 } as const satisfies Record<string, NotebookAsset>;
 
 export type NotebookAssetKey = keyof typeof notebookAssets;
@@ -464,5 +763,10 @@ export function getNotebookImage(key: NotebookAssetKey): string {
   return notebookAssets[key].uploadUrl;
 }
 
-// Figures mount on expansion. They do not delay the page loader or download on group switches.
-export const notebookPreloadImages: string[] = [];
+// Include figures in collapsed entries and other groups in the shared loader.
+export const notebookPreloadImages = Object.values(notebookAssets).flatMap(
+  (asset: NotebookAsset) =>
+    asset.thumbnailUrl
+      ? [asset.uploadUrl, asset.thumbnailUrl]
+      : [asset.uploadUrl],
+);

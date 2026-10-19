@@ -36,6 +36,13 @@ export interface WikiFact {
   value: string;
 }
 
+export interface WikiJudgingCriterion {
+  id: string;
+  question: string;
+  paragraphs: readonly string[];
+  anchorIds?: readonly string[];
+}
+
 export interface WikiItem {
   label: string;
   navLabel?: string;

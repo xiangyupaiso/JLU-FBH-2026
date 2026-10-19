@@ -3692,7 +3692,7 @@ export const safetyFeatureSpecs: Record<string, SafetyFeatureSpec> = {
       "6-1-1-1-photos-of-changchun-international-medical-and-health-industry-expo.avif",
       "6-1-1-2-photos-of-changchun-international-medical-and-health-industry-expo.avif",
       "6-1-1-3-photos-of-changchun-international-medical-and-health-industry-expo.avif",
-      "6-1-1-photos-of-changchun-international-medical-and-health-industry-expo.avif",
+      "6-1-1-4-photos-of-changchun-international-medical-and-health-industry-expo.avif",
     ],
     caption:
       "Photos of Changchun International Medical and Health Industry Expo",
