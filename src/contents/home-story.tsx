@@ -1182,7 +1182,7 @@ export function HomeStory() {
         className="story-chapter--map"
         title={
           <>
-            <em className="story-emphasis-why">Why</em> we choose triple-negative{" "}
+            <em className="story-emphasis-why">Why</em> did we choose triple-negative{" "}
             <span className="tnbc-reading-title-shared" data-tnbc-title-shared>
               breast cancer
             </span>{"?"}

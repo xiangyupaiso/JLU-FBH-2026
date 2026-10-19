@@ -1,0 +1,162 @@
+{
+  "description": "Complete gradient-background set found in the preserved Official-wiki source. File version suffixes are retained; no inferred creation chronology is assigned.",
+  "source_root": "/Users/lijy/Desktop/CodeX Project/2026-07-01-iGEM-wiki-v1-framer/Official-wiki",
+  "assets": [
+    {
+      "name": "project-contribution-gradient.png",
+      "source": "/Users/lijy/Desktop/CodeX Project/2026-07-01-iGEM-wiki-v1-framer/Official-wiki/src/project-preview/assets/project-contribution-gradient.png",
+      "asset": "src/assets/visual-design/history/subpages/project-contribution-gradient.png",
+      "sha256": "7a07c575d0ea0b69c99536eb576ff24b258f7dcec93e0edd139a70bb4b9ad11c",
+      "bytes": 2167229
+    },
+    {
+      "name": "project-description-gradient.png",
+      "source": "/Users/lijy/Desktop/CodeX Project/2026-07-01-iGEM-wiki-v1-framer/Official-wiki/src/project-preview/assets/project-description-gradient.png",
+      "asset": "src/assets/visual-design/history/subpages/description.png",
+      "sha256": "36835afd6278234bd5e3eff58540119ed4d1fd0e0a3efff892b1ac1ee4dfc36f",
+      "bytes": 2470106
+    },
+    {
+      "name": "project-engineering-gradient.png",
+      "source": "/Users/lijy/Desktop/CodeX Project/2026-07-01-iGEM-wiki-v1-framer/Official-wiki/src/project-preview/assets/project-engineering-gradient.png",
+      "asset": "src/assets/visual-design/history/subpages/project-engineering-gradient.png",
+      "sha256": "d62ea3a208d530a7ba8a0da7c93e07c6d525777186569e12c6532035ce475ed8",
+      "bytes": 2613634
+    },
+    {
+      "name": "project-results-gradient.png",
+      "source": "/Users/lijy/Desktop/CodeX Project/2026-07-01-iGEM-wiki-v1-framer/Official-wiki/src/project-preview/assets/project-results-gradient.png",
+      "asset": "src/assets/visual-design/history/subpages/project-results-gradient.png",
+      "sha256": "1f10e2d5a8a5444da7f7d24d4599ee3f0ebdede61e67fca23e276c91c6bf4454",
+      "bytes": 2537510
+    },
+    {
+      "name": "dry-lab-hardware-hero-v2.webp",
+      "source": "/Users/lijy/Desktop/CodeX Project/2026-07-01-iGEM-wiki-v1-framer/Official-wiki/src/assets/wiki/dry-lab-hardware-hero-v2.webp",
+      "asset": "src/assets/visual-design/history/subpages/hardware.webp",
+      "sha256": "8f59b0c21bb7cae6723bda3e3805b43d98d4742f1c11707afc578e8858b1dabb",
+      "bytes": 177556
+    },
+    {
+      "name": "dry-lab-model-hero-v2.webp",
+      "source": "/Users/lijy/Desktop/CodeX Project/2026-07-01-iGEM-wiki-v1-framer/Official-wiki/src/assets/wiki/dry-lab-model-hero-v2.webp",
+      "asset": "src/assets/visual-design/history/subpages/model.webp",
+      "sha256": "d761384f5685eea09012cdc5534f48af58359ff65188bed2ff46be1862ee3a49",
+      "bytes": 208640
+    },
+    {
+      "name": "dry-lab-software-hero-v2.webp",
+      "source": "/Users/lijy/Desktop/CodeX Project/2026-07-01-iGEM-wiki-v1-framer/Official-wiki/src/assets/wiki/dry-lab-software-hero-v2.webp",
+      "asset": "src/assets/visual-design/history/subpages/dry-lab-software-hero-v2.webp",
+      "sha256": "c801deeb987ae94e04f98757d38d5f8ce2c9e9680cea2ad46a9014b002e24672",
+      "bytes": 128070
+    },
+    {
+      "name": "wet-lab-experiments-hero-v2.webp",
+      "source": "/Users/lijy/Desktop/CodeX Project/2026-07-01-iGEM-wiki-v1-framer/Official-wiki/src/assets/wiki/wet-lab-heroes/wet-lab-experiments-hero-v2.webp",
+      "asset": "src/assets/visual-design/history/subpages/experiments.webp",
+      "sha256": "4ca6ce3b440707b98465eadb7b412265e8410528610d97b7b1036b0372221753",
+      "bytes": 72010
+    },
+    {
+      "name": "wet-lab-experiments-hero-v3.webp",
+      "source": "/Users/lijy/Desktop/CodeX Project/2026-07-01-iGEM-wiki-v1-framer/Official-wiki/src/assets/wiki/wet-lab-heroes/wet-lab-experiments-hero-v3.webp",
+      "asset": "src/assets/visual-design/history/subpages/wet-lab-experiments-hero-v3.webp",
+      "sha256": "21c0bd8704980505501340dc38916c135da09477160863bcff710b2a309e9b95",
+      "bytes": 49856
+    },
+    {
+      "name": "wet-lab-measurement-hero-v2.webp",
+      "source": "/Users/lijy/Desktop/CodeX Project/2026-07-01-iGEM-wiki-v1-framer/Official-wiki/src/assets/wiki/wet-lab-heroes/wet-lab-measurement-hero-v2.webp",
+      "asset": "src/assets/visual-design/history/subpages/measurement.webp",
+      "sha256": "c74f9c1e7bd0be25adb3ee23ef1ec1e560ed76e516d9f8baee572bb96192b079",
+      "bytes": 91670
+    },
+    {
+      "name": "wet-lab-measurement-hero-v3.webp",
+      "source": "/Users/lijy/Desktop/CodeX Project/2026-07-01-iGEM-wiki-v1-framer/Official-wiki/src/assets/wiki/wet-lab-heroes/wet-lab-measurement-hero-v3.webp",
+      "asset": "src/assets/visual-design/history/subpages/wet-lab-measurement-hero-v3.webp",
+      "sha256": "126898b9b42d531d745750f7a0c971be24990798140a38cdd988c082862d8be7",
+      "bytes": 54102
+    },
+    {
+      "name": "wet-lab-notebook-hero-v2.webp",
+      "source": "/Users/lijy/Desktop/CodeX Project/2026-07-01-iGEM-wiki-v1-framer/Official-wiki/src/assets/wiki/wet-lab-heroes/wet-lab-notebook-hero-v2.webp",
+      "asset": "src/assets/visual-design/history/subpages/wet-lab-notebook-hero-v2.webp",
+      "sha256": "ec57b44fdcaac7c4136a3f415eb967d484895fb30c7a6f0289c522fb0ce30c1d",
+      "bytes": 83276
+    },
+    {
+      "name": "wet-lab-notebook-hero-v3.webp",
+      "source": "/Users/lijy/Desktop/CodeX Project/2026-07-01-iGEM-wiki-v1-framer/Official-wiki/src/assets/wiki/wet-lab-heroes/wet-lab-notebook-hero-v3.webp",
+      "asset": "src/assets/visual-design/history/subpages/wet-lab-notebook-hero-v3.webp",
+      "sha256": "8d971aff3ea51db64ab56ca2d63d3403640fe0d76f1c854b616275535f6d93e7",
+      "bytes": 61948
+    },
+    {
+      "name": "wet-lab-platform-hero-v2.webp",
+      "source": "/Users/lijy/Desktop/CodeX Project/2026-07-01-iGEM-wiki-v1-framer/Official-wiki/src/assets/wiki/wet-lab-heroes/wet-lab-platform-hero-v2.webp",
+      "asset": "src/assets/visual-design/history/subpages/wet-lab-platform-hero-v2.webp",
+      "sha256": "99759d08c1838db390ab62ec4b12cd48fb51ed77c703e38a74155093cddf3eae",
+      "bytes": 128108
+    },
+    {
+      "name": "wet-lab-platform-hero-v3.webp",
+      "source": "/Users/lijy/Desktop/CodeX Project/2026-07-01-iGEM-wiki-v1-framer/Official-wiki/src/assets/wiki/wet-lab-heroes/wet-lab-platform-hero-v3.webp",
+      "asset": "src/assets/visual-design/history/subpages/wet-lab-platform-hero-v3.webp",
+      "sha256": "7b5cab96122787eff4f1f7f0fe3584b8fe3ccb02b1da55f20973b8e4cc1f288c",
+      "bytes": 60712
+    },
+    {
+      "name": "wet-lab-safety-hero-v2.webp",
+      "source": "/Users/lijy/Desktop/CodeX Project/2026-07-01-iGEM-wiki-v1-framer/Official-wiki/src/assets/wiki/wet-lab-heroes/wet-lab-safety-hero-v2.webp",
+      "asset": "src/assets/visual-design/history/subpages/wet-lab-safety-hero-v2.webp",
+      "sha256": "7ba79dde2ebe4da2fba9c0fb7adf58723f4a50930759720e6fc2bbb7c3065660",
+      "bytes": 58928
+    },
+    {
+      "name": "wet-lab-safety-hero-v3.webp",
+      "source": "/Users/lijy/Desktop/CodeX Project/2026-07-01-iGEM-wiki-v1-framer/Official-wiki/src/assets/wiki/wet-lab-heroes/wet-lab-safety-hero-v3.webp",
+      "asset": "src/assets/visual-design/history/subpages/wet-lab-safety-hero-v3.webp",
+      "sha256": "3fa4075ce32d93e5aa4d42e1520b1eb1e230dfc40f6a5c792df43078e91d5dc9",
+      "bytes": 56344
+    }
+  ],
+  "preserved_build": {
+    "directory": "/Users/lijy/Desktop/CodeX Project/2026-07-01-iGEM-wiki-v1-framer/Official-wiki/dist",
+    "index_sha256": "995f9e3d123f9144b4cebb1a6b0bf862b34109f14e41efd401a9b74f501f71eb",
+    "built_assets": [
+      {
+        "path": "assets/index-D_4F0Hh-.js",
+        "sha256": "1dd107c4f93750d05e26eeb6a94f7b17169c551753af0dd2fad720b4cfa04542"
+      },
+      {
+        "path": "assets/index-I2lIKBl1.css",
+        "sha256": "01f490768be85d55c5f8b4e0c18fc34dd26b3139c5108ad8c65293246318bdc4"
+      }
+    ]
+  },
+  "implementation_sources": [
+    {
+      "path": "/Users/lijy/Desktop/CodeX Project/2026-07-01-iGEM-wiki-v1-framer/Official-wiki/src/styles/dry-lab-calm.css",
+      "sha256": "1fbe164d0156ace885f1e73f1762d25306e04044955c5b59b99e14fa3394585a"
+    },
+    {
+      "path": "/Users/lijy/Desktop/CodeX Project/2026-07-01-iGEM-wiki-v1-framer/Official-wiki/src/project-preview/project-preview.css",
+      "sha256": "c9642afea42d75583c6a5784d5dd01c85c1a25dc5e99779e5183b131b923d416"
+    },
+    {
+      "path": "/Users/lijy/Desktop/CodeX Project/2026-07-01-iGEM-wiki-v1-framer/Official-wiki/src/project-preview/ProjectPreviewHero.tsx",
+      "sha256": "a755538b28bfb45cbcf0b8ef33d183ee7028ed48082a18f9fb6f2644122dc0cc"
+    },
+    {
+      "path": "/Users/lijy/Desktop/CodeX Project/2026-07-01-iGEM-wiki-v1-framer/Official-wiki/src/components/wiki/WetLabHeroVisual.tsx",
+      "sha256": "debcc0604659d44051e77919f38981168a08deacafa618b8f76f5c45949927d2"
+    },
+    {
+      "path": "/Users/lijy/Desktop/CodeX Project/2026-07-01-iGEM-wiki-v1-framer/Official-wiki/src/components/wiki/EngagementHeroVisual.tsx",
+      "sha256": "4e51db735b9ba67cd35e184cc2812a25a3a51d21759d0dbcd780cb238df5c898"
+    }
+  ],
+  "captures": []
+}

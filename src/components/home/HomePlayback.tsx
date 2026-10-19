@@ -258,15 +258,22 @@ export function HomePlayback({ root, introPlaying }: HomePlaybackProps) {
           <List size={19} strokeWidth={1.5} aria-hidden="true" />
         </button>
         <div
-          className="home-playback-progress"
+          className="home-playback-reading"
           role="progressbar"
           aria-label="Story progress"
-          aria-orientation="vertical"
+          aria-orientation="horizontal"
           aria-valuemin={0}
           aria-valuemax={100}
           aria-valuenow={percent}
+          aria-valuetext={`${percent}% · Scene ${chapterIndex + 1} of ${chapters.length}: ${currentChapter.title}`}
+          title={`Story progress · ${percent}% · ${currentChapter.title}`}
         >
-          <span style={{ transform: `scaleY(${progress})` }} />
+          <span className="home-playback-reading-track" aria-hidden="true">
+            <span style={{ transform: `scaleX(${progress})` }} />
+          </span>
+          <span className="home-playback-reading-value" aria-hidden="true">
+            {percent}%
+          </span>
         </div>
       </div>
       <span className="home-playback-sr" role="status" aria-live="polite">

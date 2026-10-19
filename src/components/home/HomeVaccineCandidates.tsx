@@ -60,62 +60,61 @@ export function HomeVaccineCandidates() {
             data-gallery-card={index}
             key={candidate.key}
           >
-            <svg
-              className="home-molecule-gallery__card-art"
-              viewBox="0 0 574 1186"
-              aria-hidden="true"
-            >
-              <image
-                href={candidate.board}
-                width="574"
-                height="1186"
-                data-gallery-ink=""
-              />
-              <image
-                href={candidate.label}
-                x="11%"
-                y="14%"
-                width="78%"
-                height="16%"
-                data-gallery-layer="labels"
-              />
-              {candidate.illustration && (
-                <image
-                  href={candidate.illustration}
-                  x={index === 3 ? "11%" : "17%"}
-                  y="39%"
-                  width={index === 3 ? "78%" : "66%"}
-                  height="40%"
-                  data-gallery-layer="symbols"
-                  data-gallery-symbols=""
-                />
-              )}
-              <text
-                x="287"
-                y="1070"
-                textAnchor="middle"
-                className="home-molecule-gallery__caption"
-                data-gallery-layer="labels"
-              >
-                {candidate.detail}
-              </text>
-            </svg>
-            {candidate.key === "circrna" && (
+            <div className="home-molecule-gallery__card-visual">
               <svg
-                className="home-molecule-gallery__ring"
-                data-gallery-ring=""
-                viewBox="0 0 436 436"
-                style={{
-                  left: "13%",
-                  top: "40%",
-                  width: "74%",
-                  aspectRatio: "1",
-                }}
+                className="home-molecule-gallery__card-art"
+                viewBox="0 0 574 1186"
                 aria-hidden="true"
               >
-                <image href={ring} width="436" height="436" />
+                <image
+                  href={candidate.board}
+                  width="574"
+                  height="1186"
+                  data-gallery-ink=""
+                />
+                <image
+                  href={candidate.label}
+                  x="11%"
+                  y="14%"
+                  width="78%"
+                  height="16%"
+                  data-gallery-layer="labels"
+                />
+                {candidate.illustration && (
+                  <image
+                    href={candidate.illustration}
+                    x={index === 3 ? "11%" : "17%"}
+                    y="39%"
+                    width={index === 3 ? "78%" : "66%"}
+                    height="40%"
+                    data-gallery-layer="symbols"
+                    data-gallery-symbols=""
+                  />
+                )}
               </svg>
-            )}
+              {candidate.key === "circrna" && (
+                <svg
+                  className="home-molecule-gallery__ring"
+                  data-gallery-ring=""
+                  viewBox="0 0 436 436"
+                  style={{
+                    left: "13%",
+                    top: "40%",
+                    width: "74%",
+                    aspectRatio: "1",
+                  }}
+                  aria-hidden="true"
+                >
+                  <image href={ring} width="436" height="436" />
+                </svg>
+              )}
+            </div>
+            <span
+              className="home-molecule-gallery__caption"
+              data-gallery-layer="labels"
+            >
+              {candidate.detail}
+            </span>
           </div>
         ))}
       </div>

@@ -1,7 +1,7 @@
 import { useEffect, useRef, type CSSProperties } from "react";
 import { FOOTER_SPONSORS, FOOTER_SUPPORTERS } from "../data/footer";
 
-const SPONSOR_SCROLL_SPEED = 54;
+const SPONSOR_SCROLL_SPEED = 36;
 
 /** Colour supporters lead; a single grey ribbon loops beneath them. */
 export function FooterSponsors() {

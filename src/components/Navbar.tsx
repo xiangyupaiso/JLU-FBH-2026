@@ -596,8 +596,6 @@ export function Navbar() {
       const currentY = window.scrollY;
       const delta = currentY - lastY;
       lastY = currentY;
-      const max = root.scrollHeight - window.innerHeight;
-      const progress = max > 0 ? clamp(currentY / max) : 0;
       const opening = homeActive
         ? document.querySelector<HTMLElement>(".home-scene01")
         : null;
@@ -693,7 +691,6 @@ export function Navbar() {
         );
       }
       // Finish layout reads before painting.
-      header.style.setProperty("--scroll-p", progress.toFixed(4));
       if (lastTarget !== animationTarget || reduced.matches) {
         const initialized = lastTarget !== -1;
         lastTarget = animationTarget;

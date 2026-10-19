@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useId, useRef, useState } from "react";
 import { useFooterPhotoReveal } from "../hooks/useFooterPhotoReveal";
 import { useKeepsakeNote } from "../hooks/useKeepsakeNote";
 import teamPhotoUrl from "../assets/footer/team-keepsake.webp";
@@ -11,7 +11,12 @@ const lambUrl =
   "https://static.igem.wiki/teams/6056/wiki/files/pages/shared/lamb.webp";
 
 /** A full-bleed photograph uncovers continuously beneath the closing panel. */
-export default function FooterPhotoScene() {
+export default function FooterPhotoScene({
+  scrollRootSelector,
+}: {
+  scrollRootSelector?: string;
+}) {
+  const noteTitleId = useId();
   const imageRef = useRef<HTMLImageElement>(null);
   const {
     noteRef,
@@ -22,7 +27,7 @@ export default function FooterPhotoScene() {
     openNote,
     closeNote,
   } = useKeepsakeNote();
-  const { stageRef, cardRef } = useFooterPhotoReveal();
+  const { stageRef, cardRef } = useFooterPhotoReveal(scrollRootSelector);
   const [photoFailed, setPhotoFailed] = useState(false);
 
   useEffect(() => {
@@ -89,7 +94,7 @@ export default function FooterPhotoScene() {
         ref={noteRef}
         className="keepsake-note"
         data-sheep-cursor
-        aria-labelledby="keepsake-note-title"
+        aria-labelledby={noteTitleId}
         onCancel={(event) => {
           event.preventDefault();
           closeNote();
@@ -120,7 +125,7 @@ export default function FooterPhotoScene() {
                   />
                 </div>
                 <div className="keepsake-letter__greeting">
-                  <h3 ref={noteTitleRef} id="keepsake-note-title" tabIndex={-1}>
+                  <h3 ref={noteTitleRef} id={noteTitleId} tabIndex={-1}>
                     <span>For more</span>
                     <em>ordinary days.</em>
                   </h3>

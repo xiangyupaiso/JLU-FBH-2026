@@ -1,0 +1,43 @@
+{
+  "captureDate": "2026-10-19",
+  "note": "Parallel preserved studies; source copies do not establish precise revision dates. Demonstration content is not project evidence.",
+  "studies": [
+    {
+      "id": "center",
+      "origin": "2026-07-01-iGEM-wiki-v1-framer/hp-testimonial-cards-local/index.html",
+      "originSHA256": "4132f6ce63af693d8f18c1df9e99b31dfdd7d4b3e03380eac7e1070e3c86287c",
+      "output": "center.html",
+      "outputSHA256": "ea3fa0d3e6203978eca1c0bc758323e7503fb2b941d3f008ec6095d47a4e6dcd",
+      "adaptations": [
+        "Isolated original section with original CSS and script",
+        "Added archive placeholder notice",
+        "Converted PNG media to WebP without upscaling"
+      ]
+    },
+    {
+      "id": "dial",
+      "origin": "2026-09-04-iGEM-WIKI-JLU-FBH/xyp-part-20260905/hp-testimonial-cards-local/index.html",
+      "originSHA256": "0cadfce7179d49908656a8c3bdb873717d53b1759e66ebbba2d955858aea3f98",
+      "output": "dial.html",
+      "outputSHA256": "8844cfdb2903f859ae29ea4ecd997297e231a2051ab44e2c37ff773eaf5473ec",
+      "adaptations": [
+        "Isolated original section with original CSS and script",
+        "Added archive placeholder notice",
+        "Converted PNG media to WebP without upscaling"
+      ]
+    },
+    {
+      "id": "horizontal",
+      "origin": "2026-07-01-iGEM-wiki-v1-framer/hp-testimonial-cards-local/index.html",
+      "originSHA256": "4132f6ce63af693d8f18c1df9e99b31dfdd7d4b3e03380eac7e1070e3c86287c",
+      "output": "horizontal.html",
+      "outputSHA256": "2dad830ae7bfadf71f029613098b8b6eb449d52a539cd4d58c8d6a8075b1120c",
+      "adaptations": [
+        "Isolated original section with original CSS and script",
+        "Added archive placeholder notice",
+        "Converted PNG media to WebP without upscaling",
+        "Pointed card links to matching notes in the centered study"
+      ]
+    }
+  ]
+}
