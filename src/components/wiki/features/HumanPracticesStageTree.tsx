@@ -74,11 +74,9 @@ const configs: Record<Variant, FlowConfig> = {
     ],
     steps: [
       { node: "yang", copyKey: "vitro-1" },
-      { node: "circular", edge: "yang-circular" },
       { node: "yang", copyKey: "vitro-2", edge: "circular-yang", followup: true },
       { node: "niu", copyKey: "vitro-3", edge: "yang-niu" },
       { node: "jia", copyKey: "vitro-4", edge: "niu-jia" },
-      { node: "assays", edge: "jia-assays" },
       { node: "jia", copyKey: "vitro-5", edge: "assays-jia", followup: true },
       { node: "miao", copyKey: "vitro-6", edge: "jia-miao" },
     ],
@@ -335,13 +333,15 @@ export function HumanPracticesStageTree({ variant }: { variant: Variant }) {
                 key={item.id}
                 ref={(element) => { nodeRefs.current[item.id] = element; }}
                 type="button"
-                className={`hp-stage-flow__node${item.kind === "milestone" ? " is-milestone" : ""}${isActive ? " is-active" : ""}${isActive && displayedStep.followup ? " is-followup" : ""}${isReturned ? " has-followup" : ""}${!overview && !visited.has(item.id) ? " is-future" : ""}`}
+                className={`hp-stage-flow__node${item.kind === "milestone" ? " is-milestone" : ""}${isActive ? " is-active" : ""}${isActive && displayedStep.followup ? " is-followup" : ""}${isReturned ? " has-followup" : ""}${!overview && item.kind !== "milestone" && !visited.has(item.id) ? " is-future" : ""}`}
                 style={{ left: `${item.x}%`, top: `${item.y}%` }}
                 aria-label={item.name}
                 aria-current={isActive ? "step" : undefined}
-                onMouseEnter={() => { stopHoverTimer(); setHovered(item.id); }}
+                aria-disabled={item.kind === "milestone" ? true : undefined}
+                tabIndex={item.kind === "milestone" ? -1 : undefined}
+                onMouseEnter={() => { if (item.kind !== "milestone") { stopHoverTimer(); setHovered(item.id); } }}
                 onMouseLeave={hideHoverSoon}
-                onFocus={() => setHovered(item.id)}
+                onFocus={() => { if (item.kind !== "milestone") setHovered(item.id); }}
                 onBlur={hideHoverSoon}
                 onClick={() => {
                   const previous = config.steps.slice(0, unlocked + 1).map((candidate, index) => candidate.node === item.id ? index : -1).filter((index) => index >= 0).at(-1);

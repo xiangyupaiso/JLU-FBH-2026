@@ -12,7 +12,7 @@ export type StakeholderMedia = {
 export const originMedia: StakeholderMedia[] = [
   { portrait: image("yaobohui"), interview: [image("2025-changchun-pharmaceutical-and-healthcare-industry-expo1")] },
   { portrait: image(""), interview: [image("kou")], followup: [image("kou2")] },
-  {},
+  { portrait: image("gongzhong") },
   { portrait: image("jia-lin"), followup: [image("jl1")] },
   { portrait: image("wanglei"), interview: [image("wanglei-cai1")], followup: [image("wanglei-cai2")] },
   { portrait: image("lichengli"), interview: [image("02")] },
@@ -23,6 +23,7 @@ export const stageMedia: Record<string, Record<string, StakeholderMedia>> = {
   plasmid: {
     hu: { portrait: image("hujifan"), interview: [image("hjf1")], followup: [image("hjf2")] },
     niu: { portrait: image("niujinqi"), interview: [image("njq1")] },
+    public: { portrait: image("gongzhong") },
     wang: { portrait: image("wangyishu"), interview: [image("wys1")] },
     guan: { portrait: image("guanqingtian"), interview: [image("gqt1")], followup: [image("gqt2")] },
     wu: { portrait: image("wudi"), interview: [image("wd1")] },
@@ -38,6 +39,7 @@ export const stageMedia: Record<string, Record<string, StakeholderMedia>> = {
     hu: { portrait: image("huzheng"), interview: [image("hz1")] },
     zhang: { portrait: image("zhangyuning"), interview: [image("zyn1")] },
     tianmeng: { portrait: image("suntianmeng"), interview: [image("stm1")] },
+    li: { portrait: image("lizhiman"), interview: [image("lzm1")] },
     song: { portrait: image("songhaiming"), interview: [image("shm1")] },
     cui: { portrait: image("cuijiuwei"), interview: [image("cjw1")], followup: [image("cjw2")] },
     zhao: { portrait: image("zhaotiesuo"), interview: [image("zts1")] },
