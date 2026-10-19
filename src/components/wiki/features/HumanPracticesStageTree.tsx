@@ -1,9 +1,10 @@
-import { useCallback, useEffect, useRef, useState, type ReactNode } from "react";
+import { Fragment, useCallback, useEffect, useRef, useState } from "react";
 import { humanPracticesTreeCopy } from "../../../data/engagement/humanPracticesTreeCopy";
-import { stageMedia } from "../../../data/engagement/humanPracticesAssets";
+import { interviewMediaByCopyKey, stageMedia } from "../../../data/engagement/humanPracticesAssets";
 import { scrollReaderToTarget } from "../../../utils";
 import { HpFlowTooltip } from "./HpFlowTooltip";
 import { HpInterviewPhoto, HpPortrait } from "./HpStakeholderMedia";
+import { linkify } from "../proseInline";
 import "../../../styles/hp-stage-tree.css";
 
 type Variant = "plasmid" | "in-vitro" | "in-vivo" | "return";
@@ -21,13 +22,13 @@ const configs: Record<Variant, FlowConfig> = {
   plasmid: {
     label: "Plasmid Design",
     nodes: [
-      { id: "hu", name: "胡继繁", x: 50, y: 8 },
-      { id: "niu", name: "牛俊奇", x: 22, y: 26 },
-      { id: "public", name: "公众", x: 78, y: 26 },
-      { id: "wang", name: "王医术", x: 50, y: 45 },
-      { id: "guan", name: "管青天", x: 50, y: 63 },
-      { id: "wu", name: "吴迪", x: 22, y: 81 },
-      { id: "meng", name: "孟祥宇", x: 50, y: 93 },
+      { id: "hu", name: "Hu Jifan", x: 50, y: 8 },
+      { id: "niu", name: "Niu Junqi", x: 22, y: 26 },
+      { id: "public", name: "Public", x: 78, y: 26 },
+      { id: "wang", name: "Wang Yishu", x: 50, y: 45 },
+      { id: "guan", name: "Guan Qingtian", x: 50, y: 63 },
+      { id: "wu", name: "Wu Di", x: 22, y: 81 },
+      { id: "meng", name: "Meng Xiangyu", x: 50, y: 93 },
     ],
     edges: [
       { id: "hu-niu", path: "M 50 14 V 18 H 22 V 20" },
@@ -55,12 +56,12 @@ const configs: Record<Variant, FlowConfig> = {
   "in-vitro": {
     label: "In Vitro",
     nodes: [
-      { id: "yang", name: "杨若晗", x: 23, y: 12 },
-      { id: "circular", name: "环化实验完成，但仅凭 RNase R 和凝胶结果无法充分证明成环", x: 75, y: 12, kind: "milestone" },
-      { id: "niu", name: "牛俊奇", x: 23, y: 36 },
-      { id: "jia", name: "贾琳", x: 23, y: 59 },
-      { id: "assays", name: "ELISpot 差异明显，但 K562 杀伤差异较小", x: 75, y: 59, kind: "milestone" },
-      { id: "miao", name: "苗蕾", x: 23, y: 85 },
+      { id: "yang", name: "Yang Ruohan", x: 23, y: 12 },
+      { id: "circular", name: "RNase R and gel data alone cannot confirm circularization", x: 75, y: 12, kind: "milestone" },
+      { id: "niu", name: "Niu Junqi", x: 23, y: 36 },
+      { id: "jia", name: "Jia Lin", x: 23, y: 59 },
+      { id: "assays", name: "ELISpot difference was clear; K562 killing difference was small", x: 75, y: 59, kind: "milestone" },
+      { id: "miao", name: "Miao Lei", x: 23, y: 85 },
     ],
     edges: [
       { id: "yang-circular", path: "M 34 12 H 55" },
@@ -85,50 +86,50 @@ const configs: Record<Variant, FlowConfig> = {
   "in-vivo": {
     label: "In Vivo",
     nodes: [
-      { id: "hu", name: "胡正", x: 50, y: 6 },
-      { id: "zhang", name: "张宇宁", x: 50, y: 22 },
-      { id: "song", name: "宋海明", x: 50, y: 38 },
-      { id: "tianmeng", name: "孙天盟", x: 24, y: 56 },
-      { id: "guangjie", name: "孙广杰", x: 76, y: 56 },
-      { id: "cui", name: "崔久嵬", x: 50, y: 74 },
-      { id: "zhao", name: "赵铁锁", x: 50, y: 92 },
+      { id: "hu", name: "Hu Zheng", x: 50, y: 6 },
+      { id: "zhang", name: "Zhang Yuning", x: 50, y: 22 },
+      { id: "tianmeng", name: "Sun Tianmeng", x: 24, y: 40 },
+      { id: "li", name: "Li Zhiman", x: 76, y: 40 },
+      { id: "cui", name: "Cui Jiuwei", x: 50, y: 58 },
+      { id: "song", name: "Song Haiming", x: 50, y: 75 },
+      { id: "zhao", name: "Zhao Tiesuo", x: 50, y: 92 },
     ],
     edges: [
       { id: "hu-zhang", path: "M 50 12 V 16" },
-      { id: "zhang-song", path: "M 50 28 V 32" },
-      { id: "song-tianmeng", path: "M 50 44 V 48 H 24 V 50" },
-      { id: "song-guangjie", path: "M 50 44 V 48 H 76 V 50" },
-      { id: "tianmeng-cui", path: "M 24 62 V 66 H 50 V 68" },
-      { id: "guangjie-cui", path: "M 76 62 V 66 H 50 V 68" },
-      { id: "cui-zhao", path: "M 50 80 V 86" },
-      { id: "zhao-cui", path: "M 61 92 H 96 V 74 H 61", return: true },
+      { id: "zhang-tianmeng", path: "M 50 28 V 32 H 24 V 34" },
+      { id: "zhang-li", path: "M 50 28 V 32 H 76 V 34" },
+      { id: "tianmeng-cui", path: "M 24 46 V 50 H 50 V 52" },
+      { id: "li-cui", path: "M 76 46 V 50 H 50 V 52" },
+      { id: "cui-song", path: "M 50 64 V 69" },
+      { id: "song-zhao", path: "M 50 81 V 86" },
+      { id: "zhao-cui", path: "M 61 92 H 96 V 58 H 61", return: true },
     ],
     steps: [
       { node: "hu", copyKey: "vivo-1" },
       { node: "zhang", copyKey: "vivo-2", edge: "hu-zhang" },
-      { node: "song", copyKey: "vivo-3", edge: "zhang-song" },
-      { node: "tianmeng", copyKey: "vivo-4", edge: "song-tianmeng" },
-      { node: "guangjie", copyKey: "vivo-5", edge: "song-guangjie" },
-      { node: "cui", copyKey: "vivo-6", edge: "guangjie-cui" },
-      { node: "zhao", copyKey: "vivo-7", edge: "cui-zhao" },
+      { node: "tianmeng", copyKey: "vivo-3", edge: "zhang-tianmeng" },
+      { node: "li", copyKey: "vivo-4", edge: "zhang-li" },
+      { node: "cui", copyKey: "vivo-5", edge: "li-cui" },
+      { node: "song", copyKey: "vivo-6", edge: "cui-song" },
+      { node: "zhao", copyKey: "vivo-7", edge: "song-zhao" },
       { node: "cui", copyKey: "vivo-8", edge: "zhao-cui", followup: true },
     ],
   },
   return: {
     label: "Return",
     nodes: [
-      { id: "survey", name: "质粒构建中的公众问卷调查", x: 50, y: 6, kind: "milestone" },
-      { id: "yang", name: "杨淑娟", x: 25, y: 20 },
-      { id: "hu", name: "胡远超", x: 75, y: 20 },
-      { id: "tian", name: "田润辉", x: 75, y: 34 },
-      { id: "patients", name: "患者", x: 25, y: 34 },
-      { id: "family", name: "患者家属", x: 25, y: 48 },
-      { id: "wang", name: "王建国", x: 75, y: 48 },
+      { id: "survey", name: "Public survey on plasmid design", x: 50, y: 6, kind: "milestone" },
+      { id: "yang", name: "Yang Shujuan", x: 25, y: 20 },
+      { id: "hu", name: "Hu Yuanchao", x: 75, y: 20 },
+      { id: "tian", name: "Tian Runhui", x: 75, y: 34 },
+      { id: "patients", name: "Patients", x: 25, y: 34 },
+      { id: "family", name: "Patients' families", x: 25, y: 48 },
+      { id: "wang", name: "Wang Jianguo", x: 75, y: 48 },
       { id: "jing", name: "Jing Wen", x: 75, y: 62 },
-      { id: "jia", name: "贾永立", x: 25, y: 62 },
-      { id: "qiao", name: "乔君华", x: 25, y: 76 },
-      { id: "companies", name: "吉卡与吉恩致和", x: 75, y: 76 },
-      { id: "yu", name: "于双成", x: 50, y: 91 },
+      { id: "jia", name: "Jia Yongli", x: 25, y: 62 },
+      { id: "qiao", name: "Qiao Junhua", x: 25, y: 76 },
+      { id: "companies", name: "Jilin Jika and Ji’en Zhihe", x: 75, y: 76 },
+      { id: "yu", name: "Yu Shuangcheng", x: 50, y: 91 },
     ],
     edges: [
       { id: "survey-hu", path: "M 50 12 V 14 H 75 V 15" },
@@ -169,14 +170,6 @@ const configs: Record<Variant, FlowConfig> = {
     ],
   },
 };
-
-function inline(text: string): ReactNode {
-  return text.split(/(\*\*[^*]+?\*\*)/g).map((part, index) =>
-    part.startsWith("**") && part.endsWith("**")
-      ? <strong key={index}>{part.slice(2, -2)}</strong>
-      : part,
-  );
-}
 
 function interviewFor(copyKey?: string) {
   return copyKey ? humanPracticesTreeCopy[copyKey] ?? null : null;
@@ -305,7 +298,7 @@ export function HumanPracticesStageTree({ variant }: { variant: Variant }) {
   const displayedStep = showFirst && step.followup && firstStep ? firstStep : step;
   const interview = interviewFor(displayedStep.copyKey);
   const currentMedia = stageMedia[variant]?.[displayedStep.node];
-  const interviewPhotos = displayedStep.followup ? currentMedia?.followup ?? [] : currentMedia?.interview ?? [];
+  const interviewPhotos = interviewMediaByCopyKey[displayedStep.copyKey ?? ""] ?? (displayedStep.followup ? currentMedia?.followup ?? [] : currentMedia?.interview ?? []);
   const firstProseIndex = interview?.paragraphs.findIndex((paragraph) => !paragraph.startsWith("**")) ?? -1;
   const visited = new Set(config.steps.slice(0, unlocked + 1).map((item) => item.node));
   const returned = new Set(config.steps.slice(0, unlocked + 1).filter((item) => item.followup).map((item) => item.node));
@@ -363,7 +356,7 @@ export function HumanPracticesStageTree({ variant }: { variant: Variant }) {
           {hoveredNode && <HpFlowTooltip anchor={nodeRefs.current[hoveredNode.id]} className={`hp-stage-flow__tooltip${overview ? " is-overview" : ""}`} onMouseEnter={stopHoverTimer} onMouseLeave={hideHoverSoon}>
             <strong>{hoveredNode.name}</strong>
             {hoveredInterview && <span>{hoveredInterview.title}</span>}
-            {overview && hoverContext && <p>{inline(hoverContext)}</p>}
+            {overview && hoverContext && <p>{linkify(hoverContext)}</p>}
           </HpFlowTooltip>}
         </div>
         {!overview && <article className={`hp-stage-flow__card${displayedStep.followup ? " is-followup" : ""}`}>
@@ -376,12 +369,12 @@ export function HumanPracticesStageTree({ variant }: { variant: Variant }) {
             </div>}
           </div>
           <div className="hp-stage-flow__card-body" ref={cardRef}>
-            {interview ? interview.paragraphs.map((paragraph, index) => <div className="hp-interview-segment" key={index}>
+            {interview ? interview.paragraphs.map((paragraph, index) => <Fragment key={index}>
               {paragraph.startsWith("**") && paragraph.endsWith("**")
                 ? <h4>{paragraph.slice(2, -2)}</h4>
-                : <p>{inline(paragraph)}</p>}
+                : <p>{linkify(paragraph)}</p>}
               {index === firstProseIndex && interviewPhotos.map((src) => <HpInterviewPhoto key={src} src={src} name={node.name} />)}
-            </div>) : <p>{node.name}</p>}
+            </Fragment>) : <p>{node.name}</p>}
           </div>
         </article>}
         <p className="hp-stage-flow__hint">{overview ? "Hover over a node for context · Scroll to follow the sequence" : "Scroll to continue · Select a visited node to revisit"}</p>

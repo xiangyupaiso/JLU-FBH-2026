@@ -263,8 +263,8 @@ const sectionContents: SectionContent[] = [
           "**Influence**",
           "**Impact**",
           "**Composite weight (1–5)**",
-          "**Weight trend in this phase**",
-          "**Priority for dialogue in this phase**"
+          "**Weight trend in this    phase**<br>",
+          "**Priority for dialogue in    this phase**"
         ],
         "rows": [
           [
@@ -338,19 +338,6 @@ const sectionContents: SectionContent[] = [
         "paragraphs": [
           "Figure 1. Tree diagram of the plasmid design phase"
         ]
-      },
-      {
-        "type": "subheading",
-        "id": "hp-plasmid-design-4",
-        "index": "5.4",
-        "title": "Summary"
-      },
-      {
-        "type": "prose",
-        "paragraphs": [
-          "The end point of the plasmid design phase was not the determination of a single sequence, but a traceable, reviewable molecular design decision system with clearly defined boundaries. We shifted from “which platform should be used to express the antigen” to “circRNA as a systems-engineering optimization platform,” establishing circRNA as the core expression platform through Professor Hu Jifan; from “does the public understand the technology” to “public cognition map and responsible communication,” obtaining genuine feedback on technology cognition through the public questionnaire and pushing Education from advantage promotion toward a three-level explanation framework of “what it is, how it differs from gene editing, and what we currently know and do not know”; from “which target is best” to “what combination of targets can cover more tumor cells,” establishing a multi-target antigen design framework through Professor Wang Yishu; from “which HLA is best” to “an informed trade-off among global coverage, population suitability, and experimental feasibility,” completing the clear positioning of HLA-A*02:01 through Professor Wu Di; from “can AlphaFold 3 rank epitopes” to “what role structure prediction should play in the evidence chain,” positioning pMHC structure analysis as a quality control layer between sequence prediction and experimental validation through two interviews with Professor Guan Qingtian; and through Professor Meng Xiangyu, restructuring CircuForge from a collection of tools into a guided design workflow. The ethical boundaries of safety statements were delineated by Professor Niu Junqi, and the immunological constraints of ADC target reuse were confirmed in the follow-up visit with Professor Hu Jifan.",
-          "Plasmid design provided inputs with consistent background, compliant sources, and clear boundaries for the in vitro experiments, and once again confirmed the principle of responsible innovation: “questions that can be answered with evidence are not answered with slogans; questions without evidence for now are acknowledged as boundaries; and questions that cannot be concluded are not promised in advance.”"
-        ]
       }
     ]
   },
@@ -369,7 +356,7 @@ const sectionContents: SectionContent[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "The core task of the in vitro phase was to convert the molecular design established in the plasmid design phase into experimental evidence that could be prepared, validated, and explained. The Origin and plasmid construction stages had anchored the project as a four-antigen, multi-epitope circRNA therapeutic tumor vaccine against residual disease after surgery for TNBC under the HLA-A*02:01 restriction background, but “a valid sequence design” is not equal to “valid experimental evidence”: how circRNA is stably circularized and quality-controlled, how the human cell source complies with ethical requirements, how many layers of evidence immunogenicity requires, and whether activated effector cells may inadvertently damage normal tissue all need to be answered one by one. Continuing the 3i/CIRC framework, we established an orthogonal circularization verification system of “RNase R-resistant fraction + cross-BSJ detection + Sanger sequencing” through two interviews with Yang Ruohan; through a cross-phase follow-up visit with Professor Niu Junqi, we abandoned volunteer blood collection and switched to commercially available PBMCs with defined HLA-A*02:01 typing, making ethical constraints and experimental variable control hold simultaneously; through two interviews with the academic mentor and researcher Jia Lin, we positioned ELISpot as the first-layer functional screening and clarified the evidence boundary of the K562 killing assay; through Professor Miao Lei, we established an off-target safety window evaluation with HLA matching, multiple tissue origins, and multiple effector ratios. This phase moved CirCure from “vaccine design in the computer” into a truly reviewable experimental system, and decomposed “immune response—killing function—killing the correct target cells—not harming normal tissue” into four non-interchangeable layers of evidence, providing inputs with consistent background, compliant sources, clear quality control, and defined boundaries for the in vivo proof of concept."
+          "The core task of the in vitro phase was to convert the molecular design established in the plasmid design phase into experimental evidence that could be prepared, validated, and explained. The Origin and plasmid construction stages had anchored the project as a four-antigen, multi-epitope circRNA therapeutic tumor vaccine against residual disease after surgery for TNBC under the HLA-A*02:01 restriction background, but “a valid sequence design” is not equal to “valid experimental evidence”: how circRNA is stably circularized and quality-controlled, how the human cell source complies with ethical requirements, how many layers of evidence immunogenicity requires, and whether activated effector cells may inadvertently damage normal tissue all need to be answered one by one. Continuing the 3i/CIRC framework, we established an orthogonal circularization verification system of “RNase R-resistant fraction + cross-BSJ detection + Sanger sequencing” through two interviews with Yang Ruohan; through a cross-phase follow-up visit with Professor Niu Junqi, we abandoned volunteer blood collection and switched to commercially available PBMCs with defined HLA-A*02:01 typing, making ethical constraints and experimental variable control hold simultaneously; Through two interviews with the academic mentor and researcher Jia Lin, we positioned ELISpot as the first-layer functional screening and clarified the evidence boundary of the K562 killing assay; Through Professor Miao Lei, we established an off-target safety window evaluation with HLA matching, multiple tissue origins, and multiple effector ratios. This phase moved CirCure from “vaccine design in the computer” into a truly reviewable experimental system, and decomposed “immune response—killing function—killing the correct target cells—not harming normal tissue” into four non-interchangeable layers of evidence, providing inputs with consistent background, compliant sources, clear quality control, and defined boundaries for the in vivo proof of concept."
         ]
       },
       {
@@ -381,7 +368,7 @@ const sectionContents: SectionContent[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "The core task of the in vitro phase was “functional validation and evidence building.” Unlike the plasmid design phase, whose core concern was “with what molecular design to respond to the established clinical question,” the central concern of this phase shifted to “whether the designed molecular design can be prepared, validated, and explained with clearly defined boundaries at the experimental level.” We therefore prioritized dialogue with academic mentors and researchers, whose experimental experience directly determines the scientific rigor of process quality control, evidence layers, and safety evaluation. The academic mentor and researcher Jia Lin provided professional guidance on immune function validation and result interpretation in this phase, helping us clarify the evidence layers and applicable boundaries of the in vitro readouts. The weight of regulatory and safety bodies rose markedly—once human cells entered the experimental system, participant protection, genetic information management, and compliance of experimental materials became questions that had to be answered first, and Professor Niu Junqi's cross-phase follow-up visit was exactly a reflection of this judgment (he helped delineate the boundaries of safety statements as an academic mentor in the plasmid design phase; in this phase, he was again included in the priority dialogue with the attribute of a regulatory and safety body because of human sample compliance issues). After the public and community completed the technology cognition survey in the plasmid design phase, their weight fell back, and in-depth dialogue was deferred in this phase. Industry partners and the iGEM community had low weight in this phase and were deferred.",
+          "The core task of the in vitro phase was “functional validation and evidence building.” Unlike the plasmid design phase, whose core concern was “with what molecular design to respond to the established clinical question,” the central concern of this phase shifted to “whether the designed molecular design can be prepared, validated, and explained with clearly defined boundaries at the experimental level.” We therefore prioritized dialogue with academic mentors and researchers, whose experimental experience directly determines the scientific rigor of process quality control, evidence layers, and safety evaluation. The academic mentor and researcher Jia Lin provided professional guidance on immune function validation and result interpretation in this phase, helping us clarify the evidence layers and applicable boundaries of the in vitro readouts. The weight of regulatory and safety bodies rose markedly—as soon as the experimental design planned to introduce human cells into the experimental system, participant protection, genetic information management, and compliance of experimental materials became questions that had to be answered in advance, and Professor Niu Junqi's cross-phase follow-up visit was exactly a reflection of this judgment (he helped delineate the boundaries of safety statements as an academic mentor in the plasmid design phase; in this phase, he was again included in the priority dialogue with the attribute of a regulatory and safety body because of human sample compliance issues). After the public and community completed the technology cognition survey in the plasmid design phase, their weight fell back, and in-depth dialogue was deferred in this phase. Industry partners and the iGEM community had low weight in this phase and were deferred.",
           "Table 2. Stakeholder classification in the in vitro phase"
         ]
       },
@@ -393,8 +380,8 @@ const sectionContents: SectionContent[] = [
           "**Influence**",
           "**Impact**",
           "**Composite weight (1–5)**",
-          "**Weight trend in this phase**",
-          "**Priority for dialogue in this phase**"
+          "**Weight trend in this    phase**",
+          "**Priority for dialogue in    this phase**"
         ],
         "rows": [
           [
@@ -469,19 +456,6 @@ const sectionContents: SectionContent[] = [
           "Figure 2. Tree diagram of the in vitro phase",
           "Legend: Nodes on the same horizontal line indicate a parallel relationship; solid arrows indicate a progression relationship—from one interview we obtained something, on the basis of which the next interview indicated by the arrow was conducted; a follow-up visit is indicated by an arrow pointing back, meaning that we returned to the same interviewee with new experimental results or new questions for a second round of validation; dashed arrows indicate the continuation of evidence and principles across phases or nodes (for example, the principle established in the plasmid design phase—“questions that can be answered with evidence are not answered with slogans”—continues into the ethical review of the in vitro experiments) and do not change the progression relationships between nodes; Outlook nodes, shown in dashed boxes, indicate validation directions not yet completed in the current phase. Each edge relationship in the figure has a corresponding textual description in “4. Stakeholder Interviews Under the CIRC Framework.”"
         ]
-      },
-      {
-        "type": "subheading",
-        "id": "hp-in-vitro-4",
-        "index": "6.4",
-        "title": "Summary"
-      },
-      {
-        "type": "prose",
-        "paragraphs": [
-          "The end point of the in vitro experiments was not a ranking of candidate epitopes, but an experimental system that turns “molecular design” into “reviewable evidence.” Through two interviews with Yang Ruohan, we established the orthogonal circularization verification system of “RNase R-resistant fraction + cross-BSJ detection + Sanger sequencing” and proactively removed imprecise expressions such as “circularization efficiency” from the Results and Wiki; through the cross-phase follow-up visit with Professor Niu Junqi, we abandoned volunteer blood collection and switched to commercially available PBMCs with defined HLA-A*02:01 typing, making ethical constraints and experimental variable control hold simultaneously; through two interviews with the academic mentor and researcher Jia Lin, we positioned ELISpot as the first-layer functional screening and K562 as a supplementary readout of overall killing potential, and clarified that “being able to kill” does not equal “killing the right target”; through Professor Miao Lei, we established an off-target safety window evaluation with HLA matching, multiple tissue origins, and multiple effector ratios.",
-          "The four non-interchangeable evidence layers—immune response, killing function, correct killing, and not harming normal tissue—thus took shape. The in vitro experiments provided inputs with consistent background, compliant sources, clear quality control, and defined boundaries for the in vivo proof of concept, and once again confirmed the principle: “questions that can be answered with evidence are not answered with slogans; questions without evidence for now are acknowledged as boundaries; and questions that cannot be concluded are not promised in advance”—every candidate epitope entering the next stage has a clear boundary of what can and cannot be proven about it."
-        ]
       }
     ]
   },
@@ -500,7 +474,7 @@ const sectionContents: SectionContent[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "The core task of the in vivo phase was to answer the questions that in vitro evidence could not: when the complete circRNA-LNP vaccine enters an organism with a complete immune system, can it produce detectable immune changes and reproducible anti-tumor effects? Continuing the 3i/CIRC framework, Professor Hu Zheng narrowed the tumor model from the orthotopic mammary fat pad model to the subcutaneous tumor model; Professor Zhang Yuning defined the delivery system as circRNA + LNP; Professor Song Haiming placed the animal experiments in a strict information flow of “in vitro calibration—prediction lock—in vivo validation”; Professor Sun Tianmeng locked in advance the key comparison of Combined versus empty vector and established an efficacy criterion of TGI ≥ 50%; Mr. Sun Guangjie, applying the 3R principles and the NC3Rs EDA, wrote the sample size, humane endpoints, and bias control into the animal ethics application (approval number JDYY20261369); Dean Cui Jiuwei established the three-layer readout of “tumor phenotype—systemic immunity—tumor-local immunity”; and finally, on the basis of the HLA-A*02:01 and H-2d gap raised by Professor Zhao Tiesuo, we clearly positioned the existing results as the in vivo proof of concept of the multi-epitope circRNA-LNP platform, and placed the HLA-A*02:01 transgenic and humanized mouse validation in the Outlook. In this phase, “animal experiments” shifted from outcome-oriented efficacy demonstration to an evidence step that accepts tests against pre-frozen predictions and matches conclusion strength to model capacity."
+          "The core task of the in vivo phase was to answer the questions that in vitro evidence could not: when the complete circRNA-LNP vaccine enters an organism with a complete immune system, can it produce detectable immune changes and reproducible anti-tumor effects? Continuing the 3i/CIRC framework, Professor Hu Zheng narrowed the tumor model from the orthotopic mammary fat pad model to the subcutaneous tumor model; Professor Zhang Yuning defined the delivery system as circRNA + LNP; Professor Song Haiming placed the animal experiments in a strict information flow of “in vitro calibration—prediction lock—in vivo validation”; Professor Sun Tianmeng locked in advance the key comparison of Combined versus empty vector and established an efficacy criterion of TGI ≥ 50%; Mr. Li Zhiman, applying the 3R principles and the NC3Rs EDA, wrote the sample size, humane endpoints, and bias control into the animal ethics application (approval number JDYY20261369); Dean Cui Jiuwei established the three-layer readout of “tumor phenotype—systemic immunity—tumor-local immunity”; and finally, on the basis of the HLA-A*02:01 and H-2d gap raised by Professor Zhao Tiesuo, we clearly positioned the existing results as the in vivo proof of concept of the multi-epitope circRNA-LNP platform, and placed the HLA-A*02:01 transgenic and humanized mouse validation in the Outlook. In this phase, “animal experiments” shifted from outcome-oriented efficacy demonstration to an evidence step that accepts tests against pre-frozen predictions and matches conclusion strength to model capacity."
         ]
       },
       {
@@ -524,8 +498,8 @@ const sectionContents: SectionContent[] = [
           "**Influence**",
           "**Impact**",
           "**Composite weight (1–5)**",
-          "**Weight trend in this phase**",
-          "**Priority for dialogue in this phase**"
+          "**Weight trend in this    phase**",
+          "**Priority for dialogue in    this phase**"
         ],
         "rows": [
           [
@@ -534,7 +508,7 @@ const sectionContents: SectionContent[] = [
             "Extremely high",
             "High",
             "5.0",
-            "Peak during animal experiment design; clinical evaluation perspective recovering",
+            "Peak during animal experiment design; clinical evaluation perspective   recovering",
             "Yes"
           ],
           [
@@ -599,19 +573,6 @@ const sectionContents: SectionContent[] = [
         "paragraphs": [
           "Figure 3. Tree diagram of the in vivo phase"
         ]
-      },
-      {
-        "type": "subheading",
-        "id": "hp-in-vivo-4",
-        "index": "7.4",
-        "title": "Summary"
-      },
-      {
-        "type": "prose",
-        "paragraphs": [
-          "The end point of the in vivo experiments was not a series of impressive TGI numbers, but an evidence logic in which the strength of the conclusions matches the capacity of the model. We shifted from “which model is closest to real breast cancer” to “which model is most suitable for answering the question we truly need to solve now,” establishing the subcutaneous tumor model; from “which vector has the highest transfection efficiency” to “which is most suitable as CirCure's long-term delivery platform,” defining circRNA + LNP; through Professor Song Haiming, the animal experiments were placed in the strict information flow of “in vitro calibration—prediction lock—in vivo validation”; through Professor Sun Tianmeng, the key comparison and efficacy criterion were locked in advance; through Mr. Sun Guangjie, the sample size, humane endpoints, and bias control were justified with the 3R principles and the EDA, and ethics approval was obtained (JDYY20261369); through Dean Cui Jiuwei, the three-layer readout of “tumor phenotype—systemic immunity—tumor-local immunity” was established; and finally, on the HLA breakpoint raised by Professor Zhao Tiesuo, the existing results were clearly positioned as the in vivo proof of concept of the multi-epitope circRNA-LNP platform—platform-level effects truthfully reported, mechanism-level conclusions with boundaries retained, and the antigen-specific validation with HLA-A*02:01 transgenic and humanized mice entered the Outlook.",
-          "“Animal experiments” thereby shifted from outcome-oriented efficacy demonstration to an evidence step that accepts tests against pre-frozen predictions and makes every animal's data effectively answer the pre-defined questions, continuing the responsible innovation principle of “questions that can be answered with evidence are not answered with slogans; questions without evidence for now are acknowledged as boundaries; and questions that cannot be concluded are not promised in advance.”"
-        ]
       }
     ]
   },
@@ -630,7 +591,7 @@ const sectionContents: SectionContent[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "After completing a full sequence of technical validation—from plasmid construction through in vitro and in vivo experiments—CirCure’s central question shifted from “Is the technology feasible?” to “What must be addressed before it can enter the healthcare system?” Guided by our 3i/CIRC framework, we dynamically rebalanced our stakeholder priorities, shifting the emphasis from academic mentors and researchers toward regulatory and safety stakeholders (including payers) and industry partners. We consulted experts in medical law, risk communication, mental health, patient and family perspectives, public health insurance policy, commercial insurance, industrial translation, and medical humanities education, and proactively conducted follow-up consultations at key stages. The central outcome of this phase was not a “roadmap to market,” but a pathway toward implementation grounded in the evidence available at the time. We clarified which claims our existing evidence could support, what further evidence would be needed, and which decisions would have to wait until the relevant technological, clinical, and institutional conditions had matured. These judgments, in turn, guided and set boundaries for the content of our Wiki, Education activities, and public communication."
+          "With the full experimental framework in place and most of the technical validation completed, CirCure’s central question began to shift from “Is the technology feasible?” to “What must be addressed before it can enter the healthcare system?”Guided by our 3i/CIRC framework, we dynamically rebalanced our stakeholder priorities, shifting the emphasis from academic mentors and researchers toward regulatory and safety stakeholders (including payers) and industry partners. We consulted experts in medical law, risk communication, mental health, patient and family perspectives, public health insurance policy, commercial insurance, industrial translation, and medical humanities education, and proactively conducted follow-up consultations at key stages. The central outcome of this phase was not a “roadmap to market,” but a pathway toward implementation grounded in the evidence available at the time. We clarified which claims our existing evidence could support, what further evidence would be needed, and which decisions would have to wait until the relevant technological, clinical, and institutional conditions had matured. These judgments, in turn, guided and set boundaries for the content of our Wiki, Education activities, and public communication."
         ]
       },
       {
@@ -649,7 +610,7 @@ const sectionContents: SectionContent[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "表1  3i Classification and Weights of the Six Stakeholder Categories in the Return Phase (1–5)"
+          "Table 1  3i Classification and Weights of the Six Stakeholder Categories in the Return Phase (1–5)"
         ]
       },
       {
@@ -665,7 +626,7 @@ const sectionContents: SectionContent[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "图1  Return 阶段利益相关者树状关系图"
+          "Figure 1  Return stakeholder network"
         ]
       },
       {
@@ -679,6 +640,244 @@ const sectionContents: SectionContent[] = [
         "paragraphs": [
           "The Return phase did not produce a premature “roadmap to market” for CirCure. Instead, it established a pathway toward implementation aligned with the evidence available at the time. Medical law helped us define the boundaries of research claims and the chain of responsibilities across different parties; risk communication shifted the purpose of public communication from “persuading people to accept” to “helping them establish a framework for judgment”; patient protection procedures made listening itself a practice governed by defined safeguards; patients and their families expanded our assessment of treatment value from “Does it work?” to “Is it worthwhile, and can patients actually access it?”; public health insurance and commercial insurance clarified the distinctions between “treatment price” and “patients’ actual out-of-pocket expenses,” and between institutional and supplementary payment; and exchanges with four companies helped us distinguish “being able to produce it” from “being able to develop it into a medicine,” while advancing Entrepreneurship from industry consultation to industry engagement. Three proactive follow-up consultations—with Yang Shujuan on Wang Jianguo’s feedback, with Yang Shujuan on Yu Shuangcheng’s feedback, and with Hu Yuanchao on Yu Shuangcheng’s feedback—kept payment discussions, Education content, and risk communication principles aligned within the boundaries of the evidence. Ultimately, the Return phase crystallized a guiding principle: make clear statements where the evidence supports them; where evidence remains insufficient, maintain boundaries, continue dialogue, and remain open to subsequent adjustments. This principle, in turn, guided and constrained our Wiki, Education, and public communication, making “responsible implementation” a design input throughout the project rather than a retrospective report."
         ]
+      }
+    ]
+  },
+  {
+    "id": "hp-collaboration",
+    "navLabel": "Collaboration",
+    "title": "Collaboration",
+    "summary": "",
+    "blocks": [
+      {
+        "type": "prose",
+        "paragraphs": [
+          "For us, meaningful collaboration begins with understanding one another’s stories. **CirCure, our multi-epitope circular RNA vaccine platform for triple-negative breast cancer,** gave us a shared starting point for conversations about cancer vaccine design, synthetic biology, and science communication. By hosting the Northeast China iGEM Meetup and participating in regional, national, and thematic events, we connected with teams across disciplines and regions. These exchanges helped us learn from one another and build relationships that extended beyond individual conversations.",
+          "We organized our collaboration into two complementary strands: **Community** and **Outcomes**. Community brings together the events and conversations where iGEMers exchanged project ideas, offered feedback, and built connections. Outcomes shows how some of those connections developed into collaborations with other iGEM teams, producing shared resources and activities. Together, these strands reflect how a common interest in science can bring teams together and turn exchange into joint work."
+        ]
+      },
+      {
+        "type": "subheading",
+        "id": "hp-collaboration-1",
+        "index": "9.1",
+        "title": "Community"
+      },
+      {
+        "type": "prose",
+        "paragraphs": [
+          "We actively built connections and maintained continuous communication with iGEM teams across China. As the host, we successfully organized the **Northeast China iGEM Meetup**. Meanwhile, we participated in a broad spectrum of community events: Community Day, official HP live courses hosted by iGEM, iGEM Southern China Regional Meeting, East China Regional Meeting, Central-China iGEM Forum, North China iGEM Meetup, CCIC, APIC, SynBio Challenge, and software exchange workshops. At each event, we engaged in in-depth peer discussions, exchanged project insights, and accumulated substantial hands-on experience.",
+          "For our self-hosted Northeast China iGEM Meetup, besides project sharing and peer feedback sessions, we launched a postcard exchange activity called ***Voice of the World***. Every iGEMer wrote blessings for peers and received warm notes from other participants, strengthening emotional bonds within the synthetic biology community. Furthermore, we designed an immersive safety case discussion: **“DDL Crisis: The Qinghe Bacterial Release Incident.”** Participants conducted risk assessment, liability analysis and group deliberations to explore the real-world risks of engineered microorganism release and clarify the safety boundaries of iGEM research, turning abstract biosafety rules into interactive reflection."
+        ]
+      },
+      {
+        "type": "figure",
+        "src": "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/entrepreneurship/northeast.avif",
+        "alt": "Community"
+      },
+      {
+        "type": "prose",
+        "paragraphs": [
+          "At CCIC, we shared our project and exchanged creative ideas with other teams. Our work was well recognized by peers, and we won the **Most Popular Team Award**. Beyond presentation sessions, we ran a *from teams for teams* Unconference. Centered on challenges encountered by newly founded iGEM teams, we gathered collective wisdom and compiled a practical handbook for rookie team development. Our goal is to sustain knowledge inheritance amid annual team turnover, lower the threshold for emerging teams, and contribute to the long-term vitality of the iGEM community."
+        ]
+      },
+      {
+        "type": "figure",
+        "src": "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/entrepreneurship/synbiopunk.avif",
+        "alt": "Community"
+      },
+      {
+        "type": "prose",
+        "paragraphs": [
+          "During the SynBio Challenge, we consulted and learned from multiple professors and experts in synthetic biology, receiving critical suggestions to refine our project. We also joined the SynBio Carnival to carry out informal science outreach with fellow iGEMers. Finally, our team was awarded the **Regular Red Track Gold Medal**."
+        ]
+      },
+      {
+        "type": "figure",
+        "src": "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/ihp/synbio-challenge-4.avif",
+        "alt": "Community"
+      },
+      {
+        "type": "prose",
+        "paragraphs": [
+          "The software exchange workshop brought us a key reflection: predictions generated by our software model can only serve as auxiliary references; final judgment and decision-making still rely on human users."
+        ]
+      },
+      {
+        "type": "figure",
+        "src": "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/ihp/ruanjian-1.avif",
+        "alt": "Community"
+      },
+      {
+        "type": "prose",
+        "paragraphs": [
+          "In other regional and thematic events, we held constructive conversations with scholars and professors in related fields, exchanged project progress and experience with peer teams. Through continuous community engagement, we not only polished our project design and human practices framework but also built lasting friendships across the iGEM community."
+        ]
+      },
+      {
+        "type": "figure",
+        "src": "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/entrepreneurship/east-china.avif",
+        "alt": "Community"
+      },
+      {
+        "type": "figure",
+        "src": "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/entrepreneurship/central.avif",
+        "alt": "Community"
+      },
+      {
+        "type": "figure",
+        "src": "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/entrepreneurship/north.avif",
+        "alt": "Community"
+      },
+      {
+        "type": "figure",
+        "src": "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/entrepreneurship/south.avif",
+        "alt": "Community"
+      },
+      {
+        "type": "figure",
+        "src": "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/entrepreneurship/apic.avif",
+        "alt": "Community"
+      },
+      {
+        "type": "figure",
+        "src": "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/ihp/community-day-1.avif",
+        "alt": "Community"
+      },
+      {
+        "type": "figure",
+        "src": "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/ihp/hpzhiboke.avif",
+        "alt": "Community"
+      },
+      {
+        "type": "subheading",
+        "id": "hp-collaboration-2",
+        "index": "9.2",
+        "title": "Outcomes"
+      },
+      {
+        "type": "heading",
+        "level": 3,
+        "title": "Together with iGEM: Across Villages, From Myths to Facts"
+      },
+      {
+        "type": "prose",
+        "paragraphs": [
+          "*Co-created by 17 iGEM teams across 11 Villages*",
+          "Scientific misconceptions take different forms across fields, from health and agriculture to environmental science and biomanufacturing. To address them where they arise, JLU-FBH launched *Together with iGEM*, inviting teams to draw on their own research experience and identify claims often misunderstood in the Villages they worked in or followed."
+        ]
+      },
+      {
+        "type": "prose",
+        "paragraphs": [
+          "Each team examined a representative misconception, traced it back to reliable sources, and explained what the evidence supports. Rather than treating every claim as simply true or false, the contributions clarified when an idea was misleading, incomplete, or valid only under certain conditions. JLU-FBH then reviewed, edited, and brought the entries together in a shared handbook.",
+          "Together, 17 teams contributed explanations across 11 iGEM Villages, creating a resource that introduces readers to questions spanning multiple areas of synthetic biology. By bringing distinct expertise into one collection, the project turned knowledge developed across individual teams into a shared resource for science communication and education."
+        ]
+      },
+      {
+        "type": "prose",
+        "paragraphs": [
+          "[View document](https://static.igem.wiki/teams/6056/wiki/files/docs/ihp/together-with-igem-english.pdf)",
+          "[View document](https://static.igem.wiki/teams/6056/wiki/files/docs/ihp/together-with-igem-chinese-5.pdf)"
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 3,
+        "title": "From Teams, For Teams: The iGEM Handbook for New Team Building and Knowledge Transfer"
+      },
+      {
+        "type": "prose",
+        "paragraphs": [
+          "*Co-created by five iGEM teams*",
+          "A new iGEM team often faces questions that other teams have already worked through: how to build a team, shape a project, coordinate experiments, approach Human Practices, and bring a Wiki together. Yet the practical lessons behind these decisions can be difficult to pass on once a season ends. To help keep this experience in circulation, JLU-FBH initiated *From Teams, For Teams*, inviting five iGEM teams to share knowledge from the areas they knew best."
+        ]
+      },
+      {
+        "type": "prose",
+        "paragraphs": [
+          "Teams contributed experience in project design, Wet Lab and Dry Lab, Human Practices and education, Wiki and communication, and team management. After cross-team review and integration, these contributions became *The iGEM Handbook for New Team Building and Knowledge Transfer*, accompanied by micro-videos and FAQ resources. Together, these materials turn experience gathered across teams into practical references for those preparing for their own iGEM season.",
+          "Rather than prescribing a single way to participate, the resources preserve approaches, challenges, and lessons learned by the teams themselves. Future iGEMers can consult and adapt them, then add their own experience for the teams that follow. What one team learns this year can become another team’s starting point next year."
+        ]
+      },
+      {
+        "type": "prose",
+        "paragraphs": [
+          "[View document](https://static.igem.wiki/teams/6056/wiki/files/docs/ihp/igem-handbook-decorated-centeredpages-2.pdf)"
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 3,
+        "title": "Collaborative Baduanjin Video"
+      },
+      {
+        "type": "prose",
+        "paragraphs": [
+          "*Co-created by five iGEM teams*",
+          "We wanted collaboration to extend beyond sharing knowledge and into a health activity that people could take part in directly. Building on our earlier work in knowledge development and science communication, JLU-FBH brought five iGEM teams together to create a joint Baduanjin video. Its defined movement sequence, accessible format, and connection to traditional culture made it a fitting way to bring teams together around healthy living."
+        ]
+      },
+      {
+        "type": "prose",
+        "paragraphs": [
+          "Each team was assigned specific movements to record according to shared requirements, while bringing its own identity and communication style to the project. JLU-FBH coordinated task allocation, footage collection, content alignment, and video integration, connecting the teams’ contributions into one complete sequence. Participating teams also used their own communication channels and styles to promote informed exercise and healthy living.",
+          "The result is a joint Baduanjin health promotion video shaped by contributions from all five teams. Each team recorded one part; together, those parts formed a complete activity. Through this shared creation, our collaboration extended from exchanging knowledge to developing a public-facing health activity that connects youth participation, health communication, and traditional culture."
+        ]
+      },
+      {
+        "type": "prose",
+        "paragraphs": [
+          "[Watch video](https://video.igem.org/w/eNWgqQpxvwGY7q7HBPngtb)"
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 3,
+        "title": "A Shared Biosafety Handbook for Anticancer Synthetic Biology"
+      },
+      {
+        "type": "prose",
+        "paragraphs": [
+          "*Initiated by HBUT-China, with 5 iGEM teams represented*",
+          "The five teams brought different synthetic biology approaches to cancer research, from engineered viruses and bacteria to nanomaterials and a circular RNA vaccine platform for triple-negative breast cancer. Their projects differed, but all raised a shared question: how can safety be considered throughout research, from laboratory practice and material handling to project-specific risks and public communication? HBUT-China initiated a joint handbook to bring these perspectives together."
+        ]
+      },
+      {
+        "type": "prose",
+        "paragraphs": [
+          "Each team contributed sections informed by its experience. The handbook covers laboratory procedures and biosafety, ethical norms and research integrity, emergency response, and the prevention of biological contamination. It also examines the safety considerations of the teams’ distinct anticancer approaches. JLU-FBH’s section, for example, addresses TNBC therapy risks, including target-related, delivery-related, immune-related, and long-term risks. HBUT-China coordinated the preface, integration, typesetting, and text review.",
+          "Together, the five teams produced a bilingual resource for project-level safety review, learning, and science communication. It combines shared safety principles with considerations specific to different technologies, so teams can use it to reflect on risks relevant to their own research. The handbook is intended as a reference for research and outreach, rather than an authoritative industry guideline."
+        ]
+      },
+      {
+        "type": "prose",
+        "paragraphs": [
+          "[View document](https://static.igem.wiki/teams/6056/wiki/files/docs/biosafety-manual.pdf)"
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 3,
+        "title": "ICII 2026: Garden of Condensation"
+      },
+      {
+        "type": "prose",
+        "paragraphs": [
+          "*Initiated by NAU-CHINA, with 24 iGEM teams represented*",
+          "ICII 2026 began with a question inspired by NAU-CHINA’s CellApp project: could teams preserve their distinct identities while allowing ideas to meet, exchange, and recombine? NAU-CHINA developed this year’s collaboration around the image of a Chinese garden. In the Garden Atlas, 24 teams present their projects alongside the cultural roots that shape how they understand and communicate their science. Here, culture serves as a way into the science, helping visitors see connections between different projects and the contexts behind them."
+        ]
+      },
+      {
+        "type": "prose",
+        "paragraphs": [
+          "ICII also turned this shared exhibition into a way for teams to learn from one another. Teams were connected through their research fields, technical approaches, open questions, and complementary strengths. JLU-FBH was paired with SUSTech-BIO: CirCure encodes multiple tumor epitopes into a newly engineered circular RNA, while SUSTech-BIO’s ORCA edits existing APOE4 mRNA. Their exchange brought two different approaches to RNA engineering into conversation and let each team reflect on what it could learn from the other.",
+          "The collaboration took shape through the Garden Atlas, paired “Framed View” reflections, and public-facing activities. The website also describes adapting some content into displays for campus, middle-school, and community events, with public feedback collected through the Echo Pavilion. Designed to remain open to new teams and future connections, ICII offers a platform where this year’s exchanges can become a starting point for continued collaboration."
+        ]
+      },
+      {
+        "type": "figure",
+        "src": "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/ihp/icii.avif",
+        "alt": "ICII 2026: Garden of Condensation"
       }
     ]
   },
@@ -757,6 +956,20 @@ export const originInterviewRecords: Array<{ id: string; title: string; blocks: 
       {
         "type": "prose",
         "paragraphs": [
+          "Professor, Vice Dean, Doctoral Supervisor, and Doctor of Medicine. His primary research interests include psychiatric epidemiology and clinical epidemiology.",
+          "He graduated from Bethune Medical University in 2000 with a degree in Preventive Medicine, obtained a master's degree in Epidemiology and Health Statistics from Jilin University in 2005, and earned a PhD in Medical Genomics from Jilin University in 2009. From November 2009 to October 2011, he conducted postdoctoral research at the College of Medicine, University of Saskatchewan, Canada, focusing on social and psychiatric epidemiology."
+        ]
+      },
+      {
+        "type": "prose",
+        "paragraphs": [
+          "He teaches a variety of undergraduate and postgraduate courses, including Epidemiology, Preventive Medicine, Field Survey Techniques, Evidence-Based Medicine, and Data Management and Analysis in Medical Research. Over the past five years, he has led or participated in seven research projects, published more than 40 academic papers, and co-authored four textbooks.",
+          "He also serves as a committee member of the Epidemiology Branch of the Chinese Preventive Medicine Association, a committee member of the Evidence-Based Medicine Committee of the Chinese Medical Doctor Association, a committee member of the Tumor Epidemiology Committee of the Chinese Anti-Cancer Association, and a committee member of the Psychological Rehabilitation Committee of the China Association of Persons with Disabilities. He is also an editorial board member of the Chinese Journal of Epidemiology."
+        ]
+      },
+      {
+        "type": "prose",
+        "paragraphs": [
           "**First Interview**",
           "**Context**"
         ]
@@ -793,7 +1006,7 @@ export const originInterviewRecords: Array<{ id: string; title: string; blocks: 
         "type": "prose",
         "paragraphs": [
           "**Context**",
-          "After clinical discussions with Wang Lei and Cheng Lili, we obtained key feedback. In some resource‑limited regions, follow‑up care for TNBC patients completing standard therapy may be insufficient, complicating surveillance and intervention for postoperative recurrence risk. We began to reassess accessibility constraints for our technical strategy but sought guidance on how to position accessibility within a Global‑Health framework."
+          "After clinical discussions with Wang Lei and Li Chengli, we obtained key feedback. In some resource‑limited regions, follow‑up care for TNBC patients completing standard therapy may be insufficient, complicating surveillance and intervention for postoperative recurrence risk. We began to reassess accessibility constraints for our technical strategy but sought guidance on how to position accessibility within a Global‑Health framework."
         ]
       },
       {
@@ -855,34 +1068,40 @@ export const originInterviewRecords: Array<{ id: string; title: string; blocks: 
         "type": "prose",
         "paragraphs": [
           "These findings reoriented our educational goals. Rather than generic breast‑cancer early‑detection outreach, we prioritised communicating that breast cancer comprises multiple disorders characterised by divergent biological features and treatment pathways. Simultaneously, we recognised our own limitations: although we identified public knowledge gaps, we could not determine which breast‑cancer patient subgroups face the most pressing unmet therapeutic needs. This led us to consult clinical oncologists.",
-          "#### Follow‑up Re‑interview"
+          "[View document](https://static.igem.wiki/teams/6056/wiki/files/docs/ihp/breast-cancer-public-awareness-and-health-education-survey-english.pdf)"
         ]
       },
       {
         "type": "prose",
         "paragraphs": [
-          "**Context**",
-          "Following interviews with Director Tian Runhui, we identified a blind spot in our initial educational design. Our original plan aimed to remedy public ignorance of breast‑cancer subtypes by filling knowledge deficits. Director Tian highlighted that for patients, more information is not always better: patients require accurate, clear, non‑alarmist information delivered at appropriate clinical time points."
+          "**Follow‑up Re‑interview**",
+          "**Context**"
         ]
       },
       {
         "type": "prose",
         "paragraphs": [
-          "**Issue**",
-          "We returned to survey respondents to confirm whether our revised educational framework—shifting from generic breast‑cancer outreach toward subtype‑awareness and patient‑friendly risk communication—genuinely addresses public and patient demands."
+          "Following interviews with Director Tian Runhui, we identified a blind spot in our initial educational design. Our original plan aimed to remedy public ignorance of breast‑cancer subtypes by filling knowledge deficits. Director Tian highlighted that for patients, more information is not always better: patients require accurate, clear, non‑alarmist information delivered at appropriate clinical time points.",
+          "**Issue**"
         ]
       },
       {
         "type": "prose",
         "paragraphs": [
-          "**Reframing**",
-          "Participant feedback affirmed the value of this revised direction and underscored the importance of information‑delivery style. Concise, phased communication avoiding fear‑driven messaging outperforms exhaustive yet distressing knowledge transfer. One participant commented: “If I were told all potential recurrence risks upfront, I would feel more frightened than informed.”"
+          "We returned to survey respondents to confirm whether our revised educational framework—shifting from generic breast‑cancer outreach toward subtype‑awareness and patient‑friendly risk communication—genuinely addresses public and patient demands.",
+          "**Reframing**"
         ]
       },
       {
         "type": "prose",
         "paragraphs": [
-          "**Cycle**",
+          "Participant feedback affirmed the value of this revised direction and underscored the importance of information‑delivery style. Concise, phased communication avoiding fear‑driven messaging outperforms exhaustive yet distressing knowledge transfer. One participant commented: “If I were told all potential recurrence risks upfront, I would feel more frightened than informed.”",
+          "**Cycle**"
+        ]
+      },
+      {
+        "type": "prose",
+        "paragraphs": [
           "Feedback established core design principles for educational materials: patient‑centred phased delivery and avoidance of fear‑based narratives. Educational objectives prioritise appropriately‑timed, tolerable, accurate information over maximising total knowledge volume."
         ]
       }
@@ -895,63 +1114,69 @@ export const originInterviewRecords: Array<{ id: string; title: string; blocks: 
       {
         "type": "prose",
         "paragraphs": [
-          "**First Interview**",
-          "**Context**"
-        ]
-      },
-      {
-        "type": "prose",
-        "paragraphs": [
-          "After completing our breast‑cancer public‑awareness survey, we confirmed substantial public misunderstanding of breast‑cancer heterogeneity. Still, we required front‑line clinical insight: which breast‑cancer patient subgroups have the most urgent unmet therapeutic needs? Under the 3i framework, end‑users and beneficiaries score highly across Interest, Influence and Impact dimensions. Clinicians directly shape target‑patient selection, and their patients constitute our ultimate beneficiaries. Equipped with background knowledge of Luminal, HER2‑positive and triple‑negative breast cancer (TNBC), we consulted Dr Jia Lin.",
-          "**Issue**"
-        ]
-      },
-      {
-        "type": "prose",
-        "paragraphs": [
-          "Luminal breast cancer receives endocrine therapy and HER2‑positive disease receives targeted therapy. TNBC lacks canonical therapeutic targets — yet does target deficiency alone imply the greatest unmet need? Or do other subtypes with mature therapeutic systems still present unresolved recurrence challenges? We sought differentiated clinical judgement.",
-          "**Reframing**"
-        ]
-      },
-      {
-        "type": "prose",
-        "paragraphs": [
-          "Drawing on clinical experience, Dr Jia Lin compared therapeutic characteristics across breast‑cancer subtypes. Unlike malignancies expressing oestrogen receptor (ER), progesterone receptor (PR) or HER2, TNBC lacks these three classic therapeutic targets and therefore cannot benefit from standard endocrine or HER2‑targeted therapies. Furthermore, TNBC displays prominent intratumoural heterogeneity; some patients experience rapid disease progression and elevated early‑recurrence risk. From a clinical perspective, we learned that unmet clinical needs are unevenly distributed across breast‑cancer patient populations. Our target disease was thereby narrowed to triple‑negative breast cancer (TNBC).",
-          "**Cycle**"
-        ]
-      },
-      {
-        "type": "prose",
-        "paragraphs": [
-          "Dr Jia Lin’s feedback extended beyond selecting TNBC as our focus. She emphasised substantial heterogeneity within TNBC itself: to deliver clinically meaningful outcomes, our project must further define which TNBC patient subsets most urgently require novel interventions. This prompted subsequent interviews with Wang Lei and Cheng Lili.",
-          "**Follow‑up Re‑interview**"
+          "Jia Lin serves as a committee member of the Breast Cancer Specialty Committee of the China Association of Gerontology and Geriatrics; a committee member of the Tumor Microecology Expert Collaboration Group of the Oncology Nutrition Committee of the Chinese Anti-Cancer Association; a committee member of the Oncology Immunotherapy Committee of the Beijing Breast Disease Prevention and Treatment Association; and a committee member of the Oncology Immunotherapy Committee of the Beijing Chronic Disease Prevention and Health Education Research Association.",
+          "**First Interview**"
         ]
       },
       {
         "type": "prose",
         "paragraphs": [
           "**Context**",
-          "Director Tian Runhui supplied new constraints for technical‑route design: minimising treatment burden, ensuring mechanistic comprehensibility, and avoiding frequent long‑term complex interventions. We returned to Dr Jia Lin to verify the practicality of these constraints within TNBC clinical workflows."
+          "After completing our breast‑cancer public‑awareness survey, we confirmed substantial public misunderstanding of breast‑cancer heterogeneity. Still, we required front‑line clinical insight: which breast‑cancer patient subgroups have the most urgent unmet therapeutic needs? Under the 3i framework, end‑users and beneficiaries score highly across Interest, Influence and Impact dimensions. Clinicians directly shape target‑patient selection, and their patients constitute our ultimate beneficiaries. Equipped with background knowledge of Luminal, HER2‑positive and triple‑negative breast cancer (TNBC), we consulted Dr Jia Lin."
         ]
       },
       {
         "type": "prose",
         "paragraphs": [
           "**Issue**",
-          "We presented our revised candidate therapeutic strategy: a therapeutic tumour vaccine designed to train patients’ endogenous immune systems to recognise tumour cells rather than directly kill tumour tissue. We asked whether this “immune‑training” mechanism is clinically plausible for TNBC and whether patients could reasonably comprehend its mode of action."
+          "Luminal breast cancer receives endocrine therapy and HER2‑positive disease receives targeted therapy. TNBC lacks canonical therapeutic targets — yet does target deficiency alone imply the greatest unmet need? Or do other subtypes with mature therapeutic systems still present unresolved recurrence challenges? We sought differentiated clinical judgement."
         ]
       },
       {
         "type": "prose",
         "paragraphs": [
           "**Reframing**",
-          "Dr Jia Lin endorsed the theoretical rationale for therapeutic tumour vaccines to prevent recurrence among TNBC patients with residual lesions after neoadjuvant therapy and surgery. Clinicians urgently need interventions that deliver sustained protective effects for high‑risk patients after completing standard curative treatment. She also cautioned that explaining “immune‑training” mechanisms to patients proves more challenging than describing direct tumour‑cytotoxic modalities, necessitating supporting patient‑communication strategies."
+          "Drawing on clinical experience, Dr Jia Lin compared therapeutic characteristics across breast‑cancer subtypes. Unlike malignancies expressing oestrogen receptor (ER), progesterone receptor (PR) or HER2, TNBC lacks these three classic therapeutic targets and therefore cannot benefit from standard endocrine or HER2‑targeted therapies. Furthermore, TNBC displays prominent intratumoural heterogeneity; some patients experience rapid disease progression and elevated early‑recurrence risk. From a clinical perspective, we learned that unmet clinical needs are unevenly distributed across breast‑cancer patient populations. Our target disease was thereby narrowed to triple‑negative breast cancer (TNBC)."
         ]
       },
       {
         "type": "prose",
         "paragraphs": [
           "**Cycle**",
+          "Dr Jia Lin’s feedback extended beyond selecting TNBC as our focus. She emphasised substantial heterogeneity within TNBC itself: to deliver clinically meaningful outcomes, our project must further define which TNBC patient subsets most urgently require novel interventions. This prompted subsequent interviews with Wang Lei and Li Chengli."
+        ]
+      },
+      {
+        "type": "prose",
+        "paragraphs": [
+          "**Follow‑up Re‑interview**",
+          "**Context**"
+        ]
+      },
+      {
+        "type": "prose",
+        "paragraphs": [
+          "Director Tian Runhui supplied new constraints for technical‑route design: minimising treatment burden, ensuring mechanistic comprehensibility, and avoiding frequent long‑term complex interventions. We returned to Dr Jia Lin to verify the practicality of these constraints within TNBC clinical workflows.",
+          "**Issue**"
+        ]
+      },
+      {
+        "type": "prose",
+        "paragraphs": [
+          "We presented our revised candidate therapeutic strategy: a therapeutic tumour vaccine designed to train patients’ endogenous immune systems to recognise tumour cells rather than directly kill tumour tissue. We asked whether this “immune‑training” mechanism is clinically plausible for TNBC and whether patients could reasonably comprehend its mode of action.",
+          "**Reframing**"
+        ]
+      },
+      {
+        "type": "prose",
+        "paragraphs": [
+          "Dr Jia Lin endorsed the theoretical rationale for therapeutic tumour vaccines to prevent recurrence among TNBC patients with residual lesions after neoadjuvant therapy and surgery. Clinicians urgently need interventions that deliver sustained protective effects for high‑risk patients after completing standard curative treatment. She also cautioned that explaining “immune‑training” mechanisms to patients proves more challenging than describing direct tumour‑cytotoxic modalities, necessitating supporting patient‑communication strategies.",
+          "**Cycle**"
+        ]
+      },
+      {
+        "type": "prose",
+        "paragraphs": [
           "This feedback emphasised that therapeutics lacking patient‑comprehensible mechanisms face barriers to real‑world clinical adoption. Scientific feasibility and mechanistic interpretability became inseparable criteria for technical selection. Given remaining questions around intratumoural TNBC heterogeneity, we pursued cross‑validation across diverse clinical settings."
         ]
       }
@@ -964,63 +1189,69 @@ export const originInterviewRecords: Array<{ id: string; title: string; blocks: 
       {
         "type": "prose",
         "paragraphs": [
-          "**First Interview**",
-          "**Context**"
-        ]
-      },
-      {
-        "type": "prose",
-        "paragraphs": [
-          "Dr Jia Lin’s observation regarding intratumoural TNBC heterogeneity raised new questions: TNBC patients differ widely in disease stage, prior treatment history, therapeutic response and subsequent recurrence risk. Guided by the 3i framework (with persistently high weight for end‑users and beneficiaries), we sought to refine our target patient population using real‑world clinical practice.",
-          "**Issue**"
-        ]
-      },
-      {
-        "type": "prose",
-        "paragraphs": [
-          "Our prior understanding framed TNBC’s core challenge as target deficiency and aggressive tumour biology. We asked: are these the most intractable clinical problems, or do the greatest clinical difficulties emerge after patients complete primary treatment?",
-          "**Reframing**"
-        ]
-      },
-      {
-        "type": "prose",
-        "paragraphs": [
-          "Dr Wang Lei shifted our focus from disease classification to post‑treatment patient status. For TNBC, clinical challenges extend beyond successful surgical resection. Many patients remain at substantial recurrence risk even after curative‑intent neoadjuvant therapy and surgery, especially those with residual invasive disease following neoadjuvant treatment.",
-          "**Cycle**"
-        ]
-      },
-      {
-        "type": "prose",
-        "paragraphs": [
-          "Recurrence prevention became the central priority shaping project design. We reviewed prognostic datasets for TNBC patients with residual lesions after neoadjuvant therapy and surgery, refining our clinical scenario: what interventions can benefit patients who have completed standard therapy yet retain elevated recurrence risk?",
-          "**Follow‑up Re‑interview**"
+          "Wang Lei, a physician in the Department of Medical Oncology, Cancer Center of the First Bethune Hospital of Jilin University. He specializes in standardized systemic therapy for breast cancer, and diagnoses and treats benign and malignant thyroid and gastrointestinal tumors. He participates in clinical research related to breast cancer and focuses on clinical challenges in breast cancer management.",
+          "**First Interview**"
         ]
       },
       {
         "type": "prose",
         "paragraphs": [
           "**Context**",
-          "After Director Tian Runhui’s input on patient psychological constraints, we returned to Dr Wang Lei to validate the real‑world importance of minimising treatment burden and ensuring mechanistic clarity in postoperative TNBC management."
+          "Dr Jia Lin’s observation regarding intratumoural TNBC heterogeneity raised new questions: TNBC patients differ widely in disease stage, prior treatment history, therapeutic response and subsequent recurrence risk. Guided by the 3i framework (with persistently high weight for end‑users and beneficiaries), we sought to refine our target patient population using real‑world clinical practice."
         ]
       },
       {
         "type": "prose",
         "paragraphs": [
           "**Issue**",
-          "How strongly do TNBC patients demand reduced treatment burden in routine postoperative care? Would patient adherence decline for novel interventions requiring frequent long‑term drug administration?"
+          "Our prior understanding framed TNBC’s core challenge as target deficiency and aggressive tumour biology. We asked: are these the most intractable clinical problems, or do the greatest clinical difficulties emerge after patients complete primary treatment?"
         ]
       },
       {
         "type": "prose",
         "paragraphs": [
           "**Reframing**",
-          "Dr Wang Lei confirmed the clinical relevance of these constraints. Many TNBC patients endure months of neoadjuvant chemotherapy and surgery, accruing substantial physical and psychological strain. Postoperative therapies requiring repeated hospital visits for prolonged periods risk drastically reduced patient adherence. Interventions that require only one or a few administrations yet confer durable protection offer major advantages for patient acceptability."
+          "Dr Wang Lei shifted our focus from disease classification to post‑treatment patient status. For TNBC, clinical challenges extend beyond successful surgical resection. Many patients remain at substantial recurrence risk even after curative‑intent neoadjuvant therapy and surgery, especially those with residual invasive disease following neoadjuvant treatment."
         ]
       },
       {
         "type": "prose",
         "paragraphs": [
           "**Cycle**",
+          "Recurrence prevention became the central priority shaping project design. We reviewed prognostic datasets for TNBC patients with residual lesions after neoadjuvant therapy and surgery, refining our clinical scenario: what interventions can benefit patients who have completed standard therapy yet retain elevated recurrence risk?"
+        ]
+      },
+      {
+        "type": "prose",
+        "paragraphs": [
+          "**Follow‑up Re‑interview**",
+          "**Context**"
+        ]
+      },
+      {
+        "type": "prose",
+        "paragraphs": [
+          "After Director Tian Runhui’s input on patient psychological constraints, we returned to Dr Wang Lei to validate the real‑world importance of minimising treatment burden and ensuring mechanistic clarity in postoperative TNBC management.",
+          "**Issue**"
+        ]
+      },
+      {
+        "type": "prose",
+        "paragraphs": [
+          "How strongly do TNBC patients demand reduced treatment burden in routine postoperative care? Would patient adherence decline for novel interventions requiring frequent long‑term drug administration?",
+          "**Reframing**"
+        ]
+      },
+      {
+        "type": "prose",
+        "paragraphs": [
+          "Dr Wang Lei confirmed the clinical relevance of these constraints. Many TNBC patients endure months of neoadjuvant chemotherapy and surgery, accruing substantial physical and psychological strain. Postoperative therapies requiring repeated hospital visits for prolonged periods risk drastically reduced patient adherence. Interventions that require only one or a few administrations yet confer durable protection offer major advantages for patient acceptability.",
+          "**Cycle**"
+        ]
+      },
+      {
+        "type": "prose",
+        "paragraphs": [
           "Mode of administration emerged as a critical variable for technical‑route selection. Therapeutic tumour vaccines, which can elicit persistent immunological memory, meet the requirement for infrequent dosing. Next, we tested this candidate strategy against clinical practice in resource‑diverse settings."
         ]
       }
@@ -1028,33 +1259,39 @@ export const originInterviewRecords: Array<{ id: string; title: string; blocks: 
   },
   {
     "id": "hp-origin-interview-6",
-    "title": "End‑Users and Beneficiaries: Lili Cheng, Oncologist practising in Southern China",
+    "title": "End‑Users and Beneficiaries: Li Chengli, Oncologist practising in Southern China",
     "blocks": [
       {
         "type": "prose",
         "paragraphs": [
-          "**Context**",
-          "After defining our focus as recurrence prevention for postoperative residual TNBC lesions through discussions with Dr Wang Lei, we noted that his clinical experience derived primarily from large northern tertiary hospitals. Clinical workflows may differ geographically. Guided by the 3i framework, we recognised the need to subdivide end‑users and beneficiaries: clinicians working under divergent resource conditions deliver complementary perspectives."
+          "A clinician experienced in cancer care and treatment decision-making, offering insight into the needs of patients at different stages of TNBC.",
+          "**Context**"
         ]
       },
       {
         "type": "prose",
         "paragraphs": [
-          "**Issue**",
-          "Do systematic differences exist in TNBC patient treatment trajectories and prognoses across healthcare settings with disparate resource availability? If so, what implications does this have for our technical‑route selection?"
+          "After defining our focus as recurrence prevention for postoperative residual TNBC lesions through discussions with Dr Wang Lei, we noted that his clinical experience derived primarily from large northern tertiary hospitals. Clinical workflows may differ geographically. Guided by the 3i framework, we recognised the need to subdivide end‑users and beneficiaries: clinicians working under divergent resource conditions deliver complementary perspectives.",
+          "**Issue**"
         ]
       },
       {
         "type": "prose",
         "paragraphs": [
-          "**Reframing**",
-          "Dr Cheng Lili, drawing on clinical practice in Southern China, corroborated Dr Wang Lei’s observations about patients with residual lesions after neoadjuvant therapy. She added critical context: in certain resource‑limited regions, inadequate follow‑up surveillance for patients completing standard treatment impedes monitoring and timely intervention for postoperative recurrence risk."
+          "Do systematic differences exist in TNBC patient treatment trajectories and prognoses across healthcare settings with disparate resource availability? If so, what implications does this have for our technical‑route selection?",
+          "**Reframing**"
         ]
       },
       {
         "type": "prose",
         "paragraphs": [
-          "**Cycle**",
+          "Dr Li Chengli, drawing on clinical practice in Southern China, corroborated Dr Wang Lei’s observations about patients with residual lesions after neoadjuvant therapy. She added critical context: in certain resource‑limited regions, inadequate follow‑up surveillance for patients completing standard treatment impedes monitoring and timely intervention for postoperative recurrence risk.",
+          "**Cycle**"
+        ]
+      },
+      {
+        "type": "prose",
+        "paragraphs": [
           "We developed a clear understanding of real‑world accessibility challenges: interventions confined to large tertiary medical centres deliver limited benefit to the most vulnerable, high‑need patient groups. Accessibility moved from a secondary consideration to a foundational design requirement. We consulted Professor Kou Changgui to confirm this positioning within a Global‑Health framework."
         ]
       }
@@ -1067,28 +1304,41 @@ export const originInterviewRecords: Array<{ id: string; title: string; blocks: 
       {
         "type": "prose",
         "paragraphs": [
-          "**Context**",
-          "After narrowing our clinical focus, we explored potential technical strategies. Reviewing prior public surveys and clinical interviews revealed that patient experiences extend beyond biological pathology. Drs Wang Lei and Cheng Lili both noted persistent recurrence‑related anxiety after primary treatment completion, yet we lacked systematic understanding of associated psychological mechanisms. The 3i framework prompted us to include stakeholders with high Impact even if their Influence had been previously under‑appreciated—such as mental‑health specialists."
+          "Tian Runhui is a counselor at the Psychological Quality Development Base of the Central Campus of Jilin University Student Mental Health Guidance Center. He is also Director of the Department of Mental Health at the First Hospital of Jilin University, Director of the Teaching and Research Division of Psychiatry and Medical Psychology, Associate Professor, Associate Chief Physician, and Master's Supervisor.",
+          "He serves as a committee member of the Psychosomatic Medicine Committee of the Chinese Medical Doctor Association, a youth committee member of the Behavioral Medicine Branch of the Chinese Medical Association, a specially appointed expert for the Chinese Youth Healthy Personality Development Program, Deputy Director of the Northeast OCD Treatment Alliance, and a council member of both the Jilin Provincial Mental Health Association and the Jilin Provincial Psychological Society."
         ]
       },
       {
         "type": "prose",
         "paragraphs": [
-          "**Issue**",
-          "Can a therapy truly be “patient‑centred” if it optimises only therapeutic efficacy while disregarding patients’ psychological experience and treatment burden? Does tension exist between maximising tumour cytotoxicity and preserving patients’ treatment tolerability?"
+          "He specializes in addressing psychological and personal development issues through psychotherapy approaches such as psychoanalysis, cognitive behavioral therapy, and individual and group psychotherapy.",
+          "**Context**"
         ]
       },
       {
         "type": "prose",
         "paragraphs": [
-          "**Reframing**",
-          "Director Tian Runhui illustrated that patients cope not only with tumour pathology but also with persistent diagnostic uncertainty. For many oncology patients, completion of primary treatment does not resolve psychological distress. Regular re‑examinations, long‑term follow‑up and fear of disease relapse maintain a state of persistent apprehension. Therefore, patient‑centred therapeutic development cannot prioritise tumour‑killing efficacy in isolation. Additional evaluation metrics include: the incremental physical burden imposed by treatment; the need for frequent, complex long‑term interventions; the comprehensibility of therapeutic mechanisms for patients; and clarity about therapeutic purpose and subsequent disease‑management pathways."
+          "After narrowing our clinical focus, we explored potential technical strategies. Reviewing prior public surveys and clinical interviews revealed that patient experiences extend beyond biological pathology. Drs Wang Lei and Li Chengli both noted persistent recurrence‑related anxiety after primary treatment completion, yet we lacked systematic understanding of associated psychological mechanisms. The 3i framework prompted us to include stakeholders with high Impact even if their Influence had been previously under‑appreciated—such as mental‑health specialists.",
+          "**Issue**"
         ]
       },
       {
         "type": "prose",
         "paragraphs": [
-          "**Cycle**",
+          "Can a therapy truly be “patient‑centred” if it optimises only therapeutic efficacy while disregarding patients’ psychological experience and treatment burden? Does tension exist between maximising tumour cytotoxicity and preserving patients’ treatment tolerability?",
+          "**Reframing**"
+        ]
+      },
+      {
+        "type": "prose",
+        "paragraphs": [
+          "Director Tian Runhui illustrated that patients cope not only with tumour pathology but also with persistent diagnostic uncertainty. For many oncology patients, completion of primary treatment does not resolve psychological distress. Regular re‑examinations, long‑term follow‑up and fear of disease relapse maintain a state of persistent apprehension. Therefore, patient‑centred therapeutic development cannot prioritise tumour‑killing efficacy in isolation. Additional evaluation metrics include: the incremental physical burden imposed by treatment; the need for frequent, complex long‑term interventions; the comprehensibility of therapeutic mechanisms for patients; and clarity about therapeutic purpose and subsequent disease‑management pathways.",
+          "**Cycle**"
+        ]
+      },
+      {
+        "type": "prose",
+        "paragraphs": [
           "Director Tian’s insights introduced a patient‑centric dimension previously missing from our technical‑selection criteria. Educational outreach expanded from pure disease‑knowledge dissemination to patient‑friendly risk communication. We conducted three rounds of follow‑up validation: confirming clinical feasibility of “minimised burden and mechanistic clarity” with Drs Jia Lin and Wang Lei, and verifying revised educational‑outreach efficacy with members of the public. This closed the iterative loop spanning clinical stakeholders and community participants. Given their capacity to deliver sustained immune protection with limited dosing frequency, therapeutic tumour vaccines emerged as a promising candidate satisfying both clinical‑efficacy and patient‑acceptability requirements. We then compared alternative intervention modalities, including chemotherapy, monoclonal antibodies, immune‑checkpoint inhibitors, cell‑based therapies, and therapeutic tumour vaccines."
         ]
       }

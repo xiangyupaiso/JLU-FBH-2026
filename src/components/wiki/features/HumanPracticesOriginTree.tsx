@@ -1,12 +1,13 @@
-import { useCallback, useEffect, useRef, useState, type ReactNode } from "react";
+import { Fragment, useCallback, useEffect, useRef, useState } from "react";
 import { originInterviewRecords } from "../../../data/engagement/humanPracticesCopy";
 import { originMedia } from "../../../data/engagement/humanPracticesAssets";
 import { scrollReaderToTarget } from "../../../utils";
 import { HpFlowTooltip } from "./HpFlowTooltip";
 import { HpInterviewPhoto, HpPortrait } from "./HpStakeholderMedia";
+import { linkify } from "../proseInline";
 import "../../../styles/hp-origin-tree.css";
 
-const names = ["药博会", "寇长贵", "公众", "贾琳", "王磊", "李成丽", "田润辉"];
+const names = ["Pharmaceutical Expo", "Kou Changgui", "Public", "Jia Lin", "Wang Lei", "Li Chengli", "Tian Runhui"];
 const basePoints = [
   { x: 50, y: 4 }, { x: 50, y: 22 }, { x: 50, y: 40 },
   { x: 50, y: 58 }, { x: 26, y: 76 }, { x: 74, y: 76 },
@@ -52,18 +53,10 @@ const introReturnPaths = [
 type Point = { x: number; y: number };
 
 function connector(a: Point, b: Point) {
-  const startY = a.y + 5.8;
-  const endY = b.y - 6.4;
+  const startY = a.y + 7.2;
+  const endY = b.y - 7.2;
   const mid = (startY + endY) / 2;
   return `M ${a.x} ${startY} C ${a.x} ${mid}, ${b.x} ${mid}, ${b.x} ${endY}`;
-}
-
-function inline(text: string): ReactNode {
-  return text.split(/(\*\*[^*]+?\*\*)/g).map((part, index) =>
-    part.startsWith("**") && part.endsWith("**")
-      ? <strong key={index}>{part.slice(2, -2)}</strong>
-      : part,
-  );
 }
 
 function interviewContext(index: number) {
@@ -439,10 +432,10 @@ export function HumanPracticesOriginTree() {
           <div className="hp-origin-flow__card-body">
             {visibleParagraphs.map((paragraph, paragraphIndex) => {
               const label = paragraph.match(/^\*\*(.+)\*\*$/);
-              return <div className="hp-interview-segment" key={paragraphIndex}>
-                {label ? <h4>{label[1]}</h4> : <p>{inline(paragraph)}</p>}
+              return <Fragment key={paragraphIndex}>
+                {label ? <h4>{label[1]}</h4> : <p>{linkify(paragraph)}</p>}
                 {paragraphIndex === firstProseIndex && interviewPhotos.map((src) => <HpInterviewPhoto key={src} src={src} name={names[currentStep.person]} />)}
-              </div>;
+              </Fragment>;
             })}
           </div>
         </div>

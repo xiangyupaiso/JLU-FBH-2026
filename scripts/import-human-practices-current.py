@@ -17,6 +17,8 @@ def clean(s):
     # The new interview heading and body identify Professor Kou; an Expo
     # cross-reference still carries the superseded name from the old diagram.
     return (unescape.sub(r"\1", s.strip())
+            .replace("表1  3i", "Table 1  3i")
+            .replace("图1  Return 阶段利益相关者树状关系图", "Figure 1  Return stakeholder network")
             .replace("** CIRC **", "**CIRC**")
             .replace("we used**", "we used **")
             .replace("conviction:**", "conviction: **")
@@ -46,7 +48,23 @@ def prose(lines):
             if current:
                 parts.append(" ".join(current))
                 current = []
-        elif value == "表格Stakeholder Communication Strategy Matrix for iGEM" or "to be inserted here" in value.lower():
+        elif value == "表格Stakeholder Communication Strategy Matrix for iGEM" or "to be inserted here" in value.lower() or value == "刘雅文改成寇长贵":
+            continue
+        elif value.startswith("#### "):
+            if current:
+                parts.append(" ".join(current))
+                current = []
+            parts.append(f"**{value[5:]}**")
+        elif value.startswith("https://"):
+            if current:
+                parts.append(" ".join(current))
+                current = []
+            if value.lower().endswith(".pdf"):
+                parts.append(f"[View document]({value})")
+            elif value.startswith("https://video.igem.org/"):
+                parts.append(f"[Watch video]({value})")
+            # Interview photographs are placed beside their matching cards.
+        elif value.startswith("!["):
             continue
         elif value in {"Context", "Issue", "Reframing", "Cycle"} or re.fullmatch(r"\*\*(Context|Issue|Reframing|Cycle)\*\*", value):
             if current:
@@ -66,6 +84,7 @@ def prose(lines):
 def article(body, section_id, section_no, feature=None):
     blocks, pending, table = [], [], None
     sub_no, inserted = 0, False
+    current_heading = section_id.removeprefix("hp-").replace("-", " ").title()
 
     def flush():
         nonlocal table
@@ -82,6 +101,7 @@ def article(body, section_id, section_no, feature=None):
         if heading:
             flush()
             title = re.sub(r"^(?:[IVX]+\.|[一二三四五六]+、)\s*", "", clean(heading.group(2)).strip("*"))
+            current_heading = title
             if len(heading.group(1)) == 2:
                 sub_no += 1
                 blocks.append({"type": "subheading", "id": f"{section_id}-{sub_no}", "index": f"{section_no}.{sub_no}", "title": title})
@@ -92,6 +112,10 @@ def article(body, section_id, section_no, feature=None):
             if feature and not inserted:
                 blocks.append({"type": "feature", "key": feature})
                 inserted = True
+        elif line.startswith("https://") and line.lower().endswith((".avif", ".webp")):
+            flush()
+            if section_id == "hp-collaboration":
+                blocks.append({"type": "figure", "src": line, "alt": current_heading})
         elif line.startswith("|") and line.endswith("|"):
             if re.match(r"^\|[-:| ]+\|$", line) or not any(clean(c) for c in line.strip("|").split("|")):
                 continue
@@ -132,7 +156,8 @@ sections.append({"id": "hp-project", "navLabel": "Project", "title": "Project", 
 for name, feature in [("Plasmid Design", "hp-plasmid-tree"), ("In Vitro", "hp-in-vitro-tree"),
                       ("In Vivo", "hp-in-vivo-tree"), ("Return", "hp-return-tree")]:
     sections.append(section(name, len(sections) + 1, feature,
-                            r"^## (?:Stakeholder Interviews|四、Stakeholder Interviews)"))
+                            r"^## (?:(?:[IVX0-9]+\\?\.|[一二三四五六]+、)\s*)?Stakeholder Interviews"))
+sections.append(section("Collaboration", len(sections) + 1))
 sections.append(section("Summary", len(sections) + 1))
 
 origin = split_at(chapter("Origin"), r"^## IV\\?\. Stakeholder Interview Contents")[1]
@@ -142,7 +167,9 @@ records = []
 for i, match in enumerate(matches):
     end = matches[i + 1].start() if i + 1 < len(matches) else len(origin)
     lines = origin[match.end():end].splitlines()
-    lines = [f"**{clean(m.group(1))}**" if (m := re.match(r"^####\s+(.+)$", line)) else line for line in lines]
+    lines = [f"**{clean(m.group(1))}**" if (m := re.match(r"^####\s+(.+)$", line))
+             else f"**{clean(line)}**" if clean(line).startswith("Follow‑up Re‑interview")
+             else line for line in lines if line.strip() != "####"]
     records.append({"id": f"hp-origin-interview-{i + 1}", "title": clean(match.group(1)), "blocks": prose(lines)})
 if len(records) != 7:
     raise ValueError(f"Expected seven Origin interviews, got {len(records)}")
