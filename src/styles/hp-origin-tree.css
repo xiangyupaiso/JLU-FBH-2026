@@ -15,7 +15,7 @@
 }
 
 .hp-origin-flow {
-  --hp-origin-step: min(720px, calc(100dvh - var(--header-height) - 30px));
+  --hp-origin-step: calc(100dvh - var(--header-height) - 30px);
   --hp-flow-first: #f8dc91;
   --hp-flow-followup: #bf6a2d;
   --hp-flow-orange: #c8712c;

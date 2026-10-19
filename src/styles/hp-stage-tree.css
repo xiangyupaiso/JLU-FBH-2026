@@ -10,7 +10,7 @@
 }
 
 .hp-stage-flow {
-  --hp-stage-step: min(720px, calc(100dvh - var(--header-height) - 30px));
+  --hp-stage-step: calc(100dvh - var(--header-height) - 30px);
   --hp-stage-ink: #59371f;
   --hp-stage-line: #c8712c;
   --hp-stage-return: #9e5727;
