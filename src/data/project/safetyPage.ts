@@ -3375,7 +3375,7 @@ export const safetyPage: WikiPageContent = {
     path: "/design",
     label: "Design",
     title: "Step Inside the Molecular Blueprint",
-    description: "With biosafety foundations secured, examine the molecular core: see how permuted introns, translation enhancers, and poly-epitope arrays form a single closed ring.",
+    description: "Safety considerations shape what we build. Explore how the construct combines RNA circularisation, translation elements and a multi-epitope payload, and which questions still require testing.",
   },
 };
 

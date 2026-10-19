@@ -6,6 +6,7 @@ import { SplitText } from "gsap/SplitText";
 import {
   HOME_EASE,
   HOME_SCRUB,
+  HOME_REST_RATIO,
   HOME_STILL_RATIO,
   stillHold,
   settleHomeScrubEndpoint,
@@ -378,14 +379,14 @@ function choreographArt(
       const copyDuration = 0.24;
       const copy = section.querySelector<HTMLElement>(".story-hope-copy");
       if (copy) {
-        // Reveal the reading wash and question with the same timing and ease.
+        // Begin the reading wash before the question's ink starts arriving.
         timeline.fromTo(
           copy,
           { "--hope-wash-opacity": 0 },
           { "--hope-wash-opacity": 1, duration: copyDuration, ease: HOME_EASE },
-          copyStart,
+          copyStart - 0.12,
         );
-        timeline.addLabel("hope-wash-visible", copyStart + copyDuration);
+        timeline.addLabel("hope-wash-visible", copyStart - 0.12 + copyDuration);
       }
       const copyParts = section.querySelectorAll<HTMLElement>("[data-hope-copy]");
       copyParts.forEach((part, index) => {
@@ -465,6 +466,8 @@ export function useHomeStoryAnimation(root: RefObject<HTMLDivElement | null>) {
       let resizePosition: ResizePosition | undefined;
       const primaryIds = new Set([
         "home-person-transition",
+        "home-hope-room-handoff",
+        "home-what-we-hope-exit-edge",
         "home-ward-tear-carry", "home-tear-cloud-carry", "home-tnbc-copy-bridge",
         "home-why-tnbc-reading",
         "home-clinical-sequence", "home-thinking-gallery-carry", "home-molecule-gallery-intro", "home-gallery-why-ring",
@@ -487,9 +490,11 @@ export function useHomeStoryAnimation(root: RefObject<HTMLDivElement | null>) {
                 ((trigger.vars.id.endsWith("-reading") && trigger.pin) ||
                   trigger.vars.id.endsWith("-art")))),
         ).sort((a, b) =>
-          // This bridge remains foreground while the gallery intro overlaps.
-          Number(b.vars.id === "home-thinking-gallery-carry") -
-          Number(a.vars.id === "home-thinking-gallery-carry") ||
+          // Carried viewports remain foreground while the next art begins.
+          Number(b.vars.id === "home-thinking-gallery-carry" ||
+            b.vars.id === "home-hope-room-handoff") -
+          Number(a.vars.id === "home-thinking-gallery-carry" ||
+            a.vars.id === "home-hope-room-handoff") ||
           // A tall earlier chapter can remain active behind the foreground
           // scene. Prefer the latest start, then its bridge on equal bounds.
           b.start - a.start ||
@@ -599,9 +604,9 @@ export function useHomeStoryAnimation(root: RefObject<HTMLDivElement | null>) {
               const flowScene = stackedVaccine || stackedAntigen;
               // Desktop: a bridge leaving this scene early must not eat its
               // still hold, so the track also reserves the bridge's lead.
-              // This map already has a dedicated reading handoff. Keep its
-              // final statistics briefly still without adding a second pause.
-              let restRatio = section.id === "why-tnbc" ? 0.08 : ART_REST_RATIO;
+              // Give the completed map statistics the same reading rest as
+              // the text panels, before their shared-word handoff begins.
+              let restRatio = section.id === "why-tnbc" ? HOME_REST_RATIO : ART_REST_RATIO;
               if (section.id === "why-tnbc") {
                 gsap.set(section, { "--home-scroll-scale": 1 + restRatio });
               }
@@ -627,7 +632,7 @@ export function useHomeStoryAnimation(root: RefObject<HTMLDivElement | null>) {
                     if (flowScene) return "top 80%";
                     // Let the people arrive with the room, then begin the
                     // question once the incoming viewport has settled.
-                    if (section.id === "what-we-hope") return "top 60%";
+                    if (section.id === "what-we-hope") return "top 75%";
                     return `top top+=${Number.parseFloat(getComputedStyle(stage).top) || 0}`;
                   },
                   end: () =>
@@ -714,7 +719,14 @@ export function useHomeStoryAnimation(root: RefObject<HTMLDivElement | null>) {
             }
           });
 
-        if (root.current) animateHopeHandoff(root.current);
+        if (root.current) {
+          const handoff = animateHopeHandoff(root.current);
+          if (handoff) {
+            timelines.set("hope-room-handoff", handoff.timeline);
+            timelines.set("hope-room-exit", handoff.exitTimeline);
+            cleanups.push(handoff.cleanup);
+          }
+        }
 
         const tnbc = root.current?.querySelector<HTMLElement>("#why-tnbc");
         if (tnbc) {

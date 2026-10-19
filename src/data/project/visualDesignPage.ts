@@ -1,5 +1,6 @@
 import type { WikiPageContent } from "../../components/wiki/wikiPageTypes";
 import { visualDesignFigures } from "./visualDesignAssets";
+import { visualDesignNarrativeSections } from "./visualDesignNarrative";
 
 /**
  * Visual Design page structured content.
@@ -516,6 +517,7 @@ export const visualDesignPage: WikiPageContent = {
         },
       ],
     },
+    ...visualDesignNarrativeSections,
   ],
   links: [
     { path: "/description", label: "Project Narrative" },
@@ -526,7 +528,7 @@ export const visualDesignPage: WikiPageContent = {
   next: {
     path: "/notebook",
     label: "Notebook",
-    title: "Every Polished Result Has a Day-One Entry",
-    description: "Behind elegant diagrams and clean layouts lie months of benchside persistence. Trace our raw daily logs, protocol adjustments, and troubleshooting chronicles.",
+    title: "From the Finished Page to the Work Behind It",
+    description: "Behind the figures and layouts is a record of planning, experiments and revision. Follow our wet-lab notebook through the decisions and milestones that shaped the project.",
   },
 };

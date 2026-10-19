@@ -445,9 +445,9 @@ export const rosterCollections: RosterCollection[] = [
         role: "Team Member",
         tagline: "Jason, powered by curiosity.",
         bio: [
-          "Hey, I'm Jianyuan! I'm a physics undergraduate at Jilin University. My main role on the 2026 JLU-FBH iGEM team is designing and developing our Wiki homepage, bringing together its scientific content, visuals, animations, and interactive elements. I've spent plenty of time tweaking small details along the way, and it's taught me how much thought goes into making complicated ideas easy to understand.",
-          "Outside of iGEM, I'm interested in computational physics, AI, and materials science. I spend a fair amount of time reading papers, writing code, and trying to make sense of things I'm still learning about. I tend to ask a lot of questions—that's usually how I learn.",
-          'When I\'m away from my laptop, I enjoy exploring new places, meeting people from different backgrounds, and having conversations that take unexpected turns. And if you hear me say, "Wait, one more question," there\'s a good chance it won\'t be the last.',
+          "Hey, I'm Jianyuan! I'm a physics undergraduate at Jilin University. On the 2026 JLU-FBH iGEM team, I've mainly been designing and developing our Wiki homepage, working out how best to tell our project's story through its visuals, animations, and interactive elements. I also researched, wrote, and designed Sections 8 and 9 of our Visual Design page—“Humanistic Care & Narrative Design” and “Interaction Craft & Technical Design.” Those two sections became a place to put into words much of the thinking behind my work on the Wiki: why the story keeps returning to the patient, when to give readers a moment to pause, and how even a small interaction can make an idea clearer. I spent a lot of time trying to get them right, and I hope someone working on a project of their own might find something useful in them.",
+          "Outside of iGEM, I'm interested in computational physics, AI, and materials science. I spend a fair bit of time reading papers, writing code, and trying to make sense of things I haven't quite figured out yet. I tend to ask a lot of questions along the way—that's usually how I learn.",
+          "Away from my laptop, I enjoy exploring new places, meeting new people, and conversations that go in unexpected directions. If you ever hear me say, “Wait, one more question,” there's a good chance it won't be the last.",
         ],
         quote: "“Stay hungry. Stay foolish.”",
       },
@@ -611,7 +611,7 @@ export const rosterPage: WikiPageContent = {
   next: {
     path: "/attributions",
     label: "Attributions",
-    title: "From Shared Vision to Formal Accountability",
-    description: "Meet the individuals behind CirCure, then inspect the verified, auditable record of roles, institutional support, and resource attribution.",
+    title: "How We Shared the Work",
+    description: "Meet the team, then see how our responsibilities, external support and AI tool use are recorded in the official attribution form.",
   },
 };

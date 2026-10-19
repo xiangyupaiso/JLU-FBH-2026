@@ -746,6 +746,7 @@ export const notebookPage: WikiPageContent = {
   next: {
     path: "/safety-and-security",
     label: "Safety and Security",
-    title: "Where Must Innovation Draw the Line?",
+    title: "How We Put Safety into Practice",
+    description: "The notebook records what we did and when. Explore how SAFE ON guided risk assessment, training, approvals and experimental decisions throughout the project.",
   },
 };

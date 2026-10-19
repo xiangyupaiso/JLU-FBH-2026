@@ -1,0 +1,76 @@
+.supplement-motion-study {
+  margin: 28px 0;
+  color: var(--route-heading-ink);
+}
+.supplement-motion-study__phases {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+}
+.supplement-motion-study__phases button {
+  padding: 10px 6px;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  background: transparent;
+  color: var(--route-heading-ink);
+  font: 500 14px/1.4 var(--font-sans);
+  cursor: pointer;
+}
+.supplement-motion-study__phases button[aria-pressed="true"] {
+  border-bottom-color: var(--route-subheading-ink);
+  color: var(--route-subheading-ink);
+}
+.supplement-motion-study__letter {
+  font:
+    700 16px/1 Arial,
+    sans-serif;
+  margin-right: 6px;
+}
+.supplement-motion-study button:focus-visible,
+.supplement-motion-study input:focus-visible {
+  outline: 2px solid var(--route-heading-ink);
+  outline-offset: 4px;
+}
+.supplement-motion-study svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.supplement-motion-study__guide {
+  fill: none;
+  stroke: var(--route-heading-ink);
+  stroke-width: 1.5;
+  stroke-dasharray: 5 6;
+  opacity: 0.3;
+}
+.supplement-motion-study__labels {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 10%;
+  margin: 0 0 28px;
+  font: 400 15px/1.6 var(--font-sans);
+}
+.supplement-motion-study__range {
+  display: grid;
+  gap: 12px;
+  font: 400 14px/1.6 var(--font-sans);
+}
+.supplement-motion-study__range input {
+  width: 100%;
+  accent-color: var(--route-heading-ink);
+}
+.wiki-page .supplement-motion-study .supplement-motion-study__explanation {
+  margin: 18px 0 12px;
+  font: 400 15px/1.7 var(--font-sans);
+  min-height: 3.4em;
+}
+.supplement-motion-study figcaption {
+  font: 400 13.5px/1.6 var(--font-sans);
+  opacity: 0.8;
+}
+@media (max-width: 540px) {
+  .supplement-motion-study__phases {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 4px 10px;
+  }
+}

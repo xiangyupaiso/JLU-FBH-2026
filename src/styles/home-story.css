@@ -881,59 +881,6 @@ body:has(.home-story) .footer {
 .story-challenges li {
   padding: 4px 0;
 }
-.story-hope-links {
-  position: absolute;
-  z-index: 10;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 6% 7%;
-  pointer-events: none;
-}
-/* DUPLICATE: .story-hope-card/.story-hope-group are also styled in
-   home-explore.css, which loads later and overrides font and transition
-   (font-family with !important). Check both files when changing them. */
-.story-hope-group {
-  position: relative;
-  display: grid;
-  align-content: center;
-  gap: clamp(18px, 4svh, 44px);
-  width: clamp(200px, 23vw, 310px);
-}
-.story-hope-card {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 20px;
-  width: 100%;
-  min-height: 72px;
-  padding: 16px 4px;
-  color: #694753;
-  font: 400 clamp(22px, 2.05vw, 30px)/1.2 var(--font-editorial);
-  text-align: left;
-  text-decoration: none;
-  pointer-events: auto;
-  transition: color 0.24s;
-}
-.story-hope-card span {
-  flex: 0 0 auto;
-  color: #9e6b7a;
-  font: 400 23px/1 var(--font-sans);
-  transition:
-    transform 0.24s,
-    color 0.24s;
-}
-.story-hope-card:hover,
-.story-hope-card:focus-visible {
-  color: #923e5b;
-}
-.story-hope-card:hover span,
-.story-hope-card:focus-visible span {
-  color: currentColor;
-  transform: translate(3px, -3px);
-}
 @media (max-width: 800px) {
   .home-story .story-chapter--vaccine .story-scene-track {
     height: auto;
@@ -1109,28 +1056,6 @@ body:has(.home-story) .footer {
   .story-prologue {
     min-height: 0;
     padding: 44px 7% 78px;
-  }
-  .story-hope-links {
-    align-items: end;
-    gap: 8px;
-    padding: 0 4% 4%;
-  }
-  .story-hope-group {
-    width: calc(50% - 4px);
-    height: auto;
-    grid-auto-rows: 60px;
-    gap: 2px;
-    padding: 0;
-  }
-  .story-hope-card {
-    width: 100%;
-    min-height: 44px;
-    padding: 10px 4px;
-    gap: 8px;
-    font-size: clamp(16px, 4vw, 20px);
-  }
-  .story-hope-card span {
-    font-size: 15px;
   }
 }
 @media (prefers-reduced-motion: reduce) {

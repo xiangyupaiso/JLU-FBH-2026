@@ -100,6 +100,7 @@ export function Footer() {
       ]
         .filter(Boolean)
         .join(" ")}
+      data-route={pathname.replace(/\/+$/, "") || "/"}
       aria-label="Site footer"
     >
       <div className="circure-footer__panel">

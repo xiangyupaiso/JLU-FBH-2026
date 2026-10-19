@@ -1,4 +1,28 @@
 /* Recompose the original layers without stretching their painted proportions. */
+/* Open painted edges meet the stage bottom, as the ward patient and family do.
+   Portrait compositions keep their separate illustration and reading rows. */
+@media (min-width: 601px), (orientation: landscape) {
+  .story-art--8 {
+    top: auto;
+    bottom: -1px;
+    translate: -50% 0;
+  }
+}
+@media (min-width: 801px), (orientation: landscape) {
+  .story-art--hope-return {
+    top: auto;
+    bottom: -1px;
+    translate: -50% 0;
+  }
+}
+@media (min-width: 801px) and (min-height: 651px) {
+  .story-art--fan {
+    top: auto;
+    bottom: -1px;
+    translate: -50% 0;
+  }
+}
+
 body:has(.home-story[data-platform-in-view="true"]) .circure-back-to-top {
   opacity: 0;
   pointer-events: none;

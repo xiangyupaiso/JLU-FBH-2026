@@ -59,6 +59,20 @@ export function animateGalleryWhy(root: HTMLElement, compact: boolean) {
   )!;
   const stacked =
     compact && !window.matchMedia("(min-aspect-ratio: 4/5)").matches;
+  const artwork = gallery.querySelector<HTMLElement>(
+    ".home-molecule-gallery__artwork",
+  )!;
+  const selectedScale = 1.045;
+  const decisionY = () => {
+    // Follow the selected card's final layout, including its centered scale.
+    // Layout offsets stay stable while the scrubbed transforms run or reverse.
+    const cardBottom =
+      artwork.offsetTop +
+      chosen.offsetTop +
+      chosen.offsetHeight * ((stacked ? 0.5 : 1) + (selectedScale - 1) / 2);
+    const gap = gsap.utils.clamp(24, 36, window.innerHeight * 0.035);
+    return cardBottom + gap - decision.offsetTop;
+  };
   const detailLayers = cards.flatMap((card) =>
     Array.from(
       card.querySelectorAll<SVGElement>(
@@ -140,7 +154,7 @@ export function animateGalleryWhy(root: HTMLElement, compact: boolean) {
     {
       xPercent: stacked ? 50 : -50,
       yPercent: stacked ? -50 : 0,
-      scale: 1.045,
+      scale: selectedScale,
       duration: 0.48,
       ease: HOME_EASE,
     },
@@ -148,13 +162,21 @@ export function animateGalleryWhy(root: HTMLElement, compact: boolean) {
   );
   intro.fromTo(
     decision,
-    { opacity: 0, y: 12 },
-    { opacity: 1, y: 0, duration: 0.3, ease: HOME_EASE },
+    { opacity: 0, y: () => decisionY() + 12 },
+    { opacity: 1, y: decisionY, duration: 0.3, ease: HOME_EASE },
     1.4,
   );
   intro.addLabel("circ-selected", 1.74);
   intro.to({}, { duration: 0.12 }, 1.76);
   const cleanupThinking = animateThinkingGallery(root, intro, compact);
+
+  const surface = document.createElement("div");
+  surface.className = "home-gallery-surface-transfer";
+  surface.setAttribute("aria-hidden", "true");
+  const tint = document.createElement("div");
+  tint.className = "home-gallery-surface-tint";
+  surface.append(tint);
+  document.body.append(surface);
 
   const ghost = source.cloneNode(true) as SVGSVGElement;
   ghost.removeAttribute("style");
@@ -192,11 +214,13 @@ export function animateGalleryWhy(root: HTMLElement, compact: boolean) {
   cardCopy.setAttribute("aria-hidden", "true");
   document.body.append(cardCopy);
 
-  const originalSourceVisibility = source.style.visibility;
-  const originalTargetVisibility = target.style.visibility;
-  const originalTargetOpacity = target.style.opacity;
+  const decisionCopy = decision.cloneNode(true) as HTMLElement;
+  decisionCopy.removeAttribute("style");
+  decisionCopy.classList.add("home-gallery-decision-transfer");
+  decisionCopy.setAttribute("aria-hidden", "true");
+  document.body.append(decisionCopy);
+
   const ease = gsap.parseEase(HOME_EASE);
-  const whyTrigger = ScrollTrigger.getById("home-circrna-platform");
   const whyStart = () => whyTrack.getBoundingClientRect().top + window.scrollY;
   type Geometry = {
     fromX: number;
@@ -211,10 +235,15 @@ export function animateGalleryWhy(root: HTMLElement, compact: boolean) {
   let geometry: Geometry | undefined;
   let measuredAt: { end: number; width: number; height: number } | undefined;
   let crossedIntoBridge = false;
+  let drawnScroll = Number.NaN;
+  let drawnProgress = -1;
+  let refreshPending = false;
+  let bridgeStart = Number.NaN;
   const measure = (galleryEnd: number): Geometry => {
     const scroll = window.scrollY;
     const sourceShift = Math.max(0, scroll - (galleryEnd - window.innerHeight));
     const card = chosen.getBoundingClientRect();
+    const copy = decision.getBoundingClientRect();
     const from = source.getBoundingClientRect();
     const to = baseBounds(target);
     const geometry = {
@@ -239,88 +268,61 @@ export function animateGalleryWhy(root: HTMLElement, compact: boolean) {
       width: from.width,
       height: from.height,
     });
+    gsap.set(decisionCopy, {
+      x: copy.left,
+      y: copy.top + sourceShift,
+      width: copy.width,
+    });
     return geometry;
   };
   const prepare = () => {
     if (!crossedIntoBridge) {
+      crossedIntoBridge = true;
       // Complete the gallery's resting frame before measuring its outgoing ring.
       intro.scrollTrigger?.getTween()?.progress(1);
       intro.progress(1);
-      crossedIntoBridge = true;
     }
   };
   const smooth = (from: number, to: number, value: number) =>
     ease(gsap.utils.clamp(0, 1, (value - from) / (to - from)));
-  const bridgeSurface = gsap.utils.interpolate("#fff4e2", "#fceeed");
   const draw = () => {
     if (isHomeMotionRefreshing()) return;
+    const scroll = window.scrollY;
+    // ScrollTrigger and native scrolling can request the same frame. Paint it
+    // once, without reading layout again after the first pass's style writes.
+    if (scroll === drawnScroll) return;
+    drawnScroll = scroll;
     // The preceding pinned scenes can change their spacing after load. Read
     // the visible section boundary, not a cached ScrollTrigger progress.
-    const galleryEnd = gallery.getBoundingClientRect().bottom + window.scrollY;
-    const p = gsap.utils.clamp(
-      0,
-      1,
-      (window.scrollY + window.innerHeight - galleryEnd) / window.innerHeight,
-    );
-    ghost.dataset.progress = String(p);
-    const arrived = p >= 1 - 0.0001;
-    const travelling = p > 0 && !arrived;
-    // Both native panels share one surface while the ring crosses their seam.
-    // Removing the override gives each chapter's timeline its background back.
-    root.classList.toggle("is-gallery-why-carry", travelling);
-    if (travelling) {
-      root.style.setProperty(
-        "--gallery-why-surface",
-        bridgeSurface(smooth(0, 1, p)),
-      );
-    } else {
-      root.style.removeProperty("--gallery-why-surface");
-    }
-    if (p > 0) prepare();
-    else if (crossedIntoBridge) {
-      // Restore the gallery's actual scroll frame. A scene-picker jump can
-      // land before the choice has been made, while a reverse scroll lands
-      // on the completed choice.
-      intro.scrollTrigger?.getTween()?.progress(1);
-      const time = intro.time();
-      // Re-render with the original tween start values intact.
-      intro.time(0).time(time);
-      crossedIntoBridge = false;
-    }
-
-    source.style.visibility = p > 0 ? "hidden" : originalSourceVisibility;
-    cardCopy.style.visibility = travelling ? "visible" : "hidden";
-    ghost.style.visibility = travelling ? "visible" : "hidden";
-    // Only one ring is painted during the carry. The Why ring takes over once
-    // its sticky scene and the travelling ring share the same final bounds.
-    target.style.visibility = arrived ? originalTargetVisibility : "hidden";
-    if (p > 0) {
-      gsap.set(chosen, { opacity: 0 });
-      gsap.set(alternatives, { autoAlpha: 0 });
-      gsap.set(decision, { opacity: 1 - smooth(0, 0.25, p) });
-      gsap.set(cardCopy, { opacity: 1 - smooth(0.08, 0.5, p) });
-      // The Why timeline takes ownership when its ring morph starts.
-      // Before then, a direct chapter jump must show the finished native ring.
-      const whyTimeline = whyTrigger?.animation as
-        gsap.core.Timeline | undefined;
-      if (
-        (whyTimeline?.time() ?? 0) <
-        (whyTimeline?.labels["ring-to-platform"] ?? 1.25)
-      ) {
-        gsap.set(target, { opacity: arrived ? 1 : 0 });
-      }
-    }
-    if (!travelling) return;
-
-    // Re-measure only when a late layout shift or viewport rebuild moves an
-    // anchor. An arriving scene may first paint before scroll restoration.
-    if (
+    const galleryBottom = gallery.getBoundingClientRect().bottom;
+    const galleryEnd = galleryBottom + scroll;
+    const needsMeasure =
       !geometry ||
       !measuredAt ||
       Math.abs(measuredAt.end - galleryEnd) > 1 ||
       measuredAt.width !== window.innerWidth ||
-      measuredAt.height !== window.innerHeight
-    ) {
+      measuredAt.height !== window.innerHeight;
+    // The next track directly follows the gallery. Reuse this boundary read
+    // instead of measuring both chapters again after painting the frame.
+    if (
+      galleryBottom > -window.innerHeight &&
+      galleryBottom < window.innerHeight * 2 &&
+      Math.abs(bridgeStart - (galleryEnd - window.innerHeight)) > 2
+    )
+      refreshPending = true;
+    const p = gsap.utils.clamp(
+      0,
+      1,
+      (scroll + window.innerHeight - galleryEnd) / window.innerHeight,
+    );
+    // Prepare fixed layers during the finished selection's reading beat, so
+    // their first dimensions are not written at the start of the flight.
+    const warm =
+      p === 0 &&
+      intro.time() >= intro.labels["circ-selected"] &&
+      galleryBottom < window.innerHeight * 1.4;
+    if (needsMeasure && (warm || (p > 0 && p < 1))) {
+      if (p > 0) prepare();
       geometry = measure(galleryEnd);
       measuredAt = {
         end: galleryEnd,
@@ -328,6 +330,38 @@ export function animateGalleryWhy(root: HTMLElement, compact: boolean) {
         height: window.innerHeight,
       };
     }
+    if (p === drawnProgress && (p === 0 || p === 1 || !needsMeasure)) return;
+    drawnProgress = p;
+    ghost.dataset.progress = String(p);
+    const arrived = p >= 1 - 0.0001;
+    const travelling = p > 0 && !arrived;
+    // Blend on one isolated surface. An inherited variable on the whole Home
+    // tree would invalidate thousands of descendant styles on every frame.
+    surface.style.visibility = travelling ? "visible" : "hidden";
+    if (travelling) {
+      tint.style.opacity = String(smooth(0, 1, p));
+    }
+    if (p > 0) prepare();
+    else if (crossedIntoBridge) {
+      // The opaque carry surface masks native artwork without hiding it or
+      // overriding its timeline. Return directly to its actual scroll frame,
+      // including an earlier choice reached through the scene picker.
+      intro.scrollTrigger?.getTween()?.progress(1);
+      crossedIntoBridge = false;
+    }
+
+    cardCopy.style.visibility = travelling ? "visible" : "hidden";
+    decisionCopy.style.visibility = travelling ? "visible" : "hidden";
+    ghost.style.visibility = travelling ? "visible" : "hidden";
+    // Native SVG layers stay prepared behind the surface. Only the carried
+    // copies are visible above it, so ownership never rewinds either chapter.
+    if (travelling) {
+      gsap.set(decisionCopy, {
+        opacity: 1 - smooth(0, 0.25, p),
+      });
+      gsap.set(cardCopy, { opacity: 1 - smooth(0.08, 0.5, p) });
+    }
+    if (!travelling || !geometry) return;
     const pigment = smooth(0.04, 0.96, p);
     // Deepen the colour throughout the carry; blend the two close paintings
     // near arrival so their slightly different edges never read as two rings.
@@ -353,12 +387,13 @@ export function animateGalleryWhy(root: HTMLElement, compact: boolean) {
     end: whyStart,
     invalidateOnRefresh: true,
     onUpdate: draw,
-    onRefresh: () => {
+    onRefresh: (self) => {
       geometry = undefined;
+      drawnScroll = Number.NaN;
+      bridgeStart = self.start;
     },
   });
   let frame = 0;
-  let refreshPending = false;
   const refreshAnchor = () => {
     if (!refreshPending || isHomeMotionRefreshing()) return;
     refreshPending = false;
@@ -370,6 +405,7 @@ export function animateGalleryWhy(root: HTMLElement, compact: boolean) {
   const onRefresh = () => {
     refreshPending = false;
     geometry = undefined;
+    drawnScroll = Number.NaN;
     draw();
   };
   const onScroll = () => {
@@ -378,19 +414,21 @@ export function animateGalleryWhy(root: HTMLElement, compact: boolean) {
       frame = 0;
       if (isHomeMotionRefreshing()) return;
       draw();
-      // Continue painting from real layout while scrolling. Re-measuring all
-      // pinned chapters mid-gesture can briefly pull native scrolling back.
-      // Update this unpinned bridge's anchors once the gesture has settled.
-      const galleryBottom = gallery.getBoundingClientRect().bottom;
-      if (
-        galleryBottom <= -window.innerHeight ||
-        galleryBottom >= window.innerHeight * 2
-      )
-        return;
-      const anchor = whyStart() - window.innerHeight;
-      if (Math.abs(bridge.start - anchor) > 2) refreshPending = true;
     });
   };
+  intro.eventCallback("onUpdate", () => {
+    // Scrub may finish after native scrolling stops. Warm the fixed layers
+    // then as well, rather than waiting for the first departing scroll frame.
+    if (
+      !geometry &&
+      !crossedIntoBridge &&
+      drawnProgress === 0 &&
+      intro.time() >= intro.labels["circ-selected"]
+    ) {
+      drawnScroll = Number.NaN;
+      onScroll();
+    }
+  });
   window.addEventListener("scroll", onScroll, { passive: true });
   ScrollTrigger.addEventListener("scrollEnd", refreshAnchor);
   ScrollTrigger.addEventListener("refresh", onRefresh);
@@ -402,18 +440,15 @@ export function animateGalleryWhy(root: HTMLElement, compact: boolean) {
     ScrollTrigger.removeEventListener("scrollEnd", refreshAnchor);
     ScrollTrigger.removeEventListener("refresh", onRefresh);
     window.cancelAnimationFrame(frame);
-    root.classList.remove("is-gallery-why-carry");
-    root.style.removeProperty("--gallery-why-surface");
     intro.kill();
     bridge.kill();
-    source.style.visibility = originalSourceVisibility;
-    target.style.visibility = originalTargetVisibility;
-    target.style.opacity = originalTargetOpacity;
     gsap.set([...cards, decision], { clearProps: "opacity,transform" });
     gsap.set(detailLayers, { clearProps: "opacity" });
     gsap.set(stage, { clearProps: "backgroundColor" });
     gsap.set(source, { clearProps: "opacity,filter" });
     cardCopy.remove();
+    decisionCopy.remove();
     ghost.remove();
+    surface.remove();
   };
 }

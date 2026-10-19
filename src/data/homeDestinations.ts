@@ -6,7 +6,7 @@ export const homeDestinations = [
     path: "/description",
     summary:
       "Discover why CirCure explores a modular circRNA vaccine platform for triple-negative breast cancer.",
-    topics: ["The clinical challenge", "Our circRNA vaccine concept", "The proposed project design"],
+    hint: "Why we chose circRNA",
     action: "Explore the description",
   },
   {
@@ -15,7 +15,7 @@ export const homeDestinations = [
     path: "/engineering",
     summary:
       "Follow our design–build–test–learn framework for turning circRNA design questions into testable experiments.",
-    topics: ["Design decisions", "Build–test–learn cycles", "Evidence needed to move forward"],
+    hint: "How we build and test",
     action: "Follow the engineering",
   },
   {
@@ -24,7 +24,7 @@ export const homeDestinations = [
     path: "/sustainability",
     summary:
       "Explore how CirCure evaluates its impact against the Sustainable Development Goals and plans for responsible development.",
-    topics: ["Project overview", "Sustainability assessment", "SDG impact framework"],
+    hint: "Our impact and responsibilities",
     action: "Explore sustainability",
   },
   {
@@ -33,7 +33,7 @@ export const homeDestinations = [
     path: "/contribution",
     summary:
       "Explore reusable wet-lab resources, computational tools and records shared for future iGEM teams.",
-    topics: ["Wet-lab resources and parts", "Computational tools", "Education and collaboration"],
+    hint: "Resources you can reuse",
     action: "Explore our contributions",
   },
   {
@@ -42,17 +42,17 @@ export const homeDestinations = [
     path: "/model",
     summary:
       "Explore our framework for prioritizing epitopes, comparing circRNA structures and planning measurements.",
-    topics: ["Epitope selection", "Structure and expression models", "Connections to wet-lab decisions"],
+    hint: "How models guide our design",
     action: "Explore the models",
   },
   {
-    key: "team",
-    label: "Team",
-    path: "/roster",
+    key: "software",
+    label: "Software",
+    path: "/software",
     summary:
-      "Get to know the students, instructors and advisors bringing different disciplines together around CirCure.",
-    topics: ["Student researchers", "Instructors and advisors", "Our laboratory and inspirations"],
-    action: "Meet our team",
+      "Explore CircuForge and TorusFold, our software for guided circRNA design and circular RNA structure analysis.",
+    hint: "Tools for circular RNA design",
+    action: "Explore the software",
   },
 ] as const;
 

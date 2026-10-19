@@ -1338,7 +1338,7 @@ export const softwarePage: WikiPageContent =
   "next": {
     "path": "/hardware",
     "label": "Hardware",
-    "title": "When In Silico Code Meets Physical Matter",
-    "description": "Software designs the sequence, but bench manufacturing demands precise physical control. Discover CirCore: our custom automated microfluidic reactor for circRNA synthesis."
+    "title": "Designing the Conditions for Circularisation",
+    "description": "Sequence design is one part of the workflow. Explore CirCore, our design-stage reaction device for integrating temperature control, mixing and sealed handling during circRNA circularisation."
   }
 };

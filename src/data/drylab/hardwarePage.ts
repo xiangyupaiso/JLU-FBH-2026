@@ -778,6 +778,6 @@ export const hardwarePage: WikiPageContent = {
     path: "/games",
     label: "Games",
     title: "Making Complex Synthetic Biology Playable",
-    description: "Precision engineering shouldn't stay locked inside the lab. Experience our interactive game suite that turns RNA circularization and cancer defense into intuitive play.",
+    description: "Designing tools also means considering how people learn to use them. Explore our virtual laboratory, breast-health RPG, circRNA strategy game and biology memory game.",
   },
 };

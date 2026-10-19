@@ -39,13 +39,53 @@
 
 .story-chapter--hope-return .story-chapter-inner::after {
   bottom: 0;
+  /* Grow a fully matched edge; fading its opacity exposes the image seam. */
+  height: calc(var(--hope-room-feather) * var(--hope-exit-feather, 1));
   background: linear-gradient(to bottom, transparent, var(--next-bg));
-  opacity: var(--hope-exit-feather, 1);
 }
 
 .has-story-motion .story-chapter--beyond,
 .has-story-motion .story-chapter--hope-return {
   --hope-exit-feather: 0;
+}
+
+/* Replace the two moving edge washes with one continuous painted viewport. */
+.has-hope-room-handoff .story-chapter--beyond .story-chapter-inner::after,
+.has-hope-room-handoff .story-chapter--hope-return .story-chapter-inner::before,
+.story-hope-room-carry .story-chapter-inner::after {
+  display: none;
+}
+
+.story-hope-room-carry {
+  --scene-height: calc(100svh - var(--header-height));
+  position: fixed;
+  inset: 0;
+  z-index: 30;
+  overflow: hidden;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.story-hope-room-carry .story-hope-room-source {
+  position: absolute;
+  inset: 0;
+  height: 100%;
+}
+
+.story-chapter--hope-return .is-hope-room-carried {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  z-index: 31;
+  mask-image: linear-gradient(
+    125deg,
+    #000 calc(var(--hope-room-edge) - 26%),
+    #000000f2 calc(var(--hope-room-edge) - 17%),
+    #000000bf calc(var(--hope-room-edge) - 8%),
+    #00000040 calc(var(--hope-room-edge) + 8%),
+    #0000000d calc(var(--hope-room-edge) + 17%),
+    #0000 calc(var(--hope-room-edge) + 26%)
+  );
 }
 
 .home-story .story-chapter--hope-return {
@@ -55,7 +95,11 @@
 }
 
 .story-hope-backdrop {
-  opacity: 0.78;
+  opacity: calc(0.78 * var(--hope-scene-exit, 1));
+}
+
+.has-hope-room-handoff .story-chapter--hope-return .story-chapter-inner {
+  background: var(--hope-exit-surface, var(--chapter-bg));
 }
 
 .story-art--hope-return {
@@ -67,6 +111,7 @@
   position: absolute;
   inset: 0;
   margin: 0;
+  opacity: var(--hope-scene-exit, 1);
 }
 
 .story-hope-doctor {

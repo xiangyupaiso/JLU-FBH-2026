@@ -88,7 +88,7 @@ export const gamesPage: WikiPageContent = {
   next: {
     path: "/entrepreneurship",
     label: "Entrepreneurship",
-    title: "From Interactive Concept to Clinical Reality",
-    description: "Playful tools demystify immunology, but curing patients requires clinical translation. Explore our business model, target product profile, and commercialization roadmap.",
+    title: "What Would It Take to Reach Patients?",
+    description: "Our games create ways to engage with the science. For CirCure itself, reaching patients would require further research, manufacturing development and a viable adoption pathway. Explore our proposed business case and development roadmap.",
   },
 };

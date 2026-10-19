@@ -1029,6 +1029,6 @@ export const contributionPage: WikiPageContent = {
     path: "/visual-design",
     label: "Visual Design",
     title: "Translating Complexity into Visual Clarity",
-    description: "Standardized biology reaches its full potential when communicated clearly. Explore the aesthetic philosophy, color logic, and visual systems that give CirCure its voice.",
+    description: "Making our work reusable also means making it understandable. Explore the visual identity, illustrations and interactive design that help readers navigate CirCure.",
   },
 };

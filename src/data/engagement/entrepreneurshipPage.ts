@@ -1874,6 +1874,6 @@ export const entrepreneurshipPage: WikiPageContent = {
     path: "/human-practices",
     label: "Human Practices",
     title: "Listening to the Voices That Matter Most",
-    description: "A commercial strategy is hollow without patient empathy. Discover how dialogues with oncologists, breast cancer patients, and ethicists continuously reshaped our research.",
+    description: "Our development plans are shaped by the people they may affect. Follow the conversations with clinicians, researchers, industry partners and the public that helped us refine the problem and revise our decisions.",
   },
 };

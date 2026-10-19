@@ -1,0 +1,361 @@
+{
+  "objects": [
+    {
+      "id": "01-ring",
+      "src": "history/images/01-ring.jpg",
+      "label": "Ring-led opening",
+      "caption": "A large wordmark, a progress rail and a labelled circular instruction.",
+      "zhLabel": "圆环开场",
+      "zhCaption": "大字标、进度线与带标注的环形指令。",
+      "kind": "Preserved prototype · re-rendered",
+      "source": "2026-09-04-iGEM-WIKI-JLU-FBH/outputs/visual-design-human-centered-preview-20261019/history/captures/july-system.png",
+      "origin": "2026-07-01-iGEM-wiki-v1-framer/circure-igem-local/index.html",
+      "width": 1425,
+      "height": 891,
+      "sha256": "c83ce581a553ee89a5def5f7a9d040cc2a8d8f9ef4ba407b5ba7af3d756c09c4",
+      "letter": "a"
+    },
+    {
+      "id": "02-spatial",
+      "src": "history/images/02-spatial.jpg",
+      "label": "Spatial opening",
+      "caption": "The ring becomes the center of an imagined apparatus.",
+      "zhLabel": "空间开场",
+      "zhCaption": "圆环成为想象中装置的中心。",
+      "kind": "Preserved prototype · re-rendered",
+      "source": "2026-09-04-iGEM-WIKI-JLU-FBH/outputs/visual-design-human-centered-preview-20261019/history/captures/july-spatial.png",
+      "origin": "2026-07-01-iGEM-wiki-v1-framer/worldlabs-spatial-scroll-local/index.html",
+      "width": 1425,
+      "height": 891,
+      "sha256": "818d8da568a676f5b7fc66cc095883ed851bb49f7934f9f9acd7caaa82f0e176",
+      "letter": "b"
+    },
+    {
+      "id": "03-image-led",
+      "src": "history/images/03-image-led.jpg",
+      "label": "Image-led study",
+      "caption": "Molecular imagery, a flowing ribbon and an early lamb silhouette share the opening.",
+      "zhLabel": "影像方向",
+      "zhCaption": "分子图像、流动丝带与早期小羊剪影同处开场。",
+      "kind": "Preserved prototype · re-rendered",
+      "source": "2026-09-04-iGEM-WIKI-JLU-FBH/outputs/visual-design-human-centered-preview-20261019/history/captures/july-mascot.png",
+      "origin": "2026-07-01-iGEM-wiki-v1-framer/wolverine-igem-motion-mascot-v4-local/index.html",
+      "width": 1425,
+      "height": 891,
+      "sha256": "3393f2d15887a34858d86e816a1d18186955764c830399ec2f6095bda0ad03e1",
+      "letter": "a"
+    },
+    {
+      "id": "04-recognition",
+      "src": "history/images/04-recognition-homepage.jpg",
+      "label": "Recognition story",
+      "caption": "The report moves aside to make room for the human question.",
+      "zhLabel": "识别叙事",
+      "zhCaption": "报告向一旁移开，为人的问题留出空间。",
+      "kind": "Preserved prototype · re-rendered",
+      "source": "2026-09-04-iGEM-WIKI-JLU-FBH/outputs/design-folios-timeline-20261019/recognition-homepage-complete.jpg",
+      "origin": "2026-07-01-iGEM-wiki-v1-framer/anthropic-circure-story-nav-local/index.html",
+      "width": 1425,
+      "height": 891,
+      "sha256": "2a0734c3e7bbdc4537a643276d9b903c5328868185ff1eb12635214963133caf",
+      "letter": "b",
+      "captureSha256": "19ee420476c701013de5bbb72db52511026ffe04056553cb94a244b267f2b4d8",
+      "captureDate": "2026-10-19",
+      "captureState": {
+        "viewportWidth": 1440,
+        "viewportHeight": 900,
+        "scrollY": 1404,
+        "openingProgress": 0.8667,
+        "reportFold": 1,
+        "lifeProgress": 1,
+        "nextSectionTop": 1116,
+        "note": "Captured inside the sticky opening after its visible animation completed; the following history section remains below the viewport."
+      }
+    },
+    {
+      "id": "05-reader",
+      "src": "history/images/05-reader.jpg",
+      "label": "Project reading prototype",
+      "caption": "Outline, article and margin note establish three levels of reading.",
+      "zhLabel": "Project 阅读原型",
+      "zhCaption": "目录、正文与边注构成三层阅读关系。",
+      "kind": "Preserved prototype · re-rendered",
+      "source": "2026-09-04-iGEM-WIKI-JLU-FBH/outputs/visual-design-human-centered-preview-20261019/history/captures/july-reader.png",
+      "origin": "2026-07-01-iGEM-wiki-v1-framer/hp-testimonial-cards-local/project.html",
+      "width": 1425,
+      "height": 891,
+      "sha256": "c1432531256f7a3fb806c476916b62838e3e360ed722bd3e19227f4af775a535",
+      "letter": "a"
+    },
+    {
+      "id": "06-portrait-layer",
+      "src": "history/images/06-portrait-layer.png",
+      "label": "Isolated portrait",
+      "caption": "The person becomes a separate foreground layer.",
+      "zhLabel": "分离的人物图层",
+      "zhCaption": "人物成为独立的前景图层。",
+      "kind": "Saved composition study",
+      "source": "2026-09-04-iGEM-WIKI-JLU-FBH/wiki-latest-main-20260928/outputs/home-layer-depth-20261002/portrait-isolated.png",
+      "origin": null,
+      "width": 1600,
+      "height": 900,
+      "sha256": "99badab6e0b5b2e96f6a70d517ad6cf882615f2838a7bbe05fa3221604dd326e",
+      "letter": "a"
+    },
+    {
+      "id": "07-composed-scene",
+      "src": "history/images/07-composed-scene.jpg",
+      "label": "Composed scene",
+      "caption": "The surrounding images remain behind the approaching portrait.",
+      "zhLabel": "合成后的场景",
+      "zhCaption": "视线靠近人物时，周围意象留在后方。",
+      "kind": "Archived browser screenshot",
+      "source": "2026-09-04-iGEM-WIKI-JLU-FBH/wiki-latest-main-20260928/outputs/home-layer-depth-20261002/desktop-depth.png",
+      "origin": null,
+      "width": 1425,
+      "height": 891,
+      "sha256": "f39e0c46b740747cc2fc408fcebfeeb002b66eff3fac361b191ace865dc48fc6",
+      "letter": "b"
+    },
+    {
+      "id": "08-ring-particles",
+      "src": "history/images/08-ring-particles.jpg",
+      "label": "Earlier · particle transfer",
+      "caption": "Paint sampled into particles travels toward the platform.",
+      "zhLabel": "前稿 · 粒子迁移",
+      "zhCaption": "原画颜料被采样为粒子，向平台位置迁移。",
+      "kind": "Archived screenshot",
+      "source": "2026-09-04-iGEM-WIKI-JLU-FBH/wiki-latest-main-20260928/outputs/rna-keyframes-20261002/particle-transition-1440.jpg",
+      "origin": null,
+      "width": 1440,
+      "height": 900,
+      "sha256": "c69dace23f09324ec57bedb26914165ba81859494f55a4254b6e5e3573b3836f",
+      "letter": "a"
+    },
+    {
+      "id": "09-ring-solid",
+      "src": "history/images/09-ring-solid.jpg",
+      "label": "Revision · continuous ring",
+      "caption": "The circular object stays whole during the handoff.",
+      "zhLabel": "修订 · 连续实体圆环",
+      "zhCaption": "交接过程中，圆形对象持续保持完整。",
+      "kind": "Archived screenshot",
+      "source": "2026-09-04-iGEM-WIKI-JLU-FBH/wiki-latest-main-20260928/outputs/rna-solid-keyframes-20261002/transition-1440.jpg",
+      "origin": null,
+      "width": 1440,
+      "height": 900,
+      "sha256": "6bfc6f85a4284cd3ea787f035f44755f968dca80d67a4c16946551446dcd6c77",
+      "letter": "b"
+    },
+    {
+      "id": "10-explore-arc",
+      "src": "history/images/10-explore-arc.jpg",
+      "label": "Composition study",
+      "caption": "Curved rows follow the illustration, with all descriptions shown.",
+      "zhLabel": "构图试作",
+      "zhCaption": "行列围绕原画弯曲，说明同时显示。",
+      "kind": "Saved comparison sheet",
+      "source": "2026-09-04-iGEM-WIKI-JLU-FBH/outputs/home-explore-sheep-20261019/arc-A-text.png",
+      "origin": null,
+      "width": 1440,
+      "height": 900,
+      "sha256": "b38662853daf8868e8b0655e04b231991d5eb3ce191c49eefb2f3b29957bf487",
+      "letter": "a"
+    },
+    {
+      "id": "11-explore-aligned",
+      "src": "history/images/11-explore-aligned.jpg",
+      "label": "Revised reading edge",
+      "caption": "Aligned titles and a local hint leave the other entries still.",
+      "zhLabel": "修订后的阅读边缘",
+      "zhCaption": "标题对齐，提示留在当前入口，其余条目保持稳定。",
+      "kind": "Archived screenshot",
+      "source": "2026-09-04-iGEM-WIKI-JLU-FBH/outputs/home-explore-B-final-20261019/desktop-hover.png",
+      "origin": null,
+      "width": 1425,
+      "height": 891,
+      "sha256": "1aafc6a283b95b780a33afadb9bef5b62ecda4b2d30fdca399ceb263b8fde27a",
+      "letter": "b"
+    },
+    {
+      "id": "12-letter-before",
+      "src": "history/images/12-letter-before.jpg",
+      "label": "Earlier letter",
+      "caption": "The illustration and text share a centered pink sheet.",
+      "zhLabel": "前稿寄语",
+      "zhCaption": "插画与文字集中在粉色整页中。",
+      "kind": "Archived screenshot",
+      "source": "2026-09-04-iGEM-WIKI-JLU-FBH/outputs/footer-note-refinement-20261017/before-desktop.png",
+      "origin": null,
+      "width": 1425,
+      "height": 891,
+      "sha256": "d300f7b883f06ad0fdcd8d5d5a3179f568a362060ef33bceb8a2b398ba82a2c3",
+      "letter": "c"
+    },
+    {
+      "id": "13-letter-after",
+      "src": "history/images/13-letter-after.jpg",
+      "label": "Revised letter",
+      "caption": "The illustration, message and return action each have a place.",
+      "zhLabel": "修订后的寄语",
+      "zhCaption": "插画、正文与返回操作分别拥有清楚的位置。",
+      "kind": "Archived screenshot",
+      "source": "2026-09-04-iGEM-WIKI-JLU-FBH/outputs/footer-note-refinement-20261017/desktop.png",
+      "origin": null,
+      "width": 1440,
+      "height": 900,
+      "sha256": "66b6c97ed276b657c6cf6087068fb9ba7c284fc5b31101d7731f662be20e89c9",
+      "letter": "d"
+    },
+    {
+      "id": "14-ribbon-before",
+      "src": "history/images/14-ribbon-before.jpg",
+      "label": "Earlier ribbon",
+      "caption": "A smooth band under the next-page destination.",
+      "zhLabel": "前稿丝带",
+      "zhCaption": "下一页目的地下方的平滑带面。",
+      "kind": "Preserved build · re-rendered",
+      "source": "2026-09-04-iGEM-WIKI-JLU-FBH/outputs/visual-design-clean-captures-20261019/ribbon-before-clean.png",
+      "origin": null,
+      "width": 1265,
+      "height": 889,
+      "sha256": "56865d42224a95e6e00391c429401b8e3af0143e70136b440c0ba6edf9d6ef81",
+      "letter": "e",
+      "previousSource": "2026-09-04-iGEM-WIKI-JLU-FBH/outputs/next-page-watercolor-20261019/before.png",
+      "captureDate": "2026-10-19",
+      "captureSha256": "866e41904f301691194a9f453c1b9370e7ff65cce97754b9fa22143f58ff9557",
+      "captureState": {
+        "build": "outputs/next-page-sheep-polish-20261019/build-final",
+        "focusVisible": [],
+        "note": "Re-rendered the retained pre-watercolor build with original local assets; cleared keyboard focus and moved the cursor away. No visual retouching."
+      }
+    },
+    {
+      "id": "15-ribbon-after",
+      "src": "history/images/15-ribbon-after.jpg",
+      "label": "Watercolor revision",
+      "caption": "Layered pigment connects the route with the wiki’s painted illustrations.",
+      "zhLabel": "水彩修订",
+      "zhCaption": "叠染颜料让路径与 Wiki 的插画质感联系起来。",
+      "kind": "Archived screenshot",
+      "source": "2026-09-04-iGEM-WIKI-JLU-FBH/outputs/next-page-watercolor-20261019/desktop-final.png",
+      "origin": null,
+      "width": 1265,
+      "height": 889,
+      "sha256": "d5ed42539def7e4214852100eb463ad0fa3bc561a068526f7310bec3b6354ebc",
+      "letter": "f"
+    },
+    {
+      "id": "16-image-led-navigation",
+      "src": "history/images/16-image-led-navigation.jpg",
+      "label": "Image-led navigation",
+      "caption": "The expanded Project menu groups an introduction and three illustrated destinations.",
+      "kind": "Preserved prototype · re-rendered",
+      "source": "2026-09-04-iGEM-WIKI-JLU-FBH/outputs/design-folios-timeline-20261019/image-led-navigation.jpg",
+      "origin": "2026-07-01-iGEM-wiki-v1-framer/wolverine-igem-motion-mascot-v4-local/index.html",
+      "width": 1425,
+      "height": 891,
+      "sha256": "acd98f4b185ca1fbdcc7d05b7869721356b3657cd4acf28a8d2f6b186ac31251",
+      "captureSha256": "6f0b14437954b0c95fe15fbe744c731c8ab49cbe67c81dbe94d9d47af37c4b03",
+      "captureDate": "2026-10-19",
+      "captureState": {
+        "viewport": [
+          1440,
+          900
+        ],
+        "menu": "Project",
+        "expanded": true,
+        "scrollY": 0
+      },
+      "letter": "c"
+    },
+    {
+      "id": "17-pink-thread-person",
+      "src": "history/images/17-pink-thread-person.jpg",
+      "label": "Pink thread in the Person chapter",
+      "caption": "A drawn pink portrait line and a fixed ribbon marker locate the Person chapter.",
+      "kind": "Preserved prototype · re-rendered",
+      "source": "2026-09-04-iGEM-WIKI-JLU-FBH/outputs/design-folios-timeline-20261019/pink-thread-person.jpg",
+      "origin": "2026-07-01-iGEM-wiki-v1-framer/anthropic-circure-story-nav-local/index.html",
+      "width": 1425,
+      "height": 891,
+      "sha256": "af9b155f94513b749f43d0e01101b6e7a9de4c45b30a3619ada3ddf979409ac9",
+      "captureSha256": "25b1194f24e24ed83f539c265a74fa16186e0185e86879cdee46ddaacbe3ab3d",
+      "captureDate": "2026-10-19",
+      "captureState": {
+        "guide": "Person, section 3 of 9",
+        "humanProgress": "0.7833",
+        "progress": "33",
+        "scrollY": 6780.5,
+        "viewport": [
+          1440,
+          900
+        ]
+      },
+      "letter": "d"
+    },
+    {
+      "id": "18-ribbon-emblem",
+      "src": "history/images/18-ribbon-emblem.jpg",
+      "label": "Ribbon and emblem revealed",
+      "caption": "The profile, circular structure and pink awareness ribbon form the completed emblem.",
+      "kind": "Preserved prototype · re-rendered",
+      "source": "2026-09-04-iGEM-WIKI-JLU-FBH/outputs/design-folios-timeline-20261019/ribbon-emblem.jpg",
+      "origin": "2026-07-01-iGEM-wiki-v1-framer/anthropic-circure-story-nav-local/index.html",
+      "width": 1425,
+      "height": 891,
+      "sha256": "af9b155f94513b749f43d0e01101b6e7a9de4c45b30a3619ada3ddf979409ac9",
+      "captureSha256": "61af7c5562c6d4ac8ef38dac785d9717857404516bc340c2e2fd9db272ab86e8",
+      "captureDate": "2026-10-19",
+      "captureState": {
+        "guide": "Design, section 4 of 9",
+        "pageProgress": "43",
+        "ribbonOpacity": "1",
+        "scrollY": 8864,
+        "styles": "--frame-progress: 1.0000; --radius-progress: 1.0000; --content-progress: 1.0000; --label-progress: 1.0000; --diagram-progress: 1.0000;",
+        "viewport": [
+          1440,
+          900
+        ]
+      },
+      "letter": "e"
+    }
+  ],
+  "details": [
+    {
+      "source": "history/images/08-ring-particles.jpg",
+      "output": "history/details/ring-earlier.png",
+      "crop": [
+        420,
+        350,
+        980,
+        860
+      ],
+      "sourceSize": [
+        1440,
+        900
+      ],
+      "sourceSHA256": "c69dace23f09324ec57bedb26914165ba81859494f55a4254b6e5e3573b3836f",
+      "outputSHA256": "9005d4b218e700b271e44e5c5a2a6f0ec574680838d4167bfd6e17df7b692089",
+      "processing": "crop only; original pixels retained; no upscaling"
+    },
+    {
+      "source": "history/images/09-ring-solid.jpg",
+      "output": "history/details/ring-revised.png",
+      "crop": [
+        420,
+        350,
+        980,
+        860
+      ],
+      "sourceSize": [
+        1440,
+        900
+      ],
+      "sourceSHA256": "6bfc6f85a4284cd3ea787f035f44755f968dca80d67a4c16946551446dcd6c77",
+      "outputSHA256": "3f5e54713a0ea70bcfd8ebf12f02b541e9c4b68487e53bfbb1889cda734fd238",
+      "processing": "crop only; original pixels retained; no upscaling"
+    }
+  ],
+  "originalObjectCount": 15
+}

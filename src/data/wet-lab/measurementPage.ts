@@ -3238,8 +3238,7 @@ export const measurementPage: WikiPageContent = {
   next: {
     path: "/alternative-platform",
     label: "Alternative Platform",
-    title: "Beyond the Conventional Chassis",
-    description:
-      "Now that analytical standards are established, can circRNA synthesis escape costly cell-free enzymes? Explore our evaluation of alternative cellular expression platforms.",
+    title: "What Makes This a Reusable Platform?",
+    description: "Measurements define how we assess a preparation. Explore how the modular backbone, cell-free production workflow and human-cell testing system fit together as a platform that other teams can adapt.",
   },
 };

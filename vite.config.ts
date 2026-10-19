@@ -164,6 +164,7 @@ export default () => {
         input: {
           wiki: resolve("index.html"),
           laboratory: resolve("virtual-lab/index.html"),
+          visualDesignStudy: resolve("visual-design-study.html"),
         },
       },
     },
