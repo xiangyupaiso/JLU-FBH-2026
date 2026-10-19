@@ -134,7 +134,7 @@ export function renderInlineFormatting(text: string): ReactNode {
   if (!text) return text;
   if (text.includes("$")) {
     const trimmed = text.trim();
-    const soleFormula = trimmed.match(/^\$([^$\n]+)\$/);
+    const soleFormula = trimmed.match(/^\${1,2}([^$\n]+?)\${1,2}$/);
     if (soleFormula && soleFormula[0].length === trimmed.length) {
       return <WikiMath latex={soleFormula[1]} display />;
     }
@@ -142,7 +142,7 @@ export function renderInlineFormatting(text: string): ReactNode {
     if (segments.length > 1 || segments[0]?.math) {
       return segments.map((segment, index) =>
         segment.math ? (
-          <WikiMath key={`m-${index}`} latex={segment.text} />
+          <WikiMath key={`m-${index}`} latex={segment.text} display={segment.display} />
         ) : (
           <span key={`t-${index}`}>{renderEmphasisAndCode(segment.text)}</span>
         ),

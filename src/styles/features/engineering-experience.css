@@ -29,12 +29,16 @@
   margin: 0 0 24px;
   padding: 0;
 }
+.wiki-page--engineering .eng-introduction h2,
+.wiki-page--engineering .eng-outcome h3 {
+  scroll-margin-top: calc(var(--header-height, 80px) + 24px);
+}
 .wiki-page--engineering .eng-introduction h2 {
   margin: 0;
   color: var(--route-heading-ink);
   font-family: var(--font-sans), sans-serif !important;
-  font-size: clamp(21px, 2.2vw, 25px);
-  font-weight: 700;
+  font-size: var(--wiki-h2-size);
+  font-weight: 750;
   line-height: 1.35;
 }
 .wiki-page--engineering
@@ -159,6 +163,9 @@
   display: grid;
   gap: 24px;
 }
+.wiki-page--engineering #engineering-overview .wiki-blocks > .wiki-figure {
+  margin: 0 auto !important;
+}
 .wiki-page--engineering .wiki-prose {
   max-width: none;
 }
@@ -173,7 +180,8 @@
   margin: 0 0 16px;
   color: var(--route-subheading-ink);
   font-family: var(--font-sans), sans-serif !important;
-  font-size: clamp(20px, 2.2vw, 26px);
+  font-size: var(--wiki-h3-size);
+  font-weight: 700;
   line-height: 1.35;
 }
 .wiki-page--engineering .eng-outcome p {
@@ -253,9 +261,10 @@
 .wiki-page--engineering .eng-scene-heading h3 {
   margin: 0;
   color: var(--route-heading-ink);
-  font-family: var(--font-heading);
-  font-size: clamp(23px, 2.3vw, 34px);
-  line-height: 1.2;
+  font-family: var(--font-sans), sans-serif !important;
+  font-size: var(--wiki-h3-size);
+  font-weight: 700;
+  line-height: 1.35;
   text-wrap: balance;
 }
 .wiki-page--engineering .eng-scene-heading .eng-iteration-index {
@@ -373,9 +382,9 @@
   border-bottom: none;
   color: inherit;
   font-family: var(--font-sans);
-  font-size: clamp(21px, 2vw, 25px);
+  font-size: var(--wiki-h4-size);
   font-weight: 650;
-  line-height: 1.3;
+  line-height: 1.4;
 }
 .wiki-page--engineering .eng-stage-arrow {
   display: inline-flex;
@@ -660,6 +669,10 @@
     transform 220ms cubic-bezier(0.34, 1.56, 0.64, 1),
     filter 200ms ease;
 }
+.eng-small-gear--boundary {
+  width: 82px;
+  flex-basis: 82px;
+}
 .eng-small-gear:hover .eng-small-gear__img {
   transform: scale(1.08) rotate(var(--gear-phase, 0deg));
   filter: drop-shadow(0 3px 8px rgba(36, 61, 44, 0.16));
@@ -815,7 +828,6 @@
   .wiki-page--engineering .eng-scene-heading h3 {
     grid-column: 1;
     grid-row: 1;
-    font-size: 23px;
   }
   .wiki-page--engineering .eng-iteration-arrow {
     grid-row: 1;
@@ -850,6 +862,10 @@
   .eng-small-gear__img {
     width: 46px;
     height: 46px;
+  }
+  .eng-small-gear--boundary {
+    width: 74px;
+    flex-basis: 74px;
   }
   .eng-cycle-flyout::after {
     left: calc(
@@ -1000,8 +1016,8 @@
   margin: 0;
   color: var(--route-heading-ink);
   font-family: var(--font-sans), sans-serif !important;
-  font-size: clamp(24px, 2.5vw, 30px);
-  font-weight: 700;
+  font-size: var(--wiki-h2-size);
+  font-weight: 750;
   line-height: 1.35;
 }
 .wiki-page--engineering .eng-outcome-final h2 .wiki-heading-marker {

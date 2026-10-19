@@ -287,10 +287,7 @@
   overflow: visible;
   color: var(--route-subheading-ink) !important;
   font-family: var(--font-sans), sans-serif !important;
-  font-size: 17px;
-  font-weight: 650;
   letter-spacing: 0;
-  line-height: 1.42;
   text-overflow: clip;
   white-space: normal;
 }
@@ -310,18 +307,6 @@
   gap: 16px;
   padding: 18px 20px 20px;
   background: var(--route-paper);
-}
-
-.wiki-page[data-wiki-route="/alternative-platform"] .wiki-subheading--nested {
-  margin: 4px 0 0 !important;
-}
-
-.wiki-page[data-wiki-route="/alternative-platform"]
-  .wiki-subheading--nested
-  .wiki-subheading__title {
-  color: var(--route-subheading-ink) !important;
-  font-size: 16px;
-  letter-spacing: 0;
 }
 
 .wiki-page[data-wiki-route="/alternative-platform"] .wiki-quote {

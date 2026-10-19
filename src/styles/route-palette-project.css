@@ -30,5 +30,6 @@
   --route-heading-ink: #243d2c;      /* 大标题 H2：深墨冷森绿，沉稳厚重 */
   --route-marker-bg: #c4c7be;        /* 大标题马克笔：柔和灰鼠绿底涂 */
   --route-subheading-ink: #84382b;   /* 小标题 H3：暖陶土褐红，与墨绿形成自然界赤陶与针叶的鲜明撞色，不相近且典雅克制 */
+  --route-tertiary-ink: #345443;
   --route-watermark: rgba(36, 61, 44, 0.12);
 }

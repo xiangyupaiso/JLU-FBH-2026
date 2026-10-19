@@ -15,6 +15,10 @@
   touch-action: none;
   outline: none;
 }
+/* Keep header controls and their dropdowns above the opening animation. */
+:root[data-home-intro] .site-header.is-home-page {
+  z-index: 103;
+}
 .home-intro-flash,
 .home-intro-embers {
   position: absolute;

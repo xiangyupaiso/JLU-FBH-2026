@@ -189,7 +189,7 @@ export const cycle3Section: WikiSection = {
           {
                     "label": "LGC Biosearch Technologies (n.d.)",
                     "text": "LGC Biosearch Technologies (n.d.) *Ribonuclease R Manual*. Cat. RNR07250.",
-                    "href": "https://biosearchtech.a.bigcontent.io/v1/static/manual_RNR07250_RNase-R?utm_source=chatgpt.com",
+                    "href": "https://biosearchtech.a.bigcontent.io/v1/static/manual_RNR07250_RNase-R",
                     "hrefLabel": "Official manual"
           }
 ]
@@ -825,7 +825,7 @@ export const cycle3Section: WikiSection = {
           {
                     "label": "Dakewe Biotech (n.d.)",
                     "text": "Dakewe Biotech (n.d.) *Human IFN-γ Precoated ELISPOT Kit (strips): instruction manual*. Cat. 2110005, Rev. C/2.",
-                    "href": "https://files.dakewe.cn/crm/instruction/dy/2110005.pdf?utm_source=chatgpt.com",
+                    "href": "https://files.dakewe.cn/crm/instruction/dy/2110005.pdf",
                     "hrefLabel": "Instruction manual"
           }
 ]

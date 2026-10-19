@@ -124,9 +124,9 @@ const overviewSection: WikiSection = {
     },
     {
       type: "figure",
-      src: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-overviewcycle.avif",
+      src: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-overviewcycle-2.avif",
       width: 3000,
-      height: 2100,
+      height: 1169,
       alt: "CirCure TIME Four Connected Cycles Overview",
       caption:
         "Four connected cycles record how CirCure progressed through TIME: Targeting (Cycle 1), Integration (Cycle 2), Measurement (Cycle 3), and Evaluation (Cycle 4).",
@@ -135,7 +135,7 @@ const overviewSection: WikiSection = {
       type: "callout",
       tone: "navy",
       label: "How to read this page",
-      body: "The dial's outer ring selects a TIME cycle, and its inner ring tracks the Design–Build–Test–Learn stage you are reading. The heading identifies the current iteration. Use the side arrows (‹ and ›) alongside the iteration title to move between iterations, or alongside Design, Build, Test, or Learn to switch between stages. You can also scroll to follow the engineering story, or open a TIME letter below and click a small gear to jump directly to an iteration.",
+      body: "The dial's outer ring selects a TIME cycle, and its inner ring tracks the Design–Build–Test–Learn stage you are reading. The heading identifies the current iteration. Use the side arrows (‹ and ›) alongside the iteration title to move between iterations, or alongside Design, Build, Test, or Learn to switch between stages. You can also scroll to follow the engineering story, or open a TIME letter below and click a small gear to jump directly to an iteration. The Introduction and Outcome gears at the beginning and end of each cycle's menu jump to its opening context and closing summary.",
     },
   ],
 };

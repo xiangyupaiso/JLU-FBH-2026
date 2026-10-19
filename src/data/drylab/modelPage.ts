@@ -430,6 +430,12 @@ const manuscriptSections: WikiPageContent["sections"] = [
         ]
       },
       {
+        "type": "prose",
+        "paragraphs": [
+          "**Table 3.** Differential protein abundance results from PXD024322 cohort."
+        ]
+      },
+      {
         "type": "table",
         "headers": [
           "**Antigen**",
@@ -467,12 +473,6 @@ const manuscriptSections: WikiPageContent["sections"] = [
             "1.34",
             "1.88 × 10−5"
           ]
-        ]
-      },
-      {
-        "type": "prose",
-        "paragraphs": [
-          "**Table 3.** Differential protein abundance results from PXD024322 cohort."
         ]
       },
       {
@@ -516,6 +516,12 @@ const manuscriptSections: WikiPageContent["sections"] = [
         ]
       },
       {
+        "type": "prose",
+        "paragraphs": [
+          "**Table 4.** Paired tumor-to-normal fold changes from PXD028102 cohort."
+        ]
+      },
+      {
         "type": "table",
         "headers": [
           "**Antigen**",
@@ -542,12 +548,6 @@ const manuscriptSections: WikiPageContent["sections"] = [
             "7.12",
             "2.13 × 10−11"
           ]
-        ]
-      },
-      {
-        "type": "prose",
-        "paragraphs": [
-          "**Table 4.** Paired tumor-to-normal fold changes from PXD028102 cohort."
         ]
       },
       {
@@ -643,6 +643,12 @@ const manuscriptSections: WikiPageContent["sections"] = [
         ]
       },
       {
+        "type": "prose",
+        "paragraphs": [
+          "**Table 5.** Single-cell detection rates and fold changes for candidate genes across cell types."
+        ]
+      },
+      {
         "type": "table",
         "headers": [
           "**Gene**",
@@ -695,12 +701,6 @@ const manuscriptSections: WikiPageContent["sections"] = [
       {
         "type": "prose",
         "paragraphs": [
-          "**Table 5.** Single-cell detection rates and fold changes for candidate genes across cell types."
-        ]
-      },
-      {
-        "type": "prose",
-        "paragraphs": [
           "Detection rates are the fractions of cells with at least one raw count for the gene after pooling cells from the 10 TNBC patients within each group. These pooled rates are descriptive. The log2 fold changes and FDR values retain their patient-aware malignant-versus-combined-immune-and-stromal comparison."
         ]
       },
@@ -742,8 +742,9 @@ const manuscriptSections: WikiPageContent["sections"] = [
       },
       {
         "type": "figure",
-        "src": getModelImage("pipeline Sc (1).png"), "width": 3000, "height": 2100,
-        "alt": "At least one candidate gene was detected in 81.4% of malignant cells"
+        "src": getModelImage("pipeline Sc (1).png"), "width": 800, "height": 560,
+        "alt": "Single-cell RNA sequencing workflow across TNBC samples",
+        "caption": "Single-cell RNA sequencing workflow across 10 TNBC samples, identifying candidate gene expression in 81.4% of malignant cells."
       },
       {
         "type": "feature",
@@ -787,6 +788,12 @@ const manuscriptSections: WikiPageContent["sections"] = [
         ]
       },
       {
+        "type": "prose",
+        "paragraphs": [
+          "**Table 6.** Genomic coverage of individual antigens and four-antigen panel in TCGA TNBC patients."
+        ]
+      },
+      {
         "type": "table",
         "headers": [
           "**Antigen**",
@@ -819,12 +826,6 @@ const manuscriptSections: WikiPageContent["sections"] = [
             "—",
             "101/115, 88%"
           ]
-        ]
-      },
-      {
-        "type": "prose",
-        "paragraphs": [
-          "**Table 6.** Genomic coverage of individual antigens and four-antigen panel in TCGA TNBC patients."
         ]
       },
       {
@@ -954,6 +955,12 @@ const manuscriptSections: WikiPageContent["sections"] = [
         ]
       },
       {
+        "type": "prose",
+        "paragraphs": [
+          "**Table 7.** Epitope screening results across filtering stages for four antigens."
+        ]
+      },
+      {
         "type": "table",
         "headers": [
           "**Screening stage**",
@@ -999,12 +1006,6 @@ const manuscriptSections: WikiPageContent["sections"] = [
         ]
       },
       {
-        "type": "prose",
-        "paragraphs": [
-          "**Table 7.** Epitope screening results across filtering stages for four antigens."
-        ]
-      },
-      {
         "type": "subheading",
         "id": "model-heading-37",
         "index": "3.2.1.3",
@@ -1024,19 +1025,19 @@ const manuscriptSections: WikiPageContent["sections"] = [
         ]
       },
       {
-        "type": "feature",
-        "key": "model-panel-9"
-      },
-      {
         "type": "prose",
         "paragraphs": [
           "**Table 8.** IEDB predictions and topology review for 51 numerically filtered peptides."
         ]
       },
       {
+        "type": "feature",
+        "key": "model-panel-9"
+      },
+      {
         "type": "prose",
         "paragraphs": [
-          "The final panel contained **17 peptides**: four from TROP2, two from B7-H4, six from Nectin-4, and five from LIV-1. The table records the topology annotation and the final panel decision for each of the **51 numerically filtered peptides**.table"
+          "The final panel contained **17 peptides**: four from TROP2, two from B7-H4, six from Nectin-4, and five from LIV-1. The table records the topology annotation and the final panel decision for each of the **51 numerically filtered peptides**."
         ]
       },
       {
@@ -1047,8 +1048,9 @@ const manuscriptSections: WikiPageContent["sections"] = [
       },
       {
         "type": "figure",
-        "src": getModelImage("IEDB pipeline (1).png"), "width": 1538, "height": 1791,
-        "alt": "IEDB inputs, parameters, and filtering rules"
+        "src": getModelImage("IEDB pipeline (1).png"), "width": 680, "height": 792,
+        "alt": "IEDB inputs, parameters, and filtering rules",
+        "caption": "IEDB inputs, parameters, and filtering rules for candidate epitope prediction and topological screening."
       },
       {
         "type": "feature",
@@ -1155,7 +1157,7 @@ const manuscriptSections: WikiPageContent["sections"] = [
       {
         "type": "prose",
         "paragraphs": [
-          "Figure 18 summarizes side-chain burial by position across the 17 candidates. The anchor positions are most buried, while several central side chains remain more exposed toward the T-cell receptor."
+          "The interactive heatmap below summarizes side-chain burial by position across the 17 candidates. The anchor positions are most buried, while several central side chains remain more exposed toward the T-cell receptor."
         ]
       },
       {
@@ -1177,7 +1179,7 @@ const manuscriptSections: WikiPageContent["sections"] = [
       {
         "type": "prose",
         "paragraphs": [
-          "**Figure 18,** Per-position side-chain burial for 17 epitopes across five models."
+          "**Heatmap Overview:** Per-position side-chain burial for 17 epitopes across five models."
         ]
       },
       {
@@ -1226,7 +1228,7 @@ const manuscriptSections: WikiPageContent["sections"] = [
       {
         "type": "prose",
         "paragraphs": [
-          "We therefore used absolute buried area for position 9 and expressed it relative to a leucine anchor side chain: fill ratio = absolute buried area of the position-9 side chain ÷ 140 Å². Two candidates fell below the criterion: FLAEASVRG at 0.0% and HILHVSFLA at 42.9% (Figure 20). Both were rejected at this tier."
+          "We therefore used absolute buried area for position 9 and expressed it relative to a leucine anchor side chain: fill ratio = absolute buried area of the position-9 side chain ÷ 140 Å². Two candidates fell below the criterion: FLAEASVRG at 0.0% and HILHVSFLA at 42.9% (chart below). Both were rejected at this tier."
         ]
       },
       {
@@ -1240,7 +1242,7 @@ const manuscriptSections: WikiPageContent["sections"] = [
       {
         "type": "prose",
         "paragraphs": [
-          "**Figure 20,** Absolute buried area of position-9 side chain for 17 systems."
+          "**Volume Distribution:** Absolute buried area of position-9 side chain for 17 systems."
         ]
       },
       {
@@ -1253,7 +1255,7 @@ const manuscriptSections: WikiPageContent["sections"] = [
       {
         "type": "prose",
         "paragraphs": [
-          "**Acceptance criteria**"
+          "**Table 11.** Acceptance criteria for structural tier validation."
         ]
       },
       {
@@ -1299,19 +1301,14 @@ const manuscriptSections: WikiPageContent["sections"] = [
       {
         "type": "prose",
         "paragraphs": [
-          "**Table 11.** Acceptance criteria for structural tier validation."
-        ]
-      },
-      {
-        "type": "prose",
-        "paragraphs": [
           "Under these criteria, **2 of the 17 candidates failed**. **FLAEASVRG** has glycine at position 9 and therefore no side chain to fill the F pocket; all five models failed this criterion. **HILHVSFLA** has alanine at position 9 and a fill ratio of 42.9%, below the lower bound. **The other 15 candidates passed all six criteria**."
         ]
       },
       {
         "type": "prose",
         "paragraphs": [
-          "**Results**"
+          "**Results**",
+          "**Table 12.** Structural QC results for 17 peptide-MHC systems across five models."
         ]
       },
       {
@@ -1500,12 +1497,6 @@ const manuscriptSections: WikiPageContent["sections"] = [
         ]
       },
       {
-        "type": "prose",
-        "paragraphs": [
-          "**Table 12.** Structural QC results for 17 peptide-MHC systems across five models."
-        ]
-      },
-      {
         "type": "subheading",
         "id": "model-heading-46",
         "index": "3.2.2.9",
@@ -1589,7 +1580,8 @@ const manuscriptSections: WikiPageContent["sections"] = [
       {
         "type": "prose",
         "paragraphs": [
-          "The following inventory defines the reproducibility package for this page and keeps each conclusion connected to its input, parameter set, and output."
+          "The following inventory defines the reproducibility package for this page and keeps each conclusion connected to its input, parameter set, and output.",
+          "**Table 14.** Reproducibility package for AEIP showing public inputs, key parameters, and team outputs for each component."
         ]
       },
       {
@@ -1637,12 +1629,6 @@ const manuscriptSections: WikiPageContent["sections"] = [
             "85 models total, AlphaFold 3 job requests, ModelCIF format, confidence scoring method",
             "ModelCIF and confidence files for all 85 models, per-model and per-system result tables, data and scripts for Figures 15–18, analysis pipeline"
           ]
-        ]
-      },
-      {
-        "type": "prose",
-        "paragraphs": [
-          "**Table 14.** Reproducibility package for AEIP showing public inputs, key parameters, and team outputs for each component."
         ]
       },
       {
@@ -1716,7 +1702,8 @@ const manuscriptSections: WikiPageContent["sections"] = [
       {
         "type": "prose",
         "paragraphs": [
-          "Each module has **explicit inputs, outputs, and interfaces**, allowing **experimental readouts** to inform specific stages while keeping **unmeasured assumptions** visible."
+          "Each module has **explicit inputs, outputs, and interfaces**, allowing **experimental readouts** to inform specific stages while keeping **unmeasured assumptions** visible.",
+          "**Table 15.** Module functions and interfaces connecting cell experiments to dose recommendations."
         ]
       },
       {
@@ -1773,12 +1760,6 @@ const manuscriptSections: WikiPageContent["sections"] = [
         ]
       },
       {
-        "type": "prose",
-        "paragraphs": [
-          "**Table 15.** Module functions and interfaces connecting cell experiments to dose recommendations."
-        ]
-      },
-      {
         "type": "subheading",
         "id": "model-heading-51",
         "index": "4.1.2",
@@ -1788,7 +1769,8 @@ const manuscriptSections: WikiPageContent["sections"] = [
       {
         "type": "prose",
         "paragraphs": [
-          "The model distinguishes **three types of evidence**: **observations** are recorded experimental values; **calibration** constrains response functions using those values; **conditional simulations** calculate outcomes under declared parameter and structural assumptions. Simulation intervals represent the **2.5th–97.5th percentiles** across parameter draws unless stated otherwise."
+          "The model distinguishes **three types of evidence**: **observations** are recorded experimental values; **calibration** constrains response functions using those values; **conditional simulations** calculate outcomes under declared parameter and structural assumptions. Simulation intervals represent the **2.5th–97.5th percentiles** across parameter draws unless stated otherwise.",
+          "**Table 16.** Model state variables and their biological interpretations."
         ]
       },
       {
@@ -1824,12 +1806,6 @@ const manuscriptSections: WikiPageContent["sections"] = [
             "Integrated blood payload and integrated observable tumor volume; μg·day and mm³·day",
             "The code variable AUC_B integrates V, not latent B"
           ]
-        ]
-      },
-      {
-        "type": "prose",
-        "paragraphs": [
-          "**Table 16.** Model state variables and their biological interpretations."
         ]
       },
       {
@@ -1910,7 +1886,7 @@ const manuscriptSections: WikiPageContent["sections"] = [
       {
         "type": "prose",
         "paragraphs": [
-          "$$V_{cell}(x)=\\frac{b}{1+(x/E_{50})^h},\\qquadK_{specific}(r)=\\frac{1}{1+(K_{ET}/r)^n}.$$"
+          "$$V_{cell}(x)=\\frac{b}{1+(x/E_{50})^h},\\qquad K_{specific}(r)=\\frac{1}{1+(K_{ET}/r)^n}.$$"
         ]
       },
       {
@@ -1947,6 +1923,12 @@ const manuscriptSections: WikiPageContent["sections"] = [
         "index": "4.2.3",
         "title": "Results and Interpretation",
         "level": 4
+      },
+      {
+        "type": "prose",
+        "paragraphs": [
+          "**Table 17.** Cell calibration parameters and evidence levels."
+        ]
       },
       {
         "type": "table",
@@ -1987,12 +1969,6 @@ const manuscriptSections: WikiPageContent["sections"] = [
             "1.15–1.99",
             "Steepness of the killing response"
           ]
-        ]
-      },
-      {
-        "type": "prose",
-        "paragraphs": [
-          "**Table 17.** Cell calibration parameters and evidence levels."
         ]
       },
       {
@@ -2514,7 +2490,8 @@ const manuscriptSections: WikiPageContent["sections"] = [
       {
         "type": "prose",
         "paragraphs": [
-          "We define **four criteria** that **each parameter draw** must satisfy:"
+          "We define **four criteria** that **each parameter draw** must satisfy:",
+          "**Table 19.** Joint screening criteria applied in conditional dose selection."
         ]
       },
       {
@@ -2545,12 +2522,6 @@ const manuscriptSections: WikiPageContent["sections"] = [
             "∫Cdt ≤ AUC_limit",
             "Systemic exposure screening (draw-specific limit)"
           ]
-        ]
-      },
-      {
-        "type": "prose",
-        "paragraphs": [
-          "**Table 19.** Joint screening criteria applied in conditional dose selection."
         ]
       },
       {
@@ -2801,6 +2772,12 @@ const manuscriptSections: WikiPageContent["sections"] = [
         "level": 4
       },
       {
+        "type": "prose",
+        "paragraphs": [
+          "**Table 22.** Computational verification checks confirming model consistency and numerical stability."
+        ]
+      },
+      {
         "type": "table",
         "headers": [
           "Check",
@@ -2838,12 +2815,6 @@ const manuscriptSections: WikiPageContent["sections"] = [
             "Logistic efficacy-pass fraction 0.78",
             "Passing the default rule does not ensure passage across structures"
           ]
-        ]
-      },
-      {
-        "type": "prose",
-        "paragraphs": [
-          "**Table 22.** Computational verification checks confirming model consistency and numerical stability."
         ]
       },
       {
@@ -2942,7 +2913,8 @@ const manuscriptSections: WikiPageContent["sections"] = [
       {
         "type": "prose",
         "paragraphs": [
-          "The model completes a **computational cycle**: define the question (**dose selection under uncertainty**), construct the **mechanistic chain** (Modules 1–5), test **internal consistency** (Module 7), and learn what matters most (**sensitivity analysis**). Each step links to **inspectable outputs** and generates predictions for the **next experimental cycle**."
+          "The model completes a **computational cycle**: define the question (**dose selection under uncertainty**), construct the **mechanistic chain** (Modules 1–5), test **internal consistency** (Module 7), and learn what matters most (**sensitivity analysis**). Each step links to **inspectable outputs** and generates predictions for the **next experimental cycle**.",
+          "**Table 23.** Computational development timeline and key modeling decisions."
         ]
       },
       {
@@ -2978,12 +2950,6 @@ const manuscriptSections: WikiPageContent["sections"] = [
       {
         "type": "prose",
         "paragraphs": [
-          "**Table 23.** Computational development timeline and key modeling decisions."
-        ]
-      },
-      {
-        "type": "prose",
-        "paragraphs": [
           "Whether a particular animal experiment **adopted the model recommendation** requires **contemporaneous decision and dosing records**. This table documents **computational development**; the project's Engineering and Experiments pages provide the **experimental context**."
         ]
       },
@@ -2997,7 +2963,8 @@ const manuscriptSections: WikiPageContent["sections"] = [
       {
         "type": "prose",
         "paragraphs": [
-          "We distinguish **frozen outputs** (generated before animal data), **new scenarios** (extensions for this revision), and **independent replications** (repeating already-observed patterns).  **Before formal testing**, fix sample mappings, **measurement error**, **temporal resolution**, and **rejection tolerances**."
+          "We distinguish **frozen outputs** (generated before animal data), **new scenarios** (extensions for this revision), and **independent replications** (repeating already-observed patterns).  **Before formal testing**, fix sample mappings, **measurement error**, **temporal resolution**, and **rejection tolerances**.",
+          "**Table 24.** Register of falsifiable predictions made before observing animal data."
         ]
       },
       {
@@ -3050,12 +3017,6 @@ const manuscriptSections: WikiPageContent["sections"] = [
       {
         "type": "prose",
         "paragraphs": [
-          "**Table 24.** Register of falsifiable predictions made before observing animal data."
-        ]
-      },
-      {
-        "type": "prose",
-        "paragraphs": [
           "Example doses are **model-derived research design candidates**, to be reconciled with **experimental feasibility** and **approved protocols**."
         ]
       },
@@ -3069,7 +3030,8 @@ const manuscriptSections: WikiPageContent["sections"] = [
       {
         "type": "prose",
         "paragraphs": [
-          "Tumor size is the **combined output** of the mechanistic chain. With only **final measurements**, **inadequate delivery**, **low expression**, **limited presentation**, **weak killing**, or faster growth can produce similar outcomes. The model separates these possibilities and assigns **discriminating readouts** to each stage."
+          "Tumor size is the **combined output** of the mechanistic chain. With only **final measurements**, **inadequate delivery**, **low expression**, **limited presentation**, **weak killing**, or faster growth can produce similar outcomes. The model separates these possibilities and assigns **discriminating readouts** to each stage.",
+          "**Table 25.** Stage-specific measurements to discriminate between possible causes of treatment failure."
         ]
       },
       {
@@ -3105,12 +3067,6 @@ const manuscriptSections: WikiPageContent["sections"] = [
             "Fast growth",
             "Untreated longitudinal growth curve"
           ]
-        ]
-      },
-      {
-        "type": "prose",
-        "paragraphs": [
-          "**Table 25.** Stage-specific measurements to discriminate between possible causes of treatment failure."
         ]
       },
       {
@@ -3255,7 +3211,8 @@ const manuscriptSections: WikiPageContent["sections"] = [
       {
         "type": "prose",
         "paragraphs": [
-          "**16 structural factors propagated by Latin hypercube sampling**"
+          "**16 structural factors propagated by Latin hypercube sampling**",
+          "**Table 26.** Parameter summary showing 16 structural factors with distributions, units, and conditional sensitivity indices."
         ]
       },
       {
@@ -3392,13 +3349,8 @@ const manuscriptSections: WikiPageContent["sections"] = [
       {
         "type": "prose",
         "paragraphs": [
-          "**Table 26.** Parameter summary showing 16 structural factors with distributions, units, and conditional sensitivity indices."
-        ]
-      },
-      {
-        "type": "prose",
-        "paragraphs": [
-          "**20 fixed constants**"
+          "**20 fixed constants**",
+          "**Table 27.** Fixed constants with values, units, and structural assumptions not propagated in uncertainty analysis."
         ]
       },
       {
@@ -3551,12 +3503,6 @@ const manuscriptSections: WikiPageContent["sections"] = [
             "Fixed switch; Host adaptive-effector pathway",
             "NA"
           ]
-        ]
-      },
-      {
-        "type": "prose",
-        "paragraphs": [
-          "**Table 27.** Fixed constants with values, units, and structural assumptions not propagated in uncertainty analysis."
         ]
       }
     ]
@@ -4183,7 +4129,8 @@ const manuscriptSections: WikiPageContent["sections"] = [
       {
         "type": "prose",
         "paragraphs": [
-          "However, these effects are conditional. We conducted gate-parameter analysis across three scenarios:"
+          "However, these effects are conditional. We conducted gate-parameter analysis across three scenarios:",
+          "**Table 28.** Gate scenario comparison showing ecological SDG impacts under reference, fossil-intensive, and green pathways."
         ]
       },
       {
@@ -4221,12 +4168,6 @@ const manuscriptSections: WikiPageContent["sections"] = [
             "0.77",
             "5.87"
           ]
-        ]
-      },
-      {
-        "type": "prose",
-        "paragraphs": [
-          "**Table 28.** Gate scenario comparison showing ecological SDG impacts under reference, fossil-intensive, and green pathways."
         ]
       },
       {
@@ -4421,7 +4362,8 @@ const manuscriptSections: WikiPageContent["sections"] = [
       {
         "type": "prose",
         "paragraphs": [
-          "Results for key SDGs (median [90% **credible interval**]):"
+          "Results for key SDGs (median [90% **credible interval**]):",
+          "**Table 29.** Total SDG impact indices for CirCure with median values, 90% intervals, and negative probabilities."
         ]
       },
       {
@@ -4480,12 +4422,6 @@ const manuscriptSections: WikiPageContent["sections"] = [
       {
         "type": "prose",
         "paragraphs": [
-          "**Table 29.** Total SDG impact indices for CirCure with median values, 90% intervals, and negative probabilities."
-        ]
-      },
-      {
-        "type": "prose",
-        "paragraphs": [
           "**Ranking stability:** We computed how often each SDG maintains its position across simulations. Top-three beneficiaries (SDG 4/9/3) hold their ranks in 89%, 76%, and 82% of simulations respectively—highly stable. SDG 1 (Poverty) and SDG 8 (Employment) appear in positions 8-12 with wider variance, reflecting that their effects emerge through longer propagation chains where **uncertainty** accumulates."
         ]
       },
@@ -4511,7 +4447,8 @@ const manuscriptSections: WikiPageContent["sections"] = [
       {
         "type": "prose",
         "paragraphs": [
-          "Results across scenarios:"
+          "Results across scenarios:",
+          "**Table 30.** SDG impact indices across three gate scenarios showing sensitivity to manufacturing pathway choices."
         ]
       },
       {
@@ -4559,12 +4496,6 @@ const manuscriptSections: WikiPageContent["sections"] = [
             "2.15",
             "5.87"
           ]
-        ]
-      },
-      {
-        "type": "prose",
-        "paragraphs": [
-          "**Table 30.** SDG impact indices across three gate scenarios showing sensitivity to manufacturing pathway choices."
         ]
       },
       {
@@ -4661,6 +4592,12 @@ export const modelPanels: Record<string, ModelPanel> = {
     "kind": "fold",
     "title": "Complete scoring table for all evaluated antigens",
     "blocks": [
+      {
+        "type": "prose",
+        "paragraphs": [
+          "**Table 2.** Complete scoring table for all evaluated antigens."
+        ]
+      },
       {
         "type": "table",
         "headers": [
@@ -4977,12 +4914,6 @@ export const modelPanels: Record<string, ModelPanel> = {
             "1"
           ]
         ]
-      },
-      {
-        "type": "prose",
-        "paragraphs": [
-          "**Table 2.** Complete scoring table for all evaluated antigens."
-        ]
       }
     ]
   },
@@ -5001,7 +4932,7 @@ export const modelPanels: Record<string, ModelPanel> = {
           },
           {
             "type": "figure",
-            "src": getModelImage("image 28.png"), "width": 711, "height": 690,
+            "src": getModelImage("image 28.png"), "width": 350, "height": 340,
             "alt": "**Figure 2,** Survival curves compare low and high TROP2 expression groups. Black and red indicate the respective groups (Li et al., 2025)."
           },
           {
@@ -5029,7 +4960,7 @@ export const modelPanels: Record<string, ModelPanel> = {
           },
           {
             "type": "figure",
-            "src": getModelImage("image 19.png"), "width": 890, "height": 720,
+            "src": getModelImage("image 19.png"), "width": 350, "height": 283,
             "alt": "**Figure 3,** The plot presents overall survival according to B7-H4 expression. Group assignment is based on tumour immunostaining (Wang et al., 2018)."
           },
           {
@@ -5085,7 +5016,7 @@ export const modelPanels: Record<string, ModelPanel> = {
           },
           {
             "type": "figure",
-            "src": getModelImage("image 17.png"), "width": 1099, "height": 1109,
+            "src": getModelImage("image 17.png"), "width": 350, "height": 353,
             "alt": "**Figure 5,** Three survival curves represent different LIV-1 staining intensities. Crosses indicate censored observations (Saravanan et al., 2024)."
           },
           {
@@ -5293,15 +5224,15 @@ export const modelPanels: Record<string, ModelPanel> = {
             "level": 4
           },
           {
+            "type": "figure",
+            "src": getModelImage("image 16.png"), "width": 685, "height": 168,
+            "alt": "Representative Published Tissue Images"
+          },
+          {
             "type": "prose",
             "paragraphs": [
               "**Figure 13,** Published TROP2 immunohistochemistry in TNBC. The original figure shows intermediate and high TROP2 staining, with cytoplasmic, membranous, or combined localization and heterogeneity across tumor tissue.(Izci et al., 2022)."
             ]
-          },
-          {
-            "type": "figure",
-            "src": getModelImage("image 16.png"), "width": 685, "height": 168,
-            "alt": "Representative Published Tissue Images"
           },
           {
             "type": "subheading",
@@ -5343,15 +5274,15 @@ export const modelPanels: Record<string, ModelPanel> = {
             "level": 4
           },
           {
+            "type": "figure",
+            "src": getModelImage("image 5.png"), "width": 685, "height": 303,
+            "alt": "Representative Published Tissue Images"
+          },
+          {
             "type": "prose",
             "paragraphs": [
               "**Figure 14,** Published B7-H4 immunohistochemistry in TNBC and normal breast tissue. Panel 1d of the original figure compares B7-H4 staining in TNBC tissue with normal breast tissue at 200× magnification. (Wang et al., 2018)."
             ]
-          },
-          {
-            "type": "figure",
-            "src": getModelImage("image 5.png"), "width": 685, "height": 303,
-            "alt": "Representative Published Tissue Images"
           },
           {
             "type": "subheading",
@@ -5394,15 +5325,15 @@ export const modelPanels: Record<string, ModelPanel> = {
             "level": 4
           },
           {
+            "type": "figure",
+            "src": getModelImage("image 3.png"), "width": 1418, "height": 356,
+            "alt": "Representative Published Tissue Images"
+          },
+          {
             "type": "prose",
             "paragraphs": [
               "**Figure 15,** Published Nectin-4 immunohistochemistry in TNBC. The three panels show strong, moderate, and negative Nectin-4 staining in TNBC tissue at 200× magnification. (Zeindler et al., 2019)."
             ]
-          },
-          {
-            "type": "figure",
-            "src": getModelImage("image 3.png"), "width": 1418, "height": 356,
-            "alt": "Representative Published Tissue Images"
           },
           {
             "type": "subheading",
@@ -5444,15 +5375,15 @@ export const modelPanels: Record<string, ModelPanel> = {
             "level": 4
           },
           {
+            "type": "figure",
+            "src": getModelImage("image 26.png"), "width": 685, "height": 341,
+            "alt": "Representative Published Tissue Images"
+          },
+          {
             "type": "prose",
             "paragraphs": [
               "**Figure 16,** Open-access SLC39A6 immunohistochemistry. Panel A shows positive staining in the cytoplasm and nuclei of invasive breast-cancer epithelial cells, and panel B shows negative staining. (Althobiti et al., 2021)."
             ]
-          },
-          {
-            "type": "figure",
-            "src": getModelImage("image 26.png"), "width": 685, "height": 341,
-            "alt": "Representative Published Tissue Images"
           },
           {
             "type": "subheading",
@@ -5988,7 +5919,8 @@ export const modelPanels: Record<string, ModelPanel> = {
           {
             "type": "prose",
             "paragraphs": [
-              "The following settings were entered in the IEDB prediction page for each protein:"
+              "The following settings were entered in the IEDB prediction page for each protein:",
+              "**Table 9.** IEDB parameter configuration for epitope prediction."
             ]
           },
           {
@@ -6044,12 +5976,6 @@ export const modelPanels: Record<string, ModelPanel> = {
                 "Positions 1, 2, and C terminus masked",
                 "Supplies the second numerical gate after masking the principal HLA anchor positions (**Calis et al., 2013**)"
               ]
-            ]
-          },
-          {
-            "type": "prose",
-            "paragraphs": [
-              "**Table 9.** IEDB parameter configuration for epitope prediction."
             ]
           },
           {
@@ -6111,7 +6037,8 @@ export const modelPanels: Record<string, ModelPanel> = {
       {
         "type": "prose",
         "paragraphs": [
-          "The C-terminal anchor motif of HLA-A*02:01 is valine or leucine, with isoleucine and methionine within tolerance (Falk et al., 1991); the measured fill volume of leucine and isoleucine in this dataset is 139.5 to 143.8 Å², and 140 Å² is taken as the reference."
+          "The C-terminal anchor motif of HLA-A*02:01 is valine or leucine, with isoleucine and methionine within tolerance (Falk et al., 1991); the measured fill volume of leucine and isoleucine in this dataset is 139.5 to 143.8 Å², and 140 Å² is taken as the reference.",
+          "**Table 10.** Fill volume by anchor residue type at position 9."
         ]
       },
       {
@@ -6159,12 +6086,6 @@ export const modelPanels: Record<string, ModelPanel> = {
             "173.3 ± 0.5",
             "123.8"
           ]
-        ]
-      },
-      {
-        "type": "prose",
-        "paragraphs": [
-          "**Table 10.** Fill volume by anchor residue type at position 9."
         ]
       },
       {
@@ -6389,14 +6310,14 @@ export const modelPanels: Record<string, ModelPanel> = {
         ]
       },
       {
-        "type": "feature",
-        "key": "model-panel-15"
-      },
-      {
         "type": "prose",
         "paragraphs": [
           "**Table 13.** Per-model measurements for SVCWCVNSV epitope."
         ]
+      },
+      {
+        "type": "feature",
+        "key": "model-panel-15"
       },
       {
         "type": "prose",
@@ -6527,7 +6448,7 @@ export const modelPanels: Record<string, ModelPanel> = {
       {
         "type": "prose",
         "paragraphs": [
-          "$$L(t)=\\frac{f_{lymph}qk_{sc}}{k_{lymph}-k_{sc}}\\left(e^{-k_{sc}t}-e^{-k_{lymph}t}\\right),\\qquadt_{peak}=\\frac{\\log(k_{lymph}/k_{sc})}{k_{lymph}-k_{sc}}.$$"
+          "$$L(t)=\\frac{f_{lymph}qk_{sc}}{k_{lymph}-k_{sc}}\\left(e^{-k_{sc}t}-e^{-k_{lymph}t}\\right),\\qquad t_{peak}=\\frac{\\log(k_{lymph}/k_{sc})}{k_{lymph}-k_{sc}}.$$"
         ]
       },
       {
@@ -6545,7 +6466,8 @@ export const modelPanels: Record<string, ModelPanel> = {
       {
         "type": "prose",
         "paragraphs": [
-          "Expand: schedules, paired comparisons and numerical checks"
+          "Expand: schedules, paired comparisons and numerical checks",
+          "**Table 18.** Alternative dosing schedule scenarios."
         ]
       },
       {
@@ -6575,12 +6497,6 @@ export const modelPanels: Record<string, ModelPanel> = {
             "0.7783",
             "day 47 / 0.7783"
           ]
-        ]
-      },
-      {
-        "type": "prose",
-        "paragraphs": [
-          "**Table 18.** Alternative dosing schedule scenarios."
         ]
       },
       {
@@ -6616,7 +6532,7 @@ export const modelPanels: Record<string, ModelPanel> = {
       {
         "type": "prose",
         "paragraphs": [
-          "$$g_{tr}(I)=\\frac{1}{1+(I/I_{translation})^2},\\quadg_{over}(I)=\\frac{1}{1+(I/I_{overactivation})^2},\\quadF(I)=\\frac{I}{K_I+I}g_{over}(I).$$"
+          "$$g_{tr}(I)=\\frac{1}{1+(I/I_{translation})^2},\\quad g_{over}(I)=\\frac{1}{1+(I/I_{overactivation})^2},\\quad F(I)=\\frac{I}{K_I+I}g_{over}(I).$$"
         ]
       },
       {
@@ -6706,7 +6622,7 @@ export const modelPanels: Record<string, ModelPanel> = {
       {
         "type": "prose",
         "paragraphs": [
-          "$$\\begin{aligned}\\dot D&=k_Ddc_{fold}F(I)v(S)(1-D)-d_DD,\\\\dot P&=k_P\\frac{A}{K_A+A}Dv(S)(1-P)-d_PP,\\\\dot X&=s_X\\left(\\frac{B}{K_{X,tumor}+B}+\\frac{I}{1+I}\\right)-d_XX.\\end{aligned}$$"
+          "$$\\begin{aligned}\\dot D&=k_Ddc_{fold}F(I)v(S)(1-D)-d_DD,\\\\ \\dot P&=k_P\\frac{A}{K_A+A}Dv(S)(1-P)-d_PP,\\\\ \\dot X&=s_X\\left(\\frac{B}{K_{X,tumor}+B}+\\frac{I}{1+I}\\right)-d_XX.\\end{aligned}$$"
         ]
       },
       {
@@ -6844,6 +6760,12 @@ export const modelPanels: Record<string, ModelPanel> = {
         "level": 4
       },
       {
+        "type": "prose",
+        "paragraphs": [
+          "**Table 20.** Screening conditions with definitions and current interpretations for dose optimization."
+        ]
+      },
+      {
         "type": "table",
         "headers": [
           "Condition",
@@ -6896,12 +6818,6 @@ export const modelPanels: Record<string, ModelPanel> = {
             "",
             ""
           ]
-        ]
-      },
-      {
-        "type": "prose",
-        "paragraphs": [
-          "**Table 20.** Screening conditions with definitions and current interpretations for dose optimization."
         ]
       },
       {
@@ -6993,7 +6909,8 @@ export const modelPanels: Record<string, ModelPanel> = {
       {
         "type": "prose",
         "paragraphs": [
-          "Expand: fixed values, passing sets, paired changes"
+          "Expand: fixed values, passing sets, paired changes",
+          "**Table 21.** Scenario analysis comparing dose optimization outcomes under different fixed parameter assumptions."
         ]
       },
       {
@@ -7059,12 +6976,6 @@ export const modelPanels: Record<string, ModelPanel> = {
             "6.13",
             "1723"
           ]
-        ]
-      },
-      {
-        "type": "prose",
-        "paragraphs": [
-          "**Table 21.** Scenario analysis comparing dose optimization outcomes under different fixed parameter assumptions."
         ]
       },
       {

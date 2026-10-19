@@ -211,11 +211,9 @@ export interface WikiSection {
    */
   showKicker?: boolean;
   /**
-   * Drops the section number from the heading. Used for blocks that are not
-   * numbered chapters — e.g. the Games station map, which is a route diagram,
-   * so the numbered record starts with the first playable project below it.
-   * Honoured by the reader-route template (`WikiRoutePage`); the Wet Lab
-   * manuscript template ignores it, and no Wet Lab section sets it.
+   * Excludes the section from the reader's chapter numbering, in both the
+   * heading and the outline. Overview and preceding sections are automatically
+   * excluded by `numberWikiSections`; this flag covers other unnumbered content.
    */
   hideSectionNumber?: boolean;
   /**

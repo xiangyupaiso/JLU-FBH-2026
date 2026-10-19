@@ -329,22 +329,52 @@ export function modelFeatures(): Record<string, ReactNode> {
       />
     ),
     "model-downloads": (
-      <ul className="model-downloads">
-        {modelDownloads.map((file) => (
-          <li key={file.path}>
+      <div className="model-download-card">
+        <div className="model-download-card__header">
+          <svg
+            className="model-download-card__icon"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+            <polyline points="7 10 12 15 17 10" />
+            <line x1="12" y1="15" x2="12" y2="3" />
+          </svg>
+          <div>
+            <h4 className="model-download-card__title">
+              Reproducibility Package & Dataset Downloads
+            </h4>
+            <p className="model-download-card__desc">
+              All raw batch execution logs, AlphaFold 3 model files, contact network tables, SASA determinations, and differential expression CSV outputs.
+            </p>
+          </div>
+        </div>
+        <div className="model-download-card__grid">
+          {modelDownloads.map((file) => (
             <a
+              key={file.path}
+              className="model-download-card__item"
               href={
                 file.path.startsWith("https://")
                   ? file.path
                   : `${import.meta.env.BASE_URL}${file.path}`
               }
               download
+              title={`Download ${file.label}`}
             >
-              {file.label}
+              <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor">
+                <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z" />
+                <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z" />
+              </svg>
+              <span>{file.label}</span>
             </a>
-          </li>
-        ))}
-      </ul>
+          ))}
+        </div>
+      </div>
     ),
   };
   for (const [key, panel] of Object.entries(modelPanels))

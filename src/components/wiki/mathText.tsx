@@ -73,6 +73,19 @@ const SYMBOLS: Record<string, string> = {
   Phi: "Φ",
   Psi: "Ψ",
   Omega: "Ω",
+  Longrightarrow: "⟹",
+  cap: "∩",
+  cup: "∪",
+  mid: "∣",
+  ge: "≥",
+  le: "≤",
+  int: "∫",
+  in: "∈",
+  max: "max",
+  min: "min",
+  log: "log",
+  ln: "ln",
+  exp: "exp",
   quad: "\u2003",
   qquad: "\u2003\u2003",
   "%": "%",
@@ -160,6 +173,10 @@ export function renderMathLatex(input: string): ReactNode {
 
   function parseCommand(italic: boolean): ReactNode[] {
     pos += 1; // consume "\"
+    if (src[pos] === "\\") {
+      pos += 1;
+      return [<br key={nk()} />];
+    }
     const nameMatch = src.slice(pos).match(/^[A-Za-z]+/);
     if (nameMatch) {
       const name = nameMatch[0];
@@ -173,6 +190,46 @@ export function renderMathLatex(input: string): ReactNode {
             <span className="wiki-math__frac-bottom">{bottom}</span>
           </span>,
         ];
+      }
+      if (name === "sqrt") {
+        const arg = readArg(italic);
+        return [
+          <span className="wiki-math__sqrt" key={nk()}>
+            <span className="wiki-math__sqrt-sign">√</span>
+            <span className="wiki-math__sqrt-stem">{arg}</span>
+          </span>,
+        ];
+      }
+      if (name === "dot") {
+        const arg = readArg(italic);
+        return [
+          <span className="wiki-math__accent" key={nk()}>
+            <span className="wiki-math__accent-base">{arg}</span>
+            <span className="wiki-math__accent-symbol">˙</span>
+          </span>,
+        ];
+      }
+      if (name === "hat" || name === "widehat") {
+        const arg = readArg(italic);
+        return [
+          <span className="wiki-math__accent" key={nk()}>
+            <span className="wiki-math__accent-base">{arg}</span>
+            <span className="wiki-math__accent-symbol">^</span>
+          </span>,
+        ];
+      }
+      if (name === "bar" || name === "overline") {
+        const arg = readArg(italic);
+        return [
+          <span className="wiki-math__accent" key={nk()}>
+            <span className="wiki-math__accent-base">{arg}</span>
+            <span className="wiki-math__accent-symbol">¯</span>
+          </span>,
+        ];
+      }
+      if (name === "begin" || name === "end") {
+        readArg(false);
+        return [];
       }
       if (
         name === "text" ||
@@ -218,13 +275,17 @@ export function WikiMath({ latex, display = false }: { latex: string; display?: 
  * `renderInlineFormatting` can delegate each part to the right renderer
  * without a `$` inside a code span being mistaken for a formula delimiter.
  */
-export function splitMathSegments(text: string): Array<{ math: boolean; text: string }> {
-  const parts = text.split(/(`[^`\n]+`|\$[^$\n]+?\$)/g);
+export function splitMathSegments(text: string): Array<{ math: boolean; text: string; display?: boolean }> {
+  const parts = text.split(/(`[^`\n]+`|\${1,2}[^$\n]+?\${1,2})/g);
   return parts
     .filter((part) => part.length > 0)
-    .map((part) =>
-      part.length > 2 && part.startsWith("$") && part.endsWith("$")
-        ? { math: true, text: part.slice(1, -1) }
-        : { math: false, text: part },
-    );
+    .map((part) => {
+      if (part.startsWith("$$") && part.endsWith("$$") && part.length >= 4) {
+        return { math: true, text: part.slice(2, -2), display: true };
+      }
+      if (part.startsWith("$") && part.endsWith("$") && part.length >= 2) {
+        return { math: true, text: part.slice(1, -1) };
+      }
+      return { math: false, text: part };
+    });
 }

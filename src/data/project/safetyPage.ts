@@ -3563,6 +3563,7 @@ export const safetyFeatureSpecs: Record<string, SafetyFeatureSpec> = {
       "3-1-1-1-1-biological-safety-cabinet-cn.avif",
       "3-1-1-1-1-biological-safety-cabinet-ko.avif",
     ],
+    caption: "Biological Safety Cabinet Poster",
   },
   "safety-images-9": {
     kind: "images",
@@ -3572,6 +3573,7 @@ export const safetyFeatureSpecs: Record<string, SafetyFeatureSpec> = {
       "3-1-1-1-2-chemical-fume-hood-cn.avif",
       "3-1-1-1-2-chemical-fume-hood-ko.avif",
     ],
+    caption: "Chemical Fume Hood Poster",
   },
   "safety-images-10": {
     kind: "images",
@@ -3581,6 +3583,7 @@ export const safetyFeatureSpecs: Record<string, SafetyFeatureSpec> = {
       "3-1-2-1-combination-eyewash-station-cn.avif",
       "3-1-2-1-combination-eyewash-station-ko.avif",
     ],
+    caption: "Combination Eyewash Station Poster",
   },
   "safety-images-11": {
     kind: "images",
@@ -3590,6 +3593,7 @@ export const safetyFeatureSpecs: Record<string, SafetyFeatureSpec> = {
       "3-1-3-1-fire-extinguishers-cn.avif",
       "3-1-3-1-fire-extinguishers-ko.avif",
     ],
+    caption: "Fire Extinguisher Poster",
   },
   "safety-folders-12": {
     kind: "folders",

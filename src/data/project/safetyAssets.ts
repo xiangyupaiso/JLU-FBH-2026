@@ -22,6 +22,7 @@ export const safetyAssets = {
     width: 1027,
     height: 626,
     alt: "Safe on framework",
+    caption: "SAFE ON Overview",
   },
   "safe-on-framework.avif": {
     fileName: "0-0safe-on.avif",
@@ -32,6 +33,7 @@ export const safetyAssets = {
     width: 1027,
     height: 626,
     alt: "Safe on framework",
+    caption: "SAFE ON Overview",
   },
   "1-1-three-level-laboratory-safety-management-system.avif": {
     fileName: "1-1-three-level-laboratory-safety-management-system.avif",

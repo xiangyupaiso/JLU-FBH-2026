@@ -367,7 +367,7 @@ export function EngineeringIntroduction({ section }: { section: WikiSection }) {
   return (
     <section className="eng-introduction" id={section.id}>
       <header className="eng-introduction__heading">
-        <h2>
+        <h2 id={`${section.id}-introduction`} tabIndex={-1}>
           <EngineeringArticleHeading title={section.title} />
         </h2>
       </header>
@@ -839,9 +839,11 @@ function SmallGear({
 function GearNavigation({
   selection,
   onNavigate,
+  onNavigateSection,
 }: {
   selection: Selection;
   onNavigate: Navigate;
+  onNavigateSection: (id: string) => void;
 }) {
   const root = useRef<HTMLElement>(null);
   const [pinnedCycle, setPinnedCycle] = useState<string | null>(null);
@@ -860,7 +862,7 @@ function GearNavigation({
   return (
     <nav
       className="eng-gear-nav wiki-page--project"
-      aria-label="Jump to an engineering iteration"
+      aria-label="Engineering cycle introductions, iterations and outcomes"
       ref={root}
       data-open={Boolean(openCycle)}
       onPointerLeave={() => setHoveredCycle(null)}
@@ -928,6 +930,21 @@ function GearNavigation({
       {TIME_CYCLES.map((cycle, cycleIndex) => {
         const records =
           cycles.find(({ section }) => section.id === cycle.id)?.records ?? [];
+        const destinations: {
+          id: string;
+          label: string;
+          iteration?: EngineeringIterationDatum;
+        }[] = records.length
+          ? [
+              { id: `${cycle.id}-introduction`, label: "Introduction" },
+              ...records.map(({ iteration }) => ({
+                id: iteration.id,
+                label: iteration.index,
+                iteration,
+              })),
+              { id: `${cycle.id}-outcome`, label: "Outcome" },
+            ]
+          : [];
         return (
           <div
             className="eng-cycle-flyout"
@@ -936,7 +953,7 @@ function GearNavigation({
             data-letter={cycle.letter.toLowerCase()}
             hidden={openCycle !== cycle.id}
             role="group"
-            aria-label={`Cycle ${cycleIndex + 1} iterations`}
+            aria-label={`Cycle ${cycleIndex + 1} navigation`}
             style={{ "--flyout-slot": cycleIndex - 1.5 } as CSSProperties}
           >
             <div className="eng-cycle-flyout__heading">
@@ -950,20 +967,30 @@ function GearNavigation({
               </span>
             </div>
             <div className="eng-gear-cluster">
-              {records.map(({ iteration }, index) => (
+              {destinations.map(({ id, label, iteration }, index) => (
                 <button
                   type="button"
-                  key={iteration.id}
-                  className={`eng-small-gear${selection.id === iteration.id ? " is-active" : ""}`}
-                  aria-label={`Go to iteration ${iteration.index}: ${iteration.short}`}
-                  aria-current={
-                    selection.id === iteration.id ? "step" : undefined
+                  key={id}
+                  className={`eng-small-gear${iteration ? "" : " eng-small-gear--boundary"}${selection.id === id ? " is-active" : ""}`}
+                  aria-label={
+                    iteration
+                      ? `Go to iteration ${iteration.index}: ${iteration.short}`
+                      : `Go to Cycle ${cycleIndex + 1} ${label.toLowerCase()}`
                   }
-                  title={`${iteration.index} · ${iteration.short}`}
+                  aria-current={
+                    selection.id === id ? "step" : undefined
+                  }
+                  title={
+                    iteration
+                      ? `${iteration.index} · ${iteration.short}`
+                      : `Cycle ${cycleIndex + 1} · ${label}`
+                  }
                   onClick={() => {
-                    onNavigate(iteration);
+                    if (iteration) onNavigate(iteration);
+                    else onNavigateSection(id);
                     setPinnedCycle(null);
                     setHoveredCycle(null);
+                    if (!iteration) return;
                     requestAnimationFrame(() => {
                       document
                         .getElementById(`${iteration.id}-title`)
@@ -973,10 +1000,10 @@ function GearNavigation({
                 >
                   <SmallGear
                     letter={cycle.letter}
-                    isActive={selection.id === iteration.id}
+                    isActive={selection.id === id}
                     phase={index % 2 ? 7.5 : 0}
                   />
-                  <span>{iteration.index}</span>
+                  <span>{label}</span>
                 </button>
               ))}
             </div>
@@ -1050,6 +1077,14 @@ export function EngineeringJourney({
     },
     [onChange],
   );
+  const onNavigateSection = useCallback((id: string) => {
+    const target = document.getElementById(id);
+    if (!target) return;
+    resizeTarget.current = null;
+    target.scrollIntoView({ behavior: "instant", block: "start" });
+    target.focus({ preventScroll: true });
+    window.history.replaceState(null, "", `#${id}`);
+  }, []);
 
   useEffect(() => {
     const element = root.current;
@@ -1088,6 +1123,16 @@ export function EngineeringJourney({
     window.addEventListener("resize", handleResize, { capture: true });
     const handleHash = () => {
       const hash = decodeURIComponent(window.location.hash.slice(1));
+      if (
+        cycles.some(
+          ({ section }) =>
+            hash === `${section.id}-introduction` ||
+            hash === `${section.id}-outcome`,
+        )
+      ) {
+        onNavigateSection(hash);
+        return;
+      }
       const iteration = ENGINEERING_ITERATIONS.find(
         (it) =>
           hash === it.id ||
@@ -1119,7 +1164,7 @@ export function EngineeringJourney({
       window.removeEventListener("resize", handleResize, { capture: true });
       window.removeEventListener("hashchange", handleHash);
     };
-  }, [onChange]);
+  }, [onChange, onNavigateSection]);
 
   return (
     <div className="eng-journey" ref={root}>
@@ -1136,7 +1181,7 @@ export function EngineeringJourney({
           />
           {section.note ? (
             <aside className="eng-outcome">
-              <h3>
+              <h3 id={`${section.id}-outcome`} tabIndex={-1}>
                 <EngineeringArticleHeading title={section.note.label} />
               </h3>
               <div className="wiki-prose">
@@ -1177,7 +1222,11 @@ export function EngineeringJourney({
       </section>
       {navigationVisible
         ? createPortal(
-            <GearNavigation selection={selection} onNavigate={onNavigate} />,
+            <GearNavigation
+              selection={selection}
+              onNavigate={onNavigate}
+              onNavigateSection={onNavigateSection}
+            />,
             document.body,
           )
         : null}

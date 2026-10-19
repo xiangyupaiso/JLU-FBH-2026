@@ -151,23 +151,30 @@ assert.equal(
 );
 
 const anchors = new Set(
-  data.sustainabilityPage.sections.flatMap((section) => [
-    section.id,
-    ...section.blocks
-      .filter((block) => block.type === "subheading")
-      .map((block) => block.id),
-  ]),
+  [
+    ...data.sustainabilityPage.sections.flatMap((section) => [
+      section.id,
+      ...section.blocks
+        .filter((block) => block.type === "subheading")
+        .map((block) => block.id),
+    ]),
+    // SdgExplorer renders these compatibility anchors around the five goals.
+    ...explorerGoals.map((goal) => `grow-sdg${goal.id}`),
+  ],
 );
 for (const tier of data.impactTiers)
   for (const goal of tier.sdgs)
     assert(anchors.has(goal.target), `Missing SDG ${goal.number} target`);
 for (const goal of data.coreSdgs) assert(anchors.has(goal.target));
-const allAnchors = data.sustainabilityPage.sections.flatMap((section) => [
-  section.id,
-  ...section.blocks
-    .filter((block) => block.type === "subheading")
-    .map((block) => block.id),
-]);
+const allAnchors = [
+  ...data.sustainabilityPage.sections.flatMap((section) => [
+    section.id,
+    ...section.blocks
+      .filter((block) => block.type === "subheading")
+      .map((block) => block.id),
+  ]),
+  ...explorerGoals.map((goal) => `grow-sdg${goal.id}`),
+];
 assert.equal(
   new Set(allAnchors).size,
   allAnchors.length,

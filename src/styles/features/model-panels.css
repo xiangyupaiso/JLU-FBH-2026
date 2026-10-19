@@ -61,7 +61,9 @@
   min-width: 0;
 }
 .wiki-page--model .model-chart--heatmap {
-  height: 650px;
+  height: 460px;
+  max-width: 780px;
+  margin: 0 auto;
 }
 .wiki-page--model .model-chart-filters {
   display: flex;
@@ -273,3 +275,102 @@
   content: none;
   display: none;
 }
+
+/* Constrain Figure 2, 3, 4, 5 in survival tabs to match Fig 4 */
+.wiki-page--model .manuscript-tabs .wiki-figure img {
+  max-width: 350px !important;
+  width: 100% !important;
+  height: auto !important;
+  margin: 0 auto !important;
+  display: block !important;
+}
+
+/* Constrain large workflow pipeline figures */
+.wiki-page--model .wiki-figure:has(img[src*="pipeline%20Sc"]),
+.wiki-page--model .wiki-figure:has(img[src*="pipeline+Sc"]),
+.wiki-page--model .wiki-figure:has(img[src*="pipeline Sc"]),
+.wiki-page--model .wiki-figure:has(img[src*="IEDB%20pipeline"]),
+.wiki-page--model .wiki-figure:has(img[src*="IEDB+pipeline"]),
+.wiki-page--model .wiki-figure:has(img[src*="IEDB pipeline"]) {
+  max-width: 780px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Reproducibility package download card */
+.wiki-page--model .model-download-card {
+  margin: 28px 0;
+  padding: 24px 28px;
+  background: color-mix(in srgb, var(--route-soft, #f4f8f6) 45%, #ffffff);
+  border: 1px solid var(--route-line-strong, #c8ded6);
+  border-radius: 12px;
+  box-shadow: 0 3px 12px rgba(18, 56, 45, 0.05);
+}
+
+.wiki-page--model .model-download-card__header {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--route-line, #e2ece7);
+}
+
+.wiki-page--model .model-download-card__icon {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  margin-top: 2px;
+  color: var(--route-accent, #1d6e5a);
+}
+
+.wiki-page--model .model-download-card__title {
+  margin: 0 0 4px;
+  font-family: var(--font-sans);
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--route-heading-ink, #12382d);
+}
+
+.wiki-page--model .model-download-card__desc {
+  margin: 0;
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: var(--route-muted, #566d65);
+}
+
+.wiki-page--model .model-download-card__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 12px;
+}
+
+.wiki-page--model .model-download-card__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  background: #ffffff;
+  border: 1px solid var(--route-line, #dce8e2);
+  border-radius: 8px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--route-ink, #1c3029);
+  text-decoration: none;
+  transition: all 0.18s ease;
+  word-break: break-all;
+}
+
+.wiki-page--model .model-download-card__item:hover {
+  background: color-mix(in srgb, var(--route-soft, #f4f8f6) 60%, #ffffff);
+  border-color: var(--route-accent, #1d6e5a);
+  color: var(--route-accent, #1d6e5a);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.wiki-page--model .model-download-card__item svg {
+  flex-shrink: 0;
+  color: var(--route-accent, #1d6e5a);
+}
+

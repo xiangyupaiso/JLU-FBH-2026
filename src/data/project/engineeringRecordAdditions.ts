@@ -558,7 +558,7 @@ export const cycle2Section: WikiSection = {
           {
                     "label": "New England Biolabs (n.d.)",
                     "text": "New England Biolabs (n.d.) *Standard RNA synthesis with HiScribe T7 Quick High Yield RNA Synthesis Kit, E2050*.",
-                    "href": "https://www.neb.com/en/protocols/standard-rna-synthesis-with-hiscribe-t7-quick-high-yield-rna-synthesis-kit-neb-e2050?utm_source=chatgpt.com",
+                    "href": "https://www.neb.com/en/protocols/standard-rna-synthesis-with-hiscribe-t7-quick-high-yield-rna-synthesis-kit-neb-e2050",
                     "hrefLabel": "Source"
           },
           {
@@ -570,13 +570,13 @@ export const cycle2Section: WikiSection = {
           {
                     "label": "LGC Biosearch Technologies (n.d.)",
                     "text": "LGC Biosearch Technologies (n.d.) *Ribonuclease R Manual*. Cat. RNR07250.",
-                    "href": "https://biosearchtech.a.bigcontent.io/v1/static/manual_RNR07250_RNase-R?utm_source=chatgpt.com",
+                    "href": "https://biosearchtech.a.bigcontent.io/v1/static/manual_RNR07250_RNase-R",
                     "hrefLabel": "Source"
           },
           {
                     "label": "Lonza (n.d.)",
                     "text": "Lonza (n.d.) *Human Dendritic Cell Nucleofector Kit*. VPA-1004, Optimized Protocol U-002.",
-                    "href": "https://bioscience.lonza.com/lonza_bs/US/en/Transfection/p/000000000000191773/Human-Dendritic-Cell-Nucleofector-Kit?utm_source=chatgpt.com",
+                    "href": "https://bioscience.lonza.com/lonza_bs/US/en/Transfection/p/000000000000191773/Human-Dendritic-Cell-Nucleofector-Kit",
                     "hrefLabel": "Source"
           }
 ]
@@ -662,7 +662,7 @@ export const cycle2Section: WikiSection = {
           {
                     "label": "Dakewe Biotech (n.d.)",
                     "text": "Dakewe Biotech (n.d.) *Human IFN-γ Precoated ELISPOT Kit (strips): instruction manual*. Cat. 2110005, Rev. C/2.",
-                    "href": "https://files.dakewe.cn/crm/instruction/dy/2110005.pdf?utm_source=chatgpt.com",
+                    "href": "https://files.dakewe.cn/crm/instruction/dy/2110005.pdf",
                     "hrefLabel": "Instruction manual"
           }
 ]

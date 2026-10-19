@@ -838,13 +838,13 @@ Each record remained linked to the source antigen, protein coordinates and IEDB 
 
 > **References**
 >
-> New England Biolabs \(n\.d\.\) *Standard RNA synthesis with HiScribe T7 Quick High Yield RNA Synthesis Kit, E2050*\. [Source](https://www.neb.com/en/protocols/standard-rna-synthesis-with-hiscribe-t7-quick-high-yield-rna-synthesis-kit-neb-e2050?utm_source=chatgpt.com)
+> New England Biolabs \(n\.d\.\) *Standard RNA synthesis with HiScribe T7 Quick High Yield RNA Synthesis Kit, E2050*\. [Source](https://www.neb.com/en/protocols/standard-rna-synthesis-with-hiscribe-t7-quick-high-yield-rna-synthesis-kit-neb-e2050)
 >
 > Wesselhoeft RA, Kowalski PS, Anderson DG\. Engineering circular RNA for potent and stable translation in eukaryotic cells\. *Nature Communications*\. 2018;9:2629\. [doi:10\.1038/s41467\-018\-05096\-6](https://doi.org/10.1038/s41467-018-05096-6)
 >
-> LGC Biosearch Technologies \(n\.d\.\) *Ribonuclease R Manual*\. Cat\. RNR07250\. [Source](https://biosearchtech.a.bigcontent.io/v1/static/manual_RNR07250_RNase-R?utm_source=chatgpt.com)
+> LGC Biosearch Technologies \(n\.d\.\) *Ribonuclease R Manual*\. Cat\. RNR07250\. [Source](https://biosearchtech.a.bigcontent.io/v1/static/manual_RNR07250_RNase-R)
 >
-> Lonza \(n\.d\.\) *Human Dendritic Cell Nucleofector Kit*\. VPA\-1004, Optimized Protocol U\-002\. [Source](https://bioscience.lonza.com/lonza_bs/US/en/Transfection/p/000000000000191773/Human-Dendritic-Cell-Nucleofector-Kit?utm_source=chatgpt.com)
+> Lonza \(n\.d\.\) *Human Dendritic Cell Nucleofector Kit*\. VPA\-1004, Optimized Protocol U\-002\. [Source](https://bioscience.lonza.com/lonza_bs/US/en/Transfection/p/000000000000191773/Human-Dendritic-Cell-Nucleofector-Kit)
 
 ### Test
 
@@ -881,7 +881,7 @@ Each record remained linked to the source antigen, protein coordinates and IEDB 
 
 > **References**
 >
-> Dakewe Biotech \(n\.d\.\) *Human IFN\-γ Precoated ELISPOT Kit \(strips\): instruction manual*\. Cat\. 2110005, Rev\. C/2\. [Instruction manual](https://files.dakewe.cn/crm/instruction/dy/2110005.pdf?utm_source=chatgpt.com)
+> Dakewe Biotech \(n\.d\.\) *Human IFN\-γ Precoated ELISPOT Kit \(strips\): instruction manual*\. Cat\. 2110005, Rev\. C/2\. [Instruction manual](https://files.dakewe.cn/crm/instruction/dy/2110005.pdf)
 
 ### Test
 
@@ -1114,7 +1114,7 @@ For the purified Combined preparation, divergent\- and convergent\-primer RT\-qP
 >
 > Wesselhoeft RA, Kowalski PS, Anderson DG\. Engineering circular RNA for potent and stable translation in eukaryotic cells\. *Nature Communications*\. 2018;9:2629\. [doi:10\.1038/s41467\-018\-05096\-6](https://doi.org/10.1038/s41467-018-05096-6)
 >
-> LGC Biosearch Technologies \(n\.d\.\) *Ribonuclease R Manual*\. Cat\. RNR07250\. [Official manual](https://biosearchtech.a.bigcontent.io/v1/static/manual_RNR07250_RNase-R?utm_source=chatgpt.com)
+> LGC Biosearch Technologies \(n\.d\.\) *Ribonuclease R Manual*\. Cat\. RNR07250\. [Official manual](https://biosearchtech.a.bigcontent.io/v1/static/manual_RNR07250_RNase-R)
 
 ### Test
 
@@ -1429,7 +1429,7 @@ The maturation comparison showed a stronger response with Combined\. CD80⁺CD86
 
 > **References**
 >
-> Dakewe Biotech \(n\.d\.\) *Human IFN\-γ Precoated ELISPOT Kit \(strips\): instruction manual*\. Cat\. 2110005, Rev\. C/2\. [Instruction manual](https://files.dakewe.cn/crm/instruction/dy/2110005.pdf?utm_source=chatgpt.com)
+> Dakewe Biotech \(n\.d\.\) *Human IFN\-γ Precoated ELISPOT Kit \(strips\): instruction manual*\. Cat\. 2110005, Rev\. C/2\. [Instruction manual](https://files.dakewe.cn/crm/instruction/dy/2110005.pdf)
 
 ### Build
 

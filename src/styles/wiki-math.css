@@ -50,3 +50,36 @@
 .wiki-math__frac-bottom {
   padding: 0.1em 0.32em 0;
 }
+
+.wiki-math__accent {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  vertical-align: baseline;
+  line-height: 1;
+}
+
+.wiki-math__accent-base {
+  line-height: inherit;
+}
+
+.wiki-math__accent-symbol {
+  font-size: 0.75em;
+  line-height: 0.2;
+  margin-bottom: -0.05em;
+}
+
+.wiki-math__sqrt {
+  display: inline-flex;
+  align-items: baseline;
+}
+
+.wiki-math__sqrt-sign {
+  font-size: 1.15em;
+  margin-right: 0.05em;
+}
+
+.wiki-math__sqrt-stem {
+  border-top: 1px solid currentColor;
+  padding-top: 0.05em;
+}

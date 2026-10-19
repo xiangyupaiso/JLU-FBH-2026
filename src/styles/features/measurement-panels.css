@@ -7,21 +7,6 @@
   text-overflow: clip;
 }
 
-.wiki-page[data-wiki-route="/measurement"] .wiki-subheading--nested {
-  margin: 24px 0 8px !important;
-}
-
-.wiki-page[data-wiki-route="/measurement"]
-  .wiki-subheading--nested
-  .wiki-subheading__title {
-  color: var(--route-subheading-ink, #88541e) !important;
-  font-family: var(--font-sans), sans-serif !important;
-  font-size: 18px;
-  font-weight: 700;
-  letter-spacing: 0;
-  line-height: 1.35;
-}
-
 .wiki-page[data-wiki-route="/measurement"] .measurement-model-volcanoes {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));

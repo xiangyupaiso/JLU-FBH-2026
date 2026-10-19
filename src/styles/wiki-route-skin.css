@@ -73,6 +73,12 @@
   --wiki-space-block: 24px;          /* 3. 规范：块级元素间距 (正文↔组件/图表/表格/Callout) */
   --wiki-space-head-bottom: 24px;    /* 4. 再稍大：大标题到底下内容 (H2 → Content/H3) */
   --wiki-space-section: 44px;        /* 5. 宏观：章节与章节间距 (Section ↔ Section) */
+  /* Entrepreneurship hierarchy, shared by plain headings and disclosures. */
+  --wiki-h2-size: clamp(21px, 2.2vw, 25px);
+  --wiki-h3-size: clamp(17px, 1.8vw, 20px);
+  --wiki-h4-size: clamp(15.5px, 1.6vw, 17px);
+  --wiki-h5-size: clamp(15px, 1.45vw, 16px);
+  --wiki-h6-size: 15px;
 }
 
 /* 2. Page surface ---------------------------------------------------------- */
@@ -1079,11 +1085,30 @@ html.has-route-reader-scroll {
 .wiki-page--route .wiki-content-heading {
   margin: var(--wiki-space-subhead-top, 28px) 0 var(--wiki-space-subhead-bottom, 14px);
   font-family: var(--font-sans);
-  font-size: clamp(17px, 1.8vw, 20px);
+  font-size: var(--wiki-h3-size);
   font-weight: 700;
   line-height: 1.35;
   color: var(--route-subheading-ink);
   border: 0;
+}
+
+.wiki-page--route:not(.wiki-page--sustainability) .wiki-content-heading {
+  margin: 22px 0 10px;
+  font-family: var(--font-sans);
+  font-size: var(--wiki-h4-size);
+  font-weight: 650;
+  line-height: 1.4;
+  color: var(--route-tertiary-ink, var(--route-subheading-ink));
+  border: 0;
+}
+
+.wiki-page.wiki-page--route:not(.wiki-page--sustainability) :is(h4, h5, h6).wiki-content-heading {
+  font-size: var(--wiki-h4-size) !important;
+  font-weight: 650 !important;
+  line-height: 1.4 !important;
+  color: var(--route-tertiary-ink, var(--route-subheading-ink)) !important;
+  margin-top: 22px !important;
+  margin-bottom: 10px !important;
 }
 
 /* 连续两个 prose 块相邻时，保持标准正文段落间距，消除 80px 异常大断层 */
@@ -1202,8 +1227,8 @@ html.has-route-reader-scroll {
   margin: 0;
   color: var(--route-heading-ink, #2e4334);
   font-family: var(--font-sans), -apple-system, BlinkMacSystemFont, sans-serif !important;
-  font-size: clamp(21px, 2.2vw, 25px);
-  font-weight: 700;
+  font-size: var(--wiki-h2-size);
+  font-weight: 750;
   letter-spacing: -0.015em;
   line-height: 1.35;
   text-wrap: balance;
@@ -1249,7 +1274,7 @@ html.has-route-reader-scroll {
 }
 
 .wiki-heading-marker--lead {
-  font-size: clamp(21px, 2.2vw, 25px);
+  font-size: var(--wiki-h2-size);
   font-weight: 750;
 }
 
@@ -1289,11 +1314,47 @@ html.has-route-reader-scroll {
 .wiki-page--route.wiki-page--manuscript .wiki-subheading__title,
 .wiki-page.wiki-page--manuscript .wiki-subheading__title {
   font-family: var(--font-sans), -apple-system, BlinkMacSystemFont, sans-serif !important;
-  font-size: clamp(17px, 1.8vw, 20px);
+  font-size: var(--wiki-h3-size);
   font-weight: 700;
   color: var(--route-subheading-ink, #84382b) !important;
   letter-spacing: -0.01em;
   line-height: 1.35;
+}
+
+.wiki-page--route:not(.wiki-page--sustainability) .wiki-subheading--nested,
+.wiki-page--route.wiki-page--manuscript:not(.wiki-page--sustainability) .wiki-subheading--nested,
+.wiki-page.wiki-page--manuscript:not(.wiki-page--sustainability) .wiki-subheading--nested {
+  margin-top: 22px !important;
+  margin-bottom: 10px !important;
+}
+
+.wiki-page--route:not(.wiki-page--sustainability) .wiki-subheading--nested .wiki-subheading__title,
+.wiki-page--route.wiki-page--manuscript:not(.wiki-page--sustainability) .wiki-subheading--nested .wiki-subheading__title,
+.wiki-page.wiki-page--manuscript:not(.wiki-page--sustainability) .wiki-subheading--nested .wiki-subheading__title {
+  font-size: var(--wiki-h4-size) !important;
+  font-weight: 650 !important;
+  line-height: 1.4 !important;
+  color: var(--route-tertiary-ink, var(--route-subheading-ink, #84382b)) !important;
+}
+
+.wiki-page.wiki-page--route:not(.wiki-page--sustainability) h5.wiki-subheading .wiki-subheading__title,
+.wiki-page.wiki-page--route:not(.wiki-page--sustainability) h5.wiki-content-heading {
+  font-size: var(--wiki-h5-size) !important;
+}
+
+.wiki-page.wiki-page--route:not(.wiki-page--sustainability) h6.wiki-subheading .wiki-subheading__title,
+.wiki-page.wiki-page--route:not(.wiki-page--sustainability) h6.wiki-content-heading {
+  font-size: var(--wiki-h6-size) !important;
+}
+
+.wiki-page.wiki-page--route:not(.wiki-page--sustainability) .wiki-protocol-drawer__title {
+  font-family: var(--font-sans), sans-serif !important;
+  font-size: var(--wiki-h3-size);
+  font-weight: 700;
+  line-height: 1.35;
+  white-space: normal;
+  overflow: visible;
+  text-overflow: clip;
 }
 
 .wiki-page--route .wiki-manuscript-list__toggle button > span:nth-child(2) {

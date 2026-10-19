@@ -72,7 +72,7 @@ interface HomeIntroProps {
  *   sets its data-intro ("playing" | "done"), read by home-scene-01.css.
  * - Sets <html data-home-intro> ("playing" | "landed" | "revealing") and
  *   measures .site-header .logo-word-full as the signature's landing point.
- *   The navigation stays visible beneath the intro layer throughout.
+ *   The navigation stays visible and interactive above the intro layer.
  */
 export function HomeIntro({ scene, children }: HomeIntroProps) {
   const [mode, setMode] = useState<"opening" | "title" | null>(() =>
@@ -175,15 +175,20 @@ export function HomeIntro({ scene, children }: HomeIntroProps) {
     }
     section.dataset.intro = "playing";
     root.dataset.homeIntro = "playing";
-    // The portal owns input, including the story's autoplay preference toggle.
-    // Keep the document at its opening pose until the intro finishes.
-    const app = document.getElementById("root");
-    const wasInert = app?.inert ?? false;
+    // Keep the story at its opening pose while the header remains available.
+    // The player lives in this component's portal, outside the inert story.
+    const story = section.closest("main");
+    const wasInert = story?.inert ?? false;
+    const layer = layerRef.current;
     const previousFocus = document.activeElement;
-    if (app) app.inert = true;
-    layerRef.current?.focus({ preventScroll: true });
+    if (story) story.inert = true;
+    layer?.focus({ preventScroll: true });
     window.scrollTo({ top: 0, left: 0, behavior: "instant" });
-    const blockScroll = (event: Event) => event.preventDefault();
+    const blockScroll = (event: Event) => {
+      if (event.target instanceof Element && event.target.closest(".site-header"))
+        return;
+      event.preventDefault();
+    };
     const onScroll = () => {
       if (window.scrollY !== 0)
         window.scrollTo({ top: 0, left: 0, behavior: "instant" });
@@ -201,8 +206,11 @@ export function HomeIntro({ scene, children }: HomeIntroProps) {
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("wheel", blockScroll, true);
       window.removeEventListener("touchmove", blockScroll, true);
-      if (app) app.inert = wasInert;
-      if (previousFocus instanceof HTMLElement && previousFocus.isConnected)
+      if (story) story.inert = wasInert;
+      if (
+        layer?.contains(document.activeElement) &&
+        previousFocus instanceof HTMLElement && previousFocus.isConnected
+      )
         previousFocus.focus({ preventScroll: true });
       delete root.dataset.homeIntro;
       section.dataset.intro = "done";
@@ -647,7 +655,6 @@ export function HomeIntro({ scene, children }: HomeIntroProps) {
       className={playing ? "home-intro" : undefined}
       ref={playing ? layerRef : undefined}
       role={playing ? "dialog" : undefined}
-      aria-modal={playing || undefined}
       aria-label={playing ? "CirCure introduction" : undefined}
       tabIndex={playing ? -1 : undefined}
     >
