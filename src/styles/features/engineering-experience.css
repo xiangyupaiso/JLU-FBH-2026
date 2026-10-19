@@ -10,6 +10,9 @@
   --eng-build: #2f6f4e;
   --eng-test: #c84b3e;
   --eng-learn: #9c6818;
+  --wiki-h2-size: clamp(25px, 2.1vw, 30px);
+  --wiki-h3-size: clamp(21px, 1.8vw, 26px);
+  --wiki-h4-size: clamp(19px, 1.55vw, 22px);
 }
 .wiki-page--engineering [data-wiki-reveal] {
   opacity: 1;
@@ -969,7 +972,7 @@
   padding: 14px 16px;
   max-height: 280px;
   overflow: auto;
-  overscroll-behavior: contain;
+  overscroll-behavior: auto;
   scrollbar-width: thin;
   font-family: var(--font-mono, monospace);
   font-size: 13px;

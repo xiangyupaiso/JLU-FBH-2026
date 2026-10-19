@@ -462,8 +462,8 @@
 .wiki-page--route.wiki-page--description .wiki-table td {
   padding: 7px 16px 7px 0;
   border-bottom: 0;
-  vertical-align: top;
-  text-align: left;
+  vertical-align: middle;
+  text-align: center;
 }
 
 .wiki-page--route.wiki-page--description .wiki-table thead th {
@@ -477,6 +477,7 @@
   text-transform: none;
   color: var(--route-ink);
   vertical-align: bottom;
+  text-align: center;
 }
 
 .wiki-page--route.wiki-page--description .wiki-table tbody tr:first-child > * {
@@ -491,6 +492,7 @@
   min-width: 9em;
   font-weight: 500;
   color: var(--route-ink);
+  text-align: center;
 }
 
 .wiki-page--route.wiki-page--description .wiki-table td {

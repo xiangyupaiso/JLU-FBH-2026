@@ -11,6 +11,7 @@ const jluWordmark = `${SHARED_CDN}/jlu-wordmark-bilingual.webp`;
 const teachingSeal = `${SHARED_CDN}/bethune-teaching-department.webp`;
 const coreFacility = `${SHARED_CDN}/sponsor-jlu-core-facility.webp`;
 const itm = `${SHARED_CDN}/sponsor-jlu-itm.webp`;
+const animalCenter = `${SHARED_CDN}/laboratory-animal-center-logo.avif`;
 const xiaohongshu = `${SHARED_CDN}/xiaohongshu.avif`;
 const youtube = `${SHARED_CDN}/youtube.avif`;
 const wechat = `${SHARED_CDN}/wechat.avif`;
@@ -142,7 +143,7 @@ export interface FooterOrganisation {
   marks: ReadonlyArray<FooterMark>;
 }
 
-/** The two financial supporters lead the acknowledgement set in full colour. */
+/** The institutional supporters lead the acknowledgement set in full colour. */
 export const FOOTER_SUPPORTERS: ReadonlyArray<FooterOrganisation> = [
   {
     name: "Core Facility",
@@ -161,6 +162,16 @@ export const FOOTER_SUPPORTERS: ReadonlyArray<FooterOrganisation> = [
         src: itm,
         width: 72,
         alt: "Institute of Translational Medicine, the First Hospital of Jilin University",
+      },
+    ],
+  },
+  {
+    name: "Laboratory Animal Center",
+    marks: [
+      {
+        src: animalCenter,
+        width: 72,
+        alt: "Laboratory Animal Center, the First Hospital of Jilin University",
       },
     ],
   },

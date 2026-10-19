@@ -428,8 +428,23 @@ function CycleScenes({
             element.querySelectorAll<HTMLElement>(".eng-stage"),
           );
           const cleanups: Array<() => void> = [];
+          const onCodeToggle = (refresh: (details: HTMLDetailsElement) => void) => {
+            const handleToggle = (event: Event) => {
+              if (
+                event.target instanceof HTMLDetailsElement &&
+                event.target.classList.contains("eng-code-fold")
+              ) {
+                refresh(event.target);
+              }
+            };
+            element.addEventListener("toggle", handleToggle, true);
+            cleanups.push(() =>
+              element.removeEventListener("toggle", handleToggle, true),
+            );
+          };
 
           if (!context.conditions?.animated) {
+            onCodeToggle(() => ScrollTrigger.refresh());
             stages.forEach((stage) => {
               stage.inert = false;
               stage.removeAttribute("aria-hidden");
@@ -599,7 +614,6 @@ function CycleScenes({
             }
             if (publish) onChange(marker.selection);
           };
-          timeline.eventCallback("onUpdate", () => updateSelection());
           const trigger = ScrollTrigger.create({
             trigger: element,
             animation: timeline,
@@ -618,7 +632,41 @@ function CycleScenes({
             onEnter: (self) => updateSelection(self.isActive),
             onEnterBack: (self) => updateSelection(self.isActive),
           });
+          timeline.eventCallback("onUpdate", () =>
+            updateSelection(trigger.isActive),
+          );
           updateSelection(trigger.isActive);
+          const seek = (time: number) => {
+            const position =
+              trigger.start +
+              (trigger.end - trigger.start) * (time / timeline.duration());
+            window.scrollTo({ top: position, behavior: "instant" });
+            trigger.update();
+            trigger.getTween()?.progress(1);
+            timeline.time(time);
+            updateSelection(trigger.isActive);
+          };
+          onCodeToggle((details) => {
+            const content = details.closest<HTMLElement>(".eng-stage-content");
+            const panel = details.closest<HTMLElement>(".eng-stage");
+            const viewport = panel?.querySelector<HTMLElement>(".eng-stage-body");
+            const reading = content && timeline.getTweensOf(content)[0];
+            if (!content || !panel || !viewport || !reading) return;
+            const offset = Math.max(0, -Number(gsap.getProperty(content, "y")));
+            // Recalculate the expanded height without moving the text being read.
+            ScrollTrigger.refresh();
+            if (panel.getAttribute("aria-hidden") !== "false") return;
+            const overflow = Math.max(
+              0,
+              content.scrollHeight - viewport.clientHeight,
+            );
+            seek(
+              overflow > 0 && offset > 0
+                ? reading.startTime() +
+                    reading.duration() * Math.min(offset / overflow, 1)
+                : timeline.labels[panel.id] + 0.22,
+            );
+          });
           records.forEach((record) =>
             cleanups.push(
               register(record.iteration.id, (key) => {
@@ -626,13 +674,7 @@ function CycleScenes({
                   timeline.labels[`${record.iteration.id}-${key}`] ?? 0;
                 // Land after the fade-in so the requested stage is immediately readable.
                 const targetTime = time + 0.22;
-                const position =
-                  trigger.start +
-                  (trigger.end - trigger.start) *
-                    (targetTime / timeline.duration());
-                window.scrollTo({ top: position, behavior: "instant" });
-                timeline.time(targetTime);
-                trigger.update();
+                seek(targetTime);
               }),
             ),
           );
@@ -849,6 +891,10 @@ function GearNavigation({
   const [pinnedCycle, setPinnedCycle] = useState<string | null>(null);
   const [hoveredCycle, setHoveredCycle] = useState<string | null>(null);
   const openCycle = hoveredCycle ?? pinnedCycle;
+  const activeCycleId =
+    ENGINEERING_ITERATIONS.find((iteration) => iteration.id === selection.id)
+      ?.cycleId ??
+    TIME_CYCLES.find((cycle) => selection.id.startsWith(`${cycle.id}-`))?.id;
   useEffect(() => {
     const closeOutside = (event: PointerEvent) => {
       if (!root.current?.contains(event.target as Node)) {
@@ -895,10 +941,7 @@ function GearNavigation({
             aria-expanded={openCycle === cycle.id}
             aria-controls={`eng-cycle-menu-${cycle.letter}`}
             aria-current={
-              ENGINEERING_ITERATIONS.find((it) => it.id === selection.id)
-                ?.cycleId === cycle.id
-                ? "step"
-                : undefined
+              activeCycleId === cycle.id ? "step" : undefined
             }
             onPointerEnter={(event) => {
               if (event.pointerType === "mouse") setHoveredCycle(cycle.id);
@@ -1077,14 +1120,52 @@ export function EngineeringJourney({
     },
     [onChange],
   );
-  const onNavigateSection = useCallback((id: string) => {
-    const target = document.getElementById(id);
-    if (!target) return;
-    resizeTarget.current = null;
-    target.scrollIntoView({ behavior: "instant", block: "start" });
-    target.focus({ preventScroll: true });
-    window.history.replaceState(null, "", `#${id}`);
-  }, []);
+  const onNavigateSection = useCallback(
+    (id: string) => {
+      const target = document.getElementById(id);
+      if (!target) return;
+      resizeTarget.current = null;
+      target.scrollIntoView({ behavior: "instant", block: "start" });
+      ScrollTrigger.update();
+      onChange({ id, stage: id.endsWith("-outcome") ? "learn" : "design" });
+      target.focus({ preventScroll: true });
+      window.history.replaceState(null, "", `#${id}`);
+    },
+    [onChange],
+  );
+
+  useGSAP(
+    () => {
+      for (const { section } of cycles) {
+        for (const boundary of ["introduction", "outcome"] as const) {
+          const id = `${section.id}-${boundary}`;
+          const heading = document.getElementById(id);
+          const container = heading?.closest(".eng-introduction, .eng-outcome");
+          if (!container) continue;
+          const offset = () =>
+            (parseFloat(
+              getComputedStyle(document.documentElement).getPropertyValue(
+                "--header-height",
+              ),
+            ) || 78) + 24;
+          const selectBoundary = () =>
+            onChange({ id, stage: boundary === "outcome" ? "learn" : "design" });
+          ScrollTrigger.create({
+            trigger: container,
+            start: () => `top ${offset()}px`,
+            end: () => `bottom ${offset()}px`,
+            onToggle: (trigger) => {
+              if (trigger.isActive) selectBoundary();
+            },
+            onRefresh: (trigger) => {
+              if (trigger.isActive) selectBoundary();
+            },
+          });
+        }
+      }
+    },
+    { scope: root, dependencies: [onChange], revertOnUpdate: true },
+  );
 
   useEffect(() => {
     const element = root.current;
@@ -1105,7 +1186,13 @@ export function EngineeringJourney({
       .forEach((scene) => sceneObserver.observe(scene));
     let resizeTimer: ReturnType<typeof setTimeout> | undefined;
     const handleResize = () => {
-      if (!readerVisible.current && !resizeTarget.current) return;
+      if (
+        !readerVisible.current &&
+        !resizeTarget.current &&
+        !currentSelection.current.id.startsWith("engineering-cycle-")
+      ) {
+        return;
+      }
       resizeTarget.current ??= currentSelection.current;
       clearTimeout(resizeTimer);
       resizeTimer = setTimeout(() => {
@@ -1115,8 +1202,13 @@ export function EngineeringJourney({
         const next = resizeTarget.current;
         resizeTarget.current = null;
         if (next) {
-          navigation.current.get(next.id)?.(next.stage);
-          onChange(next);
+          const navigate = navigation.current.get(next.id);
+          if (navigate) {
+            navigate(next.stage);
+            onChange(next);
+          } else {
+            onNavigateSection(next.id);
+          }
         }
       }, 350);
     };

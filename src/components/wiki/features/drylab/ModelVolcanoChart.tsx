@@ -33,7 +33,12 @@ function VolcanoCanvas({
     };
   }, [option]);
   return (
-    <div ref={element} className="model-chart" role="img" aria-label={label} />
+    <div
+      ref={element}
+      className="model-chart model-chart--volcano"
+      role="img"
+      aria-label={label}
+    />
   );
 }
 
@@ -187,7 +192,7 @@ function VolcanoChart({ cohort, rows }: { cohort: "024322" | "028102"; rows: Vol
   }, [cohort, rows, grouped, visible, threshold, fdr]);
 
   return (
-    <div className="model-chart-panel" data-cohort={cohort}>
+    <div className="model-chart-panel model-chart-panel--volcano" data-cohort={cohort}>
       <div
         className="model-chart-filters"
         role="group"

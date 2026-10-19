@@ -99,6 +99,8 @@ export function buildModelCitationIndex(): CitationIndex {
   };
   const blocks = (items: readonly WikiContentBlock[], sectionId: string) => {
     for (const block of items) {
+      if (block.type === "figure" && block.caption)
+        visit(block.caption, sectionId);
       if (block.type === "prose")
         block.paragraphs.forEach((text) => visit(text, sectionId));
       if (block.type === "list")

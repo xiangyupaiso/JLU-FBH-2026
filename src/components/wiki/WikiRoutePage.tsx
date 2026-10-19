@@ -607,7 +607,9 @@ function RouteBlock({
               <span className="wiki-figure__label">{block.figureLabel}</span>
               {block.caption ? (
                 <span className="wiki-figure__caption">
-                  {renderInlineFormatting(block.caption)}
+                  {inline
+                    ? inline(block.caption, renderInlineFormatting, sectionId)
+                    : renderInlineFormatting(block.caption)}
                 </span>
               ) : null}
             </figcaption>

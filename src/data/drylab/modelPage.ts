@@ -63,12 +63,6 @@ const manuscriptSections: WikiPageContent["sections"] = [
         ]
       },
       {
-        "type": "prose",
-        "paragraphs": [
-          "**AEIP**                                                                                                             **Cell2Dose**                                                                                                     **SST-QN**"
-        ]
-      },
-      {
         "type": "feature",
         "key": "model-graphical-abstracts"
       }
@@ -101,15 +95,8 @@ const manuscriptSections: WikiPageContent["sections"] = [
         ]
       },
       {
-        "type": "figure",
-        "src": getModelImage("AEIP structure.png"), "width": 3191, "height": 1855,
-        "alt": "**Figure 1,** Overview of the Antigen-Epitope Integration Pipeline (AEIP) workflow."
-      },
-      {
-        "type": "prose",
-        "paragraphs": [
-          "**Figure 1,** Overview of the Antigen-Epitope Integration Pipeline (AEIP) workflow."
-        ]
+        "type": "feature",
+        "key": "model-figure-1-navigation"
       },
       {
         "type": "subheading",
@@ -420,14 +407,12 @@ const manuscriptSections: WikiPageContent["sections"] = [
       },
       {
         "type": "figure",
-        "src": getModelImage("02_PXD024322_four_target_batch_adjusted_log2_relative_boxplots_no_points.png"), "width": 4260, "height": 2012,
-        "alt": "**Figure 7,** Abundance distributions of TROP2, B7-H4, Nectin-4, and LIV-1 in the PXD024322 TNBC and normal-breast samples."
-      },
-      {
-        "type": "prose",
-        "paragraphs": [
-          "**Figure 7,** Abundance distributions of TROP2, B7-H4, Nectin-4, and LIV-1 in the PXD024322 TNBC and normal-breast samples."
-        ]
+        "src": getModelImage("02_PXD024322_four_target_batch_adjusted_log2_relative_boxplots_no_points.png"),
+        "width": 4260,
+        "height": 2012,
+        "alt": "Abundance distributions of TROP2, B7-H4, Nectin-4, and LIV-1 in the PXD024322 TNBC and normal-breast samples.",
+        "caption": "Abundance distributions of TROP2, B7-H4, Nectin-4, and LIV-1 in the PXD024322 TNBC and normal-breast samples.",
+        "figureLabel": "FIG. 06"
       },
       {
         "type": "prose",
@@ -506,14 +491,12 @@ const manuscriptSections: WikiPageContent["sections"] = [
       },
       {
         "type": "figure",
-        "src": getModelImage("PXD028102_imputed_log2_boxplots_no_points.png"), "width": 4111, "height": 2157,
-        "alt": "**Figure 9,** Paired tumor and adjacent-normal abundance patterns for the three candidates quantified in PXD028102."
-      },
-      {
-        "type": "prose",
-        "paragraphs": [
-          "**Figure 9,** Paired tumor and adjacent-normal abundance patterns for the three candidates quantified in PXD028102."
-        ]
+        "src": getModelImage("PXD028102_imputed_log2_boxplots_no_points.png"),
+        "width": 4111,
+        "height": 2157,
+        "alt": "Paired tumor and adjacent-normal abundance patterns for the three candidates quantified in PXD028102.",
+        "caption": "Paired tumor and adjacent-normal abundance patterns for the three candidates quantified in PXD028102.",
+        "figureLabel": "FIG. 07"
       },
       {
         "type": "prose",
@@ -614,14 +597,12 @@ const manuscriptSections: WikiPageContent["sections"] = [
       },
       {
         "type": "figure",
-        "src": getModelImage("12_harmony_umap_major_lineage_no_panel_letter.png"), "width": 2499, "height": 2129,
-        "alt": "**Figure 10,** Patient-corrected UMAP of 39,324 cells from GSE176078."
-      },
-      {
-        "type": "prose",
-        "paragraphs": [
-          "**Figure 10,** Patient-corrected UMAP of 39,324 cells from GSE176078."
-        ]
+        "src": getModelImage("12_harmony_umap_major_lineage_no_panel_letter.png"),
+        "width": 2499,
+        "height": 2129,
+        "alt": "Patient-corrected UMAP of 39,324 cells from GSE176078.",
+        "caption": "Patient-corrected UMAP of 39,324 cells from GSE176078.",
+        "figureLabel": "FIG. 08"
       },
       {
         "type": "prose",
@@ -706,14 +687,12 @@ const manuscriptSections: WikiPageContent["sections"] = [
       },
       {
         "type": "figure",
-        "src": getModelImage("11_candidate_umap_violin_broken_axis_clean.png"), "width": 4632, "height": 6172,
-        "alt": "**Figure 11,** Candidate-gene expression in the GSE176078 TNBC single-cell dataset."
-      },
-      {
-        "type": "prose",
-        "paragraphs": [
-          "**Figure 11,** Candidate-gene expression in the GSE176078 TNBC single-cell dataset."
-        ]
+        "src": getModelImage("11_candidate_umap_violin_broken_axis_clean.png"),
+        "width": 4632,
+        "height": 6172,
+        "alt": "Candidate-gene expression in the GSE176078 TNBC single-cell dataset.",
+        "caption": "Candidate-gene expression in the GSE176078 TNBC single-cell dataset.",
+        "figureLabel": "FIG. 09"
       },
       {
         "type": "subheading",
@@ -741,12 +720,6 @@ const manuscriptSections: WikiPageContent["sections"] = [
         ]
       },
       {
-        "type": "figure",
-        "src": getModelImage("pipeline Sc (1).png"), "width": 800, "height": 560,
-        "alt": "Single-cell RNA sequencing workflow across TNBC samples",
-        "caption": "Single-cell RNA sequencing workflow across 10 TNBC samples, identifying candidate gene expression in 81.4% of malignant cells."
-      },
-      {
         "type": "feature",
         "key": "model-panel-7"
       },
@@ -772,14 +745,12 @@ const manuscriptSections: WikiPageContent["sections"] = [
       },
       {
         "type": "figure",
-        "src": getModelImage("Screenshot 2026-08-31 174114.png"), "width": 2531, "height": 919,
-        "alt": "**Figure 12,** Genomic coverage of the four-antigen panel across 115 TCGA TNBC patients."
-      },
-      {
-        "type": "prose",
-        "paragraphs": [
-          "**Figure 12,** Genomic coverage of the four-antigen panel across 115 TCGA TNBC patients."
-        ]
+        "src": getModelImage("Screenshot 2026-08-31 174114.png"),
+        "width": 2531,
+        "height": 919,
+        "alt": "Genomic coverage of the four-antigen panel across 115 TCGA TNBC patients.",
+        "caption": "Genomic coverage of the four-antigen panel across 115 TCGA TNBC patients.",
+        "figureLabel": "FIG. 11"
       },
       {
         "type": "prose",
@@ -1048,9 +1019,13 @@ const manuscriptSections: WikiPageContent["sections"] = [
       },
       {
         "type": "figure",
-        "src": getModelImage("IEDB pipeline (1).png"), "width": 680, "height": 792,
+        "src": getModelImage("IEDB pipeline (1).png"),
+        "width": 680,
+        "height": 792,
         "alt": "IEDB inputs, parameters, and filtering rules",
-        "caption": "IEDB inputs, parameters, and filtering rules for candidate epitope prediction and topological screening."
+        "caption": "IEDB inputs, parameters, and filtering rules for candidate epitope prediction and topological screening.",
+        "figureLabel": "FIG. 16",
+        "className": "model-figure--workflow"
       },
       {
         "type": "feature",
@@ -1066,7 +1041,7 @@ const manuscriptSections: WikiPageContent["sections"] = [
       {
         "type": "prose",
         "paragraphs": [
-          "The 17 IEDB-selected peptides met sequence-based criteria for HLA-A*02:01 binding and immunogenicity, but computational predictions cannot confirm whether a peptide will form a stable, well-presented complex in three dimensions or adopt a geometry suitable for T-cell receptor recognition. We used AlphaFold3 to model the structure of each peptide bound to HLA-A*02:01 and assessed complex stability, peptide conformation within the binding groove, and the predicted interface quality for TCR engagement **(Abramson et al., 2024).** This step sits between epitope prediction and experimental testing, asking whether each predicted binder can adopt a plausible loading geometry."
+          "The 17 IEDB-selected peptides met sequence-based criteria for HLA-A*02:01 binding and immunogenicity, but computational predictions cannot confirm whether a peptide will form a stable, well-presented complex in three dimensions or adopt a geometry suitable for T-cell receptor recognition. We used AlphaFold3 to model the structure of each peptide bound to HLA-A*02:01 and assessed complex stability, peptide conformation within the binding groove, and the predicted interface quality for TCR engagement (Abramson et al., 2024). This step sits between epitope prediction and experimental testing, asking whether each predicted binder can adopt a plausible loading geometry."
         ]
       },
       {
@@ -1085,7 +1060,7 @@ const manuscriptSections: WikiPageContent["sections"] = [
       {
         "type": "prose",
         "paragraphs": [
-          "Confidence scores were high across **all 85 models**, with **ipTM values ranging from 0.950 to 0.970** (median 0.970), but they **did not distinguish** candidates that passed **structural review** from those that failed (Figure 17). The two rejected peptides, **FLAEASVRG and HILHVSFLA**, had mean ipTM scores of **0.968 and 0.960**, both within the range of accepted candidates. AlphaFold3's own **confidence metric** reports whether a model is self-consistent, not whether the peptide fits the groove correctly. We therefore assessed binding geometry separately using structural measurements derived from the predicted coordinates."
+          "Confidence scores were high across **all 85 models**, with **ipTM values ranging from 0.950 to 0.970** (median 0.970), but they **did not distinguish** candidates that passed **structural review** from those that failed (interactive confidence plot). The two rejected peptides, **FLAEASVRG and HILHVSFLA**, had mean ipTM scores of **0.968 and 0.960**, both within the range of accepted candidates. AlphaFold3's own **confidence metric** reports whether a model is self-consistent, not whether the peptide fits the groove correctly. We therefore assessed binding geometry separately using structural measurements derived from the predicted coordinates."
         ]
       },
       {
@@ -1115,7 +1090,7 @@ const manuscriptSections: WikiPageContent["sections"] = [
       {
         "type": "prose",
         "paragraphs": [
-          "The MHC class I groove is **closed at both ends**, and two types of interaction hold the peptide in place. First, side chains at **positions 2 and 9** (the C-terminus) insert into the **B and F pockets**, respectively; this anchoring depends on the peptide sequence. Second, heavy-chain residues form a **conserved hydrogen-bond network** with the peptide backbone **(Saper et al., 1991, Madden, 1995).** **Eleven of these bonds** recur in HLA-A*02:01 complexes. Because they contact the backbone rather than side chains, we used them as the expected pattern for a correctly loaded 9-mer, regardless of sequence. This provides a countable criterion and an internal positive control."
+          "The MHC class I groove is **closed at both ends**, and two types of interaction hold the peptide in place. First, side chains at **positions 2 and 9** (the C-terminus) insert into the **B and F pockets**, respectively; this anchoring depends on the peptide sequence. Second, heavy-chain residues form a **conserved hydrogen-bond network** with the peptide backbone (Saper et al., 1991, Madden, 1995). **Eleven of these bonds** recur in HLA-A*02:01 complexes. Because they contact the backbone rather than side chains, we used them as the expected pattern for a correctly loaded 9-mer, regardless of sequence. This provides a countable criterion and an internal positive control."
         ]
       },
       {
@@ -1192,7 +1167,7 @@ const manuscriptSections: WikiPageContent["sections"] = [
       {
         "type": "prose",
         "paragraphs": [
-          "We assessed variation across models before interpreting the means. The median standard deviation was 0.0 percentage points at both positions 2 and 9, with maxima of 0.1 and 0.6, respectively. At positions 5 and 6, the medians were 5.5 and 4.8 percentage points, with greater variation in some candidates (Figure 19). We therefore use anchor-position measurements as criteria and report central-segment values as observations."
+          "We assessed variation across models before interpreting the means. The median standard deviation was 0.0 percentage points at both positions 2 and 9, with maxima of 0.1 and 0.6, respectively. At positions 5 and 6, the medians were 5.5 and 4.8 percentage points, with greater variation in some candidates (Figure 17). We therefore use anchor-position measurements as criteria and report central-segment values as observations."
         ]
       },
       {
@@ -1203,14 +1178,12 @@ const manuscriptSections: WikiPageContent["sections"] = [
       },
       {
         "type": "figure",
-        "src": getModelImage("image 9.png"), "width": 863, "height": 571,
-        "alt": "**Figure 19,** Standard deviation of side-chain burial across models."
-      },
-      {
-        "type": "prose",
-        "paragraphs": [
-          "**Figure 19,** Standard deviation of side-chain burial across models."
-        ]
+        "src": getModelImage("image 9.png"),
+        "width": 863,
+        "height": 571,
+        "alt": "Standard deviation of side-chain burial across models.",
+        "caption": "Standard deviation of side-chain burial across models.",
+        "figureLabel": "FIG. 17"
       },
       {
         "type": "subheading",
@@ -1542,7 +1515,7 @@ const manuscriptSections: WikiPageContent["sections"] = [
       {
         "type": "prose",
         "paragraphs": [
-          "The public archive contains the **raw and processed data** for this section: AlphaFold 3 job requests and returned ModelCIF and confidence files for **all 85 models**; cleaned and preprocessed PDB files; per-model and per-system result tables; the data and scripts for Figures 15–18; and the analysis pipeline. These files and scripts are provided to support **reproduction** of the reported measurements."
+          "The public archive contains the **raw and processed data** for this section: AlphaFold 3 job requests and returned ModelCIF and confidence files for **all 85 models**; cleaned and preprocessed PDB files; per-model and per-system result tables; the data and scripts for the structural confidence, side-chain burial, variability, and position-9 charts; and the analysis pipeline. These files and scripts are provided to support **reproduction** of the reported measurements."
         ]
       },
       {
@@ -1627,7 +1600,7 @@ const manuscriptSections: WikiPageContent["sections"] = [
             "AlphaFold 3 structure prediction",
             "Cleaned and preprocessed PDB files",
             "85 models total, AlphaFold 3 job requests, ModelCIF format, confidence scoring method",
-            "ModelCIF and confidence files for all 85 models, per-model and per-system result tables, data and scripts for Figures 15–18, analysis pipeline"
+            "ModelCIF and confidence files for all 85 models, per-model and per-system result tables, data and scripts for the structural confidence, side-chain burial, variability, and position-9 charts, analysis pipeline"
           ]
         ]
       },
@@ -1897,25 +1870,21 @@ const manuscriptSections: WikiPageContent["sections"] = [
       },
       {
         "type": "figure",
-        "src": getModelImage("image 18.png"), "width": 975, "height": 576,
-        "alt": "*Figure 22, CCK8 observations and viability response. Each of five nominal doses has four records. The curve and band show the conditional mean-response median and 95% interval from 8,192 cell-posterior draws, excluding new-observation noise. The dashed line is 80% of the fitted median baseline.*"
-      },
-      {
-        "type": "prose",
-        "paragraphs": [
-          "*Figure 22, CCK8 observations and viability response. Each of five nominal doses has four records. The curve and band show the conditional mean-response median and 95% interval from 8,192 cell-posterior draws, excluding new-observation noise. The dashed line is 80% of the fitted median baseline.*"
-        ]
+        "src": getModelImage("image 18.png"),
+        "width": 975,
+        "height": 576,
+        "alt": "CCK8 observations and viability response. Each of five nominal doses has four records. The curve and band show the conditional mean-response median and 95% interval from 8,192 cell-posterior draws, excluding new-observation noise. The dashed line is 80% of the fitted median baseline.",
+        "caption": "CCK8 observations and viability response. Each of five nominal doses has four records. The curve and band show the conditional mean-response median and 95% interval from 8,192 cell-posterior draws, excluding new-observation noise. The dashed line is 80% of the fitted median baseline.",
+        "figureLabel": "FIG. 18"
       },
       {
         "type": "figure",
-        "src": getModelImage("image 15.png"), "width": 975, "height": 576,
-        "alt": "*Figure 23, Background-corrected killing and E:T response. Blank and Combined each have three records at each E:T level. Points are corrected means; bars show propagated one-sigma observation uncertainty, floored at 0.04 (currently ±4 percentage points). Curve and band show the conditional mean median and 95% interval from 8,192 posterior draws.*"
-      },
-      {
-        "type": "prose",
-        "paragraphs": [
-          "*Figure 23, Background-corrected killing and E:T response. Blank and Combined each have three records at each E:T level. Points are corrected means; bars show propagated one-sigma observation uncertainty, floored at 0.04 (currently ±4 percentage points). Curve and band show the conditional mean median and 95% interval from 8,192 posterior draws.*"
-        ]
+        "src": getModelImage("image 15.png"),
+        "width": 975,
+        "height": 576,
+        "alt": "Background-corrected killing and E:T response. Blank and Combined each have three records at each E:T level. Points are corrected means; bars show propagated one-sigma observation uncertainty, floored at 0.04 (currently ±4 percentage points). Curve and band show the conditional mean median and 95% interval from 8,192 posterior draws.",
+        "caption": "Background-corrected killing and E:T response. Blank and Combined each have three records at each E:T level. Points are corrected means; bars show propagated one-sigma observation uncertainty, floored at 0.04 (currently ±4 percentage points). Curve and band show the conditional mean median and 95% interval from 8,192 posterior draws.",
+        "figureLabel": "FIG. 19"
       },
       {
         "type": "subheading",
@@ -1979,14 +1948,12 @@ const manuscriptSections: WikiPageContent["sections"] = [
       },
       {
         "type": "figure",
-        "src": getModelImage("image 38.png"), "width": 975, "height": 548,
-        "alt": "*Figure 24, How immune readouts enter the model.*"
-      },
-      {
-        "type": "prose",
-        "paragraphs": [
-          "*Figure 24, How immune readouts enter the model.*"
-        ]
+        "src": getModelImage("image 38.png"),
+        "width": 975,
+        "height": 548,
+        "alt": "How immune readouts enter the model.",
+        "caption": "How immune readouts enter the model.",
+        "figureLabel": "FIG. 20"
       },
       {
         "type": "prose",
@@ -2038,25 +2005,21 @@ const manuscriptSections: WikiPageContent["sections"] = [
       },
       {
         "type": "figure",
-        "src": getModelImage("image 8.png"), "width": 975, "height": 298,
-        "alt": "*Figure 26, Model repeated-dosing schedule. Subcutaneous injections on days 0, 7, 14, 21, and 28; endpoint reported at day 35.*"
-      },
-      {
-        "type": "prose",
-        "paragraphs": [
-          "*Figure 26, Model repeated-dosing schedule. Subcutaneous injections on days 0, 7, 14, 21, and 28; endpoint reported at day 35.*"
-        ]
+        "src": getModelImage("image 8.png"),
+        "width": 975,
+        "height": 298,
+        "alt": "Model repeated-dosing schedule. Subcutaneous injections on days 0, 7, 14, 21, and 28; endpoint reported at day 35.",
+        "caption": "Model repeated-dosing schedule. Subcutaneous injections on days 0, 7, 14, 21, and 28; endpoint reported at day 35.",
+        "figureLabel": "FIG. 22"
       },
       {
         "type": "figure",
-        "src": getModelImage("image 37.png"), "width": 975, "height": 726,
-        "alt": "*Figure 27, Payload and exposure under repeated dosing. A and B use a central-parameter trajectory at 10.2 μg, with mass-balance residual 3.55×10⁻¹⁴ μg; shading in B shows mass composition. C gives blood-payload AUC medians and 95% intervals for 301 doses sharing 1,024 draws. D shows marginal routing medians and intervals. U includes removal from lymph and blood.*"
-      },
-      {
-        "type": "prose",
-        "paragraphs": [
-          "*Figure 27, Payload and exposure under repeated dosing. A and B use a central-parameter trajectory at 10.2 μg, with mass-balance residual 3.55×10⁻¹⁴ μg; shading in B shows mass composition. C gives blood-payload AUC medians and 95% intervals for 301 doses sharing 1,024 draws. D shows marginal routing medians and intervals. U includes removal from lymph and blood.*"
-        ]
+        "src": getModelImage("image 37.png"),
+        "width": 975,
+        "height": 726,
+        "alt": "Payload and exposure under repeated dosing. A and B use a central-parameter trajectory at 10.2 μg, with mass-balance residual 3.55×10⁻¹⁴ μg; shading in B shows mass composition. C gives blood-payload AUC medians and 95% intervals for 301 doses sharing 1,024 draws. D shows marginal routing medians and intervals. U includes removal from lymph and blood.",
+        "caption": "Payload and exposure under repeated dosing. A and B use a central-parameter trajectory at 10.2 μg, with mass-balance residual 3.55×10⁻¹⁴ μg; shading in B shows mass composition. C gives blood-payload AUC medians and 95% intervals for 301 doses sharing 1,024 draws. D shows marginal routing medians and intervals. U includes removal from lymph and blood.",
+        "figureLabel": "FIG. 23"
       },
       {
         "type": "subheading",
@@ -2079,55 +2042,16 @@ const manuscriptSections: WikiPageContent["sections"] = [
       },
       {
         "type": "figure",
-        "src": getModelImage("image 25.png"), "width": 975, "height": 385,
-        "alt": "*Figure 28, Connecting in-vivo μg payload to the nominal ng cell response.*"
-      },
-      {
-        "type": "prose",
-        "paragraphs": [
-          "*Figure 28, Connecting in-vivo μg payload to the nominal ng cell response.*"
-        ]
+        "src": getModelImage("image 25.png"),
+        "width": 975,
+        "height": 385,
+        "alt": "Connecting in-vivo μg payload to the nominal ng cell response.",
+        "caption": "Connecting in-vivo μg payload to the nominal ng cell response.",
+        "figureLabel": "FIG. 24"
       },
       {
         "type": "feature",
         "key": "model-panel-18"
-      },
-      {
-        "type": "subheading",
-        "id": "model-heading-60",
-        "index": "4.3.2.1",
-        "title": "Derivation: predicting when to sample lymph payload",
-        "level": 4
-      },
-      {
-        "type": "prose",
-        "paragraphs": [
-          "For a single injection and initially zero lymph payload, the local solution is S(t)=q exp(−k_sc t). Substitution into the lymph equation and multiplication by an integrating factor gives"
-        ]
-      },
-      {
-        "type": "prose",
-        "paragraphs": [
-          "$$\\frac{d}{dt}\\left(e^{k_{lymph}t}L(t)\\right)=f_{lymph}qk_{sc}e^{(k_{lymph}-k_{sc})t}.$$"
-        ]
-      },
-      {
-        "type": "prose",
-        "paragraphs": [
-          "Integration from 0 to t gives L(t) above. Differentiating it, for positive q and f_lymph and unequal clearance rates, gives the peak condition"
-        ]
-      },
-      {
-        "type": "prose",
-        "paragraphs": [
-          "$$\\dot L(t_{peak})=0\\Longrightarrow k_{lymph}e^{-k_{lymph}t_{peak}}=k_{sc}e^{-k_{sc}t_{peak}}.$$"
-        ]
-      },
-      {
-        "type": "prose",
-        "paragraphs": [
-          "Taking logarithms gives the peak-time formula above. Dose and routing fraction scale the height of this single-injection linear curve and therefore **do not change its peak time**. **Repeated injections require** accounting for residual payload, so this single-injection result **cannot be transferred directly**."
-        ]
       },
       {
         "type": "subheading",
@@ -2150,14 +2074,12 @@ const manuscriptSections: WikiPageContent["sections"] = [
       },
       {
         "type": "figure",
-        "src": getModelImage("image 4.png"), "width": 975, "height": 298,
-        "alt": "**Figure 29,** Joint pass fraction across different dosing schedules."
-      },
-      {
-        "type": "prose",
-        "paragraphs": [
-          "**Figure 29,** Joint pass fraction across different dosing schedules."
-        ]
+        "src": getModelImage("image 4.png"),
+        "width": 975,
+        "height": 298,
+        "alt": "Joint pass fraction across different dosing schedules.",
+        "caption": "Joint pass fraction across different dosing schedules.",
+        "figureLabel": "FIG. 25"
       },
       {
         "type": "feature",
@@ -2203,14 +2125,12 @@ const manuscriptSections: WikiPageContent["sections"] = [
       },
       {
         "type": "figure",
-        "src": getModelImage("image 10.png"), "width": 975, "height": 349,
-        "alt": "*Figure 30, Timing from delivery to functional RNA and antigen. At 10.2 μg per injection, a representative trajectory uses the componentwise medians of 1,024 joint draws; vertical lines mark dosing.*"
-      },
-      {
-        "type": "prose",
-        "paragraphs": [
-          "*Figure 30, Timing from delivery to functional RNA and antigen. At 10.2 μg per injection, a representative trajectory uses the componentwise medians of 1,024 joint draws; vertical lines mark dosing.*"
-        ]
+        "src": getModelImage("image 10.png"),
+        "width": 975,
+        "height": 349,
+        "alt": "Timing from delivery to functional RNA and antigen. At 10.2 μg per injection, a representative trajectory uses the componentwise medians of 1,024 joint draws; vertical lines mark dosing.",
+        "caption": "Timing from delivery to functional RNA and antigen. At 10.2 μg per injection, a representative trajectory uses the componentwise medians of 1,024 joint draws; vertical lines mark dosing.",
+        "figureLabel": "FIG. 26"
       },
       {
         "type": "subheading",
@@ -2233,14 +2153,12 @@ const manuscriptSections: WikiPageContent["sections"] = [
       },
       {
         "type": "figure",
-        "src": getModelImage("image 40.png"), "width": 975, "height": 324,
-        "alt": "**Figure 31,** Innate signaling activation and suppression dynamics."
-      },
-      {
-        "type": "prose",
-        "paragraphs": [
-          "**Figure 31,** Innate signaling activation and suppression dynamics."
-        ]
+        "src": getModelImage("image 40.png"),
+        "width": 975,
+        "height": 324,
+        "alt": "Innate signaling activation and suppression dynamics.",
+        "caption": "Innate signaling activation and suppression dynamics.",
+        "figureLabel": "FIG. 27"
       },
       {
         "type": "feature",
@@ -2286,25 +2204,21 @@ const manuscriptSections: WikiPageContent["sections"] = [
       },
       {
         "type": "figure",
-        "src": getModelImage("image 34.png"), "width": 975, "height": 349,
-        "alt": "**Figure 33,** DC maturation and antigen presentation dynamics."
-      },
-      {
-        "type": "prose",
-        "paragraphs": [
-          "**Figure 33,** DC maturation and antigen presentation dynamics."
-        ]
+        "src": getModelImage("image 34.png"),
+        "width": 975,
+        "height": 349,
+        "alt": "DC maturation and antigen presentation dynamics.",
+        "caption": "DC maturation and antigen presentation dynamics.",
+        "figureLabel": "FIG. 29"
       },
       {
         "type": "figure",
-        "src": getModelImage("image 31.png"), "width": 975, "height": 324,
-        "alt": "**Figure 34,** Effector generation, suppression, and tumor killing."
-      },
-      {
-        "type": "prose",
-        "paragraphs": [
-          "**Figure 34,** Effector generation, suppression, and tumor killing."
-        ]
+        "src": getModelImage("image 31.png"),
+        "width": 975,
+        "height": 324,
+        "alt": "Effector generation, suppression, and tumor killing.",
+        "caption": "Effector generation, suppression, and tumor killing.",
+        "figureLabel": "FIG. 30"
       },
       {
         "type": "subheading",
@@ -2364,13 +2278,13 @@ const manuscriptSections: WikiPageContent["sections"] = [
       {
         "type": "prose",
         "paragraphs": [
-          "The **mismatch has consequences**. LM2-4 tumors grow in **immunodeficient (SCID)** mice; 4T1 tumors grow in **immunocompetent (BALB/c)** mice. The model introduces a **growth-transfer coefficient** to scale the imported parameters toward the observed PBS endpoint, but that coefficient adjusts speed, **not shape**. Chapter 13 shows that the model **overpredicts untreated tumor size** by approximately 4.7-fold at day 35, which points directly to this limitation. The comparison reveals where the imported parameters fail and identifies what the **next calibration** should measure."
+          "The **mismatch has consequences**. LM2-4 tumors grow in **immunodeficient (SCID)** mice; 4T1 tumors grow in **immunocompetent (BALB/c)** mice. The model introduces a **growth-transfer coefficient** to scale the imported parameters toward the observed PBS endpoint, but that coefficient adjusts speed, **not shape**. [Comparison with Animal Experiments](#model-heading-98) shows that the model **overpredicts untreated tumor size** by approximately 4.7-fold at day 35, which points directly to this limitation. The comparison reveals where the imported parameters fail and identifies what the **next calibration** should measure."
         ]
       },
       {
         "type": "prose",
         "paragraphs": [
-          "In contrast to the growth parameters, which required transfer from a different system, the **immune killing function** follows the **saturating-response structure** common to **tumor-immune ODE models(de Pillis et al., 2005)**"
+          "In contrast to the growth parameters, which required transfer from a different system, the **immune killing function** follows the **saturating-response structure** common to **tumor-immune ODE models** (de Pillis et al., 2005)."
         ]
       },
       {
@@ -2388,14 +2302,12 @@ const manuscriptSections: WikiPageContent["sections"] = [
       },
       {
         "type": "figure",
-        "src": getModelImage("image 22.png"), "width": 975, "height": 576,
-        "alt": "**Figure 35,** Tumor trajectories for untreated and 10.2 μg scenarios."
-      },
-      {
-        "type": "prose",
-        "paragraphs": [
-          "**Figure 35,** Tumor trajectories for untreated and 10.2 μg scenarios."
-        ]
+        "src": getModelImage("image 22.png"),
+        "width": 975,
+        "height": 576,
+        "alt": "Tumor trajectories for untreated and 10.2 μg scenarios.",
+        "caption": "Tumor trajectories for untreated and 10.2 μg scenarios.",
+        "figureLabel": "FIG. 31"
       },
       {
         "type": "subheading",
@@ -2412,14 +2324,12 @@ const manuscriptSections: WikiPageContent["sections"] = [
       },
       {
         "type": "figure",
-        "src": getModelImage("image 20.png"), "width": 975, "height": 576,
-        "alt": "**Figure 36,** Dose-dependent relative tumor burden at day 35."
-      },
-      {
-        "type": "prose",
-        "paragraphs": [
-          "**Figure 36,** Dose-dependent relative tumor burden at day 35."
-        ]
+        "src": getModelImage("image 20.png"),
+        "width": 975,
+        "height": 576,
+        "alt": "Dose-dependent relative tumor burden at day 35.",
+        "caption": "Dose-dependent relative tumor burden at day 35.",
+        "figureLabel": "FIG. 32"
       },
       {
         "type": "prose",
@@ -2458,14 +2368,12 @@ const manuscriptSections: WikiPageContent["sections"] = [
       },
       {
         "type": "figure",
-        "src": getModelImage("kkill_sensitivity.png"), "width": 2423, "height": 883,
-        "alt": "**Figure 37,** Sensitivity to killing-rate assumptions across doses."
-      },
-      {
-        "type": "prose",
-        "paragraphs": [
-          "**Figure 37,** Sensitivity to killing-rate assumptions across doses."
-        ]
+        "src": getModelImage("kkill_sensitivity.png"),
+        "width": 2423,
+        "height": 883,
+        "alt": "Sensitivity to killing-rate assumptions across doses.",
+        "caption": "Sensitivity to killing-rate assumptions across doses.",
+        "figureLabel": "FIG. 33"
       },
       {
         "type": "subheading",
@@ -2570,14 +2478,12 @@ const manuscriptSections: WikiPageContent["sections"] = [
       },
       {
         "type": "figure",
-        "src": getModelImage("image 6.png"), "width": 975, "height": 688,
-        "alt": "**Figure 38,** Conditional dose selection showing joint-pass fraction peaks at 10.2 μg (Panel A), with efficacy and screening constraints both satisfied across 1,024 parameter draws. Panels B and C detail the candidate region and pass fractions at the optimal dose. Panel D demonstrates that paired comparison reduces uncertainty by 3.23× compared to unpaired approximation."
-      },
-      {
-        "type": "prose",
-        "paragraphs": [
-          "**Figure 38,** Conditional dose selection showing joint-pass fraction peaks at 10.2 μg (Panel A), with efficacy and screening constraints both satisfied across 1,024 parameter draws. Panels B and C detail the candidate region and pass fractions at the optimal dose. Panel D demonstrates that paired comparison reduces uncertainty by 3.23× compared to unpaired approximation."
-        ]
+        "src": getModelImage("image 6.png"),
+        "width": 975,
+        "height": 688,
+        "alt": "Conditional dose selection showing joint-pass fraction peaks at 10.2 μg (Panel A), with efficacy and screening constraints both satisfied across 1,024 parameter draws. Panels B and C detail the candidate region and pass fractions at the optimal dose. Panel D demonstrates that paired comparison reduces uncertainty by 3.23× compared to unpaired approximation.",
+        "caption": "Conditional dose selection showing joint-pass fraction peaks at 10.2 μg (Panel A), with efficacy and screening constraints both satisfied across 1,024 parameter draws. Panels B and C detail the candidate region and pass fractions at the optimal dose. Panel D demonstrates that paired comparison reduces uncertainty by 3.23× compared to unpaired approximation.",
+        "figureLabel": "FIG. 34"
       },
       {
         "type": "prose",
@@ -2603,40 +2509,8 @@ const manuscriptSections: WikiPageContent["sections"] = [
         ]
       },
       {
-        "type": "prose",
-        "paragraphs": [
-          "1. **The optimum shifts with different parameter samples**"
-        ]
-      },
-      {
-        "type": "prose",
-        "paragraphs": [
-          "The 0.0029 difference corresponds to **3 out of 1,024 draws**. If we re-ran the simulation with a different random seed, the numerical peak could shift anywhere in the 9.8-10.4 μg range. The **Monte Carlo standard error** is ±0.012, four times larger than the 0.0029 difference. Chasing 10.2 μg treats **sampling noise** as a **biological optimum**."
-        ]
-      },
-      {
-        "type": "prose",
-        "paragraphs": [
-          "1. **The two doses are functionally equivalent**"
-        ]
-      },
-      {
-        "type": "prose",
-        "paragraphs": [
-          "Both 10.0 and 10.2 μg have efficacy pass fractions around 0.83 and screening pass fractions around 0.97-0.98. Their joint-pass fractions differ by only **0.3%**. Within the model's **prediction uncertainty**, these doses produce **indistinguishable outcomes**."
-        ]
-      },
-      {
-        "type": "prose",
-        "paragraphs": [
-          "1. **Experimental precision cannot reliably distinguish them**"
-        ]
-      },
-      {
-        "type": "prose",
-        "paragraphs": [
-          "Preparing 10.2 μg requires **sub-microliter precision**. Typical pipetting error (±3-5%), concentration variation (±5%), and injection volume variability (±2%) combine to ±**6-8% total error**, or **±0.6-0.8 μg** at the 10 μg scale. The 0.2 μg difference is smaller than the **experimental noise**. Using **round doses** is simpler, **more reproducible**, and matches experimental reality."
-        ]
+        "type": "feature",
+        "key": "model-dose-reasons"
       },
       {
         "type": "subheading",
@@ -2697,14 +2571,12 @@ const manuscriptSections: WikiPageContent["sections"] = [
       },
       {
         "type": "figure",
-        "src": getModelImage("design_parameter_fixing.png"), "width": 3023, "height": 923,
-        "alt": "*Figure 39, Each scenario fixes one structural factor. Left: joint pass curves; middle: passing grid points with gaps; right: 95% log10 relative-burden width at 10.2 µg.*"
-      },
-      {
-        "type": "prose",
-        "paragraphs": [
-          "*Figure 39, Each scenario fixes one structural factor. Left: joint pass curves; middle: passing grid points with gaps; right: 95% log10 relative-burden width at 10.2 µg.*"
-        ]
+        "src": getModelImage("design_parameter_fixing.png"),
+        "width": 3023,
+        "height": 923,
+        "alt": "Each scenario fixes one structural factor. Left: joint pass curves; middle: passing grid points with gaps; right: 95% log10 relative-burden width at 10.2 µg.",
+        "caption": "Each scenario fixes one structural factor. Left: joint pass curves; middle: passing grid points with gaps; right: 95% log10 relative-burden width at 10.2 µg.",
+        "figureLabel": "FIG. 35"
       },
       {
         "type": "feature",
@@ -2725,14 +2597,13 @@ const manuscriptSections: WikiPageContent["sections"] = [
       },
       {
         "type": "figure",
-        "src": getModelImage("image 29.png"), "width": 975, "height": 819,
-        "alt": "**Figure 40,** Sensitivity analysis showing parameter importance."
-      },
-      {
-        "type": "prose",
-        "paragraphs": [
-          "**Figure 40,** Sensitivity analysis showing parameter importance."
-        ]
+        "className": "model-figure--compact",
+        "src": getModelImage("image 29.png"),
+        "width": 975,
+        "height": 819,
+        "alt": "Sensitivity analysis showing parameter importance.",
+        "caption": "Sensitivity analysis showing parameter importance.",
+        "figureLabel": "FIG. 36"
       },
       {
         "type": "subheading",
@@ -2755,14 +2626,12 @@ const manuscriptSections: WikiPageContent["sections"] = [
       },
       {
         "type": "figure",
-        "src": getModelImage("image 1.png"), "width": 975, "height": 693,
-        "alt": "**Figure 41,** Between-scramble variation in Sobol indices."
-      },
-      {
-        "type": "prose",
-        "paragraphs": [
-          "**Figure 41,** Between-scramble variation in Sobol indices."
-        ]
+        "src": getModelImage("image 1.png"),
+        "width": 975,
+        "height": 693,
+        "alt": "Between-scramble variation in Sobol indices.",
+        "caption": "Between-scramble variation in Sobol indices.",
+        "figureLabel": "FIG. 37"
       },
       {
         "type": "subheading",
@@ -2897,6 +2766,15 @@ const manuscriptSections: WikiPageContent["sections"] = [
         "key": "model-panel-26"
       },
       {
+        "type": "figure",
+        "src": getModelImage("image 12.png"),
+        "width": 975,
+        "height": 556,
+        "alt": "Observational support matrix for model parameters.",
+        "caption": "Observational support matrix for model parameters.",
+        "figureLabel": "FIG. 40"
+      },
+      {
         "type": "subheading",
         "id": "model-heading-94",
         "index": "4.10",
@@ -2980,13 +2858,13 @@ const manuscriptSections: WikiPageContent["sections"] = [
             "P1",
             "Lymph-payload peak at 0.76–1.84 days",
             "Frozen",
-            "Module 2, Figure 6"
+            "Module 2, Figure 23"
           ],
           [
             "P2",
             "Antigen peak lags delivery by ~5 days",
             "Frozen",
-            "Module 3, Figure 9"
+            "Module 3, Figure 26"
           ],
           [
             "P3",
@@ -2998,19 +2876,19 @@ const manuscriptSections: WikiPageContent["sections"] = [
             "P4",
             "Joint pass fraction maximizes at 10.2 μg",
             "Frozen",
-            "Module 6, Figure 16"
+            "Module 6, Figure 34"
           ],
           [
             "P5",
             "Tumor reduction under baseline growth",
             "Frozen",
-            "Module 5, compared Chapter 13"
+            "Module 5; [animal comparison](#model-heading-98)"
           ],
           [
             "P6",
             "DC gain ~2.16, T-cell gain ~2.76",
             "Frozen replication",
-            "Module 1, tested Chapter 13"
+            "Module 1; [animal comparison](#model-heading-98)"
           ]
         ]
       },
@@ -3090,14 +2968,12 @@ const manuscriptSections: WikiPageContent["sections"] = [
       },
       {
         "type": "figure",
-        "src": getModelImage("image 39.png"), "width": 975, "height": 383,
-        "alt": "**Figure 45,** Animal observations and frozen model predictions."
-      },
-      {
-        "type": "prose",
-        "paragraphs": [
-          "**Figure 45,** Animal observations and frozen model predictions."
-        ]
+        "src": getModelImage("image 39.png"),
+        "width": 975,
+        "height": 383,
+        "alt": "Animal observations and frozen model predictions.",
+        "caption": "Animal observations and frozen model predictions.",
+        "figureLabel": "FIG. 41"
       },
       {
         "type": "subheading",
@@ -3148,7 +3024,7 @@ const manuscriptSections: WikiPageContent["sections"] = [
       {
         "type": "prose",
         "paragraphs": [
-          "**Cross-system growth parameters.** The current model uses growth parameters from an **external immunodeficient system** (LM2-4 LUC⁺/SCID). Chapter 13's comparison shows untreated growth is significantly slower than predicted (234 vs 1103 mm³). We plan to collect complete untreated longitudinal curves from our **4T1/BALB/c** system and **re-estimate growth parameters**, **eliminating this cross-system transfer assumption**."
+          "**Cross-system growth parameters.** The current model uses growth parameters from an **external immunodeficient system** (LM2-4 LUC⁺/SCID). The [comparison with animal experiments](#model-heading-98) shows untreated growth is significantly slower than predicted (234 vs 1103 mm³). We plan to collect complete untreated longitudinal curves from our **4T1/BALB/c** system and **re-estimate growth parameters**, **eliminating this cross-system transfer assumption**."
         ]
       },
       {
@@ -3700,15 +3576,8 @@ const manuscriptSections: WikiPageContent["sections"] = [
         ]
       },
       {
-        "type": "figure",
-        "src": getModelImage("image 21.png"), "width": 1667, "height": 1150,
-        "alt": "**Figure 46,** Pre-registered edge classification matrix for SDG interactions."
-      },
-      {
-        "type": "prose",
-        "paragraphs": [
-          "**Figure 46,** Pre-registered edge classification matrix for SDG interactions."
-        ]
+        "type": "feature",
+        "key": "model-sdg-boundary"
       },
       {
         "type": "subheading",
@@ -3744,25 +3613,16 @@ const manuscriptSections: WikiPageContent["sections"] = [
       {
         "type": "prose",
         "paragraphs": [
-          "S_ij = M × (L⁺_ij / 3) × q_ij + (1 − M) × (L⁻_ij / 3) × q_ij"
-        ]
-      },
-      {
-        "type": "prose",
-        "paragraphs": [
           "where L⁺ represents **green pathway**s (**renewable energy**, **circular economy**) and L⁻ represents resource-intensive pathways (fossil fuels, linear production). M = 0.42 serves as our **reference scenario** based on current global implementation patterns."
         ]
       },
       {
-        "type": "figure",
-        "src": getModelImage("image 24.png"), "width": 1310, "height": 1002,
-        "alt": "**Figure 47,** Scored interaction matrix under reference scenario (M=0.42)."
+        "type": "feature",
+        "key": "model-sdg-interactions"
       },
       {
-        "type": "prose",
-        "paragraphs": [
-          "**Figure 47,** Scored interaction matrix under reference scenario (M=0.42)."
-        ]
+        "type": "feature",
+        "key": "model-sdg-dimensions"
       },
       {
         "type": "subheading",
@@ -3792,12 +3652,6 @@ const manuscriptSections: WikiPageContent["sections"] = [
       {
         "type": "prose",
         "paragraphs": [
-          "T = A + α A² + α² A³ + ... = Σ (k=1 to K) αᵏ Aᵏ"
-        ]
-      },
-      {
-        "type": "prose",
-        "paragraphs": [
           "where A captures direct (one-step) effects, A² captures two-step paths (i → m → j), A³ captures three-step paths (i → m → n → j), α is a decay factor that discounts longer paths, and K = 3 truncates the series for computational and interpretative clarity."
         ]
       },
@@ -3816,24 +3670,7 @@ const manuscriptSections: WikiPageContent["sections"] = [
       {
         "type": "prose",
         "paragraphs": [
-          "T = (I − αA)⁻¹ − I"
-        ]
-      },
-      {
-        "type": "prose",
-        "paragraphs": [
           "We set α = 0.5 / ρ(A), ensuring an effective spectral radius of 0.5. This balances two concerns: α must be large enough that multi-step effects matter, but small enough that the series converges and fourth-order paths contribute negligibly."
-        ]
-      },
-      {
-        "type": "figure",
-        "src": getModelImage("image 36.png"), "width": 2379, "height": 981,
-        "alt": "**Figure 48,** Network propagation showing SDG hub nodes and indirect pathways."
-      },
-      {
-        "type": "prose",
-        "paragraphs": [
-          "**Figure 48,** Network propagation showing SDG hub nodes and indirect pathways."
         ]
       },
       {
@@ -3858,19 +3695,7 @@ const manuscriptSections: WikiPageContent["sections"] = [
       {
         "type": "prose",
         "paragraphs": [
-          "r = (I − αA)⁻¹ u"
-        ]
-      },
-      {
-        "type": "prose",
-        "paragraphs": [
           "This decomposes as:"
-        ]
-      },
-      {
-        "type": "prose",
-        "paragraphs": [
-          "r = u + (αA)u + (αA)² u + (αA)³ u + ..."
         ]
       },
       {
@@ -4008,12 +3833,6 @@ const manuscriptSections: WikiPageContent["sections"] = [
         ]
       },
       {
-        "type": "prose",
-        "paragraphs": [
-          "u = [0, 0, 2.325, 2.550, 0, 0, 0, 0, 2.550, 0, 0, 1.950, 0, 0, 0, 0, 1.875]"
-        ]
-      },
-      {
         "type": "subheading",
         "id": "model-heading-117",
         "index": "5.3.2",
@@ -4027,15 +3846,8 @@ const manuscriptSections: WikiPageContent["sections"] = [
         ]
       },
       {
-        "type": "figure",
-        "src": getModelImage("image.png"), "width": 1619, "height": 734,
-        "alt": "**Figure 49,** CirCure SDG contribution profile across all 17 goals."
-      },
-      {
-        "type": "prose",
-        "paragraphs": [
-          "**Figure 49,** CirCure SDG contribution profile across all 17 goals."
-        ]
+        "type": "feature",
+        "key": "model-sdg-contributions"
       },
       {
         "type": "prose",
@@ -4932,14 +4744,12 @@ export const modelPanels: Record<string, ModelPanel> = {
           },
           {
             "type": "figure",
-            "src": getModelImage("image 28.png"), "width": 350, "height": 340,
-            "alt": "**Figure 2,** Survival curves compare low and high TROP2 expression groups. Black and red indicate the respective groups (Li et al., 2025)."
-          },
-          {
-            "type": "prose",
-            "paragraphs": [
-              "**Figure 2,** Survival curves compare low and high TROP2 expression groups. Black and red indicate the respective groups (Li et al., 2025)."
-            ]
+            "src": getModelImage("image 28.png"),
+            "width": 350,
+            "height": 340,
+            "alt": "Survival curves compare low and high TROP2 expression groups. Black and red indicate the respective groups (Li et al., 2025).",
+            "caption": "Survival curves compare low and high TROP2 expression groups. Black and red indicate the respective groups (Li et al., 2025).",
+            "figureLabel": "FIG. 02"
           },
           {
             "type": "prose",
@@ -4960,14 +4770,12 @@ export const modelPanels: Record<string, ModelPanel> = {
           },
           {
             "type": "figure",
-            "src": getModelImage("image 19.png"), "width": 350, "height": 283,
-            "alt": "**Figure 3,** The plot presents overall survival according to B7-H4 expression. Group assignment is based on tumour immunostaining (Wang et al., 2018)."
-          },
-          {
-            "type": "prose",
-            "paragraphs": [
-              "**Figure 3,** The plot presents overall survival according to B7-H4 expression. Group assignment is based on tumour immunostaining (Wang et al., 2018)."
-            ]
+            "src": getModelImage("image 19.png"),
+            "width": 350,
+            "height": 283,
+            "alt": "The plot presents overall survival according to B7-H4 expression. Group assignment is based on tumour immunostaining (Wang et al., 2018).",
+            "caption": "The plot presents overall survival according to B7-H4 expression. Group assignment is based on tumour immunostaining (Wang et al., 2018).",
+            "figureLabel": "FIG. 03"
           },
           {
             "type": "prose",
@@ -4988,14 +4796,12 @@ export const modelPanels: Record<string, ModelPanel> = {
           },
           {
             "type": "figure",
-            "src": getModelImage("image 27.png"), "width": 350, "height": 335,
-            "alt": "**Figure 4,** This analysis focuses on overall survival within BL1 TNBC. Patients are stratified by PVRL4 gene expression (Son et al., 2025)."
-          },
-          {
-            "type": "prose",
-            "paragraphs": [
-              "**Figure 4,** This analysis focuses on overall survival within BL1 TNBC. Patients are stratified by PVRL4 gene expression (Son et al., 2025)."
-            ]
+            "src": getModelImage("image 27.png"),
+            "width": 350,
+            "height": 335,
+            "alt": "This analysis focuses on overall survival within BL1 TNBC. Patients are stratified by PVRL4 gene expression (Son et al., 2025).",
+            "caption": "This analysis focuses on overall survival within BL1 TNBC. Patients are stratified by PVRL4 gene expression (Son et al., 2025).",
+            "figureLabel": "FIG. 04"
           },
           {
             "type": "prose",
@@ -5016,14 +4822,12 @@ export const modelPanels: Record<string, ModelPanel> = {
           },
           {
             "type": "figure",
-            "src": getModelImage("image 17.png"), "width": 350, "height": 353,
-            "alt": "**Figure 5,** Three survival curves represent different LIV-1 staining intensities. Crosses indicate censored observations (Saravanan et al., 2024)."
-          },
-          {
-            "type": "prose",
-            "paragraphs": [
-              "**Figure 5,** Three survival curves represent different LIV-1 staining intensities. Crosses indicate censored observations (Saravanan et al., 2024)."
-            ]
+            "src": getModelImage("image 17.png"),
+            "width": 350,
+            "height": 353,
+            "alt": "Three survival curves represent different LIV-1 staining intensities. Crosses indicate censored observations (Saravanan et al., 2024).",
+            "caption": "Three survival curves represent different LIV-1 staining intensities. Crosses indicate censored observations (Saravanan et al., 2024).",
+            "figureLabel": "FIG. 05"
           },
           {
             "type": "prose",
@@ -5101,7 +4905,7 @@ export const modelPanels: Record<string, ModelPanel> = {
       {
         "type": "prose",
         "paragraphs": [
-          "For both datasets, differential abundance was analyzed with the model appropriate to the study design. The volcano plots show the fitted log2 fold changes and adjusted *P* values across the full tested proteome. The candidate panels show the source measurements used for TROP2, B7-H4, Nectin-4, and LIV-1. **The analysis package** retains the extracted abundance matrices, sample metadata, cohort assignments, model outputs, target summaries, and plot-ready tables, so **every value in Figures 5–8 can be traced to its source sample and statistical model.** The PXD028102 paired model handles the original observation pattern explicitly (**Lazar et al., 2016**)."
+          "For both datasets, differential abundance was analyzed with the model appropriate to the study design. The volcano plots show the fitted log2 fold changes and adjusted *P* values across the full tested proteome. The candidate panels show the source measurements used for TROP2, B7-H4, Nectin-4, and LIV-1. **The analysis package** retains the extracted abundance matrices, sample metadata, cohort assignments, model outputs, target summaries, and plot-ready tables, so **every value in the differential abundance plots can be traced to its source sample and statistical model.** The PXD028102 paired model handles the original observation pattern explicitly (**Lazar et al., 2016**)."
         ]
       }
     ]
@@ -5150,7 +4954,7 @@ export const modelPanels: Record<string, ModelPanel> = {
           {
             "type": "prose",
             "paragraphs": [
-              "The four broad compartments summarized in Figure 9 came from the deposited lineage annotations, while marker expression was used as an **independent check** on their biological identity. *EPCAM*, *KRT8*, *KRT18*, and *KRT19* supported the epithelial and malignant annotations. *PTPRC* marked immune cells. *COL1A1*, *COL1A2*, and *DCN* supported fibroblast-rich stromal clusters, while *PECAM1*, *VWF*, and *KDR* supported endothelial clusters. **Five clusters were dominated by malignant cells**: cluster 4 contained 3,512 malignant cells among 3,523 cells, cluster 7 contained 1,817 of 2,086, cluster 11 contained 1,706 of 1,780, cluster 14 contained 1,051 of 1,259, and cluster 17 contained 794 of 808. A further **417 malignant cells occurred in cluster 5**, which also contained 2,472 stromal cells. These counts are the basis for the UMAP description in the main text."
+              "The four broad compartments summarized in Figure 8 came from the deposited lineage annotations, while marker expression was used as an **independent check** on their biological identity. *EPCAM*, *KRT8*, *KRT18*, and *KRT19* supported the epithelial and malignant annotations. *PTPRC* marked immune cells. *COL1A1*, *COL1A2*, and *DCN* supported fibroblast-rich stromal clusters, while *PECAM1*, *VWF*, and *KDR* supported endothelial clusters. **Five clusters were dominated by malignant cells**: cluster 4 contained 3,512 malignant cells among 3,523 cells, cluster 7 contained 1,817 of 2,086, cluster 11 contained 1,706 of 1,780, cluster 14 contained 1,051 of 1,259, and cluster 17 contained 794 of 808. A further **417 malignant cells occurred in cluster 5**, which also contained 2,472 stromal cells. These counts are the basis for the UMAP description in the main text."
             ]
           }
         ]
@@ -5225,14 +5029,12 @@ export const modelPanels: Record<string, ModelPanel> = {
           },
           {
             "type": "figure",
-            "src": getModelImage("image 16.png"), "width": 685, "height": 168,
-            "alt": "Representative Published Tissue Images"
-          },
-          {
-            "type": "prose",
-            "paragraphs": [
-              "**Figure 13,** Published TROP2 immunohistochemistry in TNBC. The original figure shows intermediate and high TROP2 staining, with cytoplasmic, membranous, or combined localization and heterogeneity across tumor tissue.(Izci et al., 2022)."
-            ]
+            "src": getModelImage("image 16.png"),
+            "width": 685,
+            "height": 168,
+            "alt": "Representative Published Tissue Images",
+            "caption": "Published TROP2 immunohistochemistry in TNBC. The original figure shows intermediate and high TROP2 staining, with cytoplasmic, membranous, or combined localization and heterogeneity across tumor tissue.(Izci et al., 2022).",
+            "figureLabel": "FIG. 12"
           },
           {
             "type": "subheading",
@@ -5275,14 +5077,12 @@ export const modelPanels: Record<string, ModelPanel> = {
           },
           {
             "type": "figure",
-            "src": getModelImage("image 5.png"), "width": 685, "height": 303,
-            "alt": "Representative Published Tissue Images"
-          },
-          {
-            "type": "prose",
-            "paragraphs": [
-              "**Figure 14,** Published B7-H4 immunohistochemistry in TNBC and normal breast tissue. Panel 1d of the original figure compares B7-H4 staining in TNBC tissue with normal breast tissue at 200× magnification. (Wang et al., 2018)."
-            ]
+            "src": getModelImage("image 5.png"),
+            "width": 685,
+            "height": 303,
+            "alt": "Representative Published Tissue Images",
+            "caption": "Published B7-H4 immunohistochemistry in TNBC and normal breast tissue. Panel 1d of the original figure compares B7-H4 staining in TNBC tissue with normal breast tissue at 200× magnification. (Wang et al., 2018).",
+            "figureLabel": "FIG. 13"
           },
           {
             "type": "subheading",
@@ -5326,14 +5126,12 @@ export const modelPanels: Record<string, ModelPanel> = {
           },
           {
             "type": "figure",
-            "src": getModelImage("image 3.png"), "width": 1418, "height": 356,
-            "alt": "Representative Published Tissue Images"
-          },
-          {
-            "type": "prose",
-            "paragraphs": [
-              "**Figure 15,** Published Nectin-4 immunohistochemistry in TNBC. The three panels show strong, moderate, and negative Nectin-4 staining in TNBC tissue at 200× magnification. (Zeindler et al., 2019)."
-            ]
+            "src": getModelImage("image 3.png"),
+            "width": 1418,
+            "height": 356,
+            "alt": "Representative Published Tissue Images",
+            "caption": "Published Nectin-4 immunohistochemistry in TNBC. The three panels show strong, moderate, and negative Nectin-4 staining in TNBC tissue at 200× magnification. (Zeindler et al., 2019).",
+            "figureLabel": "FIG. 14"
           },
           {
             "type": "subheading",
@@ -5376,14 +5174,12 @@ export const modelPanels: Record<string, ModelPanel> = {
           },
           {
             "type": "figure",
-            "src": getModelImage("image 26.png"), "width": 685, "height": 341,
-            "alt": "Representative Published Tissue Images"
-          },
-          {
-            "type": "prose",
-            "paragraphs": [
-              "**Figure 16,** Open-access SLC39A6 immunohistochemistry. Panel A shows positive staining in the cytoplasm and nuclei of invasive breast-cancer epithelial cells, and panel B shows negative staining. (Althobiti et al., 2021)."
-            ]
+            "src": getModelImage("image 26.png"),
+            "width": 685,
+            "height": 341,
+            "alt": "Representative Published Tissue Images",
+            "caption": "Open-access SLC39A6 immunohistochemistry. Panel A shows positive staining in the cytoplasm and nuclei of invasive breast-cancer epithelial cells, and panel B shows negative staining. (Althobiti et al., 2021).",
+            "figureLabel": "FIG. 15"
           },
           {
             "type": "subheading",
@@ -5415,7 +5211,7 @@ export const modelPanels: Record<string, ModelPanel> = {
           {
             "type": "prose",
             "paragraphs": [
-              "However, **full-length antigens cannot be used directly in circRNA vaccines**. Long coding sequences reduce circularization efficiency and translation efficiency, with both constraints becoming more severe as open reading frame length increases **(Wesselhoeft et al., 2018)**. Full-length membrane proteins with signal peptides or transmembrane domains may be mistargeted within the cell, reducing their availability for MHC class I presentation. **We therefore identified short HLA-A*02:01-restricted epitopes from the four antigens for concatenation into a compact circRNA coding sequence.**"
+              "However, **full-length antigens cannot be used directly in circRNA vaccines**. Long coding sequences reduce circularization efficiency and translation efficiency, with both constraints becoming more severe as open reading frame length increases (Wesselhoeft et al., 2018). Full-length membrane proteins with signal peptides or transmembrane domains may be mistargeted within the cell, reducing their availability for MHC class I presentation. **We therefore identified short HLA-A*02:01-restricted epitopes from the four antigens for concatenation into a compact circRNA coding sequence.**"
             ]
           }
         ]
@@ -6375,14 +6171,12 @@ export const modelPanels: Record<string, ModelPanel> = {
       },
       {
         "type": "figure",
-        "src": getModelImage("image 35.png"), "width": 975, "height": 319,
-        "alt": "*Figure 25, Parameter dependence in cell calibration. Joint posteriors show the weakly constrained viability slope and correlated killing parameters; The ED80 distribution retains their joint variation.*"
-      },
-      {
-        "type": "prose",
-        "paragraphs": [
-          "*Figure 25, Parameter dependence in cell calibration. Joint posteriors show the weakly constrained viability slope and correlated killing parameters; The ED80 distribution retains their joint variation.*"
-        ]
+        "src": getModelImage("image 35.png"),
+        "width": 975,
+        "height": 319,
+        "alt": "Parameter dependence in cell calibration. Joint posteriors show the weakly constrained viability slope and correlated killing parameters; The ED80 distribution retains their joint variation.",
+        "caption": "Parameter dependence in cell calibration. Joint posteriors show the weakly constrained viability slope and correlated killing parameters; The ED80 distribution retains their joint variation.",
+        "figureLabel": "FIG. 21"
       },
       {
         "type": "subheading",
@@ -6413,14 +6207,8 @@ export const modelPanels: Record<string, ModelPanel> = {
   },
   "model-panel-18": {
     "kind": "fold",
-    "title": "Equations and parameter details",
+    "title": "Complete mass equations and lymph-payload peak time",
     "blocks": [
-      {
-        "type": "prose",
-        "paragraphs": [
-          "Expand the complete mass equations and lymph-payload peak time"
-        ]
-      },
       {
         "type": "prose",
         "paragraphs": [
@@ -6456,17 +6244,53 @@ export const modelPanels: Record<string, ModelPanel> = {
         "paragraphs": [
           "Here **k_sc ∈ [0.35, 2]** day⁻¹ and **k_lymph = 0.8** day⁻¹. When they are equal, the continuous limit gives t_peak = 1/k_sc. The fraction **f_lymph ∈ [0.005, 0.60]** is a **broad structural assumption**, **not a product-specific range** measured in the cited literature."
         ]
+      },
+      {
+        "type": "subheading",
+        "id": "model-heading-60",
+        "index": "4.3.2.1",
+        "title": "Derivation: predicting when to sample lymph payload",
+        "level": 4
+      },
+      {
+        "type": "prose",
+        "paragraphs": [
+          "For a single injection and initially zero lymph payload, the local solution is S(t)=q exp(−k_sc t). Substitution into the lymph equation and multiplication by an integrating factor gives"
+        ]
+      },
+      {
+        "type": "prose",
+        "paragraphs": [
+          "$$\\frac{d}{dt}\\left(e^{k_{lymph}t}L(t)\\right)=f_{lymph}qk_{sc}e^{(k_{lymph}-k_{sc})t}.$$"
+        ]
+      },
+      {
+        "type": "prose",
+        "paragraphs": [
+          "Integration from 0 to t gives L(t) above. Differentiating it, for positive q and f_lymph and unequal clearance rates, gives the peak condition"
+        ]
+      },
+      {
+        "type": "prose",
+        "paragraphs": [
+          "$$\\dot L(t_{peak})=0\\Longrightarrow k_{lymph}e^{-k_{lymph}t_{peak}}=k_{sc}e^{-k_{sc}t_{peak}}.$$"
+        ]
+      },
+      {
+        "type": "prose",
+        "paragraphs": [
+          "Taking logarithms gives the peak-time formula above. Dose and routing fraction scale the height of this single-injection linear curve and therefore **do not change its peak time**. **Repeated injections require** accounting for residual payload, so this single-injection result **cannot be transferred directly**."
+        ]
       }
     ]
   },
   "model-panel-19": {
     "kind": "fold",
-    "title": "Equations and parameter details",
+    "title": "Schedules, paired comparisons and numerical checks",
     "blocks": [
       {
         "type": "prose",
         "paragraphs": [
-          "Expand: schedules, paired comparisons and numerical checks",
           "**Table 18.** Alternative dosing schedule scenarios."
         ]
       },
@@ -6509,14 +6333,8 @@ export const modelPanels: Record<string, ModelPanel> = {
   },
   "model-panel-20": {
     "kind": "fold",
-    "title": "Equations and parameter details",
+    "title": "Gating functions, expression prior, and non-monotonic drive",
     "blocks": [
-      {
-        "type": "prose",
-        "paragraphs": [
-          "Expand the gating functions, expression prior, and non-monotonic drive"
-        ]
-      },
       {
         "type": "prose",
         "paragraphs": [
@@ -6561,14 +6379,12 @@ export const modelPanels: Record<string, ModelPanel> = {
       },
       {
         "type": "figure",
-        "src": getModelImage("image 23.png"), "width": 975, "height": 576,
-        "alt": "**Figure 32,** Role of expression persistence in functional outcomes."
-      },
-      {
-        "type": "prose",
-        "paragraphs": [
-          "**Figure 32,** Role of expression persistence in functional outcomes."
-        ]
+        "src": getModelImage("image 23.png"),
+        "width": 975,
+        "height": 576,
+        "alt": "Role of expression persistence in functional outcomes.",
+        "caption": "Role of expression persistence in functional outcomes.",
+        "figureLabel": "FIG. 28"
       },
       {
         "type": "subheading",
@@ -6599,14 +6415,8 @@ export const modelPanels: Record<string, ModelPanel> = {
   },
   "model-panel-21": {
     "kind": "fold",
-    "title": "Equations and parameter details",
+    "title": "Complete immune-state equations",
     "blocks": [
-      {
-        "type": "prose",
-        "paragraphs": [
-          "Expand the complete immune-state equations"
-        ]
-      },
       {
         "type": "prose",
         "paragraphs": [
@@ -6653,14 +6463,8 @@ export const modelPanels: Record<string, ModelPanel> = {
   },
   "model-panel-22": {
     "kind": "fold",
-    "title": "Equations and parameter details",
+    "title": "Growth equation, observation model, and analytical checks",
     "blocks": [
-      {
-        "type": "prose",
-        "paragraphs": [
-          "Expand the growth equation, observation model, and analytical checks"
-        ]
-      },
       {
         "type": "prose",
         "paragraphs": [
@@ -6744,14 +6548,8 @@ export const modelPanels: Record<string, ModelPanel> = {
   },
   "model-panel-23": {
     "kind": "fold",
-    "title": "Equations and parameter details",
+    "title": "Parameter propagation, paired comparisons, and numerical error",
     "blocks": [
-      {
-        "type": "prose",
-        "paragraphs": [
-          "Expand parameter propagation, paired comparisons, and numerical error"
-        ]
-      },
       {
         "type": "subheading",
         "id": "model-heading-81",
@@ -6872,7 +6670,7 @@ export const modelPanels: Record<string, ModelPanel> = {
       {
         "type": "prose",
         "paragraphs": [
-          "The sample proportion with \"**at least one feasible dose**\" is **0.9297**. Interval-boundary quantiles are computed only among draws where the feasible set is non-empty; approximately **47.1%** of these reach the scan's **upper limit** and can**not be interpreted as complete identification of a biological ceiling**. The 6–14 μg local table is a **reporting subset** of the same step size, **not a finer re-scan**."
+          "The sample proportion with \"**at least one feasible dose**\" is **0.9297**. Interval-boundary quantiles are computed only among draws where the feasible set is non-empty; approximately **47.1%** of these reach the scan's **upper limit** and cannot **be interpreted as complete identification of a biological ceiling**. The 6–14 μg local table is a **reporting subset** of the same step size, **not a finer re-scan**."
         ]
       },
       {
@@ -6904,12 +6702,11 @@ export const modelPanels: Record<string, ModelPanel> = {
   },
   "model-panel-24": {
     "kind": "fold",
-    "title": "Equations and parameter details",
+    "title": "Fixed values, passing sets, paired changes",
     "blocks": [
       {
         "type": "prose",
         "paragraphs": [
-          "Expand: fixed values, passing sets, paired changes",
           "**Table 21.** Scenario analysis comparing dose optimization outcomes under different fixed parameter assumptions."
         ]
       },
@@ -7000,14 +6797,8 @@ export const modelPanels: Record<string, ModelPanel> = {
   },
   "model-panel-25": {
     "kind": "fold",
-    "title": "Equations and parameter details",
+    "title": "Sobol design, calibration robustness, and convergence plots",
     "blocks": [
-      {
-        "type": "prose",
-        "paragraphs": [
-          "**Expand the Sobol design, calibration robustness, and convergence plots**"
-        ]
-      },
       {
         "type": "prose",
         "paragraphs": [
@@ -7034,25 +6825,21 @@ export const modelPanels: Record<string, ModelPanel> = {
       },
       {
         "type": "figure",
-        "src": getModelImage("image 2.png"), "width": 975, "height": 576,
-        "alt": "***Figure 42,*** *Step-size convergence comparison.*"
-      },
-      {
-        "type": "prose",
-        "paragraphs": [
-          "***Figure 42,*** *Step-size convergence comparison.*"
-        ]
+        "src": getModelImage("image 2.png"),
+        "width": 975,
+        "height": 576,
+        "alt": "Step-size convergence comparison.",
+        "caption": "Step-size convergence comparison.",
+        "figureLabel": "FIG. 38"
       },
       {
         "type": "figure",
-        "src": getModelImage("image 13.png"), "width": 975, "height": 412,
-        "alt": "***Figure 43,*** *CCK8 inference diagnostics and calibration validation.*"
-      },
-      {
-        "type": "prose",
-        "paragraphs": [
-          "***Figure 43,*** *CCK8 inference diagnostics and calibration validation.*"
-        ]
+        "src": getModelImage("image 13.png"),
+        "width": 975,
+        "height": 412,
+        "alt": "CCK8 inference diagnostics and calibration validation.",
+        "caption": "CCK8 inference diagnostics and calibration validation.",
+        "figureLabel": "FIG. 39"
       },
       {
         "type": "subheading",
@@ -7083,29 +6870,12 @@ export const modelPanels: Record<string, ModelPanel> = {
   },
   "model-panel-26": {
     "kind": "fold",
-    "title": "Equations and parameter details",
+    "title": "Meaning of partial parameter redundancy",
     "blocks": [
       {
         "type": "prose",
         "paragraphs": [
-          "Expand the meaning of partial parameter redundancy"
-        ]
-      },
-      {
-        "type": "prose",
-        "paragraphs": [
           "The input to R contains **only the combination** η/q_scale, so observing that relationship alone **cannot separately identify** both. However, q_scale also enters the LNP innate source, so the complete system is not strictly invariant under simultaneous rescaling. The correct description is **partial redundancy** within the expression input, **not complete equivalence** throughout the model. **Independent delivery or innate-signal measurements** would resolve this."
-        ]
-      },
-      {
-        "type": "figure",
-        "src": getModelImage("image 12.png"), "width": 975, "height": 556,
-        "alt": "**Figure 44,** Observational support matrix for model parameters."
-      },
-      {
-        "type": "prose",
-        "paragraphs": [
-          "**Figure 44,** Observational support matrix for model parameters."
         ]
       }
     ]
@@ -7263,6 +7033,49 @@ export const modelPanels: Record<string, ModelPanel> = {
         "type": "prose",
         "paragraphs": [
           "Aggregated data from multiple projects will allow us to test whether indirect effect rankings generalize across project types, identify edges where our scores systematically over- or under-predict, refine **uncertainty** ranges based on cross-project variation, and improve the model for future iGEM cohorts. Contact information for contributing to the validation dataset is in the repository README."
+        ]
+      }
+    ]
+  },
+  "model-sdg-boundary": {
+    "kind": "sdg-chart",
+    "chart": "boundary",
+    "caption": "**Figure 46,** Pre-registered edge classification matrix for SDG interactions."
+  },
+  "model-sdg-interactions": {
+    "kind": "sdg-chart",
+    "chart": "interactions",
+    "caption": "**Figure 47,** Scored interaction matrix under reference scenario (M=0.42)."
+  },
+  "model-sdg-dimensions": {
+    "kind": "sdg-chart",
+    "chart": "dimensions",
+    "caption": "Weighted mapping of the 17 SDGs across social, economic, and environmental dimensions."
+  },
+  "model-sdg-contributions": {
+    "kind": "sdg-chart",
+    "chart": "contributions",
+    "caption": "Direct, one-step, multi-step, and composite contributions for the displayed SDGs."
+  },
+  "model-dose-reasons": {
+    "kind": "numbered-reasons",
+    "items": [
+      {
+        "title": "**The optimum shifts with different parameter samples**",
+        "paragraphs": [
+          "The 0.0029 difference corresponds to **3 out of 1,024 draws**. If we re-ran the simulation with a different random seed, the numerical peak could shift anywhere in the 9.8-10.4 μg range. The **Monte Carlo standard error** is ±0.012, four times larger than the 0.0029 difference. Chasing 10.2 μg treats **sampling noise** as a **biological optimum**."
+        ]
+      },
+      {
+        "title": "**The two doses are functionally equivalent**",
+        "paragraphs": [
+          "Both 10.0 and 10.2 μg have efficacy pass fractions around 0.83 and screening pass fractions around 0.97-0.98. Their joint-pass fractions differ by only **0.3%**. Within the model's **prediction uncertainty**, these doses produce **indistinguishable outcomes**."
+        ]
+      },
+      {
+        "title": "**Experimental precision cannot reliably distinguish them**",
+        "paragraphs": [
+          "Preparing 10.2 μg requires **sub-microliter precision**. Typical pipetting error (±3-5%), concentration variation (±5%), and injection volume variability (±2%) combine to ±**6-8% total error**, or **±0.6-0.8 μg** at the 10 μg scale. The 0.2 μg difference is smaller than the **experimental noise**. Using **round doses** is simpler, **more reproducible**, and matches experimental reality."
         ]
       }
     ]
@@ -7984,10 +7797,10 @@ export const modelReferences: CitationReference[] = [
     "authors": "Zahraei et al. (2025).",
     "title": "In silico design of a multi-epitope vaccine against the triple negative breast cancer.",
     "journal": "Scientific Reports",
-    "volumeYear": ". 2025;15(1):42425.**",
+    "volumeYear": ". 2025;15(1):42425.",
     "links": [
       {
-        "label": "**https://doi.org/10.1038/s41598-025-26511-1**",
+        "label": "https://doi.org/10.1038/s41598-025-26511-1",
         "href": "https://doi.org/10.1038/s41598-025-26511-1"
       }
     ]
@@ -10009,9 +9822,9 @@ export const modelJudging: WikiJudgingCriterion[] = [
     "question": "How impressive is the modeling?",
     "paragraphs": [
       "Our modeling work spans **three complementary computational frameworks** that together form an **integrated decision-support system** for rational vaccine design, dosing optimization, and sustainability assessment.",
-      "**Cell2dose** represents an exceptionally ambitious **multi-scale integration** connecting cell-based assays to animal dosing recommendations. This mechanistic model comprises **seven integrated modules** spanning molecular scale (LNP delivery, RNA stability), cellular scale (DC maturation, T-cell activation), tissue scale (lymph node dynamics), and organism scale (35-day tumor growth kinetics). The model uses **Bayesian calibration by finite-grid integration and posterior resampling**, **14-state ordinary differential equations**, and **Latin Hypercube Sampling** across 1,024 parameter draws to propagate uncertainty through **301 dose scenarios** (see Cell2dose methodology). This is not a simple curve fit—it is a complete mechanistic chain that makes the connection between in vitro measurements and in vivo outcomes computationally explicit.",
-      "**AEIP (Antigen-Epitope Integration Pipeline)** tackles the dual challenge of **antigen selection and epitope refinement** through systematic integration of **four orthogonal data sources**. We processed **quantitative proteomics from 154 TNBC patients** across two independent cohorts, **single-cell transcriptomics from 39,324 quality-controlled cells**, **genomic profiling of 115 TCGA cases**, and **AlphaFold3 structural modeling of 85 peptide-MHC complexes** (see AEIP data integration). The pipeline filtered **1,838 candidate epitopes to 15 HLA-A*02:01-restricted sequences** through NetMHCpan binding prediction, IEDB immunogenicity scoring, and explicit structural validation of hydrogen-bond networks and F-pocket engagement—going beyond confidence scores to verify **actual binding geometry**.",
-      "**SDG contribution assessment framework** quantifies CirCure's contributions across **all 17 Sustainable Development Goals** through a **four-dimensional evidence scoring system** (Action, Implementation, Feedback, Record) combined with network propagation analysis. The framework uses scoring formula **D = 3G(0.10A + 0.30I + 0.10F + 0.50R)**—the **50% weight on documentation** reflects our emphasis on verifiable evidence rather than aspirational claims (see SDG network analysis). Direct contribution indices reach **2.550 for SDG 4 and SDG 9** (tied highest), with total indices reaching **3.819 for SDG 4** when indirect network effects through **272 documented goal interactions** are included. Critically, **gate scenario analysis** demonstrates that manufacturing pathway choices determine outcomes: SDG 14/15 show **negative indices (−0.063, −0.086)** under current assumptions but **flip to +0.77** under renewable energy pathways.",
+      "**Cell2dose** represents an exceptionally ambitious **multi-scale integration** connecting cell-based assays to animal dosing recommendations. This mechanistic model comprises **seven integrated modules** spanning molecular scale (LNP delivery, RNA stability), cellular scale (DC maturation, T-cell activation), tissue scale (lymph node dynamics), and organism scale (35-day tumor growth kinetics). The model uses **Bayesian calibration by finite-grid integration and posterior resampling**, **14-state ordinary differential equations**, and **Latin Hypercube Sampling** across 1,024 parameter draws to propagate uncertainty through **301 dose scenarios** (see [Cell2Dose methodology](#model-cell2dose)). This is not a simple curve fit—it is a complete mechanistic chain that makes the connection between in vitro measurements and in vivo outcomes computationally explicit.",
+      "**AEIP (Antigen-Epitope Integration Pipeline)** tackles the dual challenge of **antigen selection and epitope refinement** through systematic integration of **four orthogonal data sources**. We processed **quantitative proteomics from 154 TNBC patients** across two independent cohorts, **single-cell transcriptomics from 39,324 quality-controlled cells**, **genomic profiling of 115 TCGA cases**, and **AlphaFold3 structural modeling of 85 peptide-MHC complexes** (see [AEIP data integration](#model-aeip)). The pipeline filtered **1,838 candidate epitopes to 15 HLA-A*02:01-restricted sequences** through NetMHCpan binding prediction, IEDB immunogenicity scoring, and explicit structural validation of hydrogen-bond networks and F-pocket engagement—going beyond confidence scores to verify **actual binding geometry**.",
+      "**SDG contribution assessment framework** quantifies CirCure's contributions across **all 17 Sustainable Development Goals** through a **four-dimensional evidence scoring system** (Action, Implementation, Feedback, Record) combined with network propagation analysis. The framework uses scoring formula **D = 3G(0.10A + 0.30I + 0.10F + 0.50R)**—the **50% weight on documentation** reflects our emphasis on verifiable evidence rather than aspirational claims (see [SDG network analysis](#model-sst-qn)). Direct contribution indices reach **2.550 for SDG 4 and SDG 9** (tied highest), with total indices reaching **3.819 for SDG 4** when indirect network effects through **272 documented goal interactions** are included. Critically, **gate scenario analysis** demonstrates that manufacturing pathway choices determine outcomes: SDG 14/15 show **negative indices (−0.063, −0.086)** under current assumptions but **flip to +0.77** under renewable energy pathways.",
       "Together, these three models establish CirCure as a project grounded in **computational rigor**: **Cell2dose tells us how much to dose, AEIP tells us what to deliver, and the SDG framework tells us how to scale sustainably** with honest acknowledgment of trade-offs."
     ]
   },
@@ -10020,9 +9833,9 @@ export const modelJudging: WikiJudgingCriterion[] = [
     "question": "Did the model help the team understand a part, device, or system?",
     "paragraphs": [
       "Yes—our models transformed abstract data into **actionable design decisions** at multiple levels.",
-      "**Dose selection guidance:** Before Cell2dose, we had cell viability curves but no systematic way to choose an animal dose. The complete **301-dose scan** revealed that **10.2 μg per injection** has the highest joint-pass fraction (0.8145), with a candidate range of **9.4–12.6 μg**. More importantly, **sensitivity analysis** identified which parameters matter most: **effector-to-killing transfer (γ_ET)**, **dose normalization (q_scale)**, and **lymph routing (f_lymph)** account for **94% of prediction uncertainty** (see dose optimization and sensitivity analysis). This told us that refining our already-calibrated cell assays wouldn't help much—we need **time-resolved in vivo measurements** of lymph payload, antigen expression, and effector markers. The model didn't just give us a number; it told us **what experiments to do next**.",
+      "**Dose selection guidance:** Before Cell2dose, we had cell viability curves but no systematic way to choose an animal dose. The complete **301-dose scan** revealed that **10.2 μg per injection** has the highest joint-pass fraction (0.8145), with a candidate range of **9.4–12.6 μg**. More importantly, **sensitivity analysis** identified which parameters matter most: **effector-to-killing transfer (γ_ET)**, **dose normalization (q_scale)**, and **lymph routing (f_lymph)** account for **94% of prediction uncertainty** (see [dose optimization and sensitivity analysis](#model-heading-75)). This told us that refining our already-calibrated cell assays wouldn't help much—we need **time-resolved in vivo measurements** of lymph payload, antigen expression, and effector markers. The model didn't just give us a number; it told us **what experiments to do next**.",
       "**Antigen selection rationale:** AEIP's **four-dimensional scoring framework** resolved conflicting literature guidance by ranking 40+ candidate antigens across localization, tumor specificity, prognostic significance, and therapeutic validation. This identified **TROP2, B7-H4, Nectin-4, and LIV-1** as top candidates. TCGA genomic profiling then showed this **four-antigen panel achieves 88% patient coverage** when requiring at least one gene with mRNA z-score ≥0.5 or high-level amplification—a coverage estimate we could not have obtained without computational integration. Critically, **cross-modal validation** through proteomics confirmed that all four antigens show **tumor-enriched protein abundance** (fold changes **1.14–18.25**, all **FDR < 0.05**), giving our wet lab team confidence that selected antigens would be physically present at immunogenic levels.",
-      "**Epitope structural validation:** IEDB binding predictions filtered 1,838 candidates to 51, but sequence-based scores cannot guarantee stable MHC presentation. **AlphaFold3 structural validation** revealed that **two high-confidence peptides** (mean ipTM 0.968 and 0.960) **failed the F-pocket fill criterion** despite strong confidence scores. This taught us that **confidence metrics alone are insufficient**; explicit structural geometry must be validated. **It is actually the 15 epitopes that passed AEIP's structural filters upon which our entire circRNA vaccine construct was built**, with geometric evidence supporting stable, TCR-compatible pMHC complexes that ultimately achieved successful tumor inhibition in our in vivo experiments (see epitope screening and structural validation).",
+      "**Epitope structural validation:** IEDB binding predictions filtered 1,838 candidates to 51, but sequence-based scores cannot guarantee stable MHC presentation. **AlphaFold3 structural validation** revealed that **two high-confidence peptides** (mean ipTM 0.968 and 0.960) **failed the F-pocket fill criterion** despite strong confidence scores. This taught us that **confidence metrics alone are insufficient**; explicit structural geometry must be validated. **It is actually the 15 epitopes that passed AEIP's structural filters upon which our entire circRNA vaccine construct was built**, with geometric evidence supporting stable, TCR-compatible pMHC complexes that ultimately achieved successful tumor inhibition in our in vivo experiments (see [epitope screening and structural validation](#model-epitope-screening)).",
       "**Sustainability strategy clarity:** The SDG framework identified **unexpected co-benefits** in **SDG 1 (No Poverty)** and **SDG 8 (Decent Work)** through health→poverty and innovation→employment pathways (indirect indices **0.222 and 0.467**). We returned to patient interviews and found explicit quotes confirming **treatment costs create financial barriers**—validating the model's mechanism. Most critically, **gate scenario analysis** revealed that manufacturing choices determine ecological impact: under fossil-intensive synthesis, **SDG 14/15** shows **negative indices**; Under renewable pathways, these **flip to +0.77**—providing a quantitative basis for prioritizing **renewable energy during scale-up**."
     ]
   },
@@ -10031,7 +9844,7 @@ export const modelJudging: WikiJudgingCriterion[] = [
     "question": "Did the team use measurements of a part, device, or system to develop the model?",
     "paragraphs": [
       "Yes—every model is anchored in **experimental measurements from multiple orthogonal sources**.",
-      "**Cell2dose calibration:** We used **CCK8 viability assays** (5 doses × 4 replicates = **20 observations**) and **cytotoxicity killing assays** (blank and combined groups with 3 replicates each) to calibrate dose-response curves via **Bayesian inference**. **DC activation** (CD80⁺CD86⁺ fold-gain ≈ **2.16**) and **T-cell activation** (CD69⁺ fold-gain ≈ **2.76**) readouts from our wet lab experiments directly parameterized **immune amplification modules**. For parameters unavailable from our experiments, we used **literature-sourced values with explicit provenance** Benzekry et al. (2014) for growth kinetics and flagged these as **transfer assumptions requiring validation**. Animal tumor measurements (**PBS mean 234 mm³, vaccine mean 24.2 mm³**) were **withheld from calibration** and used to test frozen predictions—revealing a **4.7× growth parameter mismatch** that we honestly report in our discussion, prioritizing **transparency over false validation** (see experimental calibration and validation).",
+      "**Cell2dose calibration:** We used **CCK8 viability assays** (5 doses × 4 replicates = **20 observations**) and **cytotoxicity killing assays** (blank and combined groups with 3 replicates each) to calibrate dose-response curves via **Bayesian inference**. **DC activation** (CD80⁺CD86⁺ fold-gain ≈ **2.16**) and **T-cell activation** (CD69⁺ fold-gain ≈ **2.76**) readouts from our wet lab experiments directly parameterized **immune amplification modules**. For parameters unavailable from our experiments, we used **literature-sourced values with explicit provenance** Benzekry et al. (2014) for growth kinetics and flagged these as **transfer assumptions requiring validation**. Animal tumor measurements (**PBS mean 234 mm³, vaccine mean 24.2 mm³**) were **withheld from calibration** and used to test frozen predictions—revealing a **4.7× growth parameter mismatch** that we honestly report in our discussion, prioritizing **transparency over false validation** (see [experimental calibration and validation](#model-heading-98)).",
       "**AEIP multi-omics integration:** We processed **two independent proteomic cohorts** (PXD024322: **88 tumors vs 38 normals** across 38 TMT batches; PXD028102: **66 patient-matched pairs**) yielding **tumor-enriched fold changes** for all four candidate antigens. **Single-cell RNA-seq** (GSE176078: **39,324 cells from 10 TNBC patients**) measured detection rates in malignant vs non-malignant compartments, showing that **81.4% of malignant cells** express at least one of our four genes. **TCGA genomic data** (115 cases) quantified individual gene reach (4%–79%) and **panel reach (88%)**. **NetMHCpan binding predictions** are trained on **>850,000 experimental peptide-MHC measurements** from IEDB. **AlphaFold3 structural coordinates** provided measurable geometric features—**hydrogen-bond distances, solvent-accessible surface areas, F-pocket fill ratios**—enabling rejection of two candidates based on **explicit structural defects** rather than subjective assessment.",
       "**SDG framework evidence grounding:** The interaction matrix builds on **systematic reviews** synthesizing SDG relationship data across countries and time periods. For CirCure-specific scoring, the **four dimensions (A, I, F, R)** were evaluated using documented evidence: **Implementation (I)** used experimental measurements (DC maturation, T-cell activation, tumor inhibition), **Record (R)** reflected documentation completeness (raw data accessions, frozen parameters, explicit provenance), **Feedback (F)** required traceable stakeholder input (patient interviews, industry partnerships, NGO consultations), and **Action (A)** evaluated mechanism-target correspondence. All scoring followed a **five-tier scale (0, 0.25, 0.50, 0.75, 1.00)** with explicit criteria. We conducted independent parameter audits, sensitivity analysis, and validation against published studies (**78–81% directional agreement** with the literature). All scoring worksheets are version-controlled with cryptographic hashes."
     ]
