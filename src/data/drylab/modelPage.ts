@@ -9983,7 +9983,7 @@ export const modelPage: WikiPageContent = {
   next: {
     path: "/software",
     label: "Software",
-    title: "From Mathematical Models to Automated Tools",
-    description: "Differential equations and folding simulations become transformative when anyone can use them. Meet circForge—our open-source software suite automating circRNA design.",
+    title: "Tools for Designing and Inspecting circRNA",
+    description: "Explore CircuForge for reviewing candidates and assembling constructs, and TorusFold for reconstructing and inspecting full-length circRNA models, with usage guides and validation details for both tools.",
   },
 };

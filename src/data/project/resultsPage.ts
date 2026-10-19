@@ -78,7 +78,7 @@ export const resultsPage: WikiPageContent = {
   next: {
     path: "/contribution",
     label: "Contribution",
-    title: "What Can the SynBio Community Build Next?",
-    description: "Our experimental evidence validates the circular RNA platform. Discover the thirty deposited BioBrick parts, verified protocols, and software tools packaged for future teams.",
+    title: "What Can Other Teams Build On?",
+    description: "Our results leave reusable resources as well as open questions. Explore the biological parts, protocols, software and educational resources we have documented for future teams.",
   },
 };

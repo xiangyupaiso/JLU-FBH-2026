@@ -23,7 +23,7 @@ export const humanPracticesPage: WikiPageContent = {
   next: {
     path: "/education",
     label: "Education",
-    title: "Inspiring the Next Generation of Bioengineers",
-    description: "Empathy in research naturally extends to community empowerment. See how patient conversations inspired interactive textbooks, science workshops, and inclusive education.",
+    title: "Creating Different Ways to Take Part",
+    description: "Listening to different communities revealed different barriers to participation. Explore how we responded through classroom activities, public dialogue, games and virtual laboratory experiences.",
   },
 };

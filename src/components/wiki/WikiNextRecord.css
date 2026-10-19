@@ -1,35 +1,30 @@
-.wiki-page .wiki-next.wiki-next--record {
+/* The companion and ribbon carry one reading column into the next chapter. */
+:is(.wiki-page, .wiki-page--route) .wiki-next.wiki-next--record {
   --next-record-ink: #1b1719;
-  --next-record-muted: rgba(27, 23, 25, 0.62);
-  --next-record-line: rgba(27, 23, 25, 0.22);
-  --next-record-paper: #f8f4ed;
+  --next-record-muted: rgba(27, 23, 25, 0.68);
+  --next-record-line: rgba(27, 23, 25, 0.18);
   --next-record-accent: var(--care, #d784b3);
-  display: grid;
+  --next-record-inset: 64px;
+  --next-record-companion-size: 124px;
+  position: relative;
+  z-index: 1;
+  display: block;
   width: min(1120px, calc(100% - 48px));
   min-height: auto;
-  grid-template-columns: minmax(0, 1fr) clamp(190px, 18vw, 220px);
-  gap: clamp(48px, 7vw, 104px);
-  align-items: center;
   margin: 0 auto;
-  padding: 64px 0 82px;
+  padding: clamp(64px, 6vw, 88px) 0 88px;
   overflow: visible;
   border: 0;
-  border-top: 1px solid var(--next-record-line);
   border-radius: 0;
   background: transparent;
   box-shadow: none;
   color: var(--next-record-ink);
 }
 
-.wiki-page .wiki-next.wiki-next--record > .wiki-next__inner {
-  display: contents;
-}
-
 .wiki-page--dry-lab .wiki-next.wiki-next--record {
   --next-record-ink: #293650;
   --next-record-muted: #68728c;
   --next-record-line: rgba(85, 101, 157, 0.28);
-  --next-record-paper: #f6f6f3;
   --next-record-accent: #7183c5;
 }
 
@@ -37,255 +32,474 @@
   --next-record-ink: #2d2327;
   --next-record-muted: #71676a;
   --next-record-line: rgba(74, 39, 54, 0.24);
-  --next-record-paper: #f8f4ed;
   --next-record-accent: #a83f69;
 }
 
-.wiki-page .wiki-next.wiki-next--record::before,
-.wiki-page .wiki-next.wiki-next--record::after {
+:is(.wiki-page, .wiki-page--route) .wiki-next.wiki-next--record::before,
+:is(.wiki-page, .wiki-page--route) .wiki-next.wiki-next--record::after {
   display: none;
 }
 
-.wiki-page .wiki-next.wiki-next--record h2 {
-  max-width: 760px;
+:is(.wiki-page, .wiki-page--route)
+  .wiki-next.wiki-next--record
+  > .wiki-next__inner {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(124px, 1fr) minmax(0, 1.1fr);
+  gap: 40px 64px;
+  align-items: start;
+  width: min(var(--route-page, 1120px), 100%);
+  margin: 0 auto;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+}
+
+:is(.wiki-page, .wiki-page--route)
+  .wiki-next.wiki-next--record
+  .wiki-next__copy {
+  min-width: 0;
+  grid-column: 1 / -1;
+  grid-row: 1;
+  padding-inline-start: var(--next-record-inset);
+}
+
+:is(.wiki-page.wiki-page, .wiki-page--route) .wiki-next.wiki-next--record h2 {
+  max-width: 38ch;
   margin: 0;
   color: var(--next-record-ink);
-  font-family: var(--font-editorial);
-  font-size: clamp(26px, 2.8vw, 38px);
+  font-family: var(--font-heading);
+  font-size: clamp(25px, 2.4vw, 32px);
   font-weight: 500;
   letter-spacing: -0.02em;
-  line-height: 1.18;
+  line-height: 1.35;
+  text-wrap: balance;
 }
 
-.wiki-page .wiki-next.wiki-next--record p:not(.wiki-kicker) {
-  max-width: 620px;
-  margin: 16px 0 0;
+:is(.wiki-page, .wiki-page--route)
+  .wiki-next.wiki-next--record
+  p:not(.wiki-kicker) {
+  max-width: 66ch;
+  margin: 14px 0 0;
   color: var(--next-record-muted);
-  font-family: var(--font-editorial);
+  font-family: var(--font-body);
   font-size: 16px;
-  line-height: 1.5;
+  line-height: 1.8;
 }
 
-.wiki-page .wiki-next.wiki-next--record p strong {
+:is(.wiki-page, .wiki-page--route) .wiki-next.wiki-next--record p strong {
   color: var(--next-record-ink);
   font-weight: 500;
 }
 
-.wiki-page .wiki-next.wiki-next--record .wiki-next__inner > .wiki-next__action {
+:is(.wiki-page, .wiki-page--route)
+  .wiki-next.wiki-next--record
+  .wiki-next__inner
+  > .wiki-next__action {
   position: relative;
-  isolation: isolate;
   display: grid;
-  width: 100%;
+  grid-column: 2;
+  grid-row: 2;
+  align-self: end;
+  width: fit-content;
+  justify-self: end;
+  max-width: calc(100% - var(--next-record-inset));
   height: auto;
-  min-height: 156px;
-  grid-template-columns: minmax(0, 1fr) 42px;
-  grid-template-rows: auto 1fr;
-  gap: 20px 16px;
-  align-items: start;
-  padding: 22px;
-  overflow: hidden;
-  border: 1px solid var(--next-record-line);
-  border-radius: 24px;
-  background: color-mix(in srgb, var(--next-record-accent) 5%, transparent);
+  min-height: 112px;
+  grid-template-columns: minmax(0, 1fr) 64px;
+  gap: 24px;
+  align-items: center;
+  margin: 0;
+  margin-inline-end: var(--next-record-inset);
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
   color: var(--next-record-ink);
   text-decoration: none;
-  box-shadow: 0 14px 36px rgba(27, 23, 25, 0.035);
+  box-shadow: none;
   transform: none;
-  transition:
-    color 360ms cubic-bezier(0.22, 1, 0.36, 1),
-    background-color 360ms cubic-bezier(0.22, 1, 0.36, 1),
-    border-color 360ms cubic-bezier(0.22, 1, 0.36, 1),
-    box-shadow 420ms cubic-bezier(0.22, 1, 0.36, 1),
-    transform 420ms cubic-bezier(0.22, 1, 0.36, 1);
+  transition: color 220ms ease;
 }
 
-.wiki-page
+:is(.wiki-page, .wiki-page--route)
   .wiki-next.wiki-next--record
-  .wiki-next__inner
-  > .wiki-next__action::before {
+  .wiki-next__action::before {
+  display: none;
+}
+
+:is(.wiki-page, .wiki-page--route)
+  .wiki-next.wiki-next--record
+  .wiki-next__ribbon {
   position: absolute;
-  z-index: -1;
-  inset: auto -26% -72% 16%;
-  height: 150px;
-  border-radius: 50%;
-  background: var(--next-record-accent);
-  content: "";
-  filter: blur(46px);
-  opacity: 0.12;
-  transform: scale(0.86);
-  transition:
-    opacity 360ms ease,
-    transform 520ms cubic-bezier(0.22, 1, 0.36, 1);
+  z-index: 0;
+  right: 0;
+  bottom: 12px;
+  left: 0;
+  display: block;
+  width: 100%;
+  max-width: none;
+  height: clamp(260px, 25vw, 360px);
+  object-fit: fill;
+  opacity: 0.42;
+  /* Lift the near-white canvas to white before multiplying onto each palette. */
+  filter: brightness(1.015) blur(0.5px);
+  mix-blend-mode: multiply;
+  pointer-events: none;
 }
 
-.wiki-page
+:is(.wiki-page, .wiki-page--route)
   .wiki-next.wiki-next--record
-  .wiki-next__inner
-  > .wiki-next__action
-  span {
-  align-self: auto;
+  .wiki-next__arrow
+  svg {
+  width: 28px;
+  height: 28px;
+}
+
+/* Preserve the original artwork and frame out its transparent side margins. */
+:is(.wiki-page, .wiki-page--route)
+  .wiki-next.wiki-next--record
+  .wiki-next__companion {
+  position: relative;
+  display: block;
+  grid-column: 1;
+  grid-row: 2;
+  justify-self: end;
+  align-self: end;
+  width: var(--next-record-companion-size);
+  height: var(--next-record-companion-size);
+  margin: 0;
+  overflow: hidden;
+  transform-origin: 50% 91%;
+  pointer-events: none;
+}
+
+:is(.wiki-page, .wiki-page--route)
+  .wiki-next.wiki-next--record
+  .wiki-next__companion
+  img {
+  position: absolute;
+  top: 0;
+  left: calc(var(--next-record-companion-size) * -0.328);
+  width: auto;
+  max-width: none;
+  height: var(--next-record-companion-size);
+}
+
+:is(.wiki-page, .wiki-page--route)
+  .wiki-next.wiki-next--record
+  .wiki-next__destination {
+  position: relative;
+  display: grid;
+  min-width: 0;
+  gap: 10px;
+}
+
+/* Keep Home's quiet hint below the label without moving the ribbon or sheep. */
+.wiki-next.wiki-next--record .wiki-next__preview {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 0;
+  width: max-content;
+  max-width: min(280px, calc(100% + 72px));
+  color: var(--next-record-muted);
+  font: 400 12px/1.55 var(--font-body);
+  letter-spacing: 0;
+  text-wrap: pretty;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(4px);
+  pointer-events: none;
+  transition:
+    opacity 180ms var(--ease-out),
+    transform 280ms var(--ease-out),
+    visibility 180ms;
+}
+
+.wiki-next.wiki-next--record .is-previewing .wiki-next__preview {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+  pointer-events: auto;
+}
+
+.wiki-next.wiki-next--record .wiki-next__summary {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  /* Let the destination and hint stay readable under a stationary pointer. */
+  html:root.has-sheep-cursor body .wiki-next--record .wiki-next__action,
+  html:root.has-sheep-cursor body .wiki-next--record .wiki-next__action * {
+    cursor: pointer !important;
+  }
+
+  body:has(.wiki-next--record .wiki-next__action:hover) .sheep-cursor {
+    visibility: hidden;
+    opacity: 0;
+  }
+}
+
+:is(.wiki-page, .wiki-page--route)
+  .wiki-next.wiki-next--record
+  .wiki-next__eyebrow {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  min-height: 52px;
   color: var(--next-record-muted);
   font-family: var(--font-sans);
-  font-size: 13px;
-  font-weight: 650;
-  letter-spacing: 0;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  line-height: 1.5;
+  text-transform: uppercase;
 }
 
-.wiki-page
+:is(.wiki-page, .wiki-page--route)
   .wiki-next.wiki-next--record
-  .wiki-next__inner
-  > .wiki-next__action
+  .wiki-next__icon {
+  flex: 0 0 52px;
+  width: 52px;
+  height: 52px;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+:is(.wiki-page, .wiki-page--route)
+  .wiki-next.wiki-next--record
+  .wiki-next__action
   strong {
   min-width: 0;
-  max-width: 100%;
-  grid-column: 1 / -1;
-  align-self: end;
   color: inherit;
-  font-family: var(--font-editorial);
-  font-size: clamp(20px, 2vw, 28px);
-  font-weight: 400;
-  letter-spacing: -0.035em;
-  line-height: 1.08;
+  font-family: var(--font-heading);
+  font-size: clamp(38px, 4.5vw, 60px);
+  font-weight: 500;
+  letter-spacing: -0.025em;
+  line-height: 1.15;
   overflow-wrap: anywhere;
   text-wrap: balance;
 }
 
-.wiki-page
+:is(.wiki-page, .wiki-page--route)
   .wiki-next.wiki-next--record
-  .wiki-next__inner
-  > .wiki-next__action
-  strong.wiki-next__label--long {
-  font-size: clamp(18px, 1.55vw, 22px);
-  letter-spacing: -0.025em;
+  .wiki-next__action
+  .wiki-next__label--long-word {
+  font-size: clamp(23px, 3.1vw, 46px);
+  overflow-wrap: normal;
 }
 
-.wiki-page
+:is(.wiki-page, .wiki-page--route)
   .wiki-next.wiki-next--record
-  .wiki-next__inner
-  > .wiki-next__action
-  b {
+  .wiki-next__arrow {
   display: grid;
-  width: 42px;
-  height: 42px;
-  grid-column: 2;
-  grid-row: 1;
+  align-self: end;
+  width: 64px;
+  height: 64px;
   place-items: center;
-  align-self: start;
+  border: 1px solid color-mix(in srgb, var(--next-record-ink) 22%, transparent);
   border-radius: 50%;
-  background: var(--next-record-accent);
-  color: var(--next-record-paper);
-  font-size: 22px;
-  font-weight: 400;
-  transform: none;
-  transition: transform 420ms cubic-bezier(0.22, 1, 0.36, 1);
+  background: color-mix(
+    in srgb,
+    var(--route-page-bg, #f8f4ed) 48%,
+    transparent
+  );
+  color: var(--next-record-ink);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.6),
+    0 2px 8px rgba(27, 23, 25, 0.025);
+  transition:
+    color 220ms ease,
+    background-color 220ms ease,
+    border-color 220ms ease,
+    box-shadow 220ms ease,
+    transform 320ms var(--ease-out);
 }
 
-.wiki-page
+:is(.wiki-page, .wiki-page--route)
   .wiki-next.wiki-next--record
-  .wiki-next__inner
-  > .wiki-next__action:is(:hover, :focus-visible) {
+  .wiki-next__action:is(:hover, :focus-visible) {
+  color: var(--next-record-accent);
+}
+
+:is(.wiki-page, .wiki-page--route)
+  .wiki-next.wiki-next--record
+  .wiki-next__action:focus-visible {
+  outline: 2px solid var(--next-record-ink);
+  outline-offset: 8px;
+}
+
+:is(.wiki-page, .wiki-page--route)
+  .wiki-next.wiki-next--record
+  .wiki-next__action:is(:hover, :focus-visible)
+  .wiki-next__arrow {
   border-color: var(--next-record-ink);
   background: var(--next-record-ink);
-  color: var(--next-record-paper);
-  box-shadow: 0 22px 48px rgba(27, 23, 25, 0.14);
-  outline: none;
-  transform: translateY(-6px);
-}
-
-.wiki-page
-  .wiki-next.wiki-next--record
-  .wiki-next__inner
-  > .wiki-next__action:is(:hover, :focus-visible)
-  span {
-  color: color-mix(in srgb, var(--next-record-paper) 72%, transparent);
-}
-
-.wiki-page
-  .wiki-next.wiki-next--record
-  .wiki-next__inner
-  > .wiki-next__action:is(:hover, :focus-visible)::before {
-  opacity: 0.3;
-  transform: scale(1.08);
-}
-
-.wiki-page
-  .wiki-next.wiki-next--record
-  .wiki-next__inner
-  > .wiki-next__action:is(:hover, :focus-visible)
-  b {
+  color: var(--route-page-bg, #f8f4ed);
+  box-shadow: 0 4px 14px rgba(27, 23, 25, 0.1);
   transform: rotate(45deg);
 }
 
-.wiki-page
+:is(.wiki-page, .wiki-page--route)
   .wiki-next.wiki-next--record
-  .wiki-next__inner
-  > .wiki-next__action:active {
-  transform: translateY(-2px) scale(0.985);
+  .wiki-next__action:active
+  .wiki-next__arrow {
+  transform: rotate(45deg) scale(0.94);
 }
 
-.wiki-page.wiki-page .wiki-next.wiki-next--record {
-  min-height: auto;
-  padding: 64px 0 82px;
-}
+@media (max-width: 980px) {
+  :is(.wiki-page, .wiki-page--route) .wiki-next.wiki-next--record {
+    --next-record-inset: 32px;
+    --next-record-companion-size: 108px;
+  }
 
-.wiki-page.wiki-page .wiki-next.wiki-next--record h2 {
-  max-width: 760px;
-  font-size: clamp(26px, 2.8vw, 38px);
-  line-height: 1.18;
-}
-
-.wiki-page.wiki-page .wiki-next.wiki-next--record p:not(.wiki-kicker) {
-  margin-top: 16px;
-  font-family: var(--font-editorial);
-  font-size: 16px;
+  :is(.wiki-page, .wiki-page--route)
+    .wiki-next.wiki-next--record
+    > .wiki-next__inner {
+    grid-template-columns: minmax(108px, 1fr) minmax(0, 1.1fr);
+    column-gap: 40px;
+  }
 }
 
 @media (max-width: 760px) {
-  .wiki-page.wiki-page .wiki-next.wiki-next--record {
-    grid-template-columns: 1fr;
-    gap: 38px;
-    padding: 52px 0 64px;
+  :is(.wiki-page, .wiki-page--route) .wiki-next.wiki-next--record {
+    --next-record-inset: 0px;
+    padding-top: 48px;
+    padding-bottom: 72px;
   }
 
-  .wiki-page.wiki-page .wiki-next.wiki-next--record h2 {
-    max-width: 620px;
-    font-size: clamp(22px, 5.5vw, 28px);
-    line-height: 1.25;
+  :is(.wiki-page, .wiki-page--route)
+    .wiki-next.wiki-next--record
+    > .wiki-next__inner {
+    grid-template-columns: 88px minmax(0, 1fr);
+    gap: 22px 20px;
+    align-items: center;
   }
 
-  .wiki-page
+  :is(.wiki-page, .wiki-page--route)
+    .wiki-next.wiki-next--record
+    .wiki-next__copy {
+    display: contents;
+    padding: 0;
+  }
+
+  :is(.wiki-page.wiki-page, .wiki-page--route) .wiki-next.wiki-next--record h2 {
+    grid-column: 2;
+    font-size: clamp(21px, 5.4vw, 26px);
+    text-wrap: pretty;
+  }
+
+  :is(.wiki-page, .wiki-page--route)
+    .wiki-next.wiki-next--record
+    p:not(.wiki-kicker) {
+    grid-column: 1 / -1;
+    margin: 0;
+    font-size: 14px;
+  }
+
+  :is(.wiki-page, .wiki-page--route)
     .wiki-next.wiki-next--record
     .wiki-next__inner
     > .wiki-next__action {
-    min-height: 112px;
-    grid-template-columns: minmax(0, 1fr) 42px;
-    padding: 20px;
-    border-radius: 20px;
+    grid-column: 1 / -1;
+    grid-row: auto;
+    width: 100%;
+    grid-template-columns: minmax(0, 1fr) 56px;
+    gap: 16px;
+    min-height: 88px;
+    margin-top: 4px;
   }
 
-  .wiki-page
+  :is(.wiki-page, .wiki-page--route)
     .wiki-next.wiki-next--record
-    .wiki-next__inner
-    > .wiki-next__action
-    strong.wiki-next__label--long {
-    font-size: 20px;
+    .wiki-next__companion {
+    grid-row: 1;
+    justify-self: start;
+    align-self: center;
+    width: 88px;
+    height: 96px;
+    margin: 0;
+  }
+
+  :is(.wiki-page, .wiki-page--route)
+    .wiki-next.wiki-next--record
+    .wiki-next__companion
+    img {
+    left: -31px;
+    height: 96px;
+  }
+
+  :is(.wiki-page, .wiki-page--route)
+    .wiki-next.wiki-next--record
+    .wiki-next__action
+    strong {
+    font-size: clamp(28px, 8vw, 38px);
+  }
+
+  :is(.wiki-page, .wiki-page--route)
+    .wiki-next.wiki-next--record
+    .wiki-next__arrow {
+    width: 56px;
+    height: 56px;
+  }
+
+  :is(.wiki-page, .wiki-page--route)
+    .wiki-next.wiki-next--record
+    .wiki-next__arrow
+    svg {
+    width: 26px;
+    height: 26px;
+  }
+
+  :is(.wiki-page, .wiki-page--route)
+    .wiki-next.wiki-next--record
+    .wiki-next__eyebrow {
+    min-height: 30px;
+    font-size: 10px;
+  }
+
+  :is(.wiki-page, .wiki-page--route)
+    .wiki-next.wiki-next--record
+    .wiki-next__icon {
+    flex-basis: 30px;
+    width: 30px;
+    height: 30px;
+  }
+
+  :is(.wiki-page, .wiki-page--route)
+    .wiki-next.wiki-next--record
+    .wiki-next__ribbon {
+    bottom: 12px;
+    height: 180px;
+    opacity: 0.35;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .wiki-page
+  .wiki-next.wiki-next--record .wiki-next__preview {
+    transition: none;
+    transform: none;
+  }
+
+  :is(.wiki-page, .wiki-page--route)
     .wiki-next.wiki-next--record
-    .wiki-next__inner
-    > .wiki-next__action,
-  .wiki-page
+    .wiki-next__action,
+  :is(.wiki-page, .wiki-page--route)
     .wiki-next.wiki-next--record
-    .wiki-next__inner
-    > .wiki-next__action::before,
-  .wiki-page
+    .wiki-next__arrow {
+    transition: none;
+  }
+
+  :is(.wiki-page, .wiki-page--route)
     .wiki-next.wiki-next--record
-    .wiki-next__inner
-    > .wiki-next__action
-    b {
-    transition-duration: 0.01ms;
+    .wiki-next__action:is(:hover, :focus-visible, :active)
+    .wiki-next__arrow {
+    transform: none;
   }
 }

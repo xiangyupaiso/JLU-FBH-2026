@@ -14,8 +14,8 @@ export const attributionPage = {
   ],
   next: {
     path: "/activities",
-    label: "Team Activities",
-    title: "Beyond the Protocol: Our Journey Together",
-    description: "Attribution matrices document the tasks, but not the memories. Step behind the scenes to see the camaraderie, trials, and triumphs of our season.",
+    label: "Activities",
+    title: "The Moments We Shared",
+    description: "The attribution form records our contributions. Our photographs tell another part of the story: the shared work, friendships and everyday moments of our iGEM season.",
   },
 } as const;

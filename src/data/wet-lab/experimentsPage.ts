@@ -5732,8 +5732,8 @@ export const experimentsPage: WikiPageContent = {
   "next": {
     "path": "/measurement",
     "label": "Measurement",
-    "title": "How Does a Protocol Become a Reliable Metric?",
-    "description": "Executing experiments is only the start. Discover how we quantified circularity yields, calibrated degradation kinetics, and normalized flow cytometry across runs."
+    "title": "What Makes a Measurement Interpretable?",
+    "description": "Explore how we estimated circular fractions, tracked RNA stability and interpreted immune readouts, with the controls, calculations and limitations behind each measurement."
   }
 };
 

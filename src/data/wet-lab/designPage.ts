@@ -619,6 +619,6 @@ export const designPage: WikiPageContent = {
     path: "/experiments",
     label: "Experiments",
     title: "Taking the Blueprint to the Bench",
-    description: "The in silico construct is mapped down to the base pair. Follow our standardized bench protocols to transcribe, circularize, and test the vaccine in vitro and in vivo.",
+    description: "Follow the laboratory methods behind the design, from template preparation and RNA circularisation to cell-based assays and the animal-study workflow.",
   },
 };

@@ -25,6 +25,6 @@ export const educationPage: WikiPageContent = {
     path: "/sustainability",
     label: "Sustainability",
     title: "Anchoring Local Action to Global Goals",
-    description: "Education plants the seeds of change; sustainability ensures longevity. Explore how our vaccine roadmap directly advances United Nations Sustainable Development Goals.",
+    description: "Educational resources can continue to grow through reuse and collaboration. Explore how we assess CirCure's current contributions, potential impacts and trade-offs across the Sustainable Development Goals.",
   },
 };

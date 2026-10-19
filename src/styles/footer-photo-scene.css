@@ -106,29 +106,54 @@
 .keepsake-note {
   position: fixed;
   inset: 0;
-  width: min(960px, calc(100% - 48px));
-  height: 560px;
-  max-height: calc(100dvh - 48px);
+  width: 100%;
+  height: 100%;
   max-width: none;
-  margin: auto;
+  max-height: none;
+  margin: 0;
   padding: 0;
   overflow: hidden;
-  border: 1px solid #e3d8ce;
-  border-radius: 20px;
+  border: 0;
+  background: transparent;
   color: #4e3c45;
-  background: #fcf9f3;
-  box-shadow: 0 24px 90px rgb(31 22 28 / 22%);
   font-family: var(--font-body);
 }
 .keepsake-note[open] {
   display: grid;
+  place-items: center;
+}
+/* The full-screen dialog stays still, including its top-layer sheep cursor. */
+.keepsake-note__panel {
+  display: grid;
   grid-template-rows: minmax(0, 1fr) auto;
+  width: min(960px, calc(100% - 48px));
+  height: 560px;
+  max-height: calc(100dvh - 48px);
+  max-width: none;
+  overflow: hidden;
+  border: 1px solid #e3d8ce;
+  border-radius: 20px;
+  background: #fcf9f3;
+  box-shadow: 0 24px 90px rgb(31 22 28 / 22%);
+  transform-origin: center;
 }
 .keepsake-note::backdrop {
-  background: rgb(38 30 35 / 44%);
+  background: rgb(38 30 35 / 32%);
+  opacity: 0;
+  transition: opacity 280ms ease;
 }
-body:has(.keepsake-note[open]) {
-  overflow: hidden;
+.keepsake-note[data-motion="opening"]::backdrop,
+.keepsake-note[data-motion="open"]::backdrop {
+  opacity: 1;
+}
+@starting-style {
+  .keepsake-note[data-motion="opening"]::backdrop {
+    opacity: 0;
+  }
+}
+.keepsake-note[data-motion="opening"] .keepsake-note__panel,
+.keepsake-note[data-motion="closing"] .keepsake-note__panel {
+  will-change: transform, opacity;
 }
 .keepsake-note__actions {
   display: flex;
@@ -280,13 +305,6 @@ body:has(.keepsake-note[open]) {
   transform: translateX(-12%);
   mix-blend-mode: multiply;
 }
-/* Opacity alone keeps the letter text off moving, resampled transform layers. */
-.keepsake-note[open] .keepsake-letter__intro {
-  animation: keepsake-letter-arrive 320ms ease-out both;
-}
-.keepsake-note[open] .keepsake-letter__copy {
-  animation: keepsake-letter-arrive 380ms ease-out 40ms both;
-}
 .keepsake-photo-error {
   position: absolute;
   z-index: 2;
@@ -298,14 +316,6 @@ body:has(.keepsake-note[open]) {
   background: #292226;
   color: #f5f0e7;
   font: 400 14px/1.65 var(--font-body);
-}
-@keyframes keepsake-letter-arrive {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
 }
 /* Very wide, short windows retain the whole group over photographic edge fill. */
 @media (min-aspect-ratio: 11/5) {
@@ -350,7 +360,7 @@ body:has(.keepsake-note[open]) {
     padding: 8px 10px;
     font-size: 10px;
   }
-  .keepsake-note {
+  .keepsake-note__panel {
     width: calc(100% - 24px);
     height: 720px;
     max-height: calc(100dvh - 24px);
@@ -413,7 +423,7 @@ body:has(.keepsake-note[open]) {
 }
 /* Short landscape screens scroll the letter, without shrinking its text. */
 @media (min-width: 721px) and (max-height: 500px) {
-  .keepsake-note {
+  .keepsake-note__panel {
     width: min(960px, calc(100% - 24px));
     max-height: calc(100dvh - 24px);
   }
@@ -444,13 +454,12 @@ body:has(.keepsake-note[open]) {
     transform: none !important;
     will-change: auto;
   }
-  .keepsake-letter__intro,
-  .keepsake-letter__copy {
-    animation: none !important;
+  .keepsake-note::backdrop {
+    transition-duration: 120ms;
   }
 }
 @media (forced-colors: active) {
-  .keepsake-note,
+  .keepsake-note__panel,
   .keepsake-note__actions {
     background: Canvas;
     color: CanvasText;

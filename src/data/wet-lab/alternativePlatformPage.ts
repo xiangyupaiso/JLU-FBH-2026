@@ -1034,7 +1034,7 @@ export const alternativePlatformPage: WikiPageContent = {
   next: {
     path: "/model",
     label: "Model",
-    title: "Predicting Biology Before the Pipette",
-    description: "Wet lab assays reveal empirical outputs, but computational models uncover the physical mechanisms. Explore our thermodynamic folding, translation kinetics, and tumor-immune ODEs.",
+    title: "How Models Guide the Next Decision",
+    description: "A modular platform still needs evidence-based choices. Explore AEIP for target and epitope selection, Cell2Dose for dose exploration, and SST-QN for sustainability assessment.",
   },
 };

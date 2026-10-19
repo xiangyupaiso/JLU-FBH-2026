@@ -22,7 +22,7 @@ export function CircRnaArtwork() {
         className="story-art circrna-illustration"
         style={{ "--art-aspect": manifest["1"].aspect } as CSSProperties}
         role="img"
-        aria-label="Why circRNA? Its closed circular structure offers high stability and persistent expression, a promising foundation for next-generation nucleic-acid cancer vaccines. Conceptual illustration."
+        aria-label="Why circRNA? Circular structure, stability and persistent expression. We chose circRNA to support sustained antigen expression. Conceptual illustration."
       >
         {manifest["1"].layers.slice(1).map((layer) => {
           const style = {
@@ -121,7 +121,7 @@ export function CircRnaArtwork() {
           );
         })}
         <figcaption className="circrna-caption">
-          A promising foundation for cancer vaccines.
+          We chose circRNA to support sustained antigen expression.
         </figcaption>
       </figure>
     </>

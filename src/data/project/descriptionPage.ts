@@ -659,9 +659,9 @@ export const descriptionPage: WikiPageContent = {
   ],
   next: {
     path: "/engineering",
-    label: "Engineering Success",
-    title: "Turning Molecular Rationale into Working Circuits",
-    description: "A powerful clinical concept demands rigorous engineering. Follow four iterative DBTL cycles that transformed theoretical circRNA into functional biological hardware.",
+    label: "Engineering",
+    title: "From Research Questions to Engineering Decisions",
+    description: "Follow TIME—Targeting, Integration, Measurement and Evaluation—and the DBTL iterations that connect our research questions, design decisions and experimental evidence.",
   },
 };
 

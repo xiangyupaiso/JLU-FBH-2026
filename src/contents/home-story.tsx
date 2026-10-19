@@ -10,11 +10,14 @@ import { CircRnaArtwork } from "../components/home/CircRnaArtwork";
 import { HomeRnaSequence } from "../components/home/HomeRnaSequence";
 import { WardInfusionTube } from "../components/home/WardInfusionTube";
 import originalManifest from "../assets/home/story/manifest.json";
-const mapCloudWest = "https://static.igem.wiki/teams/6056/wiki/files/pages/home/map-detail-baked-cloud-west.webp";
-const mapCloudEast = "https://static.igem.wiki/teams/6056/wiki/files/pages/home/map-detail-baked-cloud-east.webp";
-const mapWaveWestOne = "https://static.igem.wiki/teams/6056/wiki/files/pages/home/map-detail-baked-wave-west-1.webp";
-const mapWaveWestTwo = "https://static.igem.wiki/teams/6056/wiki/files/pages/home/map-detail-baked-wave-west-2.webp";
-const mapWaveEastFour = "https://static.igem.wiki/teams/6056/wiki/files/pages/home/map-detail-baked-wave-east-4.webp";
+import exploreBackdrop from "../assets/home/story/scene-9-layer-1.webp";
+import exploreHands from "../assets/home/story/scene-9-layer-2.webp";
+import explorePatient from "../assets/home/story/scene-9-layer-3.webp";
+import mapCloudWest from "../assets/home/story/map-detail-baked-cloud-west.webp";
+import mapCloudEast from "../assets/home/story/map-detail-baked-cloud-east.webp";
+import mapWaveWestOne from "../assets/home/story/map-detail-baked-wave-west-1.webp";
+import mapWaveWestTwo from "../assets/home/story/map-detail-baked-wave-west-2.webp";
+import mapWaveEastFour from "../assets/home/story/map-detail-baked-wave-east-4.webp";
 import supplements from "../assets/home/supplements/manifest.json";
 const projectAdvantages = "https://static.igem.wiki/teams/6056/wiki/files/pages/home/project-advantages.avif";
 const patientConcerned =
@@ -126,11 +129,11 @@ const imageUrls: Record<string, string> = {
   "../assets/home/story/scene-8-layer-6.webp":
     "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-8-layer-6.webp",
   "../assets/home/story/scene-9-layer-1.webp":
-    "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-9-layer-1.webp",
+    exploreBackdrop,
   "../assets/home/story/scene-9-layer-2.webp":
-    "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-9-layer-2.webp",
+    exploreHands,
   "../assets/home/story/scene-9-layer-3.webp":
-    "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-9-layer-3.webp",
+    explorePatient,
 };
 const supplementUrls: Record<string, string> = {
   "../assets/home/supplements/fan-1.webp":

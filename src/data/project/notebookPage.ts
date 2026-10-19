@@ -1972,7 +1972,7 @@ export const notebookPage: WikiPageContent = {
   next: {
     path: "/safety-and-security",
     label: "Safety and Security",
-    title: "Where Must Innovation Draw the Line?",
-    description: "Exhaustive lab notes prove that powerful synthetic biology demands vigilant containment. Review our BSL-2 protocols, animal ethics, and dual-use risk assessments.",
+    title: "How We Put Safety into Practice",
+    description: "The notebook records what we did and when. Explore how SAFE ON guided risk assessment, training, approvals and experimental decisions throughout the project.",
   },
 };

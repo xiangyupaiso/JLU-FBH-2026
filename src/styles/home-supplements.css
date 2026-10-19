@@ -210,6 +210,9 @@
   container-type: inline-size;
   width: min(94%, calc((var(--scene-height) - 24px) * 16 / 9));
 }
+.story-art--fan > [data-layer="8"] {
+  top: -3% !important;
+}
 .story-art--fan > [data-layer="2"] {
   /* Keep the center divider below the gap in the painted title. */
   clip-path: polygon(0 0, 47% 0, 47% 21%, 54% 21%, 54% 0, 100% 0, 100% 100%, 0 100%);
@@ -231,13 +234,13 @@
   height: 32% !important;
 }
 .story-art--fan > [data-layer="5"] {
-  left: 4% !important;
+  left: 1% !important;
   top: 64% !important;
   width: 20% !important;
   height: 29% !important;
 }
 .story-art--fan > [data-layer="7"] {
-  left: 77% !important;
+  left: 80% !important;
   top: 63% !important;
   width: 18% !important;
   height: 29% !important;
@@ -279,12 +282,12 @@
 }
 .story-art--fan .story-platform-note--structure {
   top: 82.5%;
-  left: 25%;
+  left: 21%;
   width: 17%;
 }
 .story-art--fan .story-platform-note--beyond {
   top: 82.5%;
-  left: 62%;
+  left: 66%;
   right: auto;
   bottom: auto;
   width: 17%;

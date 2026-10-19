@@ -181,6 +181,6 @@ export const engineeringPage: WikiPageContent = {
     path: "/results",
     label: "Results",
     title: "Which Hypotheses Survived the Test?",
-    description: "The engineering cycles made their boldest predictions. Enter our experimental ledger to examine the gels, cytotoxicity assays, and in vivo tumour suppression data.",
+    description: "Examine the evidence behind our engineering decisions, from RNA quality checks and immune-function assays to tumour-growth measurements, alongside the limits of each result.",
   },
 };

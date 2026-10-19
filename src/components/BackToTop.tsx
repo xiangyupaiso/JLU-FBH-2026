@@ -17,7 +17,8 @@ export function BackToTop() {
   const magnetRef = useRef<HTMLSpanElement>(null);
   const [isVisible, setIsVisible] = useState(false);
   const [isLaunching, setIsLaunching] = useState(false);
-  const topLabel = pathname === "/" ? "Return to CirCure title" : "Return to top";
+  const topLabel =
+    pathname === "/" ? "Return to CirCure title" : "Return to top";
 
   useEffect(() => {
     setIsLaunching(false);
@@ -33,7 +34,28 @@ export function BackToTop() {
     const updateVisibility = () => {
       frame = 0;
       const threshold = Math.max(420, window.innerHeight * 0.72);
-      const nextVisible = window.scrollY > threshold;
+      let nextVisible = window.scrollY > threshold;
+      const button = buttonRef.current;
+      const nextLink = nextVisible
+        ? document.querySelector<HTMLElement>(".wiki-next__action")
+        : null;
+      if (button && nextLink && document.activeElement !== button) {
+        const floating = button.getBoundingClientRect();
+        const entry = nextLink.getBoundingClientRect();
+        const hint = nextLink.querySelector<HTMLElement>(".wiki-next__preview");
+        const bottom = Math.max(
+          entry.bottom,
+          hint?.getBoundingClientRect().bottom ?? entry.bottom,
+        );
+        // Leave room for the hint and the floating sheep's small magnetic pull.
+        const gap = 24;
+        const overlaps =
+          floating.left < entry.right + gap &&
+          floating.right > entry.left - gap &&
+          floating.top < bottom + gap &&
+          floating.bottom > entry.top - gap;
+        nextVisible = !overlaps;
+      }
       setIsVisible((current) =>
         current === nextVisible ? current : nextVisible,
       );
