@@ -1,8 +1,9 @@
 import { useCallback, useEffect, useRef, useState, type ReactNode } from "react";
-import { UserRound } from "lucide-react";
 import { humanPracticesTreeCopy } from "../../../data/engagement/humanPracticesTreeCopy";
+import { stageMedia } from "../../../data/engagement/humanPracticesAssets";
 import { scrollReaderToTarget } from "../../../utils";
 import { HpFlowTooltip } from "./HpFlowTooltip";
+import { HpInterviewPhoto, HpPortrait } from "./HpStakeholderMedia";
 import "../../../styles/hp-stage-tree.css";
 
 type Variant = "plasmid" | "in-vitro" | "in-vivo" | "return";
@@ -303,6 +304,9 @@ export function HumanPracticesStageTree({ variant }: { variant: Variant }) {
   const firstStep = config.steps.find((item) => item.node === step.node && item.copyKey && !item.followup);
   const displayedStep = showFirst && step.followup && firstStep ? firstStep : step;
   const interview = interviewFor(displayedStep.copyKey);
+  const currentMedia = stageMedia[variant]?.[displayedStep.node];
+  const interviewPhotos = displayedStep.followup ? currentMedia?.followup ?? [] : currentMedia?.interview ?? [];
+  const firstProseIndex = interview?.paragraphs.findIndex((paragraph) => !paragraph.startsWith("**")) ?? -1;
   const visited = new Set(config.steps.slice(0, unlocked + 1).map((item) => item.node));
   const returned = new Set(config.steps.slice(0, unlocked + 1).filter((item) => item.followup).map((item) => item.node));
   const hoveredNode = config.nodes.find((item) => item.id === hovered);
@@ -352,7 +356,7 @@ export function HumanPracticesStageTree({ variant }: { variant: Variant }) {
                 }}
               >
                 <span className="hp-stage-flow__node-back" aria-hidden="true" />
-                <span className="hp-stage-flow__node-front">{item.kind === "milestone" ? <span className="hp-stage-flow__milestone-label">{item.name}</span> : <span className="hp-stage-flow__portrait" aria-hidden="true"><UserRound size={30} strokeWidth={1.5} /></span>}</span>
+                <span className="hp-stage-flow__node-front">{item.kind === "milestone" ? <span className="hp-stage-flow__milestone-label">{item.name}</span> : <span className="hp-stage-flow__portrait" aria-hidden="true"><HpPortrait src={stageMedia[variant]?.[item.id]?.portrait} name={item.name} /></span>}</span>
               </button>
             );
           })}
@@ -372,9 +376,12 @@ export function HumanPracticesStageTree({ variant }: { variant: Variant }) {
             </div>}
           </div>
           <div className="hp-stage-flow__card-body" ref={cardRef}>
-            {interview ? interview.paragraphs.map((paragraph, index) => paragraph.startsWith("**") && paragraph.endsWith("**")
-              ? <h4 key={index}>{paragraph.slice(2, -2)}</h4>
-              : <p key={index}>{inline(paragraph)}</p>) : <p>{node.name}</p>}
+            {interview ? interview.paragraphs.map((paragraph, index) => <div className="hp-interview-segment" key={index}>
+              {paragraph.startsWith("**") && paragraph.endsWith("**")
+                ? <h4>{paragraph.slice(2, -2)}</h4>
+                : <p>{inline(paragraph)}</p>}
+              {index === firstProseIndex && interviewPhotos.map((src) => <HpInterviewPhoto key={src} src={src} name={node.name} />)}
+            </div>) : <p>{node.name}</p>}
           </div>
         </article>}
         <p className="hp-stage-flow__hint">{overview ? "Hover over a node for context · Scroll to follow the sequence" : "Scroll to continue · Select a visited node to revisit"}</p>

@@ -135,6 +135,8 @@
 .hp-stage-flow__node.is-followup .hp-stage-flow__node-front { border-color: #783b19; background: #bf6a2d; box-shadow: 0 0 0 5px rgb(165 78 28 / 22%), 0 10px 25px rgb(105 48 18 / 22%); }
 .hp-stage-flow__portrait { display: grid; width: 100%; height: 100%; place-items: center; border: 1px solid rgb(106 65 31 / 20%); border-radius: 13px; background: #fff9e9; }
 .hp-stage-flow__portrait svg { width: 38px; height: 38px; }
+.hp-stage-flow__portrait { overflow: hidden; }
+.hp-stage-flow__portrait img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center; }
 .hp-stage-flow__milestone-label { font-family: var(--font-sans); font-size: clamp(10px, .85vw, 12px); font-weight: 700; line-height: 1.22; text-align: center; }
 .hp-stage-flow__node.is-followup .hp-stage-flow__milestone-label { color: #fff9e9; }
 
