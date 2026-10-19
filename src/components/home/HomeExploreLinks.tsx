@@ -2,6 +2,7 @@ import { useEffect, useId, useState } from "react";
 import { Link } from "react-router-dom";
 import { ArrowUpRight } from "lucide-react";
 import { homeDestinations } from "../../data/homeDestinations";
+import { QueuedImage } from "../common/QueuedImage";
 import descriptionSheep from "../../assets/home/explore/description.webp";
 import engineeringSheep from "../../assets/home/explore/engineering.webp";
 import sustainabilitySheep from "../../assets/home/explore/sustainability.webp";
@@ -118,11 +119,12 @@ export function HomeExploreLinks() {
                       </span>
                     </span>
                     <span className="home-explore-mascot" aria-hidden="true">
-                      <img
+                      <QueuedImage
                         src={destinationSheep[key]}
                         width={736}
                         height={736}
                         alt=""
+                        loading="lazy"
                         decoding="async"
                         draggable={false}
                       />

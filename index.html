@@ -259,9 +259,9 @@
       aria-atomic="true"
     >
       <div class="page-loader__stage" aria-hidden="true">
-        <img class="pl-bg" src="https://static.igem.wiki/teams/6056/wiki/files/pages/shared/bg.webp" alt="" fetchpriority="high" />
+        <img class="pl-bg" data-loader-src="https://static.igem.wiki/teams/6056/wiki/files/pages/shared/bg.webp" alt="" fetchpriority="high" />
         <div class="pl-hands">
-          <img src="https://static.igem.wiki/teams/6056/wiki/files/pages/shared/hands.webp" alt="" fetchpriority="high" data-critical />
+          <img data-loader-src="https://static.igem.wiki/teams/6056/wiki/files/pages/shared/hands.webp" alt="" fetchpriority="high" data-critical />
         </div>
         <svg class="pl-ribbon" viewBox="0 0 1264 711" preserveAspectRatio="none">
           <defs>
@@ -281,7 +281,7 @@
             </mask>
           </defs>
           <image
-            href="https://static.igem.wiki/teams/6056/wiki/files/pages/shared/ribbon.webp"
+            data-loader-href="https://static.igem.wiki/teams/6056/wiki/files/pages/shared/ribbon.webp"
             x="0"
             y="90"
             width="1264"
@@ -292,10 +292,10 @@
         </svg>
         <div class="pl-glow"></div>
         <div class="pl-lamb">
-          <img src="https://static.igem.wiki/teams/6056/wiki/files/pages/shared/lamb.webp" alt="" fetchpriority="high" data-critical />
+          <img data-loader-src="https://static.igem.wiki/teams/6056/wiki/files/pages/shared/lamb.webp" alt="" fetchpriority="high" data-critical />
         </div>
-        <div class="pl-petals"><img src="https://static.igem.wiki/teams/6056/wiki/files/pages/shared/petals.webp" alt="" /></div>
-        <div class="pl-stars"><img src="https://static.igem.wiki/teams/6056/wiki/files/pages/shared/stars.webp" alt="" /></div>
+        <div class="pl-petals"><img data-loader-src="https://static.igem.wiki/teams/6056/wiki/files/pages/shared/petals.webp" alt="" /></div>
+        <div class="pl-stars"><img data-loader-src="https://static.igem.wiki/teams/6056/wiki/files/pages/shared/stars.webp" alt="" /></div>
       </div>
       <div class="page-loader__feedback">
         <p class="page-loader__caption" aria-hidden="true">loading<span>.</span><span>.</span><span>.</span></p>
@@ -328,13 +328,16 @@
         var retryTimer = 0;
         var deadlineTimer = 0;
         var timedOut = false;
+        var waitGeneration = 0;
         var stopWait = function () {
+          waitGeneration++;
           clearTimeout(slowTimer);
           clearTimeout(retryTimer);
           clearTimeout(deadlineTimer);
         };
         var watchWait = function () {
           stopWait();
+          var generation = waitGeneration;
           timedOut = false;
           loader.dataset.waitStart = String(Date.now());
           delete loader.dataset.deadline;
@@ -347,25 +350,36 @@
           retryTimer = setTimeout(function () {
             if (!loader.hidden) retry.hidden = false;
           }, 30000);
-          // A missing bundle or stylesheet must also stop the entrance after
-          // two minutes. Keep a clear recovery action if no usable app arrived.
+          // Two minutes is the absolute cover limit. The app readiness module
+          // normally releases the loader itself; this static fallback also
+          // reveals whatever has rendered if a stylesheet or module never settles.
           deadlineTimer = setTimeout(function () {
-            if (loader.hidden) return;
+            if (loader.hidden || generation !== waitGeneration) return;
             timedOut = true;
             cancelAnimationFrame(frame);
             loader.dataset.deadline = "true";
-            status.textContent = "Loading has taken two minutes. Please try again.";
+            status.textContent = "Opening the page with the resources available…";
             wait.hidden = true;
-            retry.hidden = false;
+            retry.hidden = true;
             loader.getAnimations({ subtree: true }).forEach(function (animation) {
               animation.pause();
             });
             loader.dispatchEvent(new Event("loaderdeadline"));
-          }, 120000);
+            setTimeout(function () {
+              if (loader.hidden || generation !== waitGeneration) return;
+              loader.classList.add("is-leaving");
+              setTimeout(function () {
+                if (loader.hidden || generation !== waitGeneration) return;
+                loader.hidden = true;
+                loader.classList.remove("is-leaving", "is-playing");
+              }, 400);
+            }, 0);
+          }, 119600);
         };
         var failed = function () {
           if (loader.hidden) return;
-          stopWait();
+          clearTimeout(slowTimer);
+          clearTimeout(retryTimer);
           timedOut = true;
           cancelAnimationFrame(frame);
           status.textContent = "The page could not load. Please try again.";
@@ -403,14 +417,12 @@
           retry.textContent = loader.dataset.retryable === "images" ? "Retry images" : "Reload page";
         });
         window.addEventListener("vite:preloadError", failed);
-        window.addEventListener("unhandledrejection", failed);
         window.addEventListener("error", function (event) {
           var target = event.target;
-          if (
-            (target && target.tagName === "SCRIPT" && target.type === "module") ||
-            event.error ||
-            !target || target === window
-          ) failed();
+          // Resource errors and real uncaught exceptions can prevent the app
+          // from mounting. Browser layout warnings such as ResizeObserver's
+          // loop notification are non-fatal and must not freeze route entry.
+          if ((target && target.tagName === "SCRIPT" && target.type === "module") || event.error) failed();
         }, true);
         watchWait();
 
@@ -462,18 +474,59 @@
         loader.addEventListener("loaderstart", play);
         // A slow connection must get a chance to decode the artwork before
         // its entrance runs; failed requests settle through decode().
-        var fallback = setTimeout(play, 8000);
-        var decode = function (img) {
-          return img.decode ? img.decode().catch(function () {}) : null;
+        var art = [].slice.call(loader.querySelectorAll("[data-loader-src], [data-loader-href]"));
+        var activeProbe = null;
+        var releaseArtGate;
+        var gateReleased = false;
+        window.__circureLoaderArtReady = new Promise(function (resolve) { releaseArtGate = resolve; });
+        var releaseGate = function () {
+          if (gateReleased) return;
+          gateReleased = true;
+          if (activeProbe) {
+            activeProbe.onload = activeProbe.onerror = null;
+            activeProbe.removeAttribute("src");
+            activeProbe = null;
+          }
+          releaseArtGate();
         };
-        var art = [].slice.call(loader.querySelectorAll("img"));
-        var ribbon = new Image();
-        ribbon.src = loader.querySelector("image").getAttribute("href");
-        art.push(ribbon);
-        Promise.all(art.map(decode)).then(function () {
-          clearTimeout(fallback);
+        var fallback = setTimeout(function () {
+          releaseGate();
           play();
-        });
+        }, 8000);
+        var loadNext = function (index) {
+          if (gateReleased) return;
+          if (index >= art.length) {
+            clearTimeout(fallback);
+            releaseGate();
+            play();
+            return;
+          }
+          var target = art[index];
+          var source = target.getAttribute("data-loader-src") || target.getAttribute("data-loader-href");
+          var probe = new Image();
+          activeProbe = probe;
+          probe.fetchPriority = "high";
+          var finish = function (loaded) {
+            if (activeProbe !== probe || gateReleased) return;
+            activeProbe = null;
+            probe.onload = probe.onerror = null;
+            if (loaded) {
+              if (target.hasAttribute("data-loader-src")) target.src = source;
+              else target.setAttribute("href", source);
+            }
+            loadNext(index + 1);
+          };
+          probe.onload = function () {
+            Promise.resolve(probe.decode ? probe.decode() : undefined).then(
+              function () { finish(true); },
+              function () { finish(false); }
+            );
+          };
+          probe.onerror = function () { finish(false); };
+          probe.src = source;
+          if (probe.complete && probe.naturalWidth > 0) probe.onload();
+        };
+        loadNext(0);
       })();
     </script>
     <div id="root"></div>

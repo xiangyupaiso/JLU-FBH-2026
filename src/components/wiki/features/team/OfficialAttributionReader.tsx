@@ -326,7 +326,11 @@ export function OfficialAttributionReader() {
               />
             </>
           ) : null}
-          <div className="route-frame">
+          <div
+            className="route-frame"
+            data-page-background-src="https://static.igem.wiki/teams/6056/wiki/files/pages/team/team.avif"
+            data-page-background-property="--route-frame-image-ready"
+          >
             <div
               ref={scrollRef}
               className="route-frame__scroll"

@@ -394,8 +394,12 @@ export function SheepCursor() {
     // The page queue decodes both poses before assigning their native URLs.
     // Keep the platform cursor available until both queued copies can paint.
     const syncArtwork = () => {
-      ready = [...layer.querySelectorAll<HTMLImageElement>(".sheep-cursor__sprite > img")]
-        .every((image) => image.complete && image.naturalWidth > 0);
+      const rest = layer.querySelector<HTMLImageElement>(".sheep-cursor__rest");
+      const happy = layer.querySelector<HTMLImageElement>(".sheep-cursor__happy");
+      const loaded = (image: HTMLImageElement | null) => !!image?.complete && image.naturalWidth > 0;
+      if (loaded(rest)) root.style.setProperty("--circure-cursor-default", `url("${rest!.currentSrc || rest!.src}") 13 12, auto`);
+      if (loaded(happy)) root.style.setProperty("--circure-cursor-active", `url("${happy!.currentSrc || happy!.src}") 13 12, pointer`);
+      ready = loaded(rest) && loaded(happy);
     };
     syncArtwork();
     layer.addEventListener("load", syncArtwork, true);

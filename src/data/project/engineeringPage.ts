@@ -119,7 +119,7 @@ const overviewSection: WikiSection = {
     {
       type: "prose",
       paragraphs: [
-        "In TIME, **Dry Lab and Wet Lab act as the primary driving gears**. Dry Lab turns biological questions into traceable antigen and epitope decisions, structural hypotheses and quantitative predictions; Wet Lab converts these designs into physical constructs and molecular or cellular evidence. Their alternating motion drives the central mechanism and gives rise to [CircuForge](https://2026.igem.wiki/jlu-fbh/software#software-usage-guide-circuforge), [TorusFold](https://2026.igem.wiki/jlu-fbh/software#software-usage-guide-torusfold), and mathematical modelling. **iHP, Education, Visual Design and Entrepreneurship operate as driven gears**, translating scientific progress into clinical and ethical refinements, transferable learning, coherent communication and development requirements. Their feedback then enters the next DBTL iteration, guiding and extending the main drive.",
+        "In TIME, **Dry Lab and Wet Lab act as the primary driving gears**. Dry Lab turns biological questions into traceable antigen and epitope decisions, structural hypotheses and quantitative predictions; Wet Lab converts these designs into physical constructs and molecular or cellular evidence. Their alternating motion drives the central mechanism and gives rise to [CircuForge](https://2026.igem.wiki/jlu-fbh/software#software-usage-guide-circuforge), [TorusFold](https://2026.igem.wiki/jlu-fbh/software#software-usage-guide-torusfold), and mathematical modeling. **iHP, Education, Visual Design and Entrepreneurship operate as driven gears**, translating scientific progress into clinical and ethical refinements, transferable learning, coherent communication and development requirements. Their feedback then enters the next DBTL iteration, guiding and extending the main drive.",
       ],
     },
     {
@@ -181,6 +181,6 @@ export const engineeringPage: WikiPageContent = {
     path: "/results",
     label: "Results",
     title: "Which Hypotheses Survived the Test?",
-    description: "Examine the evidence behind our engineering decisions, from RNA quality checks and immune-function assays to tumour-growth measurements, alongside the limits of each result.",
+    description: "Examine the evidence behind our engineering decisions, from RNA quality checks and immune-function assays to tumor-growth measurements, alongside the limits of each result.",
   },
 };

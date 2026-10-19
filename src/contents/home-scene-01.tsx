@@ -95,7 +95,13 @@ export function Home() {
                   </figcaption>
                 </figure>
               ))}
-              <div className="scene01-frame-layer" aria-hidden="true">
+              <div
+                className="scene01-frame-layer"
+                aria-hidden="true"
+                data-page-background-src="https://static.igem.wiki/teams/6056/wiki/files/pages/home/frame-mask-120c57e35eaf.svg"
+                data-page-background-property="--scene01-frame-mask"
+                data-page-critical="true"
+              >
                 <HomeImage src={womanFrameUrl} alt="" />
               </div>
               <div className="scene01-portrait">

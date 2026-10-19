@@ -13,7 +13,7 @@
          --route-main: #rrggbb;   // 主色 — header bar / rail
          --route-soft: #rrggbb;   // 辅色 — sidebar card / panels / pills
          --route-base: #rrggbb;   // 底色 — page surface / mat
-         --route-frame-image: url("../assets/wiki/<module>.png"); // 藤蔓边框
+         `data-page-background-src` identifies the module's queued frame art.
        }
 
    Everything below (paper, ink, muted, accent, hairlines, shadows, tints) is
@@ -928,7 +928,7 @@ html.has-route-reader-scroll {
   border: 1px solid var(--route-line-strong);
   border-radius: 6px;
   background-color: var(--route-paper);
-  background-image: var(--route-frame-image);
+  background-image: var(--route-frame-image-ready, none);
   background-repeat: no-repeat;
   background-position: center;
   background-size: 100% 100%;

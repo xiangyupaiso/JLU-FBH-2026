@@ -332,8 +332,29 @@ function groupFromHash(): NotebookGroupId {
 
 export function NotebookWorkspace() {
   const [groupId, setGroupId] = useState<NotebookGroupId>(groupFromHash);
+  const [navVisible, setNavVisible] = useState(false);
   const shellRef = useRef<HTMLDivElement>(null);
   const group = notebookGroups.find((item) => item.id === groupId)!;
+
+  useEffect(() => {
+    const shell = shellRef.current;
+    if (!shell) return;
+
+    // Keep the group switcher out of the hero fold until the notebook body is
+    // close enough to read. The nav remains portaled so it can keep its
+    // existing floating desktop/mobile positions without being clipped.
+    if (!("IntersectionObserver" in window)) {
+      setNavVisible(true);
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => setNavVisible(entry.isIntersecting),
+      { rootMargin: "0px 0px -40% 0px" },
+    );
+    observer.observe(shell);
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
     const syncGroup = () => setGroupId(groupFromHash());
@@ -352,7 +373,11 @@ export function NotebookWorkspace() {
   return (
     <div className="notebook-shell" ref={shellRef}>
       {createPortal(
-        <nav className="notebook-group-nav" aria-label="Notebook groups">
+        <nav
+          className={`notebook-group-nav${navVisible ? " is-visible" : ""}`}
+          aria-label="Notebook groups"
+          aria-hidden={!navVisible}
+        >
           {notebookGroups.map((item) => (
             <a
               href={`#notebook-group-${item.id}`}

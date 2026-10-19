@@ -82,12 +82,12 @@ export const cycle4Section: WikiSection = {
   kicker: "Cycle 4 — Evaluation",
   navLabel: "Cycle 4 — Evaluation",
   title: "Cycle 4 — Evaluation: Extending molecular and cellular evidence to in vivo evaluation",
-  summary: "TIME reaches **E—Evaluation**. Building on the molecular and cellular evidence for Combined, this cycle examined whether its activity could translate into tumour control in vivo. The non-tumour-cell...",
+  summary: "TIME reaches **E—Evaluation**. Building on the molecular and cellular evidence for Combined, this cycle examined whether its activity could translate into tumor control in vivo. The non-tumor-cell...",
   blocks: [
         {
           type: "prose",
           paragraphs: [
-          "TIME reaches **E—Evaluation**. Building on the molecular and cellular evidence for Combined, this cycle examined whether its activity could translate into tumour control in vivo. The non-tumour-cell comparison described in Cycle 3 was conducted during the same evaluation period, complementing the animal study with a separate assessment of effects on non-tumour cells under the tested in vitro conditions. After submitting the Animal Use Form and receiving approval, we used verified TROP2-expressing 4T1 model cells to conduct a three-group comparison of PBS, empty-vector circRNA–LNP and Combined circRNA–LNP in BALB/c mice. Wet Lab measured tumour growth, splenic immune responses and local tumour signals. Dry Lab used Cell2Dose, a mathematical model informed by experimental data, to connect selected readouts with published parameters, simulate vaccine action and explore dose-related uncertainty. Together, the experimental observations and mechanistic calculations extended the evaluation of Combined from in vitro activity to tumour control and associated immune responses in the animal model."
+          "TIME reaches **E—Evaluation**. Building on the molecular and cellular evidence for Combined, this cycle examined whether its activity could translate into tumor control in vivo. The non-tumor-cell comparison described in Cycle 3 was conducted during the same evaluation period, complementing the animal study with a separate assessment of effects on non-tumor cells under the tested in vitro conditions. After submitting the Animal Use Form and receiving approval, we used verified TROP2-expressing 4T1 model cells to conduct a three-group comparison of PBS, empty-vector circRNA–LNP and Combined circRNA–LNP in BALB/c mice. Wet Lab measured tumor growth, splenic immune responses and local tumor signals. Dry Lab used Cell2Dose, a mathematical model informed by experimental data, to connect selected readouts with published parameters, simulate vaccine action and explore dose-related uncertainty. Together, the experimental observations and mechanistic calculations extended the evaluation of Combined from in vitro activity to tumor control and associated immune responses in the animal model."
 ]
         },
     {
@@ -107,7 +107,7 @@ export const cycle4Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "Evaluation in immunocompetent BALB/c mice required a syngeneic tumour background and a defined model target. Following consultation with Zheng Hu on tumour-model selection, Wet Lab retained 4T1 as the murine tumour background and introduced human TROP2 as the model antigen."
+          "Evaluation in immunocompetent BALB/c mice required a syngeneic tumor background and a defined model target. Following consultation with Zheng Hu on tumor-model selection, Wet Lab retained 4T1 as the murine tumor background and introduced human TROP2 as the model antigen."
 ]
         }
           ]
@@ -192,7 +192,7 @@ export const cycle4Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "We successfully established and verified a human TROP2-expressing 4T1 cell population, providing the tumour-cell material needed to establish a TROP2-bearing tumour model in immunocompetent BALB/c mice. Wet Lab had begun animal-study planning earlier, considering control comparisons, administration arrangements, animal-welfare criteria and systemic and local immune measurements. Model-cell verification provided the defined cellular input needed to implement the evaluation of Combined’s in vivo tumour-control effect."
+          "We successfully established and verified a human TROP2-expressing 4T1 cell population. This provided the tumor-cell material needed to establish a TROP2-bearing tumor model in immunocompetent BALB/c mice. Wet Lab had begun animal-study planning earlier, considering control comparisons, administration arrangements, animal-welfare criteria and systemic and local immune measurements. Model-cell verification provided the defined cellular input needed to implement the evaluation of Combined’s in vivo tumor-control effect."
 ]
         },
         {
@@ -222,7 +222,7 @@ export const cycle4Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "During earlier animal-study planning, we developed an evaluation framework to distinguish tumour progression, carrier-associated effects and the contribution of an antigen-encoding preparation. This framework was subsequently applied to the complete Combined preparation. Jiuwei Cui advised that tumour control should be interpreted together with systemic and local immune evidence. We therefore defined three connected endpoints: longitudinal tumour growth, splenic immune phenotypes and intratumoural CD8/Granzyme B signals (Pulaski and Ostrand-Rosenberg, 2000)."
+          "During earlier animal-study planning, we developed an evaluation framework to distinguish tumor progression, carrier-associated effects and the contribution of an antigen-encoding preparation. This framework was subsequently applied to the complete Combined preparation. Jiuwei Cui advised that tumor control should be interpreted together with systemic and local immune evidence. We therefore defined three connected endpoints: longitudinal tumor growth, splenic immune phenotypes and intratumoral CD8/Granzyme B signals (Pulaski and Ostrand-Rosenberg, 2000)."
 ]
         },
         {
@@ -245,7 +245,7 @@ export const cycle4Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "Wet Lab built the protocol around three groups of immunocompetent BALB/c mice: PBS, empty-vector circRNA–LNP and Combined circRNA–LNP, with five animals per group. TROP2-expressing 4T1 cells were inoculated on D0, which also marked the first administration. The study comprised five administrations, longitudinal tumour measurements and endpoint tissue collection. The protocol specified animal coding, group allocation, consistent inoculation and administration routes, humane endpoints and coordinated tissue collection. Consultation with Zhiman Li on animal ethics and the 3Rs was translated into an Experimental Design Assistant record and an Animal Use Form, with approval obtained before the animal work began (Percie du Sert et al., 2020; NC3Rs, n.d.)."
+          "Wet Lab built the protocol around three groups of immunocompetent BALB/c mice: PBS, empty-vector circRNA–LNP and Combined circRNA–LNP, with five animals per group. TROP2-expressing 4T1 cells were inoculated on D0, which also marked the first administration. The study comprised five administrations, longitudinal tumor measurements and endpoint tissue collection. The protocol specified animal coding, group allocation, consistent inoculation and administration routes, humane endpoints and coordinated tissue collection. Consultation with Zhiman Li on animal ethics and the 3Rs was translated into an Experimental Design Assistant record and an Animal Use Form, with approval obtained before the animal work began (Percie du Sert et al., 2020; NC3Rs, n.d.)."
 ]
         },
         {
@@ -274,7 +274,7 @@ export const cycle4Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "We tested the interpretability of the protocol by tracing each planned conclusion to a specific comparison. PBS versus empty vector measured the carrier and backbone background; empty vector versus Combined measured the additional effect associated with the antigen-encoding sequence; and PBS versus Combined described the overall effect of the complete preparation. Tumour measurements, splenic phenotyping and tumour-tissue imaging were then linked through the same animal identifiers. This review confirmed that every endpoint had an appropriate comparator and could be collected from the same cohort without introducing additional animals."
+          "We tested the interpretability of the protocol by tracing each planned conclusion to a specific comparison. PBS versus empty vector measured the carrier and backbone background; empty vector versus Combined measured the additional effect associated with the antigen-encoding sequence; and PBS versus Combined described the overall effect of the complete preparation. Tumor measurements, splenic phenotyping and tumor-tissue imaging were then linked through the same animal identifiers. This review confirmed that every endpoint had an appropriate comparator and could be collected from the same cohort without introducing additional animals."
 ]
         },
         {
@@ -324,7 +324,7 @@ export const cycle4Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "Dry Lab first outlined the Cell2Dose framework and its data requirements using the planned animal-model context, comparison groups and administration schedule. Once the CCK-8 and three-ratio cytotoxicity measurements became available, we incorporated them to calibrate the core cell-response functions. Cell2Dose: A Cell-Informed Mechanistic Model for Tumor Vaccine Dose Exploration was designed to examine four complementary aspects of Combined performance: **(1) antitumour efficacy**, assessing tumour suppression; **(2) cell viability**, assessing carrier-related effects on cell survival; **(3) systemic exposure**, estimating material entering the systemic compartment; and **(4) innate immune activation**, assessing stimulation against a predefined model criterion. By connecting delivery, circRNA expression and immune responses, Cell2Dose provided a quantitative framework for comparing candidate doses across these four aspects (Wesselhoeft et al., 2018; Chen et al., 2022; Benzekry et al., 2014)."
+          "Dry Lab first outlined the Cell2Dose framework and its data requirements using the planned animal-model context, comparison groups and administration schedule. Once the CCK-8 and three-ratio cytotoxicity measurements became available, we incorporated them to calibrate the core cell-response functions. Cell2Dose: A Cell-Informed Mechanistic Model for Tumor Vaccine Dose Exploration was designed to examine four complementary aspects of Combined performance: **(1) antitumor efficacy**, assessing tumor suppression; **(2) cell viability**, assessing carrier-related effects on cell survival; **(3) systemic exposure**, estimating material entering the systemic compartment; and **(4) innate immune activation**, assessing stimulation against a predefined model criterion. By connecting delivery, circRNA expression and immune responses, Cell2Dose provided a quantitative framework for comparing candidate doses across these four aspects (Wesselhoeft et al., 2018; Chen et al., 2022; Benzekry et al., 2014)."
 ]
         },
         {
@@ -361,7 +361,7 @@ export const cycle4Section: WikiSection = {
           paragraphs: [
           "We built a two-part Cell2Dose workflow connecting experimental measurements to vaccine-action simulation.",
           "**(1) Parameter calibration.** Empty-LNP CCK-8 data and background-corrected killing measurements entered finite-grid Bayesian numerical integration to estimate the viability-response parameters `E50` and `h`, and the killing-response parameters `K_ET` and `n`. These two datasets formed the core cell-response calibration.",
-          "**(2) Vaccine-action simulation.** Ordinary differential equations described material distribution from the subcutaneous injection site to lymph nodes, circRNA translation, innate stimulation associated with RNA and LNP, DC maturation and T-cell priming. Effector-cell killing and immune suppression then contributed to the simulated tumour response. The simulation evaluated a five-administration regimen, with published parameters and registered uncertainty ranges supporting processes beyond the measured cell responses. Immune-response inputs and animal-outcome comparisons were identified separately in the integrated evidence analysis."
+          "**(2) Vaccine-action simulation.** Ordinary differential equations described material distribution from the subcutaneous injection site to lymph nodes, circRNA translation, innate stimulation associated with RNA and LNP, DC maturation and T-cell priming. Effector-cell killing and immune suppression then contributed to the simulated tumor response. The simulation evaluated a five-administration regimen, with published parameters and registered uncertainty ranges supporting processes beyond the measured cell responses. Immune-response inputs and animal-outcome comparisons were identified separately in the integrated evidence analysis."
 ]
         }
           ]
@@ -409,7 +409,7 @@ export const cycle4Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "We established a quantitative bridge from cell measurements to vaccine-action simulation, allowing efficacy, viability, systemic exposure and innate activation to be evaluated within one framework. The next decision was to compare doses while varying parameters beyond the reach of the cell assays, so that the recommendation would reflect a range of plausible biological conditions."
+          "We established a quantitative link between cell measurements and vaccine-action simulation. This allowed efficacy, viability, systemic exposure, and innate activation to be evaluated within one framework. The next decision was to compare doses while varying parameters beyond the reach of the cell assays, so that the recommendation would reflect a range of plausible biological conditions."
 ]
         },
         {
@@ -439,7 +439,7 @@ export const cycle4Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "Building on the Cell2Dose framework in Iteration 4.3, we evaluated the 10 µg dose used in the animal study alongside alternative doses. We examined which doses could satisfy four performance criteria when delivery and immune-effect parameters varied together. A dose met the joint criterion when the predefined tumour-control, viability, systemic-exposure and innate-activation conditions were satisfied simultaneously in at least 80% of sampled parameter sets. This rule assessed balanced performance across the modelled biological variation."
+          "Building on the Cell2Dose framework in Iteration 4.3, we evaluated the 10 µg dose used in the animal study alongside alternative doses. We examined which doses could satisfy four performance criteria when delivery and immune-effect parameters varied together. A dose met the joint criterion when the predefined tumor-control, viability, systemic-exposure and innate-activation conditions were satisfied simultaneously in at least 80% of sampled parameter sets. This rule assessed balanced performance across the modeled biological variation."
 ]
         }
           ]
@@ -451,7 +451,7 @@ export const cycle4Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "We built a dose-comparison workflow combining cell-response parameter samples with Latin hypercube sampling of uncertain model factors to form 1,024 parameter sets. These factors included `f_lymph`, the lymph-node allocation fraction, and `γ_ET`, which mapped modelled effector activity to the experimental effector-to-target scale. We evaluated 301 doses from 0 to 30 µg at 0.1-µg intervals, using the same parameter sets and five-administration model regimen throughout. For each dose, the proportion of simulations simultaneously satisfying the efficacy, viability, systemic-exposure and innate-activation criteria defined the joint pass probability, `p_joint`."
+          "We built a dose-comparison workflow combining cell-response parameter samples with Latin hypercube sampling of uncertain model factors to form 1,024 parameter sets. These factors included `f_lymph`, the lymph-node allocation fraction, and `γ_ET`, which mapped modeled effector activity to the experimental effector-to-target scale. We evaluated 301 doses from 0 to 30 µg at 0.1-µg intervals, using the same parameter sets and five-administration model regimen throughout. For each dose, the proportion of simulations simultaneously satisfying the efficacy, viability, systemic-exposure and innate-activation criteria defined the joint pass probability, `p_joint`."
 ]
         }
           ]
@@ -463,7 +463,7 @@ export const cycle4Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "The dose scan identified a favourable region around 10 µg. The joint pass probability was 81.15% at 10.0 µg, while 10.2 µg achieved the highest grid value of 81.45%. Both exceeded the predefined 80% threshold, indicating that all four criteria were satisfied together in approximately eight out of ten sampled scenarios. The 10 µg dose used in the animal study therefore lay close to the highest-scoring region of this model comparison, combining simulated tumour control with passage of the three accompanying screening conditions."
+          "The dose scan identified a favorable region around 10 µg. The joint pass probability was 81.15% at 10.0 µg, while 10.2 µg achieved the highest grid value of 81.45%. Both exceeded the predefined 80% threshold, indicating that all four criteria were satisfied together in approximately eight out of ten sampled scenarios. The 10 µg dose used in the animal study therefore lay close to the highest-scoring region of this model comparison, combining simulated tumor control with passage of the three accompanying screening conditions."
 ]
         },
         {
@@ -483,7 +483,7 @@ export const cycle4Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "Cell2Dose showed how the interpretation of a dose depended on delivery assumptions, immune-effect parameters and the performance criteria considered together. The similar scores at 10.0 and 10.2 µg supported interpreting the result as a favourable dose region around 10 µg. This supplied a conditional computational context for the dose used in the study. Experimental tumour control was assessed through the PBS, empty-vector circRNA–LNP and Combined circRNA–LNP comparisons presented in Iteration 4.5."
+          "Cell2Dose showed that dose interpretation depended on the combined consideration of delivery assumptions, immune-effect parameters, and performance criteria. The similar scores at 10.0 and 10.2 µg supported interpreting the result as a favorable dose region around 10 µg. This supplied a conditional computational context for the dose used in the study. Experimental tumor control was assessed through the PBS, empty-vector circRNA–LNP and Combined circRNA–LNP comparisons presented in Iteration 4.5."
 ]
         },
         {
@@ -513,7 +513,7 @@ export const cycle4Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "Combined’s molecular and cellular results established the basis for testing its antitumour activity, while Iteration 4.4 evaluated dose performance computationally. The experimental assessment focused on **the vaccine’s in vivo tumour-control effect**, using endpoint tumour volume as the primary outcome and group-mean growth trajectories to describe tumour development over time. PBS and empty-vector circRNA–LNP controls distinguished the overall Combined effect from the delivery-and-backbone background."
+          "Combined’s molecular and cellular results established the basis for testing its antitumor activity, while Iteration 4.4 evaluated dose performance computationally. The experimental assessment focused on **the vaccine’s in vivo tumor-control effect**, using endpoint tumor volume as the primary outcome and group-mean growth trajectories to describe tumor development over time. PBS and empty-vector circRNA–LNP controls distinguished the overall Combined effect from the delivery-and-backbone background."
 ]
         }
           ]
@@ -525,7 +525,7 @@ export const cycle4Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "Five female BALB/c mice per group received TROP2-expressing 4T1 cells and were assigned to PBS, empty-vector circRNA–LNP or Combined circRNA–LNP. Each group received five scheduled administrations, with tumour and spleen collection at the study endpoint. Tumours were measured three times at each timepoint by a blinded operator, and the mean was retained under the individual animal identifier."
+          "Five female BALB/c mice per group received TROP2-expressing 4T1 cells and were assigned to PBS, empty-vector circRNA–LNP or Combined circRNA–LNP. Each group received five scheduled administrations, with tumor and spleen collection at the study endpoint. Tumors were measured three times at each timepoint by a blinded operator, and the mean was retained under the individual animal identifier."
 ]
         }
           ]
@@ -537,7 +537,7 @@ export const cycle4Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "Endpoint tumour volumes were 233.64±28.33 mm³ for PBS, 90.36±13.51 mm³ for empty vector and 24.20±9.72 mm³ for Combined (*n*=5 animals per group). The overall difference was supported by one-way ANOVA (*F*(2,12)=159.2, *P*=2.3×10⁻⁹). Combined produced 89.6% tumour-growth inhibition relative to PBS and 73.2% relative to empty vector, while empty vector produced 61.3% inhibition relative to PBS; all three pre-specified comparisons remained significant after Holm correction."
+          "Endpoint tumor volumes were 233.64±28.33 mm³ for PBS, 90.36±13.51 mm³ for empty vector and 24.20±9.72 mm³ for Combined (*n*=5 animals per group). The overall difference was supported by one-way ANOVA (*F*(2,12)=159.2, *P*=2.3×10⁻⁹). Combined produced 89.6% tumor-growth inhibition relative to PBS and 73.2% relative to empty vector, while empty vector produced 61.3% inhibition relative to PBS; all three pre-specified comparisons remained significant after Holm correction."
 ]
         },
         {
@@ -580,7 +580,7 @@ export const cycle4Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "The comparison showed that Combined achieved the strongest antitumour effect among the three groups. To interpret this difference, we considered tumour control alongside systemic immune measurements. Iteration 4.6 examines the connected evidence from splenic dendritic-cell maturation and CD8⁺ T-cell activation to memory-associated phenotypes and effector responses."
+          "The comparison showed that Combined achieved the strongest antitumor effect among the three groups. To interpret this difference, we considered tumor control alongside systemic immune measurements. Iteration 4.6 examines the connected evidence from splenic dendritic-cell maturation and CD8⁺ T-cell activation to memory-associated phenotypes and effector responses."
 ]
         },
         {
@@ -610,7 +610,7 @@ export const cycle4Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "To determine whether Combined’s tumour control was accompanied by coordinated systemic immune activation, we arranged the splenic measurements along the immune-response chain: dendritic-cell maturation, CD8⁺ T-cell activation, memory-associated differentiation and the effector outputs IFN-γ and Granzyme B. This sequence connected antigen presentation, T-cell response and effector function within one evaluation framework."
+          "To determine whether Combined’s tumor control was accompanied by coordinated systemic immune activation, we arranged the splenic measurements along the immune-response chain: dendritic-cell maturation, CD8⁺ T-cell activation, memory-associated differentiation and the effector outputs IFN-γ and Granzyme B. This sequence connected antigen presentation, T-cell response and effector function within one evaluation framework."
 ]
         }
           ]
@@ -622,7 +622,7 @@ export const cycle4Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "Splenocytes from three animals per group were analysed by flow cytometry. After dendritic cells and CD8⁺ T cells were identified through their respective gating strategies, CD80/CD86 co-expression was used to evaluate dendritic-cell maturation, CD69 to indicate CD8⁺ T-cell activation and CD44/CD62L to describe memory-associated differentiation. Intracellular staining further measured IFN-γ as a cytokine-response output and Granzyme B as a cytotoxic-effector indicator. Each animal was retained as an independent statistical unit."
+          "Splenocytes from three animals per group were analyzed by flow cytometry. After dendritic cells and CD8⁺ T cells were identified through their respective gating strategies, CD80/CD86 co-expression was used to evaluate dendritic-cell maturation, CD69 to indicate CD8⁺ T-cell activation and CD44/CD62L to describe memory-associated differentiation. Intracellular staining further measured IFN-γ as a cytokine-response output and Granzyme B as a cytotoxic-effector indicator. Each animal was retained as an independent statistical unit."
 ]
         }
           ]
@@ -634,7 +634,7 @@ export const cycle4Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "The five measurements formed a coherent systemic immune-response pattern. Empty-vector circRNA–LNP produced an intermediate increase above PBS, while Combined generated the strongest response at every stage—from dendritic-cell maturation and CD8⁺ T-cell activation to memory-associated differentiation, IFN-γ production and Granzyme B expression. Combined remained significantly higher than both controls after Holm correction across all five panels. The consistency of this pattern connected Combined’s tumour-control performance with coordinated activation of the systemic immune-response chain rather than a change in a single marker."
+          "The five measurements formed a coherent systemic immune-response pattern. Empty-vector circRNA–LNP produced an intermediate increase above PBS, while Combined generated the strongest response at every stage. These stages spanned dendritic-cell maturation, CD8⁺ T-cell activation, memory-associated differentiation, IFN-γ production, and Granzyme B expression. Combined remained significantly higher than both controls after Holm correction across all five panels. The consistency of this pattern connected Combined’s tumor-control performance with coordinated activation of the systemic immune-response chain rather than a change in a single marker."
 ]
         },
         {
@@ -697,7 +697,7 @@ export const cycle4Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "The splenic results connected lower tumour burden with broader systemic immune-associated changes. Because intracellular staining used polyclonal rather than peptide-specific re-stimulation, these measurements described overall effector capacity rather than epitope-specific responses. We therefore next examined whether CD8-associated signals were also present inside the tumour."
+          "The splenic results connected lower tumor burden with broader systemic immune-associated changes. Because intracellular staining used polyclonal rather than peptide-specific re-stimulation, these measurements described overall effector capacity rather than epitope-specific responses. We therefore next examined whether CD8-associated signals were also present inside the tumor."
 ]
         },
         {
@@ -727,7 +727,7 @@ export const cycle4Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "The splenic measurements described systemic immune changes but did not show whether immune cells entered the tumour. We therefore used tumour immunofluorescence to examine local CD8 distribution and the accompanying Granzyme B channel under the same three-group comparison."
+          "The splenic measurements described systemic immune changes but did not show whether immune cells entered the tumor. We therefore used tumor immunofluorescence to examine local CD8 distribution and the accompanying Granzyme B channel under the same three-group comparison."
 ]
         }
           ]
@@ -739,7 +739,7 @@ export const cycle4Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "One tumour section from each of three animals per group was processed in a single randomised staining and imaging batch. CD8, Granzyme B and nuclear channels were acquired under identical exposure and magnification, with a secondary-only control used to assess background. Group identities remained coded during field selection and imaging."
+          "One tumor section from each of three animals per group was processed in a single randomized staining and imaging batch. CD8, Granzyme B and nuclear channels were acquired under identical exposure and magnification, with a secondary-only control used to assess background. Group identities remained coded during field selection and imaging."
 ]
         }
           ]
@@ -751,7 +751,7 @@ export const cycle4Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "The representative sections showed sparse intratumoural CD8 signal in PBS, an intermediate signal in the empty-vector group and the strongest signal in Combined. Because only one field was collected per animal and immune infiltration was spatially heterogeneous, the images were interpreted qualitatively without density estimates or statistical comparison. The Granzyme B channel showed a stronger signal in Combined, but its reticular morphology and the absence of single-stain and isotype-control sections prevented that signal from establishing cytotoxic activity. The direct local conclusion was therefore increased CD8-associated infiltration in the Combined sections."
+          "The representative sections showed sparse intratumoral CD8 signal in PBS, an intermediate signal in the empty-vector group and the strongest signal in Combined. Only one field was collected per animal, and immune infiltration was spatially heterogeneous. The images were therefore interpreted qualitatively, without density estimates or statistical comparison. The Granzyme B channel showed a stronger signal in Combined, but its reticular morphology and the absence of single-stain and isotype-control sections prevented that signal from establishing cytotoxic activity. The direct local conclusion was therefore increased CD8-associated infiltration in the Combined sections."
 ]
         },
         {
@@ -771,7 +771,7 @@ export const cycle4Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "Bringing tumour growth, splenic phenotypes and tissue images together taught us that each measurement answered a different question: whether tumour growth was suppressed, whether systemic immunity changed and whether CD8-associated signals were present locally. Their agreement strengthened the interpretation of Combined’s performance in this model, while increased staining alone could not establish cytotoxic function or antigen-specific recognition. This distinction was particularly important because BALB/c mice carry H-2ᵈ, whereas the selected epitopes were defined in a human HLA-A*02:01 context. We therefore recognised that further development required matching each conclusion to the evidence supporting it and using an HLA-matched system to investigate antigen-specific recognition."
+          "Integrating tumor growth, splenic phenotypes, and tissue images clarified the distinct question answered by each measurement. These questions concerned tumor suppression, changes in systemic immunity, and the local presence of CD8-associated signals. Their agreement strengthened the interpretation of Combined’s performance in this model, while increased staining alone could not establish cytotoxic function or antigen-specific recognition. This distinction was particularly important because BALB/c mice carry H-2ᵈ, whereas the selected epitopes were defined in a human HLA-A*02:01 context. We therefore recognized that further development required matching each conclusion to the evidence supporting it and using an HLA-matched system to investigate antigen-specific recognition."
 ]
         },
         {
@@ -801,7 +801,7 @@ export const cycle4Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "Tiesuo Zhao’s guidance clarified the distinction between the human HLA-A*02:01 epitope-design context and evaluation in ordinary BALB/c mice bearing human-TROP2-expressing 4T1 tumours. Together with Jiuwei Cui, we defined the final task: integrate tumour and immune measurements into a clear account of Combined’s performance, while identifying the contribution and scope of each experimental and computational result."
+          "Tiesuo Zhao’s guidance clarified the distinction between the human HLA-A*02:01 epitope-design context and evaluation in ordinary BALB/c mice bearing human-TROP2-expressing 4T1 tumors. Together with Jiuwei Cui, we defined the final task: integrate tumor and immune measurements into a clear account of Combined’s performance, while identifying the contribution and scope of each experimental and computational result."
 ]
         }
           ]
@@ -813,7 +813,7 @@ export const cycle4Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "We assembled an evidence table covering model-cell verification, tumour control, splenic immune measurements, tumour immunofluorescence and Cell2Dose. Each entry linked the direct record to its supported conclusion and evidence scope. For Cell2Dose, we distinguished three data roles: CCK-8 and background-corrected cytotoxicity measurements constrained the core cell-response functions; IFN-γ and Granzyme B measurements contributed to immune-response inputs in the integrated analysis; and animal tumour, DC and CD69 records were used for comparison with model outputs. This separation preserved the distinction between measurements informing the calculations and observations used to assess their correspondence with experimental outcomes."
+          "We assembled an evidence table covering model-cell verification, tumor control, splenic immune measurements, tumor immunofluorescence and Cell2Dose. Each entry linked the direct record to its supported conclusion and evidence scope. For Cell2Dose, we distinguished three data roles: CCK-8 and background-corrected cytotoxicity measurements constrained the core cell-response functions; IFN-γ and Granzyme B measurements contributed to immune-response inputs in the integrated analysis; and animal tumor, DC and CD69 records were used for comparison with model outputs. This separation preserved the distinction between measurements informing the calculations and observations used to assess their correspondence with experimental outcomes."
 ]
         },
         {
@@ -842,7 +842,7 @@ export const cycle4Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "We cross-checked the table against the source results and organised the findings into an integrated evidence map. Combined’s endpoint tumour volume was 89.6% lower than PBS and 73.2% lower than empty vector, accompanied by the highest values across all five splenic panels and stronger local CD8-associated signals. Together, these experimental observations established an in vivo proof of concept for Combined in the 4T1–TROP2 BALB/c model. Cell2Dose complemented this result through mechanistic simulation and conditional dose evaluation. The integrated analysis separately identified core cell-response calibration data, immune-response inputs and animal-outcome comparisons."
+          "We cross-checked the table against the source results and organized the findings into an integrated evidence map. Combined’s endpoint tumor volume was 89.6% lower than PBS and 73.2% lower than empty vector, accompanied by the highest values across all five splenic panels and stronger local CD8-associated signals. Together, these experimental observations established an in vivo proof of concept for Combined in the 4T1–TROP2 BALB/c model. Cell2Dose complemented this result through mechanistic simulation and conditional dose evaluation. The integrated analysis separately identified core cell-response calibration data, immune-response inputs and animal-outcome comparisons."
 ]
         },
         {
@@ -862,7 +862,7 @@ export const cycle4Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "The final integration brought tumour control, systemic immune responses and local CD8 observations into a coherent in vivo proof of concept, complemented by Cell2Dose’s mechanistic and dose evaluation. TIME concluded with a clear engineering outcome: Combined’s performance was supported by traceable materials, defined comparisons and connected measurements, while each result retained its experimental or computational meaning."
+          "The final integration brought tumor control, systemic immune responses and local CD8 observations into a coherent in vivo proof of concept, complemented by Cell2Dose’s mechanistic and dose evaluation. TIME concluded with a clear engineering outcome: Combined’s performance was supported by traceable materials, defined comparisons and connected measurements, while each result retained its experimental or computational meaning."
 ]
         },
         {
@@ -878,6 +878,7 @@ export const cycle4Section: WikiSection = {
   ],
   note: {
     label: "Cycle 4 outcome",
-    body: "**E—Evaluation** completed a major engineering milestone: carrying Combined from molecular and cellular activity to demonstrated tumour control in vivo. We established verified TROP2-expressing 4T1 model cells and completed an approved three-group animal study, in which Combined achieved the strongest tumour control alongside systemic immune changes and increased local CD8-associated signals. These experimental results established an in vivo proof of concept in the tested BALB/c model. Cell2Dose complemented the findings through mechanistic simulation and dose-uncertainty evaluation. Together, model-cell construction, biological measurements and computational analysis brought the four TIME cycles to a concrete engineering outcome."
+    body: "**E—Evaluation** completed a major engineering milestone: carrying Combined from molecular and cellular activity to demonstrated tumor control in vivo. We established verified TROP2-expressing 4T1 model cells and completed an approved three-group animal study, in which Combined achieved the strongest tumor control alongside systemic immune changes and increased local CD8-associated signals. These experimental results established an in vivo proof of concept in the tested BALB/c model. Cell2Dose complemented the findings through mechanistic simulation and dose-uncertainty evaluation. Together, model-cell construction, biological measurements and computational analysis brought the four TIME cycles to a concrete engineering outcome."
   }
 };
+

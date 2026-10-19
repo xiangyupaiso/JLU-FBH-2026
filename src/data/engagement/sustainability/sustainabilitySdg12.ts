@@ -506,7 +506,8 @@ export const sdg12Chapter: SdgChapter = {
   },
   alignment: {
     lead: [
-      "Using SST-QN as an initial screening framework, we assessed potential interactions against stakeholder feedback, current experimental practices, and future production scenarios. For each relationship, we considered the mechanism, supporting evidence, and conditions that could produce a synergy or trade-off. **Evidence of a change in project decisions was distinguished from evidence of an environmental or societal outcome.**",
+      "Using SST-QN as an initial screening framework, we assessed potential interactions against stakeholder feedback, current experimental practices, and future production scenarios. For each relationship, we considered the mechanism, supporting evidence, and conditions that could produce a synergy or trade-off.",
+      "**Evidence of a change in project decisions was distinguished from evidence of an environmental or societal outcome.**",
     ],
     table: {
       headers: ["Relationship", "Status", "Interaction", "Assessment"],

@@ -163,7 +163,6 @@ export function createHomeArtworkLoader(root: HTMLElement, onChange: () => void)
     onChange();
   };
   loader?.addEventListener("loaderretry", retryOpening);
-  loader?.addEventListener("loaderdeadline", stopOpening);
   loader?.addEventListener("loadererror", stopOpening);
   root.addEventListener("error", onError, true);
   root.addEventListener("load", onLoad, true);
@@ -181,7 +180,6 @@ export function createHomeArtworkLoader(root: HTMLElement, onChange: () => void)
       disposed = true;
       observer.disconnect();
       loader?.removeEventListener("loaderretry", retryOpening);
-      loader?.removeEventListener("loaderdeadline", stopOpening);
       loader?.removeEventListener("loadererror", stopOpening);
       root.removeEventListener("error", onError, true);
       root.removeEventListener("load", onLoad, true);

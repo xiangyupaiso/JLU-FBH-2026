@@ -569,9 +569,39 @@ export const sdg9Chapter: SdgChapter = {
       "To help other teams build on our SDG 9 work, we distilled CirCure’s decision-making process into **three reusable toolkits** for synthetic biology and research-driven projects. They help teams define core questions, assess stakeholder feedback, document decisions, and update project actions while maintaining research priorities. Each decision record captures **the rationale, relevance to the project’s current stage, action taken, and need for reassessment**. Together, these tools offer a practical, traceable way to turn stakeholder input into project decisions that others can review and adapt.",
     ],
     tools: [
-      { title: "Core Question Anchor", why: "Projects can gradually drift from the problem they set out to solve as new ideas, experiments, and stakeholder suggestions are added.", whatItHelpsWith: "Clarify the **core problem, success criteria, priorities, and scope** for the current phase, and check whether proposed additions truly support the project’s main direction.", bestFor: "**Project kick-offs, changes in research direction, phase reviews**, and times when the team needs to reset its priorities.", whatItDoes: "Anchors the core problem, success criteria, priorities, and scope for the current phase.", pdfs: pdfPair("core-question-anchor") },
-      { title: "Stakeholder Feedback Decision Protocol", why: "Stakeholders may have different priorities, and their suggestions may face practical constraints or conflict with one another. The team can’t accept every suggestion, but simply recording feedback without explaining how it was handled isn’t enough.", whatItHelpsWith: "Assess feedback based on its **relevance to the problem, supporting evidence, feasibility, and fit with the project’s current stage**. Classify each suggestion as **Incorporated**, **Partially Incorporated**, **Future Consideration**, or **Not Incorporated**, and document the **rationale and follow-up actions**. Assess feedback based on the same criteria when a suggestion needs to be reviewed again.", bestFor: "Organizing feedback after **expert interviews, patient and public engagement, or industry discussions**, and supporting team discussions about project changes.", whatItDoes: "Records how stakeholder feedback was assessed, classified, and followed up.", pdfs: pdfPair("stakeholder-feedback-decision-protocol") },
-      { title: "Anchor & Decide Toolkit", why: "When the core problem, stakeholder feedback, team decisions, and project actions are recorded separately, the project’s evolution can become fragmented. External audiences may also find it difficult to see **how feedback actually shaped the research work**.", whatItHelpsWith: "Bring the **core problem, feedback, team discussions, and follow-up actions** together so the team can see how each suggestion affects the project and adjust its next steps accordingly.", bestFor: "Managing the **full cycle**, documenting **Integrated Human Practices and SDG 9** work, and supporting **team handovers, phase reviews, and external presentations**.", whatItDoes: "Connects the core problem, feedback, decisions, and actions across the full project cycle.", pdfs: pdfPair("anchor-decide-toolkit") },
+      {
+        title: "Core Question Anchor",
+        why: "Projects can gradually drift from the problem they set out to solve as new ideas, experiments, and stakeholder suggestions are added.",
+        whatItHelpsWith:
+          "Clarify the **core problem, success criteria, priorities, and scope** for the current phase, and check whether proposed additions truly support the project’s main direction.",
+        bestFor:
+          "**Project kick-offs, changes in research direction, phase reviews**, and times when the team needs to reset its priorities.",
+        whatItDoes:
+          "Help the team clarify the key problem to solve, the criteria for success, and the project’s scope when it launches or moves into a new phase. This helps keep new ideas and external suggestions from expanding the work and pulling R&D off course.",
+        pdfs: pdfPair("core-question-anchor"),
+      },
+      {
+        title: "Stakeholder Feedback Decision Protocol",
+        why: "Stakeholders may have different priorities, and their suggestions may face practical constraints or conflict with one another. The team can’t accept every suggestion, but simply recording feedback without explaining how it was handled isn’t enough.",
+        whatItHelpsWith:
+          "Assess feedback based on its **relevance to the problem, supporting evidence, feasibility, and fit with the project’s current stage**. Classify each suggestion as **Incorporated**, **Partially Incorporated**, **Future Consideration**, or **Not Incorporated**, and document the **rationale and follow-up actions**. Assess feedback based on the same criteria when a suggestion needs to be reviewed again.",
+        bestFor:
+          "Organizing feedback after **expert interviews, patient and public engagement, or industry discussions**, and supporting team discussions about project changes.",
+        whatItDoes:
+          "Provides structured questions to help the team assess feedback from researchers, clinicians, and industry partners; identify how recommendations align with project goals, constraints, and current scope; and decide whether, how, and when to act.",
+        pdfs: pdfPair("stakeholder-feedback-decision-protocol"),
+      },
+      {
+        title: "Anchor & Decide Toolkit",
+        why: "When the core problem, stakeholder feedback, team decisions, and project actions are recorded separately, the project’s evolution can become fragmented. External audiences may also find it difficult to see **how feedback actually shaped the research work**.",
+        whatItHelpsWith:
+          "Bring the **core problem, feedback, team discussions, and follow-up actions** together so the team can see how each suggestion affects the project and adjust its next steps accordingly.",
+        bestFor:
+          "Managing the **full cycle**, documenting **Integrated Human Practices and SDG 9** work, and supporting **team handovers, phase reviews, and external presentations**.",
+        whatItDoes:
+          "Combines the Core Question Anchor and the Stakeholder Feedback Decision Protocol to help the team identify priorities, avoid scope creep, and coordinate technical choices with project objectives.",
+        pdfs: pdfPair("anchor-decide-toolkit"),
+      },
     ],
   },
   evidence: {

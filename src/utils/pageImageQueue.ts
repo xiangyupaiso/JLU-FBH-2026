@@ -37,7 +37,9 @@ interface Job {
 
 const ROUTE_SELECTOR = "main.wiki-page--route";
 const SOURCE_SELECTOR = "img[data-page-src], image[data-page-src], [data-page-background-src]";
-const IMAGE_DEADLINE_MS = 120_000;
+// One hung URL must release the shared slot so the rest of the first screen
+// still gets a turn well before the page's two-minute cover limit.
+const IMAGE_DEADLINE_MS = 15_000;
 const NETWORK_RETRIES = 2;
 const INTERACTION_EVENTS = ["pointermove", "pointerdown", "touchstart", "keydown", "wheel"] as const;
 const decodedSources = new Map<string, DecodedSource>();
@@ -103,7 +105,7 @@ function artworkSource(element: ArtworkElement): Source {
 }
 
 function isContentImage(element: Element, route: Element) {
-  if (!route.contains(element) || element.closest('nav, footer, .wiki-hero, .activities-hero, [data-page-critical="true"]')) return false;
+  if (!route.contains(element) || element.closest('nav, footer, .wiki-hero, .activities-hero, .route-frame, [data-page-critical="true"]')) return false;
   for (let ancestor: Element | null = element; ancestor && ancestor !== route.parentElement; ancestor = ancestor.parentElement) {
     if (ancestor.hasAttribute("inert") || ancestor.hasAttribute("hidden") || ancestor.getAttribute("aria-hidden") === "true") return false;
     if (ancestor instanceof HTMLDialogElement && !ancestor.open) return false;
@@ -213,7 +215,7 @@ function downloadSerial(source: Source, fallback: string, signal: AbortSignal, p
   // with another queue lets a route teardown cancel that queue's still-needed
   // image. StrictMode's setup/cleanup replay exposed this on the Home opening.
   if (existing && existing.signal === signal && !existing.signal.aborted) return existing.promise;
-  const promise = new Promise<DecodedSource>((resolve, reject) => {
+  const enqueue = () => new Promise<DecodedSource>((resolve, reject) => {
     const cancelled = () => {
       const index = pendingDownloads.indexOf(request);
       if (index < 0) return; // An active probe owns its cancellation and slot.
@@ -239,6 +241,15 @@ function downloadSerial(source: Source, fallback: string, signal: AbortSignal, p
     if (signal.aborted) cancelled();
     queueMicrotask(pumpDownloads);
   });
+  // index.html paints its six loading layers before the app starts any other
+  // image transfer. The gate is already open on later route navigations.
+  const loaderArtReady = (window as Window & { __circureLoaderArtReady?: Promise<void> }).__circureLoaderArtReady;
+  const promise = loaderArtReady
+    ? loaderArtReady.then(() => {
+        if (signal.aborted) throw new PageImageQueueError(source.url, "cancelled");
+        return enqueue();
+      })
+    : enqueue();
   inFlightDownloads.set(key, { promise, signal });
   const forget = () => {
     if (inFlightDownloads.get(key)?.promise === promise) inFlightDownloads.delete(key);
@@ -331,7 +342,10 @@ export function createPageImageQueue(root: HTMLElement) {
   const updateReady = () => {
     if (criticalFinished || disposed || halted) return;
     const critical = [...jobs.values()].filter(isCritical);
-    if (critical.every((job) => job.status === "loaded")) {
+    // Critical means "attempt before entry", not "must succeed or block the
+    // page". A failed image keeps its reserved space and must not prevent the
+    // remaining first-screen images from getting their turn.
+    if (critical.every((job) => job.status === "loaded" || job.status === "failed")) {
       criticalFinished = true;
       ready.resolve();
     }
@@ -359,20 +373,16 @@ export function createPageImageQueue(root: HTMLElement) {
           for (const binding of liveBindings(job)) paint(binding, decoded);
           job.status = "loaded";
           job.resolve();
-        } catch (error) {
-          const reason = error instanceof PageImageQueueError ? error.reason : "network";
-          const failure = new PageImageQueueError(job.source.url, reason, isCritical(job));
+        } catch {
           job.status = "failed";
-          job.reject(failure);
           for (const binding of liveBindings(job)) {
             binding.element.dataset.pageLoaded = "false";
             binding.element.dataset.pageImageState = "error";
           }
-          if (failure.critical && !disposed) {
-            halted = true;
-            ready.reject(failure);
-            failPending(failure);
-          }
+          // Settle this image and continue serially. In particular, one
+          // unavailable hero must not starve the other critical images.
+          job.resolve();
+          updateReady();
         } finally {
           activeJob = undefined;
           activeController = undefined;
@@ -399,7 +409,9 @@ export function createPageImageQueue(root: HTMLElement) {
         continue;
       }
       const background = element.hasAttribute("data-page-background-src");
-      const hero = !!element.closest(".wiki-hero, .activities-hero") || element.getAttribute("data-page-critical") === "true";
+      const hero = !!element.closest(".wiki-hero, .activities-hero") ||
+        element.getAttribute("data-page-critical") === "true" ||
+        element.getAttribute("data-page-priority") === "critical";
       const content = !!route && !hero && isContentImage(element, route);
       const withinFirstSix = content && (contentUrls.has(source.url) || contentUrls.size < 6);
       if (withinFirstSix) contentUrls.add(source.url);
@@ -491,7 +503,7 @@ export function createPageImageQueue(root: HTMLElement) {
     subtree: true,
     childList: true,
     attributes: true,
-    attributeFilter: ["data-page-src", "data-page-srcset", "data-page-background-src", "data-page-background-property", "data-page-critical", "data-page-fallback-src", "data-page-image-hints", "crossorigin", "sizes", "hidden", "inert", "aria-hidden", "data-state"],
+    attributeFilter: ["data-page-src", "data-page-srcset", "data-page-background-src", "data-page-background-property", "data-page-critical", "data-page-priority", "data-page-fallback-src", "data-page-image-hints", "crossorigin", "sizes", "hidden", "inert", "aria-hidden", "data-state"],
   });
   for (const event of INTERACTION_EVENTS) window.addEventListener(event, interaction, { capture: true, passive: true });
   collect();

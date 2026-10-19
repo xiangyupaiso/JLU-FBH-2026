@@ -1,5 +1,6 @@
 import { useId, useState } from "react";
 import circRnaRing from "../../../../assets/home/story/scene-1-layer-4.webp";
+import { QueuedSvgImage } from "../../../common/QueuedImage";
 import { visualDesignCitationIndex as citationIndex } from "../../../../data/citations/visualDesignCitations";
 import { CitationReferenceList } from "../../citations/CitationRegister";
 import {
@@ -129,7 +130,7 @@ export function MotionScoreStudy() {
           d="M145 132 Q400 35 655 132"
         />
         <g transform={`translate(${x} ${y})`}>
-          <image
+          <QueuedSvgImage
             href={circRnaRing}
             x="-58"
             y="-58"

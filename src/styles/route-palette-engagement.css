@@ -27,7 +27,6 @@
   --route-base: #fff8d6; /* 底色：晨光淡鹅黄（保持鲜活黄色调，温润透光、绝不暗沉发灰） */
 
   /* ② 模块专属装饰素材（正文面板边缘的淡色花朵/花瓣图案） */
-  --route-frame-image: url("https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/engagement.avif");
 
   /* ③ 标题与马克笔专属主题配色（深浅分明的双色层级设计） */
   --route-heading-ink: #4a2c1d;      /* 大标题 H2：深沉暖焦糖咖褐，阅读对比度极高，沉稳清晰 */

@@ -923,7 +923,7 @@ export function Navbar() {
             >
               <span className="wordmark-stage" aria-hidden="true">
                 <span className="wordmark-crest">
-                  <img
+                  <QueuedImage
                     className="team-crest logo--dark"
                     src={teamCrestUrl}
                     alt=""
@@ -1192,7 +1192,7 @@ export function Navbar() {
                           onClick={closeAll}
                         >
                           {c.icon ? (
-                            <img
+                            <QueuedImage
                               src={c.icon}
                               alt=""
                               className="circure-mobile-group__icon"

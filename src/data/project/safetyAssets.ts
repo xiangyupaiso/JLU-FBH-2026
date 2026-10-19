@@ -664,7 +664,7 @@ export const safetyAssets = {
     localSourcePath: null,
     sourceReference: "文案集/project/safe/3.4 Safety and Security.md:884",
     uploadUrl:
-      "https://static.igem.wiki/teams/6056/wiki/files/pages/safety-and-security/3-2-laboratory-safety-facilities-and-inspection-schedule.avif",
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/safety-and-security/3-2-laboratory-safety-facilities-and-inspection-schedule-v2.avif",
     width: 1280,
     height: 566,
     alt: "Laboratory safety facilities and inspection schedule",
@@ -1021,7 +1021,7 @@ export const safetyAssets = {
     localSourcePath: null,
     sourceReference: "文案集/project/safe/3.4 Safety and Security.md:1495",
     uploadUrl:
-      "https://static.igem.wiki/teams/6056/wiki/files/pages/safety-and-security/5-1-four-level-laboratory-safety-training-system-form.avif",
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/safety-and-security/5-1-four-level-laboratory-safety-training-system-form-v2.avif",
     width: 1280,
     height: 602,
     alt: "Four level laboratory safety training system form",

@@ -60,6 +60,14 @@ import "../../styles/features/experiments-panels.css";
 
 type FeatureMap = Partial<Record<string, ReactNode>>;
 
+const ROUTE_FRAME_IMAGES: Record<string, string> = {
+  team: "https://static.igem.wiki/teams/6056/wiki/files/pages/team/team.avif",
+  project: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/project.avif",
+  "wet-lab": "https://static.igem.wiki/teams/6056/wiki/files/pages/shared/wet.avif",
+  "dry-lab": "https://static.igem.wiki/teams/6056/wiki/files/pages/shared/dry.avif",
+  engagement: "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/engagement.avif",
+};
+
 /** Mobile breakpoint; must match the `@media (max-width: 980px)` skin block. */
 const COMPACT_QUERY = "(max-width: 980px)";
 
@@ -1470,6 +1478,9 @@ export function WikiRoutePage({
       } ${forceDocumentFlow ? "route--document-flow" : ""} ${drawerOpen ? "is-toc-open" : ""} ${pageClassName}`}
       data-wiki-route={content.route}
       data-route-theme={theme}
+      data-page-background-src={theme === "dry-lab" ? heroImage : undefined}
+      data-page-background-property="--dry-lab-art"
+      data-page-priority={theme === "dry-lab" ? "critical" : undefined}
       data-active-section={activeSection}
     >
       <PageImagePreloads sources={imageSources} />
@@ -1573,7 +1584,11 @@ export function WikiRoutePage({
           ) : null}
 
           <WikiPageScrollContext.Provider value={scrollContextValue}>
-            <div className="route-frame">
+            <div
+              className="route-frame"
+              data-page-background-src={theme ? ROUTE_FRAME_IMAGES[theme] : undefined}
+              data-page-background-property="--route-frame-image-ready"
+            >
               <div
                 ref={scrollRef}
                 className="route-frame__scroll"

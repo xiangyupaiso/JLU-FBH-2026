@@ -1,4 +1,4 @@
-import { createPageImageQueue } from "./pageImageQueue";
+import { createPageImageQueue, loadPageImageSerial } from "./pageImageQueue";
 
 /**
  * Runtime control for the static page loader in `index.html`.
@@ -14,6 +14,7 @@ import { createPageImageQueue } from "./pageImageQueue";
 
 const LEAVE_MS = 380; // matches `.page-loader` opacity transition
 const COMPLETE_HOLD_MS = 350; // let the finished illustration register
+const HOME_COVER_FADE_MS = 400; // static fallback transition in index.html
 // External apps may never send their readiness message when their service is
 // unavailable. This limit applies only to explicitly opted-in embeds.
 const EMBED_WAIT_MS = 12000;
@@ -34,8 +35,8 @@ let imageQueue: ReturnType<typeof createPageImageQueue> | undefined;
 const leaveListeners = new Set<() => void>();
 const pagePreparations = new Set<() => void | Promise<void>>();
 const preparationTasks = new Set<Promise<void>>();
-const settledSvgSources = new Set<string>();
-const nativeSvgTasks = new Map<string, Promise<void>>();
+let settledSvgElements = new WeakMap<SVGImageElement, string>();
+let nativeSvgTasks = new WeakMap<SVGImageElement, Map<string, Promise<void>>>();
 const nativeSvgPreloads = new Set<SVGSVGElement>();
 
 const svgSource = (image: SVGImageElement) =>
@@ -46,8 +47,7 @@ const svgSource = (image: SVGImageElement) =>
 for (const type of ["load", "error"]) {
   document.addEventListener(type, (event) => {
     if (event.target instanceof SVGImageElement) {
-      const source = svgSource(event.target);
-      settledSvgSources.add(source);
+      settledSvgElements.set(event.target, svgSource(event.target));
     }
   }, true);
 }
@@ -130,10 +130,15 @@ export function showPageLoader() {
   imageQueue = undefined;
   nativeSvgPreloads.forEach((svg) => svg.remove());
   nativeSvgPreloads.clear();
-  nativeSvgTasks.clear();
-  settledSvgSources.clear();
+  nativeSvgTasks = new WeakMap();
+  settledSvgElements = new WeakMap();
   window.clearTimeout(leaveTimer);
-  if (isVisible(loader)) return; // first load or an overlapping navigation
+  if (isVisible(loader)) {
+    // A navigation can begin while the cover is already up. Refresh the
+    // static watchdog for the new route instead of inheriting the old timer.
+    loader.dispatchEvent(new Event("loaderstart"));
+    return;
+  }
 
   leaving = false;
   loader.hidden = false;
@@ -182,8 +187,9 @@ export function hidePageLoaderWhenReady() {
   imageQueue?.dispose();
   imageQueue = undefined;
   delete loader.dataset.retryable;
-  readiness = new AbortController();
-  const { signal } = readiness;
+  const controller = new AbortController();
+  readiness = controller;
+  const { signal } = controller;
   // Inspect the mounted route, rather than the URL: a navigation can update
   // its address before React has replaced the previous page.
   const opening = document.getElementById("root")
@@ -192,9 +198,30 @@ export function hidePageLoaderWhenReady() {
     opening ? Promise.resolve() : openingComplete(loader, signal),
     pageReady(loader, signal, opening),
   ]);
+  const elapsed = loader.dataset.waitStart
+    ? Math.max(0, Date.now() - Number(loader.dataset.waitStart))
+    : 0;
+  let deadlineTimer = 0;
+  let resolveDeadline!: () => void;
+  const deadline = new Promise<boolean>((resolve) => {
+    resolveDeadline = () => resolve(true);
+    deadlineTimer = window.setTimeout(
+      resolveDeadline,
+      Math.max(0, HOME_READY_DEADLINE_MS - HOME_COVER_FADE_MS - elapsed),
+    );
+  });
+  const clearDeadline = () => window.clearTimeout(deadlineTimer);
+  const releaseAtDeadline = () => resolveDeadline();
+  loader.addEventListener("loaderdeadline", releaseAtDeadline, { once: true });
+  signal.addEventListener("abort", clearDeadline, { once: true });
+  if (loader.dataset.deadline === "true") resolveDeadline();
 
-  void ready.then(() => {
-    if (current !== token || signal.aborted || !isVisible(loader)) return;
+  void Promise.race([ready.then(() => false), deadline]).then((byDeadline) => {
+    window.clearTimeout(deadlineTimer);
+    signal.removeEventListener("abort", clearDeadline);
+    loader.removeEventListener("loaderdeadline", releaseAtDeadline);
+    if (current !== token || !isVisible(loader)) return;
+    delete loader.dataset.retryable;
     reportStatus(loader, "ready", "Ready");
     loader.dispatchEvent(new Event("loaderready"));
     leaving = true;
@@ -206,7 +233,12 @@ export function hidePageLoaderWhenReady() {
       loader.classList.remove("is-leaving", "is-playing");
       leaving = false;
     }, LEAVE_MS);
+    // The hard ceiling cancels outstanding waits only after listeners have
+    // received the same release event as a normally ready page.
+    if (byDeadline) controller.abort();
   }).catch(() => {
+    signal.removeEventListener("abort", clearDeadline);
+    loader.removeEventListener("loaderdeadline", releaseAtDeadline);
     if (current !== token || signal.aborted || !isVisible(loader)) return;
     reportStatus(loader, "error", "The page could not load. Please try again.");
     loader.dispatchEvent(new Event("loadererror"));
@@ -222,7 +254,8 @@ async function pageReady(
   await renderFrames();
   if (signal.aborted) return;
   reportStatus(loader, "styles", "Preparing the page…");
-  await deferredStyles(signal);
+  // A missing or failed stylesheet should not keep the visitor behind the cover.
+  await deferredStyles(signal).catch(() => {});
   if (signal.aborted) return;
   const managed = document.getElementById("root")
     ?.querySelector("[data-page-src], [data-page-background-src]");
@@ -256,6 +289,12 @@ async function pageReady(
     }
     if (signal.aborted) return;
   }
+  // Home's first portrait frame mask is managed by the same serial queue. It
+  // is critical to the opening composition, while later scene art stays lazy.
+  if (opening?.querySelector('[data-page-background-src][data-page-critical="true"]') && imageQueue) {
+    await criticalArtworkReady(imageQueue.criticalReady, loader, signal);
+    if (signal.aborted) return;
+  }
   // Without its stylesheet the page is not presentable, so only the remaining
   // stages run under the deadline. Its abort settles every wait below.
   const budget = new AbortController();
@@ -266,7 +305,7 @@ async function pageReady(
     ? Math.max(0, Date.now() - Number(loader.dataset.waitStart)) : 0;
   const timer = window.setTimeout(
     expire,
-    opening ? Math.max(0, HOME_READY_DEADLINE_MS - elapsed) : READY_DEADLINE_MS,
+    opening ? Math.max(0, HOME_READY_DEADLINE_MS - HOME_COVER_FADE_MS - elapsed) : READY_DEADLINE_MS,
   );
   if (opening && loader.dataset.deadline === "true") expire();
   try {
@@ -323,23 +362,11 @@ async function readerPageReady(loader: HTMLElement, signal: AbortSignal) {
   }
 }
 
-async function criticalArtworkReady(task: Promise<void>, loader: HTMLElement, signal: AbortSignal) {
-  let rejectDeadline!: (error: Error) => void;
-  const deadline = new Promise<void>((_resolve, reject) => { rejectDeadline = reject; });
-  const fail = () => rejectDeadline(new Error("Opening artwork did not finish within two minutes"));
-  const elapsed = loader.dataset.waitStart
-    ? Math.max(0, Date.now() - Number(loader.dataset.waitStart)) : 0;
-  const timer = window.setTimeout(fail, Math.max(0, HOME_READY_DEADLINE_MS - elapsed));
-  loader.addEventListener("loaderdeadline", fail, { once: true });
-  if (loader.dataset.deadline === "true") fail();
+async function criticalArtworkReady(task: Promise<void>, _loader: HTMLElement, signal: AbortSignal) {
   try {
-    await untilAborted(Promise.race([task, deadline]), signal);
-  } catch (error) {
-    if (!signal.aborted) loader.dataset.retryable = "images";
-    throw error;
-  } finally {
-    window.clearTimeout(timer);
-    loader.removeEventListener("loaderdeadline", fail);
+    await untilAborted(task, signal);
+  } catch {
+    // Keep the rest of the route available when an artwork probe fails.
   }
 }
 
@@ -357,7 +384,8 @@ function requiredHomeArtwork(image: HTMLImageElement | SVGImageElement, signal: 
       if (error) reject(error);
       else resolve();
     };
-    const failed = () => finish(new Error("Opening artwork could not decode"));
+    // One failed opening image should not hold the entire page behind Loading.
+    const failed = () => finish();
     const cancelled = () => finish();
     const check = () => {
       if (finished || decoding) return;
@@ -486,8 +514,10 @@ const URL_PATTERN = /url\(["']?([^"')]+)["']?\)/g;
 
 function waitForSvgImage(image: SVGImageElement, signal: AbortSignal) {
   const source = svgSource(image);
-  if (signal.aborted || settledSvgSources.has(source)) return Promise.resolve();
-  const existing = nativeSvgTasks.get(source);
+  if (signal.aborted || settledSvgElements.get(image) === source) return Promise.resolve();
+  const tasks = nativeSvgTasks.get(image) ?? new Map<string, Promise<void>>();
+  nativeSvgTasks.set(image, tasks);
+  const existing = tasks.get(source);
   if (existing) return existing;
   let cancelled = false;
   const pending = new Promise<void>((resolve) => {
@@ -510,9 +540,9 @@ function waitForSvgImage(image: SVGImageElement, signal: AbortSignal) {
         cancelled = true;
         svg.remove();
         nativeSvgPreloads.delete(svg);
-        if (nativeSvgTasks.get(source) === pending) nativeSvgTasks.delete(source);
+        if (tasks.get(source) === pending) tasks.delete(source);
       } else {
-        settledSvgSources.add(source);
+        settledSvgElements.set(image, source);
       }
       resolve();
     };
@@ -527,7 +557,7 @@ function waitForSvgImage(image: SVGImageElement, signal: AbortSignal) {
     art.setAttribute("href", image.href.baseVal);
     if (signal.aborted) done();
   });
-  if (!cancelled) nativeSvgTasks.set(source, pending);
+  if (!cancelled) tasks.set(source, pending);
   return pending;
 }
 
@@ -623,6 +653,10 @@ async function pageImagesAndAnimations(
     pending.push(task.then(() => {
       ++complete;
       if (scanned && !signal.aborted) onProgress(complete, pending.length);
+    }, () => {
+      // A missing image is a settled slot. Keep scanning and loading the rest.
+      ++complete;
+      if (scanned && !signal.aborted) onProgress(complete, pending.length);
     }));
   };
   const preload = (
@@ -635,16 +669,13 @@ async function pageImagesAndAnimations(
     // A new SVG clone can start its own request even when an earlier node
     // used this URL. It needs its own load/decode probe, not the old URL gate.
     if (element
-      ? preparedElements.get(element) === key && settledSvgSources.has(key)
+      ? preparedElements.get(element) === key && settledSvgElements.get(element) === key
       : seen.has(key)) return;
     seen.add(key);
-    const image = new Image();
-    if (crossOrigin !== null) image.crossOrigin = crossOrigin;
-    image.src = url;
-    track(Promise.all([
-      waitForImage(image, signal),
-      ...(element ? [waitForSvgImage(element, signal)] : []),
-    ]).then(() => {
+    const task = loadPageImageSerial(url, { signal, crossOrigin }).then(() =>
+      element ? waitForSvgImage(element, signal) : undefined,
+    );
+    track(task.then(() => {
       if (element) preparedElements.set(element, key);
     }));
   };

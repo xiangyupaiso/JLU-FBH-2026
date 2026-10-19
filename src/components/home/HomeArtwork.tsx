@@ -6,6 +6,6 @@ export function HomeImage({ src, ...props }: ComponentProps<"img">) {
   return <img {...props} data-home-src={src} fetchPriority="low" />;
 }
 
-export function HomeSvgImage({ href, ...props }: ComponentProps<"image">) {
-  return <image {...props} data-home-src={href} />;
+export function HomeSvgImage({ href, xlinkHref, ...props }: ComponentProps<"image">) {
+  return <image {...props} data-home-src={href ?? xlinkHref} />;
 }
