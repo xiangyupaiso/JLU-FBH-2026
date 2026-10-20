@@ -10,6 +10,7 @@ export function installRingStudy(root: HTMLElement) {
   if (!ink) return () => {};
   const progressBar = root.querySelector<HTMLElement>("[data-ring-progress]")!;
   const state = root.querySelector<HTMLElement>("[data-ring-state]")!;
+  const slider = root.querySelector<HTMLInputElement>("[data-ring-slider]");
   const reducedMotion = matchMedia("(prefers-reduced-motion: reduce)");
   const image = new Image();
   let disposed = false;
@@ -17,6 +18,7 @@ export function installRingStudy(root: HTMLElement) {
   let manual: number | null = null;
   let progress = 0;
   let ready = false;
+  let failed = false;
   let particles: {
     x: number;
     y: number;
@@ -36,9 +38,14 @@ export function installRingStudy(root: HTMLElement) {
     const bottom = Math.min(innerHeight, reader?.bottom ?? innerHeight);
     if (box.bottom < top || box.top > bottom) return;
     // Read visual coordinates so the article's own scroll projection also works.
+    const scene = canvas.getBoundingClientRect();
+    // Begin once the whole comparison is visible; retain explicit scrubbing
+    // when a short viewport cannot hold both rows at the same time.
+    const travel = bottom - top - scene.height - 48;
     progress =
       manual ??
-      clamp((bottom - 80 - box.top) / Math.max(1, bottom - top - 160));
+      (travel > 80 ? clamp((bottom - 24 - scene.bottom) / travel) : 0);
+    if (slider) slider.value = progress.toFixed(3);
     const p = reducedMotion.matches ? 0.55 : smooth(progress);
     const dpr = Math.min(devicePixelRatio || 1, 2);
     const width = Math.max(1, canvas.clientWidth);
@@ -90,13 +97,17 @@ export function installRingStudy(root: HTMLElement) {
       ink!.drawImage(image, x - 80, 216, 160, 160);
     }
     progressBar.style.transform = `scaleX(${progress})`;
-    const phase = reducedMotion.matches
-      ? "Static comparison · reduced motion"
-      : progress < 0.12
-        ? "One ring · two approaches"
-        : progress > 0.88
-          ? "Arrival · the same object"
-          : "In transit · follow the outline";
+    const phase = failed
+      ? "Artwork unavailable · see the preserved frames below"
+      : !ready
+        ? "Loading ring artwork…"
+        : reducedMotion.matches
+          ? "Static comparison · reduced motion"
+          : progress < 0.12
+            ? "One ring · two approaches"
+            : progress > 0.88
+              ? "Arrival · the same object"
+              : "In transit · follow the outline";
     if (state.textContent !== phase) state.textContent = phase;
     root.dataset.progress = progress.toFixed(3);
   }
@@ -111,6 +122,7 @@ export function installRingStudy(root: HTMLElement) {
     schedule();
   }
   function onKey(event: KeyboardEvent) {
+    if (event.target instanceof HTMLInputElement) return;
     if (
       ["ArrowDown", "ArrowUp", "PageDown", "PageUp", " ", "Tab"].includes(
         event.key,
@@ -129,6 +141,10 @@ export function installRingStudy(root: HTMLElement) {
               (manual ?? progress) +
                 (event.key === "ArrowRight" ? 0.08 : -0.08),
             );
+    schedule();
+  }
+  function scrub() {
+    manual = Number(slider?.value ?? 0);
     schedule();
   }
   image.onload = () => {
@@ -159,7 +175,8 @@ export function installRingStudy(root: HTMLElement) {
     schedule();
   };
   image.onerror = () => {
-    state.textContent = "Artwork unavailable · see the preserved frames below";
+    failed = true;
+    schedule();
   };
   image.src = ringUrl;
   window.addEventListener("scroll", onScroll, { capture: true, passive: true });
@@ -169,6 +186,7 @@ export function installRingStudy(root: HTMLElement) {
   window.addEventListener("resize", schedule);
   reducedMotion.addEventListener("change", schedule);
   root.addEventListener("keydown", onKey);
+  slider?.addEventListener("input", scrub);
   const observer = new ResizeObserver(schedule);
   observer.observe(canvas);
   schedule();
@@ -184,5 +202,6 @@ export function installRingStudy(root: HTMLElement) {
     window.removeEventListener("resize", schedule);
     reducedMotion.removeEventListener("change", schedule);
     root.removeEventListener("keydown", onKey);
+    slider?.removeEventListener("input", scrub);
   };
 }

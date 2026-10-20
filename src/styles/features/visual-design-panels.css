@@ -94,7 +94,11 @@
   margin: 0;
   padding: clamp(1rem, 3vw, 1.75rem);
   background:
-    radial-gradient(ellipse at 0 0, color-mix(in srgb, var(--route-main, #b7d782) 12%, transparent), transparent 60%),
+    radial-gradient(
+      ellipse at 0 0,
+      color-mix(in srgb, var(--route-main, #b7d782) 12%, transparent),
+      transparent 60%
+    ),
     var(--palette-paper);
   border: 1px solid var(--palette-rule);
   border-radius: 22px;
@@ -169,8 +173,11 @@
   flex-direction: column;
   min-width: 0;
   padding: 1rem;
-  background:
-    linear-gradient(145deg, color-mix(in srgb, var(--palette-pigment) 10%, white), var(--palette-paper) 65%);
+  background: linear-gradient(
+    145deg,
+    color-mix(in srgb, var(--palette-pigment) 10%, white),
+    var(--palette-paper) 65%
+  );
   border: 1px solid var(--palette-rule);
   border-radius: 16px;
   box-shadow: 0 3px 12px color-mix(in srgb, var(--palette-ink) 3%, transparent);
@@ -298,16 +305,29 @@
   --architecture-paper: #fffdf7;
   --architecture-ink: var(--route-heading-ink, #243d2c);
   --architecture-wash: var(--route-main, #b7d782);
-  --architecture-rule: color-mix(in srgb, var(--architecture-ink) 15%, transparent);
+  --architecture-rule: color-mix(
+    in srgb,
+    var(--architecture-ink) 15%,
+    transparent
+  );
   margin: 0;
   padding: 1.75rem 1.5rem;
   background:
-    radial-gradient(ellipse at 0 0, color-mix(in srgb, var(--architecture-wash) 19%, transparent), transparent 56%),
-    radial-gradient(ellipse at 100% 100%, rgb(228 200 162 / 12%), transparent 48%),
+    radial-gradient(
+      ellipse at 0 0,
+      color-mix(in srgb, var(--architecture-wash) 19%, transparent),
+      transparent 56%
+    ),
+    radial-gradient(
+      ellipse at 100% 100%,
+      rgb(228 200 162 / 12%),
+      transparent 48%
+    ),
     var(--architecture-paper);
   border: 1px solid var(--architecture-rule);
   border-radius: 12px;
-  box-shadow: 0 4px 18px color-mix(in srgb, var(--architecture-ink) 4%, transparent);
+  box-shadow: 0 4px 18px
+    color-mix(in srgb, var(--architecture-ink) 4%, transparent);
 }
 
 .architecture-flowchart__header {
@@ -353,7 +373,11 @@
   justify-content: center;
   border-radius: 44% 56% 48% 52% / 53% 44% 56% 47%;
   background:
-    radial-gradient(ellipse at 35% 30%, color-mix(in srgb, var(--architecture-wash) 40%, transparent), transparent 78%),
+    radial-gradient(
+      ellipse at 35% 30%,
+      color-mix(in srgb, var(--architecture-wash) 40%, transparent),
+      transparent 78%
+    ),
     color-mix(in srgb, var(--architecture-wash) 13%, var(--architecture-paper));
   color: var(--architecture-ink);
   font-family: var(--font-editorial);
@@ -365,14 +389,21 @@
 .architecture-flowchart__rail-line {
   flex: 1;
   width: 1px;
-  background: linear-gradient(var(--architecture-rule), color-mix(in srgb, var(--architecture-ink) 5%, transparent));
+  background: linear-gradient(
+    var(--architecture-rule),
+    color-mix(in srgb, var(--architecture-ink) 5%, transparent)
+  );
   margin-top: 8px;
 }
 
 .architecture-flowchart__card {
   padding: 1.15rem 1.35rem;
   background:
-    radial-gradient(ellipse at 0 0, color-mix(in srgb, var(--architecture-wash) 12%, transparent), transparent 72%),
+    radial-gradient(
+      ellipse at 0 0,
+      color-mix(in srgb, var(--architecture-wash) 12%, transparent),
+      transparent 72%
+    ),
     var(--architecture-paper);
   border: 1px solid var(--architecture-rule);
   border-radius: 9px;
@@ -456,7 +487,8 @@
     grid-column: 3;
   }
 
-  .architecture-flowchart__step:nth-child(even) .architecture-flowchart__card::before {
+  .architecture-flowchart__step:nth-child(even)
+    .architecture-flowchart__card::before {
     right: auto;
     left: calc(-1rem - 8px);
   }
@@ -485,8 +517,6 @@
 /* -------------------------------------------------------------------------- */
 
 .wiki-cursor-showcase {
-  --cursor-ink: var(--route-heading-ink, #243d2c);
-  container: cursor-showcase / inline-size;
   margin: 1.75rem 0 !important;
   padding: 0 !important;
   background: transparent !important;
@@ -495,162 +525,112 @@
 
 .wiki-cursor-showcase__grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: clamp(0.75rem, 1.5vw, 1.25rem);
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.15rem;
   margin-bottom: 0.85rem;
 }
 
 .wiki-cursor-showcase__card {
-  --cursor-tint: #eef3e4;
-  position: relative;
   display: flex;
   flex-direction: column;
-  min-width: 0;
-  overflow: hidden;
-  text-align: left;
-  background: #fffdf8;
-  border: 1px solid color-mix(in srgb, var(--cursor-ink) 13%, transparent);
-  border-radius: 22px;
-  box-shadow: 0 6px 22px rgb(36 61 44 / 3%);
-  transition: box-shadow 0.25s ease, border-color 0.25s ease;
+  align-items: center;
+  text-align: center;
+  padding: 1.25rem 1rem;
+  background: color-mix(in srgb, #ffffff 82%, var(--route-base, #f3f7e0));
+  border: 1px solid
+    color-mix(in srgb, var(--route-heading-ink, #243d2c) 16%, transparent);
+  border-radius: 12px;
+  box-shadow: 0 3px 12px rgba(36, 61, 44, 0.04);
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
 }
 
-.wiki-cursor-showcase__card--active {
-  --cursor-tint: #faeae8;
-}
-
-.wiki-cursor-showcase__card--spark {
-  --cursor-tint: #f8efd9;
+.wiki-cursor-showcase__card:hover {
+  transform: translateY(-3px);
+  border-color: color-mix(in srgb, var(--route-main, #b7d782) 80%, transparent);
+  box-shadow: 0 8px 20px rgba(36, 61, 44, 0.08);
 }
 
 .wiki-cursor-showcase__preview {
-  position: relative;
-  display: grid;
-  width: 100%;
-  aspect-ratio: 1.08;
+  width: 120px;
+  height: 120px;
+  display: flex;
   align-items: center;
-  padding: 2rem 0 2.5rem;
-  background:
-    radial-gradient(ellipse at 50% 44%, var(--cursor-tint) 0%, transparent 72%),
-    linear-gradient(180deg, color-mix(in srgb, var(--cursor-tint) 55%, #fffdf8), #fffdf8);
+  justify-content: center;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    color-mix(in srgb, var(--route-soft, #dfee91) 60%, #fff) 0%,
+    rgba(255, 255, 255, 0.5) 70%
+  );
+  border: 1px solid
+    color-mix(in srgb, var(--route-main, #b7d782) 35%, transparent);
+  margin-bottom: 0.9rem;
+  transition: transform 0.3s ease;
 }
 
-.wiki-cursor-showcase__art {
-  position: relative;
-  z-index: 1;
-  width: 90%;
-  aspect-ratio: 1;
-  margin: 0 auto;
+.wiki-cursor-showcase__card:hover .wiki-cursor-showcase__preview {
+  transform: scale(1.05);
 }
 
-.wiki-page--visual-design .wiki-cursor-showcase__sprite {
-  display: block;
-  width: 100%;
-  height: auto;
-  aspect-ratio: 1;
+.wiki-cursor-showcase__sprite {
+  width: 86px;
+  height: 86px;
   object-fit: contain;
-  border-radius: 0;
-  mix-blend-mode: multiply;
-}
-
-.wiki-cursor-showcase__burst {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  color: var(--route-subheading-ink, #84382b);
-  pointer-events: none;
-}
-
-.wiki-cursor-showcase__ripple {
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 0.8;
-  opacity: 0.18;
-}
-
-.wiki-cursor-showcase__spark {
-  fill: currentColor;
-  opacity: 0.7;
-}
-
-.wiki-cursor-showcase__spark:nth-child(3n) {
-  fill: var(--cursor-ink);
-}
-
-.wiki-cursor-showcase__detail {
-  position: absolute;
-  bottom: 1.1rem;
-  inset-inline: 0.5rem;
-  text-align: center;
-  color: color-mix(in srgb, var(--cursor-ink) 76%, #fffdf8);
-  font: 500 0.7rem/1.4 var(--font-sans, system-ui);
-  letter-spacing: 0.025em;
+  filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.08));
 }
 
 .wiki-cursor-showcase__meta {
   display: flex;
   flex-direction: column;
-  flex: 1;
-  padding: 1.15rem clamp(1rem, 2vw, 1.5rem) 1.4rem;
-  border-top: 1px solid color-mix(in srgb, var(--cursor-ink) 10%, transparent);
+  align-items: center;
 }
 
 .wiki-cursor-showcase__badge {
-  position: absolute;
-  top: 1rem;
-  left: 1.1rem;
-  z-index: 2;
-  color: var(--cursor-ink);
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--route-main, #b7d782) 28%, transparent);
+  color: var(--route-heading-ink, #243d2c);
   font-family: var(--font-sans, system-ui);
-  font-size: 0.65rem;
+  font-size: 0.72rem;
   font-weight: 700;
-  letter-spacing: 0.09em;
+  letter-spacing: 0.03em;
   text-transform: uppercase;
+  margin-bottom: 0.45rem;
 }
 
 .wiki-cursor-showcase__card-title {
-  font-family: var(--font-editorial, var(--font-sans, system-ui));
-  font-size: clamp(1.05rem, 1.45vw, 1.3rem);
-  line-height: 1.22;
+  font-size: 0.95rem;
   font-weight: 700;
   color: var(--route-heading-ink, #243d2c);
-  margin-bottom: 0.65rem;
+  margin-bottom: 0.35rem;
 }
 
 .wiki-cursor-showcase__desc {
-  font-size: 0.82rem;
-  line-height: 1.55;
+  font-size: 0.8rem;
+  line-height: 1.45;
   color: color-mix(in srgb, var(--route-ink, #243d2c) 78%, transparent);
   margin: 0;
 }
 
-@container cursor-showcase (max-width: 640px) {
+@media (max-width: 768px) {
   .wiki-cursor-showcase__grid {
     grid-template-columns: 1fr;
-    gap: 1rem;
+    gap: 0.85rem;
+  }
+  .wiki-cursor-showcase__card {
+    padding: 1rem;
   }
   .wiki-cursor-showcase__preview {
-    aspect-ratio: auto;
-    height: 290px;
+    width: 100px;
+    height: 100px;
+    margin-bottom: 0.6rem;
   }
-  .wiki-cursor-showcase__art {
-    width: 240px;
-    max-width: 90%;
-  }
-}
-
-@media (hover: hover) {
-  .wiki-cursor-showcase__card:hover {
-    border-color: color-mix(in srgb, var(--cursor-ink) 30%, transparent);
-    box-shadow: 0 10px 28px rgb(36 61 44 / 7%);
-  }
-
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .wiki-cursor-showcase__card {
-    transition: none;
+  .wiki-cursor-showcase__sprite {
+    width: 72px;
+    height: 72px;
   }
 }
-

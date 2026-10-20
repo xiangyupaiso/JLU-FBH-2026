@@ -2208,8 +2208,8 @@
                             <h2>Five perspectives changed one design.</h2>
                         </div>
                         <p>
-                            Clinical need, mechanism, delivery, ethics, and access did not merely
-                            endorse CirCure. Each imposed a constraint that can be traced to a decision.
+                            Clinical need, mechanism, delivery, ethics, and access each raised
+                            a practical constraint. These cards pair the constraint with a design decision.
                         </p>
                     </div>
 
@@ -2249,7 +2249,7 @@
                                 </button>
                             </li>
                             <li class="phase-step">
-                                <button type="button" data-phase-target="0.92">
+                                <button type="button" data-phase-target="1">
                                     <span class="phase-dot" aria-hidden="true"></span>
                                     <strong>Return</strong>
                                     <span>review remaining limits</span>
@@ -2353,7 +2353,7 @@
                                     </p>
                                     <div class="impact-change">
                                         <span>PROJECT CHANGE</span>
-                                        <p>Stopped developing that mechanism instead of hiding it as future work.</p>
+                                        <p>Archived that mechanism and recorded the reason for the change.</p>
                                     </div>
                                     <div class="impact-footer">
                                         <a class="evidence-link" href="center.html#record-p02">Pivot memo P02</a>
@@ -2517,7 +2517,7 @@
                                 </div>
                                 <div class="impact-copy">
                                     <p class="impact-stat">5</p>
-                                    <h3 class="impact-title">Implementation moved from ideal user to real workflow.</h3>
+                                    <h3 class="impact-title">Implementation considered the everyday workflow.</h3>
                                     <p class="impact-quote">
                                         “If it adds work to an overloaded clinic, it will not be used.”
                                     </p>
@@ -2698,9 +2698,11 @@
                     0,
                     impactMetrics.scrollable,
                 );
+                const nativeTrack = window.innerWidth <= 520 || matchMedia("(prefers-reduced-motion: reduce)").matches;
                 const progress = clamp(
-                    (scrolled - impactMetrics.hold) /
-                        Math.max(1, impactMetrics.scrollable - impactMetrics.hold),
+                    nativeTrack && impactViewport
+                        ? impactViewport.scrollLeft / Math.max(1, impactViewport.scrollWidth - impactViewport.clientWidth)
+                        : (scrolled - impactMetrics.hold) / Math.max(1, impactMetrics.scrollable - impactMetrics.hold),
                     0,
                     1,
                 );
@@ -2721,6 +2723,9 @@
                         phaseSteps.forEach((step, index) => {
                             step.classList.toggle("is-active", index === activePhaseIndex);
                             step.classList.toggle("is-past", index < activePhaseIndex);
+                            const button = step.querySelector("button");
+                            if (index === activePhaseIndex) button?.setAttribute("aria-current", "step");
+                            else button?.removeAttribute("aria-current");
                         });
                     }
                 }
@@ -2750,10 +2755,6 @@
             function updateImpactGeometry() {
                 if (!impactSection || !impactTrack) return;
 
-                const horizontalDistance = Math.max(
-                    0,
-                    impactTrack.scrollWidth - window.innerWidth + 48,
-                );
                 if (impactSticky && impactViewport && impactHeader && phaseTimeline) {
                     const stickyStyle = getComputedStyle(impactSticky);
                     const viewportStyle = getComputedStyle(impactViewport);
@@ -2778,6 +2779,11 @@
                         `${clamp(Math.round(cardHeight * 0.74), 330, 410)}px`,
                     );
                 }
+                // Measure after the responsive card widths have been applied.
+                const horizontalDistance = Math.max(
+                    0,
+                    impactTrack.scrollWidth - window.innerWidth + 48,
+                );
                 const holdDistance = getImpactHoldDistance();
                 impactSection.style.setProperty(
                     "--impact-scroll-height",
@@ -2803,6 +2809,14 @@
                     if (!impactSection) return;
 
                     const target = clamp(Number(button.dataset.phaseTarget), 0, 1);
+                    const reducedMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
+                    if (impactViewport && (window.innerWidth <= 520 || reducedMotion)) {
+                        impactViewport.scrollTo({
+                            left: target * Math.max(0, impactViewport.scrollWidth - impactViewport.clientWidth),
+                            behavior: reducedMotion ? "instant" : "smooth",
+                        });
+                        return;
+                    }
                     const scrollable = Math.max(
                         1,
                         impactSection.offsetHeight - window.innerHeight,
@@ -2811,12 +2825,13 @@
 
                     window.scrollTo({
                         top: impactSection.offsetTop + holdDistance + (scrollable - holdDistance) * target,
-                        behavior: "smooth",
+                        behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth",
                     });
                 });
             });
 
             window.addEventListener("scroll", updateImpactScroll, { passive: true });
+            impactViewport?.addEventListener("scroll", updateImpactScroll, { passive: true });
             window.addEventListener("resize", updateImpactGeometry);
             window.addEventListener("load", updateImpactGeometry);
             updateImpactGeometry();

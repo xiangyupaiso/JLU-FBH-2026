@@ -8,8 +8,7 @@ import {
 } from "react";
 import { Link, useLocation } from "react-router-dom";
 import gsap from "gsap";
-const teamCrestUrl =
-  "https://static.igem.wiki/teams/6056/wiki/files/pages/shared/jlu-fbh-crest.avif";
+import teamCrestUrl from "../../../../../assets/jlu-fbh-crest.png";
 import Pages from "../../../../../pages";
 import { PageSearch } from "../../../../PageSearch";
 import { HOME_INTRO_REPLAY_EVENT } from "../../../../../utils/homeIntro";
@@ -798,7 +797,12 @@ export function Navbar() {
                         onClick={closeAll}
                       >
                         <span className="nav-card-thumb" aria-hidden="true">
-                          <QueuedImage src={c.icon} alt="" loading="lazy" decoding="async" />
+                          <QueuedImage
+                            src={c.icon}
+                            alt=""
+                            loading="lazy"
+                            decoding="async"
+                          />
                         </span>
                         <span className="nav-card-info">
                           <strong>{c.name}</strong>

@@ -18,8 +18,7 @@ export function installVisualDesignFigures() {
           )
         )
           return;
-        caption.dataset.designFigureLabel =
-          `FIG. ${String(++index).padStart(2, "0")}`;
+        caption.dataset.designFigureLabel = `FIG. ${String(++index).padStart(2, "0")}`;
         numberedCaptions.add(caption);
       });
     for (const caption of numberedCaptions) {
@@ -61,7 +60,9 @@ export function installVisualDesignFigures() {
       .closest(".design-panel")
       ?.querySelector(".design-panel__heading");
     return {
-      src: original.closest("a")?.href ?? (original.currentSrc || original.src),
+      src:
+        original.closest("a")?.href ??
+        (original.currentSrc || original.src || original.dataset.pageSrc || ""),
       alt: original.alt,
       title: heading
         ? Array.from(heading.children, (part) => part.textContent).join(" · ")
@@ -155,7 +156,10 @@ export function installVisualDesignFigures() {
   function prepareImage(original: HTMLImageElement) {
     if (
       enhancedImages.has(original) ||
-      original.closest('[aria-hidden="true"]')
+      original.closest(
+        '[aria-hidden="true"], .footer-reveal-study__scene, .design-explanation__assembly',
+      ) ||
+      !original.alt.trim()
     )
       return;
     const attributes: Record<string, string> = { "data-figure-zoom": "" };
@@ -196,6 +200,7 @@ export function installVisualDesignFigures() {
   const imageObserver = new MutationObserver((records) => {
     updateFigureNumbers();
     prepareRingStudies();
+    prepareStudyFrames();
     for (const record of records) {
       for (const node of record.addedNodes) {
         if (!(node instanceof Element)) continue;
@@ -251,23 +256,115 @@ export function installVisualDesignFigures() {
     const target = event.target;
     if (
       !(target instanceof HTMLDetailsElement) ||
-      !target.matches(".design-live-study") ||
-      !target.open
+      !target.matches(".design-live-study")
     )
       return;
-    const frame = target.querySelector<HTMLIFrameElement>("iframe[data-src]");
-    if (frame) {
+    const frame = target.querySelector<HTMLIFrameElement>("iframe");
+    if (frame?.dataset.src && target.open) {
       frame.src = frame.dataset.src!;
       frame.removeAttribute("data-src");
     }
+    if (frame) reportStudyVisibility(frame);
   };
   document.addEventListener("toggle", loadStudy, true);
+
+  // A child's viewport cannot tell whether its iframe has left the reader.
+  const visibleStudies = new WeakMap<HTMLIFrameElement, boolean>();
+  function reportStudyVisibility(frame: HTMLIFrameElement, force = false) {
+    const box = frame.getBoundingClientRect();
+    const reader = frame
+      .closest(".route-frame__scroll")
+      ?.getBoundingClientRect();
+    const visibleHeight = Math.max(
+      0,
+      Math.min(box.bottom, reader?.bottom ?? innerHeight, innerHeight) -
+        Math.max(box.top, reader?.top ?? 0, 0),
+    );
+    const visible =
+      !frame.closest("details:not([open])") &&
+      box.width > 0 &&
+      visibleHeight >= Math.min(100, box.height * 0.15);
+    if (!force && visibleStudies.get(frame) === visible) return;
+    visibleStudies.set(frame, visible);
+    frame.contentWindow?.postMessage(
+      {
+        type: "visual-design-study-visibility",
+        visible,
+      },
+      location.origin,
+    );
+  }
+  const studyObserver = new IntersectionObserver(
+    (entries) => {
+      for (const entry of entries) {
+        const frame = entry.target as HTMLIFrameElement;
+        reportStudyVisibility(frame);
+      }
+    },
+    { threshold: [0, 0.15] },
+  );
+  const studyFrames = new Map<HTMLIFrameElement, () => void>();
+  function prepareStudyFrames() {
+    for (const [frame, onLoad] of studyFrames) {
+      if (!frame.isConnected) {
+        studyObserver.unobserve(frame);
+        frame.removeEventListener("load", onLoad);
+        studyFrames.delete(frame);
+      }
+    }
+    document
+      .querySelectorAll<HTMLIFrameElement>(".design-live-study iframe")
+      .forEach((frame) => {
+        if (studyFrames.has(frame)) return;
+        const onLoad = () => reportStudyVisibility(frame, true);
+        studyFrames.set(frame, onLoad);
+        studyObserver.observe(frame);
+        frame.addEventListener("load", onLoad);
+      });
+  }
+  prepareStudyFrames();
+  // Projected desktop scrolling needs the actual clipped reading coordinates.
+  let studyVisibilityFrame = 0;
+  const scheduleStudyVisibility = () => {
+    if (studyVisibilityFrame) return;
+    studyVisibilityFrame = requestAnimationFrame(() => {
+      studyVisibilityFrame = 0;
+      studyFrames.forEach((_, frame) => reportStudyVisibility(frame));
+    });
+  };
+  window.addEventListener("scroll", scheduleStudyVisibility, true);
+  window.addEventListener("resize", scheduleStudyVisibility);
+  const resizeStudy = (event: MessageEvent) => {
+    if (
+      event.origin !== location.origin ||
+      event.data?.type !== "visual-design-study-size"
+    )
+      return;
+    const frame = Array.from(studyFrames.keys()).find(
+      (item) => item.contentWindow === event.source,
+    );
+    const height = event.data.height;
+    if (!frame || typeof height !== "number" || !Number.isFinite(height))
+      return;
+    frame.style.height = `${Math.max(300, Math.min(1400, Math.ceil(height) + 2))}px`;
+    frame.style.minHeight = "0";
+  };
+  window.addEventListener("message", resizeStudy);
 
   let disposed = false;
   function disposeViewer() {
     if (disposed) return;
     disposed = true;
     imageObserver.disconnect();
+    studyObserver.disconnect();
+    cancelAnimationFrame(studyVisibilityFrame);
+    window.removeEventListener("scroll", scheduleStudyVisibility, true);
+    window.removeEventListener("resize", scheduleStudyVisibility);
+    studyFrames.forEach((onLoad, frame) =>
+      frame.removeEventListener("load", onLoad),
+    );
+    studyFrames.clear();
+    window.removeEventListener("message", resizeStudy);
     numberedCaptions.forEach((caption) => {
       delete caption.dataset.designFigureLabel;
     });

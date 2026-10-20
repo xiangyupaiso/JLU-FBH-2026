@@ -218,7 +218,7 @@ controls.forEach((link) =>
       top:
         link.hash === "#person"
           ? 0
-          : Math.max(0, metrics.expansion.top - innerHeight * 0.62),
+          : Math.max(0, metrics.expansion.top + innerHeight * 0.12),
       behavior: reduced.matches ? "instant" : "smooth",
     });
   }),

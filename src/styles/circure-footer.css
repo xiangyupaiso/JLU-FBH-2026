@@ -403,6 +403,11 @@
   object-fit: contain;
 }
 
+/* Compensate for the extra whitespace in the supplied animal-center artwork. */
+.circure-footer__supporter[data-organisation="Laboratory Animal Center"] img {
+  transform: scale(1.2);
+}
+
 @keyframes footer-sponsor-loop {
   from {
     transform: translate3d(0, 0, 0);

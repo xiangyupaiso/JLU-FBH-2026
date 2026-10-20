@@ -33,7 +33,11 @@ export default function FooterPhotoScene({
 
   useEffect(() => {
     const image = imageRef.current;
-    if (image?.getAttribute("src") && image.complete && image.naturalWidth === 0)
+    if (
+      image?.getAttribute("src") &&
+      image.complete &&
+      image.naturalWidth === 0
+    )
       setPhotoFailed(true);
   }, []);
 
@@ -129,8 +133,7 @@ export default function FooterPhotoScene({
                 </div>
                 <div className="keepsake-letter__greeting">
                   <h3 ref={noteTitleRef} id={noteTitleId} tabIndex={-1}>
-                    <span>For more</span>
-                    <em>ordinary days.</em>
+                    <span>For more</span> <em>ordinary days.</em>
                   </h3>
                 </div>
               </div>

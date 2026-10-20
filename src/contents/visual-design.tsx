@@ -27,7 +27,10 @@ function collectNarrativeFeatures(blocks: WikiContentBlock[]): string[] {
 const narrativeFeatures = Object.fromEntries(
   visualDesignNarrativeSections
     .flatMap((section) => collectNarrativeFeatures(section.blocks ?? []))
-    .map((name) => [name, <VisualDesignNarrativeFeature key={name} name={name} />]),
+    .map((name) => [
+      name,
+      <VisualDesignNarrativeFeature key={name} name={name} />,
+    ]),
 );
 
 export function VisualDesign() {
@@ -40,6 +43,7 @@ export function VisualDesign() {
       theme="project"
       pageClassName="wiki-page--project wiki-page--description wiki-page--visual-design"
       hideHeroCopy
+      outlineDepth={2}
       features={{ ...visualDesignFeatures(), ...narrativeFeatures }}
       inlineRenderer={renderVisualDesignText}
     />

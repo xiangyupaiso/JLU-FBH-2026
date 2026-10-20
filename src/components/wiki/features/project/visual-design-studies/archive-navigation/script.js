@@ -148,8 +148,17 @@ navShell?.addEventListener("pointerenter", () =>
   window.clearTimeout(navCloseTimer),
 );
 navShell?.addEventListener("pointerleave", () => queueDropdownClose());
+// The illustrated tray sits outside the bar; entering it continues the same task.
+dropdown?.addEventListener("pointerenter", () => {
+  clearTimeout(navOpenTimer);
+  clearTimeout(navCloseTimer);
+});
+dropdown?.addEventListener("pointerleave", () => queueDropdownClose());
 navShell?.addEventListener("focusout", (event) => {
-  if (!navShell.contains(event.relatedTarget)) queueDropdownClose(80);
+  if (!header.contains(event.relatedTarget)) queueDropdownClose(80);
+});
+dropdown?.addEventListener("focusout", (event) => {
+  if (!header.contains(event.relatedTarget)) queueDropdownClose(80);
 });
 dropdown
   ?.querySelectorAll("a")

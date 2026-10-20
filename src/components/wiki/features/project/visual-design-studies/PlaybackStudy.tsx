@@ -118,6 +118,20 @@ export function HomePlayback({ introPlaying }: HomePlaybackProps) {
           setShowScenes(false);
       }}
     >
+      <div
+        className="controller-study__scene"
+        aria-live="polite"
+        aria-atomic="true"
+      >
+        <p>
+          Scene {String(chapterIndex + 1).padStart(2, "0")} / {chapters.length}
+        </p>
+        <h2>{currentChapter.title}</h2>
+        <p>
+          Local playback preview · choose a scene or play to follow the
+          sequence.
+        </p>
+      </div>
       {!introPlaying && artworkStatus !== "ready" && (
         <div className="home-playback-loading" role="status" aria-live="polite">
           <p>
