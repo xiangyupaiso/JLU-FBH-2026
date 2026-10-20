@@ -173,10 +173,10 @@
   font-size: 13px;
 }
 
-/* The shared structural chart hosts two manuscript figures (FIG. 10 / FIG. 11)
-   and consumes exactly one counter slot so later figures shift down by one. */
+/* The shared structural chart hosts two manuscript figures (FIG. 11 / FIG. 12)
+   and consumes both counter slots to preserve the manuscript's later labels. */
 .wiki-page[data-wiki-route="/results"] .epitope-validation-panel--manuscript {
-  counter-increment: wiki-figure 1;
+  counter-increment: wiki-figure 2;
   padding: 0;
   border: 0;
   box-shadow: none;

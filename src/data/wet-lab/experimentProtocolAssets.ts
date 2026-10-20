@@ -19,25 +19,25 @@ export const experimentProtocolAssets: Record<
     fileName: "2-1-workflow.webp",
     width: 3200,
     height: 2563,
-    sourceArchive: "2.1DC细胞制备与circRNA递送(1).zip",
+    sourceArchive: "2.1DC细胞制备与circRNA递送 (2)(1).zip",
   },
   "6": {
     fileName: "2-1-materials.webp",
     width: 2710,
     height: 3200,
-    sourceArchive: "2.1DC细胞制备与circRNA递送(1).zip",
+    sourceArchive: "2.1DC细胞制备与circRNA递送 (2)(1).zip",
   },
   "7": {
     fileName: "2-2-workflow.webp",
     width: 3200,
     height: 1674,
-    sourceArchive: "2.2T细胞分离与DC–T共培养(1).zip",
+    sourceArchive: "2.2T细胞分离与DC–T共培养 (2)(1).zip",
   },
   "8": {
     fileName: "2-2-materials.webp",
     width: 3200,
     height: 2403,
-    sourceArchive: "2.2T细胞分离与DC–T共培养(1).zip",
+    sourceArchive: "2.2T细胞分离与DC–T共培养 (2)(1).zip",
   },
   "9": {
     fileName: "2-3-workflow.webp",
@@ -127,13 +127,13 @@ export const experimentProtocolAssets: Record<
     fileName: "4-4-workflow.webp",
     width: 3200,
     height: 2146,
-    sourceArchive: "4.4 二轮 ELISpot (1)(1).zip",
+    sourceArchive: "4.4 二轮 ELISpot (4)(1).zip",
   },
   "26": {
     fileName: "4-4-materials.webp",
     width: 3200,
     height: 1872,
-    sourceArchive: "4.4 二轮 ELISpot (1)(1).zip",
+    sourceArchive: "4.4 二轮 ELISpot (4)(1).zip",
   },
   "47": {
     fileName: "5-1-workflow.webp",
@@ -267,13 +267,27 @@ export const experimentProtocolAssets: Record<
   },
   "35": {
     fileName: "protocol-35.webp",
-    width: 2400,
-    height: 1170,
+    width: 3200,
+    height: 2310,
+    sourceArchive: "6.4 (2)(1).zip",
   },
   "36": {
     fileName: "protocol-36.webp",
-    width: 2400,
-    height: 1240,
+    width: 3200,
+    height: 2009,
+    sourceArchive: "6.4 (2)(1).zip",
+  },
+  "53": {
+    fileName: "7-5-workflow.webp",
+    width: 3200,
+    height: 3124,
+    sourceArchive: "7.5(1).zip",
+  },
+  "54": {
+    fileName: "7-5-materials.webp",
+    width: 2612,
+    height: 3200,
+    sourceArchive: "7.5(1).zip",
   },
 };
 

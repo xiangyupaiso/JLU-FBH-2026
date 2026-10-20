@@ -12,6 +12,6 @@ export const engineeringOutcome: EngineeringOutcomeData = {
   "For people facing TNBC, time holds treatment decisions, the uncertainty of recurrence and the hope of returning to ordinary life. This is the purpose that keeps **TIME** moving. Future HLA-matched, antigen-specific and product-exposure studies can bring stronger evidence into its next turn, carrying CirCure closer to clinical relevance. We hope that the time invested at the bench can one day help patients gain more time beyond it: time to recover, to be with those they love, and to continue lives shaped by more than illness."
 ],
   links: [
-  "[Further details: Results — experimental evidence](https://2026.igem.wiki/jlu-fbh/results#results-overview), [Model — Cell2Dose](https://2026.igem.wiki/jlu-fbh/model#model-cell2dose), [Software — CircuForge and TorusFold](https://2026.igem.wiki/jlu-fbh/software#software-overview), [Hardware — CirCore](https://2026.igem.wiki/jlu-fbh/hardware#hardware-overview) and [Integrated Human Practices — decision records](https://2026.igem.wiki/jlu-fbh/human-practices#hp-project)"
+  "[Further details: Results — Overview](https://2026.igem.wiki/jlu-fbh/results#results-overview), [Model — Cell2Dose](https://2026.igem.wiki/jlu-fbh/model#model-cell2dose), [Software — Overview](https://2026.igem.wiki/jlu-fbh/software#software-overview), [Hardware — Overview](https://2026.igem.wiki/jlu-fbh/hardware#hardware-overview) and [Integrated Human Practices — Project](https://2026.igem.wiki/jlu-fbh/human-practices#hp-project)"
 ]
 };

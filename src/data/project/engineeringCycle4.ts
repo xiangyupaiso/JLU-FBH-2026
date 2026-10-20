@@ -198,7 +198,7 @@ export const cycle4Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "[Further details: Experiments — TROP2-expressing 4T1 construction](https://2026.igem.wiki/jlu-fbh/experiments#sec-trop2-model)"
+          "[Further details: Experiments — Construction of the TROP2-positive target model](https://2026.igem.wiki/jlu-fbh/experiments#sec-trop2-model)"
 ]
         }
           ]
@@ -300,7 +300,7 @@ export const cycle4Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "[Further details: Integrated Human Practices — animal model, readout and ethics consultations](https://2026.igem.wiki/jlu-fbh/human-practices#hp-in-vivo-1)"
+          "[Further details: Integrated Human Practices — In Vivo — Overview](https://2026.igem.wiki/jlu-fbh/human-practices#hp-in-vivo-1)"
 ]
         }
           ]
@@ -415,7 +415,7 @@ export const cycle4Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "[Further details: Model — parameter calibration and vaccine-action simulation](https://2026.igem.wiki/jlu-fbh/model#model-heading-49)"
+          "[Further details: Model — Cell2Dose — Model architecture](https://2026.igem.wiki/jlu-fbh/model#model-heading-49)"
 ]
         }
           ]
@@ -489,7 +489,7 @@ export const cycle4Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "[Further details: Model — Cell2Dose dose evaluation](https://2026.igem.wiki/jlu-fbh/model#model-heading-75)"
+          "[Further details: Model — Cell2Dose — Module 6: Uncertainty Propagation and Dose Selection](https://2026.igem.wiki/jlu-fbh/model#model-heading-75)"
 ]
         }
           ]
@@ -586,7 +586,7 @@ export const cycle4Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "[Further details: Results — in vivo tumour control](https://2026.igem.wiki/jlu-fbh/results#results-6-2)"
+          "[Further details: Results — 9.2 In vivo tumour growth inhibition](https://2026.igem.wiki/jlu-fbh/results#results-6-2)"
 ]
         }
           ]
@@ -703,7 +703,7 @@ export const cycle4Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "[Further details: Results — systemic immune response](https://2026.igem.wiki/jlu-fbh/results#results-6-4)"
+          "[Further details: Results — 9.4 Splenic systemic immune response: the complete chain from presentation to effector molecules](https://2026.igem.wiki/jlu-fbh/results#results-6-4)"
 ]
         }
           ]
@@ -777,7 +777,7 @@ export const cycle4Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "[Further details: Results — tumour immunofluorescence](https://2026.igem.wiki/jlu-fbh/results#results-6-3) and [Integrated Human Practices — interpretation of local signals](https://2026.igem.wiki/jlu-fbh/human-practices#hp-in-vivo-4)"
+          "[Further details: Results — 9.3 Tumour immune microenvironment: CD8⁺ T infiltration and Granzyme B](https://2026.igem.wiki/jlu-fbh/results#results-6-3) and [Integrated Human Practices — In Vivo — Summary](https://2026.igem.wiki/jlu-fbh/human-practices#hp-in-vivo-4)"
 ]
         }
           ]
@@ -868,7 +868,7 @@ export const cycle4Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "[Further details: Integrated Human Practices — evidence review](https://2026.igem.wiki/jlu-fbh/human-practices#hp-in-vivo-4), [Model — Cell2Dose](https://2026.igem.wiki/jlu-fbh/model#model-heading-98), [Results — in vivo proof of concept](https://2026.igem.wiki/jlu-fbh/results#results-in-vivo) and [Entrepreneurship — development pathway](https://2026.igem.wiki/jlu-fbh/entrepreneurship#planning-and-outlook)"
+          "[Further details: Integrated Human Practices — In Vivo — Summary](https://2026.igem.wiki/jlu-fbh/human-practices#hp-in-vivo-4), [Model — Cell2Dose — Comparison with Animal Experiments](https://2026.igem.wiki/jlu-fbh/model#model-heading-98), [Results — In Vivo: Efficacy and Immune Mechanism](https://2026.igem.wiki/jlu-fbh/results#results-in-vivo) and [Entrepreneurship — Planning and Outlook](https://2026.igem.wiki/jlu-fbh/entrepreneurship#planning-and-outlook)"
 ]
         }
           ]

@@ -36,6 +36,12 @@ export const resultsReferences: CitationReference[] = [
       "Correlation of TROP-2 expression with clinical-pathological characteristics and outcome in triple-negative breast cancer.",
     journal: "Scientific Reports.",
     volumeYear: "2022;12:22498.",
+    links: [
+      {
+        href: "https://doi.org/10.1038/s41598-022-27093-y",
+        label: "doi:10.1038/s41598-022-27093-y",
+      },
+    ],
   },
   {
     id: 4,
@@ -44,6 +50,12 @@ export const resultsReferences: CitationReference[] = [
       "Trophoblast cell-surface antigen 2 (TROP2) expression in triple-negative breast cancer.",
     journal: "BMC Cancer.",
     volumeYear: "2022;22:1014.",
+    links: [
+      {
+        href: "https://doi.org/10.1186/s12885-022-10076-7",
+        label: "doi:10.1186/s12885-022-10076-7",
+      },
+    ],
   },
   {
     id: 5,
@@ -52,6 +64,12 @@ export const resultsReferences: CitationReference[] = [
       "B7-H4 overexpression contributes to poor prognosis and drug-resistance in triple-negative breast cancer.",
     journal: "Cancer Cell International.",
     volumeYear: "2018;18:100.",
+    links: [
+      {
+        href: "https://doi.org/10.1186/s12935-018-0597-9",
+        label: "doi:10.1186/s12935-018-0597-9",
+      },
+    ],
   },
   {
     id: 6,
@@ -60,6 +78,12 @@ export const resultsReferences: CitationReference[] = [
       "Spatially distinct tumor immune microenvironments stratify triple-negative breast cancers.",
     journal: "Journal of Clinical Investigation.",
     volumeYear: "2019;129:1785–1800.",
+    links: [
+      {
+        href: "https://doi.org/10.1172/jci96313",
+        label: "doi:10.1172/jci96313",
+      },
+    ],
   },
   {
     id: 7,
@@ -68,6 +92,12 @@ export const resultsReferences: CitationReference[] = [
       "Epithelial expressed B7-H4 drives differential immunotherapy response in murine and human breast cancer.",
     journal: "Cancer Research Communications.",
     volumeYear: "2024;4:1120–1134.",
+    links: [
+      {
+        href: "https://doi.org/10.1158/2767-9764.crc-23-0468",
+        label: "doi:10.1158/2767-9764.crc-23-0468",
+      },
+    ],
   },
   {
     id: 8,
@@ -76,6 +106,12 @@ export const resultsReferences: CitationReference[] = [
       "Nectin-4: a new prognostic biomarker for efficient therapeutic targeting of primary and metastatic triple-negative breast cancer.",
     journal: "Annals of Oncology.",
     volumeYear: "2017;28:769–776.",
+    links: [
+      {
+        href: "https://doi.org/10.1093/annonc/mdw678",
+        label: "doi:10.1093/annonc/mdw678",
+      },
+    ],
   },
   {
     id: 9,
@@ -84,6 +120,12 @@ export const resultsReferences: CitationReference[] = [
       "Nectin-4 expression is an independent prognostic biomarker and associated with better survival in triple-negative breast cancer.",
     journal: "Frontiers in Medicine.",
     volumeYear: "2019;6:200.",
+    links: [
+      {
+        href: "https://doi.org/10.3389/fmed.2019.00200",
+        label: "doi:10.3389/fmed.2019.00200",
+      },
+    ],
   },
   {
     id: 10,
@@ -106,6 +148,12 @@ export const resultsReferences: CitationReference[] = [
       "Expression of cell surface zinc transporter LIV1 in triple negative breast cancer is an indicator of poor prognosis and therapy failure.",
     journal: "Journal of Cellular Physiology.",
     volumeYear: "2024;239.",
+    links: [
+      {
+        href: "https://doi.org/10.1002/jcp.31203",
+        label: "doi:10.1002/jcp.31203",
+      },
+    ],
   },
   {
     id: 12,
@@ -128,6 +176,12 @@ export const resultsReferences: CitationReference[] = [
       "Allele-specific motifs revealed by sequence analysis of self-peptides eluted from MHC molecules.",
     journal: "Nature.",
     volumeYear: "1991;351:290–296.",
+    links: [
+      {
+        href: "https://doi.org/10.1038/351290a0",
+        label: "doi:10.1038/351290a0",
+      },
+    ],
   },
   {
     id: 14,
@@ -145,15 +199,16 @@ export const resultsReferences: CitationReference[] = [
   },
   {
     id: 15,
-    authors: "Jeck WR, Sorrentino JA, Wang K, et al.",
+    authors:
+      "Jeck WR, Sorrentino JA, Wang K, Slevin MK, Burd CE, Liu J, Marzluff WF, Sharpless NE.",
     title:
       "Circular RNAs are abundant, conserved, and associated with ALU repeats.",
     journal: "RNA.",
-    volumeYear: "2013;19(2):141–157.",
+    volumeYear: "2013 Feb;19(2):141-57.",
     links: [
       {
-        href: "https://pubmed.ncbi.nlm.nih.gov/23249763/",
-        label: "PMID: 23249763.",
+        href: "https://doi.org/10.1261/rna.035667.112",
+        label: "doi: 10.1261/rna.035667.112.",
       },
     ],
   },
@@ -163,12 +218,12 @@ export const resultsReferences: CitationReference[] = [
       "Enuka Y, Lauriola M, Feldman ME, Sas-Chen A, Ulitsky I, Yarden Y.",
     title:
       "Circular RNAs are long-lived and display only minimal early alterations in response to a growth factor.",
-    journal: "Nucleic Acids Research.",
-    volumeYear: "2016;44(3):1370–1383.",
+    journal: "Nucleic Acids Res.",
+    volumeYear: "2016 Feb 18;44(3):1370-83.",
     links: [
       {
-        href: "https://pubmed.ncbi.nlm.nih.gov/26657629/",
-        label: "PMID: 26657629.",
+        href: "https://doi.org/10.1093/nar/gkv1367",
+        label: "doi: 10.1093/nar/gkv1367.",
       },
     ],
   },
@@ -183,10 +238,6 @@ export const resultsReferences: CitationReference[] = [
       {
         href: "https://doi.org/10.3390/curroncol33020092",
         label: "doi:10.3390/curroncol33020092.",
-      },
-      {
-        href: "https://pubmed.ncbi.nlm.nih.gov/41744856/",
-        label: "PMID: 41744856.",
       },
     ],
   },
@@ -217,14 +268,6 @@ export const resultsReferences: CitationReference[] = [
         href: "https://doi.org/10.20517/cdr.2025.195",
         label: "doi:10.20517/cdr.2025.195.",
       },
-      {
-        href: "https://pubmed.ncbi.nlm.nih.gov/42040770/",
-        label: "PMID: 42040770.",
-      },
-      {
-        href: "https://pmc.ncbi.nlm.nih.gov/articles/PMC13103265/",
-        label: "PMC13103265.",
-      },
     ],
   },
   {
@@ -236,8 +279,8 @@ export const resultsReferences: CitationReference[] = [
     volumeYear: "2008;180(1):309–318.",
     links: [
       {
-        href: "https://pubmed.ncbi.nlm.nih.gov/18097032/",
-        label: "PMID: 18097032.",
+        href: "https://doi.org/10.4049/jimmunol.180.1.309",
+        label: "doi:10.4049/jimmunol.180.1.309",
       },
     ],
   },
@@ -251,8 +294,8 @@ export const resultsReferences: CitationReference[] = [
     volumeYear: "2007;25(45):7732–7736.",
     links: [
       {
-        href: "https://pubmed.ncbi.nlm.nih.gov/17931754/",
-        label: "PMID: 17931754.",
+        href: "https://doi.org/10.1016/j.vaccine.2007.08.030",
+        label: "doi:10.1016/j.vaccine.2007.08.030",
       },
     ],
   },
@@ -265,8 +308,8 @@ export const resultsReferences: CitationReference[] = [
     volumeYear: "2005;57:33–41.",
     links: [
       {
-        href: "https://pubmed.ncbi.nlm.nih.gov/15744535/",
-        label: "PMID: 15744535.",
+        href: "https://doi.org/10.1007/s00251-005-0781-7",
+        label: "doi:10.1007/s00251-005-0781-7",
       },
     ],
   },
@@ -281,10 +324,6 @@ export const resultsReferences: CitationReference[] = [
       {
         href: "https://doi.org/10.3389/fonc.2025.1611991",
         label: "doi:10.3389/fonc.2025.1611991.",
-      },
-      {
-        href: "https://pubmed.ncbi.nlm.nih.gov/40626008/",
-        label: "PMID: 40626008.",
       },
     ],
   },
@@ -301,10 +340,6 @@ export const resultsReferences: CitationReference[] = [
         href: "https://doi.org/10.1038/s41586-025-10004-2",
         label: "doi:10.1038/s41586-025-10004-2.",
       },
-      {
-        href: "https://pubmed.ncbi.nlm.nih.gov/41708868/",
-        label: "PMID: 41708868.",
-      },
     ],
   },
   {
@@ -318,10 +353,6 @@ export const resultsReferences: CitationReference[] = [
       {
         href: "https://doi.org/10.3389/fcell.2025.1733549",
         label: "doi:10.3389/fcell.2025.1733549.",
-      },
-      {
-        href: "https://pubmed.ncbi.nlm.nih.gov/41567982/",
-        label: "PMID: 41567982.",
       },
     ],
   },
@@ -347,8 +378,8 @@ export const resultsReferences: CitationReference[] = [
     volumeYear: "2021;6(12):1078–1094.",
     links: [
       {
-        href: "https://pubmed.ncbi.nlm.nih.gov/34394960/",
-        label: "PMID: 34394960.",
+        href: "https://doi.org/10.1038/s41578-021-00358-0",
+        label: "doi:10.1038/s41578-021-00358-0",
       },
     ],
   },
@@ -363,10 +394,6 @@ export const resultsReferences: CitationReference[] = [
       {
         href: "https://doi.org/10.3390/vaccines12101148",
         label: "doi:10.3390/vaccines12101148.",
-      },
-      {
-        href: "https://pubmed.ncbi.nlm.nih.gov/39460315/",
-        label: "PMID: 39460315.",
       },
     ],
   },
@@ -390,6 +417,12 @@ export const resultsReferences: CitationReference[] = [
     title: "A simple sequentially rejective multiple test procedure.",
     journal: "Scandinavian Journal of Statistics.",
     volumeYear: "1979;6:65–70.",
+    links: [
+      {
+        href: "https://doi.org/10.2307/4615733",
+        label: "doi:10.2307/4615733",
+      },
+    ],
   },
   {
     id: 31,
@@ -400,8 +433,8 @@ export const resultsReferences: CitationReference[] = [
     volumeYear: "2020;18(7).",
     links: [
       {
-        href: "https://pubmed.ncbi.nlm.nih.gov/32663219/",
-        label: "PMID: 32663219.",
+        href: "https://doi.org/10.1177/0271678x20943823",
+        label: "doi:10.1177/0271678x20943823",
       },
     ],
   },
@@ -411,51 +444,31 @@ export const resultsReferences: CitationReference[] = [
     title:
       "Multifaceted protein-protein interaction prediction based on Siamese residual RCNN.",
     journal: "Bioinformatics.",
-    volumeYear: "2022;38(Supplement_1):i264-i272.",
+    volumeYear: "2019;35(14):i305-i314.",
     links: [
       {
-        href: "https://pubmed.ncbi.nlm.nih.gov/35758796/",
-        label: "PMID: 35758796.",
+        href: "https://doi.org/10.1093/bioinformatics/btz328",
+        label: "doi:10.1093/bioinformatics/btz328",
       },
     ],
   },
   {
     id: 33,
-    authors: "Kubara PM, Kernstock S, Schink A, et al.",
+    authors:
+      "Wesselhoeft RA, Kowalski PS, Parker-Hale FC, Huang Y, Bisaria N, Anderson DG.",
     title:
-      "Pathogenic huntingtin impairs immune tolerance in Huntington's disease.",
-    journal: "Nature.",
-    volumeYear: "2024;634:706-713.",
+      "RNA circularization diminishes immunogenicity and can extend translation duration in vivo.",
+    journal: "Molecular Cell.",
+    volumeYear: "2019;74(3):508–520.e4.",
     links: [
       {
-        href: "https://pubmed.ncbi.nlm.nih.gov/39358521/",
-        label: "PMID: 39358521.",
+        href: "https://doi.org/10.1016/j.molcel.2019.02.015",
+        label: "doi:10.1016/j.molcel.2019.02.015",
       },
     ],
   },
   {
     id: 34,
-    authors: "Wesselhoeft RA, Kowalski PS, Parker-Hale FC, Huang Y, Bisaria N, Anderson DG.",
-    title:
-      "RNA circularization diminishes immunogenicity and can extend translation duration in vivo.",
-    journal: "Mol Cell.",
-    volumeYear: "2019;74(3):508–520.e4.",
-  },
-  {
-    id: 35,
-    authors: "Chen M, Ju CJ-T, Zhou G, et al.",
-    title: "MHC binding prediction with attention-based deep neural networks.",
-    journal: "BMC Bioinformatics.",
-    volumeYear: "2017;18(Suppl 12):348.",
-    links: [
-      {
-        href: "https://doi.org/10.1186/s12859-017-1757-6",
-        label: "doi:10.1186/s12859-017-1757-6.",
-      },
-    ],
-  },
-  {
-    id: 36,
     authors: "Ndeupen S, Qin Z, Jacobsen S, et al.",
     title:
       "The mRNA-LNP platform's lipid nanoparticle component used in preclinical vaccine studies is highly inflammatory.",
@@ -463,13 +476,13 @@ export const resultsReferences: CitationReference[] = [
     volumeYear: "2021;24(12):103479.",
     links: [
       {
-        href: "https://pubmed.ncbi.nlm.nih.gov/34901777/",
-        label: "PMID: 34901777.",
+        href: "https://doi.org/10.1016/j.isci.2021.103479",
+        label: "doi:10.1016/j.isci.2021.103479",
       },
     ],
   },
   {
-    id: 37,
+    id: 35,
     authors: "Benzekry S, Lamont C, Beheshti A, et al.",
     title:
       "Classical mathematical models for description and prediction of experimental tumor growth.",
@@ -477,8 +490,8 @@ export const resultsReferences: CitationReference[] = [
     volumeYear: "2014;10(8):e1003800.",
     links: [
       {
-        href: "https://pubmed.ncbi.nlm.nih.gov/25167199/",
-        label: "PMID: 25167199.",
+        href: "https://doi.org/10.1371/journal.pcbi.1003800",
+        label: "doi:10.1371/journal.pcbi.1003800",
       },
     ],
   },

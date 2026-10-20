@@ -256,7 +256,7 @@ export const cycle3Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "[Further details: Experiments — circRNA preparation and characterisation](https://2026.igem.wiki/jlu-fbh/experiments#exp-3-1)"
+          "[Further details: Experiments — 3.1 Combined circRNA synthesis and release testing](https://2026.igem.wiki/jlu-fbh/experiments#exp-3-1)"
 ]
         }
           ]
@@ -349,7 +349,7 @@ export const cycle3Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "[Further details: Results — RNA persistence](https://2026.igem.wiki/jlu-fbh/results#results-5-1)"
+          "[Further details: Results — 8.1 In vitro resistance of circRNA to degradation, compared with its linear precursor](https://2026.igem.wiki/jlu-fbh/results#results-5-1)"
 ]
         }
           ]
@@ -570,7 +570,7 @@ export const cycle3Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "[Further details: Software — TorusFold outputs](https://2026.igem.wiki/jlu-fbh/software#software-validation-torusfold-refinement-and-delivered-model-verification)"
+          "[Further details: Software — TorusFold refinement and delivered-model verification](https://2026.igem.wiki/jlu-fbh/software#software-validation-torusfold-refinement-and-delivered-model-verification)"
 ]
         }
           ]
@@ -679,7 +679,7 @@ export const cycle3Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "[Further details: Results — translation and DC maturation](https://2026.igem.wiki/jlu-fbh/results#results-round2)"
+          "[Further details: Results — Round 2: Functional Validation of the Combined Vaccine](https://2026.igem.wiki/jlu-fbh/results#results-round2)"
 ]
         }
           ]
@@ -792,7 +792,7 @@ export const cycle3Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "[Further details: Results — T-cell phenotypes](https://2026.igem.wiki/jlu-fbh/results#results-4-3)"
+          "[Further details: Results — 6.3 T-cell activation and co-stimulation: CD69 and CD28](https://2026.igem.wiki/jlu-fbh/results#results-4-3)"
 ]
         }
           ]
@@ -877,7 +877,7 @@ export const cycle3Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "[Further details: Results — second-round ELISpot](https://2026.igem.wiki/jlu-fbh/results#results-4-5)"
+          "[Further details: Results — 6.5 Round 2 ELISpot: the immunogenicity advantage of multi-epitope design](https://2026.igem.wiki/jlu-fbh/results#results-4-5)"
 ]
         }
           ]
@@ -968,7 +968,7 @@ export const cycle3Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "[Further details: Results — MDA-MB-231 cytotoxicity](https://2026.igem.wiki/jlu-fbh/results#results-4-6)"
+          "[Further details: Results — 6.6 Specific killing of TNBC target cells: MDA-MB-231](https://2026.igem.wiki/jlu-fbh/results#results-4-6)"
 ]
         }
           ]
@@ -1042,7 +1042,7 @@ export const cycle3Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "[Further details: Experiments — target-cell comparison](https://2026.igem.wiki/jlu-fbh/experiments#exp-5-2)"
+          "[Further details: Experiments — 5.2 Off-target cytotoxicity against normal cells](https://2026.igem.wiki/jlu-fbh/experiments#exp-5-2)"
 ]
         }
           ]
@@ -1127,7 +1127,7 @@ export const cycle3Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "[Further details: Results — empty-LNP viability](https://2026.igem.wiki/jlu-fbh/results#results-5-3)"
+          "[Further details: Results — 8.3 Safe dose window of the LNP delivery system](https://2026.igem.wiki/jlu-fbh/results#results-5-3)"
 ]
         }
           ]
@@ -1193,7 +1193,7 @@ export const cycle3Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "[Further details: Software — CircuForge](https://2026.igem.wiki/jlu-fbh/software#software-user-testing-and-community-reuse-circuforge-user-testing)"
+          "[Further details: Software — CircuForge user testing](https://2026.igem.wiki/jlu-fbh/software#software-user-testing-and-community-reuse-circuforge-user-testing)"
 ]
         }
           ]
@@ -1273,7 +1273,7 @@ export const cycle3Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "[Further details: Education — Virtual Laboratory and the Pilu Town activity](https://2026.igem.wiki/jlu-fbh/education#pilu-town)"
+          "[Further details: Education — Pilu Town](https://2026.igem.wiki/jlu-fbh/education#pilu-town)"
 ]
         }
           ]

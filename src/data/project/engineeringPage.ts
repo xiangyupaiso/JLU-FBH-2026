@@ -99,7 +99,7 @@ const overviewSection: WikiSection = {
   index: "00",
   kicker: "Overview",
   navLabel: "Overview",
-  title: "TIME: a stopwatch, not an acronym",
+  title: "TIME: a stopwatch, not only an acronym",
   summary:
     "TIME marks four connected project-level cycles on the outer scale of the central gear. Design–Build–Test–Learn runs along the inner scale, and the two hands locate the project within its current cycle and engineering stage.",
   blocks: [

@@ -1,0 +1,20 @@
+{
+  "__description__": "Experiments images added or replaced on 2026-10-20. Upload only this bundle to files/pages/wet-lab/.",
+  "wet_lab": {
+    "target_folder": "files/pages/wet-lab/",
+    "files": {
+      "2-1-workflow.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/2-1-workflow.webp",
+      "2-1-materials.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/2-1-materials.webp",
+      "2-2-workflow.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/2-2-workflow.webp",
+      "2-2-materials.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/2-2-materials.webp",
+      "4-4-workflow.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/4-4-workflow.webp",
+      "4-4-materials.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/4-4-materials.webp",
+      "protocol-35.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/protocol-35.webp",
+      "protocol-36.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/protocol-36.webp",
+      "7-4-workflow.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/7-4-workflow.webp",
+      "7-4-materials.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/7-4-materials.webp",
+      "7-5-workflow.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/7-5-workflow.webp",
+      "7-5-materials.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/7-5-materials.webp"
+    }
+  }
+}

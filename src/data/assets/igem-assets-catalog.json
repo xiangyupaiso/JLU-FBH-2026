@@ -3,14 +3,14 @@
     "teamId": "6056",
     "teamName": "JLU-FBH",
     "year": 2026,
-    "lastUpdated": "2026-10-18",
+    "lastUpdated": "2026-10-20",
     "stats": {
-      "total": 2349,
-      "inUse": 1819,
+      "total": 2351,
+      "inUse": 1821,
       "standby": 459,
       "deprecated": 71,
       "byKind": {
-        "image": 2247,
+        "image": 2249,
         "font": 28,
         "structure": 3,
         "pdf": 65,
@@ -112322,11 +112322,11 @@
       "fileName": "2-1-workflow.webp",
       "category": "wet-lab",
       "localPath": "public/assets/experiments/protocol/2-1-workflow.webp",
-      "md5": "b0c2fcf3b46e84204adaac24a398cf91",
-      "fileSize": 393372,
+      "md5": "4c1208154757354d9b8fa4bc347c3139",
+      "fileSize": 591470,
       "uploadUrl": null,
       "status": "in-use",
-      "description": "Source archive: 2.1DC细胞制备与circRNA递送(1).zip",
+      "description": "Source archive: 2.1DC细胞制备与circRNA递送 (2)(1).zip",
       "keywords": [
         "experiments",
         "protocol"
@@ -112338,7 +112338,7 @@
           "text": "2-1-workflow.webp"
         }
       ],
-      "notes": "October Experiments illustration; bundled locally."
+      "notes": "October Experiments illustration from 2.1DC细胞制备与circRNA递送 (2)(1).zip; bundled locally."
     },
     "experiments-2-1-materials-webp": {
       "id": "experiments-2-1-materials-webp",
@@ -112346,11 +112346,11 @@
       "fileName": "2-1-materials.webp",
       "category": "wet-lab",
       "localPath": "public/assets/experiments/protocol/2-1-materials.webp",
-      "md5": "da5b7843da3c755b2b020cdfcdabc0b6",
-      "fileSize": 218734,
+      "md5": "6d77c47bdb023a4b8c95e8fc63f4b1ad",
+      "fileSize": 316806,
       "uploadUrl": null,
       "status": "in-use",
-      "description": "Source archive: 2.1DC细胞制备与circRNA递送(1).zip",
+      "description": "Source archive: 2.1DC细胞制备与circRNA递送 (2)(1).zip",
       "keywords": [
         "experiments",
         "protocol"
@@ -112362,7 +112362,7 @@
           "text": "2-1-materials.webp"
         }
       ],
-      "notes": "October Experiments illustration; bundled locally."
+      "notes": "October Experiments illustration from 2.1DC细胞制备与circRNA递送 (2)(1).zip; bundled locally."
     },
     "experiments-2-2-workflow-webp": {
       "id": "experiments-2-2-workflow-webp",
@@ -112370,11 +112370,11 @@
       "fileName": "2-2-workflow.webp",
       "category": "wet-lab",
       "localPath": "public/assets/experiments/protocol/2-2-workflow.webp",
-      "md5": "0bc20f53aa4af76c064a06d2ccddad22",
-      "fileSize": 283906,
+      "md5": "723b6542a7fe281cbb01bd0e26599138",
+      "fileSize": 403784,
       "uploadUrl": null,
       "status": "in-use",
-      "description": "Source archive: 2.2T细胞分离与DC–T共培养(1).zip",
+      "description": "Source archive: 2.2T细胞分离与DC–T共培养 (2)(1).zip",
       "keywords": [
         "experiments",
         "protocol"
@@ -112386,7 +112386,7 @@
           "text": "2-2-workflow.webp"
         }
       ],
-      "notes": "October Experiments illustration; bundled locally."
+      "notes": "October Experiments illustration from 2.2T细胞分离与DC–T共培养 (2)(1).zip; bundled locally."
     },
     "experiments-2-2-materials-webp": {
       "id": "experiments-2-2-materials-webp",
@@ -112394,11 +112394,11 @@
       "fileName": "2-2-materials.webp",
       "category": "wet-lab",
       "localPath": "public/assets/experiments/protocol/2-2-materials.webp",
-      "md5": "cb14e3cc8aa6f8165db1263f4abfb409",
-      "fileSize": 147466,
+      "md5": "7b23796e2ae31df917ae5f844ae4fca9",
+      "fileSize": 217530,
       "uploadUrl": null,
       "status": "in-use",
-      "description": "Source archive: 2.2T细胞分离与DC–T共培养(1).zip",
+      "description": "Source archive: 2.2T细胞分离与DC–T共培养 (2)(1).zip",
       "keywords": [
         "experiments",
         "protocol"
@@ -112410,7 +112410,7 @@
           "text": "2-2-materials.webp"
         }
       ],
-      "notes": "October Experiments illustration; bundled locally."
+      "notes": "October Experiments illustration from 2.2T细胞分离与DC–T共培养 (2)(1).zip; bundled locally."
     },
     "experiments-2-3-workflow-webp": {
       "id": "experiments-2-3-workflow-webp",
@@ -112754,11 +112754,11 @@
       "fileName": "4-4-workflow.webp",
       "category": "wet-lab",
       "localPath": "public/assets/experiments/protocol/4-4-workflow.webp",
-      "md5": "c6a49e2caf77799268ebb70659822112",
-      "fileSize": 363684,
+      "md5": "d93582736a9ab5afcb6511daaf8f5baf",
+      "fileSize": 499284,
       "uploadUrl": null,
       "status": "in-use",
-      "description": "Source archive: 4.4 二轮 ELISpot (1)(1).zip",
+      "description": "Source archive: 4.4 二轮 ELISpot (4)(1).zip",
       "keywords": [
         "experiments",
         "protocol"
@@ -112770,7 +112770,7 @@
           "text": "4-4-workflow.webp"
         }
       ],
-      "notes": "October Experiments illustration; bundled locally."
+      "notes": "October Experiments illustration from 4.4 二轮 ELISpot (4)(1).zip; bundled locally."
     },
     "experiments-4-4-materials-webp": {
       "id": "experiments-4-4-materials-webp",
@@ -112778,11 +112778,11 @@
       "fileName": "4-4-materials.webp",
       "category": "wet-lab",
       "localPath": "public/assets/experiments/protocol/4-4-materials.webp",
-      "md5": "cfec432f5161595bc52d870215927330",
-      "fileSize": 155032,
+      "md5": "5ee1bf392d9981551e650cd61f4e7fa0",
+      "fileSize": 235658,
       "uploadUrl": null,
       "status": "in-use",
-      "description": "Source archive: 4.4 二轮 ELISpot (1)(1).zip",
+      "description": "Source archive: 4.4 二轮 ELISpot (4)(1).zip",
       "keywords": [
         "experiments",
         "protocol"
@@ -112794,7 +112794,7 @@
           "text": "4-4-materials.webp"
         }
       ],
-      "notes": "October Experiments illustration; bundled locally."
+      "notes": "October Experiments illustration from 4.4 二轮 ELISpot (4)(1).zip; bundled locally."
     },
     "experiments-5-1-workflow-webp": {
       "id": "experiments-5-1-workflow-webp",
@@ -113186,11 +113186,11 @@
       "fileName": "7-4-workflow.webp",
       "category": "wet-lab",
       "localPath": "public/assets/experiments/protocol/7-4-workflow.webp",
-      "md5": "f20fd6b0cca38788e46cd9045ad114ab",
-      "fileSize": 512544,
+      "md5": "2b83b3be2b8b8af9241071bc47d67231",
+      "fileSize": 747272,
       "uploadUrl": null,
       "status": "in-use",
-      "description": "Source archive: 7.4 脾脏免疫细胞流式分析.zip",
+      "description": "Source archive: 7.4 脾脏免疫细胞流式分析 (1)(1).zip",
       "keywords": [
         "experiments",
         "protocol"
@@ -113202,7 +113202,7 @@
           "text": "7-4-workflow.webp"
         }
       ],
-      "notes": "October Experiments illustration; bundled locally."
+      "notes": "October Experiments illustration from 7.4 脾脏免疫细胞流式分析 (1)(1).zip; bundled locally."
     },
     "experiments-7-4-materials-webp": {
       "id": "experiments-7-4-materials-webp",
@@ -113210,11 +113210,11 @@
       "fileName": "7-4-materials.webp",
       "category": "wet-lab",
       "localPath": "public/assets/experiments/protocol/7-4-materials.webp",
-      "md5": "c73850eec2b021b8cc625ecf1cf4e19c",
-      "fileSize": 261756,
+      "md5": "f56d7af348430ee300ef0a9ce3be3230",
+      "fileSize": 383282,
       "uploadUrl": null,
       "status": "in-use",
-      "description": "Source archive: 7.4 脾脏免疫细胞流式分析.zip",
+      "description": "Source archive: 7.4 脾脏免疫细胞流式分析 (1)(1).zip",
       "keywords": [
         "experiments",
         "protocol"
@@ -113226,7 +113226,7 @@
           "text": "7-4-materials.webp"
         }
       ],
-      "notes": "October Experiments illustration; bundled locally."
+      "notes": "October Experiments illustration from 7.4 脾脏免疫细胞流式分析 (1)(1).zip; bundled locally."
     },
     "experiments-protocol-35-webp": {
       "id": "experiments-protocol-35-webp",
@@ -113234,11 +113234,11 @@
       "fileName": "protocol-35.webp",
       "category": "wet-lab",
       "localPath": "public/assets/experiments/protocol/protocol-35.webp",
-      "md5": "afbc12b9592d0fdfb0b3d05a69644103",
-      "fileSize": 251710,
+      "md5": "fe3f3b645f4dc338f3db5df44fa122bf",
+      "fileSize": 693196,
       "uploadUrl": null,
       "status": "in-use",
-      "description": "",
+      "description": "Source archive: 6.4 (2)(1).zip",
       "keywords": [
         "experiments",
         "protocol"
@@ -113250,7 +113250,7 @@
           "text": "protocol-35.webp"
         }
       ],
-      "notes": "Retained illustration matching the current protocol."
+      "notes": "October Experiments illustration from 6.4 (2)(1).zip; bundled locally."
     },
     "experiments-protocol-36-webp": {
       "id": "experiments-protocol-36-webp",
@@ -113258,11 +113258,11 @@
       "fileName": "protocol-36.webp",
       "category": "wet-lab",
       "localPath": "public/assets/experiments/protocol/protocol-36.webp",
-      "md5": "715f671aab9df4552f8295c8839c4136",
-      "fileSize": 123444,
+      "md5": "8e6a04c832655314bcf67efca6b40f14",
+      "fileSize": 272798,
       "uploadUrl": null,
       "status": "in-use",
-      "description": "",
+      "description": "Source archive: 6.4 (2)(1).zip",
       "keywords": [
         "experiments",
         "protocol"
@@ -113274,7 +113274,7 @@
           "text": "protocol-36.webp"
         }
       ],
-      "notes": "Retained illustration matching the current protocol."
+      "notes": "October Experiments illustration from 6.4 (2)(1).zip; bundled locally."
     },
     "measurement-sanger-trace-across-the-backsplice-junction-bsj-of-the-combined-vaccine-avif": {
       "id": "measurement-sanger-trace-across-the-backsplice-junction-bsj-of-the-combined-vaccine-avif",
@@ -113587,6 +113587,54 @@
         }
       ],
       "notes": "October Experiments illustration from 6.3.zip; bundled locally."
+    },
+    "experiments-7-5-workflow-webp": {
+      "id": "experiments-7-5-workflow-webp",
+      "kind": "image",
+      "fileName": "7-5-workflow.webp",
+      "category": "wet-lab",
+      "localPath": "public/assets/experiments/protocol/7-5-workflow.webp",
+      "md5": "4ae75dd52b38cd30b593e287ce9c9900",
+      "fileSize": 826122,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "Source archive: 7.5(1).zip",
+      "keywords": [
+        "experiments",
+        "protocol"
+      ],
+      "references": [
+        {
+          "file": "src/data/wet-lab/experimentProtocolAssets.ts",
+          "type": "asset-registry",
+          "text": "7-5-workflow.webp"
+        }
+      ],
+      "notes": "October Experiments illustration from 7.5(1).zip; bundled locally."
+    },
+    "experiments-7-5-materials-webp": {
+      "id": "experiments-7-5-materials-webp",
+      "kind": "image",
+      "fileName": "7-5-materials.webp",
+      "category": "wet-lab",
+      "localPath": "public/assets/experiments/protocol/7-5-materials.webp",
+      "md5": "4cd2c052798a0c523731e6e9e641ec95",
+      "fileSize": 334952,
+      "uploadUrl": null,
+      "status": "in-use",
+      "description": "Source archive: 7.5(1).zip",
+      "keywords": [
+        "experiments",
+        "protocol"
+      ],
+      "references": [
+        {
+          "file": "src/data/wet-lab/experimentProtocolAssets.ts",
+          "type": "asset-registry",
+          "text": "7-5-materials.webp"
+        }
+      ],
+      "notes": "October Experiments illustration from 7.5(1).zip; bundled locally."
     }
   }
 }

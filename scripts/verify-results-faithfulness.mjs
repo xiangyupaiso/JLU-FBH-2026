@@ -125,7 +125,11 @@ for (let i = 1; i < source.length; i++) {
     expected.push(heading);
     continue;
   }
-  expected.push(normalize(p.replace(/^\d+\.\s*/, "")));
+  expected.push(
+    ...p
+      .split(/\n(?=\d+\.\s)/)
+      .map((item) => normalize(item.replace(/^\d+\.\s*/, ""))),
+  );
 }
 
 const actual = [];
@@ -213,10 +217,10 @@ assert.deepEqual(
   referenceSource,
   "Bibliography must retain every original word and identifier",
 );
-assert.equal(resultsReferences.length, 37);
+assert.equal(resultsReferences.length, referenceSource.length);
 assert.deepEqual(
   resultsReferences.map((r) => r.id),
-  Array.from({ length: 37 }, (_, i) => i + 1),
+  Array.from({ length: referenceSource.length }, (_, i) => i + 1),
 );
 
 const decode = (s) =>

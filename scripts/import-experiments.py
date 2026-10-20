@@ -164,7 +164,9 @@ def import_page():
     references = []
     for index, text in enumerate(reference_items, 1):
         citation, url = text.rsplit(" ", 1)
-        assert url.startswith("https://")
+        if url.startswith("doi:"):
+            url = "https://doi.org/" + url.removeprefix("doi:")
+        assert url.startswith("https://"), f"Reference {index} has no HTTPS URL or DOI: {text}"
         authors, separator, title = citation.partition(". ")
         references.append({"id": index, "authors": authors + "." if separator else "",
                            "title": title if separator else citation, "journal": "", "volumeYear": "",

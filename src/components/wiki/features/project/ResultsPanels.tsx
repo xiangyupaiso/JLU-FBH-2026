@@ -109,8 +109,8 @@ export function resultsFeatures(): Record<string, ReactNode> {
     "results-plate-structural": (
       <EpitopeStructuralValidationChart
         captions={[resultsFigureCaptions.fig11, resultsFigureCaptions.fig12]}
-        badges={["FIG. 10", "FIG. 11"]}
-        heatmapFigureTitle="Figure 10."
+        badges={["FIG. 11", "FIG. 12"]}
+        heatmapFigureTitle="Figure 11."
       />
     ),
     "results-dose-scan": (

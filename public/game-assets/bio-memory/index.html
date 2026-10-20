@@ -679,6 +679,7 @@ const copy = () => COPY[lang];
 const playerName = (player) => player.names[lang];
 
 let dealTimer = null; // 发牌入场动画的统一清理定时器
+let mismatchTimer = null; // 翻牌不匹配翻回的定时器
 
 /* =========================================================
  * 游戏状态
@@ -776,6 +777,8 @@ function guardImg(img) {
 
 /* 从素材路径提取素材编号，用于占位展示 */
 function kindLabel(src) {
+  const i = IMAGES.indexOf(src);
+  if (i !== -1) return String(i + 1);
   const m = src.match(/\((\d+)\)|(\d+)(?=\.\w+$)/);
   return m ? (m[1] || m[2]) : '?';
 }
@@ -873,13 +876,14 @@ bindSegmented('kindSeg', 'kindCount');
  * 开局：抽素材、生成卡牌、洗牌、渲染
  * ========================================================= */
 function startGame() {
+  clearTimeout(mismatchTimer);
   const { playerCount, kindCount } = state;
 
   const picked = shuffle(IMAGES).slice(0, Math.min(kindCount, IMAGES.length));
   let id = 0;
   const deck = [];
   picked.forEach((src) => {
-    const pairId = 'img_' + kindLabel(src);
+    const pairId = src;
     deck.push({ id: id++, src, pairId, state: 'back', owner: null });
     deck.push({ id: id++, src, pairId, state: 'back', owner: null });
   });
@@ -1055,7 +1059,8 @@ function onCardClick(id) {
     /* ---- 匹配失败 ---- */
     const isSolo = state.players.length === 1;
      setMessage(isSolo ? (lang === 'zh' ? '配对失败，再试一次。' : 'No match — try again.') : (lang === 'zh' ? '配对失败，轮到下一位玩家。' : "No match — next player's turn."), 'bad');
-    setTimeout(() => {
+    clearTimeout(mismatchTimer);
+    mismatchTimer = setTimeout(() => {
       [a, b].forEach(c => flipTo(c, 'back'));
       state.flipped = [];
       if (!isSolo) state.current = (state.current + 1) % state.players.length;
@@ -1112,6 +1117,7 @@ document.getElementById('startBtn').addEventListener('click', startGame);
 document.getElementById('restartBtn').addEventListener('click', startGame);
 document.getElementById('againBtn').addEventListener('click', startGame);
 document.getElementById('backBtn').addEventListener('click', () => {
+  clearTimeout(mismatchTimer);
   closeOverlay(resultOverlay);
   gamePanel.hidden = true;
   homeView.hidden = false;

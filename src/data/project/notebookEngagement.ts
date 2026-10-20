@@ -305,9 +305,9 @@ export const engagementEntries: NotebookEntry[] = [
     ],
   },
   {
-    id: "engagement-2026-05-04-16",
-    start: "2026-05-04",
-    end: "2026-05-04",
+    id: "engagement-2026-05-02-16",
+    start: "2026-05-02",
+    end: "2026-05-02",
     title: "Northeast China iGEM Co-creation Salon",
     tags: ["Exchange"],
     blocks: [
