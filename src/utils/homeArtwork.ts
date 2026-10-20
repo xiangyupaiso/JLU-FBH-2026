@@ -75,7 +75,7 @@ export function createHomeArtworkLoader(root: HTMLElement, onChange: () => void)
     void loadPageImageSerial(art.url, {
       crossOrigin: art.crossOrigin,
       signal: request.signal,
-      priority: art.priority,
+      priority: () => art.priority,
     }).then((url) => {
       if (disposed || request.signal.aborted) return;
       art.url = url;

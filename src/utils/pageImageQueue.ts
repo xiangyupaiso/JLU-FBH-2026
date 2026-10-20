@@ -1,5 +1,6 @@
 type ArtworkElement = HTMLImageElement | SVGImageElement | HTMLElement;
 type FailureReason = "network" | "decode" | "timeout" | "cancelled";
+type DownloadPriority = "high" | "low" | (() => "high" | "low");
 
 interface Source {
   url: string;
@@ -207,7 +208,7 @@ async function download(source: Source, fallback: string, signal: AbortSignal) {
   throw lastError ?? new PageImageQueueError(source.url, "network");
 }
 
-function downloadSerial(source: Source, fallback: string, signal: AbortSignal, priority: "high" | "low" = "high") {
+function downloadSerial(source: Source, fallback: string, signal: AbortSignal, priority: DownloadPriority = "high") {
   const key = sourceKey(source);
   if (signal.aborted) return Promise.reject(new PageImageQueueError(source.url, "cancelled"));
   const existing = inFlightDownloads.get(key);
@@ -224,7 +225,9 @@ function downloadSerial(source: Source, fallback: string, signal: AbortSignal, p
       reject(new PageImageQueueError(source.url, "cancelled"));
     };
     const request = {
-      priority,
+      // Home may enter a scene after its lookahead requests were enqueued.
+      // Read its current priority when selecting the next transfer slot.
+      get priority() { return typeof priority === "function" ? priority() : priority; },
       start: async () => {
         try {
           if (signal.aborted) throw new PageImageQueueError(source.url, "cancelled");
@@ -270,7 +273,7 @@ export function loadPageImageSerial(
     srcSet?: string;
     sizes?: string;
     fallback?: string;
-    priority?: "high" | "low";
+    priority?: DownloadPriority;
   } = {},
 ): Promise<string> {
   if (!url) return Promise.resolve("");

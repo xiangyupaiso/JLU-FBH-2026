@@ -227,7 +227,7 @@ export const visualDesignNarrativeSections: WikiSection[] = [
         paragraphs: [
           "Once the layers are assembled, we decide what the reader needs to see together. If an object moves while its explanation changes, both demand attention. We therefore build **readable states**, where the object is visible, the sentence is complete and the composition pauses. Establishing the RNA ring before moving it into the platform preserves **object constancy**, a recognizable identity through change.[3] Keeping the explanation focused and dividing it into stages also draws on coherence, signaling and segmenting principles.[5]",
           "Within that sequence, **staging** sets the order of events, **easing** shapes their speed and a **reading hold** leaves the completed scene still. Duration on a scroll timeline allocates scroll distance; automatic playback assigns separate times to travel and reading.[7] The circRNA explanation and project-advantages panels in Section 8.2 show two of the settled compositions this produces.",
-          "The route into and out of each state matters too. We check slow scrolling, reversals and scene jumps so the composition remains clear through each kind of movement. Animation research informs the timing: each change needs to be visible long enough for the reader to follow it.[6]",
+          "Animation research also informs the timing: each change needs to be visible long enough for the reader to follow it.[6] We give the important movements room to unfold before the next explanation begins.",
         ],
       },
       {
@@ -259,6 +259,25 @@ export const visualDesignNarrativeSections: WikiSection[] = [
       {
         type: "feature",
         key: "design-details-particles",
+      },
+      {
+        type: "subheading",
+        id: "refine-scroll-continuity",
+        index: "",
+        title: "Refine How the Page Moves",
+        level: 4,
+      },
+      {
+        type: "prose",
+        paragraphs: [
+          "Following these transitions through the page reveals details that a still image cannot show. **AI assistance helps us assemble an early version; the movement needs further work once the pieces come together.** Individual sections can bring their own scroll updates and animation timings. As the page grows, those pieces can repeat work or hand over at different moments, leaving a brief hesitation or a jump between otherwise complete scenes.",
+          "Some of that unevenness comes from the work of drawing the page. Repeatedly measuring positions after changing styles can make the browser calculate the layout again; large painted layers and effects add to what it must redraw.[12] We group measurements, reuse prepared artwork and favor transforms and opacity for moving layers. In the RNA ring transition, for example, prepared variations of the painting let its contour change without sampling its pixels again on every scroll update.",
+          "Other moments need a closer adjustment to the movement itself. We tune where a handoff begins, how its speed changes and when the incoming artwork becomes fully visible. A reversal should continue from the view already on screen, and a resized page should keep the reader’s place. Working through short stretches at different speeds helps us find these small interruptions and try the adjustment again. These small adjustments remain part of the design, helping the separate pieces feel like one continuous page.",
+        ],
+      },
+      {
+        type: "feature",
+        key: "design-details-scroll-continuity",
       },
       {
         type: "subheading",
@@ -328,6 +347,23 @@ export const visualDesignNarrativeSections: WikiSection[] = [
       {
         type: "feature",
         key: "design-typography-study",
+      },
+      {
+        type: "subheading",
+        id: "image-corners-and-reading-rhythm",
+        index: "",
+        title: "Give Images a Softer Edge",
+        level: 4,
+      },
+      {
+        type: "prose",
+        paragraphs: [
+          "The edge of an image is a small part of the reading page, but it repeats throughout a long article. We use **16 px corners for the ordinary images on this page** to carry a little of the illustrations’ softness into the layout. Most of each edge stays straight, so the picture still sits neatly beside the text. Repeating that quiet detail helps photographs, drawings and interface examples feel at home on the same page.",
+        ],
+      },
+      {
+        type: "feature",
+        key: "design-details-image-corners",
       },
       {
         type: "subheading",
@@ -416,8 +452,17 @@ export const visualDesignNarrativeSections: WikiSection[] = [
       {
         type: "prose",
         paragraphs: [
-          "At the end of a research page, the choice narrows to a closing thought and an invitation to continue. The small **“Next page”** label leads to a larger destination name and circular arrow. Their different sizes set a reading order, and the surrounding space lets this ending occupy a view of its own.",
-          "**The generous white space gives that sequence room.** We wanted readers to finish the article before meeting another set of information. Separating the ribbon from the institutional footer limits what is visible together, leaving the closing thought and next destination as the immediate focus. Here, **“less is more”** means deciding which information belongs in the same view. Narrow screens retain that order through reflow and smaller gaps.",
+          "At the end of a research page, we wanted to give readers a moment to finish the article and decide where to go next. A short closing thought sits above the ribbon, followed by the small **“Next page”** label, the destination name and an arrow.",
+          "**We left a large gap between the ribbon and the university and hospital logos.** When Next page sits near the middle of a desktop screen, that space keeps the logos below the screen’s lower edge. Placing them closer would bring their strong blue shapes into the same view and draw attention away from the next-page link. With the gap, the ending has a screen to itself; the logos come into view as the reader scrolls further down.",
+        ],
+      },
+      {
+        type: "feature",
+        key: "design-white-space",
+      },
+      {
+        type: "prose",
+        paragraphs: [
           "Within this open space, **Lumi’s movement leads toward the destination**. Her feet follow the painted edge of the ribbon as the reader scrolls, then settle beside the page name and arrow. The movement connects a familiar character to the next action and gives the eye a path across the composition.",
           "Scrolling back retraces the path. On smaller screens, Lumi rests in a static composition; reduced motion shows the desktop arrival state. The destination stays visible as a text link throughout.",
         ],
@@ -677,6 +722,33 @@ export const visualDesignTechnicalNotes: Record<
     codeLabel?: string;
   }
 > = {
+  "design-details-image-corners": {
+    title: "Technical details · Why we use 16 px image corners",
+    description:
+      "Compare four corner sizes on the same photograph, then see how the shared rule reaches images and their frames.",
+    sections: [
+      {
+        title: "A small curve, repeated across the page",
+        paragraphs: [
+          "A square corner gives the picture a crisp boundary. At 8 px, that boundary softens slightly; at 32 px, the curve becomes a more noticeable part of the frame and hides more of each corner. The examples below keep the photograph, dimensions and placement identical so the corner treatment can be compared on its own. We made this comparison to show how the current choice changes the image’s edge.",
+        ],
+      },
+      {
+        title: "Why 16 px fits this page",
+        paragraphs: [
+          "We wanted the edge to feel gentle beside the watercolor and rounded lettering, while leaving the image itself in charge. At the sizes used in our articles, 16 px gives us that balance: the turn is visible, and long straight edges still hold the picture in the text column. Using the same radius also avoids an incidental change of frame every time the article moves from a drawing to a photograph or screenshot.",
+          "This is a visual judgment for these layouts. A fixed radius looks more pronounced on a small image, so narrow-screen examples need checking too. We keep labels, axes and other important details clear of the clipped corners; an image that needs its full rectangular boundary should keep it.",
+        ],
+      },
+      {
+        title: "Let the frame and image share the edge",
+        paragraphs: [
+          "CSS applies the shared --visual-design-image-radius value to article images without changing their source files. A display with a background, border or layered artwork also needs its outer frame rounded and its overflow clipped, so a square background cannot peek out behind a curved image. Inner layers can stay square when that frame supplies the final outline.",
+          "The manuscript area uses a local 10 px value, keeping the smaller sketchbook frames more restrained. The shared rule gives the page a consistent starting point, with that local adjustment for a different scale and character.",
+        ],
+      },
+    ],
+  },
   "design-details-subpage-color": {
     title: "Technical details · Color fields and reading surfaces",
     description:
@@ -814,6 +886,48 @@ export const visualDesignTechnicalNotes: Record<
     ],
     code: "p = clamp((s - s0) / (s1 - s0), 0, 1)\nu = E(p)\nx(p) = (1 - u) * x0 + u * x1",
     codeLabel: "Scroll progress and property interpolation",
+  },
+  "design-details-scroll-continuity": {
+    title: "Technical details · Frame updates and scroll continuity",
+    description:
+      "How preparation, positioning and scene handoffs keep the page steady as the reader moves.",
+    sections: [
+      {
+        title: "Do the preparation once",
+        paragraphs: [
+          "In the map sequence, the note destinations are measured together and kept until the layout needs refreshing. The animation can then use those positions without measuring between each layer’s changes. The RNA ring uses a related approach for its watercolor: a small set of prepared variations carries its changing color and stroke thickness through the move. Nearby variations blend together, keeping pixel sampling out of the scroll callback.",
+          "The navigation and footer photograph use requestAnimationFrame to combine incoming scroll notifications into one pending update. The photograph only schedules these scroll-driven updates near the viewport. Each treatment leaves less repeated work to do while the reader is moving.",
+        ],
+      },
+      {
+        title: "Keep the parts in step",
+        paragraphs: [
+          "A page can still feel uneven when it has enough time to draw. If one layer finishes before its replacement is ready, the reader sees a gap or a sudden change. Shared progress coordinates related elements: the navigation’s crest, surface and labels follow the same handoff, and a new direction replaces the animation’s target from its current value. The navigation study below explains how their entrances and exits are fitted together.",
+          "The background jump returned in several scenes, which helped us look beyond the timing of an individual animation. We needed to check who was controlling each layer’s position, when that position was updated and whether the next layer began with the same view. These questions separated the work of drawing a frame from the work of keeping consecutive frames aligned.",
+        ],
+      },
+      {
+        title: "Let the browser hold the room still",
+        paragraphs: [
+          "At the ward entrance, scrolling moved the rounded reveal window upward while a JavaScript transform moved the room in the opposite direction. The two movements were meant to cancel out. The browser could apply the scroll before the next transform update, briefly showing the room at the wrong position. This made a stationary background appear to jump, especially when the reader changed direction.",
+          "We extended the room’s positioning container one viewport above the clipped track. Native position: sticky now holds the room while the rounded window uncovers it. The track keeps its original height and scroll distance, and JavaScript continues to animate the people inside the room. Giving the background’s position to the browser removes the need for a second movement to catch up with scrolling.",
+        ],
+      },
+      {
+        title: "Match the view at the handoff",
+        paragraphs: [
+          "Another small jump came from the room’s transition into the tear. A copied room takes over for that movement, but its background retained a scale of 1.005 after the original room’s camera zoom had been removed. That half-percent difference changed the size of the painted features at the moment of exchange. Letting the copy inherit the original transform brought the two views back into alignment.",
+          "For these exchanges, we check position, scale, crop and opacity together. We also follow the transition back to the original scene. A short scrub can leave the animation behind a fast scroll, so the carried layer settles to its endpoint before returning the view to the native scene. Matching both ends gives forward movement, reverse movement and a direct scene jump the same place to arrive.",
+        ],
+      },
+      {
+        title: "Let the layout change without losing the place",
+        paragraphs: [
+          "Resizing changes the space available to the illustration and text. The story saves the current reading position, waits briefly for the resize to settle, then rebuilds the relevant timelines and restores the view. Small height changes from mobile browser controls are ignored to avoid unnecessary rebuilding. Compact particle scenes also use lower sampling and pixel-ratio limits, as described in the particle note above.",
+          "We work through the same short stretch downward, upward and with a quick reversal, then repeat it after resizing. Fixed details in the painting, such as the doorway and bed edge, make unwanted movement easier to see. When those details shift while the room should be still, we inspect positioning and handoff geometry before adjusting the pace. This gives each repeated jump a concrete cause to work on.",
+        ],
+      },
+    ],
   },
   "design-details-particles": {
     title: "Technical details · Particle morphing and scene continuity",

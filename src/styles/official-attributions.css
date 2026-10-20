@@ -14,6 +14,19 @@
   background: #ffffff;
 }
 
+.official-attributions-page__source {
+  margin: 0 0 18px;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+
+.official-attributions-page__source a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
 .official-attributions-page__document {
   position: relative;
 }

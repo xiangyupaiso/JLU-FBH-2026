@@ -129,6 +129,29 @@
 .home-story .story-final-statement__kicker {
   margin: 0 0 clamp(18px, 3.2svh, 34px);
 }
+.home-story .story-final-question-track {
+  position: absolute;
+  inset: 0 0 auto;
+  z-index: 32;
+  pointer-events: none;
+}
+.home-story .story-final-question-entry,
+.home-story .story-final-question-carry {
+  margin: 0;
+  text-align: center;
+  opacity: var(--hope-exit-feather, 0);
+  visibility: hidden;
+  pointer-events: none;
+}
+.home-story .story-final-question-carry {
+  position: sticky;
+}
+.home-story .story-final-question-entry {
+  position: absolute;
+  inset: 93.5% 0 auto;
+  translate: 0 -50%;
+  z-index: 6;
+}
 /* Without motion there is no fold to watch: show the answer directly. */
 .home-story:not(.has-story-motion) .story-final-statement__fold {
   display: none;

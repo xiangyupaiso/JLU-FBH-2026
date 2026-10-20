@@ -83,7 +83,9 @@
 
 /* 2. Page surface ---------------------------------------------------------- */
 .wiki-page--route {
-  min-width: 320px;
+  --wiki-figure-radius: 16px;
+  --wiki-figure-safe-inset: 6px;
+  min-width: 0;
   /* Re-point the shared wiki tokens at the route palette so base components
      (progress hairline, status chips, hero rules) stay in family instead of
      falling back to the default pink/navy category hues. */
@@ -1250,6 +1252,9 @@ html.has-route-reader-scroll {
 /* 标题行级容器 (冒号自动分行时 lead 与 sub 各占一行) */
 .wiki-heading-line {
   display: block;
+  max-width: 100%;
+  padding-inline-end: 0.22em;
+  overflow-wrap: anywhere;
 }
 
 .wiki-heading-line--sub {
@@ -1659,10 +1664,72 @@ html.has-route-reader-scroll {
   height: auto;
   margin-left: auto;
   margin-right: auto;
-  border-radius: 4px;
+  border-radius: var(--wiki-figure-radius);
   border: none !important;
   box-shadow: none !important;
   outline: none !important;
+}
+
+/* Keep the full rectangular artwork inside the rounded edge. At 16px, a
+   6px inset clears the corner arc, including its antialiased boundary. */
+.wiki-page--route:where(:not(.wiki-page--visual-design))
+  :is(.wiki-figure, .wiki-figure-plate, .sust-stake-reel, .wiki-article figure:not(.wiki-masthead))
+  img {
+  box-sizing: border-box;
+  padding: var(--wiki-figure-safe-inset);
+  border-radius: var(--wiki-figure-radius);
+  background-color: #fff;
+}
+
+/* These photos already use an explicit aspect ratio and object-fit: cover.
+   Apply that ratio to the content box so the new inset cannot change the crop. */
+.wiki-page--route
+  :is(
+    .contribution-gallery__item,
+    .safety-image-group--safety-images-19,
+    .safety-image-group--safety-images-25,
+    .safety-image-group--safety-images-27,
+    .wiki-figure:has(> img[data-page-src*="/engineering-c2-01."]),
+    .wiki-figure:has(> img[data-page-src*="/engineering-c2-02a."]),
+    .wiki-figure:has(> img[data-page-src*="/engineering-c2-06."])
+  )
+  img {
+  box-sizing: content-box;
+  width: calc(100% - 2 * var(--wiki-figure-safe-inset));
+  max-width: calc(100% - 2 * var(--wiki-figure-safe-inset));
+  height: auto;
+}
+
+/* Round media frames without clipping figure captions or interactive charts. */
+.wiki-page--route:where(:not(.wiki-page--visual-design))
+  :is(
+    .education-media-grid__image,
+    .education-gallery__card,
+    .sust-stake-reel__frame,
+    .wiki-long-gallery
+  ) {
+  border-radius: var(--wiki-figure-radius);
+}
+
+/* Intrinsic image sizes and long scientific strings must not widen a grid
+   track. Tables and equations retain their dedicated horizontal scrollers. */
+.wiki-page--route :is(.wiki-blocks, .wiki-blocks > *, .wiki-figure, .wiki-feature) {
+  min-width: 0;
+}
+.wiki-page--route .wiki-figure {
+  max-width: 100%;
+}
+.wiki-page--route :is(.wiki-prose, .wiki-section__heading-body, .wiki-figure figcaption) {
+  overflow-wrap: anywhere;
+}
+.wiki-page--route .wiki-figure__row > * {
+  min-width: 0;
+  max-width: 100%;
+}
+.wiki-page--route .wiki-figure a:has(> img) {
+  display: block;
+  min-width: 0;
+  max-width: 100%;
 }
 
 .wiki-page--route .wiki-figure figcaption {
@@ -1677,6 +1744,8 @@ html.has-route-reader-scroll {
 /* 9b. Side-by-side image row (`carousel`) — document/translation pairs, photo sets. */
 .wiki-page--route .wiki-figure--carousel .wiki-figure__row {
   display: flex;
+  width: 100%;
+  min-width: 0;
   flex-wrap: wrap;
   gap: 16px;
   justify-content: center;
@@ -2019,12 +2088,12 @@ html.has-route-reader-scroll {
   .wiki-page.wiki-page--route .wiki-record .wiki-outline {
     position: fixed;
     z-index: 160;
-    top: 0;
+    top: var(--header-height);
     right: 0;
     bottom: 0;
     left: auto;
     width: min(80vw, 420px);
-    height: 100dvh;
+    height: calc(100dvh - var(--header-height));
     max-height: none;
     margin: 0;
     padding: calc(16px + env(safe-area-inset-top)) 16px

@@ -10,6 +10,10 @@
 .home-story section {
   scroll-margin-top: var(--header-height);
 }
+/* Preserve animation geometry without painting an empty native image frame. */
+.home-story img[data-home-src]:not([src]) {
+  visibility: hidden !important;
+}
 /* Illustration chapters already reserve space for foreground artwork inside
    .story-visual. A second anchor offset leaves a blank strip behind the lens. */
 .home-story .story-chapter {
@@ -94,6 +98,29 @@ body:has(.home-story) .footer {
   --chapter-bg: #f0eef3;
   --next-bg: #f0eef3;
   --scene-hold: 150svh;
+}
+/* Match the prologue's ink behind the two rounded reveal corners. Clip the
+   track, rather than overflow:hidden, to preserve its native sticky stage. */
+.story-chapter--ward {
+  background: #1e1616;
+}
+.story-chapter--ward .story-scene-track {
+  --ward-entry-radius: clamp(24px, 3vw, 48px);
+  clip-path: inset(0 round var(--ward-entry-radius) var(--ward-entry-radius) 0 0);
+}
+.story-ward-anchor {
+  display: contents;
+}
+.has-story-motion .story-chapter--ward .story-scene-track {
+  position: relative;
+}
+/* Start native sticky one viewport before the reveal window enters. The
+   track keeps its original clip and scroll distance; no JS counter-translation
+   has to catch up with the browser's asynchronous scrolling. */
+.has-story-motion .story-ward-anchor {
+  display: block;
+  position: absolute;
+  inset: calc(-1 * (var(--scene-height) + var(--header-height))) 0 0;
 }
 .story-chapter--map {
   --chapter-bg: #f9e8e8;

@@ -221,19 +221,21 @@
 /* 4-Antigen Candidate Cards — Balanced 2x2 Quadrant */
 .wiki-page--project .description-antigen-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1.25rem;
   margin: 0;
 }
 
 @media (max-width: 768px) {
   .wiki-page--project .description-antigen-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 }
 
 .wiki-page--project .description-antigen-card {
   display: flex;
+  min-width: 0;
+  overflow-wrap: anywhere;
   flex-direction: column;
   gap: 0.75rem;
   padding: 1.35rem 1.4rem;
@@ -256,12 +258,14 @@
 
 .wiki-page--project .description-antigen-card__title-row {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
   gap: 0.75rem;
 }
 
 .wiki-page--project .description-antigen-card__symbol {
+  flex-shrink: 0;
   font-family: var(--font-sans);
   font-size: 1.35rem;
   font-weight: 750;
@@ -279,7 +283,8 @@
   border: 1px solid color-mix(in srgb, var(--route-main) 25%, transparent);
   padding: 0.2rem 0.6rem;
   border-radius: 12px;
-  white-space: nowrap;
+  max-width: 100%;
+  white-space: normal;
 }
 
 .wiki-page--project .description-antigen-card__header {
