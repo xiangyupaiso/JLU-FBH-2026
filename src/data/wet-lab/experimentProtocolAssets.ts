@@ -1,7 +1,13 @@
 /** Protocol illustrations selected by content from the October manuscript update. */
 export const experimentProtocolAssets: Record<
   number,
-  { fileName: string; width: number; height: number; sourceArchive?: string }
+  {
+    fileName: string;
+    width: number;
+    height: number;
+    sourceArchive?: string;
+    uploadUrl?: string;
+  }
 > = {
   "3": {
     fileName: "1-1-workflow.webp",
@@ -20,24 +26,28 @@ export const experimentProtocolAssets: Record<
     width: 3200,
     height: 2563,
     sourceArchive: "2.1DC细胞制备与circRNA递送 (2)(1).zip",
+    uploadUrl: "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/2-1-workflow.webp",
   },
   "6": {
     fileName: "2-1-materials.webp",
     width: 2710,
     height: 3200,
     sourceArchive: "2.1DC细胞制备与circRNA递送 (2)(1).zip",
+    uploadUrl: "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/2-1-materials.webp",
   },
   "7": {
     fileName: "2-2-workflow.webp",
     width: 3200,
     height: 1674,
     sourceArchive: "2.2T细胞分离与DC–T共培养 (2)(1).zip",
+    uploadUrl: "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/2-2-workflow.webp",
   },
   "8": {
     fileName: "2-2-materials.webp",
     width: 3200,
     height: 2403,
     sourceArchive: "2.2T细胞分离与DC–T共培养 (2)(1).zip",
+    uploadUrl: "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/2-2-materials.webp",
   },
   "9": {
     fileName: "2-3-workflow.webp",
@@ -128,12 +138,14 @@ export const experimentProtocolAssets: Record<
     width: 3200,
     height: 2146,
     sourceArchive: "4.4 二轮 ELISpot (4)(1).zip",
+    uploadUrl: "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/4-4-workflow.webp",
   },
   "26": {
     fileName: "4-4-materials.webp",
     width: 3200,
     height: 1872,
     sourceArchive: "4.4 二轮 ELISpot (4)(1).zip",
+    uploadUrl: "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/4-4-materials.webp",
   },
   "47": {
     fileName: "5-1-workflow.webp",
@@ -247,13 +259,15 @@ export const experimentProtocolAssets: Record<
     fileName: "7-4-workflow.webp",
     width: 3200,
     height: 2850,
-    sourceArchive: "7.4 脾脏免疫细胞流式分析.zip",
+    sourceArchive: "7.4 脾脏免疫细胞流式分析 (1)(1).zip",
+    uploadUrl: "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/7-4-workflow.webp",
   },
   "44": {
     fileName: "7-4-materials.webp",
     width: 3200,
     height: 2713,
-    sourceArchive: "7.4 脾脏免疫细胞流式分析.zip",
+    sourceArchive: "7.4 脾脏免疫细胞流式分析 (1)(1).zip",
+    uploadUrl: "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/7-4-materials.webp",
   },
   "23": {
     fileName: "protocol-23.webp",
@@ -270,24 +284,28 @@ export const experimentProtocolAssets: Record<
     width: 3200,
     height: 2310,
     sourceArchive: "6.4 (2)(1).zip",
+    uploadUrl: "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/protocol-35.webp",
   },
   "36": {
     fileName: "protocol-36.webp",
     width: 3200,
     height: 2009,
     sourceArchive: "6.4 (2)(1).zip",
+    uploadUrl: "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/protocol-36.webp",
   },
   "53": {
     fileName: "7-5-workflow.webp",
     width: 3200,
     height: 3124,
     sourceArchive: "7.5(1).zip",
+    uploadUrl: "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/7-5-workflow.webp",
   },
   "54": {
     fileName: "7-5-materials.webp",
     width: 2612,
     height: 3200,
     sourceArchive: "7.5(1).zip",
+    uploadUrl: "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/7-5-materials.webp",
   },
 };
 
@@ -305,8 +323,8 @@ export function experimentProtocolLocalImage(page: number): string {
   return `${normalizedBase}assets/experiments/protocol/${experimentProtocolAssets[page].fileName}`;
 }
 
-/** Official verified CDN URL for protocol illustrations (all 46 probed 200 OK) */
+/** Official verified CDN URL for protocol illustrations. */
 export function experimentProtocolImage(page: number): string {
   const asset = experimentProtocolAssets[page];
-  return asset ? `${CDN_BASE}/${asset.fileName}` : "";
+  return asset?.uploadUrl ?? (asset ? `${CDN_BASE}/${asset.fileName}` : "");
 }
