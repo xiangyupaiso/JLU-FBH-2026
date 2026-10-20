@@ -213,9 +213,14 @@
   gap: 28px;
   align-items: start;
 }
+/* Column ratios solve for equal image heights: a 4:5 portrait beside a
+   1410x891 view, and a 1040x760 letter beside a 1440x900 page. */
 .manuscript .ms-pair--composition {
-  grid-template-columns: minmax(0, 0.7fr) minmax(0, 1.3fr);
-  align-items: center;
+  grid-template-columns: minmax(0, 0.5055fr) minmax(0, 1fr);
+  align-items: start;
+}
+.manuscript .ms-pair--letter {
+  grid-template-columns: minmax(0, 0.8553fr) minmax(0, 1fr);
 }
 /* Keep the three navigation studies at an identical scale and resting state. */
 .manuscript .ms-explore-sequence {
@@ -446,6 +451,22 @@
   margin: 10px 0 0;
   font: 500 12px/1.8 var(--font-sans, sans-serif);
   color: var(--rust);
+}
+.manuscript .ms-ring-study__controls {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 16px;
+  font-size: 12px;
+}
+.manuscript .ms-ring-study__controls input {
+  width: 100%;
+  min-width: 0;
+  accent-color: #84382b;
+}
+.manuscript .ms-ring-study__controls input:focus-visible {
+  outline: 2px solid #84382b;
+  outline-offset: 4px;
 }
 .manuscript .ms-ring-study figcaption {
   font: 400 12px/1.9 var(--font-sans, sans-serif);

@@ -67,7 +67,8 @@
 /* Match this composition to its companion frames; the viewer keeps the full original. */
 .wiki-page--visual-design
   .design-plate__panels--01-patient-question
-  .design-panel[data-panel="a"] img {
+  .design-panel[data-panel="a"]
+  img {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -235,6 +236,10 @@
 .design-plate .design-plate__panels--on-demand-hints .design-panel__image {
   aspect-ratio: 1.8;
   padding: 12px;
+}
+/* Full-width interface captures keep their small UI labels legible. */
+.design-plate .design-plate__panels--03-modular-interaction {
+  grid-template-columns: minmax(0, 1fr);
 }
 /* The regrouped navigation plate contains two strips and one compact crest. */
 .design-plate .design-plate__panels--navigation {
@@ -694,7 +699,7 @@ img[data-figure-zoom]:focus-visible {
   }
   .design-plate .design-plate__panels--navigation .design-panel:nth-child(2) {
     width: min(100%, 180px);
-    align-self: center;
+    align-self: flex-start;
   }
   .design-plate
     .design-plate__panels--navigation

@@ -6,14 +6,14 @@ const coreFonts = [
     fallback: "Georgia, serif",
     role: "01 / Titles & editorial emphasis",
     reason:
-      "Expressive serifs give the scientific story an editorial voice. We reserve this contrast for titles and selected statements, giving each section a recognizable entrance.",
+      "Fraunces’ contrasting strokes and shaped serifs distinguish headings from the body text. We use it to introduce a section or give a selected statement emphasis.",
   },
   {
     family: "Lexend",
     fallback: "sans-serif",
     role: "02 / Body text & explanations",
     reason:
-      "Open, rounded forms carry the longer explanations. A consistent body family keeps paragraphs, lists and tables visually connected as the research becomes more detailed.",
+      "Lexend’s open, rounded forms provide a consistent texture for longer explanations. Keeping the same family across paragraphs, lists and tables connects the different forms of research text.",
   },
 ];
 
@@ -24,7 +24,7 @@ const supportingFonts = [
     weight: 600,
     role: "Figure labels",
     reason:
-      "A geometric sans marks figure numbers and panel labels. Its compact role separates the figure identifier from the Lexend caption that explains it.",
+      "Outfit sets figure numbers and panel letters in compact geometric forms. This marks the figure’s identity before the Lexend caption develops its explanation.",
   },
   {
     family: "Manrope",
@@ -32,7 +32,7 @@ const supportingFonts = [
     weight: 600,
     role: "Navigation wordmark detail",
     reason:
-      "The small Wiki label beside the CirCure signature uses Manrope. This restrained sans supports the identity at a small size without adding another display voice.",
+      "The small Wiki label beside the CirCure signature uses Manrope. Its simple sans-serif forms suit a supporting label that needs to sit beside a more expressive wordmark.",
   },
   {
     family: "Fredoka",
@@ -40,7 +40,7 @@ const supportingFonts = [
     weight: 600,
     role: "Navigation cards & loading cues",
     reason:
-      "Rounded, fuller shapes connect short destination titles and loading messages with Lumi’s illustrated world. We keep this playful voice in brief interface moments.",
+      "Fredoka’s full, rounded shapes suit the short destination titles and loading messages that appear alongside Lumi. We keep this playful character in brief interface moments.",
   },
   {
     family: "Newsreader",
@@ -48,7 +48,7 @@ const supportingFonts = [
     weight: 600,
     role: "Editorial studies & team quotations",
     reason:
-      "A quieter serif appears in the design archive and selected team quotations. It gives these reading moments a letter-like tone; it also sits behind Fraunces in the heading fallback stack.",
+      "Newsreader brings a softer, letter-like tone to the design archive and selected team quotations. It also serves as a fallback for Fraunces headings.",
   },
   {
     family: "IBM Plex Mono",
@@ -56,7 +56,7 @@ const supportingFonts = [
     weight: 400,
     role: "Code, references & technical labels",
     reason:
-      "Equal character widths distinguish code and technical identifiers from prose. The supplied face has a regular 400 weight, which is the weight shown here.",
+      "IBM Plex Mono uses equal character widths to set code and technical identifiers apart from the surrounding prose. The specimen shows its regular 400 weight.",
   },
 ];
 
@@ -68,11 +68,10 @@ export function TypographyStudy() {
           Reading task → typeface → hierarchy
         </span>
         <p>
-          <strong>
-            Establish the voice. Support the reading. Mark the detail.
-          </strong>{" "}
-          Family creates a visual voice; size and weight tell the reader where
-          to begin. The same words below make those differences visible.
+          <strong>Give each piece of text a clear role.</strong> The typeface
+          establishes its character, while size, weight and spacing place it in
+          the reading order. Using the same words in each specimen lets us
+          compare these choices directly.
         </p>
       </div>
 
@@ -104,10 +103,10 @@ export function TypographyStudy() {
       </div>
 
       <p className="design-type-study__comparison-note">
-        <strong>Compare the pair:</strong> both specimens use the same words,
-        sizes and weights. Fraunces brings serif contrast; Lexend carries the
-        explanation with a more even sans-serif texture. These are display
-        specimens, with responsive title sizes on narrow screens.
+        <strong>Compare the pair:</strong> the wording, sizes and weights match,
+        so the main difference is the typeface. Fraunces’ serifs and stroke
+        contrast give the words a different rhythm from Lexend’s more even
+        sans-serif forms. On narrow screens, the larger samples scale down.
       </p>
 
       <div className="design-type-study__supporting">
@@ -148,8 +147,9 @@ export function TypographyStudy() {
             <span>Figure 01 · A circular RNA platform.</span>
           </div>
           <p>
-            Equal emphasis leaves the section title, explanation and figure note
-            competing for the same attention.
+            When the title, explanation and figure note share one size and
+            weight, they receive equal emphasis. Their different roles are
+            present in the wording, with fewer visual cues about where to begin.
           </p>
         </div>
         <div className="design-type-study__layered">
@@ -165,9 +165,10 @@ export function TypographyStudy() {
             <span>Figure 01 · A circular RNA platform.</span>
           </div>
           <p>
-            A small label introduces the context, a large title opens the
-            section, body text explains it and a quieter note supports the
-            figure.
+            With a hierarchy, the small label gives context before the larger
+            title opens the section. Body text then develops the idea, followed
+            by a smaller caption for the figure. The roles become visible in the
+            arrangement as well as the words.
           </p>
         </div>
       </div>
@@ -177,25 +178,23 @@ export function TypographyStudy() {
           Implementation notes · Font roles, loading & fallbacks
         </summary>
         <p>
-          Shared CSS tokens assign Fraunces to headings, Lexend to body text,
-          Outfit to figure labels and IBM Plex Mono to technical text.
-          Navigation adds Manrope and Fredoka for the roles shown above. The
-          archive loads Newsreader under a local ArchiveNewsreader alias; this
-          is the same family, rather than an additional typeface.
+          CSS tokens carry these roles across the site: Fraunces for headings,
+          Lexend for body text, Outfit for figure labels and IBM Plex Mono for
+          technical text. Manrope and Fredoka handle the navigation roles shown
+          above, and the archive loads Newsreader as ArchiveNewsreader.
         </p>
         <p>
-          Variable font files provide the supported weight ranges. IBM Plex Mono
-          is supplied as a 400 face, so requesting heavier weights elsewhere can
-          produce browser-synthesized bold. Font declarations use swap with
-          fallback stacks so text can appear while the web font loads. Serif,
-          sans-serif and monospace fallbacks retain the broad role of each face;
-          their metrics can still change wrapping and need checking.
+          Weight choices follow the available font files. Variable fonts supply
+          their supported ranges; IBM Plex Mono uses a 400 face. Its specimen
+          keeps that regular weight, since a heavier request can make the
+          browser synthesize bold.
         </p>
         <p>
-          The hierarchy comparison illustrates our layout reasoning. Its sample
-          sizes are local to this study. These visual choices document design
-          intent; reading speed, comprehension and accessibility outcomes would
-          need separate evaluation.
+          The layout also needs to work before the chosen font arrives. With
+          swap, text first appears in a fallback of the same broad category:
+          serif, sans-serif or monospace. Because character widths differ
+          between families, we check line breaks in both the fallback and loaded
+          states.
         </p>
       </details>
     </div>

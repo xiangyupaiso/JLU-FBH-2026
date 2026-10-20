@@ -1,14 +1,20 @@
 import { useEffect, useRef, useState } from "react";
 import { WikiNextRecord } from "../../../WikiNextRecord";
+import { useStudyEnvironment } from "./useStudyEnvironment";
 
 /** Keep the complete journey available until the reader chooses to play it. */
 export function RibbonStudy() {
   const root = useRef<HTMLDivElement>(null);
   const [progress, setProgress] = useState(0);
   const [playing, setPlaying] = useState(false);
+  const { active, reducedMotion } = useStudyEnvironment();
 
   useEffect(() => {
-    if (!playing) return;
+    if (!active || reducedMotion) setPlaying(false);
+  }, [active, reducedMotion]);
+
+  useEffect(() => {
+    if (!playing || !active || reducedMotion) return;
     let frame = 0;
     let previous = 0;
     const tick = (time: number) => {
@@ -21,7 +27,7 @@ export function RibbonStudy() {
     };
     frame = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(frame);
-  }, [playing]);
+  }, [playing, active, reducedMotion]);
 
   useEffect(() => {
     if (progress === 1) setPlaying(false);
@@ -47,12 +53,19 @@ export function RibbonStudy() {
       <div className="ribbon-study__controls">
         <button
           type="button"
+          disabled={reducedMotion}
           onClick={() => {
             if (progress === 1) setProgress(0);
             setPlaying((value) => !value);
           }}
         >
-          {playing ? "Pause" : progress === 1 ? "Replay" : "Play journey"}
+          {reducedMotion
+            ? "Reduced motion"
+            : playing
+              ? "Pause"
+              : progress === 1
+                ? "Replay"
+                : "Play journey"}
         </button>
         <label>
           <span>Journey</span>

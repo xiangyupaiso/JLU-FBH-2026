@@ -22,12 +22,26 @@ export const visualDesignPage: WikiPageContent = {
     "Design specifications, visual system principles, interactive physics models, and engineering infrastructure developed for the CirCure project.",
   visual: "resource-library",
   visualLabel: "CirCure visual design and illustration system",
-  visualSteps: ["identity", "palette", "interactive", "architecture", "interfaces", "modules", "games"],
+  visualSteps: [
+    "identity",
+    "palette",
+    "interactive",
+    "architecture",
+    "interfaces",
+    "modules",
+    "games",
+  ],
   facts: [
     { label: "Assets", value: "35 high-resolution AVIF artworks." },
     { label: "Palette", value: "Five bespoke cross-module color themes." },
-    { label: "Interactivity", value: "Physics-based adaptive Lumi mascot cursor." },
-    { label: "Architecture", value: "Strict 4-layer decoupled TypeScript pipeline." },
+    {
+      label: "Interactivity",
+      value: "Physics-based adaptive Lumi mascot cursor.",
+    },
+    {
+      label: "Architecture",
+      value: "Strict 4-layer decoupled TypeScript pipeline.",
+    },
   ],
   sections: [
     {
@@ -83,7 +97,7 @@ export const visualDesignPage: WikiPageContent = {
         {
           type: "prose",
           paragraphs: [
-            "The **team flag** uses a **pale pink ground**: gentle and approachable, and at the same time a statement of resolve in the fight against breast cancer. The **team logo** sits on the left and the **mascot** on the right, presenting our identity from two sides. The result is composed but not solemn, and carries a quiet optimism.",
+            "The **team flag** uses a **pale pink ground**: gentle and approachable, and at the same time a statement of resolve in the fight against breast cancer. The **team logo** sits on the left and the **mascot** on the right, presenting our identity from two sides. The simple arrangement and soft colors give the flag a quiet optimism.",
           ],
         },
         {
@@ -100,7 +114,7 @@ export const visualDesignPage: WikiPageContent = {
         {
           type: "prose",
           paragraphs: [
-            "She is **Lumi**, the mascot of our TNBC vaccine project. Her **soft fleece** stands for the warmth, delicacy and vitality of breast tissue, and her **rounded silhouette** is drawn from the structure of the mammary gland, giving her the feel of a guardian. The **pink petals blooming on her head** take their shape from the breast and represent life in bloom, women’s health and hope; the stamens at the flower’s center stand for scientific innovation and the steady development of new strategies against cancer. **Dark spots on her legs** mark the abnormal changes of cancerous cells, a reminder to pay attention to breast health, early screening and diagnosis. The **pink ribbon across her chest** is the internationally recognized breast cancer awareness symbol, standing for unity, compassion and determination. Lumi is more than a charming lamb: with **vaccine technology as her shield and immunity as her sword**, she stands beside patients and researchers in the fight against TNBC, working to give more lives another chance to bloom.",
+            "She is **Lumi**, the mascot of our TNBC vaccine project. Her **soft fleece** stands for the warmth, delicacy and vitality of breast tissue, and her **rounded silhouette** is drawn from the structure of the mammary gland, giving her the feel of a guardian. The **pink petals blooming on her head** take their shape from the breast and represent life in bloom, women’s health and hope; the stamens at the flower’s center stand for scientific innovation and the steady development of new strategies against cancer. **Dark spots on her legs** mark the abnormal changes of cancerous cells, a reminder to pay attention to breast health, early screening and diagnosis. The **pink ribbon across her chest** is the internationally recognized breast cancer awareness symbol, standing for unity, compassion and determination. Lumi brings these ideas together as a companion throughout the wiki, keeping the project’s concern for people visible beside the scientific explanation.",
           ],
         },
         {
@@ -132,10 +146,10 @@ export const visualDesignPage: WikiPageContent = {
         {
           type: "prose",
           paragraphs: [
-            "Color is not merely decorative across the CirCure wiki; it acts as an **emotional compass and a cognitive scaffold** across five research dimensions. Rather than imposing a single monotonous corporate hue, we architected a bespoke **double-ink typography hierarchy (H2 deep ink + H3 warm accent ink)** and **soft parchment foundations** for each module.",
-            "Each module's chromatic identity is deliberately rooted in the biological and human narrative of its work. **Project** embraces **Leaf Green and Moss Forest**, evoking cellular vitality, regenerative growth, and the hope of cancer remission. **Wet Lab** draws upon **Ice Blue and Marine Navy**, reflecting aqueous buffers, benchtop precision, and the sterile clarity of molecular assays. In contrast, **Dry Lab** is guided by **Mint Green and Pine Slate**, embodying algorithmic lucidity, data matrices, and computational RNA biophysics.",
-            "Moving from bench to society, **Engagement** radiates with **Warm Ochre and Coffee Brown**, expressing empathy, open dialogue, and human warmth across patient interviews and public education. Finally, **Team** is anchored in **Bronze Gold and Burgundy**, celebrating academic camaraderie, institutional heritage, and the humanitarian medical legacy of Norman Bethune and the First Bethune Hospital.",
-            "This cross-hue contract preserves **strict WCAG AAA contrast compliance** for long-form reading while giving each section a recognizable, immersive identity as the reader navigates through our scientific journey.",
+            "Color helps readers recognize the five modules and find their way through the wiki. Each module has a **two-color heading hierarchy**, pairing deep ink for H2 headings with a warmer accent for H3 headings, above a **pale parchment background**.",
+            "We chose each palette with its subject in mind. **Project** embraces **Leaf Green and Moss Forest**, evoking cellular vitality, regenerative growth, and the hope of cancer remission. **Wet Lab** draws upon **Ice Blue and Marine Navy**, reflecting aqueous buffers, benchtop precision, and the sterile clarity of molecular assays. In contrast, **Dry Lab** is guided by **Mint Green and Pine Slate**, embodying algorithmic lucidity, data matrices, and computational RNA biophysics.",
+            "**Engagement** uses **Warm Ochre and Coffee Brown** to give interviews and public education a warm, approachable setting. **Team** pairs **Bronze Gold and Burgundy** with illustrations of the university and hospital, acknowledging the people and clinical setting behind the project.",
+            "Within each module, the accent hues stay in headings and details while body text keeps a **dark ink on a pale surface** for long-form reading. Each section gains a recognizable identity without asking the reader to read across saturated color.",
           ],
         },
         {
@@ -165,7 +179,7 @@ export const visualDesignPage: WikiPageContent = {
           paragraphs: [
             "To bridge the gap between serious clinical oncology and an engaging digital experience, our mascot **Lumi travels with the reader as an interactive mouse cursor**. Built upon fine pointer physics, Lumi dynamically reflects both reader actions and the surrounding page atmosphere.",
             "Under standard navigation, Lumi runs beside the cursor in an **alert resting state**. The moment the pointer glides over any interactive anchor, button, or disclosure, Lumi seamlessly winks into a **joyful hover state** accompanied by a delicate **glass specular sheen (`GlassSheen`)**.",
-            "When clicked, Lumi undergoes **inertia spring recoil**, triggering twin circular ripples and emitting an explosive burst of **18 spark particles**. Remarkably, these sparkles do not use hardcoded colors: our dynamic color resolver (`resolveSparkPalette`) reads the active module's heading inks in real time, causing sparks to bloom in **Forest Green on Project, Marine Navy on Wet Lab, and Warm Ochre on Engagement**.",
+            "A click gives Lumi a brief **spring recoil**, with two circular ripples and **18 spark particles**. The color resolver (`resolveSparkPalette`) reads the active module’s heading colors, so the sparks match the page: **Forest Green on Project, Marine Navy on Wet Lab, and Warm Ochre on Engagement**.",
           ],
         },
         {
@@ -182,7 +196,7 @@ export const visualDesignPage: WikiPageContent = {
         {
           type: "prose",
           paragraphs: [
-            "Biomedical websites often suffer from cold, clinical sterility—rigid rectangular cards, harsh drop shadows, and synthetic neon gradients. In contrast, CirCure adopts an **oriental ink-and-wash aesthetic**, translating traditional watercolor bleeding into **procedural SVG components**.",
+            "We wanted the interface shapes to sit comfortably beside the painted illustrations. The **ink-and-wash treatment** uses **procedural SVG components** to reproduce soft pigment edges and uneven color.",
             "Our custom **`WatercolorCircle` component** discards uniform borders in favor of organic, breathing contours. By coupling radial transparency gradients with procedural SVG filters (**`<feTurbulence>` for fractal paper fiber noise** and **`<feDisplacementMap>` for liquid edge dispersion**), each disc renders as if hand-brushed onto wet rice paper.",
             "We deploy this organic visual language across two central communication structures: the **Tripartite Venn Architecture (Why, What, How)** and the **Five-Node Problem-Solution Orbit** encircling the core circular RNA platform.",
           ],
@@ -218,7 +232,7 @@ export const visualDesignPage: WikiPageContent = {
       navLabel: "Web Architecture",
       title: "Decoupled Web Engineering Architecture",
       summary:
-        "A four-layer clean engineering pipeline ensuring strict data decoupling, academic attribution, and next-generation media delivery.",
+        "A four-layer engineering structure that separates content from layout, supports academic attribution and delivers compressed media.",
       blocks: [
         {
           type: "subheading",
@@ -230,8 +244,8 @@ export const visualDesignPage: WikiPageContent = {
         {
           type: "prose",
           paragraphs: [
-            "A world-class visual design requires an equally rigorous engineering architecture. Following our **golden engineering paradigm**, the CirCure wiki enforces a strict **four-layer separation of concerns**: separating raw manuscript sources, pure TypeScript data models, decoupled asset/panel sockets, and ultra-thin route assemblers.",
-            "This architecture guarantees that **scientific research copy is preserved 100% verbatim** without presentation drift, while preventing code bloating and layout-entangled debt.",
+            "The visual design depends on a careful engineering structure. The CirCure wiki follows a **four-layer separation of concerns**: raw manuscript sources, typed TypeScript data models, asset and panel components, and thin route assemblers.",
+            "Keeping copy in data files lets **research text be revised without touching layout code**, and lets components change without rewriting the science. This reduces the risk of wording drifting between drafts and the published page.",
           ],
         },
         {
@@ -248,8 +262,8 @@ export const visualDesignPage: WikiPageContent = {
         {
           type: "prose",
           paragraphs: [
-            "Honoring scientific attribution, our citation architecture provides an academic reading experience inspired by premier journals. Hovering over any in-text citation marker (**`[1]`, `[2]`**) immediately summons an **interactive preview card** displaying authors, title, journal, volume, and year. Clicking the marker initiates smooth inertial scrolling directly to the bibliography with a glowing pulse, while **backlink pills** allow readers to jump effortlessly back to the exact paragraph where the paper was referenced.",
-            "To guarantee rapid global loading for iGEM judges, all visual artworks are delivered via the official iGEM static CDN in **next-generation AVIF format**, saving over 60% bandwidth. Coupled with automated **200 OK link health probing** and **automatically ordered figure badges (`FIG. XX`)**, the wiki achieves absolute link integrity and pristine visual fidelity.",
+            "Our citation system follows the reading conventions of academic journals. Hovering over an in-text citation marker (**`[1]`, `[2]`**) opens an **interactive preview card** with authors, title, journal, volume and year. Clicking the marker scrolls to the bibliography and briefly highlights the entry, while **backlink pills** return readers to the paragraph where the paper was cited.",
+            "Visual artworks are served from the official iGEM static server in **AVIF format** to reduce download size. Automated **link checks** confirm that image and reference URLs respond, and **figure badges (`FIG. XX`)** are numbered automatically in page order.",
           ],
         },
       ],
@@ -290,7 +304,7 @@ export const visualDesignPage: WikiPageContent = {
         {
           type: "prose",
           paragraphs: [
-            "This interface opens the project story through the eyes of a medical student. **Ward scenes and doctor-patient conversations** are drawn in soft watercolor with calm blue-purple tones, turning hard clinical facts into something a reader can follow as a story. It begins with the question patients ask after treatment — **“What if it comes back?”** — and uses it to name the two clinical pain points of TNBC: **the absence of clear targets and a high risk of recurrence**. Thought bubbles then carry the reader from the problem to our solution, a cancer vaccine built on the **circRNA platform**. Its mechanism is explained with a single metaphor, **changing a key**, which shows how antigens can be swapped in a modular, plug-and-play way. The narrative closes by extending the platform from TNBC to other solid tumors: a therapy that evolves alongside the tumor.",
+            "This interface opens the project story through the eyes of a medical student. **Ward scenes and doctor-patient conversations** are drawn in soft watercolor with calm blue-purple tones, turning hard clinical facts into something a reader can follow as a story. It begins with the question patients ask after treatment — **“What if it comes back?”** — and uses it to name the two clinical pain points of TNBC: **the absence of clear targets and a high risk of recurrence**. Thought bubbles introduce our proposed cancer vaccine and its **circRNA platform**. Its mechanism is explained with a single metaphor, **changing a key**, which shows how antigens can be swapped in a modular, plug-and-play way. The final platform scene considers how the modular design might support research on other solid tumors.",
           ],
         },
         {
@@ -306,7 +320,7 @@ export const visualDesignPage: WikiPageContent = {
       navLabel: "Subpage System",
       title: "Wiki Subpage Illustration System",
       summary:
-        "A cohesive visual language tailored to each module—from laboratory adventures to community dialogues.",
+        "A shared illustration style gives each module its own setting and subject.",
       blocks: [
         {
           type: "subheading",
@@ -343,7 +357,7 @@ export const visualDesignPage: WikiPageContent = {
         {
           type: "prose",
           paragraphs: [
-            "The **Project subpage adopts a bright, cheerful, nature-inspired cartoon style** in lime green, pale yellow, cream and soft olive. The atmosphere is lively and optimistic, echoing the curiosity and inventive spirit of the research itself. **Layered green mountains, rolling hills, clouds and a warm sun** build a playful landscape that gives the page a strong identity. A bold rounded title in cream with a dark green outline sits at the center: easy to read at a glance, and friendly rather than formal. Sunbeams radiate from the upper background and lead the eye inward, adding a sense of energy and discovery. Simplified trees, small flowers, winding paths and light decorative patterns fill the surroundings with depth while keeping the scene uncluttered. Flat colors, soft curves, exaggerated shapes and minimal shading hold the illustration together and match the project’s wider visual language. Unlike a conventional scientific interface, this page leans on storytelling and immersion, turning the Project page into a welcoming place to explore the motivation, background, objectives, experimental design and expected outcomes of the work. The open space around the title also leaves room for navigation, an introduction and project illustrations. Combining natural scenery, a clean layout and playful typography, the subpage becomes an inviting entry point to our project and encourages visitors to follow the ideas and the journey behind it.",
+            "The **Project subpage adopts a bright, cheerful, nature-inspired cartoon style** in lime green, pale yellow, cream and soft olive. The atmosphere is lively and optimistic, echoing the curiosity and inventive spirit of the research itself. **Layered green mountains, rolling hills, clouds and a warm sun** build a playful landscape that gives the page a strong identity. A bold rounded title in cream with a dark green outline sits at the center: easy to read at a glance, with a friendly tone. Sunbeams radiate from the upper background and lead the eye inward, adding a sense of energy and discovery. Simplified trees, small flowers, winding paths and light decorative patterns fill the surroundings with depth while keeping the scene uncluttered. Flat colors, soft curves, exaggerated shapes and minimal shading hold the illustration together and match the project’s wider visual language. The landscape gives readers a welcoming entrance to the project’s motivation, background, objectives and experimental design. The open space around the title also leaves room for navigation, an introduction and project illustrations. Combining natural scenery, a clean layout and playful typography, the subpage becomes an inviting entry point to our project and encourages visitors to follow the ideas and the journey behind it.",
           ],
         },
         {
@@ -434,7 +448,7 @@ export const visualDesignPage: WikiPageContent = {
         {
           type: "prose",
           paragraphs: [
-            "This interface continues the **warm, reassuring flat-illustration style** of the series, in cream, warm orange and coral red. A radiating composition draws the eye inward to the large **“Engagement”** title at the center: light beams spread outward while speech bubbles, a chain of figures passing hearts along, and a pair of cupped hands circle around it. The beams stand for the energy and reach that public participation brings, and the cupped hands repeat a motif from the rest of the series, here lifting scientific knowledge and handing it to the public. Inside the rounded speech bubbles, faint silhouettes of people of different ages and professions suggest a team that listens to many voices rather than speaking alone. Our mascot appears with a megaphone, or high-fiving a passer-by, which keeps the tone light. Gears, magnifying glasses and puzzle pieces are scattered through the scene as a reminder that **public participation actively drives a synthetic biology project forward**. Generous white space around the bold, rounded title keeps the focus clear while the surrounding figures give the page a sense of activity from all sides. The design carries a simple claim: **science should not be an island, but a conversation open to everyone**.",
+            "This interface continues the **warm, reassuring flat-illustration style** of the series, in cream, warm orange and coral red. A radiating composition draws the eye inward to the large **“Engagement”** title at the center: light beams spread outward while speech bubbles, a chain of figures passing hearts along, and a pair of cupped hands circle around it. The beams stand for the energy and reach that public participation brings, and the cupped hands repeat a motif from the rest of the series, here lifting scientific knowledge and handing it to the public. Inside the rounded speech bubbles, faint silhouettes of people of different ages and professions suggest the different voices that contribute to the project. Our mascot appears with a megaphone, or high-fiving a passer-by, which keeps the tone light. Gears, magnifying glasses and puzzle pieces are scattered through the scene as a reminder that **public participation actively drives a synthetic biology project forward**. Generous white space around the bold, rounded title keeps the focus clear while the surrounding figures give the page a sense of activity from all sides. The design carries a simple claim: **science grows through conversations that more people can join**.",
           ],
         },
         {
@@ -528,7 +542,8 @@ export const visualDesignPage: WikiPageContent = {
   next: {
     path: "/notebook",
     label: "Notebook",
-    title: "From the Finished Page to the Work Behind It",
-    description: "Behind the figures and layouts is a record of planning, experiments and revision. Follow our wet-lab notebook through the decisions and milestones that shaped the project.",
+    title: "The Choices Behind the Finished Page",
+    description:
+      "Behind the figures and layouts is a record of planning, experiments and revision. Follow our wet-lab notebook through the decisions and milestones that shaped the project.",
   },
 };

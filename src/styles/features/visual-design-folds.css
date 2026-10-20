@@ -1,0 +1,384 @@
+/*
+ * One shared look for every optional fold on the Visual Design page.
+ * Each closed fold reads as a card with an explicit "Expand" control, so
+ * readers can tell that more material sits behind it.
+ *
+ * Fold rules are spread across several feature stylesheets with
+ * id-level selectors. `#vd-fold` never matches; it only lifts these rules
+ * above those selectors so they win regardless of stylesheet load order.
+ */
+
+.wiki-page.wiki-page--visual-design
+  details:is(
+    .design-technical-note,
+    .design-live-study,
+    .design-archive-complete,
+    .art-studio__sources,
+    .ms-ring-sources,
+    .ms-source,
+    .archive-source,
+    .design-type-study__implementation,
+    .footer-reveal-study__archive,
+    #vd-fold
+  ) {
+  --fold-ink: var(--route-heading-ink, #243d2c);
+  --fold-accent: #3f5634;
+  --fold-line: #cfdac2;
+  --fold-line-strong: #9fb489;
+  --fold-surface: rgb(255 255 255 / 72%);
+  --fold-surface-hover: #f4f8ec;
+  --fold-chevron-down: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M2.5 4.5 6 8l3.5-3.5' fill='none' stroke='%233f5634' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  --fold-chevron-up: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M2.5 7.5 6 4l3.5 3.5' fill='none' stroke='%233f5634' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+
+  margin-block: 20px 24px;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+}
+
+.wiki-page.wiki-page--visual-design
+  details:is(
+    .design-technical-note,
+    .design-live-study,
+    .design-archive-complete,
+    .art-studio__sources,
+    .ms-ring-sources,
+    .ms-source,
+    .archive-source,
+    .design-type-study__implementation,
+    .footer-reveal-study__archive,
+    #vd-fold
+  )
+  > summary:not(#vd-fold) {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+  min-height: 56px;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 14px 132px 14px 20px;
+  list-style: none;
+  border: 1px solid var(--fold-line);
+  border-radius: 14px;
+  background: var(--fold-surface);
+  box-shadow: 0 1px 2px rgb(36 61 44 / 5%);
+  color: var(--fold-ink);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.6;
+  cursor: pointer;
+  transition:
+    border-color 180ms ease,
+    background-color 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.wiki-page.wiki-page--visual-design
+  details:is(
+    .design-technical-note,
+    .design-live-study,
+    .design-archive-complete,
+    .art-studio__sources,
+    .ms-ring-sources,
+    .ms-source,
+    .archive-source,
+    .design-type-study__implementation,
+    .footer-reveal-study__archive,
+    #vd-fold
+  )
+  > summary:not(#vd-fold)::-webkit-details-marker {
+  display: none;
+}
+
+.wiki-page.wiki-page--visual-design
+  details:is(
+    .design-technical-note,
+    .design-live-study,
+    .design-archive-complete,
+    .art-studio__sources,
+    .ms-ring-sources,
+    .ms-source,
+    .archive-source,
+    .design-type-study__implementation,
+    .footer-reveal-study__archive,
+    #vd-fold
+  )
+  > summary:not(#vd-fold)::marker {
+  content: "";
+}
+
+/* The control label is decorative; <summary> already announces its state. */
+.wiki-page.wiki-page--visual-design
+  details:is(
+    .design-technical-note,
+    .design-live-study,
+    .design-archive-complete,
+    .art-studio__sources,
+    .ms-ring-sources,
+    .ms-source,
+    .archive-source,
+    .design-type-study__implementation,
+    .footer-reveal-study__archive,
+    #vd-fold
+  )
+  > summary:not(#vd-fold)::after {
+  content: "Expand";
+  content: "Expand" / "";
+  position: absolute;
+  top: 50%;
+  right: 16px;
+  box-sizing: border-box;
+  min-width: 96px;
+  padding: 5px 30px 5px 14px;
+  border: 1px solid var(--fold-line-strong);
+  border-radius: 999px;
+  background: #eef4e3 var(--fold-chevron-down) no-repeat right 11px center /
+    12px 12px;
+  color: var(--fold-accent);
+  font: 500 12px/1.5 var(--font-sans, Lexend, sans-serif);
+  letter-spacing: 0.02em;
+  text-align: left;
+  white-space: nowrap;
+  transform: translateY(-50%);
+  transition:
+    background-color 180ms ease,
+    border-color 180ms ease,
+    color 180ms ease;
+}
+
+.wiki-page.wiki-page--visual-design
+  details:is(
+    .design-technical-note,
+    .design-live-study,
+    .design-archive-complete,
+    .art-studio__sources,
+    .ms-ring-sources,
+    .ms-source,
+    .archive-source,
+    .design-type-study__implementation,
+    .footer-reveal-study__archive,
+    #vd-fold
+  )
+  > summary:not(#vd-fold):hover {
+  border-color: var(--fold-line-strong);
+  background: var(--fold-surface-hover);
+  box-shadow: 0 4px 14px rgb(36 61 44 / 8%);
+}
+
+.wiki-page.wiki-page--visual-design
+  details:is(
+    .design-technical-note,
+    .design-live-study,
+    .design-archive-complete,
+    .art-studio__sources,
+    .ms-ring-sources,
+    .ms-source,
+    .archive-source,
+    .design-type-study__implementation,
+    .footer-reveal-study__archive,
+    #vd-fold
+  )
+  > summary:not(#vd-fold):hover::after {
+  border-color: var(--fold-accent);
+  background-color: #e2ecd2;
+}
+
+.wiki-page.wiki-page--visual-design
+  details:is(
+    .design-technical-note,
+    .design-live-study,
+    .design-archive-complete,
+    .art-studio__sources,
+    .ms-ring-sources,
+    .ms-source,
+    .archive-source,
+    .design-type-study__implementation,
+    .footer-reveal-study__archive,
+    #vd-fold
+  )
+  > summary:not(#vd-fold):focus-visible {
+  outline: 2px solid var(--route-subheading-ink, #84382b);
+  outline-offset: 3px;
+}
+
+.wiki-page.wiki-page--visual-design
+  details:is(
+    .design-technical-note,
+    .design-live-study,
+    .design-archive-complete,
+    .art-studio__sources,
+    .ms-ring-sources,
+    .ms-source,
+    .archive-source,
+    .design-type-study__implementation,
+    .footer-reveal-study__archive,
+    #vd-fold
+  )[open] {
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--fold-line);
+}
+
+.wiki-page.wiki-page--visual-design
+  details:is(
+    .design-technical-note,
+    .design-live-study,
+    .design-archive-complete,
+    .art-studio__sources,
+    .ms-ring-sources,
+    .ms-source,
+    .archive-source,
+    .design-type-study__implementation,
+    .footer-reveal-study__archive,
+    #vd-fold
+  )[open]
+  > summary:not(#vd-fold) {
+  margin-bottom: 12px;
+  border-color: var(--fold-line-strong);
+  background: var(--fold-surface-hover);
+}
+
+.wiki-page.wiki-page--visual-design
+  details:is(
+    .design-technical-note,
+    .design-live-study,
+    .design-archive-complete,
+    .art-studio__sources,
+    .ms-ring-sources,
+    .ms-source,
+    .archive-source,
+    .design-type-study__implementation,
+    .footer-reveal-study__archive,
+    #vd-fold
+  )[open]
+  > summary:not(#vd-fold)::after {
+  content: "Collapse";
+  content: "Collapse" / "";
+  background-image: var(--fold-chevron-up);
+}
+
+/* Technical notes and the archive drew their own "+" glyph; the shared control replaces both. */
+.wiki-page.wiki-page--visual-design .design-technical-note__toggle {
+  display: none;
+}
+
+.wiki-page.wiki-page--visual-design
+  details:is(.design-technical-note, .design-archive-complete, #vd-fold)
+  > summary:not(#vd-fold) {
+  padding-block: 16px;
+}
+
+.wiki-page.wiki-page--visual-design
+  details:is(.design-technical-note, .design-archive-complete, #vd-fold)
+  .design-disclosure-preview {
+  margin: 0;
+}
+
+.wiki-page.wiki-page--visual-design
+  details:is(.design-archive-complete, #vd-fold)
+  > summary:not(#vd-fold)
+  > span:first-child {
+  font-size: 15px;
+  font-weight: 500;
+}
+
+/* The footer study indents its frame count as an inline aside; in the card it is a second line. */
+.wiki-page.wiki-page--visual-design
+  .footer-reveal-study__archive
+  > summary:not(#vd-fold)
+  > span {
+  margin-left: 0;
+}
+
+@media (max-width: 680px) {
+  .wiki-page.wiki-page--visual-design
+    details:is(
+      .design-technical-note,
+      .design-live-study,
+      .design-archive-complete,
+      .art-studio__sources,
+      .ms-ring-sources,
+      .ms-source,
+      .archive-source,
+      .design-type-study__implementation,
+      .footer-reveal-study__archive,
+      #vd-fold
+    )
+    > summary:not(#vd-fold) {
+    padding: 14px 60px 14px 16px;
+    border-radius: 12px;
+  }
+
+  .wiki-page.wiki-page--visual-design
+    details:is(
+      .design-technical-note,
+      .design-live-study,
+      .design-archive-complete,
+      .art-studio__sources,
+      .ms-ring-sources,
+      .ms-source,
+      .archive-source,
+      .design-type-study__implementation,
+      .footer-reveal-study__archive,
+      #vd-fold
+    )
+    > summary:not(#vd-fold)::after,
+  .wiki-page.wiki-page--visual-design
+    details:is(
+      .design-technical-note,
+      .design-live-study,
+      .design-archive-complete,
+      .art-studio__sources,
+      .ms-ring-sources,
+      .ms-source,
+      .archive-source,
+      .design-type-study__implementation,
+      .footer-reveal-study__archive,
+      #vd-fold
+    )[open]
+    > summary:not(#vd-fold)::after {
+    content: "";
+    content: "" / "";
+    right: 12px;
+    width: 32px;
+    min-width: 0;
+    height: 32px;
+    padding: 0;
+    background-position: center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wiki-page.wiki-page--visual-design
+    details:is(
+      .design-technical-note,
+      .design-live-study,
+      .design-archive-complete,
+      .art-studio__sources,
+      .ms-ring-sources,
+      .ms-source,
+      .archive-source,
+      .design-type-study__implementation,
+      .footer-reveal-study__archive,
+      #vd-fold
+    )
+    > summary:not(#vd-fold),
+  .wiki-page.wiki-page--visual-design
+    details:is(
+      .design-technical-note,
+      .design-live-study,
+      .design-archive-complete,
+      .art-studio__sources,
+      .ms-ring-sources,
+      .ms-source,
+      .archive-source,
+      .design-type-study__implementation,
+      .footer-reveal-study__archive,
+      #vd-fold
+    )
+    > summary:not(#vd-fold)::after {
+    transition: none;
+  }
+}

@@ -25,7 +25,7 @@ export function FooterRevealStudy({
           className="footer-reveal-study__scroll-hint"
         >
           <Mouse size={14} aria-hidden="true" />
-          Scroll the page to reveal · scroll back to replay
+          Scroll down to reveal the team · scroll up to return
         </p>
       </header>
       <div
@@ -36,7 +36,7 @@ export function FooterRevealStudy({
       </div>
       <details className="footer-reveal-study__archive">
         <summary>
-          View the original page sequence <span>4 reference frames</span>
+          See the reveal in the full page <span>4 reference frames</span>
         </summary>
         <div
           dangerouslySetInnerHTML={{

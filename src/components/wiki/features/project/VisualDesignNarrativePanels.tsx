@@ -1,15 +1,14 @@
 import { QueuedImage } from "../../../common/QueuedImage";
 import { Fragment, useEffect, useId, useRef } from "react";
-import circRnaRing from "../../../../assets/home/story/scene-1-layer-4.webp";
 import tearOutline from "../../../../assets/home/supplements/tear-4.webp";
 import mapCloud from "../../../../assets/home/story/map-cloud-northwest.webp";
-import teamPhoto from "../../../../assets/footer/team-keepsake.webp";
 import { visualDesignFigures } from "../../../../data/project/visualDesignAssets";
 import { DesignExplanationFigures } from "./DesignExplanationFigures";
 import { visualDesignCitationIndex as citationIndex } from "../../../../data/citations/visualDesignCitations";
 import { CitationReferenceList } from "../../citations/CitationRegister";
 import { FooterRevealStudy } from "./FooterRevealStudy";
 import { TypographyStudy } from "./TypographyStudy";
+import { scrollReaderToTarget } from "../../../../utils/scrollReaderToTarget";
 import {
   visualDesignReferences,
   visualDesignTechnicalNotes,
@@ -24,6 +23,8 @@ import historyMarkup from "../../../../data/project/visual-design/history.html?r
 import "../../../../styles/features/visual-design-plates.css";
 import "../../../../styles/features/visual-design-craft.css";
 import "../../../../styles/features/visual-design-layout.css";
+import "../../../../styles/features/visual-design-figure-fit.css";
+import "../../../../styles/features/visual-design-folds.css";
 
 const plateMarkup = import.meta.glob<string>(
   "../../../../data/project/visual-design/plates/*.html",
@@ -37,7 +38,10 @@ const plateMarkup = import.meta.glob<string>(
 const references = visualDesignReferences;
 
 const media = import.meta.glob<string>(
-  "../../../../assets/visual-design/**/*.{png,jpg,webp,svg,json}",
+  [
+    "../../../../assets/visual-design/**/*.{png,jpg,webp,svg,json}",
+    "!../../../../assets/visual-design/explainers/**",
+  ],
   {
     query: "?url",
     import: "default",
@@ -52,7 +56,6 @@ const mediaByPath = new Map(
 );
 mediaByPath.set("home:tear", tearOutline);
 mediaByPath.set("home:cloud", mapCloud);
-mediaByPath.set("home:photo", teamPhoto);
 mediaByPath.set("home:cursor", visualDesignFigures.lumiCursorActive.src);
 
 /** Resolve every image and source record through Vite's production asset graph. */
@@ -72,110 +75,6 @@ function resolveMedia(markup: string) {
             : mediaByPath.get(path);
       return url ? `${name}="${url}"` : attribute;
     },
-  );
-}
-
-const MOTION_STATES = [
-  {
-    key: "establish",
-    label: "Establish",
-    context: "Why circRNA?",
-    cue: "Introduce the subject",
-    description:
-      "The ring and its explanation are visible together before the scene changes.",
-  },
-  {
-    key: "carry",
-    label: "Carry",
-    context: "Between chapters",
-    cue: "Keep the outline",
-    description:
-      "The explanation recedes. The same ring remains visible through the handoff.",
-  },
-  {
-    key: "settle",
-    label: "Settle",
-    context: "Our platform",
-    cue: "Arrive before explaining",
-    description:
-      "The ring reaches its new position as the platform context begins to appear.",
-  },
-  {
-    key: "read",
-    label: "Read",
-    context: "Our platform",
-    cue: "Hold the complete view",
-    description:
-      "The ring and the new explanation stay together, leaving time to read.",
-  },
-] as const;
-
-export function MotionScoreStudy() {
-  const id = useId();
-
-  return (
-    <figure
-      className="supplement-motion-study"
-      aria-labelledby={id + "-caption"}
-    >
-      <div className="supplement-motion-study__heading">
-        <span>One ring, four readable states</span>
-        <span className="supplement-motion-study__eyebrow">
-          Why circRNA? → Our platform
-        </span>
-      </div>
-      <ol
-        className="supplement-motion-study__sequence"
-        aria-label="CircRNA reading sequence"
-      >
-        {MOTION_STATES.map((state, index) => (
-          <li
-            className={
-              "supplement-motion-study__state supplement-motion-study__state--" +
-              state.key
-            }
-            key={state.key}
-          >
-            <div className="supplement-motion-study__phase">
-              <span
-                className="supplement-motion-study__letter"
-                aria-hidden="true"
-              >
-                {String.fromCharCode(97 + index)}
-              </span>
-              <strong>{state.label}</strong>
-            </div>
-            <div className="supplement-motion-study__scene" aria-hidden="true">
-              <span className="supplement-motion-study__context">
-                {state.context}
-              </span>
-              <QueuedImage
-                className="supplement-motion-study__ring"
-                src={circRnaRing}
-                width="459"
-                height="448"
-                alt=""
-                loading="lazy"
-                decoding="async"
-              />
-              <span className="supplement-motion-study__annotation">
-                {index < 2 ? "Circular RNA" : "circRNA backbone"}
-              </span>
-            </div>
-            <div className="supplement-motion-study__note">
-              <strong>{state.cue}</strong>
-              <p>{state.description}</p>
-            </div>
-          </li>
-        ))}
-      </ol>
-      <figcaption id={id + "-caption"}>
-        <strong>The outline persists; the context changes.</strong> These four
-        schematic states place the original watercolor ring side by side, from
-        “Why circRNA?” to “Our platform”. They illustrate the reading sequence,
-        rather than reproduce individual homepage frames.
-      </figcaption>
-    </figure>
   );
 }
 
@@ -279,9 +178,11 @@ function DesignRevision({
         <li>
           <div className="design-archive-highlights__copy">
             <p className="design-revision__label">Why we revised it</p>
-            <h4>{revision.title}</h4>
+            <p className="design-revision__title">{revision.title}</p>
             <p>{revision.body}</p>
-            <a href={`#${revision.target}`}>Inspect the archived comparison</a>
+            <a href={`#${revision.target}`}>
+              See the full comparison in the archive
+            </a>
           </div>
           <div className="design-archive-highlights__pair design-plate">
             {revision.images.map((image) => (
@@ -310,57 +211,103 @@ function DesignRevision({
   );
 }
 
-function DesignHistoryArchive() {
+function DesignArchive({
+  id,
+  title,
+  description,
+  markup,
+}: {
+  id: string;
+  title: string;
+  description: string;
+  markup: string;
+}) {
   const fullArchive = useRef<HTMLDetailsElement>(null);
 
   useEffect(() => {
     let focusFrame = 0;
+    let activeTarget: HTMLElement | null = null;
+    let focusTarget = false;
+    const article = fullArchive.current?.closest(".wiki-article");
+    const align = () => {
+      focusFrame = 0;
+      if (!activeTarget?.isConnected || !fullArchive.current?.open) return;
+      const inner = activeTarget
+        .closest(".wiki-page")
+        ?.querySelector<HTMLElement>(".route-frame__scroll");
+      scrollReaderToTarget(activeTarget, inner);
+      if (focusTarget) {
+        activeTarget.tabIndex = -1;
+        activeTarget.focus({ preventScroll: true });
+        focusTarget = false;
+      }
+    };
+    const requestAlignment = () => {
+      if (!focusFrame) focusFrame = requestAnimationFrame(align);
+    };
+    // Images and disclosures can change article height after the first jump.
+    const resizeObserver = new ResizeObserver(requestAlignment);
+    const releaseTarget = () => {
+      activeTarget = null;
+      resizeObserver.disconnect();
+      cancelAnimationFrame(focusFrame);
+      focusFrame = 0;
+    };
     // Reveal archived anchors before the shared reading-frame jump measures them.
     const reveal = (hash: string) => {
       const target = document.getElementById(hash.slice(1));
       if (target && fullArchive.current?.contains(target)) {
-        fullArchive.current.open = true;
+        let node: HTMLElement | null = target;
+        while (node && fullArchive.current.contains(node)) {
+          if (node instanceof HTMLDetailsElement) node.open = true;
+          if (node === fullArchive.current) break;
+          node = node.parentElement;
+        }
         return target;
       }
     };
-    const revealCurrent = () => reveal(window.location.hash);
+    const followTarget = (target: HTMLElement | null | undefined) => {
+      releaseTarget();
+      if (!target) return;
+      activeTarget = target;
+      focusTarget = true;
+      if (article) resizeObserver.observe(article);
+      requestAlignment();
+    };
+    const revealCurrent = () => {
+      followTarget(reveal(window.location.hash));
+    };
     const revealLink = (event: MouseEvent) => {
       if (!(event.target instanceof Element)) return;
       const link = event.target.closest<HTMLAnchorElement>('a[href^="#"]');
-      const target = link && reveal(link.hash);
-      if (target) {
-        cancelAnimationFrame(focusFrame);
-        focusFrame = requestAnimationFrame(() => {
-          target.tabIndex = -1;
-          target.focus({ preventScroll: true });
-        });
-      }
+      if (link) followTarget(reveal(link.hash));
     };
     revealCurrent();
     document.addEventListener("click", revealLink, true);
     window.addEventListener("hashchange", revealCurrent, true);
+    window.addEventListener("wheel", releaseTarget, { passive: true });
+    window.addEventListener("touchstart", releaseTarget, { passive: true });
+    window.addEventListener("pointerdown", releaseTarget);
+    window.addEventListener("keydown", releaseTarget);
     return () => {
-      cancelAnimationFrame(focusFrame);
+      releaseTarget();
       document.removeEventListener("click", revealLink, true);
       window.removeEventListener("hashchange", revealCurrent, true);
+      window.removeEventListener("wheel", releaseTarget);
+      window.removeEventListener("touchstart", releaseTarget);
+      window.removeEventListener("pointerdown", releaseTarget);
+      window.removeEventListener("keydown", releaseTarget);
     };
   }, []);
 
   return (
     <div className="design-archive-review">
-      <details
-        id="design-history-archive"
-        className="design-archive-complete"
-        ref={fullArchive}
-      >
+      <details id={id} className="design-archive-complete" ref={fullArchive}>
         <summary>
-          <span>Explore the complete archive · Six design folios</span>
-          <span className="design-disclosure-preview">
-            July–October studies, working prototypes and the sources behind the
-            revisions.
-          </span>
+          <span>{title}</span>
+          <span className="design-disclosure-preview">{description}</span>
         </summary>
-        <div dangerouslySetInnerHTML={{ __html: archiveMarkup }} />
+        <div dangerouslySetInnerHTML={{ __html: markup }} />
       </details>
     </div>
   );
@@ -368,14 +315,7 @@ function DesignHistoryArchive() {
 
 export function VisualDesignNarrativeFeature({ name }: { name: string }) {
   if (name === "design-typography-study") return <TypographyStudy />;
-  if (
-    [
-      "design-reader-choice",
-      "design-painted-layers",
-      "design-particle-endpoints",
-      "design-lumi-roles",
-    ].includes(name)
-  ) {
+  if (["design-painted-layers", "design-particle-endpoints"].includes(name)) {
     return <DesignExplanationFigures name={name} sources={mediaByPath} />;
   }
   if (name === "design-study-07-footer-reveal") {
@@ -383,9 +323,27 @@ export function VisualDesignNarrativeFeature({ name }: { name: string }) {
       <FooterRevealStudy archiveMarkup={markupByFeature.get(name) ?? ""} />
     );
   }
-  if (name === "motion-score-study") return <MotionScoreStudy />;
   if (name === "design-craft-principle") return <DesignCraftPrinciple />;
-  if (name === "design-history-archive") return <DesignHistoryArchive />;
+  if (name === "design-history-archive") {
+    return (
+      <DesignArchive
+        id="design-history-archive"
+        title="Open the design folios · Six studies and revisions"
+        description="Openings, working prototypes and interface refinements · July–October."
+        markup={archiveMarkup}
+      />
+    );
+  }
+  if (name === "design-study-09-artwork-archive") {
+    return (
+      <DesignArchive
+        id="design-artwork-archive"
+        title="Open the sketchbook · Eleven initial drafts"
+        description="The patient story, molecular sketches and supporting painting layers."
+        markup={markupByFeature.get(name) ?? ""}
+      />
+    );
+  }
   const revision = visualDesignArchiveHighlights.find(
     (item) => item.key === name,
   );
@@ -407,7 +365,9 @@ export function VisualDesignNarrativeFeature({ name }: { name: string }) {
           {technicalNote.sections.map((section, index) => (
             <Fragment key={section.title}>
               <div className="design-technical-note__section">
-                <h4>{section.title}</h4>
+                <p className="design-technical-note__heading">
+                  {section.title}
+                </p>
                 {section.paragraphs.map((paragraph) => (
                   <p key={paragraph}>{paragraph}</p>
                 ))}
@@ -423,7 +383,9 @@ export function VisualDesignNarrativeFeature({ name }: { name: string }) {
           ))}
           {technicalNote.code ? (
             <div className="design-technical-note__section">
-              <h4>{technicalNote.codeLabel}</h4>
+              <p className="design-technical-note__heading">
+                {technicalNote.codeLabel}
+              </p>
               <pre aria-label={technicalNote.codeLabel}>
                 <code>{technicalNote.code}</code>
               </pre>

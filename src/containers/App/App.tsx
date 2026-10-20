@@ -20,7 +20,13 @@ import "../../styles/route-palette-drylab.css";
 import "../../styles/route-palette-engagement.css";
 import { Navigate, Route, Routes, useLocation } from "react-router-dom";
 import { getPathMapping, stringToSlug } from "../../utils";
-import { Suspense, useEffect, useLayoutEffect, useRef, type ReactNode } from "react";
+import {
+  Suspense,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  type ReactNode,
+} from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Navbar } from "../../components/Navbar";
@@ -143,6 +149,8 @@ const App = () => {
       )
         return;
       const target = new URL(link.href, window.location.href);
+      // Image links can open an in-page viewer without changing the route.
+      if (/\.(?:avif|gif|jpe?g|png|svg|webp)$/i.test(target.pathname)) return;
       if (
         target.origin === window.location.origin &&
         target.pathname.startsWith(import.meta.env.BASE_URL) &&
@@ -153,7 +161,10 @@ const App = () => {
         // A link handler can cancel navigation after this capture listener.
         // The mounted page still needs to release the cover in that case.
         window.setTimeout(() => {
-          if (event.defaultPrevented && window.location.pathname === previousPath)
+          if (
+            event.defaultPrevented &&
+            window.location.pathname === previousPath
+          )
             hidePageLoaderWhenReady();
         }, 0);
       }
