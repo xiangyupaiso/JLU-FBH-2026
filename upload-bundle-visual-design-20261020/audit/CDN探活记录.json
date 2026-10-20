@@ -1,0 +1,3502 @@
+[
+  {
+    "file": "history/artwork/draft-care-full.webp",
+    "bytes": 1825066,
+    "required": true,
+    "references": [
+      {
+        "source": "src/data/project/visual-design/plates/09-artwork-archive.html",
+        "kind": "disclosure:href"
+      }
+    ],
+    "cdnUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/draft-care-full.webp",
+    "attempts": [
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/draft-care-full.webp",
+        "status": 200,
+        "contentType": "image/webp",
+        "bytes": "1825066"
+      }
+    ]
+  },
+  {
+    "file": "history/artwork/draft-care.webp",
+    "bytes": 73184,
+    "required": true,
+    "references": [
+      {
+        "source": "src/data/project/visual-design/plates/09-artwork-archive.html",
+        "kind": "disclosure:src"
+      }
+    ],
+    "cdnUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/draft-care.webp",
+    "attempts": [
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/draft-care.webp",
+        "status": 200,
+        "contentType": "image/webp",
+        "bytes": "73184"
+      }
+    ]
+  },
+  {
+    "file": "history/artwork/draft-comparison-full.webp",
+    "bytes": 1575580,
+    "required": true,
+    "references": [
+      {
+        "source": "src/data/project/visual-design/plates/09-artwork-archive.html",
+        "kind": "disclosure:href"
+      }
+    ],
+    "cdnUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/draft-comparison-full.webp",
+    "attempts": [
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/draft-comparison-full.webp",
+        "status": 200,
+        "contentType": "image/webp",
+        "bytes": "1575580"
+      }
+    ]
+  },
+  {
+    "file": "history/artwork/draft-comparison.webp",
+    "bytes": 112754,
+    "required": true,
+    "references": [
+      {
+        "source": "src/data/project/visual-design/plates/09-artwork-archive.html",
+        "kind": "disclosure:src"
+      }
+    ],
+    "cdnUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/draft-comparison.webp",
+    "attempts": [
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/draft-comparison.webp",
+        "status": 200,
+        "contentType": "image/webp",
+        "bytes": "112754"
+      }
+    ]
+  },
+  {
+    "file": "history/artwork/draft-map-full.webp",
+    "bytes": 767404,
+    "required": true,
+    "references": [
+      {
+        "source": "src/data/project/visual-design/plates/09-artwork-archive.html",
+        "kind": "disclosure:href"
+      }
+    ],
+    "cdnUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/draft-map-full.webp",
+    "attempts": [
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/draft-map-full.webp",
+        "status": 200,
+        "contentType": "image/webp",
+        "bytes": "767404"
+      }
+    ]
+  },
+  {
+    "file": "history/artwork/draft-map-text-full.webp",
+    "bytes": 862592,
+    "required": true,
+    "references": [
+      {
+        "source": "src/data/project/visual-design/plates/09-artwork-archive.html",
+        "kind": "disclosure:href"
+      }
+    ],
+    "cdnUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/draft-map-text-full.webp",
+    "attempts": [
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/draft-map-text-full.webp",
+        "status": 200,
+        "contentType": "image/webp",
+        "bytes": "862592"
+      }
+    ]
+  },
+  {
+    "file": "history/artwork/draft-map-text.webp",
+    "bytes": 52054,
+    "required": true,
+    "references": [
+      {
+        "source": "src/data/project/visual-design/plates/09-artwork-archive.html",
+        "kind": "disclosure:src"
+      }
+    ],
+    "cdnUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/draft-map-text.webp",
+    "attempts": [
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/draft-map-text.webp",
+        "status": 200,
+        "contentType": "image/webp",
+        "bytes": "52054"
+      }
+    ]
+  },
+  {
+    "file": "history/artwork/draft-map.webp",
+    "bytes": 42090,
+    "required": true,
+    "references": [
+      {
+        "source": "src/data/project/visual-design/plates/09-artwork-archive.html",
+        "kind": "disclosure:src"
+      }
+    ],
+    "cdnUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/draft-map.webp",
+    "attempts": [
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/draft-map.webp",
+        "status": 200,
+        "contentType": "image/webp",
+        "bytes": "42090"
+      }
+    ]
+  },
+  {
+    "file": "history/artwork/draft-platform-full.webp",
+    "bytes": 609906,
+    "required": true,
+    "references": [
+      {
+        "source": "src/data/project/visual-design/plates/09-artwork-archive.html",
+        "kind": "disclosure:href"
+      }
+    ],
+    "cdnUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/draft-platform-full.webp",
+    "attempts": [
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/draft-platform-full.webp",
+        "status": 200,
+        "contentType": "image/webp",
+        "bytes": "609906"
+      }
+    ]
+  },
+  {
+    "file": "history/artwork/draft-platform.webp",
+    "bytes": 38408,
+    "required": true,
+    "references": [
+      {
+        "source": "src/data/project/visual-design/plates/09-artwork-archive.html",
+        "kind": "disclosure:src"
+      }
+    ],
+    "cdnUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/draft-platform.webp",
+    "attempts": [
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/draft-platform.webp",
+        "status": 200,
+        "contentType": "image/webp",
+        "bytes": "38408"
+      }
+    ]
+  },
+  {
+    "file": "history/artwork/draft-protection-full.webp",
+    "bytes": 2499144,
+    "required": true,
+    "references": [
+      {
+        "source": "src/data/project/visual-design/plates/09-artwork-archive.html",
+        "kind": "disclosure:href"
+      }
+    ],
+    "cdnUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/draft-protection-full.webp",
+    "attempts": [
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/draft-protection-full.webp",
+        "status": 200,
+        "contentType": "image/webp",
+        "bytes": "2499144"
+      }
+    ]
+  },
+  {
+    "file": "history/artwork/draft-protection.webp",
+    "bytes": 31700,
+    "required": true,
+    "references": [
+      {
+        "source": "src/data/project/visual-design/plates/09-artwork-archive.html",
+        "kind": "disclosure:src"
+      }
+    ],
+    "cdnUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/draft-protection.webp",
+    "attempts": [
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/draft-protection.webp",
+        "status": 200,
+        "contentType": "image/webp",
+        "bytes": "31700"
+      }
+    ]
+  },
+  {
+    "file": "history/artwork/draft-question-full.webp",
+    "bytes": 1092740,
+    "required": true,
+    "references": [
+      {
+        "source": "src/data/project/visual-design/plates/09-artwork-archive.html",
+        "kind": "disclosure:href"
+      }
+    ],
+    "cdnUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/draft-question-full.webp",
+    "attempts": [
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/draft-question-full.webp",
+        "status": 200,
+        "contentType": "image/webp",
+        "bytes": "1092740"
+      }
+    ]
+  },
+  {
+    "file": "history/artwork/draft-question.webp",
+    "bytes": 81998,
+    "required": true,
+    "references": [
+      {
+        "source": "src/data/project/visual-design/plates/09-artwork-archive.html",
+        "kind": "disclosure:src"
+      }
+    ],
+    "cdnUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/draft-question.webp",
+    "attempts": [
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/draft-question.webp",
+        "status": 200,
+        "contentType": "image/webp",
+        "bytes": "81998"
+      }
+    ]
+  },
+  {
+    "file": "history/artwork/draft-ward-clear-full.webp",
+    "bytes": 2254026,
+    "required": true,
+    "references": [
+      {
+        "source": "src/data/project/visual-design/plates/09-artwork-archive.html",
+        "kind": "disclosure:href"
+      }
+    ],
+    "cdnUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/draft-ward-clear-full.webp",
+    "attempts": [
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/draft-ward-clear-full.webp",
+        "status": 200,
+        "contentType": "image/webp",
+        "bytes": "2254026"
+      }
+    ]
+  },
+  {
+    "file": "history/artwork/draft-ward-clear.webp",
+    "bytes": 105214,
+    "required": true,
+    "references": [
+      {
+        "source": "src/data/project/visual-design/plates/09-artwork-archive.html",
+        "kind": "disclosure:src"
+      }
+    ],
+    "cdnUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/draft-ward-clear.webp",
+    "attempts": [
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/draft-ward-clear.webp",
+        "status": 200,
+        "contentType": "image/webp",
+        "bytes": "105214"
+      }
+    ]
+  },
+  {
+    "file": "history/artwork/draft-ward-soft-full.webp",
+    "bytes": 2186626,
+    "required": true,
+    "references": [
+      {
+        "source": "src/data/project/visual-design/plates/09-artwork-archive.html",
+        "kind": "disclosure:href"
+      }
+    ],
+    "cdnUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/draft-ward-soft-full.webp",
+    "attempts": [
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/draft-ward-soft-full.webp",
+        "status": 200,
+        "contentType": "image/webp",
+        "bytes": "2186626"
+      }
+    ]
+  },
+  {
+    "file": "history/artwork/draft-ward-soft.webp",
+    "bytes": 89928,
+    "required": true,
+    "references": [
+      {
+        "source": "src/data/project/visual-design/plates/09-artwork-archive.html",
+        "kind": "disclosure:src"
+      }
+    ],
+    "cdnUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/draft-ward-soft.webp",
+    "attempts": [
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/draft-ward-soft.webp",
+        "status": 200,
+        "contentType": "image/webp",
+        "bytes": "89928"
+      }
+    ]
+  },
+  {
+    "file": "history/artwork/draft-why-ring-full.webp",
+    "bytes": 1261412,
+    "required": true,
+    "references": [
+      {
+        "source": "src/data/project/visual-design/plates/09-artwork-archive.html",
+        "kind": "disclosure:href"
+      }
+    ],
+    "cdnUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/draft-why-ring-full.webp",
+    "attempts": [
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/draft-why-ring-full.webp",
+        "status": 200,
+        "contentType": "image/webp",
+        "bytes": "1261412"
+      }
+    ]
+  },
+  {
+    "file": "history/artwork/draft-why-ring.webp",
+    "bytes": 64666,
+    "required": true,
+    "references": [
+      {
+        "source": "src/data/project/visual-design/plates/09-artwork-archive.html",
+        "kind": "disclosure:src"
+      }
+    ],
+    "cdnUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/draft-why-ring.webp",
+    "attempts": [
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/draft-why-ring.webp",
+        "status": 200,
+        "contentType": "image/webp",
+        "bytes": "64666"
+      }
+    ]
+  },
+  {
+    "file": "history/artwork/patient-full.webp",
+    "bytes": 1040028,
+    "required": true,
+    "references": [
+      {
+        "source": "src/data/project/visual-design/plates/09-artwork-archive.html",
+        "kind": "disclosure:href"
+      },
+      {
+        "source": "DesignExplanationFigures.tsx:LayerAssembly",
+        "kind": "article"
+      }
+    ],
+    "cdnUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/patient-full.webp",
+    "attempts": [
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/patient-full.webp",
+        "status": 200,
+        "contentType": "image/webp",
+        "bytes": "1040028"
+      }
+    ]
+  },
+  {
+    "file": "history/artwork/patient.webp",
+    "bytes": 105102,
+    "required": true,
+    "references": [
+      {
+        "source": "src/data/project/visual-design/plates/09-artwork-archive.html",
+        "kind": "disclosure:src"
+      },
+      {
+        "source": "DesignExplanationFigures.tsx:LayerAssembly",
+        "kind": "article"
+      }
+    ],
+    "cdnUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/patient.webp",
+    "attempts": [
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/patient.webp",
+        "status": 200,
+        "contentType": "image/webp",
+        "bytes": "105102"
+      }
+    ]
+  },
+  {
+    "file": "history/artwork/protected-life-full.webp",
+    "bytes": 124602,
+    "required": true,
+    "references": [
+      {
+        "source": "src/data/project/visual-design/plates/09-artwork-archive.html",
+        "kind": "disclosure:href"
+      }
+    ],
+    "cdnUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/protected-life-full.webp",
+    "attempts": [
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/protected-life-full.webp",
+        "status": 200,
+        "contentType": "image/webp",
+        "bytes": "124602"
+      }
+    ]
+  },
+  {
+    "file": "history/artwork/protected-life.webp",
+    "bytes": 9142,
+    "required": true,
+    "references": [
+      {
+        "source": "src/data/project/visual-design/plates/09-artwork-archive.html",
+        "kind": "disclosure:src"
+      }
+    ],
+    "cdnUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/protected-life.webp",
+    "attempts": [
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/protected-life.webp",
+        "status": 200,
+        "contentType": "image/webp",
+        "bytes": "9142"
+      }
+    ]
+  },
+  {
+    "file": "history/artwork/protecting-hands-full.webp",
+    "bytes": 179962,
+    "required": true,
+    "references": [
+      {
+        "source": "src/data/project/visual-design/plates/09-artwork-archive.html",
+        "kind": "disclosure:href"
+      }
+    ],
+    "cdnUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/protecting-hands-full.webp",
+    "attempts": [
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/protecting-hands-full.webp",
+        "status": 200,
+        "contentType": "image/webp",
+        "bytes": "179962"
+      }
+    ]
+  },
+  {
+    "file": "history/artwork/protecting-hands.webp",
+    "bytes": 9448,
+    "required": true,
+    "references": [
+      {
+        "source": "src/data/project/visual-design/plates/09-artwork-archive.html",
+        "kind": "disclosure:src"
+      }
+    ],
+    "cdnUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/protecting-hands.webp",
+    "attempts": [
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/protecting-hands.webp",
+        "status": 200,
+        "contentType": "image/webp",
+        "bytes": "9448"
+      }
+    ]
+  },
+  {
+    "file": "history/artwork/rna-ring-full.webp",
+    "bytes": 194702,
+    "required": true,
+    "references": [
+      {
+        "source": "src/data/project/visual-design/plates/09-artwork-archive.html",
+        "kind": "disclosure:href"
+      }
+    ],
+    "cdnUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/rna-ring-full.webp",
+    "attempts": [
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/rna-ring-full.webp",
+        "status": 200,
+        "contentType": "image/webp",
+        "bytes": "194702"
+      }
+    ]
+  },
+  {
+    "file": "history/artwork/rna-ring.webp",
+    "bytes": 39940,
+    "required": true,
+    "references": [
+      {
+        "source": "src/data/project/visual-design/plates/09-artwork-archive.html",
+        "kind": "disclosure:src"
+      }
+    ],
+    "cdnUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/rna-ring.webp",
+    "attempts": [
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/rna-ring.webp",
+        "status": 200,
+        "contentType": "image/webp",
+        "bytes": "39940"
+      }
+    ]
+  },
+  {
+    "file": "history/artwork/student-full.webp",
+    "bytes": 295662,
+    "required": true,
+    "references": [
+      {
+        "source": "src/data/project/visual-design/plates/09-artwork-archive.html",
+        "kind": "disclosure:href"
+      },
+      {
+        "source": "DesignExplanationFigures.tsx:LayerAssembly",
+        "kind": "article"
+      }
+    ],
+    "cdnUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/student-full.webp",
+    "attempts": [
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/student-full.webp",
+        "status": 200,
+        "contentType": "image/webp",
+        "bytes": "295662"
+      }
+    ]
+  },
+  {
+    "file": "history/artwork/student.webp",
+    "bytes": 55916,
+    "required": true,
+    "references": [
+      {
+        "source": "src/data/project/visual-design/plates/09-artwork-archive.html",
+        "kind": "disclosure:src"
+      },
+      {
+        "source": "DesignExplanationFigures.tsx:LayerAssembly",
+        "kind": "article"
+      }
+    ],
+    "cdnUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/student.webp",
+    "attempts": [
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/student.webp",
+        "status": 200,
+        "contentType": "image/webp",
+        "bytes": "55916"
+      }
+    ]
+  },
+  {
+    "file": "history/artwork/treatment-study-full.webp",
+    "bytes": 1554928,
+    "required": true,
+    "references": [
+      {
+        "source": "src/data/project/visual-design/plates/09-artwork-archive.html",
+        "kind": "disclosure:href"
+      }
+    ],
+    "cdnUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/treatment-study-full.webp",
+    "attempts": [
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/treatment-study-full.webp",
+        "status": 200,
+        "contentType": "image/webp",
+        "bytes": "1554928"
+      }
+    ]
+  },
+  {
+    "file": "history/artwork/treatment-study.webp",
+    "bytes": 182368,
+    "required": true,
+    "references": [
+      {
+        "source": "src/data/project/visual-design/plates/09-artwork-archive.html",
+        "kind": "disclosure:src"
+      }
+    ],
+    "cdnUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/treatment-study.webp",
+    "attempts": [
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/treatment-study.webp",
+        "status": 200,
+        "contentType": "image/webp",
+        "bytes": "182368"
+      }
+    ]
+  },
+  {
+    "file": "history/artwork/ward-full.webp",
+    "bytes": 4098312,
+    "required": true,
+    "references": [
+      {
+        "source": "src/data/project/visual-design/plates/09-artwork-archive.html",
+        "kind": "disclosure:href"
+      },
+      {
+        "source": "DesignExplanationFigures.tsx:LayerAssembly",
+        "kind": "article"
+      }
+    ],
+    "cdnUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/ward-full.webp",
+    "attempts": [
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/ward-full.webp",
+        "status": 200,
+        "contentType": "image/webp",
+        "bytes": "4098312"
+      }
+    ]
+  },
+  {
+    "file": "history/artwork/ward.webp",
+    "bytes": 193988,
+    "required": true,
+    "references": [
+      {
+        "source": "src/data/project/visual-design/plates/09-artwork-archive.html",
+        "kind": "disclosure:src"
+      }
+    ],
+    "cdnUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/ward.webp",
+    "attempts": [
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/ward.webp",
+        "status": 200,
+        "contentType": "image/webp",
+        "bytes": "193988"
+      }
+    ]
+  },
+  {
+    "file": "history/images/01-ring.jpg",
+    "bytes": 93107,
+    "required": true,
+    "references": [
+      {
+        "source": "src/data/project/visual-design/history.html",
+        "kind": "disclosure:href"
+      },
+      {
+        "source": "src/data/project/visual-design/history.html",
+        "kind": "disclosure:src"
+      }
+    ],
+    "cdnUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/01-ring.avif",
+    "attempts": [
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/01-ring.avif",
+        "status": 200,
+        "contentType": "image/avif",
+        "bytes": "28061"
+      }
+    ]
+  },
+  {
+    "file": "history/images/02-spatial.jpg",
+    "bytes": 278754,
+    "required": true,
+    "references": [
+      {
+        "source": "src/data/project/visual-design/history.html",
+        "kind": "disclosure:href"
+      },
+      {
+        "source": "src/data/project/visual-design/history.html",
+        "kind": "disclosure:src"
+      }
+    ],
+    "cdnUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/02-spatial.avif",
+    "attempts": [
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/02-spatial.avif",
+        "status": 200,
+        "contentType": "image/avif",
+        "bytes": "92188"
+      }
+    ]
+  },
+  {
+    "file": "history/images/03-image-led.jpg",
+    "bytes": 282513,
+    "required": true,
+    "references": [
+      {
+        "source": "src/data/project/visual-design/history.html",
+        "kind": "disclosure:href"
+      },
+      {
+        "source": "src/data/project/visual-design/history.html",
+        "kind": "disclosure:src"
+      }
+    ],
+    "cdnUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/03-image-led.avif",
+    "attempts": [
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/03-image-led.avif",
+        "status": 200,
+        "contentType": "image/avif",
+        "bytes": "69772"
+      }
+    ]
+  },
+  {
+    "file": "history/images/04-recognition-homepage.jpg",
+    "bytes": 152031,
+    "required": true,
+    "references": [
+      {
+        "source": "src/data/project/visual-design/history.html",
+        "kind": "disclosure:href"
+      },
+      {
+        "source": "src/data/project/visual-design/history.html",
+        "kind": "disclosure:src"
+      }
+    ],
+    "cdnUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/04-recognition-homepage.avif",
+    "attempts": [
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/04-recognition-homepage.avif",
+        "status": 200,
+        "contentType": "image/avif",
+        "bytes": "39027"
+      }
+    ]
+  },
+  {
+    "file": "history/images/06-portrait-layer.png",
+    "bytes": 194914,
+    "required": true,
+    "references": [
+      {
+        "source": "src/data/project/visual-design/history.html",
+        "kind": "disclosure:href"
+      },
+      {
+        "source": "src/data/project/visual-design/history.html",
+        "kind": "disclosure:src"
+      }
+    ],
+    "cdnUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/06-portrait-layer.avif",
+    "attempts": [
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/06-portrait-layer.avif",
+        "status": 200,
+        "contentType": "image/avif",
+        "bytes": "25142"
+      }
+    ]
+  },
+  {
+    "file": "history/images/07-composed-scene.jpg",
+    "bytes": 194990,
+    "required": true,
+    "references": [
+      {
+        "source": "src/data/project/visual-design/history.html",
+        "kind": "disclosure:src"
+      },
+      {
+        "source": "src/data/project/visual-design/history.html",
+        "kind": "disclosure:href"
+      }
+    ],
+    "cdnUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/07-composed-scene.avif",
+    "attempts": [
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/07-composed-scene.avif",
+        "status": 200,
+        "contentType": "image/avif",
+        "bytes": "99066"
+      }
+    ]
+  },
+  {
+    "file": "history/images/08-ring-particles.jpg",
+    "bytes": 63595,
+    "required": true,
+    "references": [
+      {
+        "source": "src/data/project/visual-design/history.html",
+        "kind": "disclosure:href"
+      },
+      {
+        "source": "src/data/project/visual-design/history.html",
+        "kind": "disclosure:src"
+      },
+      {
+        "source": "visualDesignNarrative.ts:design-revision-ring",
+        "kind": "article"
+      }
+    ],
+    "cdnUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/08-ring-particles.avif",
+    "attempts": [
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/08-ring-particles.avif",
+        "status": 200,
+        "contentType": "image/avif",
+        "bytes": "49035"
+      }
+    ]
+  },
+  {
+    "file": "history/images/09-ring-solid.jpg",
+    "bytes": 39902,
+    "required": true,
+    "references": [
+      {
+        "source": "src/data/project/visual-design/history.html",
+        "kind": "disclosure:href"
+      },
+      {
+        "source": "src/data/project/visual-design/history.html",
+        "kind": "disclosure:src"
+      },
+      {
+        "source": "visualDesignNarrative.ts:design-revision-ring",
+        "kind": "article"
+      }
+    ],
+    "cdnUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/09-ring-solid.avif",
+    "attempts": [
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/09-ring-solid.avif",
+        "status": 200,
+        "contentType": "image/avif",
+        "bytes": "25203"
+      }
+    ]
+  },
+  {
+    "file": "history/images/10-explore-arc-standard.jpg",
+    "bytes": 58210,
+    "required": true,
+    "references": [
+      {
+        "source": "src/data/project/visual-design/history.html",
+        "kind": "disclosure:href"
+      },
+      {
+        "source": "src/data/project/visual-design/history.html",
+        "kind": "disclosure:src"
+      },
+      {
+        "source": "visualDesignNarrative.ts:design-revision-labels",
+        "kind": "article"
+      }
+    ],
+    "cdnUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/10-explore-arc-standard.avif",
+    "attempts": [
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/10-explore-arc-standard.avif",
+        "status": 200,
+        "contentType": "image/avif",
+        "bytes": "44872"
+      }
+    ]
+  },
+  {
+    "file": "history/images/10-explore-original.jpg",
+    "bytes": 37130,
+    "required": true,
+    "references": [
+      {
+        "source": "src/data/project/visual-design/history.html",
+        "kind": "disclosure:href"
+      },
+      {
+        "source": "src/data/project/visual-design/history.html",
+        "kind": "disclosure:src"
+      }
+    ],
+    "cdnUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/10-explore-original.avif",
+    "attempts": [
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/10-explore-original.avif",
+        "status": 200,
+        "contentType": "image/avif",
+        "bytes": "23984"
+      }
+    ]
+  },
+  {
+    "file": "history/images/11-explore-aligned-standard.jpg",
+    "bytes": 52867,
+    "required": true,
+    "references": [
+      {
+        "source": "src/data/project/visual-design/history.html",
+        "kind": "disclosure:href"
+      },
+      {
+        "source": "src/data/project/visual-design/history.html",
+        "kind": "disclosure:src"
+      },
+      {
+        "source": "visualDesignNarrative.ts:design-revision-labels",
+        "kind": "article"
+      }
+    ],
+    "cdnUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/11-explore-aligned-standard.avif",
+    "attempts": [
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/11-explore-aligned-standard.avif",
+        "status": 200,
+        "contentType": "image/avif",
+        "bytes": "39647"
+      }
+    ]
+  },
+  {
+    "file": "history/images/12-letter-before.jpg",
+    "bytes": 89580,
+    "required": true,
+    "references": [
+      {
+        "source": "src/data/project/visual-design/history.html",
+        "kind": "disclosure:href"
+      },
+      {
+        "source": "src/data/project/visual-design/history.html",
+        "kind": "disclosure:src"
+      }
+    ],
+    "cdnUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/12-letter-before.avif",
+    "attempts": [
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/12-letter-before.avif",
+        "status": 200,
+        "contentType": "image/avif",
+        "bytes": "18808"
+      }
+    ]
+  },
+  {
+    "file": "history/images/13-letter-after.jpg",
+    "bytes": 86077,
+    "required": true,
+    "references": [
+      {
+        "source": "src/data/project/visual-design/history.html",
+        "kind": "disclosure:href"
+      },
+      {
+        "source": "src/data/project/visual-design/history.html",
+        "kind": "disclosure:src"
+      }
+    ],
+    "cdnUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/13-letter-after.avif",
+    "attempts": [
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/13-letter-after.avif",
+        "status": 200,
+        "contentType": "image/avif",
+        "bytes": "56881"
+      }
+    ]
+  },
+  {
+    "file": "history/images/14-ribbon-before.jpg",
+    "bytes": 104716,
+    "required": true,
+    "references": [
+      {
+        "source": "src/data/project/visual-design/history.html",
+        "kind": "disclosure:href"
+      },
+      {
+        "source": "src/data/project/visual-design/history.html",
+        "kind": "disclosure:src"
+      },
+      {
+        "source": "visualDesignNarrative.ts:design-revision-ribbon",
+        "kind": "article"
+      }
+    ],
+    "cdnUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/14-ribbon-before.avif",
+    "attempts": [
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/14-ribbon-before.avif",
+        "status": 200,
+        "contentType": "image/avif",
+        "bytes": "25746"
+      }
+    ]
+  },
+  {
+    "file": "history/images/15-ribbon-after.jpg",
+    "bytes": 113986,
+    "required": true,
+    "references": [
+      {
+        "source": "src/data/project/visual-design/history.html",
+        "kind": "disclosure:href"
+      },
+      {
+        "source": "src/data/project/visual-design/history.html",
+        "kind": "disclosure:src"
+      },
+      {
+        "source": "visualDesignNarrative.ts:design-revision-ribbon",
+        "kind": "article"
+      }
+    ],
+    "cdnUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/15-ribbon-after.avif",
+    "attempts": [
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/15-ribbon-after.avif",
+        "status": 200,
+        "contentType": "image/avif",
+        "bytes": "28701"
+      }
+    ]
+  },
+  {
+    "file": "history/images/16-image-led-navigation.jpg",
+    "bytes": 315827,
+    "required": true,
+    "references": [
+      {
+        "source": "src/data/project/visual-design/history.html",
+        "kind": "disclosure:href"
+      },
+      {
+        "source": "src/data/project/visual-design/history.html",
+        "kind": "disclosure:src"
+      }
+    ],
+    "cdnUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/16-image-led-navigation.avif",
+    "attempts": [
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/16-image-led-navigation.avif",
+        "status": 200,
+        "contentType": "image/avif",
+        "bytes": "103309"
+      }
+    ]
+  },
+  {
+    "file": "history/images/17-pink-thread-person.jpg",
+    "bytes": 55382,
+    "required": true,
+    "references": [
+      {
+        "source": "src/data/project/visual-design/history.html",
+        "kind": "disclosure:href"
+      },
+      {
+        "source": "src/data/project/visual-design/history.html",
+        "kind": "disclosure:src"
+      }
+    ],
+    "cdnUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/17-pink-thread-person.avif",
+    "attempts": [
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/17-pink-thread-person.avif",
+        "status": 200,
+        "contentType": "image/avif",
+        "bytes": "10504"
+      }
+    ]
+  },
+  {
+    "file": "history/images/18-ribbon-emblem.jpg",
+    "bytes": 200017,
+    "required": true,
+    "references": [
+      {
+        "source": "src/data/project/visual-design/history.html",
+        "kind": "disclosure:href"
+      },
+      {
+        "source": "src/data/project/visual-design/history.html",
+        "kind": "disclosure:src"
+      }
+    ],
+    "cdnUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/18-ribbon-emblem.avif",
+    "attempts": [
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/18-ribbon-emblem.avif",
+        "status": 200,
+        "contentType": "image/avif",
+        "bytes": "59721"
+      }
+    ]
+  },
+  {
+    "file": "history/images/19-hp-center.webp",
+    "bytes": 56644,
+    "required": true,
+    "references": [
+      {
+        "source": "src/data/project/visual-design/history.html",
+        "kind": "disclosure:href"
+      },
+      {
+        "source": "src/data/project/visual-design/history.html",
+        "kind": "disclosure:src"
+      }
+    ],
+    "cdnUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/19-hp-center.webp",
+    "attempts": [
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/19-hp-center.webp",
+        "status": 200,
+        "contentType": "image/webp",
+        "bytes": "56644"
+      }
+    ]
+  },
+  {
+    "file": "history/images/19-hp-dial.webp",
+    "bytes": 77776,
+    "required": true,
+    "references": [
+      {
+        "source": "src/data/project/visual-design/history.html",
+        "kind": "disclosure:href"
+      },
+      {
+        "source": "src/data/project/visual-design/history.html",
+        "kind": "disclosure:src"
+      }
+    ],
+    "cdnUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/19-hp-dial.webp",
+    "attempts": [
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/19-hp-dial.webp",
+        "status": 200,
+        "contentType": "image/webp",
+        "bytes": "77776"
+      }
+    ]
+  },
+  {
+    "file": "history/images/19-hp-horizontal.webp",
+    "bytes": 223734,
+    "required": true,
+    "references": [
+      {
+        "source": "src/data/project/visual-design/history.html",
+        "kind": "disclosure:href"
+      },
+      {
+        "source": "src/data/project/visual-design/history.html",
+        "kind": "disclosure:src"
+      }
+    ],
+    "cdnUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/19-hp-horizontal.webp",
+    "attempts": [
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/19-hp-horizontal.webp",
+        "status": 200,
+        "contentType": "image/webp",
+        "bytes": "223734"
+      }
+    ]
+  },
+  {
+    "file": "history/subpages/description.png",
+    "bytes": 2470106,
+    "required": true,
+    "references": [
+      {
+        "source": "src/data/project/visual-design/plates/10-subpage-color.html",
+        "kind": "article:href"
+      },
+      {
+        "source": "src/data/project/visual-design/plates/10-subpage-color.html",
+        "kind": "article:src"
+      }
+    ],
+    "cdnUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/description.avif",
+    "attempts": [
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/description.avif",
+        "status": 200,
+        "contentType": "image/avif",
+        "bytes": "178863"
+      }
+    ],
+    "collisionCheck": [
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/description.avif",
+        "status": 200,
+        "dimensions": [
+          1086,
+          1448
+        ],
+        "meanPixelError": 0.3842,
+        "match": true
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/history/subpages/description.avif",
+        "status": 403
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/subpages/description.avif",
+        "status": 403
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/pages/description.avif",
+        "status": 403
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/history/subpages/pages/description.avif",
+        "status": 403
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/description.webp",
+        "status": 403
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/history/subpages/description.webp",
+        "status": 403
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/subpages/description.webp",
+        "status": 403
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/pages/description.webp",
+        "status": 403
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/history/subpages/pages/description.webp",
+        "status": 403
+      }
+    ]
+  },
+  {
+    "file": "history/subpages/experiments.webp",
+    "bytes": 72010,
+    "required": true,
+    "references": [
+      {
+        "source": "src/data/project/visual-design/plates/10-subpage-color.html",
+        "kind": "article:href"
+      },
+      {
+        "source": "src/data/project/visual-design/plates/10-subpage-color.html",
+        "kind": "article:src"
+      }
+    ],
+    "cdnUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/experiments.webp",
+    "attempts": [
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/experiments.webp",
+        "status": 200,
+        "contentType": "image/webp",
+        "bytes": "72010"
+      }
+    ],
+    "collisionCheck": [
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/experiments.webp",
+        "status": 200,
+        "dimensions": [
+          1672,
+          941
+        ],
+        "meanPixelError": 0.0,
+        "match": true
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/history/subpages/experiments.webp",
+        "status": 403
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/subpages/experiments.webp",
+        "status": 403
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/pages/experiments.webp",
+        "status": 403
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/history/subpages/pages/experiments.webp",
+        "status": 403
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/experiments.avif",
+        "status": 403
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/history/subpages/experiments.avif",
+        "status": 403
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/subpages/experiments.avif",
+        "status": 403
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/pages/experiments.avif",
+        "status": 403
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/history/subpages/pages/experiments.avif",
+        "status": 403
+      }
+    ]
+  },
+  {
+    "file": "history/subpages/hardware.webp",
+    "bytes": 177556,
+    "required": true,
+    "references": [
+      {
+        "source": "src/data/project/visual-design/plates/10-subpage-color.html",
+        "kind": "article:href"
+      },
+      {
+        "source": "src/data/project/visual-design/plates/10-subpage-color.html",
+        "kind": "article:src"
+      }
+    ],
+    "cdnUrl": "",
+    "attempts": [
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/hardware.webp",
+        "status": 403,
+        "contentType": "application/xml",
+        "bytes": null
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/history/subpages/hardware.webp",
+        "status": 403,
+        "contentType": "application/xml",
+        "bytes": null
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/subpages/hardware.webp",
+        "status": 403,
+        "contentType": "application/xml",
+        "bytes": null
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/hardware.avif",
+        "status": 403,
+        "contentType": "application/xml",
+        "bytes": null
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/history/subpages/hardware.avif",
+        "status": 403,
+        "contentType": "application/xml",
+        "bytes": null
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/subpages/hardware.avif",
+        "status": 403,
+        "contentType": "application/xml",
+        "bytes": null
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/hardware.webp",
+        "status": 403,
+        "method": "GET"
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/history/subpages/hardware.webp",
+        "status": 403,
+        "method": "GET"
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/subpages/hardware.webp",
+        "status": 403,
+        "method": "GET"
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/hardware.avif",
+        "status": 403,
+        "method": "GET"
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/history/subpages/hardware.avif",
+        "status": 403,
+        "method": "GET"
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/subpages/hardware.avif",
+        "status": 403,
+        "method": "GET"
+      }
+    ]
+  },
+  {
+    "file": "history/subpages/measurement.webp",
+    "bytes": 91670,
+    "required": true,
+    "references": [
+      {
+        "source": "src/data/project/visual-design/plates/10-subpage-color.html",
+        "kind": "article:href"
+      },
+      {
+        "source": "src/data/project/visual-design/plates/10-subpage-color.html",
+        "kind": "article:src"
+      }
+    ],
+    "cdnUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/measurement.webp",
+    "attempts": [
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/measurement.webp",
+        "status": 200,
+        "contentType": "image/webp",
+        "bytes": "91670"
+      }
+    ],
+    "collisionCheck": [
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/measurement.webp",
+        "status": 200,
+        "dimensions": [
+          1672,
+          941
+        ],
+        "meanPixelError": 0.0,
+        "match": true
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/history/subpages/measurement.webp",
+        "status": 403
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/subpages/measurement.webp",
+        "status": 403
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/pages/measurement.webp",
+        "status": 403
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/history/subpages/pages/measurement.webp",
+        "status": 403
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/measurement.avif",
+        "status": 403
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/history/subpages/measurement.avif",
+        "status": 403
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/subpages/measurement.avif",
+        "status": 403
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/pages/measurement.avif",
+        "status": 403
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/history/subpages/pages/measurement.avif",
+        "status": 403
+      }
+    ]
+  },
+  {
+    "file": "history/subpages/model.webp",
+    "bytes": 208640,
+    "required": true,
+    "references": [
+      {
+        "source": "src/data/project/visual-design/plates/10-subpage-color.html",
+        "kind": "article:href"
+      },
+      {
+        "source": "src/data/project/visual-design/plates/10-subpage-color.html",
+        "kind": "article:src"
+      }
+    ],
+    "cdnUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/model.webp",
+    "attempts": [
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/model.webp",
+        "status": 200,
+        "contentType": "image/webp",
+        "bytes": "208640"
+      }
+    ],
+    "collisionCheck": [
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/model.webp",
+        "status": 200,
+        "dimensions": [
+          1672,
+          941
+        ],
+        "meanPixelError": 0.0,
+        "match": true
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/history/subpages/model.webp",
+        "status": 403
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/subpages/model.webp",
+        "status": 403
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/pages/model.webp",
+        "status": 403
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/history/subpages/pages/model.webp",
+        "status": 403
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/model.avif",
+        "status": 403
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/history/subpages/model.avif",
+        "status": 403
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/subpages/model.avif",
+        "status": 403
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/pages/model.avif",
+        "status": 403
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/history/subpages/pages/model.avif",
+        "status": 403
+      }
+    ]
+  },
+  {
+    "file": "history/subpages/pages/description-reading.png",
+    "bytes": 79537,
+    "required": true,
+    "references": [
+      {
+        "source": "DesignExplanationFigures.tsx:design-details-subpage-color",
+        "kind": "disclosure"
+      }
+    ],
+    "cdnUrl": "",
+    "attempts": [
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/description-reading.avif",
+        "status": 403,
+        "contentType": "application/xml",
+        "bytes": null
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/history/subpages/pages/description-reading.avif",
+        "status": 403,
+        "contentType": "application/xml",
+        "bytes": null
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/pages/description-reading.avif",
+        "status": 403,
+        "contentType": "application/xml",
+        "bytes": null
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/description-reading.webp",
+        "status": 403,
+        "contentType": "application/xml",
+        "bytes": null
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/history/subpages/pages/description-reading.webp",
+        "status": 403,
+        "contentType": "application/xml",
+        "bytes": null
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/pages/description-reading.webp",
+        "status": 403,
+        "contentType": "application/xml",
+        "bytes": null
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/description-reading.avif",
+        "status": 403,
+        "method": "GET"
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/history/subpages/pages/description-reading.avif",
+        "status": 403,
+        "method": "GET"
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/pages/description-reading.avif",
+        "status": 403,
+        "method": "GET"
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/description-reading.webp",
+        "status": 403,
+        "method": "GET"
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/history/subpages/pages/description-reading.webp",
+        "status": 403,
+        "method": "GET"
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/pages/description-reading.webp",
+        "status": 403,
+        "method": "GET"
+      }
+    ]
+  },
+  {
+    "file": "history/subpages/pages/description.png",
+    "bytes": 67121,
+    "required": true,
+    "references": [
+      {
+        "source": "DesignExplanationFigures.tsx:design-details-subpage-color",
+        "kind": "disclosure"
+      }
+    ],
+    "cdnUrl": "",
+    "attempts": [
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/description.avif",
+        "status": 200,
+        "contentType": "image/avif",
+        "bytes": "178863"
+      }
+    ],
+    "collisionCheck": [
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/description.avif",
+        "status": 200,
+        "dimensions": [
+          1086,
+          1448
+        ],
+        "meanPixelError": 36.2894,
+        "match": false
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/history/subpages/pages/description.avif",
+        "status": 403
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/pages/description.avif",
+        "status": 403
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/subpages/description.avif",
+        "status": 403
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/history/subpages/description.avif",
+        "status": 403
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/description.webp",
+        "status": 403
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/history/subpages/pages/description.webp",
+        "status": 403
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/pages/description.webp",
+        "status": 403
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/subpages/description.webp",
+        "status": 403
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/history/subpages/description.webp",
+        "status": 403
+      }
+    ]
+  },
+  {
+    "file": "history/subpages/pages/model-reading.png",
+    "bytes": 76173,
+    "required": true,
+    "references": [
+      {
+        "source": "DesignExplanationFigures.tsx:design-details-subpage-color",
+        "kind": "disclosure"
+      }
+    ],
+    "cdnUrl": "",
+    "attempts": [
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/model-reading.avif",
+        "status": 403,
+        "contentType": "application/xml",
+        "bytes": null
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/history/subpages/pages/model-reading.avif",
+        "status": 403,
+        "contentType": "application/xml",
+        "bytes": null
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/pages/model-reading.avif",
+        "status": 403,
+        "contentType": "application/xml",
+        "bytes": null
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/model-reading.webp",
+        "status": 403,
+        "contentType": "application/xml",
+        "bytes": null
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/history/subpages/pages/model-reading.webp",
+        "status": 403,
+        "contentType": "application/xml",
+        "bytes": null
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/pages/model-reading.webp",
+        "status": 403,
+        "contentType": "application/xml",
+        "bytes": null
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/model-reading.avif",
+        "status": 403,
+        "method": "GET"
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/history/subpages/pages/model-reading.avif",
+        "status": 403,
+        "method": "GET"
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/pages/model-reading.avif",
+        "status": 403,
+        "method": "GET"
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/model-reading.webp",
+        "status": 403,
+        "method": "GET"
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/history/subpages/pages/model-reading.webp",
+        "status": 403,
+        "method": "GET"
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/pages/model-reading.webp",
+        "status": 403,
+        "method": "GET"
+      }
+    ]
+  },
+  {
+    "file": "history/subpages/pages/model.png",
+    "bytes": 72816,
+    "required": true,
+    "references": [
+      {
+        "source": "DesignExplanationFigures.tsx:design-details-subpage-color",
+        "kind": "disclosure"
+      }
+    ],
+    "cdnUrl": "",
+    "attempts": [
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/model.avif",
+        "status": 403,
+        "contentType": "application/xml",
+        "bytes": null
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/history/subpages/pages/model.avif",
+        "status": 403,
+        "contentType": "application/xml",
+        "bytes": null
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/pages/model.avif",
+        "status": 403,
+        "contentType": "application/xml",
+        "bytes": null
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/model.webp",
+        "status": 200,
+        "contentType": "image/webp",
+        "bytes": "208640"
+      }
+    ],
+    "collisionCheck": [
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/model.avif",
+        "status": 403
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/history/subpages/pages/model.avif",
+        "status": 403
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/pages/model.avif",
+        "status": 403
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/subpages/model.avif",
+        "status": 403
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/history/subpages/model.avif",
+        "status": 403
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/model.webp",
+        "status": 200,
+        "dimensions": [
+          1672,
+          941
+        ],
+        "meanPixelError": 55.3675,
+        "match": false
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/history/subpages/pages/model.webp",
+        "status": 403
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/pages/model.webp",
+        "status": 403
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/subpages/model.webp",
+        "status": 403
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/history/subpages/model.webp",
+        "status": 403
+      }
+    ]
+  },
+  {
+    "file": "plates/panels/01-patient-question-a.png",
+    "bytes": 5653472,
+    "required": true,
+    "references": [
+      {
+        "source": "src/data/project/visual-design/plates/01-patient-question.html",
+        "kind": "article:href"
+      },
+      {
+        "source": "src/data/project/visual-design/plates/01-patient-question.html",
+        "kind": "article:src"
+      },
+      {
+        "source": "VisualDesignNarrativePanels.tsx:ArtworkRatioStudy",
+        "kind": "disclosure"
+      }
+    ],
+    "cdnUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/plates/panels/01-patient-question-a.avif",
+    "attempts": [
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/01-patient-question-a.avif",
+        "status": 403,
+        "contentType": "application/xml",
+        "bytes": null
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/plates/panels/01-patient-question-a.avif",
+        "status": 200,
+        "contentType": "image/avif",
+        "bytes": "100201"
+      }
+    ]
+  },
+  {
+    "file": "plates/panels/01-patient-question-b.png",
+    "bytes": 1300509,
+    "required": true,
+    "references": [
+      {
+        "source": "src/data/project/visual-design/plates/01-patient-question.html",
+        "kind": "article:href"
+      },
+      {
+        "source": "src/data/project/visual-design/plates/01-patient-question.html",
+        "kind": "article:src"
+      }
+    ],
+    "cdnUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/plates/panels/01-patient-question-b.avif",
+    "attempts": [
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/01-patient-question-b.avif",
+        "status": 403,
+        "contentType": "application/xml",
+        "bytes": null
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/plates/panels/01-patient-question-b.avif",
+        "status": 200,
+        "contentType": "image/avif",
+        "bytes": "124285"
+      }
+    ]
+  },
+  {
+    "file": "plates/panels/01-patient-question-c.png",
+    "bytes": 901106,
+    "required": true,
+    "references": [
+      {
+        "source": "src/data/project/visual-design/plates/01-patient-question.html",
+        "kind": "article:href"
+      },
+      {
+        "source": "src/data/project/visual-design/plates/01-patient-question.html",
+        "kind": "article:src"
+      }
+    ],
+    "cdnUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/plates/panels/01-patient-question-c.avif",
+    "attempts": [
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/01-patient-question-c.avif",
+        "status": 403,
+        "contentType": "application/xml",
+        "bytes": null
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/plates/panels/01-patient-question-c.avif",
+        "status": 200,
+        "contentType": "image/avif",
+        "bytes": "24067"
+      }
+    ]
+  },
+  {
+    "file": "plates/panels/01-patient-question-d.png",
+    "bytes": 1334394,
+    "required": true,
+    "references": [
+      {
+        "source": "src/data/project/visual-design/plates/01-patient-question.html",
+        "kind": "article:href"
+      },
+      {
+        "source": "src/data/project/visual-design/plates/01-patient-question.html",
+        "kind": "article:src"
+      }
+    ],
+    "cdnUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/plates/panels/01-patient-question-d.avif",
+    "attempts": [
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/01-patient-question-d.avif",
+        "status": 403,
+        "contentType": "application/xml",
+        "bytes": null
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/plates/panels/01-patient-question-d.avif",
+        "status": 200,
+        "contentType": "image/avif",
+        "bytes": "121203"
+      }
+    ]
+  },
+  {
+    "file": "plates/panels/02-visual-continuity-a.png",
+    "bytes": 901106,
+    "required": true,
+    "references": [
+      {
+        "source": "src/data/project/visual-design/plates/02-visual-continuity.html",
+        "kind": "article:href"
+      },
+      {
+        "source": "src/data/project/visual-design/plates/02-visual-continuity.html",
+        "kind": "article:src"
+      }
+    ],
+    "cdnUrl": "",
+    "attempts": [
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/02-visual-continuity-a.avif",
+        "status": 403,
+        "contentType": "application/xml",
+        "bytes": null
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/plates/panels/02-visual-continuity-a.avif",
+        "status": 403,
+        "contentType": "application/xml",
+        "bytes": null
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/panels/02-visual-continuity-a.avif",
+        "status": 403,
+        "contentType": "application/xml",
+        "bytes": null
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/02-visual-continuity-a.webp",
+        "status": 403,
+        "contentType": "application/xml",
+        "bytes": null
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/plates/panels/02-visual-continuity-a.webp",
+        "status": 403,
+        "contentType": "application/xml",
+        "bytes": null
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/panels/02-visual-continuity-a.webp",
+        "status": 403,
+        "contentType": "application/xml",
+        "bytes": null
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/02-visual-continuity-a.avif",
+        "status": 403,
+        "method": "GET"
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/plates/panels/02-visual-continuity-a.avif",
+        "status": 403,
+        "method": "GET"
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/panels/02-visual-continuity-a.avif",
+        "status": 403,
+        "method": "GET"
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/02-visual-continuity-a.webp",
+        "status": 403,
+        "method": "GET"
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/plates/panels/02-visual-continuity-a.webp",
+        "status": 403,
+        "method": "GET"
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/panels/02-visual-continuity-a.webp",
+        "status": 403,
+        "method": "GET"
+      }
+    ]
+  },
+  {
+    "file": "plates/panels/02-visual-continuity-b.png",
+    "bytes": 263743,
+    "required": true,
+    "references": [
+      {
+        "source": "src/data/project/visual-design/plates/02-visual-continuity.html",
+        "kind": "article:href"
+      },
+      {
+        "source": "src/data/project/visual-design/plates/02-visual-continuity.html",
+        "kind": "article:src"
+      }
+    ],
+    "cdnUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/plates/panels/02-visual-continuity-b.avif",
+    "attempts": [
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/02-visual-continuity-b.avif",
+        "status": 403,
+        "contentType": "application/xml",
+        "bytes": null
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/plates/panels/02-visual-continuity-b.avif",
+        "status": 200,
+        "contentType": "image/avif",
+        "bytes": "16458"
+      }
+    ]
+  },
+  {
+    "file": "plates/panels/02-visual-continuity-c.png",
+    "bytes": 516655,
+    "required": true,
+    "references": [
+      {
+        "source": "src/data/project/visual-design/plates/02-visual-continuity.html",
+        "kind": "article:href"
+      },
+      {
+        "source": "src/data/project/visual-design/plates/02-visual-continuity.html",
+        "kind": "article:src"
+      }
+    ],
+    "cdnUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/plates/panels/02-visual-continuity-c.avif",
+    "attempts": [
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/02-visual-continuity-c.avif",
+        "status": 403,
+        "contentType": "application/xml",
+        "bytes": null
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/plates/panels/02-visual-continuity-c.avif",
+        "status": 200,
+        "contentType": "image/avif",
+        "bytes": "56438"
+      }
+    ]
+  },
+  {
+    "file": "plates/panels/02-visual-continuity-d.png",
+    "bytes": 399405,
+    "required": true,
+    "references": [
+      {
+        "source": "src/data/project/visual-design/plates/02-visual-continuity.html",
+        "kind": "article:href"
+      },
+      {
+        "source": "src/data/project/visual-design/plates/02-visual-continuity.html",
+        "kind": "article:src"
+      }
+    ],
+    "cdnUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/plates/panels/02-visual-continuity-d.avif",
+    "attempts": [
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/02-visual-continuity-d.avif",
+        "status": 403,
+        "contentType": "application/xml",
+        "bytes": null
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/plates/panels/02-visual-continuity-d.avif",
+        "status": 200,
+        "contentType": "image/avif",
+        "bytes": "37429"
+      }
+    ]
+  },
+  {
+    "file": "plates/panels/02-visual-continuity-e.png",
+    "bytes": 340312,
+    "required": true,
+    "references": [
+      {
+        "source": "src/data/project/visual-design/plates/02-visual-continuity.html",
+        "kind": "article:href"
+      },
+      {
+        "source": "src/data/project/visual-design/plates/02-visual-continuity.html",
+        "kind": "article:src"
+      }
+    ],
+    "cdnUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/plates/panels/02-visual-continuity-e.avif",
+    "attempts": [
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/02-visual-continuity-e.avif",
+        "status": 403,
+        "contentType": "application/xml",
+        "bytes": null
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/plates/panels/02-visual-continuity-e.avif",
+        "status": 200,
+        "contentType": "image/avif",
+        "bytes": "55836"
+      }
+    ]
+  },
+  {
+    "file": "plates/panels/03-modular-interaction-a.png",
+    "bytes": 204554,
+    "required": true,
+    "references": [
+      {
+        "source": "src/data/project/visual-design/plates/03-modular-interaction.html",
+        "kind": "article:href"
+      },
+      {
+        "source": "src/data/project/visual-design/plates/03-modular-interaction.html",
+        "kind": "article:src"
+      }
+    ],
+    "cdnUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/plates/panels/03-modular-interaction-a.avif",
+    "attempts": [
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/03-modular-interaction-a.avif",
+        "status": 403,
+        "contentType": "application/xml",
+        "bytes": null
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/plates/panels/03-modular-interaction-a.avif",
+        "status": 200,
+        "contentType": "image/avif",
+        "bytes": "28745"
+      }
+    ]
+  },
+  {
+    "file": "plates/panels/03-modular-interaction-b.png",
+    "bytes": 206618,
+    "required": true,
+    "references": [
+      {
+        "source": "src/data/project/visual-design/plates/03-modular-interaction.html",
+        "kind": "article:href"
+      },
+      {
+        "source": "src/data/project/visual-design/plates/03-modular-interaction.html",
+        "kind": "article:src"
+      }
+    ],
+    "cdnUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/plates/panels/03-modular-interaction-b.avif",
+    "attempts": [
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/03-modular-interaction-b.avif",
+        "status": 403,
+        "contentType": "application/xml",
+        "bytes": null
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/plates/panels/03-modular-interaction-b.avif",
+        "status": 200,
+        "contentType": "image/avif",
+        "bytes": "28390"
+      }
+    ]
+  },
+  {
+    "file": "plates/panels/04-people-behind-circure-a.png",
+    "bytes": 3615978,
+    "required": true,
+    "references": [
+      {
+        "source": "src/data/project/visual-design/plates/04-people-behind-circure.html",
+        "kind": "article:href"
+      },
+      {
+        "source": "src/data/project/visual-design/plates/04-people-behind-circure.html",
+        "kind": "article:src"
+      }
+    ],
+    "cdnUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/plates/panels/04-people-behind-circure-a.avif",
+    "attempts": [
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/04-people-behind-circure-a.avif",
+        "status": 403,
+        "contentType": "application/xml",
+        "bytes": null
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/plates/panels/04-people-behind-circure-a.avif",
+        "status": 200,
+        "contentType": "image/avif",
+        "bytes": "480119"
+      }
+    ]
+  },
+  {
+    "file": "plates/panels/04-people-behind-circure-b.png",
+    "bytes": 68356,
+    "required": true,
+    "references": [
+      {
+        "source": "src/data/project/visual-design/plates/04-people-behind-circure.html",
+        "kind": "article:href"
+      },
+      {
+        "source": "src/data/project/visual-design/plates/04-people-behind-circure.html",
+        "kind": "article:src"
+      }
+    ],
+    "cdnUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/plates/panels/04-people-behind-circure-b.avif",
+    "attempts": [
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/04-people-behind-circure-b.avif",
+        "status": 403,
+        "contentType": "application/xml",
+        "bytes": null
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/plates/panels/04-people-behind-circure-b.avif",
+        "status": 200,
+        "contentType": "image/avif",
+        "bytes": "17682"
+      }
+    ]
+  },
+  {
+    "file": "plates/panels/05-opening-sequence-a.png",
+    "bytes": 1002236,
+    "required": true,
+    "references": [
+      {
+        "source": "src/data/project/visual-design/plates/05-opening-sequence.html",
+        "kind": "article:href"
+      },
+      {
+        "source": "src/data/project/visual-design/plates/05-opening-sequence.html",
+        "kind": "article:src"
+      }
+    ],
+    "cdnUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/plates/panels/05-opening-sequence-a.avif",
+    "attempts": [
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/05-opening-sequence-a.avif",
+        "status": 403,
+        "contentType": "application/xml",
+        "bytes": null
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/plates/panels/05-opening-sequence-a.avif",
+        "status": 200,
+        "contentType": "image/avif",
+        "bytes": "80630"
+      }
+    ]
+  },
+  {
+    "file": "plates/panels/05-opening-sequence-b.png",
+    "bytes": 233041,
+    "required": true,
+    "references": [
+      {
+        "source": "src/data/project/visual-design/plates/05-opening-sequence.html",
+        "kind": "article:href"
+      },
+      {
+        "source": "src/data/project/visual-design/plates/05-opening-sequence.html",
+        "kind": "article:src"
+      }
+    ],
+    "cdnUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/plates/panels/05-opening-sequence-b.avif",
+    "attempts": [
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/05-opening-sequence-b.avif",
+        "status": 403,
+        "contentType": "application/xml",
+        "bytes": null
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/plates/panels/05-opening-sequence-b.avif",
+        "status": 200,
+        "contentType": "image/avif",
+        "bytes": "25366"
+      }
+    ]
+  },
+  {
+    "file": "plates/panels/05-opening-sequence-c.png",
+    "bytes": 370263,
+    "required": true,
+    "references": [
+      {
+        "source": "src/data/project/visual-design/plates/05-opening-sequence.html",
+        "kind": "article:href"
+      },
+      {
+        "source": "src/data/project/visual-design/plates/05-opening-sequence.html",
+        "kind": "article:src"
+      }
+    ],
+    "cdnUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/plates/panels/05-opening-sequence-c.avif",
+    "attempts": [
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/05-opening-sequence-c.avif",
+        "status": 403,
+        "contentType": "application/xml",
+        "bytes": null
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/plates/panels/05-opening-sequence-c.avif",
+        "status": 200,
+        "contentType": "image/avif",
+        "bytes": "30918"
+      }
+    ]
+  },
+  {
+    "file": "plates/panels/06-navigation-states-a.png",
+    "bytes": 92922,
+    "required": true,
+    "references": [
+      {
+        "source": "src/data/project/visual-design/plates/06b-navigation.html",
+        "kind": "article:href"
+      },
+      {
+        "source": "src/data/project/visual-design/plates/06b-navigation.html",
+        "kind": "article:src"
+      }
+    ],
+    "cdnUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/plates/panels/06-navigation-states-a.avif",
+    "attempts": [
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/06-navigation-states-a.avif",
+        "status": 403,
+        "contentType": "application/xml",
+        "bytes": null
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/plates/panels/06-navigation-states-a.avif",
+        "status": 200,
+        "contentType": "image/avif",
+        "bytes": "17192"
+      }
+    ]
+  },
+  {
+    "file": "plates/panels/06-navigation-states-b.png",
+    "bytes": 47314,
+    "required": true,
+    "references": [
+      {
+        "source": "src/data/project/visual-design/plates/06b-navigation.html",
+        "kind": "article:href"
+      },
+      {
+        "source": "src/data/project/visual-design/plates/06b-navigation.html",
+        "kind": "article:src"
+      }
+    ],
+    "cdnUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/plates/panels/06-navigation-states-b.avif",
+    "attempts": [
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/06-navigation-states-b.avif",
+        "status": 403,
+        "contentType": "application/xml",
+        "bytes": null
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/plates/panels/06-navigation-states-b.avif",
+        "status": 200,
+        "contentType": "image/avif",
+        "bytes": "7609"
+      }
+    ]
+  },
+  {
+    "file": "plates/panels/06-navigation-states-c.png",
+    "bytes": 30697,
+    "required": true,
+    "references": [
+      {
+        "source": "src/data/project/visual-design/plates/06b-navigation.html",
+        "kind": "article:href"
+      },
+      {
+        "source": "src/data/project/visual-design/plates/06b-navigation.html",
+        "kind": "article:src"
+      }
+    ],
+    "cdnUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/plates/panels/06-navigation-states-c.avif",
+    "attempts": [
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/06-navigation-states-c.avif",
+        "status": 403,
+        "contentType": "application/xml",
+        "bytes": null
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/plates/panels/06-navigation-states-c.avif",
+        "status": 200,
+        "contentType": "image/avif",
+        "bytes": "9814"
+      }
+    ]
+  },
+  {
+    "file": "plates/panels/06-navigation-states-d.png",
+    "bytes": 14149,
+    "required": true,
+    "references": [
+      {
+        "source": "src/data/project/visual-design/plates/06a-story-controls.html",
+        "kind": "article:href"
+      },
+      {
+        "source": "src/data/project/visual-design/plates/06a-story-controls.html",
+        "kind": "article:src"
+      }
+    ],
+    "cdnUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/plates/panels/06-navigation-states-d.avif",
+    "attempts": [
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/06-navigation-states-d.avif",
+        "status": 403,
+        "contentType": "application/xml",
+        "bytes": null
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/plates/panels/06-navigation-states-d.avif",
+        "status": 200,
+        "contentType": "image/avif",
+        "bytes": "2594"
+      }
+    ]
+  },
+  {
+    "file": "plates/panels/06-navigation-states-e.png",
+    "bytes": 50161,
+    "required": true,
+    "references": [
+      {
+        "source": "src/data/project/visual-design/plates/06a-story-controls.html",
+        "kind": "article:href"
+      },
+      {
+        "source": "src/data/project/visual-design/plates/06a-story-controls.html",
+        "kind": "article:src"
+      }
+    ],
+    "cdnUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/plates/panels/06-navigation-states-e.avif",
+    "attempts": [
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/06-navigation-states-e.avif",
+        "status": 403,
+        "contentType": "application/xml",
+        "bytes": null
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/plates/panels/06-navigation-states-e.avif",
+        "status": 200,
+        "contentType": "image/avif",
+        "bytes": "17823"
+      }
+    ]
+  },
+  {
+    "file": "plates/panels/07-footer-reveal-a.png",
+    "bytes": 341680,
+    "required": true,
+    "references": [
+      {
+        "source": "src/data/project/visual-design/plates/07-footer-reveal.html",
+        "kind": "disclosure:href"
+      },
+      {
+        "source": "src/data/project/visual-design/plates/07-footer-reveal.html",
+        "kind": "disclosure:src"
+      }
+    ],
+    "cdnUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/plates/panels/07-footer-reveal-a.avif",
+    "attempts": [
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/07-footer-reveal-a.avif",
+        "status": 403,
+        "contentType": "application/xml",
+        "bytes": null
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/plates/panels/07-footer-reveal-a.avif",
+        "status": 200,
+        "contentType": "image/avif",
+        "bytes": "72638"
+      }
+    ]
+  },
+  {
+    "file": "plates/panels/07-footer-reveal-b.png",
+    "bytes": 709478,
+    "required": true,
+    "references": [
+      {
+        "source": "src/data/project/visual-design/plates/07-footer-reveal.html",
+        "kind": "disclosure:href"
+      },
+      {
+        "source": "src/data/project/visual-design/plates/07-footer-reveal.html",
+        "kind": "disclosure:src"
+      }
+    ],
+    "cdnUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/plates/panels/07-footer-reveal-b.avif",
+    "attempts": [
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/07-footer-reveal-b.avif",
+        "status": 403,
+        "contentType": "application/xml",
+        "bytes": null
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/plates/panels/07-footer-reveal-b.avif",
+        "status": 200,
+        "contentType": "image/avif",
+        "bytes": "112166"
+      }
+    ]
+  },
+  {
+    "file": "plates/panels/07-footer-reveal-c.png",
+    "bytes": 1194575,
+    "required": true,
+    "references": [
+      {
+        "source": "src/data/project/visual-design/plates/07-footer-reveal.html",
+        "kind": "disclosure:href"
+      },
+      {
+        "source": "src/data/project/visual-design/plates/07-footer-reveal.html",
+        "kind": "disclosure:src"
+      }
+    ],
+    "cdnUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/plates/panels/07-footer-reveal-c.avif",
+    "attempts": [
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/07-footer-reveal-c.avif",
+        "status": 403,
+        "contentType": "application/xml",
+        "bytes": null
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/plates/panels/07-footer-reveal-c.avif",
+        "status": 200,
+        "contentType": "image/avif",
+        "bytes": "174075"
+      }
+    ]
+  },
+  {
+    "file": "plates/panels/07-footer-reveal-d.png",
+    "bytes": 68386,
+    "required": true,
+    "references": [
+      {
+        "source": "src/data/project/visual-design/plates/07-footer-reveal.html",
+        "kind": "disclosure:href"
+      },
+      {
+        "source": "src/data/project/visual-design/plates/07-footer-reveal.html",
+        "kind": "disclosure:src"
+      }
+    ],
+    "cdnUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/plates/panels/07-footer-reveal-d.avif",
+    "attempts": [
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/07-footer-reveal-d.avif",
+        "status": 403,
+        "contentType": "application/xml",
+        "bytes": null
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/plates/panels/07-footer-reveal-d.avif",
+        "status": 200,
+        "contentType": "image/avif",
+        "bytes": "17751"
+      }
+    ]
+  },
+  {
+    "file": "plates/panels/08-small-interactions-c.png",
+    "bytes": 219774,
+    "required": true,
+    "references": [
+      {
+        "source": "src/data/project/visual-design/history.html",
+        "kind": "disclosure:href"
+      },
+      {
+        "source": "src/data/project/visual-design/history.html",
+        "kind": "disclosure:src"
+      }
+    ],
+    "cdnUrl": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/plates/panels/08-small-interactions-c.avif",
+    "attempts": [
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/08-small-interactions-c.avif",
+        "status": 403,
+        "contentType": "application/xml",
+        "bytes": null
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/plates/panels/08-small-interactions-c.avif",
+        "status": 200,
+        "contentType": "image/avif",
+        "bytes": "17871"
+      }
+    ]
+  },
+  {
+    "file": "plates/panels/08b-ribbon-arrival.png",
+    "bytes": 114910,
+    "required": true,
+    "references": [
+      {
+        "source": "src/data/project/visual-design/plates/08b-ribbon.html",
+        "kind": "article:href"
+      },
+      {
+        "source": "src/data/project/visual-design/plates/08b-ribbon.html",
+        "kind": "article:src"
+      }
+    ],
+    "cdnUrl": "",
+    "attempts": [
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/08b-ribbon-arrival.avif",
+        "status": 403,
+        "contentType": "application/xml",
+        "bytes": null
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/plates/panels/08b-ribbon-arrival.avif",
+        "status": 403,
+        "contentType": "application/xml",
+        "bytes": null
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/panels/08b-ribbon-arrival.avif",
+        "status": 403,
+        "contentType": "application/xml",
+        "bytes": null
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/08b-ribbon-arrival.webp",
+        "status": 403,
+        "contentType": "application/xml",
+        "bytes": null
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/plates/panels/08b-ribbon-arrival.webp",
+        "status": 403,
+        "contentType": "application/xml",
+        "bytes": null
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/panels/08b-ribbon-arrival.webp",
+        "status": 403,
+        "contentType": "application/xml",
+        "bytes": null
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/08b-ribbon-arrival.avif",
+        "status": 403,
+        "method": "GET"
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/plates/panels/08b-ribbon-arrival.avif",
+        "status": 403,
+        "method": "GET"
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/panels/08b-ribbon-arrival.avif",
+        "status": 403,
+        "method": "GET"
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/08b-ribbon-arrival.webp",
+        "status": 403,
+        "method": "GET"
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/plates/panels/08b-ribbon-arrival.webp",
+        "status": 403,
+        "method": "GET"
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/panels/08b-ribbon-arrival.webp",
+        "status": 403,
+        "method": "GET"
+      }
+    ]
+  },
+  {
+    "file": "plates/panels/08b-ribbon-travel.png",
+    "bytes": 114807,
+    "required": true,
+    "references": [
+      {
+        "source": "src/data/project/visual-design/plates/08b-ribbon.html",
+        "kind": "article:href"
+      },
+      {
+        "source": "src/data/project/visual-design/plates/08b-ribbon.html",
+        "kind": "article:src"
+      }
+    ],
+    "cdnUrl": "",
+    "attempts": [
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/08b-ribbon-travel.avif",
+        "status": 403,
+        "contentType": "application/xml",
+        "bytes": null
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/plates/panels/08b-ribbon-travel.avif",
+        "status": 403,
+        "contentType": "application/xml",
+        "bytes": null
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/panels/08b-ribbon-travel.avif",
+        "status": 403,
+        "contentType": "application/xml",
+        "bytes": null
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/08b-ribbon-travel.webp",
+        "status": 403,
+        "contentType": "application/xml",
+        "bytes": null
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/plates/panels/08b-ribbon-travel.webp",
+        "status": 403,
+        "contentType": "application/xml",
+        "bytes": null
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/panels/08b-ribbon-travel.webp",
+        "status": 403,
+        "contentType": "application/xml",
+        "bytes": null
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/08b-ribbon-travel.avif",
+        "status": 403,
+        "method": "GET"
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/plates/panels/08b-ribbon-travel.avif",
+        "status": 403,
+        "method": "GET"
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/panels/08b-ribbon-travel.avif",
+        "status": 403,
+        "method": "GET"
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/08b-ribbon-travel.webp",
+        "status": 403,
+        "method": "GET"
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/plates/panels/08b-ribbon-travel.webp",
+        "status": 403,
+        "method": "GET"
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/panels/08b-ribbon-travel.webp",
+        "status": 403,
+        "method": "GET"
+      }
+    ]
+  },
+  {
+    "file": "plates/panels/08b-ribbon-viewport.jpg",
+    "bytes": 46686,
+    "required": true,
+    "references": [
+      {
+        "source": "src/data/project/visual-design/plates/08b-ribbon.html",
+        "kind": "article:href"
+      },
+      {
+        "source": "src/data/project/visual-design/plates/08b-ribbon.html",
+        "kind": "article:src"
+      }
+    ],
+    "cdnUrl": "",
+    "attempts": [
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/08b-ribbon-viewport.avif",
+        "status": 403,
+        "contentType": "application/xml",
+        "bytes": null
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/plates/panels/08b-ribbon-viewport.avif",
+        "status": 403,
+        "contentType": "application/xml",
+        "bytes": null
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/panels/08b-ribbon-viewport.avif",
+        "status": 403,
+        "contentType": "application/xml",
+        "bytes": null
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/08b-ribbon-viewport.webp",
+        "status": 403,
+        "contentType": "application/xml",
+        "bytes": null
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/plates/panels/08b-ribbon-viewport.webp",
+        "status": 403,
+        "contentType": "application/xml",
+        "bytes": null
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/panels/08b-ribbon-viewport.webp",
+        "status": 403,
+        "contentType": "application/xml",
+        "bytes": null
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/08b-ribbon-viewport.avif",
+        "status": 403,
+        "method": "GET"
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/plates/panels/08b-ribbon-viewport.avif",
+        "status": 403,
+        "method": "GET"
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/panels/08b-ribbon-viewport.avif",
+        "status": 403,
+        "method": "GET"
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/08b-ribbon-viewport.webp",
+        "status": 403,
+        "method": "GET"
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/plates/panels/08b-ribbon-viewport.webp",
+        "status": 403,
+        "method": "GET"
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/panels/08b-ribbon-viewport.webp",
+        "status": 403,
+        "method": "GET"
+      }
+    ]
+  },
+  {
+    "file": "plates/panels/08b-whitespace-context.jpg",
+    "bytes": 98411,
+    "required": true,
+    "references": [
+      {
+        "source": "DesignExplanationFigures.tsx:design-details-destinations",
+        "kind": "disclosure"
+      }
+    ],
+    "cdnUrl": "",
+    "attempts": [
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/08b-whitespace-context.avif",
+        "status": 403,
+        "contentType": "application/xml",
+        "bytes": null
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/plates/panels/08b-whitespace-context.avif",
+        "status": 403,
+        "contentType": "application/xml",
+        "bytes": null
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/panels/08b-whitespace-context.avif",
+        "status": 403,
+        "contentType": "application/xml",
+        "bytes": null
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/08b-whitespace-context.webp",
+        "status": 403,
+        "contentType": "application/xml",
+        "bytes": null
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/plates/panels/08b-whitespace-context.webp",
+        "status": 403,
+        "contentType": "application/xml",
+        "bytes": null
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/panels/08b-whitespace-context.webp",
+        "status": 403,
+        "contentType": "application/xml",
+        "bytes": null
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/08b-whitespace-context.avif",
+        "status": 403,
+        "method": "GET"
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/plates/panels/08b-whitespace-context.avif",
+        "status": 403,
+        "method": "GET"
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/panels/08b-whitespace-context.avif",
+        "status": 403,
+        "method": "GET"
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/08b-whitespace-context.webp",
+        "status": 403,
+        "method": "GET"
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/plates/panels/08b-whitespace-context.webp",
+        "status": 403,
+        "method": "GET"
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/panels/08b-whitespace-context.webp",
+        "status": 403,
+        "method": "GET"
+      }
+    ]
+  },
+  {
+    "file": "plates/panels/08b-whitespace-next-only.jpg",
+    "bytes": 46915,
+    "required": true,
+    "references": [
+      {
+        "source": "DesignExplanationFigures.tsx:design-details-destinations",
+        "kind": "disclosure"
+      }
+    ],
+    "cdnUrl": "",
+    "attempts": [
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/08b-whitespace-next-only.avif",
+        "status": 403,
+        "contentType": "application/xml",
+        "bytes": null
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/plates/panels/08b-whitespace-next-only.avif",
+        "status": 403,
+        "contentType": "application/xml",
+        "bytes": null
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/panels/08b-whitespace-next-only.avif",
+        "status": 403,
+        "contentType": "application/xml",
+        "bytes": null
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/08b-whitespace-next-only.webp",
+        "status": 403,
+        "contentType": "application/xml",
+        "bytes": null
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/plates/panels/08b-whitespace-next-only.webp",
+        "status": 403,
+        "contentType": "application/xml",
+        "bytes": null
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/panels/08b-whitespace-next-only.webp",
+        "status": 403,
+        "contentType": "application/xml",
+        "bytes": null
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/08b-whitespace-next-only.avif",
+        "status": 403,
+        "method": "GET"
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/plates/panels/08b-whitespace-next-only.avif",
+        "status": 403,
+        "method": "GET"
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/panels/08b-whitespace-next-only.avif",
+        "status": 403,
+        "method": "GET"
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/08b-whitespace-next-only.webp",
+        "status": 403,
+        "method": "GET"
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/plates/panels/08b-whitespace-next-only.webp",
+        "status": 403,
+        "method": "GET"
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/panels/08b-whitespace-next-only.webp",
+        "status": 403,
+        "method": "GET"
+      }
+    ]
+  },
+  {
+    "file": "plates/panels/08c-explore-hover.png",
+    "bytes": 68637,
+    "required": true,
+    "references": [
+      {
+        "source": "src/data/project/visual-design/plates/08c-on-demand-hints.html",
+        "kind": "article:href"
+      },
+      {
+        "source": "src/data/project/visual-design/plates/08c-on-demand-hints.html",
+        "kind": "article:src"
+      }
+    ],
+    "cdnUrl": "",
+    "attempts": [
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/08c-explore-hover.avif",
+        "status": 403,
+        "contentType": "application/xml",
+        "bytes": null
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/plates/panels/08c-explore-hover.avif",
+        "status": 403,
+        "contentType": "application/xml",
+        "bytes": null
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/panels/08c-explore-hover.avif",
+        "status": 403,
+        "contentType": "application/xml",
+        "bytes": null
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/08c-explore-hover.webp",
+        "status": 403,
+        "contentType": "application/xml",
+        "bytes": null
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/plates/panels/08c-explore-hover.webp",
+        "status": 403,
+        "contentType": "application/xml",
+        "bytes": null
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/panels/08c-explore-hover.webp",
+        "status": 403,
+        "contentType": "application/xml",
+        "bytes": null
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/08c-explore-hover.avif",
+        "status": 403,
+        "method": "GET"
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/plates/panels/08c-explore-hover.avif",
+        "status": 403,
+        "method": "GET"
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/panels/08c-explore-hover.avif",
+        "status": 403,
+        "method": "GET"
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/08c-explore-hover.webp",
+        "status": 403,
+        "method": "GET"
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/plates/panels/08c-explore-hover.webp",
+        "status": 403,
+        "method": "GET"
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/panels/08c-explore-hover.webp",
+        "status": 403,
+        "method": "GET"
+      }
+    ]
+  },
+  {
+    "file": "plates/panels/08c-explore-rest.png",
+    "bytes": 63344,
+    "required": true,
+    "references": [
+      {
+        "source": "src/data/project/visual-design/plates/08c-on-demand-hints.html",
+        "kind": "article:href"
+      },
+      {
+        "source": "src/data/project/visual-design/plates/08c-on-demand-hints.html",
+        "kind": "article:src"
+      }
+    ],
+    "cdnUrl": "",
+    "attempts": [
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/08c-explore-rest.avif",
+        "status": 403,
+        "contentType": "application/xml",
+        "bytes": null
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/plates/panels/08c-explore-rest.avif",
+        "status": 403,
+        "contentType": "application/xml",
+        "bytes": null
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/panels/08c-explore-rest.avif",
+        "status": 403,
+        "contentType": "application/xml",
+        "bytes": null
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/08c-explore-rest.webp",
+        "status": 403,
+        "contentType": "application/xml",
+        "bytes": null
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/plates/panels/08c-explore-rest.webp",
+        "status": 403,
+        "contentType": "application/xml",
+        "bytes": null
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/panels/08c-explore-rest.webp",
+        "status": 403,
+        "contentType": "application/xml",
+        "bytes": null
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/08c-explore-rest.avif",
+        "status": 403,
+        "method": "GET"
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/plates/panels/08c-explore-rest.avif",
+        "status": 403,
+        "method": "GET"
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/panels/08c-explore-rest.avif",
+        "status": 403,
+        "method": "GET"
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/08c-explore-rest.webp",
+        "status": 403,
+        "method": "GET"
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/plates/panels/08c-explore-rest.webp",
+        "status": 403,
+        "method": "GET"
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/panels/08c-explore-rest.webp",
+        "status": 403,
+        "method": "GET"
+      }
+    ]
+  },
+  {
+    "file": "plates/panels/08c-ribbon-hover.png",
+    "bytes": 79251,
+    "required": true,
+    "references": [
+      {
+        "source": "src/data/project/visual-design/plates/08c-on-demand-hints.html",
+        "kind": "article:href"
+      },
+      {
+        "source": "src/data/project/visual-design/plates/08c-on-demand-hints.html",
+        "kind": "article:src"
+      }
+    ],
+    "cdnUrl": "",
+    "attempts": [
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/08c-ribbon-hover.avif",
+        "status": 403,
+        "contentType": "application/xml",
+        "bytes": null
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/plates/panels/08c-ribbon-hover.avif",
+        "status": 403,
+        "contentType": "application/xml",
+        "bytes": null
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/panels/08c-ribbon-hover.avif",
+        "status": 403,
+        "contentType": "application/xml",
+        "bytes": null
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/08c-ribbon-hover.webp",
+        "status": 403,
+        "contentType": "application/xml",
+        "bytes": null
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/plates/panels/08c-ribbon-hover.webp",
+        "status": 403,
+        "contentType": "application/xml",
+        "bytes": null
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/panels/08c-ribbon-hover.webp",
+        "status": 403,
+        "contentType": "application/xml",
+        "bytes": null
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/08c-ribbon-hover.avif",
+        "status": 403,
+        "method": "GET"
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/plates/panels/08c-ribbon-hover.avif",
+        "status": 403,
+        "method": "GET"
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/panels/08c-ribbon-hover.avif",
+        "status": 403,
+        "method": "GET"
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/08c-ribbon-hover.webp",
+        "status": 403,
+        "method": "GET"
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/plates/panels/08c-ribbon-hover.webp",
+        "status": 403,
+        "method": "GET"
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/panels/08c-ribbon-hover.webp",
+        "status": 403,
+        "method": "GET"
+      }
+    ]
+  },
+  {
+    "file": "plates/panels/08c-ribbon-rest.png",
+    "bytes": 72040,
+    "required": true,
+    "references": [
+      {
+        "source": "src/data/project/visual-design/plates/08c-on-demand-hints.html",
+        "kind": "article:href"
+      },
+      {
+        "source": "src/data/project/visual-design/plates/08c-on-demand-hints.html",
+        "kind": "article:src"
+      }
+    ],
+    "cdnUrl": "",
+    "attempts": [
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/08c-ribbon-rest.avif",
+        "status": 403,
+        "contentType": "application/xml",
+        "bytes": null
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/plates/panels/08c-ribbon-rest.avif",
+        "status": 403,
+        "contentType": "application/xml",
+        "bytes": null
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/panels/08c-ribbon-rest.avif",
+        "status": 403,
+        "contentType": "application/xml",
+        "bytes": null
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/08c-ribbon-rest.webp",
+        "status": 403,
+        "contentType": "application/xml",
+        "bytes": null
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/plates/panels/08c-ribbon-rest.webp",
+        "status": 403,
+        "contentType": "application/xml",
+        "bytes": null
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/panels/08c-ribbon-rest.webp",
+        "status": 403,
+        "contentType": "application/xml",
+        "bytes": null
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/08c-ribbon-rest.avif",
+        "status": 403,
+        "method": "GET"
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/plates/panels/08c-ribbon-rest.avif",
+        "status": 403,
+        "method": "GET"
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/panels/08c-ribbon-rest.avif",
+        "status": 403,
+        "method": "GET"
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/08c-ribbon-rest.webp",
+        "status": 403,
+        "method": "GET"
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/plates/panels/08c-ribbon-rest.webp",
+        "status": 403,
+        "method": "GET"
+      },
+      {
+        "url": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/panels/08c-ribbon-rest.webp",
+        "status": 403,
+        "method": "GET"
+      }
+    ]
+  }
+]

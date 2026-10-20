@@ -1,0 +1,10 @@
+{
+  "__description__": "Visual Design 与 Human Practices 新版标题画布导出结果。可用于直接上传到 iGEM 后台或在其它项目/页面替换使用。",
+  "hero_folder": {
+    "target_folder": "files/pages/hero/",
+    "files": {
+      "project-visual-design-hero.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/hero/project-visual-design-hero.webp",
+      "engagement-human-practices-hero.webp": "https://static.igem.wiki/teams/6056/wiki/files/pages/hero/engagement-human-practices-hero.webp"
+    }
+  }
+}

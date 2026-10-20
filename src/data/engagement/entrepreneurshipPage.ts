@@ -1152,7 +1152,7 @@ export const entrepreneurshipPage: WikiPageContent = {
           type: "figure",
           src: entrepreneurshipAssets.illustrations.competitorMerck,
           width: 3056,
-          height: 1380,
+          height: 721,
           alt: "Merck — KEYTRUDA (pembrolizumab)",
           caption: "Merck — KEYTRUDA (pembrolizumab).",
         },

@@ -27,8 +27,6 @@
   --fold-line-strong: #9fb489;
   --fold-surface: rgb(255 255 255 / 72%);
   --fold-surface-hover: #f4f8ec;
-  --fold-chevron-down: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M2.5 4.5 6 8l3.5-3.5' fill='none' stroke='%233f5634' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
-  --fold-chevron-up: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M2.5 7.5 6 4l3.5 3.5' fill='none' stroke='%233f5634' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
 
   margin-block: 20px 24px;
   padding: 0;
@@ -135,8 +133,7 @@
   padding: 5px 30px 5px 14px;
   border: 1px solid var(--fold-line-strong);
   border-radius: 999px;
-  background: #eef4e3 var(--fold-chevron-down) no-repeat right 11px center /
-    12px 12px;
+  background: #eef4e3;
   color: var(--fold-accent);
   font: 500 12px/1.5 var(--font-sans, Lexend, sans-serif);
   letter-spacing: 0.02em;
@@ -256,7 +253,52 @@
   > summary:not(#vd-fold)::after {
   content: "Collapse";
   content: "Collapse" / "";
-  background-image: var(--fold-chevron-up);
+}
+
+/* Draw the disclosure chevron with CSS so it needs no embedded image asset. */
+.wiki-page.wiki-page--visual-design
+  details:is(
+    .design-technical-note,
+    .design-live-study,
+    .design-archive-complete,
+    .art-studio__sources,
+    .ms-ring-sources,
+    .ms-source,
+    .archive-source,
+    .design-type-study__implementation,
+    .footer-reveal-study__archive,
+    #vd-fold
+  )
+  > summary:not(#vd-fold)::before {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  right: 29px;
+  width: 6px;
+  height: 6px;
+  border-right: 1.6px solid var(--fold-accent);
+  border-bottom: 1.6px solid var(--fold-accent);
+  border-radius: 1px;
+  transform: translateY(-70%) rotate(45deg);
+  pointer-events: none;
+}
+
+.wiki-page.wiki-page--visual-design
+  details:is(
+    .design-technical-note,
+    .design-live-study,
+    .design-archive-complete,
+    .art-studio__sources,
+    .ms-ring-sources,
+    .ms-source,
+    .archive-source,
+    .design-type-study__implementation,
+    .footer-reveal-study__archive,
+    #vd-fold
+  )[open]
+  > summary:not(#vd-fold)::before {
+  transform: translateY(-30%) rotate(225deg);
 }
 
 /* Technical notes and the archive drew their own "+" glyph; the shared control replaces both. */
@@ -293,6 +335,23 @@
 }
 
 @media (max-width: 680px) {
+  .wiki-page.wiki-page--visual-design
+    details:is(
+      .design-technical-note,
+      .design-live-study,
+      .design-archive-complete,
+      .art-studio__sources,
+      .ms-ring-sources,
+      .ms-source,
+      .archive-source,
+      .design-type-study__implementation,
+      .footer-reveal-study__archive,
+      #vd-fold
+    )
+    > summary:not(#vd-fold)::before {
+    right: 24px;
+  }
+
   .wiki-page.wiki-page--visual-design
     details:is(
       .design-technical-note,

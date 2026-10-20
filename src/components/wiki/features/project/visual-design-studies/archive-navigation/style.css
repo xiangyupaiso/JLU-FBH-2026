@@ -480,7 +480,7 @@ button {
 .tile-experiments,
 .tile-results,
 .tile-notebook {
-  --tile-image: url("./assets/nav-project-wetlab-v2.webp");
+  --tile-image: url("https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/nav-project-wetlab-v2.webp");
   --tile-size: 300% auto;
 }
 
@@ -490,7 +490,7 @@ button {
 .tile-pipeline,
 .tile-model,
 .tile-software {
-  --tile-image: url("./assets/nav-drylab-engagement-v2.webp");
+  --tile-image: url("https://static.igem.wiki/teams/6056/wiki/files/pages/dry-lab/nav-drylab-engagement-v2.webp");
   --tile-size: 300% auto;
 }
 
@@ -500,7 +500,7 @@ button {
 .tile-judging,
 .tile-medals,
 .tile-awards {
-  --tile-image: url("./assets/nav-team-award-v2.webp");
+  --tile-image: url("https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/nav-team-award-v2.webp");
   --tile-size: 300% auto;
 }
 

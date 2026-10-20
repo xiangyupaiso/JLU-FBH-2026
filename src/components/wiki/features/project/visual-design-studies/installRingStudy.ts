@@ -1,4 +1,4 @@
-import ringUrl from "../../../../../assets/home/story/scene-1-layer-4.webp";
+const ringUrl = "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-1-layer-4.webp";
 
 const clamp = (value: number) => Math.max(0, Math.min(1, value));
 const smooth = (value: number) => value * value * (3 - 2 * value);
@@ -178,6 +178,7 @@ export function installRingStudy(root: HTMLElement) {
     failed = true;
     schedule();
   };
+  image.crossOrigin = "anonymous";
   image.src = ringUrl;
   window.addEventListener("scroll", onScroll, { capture: true, passive: true });
   window.addEventListener("wheel", resumeScroll, { passive: true });

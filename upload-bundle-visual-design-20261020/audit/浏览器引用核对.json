@@ -1,0 +1,1530 @@
+{
+  "page": "http://localhost:5173/jlu-fbh/visual-design",
+  "localAssetCount": 99,
+  "staticOnly": [],
+  "browserOnly": [],
+  "pageErrors": [],
+  "assets": {
+    "plates/panels/01-patient-question-a.png": [
+      {
+        "tag": "A",
+        "attr": "href",
+        "value": "/jlu-fbh/src/assets/visual-design/plates/panels/01-patient-question-a.png",
+        "closed": false,
+        "section": "study-01-patient-question"
+      },
+      {
+        "tag": "IMG",
+        "attr": "src",
+        "value": "/jlu-fbh/src/assets/visual-design/plates/panels/01-patient-question-a.png",
+        "closed": false,
+        "section": "study-01-patient-question"
+      },
+      {
+        "tag": "IMG",
+        "attr": "data-page-src",
+        "value": "/jlu-fbh/src/assets/visual-design/plates/panels/01-patient-question-a.png",
+        "closed": true,
+        "section": "design-details-artwork"
+      },
+      {
+        "tag": "IMG",
+        "attr": "data-page-src",
+        "value": "/jlu-fbh/src/assets/visual-design/plates/panels/01-patient-question-a.png",
+        "closed": true,
+        "section": "design-details-artwork"
+      },
+      {
+        "tag": "IMG",
+        "attr": "data-page-src",
+        "value": "/jlu-fbh/src/assets/visual-design/plates/panels/01-patient-question-a.png",
+        "closed": true,
+        "section": "design-details-artwork"
+      }
+    ],
+    "plates/panels/01-patient-question-b.png": [
+      {
+        "tag": "A",
+        "attr": "href",
+        "value": "/jlu-fbh/src/assets/visual-design/plates/panels/01-patient-question-b.png",
+        "closed": false,
+        "section": "study-01-patient-question"
+      },
+      {
+        "tag": "IMG",
+        "attr": "src",
+        "value": "/jlu-fbh/src/assets/visual-design/plates/panels/01-patient-question-b.png",
+        "closed": false,
+        "section": "study-01-patient-question"
+      }
+    ],
+    "plates/panels/01-patient-question-c.png": [
+      {
+        "tag": "A",
+        "attr": "href",
+        "value": "/jlu-fbh/src/assets/visual-design/plates/panels/01-patient-question-c.png",
+        "closed": false,
+        "section": "study-01-patient-question"
+      },
+      {
+        "tag": "IMG",
+        "attr": "src",
+        "value": "/jlu-fbh/src/assets/visual-design/plates/panels/01-patient-question-c.png",
+        "closed": false,
+        "section": "study-01-patient-question"
+      }
+    ],
+    "plates/panels/01-patient-question-d.png": [
+      {
+        "tag": "A",
+        "attr": "href",
+        "value": "/jlu-fbh/src/assets/visual-design/plates/panels/01-patient-question-d.png",
+        "closed": false,
+        "section": "study-01-patient-question"
+      },
+      {
+        "tag": "IMG",
+        "attr": "src",
+        "value": "/jlu-fbh/src/assets/visual-design/plates/panels/01-patient-question-d.png",
+        "closed": false,
+        "section": "study-01-patient-question"
+      }
+    ],
+    "plates/panels/02-visual-continuity-a.png": [
+      {
+        "tag": "A",
+        "attr": "href",
+        "value": "/jlu-fbh/src/assets/visual-design/plates/panels/02-visual-continuity-a.png",
+        "closed": false,
+        "section": "study-02-visual-continuity"
+      },
+      {
+        "tag": "IMG",
+        "attr": "src",
+        "value": "/jlu-fbh/src/assets/visual-design/plates/panels/02-visual-continuity-a.png",
+        "closed": false,
+        "section": "study-02-visual-continuity"
+      }
+    ],
+    "plates/panels/02-visual-continuity-b.png": [
+      {
+        "tag": "A",
+        "attr": "href",
+        "value": "/jlu-fbh/src/assets/visual-design/plates/panels/02-visual-continuity-b.png",
+        "closed": false,
+        "section": "study-02-visual-continuity"
+      },
+      {
+        "tag": "IMG",
+        "attr": "src",
+        "value": "/jlu-fbh/src/assets/visual-design/plates/panels/02-visual-continuity-b.png",
+        "closed": false,
+        "section": "study-02-visual-continuity"
+      }
+    ],
+    "plates/panels/02-visual-continuity-c.png": [
+      {
+        "tag": "A",
+        "attr": "href",
+        "value": "/jlu-fbh/src/assets/visual-design/plates/panels/02-visual-continuity-c.png",
+        "closed": false,
+        "section": "study-02-visual-continuity"
+      },
+      {
+        "tag": "IMG",
+        "attr": "src",
+        "value": "/jlu-fbh/src/assets/visual-design/plates/panels/02-visual-continuity-c.png",
+        "closed": false,
+        "section": "study-02-visual-continuity"
+      }
+    ],
+    "plates/panels/02-visual-continuity-d.png": [
+      {
+        "tag": "A",
+        "attr": "href",
+        "value": "/jlu-fbh/src/assets/visual-design/plates/panels/02-visual-continuity-d.png",
+        "closed": false,
+        "section": "study-02-visual-continuity"
+      },
+      {
+        "tag": "IMG",
+        "attr": "src",
+        "value": "/jlu-fbh/src/assets/visual-design/plates/panels/02-visual-continuity-d.png",
+        "closed": false,
+        "section": "study-02-visual-continuity"
+      }
+    ],
+    "plates/panels/02-visual-continuity-e.png": [
+      {
+        "tag": "A",
+        "attr": "href",
+        "value": "/jlu-fbh/src/assets/visual-design/plates/panels/02-visual-continuity-e.png",
+        "closed": false,
+        "section": "study-02-visual-continuity"
+      },
+      {
+        "tag": "IMG",
+        "attr": "src",
+        "value": "/jlu-fbh/src/assets/visual-design/plates/panels/02-visual-continuity-e.png",
+        "closed": false,
+        "section": "study-02-visual-continuity"
+      }
+    ],
+    "plates/panels/03-modular-interaction-a.png": [
+      {
+        "tag": "A",
+        "attr": "href",
+        "value": "/jlu-fbh/src/assets/visual-design/plates/panels/03-modular-interaction-a.png",
+        "closed": false,
+        "section": "study-03-modular-interaction"
+      },
+      {
+        "tag": "IMG",
+        "attr": "src",
+        "value": "/jlu-fbh/src/assets/visual-design/plates/panels/03-modular-interaction-a.png",
+        "closed": false,
+        "section": "study-03-modular-interaction"
+      }
+    ],
+    "plates/panels/03-modular-interaction-b.png": [
+      {
+        "tag": "A",
+        "attr": "href",
+        "value": "/jlu-fbh/src/assets/visual-design/plates/panels/03-modular-interaction-b.png",
+        "closed": false,
+        "section": "study-03-modular-interaction"
+      },
+      {
+        "tag": "IMG",
+        "attr": "src",
+        "value": "/jlu-fbh/src/assets/visual-design/plates/panels/03-modular-interaction-b.png",
+        "closed": false,
+        "section": "study-03-modular-interaction"
+      }
+    ],
+    "plates/panels/04-people-behind-circure-a.png": [
+      {
+        "tag": "A",
+        "attr": "href",
+        "value": "/jlu-fbh/src/assets/visual-design/plates/panels/04-people-behind-circure-a.png",
+        "closed": false,
+        "section": "study-04-people-behind-circure"
+      },
+      {
+        "tag": "IMG",
+        "attr": "src",
+        "value": "/jlu-fbh/src/assets/visual-design/plates/panels/04-people-behind-circure-a.png",
+        "closed": false,
+        "section": "study-04-people-behind-circure"
+      }
+    ],
+    "plates/panels/04-people-behind-circure-b.png": [
+      {
+        "tag": "A",
+        "attr": "href",
+        "value": "/jlu-fbh/src/assets/visual-design/plates/panels/04-people-behind-circure-b.png",
+        "closed": false,
+        "section": "study-04-people-behind-circure"
+      },
+      {
+        "tag": "IMG",
+        "attr": "src",
+        "value": "/jlu-fbh/src/assets/visual-design/plates/panels/04-people-behind-circure-b.png",
+        "closed": false,
+        "section": "study-04-people-behind-circure"
+      }
+    ],
+    "history/artwork/ward-full.webp": [
+      {
+        "tag": "A",
+        "attr": "href",
+        "value": "/jlu-fbh/src/assets/visual-design/history/artwork/ward-full.webp",
+        "closed": false,
+        "section": "interaction-craft"
+      },
+      {
+        "tag": "IMG",
+        "attr": "data-page-src",
+        "value": "/jlu-fbh/src/assets/visual-design/history/artwork/ward-full.webp",
+        "closed": false,
+        "section": "interaction-craft"
+      },
+      {
+        "tag": "IMG",
+        "attr": "data-page-src",
+        "value": "/jlu-fbh/src/assets/visual-design/history/artwork/ward-full.webp",
+        "closed": false,
+        "section": "interaction-craft"
+      },
+      {
+        "tag": "A",
+        "attr": "href",
+        "value": "/jlu-fbh/src/assets/visual-design/history/artwork/ward-full.webp",
+        "closed": true,
+        "section": "artwork-layer-exports"
+      }
+    ],
+    "history/artwork/patient-full.webp": [
+      {
+        "tag": "A",
+        "attr": "href",
+        "value": "/jlu-fbh/src/assets/visual-design/history/artwork/patient-full.webp",
+        "closed": false,
+        "section": "interaction-craft"
+      },
+      {
+        "tag": "IMG",
+        "attr": "data-page-src",
+        "value": "/jlu-fbh/src/assets/visual-design/history/artwork/patient-full.webp",
+        "closed": false,
+        "section": "interaction-craft"
+      },
+      {
+        "tag": "A",
+        "attr": "href",
+        "value": "/jlu-fbh/src/assets/visual-design/history/artwork/patient-full.webp",
+        "closed": true,
+        "section": "artwork-layer-exports"
+      }
+    ],
+    "history/artwork/patient.webp": [
+      {
+        "tag": "IMG",
+        "attr": "data-page-src",
+        "value": "/jlu-fbh/src/assets/visual-design/history/artwork/patient.webp",
+        "closed": false,
+        "section": "interaction-craft"
+      },
+      {
+        "tag": "IMG",
+        "attr": "src",
+        "value": "/jlu-fbh/src/assets/visual-design/history/artwork/patient.webp",
+        "closed": true,
+        "section": "artwork-layer-exports"
+      }
+    ],
+    "history/artwork/student-full.webp": [
+      {
+        "tag": "A",
+        "attr": "href",
+        "value": "/jlu-fbh/src/assets/visual-design/history/artwork/student-full.webp",
+        "closed": false,
+        "section": "interaction-craft"
+      },
+      {
+        "tag": "IMG",
+        "attr": "data-page-src",
+        "value": "/jlu-fbh/src/assets/visual-design/history/artwork/student-full.webp",
+        "closed": false,
+        "section": "interaction-craft"
+      },
+      {
+        "tag": "A",
+        "attr": "href",
+        "value": "/jlu-fbh/src/assets/visual-design/history/artwork/student-full.webp",
+        "closed": true,
+        "section": "artwork-layer-exports"
+      }
+    ],
+    "history/artwork/student.webp": [
+      {
+        "tag": "IMG",
+        "attr": "data-page-src",
+        "value": "/jlu-fbh/src/assets/visual-design/history/artwork/student.webp",
+        "closed": false,
+        "section": "interaction-craft"
+      },
+      {
+        "tag": "IMG",
+        "attr": "src",
+        "value": "/jlu-fbh/src/assets/visual-design/history/artwork/student.webp",
+        "closed": true,
+        "section": "artwork-layer-exports"
+      }
+    ],
+    "plates/panels/05-opening-sequence-a.png": [
+      {
+        "tag": "A",
+        "attr": "href",
+        "value": "/jlu-fbh/src/assets/visual-design/plates/panels/05-opening-sequence-a.png",
+        "closed": false,
+        "section": "study-05-opening-sequence"
+      },
+      {
+        "tag": "IMG",
+        "attr": "src",
+        "value": "/jlu-fbh/src/assets/visual-design/plates/panels/05-opening-sequence-a.png",
+        "closed": false,
+        "section": "study-05-opening-sequence"
+      }
+    ],
+    "plates/panels/05-opening-sequence-b.png": [
+      {
+        "tag": "A",
+        "attr": "href",
+        "value": "/jlu-fbh/src/assets/visual-design/plates/panels/05-opening-sequence-b.png",
+        "closed": false,
+        "section": "study-05-opening-sequence"
+      },
+      {
+        "tag": "IMG",
+        "attr": "src",
+        "value": "/jlu-fbh/src/assets/visual-design/plates/panels/05-opening-sequence-b.png",
+        "closed": false,
+        "section": "study-05-opening-sequence"
+      }
+    ],
+    "plates/panels/05-opening-sequence-c.png": [
+      {
+        "tag": "A",
+        "attr": "href",
+        "value": "/jlu-fbh/src/assets/visual-design/plates/panels/05-opening-sequence-c.png",
+        "closed": false,
+        "section": "study-05-opening-sequence"
+      },
+      {
+        "tag": "IMG",
+        "attr": "src",
+        "value": "/jlu-fbh/src/assets/visual-design/plates/panels/05-opening-sequence-c.png",
+        "closed": false,
+        "section": "study-05-opening-sequence"
+      }
+    ],
+    "history/images/08-ring-particles.jpg": [
+      {
+        "tag": "A",
+        "attr": "href",
+        "value": "/jlu-fbh/src/assets/visual-design/history/images/08-ring-particles.jpg",
+        "closed": false,
+        "section": "design-revision-ring"
+      },
+      {
+        "tag": "IMG",
+        "attr": "data-page-src",
+        "value": "/jlu-fbh/src/assets/visual-design/history/images/08-ring-particles.jpg",
+        "closed": false,
+        "section": "design-revision-ring"
+      },
+      {
+        "tag": "A",
+        "attr": "href",
+        "value": "/jlu-fbh/src/assets/visual-design/history/images/08-ring-particles.jpg",
+        "closed": true,
+        "section": "archive-ring-revision"
+      },
+      {
+        "tag": "IMG",
+        "attr": "src",
+        "value": "/jlu-fbh/src/assets/visual-design/history/images/08-ring-particles.jpg",
+        "closed": true,
+        "section": "archive-ring-revision"
+      }
+    ],
+    "history/images/09-ring-solid.jpg": [
+      {
+        "tag": "A",
+        "attr": "href",
+        "value": "/jlu-fbh/src/assets/visual-design/history/images/09-ring-solid.jpg",
+        "closed": false,
+        "section": "design-revision-ring"
+      },
+      {
+        "tag": "IMG",
+        "attr": "data-page-src",
+        "value": "/jlu-fbh/src/assets/visual-design/history/images/09-ring-solid.jpg",
+        "closed": false,
+        "section": "design-revision-ring"
+      },
+      {
+        "tag": "A",
+        "attr": "href",
+        "value": "/jlu-fbh/src/assets/visual-design/history/images/09-ring-solid.jpg",
+        "closed": true,
+        "section": "archive-ring-revision"
+      },
+      {
+        "tag": "IMG",
+        "attr": "src",
+        "value": "/jlu-fbh/src/assets/visual-design/history/images/09-ring-solid.jpg",
+        "closed": true,
+        "section": "archive-ring-revision"
+      }
+    ],
+    "plates/panels/06-navigation-states-d.png": [
+      {
+        "tag": "A",
+        "attr": "href",
+        "value": "/jlu-fbh/src/assets/visual-design/plates/panels/06-navigation-states-d.png",
+        "closed": false,
+        "section": "study-06a-story-controls"
+      },
+      {
+        "tag": "IMG",
+        "attr": "src",
+        "value": "/jlu-fbh/src/assets/visual-design/plates/panels/06-navigation-states-d.png",
+        "closed": false,
+        "section": "study-06a-story-controls"
+      }
+    ],
+    "plates/panels/06-navigation-states-e.png": [
+      {
+        "tag": "A",
+        "attr": "href",
+        "value": "/jlu-fbh/src/assets/visual-design/plates/panels/06-navigation-states-e.png",
+        "closed": false,
+        "section": "study-06a-story-controls"
+      },
+      {
+        "tag": "IMG",
+        "attr": "src",
+        "value": "/jlu-fbh/src/assets/visual-design/plates/panels/06-navigation-states-e.png",
+        "closed": false,
+        "section": "study-06a-story-controls"
+      }
+    ],
+    "history/subpages/model.webp": [
+      {
+        "tag": "A",
+        "attr": "href",
+        "value": "/jlu-fbh/src/assets/visual-design/history/subpages/model.webp",
+        "closed": false,
+        "section": "study-subpage-color"
+      },
+      {
+        "tag": "IMG",
+        "attr": "src",
+        "value": "/jlu-fbh/src/assets/visual-design/history/subpages/model.webp",
+        "closed": false,
+        "section": "study-subpage-color"
+      }
+    ],
+    "history/subpages/description.png": [
+      {
+        "tag": "A",
+        "attr": "href",
+        "value": "/jlu-fbh/src/assets/visual-design/history/subpages/description.png",
+        "closed": false,
+        "section": "study-subpage-color"
+      },
+      {
+        "tag": "IMG",
+        "attr": "src",
+        "value": "/jlu-fbh/src/assets/visual-design/history/subpages/description.png",
+        "closed": false,
+        "section": "study-subpage-color"
+      }
+    ],
+    "history/subpages/experiments.webp": [
+      {
+        "tag": "A",
+        "attr": "href",
+        "value": "/jlu-fbh/src/assets/visual-design/history/subpages/experiments.webp",
+        "closed": false,
+        "section": "study-subpage-color"
+      },
+      {
+        "tag": "IMG",
+        "attr": "src",
+        "value": "/jlu-fbh/src/assets/visual-design/history/subpages/experiments.webp",
+        "closed": false,
+        "section": "study-subpage-color"
+      }
+    ],
+    "history/subpages/measurement.webp": [
+      {
+        "tag": "A",
+        "attr": "href",
+        "value": "/jlu-fbh/src/assets/visual-design/history/subpages/measurement.webp",
+        "closed": false,
+        "section": "study-subpage-color"
+      },
+      {
+        "tag": "IMG",
+        "attr": "src",
+        "value": "/jlu-fbh/src/assets/visual-design/history/subpages/measurement.webp",
+        "closed": false,
+        "section": "study-subpage-color"
+      }
+    ],
+    "history/subpages/hardware.webp": [
+      {
+        "tag": "A",
+        "attr": "href",
+        "value": "/jlu-fbh/src/assets/visual-design/history/subpages/hardware.webp",
+        "closed": false,
+        "section": "study-subpage-color"
+      },
+      {
+        "tag": "IMG",
+        "attr": "src",
+        "value": "/jlu-fbh/src/assets/visual-design/history/subpages/hardware.webp",
+        "closed": false,
+        "section": "study-subpage-color"
+      }
+    ],
+    "history/subpages/pages/model.png": [
+      {
+        "tag": "A",
+        "attr": "href",
+        "value": "/jlu-fbh/src/assets/visual-design/history/subpages/pages/model.png",
+        "closed": true,
+        "section": "design-details-subpage-color"
+      },
+      {
+        "tag": "IMG",
+        "attr": "data-page-src",
+        "value": "/jlu-fbh/src/assets/visual-design/history/subpages/pages/model.png",
+        "closed": true,
+        "section": "design-details-subpage-color"
+      }
+    ],
+    "history/subpages/pages/model-reading.png": [
+      {
+        "tag": "A",
+        "attr": "href",
+        "value": "/jlu-fbh/src/assets/visual-design/history/subpages/pages/model-reading.png",
+        "closed": true,
+        "section": "design-details-subpage-color"
+      },
+      {
+        "tag": "IMG",
+        "attr": "data-page-src",
+        "value": "/jlu-fbh/src/assets/visual-design/history/subpages/pages/model-reading.png",
+        "closed": true,
+        "section": "design-details-subpage-color"
+      }
+    ],
+    "history/subpages/pages/description.png": [
+      {
+        "tag": "A",
+        "attr": "href",
+        "value": "/jlu-fbh/src/assets/visual-design/history/subpages/pages/description.png",
+        "closed": true,
+        "section": "design-details-subpage-color"
+      },
+      {
+        "tag": "IMG",
+        "attr": "data-page-src",
+        "value": "/jlu-fbh/src/assets/visual-design/history/subpages/pages/description.png",
+        "closed": true,
+        "section": "design-details-subpage-color"
+      }
+    ],
+    "history/subpages/pages/description-reading.png": [
+      {
+        "tag": "A",
+        "attr": "href",
+        "value": "/jlu-fbh/src/assets/visual-design/history/subpages/pages/description-reading.png",
+        "closed": true,
+        "section": "design-details-subpage-color"
+      },
+      {
+        "tag": "IMG",
+        "attr": "data-page-src",
+        "value": "/jlu-fbh/src/assets/visual-design/history/subpages/pages/description-reading.png",
+        "closed": true,
+        "section": "design-details-subpage-color"
+      }
+    ],
+    "plates/panels/06-navigation-states-a.png": [
+      {
+        "tag": "A",
+        "attr": "href",
+        "value": "/jlu-fbh/src/assets/visual-design/plates/panels/06-navigation-states-a.png",
+        "closed": false,
+        "section": "study-06b-navigation"
+      },
+      {
+        "tag": "IMG",
+        "attr": "src",
+        "value": "/jlu-fbh/src/assets/visual-design/plates/panels/06-navigation-states-a.png",
+        "closed": false,
+        "section": "study-06b-navigation"
+      }
+    ],
+    "plates/panels/06-navigation-states-b.png": [
+      {
+        "tag": "A",
+        "attr": "href",
+        "value": "/jlu-fbh/src/assets/visual-design/plates/panels/06-navigation-states-b.png",
+        "closed": false,
+        "section": "study-06b-navigation"
+      },
+      {
+        "tag": "IMG",
+        "attr": "src",
+        "value": "/jlu-fbh/src/assets/visual-design/plates/panels/06-navigation-states-b.png",
+        "closed": false,
+        "section": "study-06b-navigation"
+      }
+    ],
+    "plates/panels/06-navigation-states-c.png": [
+      {
+        "tag": "A",
+        "attr": "href",
+        "value": "/jlu-fbh/src/assets/visual-design/plates/panels/06-navigation-states-c.png",
+        "closed": false,
+        "section": "study-06b-navigation"
+      },
+      {
+        "tag": "IMG",
+        "attr": "src",
+        "value": "/jlu-fbh/src/assets/visual-design/plates/panels/06-navigation-states-c.png",
+        "closed": false,
+        "section": "study-06b-navigation"
+      }
+    ],
+    "history/images/10-explore-arc-standard.jpg": [
+      {
+        "tag": "A",
+        "attr": "href",
+        "value": "/jlu-fbh/src/assets/visual-design/history/images/10-explore-arc-standard.jpg",
+        "closed": false,
+        "section": "design-revision-labels"
+      },
+      {
+        "tag": "IMG",
+        "attr": "data-page-src",
+        "value": "/jlu-fbh/src/assets/visual-design/history/images/10-explore-arc-standard.jpg",
+        "closed": false,
+        "section": "design-revision-labels"
+      },
+      {
+        "tag": "A",
+        "attr": "href",
+        "value": "/jlu-fbh/src/assets/visual-design/history/images/10-explore-arc-standard.jpg",
+        "closed": true,
+        "section": "archive-reading-edge"
+      },
+      {
+        "tag": "IMG",
+        "attr": "src",
+        "value": "/jlu-fbh/src/assets/visual-design/history/images/10-explore-arc-standard.jpg",
+        "closed": true,
+        "section": "archive-reading-edge"
+      }
+    ],
+    "history/images/11-explore-aligned-standard.jpg": [
+      {
+        "tag": "A",
+        "attr": "href",
+        "value": "/jlu-fbh/src/assets/visual-design/history/images/11-explore-aligned-standard.jpg",
+        "closed": false,
+        "section": "design-revision-labels"
+      },
+      {
+        "tag": "IMG",
+        "attr": "data-page-src",
+        "value": "/jlu-fbh/src/assets/visual-design/history/images/11-explore-aligned-standard.jpg",
+        "closed": false,
+        "section": "design-revision-labels"
+      },
+      {
+        "tag": "A",
+        "attr": "href",
+        "value": "/jlu-fbh/src/assets/visual-design/history/images/11-explore-aligned-standard.jpg",
+        "closed": true,
+        "section": "archive-reading-edge"
+      },
+      {
+        "tag": "IMG",
+        "attr": "src",
+        "value": "/jlu-fbh/src/assets/visual-design/history/images/11-explore-aligned-standard.jpg",
+        "closed": true,
+        "section": "archive-reading-edge"
+      }
+    ],
+    "plates/panels/08b-ribbon-viewport.jpg": [
+      {
+        "tag": "A",
+        "attr": "href",
+        "value": "/jlu-fbh/src/assets/visual-design/plates/panels/08b-ribbon-viewport.jpg",
+        "closed": false,
+        "section": "study-08b-ribbon"
+      },
+      {
+        "tag": "IMG",
+        "attr": "src",
+        "value": "/jlu-fbh/src/assets/visual-design/plates/panels/08b-ribbon-viewport.jpg",
+        "closed": false,
+        "section": "study-08b-ribbon"
+      }
+    ],
+    "plates/panels/08b-ribbon-travel.png": [
+      {
+        "tag": "A",
+        "attr": "href",
+        "value": "/jlu-fbh/src/assets/visual-design/plates/panels/08b-ribbon-travel.png",
+        "closed": false,
+        "section": "study-08b-ribbon"
+      },
+      {
+        "tag": "IMG",
+        "attr": "src",
+        "value": "/jlu-fbh/src/assets/visual-design/plates/panels/08b-ribbon-travel.png",
+        "closed": false,
+        "section": "study-08b-ribbon"
+      }
+    ],
+    "plates/panels/08b-ribbon-arrival.png": [
+      {
+        "tag": "A",
+        "attr": "href",
+        "value": "/jlu-fbh/src/assets/visual-design/plates/panels/08b-ribbon-arrival.png",
+        "closed": false,
+        "section": "study-08b-ribbon"
+      },
+      {
+        "tag": "IMG",
+        "attr": "src",
+        "value": "/jlu-fbh/src/assets/visual-design/plates/panels/08b-ribbon-arrival.png",
+        "closed": false,
+        "section": "study-08b-ribbon"
+      }
+    ],
+    "history/images/14-ribbon-before.jpg": [
+      {
+        "tag": "A",
+        "attr": "href",
+        "value": "/jlu-fbh/src/assets/visual-design/history/images/14-ribbon-before.jpg",
+        "closed": false,
+        "section": "design-revision-ribbon"
+      },
+      {
+        "tag": "IMG",
+        "attr": "data-page-src",
+        "value": "/jlu-fbh/src/assets/visual-design/history/images/14-ribbon-before.jpg",
+        "closed": false,
+        "section": "design-revision-ribbon"
+      },
+      {
+        "tag": "A",
+        "attr": "href",
+        "value": "/jlu-fbh/src/assets/visual-design/history/images/14-ribbon-before.jpg",
+        "closed": true,
+        "section": "archive-painted-route"
+      },
+      {
+        "tag": "IMG",
+        "attr": "src",
+        "value": "/jlu-fbh/src/assets/visual-design/history/images/14-ribbon-before.jpg",
+        "closed": true,
+        "section": "archive-painted-route"
+      }
+    ],
+    "history/images/15-ribbon-after.jpg": [
+      {
+        "tag": "A",
+        "attr": "href",
+        "value": "/jlu-fbh/src/assets/visual-design/history/images/15-ribbon-after.jpg",
+        "closed": false,
+        "section": "design-revision-ribbon"
+      },
+      {
+        "tag": "IMG",
+        "attr": "data-page-src",
+        "value": "/jlu-fbh/src/assets/visual-design/history/images/15-ribbon-after.jpg",
+        "closed": false,
+        "section": "design-revision-ribbon"
+      },
+      {
+        "tag": "A",
+        "attr": "href",
+        "value": "/jlu-fbh/src/assets/visual-design/history/images/15-ribbon-after.jpg",
+        "closed": true,
+        "section": "archive-painted-route"
+      },
+      {
+        "tag": "IMG",
+        "attr": "src",
+        "value": "/jlu-fbh/src/assets/visual-design/history/images/15-ribbon-after.jpg",
+        "closed": true,
+        "section": "archive-painted-route"
+      }
+    ],
+    "plates/panels/08c-explore-rest.png": [
+      {
+        "tag": "A",
+        "attr": "href",
+        "value": "/jlu-fbh/src/assets/visual-design/plates/panels/08c-explore-rest.png",
+        "closed": false,
+        "section": "study-08c-on-demand-hints"
+      },
+      {
+        "tag": "IMG",
+        "attr": "src",
+        "value": "/jlu-fbh/src/assets/visual-design/plates/panels/08c-explore-rest.png",
+        "closed": false,
+        "section": "study-08c-on-demand-hints"
+      }
+    ],
+    "plates/panels/08c-explore-hover.png": [
+      {
+        "tag": "A",
+        "attr": "href",
+        "value": "/jlu-fbh/src/assets/visual-design/plates/panels/08c-explore-hover.png",
+        "closed": false,
+        "section": "study-08c-on-demand-hints"
+      },
+      {
+        "tag": "IMG",
+        "attr": "src",
+        "value": "/jlu-fbh/src/assets/visual-design/plates/panels/08c-explore-hover.png",
+        "closed": false,
+        "section": "study-08c-on-demand-hints"
+      }
+    ],
+    "plates/panels/08c-ribbon-rest.png": [
+      {
+        "tag": "A",
+        "attr": "href",
+        "value": "/jlu-fbh/src/assets/visual-design/plates/panels/08c-ribbon-rest.png",
+        "closed": false,
+        "section": "study-08c-on-demand-hints"
+      },
+      {
+        "tag": "IMG",
+        "attr": "src",
+        "value": "/jlu-fbh/src/assets/visual-design/plates/panels/08c-ribbon-rest.png",
+        "closed": false,
+        "section": "study-08c-on-demand-hints"
+      }
+    ],
+    "plates/panels/08c-ribbon-hover.png": [
+      {
+        "tag": "A",
+        "attr": "href",
+        "value": "/jlu-fbh/src/assets/visual-design/plates/panels/08c-ribbon-hover.png",
+        "closed": false,
+        "section": "study-08c-on-demand-hints"
+      },
+      {
+        "tag": "IMG",
+        "attr": "src",
+        "value": "/jlu-fbh/src/assets/visual-design/plates/panels/08c-ribbon-hover.png",
+        "closed": false,
+        "section": "study-08c-on-demand-hints"
+      }
+    ],
+    "plates/panels/08b-whitespace-context.jpg": [
+      {
+        "tag": "A",
+        "attr": "href",
+        "value": "/jlu-fbh/src/assets/visual-design/plates/panels/08b-whitespace-context.jpg",
+        "closed": true,
+        "section": "design-details-destinations"
+      },
+      {
+        "tag": "IMG",
+        "attr": "data-page-src",
+        "value": "/jlu-fbh/src/assets/visual-design/plates/panels/08b-whitespace-context.jpg",
+        "closed": true,
+        "section": "design-details-destinations"
+      }
+    ],
+    "plates/panels/08b-whitespace-next-only.jpg": [
+      {
+        "tag": "A",
+        "attr": "href",
+        "value": "/jlu-fbh/src/assets/visual-design/plates/panels/08b-whitespace-next-only.jpg",
+        "closed": true,
+        "section": "design-details-destinations"
+      },
+      {
+        "tag": "IMG",
+        "attr": "data-page-src",
+        "value": "/jlu-fbh/src/assets/visual-design/plates/panels/08b-whitespace-next-only.jpg",
+        "closed": true,
+        "section": "design-details-destinations"
+      }
+    ],
+    "plates/panels/07-footer-reveal-a.png": [
+      {
+        "tag": "A",
+        "attr": "href",
+        "value": "/jlu-fbh/src/assets/visual-design/plates/panels/07-footer-reveal-a.png",
+        "closed": true,
+        "section": "archive-07-footer-reveal"
+      },
+      {
+        "tag": "IMG",
+        "attr": "src",
+        "value": "/jlu-fbh/src/assets/visual-design/plates/panels/07-footer-reveal-a.png",
+        "closed": true,
+        "section": "archive-07-footer-reveal"
+      }
+    ],
+    "plates/panels/07-footer-reveal-b.png": [
+      {
+        "tag": "A",
+        "attr": "href",
+        "value": "/jlu-fbh/src/assets/visual-design/plates/panels/07-footer-reveal-b.png",
+        "closed": true,
+        "section": "archive-07-footer-reveal"
+      },
+      {
+        "tag": "IMG",
+        "attr": "src",
+        "value": "/jlu-fbh/src/assets/visual-design/plates/panels/07-footer-reveal-b.png",
+        "closed": true,
+        "section": "archive-07-footer-reveal"
+      }
+    ],
+    "plates/panels/07-footer-reveal-c.png": [
+      {
+        "tag": "A",
+        "attr": "href",
+        "value": "/jlu-fbh/src/assets/visual-design/plates/panels/07-footer-reveal-c.png",
+        "closed": true,
+        "section": "archive-07-footer-reveal"
+      },
+      {
+        "tag": "IMG",
+        "attr": "src",
+        "value": "/jlu-fbh/src/assets/visual-design/plates/panels/07-footer-reveal-c.png",
+        "closed": true,
+        "section": "archive-07-footer-reveal"
+      }
+    ],
+    "plates/panels/07-footer-reveal-d.png": [
+      {
+        "tag": "A",
+        "attr": "href",
+        "value": "/jlu-fbh/src/assets/visual-design/plates/panels/07-footer-reveal-d.png",
+        "closed": true,
+        "section": "archive-07-footer-reveal"
+      },
+      {
+        "tag": "IMG",
+        "attr": "src",
+        "value": "/jlu-fbh/src/assets/visual-design/plates/panels/07-footer-reveal-d.png",
+        "closed": true,
+        "section": "archive-07-footer-reveal"
+      }
+    ],
+    "history/artwork/draft-ward-soft-full.webp": [
+      {
+        "tag": "A",
+        "attr": "href",
+        "value": "/jlu-fbh/src/assets/visual-design/history/artwork/draft-ward-soft-full.webp",
+        "closed": true,
+        "section": "design-artwork-archive"
+      }
+    ],
+    "history/artwork/draft-ward-soft.webp": [
+      {
+        "tag": "IMG",
+        "attr": "src",
+        "value": "/jlu-fbh/src/assets/visual-design/history/artwork/draft-ward-soft.webp",
+        "closed": true,
+        "section": "design-artwork-archive"
+      }
+    ],
+    "history/artwork/draft-ward-clear-full.webp": [
+      {
+        "tag": "A",
+        "attr": "href",
+        "value": "/jlu-fbh/src/assets/visual-design/history/artwork/draft-ward-clear-full.webp",
+        "closed": true,
+        "section": "design-artwork-archive"
+      }
+    ],
+    "history/artwork/draft-ward-clear.webp": [
+      {
+        "tag": "IMG",
+        "attr": "src",
+        "value": "/jlu-fbh/src/assets/visual-design/history/artwork/draft-ward-clear.webp",
+        "closed": true,
+        "section": "design-artwork-archive"
+      }
+    ],
+    "history/artwork/treatment-study-full.webp": [
+      {
+        "tag": "A",
+        "attr": "href",
+        "value": "/jlu-fbh/src/assets/visual-design/history/artwork/treatment-study-full.webp",
+        "closed": true,
+        "section": "design-artwork-archive"
+      }
+    ],
+    "history/artwork/treatment-study.webp": [
+      {
+        "tag": "IMG",
+        "attr": "src",
+        "value": "/jlu-fbh/src/assets/visual-design/history/artwork/treatment-study.webp",
+        "closed": true,
+        "section": "design-artwork-archive"
+      }
+    ],
+    "history/artwork/draft-comparison-full.webp": [
+      {
+        "tag": "A",
+        "attr": "href",
+        "value": "/jlu-fbh/src/assets/visual-design/history/artwork/draft-comparison-full.webp",
+        "closed": true,
+        "section": "design-artwork-archive"
+      }
+    ],
+    "history/artwork/draft-comparison.webp": [
+      {
+        "tag": "IMG",
+        "attr": "src",
+        "value": "/jlu-fbh/src/assets/visual-design/history/artwork/draft-comparison.webp",
+        "closed": true,
+        "section": "design-artwork-archive"
+      }
+    ],
+    "history/artwork/draft-question-full.webp": [
+      {
+        "tag": "A",
+        "attr": "href",
+        "value": "/jlu-fbh/src/assets/visual-design/history/artwork/draft-question-full.webp",
+        "closed": true,
+        "section": "design-artwork-archive"
+      }
+    ],
+    "history/artwork/draft-question.webp": [
+      {
+        "tag": "IMG",
+        "attr": "src",
+        "value": "/jlu-fbh/src/assets/visual-design/history/artwork/draft-question.webp",
+        "closed": true,
+        "section": "design-artwork-archive"
+      }
+    ],
+    "history/artwork/draft-map-full.webp": [
+      {
+        "tag": "A",
+        "attr": "href",
+        "value": "/jlu-fbh/src/assets/visual-design/history/artwork/draft-map-full.webp",
+        "closed": true,
+        "section": "design-artwork-archive"
+      }
+    ],
+    "history/artwork/draft-map.webp": [
+      {
+        "tag": "IMG",
+        "attr": "src",
+        "value": "/jlu-fbh/src/assets/visual-design/history/artwork/draft-map.webp",
+        "closed": true,
+        "section": "design-artwork-archive"
+      }
+    ],
+    "history/artwork/draft-map-text-full.webp": [
+      {
+        "tag": "A",
+        "attr": "href",
+        "value": "/jlu-fbh/src/assets/visual-design/history/artwork/draft-map-text-full.webp",
+        "closed": true,
+        "section": "design-artwork-archive"
+      }
+    ],
+    "history/artwork/draft-map-text.webp": [
+      {
+        "tag": "IMG",
+        "attr": "src",
+        "value": "/jlu-fbh/src/assets/visual-design/history/artwork/draft-map-text.webp",
+        "closed": true,
+        "section": "design-artwork-archive"
+      }
+    ],
+    "history/artwork/draft-why-ring-full.webp": [
+      {
+        "tag": "A",
+        "attr": "href",
+        "value": "/jlu-fbh/src/assets/visual-design/history/artwork/draft-why-ring-full.webp",
+        "closed": true,
+        "section": "design-artwork-archive"
+      }
+    ],
+    "history/artwork/draft-why-ring.webp": [
+      {
+        "tag": "IMG",
+        "attr": "src",
+        "value": "/jlu-fbh/src/assets/visual-design/history/artwork/draft-why-ring.webp",
+        "closed": true,
+        "section": "design-artwork-archive"
+      }
+    ],
+    "history/artwork/draft-platform-full.webp": [
+      {
+        "tag": "A",
+        "attr": "href",
+        "value": "/jlu-fbh/src/assets/visual-design/history/artwork/draft-platform-full.webp",
+        "closed": true,
+        "section": "design-artwork-archive"
+      }
+    ],
+    "history/artwork/draft-platform.webp": [
+      {
+        "tag": "IMG",
+        "attr": "src",
+        "value": "/jlu-fbh/src/assets/visual-design/history/artwork/draft-platform.webp",
+        "closed": true,
+        "section": "design-artwork-archive"
+      }
+    ],
+    "history/artwork/draft-care-full.webp": [
+      {
+        "tag": "A",
+        "attr": "href",
+        "value": "/jlu-fbh/src/assets/visual-design/history/artwork/draft-care-full.webp",
+        "closed": true,
+        "section": "design-artwork-archive"
+      }
+    ],
+    "history/artwork/draft-care.webp": [
+      {
+        "tag": "IMG",
+        "attr": "src",
+        "value": "/jlu-fbh/src/assets/visual-design/history/artwork/draft-care.webp",
+        "closed": true,
+        "section": "design-artwork-archive"
+      }
+    ],
+    "history/artwork/draft-protection-full.webp": [
+      {
+        "tag": "A",
+        "attr": "href",
+        "value": "/jlu-fbh/src/assets/visual-design/history/artwork/draft-protection-full.webp",
+        "closed": true,
+        "section": "design-artwork-archive"
+      }
+    ],
+    "history/artwork/draft-protection.webp": [
+      {
+        "tag": "IMG",
+        "attr": "src",
+        "value": "/jlu-fbh/src/assets/visual-design/history/artwork/draft-protection.webp",
+        "closed": true,
+        "section": "design-artwork-archive"
+      }
+    ],
+    "history/artwork/ward.webp": [
+      {
+        "tag": "IMG",
+        "attr": "src",
+        "value": "/jlu-fbh/src/assets/visual-design/history/artwork/ward.webp",
+        "closed": true,
+        "section": "artwork-layer-exports"
+      }
+    ],
+    "history/artwork/rna-ring-full.webp": [
+      {
+        "tag": "A",
+        "attr": "href",
+        "value": "/jlu-fbh/src/assets/visual-design/history/artwork/rna-ring-full.webp",
+        "closed": true,
+        "section": "artwork-layer-exports"
+      }
+    ],
+    "history/artwork/rna-ring.webp": [
+      {
+        "tag": "IMG",
+        "attr": "src",
+        "value": "/jlu-fbh/src/assets/visual-design/history/artwork/rna-ring.webp",
+        "closed": true,
+        "section": "artwork-layer-exports"
+      }
+    ],
+    "history/artwork/protecting-hands-full.webp": [
+      {
+        "tag": "A",
+        "attr": "href",
+        "value": "/jlu-fbh/src/assets/visual-design/history/artwork/protecting-hands-full.webp",
+        "closed": true,
+        "section": "artwork-layer-exports"
+      }
+    ],
+    "history/artwork/protecting-hands.webp": [
+      {
+        "tag": "IMG",
+        "attr": "src",
+        "value": "/jlu-fbh/src/assets/visual-design/history/artwork/protecting-hands.webp",
+        "closed": true,
+        "section": "artwork-layer-exports"
+      }
+    ],
+    "history/artwork/protected-life-full.webp": [
+      {
+        "tag": "A",
+        "attr": "href",
+        "value": "/jlu-fbh/src/assets/visual-design/history/artwork/protected-life-full.webp",
+        "closed": true,
+        "section": "artwork-layer-exports"
+      }
+    ],
+    "history/artwork/protected-life.webp": [
+      {
+        "tag": "IMG",
+        "attr": "src",
+        "value": "/jlu-fbh/src/assets/visual-design/history/artwork/protected-life.webp",
+        "closed": true,
+        "section": "artwork-layer-exports"
+      }
+    ],
+    "history/images/07-composed-scene.jpg": [
+      {
+        "tag": "IMG",
+        "attr": "src",
+        "value": "/jlu-fbh/src/assets/visual-design/history/images/07-composed-scene.jpg",
+        "closed": true,
+        "section": "design-history-archive"
+      },
+      {
+        "tag": "A",
+        "attr": "href",
+        "value": "/jlu-fbh/src/assets/visual-design/history/images/07-composed-scene.jpg",
+        "closed": true,
+        "section": "archive-patient-layers"
+      },
+      {
+        "tag": "IMG",
+        "attr": "src",
+        "value": "/jlu-fbh/src/assets/visual-design/history/images/07-composed-scene.jpg",
+        "closed": true,
+        "section": "archive-patient-layers"
+      }
+    ],
+    "history/images/01-ring.jpg": [
+      {
+        "tag": "A",
+        "attr": "href",
+        "value": "/jlu-fbh/src/assets/visual-design/history/images/01-ring.jpg",
+        "closed": true,
+        "section": "archive-first-studies"
+      },
+      {
+        "tag": "IMG",
+        "attr": "src",
+        "value": "/jlu-fbh/src/assets/visual-design/history/images/01-ring.jpg",
+        "closed": true,
+        "section": "archive-first-studies"
+      }
+    ],
+    "history/images/02-spatial.jpg": [
+      {
+        "tag": "A",
+        "attr": "href",
+        "value": "/jlu-fbh/src/assets/visual-design/history/images/02-spatial.jpg",
+        "closed": true,
+        "section": "archive-first-studies"
+      },
+      {
+        "tag": "IMG",
+        "attr": "src",
+        "value": "/jlu-fbh/src/assets/visual-design/history/images/02-spatial.jpg",
+        "closed": true,
+        "section": "archive-first-studies"
+      }
+    ],
+    "history/images/03-image-led.jpg": [
+      {
+        "tag": "A",
+        "attr": "href",
+        "value": "/jlu-fbh/src/assets/visual-design/history/images/03-image-led.jpg",
+        "closed": true,
+        "section": "archive-parallel-directions"
+      },
+      {
+        "tag": "IMG",
+        "attr": "src",
+        "value": "/jlu-fbh/src/assets/visual-design/history/images/03-image-led.jpg",
+        "closed": true,
+        "section": "archive-parallel-directions"
+      }
+    ],
+    "history/images/04-recognition-homepage.jpg": [
+      {
+        "tag": "A",
+        "attr": "href",
+        "value": "/jlu-fbh/src/assets/visual-design/history/images/04-recognition-homepage.jpg",
+        "closed": true,
+        "section": "archive-parallel-directions"
+      },
+      {
+        "tag": "IMG",
+        "attr": "src",
+        "value": "/jlu-fbh/src/assets/visual-design/history/images/04-recognition-homepage.jpg",
+        "closed": true,
+        "section": "archive-parallel-directions"
+      }
+    ],
+    "history/images/16-image-led-navigation.jpg": [
+      {
+        "tag": "A",
+        "attr": "href",
+        "value": "/jlu-fbh/src/assets/visual-design/history/images/16-image-led-navigation.jpg",
+        "closed": true,
+        "section": "archive-image-navigation"
+      },
+      {
+        "tag": "IMG",
+        "attr": "src",
+        "value": "/jlu-fbh/src/assets/visual-design/history/images/16-image-led-navigation.jpg",
+        "closed": true,
+        "section": "archive-image-navigation"
+      }
+    ],
+    "history/images/17-pink-thread-person.jpg": [
+      {
+        "tag": "A",
+        "attr": "href",
+        "value": "/jlu-fbh/src/assets/visual-design/history/images/17-pink-thread-person.jpg",
+        "closed": true,
+        "section": "archive-pink-thread"
+      },
+      {
+        "tag": "IMG",
+        "attr": "src",
+        "value": "/jlu-fbh/src/assets/visual-design/history/images/17-pink-thread-person.jpg",
+        "closed": true,
+        "section": "archive-pink-thread"
+      }
+    ],
+    "history/images/18-ribbon-emblem.jpg": [
+      {
+        "tag": "A",
+        "attr": "href",
+        "value": "/jlu-fbh/src/assets/visual-design/history/images/18-ribbon-emblem.jpg",
+        "closed": true,
+        "section": "archive-pink-thread"
+      },
+      {
+        "tag": "IMG",
+        "attr": "src",
+        "value": "/jlu-fbh/src/assets/visual-design/history/images/18-ribbon-emblem.jpg",
+        "closed": true,
+        "section": "archive-pink-thread"
+      }
+    ],
+    "history/images/19-hp-center.webp": [
+      {
+        "tag": "A",
+        "attr": "href",
+        "value": "/jlu-fbh/src/assets/visual-design/history/images/19-hp-center.webp",
+        "closed": true,
+        "section": "archive-hp-center"
+      },
+      {
+        "tag": "IMG",
+        "attr": "src",
+        "value": "/jlu-fbh/src/assets/visual-design/history/images/19-hp-center.webp",
+        "closed": true,
+        "section": "archive-hp-center"
+      }
+    ],
+    "history/images/19-hp-dial.webp": [
+      {
+        "tag": "A",
+        "attr": "href",
+        "value": "/jlu-fbh/src/assets/visual-design/history/images/19-hp-dial.webp",
+        "closed": true,
+        "section": "archive-hp-dial"
+      },
+      {
+        "tag": "IMG",
+        "attr": "src",
+        "value": "/jlu-fbh/src/assets/visual-design/history/images/19-hp-dial.webp",
+        "closed": true,
+        "section": "archive-hp-dial"
+      }
+    ],
+    "history/images/19-hp-horizontal.webp": [
+      {
+        "tag": "A",
+        "attr": "href",
+        "value": "/jlu-fbh/src/assets/visual-design/history/images/19-hp-horizontal.webp",
+        "closed": true,
+        "section": "archive-hp-horizontal"
+      },
+      {
+        "tag": "IMG",
+        "attr": "src",
+        "value": "/jlu-fbh/src/assets/visual-design/history/images/19-hp-horizontal.webp",
+        "closed": true,
+        "section": "archive-hp-horizontal"
+      }
+    ],
+    "history/images/06-portrait-layer.png": [
+      {
+        "tag": "A",
+        "attr": "href",
+        "value": "/jlu-fbh/src/assets/visual-design/history/images/06-portrait-layer.png",
+        "closed": true,
+        "section": "archive-patient-layers"
+      },
+      {
+        "tag": "IMG",
+        "attr": "src",
+        "value": "/jlu-fbh/src/assets/visual-design/history/images/06-portrait-layer.png",
+        "closed": true,
+        "section": "archive-patient-layers"
+      }
+    ],
+    "history/images/10-explore-original.jpg": [
+      {
+        "tag": "A",
+        "attr": "href",
+        "value": "/jlu-fbh/src/assets/visual-design/history/images/10-explore-original.jpg",
+        "closed": true,
+        "section": "archive-reading-edge"
+      },
+      {
+        "tag": "IMG",
+        "attr": "src",
+        "value": "/jlu-fbh/src/assets/visual-design/history/images/10-explore-original.jpg",
+        "closed": true,
+        "section": "archive-reading-edge"
+      }
+    ],
+    "history/images/12-letter-before.jpg": [
+      {
+        "tag": "A",
+        "attr": "href",
+        "value": "/jlu-fbh/src/assets/visual-design/history/images/12-letter-before.jpg",
+        "closed": true,
+        "section": "archive-last-details"
+      },
+      {
+        "tag": "IMG",
+        "attr": "src",
+        "value": "/jlu-fbh/src/assets/visual-design/history/images/12-letter-before.jpg",
+        "closed": true,
+        "section": "archive-last-details"
+      }
+    ],
+    "history/images/13-letter-after.jpg": [
+      {
+        "tag": "A",
+        "attr": "href",
+        "value": "/jlu-fbh/src/assets/visual-design/history/images/13-letter-after.jpg",
+        "closed": true,
+        "section": "archive-last-details"
+      },
+      {
+        "tag": "IMG",
+        "attr": "src",
+        "value": "/jlu-fbh/src/assets/visual-design/history/images/13-letter-after.jpg",
+        "closed": true,
+        "section": "archive-last-details"
+      }
+    ],
+    "plates/panels/08-small-interactions-c.png": [
+      {
+        "tag": "A",
+        "attr": "href",
+        "value": "/jlu-fbh/src/assets/visual-design/plates/panels/08-small-interactions-c.png",
+        "closed": true,
+        "section": "archive-last-details"
+      },
+      {
+        "tag": "IMG",
+        "attr": "src",
+        "value": "/jlu-fbh/src/assets/visual-design/plates/panels/08-small-interactions-c.png",
+        "closed": true,
+        "section": "archive-last-details"
+      }
+    ]
+  }
+}
